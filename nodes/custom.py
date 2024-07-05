@@ -22,6 +22,8 @@ update : 2024/03/29
 
 from pprint import pprint
 
+from geonodes.nodes.scripterror import NodeError
+
 from geonodes.nodes import documentation
 from geonodes.nodes import constants
 from geonodes.nodes import utils
@@ -550,7 +552,7 @@ NODE_IMPLEMENTATIONS = {
     'CurveLength'        : C.Get('Geometry', '@', 'curve', 'length'),
     'CurveLine'          : C.Glob(ret_socket='curve'),
     'CurveOfPoint'       : [C.Meth('Geometry', None), C.Glob()],
-    'CurveTangent'       : C.Get('Geometry', '@', None, 'tangent'),
+    'CurveTangent'       : [C.Get('Geometry', '@', None, 'tangent'), C.Glob()],
     'CurveTilt'          : C.Get('Geometry', '@', None, 'tilt'),
     'CurveToMesh'        : C.Meth('Geometry', self_socket='curve', ret_socket='mesh'),
     'CurveToPoints'      : C.Meth('Geometry', self_socket='curve'),
@@ -926,7 +928,7 @@ def add_function(class_name, name,
         if loops is not None and target != 'SOCKET':
             for key in loops:
                 if key.upper() not in name:
-                    raise AttributeError(f"Custom function error: the function name template {name} should contain {key.upper()} for distinct function names with loops {loops}.")
+                    raise NodeError(f"Custom function error: the function name template {name} should contain {key.upper()} for distinct function names with loops {loops}.")
 
         methods[name] = {
             'target'      : target,

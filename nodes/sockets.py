@@ -41,6 +41,9 @@ from pprint import pprint
 import numpy as np
 
 import bpy
+
+from geonodes.nodes.scripterror import NodeError
+
 from geonodes.nodes import constants
 from geonodes.nodes import utils
 from geonodes.nodes import documentation
@@ -58,7 +61,6 @@ class Socket:
     def __new__(cls, bsocket):
 
         if cls == Socket:
-
             if isinstance(bsocket, bpy.types.NodeSocket):
                 sock_type = bsocket.type
 
@@ -68,7 +70,6 @@ class Socket:
             else:
                 sock_type = utils.get_value_socket_type(bsocket)
 
-            #socket_class = constants.socket_classes().get(sock_type)
             socket_class = constants.get_socket_class(sock_type)
 
         else:
@@ -96,11 +97,9 @@ class Socket:
             self.bsocket = None
             self._value  = bsocket
 
-
         # ----- Used to cache SeparateXYZ or SeparateColor
 
         self._sub_nodes = {}
-
 
     def __str__(self):
         if self._is_socket:
@@ -166,7 +165,7 @@ class Socket:
     def _set_value(self, value):
 
         if self._is_output:
-            raise AttributeError(f"Impossible to set value to an output socket {self}")
+            raise NodeError(f"Impossible to set value to an output socket {self}")
 
         # ----- Value is a function : creation of an input socket
 
@@ -199,7 +198,7 @@ class Socket:
                 try:
                     self.bsocket.default_value = value
                 except:
-                    raise AttributeError(f"Value '{value}' is not a valid item for the menu {self}")
+                    raise NodeError(f"Value '{value}' is not a valid item for the menu {self}")
 
                 # NOT SURE ITS OLD. Perhaps bugged ??
                 if False:
@@ -208,7 +207,7 @@ class Socket:
                         if get_bsock_name(item).lower() == str(def_value).lower():
                             self.bsocket.default_value = get_bsock_name(item)
                             return
-                    raise Exception(f"Invalid item name for Socket Menu: '{str(def_value)}' not in {[get_bsock_name(item) for item in enum_items]}")
+                    raise NodeError(f"Invalid item name for Socket Menu: '{str(def_value)}' not in {[get_bsock_name(item) for item in enum_items]}")
 
             # ----- Something else
 
@@ -245,7 +244,7 @@ class Socket:
             bsock = value.bsocket
 
         else:
-            raise Exception(f"Impossible to plug the socket {self}. Value '{value}' should be an input socket.")
+            raise NodeError(f"Impossible to plug the socket {self}. Value '{value}' should be an input socket.")
 
         if bsock is not None:
             if (not bsock.is_output) and bsock.type == self.bsocket.type:
@@ -262,7 +261,7 @@ class Socket:
                     self.tree.btree.links.new(self.bsocket, bsock, verify_limits=True)
                     return
 
-        raise Exception(f"Impossible to plug the socket {self} in {value}. No input socket of the same type ({self.bsocket.type}) found.")
+        raise NodeError(f"Impossible to plug the socket {self} in {value}. No input socket of the same type ({self.bsocket.type}) found.")
 
     # =============================================================================================================================
     # Comparison
@@ -390,7 +389,7 @@ class Sockets:
             elif label == 'BOTH':
                 labels = {self.pyname(bsock.name), self.pyname(get_bsock_name(bsock))}
             else:
-                raise AttributeError(f"socket_pynames error: invalif 'label' argument ('{label}'). Must be in ('NAME', 'LABEL', 'BOTH')")
+                raise NodeError(f"socket_pynames error: invalif 'label' argument ('{label}'). Must be in ('NAME', 'LABEL', 'BOTH')")
 
             for pyname in labels:
                 if pyname in counts.keys():
@@ -489,7 +488,7 @@ class Sockets:
                 if len(homs) > rank:
                     return homs[rank]
 
-        raise AttributeError(f"Socket named '{index}' not found : {str(self)}, node params: {self.node.params}")
+        raise NodeError(f"Socket named '{index}' not found : {str(self)}, node params: {self.node.params}")
 
 
     # ====================================================================================================
@@ -550,7 +549,7 @@ class Sockets:
                 return Socket(bsocket)
 
         if halt:
-            raise AttributeError(f"Node {self.node} has no multi input socket")
+            raise NodeError(f"Node {self.node} has no multi input socket")
         else:
             return None
 
@@ -612,7 +611,7 @@ class Sockets:
                 count -= 1
 
         if halt:
-            raise AttributeError(f"Impossible to find a socket of type '{socket_type}' (rank {rank}) in sockets {[get_bsock_name(bs) for bs in self.bsockets]}.")
+            raise NodeError(f"Impossible to find a socket of type '{socket_type}' (rank {rank}) in sockets {[get_bsock_name(bs) for bs in self.bsockets]}.")
         else:
             return None
 
@@ -1129,7 +1128,7 @@ class GEOMETRY(Socket):
                 return get_value(['INSTANCE', 'INSTANCES'])
 
             else:
-                raise AttributeError(f"Domain {domain} not valid")
+                raise NodeError(f"Domain {domain} not valid")
 
         else:
             if False:

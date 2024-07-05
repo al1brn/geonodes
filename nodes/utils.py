@@ -26,6 +26,8 @@ import numpy as np
 import bpy
 import mathutils
 
+from geonodes.nodes.scripterror import NodeError
+
 from geonodes.nodes import constants
 
 
@@ -228,7 +230,7 @@ def value_for(value, socket_type):
         except:
             pass
 
-        raise Exception(f"Impossible to convert the value {value} for the socket {socket_type}")
+        raise NodeError(f"Impossible to convert the value {value} for the socket {socket_type}")
 
     elif socket_type in ['NodeSocketVector', 'NodeSocketVectorEuler', 'NodeSocketVectorXYZ', 'NodeSocketVectorTranslation', 'NodeSocketVectorAcceleration',
                          'NodeSocketVectorDirection', 'NodeSocketVectorVelocity', 'NodeSocketRotation']:
@@ -248,7 +250,7 @@ def value_for(value, socket_type):
         except:
             pass
 
-        return constants.current_tree().CombineXYZ(v[0], v[1], v[2], node_label='Combine XYZ').output_socket
+        return constants.current_tree().CombineXYZ(v[0], v[1], v[2]).output_socket
 
     elif socket_type in ['NodeSocketColor']:
 
@@ -263,6 +265,9 @@ def value_for(value, socket_type):
 
         else:
             v = value
+
+        if isinstance(v, (tuple, list)) and len(v) == 4:
+            return v
 
         try:
             return mathutils.Color(v)
@@ -309,7 +314,7 @@ def value_for(value, socket_type):
             return value
 
     else:
-        raise Exception(f"Unknown socket type: {socket_type}")
+        raise NodeError(f"Unknown socket type: {socket_type}")
 
 # ====================================================================================================
 # interface socket class
@@ -382,7 +387,7 @@ def get_value_socket_type(value):
         return value.bsocket.type
 
     else:
-        raise Exception(f"Python value '{value}' of type {type(value).__name__} doesn't match any socket type in {constants.all_socket_classes(constants.get_tree_type())}")
+        raise NodeError(f"Python value '{value}' of type {type(value).__name__} doesn't match any socket type in {constants.all_socket_classes(constants.get_tree_type())}")
 
 def get_type_from_sockets(value):
     if isinstance(value, list):
@@ -413,7 +418,7 @@ def socket_bl_idname_from_value(value):
     else:
         bl_id = constants.BLENDER_SOCKET_CLASSES.get(get_value_socket_type(value))
         if bl_id is None:
-            raise AttributeError(f"Impossible to find a socket type for the value {value}")
+            raise NodeError(f"Impossible to find a socket type for the value {value}")
         return bl_id
 
 

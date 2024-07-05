@@ -24,6 +24,9 @@ from pprint import pprint
 from mathutils import Vector, Color
 import bpy
 
+from geonodes.nodes.scripterror import NodeError
+
+
 # ====================================================================================================
 # Node dimensions
 # Node dimensions are baked with gen_node_dims
@@ -979,7 +982,7 @@ def node_dim_DEPRECATED(node, tree=None):
 
         if key not in ddims['changes']:
             pprint(ddims)
-            raise RuntimeError(f"node_dim Error: node '{node.name}', key {key} not found.")
+            raise NodeError(f"node_dim Error: node '{node.name}', key {key} not found.")
 
         nd = list(ddims['changes'][key])
 
@@ -1397,7 +1400,7 @@ class Box:
         for i, nd in enumerate(self.tree.nodes):
             if nd == node:
                 return Box.BOXES[i]
-        raise RuntimeError(f"Algo error: node '{node}' strangely boxed.")
+        raise NodeError(f"Algo error: node '{node}' strangely boxed.")
 
     # ---------------------------------------------------------------------------
     # Boxes from indices
@@ -1502,7 +1505,7 @@ class Box:
     def common_ancestor(self, other):
 
         if self == other:
-            raise RuntimeError("common_ancestor: This is a stupid request!")
+            raise NodeError("common_ancestor: This is a stupid request!")
 
         box0 = self
         box1 = other
@@ -1524,12 +1527,12 @@ class Box:
         # ----- Same depth now
 
         if box0 == box1:
-            raise RuntimeError("common_ancestor: No common ancestor when one is the ancestor of the other")
+            raise NodeError("common_ancestor: No common ancestor when one is the ancestor of the other")
 
         for _ in range(depth):
 
             if box0.frame is None or box1.frame is None:
-                raise RuntimeError("common_ancestor: I can't believe this could happen!")
+                raise NodeError("common_ancestor: I can't believe this could happen!")
 
             if box0.is_sibling(box1):
                 return box0.frame, box0, box1
@@ -1537,7 +1540,7 @@ class Box:
             box0 = box0.frame
             box1 = box1.frame
 
-        raise RuntimeError("common_ancestor: Normally tjhs should never happen")
+        raise NodeError("common_ancestor: Normally tjhs should never happen")
 
     # ---------------------------------------------------------------------------
     # Compute the columns
@@ -1998,7 +2001,7 @@ class Frame(Box):
                 print(sl_nodes)
                 print('-')
 
-                raise Exception(f"Algo error: {index} != {len(col)}")
+                raise NodeError(f"Algo error: {index} != {len(col)}")
         """
 
         # ----- Columns x location
@@ -2082,7 +2085,7 @@ class Frame(Box):
 
 
         if bug:
-            raise RuntimeError("Algorithm error")
+            raise NodeError("Algorithm error")
 
         # ---------------------------------------------------------------------------
         # Relocate the in/out reroutes

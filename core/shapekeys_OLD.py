@@ -1,21 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Blender Python Geometry module
-
 Created on Sat Oct  1 17:29:17 2022
-Modified 2024 June 19
 
-@author: alain.bernard
-@email: alain@ligloo.net
-
------
-
-Curve and Mesh shape keys
+@author: alain
 """
-
-def maprange(t, *args, **kwargs):
-    return t
 
 # ---------------------------------------------------------------------------
 # Blender shape keys are organized
@@ -31,131 +20,81 @@ def maprange(t, *args, **kwargs):
 # cube.data.shape_keys.key_blocks[].data[].co
 #
 # A key is either a string (name of the shape) or an int (index in the array)
+# Series are managed through a key name and a number of steps
 
 import numpy as np
-import bpy
-
 from geonodes import CubicSpline, BSpline
-from geonodes.core import blender
 
-# ====================================================================================================
-# Sub array
 
-class SubArray:
-    def __init__(self, shapekeys, data_slice, item_size):
-        self.shapekeys  = shapekeys
-        self.data_slice = data_slice
-        self.item_size  = item_size
+if __name__ != '__main__':
 
-    def __len__(self):
-        return len(self.shapekeys)
+    import bpy
 
-    def __getitem__(self, index):
-        a = self.shapekeys._data[index, :, self.data_slice]
-        if self.item_size == 1:
-            return np.reshape(a, len(a))
-        else:
-            return a
-
-    def __setitem__(self, index, value):
-        if self.item_size == 1:
-            self.shapekeys._data[index, :, self.data_slice] = np.reshape(value, np.shape(value) + (1,))
-        else:
-            self.shapekeys._data[index, :, self.data_slice] = value
+    from geonodes.core import blender
+    from geonodes.core.cloud import Cloud
+    from geonodes.core.instances import Instances
+    from geonodes.core.mesh import Mesh
+    from geonodes.core.curve import Curve
 
 # ====================================================================================================
 # Float attributes shape keys
 
 class ShapeKeys:
-    def __init__(self, points, count=1, key_name="Key", clear=False, **kwargs):
-
-        self.key_name = key_name
-        self.clear    = False
-
-        self._attributes = {'position': np.shape(points)[-1]}
-        self._size       = self._attributes['position']
-        self._slices     = {'position': slice(self._size)}
-        self.position    = SubArray(self, self._slices['position'], self._size)
-
-        for name, v in kwargs.items():
-            if len(np.shape(v)) <= 1:
-                size = 1
-            else:
-                size = np.shape(v)[-1]
-            self._attributes[name] = size
-            self._slices[name] = slice(self._size, self._size + size)
-            self._size += size
-            setattr(self, name, SubArray(self, self._slices[name], size))
-
-        self._data = np.zeros((count, len(points), self._size), float)
-
-        self._data[..., self._slices['position']] = points[None]
-        for k, v in kwargs.items():
-            self.set_value(slice(count), k, v)
-            #self._data[..., self._slices[k]] = v[None]
+    def __init__(self, attributes, count=1):
+        self.attributes = attributes
+        self.values = np.resize(self.attributes.float_array, (count,) + np.shape(self.attributes.float_array))
 
     def __str__(self):
-        return f"<Shapekeys: {len(self)} shapes of {self.points_count} points, attributes: {list(self._attributes.keys())}>"
+        return f"<Shapekeys: {len(self)} shapes of {self.points_count} points, attributes: {self.names}>"
+
+    # =============================================================================================================================
+    # As an array of arrays
 
     def __len__(self):
-        return len(self._data)
+        return len(self.values)
 
     def __getitem__(self, index):
-        return self._data[index]
+        return self.values[index]
 
     def __setitem__(self, index, value):
-        self._data[index] = value
+        self.values[index] = value
 
     @property
     def points_count(self):
-        return self._data.shape[1]
-
-    # =============================================================================================================================
-    # New shape
+        return self.values.shape[1]
 
     def new(self):
-        self._data = np.resize(self._data, (len(self)+1,) + np.shape(self._data)[1:])
-        self._data[-1] = 0
+        self.values = np.resize(self.values, (len(self)+1,) + np.shape(self.values)[1:])
 
     # =============================================================================================================================
-    # Attributes
+    # Shaped named attributes
+
+    @property
+    def names(self):
+        return [name for name in self.attributes.names if self.attributes.attribute_dtype(name) == float]
 
     def get_value(self, index, name):
-        a = self._data[index, :, self._slices[name]]
-        if self._attributes[name] == 1:
-            return np.reshape(a, len(a))
-        else:
-            return a
+        return self.values[index, :, self.attributes.get_attr_slice(name)]
 
     def set_value(self, index, name, value):
-        if self._attributes[name] == 1:
-            self._data[index, :, self._slices[name]] = np.reshape(value, np.shape(value) + (1,))
-        else:
-            self._data[index, :, self._slices[name]] = value
+        self.values[index, :, self.attributes.get_attr_slice(name)] = value
 
-    def get_interpolated_value(self, data, name):
+    def get_interpolated_value(self, int_values, name):
 
-        a = data[..., self._slices[name]]
-        if self._attributes[name] == 1:
-            return np.reshape(a, np.shape(a)[:-1])
-        else:
-            return a
+        count = np.prod(np.shape(int_values)[:-1], dtype=int)
+        shape = (count,) + self.attributes.attribute_shape(name)
+        return np.reshape(int_values[..., self.attributes.get_attr_slice(name)], shape)
 
     # =============================================================================================================================
     # From Geometry
 
     @classmethod
-    def FromGeometry(cls, geometry, count=1):
+    def FromGeometry(cls, geometry, count):
+        if isinstance(geometry, Curve):
+            _ = geometry.points.radius
+            _ = geometry.points.tilt
 
-        if type(geometry).__name__ == 'Curve':
-            kwargs = {}
-            if geometry.has_bezier:
-                kwargs['handle_left']  = geometry.points.handle_left
-                kwargs['handle_right'] = geometry.points.handle_right
-            return cls(geometry.points.position, count=count, radius=geometry.points.radius, tilt=geometry.points.tilt, **kwargs)
-
-        else:
-            return cls(geometry.points.position, count=count)
+        return cls(geometry.points._attributes, count=count)
 
     # =============================================================================================================================
     # From / to Blender Object
@@ -176,17 +115,17 @@ class ShapeKeys:
         else:
             raise RuntimeError(f"Impossible to read shape keys from object of type '{type(obj.data).__name__}'")
 
-    def to_object(self, spec):
+    def to_object(self, spec, name="Key", clear_shape_keys=True):
 
         obj = blender.get_object(spec)
         if obj is None:
             return None
 
         elif isinstance(obj.data, bpy.types.Mesh):
-            return self.to_mesh_object(obj)
+            return self.to_mesh_object(obj, name=name, clear_shape_keys=clear_shape_keys)
 
         elif isinstance(obj.data, bpy.types.Curve):
-            return self.to_curve_object(obj)
+            return self.to_curve_object(obj, name=name, clear_shape_keys=clear_shape_keys)
 
         else:
             raise RuntimeError(f"Impossible to write shape keys to object of type '{type(obj.data).__name__}'")
@@ -201,38 +140,43 @@ class ShapeKeys:
     def FromMeshObject(cls, spec):
 
         obj   = blender.get_object(spec)
+        mesh  = Mesh.FromObject(obj)
+        sks   = cls(mesh.points._attributes)
         count = blender.shape_keys_count(obj)
 
         if count == 0:
-            return None
+            return sks
 
-        sks = cls(blender.get_mesh_vertices(obj), count=count)
-
-        a = np.empty(sks.points_count*3, float)
+        a = np.empty(len(mesh.points)*3, float)
         for index in range(count):
             kb = blender.get_key_block(obj, index)
             kb.data.foreach_get('co', a)
 
-            sks[index] = np.reshape(a, (sks.points_count, 3))
+            if index > 0:
+                sks.new()
+
+            sks.set_value(-1, 'position', np.reshape(a, (sks.points_count, 3)))
 
         return sks
 
     # -----------------------------------------------------------------------------------------------------------------------------
     # Write the shapes in an existing mesh object
 
-    def to_mesh_object(self, spec):
+    def to_mesh_object(self, spec, name="Key", clear_shape_keys=True):
 
         obj = blender.get_object(spec)
         assert(len(obj.data.vertices) == self.points_count)
 
-        if self.clear:
+        if clear_shape_keys:
             blender.shape_keys_clear(obj)
+
+        count = blender.shape_keys_count(obj)
 
         a = np.empty(self.points_count*3, float)
 
         for index in range(0, len(self)):
-            kb = blender.get_key_block(obj, index, create=True, name=self.key_name)
-            a[:] = np.reshape(self[index], a.shape)
+            kb = blender.get_key_block(obj, count + index, create=True, name=f"{name}.{index:03d}")
+            a[:] = np.reshape(self.get_value(index, 'position'), a.shape)
             kb.data.foreach_set('co', a)
 
         return obj
@@ -246,164 +190,104 @@ class ShapeKeys:
     @classmethod
     def FromCurveObject(cls, spec):
 
-        from geonodes.core.curve import Curve
-
         obj = blender.get_object(spec)
+        curve = Curve.FromObject(obj)
+        _ = curve.points.radius
+        _ = curve.points.tilt
 
         count = blender.shape_keys_count(obj)
+        sks = cls(curve.points._attributes, count)
 
         # ----------------------------------------------------------------------------------------------------
         # No shape key
 
         if count == 0:
-            return None
-
-        # ----------------------------------------------------------------------------------------------------
-        # Read the splines
-
-        curve = Curve.FromObject(obj)
-
-        sks = cls.FromGeometry(curve, count=count)
-
-        is_mix     = curve.has_mix_types
-        has_bezier = curve.has_bezier
-        nverts     = sks.points_count
-
-        if not is_mix:
-            v_array = np.empty(nverts*3, float)
-            f_array = np.empty(nverts, float)
+            return sks
 
         # ----------------------------------------------------------------------------------------------------
         # Loop on the shape keys
+
+        nverts = len(curve.points)
 
         for index in range(count):
 
             key_data = blender.get_key_block(obj, index).data
 
-            # ----- Mix types : we must loop on the splines
+            # ----------------------------------------------------------------------------------------------------
+            # Loop on the splines
 
-            if is_mix:
-                for curve_type, loop_start, loop_total in zip(curve.splines.curve_type, curve.splines.loop_start, curve.splines.loop_total):
+            for curve_type, loop_start, loop_total in zip(curve.splines.curve_type, curve.splines.loop_start, curve.splines.loop_total):
 
-                    # ----- Bezier
+                # ----- Bezier
 
-                    if curve_type == blender.BEZIER:
+                if curve_type == blender.BEZIER:
 
-                        for i in range(loop_total):
-                            sks._data[index, loop_start + i, sks._slices['position']] = key_data[loop_start + i].co
-                            sks._data[index, loop_start + i, sks._slices['handle_left']] = key_data[loop_start + i].handle_left
-                            sks._data[index, loop_start + i, sks._slices['handle_right']] = key_data[loop_start + i].handle_right
+                    for i in range(loop_total):
+                        sks.values[index, loop_start + i, sks.attributes.get_attr_slice('position')] = key_data[loop_start + i].co
+                        sks.values[index, loop_start + i, sks.attributes.get_attr_slice('handle_left')] = key_data[loop_start + i].handle_left
+                        sks.values[index, loop_start + i, sks.attributes.get_attr_slice('handle_right')] = key_data[loop_start + i].handle_right
 
-                            sks._data[index, loop_start + i, sks._slices['radius']] = key_data[loop_start + i].radius
-                            sks._data[index, loop_start + i, sks._slices['tilt']]   = key_data[loop_start + i].tilt
+                        sks.values[index, loop_start + i, sks.attributes.get_attr_slice('radius')] = key_data[loop_start + i].radius
+                        sks.values[index, loop_start + i, sks.attributes.get_attr_slice('tilt')]   = key_data[loop_start + i].tilt
 
-                    # ----- Non Bezier
+                # ----- Non Bezier
 
-                    else:
-                        for i in range(loop_total):
-                            sks._data[index, loop_start + i, sks._slices['position']] = key_data[loop_start + i].co
-                            try:
-                                radius, tilt = key_data[loop_start + i].radius, key_data[loop_start + i].tilt
-                            except:
-                                radius, tilt = 1., 0.
+                else:
 
-                            sks._data[index, loop_start + i, sks._slices['radius']] = radius
-                            sks._data[index, loop_start + i, sks._slices['tilt']]   = tilt
+                    for i in range(loop_total):
+                        sks.values[index, loop_start + i, self.attributes.get_attr_slice('position')] = key_data[loop_start + i].co
+                        try:
+                            radius, tilt = key_data[loop_start + i].radius, key_data[loop_start + i].tilt
+                        except:
+                            radius, tilt = 1., 0.
 
-            # ----- Only BEZIER or non Bezier
-
-            else:
-                key_data.foreach_get('co', v_array)
-                sks.position[index] = np.reshape(v_array, (nverts, 3))
-
-                key_data.foreach_get('radius', f_array)
-                sks.radius[index] = f_array
-
-                key_data.foreach_get('tilt', f_array)
-                sks.tilt[index] = f_array
-
-                if has_bezier:
-                    key_data.foreach_get('handle_left', v_array)
-                    sks.handle_left[index] = np.reshape(v_array, (nverts, 3))
-
-                    key_data.foreach_get('handle_right', v_array)
-                    sks.handle_right[index] = np.reshape(v_array, (nverts, 3))
+                        sks.values[index, loop_start + i, self.attributes.get_attr_slice('radius')] = radius
+                        sks.values[index, loop_start + i, self.attributes.get_attr_slice('tilt')]   = tilt
 
         return sks
 
     # -----------------------------------------------------------------------------------------------------------------------------
     # Write the shapes in an existing curve object
 
-    def to_curve_object(self, spec):
-
-        from geonodes.core.curve import Curve
+    def to_curve_object(self, spec, name="Key", clear_shape_keys=True):
 
         obj = blender.get_object(spec)
         curve = Curve.FromObject(obj)
 
-        if self.clear:
+        if clear_shape_keys:
             blender.shape_keys_clear(obj)
 
-        is_mix     = curve.has_mix_types
-        has_bezier = curve.has_bezier
-        nverts     = self.points_count
-
-        if not is_mix:
-            v_array = np.empty(nverts*3, float)
-            f_array = np.empty(nverts, float)
-
-        # ----------------------------------------------------------------------------------------------------
-        # Loop on the shapekeys
-
+        count = blender.shape_keys_count(obj)
         for index in range(len(self)):
 
-            key_data = blender.get_key_block(obj, index, create=True, name=self.key_name).data
+            key_data = blender.get_key_block(obj, count + index, create=True, name=f"{name}.{index:03d}").data
 
-            # ----- Mix types : we must loop on the splines
+            # ----------------------------------------------------------------------------------------------------
+            # Loop on the splines
 
-            if is_mix:
-                for curve_type, loop_start, loop_total in zip(curve.splines.curve_type, curve.splines.loop_start, curve.splines.loop_total):
+            for curve_type, loop_start, loop_total in zip(curve.splines.curve_type, curve.splines.loop_start, curve.splines.loop_total):
 
-                    # ----- Bezier
+                # ----- Bezier
 
-                    if curve_type == blender.BEZIER:
+                if curve_type == blender.BEZIER:
 
-                        for i in range(loop_total):
-                            key_data[loop_start + i].co = self._data[index, loop_start + i, self._slices['position']]
-                            key_data[loop_start + i].handle_left = self._data[index, loop_start + i, self._slices['handle_left']]
-                            key_data[loop_start + i].handle_right = self._data[index, loop_start + i, self._slices['handle_right']]
+                    for i in range(loop_total):
+                        key_data[loop_start + i].co = self.values[index, loop_start + i, self.attributes.get_attr_slice('position')]
+                        key_data[loop_start + i].handle_left = self.values[index, loop_start + i, self.attributes.get_attr_slice('handle_left')]
+                        key_data[loop_start + i].handle_right = self.values[index, loop_start + i, self.attributes.get_attr_slice('handle_right')]
 
-                            key_data[loop_start + i].radius = self._data[index, loop_start + i, self._slices['radius']]
-                            key_data[loop_start + i].tilt   = self._data[index, loop_start + i, self._slices['tilt']]
+                        key_data[loop_start + i].radius = self.values[index, loop_start + i, self.attributes.get_attr_slice('radius')]
+                        key_data[loop_start + i].tilt   = self.values[index, loop_start + i, self.attributes.get_attr_slice('tilt')]
 
-                    # ----- Non Bezier
+                # ----- Non Bezier
 
-                    else:
+                else:
 
-                        for i in range(loop_total):
-                            key_data[loop_start + i].co = self._data[index, loop_start + i, self._slices['position']]
-                            if hasattr(key_data[loop_start + i], 'radius'):
-                                key_data[loop_start + i].radius = self._data[index, loop_start + i, self._slices['radius']]
-                                key_data[loop_start + i].tilt = self._data[index, loop_start + i, self._slices['tilt']]
-
-            # ----- Only BEZIER or non Bezier
-
-            else:
-                np.reshape(v_array, (nverts, 3))[:] = self.position[index]
-                key_data.foreach_set('co', v_array)
-
-                f_array[:] = self.radius[index]
-                key_data.foreach_set('radius', f_array)
-
-                f_array[:] = self.tilt[index]
-                key_data.foreach_set('tilt', f_array)
-
-                if has_bezier:
-                    np.reshape(v_array, (nverts, 3))[:] = self.handle_left[index]
-                    key_data.foreach_set('handle_left', v_array)
-
-                    np.reshape(v_array, (nverts, 3))[:] = self.handle_right[index]
-                    key_data.foreach_set('handle_right', v_array)
+                    for i in range(loop_total):
+                        key_data[loop_start + i].co = self.values[index, loop_start + i, self.attributes.get_attr_slice('position')]
+                        if hasattr(key_data[loop_start + i], 'radius'):
+                            key_data[loop_start + i].radius = self.values[index, loop_start + i, self.attributes.get_attr_slice('radius')]
+                            key_data[loop_start + i].tilt = self.values[index, loop_start + i, self.attributes.get_attr_slice('tilt')]
 
         return obj
 
@@ -435,7 +319,7 @@ class ShapeKeys:
         # Only one shape
 
         if len(self) == 1:
-            return np.resize(self._data, np.shape(t) + np.shape(self._data)[1:])
+            return np.resize(self.values, np.shape(t) + np.shape(self.values)[1:])
 
         # ---------------------------------------------------------------------------
         # Compute factors between 0 and 1 depending upon the mode
@@ -492,10 +376,10 @@ class ShapeKeys:
             inds[inds == len(self) - 1] = len(self) - 2
             p = np.reshape(fs - inds, np.shape(fs) + (1, 1))
 
-            verts = self._data[inds]*(1 - p) + self._data[inds + 1]*p
+            verts = self.values[inds]*(1 - p) + self.values[inds + 1]*p
 
         elif use_cubic:
-            verts = CubicSpline(np.linspace(0, 1, self.points_count), self._data, extrapolate=False)(factors)
+            verts = CubicSpline(np.linspace(0, 1, self.points_count), self.values, extrapolate=False)(factors)
 
         else:
 
@@ -505,7 +389,7 @@ class ShapeKeys:
             dx = 1/(n - 1)
             t = np.linspace(-k*dx, 1 + k*dx, n + k + 1)
 
-            verts = BSpline(t, self._data, k=k, extrapolate=False)(factors)
+            verts = BSpline(t, self.values, k=k, extrapolate=False)(factors)
 
         # ---------------------------------------------------------------------------
         # Done
@@ -559,6 +443,7 @@ class ShapeKeys:
         if not ok:
             raise RuntimeError(f"ShapeKeys.rel_interpolate error: the shape of the array of weights is not valid {np.shape(weights)}, expected (n, {len(self)-1})")
 
+
         weights = np.clip(weights, 0, 1)
 
         # ---------------------------------------------------------------------------
@@ -588,8 +473,8 @@ class ShapeKeys:
         # Relative interpolation:
         # basis shape + weights * differences
 
-        verts = self._data[0] + np.sum(
-                    (self._data[1:] - self._data[0])*np.reshape(weights, np.shape(weights) + (1, 1)),
+        verts = self.values[0] + np.sum(
+                    (self.values[1:] - self.values[0])*np.reshape(weights, np.shape(weights) + (1, 1)),
                     axis = - 3)
 
         # ---------------------------------------------------------------------------
@@ -611,9 +496,7 @@ class ShapeKeys:
         n = self.points_count
 
         geos = geometry*count
-
-        #print(f"SHAPEKEYS: {count = }, {n = }, {geos = }, {np.shape(self.get_interpolated_value(verts, 'position')) = }")
-        for name in self._attributes.keys():
+        for name in self.attributes.names:
             setattr(geos.points, name, self.get_interpolated_value(verts, name))
 
         return geos
@@ -629,7 +512,7 @@ class ShapeKeys:
         n = self.points_count
 
         geos = geometry*count
-        for name in self._attributes.keys():
+        for name in self.attributes.names:
             setattr(geos.points, name, self.get_interpolated_value(verts, name))
 
         return geos
@@ -638,10 +521,6 @@ class ShapeKeys:
 # Demo shape keys
 
 def demo(seed=0):
-
-    from geonodes.core.mesh import Mesh
-    from geonodes.core.curve import Curve
-
 
     rng = np.random.default_rng(seed)
 

@@ -28,6 +28,9 @@ from pprint import pprint
 import numpy as np
 
 import bpy
+
+from geonodes.nodes.scripterror import NodeError
+
 from geonodes.nodes import documentation
 from geonodes.nodes import constants
 from geonodes.nodes import utils
@@ -101,6 +104,7 @@ class Tree(StackedTree):
 
         if clear:
             self.clear()
+            self.clear_io_sockets()
 
     # ====================================================================================================
     # setup the class
@@ -110,7 +114,6 @@ class Tree(StackedTree):
         nodeinfo.tree_class_setup(cls) #.TREE_TYPE)
         cls.INIT = True
 
-
     # ====================================================================================================
     # For debug
 
@@ -118,6 +121,14 @@ class Tree(StackedTree):
     def _reset(cls):
         #cls.INIT = False
         constants.reset()
+
+    # ====================================================================================================
+    # A tree already exists
+
+    @classmethod
+    def tree_exists(cls, name):
+        btree = treestack.get_tree(name, cls.TREE_TYPE, create=False, clear=False)
+        return btree is not None
 
     # ====================================================================================================
     # Arrange
@@ -603,7 +614,7 @@ class Tree(StackedTree):
 
         group_tree = bpy.data.node_groups.get(name)
         if group_tree is None:
-            raise AttributeError(f"Impossible to find the group named '{name}'")
+            raise NodeError(f"Impossible to find the group named '{name}'")
 
         # ----- Create the node group
 
@@ -624,17 +635,17 @@ class Tree(StackedTree):
         keys = list(node.inputs.socket_names)
         for i, value in enumerate(args):
             if i >= len(keys):
-                raise AttributeError(f"Node Group '{name}' error: the number of args ({len(args)}) is greater than the number of sockets: {keys}")
+                raise NodeError(f"Node Group '{name}' error: the number of args ({len(args)}) is greater than the number of sockets: {keys}")
             all_kwargs[keys[i]] = value
 
         for k, v in kwargs.items():
             if k in all_kwargs:
-                raise AttributeError(f"Node Group '{name}' error: key argument {k} is already set with arg={all_kwargs[k]}")
+                raise NodeError(f"Node Group '{name}' error: key argument {k} is already set with arg={all_kwargs[k]}")
             all_kwargs[k] = v
 
         for k, v in all_kwargs.items():
             if not node._input_socket_exists(k):
-                raise AttributeError(f"Node group '{name}' error: no input socket named '{k}' in {keys}")
+                raise NodeError(f"Node group '{name}' error: no input socket named '{k}' in {keys}")
             setattr(node, k, v)
 
         return node
@@ -648,7 +659,7 @@ class Tree(StackedTree):
         sock1, sock2 = node.in_sockets.first_compatible(sock0), node.out_sockets.first_compatible(sock3)
 
         if sock1 is None or sock2 is None:
-            raise Exception(f"Tree insert error: impossible to insert the node into link: {node}")
+            raise NodeError(f"Tree insert error: impossible to insert the node into link: {node}")
 
         self.btree.links.remove(link)
         self.btree.links.new(sock0, sock1)
@@ -812,6 +823,13 @@ class Shader(Tree):
             self.material = mat
 
     # ====================================================================================================
+    # A tree already exists
+
+    @classmethod
+    def tree_exists(cls, name):
+        return bpy.data.materials.get(name) is not None
+
+    # ====================================================================================================
     # Input and output nodes
 
     @property
@@ -819,7 +837,7 @@ class Shader(Tree):
         if self.is_group:
             return self.get_node('NodeGroupInput', create=True)
         else:
-            raise AttributeError(f"Shader '{self.name}' has not input node.")
+            raise NodeError(f"Shader '{self.name}' has not input node.")
 
     @property
     def output_node(self):
@@ -833,7 +851,7 @@ class Shader(Tree):
 
     @property
     def output_surface(self):
-        raise AttributeError(f"Material 'output_surface' is write only")
+        raise NodeError(f"Material 'output_surface' is write only")
 
     @output_surface.setter
     def output_surface(self, value):
@@ -841,7 +859,7 @@ class Shader(Tree):
 
     @property
     def output_volume(self):
-        raise AttributeError(f"Material 'output_volume' is write only")
+        raise NodeError(f"Material 'output_volume' is write only")
 
     @output_volume.setter
     def output_volume(self, value):
@@ -849,10 +867,34 @@ class Shader(Tree):
 
     @property
     def output_displacement(self):
-        raise AttributeError(f"Material 'output_displacement' is write only")
+        raise NodeError(f"Material 'output_displacement' is write only")
 
     @output_displacement.setter
     def output_displacement(self, value):
+        self.output_node.displacement = value
+
+    @property
+    def surface(self):
+        raise NodeError(f"Material 'surface' is write only")
+
+    @surface.setter
+    def surface(self, value):
+        self.output_node.surface = value
+
+    @property
+    def volume(self):
+        raise NodeError(f"Material 'volume' is write only")
+
+    @volume.setter
+    def output_volume(self, value):
+        self.output_node.volume = value
+
+    @property
+    def displacement(self):
+        raise NodeError(f"Material 'displacement' is write only")
+
+    @displacement.setter
+    def displacement(self, value):
         self.output_node.displacement = value
 
 # ====================================================================================================
@@ -876,7 +918,7 @@ class Compositor(Tree):
                 name = bpy.context.scene.name
             scene = bpy.data.scenes.get(name)
             if scene is None:
-                raise AttributeError(f"Scene '{name}' not found in {list(bpy.data.scenes.keys())} for Compositor initialization.")
+                raise NodeError(f"Scene '{name}' not found in {list(bpy.data.scenes.keys())} for Compositor initialization.")
 
             scene.use_nodes = True
             super().__init__(scene.node_tree, create=create, clear=clear, fake_user=False, is_group=False)
@@ -912,7 +954,7 @@ class Compositor(Tree):
 
     @property
     def output_image(self):
-        raise AttributeError(f"Image 'output_image' is write only")
+        raise NodeError(f"Image 'output_image' is write only")
 
     @output_image.setter
     def output_image(self, value):
@@ -920,7 +962,7 @@ class Compositor(Tree):
 
     @property
     def output_alpha(self):
-        raise AttributeError(f"Image 'output_alpha' is write only")
+        raise NodeError(f"Image 'output_alpha' is write only")
 
     @output_alpha.setter
     def output_alpha(self, value):
@@ -948,7 +990,7 @@ class TextureLegacy(Tree):
                 if create:
                     texture = bpy.data.textures.new(name)
                 else:
-                    raise AttributeError(f"Texture named '{name}' not found.")
+                    raise NodeError(f"Texture named '{name}' not found.")
 
             texture.use_nodes = True
             super().__init__(texture.node_tree, create=False, clear=clear, fake_user=False, is_group=False)
@@ -984,7 +1026,7 @@ class TextureLegacy(Tree):
 
     @property
     def output_image(self):
-        raise AttributeError(f"Image 'output_image' is write only")
+        raise NodeError(f"Image 'output_image' is write only")
 
     @output_image.setter
     def output_image(self, value):
@@ -992,7 +1034,7 @@ class TextureLegacy(Tree):
 
     @property
     def output_alpha(self):
-        raise AttributeError(f"Image 'output_alpha' is write only")
+        raise NodeError(f"Image 'output_alpha' is write only")
 
     @output_alpha.setter
     def output_alpha(self, value):

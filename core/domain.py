@@ -422,6 +422,11 @@ class Domain:
                 else:
                     raise AttributeError(f"Domain.set_attribute: Impossible to set value of shape {np.shape(value)} to attribute of shape {np.shape(a)}.")
 
+            # ----- Size are the same : (80, 3) <- (10, 8, 3)
+
+            elif np.size(a) == np.size(value):
+                a[:] = np.reshape(value, np.shape(a))
+
             # ----- Standard broadcast
 
             else:

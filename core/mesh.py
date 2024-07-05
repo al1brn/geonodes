@@ -335,7 +335,7 @@ class Mesh(Geometry):
     # -----------------------------------------------------------------------------------------------------------------------------
     # Create / update an object
 
-    def to_object(self, obj, shade_smooth=None):
+    def to_object(self, obj, shade_smooth=None, shapekeys=None):
         """ Create or update a blender object.
 
         The method 'to_object' creates the whole geometry. It creates a new object if it doesn't already exist.
@@ -356,6 +356,15 @@ class Mesh(Geometry):
         self.to_mesh_data(res.data)
         if shade_smooth is not None:
             res.data.polygons.foreach_set('use_smooth', [shade_smooth]*len(res.data.polygons))
+
+        if shapekeys is not None:
+            if shapekeys is not None:
+                if isinstance(shapekeys, ShapeKeys):
+                    shapekeys.to_mesh_object(obj)
+                else:
+                    for sks in shapekeys:
+                        sks.to_mesh_object(obj)
+
         return res
 
     # -----------------------------------------------------------------------------------------------------------------------------
@@ -2446,3 +2455,17 @@ class Mesh(Geometry):
             faces  = [inds[lstart:lstart+ltotal] for (lstart, ltotal) in zip(self.faces.loop_start[:nfaces], self.faces.loop_total[:nfaces])]
 
             return [BVHTree.FromPolygons(pos[i], faces, all_triangles=False, epsilon=0.0) for i in range(count)]
+
+
+        # =============================================================================================================================
+        # =============================================================================================================================
+        # Shape Keys
+
+        # =============================================================================================================================
+        # Build shape keys
+
+        def shapekeys(self, count):
+            sks = ShapeKeys.FromGeometry(self, count=count)
+            sks.key_name = key_name
+            sks.clear    = clear
+            return sks

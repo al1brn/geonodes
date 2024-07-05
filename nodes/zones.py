@@ -6,6 +6,8 @@ Created on Tue Jun 27 10:08:03 2023
 @author: alain
 """
 
+from geonodes.nodes.scripterror import NodeError
+
 from geonodes.nodes.tree import GeoNodes
 from geonodes.nodes.constants import current_tree
 from geonodes.nodes import utils
@@ -88,7 +90,7 @@ class Zone:
             if val is not None:
                 return val
 
-        raise AttributeError(f"{self} doesn't have input socket named '{name}'.")
+        raise NodeError(f"{self} doesn't have input socket named '{name}'.")
 
     def __setattr__(self, name, value):
 
@@ -116,7 +118,7 @@ class Zone:
                 ok = False
 
         if not ok:
-            raise AttributeError(f"{self} has not socket named {name}!")
+            raise NodeError(f"{self} has not socket named {name}!")
 
 
 
@@ -128,7 +130,7 @@ class Zone:
             if node is not None:
                 return getattr(node, name)
 
-        raise AttributeError(f"{self} doesn't have input socket named '{name}'.")
+        raise NodeError(f"{self} doesn't have input socket named '{name}'.")
 
     def __setattr__OLD(self, name, value):
 
@@ -173,7 +175,7 @@ class Repeat(Zone):
             for name, value in kwargs.items():
 
                 if value is None:
-                    raise AttributeError(f"Repeat initialization error: argument '{name}' must not be None.")
+                    raise NodeError(f"Repeat initialization error: argument '{name}' must not be None.")
                 else:
                     stype = utils.get_value_socket_type(value)
 
@@ -287,7 +289,7 @@ class Simulation(Zone):
                     if first:
                         stype = 'GEOMETRY'
                     else:
-                        raise AttributeError(f"Simulation initialization error: argument '{name}' must not be None.")
+                        raise NodeError(f"Simulation initialization error: argument '{name}' must not be None.")
                 else:
                     stype = utils.get_value_socket_type(value)
 

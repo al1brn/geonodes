@@ -1803,6 +1803,12 @@ def get_shape_keys_OLD(spec):
 # ====================================================================================================
 # Shape Keys
 
+def shape_key_name(name="Key", index=0):
+    if name == 'Key' and index == 0:
+        return 'Basis'
+    else:
+        return f"{name} {index}"
+
 def has_shape_keys(spec):
 
     obj = get_object(spec, halt=False)
@@ -1835,21 +1841,36 @@ def get_key_block(spec, index, create=False, name=None):
 
     obj = get_object(spec)
 
+    # ----- No block at all, let's create the first one if requested
+
     if obj.data.shape_keys is None:
-        obj.shape_key_add()
+        if not create:
+            return None
+        kb = obj.shape_key_add()
+        kb.name = 'Basis'
 
     kbs = obj.data.shape_keys.key_blocks
 
-    if create:
-        for _ in range(len(kbs)-1, index):
-            obj.shape_key_add()
+    # ----- Only integer index, no key name
 
-    if index >= len(kbs):
-        return None
-    else:
-        if name is not None:
-            kbs[index].name = name
-        return kbs[index]
+    if name is None:
+        if create:
+            for _ in range(len(kbs)-1, index):
+                obj.shape_key_add()
+        if index >= len(kbs):
+            return None
+        else:
+            return kbs[index]
+
+    # ----- Key block by name
+
+    key_name = shape_key_name(name, index)
+    kb = kbs.get(key_name)
+    if kb is None:
+        if create:
+            kb = obj.shape_key_add()
+            kb.name = key_name
+    return kb
 
 # ====================================================================================================
 # Bake a frame

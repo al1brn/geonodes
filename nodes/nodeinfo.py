@@ -30,6 +30,9 @@ from pprint import pprint
 
 import bpy
 import mathutils
+
+from geonodes.nodes.scripterror import NodeError
+
 from geonodes.nodes import documentation
 from geonodes.nodes import constants
 from geonodes.nodes import dynamic
@@ -609,12 +612,13 @@ class NodeInfo:
         try:
             self.compiled_init = utils.compile_f(self.init_code, '__init__', {'Node': treestack.Node})
         except:
-            print('-'*80)
-            print(f"Node {self.class_name}: error in compiling __init__\n")
-            print(self.init_code)
-            print('-'*80)
+            raise NodeError(f"Node {self.class_name}: error in compiling '__init__', see code below.", self.init_code)
+            #print('-'*80)
+            #print(f"Node {self.class_name}: error in compiling __init__\n")
+            #print(self.init_code)
+            #print('-'*80)
 
-            raise
+            #raise
 
         # ----- DEBUG
 

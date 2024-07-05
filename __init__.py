@@ -77,8 +77,9 @@ if True: # RELOAD
 # =============================================================================================================================
 # Nodes generator
 
+from .nodes.scripterror import NodeError
 from .nodes.tree import GeoNodes, Shader, Compositor
-from .nodes.fourd import build4D
+from .bonus.nodes.fourd import build4D
 
 # =============================================================================================================================
 # Python geometry

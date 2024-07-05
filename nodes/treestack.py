@@ -28,6 +28,8 @@ import bpy
 import mathutils
 from pprint import pprint
 
+from geonodes.nodes.scripterror import NodeError
+
 from geonodes.nodes import constants
 from geonodes.nodes import documentation
 from geonodes.nodes import utils
@@ -88,6 +90,9 @@ def del_tree(btree): #, tree_type='GeometryNodeTree'):
 
 class StackedTree:
 
+    class Break(Exception):
+        pass
+
     def __init__(self):
         self.nodes = {}
 
@@ -115,9 +120,6 @@ class StackedTree:
         pass
 
     def _stack_done(self):
-        pass
-
-    class Break(Exception):
         pass
 
     def __enter__(self):
@@ -150,12 +152,14 @@ class StackedTree:
                 if bsocket.node == node.bnode:
                     return node
 
-            print("List of tree nodes:")
-            for name, node in self.nodes.items():
-                print(f"{name:20s}") #" : {node}")
-            print()
+            #print("List of tree nodes:")
+            #for name, node in self.nodes.items():
+            #    print(f"{name:20s}") #" : {node}")
+            #print()
 
-            raise Exception(f"Tree {self} has no node owning the socket '{bsocket.name}' in Blender node '{bsocket.node.name}'.")
+            raise NodeError(f"Tree {self} has no node owning the socket '{bsocket.name}' in Blender node '{bsocket.node.name}'.",
+                **{f"node_{i}": name for i, name in enumerate(self.nodes.keys())},
+            )
         else:
             return node
 
@@ -203,7 +207,7 @@ class StackedTree:
             except:
                 pass
 
-        raise AttributeError(f"Method rgb_a requires a vector and a float. First item is not a vector: {v}")
+        raise NodeError(f"Method rgb_a requires a vector and a float. First item is not a vector: {v}")
 
 
 
@@ -341,8 +345,12 @@ def get_source_code_var_name():
             lines = bpy.data.texts[text_key].lines
             line  = lines[frame_info.lineno - 1].body
         else:
-            with open(frame_info.filename, 'r') as f:
-                lines = f.readlines()
+            try:
+                with open(frame_info.filename, 'r') as f:
+                    lines = f.readlines()
+            except:
+                continue
+
             line = lines[frame_info.lineno - 1]
 
         # ----- Look for var_name = ....
@@ -367,7 +375,9 @@ class Node(object):
             self.bnode = bl_idname
 
         if node_label is None:
-            node_label = get_source_code_var_name()
+            source_name = get_source_code_var_name()
+            if source_name is not None:
+                node_label = self.bnode.name.split('.')[0] + " - " + source_name
 
         self.node_label = node_label
         self.node_color = node_color
@@ -458,7 +468,7 @@ class Node(object):
 
 
             self.bad_input_exception(list(kwargs.keys())[0])
-            #raise Exception(f"Node '{self.bnode.name}' ({self.bnode.bl_idname}) has no virtual socket. Impossible to set up sockets {kwargs}")
+            #raise NodeError(f"Node '{self.bnode.name}' ({self.bnode.bl_idname}) has no virtual socket. Impossible to set up sockets {kwargs}")
 
         for name, value in kwargs.items():
 
@@ -483,7 +493,7 @@ class Node(object):
 
     def __enter__(self):
         if self.bnode.bl_idname != 'NodeFrame':
-            raise Exception(f"Only a node of type Frame can be the parent of new nodes, not node of type '{self.bnode.bl_idname}'")
+            raise NodeError(f"Only a node of type Frame can be the parent of new nodes, not node of type '{self.bnode.bl_idname}'")
 
         constants.FRAME_STACK.append(self)
         return self
@@ -542,6 +552,10 @@ class Node(object):
             i = s.find(msg)
             s = s[i+len(msg):]
 
+            raise NodeError("Error when setting node parameter:",
+                {"Node": self.bnode.name, "Parameter": param, "Value": value, "Expectecd": s})
+
+            """
             print('-'*80)
             print("Error when setting node parameter:")
             print(f"   Node     : {self.bnode.name}")
@@ -552,6 +566,7 @@ class Node(object):
             print()
 
             raise
+            """
 
     # ====================================================================================================
     # Sockets
@@ -563,6 +578,7 @@ class Node(object):
         else:
             valids = list(self.inputs.sockets_pynames(label='BOTH').keys())
 
+        """"
         print('-'*80)
         print(f"{'Output' if is_output else 'Input'} socket name error:")
         print(f"   Node               : {self}")
@@ -570,11 +586,14 @@ class Node(object):
         print(f"   Valid socket names : {valids}")
         print('-'*80)
         print()
+        """
 
-        raise AttributeError(f"{'Output' if is_output else 'Input'} socket name error: '{pyname}'")
+        raise NodeError(f"{'Output' if is_output else 'Input'} socket name error: '{pyname}'",
+            {"Node": self, "Wrong socket name": pyname, "Valid socket names": valids})
 
     def bad_input_exception(self, name):
 
+        """
         print('-'*80)
         print("Node initialization error: wrong input socket or param name")
         print(f"   Node        : {self}")
@@ -584,8 +603,14 @@ class Node(object):
         print(f"   Sockets     : {sorted(list(self.inputs.sockets_pynames(enabled_only=False, label='BOTH').keys()))}")
         print('-'*80)
         print()
+        """
 
-        raise AttributeError(f"Node initialization error: wrong input socket or param name: '{name}'")
+        raise NodeError(f"Node initialization error: wrong input socket or param name: '{name}'",
+            {"Node"         : self,
+              "Wrong name"  : name,
+              "Valid named" : self.valid_inputs,
+              "Parameters"  : self.params,
+              "Sockets"     : sorted(list(self.inputs.sockets_pynames(enabled_only=False, label='BOTH').keys()))})
 
     def _get_output_socket(self, pyname):
         bsock = self.outputs.sockets_pynames().get(pyname)
@@ -651,7 +676,7 @@ class Node(object):
                 return sockets.Socket(bsocket)
 
         if outputs is None:
-            raise AttributeError(f"Node '{self.bl_idname}' has no attribute named '{name}'")
+            raise NodeError(f"Node '{self.bl_idname}' has no attribute named '{name}'")
         else:
             self.bad_socket_exception(name, is_output=True)
 
@@ -787,7 +812,7 @@ class IndexSwitchNode(Node):
         plugged = []
         for k, v in kwargs.items():
             if not k[1:].isnumeric():
-                raise Exception(f"Node 'Index Switch' initialization error: socket name '{k}' is not valid ; node needs socket named '_x' (x is the socket number)")
+                raise NodeError(f"Node 'Index Switch' initialization error: socket name '{k}' is not valid ; node needs socket named '_x' (x is the socket number)")
             setattr(self, k, v)
             plugged.append(int(k[1:]))
 
@@ -1067,8 +1092,8 @@ class Prefixed:
 
         tree = self.trees.get(self.python_name(name))
         if tree is None:
-            print("TREES", list(self.trees.keys()))
-            raise AttributeError(f"Tree named '{name}' not found in {self}")
+            #print("TREES", list(self.trees.keys()))
+            raise NodeError(f"Tree named '{name}' not found in {self}", TREES=list(self.trees.keys()))
 
         def f(*args, **kwargs):
             cur_tree = constants.current_tree()

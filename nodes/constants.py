@@ -21,6 +21,7 @@ update : 2024/03/29
 """
 
 from pprint import pprint
+from geonodes.nodes.scripterror import NodeError
 
 # ====================================================================================================
 # Version
@@ -52,7 +53,7 @@ def current_tree(bl_idname=None):
     if len(TREE_STACK):
         return TREE_STACK[-1]
     else:
-        raise Exception(f"Tree stack is empty: not Tree has been initialized. Impossible to create node '{bl_idname}'.")
+        raise NodeError(f"Tree stack is empty: not Tree has been initialized. Impossible to create node '{bl_idname}'.")
 
 def current_tree_type(bl_idname=None):
     return type(current_tree(bl_idname).btree).__name__
@@ -358,14 +359,14 @@ NODES = {tree_type: {} for tree_type in TREE_TYPES}
 def get_node_class_name(tree_type, bl_idname):
     dyn = NODES[tree_type].get(bl_idname)
     if dyn is None:
-        raise AttributeError(f"Node bl_idname {bl_idname} not found for tree type {tree_type}")
+        raise NodeError(f"Node bl_idname {bl_idname} not found for tree type {tree_type}")
     else:
         return dyn.class_name
 
 def get_node_class(tree_type, bl_idname):
     dyn = NODES[tree_type].get(bl_idname)
     if dyn is None:
-        raise AttributeError(f"Node bl_idname {bl_idname} not found for tree type {tree_type}")
+        raise NodeError(f"Node bl_idname {bl_idname} not found for tree type {tree_type}")
     else:
         return dyn.dyn_class
 
@@ -389,7 +390,7 @@ def get_socket_class_name(socket_type):
     #class_name = DATA_TYPE_TO_SOCKET_CLASS_NAME.get(socket_type)
     class_name = TYPE_TO_SOCKET_CLASS_NAME.get(socket_type)
     if class_name is None:
-        raise AttributeError(f"Unknwon socket type '{socket_type}' in {list(TYPE_TO_SOCKET_CLASS_NAME.keys())}")
+        raise NodeError(f"Unknwon socket type '{socket_type}' in {list(TYPE_TO_SOCKET_CLASS_NAME.keys())}")
     return class_name
 
 def get_socket_class(socket_type):

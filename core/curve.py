@@ -33,6 +33,8 @@ from geonodes.core.geometry import Geometry
 from geonodes.core.attributes import AttrVectors
 from geonodes.core.domain import ControlPointDomain, SplineDomain
 
+from geonodes.core.shapekeys import ShapeKeys
+
 
 DATA_TEMP_NAME = "GEOPY_TEMP"
 
@@ -104,6 +106,10 @@ class Curve(Geometry):
         if splines is None or len(splines) != nsplines:
             raise Exception(f"Curve init error: the Curve is initialized with {nsplines}. The 'splines' argument must be an array of {nsplines} dicts.")
 
+        # No dictionnary, just an array of points
+        if not isinstance(splines[0], dict):
+            splines = [{'points': spline_points} for spline_points in splines]
+
         total = sum([len(spline_points['points']) for spline_points in splines])
         self.points.add(total)
 
@@ -171,6 +177,30 @@ class Curve(Geometry):
         return s
 
     # =============================================================================================================================
+    # Spline types
+
+    @property
+    def has_bezier(self):
+        if len(self.splines) == 0:
+            return False
+        else:
+            return blender.BEZIER in self.splines.curve_type
+
+    @property
+    def has_non_bezier(self):
+        if len(self.splines) == 0:
+            return False
+        else:
+            return np.sum(self.splines.curve_type) != blender.BEZIER*len(self.splines)
+
+    @property
+    def has_mix_types(self):
+        if len(self.splines) == 0:
+            return False
+        else:
+            return len(np.unique(self.splines.curve_type)) > 1
+
+    # =============================================================================================================================
     # Clear the geometry
 
     def clear(self):
@@ -181,7 +211,7 @@ class Curve(Geometry):
         self.splines.attributes.clear()
 
     # -----------------------------------------------------------------------------------------------------------------------------
-    # Capture another Mesh
+    # Capture another Curve
 
     def capture(self, other):
         """ Capture the data of another Curve.
@@ -401,7 +431,7 @@ class Curve(Geometry):
     # -----------------------------------------------------------------------------------------------------------------------------
     # Create / update an object
 
-    def to_object(self, obj):
+    def to_object(self, obj, shapekeys=None):
         """ Create or update a blender object.
 
         The method 'to_object' creates the whole geometry. It creates a new object if it doesn't already exist.
@@ -420,6 +450,14 @@ class Curve(Geometry):
 
         curve = blender.create_curve_object(obj)
         self.to_curve_data(curve.data)
+
+        if shapekeys is not None:
+            if isinstance(shapekeys, ShapeKeys):
+                shapekeys.to_curve_object(obj)
+            else:
+                for sks in shapekeys:
+                    sks.to_curve_object(obj)
+
         return curve
 
     # -----------------------------------------------------------------------------------------------------------------------------
@@ -1288,3 +1326,16 @@ class Curve(Geometry):
             mesh.join(meshed)
 
         return mesh
+
+    # =============================================================================================================================
+    # =============================================================================================================================
+    # Shape Keys
+
+    # =============================================================================================================================
+    # Build shape keys
+
+    def shapekeys(self, count, key_name="Key", clear=False):
+        sks = ShapeKeys.FromGeometry(self, count=count)
+        sks.key_name = key_name
+        sks.clear    = clear
+        return sks
