@@ -59,14 +59,14 @@ def build_arrows(create_shaders=False):
             transp    = tree.Attribute(attribute_type='GEOMETRY', attribute_name="Transparency").fac
 
             neg_color = tree.HueSaturationValue(color=pos_color, hue=.5, saturation=.9, value=.9).color
-            color = pos_color.mix(negative, neg_color)
+            color = pos_color.mix(negative, neg_color).result
 
             ped = tree.PrincipledBSDF(
                 base_color = color,
                 roughness  = negative.map_range(to_min=.1, to_max=.9),
             ).bsdf
 
-            shader = tree.MixShader(fac=transp, shader=ped, shader_1=tree.TransparentBSDF().bsdf)
+            shader = tree.MixShader(fac=transp, shader=ped, shader_1=tree.TransparentBSDF().bsdf).shader
 
             tree.surface = shader
 
@@ -120,7 +120,10 @@ def build_arrows(create_shaders=False):
                 heads.translate_instances(translation=vectors.scale((length*ratio)/vectors.length()), local_space=False)
 
         with tree.layout("Arrow shafts"):
-            shaft = tree.Cylinder(vertices=resol, radius=section, depth=1.).mesh
+            cyl_node = tree.Cylinder(vertices=resol, radius=section, depth=1.)
+            shaft = cyl_node.mesh
+            shaft.CORNER.store_named_float2("uvmap", cyl_node.uv_map)
+
             shaft.transform_geometry(translation=(0, 0, .5))
             shaft.set_material(shaft_mat)
             shafts = points.instance_on_points(instance=shaft, scale=(1, 1, length*ratio))
@@ -139,7 +142,7 @@ def build_arrows(create_shaders=False):
             arrows.POINT.store_named_float( "Negative",     negative)
 
 
-        tree.geometry = arrows.switch(-show_arrow)
+        tree.geometry = arrows.switch(-show_arrow | transp.equal(1))
 
 
     # ----------------------------------------------------------------------------------------------------
@@ -224,7 +227,7 @@ def build_arrows(create_shaders=False):
         location   = tree.vector_input(      "Location",  description="Vector location")
         length     = tree.float_input(       "Length",    1., min_value=0, description="Vector length")
         theta      = tree.angle_input(       "Longitude", 0., description="Longitude : angle in XY plane")
-        phi        = tree.float_input(       "Latitude",  0., description="Latitude : angle from XY plane to Z axis")
+        phi        = tree.angle_input(       "Latitude",  0., description="Latitude : angle from XY plane to Z axis")
 
         scale      = tree.float_input(       "Scale",        1.,  min_value=0., description = "Vector multiplicator")
         resol      = tree.int_input(         "Resolution",   12,  min_value=3, max_value=64, description = "Arrow shaft resolution")
@@ -238,7 +241,7 @@ def build_arrows(create_shaders=False):
         show_arrow = tree.bool_input(        "Show",         True, description="Show +/ hide flag")
 
         cos_phi = tree.cos(phi)
-        vector = length*tree.vector((cos_phi*tree.cos(angle), cos_phi*tree.sin(angle), tree.sin(phi)))
+        vector = length*tree.vector((cos_phi*tree.cos(theta), cos_phi*tree.sin(theta), tree.sin(phi)))
 
         points = tree.Points(count=1, position=location).points
         points.POINT.store_named_vector("Vectors", vector)
@@ -283,7 +286,8 @@ def build_arrows(create_shaders=False):
         with tree.layout("Intensity"):
             int_base = curves.named_float("Intensity")
             stats = curves.POINT.attribute_statistic(attribute=int_base)
-            intensity = int_base.map_range(stats.min, stats.max, int_fac.map_range(to_min=1., to_max=.01), 1., interpolation_type='SMOOTHERSTEP')
+            #intensity = int_base.map_range(stats.min, stats.max, int_fac.map_range(to_min=1., to_max=.01), 1., interpolation_type='SMOOTHERSTEP')
+            intensity = int_base.map_range(stats.min, stats.max, 1 - int_fac, 1., interpolation_type='SMOOTHERSTEP')
             curves.radius = intensity
 
         mesh = curves.curve_to_mesh(profile_curve=tree.CurveCircle(radius=radius, resolution=resol).curve)

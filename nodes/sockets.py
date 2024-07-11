@@ -108,6 +108,13 @@ class Socket:
             return f"[Socket value {self._value} of type '{self._socket_type}']"
 
     # ====================================================================================================
+    # Clone
+
+    @property
+    def clone(self):
+        return Socket(self.bsocket)
+
+    # ====================================================================================================
     # Tree (run time only)
 
     @property

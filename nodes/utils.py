@@ -234,6 +234,7 @@ def value_for(value, socket_type):
 
     elif socket_type in ['NodeSocketVector', 'NodeSocketVectorEuler', 'NodeSocketVectorXYZ', 'NodeSocketVectorTranslation', 'NodeSocketVectorAcceleration',
                          'NodeSocketVectorDirection', 'NodeSocketVectorVelocity', 'NodeSocketRotation']:
+
         if isinstance(value, mathutils.Vector):
             return value
 

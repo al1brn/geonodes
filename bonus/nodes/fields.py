@@ -45,10 +45,158 @@ import numpy as np
 import geonodes as gn
 from geonodes.bonus.nodes import arrows
 
-def build_fields():
+# =============================================================================================================================
+# Visualize a field computed by a group
+#
+# The group must take the following input nodes
+#
+# - Position     : locations where to compute the field
+# - kwargs       : kwargs passed in the function
+
+def gen_field_visualization(tree, field_node):
+
+    # ----- Visualisation parameters
+
+    elec_field  = tree.bool_input(  "Electric field",       True, description="Show electric field rather than magnetic field")
+    color       = tree.color_input( "Color",                (0., 0., 1., 1.), description="'Color' named attribute to pass to the shader")
+    transp      = tree.factor_input("Transparency",         0., min_value=0., max_value=1, description="'Transparency' named attribute to pass to the shader")
+
+    # ----- Arrows
+
+    scale       = tree.float_input( "Scale",                1., min_value=0., description="Vectors multiplicator")
+    curl_vect   = tree.bool_input(  "Curl Vectors",         False, description="Use curl shape for arrows")
+
+    # ----- Lines of field
+
+    field_lines = tree.bool_input(  "Lines of field",       False, description="Lines of field (True) or field of vectors (False)")
+    iterations  = tree.int_input(   "Iterations",           20, min_value=1, description="Number of iterations to compute the lines of field")
+    delta       = tree.float_input( "Delta",                .1, min_value=.001, description="Distance to move at each iteration")
+    int_fac     = tree.factor_input("Intensity",            .9, min_value=0., max_value=1., description="Use intensity named attribute for radius")
+    rand_dir    = tree.bool_input(  "Random Direction",     False, description="Build lines in random directions rather than in both directions")
+
+    # ----- Geometry parameters
+
+    resol       = tree.int_input(     "Resolution",         12, min_value=3, max_value=64, description="Lines / arrows section resolution")
+    section     = tree.float_input(   "Section",            .02, min_value=0., max_value=1., description="Lines / arrows section")
+    material    = tree.material_input("Material",           "Arrow", description="Arrows / lines material")
+
+    # ----- Show / Hide
+
+    show        = tree.bool_input(    "Show",               True, description="Show / hide flag")
+
+    # ====================================================================================================
+    # Utilities
+
+    def get_field():
+        return field_node.b.switch(elec_field, field_node.e)
+
+    def build_lines(points, direction):
+        return tree.group("Compute Lines of Field",
+            geometry    = points,
+            field       = get_field(),
+            iterations  = iterations,
+            delta       = delta,
+            direction   = direction,
+            ).geometry
+
+    # ====================================================================================================
+    # Main
+
+    with tree.layout("Starting points"):
+        comps_node = tree.geometry.separate_components()
+        points = comps_node.point_cloud + comps_node.mesh.mesh_to_points()
+        points = points.points_to_vertices()
+
+    # ----------------------------------------------------------------------------------------------------
+    # Arrows
+
+    with tree.layout("Arrows"):
+
+        points.store_named_vector("Vectors", get_field())
+
+        arrows = tree.group("Arrows", points,
+            scale         = scale,
+            resolution    = resol,
+            section       = section,
+            sphere        = curl_vect,
+            color         = color,
+            transparency  = transp,
+            shaft         = material,
+            head          = material,
+            ).geometry
+
+    # ----------------------------------------------------------------------------------------------------
+    # Lines of field
+
+    with tree.layout("Lines of field"):
+        curves  = build_lines(points, 1)
+        curves += build_lines(points, -1)
+
+        curves = curves.switch(rand_dir, build_lines(points, tree.integer(1).switch(tree.random_boolean(.5), -1)))
+
+        lines = tree.group("To Lines of Field",
+                geometry         = curves,
+                resolution       = resol,
+                radius           = section,
+                intensity_factor = int_fac,
+                transparency     = transp,
+                color            = color,
+                material         = material,
+                ).geometry
+
+    mesh = arrows.switch(field_lines, lines)
+
+    # ----- Done
+
+    return mesh.switch(-show)
+
+# =============================================================================================================================
+# Build function
+
+def build_fields(clear_sockets=False):
 
     arrows.build_arrows()
     print("\nCreate fields modifiers...")
+
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Frame change
+
+    with gn.GeoNodes("G Frame Change", clear_sockets=clear_sockets, is_group=True) as tree:
+
+        position  = tree.vector_input("Position")
+        vector    = tree.vector_input("Vector")
+        center    = tree.vector_input("Center")
+        direction = tree.vector_input("Direction",  (1, 0, 0))
+        back      = tree.bool_input(  "Reverse",     False)
+
+        # ----- Rotation to have the direction along x axis
+
+        with tree.layout("Rotation to have direction along x axis"):
+
+            rotation = tree.AlignEulerToVector(vector=direction, axis='X').output_socket
+            inverse  = rotation.clone.invert_rotation()
+
+        # ----- Rotate vectors
+
+        with tree.layout("Rotate vectors"):
+
+            forward_vector  = vector.clone.rotate_vector(inverse)
+            backward_vector = vector.clone.rotate_vector(rotation)
+
+            transformed_vector = forward_vector.switch(back, backward_vector)
+
+        # ----- Transformation locations
+
+        with tree.layout("Transform locations"):
+
+            forward_position  = (position - center).rotate_vector(rotation=inverse)
+            backward_position = position.rotate_vector(rotation=rotation) + center
+
+            transformed_position = forward_position.switch(back, backward_position)
+
+
+        transformed_position.to_output("Position")
+        transformed_vector.to_output(  "Vector")
 
     # =============================================================================================================================
     # Electromagnetic Field computations
@@ -57,10 +205,11 @@ def build_fields():
     # -----------------------------------------------------------------------------------------------------------------------------
     # Electric Field
 
-    with gn.GeoNodes("G Electric Field", is_group=True) as tree:
+    with gn.GeoNodes("G Electric Field", clear_sockets=clear_sockets, is_group=True) as tree:
 
         position = tree.vector_input(  "Position")
         charges  = tree.geometry_input("Charges")
+        max_len  = tree.float_input("Max Length", 1000, min_value=1)
 
         with tree.layout("Mesh or Points input"):
             comps = charges.separate_components()
@@ -75,7 +224,7 @@ def build_fields():
 
             v = position - charge_loc
             l = v.length()
-            l3 = tree.max(.001, l**3)
+            l3 = tree.max(1/max_len, l**3)
             rep.field += charge_val*v/l3
 
             rep.index += 1
@@ -86,13 +235,14 @@ def build_fields():
     # -----------------------------------------------------------------------------------------------------------------------------
     # Electromagnetic field generated by a moving charge along x axis
 
-    with gn.GeoNodes("G X Moving Charge Field", is_group=True) as tree:
+    with gn.GeoNodes("G X Moving Charge Field", clear_sockets=clear_sockets, is_group=True) as tree:
 
         position    = tree.vector_input( "Position")
 
         charge      = tree.float_input(  "Charge",          1.)
         beta        = tree.float_input(  "Beta",            .8, min_value=-.999, max_value=.999)
         t           = tree.float_input(  "t")
+        max_len     = tree.float_input(  "Max Length", 1000, min_value=1)
 
         x, y, z = position.x, position.y, position.z
         xb = x - beta*t
@@ -107,13 +257,17 @@ def build_fields():
         E = gr3*vect
         B = (gr3*beta)*tree.vector((0, -z, y))
 
+        E = E.normalize().scale(tree.min(E.length(), max_len))
+        B = B.normalize().scale(tree.min(B.length(), max_len))
+
         E.to_output("E")
         B.to_output("B")
+        vect.to_output("Charge location")
 
     # -----------------------------------------------------------------------------------------------------------------------------
     # Electromagnetic field generated by a charge moving in an arbitray direction
 
-    with gn.GeoNodes("G Moving Charge Field", is_group=True) as tree:
+    with gn.GeoNodes("G Moving Charge Field", clear_sockets=clear_sockets, is_group=True) as tree:
 
         position    = tree.vector_input( "Position")
 
@@ -149,9 +303,9 @@ def build_fields():
             field.to_output("B")
 
     # -----------------------------------------------------------------------------------------------------------------------------
-    # Electromagnetic field generated by a solenoid
+    # Electromagnetic field generated by charges along a curve
 
-    with gn.GeoNodes("G Charges on Curve Field", is_group=True) as tree:
+    with gn.GeoNodes("G Charges on Curve Field", clear_sockets=clear_sockets, is_group=True) as tree:
 
         position    = tree.vector_input(  "Position")
 
@@ -195,13 +349,13 @@ def build_fields():
     # -----------------------------------------------------------------------------------------------------------------------------
     # Electromagnetic field generated by a loop in the plane XY at distance r and altitude z
 
-    with gn.GeoNodes("G XY Loop Radial Field", is_group=True) as tree:
+    with gn.GeoNodes("G XY Loop Radial Field", clear_sockets=clear_sockets, is_group=True) as tree:
 
-        r           = tree.float_input(  "r")
-        z           = tree.float_input(  "z")
-        charge      = tree.float_input(  "Charge", 1.)
-        beta        = tree.float_input(  "Beta",   .8, min_value=-.999, max_value=.999)
-        R           = tree.float_input(  "Radius", 1., min_value=.1, max_value=10)
+        r      = tree.float_input("r")
+        z      = tree.float_input("z")
+        charge = tree.float_input("Charge", 1.)
+        beta   = tree.float_input("Beta",   .8, min_value=-.999, max_value=.999)
+        R      = tree.float_input("Radius", 1., min_value=.1, max_value=10)
 
         # -----------------------------------------------------------------------------------------------------------------------------
         # Main
@@ -210,30 +364,28 @@ def build_fields():
 
         with tree.layout("Cosine and Sine"):
             circle = tree.MeshCircle(vertices=count, radius=1).mesh
-            cos_theta, sin_theta = tree.position.x, tree.position.y
-            Rcos = R*cos_theta
 
-        with tree.layout("Rho ** 3"):
-            rho2 = (r - Rcos)**2 + (R*sin_theta)**2 + z**2
-            rho3 = tree.max(rho2**1.5, .001)
+        with tree.layout("-2*gamma*charge"):
+            gam_charge = (-2*charge/count)*(1 - beta**2)**(-1.5)
 
-        with tree.layout("-2*gamma*charge/rho3"):
-            gr3 = -2/tree.sqrt(1 - beta**2)*charge/count/rho3
-
-        # Integration
+        # Integration loop
 
         with tree.repeat(ex=0., ez=0., bx=0., bz=0., index=0, iterations=count) as rep:
 
-            cos_theta_ = circle.sample_index(value=cos_theta, index=rep.index)
-            Rcos_      = circle.sample_index(value=Rcos,      index=rep.index)
-            gr3_       = circle.sample_index(value=gr3,       index=rep.index)
+            cos_sin = circle.sample_index_vector(value=tree.position, index=rep.index)
             rep.index += 1
 
-            rep.ex += (r - Rcos_)*gr3_
-            rep.ez += z*gr3_
+            cos_theta_, sin_theta_ = cos_sin.x, cos_sin.y
 
-            rep.bx += z*cos_theta_*gr3_
-            rep.bz += (R - r*cos_theta_)*gr3_
+            rho_x = r - R*cos_theta_
+            rho_y = R*sin_theta_
+            gr3 = gam_charge*tree.max(.01, tree.vector((rho_x, rho_y, z)).length())**-3
+
+            rep.ex += rho_x*gr3
+            rep.ez += z*gr3
+
+            rep.bx += z*cos_theta_*gr3
+            rep.bz += (R - r*cos_theta_)*gr3
 
         with tree.layout("Fields"):
             tree.vector((rep.ex, 0, rep.ez)).to_output("E")
@@ -242,52 +394,75 @@ def build_fields():
     # -----------------------------------------------------------------------------------------------------------------------------
     # Electromagnetic field generated by a loop in the plane XY at distance r and altitude z
 
-    with gn.GeoNodes("G XY Loop Field", is_group=True) as tree:
+    with gn.GeoNodes("G XY Loop Field", clear_sockets=clear_sockets, is_group=True) as tree:
 
         position    = tree.vector_input( "Position")
         charge      = tree.float_input(  "Charge",          1.)
         beta        = tree.float_input(  "Beta",            .8, min_value=-.999, max_value=.999)
         radius      = tree.float_input(  "Radius", 1., min_value=.1, max_value=10)
+        loops       = tree.int_input(    "Loops",  10, min_value=1)
         length      = tree.float_input(  "Length", 5., min_value=.1, max_value=10)
 
         # -----------------------------------------------------------------------------------------------------------------------------
         # Main
 
-        with tree.layout("To spherical"):
-
+        with tree.layout("To cylindrical"):
             x, y, z = position.x, position.y, position.z
             r = (position*(1, 1, 0)).length()
             ag = tree.arctan2(y, x)
 
-        with tree.layout("Solenoid length"):
-            l2 = length/2
-            index = tree.integer(0).switch(z.less_than(-l2), 1).switch(z.greater_than(l2), 2)
-            z_ = tree.IndexSwitch(0., z + l2, z - l2, index=index, data_type='FLOAT').output
+        #with tree.layout("Solenoid length"):
+        #    l2 = length/2
+        #    index = tree.integer(0).switch(z.less_than(-l2), 1).switch(z.greater_than(l2), 2)
+        #    z_ = tree.IndexSwitch(0., z + l2, z - l2, index=index, data_type='FLOAT').output
 
+        # ----- Loop on the solenoid loops :-)
 
-        field_node = tree.group("G XY Loop Radial Field",
-            r      = r,
-            z      = z_,
-            charge = charge,
-            beta   = beta,
-            radius = radius,
-            )
+        with tree.repeat(e=tree.vector(), b=tree.vector(), index=0, iterations=loops) as rep:
 
-        E = field_node.e.rotate_vector(rotation=(0, 0, ag))
-        B = field_node.b.rotate_vector(rotation=(0, 0, ag))
+            with tree.layout("dz"):
+                dz = length/loops
+
+            with tree.layout("Loop z location"):
+                loop_z = length*(-.5) + dz/2 + dz*rep.index
+
+            with tree.layout("Z offset"):
+                z_ = z - loop_z
+
+            with tree.layout("Loop charge"):
+                charge_ = charge/loops
+
+            field_node = tree.group("G XY Loop Radial Field",
+                r      = r,
+                z      = z_,
+                charge = charge_,
+                beta   = beta,
+                radius = radius,
+                )
+
+            rep.e += field_node.e
+            rep.b += field_node.b
+            rep.index += 1
+
+        E = rep.e.rotate_vector(rotation=(0, 0, ag))
+        B = rep.b.rotate_vector(rotation=(0, 0, ag))
+
+        #E = field_node.e.rotate_vector(rotation=(0, 0, ag))
+        #B = field_node.b.rotate_vector(rotation=(0, 0, ag))
 
         E.to_output("E")
         B.to_output("B")
 
     # -----------------------------------------------------------------------------------------------------------------------------
-    # Electromagnetic field generated the loop of a solenoid
+    # Electromagnetic field generated by a solenoid
 
-    with gn.GeoNodes("G Solenoid Field", is_group=True) as tree:
+    with gn.GeoNodes("G Solenoid Field", clear_sockets=clear_sockets, is_group=True) as tree:
 
         position    = tree.vector_input( "Position")
         charge      = tree.float_input(  "Charge",          1.)
         beta        = tree.float_input(  "Beta",            .8, min_value=-.999, max_value=.999)
         radius      = tree.float_input(  "Radius",          1., min_value=.1, max_value=10)
+        loops       = tree.int_input(    "Loops",           10, min_value=1)
         length      = tree.float_input(  "Length",          5., min_value=.1, max_value=10)
 
         # -----------------------------------------------------------------------------------------------------------------------------
@@ -302,6 +477,7 @@ def build_fields():
             charge   = charge,
             beta     = beta,
             radius   = radius,
+            loops    = loops,
             length   = length,
             )
 
@@ -311,10 +487,329 @@ def build_fields():
         E.to_output("E")
         B.to_output("B")
 
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Field emitted by charges moving on a segment along X and centered on the origin
+
+    with gn.GeoNodes("G Segment Field", clear_sockets=clear_sockets, is_group=True) as tree:
+
+        position    = tree.vector_input( "Position")
+
+        charge      = tree.float_input(  "Charge",          1.)
+        beta        = tree.float_input(  "Beta",            .8, min_value=-.999, max_value=.999)
+        length      = tree.float_input(  "Length",          1., min_value=0.01)
+
+        # ----- Main
+
+        x, y, z = position.x, position.y, position.z
+        a2 = y**2 + z**2
+
+        L = length/2
+
+        with tree.layout("G(L) and F(L)"):
+
+            lx1 = L - x
+            GL1 = 1/tree.sqrt(a2 + lx1**2)
+            FL1 = lx1/a2*GL1
+
+        with tree.layout("G(-L) and F(-L)"):
+
+            lx0 = -L - x
+            GL0 = 1/tree.sqrt(a2 + lx0**2)
+            FL0 = lx0/a2*GL0
+
+        with tree.layout("Integrals"):
+            FL = FL1 - FL0
+            GL = GL1 - GL0
+
+        with tree.layout("Gamma"):
+            gamma = charge*(1 - beta**2)**1.5
+
+        E = gamma*tree.vector((GL, y*FL, z*FL))
+        B = gamma*beta*tree.vector((0, -z*FL, y*FL))
+
+        E.to_output("E")
+        B.to_output("B")
+
+        tree.CurveLine(start=(-L, 0, 0), end=(L, 0, 0)).curve.to_output("Segment")
+
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Field emitted by charges moving on a rectangular shape in the plane XY
+
+    with gn.GeoNodes("G Rectangle Loop Field", clear_sockets=clear_sockets, is_group=True) as tree:
+
+        position    = tree.vector_input( "Position")
+
+        charge      = tree.float_input(  "Charge",          1.)
+        beta        = tree.float_input(  "Beta",            .8, min_value=-.999, max_value=.999)
+        size_y      = tree.float_input(  "Size Y",          1., min_value=0.01)
+        size_z      = tree.float_input(  "Size Z",          1., min_value=0.01)
+
+        with tree.layout("Share the charge on the sides"):
+            total_size = (size_y + size_z)*2
+            charge_y = charge*size_y/total_size
+            charge_z = charge*size_z/total_size
+
+        with tree.layout("Computation are made in plane XY"):
+            position = position.rotate_vector(rotation=(0, np.pi/2, 0))
+
+        node = tree.group("G Segment Field",
+                    position = position - tree.vector((0, size_z*(-.5), 0)),
+                    charge   = charge_y,
+                    beta     = beta,
+                    length   = size_y,
+                    )
+
+        E = node.e
+        B = node.b
+
+        node = tree.group("G Segment Field",
+                    position = position - tree.vector((0, size_z/2, 0)),
+                    charge   = -charge_y,
+                    beta     = beta,
+                    length   = size_y,
+                    )
+
+        E += node.e
+        B += node.b
+
+        rot_pos = position.rotate_vector(rotation=(0, 0, np.pi/2))
+        rotation = tree.vector((0, 0, -np.pi/2))
+
+        node = tree.group("G Segment Field",
+                    position = rot_pos - tree.vector((0, size_y*(-.5), 0)),
+                    charge   = charge_z,
+                    beta     = beta,
+                    length   = size_z,
+                    )
+
+        E += node.e.rotate_vector(rotation)
+        B += node.b.rotate_vector(rotation)
+
+        node = tree.group("G Segment Field",
+                    position = rot_pos - tree.vector((0, size_y/2, 0)),
+                    charge   = -charge_z,
+                    beta     = beta,
+                    length   = size_z,
+                    )
+
+        E += node.e.rotate_vector(rotation)
+        B += node.b.rotate_vector(rotation)
+
+        with tree.layout("Rotate the loop in the plane YZ"):
+
+            E = E.rotate_vector(rotation=(0, -np.pi/2, 0))
+            B = B.rotate_vector(rotation=(0, -np.pi/2, 0))
+
+            curve = tree.Grid(size_x=size_y, size_y=size_z, vertices_x=2, vertices_y=2).mesh.mesh_to_curve()
+            curve.transform_geometry(rotation=(0, -np.pi/2, 0))
+
+
+        E.to_output("E")
+        B.to_output("B")
+
+        curve.to_output("Rectangle")
+
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Magnetic Field
+
+    with gn.GeoNodes("G Magnetic Field", clear_sockets=False, is_group=True) as tree:
+
+        position    = tree.vector_input(   "Position")
+
+        mag_locs    = tree.geometry_input( "Moments")
+
+        with tree.layout("Moments locations"):
+
+            comps_node = mag_locs.separate_components()
+            points = comps_node.point_cloud + comps_node.mesh.mesh_to_points()
+            #points.store_named_vector("Moment", moments)
+
+            count = points.CLOUD.domain_size().point_count
+
+        with tree.repeat(b = tree.vector(), index=0, iterations=count) as rep:
+
+            with tree.layout("Current magnet location and charge"):
+                loc = points.POINT.sample_index_vector(value=tree.position, index=rep.index)
+                mom = points.POINT.sample_index_vector(value=points.named_vector("Moment"), index=rep.index)
+                rep.index += 1
+
+            with tree.layout("Radial unit vector and squared norm"):
+                vect   = position - loc
+                er     = vect.normalize()
+
+                norm   = tree.max(vect.length(), .001)
+                norm2_ = 1/(norm*norm)
+
+            with tree.layout("Magnetic field"):
+
+                radial = er.dot(mom)
+                normal = er.cross(er.cross(mom))
+
+                B = (er.scale(radial) + normal).scale(norm2_)
+
+                rep.b += B
+
+
+        tree.vector().to_output("E")
+        rep.b.to_output("B")
+        points.to_output("Points")
+
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Magnetic Curve
+
+    with gn.GeoNodes("G Magnetic Curve Field", clear_sockets=False, is_group=True) as tree:
+
+        position     = tree.vector_input(   "Position")
+
+        magnet_curve = tree.geometry_input( "Magnet Curve")
+        moment       = tree.float_input(    "Moment",  1)
+        resolution   = tree.int_input(      "Resolution", 100, min_value=2)
+
+        with tree.layout("Moments locations"):
+
+            curve = magnet_curve.resample_curve(count=resolution)
+            points = curve.curve_to_points(count=resolution).points
+            points.POINT.store_named_vector("Moment", curve.sample_curve(length=tree.index*curve.curve_length/(resolution-1), mode='LENGTH').tangent)
+
+        field_node = tree.group("G Magnetic Field", position=position, moments=points)
+
+        field_node.e.to_output("E")
+        field_node.b.to_output("B")
+        curve.to_output("Curve")
+
+        # DEBUG
+        if False:
+            sph = curve.instance_on_points(instance=tree.UVSphere(radius=.1))
+            (curve + sph).to_output("Curve")
+
+    # =============================================================================================================================
+    # Compute Curl
+
+    with gn.GeoNodes("Compute Curl", clear_sockets=clear_sockets) as tree:
+
+        # ----- Parameters
+
+        field       = tree.vector_input(  "Field", description="Field computation from 'position' Node")
+        ds          = tree.float_input(   "ds", .1, min_value=0.001, description="Precision")
+        normalize   = tree.bool_input(    "Normalize", True, description="Return the raw (False) or normalized (True)")
+        scale       = tree.float_input(   "Scale", 1., description="Scale")
+
+        # ---- Main
+
+        with tree.layout("Computation points"):
+            comps_node = tree.geometry.separate_components()
+            points = comps_node.point_cloud + comps_node.mesh.mesh_to_points()
+            points = points.points_to_vertices()
+
+        ds2_ = -.5*ds
+
+        with tree.layout("Along X"):
+            points.transform_geometry(translation=(ds2_, 0, 0))
+            points.POINT.store_named_vector("Before", field)
+            points.transform_geometry(translation=(ds, 0, 0))
+            points.POINT.store_named_vector("After", field)
+            points.transform_geometry(translation=(ds2_, 0, 0))
+
+            points.POINT.store_named_vector("dvx", points.POINT.named_vector("After") - points.POINT.named_vector("Before"))
+
+        with tree.layout("Along Y"):
+            points.transform_geometry(translation=(0, ds2_, 0))
+            points.POINT.store_named_vector("Before", field)
+            points.transform_geometry(translation=(0, ds, 0))
+            points.POINT.store_named_vector("After", field)
+            points.transform_geometry(translation=(0, ds2_, 0))
+
+            points.POINT.store_named_vector("dvy", points.POINT.named_vector("After") - points.POINT.named_vector("Before"))
+
+        with tree.layout("Along Z"):
+            points.transform_geometry(translation=(0, 0, ds2_))
+            points.POINT.store_named_vector("Before", field)
+            points.transform_geometry(translation=(0, 0, ds))
+            points.POINT.store_named_vector("After", field)
+            points.transform_geometry(translation=(0, 0, ds2_))
+
+            points.POINT.store_named_vector("dvz", points.POINT.named_vector("After") - points.POINT.named_vector("Before"))
+
+        with tree.layout("Curl"):
+            dvx, dvy, dvz = points.POINT.named_vector("dvx"), points.POINT.named_vector("dvy"), points.POINT.named_vector("dvz")
+            curl = tree.vector((
+                dvy.z - dvz.y,
+                dvx.z - dvz.x,
+                dvx.y - dvy.x,
+            ))
+            curl = curl.scale(scale)
+            points.POINT.store_named_vector("Vectors", curl.switch(normalize, curl.scale(1/ds)))
+
+        points.remove_named_attribute("Before")
+        points.remove_named_attribute("After")
+        points.remove_named_attribute("dvx")
+        points.remove_named_attribute("dvy")
+        points.remove_named_attribute("dvz")
+
+        tree.geometry = points
+
+    # =============================================================================================================================
+    # Lorentz transformation
+
+    with gn.GeoNodes("EM Lorentz", is_group=True) as tree:
+
+        speed = tree.vector_input(      "Speed",        (.8, 0, 0))
+        E     = tree.vector_input(      "E")
+        B     = tree.vector_input(      "B")
+
+        # ----- Make sure beta is ok
+
+        with tree.layout("Ensure beta is not greater than 1"):
+            length = speed.length()
+            beta   = tree.min(length, .999)
+            speed  = speed.scale(beta/length).switch(length.equal(0, .001), (0, 0, 0))
+
+        # ----- Rotate to have speed along x axis
+
+        with tree.layout("Rotate fields to have speed long x axis"):
+
+            rotation = tree.AlignEulerToVector(vector=speed, axis='X').output_socket
+            keep = rotation.node.output_socket
+
+            inverse  = rotation.invert_rotation()
+            Erot = E.rotate_vector(rotation=inverse)
+            Brot = B.rotate_vector(rotation=inverse)
+
+        # ----- Lorentz transformation
+
+        with tree.layout("Lorentz transformation"):
+
+            gamma = tree.power(1 - beta**2)**(-.5)
+
+            Erx, Ery, Erz = Erot.x, Erot.y, Erot.z
+            Brx, Bry, Brz = Brot.x, Brot.y, Brot.z
+
+            Erot_ = tree.vector((
+                Erx,
+                gamma*(Ery - beta*Brz),
+                gamma*(Erz + beta*Bry)
+            ))
+
+            Brot_ = tree.vector((
+                Brx,
+                gamma*(Bry + beta*Erz),
+                gamma*(Brz - beta*Ery)
+            ))
+
+        # ----- Rotate back
+
+        with tree.layout("Rotate back"):
+            E_ = Erot_.rotate_vector(rotation=keep)
+            B_ = Brot_.rotate_vector(rotation=keep)
+
+            E_.to_output("E")
+            B_.to_output("B")
+
+
     # =============================================================================================================================
     # Compute the lines of field
 
-    with gn.GeoNodes("Compute Lines of Field") as tree:
+    with gn.GeoNodes("Compute Lines of Field", clear_sockets=clear_sockets) as tree:
 
         # ----- Field
 
@@ -374,114 +869,27 @@ def build_fields():
         tree.geometry = mesh.mesh_to_curve()
 
     # =============================================================================================================================
-    # Visualize a field computed by a group
-    #
-    # The group must take the following input nodes
-    #
-    # - Position     : locations where to compute the field
-    # - kwargs       : kwargs passed in the function
+    # Visualize spheres on points
 
-    def gen_field_visualization(tree, field_node):
+    def gen_spheres_on_charges(tree, charges_loc):
 
-        # ----- Visualisation parameters
+        sph_radius   = tree.float_input(   "Spheres Radius",   .1, min_value=0., description="Spheres radius (0 if charges must not be visualized)")
+        sph_color    = tree.color_input(   "Spheres Color", description="Spheres 'Color' named attribute to pass to the Shader")
+        sph_mat      = tree.material_input("Spheres Material", description="Spheres material")
 
-        elec_field  = tree.bool_input(  "Electric field",       True, description="Show electric field rather than magnetic field")
-        color       = tree.color_input( "Color",                (0., 0., 1., 1.), description="'Color' named attribute to pass to the shader")
-        transp      = tree.factor_input("Transparency",         0., min_value=0., max_value=1, description="'Transparency' named attribute to pass to the shader")
+        with tree.layout("Spheres on charges"):
+            charges_loc.store_named_vector("Color", sph_color)
+            spheres = charges_loc.instance_on_points(instance=tree.UVSphere(radius=sph_radius).mesh)
+            spheres = spheres.realize_instances()
+            spheres.FACE.shade_smooth = True
+            spheres.FACE.material = sph_mat
 
-        # ----- Arrows
-
-        scale       = tree.float_input( "Scale",                1., min_value=0., description="Vectors multiplicator")
-        curl_vect   = tree.bool_input(  "Curl Vectors",         False, description="Use curl shape for arrows")
-
-        # ----- Lines of field
-
-        field_lines = tree.bool_input(  "Lines of field",       False, description="Lines of field (True) or field of vectors (False)")
-        iterations  = tree.int_input(   "Iterations",           20, min_value=1, description="Number of iterations to compute the lines of field")
-        delta       = tree.float_input( "Delta",                .1, min_value=.001, description="Distance to move at each iteration")
-        int_fac     = tree.factor_input("Intensity",            1., min_value=0., max_value=1., description="Use intensity named attribute for radius")
-        rand_dir    = tree.bool_input(  "Random Direction",     False, description="Build lines in random directions rather than in both directions")
-
-        # ----- Geometry parameters
-
-        resol       = tree.int_input(     "Resolution",         12, min_value=3, max_value=64, description="Lines / arrows section resolution")
-        section     = tree.float_input(   "Section",            .02, min_value=0., max_value=1., description="Lines / arrows section")
-        material    = tree.material_input("Material",           "Arrow", description="Arrows / lines material")
-
-        # ----- Show / Hide
-
-        show        = tree.bool_input(    "Show",               True, description="Show / hide flag")
-
-        # ====================================================================================================
-        # Utilities
-
-        def get_field():
-            return field_node.b.switch(elec_field, field_node.e)
-
-        def build_lines(points, direction):
-            return tree.group("Compute Lines of Field",
-                geometry    = points,
-                field       = get_field(),
-                iterations  = iterations,
-                delta       = delta,
-                direction   = direction,
-                ).geometry
-
-        # ====================================================================================================
-        # Main
-
-        with tree.layout("Starting points"):
-            comps_node = tree.geometry.separate_components()
-            points = comps_node.point_cloud + comps_node.mesh.mesh_to_points()
-            points = points.points_to_vertices()
-
-        # ----------------------------------------------------------------------------------------------------
-        # Arrows
-
-        with tree.layout("Arrows"):
-
-            points.store_named_vector("Vectors", get_field())
-
-            arrows = tree.group("Arrows", points,
-                scale         = scale,
-                resolution    = resol,
-                section       = section,
-                sphere        = curl_vect,
-                color         = color,
-                transparency  = transp,
-                shaft         = material,
-                head          = material,
-                ).geometry
-
-        # ----------------------------------------------------------------------------------------------------
-        # Lines of field
-
-        with tree.layout("Lines of field"):
-            curves  = build_lines(points, 1)
-            curves += build_lines(points, -1)
-
-            curves = curves.switch(rand_dir, build_lines(points, tree.integer(1).switch(tree.random_boolean(.5), -1)))
-
-            lines = tree.group("To Lines of Field",
-                    geometry         = curves,
-                    resolution       = resol,
-                    radius           = section,
-                    intensity_factor = int_fac,
-                    transparency     = transp,
-                    color            = color,
-                    material         = material,
-                    ).geometry
-
-        mesh = arrows.switch(field_lines, lines)
-
-        # ----- Done
-
-        return mesh.switch(-show)
+        return spheres.switch(sph_radius.equal(0))
 
     # ----------------------------------------------------------------------------------------------------
     # A charge moving along the X axis
 
-    with gn.GeoNodes("Electric Field") as tree:
+    with gn.GeoNodes("Electric Field", clear_sockets=clear_sockets) as tree:
 
         # ----- Field parameters
 
@@ -500,33 +908,37 @@ def build_fields():
             charges  = charges,
             )
 
-        tree.geometry = gen_field_visualization(tree, field_node)
+        tree.geometry = gen_field_visualization(tree, field_node) + gen_spheres_on_charges(tree, charges)
 
     # ----------------------------------------------------------------------------------------------------
     # A charge moving along the X axis
 
-    with gn.GeoNodes("X Moving Charge Field") as tree:
+    with gn.GeoNodes("X Moving Charge Field", clear_sockets=clear_sockets) as tree:
 
         # ----- Field parameters
 
         charge      = tree.float_input(  "Charge", 1., description="Value of the charge")
         beta        = tree.float_input(  "Beta",   0, min_value=-.999, max_value=.999, description="Beta relativist speed")
         t           = tree.float_input(  "t", description="Time")
+        max_len     = tree.float_input(  "Max Lengh", 1., description="Max Vectors Length")
 
         # ----- Main
 
         field_node = tree.group("G X Moving Charge Field",
-            position = tree.position,
-            charge   = charge,
-            beta     = beta,
-            t        = t)
+            position   = tree.position,
+            charge     = charge,
+            beta       = beta,
+            t          = t,
+            max_length = max_len,
+            )
 
-        tree.geometry = gen_field_visualization(tree, field_node)
+        tree.geometry = gen_field_visualization(tree, field_node) + gen_spheres_on_charges(tree, tree.Points(count=1, position=(beta*t, 0, 0)).points)
+        field_node.charge_location.to_output("Charge location")
 
     # ----------------------------------------------------------------------------------------------------
     # A charge moving in an arbitrary direction
 
-    with gn.GeoNodes("Moving Charge Field") as tree:
+    with gn.GeoNodes("Moving Charge Field", clear_sockets=clear_sockets) as tree:
 
         # ----- Field parameters
 
@@ -542,14 +954,14 @@ def build_fields():
             speed           = speed,
             )
 
-        tree.geometry = gen_field_visualization(tree, field_node)
+        tree.geometry = gen_field_visualization(tree, field_node) + gen_spheres_on_charges(tree, tree.Points(count=1, position=charge_loc).points)
 
     # -----------------------------------------------------------------------------------------------------------------------------
     # Electromagnetic field generated by several charges
 
-    with gn.GeoNodes("Charges on Curve Field") as tree:
+    with gn.GeoNodes("Charges on Curve Field", clear_sockets=clear_sockets) as tree:
 
-        # ----- Field parameters
+        # ----- Field parameters0
 
         source_curve = tree.object_input(  "Source Curve", description="Curve on which charges are moving")
         count        = tree.int_input(     "Charges count",    10, min_value=1, max_value=1000, description="Number of charges")
@@ -586,7 +998,7 @@ def build_fields():
     # -----------------------------------------------------------------------------------------------------------------------------
     # Electromagnetic field generated by a solenoide
 
-    with gn.GeoNodes("Solenoid Field") as tree:
+    with gn.GeoNodes("Solenoid Field", clear_sockets=clear_sockets) as tree:
 
         charge      = tree.float_input(  "Charge",      1., description="Total charge")
         beta        = tree.float_input(  "Beta",        .8, min_value=-.999, max_value=.999, description="Relativist speed beta")
@@ -604,6 +1016,7 @@ def build_fields():
             position        = tree.position,
             charge          = charge,
             beta            = beta,
+            radius          = radius,
             length          = length,
             )
 
@@ -629,3 +1042,57 @@ def build_fields():
             wire.FACE.material     = wire_mat
 
         tree.geometry = field_visu + wire.switch(wire_radius.equal(0))
+
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Magnet Field simulation
+
+    with gn.GeoNodes("Magnet Field", clear_sockets=clear_sockets) as tree:
+
+        #position     = tree.vector_input(  "Position")
+
+        mag_object   = tree.object_input(  "Magnet Curve", description="Magnet shape")
+        moment       = tree.float_input(   "Moment",           1, description="Magnetic field moment")
+        resolution   = tree.int_input(     "Resolution",       100, min_value=2, description=" Number of elements on the shape")
+        width        = tree.float_input(   "Width",           .3, min_value=.01, description="Magnet shape width")
+        height       = tree.float_input(   "Height",          .2, min_value=.01, description="Magnet shape height")
+
+        # ---- Magnet
+
+        show_magnet  = tree.bool_input(    "Show Magnet",     True, description="Show the magnet")
+        magnet_mat   = tree.material_input("Magnet Material", description="Magnet material")
+
+        # ----------------------------------------------------------------------------------------------------
+        # Main
+
+        mag_curve = mag_object.object_info().geometry
+
+        field_node = tree.group("G Magnetic Curve Field",
+            position        = tree.position,
+
+            magnet_curve    = mag_curve,
+            moment          = moment,
+            resolution      = resolution,
+            )
+
+        field_visu = gen_field_visualization(tree, field_node)
+
+        with tree.layout("Magnet Shape"):
+
+            mag_curve = mag_curve.resample_curve(count=resolution)
+            mag_curve.POINT.store_named_float('uvx', tree.spline_parameter.factor)
+
+            profile = tree.grid(size_x=width, size_y=height, vertices_x=2, vertices_y=2).mesh_to_curve()
+            profile.POINT.store_named_float('uvy', tree.spline_parameter.factor)
+
+            magnet = mag_curve.curve_to_mesh(profile_curve=profile, fill_caps=True)
+            magnet.CORNER.store_named_vector("UVMap", (magnet.POINT.named_float('uvx'), magnet.POINT.named_float('uvy'), 0))
+
+            magnet.remove_named_attribute('uvx')
+            magnet.remove_named_attribute('uvy')
+
+            magnet.FACE.material = magnet_mat
+            magnet.FACE.shade_smooth = False
+
+        # ----- Done
+
+        tree.geometry = field_visu + magnet.switch(-show_magnet)

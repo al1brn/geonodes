@@ -70,7 +70,7 @@ class Tree(StackedTree):
     # ----------------------------------------------------------------------------------------------------
     # init
 
-    def __init__(self, name, create=True, clear=True, fake_user=False, is_group=False, prefix=None):
+    def __init__(self, name, create=True, clear=True, clear_sockets=False, fake_user=False, is_group=False, prefix=None):
         """ Tree of Nodes.
 
         Arguments
@@ -78,6 +78,7 @@ class Tree(StackedTree):
             - name (str) : Tree name
             - create (bool = True) : create the tree if it doesn't exist
             - clear (bool = False) : erase the existing nodes
+            - clear_sockets(bool = False) : clear sockets (sockets user values are deleted)
             - is_group (bool = False) : initialize as a ground
             - prefix (str = None) : prefix to use in the name
         """
@@ -104,6 +105,8 @@ class Tree(StackedTree):
 
         if clear:
             self.clear()
+
+        if clear_sockets:
             self.clear_io_sockets()
 
     # ====================================================================================================
@@ -138,6 +141,10 @@ class Tree(StackedTree):
         """
 
         arrange(self.btree)
+
+        for bnode in self.btree.nodes:
+            bnode.select = False
+
         return self
 
     # ====================================================================================================

@@ -183,12 +183,21 @@ class StackedTree:
         """ Boolean input
         class_name = Boolean
         """
+
+        # New socket instance if same socket type
+        if isinstance(boolean, sockets.BOOLEAN):
+            return boolean.clone
+
         return self.Boolean(boolean, node_label=node_label, node_color=node_color).output_socket
 
     def color(self, color, node_label=None, node_color=None):
         """ A color socket either from CombineColor or from Color
         class_name = Color
         """
+
+        # New socket instance if same socket type
+        if isinstance(color, sockets.RGBA):
+            return color.clone
 
         c = utils.value_for(color, 'NodeSocketColor')
         if isinstance(c, sockets.Socket):
@@ -209,38 +218,61 @@ class StackedTree:
 
         raise NodeError(f"Method rgb_a requires a vector and a float. First item is not a vector: {v}")
 
-
-
-    def integer(self, integer, node_label=None, node_color=None):
+    def integer(self, integer=0, node_label=None, node_color=None):
         """ Integer input
         class_name = Integer
         """
+
+        # New socket instance if same socket type
+        if isinstance(integer, sockets.INT):
+            return integer.clone
+
         return self.Integer(integer, node_label=node_label, node_color=node_color).output_socket
 
-    def string(self, string, node_label=None, node_color=None):
+    def string(self, string="", node_label=None, node_color=None):
         """ String input
         class_name = String
         """
+
+        # New socket instance if same socket type
+        if isinstance(string, sockets.STRING):
+            return string.clone
+
         return self.String(string, node_label=node_label, node_color=node_color).output_socket
 
-    def value(self, value, node_label=None, node_color=None):
+    def value(self, value=0., node_label=None, node_color=None):
         """ Value input
         class_name = Value
         """
+
+        # New socket instance if same socket type
+        if isinstance(value, sockets.VALUE):
+            return value.clone
+
         node = self.Value(node_label=node_label, node_color=node_color)
         node.bnode.outputs[0].default_value = utils.value_for(value, 'NodeSocketFloat')
         return node.output_socket
 
-    def float(self, value, node_label=None, node_color=None):
+    def float(self, value=0., node_label=None, node_color=None):
         """ Value input
         class_name = Value
         """
+
+        # New socket instance if same socket type
+        if isinstance(value, sockets.VALUE):
+            return value.clone
+
         return self.value(value, node_label=node_label, node_color=node_color)
 
-    def vector(self, vector, node_label=None, node_color=None):
+    def vector(self, vector=(0., 0., 0.), node_label=None, node_color=None):
         """ Vector input
         class_name = Vector
         """
+
+        # New socket instance if same socket type
+        if isinstance(vector, sockets.VECTOR):
+            return vector.clone
+
         v = utils.value_for(vector, 'NodeSocketVector')
         if isinstance(v, sockets.Socket):
             v.node.node_label = node_label
@@ -255,6 +287,11 @@ class StackedTree:
         """ Image input
         class_name = Image
         """
+
+        # New socket instance if same socket type
+        if isinstance(image, sockets.IMAGE):
+            return image.clone
+
         image = self.Image._image_value(image)
         return self.Image(image, node_label=node_label, node_color=node_color).output_socket
 
@@ -263,6 +300,11 @@ class StackedTree:
         """ Material input
         class_name = Material
         """
+
+        # New socket instance if same socket type
+        if isinstance(material, sockets.MATERIAL):
+            return material.clone
+
         material = self.Material._material_value(material)
         return self.Material(material, node_label=node_label, node_color=node_color).output_socket
 
@@ -371,6 +413,7 @@ class Node(object):
         self.tree = constants.current_tree()
         if isinstance(bl_idname, str):
             self.bnode = self.tree.btree.nodes.new(type=bl_idname)
+            self.bnode.select = False
         else:
             self.bnode = bl_idname
 
