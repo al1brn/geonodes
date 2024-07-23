@@ -6,14 +6,17 @@ Created on Wed Jun 29 11:21:18 2022
 @author: alain.bernard
 """
 
-PI   = 3.141592653589793
-TAU  = 6.283185307179586
+pi   = 3.141592653589793
+tau  = 6.283185307179586
+half_pi = pi/2
 
 from .core import blender
 from .core import engine
 
-version         = (2, 1, 0)
-blender_version = (4, 1, 0)
+#version         = (2, 1, 0)
+#blender_version = (4, 1, 0)
+
+from .nodes.constants import version, blender_version, print_version
 
 # -----------------------------------------------------------------------------------------------------------------------------
 # Scipy is required

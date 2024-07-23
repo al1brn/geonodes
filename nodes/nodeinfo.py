@@ -233,8 +233,6 @@ class Argument:
         else:
             return self.name, utils.python_constant(self.header), self.enums
 
-        #return f"- {self.name} : {self.descr}\n"
-
 # ----------------------------------------------------------------------------------------------------
 # A list of arguments
 
@@ -501,9 +499,14 @@ class NodeInfo:
         # ----- Input sockets
 
         for root_name, count in self.in_counts.items():
+
+            # ---- Socket name can collide with param name
+
+            suffix = '_' if root_name in self.params else ''
+
             for rank in range(count):
 
-                pyname = root_name if rank == 0 else f"{root_name}_{rank}"
+                pyname = root_name + suffix if rank == 0 else f"{root_name}_{rank}"
 
                 # ----- Socket argument
 
@@ -586,57 +589,54 @@ class NodeInfo:
             params_init += f"\n\tself.{param:15s} = {param}"
 
         # ----- Source code
-        # New Version : sockets can change their name with some parameter
+        # Sockets can change their name with some parameter
         # The new name can be set in **kwargs
         # All the init is done in root class Node but multi input initialization
 
-        if True:
-            #call_code = self.node_args.call_code
-            call_code = self.node_args.node_init_kwargs
-            if call_code != "":
-                call_code += ", "
+        call_code = self.node_args.node_init_kwargs
+        if call_code != "":
+            call_code += ", "
 
-            self.init_code  = f"def __init__({init_header}, node_label=None, node_color=None, **kwargs):\n"
-            self.init_code += f"\n\tNode.__init__(self, '{self.bl_idname}', {call_code} node_label=node_label, node_color=node_color, **kwargs)\n"
-            if self.has_multi_input:
-                self.init_code += "\n\tself._set_multi_input(*args)\n"
-            self.init_code += "\n"
-
-        else:
-            self.init_code  = f"def __init__({init_header}, node_label=None, node_color=None, **kwargs):\n"
-            self.init_code += f"\n\tNode.__init__(self, '{self.bl_idname}', node_label=node_label, node_color=node_color, **kwargs)\n"
-            self.init_code += params_init
-            self.init_code += sockets_init
-            self.init_code += "\n"
+        self.init_code  = f"def __init__({init_header}, node_label=None, node_color=None, **kwargs):\n"
+        self.init_code += f"\n\tNode.__init__(self, '{self.bl_idname}', {call_code} node_label=node_label, node_color=node_color, **kwargs)\n"
+        if self.has_multi_input:
+            self.init_code += "\n\tself._set_multi_input(*args)\n"
+        self.init_code += "\n"
 
         try:
             self.compiled_init = utils.compile_f(self.init_code, '__init__', {'Node': treestack.Node})
         except:
             raise NodeError(f"Node {self.class_name}: error in compiling '__init__', see code below.", self.init_code)
-            #print('-'*80)
-            #print(f"Node {self.class_name}: error in compiling __init__\n")
-            #print(self.init_code)
-            #print('-'*80)
-
-            #raise
 
         # ----- DEBUG
 
-        if False and self.class_name == "ColorBalance":
+        if False and self.class_name == "AxesToRotation":
             print("-"*100)
             print("NodeInfo.init", self.class_name, "__init__ source code\n")
             print(self.init_code)
             print("Arguments")
+            print("---------")
             print(self.node_args)
+            print()
+            print("Arguments doc")
+            print("-------------")
             print(self.node_args.docs)
+            print()
 
+            print("Individual arg doc")
+            print("------------------")
             for arg in self.node_args.args:
                 print(arg.doc)
+            print()
+
+            print("Arguments header and call")
+            print("-------------------------")
 
             for arg in self.node_args.args:
                 print("   arg", arg)
                 print(arg.header)
                 print(arg.call)
+            print()
 
             #assert(False)
 
@@ -661,7 +661,6 @@ class NodeInfo:
             if bsocket.bl_idname in unknwon:
                 continue
             unknwon[bsocket.bl_idname] = bsocket.type
-
 
     # ====================================================================================================
     # Utility
@@ -909,6 +908,7 @@ class NodeInfo:
         prm_enums = {}
 
         # ----- Change parameters
+
         if all_sockets:
             in_counts = {**self.in_counts}
         else:
@@ -928,16 +928,14 @@ class NodeInfo:
         if not all_sockets:
             self.setup(**mems)
 
-        if False:
-            if self_socket is not None:
-                in_counts[self_socket] -= 1
-
         # ----------------------------------------------------------------------------------------------------
         # Input sockets
 
         if len(in_counts) > 0:
 
             for sock_name in utils.input_sockets_order(in_counts):
+
+                suffix = '_' if sock_name in self.params else ''
 
                 descr = f"Socket"
 
@@ -946,66 +944,40 @@ class NodeInfo:
                 # ----- Socket where to plug self
 
                 is_self_socket = sock_name == self_socket
-                if False:
-                    if is_self_socket:
-                        is_self_socket = True
-                        if sock_name in kwargs:
-                            args.add(sock_name, IGNORE, kwargs[sock_name], descr=descr)
-                        else:
-                            args.add(sock_name, IGNORE, 'self', descr=descr)
 
                 # ----- Loop on the sockets sharing the same name
 
-                if True:
-                    for i in range(count):
-                        sock_i = sock_name if i == 0 else f"{sock_name}_{i}"
+                for i in range(count):
 
-                        # ----- Socket name is for self
-                        # Typical use
-                        # def method(self, value, value_1, ...):
-                        #     node = Node(value=self, value_1=value, value_2=value_1, ...)
+                    sock_i = sock_name + suffix if i == 0 else f"{sock_name}_{i}"
 
-                        if is_self_socket:
-                            if i == 0:
-                                if sock_name in kwargs:
-                                    args.add(sock_name, None, kwargs[sock_name], descr=descr)
-                                elif count == 1:
-                                    args.add(sock_name, IGNORE, 'self', descr=descr)
-                                else:
-                                    args.add(sock_name, None, 'self', descr=descr)
+                    # ----- Socket name is for self
+                    # Typical use
+                    # def method(self, value, value_1, ...):
+                    #     node = Node(value=self, value_1=value, value_2=value_1, ...)
 
+                    if is_self_socket:
+                        if i == 0:
+                            if sock_name in kwargs:
+                                args.add(sock_name, None, kwargs[sock_name], descr=descr)
+                            elif count == 1:
+                                args.add(sock_name, IGNORE, 'self', descr=descr)
                             else:
-                                sock_prev_i = sock_name if i == 1 else f"{sock_name}_{i-1}"
-                                args.add(sock_i, None if i < count-1 else IGNORE, sock_prev_i, descr=descr)
-
-                        # ----- Current socket is fixed in kwargs
-
-                        elif sock_i in kwargs:
-                            args.add(sock_i, None, kwargs[sock_i], descr=descr)
-
-                        # ----- Nothing particular
+                                args.add(sock_name, None, 'self', descr=descr)
 
                         else:
-                            args.add(sock_i, None, descr=descr)
+                            sock_prev_i = sock_name if i == 1 else f"{sock_name}_{i-1}"
+                            args.add(sock_i, None if i < count-1 else IGNORE, sock_prev_i, descr=descr)
 
-                else:
-                    for i in range(count):
-                        sock_i = sock_name if i == 0 else f"{sock_name}_{i}"
+                    # ----- Current socket is fixed in kwargs
 
-                        if self_socket == sock_name:
-                            if i == 0:
-                                args.add(f"{sock_name}_1", None, sock_name, descr=descr)
-                            else:
-                                args.add(f"{sock_name}_{i+1}", None, sock_i, descr=descr)
+                    elif sock_i in kwargs:
+                        args.add(sock_i, None, kwargs[sock_i], descr=descr)
 
-                        elif sock_i in kwargs:
-                            args.add(sock_i, None, kwargs[sock_i], descr=descr)
+                    # ----- Nothing particular
 
-                        #elif sock_i == 'selection':
-                        #    args.add('selection', None, 'self._get_selection(selection)', descr=descr)
-
-                        else:
-                            args.add(sock_i, None, descr=descr)
+                    else:
+                        args.add(sock_i, None, descr=descr)
 
         # ----------------------------------------------------------------------------------------------------
         # Parameters
@@ -1241,6 +1213,12 @@ def tree_class_setup(tree_class):
 
         node_info = NodeInfo(btree, bnode)
         node_infos.append(node_info)
+
+        # ----- Documented or not for version management
+
+        if node_info.class_name not in custom.NODE_IMPLEMENTATIONS.keys():
+            if type_name not in ['CompositorNodeRLayers']:
+                constants.NON_DOCUMENTED_NODES[type_name] = f"{node_info.class_name} ({bnode.name})"
 
         # ----- Debug
 

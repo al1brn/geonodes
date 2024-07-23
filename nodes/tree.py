@@ -491,6 +491,9 @@ class Tree(StackedTree):
     def rotation_input(self, name, value=None, min_value=None, max_value=None, description=""):
         return self.new_input('NodeSocketRotation', name, value=value, min_value=min_value, max_value=max_value, description=description)
 
+    def matrix_input(self, name, description=""):
+        return self.new_input('NodeSocketMatrix', name, description=description)
+
     def string_input(self, name, value=None, description=""):
         return self.new_input('NodeSocketString', name, value=value, description=description)
 

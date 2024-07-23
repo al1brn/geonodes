@@ -186,6 +186,7 @@ class Dynamic:
             print()
 
         #----- Code is already compiled
+
         if isinstance(code, tuple):
             ccode = code[1]
             code  = code[0]
@@ -244,10 +245,7 @@ class Dynamic:
                 else:
                     prop['descr'] = "Property"
 
-
-
             setattr(self.dyn_class, name, property(prop['fget'], prop['fset']))
-
 
         else:
             raise NodeError(f"Dynamic.add_member error: unknown member_type: '{member_type}' for member '{name}' in class '{self.class_name}'")

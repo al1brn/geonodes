@@ -37,12 +37,14 @@ Geometry Nodes
     - Arrow  : a single vector definef by cartesian components
     - Polar Arrow : a single vector defined by cylindrical components
     - Spherical Arrow : a single vector defined by cylindrical components
+
+    - Intensity to Raidus : convert the curve 'Intensity' attribute to radius
     - To Lines of Field : transform curve to lines
+    - Field Curve to Mesh : transform a field curve to mesh combining lines and arrows
 """
 
 import bpy
 import geonodes as gn
-
 
 def build_arrows(create_shaders=False):
 
@@ -262,11 +264,40 @@ def build_arrows(create_shaders=False):
     # ====================================================================================================
     # Lines
 
+    # ----------------------------------------------------------------------------------------------------
+    # Convert 'Intensity' to curve radius
+
+    with gn.GeoNodes("Intensity to Radius") as tree:
+
+        curve = tree.geometry
+
+        min_radius = tree.float_input("Min Radius", .001)
+        max_radius = tree.float_input("Max Radius", .1)
+        factor     = tree.float_input("Factor",      1., min_value=0)
+
+        intensity = curve.named_float("Intensity")
+
+        node = curve.POINT.attribute_statistic_float(attribute=intensity)
+
+        min_int, max_int = node.min, node.max
+        ampl = max_int - min_int
+
+        radius = min_radius + (max_radius - min_radius)*tree.exp(-factor*(intensity - min_int)**(-2))
+
+        curve.POINT.radius=radius
+
+        tree.geometry = curve
+
+    # ----------------------------------------------------------------------------------------------------
+    # Convert lines of field to mesh
+    # Uses the 'intensity' attribute to compute the section
+
     with gn.GeoNodes("To Lines of Field", fake_user=True) as tree:
 
-        resol   = tree.int_input(       "Resolution",       12, min_value=3, max_value=64, description="Lines geometry resolution")
-        radius  = tree.float_input(     "Radius",           .02, min_value=0., max_value=1., description="Lines radius")
-        int_fac = tree.factor_input(    "Intensity factor", 0., min_value=0., max_value=1., description="Radius proportional to 'Intensity' named attribute")
+        resol      = tree.int_input(       "Resolution",       12, min_value=3, max_value=64, description="Lines geometry resolution")
+        radius     = tree.float_input(     "Radius",           .02, min_value=0., max_value=1., description="Lines radius")
+        min_radius = tree.float_input(     "Min Radius",       0, min_value=0., max_value=1., description="Minimum lines radius")
+        int_fac    = tree.factor_input(    "Intensity factor", 0., min_value=0., max_value=1., description="Radius proportional to 'Intensity' named attribute")
 
         transp = tree.factor_input(     "Transparency",     0., min_value=0., max_value=1., description="Transparency factor to pass as 'Transparency' named attribute for shader")
         color  = tree.color_input(      "Color",            (.7, .2, .2, 1.), description = "Color to pass as 'Color' named attribute for shader")
@@ -284,13 +315,14 @@ def build_arrows(create_shaders=False):
         curves.store_named_float("Transparency", transp)
 
         with tree.layout("Intensity"):
-            int_base = curves.named_float("Intensity")
-            stats = curves.POINT.attribute_statistic(attribute=int_base)
-            #intensity = int_base.map_range(stats.min, stats.max, int_fac.map_range(to_min=1., to_max=.01), 1., interpolation_type='SMOOTHERSTEP')
-            intensity = int_base.map_range(stats.min, stats.max, 1 - int_fac, 1., interpolation_type='SMOOTHERSTEP')
-            curves.radius = intensity
+            curves = tree.group("Intensity to Radius",
+                geometry   = curves,
+                min_radius = min_radius,
+                max_radius = radius,
+                factor     = int_fac,
+            ).geometry
 
-        mesh = curves.curve_to_mesh(profile_curve=tree.CurveCircle(radius=radius, resolution=resol).curve)
+            mesh = curves.curve_to_mesh(profile_curve=tree.CurveCircle(radius=1, resolution=resol).curve)
 
         mesh.FACE.material     = mat
         mesh.FACE.shade_smooth = True
@@ -298,3 +330,61 @@ def build_arrows(create_shaders=False):
         # ----- Done
 
         tree.geometry = mesh.switch(-show)
+
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Field curve as lines or set of vectors
+
+    with gn.GeoNodes("Field Curve to Mesh") as tree:
+
+        show_lines   = tree.bool_input(     "Show Lines",           True)
+        line_int_fac = tree.factor_input(   "Intensity",            1., min_value=0., max_value=1.)
+        line_section = tree.float_input(    "Lines Section",        .02, min_value=0., max_value=1.)
+        min_line_sec = tree.float_input(    "Min Lines Section",     0, min_value=0., max_value=1.)
+        line_color   = tree.color_input(    "Lines Color",          (0, 1, 0, 1))
+        line_transp  = tree.factor_input(   "Lines Transparency",   0., min_value=0., max_value=1.)
+        line_mat     = tree.material_input( "Lines Material",       "Arrow")
+
+        show_arrows  = tree.bool_input(     "Show Arrows",          True)
+        ar_scale     = tree.float_input(    "Scale",                1., min_value=0.)
+        ar_dist      = tree.float_input(    "Distance",             .5, min_value=.1)
+        ar_section   = tree.float_input(    "Section",              .02, min_value=0., max_value=1.)
+        ar_color     = tree.color_input(    "Color",                (0, 1, 0, 1))
+        ar_transp    = tree.factor_input(   "Transparency",         0., min_value=0., max_value=1.)
+        ar_mat       = tree.material_input( "Material",             "Arrow")
+
+        with tree.layout("Lines of field"):
+
+            line_curves = tree.group("Intensity to Radius",
+                        geometry   = tree.geometry,
+                        min_radius = min_line_sec,
+                        max_radius = line_section,
+                        factor     = line_int_fac,
+                        ).geometry
+
+            line_mesh = line_curves.curve_to_mesh(profile_curve = tree.CurveCircle(radius=1., resolution=12).curve)
+            line_mesh.FACE.shade_smooth = True
+            line_mesh.FACE.material     = line_mat
+            line_mesh.store_named_vector("Color", line_color)
+            line_mesh.store_named_float( "Transparency", line_transp)
+            line_mesh = line_mesh.switch(-show_lines)
+
+        with tree.layout("Arrows"):
+
+            curves = tree.geometry
+            node = curves.curve_to_points(length=ar_dist, mode='LENGTH')
+            points = node.points
+            points.POINT.store_named_vector("Vectors", node.tangent*points.POINT.named_float("Intensity"))
+
+            arrows = tree.group("Arrows",
+                geometry     = points,
+                scale        = ar_scale,
+                section      = ar_section,
+                color        = ar_color,
+                transparency = ar_transp,
+                shaft        = ar_mat,
+                head         = ar_mat,
+                show         = show_arrows,
+                ).geometry
+
+
+        tree.geometry = line_mesh + arrows

@@ -11,96 +11,181 @@ geonodes module
 - Use numpy to manage vertices
 -----------------------------------------------------
 
-module : treestack
+module : tree
 ------------------
-- get create trees according tree type
-- StakedTree offering context management for with statement
-- Node implementing roog method and context management for layouts
-- Trees offering groups management
+- Tree root class
 
-update : 2024/02/17
-update : 2024/03/29
+Methods which are independant of the tree type
+
+created : 2024/07/21
 """
 
-import inspect
-from pathlib import Path
+#import inspect
+#from pathlib import Path
 import bpy
 import mathutils
+import numpy as np
 from pprint import pprint
 
 from geonodes.nodes.scripterror import NodeError
 
 from geonodes.nodes import constants
-from geonodes.nodes import documentation
-from geonodes.nodes import utils
-from geonodes.nodes import sockets
+from geonodes.nodes.socketclass import Socket
+from geonodes.nodes.nodeclass import Node
+#from geonodes.nodes import documentation
+#from geonodes.nodes import utils
+#from geonodes.nodes import sockets
+
 
 # ====================================================================================================
-# Get / delete a tree
+# Tree
 
-# ----------------------------------------------------------------------------------------------------
-# Get / Create a tree
-
-def get_tree(name, tree_type='GeometryNodeTree', create=False, clear=False):
-    """ Get or create a new nodes tree
-
-    Arguments
-    ---------
-        - name (str) : Tree name
-        - tree_type (str = 'GeometryNodeTree') : tree type in ('CompositorNodeTree', 'TextureNodeTree', 'GeometryNodeTree', 'ShaderNodeTree')
-        - create (bool = False) : Create the tree if it doesn't exist
-        - clear (bool = False) : Clear the tree if it exists
-
-    Returns
-    -------
-        - Tree of type matching the request or None if it doesn't exist
-    """
-
-    btree = bpy.data.node_groups.get(name)
-    if btree is None or btree.bl_idname != tree_type:
-        if not create:
-            return None
-        btree = bpy.data.node_groups.new(name=name, type=tree_type)
-
-    if clear:
-        btree.nodes.clear()
-
-    return btree
-
-# ----------------------------------------------------------------------------------------------------
-# Delete a tree
-
-def del_tree(btree): #, tree_type='GeometryNodeTree'):
-
-    """ Delete a tree
-
-    Arguments
-    ---------
-        - btree (blender Tree or str : Tree or tree name
-    """
-
-    if isinstance(btree, str):
-        btree = bpy.data.node_groups.get(name)
-
-    if btree is not None:
-        bpy.data.node_groups.remove(btree)
-
-# ====================================================================================================
-# Stacked Tree
-
-class StackedTree:
+class Tree:
 
     class Break(Exception):
         pass
 
-    def __init__(self):
-        self.nodes = {}
+    def __init__(self, tree_type, name, create=True, clear=True, clear_sockets=False, fake_user=False, is_group=False):
+        """ Tree of Nodes.
+
+        Arguments
+        ---------
+            - tree_type (str) : tree type in TREE_TYPES
+            - name (str) : Tree name
+            - create (bool = True) : create the tree if it doesn't exist
+            - clear (bool = False) : erase the existing nodes
+            - clear_sockets(bool = False) : clear sockets (sockets user values are deleted)
+            - is_group (bool = False) : initialize as a ground
+            - prefix (str = None) : prefix to use in the name
+        """
+
+        self.tree_type = tree_type
+        self.nodes     = {}
+        self.is_group  = is_group
+
+        # ----- Load / create the blender tree
+
+        if isinstance(name, str):
+            self.btree = Tree.get_tree(name, tree_type, create=create, clear=False)
+
+        else:
+            self.btree = name
+
+        # ----- Specific to Geometry Nodes
+
+        if hasattr(self.btree, 'is_modifier'):
+            self.btree.is_modifier = not self.is_group
+
+        # ----- Fake user
+
+        self.btree.use_fake_user = fake_user
+
+        # ----- Clear
+
+        if clear:
+            self.clear()
+
+        if clear_sockets:
+            self.clear_io_sockets()
+
+        # ----- Random generator (used for layout colors)
+
+        self.rng = np.random.default_rng(0)
+
+    # ====================================================================================================
+    # Get / delete a tree
+
+    # ----------------------------------------------------------------------------------------------------
+    # Get / Create a tree
+
+    @staticmethod
+    def get_tree(name, tree_type='GeometryNodeTree', create=False, clear=False):
+        """ Get or create a new nodes tree
+
+        Arguments
+        ---------
+            - name (str) : Tree name
+            - tree_type (str = 'GeometryNodeTree') : tree type in ('CompositorNodeTree', 'TextureNodeTree', 'GeometryNodeTree', 'ShaderNodeTree')
+            - create (bool = False) : Create the tree if it doesn't exist
+            - clear (bool = False) : Clear the tree if it exists
+
+        Returns
+        -------
+            - Tree of type matching the request or None if it doesn't exist
+        """
+
+        btree = bpy.data.node_groups.get(name)
+        if btree is None or btree.bl_idname != tree_type:
+            if not create:
+                return None
+            btree = bpy.data.node_groups.new(name=name, type=tree_type)
+
+        if clear:
+            btree.nodes.clear()
+
+        return btree
+
+    # ----------------------------------------------------------------------------------------------------
+    # Delete a tree
+
+    @staticmethod
+    def del_tree(btree):
+
+        """ Delete a tree
+
+        Arguments
+        ---------
+            - btree (blender Tree or str : Tree or tree name
+        """
+
+        if isinstance(btree, str):
+            btree = bpy.data.node_groups.get(name)
+
+        if btree is not None:
+            bpy.data.node_groups.remove(btree)
+
+    # ----------------------------------------------------------------------------------------------------
+    # Dump bnodes
+
+    def dump_bnodes(self):
+        print('-'*100)
+        print(f"Dump {self.btree.name}")
+        for bnode in self.btree.nodes:
+            print(f"'{bnode.name}' : " + "{")
+            print(f"    'blid' : '{bnode.bl_idname}',")
+            print( "    'prms' : {},")
+            print( "    'inss' : {" + ", ".join([f"'{bnode.inputs[i].name.lower()}' : {i}" for i in range(len(bnode.inputs))]) + "},")
+            print( "    'outs' : {" + ", ".join([f"'{bnode.outputs[i].name.lower()}' : {i}" for i in range(len(bnode.outputs))]) + "},")
+            print("},")
+
+            #print(f"{bnode.bl_idname:20s} : '{bnode.name}'")
+        print()
+
+    # ====================================================================================================
+    # Context manager
+
+    def __enter__(self):
+        constants.CURRENT_TREE = self
+        return self
+
+    def __exit__(self, type, exc_value, traceback):
+
+        self.arrange()
+        constants.CURRENT_TREE = None
+
+        print(f"Tree '{self.btree.name}' built: {self._str_stats}")
+
+        if isinstance(exc_value, self.Break):
+            return True
+
+    def arrange(self):
+        pass
 
     # ====================================================================================================
     # Some methods
 
     def __str__(self):
-        return f"<Tree '{self.btree.name}' ({self.TREE_TYPE}): {len(self.btree.nodes)} nodes and {len(self.btree.links)} links>"
+        return f"<Tree '{self.btree.name}' ({self.tree_type}): {len(self.btree.nodes)} nodes and {len(self.btree.links)} links>"
 
     @property
     def _str_stats(self):
@@ -109,41 +194,11 @@ class StackedTree:
     def clear(self):
         self.btree.nodes.clear()
 
-    @staticmethod
-    def current_tree():
-        return constants.current_tree()
-
-    # ====================================================================================================
-    # Stacking the Tree
-
-    def _stack_init(self):
-        pass
-
-    def _stack_done(self):
-        pass
-
-    def __enter__(self):
-        constants.TREE_STACK.append(self)
-        self._stack_init()
-        return self
-
-    def __exit__(self, exc_type, exc_value, exc_tb):
-        constants.TREE_STACK.pop()
-        constants.FRAME_STACK.clear()
-
-        self.arrange()
-        self._stack_done()
-
-        print(f"Tree '{self.btree.name}' built: {self._str_stats}")
-
-        if isinstance(exc_value, self.Break):
-            return True
-
     # ====================================================================================================
     # List of nodes
 
     def _register_node(self, node):
-        self.nodes[node.bnode.name] = node
+        self.nodes[node._bnode.name] = node
 
     def _bsocket_node(self, bsocket):
         node = self.nodes.get(bsocket.node.name)
@@ -152,20 +207,22 @@ class StackedTree:
                 if bsocket.node == node.bnode:
                     return node
 
-            #print("List of tree nodes:")
-            #for name, node in self.nodes.items():
-            #    print(f"{name:20s}") #" : {node}")
-            #print()
-
             raise NodeError(f"Tree {self} has no node owning the socket '{bsocket.name}' in Blender node '{bsocket.node.name}'.",
                 **{f"node_{i}": name for i, name in enumerate(self.nodes.keys())},
             )
         else:
             return node
 
+    def node_OLD(self, bl_idname, **kwargs):
+        bnode = self.btree.nodes.new(type=bl_idname)
+        for k, v in kwargs.items():
+            setattr(bnode, k, v)
+        return bnode
+
     # ====================================================================================================
     # Group of trees
 
+    """"
     @classmethod
     def prefixed(cls, name):
         if name is None:
@@ -174,12 +231,12 @@ class StackedTree:
             return Prefixed(cls.TREE_TYPE, name)
         else:
             return Prefixed(cls.TREE_TYPE, name.prefix)
-
+    """
 
     # ====================================================================================================
     # Base input nodes
 
-    def boolean(self, boolean, node_label=None, node_color=None):
+    def boolean_OLD(self, boolean, node_label=None, node_color=None):
         """ Boolean input
         class_name = Boolean
         """
@@ -265,7 +322,7 @@ class StackedTree:
         return self.value(value, node_label=node_label, node_color=node_color)
 
     def vector(self, vector=(0., 0., 0.), node_label=None, node_color=None):
-        """ Vector
+        """ Vector input
         class_name = Vector
         """
 
@@ -282,29 +339,6 @@ class StackedTree:
         node = self.Vector(node_label=node_label, node_color=node_color)
         node.bnode.vector = v
         return node.output_socket
-
-    def matrix(self, matrix=None, node_label=None, node_color=None):
-        """ Matrix
-
-        class_name = Matrix
-        """
-
-        # New socket instance if same socket type
-        if isinstance(matrix, sockets.MATRIX):
-            return matrix.clone
-
-        # Combine node
-        matrix_node = self.CombineMatrix(node_label=node_label, node_color=node_color)
-
-        m4 = utils.value_for(matrix, 'NodeSocketMatrix')
-        if matrix is not None:
-            for i in range(4):
-                for j in range(4):
-                    matrix_node.inputs[i*4 + j]._set_value(m4[i, j])
-                    #setattr(matrix_node, f"column_{i + 1}_row_{j + 1}", m4[i, j])
-
-        return matrix_node.matrix
-
 
     def image(self, image, node_label=None, node_color=None):
         """ Image input
@@ -429,7 +463,7 @@ def get_source_code_var_name():
 # ----------------------------------------------------------------------------------------------------
 # The base Node class
 
-class Node(object):
+class Node_OLD(object):
 
     def __init__(self, bl_idname, node_label=None, node_color=None, **kwargs):
 
@@ -674,7 +708,7 @@ class Node(object):
         raise NodeError(f"Node initialization error: wrong input socket or param name: '{name}'",
             {"Node"         : self,
               "Wrong name"  : name,
-              "Valid names" : self.valid_inputs,
+              "Valid named" : self.valid_inputs,
               "Parameters"  : self.params,
               "Sockets"     : sorted(list(self.inputs.sockets_pynames(enabled_only=False, label='BOTH').keys()))})
 

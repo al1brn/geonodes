@@ -26,8 +26,8 @@ from geonodes.nodes.scripterror import NodeError
 # ====================================================================================================
 # Version
 
-version = (2, 0, 0)
-blender = (4, 1, 0)
+version = (2, 1, 0)
+blender_version = (4, 1, 0)
 
 bldoc_node_bl_idname = "https://docs.blender.org/api/current/bpy.types"
 
@@ -37,6 +37,17 @@ bldoc_nodes = {
     'CompositorNodeTree' : '',
     #'TextureNodeTree'    : '',
     }
+
+NON_DOCUMENTED_NODES = {}
+
+def print_version():
+    print('-'*100)
+    print(f"geondes version {version} for Blender {blender_version}")
+    print("The following nodes are not implemented as methods or properties, ")
+    print("they must be called as nodes:")
+    for k, v in NON_DOCUMENTED_NODES.items():
+        print(f" - {k} : {v}")
+    print()
 
 # =============================================================================================================================
 # One tree can be edited at a time.
@@ -139,6 +150,8 @@ TYPE_TO_SOCKET_BL_ID = {  # OLD = BLENDER_SOCKET_CLASSES
     'TEXTURE'       : 'NodeSocketTexture',
 
     'MENU'          : 'NodeSocketMenu',
+
+    'MATRIX'        : 'NodeSocketMatrix',
     }
 
 # ====================================================================================================
@@ -160,6 +173,7 @@ SOCKET_CLASS_DEFAULT_SOCKET_NAME = {
     'TEXTURE'    : 'texture',
     'MATERIAL'   : 'material',
     'MENU'       : 'menu',
+    'MATRIX'     : 'matrix',
     }
 
 DATA_TYPE_TO_SOCKET_CLASS_NAME = { # DATA_TYPE_CLASSES
@@ -177,6 +191,7 @@ DATA_TYPE_TO_SOCKET_CLASS_NAME = { # DATA_TYPE_CLASSES
     'TEXTURE'    : 'TEXTURE',
     'MATERIAL'   : 'MATERIAL',
     'MENU'       : 'MENU',
+    'MATRIX'     : 'MATRIX',
     }
 
 # Legacy
@@ -198,6 +213,7 @@ SOCKET_CLASS_NAME_SHORTCUTS = {
     'Texture'    : 'TEXTURE',
     'Mat'        : 'MATERIAL',
     'Menu'       : 'MENU',
+    'Matrix'     : 'MATRIX',
     }
 
 # ====================================================================================================
@@ -290,6 +306,7 @@ BL_ID_SOCKET_TO_TYPE = {
              'NodeSocketVectorXYZ'          : 'VECTOR',
              'NodeSocketVirtual'            : 'CUSTOM',
              'NodeSocketMenu'               : 'MENU',
+             'NodeSocketMatrix'             : 'MATRIX',
         },
     'ShaderNodeTree' : {
              'NodeSocketColor'              : 'RGBA',
@@ -444,6 +461,15 @@ def cross_ref(tree_type, node_class_name, target_class_name, name):
     names.append(name)
 
     #print("constants.cross_ref", target_class_name)
+
+# =============================================================================================================================
+# Deprecated
+
+
+DEPRECATED = [
+    'FunctionNodeAlignEulerToVector',
+]
+
 
 # =============================================================================================================================
 # Reset

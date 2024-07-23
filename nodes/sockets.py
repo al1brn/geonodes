@@ -380,8 +380,12 @@ class Sockets:
 
     def sockets_pynames(self, enabled_only=True, label='NAME'):
 
+        # Socket name can collide with the name of a parameter
+        # in that case, it is suffixed by _ char
+
         bsocks = {}
         counts = {}
+
         for bsock in self.bsockets:
             if enabled_only and (not bsock.enabled):
                 continue
@@ -398,10 +402,19 @@ class Sockets:
             else:
                 raise NodeError(f"socket_pynames error: invalif 'label' argument ('{label}'). Must be in ('NAME', 'LABEL', 'BOTH')")
 
-            for pyname in labels:
+            for name in labels:
+
+                # Suffix by _ if collision with param name
+                pyname = name + '_' if name in self.node.params else name
+
                 if pyname in counts.keys():
                     counts[pyname] += 1
-                    bsocks[f"{pyname}_{counts[pyname]}"] = bsock
+                    if pyname[-1] == '_':
+                        unique = f"{pyname}{counts[pyname]}"
+                    else:
+                        unique = f"{pyname}_{counts[pyname]}"
+
+                    bsocks[unique] = bsock
                 else:
                     counts[pyname] = 0
                     bsocks[pyname] = bsock
@@ -480,20 +493,6 @@ class Sockets:
             bsock = self.sockets_pynames(enabled_only=False).get(index)
             if bsock is not None:
                 return bsock
-
-            if False: # OLD
-                # ----- Pyton name
-
-                pyname = index
-                rank = 0
-
-                if len(pyname) > 2 and pyname[-2] == '_' and pyname[-1].isnumeric():
-                    rank = int(pyname[-1])
-                    pyname = pyname[:-2]
-
-                homs = self.enabled_homonyms(pyname)
-                if len(homs) > rank:
-                    return homs[rank]
 
         raise NodeError(f"Socket named '{index}' not found : {str(self)}, node params: {self.node.params}")
 
@@ -823,11 +822,30 @@ class VECTOR_ROT(Socket):
     def __imod__(self, other):
         return self.jump(self % other)
 
+
 class VECTOR(VECTOR_ROT):
     DATA_TYPE = 'VECTOR'
 
 class ROTATION(VECTOR_ROT):
     DATA_TYPE = 'ROTATION'
+
+class MATRIX(Socket):
+
+    def __mul__(self, other):
+        dtype = utils.get_value_socket_type(other)
+
+        if dtype == 'MATRIX':
+            return self.tree.MultiplyMatrices(self, other).matrix
+        else:
+            return self.tree.TransformDirection(direction=other, transform=self).direction
+
+    def __matmul__(self, other):
+        dtype = utils.get_value_socket_type(other)
+
+        if dtype == 'MATRIX':
+            return self.tree.MultiplyMatrices(self, other).matrix
+        else:
+            return self.tree.TransformPoint(vector=other, transform=self).vector
 
 # ----------------------------------------------------------------------------------------------------
 # Menu
@@ -898,7 +916,6 @@ class BOOLEAN(Socket):
     def __ixor__(self, other):
         return self.jump(self * other)
     """
-
 
 # ----------------------------------------------------------------------------------------------------
 # String

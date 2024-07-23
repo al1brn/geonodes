@@ -43,7 +43,7 @@ Utilities
 import numpy as np
 
 import geonodes as gn
-from geonodes.bonus.nodes import arrows
+from geonodes.bonus.nodes import arrows as arrows_module
 
 # =============================================================================================================================
 # Visualize a field computed by a group
@@ -155,7 +155,7 @@ def gen_field_visualization(tree, field_node):
 
 def build_fields(clear_sockets=False):
 
-    arrows.build_arrows()
+    arrows_module.build_arrows()
     print("\nCreate fields modifiers...")
 
     # -----------------------------------------------------------------------------------------------------------------------------
@@ -609,79 +609,6 @@ def build_fields(clear_sockets=False):
 
         curve.to_output("Rectangle")
 
-    # -----------------------------------------------------------------------------------------------------------------------------
-    # Magnetic Field
-
-    with gn.GeoNodes("G Magnetic Field", clear_sockets=False, is_group=True) as tree:
-
-        position    = tree.vector_input(   "Position")
-
-        mag_locs    = tree.geometry_input( "Moments")
-
-        with tree.layout("Moments locations"):
-
-            comps_node = mag_locs.separate_components()
-            points = comps_node.point_cloud + comps_node.mesh.mesh_to_points()
-            #points.store_named_vector("Moment", moments)
-
-            count = points.CLOUD.domain_size().point_count
-
-        with tree.repeat(b = tree.vector(), index=0, iterations=count) as rep:
-
-            with tree.layout("Current magnet location and charge"):
-                loc = points.POINT.sample_index_vector(value=tree.position, index=rep.index)
-                mom = points.POINT.sample_index_vector(value=points.named_vector("Moment"), index=rep.index)
-                rep.index += 1
-
-            with tree.layout("Radial unit vector and squared norm"):
-                vect   = position - loc
-                er     = vect.normalize()
-
-                norm   = tree.max(vect.length(), .001)
-                norm2_ = 1/(norm*norm)
-
-            with tree.layout("Magnetic field"):
-
-                radial = er.dot(mom)
-                normal = er.cross(er.cross(mom))
-
-                B = (er.scale(radial) + normal).scale(norm2_)
-
-                rep.b += B
-
-
-        tree.vector().to_output("E")
-        rep.b.to_output("B")
-        points.to_output("Points")
-
-    # -----------------------------------------------------------------------------------------------------------------------------
-    # Magnetic Curve
-
-    with gn.GeoNodes("G Magnetic Curve Field", clear_sockets=False, is_group=True) as tree:
-
-        position     = tree.vector_input(   "Position")
-
-        magnet_curve = tree.geometry_input( "Magnet Curve")
-        moment       = tree.float_input(    "Moment",  1)
-        resolution   = tree.int_input(      "Resolution", 100, min_value=2)
-
-        with tree.layout("Moments locations"):
-
-            curve = magnet_curve.resample_curve(count=resolution)
-            points = curve.curve_to_points(count=resolution).points
-            points.POINT.store_named_vector("Moment", curve.sample_curve(length=tree.index*curve.curve_length/(resolution-1), mode='LENGTH').tangent)
-
-        field_node = tree.group("G Magnetic Field", position=position, moments=points)
-
-        field_node.e.to_output("E")
-        field_node.b.to_output("B")
-        curve.to_output("Curve")
-
-        # DEBUG
-        if False:
-            sph = curve.instance_on_points(instance=tree.UVSphere(radius=.1))
-            (curve + sph).to_output("Curve")
-
     # =============================================================================================================================
     # Compute Curl
 
@@ -762,16 +689,16 @@ def build_fields(clear_sockets=False):
         with tree.layout("Ensure beta is not greater than 1"):
             length = speed.length()
             beta   = tree.min(length, .999)
-            speed  = speed.scale(beta/length).switch(length.equal(0, .001), (0, 0, 0))
+            speed  = speed.scale(beta/length).switch(length.equal(0), (0, 0, 0))
 
         # ----- Rotate to have speed along x axis
 
         with tree.layout("Rotate fields to have speed long x axis"):
 
             rotation = tree.AlignEulerToVector(vector=speed, axis='X').output_socket
-            keep = rotation.node.output_socket
+            #keep = rotation.node.output_socket
 
-            inverse  = rotation.invert_rotation()
+            inverse  = rotation.clone.invert_rotation()
             Erot = E.rotate_vector(rotation=inverse)
             Brot = B.rotate_vector(rotation=inverse)
 
@@ -799,11 +726,13 @@ def build_fields(clear_sockets=False):
         # ----- Rotate back
 
         with tree.layout("Rotate back"):
-            E_ = Erot_.rotate_vector(rotation=keep)
-            B_ = Brot_.rotate_vector(rotation=keep)
+            E_ = Erot_.rotate_vector(rotation=rotation)
+            B_ = Brot_.rotate_vector(rotation=rotation)
 
-            E_.to_output("E")
-            B_.to_output("B")
+        # ----- Done
+
+        E_.to_output("E")
+        B_.to_output("B")
 
 
     # =============================================================================================================================
@@ -820,6 +749,8 @@ def build_fields(clear_sockets=False):
         iterations  = tree.int_input(     "Iterations", 20,    min_value=1, description="Number of iterations per line")
         delta       = tree.float_input(   "Delta",      .1,    min_value=.001, description="Distance to move at each iteration")
         direction   = tree.float_input(   "Direction",  1., description="Move forwards (+1) or backwards (-1)")
+        origin      = tree.vector_input(  "Origin", description="Origin to compute the distance from")
+        max_dist    = tree.float_input(   "Max Distance",  100., description="Ignore points beyond the max distance")
 
         # ----------------------------------------------------------------------------------------------------
         # Main
@@ -830,6 +761,7 @@ def build_fields(clear_sockets=False):
             points = points.points_to_vertices()
 
             points.store_named_float("DELTA", delta*direction)
+            points.POINT.delete_geometry(origin.distance(tree.position).greater_than(max_dist))
 
         with tree.repeat(points=points, top=True, iterations=iterations) as rep:
 
@@ -1043,56 +975,491 @@ def build_fields(clear_sockets=False):
 
         tree.geometry = field_visu + wire.switch(wire_radius.equal(0))
 
+    # =============================================================================================================================
+    # Magnet
+
     # -----------------------------------------------------------------------------------------------------------------------------
-    # Magnet Field simulation
+    # A single magnetic loop from a magnet
+    #
+    # Loop is an ellipsis tangent to x axis defined by its length (along x)
+    # and width scale (along y)
 
-    with gn.GeoNodes("Magnet Field", clear_sockets=clear_sockets) as tree:
+    with gn.GeoNodes("Magnet Single Loop", clear_sockets=clear_sockets) as tree:
 
-        #position     = tree.vector_input(  "Position")
+        length      = tree.float_input("Length", 1., min_value=0.)
+        width_scale = tree.float_input("Width Scale",  1., min_value=0.01)
+        angle       = tree.angle_input("Angle",  0.)
+        count       = tree.int_input(  "Resolution", 32, min_value=3)
 
-        mag_object   = tree.object_input(  "Magnet Curve", description="Magnet shape")
-        moment       = tree.float_input(   "Moment",           1, description="Magnetic field moment")
-        resolution   = tree.int_input(     "Resolution",       100, min_value=2, description=" Number of elements on the shape")
-        width        = tree.float_input(   "Width",           .3, min_value=.01, description="Magnet shape width")
-        height       = tree.float_input(   "Height",          .2, min_value=.01, description="Magnet shape height")
+        # ----- Main
 
-        # ---- Magnet
+        width = length * width_scale
 
-        show_magnet  = tree.bool_input(    "Show Magnet",     True, description="Show the magnet")
-        magnet_mat   = tree.material_input("Magnet Material", description="Magnet material")
+        circle = tree.MeshCircle(vertices=count, radius=1).mesh
+        x, y = tree.position.x, tree.position.y
+        circle.POINT.store_named_float("Intensity", (1.01 - y)*length)
 
-        # ----------------------------------------------------------------------------------------------------
-        # Main
+        x = tree.position.x * length
+        y = tree.position.y * width + width
+        z = tree.position.z
 
-        mag_curve = mag_object.object_info().geometry
+        circle.POINT.position = tree.vector((x, y, z))
+        circle.transform_geometry(rotation=(angle, 0, 0))
 
-        field_node = tree.group("G Magnetic Curve Field",
-            position        = tree.position,
+        tree.geometry = circle.mesh_to_curve()
 
-            magnet_curve    = mag_curve,
-            moment          = moment,
-            resolution      = resolution,
-            )
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Magnet loops
+    #
+    # Compute the magnetic field loops from the points in the input geometry
+    #
+    # Given x, y, what is r such as:
+    # x^ + (y - r)^2 = r^2
+    # r = (x^2 + y^2)/2y
 
-        field_visu = gen_field_visualization(tree, field_node)
+    with gn.GeoNodes("Magnet Loops", clear_sockets=clear_sockets) as tree:
 
-        with tree.layout("Magnet Shape"):
+        width_scale  = tree.float_input(   "Width Scale",  1., min_value=0.01)
+        location     = tree.vector_input(  "Location")
+        rotation     = tree.rotation_input("Rotation")
 
-            mag_curve = mag_curve.resample_curve(count=resolution)
-            mag_curve.POINT.store_named_float('uvx', tree.spline_parameter.factor)
+        # ----- Input points
 
-            profile = tree.grid(size_x=width, size_y=height, vertices_x=2, vertices_y=2).mesh_to_curve()
-            profile.POINT.store_named_float('uvy', tree.spline_parameter.factor)
+        with tree.layout("Input points"):
+            comps = tree.geometry.separate_components()
+            points = comps.point_cloud + comps.mesh.mesh_to_points()
+            n = points.CLOUD.domain_size().point_count
 
-            magnet = mag_curve.curve_to_mesh(profile_curve=profile, fill_caps=True)
-            magnet.CORNER.store_named_vector("UVMap", (magnet.POINT.named_float('uvx'), magnet.POINT.named_float('uvy'), 0))
+        # ----- Computation is made for a magnet centered along the x axis
 
-            magnet.remove_named_attribute('uvx')
-            magnet.remove_named_attribute('uvy')
+        with tree.layout("Center Magnet and align along x"):
+            points.POINT.position = (tree.position - location).rotate_vector(rotation.clone.invert_rotation())
 
-            magnet.FACE.material = magnet_mat
-            magnet.FACE.shade_smooth = False
+        # ----- Loop on the input points
+
+        with tree.repeat(geometry=None, index=0, iterations=n) as rep:
+
+            p = points.sample_index_vector(index=rep.index, value=tree.position)
+            rep.index += 1
+
+            x, y, z = p.x, p.y, p.z
+
+            # ----- Plane passing through x axis
+
+            angle = tree.arctan2(z, y)
+            rot_y = tree.sqrt(y**2 + z**2)
+
+            # ----- Width scale
+
+            y_ = rot_y/width_scale
+
+            r = (x**2 + y_**2)/2/y_
+
+            # ----- Add a loop
+
+            rep.geometry += tree.group("Magnet Single Loop",
+                length      = r,
+                width_scale = width_scale,
+                angle       = angle,
+                resolution  = 20 + r*20,
+                ).geometry
+
+        with tree.layout("Back to initial frame"):
+            curves = rep.geometry
+            curves.POINT.position = location + tree.position.rotate_vector(rotation)
 
         # ----- Done
 
-        tree.geometry = field_visu + magnet.switch(-show_magnet)
+        tree.geometry = curves
+
+    # ----------------------------------------------------------------------------------------------------
+    # Magnet field
+
+    with gn.GeoNodes("G Magnet Field", clear_sockets=clear_sockets, is_group=True) as tree:
+
+        position     = tree.vector_input(  "Position")
+        width_scale  = tree.float_input(   "Width Scale",  1., min_value=0.01)
+        location     = tree.vector_input(  "Location")
+        rotation     = tree.rotation_input("Rotation")
+        speed        = tree.vector_input(  "Speed")
+
+        # ----- Computation is made for a magnet centered along the x axis
+
+        with tree.layout("Center Magnet and align along x"):
+            position = (position - location).rotate_vector(rotation.clone.invert_rotation())
+
+            x, y, z = position.x, position.y, position.z
+
+        # ----- Plane passing through x axis
+
+        with tree.layout("Plane containing point and x axis"):
+            angle = tree.arctan2(z, y)
+            rot_y = tree.sqrt(y**2 + z**2)
+
+        # ----- Width scale
+
+        y_ = rot_y/width_scale
+
+        # ----- Normalized radius
+
+        r = (x**2 + y_**2)/2/y_
+
+        # ----- Normalized B
+
+        B = tree.vector(((r - y_)/width_scale, x, 0)).normalize()
+
+        # ----- Rotation
+
+        B = B.rotate_vector(rotation=(angle, 0, 0))
+
+        # ----- Back to the initial frame
+
+        B = B.rotate_vector(rotation)
+
+        with tree.layout("Take speed into account"):
+
+            transf_node = tree.group("EM Lorentz", speed=speed, b=B)
+            E = transf_node.e
+            B = transf_node.b
+
+        # ----- Done
+
+        E.to_output("E")
+        B.to_output("B")
+
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Magnet Shape
+
+    with gn.GeoNodes("Magnet Shape", clear_sockets=clear_sockets) as tree:
+
+        location     = tree.vector_input(   "Location")
+        rotation     = tree.rotation_input( "Rotation")
+
+        # ----- Magnet shape
+
+        round_profile = tree.bool_input(    "Round Profile", False)
+        magnet_length = tree.float_input(   "Length", 1.)
+        profile_size  = tree.float_input(   "Profile Size",  .3)
+        profile_scale = tree.float_input(   "Profile Scale", .8)
+        material      = tree.material_input("Material")
+        show          = tree.bool_input(    "Show",           True)
+
+        # ----- Magnet shape
+
+        rect = tree.Grid(size_x=profile_size, size_y=profile_size*profile_scale, vertices_x=2, vertices_y=2).mesh.mesh_to_curve()
+        ell  = tree.CurveCircle(radius=profile_size/2).curve.transform_geometry(scale=(1, profile_scale, 1))
+
+        prof = rect.switch(round_profile, ell)
+        prof.POINT.store_named_float("uvy", tree.spline_parameter.factor)
+
+        base = tree.CurveLine(start=(magnet_length*(-.5), 0, 0), end=(magnet_length*.5, 0, 0)).curve
+        base.POINT.store_named_float("uvx", tree.spline_parameter.factor)
+
+        shape = base.curve_to_mesh(profile_curve=prof, fill_caps=True)
+        shape.CORNER.store_named_vector("UVMap", tree.vector((shape.named_float("uvx"), shape.named_float("uvy"), 0)))
+        shape.FACE.shade_smooth = False
+        shape.FACE.material     = material
+
+        shape = shape.transform_geometry(translation=location, rotation=rotation)
+
+        tree.geometry = shape.switch(-show)
+
+    # =============================================================================================================================
+    # A full Magnet
+
+    with gn.GeoNodes("Magnet", clear_sockets=clear_sockets) as tree:
+
+        #raise tree.Break()
+
+        # ----- Magnet specs
+
+        width_scale  = tree.float_input(   "Width Scale",  1., min_value=0.01, description="Magnet field scale")
+        location     = tree.vector_input(  "Location", description="Magnet location")
+        rotation     = tree.rotation_input("Rotation", description="Magnet rotation")
+        speed        = tree.vector_input(  "Speed",    description="Magnet speed")
+
+        # ----- Magnet shape
+
+        show_magnet   = tree.bool_input(    "Show Magnet")
+        round_profile = tree.bool_input(    "Round Profile", False)
+        magnet_length = tree.float_input(   "Length", 1.)
+        profile_size  = tree.float_input(   "Profile Size",  .3)
+        profile_scale = tree.float_input(   "Profile Scale", .8)
+        magnet_mat    = tree.material_input("Magnet Material")
+
+        # ----- Magnetic loops
+
+        show_loops   = tree.bool_input(     "Show Magnetic Loops", True)
+        loop_int_fac = tree.factor_input(   "Mag Lines Intensity", 1., min_value=0., max_value=1.)
+        loop_section = tree.float_input(    "Mag Lines Section", .02, min_value=0., max_value=1.)
+        min_loop_sec = tree.float_input(    "Min Mag Lines Section", 0, min_value=0., max_value=1.)
+        loop_color   = tree.color_input(    "Mag Lines Color", (0, 1, 0, 1))
+        loop_transp  = tree.factor_input(   "Mag Lines Transparency", 0., min_value=0., max_value=1.)
+        loop_mat     = tree.material_input( "Mag Lines Material", "Arrow")
+
+        loop_arrows  = tree.bool_input(     "Show Loops Arrows",    True)
+        ar_scale     = tree.float_input(    "Scale",                1., min_value=0.)
+        ar_dist      = tree.float_input(    "Distance",             .5, min_value=.1, )
+        ar_section   = tree.float_input(    "Section",              .02, min_value=0., max_value=1.)
+        ar_color     = tree.color_input(    "Color",                (0, 1, 0, 1))
+        ar_transp    = tree.factor_input(   "Transparency",         0., min_value=0., max_value=1.)
+        ar_mat       = tree.material_input( "Material",             "Arrow")
+
+        # ----- Magnetic Arrows
+
+        show_arrows  = tree.bool_input(     "Show Arrows",    True)
+
+        # ----- Electric Field
+
+        eshow_field   = tree.bool_input(     "Show Electric Field", False)
+        e_max_dist    = tree.float_input(    "Max Distance to Magnet")
+        eloop_int_fac = tree.factor_input(   "Elec Lines Intensity", 1., min_value=0., max_value=1.)
+        eloop_section = tree.float_input(    "Elec Lines Section", .02, min_value=0., max_value=1.)
+        min_eloop_sec = tree.float_input(    "Min Elec Lines Section", 0, min_value=0., max_value=1.)
+        eloop_color   = tree.color_input(    "Elec Lines Color", (1, 0, 1, 1))
+        eloop_transp  = tree.factor_input(   "ELec Lines Transparency", 0., min_value=0., max_value=1.)
+        eloop_mat     = tree.material_input( "Elec Lines Material", "Arrow")
+
+        eloop_arrows  = tree.bool_input(     "Show Elec Line Arrows",    False)
+
+        ef_iterations = tree.int_input(      "Iterations", 20, min_value=2)
+        ef_delta      = tree.float_input(    "Delta",      .1, min_value=0.001)
+
+        ear_scale     = tree.float_input(    "Elec Scale",                1., min_value=0.)
+        ear_dist      = tree.float_input(    "Elec Distance",             .5, min_value=.1, )
+        ear_section   = tree.float_input(    "Elec Section",              .02, min_value=0., max_value=1.)
+        ear_color     = tree.color_input(    "Elec Color",                (1, 0, 1, 1))
+        ear_transp    = tree.factor_input(   "Elec Transparency",         0., min_value=0., max_value=1.)
+        ear_mat       = tree.material_input( "Elec Material",             "Arrow")
+
+        eshow_arrows  = tree.bool_input(     "Show Elec Arrows",    False)
+
+        # ----- Main
+
+        field_node = tree.group("G Magnet Field",
+            position     = tree.position,
+            width_scale  = width_scale,
+            location     = location,
+            rotation     = rotation,
+            speed        = speed,
+            )
+
+        # ----- Magnet shape
+
+        geo = tree.group("Magnet Shape",
+                    location      = location,
+                    rotation      = rotation,
+                    round_profile = round_profile,
+                    length        = magnet_length,
+                    profile_size  = profile_size,
+                    profile_scale = profile_scale,
+                    material      = magnet_mat,
+                    show          = show_magnet,
+                    )
+
+        # ----- Magnetic Field loops
+
+        with tree.layout("Magnet loops"):
+
+            loops_node = tree.group("Magnet Loops",
+                geometry     = tree.geometry,
+                width_scale  = width_scale,
+                location     = location,
+                rotation     = rotation,
+            )
+
+            lines_mesh = tree.group("Field Curve to Mesh",
+                geometry           = loops_node.geometry,
+                show_lines         = show_loops,
+                intensity          = loop_int_fac,
+                lines_section      = loop_section,
+                min_lines_section  = min_loop_sec,
+                lines_color        = loop_color,
+                lines_transparency = loop_transp,
+                lines_material     = loop_mat,
+
+                show_arrows        = loop_arrows,
+                scale              = ar_scale,
+                distance           = ar_dist,
+                section            = ar_section,
+                color              = ar_color,
+                transparency       = ar_transp,
+                material           = ar_mat,
+            ).geometry
+
+            geo += lines_mesh
+
+        # ----- Arrows
+
+        with tree.layout("Arrows"):
+
+            points = tree.geometry
+            points.POINT.store_named_vector("Vectors", field_node.b)
+
+            arrows = tree.group("Arrows",
+                geometry     = points,
+                scale        = ar_scale,
+                section      = ar_section,
+                color        = ar_color,
+                transparency = ar_transp,
+                shaft        = ar_mat,
+                head         = ar_mat,
+                show         = show_arrows,
+                ).geometry
+
+            geo += arrows
+
+        # ----- Electric field
+
+        with tree.layout("Electric Field"):
+
+            elec_field_node = tree.group("Compute Lines of Field",
+                geometry     = tree.geometry,
+                field        = field_node.e,
+                iterations   = ef_iterations.switch(tree.is_viewport, ef_iterations/10),
+                delta        = ef_delta.switch(tree.is_viewport, ef_delta*10),
+                direction    = tree.float(-1).switch(tree.random_boolean(probability=.5), 1),
+                origin       = location,
+                max_distance = e_max_dist,
+            )
+
+            lines_mesh = tree.group("Field Curve to Mesh",
+                geometry           = elec_field_node.geometry,
+                show_lines         = eshow_field,
+                intensity          = eloop_int_fac,
+                lines_section      = eloop_section,
+                min_lines_section  = min_eloop_sec,
+                lines_color        = eloop_color,
+                lines_transparency = eloop_transp,
+                lines_material     = eloop_mat,
+
+                show_arrows        = eloop_arrows,
+                scale              = ear_scale,
+                distance           = ear_dist,
+                section            = ear_section,
+                color              = ear_color,
+                transparency       = ear_transp,
+                material           = ear_mat,
+            ).geometry
+
+            geo += lines_mesh
+
+        # ----- Arrows
+
+        with tree.layout("Electric Arrows"):
+
+            points = tree.geometry
+            points.POINT.store_named_vector("Vectors", field_node.e)
+
+            arrows = tree.group("Arrows",
+                geometry     = points,
+                scale        = ear_scale,
+                section      = ear_section,
+                color        = ear_color,
+                transparency = ear_transp,
+                shaft        = ear_mat,
+                head         = ear_mat,
+                show         = eshow_arrows,
+                ).geometry
+
+            geo += arrows
+
+        # ----- Done
+
+        tree.geometry = geo
+
+    # =============================================================================================================================
+    # Quick Solenoid
+
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # A single loop
+
+    with gn.GeoNodes("Solenoid Single Magnetic Loop") as tree:
+
+        position = tree.vector_input("Position")
+
+        radius = tree.float_input("Radius", 1., min_value=.1)
+        length = tree.float_input("Length", 5., min_value=.1)
+
+        length_factor = tree.float_input("Length factor", 1.2, min_value=0)
+        radial_factor = tree.float_input("Radial factor", 1.2, min_value=0)
+
+        with tree.layout("Cylindrical coordinates"):
+            x, y, z = position.x, position.y, position.z
+            rho   = tree.vector((0, y, z)).length()
+            theta = tree.arctan2(z, y)
+
+        with tree.layout("Circle Radius to match length along X"):
+            radius_x = rho.map_range(from_min=0, from_max=radius, to_min=(radius + length)*length_factor, to_max=0)
+
+        with tree.layout("Base Circle"):
+            circle=tree.curve_circle(radius=1, resolution=12 + radius_x*20)
+
+        with tree.layout("Intensity"):
+            cy = tree.position.y
+            circle.POINT.store_named_float("Intensity", 1.01 - cy)
+
+
+        with tree.layout("Deform along Y"):
+            scale_y = rho.map_range(from_min=0, from_max=radius, to_min=radial_factor, to_max=0)
+            radius_y = radius_x*scale_y
+            circle = circle.transform_geometry(translation=(0, rho + radius_y, 0), scale=(radius_x, radius_x*scale_y, 1))
+
+        circle = circle.transform_geometry(rotation=(theta, 0, 0))
+
+        tree.geometry = circle
+
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # A full magnetic field from a Solenoid
+
+    with gn.GeoNodes("Solenoid Magnetic Field") as tree:
+
+        density = tree.float_input(   "Density", 10, min_value= 0.)
+        seed    = tree.integer_input( "Seed",    0)
+        radius  = tree.float_input(   "Radius",  1., min_value=.1)
+        length  = tree.float_input(   "Length",  5., min_value=.1)
+
+        length_factor = tree.float_input("Length factor", 1.2, min_value=0)
+        radial_factor = tree.float_input("Radial factor", 1.2, min_value=0)
+
+
+        with tree.layout("Random source point"):
+            disk = tree.MeshCircle(radius=radius, fill_type='NGON').mesh
+            disk.transform_geometry(rotation=(0, gn.half_pi, 0))
+
+            points = disk.distribute_points_on_faces(density_max=density*10, density_factor=density, seed=seed, distribute_method='POISSON', distance_min=radius/10).points
+            count = points.CLOUD.domain_size().point_count
+
+
+        with tree.repeat(geometry=None, index = 0, iterations=count) as rep:
+
+            with tree.layout("Current point"):
+                position = points.sample_index_vector(value=tree.position, index=rep.index)
+
+            circle = tree.group("Solenoid Single Magnetic Loop",
+                position = position,
+                radius = radius,
+                length = length,
+                length_factor = length_factor,
+                radial_factor = radial_factor,
+                ).geometry
+
+            rep.geometry += circle
+            rep.index += 1
+
+        circles = rep.geometry
+
+        mesh = tree.group("Field Curve to Mesh",
+            geometry            = circles,
+            show_lines          = tree.bool_input("Show circles"),
+            lines_section       = 0.02,
+            lines_color         = tree.color_input("Circle Color"),
+            lines_transparency  = tree.factor_input("Circles_transparency", min_value=0, max_value=1),
+            show_arrows         = tree.bool_input("Show Arrows"),
+            distance            = tree.float_input("Distance", .1, min_value=0.0001),
+            scale               = tree.float_input("Scale", 1.),
+            color               = tree.color_input("Color"),
+            transparency        = tree.factor_input("Transparency", min_value=0, max_value=1),
+            ).geometry
+
+        tree.geometry = circles.switch(-tree.bool_input("Show Curves")) + mesh

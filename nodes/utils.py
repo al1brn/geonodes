@@ -25,11 +25,19 @@ import numpy as np
 
 import bpy
 import mathutils
+import unicodedata
 
 from geonodes.nodes.scripterror import NodeError
 
 from geonodes.nodes import constants
 
+# ====================================================================================================
+# Remove accents
+
+def remove_accents(input_str):
+    nfkd_form = unicodedata.normalize('NFKD', input_str)
+    only_ascii = nfkd_form.encode('ASCII', 'ignore')
+    return only_ascii.decode('utf-8')
 
 # ====================================================================================================
 # Get the params of a node
@@ -91,13 +99,12 @@ def node_class_name(name):
 
     assert(name != "")
 
-    #if name == 'ID':
-    #    return 'Id'
-
     if name == 'ColorRamp':
         return 'ColorRamp'
 
     else:
+        name = remove_accents(name)
+
         words = clean(name, ' ').split(' ')
         for i in range(len(words)):
             if words[i].upper() != words[i]:
@@ -115,7 +122,7 @@ def node_method(name):
         return 'color_ramp'
 
     else:
-        return prefix_figure(clean(name, '_').lower())
+        return prefix_figure(remove_accents(clean(name, '_').lower()))
 
 def socket_name(name):
 
@@ -124,7 +131,7 @@ def socket_name(name):
     if name == 'ID':
         return 'ID'
     else:
-        return prefix_figure(clean(name, '_').lower())
+        return prefix_figure(remove_accents(clean(name, '_').lower()))
 
 def operation_name(name):
 
@@ -153,7 +160,7 @@ def operation_name(name):
 
     assert(name != "")
 
-    s = name.lower().replace(' ', '_').replace('-', '_')
+    s = remove_accents(name.lower()).replace(' ', '_').replace('-', '_')
     return rename.get(s, s)
 
 def data_type_name(name, all_names=None):
@@ -252,6 +259,26 @@ def value_for(value, socket_type):
             pass
 
         return constants.current_tree().CombineXYZ(v[0], v[1], v[2]).output_socket
+
+    elif socket_type in ['NodeSocketMatrix']:
+
+        a = np.array(value, object)
+        shape = np.shape(a)
+
+        if shape == ():
+            return np.resize(a, (4, 4))
+
+        elif shape == (3, 3):
+            m4 = np.zeros((4, 4), object)
+            m4[:3, :3] = a
+            m4[3, 3] = 1
+            return m4
+
+        elif np.size(a) == 16:
+            return np.reshape(a, (4, 4))
+
+        else:
+            return np.resize(a, (4, 4))
 
     elif socket_type in ['NodeSocketColor']:
 

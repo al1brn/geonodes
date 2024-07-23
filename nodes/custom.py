@@ -305,14 +305,12 @@ class C:
             if False and self.name == 'sin':
                 print("CUSTOM C.code", args)
 
-            if True:
-                # Property if not arg
-                # If more than on output socket, returns the node
-                is_prop = len(args) == 0
-                if is_prop and ret_socket is None and len(node_info.outputs) == 1:
-                    ret_socket = node_info.outputs.socket_names[0]
-            else:
-                is_prop = ret_socket is not None and len(args) == 0
+            # Property if not arg
+            # If more than on output socket, returns the node
+            is_prop = len(args) == 0
+            if is_prop and ret_socket is None and len(node_info.outputs) == 1:
+                ret_socket = node_info.outputs.socket_names[0]
+
             if not is_prop:
                 args.add('node_label', None)
                 args.add('node_color', None)
@@ -341,9 +339,6 @@ class C:
 
             if False and self.name == 'sin':
                 print("CUSTOM C.code\n", s)
-
-
-            #print("CUSTOM GLOBAL", name, "\n", s)
 
             # ----- Add to dynamic class of the Tree
 
@@ -510,15 +505,21 @@ class C:
 # DEFAULT NODE IMPLEMENTATIONS
 
 NODE_IMPLEMENTATIONS = {
-    'AccumulateField'    : None,
-    'AlignEulerToVector' : C.Meth(('Rot', 'Vect'), self_socket='rotation', ret_socket='rotation'),
+    'ActiveCamera'       : C.Glob(),
+    'AccumulateField'    : [C.Meth('Geometry', self_socket=None),
+                            C.Meth('Geometry', self_socket=None, name='@_DATA_TYPE', loops=['data_type'])],
+    # DEPRECATED 'AlignEulerToVector' : C.Meth(('Rot', 'Vect'), self_socket='rotation', ret_socket='rotation'),
+    'AlignRotationToVector' : [C.Meth(('Rot', 'Vect'), self_socket='rotation', ret_socket='rotation'),
+                               C.Meth('Rot', self_socket='rotation', name='align_to_vector', jump='rotation')],
     'Arc'                : C.Glob(ret_socket='curve'),
     'AttributeStatistic' : [C.Meth('Geometry'),
                             C.Meth('Geometry', name='@_DATA_TYPE', loops=['data_type'])],
+    'AxesToRotation'     : C.Glob(ret_socket='rotation'),
     'AxisAngleToRotation': C.Meth('Vect', 'axis', ret_socket='rotation'),
     'Bake'               : [C.Glob(ret_socket='geometry'),
                             C.Meth('Geometry', self_socket='geometry', ret_socket='geometry')],
     'BezierSegment'      : C.Glob(ret_socket='curve'),
+    'Blackbody'          : [C.Glob(), C.Meth(('Float', 'Int'), 'temperature')],
     'BlurAttribute'      : [C.Meth('Geometry', self_socket=None, ret_socket='value'),
                             C.Meth('Int',   'value', ret_socket='value', data_type='INT'),
                             C.Meth('Float', 'value', ret_socket='value', data_type='FLOAT'),
@@ -529,8 +530,8 @@ NODE_IMPLEMENTATIONS = {
                             C.Meth('Bool', 'boolean', 'OPERATION', ret_socket='boolean', loops=['operation'])],
     'BoundingBox'        :  C.Meth('Geometry'),
     'BrickTexture'       : C.Glob(ret_socket='color'),
-    'CaptureAttribute'   : [C.Meth('Geometry', jump='geometry', ret_socket='attribute'),
-                            C.Meth('Geometry', jump='geometry', ret_socket='attribute', name='capture_DATA_TYPE', loops=['data_type'])],
+    'CaptureAttribute'   : C.Meth('Geometry', jump='geometry', ret_socket='attribute'),
+                            #V4.2 C.Meth('Geometry', jump='geometry', ret_socket='attribute', name='capture_DATA_TYPE', loops=['data_type'])],
     'CheckerTexture'     : C.Glob(ret_socket='curve'),
     'Clamp'              : C.Meth(('Int', 'Float'), self_socket='value', ret_socket='result'),
     'CollectionInfo'     : C.Meth('Collection', ret_socket='instances'),
@@ -538,6 +539,8 @@ NODE_IMPLEMENTATIONS = {
     'ColorRamp'          : C.Meth(('Float', 'Int'), 'fac', ret_socket='value'),
     'CombineColor'       : [C.Glob(ret_socket='color'),
                             C.Glob('MODE', ret_socket='color', loops=["mode"])],
+    'CombineMatrix'      : C.Glob(ret_socket='matrix'),
+    'CombineTransform'   : C.Glob(ret_socket='transform'),
     'CombineXYZ'         : [C.Glob(ret_socket='vector'),
                             C.Glob('xyz', ret_socket='vector')],
     'Compare'            : C.Meth({'data_type': ()}, 'a', ret_socket='result', name='OPERATION', loops=['operation']),
@@ -612,13 +615,14 @@ NODE_IMPLEMENTATIONS = {
     'Index'              : [C.Get('Geometry', '@', None, 'index'), C.Glob()],
     'IndexOfNearest'     : [C.Meth('Geometry', None), C.Glob()],
     'IndexSwitch'        : C.Meth({'data_type': ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'ROTATION', 'STRING', 'RGBA', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL')}, 'ARG0', ret_socket='output'),
-
     'InstanceOnPoints'   : C.Meth('Geometry', 'points', ret_socket='instances'),
     'InstanceRotation'   : [C.Get('Geometry', '@', None, 'rotation'), C.Glob()],
     'InstanceScale'      : [C.Get('Geometry', '@', None, 'scale'), C.Glob()],
+    'InstanceTransform'  : [C.Get('Geometry', '@', None, 'transform'), C.Glob()],
     'InstancesToPoints'  : C.Meth('Geometry', 'instances', ret_socket='points'),
     'Integer'            : None,
     'InterpolateCurves'  : C.Meth('Geometry', 'guide_curves'),
+    'InvertMatrix'       : [C.Meth('Matrix', 'matrix'), C.Meth('Matrix', 'matrix', name='invert', jump='matrix'), C.Glob()],
     'InvertRotation'     : C.Meth(('Rot', 'Vect'), 'rotation', jump='rotation'),
     'IsEdgeSmooth'       : [C.Get( 'Geometry', 'edge_smooth',   None, 'smooth'), C.Glob()],
     'IsFacePlanar'       : [C.Meth('Geometry', None, ret_socket='planar'), C.Glob()],
@@ -637,7 +641,7 @@ NODE_IMPLEMENTATIONS = {
     'MaterialSelection'  : C.Meth('Mat', None, ret_socket='selection'),
     'Math'               : [C.Glob(name='OPERATION',  ret_socket='value', loops=['operation']),
                             C.Meth(('Float', 'Int'), 'value', ret_socket='value', name='OPERATION', loops=['operation'])],
-    'MeanFilterSDFVolume': None,
+    #'MeanFilterSDFVolume': None,
     'MenuSwitch'         : C.Glob(ret_socket='output'),
     'MergeByDistance'    : C.Meth('Geometry', jump='geometry'),
     'MeshBoolean'        : [C.Meth('Geometry', 'mesh_2', name='mesh_intersect',  ret_socket='mesh', operation='INTERSECT'),
@@ -648,20 +652,15 @@ NODE_IMPLEMENTATIONS = {
     'MeshLine'           : C.Glob(ret_socket='mesh'),
     'MeshToCurve'        : C.Meth('Geometry', 'mesh', ret_socket='curve'),
     'MeshToPoints'       : C.Meth('Geometry', 'mesh', ret_socket='points'),
-    'MeshToSDFVolume'    : None,
+    #'MeshToSDFVolume'    : None,
     'MeshToVolume'       : C.Meth('Geometry', 'mesh', ret_socket='volume'),
-    #'Mix'                : [C.Meth(('Float', 'Int'), 'a', jump='result', ret_socket='self', data_type='FLOAT', blend_type='MIX', factor_mode='UNIFORM'),
-    #                        C.Meth('Vect', 'a', jump='result', data_type='VECTOR',   blend_type='MIX'),
-    #                        C.Meth('Rot',  'a', jump='result', data_type='ROTATION', blend_type='MIX', factor_mode='UNIFORM'),
-    #                        C.Meth('Col',  'a', jump='result', data_type='RGBA',     factor_mode='UNIFORM'),
-    #                        C.Meth('Col',  'a', jump='result', data_type='RGBA',     name='mix_BLEND_TYPE', loops=['blend_type'], factor_mode='UNIFORM'),
-    #                        ],
-    'Mix'                : [C.Meth(('Float', 'Int'), 'a', data_type='FLOAT', blend_type='MIX', factor_mode='UNIFORM'),
-                            C.Meth('Vect', 'a', data_type='VECTOR',   blend_type='MIX'),
-                            C.Meth('Rot',  'a', data_type='ROTATION', blend_type='MIX', factor_mode='UNIFORM'),
-                            C.Meth('Col',  'a', data_type='RGBA',     factor_mode='UNIFORM'),
-                            C.Meth('Col',  'a', data_type='RGBA',     name='mix_BLEND_TYPE', loops=['blend_type'], factor_mode='UNIFORM'),
+    'Mix'                : [C.Meth(('Float', 'Int'), 'a', data_type='FLOAT', blend_type='MIX', factor_mode='UNIFORM', ret_socket='result'),
+                            C.Meth('Vect', 'a', data_type='VECTOR',   blend_type='MIX', ret_socket='result'),
+                            C.Meth('Rot',  'a', data_type='ROTATION', blend_type='MIX', factor_mode='UNIFORM', ret_socket='result'),
+                            C.Meth('Col',  'a', data_type='RGBA',     factor_mode='UNIFORM', ret_socket='result'),
+                            C.Meth('Col',  'a', data_type='RGBA',     name='mix_BLEND_TYPE', loops=['blend_type'], factor_mode='UNIFORM', ret_socket='result'),
                             ],
+    'MultiplyMatrices'   : [C.Meth('Matrix', 'matrix', ret_socket='matrix'), C.Glob(ret_socket='matrix')],
     'MusgraveTexture'    : C.Glob(ret_socket='height'),
     'NamedAttribute'     : [C.Glob(name='named_DATA_TYPE', ret_socket='attribute', loops=['data_type']),
                             C.Meth('Geometry', None, ret_socket='attribute'),
@@ -671,15 +670,18 @@ NODE_IMPLEMENTATIONS = {
     'ObjectInfo'         : C.Meth('Object'),
     'OffsetCornerInFace' : [C.Meth('Geometry', None, ret_socket='corner_index'), C.Glob()],
     'OffsetPointInCurve' : [C.Meth('Geometry', None), C.Glob()],
-    'OffsetSDFVolume'    : None,
+    #'OffsetSDFVolume'    : None,
     'PackUVIslands'      : C.Meth('Vect', 'uv', jump='uv'),
     'Points'             : C.Glob(ret_socket='points'),
     'PointsOfCurve'      : [C.Meth('Geometry', None), C.Glob()],
     'PointsToCurves'     : C.Meth('Geometry', 'points', ret_socket='curves'),
-    'PointsToSDFVolume'  : None,
+    #'PointsToSDFVolume'  : None,
     'PointsToVertices'   : C.Meth('Geometry', 'points', ret_socket='mesh'),
     'PointsToVolume'     : C.Meth('Geometry', 'points', ret_socket='volume'),
     'Position'           : [C.Get('Geometry', '@', None, 'position'), C.Glob()],
+    'ProjectPoint'       : [C.Glob(ret_socket='vector'),
+                            C.Meth('Vect', 'vector', ret_socket='vector'),
+                            C.Meth('Matrix', 'transform', ret_socket='vector')],
     'QuadraticBezier'    : C.Glob(ret_socket='curve'),
     'Quadrilateral'      : C.Glob(ret_socket='curve'),
     'QuaternionToRotation' : C.Glob(ret_socket='rotation'),
@@ -704,10 +706,11 @@ NODE_IMPLEMENTATIONS = {
     'RotateInstances'    : C.Meth('Geometry', 'instances', jump='instances'),
     'RotateRotation'     : C.Meth('Rot', 'rotation', jump='rotation'),
     'RotateVector'       : C.Meth('Vect', jump='vector'),
+    'Rotation'            : C.Glob(ret_socket='rotation'),
     'RotationToAxisAngle' : C.Meth(('Rot', 'Vect'), 'rotation'),
     'RotationToEuler'     : C.Meth(('Rot', 'Vect'), 'rotation', rot_socket='euler'),
     'RotationToQuaternion': C.Meth(('Rot', 'Vect'), 'rotation'),
-    'SDFVolumeSphere'    : None,
+    #'SDFVolumeSphere'    : None,
     'SampleCurve'        : [C.Meth('Geometry', 'curves'),
                             C.Meth('Geometry', 'curves', name='@_DATA_TYPE', loops=['data_type']),
                             C.Meth('Geometry', 'curves', name='@_DATA_TYPE_MODE', loops=['data_type', 'mode'])],
@@ -718,32 +721,33 @@ NODE_IMPLEMENTATIONS = {
                               C.Meth('Geometry', 'mesh', ret_socket='value', name='@_DATA_TYPE', loops=['data_type'])],
     'SampleUVSurface'    : [C.Meth('Geometry', 'mesh'),
                             C.Meth('Geometry', 'mesh', name='@_DATA_TYPE', loops=['data_type'])],
-    'SampleVolume'       : None,
+    #'SampleVolume'       : None,
     'ScaleElements'      : C.Meth('Geometry', jump='geometry'),
     'ScaleInstances'     : C.Meth('Geometry', 'instances', jump='instances'),
     'SceneTime'          : [C.Glob(),
                             C.Glob(name='seconds', ret_socket='seconds'),
                             C.Glob(name='frame',   ret_socket='frame')
                             ],
-    'Selection'          : None,
+    #'Selection'          : None,
     'SelfObject'         : C.Glob(),
     'SeparateColor'      : [C.Meth('Col'),
                             #C.Get('Col', 'MODE', 'color', None, loops=['mode'])
                             ],
     'SeparateComponents' : C.Meth('Geometry'),
     'SeparateGeometry'   : C.Meth('Geometry'),
-    'SeparateXYZ'        : [C.Meth('Vect'),
-                            #C.Get('Vect', 'xyz', 'vector', None)
-                            ],
+    'SeparateMatrix'     : [C.Glob(), C.Meth('Matrix', 'matrix')],
+    'SeparateTransform'  : [C.Glob(), C.Meth('Matrix', 'transform')],
+    'SeparateXYZ'        : C.Meth('Vect'),
     'SetCurveNormal'     : [C.Meth('Geometry', 'curve', jump='curve'),
                             C.Set( 'Geometry', 'normal', 'curve', 'mode', jump='curve')],
     'SetCurveRadius'     : [C.Meth('Geometry', 'curve', jump='curve'),
                             C.Set( 'Geometry', 'radius', 'curve', 'radius', jump='curve')],
     'SetCurveTilt'       : [C.Meth('Geometry', 'curve', jump='curve'),
                             C.Set( 'Geometry', 'tilt', 'curve', 'tilt', jump='curve')],
-    'SetFaceSet'         : None,
+    #'SetFaceSet'         : None,
     'SetHandlePositions' : C.Meth('Geometry', 'curve', jump='curve'),
     'SetHandleType'      : C.Meth('Geometry', 'curve', jump='curve'),
+    'SetInstanceTransform': [C.Set('Geometry', 'instance_transform', 'instances', 'transform', jump='instances')],
     'SetID'              : [C.Meth('Geometry', jump='geometry'),
                             C.Set( 'Geometry', 'id', '@', 'id', jump='geometry')],
     'SetMaterial'        : [C.Meth('Geometry', jump='geometry'),
@@ -755,7 +759,7 @@ NODE_IMPLEMENTATIONS = {
     'SetPosition'        : [C.Meth('Geometry', jump='geometry'),
                             C.Set( 'Geometry', 'position', '@', 'position', jump='geometry'),
                             C.Set( 'Geometry', 'offset',   '@', 'offset',   jump='geometry')],
-    'SetSelection'       : None,
+    #'SetSelection'       : None,
     'SetShadeSmooth'     : [C.Meth('Geometry', jump='geometry'),
                             C.Set('Geometry', 'shade_smooth', '@', 'shade_smooth', jump='geometry')],
     'SetSplineCyclic'    : [C.Meth('Geometry', jump='geometry'),
@@ -765,7 +769,7 @@ NODE_IMPLEMENTATIONS = {
     'SetSplineType'      : [C.Meth('Geometry', 'curve', jump='curve'),
                             C.Set( 'Geometry', 'spline_type', 'curve', 'spline_type', jump='geometry')],
     'ShortestEdgePaths'  : [C.Meth('Geometry', None), C.Glob()],
-    'SignedDistance'     : None,
+    #'SignedDistance'     : None,
     'SimulationInput'    : None,
     'SimulationOutput'   : None,
     'SliceString'        : C.Meth('Str', jump='string'),
@@ -792,8 +796,15 @@ NODE_IMPLEMENTATIONS = {
     'Switch'             : [C.Meth({'input_type': ()}, 'false', ret_socket='output', tree_type='GeometryNodeTree'),
                             C.Meth('Rgba', 'off', ret_socket='image', tree_type='CompositorNodeTree')],
 
+    'TransformDirection' : [C.Glob(ret_socket='direction'),
+                            C.Meth('Vect', 'direction', ret_socket='direction'),
+                            C.Meth('Matrix', 'transform', ret_socket='direction')],
+    'TransformPoint'     : [C.Glob(ret_socket='vector'),
+                            C.Meth('Vect', 'vector', ret_socket='vector'),
+                            C.Meth('Matrix', 'transform', ret_socket='vector')],
     'TransformGeometry'  : C.Meth('Geometry',              jump='geometry'),
     'TranslateInstances' : C.Meth('Geometry', 'instances', jump='instances'),
+    'TransposeMatrix'    : [C.Meth('Matrix', ret_socket='matrix'), C.Meth('Matrix', name='transpose', jump='matrix')],
     'Triangulate'        : C.Meth('Geometry', 'mesh',      jump='mesh'),
     'TrimCurve'          : C.Meth('Geometry', 'curve',     jump='curve'),
     'UVSphere'           : C.Glob(ret_socket='mesh'),
@@ -816,7 +827,7 @@ NODE_IMPLEMENTATIONS = {
     'VoronoiTexture'     : C.Glob(ret_socket='distance'),
     'WaveTexture'        : C.Glob(ret_socket='curve'),
     'WhiteNoiseTexture'  : C.Glob(ret_socket='value'),
-    '_3DCursor'          : None,
+    #'_3DCursor'          : None,
     }
 
 # GeometryNodeViewer

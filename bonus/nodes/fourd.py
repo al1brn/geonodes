@@ -572,7 +572,7 @@ def build_base():
 
             cone = tree.Cone(vertices=resol, depth=9*radius, radius_bottom=3.5*radius).mesh
 
-            rot = tree.vector(0).align_euler_to_vector(vector=p1 - p0, axis='Z')
+            rot = tree.vector(0).align_rotation_to_vector(vector=p1 - p0, axis='Z')
             cone.transform_geometry(translation=p1, rotation=rot)
 
             mesh += cone
