@@ -41,7 +41,7 @@ updates
 - creation : 2024/07/23
 """
 
-from geonodes.script.treeclass import Node
+from .treeclass import Node
 
 class Texture:
     @staticmethod

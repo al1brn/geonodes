@@ -80,7 +80,7 @@ def del_tree(btree):
     """
 
     if isinstance(btree, str):
-        btree = bpy.data.node_groups.get(name)
+        btree = bpy.data.node_groups.get(btree)
 
     if btree is not None:
         bpy.data.node_groups.remove(btree)
@@ -91,7 +91,8 @@ def del_tree(btree):
 
 def loop_on_nodes(func, **kwargs):
 
-    btree = get_tree("Dump", create=True, clear=True)
+    btree = get_tree("Dump", create=True)
+    btree.nodes.clear()
 
     for type_name in dir(bpy.types):
 
@@ -105,7 +106,7 @@ def loop_on_nodes(func, **kwargs):
 
         func(bnode, **kwargs)
 
-    Tree.del_tree(btree)
+    del_tree(btree)
 
 # =============================================================================================================================
 # Build the dictionnary of socket types -> list of socket node
@@ -134,7 +135,7 @@ def gen_NODE_NAMES():
     names = {}
 
     def f(bnode):
-        names[bnode.name.lower()] = type_name
+        names[bnode.name.lower()] = bnode.bl_idname
 
     loop_on_nodes(f)
 

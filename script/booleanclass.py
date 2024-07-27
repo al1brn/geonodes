@@ -29,14 +29,14 @@ updates
 import numpy as np
 
 import bpy
-from geonodes.script import utils
-from gnodes.treeclass import Tree, Node
-from geonodes.script.socketclass import DataSocket
+from . import utils
+from .treeclass import Tree, Node
+from .socketclass import ValueSocket
 
 # =============================================================================================================================
 # Boolean
 
-class Boolean(DataSocket):
+class Boolean(ValueSocket):
     SOCKET_TYPE = 'BOOLEAN'
 
     def __init__(self, value=False, name=None, tip=None, subtype='NONE'):
@@ -51,8 +51,8 @@ class Boolean(DataSocket):
 
     @property
     def math(self):
-        from gnodes import math
-        return math
+        from geonodes.script import gnmath
+        return gnmath
 
     # ====================================================================================================
     # Constructors

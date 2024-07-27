@@ -47,8 +47,8 @@ import numpy as np
 from pprint import pprint
 import bpy
 
-from geonodes.script.scripterror import NodeError
-from geonodes.script import constants
+from .scripterror import NodeError
+from . import constants
 
 # ====================================================================================================
 # Litteral to python name
@@ -168,6 +168,7 @@ def get_data_type(value, restrict_to=None, default='FLOAT'):
 
     if value is None:
         data_type = default
+        socket_type = 'NONE'
 
     else:
         socket_type = get_socket_type(value)
@@ -189,6 +190,7 @@ def get_input_type(value, restrict_to=None, default='FLOAT'):
 
     if value is None:
         input_type = default
+        socket_type = 'NONE'
 
     else:
         socket_type = get_socket_type(value)

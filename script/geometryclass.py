@@ -84,13 +84,14 @@ updates
 
 import bpy
 
-from geonodes.script.scripterror import NodeError
-from geonodes.script import constants
-from geonodes.script import utils
-from geonodes.script.treeclass import Tree, Node
-from geonodes.script.socketclass import NodeCache, DataSocket
-from geonodes.script.booleanclass import Boolean
-from geonodes.script.floatclass import Float
+from .scripterror import NodeError
+from . import constants
+from . import utils
+from .treeclass import Tree, Node
+from .socketclass import NodeCache, DataSocket
+from .booleanclass import Boolean
+from .floatclass import Float
+from .staticclass import nd
 
 # =============================================================================================================================
 # =============================================================================================================================
@@ -101,39 +102,10 @@ from geonodes.script.floatclass import Float
 
 # =============================================================================================================================
 
-class GeoBase:
+class GeoBase(nd):
 
     # =============================================================================================================================
-    # Read only properties
-
-    @classmethod
-    @property
-    def ID(cls):
-        return Node('ID')._out
-
-    @classmethod
-    @property
-    def Index(cls):
-        return Node('Index')._out
-
-    @classmethod
-    @property
-    def Normal(cls):
-        return Node('Normal')._out
-
-    @classmethod
-    @property
-    def Radius(cls):
-        return Node('Radius')._out
-
-    @classmethod
-    @property
-    def Position(cls):
-        return Node('Position')._out
-
-    #@classmethod
-    #def NamedAttribute(cls, name, attribute):
-    #    return attribute.NamedAttribute(name)
+    # Properties
 
     # ----- Position
 
@@ -191,8 +163,6 @@ class GeoBase:
     def material_selection(cls, material=None):
         return Node('Material Selection', {'Material': material})._out
 
-
-
     # ====================================================================================================
     # Selection mechanism
 
@@ -218,7 +188,7 @@ class GeoBase:
 
         if selection is None:
             self._selection = None
-            return
+            return self
 
         if isinstance(selection, slice):
             if slice.start is None:
@@ -420,6 +390,9 @@ class Domain(GeoBase, NodeCache):
         self._geo  = geometry
         self._cache_reset()
 
+    def __str__(self):
+        return f"<Domain {self.DOMAIN_NAME} of {self._geo}>"
+
     # ----- Overrides selection
     # Selection can be done either on the geometry or on the domain (or both but strange !)
 
@@ -526,7 +499,13 @@ class Domain(GeoBase, NodeCache):
 
         self._geo._jump(node._out)
 
-        return node
+        if len(attributes) == 1:
+            return node[list(attributes.keys())[0]]
+        else:
+            return node
+
+    def capture(self, **attributes):
+        return self.capture_attribute(**attributes)
 
     # ----- Store named attribute
 
@@ -641,7 +620,7 @@ class Point(Domain):
 
     # ----- Instance on points
 
-    def instance_on_points(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
+    def instance_on(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
         return Instances(Node('Instance on Points', {'Points': self._geo, 'Selection': self._sel,
                 'Instance': instance, 'Pick Instance': pick_instance, 'Instance Index': instance_index,
                 'Rotation': rotation, 'Scale': scale})._out)
@@ -758,7 +737,7 @@ class Face(Domain):
 
     def scale(self, scale=None, center=None, uniform=True):
         # scale_mode in ('UNIFORM', 'SINGLE_AXIS')
-        return self._geo._jump(Node('Scale Elements', {'Mesh': self._geo, 'Selection': sel._sel, 'Scale': scale, 'Center': center},
+        return self._geo._jump(Node('Scale Elements', {'Mesh': self._geo, 'Selection': self._sel, 'Scale': scale, 'Center': center},
             domain='FACE', scale_mode = 'UNIFORM' if uniform else 'SINGLE_AXIS')._out)
 
     # ----- Topology
@@ -865,7 +844,7 @@ class Edge(Domain):
 
     def scale(self, scale=None, center=None, uniform=True):
         # scale_mode in ('UNIFORM', 'SINGLE_AXIS')
-        return self._geo._jump(Node('Scale Elements', {'Mesh': self._geo, 'Selection': sel._sel, 'Scale': scale, 'Center': center},
+        return self._geo._jump(Node('Scale Elements', {'Mesh': self._geo, 'Selection': self._sel, 'Scale': scale, 'Center': center},
             domain='EDGE', scale_mode = 'UNIFORM' if uniform else 'SINGLE_AXIS')._out)
 
     # ----- Topology
@@ -1818,10 +1797,10 @@ class Instances(Geometry):
     def on_points(self, points, pick_instance=None, instance_index=None, rotation=None, scale=None):
         if isinstance(points, Geometry):
             if not hasattr(points, 'points'):
-                raise NodeError(f"'Instance to Points' node needs a geometry with points, not 'type(points).__name__'")
+                raise NodeError(f"'Instance to Points' node needs a geometry with points, not '{type(points).__name__}'")
             points = points.points
 
-        return points.instance_on_points(instance=self, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale)
+        return points.instance_on(instance=self, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale)
 
     def translate_instances(self, translation=None, local_space=None):
         return self.insts.translate(translation=translation, local_space=local_space)

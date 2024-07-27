@@ -20,6 +20,12 @@ updates
 """
 
 # ====================================================================================================
+# Version
+
+version = (3, 0, 0)
+blender_version = (4, 2, 0)
+
+# ====================================================================================================
 # Correspondance between NodeSocket.type and type(NodeSocket)
 # This list is automatically built from Blender wuth
 

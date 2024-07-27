@@ -31,9 +31,9 @@ updates
 import numpy as np
 
 import bpy
-from geonodes.script import utils
-from geonodes.script.treeclass import Tree, Node
-from geonodes.script.socketclass import DataSocket
+from . import utils
+from .treeclass import Tree, Node
+from .socketclass import ValueSocket
 
 # magic methods
 # __add__ __radd__ __iadd__ __sub__  __mul__ __matmul__ __truediv____floordiv__ __mod__ __divmod__ __pow__
@@ -45,12 +45,12 @@ from geonodes.script.socketclass import DataSocket
 # =============================================================================================================================
 # Root for Integer and Float
 
-class IntFloat(DataSocket):
+class IntFloat(ValueSocket):
 
     @property
     def math(self):
-        from gnodes import math
-        return math
+        from geonodes.script import gnmath
+        return gnmath
 
     # ====================================================================================================
     # Methods
@@ -84,8 +84,7 @@ class IntFloat(DataSocket):
         return self.map_range(from_min, from_max, to_min, to_max, clamp=clamp, interpolation_type='SMOOTHERSTEP')
 
     def color_ramp(self, keep=None):
-        from gnodes.colorclass import Color
-        return Color.ColorRamp(fac=self, keep=None)
+        return Node('Color Ramp', {'Fac': self}, _keep=keep)._out
 
     def to_string(self, decimals=None):
         return Node('Value to String', {'Value': self, 'Decimals': decimals})._out

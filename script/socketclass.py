@@ -39,10 +39,10 @@ import numpy as np
 import bpy
 import mathutils
 
-from geonodes.script.scripterror import NodeError
-from geonodes.script import constants
-from geonodes.script import utils
-from geonodes.script.treeclass import Tree, Node
+from .scripterror import NodeError
+from . import constants
+from . import utils
+from .treeclass import Tree, Node
 
 # =============================================================================================================================
 # =============================================================================================================================
@@ -179,7 +179,7 @@ class DataSocket(NodeCache):
         node._color = color
         return self
 
-    def _lcop(self, label):
+    def _lcop(self, label=None):
         return self._lc(label=label, color='OPERATION')
 
 
@@ -191,22 +191,6 @@ class DataSocket(NodeCache):
         if value in valids:
             return True
         raise NodeError(f"{context} value error: '{value}' is not valid.", valids=valids)
-
-
-    # =============================================================================================================================
-    # Constructors
-
-    @classmethod
-    def NamedAttribute(cls, name):
-        attribute = Node('Named Attribute', {'Name': name}, data_type=cls.data_type())._out
-        attribute.exists_ = attribute.node.exists
-        return attribute
-
-    @classmethod
-    def named(cls, name):
-        attribute = Node('Named Attribute', {'Name': name}, data_type=cls.data_type())._out
-        attribute.exists_ = attribute.node.exists
-        return attribute
 
     # =============================================================================================================================
     # To output
@@ -229,26 +213,26 @@ class DataSocket(NodeCache):
         bsocket = tree.new_output(bl_idname, name)
         tree.link(self, bsocket)
 
-    # =============================================================================================================================
-    # Switch mesthods
+    #def switch(self, condition=None, other=None):
+    #    return Node('Switch', {'Switch': condition, 'False': self, 'True': other}, input_type=self.input_type(default='GEOMETRY'))._out
 
-    def switch(self, condition=None, other=None):
-        return Node('Switch', {'Switch': condition, 'False': self, 'True': other}, input_type=self.input_type(default='GEOMETRY'))._out
+    # =============================================================================================================================
+    # Constructors
 
     # -----------------------------------------------------------------------------------------------------------------------------
     # Menu switch
 
-    def menu_switch(self, items={'A': None, 'B': None}, menu=0, name="Menu", tip=None):
+    @classmethod
+    def MenuSwitch(cls, items={'A': None, 'B': None}, menu=0, name="Menu", tip=None):
 
         # ----- Create the nodes
 
-        node = Node('Menu Switch', data_type=self.input_type())
+        node = Node('Menu Switch', data_type=cls.input_type())
 
         # ----- Create the items
 
         enum_items = node._bnode.enum_items
         menu_index = None
-        ok_self    = True
         for i, (name, value) in enumerate(items.items()):
 
             # ----- Create the socket
@@ -265,13 +249,7 @@ class DataSocket(NodeCache):
 
             # ----- Plug the value
 
-            if value is None and ok_self:
-                val = self
-                ok_self = False
-            else:
-                val = value
-
-            node.plug_value_into_socket(val, node.in_socket(1 + i))
+            node.plug_value_into_socket(value, node.in_socket(1 + i))
 
         # ----- Plug the menu
 
@@ -292,16 +270,17 @@ class DataSocket(NodeCache):
     # -----------------------------------------------------------------------------------------------------------------------------
     # Index switch
 
-    def index_switch(self, *values, index=0):
+    @classmethod
+    def IndexSwitch(cls, *values, index=0):
 
         # ----- Create the nodes
 
-        node = Node('Index Switch', data_type=self.input_type())
+        node = Node('Index Switch', data_type=cls.input_type())
 
         # ----- Create the items
 
         enum_items = node._bnode.index_switch_items
-        for i, item in enumerate([self] + list(values)):
+        for i, item in enumerate(list(values)):
 
             # ----- Create the socket
 
@@ -318,12 +297,60 @@ class DataSocket(NodeCache):
 
         return node._out
 
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Switch
+
+    @classmethod
+    def Switch(cls, condition=None, false=None, true=None):
+        return Node('Switch', {'Switch': condition, 'False': false, 'True': true}, input_type=cls.input_type(default='GEOMETRY'))._out
+
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Method versions
+
+    def menu_switch(self, self_name='A', items={'B': None}, menu=0, name="Menu", tip=None):
+        return self.MenuSwitch({self_name: self, **items}, menu=menu, name=name, tip=tip)
+
+    def index_switch(self, *values, index=0):
+        return self.IndexSwitch(self, *values, index=0)
+
+    def switch(self, condition=None, true=None):
+        return self.Switch(condition=condition, false=self, true=true)
+
     # ====================================================================================================
     # Methods
 
     def blur(self, iterations=None, weight=None):
         data_type = self.data_type(['FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR'])
         return Node('Blur Attribute', {'Value': self, 'Iterations': iterations, 'Weight': weight}, data_type=data_type)._out
+
+# =============================================================================================================================
+# =============================================================================================================================
+# Root for value sockets : BOOLEAN, INT MATRIX RGBA ROTATION VALUE VECTOR
+# =============================================================================================================================
+# =============================================================================================================================
+
+class ValueSocket(DataSocket):
+
+    # =============================================================================================================================
+    # Constructors
+
+    @classmethod
+    def NamedAttribute(cls, name):
+        attribute = Node('Named Attribute', {'Name': name}, data_type=cls.data_type())._out
+        attribute.exists_ = attribute.node.exists
+        return attribute
+
+    @classmethod
+    def named(cls, name):
+        attribute = Node('Named Attribute', {'Name': name}, data_type=cls.data_type())._out
+        attribute.exists_ = attribute.node.exists
+        return attribute
+
+    def store(self, domain, name):
+        try:
+            domain.store_named_attribute(name, self)
+        except:
+            raise NodeError(f"Impossible to store the named attribute '{name}' on domain {domain}.", domain=domain, attribute=self, name=name)
 
 # =============================================================================================================================
 # =============================================================================================================================

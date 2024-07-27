@@ -49,8 +49,7 @@ d180   = pi
 d270   = np.pi*1.5
 d360   = tau
 
-from .treeclass import Break, Tree, Layout, Node
-from .groupclass import Group
+from .treeclass import Break, Tree, Layout, Node, Group
 from .socketclass import Material, Image, Object, Collection, String, Menu
 from .booleanclass import Boolean
 from .floatclass import Float, Integer
@@ -59,4 +58,6 @@ from .colorclass import Color
 from .geometryclass import Geometry, Mesh, Curve, Points, Instances, Volume
 from .zones import Repeat, Simulation
 from .textures import Texture
-from . import math
+from .staticclass import nd
+from . import gnmath
+from .geonodesclass import GeoNodes

@@ -29,7 +29,7 @@ from pprint import pprint
 from mathutils import Vector, Color
 import bpy
 
-from gnodes.scripterror import NodeError
+from .scripterror import NodeError
 
 
 # ====================================================================================================

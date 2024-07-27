@@ -33,9 +33,9 @@ updates
 import numpy as np
 
 import bpy
-from geonodes.script import utils
-from geonodes.script.treeclass import Tree, Node
-from geonodes.script.socketclass import DataSocket
+from . import utils
+from .treeclass import Tree, Node
+from .socketclass import ValueSocket
 
 # =============================================================================================================================
 # =============================================================================================================================
@@ -43,12 +43,12 @@ from geonodes.script.socketclass import DataSocket
 # =============================================================================================================================
 # =============================================================================================================================
 
-class VectRot(DataSocket):
+class VectRot(ValueSocket):
 
     @property
     def math(self):
-        from gnodes import math
-        return math
+        from geonodes.script import gnmath
+        return gnmath
 
     def _reset(self):
         self._separate_xyz = None
@@ -106,7 +106,7 @@ class VectRot(DataSocket):
         return self.math.vmultiply_add(self, multiplier, addend)
 
     def cross_product(self, other):
-        return self.math.vmulticross_productply_add(self, multiplier, addend)
+        return self.math.cross_product(self, other)
 
     def project(self, other):
         return self.math.project(self, other)
@@ -228,75 +228,75 @@ class VectRot(DataSocket):
     # ----- Neg
 
     def __neg__(self):
-        return self.math.scale(self, -1)._lcop("-")
+        return self.math.scale(self, -1)._lcop()
 
     def __abs__(self):
-        return self.math.vabs(self)._lcop("abs")
+        return self.math.vabs(self)._lcop()
 
     # ----- Addition
 
     def __add__(self, other):
-        return self.math.vadd(self, other)._lcop("+")
+        return self.math.vadd(self, other)._lcop()
 
     def __radd__(self, other):
-        return self.math.vadd(other, self)._lcop("+")
+        return self.math.vadd(other, self)._lcop()
 
     # ----- Subtraction
 
     def __sub__(self, other):
-        return self.math.vsubtract(self, other)._lcop("-")
+        return self.math.vsubtract(self, other)._lcop()
 
     def __rsub__(self, other):
-        return self.math.vsubtract(other, self)._lcop("-")
+        return self.math.vsubtract(other, self)._lcop()
 
     # ----- Multiplication
 
     def __mul__(self, other):
         if utils.is_value_like(other):
             return self.math.scale(self, other)
-        return self.math.vmultiply(self, other)._lcop("*")
+        return self.math.vmultiply(self, other)._lcop()
 
     def __rmul__(self, other):
         if utils.is_value_like(other):
             return self.math.scale(self, other)
-        return self.math.vmultiply(other, self)._lcop("*")
+        return self.math.vmultiply(other, self)._lcop()
 
     # ----- Division
 
     def __truediv__(self, other):
-        return self.math.vdivide(self, other)._lcop("/")
+        return self.math.vdivide(self, other)._lcop()
 
     def __rtruediv__(self, other):
-        return self.math.vdivide(other, self)._lcop("/")
+        return self.math.vdivide(other, self)._lcop()
 
     # ----- Modulo
 
     def __mod__(self, other):
-        return self.math.vmodulo(self, other)._lcop("%")
+        return self.math.vmodulo(self, other)._lcop()
 
     def __rmod__(self, other):
-        return self.math.vmodulo(other, self)._lcop("%")
+        return self.math.vmodulo(other, self)._lcop()
 
     # ----- Mat mul -> dot product
 
     def __matmul__(self, other):
-        return self.math.dot_product(self, other)._lcop("@")
+        return self.math.dot_product(self, other)._lcop()
 
     # ----- Power -> cross product
 
     def __pow__(self, other):
-        return self.math.cross_product(self, other)._lcop("**")
+        return self.math.cross_product(self, other)._lcop()
 
     def __rpow__(self, other):
-        return self.math.cross_product(other, self)._lcop("**")
+        return self.math.cross_product(other, self)._lcop()
 
     # ----- Functions
 
     def __floor__(self):
-        return self.math.vfloor(self)._lcop("floor")
+        return self.math.vfloor(self)._lcop()
 
     def __ceil__(self):
-        return self.math.vceil(self)._lcop("ceil")
+        return self.math.vceil(self)._lcop()
 
 
 # =============================================================================================================================
@@ -402,6 +402,14 @@ class Vector(VectRot):
 
     def rotate(self, rotation=None):
         return Vector(Node('Rotate Vector', {'Vector': self, 'Rotation': rotation})._out)
+
+    # ----- Geometry
+
+    def index_of_nearest(self, group_id=None):
+        index = Node('Index of Nearest', {'Position': self, 'Group ID': group_id})._out
+        index.has_neighbor_ = index.node.has_neighbor
+        return index
+
 
 # =============================================================================================================================
 # =============================================================================================================================
@@ -536,9 +544,9 @@ class Rotation(VectRot):
     def __matmul__(self, other):
         data_type = utils.get_input_type(other, ['ROTATION', 'VECTOR'], ['VECTOR'])
         if data_type == 'ROTATION':
-            return self.rotate_global(other)._lcop('@')
+            return self.rotate_global(other)._lcop()
         else:
-            return self.rotate_vector(other)._lcop('@')
+            return self.rotate_vector(other)._lcop()
 
     def __invert__(self):
         return self.invert()._lcop('~')
@@ -550,7 +558,7 @@ class Rotation(VectRot):
 # =============================================================================================================================
 # =============================================================================================================================
 
-class Matrix(DataSocket):
+class Matrix(ValueSocket):
 
     SOCKET_TYPE = 'MATRIX'
 
@@ -573,7 +581,7 @@ class Matrix(DataSocket):
     # Constructors
 
     @classmethod
-    def Combine(self,
+    def Combine(cls,
                 c1r1=1, c1r2=0, c1r3=0, c1r4=0,
                 c2r1=0, c2r2=1, c2r3=0, c2r4=0,
                 c3r1=0, c3r2=0, c3r3=1, c3r4=0,
@@ -587,12 +595,12 @@ class Matrix(DataSocket):
                 })._out
 
     @classmethod
-    def FromArray(self, array):
+    def FromArray(cls, array):
         a = utils.value_to_array(array, (16,))
         return Node('Combine Matrix', {i: a[i] for i in range(16)})._out
 
     @classmethod
-    def Transform(self, translation=None, rotation=None, scale=None):
+    def Transform(cls, translation=None, rotation=None, scale=None):
         return Node('Combine Transform', {'Translation': translation, 'Rotation': rotation, 'Scale': scale})._out
 
     # ====================================================================================================
@@ -723,6 +731,6 @@ class Matrix(DataSocket):
     def __matmul__(self, other):
         data_type = utils.get_input_type(other, ['MATRIX', 'VECTOR'], 'VECTOR')
         if data_type == 'MATRIX':
-            return self.multiply(Matrix(other))._lcop("@")
+            return self.multiply(Matrix(other))._lcop()
         else:
-            return self.transform_point(other)._lcop("@")
+            return self.transform_point(other)._lcop()

@@ -59,10 +59,11 @@ updates
 import numpy as np
 import bpy
 
-from geonodes.script.scripterror import NodeError
-from geonodes.script. import treearrange
-from geonodes.script. import constants
-from geonodes.script. import utils
+from .scripterror import NodeError
+from . import treearrange
+from . import constants
+from . import utils
+from . import blendertree
 
 # =============================================================================================================================
 # Break to exit with blocks
@@ -105,12 +106,9 @@ class Tree:
 
     STACK   = []
 
-    def __init__(self, name, clear=True, is_group=False, prefix=None):
+    def __init__(self, tree_name, tree_type='GeometryNodeTree', clear=True, is_group=False):
 
-        tree_name = name if prefix is None else f"{prefix} {name}"
-
-        self._btree = utils.get_tree(tree_name, create=True, clear=False)
-        self._btree.is_modifier = not is_group
+        self._btree = blendertree.get_tree(tree_name, create=True)
 
         # ----- Management lists
         self._nodes   = []
@@ -161,7 +159,6 @@ class Tree:
         self._keeps.clear()
         self._nodes.clear()
         for bnode in self._btree.nodes:
-            print("DEBUG", bnode.label)
             if bnode.label is not None and bnode.label[:4] == 'KEEP':
                 self._keeps[bnode.bl_idname + '-' + bnode.label[5:]] = bnode
             else:
@@ -490,6 +487,7 @@ class Tree:
             print()
 
 
+    """
     # =============================================================================================================================
     # Global Nodes
 
@@ -522,6 +520,7 @@ class Tree:
     @property
     def ActiveCamera(cls):
         return Node("Active Camera")._out
+    """
 
 
 # =============================================================================================================================
@@ -590,12 +589,32 @@ class Node:
     @staticmethod
     def data_socket(bsocket):
         from geonodes.script import Boolean, Integer, Float, Vector, Rotation, Matrix, Color, Geometry, Material, Image, Object, Collection, String, Menu
+        from geonodes.script import Mesh, Curve, Points, Volume, Instances
 
-        return {'BOOLEAN': Boolean, 'INT': Integer, 'VALUE': Float, 'VECTOR': Vector, 'ROTATION': Rotation, 'MATRIX': Matrix, 'RGBA': Color,
+
+        socket_type = bsocket.type
+
+        socket_class = {'BOOLEAN': Boolean, 'INT': Integer, 'VALUE': Float, 'VECTOR': Vector, 'ROTATION': Rotation, 'MATRIX': Matrix, 'RGBA': Color,
             'STRING': String, 'MENU': Menu,
                 'GEOMETRY': Geometry,
                 'MATERIAL': Material, 'IMAGE': Image, 'OBJECT': Object, 'COLLECTION': Collection,
-            }[bsocket.type](bsocket)
+            }[bsocket.type]
+
+        if socket_type == 'GEOMETRY':
+            socket_name = bsocket.name.lower()
+            if socket_name == 'mesh':
+                return Mesh(bsocket)
+            elif socket_name in ['curve', 'curves']:
+                return Curve(bsocket)
+            elif socket_name in ['instance', 'instances']:
+                return Instances(bsocket)
+            elif socket_name in ['points']:
+                return Points(bsocket)
+            elif socket_name == 'volume':
+                return Volume(bsocket)
+
+        return socket_class(bsocket)
+
 
     # ----------------------------------------------------------------------------------------------------
     # Set the node parameters
@@ -629,7 +648,7 @@ class Node:
     # ----------------------------------------------------------------------------------------------------
     # Get a socket by its index, identifier or name
 
-    def inout_socket(self, name, bsockets):
+    def inout_socket(self, name, bsockets, halt):
 
         if isinstance(name, int):
             return bsockets[name]
@@ -646,17 +665,17 @@ class Node:
                     bsocket = bsock
                     break
 
-        if bsocket is None:
+        if halt and bsocket is None:
             raise NodeError(f"Socket name '{name}' not found in node '{self._bnode.name}' ({self._bnode.bl_idname})",
                 valids = [sock.name for sock in bsockets])
 
         return bsocket
 
-    def in_socket(self, name):
-        return self.inout_socket(name, self._bnode.inputs)
+    def in_socket(self, name, halt=True):
+        return self.inout_socket(name, self._bnode.inputs, halt=halt)
 
-    def out_socket(self, name):
-        return self.data_socket(self.inout_socket(name, self._bnode.outputs))
+    def out_socket(self, name, halt=True):
+        return self.data_socket(self.inout_socket(name, self._bnode.outputs, halt=halt))
 
     # ----------------------------------------------------------------------------------------------------
     # Set the node sockets
@@ -803,6 +822,12 @@ class Node:
             return
 
         # ----------------------------------------------------------------------------------------------------
+        # in_socket is defined by its name or index
+
+        if isinstance(in_socket, (str, int)):
+            in_socket = self.in_socket(in_socket)
+
+        # ----------------------------------------------------------------------------------------------------
         # In socket is multi input and value is a list
 
         if in_socket.is_multi_input and isinstance(value, list):
@@ -839,7 +864,7 @@ class Node:
         # ----------------------------------------------------------------------------------------------------
         # We can use default value
 
-        if socket_type in .constants.ARRAY_TYPES:
+        if socket_type in constants.ARRAY_TYPES:
             spec = constants.ARRAY_TYPES[socket_type]
             a = utils.value_to_array(value, spec['shape'])
 

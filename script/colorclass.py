@@ -29,9 +29,9 @@ updates
 import numpy as np
 
 import bpy
-from geonodes.script import utils
-from geonodes.script.treeclass import Tree, Node
-from geonodes.script.socketclass import DataSocket
+from . import utils
+from .treeclass import Tree, Node
+from .socketclass import ValueSocket
 
 # =============================================================================================================================
 # =============================================================================================================================
@@ -39,7 +39,7 @@ from geonodes.script.socketclass import DataSocket
 # =============================================================================================================================
 # =============================================================================================================================
 
-class Color(DataSocket):
+class Color(ValueSocket):
 
     SOCKET_TYPE = 'RGBA'
 

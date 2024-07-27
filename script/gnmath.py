@@ -40,7 +40,7 @@ updates
 - creation : 2024/07/23
 """
 
-from geonodes.script.treeclass import Node
+from .treeclass import Node
 
 # =============================================================================================================================
 # Boolean Math
@@ -94,8 +94,8 @@ def multiply_add(value, multiplier, addend, use_clamp=None):
 def power(base, exponent, use_clamp=None):
     return Node("Math", {0: base, 1: exponent}, use_clamp=use_clamp, operation='POWER')._out
 
-def log(value, base, use_clamp=None):
-    return Node("Math", {0: value, 1: other}, use_clamp=use_clamp, operation='LOGARITHM')._out
+def log(value, base=None, use_clamp=None):
+    return Node("Math", {0: value, 1: base}, use_clamp=use_clamp, operation='LOGARITHM')._out
 
 def sqrt(value, use_clamp=None):
     return Node("Math", {0: value}, use_clamp=use_clamp, operation='SQRT')._out
@@ -230,7 +230,7 @@ def vmultiply(value, other):
 def vdivide(value, other):
     return Node("Vector Math", {0: value, 1: other}, operation='DIVIDE')._out
 
-def vmultiply_add(value, maultiplie, addend):
+def vmultiply_add(value, multiplier, addend):
     return Node("Vector Math", {0: value, 1: multiplier, 2: addend}, operation='MULTIPLY_ADD')._out
 
 def cross_product(value, other):
