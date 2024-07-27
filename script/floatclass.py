@@ -1,26 +1,56 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on 2024/07/26
+
+@author: alain
+
+-----------------------------------------------------
+geonodes module
+- Scripting Geometry Nodes
+-----------------------------------------------------
+
+module : floatclass
+---------------------
+- Implement value classes
+
+classes
+-------
+- IntFloat      : Base class for Integer and Float
+- Integer       : DataSocket of type 'INT'
+- Float         : DataSocket of type 'FLOAT'
+
+functions
+---------
+
+updates
+-------
+- creation : 2024/07/23
+"""
+
 import numpy as np
 
 import bpy
-from geonodes.structured.treeclass import Tree, Node
-from geonodes.structured.socketclass import DataSocket
-#from geonodes.structured import math
+from geonodes.script import utils
+from geonodes.script.treeclass import Tree, Node
+from geonodes.script.socketclass import DataSocket
+
+# magic methods
+# __add__ __radd__ __iadd__ __sub__  __mul__ __matmul__ __truediv____floordiv__ __mod__ __divmod__ __pow__
+# __lshift__ __rshift__ __and__ __xor__ __or__
+# __neg__ __pos__ __abs__ __invert__
+# __complex__ __int__	__float__ __index__
+# __round__	__trunc__ __floor__	 __ceil__
 
 # =============================================================================================================================
-# Boolean
+# Root for Integer and Float
 
 class IntFloat(DataSocket):
 
     @property
     def math(self):
-        from geonodes.structured import math
+        from gnodes import math
         return math
-
-    # ====================================================================================================
-    # Constructors
-
-    @classmethod
-    def Random(cls, min=None, max=None, id=None, seed=None):
-        return cls(Node('Random Value', {'Min': min, 'Max': max, 'ID': id, 'Seed': seed}, data_type='FLOAT')._out)
 
     # ====================================================================================================
     # Methods
@@ -53,6 +83,16 @@ class IntFloat(DataSocket):
     def map_range_smoother(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=None):
         return self.map_range(from_min, from_max, to_min, to_max, clamp=clamp, interpolation_type='SMOOTHERSTEP')
 
+    def color_ramp(self, keep=None):
+        from gnodes.colorclass import Color
+        return Color.ColorRamp(fac=self, keep=None)
+
+    def to_string(self, decimals=None):
+        return Node('Value to String', {'Value': self, 'Decimals': decimals})._out
+
+    def curve(self, factor=None, keep=None):
+        return Node('Float Curve', {'Factor': factor, 'Value': self}, _keep=keep)._out
+
     # ====================================================================================================
     # Operations
 
@@ -61,44 +101,69 @@ class IntFloat(DataSocket):
     def __neg__(self):
         return self.math.multiply(self, -1)
 
+    # ----- Abs
+
+    def __abs__(self):
+        return self.math.abs(self)
+
     # ----- Addition
 
     def __add__(self, other):
+        if utils.is_vector_like(other):
+            return self.math.vadd(self, other)
         return self.math.add(self, other)
 
     def __radd__(self, other):
+        if utils.is_vector_like(other):
+            return self.math.vadd(other, self)
         return self.math.add(other, self)
 
     # ----- Subtraction
 
     def __sub__(self, other):
+        if utils.is_vector_like(other):
+            return self.math.vsubtract(self, other)
         return self.math.subtract(self, other)
 
     def __rsub__(self, other):
+        if utils.is_vector_like(other):
+            return self.math.vsubtract(other, self)
         return self.math.subtract(other, self)
 
     # ----- Multiplication
 
     def __mul__(self, other):
+        if utils.is_vector_like(other):
+            return self.math.scale(other, self)
         return self.math.multiply(self, other)
 
     def __rmul__(self, other):
+        if utils.is_vector_like(other):
+            return self.math.scale(other, self)
         return self.math.multiply(other, self)
 
     # ----- Division
 
     def __truediv__(self, other):
+        if utils.is_vector_like(other):
+            return self.math.vdivide(self, other)
         return self.math.divide(self, other)
 
     def __rtruediv__(self, other):
+        if utils.is_vector_like(other):
+            return self.math.vdivide(other, self)
         return self.math.divide(other, self)
 
     # ----- Modulo
 
     def __mod__(self, other):
+        if utils.is_vector_like(other):
+            return self.math.vmodulo(self, other)
         return self.math.modulo(self, other)
 
     def __rmod__(self, other):
+        if utils.is_vector_like(other):
+            return self.math.vmodulo(other, self)
         return self.math.modulo(other, self)
 
     # ----- Power
@@ -109,13 +174,72 @@ class IntFloat(DataSocket):
     def __rpow__(self, other):
         return self.math.power(other, self)
 
+    # ----- Operations
+
+    def __round__(self):
+        return self.math.round(self)
+
+    def __trunc__(self):
+        return self.math.trunc(self)
+
+    def __floor__(self):
+        return self.math.floor(self)
+
+    def __ceil__(self):
+        return self.math.ceil(self)
+
 
 class Float(IntFloat):
 
     SOCKET_TYPE = 'VALUE'
 
-    def get_data_type(self, node_name=None):
-        return 'FLOAT'
+    def __init__(self, value=0., name=None, min=None, max=None, tip=None, subtype='NONE'):
+        bsock = utils.get_bsocket(value)
+        if bsock is None:
+            if name is None:
+                bsock = Node('Value')._out
+                bsock._bsocket.default_value = value
+            else:
+                bsock = Tree.new_input('NodeSocketFloat', name, value=value, subtype=subtype, min_value=min, max_value=max, description=tip)
+
+        super().__init__(bsock)
+
+     # ====================================================================================================
+     # Constructors
+
+    @classmethod
+    def Percentage(cls, value=0., name='Percentage', min=None, max=None, tip=None):
+        return cls(value=value, name=name, min=min, max=max, tip=tip, subtype='PERCENTAGE')
+
+    @classmethod
+    def Factor(cls, value=0., name='Factor', min=0, max=1, tip=None):
+        return cls(value=value, name=name, min=min, max=max, tip=tip, subtype='FACTOR')
+
+    @classmethod
+    def Angle(cls, value=0., name='Angle', min=None, max=None, tip=None):
+        return cls(value=value, name=name, min=min, max=max, tip=tip, subtype='ANGLE')
+
+    @classmethod
+    def Time(cls, value=0., name='Time', min=None, max=None, tip=None):
+        return cls(value=value, name=name, min=min, max=max, tip=tip, subtype='TIME')
+
+    @classmethod
+    def TimeAbsolute(cls, value=0., name='TimeAbsolute', min=None, max=None, tip=None):
+        return cls(value=value, name=name, min=min, max=max, tip=tip, subtype='TIME_ABSOLUTE')
+
+    @classmethod
+    def Distance(cls, value=0., name='Distance', min=None, max=None, tip=None):
+        return cls(value=value, name=name, min=min, max=max, tip=tip, subtype='DISTANCE')
+
+    @classmethod
+    def WaveLength(cls, value=0., name='WaveLength', min=None, max=None, tip=None):
+        return cls(value=value, name=name, min=min, max=max, tip=tip, subtype='WAVELENGTH')
+
+    @classmethod
+    def Random(cls, min=None, max=None, id=None, seed=None):
+        return Node('Random Value', {'Min': min, 'Max': max, 'ID': id, 'Seed': seed}, data_type='FLOAT')._out
+
+
 
     # ====================================================================================================
     # Methods
@@ -162,6 +286,31 @@ class Float(IntFloat):
 class Integer(IntFloat):
 
     SOCKET_TYPE = 'INT'
+
+    def __init__(self, value=0, name=None, min=None, max=None, tip=None, subtype='NONE'):
+        bsock = utils.get_bsocket(value)
+        if bsock is None:
+            if name is None:
+                bsock = Node('Integer', integer=int(value))._out
+            else:
+                bsock = Tree.new_input('NodeSocketInt', name, value=value, subtype=subtype, min_value=min, max_value=max, description=tip)
+
+        super().__init__(bsock)
+
+     # ====================================================================================================
+     # Constructors
+
+    @classmethod
+    def Percentage(cls, value=0, name='Percentage', min=0, max=100, tip=None):
+        return cls(value=value, name=name, min=min, max=max, tip=tip, subtype='PERCENTAGE')
+
+    @classmethod
+    def Factor(cls, value=0, name='Factor', min=100, max=100, tip=None):
+        return cls(value=value, name=name, min=min, max=max, tip=tip, subtype='FACTOR')
+
+    @classmethod
+    def Random(cls, min=None, max=None, id=None, seed=None):
+        return Node('Random Value', {'Min': min, 'Max': max, 'ID': id, 'Seed': seed}, data_type='INT')._out
 
     # ====================================================================================================
     # Comparison

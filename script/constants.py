@@ -1,3 +1,28 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on 2024/07/26
+
+@author: alain
+
+-----------------------------------------------------
+script nodes
+- Scripting Geometry Nodes
+-----------------------------------------------------
+
+module : constants
+------------------
+- declare constants uses in the script module
+
+updates
+-------
+- creation : 2024/07/23
+"""
+
+# ====================================================================================================
+# Correspondance between NodeSocket.type and type(NodeSocket)
+# This list is automatically built from Blender wuth
+
 SOCKET_TYPES = {
     'BOOLEAN':      ['NodeSocketBool'],
     'COLLECTION':   ['NodeSocketCollection'],
@@ -23,7 +48,7 @@ SOCKET_TYPES = {
                      'NodeSocketVectorTranslation'],
     }
 
-DATA_TYPES_1 = {
+DATA_TYPES = {
     'VALUE'      : 'FLOAT',
     'INT'        : 'INT',
     'VECTOR'     : 'FLOAT_VECTOR',
@@ -37,7 +62,7 @@ DATA_TYPES_1 = {
     'INT8'       : 'INT8',
 }
 
-DATA_TYPES_2 = {
+INPUT_TYPES = {
     'VALUE'         : 'FLOAT',
     'INT'           : 'INT',
     'BOOLEAN'       : 'BOOLEAN',
@@ -54,6 +79,18 @@ DATA_TYPES_2 = {
     'MATERIAL'      : 'MATERIAL',
 }
 
+# =============================================================================================================================
+# Array type combination
+
+ARRAY_TYPES = {
+    'VECTOR'  : {'shape': (3,),  'combine': 'Combine XYZ',    'init': 'Vector',   'param': 'vector'},
+    'ROTATION': {'shape': (3,),  'combine': 'Combine XYZ',    'init': 'Rotation', 'param': 'rotation'},
+    'RGBA'    : {'shape': (4,),  'combine': 'Combine Color',  'init': 'Color',    'param': 'color'},
+    'MATRIX'  : {'shape': (16,), 'combine': 'Combine Matrix', 'init': None},
+}
+
+# =============================================================================================================================
+# Node names
 
 NODE_NAMES = {
 '3d cursor': 'GeometryNodeTool3DCursor',

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Wed Aug 24 07:40:10 2022
+Created on 2022/08/24
 
 @author: alain
 
@@ -15,8 +15,13 @@ module : arrange
 ----------------
 - Arrange the nodes
 
-update : 2024/02/17
-update : 2024/06/17
+
+updates
+-------
+- creation : 2022/08/24
+- update   : 2024/02/17
+- update   : 2024/06/17
+- update   : 2024/07/23
 """
 
 from pprint import pprint
@@ -24,7 +29,7 @@ from pprint import pprint
 from mathutils import Vector, Color
 import bpy
 
-from geonodes.structured.scripterror import NodeError
+from gnodes.scripterror import NodeError
 
 
 # ====================================================================================================

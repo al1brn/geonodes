@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on 2024/06/20
+Created on 2024/07/26
 
 @author: alain
 
@@ -15,7 +15,9 @@ module : scripterror
 ------------------
 - Node error error raising
 
-update: 2024/06/20
+updates
+-------
+- creation : 2024/07/23
 """
 
 import inspect

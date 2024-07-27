@@ -1,77 +1,51 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Sat Feb 10 10:30:38 2024
+Created on 2024/07/26
 
 @author: alain
 
 -----------------------------------------------------
-geonodes module
-- Generates nodes with python
+script nodes
+- Scripting Geometry Nodes
 -----------------------------------------------------
 
-module : utils
-------------------
-- base utils
+module : blendertree
+--------------------
+- Create and delete trees
+- Loops on nodes
 
-create : 2024/07/23
+classes
+-------
+
+
+functions
+---------
+- get_tree          : get or create a tree of the given type
+- del_tree          : delete the tree
+- loop_on_nodes     : loop on all the possible nodes and run a function for each
+- gen_SOCKET_TYPES  : create the dict SOCKET_TYPES
+- gen_NODE_NAMES    : create the dict NODE_NAMES
+- gen_maths         : legacy - used once
+- gen_boolean_math  : legacy - used once
+- gen_vector_math   : legacy - used once
+- gen_int_compare   : legacy - used once
+
+updates
+-------
+- creation : 2024/07/23
 """
 
-import unicodedata
-import numpy as np
-
-from pprint import pprint
 import bpy
-
-from geonodes.structured import constants
-
-# ====================================================================================================
-# Litteral to python name
-
-# ----------------------------------------------------------------------------------------------------
-# Remove accents
-
-def remove_accents(input_str):
-    nfkd_form = unicodedata.normalize('NFKD', input_str)
-    only_ascii = nfkd_form.encode('ASCII', 'ignore')
-    return only_ascii.decode('utf-8')
-
-# ----------------------------------------------------------------------------------------------------
-# Clean
-
-def clean(s, rep=' '):
-    for c in ['/', ':', '-', '.',' ']:
-        s = s.replace(c, rep)
-    return s
-
-# ----------------------------------------------------------------------------------------------------
-# Add a _ prefix is name starts with a figure
-
-def prefix_figure(name):
-    if name[0].isnumeric():
-        return "_" + name
-    else:
-        return name
-
-def socket_name(name):
-
-    assert(name != "")
-
-    return prefix_figure(remove_accents(clean(name, '_').lower()))
-
-    if name == 'ID':
-        return 'ID'
-    else:
-        return prefix_figure(remove_accents(clean(name, '_').lower()))
-
+from pprint import pprint
 
 # =============================================================================================================================
 # Get / delete a tree
 
 # ----------------------------------------------------------------------------------------------------
-# Get / Create a tree
+# Get a tree, create it if it doesn't exist
 
-def get_tree(name, tree_type='GeometryNodeTree', create=False, clear=False):
+def get_tree(name, tree_type='GeometryNodeTree', create=True):
     """ Get or create a new nodes tree
 
     Arguments
@@ -79,7 +53,6 @@ def get_tree(name, tree_type='GeometryNodeTree', create=False, clear=False):
         - name (str) : Tree name
         - tree_type (str = 'GeometryNodeTree') : tree type in ('CompositorNodeTree', 'TextureNodeTree', 'GeometryNodeTree', 'ShaderNodeTree')
         - create (bool = False) : Create the tree if it doesn't exist
-        - clear (bool = False) : Clear the tree if it exists
 
     Returns
     -------
@@ -92,15 +65,12 @@ def get_tree(name, tree_type='GeometryNodeTree', create=False, clear=False):
             return None
         btree = bpy.data.node_groups.new(name=name, type=tree_type)
 
-    if clear:
-        btree.nodes.clear()
-
     return btree
 
 # ----------------------------------------------------------------------------------------------------
 # Delete a tree
 
-def del_tree(btree): #, tree_type='GeometryNodeTree'):
+def del_tree(btree):
 
     """ Delete a tree
 
@@ -114,90 +84,6 @@ def del_tree(btree): #, tree_type='GeometryNodeTree'):
 
     if btree is not None:
         bpy.data.node_groups.remove(btree)
-
-# =============================================================================================================================
-# Get a blender socket from either a Blender NodeSocket or a DataSocket
-
-def get_bsocket(value):
-    if isinstance(value, bpy.types.NodeSocket):
-        return value
-    else:
-        return getattr(value, '_bsocket', None)
-
-# =============================================================================================================================
-# Get Value socket type
-
-def get_value_socket_type(value):
-
-    # ----- None : let's suppose it is for Geometry
-
-    if value is None:
-        return None
-
-    # ----- It is a DataSocket
-
-    if hasattr(value, '_bsocket'):
-        return value.SOCKET_TYPE
-
-    # ----- A Blender node socket
-
-    elif isinstance(value, bpy.types.NodeSocket):
-        return value.type
-
-    # ----- Ok, it is a python type
-
-    elif isinstance(value, bool):
-        return 'BOOLEAN'
-
-    elif isinstance(value, int):
-        return 'INT'
-
-    elif isinstance(value, float):
-        return 'VALUE'
-
-    elif isinstance(value, str):
-        return 'STRING'
-
-    elif isinstance(value, bpy.types.Object):
-        return 'OBJECT'
-
-    elif isinstance(value, bpy.types.Material):
-        return 'MATERIAL'
-
-    elif isinstance(value, bpy.types.Image):
-        return 'IMAGE'
-
-    elif isinstance(value, bpy.types.Collection):
-        return 'COLLECTION'
-
-    elif np.shape(value) != ():
-        size = np.size(value)
-        if size == 3:
-            return 'VECTOR'
-        elif size == 4:
-            return 'RGBA'
-        elif size == 16:
-            return 'MATRIX'
-        else:
-            raise NodeError(f"Value shape is {np.shape(value)} which is incorrect")
-
-    else:
-        return None
-
-def get_value_data_type_1(value):
-    socket_type = get_value_socket_type(value)
-    if socket_type is None:
-        return None
-    else:
-        return constants.DATA_TYPES_1.get(socket_type)
-
-def get_value_data_type_2(value):
-    socket_type = get_value_socket_type(value)
-    if socket_type is None:
-        return None
-    else:
-        return constants.DATA_TYPES_2.get(socket_type)
-
 
 # =============================================================================================================================
 # Loop on nodes
@@ -224,7 +110,7 @@ def loop_on_nodes(func, **kwargs):
 # =============================================================================================================================
 # Build the dictionnary of socket types -> list of socket node
 
-def print_sockets():
+def gen_SOCKET_TYPES():
 
     types = {}
 
@@ -243,8 +129,7 @@ def print_sockets():
 # =============================================================================================================================
 # Build the dictionnary of node name -> bl_idname
 
-@staticmethod
-def print_node_names():
+def gen_NODE_NAMES():
 
     names = {}
 
@@ -254,6 +139,9 @@ def print_node_names():
     loop_on_nodes(f)
 
     pprint(names)
+
+# =============================================================================================================================
+# Some legacy generators
 
 def gen_math():
     MATH_OPS = [
@@ -333,37 +221,3 @@ def gen_int_compare():
         print(f"def {name}(self, other):")
         print("    return Node(\"Compare\", " + "{'A': self, 'B': other}" + f", operation='{op}', data_type='INT')._out")
         print()
-
-
-
-# =============================================================================================================================
-# Create a numpy array of the correct shape
-
-def value_to_array(value, shape):
-
-    a = np.array(value, object)
-
-    if np.shape(a) in [(), (1,)]:
-        return np.resize(a, shape)
-
-    try:
-        return np.reshape(a, shape)
-    except:
-        raise Exception(f"The value {value} with shape {np.shape(a)} can't be reshaped into {shape}")
-
-# =============================================================================================================================
-# Get a Blender Data resource
-
-def get_blender_resource(socket_type, value):
-
-    spec = {
-        'OBJECT':     {'coll': bpy.data.objects,     'type': bpy.types.Object},
-        'COLLECTION': {'coll': bpy.data.collections, 'type': bpy.types.Collection},
-        'IMAGE':      {'coll': bpy.data.images,      'type': bpy.types.Image},
-        'MATERIAL':   {'coll': bpy.data.materials,   'type': bpy.types.Material},
-        }[socket_type]
-
-    if isinstance(value, spec['type']):
-        return value
-    else:
-        return spec['coll'].get(value)
