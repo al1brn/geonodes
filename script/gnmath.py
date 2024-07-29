@@ -29,7 +29,7 @@ Boolean math is prefixed by character 'b' when the name collides with python ope
     - band(bool1, bool2)
     - xor(bool1, bool2)
 
-round, ceil, floor and trunc are implemented by 'Math' node and 'Round' node.
+round, ceil, floor and trunc are implemented by 'Math' node and 'Float to Integer' node.
 The second one returns an Integer rather than a Float.
 The implementation from 'Math' is prefixed with 'math_':
     - math_floor() -> Float
@@ -147,19 +147,19 @@ def math_trunc(value, use_clamp=None):
 
 def round(value, use_clamp=None):
     # rounding_mode in ('ROUND', 'FLOOR', 'CEILING', 'TRUNCATE')
-    return Node("Round", {'Float': value}, rounding_mode='ROUND')._out
+    return Node("Float to Integer", {'Float': value}, rounding_mode='ROUND')._out
 
 def floor(value, use_clamp=None):
     # rounding_mode in ('ROUND', 'FLOOR', 'CEILING', 'TRUNCATE')
-    return Node("Round", {'Float': value}, rounding_mode='FLOOR')._out
+    return Node("Float to Integer", {'Float': value}, rounding_mode='FLOOR')._out
 
 def ceil(value, use_clamp=None):
     # rounding_mode in ('ROUND', 'FLOOR', 'CEILING', 'TRUNCATE')
-    return Node("Round", {'Float': value}, rounding_mode='CEILING')._out
+    return Node("Float to Integer", {'Float': value}, rounding_mode='CEILING')._out
 
 def trunc(value, use_clamp=None):
     # rounding_mode in ('ROUND', 'FLOOR', 'CEILING', 'TRUNCATE')
-    return Node("Round", {'Float': value}, rounding_mode='TRUNCATE')._out
+    return Node("Float to Integer", {'Float': value}, rounding_mode='TRUNCATE')._out
 
 def fract(value, use_clamp=None):
     return Node("Math", {0: value}, use_clamp=use_clamp, operation='FRACT')._out

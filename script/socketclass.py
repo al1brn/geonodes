@@ -128,8 +128,16 @@ class DataSocket(NodeCache):
             self._reset()
         return self
 
+    @classmethod
+    @property
+    def _class_name(cls):
+        return cls.__name__.split('.')[-1]
+
     def __str__(self):
-        return f"<DataSocket {self.SOCKET_TYPE} [{self.node._bnode.name}].'{self._bsocket.name}'>"
+        return f"<{self._class_name} {self.SOCKET_TYPE} [{self.node._bnode.name}].'{self._bsocket.name}'>"
+
+    #def __str__(self):
+    #    return f"<DataSocket {self.SOCKET_TYPE} [{self.node._bnode.name}].'{self._bsocket.name}'>"
 
     # ====================================================================================================
     # Socket type to data type conversion, depending on the nodes
@@ -145,6 +153,14 @@ class DataSocket(NodeCache):
     @classmethod
     def input_type(cls, restrict_to=None, default='FLOAT'):
         return utils.get_input_type(cls, restrict_to=restrict_to, default=default)
+
+    # ----- Math modul
+
+    @classmethod
+    @property
+    def math(cls):
+        from geonodes.script import gnmath
+        return gnmath
 
     # ====================================================================================================
     # Owning node
@@ -208,19 +224,44 @@ class DataSocket(NodeCache):
         bl_idname = self._bsocket.bl_idname
         if name is None:
             name = self.input_type().title()
-            #name = self._bsocket.name
+
+        # ---- Output socket creation if
+        # - It doesn't already exist
+        # - The tree is not a group
+        if self.SOCKET_TYPE == 'GEOMETRY':
+            tree = Tree.current_tree
+            if not(tree.has_output_geometry or tree._is_group):
+                tree.set_output_geometry(self, name)
+                return
+
+        # ---- New output socket
 
         bsocket = tree.new_output(bl_idname, name)
         tree.link(self, bsocket)
 
-    #def switch(self, condition=None, other=None):
-    #    return Node('Switch', {'Switch': condition, 'False': self, 'True': other}, input_type=self.input_type(default='GEOMETRY'))._out
+    def out(self, name=None):
+        self.to_output(name)
 
     # =============================================================================================================================
     # Constructors
 
     # -----------------------------------------------------------------------------------------------------------------------------
     # Menu switch
+
+    @staticmethod
+    def _geometry_class(geometries):
+        geo_class = None
+        for geo in geometries:
+            if geo is None:
+                continue
+            if utils.get_socket_type(geo) != 'GEOMETRY':
+                return None
+            if geo_class is None:
+                geo_class = type(geo)
+            else:
+                if not isinstance(geo, geo_class):
+                    return None
+        return geo_class
 
     @classmethod
     def MenuSwitch(cls, items={'A': None, 'B': None}, menu=0, name="Menu", tip=None):
@@ -265,7 +306,15 @@ class DataSocket(NodeCache):
 
         node.plug_value_into_socket(menu_socket, node.in_socket('Menu'))
 
-        return node._out
+        # ----- Geometry type
+
+        res = node._out
+        if cls.SOCKET_TYPE == 'GEOMETRY':
+            geo_class = cls._geometry_class(list(items.values()))
+            if geo_class is not None:
+                res = geo_class(res)
+
+        return res
 
     # -----------------------------------------------------------------------------------------------------------------------------
     # Index switch
@@ -295,14 +344,30 @@ class DataSocket(NodeCache):
 
         node.plug_value_into_socket(index, node.in_socket('Index'))
 
-        return node._out
+        # ----- Geometry type
+
+        res = node._out
+        if cls.SOCKET_TYPE == 'GEOMETRY':
+            geo_class = cls._geometry_class(list(values))
+            if geo_class is not None:
+                res = geo_class(res)
+
+        return res
 
     # -----------------------------------------------------------------------------------------------------------------------------
     # Switch
 
     @classmethod
     def Switch(cls, condition=None, false=None, true=None):
-        return Node('Switch', {'Switch': condition, 'False': false, 'True': true}, input_type=cls.input_type(default='GEOMETRY'))._out
+        res = Node('Switch', {'Switch': condition, 'False': false, 'True': true}, input_type=cls.input_type(default='GEOMETRY'))._out
+
+        if cls.SOCKET_TYPE == 'GEOMETRY':
+            geo_class = cls._geometry_class([false, true])
+            if geo_class is not None:
+                res = geo_class(res)
+
+        return res
+
 
     # -----------------------------------------------------------------------------------------------------------------------------
     # Method versions
@@ -341,7 +406,7 @@ class ValueSocket(DataSocket):
         return attribute
 
     @classmethod
-    def named(cls, name):
+    def Named(cls, name):
         attribute = Node('Named Attribute', {'Name': name}, data_type=cls.data_type())._out
         attribute.exists_ = attribute.node.exists
         return attribute

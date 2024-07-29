@@ -25,6 +25,7 @@ from pathlib import Path
 import bpy
 
 EXCLUDE_GEONODES = False
+FULL_PATH = False
 
 class NodeError(Exception):
 
@@ -66,9 +67,6 @@ class NodeError(Exception):
 
         for i_frame, frame_info in enumerate(inspect.stack()[2:]):
 
-            #print(dir(frame_info))
-            #print("ERROR", frame_info.positions)
-
             # ----- Generated source code
 
             if frame_info.filename == '<string>':
@@ -79,9 +77,6 @@ class NodeError(Exception):
             # ----- Exclude track from module
 
             if not EXCLUDE_GEONODES:
-                #path = Path(frame_info.filename)
-                #print([p for p in path.parents])
-
                 if path.stem in ['utils', 'custom', 'sockets', 'treestack', 'tree']:
                     continue
 
@@ -105,18 +100,23 @@ class NodeError(Exception):
             if blend_text:
                 lines = bpy.data.texts[text_key].lines
                 code_lines = [f"{i}> {lines[i].body}" for i in range(code_line0, code_line1)]
-                #line  = lines[frame_info.lineno - 1].body
             else:
                 try:
                     with open(frame_info.filename, 'r') as f:
                         lines = f.readlines()
-                    code_lines = [f"{i}> {lines[i - 1]}" for i in range(code_line0, code_line1)]
+                        code_lines = [f"{i+1}> {lines[i]}" for i in range(code_line0, code_line1)]
+                        if True:
+                            # lines are terminated by \n
+                            code_lines = [("".join(code_lines))[:-1]]
                 except:
                     code_lines = [f"Impossible to open '{frame_info.filename}'"]
 
             # ----- Track
 
-            stack.append(f"File '{path}', line {frame_info.lineno}")
+            if FULL_PATH:
+                stack.append(f"File '{path}', line {frame_info.lineno}")
+            else:
+                stack.append(f"File '{path.name}', line {frame_info.lineno}")
             stack.extend(code_lines)
             stack.append("")
 

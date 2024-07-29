@@ -87,7 +87,7 @@ import bpy
 from .scripterror import NodeError
 from . import constants
 from . import utils
-from .treeclass import Tree, Node
+from .treeclass import Tree, Node, Layout
 from .socketclass import NodeCache, DataSocket
 from .booleanclass import Boolean
 from .floatclass import Float
@@ -111,7 +111,7 @@ class GeoBase(nd):
 
     @property
     def position(self):
-        return GeoBase.Position
+        return Node('Position')._out
 
     @position.setter
     def position(self, value):
@@ -191,30 +191,33 @@ class GeoBase(nd):
             return self
 
         if isinstance(selection, slice):
-            if slice.start is None:
-                selection = GeoBase.Index.less_than(slice.stop)
-            elif slice.stop is None:
-                selection = GeoBase.Index.greater_equal(slice.start)
-            else:
-                a = (selection.start + selection.stop)/2
-                dist = a - selection.start + .1
-                selection = Float(GeoBase.Index).equal(a, epsilon=dist)
+            with Layout(f"selection = {selection}", color='AUTO_GEN'):
+                if selection.start is None:
+                    selection = nd.index.less_than(selection.stop)
+                elif selection.stop is None:
+                    selection = nd.index.greater_equal(selection.start)
+                else:
+                    a = (selection.start + selection.stop)/2
+                    dist = a - selection.start + .1
+                    selection = Float(nd.index).equal(a, epsilon=dist)
 
         elif isinstance(selection, tuple):
-            sel = None
-            idx = GeoBase.Index
-            for item in selection:
-                if sel is None:
-                    sel = idx.equal(item)
-                else:
-                    sel |= idx.equal(item)
+            with Layout(f"selection = {selection}", color='AUTO_GEN'):
+                sel = None
+                idx = nd.index
+                for item in selection:
+                    if sel is None:
+                        sel = idx.equal(item)
+                    else:
+                        sel |= idx.equal(item)
 
-            selection = sel
+                selection = sel
 
         else:
             socket_type = utils.get_socket_type(selection)
             if socket_type in ['INT', 'VALUE', 'FLOAT']:
-                selection = GeoBase.Index.equal(selection)
+                with Layout(f"selection = {selection}", color='AUTO_GEN'):
+                    selection = nd.index.equal(selection)
 
         self._selection = Boolean(selection)
 
@@ -233,9 +236,19 @@ class Geometry(DataSocket, GeoBase):
     def __init__(self, value=None, name=None, tip=None):
         bsock = utils.get_bsocket(value)
         if bsock is None:
+
+            # Default creation name
+
             if name is None:
-                name = 'Geometry'
-            bsock = Tree.new_input('NodeSocketGeometry', name, value=value, description=tip)
+                name = self.SOCKET_TYPE.lower()
+
+            # If the tree is not a group and if the default input geometry doesn't already exist, we create it
+
+            tree = Tree.current_tree
+            if tree.has_input_geometry or tree._is_group:
+                bsock = tree.new_input('NodeSocketGeometry', name, description=tip)
+            else:
+                bsock = tree.get_input_geometry(name, description=tip)
 
         super().__init__(bsock)
 
@@ -324,13 +337,13 @@ class Geometry(DataSocket, GeoBase):
         return Node('Convex Hull', {'Geometry': self})._out
 
     def merge_by_distance(self, distance=None, all=True):
-        return self._node({'Distance': distance}, mode = 'ALL' if all else 'CONNECTED')._out
+        return type(self)(self._node('Merge by Distance', {'Distance': distance}, mode = 'ALL' if all else 'CONNECTED')._out)
 
     def transform(self, translation=None, rotation=None, scale=None, matrix=None):
         if matrix is None:
-            return Node('Transform Geometry', {'Geometry': self, 'Translation': translation, 'Rotation': rotation, 'Scale': scale}, mode='COMPONENTS')._out
+            return type(self)(Node('Transform Geometry', {'Geometry': self, 'Translation': translation, 'Rotation': rotation, 'Scale': scale}, mode='COMPONENTS')._out)
         else:
-            return Node('Transform Geometry', {'Geometry': self, 'Transform': matrix}, mode='MATRIX')._out
+            return type(self)(Node('Transform Geometry', {'Geometry': self, 'Transform': matrix}, mode='MATRIX')._out)
 
     @property
     def separate_components(self):
@@ -357,7 +370,14 @@ class Geometry(DataSocket, GeoBase):
         return Instances(self.separate_components.instances)
 
     def join(self, *geometries):
-        geo = Node('Join Geometry', {'Geometry': [self] + list(geometries)})._out
+
+        if self.node._bnode.bl_idname == 'GeometryNodeJoinGeometry':
+            node = self.node
+            node.set_input_sockets({'Geometry': list(geometries)})
+        else:
+            node = Node('Join Geometry', {'Geometry': [self] + list(geometries)})
+
+        geo = node._out
         classes = set()
         for g in geometries:
             classes.add(type(g))
@@ -369,6 +389,8 @@ class Geometry(DataSocket, GeoBase):
     # ====================================================================================================
     # Operations
 
+    def to_instance(self, *geometries):
+        return Instances.FromGeometry([self] + list(geometries))
 
     # ====================================================================================================
     # Python Operations
@@ -453,25 +475,6 @@ class Domain(GeoBase, NodeCache):
     # ====================================================================================================
     # Properties
 
-    # ----- Position
-
-    @property
-    def position(self):
-        return Geometry.position
-
-    @position.setter
-    def position(self, value):
-        node = Node('Set Position', {'Geometry': self._geo, 'Selection': self._sel, 'Position': value})
-        return self._geo._jump(node._out)
-
-    @property
-    def offset(self):
-        raise NodeError(f"Point.offset is write only property")
-
-    @offset.setter
-    def offset(self, value):
-        node = Node('Set Position', {'Geometry': self._geo, 'Selection': self._sel, 'Offset': value})
-        return self._geo._jump(node._out)
 
     # ====================================================================================================
     # Methods
@@ -516,6 +519,9 @@ class Domain(GeoBase, NodeCache):
 
         return self._geo._jump(node._out)
 
+    def store(self, name, value=None):
+        return self.store_named_attribute(name, value=value)
+
     # ====================================================================================================
     # Sample nodes with domain
 
@@ -539,7 +545,7 @@ class Domain(GeoBase, NodeCache):
         self.exclude_corner('delete_geometry')
         return self._node('Delete Geometry', mode=mode)._out
 
-    def delete_all(self):
+    def delete(self):
         return self.delete_geometry(mode='ALL')
 
     def delete_faces(self):
@@ -582,7 +588,7 @@ class Domain(GeoBase, NodeCache):
         mode = self.plural_domain(['POINT', 'EDGE', 'FACE'], 'Extrude Mesh')
         node = Node('Extrude Mesh', {'Mesh': self._geo, 'Selection': self._sel, 'Offset': offset, 'Offset Scale': offset_scale, 'Individual': individual}, mode = mode)
 
-        mesh = self._geo._jump(node.mesh)
+        mesh = node.mesh
         mesh.top_  = node.top
         mesh.side_ = node.side
 
@@ -731,7 +737,7 @@ class Face(Domain):
     # ----- Flip
 
     def flip(self):
-        return self._geo._jump(Node('Flip Faces', {'Mesh': self._geo, 'Selection': self._sel})._out)
+        return Node('Flip Faces', {'Mesh': self._geo, 'Selection': self._sel})._out
 
     # ----- Scale
 
@@ -993,6 +999,7 @@ class Instance(Domain):
 # =============================================================================================================================
 
 class Mesh(Geometry):
+
     def _reset(self):
 
         super()._reset()

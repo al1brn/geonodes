@@ -227,10 +227,10 @@ def value_to_array(value, shape):
 # Some utilities
 
 def is_vector_like(value):
-    return get_socket_type(value) in ['VECTOR', 'ROTATION']
+    return get_socket_type(value) in ['VECTOR', 'ROTATION', 'COLOR']
 
 def is_color_like(value):
-    return get_socket_type(value) in ['COLOR']
+    return get_socket_type(value) in ['COLOR', 'VECTOR']
 
 def is_matrix_like(value):
     return get_socket_type(value) in ['MATRIX']

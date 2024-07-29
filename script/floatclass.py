@@ -11,7 +11,7 @@ geonodes module
 -----------------------------------------------------
 
 module : floatclass
----------------------
+-------------------
 - Implement value classes
 
 classes
@@ -46,11 +46,6 @@ from .socketclass import ValueSocket
 # Root for Integer and Float
 
 class IntFloat(ValueSocket):
-
-    @property
-    def math(self):
-        from geonodes.script import gnmath
-        return gnmath
 
     # ====================================================================================================
     # Methods
@@ -117,6 +112,9 @@ class IntFloat(ValueSocket):
             return self.math.vadd(other, self)
         return self.math.add(other, self)
 
+    def __iadd__(self, other):
+        return self._jump(self.math.add(self, other))
+
     # ----- Subtraction
 
     def __sub__(self, other):
@@ -128,6 +126,9 @@ class IntFloat(ValueSocket):
         if utils.is_vector_like(other):
             return self.math.vsubtract(other, self)
         return self.math.subtract(other, self)
+
+    def __isub__(self, other):
+        return self._jump(self.math.subtract(self, other))
 
     # ----- Multiplication
 
@@ -141,6 +142,9 @@ class IntFloat(ValueSocket):
             return self.math.scale(other, self)
         return self.math.multiply(other, self)
 
+    def __imul__(self, other):
+        return self._jump(self.math.multiply(self, other))
+
     # ----- Division
 
     def __truediv__(self, other):
@@ -152,6 +156,9 @@ class IntFloat(ValueSocket):
         if utils.is_vector_like(other):
             return self.math.vdivide(other, self)
         return self.math.divide(other, self)
+
+    def __itruediv__(self, other):
+        return self._jump(self.math.divide(self, other))
 
     # ----- Modulo
 
@@ -165,6 +172,9 @@ class IntFloat(ValueSocket):
             return self.math.vmodulo(other, self)
         return self.math.modulo(other, self)
 
+    def __imod__(self, other):
+        return self._jump(self.math.modulo(self, other))
+
     # ----- Power
 
     def __pow__(self, other):
@@ -172,6 +182,9 @@ class IntFloat(ValueSocket):
 
     def __rpow__(self, other):
         return self.math.power(other, self)
+
+    def __ipow__(self, other):
+        return self._jump(self.math.power(self, other))
 
     # ----- Operations
 
@@ -237,8 +250,6 @@ class Float(IntFloat):
     @classmethod
     def Random(cls, min=None, max=None, id=None, seed=None):
         return Node('Random Value', {'Min': min, 'Max': max, 'ID': id, 'Seed': seed}, data_type='FLOAT')._out
-
-
 
     # ====================================================================================================
     # Methods

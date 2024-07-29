@@ -61,3 +61,4 @@ from .textures import Texture
 from .staticclass import nd
 from . import gnmath
 from .geonodesclass import GeoNodes
+from . import macros

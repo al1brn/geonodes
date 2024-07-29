@@ -109,6 +109,7 @@ class Tree:
     def __init__(self, tree_name, tree_type='GeometryNodeTree', clear=True, is_group=False):
 
         self._btree = blendertree.get_tree(tree_name, create=True)
+        self._is_group = is_group
 
         # ----- Management lists
         self._nodes   = []
@@ -123,11 +124,6 @@ class Tree:
 
         # ----- Becomes the current tree
         self.push()
-
-        # ------ Create the in / out geometries
-        if not is_group:
-            _ = self.geometry
-            self.geometry = None
 
     # ====================================================================================================
     # Access to the blender tree
@@ -218,8 +214,12 @@ class Tree:
         elif isinstance(name, str):
             if name in ['OP', 'OPERATION']:
                 return (.406, .541, .608)
-            if name == 'KEEP':
+            elif name == 'KEEP':
                 return (.324, .147, .159)
+            elif name == 'MACRO':
+                return (.261, .963, .409)
+            elif name == 'AUTO_GEN':
+                return (.583, .229, .963)
             else:
                 raise Exception(f"Non referenced color", name)
         else:
@@ -268,6 +268,18 @@ class Tree:
                 return item
 
         return None
+
+    # ----------------------------------------------------------------------------------------------------
+    # First socket type
+
+    def first_io_socket_is_geometry(self, in_out='INPUT'):
+
+        for item in self._btree.interface.items_tree:
+            if item.item_type != 'SOCKET' or item.in_out != in_out:
+                continue
+            return item.socket_type == 'NodeSocketGeometry'
+
+        return False
 
     # ----------------------------------------------------------------------------------------------------
     # Create an new interface socket
@@ -366,11 +378,14 @@ class Tree:
             # The values themselves are stored in properties in the object modifiers
             # The modifier property is key by the tree input identifier
 
+            """ CAN CRASH !
+
             for obj in bpy.data.objects:
                 for mod in obj.modifiers:
                     if isinstance(mod, bpy.types.NodesModifier):
                         if mod.node_group == tree._btree:
                             mod[io_socket.identifier] = value
+            """
 
         return out_socket
 
@@ -408,13 +423,25 @@ class Tree:
 
     # =============================================================================================================================
     # Geometry I/O
+    # Geometry is the first socket which must be GEOMETRY
 
     @property
-    def geometry(self):
+    def has_input_geometry(self):
+        return self.first_io_socket_is_geometry('INPUT')
+
+    @property
+    def has_output_geometry(self):
+        return self.first_io_socket_is_geometry('OUTPUT')
+
+    def get_input_geometry(self, name=None, description=None):
 
         io_socket = self.io_socket_exists('NodeSocketGeometry', 'INPUT')
         if io_socket is None:
-            io_socket = self.new_io_socket('NodeSocketGeometry', 'INPUT', 'Geometry')
+            if name is None:
+                name = 'Geometry'
+            io_socket = self.new_io_socket('NodeSocketGeometry', 'INPUT', name)
+            if description is not None:
+                io_socket.description = description
 
         # ----- As the first
 
@@ -422,19 +449,31 @@ class Tree:
 
         return self.input_node[0]
 
-    @geometry.setter
-    def geometry(self, value):
+    def set_output_geometry(self, value, name=None):
 
-        io_socket = self.io_socket_exists('NodeSocketGeometry', 'OUTPUT')
-        if io_socket is None:
-            io_socket = self.new_io_socket('NodeSocketGeometry', 'OUTPUT', 'Geometry')
+        if self.has_output_geometry:
+            io_socket = self.io_socket_exists('NodeSocketGeometry', 'INPUT')
 
-        # ----- As the first
+        else:
+            if name is None:
+                name = utils.get_socket_type(value).title()
 
-        self._btree.interface.move(io_socket, 0)
+            io_socket = self.new_io_socket('NodeSocketGeometry', 'OUTPUT', name)
+
+            # ----- As the first
+
+            self._btree.interface.move(io_socket, 0)
 
         if value is not None:
             self.link(value, self.output_node._bnode.inputs[0])
+
+    @property
+    def geometry(self):
+        return self.get_input_geometry()
+
+    @geometry.setter
+    def geometry(self, value):
+        self.set_output_geometry(value)
 
     # =============================================================================================================================
     # Create a node which contains a python value
@@ -712,6 +751,7 @@ class Node:
     def __getattr__(self, name):
         if '_bnode' in self.__dict__:
             out_socket = self.out_socket(name)
+            #print("NODE GETATTR", name, '->', out_socket)
             if out_socket is None:
                 raise AttributeError(f"Node parameter '{name}' not found in '{self.__dict__['_bnode'].name}'.")
             else:

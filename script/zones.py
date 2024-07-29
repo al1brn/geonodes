@@ -49,6 +49,7 @@ updates
 - creation : 2024/07/23
 """
 
+
 from .scripterror import NodeError
 from . import utils
 from .treeclass import Tree, Node
@@ -89,7 +90,8 @@ class Zone:
         for k in self._locals.keys():
             geo = self._locals[k]
             if geo.SOCKET_TYPE == 'GEOMETRY':
-                self._locals[k] = type(all_sockets[k])(geo)
+                if all_sockets[k] is not None:
+                    self._locals[k] = type(all_sockets[k])(geo)
 
         # ----- Let's active dynamic attributes
         # _closed = True  : variables point to input and output nodes
@@ -122,6 +124,10 @@ class Zone:
         if closed is not None:
             if closed:
                 val = self._output.out_socket(name)
+                # Ensure proper geometry type
+                loc_val = self._locals.get(name)
+                if loc_val is not None and loc_val.SOCKET_TYPE == 'GEOMETRY':
+                    val = type(loc_val)(val)
             else:
                 val = self._locals.get(name)
                 # Trying to access fixed sockets (such as 'Delta Time')

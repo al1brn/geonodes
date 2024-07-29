@@ -16,6 +16,7 @@ module : vectorclass
 
 classes
 -------
+- VectorLike    : Base class for Vector,Rotation and Color
 - VectRot       : Base class for Vector and Rotation
 - Vector        : DataSocket of type 'VECTOR'
 - Rotation      : DataSocket of type 'ROTATION'
@@ -39,16 +40,114 @@ from .socketclass import ValueSocket
 
 # =============================================================================================================================
 # =============================================================================================================================
+# Base Vector, Rotation and Color
+# =============================================================================================================================
+# =============================================================================================================================
+
+class VectorLike(ValueSocket):
+
+    # ====================================================================================================
+    # Operations
+
+    # ----- Neg
+
+    def __neg__(self):
+        return self.math.scale(self, -1)._lcop()
+
+    def __abs__(self):
+        return self.math.vabs(self)._lcop()
+
+    # ----- Addition
+
+    def __add__(self, other):
+        return self.math.vadd(self, other)._lcop()
+
+    def __radd__(self, other):
+        return self.math.vadd(other, self)._lcop()
+
+    def __iadd__(self, other):
+        return self._jump(self.math.vadd(self, other))
+
+    # ----- Subtraction
+
+    def __sub__(self, other):
+        return self.math.vsubtract(self, other)._lcop()
+
+    def __rsub__(self, other):
+        return self.math.vsubtract(other, self)._lcop()
+
+    def __isub__(self, other):
+        return self._jump(self.math.vsubtract(self, other))
+
+    # ----- Multiplication
+
+    def __mul__(self, other):
+        if utils.is_value_like(other):
+            return self.math.scale(self, other)
+        return self.math.vmultiply(self, other)._lcop()
+
+    def __rmul__(self, other):
+        if utils.is_value_like(other):
+            return self.math.scale(self, other)
+        return self.math.vmultiply(other, self)._lcop()
+
+    def __imul__(self, other):
+        return self._jump(self.math.vmultiply(self, other))
+
+    # ----- Division
+
+    def __truediv__(self, other):
+        return self.math.vdivide(self, other)._lcop()
+
+    def __rtruediv__(self, other):
+        return self.math.vdivide(other, self)._lcop()
+
+    def __itruediv__(self, other):
+        return self._jump(self.math.vdivide(self, other))
+
+    # ----- Modulo
+
+    def __mod__(self, other):
+        return self.math.vmodulo(self, other)._lcop()
+
+    def __rmod__(self, other):
+        return self.math.vmodulo(other, self)._lcop()
+
+    def __imod__(self, other):
+        return self._jump(self.math.vmodulo(self, other))
+
+    # ----- Mat mul -> dot product
+
+    def __matmul__(self, other):
+        return self.math.dot_product(self, other)._lcop()
+
+    # ----- Power -> cross product
+
+    def __pow__(self, other):
+        return self.math.cross_product(self, other)._lcop()
+
+    def __rpow__(self, other):
+        return self.math.cross_product(other, self)._lcop()
+
+    def __ipow__(self, other):
+        return self._jump(self.math.cross_product(self, other))
+
+    # ----- Functions
+
+    def __floor__(self):
+        return self.math.vfloor(self)._lcop()
+
+    def __ceil__(self):
+        return self.math.vceil(self)._lcop()
+
+
+# =============================================================================================================================
+# =============================================================================================================================
 # Base Vector and Rotation
 # =============================================================================================================================
 # =============================================================================================================================
 
-class VectRot(ValueSocket):
-
-    @property
-    def math(self):
-        from geonodes.script import gnmath
-        return gnmath
+class VectRot(VectorLike):
 
     def _reset(self):
         self._separate_xyz = None
@@ -222,81 +321,7 @@ class VectRot(ValueSocket):
     def not_equal(self, other, epsilon=None, mode='ELEMENT'):
         return Node("Compare", {'A': self, 'B': other, 'Epsilon': epsilon}, data_type='VECTOR', operation='NOT_EQUAL', mode=mode)._out
 
-    # ====================================================================================================
-    # Operations
 
-    # ----- Neg
-
-    def __neg__(self):
-        return self.math.scale(self, -1)._lcop()
-
-    def __abs__(self):
-        return self.math.vabs(self)._lcop()
-
-    # ----- Addition
-
-    def __add__(self, other):
-        return self.math.vadd(self, other)._lcop()
-
-    def __radd__(self, other):
-        return self.math.vadd(other, self)._lcop()
-
-    # ----- Subtraction
-
-    def __sub__(self, other):
-        return self.math.vsubtract(self, other)._lcop()
-
-    def __rsub__(self, other):
-        return self.math.vsubtract(other, self)._lcop()
-
-    # ----- Multiplication
-
-    def __mul__(self, other):
-        if utils.is_value_like(other):
-            return self.math.scale(self, other)
-        return self.math.vmultiply(self, other)._lcop()
-
-    def __rmul__(self, other):
-        if utils.is_value_like(other):
-            return self.math.scale(self, other)
-        return self.math.vmultiply(other, self)._lcop()
-
-    # ----- Division
-
-    def __truediv__(self, other):
-        return self.math.vdivide(self, other)._lcop()
-
-    def __rtruediv__(self, other):
-        return self.math.vdivide(other, self)._lcop()
-
-    # ----- Modulo
-
-    def __mod__(self, other):
-        return self.math.vmodulo(self, other)._lcop()
-
-    def __rmod__(self, other):
-        return self.math.vmodulo(other, self)._lcop()
-
-    # ----- Mat mul -> dot product
-
-    def __matmul__(self, other):
-        return self.math.dot_product(self, other)._lcop()
-
-    # ----- Power -> cross product
-
-    def __pow__(self, other):
-        return self.math.cross_product(self, other)._lcop()
-
-    def __rpow__(self, other):
-        return self.math.cross_product(other, self)._lcop()
-
-    # ----- Functions
-
-    def __floor__(self):
-        return self.math.vfloor(self)._lcop()
-
-    def __ceil__(self):
-        return self.math.vceil(self)._lcop()
 
 
 # =============================================================================================================================
@@ -512,11 +537,12 @@ class Rotation(VectRot):
 
     # ----- Rotation
 
+    def rotate(self, rotate_by=None, rotation_space='GLOBAL'):
+        # rotation_space in ('GLOBAL', 'LOCAL')
+        return Rotation(Node('Rotate Rotation', {'Rotation': self, 'Rotate By': rotate_by}, rotation_space=rotation_space)._out)
+
     def rotate_local(self, rotate_by=None):
         return Rotation(Node('Rotate Rotation', {'Rotation': self, 'Rotate By': rotate_by}, rotation_space='LOCAL')._out)
-
-    def rotate_global(self, rotate_by=None):
-        return Rotation(Node('Rotate Rotation', {'Rotation': self, 'Rotate By': rotate_by}, rotation_space='GLOBAL')._out)
 
     # ----- Align to vector
 

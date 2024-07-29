@@ -31,7 +31,8 @@ import numpy as np
 import bpy
 from . import utils
 from .treeclass import Tree, Node
-from .socketclass import ValueSocket
+#from .socketclass import ValueSocket
+from .vectorclass import VectorLike
 
 # =============================================================================================================================
 # =============================================================================================================================
@@ -39,7 +40,7 @@ from .socketclass import ValueSocket
 # =============================================================================================================================
 # =============================================================================================================================
 
-class Color(ValueSocket):
+class Color(VectorLike):
 
     SOCKET_TYPE = 'RGBA'
 
