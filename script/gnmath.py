@@ -109,6 +109,9 @@ def abs(value, use_clamp=None):
 def exponent(value, use_clamp=None):
     return Node("Math", {0: value}, use_clamp=use_clamp, operation='EXPONENT')._out
 
+def exp(value, use_clamp=None):
+    return exponent(value, use_clamp=use_clamp)
+
 def min(value, other, use_clamp=None):
     return Node("Math", {0: value, 1: other}, use_clamp=use_clamp, operation='MINIMUM')._out
 
