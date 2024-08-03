@@ -54,6 +54,32 @@ SOCKET_TYPES = {
                      'NodeSocketVectorTranslation'],
     }
 
+SOCKET_SUBTYPES = {
+    'NodeSocketBool'                : ('NodeSocketBool',        'NONE'),
+    'NodeSocketCollection'          : ('NodeSocketCollection',  'NONE'),
+    'NodeSocketVirtual'             : ('NodeSocketVirtual',     'NONE'),
+    'NodeSocketGeometry'            : ('NodeSocketGeometry',    'NONE'),
+    'NodeSocketImage'               : ('NodeSocketImage',       'NONE'),
+    'NodeSocketInt'                 : ('NodeSocketInt',         'NONE'),
+    'NodeSocketIntUnsigned'         : ('NodeSocketInt',         'NONE'),
+    'NodeSocketMaterial'            : ('NodeSocketMaterial',    'NONE'),
+    'NodeSocketMatrix'              : ('NodeSocketMatrix',      'NONE'),
+    'NodeSocketMenu'                : ('NodeSocketMenu',        'NONE'),
+    'NodeSocketObject'              : ('NodeSocketObject',      'NONE'),
+    'NodeSocketColor'               : ('NodeSocketColor',       'NONE'),
+    'NodeSocketRotation'            : ('NodeSocketRotation',    'NONE'),
+    'NodeSocketString'              : ('NodeSocketString',      'NONE'),
+    'NodeSocketFloatFactor'         : ('NodeSocketFloat',       'FACTOR'),
+    'NodeSocketFloatAngle'          : ('NodeSocketFloat',       'ANGLE'),
+    'NodeSocketFloat'               : ('NodeSocketFloat',       'NONE'),
+    'NodeSocketFloatDistance'       : ('NodeSocketFloat',       'DISTANCE'),
+    'NodeSocketVectorEuler'         : ('NodeSocketVector',      'EULER'),
+    'NodeSocketVector'              : ('NodeSocketVector',      'NONE'),
+    'NodeSocketVectorXYZ'           : ('NodeSocketVector',      'XYZ'),
+    'NodeSocketVectorTranslation'   : ('NodeSocketVector',      'TRANSLATION'),
+}
+
+
 DATA_TYPES = {
     'VALUE'      : 'FLOAT',
     'INT'        : 'INT',

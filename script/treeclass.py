@@ -225,7 +225,6 @@ class Tree:
         else:
             return name
 
-
     # =============================================================================================================================
     # Create a link
 
@@ -340,57 +339,51 @@ class Tree:
         out_socket = tree.input_node[io_socket.identifier]
 
         # ----------------------------------------------------------------------------------------------------
-        # Let's apply the constraints
-
-        if min_value is not None:
-            io_socket.min_value = min_value
-
-        if max_value is not None:
-            io_socket.max_value = max_value
+        # Attributes
 
         if description is not None:
             io_socket.description = description
+
+        if min_value is not None and hasattr(io_socket, 'min_value'):
+            io_socket.min_value = min_value
+
+        if max_value is not None and hasattr(io_socket, 'max_value'):
+            io_socket.max_value = max_value
 
         # ----------------------------------------------------------------------------------------------------
         # Let's set the value if the socket is created
         # Note: if the socket already exists, we don't override its value
 
-        if (value is not None) and set_value:
+        def_value = utils.python_value_for_socket(value, utils.get_socket_type(out_socket))
+        if (def_value is not None):
 
             try:
-                io_socket.default_value = value
+                io_socket.default_value = def_value
             except Exception as e:
-                print("new_input IO BAD", value, 'CUR', io_socket.default_value)
-                pass
-                #raise NodeError(f"Impossible to set the default value {value} to io_socket of type '{bl_idname}'", error_message=str(e))
+                raise NodeError(f"Impossible to set the default value {value} <{def_value}> to io_socket of type '{bl_idname}'", error_message=str(e))
 
             try:
-                out_socket._bsocket.default_value = value
+                out_socket._bsocket.default_value = def_value
             except Exception as e:
-                print("new_input Socket BAD", value, 'CUR', out_socket._bsocket.default_value)
-                pass
-                #raise NodeError(f"Impossible to set the default value {value} to socket of type '{out_socket.SOCKET_TYPE}'", error_message=str(e))
+                raise NodeError(f"Impossible to set the default value {value} <{def_value}> to socket of type '{out_socket.SOCKET_TYPE}'", error_message=str(e))
 
             # ---------------------------------------------------------------------------
             # Set the default value to all modifiers using it
-            #
-            # The tree inputs store the default value of the sockets
-            # The values themselves are stored in properties in the object modifiers
-            # The modifier property is key by the tree input identifier
 
-            """ CAN CRASH !
-
-            for obj in bpy.data.objects:
-                for mod in obj.modifiers:
-                    if isinstance(mod, bpy.types.NodesModifier):
-                        if mod.node_group == tree._btree:
-                            mod[io_socket.identifier] = value
-            """
+            if set_value:
+                for obj in bpy.data.objects:
+                    for mod in obj.modifiers:
+                        if isinstance(mod, bpy.types.NodesModifier):
+                            if mod.node_group == tree._btree:
+                                try:
+                                    mod[io_socket.identifier] = def_value
+                                except:
+                                    raise NodeError(f"Impossible to set the default value {value} <{def_value}> to existing modifier socket '{io_socket.identifier}', socket type: '{out_socket.SOCKET_TYPE}'", error_message=str(e))
 
         return out_socket
 
     # --------------------------------------------------------------------------------
-    # Create a new input socket
+    # Create a new output socket
 
     def new_output(self, bl_idname, name):
         """ Create a new output socket.
@@ -420,6 +413,38 @@ class Tree:
             io_socket = self.new_io_socket(bl_idname, 'OUTPUT', name)
 
         return output_node._bnode.inputs[io_socket.identifier]
+
+    # --------------------------------------------------------------------------------
+    # Create a new input socket from an existing node input socket
+
+    @classmethod
+    def new_input_from_input_socket(cls, input_socket, name=None):
+
+        tree = Tree.current_tree
+
+        bsocket = utils.get_bsocket(input_socket)
+        if name is None:
+            name = bsocket.name
+
+        bl_idname, subtype = constants.SOCKET_SUBTYPES[bsocket.bl_idname]
+
+        io_socket = tree.new_io_socket(bl_idname, 'INPUT', name)
+        if hasattr(io_socket, 'subtype'):
+            io_socket.subtype = subtype
+
+        io_socket.default_value = bsocket.default_value
+        io_socket.description   = bsocket.description
+
+        # ----- Min and Max values are attributes of default property
+
+        if 'default_value' in bsocket.bl_rna.properties:
+            default_prop = bsocket.bl_rna.properties['default_value']
+            if hasattr(io_socket, 'min_value'):
+                io_socket.min_value = default_prop.hard_min
+                io_socket.max_value = default_prop.hard_max
+
+        return tree.input_node[io_socket.identifier]
+
 
     # =============================================================================================================================
     # Geometry I/O
@@ -628,8 +653,7 @@ class Node:
     @staticmethod
     def data_socket(bsocket):
         from geonodes.script import Boolean, Integer, Float, Vector, Rotation, Matrix, Color, Geometry, Material, Image, Object, Collection, String, Menu
-        from geonodes.script import Mesh, Curve, Points, Volume, Instances
-
+        from geonodes.script import Mesh, Curve, Cloud, Volume, Instances
 
         socket_type = bsocket.type
 
@@ -647,13 +671,12 @@ class Node:
                 return Curve(bsocket)
             elif socket_name in ['instance', 'instances']:
                 return Instances(bsocket)
-            elif socket_name in ['points']:
-                return Points(bsocket)
+            elif socket_name in ['points', 'point cloud']:
+                return Cloud(bsocket)
             elif socket_name == 'volume':
                 return Volume(bsocket)
 
         return socket_class(bsocket)
-
 
     # ----------------------------------------------------------------------------------------------------
     # Set the node parameters
@@ -793,7 +816,7 @@ class Node:
     # - float  -> Value
     # - bool   -> Boolean
     # - str    -> String
-   # - (3,)   -> Vector
+    # - (3,)   -> Vector
     # - (4,)   -> Color
     # - (16,)  -> Matrix
 
@@ -938,7 +961,6 @@ class Node:
                     original_error = str(e),
                     )
 
-
         elif in_socket.type in ['OBJECT', 'COLLECTION', 'IMAGE', 'MATERIAL']:
             bobj = utils.get_blender_resource(in_socket.type, value)
 
@@ -962,6 +984,68 @@ class Node:
             if bsocket.name == 'Selection':
                 self.plug_value_into_socket(selection, bsocket)
                 return
+
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Plug another node into self
+    # If the other node is None, the Tree input node is taken
+    # Create is only valid in this case
+    # This function is overrind by Group to used the embedded tree interface
+
+    def plug_node_into(self, node=None, include=None, exclude={}, rename={}, create=True):
+
+        # ----------------------------------------------------------------------------------------------------
+        # Node with output sockets to plug
+
+        tree = Tree.current_tree
+        if node is None:
+            node = tree.input_node
+        else:
+            create = False
+
+        # ----------------------------------------------------------------------------------------------------
+        # Loop on the input sockets of self
+
+        for in_socket in self._bnode.inputs:
+
+            if in_socket.type == 'CUSTOM':
+                continue
+
+            # ----- Socket name can be remapped
+
+            socket_name = in_socket.name
+            if socket_name in rename.keys():
+                socket_name = rename[socket_name]
+
+            # ----- Look for an output socket of same name and type
+
+            out_socket = None
+            for out_sock in node._bnode.outputs:
+                if out_sock.name == socket_name and out_sock.type == in_socket.type:
+                    out_socket = out_sock
+                    break
+            if out_socket is None and not create:
+                continue
+
+            # ----- Must be in the sockets to include
+
+            if include is not None and socket_name not in include:
+                continue
+
+            # ----- Must not be in the sockets to exclude
+
+            if socket_name in exclude:
+                continue
+
+            # ----- If the out_socket doesn't exist we create it
+
+            if out_socket is None:
+                out_socket = Tree.new_input_from_input_socket(in_socket)
+
+            # ----- Ok, we can plug
+
+            tree.link(out_socket, in_socket)
+
+        return self
 
     # =============================================================================================================================
     # Color and label
@@ -1008,3 +1092,96 @@ class Group(Node):
         # ----- Create the node group
 
         super().__init__('Group', sockets=sockets, node_tree=group_tree)
+
+    # =============================================================================================================================
+    # Plug a node into the group inputs
+    # If the node is None, Tree input is take,
+
+    def plug_node_into(self, node=None, include=None, exclude={}, rename={}, create=True):
+
+        tree = self._tree
+
+        # ----------------------------------------------------------------------------------------------------
+        # Node with output sockets to plug
+
+        if node is None:
+            node = tree.input_node
+        else:
+            create = False
+
+        # ----------------------------------------------------------------------------------------------------
+        # Loop on the input sockets of self
+
+        for in_socket in self._bnode.inputs:
+
+            if in_socket.type == 'CUSTOM':
+                continue
+
+            # ----- Socket name can be remapped
+
+            socket_name = in_socket.name
+            if socket_name in rename.keys():
+                socket_name = rename[socket_name]
+
+            # ----- Look for an output socket of same name and type
+
+            out_socket = None
+            for out_sock in node._bnode.outputs:
+                if out_sock.name == socket_name and out_sock.type == in_socket.type:
+                    out_socket = out_sock
+                    break
+            if out_socket is None and not create:
+                continue
+
+            # ----- Must be in the sockets to include
+
+            if include is not None and socket_name not in include:
+                continue
+
+            # ----- Must not be in the sockets to exclude
+
+            if socket_name in exclude:
+                continue
+
+            # ----- If the out_socket doesn't exist we create it
+
+            if out_socket is None:
+
+                # ----- Creation from in_socket
+
+                bsocket = utils.get_bsocket(in_socket)
+
+                bl_idname, subtype = constants.SOCKET_SUBTYPES[bsocket.bl_idname]
+
+                io_socket = tree.new_io_socket(bl_idname, 'INPUT', socket_name)
+                if hasattr(io_socket, 'subtype'):
+                    io_socket.subtype = subtype
+
+                #io_socket.default_value = bsocket.default_value
+                #io_socket.description   = bsocket.description
+
+                # ----- Min and Max from embedded tree interface
+
+                item = self._bnode.node_tree.interface.items_tree[in_socket.name]
+                """
+                print("ITEM OF", socket_name)
+                for k in dir(item):
+                    print(f"{k:12s} : {getattr(item, k)}")
+                print()
+                """
+
+                io_socket.default_value = item.default_value
+                io_socket.description   = item.description
+                if hasattr(io_socket, 'min_value'):
+                    io_socket.min_value = item.min_value
+                    io_socket.max_value = item.max_value
+
+                # ----- We've got our socket
+
+                out_socket = tree.input_node[io_socket.identifier]
+
+            # ----- Ok, we can plug
+
+            tree.link(out_socket, in_socket)
+
+        return self

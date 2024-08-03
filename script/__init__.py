@@ -55,7 +55,7 @@ from .booleanclass import Boolean
 from .floatclass import Float, Integer
 from .vectorclass import Vector, Rotation, Matrix
 from .colorclass import Color
-from .geometryclass import Geometry, Mesh, Curve, Points, Instances, Volume
+from .geometryclass import Geometry, Mesh, Curve, Cloud, Instances, Volume
 from .zones import Repeat, Simulation
 from .textures import Texture
 from .staticclass import nd

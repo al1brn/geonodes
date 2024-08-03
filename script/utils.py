@@ -251,8 +251,6 @@ def has_bsocket(value):
 
     return False
 
-
-
 # =============================================================================================================================
 # Get a Blender Data resource
 
@@ -272,3 +270,41 @@ def get_blender_resource(socket_type, value):
         return value
     else:
         return spec['coll'].get(value)
+
+# =============================================================================================================================
+# Get a python value compatible with socket default_value
+
+def python_value_for_socket(value, socket_type):
+
+    if value is None:
+        return None
+
+    if socket_type == 'BOOLEAN':
+        return bool(value)
+
+    elif socket_type == 'INT':
+        return int(value)
+
+    elif socket_type == 'VALUE':
+        return float(value)
+
+    elif socket_type in ['VECTOR', 'ROTATION']:
+        return value_to_array(value, (3,))
+
+    elif socket_type == 'RGBA':
+        if hasattr(value, '__len__'):
+            if len(value) == 3:
+                return (value[0], value[1], value[2], 1)
+            else:
+                return value
+        else:
+            return (value, value, value, 1)
+
+    elif socket_type in ['STRING', 'MENU']:
+        return str(value)
+
+    elif socket_type in ['COLLECTION', 'OBJECT', 'IMAGE', 'MATERIAL']:
+        return get_blender_resource(socket_type, value)
+
+    else:
+        raise NodeError(f"python_value_for_socket error: impossible to build a value from [{value}] for socket '{socket_type}'")

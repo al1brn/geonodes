@@ -102,7 +102,11 @@ from .staticclass import nd
 
 # =============================================================================================================================
 
-class GeoBase(nd):
+class GeoBase:
+
+    @property
+    def _geo_type(self):
+        return type(self._geo)
 
     # =============================================================================================================================
     # Properties
@@ -202,7 +206,7 @@ class GeoBase(nd):
                     selection = Float(nd.index).equal(a, epsilon=dist)
 
         elif isinstance(selection, tuple):
-            with Layout(f"selection = {selection}", color='AUTO_GEN'):
+            with Layout(f"selection = tuple", color='AUTO_GEN'):
                 sel = None
                 idx = nd.index
                 for item in selection:
@@ -216,7 +220,7 @@ class GeoBase(nd):
         else:
             socket_type = utils.get_socket_type(selection)
             if socket_type in ['INT', 'VALUE', 'FLOAT']:
-                with Layout(f"selection = {selection}", color='AUTO_GEN'):
+                with Layout(f"selection = []", color='AUTO_GEN'):
                     selection = nd.index.equal(selection)
 
         self._selection = Boolean(selection)
@@ -240,7 +244,7 @@ class Geometry(DataSocket, GeoBase):
             # Default creation name
 
             if name is None:
-                name = self.SOCKET_TYPE.lower()
+                name = self.SOCKET_TYPE.title()
 
             # If the tree is not a group and if the default input geometry doesn't already exist, we create it
 
@@ -309,6 +313,7 @@ class Geometry(DataSocket, GeoBase):
         data_type = utils.get_value_data_type_1(attribute)
         node = Node('Raycast', {'Target Geometry': self, 'Attribute': attribute, 'Source Position': source_position, 'Ray Direction': ray_direction, 'Ray Length': ray_length},
             data_type=utils.get_data_type(attribute), mapping='INTERPOLATED' if interpolated else 'NEAREST')
+        return node
 
     # ====================================================================================================
     # Geometry Operations
@@ -330,20 +335,20 @@ class Geometry(DataSocket, GeoBase):
         bb = Node('Bounding Box', {'Geometry': self})._out
         bb.min_ = bb.node.min
         bb.max_ = bb.node.max
-        return bb
+        return Mesh(bb)
 
     @property
     def convex_hull(self):
-        return Node('Convex Hull', {'Geometry': self})._out
+        return Mesh(Node('Convex Hull', {'Geometry': self})._out)
 
     def merge_by_distance(self, distance=None, all=True):
-        return type(self)(self._node('Merge by Distance', {'Distance': distance}, mode = 'ALL' if all else 'CONNECTED')._out)
+        return self._geo_type(self._node('Merge by Distance', {'Distance': distance}, mode = 'ALL' if all else 'CONNECTED')._out)
 
     def transform(self, translation=None, rotation=None, scale=None, matrix=None):
         if matrix is None:
-            return type(self)(Node('Transform Geometry', {'Geometry': self, 'Translation': translation, 'Rotation': rotation, 'Scale': scale}, mode='COMPONENTS')._out)
+            return self._geo_type(Node('Transform Geometry', {'Geometry': self, 'Translation': translation, 'Rotation': rotation, 'Scale': scale}, mode='COMPONENTS')._out)
         else:
-            return type(self)(Node('Transform Geometry', {'Geometry': self, 'Transform': matrix}, mode='MATRIX')._out)
+            return self._geo_type(Node('Transform Geometry', {'Geometry': self, 'Transform': matrix}, mode='MATRIX')._out)
 
     @property
     def separate_components(self):
@@ -359,7 +364,7 @@ class Geometry(DataSocket, GeoBase):
 
     @property
     def point_cloud(self):
-        return Points(self.separate_components.point_cloud)
+        return Cloud(self.separate_components.point_cloud)
 
     @property
     def volume(self):
@@ -488,8 +493,7 @@ class Domain(GeoBase, NodeCache):
 
     def attribute_statistic(self, attribute=None):
         data_type = utils.get_data_type(attribute, ['VECTOR', 'ROTATION', 'COLOR'], 'FLOAT')
-        return self._node('Attribute Statistic', {'Attribute': attribute}, data_type=data_type, use_cache=True)
-        #return self._cache('Attribute Statistic', {'Geometry': self._geo, 'Selection': self._sel, 'Attribute': attribute}, data_type=data_type, domain=self.DOMAIN_NAME)
+        return self._node('Attribute Statistic', {'Attribute': attribute}, data_type=data_type, use_cache=False)
 
     # ----- Capture attribute
 
@@ -502,10 +506,7 @@ class Domain(GeoBase, NodeCache):
 
         self._geo._jump(node._out)
 
-        if len(attributes) == 1:
-            return node[list(attributes.keys())[0]]
-        else:
-            return node
+        return node
 
     def capture(self, **attributes):
         return self.capture_attribute(**attributes)
@@ -543,7 +544,7 @@ class Domain(GeoBase, NodeCache):
 
     def delete_geometry(self, mode='ALL'):
         self.exclude_corner('delete_geometry')
-        return self._node('Delete Geometry', mode=mode)._out
+        return self._geo_type(self._node('Delete Geometry', mode=mode)._out)
 
     def delete(self):
         return self.delete_geometry(mode='ALL')
@@ -556,22 +557,22 @@ class Domain(GeoBase, NodeCache):
 
     def duplicate_elements(self, amount=1):
         self.exclude_corner('duplicate_elements')
-        geo = self._node('Duplicate Elements', {'Amount': amount})._out
-        geo.duplicate_index_ = geo.node.duplicate_index
+        geo = self._geo_type(self._node('Duplicate Elements', {'Amount': amount})._out)
+        geo.duplicate_index_= geo.node.duplicate_index
         return geo
 
     def sort_elements(self, group_id=None, sort_weight=None):
         self.exclude_corner('sort_elements')
-        return self._node('Sort Elements', {'Group ID': group_id, 'Sort Weight': sort_weight})._out
+        return self._geo_type(self._node('Sort Elements', {'Group ID': group_id, 'Sort Weight': sort_weight})._out)
 
     def separate(self, group_id=None, sort_weight=None):
         self.exclude_corner('separate')
-        geo = self._node('Separate Geometry')._out
-        geo.inverted_ = geo.node.inverted
+        geo = self._geo_type(self._node('Separate Geometry')._out)
+        geo.inverted_ = self._geo_type(geo.node.inverted)
         return geo
 
     def split_to_instances(self, group_id=None):
-        self.exclude_corner('duplicate_elements')
+        self.exclude_corner('split_to_instances')
         instances = Instances(self._node('Split to Instances', {'Group ID': group_id})._out)
         instances.group_id_ = instances.node.group_id
         return instances
@@ -580,7 +581,7 @@ class Domain(GeoBase, NodeCache):
 
     def to_points(self, position=None, radius=None):
         mode = self.plural_domain(['POINT', 'EDGE', 'FACE', 'CORNER'], 'Mesh to Point')
-        return Points(Node('Mesh to Points', {'Mesh': self._geo, 'Selection': self._sel, 'Position': position, 'Radius': radius}, mode=mode)._out)
+        return Cloud(Node('Mesh to Points', {'Mesh': self._geo, 'Selection': self._sel, 'Position': position, 'Radius': radius}, mode=mode)._out)
 
     # ----- Extrusion
 
@@ -588,7 +589,7 @@ class Domain(GeoBase, NodeCache):
         mode = self.plural_domain(['POINT', 'EDGE', 'FACE'], 'Extrude Mesh')
         node = Node('Extrude Mesh', {'Mesh': self._geo, 'Selection': self._sel, 'Offset': offset, 'Offset Scale': offset_scale, 'Individual': individual}, mode = mode)
 
-        mesh = node.mesh
+        mesh = Mesh(node.mesh)
         mesh.top_  = node.top
         mesh.side_ = node.side
 
@@ -1018,7 +1019,7 @@ class Mesh(Geometry):
 
     @classmethod
     def FromPoints(cls, points):
-        return Points(points).to_vertices()
+        return Cloud(points).to_vertices()
 
     @classmethod
     def FromVolume(cls, volume, voxel_size=None, voxel_amount=None, threshold=None, adaptivity=None, resolution_mode='GRID'):
@@ -1051,19 +1052,19 @@ class Mesh(Geometry):
         return mesh
 
     @classmethod
-    def Line(cls, count=10, start_location=(0, 0, 0), offset=None):
+    def Line(cls, count=10, start_location=(0, 0, 0), offset=None, mode='OFFSET'):
         # mode in  ('OFFSET', 'END_POINTS')
-        return Node('Mesh Line', {'Count': count, 'Start Location': start_location, 'Offset': offset}, mode='OFFSET')._out
+        return Node('Mesh Line', {'Count': count, 'Start Location': start_location, 'Offset': offset}, mode=mode)._out
 
     @classmethod
     def LineEndPoints(cls, count=None, resolution=None, start_location=(0, 0, 0), end_location=None):
         # mode in  ('OFFSET', 'END_POINTS')
         # count_mode in ('TOTAL', 'RESOLUTION')
         if count is None:
-            return Node('Mesh Line', {'Count': count, 'Start Location': start_location, 'End Location': end_location},
+            return Node('Mesh Line', {'Resolution': resolution, 'Start Location': start_location, 'Offset': end_location},
                mode='END_POINTS', count_mode='RESOLUTION')._out
         else:
-            return Node('Mesh Line', {'Resolution': resolution, 'Start Location': start_location, 'End Location': end_location},
+            return Node('Mesh Line', {'Count': count, 'Start Location': start_location, 'Offset': end_location},
                mode='END_POINTS', count_mode='TOTAL')._out
 
     @classmethod
@@ -1209,7 +1210,7 @@ class Mesh(Geometry):
         node = Node('Distribute Points on Faces', {'Mesh': self, 'Selection': self._sel,
             'Distance Min': distance_min, 'Density Max': density_max, 'Density': density,
             'Density Factor': density_factor, 'Seed': seed}, distribute_method = method)
-        points = Points(node._out)
+        points = Cloud(node._out)
         points.normal_   = node.normal
         points.rotation_ = node.rotation
         return points
@@ -1355,7 +1356,7 @@ class Curve(Geometry):
 
     @classmethod
     def FromPoints(cls, points, curve_group_id=None, weight=None):
-        return Points(points).to_curves(curve_group_id=curve_group_id, weight=weight)
+        return Cloud(points).to_curves(curve_group_id=curve_group_id, weight=weight)
 
 
     # =============================================================================================================================
@@ -1532,9 +1533,6 @@ class Curve(Geometry):
     def points_of_curve(cls, curve_index=None, weights=None, sort_index=None):
         return Node('Points of Curve', {'Curve Index': curve_index, 'Weights': weights, 'Sort Index': sort_index})
 
-
-
-
     # =============================================================================================================================
     # Methods
 
@@ -1548,16 +1546,23 @@ class Curve(Geometry):
     def set_normal_free(self):
         return self.set_normal(mode='FREE')
 
-    def sample(self, value=None, factor=None, length=None, curve_index=None):
+    def sample(self, value=None, factor=None, length=None, curve_index=None, all_curves=False):
         # mode in ('FACTOR', 'LENGTH')
         # if factor argument is None, mode is LENGTH, FACTOR otherwise
-        mode = 'LENGTH' if factor is None else 'FACTOR'
+        mode = 'FACTOR' if length is None else 'LENGTH'
         res = Node('Sample Curve', {'Curves': self, 'Value': value, 'Factor': factor, 'Length': length, 'Curve Index': curve_index},
-            data_type=utils.get_data_type(value), mode=mode)._out
+            data_type=utils.get_data_type(value), mode=mode, use_all_curves=all_curves)._out
         res.position_ = res.node.position
         res.tangent_  = res.node.tangent
         res.normal_   = res.node.normal
         return res
+
+    def sample_factor(self, value=None, factor=None, curve_index=None, all_curves=False):
+        return self.sample(value=value, factor=factor, curve_index=curve_index, all_curves=all_curves)
+
+    def sample_length(self, value=None, length=None, curve_index=None, all_curves=False):
+        return self.sample(value=value, length=length, curve_index=curve_index, all_curves=all_curves)
+
 
     # =============================================================================================================================
     # Operations
@@ -1658,7 +1663,7 @@ class Curve(Geometry):
 # =============================================================================================================================
 # =============================================================================================================================
 
-class Points(Geometry):
+class Cloud(Geometry):
 
     def _reset(self):
 
@@ -1700,7 +1705,7 @@ class Points(Geometry):
 
     @classmethod
     def FromInstances(cls, instances=None, position=None, radius=None):
-        return Points(Node('Instances to Points', {'Instances': instances, 'Position': position, 'Radius': radius})._out)
+        return Cloud(Node('Instances to Points', {'Instances': instances, 'Position': position, 'Radius': radius})._out)
 
     # ----- Mesh to points
 
@@ -1799,7 +1804,7 @@ class Instances(Geometry):
         return Node('Realize Instances', {'Geometry': self, 'Selection': self._sel, 'Realize All': realize_all, 'Depth': depth})._out
 
     def to_points(self, position=None, radius=None):
-        return Points(Node('Instances to Points', {'Instances': self, 'Selection': self._sel, 'Position': position, 'Radius': radius})._out)
+        return Cloud(Node('Instances to Points', {'Instances': self, 'Selection': self._sel, 'Position': position, 'Radius': radius})._out)
 
     def on_points(self, points, pick_instance=None, instance_index=None, rotation=None, scale=None):
         if isinstance(points, Geometry):
@@ -1847,7 +1852,7 @@ class Volume(Geometry):
 
     @classmethod
     def FromPoints(cls, points, density=None, voxel_size=None, voxel_amount=None, radius=None, amount=True):
-        return Points(points).to_volume(density=density, voxel_size=voxel_size, voxel_amount=voxel_amount, radius=radius, amount=amount)
+        return Cloud(points).to_volume(density=density, voxel_size=voxel_size, voxel_amount=voxel_amount, radius=radius, amount=amount)
 
     # =============================================================================================================================
     # Methods
@@ -1855,7 +1860,7 @@ class Volume(Geometry):
     def distribute_points(self, density=None, seed=None, spacing=None, threshold=None, grid=False):
         # mode in ('DENSITY_RANDOM', 'DENSITY_GRID')
         mode = 'DENSITY_GRID' if grid else 'DENSITY_RANDOM'
-        return Points(Node('Distribute Points in Volume', {'Volume': self, 'Density': density,
+        return Cloud(Node('Distribute Points in Volume', {'Volume': self, 'Density': density,
             'Seed': seed, 'Spacing': spacing, 'Threshold': threshold}, mode=mode)._out)
 
     def to_mesh(self, voxel_size=None, voxel_amount=None, threshold=None, adaptivity=None, resolution_mode='GRID'):

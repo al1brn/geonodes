@@ -1194,11 +1194,11 @@ def frame_inputs(tree):
 
             node = tree.nodes.new(type='NodeReroute')
             node.parent = frame
-            nodelab = from_socket.node.label
-            if nodelab == '':
-                node.label = f"{from_socket.name}"
+            node_lab = from_socket.node.label
+            if node_lab is None or node_lab == '':
+                node.label = from_socket.name
             else:
-                node.label = f"[{from_socket.node.label}].{from_socket.name}"
+                node.label = node_lab
 
             tree.links.new(from_socket, node.inputs[0])
 
@@ -1257,7 +1257,14 @@ def frame_outputs(tree):
 
             node = tree.nodes.new(type='NodeReroute')
             node.parent = frame
-            node.label = f"[{from_socket.node.label}].{from_socket.name}"
+            if True:
+                node_lab = from_socket.node.label
+                if node_lab is None or node_lab == '':
+                    node.label = from_socket.name
+                else:
+                    node.label = node_lab
+            else:
+                node.label = f"[{from_socket.node.label}].{from_socket.name}"
 
             tree.links.new(from_socket, node.inputs[0])
 

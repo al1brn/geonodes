@@ -62,7 +62,16 @@ class Zone:
 
         # ---- Add initial Geometry socket if necessary
 
-        if create_geometry and 'geometry' not in kwargs.keys():
+        if create_geometry:
+            create = len(kwargs) == 0
+            if not create:
+                val0 = list(kwargs.values())[0]
+                if val0 is not None:
+                    create = utils.get_input_type(val0) != 'GEOMETRY'
+        else:
+            create = False
+
+        if create:
             all_sockets = {'Geometry': None, **kwargs}
         else:
             all_sockets = kwargs

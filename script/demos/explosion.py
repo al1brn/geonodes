@@ -1,3 +1,26 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on 2024/08/02
+
+@author: alain
+
+-----------------------------------------------------
+geonodes module
+- Scripting Geometry Nodes
+-----------------------------------------------------
+
+module : demos/explosion
+------------------------
+Explode points from the points of the initial geometry.
+The particles can be either generated or taken from a collection.
+
+updates
+-------
+- creation : 2024/08/02
+"""
+
+
 import numpy as np
 
 from geonodes.script import *
@@ -20,7 +43,7 @@ def demo():
 
         # ----- Input geometry is supposed to be points
 
-        points = Points(name="Points", tip="Geometry with points")
+        points = Cloud(name="Points", tip="Geometry with points")
 
         # ----- Initialization
 
@@ -37,7 +60,7 @@ def demo():
 
         with Simulation(points=points, speed=speed) as sim:
 
-            sim.skip = nd.frame.less_than(frame0)
+            sim.skip = nd.scene_time.frame.less_than(frame0)
 
             dt = sim.delta_time
 
@@ -102,7 +125,7 @@ def demo():
                      'Viscosity factor': vis_fac,
                      'Viscosity exponent': vis_exp,
                     })
-            points = Points(simul.geometry)
+            points = Cloud(simul.geometry)
 
         with Layout("Instances coming from collection"):
             coll_parts = particles.info(separate_children=True).instances
@@ -114,7 +137,7 @@ def demo():
                 with Layout(f"{count} polys of {verts} vertices"):
 
                     poly  = Mesh.Circle(radius=part_size, vertices=verts, fill_type='NGON')
-                    polys = Points.Points(count=count).points.instance_on(poly)
+                    polys = Cloud.Points(count=count).points.instance_on(poly)
                     polys.insts.scale = Vector.Random(.5, 1.5, seed=200+i)
 
                     if i == 0:
@@ -135,4 +158,4 @@ def demo():
             insts.insts.rotation = points.points.sample_index(Vector.Named("Rotation"), nd.index)
 
         with Layout("Final geometry"):
-            insts.switch(nd.frame.less_than(frame0), Mesh()).out('Geometry')
+            insts.switch(nd.scene_time.frame.less_than(frame0), Mesh()).out('Geometry')
