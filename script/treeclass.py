@@ -106,9 +106,13 @@ class Tree:
 
     STACK   = []
 
-    def __init__(self, tree_name, tree_type='GeometryNodeTree', clear=True, is_group=False):
+    def __init__(self, tree_name, tree_type='GeometryNodeTree', clear=True, fake_user=False, is_group=False, prefix=None):
+
+        if prefix is not None:
+            tree_name = f"{prefix} {tree_name}"
 
         self._btree = blendertree.get_tree(tree_name, create=True)
+        self._btree.use_fake_user = fake_user
         self._is_group = is_group
 
         # ----- Management lists
@@ -263,7 +267,7 @@ class Tree:
         for item in self._btree.interface.items_tree:
             if item.item_type != 'SOCKET' or item.in_out != in_out or item.socket_type != bl_idname:
                 continue
-            if name is None or item.name == name:
+            if name is None or (item.name == name) or (item.identifier == name):
                 return item
 
         return None
@@ -291,6 +295,35 @@ class Tree:
 
     def clear_io_sockets(self):
         self._btree.interface.clear()
+
+    # --------------------------------------------------------------------------------
+    # Set the default value of an input socket
+
+    def set_input_socket_default(self, socket, value=None):
+        if value is None:
+            return
+
+        bsocket = utils.get_bsocket(socket)
+        if bsocket is None:
+            return
+
+        try:
+            bsocket.default_value = value
+        except:
+            return
+
+        io_socket = self.io_socket_exists(bsocket.bl_idname, in_out='INPUT', name=bsocket.identifier)
+        if io_socket is None:
+            return
+
+        if not hasattr(io_socket, 'default_value'):
+            return
+
+        try:
+            io_socket.default_value = value
+        except:
+            return
+
 
     # --------------------------------------------------------------------------------
     # Create a new input socket
@@ -989,18 +1022,20 @@ class Node:
     # Plug another node into self
     # If the other node is None, the Tree input node is taken
     # Create is only valid in this case
-    # This function is overrind by Group to used the embedded tree interface
 
     def plug_node_into(self, node=None, include=None, exclude={}, rename={}, create=True):
+
+        tree = self._tree
 
         # ----------------------------------------------------------------------------------------------------
         # Node with output sockets to plug
 
-        tree = Tree.current_tree
         if node is None:
             node = tree.input_node
         else:
             create = False
+
+        is_node_group = self._bnode.bl_idname == 'GeometryNodeGroup'
 
         # ----------------------------------------------------------------------------------------------------
         # Loop on the input sockets of self
@@ -1010,17 +1045,24 @@ class Node:
             if in_socket.type == 'CUSTOM':
                 continue
 
+            # ----- Already linked
+
+            if in_socket.is_linked:
+                continue
+
             # ----- Socket name can be remapped
 
             socket_name = in_socket.name
             if socket_name in rename.keys():
-                socket_name = rename[socket_name]
+                out_name = rename[socket_name]
+            else:
+                out_name = socket_name
 
             # ----- Look for an output socket of same name and type
 
             out_socket = None
             for out_sock in node._bnode.outputs:
-                if out_sock.name == socket_name and out_sock.type == in_socket.type:
+                if out_sock.name == out_name and out_sock.type == in_socket.type:
                     out_socket = out_sock
                     break
             if out_socket is None and not create:
@@ -1029,21 +1071,55 @@ class Node:
             # ----- Must be in the sockets to include
 
             if include is not None and socket_name not in include:
-                continue
+                if not socket_name in rename.keys():
+                    continue
 
             # ----- Must not be in the sockets to exclude
 
             if socket_name in exclude:
                 continue
 
-            # ----- If the out_socket doesn't exist we create it
+            # ----------------------------------------------------------------------------------------------------
+            # If the out_socket doesn't exist we create it
 
             if out_socket is None:
-                out_socket = Tree.new_input_from_input_socket(in_socket)
 
-            # ----- Ok, we can plug
+                # ----- Group : we create from the interface
 
-            tree.link(out_socket, in_socket)
+                if is_node_group:
+
+                    bsocket = utils.get_bsocket(in_socket)
+                    bl_idname, subtype = constants.SOCKET_SUBTYPES[bsocket.bl_idname]
+
+                    io_socket = tree.new_io_socket(bl_idname, 'INPUT', out_name)
+                    if hasattr(io_socket, 'subtype'):
+                        io_socket.subtype = subtype
+
+                    # ----- Linking before setting the parameters is necessary for menu sockets
+
+                    tree.link(tree.input_node[io_socket.identifier], in_socket)
+
+                    # ----- Min and Max from embedded tree interface
+
+                    item = self._bnode.node_tree.interface.items_tree[in_socket.name]
+                    tree.set_input_socket_default(tree.input_node[io_socket.identifier], item.default_value)
+
+                    io_socket.description = item.description
+                    if hasattr(io_socket, 'min_value'):
+                        io_socket.min_value = item.min_value
+                        io_socket.max_value = item.max_value
+
+                # ----- Not a Group : we create from the socket
+
+                else:
+                    out_socket = Tree.new_input_from_input_socket(in_socket, name=out_name)
+                    tree.link(out_socket, in_socket)
+
+            # ----------------------------------------------------------------------------------------------------
+            # The out_socket exists : we can plug it
+
+            else:
+                tree.link(out_socket, in_socket)
 
         return self
 
@@ -1081,7 +1157,10 @@ class Node:
 
 class Group(Node):
 
-    def __init__(self, group_name, sockets={}):
+    def __init__(self, group_name, sockets={}, prefix=None):
+
+        if prefix is not None:
+            group_name = f"{prefix} {group_name}"
 
         # ----- Get the tree
 
@@ -1097,7 +1176,7 @@ class Group(Node):
     # Plug a node into the group inputs
     # If the node is None, Tree input is take,
 
-    def plug_node_into(self, node=None, include=None, exclude={}, rename={}, create=True):
+    def plug_node_intoOLD(self, node=None, include=None, exclude={}, rename={}, create=True):
 
         tree = self._tree
 
@@ -1117,17 +1196,24 @@ class Group(Node):
             if in_socket.type == 'CUSTOM':
                 continue
 
+            # ----- Already linked
+
+            if in_socket.is_linked:
+                continue
+
             # ----- Socket name can be remapped
 
             socket_name = in_socket.name
             if socket_name in rename.keys():
-                socket_name = rename[socket_name]
+                out_name = rename[socket_name]
+            else:
+                out_name = socket_name
 
             # ----- Look for an output socket of same name and type
 
             out_socket = None
             for out_sock in node._bnode.outputs:
-                if out_sock.name == socket_name and out_sock.type == in_socket.type:
+                if out_sock.name == out_name and out_sock.type == in_socket.type:
                     out_socket = out_sock
                     break
             if out_socket is None and not create:
@@ -1136,7 +1222,8 @@ class Group(Node):
             # ----- Must be in the sockets to include
 
             if include is not None and socket_name not in include:
-                continue
+                if not socket_name in rename.keys():
+                    continue
 
             # ----- Must not be in the sockets to exclude
 
@@ -1153,35 +1240,38 @@ class Group(Node):
 
                 bl_idname, subtype = constants.SOCKET_SUBTYPES[bsocket.bl_idname]
 
-                io_socket = tree.new_io_socket(bl_idname, 'INPUT', socket_name)
+                io_socket = tree.new_io_socket(bl_idname, 'INPUT', out_name)
                 if hasattr(io_socket, 'subtype'):
                     io_socket.subtype = subtype
 
-                #io_socket.default_value = bsocket.default_value
-                #io_socket.description   = bsocket.description
+                # ----- Linking before setting the parameters is necessary for menu sockets
+
+                tree.link(tree.input_node[io_socket.identifier], in_socket)
 
                 # ----- Min and Max from embedded tree interface
 
                 item = self._bnode.node_tree.interface.items_tree[in_socket.name]
-                """
-                print("ITEM OF", socket_name)
-                for k in dir(item):
-                    print(f"{k:12s} : {getattr(item, k)}")
-                print()
-                """
+                tree.set_input_socket_default(tree.input_node[io_socket.identifier], item.default_value)
 
-                io_socket.default_value = item.default_value
-                io_socket.description   = item.description
+                #if hasattr(io_socket, 'default_value'):
+                #    try:
+                #        io_socket.default_value = item.default_value
+                #    except:
+                #        pass
+
+                io_socket.description = item.description
                 if hasattr(io_socket, 'min_value'):
                     io_socket.min_value = item.min_value
                     io_socket.max_value = item.max_value
 
                 # ----- We've got our socket
 
-                out_socket = tree.input_node[io_socket.identifier]
+                #out_socket = tree.input_node[io_socket.identifier]
 
-            # ----- Ok, we can plug
+            else:
 
-            tree.link(out_socket, in_socket)
+                # ----- Ok, we can plug
+
+                tree.link(out_socket, in_socket)
 
         return self

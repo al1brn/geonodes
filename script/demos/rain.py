@@ -23,7 +23,7 @@ updates
 """
 
 
-from geonodes.script import *
+from .. import *
 
 # ====================================================================================================
 # A Wave produced by a dip

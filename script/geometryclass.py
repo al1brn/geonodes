@@ -173,13 +173,53 @@ class GeoBase:
     # ----- Selection socket is used once
 
     @property
-    def _sel(self):
+    def _raw_sel(self):
         if hasattr(self, '_selection'):
             sel = self._selection
-            self._selection = None
+            self._selection = sel
             return sel
         else:
             return None
+
+    @property
+    def _sel(self):
+
+        selection = self._raw_sel
+
+        # No selection
+        if selection is None:
+            return None
+
+        if isinstance(selection, slice):
+            with Layout(f"selection = {selection}", color='AUTO_GEN'):
+                if selection.start is None:
+                    selection = nd.index.less_than(selection.stop)
+                elif selection.stop is None:
+                    selection = nd.index.greater_equal(selection.start)
+                else:
+                    a = (selection.start + selection.stop)/2
+                    dist = a - selection.start + .1
+                    selection = Float(nd.index).equal(a, epsilon=dist)
+
+        elif isinstance(selection, tuple):
+            with Layout(f"selection = tuple", color='AUTO_GEN'):
+                sel = None
+                idx = nd.index
+                for item in selection:
+                    if sel is None:
+                        sel = idx.equal(item)
+                    else:
+                        sel |= idx.equal(item)
+
+                selection = sel
+
+        else:
+            socket_type = utils.get_socket_type(selection)
+            if socket_type in ['INT', 'VALUE', 'FLOAT']:
+                with Layout(f"selection = []", color='AUTO_GEN'):
+                    selection = nd.index.equal(selection)
+
+        return selection
 
     # ----- Set the selection
     # Domain array index can be:
@@ -189,7 +229,15 @@ class GeoBase:
     # - a slice -> index matches the slice
 
     def __getitem__(self, selection):
+        # ----- Store the selection value
+        # The selection is supposed to be a Boolean
+        # If an Integer, a slice or a tuple, it is transformed into a boolean through _sel function
+        # The _raw_sel function returns the passed value without transformation
 
+        self._selection = selection
+        return self
+
+        """
         if selection is None:
             self._selection = None
             return self
@@ -226,6 +274,7 @@ class GeoBase:
         self._selection = Boolean(selection)
 
         return self
+        """
 
 # =============================================================================================================================
 # =============================================================================================================================
@@ -293,7 +342,7 @@ class Geometry(DataSocket, GeoBase):
     # ----- Remove named attribute
 
     def remove_named_attribute(self, name, exact=True):
-        node = Node('Remove Named Attribute', {'Name': name}, pattern_mode = 'EXACT' if exact else 'WILDCARD')
+        node = Node('Remove Named Attribute', {'Geometry': self, 'Name': name}, pattern_mode = 'EXACT' if exact else 'WILDCARD')
         self._jump(node._out)
 
     # ====================================================================================================
@@ -497,19 +546,22 @@ class Domain(GeoBase, NodeCache):
 
     # ----- Capture attribute
 
-    def capture_attribute(self, **attributes):
+    def capture_attribute(self, attribute, **others):
         node = self._node('Capture Attribute')
         items = node._bnode.capture_items
-        for i, (attr_name, attr_value) in enumerate(attributes.items()):
+        for i, (attr_name, attr_value) in enumerate({'attribute': attribute, **others}.items()):
             items.new(utils.get_input_type(attr_value), attr_name)
             node.plug_value_into_socket(attr_value, node.in_socket(1 + i))
 
         self._geo._jump(node._out)
 
-        return node
+        if len(others) == 0:
+            return node.attribute
+        else:
+            return node
 
-    def capture(self, **attributes):
-        return self.capture_attribute(**attributes)
+    def capture(self, attribute, **others):
+        return self.capture_attribute(attribute, **others)
 
     # ----- Store named attribute
 
@@ -671,6 +723,106 @@ class Vertex(Point):
         index = Node('Corners of Vertex', {'Vertex Index': vertex_index, 'Weights': weights, 'Sort Index': sort_index})._out
         index.total_ = index.node.total
         return index
+
+class SplinePoint(Point):
+
+    # ----- Radius
+
+    @property
+    def radius(self):
+        return Node('Radius')._out
+
+    @radius.setter
+    def radius(self, value):
+        self._geo._jump(Node('Set Curve Radius', {'Curve': self._geo, 'Selection': self._sel, 'Radius': value})._out)
+
+    # ----- Tilt
+
+    @property
+    def tilt(self):
+        return Node('Curve Tilt')._out
+
+    @tilt.setter
+    def tilt(self, value):
+        self._geo._jump(Node('Set Curve Tilt', {'Curve': self._geo, 'Selection': self._sel, 'Tilt': value})._out)
+
+    # ----- Curve normal
+
+    @property
+    def normal(self):
+        raise NodeError(f"Curve.normal property is write only")
+
+    @normal.setter
+    def normal(self, value):
+        # mode in ('MINIMUM_TWIST', 'Z_UP', 'FREE')
+        return self._geo._jump(Node('Set Curve Normal', {'Curve': self._geo, 'Selection': self._sel}, mode=value)._out)
+
+    # ----- Handle positions
+
+    @classmethod
+    def handle_positions(cls, relative=None):
+        return Node('Curve Handle Positions', {'Relative': relative})
+
+    def set_handle_positions(self, position=None, offset=None, mode=None):
+        self._geo._jump(Node('Set Handle Positions', {'Curve': self._geo, 'Selection': self._sel, 'Position': position, 'Offset': offset}, mode=mode)._out)
+
+    @property
+    def left_handle_position(self):
+        return self.handle_positions(relative=False).left
+
+    @left_handle_position.setter
+    def left_handle_position(self, value):
+        self.set_handle_positions(position=value, mode='LEFT')
+
+    @property
+    def right_handle_position(self):
+        return self.handle_positions(relative=False).right
+
+    @right_handle_position.setter
+    def right_handle_position(self, value):
+        self.set_handle_positions(position=value, mode='RIGHT')
+
+    # Offset
+
+    @property
+    def left_handle_offset(self):
+        return self.handle_positions(relative=True).left
+
+    @left_handle_offset.setter
+    def left_handle_offset(self, value):
+        self.set_handle_positions(offset=value, mode='LEFT')
+
+    @property
+    def right_handle_offset(self):
+        return self.handle_positions(relative=True).right
+
+    @right_handle_offset.setter
+    def right_handle_offset(self, value):
+        self.set_handle_positions(offset=value, mode='RIGHT')
+
+    # ----- Handle type
+
+    @classmethod
+    def handle_type_selection(cls, left=True, right=True, handle_type='AUTO'):
+        mode = set()
+        if left:
+            mode.add('LEFT')
+        if right:
+            mode.add('RIGHT')
+        return Node('Endpoint Selection', mode=mode, handle_type=handle_type)._out
+
+    def set_handle_type(self, left=True, right=True, handle_type='AUTO'):
+        # handle_type in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
+        mode = set()
+        if left:
+            mode.add('LEFT')
+        if right:
+            mode.add('RIGHT')
+        self._geo._jump(Node('Set Handle Type', {'Curve': self._geo, 'Selection': self._sel}, mode=mode, handle_type=handle_type)._out)
+
+
+
+
 
 class CloudPoint(Point):
 
@@ -913,6 +1065,55 @@ class Spline(Domain):
     def count(self):
         return self._geo.domain_size.spline_count
 
+    # ====================================================================================================
+    # Properties
+
+    # ----- Cyclic
+
+    @property
+    def is_cyclic(self):
+        return Node('Is Spline Cyclic')._out
+
+    @is_cyclic.setter
+    def is_cyclic(self, value):
+        return self._geo._jump(Node('Set Spline Cyclic', {'Geometry': self._geo, 'Selection': self._sel, 'Cyclic': value})._out)
+
+    # ----- Resolution
+
+    @property
+    def resolution(self):
+        return Node('Spline Resolution')._out
+
+    @resolution.setter
+    def resolution(self, value=None):
+        self._geo._jump(Node('Set Spline Resolution', {'Geometry': self._geo, 'Resolution': value})._out)
+
+    # ----- Spline type
+
+    @property
+    def type(self):
+        raise NodeError(f"Curve.spline_type is write only.")
+
+    @type.setter
+    def type(self, value):
+        # value in ('CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS')
+        self._geo._jump(Node('Set Spline Type', {'Curve': self._geo, 'Selection': self._sel}, spline_type=value)._out)
+
+    # ----- Read only
+
+    @classmethod
+    @property
+    def parameter(cls):
+        return self._cached('Spline Parameter')
+
+    @classmethod
+    @property
+    def length(cls):
+        length = Node('Spline Length')._out
+        length.point_count_ = length.node.point_count
+        return length
+
+
 # =============================================================================================================================
 # =============================================================================================================================
 # Instance Domain
@@ -1052,9 +1253,22 @@ class Mesh(Geometry):
         return mesh
 
     @classmethod
-    def Line(cls, count=10, start_location=(0, 0, 0), offset=None, mode='OFFSET'):
+    def Line(cls, count=10, resolution=None, start_location=(0, 0, 0), offset=None, end_location=None):
         # mode in  ('OFFSET', 'END_POINTS')
-        return Node('Mesh Line', {'Count': count, 'Start Location': start_location, 'Offset': offset}, mode=mode)._out
+        # count_mode in ('TOTAL', 'RESOLUTION')
+        # if end_location is not None or resolution is not None:
+        # - mode = 'END_POINTS'
+        # - count_mode = 'TOTAL' if resolution is None
+        # else
+        # - mode = 'OFFSET'
+
+        if end_location is not None or resolution is not None:
+            count_mode = 'TOTAL' if resolution is None else 'RESOLUTION'
+            return Node('Mesh Line', {'Count': count, 'Start Location': start_location, 'Offset': end_location},
+                mode='END_POINTS', count_mode=count_mode)._out
+        else:
+            return Node('Mesh Line', {'Count': count, 'Start Location': start_location, 'Offset': offset},
+                mode='OFFSET')._out
 
     @classmethod
     def LineEndPoints(cls, count=None, resolution=None, start_location=(0, 0, 0), end_location=None):
@@ -1094,12 +1308,16 @@ class Mesh(Geometry):
         return mesh
 
     @classmethod
-    def Circle(cls, vertices=32, radius=1.0,
-        fill_type='NONE'):
+    def Circle(cls, vertices=32, radius=1.0, fill_type='NONE'):
         # fill_type in ('NONE', 'NGON', 'TRIANGLE_FAN')
         node = Node('Mesh Circle', {'Vertices': vertices, 'Radius': radius}, fill_type=fill_type)
         mesh = Mesh(node.mesh)
         return mesh
+
+    @classmethod
+    def Disk(cls, vertices=32, radius=1.0, fill_type='NGON'):
+        # fill_type in ('NONE', 'NGON', 'TRIANGLE_FAN')
+        return cls.Circle(vertices=vertices, radius=radius, fill_type=fill_type)
 
     @classmethod
     def Grid(cls, size_x=1.0, size_y=1.0, vertices_x=3, vertices_y=3):
@@ -1228,7 +1446,7 @@ class Curve(Geometry):
 
         super()._reset()
 
-        self.points  = Point(self)
+        self.points  = SplinePoint(self)
         self.splines = Spline(self)
 
     # =============================================================================================================================
@@ -1237,65 +1455,48 @@ class Curve(Geometry):
     # ----- Circle
 
     @classmethod
-    def CircleRadius(cls, resolution=None, radius=None):
-        return cls(Node('Curve Circle', {'Resolution': resolution, 'Radius': radius}, mode='RADIUS')._out)
-
-    @classmethod
-    def CirclePoints(cls, resolution=None, point_1=None, point_2=None, point_3=None):
-        curve = cls(Node('Curve Circle', {'Resolution': resolution, 'Point 1': point_1, 'Point 2': point_2, 'Point 3': point_3}, mode='POINTS')._out)
-        curve.center_ = curve.node.center
-        return curve
-
-    @classmethod
     def Circle(cls, resolution=None, radius=None, point_1=None, point_2=None, point_3=None, mode='RADIUS'):
+        # mode in ('POINTS', 'RADIUS')
+        if point_1 is not None or point_2 is not None or point_3 is not None:
+            curve = cls(Node('Curve Circle', {'Resolution': resolution, 'Point 1': point_1, 'Point 2': point_2, 'Point 3': point_3}, mode='POINTS')._out)
+            curve.center_ = curve.node.center
+            return curve
+        else:
+            return cls(Node('Curve Circle', {'Resolution': resolution, 'Radius': radius}, mode='RADIUS')._out)
+
         if mode == 'RADIUS':
             return cls.CircleRadius(resolution=resolution, radius=radius, )
         else:
             return cls.CirclePoints(resolution=resolution, point_1=point_1, point_2=point_2, point_3=point_3)
 
     # ----- Arc
-
-    @classmethod
-    def ArcRadius(cls, resolution=None, radius=None, start_angle=None, sweep_angle=None, connect_center=None, invert_arc=None):
-        return cls(Node('Arc', {'Resolution': resolution, 'Radius': radius, 'Start Angle': start_angle, 'Sweep Angle': sweep_angle,
-                        'Connect Center': connect_center, 'Invert Arc': invert_arc}, mode='RADIUS')._out)
-
-    @classmethod
-    def ArcPoints(cls, resolution=None, start=None, middle=None, end=None, offset_angle=None, connect_center=None, invert_arc=None):
-        curve = cls(Node('Arc', {'Resolution': resolution, 'Start': start, 'Middle': middle, 'End': end, 'Offset Angle': offset_angle,
-                        'Connect Center': connect_center, 'Invert Arc': invert_arc}, mode='POINTS')._out)
-        curve.center_ = curve.node.center
-        curve.normal_ = curve.node.normal
-        curve.radius_ = curve.node.radius
-        return curve
-
+    #
     @classmethod
     def Arc(cls, resolution=None, radius=None, start_angle=None, sweep_angle=None,
                  start=None, middle=None, end=None, offset_angle=None,
-                 connect_center=None, invert_arc=None, mode='RADIUS'):
-        if mode == 'RADIUS':
-            return cls.ArcRadius(resolution=resolution, radius=radius, start_angle=start_angle, sweep_angle=sweep_angle,
-                connect_center=connect_center, invert_arc=invert_arc)
+                 connect_center=None, invert_arc=None):
+
+        if start is not None or middle is not None or end is not None or offset_angle is not None:
+            curve = cls(Node('Arc', {'Resolution': resolution, 'Start': start, 'Middle': middle, 'End': end, 'Offset Angle': offset_angle,
+                            'Connect Center': connect_center, 'Invert Arc': invert_arc}, mode='POINTS')._out)
+            curve.center_ = curve.node.center
+            curve.normal_ = curve.node.normal
+            curve.radius_ = curve.node.radius
+            return curve
+
         else:
-            return cls.ArcPoints(resolution=resolution, start=start, middle=middle, end=end, offset_angle=offset_angle,
-                connect_center=connect_center, invert_arc=invert_arc)
+            return cls(Node('Arc', {'Resolution': resolution, 'Radius': radius, 'Start Angle': start_angle, 'Sweep Angle': sweep_angle,
+                            'Connect Center': connect_center, 'Invert Arc': invert_arc}, mode='RADIUS')._out)
 
     # ----- Line
 
     @classmethod
-    def LinePoints(cls, start=None, end=None):
-        return cls(Node('Curve Line', {'Start': start, 'End': end}, mode='POINTS')._out)
-
-    @classmethod
-    def LineDirection(cls, start=None, direction=None, length=None):
-        return cls(Node('Curve Line', {'Start': start, 'Direction': direction, 'Length': length}, mode='DIRECTION')._out)
-
-    @classmethod
-    def Line(cls, start=None, end=None, direction=None, length=None, mode='POINTS'):
-        if mode == 'POINTS':
-            return cls.LinePoints(start=start, end=end)
+    def Line(cls, start=None, end=None, direction=None, length=None):
+        # mode in  ('POINTS', 'DIRECTION')
+        if direction is not None or length is not None:
+            return cls(Node('Curve Line', {'Start': start, 'Direction': direction, 'Length': length}, mode='DIRECTION')._out)
         else:
-            return cls.LineDirection(start=start, direction=direction, length=length)
+            return cls(Node('Curve Line', {'Start': start, 'End': end}, mode='POINTS')._out)
 
     # ----- Beziers
 
@@ -1358,7 +1559,6 @@ class Curve(Geometry):
     def FromPoints(cls, points, curve_group_id=None, weight=None):
         return Cloud(points).to_curves(curve_group_id=curve_group_id, weight=weight)
 
-
     # =============================================================================================================================
     # Properties
 
@@ -1367,151 +1567,13 @@ class Curve(Geometry):
     def domain_size(cls):
         return self._cache('Domain Size', {'Geometry': self}, component='CURVE')
 
-    # ----- Tilt
-
-    @property
-    def tilt(self):
-        return Node('Curve Tilt')._out
-
-    @tilt.setter
-    def tilt(self, value):
-        return self._jump(Node('Set Curve Tilt', {'Curve': self, 'Selection': self._sel, 'Tilt': value})._out)
-
-    # ----- Cyclic
-
-    @property
-    def is_cyclic(self):
-        return Node('Is Spline Cyclic')._out
-
-    @is_cyclic.setter
-    def is_cyclic(self, value):
-        return self._jump(Node('Set Spline Cyclic', {'Geometry': self, 'Selection': self._sel, 'Cyclic': value})._out)
-
-    # ----- Handle positions
-
-    @classmethod
-    def handle_positions(cls, relative=None):
-        return Node('Curve Handle Positions', {'Relative': relative})
-
-    def set_handle_positions(self, position=None, offset=None, mode=None):
-        return self._jump(Node('Set Handle Positions', {'Curve': self, 'Selection': self._sel, 'Position': position, 'Offset': offset}, mode=mode)._out)
-
-    @property
-    def left_handle_position(self):
-        return self.handle_positions(relative=False).left
-
-    @left_handle_position.setter
-    def left_handle_position(self, value):
-        return self.set_handle_positions(position=value, mode='LEFT')
-
-    @property
-    def right_handle_position(self):
-        return self.handle_positions(relative=False).right
-
-    @right_handle_position.setter
-    def right_handle_position(self, value):
-        return self.set_handle_positions(position=value, mode='RIGHT')
-
-    # Offset
-
-    @property
-    def left_handle_offset(self):
-        return self.handle_positions(relative=True).left
-
-    @left_handle_offset.setter
-    def left_handle_offset(self, value):
-        return self.set_handle_positions(offset=value, mode='LEFT')
-
-    @property
-    def right_handle_offset(self):
-        return self.handle_positions(relative=True).right
-
-    @right_handle_offset.setter
-    def right_handle_offset(self, value):
-        return self.set_handle_positions(offset=value, mode='RIGHT')
-
-    # ----- Handle type
-
-    @classmethod
-    def handle_type_selection(cls, left=True, right=True, handle_type='AUTO'):
-        mode = set()
-        if left:
-            mode.add('LEFT')
-        if right:
-            mode.add('RIGHT')
-        return Node('Endpoint Selection', mode=mode, handle_type=handle_type)._out
-
-    def set_handle_type(self, left=True, right=True, handle_type='AUTO'):
-        mode = set()
-        if left:
-            mode.add('LEFT')
-        if right:
-            mode.add('RIGHT')
-        return self._jump(Node('Set Handle Type', {'Curve': self, 'Selection': self._sel}, mode=mode, handle_type=handle_type)._out)
-
-    # ----- Resolution
-
-    @property
-    def resolution(self):
-        return Node('Spline Resolution')._out
-
-    @resolution.setter
-    def resolution(self, value=None):
-        return self._jump(Node('Set Spline Resolution', {'Geometry': self, 'Resolution': value})._out)
-
-    # ----- Spline type
-
-    @property
-    def spline_type(self):
-        raise NodeError(f"Curve.spline_type is write only.")
-
-    @spline_type.setter
-    def spline_type(self, value):
-        # value in ('CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS')
-        return self._jump(Node('Set Spline Type', {'Curve': self, 'Selection': self._sel}, spline_type=value)._out)
-
-    # ----- Curve radius
-
-    @property
-    def radius(self):
-        return Node('Radius')._out
-
-    @radius.setter
-    def radius(self, value):
-        return self._jump(Node('Set Curve Radius', {'Curve': self, 'Selection': self._sel, 'Radius': value})._out)
-
-    # ----- Curve radius
-
-    @property
-    def normal(self):
-        raise NodeError(f"Curve.normal property is write only")
-
-    @normal.setter
-    def normal(self, value):
-        # mode in ('MINIMUM_TWIST', 'Z_UP', 'FREE')
-        return self._jump(Node('Set Curve Normal', {'Curve': self, 'Selection': self._sel}, mode=value)._out)
-
-    # ----- Read only
-
-    @classmethod
-    @property
-    def parameter(cls):
-        return self._cached('Spline Parameter')
-
     @classmethod
     @property
     def tangent(cls):
         return Node('Curve Tangent')._out
 
-    @classmethod
     @property
-    def spline_length(cls):
-        length = Node('Spline Length')._out
-        length.point_count_ = length.node.point_count
-        return length
-
-    @property
-    def curve_length(self):
+    def length(self):
         return Node('Curve Length', {'Curve': self})._out
 
     @classmethod
@@ -1562,7 +1624,6 @@ class Curve(Geometry):
 
     def sample_length(self, value=None, length=None, curve_index=None, all_curves=False):
         return self.sample(value=value, length=length, curve_index=curve_index, all_curves=all_curves)
-
 
     # =============================================================================================================================
     # Operations

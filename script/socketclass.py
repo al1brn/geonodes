@@ -274,23 +274,23 @@ class DataSocket(NodeCache):
 
         enum_items = node._bnode.enum_items
         menu_index = None
-        for i, (name, value) in enumerate(items.items()):
+        for i, (menu_name, menu_value) in enumerate(items.items()):
 
             # ----- Create the socket
 
             if i < len(enum_items):
-                enum_items[i].name = name
+                enum_items[i].name = menu_name
             else:
-                enum_items.new(name)
+                enum_items.new(menu_name)
 
             # ----- Is it the menu socket
 
-            if isinstance(menu, str) and menu == name:
+            if isinstance(menu, str) and menu == menu_name:
                 menu_index = i
 
             # ----- Plug the value
 
-            node.plug_value_into_socket(value, node.in_socket(1 + i))
+            node.plug_value_into_socket(menu_value, node.in_socket(1 + i))
 
         # ----- Plug the menu
 
@@ -301,10 +301,15 @@ class DataSocket(NodeCache):
             menu_index = 0
 
         menu_socket = utils.get_bsocket(menu)
+        set_menu_index = False
         if menu_socket is None:
-            menu_socket = Tree.new_input('NodeSocketMenu', name=name, value=menu_index, description=tip)
+            #menu_socket = Tree.new_input('NodeSocketMenu', name=name, value=menu_index, description=tip)
+            menu_socket = Tree.new_input('NodeSocketMenu', name=name, value=None, description=tip)
+            set_menu_index = True
 
         node.plug_value_into_socket(menu_socket, node.in_socket('Menu'))
+        if set_menu_index:
+            Tree.current_tree.set_input_socket_default(menu_socket, list(items.keys())[menu_index])
 
         # ----- Geometry type
 

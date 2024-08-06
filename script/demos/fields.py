@@ -46,8 +46,17 @@ updates
 import numpy as np
 
 from .. import *
+from . import arrows as arrows_module
 
 def demo():
+
+    print("\nCreate fields Geometry Nodes...")
+
+    arrows_module.demo()
+
+    field_prefix = "Field"
+    util_prefix  = "Util"
+    show_prefix  = "Show"
 
     # =============================================================================================================================
     # Computing
@@ -55,7 +64,7 @@ def demo():
     # -----------------------------------------------------------------------------------------------------------------------------
     # Frame change
 
-    with GeoNodes("G Frame Change", is_group=True):
+    with GeoNodes("Frame Change", is_group=True, prefix=util_prefix):
 
         position  = Vector(0, "Position")
         vector    = Vector(0, "Vector")
@@ -92,31 +101,150 @@ def demo():
         transformed_position.to_output("Position")
         transformed_vector.to_output(  "Vector")
 
+    # =============================================================================================================================
+    # Compute Curl
+
+    with GeoNodes("Compute Curl", is_group=True, prefix=util_prefix) as tree:
+
+        # ----- Parameters
+
+        field       = Vector(0, "Field", tip="Field vector at the input geometry points")
+        ds          = Float(.1,  "ds", 0.001, tip="Precision")
+        normalize   = Boolean(True, "Normalize", tip="Return the raw (False) or normalized (True) field")
+        scale       = Float(1, "Scale", tip="Scale")
+
+        # ---- Main
+
+        with Layout("Computation points"):
+            geo = Geometry()
+            cloud = geo.point_cloud + geo.mesh.points.to_points()
+
+        ds2_ = (-.5*ds)._lc("ds/2")
+
+        with Layout("TEMP Along X"):
+            cloud.points.offset = (ds2_, 0, 0)
+            cloud.points.store("TEMP Before", field)
+            cloud.points.offset = (ds, 0, 0)
+            cloud.points.store("TEMP After", field)
+            cloud.points.offset = (ds2_, 0, 0)
+
+            cloud.points.store("TEMP dvx", Vector.Named("TEMP After") - Vector.Named("TEMP Before"))
+
+        with Layout("Along Y"):
+            cloud.points.offset = (0, ds2_, 0)
+            cloud.points.store("TEMP Before", field)
+            cloud.points.offset = (0, ds, 0)
+            cloud.points.store("TEMP After", field)
+            cloud.points.offset = (0, ds2_, 0)
+
+            cloud.points.store("TEMP dvy", Vector.Named("TEMP After") - Vector.Named("TEMP Before"))
+
+        with Layout("TEMP Along Z"):
+            cloud.points.offset = (0, 0, ds2_)
+            cloud.points.store("TEMP Before", field)
+            cloud.points.offset = (0, 0, ds)
+            cloud.points.store("TEMP After", field)
+            cloud.points.offset = (0, 0, ds2_)
+
+            cloud.points.store("TEMP dvz", Vector.Named("TEMP After") - Vector.Named("TEMP Before"))
+
+        with Layout("Curl"):
+            dvx, dvy, dvz = Vector.Named("TEMP dvx"), Vector.Named("TEMP dvy"), Vector.Named("TEMP dvz")
+            curl = Vector((
+                dvy.z - dvz.y,
+                dvx.z - dvz.x,
+                dvx.y - dvy.x,
+            )).scale(scale)
+            cloud.points.store("Vectors", curl.switch(normalize, curl.scale(1/ds)))
+
+        cloud.remove_named_attribute("TEMP *", exact=False)
+
+        cloud.out()
+
+    # =============================================================================================================================
+    # Compute the lines of field
+
+    with GeoNodes("Lines of Field", prefix=util_prefix):
+
+        # ----- Field
+
+        field       = Vector(0, "Field", tip="Field vector at the input geometry points")
+
+        # ----- Algorithm parameter
+
+        iterations  = Integer(20, "Iterations", 1, tip="Number of iterations per line")
+        delta       = Float(.1, "Delta", .001, tip="Distance to move at each iteration")
+        direction   = Integer(1, "Direction",  tip="Move forwards (+1) or backwards (-1)")
+
+        # ----------------------------------------------------------------------------------------------------
+        # Main
+
+        with Layout("Starting points"):
+            geo = Geometry()
+            mesh = geo.mesh.faces.delete_edges_and_faces() + geo.point_cloud.to_vertices()
+
+            mesh.points.store("DELTA", delta*direction)
+
+        with Repeat(mesh=mesh, top=True, iterations=iterations) as rep:
+
+            mesh = rep.mesh
+
+            with Layout("Displacement from current points"):
+                v0 = field
+                l0 = v0.length
+
+                mesh.points[rep.top].store("Intensity", l0)
+
+                rep.top &= l0.greater_than(0.001)
+
+                v0 = v0.normalize().scale(Float.Named("DELTA"))
+
+            with Layout("Extrude from this first displacement"):
+
+                mesh = mesh.points[rep.top].extrude(offset=v0)
+                top  = mesh.top_
+
+            with Layout("Displacement from extruded point"):
+
+                v1 = field
+                v1 = v1.normalize().scale(Float.Named("DELTA"))
+                v1 = (v1 - v0).scale(.5)
+
+                mesh.points[top].offset = v1
+
+            rep.top  = top
+            rep.mesh = mesh
+
+        mesh = rep.mesh
+        mesh.remove_named_attribute("DELTA")
+
+        curve = mesh.to_curve()
+        curve.points.radius = gnmath.log(1 + Float.Named("Intensity"))
+
+        curve.out("Curve")
+
     # -----------------------------------------------------------------------------------------------------------------------------
     # Electric Field
 
-    with GeoNodes("G Electric Field", is_group=True):
+    with GeoNodes("Electrostatic", is_group=True, prefix=field_prefix):
 
-        position = Vector(0, "Position", tip="Position where to compute the field")
-
-        charges  = Geometry(None, "Charges", tip="Charge locations with 'Charge' attribute")
-        max_len  = Float(1000, "Max Length", 1, tip="Max field vector length")
+        charges_loc = Geometry(None, "Charges Locations", tip="Charge locations")
+        charges_val = Float(1, "Charges Values", tip="Electric charges")
+        max_len     = Float(1000, "Max Length", 1, tip="Max field vector length")
 
         with Layout("Mesh or Points input"):
-            cloud = charges.point_cloud + charges.mesh.points.to_points()
+            cloud = charges_loc.point_cloud + charges_loc.mesh.points.to_points()
             count = cloud.points.count
 
-        with Layout("Default charge to 1"):
-            charge_val = Float.Named('Charge')
-            charge_val = Float.Switch(charge_val.exists_, 1, charge_val)
-            cloud.points.store('Charge', charge_val)
+        with Layout("Charge values"):
+            charges_val = cloud.points.capture(charges_val)
 
         with Repeat(field=Vector(), index=0, iterations=count) as rep:
 
             charge_loc = cloud.points.sample_index(nd.position, index=rep.index)
-            charge_val = cloud.points.sample_index(Float.Named('Charge'), index=rep.index)
+            charge_val = cloud.points.sample_index(charges_val, index=rep.index)
 
-            v = position - charge_loc
+            v = nd.position - charge_loc
             l = v.length
             l3 = gnmath.max(1/max_len, l**3)
             rep.field += charge_val*v/l3
@@ -129,9 +257,7 @@ def demo():
     # -----------------------------------------------------------------------------------------------------------------------------
     # Electromagnetic field generated by a charge moving in an arbitray direction
 
-    with GeoNodes("G Moving Charge Field", is_group=True) as tree:
-
-        position   = Vector(0, "Position", tip="Position where to compute the fields")
+    with GeoNodes("Moving Charge", is_group=True, prefix=field_prefix) as tree:
 
         charge_loc = Vector(0, "Charge Location", tip="Location of the moving charge")
         charge     = Float(1,  "Charge", tip="Value of the charge")
@@ -150,7 +276,7 @@ def demo():
             rotation = Rotation.AlignXToVector(speed)
             inv_rot  = rotation.invert()
 
-            rotated_position = inv_rot @ (position - charge_loc)
+            rotated_position = inv_rot @ (nd.position - charge_loc)
 
         with Layout("Charge*gamma/rho**3"):
             rho = rotated_position.length
@@ -174,9 +300,7 @@ def demo():
     # -----------------------------------------------------------------------------------------------------------------------------
     # Electromagnetic field generated by charges along a curve
 
-    with GeoNodes("G Curve Field", is_group=True):
-
-        position    = Vector(0, "Position", tip="Position where to compute the field")
+    with GeoNodes("Moving Charges on a Curve", is_group=True, prefix=field_prefix):
 
         source      = Curve(None, "Source Curve", tip="Curve on which charges are moving")
         count       = Integer(1, "Count", 1, 1000, tip="Number on charges on the curve")
@@ -188,37 +312,40 @@ def demo():
         # Main
 
         dt = 1/count
-        spheres = Cloud.Points(count=count)
+        centers = Cloud.Points(count=count)
 
-        with Repeat(spheres=spheres, field=Vector(), e=Vector(), b=Vector(), index=0, iterations=count) as rep:
+        with Repeat(centers=centers, e=Vector(), b=Vector(), index=0, iterations=count) as rep:
 
             sample = source.sample(factor=abs(rep.index*dt + t) % 1)
 
             charge_loc   = sample.position_
             charge_speed = sample.tangent_.scale(beta)
 
-            rep.spheres.points[rep.index].position = charge_loc
-
-            field_node = Group("G Moving Charge Field", {
-                'Position'       : position,
-                'Charge'         : charge/count,
+            field_node = Group("Moving Charge", {
                 'Charge Location': charge_loc,
+                'Charge'         : charge/count,
                 'Speed'          : speed,
-                })
+                }, prefix=field_prefix)
 
             rep.e += field_node.e
             rep.b += field_node.b
+
+            # ----- To visualize charges locations
+
+            rep.centers.points[rep.index].position = charge_loc
+
+            # ----- Next
 
             rep.index += 1
 
         rep.e.out("E")
         rep.b.out("B")
-        rep.spheres.out("Charge Locations")
+        rep.centers.out("Charge Locations")
 
     # =============================================================================================================================
     # Lorentz transformation for electromagnetic field
 
-    with GeoNodes("EM Lorentz", is_group=True):
+    with GeoNodes("EM Lorentz", is_group=True, prefix=util_prefix):
 
         speed = Vector((.8, 0, 0), "Speed")
         E     = Vector(0, "E")
@@ -265,118 +392,333 @@ def demo():
         B_.out("B")
 
     # -----------------------------------------------------------------------------------------------------------------------------
-    # Electromagnetic field generated by a loop in the plane XY at distance r and altitude z
-
-    with GeoNodes("G Loop Field", is_group=True):
-
-        r      = Float(0, "r", tip="Distance to the center of the loop where to compute the field")
-        z      = Float(0, "z", tip="z coordinate where to compute the field")
-        charge = Float(1, "Charge", tip="Charge value")
-        beta   = Float(.8, "Beta",  -.999, .999, tip="Charge speed in percentage of the speed of light")
-        R      = Float(1, "Radius", .1, 10, tip="Radius of the loop")
-
-        # -----------------------------------------------------------------------------------------------------------------------------
-        # Main
-
-        count = round(32*R)
-
-        with Layout("Cosine and Sine"):
-            circle = Mesh.Circle(vertices=count, radius=1)
-
-        with Layout("-2*gamma*charge"):
-            gam_charge = (-2*charge/count)*(1 - beta**2)**(-0.5)
-
-        # Integration loop
-
-        with Repeat(ex=0., ez=0., bx=0., bz=0., index=0, iterations=count) as rep:
-
-            cos_sin = circle.points.sample_index(value=nd.position, index=rep.index)
-            rep.index += 1
-
-            cos_theta_, sin_theta_ = cos_sin.x, cos_sin.y
-
-            rho_x = r - R*cos_theta_
-            rho_y = R*sin_theta_
-            gr3 = gam_charge*gnmath.max(.01, Vector((rho_x, rho_y, z)).length)**-3
-
-            rep.ex += rho_x*gr3
-            rep.ez += z*gr3
-
-            rep.bx += z*cos_theta_*gr3
-            rep.bz += (R - r*cos_theta_)*gr3
-
-        with Layout("Fields"):
-            Vector((rep.ex, 0, rep.ez)).out("E")
-            Vector((rep.bx, 0, rep.bz)).out("B")
-
-    # -----------------------------------------------------------------------------------------------------------------------------
     # Electromagnetic field generated by a solenoid
 
-    with GeoNodes("G Solenoid Field", is_group=True):
-
-        position    = Vector(0,   "Position", tip="Position where to compute the fields")
+    with GeoNodes("Solenoid", is_group=True, prefix=field_prefix):
 
         charge      = Float(1,    "Charge", tip="Total charge of the solenoid")
         beta        = Float(.8,   "Beta", -.999, .999, tip="Speed in percentage of the speed of light")
         R           = Float(1,    "Radius",  .1, 10, tip="Solenoid radius")
-        loops       = Integer(10, "Loops", 10, tip="Number of loops")
+        loops       = Integer(10, "Loops", 1, tip="Number of loops")
         length      = Float(5,    "Length", .1, 10, tip="Solenoid length")
 
-        with Layout("Position in cylindrical coordinates along x"):
-            x = position.x
-            r = Vector((0, position.y, position.z)).length
-            lam = gnmath.atan2(position.z, position.y)
+        with Layout("Position converted to cylindrical coordinates along x"):
+            pos = nd.position
+            x = pos.x._lc("x")
+            r = Vector((0, pos.y, pos.z)).length._lc("r")
+            lam = gnmath.atan2(pos.z, pos.y)._lc("lambda")
+            cos_lam = (pos.y/r)._lc("cos lambda")
+            sin_lam = (pos.z/r)._lc("sin lambda")
 
-        with Layout("Integral along theta in [0, pi]"):
-            theta0 = 0
-            theta1 = pi
-            theta_count = round(32*R)
-            theta = nd.position.x
+        with Layout("Number of charges on a each loop"):
+            count = round(R*32)._lc("Count")
+            circle = Mesh.Circle(vertices=count, radius=1)
 
-        with Layout("Sum on the loops in [-l/2, l/2]"):
-            x_s0 = -length/2
-            x_s1 = length/2
-            x_s = nd.position.y
+        with Layout("Split Solenoid length in loops"):
+            xs0 = (-length/2)._lc("xs0")
+            dxs = (length/gnmath.max(1, loops-1))._lc("dxs")
+
+        # ----------------------------------------------------------------------------------------------------
+        # Loop on theta
+
+        with Repeat(ex=0., er=0., bx=0., br=0., index=0, iterations=count) as rep_theta:
+
+            cs = circle.points.sample_index(nd.position, index=rep_theta.index)
+            cos_theta, sin_theta = (cs.x)._lc("cos theta"), cs.y._lc("sin theta")
+
+            with Layout("Once : R2sin2 + (r - Rcos)2"):
+                rho_cst = (R*sin_theta)**2 + (r - R*cos_theta)**2
+
+            # ----------------------------------------------------------------------------------------------------
+            # Loop on solenoids loops
+
+            with Repeat(ex=rep_theta.ex, er=rep_theta.er, bx=rep_theta.bx, br=rep_theta.br, index=0, iterations=loops) as rep_xs:
+
+                x_s = gnmath.multiply_add(rep_xs.index, dxs, xs0)._lc("x_s")
+                rep_xs.index += 1
+
+                with Layout("1/Rho**3"):
+                    rho3 = (((x - x_s)**2 + rho_cst)**(-1.5))._lc("1/rho**3")
+
+                with Layout("Ex"):
+                    rep_xs.ex += (x - x_s)*rho3
+
+                with Layout("Er"):
+                    rep_xs.er += (r - R*cos_theta)*rho3
+
+                with Layout("Bx"):
+                    rep_xs.bx += (R - r*cos_theta)*rho3
+
+                with Layout("Br"):
+                    rep_xs.br += (x - x_s)*cos_theta*rho3
+
+            # ----- Next loop
+
+            rep_theta.ex += rep_xs.ex
+            rep_theta.er += rep_xs.er
+            rep_theta.bx += rep_xs.bx
+            rep_theta.br += rep_xs.br
+
+            rep_theta.index += 1
+
+        # ----------------------------------------------------------------------------------------------------
+        # Finalize the fields
 
         with Layout("-2*gamma*charge"):
-            gam_charge = (-2*charge/count)*(1 - beta**2)**(-0.5)
-
-        with Layout("1/Rho**3"):
-            rho3 = ((x - x_s)**2 + R**2*gnmath.sin(theta)**2 + (r - R*gnmath.cos(theta))**2)**(-1.5)
-
-        with Layout("dEx"):
-            dEx = (x - x_s)*rho3
-
-        with Layout("dEy"):
-            dEy = (r - R*gnmath.cos(theta))*rho3
-
-        with Layout("dBx"):
-            dBx = (R - r*gnmath.cos(theta))*rho3
-
-        with Layout("dBy"):
-            dBy = (x - x_s)*gnmath.cos(theta)*rho3
-
-        integrals = macros.double_integrals(x0=theta0, x1=theta1, y0=x_s0, y1=x_s1, count_x=theta_count, count_y=loops, Ex=dEx, Ey=dEy, Bx=dBx, By=dBy)
+            gam_charge = (-2*charge/count/loops)*(1 - beta**2)**(-0.5)
 
         with Layout("Electric Field"):
             E = Vector((
-                integrals["Ex"],
-                integrals["Ey"]*(-gnmath.sin(lam)),
-                integrals["Ey"]*gnmath.cos(lam)
+                rep_theta.ex,
+                rep_theta.er*cos_lam,
+                rep_theta.er*sin_lam,
             )).scale(gam_charge)
 
         with Layout("Magnetic Field"):
             B = Vector((
-                integrals["Bx"],
-                integrals["By"]*(-gnmath.sin(lam)),
-                integrals["By"]*gnmath.cos(lam)
+                rep_theta.bx,
+                rep_theta.br*cos_lam,
+                rep_theta.br*sin_lam,
             )).scale(gam_charge*beta)
 
         E.out("E")
         B.out("B")
 
+    # ----------------------------------------------------------------------------------------------------
+    # Magnet field
+
+    with GeoNodes("Magnet", is_group=True, prefix=field_prefix):
+
+        width_scale  = Float(1., "Width Scale",  0.01, tip="Width scale")
+        location     = Vector(0, "Location", tip="Magnet location")
+        rotation     = Rotation(0, "Rotation", tip="Magnet rotation")
+        speed        = Vector(0, "Speed", tip="Magnet speed in percentage of the speed of light")
+
+        # ----- Computation is made for a magnet centered along the x axis
+
+        with Layout("Center Magnet and align along x"):
+            position = rotation.invert() @ (nd.position - location)
+            x, y, z = position.x, position.y, position.z
+
+        # ----- Plane passing through x axis
+
+        with Layout("Plane containing point and x axis"):
+            angle = gnmath.atan2(z, y)
+            rot_y = gnmath.sqrt(y**2 + z**2)
+
+        # ----- Width scale
+
+        y_ = rot_y/width_scale
+
+        # ----- Normalized radius
+
+        r = (x**2 + y_**2)/2/y_
+
+        # ----- Normalized B
+
+        B = Vector(((r - y_)/width_scale, x, 0)).normalize()
+
+        # ----- Rotation
+
+        B = Rotation((angle, 0, 0)) @ B
+
+        # ----- Back to the initial frame
+
+        B = rotation @ B
+
+        with Layout("Take speed into account"):
+
+            transf_node = Group("EM Lorentz", {'Speed': speed, 'B': B}, prefix=util_prefix)
+            E = transf_node.e
+            B = transf_node.b
+
+        # ----- Done
+
+        E.to_output("E")
+        B.to_output("B")
+
+    # =============================================================================================================================
+    # Points in space where to compute the fields
+
+    with GeoNodes("Source Points", prefix=util_prefix):
+
+        location    = Vector(0,         "Location")
+        size        = Vector((5, 5, 5), "Size")
+        density     = Float(1,          "Density")
+        rotation    = Rotation(0,       "Rotation")
+        max_dist    = Float(100,        "Max Distance", 1, tip="Remove points farther than maximum distance to the center")
+        center      = Vector(0,         "Center for Max Distance", tip="Center to compute maximum distance")
+        seed        = Integer(0,        "Seed")
+
+        geo = Geometry()
+
+        with Layout("Points on faces"):
+            pts_faces_cloud = Mesh(geo).faces.distribute_points(density=density, seed=seed)
+
+        with Layout("Points in volume"):
+            pts_vol_cloud = Mesh(geo).to_volume(density=density).distribute_points(seed=seed)
+
+        with Layout("Plane"):
+            grid = Mesh.Grid(size.x, size.y, 2, 2)
+            plane_cloud = grid.faces.distribute_points(density=density, seed=seed)
+
+        with Layout("Disk"):
+            disk = Mesh.Disk()
+            disk = disk.transform(scale=(size.x, size.y, 1))
+            disk_cloud = disk.faces.distribute_points(density=density, seed=seed)
+
+        with Layout("Cube"):
+            cube = Mesh.Cube(size)
+            cube_cloud = cube.to_volume(density=density).distribute_points(seed=seed)
+
+        with Layout("Cylinder"):
+            cyl = Mesh.Cylinder(depth=1)
+            cyl = cyl.transform(scale=(size.x, size.y, size.z))
+            cyl_cloud = cyl.to_volume(density=density).distribute_points(seed=seed)
+
+        with Layout("Sphere"):
+            sphere = Mesh.UVSphere()
+            sphere = sphere.transform(scale=(size.x, size.y, size.z))
+            sphere_cloud = sphere.to_volume(density=density).distribute_points(seed=seed)
+
+        cloud = Cloud.MenuSwitch(items={
+            'Input Geometry'   : Cloud(geo),
+            'Points on faces'  : pts_faces_cloud,
+            'Points in volume' : pts_vol_cloud,
+            'Plane'            : plane_cloud,
+            'Disk'             : disk_cloud,
+            'Cube'             : cube_cloud,
+            'Cylinder'         : cyl_cloud,
+            'Sphere'           : sphere_cloud,
+        }, menu='Cube', name='Shape')
+
+        cloud = cloud.transform(translation=location, rotation=rotation)
+        cloud = cloud.points[nd.position.distance(center).greater_than(max_dist)].delete()
+
+        cloud.out()
+
+    # =============================================================================================================================
+    # Visualize some of the fields
+
+    with GeoNodes("Field", prefix=show_prefix):
+
+        field = Vector(0, "Field", tip="Field to visualize")
+
+        cloud = Cloud()
+
+        with Layout("Arrows:"):
+
+            show_arrows = Boolean(True, "Show arrows")
+
+            arrows_group = Group("Arrows", {'Geometry': cloud, 'Vectors': field})
+            arrows_group.plug_node_into(include=['Scale', 'Logarithm'], rename={'Color': 'Arrow Color'})
+            arrows_mat = Material("Arrows", "Arrows Material")
+            arrows_group.shaft = arrows_mat
+            arrows_group.head= arrows_mat
+            arrows = arrows_group._out
+
+        with Layout("Lines of field computation"):
+            lines_group = Group("Lines of Field", {
+                'Geometry': cloud,
+                'Field': field,
+                'Direction': Integer.Random(0, 1, seed=0)*2 - 1,
+            }, prefix=util_prefix)
+            curves = Curve(lines_group._out)
+
+        with Layout("Lines of field as mesh"):
+            show_lines = Boolean(False, "Lines of Field")
+            lines_color = Color(None, "Lines Color")
+            curves.points.store("Color", lines_color)
+            curves.points.store("Transparency", 1 - lines_color.alpha)
+
+            mesh_curves = curves.to_mesh(profile_curve=Curve.Circle(radius=Float(.02, "Lines Section", 0)), fill_caps=True)
+            mesh_curves.faces.smooth = True
+            mesh_curves.faces.material = Material(None, "Lines material")
+
+        with Layout("Arrows on lines of field"):
+            show_lines_arrows = Boolean(False, "Arrows on Lines")
+            lar_delta = Float(.5, "Interval",.1, tip="Distance between arrows on the lines of field")
+            lar_scale = Float(1., "Lines Arrows Scale",.01, tip="Scale of arrows on the lines of field")
+            lar_origins = curves.resample(length=gnmath.max(.1, lar_delta))
+            lar_vectors = lar_origins.tangent.scale(Float.Named("Intensity")*lar_scale)
+
+            lar_group = Group("Arrows", {'Geometry': lar_origins, 'Vectors': lar_vectors})
+            lar_group.plug_node_into(include=[], rename={'Logarithm': 'Lines Arrows Log', 'Color': 'Lines Arrows Color'})
+
+            lar_arrows = lar_group._out
+
+        geo = Mesh.Switch(show_arrows, None, arrows)
+        geo += Mesh.Switch(show_lines, None, mesh_curves)
+        geo += Mesh.Switch(show_lines_arrows, None, lar_arrows)
+
+        geo.out()
+
+    # =============================================================================================================================
+    # Visualize some of the fields
+
+    with GeoNodes("Visualize some fields"):
+
+        # ----------------------------------------------------------------------------------------------------
+        # Source points
+
+        source_node = Group("Source Points", prefix=util_prefix)
+        source_node.plug_node_into(include=['Size', 'Density', 'Seed', 'Shape'])
+        cloud = source_node._out
+
+        use_magnetic = Boolean(False, "Magnetic Field", tip="Magnetic field if True, electric field otherwise")
+
+        with Layout("Static Electric field from charges"):
+            node = Group("Electrostatic",{
+                'Charges Locations' : Cloud.Points(count=6, position=Vector.Random(-1, 1, seed=100+seed)),
+                'Charges Values'    : Float.Random(-1, 1, seed=101+seed),
+                }, prefix=field_prefix)
+            static_field = node.e.switch(use_magnetic, node.b)
+
+        with Layout("Moving charge"):
+            node = Group("Moving Charge", prefix=field_prefix)
+            moving_field = node.e.switch(use_magnetic, node.b)
+
+        with Layout("Solenoid"):
+            node = Group("Solenoid", prefix=field_prefix)
+            solenoid_field = node.e.switch(use_magnetic, node.b)
+
+        with Layout("Magnet"):
+            node = Group("Magnet", prefix=field_prefix)
+            magnet_field = node.e.switch(use_magnetic, node.b)
+
+
+        field = Vector.MenuSwitch({
+            'Electrostatic' : static_field,
+            'Moving charge' : moving_field,
+            'Solenoid'      : solenoid_field,
+            'Magnet'        : magnet_field,
+            }, menu=0, name='Field', tip="Field to visualize")
+
+        show_node = Group("Field", {
+            'Geometry': cloud,
+            'Field': field,
+        }, prefix=show_prefix)
+
+        show_node.plug_node_into()
+        geo = show_node._out
+
+        geo.out()
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     return
+
 
 
 
@@ -495,12 +837,8 @@ def gen_field_visualization(tree, field_node):
 def build_fields(clear_sockets=False):
 
     arrows_module.build_arrows()
-    print("\nCreate fields modifiers...")
 
 
-    # =============================================================================================================================
-    # Electromagnetic Field computations
-    # The groups returns E and B sockets
 
 
 
@@ -509,260 +847,6 @@ def build_fields(clear_sockets=False):
 
 
 
-    # -----------------------------------------------------------------------------------------------------------------------------
-    # Field emitted by charges moving on a segment along X and centered on the origin
-
-    with gn.GeoNodes("G Segment Field", clear_sockets=clear_sockets, is_group=True) as tree:
-
-        position    = tree.vector_input( "Position")
-
-        charge      = tree.float_input(  "Charge",          1.)
-        beta        = tree.float_input(  "Beta",            .8, min_value=-.999, max_value=.999)
-        length      = tree.float_input(  "Length",          1., min_value=0.01)
-
-        # ----- Main
-
-        x, y, z = position.x, position.y, position.z
-        a2 = y**2 + z**2
-
-        L = length/2
-
-        with Layout("G(L) and F(L)"):
-
-            lx1 = L - x
-            GL1 = 1/tree.sqrt(a2 + lx1**2)
-            FL1 = lx1/a2*GL1
-
-        with Layout("G(-L) and F(-L)"):
-
-            lx0 = -L - x
-            GL0 = 1/tree.sqrt(a2 + lx0**2)
-            FL0 = lx0/a2*GL0
-
-        with Layout("Integrals"):
-            FL = FL1 - FL0
-            GL = GL1 - GL0
-
-        with Layout("Gamma"):
-            gamma = charge*(1 - beta**2)**1.5
-
-        E = gamma*tree.vector((GL, y*FL, z*FL))
-        B = gamma*beta*tree.vector((0, -z*FL, y*FL))
-
-        E.to_output("E")
-        B.to_output("B")
-
-        tree.CurveLine(start=(-L, 0, 0), end=(L, 0, 0)).curve.to_output("Segment")
-
-    # -----------------------------------------------------------------------------------------------------------------------------
-    # Field emitted by charges moving on a rectangular shape in the plane XY
-
-    with gn.GeoNodes("G Rectangle Loop Field", clear_sockets=clear_sockets, is_group=True) as tree:
-
-        position    = tree.vector_input( "Position")
-
-        charge      = tree.float_input(  "Charge",          1.)
-        beta        = tree.float_input(  "Beta",            .8, min_value=-.999, max_value=.999)
-        size_y      = tree.float_input(  "Size Y",          1., min_value=0.01)
-        size_z      = tree.float_input(  "Size Z",          1., min_value=0.01)
-
-        with Layout("Share the charge on the sides"):
-            total_size = (size_y + size_z)*2
-            charge_y = charge*size_y/total_size
-            charge_z = charge*size_z/total_size
-
-        with Layout("Computation are made in plane XY"):
-            position = position.rotate_vector(rotation=(0, np.pi/2, 0))
-
-        node = tree.group("G Segment Field",
-                    position = position - tree.vector((0, size_z*(-.5), 0)),
-                    charge   = charge_y,
-                    beta     = beta,
-                    length   = size_y,
-                    )
-
-        E = node.e
-        B = node.b
-
-        node = tree.group("G Segment Field",
-                    position = position - tree.vector((0, size_z/2, 0)),
-                    charge   = -charge_y,
-                    beta     = beta,
-                    length   = size_y,
-                    )
-
-        E += node.e
-        B += node.b
-
-        rot_pos = position.rotate_vector(rotation=(0, 0, np.pi/2))
-        rotation = tree.vector((0, 0, -np.pi/2))
-
-        node = tree.group("G Segment Field",
-                    position = rot_pos - tree.vector((0, size_y*(-.5), 0)),
-                    charge   = charge_z,
-                    beta     = beta,
-                    length   = size_z,
-                    )
-
-        E += node.e.rotate_vector(rotation)
-        B += node.b.rotate_vector(rotation)
-
-        node = tree.group("G Segment Field",
-                    position = rot_pos - tree.vector((0, size_y/2, 0)),
-                    charge   = -charge_z,
-                    beta     = beta,
-                    length   = size_z,
-                    )
-
-        E += node.e.rotate_vector(rotation)
-        B += node.b.rotate_vector(rotation)
-
-        with Layout("Rotate the loop in the plane YZ"):
-
-            E = E.rotate_vector(rotation=(0, -np.pi/2, 0))
-            B = B.rotate_vector(rotation=(0, -np.pi/2, 0))
-
-            curve = tree.Grid(size_x=size_y, size_y=size_z, vertices_x=2, vertices_y=2).mesh.mesh_to_curve()
-            curve.transform_geometry(rotation=(0, -np.pi/2, 0))
-
-
-        E.to_output("E")
-        B.to_output("B")
-
-        curve.to_output("Rectangle")
-
-    # =============================================================================================================================
-    # Compute Curl
-
-    with gn.GeoNodes("Compute Curl", clear_sockets=clear_sockets) as tree:
-
-        # ----- Parameters
-
-        field       = tree.vector_input(  "Field", description="Field computation from 'position' Node")
-        ds          = tree.float_input(   "ds", .1, min_value=0.001, description="Precision")
-        normalize   = tree.bool_input(    "Normalize", True, description="Return the raw (False) or normalized (True)")
-        scale       = tree.float_input(   "Scale", 1., description="Scale")
-
-        # ---- Main
-
-        with Layout("Computation points"):
-            comps_node = tree.geometry.separate_components()
-            points = comps_node.point_cloud + comps_node.mesh.mesh_to_points()
-            points = points.points_to_vertices()
-
-        ds2_ = -.5*ds
-
-        with Layout("Along X"):
-            points.transform_geometry(translation=(ds2_, 0, 0))
-            points.POINT.store_named_vector("Before", field)
-            points.transform_geometry(translation=(ds, 0, 0))
-            points.POINT.store_named_vector("After", field)
-            points.transform_geometry(translation=(ds2_, 0, 0))
-
-            points.POINT.store_named_vector("dvx", points.POINT.named_vector("After") - points.POINT.named_vector("Before"))
-
-        with Layout("Along Y"):
-            points.transform_geometry(translation=(0, ds2_, 0))
-            points.POINT.store_named_vector("Before", field)
-            points.transform_geometry(translation=(0, ds, 0))
-            points.POINT.store_named_vector("After", field)
-            points.transform_geometry(translation=(0, ds2_, 0))
-
-            points.POINT.store_named_vector("dvy", points.POINT.named_vector("After") - points.POINT.named_vector("Before"))
-
-        with Layout("Along Z"):
-            points.transform_geometry(translation=(0, 0, ds2_))
-            points.POINT.store_named_vector("Before", field)
-            points.transform_geometry(translation=(0, 0, ds))
-            points.POINT.store_named_vector("After", field)
-            points.transform_geometry(translation=(0, 0, ds2_))
-
-            points.POINT.store_named_vector("dvz", points.POINT.named_vector("After") - points.POINT.named_vector("Before"))
-
-        with Layout("Curl"):
-            dvx, dvy, dvz = points.POINT.named_vector("dvx"), points.POINT.named_vector("dvy"), points.POINT.named_vector("dvz")
-            curl = tree.vector((
-                dvy.z - dvz.y,
-                dvx.z - dvz.x,
-                dvx.y - dvy.x,
-            ))
-            curl = curl.scale(scale)
-            points.POINT.store_named_vector("Vectors", curl.switch(normalize, curl.scale(1/ds)))
-
-        points.remove_named_attribute("Before")
-        points.remove_named_attribute("After")
-        points.remove_named_attribute("dvx")
-        points.remove_named_attribute("dvy")
-        points.remove_named_attribute("dvz")
-
-        tree.geometry = points
-
-
-
-    # =============================================================================================================================
-    # Compute the lines of field
-
-    with gn.GeoNodes("Compute Lines of Field", clear_sockets=clear_sockets) as tree:
-
-        # ----- Field
-
-        field       = tree.vector_input(  "Field", description="Field computation from 'position' Node")
-
-        # ----- Algorithm parameter
-
-        iterations  = tree.int_input(     "Iterations", 20,    min_value=1, description="Number of iterations per line")
-        delta       = tree.float_input(   "Delta",      .1,    min_value=.001, description="Distance to move at each iteration")
-        direction   = tree.float_input(   "Direction",  1., description="Move forwards (+1) or backwards (-1)")
-        origin      = tree.vector_input(  "Origin", description="Origin to compute the distance from")
-        max_dist    = tree.float_input(   "Max Distance",  100., description="Ignore points beyond the max distance")
-
-        # ----------------------------------------------------------------------------------------------------
-        # Main
-
-        with Layout("Starting points"):
-            comps_node = tree.geometry.separate_components()
-            points = comps_node.point_cloud + comps_node.mesh.mesh_to_points()
-            points = points.points_to_vertices()
-
-            points.store_named_float("DELTA", delta*direction)
-            points.POINT.delete_geometry(origin.distance(tree.position).greater_than(max_dist))
-
-        with tree.repeat(points=points, top=True, iterations=iterations) as rep:
-
-            with Layout("Vector computation"):
-
-                with Layout("Displacement from current points"):
-                    v0 = field
-                    l0 = v0.length()
-
-                    rep.points.POINT[rep.top].store_named_float("Intensity", l0)
-
-                    #rep.top &= l0 < 10
-                    rep.top &= l0 > 0.001
-
-                    v0 = v0.normalize().scale(rep.points.named_float("DELTA"))
-
-                with Layout("Extrude from this first displacement"):
-
-                    mesh = rep.points.POINT[rep.top].extrude_mesh(offset=v0)
-                    top  = mesh.node.top
-
-                with Layout("Displacement from extruded point"):
-
-                    v1 = field
-                    v1 = v1.normalize().scale(rep.points.named_float("DELTA"))
-                    #v1 = tree.vector((0, 0, 0)).switch(average, (v1 - v0).scale(.5))
-                    v1 = (v1 - v0).scale(.5)
-
-                    rep.points.POINT[top].offset = v1
-
-            rep.top    = top
-            rep.points = mesh
-
-        mesh = rep.points
-        mesh.remove_named_attribute("DELTA")
-
-        tree.geometry = mesh.mesh_to_curve()
 
     # =============================================================================================================================
     # Visualize spheres on points

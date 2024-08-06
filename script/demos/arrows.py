@@ -32,7 +32,7 @@ updates
 - creation : 2024/08/02
 """
 
-from geonodes.script import *
+from .. import *
 
 def demo():
 
@@ -45,24 +45,28 @@ def demo():
 
     with GeoNodes("Arrows"):
 
-        points     = Cloud()
+        cloud      = Cloud()
+        vectors    = Vector(0, "Vectors", tip="Vectors at each point")
 
         scale      = Float(     1,  "Scale", 0, tip = "Vectors multiplicator")
+        use_log    = Boolean(False, "Logarithm", tip="Use a logarithm of vector lengths")
         resol      = Integer(  12,  "Resolution",  3, 64, tip = "Arrows shaft resolution")
         section    = Float(   .02,  "Section", 0., 1., tip = "Arrows shaft radius")
         use_sphere = Boolean(False, "Sphere", tip="Use a sphere for the head rather than a cone")
         color      = Color((0., 0., 1., 1.), "Color",  tip="Color to pass as 'Color' named attribute for shader")
-        transp     = Float.Factor(0, "Transparency", 0, 1, tip="Transparency factor to pass as 'Transparency' named attribute for shader")
+        #transp     = Float.Factor(0, "Transparency", 0, 1, tip="Transparency factor to pass as 'Transparency' named attribute for shader")
         negative   = Float.Factor(0, "Negative",     0, 1, tip="Negative factor to pass as 'Negative', named attribute for shader")
         shaft_mat  = Material("Arrow", "Shaft", tip="Material for the shaft")
         head_mat   = Material("Arrow", "Head", tip="Material for the head")
         show_arrow = Boolean(True, "Show", tip="Show / hide flag")
 
-        vectors = Vector.Named("Vectors")
+        with Layout("Vectors"):
+            vectors = cloud.points.capture(vectors)
 
         with Layout("Length and rotation"):
-            length = vectors.length*scale
-            rot    = Rotation.AlignZToVector(vectors)
+            vect_len = vectors.length._lc("Vector length")
+            length   = (vect_len*scale).switch(use_log, gnmath.log(1 + vect_len, base=(1.001 + scale)))
+            rot      = Rotation.AlignZToVector(vectors)
 
         with Layout("Arrow Heads"):
 
@@ -83,9 +87,9 @@ def demo():
             head.faces.material = head_mat
 
             with Layout("Instanciate heads"):
-                heads = points.points.instance_on(instance=head, scale=(1, 1, ratio))
+                heads = cloud.points.instance_on(instance=head, scale=(1, 1, ratio))
                 heads.insts.rotation = rot
-                heads.insts.translate(translation=vectors.scale((length*ratio)/vectors.length), local_space=False)
+                heads.insts.translate(translation=vectors.scale((length*ratio)/vect_len), local_space=False)
 
         with Layout("Arrow shafts"):
             shaft = Mesh.Cylinder(vertices=resol, radius=section, depth=1.)
@@ -93,22 +97,22 @@ def demo():
 
             shaft = shaft.transform(translation=(0, 0, .5))
             shaft.faces.material = shaft_mat
-            shafts = points.points.instance_on(instance=shaft, scale=(1, 1, length*ratio))
+            shafts = cloud.points.instance_on(instance=shaft, scale=(1, 1, length*ratio))
             shafts.insts.rotation = rot
 
         with Layout("Finalize"):
 
-            shafts.insts[length.equal(0)].delete_geometry()
-            heads.insts[length.equal(0)].delete_geometry()
+            shafts = shafts.insts[length.equal(0)].delete_geometry()
+            heads = heads.insts[length.equal(0)].delete_geometry()
 
             arrows = Mesh((shafts + heads).realize())
             arrows.faces.smooth = True
 
-            arrows.points.store("Color",         color)
-            arrows.points.store( "Transparency", transp)
-            arrows.points.store( "Negative",     negative)
+            arrows.points.store("Color",        (color.red, color.green, color.blue))
+            arrows.points.store("Transparency", 1 - color.alpha)
+            arrows.points.store("Negative",     negative)
 
-        arrows.switch((-show_arrow) | transp.equal(1)).out()
+        arrows.switch((-show_arrow) | color.alpha.equal(0)).out()
 
     # ----------------------------------------------------------------------------------------------------
     # Single Arrow defined by its cartesian components
@@ -122,12 +126,12 @@ def demo():
 
         with Layout("One point with Vectors attribute"):
             points = Cloud.Points(count=1, position=location)
-            points.points.store("Vectors", vector)
+            #points.points.store("Vectors", vector)
 
         # ----- Call the group with the same parameters
 
-        group_node = Group("Arrows", {'Geometry': points})
-        group_node.plug_node_into(exclude=['Geometry'], create=True)
+        group_node = Group("Arrows", {'Geometry': points, 'Vectors': vector})
+        group_node.plug_node_into(create=True)
 
         group_node.geometry.out()
 
@@ -146,12 +150,12 @@ def demo():
         with Layout("One point with Vectors attribute"):
             vector = Vector((length*gnmath.cos(angle), length*gnmath.sin(angle), z))
             points = Cloud.Points(count=1, position=location)
-            points.points.store("Vectors", vector)
+            #points.points.store("Vectors", vector)
 
         # ----- Call the group with the same parameters
 
-        group_node = Group("Arrows", {'Geometry': points})
-        group_node.plug_node_into(exclude=['Geometry'], create=True)
+        group_node = Group("Arrows", {'Geometry': points, 'Vectors': vector})
+        group_node.plug_node_into(create=True)
 
         group_node.geometry.out()
 
@@ -172,11 +176,11 @@ def demo():
             vector = length*Vector((cos_phi*gnmath.cos(theta), cos_phi*gnmath.sin(theta), gnmath.sin(phi)))
 
             points = Cloud.Points(count=1, position=location)
-            points.points.store("Vectors", vector)
+            #points.points.store("Vectors", vector)
 
         # ----- Call the group with the same parameters
 
-        group_node = Group("Arrows", {'Geometry': points})
-        group_node.plug_node_into(exclude=['Geometry'], create=True)
+        group_node = Group("Arrows", {'Geometry': points, 'Vectors': vector})
+        group_node.plug_node_into(create=True)
 
         group_node.geometry.out()

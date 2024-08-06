@@ -23,7 +23,7 @@ updates
 
 import numpy as np
 
-from geonodes.script import *
+from .. import *
 
 def demo():
 

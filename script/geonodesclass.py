@@ -30,9 +30,8 @@ from .treeclass import Tree, Node
 from .staticclass import nd
 
 class GeoNodes(Tree, nd):
-    def __init__(self, name, clear=True, is_group=False, prefix=None):
+    def __init__(self, tree_name, clear=True, fake_user=False, is_group=False, prefix=None):
 
-        tree_name = name if prefix is None else f"{prefix} {name}"
-        super().__init__(name, tree_type='GeometryNodeTree', clear=clear, is_group=is_group)
+        super().__init__(tree_name, tree_type='GeometryNodeTree', clear=clear, fake_user=fake_user, is_group=is_group, prefix=prefix)
 
         self._btree.is_modifier = not is_group

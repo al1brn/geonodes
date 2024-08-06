@@ -40,6 +40,8 @@ updates
 - creation : 2024/07/23
 """
 
+import numpy as np
+
 from .treeclass import Node
 
 # =============================================================================================================================
@@ -94,7 +96,10 @@ def multiply_add(value, multiplier, addend, use_clamp=None):
 def power(base, exponent, use_clamp=None):
     return Node("Math", {0: base, 1: exponent}, use_clamp=use_clamp, operation='POWER')._out
 
-def log(value, base=None, use_clamp=None):
+def log(value, base=10, use_clamp=None):
+    return Node("Math", {0: value, 1: base}, use_clamp=use_clamp, operation='LOGARITHM')._out
+
+def ln(value, base=np.e, use_clamp=None):
     return Node("Math", {0: value, 1: base}, use_clamp=use_clamp, operation='LOGARITHM')._out
 
 def sqrt(value, use_clamp=None):

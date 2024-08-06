@@ -21,7 +21,7 @@ updates
 """
 
 
-from geonodes.script import *
+from .. import *
 
 # ====================================================================================================
 # Newton's law simulation
