@@ -106,16 +106,43 @@ class Tree:
 
     STACK   = []
 
+    _total_nodes = 0
+    _total_links = 0
+
     def __init__(self, tree_name, tree_type='GeometryNodeTree', clear=True, fake_user=False, is_group=False, prefix=None):
 
         if prefix is not None:
             tree_name = f"{prefix} {tree_name}"
 
-        self._btree = blendertree.get_tree(tree_name, create=True)
-        self._btree.use_fake_user = fake_user
+        self._btree = None
+
+        # ----------------------------------------------------------------------------------------------------
+        # Shader Node tree is a property of the Material
+
+        if tree_type == 'ShaderNodeTree':
+
+            self._material = None
+            if not is_group:
+                self._material = bpy.data.materials.get(tree_name)
+
+                if self._material is None:
+                    self._material = bpy.data.materials.new(tree_name)
+
+                self._material.use_nodes = True
+                self._btree = self._material.node_tree
+                self._material.use_fake_user = fake_user
+
+        # ----------------------------------------------------------------------------------------------------
+        # Get the tree nodes from node_groups
+
+        if self._btree is None:
+            self._btree = blendertree.get_tree(tree_name, tree_type=tree_type, create=True)
+            self._btree.use_fake_user = fake_user
+
         self._is_group = is_group
 
         # ----- Management lists
+
         self._nodes   = []
         self._keeps   = {}
         self._layouts = []
@@ -124,9 +151,11 @@ class Tree:
             self.clear()
 
         # ----- Random generator for random colors
+
         self._rng = np.random.default_rng(0)
 
         # ----- Becomes the current tree
+
         self.push()
 
     # ====================================================================================================
@@ -139,16 +168,43 @@ class Tree:
             raise NodeError(f"No tree is open")
         return cls.STACK[-1]
 
-    @classmethod
+    #@property
+    #def NODE_NAMES(self):
+    #    return constants.NODE_NAMES[self._btree.bl_idname]
+
+    # ----------------------------------------------------------------------------------------------------
+    # Gen code utility
+
     @property
-    def NODE_NAMES(cls):
-        return constants.NODE_NAMES
+    def _node_infos(self):
+        from .node_explore import NodeInfo
+        return [NodeInfo(self._btree, bnode) for bnode in self._btree.nodes]
 
     # ====================================================================================================
     # Some methods
 
     def __str__(self):
-        return f"<Tree '{self._btree.name}' ({type(self).name}): {len(self._btree.nodes)} nodes and {len(self._btree.links)} links>"
+        return f"<Tree '{self._btree.name}' ({type(self).__name__}): {len(self._btree.nodes)} nodes and {len(self._btree.links)} links>"
+
+    @classmethod
+    def _reset_counters(cls):
+        cls._total_nodes = 0
+        cls._total_links = 0
+
+    @classmethod
+    @property
+    def is_geonodes(cls):
+        return cls.current_tree._btree.bl_idname == 'GeometryNodeTree'
+
+    @classmethod
+    @property
+    def is_shader(cls):
+        return cls.current_tree._btree.bl_idname == 'ShaderNodeTree'
+
+    @classmethod
+    @property
+    def is_compositor(cls):
+        return cls.current_tree._btree.bl_idname == 'CompositorNodeTree'
 
     @property
     def _str_stats(self):
@@ -189,6 +245,9 @@ class Tree:
         self.arrange()
 
         print(f"Tree '{self._btree.name}' built: {self._str_stats}")
+
+        Tree._total_nodes += len(self._btree.nodes)
+        Tree._total_links += len(self._btree.links)
 
     def __enter__(self):
         return self
@@ -323,7 +382,6 @@ class Tree:
             io_socket.default_value = value
         except:
             return
-
 
     # --------------------------------------------------------------------------------
     # Create a new input socket
@@ -478,61 +536,6 @@ class Tree:
 
         return tree.input_node[io_socket.identifier]
 
-
-    # =============================================================================================================================
-    # Geometry I/O
-    # Geometry is the first socket which must be GEOMETRY
-
-    @property
-    def has_input_geometry(self):
-        return self.first_io_socket_is_geometry('INPUT')
-
-    @property
-    def has_output_geometry(self):
-        return self.first_io_socket_is_geometry('OUTPUT')
-
-    def get_input_geometry(self, name=None, description=None):
-
-        io_socket = self.io_socket_exists('NodeSocketGeometry', 'INPUT')
-        if io_socket is None:
-            if name is None:
-                name = 'Geometry'
-            io_socket = self.new_io_socket('NodeSocketGeometry', 'INPUT', name)
-            if description is not None:
-                io_socket.description = description
-
-        # ----- As the first
-
-        self._btree.interface.move(io_socket, 0)
-
-        return self.input_node[0]
-
-    def set_output_geometry(self, value, name=None):
-
-        if self.has_output_geometry:
-            io_socket = self.io_socket_exists('NodeSocketGeometry', 'INPUT')
-
-        else:
-            if name is None:
-                name = utils.get_socket_type(value).title()
-
-            io_socket = self.new_io_socket('NodeSocketGeometry', 'OUTPUT', name)
-
-            # ----- As the first
-
-            self._btree.interface.move(io_socket, 0)
-
-        if value is not None:
-            self.link(value, self.output_node._bnode.inputs[0])
-
-    @property
-    def geometry(self):
-        return self.get_input_geometry()
-
-    @geometry.setter
-    def geometry(self, value):
-        self.set_output_geometry(value)
-
     # =============================================================================================================================
     # Create a node which contains a python value
 
@@ -584,56 +587,27 @@ class Tree:
             print()
 
 
-    """
-    # =============================================================================================================================
-    # Global Nodes
-
-    @classmethod
-    @property
-    def SceneTime(cls):
-        return Node("Scene Time")
-
-    @classmethod
-    @property
-    def Seconds(cls):
-        return cls.SceneTime.seconds
-
-    @classmethod
-    @property
-    def Frame(cls):
-        return cls.SceneTime.frame
-
-    @classmethod
-    @property
-    def IsViewport(cls):
-        return Node("Is Viewport")._out
-
-    @classmethod
-    @property
-    def SelfObject(cls):
-        return Node("Self Object")._out
-
-    @classmethod
-    @property
-    def ActiveCamera(cls):
-        return Node("Active Camera")._out
-    """
-
-
 # =============================================================================================================================
 # Node
 
 class Node:
-    def __init__(self, name, sockets={}, _keep=None, **parameters):
+    def __init__(self, node_name, sockets={}, _keep=None, **parameters):
 
         self._tree = Tree.current_tree
         btree = self._tree._btree
+        tree_type = btree.bl_idname
 
-        node_name = name.lower()
-        if node_name in self._tree.NODE_NAMES:
-            bl_idname = self._tree.NODE_NAMES[node_name]
+        lower_name = node_name.lower()
+        if lower_name in constants.NODE_NAMES[tree_type]:
+            bl_idname = constants.NODE_NAMES[tree_type][lower_name]
         else:
-            bl_idname = name
+            for tt in constants.NODE_NAMES.keys():
+                if tt == tree_type:
+                    continue
+                if lower_name in constants.NODE_NAMES[tt]:
+                    raise NodeError(f"Node '{node_name}' is a node of tree '{tt}', it doesn't exit for tree '{tree_type}'")
+
+            bl_idname = node_name
 
         # ----- Is the node kept from previous version
 
@@ -685,29 +659,42 @@ class Node:
 
     @staticmethod
     def data_socket(bsocket):
-        from geonodes.script import Boolean, Integer, Float, Vector, Rotation, Matrix, Color, Geometry, Material, Image, Object, Collection, String, Menu
-        from geonodes.script import Mesh, Curve, Cloud, Volume, Instances
 
         socket_type = bsocket.type
 
-        socket_class = {'BOOLEAN': Boolean, 'INT': Integer, 'VALUE': Float, 'VECTOR': Vector, 'ROTATION': Rotation, 'MATRIX': Matrix, 'RGBA': Color,
-            'STRING': String, 'MENU': Menu,
-                'GEOMETRY': Geometry,
-                'MATERIAL': Material, 'IMAGE': Image, 'OBJECT': Object, 'COLLECTION': Collection,
-            }[bsocket.type]
+        if Tree.is_geonodes:
+            from .geonodes import Boolean, Integer, Float, Vector, Rotation, Matrix, Color, Geometry, Material, Image, Object, Collection, String, Menu
+            from .geonodes import Mesh, Curve, Cloud, Volume, Instances
 
-        if socket_type == 'GEOMETRY':
-            socket_name = bsocket.name.lower()
-            if socket_name == 'mesh':
-                return Mesh(bsocket)
-            elif socket_name in ['curve', 'curves']:
-                return Curve(bsocket)
-            elif socket_name in ['instance', 'instances']:
-                return Instances(bsocket)
-            elif socket_name in ['points', 'point cloud']:
-                return Cloud(bsocket)
-            elif socket_name == 'volume':
-                return Volume(bsocket)
+
+            socket_class = {'BOOLEAN': Boolean, 'INT': Integer, 'VALUE': Float, 'VECTOR': Vector, 'ROTATION': Rotation, 'MATRIX': Matrix, 'RGBA': Color,
+                'STRING': String, 'MENU': Menu,
+                    'GEOMETRY': Geometry,
+                    'MATERIAL': Material, 'IMAGE': Image, 'OBJECT': Object, 'COLLECTION': Collection,
+                }[socket_type]
+
+            if socket_type == 'GEOMETRY':
+                socket_name = bsocket.name.lower()
+                if socket_name == 'mesh':
+                    return Mesh(bsocket)
+                elif socket_name in ['curve', 'curves']:
+                    return Curve(bsocket)
+                elif socket_name in ['instance', 'instances']:
+                    return Instances(bsocket)
+                elif socket_name in ['points', 'point cloud']:
+                    return Cloud(bsocket)
+                elif socket_name == 'volume':
+                    return Volume(bsocket)
+
+        elif Tree.is_shader:
+            from .shadernodes import Float, Vector, Rotation, Color, String, Shader
+
+            socket_class = {'VALUE': Float, 'VECTOR': Vector, 'ROTATION': Rotation, 'RGBA': Color, 'STRING': String, 'SHADER': Shader,
+                }[socket_type]
+
+        else:
+            raise Exception("Not normal")
+
 
         return socket_class(bsocket)
 
@@ -777,6 +764,11 @@ class Node:
 
     def set_input_sockets(self, sockets={}):
 
+        # ----- Sockets is a list --> let's transform into a dict
+
+        if isinstance(sockets, list):
+            sockets = {i: value for i, value in enumerate(sockets)}
+
         for socket_name, socket_value in sockets.items():
 
             if socket_value is None:
@@ -807,7 +799,6 @@ class Node:
     def __getattr__(self, name):
         if '_bnode' in self.__dict__:
             out_socket = self.out_socket(name)
-            #print("NODE GETATTR", name, '->', out_socket)
             if out_socket is None:
                 raise AttributeError(f"Node parameter '{name}' not found in '{self.__dict__['_bnode'].name}'.")
             else:
@@ -897,7 +888,7 @@ class Node:
             if utils.has_bsocket(value):
                 return Node('Combine Color', sockets, sockets)._out
             else:
-                return Node('Color', color=tuple(a[:3]))._out
+                return Node('Color', value=a)._out
 
         elif len(a) == 16:
             return Node('Combine Matrix', sockets)._out
@@ -961,8 +952,11 @@ class Node:
         # We can use default value
 
         if socket_type in constants.ARRAY_TYPES:
-            spec = constants.ARRAY_TYPES[socket_type]
-            a = utils.value_to_array(value, spec['shape'])
+            if socket_type == 'RGBA' and np.shape(value)==(3,):
+                a = (value[0], value[1], value[2], 1)
+            else:
+                spec = constants.ARRAY_TYPES[socket_type]
+                a = utils.value_to_array(value, spec['shape'])
 
             if utils.has_bsocket(a):
                 #self._tree.link(self._tree.InputSocket(socket_type, value)._bsocket)
@@ -1157,10 +1151,7 @@ class Node:
 
 class Group(Node):
 
-    def __init__(self, group_name, sockets={}, prefix=None):
-
-        if prefix is not None:
-            group_name = f"{prefix} {group_name}"
+    def __init__(self, group_name, sockets={}, **kwargs):
 
         # ----- Get the tree
 
@@ -1171,6 +1162,13 @@ class Group(Node):
         # ----- Create the node group
 
         super().__init__('Group', sockets=sockets, node_tree=group_tree)
+
+        for k, v in kwargs.items():
+            setattr(self, k, v)
+
+    @classmethod
+    def Prefix(cls, prefix, group_name, sockets={}, **kwargs):
+        return cls(f"{prefix} {group_name}", sockets=sockets, **kwargs)
 
     # =============================================================================================================================
     # Plug a node into the group inputs

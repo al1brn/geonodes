@@ -42,7 +42,7 @@ updates
 
 import numpy as np
 
-from .treeclass import Node
+from .treeclass import Tree, Node
 
 # =============================================================================================================================
 # Boolean Math
@@ -155,19 +155,31 @@ def math_trunc(value, use_clamp=None):
 
 def round(value, use_clamp=None):
     # rounding_mode in ('ROUND', 'FLOOR', 'CEILING', 'TRUNCATE')
-    return Node("Float to Integer", {'Float': value}, rounding_mode='ROUND')._out
+    if Tree.is_geonodes:
+        return Node("Float to Integer", {'Float': value}, rounding_mode='ROUND')._out
+    else:
+        return math_round(value, use_clamp=use_clamp)
 
 def floor(value, use_clamp=None):
     # rounding_mode in ('ROUND', 'FLOOR', 'CEILING', 'TRUNCATE')
-    return Node("Float to Integer", {'Float': value}, rounding_mode='FLOOR')._out
+    if Tree.is_geonodes:
+        return Node("Float to Integer", {'Float': value}, rounding_mode='FLOOR')._out
+    else:
+        return math_floor(value, use_clamp=use_clamp)
 
 def ceil(value, use_clamp=None):
     # rounding_mode in ('ROUND', 'FLOOR', 'CEILING', 'TRUNCATE')
-    return Node("Float to Integer", {'Float': value}, rounding_mode='CEILING')._out
+    if Tree.is_geonodes:
+        return Node("Float to Integer", {'Float': value}, rounding_mode='CEILING')._out
+    else:
+        return math_ceil(value, use_clamp=use_clamp)
 
 def trunc(value, use_clamp=None):
     # rounding_mode in ('ROUND', 'FLOOR', 'CEILING', 'TRUNCATE')
-    return Node("Float to Integer", {'Float': value}, rounding_mode='TRUNCATE')._out
+    if Tree.is_geonodes:
+        return Node("Float to Integer", {'Float': value}, rounding_mode='TRUNCATE')._out
+    else:
+        return math_trunc(value, use_clamp=use_clamp)
 
 def fract(value, use_clamp=None):
     return Node("Math", {0: value}, use_clamp=use_clamp, operation='FRACT')._out

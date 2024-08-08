@@ -91,7 +91,7 @@ from .treeclass import Tree, Node, Layout
 from .socketclass import NodeCache, DataSocket
 from .booleanclass import Boolean
 from .floatclass import Float
-from .staticclass import nd
+from .staticclass_gn import nd
 
 # =============================================================================================================================
 # =============================================================================================================================
@@ -293,7 +293,8 @@ class Geometry(DataSocket, GeoBase):
             # Default creation name
 
             if name is None:
-                name = self.SOCKET_TYPE.title()
+                #name = self.SOCKET_TYPE.title()
+                name = type(self).__name__
 
             # If the tree is not a group and if the default input geometry doesn't already exist, we create it
 
@@ -338,6 +339,20 @@ class Geometry(DataSocket, GeoBase):
 
     def viewer(self, value=None):
         return Node('Viewer', {'Geometry': self, 'Value': value}, data_type=utils.get_data_type(value))
+
+    # ----- Operations
+
+    def set_id(self, id=None):
+        return Node("Set ID", {'Geometry': self, 'Selection': self._sel, 'ID': id})._out
+
+    def set_position(self, position=None, offset=None):
+        return Node("Set Position", {'Geometry': self, 'Selection': self._sel, 'position': position, 'Offset': offset})._out
+
+    def set_material(self, material=None):
+        return Node("Set Position", {'Geometry': self, 'Selection': self._sel, 'material': material})._out
+
+    def set_shade_smooth(self, shade_smooth=True, edge=False):
+        return Node("Set Shade Smooth", {'Geometry': self, 'Selection': self._sel, 'shade_smooth': shade_smooth}, domain='EDGE' if edge else 'FACE')._out
 
     # ----- Remove named attribute
 
@@ -804,6 +819,7 @@ class SplinePoint(Point):
 
     @classmethod
     def handle_type_selection(cls, left=True, right=True, handle_type='AUTO'):
+        # handle_type in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
         mode = set()
         if left:
             mode.add('LEFT')
@@ -1562,9 +1578,8 @@ class Curve(Geometry):
     # =============================================================================================================================
     # Properties
 
-    @classmethod
     @property
-    def domain_size(cls):
+    def domain_size(self):
         return self._cache('Domain Size', {'Geometry': self}, component='CURVE')
 
     @classmethod

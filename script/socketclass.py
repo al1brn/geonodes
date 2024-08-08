@@ -225,16 +225,19 @@ class DataSocket(NodeCache):
         if name is None:
             name = self.input_type().title()
 
-        # ---- Output socket creation if
+        # ----------------------------------------------------------------------------------------------------
+        # Output socket creation if
         # - It doesn't already exist
         # - The tree is not a group
+
         if self.SOCKET_TYPE == 'GEOMETRY':
             tree = Tree.current_tree
             if not(tree.has_output_geometry or tree._is_group):
                 tree.set_output_geometry(self, name)
                 return
 
-        # ---- New output socket
+        # ----------------------------------------------------------------------------------------------------
+        # New output socket
 
         bsocket = tree.new_output(bl_idname, name)
         tree.link(self, bsocket)

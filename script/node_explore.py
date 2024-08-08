@@ -54,12 +54,13 @@ class NodeInfo:
         """
 
         if isinstance(bnode, str):
-            bl_idname = constants.NODE_NAMES.get(bnode.lower())
+            bl_idname = constants.NODE_NAMES[btree.bl_idname].get(bnode.lower())
             if bl_idname is None:
                 bl_idname = bnode
             bnode = btree.nodes.new(type=bl_idname)
 
         self.bnode = bnode
+        self.btree = btree
 
         # ----------------------------------------------------------------------------------------------------
         # Make sure STD_ATTRS is initialized
@@ -217,7 +218,11 @@ class NodeInfo:
                 header.append(f"{param}=None")
             else:
                 header.append(f"{param}={value}")
-            call.append(f"{param}={param}")
+
+            if param == 'object' and self.btree.bl_idname == 'ShaderNodeTree':
+                call.append(f"{param}=get_object({param})")
+            else:
+                call.append(f"{param}={param}")
 
         return {
             'has_items'  : len(header) > 0,
@@ -234,7 +239,7 @@ class NodeInfo:
         if func_name is None:
             func_name = self.python_name
 
-        is_prop     = self.in_sockets_count == 0
+        is_prop     = self.in_sockets_count == 0 and len(self.params) == 0
         return_node = self.out_sockets_count > 1
 
         sockets = self.get_sockets()
@@ -305,8 +310,11 @@ class NodeInfo:
     # ====================================================================================================
     # Method Source Code
 
-    def gen_method_source(self, name, self_socket=None):
+    def gen_method_source(self, name=None, self_socket=None):
         _tab = " "*4
+
+        if name is None:
+            name = self.python_name
 
         yield f"{_tab}def {name}(self"
         insockets = {}
@@ -330,7 +338,7 @@ class NodeInfo:
             else:
                 yield f", {param}={value}"
 
-        yield ")\n"
+        yield "):\n"
         yield f"{_tab*2}node = Node('{self.bnode.name}'"
 
         if len(insockets):
@@ -397,9 +405,9 @@ class NodeInfo:
 # =============================================================================================================================
 # Loop
 
-def loop_on_nodes(func, *args, **kwargs):
+def loop_on_nodes(func, *args, tree_type='GeometryNodeTree', **kwargs):
 
-    btree = blendertree.get_tree("Temp", create=True)
+    btree = blendertree.get_tree("Temp", tree_type=tree_type, create=True)
     btree.nodes.clear()
 
     count = 0
@@ -427,7 +435,7 @@ def loop_on_nodes(func, *args, **kwargs):
 # =============================================================================================================================
 # Gen static functions
 
-def gen_static_class(folder=''):
+def gen_static_class(tree_type='GeometryNodeTree', folder=''):
 
     def gen_node(node_info, f):
         for chars in node_info.yield_static_source():
@@ -438,7 +446,7 @@ def gen_static_class(folder=''):
     path.resolve()
     with open(path, 'w') as f:
         f.write("class StaticNodes:\n\n")
-        count = loop_on_nodes(gen_node, f)
+        count = loop_on_nodes(gen_node, f, tree_type=tree_type)
         f.write("\n\n")
 
     print(f"StaticNodes class written ({count} methods or properties) in: '{path.absolute()}'")

@@ -32,7 +32,7 @@ updates
 - creation : 2024/08/02
 """
 
-from .. import *
+from ..geonodes import *
 
 def demo():
 

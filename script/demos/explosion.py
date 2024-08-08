@@ -23,7 +23,7 @@ updates
 
 import numpy as np
 
-from .. import *
+from ..geonodes import *
 
 def demo():
 
@@ -65,7 +65,7 @@ def demo():
             dt = sim.delta_time
 
             with Layout("Speed"):
-                old_speed = sim.points.points.capture(vector=sim.speed)
+                old_speed = sim.points.points.capture(sim.speed)
 
                 with Layout("Viscosity"):
                     speed_norm = old_speed.length

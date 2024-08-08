@@ -207,6 +207,9 @@ class VectRot(VectorLike):
     def cross_product(self, other):
         return self.math.cross_product(self, other)
 
+    def cross(self, other):
+        return self.math.cross_product(self, other)
+
     def project(self, other):
         return self.math.project(self, other)
 
@@ -220,6 +223,9 @@ class VectRot(VectorLike):
         return self.math.faceforward(self, incident, reference)
 
     def dot_product(self, other):
+        return self.math.dot_product(self, other)
+
+    def dot(self, other):
         return self.math.dot_product(self, other)
 
     def distance(self, other):
@@ -339,7 +345,7 @@ class Vector(VectRot):
         if bsock is None:
             if name is None:
                 a = utils.value_to_array(value, (3,))
-                if utils.has_bsocket(a):
+                if utils.has_bsocket(a) or Tree.is_shader:
                     bsock = Node('Combine XYZ', {0: a[0], 1: a[1], 2:a[2]})._out
                 else:
                     bsock = Node('Vector', vector=tuple(a))._out
@@ -434,6 +440,79 @@ class Vector(VectRot):
         index = Node('Index of Nearest', {'Position': self, 'Group ID': group_id})._out
         index.has_neighbor_ = index.node.has_neighbor
         return index
+
+    # ====================================================================================================
+    # Shader
+
+    def to_output(self, name=None):
+        if self._tree._btree.bl_idname == 'ShaderNodeTree' and not self._tree._is_group:
+            if name is None:
+                self._tree.set_displacement(self)
+            else:
+                self._tree.aov_output(name=name, color=self)
+        else:
+            super().to_output(name=name)
+
+    def displacement_out(self, target='ALL'):
+        self._tree.set_displacement(self, target=target)
+
+
+    @classmethod
+    def Tangent(cls, axis='Z', direction_type='RADIAL', uv_map=''):
+        """ Node 'Tangent' (ShaderNodeTangent)
+        - axis in ('X', 'Y', 'Z')
+        - direction_type in ('RADIAL', 'UV_MAP')
+        """
+
+        node = Node('Tangent', axis=axis, direction_type=direction_type, uv_map=uv_map)
+        return node._out
+
+    @classmethod
+    def UVMap(cls, uv_map='', from_instancer=False):
+        """ Node 'UV Map' (ShaderNodeUVMap)
+        """
+
+        node = Node('UV Map', from_instancer=from_instancer, uv_map=uv_map)
+        return node._out
+
+    # ----- Vector
+
+    def bump(self, strength=None, distance=None, height=None, invert=False):
+        node = Node('Bump', {'Strength': strength, 'Distance': distance, 'Height': height, 'Normal': self}, invert=invert)
+        return node._out
+
+    def displacement(self, height=None, midlevel=None, scale=None, space='OBJECT'):
+        node = Node('Displacement', {'Height': height, 'Midlevel': midlevel, 'Scale': scale, 'Normal': self}, space=space)
+        return node._out
+
+    def mapping(self, location=None, rotation=None, scale=None, vector_type='POINT'):
+        # vector_type in ('POINT', 'TEXTURE', 'VECTOR', 'NORMAL')
+        node = Node('Mapping', {'Vector': self, 'Location': location, 'Rotation': rotation, 'Scale': scale}, vector_type=vector_type)
+        return node._out
+
+    def normal(self, normal=None):
+        node = Node('Normal', {'Normal': self})
+        vec = node._out
+        vec._bsocket.default_value = normal
+        return node._out
+
+    @classmethod
+    def NormalMap(cls, strength=None, color=None, space='TANGENT', uv_map=''):
+        # space in ('TANGENT', 'OBJECT', 'WORLD', 'BLENDER_OBJECT', 'BLENDER_WORLD')
+        node = Node('Normal Map', {'Strength': strength, 'Color': color}, space=space, uv_map=uv_map)
+        return node._out
+
+    def vector_displacement(self, midlevel=None, scale=None, space='TANGENT'):
+        # space in ('TANGENT', 'OBJECT', 'WORLD')
+        node = Node('Vector Displacement', {'Vector': self, 'Midlevel': midlevel, 'Scale': scale}, space=space)
+        return node._out
+
+    def transform(self, convert_from='WORLD', convert_to='OBJECT', vector_type='NORMAL'):
+        # convert_from in ('WORLD', 'OBJECT', 'CAMERA')
+        # convert_to in ('WORLD', 'OBJECT', 'CAMERA')
+        # vector_type in ('POINT', 'VECTOR', 'NORMAL')
+        node = Node('Vector Transform', {'Vector': self}, convert_from=convert_from, convert_to=convert_to, vector_type=vector_type)
+        return node._out
 
 
 # =============================================================================================================================

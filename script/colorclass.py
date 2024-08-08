@@ -48,11 +48,23 @@ class Color(VectorLike):
         bsock = utils.get_bsocket(value)
         if bsock is None:
             if name is None:
-                a = utils.value_to_array(value, (3,))
-                if utils.has_bsocket(a):
-                    bsock = Node('Combine RGB', {0: a[0], 1: a[1], 2:a[2], 3:a[3]})._out
+                if np.shape(value) == (3,):
+                    a = (value[0], value[1], value[2], 1)
                 else:
-                    bsock = Node('Color', color=value[:3])._out
+                    a = utils.value_to_array(value, (4,))
+
+                if utils.has_bsocket(a):
+                    if Tree.is_geonodes:
+                        bsock = Node('Combine Color', {0: a[0], 1: a[1], 2:a[2], 3:a[3]})._out
+                    else:
+                        bsock = Node('Combine Color', {0: a[0], 1: a[1], 2:a[2]})._out
+
+                elif Tree.is_geonodes:
+                    bsock = Node('Color', value=a)._out
+
+                else:
+                    bsock = Node('RGB')._out
+                    bsock._bsocket.default_value = a
             else:
                 bsock = Tree.new_input('NodeSocketColor', name, value=value, description=tip)
 
@@ -111,11 +123,11 @@ class Color(VectorLike):
 
     @property
     def green(self):
-        return self.RGB.red
+        return self.RGB.green
 
     @property
     def blue(self):
-        return self.RGB.red
+        return self.RGB.blue
 
     @property
     def alpha(self):
@@ -164,7 +176,7 @@ class Color(VectorLike):
         # blend_type in ('MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE',
         # 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT',
         # 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE')
-        return Node('Mix', {0: factor, 1: self, 2: other},
+        return Node('Mix', {'Factor': factor, 'A': self, 'B': other},
             clamp_result=False, clamp_factor=True, blend_type=blend_type, data_type='RGBA')._out
 
     def darken(self, factor=None, other=None, clamp_result=False, clamp_factor=True):
@@ -240,3 +252,78 @@ class Color(VectorLike):
 
     def darker(self, other):
         return Node("Compare", {'A': self, 'B': other}, data_type='RGBA', operation='DARKER')._out
+
+    # ====================================================================================================
+    # Shader
+
+    def to_output(self, name=None):
+        if self._tree._btree.bl_idname == 'ShaderNodeTree' and not self._tree._is_group:
+            if name is None:
+                name = 'Color'
+            self._tree.aov_output(name=name, color=self)
+        else:
+            super().to_output(name=name)
+
+    # ----- Input
+
+    @classmethod
+    def Attribute(cls, name):
+        node = Node('Color Attribute', layer_name=name)
+        color = node["Color"]
+        color._alpha = node["Alpha"]
+        return color
+
+    def ambient_occlusion(self, distance=None, normal=None, inside=False, only_local=False, samples=16):
+        node = Node('Ambient Occlusion', {'Color': self, 'Distance': distance, 'Normal': normal}, inside=inside, only_local=only_local, samples=samples)
+        col = node._out
+        col._ao = node.ao
+        return col
+
+    # ----- Converter
+
+    @classmethod
+    def Blackbody(cls, temperature=None):
+        return Node('Blackbody', {'Temperature': temperature})._out
+
+    @classmethod
+    def FromShader(cls, shader):
+        node = Node('Shader to RGB', {'Shader': shader})
+        col = node._out
+        col._alpha = node.alpha
+        return col
+
+    @classmethod
+    def Wavelength(cls, wavelength=None):
+        return Node('Wavelength', {'Wavelength': wavelength})._out
+
+    @property
+    def to_bw(self):
+        return Node('RGB to BW', {'Color': self})._out
+
+    # ----- Color
+
+    def brightness_contrast(self, bright=None, contrast=None):
+        node = Node('Brightness/Contrast', {'Color': self, 'Bright': bright, 'Contrast': contrast})
+        return node._out
+
+    def gamma(self, gamma=None):
+        node = Node('Gamma', {'Color': self, 'Gamma': gamma})
+        return node._out
+
+    def hue_saturation_value(self, hue=None, saturation=None, value=None, fac=None):
+        node = Node('Hue/Saturation/Value', {'Hue': hue, 'Saturation': saturation, 'Value': value, 'Fac': fac, 'Color': self})
+        return node._out
+
+    def invert(self, fac=None):
+        node = Node('Invert Color', {'Fac': fac, 'Color': self})
+        return node._out
+
+    def normal_map(self, strength=None, space='TANGENT', uv_map=''):
+        # space in ('TANGENT', 'OBJECT', 'WORLD', 'BLENDER_OBJECT', 'BLENDER_WORLD')
+        node = Node('Normal Map', {'Strength': strength, 'Color': self}, space=space, uv_map=uv_map)
+        return node._out
+
+    def vector_displacement(self, midlevel=None, scale=None, space='TANGENT'):
+        # space in ('TANGENT', 'OBJECT', 'WORLD')
+        node = Node('Vector Displacement', {'Vector': self, 'Midlevel': midlevel, 'Scale': scale}, space=space)
+        return node._out

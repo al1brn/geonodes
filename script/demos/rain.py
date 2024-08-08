@@ -23,7 +23,7 @@ updates
 """
 
 
-from .. import *
+from ..geonodes import *
 
 # ====================================================================================================
 # A Wave produced by a dip
@@ -144,7 +144,7 @@ def demo():
 
             with Layout("New dips"):
 
-                dips = puddles.faces.distribute_points(density=density*sim.delta_time, seed=nd.frame)
+                dips = puddles.faces.distribute_points(density=density*sim.delta_time, seed=nd.scene_time.frame)
 
                 puddles_index = terrain.points.sample_nearest(dips.position)
                 dip_position = puddles.points.sample_index(puddles.position, puddles_index)
@@ -162,9 +162,9 @@ def demo():
                 sim.dips = sim.dips.points[age.greater_than(age_max)].delete()
 
             with Layout("New Projections"):
-                new_projs = start_projs.points.duplicate_elements(amount=Integer.Random(3, 7, seed=nd.frame + 1000))
-                new_projs.points.store("Speed", Vector.Random((-.4, -.4, 1), (.4, .4, 1), seed=nd.frame + 2000)*proj_speed)
-                new_projs.points.radius = Float.Random(.5, 2, seed=nd.frame + 3000)*proj_size
+                new_projs = start_projs.points.duplicate_elements(amount=Integer.Random(3, 7, seed=nd.scene_time.frame + 1000))
+                new_projs.points.store("Speed", Vector.Random((-.4, -.4, 1), (.4, .4, 1), seed=nd.scene_time.frame + 2000)*proj_speed)
+                new_projs.points.radius = Float.Random(.5, 2, seed=nd.scene_time.frame + 3000)*proj_size
                 sim.projs += new_projs
 
             with Layout("Projections motion"):
@@ -211,7 +211,7 @@ def demo():
             cube.faces.material = proj_mat
             proj_dips = sim.projs.points.instance_on(
                 instance = cube,
-                rotation = Vector.Random(0, tau, seed=nd.frame + 4000),
+                rotation = Vector.Random(0, tau, seed=nd.scene_time.frame + 4000),
                 scale    = nd.radius)
 
         geo  = Geometry.Switch(Boolean(True,  "Show Terrain"), None, terrain)

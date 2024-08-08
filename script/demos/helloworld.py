@@ -20,7 +20,7 @@ updates
 """
 
 
-from geonodes.script import *
+from ..geonodes import *
 
 def demo(material="Material"):
 

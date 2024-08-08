@@ -89,9 +89,9 @@ def del_tree(btree):
 # Loop on nodes
 # - func : function of template lambda(bnode, **kwargs)
 
-def loop_on_nodes(func, **kwargs):
+def loop_on_nodes(func, tree_type='GeometryNodeTree', **kwargs):
 
-    btree = get_tree("Dump", create=True)
+    btree = get_tree("Dump", tree_type=tree_type, create=True)
     btree.nodes.clear()
 
     for type_name in dir(bpy.types):
@@ -111,7 +111,7 @@ def loop_on_nodes(func, **kwargs):
 # =============================================================================================================================
 # Build the dictionnary of socket types -> list of socket node
 
-def gen_SOCKET_TYPES():
+def gen_SOCKET_TYPES(tree_type='GeometryNodeTree'):
 
     types = {}
 
@@ -123,23 +123,31 @@ def gen_SOCKET_TYPES():
                 elif sock.bl_idname not in types[sock.type]:
                     types[sock.type].append(sock.bl_idname)
 
-    loop_on_nodes(f)
+    loop_on_nodes(f, tree_type=tree_type)
 
     pprint(types)
 
 # =============================================================================================================================
 # Build the dictionnary of node name -> bl_idname
 
-def gen_NODE_NAMES():
+def gen_NODE_NAMES(tree_type='GeometryNodeTree'):
 
     names = {}
 
     def f(bnode):
         names[bnode.name.lower()] = bnode.bl_idname
 
-    loop_on_nodes(f)
+    loop_on_nodes(f, tree_type)
 
-    pprint(names)
+    print('-'*100)
+    print(f"{len(names)} NODE NAMES for", tree_type)
+    print()
+    for k, v in names.items():
+        sk = f"'{k}'"
+        print(f"    {sk:25s} : '{v}',")
+    print()
+
+    #pprint(names)
 
 # =============================================================================================================================
 # Some legacy generators

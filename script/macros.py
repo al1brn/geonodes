@@ -26,9 +26,7 @@ updates
 - creation : 2024/07/29
 """
 
-from geonodes.script import Layout, Group, Repeat, Simulation
-from geonodes.script import Geometry, Mesh, Curve, Cloud, Instances, Volume
-from geonodes.script import Boolean, Integer, Float, Vector, Rotation, Matrix, Color, String, nd, gnmath
+from geonodes.script.geonodes import *
 
 
 # =============================================================================================================================

@@ -44,6 +44,7 @@ from .socketclass import ValueSocket
 
 # =============================================================================================================================
 # Root for Integer and Float
+# =============================================================================================================================
 
 class IntFloat(ValueSocket):
 
@@ -200,6 +201,31 @@ class IntFloat(ValueSocket):
     def __ceil__(self):
         return self.math.ceil(self)
 
+    # =============================================================================================================================
+    # Comparison
+    # __eq__ __ne__ __lt__ __gt__ __le__ __ge__
+
+    def __ge__(self, other):
+        return self.greater_equal(other)
+
+    def __gt__(self, other):
+        return self.greater_than(other)
+
+    def __le__(self, other):
+        return self.less_equal(other)
+
+    def __lt__(self, other):
+        return self.less_than(other)
+
+    def __eq__(self, other):
+        return self.equal(other)
+
+    def __ne__(self, other):
+        return self.not_equal(other)
+
+# =============================================================================================================================
+# Float
+# =============================================================================================================================
 
 class Float(IntFloat):
 
@@ -256,42 +282,81 @@ class Float(IntFloat):
 
     # ----- To integer
 
-    def float_to_integer(self, rounding_mode=None):
-        return Integer(Node('Float to Integer', {0: self}, rounding_mode=rounding_mode)._out)
+    def to_integer(self, rounding_mode=None):
+        return Node('Float to Integer', {0: self}, rounding_mode=rounding_mode)._out
 
     def round(self):
-        return self.float_to_integer(rounding_mode='ROUND')
+        if Tree.is_geonodes:
+            return self.to_integer(rounding_mode='ROUND')
+        else:
+            return Node('Math', {0: self}, operation='ROUND')._out
 
     def floor(self):
-        return self.float_to_integer(rounding_mode='FLOOR')
+        if Tree.is_geonodes:
+            return self.to_integer(rounding_mode='FLOOR')
+        else:
+            return Node('Math', {0: self}, operation='FLOOR')._out
 
     def ceiling(self):
-        return self.float_to_integer(rounding_mode='CEILING')
+        if Tree.is_geonodes:
+            return self.to_integer(rounding_mode='CEILING')
+        else:
+            return Node('Math', {0: self}, operation='CEIL')._out
 
     def truncate(self):
-        return self.float_to_integer(rounding_mode='TRUNCATE')
+        if Tree.is_geonodes:
+            return self.to_integer(rounding_mode='TRUNCATE')
+        else:
+            return Node('Math', {0: self}, operation='TRUNC')._out
 
     # ====================================================================================================
     # Comparison
 
     def less_than(self, other):
-        return Node("Compare", {'A': self, 'B': other}, operation='LESS_THAN', data_type='FLOAT')._out
+        if Tree.is_geonodes:
+            return Node("Compare", {'A': self, 'B': other}, operation='LESS_THAN', data_type='FLOAT')._out
+        else:
+            return Node('Math', {0: self, 1: other}, operation='LESS_THAN')._out
 
     def less_equal(self, other):
         return Node("Compare", {'A': self, 'B': other}, operation='LESS_EQUAL', data_type='FLOAT')._out
 
     def greater_than(self, other):
-        return Node("Compare", {'A': self, 'B': other}, operation='GREATER_THAN', data_type='FLOAT')._out
+        if Tree.is_geonodes:
+            return Node("Compare", {'A': self, 'B': other}, operation='GREATER_THAN', data_type='FLOAT')._out
+        else:
+            return Node('Math', {0: self, 1: other}, operation='GREATER_THAN')._out
 
     def greater_equal(self, other):
         return Node("Compare", {'A': self, 'B': other}, operation='GREATER_EQUAL', data_type='FLOAT')._out
 
     def equal(self, other, epsilon=None):
-        return Node("Compare", {'A': self, 'B': other, 'Epsilon': epsilon}, operation='EQUAL', data_type='FLOAT')._out
+        if Tree.is_geonodes:
+            return Node("Compare", {'A': self, 'B': other, 'Epsilon': epsilon}, operation='EQUAL', data_type='FLOAT')._out
+        else:
+            return Node('Math', {0: self, 1: other, 2: epsilon}, operation='COMPARE')._out
 
     def not_equal(self, other, epsilon=None):
         return Node("Compare", {'A': self, 'B': other, 'Epsilon': epsilon}, operation='NOT_EQUAL', data_type='FLOAT')._out
 
+    # ====================================================================================================
+    # Output
+
+    def to_output(self, name=None):
+        if self._tree._btree.bl_idname == 'ShaderNodeTree' and not self._tree._is_group:
+            if name is None:
+                self._tree.set_thickness(self)
+            else:
+                self._tree.aov_output(name=name, value=self)
+        else:
+            super().to_output(name=name)
+
+    def thickness_out(self, target='ALL'):
+        self._tree.set_thickness(self, target=target)
+
+# =============================================================================================================================
+# Integer
+# =============================================================================================================================
 
 class Integer(IntFloat):
 
@@ -321,6 +386,10 @@ class Integer(IntFloat):
     @classmethod
     def Random(cls, min=None, max=None, id=None, seed=None):
         return Node('Random Value', {'Min': min, 'Max': max, 'ID': id, 'Seed': seed}, data_type='INT')._out
+
+    @classmethod
+    def FromFloat(cls, float=None, rounding_mode='ROUND'):
+        return Float(float).to_integer(rounding_mode)
 
     # ====================================================================================================
     # Comparison
