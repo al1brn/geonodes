@@ -494,7 +494,8 @@ class Vector(VectRot):
         node = Node('Normal', {'Normal': self})
         vec = node._out
         vec._bsocket.default_value = normal
-        return node._out
+        vec.dot_ = node.dot
+        return vec
 
     @classmethod
     def NormalMap(cls, strength=None, color=None, space='TANGENT', uv_map=''):

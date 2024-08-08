@@ -28,6 +28,7 @@ updates
 import bpy
 
 from ..geonodes import *
+from .. import shadernodes as sh
 
 from .. import utils
 
@@ -52,6 +53,11 @@ def demo(clear=False):
     print()
 
     Tree._reset_counters()
+    build_shaders()
+    print(f"4D shaders built : {Tree._total_nodes} nodes, {Tree._total_links} links")
+    print()
+
+    Tree._reset_counters()
 
     build_matrices()
     build_base()
@@ -60,7 +66,8 @@ def demo(clear=False):
     build_extrusions()
     build_lights()
     build_curves()
-    #build_surfaces()
+    build_surfaces()
+    show_case()
 
     print(f"4D Engine built : {Tree._total_nodes} nodes, {Tree._total_links} links")
     print()
@@ -74,46 +81,44 @@ def build_shaders():
     # ----------------------------------------------------------------------------------------------------
     # Axis Shader
 
-    with ShaderNodes("4 Axis"):
+    with sh.ShaderNodes("4 Axis"):
 
-        col = tree.Attribute(attribute_name="Axis Color").color
+        col = sh.nd.attribute(attribute_name="Axis Color").color
 
-        ped = tree.PrincipledBSDF(base_color = col, roughness=.1, metallic=.3)
+        ped = sh.Shader.Principled(base_color=col, roughness=.1, metallic=.3)
 
-        tree.output_surface = ped.bsdf
+        ped.out()
 
     # ----------------------------------------------------------------------------------------------------
     # Face default
 
-    with Shader("4 Face"):
+    with sh.ShaderNodes("4 Face"):
 
-        noise = tree.NoiseTexture(scale=5.)
-        bump = tree.Bump(height=noise.color, strength=.1)
+        noise = Texture.Noise(scale=5.)
+        bump = sh.nd.bump(height=noise.color, strength=.1)
 
-        ped = tree.PrincipledBSDF(
-            base_color = tree.rgb(.3, .8, .7),
+        ped = sh.Shader.Principled(
+            base_color = (.3, .8, .7),
             metallic   = 0.,
             roughness  = 0.,
             alpha      = .1,
-            normal     = bump.normal,
+            normal     = bump,
             )
 
-        tree.output_surface = ped.bsdf
+        ped.out()
 
-        tree.material.blend_method  = 'HASHED'
-        tree.material.shadow_method = 'HASHED'
 
     # ----------------------------------------------------------------------------------------------------
     # Edge default
 
-    with Shader("4 Edge"):
+    with sh.ShaderNodes("4 Edge"):
 
-        ped = tree.PrincipledBSDF(
-            base_color = tree.rgb(0., .05, .9),
+        ped = sh.Shader.Principled(
+            base_color = (0., .05, .9),
             roughness  = 0.,
             )
 
-        tree.output_surface = ped.bsdf
+        ped.out()
 
 # =============================================================================================================================
 # A 4-vector is a couple (V: Vector, w: float)
@@ -206,9 +211,9 @@ class V4:
 
     def set_offset(self, geo):
         with Layout("Set Offset V4", V4_COL):
-            w = geo.points.sample_index(self.w, index=geo.index)
+            w = geo.points.sample_index(self.w, index=nd.index)
             geo = geo.set_position(offset=self.V)
-            return geo.store("w", w + Float.Named("w"))
+            return Mesh(geo).points.store("w", w + Float.Named("w"))
 
     # ----------------------------------------------------------------------------------------------------
     # From / to face normal
@@ -1380,34 +1385,41 @@ def build_extrusions():
         curve = curve.switch(resample, curve.resample(resol))
 
         # ---------------------------------------------------------------------------
-        # Points at origin to instantiate the meshes
+        # Compute the tangents
 
-        count = curve.points.count
-        pts = Cloud.Points(count)
+        curve = Group.Prefix(maths_, "Compute Tangents", {'Curve': curve})._out
 
         # ---------------------------------------------------------------------------
-        # Instantiate the surface the right number of times at location zero
-        # to perform rotation
+        # Instantiate the mesh on the curve
 
-        n = mesh.points.count
+        insts = curve.points.instance_on(
+            instance = mesh,
+            scale = scale.switch(use_radius, nd.radius),
+        )
 
-        insts = pts.points.instance_on(instance=mesh)
+        # ---------------------------------------------------------------------------
+        # Store the position and position to zero before rotation
 
-        # Scale with spline radius
-        #insts.scale_instances(scale=scale.switch(use_radius, curve.sample_index_float(curve.radius, insts.index)*scale))
-        insts.insts.scale = scale.switch(use_radius, curve.points.sample_index(nd.radius, nd.index)*scale)
+        insts.insts.store("_position", nd.position)
+        insts.insts.store("_w", Float.Named("w"))
+        insts.insts.position = 0.
+        insts.insts.store("w", 0.)
 
-        # Realize the instances
-        meshes = insts.realize()
-        mesh_index = nd.index/n
+        # ---------------------------------------------------------------------------
+        # The instances alignment is done on mesh
+
+        n = insts.insts.count
+        meshes = Mesh(insts.realize())
+        mesh_index = round(nd.index/n)
 
         # ---------------------------------------------------------------------------
         # Read position and tangent from the curve
 
-        centers  = V4.Position(curve, sample_index=mesh_index)
+        #centers  = V4.Position(curve, sample_index=mesh_index)
 
         #curve = maths_.compute_tangents(curve).curve
-        curve = Group.Prefix(maths_, "Compute Tangents", {'Curve': curve})._out
+        #curve = Group.Prefix(maths_, "Compute Tangents", {'Curve': curve})._out
+
         tangents = V4.Tangent(curve, sample_index=mesh_index)
 
         # ---------------------------------------------------------------------------
@@ -1418,12 +1430,16 @@ def build_extrusions():
         #meshes = g_mods.align_vector(meshes, **tg.kwargs("From"), **tangents.kwargs("To")).geometry
         meshes = Mesh(Group.Prefix(mods_, "Align Vector", [meshes, tg.V, tg.w, tangents.V, tangents.w])._out)
 
-        meshes.points.offset = centers.V
-        meshes.points.store("w", Float.Named("w") + centers.w)
+        #meshes.points.offset = centers.V
+        #meshes.points.store("w", Float.Named("w") + centers.w)
+        meshes.points.offset = Vector.Named("_position")
+        meshes.points.store("w", Float.Named("w") + Float.Named("_w"))
+
+        meshes.remove_named_attribute("_*", exact=False)
 
         # Done
 
-        meshes.out("Mesh")
+        meshes.out()
 
 # ====================================================================================================
 # Lights
@@ -1751,7 +1767,7 @@ def build_curves():
 
         curve       = Curve()
 
-        resample    = Boolean(False,     "Resample")
+        resample    = Boolean(False,  "Resample")
         new_resol   = Integer(32,  "Resolution",  32, 2)
 
         resol       = Integer(16, "Sphere Resolution", 3)
@@ -1873,62 +1889,61 @@ def build_surfaces():
     # ----------------------------------------------------------------------------------------------------
     # MODIFIER - Extrude a mesh of a given offset
 
-    with GeoNodes("Extrude", fake_user=False, prefix=g_surfs):
+    with GeoNodes("Extrude", fake_user=False, prefix=surfs_):
 
-        mesh0      = tree.ig
-        offset     = V4.Input(tree, "Offset", (0., 0., 1., 1.))
-        with_faces = Boolean(   "With Faces")
-        mat        = Material("Sides Material", bpy.data.materials.get("4 Face"))
-        keep0      = Boolean("Keep first", True)
-        keep1      = Boolean("Keep last",  True)
+        mesh0      = Mesh()
+        offset     = V4((0, 0, 1), 1, "Offset")
+        with_faces = Boolean(True, "With Faces")
+        mat        = Material("4 Face", "Sides Material")
+        keep0      = Boolean(True, "Keep first")
+        keep1      = Boolean(True, "Keep last")
 
         # ----------------------------------------------------------------------------------------------------
         # Dimensions
 
-        dom_size = mesh0.domain_size(component='MESH')
-        nverts = dom_size.point_count
-        nedges = dom_size.edge_count
+        nverts = mesh0.points.count
+        nedges = mesh0.edges.count
 
         # ----------------------------------------------------------------------------------------------------
         # Duplicate
 
-        mesh1 = tree.GEOMETRY(mesh0)
-        offset.set_offset(mesh1)
+        mesh1 = Mesh(mesh0)
+        mesh1 = offset.set_offset(mesh1)
 
         # ----------------------------------------------------------------------------------------------------
         # Unique ID per vertex
 
-        mesh0.POINT.store_named_int("vid", mesh0.index)
-        mesh1.POINT.store_named_int("vid", mesh0.index + nverts)
+        mesh0.points.store("vid", nd.index)
+        mesh1.points.store("vid", nd.index + nverts)
 
         # ----------------------------------------------------------------------------------------------------
         # Loop on the edges
 
-        with tree.repeat(iterations=nedges, faces=None, index=0) as rep:
+        with Repeat(iterations=nedges, faces=None, index=0) as rep:
 
             # ----- Create a new face
 
             with Layout("Face base"):
-                face = tree.grid(vertices_x=2, vertices_y=2)
-                edge_vertices = tree.EdgeVertices()
+                face = Mesh.Grid(vertices_x=2, vertices_y=2)
+                edge_vertices = nd.edge_vertices
 
             with Layout("The four vertex indices"):
                 indices = [
-                    (mesh0, mesh0.EDGE.sample_index_int(edge_vertices.vertex_index_1, index=rep.index)),
-                    (mesh0, mesh0.EDGE.sample_index_int(edge_vertices.vertex_index_2, index=rep.index)),
-                    (mesh1, mesh1.EDGE.sample_index_int(edge_vertices.vertex_index_1, index=rep.index)),
-                    (mesh1, mesh1.EDGE.sample_index_int(edge_vertices.vertex_index_2, index=rep.index)),
+                    (mesh0, mesh0.edges.sample_index(edge_vertices.vertex_index_1, index=rep.index)),
+                    (mesh0, mesh0.edges.sample_index(edge_vertices.vertex_index_2, index=rep.index)),
+                    (mesh1, mesh1.edges.sample_index(edge_vertices.vertex_index_1, index=rep.index)),
+                    (mesh1, mesh1.edges.sample_index(edge_vertices.vertex_index_2, index=rep.index)),
                     ]
 
             for i, (msh, vert_index) in enumerate(indices):
                 with Layout(f"Vertex #{i}"):
-                    v   = msh.POINT.sample_index_vector(msh.position,      index=vert_index)
-                    w   = msh.POINT.sample_index_float(msh.named_int("w"), index=vert_index)
-                    vid = msh.POINT.sample_index_int(msh.named_int("vid"), index=vert_index)
-                    sel = face.index == i
-                    face.POINT[sel].set_position(position=v)
-                    face.POINT[sel].store_named_float("w", w)
-                    face.POINT[sel].store_named_int("vid", vid)
+                    v   = msh.points.sample_index(msh.position,      index=vert_index)
+                    w   = msh.points.sample_index(Integer.Named("w"), index=vert_index)
+                    vid = msh.points.sample_index(Integer.Named("vid"), index=vert_index)
+                    sel = nd.index == i
+                    face.points[sel].position = v
+                    face.points[sel].store("w", w)
+                    face.points[sel].store("vid", vid)
 
             rep.faces += face
             rep.index += 1
@@ -1936,10 +1951,10 @@ def build_surfaces():
         # ----------------------------------------------------------------------------------------------------
         # Finalization
 
-        faces = rep.faces
-        faces.material = mat
+        faces = Mesh(rep.faces)
+        faces.faces.material = mat
 
-        edges_only = tree.GEOMETRY(faces).FACE.delete_geometry(mode='ONLY_FACE')
+        edges_only = Mesh(faces).faces.delete_faces()
         mesh = edges_only.switch(with_faces, faces)
 
         mesh = mesh.switch(keep0, mesh0 + mesh)
@@ -1948,117 +1963,113 @@ def build_surfaces():
         # ----------------------------------------------------------------------------------------------------
         # Remove duplicate indices
 
-        with tree.repeat(iterations=nverts*2, mesh=mesh, index=0) as rep:
-            rep.mesh[rep.mesh.named_int("vid") == rep.index].merge_by_distance(distance=1000.)
+        with Repeat(iterations=nverts*2, mesh=mesh, index=0) as rep:
+            rep.mesh[Integer.Named("vid") == rep.index].merge_by_distance(distance=1000.)
             rep.index += 1
 
         mesh = rep.mesh
         mesh.remove_named_attribute("vid")
 
-        tree.og = mesh
+        mesh.out()
 
     # ----------------------------------------------------------------------------------------------------
     # Hypercube
 
-    with GeoNodes("Hypercube", fake_user=False, prefix=g_surfs):
+    with GeoNodes("Hypercube", fake_user=False, prefix=surfs_):
 
-        size   = Float(   "Size",       1., min_value=.01)
-        slices = Integer( "Slices",     7,  min_value=1)
-        mat    = Material("Material",   bpy.data.materials.get("4 Face"))
+        size   = Float(  1, "Size", .01)
+        #slices = Integer(7, "Slices", 1)
+        mat    = Material("4 Face", "Material")
 
-        cube = tree.cube()
-        cube.material=mat
-        V4.Xyzw(0., 0., 0., -size/2).set_offset(cube)
+        cube = Mesh.Cube()
+        cube.faces.material = mat
+        cube = V4.Xyzw(0., 0., 0., -size/2).set_offset(cube)
 
-        tree.og = g_surfs.extrude(
-            geometry       = cube,
-            **V4.Xyzw(0., 0., 0., size).kwargs("Offset"),
+        geo = Group.Prefix(surfs_, "Extrude", sockets=V4.Xyzw(0., 0., 0., size).sockets("Offset"),
+            mesh           = cube,
             with_faces     = True,
             sides_material = mat,
             keep_first     = True,
             keep_last      = True,
-            ).geometry
+            )._out
 
+        geo.out()
 
     # ----------------------------------------------------------------------------------------------------
     # Hypersphere
 
-    with GeoNodes("Hypersphere", fake_user=False, prefix=g_surfs):
+    with GeoNodes("Hypersphere", fake_user=False, prefix=surfs_):
 
-        radius = Float(   "Radius",       1., min_value=.01)
-        resol  = Integer( "Resolution", 16, min_value=3)
-        slices = Integer( "Slices",     7,  min_value=1)
-        mat    = Material("Material",   bpy.data.materials.get("4 Face"))
+        radius = Float(  1, "Radius",       .01)
+        resol  = Integer( 16, "Resolution", 3)
+        slices = Integer(7, "Slices",     1)
+        mat    = Material("4 Face", "Material")
 
-        line = g_curves.line(start_v=0., start_w=-radius, end_v=0., end_w=radius, resolution=slices+2).geometry
+        line = Curve(Group.Prefix(curves_, "Line", start_v=0., start_w=-radius, end_v=0., end_w=radius, resolution=slices+2)._out)
 
-        line.radius = tree.sqrt(tree.abs(radius**2 - line.named_float("w")**2))
+        line.points.radius = gnmath.sqrt(abs(radius**2 - Float.Named("w")**2))
 
-        line[slices+1].POINT.delete_geometry()
-        line[0].POINT.delete_geometry()
+        line = line.points[slices+1].delete()
+        line = line.points[0].delete()
 
-        hs = g_curves.curve_to_mesh_with_spheres(
-            geometry   = line,
+        hs = Mesh(Group.Prefix(curves_, "Curve to Mesh with Spheres",
+            curve      = line,
             sphere_resolution = resol,
             use_radius = True,
             align_w    = True,
             material   = mat,
-            ).geometry
+            )._out)
 
-        hs.shade_smooth = True
+        hs.faces.smooth = True
 
-        tree.og = hs
-
+        hs.out()
 
     # ----------------------------------------------------------------------------------------------------
     # Extrude along w
 
-    with GeoNodes("Extrude w", fake_user=False, prefix=g_surfs):
+    with GeoNodes("Extrude W", fake_user=False, prefix=surfs_):
 
-        mesh     = tree.ig
-        size_w   = Float("Offset w", 1.)
-        as_curve = Boolean("As curve", True)
+        mesh     = Mesh()
+        size_w   = Float(1, "Offset w", )
+        as_curve = Boolean(True, "As curve")
 
         # ----- Start a minus size
 
         size_w /= 2
-        mesh.POINT.store_named_float("w", -size_w)
+        mesh.points.store("w", -size_w)
 
         # ----- Extrude to plus size
 
-        mesh.EDGE.extrude_mesh(offset_scale=0.)
-        mesh.POINT[mesh.node.top].store_named_float("w", size_w)
+        mesh = mesh.edges.extrude(offset_scale=0.)
+        mesh.points[mesh.top_].store("w", size_w)
 
         # ----- Return the result
 
-        tree.og = mesh.switch(as_curve, mesh.mesh_to_curve())
+        mesh = mesh.switch(as_curve, mesh.to_curve())
 
-
+        mesh.out()
 
     # ----------------------------------------------------------------------------------------------------
     # Torus
 
-    with GeoNodes("Torus", fake_user=False, prefix=g_surfs):
+    with GeoNodes("Torus", fake_user=False, prefix=surfs_):
 
-        radius0 = Float(  "Radius XY",  1.)
-        radius1 = Float(  "Radius ZW",  1.)
-        resol   = Integer("Resolution", 32, min_value=3)
-        factor0 = tree.factor_input( "Factor XY", 1., min_value=0, max_value=1.)
-        factor1 = tree.factor_input( "Factor ZW", 1., min_value=0, max_value=1.)
-        twists  = Float(  "Twists", 0, min_value=-10, max_value=10)
-        mat     = Material("Material", bpy.data.materials.get("4 Face"))
-        smooth  = Boolean(    "Shade smooth", True)
+        radius0 = Float(1,   "Radius XY",  .01)
+        radius1 = Float(1,    "Radius ZW",  .01)
+        resol   = Integer(32, "Resolution", 32, 3)
+        factor0 = Float.Factor(1, "Factor XY", 0, 1)
+        factor1 = Float.Factor(1, "Factor ZW", 0, 1)
+        twists  = Float(0, "Twists", -10, 10)
+        mat     = Material("4 Face", "Material")
+        smooth  = Boolean(True, "Shade smooth")
 
         # ----------------------------------------------------------------------------------------------------
         # Starting from a grid
 
-        grid = tree.grid(vertices_x=resol, vertices_y=resol)
-        grid.uv_map = grid.node.uv_map
-        a = (grid.index/resol)/(resol-1)
-        b = (grid.index%resol)/(resol-1)
-
-        #grid.position = (0.,0., 0.)
-        #grid.POINT.store_named_float("w", 0.)
+        grid = Mesh.Grid(vertices_x=resol, vertices_y=resol)
+        grid.corners.store("UVMap", grid.uv_map_)
+        a = (nd.index/resol)/(resol-1)
+        b = (nd.index%resol)/(resol-1)
 
         # ----------------------------------------------------------------------------------------------------
         # Curve in the plane xy
@@ -2066,28 +2077,27 @@ def build_surfaces():
         # ----- Line
 
         with Layout("XY Factor=0: straight line"):
-            l_xy = (tree.pi*2)*radius0
+            l_xy = tau*radius0
             lx = 0.
             ly = a*l_xy - l_xy/2
 
-            line0 = tree.GEOMETRY(grid)
-            line0.position = (lx, ly, 0)
+            line0 = Mesh(grid)
+            line0.points.position = (lx, ly, 0)
 
         # ----- Circle in plane XY
 
         with Layout("XY Curve lined up to Circle"):
-            ag0 = (tree.pi*2)*factor0
+            ag0 = tau*factor0
             r0 = l_xy/ag0
-            c0 = tree.xyz(0, -r0, 0)
+            c0 = Vector((0, -r0, 0))
 
             ag0_ = a*ag0 - ag0/2
-            cx = r0*tree.cos(ag0_)
-            cy = r0*tree.sin(ag0_)
+            cx = r0*gnmath.cos(ag0_)
+            cy = r0*gnmath.sin(ag0_)
 
-            circle0 = tree.GEOMETRY(grid)
-            circle0.position = (cx - r0 + factor0*radius0, cy, 0)
+            circle0 = Mesh(grid)
+            circle0.points.position = (cx - r0 + factor0*radius0, cy, 0)
 
-        #circle0 = circle0.switch(factor0.less_than(0.001), line0)
         circle0 = circle0.switch(factor0 < 0.001, line0)
 
         # ----------------------------------------------------------------------------------------------------
@@ -2096,100 +2106,107 @@ def build_surfaces():
         # ----- Line
 
         with Layout("ZW Factor=0: straight line"):
-            l_zw = (tree.pi*2)*radius1
+            l_zw = tau*radius1
             lz = 0.
             lw = b*l_zw - l_zw/2
 
-            line1 = tree.GEOMETRY(circle0)
-            line1.offset = (0., 0., lz)
-            line1.POINT.store_named_float("w", lw)
+            line1 = Mesh(circle0)
+            line1.points.offset = (0., 0., lz)
+            line1.points.store("w", lw)
 
         # ----- Circle in plane ZW
 
         with Layout("ZW Curve lined up to Circle"):
-            ag1 = (tree.pi*2)*factor1
+            ag1 = tau*factor1
             r1 = l_zw/ag1
-            c1 = tree.xyz(0, 0, 0)
+            c1 = Vector()
 
             ag1_ = b*ag1 - ag1/2
 
-            cz = r1*tree.cos(ag1_)
-            cw = r1*tree.sin(ag1_)
+            cz = r1*gnmath.cos(ag1_)
+            cw = r1*gnmath.sin(ag1_)
 
-            circle1 = tree.GEOMETRY(circle0)
-            circle1.offset = (0., 0., cz - r1 + factor1*radius1)
-            circle1.POINT.store_named_float("w", cw)
+            circle1 = Mesh(circle0)
+            circle1.points.offset = (0., 0., cz - r1 + factor1*radius1)
+            circle1.points.store("w", cw)
 
-        circle1 = circle1.switch(factor1.less_than(0.001), line1)
+        circle1 = circle1.switch(factor1 < 0.001, line1)
 
         # ----- Twists
 
         with Layout("ZW Twist the profile"):
 
-            y0 = circle0.sample_index_vector(circle0.position, circle1.index).y
+            y0 = circle0.points.sample_index(nd.position.y, nd.index)
 
-            ag_twist = a*(tree.pi*twists)
-            cost = tree.cos(a*ag_twist)
-            sint = tree.sin(a*ag_twist)
+            ag_twist = a*(pi*twists)
+            cost = gnmath.cos(a*ag_twist)
+            sint = gnmath.sin(a*ag_twist)
 
-            loc = circle1.position
+            loc = nd.position
 
             y = loc.y - y0
 
             y_ =   y*cost + loc.z*sint
             z_ =  -y*sint + loc.z*cost
 
-            circle1.position = (loc.x, y0 + y_, z_)
+            circle1.points.position = (loc.x, y0 + y_, z_)
 
 
         # ----- Finalize
 
-        #circle1.merge_by_distance()
-        circle1.material = mat
-        circle1.shade_smooth = smooth
+        circle1.faces.material = mat
+        circle1.faces.smooth = smooth
 
-        tree.og = circle1
+        circle1.out()
 
     # ----------------------------------------------------------------------------------------------------
     # Clifford Torus
 
-    with GeoNodes("Clifford Torus", fake_user=False, prefix=g_surfs):
+    with GeoNodes("Clifford Torus", fake_user=False, prefix=surfs_):
 
-        tree.og = g_surfs.torus(
-            radius_xy    = Float(  "Radius XY",  1.),
-            radius_zw    = Float(  "Radius ZW",  1.),
-            resolution   = Integer("Resolution", 32, min_value=3),
+        node = Group.Prefix(surfs_, "Torus",
+            #radius_xy    = Float(  "Radius XY",  1.),
+            #radius_zw    = Float(  "Radius ZW",  1.),
+            #resolution   = Integer("Resolution", 32, min_value=3),
             factor_xy    = 1.,
             factor_zw    = 1.,
             twists       = 0.,
-            material     = Material("Material", bpy.data.materials.get("4 Face")),
-            shade_smooth = Boolean(    "Shade smooth", True),
-            ).geometry
+            #material     = Material("Material", bpy.data.materials.get("4 Face")),
+            #shade_smooth = Boolean(    "Shade smooth", True),
+            )
+
+        node.plug_node_into(exclude=['Factor XY', 'Factor ZW', 'Twists'])
+
+        node._out.out()
 
 
     # ----------------------------------------------------------------------------------------------------
     # Klein Torus
 
-    with GeoNodes("Klein Torus", fake_user=False, prefix=g_surfs):
+    with GeoNodes("Klein Torus", fake_user=False, prefix=surfs_):
 
-        tree.og = g_surfs.torus(
-            radius_xy    = Float(  "Radius XY",  1.),
-            radius_zw    = Float(  "Radius ZW",  1.),
-            resolution   = Integer("Resolution", 32, min_value=3),
+        node = Group.Prefix(surfs_, "Torus",
+            #radius_xy    = Float(  "Radius XY",  1.),
+            #radius_zw    = Float(  "Radius ZW",  1.),
+            #resolution   = Integer("Resolution", 32, min_value=3),
             factor_xy    = 1.,
             factor_zw    = 1.,
             twists       = 1.,
-            material     = Material("Material", bpy.data.materials.get("4 Face")),
-            shade_smooth = Boolean(    "Shade smooth", True),
-            ).geometry
+            #material     = Material("Material", bpy.data.materials.get("4 Face")),
+            #shade_smooth = Boolean(    "Shade smooth", True),
+            )
+
+        node.plug_node_into(exclude=['Factor XY', 'Factor ZW', 'Twists'])
+
+        node._out.out()
 
     # ----------------------------------------------------------------------------------------------------
     # 5 Cell
 
-    with GeoNodes("5 Cell Polytope", fake_user=False, prefix=g_surfs):
+    with GeoNodes("5 Cell Polytope", fake_user=False, prefix=surfs_):
 
-        size = Float(   "Size", 1.)
-        mat  = Material("Material", bpy.data.materials.get("4 Face"))
+        size = Float(1,   "Size")
+        mat  = Material("4 Face", "Material")
 
         from math import sqrt
 
@@ -2199,47 +2216,46 @@ def build_surfaces():
         v3 = V4.Xyzw(1/2/sqrt(10), -3/2/sqrt(6),           0,    0)
         v4 = V4.Xyzw( -2/sqrt(10),            0,           0,    0)
 
-        S = tree.cone(vertices=3)
+        S = Mesh.Cone(vertices=3)
 
-        S[0].position = v0.V*size
-        S[0].store_named_float("w", v0.w)*size
-        S[1].position = v1.V*size
-        S[1].store_named_float("w", v1.w)*size
-        S[2].position = v2.V*size
-        S[2].store_named_float("w", v2.w)*size
-        S[3].position = v3.V*size
-        S[3].store_named_float("w", v3.w)*size
+        S.points[0].position = v0.V*size
+        S.points[0].store("w", v0.w*size)
+        S.points[1].position = v1.V*size
+        S.points[1].store("w", v1.w*size)
+        S.points[2].position = v2.V*size
+        S.points[2].store("w", v2.w*size)
+        S.points[3].position = v3.V*size
+        S.points[3].store("w", v3.w*size)
 
-        S = S.extrude_mesh(mode='EDGES')
-        top = S.node.top
+        S = S.edges.extrude()
+        top = S.top_
 
-        S[top].position=v4.V
-        S[top].store_named_float("w", v4.w)
+        S.points[top].position=v4.V
+        S.points[top].store("w", v4.w)
 
-        S[top].merge_by_distance(distance=1)
+        S = S[top].merge_by_distance(distance=1)
 
-        S.material = mat
+        S.faces.material = mat
 
-        tree.og = S
+        S.out()
 
     # ----------------------------------------------------------------------------------------------------
     # 16 Cell
 
-    with GeoNodes("16 Cell Polytope", fake_user=False, prefix=g_surfs):
+    with GeoNodes("16 Cell Polytope", fake_user=False, prefix=surfs_):
 
-        size = Float(   "Size", 1.)
-        mat  = Material("Material", bpy.data.materials.get("4 Face"))
+        size = Float(1,   "Size", 0)
+        mat  = Material("4 Face", "Material")
 
         vs = [V4.Xyzw( 1.,  0.,  0.,  0.), V4.Xyzw( 0.,  1.,  0.,  0.), V4.Xyzw( 0.,  0.,  1.,  0.), V4.Xyzw( 0.,  0.,  0.,  1.),
               V4.Xyzw(-1.,  0.,  0.,  0.), V4.Xyzw( 0., -1.,  0.,  0.), V4.Xyzw( 0.,  0., -1.,  0.), V4.Xyzw( 0.,  0.,  0., -1.)]
 
         with Layout("Points coordinates (w on radius)"):
-            points = tree.points(8)
+            points = Cloud.Points(8)
             for i in range(8):
-                sel = points.index == i
-                points[sel].position     = vs[i].V*size
-                points[sel].point_radius = vs[i].w*size
-
+                sel = nd.index == i
+                points.points[sel].position = vs[i].V*size
+                points.points[sel].radius   = vs[i].w*size
 
         # ----------------------------------------------------------------------------------------------------
         # Loops on triplets of points
@@ -2248,35 +2264,35 @@ def build_surfaces():
         # The last 2 ones will have been taken into account in other triangles
         # index0 : from 0 to 5
 
-        with tree.repeat(iterations=6, mesh=None, index=0) as rep0:
+        with Repeat(iterations=6, mesh=None, index=0) as rep0:
 
             # ----- Loop on up to 7 vertices greater than index 0
             # index1 : from 1 to 6
 
-            opp0 = (rep0.index + 4).float_to_integer()
+            opp0 = rep0.index + 4
 
-            with tree.repeat(iterations=7 - rep0.index, mesh=rep0.mesh, index=rep0.index + 1) as rep1:
+            with Repeat(iterations=7 - rep0.index, mesh=rep0.mesh, index=rep0.index + 1) as rep1:
 
                 # ----- Loop on up to 6 vertices greater than index 1
                 # index2 : from 2 to 7
 
-                opp1 = (rep1.index + 4).float_to_integer()
+                opp1 = rep1.index + 4
 
-                with tree.repeat(iterations=7 - rep1.index, mesh=rep1.mesh, index=rep1.index + 1) as rep2:
+                with Repeat(iterations=7 - rep1.index, mesh=rep1.mesh, index=rep1.index + 1) as rep2:
 
-                    trg = tree.mesh_circle(vertices=3, fill_type='NGON')
+                    trg = Mesh.Circle(vertices=3, fill_type='NGON')
 
                     for i, rep in enumerate([rep0, rep1, rep2]):
 
                         with Layout(f"Set triangle vertex #{i}"):
-                            sel = trg.index == i
-                            trg[sel].position = points.sample_index_vector(points.position, index=rep.index)
-                            trg[sel].store_named_float("w", points.sample_index_vector(points.radius, index=rep.index))
-                            trg[sel].store_named_int(  "vid", rep.index)
+                            sel = nd.index == i
+                            trg.points[sel].position = points.points.sample_index(nd.position, index=rep.index)
+                            trg.points[sel].store("w", points.points.sample_index(nd.radius, index=rep.index))
+                            trg.points[sel].store( "vid", rep.index)
 
                     with Layout("Opposite edges don't exist"):
                         nope = (opp0 == rep1.index) | (opp0 == rep2.index) | (opp1 == rep2.index)
-                        trg.store_named_boolean("_delete", nope)
+                        trg.points.store("_delete", nope)
 
                     rep2.mesh += trg
                     rep2.index += 1
@@ -2284,25 +2300,49 @@ def build_surfaces():
                 rep1.mesh  = rep2.mesh
                 rep1.index += 1
 
-            rep0.mesh   = rep1.mesh
+            rep0.mesh  = rep1.mesh
             rep0.index += 1
 
 
         with Layout("Delete non existing edges"):
-            mesh = rep0.mesh.POINT[mesh.named_boolean("_delete")].delete_geometry()
+            mesh = Mesh(rep0.mesh)
+            mesh = mesh.points[Boolean.Named("_delete")].delete()
             mesh.remove_named_attribute("_delete")
 
         with Layout("Delete duplicates"):
-            with tree.repeat(iterations=8, mesh = mesh, index=0) as rep:
-                rep.mesh[rep.mesh.named_int("vid") == rep.index].merge_by_distance(distance=1)
+            with Repeat(mesh=mesh, index=0, iterations=8) as rep:
+                rep.mesh = rep.mesh[Integer.Named("vid") == rep.index].merge_by_distance(distance=1)
                 rep.index += 1
 
         mesh = rep.mesh
 
-        mesh.material = mat
+        mesh.faces.material = mat
 
 
-        mesh.to_output("Geometry")
+        mesh.out("Geometry")
+
+# ====================================================================================================
+# Global demo
+
+def show_case():
+
+    with GeoNodes("Show Case 4D"):
+
+        items = {name: Group.Prefix(surfs_, name)._out for name in [
+            "Hypercube", "Hypersphere", "Clifford Torus", "Klein Torus", "5 Cell Polytope", "16 Cell Polytope",
+        ]}
+
+        geo = Geometry.MenuSwitch(items=items, menu=0, name='4D Shape')
+
+        projected = Group.Prefix(mods_, "Projection", geometry=geo, shade_smooth=Boolean(False, "Shade Smooth"))._out
+
+        geo = geo.switch(Boolean(True, "Projection"), projected)
+
+        geo = geo.switch(Boolean(False, "As Curve"), Group.Prefix(curves_, "Mesh to Curve", geometry=geo)._out)
+
+        geo.out()
+
+
 
 
 

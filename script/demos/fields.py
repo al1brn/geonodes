@@ -321,11 +321,11 @@ def demo():
             charge_loc   = sample.position_
             charge_speed = sample.tangent_.scale(beta)
 
-            field_node = Group("Moving Charge", {
+            field_node = Group.Prefix(field_prefix, "Moving Charge", {
                 'Charge Location': charge_loc,
                 'Charge'         : charge/count,
                 'Speed'          : speed,
-                }, prefix=field_prefix)
+                })
 
             rep.e += field_node.e
             rep.b += field_node.b
@@ -528,7 +528,7 @@ def demo():
 
         with Layout("Take speed into account"):
 
-            transf_node = Group("EM Lorentz", {'Speed': speed, 'B': B}, prefix=util_prefix)
+            transf_node = Group.Prefix(util_prefix, "EM Lorentz", {'Speed': speed, 'B': B})
             E = transf_node.e
             B = transf_node.b
 
@@ -604,7 +604,7 @@ def demo():
 
         field = Vector(0, "Field", tip="Field to visualize")
 
-        cloud = Cloud()
+        cloud = Cloud(name='Geometry')
 
         with Layout("Arrows:"):
 
@@ -618,11 +618,11 @@ def demo():
             arrows = arrows_group._out
 
         with Layout("Lines of field computation"):
-            lines_group = Group("Lines of Field", {
+            lines_group = Group.Prefix(util_prefix, "Lines of Field", {
                 'Geometry': cloud,
                 'Field': field,
                 'Direction': Integer.Random(0, 1, seed=0)*2 - 1,
-            }, prefix=util_prefix)
+            })
             curves = Curve(lines_group._out)
 
         with Layout("Lines of field as mesh"):
@@ -661,29 +661,29 @@ def demo():
         # ----------------------------------------------------------------------------------------------------
         # Source points
 
-        source_node = Group("Source Points", prefix=util_prefix)
+        source_node = Group.Prefix(util_prefix, "Source Points")
         source_node.plug_node_into(include=['Size', 'Density', 'Seed', 'Shape'])
         cloud = source_node._out
 
         use_magnetic = Boolean(False, "Magnetic Field", tip="Magnetic field if True, electric field otherwise")
 
         with Layout("Static Electric field from charges"):
-            node = Group("Electrostatic",{
+            node = Group.Prefix(field_prefix, "Electrostatic",{
                 'Charges Locations' : Cloud.Points(count=6, position=Vector.Random(-1, 1, seed=100+seed)),
                 'Charges Values'    : Float.Random(-1, 1, seed=101+seed),
-                }, prefix=field_prefix)
+                })
             static_field = node.e.switch(use_magnetic, node.b)
 
         with Layout("Moving charge"):
-            node = Group("Moving Charge", prefix=field_prefix)
+            node = Group.Prefix(field_prefix, "Moving Charge")
             moving_field = node.e.switch(use_magnetic, node.b)
 
         with Layout("Solenoid"):
-            node = Group("Solenoid", prefix=field_prefix)
+            node = Group.Prefix(field_prefix, "Solenoid")
             solenoid_field = node.e.switch(use_magnetic, node.b)
 
         with Layout("Magnet"):
-            node = Group("Magnet", prefix=field_prefix)
+            node = Group.Prefix(field_prefix, "Magnet")
             magnet_field = node.e.switch(use_magnetic, node.b)
 
 
@@ -694,10 +694,10 @@ def demo():
             'Magnet'        : magnet_field,
             }, menu=0, name='Field', tip="Field to visualize")
 
-        show_node = Group("Field", {
+        show_node = Group.Prefix(show_prefix, "Field", {
             'Geometry': cloud,
             'Field': field,
-        }, prefix=show_prefix)
+        })
 
         show_node.plug_node_into()
         geo = show_node._out

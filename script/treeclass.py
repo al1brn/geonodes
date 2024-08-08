@@ -158,6 +158,39 @@ class Tree:
 
         self.push()
 
+    # =============================================================================================================================
+    # Remove node groups
+
+    @staticmethod
+    def remove_groups(prefix=None, geonodes=True, shadernodes=True, all_groups=False):
+
+        groups = []
+        if prefix is not None:
+            prefix += ' '
+
+        tree_types = []
+        if geonodes:
+            tree_types.append('GeometryNodeTree')
+        if shadernodes:
+            tree_types.append('ShaderNodeTree')
+
+        for group in bpy.data.node_groups:
+            if group.bl_idname not in tree_types:
+                continue
+            if (not all_groups) and (group.description != 'GEONODES'):
+                continue
+            if prefix is not None and group.name[:len(prefix)] != prefix:
+                continue
+
+            groups.append(group)
+
+        print("Remove node groups")
+        for group in groups:
+            print(' -', group.name)
+            bpy.data.node_groups.remove(group)
+
+        print(f"{len(groups)} node groups removed")
+
     # ====================================================================================================
     # Access to the blender tree
 
@@ -223,7 +256,6 @@ class Tree:
         self._btree.links.clear()
         for bnode in to_clear:
             self._btree.nodes.remove(bnode)
-
 
     def register_node(self, node):
         self._nodes.append(node)

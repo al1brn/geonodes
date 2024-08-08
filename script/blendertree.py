@@ -59,11 +59,38 @@ def get_tree(name, tree_type='GeometryNodeTree', create=True):
         - Tree of type matching the request or None if it doesn't exist
     """
 
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Loop on the synonyms
+
+    for i in range(10):
+        if i == 0:
+            name_i = name
+        else:
+            name_i = f"{name}.{i:03}"
+
+        btree = bpy.data.node_groups.get(name_i)
+        if btree is not None and btree.bl_idname == tree_type and btree.description=='GEONODES':
+            return btree
+
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Create the new tree
+
+    if not create:
+        return None
+
+    btree = bpy.data.node_groups.new(name=name, type=tree_type)
+    btree.description = 'GEONODES'
+
+    return btree
+
+    # OLD OLD OLD OLD
+
     btree = bpy.data.node_groups.get(name)
     if btree is None or btree.bl_idname != tree_type:
         if not create:
             return None
         btree = bpy.data.node_groups.new(name=name, type=tree_type)
+        btree.bl_description = 'GEONODES'
 
     return btree
 

@@ -287,22 +287,36 @@ class Geometry(DataSocket, GeoBase):
     SOCKET_TYPE = 'GEOMETRY'
 
     def __init__(self, value=None, name=None, tip=None):
+
         bsock = utils.get_bsocket(value)
+
+        # ---------------------------------------------------------------------------
+        # This is not a socket : let's get the geometry as Group Input
+
         if bsock is None:
 
-            # Default creation name
+            tree = Tree.current_tree
+
+            # ----- Name is None:
+            # - group : we read the socket from its default name
+            # - modifier : input geometry
 
             if name is None:
-                #name = self.SOCKET_TYPE.title()
                 name = type(self).__name__
+                if tree._is_group:
+                    bsock = tree.new_input('NodeSocketGeometry', name, description=tip)
+                else:
+                    bsock = tree.get_input_geometry(name, description=tip)
 
-            # If the tree is not a group and if the default input geometry doesn't already exist, we create it
+            # ----- Name is not None
+            # - group : we want this name
+            # - Modifier : we create the input geometry with this name
 
-            tree = Tree.current_tree
-            if tree.has_input_geometry or tree._is_group:
-                bsock = tree.new_input('NodeSocketGeometry', name, description=tip)
             else:
-                bsock = tree.get_input_geometry(name, description=tip)
+                if tree._is_group:
+                    bsock = tree.new_input('NodeSocketGeometry', name, description=tip)
+                else:
+                    bsock = tree.get_input_geometry(name, description=tip)
 
         super().__init__(bsock)
 
@@ -440,7 +454,7 @@ class Geometry(DataSocket, GeoBase):
 
     def join(self, *geometries):
 
-        if self.node._bnode.bl_idname == 'GeometryNodeJoinGeometry':
+        if False and self.node._bnode.bl_idname == 'GeometryNodeJoinGeometry':
             node = self.node
             node.set_input_sockets({'Geometry': list(geometries)})
         else:
