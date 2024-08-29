@@ -612,7 +612,7 @@ def demo():
 
             arrows_group = Group("Arrows", {'Geometry': cloud, 'Vectors': field})
             arrows_group.plug_node_into(include=['Scale', 'Logarithm'], rename={'Color': 'Arrow Color'})
-            arrows_mat = Material("Arrows", "Arrows Material")
+            arrows_mat = Material("Arrow", "Arrows Material")
             arrows_group.shaft = arrows_mat
             arrows_group.head= arrows_mat
             arrows = arrows_group._out
@@ -633,7 +633,7 @@ def demo():
 
             mesh_curves = curves.to_mesh(profile_curve=Curve.Circle(radius=Float(.02, "Lines Section", 0)), fill_caps=True)
             mesh_curves.faces.smooth = True
-            mesh_curves.faces.material = Material(None, "Lines material")
+            mesh_curves.faces.material = Material("Arrow", "Lines material")
 
         with Layout("Arrows on lines of field"):
             show_lines_arrows = Boolean(False, "Arrows on Lines")

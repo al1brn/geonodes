@@ -110,6 +110,27 @@ INPUT_TYPES = {
     'GEOMETRY'      : 'GEOMETRY',
     'COLLECTION'    : 'COLLECTION',
     'MATERIAL'      : 'MATERIAL',
+
+    'SHADER'        : 'SHADER',
+}
+
+CLASS_NAMES = {
+    'VALUE'         : 'Float',
+    'INT'           : 'Integer',
+    'BOOLEAN'       : 'Boolean',
+    'VECTOR'        : 'Vector',
+    'ROTATION'      : 'Rotation',
+    'MATRIX'        : 'Matrix',
+    'STRING'        : 'String',
+    'MENU'          : 'Menu',
+    'RGBA'          : 'Color',
+    'OBJECT'        : 'Object',
+    'IMAGE'         : 'Image',
+    'GEOMETRY'      : 'Geometry',
+    'COLLECTION'    : 'Collection',
+    'MATERIAL'      : 'Material',
+
+    'SHADER'        : 'Shader',
 }
 
 # =============================================================================================================================

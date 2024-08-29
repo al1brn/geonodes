@@ -76,7 +76,10 @@ class Color(VectorLike):
     @classmethod
     def Combine(cls, a=0, b=0, c=0, alpha=1, mode='RGB'):
         # mode in ('RGB', 'HSV', 'HSL')
-        return Node('Combine Color', {0: a, 1: b, 2: c, 3: alpha}, mode='RGB')._out
+        if Tree.is_shader:
+            return Node('Combine Color', {0: a, 1: b, 2: c}, mode=mode)._out
+        else:
+            return Node('Combine Color', {0: a, 1: b, 2: c, 3: alpha}, mode=mode)._out
 
     @classmethod
     def CombineRGB(cls, red=0, green=0, blue=0, alpha=1):

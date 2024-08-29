@@ -70,8 +70,18 @@ class nd:
     @classmethod
     def align_euler_to_vector(cls, rotation=None, factor=None, vector=None, axis='X', pivot_axis='AUTO'):
         """ Node 'Align Euler to Vector' (FunctionNodeAlignEulerToVector)
-        - axis in ('X', 'Y', 'Z')
-        - pivot_axis in ('AUTO', 'X', 'Y', 'Z')
+
+        Arguments
+        ---------
+        - rotation (Vector) : socket 'Rotation' (Rotation)
+        - factor (Float) : socket 'Factor' (Factor)
+        - vector (Vector) : socket 'Vector' (Vector)
+        - axis (str): Node.axis in ('X', 'Y', 'Z')
+        - pivot_axis (str): Node.pivot_axis in ('AUTO', 'X', 'Y', 'Z')
+
+        Returns
+        -------
+        - rotation (Vector)
         """
 
         node = Node('Align Euler to Vector', {'Rotation': rotation, 'Factor': factor, 'Vector': vector}, axis=axis, pivot_axis=pivot_axis)
@@ -81,8 +91,18 @@ class nd:
     @classmethod
     def align_rotation_to_vector(cls, rotation=None, factor=None, vector=None, axis='Z', pivot_axis='AUTO'):
         """ Node 'Align Rotation to Vector' (FunctionNodeAlignRotationToVector)
-        - axis in ('X', 'Y', 'Z')
-        - pivot_axis in ('AUTO', 'X', 'Y', 'Z')
+
+        Arguments
+        ---------
+        - rotation (Rotation) : socket 'Rotation' (Rotation)
+        - factor (Float) : socket 'Factor' (Factor)
+        - vector (Vector) : socket 'Vector' (Vector)
+        - axis (str): Node.axis in ('X', 'Y', 'Z')
+        - pivot_axis (str): Node.pivot_axis in ('AUTO', 'X', 'Y', 'Z')
+
+        Returns
+        -------
+        - rotation (Rotation)
         """
 
         node = Node('Align Rotation to Vector', {'Rotation': rotation, 'Factor': factor, 'Vector': vector}, axis=axis, pivot_axis=pivot_axis)
@@ -92,8 +112,17 @@ class nd:
     @classmethod
     def axes_to_rotation(cls, primary_axis_1=None, secondary_axis_1=None, primary_axis='Z', secondary_axis='X'):
         """ Node 'Axes to Rotation' (FunctionNodeAxesToRotation)
-        - primary_axis in ('X', 'Y', 'Z')
-        - secondary_axis in ('X', 'Y', 'Z')
+
+        Arguments
+        ---------
+        - primary_axis_1 (Vector) : socket 'Primary Axis' (Primary Axis)
+        - secondary_axis_1 (Vector) : socket 'Secondary Axis' (Secondary Axis)
+        - primary_axis (str): Node.primary_axis in ('X', 'Y', 'Z')
+        - secondary_axis (str): Node.secondary_axis in ('X', 'Y', 'Z')
+
+        Returns
+        -------
+        - rotation (Rotation)
         """
 
         node = Node('Axes to Rotation', {'Primary Axis': primary_axis_1, 'Secondary Axis': secondary_axis_1}, primary_axis=primary_axis, secondary_axis=secondary_axis)
@@ -103,6 +132,15 @@ class nd:
     @classmethod
     def axis_angle_to_rotation(cls, axis=None, angle=None):
         """ Node 'Axis Angle to Rotation' (FunctionNodeAxisAngleToRotation)
+
+        Arguments
+        ---------
+        - axis (Vector) : socket 'Axis' (Axis)
+        - angle (Float) : socket 'Angle' (Angle)
+
+        Returns
+        -------
+        - rotation (Rotation)
         """
 
         node = Node('Axis Angle to Rotation', {'Axis': axis, 'Angle': angle})
@@ -112,7 +150,16 @@ class nd:
     @classmethod
     def boolean_math(cls, boolean=None, boolean_1=None, operation='AND'):
         """ Node 'Boolean Math' (FunctionNodeBooleanMath)
-        - operation in ('AND', 'OR', 'NOT', 'NAND', 'NOR', 'XNOR', 'XOR', 'IMPLY', 'NIMPLY')
+
+        Arguments
+        ---------
+        - boolean (Boolean) : socket 'Boolean' (Boolean)
+        - boolean_1 (Boolean) : socket 'Boolean' (Boolean_001)
+        - operation (str): Node.operation in ('AND', 'OR', 'NOT', 'NAND', 'NOR', 'XNOR', 'XOR', 'IMPLY', 'NIMPLY')
+
+        Returns
+        -------
+        - boolean (Boolean)
         """
 
         node = Node('Boolean Math', {'Boolean': boolean, 'Boolean_001': boolean_1}, operation=operation)
@@ -122,7 +169,18 @@ class nd:
     @classmethod
     def combine_color(cls, red=None, green=None, blue=None, alpha=None, mode='RGB'):
         """ Node 'Combine Color' (FunctionNodeCombineColor)
-        - mode in ('RGB', 'HSV', 'HSL')
+
+        Arguments
+        ---------
+        - red (Float) : socket 'Red' (Red)
+        - green (Float) : socket 'Green' (Green)
+        - blue (Float) : socket 'Blue' (Blue)
+        - alpha (Float) : socket 'Alpha' (Alpha)
+        - mode (str): Node.mode in ('RGB', 'HSV', 'HSL')
+
+        Returns
+        -------
+        - color (Color)
         """
 
         node = Node('Combine Color', {'Red': red, 'Green': green, 'Blue': blue, 'Alpha': alpha}, mode=mode)
@@ -132,6 +190,29 @@ class nd:
     @classmethod
     def combine_matrix(cls, column_1_row_1=None, column_1_row_2=None, column_1_row_3=None, column_1_row_4=None, column_2_row_1=None, column_2_row_2=None, column_2_row_3=None, column_2_row_4=None, column_3_row_1=None, column_3_row_2=None, column_3_row_3=None, column_3_row_4=None, column_4_row_1=None, column_4_row_2=None, column_4_row_3=None, column_4_row_4=None):
         """ Node 'Combine Matrix' (FunctionNodeCombineMatrix)
+
+        Arguments
+        ---------
+        - column_1_row_1 (Float) : socket 'Column 1 Row 1' (Column 1 Row 1)
+        - column_1_row_2 (Float) : socket 'Column 1 Row 2' (Column 1 Row 2)
+        - column_1_row_3 (Float) : socket 'Column 1 Row 3' (Column 1 Row 3)
+        - column_1_row_4 (Float) : socket 'Column 1 Row 4' (Column 1 Row 4)
+        - column_2_row_1 (Float) : socket 'Column 2 Row 1' (Column 2 Row 1)
+        - column_2_row_2 (Float) : socket 'Column 2 Row 2' (Column 2 Row 2)
+        - column_2_row_3 (Float) : socket 'Column 2 Row 3' (Column 2 Row 3)
+        - column_2_row_4 (Float) : socket 'Column 2 Row 4' (Column 2 Row 4)
+        - column_3_row_1 (Float) : socket 'Column 3 Row 1' (Column 3 Row 1)
+        - column_3_row_2 (Float) : socket 'Column 3 Row 2' (Column 3 Row 2)
+        - column_3_row_3 (Float) : socket 'Column 3 Row 3' (Column 3 Row 3)
+        - column_3_row_4 (Float) : socket 'Column 3 Row 4' (Column 3 Row 4)
+        - column_4_row_1 (Float) : socket 'Column 4 Row 1' (Column 4 Row 1)
+        - column_4_row_2 (Float) : socket 'Column 4 Row 2' (Column 4 Row 2)
+        - column_4_row_3 (Float) : socket 'Column 4 Row 3' (Column 4 Row 3)
+        - column_4_row_4 (Float) : socket 'Column 4 Row 4' (Column 4 Row 4)
+
+        Returns
+        -------
+        - matrix (Matrix)
         """
 
         node = Node('Combine Matrix', {'Column 1 Row 1': column_1_row_1, 'Column 1 Row 2': column_1_row_2, 'Column 1 Row 3': column_1_row_3, 'Column 1 Row 4': column_1_row_4, 'Column 2 Row 1': column_2_row_1, 'Column 2 Row 2': column_2_row_2, 'Column 2 Row 3': column_2_row_3, 'Column 2 Row 4': column_2_row_4, 'Column 3 Row 1': column_3_row_1, 'Column 3 Row 2': column_3_row_2, 'Column 3 Row 3': column_3_row_3, 'Column 3 Row 4': column_3_row_4, 'Column 4 Row 1': column_4_row_1, 'Column 4 Row 2': column_4_row_2, 'Column 4 Row 3': column_4_row_3, 'Column 4 Row 4': column_4_row_4})
@@ -141,6 +222,16 @@ class nd:
     @classmethod
     def combine_transform(cls, translation=None, rotation=None, scale=None):
         """ Node 'Combine Transform' (FunctionNodeCombineTransform)
+
+        Arguments
+        ---------
+        - translation (Vector) : socket 'Translation' (Translation)
+        - rotation (Rotation) : socket 'Rotation' (Rotation)
+        - scale (Vector) : socket 'Scale' (Scale)
+
+        Returns
+        -------
+        - transform (Matrix)
         """
 
         node = Node('Combine Transform', {'Translation': translation, 'Rotation': rotation, 'Scale': scale})
@@ -150,9 +241,18 @@ class nd:
     @classmethod
     def compare(cls, a=None, b=None, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN'):
         """ Node 'Compare' (FunctionNodeCompare)
-        - data_type in ('FLOAT', 'INT', 'VECTOR', 'STRING', 'RGBA')
-        - mode in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
-        - operation in ('LESS_THAN', 'LESS_EQUAL', 'GREATER_THAN', 'GREATER_EQUAL', 'EQUAL', 'NOT_EQUAL')
+
+        Arguments
+        ---------
+        - a (Float) : socket 'A' (A)
+        - b (Float) : socket 'B' (B)
+        - data_type (str): Node.data_type in ('FLOAT', 'INT', 'VECTOR', 'STRING', 'RGBA')
+        - mode (str): Node.mode in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
+        - operation (str): Node.operation in ('LESS_THAN', 'LESS_EQUAL', 'GREATER_THAN', 'GREATER_EQUAL', 'EQUAL', 'NOT_EQUAL')
+
+        Returns
+        -------
+        - result (Boolean)
         """
 
         node = Node('Compare', {'A': a, 'B': b}, data_type=data_type, mode=mode, operation=operation)
@@ -162,6 +262,14 @@ class nd:
     @classmethod
     def euler_to_rotation(cls, euler=None):
         """ Node 'Euler to Rotation' (FunctionNodeEulerToRotation)
+
+        Arguments
+        ---------
+        - euler (Vector) : socket 'Euler' (Euler)
+
+        Returns
+        -------
+        - rotation (Rotation)
         """
 
         node = Node('Euler to Rotation', {'Euler': euler})
@@ -171,7 +279,15 @@ class nd:
     @classmethod
     def float_to_integer(cls, float=None, rounding_mode='ROUND'):
         """ Node 'Float to Integer' (FunctionNodeFloatToInt)
-        - rounding_mode in ('ROUND', 'FLOOR', 'CEILING', 'TRUNCATE')
+
+        Arguments
+        ---------
+        - float (Float) : socket 'Float' (Float)
+        - rounding_mode (str): Node.rounding_mode in ('ROUND', 'FLOOR', 'CEILING', 'TRUNCATE')
+
+        Returns
+        -------
+        - integer (Integer)
         """
 
         node = Node('Float to Integer', {'Float': float}, rounding_mode=rounding_mode)
@@ -179,9 +295,16 @@ class nd:
 
 
     @classmethod
-    @property
     def boolean(cls, boolean=False):
         """ Node 'Boolean' (FunctionNodeInputBool)
+
+        Arguments
+        ---------
+        - boolean (bool): Node.boolean
+
+        Returns
+        -------
+        - boolean (Boolean)
         """
 
         node = Node('Boolean', boolean=boolean)
@@ -189,9 +312,16 @@ class nd:
 
 
     @classmethod
-    @property
     def color(cls, value=None):
         """ Node 'Color' (FunctionNodeInputColor)
+
+        Arguments
+        ---------
+        - value (bpy_prop_array): Node.value
+
+        Returns
+        -------
+        - color (Color)
         """
 
         node = Node('Color', value=value)
@@ -199,9 +329,16 @@ class nd:
 
 
     @classmethod
-    @property
     def integer(cls, integer=0):
         """ Node 'Integer' (FunctionNodeInputInt)
+
+        Arguments
+        ---------
+        - integer (int): Node.integer
+
+        Returns
+        -------
+        - integer (Integer)
         """
 
         node = Node('Integer', integer=integer)
@@ -209,9 +346,16 @@ class nd:
 
 
     @classmethod
-    @property
     def rotation(cls, rotation_euler=None):
         """ Node 'Rotation' (FunctionNodeInputRotation)
+
+        Arguments
+        ---------
+        - rotation_euler (Euler): Node.rotation_euler
+
+        Returns
+        -------
+        - rotation (Rotation)
         """
 
         node = Node('Rotation', rotation_euler=rotation_euler)
@@ -222,6 +366,10 @@ class nd:
     @property
     def special_characters(cls):
         """ Node 'Special Characters' (FunctionNodeInputSpecialCharacters)
+
+        Returns
+        -------
+        - Node: [line_break (String), tab (String)]
         """
 
         node = Node('Special Characters')
@@ -229,9 +377,16 @@ class nd:
 
 
     @classmethod
-    @property
     def string(cls, string=''):
         """ Node 'String' (FunctionNodeInputString)
+
+        Arguments
+        ---------
+        - string (str): Node.string
+
+        Returns
+        -------
+        - string (String)
         """
 
         node = Node('String', string=string)
@@ -239,9 +394,16 @@ class nd:
 
 
     @classmethod
-    @property
     def vector(cls, vector=None):
         """ Node 'Vector' (FunctionNodeInputVector)
+
+        Arguments
+        ---------
+        - vector (Vector): Node.vector
+
+        Returns
+        -------
+        - vector (Vector)
         """
 
         node = Node('Vector', vector=vector)
@@ -251,6 +413,14 @@ class nd:
     @classmethod
     def invert_matrix(cls, matrix=None):
         """ Node 'Invert Matrix' (FunctionNodeInvertMatrix)
+
+        Arguments
+        ---------
+        - matrix (Matrix) : socket 'Matrix' (Matrix)
+
+        Returns
+        -------
+        - Node: [matrix (Matrix), invertible (Boolean)]
         """
 
         node = Node('Invert Matrix', {'Matrix': matrix})
@@ -260,6 +430,14 @@ class nd:
     @classmethod
     def invert_rotation(cls, rotation=None):
         """ Node 'Invert Rotation' (FunctionNodeInvertRotation)
+
+        Arguments
+        ---------
+        - rotation (Rotation) : socket 'Rotation' (Rotation)
+
+        Returns
+        -------
+        - rotation (Rotation)
         """
 
         node = Node('Invert Rotation', {'Rotation': rotation})
@@ -269,6 +447,15 @@ class nd:
     @classmethod
     def multiply_matrices(cls, matrix=None, matrix_1=None):
         """ Node 'Multiply Matrices' (FunctionNodeMatrixMultiply)
+
+        Arguments
+        ---------
+        - matrix (Matrix) : socket 'Matrix' (Matrix)
+        - matrix_1 (Matrix) : socket 'Matrix' (Matrix_001)
+
+        Returns
+        -------
+        - matrix (Matrix)
         """
 
         node = Node('Multiply Matrices', {'Matrix': matrix, 'Matrix_001': matrix_1})
@@ -278,6 +465,15 @@ class nd:
     @classmethod
     def project_point(cls, vector=None, transform=None):
         """ Node 'Project Point' (FunctionNodeProjectPoint)
+
+        Arguments
+        ---------
+        - vector (Vector) : socket 'Vector' (Vector)
+        - transform (Matrix) : socket 'Transform' (Transform)
+
+        Returns
+        -------
+        - vector (Vector)
         """
 
         node = Node('Project Point', {'Vector': vector, 'Transform': transform})
@@ -287,6 +483,17 @@ class nd:
     @classmethod
     def quaternion_to_rotation(cls, w=None, x=None, y=None, z=None):
         """ Node 'Quaternion to Rotation' (FunctionNodeQuaternionToRotation)
+
+        Arguments
+        ---------
+        - w (Float) : socket 'W' (W)
+        - x (Float) : socket 'X' (X)
+        - y (Float) : socket 'Y' (Y)
+        - z (Float) : socket 'Z' (Z)
+
+        Returns
+        -------
+        - rotation (Rotation)
         """
 
         node = Node('Quaternion to Rotation', {'W': w, 'X': x, 'Y': y, 'Z': z})
@@ -296,7 +503,18 @@ class nd:
     @classmethod
     def random_value(cls, min=None, max=None, id=None, seed=None, data_type='FLOAT'):
         """ Node 'Random Value' (FunctionNodeRandomValue)
-        - data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'BOOLEAN')
+
+        Arguments
+        ---------
+        - min (Float) : socket 'Min' (Min_001)
+        - max (Float) : socket 'Max' (Max_001)
+        - id (Integer) : socket 'ID' (ID)
+        - seed (Integer) : socket 'Seed' (Seed)
+        - data_type (str): Node.data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'BOOLEAN')
+
+        Returns
+        -------
+        - Node: [value (Vector), value (Float), value (Integer), value (Boolean)]
         """
 
         node = Node('Random Value', {'Min_001': min, 'Max_001': max, 'ID': id, 'Seed': seed}, data_type=data_type)
@@ -306,6 +524,16 @@ class nd:
     @classmethod
     def replace_string(cls, string=None, find=None, replace=None):
         """ Node 'Replace String' (FunctionNodeReplaceString)
+
+        Arguments
+        ---------
+        - string (String) : socket 'String' (String)
+        - find (String) : socket 'Find' (Find)
+        - replace (String) : socket 'Replace' (Replace)
+
+        Returns
+        -------
+        - string (String)
         """
 
         node = Node('Replace String', {'String': string, 'Find': find, 'Replace': replace})
@@ -315,8 +543,17 @@ class nd:
     @classmethod
     def rotate_euler(cls, rotation=None, rotate_by=None, rotation_type='EULER', space='OBJECT'):
         """ Node 'Rotate Euler' (FunctionNodeRotateEuler)
-        - rotation_type in ('AXIS_ANGLE', 'EULER')
-        - space in ('OBJECT', 'LOCAL')
+
+        Arguments
+        ---------
+        - rotation (Vector) : socket 'Rotation' (Rotation)
+        - rotate_by (Vector) : socket 'Rotate By' (Rotate By)
+        - rotation_type (str): Node.rotation_type in ('AXIS_ANGLE', 'EULER')
+        - space (str): Node.space in ('OBJECT', 'LOCAL')
+
+        Returns
+        -------
+        - rotation (Vector)
         """
 
         node = Node('Rotate Euler', {'Rotation': rotation, 'Rotate By': rotate_by}, rotation_type=rotation_type, space=space)
@@ -326,7 +563,16 @@ class nd:
     @classmethod
     def rotate_rotation(cls, rotation=None, rotate_by=None, rotation_space='GLOBAL'):
         """ Node 'Rotate Rotation' (FunctionNodeRotateRotation)
-        - rotation_space in ('GLOBAL', 'LOCAL')
+
+        Arguments
+        ---------
+        - rotation (Rotation) : socket 'Rotation' (Rotation)
+        - rotate_by (Rotation) : socket 'Rotate By' (Rotate By)
+        - rotation_space (str): Node.rotation_space in ('GLOBAL', 'LOCAL')
+
+        Returns
+        -------
+        - rotation (Rotation)
         """
 
         node = Node('Rotate Rotation', {'Rotation': rotation, 'Rotate By': rotate_by}, rotation_space=rotation_space)
@@ -336,6 +582,15 @@ class nd:
     @classmethod
     def rotate_vector(cls, vector=None, rotation=None):
         """ Node 'Rotate Vector' (FunctionNodeRotateVector)
+
+        Arguments
+        ---------
+        - vector (Vector) : socket 'Vector' (Vector)
+        - rotation (Rotation) : socket 'Rotation' (Rotation)
+
+        Returns
+        -------
+        - vector (Vector)
         """
 
         node = Node('Rotate Vector', {'Vector': vector, 'Rotation': rotation})
@@ -345,6 +600,14 @@ class nd:
     @classmethod
     def rotation_to_axis_angle(cls, rotation=None):
         """ Node 'Rotation to Axis Angle' (FunctionNodeRotationToAxisAngle)
+
+        Arguments
+        ---------
+        - rotation (Rotation) : socket 'Rotation' (Rotation)
+
+        Returns
+        -------
+        - Node: [axis (Vector), angle (Float)]
         """
 
         node = Node('Rotation to Axis Angle', {'Rotation': rotation})
@@ -354,6 +617,14 @@ class nd:
     @classmethod
     def rotation_to_euler(cls, rotation=None):
         """ Node 'Rotation to Euler' (FunctionNodeRotationToEuler)
+
+        Arguments
+        ---------
+        - rotation (Rotation) : socket 'Rotation' (Rotation)
+
+        Returns
+        -------
+        - euler (Vector)
         """
 
         node = Node('Rotation to Euler', {'Rotation': rotation})
@@ -363,6 +634,14 @@ class nd:
     @classmethod
     def rotation_to_quaternion(cls, rotation=None):
         """ Node 'Rotation to Quaternion' (FunctionNodeRotationToQuaternion)
+
+        Arguments
+        ---------
+        - rotation (Rotation) : socket 'Rotation' (Rotation)
+
+        Returns
+        -------
+        - Node: [w (Float), x (Float), y (Float), z (Float)]
         """
 
         node = Node('Rotation to Quaternion', {'Rotation': rotation})
@@ -372,7 +651,15 @@ class nd:
     @classmethod
     def separate_color(cls, color=None, mode='RGB'):
         """ Node 'Separate Color' (FunctionNodeSeparateColor)
-        - mode in ('RGB', 'HSV', 'HSL')
+
+        Arguments
+        ---------
+        - color (Color) : socket 'Color' (Color)
+        - mode (str): Node.mode in ('RGB', 'HSV', 'HSL')
+
+        Returns
+        -------
+        - Node: [red (Float), green (Float), blue (Float), alpha (Float)]
         """
 
         node = Node('Separate Color', {'Color': color}, mode=mode)
@@ -382,6 +669,14 @@ class nd:
     @classmethod
     def separate_matrix(cls, matrix=None):
         """ Node 'Separate Matrix' (FunctionNodeSeparateMatrix)
+
+        Arguments
+        ---------
+        - matrix (Matrix) : socket 'Matrix' (Matrix)
+
+        Returns
+        -------
+        - Node: [column_1_row_1 (Float), column_1_row_2 (Float), column_1_row_3 (Float), column_1_row_4 (Float), column_2_row_1 (Float), column_2_row_2 (Float), column_2_row_3 (Float), column_2_row_4 (Float), column_3_row_1 (Float), column_3_row_2 (Float), column_3_row_3 (Float), column_3_row_4 (Float), column_4_row_1 (Float), column_4_row_2 (Float), column_4_row_3 (Float), column_4_row_4 (Float)]
         """
 
         node = Node('Separate Matrix', {'Matrix': matrix})
@@ -391,6 +686,14 @@ class nd:
     @classmethod
     def separate_transform(cls, transform=None):
         """ Node 'Separate Transform' (FunctionNodeSeparateTransform)
+
+        Arguments
+        ---------
+        - transform (Matrix) : socket 'Transform' (Transform)
+
+        Returns
+        -------
+        - Node: [translation (Vector), rotation (Rotation), scale (Vector)]
         """
 
         node = Node('Separate Transform', {'Transform': transform})
@@ -400,6 +703,16 @@ class nd:
     @classmethod
     def slice_string(cls, string=None, position=None, length=None):
         """ Node 'Slice String' (FunctionNodeSliceString)
+
+        Arguments
+        ---------
+        - string (String) : socket 'String' (String)
+        - position (Integer) : socket 'Position' (Position)
+        - length (Integer) : socket 'Length' (Length)
+
+        Returns
+        -------
+        - string (String)
         """
 
         node = Node('Slice String', {'String': string, 'Position': position, 'Length': length})
@@ -409,6 +722,14 @@ class nd:
     @classmethod
     def string_length(cls, string=None):
         """ Node 'String Length' (FunctionNodeStringLength)
+
+        Arguments
+        ---------
+        - string (String) : socket 'String' (String)
+
+        Returns
+        -------
+        - length (Integer)
         """
 
         node = Node('String Length', {'String': string})
@@ -418,6 +739,15 @@ class nd:
     @classmethod
     def transform_direction(cls, direction=None, transform=None):
         """ Node 'Transform Direction' (FunctionNodeTransformDirection)
+
+        Arguments
+        ---------
+        - direction (Vector) : socket 'Direction' (Direction)
+        - transform (Matrix) : socket 'Transform' (Transform)
+
+        Returns
+        -------
+        - direction (Vector)
         """
 
         node = Node('Transform Direction', {'Direction': direction, 'Transform': transform})
@@ -427,6 +757,15 @@ class nd:
     @classmethod
     def transform_point(cls, vector=None, transform=None):
         """ Node 'Transform Point' (FunctionNodeTransformPoint)
+
+        Arguments
+        ---------
+        - vector (Vector) : socket 'Vector' (Vector)
+        - transform (Matrix) : socket 'Transform' (Transform)
+
+        Returns
+        -------
+        - vector (Vector)
         """
 
         node = Node('Transform Point', {'Vector': vector, 'Transform': transform})
@@ -436,6 +775,14 @@ class nd:
     @classmethod
     def transpose_matrix(cls, matrix=None):
         """ Node 'Transpose Matrix' (FunctionNodeTransposeMatrix)
+
+        Arguments
+        ---------
+        - matrix (Matrix) : socket 'Matrix' (Matrix)
+
+        Returns
+        -------
+        - matrix (Matrix)
         """
 
         node = Node('Transpose Matrix', {'Matrix': matrix})
@@ -445,6 +792,15 @@ class nd:
     @classmethod
     def value_to_string(cls, value=None, decimals=None):
         """ Node 'Value to String' (FunctionNodeValueToString)
+
+        Arguments
+        ---------
+        - value (Float) : socket 'Value' (Value)
+        - decimals (Integer) : socket 'Decimals' (Decimals)
+
+        Returns
+        -------
+        - string (String)
         """
 
         node = Node('Value to String', {'Value': value, 'Decimals': decimals})
@@ -454,8 +810,17 @@ class nd:
     @classmethod
     def accumulate_field(cls, value=None, group_id=None, data_type='FLOAT', domain='POINT'):
         """ Node 'Accumulate Field' (GeometryNodeAccumulateField)
-        - data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'TRANSFORM')
-        - domain in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+
+        Arguments
+        ---------
+        - value (Float) : socket 'Value' (Value)
+        - group_id (Integer) : socket 'Group ID' (Group Index)
+        - data_type (str): Node.data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'TRANSFORM')
+        - domain (str): Node.domain in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+
+        Returns
+        -------
+        - Node: [leading (Float), trailing (Float), total (Float)]
         """
 
         node = Node('Accumulate Field', {'Value': value, 'Group Index': group_id}, data_type=data_type, domain=domain)
@@ -465,7 +830,15 @@ class nd:
     @classmethod
     def domain_size(cls, geometry=None, component='MESH'):
         """ Node 'Domain Size' (GeometryNodeAttributeDomainSize)
-        - component in ('MESH', 'POINTCLOUD', 'CURVE', 'INSTANCES')
+
+        Arguments
+        ---------
+        - geometry (Geometry) : socket 'Geometry' (Geometry)
+        - component (str): Node.component in ('MESH', 'POINTCLOUD', 'CURVE', 'INSTANCES')
+
+        Returns
+        -------
+        - Node: [point_count (Integer), edge_count (Integer), face_count (Integer), face_corner_count (Integer), spline_count (Integer), instance_count (Integer), layer_count (Integer)]
         """
 
         node = Node('Domain Size', {'Geometry': geometry}, component=component)
@@ -475,8 +848,18 @@ class nd:
     @classmethod
     def attribute_statistic(cls, geometry=None, selection=None, attribute=None, data_type='FLOAT', domain='POINT'):
         """ Node 'Attribute Statistic' (GeometryNodeAttributeStatistic)
-        - data_type in ('FLOAT', 'FLOAT_VECTOR')
-        - domain in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+
+        Arguments
+        ---------
+        - geometry (Geometry) : socket 'Geometry' (Geometry)
+        - selection (Boolean) : socket 'Selection' (Selection)
+        - attribute (Float) : socket 'Attribute' (Attribute)
+        - data_type (str): Node.data_type in ('FLOAT', 'FLOAT_VECTOR')
+        - domain (str): Node.domain in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+
+        Returns
+        -------
+        - Node: [mean (Float), median (Float), sum (Float), min (Float), max (Float), range (Float), standard_deviation (Float), variance (Float)]
         """
 
         node = Node('Attribute Statistic', {'Geometry': geometry, 'Selection': selection, 'Attribute': attribute}, data_type=data_type, domain=domain)
@@ -486,6 +869,17 @@ class nd:
     @classmethod
     def bake(cls, geometry=None, active_index=0, active_item=None, bake_items=None):
         """ Node 'Bake' (GeometryNodeBake)
+
+        Arguments
+        ---------
+        - geometry (Geometry) : socket 'Geometry' (Item_0)
+        - active_index (int): Node.active_index
+        - active_item (NodeGeometryBakeItem): Node.active_item
+        - bake_items (bpy_prop_collection): Node.bake_items
+
+        Returns
+        -------
+        - Node: [geometry (Geometry)]
         """
 
         node = Node('Bake', {'Item_0': geometry}, active_index=active_index, active_item=active_item, bake_items=bake_items)
@@ -495,7 +889,17 @@ class nd:
     @classmethod
     def blur_attribute(cls, value=None, iterations=None, weight=None, data_type='FLOAT'):
         """ Node 'Blur Attribute' (GeometryNodeBlurAttribute)
-        - data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR')
+
+        Arguments
+        ---------
+        - value (Float) : socket 'Value' (Value)
+        - iterations (Integer) : socket 'Iterations' (Iterations)
+        - weight (Float) : socket 'Weight' (Weight)
+        - data_type (str): Node.data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR')
+
+        Returns
+        -------
+        - value (Float)
         """
 
         node = Node('Blur Attribute', {'Value': value, 'Iterations': iterations, 'Weight': weight}, data_type=data_type)
@@ -505,6 +909,14 @@ class nd:
     @classmethod
     def bounding_box(cls, geometry=None):
         """ Node 'Bounding Box' (GeometryNodeBoundBox)
+
+        Arguments
+        ---------
+        - geometry (Geometry) : socket 'Geometry' (Geometry)
+
+        Returns
+        -------
+        - Node: [bounding_box (Geometry), min (Vector), max (Vector)]
         """
 
         node = Node('Bounding Box', {'Geometry': geometry})
@@ -514,7 +926,18 @@ class nd:
     @classmethod
     def capture_attribute(cls, geometry=None, active_index=0, active_item=None, capture_items=None, domain='POINT'):
         """ Node 'Capture Attribute' (GeometryNodeCaptureAttribute)
-        - domain in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+
+        Arguments
+        ---------
+        - geometry (Geometry) : socket 'Geometry' (Geometry)
+        - active_index (int): Node.active_index
+        - active_item (NoneType): Node.active_item
+        - capture_items (bpy_prop_collection): Node.capture_items
+        - domain (str): Node.domain in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+
+        Returns
+        -------
+        - Node: [geometry (Geometry)]
         """
 
         node = Node('Capture Attribute', {'Geometry': geometry}, active_index=active_index, active_item=active_item, capture_items=capture_items, domain=domain)
@@ -524,7 +947,17 @@ class nd:
     @classmethod
     def collection_info(cls, collection=None, separate_children=None, reset_children=None, transform_space='ORIGINAL'):
         """ Node 'Collection Info' (GeometryNodeCollectionInfo)
-        - transform_space in ('ORIGINAL', 'RELATIVE')
+
+        Arguments
+        ---------
+        - collection (Collection) : socket 'Collection' (Collection)
+        - separate_children (Boolean) : socket 'Separate Children' (Separate Children)
+        - reset_children (Boolean) : socket 'Reset Children' (Reset Children)
+        - transform_space (str): Node.transform_space in ('ORIGINAL', 'RELATIVE')
+
+        Returns
+        -------
+        - instances (Geometry)
         """
 
         node = Node('Collection Info', {'Collection': collection, 'Separate Children': separate_children, 'Reset Children': reset_children}, transform_space=transform_space)
@@ -534,6 +967,14 @@ class nd:
     @classmethod
     def convex_hull(cls, geometry=None):
         """ Node 'Convex Hull' (GeometryNodeConvexHull)
+
+        Arguments
+        ---------
+        - geometry (Geometry) : socket 'Geometry' (Geometry)
+
+        Returns
+        -------
+        - convex_hull (Geometry)
         """
 
         node = Node('Convex Hull', {'Geometry': geometry})
@@ -543,6 +984,16 @@ class nd:
     @classmethod
     def corners_of_edge(cls, edge_index=None, weights=None, sort_index=None):
         """ Node 'Corners of Edge' (GeometryNodeCornersOfEdge)
+
+        Arguments
+        ---------
+        - edge_index (Integer) : socket 'Edge Index' (Edge Index)
+        - weights (Float) : socket 'Weights' (Weights)
+        - sort_index (Integer) : socket 'Sort Index' (Sort Index)
+
+        Returns
+        -------
+        - Node: [corner_index (Integer), total (Integer)]
         """
 
         node = Node('Corners of Edge', {'Edge Index': edge_index, 'Weights': weights, 'Sort Index': sort_index})
@@ -552,6 +1003,16 @@ class nd:
     @classmethod
     def corners_of_face(cls, face_index=None, weights=None, sort_index=None):
         """ Node 'Corners of Face' (GeometryNodeCornersOfFace)
+
+        Arguments
+        ---------
+        - face_index (Integer) : socket 'Face Index' (Face Index)
+        - weights (Float) : socket 'Weights' (Weights)
+        - sort_index (Integer) : socket 'Sort Index' (Sort Index)
+
+        Returns
+        -------
+        - Node: [corner_index (Integer), total (Integer)]
         """
 
         node = Node('Corners of Face', {'Face Index': face_index, 'Weights': weights, 'Sort Index': sort_index})
@@ -561,6 +1022,16 @@ class nd:
     @classmethod
     def corners_of_vertex(cls, vertex_index=None, weights=None, sort_index=None):
         """ Node 'Corners of Vertex' (GeometryNodeCornersOfVertex)
+
+        Arguments
+        ---------
+        - vertex_index (Integer) : socket 'Vertex Index' (Vertex Index)
+        - weights (Float) : socket 'Weights' (Weights)
+        - sort_index (Integer) : socket 'Sort Index' (Sort Index)
+
+        Returns
+        -------
+        - Node: [corner_index (Integer), total (Integer)]
         """
 
         node = Node('Corners of Vertex', {'Vertex Index': vertex_index, 'Weights': weights, 'Sort Index': sort_index})
@@ -570,7 +1041,20 @@ class nd:
     @classmethod
     def arc(cls, resolution=None, radius=None, start_angle=None, sweep_angle=None, connect_center=None, invert_arc=None, mode='RADIUS'):
         """ Node 'Arc' (GeometryNodeCurveArc)
-        - mode in ('POINTS', 'RADIUS')
+
+        Arguments
+        ---------
+        - resolution (Integer) : socket 'Resolution' (Resolution)
+        - radius (Float) : socket 'Radius' (Radius)
+        - start_angle (Float) : socket 'Start Angle' (Start Angle)
+        - sweep_angle (Float) : socket 'Sweep Angle' (Sweep Angle)
+        - connect_center (Boolean) : socket 'Connect Center' (Connect Center)
+        - invert_arc (Boolean) : socket 'Invert Arc' (Invert Arc)
+        - mode (str): Node.mode in ('POINTS', 'RADIUS')
+
+        Returns
+        -------
+        - Node: [curve (Geometry), center (Vector), normal (Vector), radius (Float)]
         """
 
         node = Node('Arc', {'Resolution': resolution, 'Radius': radius, 'Start Angle': start_angle, 'Sweep Angle': sweep_angle, 'Connect Center': connect_center, 'Invert Arc': invert_arc}, mode=mode)
@@ -580,6 +1064,15 @@ class nd:
     @classmethod
     def endpoint_selection(cls, start_size=None, end_size=None):
         """ Node 'Endpoint Selection' (GeometryNodeCurveEndpointSelection)
+
+        Arguments
+        ---------
+        - start_size (Integer) : socket 'Start Size' (Start Size)
+        - end_size (Integer) : socket 'End Size' (End Size)
+
+        Returns
+        -------
+        - selection (Boolean)
         """
 
         node = Node('Endpoint Selection', {'Start Size': start_size, 'End Size': end_size})
@@ -587,10 +1080,17 @@ class nd:
 
 
     @classmethod
-    @property
     def handle_type_selection(cls, handle_type='AUTO', mode={'LEFT', 'RIGHT'}):
         """ Node 'Handle Type Selection' (GeometryNodeCurveHandleTypeSelection)
-        - handle_type in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
+
+        Arguments
+        ---------
+        - handle_type (str): Node.handle_type in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
+        - mode (set): Node.mode
+
+        Returns
+        -------
+        - selection (Boolean)
         """
 
         node = Node('Handle Type Selection', handle_type=handle_type, mode=mode)
@@ -600,6 +1100,14 @@ class nd:
     @classmethod
     def curve_length(cls, curve=None):
         """ Node 'Curve Length' (GeometryNodeCurveLength)
+
+        Arguments
+        ---------
+        - curve (Geometry) : socket 'Curve' (Curve)
+
+        Returns
+        -------
+        - length (Float)
         """
 
         node = Node('Curve Length', {'Curve': curve})
@@ -609,6 +1117,14 @@ class nd:
     @classmethod
     def curve_of_point(cls, point_index=None):
         """ Node 'Curve of Point' (GeometryNodeCurveOfPoint)
+
+        Arguments
+        ---------
+        - point_index (Integer) : socket 'Point Index' (Point Index)
+
+        Returns
+        -------
+        - Node: [curve_index (Integer), index_in_curve (Integer)]
         """
 
         node = Node('Curve of Point', {'Point Index': point_index})
@@ -618,7 +1134,19 @@ class nd:
     @classmethod
     def bezier_segment(cls, resolution=None, start=None, start_handle=None, end_handle=None, end=None, mode='POSITION'):
         """ Node 'Bézier Segment' (GeometryNodeCurvePrimitiveBezierSegment)
-        - mode in ('POSITION', 'OFFSET')
+
+        Arguments
+        ---------
+        - resolution (Integer) : socket 'Resolution' (Resolution)
+        - start (Vector) : socket 'Start' (Start)
+        - start_handle (Vector) : socket 'Start Handle' (Start Handle)
+        - end_handle (Vector) : socket 'End Handle' (End Handle)
+        - end (Vector) : socket 'End' (End)
+        - mode (str): Node.mode in ('POSITION', 'OFFSET')
+
+        Returns
+        -------
+        - curve (Geometry)
         """
 
         node = Node('Bézier Segment', {'Resolution': resolution, 'Start': start, 'Start Handle': start_handle, 'End Handle': end_handle, 'End': end}, mode=mode)
@@ -628,7 +1156,16 @@ class nd:
     @classmethod
     def curve_circle(cls, resolution=None, radius=None, mode='RADIUS'):
         """ Node 'Curve Circle' (GeometryNodeCurvePrimitiveCircle)
-        - mode in ('POINTS', 'RADIUS')
+
+        Arguments
+        ---------
+        - resolution (Integer) : socket 'Resolution' (Resolution)
+        - radius (Float) : socket 'Radius' (Radius)
+        - mode (str): Node.mode in ('POINTS', 'RADIUS')
+
+        Returns
+        -------
+        - Node: [curve (Geometry), center (Vector)]
         """
 
         node = Node('Curve Circle', {'Resolution': resolution, 'Radius': radius}, mode=mode)
@@ -638,7 +1175,16 @@ class nd:
     @classmethod
     def curve_line(cls, start=None, end=None, mode='POINTS'):
         """ Node 'Curve Line' (GeometryNodeCurvePrimitiveLine)
-        - mode in ('POINTS', 'DIRECTION')
+
+        Arguments
+        ---------
+        - start (Vector) : socket 'Start' (Start)
+        - end (Vector) : socket 'End' (End)
+        - mode (str): Node.mode in ('POINTS', 'DIRECTION')
+
+        Returns
+        -------
+        - curve (Geometry)
         """
 
         node = Node('Curve Line', {'Start': start, 'End': end}, mode=mode)
@@ -648,7 +1194,16 @@ class nd:
     @classmethod
     def quadrilateral(cls, width=None, height=None, mode='RECTANGLE'):
         """ Node 'Quadrilateral' (GeometryNodeCurvePrimitiveQuadrilateral)
-        - mode in ('RECTANGLE', 'PARALLELOGRAM', 'TRAPEZOID', 'KITE', 'POINTS')
+
+        Arguments
+        ---------
+        - width (Float) : socket 'Width' (Width)
+        - height (Float) : socket 'Height' (Height)
+        - mode (str): Node.mode in ('RECTANGLE', 'PARALLELOGRAM', 'TRAPEZOID', 'KITE', 'POINTS')
+
+        Returns
+        -------
+        - curve (Geometry)
         """
 
         node = Node('Quadrilateral', {'Width': width, 'Height': height}, mode=mode)
@@ -658,6 +1213,17 @@ class nd:
     @classmethod
     def quadratic_bezier(cls, resolution=None, start=None, middle=None, end=None):
         """ Node 'Quadratic Bézier' (GeometryNodeCurveQuadraticBezier)
+
+        Arguments
+        ---------
+        - resolution (Integer) : socket 'Resolution' (Resolution)
+        - start (Vector) : socket 'Start' (Start)
+        - middle (Vector) : socket 'Middle' (Middle)
+        - end (Vector) : socket 'End' (End)
+
+        Returns
+        -------
+        - curve (Geometry)
         """
 
         node = Node('Quadratic Bézier', {'Resolution': resolution, 'Start': start, 'Middle': middle, 'End': end})
@@ -667,7 +1233,17 @@ class nd:
     @classmethod
     def set_handle_type(cls, curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}):
         """ Node 'Set Handle Type' (GeometryNodeCurveSetHandles)
-        - handle_type in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
+
+        Arguments
+        ---------
+        - curve (Geometry) : socket 'Curve' (Curve)
+        - selection (Boolean) : socket 'Selection' (Selection)
+        - handle_type (str): Node.handle_type in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
+        - mode (set): Node.mode
+
+        Returns
+        -------
+        - curve (Geometry)
         """
 
         node = Node('Set Handle Type', {'Curve': curve, 'Selection': selection}, handle_type=handle_type, mode=mode)
@@ -677,6 +1253,19 @@ class nd:
     @classmethod
     def spiral(cls, resolution=None, rotations=None, start_radius=None, end_radius=None, height=None, reverse=None):
         """ Node 'Spiral' (GeometryNodeCurveSpiral)
+
+        Arguments
+        ---------
+        - resolution (Integer) : socket 'Resolution' (Resolution)
+        - rotations (Float) : socket 'Rotations' (Rotations)
+        - start_radius (Float) : socket 'Start Radius' (Start Radius)
+        - end_radius (Float) : socket 'End Radius' (End Radius)
+        - height (Float) : socket 'Height' (Height)
+        - reverse (Boolean) : socket 'Reverse' (Reverse)
+
+        Returns
+        -------
+        - curve (Geometry)
         """
 
         node = Node('Spiral', {'Resolution': resolution, 'Rotations': rotations, 'Start Radius': start_radius, 'End Radius': end_radius, 'Height': height, 'Reverse': reverse})
@@ -686,7 +1275,16 @@ class nd:
     @classmethod
     def set_spline_type(cls, curve=None, selection=None, spline_type='POLY'):
         """ Node 'Set Spline Type' (GeometryNodeCurveSplineType)
-        - spline_type in ('CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS')
+
+        Arguments
+        ---------
+        - curve (Geometry) : socket 'Curve' (Curve)
+        - selection (Boolean) : socket 'Selection' (Selection)
+        - spline_type (str): Node.spline_type in ('CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS')
+
+        Returns
+        -------
+        - curve (Geometry)
         """
 
         node = Node('Set Spline Type', {'Curve': curve, 'Selection': selection}, spline_type=spline_type)
@@ -696,6 +1294,17 @@ class nd:
     @classmethod
     def star(cls, points=None, inner_radius=None, outer_radius=None, twist=None):
         """ Node 'Star' (GeometryNodeCurveStar)
+
+        Arguments
+        ---------
+        - points (Integer) : socket 'Points' (Points)
+        - inner_radius (Float) : socket 'Inner Radius' (Inner Radius)
+        - outer_radius (Float) : socket 'Outer Radius' (Outer Radius)
+        - twist (Float) : socket 'Twist' (Twist)
+
+        Returns
+        -------
+        - Node: [curve (Geometry), outer_points (Boolean)]
         """
 
         node = Node('Star', {'Points': points, 'Inner Radius': inner_radius, 'Outer Radius': outer_radius, 'Twist': twist})
@@ -705,6 +1314,16 @@ class nd:
     @classmethod
     def curve_to_mesh(cls, curve=None, profile_curve=None, fill_caps=None):
         """ Node 'Curve to Mesh' (GeometryNodeCurveToMesh)
+
+        Arguments
+        ---------
+        - curve (Geometry) : socket 'Curve' (Curve)
+        - profile_curve (Geometry) : socket 'Profile Curve' (Profile Curve)
+        - fill_caps (Boolean) : socket 'Fill Caps' (Fill Caps)
+
+        Returns
+        -------
+        - mesh (Geometry)
         """
 
         node = Node('Curve to Mesh', {'Curve': curve, 'Profile Curve': profile_curve, 'Fill Caps': fill_caps})
@@ -714,7 +1333,16 @@ class nd:
     @classmethod
     def curve_to_points(cls, curve=None, count=None, mode='COUNT'):
         """ Node 'Curve to Points' (GeometryNodeCurveToPoints)
-        - mode in ('EVALUATED', 'COUNT', 'LENGTH')
+
+        Arguments
+        ---------
+        - curve (Geometry) : socket 'Curve' (Curve)
+        - count (Integer) : socket 'Count' (Count)
+        - mode (str): Node.mode in ('EVALUATED', 'COUNT', 'LENGTH')
+
+        Returns
+        -------
+        - Node: [points (Geometry), tangent (Vector), normal (Vector), rotation (Rotation)]
         """
 
         node = Node('Curve to Points', {'Curve': curve, 'Count': count}, mode=mode)
@@ -724,6 +1352,14 @@ class nd:
     @classmethod
     def deform_curves_on_surface(cls, curves=None):
         """ Node 'Deform Curves on Surface' (GeometryNodeDeformCurvesOnSurface)
+
+        Arguments
+        ---------
+        - curves (Geometry) : socket 'Curves' (Curves)
+
+        Returns
+        -------
+        - curves (Geometry)
         """
 
         node = Node('Deform Curves on Surface', {'Curves': curves})
@@ -733,8 +1369,17 @@ class nd:
     @classmethod
     def delete_geometry(cls, geometry=None, selection=None, domain='POINT', mode='ALL'):
         """ Node 'Delete Geometry' (GeometryNodeDeleteGeometry)
-        - domain in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
-        - mode in ('ALL', 'EDGE_FACE', 'ONLY_FACE')
+
+        Arguments
+        ---------
+        - geometry (Geometry) : socket 'Geometry' (Geometry)
+        - selection (Boolean) : socket 'Selection' (Selection)
+        - domain (str): Node.domain in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
+        - mode (str): Node.mode in ('ALL', 'EDGE_FACE', 'ONLY_FACE')
+
+        Returns
+        -------
+        - geometry (Geometry)
         """
 
         node = Node('Delete Geometry', {'Geometry': geometry, 'Selection': selection}, domain=domain, mode=mode)
@@ -744,7 +1389,17 @@ class nd:
     @classmethod
     def distribute_points_in_grid(cls, grid=None, density=None, seed=None, mode='DENSITY_RANDOM'):
         """ Node 'Distribute Points in Grid' (GeometryNodeDistributePointsInGrid)
-        - mode in ('DENSITY_RANDOM', 'DENSITY_GRID')
+
+        Arguments
+        ---------
+        - grid (Float) : socket 'Grid' (Grid)
+        - density (Float) : socket 'Density' (Density)
+        - seed (Integer) : socket 'Seed' (Seed)
+        - mode (str): Node.mode in ('DENSITY_RANDOM', 'DENSITY_GRID')
+
+        Returns
+        -------
+        - points (Geometry)
         """
 
         node = Node('Distribute Points in Grid', {'Grid': grid, 'Density': density, 'Seed': seed}, mode=mode)
@@ -754,7 +1409,17 @@ class nd:
     @classmethod
     def distribute_points_in_volume(cls, volume=None, density=None, seed=None, mode='DENSITY_RANDOM'):
         """ Node 'Distribute Points in Volume' (GeometryNodeDistributePointsInVolume)
-        - mode in ('DENSITY_RANDOM', 'DENSITY_GRID')
+
+        Arguments
+        ---------
+        - volume (Geometry) : socket 'Volume' (Volume)
+        - density (Float) : socket 'Density' (Density)
+        - seed (Integer) : socket 'Seed' (Seed)
+        - mode (str): Node.mode in ('DENSITY_RANDOM', 'DENSITY_GRID')
+
+        Returns
+        -------
+        - points (Geometry)
         """
 
         node = Node('Distribute Points in Volume', {'Volume': volume, 'Density': density, 'Seed': seed}, mode=mode)
@@ -764,7 +1429,19 @@ class nd:
     @classmethod
     def distribute_points_on_faces(cls, mesh=None, selection=None, density=None, seed=None, distribute_method='RANDOM', use_legacy_normal=False):
         """ Node 'Distribute Points on Faces' (GeometryNodeDistributePointsOnFaces)
-        - distribute_method in ('RANDOM', 'POISSON')
+
+        Arguments
+        ---------
+        - mesh (Geometry) : socket 'Mesh' (Mesh)
+        - selection (Boolean) : socket 'Selection' (Selection)
+        - density (Float) : socket 'Density' (Density)
+        - seed (Integer) : socket 'Seed' (Seed)
+        - distribute_method (str): Node.distribute_method in ('RANDOM', 'POISSON')
+        - use_legacy_normal (bool): Node.use_legacy_normal
+
+        Returns
+        -------
+        - Node: [points (Geometry), normal (Vector), rotation (Rotation)]
         """
 
         node = Node('Distribute Points on Faces', {'Mesh': mesh, 'Selection': selection, 'Density': density, 'Seed': seed}, distribute_method=distribute_method, use_legacy_normal=use_legacy_normal)
@@ -774,6 +1451,15 @@ class nd:
     @classmethod
     def dual_mesh(cls, mesh=None, keep_boundaries=None):
         """ Node 'Dual Mesh' (GeometryNodeDualMesh)
+
+        Arguments
+        ---------
+        - mesh (Geometry) : socket 'Mesh' (Mesh)
+        - keep_boundaries (Boolean) : socket 'Keep Boundaries' (Keep Boundaries)
+
+        Returns
+        -------
+        - dual_mesh (Geometry)
         """
 
         node = Node('Dual Mesh', {'Mesh': mesh, 'Keep Boundaries': keep_boundaries})
@@ -783,7 +1469,17 @@ class nd:
     @classmethod
     def duplicate_elements(cls, geometry=None, selection=None, amount=None, domain='POINT'):
         """ Node 'Duplicate Elements' (GeometryNodeDuplicateElements)
-        - domain in ('POINT', 'EDGE', 'FACE', 'SPLINE', 'INSTANCE')
+
+        Arguments
+        ---------
+        - geometry (Geometry) : socket 'Geometry' (Geometry)
+        - selection (Boolean) : socket 'Selection' (Selection)
+        - amount (Integer) : socket 'Amount' (Amount)
+        - domain (str): Node.domain in ('POINT', 'EDGE', 'FACE', 'SPLINE', 'INSTANCE')
+
+        Returns
+        -------
+        - Node: [geometry (Geometry), duplicate_index (Integer)]
         """
 
         node = Node('Duplicate Elements', {'Geometry': geometry, 'Selection': selection, 'Amount': amount}, domain=domain)
@@ -793,6 +1489,16 @@ class nd:
     @classmethod
     def edge_paths_to_curves(cls, mesh=None, start_vertices=None, next_vertex_index=None):
         """ Node 'Edge Paths to Curves' (GeometryNodeEdgePathsToCurves)
+
+        Arguments
+        ---------
+        - mesh (Geometry) : socket 'Mesh' (Mesh)
+        - start_vertices (Boolean) : socket 'Start Vertices' (Start Vertices)
+        - next_vertex_index (Integer) : socket 'Next Vertex Index' (Next Vertex Index)
+
+        Returns
+        -------
+        - curves (Geometry)
         """
 
         node = Node('Edge Paths to Curves', {'Mesh': mesh, 'Start Vertices': start_vertices, 'Next Vertex Index': next_vertex_index})
@@ -802,6 +1508,15 @@ class nd:
     @classmethod
     def edge_paths_to_selection(cls, start_vertices=None, next_vertex_index=None):
         """ Node 'Edge Paths to Selection' (GeometryNodeEdgePathsToSelection)
+
+        Arguments
+        ---------
+        - start_vertices (Boolean) : socket 'Start Vertices' (Start Vertices)
+        - next_vertex_index (Integer) : socket 'Next Vertex Index' (Next Vertex Index)
+
+        Returns
+        -------
+        - selection (Boolean)
         """
 
         node = Node('Edge Paths to Selection', {'Start Vertices': start_vertices, 'Next Vertex Index': next_vertex_index})
@@ -811,6 +1526,14 @@ class nd:
     @classmethod
     def edges_of_corner(cls, corner_index=None):
         """ Node 'Edges of Corner' (GeometryNodeEdgesOfCorner)
+
+        Arguments
+        ---------
+        - corner_index (Integer) : socket 'Corner Index' (Corner Index)
+
+        Returns
+        -------
+        - Node: [next_edge_index (Integer), previous_edge_index (Integer)]
         """
 
         node = Node('Edges of Corner', {'Corner Index': corner_index})
@@ -820,6 +1543,16 @@ class nd:
     @classmethod
     def edges_of_vertex(cls, vertex_index=None, weights=None, sort_index=None):
         """ Node 'Edges of Vertex' (GeometryNodeEdgesOfVertex)
+
+        Arguments
+        ---------
+        - vertex_index (Integer) : socket 'Vertex Index' (Vertex Index)
+        - weights (Float) : socket 'Weights' (Weights)
+        - sort_index (Integer) : socket 'Sort Index' (Sort Index)
+
+        Returns
+        -------
+        - Node: [edge_index (Integer), total (Integer)]
         """
 
         node = Node('Edges of Vertex', {'Vertex Index': vertex_index, 'Weights': weights, 'Sort Index': sort_index})
@@ -829,6 +1562,14 @@ class nd:
     @classmethod
     def edges_to_face_groups(cls, boundary_edges=None):
         """ Node 'Edges to Face Groups' (GeometryNodeEdgesToFaceGroups)
+
+        Arguments
+        ---------
+        - boundary_edges (Boolean) : socket 'Boundary Edges' (Boundary Edges)
+
+        Returns
+        -------
+        - face_group_id (Integer)
         """
 
         node = Node('Edges to Face Groups', {'Boundary Edges': boundary_edges})
@@ -838,7 +1579,19 @@ class nd:
     @classmethod
     def extrude_mesh(cls, mesh=None, selection=None, offset=None, offset_scale=None, individual=None, mode='FACES'):
         """ Node 'Extrude Mesh' (GeometryNodeExtrudeMesh)
-        - mode in ('VERTICES', 'EDGES', 'FACES')
+
+        Arguments
+        ---------
+        - mesh (Geometry) : socket 'Mesh' (Mesh)
+        - selection (Boolean) : socket 'Selection' (Selection)
+        - offset (Vector) : socket 'Offset' (Offset)
+        - offset_scale (Float) : socket 'Offset Scale' (Offset Scale)
+        - individual (Boolean) : socket 'Individual' (Individual)
+        - mode (str): Node.mode in ('VERTICES', 'EDGES', 'FACES')
+
+        Returns
+        -------
+        - Node: [mesh (Geometry), top (Boolean), side (Boolean)]
         """
 
         node = Node('Extrude Mesh', {'Mesh': mesh, 'Selection': selection, 'Offset': offset, 'Offset Scale': offset_scale, 'Individual': individual}, mode=mode)
@@ -848,6 +1601,14 @@ class nd:
     @classmethod
     def face_of_corner(cls, corner_index=None):
         """ Node 'Face of Corner' (GeometryNodeFaceOfCorner)
+
+        Arguments
+        ---------
+        - corner_index (Integer) : socket 'Corner Index' (Corner Index)
+
+        Returns
+        -------
+        - Node: [face_index (Integer), index_in_face (Integer)]
         """
 
         node = Node('Face of Corner', {'Corner Index': corner_index})
@@ -857,8 +1618,17 @@ class nd:
     @classmethod
     def evaluate_at_index(cls, index=None, value=None, data_type='FLOAT', domain='POINT'):
         """ Node 'Evaluate at Index' (GeometryNodeFieldAtIndex)
-        - data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4')
-        - domain in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+
+        Arguments
+        ---------
+        - index (Integer) : socket 'Index' (Index)
+        - value (Float) : socket 'Value' (Value)
+        - data_type (str): Node.data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4')
+        - domain (str): Node.domain in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+
+        Returns
+        -------
+        - value (Float)
         """
 
         node = Node('Evaluate at Index', {'Index': index, 'Value': value}, data_type=data_type, domain=domain)
@@ -868,8 +1638,16 @@ class nd:
     @classmethod
     def evaluate_on_domain(cls, value=None, data_type='FLOAT', domain='POINT'):
         """ Node 'Evaluate on Domain' (GeometryNodeFieldOnDomain)
-        - data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4')
-        - domain in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+
+        Arguments
+        ---------
+        - value (Float) : socket 'Value' (Value)
+        - data_type (str): Node.data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4')
+        - domain (str): Node.domain in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+
+        Returns
+        -------
+        - value (Float)
         """
 
         node = Node('Evaluate on Domain', {'Value': value}, data_type=data_type, domain=domain)
@@ -879,7 +1657,16 @@ class nd:
     @classmethod
     def fill_curve(cls, curve=None, group_id=None, mode='TRIANGLES'):
         """ Node 'Fill Curve' (GeometryNodeFillCurve)
-        - mode in ('TRIANGLES', 'NGONS')
+
+        Arguments
+        ---------
+        - curve (Geometry) : socket 'Curve' (Curve)
+        - group_id (Integer) : socket 'Group ID' (Group ID)
+        - mode (str): Node.mode in ('TRIANGLES', 'NGONS')
+
+        Returns
+        -------
+        - mesh (Geometry)
         """
 
         node = Node('Fill Curve', {'Curve': curve, 'Group ID': group_id}, mode=mode)
@@ -889,7 +1676,17 @@ class nd:
     @classmethod
     def fillet_curve(cls, curve=None, radius=None, limit_radius=None, mode='BEZIER'):
         """ Node 'Fillet Curve' (GeometryNodeFilletCurve)
-        - mode in ('BEZIER', 'POLY')
+
+        Arguments
+        ---------
+        - curve (Geometry) : socket 'Curve' (Curve)
+        - radius (Float) : socket 'Radius' (Radius)
+        - limit_radius (Boolean) : socket 'Limit Radius' (Limit Radius)
+        - mode (str): Node.mode in ('BEZIER', 'POLY')
+
+        Returns
+        -------
+        - curve (Geometry)
         """
 
         node = Node('Fillet Curve', {'Curve': curve, 'Radius': radius, 'Limit Radius': limit_radius}, mode=mode)
@@ -899,6 +1696,15 @@ class nd:
     @classmethod
     def flip_faces(cls, mesh=None, selection=None):
         """ Node 'Flip Faces' (GeometryNodeFlipFaces)
+
+        Arguments
+        ---------
+        - mesh (Geometry) : socket 'Mesh' (Mesh)
+        - selection (Boolean) : socket 'Selection' (Selection)
+
+        Returns
+        -------
+        - mesh (Geometry)
         """
 
         node = Node('Flip Faces', {'Mesh': mesh, 'Selection': selection})
@@ -908,6 +1714,14 @@ class nd:
     @classmethod
     def geometry_to_instance(cls, geometry=None):
         """ Node 'Geometry to Instance' (GeometryNodeGeometryToInstance)
+
+        Arguments
+        ---------
+        - geometry (Geometry) : socket 'Geometry' (Geometry)
+
+        Returns
+        -------
+        - instances (Geometry)
         """
 
         node = Node('Geometry to Instance', {'Geometry': geometry})
@@ -917,7 +1731,17 @@ class nd:
     @classmethod
     def get_named_grid(cls, volume=None, name=None, remove=None, data_type='FLOAT'):
         """ Node 'Get Named Grid' (GeometryNodeGetNamedGrid)
-        - data_type in ('FLOAT', 'VECTOR')
+
+        Arguments
+        ---------
+        - volume (Geometry) : socket 'Volume' (Volume)
+        - name (String) : socket 'Name' (Name)
+        - remove (Boolean) : socket 'Remove' (Remove)
+        - data_type (str): Node.data_type in ('FLOAT', 'VECTOR')
+
+        Returns
+        -------
+        - Node: [volume (Geometry), grid (Float)]
         """
 
         node = Node('Get Named Grid', {'Volume': volume, 'Name': name, 'Remove': remove}, data_type=data_type)
@@ -927,6 +1751,16 @@ class nd:
     @classmethod
     def grid_to_mesh(cls, grid=None, threshold=None, adaptivity=None):
         """ Node 'Grid to Mesh' (GeometryNodeGridToMesh)
+
+        Arguments
+        ---------
+        - grid (Float) : socket 'Grid' (Grid)
+        - threshold (Float) : socket 'Threshold' (Threshold)
+        - adaptivity (Float) : socket 'Adaptivity' (Adaptivity)
+
+        Returns
+        -------
+        - mesh (Geometry)
         """
 
         node = Node('Grid to Mesh', {'Grid': grid, 'Threshold': threshold, 'Adaptivity': adaptivity})
@@ -934,9 +1768,12 @@ class nd:
 
 
     @classmethod
-    @property
     def group(cls, node_tree=None):
         """ Node 'Group' (GeometryNodeGroup)
+
+        Arguments
+        ---------
+        - node_tree (NoneType): Node.node_tree
         """
 
         node = Node('Group', node_tree=node_tree)
@@ -946,6 +1783,15 @@ class nd:
     @classmethod
     def image_info(cls, image=None, frame=None):
         """ Node 'Image Info' (GeometryNodeImageInfo)
+
+        Arguments
+        ---------
+        - image (Image) : socket 'Image' (Image)
+        - frame (Integer) : socket 'Frame' (Frame)
+
+        Returns
+        -------
+        - Node: [width (Integer), height (Integer), has_alpha (Boolean), frame_count (Integer), fps (Float)]
         """
 
         node = Node('Image Info', {'Image': image, 'Frame': frame})
@@ -955,8 +1801,18 @@ class nd:
     @classmethod
     def image_texture(cls, image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear'):
         """ Node 'Image Texture' (GeometryNodeImageTexture)
-        - extension in ('REPEAT', 'EXTEND', 'CLIP', 'MIRROR')
-        - interpolation in ('Linear', 'Closest', 'Cubic')
+
+        Arguments
+        ---------
+        - image (Image) : socket 'Image' (Image)
+        - vector (Vector) : socket 'Vector' (Vector)
+        - frame (Integer) : socket 'Frame' (Frame)
+        - extension (str): Node.extension in ('REPEAT', 'EXTEND', 'CLIP', 'MIRROR')
+        - interpolation (str): Node.interpolation in ('Linear', 'Closest', 'Cubic')
+
+        Returns
+        -------
+        - Node: [color (Color), alpha (Float)]
         """
 
         node = Node('Image Texture', {'Image': image, 'Vector': vector, 'Frame': frame}, extension=extension, interpolation=interpolation)
@@ -966,6 +1822,15 @@ class nd:
     @classmethod
     def index_of_nearest(cls, position=None, group_id=None):
         """ Node 'Index of Nearest' (GeometryNodeIndexOfNearest)
+
+        Arguments
+        ---------
+        - position (Vector) : socket 'Position' (Position)
+        - group_id (Integer) : socket 'Group ID' (Group ID)
+
+        Returns
+        -------
+        - Node: [index (Integer), has_neighbor (Boolean)]
         """
 
         node = Node('Index of Nearest', {'Position': position, 'Group ID': group_id})
@@ -975,7 +1840,18 @@ class nd:
     @classmethod
     def index_switch(cls, index=None, _0=None, _1=None, data_type='GEOMETRY', index_switch_items=None):
         """ Node 'Index Switch' (GeometryNodeIndexSwitch)
-        - data_type in ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'RGBA', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL')
+
+        Arguments
+        ---------
+        - index (Integer) : socket 'Index' (Index)
+        - _0 (Geometry) : socket '0' (Item_0)
+        - _1 (Geometry) : socket '1' (Item_1)
+        - data_type (str): Node.data_type in ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'RGBA', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL')
+        - index_switch_items (bpy_prop_collection): Node.index_switch_items
+
+        Returns
+        -------
+        - output (Geometry)
         """
 
         node = Node('Index Switch', {'Index': index, 'Item_0': _0, 'Item_1': _1}, data_type=data_type, index_switch_items=index_switch_items)
@@ -986,6 +1862,10 @@ class nd:
     @property
     def active_camera(cls):
         """ Node 'Active Camera' (GeometryNodeInputActiveCamera)
+
+        Returns
+        -------
+        - active_camera (Object)
         """
 
         node = Node('Active Camera')
@@ -995,6 +1875,14 @@ class nd:
     @classmethod
     def curve_handle_positions(cls, relative=None):
         """ Node 'Curve Handle Positions' (GeometryNodeInputCurveHandlePositions)
+
+        Arguments
+        ---------
+        - relative (Boolean) : socket 'Relative' (Relative)
+
+        Returns
+        -------
+        - Node: [left (Vector), right (Vector)]
         """
 
         node = Node('Curve Handle Positions', {'Relative': relative})
@@ -1005,6 +1893,10 @@ class nd:
     @property
     def curve_tilt(cls):
         """ Node 'Curve Tilt' (GeometryNodeInputCurveTilt)
+
+        Returns
+        -------
+        - tilt (Float)
         """
 
         node = Node('Curve Tilt')
@@ -1015,6 +1907,10 @@ class nd:
     @property
     def is_edge_smooth(cls):
         """ Node 'Is Edge Smooth' (GeometryNodeInputEdgeSmooth)
+
+        Returns
+        -------
+        - smooth (Boolean)
         """
 
         node = Node('Is Edge Smooth')
@@ -1025,6 +1921,10 @@ class nd:
     @property
     def id(cls):
         """ Node 'ID' (GeometryNodeInputID)
+
+        Returns
+        -------
+        - id (Integer)
         """
 
         node = Node('ID')
@@ -1032,9 +1932,16 @@ class nd:
 
 
     @classmethod
-    @property
     def image(cls, image=None):
         """ Node 'Image' (GeometryNodeInputImage)
+
+        Arguments
+        ---------
+        - image (NoneType): Node.image
+
+        Returns
+        -------
+        - image (Image)
         """
 
         node = Node('Image', image=image)
@@ -1045,6 +1952,10 @@ class nd:
     @property
     def index(cls):
         """ Node 'Index' (GeometryNodeInputIndex)
+
+        Returns
+        -------
+        - index (Integer)
         """
 
         node = Node('Index')
@@ -1055,6 +1966,10 @@ class nd:
     @property
     def instance_rotation(cls):
         """ Node 'Instance Rotation' (GeometryNodeInputInstanceRotation)
+
+        Returns
+        -------
+        - rotation (Rotation)
         """
 
         node = Node('Instance Rotation')
@@ -1065,6 +1980,10 @@ class nd:
     @property
     def instance_scale(cls):
         """ Node 'Instance Scale' (GeometryNodeInputInstanceScale)
+
+        Returns
+        -------
+        - scale (Vector)
         """
 
         node = Node('Instance Scale')
@@ -1072,9 +1991,16 @@ class nd:
 
 
     @classmethod
-    @property
     def material(cls, material=None):
         """ Node 'Material' (GeometryNodeInputMaterial)
+
+        Arguments
+        ---------
+        - material (NoneType): Node.material
+
+        Returns
+        -------
+        - material (Material)
         """
 
         node = Node('Material', material=material)
@@ -1085,6 +2011,10 @@ class nd:
     @property
     def material_index(cls):
         """ Node 'Material Index' (GeometryNodeInputMaterialIndex)
+
+        Returns
+        -------
+        - material_index (Integer)
         """
 
         node = Node('Material Index')
@@ -1095,6 +2025,10 @@ class nd:
     @property
     def edge_angle(cls):
         """ Node 'Edge Angle' (GeometryNodeInputMeshEdgeAngle)
+
+        Returns
+        -------
+        - Node: [unsigned_angle (Float), signed_angle (Float)]
         """
 
         node = Node('Edge Angle')
@@ -1105,6 +2039,10 @@ class nd:
     @property
     def edge_neighbors(cls):
         """ Node 'Edge Neighbors' (GeometryNodeInputMeshEdgeNeighbors)
+
+        Returns
+        -------
+        - face_count (Integer)
         """
 
         node = Node('Edge Neighbors')
@@ -1115,6 +2053,10 @@ class nd:
     @property
     def edge_vertices(cls):
         """ Node 'Edge Vertices' (GeometryNodeInputMeshEdgeVertices)
+
+        Returns
+        -------
+        - Node: [vertex_index_1 (Integer), vertex_index_2 (Integer), position_1 (Vector), position_2 (Vector)]
         """
 
         node = Node('Edge Vertices')
@@ -1125,6 +2067,10 @@ class nd:
     @property
     def face_area(cls):
         """ Node 'Face Area' (GeometryNodeInputMeshFaceArea)
+
+        Returns
+        -------
+        - area (Float)
         """
 
         node = Node('Face Area')
@@ -1134,6 +2080,14 @@ class nd:
     @classmethod
     def is_face_planar(cls, threshold=None):
         """ Node 'Is Face Planar' (GeometryNodeInputMeshFaceIsPlanar)
+
+        Arguments
+        ---------
+        - threshold (Float) : socket 'Threshold' (Threshold)
+
+        Returns
+        -------
+        - planar (Boolean)
         """
 
         node = Node('Is Face Planar', {'Threshold': threshold})
@@ -1144,6 +2098,10 @@ class nd:
     @property
     def face_neighbors(cls):
         """ Node 'Face Neighbors' (GeometryNodeInputMeshFaceNeighbors)
+
+        Returns
+        -------
+        - Node: [vertex_count (Integer), face_count (Integer)]
         """
 
         node = Node('Face Neighbors')
@@ -1154,6 +2112,10 @@ class nd:
     @property
     def mesh_island(cls):
         """ Node 'Mesh Island' (GeometryNodeInputMeshIsland)
+
+        Returns
+        -------
+        - Node: [island_index (Integer), island_count (Integer)]
         """
 
         node = Node('Mesh Island')
@@ -1164,6 +2126,10 @@ class nd:
     @property
     def vertex_neighbors(cls):
         """ Node 'Vertex Neighbors' (GeometryNodeInputMeshVertexNeighbors)
+
+        Returns
+        -------
+        - Node: [vertex_count (Integer), face_count (Integer)]
         """
 
         node = Node('Vertex Neighbors')
@@ -1173,7 +2139,15 @@ class nd:
     @classmethod
     def named_attribute(cls, name=None, data_type='FLOAT'):
         """ Node 'Named Attribute' (GeometryNodeInputNamedAttribute)
-        - data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4')
+
+        Arguments
+        ---------
+        - name (String) : socket 'Name' (Name)
+        - data_type (str): Node.data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4')
+
+        Returns
+        -------
+        - Node: [attribute (Float), exists (Boolean)]
         """
 
         node = Node('Named Attribute', {'Name': name}, data_type=data_type)
@@ -1183,6 +2157,14 @@ class nd:
     @classmethod
     def named_layer_selection(cls, name=None):
         """ Node 'Named Layer Selection' (GeometryNodeInputNamedLayerSelection)
+
+        Arguments
+        ---------
+        - name (String) : socket 'Name' (Name)
+
+        Returns
+        -------
+        - selection (Boolean)
         """
 
         node = Node('Named Layer Selection', {'Name': name})
@@ -1193,6 +2175,10 @@ class nd:
     @property
     def normal(cls):
         """ Node 'Normal' (GeometryNodeInputNormal)
+
+        Returns
+        -------
+        - normal (Vector)
         """
 
         node = Node('Normal')
@@ -1203,6 +2189,10 @@ class nd:
     @property
     def position(cls):
         """ Node 'Position' (GeometryNodeInputPosition)
+
+        Returns
+        -------
+        - position (Vector)
         """
 
         node = Node('Position')
@@ -1213,6 +2203,10 @@ class nd:
     @property
     def radius(cls):
         """ Node 'Radius' (GeometryNodeInputRadius)
+
+        Returns
+        -------
+        - radius (Float)
         """
 
         node = Node('Radius')
@@ -1223,6 +2217,10 @@ class nd:
     @property
     def scene_time(cls):
         """ Node 'Scene Time' (GeometryNodeInputSceneTime)
+
+        Returns
+        -------
+        - Node: [seconds (Float), frame (Float)]
         """
 
         node = Node('Scene Time')
@@ -1233,6 +2231,10 @@ class nd:
     @property
     def is_face_smooth(cls):
         """ Node 'Is Face Smooth' (GeometryNodeInputShadeSmooth)
+
+        Returns
+        -------
+        - smooth (Boolean)
         """
 
         node = Node('Is Face Smooth')
@@ -1242,6 +2244,15 @@ class nd:
     @classmethod
     def shortest_edge_paths(cls, end_vertex=None, edge_cost=None):
         """ Node 'Shortest Edge Paths' (GeometryNodeInputShortestEdgePaths)
+
+        Arguments
+        ---------
+        - end_vertex (Boolean) : socket 'End Vertex' (End Vertex)
+        - edge_cost (Float) : socket 'Edge Cost' (Edge Cost)
+
+        Returns
+        -------
+        - Node: [next_vertex_index (Integer), total_cost (Float)]
         """
 
         node = Node('Shortest Edge Paths', {'End Vertex': end_vertex, 'Edge Cost': edge_cost})
@@ -1252,6 +2263,10 @@ class nd:
     @property
     def is_spline_cyclic(cls):
         """ Node 'Is Spline Cyclic' (GeometryNodeInputSplineCyclic)
+
+        Returns
+        -------
+        - cyclic (Boolean)
         """
 
         node = Node('Is Spline Cyclic')
@@ -1262,6 +2277,10 @@ class nd:
     @property
     def spline_resolution(cls):
         """ Node 'Spline Resolution' (GeometryNodeInputSplineResolution)
+
+        Returns
+        -------
+        - resolution (Integer)
         """
 
         node = Node('Spline Resolution')
@@ -1272,6 +2291,10 @@ class nd:
     @property
     def curve_tangent(cls):
         """ Node 'Curve Tangent' (GeometryNodeInputTangent)
+
+        Returns
+        -------
+        - tangent (Vector)
         """
 
         node = Node('Curve Tangent')
@@ -1281,6 +2304,20 @@ class nd:
     @classmethod
     def instance_on_points(cls, points=None, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
         """ Node 'Instance on Points' (GeometryNodeInstanceOnPoints)
+
+        Arguments
+        ---------
+        - points (Geometry) : socket 'Points' (Points)
+        - selection (Boolean) : socket 'Selection' (Selection)
+        - instance (Geometry) : socket 'Instance' (Instance)
+        - pick_instance (Boolean) : socket 'Pick Instance' (Pick Instance)
+        - instance_index (Integer) : socket 'Instance Index' (Instance Index)
+        - rotation (Rotation) : socket 'Rotation' (Rotation)
+        - scale (Vector) : socket 'Scale' (Scale)
+
+        Returns
+        -------
+        - instances (Geometry)
         """
 
         node = Node('Instance on Points', {'Points': points, 'Selection': selection, 'Instance': instance, 'Pick Instance': pick_instance, 'Instance Index': instance_index, 'Rotation': rotation, 'Scale': scale})
@@ -1291,6 +2328,10 @@ class nd:
     @property
     def instance_transform(cls):
         """ Node 'Instance Transform' (GeometryNodeInstanceTransform)
+
+        Returns
+        -------
+        - transform (Matrix)
         """
 
         node = Node('Instance Transform')
@@ -1300,6 +2341,17 @@ class nd:
     @classmethod
     def instances_to_points(cls, instances=None, selection=None, position=None, radius=None):
         """ Node 'Instances to Points' (GeometryNodeInstancesToPoints)
+
+        Arguments
+        ---------
+        - instances (Geometry) : socket 'Instances' (Instances)
+        - selection (Boolean) : socket 'Selection' (Selection)
+        - position (Vector) : socket 'Position' (Position)
+        - radius (Float) : socket 'Radius' (Radius)
+
+        Returns
+        -------
+        - points (Geometry)
         """
 
         node = Node('Instances to Points', {'Instances': instances, 'Selection': selection, 'Position': position, 'Radius': radius})
@@ -1309,6 +2361,20 @@ class nd:
     @classmethod
     def interpolate_curves(cls, guide_curves=None, guide_up=None, guide_group_id=None, points=None, point_up=None, point_group_id=None, max_neighbors=None):
         """ Node 'Interpolate Curves' (GeometryNodeInterpolateCurves)
+
+        Arguments
+        ---------
+        - guide_curves (Geometry) : socket 'Guide Curves' (Guide Curves)
+        - guide_up (Vector) : socket 'Guide Up' (Guide Up)
+        - guide_group_id (Integer) : socket 'Guide Group ID' (Guide Group ID)
+        - points (Geometry) : socket 'Points' (Points)
+        - point_up (Vector) : socket 'Point Up' (Point Up)
+        - point_group_id (Integer) : socket 'Point Group ID' (Point Group ID)
+        - max_neighbors (Integer) : socket 'Max Neighbors' (Max Neighbors)
+
+        Returns
+        -------
+        - Node: [curves (Geometry), closest_index (Integer), closest_weight (Float)]
         """
 
         node = Node('Interpolate Curves', {'Guide Curves': guide_curves, 'Guide Up': guide_up, 'Guide Group ID': guide_group_id, 'Points': points, 'Point Up': point_up, 'Point Group ID': point_group_id, 'Max Neighbors': max_neighbors})
@@ -1319,6 +2385,10 @@ class nd:
     @property
     def is_viewport(cls):
         """ Node 'Is Viewport' (GeometryNodeIsViewport)
+
+        Returns
+        -------
+        - is_viewport (Boolean)
         """
 
         node = Node('Is Viewport')
@@ -1328,6 +2398,14 @@ class nd:
     @classmethod
     def join_geometry(cls, geometry=None):
         """ Node 'Join Geometry' (GeometryNodeJoinGeometry)
+
+        Arguments
+        ---------
+        - geometry (Geometry) : socket 'Geometry' (Geometry)
+
+        Returns
+        -------
+        - geometry (Geometry)
         """
 
         node = Node('Join Geometry', {'Geometry': geometry})
@@ -1337,6 +2415,14 @@ class nd:
     @classmethod
     def material_selection(cls, material=None):
         """ Node 'Material Selection' (GeometryNodeMaterialSelection)
+
+        Arguments
+        ---------
+        - material (Material) : socket 'Material' (Material)
+
+        Returns
+        -------
+        - selection (Boolean)
         """
 
         node = Node('Material Selection', {'Material': material})
@@ -1346,7 +2432,21 @@ class nd:
     @classmethod
     def menu_switch(cls, menu=None, a=None, b=None, active_index=1, active_item=None, data_type='GEOMETRY', enum_definition=None, enum_items=None):
         """ Node 'Menu Switch' (GeometryNodeMenuSwitch)
-        - data_type in ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'ROTATION', 'MATRIX', 'STRING', 'RGBA', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL')
+
+        Arguments
+        ---------
+        - menu (Menu) : socket 'Menu' (Menu)
+        - a (Geometry) : socket 'A' (Item_0)
+        - b (Geometry) : socket 'B' (Item_1)
+        - active_index (int): Node.active_index
+        - active_item (NodeEnumItem): Node.active_item
+        - data_type (str): Node.data_type in ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'ROTATION', 'MATRIX', 'STRING', 'RGBA', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL')
+        - enum_definition (GeometryNodeMenuSwitch): Node.enum_definition
+        - enum_items (bpy_prop_collection): Node.enum_items
+
+        Returns
+        -------
+        - output (Geometry)
         """
 
         node = Node('Menu Switch', {'Menu': menu, 'Item_0': a, 'Item_1': b}, active_index=active_index, active_item=active_item, data_type=data_type, enum_definition=enum_definition, enum_items=enum_items)
@@ -1356,7 +2456,17 @@ class nd:
     @classmethod
     def merge_by_distance(cls, geometry=None, selection=None, distance=None, mode='ALL'):
         """ Node 'Merge by Distance' (GeometryNodeMergeByDistance)
-        - mode in ('ALL', 'CONNECTED')
+
+        Arguments
+        ---------
+        - geometry (Geometry) : socket 'Geometry' (Geometry)
+        - selection (Boolean) : socket 'Selection' (Selection)
+        - distance (Float) : socket 'Distance' (Distance)
+        - mode (str): Node.mode in ('ALL', 'CONNECTED')
+
+        Returns
+        -------
+        - geometry (Geometry)
         """
 
         node = Node('Merge by Distance', {'Geometry': geometry, 'Selection': selection, 'Distance': distance}, mode=mode)
@@ -1366,8 +2476,19 @@ class nd:
     @classmethod
     def mesh_boolean(cls, mesh_1=None, mesh_2=None, self_intersection=None, hole_tolerant=None, operation='DIFFERENCE', solver='FLOAT'):
         """ Node 'Mesh Boolean' (GeometryNodeMeshBoolean)
-        - operation in ('INTERSECT', 'UNION', 'DIFFERENCE')
-        - solver in ('EXACT', 'FLOAT')
+
+        Arguments
+        ---------
+        - mesh_1 (Geometry) : socket 'Mesh 1' (Mesh 1)
+        - mesh_2 (Geometry) : socket 'Mesh 2' (Mesh 2)
+        - self_intersection (Boolean) : socket 'Self Intersection' (Self Intersection)
+        - hole_tolerant (Boolean) : socket 'Hole Tolerant' (Hole Tolerant)
+        - operation (str): Node.operation in ('INTERSECT', 'UNION', 'DIFFERENCE')
+        - solver (str): Node.solver in ('EXACT', 'FLOAT')
+
+        Returns
+        -------
+        - Node: [mesh (Geometry), intersecting_edges (Boolean)]
         """
 
         node = Node('Mesh Boolean', {'Mesh 1': mesh_1, 'Mesh 2': mesh_2, 'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, operation=operation, solver=solver)
@@ -1377,7 +2498,16 @@ class nd:
     @classmethod
     def mesh_circle(cls, vertices=None, radius=None, fill_type='NONE'):
         """ Node 'Mesh Circle' (GeometryNodeMeshCircle)
-        - fill_type in ('NONE', 'NGON', 'TRIANGLE_FAN')
+
+        Arguments
+        ---------
+        - vertices (Integer) : socket 'Vertices' (Vertices)
+        - radius (Float) : socket 'Radius' (Radius)
+        - fill_type (str): Node.fill_type in ('NONE', 'NGON', 'TRIANGLE_FAN')
+
+        Returns
+        -------
+        - mesh (Geometry)
         """
 
         node = Node('Mesh Circle', {'Vertices': vertices, 'Radius': radius}, fill_type=fill_type)
@@ -1387,7 +2517,20 @@ class nd:
     @classmethod
     def cone(cls, vertices=None, side_segments=None, fill_segments=None, radius_top=None, radius_bottom=None, depth=None, fill_type='NGON'):
         """ Node 'Cone' (GeometryNodeMeshCone)
-        - fill_type in ('NONE', 'NGON', 'TRIANGLE_FAN')
+
+        Arguments
+        ---------
+        - vertices (Integer) : socket 'Vertices' (Vertices)
+        - side_segments (Integer) : socket 'Side Segments' (Side Segments)
+        - fill_segments (Integer) : socket 'Fill Segments' (Fill Segments)
+        - radius_top (Float) : socket 'Radius Top' (Radius Top)
+        - radius_bottom (Float) : socket 'Radius Bottom' (Radius Bottom)
+        - depth (Float) : socket 'Depth' (Depth)
+        - fill_type (str): Node.fill_type in ('NONE', 'NGON', 'TRIANGLE_FAN')
+
+        Returns
+        -------
+        - Node: [mesh (Geometry), top (Boolean), bottom (Boolean), side (Boolean), uv_map (Vector)]
         """
 
         node = Node('Cone', {'Vertices': vertices, 'Side Segments': side_segments, 'Fill Segments': fill_segments, 'Radius Top': radius_top, 'Radius Bottom': radius_bottom, 'Depth': depth}, fill_type=fill_type)
@@ -1397,6 +2540,17 @@ class nd:
     @classmethod
     def cube(cls, size=None, vertices_x=None, vertices_y=None, vertices_z=None):
         """ Node 'Cube' (GeometryNodeMeshCube)
+
+        Arguments
+        ---------
+        - size (Vector) : socket 'Size' (Size)
+        - vertices_x (Integer) : socket 'Vertices X' (Vertices X)
+        - vertices_y (Integer) : socket 'Vertices Y' (Vertices Y)
+        - vertices_z (Integer) : socket 'Vertices Z' (Vertices Z)
+
+        Returns
+        -------
+        - Node: [mesh (Geometry), uv_map (Vector)]
         """
 
         node = Node('Cube', {'Size': size, 'Vertices X': vertices_x, 'Vertices Y': vertices_y, 'Vertices Z': vertices_z})
@@ -1406,7 +2560,19 @@ class nd:
     @classmethod
     def cylinder(cls, vertices=None, side_segments=None, fill_segments=None, radius=None, depth=None, fill_type='NGON'):
         """ Node 'Cylinder' (GeometryNodeMeshCylinder)
-        - fill_type in ('NONE', 'NGON', 'TRIANGLE_FAN')
+
+        Arguments
+        ---------
+        - vertices (Integer) : socket 'Vertices' (Vertices)
+        - side_segments (Integer) : socket 'Side Segments' (Side Segments)
+        - fill_segments (Integer) : socket 'Fill Segments' (Fill Segments)
+        - radius (Float) : socket 'Radius' (Radius)
+        - depth (Float) : socket 'Depth' (Depth)
+        - fill_type (str): Node.fill_type in ('NONE', 'NGON', 'TRIANGLE_FAN')
+
+        Returns
+        -------
+        - Node: [mesh (Geometry), top (Boolean), side (Boolean), bottom (Boolean), uv_map (Vector)]
         """
 
         node = Node('Cylinder', {'Vertices': vertices, 'Side Segments': side_segments, 'Fill Segments': fill_segments, 'Radius': radius, 'Depth': depth}, fill_type=fill_type)
@@ -1416,6 +2582,14 @@ class nd:
     @classmethod
     def face_group_boundaries(cls, face_group_id=None):
         """ Node 'Face Group Boundaries' (GeometryNodeMeshFaceSetBoundaries)
+
+        Arguments
+        ---------
+        - face_group_id (Integer) : socket 'Face Group ID' (Face Set)
+
+        Returns
+        -------
+        - boundary_edges (Boolean)
         """
 
         node = Node('Face Group Boundaries', {'Face Set': face_group_id})
@@ -1425,6 +2599,17 @@ class nd:
     @classmethod
     def grid(cls, size_x=None, size_y=None, vertices_x=None, vertices_y=None):
         """ Node 'Grid' (GeometryNodeMeshGrid)
+
+        Arguments
+        ---------
+        - size_x (Float) : socket 'Size X' (Size X)
+        - size_y (Float) : socket 'Size Y' (Size Y)
+        - vertices_x (Integer) : socket 'Vertices X' (Vertices X)
+        - vertices_y (Integer) : socket 'Vertices Y' (Vertices Y)
+
+        Returns
+        -------
+        - Node: [mesh (Geometry), uv_map (Vector)]
         """
 
         node = Node('Grid', {'Size X': size_x, 'Size Y': size_y, 'Vertices X': vertices_x, 'Vertices Y': vertices_y})
@@ -1434,6 +2619,15 @@ class nd:
     @classmethod
     def ico_sphere(cls, radius=None, subdivisions=None):
         """ Node 'Ico Sphere' (GeometryNodeMeshIcoSphere)
+
+        Arguments
+        ---------
+        - radius (Float) : socket 'Radius' (Radius)
+        - subdivisions (Integer) : socket 'Subdivisions' (Subdivisions)
+
+        Returns
+        -------
+        - Node: [mesh (Geometry), uv_map (Vector)]
         """
 
         node = Node('Ico Sphere', {'Radius': radius, 'Subdivisions': subdivisions})
@@ -1443,8 +2637,18 @@ class nd:
     @classmethod
     def mesh_line(cls, count=None, start_location=None, offset=None, count_mode='TOTAL', mode='OFFSET'):
         """ Node 'Mesh Line' (GeometryNodeMeshLine)
-        - count_mode in ('TOTAL', 'RESOLUTION')
-        - mode in ('OFFSET', 'END_POINTS')
+
+        Arguments
+        ---------
+        - count (Integer) : socket 'Count' (Count)
+        - start_location (Vector) : socket 'Start Location' (Start Location)
+        - offset (Vector) : socket 'Offset' (Offset)
+        - count_mode (str): Node.count_mode in ('TOTAL', 'RESOLUTION')
+        - mode (str): Node.mode in ('OFFSET', 'END_POINTS')
+
+        Returns
+        -------
+        - mesh (Geometry)
         """
 
         node = Node('Mesh Line', {'Count': count, 'Start Location': start_location, 'Offset': offset}, count_mode=count_mode, mode=mode)
@@ -1454,6 +2658,15 @@ class nd:
     @classmethod
     def mesh_to_curve(cls, mesh=None, selection=None):
         """ Node 'Mesh to Curve' (GeometryNodeMeshToCurve)
+
+        Arguments
+        ---------
+        - mesh (Geometry) : socket 'Mesh' (Mesh)
+        - selection (Boolean) : socket 'Selection' (Selection)
+
+        Returns
+        -------
+        - curve (Geometry)
         """
 
         node = Node('Mesh to Curve', {'Mesh': mesh, 'Selection': selection})
@@ -1463,6 +2676,17 @@ class nd:
     @classmethod
     def mesh_to_density_grid(cls, mesh=None, density=None, voxel_size=None, gradient_width=None):
         """ Node 'Mesh to Density Grid' (GeometryNodeMeshToDensityGrid)
+
+        Arguments
+        ---------
+        - mesh (Geometry) : socket 'Mesh' (Mesh)
+        - density (Float) : socket 'Density' (Density)
+        - voxel_size (Float) : socket 'Voxel Size' (Voxel Size)
+        - gradient_width (Float) : socket 'Gradient Width' (Gradient Width)
+
+        Returns
+        -------
+        - density_grid (Float)
         """
 
         node = Node('Mesh to Density Grid', {'Mesh': mesh, 'Density': density, 'Voxel Size': voxel_size, 'Gradient Width': gradient_width})
@@ -1472,7 +2696,18 @@ class nd:
     @classmethod
     def mesh_to_points(cls, mesh=None, selection=None, position=None, radius=None, mode='VERTICES'):
         """ Node 'Mesh to Points' (GeometryNodeMeshToPoints)
-        - mode in ('VERTICES', 'EDGES', 'FACES', 'CORNERS')
+
+        Arguments
+        ---------
+        - mesh (Geometry) : socket 'Mesh' (Mesh)
+        - selection (Boolean) : socket 'Selection' (Selection)
+        - position (Vector) : socket 'Position' (Position)
+        - radius (Float) : socket 'Radius' (Radius)
+        - mode (str): Node.mode in ('VERTICES', 'EDGES', 'FACES', 'CORNERS')
+
+        Returns
+        -------
+        - points (Geometry)
         """
 
         node = Node('Mesh to Points', {'Mesh': mesh, 'Selection': selection, 'Position': position, 'Radius': radius}, mode=mode)
@@ -1482,6 +2717,16 @@ class nd:
     @classmethod
     def mesh_to_sdf_grid(cls, mesh=None, voxel_size=None, band_width=None):
         """ Node 'Mesh to SDF Grid' (GeometryNodeMeshToSDFGrid)
+
+        Arguments
+        ---------
+        - mesh (Geometry) : socket 'Mesh' (Mesh)
+        - voxel_size (Float) : socket 'Voxel Size' (Voxel Size)
+        - band_width (Integer) : socket 'Band Width' (Band Width)
+
+        Returns
+        -------
+        - sdf_grid (Float)
         """
 
         node = Node('Mesh to SDF Grid', {'Mesh': mesh, 'Voxel Size': voxel_size, 'Band Width': band_width})
@@ -1491,7 +2736,18 @@ class nd:
     @classmethod
     def mesh_to_volume(cls, mesh=None, density=None, voxel_amount=None, interior_band_width=None, resolution_mode='VOXEL_AMOUNT'):
         """ Node 'Mesh to Volume' (GeometryNodeMeshToVolume)
-        - resolution_mode in ('VOXEL_AMOUNT', 'VOXEL_SIZE')
+
+        Arguments
+        ---------
+        - mesh (Geometry) : socket 'Mesh' (Mesh)
+        - density (Float) : socket 'Density' (Density)
+        - voxel_amount (Float) : socket 'Voxel Amount' (Voxel Amount)
+        - interior_band_width (Float) : socket 'Interior Band Width' (Interior Band Width)
+        - resolution_mode (str): Node.resolution_mode in ('VOXEL_AMOUNT', 'VOXEL_SIZE')
+
+        Returns
+        -------
+        - volume (Geometry)
         """
 
         node = Node('Mesh to Volume', {'Mesh': mesh, 'Density': density, 'Voxel Amount': voxel_amount, 'Interior Band Width': interior_band_width}, resolution_mode=resolution_mode)
@@ -1501,6 +2757,16 @@ class nd:
     @classmethod
     def uv_sphere(cls, segments=None, rings=None, radius=None):
         """ Node 'UV Sphere' (GeometryNodeMeshUVSphere)
+
+        Arguments
+        ---------
+        - segments (Integer) : socket 'Segments' (Segments)
+        - rings (Integer) : socket 'Rings' (Rings)
+        - radius (Float) : socket 'Radius' (Radius)
+
+        Returns
+        -------
+        - Node: [mesh (Geometry), uv_map (Vector)]
         """
 
         node = Node('UV Sphere', {'Segments': segments, 'Rings': rings, 'Radius': radius})
@@ -1510,7 +2776,16 @@ class nd:
     @classmethod
     def object_info(cls, object=None, as_instance=None, transform_space='ORIGINAL'):
         """ Node 'Object Info' (GeometryNodeObjectInfo)
-        - transform_space in ('ORIGINAL', 'RELATIVE')
+
+        Arguments
+        ---------
+        - object (Object) : socket 'Object' (Object)
+        - as_instance (Boolean) : socket 'As Instance' (As Instance)
+        - transform_space (str): Node.transform_space in ('ORIGINAL', 'RELATIVE')
+
+        Returns
+        -------
+        - Node: [transform (Matrix), location (Vector), rotation (Rotation), scale (Vector), geometry (Geometry)]
         """
 
         node = Node('Object Info', {'Object': object, 'As Instance': as_instance}, transform_space=transform_space)
@@ -1520,6 +2795,15 @@ class nd:
     @classmethod
     def offset_corner_in_face(cls, corner_index=None, offset=None):
         """ Node 'Offset Corner in Face' (GeometryNodeOffsetCornerInFace)
+
+        Arguments
+        ---------
+        - corner_index (Integer) : socket 'Corner Index' (Corner Index)
+        - offset (Integer) : socket 'Offset' (Offset)
+
+        Returns
+        -------
+        - corner_index (Integer)
         """
 
         node = Node('Offset Corner in Face', {'Corner Index': corner_index, 'Offset': offset})
@@ -1529,6 +2813,15 @@ class nd:
     @classmethod
     def offset_point_in_curve(cls, point_index=None, offset=None):
         """ Node 'Offset Point in Curve' (GeometryNodeOffsetPointInCurve)
+
+        Arguments
+        ---------
+        - point_index (Integer) : socket 'Point Index' (Point Index)
+        - offset (Integer) : socket 'Offset' (Offset)
+
+        Returns
+        -------
+        - Node: [is_valid_offset (Boolean), point_index (Integer)]
         """
 
         node = Node('Offset Point in Curve', {'Point Index': point_index, 'Offset': offset})
@@ -1538,6 +2831,16 @@ class nd:
     @classmethod
     def points(cls, count=None, position=None, radius=None):
         """ Node 'Points' (GeometryNodePoints)
+
+        Arguments
+        ---------
+        - count (Integer) : socket 'Count' (Count)
+        - position (Vector) : socket 'Position' (Position)
+        - radius (Float) : socket 'Radius' (Radius)
+
+        Returns
+        -------
+        - points (Geometry)
         """
 
         node = Node('Points', {'Count': count, 'Position': position, 'Radius': radius})
@@ -1547,6 +2850,16 @@ class nd:
     @classmethod
     def points_of_curve(cls, curve_index=None, weights=None, sort_index=None):
         """ Node 'Points of Curve' (GeometryNodePointsOfCurve)
+
+        Arguments
+        ---------
+        - curve_index (Integer) : socket 'Curve Index' (Curve Index)
+        - weights (Float) : socket 'Weights' (Weights)
+        - sort_index (Integer) : socket 'Sort Index' (Sort Index)
+
+        Returns
+        -------
+        - Node: [point_index (Integer), total (Integer)]
         """
 
         node = Node('Points of Curve', {'Curve Index': curve_index, 'Weights': weights, 'Sort Index': sort_index})
@@ -1556,6 +2869,16 @@ class nd:
     @classmethod
     def points_to_curves(cls, points=None, curve_group_id=None, weight=None):
         """ Node 'Points to Curves' (GeometryNodePointsToCurves)
+
+        Arguments
+        ---------
+        - points (Geometry) : socket 'Points' (Points)
+        - curve_group_id (Integer) : socket 'Curve Group ID' (Curve Group ID)
+        - weight (Float) : socket 'Weight' (Weight)
+
+        Returns
+        -------
+        - curves (Geometry)
         """
 
         node = Node('Points to Curves', {'Points': points, 'Curve Group ID': curve_group_id, 'Weight': weight})
@@ -1565,6 +2888,16 @@ class nd:
     @classmethod
     def points_to_sdf_grid(cls, points=None, radius=None, voxel_size=None):
         """ Node 'Points to SDF Grid' (GeometryNodePointsToSDFGrid)
+
+        Arguments
+        ---------
+        - points (Geometry) : socket 'Points' (Points)
+        - radius (Float) : socket 'Radius' (Radius)
+        - voxel_size (Float) : socket 'Voxel Size' (Voxel Size)
+
+        Returns
+        -------
+        - sdf_grid (Float)
         """
 
         node = Node('Points to SDF Grid', {'Points': points, 'Radius': radius, 'Voxel Size': voxel_size})
@@ -1574,6 +2907,15 @@ class nd:
     @classmethod
     def points_to_vertices(cls, points=None, selection=None):
         """ Node 'Points to Vertices' (GeometryNodePointsToVertices)
+
+        Arguments
+        ---------
+        - points (Geometry) : socket 'Points' (Points)
+        - selection (Boolean) : socket 'Selection' (Selection)
+
+        Returns
+        -------
+        - mesh (Geometry)
         """
 
         node = Node('Points to Vertices', {'Points': points, 'Selection': selection})
@@ -1583,7 +2925,18 @@ class nd:
     @classmethod
     def points_to_volume(cls, points=None, density=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_AMOUNT'):
         """ Node 'Points to Volume' (GeometryNodePointsToVolume)
-        - resolution_mode in ('VOXEL_AMOUNT', 'VOXEL_SIZE')
+
+        Arguments
+        ---------
+        - points (Geometry) : socket 'Points' (Points)
+        - density (Float) : socket 'Density' (Density)
+        - voxel_amount (Float) : socket 'Voxel Amount' (Voxel Amount)
+        - radius (Float) : socket 'Radius' (Radius)
+        - resolution_mode (str): Node.resolution_mode in ('VOXEL_AMOUNT', 'VOXEL_SIZE')
+
+        Returns
+        -------
+        - volume (Geometry)
         """
 
         node = Node('Points to Volume', {'Points': points, 'Density': density, 'Voxel Amount': voxel_amount, 'Radius': radius}, resolution_mode=resolution_mode)
@@ -1593,7 +2946,18 @@ class nd:
     @classmethod
     def geometry_proximity(cls, geometry=None, group_id=None, sample_position=None, sample_group_id=None, target_element='FACES'):
         """ Node 'Geometry Proximity' (GeometryNodeProximity)
-        - target_element in ('POINTS', 'EDGES', 'FACES')
+
+        Arguments
+        ---------
+        - geometry (Geometry) : socket 'Geometry' (Target)
+        - group_id (Integer) : socket 'Group ID' (Group ID)
+        - sample_position (Vector) : socket 'Sample Position' (Source Position)
+        - sample_group_id (Integer) : socket 'Sample Group ID' (Sample Group ID)
+        - target_element (str): Node.target_element in ('POINTS', 'EDGES', 'FACES')
+
+        Returns
+        -------
+        - Node: [position (Vector), distance (Float), is_valid (Boolean)]
         """
 
         node = Node('Geometry Proximity', {'Target': geometry, 'Group ID': group_id, 'Source Position': sample_position, 'Sample Group ID': sample_group_id}, target_element=target_element)
@@ -1603,8 +2967,20 @@ class nd:
     @classmethod
     def raycast(cls, target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None, data_type='FLOAT', mapping='INTERPOLATED'):
         """ Node 'Raycast' (GeometryNodeRaycast)
-        - data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4')
-        - mapping in ('INTERPOLATED', 'NEAREST')
+
+        Arguments
+        ---------
+        - target_geometry (Geometry) : socket 'Target Geometry' (Target Geometry)
+        - attribute (Float) : socket 'Attribute' (Attribute)
+        - source_position (Vector) : socket 'Source Position' (Source Position)
+        - ray_direction (Vector) : socket 'Ray Direction' (Ray Direction)
+        - ray_length (Float) : socket 'Ray Length' (Ray Length)
+        - data_type (str): Node.data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4')
+        - mapping (str): Node.mapping in ('INTERPOLATED', 'NEAREST')
+
+        Returns
+        -------
+        - Node: [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Float)]
         """
 
         node = Node('Raycast', {'Target Geometry': target_geometry, 'Attribute': attribute, 'Source Position': source_position, 'Ray Direction': ray_direction, 'Ray Length': ray_length}, data_type=data_type, mapping=mapping)
@@ -1614,6 +2990,17 @@ class nd:
     @classmethod
     def realize_instances(cls, geometry=None, selection=None, realize_all=None, depth=None):
         """ Node 'Realize Instances' (GeometryNodeRealizeInstances)
+
+        Arguments
+        ---------
+        - geometry (Geometry) : socket 'Geometry' (Geometry)
+        - selection (Boolean) : socket 'Selection' (Selection)
+        - realize_all (Boolean) : socket 'Realize All' (Realize All)
+        - depth (Integer) : socket 'Depth' (Depth)
+
+        Returns
+        -------
+        - geometry (Geometry)
         """
 
         node = Node('Realize Instances', {'Geometry': geometry, 'Selection': selection, 'Realize All': realize_all, 'Depth': depth})
@@ -1623,7 +3010,16 @@ class nd:
     @classmethod
     def remove_named_attribute(cls, geometry=None, name=None, pattern_mode='EXACT'):
         """ Node 'Remove Named Attribute' (GeometryNodeRemoveAttribute)
-        - pattern_mode in ('EXACT', 'WILDCARD')
+
+        Arguments
+        ---------
+        - geometry (Geometry) : socket 'Geometry' (Geometry)
+        - name (String) : socket 'Name' (Name)
+        - pattern_mode (str): Node.pattern_mode in ('EXACT', 'WILDCARD')
+
+        Returns
+        -------
+        - geometry (Geometry)
         """
 
         node = Node('Remove Named Attribute', {'Geometry': geometry, 'Name': name}, pattern_mode=pattern_mode)
@@ -1633,6 +3029,15 @@ class nd:
     @classmethod
     def repeat_input(cls, iterations=None, pair_with_output=None, paired_output=None):
         """ Node 'Repeat Input' (GeometryNodeRepeatInput)
+
+        Arguments
+        ---------
+        - iterations (Integer) : socket 'Iterations' (Iterations)
+        - pair_with_output (bpy_func): Node.pair_with_output
+        - paired_output (NoneType): Node.paired_output
+
+        Returns
+        -------
         """
 
         node = Node('Repeat Input', {'Iterations': iterations}, pair_with_output=pair_with_output, paired_output=paired_output)
@@ -1642,6 +3047,18 @@ class nd:
     @classmethod
     def repeat_output(cls, geometry=None, active_index=0, active_item=None, inspection_index=0, repeat_items=None):
         """ Node 'Repeat Output' (GeometryNodeRepeatOutput)
+
+        Arguments
+        ---------
+        - geometry (Geometry) : socket 'Geometry' (Item_0)
+        - active_index (int): Node.active_index
+        - active_item (RepeatItem): Node.active_item
+        - inspection_index (int): Node.inspection_index
+        - repeat_items (bpy_prop_collection): Node.repeat_items
+
+        Returns
+        -------
+        - Node: [geometry (Geometry)]
         """
 
         node = Node('Repeat Output', {'Item_0': geometry}, active_index=active_index, active_item=active_item, inspection_index=inspection_index, repeat_items=repeat_items)
@@ -1651,6 +3068,16 @@ class nd:
     @classmethod
     def replace_material(cls, geometry=None, old=None, new=None):
         """ Node 'Replace Material' (GeometryNodeReplaceMaterial)
+
+        Arguments
+        ---------
+        - geometry (Geometry) : socket 'Geometry' (Geometry)
+        - old (Material) : socket 'Old' (Old)
+        - new (Material) : socket 'New' (New)
+
+        Returns
+        -------
+        - geometry (Geometry)
         """
 
         node = Node('Replace Material', {'Geometry': geometry, 'Old': old, 'New': new})
@@ -1660,7 +3087,17 @@ class nd:
     @classmethod
     def resample_curve(cls, curve=None, selection=None, count=None, mode='COUNT'):
         """ Node 'Resample Curve' (GeometryNodeResampleCurve)
-        - mode in ('EVALUATED', 'COUNT', 'LENGTH')
+
+        Arguments
+        ---------
+        - curve (Geometry) : socket 'Curve' (Curve)
+        - selection (Boolean) : socket 'Selection' (Selection)
+        - count (Integer) : socket 'Count' (Count)
+        - mode (str): Node.mode in ('EVALUATED', 'COUNT', 'LENGTH')
+
+        Returns
+        -------
+        - curve (Geometry)
         """
 
         node = Node('Resample Curve', {'Curve': curve, 'Selection': selection, 'Count': count}, mode=mode)
@@ -1670,6 +3107,15 @@ class nd:
     @classmethod
     def reverse_curve(cls, curve=None, selection=None):
         """ Node 'Reverse Curve' (GeometryNodeReverseCurve)
+
+        Arguments
+        ---------
+        - curve (Geometry) : socket 'Curve' (Curve)
+        - selection (Boolean) : socket 'Selection' (Selection)
+
+        Returns
+        -------
+        - curve (Geometry)
         """
 
         node = Node('Reverse Curve', {'Curve': curve, 'Selection': selection})
@@ -1679,6 +3125,18 @@ class nd:
     @classmethod
     def rotate_instances(cls, instances=None, selection=None, rotation=None, pivot_point=None, local_space=None):
         """ Node 'Rotate Instances' (GeometryNodeRotateInstances)
+
+        Arguments
+        ---------
+        - instances (Geometry) : socket 'Instances' (Instances)
+        - selection (Boolean) : socket 'Selection' (Selection)
+        - rotation (Rotation) : socket 'Rotation' (Rotation)
+        - pivot_point (Vector) : socket 'Pivot Point' (Pivot Point)
+        - local_space (Boolean) : socket 'Local Space' (Local Space)
+
+        Returns
+        -------
+        - instances (Geometry)
         """
 
         node = Node('Rotate Instances', {'Instances': instances, 'Selection': selection, 'Rotation': rotation, 'Pivot Point': pivot_point, 'Local Space': local_space})
@@ -1688,7 +3146,16 @@ class nd:
     @classmethod
     def sdf_grid_boolean(cls, grid_1=None, grid_2=None, operation='DIFFERENCE'):
         """ Node 'SDF Grid Boolean' (GeometryNodeSDFGridBoolean)
-        - operation in ('INTERSECT', 'UNION', 'DIFFERENCE')
+
+        Arguments
+        ---------
+        - grid_1 (Float) : socket 'Grid 1' (Grid 1)
+        - grid_2 (Float) : socket 'Grid 2' (Grid 2)
+        - operation (str): Node.operation in ('INTERSECT', 'UNION', 'DIFFERENCE')
+
+        Returns
+        -------
+        - grid (Float)
         """
 
         node = Node('SDF Grid Boolean', {'Grid 1': grid_1, 'Grid 2': grid_2}, operation=operation)
@@ -1698,8 +3165,20 @@ class nd:
     @classmethod
     def sample_curve(cls, curves=None, value=None, factor=None, curve_index=None, data_type='FLOAT', mode='FACTOR', use_all_curves=False):
         """ Node 'Sample Curve' (GeometryNodeSampleCurve)
-        - data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4')
-        - mode in ('FACTOR', 'LENGTH')
+
+        Arguments
+        ---------
+        - curves (Geometry) : socket 'Curves' (Curves)
+        - value (Float) : socket 'Value' (Value)
+        - factor (Float) : socket 'Factor' (Factor)
+        - curve_index (Integer) : socket 'Curve Index' (Curve Index)
+        - data_type (str): Node.data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4')
+        - mode (str): Node.mode in ('FACTOR', 'LENGTH')
+        - use_all_curves (bool): Node.use_all_curves
+
+        Returns
+        -------
+        - Node: [value (Float), position (Vector), tangent (Vector), normal (Vector)]
         """
 
         node = Node('Sample Curve', {'Curves': curves, 'Value': value, 'Factor': factor, 'Curve Index': curve_index}, data_type=data_type, mode=mode, use_all_curves=use_all_curves)
@@ -1709,8 +3188,17 @@ class nd:
     @classmethod
     def sample_grid(cls, grid=None, position=None, data_type='FLOAT', interpolation_mode='TRILINEAR'):
         """ Node 'Sample Grid' (GeometryNodeSampleGrid)
-        - data_type in ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR')
-        - interpolation_mode in ('NEAREST', 'TRILINEAR', 'TRIQUADRATIC')
+
+        Arguments
+        ---------
+        - grid (Float) : socket 'Grid' (Grid)
+        - position (Vector) : socket 'Position' (Position)
+        - data_type (str): Node.data_type in ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR')
+        - interpolation_mode (str): Node.interpolation_mode in ('NEAREST', 'TRILINEAR', 'TRIQUADRATIC')
+
+        Returns
+        -------
+        - value (Float)
         """
 
         node = Node('Sample Grid', {'Grid': grid, 'Position': position}, data_type=data_type, interpolation_mode=interpolation_mode)
@@ -1720,7 +3208,18 @@ class nd:
     @classmethod
     def sample_grid_index(cls, grid=None, x=None, y=None, z=None, data_type='FLOAT'):
         """ Node 'Sample Grid Index' (GeometryNodeSampleGridIndex)
-        - data_type in ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR')
+
+        Arguments
+        ---------
+        - grid (Float) : socket 'Grid' (Grid)
+        - x (Integer) : socket 'X' (X)
+        - y (Integer) : socket 'Y' (Y)
+        - z (Integer) : socket 'Z' (Z)
+        - data_type (str): Node.data_type in ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR')
+
+        Returns
+        -------
+        - value (Float)
         """
 
         node = Node('Sample Grid Index', {'Grid': grid, 'X': x, 'Y': y, 'Z': z}, data_type=data_type)
@@ -1730,8 +3229,19 @@ class nd:
     @classmethod
     def sample_index(cls, geometry=None, value=None, index=None, clamp=False, data_type='FLOAT', domain='POINT'):
         """ Node 'Sample Index' (GeometryNodeSampleIndex)
-        - data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4')
-        - domain in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+
+        Arguments
+        ---------
+        - geometry (Geometry) : socket 'Geometry' (Geometry)
+        - value (Float) : socket 'Value' (Value)
+        - index (Integer) : socket 'Index' (Index)
+        - clamp (bool): Node.clamp
+        - data_type (str): Node.data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4')
+        - domain (str): Node.domain in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+
+        Returns
+        -------
+        - value (Float)
         """
 
         node = Node('Sample Index', {'Geometry': geometry, 'Value': value, 'Index': index}, clamp=clamp, data_type=data_type, domain=domain)
@@ -1741,7 +3251,16 @@ class nd:
     @classmethod
     def sample_nearest(cls, geometry=None, sample_position=None, domain='POINT'):
         """ Node 'Sample Nearest' (GeometryNodeSampleNearest)
-        - domain in ('POINT', 'EDGE', 'FACE', 'CORNER')
+
+        Arguments
+        ---------
+        - geometry (Geometry) : socket 'Geometry' (Geometry)
+        - sample_position (Vector) : socket 'Sample Position' (Sample Position)
+        - domain (str): Node.domain in ('POINT', 'EDGE', 'FACE', 'CORNER')
+
+        Returns
+        -------
+        - index (Integer)
         """
 
         node = Node('Sample Nearest', {'Geometry': geometry, 'Sample Position': sample_position}, domain=domain)
@@ -1751,7 +3270,19 @@ class nd:
     @classmethod
     def sample_nearest_surface(cls, mesh=None, value=None, group_id=None, sample_position=None, sample_group_id=None, data_type='FLOAT'):
         """ Node 'Sample Nearest Surface' (GeometryNodeSampleNearestSurface)
-        - data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4')
+
+        Arguments
+        ---------
+        - mesh (Geometry) : socket 'Mesh' (Mesh)
+        - value (Float) : socket 'Value' (Value)
+        - group_id (Integer) : socket 'Group ID' (Group ID)
+        - sample_position (Vector) : socket 'Sample Position' (Sample Position)
+        - sample_group_id (Integer) : socket 'Sample Group ID' (Sample Group ID)
+        - data_type (str): Node.data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4')
+
+        Returns
+        -------
+        - Node: [value (Float), is_valid (Boolean)]
         """
 
         node = Node('Sample Nearest Surface', {'Mesh': mesh, 'Value': value, 'Group ID': group_id, 'Sample Position': sample_position, 'Sample Group ID': sample_group_id}, data_type=data_type)
@@ -1761,7 +3292,18 @@ class nd:
     @classmethod
     def sample_uv_surface(cls, mesh=None, value=None, uv_map=None, sample_uv=None, data_type='FLOAT'):
         """ Node 'Sample UV Surface' (GeometryNodeSampleUVSurface)
-        - data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4')
+
+        Arguments
+        ---------
+        - mesh (Geometry) : socket 'Mesh' (Mesh)
+        - value (Float) : socket 'Value' (Value)
+        - uv_map (Vector) : socket 'UV Map' (Source UV Map)
+        - sample_uv (Vector) : socket 'Sample UV' (Sample UV)
+        - data_type (str): Node.data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4')
+
+        Returns
+        -------
+        - Node: [value (Float), is_valid (Boolean)]
         """
 
         node = Node('Sample UV Surface', {'Mesh': mesh, 'Value': value, 'Source UV Map': uv_map, 'Sample UV': sample_uv}, data_type=data_type)
@@ -1771,8 +3313,19 @@ class nd:
     @classmethod
     def scale_elements(cls, geometry=None, selection=None, scale=None, center=None, domain='FACE', scale_mode='UNIFORM'):
         """ Node 'Scale Elements' (GeometryNodeScaleElements)
-        - domain in ('FACE', 'EDGE')
-        - scale_mode in ('UNIFORM', 'SINGLE_AXIS')
+
+        Arguments
+        ---------
+        - geometry (Geometry) : socket 'Geometry' (Geometry)
+        - selection (Boolean) : socket 'Selection' (Selection)
+        - scale (Float) : socket 'Scale' (Scale)
+        - center (Vector) : socket 'Center' (Center)
+        - domain (str): Node.domain in ('FACE', 'EDGE')
+        - scale_mode (str): Node.scale_mode in ('UNIFORM', 'SINGLE_AXIS')
+
+        Returns
+        -------
+        - geometry (Geometry)
         """
 
         node = Node('Scale Elements', {'Geometry': geometry, 'Selection': selection, 'Scale': scale, 'Center': center}, domain=domain, scale_mode=scale_mode)
@@ -1782,6 +3335,18 @@ class nd:
     @classmethod
     def scale_instances(cls, instances=None, selection=None, scale=None, center=None, local_space=None):
         """ Node 'Scale Instances' (GeometryNodeScaleInstances)
+
+        Arguments
+        ---------
+        - instances (Geometry) : socket 'Instances' (Instances)
+        - selection (Boolean) : socket 'Selection' (Selection)
+        - scale (Vector) : socket 'Scale' (Scale)
+        - center (Vector) : socket 'Center' (Center)
+        - local_space (Boolean) : socket 'Local Space' (Local Space)
+
+        Returns
+        -------
+        - instances (Geometry)
         """
 
         node = Node('Scale Instances', {'Instances': instances, 'Selection': selection, 'Scale': scale, 'Center': center, 'Local Space': local_space})
@@ -1792,6 +3357,10 @@ class nd:
     @property
     def self_object(cls):
         """ Node 'Self Object' (GeometryNodeSelfObject)
+
+        Returns
+        -------
+        - self_object (Object)
         """
 
         node = Node('Self Object')
@@ -1801,6 +3370,14 @@ class nd:
     @classmethod
     def separate_components(cls, geometry=None):
         """ Node 'Separate Components' (GeometryNodeSeparateComponents)
+
+        Arguments
+        ---------
+        - geometry (Geometry) : socket 'Geometry' (Geometry)
+
+        Returns
+        -------
+        - Node: [mesh (Geometry), curve (Geometry), grease_pencil (Geometry), point_cloud (Geometry), volume (Geometry), instances (Geometry)]
         """
 
         node = Node('Separate Components', {'Geometry': geometry})
@@ -1810,7 +3387,16 @@ class nd:
     @classmethod
     def separate_geometry(cls, geometry=None, selection=None, domain='POINT'):
         """ Node 'Separate Geometry' (GeometryNodeSeparateGeometry)
-        - domain in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
+
+        Arguments
+        ---------
+        - geometry (Geometry) : socket 'Geometry' (Geometry)
+        - selection (Boolean) : socket 'Selection' (Selection)
+        - domain (str): Node.domain in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
+
+        Returns
+        -------
+        - Node: [selection (Geometry), inverted (Geometry)]
         """
 
         node = Node('Separate Geometry', {'Geometry': geometry, 'Selection': selection}, domain=domain)
@@ -1820,7 +3406,18 @@ class nd:
     @classmethod
     def set_handle_positions(cls, curve=None, selection=None, position=None, offset=None, mode='LEFT'):
         """ Node 'Set Handle Positions' (GeometryNodeSetCurveHandlePositions)
-        - mode in ('LEFT', 'RIGHT')
+
+        Arguments
+        ---------
+        - curve (Geometry) : socket 'Curve' (Curve)
+        - selection (Boolean) : socket 'Selection' (Selection)
+        - position (Vector) : socket 'Position' (Position)
+        - offset (Vector) : socket 'Offset' (Offset)
+        - mode (str): Node.mode in ('LEFT', 'RIGHT')
+
+        Returns
+        -------
+        - curve (Geometry)
         """
 
         node = Node('Set Handle Positions', {'Curve': curve, 'Selection': selection, 'Position': position, 'Offset': offset}, mode=mode)
@@ -1830,7 +3427,16 @@ class nd:
     @classmethod
     def set_curve_normal(cls, curve=None, selection=None, mode='MINIMUM_TWIST'):
         """ Node 'Set Curve Normal' (GeometryNodeSetCurveNormal)
-        - mode in ('MINIMUM_TWIST', 'Z_UP', 'FREE')
+
+        Arguments
+        ---------
+        - curve (Geometry) : socket 'Curve' (Curve)
+        - selection (Boolean) : socket 'Selection' (Selection)
+        - mode (str): Node.mode in ('MINIMUM_TWIST', 'Z_UP', 'FREE')
+
+        Returns
+        -------
+        - curve (Geometry)
         """
 
         node = Node('Set Curve Normal', {'Curve': curve, 'Selection': selection}, mode=mode)
@@ -1840,6 +3446,16 @@ class nd:
     @classmethod
     def set_curve_radius(cls, curve=None, selection=None, radius=None):
         """ Node 'Set Curve Radius' (GeometryNodeSetCurveRadius)
+
+        Arguments
+        ---------
+        - curve (Geometry) : socket 'Curve' (Curve)
+        - selection (Boolean) : socket 'Selection' (Selection)
+        - radius (Float) : socket 'Radius' (Radius)
+
+        Returns
+        -------
+        - curve (Geometry)
         """
 
         node = Node('Set Curve Radius', {'Curve': curve, 'Selection': selection, 'Radius': radius})
@@ -1849,6 +3465,16 @@ class nd:
     @classmethod
     def set_curve_tilt(cls, curve=None, selection=None, tilt=None):
         """ Node 'Set Curve Tilt' (GeometryNodeSetCurveTilt)
+
+        Arguments
+        ---------
+        - curve (Geometry) : socket 'Curve' (Curve)
+        - selection (Boolean) : socket 'Selection' (Selection)
+        - tilt (Float) : socket 'Tilt' (Tilt)
+
+        Returns
+        -------
+        - curve (Geometry)
         """
 
         node = Node('Set Curve Tilt', {'Curve': curve, 'Selection': selection, 'Tilt': tilt})
@@ -1858,6 +3484,16 @@ class nd:
     @classmethod
     def set_id(cls, geometry=None, selection=None, id=None):
         """ Node 'Set ID' (GeometryNodeSetID)
+
+        Arguments
+        ---------
+        - geometry (Geometry) : socket 'Geometry' (Geometry)
+        - selection (Boolean) : socket 'Selection' (Selection)
+        - id (Integer) : socket 'ID' (ID)
+
+        Returns
+        -------
+        - geometry (Geometry)
         """
 
         node = Node('Set ID', {'Geometry': geometry, 'Selection': selection, 'ID': id})
@@ -1867,6 +3503,16 @@ class nd:
     @classmethod
     def set_instance_transform(cls, instances=None, selection=None, transform=None):
         """ Node 'Set Instance Transform' (GeometryNodeSetInstanceTransform)
+
+        Arguments
+        ---------
+        - instances (Geometry) : socket 'Instances' (Instances)
+        - selection (Boolean) : socket 'Selection' (Selection)
+        - transform (Matrix) : socket 'Transform' (Transform)
+
+        Returns
+        -------
+        - instances (Geometry)
         """
 
         node = Node('Set Instance Transform', {'Instances': instances, 'Selection': selection, 'Transform': transform})
@@ -1876,6 +3522,16 @@ class nd:
     @classmethod
     def set_material(cls, geometry=None, selection=None, material=None):
         """ Node 'Set Material' (GeometryNodeSetMaterial)
+
+        Arguments
+        ---------
+        - geometry (Geometry) : socket 'Geometry' (Geometry)
+        - selection (Boolean) : socket 'Selection' (Selection)
+        - material (Material) : socket 'Material' (Material)
+
+        Returns
+        -------
+        - geometry (Geometry)
         """
 
         node = Node('Set Material', {'Geometry': geometry, 'Selection': selection, 'Material': material})
@@ -1885,6 +3541,16 @@ class nd:
     @classmethod
     def set_material_index(cls, geometry=None, selection=None, material_index=None):
         """ Node 'Set Material Index' (GeometryNodeSetMaterialIndex)
+
+        Arguments
+        ---------
+        - geometry (Geometry) : socket 'Geometry' (Geometry)
+        - selection (Boolean) : socket 'Selection' (Selection)
+        - material_index (Integer) : socket 'Material Index' (Material Index)
+
+        Returns
+        -------
+        - geometry (Geometry)
         """
 
         node = Node('Set Material Index', {'Geometry': geometry, 'Selection': selection, 'Material Index': material_index})
@@ -1894,6 +3560,16 @@ class nd:
     @classmethod
     def set_point_radius(cls, points=None, selection=None, radius=None):
         """ Node 'Set Point Radius' (GeometryNodeSetPointRadius)
+
+        Arguments
+        ---------
+        - points (Geometry) : socket 'Points' (Points)
+        - selection (Boolean) : socket 'Selection' (Selection)
+        - radius (Float) : socket 'Radius' (Radius)
+
+        Returns
+        -------
+        - points (Geometry)
         """
 
         node = Node('Set Point Radius', {'Points': points, 'Selection': selection, 'Radius': radius})
@@ -1903,6 +3579,17 @@ class nd:
     @classmethod
     def set_position(cls, geometry=None, selection=None, position=None, offset=None):
         """ Node 'Set Position' (GeometryNodeSetPosition)
+
+        Arguments
+        ---------
+        - geometry (Geometry) : socket 'Geometry' (Geometry)
+        - selection (Boolean) : socket 'Selection' (Selection)
+        - position (Vector) : socket 'Position' (Position)
+        - offset (Vector) : socket 'Offset' (Offset)
+
+        Returns
+        -------
+        - geometry (Geometry)
         """
 
         node = Node('Set Position', {'Geometry': geometry, 'Selection': selection, 'Position': position, 'Offset': offset})
@@ -1912,7 +3599,17 @@ class nd:
     @classmethod
     def set_shade_smooth(cls, geometry=None, selection=None, shade_smooth=None, domain='FACE'):
         """ Node 'Set Shade Smooth' (GeometryNodeSetShadeSmooth)
-        - domain in ('EDGE', 'FACE')
+
+        Arguments
+        ---------
+        - geometry (Geometry) : socket 'Geometry' (Geometry)
+        - selection (Boolean) : socket 'Selection' (Selection)
+        - shade_smooth (Boolean) : socket 'Shade Smooth' (Shade Smooth)
+        - domain (str): Node.domain in ('EDGE', 'FACE')
+
+        Returns
+        -------
+        - geometry (Geometry)
         """
 
         node = Node('Set Shade Smooth', {'Geometry': geometry, 'Selection': selection, 'Shade Smooth': shade_smooth}, domain=domain)
@@ -1922,6 +3619,16 @@ class nd:
     @classmethod
     def set_spline_cyclic(cls, geometry=None, selection=None, cyclic=None):
         """ Node 'Set Spline Cyclic' (GeometryNodeSetSplineCyclic)
+
+        Arguments
+        ---------
+        - geometry (Geometry) : socket 'Geometry' (Geometry)
+        - selection (Boolean) : socket 'Selection' (Selection)
+        - cyclic (Boolean) : socket 'Cyclic' (Cyclic)
+
+        Returns
+        -------
+        - geometry (Geometry)
         """
 
         node = Node('Set Spline Cyclic', {'Geometry': geometry, 'Selection': selection, 'Cyclic': cyclic})
@@ -1931,6 +3638,16 @@ class nd:
     @classmethod
     def set_spline_resolution(cls, geometry=None, selection=None, resolution=None):
         """ Node 'Set Spline Resolution' (GeometryNodeSetSplineResolution)
+
+        Arguments
+        ---------
+        - geometry (Geometry) : socket 'Geometry' (Geometry)
+        - selection (Boolean) : socket 'Selection' (Selection)
+        - resolution (Integer) : socket 'Resolution' (Resolution)
+
+        Returns
+        -------
+        - geometry (Geometry)
         """
 
         node = Node('Set Spline Resolution', {'Geometry': geometry, 'Selection': selection, 'Resolution': resolution})
@@ -1938,9 +3655,17 @@ class nd:
 
 
     @classmethod
-    @property
     def simulation_input(cls, pair_with_output=None, paired_output=None):
         """ Node 'Simulation Input' (GeometryNodeSimulationInput)
+
+        Arguments
+        ---------
+        - pair_with_output (bpy_func): Node.pair_with_output
+        - paired_output (NoneType): Node.paired_output
+
+        Returns
+        -------
+        - delta_time (Float)
         """
 
         node = Node('Simulation Input', pair_with_output=pair_with_output, paired_output=paired_output)
@@ -1950,6 +3675,18 @@ class nd:
     @classmethod
     def simulation_output(cls, skip=None, geometry=None, active_index=0, active_item=None, state_items=None):
         """ Node 'Simulation Output' (GeometryNodeSimulationOutput)
+
+        Arguments
+        ---------
+        - skip (Boolean) : socket 'Skip' (Skip)
+        - geometry (Geometry) : socket 'Geometry' (Item_0)
+        - active_index (int): Node.active_index
+        - active_item (SimulationStateItem): Node.active_item
+        - state_items (bpy_prop_collection): Node.state_items
+
+        Returns
+        -------
+        - Node: [geometry (Geometry)]
         """
 
         node = Node('Simulation Output', {'Skip': skip, 'Item_0': geometry}, active_index=active_index, active_item=active_item, state_items=state_items)
@@ -1959,7 +3696,18 @@ class nd:
     @classmethod
     def sort_elements(cls, geometry=None, selection=None, group_id=None, sort_weight=None, domain='POINT'):
         """ Node 'Sort Elements' (GeometryNodeSortElements)
-        - domain in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
+
+        Arguments
+        ---------
+        - geometry (Geometry) : socket 'Geometry' (Geometry)
+        - selection (Boolean) : socket 'Selection' (Selection)
+        - group_id (Integer) : socket 'Group ID' (Group ID)
+        - sort_weight (Float) : socket 'Sort Weight' (Sort Weight)
+        - domain (str): Node.domain in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
+
+        Returns
+        -------
+        - geometry (Geometry)
         """
 
         node = Node('Sort Elements', {'Geometry': geometry, 'Selection': selection, 'Group ID': group_id, 'Sort Weight': sort_weight}, domain=domain)
@@ -1970,6 +3718,10 @@ class nd:
     @property
     def spline_length(cls):
         """ Node 'Spline Length' (GeometryNodeSplineLength)
+
+        Returns
+        -------
+        - Node: [length (Float), point_count (Integer)]
         """
 
         node = Node('Spline Length')
@@ -1980,6 +3732,10 @@ class nd:
     @property
     def spline_parameter(cls):
         """ Node 'Spline Parameter' (GeometryNodeSplineParameter)
+
+        Returns
+        -------
+        - Node: [factor (Float), length (Float), index (Integer)]
         """
 
         node = Node('Spline Parameter')
@@ -1989,6 +3745,15 @@ class nd:
     @classmethod
     def split_edges(cls, mesh=None, selection=None):
         """ Node 'Split Edges' (GeometryNodeSplitEdges)
+
+        Arguments
+        ---------
+        - mesh (Geometry) : socket 'Mesh' (Mesh)
+        - selection (Boolean) : socket 'Selection' (Selection)
+
+        Returns
+        -------
+        - mesh (Geometry)
         """
 
         node = Node('Split Edges', {'Mesh': mesh, 'Selection': selection})
@@ -1998,7 +3763,17 @@ class nd:
     @classmethod
     def split_to_instances(cls, geometry=None, selection=None, group_id=None, domain='POINT'):
         """ Node 'Split to Instances' (GeometryNodeSplitToInstances)
-        - domain in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
+
+        Arguments
+        ---------
+        - geometry (Geometry) : socket 'Geometry' (Geometry)
+        - selection (Boolean) : socket 'Selection' (Selection)
+        - group_id (Integer) : socket 'Group ID' (Group ID)
+        - domain (str): Node.domain in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
+
+        Returns
+        -------
+        - Node: [instances (Geometry), group_id (Integer)]
         """
 
         node = Node('Split to Instances', {'Geometry': geometry, 'Selection': selection, 'Group ID': group_id}, domain=domain)
@@ -2008,8 +3783,19 @@ class nd:
     @classmethod
     def store_named_attribute(cls, geometry=None, selection=None, name=None, value=None, data_type='FLOAT', domain='POINT'):
         """ Node 'Store Named Attribute' (GeometryNodeStoreNamedAttribute)
-        - data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BYTE_COLOR', 'BOOLEAN', 'FLOAT2', 'INT8', 'QUATERNION', 'FLOAT4X4')
-        - domain in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+
+        Arguments
+        ---------
+        - geometry (Geometry) : socket 'Geometry' (Geometry)
+        - selection (Boolean) : socket 'Selection' (Selection)
+        - name (String) : socket 'Name' (Name)
+        - value (Float) : socket 'Value' (Value)
+        - data_type (str): Node.data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BYTE_COLOR', 'BOOLEAN', 'FLOAT2', 'INT8', 'QUATERNION', 'FLOAT4X4')
+        - domain (str): Node.domain in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+
+        Returns
+        -------
+        - geometry (Geometry)
         """
 
         node = Node('Store Named Attribute', {'Geometry': geometry, 'Selection': selection, 'Name': name, 'Value': value}, data_type=data_type, domain=domain)
@@ -2019,7 +3805,17 @@ class nd:
     @classmethod
     def store_named_grid(cls, volume=None, name=None, grid=None, data_type='FLOAT'):
         """ Node 'Store Named Grid' (GeometryNodeStoreNamedGrid)
-        - data_type in ('FLOAT', 'FLOAT_VECTOR', 'FLOAT2')
+
+        Arguments
+        ---------
+        - volume (Geometry) : socket 'Volume' (Volume)
+        - name (String) : socket 'Name' (Name)
+        - grid (Float) : socket 'Grid' (Grid)
+        - data_type (str): Node.data_type in ('FLOAT', 'FLOAT_VECTOR', 'FLOAT2')
+
+        Returns
+        -------
+        - volume (Geometry)
         """
 
         node = Node('Store Named Grid', {'Volume': volume, 'Name': name, 'Grid': grid}, data_type=data_type)
@@ -2029,6 +3825,15 @@ class nd:
     @classmethod
     def join_strings(cls, delimiter=None, strings=None):
         """ Node 'Join Strings' (GeometryNodeStringJoin)
+
+        Arguments
+        ---------
+        - delimiter (String) : socket 'Delimiter' (Delimiter)
+        - strings (String) : socket 'Strings' (Strings)
+
+        Returns
+        -------
+        - string (String)
         """
 
         node = Node('Join Strings', {'Delimiter': delimiter, 'Strings': strings})
@@ -2038,10 +3843,24 @@ class nd:
     @classmethod
     def string_to_curves(cls, string=None, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, align_x='LEFT', align_y='TOP_BASELINE', font=None, overflow='OVERFLOW', pivot_mode='BOTTOM_LEFT'):
         """ Node 'String to Curves' (GeometryNodeStringToCurves)
-        - align_x in ('LEFT', 'CENTER', 'RIGHT', 'JUSTIFY', 'FLUSH')
-        - align_y in ('TOP', 'TOP_BASELINE', 'MIDDLE', 'BOTTOM_BASELINE', 'BOTTOM')
-        - overflow in ('OVERFLOW', 'SCALE_TO_FIT', 'TRUNCATE')
-        - pivot_mode in ('MIDPOINT', 'TOP_LEFT', 'TOP_CENTER', 'TOP_RIGHT', 'BOTTOM_LEFT', 'BOTTOM_CENTER', 'BOTTOM_RIGHT')
+
+        Arguments
+        ---------
+        - string (String) : socket 'String' (String)
+        - size (Float) : socket 'Size' (Size)
+        - character_spacing (Float) : socket 'Character Spacing' (Character Spacing)
+        - word_spacing (Float) : socket 'Word Spacing' (Word Spacing)
+        - line_spacing (Float) : socket 'Line Spacing' (Line Spacing)
+        - text_box_width (Float) : socket 'Text Box Width' (Text Box Width)
+        - align_x (str): Node.align_x in ('LEFT', 'CENTER', 'RIGHT', 'JUSTIFY', 'FLUSH')
+        - align_y (str): Node.align_y in ('TOP', 'TOP_BASELINE', 'MIDDLE', 'BOTTOM_BASELINE', 'BOTTOM')
+        - font (VectorFont): Node.font
+        - overflow (str): Node.overflow in ('OVERFLOW', 'SCALE_TO_FIT', 'TRUNCATE')
+        - pivot_mode (str): Node.pivot_mode in ('MIDPOINT', 'TOP_LEFT', 'TOP_CENTER', 'TOP_RIGHT', 'BOTTOM_LEFT', 'BOTTOM_CENTER', 'BOTTOM_RIGHT')
+
+        Returns
+        -------
+        - Node: [curve_instances (Geometry), remainder (String), line (Integer), pivot_point (Vector)]
         """
 
         node = Node('String to Curves', {'String': string, 'Size': size, 'Character Spacing': character_spacing, 'Word Spacing': word_spacing, 'Line Spacing': line_spacing, 'Text Box Width': text_box_width}, align_x=align_x, align_y=align_y, font=font, overflow=overflow, pivot_mode=pivot_mode)
@@ -2051,6 +3870,15 @@ class nd:
     @classmethod
     def subdivide_curve(cls, curve=None, cuts=None):
         """ Node 'Subdivide Curve' (GeometryNodeSubdivideCurve)
+
+        Arguments
+        ---------
+        - curve (Geometry) : socket 'Curve' (Curve)
+        - cuts (Integer) : socket 'Cuts' (Cuts)
+
+        Returns
+        -------
+        - curve (Geometry)
         """
 
         node = Node('Subdivide Curve', {'Curve': curve, 'Cuts': cuts})
@@ -2060,6 +3888,15 @@ class nd:
     @classmethod
     def subdivide_mesh(cls, mesh=None, level=None):
         """ Node 'Subdivide Mesh' (GeometryNodeSubdivideMesh)
+
+        Arguments
+        ---------
+        - mesh (Geometry) : socket 'Mesh' (Mesh)
+        - level (Integer) : socket 'Level' (Level)
+
+        Returns
+        -------
+        - mesh (Geometry)
         """
 
         node = Node('Subdivide Mesh', {'Mesh': mesh, 'Level': level})
@@ -2069,8 +3906,19 @@ class nd:
     @classmethod
     def subdivision_surface(cls, mesh=None, level=None, edge_crease=None, vertex_crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES'):
         """ Node 'Subdivision Surface' (GeometryNodeSubdivisionSurface)
-        - boundary_smooth in ('PRESERVE_CORNERS', 'ALL')
-        - uv_smooth in ('NONE', 'PRESERVE_CORNERS', 'PRESERVE_CORNERS_AND_JUNCTIONS', 'PRESERVE_CORNERS_JUNCTIONS_AND_CONCAVE', 'PRESERVE_BOUNDARIES', 'SMOOTH_ALL')
+
+        Arguments
+        ---------
+        - mesh (Geometry) : socket 'Mesh' (Mesh)
+        - level (Integer) : socket 'Level' (Level)
+        - edge_crease (Float) : socket 'Edge Crease' (Edge Crease)
+        - vertex_crease (Float) : socket 'Vertex Crease' (Vertex Crease)
+        - boundary_smooth (str): Node.boundary_smooth in ('PRESERVE_CORNERS', 'ALL')
+        - uv_smooth (str): Node.uv_smooth in ('NONE', 'PRESERVE_CORNERS', 'PRESERVE_CORNERS_AND_JUNCTIONS', 'PRESERVE_CORNERS_JUNCTIONS_AND_CONCAVE', 'PRESERVE_BOUNDARIES', 'SMOOTH_ALL')
+
+        Returns
+        -------
+        - mesh (Geometry)
         """
 
         node = Node('Subdivision Surface', {'Mesh': mesh, 'Level': level, 'Edge Crease': edge_crease, 'Vertex Crease': vertex_crease}, boundary_smooth=boundary_smooth, uv_smooth=uv_smooth)
@@ -2080,7 +3928,17 @@ class nd:
     @classmethod
     def switch(cls, switch=None, false=None, true=None, input_type='GEOMETRY'):
         """ Node 'Switch' (GeometryNodeSwitch)
-        - input_type in ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'RGBA', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL')
+
+        Arguments
+        ---------
+        - switch (Boolean) : socket 'Switch' (Switch)
+        - false (Geometry) : socket 'False' (False)
+        - true (Geometry) : socket 'True' (True)
+        - input_type (str): Node.input_type in ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'RGBA', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL')
+
+        Returns
+        -------
+        - output (Geometry)
         """
 
         node = Node('Switch', {'Switch': switch, 'False': false, 'True': true}, input_type=input_type)
@@ -2091,6 +3949,10 @@ class nd:
     @property
     def _3d_cursor(cls):
         """ Node '3D Cursor' (GeometryNodeTool3DCursor)
+
+        Returns
+        -------
+        - Node: [location (Vector), rotation (Rotation)]
         """
 
         node = Node('3D Cursor')
@@ -2098,10 +3960,16 @@ class nd:
 
 
     @classmethod
-    @property
     def active_element(cls, domain='POINT'):
         """ Node 'Active Element' (GeometryNodeToolActiveElement)
-        - domain in ('POINT', 'EDGE', 'FACE')
+
+        Arguments
+        ---------
+        - domain (str): Node.domain in ('POINT', 'EDGE', 'FACE')
+
+        Returns
+        -------
+        - Node: [index (Integer), exists (Boolean)]
         """
 
         node = Node('Active Element', domain=domain)
@@ -2112,6 +3980,10 @@ class nd:
     @property
     def face_set(cls):
         """ Node 'Face Set' (GeometryNodeToolFaceSet)
+
+        Returns
+        -------
+        - Node: [face_set (Integer), exists (Boolean)]
         """
 
         node = Node('Face Set')
@@ -2122,6 +3994,10 @@ class nd:
     @property
     def mouse_position(cls):
         """ Node 'Mouse Position' (GeometryNodeToolMousePosition)
+
+        Returns
+        -------
+        - Node: [mouse_x (Integer), mouse_y (Integer), region_width (Integer), region_height (Integer)]
         """
 
         node = Node('Mouse Position')
@@ -2132,6 +4008,10 @@ class nd:
     @property
     def selection(cls):
         """ Node 'Selection' (GeometryNodeToolSelection)
+
+        Returns
+        -------
+        - selection (Boolean)
         """
 
         node = Node('Selection')
@@ -2141,6 +4021,16 @@ class nd:
     @classmethod
     def set_face_set(cls, mesh=None, selection=None, face_set=None):
         """ Node 'Set Face Set' (GeometryNodeToolSetFaceSet)
+
+        Arguments
+        ---------
+        - mesh (Geometry) : socket 'Mesh' (Mesh)
+        - selection (Boolean) : socket 'Selection' (Selection)
+        - face_set (Integer) : socket 'Face Set' (Face Set)
+
+        Returns
+        -------
+        - mesh (Geometry)
         """
 
         node = Node('Set Face Set', {'Mesh': mesh, 'Selection': selection, 'Face Set': face_set})
@@ -2150,7 +4040,16 @@ class nd:
     @classmethod
     def set_selection(cls, geometry=None, selection=None, domain='POINT'):
         """ Node 'Set Selection' (GeometryNodeToolSetSelection)
-        - domain in ('POINT', 'EDGE', 'FACE', 'CURVE')
+
+        Arguments
+        ---------
+        - geometry (Geometry) : socket 'Geometry' (Geometry)
+        - selection (Boolean) : socket 'Selection' (Selection)
+        - domain (str): Node.domain in ('POINT', 'EDGE', 'FACE', 'CURVE')
+
+        Returns
+        -------
+        - geometry (Geometry)
         """
 
         node = Node('Set Selection', {'Geometry': geometry, 'Selection': selection}, domain=domain)
@@ -2160,7 +4059,18 @@ class nd:
     @classmethod
     def transform_geometry(cls, geometry=None, translation=None, rotation=None, scale=None, mode='COMPONENTS'):
         """ Node 'Transform Geometry' (GeometryNodeTransform)
-        - mode in ('COMPONENTS', 'MATRIX')
+
+        Arguments
+        ---------
+        - geometry (Geometry) : socket 'Geometry' (Geometry)
+        - translation (Vector) : socket 'Translation' (Translation)
+        - rotation (Rotation) : socket 'Rotation' (Rotation)
+        - scale (Vector) : socket 'Scale' (Scale)
+        - mode (str): Node.mode in ('COMPONENTS', 'MATRIX')
+
+        Returns
+        -------
+        - geometry (Geometry)
         """
 
         node = Node('Transform Geometry', {'Geometry': geometry, 'Translation': translation, 'Rotation': rotation, 'Scale': scale}, mode=mode)
@@ -2170,6 +4080,17 @@ class nd:
     @classmethod
     def translate_instances(cls, instances=None, selection=None, translation=None, local_space=None):
         """ Node 'Translate Instances' (GeometryNodeTranslateInstances)
+
+        Arguments
+        ---------
+        - instances (Geometry) : socket 'Instances' (Instances)
+        - selection (Boolean) : socket 'Selection' (Selection)
+        - translation (Vector) : socket 'Translation' (Translation)
+        - local_space (Boolean) : socket 'Local Space' (Local Space)
+
+        Returns
+        -------
+        - instances (Geometry)
         """
 
         node = Node('Translate Instances', {'Instances': instances, 'Selection': selection, 'Translation': translation, 'Local Space': local_space})
@@ -2179,8 +4100,18 @@ class nd:
     @classmethod
     def triangulate(cls, mesh=None, selection=None, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL'):
         """ Node 'Triangulate' (GeometryNodeTriangulate)
-        - ngon_method in ('BEAUTY', 'CLIP')
-        - quad_method in ('BEAUTY', 'FIXED', 'FIXED_ALTERNATE', 'SHORTEST_DIAGONAL', 'LONGEST_DIAGONAL')
+
+        Arguments
+        ---------
+        - mesh (Geometry) : socket 'Mesh' (Mesh)
+        - selection (Boolean) : socket 'Selection' (Selection)
+        - minimum_vertices (Integer) : socket 'Minimum Vertices' (Minimum Vertices)
+        - ngon_method (str): Node.ngon_method in ('BEAUTY', 'CLIP')
+        - quad_method (str): Node.quad_method in ('BEAUTY', 'FIXED', 'FIXED_ALTERNATE', 'SHORTEST_DIAGONAL', 'LONGEST_DIAGONAL')
+
+        Returns
+        -------
+        - mesh (Geometry)
         """
 
         node = Node('Triangulate', {'Mesh': mesh, 'Selection': selection, 'Minimum Vertices': minimum_vertices}, ngon_method=ngon_method, quad_method=quad_method)
@@ -2190,7 +4121,18 @@ class nd:
     @classmethod
     def trim_curve(cls, curve=None, selection=None, start=None, end=None, mode='FACTOR'):
         """ Node 'Trim Curve' (GeometryNodeTrimCurve)
-        - mode in ('FACTOR', 'LENGTH')
+
+        Arguments
+        ---------
+        - curve (Geometry) : socket 'Curve' (Curve)
+        - selection (Boolean) : socket 'Selection' (Selection)
+        - start (Float) : socket 'Start' (Start)
+        - end (Float) : socket 'End' (End)
+        - mode (str): Node.mode in ('FACTOR', 'LENGTH')
+
+        Returns
+        -------
+        - curve (Geometry)
         """
 
         node = Node('Trim Curve', {'Curve': curve, 'Selection': selection, 'Start': start, 'End': end}, mode=mode)
@@ -2200,6 +4142,17 @@ class nd:
     @classmethod
     def pack_uv_islands(cls, uv=None, selection=None, margin=None, rotate=None):
         """ Node 'Pack UV Islands' (GeometryNodeUVPackIslands)
+
+        Arguments
+        ---------
+        - uv (Vector) : socket 'UV' (UV)
+        - selection (Boolean) : socket 'Selection' (Selection)
+        - margin (Float) : socket 'Margin' (Margin)
+        - rotate (Boolean) : socket 'Rotate' (Rotate)
+
+        Returns
+        -------
+        - uv (Vector)
         """
 
         node = Node('Pack UV Islands', {'UV': uv, 'Selection': selection, 'Margin': margin, 'Rotate': rotate})
@@ -2209,7 +4162,18 @@ class nd:
     @classmethod
     def uv_unwrap(cls, selection=None, seam=None, margin=None, fill_holes=None, method='ANGLE_BASED'):
         """ Node 'UV Unwrap' (GeometryNodeUVUnwrap)
-        - method in ('ANGLE_BASED', 'CONFORMAL')
+
+        Arguments
+        ---------
+        - selection (Boolean) : socket 'Selection' (Selection)
+        - seam (Boolean) : socket 'Seam' (Seam)
+        - margin (Float) : socket 'Margin' (Margin)
+        - fill_holes (Boolean) : socket 'Fill Holes' (Fill Holes)
+        - method (str): Node.method in ('ANGLE_BASED', 'CONFORMAL')
+
+        Returns
+        -------
+        - uv (Vector)
         """
 
         node = Node('UV Unwrap', {'Selection': selection, 'Seam': seam, 'Margin': margin, 'Fill Holes': fill_holes}, method=method)
@@ -2219,6 +4183,14 @@ class nd:
     @classmethod
     def vertex_of_corner(cls, corner_index=None):
         """ Node 'Vertex of Corner' (GeometryNodeVertexOfCorner)
+
+        Arguments
+        ---------
+        - corner_index (Integer) : socket 'Corner Index' (Corner Index)
+
+        Returns
+        -------
+        - vertex_index (Integer)
         """
 
         node = Node('Vertex of Corner', {'Corner Index': corner_index})
@@ -2228,8 +4200,13 @@ class nd:
     @classmethod
     def viewer(cls, geometry=None, value=None, data_type='FLOAT', domain='AUTO'):
         """ Node 'Viewer' (GeometryNodeViewer)
-        - data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4')
-        - domain in ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+
+        Arguments
+        ---------
+        - geometry (Geometry) : socket 'Geometry' (Geometry)
+        - value (Float) : socket 'Value' (Value)
+        - data_type (str): Node.data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4')
+        - domain (str): Node.domain in ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
         """
 
         node = Node('Viewer', {'Geometry': geometry, 'Value': value}, data_type=data_type, domain=domain)
@@ -2240,6 +4217,10 @@ class nd:
     @property
     def viewport_transform(cls):
         """ Node 'Viewport Transform' (GeometryNodeViewportTransform)
+
+        Returns
+        -------
+        - Node: [projection (Matrix), view (Matrix), is_orthographic (Boolean)]
         """
 
         node = Node('Viewport Transform')
@@ -2249,6 +4230,20 @@ class nd:
     @classmethod
     def volume_cube(cls, density=None, background=None, min=None, max=None, resolution_x=None, resolution_y=None, resolution_z=None):
         """ Node 'Volume Cube' (GeometryNodeVolumeCube)
+
+        Arguments
+        ---------
+        - density (Float) : socket 'Density' (Density)
+        - background (Float) : socket 'Background' (Background)
+        - min (Vector) : socket 'Min' (Min)
+        - max (Vector) : socket 'Max' (Max)
+        - resolution_x (Integer) : socket 'Resolution X' (Resolution X)
+        - resolution_y (Integer) : socket 'Resolution Y' (Resolution Y)
+        - resolution_z (Integer) : socket 'Resolution Z' (Resolution Z)
+
+        Returns
+        -------
+        - volume (Geometry)
         """
 
         node = Node('Volume Cube', {'Density': density, 'Background': background, 'Min': min, 'Max': max, 'Resolution X': resolution_x, 'Resolution Y': resolution_y, 'Resolution Z': resolution_z})
@@ -2258,7 +4253,17 @@ class nd:
     @classmethod
     def volume_to_mesh(cls, volume=None, threshold=None, adaptivity=None, resolution_mode='GRID'):
         """ Node 'Volume to Mesh' (GeometryNodeVolumeToMesh)
-        - resolution_mode in ('GRID', 'VOXEL_AMOUNT', 'VOXEL_SIZE')
+
+        Arguments
+        ---------
+        - volume (Geometry) : socket 'Volume' (Volume)
+        - threshold (Float) : socket 'Threshold' (Threshold)
+        - adaptivity (Float) : socket 'Adaptivity' (Adaptivity)
+        - resolution_mode (str): Node.resolution_mode in ('GRID', 'VOXEL_AMOUNT', 'VOXEL_SIZE')
+
+        Returns
+        -------
+        - mesh (Geometry)
         """
 
         node = Node('Volume to Mesh', {'Volume': volume, 'Threshold': threshold, 'Adaptivity': adaptivity}, resolution_mode=resolution_mode)
@@ -2266,9 +4271,14 @@ class nd:
 
 
     @classmethod
-    @property
     def frame(cls, label_size=20, shrink=True, text=None):
         """ Node 'Frame' (NodeFrame)
+
+        Arguments
+        ---------
+        - label_size (int): Node.label_size
+        - shrink (bool): Node.shrink
+        - text (NoneType): Node.text
         """
 
         node = Node('Frame', label_size=label_size, shrink=shrink, text=text)
@@ -2279,6 +4289,9 @@ class nd:
     @property
     def group_input(cls):
         """ Node 'Group Input' (NodeGroupInput)
+
+        Returns
+        -------
         """
 
         node = Node('Group Input')
@@ -2288,6 +4301,10 @@ class nd:
     @classmethod
     def group_output(cls, is_active_output=True):
         """ Node 'Group Output' (NodeGroupOutput)
+
+        Arguments
+        ---------
+        - is_active_output (bool): Node.is_active_output
         """
 
         node = Node('Group Output', is_active_output=is_active_output)
@@ -2297,6 +4314,14 @@ class nd:
     @classmethod
     def reroute(cls, input=None):
         """ Node 'Reroute' (NodeReroute)
+
+        Arguments
+        ---------
+        - input (Color) : socket 'Input' (Input)
+
+        Returns
+        -------
+        - output (Color)
         """
 
         node = Node('Reroute', {'Input': input})
@@ -2306,6 +4331,14 @@ class nd:
     @classmethod
     def blackbody(cls, temperature=None):
         """ Node 'Blackbody' (ShaderNodeBlackbody)
+
+        Arguments
+        ---------
+        - temperature (Float) : socket 'Temperature' (Temperature)
+
+        Returns
+        -------
+        - color (Color)
         """
 
         node = Node('Blackbody', {'Temperature': temperature})
@@ -2315,7 +4348,17 @@ class nd:
     @classmethod
     def clamp(cls, value=None, min=None, max=None, clamp_type='MINMAX'):
         """ Node 'Clamp' (ShaderNodeClamp)
-        - clamp_type in ('MINMAX', 'RANGE')
+
+        Arguments
+        ---------
+        - value (Float) : socket 'Value' (Value)
+        - min (Float) : socket 'Min' (Min)
+        - max (Float) : socket 'Max' (Max)
+        - clamp_type (str): Node.clamp_type in ('MINMAX', 'RANGE')
+
+        Returns
+        -------
+        - result (Float)
         """
 
         node = Node('Clamp', {'Value': value, 'Min': min, 'Max': max}, clamp_type=clamp_type)
@@ -2325,6 +4368,16 @@ class nd:
     @classmethod
     def combine_xyz(cls, x=None, y=None, z=None):
         """ Node 'Combine XYZ' (ShaderNodeCombineXYZ)
+
+        Arguments
+        ---------
+        - x (Float) : socket 'X' (X)
+        - y (Float) : socket 'Y' (Y)
+        - z (Float) : socket 'Z' (Z)
+
+        Returns
+        -------
+        - vector (Vector)
         """
 
         node = Node('Combine XYZ', {'X': x, 'Y': y, 'Z': z})
@@ -2334,6 +4387,16 @@ class nd:
     @classmethod
     def float_curve(cls, factor=None, value=None, mapping=None):
         """ Node 'Float Curve' (ShaderNodeFloatCurve)
+
+        Arguments
+        ---------
+        - factor (Float) : socket 'Factor' (Factor)
+        - value (Float) : socket 'Value' (Value)
+        - mapping (CurveMapping): Node.mapping
+
+        Returns
+        -------
+        - value (Float)
         """
 
         node = Node('Float Curve', {'Factor': factor, 'Value': value}, mapping=mapping)
@@ -2343,8 +4406,21 @@ class nd:
     @classmethod
     def map_range(cls, value=None, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True, data_type='FLOAT', interpolation_type='LINEAR'):
         """ Node 'Map Range' (ShaderNodeMapRange)
-        - data_type in ('FLOAT', 'FLOAT_VECTOR')
-        - interpolation_type in ('LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP')
+
+        Arguments
+        ---------
+        - value (Float) : socket 'Value' (Value)
+        - from_min (Float) : socket 'From Min' (From Min)
+        - from_max (Float) : socket 'From Max' (From Max)
+        - to_min (Float) : socket 'To Min' (To Min)
+        - to_max (Float) : socket 'To Max' (To Max)
+        - clamp (bool): Node.clamp
+        - data_type (str): Node.data_type in ('FLOAT', 'FLOAT_VECTOR')
+        - interpolation_type (str): Node.interpolation_type in ('LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP')
+
+        Returns
+        -------
+        - Node: [result (Float), vector (Vector)]
         """
 
         node = Node('Map Range', {'Value': value, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}, clamp=clamp, data_type=data_type, interpolation_type=interpolation_type)
@@ -2354,7 +4430,17 @@ class nd:
     @classmethod
     def math(cls, value=None, value_1=None, operation='ADD', use_clamp=False):
         """ Node 'Math' (ShaderNodeMath)
-        - operation in ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'POWER', 'LOGARITHM', 'SQRT', 'INVERSE_SQRT', 'ABSOLUTE', 'EXPONENT', 'MINIMUM', 'MAXIMUM', 'LESS_THAN', 'GREATER_THAN', 'SIGN', 'COMPARE', 'SMOOTH_MIN', 'SMOOTH_MAX', 'ROUND', 'FLOOR', 'CEIL', 'TRUNC', 'FRACT', 'MODULO', 'FLOORED_MODULO', 'WRAP', 'SNAP', 'PINGPONG', 'SINE', 'COSINE', 'TANGENT', 'ARCSINE', 'ARCCOSINE', 'ARCTANGENT', 'ARCTAN2', 'SINH', 'COSH', 'TANH', 'RADIANS', 'DEGREES')
+
+        Arguments
+        ---------
+        - value (Float) : socket 'Value' (Value)
+        - value_1 (Float) : socket 'Value' (Value_001)
+        - operation (str): Node.operation in ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'POWER', 'LOGARITHM', 'SQRT', 'INVERSE_SQRT', 'ABSOLUTE', 'EXPONENT', 'MINIMUM', 'MAXIMUM', 'LESS_THAN', 'GREATER_THAN', 'SIGN', 'COMPARE', 'SMOOTH_MIN', 'SMOOTH_MAX', 'ROUND', 'FLOOR', 'CEIL', 'TRUNC', 'FRACT', 'MODULO', 'FLOORED_MODULO', 'WRAP', 'SNAP', 'PINGPONG', 'SINE', 'COSINE', 'TANGENT', 'ARCSINE', 'ARCCOSINE', 'ARCTANGENT', 'ARCTAN2', 'SINH', 'COSH', 'TANH', 'RADIANS', 'DEGREES')
+        - use_clamp (bool): Node.use_clamp
+
+        Returns
+        -------
+        - value (Float)
         """
 
         node = Node('Math', {'Value': value, 'Value_001': value_1}, operation=operation, use_clamp=use_clamp)
@@ -2364,9 +4450,21 @@ class nd:
     @classmethod
     def mix(cls, factor=None, a=None, b=None, blend_type='MIX', clamp_factor=True, clamp_result=False, data_type='FLOAT', factor_mode='UNIFORM'):
         """ Node 'Mix' (ShaderNodeMix)
-        - blend_type in ('MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE')
-        - data_type in ('FLOAT', 'VECTOR', 'RGBA', 'ROTATION')
-        - factor_mode in ('UNIFORM', 'NON_UNIFORM')
+
+        Arguments
+        ---------
+        - factor (Float) : socket 'Factor' (Factor_Float)
+        - a (Float) : socket 'A' (A_Float)
+        - b (Float) : socket 'B' (B_Float)
+        - blend_type (str): Node.blend_type in ('MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE')
+        - clamp_factor (bool): Node.clamp_factor
+        - clamp_result (bool): Node.clamp_result
+        - data_type (str): Node.data_type in ('FLOAT', 'VECTOR', 'RGBA', 'ROTATION')
+        - factor_mode (str): Node.factor_mode in ('UNIFORM', 'NON_UNIFORM')
+
+        Returns
+        -------
+        - Node: [result (Float), result (Vector), result (Color), result (Rotation)]
         """
 
         node = Node('Mix', {'Factor_Float': factor, 'A_Float': a, 'B_Float': b}, blend_type=blend_type, clamp_factor=clamp_factor, clamp_result=clamp_result, data_type=data_type, factor_mode=factor_mode)
@@ -2376,6 +4474,16 @@ class nd:
     @classmethod
     def rgb_curves(cls, fac=None, color=None, mapping=None):
         """ Node 'RGB Curves' (ShaderNodeRGBCurve)
+
+        Arguments
+        ---------
+        - fac (Float) : socket 'Fac' (Fac)
+        - color (Color) : socket 'Color' (Color)
+        - mapping (CurveMapping): Node.mapping
+
+        Returns
+        -------
+        - color (Color)
         """
 
         node = Node('RGB Curves', {'Fac': fac, 'Color': color}, mapping=mapping)
@@ -2385,6 +4493,14 @@ class nd:
     @classmethod
     def separate_xyz(cls, vector=None):
         """ Node 'Separate XYZ' (ShaderNodeSeparateXYZ)
+
+        Arguments
+        ---------
+        - vector (Vector) : socket 'Vector' (Vector)
+
+        Returns
+        -------
+        - Node: [x (Float), y (Float), z (Float)]
         """
 
         node = Node('Separate XYZ', {'Vector': vector})
@@ -2394,6 +4510,29 @@ class nd:
     @classmethod
     def brick_texture(cls, vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, color_mapping=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2, texture_mapping=None):
         """ Node 'Brick Texture' (ShaderNodeTexBrick)
+
+        Arguments
+        ---------
+        - vector (Vector) : socket 'Vector' (Vector)
+        - color1 (Color) : socket 'Color1' (Color1)
+        - color2 (Color) : socket 'Color2' (Color2)
+        - mortar (Color) : socket 'Mortar' (Mortar)
+        - scale (Float) : socket 'Scale' (Scale)
+        - mortar_size (Float) : socket 'Mortar Size' (Mortar Size)
+        - mortar_smooth (Float) : socket 'Mortar Smooth' (Mortar Smooth)
+        - bias (Float) : socket 'Bias' (Bias)
+        - brick_width (Float) : socket 'Brick Width' (Brick Width)
+        - row_height (Float) : socket 'Row Height' (Row Height)
+        - color_mapping (ColorMapping): Node.color_mapping
+        - offset (float): Node.offset
+        - offset_frequency (int): Node.offset_frequency
+        - squash (float): Node.squash
+        - squash_frequency (int): Node.squash_frequency
+        - texture_mapping (TexMapping): Node.texture_mapping
+
+        Returns
+        -------
+        - Node: [color (Color), fac (Float)]
         """
 
         node = Node('Brick Texture', {'Vector': vector, 'Color1': color1, 'Color2': color2, 'Mortar': mortar, 'Scale': scale, 'Mortar Size': mortar_size, 'Mortar Smooth': mortar_smooth, 'Bias': bias, 'Brick Width': brick_width, 'Row Height': row_height}, color_mapping=color_mapping, offset=offset, offset_frequency=offset_frequency, squash=squash, squash_frequency=squash_frequency, texture_mapping=texture_mapping)
@@ -2403,6 +4542,19 @@ class nd:
     @classmethod
     def checker_texture(cls, vector=None, color1=None, color2=None, scale=None, color_mapping=None, texture_mapping=None):
         """ Node 'Checker Texture' (ShaderNodeTexChecker)
+
+        Arguments
+        ---------
+        - vector (Vector) : socket 'Vector' (Vector)
+        - color1 (Color) : socket 'Color1' (Color1)
+        - color2 (Color) : socket 'Color2' (Color2)
+        - scale (Float) : socket 'Scale' (Scale)
+        - color_mapping (ColorMapping): Node.color_mapping
+        - texture_mapping (TexMapping): Node.texture_mapping
+
+        Returns
+        -------
+        - Node: [color (Color), fac (Float)]
         """
 
         node = Node('Checker Texture', {'Vector': vector, 'Color1': color1, 'Color2': color2, 'Scale': scale}, color_mapping=color_mapping, texture_mapping=texture_mapping)
@@ -2412,7 +4564,17 @@ class nd:
     @classmethod
     def gradient_texture(cls, vector=None, color_mapping=None, gradient_type='LINEAR', texture_mapping=None):
         """ Node 'Gradient Texture' (ShaderNodeTexGradient)
-        - gradient_type in ('LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL')
+
+        Arguments
+        ---------
+        - vector (Vector) : socket 'Vector' (Vector)
+        - color_mapping (ColorMapping): Node.color_mapping
+        - gradient_type (str): Node.gradient_type in ('LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL')
+        - texture_mapping (TexMapping): Node.texture_mapping
+
+        Returns
+        -------
+        - Node: [color (Color), fac (Float)]
         """
 
         node = Node('Gradient Texture', {'Vector': vector}, color_mapping=color_mapping, gradient_type=gradient_type, texture_mapping=texture_mapping)
@@ -2422,6 +4584,19 @@ class nd:
     @classmethod
     def magic_texture(cls, vector=None, scale=None, distortion=None, color_mapping=None, texture_mapping=None, turbulence_depth=2):
         """ Node 'Magic Texture' (ShaderNodeTexMagic)
+
+        Arguments
+        ---------
+        - vector (Vector) : socket 'Vector' (Vector)
+        - scale (Float) : socket 'Scale' (Scale)
+        - distortion (Float) : socket 'Distortion' (Distortion)
+        - color_mapping (ColorMapping): Node.color_mapping
+        - texture_mapping (TexMapping): Node.texture_mapping
+        - turbulence_depth (int): Node.turbulence_depth
+
+        Returns
+        -------
+        - Node: [color (Color), fac (Float)]
         """
 
         node = Node('Magic Texture', {'Vector': vector, 'Scale': scale, 'Distortion': distortion}, color_mapping=color_mapping, texture_mapping=texture_mapping, turbulence_depth=turbulence_depth)
@@ -2431,8 +4606,24 @@ class nd:
     @classmethod
     def noise_texture(cls, vector=None, scale=None, detail=None, roughness=None, lacunarity=None, distortion=None, color_mapping=None, noise_dimensions='3D', noise_type='FBM', normalize=True, texture_mapping=None):
         """ Node 'Noise Texture' (ShaderNodeTexNoise)
-        - noise_dimensions in ('1D', '2D', '3D', '4D')
-        - noise_type in ('MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN')
+
+        Arguments
+        ---------
+        - vector (Vector) : socket 'Vector' (Vector)
+        - scale (Float) : socket 'Scale' (Scale)
+        - detail (Float) : socket 'Detail' (Detail)
+        - roughness (Float) : socket 'Roughness' (Roughness)
+        - lacunarity (Float) : socket 'Lacunarity' (Lacunarity)
+        - distortion (Float) : socket 'Distortion' (Distortion)
+        - color_mapping (ColorMapping): Node.color_mapping
+        - noise_dimensions (str): Node.noise_dimensions in ('1D', '2D', '3D', '4D')
+        - noise_type (str): Node.noise_type in ('MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN')
+        - normalize (bool): Node.normalize
+        - texture_mapping (TexMapping): Node.texture_mapping
+
+        Returns
+        -------
+        - Node: [fac (Float), color (Color)]
         """
 
         node = Node('Noise Texture', {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Distortion': distortion}, color_mapping=color_mapping, noise_dimensions=noise_dimensions, noise_type=noise_type, normalize=normalize, texture_mapping=texture_mapping)
@@ -2442,9 +4633,25 @@ class nd:
     @classmethod
     def voronoi_texture(cls, vector=None, scale=None, detail=None, roughness=None, lacunarity=None, randomness=None, color_mapping=None, distance='EUCLIDEAN', feature='F1', normalize=False, texture_mapping=None, voronoi_dimensions='3D'):
         """ Node 'Voronoi Texture' (ShaderNodeTexVoronoi)
-        - distance in ('EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI')
-        - feature in ('F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS')
-        - voronoi_dimensions in ('1D', '2D', '3D', '4D')
+
+        Arguments
+        ---------
+        - vector (Vector) : socket 'Vector' (Vector)
+        - scale (Float) : socket 'Scale' (Scale)
+        - detail (Float) : socket 'Detail' (Detail)
+        - roughness (Float) : socket 'Roughness' (Roughness)
+        - lacunarity (Float) : socket 'Lacunarity' (Lacunarity)
+        - randomness (Float) : socket 'Randomness' (Randomness)
+        - color_mapping (ColorMapping): Node.color_mapping
+        - distance (str): Node.distance in ('EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI')
+        - feature (str): Node.feature in ('F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS')
+        - normalize (bool): Node.normalize
+        - texture_mapping (TexMapping): Node.texture_mapping
+        - voronoi_dimensions (str): Node.voronoi_dimensions in ('1D', '2D', '3D', '4D')
+
+        Returns
+        -------
+        - Node: [distance (Float), color (Color), position (Vector), w (Float), radius (Float)]
         """
 
         node = Node('Voronoi Texture', {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, color_mapping=color_mapping, distance=distance, feature=feature, normalize=normalize, texture_mapping=texture_mapping, voronoi_dimensions=voronoi_dimensions)
@@ -2454,10 +4661,26 @@ class nd:
     @classmethod
     def wave_texture(cls, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', color_mapping=None, rings_direction='X', texture_mapping=None, wave_profile='SIN', wave_type='BANDS'):
         """ Node 'Wave Texture' (ShaderNodeTexWave)
-        - bands_direction in ('X', 'Y', 'Z', 'DIAGONAL')
-        - rings_direction in ('X', 'Y', 'Z', 'SPHERICAL')
-        - wave_profile in ('SIN', 'SAW', 'TRI')
-        - wave_type in ('BANDS', 'RINGS')
+
+        Arguments
+        ---------
+        - vector (Vector) : socket 'Vector' (Vector)
+        - scale (Float) : socket 'Scale' (Scale)
+        - distortion (Float) : socket 'Distortion' (Distortion)
+        - detail (Float) : socket 'Detail' (Detail)
+        - detail_scale (Float) : socket 'Detail Scale' (Detail Scale)
+        - detail_roughness (Float) : socket 'Detail Roughness' (Detail Roughness)
+        - phase_offset (Float) : socket 'Phase Offset' (Phase Offset)
+        - bands_direction (str): Node.bands_direction in ('X', 'Y', 'Z', 'DIAGONAL')
+        - color_mapping (ColorMapping): Node.color_mapping
+        - rings_direction (str): Node.rings_direction in ('X', 'Y', 'Z', 'SPHERICAL')
+        - texture_mapping (TexMapping): Node.texture_mapping
+        - wave_profile (str): Node.wave_profile in ('SIN', 'SAW', 'TRI')
+        - wave_type (str): Node.wave_type in ('BANDS', 'RINGS')
+
+        Returns
+        -------
+        - Node: [color (Color), fac (Float)]
         """
 
         node = Node('Wave Texture', {'Vector': vector, 'Scale': scale, 'Distortion': distortion, 'Detail': detail, 'Detail Scale': detail_scale, 'Detail Roughness': detail_roughness, 'Phase Offset': phase_offset}, bands_direction=bands_direction, color_mapping=color_mapping, rings_direction=rings_direction, texture_mapping=texture_mapping, wave_profile=wave_profile, wave_type=wave_type)
@@ -2467,7 +4690,15 @@ class nd:
     @classmethod
     def white_noise_texture(cls, vector=None, noise_dimensions='3D'):
         """ Node 'White Noise Texture' (ShaderNodeTexWhiteNoise)
-        - noise_dimensions in ('1D', '2D', '3D', '4D')
+
+        Arguments
+        ---------
+        - vector (Vector) : socket 'Vector' (Vector)
+        - noise_dimensions (str): Node.noise_dimensions in ('1D', '2D', '3D', '4D')
+
+        Returns
+        -------
+        - Node: [value (Float), color (Color)]
         """
 
         node = Node('White Noise Texture', {'Vector': vector}, noise_dimensions=noise_dimensions)
@@ -2477,6 +4708,15 @@ class nd:
     @classmethod
     def color_ramp(cls, fac=None, color_ramp=None):
         """ Node 'Color Ramp' (ShaderNodeValToRGB)
+
+        Arguments
+        ---------
+        - fac (Float) : socket 'Fac' (Fac)
+        - color_ramp (ColorRamp): Node.color_ramp
+
+        Returns
+        -------
+        - Node: [color (Color), alpha (Float)]
         """
 
         node = Node('Color Ramp', {'Fac': fac}, color_ramp=color_ramp)
@@ -2487,6 +4727,10 @@ class nd:
     @property
     def value(cls):
         """ Node 'Value' (ShaderNodeValue)
+
+        Returns
+        -------
+        - value (Float)
         """
 
         node = Node('Value')
@@ -2496,6 +4740,16 @@ class nd:
     @classmethod
     def vector_curves(cls, fac=None, vector=None, mapping=None):
         """ Node 'Vector Curves' (ShaderNodeVectorCurve)
+
+        Arguments
+        ---------
+        - fac (Float) : socket 'Fac' (Fac)
+        - vector (Vector) : socket 'Vector' (Vector)
+        - mapping (CurveMapping): Node.mapping
+
+        Returns
+        -------
+        - vector (Vector)
         """
 
         node = Node('Vector Curves', {'Fac': fac, 'Vector': vector}, mapping=mapping)
@@ -2505,7 +4759,16 @@ class nd:
     @classmethod
     def vector_math(cls, vector=None, vector_1=None, operation='ADD'):
         """ Node 'Vector Math' (ShaderNodeVectorMath)
-        - operation in ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'CROSS_PRODUCT', 'PROJECT', 'REFLECT', 'REFRACT', 'FACEFORWARD', 'DOT_PRODUCT', 'DISTANCE', 'LENGTH', 'SCALE', 'NORMALIZE', 'ABSOLUTE', 'MINIMUM', 'MAXIMUM', 'FLOOR', 'CEIL', 'FRACTION', 'MODULO', 'WRAP', 'SNAP', 'SINE', 'COSINE', 'TANGENT')
+
+        Arguments
+        ---------
+        - vector (Vector) : socket 'Vector' (Vector)
+        - vector_1 (Vector) : socket 'Vector' (Vector_001)
+        - operation (str): Node.operation in ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'CROSS_PRODUCT', 'PROJECT', 'REFLECT', 'REFRACT', 'FACEFORWARD', 'DOT_PRODUCT', 'DISTANCE', 'LENGTH', 'SCALE', 'NORMALIZE', 'ABSOLUTE', 'MINIMUM', 'MAXIMUM', 'FLOOR', 'CEIL', 'FRACTION', 'MODULO', 'WRAP', 'SNAP', 'SINE', 'COSINE', 'TANGENT')
+
+        Returns
+        -------
+        - Node: [vector (Vector), value (Float)]
         """
 
         node = Node('Vector Math', {'Vector': vector, 'Vector_001': vector_1}, operation=operation)
@@ -2515,7 +4778,19 @@ class nd:
     @classmethod
     def vector_rotate(cls, vector=None, center=None, axis=None, angle=None, invert=False, rotation_type='AXIS_ANGLE'):
         """ Node 'Vector Rotate' (ShaderNodeVectorRotate)
-        - rotation_type in ('AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ')
+
+        Arguments
+        ---------
+        - vector (Vector) : socket 'Vector' (Vector)
+        - center (Vector) : socket 'Center' (Center)
+        - axis (Vector) : socket 'Axis' (Axis)
+        - angle (Float) : socket 'Angle' (Angle)
+        - invert (bool): Node.invert
+        - rotation_type (str): Node.rotation_type in ('AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ')
+
+        Returns
+        -------
+        - vector (Vector)
         """
 
         node = Node('Vector Rotate', {'Vector': vector, 'Center': center, 'Axis': axis, 'Angle': angle}, invert=invert, rotation_type=rotation_type)

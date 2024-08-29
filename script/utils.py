@@ -174,6 +174,7 @@ def get_data_type(value, restrict_to=None, default='FLOAT'):
         socket_type = get_socket_type(value)
 
         data_type = constants.DATA_TYPES.get(socket_type)
+
         if data_type is not None and restrict_to is not None:
             if data_type not in restrict_to:
                 data_type = default

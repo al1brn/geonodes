@@ -360,13 +360,13 @@ class Geometry(DataSocket, GeoBase):
         return Node("Set ID", {'Geometry': self, 'Selection': self._sel, 'ID': id})._out
 
     def set_position(self, position=None, offset=None):
-        return Node("Set Position", {'Geometry': self, 'Selection': self._sel, 'position': position, 'Offset': offset})._out
+        return Node("Set Position", {'Geometry': self, 'Selection': self._sel, 'Position': position, 'Offset': offset})._out
 
     def set_material(self, material=None):
-        return Node("Set Position", {'Geometry': self, 'Selection': self._sel, 'material': material})._out
+        return Node("Set Material", {'Geometry': self, 'Selection': self._sel, 'Material': material})._out
 
     def set_shade_smooth(self, shade_smooth=True, edge=False):
-        return Node("Set Shade Smooth", {'Geometry': self, 'Selection': self._sel, 'shade_smooth': shade_smooth}, domain='EDGE' if edge else 'FACE')._out
+        return Node("Set Shade Smooth", {'Geometry': self, 'Selection': self._sel, 'Shade Smooth': shade_smooth}, domain='EDGE' if edge else 'FACE')._out
 
     # ----- Remove named attribute
 
@@ -550,10 +550,17 @@ class Domain(GeoBase, NodeCache):
         return self.restrict_domain(['POINT', 'FACE', 'EDGE', 'CURVE', 'INSTANCE'])
 
     def plural_domain(self, domains=None, title=""):
-        PLURAL = {'POINT': 'VERTICES', 'EDGE': 'EDGES', 'FACE': 'FACES', 'CORNER': 'CORNERS', 'SPLINE': 'SPLINES'}
+        PLURAL = {'POINT': 'VERTICES', 'EDGE': 'EDGES', 'FACE': 'FACES', 'CORNER': 'CORNERS', 'SPLINE': 'SPLINES', 'CURVE': 'SPLINES'}
         if domains is not None:
             self.restrict_domain(domains=domains, title=title)
         return PLURAL[self.DOMAIN_NAME]
+
+    # Rename domain name
+    def domain_name(self, rename={}):
+        if self.DOMAIN_NAME in rename:
+            return rename[self.DOMAIN_NAME]
+        else:
+            return self.DOMAIN_NAME
 
     # ====================================================================================================
     # Properties
@@ -570,7 +577,8 @@ class Domain(GeoBase, NodeCache):
     # ----- Attribute statistic
 
     def attribute_statistic(self, attribute=None):
-        data_type = utils.get_data_type(attribute, ['VECTOR', 'ROTATION', 'COLOR'], 'FLOAT')
+        data_type = utils.get_data_type(attribute, ['FLOAT_VECTOR', 'VECTOR', 'ROTATION', 'COLOR'], 'FLOAT')
+
         return self._node('Attribute Statistic', {'Attribute': attribute}, data_type=data_type, use_cache=False)
 
     # ----- Capture attribute
@@ -638,7 +646,8 @@ class Domain(GeoBase, NodeCache):
 
     def duplicate_elements(self, amount=1):
         self.exclude_corner('duplicate_elements')
-        geo = self._geo_type(self._node('Duplicate Elements', {'Amount': amount})._out)
+        domain = self.domain_name(rename={'CURVE': 'SPLINE'})
+        geo = self._geo_type(self._node('Duplicate Elements', {'Amount': amount}, domain=domain)._out)
         geo.duplicate_index_= geo.node.duplicate_index
         return geo
 
@@ -1089,7 +1098,8 @@ class Corner(Domain):
 # =============================================================================================================================
 
 class Spline(Domain):
-    DOMAIN_NAME = 'SPLINE'
+
+    DOMAIN_NAME = 'CURVE'
 
     @property
     def count(self):
@@ -1131,10 +1141,9 @@ class Spline(Domain):
 
     # ----- Read only
 
-    @classmethod
     @property
-    def parameter(cls):
-        return self._cached('Spline Parameter')
+    def parameter(self):
+        return self._cache('Spline Parameter')
 
     @classmethod
     @property
@@ -1395,9 +1404,9 @@ class Mesh(Geometry):
     def to_volume(self, density=None, voxel_amount=None, interior_band_width=None, voxel_size=None, amount=True):
         # resolution_mode in ('VOXEL_AMOUNT', 'VOXEL_SIZE')
         if amount:
-            return Volume(Node('Mesh to Volume', {'Mesh': self, 'Density': density, 'Voxel Amount': voxel_amount, 'Interior_band_width': interior_band_width}, resolution_mode='VOXEL_AMOUNT')._out)
+            return Volume(Node('Mesh to Volume', {'Mesh': self, 'Density': density, 'Voxel Amount': voxel_amount, 'Interior Band Width': interior_band_width}, resolution_mode='VOXEL_AMOUNT')._out)
         else:
-            return Volume(Node('Mesh to Volume', {'Mesh': self, 'Density': density, 'Voxel Size': voxel_size, 'Interior_band_width': interior_band_width}, resolution_mode='VOXEL_SIZE')._out)
+            return Volume(Node('Mesh to Volume', {'Mesh': self, 'Density': density, 'Voxel Size': voxel_size, 'Interior Band Width': interior_band_width}, resolution_mode='VOXEL_SIZE')._out)
 
     # =============================================================================================================================
     # Operations
@@ -1661,16 +1670,16 @@ class Curve(Geometry):
         return Mesh.FromCurve(self, profile_curve=profile_curve, fill_caps=fill_caps)
 
     def to_points(self, count=None, length=None, mode='EVALUATED'):
-        return Points.FromCurve(curve=self, count=count, length=length, mode='EVALUATED')
+        return Cloud.FromCurve(curve=self, count=count, length=length, mode='EVALUATED')
 
     def to_points_evaluated(self):
-        return Points.FromCurveEvaluated(curve=self)
+        return Cloud.FromCurveEvaluated(curve=self)
 
     def to_points_count(self, count=None):
-        return Points.FromCurveCount(curve=self, count=count)
+        return Cloud.FromCurveCount(curve=self, count=count)
 
     def to_points_length(self, length=None):
-        return Points.FromCurve(curve=self, length=length)
+        return Cloud.FromCurve(curve=self, length=length)
 
     def deform_on_surface(self):
         return Curve(Node('Deform Curves on Surface', {'Curves': self})._out)

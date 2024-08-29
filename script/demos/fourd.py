@@ -39,6 +39,9 @@ mods_   = "4D"
 curves_ = "C"
 surfs_  = "S"
 
+gmaths = GroupF(maths_)
+gmods  = GroupF(mods_)
+
 ZERO = 0.0001
 
 V4_COL = (.3, .1, .1)
@@ -475,20 +478,37 @@ def build_matrices():
         b2 = second.y
         c2 = second.z
 
-        M0 = Group.Prefix(maths_, "XW Rotation", {'Angle': a, 'Second': a2})
-        M1 = Group.Prefix(maths_, "YW Rotation", {'Angle': b, 'Second': b2})
-        M2 = Group.Prefix(maths_, "ZW Rotation", {'Angle': c, 'Second': c2})
+        if True:
+            M0 = gmaths.xw_rotation(angle=a, second=a2)
+            M1 = gmaths.yw_rotation(angle=b, second=b2)
+            M2 = gmaths.zw_rotation(angle=c, second=c2)
+        else:
+            M0 = Group.Prefix(maths_, "XW Rotation", {'Angle': a, 'Second': a2})
+            M1 = Group.Prefix(maths_, "YW Rotation", {'Angle': b, 'Second': b2})
+            M2 = Group.Prefix(maths_, "ZW Rotation", {'Angle': c, 'Second': c2})
 
-        #M_ = maths_.mat_mult(
-        M_ = Group.Prefix(maths_, "Mat Mult", [
-            M0.r_0_v, M0.r_0_w, M0.r_1_v, M0.r_1_w, M0.r_2_v, M0.r_2_w, M0.r_3_v, M0.r_3_w,
-            M1.r_0_v, M1.r_0_w, M1.r_1_v, M1.r_1_w, M1.r_2_v, M1.r_2_w, M1.r_3_v, M1.r_3_w,
-            ])
 
-        M_ = Group.Prefix(maths_, "Mat Mult", [
-            M_.r_0_v, M_.r_0_w, M_.r_1_v, M_.r_1_w, M_.r_2_v, M_.r_2_w, M_.r_3_v, M_.r_3_w,
-            M2.r_0_v, M2.r_0_w, M2.r_1_v, M2.r_1_w, M2.r_2_v, M2.r_2_w, M2.r_3_v, M2.r_3_w,
-            ])
+        if True:
+            M_ = gmaths.mat_mult([
+                M0.r_0_v, M0.r_0_w, M0.r_1_v, M0.r_1_w, M0.r_2_v, M0.r_2_w, M0.r_3_v, M0.r_3_w,
+                M1.r_0_v, M1.r_0_w, M1.r_1_v, M1.r_1_w, M1.r_2_v, M1.r_2_w, M1.r_3_v, M1.r_3_w,
+                ])
+
+            M_ = gmaths.mat_mult([
+                M_.r_0_v, M_.r_0_w, M_.r_1_v, M_.r_1_w, M_.r_2_v, M_.r_2_w, M_.r_3_v, M_.r_3_w,
+                M2.r_0_v, M2.r_0_w, M2.r_1_v, M2.r_1_w, M2.r_2_v, M2.r_2_w, M2.r_3_v, M2.r_3_w,
+                ])
+
+        else:
+            M_ = Group.Prefix(maths_, "Mat Mult", [
+                M0.r_0_v, M0.r_0_w, M0.r_1_v, M0.r_1_w, M0.r_2_v, M0.r_2_w, M0.r_3_v, M0.r_3_w,
+                M1.r_0_v, M1.r_0_w, M1.r_1_v, M1.r_1_w, M1.r_2_v, M1.r_2_w, M1.r_3_v, M1.r_3_w,
+                ])
+
+            M_ = Group.Prefix(maths_, "Mat Mult", [
+                M_.r_0_v, M_.r_0_w, M_.r_1_v, M_.r_1_w, M_.r_2_v, M_.r_2_w, M_.r_3_v, M_.r_3_w,
+                M2.r_0_v, M2.r_0_w, M2.r_1_v, M2.r_1_w, M2.r_2_v, M2.r_2_w, M2.r_3_v, M2.r_3_w,
+                ])
 
         V4.FromNode(M_, "R 0").out("R 0")
         V4.FromNode(M_, "R 1").out("R 1")
@@ -502,7 +522,10 @@ def build_matrices():
 
         v = V4()
 
-        v.mat_dot(Group.Prefix(maths_, "Projection Matrix")).out()
+        if True:
+            v.mat_dot(gmaths.projection_matrix()).out()
+        else:
+            v.mat_dot(Group.Prefix(maths_, "Projection Matrix")).out()
 
 # ====================================================================================================
 # Base modifiers
@@ -571,8 +594,12 @@ def build_base():
 
             # ----- Start and end point
 
-            p0 = Group.Prefix(maths_, "Projection", v0.sockets())._out
-            p1 = Group.Prefix(maths_, "Projection", v1.sockets())._out
+            if True:
+                p0 = gmaths.projection(v0.sockets())._out
+                p1 = gmaths.projection(v1.sockets())._out
+            else:
+                p0 = Group.Prefix(maths_, "Projection", v0.sockets())._out
+                p1 = Group.Prefix(maths_, "Projection", v1.sockets())._out
 
             # ----- Arrow shaft
 
@@ -608,12 +635,20 @@ def build_base():
 
         for i in range(4):
 
-            node = Group.Prefix(mods_, "Arrow", {
-                'Start V' : [(neg, 0, 0), (0, neg, 0), (0, 0, neg), (0, 0, 0)][i],
-                'Start w' : [0, 0, 0, neg][i],
-                'End V'   : [(pos, 0, 0), (0, pos, 0), (0, 0, pos), (0, 0, 0)][i],
-                'End w'   : [0, 0, 0, pos][i],
-            })
+            if True:
+                node = gmods.arrow({
+                    'Start V' : [(neg, 0, 0), (0, neg, 0), (0, 0, neg), (0, 0, 0)][i],
+                    'Start w' : [0, 0, 0, neg][i],
+                    'End V'   : [(pos, 0, 0), (0, pos, 0), (0, 0, pos), (0, 0, 0)][i],
+                    'End w'   : [0, 0, 0, pos][i],
+                })
+            else:
+                node = Group.Prefix(mods_, "Arrow", {
+                    'Start V' : [(neg, 0, 0), (0, neg, 0), (0, 0, neg), (0, 0, 0)][i],
+                    'Start w' : [0, 0, 0, neg][i],
+                    'End V'   : [(pos, 0, 0), (0, pos, 0), (0, 0, pos), (0, 0, 0)][i],
+                    'End w'   : [0, 0, 0, pos][i],
+                })
 
             node.plug_node_into()
             arrow = Mesh(node._out)
@@ -642,7 +677,10 @@ def build_base():
         with Layout("All points projection"):
             v = V4.Position(geo)
             #v = maths_.projection(*v.args).v
-            v = Group.Prefix(maths_, "Projection", v.sockets())._out
+            if True:
+                v = gmaths.projection(v.sockets())._out
+            else:
+                v = Group.Prefix(maths_, "Projection", v.sockets())._out
             geo.position = v
 
         # ===== Components
@@ -653,7 +691,10 @@ def build_base():
 
         with Layout("Mesh projection"):
 
-            m_proj = Group.Prefix(maths_, "Projection Matrix")
+            if True:
+                m_proj = gmaths.projection_matrix()
+            else:
+                m_proj = Group.Prefix(maths_, "Projection Matrix")
             v_proj = V4.FromNode(m_proj, "R 3")
 
             back = Boolean(True)

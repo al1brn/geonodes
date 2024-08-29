@@ -397,7 +397,7 @@ class Vector(VectRot):
     # ----- Mix
 
     def mix(self, factor=None, other=None, clamp_factor=None, factor_mode=None):
-        return Vector(Node('Mix', {'Factor': factor, 'A': self, 'B': other}, clamp_factor=clamp_factor, factor_mode=factor_mode, data_type='VECTOR'))
+        return Vector(Node('Mix', {'Factor': factor, 'A': self, 'B': other}, clamp_factor=clamp_factor, factor_mode=factor_mode, data_type='VECTOR')._out)
 
     def mix_uniform(self, factor=None, other=None, clamp_factor=None):
         return self.mix(factor, other, clamp_factor, factor_mode='UNIFORM')
@@ -491,6 +491,18 @@ class Vector(VectRot):
         return node._out
 
     def normal(self, normal=None):
+        """Node 'Normal'
+
+        Tree: Shader
+
+        Arguments
+        ---------
+        - normal (Vector) :
+
+        Returns
+        -------
+        - Vector
+        """
         node = Node('Normal', {'Normal': self})
         vec = node._out
         vec._bsocket.default_value = normal
@@ -624,6 +636,9 @@ class Rotation(VectRot):
     def rotate_local(self, rotate_by=None):
         return Rotation(Node('Rotate Rotation', {'Rotation': self, 'Rotate By': rotate_by}, rotation_space='LOCAL')._out)
 
+    def rotate_global(self, rotate_by=None):
+        return Rotation(Node('Rotate Rotation', {'Rotation': self, 'Rotate By': rotate_by}, rotation_space='GLOBAL')._out)
+
     # ----- Align to vector
 
     def align_to_vector(self, vector=None, factor=None, axis=None, pivot_axis=None):
@@ -669,6 +684,28 @@ class Matrix(ValueSocket):
     SOCKET_TYPE = 'MATRIX'
 
     def __init__(self, value=None, name=None, tip=None):
+        """ Matrix data socket ('MATRIX')
+
+        A Matrix socket can be initialized with an array of size 16 (the shape is ignored)
+        If the value is None, a 'Combine Matrix' with no input link is created.
+
+        If the 'name' argument is not None, a group input is created, using value as default initialization
+
+        ``` python
+        import numpy as np
+
+        input = Matrix(None, "My Matrix") # Group input to type 'Matrix' with name 'My Matrix' is created
+        identity = Matrix() # Identity matrix
+        matrix = Matrix([[0, 1, 0, 0], [1, 0, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]]) # Node 'Combine Matrix' with an array 16 floats
+        ```
+
+        Arguments
+        ---------
+        - value (array of 16 Floats = None) : initialization values
+        - name (str = None) : Create group input socket with this name if not None
+        - type (str = None) : Input socket user tip if an input socket is created
+        """
+
         bsock = utils.get_bsocket(value)
         if bsock is None:
             if name is None:
@@ -703,7 +740,7 @@ class Matrix(ValueSocket):
     @classmethod
     def FromArray(cls, array):
         a = utils.value_to_array(array, (16,))
-        return Node('Combine Matrix', {i: a[i] for i in range(16)})._out
+        return Node('Combine Matrix', list(a))._out
 
     @classmethod
     def Transform(cls, translation=None, rotation=None, scale=None):

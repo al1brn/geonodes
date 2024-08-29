@@ -129,8 +129,8 @@ def less_than(value, threshold, use_clamp=None):
 def greater_than(value, threshold, use_clamp=None):
     return Node("Math", {0: value, 1: threshold}, use_clamp=use_clamp, operation='GREATER_THAN')._out
 
-def sign(value, other, use_clamp=None):
-    return Node("Math", {0: value, 1: other}, use_clamp=use_clamp, operation='SIGN')._out
+def sign(value):
+    return Node("Math", {0: value}, operation='SIGN')._out
 
 def compare(value, other, epsilon=None, use_clamp=None):
     return Node("Math", {0: value, 1: other, 2:epsilon}, use_clamp=use_clamp, operation='COMPARE')._out

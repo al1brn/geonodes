@@ -11,7 +11,7 @@ d180   = pi
 d270   = np.pi*1.5
 d360   = tau
 
-from .treeclass import Break, Layout, Node, Group, Tree
+from .treeclass import Break, Layout, Node, Group, GroupF, Tree
 from .floatclass import Float, Integer
 from .socketclass import Material, Image, Object, Collection, String, Menu
 from .booleanclass import Boolean

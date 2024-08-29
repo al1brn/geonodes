@@ -1184,6 +1184,35 @@ class Node:
 class Group(Node):
 
     def __init__(self, group_name, sockets={}, **kwargs):
+        """ Node Group
+
+        Create a node 'Group' with the tree provided with 'group_name' argument.
+
+        The sockets can be initialized either using the sockets dictionary or using they snake_case name
+        as kwargs arguments.
+
+        ``` python
+        # Call a group by initializing the sockets with their name
+        node = Group("Group Name", sockets={'Geometry': Geometry(), 'Value': 1, 'Factor': 2})
+
+        # Call the group by initializing the sockets with their snake_case name
+        node = Group("Group Name", geometry=Geometry, value=1, factor=2)
+
+        # Get the result from the group computation
+
+        res_geo = node.geometry
+        ```
+
+        Arguments
+        ---------
+        - group_name (str) : name of the group to use
+        - sockets (dict) : sockets initialization values
+        - **kwargs (dict) : sockets  initialization with their snake_case name
+
+        Returns
+        -------
+        - Node Group
+        """
 
         # ----- Get the tree
 
@@ -1202,106 +1231,28 @@ class Group(Node):
     def Prefix(cls, prefix, group_name, sockets={}, **kwargs):
         return cls(f"{prefix} {group_name}", sockets=sockets, **kwargs)
 
-    # =============================================================================================================================
-    # Plug a node into the group inputs
-    # If the node is None, Tree input is take,
+class GroupF:
 
-    def plug_node_intoOLD(self, node=None, include=None, exclude={}, rename={}, create=True):
-
-        tree = self._tree
-
-        # ----------------------------------------------------------------------------------------------------
-        # Node with output sockets to plug
-
-        if node is None:
-            node = tree.input_node
+    def __init__(self, prefix=None):
+        if prefix is None:
+            self._prefix = ""
         else:
-            create = False
+            self._prefix = prefix.lower() + '_'
 
-        # ----------------------------------------------------------------------------------------------------
-        # Loop on the input sockets of self
+    @staticmethod
+    def call(group_name, sockets={}, **kwargs):
+        return Group(group_name, sockets, **kwargs)
 
-        for in_socket in self._bnode.inputs:
+    def __getattr__(self, name):
+        name = self._prefix + name
 
-            if in_socket.type == 'CUSTOM':
-                continue
+        for group_name in bpy.data.node_groups.keys():
 
-            # ----- Already linked
+            if utils.socket_name(group_name) == name:
 
-            if in_socket.is_linked:
-                continue
+                def f(sockets={}, **kwargs):
+                    return Group(group_name, sockets, **kwargs)
 
-            # ----- Socket name can be remapped
+                return f
 
-            socket_name = in_socket.name
-            if socket_name in rename.keys():
-                out_name = rename[socket_name]
-            else:
-                out_name = socket_name
-
-            # ----- Look for an output socket of same name and type
-
-            out_socket = None
-            for out_sock in node._bnode.outputs:
-                if out_sock.name == out_name and out_sock.type == in_socket.type:
-                    out_socket = out_sock
-                    break
-            if out_socket is None and not create:
-                continue
-
-            # ----- Must be in the sockets to include
-
-            if include is not None and socket_name not in include:
-                if not socket_name in rename.keys():
-                    continue
-
-            # ----- Must not be in the sockets to exclude
-
-            if socket_name in exclude:
-                continue
-
-            # ----- If the out_socket doesn't exist we create it
-
-            if out_socket is None:
-
-                # ----- Creation from in_socket
-
-                bsocket = utils.get_bsocket(in_socket)
-
-                bl_idname, subtype = constants.SOCKET_SUBTYPES[bsocket.bl_idname]
-
-                io_socket = tree.new_io_socket(bl_idname, 'INPUT', out_name)
-                if hasattr(io_socket, 'subtype'):
-                    io_socket.subtype = subtype
-
-                # ----- Linking before setting the parameters is necessary for menu sockets
-
-                tree.link(tree.input_node[io_socket.identifier], in_socket)
-
-                # ----- Min and Max from embedded tree interface
-
-                item = self._bnode.node_tree.interface.items_tree[in_socket.name]
-                tree.set_input_socket_default(tree.input_node[io_socket.identifier], item.default_value)
-
-                #if hasattr(io_socket, 'default_value'):
-                #    try:
-                #        io_socket.default_value = item.default_value
-                #    except:
-                #        pass
-
-                io_socket.description = item.description
-                if hasattr(io_socket, 'min_value'):
-                    io_socket.min_value = item.min_value
-                    io_socket.max_value = item.max_value
-
-                # ----- We've got our socket
-
-                #out_socket = tree.input_node[io_socket.identifier]
-
-            else:
-
-                # ----- Ok, we can plug
-
-                tree.link(out_socket, in_socket)
-
-        return self
+        raise AttributeError(f"Impossible to find the group named '{name}'")

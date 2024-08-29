@@ -65,7 +65,7 @@ class IntFloat(ValueSocket):
         return self.clamp(min, max, clamp_type)
 
     def map_range(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=None, interpolation_type='LINEAR'):
-        return Float(Node('Map Range', {'value': self, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}, clamp=clamp, interpolation_type=interpolation_type)._out)
+        return Float(Node('Map Range', {'Value': self, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}, clamp=clamp, interpolation_type=interpolation_type)._out)
 
     def map_range_linear(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=None):
         return self.map_range(from_min, from_max, to_min, to_max, clamp=clamp, interpolation_type='LINEAR')
