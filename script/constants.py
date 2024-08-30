@@ -72,6 +72,7 @@ SOCKET_SUBTYPES = {
     'NodeSocketString'              : ('NodeSocketString',      'NONE'),
     'NodeSocketFloatFactor'         : ('NodeSocketFloat',       'FACTOR'),
     'NodeSocketFloatAngle'          : ('NodeSocketFloat',       'ANGLE'),
+    'NodeSocketFloatTime'           : ('NodeSocketFloat',       'TIME'),
     'NodeSocketFloat'               : ('NodeSocketFloat',       'NONE'),
     'NodeSocketFloatDistance'       : ('NodeSocketFloat',       'DISTANCE'),
     'NodeSocketVectorEuler'         : ('NodeSocketVector',      'EULER'),

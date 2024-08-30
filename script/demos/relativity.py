@@ -20,8 +20,7 @@ Geometry Nodes
 --------------
     - "Plane Line Intersection" (group) : intersection between a line and a plane
     - "Frame Change" (group) : Change position and direction to align X axis along the given direction
-    - "Galilean Transformation" (group) : Galilean transformation
-    - "Lorentz Transformation" (group) : Lorentz transformation
+    - "Normalize Speed" (group) : Normalize speed
     - "Transformation" (group) : Lorentz or Galilean transformation
     - "Simulateneity Plane" (group): Compute the simultaneity plane of event + speed
     - "Simultaneity Intersection" (modifier) : Compute the intersection of the simultaneity plane with the provided curve
@@ -34,7 +33,7 @@ updates
 """
 
 from pathlib import WindowsPath
-from bpy.types import Attribute
+from bpy.types import Attribute, PARTICLE_PT_hair_dynamics_presets
 from ..geonodes import *
 from .. import shadernodes as sh
 
@@ -46,6 +45,28 @@ def demo():
     print('-'*100)
 
     Tree._reset_counters()
+
+    # =============================================================================================================================
+    # Cut exactly a curve at a given z
+
+    with GeoNodes("Vertical Cut"):
+
+        curve = Curve()
+        factor = Float.Factor(1, "Cut", 0, 1, tip="Vertical cut Factor")
+
+        line = Curve(Curve)
+        line.points.store("Factor", nd.spline_parameter.factor)
+        line.points.position = (0, 0, nd.position.z)
+
+        length = line.length
+
+        fac = line.sample_length(Float.Named("Factor"), length=factor*length)
+
+        line = curve.trim_factor(end=fac)
+
+        line.out("Curve")
+
+
 
     # =============================================================================================================================
     # Plane and Line intersection
@@ -101,101 +122,73 @@ def demo():
         d_event.switch(reverse, r_event).out("Event")
 
     # =============================================================================================================================
-    # Galilean Transformation
+    # Normalize Speed
 
-    with GeoNodes("Galilean Transformation", is_group=True):
+    with GeoNodes("Normalize Speed", is_group=True):
+        speed   = Vector((0, 0, 1), "Speed")
+        lorentz = Boolean(True, "Lorentz")
 
-        event    = Vector(0, "Event")
-        speed    = Vector(0, "Speed")
-        origin   = Vector(0, "Origin")
-        reverse  = Boolean(False, "Reverse")
+        speed = speed.switch(speed.z.equal(0), (speed.x, speed.y, 1))
+        speed_norm = Vector((speed.x, speed.y, 0)).length/speed.z
+        beta = speed_norm.switch(lorentz, gnmath.min(speed_norm, .999))
+        ratio = beta/speed_norm/speed.z
+        speed = Vector((speed.x*ratio, speed.y*ratio, 1))
 
-        # ---------------------------------------------------------------------------
-        # Normalize speed
+        speed.out("Speed")
+        beta.out("Beta")
 
-        with Layout("Speed (x, y)"):
-            speed = Vector((speed.x, speed.y, 0))
-
-        # ---------------------------------------------------------------------------
-        # Transformations
-
-        with Layout("Direct"):
-            d_event_ = event - origin
-            t = d_event_.z
-            d_event_ = rotation @ (d_event_ - speed*t)
-
-        with Layout("Reverse"):
-            t = event.z
-            r_event_ = origin + (inverse @ event) + speed*t
-
-        event_ = d_event_.switch(reverse, r_event_)
-
-        event_.out("Event")
+    def normalize_speed(speed, lorentz):
+        node = GroupF().normalize_speed(speed=speed, lorentz=lorentz)
+        return node.speed, node.beta
 
     # =============================================================================================================================
     # Lorentz Transformation
 
-    with GeoNodes("Lorentz Transformation", is_group=True):
+    with GeoNodes("Transformation", is_group=True):
 
-        event    = Vector(0, "Event")
-        speed    = Vector(0, "Speed")
-        origin   = Vector(0, "Origin")
-        reverse  = Boolean(False, "Reverse")
+        event       = Vector(     0, "Event")
+        speed       = Vector(     0, "Speed")
+        origin      = Vector(     0, "Origin")
+        use_x_speed = Boolean(False, "X Along Speed", tip="Align accelerated frame X axis along speed")
+        reverse     = Boolean(False, "Reverse")
+        use_lorentz = Boolean(True,  "Lorentz", tip="Lorentz (True) or Galilean (False)")
 
-        with Layout("Normalize speed"):
-            speed = speed.switch(speed.z.equal(0), Vector((speed.x, speed.y, 1))).normalize()._lc("Speed")
-            beta  = gnmath.min(Vector((speed.x, speed.y, 0)).length/speed.z, .999)
+        speed, beta = normalize_speed(speed, use_lorentz)
 
+        with Layout("Rotation"):
             ag = gnmath.atan2(speed.y, speed.x)
-
             rotation = Rotation.FromAxisAngle((0, 0, 1), -ag)
             inverse  = rotation.invert()
 
         with Layout("Gamma"):
-            gamma = (1 - beta**2)**(-.5)
+            gamma = Float.Switch(use_lorentz, 1, (1 - beta**2)**(-.5))
 
         # ---------------------------------------------------------------------------
         # Transformations
 
         with Layout("Direct"):
-            evt = rotation @ (event - origin)
-            x, y, t = evt.x, evt.y, evt.z
-            t_ = gamma*(t - beta*x)
-            x_ = gamma*(x - beta*t)
-            d_event_ = inverse @ Vector((x_, y, t_))
+            evt      = rotation @ (event - origin)
+            x, y, t  = evt.x, evt.y, evt.z
+            t_       = t.switch(use_lorentz, gamma*(t - beta*x))
+            x_       = gamma*(x - beta*t)
+            d_event_ = Vector((x_, y, t_))
+            d_event_ = (inverse @ d_event_).switch(use_x_speed, d_event_)
 
         with Layout("Reverse"):
-            evt = rotation @ event
-            x, y, t = evt.x, evt.y, evt.z
-            t_ = gamma*(t + beta*x)
-            x_ = gamma*(x + beta*t)
+            evt      = (rotation @ event).switch(use_x_speed, event)
+            x, y, t  = evt.x, evt.y, evt.z
+            t_       = t.switch(use_lorentz, gamma*(t + beta*x))
+            x_       = gamma*(x + beta*t)
             r_event_ = origin + (inverse @ Vector((x_, y, t_)))
+
+        # ----- Selection and done
 
         event_ = d_event_.switch(reverse, r_event_)
 
-        event_.out("Event")
-
-    # -----------------------------------------------------------------------------------------------------------------------------
-    # Galilean / Lorentz transformation
-
-    with GeoNodes("Transformation", is_group=True):
-
-        event    = Vector(0, "Event")
-        speed    = Vector(0, "Speed")
-        origin   = Vector(0, "Origin")
-        reverse  = Boolean(False, "Reverse")
-
-        use_lorentz = Boolean(True, "Lorentz", tip="Lorentz (True) or Galilean (False)")
-
-        g_node = Group("Galilean Transformation")
-        g_node.plug_node_into()
-
-        l_node = Group("Lorentz Transformation")
-        l_node.plug_node_into()
-
-        event = g_node.event.switch(use_lorentz, l_node.event)
-
-        event.out("Event")
+        event_.out(  "Event")
+        beta.out(    "Beta")
+        gamma.out(   "Gamma")
+        rotation.out("Space Rotation")
 
     # -----------------------------------------------------------------------------------------------------------------------------
     # Combine speeds
@@ -206,47 +199,79 @@ def demo():
         v = Vector(0, "v")
         lor = Boolean(True, "Lorentz")
 
-        u = u.switch(u.z.equal(0), (u.x, u.y, 1))
-        v = v.switch(v.z.equal(0), (v.x, v.y, 1))
+        u, _ = normalize_speed(u, lor)
+        v, _ = normalize_speed(v, lor)
 
         w = GroupF().transformation(event=v, speed=u, lorentz=lor, reverse=True).event
-        w = Vector((w.x/w.z, w.y/w.z, 1))
+        w.out("DEBUG")
+        w, beta = normalize_speed(w, lor)
 
         w.out("w")
+        beta.out("Beta")
 
     # =============================================================================================================================
     # Simultaneity plane of a point and speed direction
+    #
+    # Return also the intersection with a straigth line into several frames:
+    # - Event : into the reference frame
+    # - Local Event : into the moving frame
+    # - Rotated Event : into the moving frame with X axis is oriented along the speed
 
     with GeoNodes("Simultaneity Plane", is_group=True):
 
-        event        = Vector(0, "Event")
-        speed        = Vector(0, "Speed")
-        use_lorentz  = Boolean(True, "Lorentz", tip="Lorentz (True) or Galilean (False)")
+        speed        = Vector(       0, "Speed")
+        use_lorentz  = Boolean(   True, "Lorentz", tip="Lorentz (True) or Galilean (False)")
 
-        with Layout("Normalize Speed"):
-            speed = speed.switch(speed.z.equal(0), Vector((speed.x, speed.y, 1))).normalize()._lc("Normalized speed")
+        event        = Vector(       0, "Event")
+        event0       = Vector(       0, "Uniform Event", tip="An event from the uniform motion")
+        speed0       = Vector((0, 0, 1),"Uniform Speed", tip="Speed of the uniform motion")
 
-        with Layout("Simultaneity plane angle"):
-            k = Vector((0, 0, 1))
-            perp = k.cross(speed)
-            ag = gnmath.asin(perp.length)._lc("Angle")
+        with Layout("Simultaneity Plane"):
 
-        with Layout("Perpendicular vector to simultaneity plane"):
-            plane = Rotation.FromAxisAngle(perp, -ag) @ k
-            plane = k.switch(use_lorentz, plane)
+            speed, beta = normalize_speed(speed, use_lorentz)
 
-        with Layout("Beta"):
-            beta = (speed*(1, 1, 0)).length/speed.z
+            with Layout("Speed angle in space"):
+                space_angle = gnmath.atan2(speed.y, speed.x)
+                space_rot = Rotation((0, 0, space_angle))
 
-        # ----- Out
+            with Layout("Beta = tan of speed angle with time axis"):
+                k = Vector((0, 0, 1))
+                perp = speed.cross(k)
+                time_angle = Float.Switch(use_lorentz, 0, gnmath.atan(beta))
+                time_rot = Rotation.FromAxisAngle(perp, time_angle)
 
-        plane.out("Plane")
-        beta.out("Beta")
+            with Layout("Combine the two rotations"):
+                rot = space_rot @ time_rot
+
+            plane = rot @ k
+
+        with Layout("Intersection with uniform moition"):
+            speed0, beta0 = normalize_speed(speed0, use_lorentz)
+
+            evt = GroupF().plane_line_intersection(plane_origin=event, plane_vector=plane, line_origin=event0, line_vector=speed0).event
+            loc_evt = GroupF().transformation(event=evt, speed=speed, origin=event, lorentz=use_lorentz).event
+
+            rot_evt = rot.invert() @ (evt - event)
+
+            with Layout("Alpha = 1/Gamma"):
+                alpha = Float.Switch(use_lorentz, 1, gnmath.sqrt(1 - beta**2))
+                rot_evt *= (alpha, 1, 1)
+
+        # ----- Done
+
+        plane.out(      "Plane")
+        rot.out(        "Rotation")
+        beta.out(       "Beta")
+        space_angle.out("Space Angle")
+
+        evt.out(         "Event")
+        loc_evt.out(     "Local Event")
+        rot_evt.out(     "Rotated Event")
 
     # -----------------------------------------------------------------------------------------------------------------------------
-    # Simultaneity plane of a point and speed direction
+    # Intersection of a simultaneity plane with a space time curve
 
-    with GeoNodes("Simultaneity Intersection"):
+    with GeoNodes("Simultaneity Intersection With Curve"):
 
         curve = Curve()
 
@@ -255,7 +280,7 @@ def demo():
         use_lorentz = Boolean(True, "Lorentz", tip="Lorentz (True) or Galilean (False)")
         size = Float(100, "Size")
 
-        plane_node = Group("Simultaneity Plane", {"Event": event, "Speed": speed, "Lorentz": use_lorentz})
+        plane_node = GroupF().simultaneity_plane(speed=speed, lorentz=use_lorentz)
         plane_perp = plane_node.plane
 
         with Layout("Simultaneity plane"):
@@ -271,7 +296,58 @@ def demo():
         p = circle.points.attribute_statistic(nd.position).mean
 
         p.out("Event")
-        plane_perp.out("Simultaneity Plane")
+        plane_perp.out("Plane")
+        plane_node.rotation.out("Rotation")
+        plane_node.beta.out("Beta")
+        plane_node.space_angle.out("Space Angle")
+
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Proper duration of a line
+
+    with GeoNodes("Proper Duration"):
+
+        curve       = Curve()
+        use_lorentz = Boolean(True, "Lorentz", tip="Lorentz (True) or Galilean (False)")
+
+
+        count = curve.points.count
+
+        pos = curve.points.sample_index(nd.position, index=0)
+        tan = curve.points.sample_index(nd.curve_tangent, index=0)
+
+        curve.points.store("Proper Time", 0.)
+        curve.points.store("Interval", 0.)
+
+        with Repeat(curve=curve, pos=pos, tan=tan, proper_time=0., interval=0., index=1, iterations=count-1) as rep:
+
+            new_pos = curve.points.sample_index(nd.position, index=rep.index)
+            new_tan = curve.points.sample_index(nd.curve_tangent, index=rep.index)
+
+            speed, beta = normalize_speed(rep.tan, use_lorentz)
+            alpha = Float.Switch(use_lorentz, 1, gnmath.sqrt(1 - beta**2))
+
+            dt = new_pos.z - rep.pos.z
+            new_t = rep.proper_time + dt*alpha
+
+            sel = rep.index.equal(nd.index)
+
+            ds = (Vector((new_pos.x, new_pos.y, 0)) - (rep.pos.x, rep.pos.y, 0)).length
+            ds = ds.switch(use_lorentz, gnmath.sqrt(dt**2 - ds**2))
+            new_s = rep.interval + ds
+
+            rep.curve.points[sel].store("Proper Time", new_t)
+            rep.curve.points[sel].store("Distance",    new_s)
+
+            rep.pos = new_pos
+            rep.tan = new_tan
+            rep.proper_time = new_t
+            rep.interval = new_s
+            rep.index += 1
+
+
+        rep.curve.out(      "Curve")
+        rep.proper_time.out("Proper Time")
+        rep.interval.out(   "Interval")
 
     # -----------------------------------------------------------------------------------------------------------------------------
     # Accelerated transformation of a uniform motion
@@ -281,79 +357,54 @@ def demo():
 
     with GeoNodes("Accelerated Transformation"):
 
-        curve       = Curve(None,   "Accelerated")
-        start       = Vector(0,     "Uniform Event")
-        speed       = Vector(0,     "Uniform Speed")
-        count       = Integer(100,  "Resolution", 2, tip="Resolution")
-        use_lorentz = Boolean(True, "Lorentz", tip="Lorentz (True) or Galilean (False)")
+        curve       = Curve(      None, "Accelerated")
+        event0      = Vector(        0, "Uniform Event", tip="An event from the uniform motion")
+        speed0      = Vector((0, 0, 1), "Uniform Speed", tip="Speed of the uniform motion")
+        use_x_speed = Boolean(   False, "X Along Speed", tip="Align accelerated frame X axis along speed")
+        count       = Integer(     100, "Resolution", 2, tip="Resolution")
+        use_lorentz = Boolean(    True, "Lorentz", tip="Lorentz (True) or Galilean (False)")
 
-        if DEBUG:
-            with_debug = Boolean(False, "Debug")
-        else:
-            with_debug = False
+        curve = curve.resample(count)
+        curve.splines.resolution = 128
+        start_event = curve.points.sample_index(nd.position, index=0)
 
-        with Layout("Normalize Speed"):
-            speed = speed.switch(speed.z.equal(0), Vector((speed.x, speed.y, 1)))
-            speed = speed.switch(use_lorentz, speed.normalize())
+        with Repeat(transformed=curve, last_event=start_event, s=0., t=0., index=0, iterations=count) as rep:
 
-        with Layout("Prepare"):
-            curve.splines.resolution=10*count
-            curve = curve.resample(count)
-            transf = Curve.Line().resample(count)
+            cur_event = curve.points.sample_index(nd.position, index=rep.index)
+            cur_speed = curve.points.sample_index(nd.curve_tangent, index=rep.index)
 
-        with Layout("Start time"):
-            loc = curve.points.sample_index(nd.position, index=0)
-            start_time = loc.z
+            node = GroupF().simultaneity_plane(event=cur_event, speed=cur_speed, uniform_event=event0, uniform_speed=speed0, lorentz=use_lorentz)
 
-        debug = Curve.Line().resample(count)
+            with Layout("Event time"):
+                alpha = Float.Switch(use_lorentz, 1, gnmath.sqrt(1 - node.beta**2))._lc("Alpha")
+                dt = ((cur_event.z - rep.last_event.z)*alpha)._lc("dt'")
 
-        with Repeat(transf=transf, debug=debug, time=start_time, proper_time=0., index=0, iterations=count) as rep:
+            with Layout("Distance"):
+                new_s = rep.s + node.beta*dt
 
-            with Layout("Current event and tangent"):
-                loc = curve.points.sample_index(nd.position, index=rep.index)
-                tan = curve.points.sample_index(nd.curve_tangent, index=rep.index)
+            new_t = (rep.t + dt)._lc("New t")
+            evt = node.local_event.switch(use_x_speed, node.rotated_event) + (0, 0, new_t)
 
-            sim_node = GroupF().simultaneity_plane(event=loc, speed=tan, lorentz=use_lorentz)
+            sel = rep.index.equal(nd.index)
 
-            beta = sim_node.beta
-            axis_event = GroupF().plane_line_intersection(
-                plane_origin = loc,
-                plane_vector = sim_node.plane,
-                line_origin  = start,
-                line_vector  = speed).event
+            rep.transformed.points[sel].position = evt
 
-            # Into accelerated frame
-            local_axis_event = GroupF().transformation(event=axis_event, speed=tan, origin=loc, lorentz=use_lorentz).event
-            local_axis_event = GroupF().frame_change(event=local_axis_event, origin=loc, x_axis=tan).event
+            rep.transformed.points[sel].store("Event0", cur_event)
+            rep.transformed.points[sel].store("Event1", node.event)
+            rep.transformed.points[sel].store("Speed", cur_speed)
+            rep.transformed.points[sel].store("Space Angle",  node.space_angle)
+            rep.transformed.points[sel].store("Beta",  node.beta)
+            rep.transformed.points[sel].store("Alpha", alpha)
+            rep.transformed.points[sel].store("Distance", new_s)
 
-            if DEBUG:
-                rep.debug += Curve.Line(loc, axis_event)
-
-            with Layout("Alpha = 1/Gamma"):
-                alpha = gnmath.sqrt(1 - beta**2).switch(-use_lorentz, 1)._lc("Alpha")
-
-            with Layout("Update proper time"):
-                dt = loc.z - rep.time
-                proper_time = (rep.proper_time + dt*alpha)._lc("Proper Time")
-
-            local_event = Vector((local_axis_event.x, local_axis_event.y, proper_time))
-
-            rep.transf.points[rep.index].position = local_event
-            rep.transf.points[rep.index].store("Beta", beta)
-            rep.transf.points[rep.index].store("Alpha", alpha)
-
-            rep.time = loc.z
-            rep.proper_time = proper_time
+            rep.last_event = cur_event
+            rep.s = new_s
+            rep.t = new_t
             rep.index += 1
 
-        transf = rep.transf
-        debug  = rep.debug
+        transformed = rep.transformed
 
-
-        if DEBUG:
-            transf = transf + debug.switch(-with_debug)
-
-        transf.out()
+        transformed.out("Curve")
 
     # =============================================================================================================================
     # Utility : Rounded  triangle function
@@ -416,362 +467,166 @@ def demo():
     # =============================================================================================================================
     # Twins
 
-    with GeoNodes("Twins OLD"):
+    with GeoNodes("Twins"):
 
-        beta_x      = Float.Factor(.8,   "Beta along x", -.999, .999, tip="Speed back and forth along X axis")
-        beta_y      = Float.Factor(.4,   "Beta along y", -.999, .999, tip="Constant speed along Y axis")
-        duration    = Float.Time(10,     "Duration", 1, tip="Experiment duration")
-        u_turn      = Float.Factor(.2,   "U Turn duration", 0.001, 1, tip="Time spent for U turn in % of total duration")
-        count       = Integer(20,        "Resolution", 2, 10000, tip="Number of points")
-        use_lorentz = Boolean(True,   "Lorentz", tip="Special relativity")
+        red_beta    = Float.Factor( .8, "Traveller Beta", -.999, .999,     tip="Speed back and forth of the traveller along X axis")
+        duration    = Float.Time(   10, "Duration", 1,                     tip="Experiment duration")
+        u_turn      = Float.Factor( .2, "U Turn duration", 0.001, 1,       tip="Time spent for U turn in % of total duration")
+        count       = Integer(      20, "Resolution", 2, 10000,            tip="Number of points")
+        use_lorentz = Boolean(    True, "Lorentz",                         tip="Special relativity")
+        factor      = Float.Factor(  0, "Factor", 0, 1,                    tip="Frame change factor")
+        end         = Float.Factor(  1, "End",    0, 1,                    tip="Trim end")
 
-        resolution = 2*count + 1
+        with Layout("Parameters"):
+            resolution = 2*count + 1
+            dt = (duration/(resolution - 1))._lc("dt")
+            acc_index = gnmath.min(round(count*(1 - u_turn)), count-1)
 
-        with Layout("Combine Speed"):
-            w = GroupF().combine_speeds(u=(beta_x, 0, 1), v=(0, beta_y, 1), lorentz=use_lorentz).w
-            beta_x = w.x
-            beta_y = w.y
+        with Layout("Build Accelerated Red Line"):
+            blue_line0 = Curve.Line((0, 0, 0), (0, 0, duration)).resample(resolution)
+            red_line0  = Curve(blue_line0)
 
-        blue_line0 = Curve.Line((0, 0, 0), (0, 0, duration)).resample(resolution)
-        red_line0  = Curve(blue_line0)
-        blue_line1 = Curve.Line(0, 0).resample(resolution)
-        red_line1  = Curve(blue_line1)
-
-        dt = duration/(resolution - 1)
-        acc_index = gnmath.min(round(count*(1 - u_turn)), count-1)
-
-        with Repeat(
-                red_line0   = red_line0,
-                blue_line1  = blue_line1,
-                red_line1   = red_line1,
-
-                debug  = Cloud.Points(count=resolution),
-                curves = Cloud.Points(count=1),
-
-                beta        = beta_x,
-                red_event0  = Vector(),
-                red_event1  = Vector(),
-
-                index       = 1,
-                iterations  = resolution - 1) as rep:
+        with Repeat(blue_line0=blue_line0, red_line0=red_line0, beta=red_beta, red_event0=Vector(), proper_time=0., index=1, iterations=resolution - 1) as rep:
 
             with Layout("Current Speed"):
-                beta0 = rep.index.map_range_linear(acc_index, count, beta_x, 0)
-                beta1 = rep.index.map_range_linear(count, resolution - 1 - acc_index, 0, -beta_x)
+                beta0 = rep.index.map_range_linear(acc_index, count, red_beta, 0)
+                beta1 = rep.index.map_range_linear(count, resolution - 1 - acc_index, 0, -red_beta)
                 new_beta = beta0.switch(rep.index > count, beta1)
 
                 beta = ((rep.beta + new_beta)/2)._lc("Beta")
                 rep.beta = new_beta
 
-                speed = Vector((beta, 0, 1))._lc("Speed")
+                speed = Vector((beta, 0, 1))
 
-            with Layout("Alpha = 1/gamma"):
-                alpha = Float.Switch(use_lorentz, 1, gnmath.sqrt(1 - beta**2))._lc("Alpha")
-                dt_alpha = (dt*alpha)._lc("dt_alpha")
+                alpha = Float.Switch(use_lorentz, 1, gnmath.sqrt(1 - beta**2))
+                new_t = rep.proper_time + dt*alpha
 
-            with Layout("Red Line 0"):
-                red_event0 = rep.red_event0 + (beta*dt, 0, dt)
-                rep.red_line0.points[rep.index].position = red_event0
+            sel = rep.index.equal(nd.index)
+
+            with Layout("Red Line 0 current event"):
+                red_event0 = (rep.red_event0 + speed*dt)._lc("Red Event 0")
+                rep.red_line0.points[sel].position = red_event0
+                rep.red_line0.points[sel].store("Proper Time", new_t)
                 rep.red_event0 = red_event0
 
-                rep.debug.points[rep.index].position = red_event0
+            with Layout("Blue Line 0 simultaneous event"):
+                x, t = red_event0.x, red_event0.z
+                t = t.switch(use_lorentz, t - x*beta)
+                blue_event0 = Vector((0, 0, t))._lc("Blue Event 0")
+                rep.blue_line0.points[sel].position = blue_event0
 
-            with Layout("Red Line 1"):
-                red_event1 = rep.red_event1 + (0, 0, dt_alpha)
-                rep.red_line1.points[rep.index].position = red_event1
-                rep.red_event1 = red_event1
+            rep.red_line0.points[sel].store("Blue Event", blue_event0)
+            blue_local = GroupF().transformation(event=blue_event0, speed=speed, origin=red_event0, lorentz=use_lorentz).event
+            blue_local += (0, 0, new_t)
+            rep.red_line0.points[sel].store("Blue Local", blue_local)
 
-            with Layout("Blue Line 1"):
-                sim_plane   = GroupF().simultaneity_plane(event=red_event0, speed=speed, lorentz=use_lorentz).plane
-                evt = GroupF().plane_line_intersection(plane_origin=red_event0, plane_vector=sim_plane).event
-                evt = GroupF().transformation(event=evt, speed=speed, origin=red_event0, lorentz=use_lorentz).event
-                evt += (0, 0, red_event1.z)
-
-                blue_event1 = GroupF().frame_change(event = evt, x_axis=speed, positive_direction=(1, 0, 0)).event
-                rep.blue_line1.points[rep.index].position = blue_event1
-
+            rep.proper_time = new_t
             rep.index += 1
 
+        blue_line0 = rep.blue_line0
         red_line0  = rep.red_line0
-        red_line1  = rep.red_line1
-        blue_line1 = rep.blue_line1
 
-        debug = rep.debug
-        curves = rep.curves
+        with Layout("Transformation into the Red Line accelerated frame"):
+            red_line1 = Curve(red_line0)
+            red_line1.points.position = (0, 0, Float.Named("Proper Time"))
+            red_line1 = red_line1.resample(resolution)
 
-        with Layout("Transformation in Y moving Frame"):
+            blue_line1 = Curve(red_line1)
+            blue_line1.points.position = Vector.Named("Blue Local")
 
-            blue_line0.points.position = GroupF().transformation(event=nd.position, speed=(0, -beta_y, 1), lorentz=use_lorentz)
-            red_line0.points.position = GroupF().transformation(event=nd.position, speed=(0, -beta_y, 1), lorentz=use_lorentz)
-            red_line1.points.position = GroupF().transformation(event=nd.position, speed=(0, -beta_y, 1), lorentz=use_lorentz)
-            blue_line1.points.position = GroupF().transformation(event=nd.position, speed=(0, -beta_y, 1), lorentz=use_lorentz)
+        # -----------------------------------------------------------------------------------------------------------------------------
+        # Finalization
 
-        # Space orientation along x
+        with Layout("Frame change"):
+            blue_line = Curve(blue_line0)
+            red_line  = Curve(red_line0)
 
-        last_evt = blue_line0.points.sample_index(nd.position, index=resolution-1)
-        time_ratio = last_evt.z/last_evt.y
+            blue_line.points.position = nd.position.mix(factor, blue_line1.points.sample_index(nd.position, index=nd.index))
+            red_line.points.position = nd.position.mix(factor, red_line1.points.sample_index(nd.position, index=nd.index))
 
-        with Repeat(blue_line1=blue_line1, debug=Cloud.Points(resolution), curves=Cloud.Points(1), index=1, iterations=resolution - 2) as rep:
-            red_loc = red_line0.points.sample_index(nd.position, index=rep.index)
-            red_tan = red_line0.points.sample_index(nd.curve_tangent, index=rep.index)
-            blue_loc = blue_line0.points.sample_index(nd.position, index=rep.index)
-
-            rep.curves += Curve.Line(red_loc, blue_loc)
-            rep.curves += Curve.Line(red_loc, red_loc + red_tan*(3, 3, 0))
-
-            #ag = gnmath.atan2(red_tan.y, red_tan.x)
-            ag = gnmath.atan2(red_tan.x, red_tan.y)
-            rep.debug.points[rep.index].store("AG", gnmath.degrees(ag))
-            rot = Rotation.FromEuler((0, 0, ag))
-
-            plane = GroupF().simultaneity_plane(speed=red_tan, lorentz=use_lorentz).plane
-            rot_sim = Rotation.AlignZToVector(plane)
-            #rot = rot_sim @ rot
-            #rep.curves += Curve.Line(red_loc, red_loc + (rot @ red_tan)*(3, 3, 0))
-
-
-            O = red_line1.points.sample_index(nd.position, index=rep.index)
-            blue_loc = O + (rot @ (blue_loc - red_loc))
-
-            rep.curves += Curve.Line(O, blue_loc)
-
-
-            #blue_loc = (rot @ (blue_loc - red_loc)) + (0, 0, red_line1.points.sample_index(nd.position, index=rep.index).z)
-            rep.blue_line1.points[rep.index].position = blue_loc
-
-            if False:
-                # loc + k*dir -> x = 0
-                # k = -loc/dir
-
-                k = loc.x/tan.y
-                y = loc.y - k*tan.x
-
-                evt = (0, y, y*time_ratio)
-                rep.debug.points[rep.index].position = evt
-
-                if True:
-                    evt = GroupF().transformation(event=evt, speed=tan, origin=loc*(1, 1, 0), lorentz=use_lorentz).event
-                    #evt = (evt.x, evt.y, loc.z)
-
-                    blue_event1 = GroupF().frame_change(event = evt, x_axis=tan, positive_direction=(0, 1, 0)).event
-                    rep.blue_line1.points[rep.index].position = blue_event1
-
-            rep.index += 1
-
-        blue_line1 = rep.blue_line1
-
-        debug = rep.debug
-        curves = rep.curves
+        with Layout("Trim"):
+            blue_line = GroupF().vertical_cut(curve=blue_line, cut=end).curve
+            red_line  = GroupF().vertical_cut(curve=red_line, cut=end).curve
 
         # Done
 
+        blue_line.out("Blue Line")
+        red_line.out("Red Line")
+
         blue_line0.out("Blue Line 0")
-        red_line0.out( "Red Line 0")
+        red_line0.out("Red Line 0")
         blue_line1.out("Blue Line 1")
-        red_line1.out( "Red Line 1")
-
-        debug.out("Debug")
-        curves.out("Curves")
-
+        red_line1.out("Red Line 1")
 
     # =============================================================================================================================
     # Twins
 
-    with GeoNodes("Twins"):
+    with GeoNodes("Space Twins"):
 
-        beta_x      = Float.Factor(.8,   "Beta along x", -.999, .999, tip="Speed back and forth along X axis")
-        beta_y      = Float.Factor(.4,   "Beta along y", -.999, .999, tip="Constant speed along Y axis")
-        duration    = Float.Time(10,     "Duration", 1, tip="Experiment duration")
-        u_turn      = Float.Factor(.2,   "U Turn duration", 0.001, 1, tip="Time spent for U turn in % of total duration")
-        count       = Integer(20,        "Resolution", 2, 10000, tip="Number of points")
-        use_lorentz = Boolean(True,      "Lorentz", tip="Special relativity")
+        red_beta    = Float.Factor( .8, "Traveller Beta", -.999, .999,     tip="Speed back and forth of the traveller along X axis")
+        beta_y      = Float.Factor( .4, "Perpendicular Beta", -.999, .999, tip="Common speed of the two twins along the Y axis")
+        duration    = Float.Time(   10, "Duration", 1,                     tip="Experiment duration")
+        u_turn      = Float.Factor( .2, "U Turn duration", 0.001, 1,       tip="Time spent for U turn in % of total duration")
+        count       = Integer(      20, "Resolution", 2, 10000,            tip="Number of points")
+        use_lorentz = Boolean(    True, "Lorentz",                         tip="Special relativity")
+        factor      = Float.Factor(  0, "Factor", 0, 1,                    tip="Frame change factor")
+        end         = Float.Factor(  1, "End",    0, 1,                    tip="Trim end")
 
-        resolution = 2*count + 1
+        twins = GroupF().twins(end=Float(1))
+        twins.plug_node_into()
 
-        with Layout("Combine Speed"):
-            w = GroupF().combine_speeds(u=(beta_x, 0, 1), v=(0, beta_y, 1), lorentz=use_lorentz).w
-            beta_x = w.x
-            beta_y = w.y
+        blue_line0 = Curve(twins.blue_line_0)
+        red_line0  = Curve(twins.red_line_0)
+        blue_line1 = Curve(twins.blue_line_1)
+        red_line1  = Curve(twins.red_line_1)
 
-        blue_line0 = Curve.Line((0, 0, 0), (0, beta_y*duration, duration)).resample(resolution)
-        red_line0  = Curve(blue_line0)
-        blue_line1 = Curve.Line(0, 0).resample(resolution)
-        red_line1  = Curve(blue_line1)
+        resolution = red_line0.points.count
 
-        dt = duration/(resolution - 1)
-        acc_index = gnmath.min(round(count*(1 - u_turn)), count-1)
-
-        with Repeat(
-                red_line0   = red_line0,
-                blue_line1  = blue_line1,
-                red_line1   = red_line1,
-
-                debug  = Cloud.Points(count=resolution),
-                curves = Cloud.Points(count=1),
-
-                beta        = beta_x,
-                red_event0  = Vector(),
-                red_event1  = Vector(),
-
-                index       = 1,
-                iterations  = resolution - 1) as rep:
-
-            with Layout("Current Speed"):
-                beta0 = rep.index.map_range_linear(acc_index, count, beta_x, 0)
-                beta1 = rep.index.map_range_linear(count, resolution - 1 - acc_index, 0, -beta_x)
-                new_beta = beta0.switch(rep.index > count, beta1)
-
-                beta = ((rep.beta + new_beta)/2)._lc("Beta")
-                rep.beta = new_beta
-
-                speed = Vector((beta, beta_y, 0))
-                speed_norm = speed.length._lc("Speed Norm")
-                speed = (speed + (0, 0, 1))._lc("Speed")
-
-            with Layout("Alpha = 1/gamma"):
-                alpha = Float.Switch(use_lorentz, 1, gnmath.sqrt(1 - beta**2))._lc("Alpha")
-                dt_alpha = (dt*alpha)._lc("dt_alpha")
-
-            with Layout("Red Line 0"):
-                red_event0 = rep.red_event0 + speed*dt
-                rep.red_line0.points[rep.index].position = red_event0
-                rep.red_event0 = red_event0
-
-                rep.debug.points[rep.index].position = red_event0
-
-            with Layout("Red Line 1"):
-                red_event1 = rep.red_event1 + (0, speed_norm*dt_alpha, dt_alpha)
-                rep.red_line1.points[rep.index].position = red_event1
-                rep.red_event1 = red_event1
-
-            with Layout("Blue Line 1"):
-
-                with Layout("Where is the blue twin ?"):
-                    sim_plane   = GroupF().simultaneity_plane(event=red_event0, speed=speed, lorentz=use_lorentz).plane
-                    evt = GroupF().plane_line_intersection(plane_origin=red_event0, plane_vector=sim_plane, line_vector=(0, beta_y, 1)).event
-
-                    #rep.curves += Curve.Line(red_event0, evt)
-
-                with Layout("Transform in the red space"):
-                    evt = GroupF().transformation(event=evt, speed=speed, origin=red_event0, lorentz=use_lorentz).event
-                    rep.curves += Curve.Line(red_event1, red_event1 + evt)
-
-                with Layout("Orient axes along the space speed"):
-                    ag = gnmath.atan2(beta, beta_y)
-                    rot = Rotation.FromEuler((0, 0, ag))
-
-                    blue_event1 = red_event1 + (rot @ evt)
-                    rep.blue_line1.points[rep.index].position = blue_event1
-
-                    rep.curves += Curve.Line(red_event1, blue_event1)
-
-            rep.index += 1
-
-        red_line0  = rep.red_line0
-        red_line1  = rep.red_line1
-        blue_line1 = rep.blue_line1
-
-        debug = rep.debug
-        curves = rep.curves
-
-        """
-
-        with Layout("Transformation in Y moving Frame"):
-
-            blue_line0.points.position = GroupF().transformation(event=nd.position, speed=(0, -beta_y, 1), lorentz=use_lorentz)
-            red_line0.points.position = GroupF().transformation(event=nd.position, speed=(0, -beta_y, 1), lorentz=use_lorentz)
-            red_line1.points.position = GroupF().transformation(event=nd.position, speed=(0, -beta_y, 1), lorentz=use_lorentz)
-            blue_line1.points.position = GroupF().transformation(event=nd.position, speed=(0, -beta_y, 1), lorentz=use_lorentz)
-
-        # Space orientation along x
-
-        last_evt = blue_line0.points.sample_index(nd.position, index=resolution-1)
-        time_ratio = last_evt.z/last_evt.y
-
-        with Repeat(blue_line1=blue_line1, debug=Cloud.Points(resolution), curves=Cloud.Points(1), index=1, iterations=resolution - 2) as rep:
-            red_loc = red_line0.points.sample_index(nd.position, index=rep.index)
-            red_tan = red_line0.points.sample_index(nd.curve_tangent, index=rep.index)
-            blue_loc = blue_line0.points.sample_index(nd.position, index=rep.index)
-
-            rep.curves += Curve.Line(red_loc, blue_loc)
-            rep.curves += Curve.Line(red_loc, red_loc + red_tan*(3, 3, 0))
-
-            #ag = gnmath.atan2(red_tan.y, red_tan.x)
-            ag = gnmath.atan2(red_tan.x, red_tan.y)
-            rep.debug.points[rep.index].store("AG", gnmath.degrees(ag))
-            rot = Rotation.FromEuler((0, 0, ag))
-
-            plane = GroupF().simultaneity_plane(speed=red_tan, lorentz=use_lorentz).plane
-            rot_sim = Rotation.AlignZToVector(plane)
-            #rot = rot_sim @ rot
-            #rep.curves += Curve.Line(red_loc, red_loc + (rot @ red_tan)*(3, 3, 0))
+        with Layout("Transformation in moving frame along Y"):
+            pass
+            blue_line0.points.position = GroupF().transformation(event=nd.position, speed=(0, -beta_y, 1), lorentz=use_lorentz).event
+            red_line0.points.position = GroupF().transformation(event=nd.position, speed=(0, -beta_y, 1), lorentz=use_lorentz).event
+        #    blue_line1.points.position = GroupF().transformation(event=nd.position, speed=(0, -beta_y, 1), lorentz=use_lorentz).event
+        #    red_line1.points.position = GroupF().transformation(event=nd.position, speed=(-beta_y, 0, 1), lorentz=use_lorentz).event
 
 
-            O = red_line1.points.sample_index(nd.position, index=rep.index)
-            blue_loc = O + (rot @ (blue_loc - red_loc))
+        blue_line0 = blue_line0.transform(rotation=(0, 0, -halfpi))
+        red_line0  = red_line0.transform(rotation=(0, 0, -halfpi))
 
-            rep.curves += Curve.Line(O, blue_loc)
+        blue_line1 = GroupF().accelerated_transformation(accelerated=red_line0, uniform_speed=(beta_y, 0, 1), x_along_speed=True, resolution=resolution, lorentz=use_lorentz).curve
+        x = blue_line1.points.sample_index(Float.Named("Distance"), index=nd.index)
+        t = blue_line1.points.sample_index(nd.position.z, index=nd.index)
+        red_line1.points.position = (x, 0, t)
+
+        blue_line1.points.offset = (x, 0, 0)
+
+        #blue_line1 = GroupF().accelerated_transformation(accelerated=red_line0, uniform_speed=(0, beta_y, 1), x_along_speed=True, resolution=resolution, lorentz=use_lorentz).curve
+        #blue_line1.points.position = GroupF().transformation(event=nd.position, speed=(0, -beta_y, 1), lorentz=use_lorentz).event
 
 
-            #blue_loc = (rot @ (blue_loc - red_loc)) + (0, 0, red_line1.points.sample_index(nd.position, index=rep.index).z)
-            rep.blue_line1.points[rep.index].position = blue_loc
+        # -----------------------------------------------------------------------------------------------------------------------------
+        # Finalization
 
-            if False:
-                # loc + k*dir -> x = 0
-                # k = -loc/dir
+        with Layout("Frame change"):
+            blue_line = Curve(blue_line0)
+            red_line  = Curve(red_line0)
 
-                k = loc.x/tan.y
-                y = loc.y - k*tan.x
+            blue_line.points.position = nd.position.mix(factor, blue_line1.points.sample_index(nd.position, index=nd.index))
+            red_line.points.position = nd.position.mix(factor, red_line1.points.sample_index(nd.position, index=nd.index))
 
-                evt = (0, y, y*time_ratio)
-                rep.debug.points[rep.index].position = evt
-
-                if True:
-                    evt = GroupF().transformation(event=evt, speed=tan, origin=loc*(1, 1, 0), lorentz=use_lorentz).event
-                    #evt = (evt.x, evt.y, loc.z)
-
-                    blue_event1 = GroupF().frame_change(event = evt, x_axis=tan, positive_direction=(0, 1, 0)).event
-                    rep.blue_line1.points[rep.index].position = blue_event1
-
-            rep.index += 1
-
-        blue_line1 = rep.blue_line1
-
-        debug = rep.debug
-        curves = rep.curves
-        """
+        with Layout("Trim"):
+            blue_line = GroupF().vertical_cut(curve=blue_line, cut=end).curve
+            red_line  = GroupF().vertical_cut(curve=red_line, cut=end).curve
 
         # Done
 
+        blue_line.out("Blue Line")
+        red_line.out("Red Line")
+
         blue_line0.out("Blue Line 0")
-        red_line0.out( "Red Line 0")
+        red_line0.out("Red Line 0")
         blue_line1.out("Blue Line 1")
-        red_line1.out( "Red Line 1")
-
-        debug.out("Debug")
-        curves.out("Curves")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        red_line1.out("Red Line 1")
 
 
 

@@ -162,11 +162,13 @@ class Tree:
     # Remove node groups
 
     @staticmethod
-    def remove_groups(prefix=None, geonodes=True, shadernodes=True, all_groups=False):
+    def remove_groups(names=None, prefix=None, geonodes=True, shadernodes=True):
 
         groups = []
-        if prefix is not None:
-            prefix += ' '
+        if prefix is None:
+            prefix_ = ""
+        else:
+            prefix_ = prefix + ' '
 
         tree_types = []
         if geonodes:
@@ -177,10 +179,24 @@ class Tree:
         for group in bpy.data.node_groups:
             if group.bl_idname not in tree_types:
                 continue
-            if (not all_groups) and (group.description != 'GEONODES'):
+            if prefix is not None and group.name[:len(prefix_)] != prefix_:
                 continue
-            if prefix is not None and group.name[:len(prefix)] != prefix:
-                continue
+
+            if names is None:
+                pass
+            elif isinstance(names, str):
+                if group.name != prefix_ + names:
+                    continue
+            elif isinstance(names, list):
+                ok = False
+                for name in names:
+                    if group.name == prefix_ + name:
+                        ok = True
+                        break
+                if not ok:
+                    continue
+            else:
+                raise Exception(f"Argument names '{names}' is not valid: None, str or list of strs expected")
 
             groups.append(group)
 
