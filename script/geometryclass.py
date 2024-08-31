@@ -410,10 +410,10 @@ class Geometry(DataSocket, GeoBase):
 
     @property
     def bounding_box(self):
-        bb = Node('Bounding Box', {'Geometry': self})._out
+        bb = Mesh(Node('Bounding Box', {'Geometry': self})._out)
         bb.min_ = bb.node.min
         bb.max_ = bb.node.max
-        return Mesh(bb)
+        return bb
 
     @property
     def convex_hull(self):

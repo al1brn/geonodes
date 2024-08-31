@@ -23,7 +23,7 @@ updates
 - creation : 2024/08/24
 """
 
-from bpy.types import Attribute
+from bpy.types import Attribute, SEQUENCER_PT_view_safe_areas
 from ..geonodes import *
 from .. import shadernodes as sh
 
@@ -89,8 +89,6 @@ def demo():
         )
 
         ped.out()
-
-
 
     # ====================================================================================================
     # A digital digit : each light item is a face
@@ -214,6 +212,7 @@ def demo():
         shear      = Float.Factor(.4, "Shear", 0, 1)
         on_mat     = Material("LCD On", "On")
         off_mat    = Material("LCD Off", "Off")
+        color      = Color((1, 0, 0), "Color")
         merge      = Boolean(True, "Merge with Input")
         y_offset   = Float(-.01, "Y Offset")
 
@@ -256,6 +255,8 @@ def demo():
 
         mesh = mesh.switch(minus, signed_mesh)
         mesh = mesh.transform(translation=(0, y_offset, 0))
+        mesh = Mesh(mesh)
+        mesh.faces.store("Color", color)
 
         mesh += Geometry.Switch(merge, None, Geometry())
 
@@ -271,6 +272,7 @@ def demo():
         shear      = Float.Factor(.4, "Shear", 0, 1)
         on_mat     = Material("LCD On", "On")
         off_mat    = Material("LCD Off", "Off")
+        color      = Color((1, 0, 0), "Color")
         dots_on    = Boolean(True, "Dots are On")
         merge      = Boolean(True, "Merge with Input")
         y_offset   = Float(-.01, "Y Offset")
@@ -287,6 +289,7 @@ def demo():
             "Shear"            : shear,
             "On"               : on_mat,
             "Off"              : off_mat,
+            "Color"            : color,
             "Merge with Input" : False,
             "Y Offset"         : 0,
         }).geometry
@@ -302,6 +305,7 @@ def demo():
             "Shear"            : shear,
             "On"               : on_mat,
             "Off"              : off_mat,
+            "Color"            : color,
             "Merge with Input" : False,
             "Y Offset"         : 0,
         }).geometry
@@ -319,6 +323,7 @@ def demo():
             squares.points.offset = (nd.position.z*.4*shear, 0, 0)
 
             squares.faces.material = off_mat.switch(dots_on, on_mat)
+            squares.faces.store("Color", color)
 
         clock = h_mesh + squares + m_mesh
         clock = clock.transform(translation=(0, y_offset, 0))
@@ -346,7 +351,7 @@ def demo():
 
         with Layout("Figure and next"):
             curve0 = fig0.to_string().to_curves(size=size, align_x='CENTER', align_y='MIDDLE')
-            curve1 = fig1.to_string().to_curves(align_x='CENTER', align_y='MIDDLE').transform(translation=(0, -size, 0))
+            curve1 = fig1.to_string().to_curves(size=size, align_x='CENTER', align_y='MIDDLE').transform(translation=(0, -size, 0))
 
             figure = Curve((curve0 + curve1).realize()).fill()
 
@@ -369,8 +374,6 @@ def demo():
         figure = back + figure
         figure = figure.transform(rotation=(halfpi, 0, 0))
 
-
-
         figure.out()
 
     # ====================================================================================================
@@ -385,6 +388,7 @@ def demo():
         back_mat   = Material("Wheel Background", "Background material")
         with_box   = Boolean(True, "Create Box")
         box_mat    = Material("Wheel Box", "Box material")
+        box_color  = Color((.5, .5, .5), "Box Color")
         merge      = Boolean(False, "Merge with input")
 
         size_factor = 1.05
@@ -419,13 +423,30 @@ def demo():
 
         with Layout("Box"):
 
-            wheels = wheels.transform(translation=(0, size*.1, 0))
+            bbox = wheels.bounding_box
+            center = (bbox.min_ + bbox.max_).scale(-.5)
+            wheels = wheels.transform(translation=center)
 
-            box = Mesh.Cube(((count + .2)*size, size*1.8, size*1.2))
-            cut = box.transform(scale=(.9, .65, 1), translation=(0, 0, .1))
-            box = box.difference(cut)
-            box = box.transform(rotation=(halfpi, 0, 0), translation=(size*(count-1)/2, size*.6, size*.1))
+            bbox = wheels.bounding_box
+            ext_box = Mesh.Cube(size=bbox.max_.scale(2) + (.1, .5, .11))
+            ext_box = ext_box.transform(translation=(0, .2, 0))
+
+            int_box = Mesh.Cube(size=bbox.max_.scale(2) + (-.1, .3, -.1))
+            int_box = int_box.transform(translation=(0, -.1, 0))
+
+            box = ext_box.difference(int_box)
+            #box = ext_box + int_box
             box.faces.material = box_mat
+            box.faces.store("Box Color", box_color)
+
+            if False:
+                wheels = wheels.transform(translation=(0, size*.1, 0))
+
+                box = Mesh.Cube(((count + .2)*size, size*2.1, size*1.2))
+                cut = box.transform(scale=(.9, .65, 1), translation=(0, 0, .1))
+                box = box.difference(cut)
+                box = box.transform(rotation=(halfpi, 0, 0), translation=(size*(count-1)/2, size*.6, size*.1))
+                box.faces.material = box_mat
 
         wheels += Geometry.Switch(with_box, None, box)
         wheels += Geometry.Switch(merge, None, Geometry())

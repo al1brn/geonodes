@@ -524,6 +524,7 @@ def demo():
             rep.index += 1
 
         blue_line0 = rep.blue_line0
+        blue_line0.points.store("Proper Time", nd.spline_parameter.factor*duration)
         red_line0  = rep.red_line0
 
         with Layout("Transformation into the Red Line accelerated frame"):
@@ -533,6 +534,7 @@ def demo():
 
             blue_line1 = Curve(red_line1)
             blue_line1.points.position = Vector.Named("Blue Local")
+            blue_line1.points.store("Proper Time", Vector.Named("Blue Local").z)
 
         # -----------------------------------------------------------------------------------------------------------------------------
         # Finalization
@@ -571,6 +573,7 @@ def demo():
         use_lorentz = Boolean(    True, "Lorentz",                         tip="Special relativity")
         factor      = Float.Factor(  0, "Factor", 0, 1,                    tip="Frame change factor")
         end         = Float.Factor(  1, "End",    0, 1,                    tip="Trim end")
+        time_scale  = Float.Factor(  1, "Time Scale", 0, 1,                tip="Scale to apply on z axis" )
 
         twins = GroupF().twins(end=Float(1))
         twins.plug_node_into()
@@ -583,26 +586,48 @@ def demo():
         resolution = red_line0.points.count
 
         with Layout("Transformation in moving frame along Y"):
-            pass
             blue_line0.points.position = GroupF().transformation(event=nd.position, speed=(0, -beta_y, 1), lorentz=use_lorentz).event
             red_line0.points.position = GroupF().transformation(event=nd.position, speed=(0, -beta_y, 1), lorentz=use_lorentz).event
-        #    blue_line1.points.position = GroupF().transformation(event=nd.position, speed=(0, -beta_y, 1), lorentz=use_lorentz).event
-        #    red_line1.points.position = GroupF().transformation(event=nd.position, speed=(-beta_y, 0, 1), lorentz=use_lorentz).event
 
+            blue_line0.points.store("Distance", nd.spline_parameter.factor*beta_y*duration)
 
-        blue_line0 = blue_line0.transform(rotation=(0, 0, -halfpi))
-        red_line0  = red_line0.transform(rotation=(0, 0, -halfpi))
+        if True:
+            red_line0.points[rep.index].store("Distance", 0.)
+            with Layout("Proper distance"):
+                start_event = red_line0.points.sample_index(nd.position, index=0)
+                with Repeat(red_line0=red_line0, event=start_event, s=0., index=1, iterations=resolution - 1) as rep:
+                    loc = red_line0.points.sample_index(nd.position, rep.index)
+                    tan = red_line0.points.sample_index(nd.curve_tangent, rep.index)
 
-        blue_line1 = GroupF().accelerated_transformation(accelerated=red_line0, uniform_speed=(beta_y, 0, 1), x_along_speed=True, resolution=resolution, lorentz=use_lorentz).curve
+                    speed, beta = normalize_speed(tan, use_lorentz)
+                    alpha = Float.Switch(use_lorentz, 1, gnmath.sqrt(1- beta**2))
+                    ds = (Vector((loc.x, loc.y, 0)) - (rep.event.x, rep.event.y, 0)).length
+                    s = rep.s + ds*alpha
+
+                    rep.red_line0.points[rep.index].store("Distance", s)
+                    rep.event = loc
+                    rep.s = s
+                    rep.index += 1
+
+                red_line0 = rep.red_line0
+
+        else:
+            flat = red_line0.transform(scale=(1, 1, 0))
+            red_line0.points.store("Distance", flat.points.sample_index(nd.spline_parameter.length, index=nd.index))
+
+        red_line0_rot  = red_line0.transform(rotation=(0, 0, -halfpi))
+
+        blue_line1 = GroupF().accelerated_transformation(accelerated=red_line0_rot, uniform_speed=(beta_y, 0, 1), x_along_speed=True, resolution=resolution, lorentz=use_lorentz).curve
         x = blue_line1.points.sample_index(Float.Named("Distance"), index=nd.index)
         t = blue_line1.points.sample_index(nd.position.z, index=nd.index)
+
         red_line1.points.position = (x, 0, t)
+        red_line1.points.store("Distance", x)
 
         blue_line1.points.offset = (x, 0, 0)
 
-        #blue_line1 = GroupF().accelerated_transformation(accelerated=red_line0, uniform_speed=(0, beta_y, 1), x_along_speed=True, resolution=resolution, lorentz=use_lorentz).curve
-        #blue_line1.points.position = GroupF().transformation(event=nd.position, speed=(0, -beta_y, 1), lorentz=use_lorentz).event
-
+        blue_line1 = blue_line1.transform(rotation=(0, 0, halfpi))
+        red_line1  = red_line1.transform(rotation=(0, 0, halfpi))
 
         # -----------------------------------------------------------------------------------------------------------------------------
         # Finalization
@@ -614,9 +639,12 @@ def demo():
             blue_line.points.position = nd.position.mix(factor, blue_line1.points.sample_index(nd.position, index=nd.index))
             red_line.points.position = nd.position.mix(factor, red_line1.points.sample_index(nd.position, index=nd.index))
 
-        with Layout("Trim"):
+        with Layout("Trim and time scale"):
             blue_line = GroupF().vertical_cut(curve=blue_line, cut=end).curve
             red_line  = GroupF().vertical_cut(curve=red_line, cut=end).curve
+
+            blue_line = blue_line.transform(scale=(1, 1, time_scale))
+            red_line  = red_line.transform(scale=(1, 1, time_scale))
 
         # Done
 
@@ -627,9 +655,6 @@ def demo():
         red_line0.out("Red Line 0")
         blue_line1.out("Blue Line 1")
         red_line1.out("Red Line 1")
-
-
-
 
     # =============================================================================================================================
     # Done
