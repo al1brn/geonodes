@@ -262,6 +262,7 @@ def get_blender_resource(socket_type, value):
         'COLLECTION': {'coll': bpy.data.collections, 'type': bpy.types.Collection},
         'IMAGE':      {'coll': bpy.data.images,      'type': bpy.types.Image},
         'MATERIAL':   {'coll': bpy.data.materials,   'type': bpy.types.Material},
+        'TEXTURE':    {'coll': bpy.data.textures,    'type': bpy.types.Texture},
         }[socket_type]
 
     if value is None:

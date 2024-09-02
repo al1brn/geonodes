@@ -2430,7 +2430,7 @@ class nd:
 
 
     @classmethod
-    def menu_switch(cls, menu=None, a=None, b=None, active_index=1, active_item=None, data_type='GEOMETRY', enum_definition=None, enum_items=None):
+    def menu_switch(cls, menu=None, a=None, b=None, active_index=1, data_type='GEOMETRY'):
         """ Node 'Menu Switch' (GeometryNodeMenuSwitch)
 
         Arguments
@@ -2439,17 +2439,15 @@ class nd:
         - a (Geometry) : socket 'A' (Item_0)
         - b (Geometry) : socket 'B' (Item_1)
         - active_index (int): Node.active_index
-        - active_item (NodeEnumItem): Node.active_item
         - data_type (str): Node.data_type in ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'ROTATION', 'MATRIX', 'STRING', 'RGBA', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL')
-        - enum_definition (GeometryNodeMenuSwitch): Node.enum_definition
-        - enum_items (bpy_prop_collection): Node.enum_items
 
         Returns
         -------
         - output (Geometry)
         """
 
-        node = Node('Menu Switch', {'Menu': menu, 'Item_0': a, 'Item_1': b}, active_index=active_index, active_item=active_item, data_type=data_type, enum_definition=enum_definition, enum_items=enum_items)
+        #node = Node('Menu Switch', {'Menu': menu, 'Item_0': a, 'Item_1': b}, active_index=active_index, active_item=active_item, data_type=data_type, enum_definition=enum_definition, enum_items=enum_items)
+        node = Node('Menu Switch', {'Menu': menu, 'Item_0': a, 'Item_1': b}, active_index=active_index, data_type=data_type)
         return node._out
 
 

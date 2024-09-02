@@ -589,6 +589,23 @@ def loop_on_nodes(func, *args, tree_type='GeometryNodeTree', **kwargs):
     return count
 
 # =============================================================================================================================
+# Get the sockets types
+
+def gen_socket_types(tree_type='GeometryNodeTree'):
+    def get_types(node_info, types):
+        for bsocket in node_info.bnode.inputs:
+            types.add(bsocket.type)
+        for bsocket in node_info.bnode.outputs:
+            types.add(bsocket.type)
+
+    types = set()
+    count = loop_on_nodes(get_types, types, tree_type=tree_type)
+
+    print("Socket types:")
+    pprint(types)
+
+
+# =============================================================================================================================
 # Gen static functions
 
 def gen_static_class(tree_type='GeometryNodeTree', folder=''):

@@ -69,6 +69,17 @@ from . import blendertree
 # Break to exit with blocks
 
 class Break(Exception):
+    """ Exception used to exit a With context block.
+
+    ``` python
+    with GeoNodes("Break Demo"):
+        Geometry().out()
+        raise Break()
+
+        # Not executed
+        Float(10).out()
+    ```
+    """
     pass
 
 # =============================================================================================================================
@@ -76,6 +87,29 @@ class Break(Exception):
 
 class Layout:
     def __init__(self, label=None, color=None):
+        """ Node Frame
+
+        All nodes created when a Layout is open are placed in this layout.
+        If the 'color' argument is None, a random color is used
+
+        ``` python
+        with GeoNodes("Layout Demo"):
+
+            with Layout("Some maths"):
+                z = gnmath.atan2(nd.position.z, Vector((nd.position.x, nd.position.y, 0)).length)
+
+            geo = Mesh()
+            geo.points.offset = (0, 0, z)
+
+            geo.out()
+        ```
+
+        Arguments
+        ---------
+        - label (str = None) : Layout title
+        - color (blender color = None) : Layout color (randomly generated if None)
+        """
+
         self.tree  = Tree.current_tree
         self.frame = Node('Frame')
         self.frame._label = label
@@ -110,6 +144,40 @@ class Tree:
     _total_links = 0
 
     def __init__(self, tree_name, tree_type='GeometryNodeTree', clear=True, fake_user=False, is_group=False, prefix=None):
+        """ Root class for GeoNodes and ShaderNodes trees.
+
+        The system manages a stack of Trees. When a Tree is created, it is placed at the top of the stack
+        and becomes the current tree.
+        The Tree is poped from the stack with the method Tree.pop.
+
+        Better use the context management syntax:
+
+        ``` python
+        with GeoNodes("My Tree"):
+
+            # Get the current tree
+            tree = Tree.current_tree
+
+            pass
+
+        # Raises an error
+        tree = Tree.current_tree
+        ```
+
+        > [!IMPORTANT]
+        > If you create a tree with an existing name, the existing Tree won't be overriden if it was not
+        > a tree created by **GeoNodes**. The string 'GEONODES' is added in the description attribute of
+        > node groups created by **GeoNodes** in order to differentiate generated Trees from yours.
+
+        Arguments
+        ---------
+        - tree_name (str) : tree name
+        - tree_type (str = 'GeometryNodeTree') : tree type in ('GeometryNodeTree', 'ShaderNodeTree')
+        - clear (bool = True) : clear the current tree
+        - fake_user (bool = False) : fake user flag
+        - is_group (bool = False) : Group or not
+        - prefix (str=None) : str prefix to add at the beging of the tree name
+        """
 
         if prefix is not None:
             tree_name = f"{prefix} {tree_name}"
@@ -163,6 +231,22 @@ class Tree:
 
     @staticmethod
     def remove_groups(names=None, prefix=None, geonodes=True, shadernodes=True):
+        """ Remove Groups created by GeoNodes.
+
+        > [!IMPORTANT]
+        > This method can only remove groups created by **GeoNodes**.
+
+        Arguments
+        ---------
+        - names (str or list of strs = None) : name of the node groups to remove (all if None)
+        - prefix (str = None) : name prefix for the groups to delete
+        - geonodes (bool = True) : remove geometry nodes groups
+        - shaderndes (bool = True) : remove shader nodes groups
+
+        Returns
+        -------
+        - None
+        """
 
         groups = []
         if prefix is None:
@@ -213,13 +297,18 @@ class Tree:
     @classmethod
     @property
     def current_tree(cls):
+        """ Get the Current Tree.
+
+        Raises an error if not Tree is currently open
+
+        Returns
+        -------
+        - Tree : current tree
+        """
+
         if not cls.STACK:
             raise NodeError(f"No tree is open")
         return cls.STACK[-1]
-
-    #@property
-    #def NODE_NAMES(self):
-    #    return constants.NODE_NAMES[self._btree.bl_idname]
 
     # ----------------------------------------------------------------------------------------------------
     # Gen code utility
@@ -243,11 +332,25 @@ class Tree:
     @classmethod
     @property
     def is_geonodes(cls):
+        """ Current Tree is Geometry Nodes.
+
+        Returns
+        -------
+        - True if Tree is GeoNodes, False otherwise
+        """
+
         return cls.current_tree._btree.bl_idname == 'GeometryNodeTree'
 
     @classmethod
     @property
     def is_shader(cls):
+        """ Current Tree is Shader Nodes.
+
+        Returns
+        -------
+        - True if Tree is ShaderNodes, False otherwise
+        """
+
         return cls.current_tree._btree.bl_idname == 'ShaderNodeTree'
 
     @classmethod
@@ -260,6 +363,11 @@ class Tree:
         return f"{len(self._btree.nodes)} nodes, {len(self._btree.links)} links"
 
     def clear(self):
+        """ Clear the content of the Tree.
+
+        Remove all the nodes in the Tree.
+        """
+
         to_clear = []
         self._keeps.clear()
         self._nodes.clear()
@@ -307,11 +415,21 @@ class Tree:
         if isinstance(exc_value, Break):
             return True
 
-
     # =============================================================================================================================
     # Arranges nodes
 
     def arrange(self):
+        """ Arrange the nodes in the editor.
+
+        Tries to arrange properly the nodes from left to right.
+
+        This method is called when the Tree is poped from the stack.
+
+        Returns
+        -------
+        - None
+        """
+
         treearrange.arrange(self._btree)
 
     # =============================================================================================================================
@@ -340,6 +458,17 @@ class Tree:
     # Create a link
 
     def link(self, out_socket, in_socket):
+        """ Create a link between two sockets.
+
+        Arguments
+        ---------
+        - out_socket (socket) : a node output socket
+        - in_socket (socket) : input socket from another node
+
+        Returns
+        -------
+        - Link
+        """
 
         if hasattr(out_socket, '_bsocket'):
             out_socket = out_socket._bsocket
@@ -354,6 +483,15 @@ class Tree:
 
     @property
     def input_node(self):
+        """ Returns a Group Input Node.
+
+        If the node doesn't already exist, it is created.
+
+        Returns
+        -------
+        - Node 'Group Input'
+        """
+
         for node in self._nodes:
             if node._bnode.bl_idname ==  'NodeGroupInput':
                 return node
@@ -361,6 +499,15 @@ class Tree:
 
     @property
     def output_node(self):
+        """ Returns a Group Output Node.
+
+        If the node doesn't already exist, it is created.
+
+        Returns
+        -------
+        - Node 'Group Output'
+        """
+
         for node in self._nodes:
             if node._bnode.bl_idname ==  'NodeGroupOutput':
                 return node
@@ -558,6 +705,17 @@ class Tree:
 
     @classmethod
     def new_input_from_input_socket(cls, input_socket, name=None):
+        """ Create a new group input socket from an existing input socket.
+
+        Arguments
+        ---------
+        - input_socket (socket) : a node input socket
+        - name (str = None) : name of the group input socket to create
+
+        Returns
+        -------
+        - Socket
+        """
 
         tree = Tree.current_tree
 
@@ -605,6 +763,7 @@ class Tree:
 
     @classmethod
     def value_to_socket(cls, value):
+
         if value is None:
             return None
         return Tree.get_data_socket_class(utils.get_socket_type(value))(value)
@@ -640,6 +799,96 @@ class Tree:
 
 class Node:
     def __init__(self, node_name, sockets={}, _keep=None, **parameters):
+        """ Node wrapper.
+
+        The node wrapper exposes input and output sockets and the node parameters.
+        At creation time, input sockets are initialized with a dict using their name as key ;
+        paramers are initialized as keyword arguments:
+
+        > [!Note] The most often, the name of the socket can be used as key in the initialization dict.
+        > But in some cases, this doesn't apply:
+        > - Several sockets can share the same names (example: 'Math' node has two 'Value' input socket)
+        > - Display name is different from the python name (example: 'Math' node, operation 'COMPARE', actual name
+        >   of 'Epsilon' socket is 'Value')
+
+        In order to to handle these specific cases, the dict keys can be:
+        - The index of the socket in the list
+        - The 'identifier' of the socket
+
+        When the sockets are initialized in there order, a list of the value can be passed rather than a dict.
+
+        ``` python
+        with GeoNodes("Node initialization"):
+
+            # Dict syntax to create a circle
+            node = Node("Mesh Circle", {'Vertices': 32, 'Radius': 1.}, fill_type='NGON')
+
+            # Dict syntax using the socket identifier as key on a node with homonym sockets
+            node = Node("Math", {'Value': 2, 'Value_001': 2}, operation='ADD')
+
+            # Dict key words can be socket index
+            node = Node("Math", {0: 2, 1: 2}, operation='ADD')
+
+            # A list of values can be used to initialize the sockets in the order they appear
+            # Epsilon is initialized to .1
+            node = Node("Math", [2., 2., .1], operation='COMPARE')
+        ```
+
+        Once initialized, the sockets can be accessed either as list items keyed by the sockets name, index or identifier or
+        as node attribute using their snake case name.
+
+        - **Setting** a node attribute or item array is interpretated as plugging a value into an input socket
+        - **Getting** a node attribute or item array is interpretated as reading the value from an output socket
+
+        ``` python
+        with GeoNodes("Node sockets access"):
+
+            # Input geometry socket
+            geo = Geometry()
+
+            # Create the node
+            node = Node("Extrude Mesh")
+
+            # Change the parameter
+            node.mode = 'EDGES'
+
+            # Plug 'Geometry' socket with list item syntax
+            node["Mesh"] = geo
+
+            # Plug 'Selection' socket with ordered list syntax
+            node["Selection"] = Boolean(True)
+
+            # Plug 'Offset Scale' with snake case syntax
+            node.offset_scale = 0.5
+
+            # Read the output geometry : snake case syntax
+            extruded_geo = node.mesh
+
+            # Read the top selection : list syntax
+            top_selection = node["Top"]
+
+            # Read the side selection : index list syntax
+            side_selection = node[2]
+
+            # Use the sockets in another node
+            top_selection |= side_selection
+
+            # Connect to the group output geometry
+            extruded_geo.out()
+        ```
+
+        > [!Note] The '_out' property returns the first enabled output socket
+
+        Arguments
+        ---------
+        - node_name (str) : Node name
+        - sockets (dict or list) : initialization values for the node input sockets
+        - **kwargs : node parameters initialization
+
+        Returns
+        -------
+        - Node
+        """
 
         self._tree = Tree.current_tree
         btree = self._tree._btree
@@ -711,14 +960,14 @@ class Node:
         socket_type = bsocket.type
 
         if Tree.is_geonodes:
-            from .geonodes import Boolean, Integer, Float, Vector, Rotation, Matrix, Color, Geometry, Material, Image, Object, Collection, String, Menu
+            from .geonodes import Boolean, Integer, Float, Vector, Rotation, Matrix, Color, Geometry, Material, Image, Object, Collection, Texture, String, Menu
             from .geonodes import Mesh, Curve, Cloud, Volume, Instances
 
 
             socket_class = {'BOOLEAN': Boolean, 'INT': Integer, 'VALUE': Float, 'VECTOR': Vector, 'ROTATION': Rotation, 'MATRIX': Matrix, 'RGBA': Color,
                 'STRING': String, 'MENU': Menu,
                     'GEOMETRY': Geometry,
-                    'MATERIAL': Material, 'IMAGE': Image, 'OBJECT': Object, 'COLLECTION': Collection,
+                    'MATERIAL': Material, 'IMAGE': Image, 'OBJECT': Object, 'COLLECTION': Collection, 'TEXTURE': Texture,
                 }[socket_type]
 
             if socket_type == 'GEOMETRY':
@@ -742,7 +991,6 @@ class Node:
 
         else:
             raise Exception("Not normal")
-
 
         return socket_class(bsocket)
 
@@ -836,6 +1084,13 @@ class Node:
 
     @property
     def _out(self):
+        """ Returns the first enabled output socket.
+
+        Returns
+        -------
+        - Socket : first enabled output socket
+        """
+
         for bsock in self._bnode.outputs:
             if bsock.enabled:
                 return self.data_socket(bsock)
@@ -1061,11 +1316,87 @@ class Node:
                 return
 
     # -----------------------------------------------------------------------------------------------------------------------------
+    # Transform a list of socket keys (name or index or identifier) in a list of identifier
+
+    def socket_keys_to_identifiers(self, names, use_inputs=True):
+
+        if names is None:
+            return None
+
+        if len(names) == 0:
+            return names
+
+        bsockets = self._bnode.inputs if use_inputs else self._bnode.outputs
+        transcode = {}
+        remain = [key for key in names]
+
+        for i, bsocket in enumerate(bsockets):
+            ok = False
+            for k in (i, bsocket.identifier, bsocket.name):
+                if k in remain:
+                    transcode[k] = bsocket.identifier
+                    del remain[remain.index(k)]
+                    ok = True
+                if ok:
+                    break
+
+        if len(remain):
+            raise NodeError(f"Socket name or identifier error: no socket named {remain} in node '{self._bnode.name}'",
+                valids=[bsock.identifier for bsock in bsockets])
+
+        if isinstance(names, list):
+            return list(transcode.values())
+        else:
+            return {transcode[key]: value for key, value in names.items()}
+
+    # -----------------------------------------------------------------------------------------------------------------------------
     # Plug another node into self
     # If the other node is None, the Tree input node is taken
     # Create is only valid in this case
 
-    def plug_node_into(self, node=None, include=None, exclude={}, rename={}, create=True):
+    def plug_node_into(self, node=None, include=None, exclude=[], rename={}, create=True):
+        """ Plug the output sockets of a node into the input sockets of the node.
+
+        This method is used to connect several sockets in a compact syntax.
+
+        If the node argument is None, the sockets are created in the Group Input node.
+        Use 'include', 'exclude' and 'rename' arguments to control the connexions.
+
+        ``` python
+        with GeoNodes("Connect several sockets"):
+
+            # Node with 'Value' output socket
+            a = Node("Grid")
+
+            # Create Group inputs to feed the node
+            # 'Size X' and 'Size Y' are created in the group input not
+            # 'Vertices X' and 'Vertices Y' are connected to the same 'Vertices' which is created
+            a.plug_node_into(rename={'Vertices X': 'Vertices', 'Vertices Y': 'Vertices'})
+
+            a = Node("Math")
+
+            # Connect the 'Value' output socket to the 'Value' input socket
+            # The third socket is exclude by its index
+            # Input values are renamed 'First' and 'Second'
+            a.plug_node_into(exclude=2, rename={'Value': 'First', 'Value_001': 'Second'})
+
+            b = Node("Math", operation='SQRT')
+
+            # Plug the previous math node on a single socket
+            b.plug_node_into(a, include='Value')
+        ```
+
+        Arguments
+        ---------
+        - node (Node = None) : the node to get the outputs from. Use Group Input node if None
+        - include (list of strs = None) : connects only the sockets in the list
+        - exclude (list of strs = []) : exclude sockets in this list
+        - rename (dict = {}) : rename the sockets to the given names
+
+        Returns
+        -------
+        - Node : self
+        """
 
         tree = self._tree
 
@@ -1080,6 +1411,18 @@ class Node:
         is_node_group = self._bnode.bl_idname == 'GeometryNodeGroup'
 
         # ----------------------------------------------------------------------------------------------------
+        # Make sure we have the sockets identifiers
+
+        if isinstance(include, (str, int)):
+            include = [include]
+        if isinstance(exclude, (str, int)):
+            exclude = [exclude]
+
+        include = self.socket_keys_to_identifiers(include)
+        exclude = self.socket_keys_to_identifiers(exclude)
+        rename  = self.socket_keys_to_identifiers(rename)
+
+        # ----------------------------------------------------------------------------------------------------
         # Loop on the input sockets of self
 
         for in_socket in self._bnode.inputs:
@@ -1092,13 +1435,13 @@ class Node:
             if in_socket.is_linked:
                 continue
 
-            # ----- Socket name can be remapped
+            # ----- Socket name can be renamed
 
-            socket_name = in_socket.name
-            if socket_name in rename.keys():
-                out_name = rename[socket_name]
+            identifier  = in_socket.identifier
+            if identifier in rename.keys():
+                out_name = rename[identifier]
             else:
-                out_name = socket_name
+                out_name = in_socket.name
 
             # ----- Look for an output socket of same name and type
 
@@ -1112,13 +1455,13 @@ class Node:
 
             # ----- Must be in the sockets to include
 
-            if include is not None and socket_name not in include:
-                if not socket_name in rename.keys():
+            if include is not None and identifier not in include:
+                if identifier not in rename.keys():
                     continue
 
             # ----- Must not be in the sockets to exclude
 
-            if socket_name in exclude:
+            if identifier in exclude:
                 continue
 
             # ----------------------------------------------------------------------------------------------------
@@ -1208,15 +1551,27 @@ class Group(Node):
         as kwargs arguments.
 
         ``` python
-        # Call a group by initializing the sockets with their name
-        node = Group("Group Name", sockets={'Geometry': Geometry(), 'Value': 1, 'Factor': 2})
+        # Create a utility group
+        with GeoNodes("Add two values", is_group=True):
 
-        # Call the group by initializing the sockets with their snake_case name
-        node = Group("Group Name", geometry=Geometry, value=1, factor=2)
+            a = Float(0, "a")
+            b = Float(0, "b")
 
-        # Get the result from the group computation
+            (a + b).out("Sum")
 
-        res_geo = node.geometry
+        # A node calling the utility group
+        with GeoNodes("Call a group"):
+
+            Geometry().out()
+
+            c = Group("Add two values", {'a': Float(10, 'a'), 'b': Float(10, 'b')}).sum
+            node = Group("Add two values")
+
+            node.a = 100
+            node.b = 200
+
+            c.out("c")
+            node._out.out("d")
         ```
 
         Arguments
@@ -1245,9 +1600,102 @@ class Group(Node):
 
     @classmethod
     def Prefix(cls, prefix, group_name, sockets={}, **kwargs):
+        """ Call a Group with a prefixed named.
+
+        Using a prefix for groups of the same type can be usefull in big projects with
+        a lot of groups.
+
+        ``` python
+        # Prefix used to identifiy utility groups
+        UTIL = "UTIL"
+
+        # Create a group utility
+        with GeoNodes("Add two values", prefix=UTIL, is_group=True):
+
+            a = Float(0, "a")
+            b = Float(0, "b")
+
+            (a + b).out("Sum")
+
+        with GeoNodes("Call a group"):
+
+            Geometry().out()
+
+            # Call the the prefixed utility
+            c = Group.Prefix(UTIL, "Add two values", {'a': Float(10, 'a'), 'b': Float(10, 'b')}).sum
+
+            # Call the the prefixed utility
+            node = Group.Prefix(UTIL, "Add two values")
+
+            node.a = 100
+            node.b = 200
+
+            c.out("c")
+            node._out.out("d")
+        ```
+
+        Arguments
+        ---------
+        - prefix (str) : prefix
+        - group_name (str) : name of the group to use
+        - sockets (dict) : sockets initialization values
+        - **kwargs (dict) : sockets  initialization with their snake_case name
+
+        Returns
+        -------
+        - Node Group
+        """
         return cls(f"{prefix} {group_name}", sockets=sockets, **kwargs)
 
 class GroupF:
+    """ Utility class exposing Groups as python functions.
+
+    This class provides an alternative to 'Group' to call groups. The snake case version of the group name is
+    used as method name of an instance of GroupF: ``` Group("Group Name") ``` is replaced by
+    ``` GroupF().group_name() ```.
+
+    If the group is uses a prefix, the prefix is passed as init argument in GroupF : ``` GroupF(prefix).group_name() ```.
+
+    The arguments can be passed either using the socket names in a dict or as kwargs arguments.
+
+    ``` python
+    # Prefix used to identifiy utility groups
+    UTIL = "UTIL"
+
+    # Create a group utility
+    with GeoNodes("Subtract two values", is_group=True):
+
+        a = Float(0, "a")
+        b = Float(0, "b")
+
+        (a + b).out("Diff")
+
+
+    # Create a prefixed group utility
+    with GeoNodes("Add two values", prefix=UTIL, is_group=True):
+
+        a = Float(0, "a")
+        b = Float(0, "b")
+
+        (a + b).out("Sum")
+
+    with GeoNodes("Gourp function call"):
+
+        Geometry().out()
+
+        a = Float(10, "a")
+        b = Float(20, "b")
+
+        # Call the the utility
+        c = GroupF().subtract_two_values({'a': a}, b=b)._out
+
+        # Call the the prefixed utility
+        d = GroupF(UTIL).add_two_values(a=a, b=b)._out
+
+        c.out("c")
+        d.out("d")
+    ```
+    """
 
     def __init__(self, prefix=None):
         if prefix is None:

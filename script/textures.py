@@ -42,8 +42,10 @@ updates
 """
 
 from .treeclass import Node
+from .socketclass import TextureRoot
 
-class Texture:
+class Texture(TextureRoot):
+
     @staticmethod
     def Brick(vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None,
         bias=None, brick_width=None, row_height=None):

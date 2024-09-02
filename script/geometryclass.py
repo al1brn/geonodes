@@ -935,7 +935,7 @@ class Face(Domain):
 
     def scale(self, scale=None, center=None, uniform=True):
         # scale_mode in ('UNIFORM', 'SINGLE_AXIS')
-        return self._geo._jump(Node('Scale Elements', {'Mesh': self._geo, 'Selection': self._sel, 'Scale': scale, 'Center': center},
+        return self._geo._jump(Node('Scale Elements', {'Geometry': self._geo, 'Selection': self._sel, 'Scale': scale, 'Center': center},
             domain='FACE', scale_mode = 'UNIFORM' if uniform else 'SINGLE_AXIS')._out)
 
     # ----- Topology

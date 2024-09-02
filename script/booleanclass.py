@@ -71,10 +71,19 @@ class Boolean(ValueSocket):
     def __or__(self, other):
         return self.math.bor(self, other)
 
+    def __add__(self, other):
+        return self.math.bor(self, other)
+
+    def __sub__(self, other):
+        return self.math.bsubtract(self, other)
+
     def __ror__(self, other):
         return self.math.bor(other, self)
 
     def __and__(self, other):
+        return self.math.band(self, other)
+
+    def __mul__(self, other):
         return self.math.band(self, other)
 
     def __rand__(self, other):

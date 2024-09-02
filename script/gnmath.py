@@ -65,14 +65,23 @@ def nor(value, other):
 def xnor(value, other):
     return Node("Boolean Math", {0: value, 1: other}, operation='XNOR')._out
 
+def equal(value, other):
+    return xnor(value, other)
+
 def xor(value, other):
     return Node("Boolean Math", {0: value, 1: other}, operation='XOR')._out
+
+def not_equal(value, other):
+    return xor(value, other)
 
 def imply(value, other):
     return Node("Boolean Math", {0: value, 1: other}, operation='IMPLY')._out
 
 def nimply(value, other):
     return Node("Boolean Math", {0: value, 1: other}, operation='NIMPLY')._out
+
+def bsubtract(value, other):
+    return nimply(value, other)
 
 
 # =============================================================================================================================
@@ -99,8 +108,8 @@ def power(base, exponent, use_clamp=None):
 def log(value, base=10, use_clamp=None):
     return Node("Math", {0: value, 1: base}, use_clamp=use_clamp, operation='LOGARITHM')._out
 
-def ln(value, base=np.e, use_clamp=None):
-    return Node("Math", {0: value, 1: base}, use_clamp=use_clamp, operation='LOGARITHM')._out
+def ln(value, use_clamp=None):
+    return Node("Math", {0: value, 1: np.e}, use_clamp=use_clamp, operation='LOGARITHM')._out
 
 def sqrt(value, use_clamp=None):
     return Node("Math", {0: value}, use_clamp=use_clamp, operation='SQRT')._out
@@ -196,6 +205,9 @@ def wrap(value, max=None, min=None, use_clamp=None):
 def snap(value, increment=None, use_clamp=None):
     return Node("Math", {0: value, 1: increment}, use_clamp=use_clamp, operation='SNAP')._out
 
+def ping_pong(value, scale=None, use_clamp=None):
+    return Node("Math", {0: value, 1: scale}, use_clamp=use_clamp, operation='PINGPONG')._out
+
 def pingpong(value, scale=None, use_clamp=None):
     return Node("Math", {0: value, 1: scale}, use_clamp=use_clamp, operation='PINGPONG')._out
 
@@ -263,7 +275,7 @@ def reflect(value, other):
     return Node("Vector Math", {0: value, 1: other}, operation='REFLECT')._out
 
 def refract(value, other, ior=None):
-    return Node("Vector Math", {0: value, 1: other, 'IOR': ior}, operation='REFRACT')._out
+    return Node("Vector Math", {0: value, 1: other, 'Scale': ior}, operation='REFRACT')._out
 
 def faceforward(value, incident=None, reference=None):
     return Node("Vector Math", {0: value, 1: incident, 2: reference}, operation='FACEFORWARD')._out
@@ -283,7 +295,7 @@ def scale(value, scale):
 def normalize(value):
     return Node("Vector Math", {0: value}, operation='NORMALIZE')._out
 
-def babs(value):
+def vabs(value):
     return Node("Vector Math", {0: value}, operation='ABSOLUTE')._out
 
 def vmin(value, other):
@@ -298,17 +310,17 @@ def vfloor(value):
 def vceil(value):
     return Node("Vector Math", {0: value}, operation='CEIL')._out
 
-def vfraction(value):
+def vfract(value):
     return Node("Vector Math", {0: value}, operation='FRACTION')._out
 
 def vmodulo(value, other):
     return Node("Vector Math", {0: value, 1: other}, operation='MODULO')._out
 
 def vwrap(value, max=None, min=None):
-    return Node("Vector Math", {0: value, 'Max': max, 'Min': min}, operation='WRAP')._out
+    return Node("Vector Math", {0: value, 1: max, 2: min}, operation='WRAP')._out
 
 def vsnap(value, increment):
-    return Node("Vector Math", {0: value, 'Increment': increment}, operation='SNAP')._out
+    return Node("Vector Math", {0: value, 1: increment}, operation='SNAP')._out
 
 def vsin(value):
     return Node("Vector Math", {0: value}, operation='SINE')._out

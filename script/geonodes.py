@@ -10,6 +10,8 @@ d90    = halfpi
 d180   = pi
 d270   = np.pi*1.5
 d360   = tau
+e      = np.e
+
 
 from .treeclass import Break, Layout, Node, Group, GroupF, Tree
 from .floatclass import Float, Integer
