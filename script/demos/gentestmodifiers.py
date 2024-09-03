@@ -552,3 +552,58 @@ def demo():
             cube = Mesh.Cube()
             a = cube.pack_uv_islands()
             a = cube.uv_unwrap()
+
+    with GeoNodes("Test Curve"):
+
+        curve = Curve()
+
+        with Layout("Constructors"):
+
+            circle0 = Curve.Circle(radius=.8)._lc("Circle Radius")
+            circle1 = Curve.Circle(point_2=1)._lc("Circle Points")
+            arc0 = Curve.Arc()._lc("Arc Radius")
+            arc1 = Curve.Arc(offset_angle=halfpi)._lc("Arc Points")
+            line0 = Curve.Line()._lc("Line Points")
+            line1 = Curve.Line(direction=v)._lc("Line Direction")
+            bezier0 = Curve.BezierSegment(10, 0, 1, 2, 3, 'POSITION')
+            bezier1 = Curve.BezierSegment(10, 0, 1, 2, 3, 'OFFSET')
+            qbezier = Curve.QuadraticBezier(10, 1, 2, 3)
+            spiral = Curve.Spiral(10, 0, 1, 2, 3, True)
+            star = Curve.Star(10, 1, 2, True)
+
+            curves = [circle0, circle1, arc0, arc1, line0, line1, bezier0, bezier1, qbezier, spiral, star]
+
+            curves.extend([Curve.Rectangle(1, 2), Curve.Parallelogram(1, 2), Curve.Trapezoid(1, 2), Curve.Kite(1, 2), Curve.Points(1, 2, 3, 4)])
+
+            curves.append(Curve.FromMesh(Mesh.Cube()))
+            curves.append(Curve.FromEdgePaths(Mesh.Cube()))
+            curves.append(Curve.FromPoints(Cloud.Points(10)))
+
+            with Layout("Join"):
+                Curve.join(*curves).out()
+
+            with Layout("Properties"):
+                curve = Curve()
+
+                a = curve.tangent
+                a = curve.length
+                a = curve.endpoint_selection
+
+            with Layout("Topology"):
+                curve = Curve()
+
+                a = curve.curve_of_point(1)
+                a = curve.offset_point_in_curve(1, 1)
+                a = curve.points_of_curve(1, 2, False)
+
+                curve.set_normal().set_normal_z_up().set_normal_free()
+
+            with Layout("Operations"):
+                curve = Curve()
+
+                curve.sample((1, 2, 3), 1, 2, 3, True)
+                curve.to_mesh()
+                curve.to_points()
+                curve.deform_on_surface()
+                curve.fill(1)
+                curve.fillet(1., False, 10)

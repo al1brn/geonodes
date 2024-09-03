@@ -3648,8 +3648,28 @@ class Curve(Geometry):
     # ----- Circle
 
     @classmethod
-    def Circle(cls, resolution=None, radius=None, point_1=None, point_2=None, point_3=None, mode='RADIUS'):
-        # mode in ('POINTS', 'RADIUS')
+    def Circle(cls, resolution=None, radius=None, point_1=None, point_2=None, point_3=None):
+        """ Node 'Curve Circle' (GeometryNodeCurvePrimitiveCircle)
+
+        [!Node] Curve Circle
+
+        'mode' is set to 'POINTS' if one in (point_1, point_2, point_) is not None, 'RADIUS' otherwise
+
+        - mode (str): Node.mode in ('POINTS', 'RADIUS')
+
+        Arguments
+        ---------
+        - resolution (Integer) : socket 'Resolution' (Resolution)
+        - radius (Float) : socket 'Radius' (Radius)
+        - point_1 (Vector) : socket 'Point 1' (Point 1)
+        - point_2 (Vector) : socket 'Point 2' (Point 2)
+        - point_3 (Vector) : socket 'Point 3' (Point 3)
+
+        Returns
+        -------
+        - Curve [center_]
+        """
+
         if point_1 is not None or point_2 is not None or point_3 is not None:
             curve = cls(Node('Curve Circle', {'Resolution': resolution, 'Point 1': point_1, 'Point 2': point_2, 'Point 3': point_3}, mode='POINTS')._out)
             curve.center_ = curve.node.center
@@ -3657,17 +3677,38 @@ class Curve(Geometry):
         else:
             return cls(Node('Curve Circle', {'Resolution': resolution, 'Radius': radius}, mode='RADIUS')._out)
 
-        if mode == 'RADIUS':
-            return cls.CircleRadius(resolution=resolution, radius=radius, )
-        else:
-            return cls.CirclePoints(resolution=resolution, point_1=point_1, point_2=point_2, point_3=point_3)
-
     # ----- Arc
     #
     @classmethod
     def Arc(cls, resolution=None, radius=None, start_angle=None, sweep_angle=None,
                  start=None, middle=None, end=None, offset_angle=None,
                  connect_center=None, invert_arc=None):
+        """ Node 'Arc' (GeometryNodeCurveArc)
+
+        [!Node] Arc
+
+        'mode' is set to 'POINTS' if one in (start, middle, end, offset_angle) is not None, 'RADIUS' otherwise.
+
+        - mode (str): Node.mode in ('POINTS', 'RADIUS')
+
+        Arguments
+        ---------
+        - resolution (Integer) : socket 'Resolution' (Resolution)
+        - radius (Float) : socket 'Radius' (Radius)
+        - start_angle (Float) : socket 'Start Angle' (Start Angle)
+        - sweep_angle (Float) : socket 'Sweep Angle' (Sweep Angle)
+        - start (Vector) : socket 'Start' (Start)
+        - middle (Vector) : socket 'Middle' (Middle)
+        - end (Vector) : socket 'End' (End)
+        - offset_angle (Float) : socket 'Offset Angle' (Offset Angle)
+        - connect_center (Boolean) : socket 'Connect Center' (Connect Center)
+        - invert_arc (Boolean) : socket 'Invert Arc' (Invert Arc)
+
+        Returns
+        -------
+        - Curve [center_, normal_, radius_]
+        """
+
 
         if start is not None or middle is not None or end is not None or offset_angle is not None:
             curve = cls(Node('Arc', {'Resolution': resolution, 'Start': start, 'Middle': middle, 'End': end, 'Offset Angle': offset_angle,
@@ -3685,7 +3726,23 @@ class Curve(Geometry):
 
     @classmethod
     def Line(cls, start=None, end=None, direction=None, length=None):
-        # mode in  ('POINTS', 'DIRECTION')
+        """ Node 'Curve Line' (GeometryNodeCurvePrimitiveLine)
+
+        [!Node] Curve Line
+
+        'mode' is set to 'DIRECTION' if one in (direction, length) is not None, 'POINTS' otherwise.
+
+        - mode (str): Node.mode in ('POINTS', 'DIRECTION')
+
+        Arguments
+        ---------
+        - start (Vector) : socket 'Start' (Start)
+        - end (Vector) : socket 'End' (End)
+
+        Returns
+        -------
+        - Curve
+        """
         if direction is not None or length is not None:
             return cls(Node('Curve Line', {'Start': start, 'Direction': direction, 'Length': length}, mode='DIRECTION')._out)
         else:
@@ -3694,62 +3751,250 @@ class Curve(Geometry):
     # ----- Beziers
 
     @classmethod
-    def BezierSegment(cls, start=None, start_handle=None, end_handle=None, end=None, resolution=None, offset=False):
+    def BezierSegment(cls, resolution=None, start=None, start_handle=None, end_handle=None, end=None, mode='POSITION'):
+        """ Node 'Bézier Segment' (GeometryNodeCurvePrimitiveBezierSegment)
+
+        [!Node] Bézier Segment
+
+        Arguments
+        ---------
+        - resolution (Integer) : socket 'Resolution' (Resolution)
+        - start (Vector) : socket 'Start' (Start)
+        - start_handle (Vector) : socket 'Start Handle' (Start Handle)
+        - end_handle (Vector) : socket 'End Handle' (End Handle)
+        - end (Vector) : socket 'End' (End)
+        - mode (str): Node.mode in ('POSITION', 'OFFSET')
+
+        Returns
+        -------
+        - Curve
+        """
         return cls(Node('Bézier Segment', {'Start': start, 'Start Handle': start_handle, 'End Handle': end_handle, 'End': end,
-                'Resolution': resolution}, mode='OFFSET' if offset else 'POSITION')._out)
+                'Resolution': resolution}, mode=mode)._out)
 
     @classmethod
     def QuadraticBezier(cls, resolution=None, start=None, middle=None, end=None):
+        """ Node 'Quadratic Bézier' (GeometryNodeCurveQuadraticBezier)
+
+        [!Node] Quadratic Bézier
+
+        Arguments
+        ---------
+        - resolution (Integer) : socket 'Resolution' (Resolution)
+        - start (Vector) : socket 'Start' (Start)
+        - middle (Vector) : socket 'Middle' (Middle)
+        - end (Vector) : socket 'End' (End)
+
+        Returns
+        -------
+        - Curve
+        """
         return cls(Node('Quadratic Bézier', {'Resolution': resolution, 'Start': start, 'End': end})._out)
 
     # ----- Special
 
     @classmethod
     def Spiral(cls, resolution=None, rotations=None, start_radius=None, end_radius=None, height=None, reverse=None):
+        """ Node 'Spiral' (GeometryNodeCurveSpiral)
+
+        [!Node] Spiral
+
+        Arguments
+        ---------
+        - resolution (Integer) : socket 'Resolution' (Resolution)
+        - rotations (Float) : socket 'Rotations' (Rotations)
+        - start_radius (Float) : socket 'Start Radius' (Start Radius)
+        - end_radius (Float) : socket 'End Radius' (End Radius)
+        - height (Float) : socket 'Height' (Height)
+        - reverse (Boolean) : socket 'Reverse' (Reverse)
+
+        Returns
+        -------
+        - Curve
+        """
         return cls(Node('Spiral', {'Resolution': resolution, 'Rotations': rotations, 'Start Radius': start_radius,
             'End Radius': end_radius, 'Height': height, 'Reverse': reverse})._out)
 
     @classmethod
     def Star(cls, points=None, inner_radius=None, outer_radius=None, twist=None):
+        """ Node 'Star' (GeometryNodeCurveStar)
+
+        [!Node] Star
+
+        Arguments
+        ---------
+        - points (Integer) : socket 'Points' (Points)
+        - inner_radius (Float) : socket 'Inner Radius' (Inner Radius)
+        - outer_radius (Float) : socket 'Outer Radius' (Outer Radius)
+        - twist (Float) : socket 'Twist' (Twist)
+
+        Returns
+        -------
+        - Curve [outer_points_]
+        """
         curve = cls(Node('Star', {'Points': points, 'Inner Radius': inner_radius, 'Outer Radius': outer_radius, 'Twist': twist})._out)
         curve.outer_points_ = curve.node.outer_points
         return curve
 
     # ----- Quadrilateral
     # mode in ('RECTANGLE', 'PARALLELOGRAM', 'TRAPEZOID', 'KITE', 'POINTS')
+    @classmethod
+    def Quadrilateral(cls, width=None, height=None):
+        """ Node 'Quadrilateral' (GeometryNodeCurvePrimitiveQuadrilateral)
+
+        [!Node] Quadrilateral
+
+        Arguments
+        ---------
+        - width (Float) : socket 'Width' (Width)
+        - height (Float) : socket 'Height' (Height)
+        - mode (str): Node.mode in ('RECTANGLE', 'PARALLELOGRAM', 'TRAPEZOID', 'KITE', 'POINTS')
+
+        Returns
+        -------
+        - Curve
+        """
+        return cls(Node('Quadrilateral', {'Width': width, 'Height': height}, mode='RECTANGLE')._out)
 
     @classmethod
     def Rectangle(cls, width=None, height=None):
+        """ Node 'Quadrilateral' (GeometryNodeCurvePrimitiveQuadrilateral)
+
+        [!Node] Quadrilateral
+
+        Arguments
+        ---------
+        - width (Float) : socket 'Width' (Width)
+        - height (Float) : socket 'Height' (Height)
+
+        Returns
+        -------
+        - Curve
+        """
         return cls(Node('Quadrilateral', {'Width': width, 'Height': height}, mode='RECTANGLE')._out)
 
     @classmethod
     def Parallelogram(cls, width=None, height=None, offset=None):
+        """ Node 'Quadrilateral' (GeometryNodeCurvePrimitiveQuadrilateral)
+
+        [!Node] Quadrilateral
+
+        Arguments
+        ---------
+        - width (Float) : socket 'Width' (Width)
+        - height (Float) : socket 'Height' (Height)
+
+        Returns
+        -------
+        - Curve
+        """
         return cls(Node('Quadrilateral', {'Width': width, 'Height': height, 'Offset': offset}, mode='PARALLELOGRAM')._out)
 
     @classmethod
-    def Trapezoid(cls, width=None, bottom_width=None, top_width=None, offset=None):
-        return cls(Node('Quadrilateral', {'Width': width, 'Bottom Width': bottom_width, 'Top Width': top_width, 'Offset': offset}, mode='TRAPEZOID')._out)
+    def Trapezoid(cls, height=None, bottom_width=None, top_width=None, offset=None):
+        """ Node 'Quadrilateral' (GeometryNodeCurvePrimitiveQuadrilateral)
+
+        [!Node] Quadrilateral
+
+        Arguments
+        ---------
+        - height (Float) : socket 'Height' (Height)
+        - bottom_width (Float) : socket 'Bottom Width' (Bottom Width)
+        - top_width (Float) : socket 'Top Width' (Top Width)
+        - offset (Float) : socket 'Offset' (Offset)
+
+        Returns
+        -------
+        - Curve
+        """
+        return cls(Node('Quadrilateral', {'Height': height, 'Bottom Width': bottom_width, 'Top Width': top_width, 'Offset': offset}, mode='TRAPEZOID')._out)
 
     @classmethod
     def Kite(cls, width=None, bottom_height=None, top_height=None):
+        """ Node 'Quadrilateral' (GeometryNodeCurvePrimitiveQuadrilateral)
+
+        [!Node] Quadrilateral
+
+        Arguments
+        ---------
+        - width (Float) : socket 'Width' (Width)
+        - height (Float) : socket 'Height' (Height)
+
+        Returns
+        -------
+        - Curve
+        """
         return cls(Node('Quadrilateral', {'Width': width, 'Bottom Height': bottom_height, 'Top Height': top_height}, mode='KITE')._out)
 
     @classmethod
     def Points(cls, point_1=None, point_2=None, point_3=None, point_4=None):
+        """ Node 'Quadrilateral' (GeometryNodeCurvePrimitiveQuadrilateral)
+
+        [!Node] Quadrilateral
+
+        Arguments
+        ---------
+        - width (Float) : socket 'Width' (Width)
+        - height (Float) : socket 'Height' (Height)
+
+        Returns
+        -------
+        - Curve
+        """
         return cls(Node('Quadrilateral', {'Point 1': point_1, 'Point 2': point_2, 'Point 3': point_3, 'Point 4': point_4}, mode='POINTS')._out)
 
     # ----- From
 
     @classmethod
     def FromMesh(cls, mesh):
+        """ Node 'Mesh to Curve' (GeometryNodeMeshToCurve)
+
+        [!Node] Mesh to Curve
+
+        Arguments
+        ---------
+        - mesh (Geometry) : socket 'Mesh' (Mesh)
+
+        Returns
+        -------
+        - Curve
+        """
         return Mesh(mesh).to_curve()
 
     @classmethod
     def FromEdgePaths(cls, mesh, next_vertex_index=None):
-        return Mesh(mesh).points.paths_to_curves(next_vertex_index=next_vertex_index)
+        """ Node 'Edge Paths to Curves' (GeometryNodeEdgePathsToCurves)
+
+        [!Node] Edge Paths to Curves
+
+        Arguments
+        ---------
+        - mesh (Geometry) : socket 'Mesh' (Mesh)
+        - start_vertices (Boolean) : socket 'Start Vertices' (Start Vertices)
+        - next_vertex_index (Integer) : socket 'Next Vertex Index' (Next Vertex Index)
+
+        Returns
+        -------
+        - Curve
+        """
+        return Mesh(mesh).points.edge_paths_to_curves(next_vertex_index=next_vertex_index)
 
     @classmethod
     def FromPoints(cls, points, curve_group_id=None, weight=None):
+        """ Node 'Points to Curves' (GeometryNodePointsToCurves)
+
+        [!Node] Points to Curves
+
+        Arguments
+        ---------
+        - points (Geometry) : socket 'Points' (Points)
+        - curve_group_id (Integer) : socket 'Curve Group ID' (Curve Group ID)
+        - weight (Float) : socket 'Weight' (Weight)
+
+        Returns
+        -------
+        - Curve
+        """
         return Cloud(points).to_curves(curve_group_id=curve_group_id, weight=weight)
 
     # =============================================================================================================================
@@ -3762,14 +4007,43 @@ class Curve(Geometry):
     @classmethod
     @property
     def tangent(cls):
+        """ Node 'Curve Tangent' (GeometryNodeInputTangent)
+
+        [!Node] Curve Tangent
+
+        Returns
+        -------
+        - Vector
+        """
         return Node('Curve Tangent')._out
 
     @property
     def length(self):
+        """ Node 'Curve Length' (GeometryNodeCurveLength)
+
+        [!Node] Curve Length
+
+        Returns
+        -------
+        - Float
+        """
         return Node('Curve Length', {'Curve': self})._out
 
     @classmethod
     def endpoint_selection(cls, start_size=None, end_size=None):
+        """ Node 'Endpoint Selection' (GeometryNodeCurveEndpointSelection)
+
+        [!Node] Endpoint Selection
+
+        Arguments
+        ---------
+        - start_size (Integer) : socket 'Start Size' (Start Size)
+        - end_size (Integer) : socket 'End Size' (End Size)
+
+        Returns
+        -------
+        - Boolean
+        """
         return Node('Endpoint Selection', {'Start Size': start_size, 'End Size': end_size})._out
 
     # =============================================================================================================================
@@ -3777,90 +4051,216 @@ class Curve(Geometry):
 
     @classmethod
     def curve_of_point(cls, point_index=None):
+        """ Node 'Curve of Point' (GeometryNodeCurveOfPoint)
+
+        [!Node] Curve of Point
+
+        Arguments
+        ---------
+        - point_index (Integer) : socket 'Point Index' (Point Index)
+
+        Returns
+        -------
+        - Node: [curve_index (Integer), index_in_curve (Integer)]
+        """
         return Node('Curve of Point', {'Point Index': point_index})
 
     @classmethod
     def offset_point_in_curve(cls, point_index=None, offset=None):
+        """ Node 'Offset Point in Curve' (GeometryNodeOffsetPointInCurve)
+
+        [!Node] Offset Point in Curve
+
+        Arguments
+        ---------
+        - point_index (Integer) : socket 'Point Index' (Point Index)
+        - offset (Integer) : socket 'Offset' (Offset)
+
+        Returns
+        -------
+        - Node: [is_valid_offset (Boolean), point_index (Integer)]
+        """
         return Node('Offset Point in Curve', {'Point Index': point_index, 'Offset': offset})
 
     @classmethod
     def points_of_curve(cls, curve_index=None, weights=None, sort_index=None):
+        """ Node 'Points of Curve' (GeometryNodePointsOfCurve)
+
+        [!Node] Points of Curve
+
+        Arguments
+        ---------
+        - curve_index (Integer) : socket 'Curve Index' (Curve Index)
+        - weights (Float) : socket 'Weights' (Weights)
+        - sort_index (Integer) : socket 'Sort Index' (Sort Index)
+
+        Returns
+        -------
+        - Node: [point_index (Integer), total (Integer)]
+        """
         return Node('Points of Curve', {'Curve Index': curve_index, 'Weights': weights, 'Sort Index': sort_index})
 
     # =============================================================================================================================
     # Methods
 
     def set_normal(self, mode='MINIMUM_TWIST'):
-        # mode in ('MINIMUM_TWIST', 'Z_UP', 'FREE')
-        self._jump(Node('Set Curve Normal', {'Curve': self, 'Selection': self._self}, mode=mode)._out)
+        """ Node 'Set Curve Normal' (GeometryNodeSetCurveNormal)
+
+        [!Node] Set Curve Normal
+
+        Arguments
+        ---------
+        - mode (str): Node.mode in ('MINIMUM_TWIST', 'Z_UP', 'FREE')
+
+        Returns
+        -------
+        - Curve
+        """
+        return Curve(Node('Set Curve Normal', {'Curve': self, 'Selection': self._sel}, mode=mode)._out)
 
     def set_normal_z_up(self):
+        """ Node 'Set Curve Normal' (GeometryNodeSetCurveNormal)
+
+        [!Node] Set Curve Normal
+
+        Returns
+        -------
+        - Curve
+        """
         return self.set_normal(mode='Z_UP')
 
     def set_normal_free(self):
+        """ Node 'Set Curve Normal' (GeometryNodeSetCurveNormal)
+
+        [!Node] Set Curve Normal
+
+        Returns
+        -------
+        - Curve
+        """
         return self.set_normal(mode='FREE')
 
     def sample(self, value=None, factor=None, length=None, curve_index=None, all_curves=False):
-        # mode in ('FACTOR', 'LENGTH')
-        # if factor argument is None, mode is LENGTH, FACTOR otherwise
-        mode = 'FACTOR' if length is None else 'LENGTH'
-        res = Node('Sample Curve', {'Curves': self, 'Value': value, 'Factor': factor, 'Length': length, 'Curve Index': curve_index},
-            data_type=utils.get_data_type(value), mode=mode, use_all_curves=all_curves)._out
+        """ Node 'Sample Curve' (GeometryNodeSampleCurve)
+
+        [!Node] Sample Curve
+
+        'mode' is set to 'LENGTH' if factor is None, else 'FACTOR'
+
+        - data_type (str): Node.data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4')
+        - mode (str): Node.mode in ('FACTOR', 'LENGTH')
+
+        Arguments
+        ---------
+        - value (Float) : socket 'Value' (Value)
+        - factor (Float) : socket 'Factor' (Factor)
+        - length (Float) : socket 'Length' (Length)
+        - curve_index (Integer) : socket 'Curve Index' (Curve Index)
+        - all_curves (bool): Node.use_all_curves
+
+        Returns
+        -------
+        - DataSocket [position_, tangent_, normal_]
+        """
+
+        sockets = {'Curves': self, 'Value': value, 'Factor': factor, 'Length': length, 'Curve Index': curve_index}
+        if length is None:
+            mode = 'FACTOR'
+            sockets['Factor'] = factor
+        else:
+            mode = 'LENGTH'
+            sockets['Length'] = length
+
+        res = Node('Sample Curve', sockets, data_type=utils.get_data_type(value), mode=mode, use_all_curves=all_curves)._out
         res.position_ = res.node.position
         res.tangent_  = res.node.tangent
         res.normal_   = res.node.normal
         return res
 
-    def sample_factor(self, value=None, factor=None, curve_index=None, all_curves=False):
-        return self.sample(value=value, factor=factor, curve_index=curve_index, all_curves=all_curves)
-
-    def sample_length(self, value=None, length=None, curve_index=None, all_curves=False):
-        return self.sample(value=value, length=length, curve_index=curve_index, all_curves=all_curves)
-
     # =============================================================================================================================
     # Operations
 
     def to_mesh(self, profile_curve=None, fill_caps=None):
+        """ Node 'Curve to Mesh' (GeometryNodeCurveToMesh)
+
+        [!Node] Curve to Mesh
+
+        Arguments
+        ---------
+        - profile_curve (Geometry) : socket 'Profile Curve' (Profile Curve)
+        - fill_caps (Boolean) : socket 'Fill Caps' (Fill Caps)
+
+        Returns
+        -------
+        - Mesh
+        """
         return Mesh.FromCurve(self, profile_curve=profile_curve, fill_caps=fill_caps)
 
     def to_points(self, count=None, length=None, mode='EVALUATED'):
+        """ Node 'Curve to Points' (GeometryNodeCurveToPoints)
+
+        [!Node] Curve to Points
+
+        Arguments
+        ---------
+        - curve (Geometry) : socket 'Curve' (Curve)
+        - count (Integer) : socket 'Count' (Count)
+        - mode (str): Node.mode in ('EVALUATED', 'COUNT', 'LENGTH')
+
+        Returns
+        -------
+        - Cloud [tangent_, normal_, rotation_]
+        """
         return Cloud.FromCurve(curve=self, count=count, length=length, mode='EVALUATED')
 
-    def to_points_evaluated(self):
-        return Cloud.FromCurveEvaluated(curve=self)
-
-    def to_points_count(self, count=None):
-        return Cloud.FromCurveCount(curve=self, count=count)
-
-    def to_points_length(self, length=None):
-        return Cloud.FromCurve(curve=self, length=length)
-
     def deform_on_surface(self):
+        """ Node 'Deform Curves on Surface' (GeometryNodeDeformCurvesOnSurface)
+
+        [!Node] Deform Curves on Surface
+
+        Returns
+        -------
+        - Curve
+        """
         return Curve(Node('Deform Curves on Surface', {'Curves': self})._out)
 
     # ----- Fill curve
 
     def fill(self, group_id=None, mode='TRIANGLES'):
-        # mode in ('TRIANGLES', 'NGONS')
+        """ Node 'Fill Curve' (GeometryNodeFillCurve)
+
+        [!Node] Fill Curve
+
+        Arguments
+        ---------
+        - group_id (Integer) : socket 'Group ID' (Group ID)
+        - mode (str): Node.mode in ('TRIANGLES', 'NGONS')
+
+        Returns
+        -------
+        - Mesh
+        """
         return Mesh(Node('Fill Curve', {'Curve': self, 'Group ID': group_id}, mode=mode)._out)
-
-    def fill_triangles(self, group_id=None):
-        return self.fill(group_id=group_id, mode='TRIANGLES')
-
-    def fill_ngons(self, group_id=None):
-        return self.fill(group_id=group_id, mode='NGONS')
 
     # ----- Fillet curve
 
     def fillet(self, radius=None, limit_radius=None, count=None, mode='BEZIER'):
-        # mode in ('BEZIER', 'POLY')
+        """ Node 'Fillet Curve' (GeometryNodeFilletCurve)
+
+        [!Node] Fillet Curve
+
+        Arguments
+        ---------
+        - radius (Float) : socket 'Radius' (Radius)
+        - limit_radius (Boolean) : socket 'Limit Radius' (Limit Radius)
+        - count (Integer) : socket 'Integer' (Integer)
+        - mode (str): Node.mode in ('BEZIER', 'POLY')
+
+        Returns
+        -------
+        - Curve
+        """
         return Curve(Node('Fillet Curve', {'Curve': self, 'Count': count, 'Radius': radius, 'Limit Radius': limit_radius}, mode=mode)._out)
-
-    def fillet_bezier(self, radius=None, limit_radius=None):
-        return self.fillet(radius=radius, limit_radius=limit_radius, mode='BEZIER')
-
-    def fillet_poly(self, count=None, radius=None, limit_radius=None):
-        return self.fillet(radius=radius, limit_radius=limit_radius, count=count, mode='POLY')
 
     # ----- Interpolate curves
 
