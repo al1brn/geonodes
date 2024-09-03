@@ -4,6 +4,47 @@ from .. import shadernodes as sh
 
 def demo():
 
+    with GeoNodes("Break Demo"):
+        Geometry().out()
+        raise Break()
+
+        # Not executed
+        Float(10).out()
+
+    with GeoNodes("Layout Demo"):
+
+        with Layout("Some maths"):
+            z = gnmath.atan2(nd.position.z, Vector((nd.position.x, nd.position.y, 0)).length)
+
+        geo = Mesh()
+        geo.points.offset = (0, 0, z)
+
+        geo.out()
+
+    with GeoNodes("Connect several sockets"):
+
+        Geometry().out()
+
+        # Node with 'Value' output socket
+        a = Node("Grid")
+
+        # Create Group inputs to feed the node
+        # 'Size X' and 'Size Y' are created in the group input not
+        # 'Vertices X' and 'Vertices Y' are connected to the same 'Vertices' which is created
+        a.plug_node_into(rename={'Vertices X': 'Vertices', 'Vertices Y': 'Vertices'})
+
+        a = Node("Math")
+
+        # Connect the 'Value' output socket to the 'Value' input socket
+        # The third socket is exclude by its index
+        # Input values are renamed 'First' and 'Second'
+        a.plug_node_into(exclude=2, rename={'Value': 'First', 'Value_001': 'Second'})
+
+        b = Node("Math", operation='SQRT')
+
+        # Plug the previous math node on a single socket
+        b.plug_node_into(a, include='Value')
+
     # =============================================================================================================================
     # Float Math
 
@@ -118,42 +159,42 @@ def demo():
             with Layout("Functions"):
                 B = gnmath.nand(a, b) | gnmath.nor(a, b) | gnmath.equal(a, b) | gnmath.not_equal(a, b) | gnmath.imply(a, b) | gnmath.nimply(a, b)
 
-# =============================================================================================================================
-# Color
+    # =============================================================================================================================
+    # Color
 
-with GeoNodes("Test Color"):
+    with GeoNodes("Test Color"):
 
-    Geometry().out()
+        Geometry().out()
 
-    with Layout("Mix"):
+        with Layout("Mix"):
 
-        a, b, = Color((.1, .2, .3)), Color((.6, .7, .8, .1))
+            a, b, = Color((.1, .2, .3)), Color((.6, .7, .8, .1))
 
-        c = a.mix(.1, b, False, False)
-        c = a.darken(.1, b, True, True)
-        c = a.multiply(.1, b)
-        c = a.burn(.1, b)
-        c = a.lighten(.1, b)
-        c = a.screen(.1, b)
-        c = a.dodge(.1, b)
-        c = a.add(.1, b)
-        c = a.overlay(.1, b)
-        c = a.soft_light(.1, b)
-        c = a.linear_light(.1, b)
-        c = a.difference(.1, b)
-        c = a.exclusion(.1, b)
-        c = a.subtract(.1, b)
-        c = a.divide(.1, b)
-        c = a.mix_hue(.1, b)
-        c = a.mix_saturation(.1, b)
-        c = a.mix_color(.1, b)
-        c = a.mix_value(.1, b)
+            c = a.mix(.1, b, False, False)
+            c = a.darken(.1, b, True, True)
+            c = a.multiply(.1, b)
+            c = a.burn(.1, b)
+            c = a.lighten(.1, b)
+            c = a.screen(.1, b)
+            c = a.dodge(.1, b)
+            c = a.add(.1, b)
+            c = a.overlay(.1, b)
+            c = a.soft_light(.1, b)
+            c = a.linear_light(.1, b)
+            c = a.difference(.1, b)
+            c = a.exclusion(.1, b)
+            c = a.subtract(.1, b)
+            c = a.divide(.1, b)
+            c = a.mix_hue(.1, b)
+            c = a.mix_saturation(.1, b)
+            c = a.mix_color(.1, b)
+            c = a.mix_value(.1, b)
 
-    with Layout("Comprison"):
+        with Layout("Comprison"):
 
-        #a, b, = Color((.1, .2, .3)), Color((.6, .7, .8, .1))
+            #a, b, = Color((.1, .2, .3)), Color((.6, .7, .8, .1))
 
-        c = a.equal(b) | a.not_equal(b) | a.brighter(b) | a.darker(b)
+            c = a.equal(b) | a.not_equal(b) | a.brighter(b) | a.darker(b)
 
     # =============================================================================================================================
     # Input
@@ -225,10 +266,220 @@ with GeoNodes("Test Color"):
         img = Image(None, "Image")
         text = Texture(name="Texture")
 
+
+    # =============================================================================================================================
+    # Domain
+
+    with GeoNodes("Test Domain"):
+
+        i = Integer(123)
+        f = Float(pi)
+        v = Vector((1, 2, 3))
+
+        with Layout("Viewer"):
+            mesh = Mesh()
+
+            mesh.points.viewer(nd.position)
+            mesh.faces.viewer(nd.material_index)
+
+        with Layout("Getters"):
+            mesh = Mesh()
+
+            a = mesh.points.attribute_statistic(nd.position)
+            a = mesh.points.proximity(i, v, nd.id)
+            a = mesh.points.sample_index(nd.position, index=i, clamp=True)
+            a = mesh.faces.accumulate_field(value=v, group_id=i)
+            a = mesh.points.evaluate_at_index(index=i, value=f)
+            a = mesh.corners.evaluate_on_domain(value=v)
+
+        with Layout("Capture Attribute"):
+            mesh = Mesh()
+
+            # A single anonymous attribute
+            p = mesh.points.capture_attribute(nd.position)
+            assert(isinstance(p, Vector))
+
+            # Only named attributes
+            node = mesh.faces.capture_attribute(pos=nd.position, idx=nd.material_index)
+            assert(isinstance(node, Node))
+            assert(isinstance(node.pos, Vector))
+            assert(isinstance(node.idx, Integer))
+
+            # Anonymous attribute plus named attributes
+            node = mesh.faces.capture_attribute(nd.position, idx=nd.material_index)
+            assert(isinstance(node, Node))
+            assert(isinstance(node.attribute, Vector))
+            assert(isinstance(node.idx, Integer))
+
+        with Layout("Operations"):
+            mesh = Mesh()
+
+            mesh = mesh.points.duplicate_elements(10)
+
+            mesh = mesh.faces.delete_faces()
+            mesh = mesh.edges.delete_edges_and_faces()
+            mesh = mesh.points.delete_all()
+            mesh = mesh.edges.sort_elements(group_id=i, sort_weight=f)
+            mesh = mesh.faces.separate()
+            a = mesh.faces.split_to_instances(group_id=i)
+            a = mesh.faces.to_points(position=v, radius=f)
+
+        with Layout("Extrusion"):
+
+            cube = Mesh.Cube()
+
+            cube = cube.faces.extrude(nd.normal, .5)
+            cube = cube.faces[cube.top_].extrude(offset_scale=0)
+            top = cube.top_
+            cube = cube.faces[top].scale(scale=.8, uniform=False)
+            cube = cube.faces[top].scale(scale=.6, uniform=True)
+            cube = cube.faces[top].extrude(offset_scale=.5)
+
+        with Layout("Vertex"):
+            mesh = Mesh()
+
+            a = mesh.points.count + 1
+            a = mesh.points.instance_on(instance=Mesh.Cube(), pick_instance=False, instance_index=i, rotation=(1, 2, 3), scale=3)
+            a = mesh.points.neighbors
+            a = mesh.points.neighbors_vertex_count
+            a = mesh.points.neighbors_face_count
+            a = mesh.points.paths_to_selection(i)
+            a = mesh.points.edge_paths_to_curves(i)
+            a = mesh.points.edge_index(i, f, True)
+            a = mesh.points.corner_index(i, f, True)
+
+        with Layout("Face"):
+            mesh = Mesh()
+
+            a = mesh.faces.count
+            mesh.faces.smooth = -mesh.faces.smooth
+            a = mesh.faces.area
+            a = mesh.faces.is_planar
+            a = mesh.faces.neighbors_face_count
+            a = mesh.faces.neighbors_vertex_count
+            mesh = mesh.faces.flip()
+            mesh = mesh.faces.scale(2, 0, False)
+            a = mesh.faces.corner_index(i, f, False)
+            points = mesh.faces.distribute_points(density=1.)
+            points = mesh.faces.distribute_points(density=None)
+
+        with Layout("Edge"):
+            mesh = Mesh()
+
+            a = mesh.edges.count
+            a = mesh.edges.paths_to_curves(False, i)
+            a = mesh.edges.signed_angle
+            a = mesh.edges.unsigned_angle
+            a = mesh.edges.neighbors
+            a = mesh.edges.vertex_index_1
+            a = mesh.edges.vertex_index_2
+            a = mesh.edges.position_1
+            a = mesh.edges.position_2
+            mesh.edges.smooth = -mesh.edges.smooth
+            a = mesh.edges.shortest_paths(f)
+            a = mesh.edges.to_face_groups
+            mesh = mesh.edges.split()
+            mesh.edges.scale(scale=f, center=v, uniform=True)
+            a = mesh.edges.corner_index(i, f, True)
+            a = mesh.edges.paths_to_curves(start_vertices=True, next_vertex_index=i)
+
+        with Layout("Corner"):
+            mesh = Mesh()
+
+            a = mesh.corners.count
+            a = mesh.corners.next_edge_index(i)
+            a = mesh.corners.face_index(i)
+            a = mesh.corners.offset_in_face(i, 10)
+            a = mesh.corners.vertex_index(i)
+
+        with Layout("Spline Point"):
+            curve = Curve()
+
+            a = curve.points.count + 1
+
+        with Layout("Spline"):
+            curve = Curve()
+
+            a = curve.splines.count
+            curve.splines.is_cyclic = -curve.splines.is_cyclic
+            curve.splines.resolution = curve.splines.resolution + 5
+            curve.splines.type = 'BEZIER'
+            a = curve.splines.parameter
+            a = curve.splines.length * curve.splines.point_count
+
+        with Layout("Instance"):
+            instances = Instances()
+
+            a = instances.insts.count
+            instances.insts.transform = instances.insts.transform
+            instances.insts.translate(v, False)
+            instances.insts.scale = instances.insts.scale + (1, 2, 3)
+            instances.insts.scale = {'Scale': (1, 2, 3), 'Center': (10, 11, 12), 'Local Space': False}
+            instances.insts.rotation = instances.insts.rotation + (1, 2, 3)
+            instances.insts.rotation = {'Rotation': (1, 2, 3), 'Pivot Point': (10, 11, 12), 'Local Space': False}
+
+        with Layout("Cloud Point"):
+            cloud = Cloud()
+
+            a = cloud.points.count + 1
+
+
+    # =============================================================================================================================
+    # Curve Handles
+
+    with GeoNodes("Test Curve handles"):
+        curve = Curve.Line(0, (20, 0, 0)).resample(20)
+
+        curve.splines.type = 'BEZIER'
+
+        with Layout("Set by str"):
+            curve.points.left_handle_type = 'AUTO'
+            curve.points.right_handle_type = 'AUTO'
+            curve.points[(nd.index % 2).equal(0)].handle_type = 'ALIGN'
+
+            curve.points[curve.points.handle_align].offset = (0, 0, 2)
+
+        with Layout("Both set boolean"):
+            curve.points[1].handle_auto = True
+            curve.points[3].handle_free = True
+            curve.points[5].handle_vector = True
+            curve.points[7].handle_align = True
+
+        with Layout("Left / right set boolean"):
+            curve.points[9].left_handle_auto = True
+            curve.points[9].right_handle_free = True
+            curve.points[11].left_handle_free = True
+            curve.points[11].right_handle_vector = True
+            curve.points[13].left_handle_vector = True
+            curve.points[13].right_handle_align = True
+            curve.points[15].left_handle_align = True
+            curve.points[15].right_handle_auto = True
+
+        with Layout("Left selection"):
+            curve.points[curve.points.left_handle_auto].offset = (0, 0.5, 0)
+            curve.points[curve.points.left_handle_free].offset = (0, 1.0, 0)
+            curve.points[curve.points.left_handle_vector].offset = (0, 1.5, 0)
+            curve.points[curve.points.left_handle_align].offset = (0, 2.0, 0)
+
+        with Layout("Right selection"):
+            curve.points[curve.points.right_handle_auto].offset = (0, 0, 0.5)
+            curve.points[curve.points.right_handle_free].offset = (0, 0, 1.0)
+            curve.points[curve.points.right_handle_vector].offset = (0, 0, 1.5)
+            curve.points[curve.points.right_handle_align].offset = (0, 0, 2.0)
+
+        with Layout("Moving handles"):
+            curve.points[curve.points.left_handle_free].left_handle_position = (5, 0, 0)
+            curve.points[curve.points.right_handle_free].right_handle_position = (-5, 0, 0)
+
+            curve.points[curve.points.left_handle_vector].left_handle_offset = (0, 5, 0)
+            curve.points[curve.points.right_handle_vector].right_handle_offset = (0, -5, 0)
+
+        curve.out()
+
     # =============================================================================================================================
     # Mesh
 
-    with GeoNodes("Mesh Operations"):
+    with GeoNodes("Test Mesh"):
 
         mesh = Mesh()
 
@@ -237,38 +488,57 @@ with GeoNodes("Test Color"):
             cone   = Mesh.Cone(vertices=32, side_segments=3, fill_segments=3, radius_top=.5, radius_bottom=2, depth=2, fill_type='TRIANGLE_FAN')
             cube   = Mesh.Cube(size=(1, 2, 3), vertices_x=2, vertices_y=3, vertices_z=3)
             cyl    = Mesh.Cylinder(vertices=32, side_segments=3, fill_segments=3, radius=.5, depth=5, fill_type='NGON')
-            grid   = Mesh.Grid(size_x=2, size_y=1, vertices_x=2, vertices_y=2)
+            grid   = Mesh.Plane(size_x=2, size_y=1)
             ico    = Mesh.IcoSphere(radius=2, subdivisions=2)
             sphere = Mesh.UVSphere(segments=6, rings=7, radius=1.5)
-            # ----- Start end line
-            line0  = Mesh.Line(count=100, end_location=2)
-            # ----- Start offset line
-            line1  = Mesh.Line(count=100, offset=-1)
-            circle = Mesh.Circle(vertices=8, radius=.5, fill_type='TRIANGLE_FAN')
+            line0  = Mesh.LineTo(0, 2, count=100)._lc("End points Count")
+            line1  = Mesh.LineTo(0, 2, resolution=.1)._lc("End points Resolution")
+            line2  = Mesh.LineOffset(0, .1, 10)._lc("Offset")
+            circle = Mesh.Disk(vertices=8, radius=.5)
 
-            meshes = [cone, cube, cyl, grid, ico, sphere, line0, line1, circle]
+            meshes = [cone, cube, cyl, grid, ico, sphere, line0, line1, line2, circle]
 
-        with Layout("Extrusion"):
+            meshes.append(Mesh.FromCurve(Curve.Spiral(), profile_curve=Curve.Circle(radius=.1), fill_caps=True))
+            meshes.append(Mesh.FromPoints(Cloud.Points(10)))
+            meshes.append(Mesh.FromVolume(None, 1, 2, 3, 4))
 
-            cube = cube.faces.extrude(nd.normal, .5)
-            cube = cube.faces[cube.top_].extrude(offset_scale=0)
-            top = cube.top_
-            cube = cube.faces[top].scale(scale=.8, uniform=False)
-            cube = cube.faces[top].scale(scale=.6, uniform=True)
-            cube = cube.faces[top].extrude(offset_scale=.5)
-            cube = cube.faces[cube.top_].flip()
-            meshes.append(cube)
+            a = mesh.island_index + mesh.island_count
 
-            meshes.append(cube.dual())
+        with Layout("Sample"):
+
+            cube = Mesh.Cube()
+            a = cube.sample_nearest_surface(value=pi, group_id=i, sample_position=v, sample_group_id=i+1)
+            a = cube.sample_nearest_surface(value=123, group_id=i, sample_position=v, sample_group_id=i+1)
+            a = cube.sample_nearest_surface(value=Vector(0), group_id=i, sample_position=v, sample_group_id=i+1)
+            a = cube.sample_nearest_surface(value=Color(0), group_id=i, sample_position=v, sample_group_id=i+1)
+            a = cube.sample_nearest_surface(value=Boolean(True), group_id=i, sample_position=v, sample_group_id=i+1)
+            a = cube.sample_nearest_surface(value=Matrix(), group_id=i, sample_position=v, sample_group_id=i+1)
+            a = cube.sample_uv_surface(value=v, uv_map=cube.uv_map_, sample_uv=v)
+
+        with Layout("Conversions"):
+
+            cube = Mesh.Cube()
+            a = cube.to_curve()
+            a = cube.to_volume(density=1., voxel_amount=2., interior_band_width=3., voxel_size=3., amount=True)._lc("Amount")
+            a = cube.to_volume(density=1., voxel_amount=2., interior_band_width=3., voxel_size=3., amount=False)._lc("Size")
+
+        with Layout("Operations"):
+
+            cube = Mesh.Cube()
+            cube = cube.dual()
+            cube = cube.subdivide(2)
+            cube = cube.triangulate()
+            cube = cube.subdivision_surface()
+            cube.distribute_points_on_faces()
 
         with Layout("Boolean"):
             meshes.append(cyl.intersect(cone))
             meshes.append(cyl.union(cone))
             meshes.append(cyl.difference(cone))
+
             meshes.append(cone.intersect(cyl))
             meshes.append(cone.union(cyl))
             meshes.append(cone.difference(cyl))
-
 
         with Layout("Transformation Join"):
             node = nd.join_geometry().node
@@ -278,43 +548,7 @@ with GeoNodes("Test Color"):
 
             node.geometry.out()
 
-    with GeoNodes("Break Demo"):
-        Geometry().out()
-        raise Break()
-
-        # Not executed
-        Float(10).out()
-
-    with GeoNodes("Layout Demo"):
-
-        with Layout("Some maths"):
-            z = gnmath.atan2(nd.position.z, Vector((nd.position.x, nd.position.y, 0)).length)
-
-        geo = Mesh()
-        geo.points.offset = (0, 0, z)
-
-        geo.out()
-
-    with GeoNodes("Connect several sockets"):
-
-        Geometry().out()
-
-        # Node with 'Value' output socket
-        a = Node("Grid")
-
-        # Create Group inputs to feed the node
-        # 'Size X' and 'Size Y' are created in the group input not
-        # 'Vertices X' and 'Vertices Y' are connected to the same 'Vertices' which is created
-        a.plug_node_into(rename={'Vertices X': 'Vertices', 'Vertices Y': 'Vertices'})
-
-        a = Node("Math")
-
-        # Connect the 'Value' output socket to the 'Value' input socket
-        # The third socket is exclude by its index
-        # Input values are renamed 'First' and 'Second'
-        a.plug_node_into(exclude=2, rename={'Value': 'First', 'Value_001': 'Second'})
-
-        b = Node("Math", operation='SQRT')
-
-        # Plug the previous math node on a single socket
-        b.plug_node_into(a, include='Value')
+        with Layout("UV"):
+            cube = Mesh.Cube()
+            a = cube.pack_uv_islands()
+            a = cube.uv_unwrap()

@@ -40,6 +40,18 @@ class Boolean(ValueSocket):
     SOCKET_TYPE = 'BOOLEAN'
 
     def __init__(self, value=False, name=None, tip=None, subtype='NONE'):
+        """ DataSocket of type BOOLEAN
+
+        [!Node] Boolean
+
+        Arguments
+        ---------
+        - value (bool or DataSocket = False) : initial value
+        - name (str = None) : Create an Group Input socket with the provided str if not None
+        - tip (str = None) : User tip (for Group Input sockets)
+        - subtype (str='NONE') : socket subtype
+        """
+
         bsock = utils.get_bsocket(value)
         if bsock is None:
             if name is None:
@@ -100,4 +112,18 @@ class Boolean(ValueSocket):
 
     @classmethod
     def Random(cls, probability=None, id=None, seed=None):
+        """ Constructor : random Boolean.
+
+        [!Node] Random Value
+
+        Arguments
+        ---------
+        - probability (Float)
+        - id (Integer)
+        - seed (Integer)
+
+        Returns
+        -------
+        - Boolean
+        """
         return Node('Random Value', {'Probability': probability, 'ID': id, 'Seed': seed}, data_type='BOOLEAN')._out

@@ -306,6 +306,44 @@ class NodeInfo:
         }
 
     # -----------------------------------------------------------------------------------------------------------------------------
+    # Comment
+
+    def yield_comment(self):
+
+        _tab = " "*4
+        c3 = '"""'
+
+        is_prop     = self.in_sockets_count == 0 and len(self.params) == 0
+        return_node = self.out_sockets_count > 1
+
+        sockets = self.get_sockets()
+        params  = self.get_parameters()
+
+        yield f"{_tab*2}{c3} Node '{self.bnode.name}' ({self.bnode.bl_idname})"
+
+        yield f"\n\n{_tab*2}[!Node] {self.bnode.name}"
+
+        if sockets['has_items'] or params['has_items']:
+            yield f"\n\n{_tab*2}Arguments"
+            yield f"\n{_tab*2}---------"
+            for line in sockets['arg_help']:
+                yield f"\n{_tab*2}- {line}"
+            for line in params['arg_help']:
+                yield f"\n{_tab*2}- {line}"
+
+        if len(self.bnode.outputs):
+            yield f"\n\n{_tab*2}Returns"
+            yield f"\n{_tab*2}-------"
+
+            out_sockets = [f"{utils.socket_name(bsocket.name)} ({constants.CLASS_NAMES[bsocket.type]})" for bsocket in self.bnode.outputs if bsocket.type != 'CUSTOM']
+            if return_node:
+                yield f"\n{_tab*2}- Node: [{', '.join(out_sockets)}]"
+            elif len(out_sockets):
+                yield f"\n{_tab*2}- {out_sockets[0]}"
+
+        yield f"\n{_tab*2}{c3}\n\n"
+
+    # -----------------------------------------------------------------------------------------------------------------------------
     # Static source
 
     def yield_static_source(self, func_name=None, as_class_method=True):
@@ -356,33 +394,39 @@ class NodeInfo:
         # ----------------------------------------------------------------------------------------------------
         # Comment
 
-        c3 = '"""'
+        if True:
+            for line in self.yield_comment():
+                yield line
 
-        yield f"{_tab*2}{c3} Node '{self.bnode.name}' ({self.bnode.bl_idname})"
+        else:
+            c3 = '"""'
 
-        if sockets['has_items'] or params['has_items']:
-            yield f"\n\n{_tab*2}Arguments"
-            yield f"\n{_tab*2}---------"
-            for line in sockets['arg_help']:
-                yield f"\n{_tab*2}- {line}"
-            for line in params['arg_help']:
-                yield f"\n{_tab*2}- {line}"
+            yield f"{_tab*2}{c3} Node '{self.bnode.name}' ({self.bnode.bl_idname})"
 
-        if len(self.bnode.outputs):
-            yield f"\n\n{_tab*2}Returns"
-            yield f"\n{_tab*2}-------"
+            yield f"\n\n{_tab*2}[!Node] {self.bnode.name}"
 
-            out_sockets = [f"{utils.socket_name(bsocket.name)} ({constants.CLASS_NAMES[bsocket.type]})" for bsocket in self.bnode.outputs if bsocket.type != 'CUSTOM']
-            if return_node:
-                yield f"\n{_tab*2}- Node: [{', '.join(out_sockets)}]"
-            elif len(out_sockets):
-                yield f"\n{_tab*2}- {out_sockets[0]}"
+            if sockets['has_items'] or params['has_items']:
+                yield f"\n\n{_tab*2}Arguments"
+                yield f"\n{_tab*2}---------"
+                for line in sockets['arg_help']:
+                    yield f"\n{_tab*2}- {line}"
+                for line in params['arg_help']:
+                    yield f"\n{_tab*2}- {line}"
 
+            if len(self.bnode.outputs):
+                yield f"\n\n{_tab*2}Returns"
+                yield f"\n{_tab*2}-------"
 
-        #for param, valids in self.enum_params.items():
-        #    yield f"{_tab*2}- {param} in {valids}\n"
+                out_sockets = [f"{utils.socket_name(bsocket.name)} ({constants.CLASS_NAMES[bsocket.type]})" for bsocket in self.bnode.outputs if bsocket.type != 'CUSTOM']
+                if return_node:
+                    yield f"\n{_tab*2}- Node: [{', '.join(out_sockets)}]"
+                elif len(out_sockets):
+                    yield f"\n{_tab*2}- {out_sockets[0]}"
 
-        yield f"\n{_tab*2}{c3}\n\n"
+            #for param, valids in self.enum_params.items():
+            #    yield f"{_tab*2}- {param} in {valids}\n"
+
+            yield f"\n{_tab*2}{c3}\n\n"
 
         # ----------------------------------------------------------------------------------------------------
         # Node call
@@ -453,6 +497,8 @@ class NodeInfo:
         c3 = '"""'
 
         yield f"{_tab*2}{c3} Node '{self.bnode.name}' ({self.bnode.bl_idname})"
+
+        yield f"\n\n{_tab*2}[!Node] {self.bnode.name}"
 
         if sockets['has_items'] or params['has_items']:
             yield f"\n\n{_tab*2}Arguments"
@@ -643,6 +689,30 @@ def gen_node_code(btree, node_name=None, self_socket=None, return_node=False):
     node_info = NodeInfo(btree, bnode)
     for line in node_info.gen_method_source(name=None, self_socket=self_socket, return_node=return_node):
         print(line, end='')
+
+# =============================================================================================================================
+# Gen comment
+
+def gen_node_comment(btree, node_name=None, self_socket=None, return_node=False):
+
+    bl_idname = constants.NODE_NAMES[btree.bl_idname][node_name.lower()]
+
+    bnode = None
+    for nd in btree.nodes:
+        if nd.bl_idname == bl_idname:
+            bnode = nd
+            break
+
+    if bnode is None:
+        bnode = btree.nodes.new(bl_idname)
+
+    print("Node", node_name)
+    print("-"*100)
+    node_info = NodeInfo(btree, bnode)
+    for line in node_info.yield_comment():
+        print(line, end='')
+    print("-"*100)
+
 
 
 

@@ -1010,6 +1010,11 @@ class Node:
 
             try:
                 setattr(self._bnode, param_name, param_value)
+
+            except AttributeError as ae:
+                print(f"Set Node Parameter error: Node: '{self._bnode.name}', attribute: '{param_name}', value: {param_value}")
+                raise ae
+
             except TypeError as type_e:
                 s = str(type_e)
                 mark = "not found in "
@@ -1545,6 +1550,8 @@ class Group(Node):
     def __init__(self, group_name, sockets={}, **kwargs):
         """ Node Group
 
+        [!Node] Group
+
         Create a node 'Group' with the tree provided with 'group_name' argument.
 
         The sockets can be initialized either using the sockets dictionary or using they snake_case name
@@ -1601,6 +1608,8 @@ class Group(Node):
     @classmethod
     def Prefix(cls, prefix, group_name, sockets={}, **kwargs):
         """ Call a Group with a prefixed named.
+
+        [!Node] Group
 
         Using a prefix for groups of the same type can be usefull in big projects with
         a lot of groups.
