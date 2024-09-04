@@ -39,7 +39,7 @@ from geonodes import *
 
 # A Shader to be used by the Geometry Nodes modifier
 with sh.ShaderNodes("Hello Material"):
-    # Read the color from the arribute nameed 'surf_color'
+    # Read the color from the attribute named 'surf_color'
     col = sh.nd.attribute("surf_color").color
     
     # A Principled BSDF shader 
