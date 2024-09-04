@@ -72,7 +72,7 @@ with GeoNodes("Hello World"):
 
 The generated nodes and the result of the Geometry nodes modifier is given below:
 
-<img src="doc/images/hello_world.png" width="600" class="center">
+<img src="doc/images/hello_world_nodes.png" width="600" class="center">
 
 ## Installation
 
