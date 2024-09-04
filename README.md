@@ -51,23 +51,18 @@ with GeoNodes("Hello World"):
 
     grid = Mesh.Grid(vertices_x=count, vertices_y=count, size_x=size, size_y=size)
     
-    # We compute z i
+    # We compute z
 
     with Layout("Computing the wave"):
-
-        # Horizontal distance
-
         distance = gnmath.sqrt(nd.position.x**2 + nd.position.y**2)
-        
-        # Height in z
-
         z = height*gnmath.sin(distance*omega)/distance
         
     # Let's change the z coordinate of our vertices
     grid.points.offset = (0, 0, z)
     
-    # We smooth the grid
+    # Material and smoothness
     grid.faces.smooth = True
+    grid.faces.material = Material(None, "Material")
     
     # We are done: plugging the deformed grid as the modified geometry
     grid.out()
