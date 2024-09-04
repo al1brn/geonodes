@@ -54,38 +54,184 @@ class IntFloat(ValueSocket):
     # ----- Mix
 
     def mix(self, factor=None, other=None, clamp_factor=None):
+        """ Node 'Mix' (ShaderNodeMix)
+
+        [!Node] Mix
+
+        Arguments
+        ---------
+        - factor (Float) : socket 'Factor' (Factor_Float)
+        - other (DataSocket) : socket 'B' (B_Float)
+        - clamp_factor (bool): Node.clamp_factor
+
+        Returns
+        -------
+        - DataSocket
+        """
         return Float(Node('Mix', {'Factor': factor, 'A': self, 'B': other}, clamp_factor=clamp_factor, data_type='FLOAT')._out)
 
     # ----- Clamp
 
     def clamp(self, min=None, max=None, clamp_type='MINMAX'):
+        """ Node 'Clamp' (ShaderNodeClamp)
+
+        [!Node] Clamp
+
+        Arguments
+        ---------
+        - min (Float) : socket 'Min' (Min)
+        - max (Float) : socket 'Max' (Max)
+        - clamp_type (str): Node.clamp_type in ('MINMAX', 'RANGE')
+
+        Returns
+        -------
+        - Float
+        """
         return Float(Node('Clamp', {'Value': self, 'Min': min, 'Max': max}, clamp_type=clamp_type)._out)
 
-    def clamp_range(self, min=None, max=None, clamp_type='RANGE'):
-        return self.clamp(min, max, clamp_type)
-
     def map_range(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=None, interpolation_type='LINEAR'):
+        """ Node 'Map Range' (ShaderNodeMapRange)
+
+        [!Node] Map Range
+
+        Arguments
+        ---------
+        - from_min (Float) : socket 'From Min' (From Min)
+        - from_max (Float) : socket 'From Max' (From Max)
+        - to_min (Float) : socket 'To Min' (To Min)
+        - to_max (Float) : socket 'To Max' (To Max)
+        - clamp (bool): Node.clamp
+        - interpolation_type (str): Node.interpolation_type in ('LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP')
+
+        Returns
+        -------
+        - Float
+        """
         return Float(Node('Map Range', {'Value': self, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}, clamp=clamp, interpolation_type=interpolation_type)._out)
 
     def map_range_linear(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=None):
+        """ Node 'Map Range' (ShaderNodeMapRange)
+
+        [!Node] Map Range
+
+        Arguments
+        ---------
+        - from_min (Float) : socket 'From Min' (From Min)
+        - from_max (Float) : socket 'From Max' (From Max)
+        - to_min (Float) : socket 'To Min' (To Min)
+        - to_max (Float) : socket 'To Max' (To Max)
+        - clamp (bool): Node.clamp
+        - interpolation_type (str): Node.interpolation_type in ('LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP')
+
+        Returns
+        -------
+        - Float
+        """
         return self.map_range(from_min, from_max, to_min, to_max, clamp=clamp, interpolation_type='LINEAR')
 
     def map_range_stepped(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=None):
+        """ Node 'Map Range' (ShaderNodeMapRange)
+
+        [!Node] Map Range
+
+        Arguments
+        ---------
+        - from_min (Float) : socket 'From Min' (From Min)
+        - from_max (Float) : socket 'From Max' (From Max)
+        - to_min (Float) : socket 'To Min' (To Min)
+        - to_max (Float) : socket 'To Max' (To Max)
+        - clamp (bool): Node.clamp
+        - interpolation_type (str): Node.interpolation_type in ('LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP')
+
+        Returns
+        -------
+        - Float
+        """
         return self.map_range(from_min, from_max, to_min, to_max, clamp=clamp, interpolation_type='STEPPED')
 
     def map_range_smooth(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=None):
+        """ Node 'Map Range' (ShaderNodeMapRange)
+
+        [!Node] Map Range
+
+        Arguments
+        ---------
+        - from_min (Float) : socket 'From Min' (From Min)
+        - from_max (Float) : socket 'From Max' (From Max)
+        - to_min (Float) : socket 'To Min' (To Min)
+        - to_max (Float) : socket 'To Max' (To Max)
+        - clamp (bool): Node.clamp
+        - interpolation_type (str): Node.interpolation_type in ('LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP')
+
+        Returns
+        -------
+        - Float
+        """
         return self.map_range(from_min, from_max, to_min, to_max, clamp=clamp, interpolation_type='SMOOTHSTEP')
 
     def map_range_smoother(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=None):
+        """ Node 'Map Range' (ShaderNodeMapRange)
+
+        [!Node] Map Range
+
+        Arguments
+        ---------
+        - from_min (Float) : socket 'From Min' (From Min)
+        - from_max (Float) : socket 'From Max' (From Max)
+        - to_min (Float) : socket 'To Min' (To Min)
+        - to_max (Float) : socket 'To Max' (To Max)
+        - clamp (bool): Node.clamp
+        - interpolation_type (str): Node.interpolation_type in ('LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP')
+
+        Returns
+        -------
+        - Float
+        """
         return self.map_range(from_min, from_max, to_min, to_max, clamp=clamp, interpolation_type='SMOOTHERSTEP')
 
     def color_ramp(self, keep=None):
-        return Node('Color Ramp', {'Fac': self}, _keep=keep)._out
+        """ Node 'Color Ramp' (ShaderNodeValToRGB)
+
+        [!Node] Color Ramp
+
+        Returns
+        -------
+        - Color [alpha_]
+        """
+        node = Node('Color Ramp', {'Fac': self}, _keep=keep)
+        col = node._out
+        col.alpha_ = node.alpha
+        return col
 
     def to_string(self, decimals=None):
+        """ Node 'Value to String' (FunctionNodeValueToString)
+
+        [!Node] Value to String
+
+        Arguments
+        ---------
+        - decimals (Integer) : socket 'Decimals' (Decimals)
+
+        Returns
+        -------
+        - String
+        """
         return Node('Value to String', {'Value': self, 'Decimals': decimals})._out
 
     def curve(self, factor=None, keep=None):
+        """ Node 'Float Curve' (ShaderNodeFloatCurve)
+
+        [!Node] Float Curve
+
+        Arguments
+        ---------
+        - factor (Float) : socket 'Factor' (Factor)
+        - mapping (CurveMapping): Node.mapping
+
+        Returns
+        -------
+        - Float
+        """
         return Node('Float Curve', {'Factor': factor, 'Value': self}, _keep=keep)._out
 
     # ====================================================================================================
@@ -313,30 +459,104 @@ class Float(IntFloat):
     # Comparison
 
     def less_than(self, other):
+        """ Node 'Compare' (FunctionNodeCompare)
+
+        [!Node] Compare
+
+        Arguments
+        ---------
+        - other (Float) : socket 'B' (B)
+
+        Returns
+        -------
+        - Boolean
+        """
         if Tree.is_geonodes:
             return Node("Compare", {'A': self, 'B': other}, operation='LESS_THAN', data_type='FLOAT')._out
         else:
             return Node('Math', {0: self, 1: other}, operation='LESS_THAN')._out
 
     def less_equal(self, other):
+        """ Node 'Compare' (FunctionNodeCompare)
+
+        [!Node] Compare
+
+        Arguments
+        ---------
+        - other (Float) : socket 'B' (B)
+
+        Returns
+        -------
+        - Boolean
+        """
         return Node("Compare", {'A': self, 'B': other}, operation='LESS_EQUAL', data_type='FLOAT')._out
 
     def greater_than(self, other):
+        """ Node 'Compare' (FunctionNodeCompare)
+
+        [!Node] Compare
+
+        Arguments
+        ---------
+        - other (Float) : socket 'B' (B)
+
+        Returns
+        -------
+        - Boolean
+        """
         if Tree.is_geonodes:
             return Node("Compare", {'A': self, 'B': other}, operation='GREATER_THAN', data_type='FLOAT')._out
         else:
             return Node('Math', {0: self, 1: other}, operation='GREATER_THAN')._out
 
     def greater_equal(self, other):
+        """ Node 'Compare' (FunctionNodeCompare)
+
+        [!Node] Compare
+
+        Arguments
+        ---------
+        - other (Float) : socket 'B' (B)
+
+        Returns
+        -------
+        - Boolean
+        """
         return Node("Compare", {'A': self, 'B': other}, operation='GREATER_EQUAL', data_type='FLOAT')._out
 
     def equal(self, other, epsilon=None):
+        """ Node 'Compare' (FunctionNodeCompare)
+
+        [!Node] Compare
+
+        Arguments
+        ---------
+        - other (Float) : socket 'B' (B)
+        - epsilon (Float) : socket 'Epsilon' (Epsilon)
+
+        Returns
+        -------
+        - Boolean
+        """
         if Tree.is_geonodes:
             return Node("Compare", {'A': self, 'B': other, 'Epsilon': epsilon}, operation='EQUAL', data_type='FLOAT')._out
         else:
             return Node('Math', {0: self, 1: other, 2: epsilon}, operation='COMPARE')._out
 
     def not_equal(self, other, epsilon=None):
+        """ Node 'Compare' (FunctionNodeCompare)
+
+        [!Node] Compare
+
+        Arguments
+        ---------
+        - other (Float) : socket 'B' (B)
+        - epsilon (Float) : socket 'Epsilon' (Epsilon)
+
+        Returns
+        -------
+        - Boolean
+        """
         return Node("Compare", {'A': self, 'B': other, 'Epsilon': epsilon}, operation='NOT_EQUAL', data_type='FLOAT')._out
 
     # ====================================================================================================
@@ -395,19 +615,91 @@ class Integer(IntFloat):
     # Comparison
 
     def less_than(self, other):
+        """ Node 'Compare' (FunctionNodeCompare)
+
+        [!Node] Compare
+
+        Arguments
+        ---------
+        - other (Float) : socket 'B' (B)
+
+        Returns
+        -------
+        - Boolean
+        """
         return Node("Compare", {'A': self, 'B': other}, operation='LESS_THAN', data_type='INT')._out
 
     def less_equal(self, other):
+        """ Node 'Compare' (FunctionNodeCompare)
+
+        [!Node] Compare
+
+        Arguments
+        ---------
+        - other (Float) : socket 'B' (B)
+
+        Returns
+        -------
+        - Boolean
+        """
         return Node("Compare", {'A': self, 'B': other}, operation='LESS_EQUAL', data_type='INT')._out
 
     def greater_than(self, other):
+        """ Node 'Compare' (FunctionNodeCompare)
+
+        [!Node] Compare
+
+        Arguments
+        ---------
+        - other (Float) : socket 'B' (B)
+
+        Returns
+        -------
+        - Boolean
+        """
         return Node("Compare", {'A': self, 'B': other}, operation='GREATER_THAN', data_type='INT')._out
 
     def greater_equal(self, other):
+        """ Node 'Compare' (FunctionNodeCompare)
+
+        [!Node] Compare
+
+        Arguments
+        ---------
+        - other (Float) : socket 'B' (B)
+
+        Returns
+        -------
+        - Boolean
+        """
         return Node("Compare", {'A': self, 'B': other}, operation='GREATER_EQUAL', data_type='INT')._out
 
     def equal(self, other):
+        """ Node 'Compare' (FunctionNodeCompare)
+
+        [!Node] Compare
+
+        Arguments
+        ---------
+        - other (Float) : socket 'B' (B)
+
+        Returns
+        -------
+        - Boolean
+        """
         return Node("Compare", {'A': self, 'B': other}, operation='EQUAL', data_type='INT')._out
 
     def not_equal(self, other):
+        """ Node 'Compare' (FunctionNodeCompare)
+
+        [!Node] Compare
+
+        Arguments
+        ---------
+        - other (Float) : socket 'B' (B)
+
+        Returns
+        -------
+        - Boolean
+        """
         return Node("Compare", {'A': self, 'B': other}, operation='NOT_EQUAL', data_type='INT')._out

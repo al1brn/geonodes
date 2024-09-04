@@ -1036,21 +1036,42 @@ class Node:
         if isinstance(name, int):
             return bsockets[name]
 
+        disabled_bsocket = None
+        bsocket = None
+        for bsock in bsockets:
+            if name in [bsock.name, bsock.identifier, utils.socket_name(bsock.name)]:
+                if bsock.enabled:
+                    bsocket = bsock
+                    break
+                else:
+                    disabled_bsocket = bsock
+
+        """
         try:
             bsocket = bsockets[name]
         except:
             bsocket = None
             for bsock in bsockets:
-                if not bsock.enabled:
-                    continue
+                #if not bsock.enabled:
+                #    continue
 
                 if bsock.name == bsocket or utils.socket_name(bsock.name) == name:
-                    bsocket = bsock
-                    break
+                    if bsock.enabled:
+                        bsocket = bsock
+                        break
+                    else:
+                        is_disabled = True
+        """
+
+        if bsocket is None:
+            bsocket = disabled_bsocket
 
         if halt and bsocket is None:
-            raise NodeError(f"Socket name '{name}' not found in node '{self._bnode.name}' ({self._bnode.bl_idname})",
-                valids = [sock.name for sock in bsockets])
+            valids = [f"{'x' if sock.enabled else 'o'} {sock.name}" for sock in bsockets]
+            if disabled_bsocket is None:
+                raise NodeError(f"Socket name '{name}' not found in node '{self._bnode.name}' ({self._bnode.bl_idname})", valids=valids)
+            else:
+                raise NodeError(f"Socket name '{name}' is disabled in node '{self._bnode.name}' ({self._bnode.bl_idname})", valids=valids)
 
         return bsocket
 

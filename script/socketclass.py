@@ -169,6 +169,12 @@ class DataSocket(NodeCache):
 
     @property
     def node(self):
+        """ Returns the node owning the socket.
+
+        Returns
+        -------
+        - Node
+        """
         for node in self._tree._nodes:
             if node._bnode == self._bsocket.node:
                 return node
@@ -192,6 +198,29 @@ class DataSocket(NodeCache):
 
     # To chain in a short way
     def _lc(self, label=None, color=None):
+        """ Set node label and color.
+
+        This method returns self to be chained to as socket:
+
+        ``` python
+        with GeoNodes("Node label and color"):
+            Geometry().out()
+
+            a = Float(10)._lc("Var a")
+            b = Float(10)._lc("Var b")
+            c = (a + b)._lc("a + b", (1, 0, 0))
+        ```
+
+        Arguments
+        ---------
+        - label (str = None) : node label
+        - color (color = None) : node color
+
+        Returns
+        -------
+        - self
+        """
+
         node = self.node
         node._label = label
         node._color = color
@@ -245,6 +274,26 @@ class DataSocket(NodeCache):
         tree.link(self, bsocket)
 
     def out(self, name=None):
+        """ Plug the value to the Group Output Node.
+
+        ``` python
+        with GeoNodes("Plug to group output"):
+            # Create a cube
+            geo = Mesh.Cube()
+            # To Group Output geometry as socket named "Cube"
+            geo.out("Cube")
+        ```
+
+        The "Do nothing" modifier is simply ``` Geometry().out() ```
+
+        Arguments
+        ---------
+        - name (str = None) : socket name
+
+        Returns
+        -------
+        - None
+        """
         self.to_output(name)
 
     # =============================================================================================================================
@@ -272,8 +321,26 @@ class DataSocket(NodeCache):
     def MenuSwitch(cls, items={'A': None, 'B': None}, menu=0, name="Menu", tip=None):
         """ Node 'Menu Switch' (GeometryNodeMenuSwitch)
 
+        [!Node] Menu Switch
+
         The items of the Menu Switch node are provided in the 'items' dict.
         An group input socket named after the 'name' argument is linked to menu selector.
+
+        ``` python
+        with GeoNodes("Menu Switch demo"):
+
+            # Create some geometries
+            geo    = Geometry()
+            cube   = Mesh.Cube()
+            sphere = Mesh.IcoSphere()
+            cone   = Mesh.Cone()
+
+            # Pick in this list
+            pick_geo = Geometry.MenuSwitch({"Input": geo, "Cube": cube, "Sphere": sphere, "Cone": cone}, menu="Cube")
+
+            # Plug the result to the output
+            pick_geo.out()
+        ```
 
         Arguments
         ---------
@@ -349,6 +416,24 @@ class DataSocket(NodeCache):
     def IndexSwitch(cls, *values, index=0):
         """ Node 'Index Switch' (GeometryNodeIndexSwitch)
 
+        [!Node] Index Switch
+
+        ``` python
+        with GeoNodes("Index Switch demo"):
+
+            # Create some geometries
+            geo    = Geometry()
+            cube   = Mesh.Cube()
+            sphere = Mesh.IcoSphere()
+            cone   = Mesh.Cone()
+
+            # Pick in this list
+            pick_geo = Geometry.IndexSwitch(geo, cube, sphere, cone, index=Integer(2, 'Index'))
+
+            # Plug the result to the output
+            pick_geo.out()
+        ```
+
         Arguments
         ---------
         - *values : list of DataSockets to select into
@@ -356,7 +441,7 @@ class DataSocket(NodeCache):
 
         Returns
         -------
-        - output
+        - DataSocket
         """
 
         # ----- Create the nodes
@@ -398,6 +483,22 @@ class DataSocket(NodeCache):
     def Switch(cls, condition=None, false=None, true=None):
         """ Node 'Switch' (GeometryNodeSwitch)
 
+        [!Node] Switch
+
+        ``` python
+        with GeoNodes("Switch demo"):
+
+            # Two possible geometries
+            cube   = Mesh.Cube()
+            sphere = Mesh.IcoSphere()
+
+            # Select
+            geo = Geometry.Switch(Boolean(True, "Use Sphere"), cube, sphere)
+
+            # To group output
+            geo.out()
+        ```
+
         Arguments
         ---------
         - condition (Boolean) : socket 'Switch' (Switch)
@@ -406,7 +507,7 @@ class DataSocket(NodeCache):
 
         Returns
         -------
-        - output
+        - DataSocket
         """
 
         res = Node('Switch', {'Switch': condition, 'False': false, 'True': true}, input_type=cls.input_type(default='GEOMETRY'))._out
@@ -425,7 +526,25 @@ class DataSocket(NodeCache):
     def menu_switch(self, self_name='A', items={'B': None}, menu=0, name="Menu", tip=None):
         """ Node 'Menu Switch' (GeometryNodeMenuSwitch)
 
+        [!Node] Menu Switch
+
         Self is connected to the first menu item with the name provided as argument.
+
+        ``` python
+        with GeoNodes("Menu Switch demo"):
+
+            # Create some geometries
+            geo    = Geometry()
+            cube   = Mesh.Cube()
+            sphere = Mesh.IcoSphere()
+            cone   = Mesh.Cone()
+
+            # Pick in this list
+            pick_geo = geo.menu_switch("Input", {"Cube": cube, "Sphere": sphere, "Cone": cone}, menu="Cube")
+
+            # Plug the result to the output
+            pick_geo.out()
+        ```
 
         Arguments
         ---------
@@ -444,7 +563,25 @@ class DataSocket(NodeCache):
     def index_switch(self, *values, index=0):
         """ Node 'Index Switch' (GeometryNodeIndexSwitch)
 
+        [!Node] Index Switch
+
         Self is used as first socket in the node.
+
+        ``` python
+        with GeoNodes("Index Switch demo"):
+
+            # Create some geometries
+            geo    = Geometry()
+            cube   = Mesh.Cube()
+            sphere = Mesh.IcoSphere()
+            cone   = Mesh.Cone()
+
+            # Pick in this list
+            pick_geo = Geometry.IndexSwitch(geo, cube, sphere, cone, index=Integer(2, 'Index'))
+
+            # Plug the result to the output
+            pick_geo.out()
+        ```
 
         Arguments
         ---------
@@ -456,16 +593,27 @@ class DataSocket(NodeCache):
         - output
         """
 
-        return self.IndexSwitch(self, *values, index=0)
+        return self.IndexSwitch(self, *values, index=index)
 
     def switch(self, condition=None, true=None):
         """ Node 'Switch' (GeometryNodeSwitch)
 
+        [!Node] Switch
+
         Self is connected to 'false' socket.
 
         ``` python
-        # After the following instruction, data_socket is changed to other_socket if condition is True
-        data_socket = data_socket.switch(condition, other_socket)
+        with GeoNodes("Switch demo"):
+
+            # Two possible geometries
+            cube   = Mesh.Cube()
+            sphere = Mesh.IcoSphere()
+
+            # Select
+            geo = cube.switch(Boolean(True, "Use Sphere"), sphere)
+
+            # To group output
+            geo.out()
         ```
 
         Arguments
@@ -485,6 +633,8 @@ class DataSocket(NodeCache):
 
     def blur(self, iterations=None, weight=None):
         """ Node 'Blur Attribute' (GeometryNodeBlurAttribute)
+
+        [!Node] Blur Attribute
 
         Arguments
         ---------
@@ -515,15 +665,35 @@ class ValueSocket(DataSocket):
     def NamedAttribute(cls, name):
         """ Node 'Named Attribute' (GeometryNodeInputNamedAttribute)
 
+        [!Node] Named Attribute
+
+        'Named' is a synonym of 'NamedAttribute'
+
+        ``` python
+        with GeoNodes("Named Attributes"):
+
+            cube = Mesh.Cube()
+
+            # Create a named attribute
+            cube.points.store("Some Value", Float.Random(0, 1, seed=0))
+
+            # Read the random value to offset along z
+            cube.points.offset = (0, 0, Float.NamedAttribute("Some Value"))
+
+            # Remove the named attribute
+            cube.remove_named_attribute("Some*", exact=False)
+
+            cube.out()
+        ```
+
         Arguments
         ---------
         - name (String) : socket 'Name' (Name)
 
         Returns
         -------
-        - attribute (Float)
+        - DataSocket [exists_]
         """
-
         attribute = Node('Named Attribute', {'Name': name}, data_type=cls.data_type())._out
         attribute.exists_ = attribute.node.exists
         return attribute
@@ -532,38 +702,36 @@ class ValueSocket(DataSocket):
     def Named(cls, name):
         """ Node 'Named Attribute' (GeometryNodeInputNamedAttribute)
 
+        [!Node] Named Attribute
+
+        'Named' is a synonym of 'NamedAttribute'
+
+        ``` python
+        with GeoNodes("Named Attributes"):
+
+            cube = Mesh.Cube()
+
+            # Create a named attribute
+            cube.points.store("Some Value", Float.Random(0, 1, seed=0))
+
+            # Read the random value to offset along z
+            cube.points.offset = (0, 0, Float.Named("Some Value"))
+
+            # Remove the named attribute
+            cube.remove_named_attribute("Some*", exact=False)
+
+            cube.out()
+        ```
+
         Arguments
         ---------
         - name (String) : socket 'Name' (Name)
 
         Returns
         -------
-        - attribute
+        - DataSocket [exists_]
         """
-
-        attribute = Node('Named Attribute', {'Name': name}, data_type=cls.data_type())._out
-        attribute.exists_ = attribute.node.exists
-        return attribute
-
-    def store(self, domain, name):
-        """ Node 'Store Named Attribute' (GeometryNodeStoreNamedAttribute)
-
-        Arguments
-        ---------
-        - domain (Domain) : socket 'Geometry' (Geometry) and node domain in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
-        - [...] : socket 'Selection' (Selection)
-        - name (String) : socket 'Name' (Name)
-        - self : socket 'Value' (Value)
-
-        Returns
-        -------
-        - geometry (Geometry)
-        """
-
-        try:
-            domain.store_named_attribute(name, self)
-        except:
-            raise NodeError(f"Impossible to store the named attribute '{name}' on domain {domain}.", domain=domain, attribute=self, name=name)
+        return cls.named_attribute(name=name)
 
 # =============================================================================================================================
 # =============================================================================================================================

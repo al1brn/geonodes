@@ -458,7 +458,7 @@ class Geometry(DataSocket, GeoBase):
         """
         #node = Node('Remove Named Attribute', {'Geometry': self, 'Name': name}, pattern_mode = 'EXACT' if exact else 'WILDCARD')
         #self._jump(node._out)
-        return Node('Remove Named Attribute', {'Geometry': self, 'Name': name}, pattern_mode = 'EXACT' if exact else 'WILDCARD')._out
+        return self._jump(Node('Remove Named Attribute', {'Geometry': self, 'Name': name}, pattern_mode = 'EXACT' if exact else 'WILDCARD')._out)
 
     # ====================================================================================================
     # Sample nodes without domain
@@ -1441,81 +1441,6 @@ class Vertex(Point):
         return index
 
 class SplinePoint(Point):
-
-    # ----- Radius
-
-    @property
-    def radius(self):
-        """ Node 'Radius' (GeometryNodeInputRadius)
-
-        [!Node] Radius
-
-        Returns
-        -------
-        - Float
-        """
-
-        return Node('Radius')._out
-
-    @radius.setter
-    def radius(self, value):
-        """ Node 'Set Curve Radius' (GeometryNodeSetCurveRadius)
-
-        [!Node] Set Curve Radius
-
-        Arguments
-        ---------
-        - value (Float) : socket 'Radius' (Radius)
-        """
-
-        self._geo._jump(Node('Set Curve Radius', {'Curve': self._geo, 'Selection': self._sel, 'Radius': value})._out)
-
-    # ----- Tilt
-
-    @property
-    def tilt(self):
-        """ Node 'Curve Tilt' (GeometryNodeInputCurveTilt)
-
-        [!Node] Curve Tilt
-
-        Returns
-        -------
-        - Float
-        """
-
-        return Node('Curve Tilt')._out
-
-    @tilt.setter
-    def tilt(self, value):
-        """ Node 'Set Curve Tilt' (GeometryNodeSetCurveTilt)
-
-        [!Node] Set Curve Tilt
-
-        Arguments
-        ---------
-        - tilt (Float) : socket 'Tilt' (Tilt)
-        """
-
-        self._geo._jump(Node('Set Curve Tilt', {'Curve': self._geo, 'Selection': self._sel, 'Tilt': value})._out)
-
-    # ----- Curve normal
-
-    @property
-    def normal(self):
-        raise NodeError(f"Curve.normal property is write only")
-
-    @normal.setter
-    def normal(self, value):
-        """ Node 'Set Curve Normal' (GeometryNodeSetCurveNormal)
-
-        [!Node] Set Curve Normal
-
-        Arguments
-        ---------
-        - mode (str): Node.mode in ('MINIMUM_TWIST', 'Z_UP', 'FREE')
-        """
-
-        return self._geo._jump(Node('Set Curve Normal', {'Curve': self._geo, 'Selection': self._sel}, mode=value)._out)
 
     # ----- Handle positions
 
@@ -2968,7 +2893,7 @@ class Mesh(Geometry):
         -------
         - Mesh
         """
-        return Cloud(points).to_vertices()
+        return Cloud(points)[points._sel].to_vertices()
 
     @classmethod
     def FromVolume(cls, volume, voxel_size=None, voxel_amount=None, threshold=None, adaptivity=None, resolution_mode='GRID'):
@@ -3959,7 +3884,7 @@ class Curve(Geometry):
         -------
         - Curve
         """
-        return Mesh(mesh).to_curve()
+        return Mesh(mesh)[mesh._sel].to_curve()
 
     @classmethod
     def FromEdgePaths(cls, mesh, next_vertex_index=None):
@@ -3977,7 +3902,7 @@ class Curve(Geometry):
         -------
         - Curve
         """
-        return Mesh(mesh).points.edge_paths_to_curves(next_vertex_index=next_vertex_index)
+        return Mesh(mesh).points[mesh._sel].edge_paths_to_curves(next_vertex_index=next_vertex_index)
 
     @classmethod
     def FromPoints(cls, points, curve_group_id=None, weight=None):
@@ -4003,6 +3928,82 @@ class Curve(Geometry):
     @property
     def domain_size(self):
         return self._cache('Domain Size', {'Geometry': self}, component='CURVE')
+
+    # ----- Radius
+
+    @property
+    def radius(self):
+        """ Node 'Radius' (GeometryNodeInputRadius)
+
+        [!Node] Radius
+
+        Returns
+        -------
+        - Float
+        """
+
+        return Node('Radius')._out
+
+    @radius.setter
+    def radius(self, value):
+        """ Node 'Set Curve Radius' (GeometryNodeSetCurveRadius)
+
+        [!Node] Set Curve Radius
+
+        Arguments
+        ---------
+        - value (Float) : socket 'Radius' (Radius)
+        """
+
+        self._jump(Node('Set Curve Radius', {'Curve': self, 'Selection': self._sel, 'Radius': value})._out)
+
+    # ----- Tilt
+
+    @property
+    def tilt(self):
+        """ Node 'Curve Tilt' (GeometryNodeInputCurveTilt)
+
+        [!Node] Curve Tilt
+
+        Returns
+        -------
+        - Float
+        """
+
+        return Node('Curve Tilt')._out
+
+    @tilt.setter
+    def tilt(self, value):
+        """ Node 'Set Curve Tilt' (GeometryNodeSetCurveTilt)
+
+        [!Node] Set Curve Tilt
+
+        Arguments
+        ---------
+        - tilt (Float) : socket 'Tilt' (Tilt)
+        """
+
+        self._jump(Node('Set Curve Tilt', {'Curve': self, 'Selection': self._sel, 'Tilt': value})._out)
+
+    # ----- Curve normal
+
+    @property
+    def normal(self):
+        raise NodeError(f"Curve.normal property is write only")
+
+    @normal.setter
+    def normal(self, value):
+        """ Node 'Set Curve Normal' (GeometryNodeSetCurveNormal)
+
+        [!Node] Set Curve Normal
+
+        Arguments
+        ---------
+        - mode (str): Node.mode in ('MINIMUM_TWIST', 'Z_UP', 'FREE')
+        """
+
+        return self._jump(Node('Set Curve Normal', {'Curve': self, 'Selection': self._sel}, mode=value)._out)
+
 
     @classmethod
     @property
@@ -4163,7 +4164,7 @@ class Curve(Geometry):
         - DataSocket [position_, tangent_, normal_]
         """
 
-        sockets = {'Curves': self, 'Value': value, 'Factor': factor, 'Length': length, 'Curve Index': curve_index}
+        sockets = {'Curves': self, 'Value': value, 'Curve Index': curve_index}
         if length is None:
             mode = 'FACTOR'
             sockets['Factor'] = factor
@@ -4265,6 +4266,23 @@ class Curve(Geometry):
     # ----- Interpolate curves
 
     def interpolate(self, guide_up=None, guide_group_id=None, points=None, point_up=None, point_group_id=None, max_neighbors=None):
+        """ Node 'Interpolate Curves' (GeometryNodeInterpolateCurves)
+
+        [!Node] Interpolate Curves
+
+        Arguments
+        ---------
+        - guide_up (Vector) : socket 'Guide Up' (Guide Up)
+        - guide_group_id (Integer) : socket 'Guide Group ID' (Guide Group ID)
+        - points (Geometry) : socket 'Points' (Points)
+        - point_up (Vector) : socket 'Point Up' (Point Up)
+        - point_group_id (Integer) : socket 'Point Group ID' (Point Group ID)
+        - max_neighbors (Integer) : socket 'Max Neighbors' (Max Neighbors)
+
+        Returns
+        -------
+        - Curve [closest_index_, closest_weight_]
+        """
         curve = Curve(Node('Interpolate Curves', {'Guide Curves': self, 'Guide Up': guide_up, 'Guide Group ID': guide_group_id,
             'Points': points, 'Point Up': point_up, 'Point Group ID': point_group_id, 'Max Neighbors': max_neighbors})._out)
         curve.closest_index_  = curve.node.closest_index
@@ -4274,9 +4292,25 @@ class Curve(Geometry):
     # ----- Resample
 
     def resample(self, count=None, length=None):
-        # mode in  ('EVALUATED', 'COUNT', 'LENGTH')
-        # mode is based on count and length Nonety
+        """ Node 'Resample Curve' (GeometryNodeResampleCurve)
 
+        [!Node] Resample Curve
+
+        Parameter 'mode'
+        ---------------
+        - mode (str): Node.mode in ('EVALUATED', 'COUNT', 'LENGTH')
+        - if 'count' is not None : 'COUNT'
+        - elif 'length' is not None : 'LENGTH'
+        - else : 'EVALUATED'
+
+        Arguments
+        ---------
+        - count (Integer) : socket 'Count' (Count)
+
+        Returns
+        -------
+        - Curve
+        """
         sockets = {'Curve': self, 'Selection': self._sel}
         if count is not None:
             mode = 'COUNT'
@@ -4292,21 +4326,80 @@ class Curve(Geometry):
     # ----- Trim
 
     def trim(self, start=None, end=None, mode='FACTOR'):
-        # mode in ('FACTOR', 'LENGTH')
+        """ Node 'Trim Curve' (GeometryNodeTrimCurve)
+
+        [!Node] Trim Curve
+
+        Arguments
+        ---------
+        - start (Float) : socket 'Start' (Start)
+        - end (Float) : socket 'End' (End)
+        - mode (str): Node.mode in ('FACTOR', 'LENGTH')
+
+        Returns
+        -------
+        - Curve
+        """
         return Curve(Node('Trim Curve', {'Curve': self, 'Selection': self._sel, 'Start': start, 'End': end}, mode=mode)._out)
 
     def trim_factor(self, start=None, end=None):
+        """ Node 'Trim Curve' (GeometryNodeTrimCurve)
+
+        [!Node] Trim Curve
+
+        Arguments
+        ---------
+        - start (Float) : socket 'Start' (Start)
+        - end (Float) : socket 'End' (End)
+
+        Returns
+        -------
+        - Curve
+        """
         return self.trim(start=start, end=end, mode='FACTOR')
 
     def trim_length(self, start=None, end=None):
+        """ Node 'Trim Curve' (GeometryNodeTrimCurve)
+
+        [!Node] Trim Curve
+
+        Arguments
+        ---------
+        - start (Float) : socket 'Start' (Start)
+        - end (Float) : socket 'End' (End)
+
+        Returns
+        -------
+        - Curve
+        """
         return self.trim(start=start, end=end, mode='LENGTH')
 
     # ----- Various
 
     def reverse(self):
+        """ Node 'Reverse Curve' (GeometryNodeReverseCurve)
+
+        [!Node] Reverse Curve
+
+        Returns
+        -------
+        - Curve
+        """
         return Curve(Node('Reverse Curve', {'Curve': self, 'Selection': self._sel})._out)
 
     def subdivide(self, cuts=None):
+        """ Node 'Subdivide Curve' (GeometryNodeSubdivideCurve)
+
+        [!Node] Subdivide Curve
+
+        Arguments
+        ---------
+        - cuts (Integer) : socket 'Cuts' (Cuts)
+
+        Returns
+        -------
+        - Curve
+        """
         return Curve(Node('Subdivide Curve', {'Curve': self, 'Cuts': cuts})._out)
 
 
@@ -4329,54 +4422,110 @@ class Cloud(Geometry):
 
     @classmethod
     def Points(cls, count=1, position=None, radius=None):
+        """ Node 'Points' (GeometryNodePoints)
+
+        [!Node] Points
+
+        Arguments
+        ---------
+        - count (Integer) : socket 'Count' (Count)
+        - position (Vector) : socket 'Position' (Position)
+        - radius (Float) : socket 'Radius' (Radius)
+
+        Returns
+        -------
+        - Cloud
+        """
         return cls(Node('Points', {'Count': count, 'Position': position, 'Radius': radius})._out)
 
     # ----- Curve to points
 
     @classmethod
     def FromCurve(cls, curve, count=None, length=None, mode='COUNT'):
-        # mode in ('EVALUATED', 'COUNT', 'LENGTH')
+        """ Node 'Curve to Points' (GeometryNodeCurveToPoints)
+
+        [!Node] Curve to Points
+
+        Arguments
+        ---------
+        - curve (Geometry) : socket 'Curve' (Curve)
+        - count (Integer) : socket 'Count' (Count)
+        - mode (str): Node.mode in ('EVALUATED', 'COUNT', 'LENGTH')
+
+        Returns
+        -------
+        - Cloud [tangent_, normal_, rotation_]
+        """
         points = Node('Curve to Points', {'Curve': curve, 'Count': count, 'Length': length}, mode=mode)._out
         points.tangent_ = points.node.tangent
         points.normal_ = points.node.normal
         points.rotation_ = points.node.rotation
         return points
 
-    @classmethod
-    def FromCurveEvaluated(cls, curve=None):
-        return cls.FromCurve(curve=curve, mode='EVALUATED')
-
-    @classmethod
-    def FromCurveCount(cls, curve=None, count=None):
-        return cls.FromCurve(curve=curve, count=count, mode='COUNT')
-
-    @classmethod
-    def FromCurveLength(cls, curve=None, length=None):
-        return cls.FromCurve(curve=curve, length=length, mode='LENGTH')
-
     # ----- Instances to points
 
     @classmethod
-    def FromInstances(cls, instances=None, position=None, radius=None):
-        return Cloud(Node('Instances to Points', {'Instances': instances, 'Position': position, 'Radius': radius})._out)
+    def FromInstances(cls, instances, position=None, radius=None):
+        """ Node 'Instances to Points' (GeometryNodeInstancesToPoints)
+
+        [!Node] Instances to Points
+
+        Arguments
+        ---------
+        - instances (Geometry) : socket 'Instances' (Instances)
+        - position (Vector) : socket 'Position' (Position)
+        - radius (Float) : socket 'Radius' (Radius)
+
+        Returns
+        -------
+        - Cloud
+        """
+        return Cloud(Node('Instances to Points', {'Instances': instances, 'Selection': instances._sel, 'Position': position, 'Radius': radius})._out)
 
     # ----- Mesh to points
 
     @classmethod
+    def FromMesh(cls, mesh, position=None, radius=None, mode='POINTS'):
+        """ Node 'Mesh to Points' (GeometryNodeMeshToPoints)
+
+        [!Node] Mesh to Points
+
+        Arguments
+        ---------
+        - mesh (Mesh) : socket 'Mesh' (Mesh)
+        - position (Vector) : socket 'Position' (Position)
+        - radius (Float) : socket 'Radius' (Radius)
+        - mode (str): Node.mode in ('VERTICES', 'EDGES', 'FACES', 'CORNERS')
+
+        Returns
+        -------
+        - Cloud
+        """
+        mesh = Mesh(mesh)[mesh._sel]
+        if mode == 'CORNERS':
+            return mesh.corners.to_points(position=position, radius=radius)
+        elif mode == 'EDGES':
+            return mesh.edges.to_points(position=position, radius=radius)
+        elif mode == 'FACES':
+            return mesh.faces.to_points(position=position, radius=radius)
+        else:
+            return mesh.points.to_points(position=position, radius=radius)
+
+    @classmethod
     def FromVertices(cls, mesh, position=None, radius=None):
-        return Mesh(mesh).points.to_points(position=position, radius=radius)
+        return Mesh(mesh)[mesh._sel].points.to_points(position=position, radius=radius)
 
     @classmethod
     def FromFaces(cls, mesh, position=None, radius=None):
-        return Mesh(mesh).faces.to_points(position=position, radius=radius)
+        return Mesh(mesh)[mesh._sel].faces.to_points(position=position, radius=radius)
 
     @classmethod
     def FromCorners(cls, mesh, position=None, radius=None):
-        return Mesh(mesh).corners.to_points(position=position, radius=radius)
+        return Mesh(mesh)[mesh._sel].corners.to_points(position=position, radius=radius)
 
     @classmethod
     def FromEdges(cls, mesh, position=None, radius=None):
-        return Mesh(mesh).edges.to_points(position=position, radius=radius)
+        return Mesh(mesh)[mesh._sel].edges.to_points(position=position, radius=radius)
 
     # =============================================================================================================================
     # Properties
@@ -4391,6 +4540,19 @@ class Cloud(Geometry):
     # ----- to curves
 
     def to_curves(self, curve_group_id=None, weight=None):
+        """ Node 'Points to Curves' (GeometryNodePointsToCurves)
+
+        [!Node] Points to Curves
+
+        Arguments
+        ---------
+        - curve_group_id (Integer) : socket 'Curve Group ID' (Curve Group ID)
+        - weight (Float) : socket 'Weight' (Weight)
+
+        Returns
+        -------
+        - Curve
+        """
         return Curve(Node('Points to Curves', {'Points': self, 'Curve Group ID': curve_group_id, 'Weight': weight})._out)
 
     # ----- to mesh
@@ -4408,9 +4570,22 @@ class Cloud(Geometry):
 
     # ----- to volume
 
-    def to_volume(self, density=None, voxel_size=None, voxel_amount=None, radius=None, amount=True):
-        # resolution_mode in ('VOXEL_AMOUNT', 'VOXEL_SIZE')
-        resolution_mode = 'VOXEL_AMOUNT' if amount else 'VOXEL_SIZE'
+    def to_volume(self, density=None, voxel_size=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_AMOUNT'):
+        """ Node 'Points to Volume' (GeometryNodePointsToVolume)
+
+        [!Node] Points to Volume
+
+        Arguments
+        ---------
+        - density (Float) : socket 'Density' (Density)
+        - voxel_amount (Float) : socket 'Voxel Amount' (Voxel Amount)
+        - radius (Float) : socket 'Radius' (Radius)
+        - resolution_mode (str): Node.resolution_mode in ('VOXEL_AMOUNT', 'VOXEL_SIZE')
+
+        Returns
+        -------
+        - Volume
+        """
         return Volume(Node('Points to Volume', {'Points': self, 'Density': density, 'Voxel Size': voxel_size,
             'Voxel Amount': voxel_amount, 'Radius': radius}, resolution_mode=resolution_mode)._out)
 
@@ -4433,20 +4608,52 @@ class Instances(Geometry):
 
     @classmethod
     def FromGeometry(cls, *geometries):
+        """ Node 'Geometry to Instance' (GeometryNodeGeometryToInstance)
+
+        [!Node] Geometry to Instance
+
+        Arguments
+        ---------
+        - *geometries (Geometry) : socket 'Geometry' (Geometry)
+
+        Returns
+        -------
+        - Instances
+        """
         return cls(Node('Geometry to Instance', {'Geometry': list(geometries)})._out)
 
     @classmethod
     def FromString(cls, string=None, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, text_box_height=None,
                 overflow='OVERFLOW', align_x='LEFT', align_y='TOP_BASELINE', pivot_mode='BOTTOM_LEFT'):
-        # overflow in ('OVERFLOW', 'SCALE_TO_FIT', 'TRUNCATE')
-        # align_x in ('LEFT', 'CENTER', 'RIGHT', 'JUSTIFY', 'FLUSH')
-        # align_y in ('TOP', 'TOP_BASELINE', 'MIDDLE', 'BOTTOM_BASELINE', 'BOTTOM')
-        # pivot_mode in ('MIDPOINT', 'TOP_LEFT', 'TOP_CENTER', 'TOP_RIGHT', 'BOTTOM_LEFT', 'BOTTOM_CENTER', 'BOTTOM_RIGHT')
+        """ Node 'String to Curves' (GeometryNodeStringToCurves)
+
+        [!Node] String to Curves
+
+        Arguments
+        ---------
+        - string (String) : socket 'String' (String)
+        - size (Float) : socket 'Size' (Size)
+        - character_spacing (Float) : socket 'Character Spacing' (Character Spacing)
+        - word_spacing (Float) : socket 'Word Spacing' (Word Spacing)
+        - line_spacing (Float) : socket 'Line Spacing' (Line Spacing)
+        - text_box_width (Float) : socket 'Text Box Width' (Text Box Width)
+        - text_box_height (Float) : socket 'Text Box Height' (Text Box Height)
+        - align_x (str): Node.align_x in ('LEFT', 'CENTER', 'RIGHT', 'JUSTIFY', 'FLUSH')
+        - align_y (str): Node.align_y in ('TOP', 'TOP_BASELINE', 'MIDDLE', 'BOTTOM_BASELINE', 'BOTTOM')
+        - font (VectorFont): Node.font
+        - overflow (str): Node.overflow in ('OVERFLOW', 'SCALE_TO_FIT', 'TRUNCATE')
+        - pivot_mode (str): Node.pivot_mode in ('MIDPOINT', 'TOP_LEFT', 'TOP_CENTER', 'TOP_RIGHT', 'BOTTOM_LEFT', 'BOTTOM_CENTER', 'BOTTOM_RIGHT')
+
+        Returns
+        -------
+        - Instances [remainder_, line_, pivot_point_]
+        """
         node = Node('String to Curves', {'String': string, 'Size': size, 'Character Spacing': character_spacing,
             'Word Spacing': word_spacing, 'Line Spacing': line_spacing,
             'Text Box Width': text_box_width, 'Text Box Height': text_box_height},
             overflow=overflow, align_x=align_x, align_y=align_y, pivot_mode=pivot_mode)
         insts = cls(node._out)
+        insts.remainder_ = node.remainder
         insts.line_ = node.line
         insts.pivot_point_ = node.pivot_point
         return insts
@@ -4462,29 +4669,115 @@ class Instances(Geometry):
     # Operations
 
     def realize(self, realize_all=None, depth=None):
+        """ Node 'Realize Instances' (GeometryNodeRealizeInstances)
+
+        [!Node] Realize Instances
+
+        Arguments
+        ---------
+        - realize_all (Boolean) : socket 'Realize All' (Realize All)
+        - depth (Integer) : socket 'Depth' (Depth)
+
+        Returns
+        -------
+        - Geometry
+        """
         return Node('Realize Instances', {'Geometry': self, 'Selection': self._sel, 'Realize All': realize_all, 'Depth': depth})._out
 
     def to_points(self, position=None, radius=None):
+        """ Node 'Instances to Points' (GeometryNodeInstancesToPoints)
+
+        [!Node] Instances to Points
+
+        Arguments
+        ---------
+        - position (Vector) : socket 'Position' (Position)
+        - radius (Float) : socket 'Radius' (Radius)
+
+        Returns
+        -------
+        - Points
+        """
         return Cloud(Node('Instances to Points', {'Instances': self, 'Selection': self._sel, 'Position': position, 'Radius': radius})._out)
 
     def on_points(self, points, pick_instance=None, instance_index=None, rotation=None, scale=None):
-        if isinstance(points, Geometry):
-            if not hasattr(points, 'points'):
-                raise NodeError(f"'Instance to Points' node needs a geometry with points, not '{type(points).__name__}'")
-            points = points.points
+        """ Node 'Instance on Points' (GeometryNodeInstanceOnPoints)
+
+        [!Node] Instance on Points
+
+        Arguments
+        ---------
+        - instance (Geometry) : socket 'Instance' (Instance)
+        - pick_instance (Boolean) : socket 'Pick Instance' (Pick Instance)
+        - instance_index (Integer) : socket 'Instance Index' (Instance Index)
+        - rotation (Rotation) : socket 'Rotation' (Rotation)
+        - scale (Vector) : socket 'Scale' (Scale)
+
+        Returns
+        -------
+        - Instances
+        """
+        if isinstance(points, Domain):
+            points = Cloud(points._geo).points[points._sel]
+        else:
+            points = Cloud(points).points[points._sel]
 
         return points.instance_on(instance=self, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale)
 
-    def translate_instances(self, translation=None, local_space=None):
-        return self.insts.translate(translation=translation, local_space=local_space)
+    def translate(self, translation=None, local_space=None):
+        """ Node 'Translate Instances' (GeometryNodeTranslateInstances)
 
-    def scale_instances(self, scale=None, center=None, local_space=None):
-        self.insts.scale = {'scale': scale, 'center': center, 'local_space': local_space}
-        return self
+        [!Node] Translate Instances
 
-    def rotate_instances(self, rotation=None, pivot_point=None, local_space=None):
-        self.insts.rotation = {'rotation': rotation, 'pivot_point': pivot_point, 'local_space': local_space}
-        return self
+        Arguments
+        ---------
+        - translation (Vector) : socket 'Translation' (Translation)
+        - local_space (Boolean) : socket 'Local Space' (Local Space)
+
+        Returns
+        -------
+        - Instances
+        """
+        return Instances(Node('Translate Instances', {'Instances': self, 'Selection': self._sel, 'Translation': translation, 'Local Space': local_space})._out)
+
+    def scale(self, scale=None, center=None, local_space=None):
+        """ Node 'Scale Instances' (GeometryNodeScaleInstances)
+
+        [!Node] Scale Instances
+
+        Arguments
+        ---------
+        - scale (Vector) : socket 'Scale' (Scale)
+        - center (Vector) : socket 'Center' (Center)
+        - local_space (Boolean) : socket 'Local Space' (Local Space)
+
+        Returns
+        -------
+        - Instances
+        """
+        return Instances(Node('Scale Instances', {'Instances': self, 'Selection': self._sel, 'Scale': scale, 'Center': center, 'Local Space': local_space})._out)
+
+        #self.insts.scale = {'scale': scale, 'center': center, 'local_space': local_space}
+        #return self
+
+    def rotate(self, rotation=None, pivot_point=None, local_space=None):
+        """ Node 'Rotate Instances' (GeometryNodeRotateInstances)
+
+        [!Node] Rotate Instances
+
+        Arguments
+        ---------
+        - rotation (Rotation) : socket 'Rotation' (Rotation)
+        - pivot_point (Vector) : socket 'Pivot Point' (Pivot Point)
+        - local_space (Boolean) : socket 'Local Space' (Local Space)
+
+        Returns
+        -------
+        - Instances
+        """
+        return Instances(Node('Rotate Instances', {'Instances': self, 'Selection': self._sel, 'Rotation': rotation, 'Pivot Point': pivot_point, 'Local Space': local_space})._out)
+        #self.insts.rotation = {'rotation': rotation, 'pivot_point': pivot_point, 'local_space': local_space}
+        #return self
 
 # =============================================================================================================================
 # =============================================================================================================================
@@ -4504,25 +4797,121 @@ class Volume(Geometry):
 
     @classmethod
     def Cube(cls, density=None, background=None, min=None, max=None, resolution_x=None, resolution_y=None, resolution_z=None):
+        """ Node 'Volume Cube' (GeometryNodeVolumeCube)
+
+        [!Node] Volume Cube
+
+        Arguments
+        ---------
+        - density (Float) : socket 'Density' (Density)
+        - background (Float) : socket 'Background' (Background)
+        - min (Vector) : socket 'Min' (Min)
+        - max (Vector) : socket 'Max' (Max)
+        - resolution_x (Integer) : socket 'Resolution X' (Resolution X)
+        - resolution_y (Integer) : socket 'Resolution Y' (Resolution Y)
+        - resolution_z (Integer) : socket 'Resolution Z' (Resolution Z)
+
+        Returns
+        -------
+        - Volume
+        """
         return cls(Node('Volume Cube', {'Density': density, 'Background': background, 'Min': min, 'Max': max,
             'Resolution X': resolution_x, 'Resolution Y': resolution_y, 'Resolution Z': resolution_z})._out)
 
     @classmethod
     def FromMesh(cls, mesh, density=None, voxel_amount=None, interior_band_width=None, voxel_size=None, amount=True):
+        """ Node 'Mesh to Volume' (GeometryNodeMeshToVolume)
+
+        [!Node] Mesh to Volume
+
+        Arguments
+        ---------
+        - mesh (Mesh) : socket 'Mesh' (Mesh)
+        - density (Float) : socket 'Density' (Density)
+        - voxel_amount (Float) : socket 'Voxel Amount' (Voxel Amount)
+        - interior_band_width (Float) : socket 'Interior Band Width' (Interior Band Width)
+        - resolution_mode (str): Node.resolution_mode in ('VOXEL_AMOUNT', 'VOXEL_SIZE')
+
+        Returns
+        -------
+        - Volume
+        """
         return Mesh(mesh).to_volume(density=density, voxel_amount=voxel_amount, interior_band_width=interior_band_width, voxel_size=voxel_size, amount=amount)
 
     @classmethod
-    def FromPoints(cls, points, density=None, voxel_size=None, voxel_amount=None, radius=None, amount=True):
-        return Cloud(points).to_volume(density=density, voxel_size=voxel_size, voxel_amount=voxel_amount, radius=radius, amount=amount)
+    def FromPoints(cls, points, density=None, voxel_size=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_AMOUNT'):
+        """ Node 'Points to Volume' (GeometryNodePointsToVolume)
+
+        [!Node] Points to Volume
+
+        Arguments
+        ---------
+        - points (Geometry) : socket 'Points' (Points)
+        - density (Float) : socket 'Density' (Density)
+        - voxel_amount (Float) : socket 'Voxel Amount' (Voxel Amount)
+        - radius (Float) : socket 'Radius' (Radius)
+        - resolution_mode (str): Node.resolution_mode in ('VOXEL_AMOUNT', 'VOXEL_SIZE')
+
+        Returns
+        -------
+        - Volume
+        """
+        return Cloud(points).to_volume(density=density, voxel_size=voxel_size, voxel_amount=voxel_amount, radius=radius, resolution_mode=resolution_mode)
 
     # =============================================================================================================================
     # Methods
 
-    def distribute_points(self, density=None, seed=None, spacing=None, threshold=None, grid=False):
-        # mode in ('DENSITY_RANDOM', 'DENSITY_GRID')
-        mode = 'DENSITY_GRID' if grid else 'DENSITY_RANDOM'
+    def distribute_points(self, density=None, seed=None, spacing=None, threshold=None, mode='DENSITY_RANDOM'):
+        """ Node 'Distribute Points in Volume' (GeometryNodeDistributePointsInVolume)
+
+        [!Node] Distribute Points in Volume
+
+        Arguments
+        ---------
+        - density (Float) : socket 'Density' (Density)
+        - seed (Integer) : socket 'Seed' (Seed)
+        - spacing (Vector) : socket 'Spacing' (Spacing)
+        - threshold (Float) : socket 'Threshold' (Threshold)
+        - mode (str): Node.mode in ('DENSITY_RANDOM', 'DENSITY_GRID')
+
+        Returns
+        -------
+        - Cloud
+        """
         return Cloud(Node('Distribute Points in Volume', {'Volume': self, 'Density': density,
             'Seed': seed, 'Spacing': spacing, 'Threshold': threshold}, mode=mode)._out)
+
+    def distribute_random(self, density=None, seed=None):
+        """ Node 'Distribute Points in Volume' (GeometryNodeDistributePointsInVolume)
+
+        [!Node] Distribute Points in Volume
+
+        Arguments
+        ---------
+        - density (Float) : socket 'Density' (Density)
+        - seed (Integer) : socket 'Seed' (Seed)
+
+        Returns
+        -------
+        - Cloud
+        """
+        return self.distribute_points(density=density, seed=seed, mode='DENSITY_RANDOM')
+
+    def distribute_grid(self, spacing=None, threshold=None):
+        """ Node 'Distribute Points in Volume' (GeometryNodeDistributePointsInVolume)
+
+        [!Node] Distribute Points in Volume
+
+        Arguments
+        ---------
+        - spacing (Vector) : socket 'Spacing' (Spacing)
+        - threshold (Float) : socket 'Threshold' (Threshold)
+
+        Returns
+        -------
+        - Cloud
+        """
+        return self.distribute_points(spacing=spacing, threshold=threshold, mode='DENSITY_GRID')
 
     def to_mesh(self, voxel_size=None, voxel_amount=None, threshold=None, adaptivity=None, resolution_mode='GRID'):
         """ Node 'Volume to Mesh' (GeometryNodeVolumeToMesh)
@@ -4531,7 +4920,6 @@ class Volume(Geometry):
 
         Arguments
         ---------
-        - volume (Geometry) : socket 'Volume' (Volume)
         - voxel_size (Float) : socket 'Voxel Size'
         - voxel_amount (Float) : socket 'Voxel Amount'
         - threshold (Float) : socket 'Threshold' (Threshold)
@@ -4542,24 +4930,65 @@ class Volume(Geometry):
         -------
         - Mesh
         """
+        sockets = {'Volume': self, 'Adaptivity': adaptivity}
         if resolution_mode == 'GRID':
-            return self.to_mesh_grid(threshold=threshold, adaptivity=adaptivity)
+            sockets['Threshold'] = threshold
         elif resolution_mode == 'VOXEL_AMOUNT':
-            return self.to_mesh_amount(voxel_amount=voxel_amount, threshold=threshold, adaptivity=adaptivity)
+            sockets['Voxel Amount'] = voxel_amount
+            sockets['Threshold'] = threshold
         elif resolution_mode == 'VOXEL_SIZE':
-            return self.to_mesh_size(voxel_size=voxel_size, threshold=threshold, adaptivity=adaptivity)
+            sockets['Voxel Size'] = voxel_size
+            sockets['Threshold'] = threshold
+
+        return Mesh(Node('Volume to Mesh', sockets, resolution_mode=resolution_mode)._out)
+
 
     def to_mesh_grid(self, threshold=None, adaptivity=None):
-        # resolution_mode in ('GRID', 'VOXEL_AMOUNT', 'VOXEL_SIZE')
-        return Mesh(Node('Volume to Mesh', {'Volume': self, 'Threshold': threshold, 'Adaptivity': adaptivity},
-            resolution_mode='GRID')._out)
+        """ Node 'Volume to Mesh' (GeometryNodeVolumeToMesh)
+
+        [!Node] Volume to Mesh
+
+        Arguments
+        ---------
+        - threshold (Float) : socket 'Threshold' (Threshold)
+        - adaptivity (Float) : socket 'Adaptivity' (Adaptivity)
+
+        Returns
+        -------
+        - Mesh
+        """
+        return self.to_mesh(threshold=threshold, adaptivity=adaptivity, resolution_mode='GRID')
 
     def to_mesh_amount(self, voxel_amount=None, threshold=None, adaptivity=None):
-        # resolution_mode in ('GRID', 'VOXEL_AMOUNT', 'VOXEL_SIZE')
-        return Mesh(Node('Volume to Mesh', {'Volume': self, 'Voxel Amount': voxel_amount, 'Threshold': threshold, 'Adaptivity': adaptivity},
-            resolution_mode='VOXEL_AMOUNT')._out)
+        """ Node 'Volume to Mesh' (GeometryNodeVolumeToMesh)
+
+        [!Node] Volume to Mesh
+
+        Arguments
+        ---------
+        - voxel_amount (Float) : socket 'Voxel Amount'
+        - threshold (Float) : socket 'Threshold' (Threshold)
+        - adaptivity (Float) : socket 'Adaptivity' (Adaptivity)
+
+        Returns
+        -------
+        - Mesh
+        """
+        return self.to_mesh(voxel_amount=voxel_amount, threshold=threshold, adaptivity=adaptivity, resolution_mode='VOXEL_AMOUNT')
 
     def to_mesh_size(self, voxel_size=None, threshold=None, adaptivity=None):
-        # resolution_mode in ('GRID', 'VOXEL_AMOUNT', 'VOXEL_SIZE')
-        return Mesh(Node('Volume to Mesh', {'Volume': self, 'Voxel Size': voxel_size, 'Threshold': threshold, 'Adaptivity': adaptivity},
-            resolution_mode='VOXEL_AMOUNT')._out)
+        """ Node 'Volume to Mesh' (GeometryNodeVolumeToMesh)
+
+        [!Node] Volume to Mesh
+
+        Arguments
+        ---------
+        - voxel_size (Float) : socket 'Voxel Size'
+        - threshold (Float) : socket 'Threshold' (Threshold)
+        - adaptivity (Float) : socket 'Adaptivity' (Adaptivity)
+
+        Returns
+        -------
+        - Mesh
+        """
+        return self.to_mesh(voxel_size=voxel_size, threshold=threshold, adaptivity=adaptivity, resolution_mode='VOXEL_SIZE')

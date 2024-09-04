@@ -482,6 +482,7 @@ def demo():
     with GeoNodes("Test Mesh"):
 
         mesh = Mesh()
+        mesh.out()
 
         with Layout("Primitives"):
 
@@ -556,54 +557,165 @@ def demo():
     with GeoNodes("Test Curve"):
 
         curve = Curve()
+        curve.out()
 
         with Layout("Constructors"):
 
-            circle0 = Curve.Circle(radius=.8)._lc("Circle Radius")
-            circle1 = Curve.Circle(point_2=1)._lc("Circle Points")
-            arc0 = Curve.Arc()._lc("Arc Radius")
-            arc1 = Curve.Arc(offset_angle=halfpi)._lc("Arc Points")
-            line0 = Curve.Line()._lc("Line Points")
-            line1 = Curve.Line(direction=v)._lc("Line Direction")
-            bezier0 = Curve.BezierSegment(10, 0, 1, 2, 3, 'POSITION')
-            bezier1 = Curve.BezierSegment(10, 0, 1, 2, 3, 'OFFSET')
-            qbezier = Curve.QuadraticBezier(10, 1, 2, 3)
-            spiral = Curve.Spiral(10, 0, 1, 2, 3, True)
-            star = Curve.Star(10, 1, 2, True)
+            curve = Curve.Circle(radius=.8)._lc("Circle Radius")
+            curve += Curve.Circle(point_2=1)._lc("Circle Points")
+            curve += Curve.Arc()._lc("Arc Radius")
+            curve += Curve.Arc(offset_angle=halfpi)._lc("Arc Points")
+            curve += Curve.Line()._lc("Line Points")
+            curve += Curve.Line(direction=v)._lc("Line Direction")
+            curve += Curve.BezierSegment(10, 0, 1, 2, 3, 'POSITION')
+            curve += Curve.BezierSegment(10, 0, 1, 2, 3, 'OFFSET')
+            curve += Curve.QuadraticBezier(10, 1, 2, 3)
+            curve += Curve.Spiral(10, 0, 1, 2, 3, True)
+            curve += Curve.Star(10, 1, 2, True)
 
-            curves = [circle0, circle1, arc0, arc1, line0, line1, bezier0, bezier1, qbezier, spiral, star]
+            curve += Curve.Rectangle(1, 2)
+            curve += Curve.Parallelogram(1, 2)
+            curve += Curve.Trapezoid(1, 2)
+            curve += Curve.Kite(1, 2)
+            curve += Curve.Points(1, 2, 3, 4)
 
-            curves.extend([Curve.Rectangle(1, 2), Curve.Parallelogram(1, 2), Curve.Trapezoid(1, 2), Curve.Kite(1, 2), Curve.Points(1, 2, 3, 4)])
+            curve += Curve.FromMesh(Mesh.Cube()[0])
+            curve += Curve.FromEdgePaths(Mesh.Cube()[1])
+            curve += Curve.FromPoints(Cloud.Points(10)[2])
 
-            curves.append(Curve.FromMesh(Mesh.Cube()))
-            curves.append(Curve.FromEdgePaths(Mesh.Cube()))
-            curves.append(Curve.FromPoints(Cloud.Points(10)))
+        with Layout("Properties"):
+            curve = Curve()
 
-            with Layout("Join"):
-                Curve.join(*curves).out()
+            a = curve.tangent
+            a += curve.length
+            a += curve.endpoint_selection(i, i)
+            curve.radius = curve.radius + 1
+            curve.tilt = curve.tilt + 1
+            curve.normal = 'Z_UP'
 
-            with Layout("Properties"):
-                curve = Curve()
+        with Layout("Topology"):
+            curve = Curve()
 
-                a = curve.tangent
-                a = curve.length
-                a = curve.endpoint_selection
+            a = curve.curve_of_point(1).curve_index
+            a += curve.offset_point_in_curve(1, 1).point_index
+            a += curve.points_of_curve(1, 2, False).point_index
 
-            with Layout("Topology"):
-                curve = Curve()
+            curve = curve.set_normal().set_normal_z_up().set_normal_free()
 
-                a = curve.curve_of_point(1)
-                a = curve.offset_point_in_curve(1, 1)
-                a = curve.points_of_curve(1, 2, False)
+        with Layout("Operations"):
+            curve = Curve()
 
-                curve.set_normal().set_normal_z_up().set_normal_free()
+            a = curve.sample((1, 2, 3), 1, 2, 3, True)
+            geo = curve.to_mesh()
+            geo += curve.to_points()
+            geo += curve.deform_on_surface()
+            geo += curve.fill(a)
+            geo += curve.fillet(1., False, 10)
+            geo += curve.interpolate(v, i, Cloud.Points(), v, i, i)
+            geo += curve.resample(10)._lc("Resample COUNT")
+            geo += curve.resample(length=.1)._lc("Resample LENGTH")
+            geo += curve.resample()._lc("Resample EVALUATED")
+            geo += curve.trim_length(1, 2)
+            geo += curve.trim_factor(.1, .2)
+            geo += curve.reverse()
+            geo += curve.subdivide(2)
 
-            with Layout("Operations"):
-                curve = Curve()
+    with GeoNodes("Test Cloud"):
+        cloud = Cloud()
+        cloud.out()
 
-                curve.sample((1, 2, 3), 1, 2, 3, True)
-                curve.to_mesh()
-                curve.to_points()
-                curve.deform_on_surface()
-                curve.fill(1)
-                curve.fillet(1., False, 10)
+        with Layout("Constructors"):
+
+            cloud = Cloud.Points(10, (1, 2, 3), .1)
+            cloud += Cloud.FromCurve(Curve.Spiral(), 10, 5., 'COUNT')
+            cloud += Cloud.FromInstances(Cloud.Points(10).points.instance_on(Mesh.Cube())[0], v, f)
+            cloud += Cloud.FromMesh(Mesh.Cube()[1:3], (1, 2, 3), 1., 'CORNERS')
+            cloud += Cloud.FromVertices(Mesh.Cube()[2:], (1, 2, 3), 1.)
+            cloud += Cloud.FromEdges(Mesh.Cube(), (1, 2, 3), 1.)
+            cloud += Cloud.FromFaces(Mesh.Cube(), (1, 2, 3), 1.)
+            cloud += Cloud.FromCorners(Mesh.Cube(), (1, 2, 3), 1.)
+
+        with Layout("Methods"):
+            cloud = Cloud()
+
+            geo = cloud.to_curves(i, f)
+            geo += cloud.to_vertices()
+            geo += cloud.to_volume(f, f, f, f, 'VOXEL_SIZE')
+
+    with GeoNodes("Test Instances"):
+        instances = Instances()
+        instances.out()
+
+        with Layout("Constructors"):
+
+            insts = Instances.FromGeometry(Mesh.Cube(), Curve.Spiral())
+            insts += Instances.FromString("Default", size=1, character_spacing=2, word_spacing=3, line_spacing=4, text_box_width=5, text_box_height=6,
+                        overflow='OVERFLOW', align_x='LEFT', align_y='TOP_BASELINE', pivot_mode='BOTTOM_LEFT')
+            insts += Instances.FromString("Truncate", size=1, character_spacing=2, word_spacing=3, line_spacing=4, text_box_width=5, text_box_height=6,
+                        overflow='TRUNCATE', align_x='LEFT', align_y='TOP_BASELINE', pivot_mode='BOTTOM_LEFT')
+
+        with Layout("Operations"):
+            insts = Instances()
+
+            geo = insts.realize(True, i)
+            geo += insts.to_points(1., 2.)
+            geo += insts.on_points(Mesh.Cube().points[1:3], True, i, (1, 2, 3), (1, 2, 3))
+            geo += insts.on_points(Curve.Spiral()[2], True, i, (1, 2, 3), (1, 2, 3))
+            geo += insts.on_points(instances, True, i, (1, 2, 3), (1, 2, 3))
+            geo += insts.translate((1, 2, 3), False)
+            geo += insts.scale((1, 2, 3), 1, True)
+            geo += insts.scale((1, 2, 3), 2, False)
+
+
+    with GeoNodes("Test Volume"):
+        volume = Volume()
+        volume.out()
+
+        with Layout("Constructors"):
+
+            vol = Volume.Cube(1., 2., (1, 2, 3), (3, 4, 5), 10, 11, 12)
+            vol += Volume.FromMesh(Mesh.Cube(), 1, 2, 3)
+            vol += Volume.FromPoints(Cloud.Points(), 1., 2., 3., 4.)
+
+        with Layout("Operations"):
+            vol = Volume()
+
+            geo = vol.distribute_points()
+            geo += vol.distribute_random(1., 123)
+            geo += vol.distribute_grid(1., .5)
+            geo += vol.to_mesh(1, 2, 3, 4)
+            geo += vol.to_mesh_grid(10, 20)
+            geo += vol.to_mesh_amount(11, 21, 31)
+            geo += vol.to_mesh_size(12, 22, 23)
+
+    with GeoNodes("Test Float / Integer"):
+
+        Geometry().out()
+
+        f = Float(pi)
+
+        with Layout("Float Int"):
+            a = f.mix(.5, 12, False)
+            a += f.clamp(0, 2)
+            a += f.map_range_linear(0, 1, 2, 3)
+            a += f.map_range_smooth(0, 1, 2, 3)
+            a += f.map_range_smoother(0, 1, 2, 3)
+            a += f.map_range_stepped(0, 1, 2, 3)
+            a += Float(f.color_ramp())
+            s = f.to_string(3)
+            a += f.curve(.5)
+
+
+    with GeoNodes("Test Textures"):
+
+        Geometry().out()
+
+        color = Texture.Brick().color
+        color = color.mix(.5, Texture.Checker().color)
+        color = color.mix(.5, Texture.Gradient().color)
+        color = color.mix(.5, Texture.Image().color)
+        color = color.mix(.5, Texture.Magic().color)
+        color = color.mix(.5, Texture.Noise().color)
+        color = color.mix(.5, Texture.Voronoi().color)
+        color = color.mix(.5, Texture.Wave().color)
+        color = color.mix(.5, Texture.WhiteNoise().color)
