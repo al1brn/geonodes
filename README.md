@@ -1,6 +1,6 @@
 # geonodes
 
-![Scripting Geometry Nodes for Blender](doc/images/hello_wolrd.png)
+![Scripting Geometry Nodes for Blender](doc/images/geonodes.png)
 
 ## Short
 
