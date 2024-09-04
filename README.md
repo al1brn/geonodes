@@ -70,7 +70,7 @@ with GeoNodes("Hello World"):
 
 > See [Demo details](docs/demo_1.md)
 
-The generated nodes and the result of the Geometry nodes modifier is given below:
+The generated nodes are shown below:
 
 <img src="doc/images/hello_world_nodes.png" width="600" class="center">
 
