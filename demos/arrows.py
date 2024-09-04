@@ -32,8 +32,8 @@ updates
 - creation : 2024/08/02
 """
 
-from ../geonodes import *
-import ../shadernodes as sh
+from geonodes.geonodes import *
+from geonodes import shadernodes as sh
 
 def demo():
 

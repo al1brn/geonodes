@@ -986,9 +986,9 @@ class Node:
                     return Volume(bsocket)
 
         elif Tree.is_shader:
-            from .shadernodes import Float, Vector, Rotation, Color, String, Shader
+            from geonodes.shadernodes import Float, Vector, Color, String, Shader
 
-            socket_class = {'VALUE': Float, 'VECTOR': Vector, 'ROTATION': Rotation, 'RGBA': Color, 'STRING': String, 'SHADER': Shader,
+            socket_class = {'VALUE': Float, 'VECTOR': Vector, 'RGBA': Color, 'STRING': String, 'SHADER': Shader,
                 }[socket_type]
 
         else:

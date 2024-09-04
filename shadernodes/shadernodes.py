@@ -1,3 +1,31 @@
+"""
+Created on 2024/07/26
+
+@author: alain
+
+-----------------------------------------------------
+Scripting Shader Nodes
+-----------------------------------------------------
+
+module : shadernodes
+--------------------
+- Implement Shader Nodes tree
+
+classes
+-------
+- ShaderNodes      : Geometry Nodes tree
+- nd               : Overrides static class with addition methods
+
+functions
+---------
+
+updates
+-------
+- creation : 2024/07/23
+- update : 2024/09/04
+"""
+
+""""
 import numpy as np
 
 pi     = np.pi
@@ -24,6 +52,11 @@ from .staticclass_sn import StaticClass
 
 from .scripterror import NodeError
 
+"""
+
+from .staticclass import StaticClass
+from ..geonodes.treeclass import Tree, Node
+from ..geonodes.scripterror import NodeError
 
 class nd(StaticClass):
 

@@ -52,7 +52,7 @@ updates
 import numpy as np
 
 import bpy
-from .treeclass import Node
+from ..geonodes.treeclass import Node
 
 def get_object(obj):
     if obj is None:

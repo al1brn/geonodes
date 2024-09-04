@@ -6,8 +6,7 @@ Created on 2024/07/26
 @author: alain
 
 -----------------------------------------------------
-geonodes module
-- Scripting Geometry Nodes
+Scripting Shader Nodes
 -----------------------------------------------------
 
 module : shaderclass
@@ -24,15 +23,15 @@ functions
 updates
 -------
 - creation : 2024/08/07
+- update : 2024/09/04
 """
 
 import numpy as np
 
 import bpy
-from . import utils
-from .treeclass import Tree, Node
-from .socketclass import ValueSocket
-
+from ..geonodes import utils
+from ..geonodes.treeclass import Tree, Node
+from ..geonodes.socketclass import ValueSocket
 
 class Shader(ValueSocket):
 
