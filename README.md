@@ -227,12 +227,22 @@ All **Geometry Nodes** socket types are wrapped in a python class. The available
 
   ### Naming Conventions
 
+  Naming conventions are such that the method or property names can be easily deduced from
+  the name of the node.
+
   1. Method names are built from the name of the node using the _snake_case_ convention:
 
      - _Set Material_ : **set_material**
      - _Store Named Attribute_ : **store_named_attribute**
 
-  2. The name of the socket data type is omitted:
+  1. When the node creates a new instance of the socket, it is implemeted as a constructor **class method**
+     using _CamelCase_ convention:
+
+     - _Cube_ : constructor class method **Cube** of **Mesh**
+     - _Combine XYZ_ : constructor class methode **Combine** of **Vector**
+     - _Bézier Segment_ : constructor class method **BezierSegment** of **Curve**
+
+  1. The name of the socket data type is omitted when redundant:
 
      - _Curve to Mesh_ : **Curve.to_mesh** method
      - _Mesh to Points_ : **Mesh.to_points** method
@@ -241,7 +251,7 @@ All **Geometry Nodes** socket types are wrapped in a python class. The available
      - _Mesh Line_ : **Mesh.Line** constructor
      - _Curve Line_ : **Curve.Line** constructor
 
-  3. '_Set xxx' are implemented as properties when possible:
+  1. _Set xxx_ are implemented as properties when possible:
      - _Set Position_ : **position** and **offset** properties of domain :
        ``` mesh.points.position = v ``` and ``` mesh.points.offset = v ```
      - _Set Radius_ : **radius** property of **Cloud.points** and **Curve.points** :
@@ -249,3 +259,30 @@ All **Geometry Nodes** socket types are wrapped in a python class. The available
      - _Set Tilt_ : **tilt** property of **Curve.points** : ``` curve.points.tilt = v ```
      - _Set Handle Type_ : **handle_type** property of **Curve.points** :
        ``` curve.points.handle_type = 'FREE' ```
+
+  1. _Socket names_ can be accessed as properties of their node using the _snake_case convention:
+     - _Value_ socket : **node.value**
+     - _Geometry_ socket : **node.geometry**
+
+  1. When a socket is set, it is an ***Input socket*** of the node, when a socket is get,
+     it is and ***Output socket*** of the node, for instance if `node` is _Resample Curve_:
+     - `node.geometry = a` : set the ***Input socket** _Geometry_ to the given value `a`
+     - `node.selection = b` : set the ***Input socket** _Selection_ to the given value `b`
+     - `node.count = c` : set the ***Input socket** _Selection_ to the given value `c`
+     - `d = node.geometry` : get the ***Ouput socket***  _Geometry_ and set the value `d`
+
+  ### Geometry classes and domains
+
+  Blender _Geometry Nodes_ exposes one single _Geometry_ type. **GeoNodes** provides
+  one class per geometry type : **Mesh**, **Curve**, **Cloud**, **Instances**, **Volume** which are
+  subclassed of the generic **Geometry** class.
+
+  Nodes are implemented on their geometry classes:
+  - _Interpolate Curves_, _Resample Curve_, _Reverse Curve_ : implemented only on **Curve** class
+  - _Extrude Mesg_, _Flip Faces_, _Mesh Boolean_ : implemented only on **Mesh** class
+
+  Nodes needing a _Domain_ parameter are implemented on **Domain**, not **Geometry** :
+  - _Store Named Attribute_ : implemented on all domains
+  - _Extrude Mesh_ : implemented on **Mesh.points**, **Mesh.edges** and **Mesh.faces**
+
+  ### Selection
