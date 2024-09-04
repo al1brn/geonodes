@@ -6,8 +6,7 @@ Created on 2024/08/02
 @author: alain
 
 -----------------------------------------------------
-geonodes module
-- Scripting Geometry Nodes
+Scripting Geometry Nodes
 -----------------------------------------------------
 
 module : demos/gravity
@@ -18,10 +17,11 @@ A central sun can be created.
 updates
 -------
 - creation : 2024/08/02
+- update   : 2024/08/03
 """
 
 
-from ..geonodes import *
+from geonodes import *
 
 # ====================================================================================================
 # Newton's law simulation

@@ -6,8 +6,7 @@ Created on 2024/08/02
 @author: alain
 
 -----------------------------------------------------
-geonodes module
-- Scripting Geometry Nodes
+Scripting Geometry Nodes
 -----------------------------------------------------
 
 module : demos/explosion
@@ -18,12 +17,14 @@ The particles can be either generated or taken from a collection.
 updates
 -------
 - creation : 2024/08/02
+- update   : 2024/09/04
 """
 
 
 import numpy as np
 
-from ..geonodes import *
+from geonodes import *
+from geonodes import macros
 
 def demo():
 
@@ -50,11 +51,11 @@ def demo():
         with Layout("Initial speed and rotation"):
             speed = Vector.Named("Speed")
             speed = speed.switch(-speed.exists_, Vector.Random(-speed_max, speed_max, seed=seed))
-            speed.store(points.points, "Speed")
+            points.points.store("Speed", speed)
 
             rotation = Vector.Named("Rotation")
             rotation = Vector.Random(0, tau, seed=seed+1).switch(rotation.exists_, rotation)
-            rotation.store(points.points, "Rotation")
+            points.points.store("Rotation", rotation)
 
             omega = Vector.Random(0, tau, seed=seed+2)
 
@@ -84,7 +85,7 @@ def demo():
             with Layout("Rotation"):
                 old_rot = Rotation(Vector.Named("Rotation"))
                 new_rot = old_rot.rotate(omega*dt)
-                new_rot = Vector(new_rot).store(sim.points.points, "Rotation")
+                sim.points.points.store("Rotation", new_rot)
 
         sim.points.out()
 
@@ -111,11 +112,11 @@ def demo():
 
         with Layout("Random speeds, aligned with normal plus some noise"):
             speed = points.normal_ * (max_speed * Float.Random(0, 1, seed=seed + 1))
-            speed.store(points.points, "Speed")
+            points.points.store("Speed", speed)
 
         with Layout("Rotation aligned with normals"):
             rotation = Rotation.AlignToVector(points.normal_)
-            rotation.store(points.points, "Rotation")
+            points.points.store("Rotation", rotation)
 
         with Layout("Gravity loop"):
             simul = Group("Gravity",

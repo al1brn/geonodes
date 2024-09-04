@@ -6,8 +6,7 @@ Created on 2024/08/02
 @author: alain
 
 -----------------------------------------------------
-geonodes module
-- Scripting Geometry Nodes
+Scripting Geometry Nodes
 -----------------------------------------------------
 
 module : demos/counters
@@ -21,11 +20,11 @@ Geometry Nodes
 updates
 -------
 - creation : 2024/08/24
+- update   : 20242/09/04
 """
 
 from bpy.types import Attribute, SEQUENCER_PT_view_safe_areas
-from ..geonodes import *
-from .. import shadernodes as sh
+from geonodes import *
 
 
 def demo():

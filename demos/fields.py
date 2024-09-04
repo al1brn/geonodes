@@ -6,8 +6,7 @@ Created on 2024/07/24
 @author: alain
 
 -----------------------------------------------------
-geonodes module
-- Scripting Geometry Nodes
+Scripting Geometry Nodes
 -----------------------------------------------------
 
 module : demos/fields
@@ -45,8 +44,8 @@ updates
 
 import numpy as np
 
-from ..geonodes import *
-from . import arrows as arrows_module
+from geonodes.demos import arrows as arrows_module
+from geonodes import *
 
 def demo():
 

@@ -1,37 +1,32 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on 2024/07/26
+import numpy as np
 
-@author: alain
+pi     = np.pi
+tau    = 2*np.pi
+halfpi = np.pi/2
+d30    = np.pi/6
+d45    = np.pi/4
+d60    = np.pi/3
+d90    = halfpi
+d180   = pi
+d270   = np.pi*1.5
+d360   = tau
+e      = np.e
 
------------------------------------------------------
-script nodes
-- Scripting Geometry Nodes
------------------------------------------------------
+from .geonodes.treeclass import Layout, Break, Tree, Node, Group, GroupF
+from .geonodes.zones import Repeat, Simulation
 
-module : __init__
-------------------
-- low level constants uses by dynamic nodes generator
-- dictionaries used to register the class created dynamically
+from .geonodes.geonodes import GeoNodes
 
-modules
--------
-- treearrange
-- blendertree
-- constants
-- utils
-- treeclass
-- math
-- textures
-- socketclass
-    - booleanclass
-    - floatclass
-    - vectorclass
-    - colorclass
-    - geometryclass
-- zones
+from .geonodes.staticclass import nd
+from .geonodes import gnmath
 
+from .geonodes.socketclass import DataSocket, String, Material, Image, Object, Collection, Menu
 
-update : 2024/07/26
-"""
+from .geonodes.booleanclass import Boolean
+from .geonodes.colorclass import Color
+from .geonodes.floatclass import Integer, Float
+from .geonodes.textures import Texture
+from .geonodes.vectorclass import Vector, Rotation, Matrix
+from .geonodes.geometryclass import Geometry, Mesh, Curve, Cloud, Instances, Volume
+
+from . import shadernodes as sh

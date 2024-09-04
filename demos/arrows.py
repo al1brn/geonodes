@@ -6,8 +6,7 @@ Created on 2024/08/02
 @author: alain
 
 -----------------------------------------------------
-geonodes module
-- Scripting Geometry Nodes
+Scripting Geometry Nodes
 -----------------------------------------------------
 
 module : demos/arrows
@@ -30,10 +29,10 @@ Geometry Nodes
 updates
 -------
 - creation : 2024/08/02
+- update   : 20242/09/04
 """
 
-from geonodes.geonodes import *
-from geonodes import shadernodes as sh
+from geonodes import *
 
 def demo():
 

@@ -6,8 +6,7 @@ Created on 2024/08/02
 @author: alain
 
 -----------------------------------------------------
-geonodes module
-- Scripting Geometry Nodes
+Scripting Geometry Nodes
 -----------------------------------------------------
 
 module : demos/relativity
@@ -30,12 +29,12 @@ Geometry Nodes
 updates
 -------
 - creation : 2024/08/25
+- update   : 2024/09/04
 """
 
 from pathlib import WindowsPath
 from bpy.types import Attribute, PARTICLE_PT_hair_dynamics_presets
-from ..geonodes import *
-from .. import shadernodes as sh
+from geonodes import *
 
 DEBUG = True
 SPEED_FWD = True
@@ -60,7 +59,7 @@ def demo():
 
         length = line.length
 
-        fac = line.sample_length(Float.Named("Factor"), length=factor*length)
+        fac = line.sample(Float.Named("Factor"), length=factor*length)
 
         line = curve.trim_factor(end=fac)
 

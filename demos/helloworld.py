@@ -6,8 +6,7 @@ Created on 2024/08/02
 @author: alain
 
 -----------------------------------------------------
-geonodes module
-- Scripting Geometry Nodes
+Scripting Geometry Nodes
 -----------------------------------------------------
 
 module : demos/helloword
@@ -17,10 +16,11 @@ Basis demo : displaying a wave with an amplitude decreasing with distance
 updates
 -------
 - creation : 2024/08/02
+- update   : 2024/08/03
 """
 
 
-from ..geonodes import *
+from geonodes import *
 
 def demo(material="Material"):
 

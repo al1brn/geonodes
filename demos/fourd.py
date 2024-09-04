@@ -6,8 +6,7 @@ Created on 2024/03/04
 @author: alain
 
 -----------------------------------------------------
-geonodes module
-- Scripting Geometry Nodes
+Scripting Geometry Nodes
 -----------------------------------------------------
 
 module : demos/fourd
@@ -22,20 +21,19 @@ updates
 -------
 - creation : 2024/03/04
 - update   : 2024/08/07
+- update   : 2024/08/03
 """
 
 
 import bpy
 
-from ..geonodes import *
-from .. import shadernodes as sh
-
-from .. import utils
+from geonodes import *
+from geonodes.geonodes import utils
 
 # ----- Prefixes
 
 maths_  = "M"
-mods_   = "4D"
+mods_   = "FD"
 curves_ = "C"
 surfs_  = "S"
 

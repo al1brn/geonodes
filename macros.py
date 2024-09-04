@@ -26,8 +26,7 @@ updates
 - creation : 2024/07/29
 """
 
-from geonodes.script.geonodes import *
-
+from geonodes import *
 
 # =============================================================================================================================
 # Solidify a mesh

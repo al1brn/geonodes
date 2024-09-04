@@ -19,6 +19,7 @@ from .staticclass import nd
 from . import gnmath
 
 from .socketclass import DataSocket, String, Material, Image, Object, Collection, Menu
+from .zones import Repeat, Simulation
 
 from .booleanclass import Boolean
 from .colorclass import Color
