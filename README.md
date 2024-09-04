@@ -7,9 +7,9 @@
 **Geometry Nodes** is a powerful **Blender** feature allowing the creation of amazing 3D models.
 However, nodes trees can rapidly look like a _spaghetti plate_ difficult to understand and to maintain.
 Complex formulas are not easy to build and debugging can be a headache.<br>
- 
+
 > The purpose of **_geonodes_** is to to create geometry nodes with python scripts.<br>
- 
+
 You keep the full power of Blender _Geometry Nodes_ but with the elegance of Python.
 
 ## Table of contents
@@ -24,7 +24,7 @@ You keep the full power of Blender _Geometry Nodes_ but with the elegance of Pyt
   - [Simulation](docs/ex_simulation.md)
   - [Repeat](docs/ex_repeat.md)
   - [Building an arrow](docs/arrow.md)
-    
+
 ## Better a demo than long words
 
 The following script creates a surface from a grid by computing
@@ -40,30 +40,30 @@ from geonodes import *
 # Create the Geometry nodes named "Hello World"
 
 with GeoNodes("Hello World"):
-    
+
     # Parameters
     count  = 200
     size   = 20.
     omega  = 2.
     height = 2.
-    
+
     # The surface is basically a grid 20x20 with a resolution 200 x 200
 
     grid = Mesh.Grid(vertices_x=count, vertices_y=count, size_x=size, size_y=size)
-    
+
     # We compute z
 
     with Layout("Computing the wave"):
         distance = gnmath.sqrt(nd.position.x**2 + nd.position.y**2)
         z = height*gnmath.sin(distance*omega)/distance
-        
+
     # Let's change the z coordinate of our vertices
     grid.points.offset = (0, 0, z)
-    
+
     # Material and smoothness
     grid.faces.smooth = True
     grid.faces.material = Material(None, "Material")
-    
+
     # We are done: plugging the deformed grid as the modified geometry
     grid.out()
 ```
@@ -76,7 +76,7 @@ The generated nodes are shown below:
 
 ## Installation
 
-**geonode** is a python package. To install it, copy the package folder **geonodes** in `scripts/modules`.
+**geonodes** is a python package. To install it, copy the package folder **geonodes** in `scripts/modules`.
 
 The Blender `scripts` folder is defined in Blender preferences, see: [Blender File Paths settings](https://docs.blender.org/manual/en/latest/editors/preferences/file_paths.html).
 
@@ -112,8 +112,42 @@ Uses [index](docs/index.md) to gain access to the list of availables classes.
 
 ## Scripting nodes overview
 
-All nodes belong to a tree. Four tree types are available:
+All nodes belong to a tree. Two tree types are available:
 - `GeoNodes` : [Geometry Nodes](docs/GeoNodes/GeoNodesTree.md)
 - `Shader` : [Material Nodes](docs/Shader/ShaderTree.md)
-- `Compositor` : [Compositor Nodes](docs/Compositor/CompositorTree.md)
 
+## Basics
+
+### Blender Setup
+
+Create a new script in _Scripting_ tab in **Blender**. You can setup this tab in order to display:
+
+- A _Text editor_ for python scripting
+- A _3D Viewport_ to view the progress
+- A _Python Console_ to dump variables
+- A _Geometry Node Editor_ to view the generated nodes
+
+Here after is an example of the recommanded setup:
+
+<img src="doc/images/blender_setup.png" width="600" class="center">
+
+### 'Do Nothing' Modifier
+
+Copy / paste the following piece of code to check that everything is properly setup:
+
+``` python
+from geonodes import *
+
+with GeoNodes("Do Nothing"):
+    Geometry().out()
+```
+
+
+
+
+
+
+
+
+
+[!Note]
