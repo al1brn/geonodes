@@ -84,7 +84,6 @@ with GeoNodes("Hello World"):
     hue = (nd.normal.dot(loc)/2 + .5)**2
     grid.points.store("surf_color", Color.Combine(hue, .9, .7, mode='HSV'))
     
-    
     # We smooth the grid
     grid.faces.smooth = True
     
