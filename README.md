@@ -35,63 +35,64 @@ an object passed as modifier parameter.
 <img src="docs/images/hello_world.png" width="600" class="center">
 
 ```python
-from geonodes import GeoNodes, Shader
+from geonodes import *
 
 # A Shader to be used by the Geometry Nodes modifier
-with Shader("Hello Material") as tree:
+with sh.ShaderNodes("Hello Material"):
     # Read the color from the arribute nameed 'surf_color'
-    col = tree.Attribute("surf_color").color
+    col = sh.nd.attribute("surf_color").color
     
     # A Principled BSDF shader 
-    tree.output_surface = tree.PrincipledBSDF(
+    bsdf = sh.Shader.Principled(
         base_color = col,
         roughness  = .1,
-        metallic   = .7).bsdf
+        metallic   = .7)
+    bsdf.out()
         
 # The Geometry Nodes modifier
-with GeoNodes("Hello World") as tree:
+with GeoNodes("Hello World"):
     
     # Let's get the parameters from the user
-    count  = tree.integer_input("Resolution", 100, min_value=10, max_value=300)
+    count  = Integer(100, "Resolution", min=10, max=300)
     size   = 20   # Size
-    omega  = tree.integer_input("Omega", 2.)
-    height = tree.integer_input("Height", 2.)
+    omega  = Float(2., "Omega")
+    height = Float(2., "Height")
     
     # The base (x, y) grid
-    grid = tree.Grid(vertices_x=count, vertices_y=count, size_x=size, size_y=size).mesh
+    grid = Mesh.Grid(vertices_x=count, vertices_y=count, size_x=size, size_y=size)
     
     # We compute z
-    with tree.layout("Computing the wave"):
+    with Layout("Computing the wave"):
         # Separate XYZ the position vector 
-        pos = grid.position
+        pos = nd.position
         
         # Compute the distance
-        distance = tree.sqrt(pos.x**2 + pos.y**2)
+        distance = gnmath.sqrt(pos.x**2 + pos.y**2)
         
         # Height in z
-        z = height * tree.sin(distance*omega)/distance
+        z = height * gnmath.sin(distance*omega)/distance
         
     # Let's change the z coordinate of our vertices
-    grid.offset = (0, 0, z)
+    grid.points.offset = (0, 0, z)
     
     # The color of the surface depends upon the orientation of the faces
-    # towerd a control object
+    # toward a control object
     
-    target = tree.object_input("Direction")
-    loc = target.object_info().location
+    target = Object(None, "Direction")
+    loc = target.info().location
     
-    hue = (grid.normal.dot(loc)/2 + .5)**2
-    grid.POINT.store_named_vector("surf_color", tree.CombineColor(hue, .9, .7, mode='HSV'))
+    hue = (nd.normal.dot(loc)/2 + .5)**2
+    grid.points.store("surf_color", Color.Combine(hue, .9, .7, mode='HSV'))
     
     
     # We smooth the grid
-    grid.FACE.shade_smooth = True
+    grid.faces.smooth = True
     
     # We set the material created above
-    grid.material = "Hello Material"
+    grid.faces.material = "Hello Material"
     
     # We are done: plugging the deformed grid as the modified geometry
-    tree.output_geometry = grid        
+    grid.out()
 ```
 
 > See [Demo details](docs/demo_1.md)
