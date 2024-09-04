@@ -118,6 +118,10 @@ All nodes belong to a tree. Two tree types are available:
 
 ## Basics
 
+### Prerequisites
+
+To get the maximum benefit of **GeoNodes**, you must be familiar with both **python** and Blender **Geometry Nodes**.
+
 ### Blender Setup
 
 Create a new script in _Scripting_ tab in **Blender**. You can setup this tab in order to display:
@@ -141,6 +145,58 @@ from geonodes import *
 with GeoNodes("Do Nothing"):
     Geometry().out()
 ```
+
+A Geometry Nodes modifier has been created with the name "Do Nothing". You can use it on any object.
+
+[!Important] All scripts are supposed to start with ``` from geonodes import * ```.
+Nodes can be created only in the sccope of **with** context.
+In the examples below, the following lines can be omitted.
+
+``` python
+from geonodes import *
+
+with GeoNodes("Tutorial"):
+    pass
+```
+
+### Overview
+
+All **Geometry Nodes** socket types are wrapped in a python class. The available classes are the following:
+
+- Basic types
+  - Boolean
+  - Integer
+  - Float
+  - Vector
+  - Color
+  - Rotation
+  - Matrix
+  - String
+
+- Blender Resources
+  - Material
+  - Object
+  - Texture
+  - Collection
+  - Image
+
+- Geometry
+  - Geometry
+  - Mesh
+  - Curve
+  - Cloud
+  - Instances
+  - Volume
+
+  Blender **Nodes** are implemented as methods, properties and operators working on these classes.
+  For instance, if `a` and `b` are two **Floats**, the script ``` a + b ``` will generate a **Math** node with
+  operation _ADD_. The result of this operation is the **Output Socket** of the node.
+
+
+
+
+
+
 
 
 
