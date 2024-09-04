@@ -32,7 +32,7 @@ The following script creates a surface from a grid by computing
 It first creates a dedicated Material changing the color based on the location of
 an object passed as modifier parameter.
 
-<img src="docs/images/hello_world.png" width="600" class="center">
+<img src="doc/images/hello_world.png" width="600" class="center">
 
 ```python
 from geonodes import *
