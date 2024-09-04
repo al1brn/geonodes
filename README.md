@@ -114,24 +114,23 @@ After the install, the Blender scripts hierarchy should look like:
        modules/
            geonodes/
                __init__.py
-               core/
-               nodes/
+               geonodes
+               shadernodes
+               demos
                ...
 ```
 
 To make the module available in your script, use `import` in your script:
 
 ```python
-import geonodes as gn
+from geonodes import *
 ```
 
 or
 
 ``` python
-from geonodes import GeoNodes, Shader
+from geonodes import GeoNodes, Shader, ...
 ```
-
-> `gn` is the recommended alias for geonodes.
 
 ## Documentation
 
