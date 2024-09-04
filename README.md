@@ -267,9 +267,9 @@ All **Geometry Nodes** socket types are wrapped in a python class. The available
   1. When a socket is set, it is an ***Input socket*** of the node, when a socket is get,
      it is and ***Output socket*** of the node, for instance if `node` is _Resample Curve_:
      - `node.geometry = a` : set the ***Input socket*** _Geometry_ to the given value `a`
-     - `node.selection = b` : set the ***Input socket*** _Selection_ to the given value `b`
-     - `node.count = c` : set the ***Input socket*** _Selection_ to the given value `c`
-     - `d = node.geometry` : get the ***Ouput socket***  _Geometry_ and set the value `d`
+     - `b = node.geometry` : get the ***Ouput socket*** _Geometry_ and set the value `b`
+     - `node.selection = c` : set the ***Input socket*** _Selection_ to the given value `c`
+     - `e = node.selection` : raises an error since there is no ***Ouput socket*** named _Selection_
 
   ### Geometry classes and domains
 
