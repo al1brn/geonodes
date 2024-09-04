@@ -4,13 +4,13 @@
 
 ## Short
 
-**Geometry nodes** is a powerful **Blender** feature allowing the creation of amazing 3D models.
+**Geometry Nodes** is a powerful **Blender** feature allowing the creation of amazing 3D models.
 However, nodes trees can rapidly look like a _spaghetti plate_ difficult to understand and to maintain.
 Complex formulas are not easy to build and debugging can be a headache.<br>
  
 > The purpose of **_geonodes_** is to to create geometry nodes with python scripts.<br>
  
-You keep the full power of Blender geometry nodes but with the elegance of Python.
+You keep the full power of Blender _Geometry Nodes_ but with the elegance of Python.
 
 ## Table of contents
 
