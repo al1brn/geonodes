@@ -234,15 +234,18 @@ All **Geometry Nodes** socket types are wrapped in a python class. The available
 
   2. The name of the socket data type is omitted:
 
-     - _Curve to Mesh_ : **to_mesh** method to **Curve** class
-     - _Mesh to Points_ : **to_points** method to **Mesh** class
-     - _Curve to Points_ : **to_points** method to **Curve** class
-     - _Volume to Points_ : **to_points** method to **Volume** class
-     - _Mesh Line_ : **Line** constructor method of **Mesh** class
-     - _Curve Line_ : **Line** constructore method of **Curve** class
+     - _Curve to Mesh_ : **Curve.to_mesh** method
+     - _Mesh to Points_ : **Mesh.to_points** method
+     - _Curve to Points_ : **Curve.to_points** method
+     - _Volume to Points_ : **Volume.to_points** method
+     - _Mesh Line_ : **Mesh.Line** constructor
+     - _Curve Line_ : **Curve.Line** constructor
 
   3. '_Set xxx' are implemented as properties when possible:
-     - _Set Position_ : **position** and  and **offset** properties of domain
-     - _Set Radius_ : **radius** property of **Cloud.points** and **Curve.points**
-     - _Set Tilt_ : **tilt** property of **Curve.points**
-     - _Set Handle Type_ : **handle_type** property of **Curve.points**
+     - _Set Position_ : **position** and **offset** properties of domain :
+       ``` mesh.points.position = v ``` and ``` mesh.points.offset = v ```
+     - _Set Radius_ : **radius** property of **Cloud.points** and **Curve.points** :
+       ``` cloud.points.radius = v ``` and ``` curve.points.radius = v ```
+     - _Set Tilt_ : **tilt** property of **Curve.points** : ``` curve.points.tilt = v ```
+     - _Set Handle Type_ : **handle_type** property of **Curve.points** :
+       ``` curve.points.handle_type = 'FREE' ```
