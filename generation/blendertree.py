@@ -83,17 +83,6 @@ def get_tree(name, tree_type='GeometryNodeTree', create=True):
 
     return btree
 
-    # OLD OLD OLD OLD
-
-    btree = bpy.data.node_groups.get(name)
-    if btree is None or btree.bl_idname != tree_type:
-        if not create:
-            return None
-        btree = bpy.data.node_groups.new(name=name, type=tree_type)
-        btree.bl_description = 'GEONODES'
-
-    return btree
-
 # ----------------------------------------------------------------------------------------------------
 # Delete a tree
 

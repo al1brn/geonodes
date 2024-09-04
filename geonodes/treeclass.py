@@ -64,7 +64,6 @@ from .scripterror import NodeError
 from . import treearrange
 from . import constants
 from . import utils
-from . import blendertree
 
 # =============================================================================================================================
 # Break to exit with blocks
@@ -205,7 +204,7 @@ class Tree:
         # Get the tree nodes from node_groups
 
         if self._btree is None:
-            self._btree = blendertree.get_tree(tree_name, tree_type=tree_type, create=True)
+            self._btree = utils.get_tree(tree_name, tree_type=tree_type, create=True)
             self._btree.use_fake_user = fake_user
 
         self._is_group = is_group

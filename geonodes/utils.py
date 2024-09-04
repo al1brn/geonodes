@@ -51,6 +51,68 @@ import bpy
 from .scripterror import NodeError
 from . import constants
 
+# =============================================================================================================================
+# Get / delete a tree
+
+# ----------------------------------------------------------------------------------------------------
+# Get a tree, create it if it doesn't exist
+
+def get_tree(name, tree_type='GeometryNodeTree', create=True):
+    """ Get or create a new nodes tree
+
+    Arguments
+    ---------
+        - name (str) : Tree name
+        - tree_type (str = 'GeometryNodeTree') : tree type in ('CompositorNodeTree', 'TextureNodeTree', 'GeometryNodeTree', 'ShaderNodeTree')
+        - create (bool = False) : Create the tree if it doesn't exist
+
+    Returns
+    -------
+        - Tree of type matching the request or None if it doesn't exist
+    """
+
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Loop on the synonyms
+
+    for i in range(10):
+        if i == 0:
+            name_i = name
+        else:
+            name_i = f"{name}.{i:03}"
+
+        btree = bpy.data.node_groups.get(name_i)
+        if btree is not None and btree.bl_idname == tree_type and btree.description=='GEONODES':
+            return btree
+
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Create the new tree
+
+    if not create:
+        return None
+
+    btree = bpy.data.node_groups.new(name=name, type=tree_type)
+    btree.description = 'GEONODES'
+
+    return btree
+
+# ----------------------------------------------------------------------------------------------------
+# Delete a tree
+
+def del_tree(btree):
+
+    """ Delete a tree
+
+    Arguments
+    ---------
+        - btree (blender Tree or str : Tree or tree name
+    """
+
+    if isinstance(btree, str):
+        btree = bpy.data.node_groups.get(btree)
+
+    if btree is not None and btree.description=='GEONODES':
+        bpy.data.node_groups.remove(btree)
+
 # ====================================================================================================
 # Litteral to python name
 
