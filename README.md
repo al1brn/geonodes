@@ -1,6 +1,6 @@
 # geonodes
 
-![Scripting Geometry Nodes for Blender](docs/images/geonodes.png)
+![Scripting Geometry Nodes for Blender](doc/images/hello_wolrd.png)
 
 ## Short
 
@@ -98,7 +98,7 @@ with GeoNodes("Hello World"):
 
 The generated nodes and the result of the Geometry nodes modifier is given below:
 
-<img src="docs/images/hello_world_blender.png" width="600" class="center">
+<img src="doc/images/hello_world.png" width="600" class="center">
 
 ## Installation
 
