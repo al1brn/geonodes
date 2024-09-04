@@ -239,7 +239,7 @@ All **Geometry Nodes** socket types are wrapped in a python class. The available
      using _CamelCase_ convention:
 
      - _Cube_ : constructor class method **Cube** of **Mesh**
-     - _Combine XYZ_ : constructor class methode **Combine** of **Vector**
+     - _Combine XYZ_ : constructor class method **Combine** of **Vector**
      - _Bézier Segment_ : constructor class method **BezierSegment** of **Curve**
 
   1. The name of the socket data type is omitted when redundant:
@@ -260,7 +260,7 @@ All **Geometry Nodes** socket types are wrapped in a python class. The available
      - _Set Handle Type_ : **handle_type** property of **Curve.points** :
        ``` curve.points.handle_type = 'FREE' ```
 
-  1. _Socket names_ can be accessed as properties of their node using the _snake_case convention:
+  1. _Socket names_ can be accessed as properties of their node using the _snake_case_ convention:
      - _Value_ socket : **node.value**
      - _Geometry_ socket : **node.geometry**
 
