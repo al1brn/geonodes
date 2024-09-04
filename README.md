@@ -148,8 +148,10 @@ with GeoNodes("Do Nothing"):
 
 A Geometry Nodes modifier has been created with the name "Do Nothing". You can use it on any object.
 
-[!NOTE] All scripts are supposed to start with ``` from geonodes import * ```.
-Nodes can be created only in the sccope of **with** context.
+> [!NOTE]
+> All scripts are supposed to start with ``` from geonodes import * ```.
+> Nodes can be created only in the sccope of **with** context.
+
 In the examples below, the following lines can be omitted.
 
 ``` python
