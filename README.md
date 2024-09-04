@@ -37,58 +37,37 @@ an object passed as modifier parameter.
 ```python
 from geonodes import *
 
-# A Shader to be used by the Geometry Nodes modifier
-with sh.ShaderNodes("Hello Material"):
-    # Read the color from the attribute named 'surf_color'
-    col = sh.nd.attribute("surf_color").color
-    
-    # A Principled BSDF shader 
-    bsdf = sh.Shader.Principled(
-        base_color = col,
-        roughness  = .1,
-        metallic   = .7)
-    bsdf.out()
-        
-# The Geometry Nodes modifier
+# Create the Geometry nodes named "Hello World"
+
 with GeoNodes("Hello World"):
     
-    # Let's get the parameters from the user
-    count  = Integer(100, "Resolution", min=10, max=300)
-    size   = 20   # Size
-    omega  = Float(2., "Omega")
-    height = Float(2., "Height")
+    # Parameters
+    count  = 200
+    size   = 20.
+    omega  = 2.
+    height = 2.
     
-    # The base (x, y) grid
+    # The surface is basically a grid 20x20 with a resolution 200 x 200
+
     grid = Mesh.Grid(vertices_x=count, vertices_y=count, size_x=size, size_y=size)
     
-    # We compute z
+    # We compute z i
+
     with Layout("Computing the wave"):
-        # Separate XYZ the position vector 
-        pos = nd.position
-        
-        # Compute the distance
-        distance = gnmath.sqrt(pos.x**2 + pos.y**2)
+
+        # Horizontal distance
+
+        distance = gnmath.sqrt(nd.position.x**2 + nd.position.y**2)
         
         # Height in z
-        z = height * gnmath.sin(distance*omega)/distance
+
+        z = height*gnmath.sin(distance*omega)/distance
         
     # Let's change the z coordinate of our vertices
     grid.points.offset = (0, 0, z)
     
-    # The color of the surface depends upon the orientation of the faces
-    # toward a control object
-    
-    target = Object(None, "Direction")
-    loc = target.info().location
-    
-    hue = (nd.normal.dot(loc)/2 + .5)**2
-    grid.points.store("surf_color", Color.Combine(hue, .9, .7, mode='HSV'))
-    
     # We smooth the grid
     grid.faces.smooth = True
-    
-    # We set the material created above
-    grid.faces.material = "Hello Material"
     
     # We are done: plugging the deformed grid as the modified geometry
     grid.out()
