@@ -161,11 +161,11 @@ with GeoNodes("Tutorial"):
     pass
 ```
 
-### Overview
+### Data Types
 
 All **Geometry Nodes** socket types are wrapped in a python class. The available classes are the following:
 
-- Basic types
+- **Basic types**
   - Boolean
   - Integer
   - Float
@@ -175,14 +175,14 @@ All **Geometry Nodes** socket types are wrapped in a python class. The available
   - Matrix
   - String
 
-- Blender Resources
+- **Blender Resources**
   - Material
   - Object
   - Texture
   - Collection
   - Image
 
-- Geometry
+- **Geometry**
   - Geometry
   - Mesh
   - Curve
@@ -194,18 +194,55 @@ All **Geometry Nodes** socket types are wrapped in a python class. The available
   For instance, if `a` and `b` are two **Floats**, the script ``` a + b ``` will generate a **Math** node with
   operation _ADD_. The result of this operation is the **Output Socket** of the node.
 
+  ### Domains
 
+  Geometry classes have one or sevreal _Domain_ attributes according  **Blender** data structure. The domains are the following:
+  - **Mesh**
+    - points
+    - faces
+    - edges
+    - corners
+  - **Curve**
+    - points
+    - splines
+  - **Cloud**
+    - points
+  - **Instances**
+    - insts
+  - **Volume**
 
+  The _Domain_ attribute is used in the nodes needing this parameter. In the following example,
+  the node '_Store Named Attribute_' is setup with the domain calling the method:
 
+  ``` python
+        # Create a Cube
+        mesh = Mesh.Cube()
 
+        # Store on domain POINT
+        mesh.points.store_named_attribute("Point Value", 0.)
 
+        # Store on domain FACE
+        mesh.faces.store_named_attribute("Face Value", 0.)
+  ```
 
+  ### Naming Conventions
 
+  1. Method names are built from the name of the node using the _snake_case_ convention:
 
+     - '_Set Material_' -> **set_material**
+     - '_Store Named Attribute_' -> **store_named_attribute**
 
+  2. The name of the socket data type is omitted:
 
+     - '_Curve to Mesh_' -> **to_mesh** method to **Curve** class
+     - '_Mesh to Points_' -> **to_points** method to **Mesh** class
+     - '_Curve to Points_' -> **to_points** method to **Curve** class
+     - '_Volume to Points_' -> **to_points** method to **Volume** class
+     - '_Mesh Line_' -> **Line** constructor method of **Mesh** class
+     - '_Curve Line_' -> **Line** constructore method of **Curve** class
 
-
-
-
-[!Note]
+  3. '_Set xxx' are implemented as properties when possible:
+     - '_Set Position_' -> **position** and  and **offset** properties of domain
+     - '_Set Radius_' -> **radius** property of **Cloud.points** and **Curve.points**
+     - '_Set Tilt_' -> **tilt** property of **Curve.points**
+     - '_Set Handle Type_' -> **handle_type** property of **Curve.points**
