@@ -279,21 +279,18 @@ geo += Mesh.Cube(), Curve.Spiral() # Join with two other geometries
 
 ## Naming Conventions
 
-### Node and Socket names
+### Node names
 
-Naming conventions are such that the method or property names can be easily deduced from
-the name of the node.
+Naming conventions are such that method names can be easily deduced from the node name.
 
 1. Method names are built from the name of the node using the _snake_case_ convention:
   - _Set Material_ : **set_material**
   - _Store Named Attribute_ : **store_named_attribute**
-
 2. When the node creates a new instance of the socket, it is implemeted as a constructor **class method**
   using _CamelCase_ convention:
   - _Cube_ : constructor class method **Cube** of **Mesh**
   - _Combine XYZ_ : constructor class method **Combine** of **Vector**
   - _Bézier Segment_ : constructor class method **BezierSegment** of **Curve**
-
 3. The name of the socket data type is omitted when redundant:
   - _Curve to Mesh_ : **Curve.to_mesh** method
   - _Mesh to Points_ : **Mesh.to_points** method
@@ -309,6 +306,14 @@ the name of the node.
   - _Set Tilt_ : **tilt** property of **Curve.points** : ``` curve.points.tilt = v ```
   - _Set Handle Type_ : **handle_type** property of **Curve.points** :
     ``` curve.points.handle_type = 'FREE' ```
+
+The example below applies this set fo rules:
+
+``` python
+```
+
+
+
 5. _Socket names_ can be accessed as properties of their node using the _snake_case_ convention:
   - _Value_ socket : **node.value**
   - _Geometry_ socket : **node.geometry**
