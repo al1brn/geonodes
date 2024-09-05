@@ -615,7 +615,7 @@ class Geometry(DataSocket, GeoBase):
         """
         return Mesh(Node('Convex Hull', {'Geometry': self})._out)
 
-    def merge_by_distance(self, distance=None, all=True):
+    def merge_by_distance(self, distance=None, mode='ALL'):
         """ Node 'Merge by Distance' (GeometryNodeMergeByDistance)
 
         [!Node] Merge by Distance
@@ -623,13 +623,13 @@ class Geometry(DataSocket, GeoBase):
         Arguments
         ---------
         - distance (Float) : socket 'Distance' (Distance)
-        - all (bool) : mode = 'ALL' if True, 'CONNECTED' otherwise
+        - mode (str) : str in ('ALL', 'CONNECTED')
 
         Returns
         -------
         - geometry (Geometry)
         """
-        return self._geo_type(self._node('Merge by Distance', {'Distance': distance}, mode = 'ALL' if all else 'CONNECTED')._out)
+        return self._geo_type(self._node('Merge by Distance', {'Distance': distance}, mode=mode)._out)
 
     def transform(self, translation=None, rotation=None, scale=None, matrix=None):
         """ Node 'Transform Geometry' (GeometryNodeTransform)

@@ -283,22 +283,22 @@ geo += Mesh.Cube(), Curve.Spiral() # Join with two other geometries
 
 Naming conventions are such that method names can be easily deduced from the node name.
 
-1. Method names are built from the name of the node using the _snake_case_ convention:
+1. **RULE 1** : method names are built from the name of the node using the _snake_case_ convention:
   - _Set Material_ : **set_material**
   - _Store Named Attribute_ : **store_named_attribute**
-2. When the node creates a new instance of the socket, it is implemeted as a constructor **class method**
+2. **RULE 2** : when the node creates a new instance of the socket, it is implemeted as a constructor **class method**
   using _CamelCase_ convention:
   - _Cube_ : constructor class method **Cube** of **Mesh**
   - _Combine XYZ_ : constructor class method **Combine** of **Vector**
   - _Bézier Segment_ : constructor class method **BezierSegment** of **Curve**
-3. The name of the socket data type is omitted when redundant:
+3. **RULE 3** : the name of the socket data type is omitted when redundant:
   - _Curve to Mesh_ : **Curve.to_mesh** method
   - _Mesh to Points_ : **Mesh.to_points** method
   - _Curve to Points_ : **Curve.to_points** method
   - _Volume to Points_ : **Volume.to_points** method
   - _Mesh Line_ : **Mesh.Line** constructor
   - _Curve Line_ : **Curve.Line** constructor
-4. _Set xxx_ are implemented as properties when possible:
+4. **RULE 4** : _Set xxx_ are implemented as properties when possible:
   - _Set Position_ : **position** and **offset** properties of domain :
     ``` mesh.points.position = v ``` and ``` mesh.points.offset = v ```
   - _Set Radius_ : **radius** property of **Cloud.points** and **Curve.points** :
@@ -310,27 +310,69 @@ Naming conventions are such that method names can be easily deduced from the nod
 The example below applies this set fo rules:
 
 ``` python
+from geonodes import *
+
+with GeoNodes("Method names"):
+
+    # ----------------------------------------------------------------------------------------------------
+    # RULE 2 : Constructor nodes in CamelCase
+    #
+    # Primitive nodes 'Cube', 'Points' and 'Bézier Segment' are
+    # implemented as constructors of their Geometry
+
+    cube = Mesh.Cube()
+    cloud = Cloud.Points()
+    bezier = Curve.BezierSegment()
+
+    # ----------------------------------------------------------------------------------------------------
+    # RULE 2 : Constructor nodes in CamelCase
+    # RULE 3 : Omit class name
+    #
+    # Primitive nodes 'Mesh Line' and  'Curve Line' are implemented as
+    # constructors of their Geometry, omitting the name of the class
+
+    mesh_line = Mesh.Line()
+    curve_line = Curve.Line()
+
+    # ----------------------------------------------------------------------------------------------------
+    # RULE 1 : Nodes name in snake_case
+    #
+    # Nodes 'Subdivision Surface', 'Triangulate', 'Set Position' are implemented as method
+    # of their geometry using the snake_case version for their name
+
+    cube = cube.subdivision_surface()
+    cube = cube.triangulate()
+    curve = curve_line.set_position()
+
+    # ----------------------------------------------------------------------------------------------------
+    # RULE 1 : Nodes name in snake_case
+    # RULE 3 : Omit class name
+    #
+    # In the snake_case version of the nodes 'Fill Curve', 'Deform Curves on Surface', 'Subdivide Mesh'
+    # the name of the geometry is omitted
+
+    mesh = Curve.Circle().fill()
+    curves = curve_line.deform_on_surface()
+    cube = cube.subdivide()
+
+    # ----------------------------------------------------------------------------------------------------
+    # RULE 4 : setters and getters are properties
+    #
+    # The nodes 'Set Position' and 'Set Radius' are also implemented as properties
+
+    mesh.position += (1, 2, 3)
+    # or
+    mesh.offset = (1, 2, 3)
+    cloud.radius = 1.
+
+
+    # Make sure to have an output geometry
+    Geometry().out()
 ```
-
-
-
-5. _Socket names_ can be accessed as properties of their node using the _snake_case_ convention:
-  - _Value_ socket : **node.value**
-  - _Geometry_ socket : **node.geometry**
-6. When a socket is **set**, it is an ***Input socket*** of the node, when a socket is **get**,
-  it is and ***Output socket*** of the node, for instance if `node` is _Resample Curve_:
-  - `node.geometry = a` : set the ***Input socket*** _Geometry_ to the given value `a`
-  - `b = node.geometry` : get the ***Ouput socket*** _Geometry_ and set the value `b`
-  - `node.selection = c` : set the ***Input socket*** _Selection_ to the given value `c`
-  - `e = node.selection` : raises an error since there is no ***Ouput socket*** named _Selection_
-
-### Methods arguments
-
-
 
 ### Geometry or Domains methods
 
-Blender _Geometry Nodes_ exposes one single _Geometry_ type. **GeoNodes** provides
+Blender _Geometry Nodes_ exposes one single _Geometry_ type. On the other hand, **GeoNodes** provides
 one class per geometry type : **Mesh**, **Curve**, **Cloud**, **Instances**, **Volume** which are
 subclasses of the generic **Geometry** class.
 
@@ -341,6 +383,94 @@ Nodes are implemented on their geometry classes:
 Nodes needing a _Domain_ parameter are implemented on **Domain**, not **Geometry** :
 - _Store Named Attribute_ : implemented on all domains
 - _Extrude Mesh_ : implemented on **Mesh.points**, **Mesh.edges** and **Mesh.faces**
+
+### Node sockets and parameters
+
+To b fully condigured, a node needs values for its sockets and parameters.
+The method arguments provides the required initial values.
+
+The following conventions are used:
+
+1. **RULE A** : arguments for sockets are built as the _snake_case_ version of their name:
+  - _Value_ socket : **node.value**
+  - _Geometry_ socket : **node.geometry**
+  - _Instance Index_ socket : **instance_index**
+2. **RULE B** : sockets are given first, following their order in the node, and parameters are placed after:
+  - `float.map_range(0, 1, 10, 20)`  is equivalent to `float.map_range(from_min=0, from_max=1, ...)`
+2. **RULE C** : _Selection_ socket is omitted and is passed as item index of the **Geometry**
+  - Don't write `mesh.set_id(selection=sel, ...)` but write instead `mesh[sel].set_id(...)
+3. **RULE D** : arguments for parameters use the python parameter name:
+  - Node _Set Handle Type_ has the parameter _handle_type_
+4. **RULE E** : _domain_ parameter is omitted, it is taken from the calling domain:
+  - Don't write `mesh.extrude(... domain='FACE')` but write instead `mesh.faces.extrude()`
+5. **RULE F** : _data_type_ parameter is omitted, it is deduced from the attribute type:
+  - Don't write `sphere.sample_uv_surface(value=a, data_type='VECTOR')` but simply write
+    `sphere.sample_uv_surface(value=a)`
+
+> [!NOTE]
+> The first socket is initialized with the class instance calling the method:
+> `mesh.set_id(...)` connects the socket wrapped by the variable `mesh` to the
+> socket _Geometry_ of the node _Set ID_.
+
+``` python
+from geonodes import *
+
+with GeoNodes("Argument names"):
+
+    # ----------------------------------------------------------------------------------------------------
+    # RULE A : socket arguments in snake_case
+
+    sphere = Mesh.UVSphere(segments=16, rings=12, radius=1.)
+    sphere = sphere.merge_by_distance(distance=.1)
+
+    # ----------------------------------------------------------------------------------------------------
+    # RULE B : sockets ordered as in the node, parameters are placed after
+
+    sphere = Mesh.UVSphere(16, 12, 1.)
+    sphere = sphere.merge_by_distance(.1, 'ALL')
+
+    # ----------------------------------------------------------------------------------------------------
+    # RULE C : Selection socket is set by item index
+    #
+    # Don't write
+    # sphere = sphere.set_position(selection=nd.index < 5, position=(1, 2, 3))
+
+    sphere[nd.index < 5].set_position(position=(1, 2, 3))
+
+    # ----------------------------------------------------------------------------------------------------
+    # RULE D : parameter arguments take the parameter name
+    #
+    # Node 'Merge by Distance' owns a parameter named 'mode'
+
+    sphere = sphere.merge_by_distance(mode='ALL')
+
+    # ----------------------------------------------------------------------------------------------------
+    # RULE E : domain parameter is taken form the calling domain
+    #
+    # Don't write
+    # sphere = sphere.set_shade_smooth(shade_smooth=True, domain='FACE')
+
+    sphere.faces.shade_smooth = True
+
+    # ----------------------------------------------------------------------------------------------------
+    # RULE F : data_type parameter is omitted, it is deduced from the argument type
+    #
+    # Don't write
+    # b = sphere.sample_uv_surface(value=a, data_type='VECTOR')
+    # data_type will be deduced from the type of variable a
+
+    a = Vector()
+    b = sphere.sample_uv_surface(value=a)
+
+    # Make sure to have an output geometry
+    sphere.out()
+```
+
+
+### Methods arguments
+
+
+
 
 ### Selection Socket
 
