@@ -523,7 +523,7 @@ with GeoNodes("Returned Values"):
 
     # Output
     (ico + cube.set_position(offset=(5, 0, 0))).out()
-    ```
+```
 
 > [!NOTE]
 > When calling a method, make sure to put the result in a variable in order to
