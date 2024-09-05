@@ -539,13 +539,50 @@ with GeoNodes("Returned Values"):
 > # The resulting geometry must be set into a variable
 > displaced_cube = cube.set_position(offset=(1, 2, 3))
 >
-> # Setting the offset property changes the output socket,
-> # the cube variale refers to
+> # Setting the offset property changes the output socket
+> # the cube variable refers to
 > cube.offset = (1, 2, 3)
 > ```
 
-## Group Inputs
+## Instanciating Classes
 
-Group
+Basically the **GeoNodes** classes are instantiated using the default constructor.
+The code below creates four inputs nodes:
+
+<img src="doc/images/input_nodes.png" class="center">
+
+``` python
+# The following instructions create the corresponding input nodes
+float = Float(10)
+vector = Vector((1, 2, 3))
+color = Color((.1, .2, .3))
+string = String("A String")
+```
+
+The optional **name** argument is used to create a Group Input socket:
+
+``` python
+# The following instructions create the corresponding input nodes
+float = Float(10, name="Float Parameter"")
+vector = Vector((1, 2, 3), name="Vector Parameter")
+color = Color((.1, .2, .3), name="Color Parameter")
+string = String("A String", name="String Parameter")
+```
+
+
+
+
+
+
+Group input are created by instanciating a **GeoNodes** variable with the **name** argument:
+
+``` python
+float_input = Float(0., name="Float Parameter")
+vector_input = Vector(0, name="Vector Parameter")
+```
+
+The
+
+
 
 [!IMPORTANT]
