@@ -559,7 +559,11 @@ color = Color((.1, .2, .3))
 string = String("A String")
 ```
 
-The optional **name** argument is used to create a Group Input socket:
+The optional **name** argument is used to create a Group Input socket.
+The code below creates four group input sockets:
+
+<img src="doc/images/group_inputs_1.png" class="center">
+
 
 ``` python
 # The following instructions create the corresponding input nodes
