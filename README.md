@@ -401,10 +401,10 @@ The following conventions are used:
 3. **RULE D** : arguments for parameters use the python parameter name:
   - Node _Volume to Mesh_ has the parameter _resolution_mode_ : `mesh = vol.to_mesh(..., resolution_mode='GRID')`
 4. **RULE E** : _domain_ parameter is omitted, it is taken from the calling domain:
-  - Don't write `mesh.extrude(... domain='FACE')` but write instead `mesh.faces.extrude()`
+  - Don't write `mesh.extrude(domain='FACE')` but write instead `mesh.faces.extrude()`
 5. **RULE F** : _data_type_ parameter is omitted, it is deduced from the attribute type:
   - Don't write `sphere.sample_uv_surface(value=a, data_type='VECTOR')` but simply write
-    `sphere.sample_uv_surface(value=a)`
+    `sphere.sample_uv_surface(a)`
 
 > [!NOTE]
 > The first socket is initialized with the class instance calling the method:
@@ -425,28 +425,27 @@ with GeoNodes("Argument names"):
     # ----------------------------------------------------------------------------------------------------
     # RULE B : sockets ordered as in the node, parameters are placed after
 
-    sphere = Mesh.UVSphere(16, 12, 1.)
     sphere = sphere.merge_by_distance(.1, 'ALL')
 
     # ----------------------------------------------------------------------------------------------------
     # RULE C : Selection socket is set by item index
     #
-    # Don't write
+    # Don't write:
     # sphere = sphere.set_position(selection=nd.index < 5, position=(1, 2, 3))
 
-    sphere[nd.index < 5].set_position(position=(1, 2, 3))
+    sphere = sphere[nd.index < 5].set_position(position=(1, 2, 3))
 
     # ----------------------------------------------------------------------------------------------------
     # RULE D : parameter arguments take the parameter name
     #
     # Node 'Merge by Distance' owns a parameter named 'mode'
 
-    sphere = sphere.merge_by_distance(mode='ALL')
+    sphere = sphere = sphere.merge_by_distance(mode='ALL')
 
     # ----------------------------------------------------------------------------------------------------
     # RULE E : domain parameter is taken form the calling domain
     #
-    # Don't write
+    # Don't write:
     # sphere = sphere.set_shade_smooth(shade_smooth=True, domain='FACE')
 
     sphere.faces.shade_smooth = True
