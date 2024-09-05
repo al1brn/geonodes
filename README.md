@@ -92,7 +92,7 @@ from geonodes import *
 or
 
 ``` python
-from geonodes import GeoNodes, Shader, ...
+from geonodes import GeoNodes, ShaderNodes, Geometry, Mesh, Vector...
 ```
 
 ## Documentation
@@ -103,7 +103,7 @@ Uses [index](docs/index.md) to gain access to the list of availables classes.
 
 All nodes belong to a tree. Two tree types are available:
 - `GeoNodes` : [Geometry Nodes](docs/GeoNodes/GeoNodesTree.md)
-- `Shader` : [Material Nodes](docs/Shader/ShaderTree.md)
+- `ShaderNodes` : [Shader Nodes](docs/Shader/ShaderTree.md)
 
 # Basics
 
@@ -141,7 +141,7 @@ A Geometry Nodes modifier has been created with the name "Do Nothing". You can u
 > All scripts are supposed to start with ``` from geonodes import * ```.
 > Then, nodes must be created only in the sccope of **with** context.
 
-All the code samples must be placed after the following lines when there are not explicity given in the exemple.
+All the code samples must be placed after the following lines:
 
 ``` python
 from geonodes import *
@@ -169,7 +169,7 @@ c = gnmath.multiply_add(10, b)
 
 u = Vector((1, 2, 3))
 v = gnmath.cross_product(u, (7, 8, 9))
-w = gnmath.vsin(v)
+a = gnmath.vsin(v)
 ```
 
 > [!NOTE]
@@ -183,17 +183,18 @@ c = gnmath.band(b, False)
 
 ### 'nd' Class
 
-**nd** (shortcut for **nodes**) exposes input nodes such as _Position_ or _Radius_:
+**nd** (shortcut for **nodes**) exposes all the nodes as class methods.
+This class is particuliarly usefull for input nodes such as _Position_ or _Radius_:
 
 ``` python
-cube = Mesh.Cube()
+cube = Mesh.Cube() # or nd.cube()
 new_pos = nd.position + (1, 2, 3)
 cube = cube.set_position(new_pos)
 ```
 
 ### Data Classes
 
-All **Geometry Nodes** socket types are wrapped in a python class. The available classes are the following:
+Each **Geometry Nodes** socket type is wrapped in a dedicated class. The available classes are the following:
 
 - **Basic types**
   - Boolean, Integer, Float, Vector, Color, Rotation, Matrix, String
@@ -209,7 +210,8 @@ All **Geometry Nodes** socket types are wrapped in a python class. The available
 
 ### Domains
 
-Geometry classes have one or sevreal _Domain_ attributes according  **Blender** data structure. The domains are the following:
+Geometry classes have one or several _Domain_ attributes according  **Blender** data structure.
+The domains are the following:
 - **Mesh**
   - points
   - faces
@@ -224,7 +226,7 @@ Geometry classes have one or sevreal _Domain_ attributes according  **Blender** 
   - insts
 - **Volume**
 
-The _Domain_ attribute is used in the nodes needing this parameter. In the following example,
+The _Domain_ attribute is used in the nodes needing a _Domain_ parameter. In the following example,
 the node '_Store Named Attribute_' is setup with the domain calling the method:
 
 ``` python
@@ -244,10 +246,6 @@ the node '_Store Named Attribute_' is setup with the domain calling the method:
 ### Operators
 
 Python operators can be used to operate on data, for instance:
-
-> [!NOTE]
-> Python _bool_ operators _or_, _and_ and _not_ don't apply on **Boolean** class, use their binary
-> equivalent instead : |, & and -.
 
 ``` python
 # Float operators
@@ -275,6 +273,10 @@ geo = Geometry() # Input geometry
 geo += Mesh.Cube(), Curve.Spiral() # Join with two other geometries
 ```
 
+> [!NOTE]
+> Python _bool_ operators _or_, _and_ and _not_ don't apply on **Boolean** class, use their binary
+> equivalent instead : |, & and -.
+
 ## Naming Conventions
 
 ### Node and Socket names
@@ -283,27 +285,23 @@ Naming conventions are such that the method or property names can be easily dedu
 the name of the node.
 
 1. Method names are built from the name of the node using the _snake_case_ convention:
-
   - _Set Material_ : **set_material**
   - _Store Named Attribute_ : **store_named_attribute**
 
-1. When the node creates a new instance of the socket, it is implemeted as a constructor **class method**
+2. When the node creates a new instance of the socket, it is implemeted as a constructor **class method**
   using _CamelCase_ convention:
-
   - _Cube_ : constructor class method **Cube** of **Mesh**
   - _Combine XYZ_ : constructor class method **Combine** of **Vector**
   - _Bézier Segment_ : constructor class method **BezierSegment** of **Curve**
 
-1. The name of the socket data type is omitted when redundant:
-
+3. The name of the socket data type is omitted when redundant:
   - _Curve to Mesh_ : **Curve.to_mesh** method
   - _Mesh to Points_ : **Mesh.to_points** method
   - _Curve to Points_ : **Curve.to_points** method
   - _Volume to Points_ : **Volume.to_points** method
   - _Mesh Line_ : **Mesh.Line** constructor
   - _Curve Line_ : **Curve.Line** constructor
-
-1. _Set xxx_ are implemented as properties when possible:
+4. _Set xxx_ are implemented as properties when possible:
   - _Set Position_ : **position** and **offset** properties of domain :
     ``` mesh.points.position = v ``` and ``` mesh.points.offset = v ```
   - _Set Radius_ : **radius** property of **Cloud.points** and **Curve.points** :
@@ -311,12 +309,10 @@ the name of the node.
   - _Set Tilt_ : **tilt** property of **Curve.points** : ``` curve.points.tilt = v ```
   - _Set Handle Type_ : **handle_type** property of **Curve.points** :
     ``` curve.points.handle_type = 'FREE' ```
-
-1. _Socket names_ can be accessed as properties of their node using the _snake_case_ convention:
+5. _Socket names_ can be accessed as properties of their node using the _snake_case_ convention:
   - _Value_ socket : **node.value**
   - _Geometry_ socket : **node.geometry**
-
-1. When a socket is **set**, it is an ***Input socket*** of the node, when a socket is **get**,
+6. When a socket is **set**, it is an ***Input socket*** of the node, when a socket is **get**,
   it is and ***Output socket*** of the node, for instance if `node` is _Resample Curve_:
   - `node.geometry = a` : set the ***Input socket*** _Geometry_ to the given value `a`
   - `b = node.geometry` : get the ***Ouput socket*** _Geometry_ and set the value `b`
