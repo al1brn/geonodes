@@ -531,21 +531,21 @@ with GeoNodes("Returned Values"):
 > Typically write `other_mesh = mesh.set_position()` to have a pointer on the displaced geometry.
 
 > [!IMPORTANT]
-> After setting a property, the geometry variable points to the result. Just compare the two results:
+> After setting a property, the geometry variable points to the result. Just compare the two syntaxes below:
 > ``` python
 > cube = Mesh.Cube()
 >
 > # Method set_position doesn't change the cube variable
+> # The resulting geometry must be set into a variable
 > displaced_cube = cube.set_position(offset=(1, 2, 3))
 >
-> # Setting the offset property is equivalent, but cube points
-> # to the displaced geometry after the setting
+> # Setting the offset property changes the output socket,
+> # the cube variale refers to
 > cube.offset = (1, 2, 3)
 > ```
 
+## Group Inputs
 
-
-
-### Selection Socket
+Group
 
 [!IMPORTANT]
