@@ -29,8 +29,6 @@ You keep the full power of Blender _Geometry Nodes_ but with the elegance of Pyt
 
 The following script creates a surface from a grid by computing
 `z = sin(d)/d` where `d=sqrt(x^2 + y^2)` is the distance of the vertex to the center.
-It first creates a dedicated Material changing the color based on the location of
-an object passed as modifier parameter.
 
 <img src="doc/images/hello_world_blue.png" width="600" class="center">
 
@@ -41,28 +39,19 @@ from geonodes import *
 
 with GeoNodes("Hello World"):
 
-    # Parameters
-    count  = 200
-    size   = 20.
-    omega  = 2.
-    height = 2.
+    # The surface is basically a grid 20 x 20 with a resolution 200 x 200
+    grid = Mesh.Grid(vertices_x=200, vertices_y=200, size_x=20, size_y=20)
 
-    # The surface is basically a grid 20x20 with a resolution 200 x 200
-
-    grid = Mesh.Grid(vertices_x=count, vertices_y=count, size_x=size, size_y=size)
-
-    # We compute z
-
+    # z is computed using gnmath library and operators as in pure python
     with Layout("Computing the wave"):
-        distance = gnmath.sqrt(nd.position.x**2 + nd.position.y**2)
+        pos = nd.position
+        distance = gnmath.sqrt(pos.x**2 + pos.y**2)
         z = height*gnmath.sin(distance*omega)/distance
 
     # Let's change the z coordinate of our vertices
-    grid.points.offset = (0, 0, z)
-
-    # Material and smoothness
-    grid.faces.smooth = True
-    grid.faces.material = Material(None, "Material")
+    with Layout("Point offset and smoothness"):
+        grid.points.offset = (0, 0, z)
+        grid.faces.smooth = True
 
     # We are done: plugging the deformed grid as the modified geometry
     grid.out()
