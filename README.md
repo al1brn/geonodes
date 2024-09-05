@@ -30,7 +30,7 @@ You keep the full power of Blender _Geometry Nodes_ but with the elegance of Pyt
 The following script creates a surface from a grid by computing
 `z = sin(d)/d` where `d=sqrt(x^2 + y^2)` is the distance of the vertex to the center.
 
-<img src="doc/images/hello_world_blue.png" width="600" class="center">
+<img src="doc/images/hello_world_transp.png" width="600" class="center">
 
 ```python
 from geonodes import *
