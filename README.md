@@ -443,7 +443,7 @@ with GeoNodes("Argument names"):
     sphere = sphere = sphere.merge_by_distance(mode='ALL')
 
     # ----------------------------------------------------------------------------------------------------
-    # RULE E : domain parameter is taken form the calling domain
+    # RULE E : domain parameter is taken from the calling domain
     #
     # Don't write:
     # sphere = sphere.set_shade_smooth(shade_smooth=True, domain='FACE')
@@ -464,8 +464,83 @@ with GeoNodes("Argument names"):
     sphere.out()
 ```
 
+### Returned values
 
-### Methods arguments
+The general rule is that the methods return the first output socket of the node.
+
+When the node has other output sockets, their are returned as properties of the returned variable.
+
+> [!IMPORTANT]
+> To avoid collision with existing properties, the additional output socket names are **suffixed by _**.
+
+The example below illustrates how to access output sockets:
+
+``` python
+from geonodes import *
+
+with GeoNodes("Returned Values"):
+
+    # ----------------------------------------------------------------------------------------------------
+    # Simple example
+    #
+    #  Node 'Cube' returns two output sockets:
+    # - Mesh
+    # - UV Map
+    # The returned value has a property named uv_map_
+
+    cube = Mesh.Cube()
+    cube.corners.store("UV Map", cube.uv_map_)
+
+    # ----------------------------------------------------------------------------------------------------
+    # Advanced example
+    #
+    #  Node 'Extrude Mesh' returns three output sockets:
+    # - Mesh
+    # - Top
+    # - Side
+
+    ico = Mesh.IcoSphere()
+
+    # Extrude 30% of the faces
+    ico = ico.faces[Boolean.Random(probability=.3)].extrude(offset_scale=.3)
+
+    # Duplicate with a 0 extrusion
+    ico = ico.faces[ico.top_].extrude(offset_scale=0)
+
+    # --- ico.top_ is needed twice, let's use an intermediary variable
+
+    # Scale the extrude faces
+    ico_scaled = ico.faces[ico.top_].scale(scale=.5)
+
+    # Another extrusion
+    ico = ico_scaled.faces[ico.top_].extrude(offset_scale=1)
+
+    # --- Let's dig the sides
+
+    ico = ico.faces[ico.side_].extrude(offset_scale=0)
+    ico_scaled = ico.faces[ico.top_].scale(.8)
+    ico = ico_scaled.faces[ico.top_].extrude(offset_scale=-.01)
+
+    # Output
+    (ico + cube.set_position(offset=(5, 0, 0))).out()
+    ```
+> [!NOTE]
+> When calling a method, make sure to put the result in a variable in order to
+> be able to use the resulting socket in another node.
+> Typically write `other_mesh = mesh.set_position()` to have a pointer on the displaced geometry.
+
+> [!IMPORTANT]
+> After setting a property, the geometry variable points to the result. Just compare the two results:
+> ``` python
+> cube = Mesh.Cube()
+>
+> # Method set_position doesn't change the cube variable
+> displaced_cube = cube.set_position(offset=(1, 2, 3))
+>
+> # Setting the offset property is equivalent, but cube points
+> # to the displaced geometry after the setting
+> cube.offset = (1, 2, 3)
+> ```
 
 
 

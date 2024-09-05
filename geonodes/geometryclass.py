@@ -2186,7 +2186,7 @@ class Face(Domain):
         -------
         - Mesh
         """
-        return self._geo._jump(Node('Scale Elements', {'Geometry': self._geo, 'Selection': self._sel, 'Scale': scale, 'Center': center},
+        return self._geo_type(Node('Scale Elements', {'Geometry': self._geo, 'Selection': self._sel, 'Scale': scale, 'Center': center},
             domain='FACE', scale_mode = 'UNIFORM' if uniform else 'SINGLE_AXIS')._out)
 
     # ----- Topology
