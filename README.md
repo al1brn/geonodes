@@ -468,7 +468,7 @@ with GeoNodes("Argument names"):
 
 The general rule is that the methods return the first output socket of the node.
 
-When the node has other output sockets, their are returned as properties of the returned variable.
+When the node has other output sockets, they are returned as properties of the returned variable.
 
 > [!IMPORTANT]
 > To avoid collision with existing properties, the additional output socket names are **suffixed by _**.
@@ -502,9 +502,9 @@ with GeoNodes("Returned Values"):
     ico = Mesh.IcoSphere()
 
     # Extrude 30% of the faces
-    ico = ico.faces[Boolean.Random(probability=.3)].extrude(offset_scale=.3)
+    ico = ico.faces[Boolean.Random(probability=.3)].extrude(offset_scale=.4)
 
-    # Duplicate with a 0 extrusion
+    # Duplicate extruded faces with a 0 scale extrusion
     ico = ico.faces[ico.top_].extrude(offset_scale=0)
 
     # --- ico.top_ is needed twice, let's use an intermediary variable
@@ -515,7 +515,7 @@ with GeoNodes("Returned Values"):
     # Another extrusion
     ico = ico_scaled.faces[ico.top_].extrude(offset_scale=1)
 
-    # --- Let's dig the sides
+    # --- Let's now dig the sides
 
     ico = ico.faces[ico.side_].extrude(offset_scale=0)
     ico_scaled = ico.faces[ico.top_].scale(.8)
@@ -524,6 +524,7 @@ with GeoNodes("Returned Values"):
     # Output
     (ico + cube.set_position(offset=(5, 0, 0))).out()
     ```
+
 > [!NOTE]
 > When calling a method, make sure to put the result in a variable in order to
 > be able to use the resulting socket in another node.
