@@ -280,6 +280,10 @@ class IntFloat(ValueSocket):
     # ----- Multiplication
 
     def __mul__(self, other):
+        # multiply add
+        if isinstance(other, tuple) and len(other) == 2:
+            return self.math.multiply_add(self, other[0], other[1])
+
         if utils.is_vector_like(other):
             return self.math.scale(other, self)
         return self.math.multiply(self, other)
@@ -290,6 +294,10 @@ class IntFloat(ValueSocket):
         return self.math.multiply(other, self)
 
     def __imul__(self, other):
+        # multiply add
+        if isinstance(other, tuple) and len(other) == 2:
+            return self._jump(self.math.multiply_add(self, other[0], other[1]))
+
         return self._jump(self.math.multiply(self, other))
 
     # ----- Division

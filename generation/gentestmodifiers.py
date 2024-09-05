@@ -52,12 +52,14 @@ def demo():
 
         Geometry().out()
 
-
         with Layout("Base operators"):
             a, b, c = Float(10), Float(20), Float(pi)
 
             a += b*c/123 - 789
-            A = gnmath.multiply_add(a, b, c)
+            A = (gnmath.multiply_add(a, b, c))._lc("gnmath")
+            B = (A * (b, c))._lc("v * (m, a)")
+            B *= b, c
+            B._lc("v *= m, a")
 
         with Layout("Power"):
             a, b = Float(10), Float(20)
@@ -104,13 +106,15 @@ def demo():
 
         Geometry().out()
 
-
         with Layout("Base operators"):
             a, b, c = Vector((1, 2, 3)), Vector((2, 2, 2)), Vector(0)
 
-            A += b*c/123 - 789
-            A = gnmath.multiply_add(a, b, c)
-
+            A = b*c/123 - 789
+            A = (gnmath.multiply_add(a, b, c))._lc("gnmath")
+            B = (A * (b, c))._lc("v * (m, a)")
+            B *= b, c
+            B._lc("v *= m, a")
+            C = a*pi
 
         with Layout("Vectors operations"):
             a, b, c = Vector((1, 2, 3)), Vector((2, 2, 2)), Vector(0)
@@ -127,7 +131,6 @@ def demo():
 
             D = abs(a) + gnmath.vmin(a, b) + gnmath.vmax(a, b) + gnmath.vfloor(a) + gnmath.vceil(a) + gnmath.vfract(a)
             D += a % b + gnmath.vwrap(a, b, c) + gnmath.vsnap(a, b)
-
 
         with Layout("Trigo"):
             a = Vector((1, 2, 3))
@@ -158,6 +161,22 @@ def demo():
 
             with Layout("Functions"):
                 B = gnmath.nand(a, b) | gnmath.nor(a, b) | gnmath.equal(a, b) | gnmath.not_equal(a, b) | gnmath.imply(a, b) | gnmath.nimply(a, b)
+
+    # =============================================================================================================================
+    # String
+
+    with GeoNodes("Test String"):
+
+        Geometry().out()
+
+        s = String("A String")
+        s = s + " Other"
+        s += " yet another"
+        s += " a", " b", " c"
+
+        sepa = String("/")
+        sepa *= "a", "b", "c"
+
 
     # =============================================================================================================================
     # Color
@@ -475,6 +494,32 @@ def demo():
             curve.points[curve.points.right_handle_vector].right_handle_offset = (0, -5, 0)
 
         curve.out()
+
+    # =============================================================================================================================
+    # Geometry
+
+    with GeoNodes("Test Geometry"):
+
+        geo = Geometry()
+
+        with Layout("Basic"):
+
+            geo = geo.set_position(nd.position, 2)
+
+
+        with Layout("Join"):
+
+            geo = geo + Mesh.Cube().set_position(offset=(3, 0, 0))
+            geo += Mesh.Cone().set_position(offset=(6, 0, 0)), Mesh.IcoSphere().set_position(offset=(9, 0, 0)),
+
+        with Layout("Operations"):
+
+            geo = geo.replace_material()
+
+
+        geo.out()
+
+
 
     # =============================================================================================================================
     # Mesh

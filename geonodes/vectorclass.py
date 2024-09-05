@@ -83,6 +83,10 @@ class VectorLike(ValueSocket):
     # ----- Multiplication
 
     def __mul__(self, other):
+        # multiply add
+        if isinstance(other, tuple) and len(other) == 2:
+            return self.math.multiply_add(self, other[0], other[1])
+
         if utils.is_value_like(other):
             return self.math.scale(self, other)
         return self.math.vmultiply(self, other)._lcop()
@@ -93,6 +97,10 @@ class VectorLike(ValueSocket):
         return self.math.vmultiply(other, self)._lcop()
 
     def __imul__(self, other):
+        # multiply add
+        if isinstance(other, tuple) and len(other) == 2:
+            return self._jump(self.math.multiply_add(self, other[0], other[1]))
+
         return self._jump(self.math.vmultiply(self, other))
 
     # ----- Division

@@ -161,12 +161,72 @@ class GeoBase:
     def material(self, value):
         self._geo._jump(Node('Set Material', {'Geometry': self._geo, 'Selection': self._sel, 'Material': value})._out)
 
-    def replace_material(self, old=None, new=None):
-        return self._geo._jump(Node('Replace Material', {'Geometry': self._geo, 'Old': old, 'New': new})._out)
-
     @classmethod
     def material_selection(cls, material=None):
         return Node('Material Selection', {'Material': material})._out
+
+    # =============================================================================================================================
+    # Methods
+
+    def set_position(self, position=None, offset=None):
+        """ Node 'Set Position' (GeometryNodeSetPosition)
+
+        [!Node] Set Position
+
+        Arguments
+        ---------
+        - geometry (Geometry) : socket 'Geometry' (Geometry)
+        - selection (Boolean) : socket 'Selection' (Selection)
+        - position (Vector) : socket 'Position' (Position)
+        - offset (Vector) : socket 'Offset' (Offset)
+
+        Returns
+        -------
+        - Geometry
+        """
+
+        node = Node('Set Position', {'Geometry': self._geo, 'Selection': self._sel, 'Position': position, 'Offset': offset})._out
+        return self._geo_type(node._out)
+
+    def set_id(self, id=None):
+        """ Node 'Set ID' (GeometryNodeSetID)
+
+        [!Node] Set ID
+
+        Arguments
+        ---------
+        - geometry (Geometry) : socket 'Geometry' (Geometry)
+        - selection (Boolean) : socket 'Selection' (Selection)
+        - id (Integer) : socket 'ID' (ID)
+
+        Returns
+        -------
+        - Geometry
+        """
+
+        node = Node('Set ID', {'Geometry': self._geo, 'Selection': self._sel, 'ID': id})
+        return self._geo_type(node._out)
+
+    def replace_material(self, old=None, new=None):
+        """ Node 'Replace Material' (GeometryNodeReplaceMaterial)
+
+        [!Node] Replace Material
+
+        Arguments
+        ---------
+        - old (Material) : socket 'Old' (Old)
+        - new (Material) : socket 'New' (New)
+
+        Returns
+        -------
+        - Geometry
+        """
+        node = Node('Replace Material', {'Geometry': self._geo, 'Old': old, 'New': new})
+        return self._geo_type(node._out)
+
+
+
+
 
     # ====================================================================================================
     # Selection mechanism
@@ -736,7 +796,10 @@ class Geometry(DataSocket, GeoBase):
     # Python Operations
 
     def __add__(self, other):
-        return self.join(other)
+        if hasattr(other, '__len__'):
+            return self.join(*other)
+        else:
+            return self.join(other)
 
 # =============================================================================================================================
 # =============================================================================================================================
@@ -2418,8 +2481,9 @@ class Edge(Domain):
         -------
         - Mesh
         """
-        return self._geo._jump(Node('Scale Elements', {'Geometry': self._geo, 'Selection': self._sel, 'Scale': scale, 'Center': center},
-            domain='EDGE', scale_mode = 'UNIFORM' if uniform else 'SINGLE_AXIS')._out)
+        node = Node('Scale Elements', {'Geometry': self._geo, 'Selection': self._sel, 'Scale': scale, 'Center': center},
+            domain='EDGE', scale_mode = 'UNIFORM' if uniform else 'SINGLE_AXIS')
+        return self._geo_type(node._out)
 
     # ----- Topology
 

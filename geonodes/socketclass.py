@@ -868,7 +868,7 @@ class String(DataSocket):
         - string (String)
         """
 
-        return Node('Join Strings', {0: self, 1: list(strings)})._out
+        return Node('Join Strings', {'Delimiter': self, 'Strings': list(strings)})._out
 
     def replace(self, find=None, replace=None):
         """ Node 'Replace String' (FunctionNodeReplaceString)
@@ -968,6 +968,31 @@ class String(DataSocket):
 
         return Node("Compare", {'A': self, 'B': other}, data_type='STRING', operation='NOT_EQUAL')._out
 
+    # ----- Operators
+
+    def __add__(self, other):
+        if isinstance(other, tuple):
+            return Node('Join Strings', {'Strings': [self] + list(other)})._out
+        else:
+            return Node('Join Strings', {'Strings': [self, other]})._out
+
+    def __radd__(self, other):
+        return Node('Join Strings', {'Strings': [other, self]})._out
+
+    def __iadd__(self, other):
+        return self._jump(self + other)
+
+    def __mul__(self, other):
+        if isinstance(other, tuple):
+            return self.join(*other)
+        else:
+            return self.join(other)
+
+    def __imul__(self, other):
+        if isinstance(other, tuple):
+            return self.join(*other)
+        else:
+            return self.join(other)
 
 # =============================================================================================================================
 # =============================================================================================================================

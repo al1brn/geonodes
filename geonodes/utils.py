@@ -291,16 +291,16 @@ def value_to_array(value, shape):
 # Some utilities
 
 def is_vector_like(value):
-    return get_socket_type(value) in ['VECTOR', 'ROTATION', 'COLOR']
+    return get_input_type(value) in ['FLOAT_VECTOR', 'ROTATION', 'FLOAT_COLOR']
 
 def is_color_like(value):
-    return get_socket_type(value) in ['COLOR', 'VECTOR']
+    return get_input_type(value) in ['FLOAT_COLOR', 'FLOAT_VECTOR']
 
 def is_matrix_like(value):
-    return get_socket_type(value) in ['MATRIX']
+    return get_input_type(value) in ['MATRIX']
 
 def is_value_like(value):
-    return get_socket_type(value) in ['FLOAT', 'INT', 'BOOLEAN']
+    return get_input_type(value) in ['FLOAT', 'INT', 'BOOLEAN']
 
 def has_bsocket(value):
     if get_bsocket(value) is not None:

@@ -28,8 +28,8 @@ from pathlib import Path
 import bpy
 import mathutils
 
-from . import constants
-from . import utils
+from ..geonodes import constants
+from ..geonodes import utils
 from . import blendertree
 
 # ====================================================================================================
@@ -686,9 +686,14 @@ def gen_node_code(btree, node_name=None, self_socket=None, return_node=False):
     if bnode is None:
         bnode = btree.nodes.new(bl_idname)
 
+    print("Node", node_name)
+    print("-"*100)
+
     node_info = NodeInfo(btree, bnode)
     for line in node_info.gen_method_source(name=None, self_socket=self_socket, return_node=return_node):
         print(line, end='')
+
+    print("-"*100)
 
 # =============================================================================================================================
 # Gen comment

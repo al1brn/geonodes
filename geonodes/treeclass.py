@@ -1249,7 +1249,7 @@ class Node:
         # In socket is multi input and value is a list
 
         if in_socket.is_multi_input and isinstance(value, list):
-            for v in value:
+            for v in reversed(value):
                 self.plug_value_into_socket(v, in_socket)
             return
 
