@@ -286,7 +286,7 @@ Naming conventions are such that method names can be easily deduced from the nod
 1. **RULE 1** : method names are built from the name of the node using the _snake_case_ convention:
   - _Set Material_ : **set_material**
   - _Store Named Attribute_ : **store_named_attribute**
-2. **RULE 2** : when the node creates a new instance of the socket, it is implemeted as a constructor **class method**
+2. **RULE 2** : when the node creates a new instance of the socket, it is implemented as a constructor **class method**
   using _CamelCase_ convention:
   - _Cube_ : constructor class method **Cube** of **Mesh**
   - _Combine XYZ_ : constructor class method **Combine** of **Vector**
@@ -348,8 +348,8 @@ with GeoNodes("Method names"):
     # RULE 1 : Nodes name in snake_case
     # RULE 3 : Omit class name
     #
-    # In the snake_case version of the nodes 'Fill Curve', 'Deform Curves on Surface', 'Subdivide Mesh'
-    # the name of the geometry is omitted
+    # In the snake_case version of the nodes 'Fill Curve', 'Deform Curves on Surface',
+    # 'Subdivide Mesh' the name of the geometry is omitted
 
     mesh = Curve.Circle().fill()
     curves = curve_line.deform_on_surface()
@@ -361,7 +361,6 @@ with GeoNodes("Method names"):
     # The nodes 'Set Position' and 'Set Radius' are also implemented as properties
 
     mesh.position += (1, 2, 3)
-    # or
     mesh.offset = (1, 2, 3)
     cloud.radius = 1.
 
@@ -386,21 +385,21 @@ Nodes needing a _Domain_ parameter are implemented on **Domain**, not **Geometry
 
 ### Node sockets and parameters
 
-To b fully condigured, a node needs values for its sockets and parameters.
+To be fully configured, a node needs values for its sockets and parameters.
 The method arguments provides the required initial values.
 
 The following conventions are used:
 
 1. **RULE A** : arguments for sockets are built as the _snake_case_ version of their name:
-  - _Value_ socket : **node.value**
-  - _Geometry_ socket : **node.geometry**
+  - _Value_ socket : **value**
+  - _Geometry_ socket : **geometry**
   - _Instance Index_ socket : **instance_index**
 2. **RULE B** : sockets are given first, following their order in the node, and parameters are placed after:
   - `float.map_range(0, 1, 10, 20)`  is equivalent to `float.map_range(from_min=0, from_max=1, ...)`
 2. **RULE C** : _Selection_ socket is omitted and is passed as item index of the **Geometry**
-  - Don't write `mesh.set_id(selection=sel, ...)` but write instead `mesh[sel].set_id(...)
+  - Don't write `mesh.set_id(selection=sel, ...)` but write instead `mesh[sel].set_id(...)`
 3. **RULE D** : arguments for parameters use the python parameter name:
-  - Node _Set Handle Type_ has the parameter _handle_type_
+  - Node _Volume to Mesh_ has the parameter _resolution_mode_ : `mesh = vol.to_mesh(..., resolution_mode='GRID')`
 4. **RULE E** : _domain_ parameter is omitted, it is taken from the calling domain:
   - Don't write `mesh.extrude(... domain='FACE')` but write instead `mesh.faces.extrude()`
 5. **RULE F** : _data_type_ parameter is omitted, it is deduced from the attribute type:
