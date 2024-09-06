@@ -105,11 +105,48 @@ All nodes belong to a tree. Two tree types are available:
 - `GeoNodes` : [Geometry Nodes](docs/GeoNodes/GeoNodesTree.md)
 - `ShaderNodes` : [Shader Nodes](docs/Shader/ShaderTree.md)
 
-# Basics
+# Tutorial
 
 ## Prerequisites
 
 To get the maximum benefit of **GeoNodes**, you must be familiar with both **python** and Blender **Geometry Nodes**.
+
+## How it works
+
+Each _Geometry Nodes_ output socket is wrapped by a **GeoNodes** class:
+- A **Float** instance keeps a reference to an output socket of type _VALUE_
+- A **Geometry** instance keeps a reference to an output socket of type _GEOMETRY_
+
+_Geometry Nodes_ are methods, functions or operators working on the **GeoNodes** classes.
+The arguments of a method call are connected to the _input sockets_ of the node.
+The method returns a class refering to its output socket.
+
+``` python
+from geonodes import *
+
+with GeoNodes("Demo"):
+
+    # Get the input geometry
+    # The INPUT geometry is the OUTPUT socket of the Group Input node
+
+    geometry = Geometry()
+
+    # Create a node "Vector"
+    # The output socket of this node is kept in an instance of Vector
+
+    vector = Vector((1, 2, 3))
+
+    # Method set_position creates a node 'Set Position'
+    # - output socket kept by geometry is plugged to the input socket 'Geometry'
+    # - offset argument is plugged to the input socket 'Offset'
+    # The method returns an new instance of Geometry pointing on the node output socket
+
+    geometry = geometry.set_position(offset=vector)
+
+    # Plug the output socket to the group output
+
+    geometry.out()
+```
 
 ### Blender Setup
 
@@ -670,7 +707,7 @@ socket names are replicated 4 times. Accessing the zone properties depends upon 
   - **setting** the property : raises an error (sockets are set at zone instantiation time)
 
   Despite it is not that easy to describe, this produces an very natural way to create and work with zones.
-  The example below throws balls from the input geometry:
+  The example below explodes a sphere:
 
   ``` python
   from geonodes import *
@@ -682,7 +719,7 @@ socket names are replicated 4 times. Accessing the zone properties depends upon 
       speed = 5*cloud.normal_ + Vector.Random(-.2, .2, seed=0)
 
       # Create a Simulation zone with two variables
-      # - cloud : cloud
+      # - cloud : Cloud
       # - speed : Vector
 
       with Simulation(cloud=cloud, speed=speed) as sim:
@@ -694,11 +731,9 @@ socket names are replicated 4 times. Accessing the zone properties depends upon 
           speed = sim.cloud.points.capture(speed)
           sim.cloud.points.offset = speed*sim.delta_time
 
-          speed += (0, 0, -10*sim.delta_time)
-
           # INSIDE the simulation : setting is writting the second node
 
-          sim.speed = speed
+          sim.speed = speed + (0, 0, -10*sim.delta_time)
 
       # OUTSIDE the simulation : getting is reading the second node
 
