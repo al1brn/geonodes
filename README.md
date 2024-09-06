@@ -640,8 +640,8 @@ with GeoNodes("Group outputs"):
 ### Creation
 
 Simulation zones are created with the classes **Simulation** and **Repeat**.
-The zone variables are created as '**kwargs` arguments. The sockets types are
-deduced from the python variable types. If the passed value is None, its is
+The zone variables are created with `**kwargs` arguments. The sockets types are
+deduced from the python variable types. If the passed value is `None`, its is
 considered as a null **Geometry**.
 
 The example below creates a _Repeat_ zone with 4 variables of types **Geometry**, **Geometry**,
@@ -655,17 +655,17 @@ with Repeat(geometry=Geometry(), curve=None, position=Vector(), index=1, iterati
 ### Acces to the zones sockets
 
 The zone sockets are initialized as properties of the **Repeat** or **Simulation**.
-The can be read and set using the standard python syntax, for instance `rep.index` refers to
+The can be get and set using the standard python syntax, for instance `rep.index` refers to
 the socket named **index** in the example above.
 
 Since a zone is composed of two nodes, each one replicating the same sockets as inputs and outputs,
 socket names are replicated 4 times. Accessing the zone properties depends upon the access is made
-**inside** or **outside** the with block and if the access is **set** or **get**:
+**inside** or **outside** the **with** block and if the access is **set** or **get**:
 
-- **INSIDE** the with block:
+- **INSIDE** the **with** block:
   - **getting** the property : read the output socket of the first node
   - **setting** the property : write the input socket of the second node
-- **OUTSIDE** the with block:
+- **OUTSIDE** the **with** block:
   - **getting** the property : read the ouput socket of the second node
   - **setting** the property : raises an error (sockets are set at zone instantiation time)
 
