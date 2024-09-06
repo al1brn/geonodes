@@ -59,6 +59,7 @@ updates
 
 import numpy as np
 import bpy
+from time import time
 
 from .scripterror import NodeError
 from . import treearrange
@@ -142,6 +143,7 @@ class Tree:
 
     _total_nodes = 0
     _total_links = 0
+    _total_time  = 0.
 
     def __init__(self, tree_name, tree_type='GeometryNodeTree', clear=True, fake_user=False, is_group=False, prefix=None):
         """ Root class for GeoNodes and ShaderNodes trees.
@@ -328,6 +330,7 @@ class Tree:
     def _reset_counters(cls):
         cls._total_nodes = 0
         cls._total_links = 0
+        cls._total_time  = 0.
 
     @classmethod
     @property
@@ -392,6 +395,7 @@ class Tree:
 
     def push(self):
         Tree.STACK.append(self)
+        self._start_time = time()
 
     def pop(self):
         tree = Tree.STACK.pop()
@@ -400,10 +404,15 @@ class Tree:
 
         self.arrange()
 
-        print(f"Tree '{self._btree.name}' built: {self._str_stats}")
+        # ----- Stats
+
+        duration = time() - self._start_time
+
+        print(f"Tree '{self._btree.name}' built: {self._str_stats} in {duration:.1f} s")
 
         Tree._total_nodes += len(self._btree.nodes)
         Tree._total_links += len(self._btree.links)
+        Tree._total_time  += duration
 
     def __enter__(self):
         return self

@@ -544,7 +544,9 @@ with GeoNodes("Returned Values"):
 > cube.offset = (1, 2, 3)
 > ```
 
-## Instanciating Classes
+## Class instantiation and Group Inputs
+
+### Basic classes
 
 Basically the **GeoNodes** classes are instantiated using the default constructor.
 The code below creates four inputs nodes:
@@ -560,10 +562,10 @@ string = String("A String")
 ```
 
 The optional **name** argument is used to create a Group Input socket.
+The initialization value is used as default value.
 The code below creates four group input sockets:
 
 <img src="doc/images/group_inputs_1.png" class="center">
-
 
 ``` python
 # The following instructions create the corresponding input nodes
@@ -573,20 +575,140 @@ color = Color((.1, .2, .3), name="Color Parameter")
 string = String("A String", name="String Parameter")
 ```
 
-
-
-
-
-
-Group input are created by instanciating a **GeoNodes** variable with the **name** argument:
+One can fine tune the group inputs by using **min**, **max** and **tip** arguments.
+In addition, sub types can be defined by using dedicated constructor as shown below:
 
 ``` python
-float_input = Float(0., name="Float Parameter")
-vector_input = Vector(0, name="Vector Parameter")
+# An integer between 2 and 10
+resolution = Integer(2, "Resolution", min=2, max=10, tip="Mesh resolution")
+
+# A float factor between 0 and 1
+factor = Float.Factor(.5, "Factor", 0, 1, "Modification factor")
 ```
 
-The
+### Blender resources
 
+Blender resources (**Object**, **Collection**, **Material**, **Image**, **Texture**) are refered
+either using their blender python value or simply by their name as shown below:
 
+``` python
+# Default cube
+bl_cube = bpy.data.objects.get("Cube")
+cube_obj = Object(bl_cube, name="Your object")
 
-[!IMPORTANT]
+# The following line is equivalent
+cube_obj = Object("Cuve", name="Your object")
+```
+### Geometries
+
+**Geometry** and its subclasses are instancied through their constuctors (`Mesh.Cube` or `Curve.Spiral` for instance).
+When instancied directly, a new Group Input socket is created.
+If the name is not passed as key word argument, the default name is used.
+When no name is passed,
+
+``` python
+# Node 'Cube'
+mesh = Mesh.Cube()
+
+# Geometry group input node is used if it exists,
+# otherwise a group input node named 'Mesh' is created
+mesh = Mesh()
+
+# Other geometries can be created
+curve = Curve(name="Curve")
+```
+
+> [!NOTE]
+> For modifiers, only one input geometry is created. More than one geometry can be created only in _Groups_.
+
+## Group Outputs
+
+To plug a variable to the Group Output, simply use the method **out** with the name argument as shown below:
+
+``` python
+with GeoNodes("Group outputs"):
+
+    cube = Mesh.Cube()
+    cube.out()
+
+    # The keyword argument name can be used
+    Integer(10).out(name="The 10 int")
+```
+
+## Simulation and Repeat Zones
+
+### Creation
+
+Simulation zones are created with the classes **Simulation** and **Repeat**.
+The zone variables are created as '**kwargs` arguments. The sockets types are
+deduced from the python variable types. If the passed value is None, its is
+considered as a null **Geometry**.
+
+The example below creates a _Repeat_ zone with 4 variables of types **Geometry**, **Geometry**,
+**Vector** and **Integer**:
+
+``` python
+with Repeat(geometry=Geometry(), curve=None, position=Vector(), index=1, iterations=10) as rep:
+    pass
+```
+
+### Acces to the zones sockets
+
+The zone sockets are initialized as properties of the **Repeat** or **Simulation**.
+The can be read and set using the standard python syntax, for instance `rep.index` refers to
+the socket named **index** in the example above.
+
+Since a zone is composed of two nodes, each one replicating the same sockets as inputs and outputs,
+socket names are replicated 4 times. Accessing the zone properties depends upon the access is made
+**inside** or **outside** the with block and if the access is **set** or **get**:
+
+- **INSIDE** the with block:
+  - **getting** the property : read the output socket of the first node
+  - **setting** the property : write the input socket of the second node
+- **OUTSIDE** the with block:
+  - **getting** the property : read the ouput socket of the second node
+  - **setting** the property : raises an error (sockets are set at zone instantiation time)
+
+  Despite it is not that easy to describe, this produces an very natural way to create and work with zones.
+  The example below throws balls from the input geometry:
+
+  ``` python
+  from geonodes import *
+
+  with GeoNodes("Explosion"):
+
+      mesh = Mesh.IcoSphere(subdivisions=3)
+      cloud = mesh.faces.distribute_points(density=10)
+      speed = 5*cloud.normal_ + Vector.Random(-.2, .2, seed=0)
+
+      # Create a Simulation zone with two variables
+      # - cloud : cloud
+      # - speed : Vector
+
+      with Simulation(cloud=cloud, speed=speed) as sim:
+
+          # INSIDE the simulation : getting is reading the first node
+
+          speed = sim.speed
+
+          speed = sim.cloud.points.capture(speed)
+          sim.cloud.points.offset = speed*sim.delta_time
+
+          speed += (0, 0, -10*sim.delta_time)
+
+          # INSIDE the simulation : setting is writting the second node
+
+          sim.speed = speed
+
+      # OUTSIDE the simulation : getting is reading the second node
+
+      cloud = Cloud(sim.cloud)
+
+      # Done
+
+      balls = cloud.points.instance_on(instance=Mesh.IcoSphere(radius=.1))
+
+      balls.out()
+```
+
+<img src="doc/images/sim_zone_doc.png" class="center">
