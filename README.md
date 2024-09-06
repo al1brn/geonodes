@@ -747,3 +747,60 @@ socket names are replicated 4 times. Accessing the zone properties depends upon 
 ```
 
 <img src="doc/images/sim_zone_doc.png" class="center">
+
+## Groups and Modifiers
+
+### Creating a Group
+
+When creating a new tree, the argument **is_group** is used to specify to create a group of nodes rather
+than a modifier:
+
+``` python
+with GeoNodes("A Function", is_group=True):
+
+    a = Float(name="Value 1")
+    b = Float(name="Value 2")
+
+    (a + b).out("Sum")
+```
+
+This creates the following group:
+
+<img src="doc/images/group_sample.png" class="center">
+
+### Calling a Group
+
+Calling a group is made by instantiating a **Group** class.
+The first parameter of the **Group** instantiation is the name of the _Group_ to call.
+The sockets to plug th the input sockets of the group can be passed in two ways:
+- as a dict
+- as keyword arguments using their snake_case name
+
+
+``` python
+with GeoNodes("Call a Group"):
+
+    a = gnmath.cos(1)
+    b = a**2
+
+    # ---------------------------------------------------------------------------
+    # Standard method
+
+    # dict syntax
+
+    val1 = Group("A Function", {'Value 1': a, 'Value 2': b}).sum
+
+    # snake_case syntax
+
+    val2 = Group("A Function", value_1=a, value_2=b).sum
+
+    # ---------------------------------------------------------------------------
+    # Alternative method
+    #
+    # GroupF (for Group Functions) allows to call a group as a method
+    # using its snake_case name
+
+    val = GroupF().a_function(value_1=val1, value_2=val2).sum
+
+    val.out()
+```
