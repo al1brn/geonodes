@@ -766,7 +766,7 @@ with GeoNodes("A Function", is_group=True):
 
 This creates the following group:
 
-<img src="doc/images/group_sample.png" class="center">
+<img src="doc/images/group_sample.png" width="300" class="center">
 
 ### Calling a Group
 
