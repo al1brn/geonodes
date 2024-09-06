@@ -57,8 +57,6 @@ with GeoNodes("Hello World"):
     grid.out()
 ```
 
-> See [Demo details](docs/demo_1.md)
-
 The generated nodes are shown below:
 
 <img src="doc/images/hello_world_nodes.png" width="600" class="center">
@@ -776,6 +774,9 @@ The sockets to plug th the input sockets of the group can be passed in two ways:
 - as a dict
 - as keyword arguments using their snake_case name
 
+The output sockets of the group are read as properties of the **Group** instance,
+using their snake_case name.
+
 
 ``` python
 with GeoNodes("Call a Group"):
@@ -803,4 +804,33 @@ with GeoNodes("Call a Group"):
     val = GroupF().a_function(value_1=val1, value_2=val2).sum
 
     val.out()
+```
+
+# Shaders
+
+**GeoNodes** can also be used to script shaders.
+
+Creating _Shader Nodes_ is the same as creating _Geometry Nodes_, with the following differences:
+- Use **ShaderNodes** rather that **GeoNodes**
+- Use **snd** (for _Shader Nodes_) rather than **nd**
+- **out** method takes the class type to select the proper socket between _Surface_, _Volume_, _Displacement_ and _Thickness_
+
+``` python
+with ShaderNodes("Arrow"):
+
+    pos_color = Color(snd.attribute(attribute_type='GEOMETRY', attribute_name="Color").vector)
+    negative  = snd.attribute(attribute_type='GEOMETRY', attribute_name="Negative").fac
+    transp    = snd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").fac
+
+    neg_color = pos_color.hue_saturation_value(hue=.5, saturation=.9, value=.9)
+    color = pos_color.mix(negative, neg_color)
+
+    ped = Shader.Principled(
+        base_color = color,
+        roughness  = negative.map_range(to_min=.1, to_max=.9),
+    )
+
+    shader = ped.mix(transp, Shader.Transparent())
+
+    shader.out()
 ```

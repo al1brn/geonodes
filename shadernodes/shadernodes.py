@@ -58,7 +58,7 @@ from .staticclass import StaticClass
 from ..geonodes.treeclass import Tree, Node
 from ..geonodes.scripterror import NodeError
 
-class nd(StaticClass):
+class snd(StaticClass):
 
     @classmethod
     def sharp_face(cls, attribute_type='GEOMETRY'):

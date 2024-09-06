@@ -333,6 +333,10 @@ class Tree:
         cls._total_time  = 0.
 
     @classmethod
+    def _display_counter(cls, title):
+        print(f"{title}: {Tree._total_nodes} nodes, {Tree._total_links} links in {Tree._total_time:.1f} s")
+
+    @classmethod
     @property
     def is_geonodes(cls):
         """ Current Tree is Geometry Nodes.
@@ -995,7 +999,7 @@ class Node:
                     return Volume(bsocket)
 
         elif Tree.is_shader:
-            from geonodes.shadernodes import Float, Vector, Color, String, Shader
+            from geonodes import Float, Vector, Color, String, Shader
 
             socket_class = {'VALUE': Float, 'VECTOR': Vector, 'RGBA': Color, 'STRING': String, 'SHADER': Shader,
                 }[socket_type]

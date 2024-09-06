@@ -70,7 +70,8 @@ def demo(clear=False):
     build_surfaces()
     show_case()
 
-    print(f"4D Engine built : {Tree._total_nodes} nodes, {Tree._total_links} links")
+    Tree._display_counter("4D Engine built")
+    #print(f"4D Engine built : {Tree._total_nodes} nodes, {Tree._total_links} links in {Tree._total_time:.1f} s")
     print()
 
 # =============================================================================================================================
@@ -82,23 +83,23 @@ def build_shaders():
     # ----------------------------------------------------------------------------------------------------
     # Axis Shader
 
-    with sh.ShaderNodes("4 Axis"):
+    with ShaderNodes("4 Axis"):
 
-        col = sh.nd.attribute(attribute_name="Axis Color").color
+        col = snd.attribute(attribute_name="Axis Color").color
 
-        ped = sh.Shader.Principled(base_color=col, roughness=.1, metallic=.3)
+        ped = Shader.Principled(base_color=col, roughness=.1, metallic=.3)
 
         ped.out()
 
     # ----------------------------------------------------------------------------------------------------
     # Face default
 
-    with sh.ShaderNodes("4 Face"):
+    with ShaderNodes("4 Face"):
 
         noise = Texture.Noise(scale=5.)
-        bump = sh.nd.bump(height=noise.color, strength=.1)
+        bump = snd.bump(height=noise.color, strength=.1)
 
-        ped = sh.Shader.Principled(
+        ped = Shader.Principled(
             base_color = (.3, .8, .7),
             metallic   = 0.,
             roughness  = 0.,
@@ -112,9 +113,9 @@ def build_shaders():
     # ----------------------------------------------------------------------------------------------------
     # Edge default
 
-    with sh.ShaderNodes("4 Edge"):
+    with ShaderNodes("4 Edge"):
 
-        ped = sh.Shader.Principled(
+        ped = Shader.Principled(
             base_color = (0., .05, .9),
             roughness  = 0.,
             )

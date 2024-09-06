@@ -38,21 +38,21 @@ def demo():
 
     print("\nCreate Arrows nodes...")
 
-    with sh.ShaderNodes("Arrow"):
+    with ShaderNodes("Arrow"):
 
-        pos_color = Color(sh.nd.attribute(attribute_type='GEOMETRY', attribute_name="Color").vector)
-        negative  = sh.nd.attribute(attribute_type='GEOMETRY', attribute_name="Negative").fac
-        transp    = sh.nd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").fac
+        pos_color = Color(snd.attribute(attribute_type='GEOMETRY', attribute_name="Color").vector)
+        negative  = snd.attribute(attribute_type='GEOMETRY', attribute_name="Negative").fac
+        transp    = snd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").fac
 
         neg_color = pos_color.hue_saturation_value(hue=.5, saturation=.9, value=.9)
         color = pos_color.mix(negative, neg_color)
 
-        ped = sh.Shader.Principled(
+        ped = Shader.Principled(
             base_color = color,
             roughness  = negative.map_range(to_min=.1, to_max=.9),
         )
 
-        shader = ped.mix(transp, sh.Shader.Transparent())
+        shader = ped.mix(transp, Shader.Transparent())
 
         shader.out()
 

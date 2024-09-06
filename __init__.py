@@ -29,4 +29,8 @@ from .geonodes.textures import Texture
 from .geonodes.vectorclass import Vector, Rotation, Matrix
 from .geonodes.geometryclass import Geometry, Mesh, Curve, Cloud, Instances, Volume
 
-from . import shadernodes as sh
+# ----------------------------------------------------------------------------------------------------
+# Shader
+
+from .shadernodes.shadernodes import ShaderNodes, snd
+from .shadernodes.shaderclass import Shader
