@@ -3,8 +3,10 @@
 
 
 # Methods
-- P : Properties 
-- M : Methods 
+- B : bar_method 
+- O : overriden_method 
+- _ : __init__ 
+- F : foo_prop1 foo_prop2 foo_static foo_class foo_method 
 
 ## Methods
 

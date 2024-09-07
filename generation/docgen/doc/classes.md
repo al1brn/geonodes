@@ -3,8 +3,8 @@
 
 
 # Methods
-- P : Properties 
-- M : Methods 
+- _ : __init__ 
+- B : build_sections 
 
 ## Methods
 

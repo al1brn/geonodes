@@ -3,8 +3,14 @@
 
 
 # Methods
-- P : Properties 
-- M : Methods 
+- _ : __init__ 
+- M : md_file_name 
+- L : link_token link_to 
+- G : get_section 
+- S : sorted_sections 
+- A : alphabetical_sections 
+- B : build_header build_sections build 
+- P : print 
 
 ## Methods
 

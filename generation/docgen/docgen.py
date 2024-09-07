@@ -487,7 +487,7 @@ class Class(Section):
 
         if len(self.methods):
             yield "# Methods\n"
-            alpha = self.alphabetical_sections
+            alpha = self.methods.alphabetical_sections
             for letter, methods in alpha.items():
                 yield f"- {letter} : "
                 for s in methods:

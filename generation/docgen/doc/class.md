@@ -3,8 +3,12 @@
 
 
 # Methods
-- P : Properties 
-- M : Methods 
+- _ : __init__ 
+- F : FromDoc 
+- P : properties 
+- M : methods 
+- C : capture_class 
+- B : build 
 
 ## Methods
 

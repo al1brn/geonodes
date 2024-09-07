@@ -3,8 +3,10 @@
 
 
 # Methods
-- P : Properties 
-- M : Methods 
+- _ : __init__ 
+- A : arguments 
+- R : returns 
+- F : FromDoc 
 
 ## Methods
 
