@@ -3,7 +3,7 @@
 
 
 ``` python
-Section(self, title, comment=None, level=0, with_sections_only=False, sort_sections=False)
+Section
 ```
 
 Elementary base of a documentation
@@ -82,7 +82,7 @@ Sort the sub sections in alphabetical order
 ## alphabetical_sections
 
 ``` python
-Section.alphabetical_sections(self, alpha=None)
+Section.alphabetical_sections
 ```
 
 Build a dictionary keyed by the section title initials
@@ -109,7 +109,7 @@ Used to diplay a table of content when there is a great number of sections.
 ## build
 
 ``` python
-Section.build(self)
+Section.build
 ```
 
 Yield the lines of the section
@@ -130,7 +130,7 @@ sub sections.
 ## build_header
 
 ``` python
-Section.build_header(self)
+Section.build_header
 ```
 
 Yield the lines of the header part
@@ -141,7 +141,7 @@ Yield the lines of the header part
 ## build_sections
 
 ``` python
-Section.build_sections(self)
+Section.build_sections
 ```
 
 Yield the lines of the sections parts
@@ -152,7 +152,7 @@ Yield the lines of the sections parts
 ## get_section
 
 ``` python
-Section.get_section(self, title)
+Section.get_section
 ```
 
 Look for a sub section by its title
@@ -171,7 +171,7 @@ Look for a sub section by its title
 ## init
 
 ``` python
-Section.init(self)
+Section.init
 ```
 
 
@@ -180,7 +180,7 @@ Section.init(self)
 ## link_to
 
 ``` python
-Section.link_to(self, url="")
+Section.link_to
 ```
 
 MD link
@@ -195,7 +195,7 @@ MD link
 ## parse_comment
 
 ``` python
-Section.parse_comment(self, comment)
+Section.parse_comment
 ```
 
 Parse comment to extract information
@@ -217,7 +217,7 @@ The default implementation returns the argument without change.
 ## print
 
 ``` python
-Section.print(self)
+Section.print
 ```
 
 Print the documentation in the console

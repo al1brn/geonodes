@@ -3,7 +3,7 @@
 
 
 ``` python
-Classes(self, class_name, comment)
+Classes
 ```
 
 
@@ -19,7 +19,7 @@ Classes(self, class_name, comment)
 ## build_sections
 
 ``` python
-Classes.build_sections(self)
+Classes.build_sections
 ```
 
 Yield the sections parts

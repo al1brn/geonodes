@@ -3,7 +3,7 @@
 
 
 ``` python
-Function(self, name, comment=None, level=1)
+Function
 ```
 
 Section dedicated to function documentation.
@@ -46,7 +46,7 @@ Function.arguments(self)
 > **Decorators**: Class method
 
 ``` python
-Function.FromDoc(cls, doc, class_name=None)
+Function.FromDoc
 ```
 
 Create a class from an instance of Doc
@@ -72,7 +72,7 @@ Function.arguments(self)
 ## parse_comment
 
 ``` python
-Function.parse_comment(self, comment)
+Function.parse_comment
 ```
 
 Function comment parser

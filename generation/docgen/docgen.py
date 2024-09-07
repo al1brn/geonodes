@@ -488,11 +488,21 @@ class Function(Section):
                 comment = ""
 
             decos = []
+            is_static = False
+            is_class  = False
+            is_setter = False
+            is_getter = False
             for deco in doc.decorators:
                 if deco == '@classmethod':
                     decos.append('Class method')
+                    is_class = True
                 elif deco == '@staticmethod':
                     decos.append('Static method')
+                    is_static = True
+                elif deco == '@property':
+                    is_getter = True
+                elif deco.find('.setter')> 0:
+                    is_setter = True
 
             before = ""
             if len(decos):
@@ -506,7 +516,10 @@ class Function(Section):
                 else:
                     fname = f"{class_name}.{doc.name}"
 
-                before += "``` python\nCODE\n```\n\n".replace('CODE', f"{fname}{doc.args}")
+                if is_setter or is_getter:
+                    before += f"``` python\n{fname}{doc.args}\n```\n\n"""
+                else:
+                    before += f"``` python\n{fname}\n```\n\n"
 
             if before != "":
                 comment = before + comment
