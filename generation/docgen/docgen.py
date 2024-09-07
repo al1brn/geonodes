@@ -40,7 +40,7 @@ class Section(list):
 
         self.title              = title
         self.comment            = comment
-        self.level              = 0
+        self.level              = level
         self.with_sections_only = with_sections_only
         self.sort_sections      = sort_sections
 
