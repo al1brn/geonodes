@@ -558,7 +558,8 @@ class Class(Section):
         self.append(Section('Properties', with_sections_only=True, sort_sections=True))
         self.append(Section('Methods',    with_sections_only=True, sort_sections=True))
 
-        self.bases = []
+        self.bases      = []
+        self.subclasses = []
 
     @classmethod
     def FromDoc(cls, doc):
@@ -578,6 +579,24 @@ class Class(Section):
     @property
     def methods(self):
         return self.get_section('Methods')
+
+    # ====================================================================================================
+    # Get the sub classes
+
+    def load_subclasses(self, classes):
+        """ Load the subclasses registers in classes
+
+        **classes** argument is a dict of **Class**. Load each class based on this one
+        into to the **subclasses** attribute.
+
+        Arguments
+        ---------
+        - classes (dict) : dict of _Class_
+        """
+
+        for class_ in classes.values():
+            if self.title in class_.bases:
+                self.subclasses.append(class_.title)
 
     # ====================================================================================================
     # Capture methods and properties from another class
@@ -631,13 +650,23 @@ class Class(Section):
             yield line
 
         # ----------------------------------------------------------------------------------------------------
-        # Inheritance
+        # Inheritance / sub classes
 
+        sepa = None
         if len(self.bases):
             yield f"\n> inherits from: "
             for name in self.bases:
                 yield f"[{name}]({name.lower()}.md) "
-            yield '\n\n'
+            sepa = '\n\n'
+
+        if len(self.subclasses):
+            yield f"\n> subclasses: "
+            for name in self.subclasses:
+                yield f"[{name}]({name.lower()}.md) "
+            sepa = '\n\n'
+
+        if sepa is not None:
+            yield sepa
 
         # ----------------------------------------------------------------------------------------------------
         # Methods table of content
@@ -804,6 +833,13 @@ class ProjectDocumentation:
         return class_
 
     # ====================================================================================================
+    # Compile the documentation
+
+    def compile(self):
+        for class_ in self.classes.values():
+            class_.load_subclasses(self.classes)
+
+    # ====================================================================================================
     # Write the documentation
 
     def write_documentation(self, doc_folder):
@@ -842,9 +878,13 @@ def tests():
     proj.add_class('Module')
     proj.add_class('ProjectDocumentation')
 
+    # ====================================================================================================
+    # Step 3 : compile
+
+    proj.compile()
 
     # ====================================================================================================
-    # Step 3 : write the documentation
+    # Step 4 : write the documentation
 
     proj.write_documentation(doc_folder=root / 'doc')
 

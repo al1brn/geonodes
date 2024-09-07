@@ -10,6 +10,7 @@ ProjectDocumentation(self, name)
 
 ## Methods and Properties
 - A : [add_class](#add_class) [add_module](#add_module) 
+- C : [compile](#compile) 
 - F : [FromFiles](#fromfiles) 
 - G : [get_module_class](#get_module_class) 
 - W : [write_documentation](#write_documentation) 
@@ -40,6 +41,15 @@ ProjectDocumentation.add_class(self, class_name, module_name=None, bases=[], cap
 
 ``` python
 ProjectDocumentation.add_module(self, name, text)
+```
+
+
+
+
+## compile
+
+``` python
+ProjectDocumentation.compile(self)
 ```
 
 

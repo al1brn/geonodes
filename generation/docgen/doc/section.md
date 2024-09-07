@@ -18,6 +18,9 @@ A Section produces documentation:
 
 
 
+
+> subclasses: [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Classes](classes.md) 
+
 ## Methods and Properties
 - A : [alphabetical_sections](#alphabetical_sections) 
 - B : [build](#build) [build_header](#build_header) [build_sections](#build_sections) 
