@@ -13,7 +13,6 @@ The sub sections are instances of **Argument**
 
 ## build_header
 
-ield "***Arguments***:\n"
 
 
 

@@ -35,7 +35,7 @@ Foo method
 
 
 
-$${\color{blue}\large\textsf{Arguments}}$$:
+#### Arguments
 - **name**
 - **name_str** (_str_)
 - **name_str_comm** (_str_) : The comment on name str
@@ -43,7 +43,7 @@ $${\color{blue}\large\textsf{Arguments}}$$:
 - **name_def_comm** (_str_ = "Default name") : The comment on name str default
 - ****kwargs : comment on kwargs**
 
-$${\color{blue}\large\textsf{Returns}}$$:
+#### Returns
 - _float_ : comment on the returned type
 
 

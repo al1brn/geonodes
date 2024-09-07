@@ -270,8 +270,8 @@ class Arguments(Section):
         super().__init__('Arguments', with_sections_only=True)
 
     def build_header(self, indent=0):
-        #yield "***Arguments***:\n"
-        yield r"$${\color{blue}\large\textsf{Arguments}}$$:" + '\n'
+        yield "#### Arguments\n"
+        #yield r"$${\color{blue}\large\textsf{Arguments}}$$:" + '\n'
 
 # =============================================================================================================================
 # Arguments section
@@ -285,8 +285,8 @@ class Returns(Section):
         super().__init__('Returns', with_sections_only=True)
 
     def build_header(self, indent=0):
-        #yield "***Returns***:\n"
-        yield r"$${\color{blue}\large\textsf{Returns}}$$:" + '\n'
+        yield "#### Returns\n"
+        #yield r"$${\color{blue}\large\textsf{Returns}}$$:" + '\n'
 
 # =============================================================================================================================
 # Function section
