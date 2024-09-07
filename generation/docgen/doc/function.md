@@ -16,8 +16,8 @@ write the document is a homogeneous way.
 
 # Methods
 - A : arguments 
-- R : returns 
 - F : FromDoc 
+- R : returns 
 
 ## Methods
 

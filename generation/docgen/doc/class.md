@@ -5,11 +5,11 @@
 
 
 # Methods
-- F : FromDoc 
-- P : properties 
-- M : methods 
-- C : capture_class 
 - B : build 
+- C : capture_class 
+- F : FromDoc 
+- M : methods 
+- P : properties 
 
 ## Methods
 
@@ -35,6 +35,8 @@
 
 ### build
 
+
+__init__ comment as class comment
 
 
 

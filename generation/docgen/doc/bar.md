@@ -10,8 +10,8 @@ Foo dummy class
 
 # Methods
 - B : bar_method 
+- F : foo_class foo_method foo_prop1 foo_prop2 foo_static 
 - O : overriden_method 
-- F : foo_prop1 foo_prop2 foo_static foo_class foo_method 
 
 ## Methods
 

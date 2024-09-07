@@ -476,6 +476,9 @@ class Class(Section):
 
     def build(self, indent=0):
 
+        # ----------------------------------------------------------------------------------------------------
+        # __init__ comment as class comment
+
         init = None
         for section in self.methods:
             if section.title == '__init__':
@@ -489,8 +492,14 @@ class Class(Section):
                 self.comment += '\n\n' + init.comment
             self.methods.remove(init)
 
+        # ----------------------------------------------------------------------------------------------------
+        # Header lines
+
         for line in self.build_header():
             yield line
+
+        # ----------------------------------------------------------------------------------------------------
+        # Inheritance
 
         if len(self.bases):
             yield f"\n**inherits from** "
@@ -498,15 +507,22 @@ class Class(Section):
                 yield name + " "
             yield '\n\n'
 
+        # ----------------------------------------------------------------------------------------------------
+        # Methods table of content
+
         if len(self.methods):
             yield "# Methods\n"
             alpha = self.methods.alphabetical_sections
-            for letter, methods in alpha.items():
+            for letter in sorted(alpha.keys()):
+                methods = sorted(alpha[letter], key=lambda s: s.title)
                 yield f"- {letter} : "
                 for s in methods:
                     yield s.title + ' '
                 yield '\n'
             yield '\n'
+
+        # ----------------------------------------------------------------------------------------------------
+        # Methods
 
         for section in self.sorted_sections:
             for line in section.build(indent=1):
