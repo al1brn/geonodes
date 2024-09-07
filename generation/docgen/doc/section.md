@@ -15,13 +15,13 @@ A Section produces documentation:
 
 
 # Methods
-- A : alphabetical_sections 
-- B : build build_header build_sections 
-- G : get_section 
-- L : link_to link_token 
-- M : md_file_name 
-- P : print 
-- S : sorted_sections 
+- A : [s.title](#alphabetical_sections) 
+- B : [s.title](#build) [s.title](#build_header) [s.title](#build_sections) 
+- G : [s.title](#get_section) 
+- L : [s.title](#link_to) [s.title](#link_token) 
+- M : [s.title](#md_file_name) 
+- P : [s.title](#print) 
+- S : [s.title](#sorted_sections) 
 
 ## Methods
 

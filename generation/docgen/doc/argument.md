@@ -12,7 +12,7 @@ Yield a line for argument documentation:
 
 
 # Methods
-- B : build 
+- B : [s.title](#build) 
 
 ## Methods
 

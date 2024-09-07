@@ -9,7 +9,7 @@ The sub sections are instances of **Return**
 
 
 # Methods
-- B : build_header 
+- B : [s.title](#build_header) 
 
 ## Methods
 
