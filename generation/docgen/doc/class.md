@@ -9,7 +9,7 @@ Class(self, class_name, comment)
 
 
 
-**inherits from** Section 
+> inherits from: [Section](.section.md) 
 
 ## Methods and Properties
 - B : [build](#build) 

@@ -481,50 +481,62 @@ class Function(Section):
         - doc (Doc) : Doc parsed by **Parser**
         """
 
-        if True:
+        # ----------------------------------------------------------------------------------------------------
+        # Create additional comment
 
+        decos = []
+        is_static = False
+        is_class  = False
+        is_setter = False
+        is_getter = False
+        for deco in doc.decorators:
+            if deco == '@classmethod':
+                decos.append('Class method')
+                is_class = True
+            elif deco == '@staticmethod':
+                decos.append('Static method')
+                is_static = True
+            elif deco == '@property':
+                is_getter = True
+            elif deco.find('.setter')> 0:
+                is_setter = True
+
+        before = ""
+        if len(decos):
+            before = "> **Decorators**: " + ", ".join(decos) + '\n\n'
+
+        if len(doc.args):
+            if class_name is None:
+                fname = doc.name
+            elif doc.name == '__init__':
+                fname = class_name
+            else:
+                fname = f"{class_name}.{doc.name}"
+
+            if is_setter or is_getter:
+                before += f"``` python\n{fname}\n```\n\n"""
+            else:
+                before += f"``` python\n{fname}{doc.args}\n```\n\n"
+
+        # ----------------------------------------------------------------------------------------------------
+        # Add before the comment argument
+
+        if before == "":
+            before = None
+
+        if doc.comment is None:
+            comment = before
+        elif before is None:
             comment = doc.comment
-            if comment is None:
-                comment = ""
+        else:
+            comment = before + '\n\n' + doc.comment
 
-            decos = []
-            is_static = False
-            is_class  = False
-            is_setter = False
-            is_getter = False
-            for deco in doc.decorators:
-                if deco == '@classmethod':
-                    decos.append('Class method')
-                    is_class = True
-                elif deco == '@staticmethod':
-                    decos.append('Static method')
-                    is_static = True
-                elif deco == '@property':
-                    is_getter = True
-                elif deco.find('.setter')> 0:
-                    is_setter = True
-
-            before = ""
-            if len(decos):
-                before = "> **Decorators**: " + ", ".join(decos) + '\n\n'
-
-            if len(doc.args):
-                if class_name is None:
-                    fname = doc.name
-                elif doc.name == '__init__':
-                   fname = class_name
-                else:
-                    fname = f"{class_name}.{doc.name}"
-
-                if is_setter or is_getter:
-                    before += f"``` python\n{fname}\n```\n\n"""
-                else:
-                    before += f"``` python\n{fname}{doc.args}\n```\n\n"
-
-            if before != "":
-                comment = before + comment
+        # ----------------------------------------------------------------------------------------------------
+        # Create the Function instance
 
         inst = cls(doc.name, comment)
+
+        # Complementary information
 
         inst.args = doc.args
 
@@ -622,9 +634,9 @@ class Class(Section):
         # Inheritance
 
         if len(self.bases):
-            yield f"\n**inherits from** "
+            yield f"\n> inherits from: "
             for name in self.bases:
-                yield name + " "
+                yield f"[{name}](.{name.lower()}.md) "
             yield '\n\n'
 
         # ----------------------------------------------------------------------------------------------------
@@ -720,7 +732,7 @@ class ProjectDocumentation:
     # Read the modules from files
 
     @classmethod
-    def FomFiles(cls, name, folder, sub_folders=[]):
+    def FromFiles(cls, name, folder, sub_folders=[]):
 
         proj = cls(name)
 
@@ -816,17 +828,17 @@ def tests():
     # Step 1 : read project files from root folder
 
     root = Path(__file__).parents[0]
-    proj = ProjectDocumentation.FomFiles('Test', folder=root, sub_folders=[])
+    proj = ProjectDocumentation.FromFiles('Test', folder=root, sub_folders=[])
 
     # ====================================================================================================
     # Step 2 : build document hierarchy
 
     proj.add_class('Section')
     proj.add_class('Argument', bases=['Section'])
-    proj.add_class('Return', bases=['Section'])
+    proj.add_class('Return',   bases=['Section'])
     proj.add_class('Function', bases=['Section'])
-    proj.add_class('Class', bases=['Section'])
-    proj.add_class('Classes', bases=['Section'])
+    proj.add_class('Class',    bases=['Section'])
+    proj.add_class('Classes',  bases=['Section'])
     proj.add_class('Module')
     proj.add_class('ProjectDocumentation')
 

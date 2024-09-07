@@ -19,7 +19,7 @@ write the document is a homogeneous way.
 
 
 
-**inherits from** Section 
+> inherits from: [Section](.section.md) 
 
 ## Methods and Properties
 - A : [arguments](#arguments) [arguments](#arguments) 
@@ -53,6 +53,8 @@ Create a class from an instance of Doc
 
 Doc is a class read by the **Parser**.
 
+
+Create additional comment
 
 
 ##### Arguments

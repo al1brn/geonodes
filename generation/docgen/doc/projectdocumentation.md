@@ -10,18 +10,18 @@ ProjectDocumentation(self, name)
 
 ## Methods and Properties
 - A : [add_class](#add_class) [add_module](#add_module) 
-- F : [FomFiles](#fomfiles) 
+- F : [FromFiles](#fromfiles) 
 - G : [get_module_class](#get_module_class) 
 - W : [write_documentation](#write_documentation) 
 
 # Methods
 
-## FomFiles
+## FromFiles
 
 > **Decorators**: Class method
 
 ``` python
-ProjectDocumentation.FomFiles(cls, name, folder, sub_folders=[])
+ProjectDocumentation.FromFiles(cls, name, folder, sub_folders=[])
 ```
 
 
