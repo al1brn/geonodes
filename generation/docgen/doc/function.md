@@ -14,10 +14,16 @@ write the document is a homogeneous way.
 
 
 
-# Methods
+# Methods and Properties
 - A : [arguments](#arguments) 
 - F : [FromDoc](#fromdoc) 
 - R : [returns](#returns) 
+
+## arguments
+
+
+
+
 
 ## FromDoc
 
@@ -29,12 +35,6 @@ Doc is a class read by the **Parser**.
 
 #### Arguments
 - **doc** (_Doc_) : Doc parsed by **Parser**
-
-
-
-## arguments
-
-
 
 
 

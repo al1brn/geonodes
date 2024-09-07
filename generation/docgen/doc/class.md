@@ -4,14 +4,13 @@
 
 
 
-# Methods
+# Methods and Properties
 - B : [build](#build) 
 - C : [capture_class](#capture_class) 
-- F : [FromDoc](#fromdoc) 
 - M : [methods](#methods) 
-- P : [properties](#properties) 
+- P : [properties](#properties) [properties](#properties) 
 
-## FromDoc
+## properties
 
 
 
@@ -21,7 +20,6 @@
 
 
 __init__ comment as class comment
-
 
 
 

@@ -8,14 +8,20 @@ Foo dummy class
 
 
 
-# Methods
-- B : [bar_method](#bar_method) 
-- F : [foo_class](#foo_class) [foo_method](#foo_method) [foo_prop1](#foo_prop1) [foo_prop2](#foo_prop2) [foo_static](#foo_static) 
-- O : [overriden_method](#overriden_method) 
+# Methods and Properties
+- F : [foo_class](#foo_class) [foo_class](#foo_class) [foo_method](#foo_method) [foo_prop1](#foo_prop1) [foo_prop1](#foo_prop1) [foo_prop2](#foo_prop2) [foo_static](#foo_static) 
 
-## bar_method
+## foo_class
 
-Bar method
+Foo class property
+
+
+
+
+
+## foo_prop1
+
+Foo prop 1
 
 
 
@@ -67,14 +73,6 @@ Foo prop 2
 ## foo_static
 
 Foo static method
-
-
-
-
-
-## overriden_method
-
-Bar overriden method
 
 
 

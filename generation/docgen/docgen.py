@@ -111,8 +111,7 @@ class Section(list):
         """
         return sorted(self, key=lambda s: s.title)
 
-    @property
-    def alphabetical_sections(self):
+    def alphabetical_sections(self, alpha=None):
         """ Build a dictionary keyed by the section title initials
 
         Used to diplay a table of content when there is a great number of sections.
@@ -123,11 +122,17 @@ class Section(list):
          }
         ```
 
+        Arguments
+        ---------
+        - alpha (dict = None) : dictionary to feed
+
         Returns
         -------
         - dict of list of Sections
         """
-        alpha = {}
+        if alpha is None:
+            alpha = {}
+
         for section in self:
             first = section.title[0].upper()
             sections = alpha.get(first)
@@ -481,16 +486,7 @@ class Class(Section):
         # ----------------------------------------------------------------------------------------------------
         # __init__ comment as class comment
 
-
-        if True:
-            init = self.methods.get_section('__init__')
-        else:
-            init = None
-            for section in self.methods:
-                if section.title == '__init__':
-                    init = section
-                    break
-
+        init = self.methods.get_section('__init__')
         if init is not None:
             if self.comment is None:
                 self.comment = init.comment
@@ -499,16 +495,19 @@ class Class(Section):
             self.methods.remove(init)
 
         # ----------------------------------------------------------------------------------------------------
-        # Property functions as property
+        # Property methods as properties
 
         for func in self.methods:
             if func.is_setter or func.is_getter:
-                pass
-
-
-
-
-
+                prop = self.properties.get_section(func.title)
+                if prop is None:
+                    self.properties.append(func)
+                else:
+                    if prop.comment is None:
+                        prop.comment = func.comment
+                    elif func.comment is not None:
+                        prop.comment += func.comment
+                self.methods.remove(func)
 
         # ----------------------------------------------------------------------------------------------------
         # Header lines
@@ -528,15 +527,25 @@ class Class(Section):
         # ----------------------------------------------------------------------------------------------------
         # Methods table of content
 
-        if len(self.methods):
-            yield "# Methods\n"
-            alpha = self.methods.alphabetical_sections
+        if len(self.methods) or len(self.properies):
+            yield "# Methods and Properties\n"
+
+            alpha = self.methods.alphabetical_sections(self.properties.alphabetical_sections())
+
             for letter in sorted(alpha.keys()):
                 methods = sorted(alpha[letter], key=lambda s: s.title)
                 yield f"- {letter} : "
                 for s in methods:
                     yield f"[{s.title}](#{s.link_token}) "
                 yield '\n'
+            yield '\n'
+
+        # ----------------------------------------------------------------------------------------------------
+        # Properties
+
+        for section in self.properties.sorted_sections:
+            for line in section.build(indent=1):
+                yield line
             yield '\n'
 
         # ----------------------------------------------------------------------------------------------------

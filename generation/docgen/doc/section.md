@@ -14,14 +14,36 @@ A Section produces documentation:
 
 
 
-# Methods
+# Methods and Properties
 - A : [alphabetical_sections](#alphabetical_sections) 
 - B : [build](#build) [build_header](#build_header) [build_sections](#build_sections) 
 - G : [get_section](#get_section) 
-- L : [link_to](#link_to) [link_token](#link_token) 
+- L : [link_to](#link_to) 
 - M : [md_file_name](#md_file_name) 
 - P : [print](#print) 
-- S : [sorted_sections](#sorted_sections) 
+- S : [sorted_sections](#sorted_sections) [sorted_sections](#sorted_sections) 
+
+## md_file_name
+
+MD Document file name
+
+
+
+#### Returns
+- _str_ : markdown file name
+
+
+
+## sorted_sections
+
+Sort the sub sections in alphabetical order
+
+
+
+#### Returns
+- _List_ : list of the sub sections sorted in alphabetical order
+
+
 
 ## alphabetical_sections
 
@@ -36,6 +58,9 @@ Used to diplay a table of content when there is a great number of sections.
 ```
 
 
+
+#### Arguments
+- **alpha** (_dict_ = None) : dictionary to feed
 
 #### Returns
 - _dict_
@@ -97,30 +122,6 @@ MD link
 
 #### Returns
 - _str_ : [title](url + link_token)
-
-
-
-## link_token
-
-MD link token
-
-The markdown token is the lower case title where spaces are replaces by '-' char
-
-
-
-#### Returns
-- _str_ : markdown token
-
-
-
-## md_file_name
-
-MD Document file name
-
-
-
-#### Returns
-- _str_ : markdown file name
 
 
 
