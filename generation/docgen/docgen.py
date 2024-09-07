@@ -679,17 +679,19 @@ class Class(Section):
             yield f"\n> inherits from: "
             for name in self.bases:
                 yield f"[{name}]({name.lower()}.md) "
-            sepa = '\n\n'
+            yield '\n'
+            sepa = '\n'
 
         if len(self.inherited):
-            yield "\n> " + ", ".join(self.inherited)
-            sepa = '\n\n'
+            yield "\n> inherited: " + ", ".join(self.inherited)
+            sepa = '\n'
 
         if len(self.subclasses):
             yield f"\n> subclasses: "
             for name in self.subclasses:
                 yield f"[{name}]({name.lower()}.md) "
-            sepa = '\n\n'
+            yield '\n'
+            sepa = '\n'
 
         if sepa is not None:
             yield sepa
