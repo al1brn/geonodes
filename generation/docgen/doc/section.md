@@ -48,6 +48,8 @@ Sort the sub sections in alphabetical order
 
 
 
+# Methods
+
 ## alphabetical_sections
 
 Build a dictionary keyed by the section title initials
@@ -71,7 +73,6 @@ Used to diplay a table of content when there is a great number of sections.
 - _dict_
 
 
-
 ## build
 
 Yield the lines of the section
@@ -89,7 +90,6 @@ sub sections.
 - _str_ : documentation lines for the sections
 
 
-
 ## build_header
 
 Yield the lines of the header part
@@ -97,11 +97,9 @@ Yield the lines of the header part
 
 
 
-
 ## build_sections
 
 Yield the lines of the sections parts
-
 
 
 
@@ -121,7 +119,6 @@ Look for a sub section by its title
 - _Section_
 
 
-
 ## link_to
 
 MD link
@@ -133,13 +130,11 @@ MD link
 - _str_ : [title](url + link_token)
 
 
-
 ## print
 
 Print the documentation in the console
 
 For debug purpose.
-
 
 
 

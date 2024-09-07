@@ -411,8 +411,8 @@ class Class(Section):
     def __init__(self, class_name, comment):
         super().__init__(class_name, comment)
 
-        self.append(Section('Properties', with_sections_only=True))
-        self.append(Section('Methods', with_sections_only=True))
+        self.append(Section('Properties', with_sections_only=True, sort_sections=True))
+        self.append(Section('Methods',    with_sections_only=True, sort_sections=True))
 
         self.bases = []
 
@@ -512,9 +512,12 @@ class Class(Section):
             yield '\n'
 
         # ----------------------------------------------------------------------------------------------------
-        # Properties
+        # Properties and methods
 
         for line in self.properties.build():
+            yield line
+
+        for line in self.methods.build():
             yield line
 
         #for section in self.properties.sorted_sections:
@@ -525,10 +528,10 @@ class Class(Section):
         # ----------------------------------------------------------------------------------------------------
         # Methods
 
-        for section in self.methods.sorted_sections:
-            for line in section.build():
-                yield line
-            yield '\n'
+        #for section in self.methods.sorted_sections:
+        #    for line in section.build():
+        #        yield line
+        #    yield '\n'
 
 # =============================================================================================================================
 # Classes documentation

@@ -27,6 +27,8 @@ write the document is a homogeneous way.
 
 
 
+# Methods
+
 ## FromDoc
 
 Create a class from an instance of Doc
@@ -38,7 +40,6 @@ Doc is a class read by the **Parser**.
 ##### Arguments
 
 - **doc** (_Doc_) : Doc parsed by **Parser**
-
 
 
 ## returns

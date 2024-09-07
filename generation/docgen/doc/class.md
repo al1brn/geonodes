@@ -18,11 +18,12 @@
 
 
 
+# Methods
+
 ## build
 
 
 __init__ comment as class comment
-
 
 
 
@@ -31,9 +32,7 @@ __init__ comment as class comment
 
 
 
-
 ## methods
-
 
 
 

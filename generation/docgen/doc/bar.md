@@ -13,6 +13,13 @@ Foo dummy class
 
 # Properties
 
+## foo_class
+
+Foo class property
+
+
+
+
 ## foo_prop1
 
 Foo prop 1
@@ -20,18 +27,12 @@ Foo prop 1
 
 
 
-## foo_class
 
-Foo class property
-
-
-
-
+# Methods
 
 ## foo_class
 
 Foo class property
-
 
 
 
@@ -56,7 +57,6 @@ Foo method
 - _float_ : comment on the returned type
 
 
-
 ## foo_prop1
 
 Foo prop 1
@@ -64,11 +64,9 @@ Foo prop 1
 
 
 
-
 ## foo_prop2
 
 Foo prop 2
-
 
 
 
