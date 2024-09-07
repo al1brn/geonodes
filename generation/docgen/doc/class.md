@@ -4,7 +4,7 @@
 
 
 
-# Methods and Properties
+## Methods and Properties
 - B : [build](#build) 
 - C : [capture_class](#capture_class) 
 - M : [methods](#methods) 

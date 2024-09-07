@@ -8,7 +8,7 @@ Foo dummy class
 
 
 
-# Methods and Properties
+## Methods and Properties
 - F : [foo_class](#foo_class) [foo_class](#foo_class) [foo_method](#foo_method) [foo_prop1](#foo_prop1) [foo_prop1](#foo_prop1) [foo_prop2](#foo_prop2) [foo_static](#foo_static) 
 
 # Properties

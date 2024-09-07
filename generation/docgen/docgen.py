@@ -499,7 +499,7 @@ class Class(Section):
         # Methods table of content
 
         if len(self.methods) or len(self.properies):
-            yield "# Methods and Properties\n"
+            yield "## Methods and Properties\n"
 
             alpha = self.methods.alphabetical_sections(self.properties.alphabetical_sections())
 

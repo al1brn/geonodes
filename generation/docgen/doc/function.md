@@ -14,7 +14,7 @@ write the document is a homogeneous way.
 
 
 
-# Methods and Properties
+## Methods and Properties
 - A : [arguments](#arguments) 
 - F : [FromDoc](#fromdoc) 
 - R : [returns](#returns) 

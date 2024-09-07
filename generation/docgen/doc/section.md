@@ -14,7 +14,7 @@ A Section produces documentation:
 
 
 
-# Methods and Properties
+## Methods and Properties
 - A : [alphabetical_sections](#alphabetical_sections) 
 - B : [build](#build) [build_header](#build_header) [build_sections](#build_sections) 
 - G : [get_section](#get_section) 
