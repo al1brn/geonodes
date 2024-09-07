@@ -252,7 +252,7 @@ class Return(Section):
         super().__init__(name, comment=description)
 
     def build(self, indent=0):
-        yield f"- {self.title}"
+        yield f"- _{self.title}_"
         if self.comment is None:
             yield '\n'
         else:

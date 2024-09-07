@@ -32,7 +32,7 @@ MD Document file name
 
 
 ***Returns***:
-- str : markdown file name
+- _str_ : markdown file name
 
 
 ### link_token
@@ -44,7 +44,7 @@ The markdown token is the lower case title where spaces are replaces by '-' char
 
 
 ***Returns***:
-- str : markdown token
+- _str_ : markdown token
 
 
 ### link_to
@@ -54,7 +54,7 @@ MD link
 
 
 ***Returns***:
-- str : [title](url + link_token)
+- _str_ : [title](url + link_token)
 
 
 ### get_section
@@ -67,7 +67,7 @@ Look for a sub section by its title
 - **title** (_str_) : the section to look for
 
 ***Returns***:
-- Section
+- _Section_
 
 
 ### sorted_sections
@@ -77,7 +77,7 @@ Sort the sub sections in alphabetical order
 
 
 ***Returns***:
-- List : list of the sub sections sorted in alphabetical order
+- _List_ : list of the sub sections sorted in alphabetical order
 
 
 ### alphabetical_sections
@@ -95,7 +95,7 @@ Used to diplay a table of content when there is a great number of sections.
 
 
 ***Returns***:
-- dict
+- _dict_
 
 
 ### build_header
@@ -125,7 +125,7 @@ sub sections.
 
 
 ***Returns***:
-- str : documentation lines for the sections
+- _str_ : documentation lines for the sections
 
 
 ### print

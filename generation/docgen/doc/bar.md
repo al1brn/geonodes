@@ -74,7 +74,7 @@ Foo method
 - ****kwargs : comment on kwargs**
 
 ***Returns***:
-- float : comment on the returned type
+- _float_ : comment on the returned type
 
 
 
