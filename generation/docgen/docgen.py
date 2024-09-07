@@ -517,9 +517,9 @@ class Function(Section):
                     fname = f"{class_name}.{doc.name}"
 
                 if is_setter or is_getter:
-                    before += f"``` python\n{fname}{doc.args}\n```\n\n"""
+                    before += f"``` python\n{fname}\n```\n\n"""
                 else:
-                    before += f"``` python\n{fname}\n```\n\n"
+                    before += f"``` python\n{fname}{doc.args}\n```\n\n"
 
             if before != "":
                 comment = before + comment
@@ -528,15 +528,10 @@ class Function(Section):
 
         inst.args = doc.args
 
-        for deco in doc.decorators:
-            if deco == '@classmethod':
-                inst.is_class = True
-            elif deco == '@staticmethod':
-                inst.is_static = True
-            elif deco == '@property':
-                inst.is_getter = True
-            elif deco.find('.setter')> 0:
-                inst.is_setter = True
+        inst.is_class  = is_class
+        inst.is_static = is_static
+        inst.is_setter = is_setter
+        inst.is_getter = is_getter
 
         return inst
 

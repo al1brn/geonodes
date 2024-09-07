@@ -3,7 +3,7 @@
 
 
 ``` python
-Class
+Class(self, class_name, comment)
 ```
 
 
@@ -22,7 +22,7 @@ Class
 ## properties
 
 ``` python
-Class.properties(self)
+Class.properties
 ```
 
 
@@ -34,7 +34,7 @@ Class.properties(self)
 ## build
 
 ``` python
-Class.build
+Class.build(self)
 ```
 
 __init__ comment as class comment
@@ -44,7 +44,7 @@ __init__ comment as class comment
 ## capture_class
 
 ``` python
-Class.capture_class
+Class.capture_class(self, other)
 ```
 
 
@@ -53,7 +53,7 @@ Class.capture_class
 ## methods
 
 ``` python
-Class.methods(self)
+Class.methods
 ```
 
 
@@ -62,7 +62,7 @@ Class.methods(self)
 ## properties
 
 ``` python
-Class.properties(self)
+Class.properties
 ```
 
 

@@ -3,7 +3,7 @@
 
 
 ``` python
-Section
+Section(self, title, comment=None, level=0, with_sections_only=False, sort_sections=False)
 ```
 
 Elementary base of a documentation
@@ -34,7 +34,7 @@ A Section produces documentation:
 ## comment
 
 ``` python
-Section.comment(self)
+Section.comment
 ```
 
 Comment property
@@ -49,7 +49,7 @@ Comment property
 ## md_file_name
 
 ``` python
-Section.md_file_name(self)
+Section.md_file_name
 ```
 
 MD Document file name
@@ -64,7 +64,7 @@ MD Document file name
 ## sorted_sections
 
 ``` python
-Section.sorted_sections(self)
+Section.sorted_sections
 ```
 
 Sort the sub sections in alphabetical order
@@ -82,7 +82,7 @@ Sort the sub sections in alphabetical order
 ## alphabetical_sections
 
 ``` python
-Section.alphabetical_sections
+Section.alphabetical_sections(self, alpha=None)
 ```
 
 Build a dictionary keyed by the section title initials
@@ -109,7 +109,7 @@ Used to diplay a table of content when there is a great number of sections.
 ## build
 
 ``` python
-Section.build
+Section.build(self)
 ```
 
 Yield the lines of the section
@@ -130,7 +130,7 @@ sub sections.
 ## build_header
 
 ``` python
-Section.build_header
+Section.build_header(self)
 ```
 
 Yield the lines of the header part
@@ -141,7 +141,7 @@ Yield the lines of the header part
 ## build_sections
 
 ``` python
-Section.build_sections
+Section.build_sections(self)
 ```
 
 Yield the lines of the sections parts
@@ -152,7 +152,7 @@ Yield the lines of the sections parts
 ## get_section
 
 ``` python
-Section.get_section
+Section.get_section(self, title)
 ```
 
 Look for a sub section by its title
@@ -171,7 +171,7 @@ Look for a sub section by its title
 ## init
 
 ``` python
-Section.init
+Section.init(self)
 ```
 
 
@@ -180,7 +180,7 @@ Section.init
 ## link_to
 
 ``` python
-Section.link_to
+Section.link_to(self, url="")
 ```
 
 MD link
@@ -195,7 +195,7 @@ MD link
 ## parse_comment
 
 ``` python
-Section.parse_comment
+Section.parse_comment(self, comment)
 ```
 
 Parse comment to extract information
@@ -217,7 +217,7 @@ The default implementation returns the argument without change.
 ## print
 
 ``` python
-Section.print
+Section.print(self)
 ```
 
 Print the documentation in the console
@@ -230,7 +230,7 @@ For debug purpose.
 ## sorted_sections
 
 ``` python
-Section.sorted_sections(self)
+Section.sorted_sections
 ```
 
 Sort the sub sections in alphabetical order
