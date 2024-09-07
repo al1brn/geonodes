@@ -32,17 +32,70 @@ class Section(list):
         ---------
         - title (str) : section title
         - comment (str = None) : header comment
+        - level (int = 0) : indentation level
         - with_sections_only (bool=False) : ignore if there is no sub sections
         - sort_sections (bool = False) : sort the sub sections before writting them
         """
 
         super().__init__()
 
+        # ----- Initialize the section
+
         self.title              = title
-        self.comment            = comment
+        self._comment           = None
         self.level              = level
         self.with_sections_only = with_sections_only
         self.sort_sections      = sort_sections
+
+        # ----- Overridable init
+
+        self.init()
+
+        # ----- Comment after init is done
+
+        self.comment            = comment
+
+    # ====================================================================================================
+    # Specific init
+
+    def init(self):
+        pass
+
+    # ====================================================================================================
+    # Comment property
+
+    @property
+    def comment(self):
+        """ Comment property
+
+        Returns
+        -------
+        - str : Section header comment
+        """
+        return self._comment
+
+    @comment.setter
+    def comment(self, value):
+        self._comment = self.parse_comment(value)
+
+    # ====================================================================================================
+    # Target file name
+
+    def parse_comment(self, comment):
+        """ Parse comment to extract information
+
+        This method extract information embbeded in the comment and returns the cleaned text.
+        The default implementation returns the argument without change.
+
+        Arguments
+        ---------
+        - comment (str) : the raw comment
+
+        Returns
+        -------
+        - str : the cleaned comment
+        """
+        return self.comment
 
     # ====================================================================================================
     # Target file name
@@ -283,10 +336,33 @@ class Function(Section):
         ---------
         - name (str) : function or method name
         - comment (str = None) : header comment
+        - level (int = 1) : indentation level
         """
         super().__init__(name, level=level)
+
+        self.comment = comment
+
+    # ====================================================================================================
+    # Specific init
+
+    def init(self):
+        """ Function section specific init
+
+        A Function section is made of two sections:
+        - Arguments
+        - Returns
+
+        It also create stores other information:
+        - decorators
+        - arguments
+        """
+
+        # Arguments and Returns sections
+
         self.append(Section("Arguments", level=4, with_sections_only=True))
         self.append(Section("Returns",   level=4, with_sections_only=True))
+
+        # Function information
 
         self.is_staticmethod = False
         self.is_classmethod  = False
@@ -294,8 +370,24 @@ class Function(Section):
         self.is_setter       = False
         self.args            = None
 
-        # ----------------------------------------------------------------------------------------------------
-        # Extract arguments from comment
+    # ====================================================================================================
+    # Parse the comment
+
+    def parse_comment(self, comment):
+        """ Function comment parser
+
+        The Function parser extracts Arguments and Returns sections.
+        The corresponding lines are remove from the comment to feed the two sections.
+
+        The lists are generated from the structure
+
+        Arguments
+        ---------
+        """
+
+        if comment is None:
+            return None
+
 
         context = 'COMMENT'
         new_comment = ""
@@ -364,7 +456,9 @@ class Function(Section):
                     else:
                         self.returns.append(Return(match.group(1), match.group(3)))
 
-        self.comment = new_comment
+
+    # ====================================================================================================
+    # Arguments and Returns sections
 
     @property
     def arguments(self):
