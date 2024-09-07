@@ -159,7 +159,6 @@ class Section(list):
         """
         sections = self.sorted_sections if self.sort_sections else self
         for section in sections:
-            section.level = self.level + 1
             for line in section.build():
                 yield line
 
@@ -316,8 +315,8 @@ class Function(Section):
         - comment (str = None) : header comment
         """
         super().__init__(name)
-        self.append(Section("Arguments", level=5, with_sections_only=True))
-        self.append(Section("Returns", level=5, with_sections_only=True))
+        self.append(Section("Arguments", level=4, with_sections_only=True))
+        self.append(Section("Returns",   level=4, with_sections_only=True))
 
         self.is_staticmethod = False
         self.is_classmethod  = False
@@ -546,7 +545,6 @@ class Class(Section):
         # Properties
 
         for section in self.properties.sorted_sections:
-            section.level = 1
             for line in section.build():
                 yield line
             yield '\n'
@@ -555,7 +553,6 @@ class Class(Section):
         # Methods
 
         for section in self.methods.sorted_sections:
-            section.level = 1
             for line in section.build():
                 yield line
             yield '\n'

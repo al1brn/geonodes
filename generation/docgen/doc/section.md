@@ -23,31 +23,31 @@ A Section produces documentation:
 - P : [print](#print) 
 - S : [sorted_sections](#sorted_sections) [sorted_sections](#sorted_sections) 
 
-## md_file_name
+# md_file_name
 
 MD Document file name
 
 
 
-### Returns
+##### Returns
 
 - _str_ : markdown file name
 
 
 
-## sorted_sections
+# sorted_sections
 
 Sort the sub sections in alphabetical order
 
 
 
-### Returns
+##### Returns
 
 - _List_ : list of the sub sections sorted in alphabetical order
 
 
 
-## alphabetical_sections
+# alphabetical_sections
 
 Build a dictionary keyed by the section title initials
 
@@ -61,17 +61,17 @@ Used to diplay a table of content when there is a great number of sections.
 
 
 
-### Arguments
+##### Arguments
 
 - **alpha** (_dict_ = None) : dictionary to feed
 
-### Returns
+##### Returns
 
 - _dict_
 
 
 
-## build
+# build
 
 Yield the lines of the section
 
@@ -83,13 +83,13 @@ sub sections.
 
 
 
-### Returns
+##### Returns
 
 - _str_ : documentation lines for the sections
 
 
 
-## build_header
+# build_header
 
 Yield the lines of the header part
 
@@ -97,7 +97,7 @@ Yield the lines of the header part
 
 
 
-## build_sections
+# build_sections
 
 Yield the lines of the sections parts
 
@@ -105,35 +105,35 @@ Yield the lines of the sections parts
 
 
 
-## get_section
+# get_section
 
 Look for a sub section by its title
 
 
 
-### Arguments
+##### Arguments
 
 - **title** (_str_) : the section to look for
 
-### Returns
+##### Returns
 
 - _Section_
 
 
 
-## link_to
+# link_to
 
 MD link
 
 
 
-### Returns
+##### Returns
 
 - _str_ : [title](url + link_token)
 
 
 
-## print
+# print
 
 Print the documentation in the console
 
@@ -143,13 +143,13 @@ For debug purpose.
 
 
 
-## sorted_sections
+# sorted_sections
 
 Sort the sub sections in alphabetical order
 
 
 
-### Returns
+##### Returns
 
 - _List_ : list of the sub sections sorted in alphabetical order
 
