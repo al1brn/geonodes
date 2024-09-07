@@ -563,13 +563,14 @@ class Class(Section):
         self.inherited  = []
 
     @classmethod
-    def FromDoc(cls, doc):
+    def FromDoc(cls, doc, exclude_uncommented=True):
         inst = cls(doc.name, doc.comment)
 
         inst.bases.extend(doc.bases)
 
         for d in doc.funcs.values():
-            inst.methods.append(Function.FromDoc(d, class_name=doc.name))
+            if not(d.comment is None or exclude_uncommented):
+                inst.methods.append(Function.FromDoc(d, class_name=doc.name))
 
         return inst
 
@@ -699,7 +700,7 @@ class Class(Section):
         # ----------------------------------------------------------------------------------------------------
         # Methods table of content
 
-        if len(self.methods) or len(self.properies):
+        if len(self.methods) or len(self.properties):
             yield "## Methods and Properties\n"
 
             alpha = self.methods.alphabetical_sections(self.properties.alphabetical_sections())
@@ -947,20 +948,3 @@ def tests():
     # Step 4 : write the documentation
 
     proj.write_documentation(doc_folder=root / 'doc')
-
-
-
-
-
-
-    return
-
-
-    docs = Parser.FromFile(__file__).documentation()
-
-    foo_class = Class.FromDoc(docs['Foo'])
-    foo_class.print()
-
-    bar_class = Class.FromDoc(docs['Bar'])
-    bar_class.capture_class(foo_class)
-    bar_class.print()
