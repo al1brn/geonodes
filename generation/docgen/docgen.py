@@ -560,6 +560,7 @@ class Class(Section):
 
         self.bases      = []
         self.subclasses = []
+        self.inherited  = []
 
     @classmethod
     def FromDoc(cls, doc):
@@ -583,20 +584,41 @@ class Class(Section):
     # ====================================================================================================
     # Get the sub classes
 
-    def load_subclasses(self, classes):
-        """ Load the subclasses registers in classes
+    def compile(self, classes):
+        """ Compile links with other classes
 
-        **classes** argument is a dict of **Class**. Load each class based on this one
-        into to the **subclasses** attribute.
+        **classes** argument is a dict of **Class**:
+        - Load each class based on this one into to the **subclasses** attribute.
+        - Load the methods and properties inherited from parent classes
 
         Arguments
         ---------
         - classes (dict) : dict of _Class_
         """
 
+        inherited = {}
+
         for class_ in classes.values():
+
+            # ----- Sub classes
+
             if self.title in class_.bases:
                 self.subclasses.append(class_.title)
+
+            # ----- Inherited properties and methods
+
+            if class_.title in self.bases:
+                for prop in class_.properties:
+                    if self.properties.get_section(prop.title) is None:
+                        inherited[prop.title] = f"[{prop.title}]({class_.title.lower()}.md#{prop.link_token})"
+
+                for meth in class_.methods:
+                    if self.methods.get_section(meth.title) is None:
+                        inherited[meth.title] = f"[{meth.title}]({class_.title.lower()}.md#{meth.link_token})"
+
+        if len(inherited):
+            self.inherited = [inherited[key] for key in sorted(inherited.keys())]
+
 
     # ====================================================================================================
     # Capture methods and properties from another class
@@ -657,6 +679,10 @@ class Class(Section):
             yield f"\n> inherits from: "
             for name in self.bases:
                 yield f"[{name}]({name.lower()}.md) "
+            sepa = '\n\n'
+
+        if len(self.inherited):
+            yield "\n> " + ", ".join(self.inherited)
             sepa = '\n\n'
 
         if len(self.subclasses):
@@ -837,7 +863,7 @@ class ProjectDocumentation:
 
     def compile(self):
         for class_ in self.classes.values():
-            class_.load_subclasses(self.classes)
+            class_.compile(self.classes)
 
     # ====================================================================================================
     # Write the documentation
