@@ -735,6 +735,15 @@ def tests():
     # Step 2 : build document hierarchy
 
     proj.add_class('Bar', capture=['Foo'])
+    proj.add_class('Section')
+    proj.add_class('Argument')
+    proj.add_class('Arguments')
+    proj.add_class('Return')
+    proj.add_class('Returns')
+    proj.add_class('Function')
+    proj.add_class('Class')
+    proj.add_class('Classes')
+
 
     # ====================================================================================================
     # Step 3 : write the documentation
