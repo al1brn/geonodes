@@ -3,7 +3,7 @@
 
 
 ``` python
-__init__(self, name, comment=None, level=1)
+Function(self, name, comment=None, level=1)
 ```
 
 Section dedicated to function documentation.
@@ -32,7 +32,7 @@ write the document is a homogeneous way.
 ## arguments
 
 ``` python
-
+Function.arguments(self)
 ```
 
 
@@ -46,7 +46,7 @@ write the document is a homogeneous way.
 **Decorators**: Class method
 
 ``` python
-FromDoc(cls, doc)
+Function.FromDoc(cls, doc, class_name=None)
 ```
 
 Create a class from an instance of Doc
@@ -63,7 +63,7 @@ Doc is a class read by the **Parser**.
 ## arguments
 
 ``` python
-
+Function.arguments(self)
 ```
 
 
@@ -72,7 +72,7 @@ Doc is a class read by the **Parser**.
 ## parse_comment
 
 ``` python
-parse_comment(self, comment)
+Function.parse_comment(self, comment)
 ```
 
 Function comment parser
@@ -88,7 +88,7 @@ The lists are generated from the structure
 ## returns
 
 ``` python
-
+Function.returns(self)
 ```
 
 

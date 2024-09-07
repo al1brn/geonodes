@@ -3,7 +3,7 @@
 
 
 ``` python
-__init__(self, name)
+ProjectDocumentation(self, name)
 ```
 
 
@@ -21,7 +21,7 @@ __init__(self, name)
 **Decorators**: Class method
 
 ``` python
-FomFiles(cls, name, folder, sub_folders=[])
+ProjectDocumentation.FomFiles(cls, name, folder, sub_folders=[])
 ```
 
 
@@ -30,7 +30,7 @@ FomFiles(cls, name, folder, sub_folders=[])
 ## add_class
 
 ``` python
-add_class(self, class_name, module_name=None, bases=[], capture=[])
+ProjectDocumentation.add_class(self, class_name, module_name=None, bases=[], capture=[])
 ```
 
 
@@ -39,7 +39,7 @@ add_class(self, class_name, module_name=None, bases=[], capture=[])
 ## add_module
 
 ``` python
-add_module(self, name, text)
+ProjectDocumentation.add_module(self, name, text)
 ```
 
 
@@ -48,7 +48,7 @@ add_module(self, name, text)
 ## get_module_class
 
 ``` python
-get_module_class(self, class_name, module_name=None, halt=True)
+ProjectDocumentation.get_module_class(self, class_name, module_name=None, halt=True)
 ```
 
 
@@ -57,7 +57,7 @@ get_module_class(self, class_name, module_name=None, halt=True)
 ## write_documentation
 
 ``` python
-write_documentation(self, doc_folder)
+ProjectDocumentation.write_documentation(self, doc_folder)
 ```
 
 

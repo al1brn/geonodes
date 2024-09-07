@@ -6,7 +6,7 @@
 
 
 ``` python
-__init__(self, file_name, documented_classes=None)
+Module(self, file_name, documented_classes=None)
 ```
 
 My own comment
@@ -25,7 +25,7 @@ My own comment
 ## file_name
 
 ``` python
-file_name(self)
+Module.file_name(self)
 ```
 
 
@@ -37,7 +37,7 @@ file_name(self)
 ## __repr__
 
 ``` python
-__repr__(self)
+Module.__repr__(self)
 ```
 
 
@@ -46,7 +46,7 @@ __repr__(self)
 ## add_inheritance
 
 ``` python
-add_inheritance(self, classes, super_classes=None, super_module=None)
+Module.add_inheritance(self, classes, super_classes=None, super_module=None)
 ```
 
 
@@ -55,7 +55,7 @@ add_inheritance(self, classes, super_classes=None, super_module=None)
 ## inherits
 
 ``` python
-inherits(self, classes, super_classes=None, super_module=None)
+Module.inherits(self, classes, super_classes=None, super_module=None)
 ```
 
 
@@ -64,7 +64,7 @@ inherits(self, classes, super_classes=None, super_module=None)
 ## markdown
 
 ``` python
-markdown(self, class_name)
+Module.markdown(self, class_name)
 ```
 
 

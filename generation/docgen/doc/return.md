@@ -3,7 +3,7 @@
 
 
 ``` python
-__init__(self, name, description=None)
+
 ```
 
 Function returns
@@ -26,7 +26,7 @@ Yield a line for return documentation:
 ## build
 
 ``` python
-build(self)
+
 ```
 
 

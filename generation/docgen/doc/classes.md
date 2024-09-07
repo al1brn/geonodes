@@ -3,7 +3,7 @@
 
 
 ``` python
-__init__(self, class_name, comment)
+Classes(self, class_name, comment)
 ```
 
 
@@ -19,7 +19,7 @@ __init__(self, class_name, comment)
 ## build_sections
 
 ``` python
-build_sections(self)
+Classes.build_sections(self)
 ```
 
 Yield the sections parts

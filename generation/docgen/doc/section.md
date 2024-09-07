@@ -3,7 +3,7 @@
 
 
 ``` python
-__init__(self, title, comment=None, level=0, with_sections_only=False, sort_sections=False)
+Section(self, title, comment=None, level=0, with_sections_only=False, sort_sections=False)
 ```
 
 Elementary base of a documentation
@@ -34,7 +34,7 @@ A Section produces documentation:
 ## comment
 
 ``` python
-comment(self)
+Section.comment(self)
 ```
 
 Comment property
@@ -49,7 +49,7 @@ Comment property
 ## md_file_name
 
 ``` python
-md_file_name(self)
+Section.md_file_name(self)
 ```
 
 MD Document file name
@@ -64,7 +64,7 @@ MD Document file name
 ## sorted_sections
 
 ``` python
-sorted_sections(self)
+Section.sorted_sections(self)
 ```
 
 Sort the sub sections in alphabetical order
@@ -82,7 +82,7 @@ Sort the sub sections in alphabetical order
 ## alphabetical_sections
 
 ``` python
-alphabetical_sections(self, alpha=None)
+Section.alphabetical_sections(self, alpha=None)
 ```
 
 Build a dictionary keyed by the section title initials
@@ -109,7 +109,7 @@ Used to diplay a table of content when there is a great number of sections.
 ## build
 
 ``` python
-build(self)
+Section.build(self)
 ```
 
 Yield the lines of the section
@@ -130,7 +130,7 @@ sub sections.
 ## build_header
 
 ``` python
-build_header(self)
+Section.build_header(self)
 ```
 
 Yield the lines of the header part
@@ -141,7 +141,7 @@ Yield the lines of the header part
 ## build_sections
 
 ``` python
-build_sections(self)
+Section.build_sections(self)
 ```
 
 Yield the lines of the sections parts
@@ -152,7 +152,7 @@ Yield the lines of the sections parts
 ## get_section
 
 ``` python
-get_section(self, title)
+Section.get_section(self, title)
 ```
 
 Look for a sub section by its title
@@ -171,7 +171,7 @@ Look for a sub section by its title
 ## init
 
 ``` python
-init(self)
+Section.init(self)
 ```
 
 
@@ -180,7 +180,7 @@ init(self)
 ## link_to
 
 ``` python
-link_to(self, url="")
+Section.link_to(self, url="")
 ```
 
 MD link
@@ -195,7 +195,7 @@ MD link
 ## parse_comment
 
 ``` python
-parse_comment(self, comment)
+Section.parse_comment(self, comment)
 ```
 
 Parse comment to extract information
@@ -217,7 +217,7 @@ The default implementation returns the argument without change.
 ## print
 
 ``` python
-print(self)
+Section.print(self)
 ```
 
 Print the documentation in the console
@@ -230,7 +230,7 @@ For debug purpose.
 ## sorted_sections
 
 ``` python
-sorted_sections(self)
+Section.sorted_sections(self)
 ```
 
 Sort the sub sections in alphabetical order

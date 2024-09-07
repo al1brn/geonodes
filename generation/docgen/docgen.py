@@ -471,7 +471,7 @@ class Function(Section):
     # Initialize from a Doc class coming from pyparse
 
     @classmethod
-    def FromDoc(cls, doc):
+    def FromDoc(cls, doc, class_name=None):
         """ Create a class from an instance of Doc
 
         Doc is a class read by the **Parser**.
@@ -499,7 +499,14 @@ class Function(Section):
                 before = "**Decorators**: " + ", ".join(decos) + '\n\n'
 
             if len(doc.args):
-                before += "``` python\nCODE\n```\n\n".replace('CODE', f"{doc.name}{doc.args}")
+                if class_name is None:
+                    fname = doc.name
+                elif doc.name == '__init__':
+                   fname = class_name
+                else:
+                    fname = f"{class_name}.{doc.name}"
+
+                before += "``` python\nCODE\n```\n\n".replace('CODE', f"{fname}{doc.args}")
 
             if before != "":
                 comment = before + comment
@@ -540,7 +547,7 @@ class Class(Section):
         inst.bases.extend(doc.bases)
 
         for d in doc.funcs.values():
-            inst.methods.append(Function.FromDoc(d))
+            inst.methods.append(Function.FromDoc(d, class_name=doc.name))
 
         return inst
 
