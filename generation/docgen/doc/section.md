@@ -18,8 +18,7 @@ A Section produces documentation:
 
 
 
-Arguments:
-----------
+### Arguments:
 - title (str) : section title
 - comment (str = None) : header comment
 - with_sections_only (bool = False) : ignore if there is no sub sections
@@ -32,8 +31,7 @@ MD Document file name
 
 
 
-Returns:
---------
+### Returns:
 - str : markdown file name
 
 
@@ -45,8 +43,7 @@ The markdown token is the lower case title where spaces are replaces by '-' char
 
 
 
-Returns:
---------
+### Returns:
 - str : markdown token
 
 
@@ -56,8 +53,7 @@ MD link
 
 
 
-Returns:
---------
+### Returns:
 - str : [title](url + link_token)
 
 
@@ -67,12 +63,10 @@ Look for a sub section by its title
 
 
 
-Arguments:
-----------
+### Arguments:
 - title (str) : the section to look for
 
-Returns:
---------
+### Returns:
 - Section
 
 
@@ -82,8 +76,7 @@ Sort the sub sections in alphabetical order
 
 
 
-Returns:
---------
+### Returns:
 - List : list of the sub sections sorted in alphabetical order
 
 
@@ -101,8 +94,7 @@ Used to diplay a table of content when there is a great number of sections.
 
 
 
-Returns:
---------
+### Returns:
 - dict
 
 
@@ -132,8 +124,7 @@ sub sections.
 
 
 
-Returns:
---------
+### Returns:
 - str : documentation lines for the sections
 
 

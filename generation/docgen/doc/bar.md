@@ -26,8 +26,7 @@ Foo dummy class
 
 
 
-Arguments:
-----------
+### Arguments:
 - foo_name (str) : Foo name
 - comment : The comment string
 
@@ -66,8 +65,7 @@ Foo method
 
 
 
-Arguments:
-----------
+### Arguments:
 - name
 - name_str (str)
 - name_str_comm (str) : The comment on name str
@@ -75,8 +73,7 @@ Arguments:
 - name_def_comm (str = "Default name") : The comment on name str default
 - **kwargs : comment on kwargs
 
-Returns:
---------
+### Returns:
 - float : comment on the returned type
 
 
