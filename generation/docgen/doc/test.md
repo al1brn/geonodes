@@ -4,6 +4,6 @@
 
 Some text
 
-$${\large\textsf\color{blue}{test}}$$:
+$${\color{blue}\large\textsf{test}}$$:
 - One
 - Two
