@@ -35,14 +35,16 @@ Foo method
 
 
 
-$${\color{blue}\large\textsf{Arguments}}$$:\n- **name**
+$${\color{blue}\large\textsf{Arguments}}$$:
+- **name**
 - **name_str** (_str_)
 - **name_str_comm** (_str_) : The comment on name str
 - **name_def** (_str_ = "Default name")
 - **name_def_comm** (_str_ = "Default name") : The comment on name str default
 - ****kwargs : comment on kwargs**
 
-$${\color{blue}\large\textsf{Returns}}$$:\n- _float_ : comment on the returned type
+$${\color{blue}\large\textsf{Returns}}$$:
+- _float_ : comment on the returned type
 
 
 

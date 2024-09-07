@@ -271,7 +271,7 @@ class Arguments(Section):
 
     def build_header(self, indent=0):
         #yield "***Arguments***:\n"
-        yield r"$${\color{blue}\large\textsf{Arguments}}$$:\n"
+        yield r"$${\color{blue}\large\textsf{Arguments}}$$:" + '\n'
 
 # =============================================================================================================================
 # Arguments section
@@ -286,7 +286,7 @@ class Returns(Section):
 
     def build_header(self, indent=0):
         #yield "***Returns***:\n"
-        yield r"$${\color{blue}\large\textsf{Returns}}$$:\n"
+        yield r"$${\color{blue}\large\textsf{Returns}}$$:" + '\n'
 
 # =============================================================================================================================
 # Function section

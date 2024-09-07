@@ -37,7 +37,8 @@ Used to diplay a table of content when there is a great number of sections.
 
 
 
-$${\color{blue}\large\textsf{Returns}}$$:\n- _dict_
+$${\color{blue}\large\textsf{Returns}}$$:
+- _dict_
 
 
 
@@ -53,7 +54,8 @@ sub sections.
 
 
 
-$${\color{blue}\large\textsf{Returns}}$$:\n- _str_ : documentation lines for the sections
+$${\color{blue}\large\textsf{Returns}}$$:
+- _str_ : documentation lines for the sections
 
 
 
@@ -79,9 +81,11 @@ Look for a sub section by its title
 
 
 
-$${\color{blue}\large\textsf{Arguments}}$$:\n- **title** (_str_) : the section to look for
+$${\color{blue}\large\textsf{Arguments}}$$:
+- **title** (_str_) : the section to look for
 
-$${\color{blue}\large\textsf{Returns}}$$:\n- _Section_
+$${\color{blue}\large\textsf{Returns}}$$:
+- _Section_
 
 
 
@@ -91,7 +95,8 @@ MD link
 
 
 
-$${\color{blue}\large\textsf{Returns}}$$:\n- _str_ : [title](url + link_token)
+$${\color{blue}\large\textsf{Returns}}$$:
+- _str_ : [title](url + link_token)
 
 
 
@@ -103,7 +108,8 @@ The markdown token is the lower case title where spaces are replaces by '-' char
 
 
 
-$${\color{blue}\large\textsf{Returns}}$$:\n- _str_ : markdown token
+$${\color{blue}\large\textsf{Returns}}$$:
+- _str_ : markdown token
 
 
 
@@ -113,7 +119,8 @@ MD Document file name
 
 
 
-$${\color{blue}\large\textsf{Returns}}$$:\n- _str_ : markdown file name
+$${\color{blue}\large\textsf{Returns}}$$:
+- _str_ : markdown file name
 
 
 
@@ -133,7 +140,8 @@ Sort the sub sections in alphabetical order
 
 
 
-$${\color{blue}\large\textsf{Returns}}$$:\n- _List_ : list of the sub sections sorted in alphabetical order
+$${\color{blue}\large\textsf{Returns}}$$:
+- _List_ : list of the sub sections sorted in alphabetical order
 
 
 
