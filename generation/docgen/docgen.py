@@ -868,6 +868,37 @@ class ProjectDocumentation:
             class_.compile(self.classes)
 
     # ====================================================================================================
+    # Write the index
+
+    def write_index(self, file_name):
+        """ Write the index file
+
+        Arguments
+        ---------
+        - file_name (str) : file name to write
+        """
+
+        print(f"Write index: {file_name}")
+
+        with Path(file_name).open(mode='w') as f:
+
+            # ----- Project name
+
+            f.write(f"# {self.name}\n\n")
+
+            # ----- Modules
+
+            # Later
+
+            # ----- Classes
+
+            f.write(f"## Classes\n\n")
+
+            for key in sorted(self.classes):
+                f.write(f"- [{key}]({key.lower()}.md)\n")
+
+
+    # ====================================================================================================
     # Write the documentation
 
     def write_documentation(self, doc_folder):
@@ -881,6 +912,7 @@ class ProjectDocumentation:
                 for line in class_.build():
                     f.write(line)
 
+        self.write_index(doc_folder / 'index.md')
 
 
 # =============================================================================================================================

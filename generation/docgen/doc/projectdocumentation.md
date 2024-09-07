@@ -13,7 +13,7 @@ ProjectDocumentation(self, name)
 - C : [compile](#compile) 
 - F : [FromFiles](#fromfiles) 
 - G : [get_module_class](#get_module_class) 
-- W : [write_documentation](#write_documentation) 
+- W : [write_documentation](#write_documentation) [write_index](#write_index) 
 
 # Methods
 
@@ -71,6 +71,21 @@ ProjectDocumentation.write_documentation(self, doc_folder)
 ```
 
 
+
+
+## write_index
+
+``` python
+ProjectDocumentation.write_index(self, file_name)
+```
+
+Write the index file
+
+
+
+##### Arguments
+
+- **file_name** (_str_) : file name to write
 
 
 
