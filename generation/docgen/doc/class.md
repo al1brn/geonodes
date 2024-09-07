@@ -5,11 +5,11 @@
 
 
 # Methods
-- B : [s.title](#build) 
-- C : [s.title](#capture_class) 
-- F : [s.title](#fromdoc) 
-- M : [s.title](#methods) 
-- P : [s.title](#properties) 
+- B : [build](#build) 
+- C : [capture_class](#capture_class) 
+- F : [FromDoc](#fromdoc) 
+- M : [methods](#methods) 
+- P : [properties](#properties) 
 
 ## Methods
 

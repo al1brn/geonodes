@@ -15,9 +15,9 @@ write the document is a homogeneous way.
 
 
 # Methods
-- A : [s.title](#arguments) 
-- F : [s.title](#fromdoc) 
-- R : [s.title](#returns) 
+- A : [arguments](#arguments) 
+- F : [FromDoc](#fromdoc) 
+- R : [returns](#returns) 
 
 ## Methods
 

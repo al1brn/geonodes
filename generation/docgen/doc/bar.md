@@ -9,9 +9,9 @@ Foo dummy class
 
 
 # Methods
-- B : [s.title](#bar_method) 
-- F : [s.title](#foo_class) [s.title](#foo_method) [s.title](#foo_prop1) [s.title](#foo_prop2) [s.title](#foo_static) 
-- O : [s.title](#overriden_method) 
+- B : [bar_method](#bar_method) 
+- F : [foo_class](#foo_class) [foo_method](#foo_method) [foo_prop1](#foo_prop1) [foo_prop2](#foo_prop2) [foo_static](#foo_static) 
+- O : [overriden_method](#overriden_method) 
 
 ## Methods
 

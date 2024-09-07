@@ -5,7 +5,7 @@
 
 
 # Methods
-- B : [s.title](#build_sections) 
+- B : [build_sections](#build_sections) 
 
 ## Methods
 

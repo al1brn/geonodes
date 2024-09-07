@@ -517,7 +517,7 @@ class Class(Section):
                 methods = sorted(alpha[letter], key=lambda s: s.title)
                 yield f"- {letter} : "
                 for s in methods:
-                    yield f"[s.title](#{s.link_token}) "
+                    yield f"[{s.title}](#{s.link_token}) "
                 yield '\n'
             yield '\n'
 
