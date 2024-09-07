@@ -2,6 +2,10 @@
 
 
 
+# Methods
+- P : Properties 
+- M : Methods 
+
 ## Methods
 
 ### __init__
@@ -43,6 +47,7 @@ Doc is a class read by the **Parser**.
 
 ***Arguments***:
 - **doc** (_Doc_) : Doc parsed by **Parser**
+
 
 
 

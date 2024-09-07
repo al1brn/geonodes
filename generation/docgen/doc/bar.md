@@ -2,6 +2,10 @@
 
 
 
+# Methods
+- P : Properties 
+- M : Methods 
+
 ## Methods
 
 ### bar_method
@@ -75,6 +79,7 @@ Foo method
 
 ***Returns***:
 - _float_ : comment on the returned type
+
 
 
 

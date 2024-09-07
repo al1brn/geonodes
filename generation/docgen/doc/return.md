@@ -2,6 +2,10 @@
 
 
 
+# Methods
+- P : Properties 
+- M : Methods 
+
 ## Methods
 
 ### __init__
@@ -21,6 +25,7 @@ Yield a line for return documentation:
 
 
 ### build
+
 
 
 

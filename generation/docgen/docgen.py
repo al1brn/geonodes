@@ -132,7 +132,7 @@ class Section(list):
             first = section.title[0].upper()
             sections = alpha.get(first)
             if sections is None:
-                sections = Section(letter)
+                sections = Section(first)
                 sections.sort_sections = True
                 alpha[first] = sections
             sections.append(section)
@@ -475,7 +475,8 @@ class Class(Section):
     # Build
 
     def build(self, indent=0):
-        for line in super().build(indent=indent):
+
+        for line in self.build_header():
             yield line
 
         if len(self.bases):
@@ -483,6 +484,21 @@ class Class(Section):
             for name in self.bases:
                 yield name + " "
             yield '\n\n'
+
+        if len(self.methods):
+            yield "# Methods\n"
+            alpha = self.alphabetical_sections
+            for letter, methods in alpha.items():
+                yield f"- {letter} : "
+                for s in methods:
+                    yield s.title + ' '
+                yield '\n'
+            yield '\n'
+
+        for section in self.sorted_sections:
+            for line in section.build(indent=1):
+                yield line
+            yield '\n'
 
 # =============================================================================================================================
 # Classes documentation

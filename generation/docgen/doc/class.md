@@ -2,6 +2,10 @@
 
 
 
+# Methods
+- P : Properties 
+- M : Methods 
+
 ## Methods
 
 ### __init__
@@ -30,6 +34,7 @@
 
 
 ### build
+
 
 
 

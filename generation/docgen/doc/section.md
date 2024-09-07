@@ -2,6 +2,10 @@
 
 
 
+# Methods
+- P : Properties 
+- M : Methods 
+
 ## Methods
 
 ### __init__
@@ -133,6 +137,7 @@ sub sections.
 Print the documentation in the console
 
 For debug purpose.
+
 
 
 
