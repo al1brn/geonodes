@@ -514,10 +514,13 @@ class Class(Section):
         # ----------------------------------------------------------------------------------------------------
         # Properties
 
-        for section in self.properties.sorted_sections:
-            for line in section.build():
-                yield line
-            yield '\n'
+        for line in self.properties.build():
+            yield line
+
+        #for section in self.properties.sorted_sections:
+        #    for line in section.build():
+        #        yield line
+        #    yield '\n'
 
         # ----------------------------------------------------------------------------------------------------
         # Methods
