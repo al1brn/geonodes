@@ -19,7 +19,7 @@ write the document is a homogeneous way.
 
 
 
-> inherits from: [Section](.section.md) 
+> inherits from: [Section](section.md) 
 
 ## Methods and Properties
 - A : [arguments](#arguments) [arguments](#arguments) 

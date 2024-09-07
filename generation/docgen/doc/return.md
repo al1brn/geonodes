@@ -16,7 +16,7 @@ Yield a line for return documentation:
 
 
 
-> inherits from: [Section](.section.md) 
+> inherits from: [Section](section.md) 
 
 ## Methods and Properties
 - B : [build](#build) 

@@ -636,7 +636,7 @@ class Class(Section):
         if len(self.bases):
             yield f"\n> inherits from: "
             for name in self.bases:
-                yield f"[{name}](.{name.lower()}.md) "
+                yield f"[{name}]({name.lower()}.md) "
             yield '\n\n'
 
         # ----------------------------------------------------------------------------------------------------
