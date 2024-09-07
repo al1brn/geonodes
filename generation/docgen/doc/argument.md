@@ -14,11 +14,7 @@ Yield a line for argument documentation:
 # Methods
 - B : [build](#build) 
 
-## Methods
-
-### build
-
-
+## build
 
 
 

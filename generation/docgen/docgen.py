@@ -524,7 +524,7 @@ class Class(Section):
         # ----------------------------------------------------------------------------------------------------
         # Methods
 
-        for section in self.sorted_sections:
+        for section in self.methods.sorted_sections:
             for line in section.build(indent=1):
                 yield line
             yield '\n'

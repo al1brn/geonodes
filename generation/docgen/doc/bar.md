@@ -13,51 +13,23 @@ Foo dummy class
 - F : [foo_class](#foo_class) [foo_method](#foo_method) [foo_prop1](#foo_prop1) [foo_prop2](#foo_prop2) [foo_static](#foo_static) 
 - O : [overriden_method](#overriden_method) 
 
-## Methods
-
-### bar_method
+## bar_method
 
 Bar method
 
 
 
 
-### overriden_method
 
-Bar overriden method
-
-
-
-
-### foo_prop1
-
-Foo prop 1
-
-
-
-
-### foo_prop2
-
-Foo prop 2
-
-
-
-
-### foo_static
-
-Foo static method
-
-
-
-
-### foo_class
+## foo_class
 
 Foo class property
 
 
 
 
-### foo_method
+
+## foo_method
 
 Foo method
 
@@ -73,6 +45,36 @@ Foo method
 
 ***Returns***:
 - _float_ : comment on the returned type
+
+
+
+## foo_prop1
+
+Foo prop 1
+
+
+
+
+
+## foo_prop2
+
+Foo prop 2
+
+
+
+
+
+## foo_static
+
+Foo static method
+
+
+
+
+
+## overriden_method
+
+Bar overriden method
 
 
 

@@ -19,19 +19,7 @@ write the document is a homogeneous way.
 - F : [FromDoc](#fromdoc) 
 - R : [returns](#returns) 
 
-## Methods
-
-### arguments
-
-
-
-
-### returns
-
-
-
-
-### FromDoc
+## FromDoc
 
 Create a class from an instance of Doc
 
@@ -41,6 +29,16 @@ Doc is a class read by the **Parser**.
 
 ***Arguments***:
 - **doc** (_Doc_) : Doc parsed by **Parser**
+
+
+
+## arguments
+
+
+
+
+
+## returns
 
 
 

@@ -23,64 +23,7 @@ A Section produces documentation:
 - P : [print](#print) 
 - S : [sorted_sections](#sorted_sections) 
 
-## Methods
-
-### md_file_name
-
-MD Document file name
-
-
-
-***Returns***:
-- _str_ : markdown file name
-
-
-### link_token
-
-MD link token
-
-The markdown token is the lower case title where spaces are replaces by '-' char
-
-
-
-***Returns***:
-- _str_ : markdown token
-
-
-### link_to
-
-MD link
-
-
-
-***Returns***:
-- _str_ : [title](url + link_token)
-
-
-### get_section
-
-Look for a sub section by its title
-
-
-
-***Arguments***:
-- **title** (_str_) : the section to look for
-
-***Returns***:
-- _Section_
-
-
-### sorted_sections
-
-Sort the sub sections in alphabetical order
-
-
-
-***Returns***:
-- _List_ : list of the sub sections sorted in alphabetical order
-
-
-### alphabetical_sections
+## alphabetical_sections
 
 Build a dictionary keyed by the section title initials
 
@@ -98,21 +41,8 @@ Used to diplay a table of content when there is a great number of sections.
 - _dict_
 
 
-### build_header
 
-Yield the lines of the header part
-
-
-
-
-### build_sections
-
-Yield the lines of the sections parts
-
-
-
-
-### build
+## build
 
 Yield the lines of the section
 
@@ -128,7 +58,73 @@ sub sections.
 - _str_ : documentation lines for the sections
 
 
-### print
+
+## build_header
+
+Yield the lines of the header part
+
+
+
+
+
+## build_sections
+
+Yield the lines of the sections parts
+
+
+
+
+
+## get_section
+
+Look for a sub section by its title
+
+
+
+***Arguments***:
+- **title** (_str_) : the section to look for
+
+***Returns***:
+- _Section_
+
+
+
+## link_to
+
+MD link
+
+
+
+***Returns***:
+- _str_ : [title](url + link_token)
+
+
+
+## link_token
+
+MD link token
+
+The markdown token is the lower case title where spaces are replaces by '-' char
+
+
+
+***Returns***:
+- _str_ : markdown token
+
+
+
+## md_file_name
+
+MD Document file name
+
+
+
+***Returns***:
+- _str_ : markdown file name
+
+
+
+## print
 
 Print the documentation in the console
 
@@ -137,6 +133,15 @@ For debug purpose.
 
 
 
+
+## sorted_sections
+
+Sort the sub sections in alphabetical order
+
+
+
+***Returns***:
+- _List_ : list of the sub sections sorted in alphabetical order
 
 
 

@@ -11,33 +11,33 @@
 - M : [methods](#methods) 
 - P : [properties](#properties) 
 
-## Methods
-
-### FromDoc
+## FromDoc
 
 
 
 
-### properties
 
-
-
-
-### methods
-
-
-
-
-### capture_class
-
-
-
-
-### build
+## build
 
 
 __init__ comment as class comment
 
+
+
+
+## capture_class
+
+
+
+
+
+## methods
+
+
+
+
+
+## properties
 
 
 

@@ -14,11 +14,7 @@ Yield a line for return documentation:
 # Methods
 - B : [build](#build) 
 
-## Methods
-
-### build
-
-
+## build
 
 
 
