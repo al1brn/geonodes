@@ -43,7 +43,7 @@ Function.arguments(self)
 
 ## FromDoc
 
-**Decorators**: Class method
+> **Decorators**: Class method
 
 ``` python
 Function.FromDoc(cls, doc, class_name=None)

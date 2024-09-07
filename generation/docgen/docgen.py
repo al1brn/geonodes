@@ -496,7 +496,7 @@ class Function(Section):
 
             before = ""
             if len(decos):
-                before = "**Decorators**: " + ", ".join(decos) + '\n\n'
+                before = "> **Decorators**: " + ", ".join(decos) + '\n\n'
 
             if len(doc.args):
                 if class_name is None:

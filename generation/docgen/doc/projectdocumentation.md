@@ -18,7 +18,7 @@ ProjectDocumentation(self, name)
 
 ## FomFiles
 
-**Decorators**: Class method
+> **Decorators**: Class method
 
 ``` python
 ProjectDocumentation.FomFiles(cls, name, folder, sub_folders=[])
