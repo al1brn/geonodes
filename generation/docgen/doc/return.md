@@ -11,6 +11,9 @@ Yield a line for return documentation:
 
 
 
+
+**inherits from** Section 
+
 ## Methods and Properties
 - B : [build](#build) 
 

@@ -520,18 +520,6 @@ class Class(Section):
         for line in self.methods.build():
             yield line
 
-        #for section in self.properties.sorted_sections:
-        #    for line in section.build():
-        #        yield line
-        #    yield '\n'
-
-        # ----------------------------------------------------------------------------------------------------
-        # Methods
-
-        #for section in self.methods.sorted_sections:
-        #    for line in section.build():
-        #        yield line
-        #    yield '\n'
 
 # =============================================================================================================================
 # Classes documentation
@@ -688,87 +676,7 @@ class ProjectDocumentation:
 
 
 # =============================================================================================================================
-# Tests
-
-class Foo:
-    def __init__(self, foo_name, comment="Comment string"):
-        """ Foo class
-
-        Foo dummy class
-
-        Arguments
-        ---------
-        - foo_name (str) : Foo name
-        - comment : The comment string
-        """
-    @property
-    def foo_prop1(self):
-        """ Foo prop 1
-        """
-        pass
-
-    @property
-    def foo_prop2(self):
-        """ Foo prop 2
-        """
-        pass
-
-    @foo_prop2.setter
-    def foo_prop2(self, value):
-        """ Foo prop 2
-        """
-        pass
-
-    @staticmethod
-    def foo_static():
-        """ Foo static method
-        """
-        pass
-
-    @classmethod
-    def foo_class(cls):
-        """ Foo class method
-        """
-        pass
-
-    @classmethod
-    @property
-    def foo_class(cls):
-        """ Foo class property
-        """
-        pass
-
-    def foo_method(self, name, name_str, name_str_comm, name_def="Default name", name_def_comm="Default name", **kwargs):
-        """ Foo method
-
-        Arguments
-        ---------
-        - name
-        - name_str (str)
-        - name_str_comm (str) : The comment on name str
-        - name_def (str="Default name")
-        - name_def_comm (str="Default name") : The comment on name str default
-        - **kwargs : comment on kwargs
-
-        Returns
-        -------
-        - float : comment on the returned type
-        """
-
-    def overriden_method(self):
-        """ Foo overriden method
-        """
-
-class Bar(Foo):
-
-    def bar_method(self):
-        """ Bar method
-        """
-
-    def overriden_method(self):
-        """ Bar overriden method
-        """
-
+# Test on the current folder
 
 def tests():
 
@@ -781,15 +689,14 @@ def tests():
     # ====================================================================================================
     # Step 2 : build document hierarchy
 
-    proj.add_class('Bar', capture=['Foo'])
     proj.add_class('Section')
-    proj.add_class('Argument')
-    #proj.add_class('Arguments')
-    proj.add_class('Return')
-    #proj.add_class('Returns')
-    proj.add_class('Function')
-    proj.add_class('Class')
-    proj.add_class('Classes')
+    proj.add_class('Argument', bases=['Section'])
+    proj.add_class('Return', bases=['Section'])
+    proj.add_class('Function', bases=['Section'])
+    proj.add_class('Class', bases=['Section'])
+    proj.add_class('Classes', bases=['Section'])
+    proj.add_class('Module')
+    proj.add_class('ProjectDocumentation')
 
 
     # ====================================================================================================

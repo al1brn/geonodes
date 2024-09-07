@@ -4,6 +4,9 @@
 
 
 
+
+**inherits from** Section 
+
 ## Methods and Properties
 - B : [build](#build) 
 - C : [capture_class](#capture_class) 
