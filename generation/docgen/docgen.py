@@ -254,9 +254,9 @@ class Function(Section):
                     match = re.search(expr, line)
 
                     if match is None:
-                        raise Exception(f"Return spec not correctly formatted\n{line}")
-
-                    self.returns.append(Return(match.group(1), match.group(3)))
+                        self.returns.append(Return(name = line[2:]))
+                    else:
+                        self.returns.append(Return(match.group(1), match.group(3)))
 
         self.comment = new_comment
 
@@ -376,7 +376,7 @@ class Module:
         self.classes   = {}
         self.functions = {}
 
-        for doc in self.docs:
+        for doc in self.docs.values():
             if doc.is_class:
                 self.classes[doc.name] = Class.FromDoc(doc)
             else:
@@ -387,10 +387,9 @@ class Module:
 
 class ProjectDocumentation:
 
-    def __init__(self, name, doc_folder):
+    def __init__(self, name):
 
         self.name       = name
-        self.doc_folder = Path(doc_folder)
 
         # ----- Modules contain the source modules with their classes and functions
 
@@ -416,9 +415,9 @@ class ProjectDocumentation:
     # Read the modules from files
 
     @classmethod
-    def FomFiles(cls, name, folder, sub_folders=[], doc_folder='doc'):
+    def FomFiles(cls, name, folder, sub_folders=[]):
 
-        proj = cls(name, Path(folder) / doc_folder)
+        proj = cls(name)
 
         root_folder = Path(folder)
         all_folders = ["."] + sub_folders
@@ -432,7 +431,7 @@ class ProjectDocumentation:
                 if not fpath.match("*.py"):
                     continue
                 print("Parse", fpath)
-                proj.add_module(subf, fpath.read_text())
+                proj.add_module(subf + '_' + fpath.name, fpath.read_text())
 
         return proj
 
@@ -443,7 +442,7 @@ class ProjectDocumentation:
 
         class_ = None
         if module_name is None:
-            for m in self.modules:
+            for m in self.modules.values():
                 fc = m.classes.get(class_name)
                 if fc is not None:
                     class_ = fc
@@ -452,7 +451,7 @@ class ProjectDocumentation:
             class_ = self.modules[module_name].get(class_name)
 
         if class_ is None and halt:
-            raise Exception(f"Class '{class_name}' not found in {list(self.modules.keys())}")
+            raise Exception(f"Class '{class_name}' not found in modules {list(self.modules.keys())}")
 
         return class_
 
@@ -479,7 +478,7 @@ class ProjectDocumentation:
         # ----- Capture transparent root classes
 
         for cname in capture:
-            class_.capture(self.get_module_class(cname))
+            class_.capture_class(self.get_module_class(cname))
 
         # ----- Register the class to comment
 
@@ -487,8 +486,19 @@ class ProjectDocumentation:
 
         return class_
 
+    # ====================================================================================================
+    # Write the documentation
 
+    def write_documentation(self, doc_folder):
 
+        doc_folder = Path(doc_folder)
+
+        for class_name, class_ in self.classes.items():
+            file_path = doc_folder / class_.md_file_name
+            print(f"Write ‘{class_name}' : {file_path}")
+            with file_path.open(mode='w') as f:
+                for line in class_.build():
+                    f.write(line)
 
 
 
@@ -577,9 +587,26 @@ class Bar(Foo):
 
 def tests():
 
-    root = Path(__file__)
+    # ====================================================================================================
+    # Step 1 : read project files from root folder
 
-    proj = ProjectDocumentation.FomFiles('Test', folder=root.parents[0], sub_folders=[], doc_folder='doc')
+    root = Path(__file__).parents[0]
+    proj = ProjectDocumentation.FomFiles('Test', folder=root, sub_folders=[])
+
+    # ====================================================================================================
+    # Step 2 : build document hierarchy
+
+    proj.add_class('Bar', capture=['Foo'])
+
+    # ====================================================================================================
+    # Step 3 : write the documentation
+
+    proj.write_documentation(doc_folder=root / 'doc')
+
+
+
+
+
 
     return
 
