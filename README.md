@@ -816,21 +816,48 @@ Creating _Shader Nodes_ is the same as creating _Geometry Nodes_, with the follo
 - **out** method takes the class type to select the proper socket between _Surface_, _Volume_, _Displacement_ and _Thickness_
 
 ``` python
-with ShaderNodes("Arrow"):
+from geonodes import *
 
-    pos_color = Color(snd.attribute(attribute_type='GEOMETRY', attribute_name="Color").vector)
-    negative  = snd.attribute(attribute_type='GEOMETRY', attribute_name="Negative").fac
-    transp    = snd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").fac
+with ShaderNodes("Surface Shader"):
 
-    neg_color = pos_color.hue_saturation_value(hue=.5, saturation=.9, value=.9)
-    color = pos_color.mix(negative, neg_color)
+    # ----- Principled BSDF
 
     ped = Shader.Principled(
-        base_color = color,
-        roughness  = negative.map_range(to_min=.1, to_max=.9),
+        base_color = (.1, .2, .3),
+        roughness = .2,
     )
 
-    shader = ped.mix(transp, Shader.Transparent())
+    # ----- To surface output
 
-    shader.out()
+    ped.out()
+
+    # ----- Noise displacement
+
+    noise = Texture.Noise()
+
+    bump = snd.bump(height=noise)
+    bump.out()
+
+    # ----- Thickness
+
+    a_float = Float(.1)
+
+    a_float.out()
+
+    # ----- AOV Output
+
+    snd.aov_output(color=Color((.6, .7, .9)), value=pi, aov_name='Test')
+
+with ShaderNodes("Volume Shader"):
+
+    # ----- Principled BSDF
+
+    ped = VolumeShader.Principled(
+        color = (.1, .2, .3),
+        density = .01,
+    )
+
+    # ----- To surface output
+
+    ped.out()
 ```

@@ -231,6 +231,14 @@ class DataSocket(NodeCache):
     def _lcop(self, label=None):
         return self._lc(label=label, color='OPERATION')
 
+    # =============================================================================================================================
+    # Access to other output sockets of the owning node
+
+    def __getattr__(self, name):
+        if name[-1] != '_':
+            raise AttributeError(f"Class {type(self).__name__} as no property named '{name}'")
+
+        return getattr(self.node, name[:-1])
 
     # =============================================================================================================================
     # Test a value in a list
@@ -362,25 +370,29 @@ class DataSocket(NodeCache):
 
         # ----- Create the items
 
-        enum_items = node._bnode.enum_items
-        menu_index = None
-        for i, (menu_name, menu_value) in enumerate(items.items()):
+        if True:
+            node._set_items(items, clear=True)
 
-            # ----- Create the socket
+        else:
+            enum_items = node._bnode.enum_items
+            menu_index = None
+            for i, (menu_name, menu_value) in enumerate(items.items()):
 
-            if i < len(enum_items):
-                enum_items[i].name = menu_name
-            else:
-                enum_items.new(menu_name)
+                # ----- Create the socket
 
-            # ----- Is it the menu socket
+                if i < len(enum_items):
+                    enum_items[i].name = menu_name
+                else:
+                    enum_items.new(menu_name)
 
-            if isinstance(menu, str) and menu == menu_name:
-                menu_index = i
+                # ----- Is it the menu socket
 
-            # ----- Plug the value
+                if isinstance(menu, str) and menu == menu_name:
+                    menu_index = i
 
-            node.plug_value_into_socket(menu_value, node.in_socket(1 + i))
+                # ----- Plug the value
+
+                node.plug_value_into_socket(menu_value, node.in_socket(1 + i))
 
         # ----- Plug the menu
 

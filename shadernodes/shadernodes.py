@@ -25,35 +25,6 @@ updates
 - update : 2024/09/04
 """
 
-""""
-import numpy as np
-
-pi     = np.pi
-tau    = 2*np.pi
-halfpi = np.pi/2
-d30    = np.pi/6
-d45    = np.pi/4
-d60    = np.pi/3
-d90    = halfpi
-d180   = pi
-d270   = np.pi*1.5
-d360   = tau
-e      = np.e
-
-from .treeclass import Break, Layout, Node, Group, Tree
-from .floatclass import Float
-from .socketclass import String
-from .vectorclass import Vector, Rotation
-from .colorclass import Color
-from .shaderclass import Shader
-from .textures import Texture
-from . import gnmath
-from .staticclass_sn import StaticClass
-
-from .scripterror import NodeError
-
-"""
-
 from .staticclass import StaticClass
 from ..geonodes.treeclass import Tree, Node
 from ..geonodes.scripterror import NodeError

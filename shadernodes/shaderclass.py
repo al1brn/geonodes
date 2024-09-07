@@ -33,19 +33,57 @@ from ..geonodes import utils
 from ..geonodes.treeclass import Tree, Node
 from ..geonodes.socketclass import ValueSocket
 
-class Shader(ValueSocket):
+# =============================================================================================================================
+# Shader Root
 
-    def to_output(self, name=None):
-        if self._tree._is_group:
-            super().to_output(name=name)
-        else:
-            self._tree.surface=self
+class ShaderRoot(ValueSocket):
 
     def surface_out(self, target='ALL'):
         self._tree.set_surface(self, target=target)
 
     def volume_out(self, target='ALL'):
         self._tree.set_volume(self, target=target)
+
+    # =============================================================================================================================
+    # Properties
+
+    def to_rgb(self):
+        node = Node('Shader to RGB', {'Shader': self})
+        col = node._out
+        col._alpha = node.alpha
+        return col
+
+    # =============================================================================================================================
+    # Methods
+
+    def add(self, other=None):
+        node = Node('Add Shader', {0: self, 1: other})
+        return node._out
+
+    def mix(self, fac=None, other=None):
+        node = Node('Mix Shader', {0: fac, 1: self, 2: other})
+        return node._out
+
+    # =============================================================================================================================
+    # Operations
+
+    def __add__(self, other):
+        return self.add(other)
+
+    def __radd__(self, other):
+        return self.add(other)
+
+
+# =============================================================================================================================
+# Surface Shader
+
+class Shader(ShaderRoot):
+
+    def to_output(self, name=None):
+        if self._tree._is_group:
+            super().to_output(name=name)
+        else:
+            self._tree.surface=self
 
     # =============================================================================================================================
     # Constructors
@@ -103,14 +141,6 @@ class Shader(ValueSocket):
         return node._out
 
     @classmethod
-    def PrincipledVolume(cls, color=None, color_attribute=None, density=None, density_attribute=None, anisotropy=None, absorption_color=None, emission_strength=None, emission_color=None, blackbody_intensity=None, blackbody_tint=None, temperature=None, temperature_attribute=None):
-        """ Node 'Principled Volume' (ShaderNodeVolumePrincipled)
-        """
-
-        node = Node('Principled Volume', {'Color': color, 'Color Attribute': color_attribute, 'Density': density, 'Density Attribute': density_attribute, 'Anisotropy': anisotropy, 'Absorption Color': absorption_color, 'Emission Strength': emission_strength, 'Emission Color': emission_color, 'Blackbody Intensity': blackbody_intensity, 'Blackbody Tint': blackbody_tint, 'Temperature': temperature, 'Temperature Attribute': temperature_attribute})
-        return node._out
-
-    @classmethod
     def Refraction(cls, color=None, roughness=None, ior=None, normal=None, distribution='BECKMANN'):
         """ Node 'Refraction BSDF' (ShaderNodeBsdfRefraction)
         - distribution in ('BECKMANN', 'GGX')
@@ -152,47 +182,39 @@ class Shader(ValueSocket):
         node = Node('Transparent BSDF', {'Color': color})
         return node._out
 
+
+# =============================================================================================================================
+# Volume Shader
+
+class VolumeShader(ShaderRoot):
+
+    def to_output(self, name=None):
+        print("Vlume shader I'm OK")
+        if self._tree._is_group:
+            super().to_output(name=name)
+        else:
+            self._tree.volume=self
+
     @classmethod
-    def VolumeAbsorption(cls, color=None, density=None):
+    def Principled(cls, color=None, color_attribute=None, density=None, density_attribute=None, anisotropy=None, absorption_color=None, emission_strength=None, emission_color=None, blackbody_intensity=None, blackbody_tint=None, temperature=None, temperature_attribute=None):
+        """ Node 'Principled Volume' (ShaderNodeVolumePrincipled)
+        """
+
+        node = Node('Principled Volume', {'Color': color, 'Color Attribute': color_attribute, 'Density': density, 'Density Attribute': density_attribute, 'Anisotropy': anisotropy, 'Absorption Color': absorption_color, 'Emission Strength': emission_strength, 'Emission Color': emission_color, 'Blackbody Intensity': blackbody_intensity, 'Blackbody Tint': blackbody_tint, 'Temperature': temperature, 'Temperature Attribute': temperature_attribute})
+        return cls(node._out)
+
+    @classmethod
+    def Absorption(cls, color=None, density=None):
         """ Node 'Volume Absorption' (ShaderNodeVolumeAbsorption)
         """
 
         node = Node('Volume Absorption', {'Color': color, 'Density': density})
-        return node._out
+        return cls(node._out)
 
     @classmethod
-    def VolumeScatter(cls, color=None, density=None, anisotropy=None):
+    def Scatter(cls, color=None, density=None, anisotropy=None):
         """ Node 'Volume Scatter' (ShaderNodeVolumeScatter)
         """
 
         node = Node('Volume Scatter', {'Color': color, 'Density': density, 'Anisotropy': anisotropy})
-        return node._out
-
-    # =============================================================================================================================
-    # Properties
-
-    def to_rgb(self):
-        node = Node('Shader to RGB', {'Shader': self})
-        col = node._out
-        col._alpha = node.alpha
-        return col
-
-    # =============================================================================================================================
-    # Methods
-
-    def add(self, other=None):
-        node = Node('Add Shader', {0: self, 1: other})
-        return node._out
-
-    def mix(self, fac=None, other=None):
-        node = Node('Mix Shader', {0: fac, 1: self, 2: other})
-        return node._out
-
-    # =============================================================================================================================
-    # Operations
-
-    def __add__(self, other):
-        return self.add(other)
-
-    def __radd__(self, other):
-        return self.add(other)
+        return cls(node._out)

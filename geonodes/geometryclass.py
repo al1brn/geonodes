@@ -116,10 +116,26 @@ class GeoBase:
 
     @property
     def position(self):
+        """ Node 'Position' (GeometryNodeInputPosition)
+
+        [!Node] Position
+
+        Returns
+        -------
+        - Vector
+        """
         return Node('Position')._out
 
     @position.setter
     def position(self, value):
+        """ Node 'Set Position' (GeometryNodeSetPosition)
+
+        [!Node] Set Position
+
+        Arguments
+        ---------
+        - value (Vector) : socket 'Position' (Position)
+        """
         node = Node('Set Position', {'Geometry': self._geo, 'Selection': self._sel, 'Position': value})
         return self._geo._jump(node._out)
 
@@ -129,6 +145,14 @@ class GeoBase:
 
     @offset.setter
     def offset(self, value):
+        """ Node 'Set Position' (GeometryNodeSetPosition)
+
+        [!Node] Set Position
+
+        Arguments
+        ---------
+        - value (Vector) : socket 'Offset' (Offset)
+        """
         node = Node('Set Position', {'Geometry': self._geo, 'Selection': self._sel, 'Offset': value})
         return self._geo._jump(node._out)
 
@@ -136,10 +160,26 @@ class GeoBase:
 
     @property
     def id(self):
+        """ Node 'ID' (GeometryNodeInputID)
+
+        [!Node] ID
+
+        Returns
+        -------
+        - Integer
+        """
         return GeoBase.ID
 
     @id.setter
     def id(self, value):
+        """ Node 'Set ID' (GeometryNodeSetID)
+
+        [!Node] Set ID
+
+        Arguments
+        ---------
+        - value (Integer) : socket 'ID' (ID)
+        """
         node = Node('Set ID', {'Geometry': self._geo, 'Selection': self._sel, 'ID': value})
         return self._geo._jump(node._out)
 
@@ -147,18 +187,42 @@ class GeoBase:
 
     @property
     def material_index(self):
+        """ Node 'Material Index' (GeometryNodeInputMaterialIndex)
+
+        [!Node] Material Index
+
+        Returns
+        -------
+        - Integer
+        """
         return Node('Material Index')._out
 
     @material_index.setter
     def material_index(self, value):
+        """ Node 'Set Material Index' (GeometryNodeSetMaterialIndex)
+
+        [!Node] Set Material Index
+
+        Arguments
+        ---------
+        - value (Integer) : socket 'Material Index' (Material Index)
+        """
         self._geo._jump(Node('Set Material Index', {'Geometry': self._geo, 'Selection': self._sel, 'Material Index': value})._out)
 
     @property
     def material(self):
-        raise NodeError("Material property is write only.")
+        raise NodeError(f"material is write only property")
 
     @material.setter
     def material(self, value):
+        """ Node 'Set Material' (GeometryNodeSetMaterial)
+
+        [!Node] Set Material
+
+        Arguments
+        ---------
+        - value (Material) : socket 'Material' (Material)
+        """
         self._geo._jump(Node('Set Material', {'Geometry': self._geo, 'Selection': self._sel, 'Material': value})._out)
 
     @classmethod
@@ -175,8 +239,6 @@ class GeoBase:
 
         Arguments
         ---------
-        - geometry (Geometry) : socket 'Geometry' (Geometry)
-        - selection (Boolean) : socket 'Selection' (Selection)
         - position (Vector) : socket 'Position' (Position)
         - offset (Vector) : socket 'Offset' (Offset)
 
@@ -184,7 +246,6 @@ class GeoBase:
         -------
         - Geometry
         """
-
         node = Node('Set Position', {'Geometry': self._geo, 'Selection': self._sel, 'Position': position, 'Offset': offset})._out
         return self._geo_type(node._out)
 
@@ -203,7 +264,6 @@ class GeoBase:
         -------
         - Geometry
         """
-
         node = Node('Set ID', {'Geometry': self._geo, 'Selection': self._sel, 'ID': id})
         return self._geo_type(node._out)
 
@@ -223,10 +283,6 @@ class GeoBase:
         """
         node = Node('Replace Material', {'Geometry': self._geo, 'Old': old, 'New': new})
         return self._geo_type(node._out)
-
-
-
-
 
     # ====================================================================================================
     # Selection mechanism
@@ -942,17 +998,14 @@ class Domain(GeoBase, NodeCache):
         """
 
         node = self._node('Capture Attribute')
-        items = node._bnode.capture_items
-        attributes = others if attribute is None else {'attribute': attribute, **others}
-        for i, (attr_name, attr_value) in enumerate(attributes.items()):
-            items.new(utils.get_input_type(attr_value), attr_name)
-            node.plug_value_into_socket(attr_value, node.in_socket(1 + i))
+        sockets = others if attribute is None else {'attribute': attribute, **others}
+        if len(sockets) == 0:
+            raise NodeError("'Capture Attribute' error: need at least one attribute")
+        node._set_items(sockets)
 
         self._geo._jump(node._out)
 
-        if len(attributes) == 0:
-            return node
-        elif len(others) == 0:
+        if len(others) == 0:
             return node.attribute
         else:
             return node

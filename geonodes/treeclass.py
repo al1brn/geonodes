@@ -811,7 +811,7 @@ class Tree:
 # Node
 
 class Node:
-    def __init__(self, node_name, sockets={}, _keep=None, **parameters):
+    def __init__(self, node_name, sockets={}, _items={}, _keep=None, **parameters):
         """ Node wrapper.
 
         The node wrapper exposes input and output sockets and the node parameters.
@@ -896,12 +896,16 @@ class Node:
         ---------
         - node_name (str) : Node name
         - sockets (dict or list) : initialization values for the node input sockets
+        - _items (dict = {}) : dynamic sockets to create
         - **kwargs : node parameters initialization
 
         Returns
         -------
         - Node
         """
+
+        # ----------------------------------------------------------------------------------------------------
+        # Create the Node
 
         self._tree = Tree.current_tree
         btree = self._tree._btree
@@ -919,7 +923,8 @@ class Node:
 
             bl_idname = node_name
 
-        # ----- Is the node kept from previous version
+        # ----------------------------------------------------------------------------------------------------
+        # Node keeping
 
         keeped_node = None
         if _keep is not None:
@@ -941,13 +946,23 @@ class Node:
             self._label = "KEEP " + _keep
             self._color = Tree._get_color('KEEP')
 
-        # ----- Configuration
+        # ----------------------------------------------------------------------------------------------------
+        # Node setup
+
         # Parameters first to configure the sockets
 
         self.set_parameters(**parameters)
+
+        # Dynamic sockets
+
+        self._set_items(_items)
+
+        # Plug the sockets
+
         self.set_input_sockets(sockets)
 
-        # ----- Register the node
+        # ----------------------------------------------------------------------------------------------------
+        # Register the node
 
         self._tree.register_node(self)
 
@@ -963,6 +978,54 @@ class Node:
         s += "\n"
 
         return s
+
+    # ----------------------------------------------------------------------------------------------------
+    # Dynamic nodes have a property xxx_items and a property active_item
+
+    @property
+    def _has_items(self):
+        return 'active_item' in dir(self._bnode)
+
+    @property
+    def _items(self):
+        if self._has_items:
+            for name in dir(self._bnode):
+                if name[-6:] == '_items':
+                    return getattr(self._bnode, name)
+            raise NodeError(f"Node '{self._bnode.name}' has no items !")
+        else:
+            return None
+
+    def _set_items(self, _items={}, clear=True, **kwargs):
+        if len(_items) == 0 and len(kwargs) == 0:
+            return
+
+        if not self._has_items:
+            raise NodeError(f"Error when initializing node '{self._bnode.name}: this node has no items. Impossible to create the sockets.",
+                _items=_items)
+
+        all_items = {**_items, **kwargs}
+
+        node_items = self._items
+        if clear:
+            node_items.clear()
+
+        for socket_name, socket_value in all_items.items():
+
+            # ----- Create
+
+            # 'new' method takes only one argument
+            if self._bnode.bl_idname in ['GeometryNodeMenuSwitch']:
+                sck = node_items.new(socket_name)
+
+            # 'new' method takes two arguments
+            else:
+                input_type = 'GEOMETRY' if socket_value is None else utils.get_input_type(socket_value)
+                sck = node_items.new(input_type, socket_name)
+
+            # ----- Plug
+
+            self.plug_value_into_socket(socket_value, self.in_socket(sck.name))
 
     # ----------------------------------------------------------------------------------------------------
     # Create a DataSocket from an output Blender NodeSocket

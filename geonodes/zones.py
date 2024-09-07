@@ -58,7 +58,7 @@ from .treeclass import Tree, Node
 # A zone
 
 class Zone:
-    def init_zone(self, create_geometry=True, **kwargs):
+    def init_zone(self, sockets={}, create_geometry=True, **kwargs):
 
         # ---- Add initial Geometry socket if necessary
 
@@ -78,17 +78,7 @@ class Zone:
 
         # ----- Create the simulation state items
 
-        self._items.clear()
-        for name, value in all_sockets.items():
-
-            if value is None:
-                input_type = 'GEOMETRY'
-            else:
-                input_type = utils.get_input_type(value)
-
-            self._items.new(socket_type=input_type, name=name)
-
-            self._input.plug_value_into_socket(value, self._input.in_socket(name))
+        self._output._set_items(_items=sockets, clear=True, **kwargs)
 
         # ----- Variables used within the with statement
 
@@ -101,10 +91,6 @@ class Zone:
             if geo.SOCKET_TYPE == 'GEOMETRY':
                 if all_sockets[k] is not None:
                     self._locals[k] = type(all_sockets[k])(geo)
-
-        # ----- Let's active dynamic attributes
-        # _closed = True  : variables point to input and output nodes
-        # _closed = False : variables point to _locals dict
 
         self._closed = True
 
@@ -173,7 +159,7 @@ class Zone:
 
 class Repeat(Zone):
 
-    def __init__(self, iterations=1, **kwargs):
+    def __init__(self, sockets={}, iterations=1, **kwargs):
 
         tree = Tree.current_tree
 
@@ -183,13 +169,8 @@ class Repeat(Zone):
         self._output = Node('GeometryNodeRepeatOutput')
         self._input._bnode.pair_with_output(self._output._bnode)
 
-        self.init_zone(create_geometry=True, **kwargs)
+        self.init_zone(sockets=sockets, create_geometry=True, **kwargs)
         self._input.iterations = iterations
-
-    @property
-    def _items(self):
-        return self._output._bnode.repeat_items
-
 
 # ====================================================================================================
 # Simulation zone
@@ -257,7 +238,7 @@ class Simulation(Zone):
       and, once the simulation closed, as the result of the simulation.
     """
 
-    def __init__(self, **kwargs):
+    def __init__(self, sockets={}, **kwargs):
 
         # ----- Create an link the input and output simulation nodes
 
@@ -266,8 +247,4 @@ class Simulation(Zone):
         self._input._bnode.pair_with_output(self._output._bnode)
 
 
-        self.init_zone(create_geometry=True, **kwargs)
-
-    @property
-    def _items(self):
-        return self._output._bnode.state_items
+        self.init_zone(sockets=sockets, create_geometry=True, **kwargs)

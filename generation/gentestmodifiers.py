@@ -764,3 +764,46 @@ def demo():
         color = color.mix(.5, Texture.Voronoi().color)
         color = color.mix(.5, Texture.Wave().color)
         color = color.mix(.5, Texture.WhiteNoise().color)
+
+    with ShaderNodes("Surface Shader"):
+
+        # ----- Principled BSDF
+
+        ped = Shader.Principled(
+            base_color = (.1, .2, .3),
+            roughness = .2,
+        )
+
+        # ----- To surface output
+
+        ped.out()
+
+        # ----- Noise displacement
+
+        noise = Texture.Noise()
+
+        bump = snd.bump(height=noise)
+        bump.out()
+
+        # ----- Thickness
+
+        a_float = Float(.1)
+
+        a_float.out()
+
+        # ----- AOV Output
+
+        snd.aov_output(color=Color((.6, .7, .9)), value=pi, aov_name='Test')
+
+    with ShaderNodes("Volume Shader"):
+
+        # ----- Principled BSDF
+
+        ped = VolumeShader.Principled(
+            color = (.1, .2, .3),
+            density = .01,
+        )
+
+        # ----- To surface output
+
+        ped.out()

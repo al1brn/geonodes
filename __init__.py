@@ -33,4 +33,4 @@ from .geonodes.geometryclass import Geometry, Mesh, Curve, Cloud, Instances, Vol
 # Shader
 
 from .shadernodes.shadernodes import ShaderNodes, snd
-from .shadernodes.shaderclass import Shader
+from .shadernodes.shaderclass import Shader, VolumeShader

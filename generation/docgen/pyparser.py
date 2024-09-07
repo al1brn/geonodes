@@ -12,6 +12,15 @@ from pathlib import Path
 import inspect
 
 # ====================================================================================================
+# Utilitye
+
+def ok_comment(s):
+    if s is None or s.split() == "":
+        return False
+    else:
+        return True
+
+# ====================================================================================================
 # Text reader
 
 class Reader:
@@ -309,6 +318,101 @@ class Tokenizer(Reader):
         return tokens
 
 # ====================================================================================================
+# Item Documentation
+
+class Doc:
+    def __init__(self, match):
+        """ Item documentation
+
+        This class stores the documentation of a functions or a class.
+        In addition to the doc, it contains complementary information:
+        - function:
+          - args : call arguments
+          - decorators : list of decorators
+        - class:
+          - bases : list of classes it inherits from
+          - funcs : dict of method docs
+
+        The class is initialized with the not null result of the regular expression:
+
+        ``` match = re.search(r"(def|class)\s+(\w+)([^:]*)", line) ```
+
+        which returns:
+        1. def | class
+        2. name
+        3. args | base class
+
+        Arguments
+        ---------
+        - match (re.search result) : see above
+        """
+
+        self.is_class     = match.group(1) == 'class'
+        self.name         = match.group(2)
+        self.bef_comment  = ""
+        self.aft_comment  = ""
+
+        if self.is_class:
+            content_pat = r"\s*\((.*)\)"
+            m = re.search(content_pat, match.group(3))
+            if m is None:
+                self.bases = []
+            else:
+                self.bases = m.group(1).split(',')
+            self.funcs = {}
+
+        else:
+            self.class_doc  = None
+            self.args       = match.group(3)
+            self.decorators = []
+
+    @property
+    def comment(self):
+        return self.aft_comment
+
+    @comment.setter
+    def comment(self, value):
+        self.aft_comment = value
+
+    def __str__(self):
+        if self.is_class:
+            return f"<Doc class {self.name} {len(self.funcs)}, comment: {self.comment is not None}>"
+        else:
+            return f"<Doc method {self.name} {self.decorators}, comment: {self.comment is not None}>"
+
+    # ----------------------------------------------------------------------------------------------------
+    # Repr
+
+    def __repr__(self):
+        indent = "" if (self.is_class or self.class_doc is None) else "    "
+        scomm = f"\n{indent}    | ".join([""] + self.comment.split("\n"))
+        if self.is_class:
+            sfuncs = "\n".join([repr(func) for func in self.funcs.values()])
+            return f"{'='*100}\nclass {self.name}\n{scomm}\n{sfuncs}"
+        else:
+            if self.decorators:
+                decs = f"\n{indent}".join([""] + self.decorators) + "\n"
+            else:
+                decs = ""
+            return f"{indent}{'-'*80}\n{decs}{indent}def {self.name}{self.args}\n{scomm}\n"
+
+    # ----------------------------------------------------------------------------------------------------
+    # __str__
+
+    def structure(self):
+        indent = "" if (self.is_class or self.class_doc is None) else "    "
+        #scomm = f"\n{indent}    | ".join([""] + self.comment.split("\n"))
+        if self.is_class:
+            sfuncs = "\n   - ".join([func for func in self.funcs.keys()])
+            return f"{'='*100}\nclass {self.name}\n{sfuncs}"
+        else:
+            if self.decorators:
+                decs = f"\n{indent}".join([""] + self.decorators) + "\n"
+            else:
+                decs = ""
+            return f"{indent}{'-'*80}\n{decs}{indent}def {self.name}{self.args}\n"
+
+# ====================================================================================================
 # Simple python parser
 
 class Parser(Reader):
@@ -518,7 +622,7 @@ class Parser(Reader):
     # ---------------------------------------------------------------------------
     # Source code without comments
 
-    def source_code_only(self, indented=True):
+    def uncommented(self, indented=True):
 
         lines = []
         for packet in self.to_packets():
@@ -528,21 +632,18 @@ class Parser(Reader):
                 else:
                     lines.extend(packet[2])
 
-        if False:
-            print('='*100)
-            print(self.text)
-            print('-'*100)
-            print("\n".join(lines))
-            print()
-
         return "\n".join(lines)
-
-
 
     # ---------------------------------------------------------------------------
     # Return classes and functions from a python file
 
     def documentation(self):
+        """ Retrieve the document of a python files
+
+        Returns
+        -------
+        - list of Docs : A Doc instance for each function and class of the file
+        """
 
         # ---------------------------------------------------------------------------
         # Works on types indented packets
@@ -551,52 +652,6 @@ class Parser(Reader):
 
         # ---------------------------------------------------------------------------
         # Let's loop on these packets
-
-        class Doc:
-            def __init__(self, match):
-                self.is_class = match.group(1) == 'class'
-                self.name     = match.group(2)
-                self.bef_comment  = ""
-                self.aft_comment  = ""
-
-                if self.is_class:
-                    content_pat = r"\s*\((.*)\)"
-                    m = re.search(content_pat, match.group(3))
-                    if m is None:
-                        self.bases = []
-                    else:
-                        self.bases = m.group(1).split(',')
-                    self.funcs = {}
-
-                else:
-                    self.class_doc  = None
-                    self.args       = match.group(3)
-                    self.decorators = []
-
-            @property
-            def comment(self):
-                # Takes before comment or not
-                if True:
-                    return self.aft_comment
-                else:
-                    return self.bef_comment if self.aft_comment == "" else self.aft_comment
-
-            @comment.setter
-            def comment(self, value):
-                self.aft_comment = value
-
-            def __repr__(self):
-                indent = "" if (self.is_class or self.class_doc is None) else "    "
-                scomm = f"\n{indent}    | ".join([""] + self.comment.split("\n"))
-                if self.is_class:
-                    sfuncs = "\n".join([repr(func) for func in self.funcs.values()])
-                    return f"{'='*100}\nclass {self.name}\n{scomm}\n{sfuncs}"
-                else:
-                    if self.decorators:
-                        decs = f"\n{indent}".join([""] + self.decorators) + "\n"
-                    else:
-                        decs = ""
-                    return f"{indent}{'-'*80}\n{decs}{indent}def {self.name}{self.args}\n{scomm}\n"
 
         docs = {}
 
@@ -693,7 +748,7 @@ class Parser(Reader):
 # ====================================================================================================
 # Class documentation
 
-SECTIONS = ['Properties', 'Class and static methods', 'Methods']
+SECTIONS = ['Properties', 'Methods']
 
 class ClassDoc:
 
@@ -708,34 +763,28 @@ class ClassDoc:
         self.sections    = {section: {} for section in SECTIONS}
 
     @property
-    def props(self):
-        return self.sections[SECTIONS[0]]
-
-    @property
-    def cs_methods(self):
-        return self.sections[SECTIONS[1]]
+    def properties(self):
+        return self.sections['Properties']
 
     @property
     def methods(self):
-        return self.sections[SECTIONS[2]]
-
+        return self.sections['Methods']
 
     # ----------------------------------------------------------------------------------------------------
-    # Rep
+    # Repr
 
     def __repr__(self):
-        s = f"class {self.name} (functions: {self.functions})\n"
+        s = f"class {self.name}\n"
         s += f"   - init       : {self.init is not None}\n"
         s += f"   - comment    : {self.comment[:15]}...\n"
-        s += f"   - props      : {len(self.props)}\n"
-        s += f"   - cs_methods : {len(self.cs_methods)}\n"
+        s += f"   - props      : {len(self.properties)}\n"
         s += f"   - methods    : {len(self.methods)}\n"
         return s
 
     # ----------------------------------------------------------------------------------------------------
     # Add the result of a python file parsing
 
-    def add(self, cdoc):
+    def add_OLD(self, cdoc):
 
         # ----- Check
 
@@ -1009,10 +1058,9 @@ class Module:
         - documented_classes (dict) : classes already documented
 
         """
-        self.name      = file_name.split("/")[-1].split(".")[0]
-        self.file_name = file_name
+        self.path       = Path(file_name)
 
-        self.parsed     = Parser.FromFile(file_name).documentation()
+        self.parsed     = Parser.FromFile(self.path).documentation()
         self.class_docs = {}
         self.functions  = ClassDoc('functions', is_class=False)
 
@@ -1031,6 +1079,10 @@ class Module:
                 self.documented_classes = list(self.class_docs.keys())
             else:
                 self.documented_classes = documented_classes
+
+    @property
+    def file_name(self):
+        return self.path.name
 
     def __repr__(self):
         return f"module {self.name}\n{pformat(self.class_docs)}\n"
