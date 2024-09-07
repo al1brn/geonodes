@@ -17,12 +17,24 @@ Foo class property
 
 
 
+### Arguments
+
+
+### Returns
+
+
 
 
 ## foo_prop1
 
 Foo prop 1
 
+
+
+### Arguments
+
+
+### Returns
 
 
 
@@ -33,6 +45,12 @@ Foo class property
 
 
 
+### Arguments
+
+
+### Returns
+
+
 
 
 ## foo_method
@@ -41,7 +59,8 @@ Foo method
 
 
 
-#### Arguments
+### Arguments
+
 - **name**
 - **name_str** (_str_)
 - **name_str_comm** (_str_) : The comment on name str
@@ -49,7 +68,8 @@ Foo method
 - **name_def_comm** (_str_ = "Default name") : The comment on name str default
 - ****kwargs : comment on kwargs**
 
-#### Returns
+### Returns
+
 - _float_ : comment on the returned type
 
 
@@ -60,6 +80,12 @@ Foo prop 1
 
 
 
+### Arguments
+
+
+### Returns
+
+
 
 
 ## foo_prop2
@@ -68,12 +94,24 @@ Foo prop 2
 
 
 
+### Arguments
+
+
+### Returns
+
+
 
 
 ## foo_static
 
 Foo static method
 
+
+
+### Arguments
+
+
+### Returns
 
 
 

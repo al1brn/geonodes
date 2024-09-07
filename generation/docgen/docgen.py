@@ -17,7 +17,7 @@ from .pyparser import Parser
 # Section
 
 class Section(list):
-    def __init__(self, title, comment=None, with_sections_only=False, sort_sections=False):
+    def __init__(self, title, comment=None, level=0, with_sections_only=False, sort_sections=False):
         """ Elementary base of a documentation
 
         A **Section** is basically a title and a comment.
@@ -40,6 +40,7 @@ class Section(list):
 
         self.title              = title
         self.comment            = comment
+        self.level              = 0
         self.with_sections_only = with_sections_only
         self.sort_sections      = sort_sections
 
@@ -146,22 +147,23 @@ class Section(list):
     # ====================================================================================================
     # Yield the documentation
 
-    def build_header(self, indent=0):
+    def build_header(self):
         """ Yield the lines of the header part
         """
-        yield '#'*(indent + 1) + ' ' + self.title + '\n\n'
+        yield '#'*(self.level + 1) + ' ' + self.title + '\n\n'
         if self.comment is not None:
             yield self.comment + '\n\n'
 
-    def build_sections(self, indent=0):
+    def build_sections(self):
         """ Yield the lines of the sections parts
         """
         sections = self.sorted_sections if self.sort_sections else self
         for section in sections:
-            for line in section.build(indent=indent + 1):
+            section.level = self.level + 1
+            for line in section.build():
                 yield line
 
-    def build(self, indent=0):
+    def build(self):
         """ Yield the lines of the section
 
         The method yields the lines from method **build_header** and the from
@@ -177,10 +179,10 @@ class Section(list):
         if self.with_sections_only and len(self) == 0:
             return
 
-        for line in self.build_header(indent=indent):
+        for line in self.build_header():
             yield line
 
-        for line in self.build_sections(indent=indent):
+        for line in self.build_sections():
             yield line
 
         yield "\n"
@@ -221,7 +223,7 @@ class Argument(Section):
         self.type = type
         self.default = default
 
-    def build(self, indent=0):
+    def build(self):
         yield f"- **{self.title}**"
         if self.type is None:
             if self.default is not None:
@@ -256,7 +258,7 @@ class Return(Section):
         """
         super().__init__(name, comment=description)
 
-    def build(self, indent=0):
+    def build(self):
         yield f"- _{self.title}_"
         if self.comment is None:
             yield '\n'
@@ -266,7 +268,7 @@ class Return(Section):
 # =============================================================================================================================
 # Arguments section
 
-class Arguments(Section):
+class Arguments_OLD(Section):
     def __init__(self):
         """ Arguments section of a function
 
@@ -274,14 +276,14 @@ class Arguments(Section):
         """
         super().__init__('Arguments', with_sections_only=True)
 
-    def build_header(self, indent=0):
+    def build_header(self):
         yield "#### Arguments\n"
         #yield r"$${\color{blue}\large\textsf{Arguments}}$$:" + '\n'
 
 # =============================================================================================================================
 # Arguments section
 
-class Returns(Section):
+class Returns_OLD(Section):
     def __init__(self):
         """ Returns section of a function
 
@@ -289,7 +291,7 @@ class Returns(Section):
         """
         super().__init__('Returns', with_sections_only=True)
 
-    def build_header(self, indent=0):
+    def build_header(self):
         yield "#### Returns\n"
         #yield r"$${\color{blue}\large\textsf{Returns}}$$:" + '\n'
 
@@ -314,8 +316,8 @@ class Function(Section):
         - comment (str = None) : header comment
         """
         super().__init__(name)
-        self.append(Arguments())
-        self.append(Returns())
+        self.append(Section("Arguments", level=4))
+        self.append(Section("Returns", level=4))
 
         self.is_staticmethod = False
         self.is_classmethod  = False
@@ -481,7 +483,7 @@ class Class(Section):
     # ====================================================================================================
     # Build
 
-    def build(self, indent=0):
+    def build(self):
 
         # ----------------------------------------------------------------------------------------------------
         # __init__ comment as class comment
@@ -544,7 +546,8 @@ class Class(Section):
         # Properties
 
         for section in self.properties.sorted_sections:
-            for line in section.build(indent=1):
+            section.level = 1
+            for line in section.build():
                 yield line
             yield '\n'
 
@@ -552,7 +555,8 @@ class Class(Section):
         # Methods
 
         for section in self.methods.sorted_sections:
-            for line in section.build(indent=1):
+            section.level = 1
+            for line in section.build():
                 yield line
             yield '\n'
 
@@ -564,7 +568,7 @@ class Classes(Section):
     def __init__(self, class_name, comment):
         super().__init__(class_name, comment, sort_sections=True)
 
-    def build_sections(self, indent=0):
+    def build_sections(self):
         """ Yield the sections parts
         """
         sections = self.sorted_sections
@@ -807,9 +811,9 @@ def tests():
     proj.add_class('Bar', capture=['Foo'])
     proj.add_class('Section')
     proj.add_class('Argument')
-    proj.add_class('Arguments')
+    #proj.add_class('Arguments')
     proj.add_class('Return')
-    proj.add_class('Returns')
+    #proj.add_class('Returns')
     proj.add_class('Function')
     proj.add_class('Class')
     proj.add_class('Classes')

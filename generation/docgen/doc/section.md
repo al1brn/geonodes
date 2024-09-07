@@ -29,7 +29,11 @@ MD Document file name
 
 
 
-#### Returns
+### Arguments
+
+
+### Returns
+
 - _str_ : markdown file name
 
 
@@ -40,7 +44,11 @@ Sort the sub sections in alphabetical order
 
 
 
-#### Returns
+### Arguments
+
+
+### Returns
+
 - _List_ : list of the sub sections sorted in alphabetical order
 
 
@@ -59,10 +67,12 @@ Used to diplay a table of content when there is a great number of sections.
 
 
 
-#### Arguments
+### Arguments
+
 - **alpha** (_dict_ = None) : dictionary to feed
 
-#### Returns
+### Returns
+
 - _dict_
 
 
@@ -79,7 +89,11 @@ sub sections.
 
 
 
-#### Returns
+### Arguments
+
+
+### Returns
+
 - _str_ : documentation lines for the sections
 
 
@@ -90,12 +104,24 @@ Yield the lines of the header part
 
 
 
+### Arguments
+
+
+### Returns
+
+
 
 
 ## build_sections
 
 Yield the lines of the sections parts
 
+
+
+### Arguments
+
+
+### Returns
 
 
 
@@ -106,10 +132,12 @@ Look for a sub section by its title
 
 
 
-#### Arguments
+### Arguments
+
 - **title** (_str_) : the section to look for
 
-#### Returns
+### Returns
+
 - _Section_
 
 
@@ -120,7 +148,11 @@ MD link
 
 
 
-#### Returns
+### Arguments
+
+
+### Returns
+
 - _str_ : [title](url + link_token)
 
 
@@ -133,6 +165,12 @@ For debug purpose.
 
 
 
+### Arguments
+
+
+### Returns
+
+
 
 
 ## sorted_sections
@@ -141,7 +179,11 @@ Sort the sub sections in alphabetical order
 
 
 
-#### Returns
+### Arguments
+
+
+### Returns
+
 - _List_ : list of the sub sections sorted in alphabetical order
 
 
