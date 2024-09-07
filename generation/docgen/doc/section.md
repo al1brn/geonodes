@@ -29,9 +29,6 @@ MD Document file name
 
 
 
-### Arguments
-
-
 ### Returns
 
 - _str_ : markdown file name
@@ -42,9 +39,6 @@ MD Document file name
 
 Sort the sub sections in alphabetical order
 
-
-
-### Arguments
 
 
 ### Returns
@@ -89,9 +83,6 @@ sub sections.
 
 
 
-### Arguments
-
-
 ### Returns
 
 - _str_ : documentation lines for the sections
@@ -104,24 +95,12 @@ Yield the lines of the header part
 
 
 
-### Arguments
-
-
-### Returns
-
-
 
 
 ## build_sections
 
 Yield the lines of the sections parts
 
-
-
-### Arguments
-
-
-### Returns
 
 
 
@@ -148,9 +127,6 @@ MD link
 
 
 
-### Arguments
-
-
 ### Returns
 
 - _str_ : [title](url + link_token)
@@ -165,21 +141,12 @@ For debug purpose.
 
 
 
-### Arguments
-
-
-### Returns
-
-
 
 
 ## sorted_sections
 
 Sort the sub sections in alphabetical order
 
-
-
-### Arguments
 
 
 ### Returns

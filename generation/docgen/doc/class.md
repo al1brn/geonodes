@@ -14,12 +14,6 @@
 
 
 
-### Arguments
-
-
-### Returns
-
-
 
 
 ## build
@@ -28,22 +22,10 @@
 __init__ comment as class comment
 
 
-### Arguments
-
-
-### Returns
-
-
 
 
 ## capture_class
 
-
-
-### Arguments
-
-
-### Returns
 
 
 
@@ -52,22 +34,10 @@ __init__ comment as class comment
 
 
 
-### Arguments
-
-
-### Returns
-
-
 
 
 ## properties
 
-
-
-### Arguments
-
-
-### Returns
 
 
 

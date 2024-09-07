@@ -18,11 +18,5 @@ Yield a line for return documentation:
 
 
 
-### Arguments
-
-
-### Returns
-
-
 
 

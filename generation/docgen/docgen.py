@@ -316,8 +316,8 @@ class Function(Section):
         - comment (str = None) : header comment
         """
         super().__init__(name)
-        self.append(Section("Arguments", level=5))
-        self.append(Section("Returns", level=5))
+        self.append(Section("Arguments", level=5, with_sections_only=True))
+        self.append(Section("Returns", level=5, with_sections_only=True))
 
         self.is_staticmethod = False
         self.is_classmethod  = False

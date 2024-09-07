@@ -23,12 +23,6 @@ write the document is a homogeneous way.
 
 
 
-### Arguments
-
-
-### Returns
-
-
 
 
 ## FromDoc
@@ -43,19 +37,10 @@ Doc is a class read by the **Parser**.
 
 - **doc** (_Doc_) : Doc parsed by **Parser**
 
-### Returns
-
-
 
 
 ## returns
 
-
-
-### Arguments
-
-
-### Returns
 
 
 

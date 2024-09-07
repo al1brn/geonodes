@@ -13,11 +13,5 @@ Yield the sections parts
 
 
 
-### Arguments
-
-
-### Returns
-
-
 
 

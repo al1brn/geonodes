@@ -17,12 +17,6 @@ Foo class property
 
 
 
-### Arguments
-
-
-### Returns
-
-
 
 
 ## foo_prop1
@@ -31,24 +25,12 @@ Foo prop 1
 
 
 
-### Arguments
-
-
-### Returns
-
-
 
 
 ## foo_class
 
 Foo class property
 
-
-
-### Arguments
-
-
-### Returns
 
 
 
@@ -80,12 +62,6 @@ Foo prop 1
 
 
 
-### Arguments
-
-
-### Returns
-
-
 
 
 ## foo_prop2
@@ -94,24 +70,12 @@ Foo prop 2
 
 
 
-### Arguments
-
-
-### Returns
-
-
 
 
 ## foo_static
 
 Foo static method
 
-
-
-### Arguments
-
-
-### Returns
 
 
 
