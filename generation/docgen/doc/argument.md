@@ -2,14 +2,6 @@
 
 
 
-# Methods
-- _ : __init__ 
-- B : build 
-
-## Methods
-
-### __init__
-
 Function argument
 
 Yield a line for argument documentation:
@@ -19,12 +11,10 @@ Yield a line for argument documentation:
 
 
 
-***Arguments***:
-- **name** (_str_) : argument name
-- **type** (_str_ = None) : type name
-- **default** (_str_ = None) : default value
-- **description** (_str_ = None) : description
+# Methods
+- B : build 
 
+## Methods
 
 ### build
 

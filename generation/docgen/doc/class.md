@@ -2,8 +2,9 @@
 
 
 
+
+
 # Methods
-- _ : __init__ 
 - F : FromDoc 
 - P : properties 
 - M : methods 
@@ -11,11 +12,6 @@
 - B : build 
 
 ## Methods
-
-### __init__
-
-
-
 
 ### FromDoc
 

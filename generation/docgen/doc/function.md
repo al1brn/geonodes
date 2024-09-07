@@ -2,16 +2,6 @@
 
 
 
-# Methods
-- _ : __init__ 
-- A : arguments 
-- R : returns 
-- F : FromDoc 
-
-## Methods
-
-### __init__
-
 Section dedicated to function documentation.
 
 A **Function** is made of two sections:
@@ -24,10 +14,12 @@ write the document is a homogeneous way.
 
 
 
-***Arguments***:
-- **name** (_str_) : function or method name
-- **comment** (_str_ = None) : header comment
+# Methods
+- A : arguments 
+- R : returns 
+- F : FromDoc 
 
+## Methods
 
 ### arguments
 

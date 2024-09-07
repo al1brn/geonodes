@@ -2,20 +2,16 @@
 
 
 
-# Methods
-- _ : __init__ 
-- B : build_header 
-
-## Methods
-
-### __init__
-
 
 
 The sub sections are instances of **Return**
 
 
 
+# Methods
+- B : build_header 
+
+## Methods
 
 ### build_header
 

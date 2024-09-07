@@ -476,6 +476,19 @@ class Class(Section):
 
     def build(self, indent=0):
 
+        init = None
+        for section in self.methods:
+            if section.title == '__init__':
+                init = section
+                break
+
+        if init is not None:
+            if self.comment is None:
+                self.comment = init.comment
+            else:
+                self.comment += '\n\n' + init.comment
+            self.methods.remove(init)
+
         for line in self.build_header():
             yield line
 

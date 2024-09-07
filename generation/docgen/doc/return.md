@@ -2,14 +2,6 @@
 
 
 
-# Methods
-- _ : __init__ 
-- B : build 
-
-## Methods
-
-### __init__
-
 Function returns
 
 Yield a line for return documentation:
@@ -19,10 +11,10 @@ Yield a line for return documentation:
 
 
 
-***Arguments***:
-- **name** (_str_) : return type
-- **description** (_str_ = None) : description
+# Methods
+- B : build 
 
+## Methods
 
 ### build
 

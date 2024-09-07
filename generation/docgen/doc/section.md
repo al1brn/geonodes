@@ -2,20 +2,6 @@
 
 
 
-# Methods
-- _ : __init__ 
-- M : md_file_name 
-- L : link_token link_to 
-- G : get_section 
-- S : sorted_sections 
-- A : alphabetical_sections 
-- B : build_header build_sections build 
-- P : print 
-
-## Methods
-
-### __init__
-
 Elementary base of a documentation
 
 A **Section** is basically a title and a comment.
@@ -28,12 +14,16 @@ A Section produces documentation:
 
 
 
-***Arguments***:
-- **title** (_str_) : section title
-- **comment** (_str_ = None) : header comment
-- **with_sections_only** (_bool_ = False) : ignore if there is no sub sections
-- **sort_sections** (_bool_ = False) : sort the sub sections before writting them
+# Methods
+- M : md_file_name 
+- L : link_token link_to 
+- G : get_section 
+- S : sorted_sections 
+- A : alphabetical_sections 
+- B : build_header build_sections build 
+- P : print 
 
+## Methods
 
 ### md_file_name
 
