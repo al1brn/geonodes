@@ -2,6 +2,10 @@
 
 
 
+``` python
+__init__((, s, e, l, f, ,,  , c, l, a, s, s, _, n, a, m, e, ,,  , c, o, m, m, e, n, t, ))
+```
+
 
 
 
@@ -13,6 +17,10 @@
 # Methods
 
 ## build_sections
+
+``` python
+build_sections((, s, e, l, f, ))
+```
 
 Yield the sections parts
 

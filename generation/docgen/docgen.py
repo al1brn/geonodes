@@ -364,11 +364,11 @@ class Function(Section):
 
         # Function information
 
-        self.is_staticmethod = False
-        self.is_classmethod  = False
-        self.is_getter       = False
-        self.is_setter       = False
-        self.args            = None
+        self.is_static = False
+        self.is_class  = False
+        self.is_getter = False
+        self.is_setter = False
+        self.args      = []
 
     # ====================================================================================================
     # Parse the comment
@@ -480,19 +480,43 @@ class Function(Section):
         ---------
         - doc (Doc) : Doc parsed by **Parser**
         """
-        inst = cls(doc.name, doc.comment)
+
+        if True:
+
+            comment = doc.comment
+            if comment is None:
+                comment = ""
+
+            decos = []
+            for deco in doc.decorators:
+                if deco == '@classmethod':
+                    decos.append('Class method')
+                elif deco == '@staticmethod':
+                    decos.append('Static method')
+
+            before = ""
+            if len(decos):
+                before = "**Decorators**: " + ", ".join(decos) + '\n\n'
+
+            if len(doc.args):
+                before += "``` python\nCODE\n```\n\n".replace('CODE', f"{doc.name}({', '.join(doc.args)})")
+
+            if before != "":
+                comment = before + comment
+
+        inst = cls(doc.name, comment)
+
+        inst.args = doc.args
 
         for deco in doc.decorators:
             if deco == '@classmethod':
-                inst.is_classmethod = True
+                inst.is_class = True
             elif deco == '@staticmethod':
-                inst.is_staticmethod = True
+                inst.is_static = True
             elif deco == '@property':
                 inst.is_getter = True
             elif deco.find('.setter')> 0:
                 inst.is_setter = True
-
-        inst.args = doc.args
 
         return inst
 

@@ -2,6 +2,10 @@
 
 
 
+``` python
+__init__((, s, e, l, f, ,,  , n, a, m, e, ,,  , t, y, p, e, =, N, o, n, e, ,,  , d, e, f, a, u, l, t, =, N, o, n, e, ,,  , d, e, s, c, r, i, p, t, i, o, n, =, N, o, n, e, ))
+```
+
 Function argument
 
 Yield a line for argument documentation:
@@ -20,6 +24,10 @@ Yield a line for argument documentation:
 # Methods
 
 ## build
+
+``` python
+build((, s, e, l, f, ))
+```
 
 
 

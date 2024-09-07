@@ -2,6 +2,10 @@
 
 
 
+``` python
+__init__((, s, e, l, f, ,,  , t, i, t, l, e, ,,  , c, o, m, m, e, n, t, =, N, o, n, e, ,,  , l, e, v, e, l, =, 0, ,,  , w, i, t, h, _, s, e, c, t, i, o, n, s, _, o, n, l, y, =, F, a, l, s, e, ,,  , s, o, r, t, _, s, e, c, t, i, o, n, s, =, F, a, l, s, e, ))
+```
+
 Elementary base of a documentation
 
 A **Section** is basically a title and a comment.
@@ -29,6 +33,10 @@ A Section produces documentation:
 
 ## comment
 
+``` python
+comment((, s, e, l, f, ))
+```
+
 Comment property
 
 
@@ -40,6 +48,10 @@ Comment property
 
 ## md_file_name
 
+``` python
+md_file_name((, s, e, l, f, ))
+```
+
 MD Document file name
 
 
@@ -50,6 +62,10 @@ MD Document file name
 
 
 ## sorted_sections
+
+``` python
+sorted_sections((, s, e, l, f, ))
+```
 
 Sort the sub sections in alphabetical order
 
@@ -64,6 +80,10 @@ Sort the sub sections in alphabetical order
 # Methods
 
 ## alphabetical_sections
+
+``` python
+alphabetical_sections((, s, e, l, f, ,,  , a, l, p, h, a, =, N, o, n, e, ))
+```
 
 Build a dictionary keyed by the section title initials
 
@@ -88,6 +108,10 @@ Used to diplay a table of content when there is a great number of sections.
 
 ## build
 
+``` python
+build((, s, e, l, f, ))
+```
+
 Yield the lines of the section
 
 The method yields the lines from method **build_header** and the from
@@ -105,6 +129,10 @@ sub sections.
 
 ## build_header
 
+``` python
+build_header((, s, e, l, f, ))
+```
+
 Yield the lines of the header part
 
 
@@ -112,12 +140,20 @@ Yield the lines of the header part
 
 ## build_sections
 
+``` python
+build_sections((, s, e, l, f, ))
+```
+
 Yield the lines of the sections parts
 
 
 
 
 ## get_section
+
+``` python
+get_section((, s, e, l, f, ,,  , t, i, t, l, e, ))
+```
 
 Look for a sub section by its title
 
@@ -134,10 +170,18 @@ Look for a sub section by its title
 
 ## init
 
+``` python
+init((, s, e, l, f, ))
+```
+
 
 
 
 ## link_to
+
+``` python
+link_to((, s, e, l, f, ,,  , u, r, l, =, ", ", ))
+```
 
 MD link
 
@@ -149,6 +193,10 @@ MD link
 
 
 ## parse_comment
+
+``` python
+parse_comment((, s, e, l, f, ,,  , c, o, m, m, e, n, t, ))
+```
 
 Parse comment to extract information
 
@@ -168,6 +216,10 @@ The default implementation returns the argument without change.
 
 ## print
 
+``` python
+print((, s, e, l, f, ))
+```
+
 Print the documentation in the console
 
 For debug purpose.
@@ -176,6 +228,10 @@ For debug purpose.
 
 
 ## sorted_sections
+
+``` python
+sorted_sections((, s, e, l, f, ))
+```
 
 Sort the sub sections in alphabetical order
 
