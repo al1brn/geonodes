@@ -368,7 +368,7 @@ class Function(Section):
         self.is_class  = False
         self.is_getter = False
         self.is_setter = False
-        self.args      = []
+        self.args      = None
 
     # ====================================================================================================
     # Parse the comment
@@ -499,7 +499,7 @@ class Function(Section):
                 before = "**Decorators**: " + ", ".join(decos) + '\n\n'
 
             if len(doc.args):
-                before += "``` python\nCODE\n```\n\n".replace('CODE', f"{doc.name}({', '.join(doc.args)})")
+                before += "``` python\nCODE\n```\n\n".replace('CODE', f"{doc.name}{doc.args}")
 
             if before != "":
                 comment = before + comment

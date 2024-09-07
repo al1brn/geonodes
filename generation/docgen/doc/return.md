@@ -3,7 +3,7 @@
 
 
 ``` python
-__init__((, s, e, l, f, ,,  , n, a, m, e, ,,  , d, e, s, c, r, i, p, t, i, o, n, =, N, o, n, e, ))
+__init__(self, name, description=None)
 ```
 
 Function returns
@@ -26,7 +26,7 @@ Yield a line for return documentation:
 ## build
 
 ``` python
-build((, s, e, l, f, ))
+build(self)
 ```
 
 

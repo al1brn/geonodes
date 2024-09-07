@@ -6,7 +6,7 @@
 
 
 ``` python
-__init__((, s, e, l, f, ,,  , f, i, l, e, _, n, a, m, e, ,,  , d, o, c, u, m, e, n, t, e, d, _, c, l, a, s, s, e, s, =, N, o, n, e, ))
+__init__(self, file_name, documented_classes=None)
 ```
 
 My own comment
@@ -25,7 +25,7 @@ My own comment
 ## file_name
 
 ``` python
-file_name((, s, e, l, f, ))
+file_name(self)
 ```
 
 
@@ -37,7 +37,7 @@ file_name((, s, e, l, f, ))
 ## __repr__
 
 ``` python
-__repr__((, s, e, l, f, ))
+__repr__(self)
 ```
 
 
@@ -46,7 +46,7 @@ __repr__((, s, e, l, f, ))
 ## add_inheritance
 
 ``` python
-add_inheritance((, s, e, l, f, ,,  , c, l, a, s, s, e, s, ,,  , s, u, p, e, r, _, c, l, a, s, s, e, s, =, N, o, n, e, ,,  , s, u, p, e, r, _, m, o, d, u, l, e, =, N, o, n, e, ))
+add_inheritance(self, classes, super_classes=None, super_module=None)
 ```
 
 
@@ -55,7 +55,7 @@ add_inheritance((, s, e, l, f, ,,  , c, l, a, s, s, e, s, ,,  , s, u, p, e, r, _
 ## inherits
 
 ``` python
-inherits((, s, e, l, f, ,,  , c, l, a, s, s, e, s, ,,  , s, u, p, e, r, _, c, l, a, s, s, e, s, =, N, o, n, e, ,,  , s, u, p, e, r, _, m, o, d, u, l, e, =, N, o, n, e, ))
+inherits(self, classes, super_classes=None, super_module=None)
 ```
 
 
@@ -64,7 +64,7 @@ inherits((, s, e, l, f, ,,  , c, l, a, s, s, e, s, ,,  , s, u, p, e, r, _, c, l,
 ## markdown
 
 ``` python
-markdown((, s, e, l, f, ,,  , c, l, a, s, s, _, n, a, m, e, ))
+markdown(self, class_name)
 ```
 
 

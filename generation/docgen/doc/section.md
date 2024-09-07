@@ -3,7 +3,7 @@
 
 
 ``` python
-__init__((, s, e, l, f, ,,  , t, i, t, l, e, ,,  , c, o, m, m, e, n, t, =, N, o, n, e, ,,  , l, e, v, e, l, =, 0, ,,  , w, i, t, h, _, s, e, c, t, i, o, n, s, _, o, n, l, y, =, F, a, l, s, e, ,,  , s, o, r, t, _, s, e, c, t, i, o, n, s, =, F, a, l, s, e, ))
+__init__(self, title, comment=None, level=0, with_sections_only=False, sort_sections=False)
 ```
 
 Elementary base of a documentation
@@ -34,7 +34,7 @@ A Section produces documentation:
 ## comment
 
 ``` python
-comment((, s, e, l, f, ))
+comment(self)
 ```
 
 Comment property
@@ -49,7 +49,7 @@ Comment property
 ## md_file_name
 
 ``` python
-md_file_name((, s, e, l, f, ))
+md_file_name(self)
 ```
 
 MD Document file name
@@ -64,7 +64,7 @@ MD Document file name
 ## sorted_sections
 
 ``` python
-sorted_sections((, s, e, l, f, ))
+sorted_sections(self)
 ```
 
 Sort the sub sections in alphabetical order
@@ -82,7 +82,7 @@ Sort the sub sections in alphabetical order
 ## alphabetical_sections
 
 ``` python
-alphabetical_sections((, s, e, l, f, ,,  , a, l, p, h, a, =, N, o, n, e, ))
+alphabetical_sections(self, alpha=None)
 ```
 
 Build a dictionary keyed by the section title initials
@@ -109,7 +109,7 @@ Used to diplay a table of content when there is a great number of sections.
 ## build
 
 ``` python
-build((, s, e, l, f, ))
+build(self)
 ```
 
 Yield the lines of the section
@@ -130,7 +130,7 @@ sub sections.
 ## build_header
 
 ``` python
-build_header((, s, e, l, f, ))
+build_header(self)
 ```
 
 Yield the lines of the header part
@@ -141,7 +141,7 @@ Yield the lines of the header part
 ## build_sections
 
 ``` python
-build_sections((, s, e, l, f, ))
+build_sections(self)
 ```
 
 Yield the lines of the sections parts
@@ -152,7 +152,7 @@ Yield the lines of the sections parts
 ## get_section
 
 ``` python
-get_section((, s, e, l, f, ,,  , t, i, t, l, e, ))
+get_section(self, title)
 ```
 
 Look for a sub section by its title
@@ -171,7 +171,7 @@ Look for a sub section by its title
 ## init
 
 ``` python
-init((, s, e, l, f, ))
+init(self)
 ```
 
 
@@ -180,7 +180,7 @@ init((, s, e, l, f, ))
 ## link_to
 
 ``` python
-link_to((, s, e, l, f, ,,  , u, r, l, =, ", ", ))
+link_to(self, url="")
 ```
 
 MD link
@@ -195,7 +195,7 @@ MD link
 ## parse_comment
 
 ``` python
-parse_comment((, s, e, l, f, ,,  , c, o, m, m, e, n, t, ))
+parse_comment(self, comment)
 ```
 
 Parse comment to extract information
@@ -217,7 +217,7 @@ The default implementation returns the argument without change.
 ## print
 
 ``` python
-print((, s, e, l, f, ))
+print(self)
 ```
 
 Print the documentation in the console
@@ -230,7 +230,7 @@ For debug purpose.
 ## sorted_sections
 
 ``` python
-sorted_sections((, s, e, l, f, ))
+sorted_sections(self)
 ```
 
 Sort the sub sections in alphabetical order

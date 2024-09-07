@@ -3,7 +3,7 @@
 
 
 ``` python
-__init__((, s, e, l, f, ,,  , c, l, a, s, s, _, n, a, m, e, ,,  , c, o, m, m, e, n, t, ))
+__init__(self, class_name, comment)
 ```
 
 
@@ -19,7 +19,7 @@ __init__((, s, e, l, f, ,,  , c, l, a, s, s, _, n, a, m, e, ,,  , c, o, m, m, e,
 ## build_sections
 
 ``` python
-build_sections((, s, e, l, f, ))
+build_sections(self)
 ```
 
 Yield the sections parts

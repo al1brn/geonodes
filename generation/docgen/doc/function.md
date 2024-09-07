@@ -3,7 +3,7 @@
 
 
 ``` python
-__init__((, s, e, l, f, ,,  , n, a, m, e, ,,  , c, o, m, m, e, n, t, =, N, o, n, e, ,,  , l, e, v, e, l, =, 1, ))
+__init__(self, name, comment=None, level=1)
 ```
 
 Section dedicated to function documentation.
@@ -46,7 +46,7 @@ write the document is a homogeneous way.
 **Decorators**: Class method
 
 ``` python
-FromDoc((, c, l, s, ,,  , d, o, c, ))
+FromDoc(cls, doc)
 ```
 
 Create a class from an instance of Doc
@@ -72,7 +72,7 @@ Doc is a class read by the **Parser**.
 ## parse_comment
 
 ``` python
-parse_comment((, s, e, l, f, ,,  , c, o, m, m, e, n, t, ))
+parse_comment(self, comment)
 ```
 
 Function comment parser

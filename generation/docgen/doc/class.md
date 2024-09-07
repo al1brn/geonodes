@@ -3,7 +3,7 @@
 
 
 ``` python
-__init__((, s, e, l, f, ,,  , c, l, a, s, s, _, n, a, m, e, ,,  , c, o, m, m, e, n, t, ))
+__init__(self, class_name, comment)
 ```
 
 
@@ -22,7 +22,7 @@ __init__((, s, e, l, f, ,,  , c, l, a, s, s, _, n, a, m, e, ,,  , c, o, m, m, e,
 ## properties
 
 ``` python
-properties((, s, e, l, f, ))
+properties(self)
 ```
 
 
@@ -34,7 +34,7 @@ properties((, s, e, l, f, ))
 ## build
 
 ``` python
-build((, s, e, l, f, ))
+build(self)
 ```
 
 __init__ comment as class comment
@@ -44,7 +44,7 @@ __init__ comment as class comment
 ## capture_class
 
 ``` python
-capture_class((, s, e, l, f, ,,  , o, t, h, e, r, ))
+capture_class(self, other)
 ```
 
 
@@ -53,7 +53,7 @@ capture_class((, s, e, l, f, ,,  , o, t, h, e, r, ))
 ## methods
 
 ``` python
-methods((, s, e, l, f, ))
+methods(self)
 ```
 
 
@@ -62,7 +62,7 @@ methods((, s, e, l, f, ))
 ## properties
 
 ``` python
-properties((, s, e, l, f, ))
+properties(self)
 ```
 
 
