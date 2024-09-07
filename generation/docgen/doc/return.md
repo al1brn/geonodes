@@ -15,7 +15,7 @@ Yield a line for return documentation:
 
 
 
-### Arguments:
+#### Arguments:
 - name (str) : return type
 - description (str = None) : description
 
