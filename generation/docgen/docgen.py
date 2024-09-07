@@ -19,8 +19,25 @@ from .pyparser import Parser
 class Section(list):
     def __init__(self, title, comment=None, with_sections_only=False, sort_sections=False):
         """ Elementary base of a documentation
+
+        A **Section** is basically a title and a comment.
+
+        It inherits from a list into which sub sections can be stored.
+        A Section produces documentation:
+        - # Header
+        - Comment
+        - Loop on sub sections
+
+        Arguments
+        ---------
+        - title (str) : section title
+        - comment (str = None) : header comment
+        - with_sections_only (bool=False) : ignore if there is no sub sections
+        - sort_sections (bool = False) : sort the sub sections before writting them
         """
+
         super().__init__()
+
         self.title              = title
         self.comment            = comment
         self.with_sections_only = with_sections_only
@@ -31,6 +48,12 @@ class Section(list):
 
     @property
     def md_file_name(self):
+        """ MD Document file name
+
+        Returns
+        -------
+        - str : markdown file name
+        """
         return f"{self.title.lower().replace(' ', '_')}.md"
 
     # ====================================================================================================
@@ -38,9 +61,23 @@ class Section(list):
 
     @property
     def link_token(self):
+        """ MD link token
+
+        The markdown token is the lower case title where spaces are replaces by '-' char
+
+        Returns
+        -------
+        - str : markdown token
+        """
         return self.title.lower().replace(' ', '-')
 
     def link_to(self, url=""):
+        """ MD link
+
+        Returns
+        -------
+        - str : [title](url + link_token)
+        """
         if url != "":
             url += '#'
         return f"[{self.title}]({url}{self.link_token})"
@@ -49,6 +86,16 @@ class Section(list):
     # Get a section
 
     def get_section(self, title):
+        """ Look for a sub section by its title
+
+        Arguments
+        ---------
+        - title (str) : the section to look for
+
+        Returns
+        -------
+        - Section if found, None otherwise
+        """
         for section in self:
             if section.title == title:
                 return section
@@ -56,10 +103,30 @@ class Section(list):
 
     @property
     def sorted_sections(self):
+        """ Sort the sub sections in alphabetical order
+
+        Returns
+        -------
+        - List : list of the sub sections sorted in alphabetical order
+        """
         return sorted(self, key=lambda s: s.title)
 
     @property
     def alphabetical_sections(self):
+        """ Build a dictionary keyed by the section title initials
+
+        Used to diplay a table of content when there is a great number of sections.
+
+        ```
+        {'A': ['a section', 'another section',
+         'O': ['other section']
+         }
+        ```
+
+        Returns
+        -------
+        - dict of list of Sections
+        """
         alpha = {}
         for section in self:
             first = section.title[0].upper()
@@ -75,14 +142,14 @@ class Section(list):
     # Yield the documentation
 
     def build_header(self, indent=0):
-        """ Yield the header part
+        """ Yield the lines of the header part
         """
         yield '#'*(indent + 1) + ' ' + self.title + '\n\n'
         if self.comment is not None:
             yield self.comment + '\n\n'
 
     def build_sections(self, indent=0):
-        """ Yield the sections parts
+        """ Yield the lines of the sections parts
         """
         sections = self.sorted_sections if self.sort_sections else self
         for section in sections:
@@ -90,9 +157,18 @@ class Section(list):
                 yield line
 
     def build(self, indent=0):
-        """ Yield the whole section
-        """
+        """ Yield the lines of the section
 
+        The method yields the lines from method **build_header** and the from
+        **build_sections**.
+
+        If the flag **with_sections_only** is set, nothing is yield if there is no
+        sub sections.
+
+        Returns
+        -------
+        - str : documentation lines for the sections
+        """
         if self.with_sections_only and len(self) == 0:
             return
 
@@ -104,7 +180,14 @@ class Section(list):
 
         yield "\n"
 
+    # ====================================================================================================
+    # Debug
+
     def print(self):
+        """ Print the documentation in the console
+
+        For debug purpose.
+        """
         print("-"*100)
         for line in self.build():
             print(line, end='')
@@ -115,6 +198,20 @@ class Section(list):
 
 class Argument(Section):
     def __init__(self, name, type=None, default=None, description=None):
+        """ Function argument
+
+        Yield a line for argument documentation:
+        ```
+        - name (type = default) : description
+        ```
+
+        Arguments
+        ---------
+        - name (str) : argument name
+        - type (str = None) : type name
+        - default (str = None) : default value
+        - description (str = None) : description
+        """
         super().__init__(name, comment=description)
         self.type = type
         self.default = default
@@ -140,6 +237,18 @@ class Argument(Section):
 
 class Return(Section):
     def __init__(self, name, description=None):
+        """ Function returns
+
+        Yield a line for return documentation:
+        ```
+        - name  : description
+        ```
+
+        Arguments
+        ---------
+        - name (str) : return type
+        - description (str = None) : description
+        """
         super().__init__(name, comment=description)
 
     def build(self, indent=0):
@@ -154,6 +263,10 @@ class Return(Section):
 
 class Arguments(Section):
     def __init__(self):
+        """ Arguments section of a function
+
+        The sub sections are instances of **Argument**
+        """
         super().__init__('Arguments', with_sections_only=True)
 
     def build_header(self, indent=0):
@@ -165,6 +278,10 @@ class Arguments(Section):
 
 class Returns(Section):
     def __init__(self):
+        """ Returns section of a function
+
+        The sub sections are instances of **Return**
+        """
         super().__init__('Returns', with_sections_only=True)
 
     def build_header(self, indent=0):
@@ -177,6 +294,19 @@ class Returns(Section):
 class Function(Section):
     def __init__(self, name, comment=None):
         """ Section dedicated to function documentation.
+
+        A **Function** is made of two sections:
+        - Properties
+        - Methods
+
+        The comment can contain description of Arguments and Returns.
+        The comment is parsed in order to extract this information and to
+        write the document is a homogeneous way.
+
+        Arguments
+        ---------
+        - name (str) : function or method name
+        - comment (str = None) : header comment
         """
         super().__init__(name)
         self.append(Arguments())
@@ -273,6 +403,14 @@ class Function(Section):
 
     @classmethod
     def FromDoc(cls, doc):
+        """ Create a class from an instance of Doc
+
+        Doc is a class read by the **Parser**.
+
+        Arguments
+        ---------
+        - doc (Doc) : Doc parsed by **Parser**
+        """
         inst = cls(doc.name, doc.comment)
 
         for deco in doc.decorators:
