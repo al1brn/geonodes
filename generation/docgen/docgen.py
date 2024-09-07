@@ -217,12 +217,12 @@ class Argument(Section):
         self.default = default
 
     def build(self, indent=0):
-        yield f"- {self.title}"
+        yield f"- **{self.title}**"
         if self.type is None:
             if self.default is not None:
                 yield f" (= {self.default})"
         else:
-            yield f" ({self.type}"
+            yield f" (_{self.type}_"
             if self.default is None:
                 yield ")"
             else:
@@ -270,7 +270,7 @@ class Arguments(Section):
         super().__init__('Arguments', with_sections_only=True)
 
     def build_header(self, indent=0):
-        yield "*Arguments*:\n"
+        yield "***Arguments***:\n"
 
 # =============================================================================================================================
 # Arguments section
@@ -284,7 +284,7 @@ class Returns(Section):
         super().__init__('Returns', with_sections_only=True)
 
     def build_header(self, indent=0):
-        yield "*Returns*:\n"
+        yield "***Returns***:\n"
 
 # =============================================================================================================================
 # Function section

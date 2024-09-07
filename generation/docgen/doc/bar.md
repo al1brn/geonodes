@@ -26,9 +26,9 @@ Foo dummy class
 
 
 
-*Arguments*:
-- foo_name (str) : Foo name
-- comment : The comment string
+***Arguments***:
+- **foo_name** (_str_) : Foo name
+- **comment** : The comment string
 
 
 ### foo_prop1
@@ -65,15 +65,15 @@ Foo method
 
 
 
-*Arguments*:
-- name
-- name_str (str)
-- name_str_comm (str) : The comment on name str
-- name_def (str = "Default name")
-- name_def_comm (str = "Default name") : The comment on name str default
-- **kwargs : comment on kwargs
+***Arguments***:
+- **name**
+- **name_str** (_str_)
+- **name_str_comm** (_str_) : The comment on name str
+- **name_def** (_str_ = "Default name")
+- **name_def_comm** (_str_ = "Default name") : The comment on name str default
+- ****kwargs : comment on kwargs**
 
-*Returns*:
+***Returns***:
 - float : comment on the returned type
 
 

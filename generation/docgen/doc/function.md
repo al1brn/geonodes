@@ -18,9 +18,9 @@ write the document is a homogeneous way.
 
 
 
-*Arguments*:
-- name (str) : function or method name
-- comment (str = None) : header comment
+***Arguments***:
+- **name** (_str_) : function or method name
+- **comment** (_str_ = None) : header comment
 
 
 ### arguments
@@ -41,8 +41,8 @@ Doc is a class read by the **Parser**.
 
 
 
-*Arguments*:
-- doc (Doc) : Doc parsed by **Parser**
+***Arguments***:
+- **doc** (_Doc_) : Doc parsed by **Parser**
 
 
 

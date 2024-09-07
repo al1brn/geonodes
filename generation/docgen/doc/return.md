@@ -15,9 +15,9 @@ Yield a line for return documentation:
 
 
 
-*Arguments*:
-- name (str) : return type
-- description (str = None) : description
+***Arguments***:
+- **name** (_str_) : return type
+- **description** (_str_ = None) : description
 
 
 ### build

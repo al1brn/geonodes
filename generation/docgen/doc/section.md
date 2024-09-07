@@ -18,11 +18,11 @@ A Section produces documentation:
 
 
 
-*Arguments*:
-- title (str) : section title
-- comment (str = None) : header comment
-- with_sections_only (bool = False) : ignore if there is no sub sections
-- sort_sections (bool = False) : sort the sub sections before writting them
+***Arguments***:
+- **title** (_str_) : section title
+- **comment** (_str_ = None) : header comment
+- **with_sections_only** (_bool_ = False) : ignore if there is no sub sections
+- **sort_sections** (_bool_ = False) : sort the sub sections before writting them
 
 
 ### md_file_name
@@ -31,7 +31,7 @@ MD Document file name
 
 
 
-*Returns*:
+***Returns***:
 - str : markdown file name
 
 
@@ -43,7 +43,7 @@ The markdown token is the lower case title where spaces are replaces by '-' char
 
 
 
-*Returns*:
+***Returns***:
 - str : markdown token
 
 
@@ -53,7 +53,7 @@ MD link
 
 
 
-*Returns*:
+***Returns***:
 - str : [title](url + link_token)
 
 
@@ -63,10 +63,10 @@ Look for a sub section by its title
 
 
 
-*Arguments*:
-- title (str) : the section to look for
+***Arguments***:
+- **title** (_str_) : the section to look for
 
-*Returns*:
+***Returns***:
 - Section
 
 
@@ -76,7 +76,7 @@ Sort the sub sections in alphabetical order
 
 
 
-*Returns*:
+***Returns***:
 - List : list of the sub sections sorted in alphabetical order
 
 
@@ -94,7 +94,7 @@ Used to diplay a table of content when there is a great number of sections.
 
 
 
-*Returns*:
+***Returns***:
 - dict
 
 
@@ -124,7 +124,7 @@ sub sections.
 
 
 
-*Returns*:
+***Returns***:
 - str : documentation lines for the sections
 
 

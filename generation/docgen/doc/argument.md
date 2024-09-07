@@ -15,11 +15,11 @@ Yield a line for argument documentation:
 
 
 
-*Arguments*:
-- name (str) : argument name
-- type (str = None) : type name
-- default (str = None) : default value
-- description (str = None) : description
+***Arguments***:
+- **name** (_str_) : argument name
+- **type** (_str_ = None) : type name
+- **default** (_str_ = None) : default value
+- **description** (_str_ = None) : description
 
 
 ### build
