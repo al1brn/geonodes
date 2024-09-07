@@ -1,6 +1,17 @@
 # Return
 
 
+
+Function returns
+
+Yield a line for return documentation:
+```
+- name  : description
+```
+
+
+
+
 **inherits from** Section 
 
 ## Methods and Properties
@@ -9,6 +20,8 @@
 # Methods
 
 ## build
+
+
 
 
 

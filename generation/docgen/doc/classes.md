@@ -1,6 +1,10 @@
 # Classes
 
 
+
+
+
+
 **inherits from** Section 
 
 ## Methods and Properties
@@ -9,6 +13,10 @@
 # Methods
 
 ## build_sections
+
+Yield the sections parts
+
+
 
 
 

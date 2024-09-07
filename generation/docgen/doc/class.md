@@ -1,6 +1,10 @@
 # Class
 
 
+
+
+
+
 **inherits from** Section 
 
 ## Methods and Properties
@@ -15,18 +19,30 @@
 
 
 
+
+
 # Methods
 
 ## build
 
 
+__init__ comment as class comment
+
+
+
 ## capture_class
+
+
 
 
 ## methods
 
 
+
+
 ## properties
+
+
 
 
 

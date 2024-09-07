@@ -53,7 +53,7 @@ class Section(list):
 
         # ----- Comment after init is done
 
-        self.comment            = comment
+        self.comment = comment
 
     # ====================================================================================================
     # Specific init
@@ -95,7 +95,7 @@ class Section(list):
         -------
         - str : the cleaned comment
         """
-        return self.comment
+        return comment
 
     # ====================================================================================================
     # Target file name
@@ -384,10 +384,8 @@ class Function(Section):
         Arguments
         ---------
         """
-
         if comment is None:
             return None
-
 
         context = 'COMMENT'
         new_comment = ""
@@ -456,6 +454,7 @@ class Function(Section):
                     else:
                         self.returns.append(Return(match.group(1), match.group(3)))
 
+        return new_comment
 
     # ====================================================================================================
     # Arguments and Returns sections
