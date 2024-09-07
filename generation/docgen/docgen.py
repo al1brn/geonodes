@@ -481,11 +481,15 @@ class Class(Section):
         # ----------------------------------------------------------------------------------------------------
         # __init__ comment as class comment
 
-        init = None
-        for section in self.methods:
-            if section.title == '__init__':
-                init = section
-                break
+
+        if True:
+            init = self.methods.get_section('__init__')
+        else:
+            init = None
+            for section in self.methods:
+                if section.title == '__init__':
+                    init = section
+                    break
 
         if init is not None:
             if self.comment is None:
@@ -493,6 +497,18 @@ class Class(Section):
             else:
                 self.comment += '\n\n' + init.comment
             self.methods.remove(init)
+
+        # ----------------------------------------------------------------------------------------------------
+        # Property functions as property
+
+        for func in self.methods:
+            if func.is_setter or func.is_getter:
+                pass
+
+
+
+
+
 
         # ----------------------------------------------------------------------------------------------------
         # Header lines

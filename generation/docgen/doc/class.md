@@ -25,6 +25,7 @@ __init__ comment as class comment
 
 
 
+
 ## capture_class
 
 
