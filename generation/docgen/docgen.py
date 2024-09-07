@@ -24,7 +24,7 @@ class Section(list):
 
         It inherits from a list into which sub sections can be stored.
         A Section produces documentation:
-        - # Header
+        - Header
         - Comment
         - Loop on sub sections
 
