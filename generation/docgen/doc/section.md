@@ -23,7 +23,7 @@ A Section produces documentation:
 - P : [print](#print) 
 - S : [sorted_sections](#sorted_sections) [sorted_sections](#sorted_sections) 
 
-# md_file_name
+## md_file_name
 
 MD Document file name
 
@@ -35,7 +35,7 @@ MD Document file name
 
 
 
-# sorted_sections
+## sorted_sections
 
 Sort the sub sections in alphabetical order
 
@@ -47,7 +47,7 @@ Sort the sub sections in alphabetical order
 
 
 
-# alphabetical_sections
+## alphabetical_sections
 
 Build a dictionary keyed by the section title initials
 
@@ -71,7 +71,7 @@ Used to diplay a table of content when there is a great number of sections.
 
 
 
-# build
+## build
 
 Yield the lines of the section
 
@@ -89,7 +89,7 @@ sub sections.
 
 
 
-# build_header
+## build_header
 
 Yield the lines of the header part
 
@@ -97,7 +97,7 @@ Yield the lines of the header part
 
 
 
-# build_sections
+## build_sections
 
 Yield the lines of the sections parts
 
@@ -105,7 +105,7 @@ Yield the lines of the sections parts
 
 
 
-# get_section
+## get_section
 
 Look for a sub section by its title
 
@@ -121,7 +121,7 @@ Look for a sub section by its title
 
 
 
-# link_to
+## link_to
 
 MD link
 
@@ -133,7 +133,7 @@ MD link
 
 
 
-# print
+## print
 
 Print the documentation in the console
 
@@ -143,7 +143,7 @@ For debug purpose.
 
 
 
-# sorted_sections
+## sorted_sections
 
 Sort the sub sections in alphabetical order
 

@@ -11,7 +11,7 @@ Foo dummy class
 # Methods and Properties
 - F : [foo_class](#foo_class) [foo_class](#foo_class) [foo_method](#foo_method) [foo_prop1](#foo_prop1) [foo_prop1](#foo_prop1) [foo_prop2](#foo_prop2) [foo_static](#foo_static) 
 
-# foo_class
+## foo_class
 
 Foo class property
 
@@ -19,7 +19,7 @@ Foo class property
 
 
 
-# foo_prop1
+## foo_prop1
 
 Foo prop 1
 
@@ -27,7 +27,7 @@ Foo prop 1
 
 
 
-# foo_class
+## foo_class
 
 Foo class property
 
@@ -35,7 +35,7 @@ Foo class property
 
 
 
-# foo_method
+## foo_method
 
 Foo method
 
@@ -56,7 +56,7 @@ Foo method
 
 
 
-# foo_prop1
+## foo_prop1
 
 Foo prop 1
 
@@ -64,7 +64,7 @@ Foo prop 1
 
 
 
-# foo_prop2
+## foo_prop2
 
 Foo prop 2
 
@@ -72,7 +72,7 @@ Foo prop 2
 
 
 
-# foo_static
+## foo_static
 
 Foo static method
 

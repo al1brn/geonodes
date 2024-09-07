@@ -265,40 +265,10 @@ class Return(Section):
             yield f" : {self.comment}\n"
 
 # =============================================================================================================================
-# Arguments section
-
-class Arguments_OLD(Section):
-    def __init__(self):
-        """ Arguments section of a function
-
-        The sub sections are instances of **Argument**
-        """
-        super().__init__('Arguments', with_sections_only=True)
-
-    def build_header(self):
-        yield "#### Arguments\n"
-        #yield r"$${\color{blue}\large\textsf{Arguments}}$$:" + '\n'
-
-# =============================================================================================================================
-# Arguments section
-
-class Returns_OLD(Section):
-    def __init__(self):
-        """ Returns section of a function
-
-        The sub sections are instances of **Return**
-        """
-        super().__init__('Returns', with_sections_only=True)
-
-    def build_header(self):
-        yield "#### Returns\n"
-        #yield r"$${\color{blue}\large\textsf{Returns}}$$:" + '\n'
-
-# =============================================================================================================================
 # Function section
 
 class Function(Section):
-    def __init__(self, name, comment=None):
+    def __init__(self, name, comment=None, level=1):
         """ Section dedicated to function documentation.
 
         A **Function** is made of two sections:
@@ -314,7 +284,7 @@ class Function(Section):
         - name (str) : function or method name
         - comment (str = None) : header comment
         """
-        super().__init__(name)
+        super().__init__(name, level=level)
         self.append(Section("Arguments", level=4, with_sections_only=True))
         self.append(Section("Returns",   level=4, with_sections_only=True))
 
