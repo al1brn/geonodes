@@ -81,7 +81,7 @@ Look for a sub section by its title
 
 
 
-***Arguments***:
+$${\color{blue}Arguments}$$:
 - **title** (_str_) : the section to look for
 
 ***Returns***:

@@ -35,7 +35,7 @@ Foo method
 
 
 
-***Arguments***:
+$${\color{blue}Arguments}$$:
 - **name**
 - **name_str** (_str_)
 - **name_str_comm** (_str_) : The comment on name str

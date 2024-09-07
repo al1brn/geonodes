@@ -270,7 +270,8 @@ class Arguments(Section):
         super().__init__('Arguments', with_sections_only=True)
 
     def build_header(self, indent=0):
-        yield "***Arguments***:\n"
+        #yield "***Arguments***:\n"
+        yield "$${\color{blue}Arguments}$$:\n"
 
 # =============================================================================================================================
 # Arguments section

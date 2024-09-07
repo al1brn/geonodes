@@ -27,7 +27,7 @@ Doc is a class read by the **Parser**.
 
 
 
-***Arguments***:
+$${\color{blue}Arguments}$$:
 - **doc** (_Doc_) : Doc parsed by **Parser**
 
 
