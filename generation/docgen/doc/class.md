@@ -8,14 +8,14 @@ Class(self, class_name, comment)
 
 Section documenting a class
 
-<<Token replacement text>oken replacement text>he structure of the document is:
+The structure of the document is:
 - title (class name)
 - header comment
 - properties & methods table of contents
 - Properties section with the documented properties as sub sections
 - Methods section withe the documented methods as sub sections
 
-<<Token replacement text>oken replacement text>he class documentation is completed afterward by the [compile](#compile) method which get the links coming from inheritance between classes.
+The class documentation is completed afterward by the [compile](#compile) method which get the links coming from inheritance between classes.
 
 
 
@@ -61,12 +61,12 @@ Class.properties
 > **Decorators**: Class method
 
 ``` python
-Class.FromDoc(cls, doc, ignore_uncommented=<Token replacement text>rue)
+Class.FromDoc(cls, doc, ignore_uncommented=True)
 ```
 
 Creates a Class document from a Doc parsed from source file
 
-<Token replacement text>he **doc** argument contains the list of documents methods and properties.
+The **doc** argument contains the list of documents methods and properties.
 
 
 
@@ -75,7 +75,7 @@ Creates a Class document from a Doc parsed from source file
 
 
 - **doc** (_Doc_) : Doc parsed from a sourc file
-- **exclude_uncommented** (_bool_ = <Token replacement text>rue) : exclude the methods which are not commented in the source file
+- **exclude_uncommented** (_bool_ = True) : exclude the methods which are not commented in the source file
 
 ##### Returns
 
@@ -107,7 +107,7 @@ Class.capture_class(self, other)
 
 Capture methods and properties from another Class
 
-<Token replacement text>his method allows to get the documentation of inherited items of a class which is not documentated.
+This method allows to get the documentation of inherited items of a class which is not documentated.
 
 
 

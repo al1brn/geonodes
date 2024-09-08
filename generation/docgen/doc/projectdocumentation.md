@@ -3,24 +3,24 @@
 
 
 ``` python
-ProjectDocumentation(self, title, comment=<<Token replacement text>oken replacement text>one, classes_section=<<Token replacement text>oken replacement text>rue)
+ProjectDocumentation(self, title, comment=None, classes_section=True)
 ```
 
 Project documentation
 
 Building project documentation follows the following steps:
 1. Creating the modules
-2. Adding the classes to document. <<Token replacement text>oken replacement text>he classes must be documented in a module
+2. Adding the classes to document. The classes must be documented in a module
 3. Adding documentation
 4. Compile the documentation to build links between pages
 5. Write the documentation files
 
-<<Token replacement text>oken replacement text>he example below illustrates the steps. For a working example, see [Index](index.md).
+The example below illustrates the steps. For a working example, see [Index](index.md).
 
 ``` python
 # Step 1 : Read project files from root folder
 
-proj = ProjectDocumentation.FromFiles('<<Token replacement text>oken replacement text>est', folder=my_folder, sub_folders=['sub1', 'sub2'])
+proj = ProjectDocumentation.FromFiles('Test', folder=my_folder, sub_folders=['sub1', 'sub2'])
 
 # Step 2 : Declare the classes to document
 
@@ -28,7 +28,7 @@ proj.add_class('Point',  capture = ['Geometry']) proj.add_class('Vector', bases=
 
 # Step 3 : Add documentation
 
-proj.new_section("Presentation", comment = "<<Token replacement text>oken replacement text>his the a geometry project")
+proj.new_section("Presentation", comment = "This the a geometry project")
 
 # Step 4 : Compile
 
@@ -53,18 +53,18 @@ proj.create_documentation(doc_folder)
 ## add_class
 
 ``` python
-ProjectDocumentation.add_class(self, class_name, module_name=<Token replacement text>one, bases=[], capture=[])
+ProjectDocumentation.add_class(self, class_name, module_name=None, bases=[], capture=[])
 ```
 
 Add a class in the documented classes
 
-<Token replacement text>he class is searched in all modules. If there exists homonymes in different modules, 'module_name' specifies the module to get the class from.
+The class is searched in all modules. If there exists homonymes in different modules, 'module_name' specifies the module to get the class from.
 
-<Token replacement text>he 'capture' list contains base classes to copy documentation from. Hence, there exists two ways to manage inheritance:
+The 'capture' list contains base classes to copy documentation from. Hence, there exists two ways to manage inheritance:
 - bases : the documentation makes the inheritance explicit by giving the base class and links to the inherited methods and properties
 - capture : the documentation doesn't mention the inheritance but gives directly the documentation as if it were part of the class
 
-> **<Token replacement text>xplicit inheritance**
+> **Explicit inheritance**
 > _class_name_ : inherits from base_class
 > inherited methods : **method1**, **method2**
 
@@ -79,7 +79,7 @@ Add a class in the documented classes
 
 
 - **class_name** (_str_) : class name
-- **module_name** (_str_ = <Token replacement text>one) : name of the source file module if the class exists in several modules
+- **module_name** (_str_ = None) : name of the source file module if the class exists in several modules
 - **bases** (_list_ = []) : list of base classes
 - **capture** (_list_ = []) : list of classes to copy methods and properties from
 
