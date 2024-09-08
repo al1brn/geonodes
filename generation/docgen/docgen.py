@@ -152,11 +152,13 @@ class Section(list):
 
         Arguments
         ---------
-        - comment (str) = the text to write
+        - comment (str) : the text to write
+        - parse (bool = True) : parse the comment
         """
 
         if len(self):
             self[-1].write(comment)
+
         else:
             if self._comment is None:
                 if parse:
@@ -174,6 +176,11 @@ class Section(list):
         self.write("``` python\n")
         self.write(source.replace("`", "'"), parse=False)
         self.write("```\n\n")
+
+
+        print("WRITE SOURCE")
+
+        print(source.replace("`", "'"))
 
     # ====================================================================================================
     # Properties

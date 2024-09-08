@@ -441,7 +441,8 @@ The current text is either the comment if this section if there is not sub secti
 
 
 
-- **comment** (_str_) : 
+- **comment** (_str_) : the text to write
+- **parse** (_bool_ = True) : parse the comment
 
 
 
