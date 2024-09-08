@@ -379,7 +379,10 @@ class Doc:
 
     @property
     def comment(self):
-        return self.aft_comment
+        if self.aft_comment is None or self.aft_comment == "":
+            return None
+        else:
+            return self.aft_comment
 
     @comment.setter
     def comment(self, value):

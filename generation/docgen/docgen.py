@@ -55,6 +55,10 @@ class Section(list):
 
         self.comment = comment
 
+    def __str__(self):
+        scomm = 'None' if self.comment is None else self.comment[:10] + '...'
+        return f"<Section {type(self).__name__} '{self.title}' {len(self)}, {scomm}>"
+
     # ====================================================================================================
     # Specific init
 
@@ -633,7 +637,7 @@ class Class(Section):
         inst.bases.extend(doc.bases)
 
         for d in doc.funcs.values():
-            if not(d.comment is None or ignore_uncommented):
+            if not(d.comment is None and ignore_uncommented):
                 inst.methods.append(Function.FromDoc(d, class_name=doc.name))
 
         return inst
@@ -952,13 +956,16 @@ class ProjectDocumentation:
         for subf in all_folders:
             if subf == '.':
                 path = root_folder
+                key = '.'
             else:
                 path = root_folder / subf
+                key = subf + '.'
+
             for fpath in path.iterdir():
                 if not fpath.match("*.py"):
                     continue
                 print("Parse", fpath)
-                proj.add_module(subf + '_' + fpath.name, fpath.read_text())
+                proj.add_module(key + fpath.stem, fpath.read_text())
 
         return proj
 
