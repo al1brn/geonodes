@@ -890,7 +890,7 @@ class ProjectDocumentation:
 
         # Step 2 : build document hierarchy
 
-        proj.add_class('Parser)
+        proj.add_class('Parser', capture=['Reader'])
         proj.add_class('Doc')
 
         proj.add_class('Section')
@@ -1083,6 +1083,7 @@ def tests():
     # Step 2 : build document hierarchy
 
     proj.add_class('Parser',   capture = ['Reader'])
+    proj.add_class('Doc')
 
     proj.add_class('Argument', bases=['Section'])
     proj.add_class('Return',   bases=['Section'])

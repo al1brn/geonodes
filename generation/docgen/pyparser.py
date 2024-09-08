@@ -24,9 +24,6 @@ def ok_comment(s):
 # Text reader
 
 class Reader:
-    """ Implements a cursor onto a text
-    """
-
     def __init__(self, text):
         """ Simple python source code parser.
 
