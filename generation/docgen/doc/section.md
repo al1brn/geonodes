@@ -28,10 +28,11 @@ It inherits from a list into which sub sections can be stored. A Section produce
 - I : [init](#init) 
 - L : [level](#level) [link_to](#link_to) 
 - M : [md_file_name](#md_file_name) 
+- N : [new_section](#new_section) 
 - P : [parse_comment](#parse_comment) [print](#print) 
 - S : [sort_sections](#sort_sections) [sorted_sections](#sorted_sections) [sorted_sections](#sorted_sections) 
 - T : [title](#title) 
-- W : [with_sections_only](#with_sections_only) 
+- W : [with_sections_only](#with_sections_only) [write](#write) 
 
 # Properties
 
@@ -302,6 +303,29 @@ MD link
 
 
 <sub>[top](#section) [index](index.md)</sub>
+## new_section
+
+``` python
+Section.new_section(self, title, comment=None, sub_level=1)
+```
+
+Add a sub section
+
+
+
+##### Arguments
+
+- **title** (_str_) : section title
+- **comment** (_str_) : header comment
+- **sub_level** (_int_ = 1) : level increment
+
+##### Returns
+
+- _Section_
+
+
+
+<sub>[top](#section) [index](index.md)</sub>
 ## parse_comment
 
 ``` python
@@ -353,6 +377,25 @@ Sort the sub sections in alphabetical order
 ##### Returns
 
 - _List_ : list of the sub sections sorted in alphabetical order
+
+
+
+<sub>[top](#section) [index](index.md)</sub>
+## write
+
+``` python
+Section.write(self, comment="")
+```
+
+Append text to the current text
+
+The current text is either the comment if this section if there is not sub sections, or the comment of the last sub sections.
+
+
+
+##### Arguments
+
+- **comment** (_str_)
 
 
 

@@ -17,7 +17,7 @@ The comment can contain description of Arguments and Returns. The comment is par
 
 > inherits from: [Section](section.md) 
 
-> inherited: [alphabetical_sections](section.md#alphabetical_sections), [build](section.md#build), [build_extra](section.md#build_extra), [build_header](section.md#build_header), [build_sections](section.md#build_sections), [comment](section.md#comment), [extra](section.md#extra), [get_section](section.md#get_section), [level](section.md#level), [link_to](section.md#link_to), [link_token](section.md#link_token), [md_file_name](section.md#md_file_name), [print](section.md#print), [sort_sections](section.md#sort_sections), [sorted_sections](section.md#sorted_sections), [title](section.md#title), [with_sections_only](section.md#with_sections_only)
+> inherited: [alphabetical_sections](section.md#alphabetical_sections), [build](section.md#build), [build_extra](section.md#build_extra), [build_header](section.md#build_header), [build_sections](section.md#build_sections), [comment](section.md#comment), [extra](section.md#extra), [get_section](section.md#get_section), [level](section.md#level), [link_to](section.md#link_to), [link_token](section.md#link_token), [md_file_name](section.md#md_file_name), [new_section](section.md#new_section), [print](section.md#print), [sort_sections](section.md#sort_sections), [sorted_sections](section.md#sorted_sections), [title](section.md#title), [with_sections_only](section.md#with_sections_only), [write](section.md#write)
 ## Methods and Properties
 - A : [arguments](#arguments) 
 - F : [FromDoc](#fromdoc) 

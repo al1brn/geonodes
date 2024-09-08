@@ -122,7 +122,48 @@ class Section(list):
         return comment
 
     # ====================================================================================================
-    # Target file name
+    # Dynamic documentation
+
+    def new_section(self, title, comment=None, sub_level=1):
+        """ Add a sub section
+
+        Arguments
+        ---------
+        - title (str) : section title
+        - comment (str) : header comment
+        - sub_level (int = 1) : level increment
+
+        Returns
+        -------
+        - Section
+        """
+
+        section = Section(title, comment=comment, level=self.level + sub_level)
+        self.append(section)
+
+        return section
+
+    def write(self, comment=""):
+        """ Append text to the current text
+
+        The current text is either the comment if this section if there is not sub sections,
+        or the comment of the last sub sections.
+
+        Arguments
+        ---------
+        - comment (str) = the text to write
+        """
+
+        if len(self):
+            self[-1].write(comment)
+        else:
+            if self._comment is None:
+                self.comment = comment
+            else:
+                self._comment += '\n' + self.parse_comment(comment)
+
+    # ====================================================================================================
+    # Properties
 
     @property
     def md_file_name(self):
@@ -133,9 +174,6 @@ class Section(list):
         - str : markdown file name
         """
         return f"{self.title.lower().replace(' ', '_')}.md"
-
-    # ====================================================================================================
-    # Link to
 
     @property
     def link_token(self):
@@ -1196,11 +1234,28 @@ def tests():
     proj.add_class('ProjectDocumentation')
 
     # ====================================================================================================
-    # Step 3 : compile
+    # Step 3 : add documentation
+
+    struct = proj.new_section("Project classes")
+
+    struct.new_section("Parser classes")
+    struct.write("- [Parser](parser.md) : simple python source code parser\n")
+    struct.write("- [Doc](doc.md) : list of items documentation returned by the [Parser](parser.md)\n")
+    struct.write()
+
+    struct.new_section("DocGen classes")
+    struct.write("- [ProjectDocumentation](projectdocumentation.md) : Project documentation\n")
+    struct.write("- [Class](class.md) : Class documentation\n")
+    struct.write("- [Function](function.md) : Function documentation\n")
+    struct.write("- [Section](section.md) : Base documentation section\n")
+
+
+    # ====================================================================================================
+    # Step 4 : compile
 
     proj.compile()
 
     # ====================================================================================================
-    # Step 4 : write the documentation
+    # Step 5 : write the documentation
 
     proj.write_documentation(doc_folder=root / 'doc')
