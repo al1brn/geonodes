@@ -465,7 +465,7 @@ Replace a regex match by a string returned by a custom function or a string.
 
 Hooks are applied each time comment is written in the documentation.
 
-With the following piece of code, all the occurences of TOTO in documentation will be replaced by _<Token replacement text>_.
+With the following piece of code, all the occurences of Token replacement text in documentation will be replaced by _Token replacement text_.
 
 ``` python
 Section.line_hook("TOKEN", "<Token replacement text>")

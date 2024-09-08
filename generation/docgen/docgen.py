@@ -85,7 +85,7 @@ class Section(list):
         Hooks are applied each time comment is written in the documentation.
 
         With the following piece of code, all the occurences of [!TOKEN] in documentation
-        will be replaced by _<Token replacement text>_.
+        will be replaced by _Token replacement text_.
 
         ``` python
         Section.line_hook("TOKEN", "<Token replacement text>")
