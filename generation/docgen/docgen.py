@@ -2,7 +2,7 @@ import re
 from pprint import pprint
 from pathlib import Path
 
-from .pyparser import Parser
+from .pyparser import Parser, md_normalize
 
 # =============================================================================================================================
 # Manages the documentation of a project
@@ -155,12 +155,12 @@ class Section(list):
         """
 
         if len(self):
-            self[-1].write(comment)
+            self[-1].write(md_normalize(comment))
         else:
             if self._comment is None:
                 self.comment = comment
             else:
-                self._comment += self.parse_comment(comment)
+                self._comment += self.parse_comment(md_normalize(comment))
 
     # ====================================================================================================
     # Properties
