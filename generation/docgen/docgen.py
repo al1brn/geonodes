@@ -31,9 +31,12 @@ class Section(list):
 
         Properties
         ----------
-        - title (str) : section title
-        - level (int) : indentation level
-        - extra (str) : extra text at the end of the documentation
+        - title (str) : Section title
+        - level (int) : Indentation level
+        - with_sections_only (bool) : The section is printed only if
+          the list of sub sections is not empty
+        - sort_sections (bool) : The sections are printed in alphabetical order
+        - extra (str) : Extra text at the end of the documentation
 
         Arguments
         ---------
@@ -747,8 +750,6 @@ class Class(Section):
                         comment = prop.comment + '\n\n'
                     comment += f"Returns\n- {prop.type}\n"
                     self.properties.append(Function(prop.title, comment))
-                    print(f"PROP ADD in {self.title} :", prop.title, '->', [s.title for s in self.properties])
-
 
         # ----------------------------------------------------------------------------------------------------
         # Extra

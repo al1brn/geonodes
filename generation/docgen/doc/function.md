@@ -19,7 +19,7 @@ write the document is a homogeneous way.
 
 > inherits from: [Section](section.md) 
 
-> inherited: [alphabetical_sections](section.md#alphabetical_sections), [build](section.md#build), [build_extra](section.md#build_extra), [build_header](section.md#build_header), [build_sections](section.md#build_sections), [comment](section.md#comment), [extra](section.md#extra), [get_section](section.md#get_section), [level](section.md#level), [link_to](section.md#link_to), [link_token](section.md#link_token), [md_file_name](section.md#md_file_name), [print](section.md#print), [sorted_sections](section.md#sorted_sections), [title](section.md#title)
+> inherited: [alphabetical_sections](section.md#alphabetical_sections), [build](section.md#build), [build_extra](section.md#build_extra), [build_header](section.md#build_header), [build_sections](section.md#build_sections), [comment](section.md#comment), [get_section](section.md#get_section), [level](section.md#level), [link_to](section.md#link_to), [link_token](section.md#link_token), [md_file_name](section.md#md_file_name), [print](section.md#print), [sorted_sections](section.md#sorted_sections), [title](section.md#title), [with_sections_only](section.md#with_sections_only)
 ## Methods and Properties
 - A : [arguments](#arguments) 
 - F : [FromDoc](#fromdoc) 

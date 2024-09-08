@@ -16,6 +16,11 @@ A Section produces documentation:
 - Extra (for intrapage links)
 
 
+the list of sub sections is not empty
+- sort_sections (bool) : The sections are printed in alphabetical order
+- extra (str) : Extra text at the end of the documentation
+
+
 
 
 > subclasses: [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) 
@@ -24,7 +29,6 @@ A Section produces documentation:
 - A : [alphabetical_sections](#alphabetical_sections) 
 - B : [build](#build) [build_extra](#build_extra) [build_header](#build_header) [build_sections](#build_sections) 
 - C : [comment](#comment) 
-- E : [extra](#extra) 
 - G : [get_section](#get_section) 
 - I : [init](#init) 
 - L : [level](#level) [link_to](#link_to) 
@@ -32,6 +36,7 @@ A Section produces documentation:
 - P : [parse_comment](#parse_comment) [print](#print) 
 - S : [sorted_sections](#sorted_sections) [sorted_sections](#sorted_sections) 
 - T : [title](#title) 
+- W : [with_sections_only](#with_sections_only) 
 
 # Properties
 
@@ -52,22 +57,9 @@ Comment property
 
 
 <sub>[top](#section) [index](index.md)</sub>
-## extra
-
-extra text at the end of the documentation
-
-
-
-##### Returns
-
-- _str_
-
-
-
-<sub>[top](#section) [index](index.md)</sub>
 ## level
 
-indentation level
+Indentation level
 
 
 
@@ -114,13 +106,26 @@ Sort the sub sections in alphabetical order
 <sub>[top](#section) [index](index.md)</sub>
 ## title
 
-section title
+Section title
 
 
 
 ##### Returns
 
 - _str_
+
+
+
+<sub>[top](#section) [index](index.md)</sub>
+## with_sections_only
+
+The section is printed only if
+
+
+
+##### Returns
+
+- _bool_
 
 
 
