@@ -59,6 +59,15 @@ class Section(list):
     # Specific init
 
     def init(self):
+        """ Class initialisation
+
+        This complementary initialisation takes place at the end of **__init__**, before
+        [parse_comment](#parse_comment) is called.
+
+        Allows to initialize attributes which are used in [parse_comment](#parse_comment) method.
+
+        Default method is empty.
+        """
         pass
 
     # ====================================================================================================
@@ -276,6 +285,12 @@ class Argument(Section):
         self.default = default
 
     def build(self):
+        """ Yield line argument
+
+        Returns
+        -------
+        - str : formatted argument line
+        """
         yield f"- **{self.title}**"
         if self.type is None:
             if self.default is not None:
@@ -311,6 +326,12 @@ class Return(Section):
         super().__init__(name, comment=description)
 
     def build(self):
+        """ Yield line return
+
+        Returns
+        -------
+        - str : formatted return line
+        """
         yield f"- _{self.title}_"
         if self.comment is None:
             yield '\n'
@@ -461,10 +482,22 @@ class Function(Section):
 
     @property
     def arguments(self):
+        """ Arguments Section
+
+        Returns
+        -------
+        - Section : title is 'Arguments', sub sections are [Argument](#argument)
+        """
         return self.get_section('Arguments')
 
     @property
     def returns(self):
+        """ Arguments Section
+
+        Returns
+        -------
+        - Section : title is 'Arguments', sub sections are [Return](#return)
+        """
         return self.get_section('Returns')
 
     # ====================================================================================================
@@ -553,6 +586,23 @@ class Function(Section):
 class Class(Section):
 
     def __init__(self, class_name, comment):
+        """ Section documenting a class
+
+        The structure of the document is:
+        - title (class name)
+        - header comment
+        - properties & methods table of contents
+        - Properties section with the documented properties as sub sections
+        - Methods section withe the documented methods as sub sections
+
+        The class documentation is completed afterward by the [compile](#compile) method
+        which get the links coming from inheritance between classes.
+
+        Arguments
+        ---------
+        - class_name (str) : class name
+        - comment (str) : header comment
+        """
         super().__init__(class_name, comment)
 
         self.append(Section('Properties', with_sections_only=True, sort_sections=True))
@@ -563,23 +613,49 @@ class Class(Section):
         self.inherited  = []
 
     @classmethod
-    def FromDoc(cls, doc, exclude_uncommented=True):
+    def FromDoc(cls, doc, ignore_uncommented=True):
+        """ Creates a Class document from a Doc parsed from source file
+
+        The **doc** argument contains the list of documents methods and properties.
+
+        Arguments
+        ---------
+        - doc (Doc) : Doc parsed from a sourc file
+        - exclude_uncommented (bool = True) : exclude the methods which are not commented
+          in the source file
+
+        Returns
+        -------
+        - Class : document on the class
+        """
         inst = cls(doc.name, doc.comment)
 
         inst.bases.extend(doc.bases)
 
         for d in doc.funcs.values():
-            if not(d.comment is None or exclude_uncommented):
+            if not(d.comment is None or ignore_uncommented):
                 inst.methods.append(Function.FromDoc(d, class_name=doc.name))
 
         return inst
 
     @property
     def properties(self):
+        """ Properties Section
+
+        Returns
+        -------
+        - Section : title is 'Properties', sub sections are documented properties
+        """
         return self.get_section('Properties')
 
     @property
     def methods(self):
+        """ Methods Section
+
+        Returns
+        -------
+        - Section : title is 'Methods', sub sections are documented methods
+        """
         return self.get_section('Methods')
 
     # ====================================================================================================
@@ -625,6 +701,19 @@ class Class(Section):
     # Capture methods and properties from another class
 
     def capture_class(self, other):
+        """ Capture methods and properties from another Class
+
+        This method allows to get the documentation of inherited items of a class
+        which is not documentated.
+
+        Arguments
+        ---------
+        - other (Class) : class to copy methods and properties from
+
+        Returns
+        -------
+        - self
+        """
         for section in other.properties:
             if self.properties.get_section(section.title) is None:
                 self.properties.append(section)
@@ -639,6 +728,8 @@ class Class(Section):
     # Build
 
     def build(self):
+        """ Yield the Class documentation lines
+        """
 
         # ----------------------------------------------------------------------------------------------------
         # __init__ comment as class comment
@@ -726,7 +817,7 @@ class Class(Section):
 # =============================================================================================================================
 # Classes documentation
 
-class Classes(Section):
+class Classes_OLD(Section):
 
     def __init__(self, class_name, comment):
         super().__init__(class_name, comment, sort_sections=True)
@@ -742,8 +833,26 @@ class Classes(Section):
 # Module documentation
 
 class Module:
-
     def __init__(self, name, text):
+        """ Module documentation
+
+        A Module is built by parsing source file.
+        If builds two dicts:
+        - classes
+        - functions
+
+        The documents items can be then retrieved to build or enrich
+        project documentation
+
+        > [!NOTE]
+        > The module documentation is not intended written but to served as documentation
+        > source for classes to actually document.
+
+        Arguments
+        ---------
+        - name (str) : module name
+        - text (str) : source code to parse
+        """
 
         self.name = name
         self.docs = Parser(text).documentation()
@@ -763,6 +872,48 @@ class Module:
 class ProjectDocumentation:
 
     def __init__(self, name):
+        """ Project documentation
+
+        Buildinf project documentation follows the following steps:
+        1. Creating the modules
+        2. Adding the classes to document. The classes must be documented in a module
+        3. Compile the documentation to build links between pages
+        4. Write the documentation files
+
+        The example below write the documentation for this project:
+
+        ``` python
+        # Step 1 : read project files from root folder
+
+        root = Path(__file__).parents[0]
+        proj = ProjectDocumentation.FromFiles('Test', folder=root)
+
+        # Step 2 : build document hierarchy
+
+        proj.add_class('Parser)
+        proj.add_class('Doc')
+
+        proj.add_class('Section')
+        proj.add_class('Argument', bases=['Section'])
+        proj.add_class('Return',   bases=['Section'])
+        proj.add_class('Function', bases=['Section'])
+        proj.add_class('Class',    bases=['Section'])
+        proj.add_class('Module')
+        proj.add_class('ProjectDocumentation')
+
+        # Step 3 : compile
+
+        proj.compile()
+
+        # Step 4 : write the documentation
+
+        proj.write_documentation(doc_folder=root / 'doc')
+        ```
+
+        Arguments
+        ---------
+        - name (str) : project name
+        """
 
         self.name       = name
 
@@ -783,7 +934,8 @@ class ProjectDocumentation:
     # Add a module
 
     def add_module(self, name, text):
-
+        """ Add a
+        """
         self.modules[name] = Module(name, text)
 
     # ----------------------------------------------------------------------------------------------------
@@ -930,12 +1082,12 @@ def tests():
     # ====================================================================================================
     # Step 2 : build document hierarchy
 
-    proj.add_class('Section')
+    proj.add_class('Parser',   capture = ['Reader'])
+
     proj.add_class('Argument', bases=['Section'])
     proj.add_class('Return',   bases=['Section'])
     proj.add_class('Function', bases=['Section'])
     proj.add_class('Class',    bases=['Section'])
-    proj.add_class('Classes',  bases=['Section'])
     proj.add_class('Module')
     proj.add_class('ProjectDocumentation')
 

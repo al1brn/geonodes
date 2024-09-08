@@ -4,9 +4,8 @@
 
 - [Argument](argument.md)
 - [Class](class.md)
-- [Classes](classes.md)
 - [Function](function.md)
 - [Module](module.md)
+- [Parser](parser.md)
 - [ProjectDocumentation](projectdocumentation.md)
 - [Return](return.md)
-- [Section](section.md)
