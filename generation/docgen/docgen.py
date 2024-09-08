@@ -29,6 +29,12 @@ class Section(list):
         - Loop on sub sections
         - Extra (for intrapage links)
 
+        Properties
+        ----------
+        - title (str) : section title
+        - level (int) : indentation level
+        - extra (str) : extra text at the end of the documentation
+
         Arguments
         ---------
         - title (str) : section title
@@ -397,8 +403,11 @@ class Function(Section):
 
         # Arguments and Returns sections
 
-        self.append(Section("Arguments", level=4, with_sections_only=True))
-        self.append(Section("Returns",   level=4, with_sections_only=True))
+        self.append(Section("Arguments",  level=4, with_sections_only=True))
+        self.append(Section("Returns",    level=4, with_sections_only=True))
+
+        # Properties can be documented in the __init__comment
+        self.props = Section("Properties")
 
         # Function information
 
@@ -445,6 +454,10 @@ class Function(Section):
             elif line[:6].lower() == 'return':
                 context = 'RETURNS'
                 continue
+            elif line[:10].lower() == 'properties':
+                context = 'PROPERTIES'
+                continue
+
 
             if context == 'COMMENT':
                 if line == "":
@@ -469,19 +482,21 @@ class Function(Section):
                 if line[1] == '-':
                     continue
 
-                if context == 'ARGUMENTS':
+                if context in ['ARGUMENTS', 'PROPERTIES']:
+
+                    target_section = self.arguments if context == 'ARGUMENTS' else self.props
 
                     expr = r"-\s*(\w+)\s*(\((\w+)\s*(=\s*(.+))?\))?(\s*:\s*(.+))?"
                     match = re.search(expr, line)
 
                     if match is None:
-                        self.arguments.append(Argument(name = line[2:]))
+                        target_section.append(Argument(name = line[2:]))
                     else:
-                        self.arguments.append(Argument(
-                                name        = match.group(1),
-                                type        = match.group(3),
-                                default     = match.group(5),
-                                description = match.group(7)))
+                        target_section.append(Argument(
+                            name        = match.group(1),
+                            type        = match.group(3),
+                            default     = match.group(5),
+                            description = match.group(7)))
 
                 elif context == 'RETURNS':
                     expr = r"-\s*(\w+)(\s*:\s*(.+))?"
@@ -491,6 +506,7 @@ class Function(Section):
                         self.returns.append(Return(name = line[2:]))
                     else:
                         self.returns.append(Return(match.group(1), match.group(3)))
+
 
         return new_comment
 
@@ -715,6 +731,23 @@ class Class(Section):
 
         if len(inherited):
             self.inherited = [inherited[key] for key in sorted(inherited.keys())]
+
+        # ----------------------------------------------------------------------------------------------------
+        # Properties documented in the comment section
+        #
+        # Comment parsing may have created properties doc in 'props' section of some functions
+        # (normally __init__)
+
+        for meth in self.methods:
+            for prop in meth.props:
+                if self.properties.get_section(prop.title) is None:
+                    if prop.comment is None:
+                        comment = "Property\n\n"
+                    else:
+                        comment = prop.comment + '\n\n'
+                    comment += f"Returns\n- {prop.type}\n"
+                    self.properties.append(Function(prop.title, comment))
+
 
         # ----------------------------------------------------------------------------------------------------
         # Extra

@@ -24,12 +24,14 @@ A Section produces documentation:
 - A : [alphabetical_sections](#alphabetical_sections) 
 - B : [build](#build) [build_extra](#build_extra) [build_header](#build_header) [build_sections](#build_sections) 
 - C : [comment](#comment) 
+- E : [extra](#extra) 
 - G : [get_section](#get_section) 
 - I : [init](#init) 
-- L : [link_to](#link_to) 
+- L : [level](#level) [link_to](#link_to) 
 - M : [md_file_name](#md_file_name) 
 - P : [parse_comment](#parse_comment) [print](#print) 
 - S : [sorted_sections](#sorted_sections) [sorted_sections](#sorted_sections) 
+- T : [title](#title) 
 
 # Properties
 
@@ -46,6 +48,32 @@ Comment property
 ##### Returns
 
 - _str_ : Section header comment
+
+
+
+<sub>[top](#section) [index](index.md)</sub>
+## extra
+
+extra text at the end of the documentation
+
+
+
+##### Returns
+
+- _str_
+
+
+
+<sub>[top](#section) [index](index.md)</sub>
+## level
+
+indentation level
+
+
+
+##### Returns
+
+- _int_
 
 
 
@@ -80,6 +108,19 @@ Sort the sub sections in alphabetical order
 ##### Returns
 
 - _List_ : list of the sub sections sorted in alphabetical order
+
+
+
+<sub>[top](#section) [index](index.md)</sub>
+## title
+
+section title
+
+
+
+##### Returns
+
+- _str_
 
 
 
