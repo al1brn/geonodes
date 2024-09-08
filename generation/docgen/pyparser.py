@@ -12,13 +12,96 @@ from pathlib import Path
 import inspect
 
 # ====================================================================================================
-# Utilitye
+# Utilities
 
 def ok_comment(s):
     if s is None or s.split() == "":
         return False
     else:
         return True
+
+# ====================================================================================================
+# Normalize md text
+
+def md_normalize(text):
+    """ Normalize markdown text
+
+    Merge the lines not separated by a blank line
+
+    Arguments
+    ---------
+    - text (srt) : the mark down text to normalize
+
+    Returns
+    -------
+    - str : normalized mark down text
+    """
+
+    # ----------------------------------------------------------------------------------------------------
+    # Returns info on the current line:
+    # - indentation
+    # - bullet (a line ------) is a bullet !
+    # - stripped line
+
+    def line_info(line):
+
+        if line.strip() == "":
+            return 0, "", ""
+
+        expr = r"(\s*)([^\w] |[0-9]*\. |[^\w]*)?\s*(.*)?"
+
+        m = re.search(expr, line)
+
+        indent   = 0  if m.group(1) is None else len(m.group(1))
+        bullet   = "" if m.group(2) is None else m.group(2)
+        stripped = "" if m.group(3) is None else m.group(3).strip()
+
+        return indent, bullet, stripped
+
+    # ----------------------------------------------------------------------------------------------------
+    # Build the line infos
+
+    base_indent = None
+    line_infos = []
+    for index, text_line in enumerate(text.split('\n')):
+        indent, bullet, line = line_info(text_line)
+        line_infos.append((indent, bullet, line, bullet == "" and line == ""))
+
+        if index == 0:
+            continue
+        if bullet != "" or line != "":
+            if base_indent is None:
+                base_indent = indent
+            else:
+                base_indent = min(base_indent, indent)
+
+
+    # ----------------------------------------------------------------------------------------------------
+    # Merge with proper indentation
+
+    # List of lines with a first empty line which will be suppressed at the end
+    lines = [""]
+    prev_indent = 0
+    for index, (indent, bullet, line, empty) in enumerate(line_infos):
+
+        if empty:
+            lines.append("")
+            prev_indent = 0
+        else:
+            append = True
+            if bullet == "":
+                merge = indent in range(prev_indent, prev_indent + 4)
+                print(line, prev_indent, indent, merge)
+                merge = merge and lines[-1] != ""
+                if merge:
+                    lines[-1] = lines[-1] + " " + line
+                    append = False
+
+            if append:
+                lines.append(" "*max(indent - base_indent, 0) + bullet + line)
+                prev_indent = indent
+
+    print("\n".join(lines[1:]))
 
 # ====================================================================================================
 # Text reader
@@ -502,7 +585,7 @@ class Parser(Reader):
                 if c == '"' and self.equal('""'):
                     self.cursor += 2
                     context = 'SOURCE'
-                    yield 'COMMENT', txt
+                    yield 'COMMENT', md_normalize(txt)
                     txt = ""
                     c = None
 
@@ -577,7 +660,6 @@ class Parser(Reader):
                     packets = [('SOURCE', 0, [""])]
                 continue
 
-
             # ----- Starting comment
 
             if context == 'SOURCE':
@@ -598,26 +680,30 @@ class Parser(Reader):
                 lines = [line]
 
             # ----- Ensure the first line of a block comment is indented
+            # Merge lines without blank lines without them
 
             elif context == 'COMMENT':
 
                 lines = raw_line.split("\n")
                 indent = 0
 
-                if lines:
-                    indent = None
-                    for i, line in enumerate(lines):
-                        if line.strip() == "":
-                            continue
+                # OLD ALGO replaced by md_normalized
+                if False:
+                    indent = 0
+                    if lines:
+                        indent = None
+                        for i, line in enumerate(lines):
+                            if line.strip() == "":
+                                continue
 
-                        match  = re.search("(\s*)([^\s].*)", line)
-                        idt = 0 if match.group(1) is None else len(match.group(1))
+                            match  = re.search("(\s*)([^\s].*)", line)
+                            idt = 0 if match.group(1) is None else len(match.group(1))
+                            if indent is None:
+                                indent = idt
+                            else:
+                                indent = min(indent, idt)
                         if indent is None:
-                            indent = idt
-                        else:
-                            indent = min(indent, idt)
-                    if indent is None:
-                        indent = 0
+                            indent = 0
 
             # ----- Append the lines of new packet
 
