@@ -1,4 +1,4 @@
-# Test
+# Simple Python Documentation Generator
 
 This is the **DocGen** documentation generated with the projet itself.
 
@@ -44,7 +44,7 @@ The example given below is the source code used to generate this documentation:
 def gen_docgen():
 
     # ====================================================================================================
-    # Step 1 : read project files from root folder
+    # Step 1 : Read project files from root folder
 
     comment = """ This is the **DocGen** documentation generated with the projet itself.
 
@@ -52,7 +52,7 @@ def gen_docgen():
     """
 
     root = Path(__file__).parents[0]
-    proj = ProjectDocumentation.FromFiles('Test', folder=root, sub_folders=[], comment=comment)
+    proj = ProjectDocumentation.FromFiles('Simple Python Documentation Generator', folder=root, sub_folders=[], comment=comment)
 
     # ====================================================================================================
     # Step 2 : Declare the classes to document

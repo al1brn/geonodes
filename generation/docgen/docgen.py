@@ -983,34 +983,30 @@ class ProjectDocumentation(Section):
         4. Compile the documentation to build links between pages
         5. Write the documentation files
 
-        The example below write the documentation for this project:
+        The example below illustrates the steps. For a working example, see [Index](index.md).
 
         ``` python
-        # Step 1 : read project files from root folder
+        # Step 1 : Read project files from root folder
 
-        root = Path(__file__).parents[0]
-        proj = ProjectDocumentation.FromFiles('Test', folder=root)
+        proj = ProjectDocumentation.FromFiles('Test', folder=my_folder, sub_folders=['sub1', 'sub2'])
 
-        # Step 2 : build document hierarchy
+        # Step 2 : Declare the classes to document
 
-        proj.add_class('Parser', capture=['Reader'])
-        proj.add_class('Doc')
+        proj.add_class('Point',  capture = ['Geometry'])
+        proj.add_class('Vector', bases=['Point'])
 
-        proj.add_class('Section')
-        proj.add_class('Argument', bases=['Section'])
-        proj.add_class('Return',   bases=['Section'])
-        proj.add_class('Function', bases=['Section'])
-        proj.add_class('Class',    bases=['Section'])
-        proj.add_class('Module')
-        proj.add_class('ProjectDocumentation')
+        # Step 3 : Add documentation
 
-        # Step 3 : compile
+        proj.new_section("Presentation", comment = "This the a geometry project")
+
+        # Step 4 : Compile
 
         proj.compile()
 
-        # Step 4 : write the documentation
+        # Step 5 : Create the documentation
 
-        proj.write_documentation(doc_folder=root / 'doc')
+        proj.create_documentation(doc_folder)
+
         ```
 
         Arguments
@@ -1239,7 +1235,7 @@ class ProjectDocumentation(Section):
 def gen_docgen():
 
     # ====================================================================================================
-    # Step 1 : read project files from root folder
+    # Step 1 : Read project files from root folder
 
     comment = """ This is the **DocGen** documentation generated with the projet itself.
 
@@ -1247,7 +1243,7 @@ def gen_docgen():
     """
 
     root = Path(__file__).parents[0]
-    proj = ProjectDocumentation.FromFiles('Test', folder=root, sub_folders=[], comment=comment)
+    proj = ProjectDocumentation.FromFiles('Simple Python Documentation Generator', folder=root, sub_folders=[], comment=comment)
 
     # ====================================================================================================
     # Step 2 : Declare the classes to document
