@@ -1,6 +1,7 @@
 import re
 from pprint import pprint
 from pathlib import Path
+import inspect
 
 from .pyparser import Parser, md_normalize
 
@@ -1221,7 +1222,7 @@ class ProjectDocumentation(Section):
 # =============================================================================================================================
 # Test on the current folder
 
-def tests():
+def gen_docgen():
 
     # ====================================================================================================
     # Step 1 : read project files from root folder
@@ -1259,7 +1260,8 @@ def tests():
            One can them organize the documentation in the desired hierarchy.
 
         > [!NOTE]
-        > Documentating a class must be explicitly requested with [ProjectDocumentation](projectdocumentation.md#add_class)
+        > Documentating a class must be explicitly requested with
+        [ProjectDocumentation](projectdocumentation.md#add_class)
         """)
 
     struct.new_section("Parser classes")
@@ -1273,6 +1275,11 @@ def tests():
     struct.write("- [Function](function.md) : Function documentation\n")
     struct.write("- [Section](section.md) : Base documentation section\n")
 
+    proj.new_section("Demo source code", "The following piece of code is used to generate this documentation\n\n" +
+        "``` python\n" +
+        inspect.getsource(gen_docgen) +
+        "``` python\n\n")
+
     # ====================================================================================================
     # Step 4 : compile
 
@@ -1282,3 +1289,5 @@ def tests():
     # Step 5 : write the documentation
 
     proj.write_documentation(doc_folder=root / 'doc')
+
+    print(inspect.getsource(tests))
