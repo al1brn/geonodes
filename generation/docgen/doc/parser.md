@@ -34,7 +34,7 @@ End of line flag
 
 
 
-<sub>[top](#eol) [index](index.md)</sub>
+<sub>[top](#parser) [index](index.md)</sub>
 ## previous
 
 ``` python
@@ -51,7 +51,7 @@ Read the previous char
 
 
 
-<sub>[top](#previous) [index](index.md)</sub>
+<sub>[top](#parser) [index](index.md)</sub>
 ## read
 
 ``` python
@@ -70,7 +70,7 @@ After reading, the cursor is incremented
 
 
 
-<sub>[top](#read) [index](index.md)</sub>
+<sub>[top](#parser) [index](index.md)</sub>
 
 # Methods
 
@@ -92,7 +92,7 @@ Initialize a parser from a file.
 
 
 
-<sub>[top](#fromfile) [index](index.md)</sub>
+<sub>[top](#parser) [index](index.md)</sub>
 ## back
 
 ``` python
@@ -105,7 +105,7 @@ Move the cursor one step backwards
 
 
 
-<sub>[top](#back) [index](index.md)</sub>
+<sub>[top](#parser) [index](index.md)</sub>
 ## current
 
 ``` python
@@ -124,7 +124,7 @@ Getting the current char doesn't move the cursor.
 
 
 
-<sub>[top](#current) [index](index.md)</sub>
+<sub>[top](#parser) [index](index.md)</sub>
 ## eof
 
 ``` python
@@ -141,7 +141,7 @@ End of file flag
 
 
 
-<sub>[top](#eof) [index](index.md)</sub>
+<sub>[top](#parser) [index](index.md)</sub>
 ## equal
 
 ``` python
@@ -162,7 +162,7 @@ Compare the string starting at the cursor with the argument
 
 
 
-<sub>[top](#equal) [index](index.md)</sub>
+<sub>[top](#parser) [index](index.md)</sub>
 ## previous
 
 ``` python
@@ -179,7 +179,7 @@ Read the previous char
 
 
 
-<sub>[top](#previous) [index](index.md)</sub>
+<sub>[top](#parser) [index](index.md)</sub>
 ## python_split
 
 ``` python
@@ -200,7 +200,7 @@ yield
 
 
 
-<sub>[top](#python_split) [index](index.md)</sub>
+<sub>[top](#parser) [index](index.md)</sub>
 ## read
 
 ``` python
@@ -219,7 +219,7 @@ After reading, the cursor is incremented
 
 
 
-<sub>[top](#read) [index](index.md)</sub>
+<sub>[top](#parser) [index](index.md)</sub>
 ## reset
 
 ``` python
@@ -232,5 +232,5 @@ Reset the cursor to the start of the text
 
 
 
-<sub>[top](#reset) [index](index.md)</sub>
+<sub>[top](#parser) [index](index.md)</sub>
 

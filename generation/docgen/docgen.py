@@ -720,10 +720,10 @@ class Class(Section):
         # Extra
 
         for section in self.properties:
-            section.extra = f"\n<sub>[top](#{section.link_token}) [index](index.md)</sub>"
+            section.extra = f"\n<sub>[top](#{self.link_token}) [index](index.md)</sub>"
 
         for section in self.methods:
-            section.extra = f"\n<sub>[top](#{section.link_token}) [index](index.md)</sub>"
+            section.extra = f"\n<sub>[top](#{self.link_token}) [index](index.md)</sub>"
 
 
     # ====================================================================================================

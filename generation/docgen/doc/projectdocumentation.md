@@ -62,7 +62,7 @@ Add a module
 
 
 
-<sub>[top](#add_module) [index](index.md)</sub>
+<sub>[top](#projectdocumentation) [index](index.md)</sub>
 ## write_index
 
 ``` python
@@ -79,5 +79,5 @@ Write the index file
 
 
 
-<sub>[top](#write_index) [index](index.md)</sub>
+<sub>[top](#projectdocumentation) [index](index.md)</sub>
 

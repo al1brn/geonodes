@@ -46,7 +46,7 @@ Properties Section
 
 
 
-<sub>[top](#properties) [index](index.md)</sub>
+<sub>[top](#class) [index](index.md)</sub>
 
 # Methods
 
@@ -78,7 +78,7 @@ in the source file
 
 
 
-<sub>[top](#fromdoc) [index](index.md)</sub>
+<sub>[top](#class) [index](index.md)</sub>
 ## build
 
 ``` python
@@ -91,7 +91,7 @@ Yield the Class documentation lines
 
 
 
-<sub>[top](#build) [index](index.md)</sub>
+<sub>[top](#class) [index](index.md)</sub>
 ## capture_class
 
 ``` python
@@ -115,7 +115,7 @@ which is not documentated.
 
 
 
-<sub>[top](#capture_class) [index](index.md)</sub>
+<sub>[top](#class) [index](index.md)</sub>
 ## compile
 
 ``` python
@@ -138,7 +138,7 @@ Inheritance
 
 
 
-<sub>[top](#compile) [index](index.md)</sub>
+<sub>[top](#class) [index](index.md)</sub>
 ## methods
 
 ``` python
@@ -155,5 +155,5 @@ Methods Section
 
 
 
-<sub>[top](#methods) [index](index.md)</sub>
+<sub>[top](#class) [index](index.md)</sub>
 
