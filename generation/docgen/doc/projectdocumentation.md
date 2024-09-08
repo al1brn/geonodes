@@ -56,11 +56,13 @@ proj.write_documentation(doc_folder=root / 'doc')
 ProjectDocumentation.add_module(self, name, text)
 ```
 
-Add a
+Add a module
 
 
 
 
+
+<sub>[top](#add_module) [index](index.md)</sub>
 ## write_index
 
 ``` python
@@ -76,4 +78,6 @@ Write the index file
 - **file_name** (_str_) : file name to write
 
 
+
+<sub>[top](#write_index) [index](index.md)</sub>
 

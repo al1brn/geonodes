@@ -42,6 +42,8 @@ Function.arguments
 
 
 
+<sub>[top](#arguments) [index](index.md)</sub>
+
 # Methods
 
 ## FromDoc
@@ -65,6 +67,8 @@ Create additional comment
 - **doc** (_Doc_) : Doc parsed by **Parser**
 
 
+
+<sub>[top](#fromdoc) [index](index.md)</sub>
 ## init
 
 ``` python
@@ -84,6 +88,8 @@ It also create stores other information:
 
 
 
+
+<sub>[top](#init) [index](index.md)</sub>
 ## parse_comment
 
 ``` python
@@ -100,6 +106,8 @@ The lists are generated from the structure
 
 
 
+
+<sub>[top](#parse_comment) [index](index.md)</sub>
 ## returns
 
 ``` python
@@ -113,4 +121,6 @@ Function.returns
 - _Section_ : title is 'Arguments', sub sections are [Return](#return)
 
 
+
+<sub>[top](#returns) [index](index.md)</sub>
 

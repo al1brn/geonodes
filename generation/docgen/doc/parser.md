@@ -33,6 +33,8 @@ End of line flag
 - _Boolean_ : True if end of line is reached, False otherwise
 
 
+
+<sub>[top](#eol) [index](index.md)</sub>
 ## previous
 
 ``` python
@@ -48,6 +50,8 @@ Read the previous char
 - _str_ : Previous character or None if start of file
 
 
+
+<sub>[top](#previous) [index](index.md)</sub>
 ## read
 
 ``` python
@@ -65,6 +69,8 @@ After reading, the cursor is incremented
 - _str_ : Next character or None if end of file
 
 
+
+<sub>[top](#read) [index](index.md)</sub>
 
 # Methods
 
@@ -85,6 +91,8 @@ Initialize a parser from a file.
 - **fname** (_str_) : full path of the file top parse
 
 
+
+<sub>[top](#fromfile) [index](index.md)</sub>
 ## back
 
 ``` python
@@ -96,6 +104,8 @@ Move the cursor one step backwards
 
 
 
+
+<sub>[top](#back) [index](index.md)</sub>
 ## current
 
 ``` python
@@ -113,6 +123,8 @@ Getting the current char doesn't move the cursor.
 - _str_ : Next character or None if end of file
 
 
+
+<sub>[top](#current) [index](index.md)</sub>
 ## eof
 
 ``` python
@@ -128,6 +140,8 @@ End of file flag
 - _Boolean_ : True if end of file is reached, False otherwise
 
 
+
+<sub>[top](#eof) [index](index.md)</sub>
 ## equal
 
 ``` python
@@ -147,6 +161,8 @@ Compare the string starting at the cursor with the argument
 - _Boolean_ : True if the text at the cursor is equal to the argument
 
 
+
+<sub>[top](#equal) [index](index.md)</sub>
 ## previous
 
 ``` python
@@ -162,6 +178,8 @@ Read the previous char
 - _str_ : Previous character or None if start of file
 
 
+
+<sub>[top](#previous) [index](index.md)</sub>
 ## python_split
 
 ``` python
@@ -181,6 +199,8 @@ yield
 
 
 
+
+<sub>[top](#python_split) [index](index.md)</sub>
 ## read
 
 ``` python
@@ -198,6 +218,8 @@ After reading, the cursor is incremented
 - _str_ : Next character or None if end of file
 
 
+
+<sub>[top](#read) [index](index.md)</sub>
 ## reset
 
 ``` python
@@ -209,4 +231,6 @@ Reset the cursor to the start of the text
 
 
 
+
+<sub>[top](#reset) [index](index.md)</sub>
 

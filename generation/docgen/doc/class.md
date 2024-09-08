@@ -46,6 +46,8 @@ Properties Section
 
 
 
+<sub>[top](#properties) [index](index.md)</sub>
+
 # Methods
 
 ## FromDoc
@@ -75,6 +77,8 @@ in the source file
 - _Class_ : document on the class
 
 
+
+<sub>[top](#fromdoc) [index](index.md)</sub>
 ## build
 
 ``` python
@@ -86,6 +90,8 @@ Yield the Class documentation lines
 
 
 
+
+<sub>[top](#build) [index](index.md)</sub>
 ## capture_class
 
 ``` python
@@ -108,6 +114,8 @@ which is not documentated.
 - _self_
 
 
+
+<sub>[top](#capture_class) [index](index.md)</sub>
 ## compile
 
 ``` python
@@ -121,12 +129,16 @@ Compile links with other classes
 - Load the methods and properties inherited from parent classes
 
 
+Inheritance
+
 
 ##### Arguments
 
 - **classes** (_dict_) : dict of _Class_
 
 
+
+<sub>[top](#compile) [index](index.md)</sub>
 ## methods
 
 ``` python
@@ -142,4 +154,6 @@ Methods Section
 - _Section_ : title is 'Methods', sub sections are documented methods
 
 
+
+<sub>[top](#methods) [index](index.md)</sub>
 

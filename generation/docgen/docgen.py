@@ -27,6 +27,7 @@ class Section(list):
         - Header
         - Comment
         - Loop on sub sections
+        - Extra (for intrapage links)
 
         Arguments
         ---------
@@ -46,6 +47,7 @@ class Section(list):
         self.level              = level
         self.with_sections_only = with_sections_only
         self.sort_sections      = sort_sections
+        self.extra              = None
 
         # ----- Overridable init
 
@@ -228,6 +230,14 @@ class Section(list):
             for line in section.build():
                 yield line
 
+    def build_extra(self):
+        """ Yield extra lines at the end of the section documentation
+        """
+        if self.extra is None:
+            return
+        else:
+            yield '\n' + self.extra
+
     def build(self):
         """ Yield the lines of the section
 
@@ -248,6 +258,9 @@ class Section(list):
             yield line
 
         for line in self.build_sections():
+            yield line
+
+        for line in self.build_extra():
             yield line
 
         yield "\n"
@@ -677,6 +690,9 @@ class Class(Section):
         - classes (dict) : dict of _Class_
         """
 
+        # ----------------------------------------------------------------------------------------------------
+        # Inheritance
+
         inherited = {}
 
         for class_ in classes.values():
@@ -700,13 +716,14 @@ class Class(Section):
         if len(inherited):
             self.inherited = [inherited[key] for key in sorted(inherited.keys())]
 
-        # ----- add intra page links
-        # <sub>[This is small text](#title)</sub>
+        # ----------------------------------------------------------------------------------------------------
+        # Extra
 
         for section in self.properties:
-           if section._comment is not None:
-              section._comment += f"\n<sub>[top](#{section.link_token}) [index](index.md)</sub>"
+            section.extra = f"\n<sub>[top](#{section.link_token}) [index](index.md)</sub>"
 
+        for section in self.methods:
+            section.extra = f"\n<sub>[top](#{section.link_token}) [index](index.md)</sub>"
 
 
     # ====================================================================================================
@@ -825,22 +842,6 @@ class Class(Section):
         for line in self.methods.build():
             yield line
 
-
-# =============================================================================================================================
-# Classes documentation
-
-class Classes_OLD(Section):
-
-    def __init__(self, class_name, comment):
-        super().__init__(class_name, comment, sort_sections=True)
-
-    def build_sections(self):
-        """ Yield the sections parts
-        """
-        sections = self.sorted_sections
-        for section in sections:
-            yield f"- [{section.title}]({section.link_to()})\n"
-
 # =============================================================================================================================
 # Module documentation
 
@@ -946,7 +947,7 @@ class ProjectDocumentation:
     # Add a module
 
     def add_module(self, name, text):
-        """ Add a
+        """ Add a module
         """
         self.modules[name] = Module(name, text)
 
