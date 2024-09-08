@@ -1276,10 +1276,9 @@ def gen_docgen():
     struct.write("- [Section](section.md) : Base documentation section\n")
 
     proj.new_section("Demo source code", f"""The following piece of code is used to generate this documentation
-        ``` python
-        {inspect.getsource(gen_docgen)}
-        ```
-
+``` python\n
+{inspect.getsource(gen_docgen)}
+```
         """)
 
     # ====================================================================================================
