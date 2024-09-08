@@ -1031,9 +1031,9 @@ class ProjectDocumentation(Section):
     # Read the modules from files
 
     @classmethod
-    def FromFiles(cls, name, folder, sub_folders=[]):
+    def FromFiles(cls, name, folder, sub_folders=[], comment=None, classes_section=True):
 
-        proj = cls(name)
+        proj = cls(name, comment=comment, classes_section=classes_section)
 
         root_folder = Path(folder)
         all_folders = ["."] + sub_folders
@@ -1216,8 +1216,13 @@ def tests():
     # ====================================================================================================
     # Step 1 : read project files from root folder
 
+    comment = """ This is the **DocGen** documentation generated with the projet itself.
+
+    See the demo source code in [ProjectDocumentation](projectdocumentation.md).
+    """
+
     root = Path(__file__).parents[0]
-    proj = ProjectDocumentation.FromFiles('Test', folder=root, sub_folders=[])
+    proj = ProjectDocumentation.FromFiles('Test', folder=root, sub_folders=[], comment=comment)
 
     # ====================================================================================================
     # Step 2 : build document hierarchy
@@ -1236,7 +1241,16 @@ def tests():
     # ====================================================================================================
     # Step 3 : add documentation
 
-    struct = proj.new_section("Project classes")
+    struct = proj.new_section("Project classes", comment="""
+        The project is made of two layers.
+        1. The first layer is the parser which parses python source code. It returns
+           a list of items (classes and functions) with their comment.
+        2. The second layer builds documented classes from the results of the parsing.
+           One can them organize the documentation in the desired hierarchy.
+
+        > [!NOTE]
+        > Documentating a class must be explicitly requested with [ProjectDocumentation](projectdocumentation.md#add_class)
+        """)
 
     struct.new_section("Parser classes")
     struct.write("- [Parser](parser.md) : simple python source code parser\n")
@@ -1248,7 +1262,6 @@ def tests():
     struct.write("- [Class](class.md) : Class documentation\n")
     struct.write("- [Function](function.md) : Function documentation\n")
     struct.write("- [Section](section.md) : Base documentation section\n")
-
 
     # ====================================================================================================
     # Step 4 : compile
