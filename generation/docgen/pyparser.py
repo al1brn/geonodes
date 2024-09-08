@@ -425,13 +425,12 @@ class Doc:
 
 # ====================================================================================================
 # Simple python parser
+#
+# Parse the content by lines
+# The source itself is scanned to pass the strings
+# The multi string are returned as a whole
 
 class Parser(Reader):
-
-    # ---------------------------------------------------------------------------
-    # Parse the content by lines
-    # The source itself is scanned to pass the strings
-    # The multi string are returned as a whole
 
     def python_split(self):
         """ Split the python source file in parts
