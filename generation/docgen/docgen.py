@@ -700,6 +700,14 @@ class Class(Section):
         if len(inherited):
             self.inherited = [inherited[key] for key in sorted(inherited.keys())]
 
+        # ----- add intra page links
+        # <sub>[This is small text](#title)</sub>
+
+        for section in self.properties:
+           if section._comment is not None:
+              section._comment += f"\n<sub>[top](#{section.link_token}) [index](index.md)</sub>"
+
+
 
     # ====================================================================================================
     # Capture methods and properties from another class
