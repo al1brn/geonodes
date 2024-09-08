@@ -14,4 +14,4 @@ shkfsjdd
 
 ##### Level 5
 
-<small>This is small text</small>
+<sub>This is small text</sub>
