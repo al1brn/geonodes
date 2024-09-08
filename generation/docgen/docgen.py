@@ -144,7 +144,7 @@ class Section(list):
 
         return section
 
-    def write(self, comment='\n'):
+    def write(self, comment='\n', parse=True):
         """ Append text to the current text
 
         The current text is either the comment if this section if there is not sub sections,
@@ -159,13 +159,20 @@ class Section(list):
             self[-1].write(comment)
         else:
             if self._comment is None:
-                self.comment = comment
+                if parse:
+                    self.comment = comment
+                else:
+                    self._comment = comment
             else:
-                self._comment += self.parse_comment(comment)
+                if parse:
+                    self._comment += self.parse_comment(comment)
+                else:
+                    self._comment += comment
+
 
     def write_source(self, source):
         self.write("``` python\n")
-        self.write(source.replace("`", "'"))
+        self.write(source.replace("`", "'"), parse=False)
         self.write("```\n\n")
 
     # ====================================================================================================

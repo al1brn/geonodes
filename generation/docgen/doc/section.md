@@ -428,7 +428,7 @@ Sort the sub sections in alphabetical order
 ## write
 
 ``` python
-Section.write(self, comment='\n')
+Section.write(self, comment='\n', parse=True)
 ```
 
 Append text to the current text
