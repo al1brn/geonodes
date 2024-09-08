@@ -1101,6 +1101,7 @@ def tests():
     proj.add_class('Parser',   capture = ['Reader'])
     proj.add_class('Doc')
 
+    proj.add_class('Section')
     proj.add_class('Argument', bases=['Section'])
     proj.add_class('Return',   bases=['Section'])
     proj.add_class('Function', bases=['Section'])
