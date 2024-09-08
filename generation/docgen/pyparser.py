@@ -93,7 +93,6 @@ def md_normalize(text):
             append = True
             if bullet == "":
                 merge = indent in range(prev_indent, prev_indent + 4)
-                print(line, prev_indent, indent, merge)
                 merge = merge and lines[-1] != ""
                 if merge:
                     lines[-1] = lines[-1] + " " + line

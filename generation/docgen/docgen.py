@@ -486,11 +486,6 @@ class Function(Section):
                     continue
 
                 if context in ['ARGUMENTS', 'PROPERTIES']:
-
-
-                    print("DEBUG", line)
-
-
                     target_section = self.arguments if context == 'ARGUMENTS' else self.props
 
                     expr = r"-\s*(\w+)\s*(\((\w+)\s*(=\s*(.+))?\))?(\s*:\s*(.+))?"
@@ -921,16 +916,17 @@ class Module:
 # =============================================================================================================================
 # Project documentation
 
-class ProjectDocumentation:
+class ProjectDocumentation(Section):
 
-    def __init__(self, name):
+    def __init__(self, title, comment=None, classes_section=True):
         """ Project documentation
 
-        Buildinf project documentation follows the following steps:
+        Building project documentation follows the following steps:
         1. Creating the modules
         2. Adding the classes to document. The classes must be documented in a module
-        3. Compile the documentation to build links between pages
-        4. Write the documentation files
+        3. Adding documentation
+        4. Compile the documentation to build links between pages
+        5. Write the documentation files
 
         The example below write the documentation for this project:
 
@@ -964,10 +960,13 @@ class ProjectDocumentation:
 
         Arguments
         ---------
-        - name (str) : project name
+        - title (str) : project name
+        - comment (str) : header comment
+        - classes_section (bool = True) : add a section listing the classes
         """
 
-        self.name       = name
+        super().__init__(title, comment)
+        self.classes_section = classes_section
 
         # ----- Modules contain the source modules with their classes and functions
 
@@ -1038,9 +1037,38 @@ class ProjectDocumentation:
         return class_
 
     # ====================================================================================================
-    # Build the structure
+    # Add a class to be documented
 
     def add_class(self, class_name, module_name=None, bases=[], capture=[]):
+        """ Add a class in the documented classes
+
+        The class is searched in all modules.
+        If there exists homonymes in different modules, 'module_name' specifies
+        the module to get the class from.
+
+        The 'capture' list contains base classes to copy documentation from.
+        Hence, there exists two ways to manage inheritance:
+        - bases : the documentation makes the inheritance explicit by giving the
+          base class and links to the inherited methods and properties
+        - capture : the documentation doesn't mention the inheritance but gives
+          directly the documentation as if it were part of the class
+
+        > **Explicit inheritance**
+        > _class_name_ : inherits from base_class
+        > inherited methods : **method1**, **method2**
+
+        > **Hidden inheritance**
+        > _class_name_
+        > methods : **method1**, **method2**
+
+        Arguments
+        ---------
+        - class_name (str) : class name
+        - module_name (str = None) : name of the source file module if the class
+          exists in several modules
+        - bases (list = []) : list of base classes
+        - capture (list = []) : list of classes to copy methods and properties from
+        """
 
         if self.classes.get(class_name) is not None:
             raise Exception(f"Add class error: {class_name} already exists")
@@ -1072,8 +1100,22 @@ class ProjectDocumentation:
     # Compile the documentation
 
     def compile(self):
+
+        # ----------------------------------------------------------------------------------------------------
+        # Compile each class
+
         for class_ in self.classes.values():
             class_.compile(self.classes)
+
+        # ----------------------------------------------------------------------------------------------------
+        # Classes section
+
+        if self.classes_section:
+            links = ""
+            for class_name in sorted(self.classes.keys()):
+                links += "- [{class_name}]({class_name.lower()}.md)\n"
+            self.append(Section("Classes", comment=links, level=1))
+
 
     # ====================================================================================================
     # Write the index
@@ -1090,20 +1132,25 @@ class ProjectDocumentation:
 
         with Path(file_name).open(mode='w') as f:
 
-            # ----- Project name
+            for line in self.build():
+                f.write(line)
 
-            f.write(f"# {self.name}\n\n")
+            if False:
 
-            # ----- Modules
+                # ----- Project name
 
-            # Later
+                f.write(f"# {self.name}\n\n")
 
-            # ----- Classes
+                # ----- Modules
 
-            f.write(f"## Classes\n\n")
+                # Later
 
-            for key in sorted(self.classes):
-                f.write(f"- [{key}]({key.lower()}.md)\n")
+                # ----- Classes
+
+                f.write(f"## Classes\n\n")
+
+                for key in sorted(self.classes):
+                    f.write(f"- [{key}]({key.lower()}.md)\n")
 
 
     # ====================================================================================================
