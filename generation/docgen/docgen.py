@@ -1113,7 +1113,7 @@ class ProjectDocumentation(Section):
         if self.classes_section:
             links = ""
             for class_name in sorted(self.classes.keys()):
-                links += "- [{class_name}]({class_name.lower()}.md)\n"
+                links += f"- [{class_name}]({class_name.lower()}.md)\n"
             self.append(Section("Classes", comment=links, level=1))
 
 
