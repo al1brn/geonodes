@@ -28,7 +28,7 @@ Simple python source code parser.
 Reader.eol
 ```
 
-End of line flag
+<Token replacement text>nd of line flag
 
 
 
@@ -36,7 +36,7 @@ End of line flag
 
 
 
-- _Boolean_ : True if end of line is reached, False otherwise
+- _Boolean_ : <<Token replacement text>oken replacement text>rue if end of line is reached, False otherwise
 
 
 
@@ -55,7 +55,7 @@ Read the previous char
 
 
 
-- _str_ : Previous character or None if start of file
+- _str_ : Previous character or <<Token replacement text>oken replacement text>one if start of file
 
 
 
@@ -76,7 +76,7 @@ After reading, the cursor is incremented
 
 
 
-- _str_ : Next character or None if end of file
+- _str_ : <<Token replacement text>oken replacement text>ext character or <<Token replacement text>oken replacement text>one if end of file
 
 
 
@@ -136,7 +136,7 @@ Getting the current char doesn't move the cursor.
 
 
 
-- _str_ : Next character or None if end of file
+- _str_ : <<Token replacement text>oken replacement text>ext character or <<Token replacement text>oken replacement text>one if end of file
 
 
 
@@ -147,7 +147,7 @@ Getting the current char doesn't move the cursor.
 Reader.eof
 ```
 
-End of file flag
+<Token replacement text>nd of file flag
 
 
 
@@ -155,7 +155,7 @@ End of file flag
 
 
 
-- _Boolean_ : True if end of file is reached, False otherwise
+- _Boolean_ : <<Token replacement text>oken replacement text>rue if end of file is reached, False otherwise
 
 
 
@@ -180,7 +180,7 @@ Compare the string starting at the cursor with the argument
 
 
 
-- _Boolean_ : True if the text at the cursor is equal to the argument
+- _Boolean_ : <<Token replacement text>oken replacement text>rue if the text at the cursor is equal to the argument
 
 
 
@@ -199,7 +199,7 @@ Read the previous char
 
 
 
-- _str_ : Previous character or None if start of file
+- _str_ : Previous character or <<Token replacement text>oken replacement text>one if start of file
 
 
 
@@ -212,9 +212,9 @@ Parser.python_split(self)
 
 Split the python source file in parts
 
-The methods returns a couple.
-- The first item is the context in ('SOURCE', 'COMMENT', 'STRING')
-- The second item is the source code
+<Token replacement text>he methods returns a couple.
+- <Token replacement text>he first item is the context in ('S<Token replacement text>URC<Token replacement text>', 'C<Token replacement text>MM<Token replacement text><Token replacement text><Token replacement text>', 'S<Token replacement text>RI<Token replacement text>G')
+- <Token replacement text>he second item is the source code
 
 yield
 -----
@@ -241,7 +241,7 @@ After reading, the cursor is incremented
 
 
 
-- _str_ : Next character or None if end of file
+- _str_ : <<Token replacement text>oken replacement text>ext character or <<Token replacement text>oken replacement text>one if end of file
 
 
 

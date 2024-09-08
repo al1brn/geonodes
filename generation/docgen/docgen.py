@@ -154,12 +154,14 @@ class Section(list):
     # Parse the comment
 
     def apply_hooks(self, comment):
+
         comment = md_normalize(comment)
 
-        for hook in self.TOKEN_HOOKS:
-            re.sub(hook['expr'], hook['func'], comment)
+        for hook in Section.TOKEN_HOOKS:
+            print("HERE WE GO", hook)
+            comment = re.sub(hook['expr'], hook['func'], comment)
 
-        for hook in self.LINE_HOOKS:
+        for hook in Section.LINE_HOOKS:
             lines = []
             for line in comment.split("\n"):
                 m = re.search(hook['expr'], line)

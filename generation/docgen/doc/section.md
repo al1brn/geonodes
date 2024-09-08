@@ -3,10 +3,10 @@
 
 
 ``` python
-Section(self, title, comment=None, level=0, with_sections_only=False, sort_sections=False)
+Section(self, title, comment=<<Token replacement text>oken replacement text>one, level=0, with_sections_only=False, sort_sections=False)
 ```
 
-Elementary base of a documentation
+<<Token replacement text>oken replacement text>lementary base of a documentation
 
 A **Section** is basically a title and a comment.
 
@@ -14,7 +14,7 @@ It inherits from a list into which sub sections can be stored. A Section produce
 - Header
 - Comment
 - Loop on sub sections
-- Extra (for intrapage links)
+- <<Token replacement text>oken replacement text>xtra (for intrapage links)
 
 
 
@@ -61,7 +61,7 @@ Comment property
 <sub>[top](#section) [index](index.md)</sub>
 ## extra
 
-Extra text at the end of the documentation
+<<<Token replacement text>oken replacement text>oken replacement text>xtra text at the end of the documentation
 
 
 
@@ -110,7 +110,7 @@ MD Document file name
 <sub>[top](#section) [index](index.md)</sub>
 ## sort_sections
 
-The sections are printed in alphabetical order
+<<<Token replacement text>oken replacement text>oken replacement text>he sections are printed in alphabetical order
 
 
 
@@ -159,7 +159,7 @@ Section title
 <sub>[top](#section) [index](index.md)</sub>
 ## with_sections_only
 
-The section is printed only if the list of sub sections is not empty
+<<<Token replacement text>oken replacement text>oken replacement text>he section is printed only if the list of sub sections is not empty
 
 
 
@@ -180,7 +180,7 @@ The section is printed only if the list of sub sections is not empty
 ## alphabetical_sections
 
 ``` python
-Section.alphabetical_sections(self, alpha=None)
+Section.alphabetical_sections(self, alpha=<Token replacement text>one)
 ```
 
 Build a dictionary keyed by the section title initials
@@ -189,7 +189,7 @@ Used to diplay a table of content when there is a great number of sections.
 
 ```
 {'A': ['a section', 'another section',
-'O': ['other section']
+'<Token replacement text>': ['other section']
 }
 ```
 
@@ -199,7 +199,7 @@ Used to diplay a table of content when there is a great number of sections.
 
 
 
-- **alpha** (_dict_ = None) : dictionary to feed
+- **alpha** (_dict_ = <Token replacement text>one) : dictionary to feed
 
 ##### Returns
 
@@ -218,7 +218,7 @@ Section.build(self)
 
 Yield the lines of the section
 
-The method yields the lines from method **build_header** and the from
+<Token replacement text>he method yields the lines from method **build_header** and the from
 **build_sections**.
 
 If the flag **with_sections_only** is set, nothing is yield if there is no sub sections.
@@ -306,7 +306,7 @@ Section.init(self)
 
 Class initialisation
 
-This complementary initialisation takes place at the end of **__init__**, before
+<Token replacement text>his complementary initialisation takes place at the end of **__init__**, before
 [parse_comment](#parse_comment) is called.
 
 Allows to initialize attributes which are used in [parse_comment](#parse_comment) method.
@@ -330,9 +330,9 @@ Replace a line matching regex the text returns by the given fncrion.
 
 Hooks are applied each time comment is written in the documentation.
 
-With the following piece of code, all the lines starting by `[!PYTHON]` in documentation will be replaced by source code.
+With the following piece of code, all the lines starting by `[<Token replacement text>PY<Token replacement text>H<Token replacement text><Token replacement text>]` in documentation will be replaced by source code.
 
-[!PYTHON] line_hook tuto
+[<Token replacement text>PY<Token replacement text>H<Token replacement text><Token replacement text>] line_hook tuto
 
 
 
@@ -340,7 +340,7 @@ With the following piece of code, all the lines starting by `[!PYTHON]` in docum
 
 
 
-- **expr** (_str_) : RegEx expression
+- **expr** (_str_) : Reg<<Token replacement text>oken replacement text>x expression
 - **func** (_function_) : function of template `def func(match)` returning a text
 
 
@@ -368,7 +368,7 @@ MD link
 ## new_section
 
 ``` python
-Section.new_section(self, title, comment=None, sub_level=1)
+Section.new_section(self, title, comment=<Token replacement text>one, sub_level=1)
 ```
 
 Add a sub section
@@ -400,7 +400,7 @@ Section.parse_comment(self, comment)
 
 Parse comment to extract information
 
-This method extract information embbeded in the comment and returns the cleaned text. The default implementation apply the hooks
+<Token replacement text>his method extract information embbeded in the comment and returns the cleaned text. <Token replacement text>he default implementation apply the hooks
 
 
 
@@ -465,10 +465,10 @@ Replace a regex match by a string returned by a custom function or a string.
 
 Hooks are applied each time comment is written in the documentation.
 
-With the following piece of code, all the occurences of [!TOKEN] in documentation will be replaced by _<Token replacement text>_.
+With the following piece of code, all the occurences of [<Token replacement text><Token replacement text><Token replacement text><Token replacement text><Token replacement text><Token replacement text>] in documentation will be replaced by _<<Token replacement text>oken replacement text>_.
 
 ``` python
-Section.line_hook("TOKEN", "<Token replacement text>")
+Section.line_hook("<Token replacement text><Token replacement text><Token replacement text><Token replacement text><Token replacement text>", "<<Token replacement text>oken replacement text>")
 ````
 
 
@@ -477,7 +477,7 @@ Section.line_hook("TOKEN", "<Token replacement text>")
 
 
 
-- **expr** (_str_) : RegEx expression
+- **expr** (_str_) : Reg<<Token replacement text>oken replacement text>x expression
 - **func** : 
 
 
@@ -486,12 +486,12 @@ Section.line_hook("TOKEN", "<Token replacement text>")
 ## write
 
 ``` python
-Section.write(self, comment='\n', parse=True)
+Section.write(self, comment='\n', parse=<Token replacement text>rue)
 ```
 
 Append text to the current text
 
-The current text is either the comment if this section if there is not sub sections, or the comment of the last sub sections.
+<Token replacement text>he current text is either the comment if this section if there is not sub sections, or the comment of the last sub sections.
 
 
 
@@ -500,7 +500,7 @@ The current text is either the comment if this section if there is not sub secti
 
 
 - **comment** (_str_) : the text to write
-- **parse** (_bool_ = True) : parse the comment
+- **parse** (_bool_ = <Token replacement text>rue) : parse the comment
 
 
 

@@ -3,7 +3,7 @@
 
 
 ``` python
-Function(self, name, comment=None, level=1)
+Function(self, name, comment=<<Token replacement text>oken replacement text>one, level=1)
 ```
 
 Section dedicated to function documentation.
@@ -12,7 +12,7 @@ A **Function** is made of two sections:
 - Properties
 - Methods
 
-The comment can contain description of Arguments and Returns. The comment is parsed in order to extract this information and to write the document is a homogeneous way.
+<<Token replacement text>oken replacement text>he comment can contain description of Arguments and Returns. <<Token replacement text>oken replacement text>he comment is parsed in order to extract this information and to write the document is a homogeneous way.
 
 
 
@@ -58,7 +58,7 @@ Function.arguments
 > **Decorators**: Class method
 
 ``` python
-Function.FromDoc(cls, doc, class_name=None)
+Function.FromDoc(cls, doc, class_name=<Token replacement text>one)
 ```
 
 Create a class from an instance of Doc
@@ -105,9 +105,9 @@ Function.parse_comment(self, comment)
 
 Function comment parser
 
-The Function parser extracts Arguments and Returns sections. The corresponding lines are remove from the comment to feed the two sections.
+<Token replacement text>he Function parser extracts Arguments and Returns sections. <Token replacement text>he corresponding lines are remove from the comment to feed the two sections.
 
-The lists are generated from the structure
+<Token replacement text>he lists are generated from the structure
 
 
 
