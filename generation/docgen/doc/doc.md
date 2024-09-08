@@ -6,8 +6,7 @@ Doc(self, match)
 
 Item documentation
 
-This class stores the documentation of a functions or a class.
-In addition to the doc, it contains complementary information:
+This class stores the documentation of a functions or a class. In addition to the doc, it contains complementary information:
 - function:
 - args : call arguments
 - decorators : list of decorators

@@ -75,6 +75,8 @@ def md_normalize(text):
             else:
                 base_indent = min(base_indent, indent)
 
+    if base_indent is None:
+        base_indent = 0
 
     # ----------------------------------------------------------------------------------------------------
     # Merge with proper indentation
@@ -101,7 +103,7 @@ def md_normalize(text):
                 lines.append(" "*max(indent - base_indent, 0) + bullet + line)
                 prev_indent = indent
 
-    print("\n".join(lines[1:]))
+    return "\n".join(lines[1:])
 
 # ====================================================================================================
 # Text reader

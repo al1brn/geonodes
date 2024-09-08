@@ -8,17 +8,11 @@ Elementary base of a documentation
 
 A **Section** is basically a title and a comment.
 
-It inherits from a list into which sub sections can be stored.
-A Section produces documentation:
+It inherits from a list into which sub sections can be stored. A Section produces documentation:
 - Header
 - Comment
 - Loop on sub sections
 - Extra (for intrapage links)
-
-
-the list of sub sections is not empty
-- sort_sections (bool) : The sections are printed in alphabetical order
-- extra (str) : Extra text at the end of the documentation
 
 
 
@@ -29,12 +23,13 @@ the list of sub sections is not empty
 - A : [alphabetical_sections](#alphabetical_sections) 
 - B : [build](#build) [build_extra](#build_extra) [build_header](#build_header) [build_sections](#build_sections) 
 - C : [comment](#comment) 
+- E : [extra](#extra) 
 - G : [get_section](#get_section) 
 - I : [init](#init) 
 - L : [level](#level) [link_to](#link_to) 
 - M : [md_file_name](#md_file_name) 
 - P : [parse_comment](#parse_comment) [print](#print) 
-- S : [sorted_sections](#sorted_sections) [sorted_sections](#sorted_sections) 
+- S : [sort_sections](#sort_sections) [sorted_sections](#sorted_sections) [sorted_sections](#sorted_sections) 
 - T : [title](#title) 
 - W : [with_sections_only](#with_sections_only) 
 
@@ -53,6 +48,19 @@ Comment property
 ##### Returns
 
 - _str_ : Section header comment
+
+
+
+<sub>[top](#section) [index](index.md)</sub>
+## extra
+
+Extra text at the end of the documentation
+
+
+
+##### Returns
+
+- _str_
 
 
 
@@ -83,6 +91,19 @@ MD Document file name
 ##### Returns
 
 - _str_ : markdown file name
+
+
+
+<sub>[top](#section) [index](index.md)</sub>
+## sort_sections
+
+The sections are printed in alphabetical order
+
+
+
+##### Returns
+
+- _bool_
 
 
 
@@ -119,7 +140,7 @@ Section title
 <sub>[top](#section) [index](index.md)</sub>
 ## with_sections_only
 
-The section is printed only if
+The section is printed only if the list of sub sections is not empty
 
 
 
@@ -173,8 +194,7 @@ Yield the lines of the section
 The method yields the lines from method **build_header** and the from
 **build_sections**.
 
-If the flag **with_sections_only** is set, nothing is yield if there is no
-sub sections.
+If the flag **with_sections_only** is set, nothing is yield if there is no sub sections.
 
 
 
@@ -290,8 +310,7 @@ Section.parse_comment(self, comment)
 
 Parse comment to extract information
 
-This method extract information embbeded in the comment and returns the cleaned text.
-The default implementation returns the argument without change.
+This method extract information embbeded in the comment and returns the cleaned text. The default implementation returns the argument without change.
 
 
 

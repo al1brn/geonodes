@@ -13,15 +13,14 @@ The structure of the document is:
 - Properties section with the documented properties as sub sections
 - Methods section withe the documented methods as sub sections
 
-The class documentation is completed afterward by the [compile](#compile) method
-which get the links coming from inheritance between classes.
+The class documentation is completed afterward by the [compile](#compile) method which get the links coming from inheritance between classes.
 
 
 
 
 > inherits from: [Section](section.md) 
 
-> inherited: [alphabetical_sections](section.md#alphabetical_sections), [build_extra](section.md#build_extra), [build_header](section.md#build_header), [build_sections](section.md#build_sections), [comment](section.md#comment), [get_section](section.md#get_section), [init](section.md#init), [level](section.md#level), [link_to](section.md#link_to), [link_token](section.md#link_token), [md_file_name](section.md#md_file_name), [parse_comment](section.md#parse_comment), [print](section.md#print), [sorted_sections](section.md#sorted_sections), [title](section.md#title), [with_sections_only](section.md#with_sections_only)
+> inherited: [alphabetical_sections](section.md#alphabetical_sections), [build_extra](section.md#build_extra), [build_header](section.md#build_header), [build_sections](section.md#build_sections), [comment](section.md#comment), [extra](section.md#extra), [get_section](section.md#get_section), [init](section.md#init), [level](section.md#level), [link_to](section.md#link_to), [link_token](section.md#link_token), [md_file_name](section.md#md_file_name), [parse_comment](section.md#parse_comment), [print](section.md#print), [sort_sections](section.md#sort_sections), [sorted_sections](section.md#sorted_sections), [title](section.md#title), [with_sections_only](section.md#with_sections_only)
 ## Methods and Properties
 - B : [build](#build) 
 - C : [capture_class](#capture_class) [compile](#compile) 
@@ -62,14 +61,11 @@ Creates a Class document from a Doc parsed from source file
 The **doc** argument contains the list of documents methods and properties.
 
 
-in the source file
-
-
 
 ##### Arguments
 
 - **doc** (_Doc_) : Doc parsed from a sourc file
-- **exclude_uncommented** (_bool_ = True) : exclude the methods which are not commented
+- **exclude_uncommented** (_bool_ = True) : exclude the methods which are not commented in the source file
 
 ##### Returns
 
@@ -99,8 +95,7 @@ Class.capture_class(self, other)
 
 Capture methods and properties from another Class
 
-This method allows to get the documentation of inherited items of a class
-which is not documentated.
+This method allows to get the documentation of inherited items of a class which is not documentated.
 
 
 
@@ -127,8 +122,6 @@ Compile links with other classes
 - Load each class based on this one into to the **subclasses** attribute.
 - Load the methods and properties inherited from parent classes
 
-
-Inheritance
 
 
 ##### Arguments

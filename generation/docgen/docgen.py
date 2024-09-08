@@ -487,6 +487,10 @@ class Function(Section):
 
                 if context in ['ARGUMENTS', 'PROPERTIES']:
 
+
+                    print("DEBUG", line)
+
+
                     target_section = self.arguments if context == 'ARGUMENTS' else self.props
 
                     expr = r"-\s*(\w+)\s*(\((\w+)\s*(=\s*(.+))?\))?(\s*:\s*(.+))?"

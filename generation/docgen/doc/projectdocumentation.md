@@ -17,21 +17,13 @@ The example below write the documentation for this project:
 ``` python
 # Step 1 : read project files from root folder
 
-root = Path(__file__).parents[0]
-proj = ProjectDocumentation.FromFiles('Test', folder=root)
+root = Path(__file__).parents[0] proj = ProjectDocumentation.FromFiles('Test', folder=root)
 
 # Step 2 : build document hierarchy
 
-proj.add_class('Parser', capture=['Reader'])
-proj.add_class('Doc')
+proj.add_class('Parser', capture=['Reader']) proj.add_class('Doc')
 
-proj.add_class('Section')
-proj.add_class('Argument', bases=['Section'])
-proj.add_class('Return',   bases=['Section'])
-proj.add_class('Function', bases=['Section'])
-proj.add_class('Class',    bases=['Section'])
-proj.add_class('Module')
-proj.add_class('ProjectDocumentation')
+proj.add_class('Section') proj.add_class('Argument', bases=['Section']) proj.add_class('Return',   bases=['Section']) proj.add_class('Function', bases=['Section']) proj.add_class('Class',    bases=['Section']) proj.add_class('Module') proj.add_class('ProjectDocumentation')
 
 # Step 3 : compile
 

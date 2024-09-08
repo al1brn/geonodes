@@ -10,16 +10,14 @@ A **Function** is made of two sections:
 - Properties
 - Methods
 
-The comment can contain description of Arguments and Returns.
-The comment is parsed in order to extract this information and to
-write the document is a homogeneous way.
+The comment can contain description of Arguments and Returns. The comment is parsed in order to extract this information and to write the document is a homogeneous way.
 
 
 
 
 > inherits from: [Section](section.md) 
 
-> inherited: [alphabetical_sections](section.md#alphabetical_sections), [build](section.md#build), [build_extra](section.md#build_extra), [build_header](section.md#build_header), [build_sections](section.md#build_sections), [comment](section.md#comment), [get_section](section.md#get_section), [level](section.md#level), [link_to](section.md#link_to), [link_token](section.md#link_token), [md_file_name](section.md#md_file_name), [print](section.md#print), [sorted_sections](section.md#sorted_sections), [title](section.md#title), [with_sections_only](section.md#with_sections_only)
+> inherited: [alphabetical_sections](section.md#alphabetical_sections), [build](section.md#build), [build_extra](section.md#build_extra), [build_header](section.md#build_header), [build_sections](section.md#build_sections), [comment](section.md#comment), [extra](section.md#extra), [get_section](section.md#get_section), [level](section.md#level), [link_to](section.md#link_to), [link_token](section.md#link_token), [md_file_name](section.md#md_file_name), [print](section.md#print), [sort_sections](section.md#sort_sections), [sorted_sections](section.md#sorted_sections), [title](section.md#title), [with_sections_only](section.md#with_sections_only)
 ## Methods and Properties
 - A : [arguments](#arguments) 
 - F : [FromDoc](#fromdoc) 
@@ -60,8 +58,6 @@ Create a class from an instance of Doc
 Doc is a class read by the **Parser**.
 
 
-Create additional comment
-
 
 ##### Arguments
 
@@ -99,8 +95,7 @@ Function.parse_comment(self, comment)
 
 Function comment parser
 
-The Function parser extracts Arguments and Returns sections.
-The corresponding lines are remove from the comment to feed the two sections.
+The Function parser extracts Arguments and Returns sections. The corresponding lines are remove from the comment to feed the two sections.
 
 The lists are generated from the structure
 
