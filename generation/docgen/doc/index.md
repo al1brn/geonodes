@@ -55,7 +55,7 @@ def gen_docgen():
     proj = ProjectDocumentation.FromFiles('Test', folder=root, sub_folders=[], comment=comment)
 
     # ====================================================================================================
-    # Step 2 : build document hierarchy
+    # Step 2 : Declare the classes to document
 
     proj.add_class('Parser',   capture = ['Reader'])
     proj.add_class('Doc')
@@ -69,7 +69,9 @@ def gen_docgen():
     proj.add_class('ProjectDocumentation')
 
     # ====================================================================================================
-    # Step 3 : add documentation
+    # Step 3 : Add documentation
+
+    # ----- A structured presentation of the classes
 
     struct = proj.new_section("Project classes", comment="""
         The project is made of two layers.
@@ -94,6 +96,8 @@ def gen_docgen():
     struct.write("- [Function](function.md) : Function documentation\n")
     struct.write("- [Section](section.md) : Base documentation section\n")
 
+    # ----- This source code
+
     proj.new_section("Source code example", comment="""
         The example given below is the source code used to generate this documentation:
 
@@ -101,16 +105,14 @@ def gen_docgen():
     proj.write_source(inspect.getsource(gen_docgen))
 
     # ====================================================================================================
-    # Step 4 : compile
+    # Step 4 : Compile
 
     proj.compile()
 
     # ====================================================================================================
-    # Step 5 : write the documentation
+    # Step 5 : Create the documentation
 
     proj.create_documentation(doc_folder=root / 'doc')
-
-    print(inspect.getsource(tests))
 ```
 
 
