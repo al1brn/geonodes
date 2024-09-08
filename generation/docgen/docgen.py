@@ -18,6 +18,10 @@ from .pyparser import Parser, md_normalize
 # Section
 
 class Section(list):
+
+    LINE_HOOKS  = []
+    TOKEN_HOOKS = []
+
     def __init__(self, title, comment=None, level=0, with_sections_only=False, sort_sections=False):
         """ Elementary base of a documentation
 
@@ -72,6 +76,49 @@ class Section(list):
         return f"<Section {type(self).__name__} '{self.title}' {len(self)}: {scomm}>"
 
     # ====================================================================================================
+    # Add a hook
+
+    @classmethod
+    def token_hook(cls, expr, func):
+        """ Replace a regex match by a string returned by a custom function or a string.
+
+        Hooks are applied each time comment is written in the documentation.
+
+        With the following piece of code, all the occurences of [!TOKEN] in documentation
+        will be replaced by _<Token replacement text>_.
+
+        ``` python
+        Section.line_hook("TOKEN", "<Token replacement text>")
+        ````
+
+        Arguments
+        ---------
+            - expr (str) : RegEx expression
+            - func (function or str) : function of template `def func(match)` or replacement string
+        """
+        cls.TOKEN_HOOKS.append({'expr': expr, 'func': func})
+
+    @classmethod
+    def line_hook(cls, expr, func):
+        """ Replace a line matching regex the text returns by the given fncrion.
+
+        Hooks are applied each time comment is written in the documentation.
+
+        With the following piece of code, all the lines starting by `[!PYTHON]`
+        in documentation will be replaced by source code.
+
+        [!PYTHON] line_hook tuto
+
+        Arguments
+        ---------
+            - expr (str) : RegEx expression
+            - func (function) : function of template `def func(match)` returning a text
+        """
+        if expr[0] != '^':
+            expr = '^'+expr
+        cls.LINE_HOOKS.append({'expr': expr, 'func': func})
+
+    # ====================================================================================================
     # Specific init
 
     def init(self):
@@ -104,13 +151,31 @@ class Section(list):
         self._comment = self.parse_comment(value)
 
     # ====================================================================================================
-    # Target file name
+    # Parse the comment
+
+    def apply_hooks(self, comment):
+        comment = md_normalize(comment)
+
+        for hook in self.TOKEN_HOOKS:
+            re.sub(hook['expr'], hook['func'], comment)
+
+        for hook in self.LINE_HOOKS:
+            lines = []
+            for line in comment.split("\n"):
+                m = re.search(hook['expr'], line)
+                if m is None:
+                    lines.append(line)
+                else:
+                    lines.append(hook['func'](m.group(1)))
+            comment = "\n".join(lines)
+
+        return comment
 
     def parse_comment(self, comment):
         """ Parse comment to extract information
 
         This method extract information embbeded in the comment and returns the cleaned text.
-        The default implementation simply normalizes the comment.
+        The default implementation apply the hooks
 
         Arguments
         ---------
@@ -120,7 +185,7 @@ class Section(list):
         -------
         - str : the cleaned comment
         """
-        return md_normalize(comment)
+        return self.apply_hooks(comment)
 
     # ====================================================================================================
     # Dynamic documentation
@@ -490,7 +555,7 @@ class Function(Section):
         if comment is None:
             return None
 
-        comment = md_normalize(comment)
+        comment = super().parse_comment(comment)
 
         context = 'COMMENT'
         new_comment = ""

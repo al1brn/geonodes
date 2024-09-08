@@ -28,12 +28,12 @@ It inherits from a list into which sub sections can be stored. A Section produce
 - E : [extra](#extra) 
 - G : [get_section](#get_section) 
 - I : [init](#init) 
-- L : [level](#level) [link_to](#link_to) 
+- L : [level](#level) [line_hook](#line_hook) [link_to](#link_to) 
 - M : [md_file_name](#md_file_name) 
 - N : [new_section](#new_section) 
 - P : [parse_comment](#parse_comment) [print](#print) 
 - S : [sort_sections](#sort_sections) [sorted_sections](#sorted_sections) [sorted_sections](#sorted_sections) 
-- T : [title](#title) 
+- T : [title](#title) [token_hook](#token_hook) 
 - W : [with_sections_only](#with_sections_only) [write](#write) 
 
 # Properties
@@ -318,6 +318,34 @@ Default method is empty.
 
 
 <sub>[top](#section) [index](index.md)</sub>
+## line_hook
+
+> **Decorators**: Class method
+
+``` python
+Section.line_hook(cls, expr, func)
+```
+
+Replace a line matching regex the text returns by the given fncrion.
+
+Hooks are applied each time comment is written in the documentation.
+
+With the following piece of code, all the lines starting by `[!PYTHON]` in documentation will be replaced by source code.
+
+[!PYTHON] line_hook tuto
+
+
+
+##### Arguments
+
+
+
+- **expr** (_str_) : RegEx expression
+- **func** (_function_) : function of template `def func(match)` returning a text
+
+
+
+<sub>[top](#section) [index](index.md)</sub>
 ## link_to
 
 ``` python
@@ -372,7 +400,7 @@ Section.parse_comment(self, comment)
 
 Parse comment to extract information
 
-This method extract information embbeded in the comment and returns the cleaned text. The default implementation simply normalizes the comment.
+This method extract information embbeded in the comment and returns the cleaned text. The default implementation apply the hooks
 
 
 
@@ -421,6 +449,36 @@ Sort the sub sections in alphabetical order
 
 
 - _List_ : list of the sub sections sorted in alphabetical order
+
+
+
+<sub>[top](#section) [index](index.md)</sub>
+## token_hook
+
+> **Decorators**: Class method
+
+``` python
+Section.token_hook(cls, expr, func)
+```
+
+Replace a regex match by a string returned by a custom function or a string.
+
+Hooks are applied each time comment is written in the documentation.
+
+With the following piece of code, all the occurences of [!TOKEN] in documentation will be replaced by _<Token replacement text>_.
+
+``` python
+Section.line_hook("TOKEN", "<Token replacement text>")
+````
+
+
+
+##### Arguments
+
+
+
+- **expr** (_str_) : RegEx expression
+- **func** : 
 
 
 
