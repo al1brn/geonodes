@@ -1,5 +1,7 @@
 # ProjectDocumentation
 
+
+
 ``` python
 ProjectDocumentation(self, title, comment=None, classes_section=True)
 ```
@@ -44,6 +46,8 @@ proj.write_documentation(doc_folder=root / 'doc')
 
 # Methods
 
+
+
 ## add_class
 
 ``` python
@@ -69,6 +73,8 @@ The 'capture' list contains base classes to copy documentation from. Hence, ther
 
 
 ##### Arguments
+
+
 
 - **class_name** (_str_) : class name
 - **module_name** (_str_ = None) : name of the source file module if the class exists in several modules
@@ -114,6 +120,8 @@ Write the index file
 
 
 ##### Arguments
+
+
 
 - **file_name** (_str_) : file name to write
 

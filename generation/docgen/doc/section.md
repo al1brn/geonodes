@@ -1,5 +1,7 @@
 # Section
 
+
+
 ``` python
 Section(self, title, comment=None, level=0, with_sections_only=False, sort_sections=False)
 ```
@@ -36,6 +38,8 @@ It inherits from a list into which sub sections can be stored. A Section produce
 
 # Properties
 
+
+
 ## comment
 
 ``` python
@@ -47,6 +51,8 @@ Comment property
 
 
 ##### Returns
+
+
 
 - _str_ : Section header comment
 
@@ -61,7 +67,9 @@ Extra text at the end of the documentation
 
 ##### Returns
 
-- _str_
+
+
+- _str_ : 
 
 
 
@@ -74,7 +82,9 @@ Indentation level
 
 ##### Returns
 
-- _int_
+
+
+- _int_ : 
 
 
 
@@ -91,6 +101,8 @@ MD Document file name
 
 ##### Returns
 
+
+
 - _str_ : markdown file name
 
 
@@ -104,7 +116,9 @@ The sections are printed in alphabetical order
 
 ##### Returns
 
-- _bool_
+
+
+- _bool_ : 
 
 
 
@@ -121,6 +135,8 @@ Sort the sub sections in alphabetical order
 
 ##### Returns
 
+
+
 - _List_ : list of the sub sections sorted in alphabetical order
 
 
@@ -134,7 +150,9 @@ Section title
 
 ##### Returns
 
-- _str_
+
+
+- _str_ : 
 
 
 
@@ -147,13 +165,17 @@ The section is printed only if the list of sub sections is not empty
 
 ##### Returns
 
-- _bool_
+
+
+- _bool_ : 
 
 
 
 <sub>[top](#section) [index](index.md)</sub>
 
 # Methods
+
+
 
 ## alphabetical_sections
 
@@ -175,11 +197,15 @@ Used to diplay a table of content when there is a great number of sections.
 
 ##### Arguments
 
+
+
 - **alpha** (_dict_ = None) : dictionary to feed
 
 ##### Returns
 
-- _dict_
+
+
+- _dict_ : 
 
 
 
@@ -200,6 +226,8 @@ If the flag **with_sections_only** is set, nothing is yield if there is no sub s
 
 
 ##### Returns
+
+
 
 - _str_ : documentation lines for the sections
 
@@ -257,11 +285,15 @@ Look for a sub section by its title
 
 ##### Arguments
 
+
+
 - **title** (_str_) : the section to look for
 
 ##### Returns
 
-- _Section_
+
+
+- _Section_ : 
 
 
 
@@ -298,6 +330,8 @@ MD link
 
 ##### Returns
 
+
+
 - _str_ : [title](url + link_token)
 
 
@@ -315,13 +349,17 @@ Add a sub section
 
 ##### Arguments
 
+
+
 - **title** (_str_) : section title
 - **comment** (_str_) : header comment
 - **sub_level** (_int_ = 1) : level increment
 
 ##### Returns
 
-- _Section_
+
+
+- _Section_ : 
 
 
 
@@ -334,15 +372,19 @@ Section.parse_comment(self, comment)
 
 Parse comment to extract information
 
-This method extract information embbeded in the comment and returns the cleaned text. The default implementation returns the argument without change.
+This method extract information embbeded in the comment and returns the cleaned text. The default implementation simply normalizes the comment.
 
 
 
 ##### Arguments
 
+
+
 - **comment** (_str_) : the raw comment
 
 ##### Returns
+
+
 
 - _str_ : the cleaned comment
 
@@ -376,6 +418,8 @@ Sort the sub sections in alphabetical order
 
 ##### Returns
 
+
+
 - _List_ : list of the sub sections sorted in alphabetical order
 
 
@@ -395,7 +439,9 @@ The current text is either the comment if this section if there is not sub secti
 
 ##### Arguments
 
-- **comment** (_str_)
+
+
+- **comment** (_str_) : 
 
 
 

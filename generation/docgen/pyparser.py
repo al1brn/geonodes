@@ -37,6 +37,9 @@ def md_normalize(text):
     - str : normalized mark down text
     """
 
+    if text is None:
+        return ""
+
     # ----------------------------------------------------------------------------------------------------
     # Returns info on the current line:
     # - indentation

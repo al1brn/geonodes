@@ -1,5 +1,7 @@
 # Class
 
+
+
 ``` python
 Class(self, class_name, comment)
 ```
@@ -30,6 +32,8 @@ The class documentation is completed afterward by the [compile](#compile) method
 
 # Properties
 
+
+
 ## properties
 
 ``` python
@@ -40,6 +44,8 @@ Class.properties
 
 ##### Returns
 
+
+
 - _Section_ : title is 'Properties', sub sections are documented properties
 
 
@@ -47,6 +53,8 @@ Class.properties
 <sub>[top](#class) [index](index.md)</sub>
 
 # Methods
+
+
 
 ## FromDoc
 
@@ -64,10 +72,14 @@ The **doc** argument contains the list of documents methods and properties.
 
 ##### Arguments
 
+
+
 - **doc** (_Doc_) : Doc parsed from a sourc file
 - **exclude_uncommented** (_bool_ = True) : exclude the methods which are not commented in the source file
 
 ##### Returns
+
+
 
 - _Class_ : document on the class
 
@@ -101,11 +113,15 @@ This method allows to get the documentation of inherited items of a class which 
 
 ##### Arguments
 
+
+
 - **other** (_Class_) : class to copy methods and properties from
 
 ##### Returns
 
-- _self_
+
+
+- _self_ : 
 
 
 
@@ -126,6 +142,8 @@ Compile links with other classes
 
 ##### Arguments
 
+
+
 - **classes** (_dict_) : dict of _Class_
 
 
@@ -142,6 +160,8 @@ Methods Section
 
 
 ##### Returns
+
+
 
 - _Section_ : title is 'Methods', sub sections are documented methods
 

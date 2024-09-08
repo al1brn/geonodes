@@ -109,7 +109,7 @@ class Section(list):
         """ Parse comment to extract information
 
         This method extract information embbeded in the comment and returns the cleaned text.
-        The default implementation returns the argument without change.
+        The default implementation simply normalizes the comment.
 
         Arguments
         ---------
@@ -119,7 +119,7 @@ class Section(list):
         -------
         - str : the cleaned comment
         """
-        return comment
+        return md_normalize(comment)
 
     # ====================================================================================================
     # Dynamic documentation
@@ -1005,8 +1005,16 @@ class ProjectDocumentation(Section):
         - classes_section (bool = True) : add a section listing the classes
         """
 
+        print("PROJECT")
+        print('-'*40)
+        print(comment)
+        print('-'*40)
+
         super().__init__(title, comment)
         self.classes_section = classes_section
+
+        print(self.comment)
+        print('-'*40)
 
         # ----- Modules contain the source modules with their classes and functions
 

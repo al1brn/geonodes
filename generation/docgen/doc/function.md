@@ -1,5 +1,7 @@
 # Function
 
+
+
 ``` python
 Function(self, name, comment=None, level=1)
 ```
@@ -27,6 +29,8 @@ The comment can contain description of Arguments and Returns. The comment is par
 
 # Properties
 
+
+
 ## arguments
 
 ``` python
@@ -37,6 +41,8 @@ Function.arguments
 
 ##### Returns
 
+
+
 - _Section_ : title is 'Arguments', sub sections are [Argument](#argument)
 
 
@@ -44,6 +50,8 @@ Function.arguments
 <sub>[top](#function) [index](index.md)</sub>
 
 # Methods
+
+
 
 ## FromDoc
 
@@ -60,6 +68,8 @@ Doc is a class read by the **Parser**.
 
 
 ##### Arguments
+
+
 
 - **doc** (_Doc_) : Doc parsed by **Parser**
 
@@ -113,6 +123,8 @@ Function.returns
 
 
 ##### Returns
+
+
 
 - _Section_ : title is 'Arguments', sub sections are [Return](#return)
 
