@@ -1237,10 +1237,7 @@ def gen_docgen():
     # ====================================================================================================
     # Step 1 : Read project files from root folder
 
-    comment = """ This is the **DocGen** documentation generated with the projet itself.
-
-    See the demo source code in [ProjectDocumentation](projectdocumentation.md).
-    """
+    comment = "This is the **DocGen** documentation generated with the projet itself."
 
     root = Path(__file__).parents[0]
     proj = ProjectDocumentation.FromFiles('Simple Python Documentation Generator', folder=root, sub_folders=[], comment=comment)
