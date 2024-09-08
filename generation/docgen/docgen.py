@@ -163,6 +163,11 @@ class Section(list):
             else:
                 self._comment += self.parse_comment(comment)
 
+    def write_source(self, source):
+        self.write("``` python\n")
+        self.write(source.replace("`", "'"))
+        self.write("```\n\n")
+
     # ====================================================================================================
     # Properties
 
@@ -1274,6 +1279,12 @@ def gen_docgen():
     struct.write("- [Class](class.md) : Class documentation\n")
     struct.write("- [Function](function.md) : Function documentation\n")
     struct.write("- [Section](section.md) : Base documentation section\n")
+
+    proj.new_section("Source code example", comment="""
+        The example given below is the source code used to generate this documentation:
+
+        """)
+    proj.write_source(inspect.getsource(gen_docgen))
 
     # ====================================================================================================
     # Step 4 : compile
