@@ -158,7 +158,6 @@ class Section(list):
         comment = md_normalize(comment)
 
         for hook in Section.TOKEN_HOOKS:
-            print("HERE WE GO", hook)
             comment = re.sub(hook['expr'], hook['func'], comment)
 
         for hook in Section.LINE_HOOKS:
