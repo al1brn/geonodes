@@ -155,12 +155,12 @@ class Section(list):
         """
 
         if len(self):
-            self[-1].write(md_normalize(comment))
+            self[-1].write(comment)
         else:
             if self._comment is None:
                 self.comment = comment
             else:
-                self._comment += self.parse_comment(md_normalize(comment))
+                self._comment += self.parse_comment(comment)
 
     # ====================================================================================================
     # Properties
@@ -474,6 +474,8 @@ class Function(Section):
         """
         if comment is None:
             return None
+
+        comment = md_normalize(comment)
 
         context = 'COMMENT'
         new_comment = ""

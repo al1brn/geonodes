@@ -1,7 +1,6 @@
 # Function
 
-``` python
-Function(self, name, comment=None, level=1)
+``` python Function(self, name, comment=None, level=1)
 ```
 
 Section dedicated to function documentation.
@@ -29,8 +28,7 @@ The comment can contain description of Arguments and Returns. The comment is par
 
 ## arguments
 
-``` python
-Function.arguments
+``` python Function.arguments
 ```
 
 
@@ -49,8 +47,7 @@ Function.arguments
 
 > **Decorators**: Class method
 
-``` python
-Function.FromDoc(cls, doc, class_name=None)
+``` python Function.FromDoc(cls, doc, class_name=None)
 ```
 
 Create a class from an instance of Doc
@@ -68,8 +65,7 @@ Doc is a class read by the **Parser**.
 <sub>[top](#function) [index](index.md)</sub>
 ## init
 
-``` python
-Function.init(self)
+``` python Function.init(self)
 ```
 
 Function section specific init
@@ -89,8 +85,7 @@ It also create stores other information:
 <sub>[top](#function) [index](index.md)</sub>
 ## parse_comment
 
-``` python
-Function.parse_comment(self, comment)
+``` python Function.parse_comment(self, comment)
 ```
 
 Function comment parser
@@ -106,8 +101,7 @@ The lists are generated from the structure
 <sub>[top](#function) [index](index.md)</sub>
 ## returns
 
-``` python
-Function.returns
+``` python Function.returns
 ```
 
 

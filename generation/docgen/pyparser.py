@@ -586,7 +586,7 @@ class Parser(Reader):
                 if c == '"' and self.equal('""'):
                     self.cursor += 2
                     context = 'SOURCE'
-                    yield 'COMMENT', md_normalize(txt)
+                    yield 'COMMENT', txt
                     txt = ""
                     c = None
 

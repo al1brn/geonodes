@@ -1,7 +1,6 @@
 # Doc
 
-``` python
-Doc(self, match)
+``` python Doc(self, match)
 ```
 
 Item documentation

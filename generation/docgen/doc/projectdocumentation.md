@@ -1,7 +1,6 @@
 # ProjectDocumentation
 
-``` python
-ProjectDocumentation(self, title, comment=None, classes_section=True)
+``` python ProjectDocumentation(self, title, comment=None, classes_section=True)
 ```
 
 Project documentation
@@ -46,8 +45,7 @@ proj.write_documentation(doc_folder=root / 'doc')
 
 ## add_class
 
-``` python
-ProjectDocumentation.add_class(self, class_name, module_name=None, bases=[], capture=[])
+``` python ProjectDocumentation.add_class(self, class_name, module_name=None, bases=[], capture=[])
 ```
 
 Add a class in the documented classes
@@ -80,8 +78,7 @@ The 'capture' list contains base classes to copy documentation from. Hence, ther
 <sub>[top](#projectdocumentation) [index](index.md)</sub>
 ## add_module
 
-``` python
-ProjectDocumentation.add_module(self, name, text)
+``` python ProjectDocumentation.add_module(self, name, text)
 ```
 
 Add a module
@@ -93,8 +90,7 @@ Add a module
 <sub>[top](#projectdocumentation) [index](index.md)</sub>
 ## compile
 
-``` python
-ProjectDocumentation.compile(self)
+``` python ProjectDocumentation.compile(self)
 ```
 
 Compile each class
@@ -105,8 +101,7 @@ Compile each class
 <sub>[top](#projectdocumentation) [index](index.md)</sub>
 ## write_index
 
-``` python
-ProjectDocumentation.write_index(self, file_name)
+``` python ProjectDocumentation.write_index(self, file_name)
 ```
 
 Write the index file

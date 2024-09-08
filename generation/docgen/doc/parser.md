@@ -1,7 +1,6 @@
 # Parser
 
-``` python
-Reader(self, text)
+``` python Reader(self, text)
 ```
 
 Simple python source code parser.
@@ -20,8 +19,7 @@ Simple python source code parser.
 
 ## eol
 
-``` python
-Reader.eol
+``` python Reader.eol
 ```
 
 End of line flag
@@ -37,8 +35,7 @@ End of line flag
 <sub>[top](#parser) [index](index.md)</sub>
 ## previous
 
-``` python
-Reader.previous
+``` python Reader.previous
 ```
 
 Read the previous char
@@ -54,8 +51,7 @@ Read the previous char
 <sub>[top](#parser) [index](index.md)</sub>
 ## read
 
-``` python
-Reader.read
+``` python Reader.read
 ```
 
 Read the next char
@@ -78,8 +74,7 @@ After reading, the cursor is incremented
 
 > **Decorators**: Class method
 
-``` python
-Reader.FromFile(cls, fname)
+``` python Reader.FromFile(cls, fname)
 ```
 
 Initialize a parser from a file.
@@ -95,8 +90,7 @@ Initialize a parser from a file.
 <sub>[top](#parser) [index](index.md)</sub>
 ## back
 
-``` python
-Reader.back(self)
+``` python Reader.back(self)
 ```
 
 Move the cursor one step backwards
@@ -108,8 +102,7 @@ Move the cursor one step backwards
 <sub>[top](#parser) [index](index.md)</sub>
 ## current
 
-``` python
-Reader.current
+``` python Reader.current
 ```
 
 Read the current char
@@ -127,8 +120,7 @@ Getting the current char doesn't move the cursor.
 <sub>[top](#parser) [index](index.md)</sub>
 ## eof
 
-``` python
-Reader.eof
+``` python Reader.eof
 ```
 
 End of file flag
@@ -144,8 +136,7 @@ End of file flag
 <sub>[top](#parser) [index](index.md)</sub>
 ## equal
 
-``` python
-Reader.equal(self, s)
+``` python Reader.equal(self, s)
 ```
 
 Compare the string starting at the cursor with the argument
@@ -165,8 +156,7 @@ Compare the string starting at the cursor with the argument
 <sub>[top](#parser) [index](index.md)</sub>
 ## previous
 
-``` python
-Reader.previous
+``` python Reader.previous
 ```
 
 Read the previous char
@@ -182,8 +172,7 @@ Read the previous char
 <sub>[top](#parser) [index](index.md)</sub>
 ## python_split
 
-``` python
-Parser.python_split(self)
+``` python Parser.python_split(self)
 ```
 
 Split the python source file in parts
@@ -203,8 +192,7 @@ yield
 <sub>[top](#parser) [index](index.md)</sub>
 ## read
 
-``` python
-Reader.read
+``` python Reader.read
 ```
 
 Read the next char
@@ -222,8 +210,7 @@ After reading, the cursor is incremented
 <sub>[top](#parser) [index](index.md)</sub>
 ## reset
 
-``` python
-Reader.reset(self)
+``` python Reader.reset(self)
 ```
 
 Reset the cursor to the start of the text

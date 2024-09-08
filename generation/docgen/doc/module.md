@@ -1,7 +1,6 @@
 # Module
 
-``` python
-Module(self, name, text)
+``` python Module(self, name, text)
 ```
 
 Module documentation

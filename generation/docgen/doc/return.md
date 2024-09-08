@@ -1,7 +1,6 @@
 # Return
 
-``` python
-
+``` python Return(self, name, description=None)
 ```
 
 Function returns
@@ -24,8 +23,7 @@ Yield a line for return documentation:
 
 ## build
 
-``` python
-
+``` python Return.build(self)
 ```
 
 Yield line return
