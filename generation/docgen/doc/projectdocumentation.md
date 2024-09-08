@@ -41,8 +41,7 @@ proj.write_documentation(doc_folder=root / 'doc')
 
 ## Methods and Properties
 - A : [add_class](#add_class) [add_module](#add_module) 
-- C : [compile](#compile) 
-- W : [write_index](#write_index) 
+- C : [compile](#compile) [create_index_file](#create_index_file) 
 
 # Methods
 
@@ -109,13 +108,13 @@ Compile each class
 
 
 <sub>[top](#projectdocumentation) [index](index.md)</sub>
-## write_index
+## create_index_file
 
 ``` python
-ProjectDocumentation.write_index(self, file_name)
+ProjectDocumentation.create_index_file(self, file_name)
 ```
 
-Write the index file
+Create the index file
 
 
 

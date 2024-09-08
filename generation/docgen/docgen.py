@@ -1169,15 +1169,15 @@ class ProjectDocumentation(Section):
     # ====================================================================================================
     # Write the index
 
-    def write_index(self, file_name):
-        """ Write the index file
+    def create_index_file(self, file_name):
+        """ Create the index file
 
         Arguments
         ---------
         - file_name (str) : file name to write
         """
 
-        print(f"Write index: {file_name}")
+        print(f"Create index: {file_name}")
 
         with Path(file_name).open(mode='w') as f:
 
@@ -1203,20 +1203,20 @@ class ProjectDocumentation(Section):
 
 
     # ====================================================================================================
-    # Write the documentation
+    # Create the documentation files
 
-    def write_documentation(self, doc_folder):
+    def create_documentation(self, doc_folder):
 
         doc_folder = Path(doc_folder)
 
         for class_name, class_ in self.classes.items():
             file_path = doc_folder / class_.md_file_name
-            print(f"Write ‘{class_name}' : {file_path}")
+            print(f"Create ‘{class_name}' : {file_path}")
             with file_path.open(mode='w') as f:
                 for line in class_.build():
                     f.write(line)
 
-        self.write_index(doc_folder / 'index.md')
+        self.create_index_file(doc_folder / 'index.md')
 
 
 # =============================================================================================================================
@@ -1283,6 +1283,6 @@ def gen_docgen():
     # ====================================================================================================
     # Step 5 : write the documentation
 
-    proj.write_documentation(doc_folder=root / 'doc')
+    proj.create_documentation(doc_folder=root / 'doc')
 
     print(inspect.getsource(tests))
