@@ -1,6 +1,7 @@
 # Section
 
-``` python Section(self, title, comment=None, level=0, with_sections_only=False, sort_sections=False)
+``` python
+Section(self, title, comment=None, level=0, with_sections_only=False, sort_sections=False)
 ```
 
 Elementary base of a documentation
@@ -37,7 +38,8 @@ It inherits from a list into which sub sections can be stored. A Section produce
 
 ## comment
 
-``` python Section.comment
+``` python
+Section.comment
 ```
 
 Comment property
@@ -79,7 +81,8 @@ Indentation level
 <sub>[top](#section) [index](index.md)</sub>
 ## md_file_name
 
-``` python Section.md_file_name
+``` python
+Section.md_file_name
 ```
 
 MD Document file name
@@ -108,7 +111,8 @@ The sections are printed in alphabetical order
 <sub>[top](#section) [index](index.md)</sub>
 ## sorted_sections
 
-``` python Section.sorted_sections
+``` python
+Section.sorted_sections
 ```
 
 Sort the sub sections in alphabetical order
@@ -153,7 +157,8 @@ The section is printed only if the list of sub sections is not empty
 
 ## alphabetical_sections
 
-``` python Section.alphabetical_sections(self, alpha=None)
+``` python
+Section.alphabetical_sections(self, alpha=None)
 ```
 
 Build a dictionary keyed by the section title initials
@@ -181,7 +186,8 @@ Used to diplay a table of content when there is a great number of sections.
 <sub>[top](#section) [index](index.md)</sub>
 ## build
 
-``` python Section.build(self)
+``` python
+Section.build(self)
 ```
 
 Yield the lines of the section
@@ -202,7 +208,8 @@ If the flag **with_sections_only** is set, nothing is yield if there is no sub s
 <sub>[top](#section) [index](index.md)</sub>
 ## build_extra
 
-``` python Section.build_extra(self)
+``` python
+Section.build_extra(self)
 ```
 
 Yield extra lines at the end of the section documentation
@@ -214,7 +221,8 @@ Yield extra lines at the end of the section documentation
 <sub>[top](#section) [index](index.md)</sub>
 ## build_header
 
-``` python Section.build_header(self)
+``` python
+Section.build_header(self)
 ```
 
 Yield the lines of the header part
@@ -226,7 +234,8 @@ Yield the lines of the header part
 <sub>[top](#section) [index](index.md)</sub>
 ## build_sections
 
-``` python Section.build_sections(self)
+``` python
+Section.build_sections(self)
 ```
 
 Yield the lines of the sections parts
@@ -238,7 +247,8 @@ Yield the lines of the sections parts
 <sub>[top](#section) [index](index.md)</sub>
 ## get_section
 
-``` python Section.get_section(self, title)
+``` python
+Section.get_section(self, title)
 ```
 
 Look for a sub section by its title
@@ -258,7 +268,8 @@ Look for a sub section by its title
 <sub>[top](#section) [index](index.md)</sub>
 ## init
 
-``` python Section.init(self)
+``` python
+Section.init(self)
 ```
 
 Class initialisation
@@ -277,7 +288,8 @@ Default method is empty.
 <sub>[top](#section) [index](index.md)</sub>
 ## link_to
 
-``` python Section.link_to(self, url="")
+``` python
+Section.link_to(self, url="")
 ```
 
 MD link
@@ -293,7 +305,8 @@ MD link
 <sub>[top](#section) [index](index.md)</sub>
 ## new_section
 
-``` python Section.new_section(self, title, comment=None, sub_level=1)
+``` python
+Section.new_section(self, title, comment=None, sub_level=1)
 ```
 
 Add a sub section
@@ -315,7 +328,8 @@ Add a sub section
 <sub>[top](#section) [index](index.md)</sub>
 ## parse_comment
 
-``` python Section.parse_comment(self, comment)
+``` python
+Section.parse_comment(self, comment)
 ```
 
 Parse comment to extract information
@@ -337,7 +351,8 @@ This method extract information embbeded in the comment and returns the cleaned 
 <sub>[top](#section) [index](index.md)</sub>
 ## print
 
-``` python Section.print(self)
+``` python
+Section.print(self)
 ```
 
 Print the documentation in the console
@@ -351,7 +366,8 @@ For debug purpose.
 <sub>[top](#section) [index](index.md)</sub>
 ## sorted_sections
 
-``` python Section.sorted_sections
+``` python
+Section.sorted_sections
 ```
 
 Sort the sub sections in alphabetical order
@@ -367,7 +383,8 @@ Sort the sub sections in alphabetical order
 <sub>[top](#section) [index](index.md)</sub>
 ## write
 
-``` python Section.write(self, comment='\n')
+``` python
+Section.write(self, comment='\n')
 ```
 
 Append text to the current text

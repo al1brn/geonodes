@@ -92,8 +92,16 @@ def md_normalize(text):
         else:
             append = True
             if bullet == "":
+                # Merge if current indent is greater equal than to the previous indent
                 merge = indent in range(prev_indent, prev_indent + 4)
+
+                # Merge if previous line is not blank
                 merge = merge and lines[-1] != ""
+
+                # Merge if previous line is not source code
+                if index > 0:
+                    merge = merge and line_infos[index-1][1][:1] != '`'
+
                 if merge:
                     lines[-1] = lines[-1] + " " + line
                     append = False

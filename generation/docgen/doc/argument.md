@@ -1,6 +1,7 @@
 # Argument
 
-``` python Argument(self, name, type=None, default=None, description=None)
+``` python
+
 ```
 
 Function argument
@@ -23,7 +24,8 @@ Yield a line for argument documentation:
 
 ## build
 
-``` python Argument.build(self)
+``` python
+
 ```
 
 Yield line argument

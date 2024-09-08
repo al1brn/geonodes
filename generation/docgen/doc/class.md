@@ -1,6 +1,7 @@
 # Class
 
-``` python Class(self, class_name, comment)
+``` python
+Class(self, class_name, comment)
 ```
 
 Section documenting a class
@@ -31,7 +32,8 @@ The class documentation is completed afterward by the [compile](#compile) method
 
 ## properties
 
-``` python Class.properties
+``` python
+Class.properties
 ```
 
 
@@ -50,7 +52,8 @@ The class documentation is completed afterward by the [compile](#compile) method
 
 > **Decorators**: Class method
 
-``` python Class.FromDoc(cls, doc, ignore_uncommented=True)
+``` python
+Class.FromDoc(cls, doc, ignore_uncommented=True)
 ```
 
 Creates a Class document from a Doc parsed from source file
@@ -73,7 +76,8 @@ The **doc** argument contains the list of documents methods and properties.
 <sub>[top](#class) [index](index.md)</sub>
 ## build
 
-``` python Class.build(self)
+``` python
+Class.build(self)
 ```
 
 Yield the Class documentation lines
@@ -85,7 +89,8 @@ Yield the Class documentation lines
 <sub>[top](#class) [index](index.md)</sub>
 ## capture_class
 
-``` python Class.capture_class(self, other)
+``` python
+Class.capture_class(self, other)
 ```
 
 Capture methods and properties from another Class
@@ -107,7 +112,8 @@ This method allows to get the documentation of inherited items of a class which 
 <sub>[top](#class) [index](index.md)</sub>
 ## compile
 
-``` python Class.compile(self, classes)
+``` python
+Class.compile(self, classes)
 ```
 
 Compile links with other classes
@@ -127,7 +133,8 @@ Compile links with other classes
 <sub>[top](#class) [index](index.md)</sub>
 ## methods
 
-``` python Class.methods
+``` python
+Class.methods
 ```
 
 Methods Section
