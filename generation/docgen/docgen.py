@@ -65,7 +65,7 @@ class Section(list):
 
     def __str__(self):
         scomm = 'None' if self.comment is None else self.comment[:10] + '...'
-        return f"<Section {type(self).__name__} '{self.title}' {len(self)}, {scomm}>"
+        return f"<Section {type(self).__name__} '{self.title}' {len(self)}: {scomm}>"
 
     # ====================================================================================================
     # Specific init
@@ -747,6 +747,7 @@ class Class(Section):
                         comment = prop.comment + '\n\n'
                     comment += f"Returns\n- {prop.type}\n"
                     self.properties.append(Function(prop.title, comment))
+                    print(f"PROP ADD in {self.title} :", prop.title, '->', [s.title for s in self.properties])
 
 
         # ----------------------------------------------------------------------------------------------------
