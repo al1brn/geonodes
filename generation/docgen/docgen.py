@@ -84,8 +84,9 @@ class Section(list):
         Hooks are applied each time a comment is added to the documentation.
 
         ``` python
+        # Instance of [!TOKEN] will be replaced by the substitution text.
+
         Section.add_hook("[!TOKEN]", "substitution text")
-        # Instance of [!TOKEN] in a comment will be replaced by the the substitution text.
         ```
 
         Due to the piece of code above, the token `[!TOK  EN]` is replaced by `substitution text`: **[!TOKEN]**
