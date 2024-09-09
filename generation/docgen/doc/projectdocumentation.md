@@ -194,14 +194,20 @@ Due to the piece of code above, the token `[!TOKEN]` is replaced here: **substit
 > [!NOTE]
 > Text embedded in a _source code_ zone is not replaced
 
-If a function is passed for replacement rather than a string, its template must be
-`def repl(match_obj, section)` where:
-- match_obj : the result of re.search()
-- section : the section where there is a match
+A function can be passed rather than a string as for `re.sub(expr, repl, text)`.
 
-> [!CAUTION]
-> This template is different from the one of replacement function in `re.search` function
-> which accepts only one argument.
+Here, the passed function can accept a second positional argument if a reference to the current section is required:
+
+``` python
+def replace(match_obj, section):
+# section is the Section instance where the replacement occurs
+pass
+```
+
+> [!NOTE]
+> By default, a hook is used to define links between pages based on the
+> syntax : `<!Section title#Sub section title>` which is converted in [set_hook](projectdocumentation.md#set_hook) in [ProjectDocumentation](projectdocumentation.md)
+> for instance.
 
 
 
