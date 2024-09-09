@@ -14,6 +14,13 @@ from .pyparser import Parser, md_normalize, extract_source, replace_source
 # - automatic building from files
 # - manual adds
 
+
+def title_to_file_name(title):
+    return f"{title.lower().replace(' ', '_')}.md"
+
+def title_to_token(title):
+    return title.lower().replace(' ', '-')
+
 # =============================================================================================================================
 # Section
 
@@ -193,7 +200,8 @@ class Section(list):
         -------
         - str : markdown file name
         """
-        return f"{self.title.lower().replace(' ', '_')}.md"
+        return title_to_file_name(self.title)
+        #return f"{self.title.lower().replace(' ', '_')}.md"
 
     @property
     def link_token(self):
@@ -205,7 +213,8 @@ class Section(list):
         -------
         - str : markdown token
         """
-        return self.title.lower().replace(' ', '-')
+        return title_to_token(self.title)
+        #return self.title.lower().replace(' ', '-')
 
     def link_to(self, url=""):
         """ MD link
@@ -1146,10 +1155,48 @@ class ProjectDocumentation(Section):
 
     def apply_hooks(self, comment):
 
+        # ----------------------------------------------------------------------------------------------------
+        # <!Section title#Sub section in the page> substitution
+
+        def repl_link(m, section):
+            names = m.group(0).split('#')
+            if len(names) == 1:
+                name = names[0].strip()
+                return f"[{name}]({title_to_file_name(name)})"
+
+            file  = names[0].strip()
+            token = names[1].strip()
+
+            # ----- No file : only a link within the page
+
+            if file == "":
+                return f"[{token}](#{title_to_token(token)})"
+
+            # ----- Link to the file
+
+            file_link = f"[{file}]({title_to_file_name(file)})"
+
+            if token == "":
+                return file_link
+
+            # ----- Link to a file and a token
+
+            token_link = f"[{token}]({title_to_file_name(file)}#{title_to_token(token)})"
+
+            return f"{file_link}.{token_link}"
+
+        # ----------------------------------------------------------------------------------------------------
+        # The default hooks to combine with the custom hooks
+
+        def_hooks = [{'expr': r"<![\w# ]*>", 'func': repl_link}]
+
+        # ----------------------------------------------------------------------------------------------------
+        # Main
+
         if comment is None:
             return None
 
-        for hook in self.hooks:
+        for hook in def_hooks + self.hooks:
 
             func = hook['func']
             if isinstance(func, str):

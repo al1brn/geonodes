@@ -15,7 +15,7 @@ Building project documentation follows the following steps:
 4. Compile the documentation to build links between pages
 5. Write the documentation files
 
-The example below illustrates the steps. For a working example, see <!Index>.
+The example below illustrates the steps. For a working example, see [<!Index>](<!index>.md).
 
 ``` python
 # Step 1 : Read project files from root folder
@@ -44,7 +44,7 @@ proj.create_documentation(doc_folder)
 
 
 ## Methods and Properties
-- A : [add_class](#add_class) [add_module](#add_module) 
+- A : [add_class](#add_class) [add_module](#add_module) [apply_hooks](#apply_hooks) 
 - C : [compile](#compile) [create_index_file](#create_index_file) 
 - L : [load_files](#load_files) 
 - S : [set_hook](#set_hook) 
@@ -102,6 +102,18 @@ Add a module
 
 
 <sub>[top](#projectdocumentation) [index](index.md)</sub>
+## apply_hooks
+
+``` python
+ProjectDocumentation.apply_hooks(self, comment)
+```
+
+[<!Section title](<!section_title.md).[Sub section in the page>](<!section_title.md#sub-section-in-the-page>) substitution
+
+
+
+
+<sub>[top](#projectdocumentation) [index](index.md)</sub>
 ## compile
 
 ``` python
@@ -141,7 +153,7 @@ ProjectDocumentation.load_files(self, folder, sub_folders=[])
 
 Load content from source code files.
 
-Each file is loaded in an instance of <!Module> in the <!#modules> list.
+Each file is loaded in an instance of [<!Module>](<!module>.md) in the [<!](<!.md).[modules>](<!.md#modules>) list.
 
 
 
