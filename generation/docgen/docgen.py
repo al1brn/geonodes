@@ -924,27 +924,45 @@ class Class(Section):
         # ----------------------------------------------------------------------------------------------------
         # Inheritance
 
-        classes = project.objects
-
         inherited = {}
 
-        for class_ in classes.values():
+        for base_class in self.bases:
+            base_class_ = project.objects.get(base_class)
+            if base_class_ is None:
+                print(f"CAUTION Class inheritance error: base class '{base_class}' not found in {list(project.objects.keys())}")
+                continue
 
-            # ----- Sub classes
+            for prop in base_class_.properties:
+                if self.properties.get_section(prop.title) is None:
+                    inherited[prop.title] = f"<!{base_class}#{prop.title}>"
 
-            if self.title in class_.bases:
-                self.subclasses.append(class_.title)
+            for meth in base_class_.methods:
+                if self.methods.get_section(meth.title) is None:
+                    inherited[meth.title] = f"<!{base_class}#{meth.title}>"
 
-            # ----- Inherited properties and methods
+        if False:
+            classes = project.objects
 
-            if class_.title in self.bases:
-                for prop in class_.properties:
-                    if self.properties.get_section(prop.title) is None:
-                        inherited[prop.title] = f"[{prop.title}]({class_.title.lower()}.md#{prop.link_token})"
+            for class_ in classes.values():
 
-                for meth in class_.methods:
-                    if self.methods.get_section(meth.title) is None:
-                        inherited[meth.title] = f"[{meth.title}]({class_.title.lower()}.md#{meth.link_token})"
+                if not isinstance(class_, Class):
+                    continue
+
+                # ----- Sub classes
+
+                if self.title in class_.bases:
+                    self.subclasses.append(class_.title)
+
+                # ----- Inherited properties and methods
+
+                if class_.title in self.bases:
+                    for prop in class_.properties:
+                        if self.properties.get_section(prop.title) is None:
+                            inherited[prop.title] = f"[{prop.title}]({class_.title.lower()}.md#{prop.link_token})"
+
+                    for meth in class_.methods:
+                        if self.methods.get_section(meth.title) is None:
+                            inherited[meth.title] = f"[{meth.title}]({class_.title.lower()}.md#{meth.link_token})"
 
         if len(inherited):
             self.inherited = [inherited[key] for key in sorted(inherited.keys())]
