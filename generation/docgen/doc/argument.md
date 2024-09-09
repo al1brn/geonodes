@@ -1,7 +1,5 @@
 # Argument
 
-
-
 ``` python
 
 ```
@@ -24,8 +22,6 @@ Yield a line for argument documentation:
 
 # Methods
 
-
-
 ## build
 
 ``` python
@@ -37,8 +33,6 @@ Yield line argument
 
 
 ##### Returns
-
-
 
 - _str_ : formatted argument line
 

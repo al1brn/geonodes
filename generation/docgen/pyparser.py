@@ -87,6 +87,9 @@ def md_normalize(text):
     # List of lines with a first empty line which will be suppressed at the end
     lines = [""]
     prev_indent = 0
+    in_source = False
+    source_indent = 0
+
     for index, (indent, bullet, line, empty) in enumerate(line_infos):
 
         if empty:
@@ -94,7 +97,16 @@ def md_normalize(text):
             prev_indent = 0
         else:
             append = True
-            if bullet == "":
+
+            # Comment / Source switch
+
+            if bullet[:3] == "```":
+                in_source = not in_source
+                source_indent = indent
+
+            # Regular line
+
+            elif bullet == "":
                 # Merge if current indent is greater equal than to the previous indent
                 merge = indent in range(prev_indent, prev_indent + 4)
 
@@ -110,10 +122,35 @@ def md_normalize(text):
                     append = False
 
             if append:
-                lines.append(" "*max(indent - base_indent, 0) + bullet + line)
-                prev_indent = indent
+                lines.append(" "*max(indent - (source_indent if in_source else base_indent), 0) + bullet + line)
+                if not in_source:
+                    prev_indent = indent
 
     return "\n".join(lines[1:])
+
+# ====================================================================================================
+# Extract source code into a dictionary
+# The dictionary can then used to replace the source code
+
+def extract_source(comment):
+
+    d = {}
+
+    def extract(m):
+        key = f"<s0urc3 {len(d)}>"
+        d[key] = m.group(0)
+        return key
+
+    expr = r"```[^`]*```|`[\w ]*`"
+
+    return re.sub(expr, extract, comment), d
+
+def replace_source(comment, d):
+    for key, source in d.items():
+        comment = comment.replace(key, source)
+
+    return comment
+
 
 # ====================================================================================================
 # Text reader

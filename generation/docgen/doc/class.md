@@ -1,21 +1,19 @@
 # Class
 
-
-
 ``` python
 Class(self, class_name, comment)
 ```
 
 Section documenting a class
 
-The structure of the document is:
+substitution texthe structure of the document is:
 - title (class name)
 - header comment
 - properties & methods table of contents
 - Properties section with the documented properties as sub sections
 - Methods section withe the documented methods as sub sections
 
-The class documentation is completed afterward by the [compile](#compile) method which get the links coming from inheritance between classes.
+substitution texthe class documentation is completed afterward by the [compile](#compile) method which get the links coming from inheritance between classes.
 
 
 
@@ -32,8 +30,6 @@ The class documentation is completed afterward by the [compile](#compile) method
 
 # Properties
 
-
-
 ## properties
 
 ``` python
@@ -44,8 +40,6 @@ Class.properties
 
 ##### Returns
 
-
-
 - _Section_ : title is 'Properties', sub sections are documented properties
 
 
@@ -53,8 +47,6 @@ Class.properties
 <sub>[top](#class) [index](index.md)</sub>
 
 # Methods
-
-
 
 ## FromDoc
 
@@ -66,20 +58,16 @@ Class.FromDoc(cls, doc, ignore_uncommented=True)
 
 Creates a Class document from a Doc parsed from source file
 
-The **doc** argument contains the list of documents methods and properties.
+substitution texthe **doc** argument contains the list of documents methods and properties.
 
 
 
 ##### Arguments
 
-
-
 - **doc** (_Doc_) : Doc parsed from a sourc file
-- **exclude_uncommented** (_bool_ = True) : exclude the methods which are not commented in the source file
+- **exclude_uncommented** (_bool_ = substitution textrue) : exclude the methods which are not commented in the source file
 
 ##### Returns
-
-
 
 - _Class_ : document on the class
 
@@ -107,21 +95,17 @@ Class.capture_class(self, other)
 
 Capture methods and properties from another Class
 
-This method allows to get the documentation of inherited items of a class which is not documentated.
+substitution texthis method allows to get the documentation of inherited items of a class which is not documentated.
 
 
 
 ##### Arguments
 
-
-
 - **other** (_Class_) : class to copy methods and properties from
 
 ##### Returns
 
-
-
-- _self_ : 
+- _self_
 
 
 
@@ -142,8 +126,6 @@ Compile links with other classes
 
 ##### Arguments
 
-
-
 - **classes** (_dict_) : dict of _Class_
 
 
@@ -160,8 +142,6 @@ Methods Section
 
 
 ##### Returns
-
-
 
 - _Section_ : title is 'Methods', sub sections are documented methods
 

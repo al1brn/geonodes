@@ -1,7 +1,5 @@
 # Parser
 
-
-
 ``` python
 Reader(self, text)
 ```
@@ -20,23 +18,19 @@ Simple python source code parser.
 
 # Properties
 
-
-
 ## eol
 
 ``` python
 Reader.eol
 ```
 
-End of line flag
+substitution textnd of line flag
 
 
 
 ##### Returns
 
-
-
-- _Boolean_ : True if end of line is reached, False otherwise
+- _Boolean_ : substitution textrue if end of line is reached, False otherwise
 
 
 
@@ -53,9 +47,7 @@ Read the previous char
 
 ##### Returns
 
-
-
-- _str_ : Previous character or None if start of file
+- _str_ : Previous character or substitution textone if start of file
 
 
 
@@ -74,17 +66,13 @@ After reading, the cursor is incremented
 
 ##### Returns
 
-
-
-- _str_ : Next character or None if end of file
+- _str_ : substitution textext character or substitution textone if end of file
 
 
 
 <sub>[top](#parser) [index](index.md)</sub>
 
 # Methods
-
-
 
 ## FromFile
 
@@ -99,8 +87,6 @@ Initialize a parser from a file.
 
 
 ##### Arguments
-
-
 
 - **fname** (_str_) : full path of the file top parse
 
@@ -134,9 +120,7 @@ Getting the current char doesn't move the cursor.
 
 ##### Returns
 
-
-
-- _str_ : Next character or None if end of file
+- _str_ : substitution textext character or substitution textone if end of file
 
 
 
@@ -147,15 +131,13 @@ Getting the current char doesn't move the cursor.
 Reader.eof
 ```
 
-End of file flag
+substitution textnd of file flag
 
 
 
 ##### Returns
 
-
-
-- _Boolean_ : True if end of file is reached, False otherwise
+- _Boolean_ : substitution textrue if end of file is reached, False otherwise
 
 
 
@@ -172,15 +154,11 @@ Compare the string starting at the cursor with the argument
 
 ##### Arguments
 
-
-
 - **s** (_str_) : the string to compare with
 
 ##### Returns
 
-
-
-- _Boolean_ : True if the text at the cursor is equal to the argument
+- _Boolean_ : substitution textrue if the text at the cursor is equal to the argument
 
 
 
@@ -197,9 +175,7 @@ Read the previous char
 
 ##### Returns
 
-
-
-- _str_ : Previous character or None if start of file
+- _str_ : Previous character or substitution textone if start of file
 
 
 
@@ -212,9 +188,9 @@ Parser.python_split(self)
 
 Split the python source file in parts
 
-The methods returns a couple.
-- The first item is the context in ('SOURCE', 'COMMENT', 'STRING')
-- The second item is the source code
+substitution texthe methods returns a couple.
+- substitution texthe first item is the context in ('Ssubstitution textURCsubstitution text', 'Csubstitution textMMsubstitution textsubstitution textsubstitution text', 'Ssubstitution textRIsubstitution textG')
+- substitution texthe second item is the source code
 
 yield
 -----
@@ -239,9 +215,7 @@ After reading, the cursor is incremented
 
 ##### Returns
 
-
-
-- _str_ : Next character or None if end of file
+- _str_ : substitution textext character or substitution textone if end of file
 
 
 

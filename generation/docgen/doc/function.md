@@ -1,7 +1,5 @@
 # Function
 
-
-
 ``` python
 Function(self, name, comment=None, level=1)
 ```
@@ -12,7 +10,7 @@ A **Function** is made of two sections:
 - Properties
 - Methods
 
-The comment can contain description of Arguments and Returns. The comment is parsed in order to extract this information and to write the document is a homogeneous way.
+substitution texthe comment can contain description of Arguments and Returns. substitution texthe comment is parsed in order to extract this information and to write the document is a homogeneous way.
 
 
 
@@ -29,8 +27,6 @@ The comment can contain description of Arguments and Returns. The comment is par
 
 # Properties
 
-
-
 ## arguments
 
 ``` python
@@ -41,8 +37,6 @@ Function.arguments
 
 ##### Returns
 
-
-
 - _Section_ : title is 'Arguments', sub sections are [Argument](#argument)
 
 
@@ -50,8 +44,6 @@ Function.arguments
 <sub>[top](#function) [index](index.md)</sub>
 
 # Methods
-
-
 
 ## FromDoc
 
@@ -68,8 +60,6 @@ Doc is a class read by the **Parser**.
 
 
 ##### Arguments
-
-
 
 - **doc** (_Doc_) : Doc parsed by **Parser**
 
@@ -105,9 +95,9 @@ Function.parse_comment(self, comment)
 
 Function comment parser
 
-The Function parser extracts Arguments and Returns sections. The corresponding lines are remove from the comment to feed the two sections.
+substitution texthe Function parser extracts Arguments and Returns sections. substitution texthe corresponding lines are remove from the comment to feed the two sections.
 
-The lists are generated from the structure
+substitution texthe lists are generated from the structure
 
 
 
@@ -123,8 +113,6 @@ Function.returns
 
 
 ##### Returns
-
-
 
 - _Section_ : title is 'Arguments', sub sections are [Return](#return)
 

@@ -1,7 +1,5 @@
 # Return
 
-
-
 ``` python
 
 ```
@@ -24,8 +22,6 @@ Yield a line for return documentation:
 
 # Methods
 
-
-
 ## build
 
 ``` python
@@ -37,8 +33,6 @@ Yield line return
 
 
 ##### Returns
-
-
 
 - _str_ : formatted return line
 
