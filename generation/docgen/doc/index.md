@@ -102,13 +102,10 @@ def gen_docgen():
     # ====================================================================================================
     # Step 4 : Compile
 
+    # Demo custom hook
+    proj.set_hook(r"\[!TOKEN\]", "substitution text")
+
     proj.compile()
-
-    print(list(proj.classes.keys()))
-    section = proj.classes.get('ProjectDocumentation')
-    #print(section.methods.get_section('__init__').comment)
-    print(section.comment)
-
 
     # ====================================================================================================
     # Step 5 : Create the documentation

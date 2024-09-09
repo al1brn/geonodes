@@ -990,9 +990,9 @@ class ProjectDocumentation(Section):
         """ Project documentation
 
         Building project documentation follows the following steps:
-        1. Creating the modules
-        2. Adding the classes to document. The classes must be documented in a module
-        3. Adding documentation
+        1. Create the modules, typically by loading source files
+        2. Add the classes to document. The classes must be documented in a module
+        3. Add documentation
         4. Compile the documentation to build links between pages
         5. Write the documentation files
 
@@ -1117,7 +1117,6 @@ class ProjectDocumentation(Section):
     # ----------------------------------------------------------------------------------------------------
     # Set a hook
 
-    @classmethod
     def set_hook(self, expr, repl):
         """ Replace a regular expression by as substitution string
 
@@ -1148,7 +1147,7 @@ class ProjectDocumentation(Section):
             - expr (str) : RegEx expression
             - repl (str or function) : replacement function or string
         """
-        self.hooks.append({'expr': expr, 'func': func})
+        self.hooks.append({'expr': expr, 'repl': repl})
 
     # ----------------------------------------------------------------------------------------------------
     # Apply the hooks
@@ -1188,7 +1187,7 @@ class ProjectDocumentation(Section):
         # ----------------------------------------------------------------------------------------------------
         # The default hooks to combine with the custom hooks
 
-        def_hooks = [{'expr': r"<!([\w# ]*)>", 'func': repl_link}]
+        def_hooks = [{'expr': r"<!([\w# ]*)>", 'repl': repl_link}]
 
         # ----------------------------------------------------------------------------------------------------
         # Main
@@ -1198,7 +1197,7 @@ class ProjectDocumentation(Section):
 
         for hook in def_hooks + self.hooks:
 
-            func = hook['func']
+            func = hook['repl']
             if isinstance(func, str):
                 repl = func
             else:
@@ -1420,13 +1419,10 @@ def gen_docgen():
     # ====================================================================================================
     # Step 4 : Compile
 
+    # Demo custom hook
+    proj.set_hook(r"\[!TOKEN\]", "substitution text")
+
     proj.compile()
-
-    print(list(proj.classes.keys()))
-    section = proj.classes.get('ProjectDocumentation')
-    #print(section.methods.get_section('__init__').comment)
-    print(section.comment)
-
 
     # ====================================================================================================
     # Step 5 : Create the documentation

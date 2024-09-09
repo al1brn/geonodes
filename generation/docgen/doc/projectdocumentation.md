@@ -9,9 +9,9 @@ ProjectDocumentation(self, title, comment=None, classes_section=True)
 Project documentation
 
 Building project documentation follows the following steps:
-1. Creating the modules
-2. Adding the classes to document. The classes must be documented in a module
-3. Adding documentation
+1. Create the modules, typically by loading source files
+2. Add the classes to document. The classes must be documented in a module
+3. Add documentation
 4. Compile the documentation to build links between pages
 5. Write the documentation files
 
@@ -175,8 +175,6 @@ Each file is loaded in an instance of [Module](module.md) in the [modules](#modu
 <sub>[top](#projectdocumentation) [index](index.md)</sub>
 ## set_hook
 
-> **Decorators**: Class method
-
 ``` python
 ProjectDocumentation.set_hook(self, expr, repl)
 ```
@@ -191,7 +189,7 @@ Hooks are applied to the documentation at compilation time.
 proj.set_hook(r"\[!TOKEN\]", "substitution text")
 ```
 
-Due to the piece of code above, the token `[!TOKEN]` is replaced here: **[!TOKEN]**
+Due to the piece of code above, the token `substitution text` is replaced here: **substitution text**
 
 > [!NOTE]
 > Text embedded in a _source code_ zone is not replaced
