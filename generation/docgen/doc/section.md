@@ -165,7 +165,7 @@ Section.add_hook(cls, expr, func)
 
 Replace a regular expression by as substitution string
 
-Hooks are applied each time comment is written in the documentation.
+Hooks are applied each time a comment is added to the documentation.
 
 ``` python
 Section.add_hook("[!TOKEN]", "substitution text")
