@@ -1183,7 +1183,7 @@ class ProjectDocumentation(Section):
 
             token_link = f"[{token}]({title_to_file_name(file)}#{title_to_token(token)})"
 
-            return f"{file_link}.{token_link}"
+            return f"{token_link} in {file_link}"
 
         # ----------------------------------------------------------------------------------------------------
         # The default hooks to combine with the custom hooks
