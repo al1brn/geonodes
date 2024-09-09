@@ -4,7 +4,7 @@
 Section(self, title, comment=None, level=0, with_sections_only=False, sort_sections=False)
 ```
 
-substitution textlementary base of a documentation
+Elementary base of a documentation
 
 A **Section** is basically a title and a comment.
 
@@ -12,7 +12,7 @@ It inherits from a list into which sub sections can be stored. A Section produce
 - Header
 - Comment
 - Loop on sub sections
-- substitution textxtra (for intrapage links)
+- Extra (for intrapage links)
 
 
 
@@ -55,7 +55,7 @@ Comment property
 <sub>[top](#section) [index](index.md)</sub>
 ## extra
 
-substitution textxtra text at the end of the documentation
+Extra text at the end of the documentation
 
 
 
@@ -98,7 +98,7 @@ MD Document file name
 <sub>[top](#section) [index](index.md)</sub>
 ## sort_sections
 
-substitution texthe sections are printed in alphabetical order
+The sections are printed in alphabetical order
 
 
 
@@ -141,7 +141,7 @@ Section title
 <sub>[top](#section) [index](index.md)</sub>
 ## with_sections_only
 
-substitution texthe section is printed only if the list of sub sections is not empty
+The section is printed only if the list of sub sections is not empty
 
 
 
@@ -173,16 +173,16 @@ Hooks are applied each time a comment is added to the documentation.
 Section.add_hook("[!TOKEN]", "substitution text")
 ```
 
-Due to the piece of code above, the token `[substitution textsubstitution textsubstitution textsubstitution text  substitution textsubstitution text]` is replaced by `substitution text`: **[substitution textsubstitution textsubstitution textsubstitution textsubstitution textsubstitution text]**
+Due to the piece of code above, the token `[!TOK  EN]` is replaced by `substitution text`: **substitution text**
 
-> [substitution textsubstitution textsubstitution textsubstitution textsubstitution text]
-> substitution textext embedded in a _source code_ zone is not replaced
+> [!NOTE]
+> Text embedded in a _source code_ zone is not replaced
 
 
 
 ##### Arguments
 
-- **expr** (_str_) : Regsubstitution textx expression
+- **expr** (_str_) : RegEx expression
 - **func**
 
 
@@ -208,7 +208,7 @@ Used to diplay a table of content when there is a great number of sections.
 
 ##### Arguments
 
-- **alpha** (_dict_ = substitution textone) : dictionary to feed
+- **alpha** (_dict_ = None) : dictionary to feed
 
 ##### Returns
 
@@ -225,7 +225,7 @@ Section.build(self)
 
 Yield the lines of the section
 
-substitution texthe method yields the lines from method **build_header** and the from
+The method yields the lines from method **build_header** and the from
 **build_sections**.
 
 If the flag **with_sections_only** is set, nothing is yield if there is no sub sections.
@@ -307,7 +307,7 @@ Section.init(self)
 
 Class initialisation
 
-substitution texthis complementary initialisation takes place at the end of **__init__**, before
+This complementary initialisation takes place at the end of **__init__**, before
 [parse_comment](#parse_comment) is called.
 
 Allows to initialize attributes which are used in [parse_comment](#parse_comment) method.
@@ -367,7 +367,7 @@ Section.parse_comment(self, comment)
 
 Parse comment to extract information
 
-substitution texthis method extract information embbeded in the comment and returns the cleaned text. substitution texthe default implementation apply the hooks
+This method extract information embbeded in the comment and returns the cleaned text. The default implementation apply the hooks
 
 
 
@@ -422,14 +422,14 @@ Section.write(self, comment='\n', parse=True)
 
 Append text to the current text
 
-substitution texthe current text is either the comment if this section if there is not sub sections, or the comment of the last sub sections.
+The current text is either the comment if this section if there is not sub sections, or the comment of the last sub sections.
 
 
 
 ##### Arguments
 
 - **comment** (_str_) : the text to write
-- **parse** (_bool_ = substitution textrue) : parse the comment
+- **parse** (_bool_ = True) : parse the comment
 
 
 

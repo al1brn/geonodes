@@ -1,15 +1,15 @@
 # Simple Python Documentation Generator
 
-substitution texthis is the **DocGen** documentation generated with the projet itself.
+This is the **DocGen** documentation generated with the projet itself.
 
 ## Project classes
 
 
-substitution texthe project is made of two layers.
-1. substitution texthe first layer is the parser which parses python source code. It returns a list of items (classes and functions) with their comment.
-2. substitution texthe second layer builds documented classes from the results of the parsing. substitution textne can them organize the documentation in the desired hierarchy.
+The project is made of two layers.
+1. The first layer is the parser which parses python source code. It returns a list of items (classes and functions) with their comment.
+2. The second layer builds documented classes from the results of the parsing. One can them organize the documentation in the desired hierarchy.
 
-> [substitution textsubstitution textsubstitution textsubstitution textsubstitution text]
+> [!NOTE]
 > Documentating a class must be explicitly requested with
 [ProjectDocumentation](projectdocumentation.md#add_class)
 
@@ -35,7 +35,7 @@ substitution texthe project is made of two layers.
 ## Source code example
 
 
-substitution texthe example given below is the source code used to generate this documentation:
+The example given below is the source code used to generate this documentation:
 
 ``` python
 def gen_docgen():

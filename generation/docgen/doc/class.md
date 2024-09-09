@@ -6,14 +6,14 @@ Class(self, class_name, comment)
 
 Section documenting a class
 
-substitution texthe structure of the document is:
+The structure of the document is:
 - title (class name)
 - header comment
 - properties & methods table of contents
 - Properties section with the documented properties as sub sections
 - Methods section withe the documented methods as sub sections
 
-substitution texthe class documentation is completed afterward by the [compile](#compile) method which get the links coming from inheritance between classes.
+The class documentation is completed afterward by the [compile](#compile) method which get the links coming from inheritance between classes.
 
 
 
@@ -58,14 +58,14 @@ Class.FromDoc(cls, doc, ignore_uncommented=True)
 
 Creates a Class document from a Doc parsed from source file
 
-substitution texthe **doc** argument contains the list of documents methods and properties.
+The **doc** argument contains the list of documents methods and properties.
 
 
 
 ##### Arguments
 
 - **doc** (_Doc_) : Doc parsed from a sourc file
-- **exclude_uncommented** (_bool_ = substitution textrue) : exclude the methods which are not commented in the source file
+- **exclude_uncommented** (_bool_ = True) : exclude the methods which are not commented in the source file
 
 ##### Returns
 
@@ -95,7 +95,7 @@ Class.capture_class(self, other)
 
 Capture methods and properties from another Class
 
-substitution texthis method allows to get the documentation of inherited items of a class which is not documentated.
+This method allows to get the documentation of inherited items of a class which is not documentated.
 
 
 

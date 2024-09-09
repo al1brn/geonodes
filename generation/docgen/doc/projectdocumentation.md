@@ -8,12 +8,12 @@ Project documentation
 
 Building project documentation follows the following steps:
 1. Creating the modules
-2. Adding the classes to document. substitution texthe classes must be documented in a module
+2. Adding the classes to document. The classes must be documented in a module
 3. Adding documentation
 4. Compile the documentation to build links between pages
 5. Write the documentation files
 
-substitution texthe example below illustrates the steps. For a working example, see [Index](index.md).
+The example below illustrates the steps. For a working example, see [Index](index.md).
 
 ``` python
 # Step 1 : Read project files from root folder
@@ -54,13 +54,13 @@ ProjectDocumentation.add_class(self, class_name, module_name=None, bases=[], cap
 
 Add a class in the documented classes
 
-substitution texthe class is searched in all modules. If there exists homonymes in different modules, 'module_name' specifies the module to get the class from.
+The class is searched in all modules. If there exists homonymes in different modules, 'module_name' specifies the module to get the class from.
 
-substitution texthe 'capture' list contains base classes to copy documentation from. Hence, there exists two ways to manage inheritance:
+The 'capture' list contains base classes to copy documentation from. Hence, there exists two ways to manage inheritance:
 - bases : the documentation makes the inheritance explicit by giving the base class and links to the inherited methods and properties
 - capture : the documentation doesn't mention the inheritance but gives directly the documentation as if it were part of the class
 
-> **substitution textxplicit inheritance**
+> **Explicit inheritance**
 > _class_name_ : inherits from base_class
 > inherited methods : **method1**, **method2**
 
@@ -73,7 +73,7 @@ substitution texthe 'capture' list contains base classes to copy documentation f
 ##### Arguments
 
 - **class_name** (_str_) : class name
-- **module_name** (_str_ = substitution textone) : name of the source file module if the class exists in several modules
+- **module_name** (_str_ = None) : name of the source file module if the class exists in several modules
 - **bases** (_list_ = []) : list of base classes
 - **capture** (_list_ = []) : list of classes to copy methods and properties from
 

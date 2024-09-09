@@ -10,7 +10,7 @@ A **Function** is made of two sections:
 - Properties
 - Methods
 
-substitution texthe comment can contain description of Arguments and Returns. substitution texthe comment is parsed in order to extract this information and to write the document is a homogeneous way.
+The comment can contain description of Arguments and Returns. The comment is parsed in order to extract this information and to write the document is a homogeneous way.
 
 
 
@@ -95,9 +95,9 @@ Function.parse_comment(self, comment)
 
 Function comment parser
 
-substitution texthe Function parser extracts Arguments and Returns sections. substitution texthe corresponding lines are remove from the comment to feed the two sections.
+The Function parser extracts Arguments and Returns sections. The corresponding lines are remove from the comment to feed the two sections.
 
-substitution texthe lists are generated from the structure
+The lists are generated from the structure
 
 
 
