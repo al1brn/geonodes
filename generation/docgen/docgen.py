@@ -984,7 +984,7 @@ class Module:
 # =============================================================================================================================
 # Project documentation
 
-class ProjectDocumentation(Section):
+class Project(Section):
 
     def __init__(self, title, comment=None, classes_section=True):
         """ Project documentation
@@ -1001,7 +1001,7 @@ class ProjectDocumentation(Section):
         ``` python
         # Step 1 : Read project files from root folder
 
-        proj = ProjectDocumentation("Project", "Documentation starts here")
+        proj = Project("Project", "Documentation starts here")
         proj.load_files(my_folder, sub_folders=['sub1', 'sub2'])
 
         # Step 2 : Declare the classes to document
@@ -1146,8 +1146,7 @@ class ProjectDocumentation(Section):
 
         > [!NOTE]
         > By default, a hook is used to define links between pages based on the
-        > syntax : `<!Section title#Sub section title>` which is converted in <!ProjectDocumentation#set_hook>
-        > for instance.
+        > syntax : `<!Section title#Sub section title>` which is converted in <!Project#set_hook>.
 
         Arguments
         ---------
@@ -1377,7 +1376,7 @@ def gen_docgen():
     comment = "This is the **DocGen** documentation generated with the projet itself."
 
     root = Path(__file__).parents[0]
-    proj = ProjectDocumentation('Simple Python Documentation Generator', comment=comment)
+    proj = Project('Simple Python Documentation Generator', comment=comment)
     proj.load_files(root, sub_folders=[])
 
     # ====================================================================================================
@@ -1392,7 +1391,7 @@ def gen_docgen():
     proj.add_class('Function', bases=['Section'])
     proj.add_class('Class',    bases=['Section'])
     proj.add_class('Module')
-    proj.add_class('ProjectDocumentation')
+    proj.add_class('Project')
 
     # ====================================================================================================
     # Step 3 : Add documentation
@@ -1408,7 +1407,7 @@ def gen_docgen():
 
         > [!NOTE]
         > Documentating a class must be explicitly requested with
-        [ProjectDocumentation](projectdocumentation.md#add_class)
+        [Project](projectdocumentation.md#add_class)
         """)
 
     struct.new_section("Parser classes")
@@ -1417,7 +1416,7 @@ def gen_docgen():
     struct.write()
 
     struct.new_section("DocGen classes")
-    struct.write("- [ProjectDocumentation](projectdocumentation.md) : Project documentation\n")
+    struct.write("- [Project](projectdocumentation.md) : Project documentation\n")
     struct.write("- [Class](class.md) : Class documentation\n")
     struct.write("- [Function](function.md) : Function documentation\n")
     struct.write("- [Section](section.md) : Base documentation section\n")

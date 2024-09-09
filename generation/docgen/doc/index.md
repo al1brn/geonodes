@@ -11,7 +11,7 @@ The project is made of two layers.
 
 > [!NOTE]
 > Documentating a class must be explicitly requested with
-[ProjectDocumentation](projectdocumentation.md#add_class)
+[Project](projectdocumentation.md#add_class)
 
 
 ### Parser classes
@@ -24,7 +24,7 @@ The project is made of two layers.
 
 ### DocGen classes
 
-- [ProjectDocumentation](projectdocumentation.md) : Project documentation
+- [Project](projectdocumentation.md) : Project documentation
 - [Class](class.md) : Class documentation
 - [Function](function.md) : Function documentation
 - [Section](section.md) : Base documentation section
@@ -46,7 +46,7 @@ def gen_docgen():
     comment = "This is the **DocGen** documentation generated with the projet itself."
 
     root = Path(__file__).parents[0]
-    proj = ProjectDocumentation('Simple Python Documentation Generator', comment=comment)
+    proj = Project('Simple Python Documentation Generator', comment=comment)
     proj.load_files(root, sub_folders=[])
 
     # ====================================================================================================
@@ -61,7 +61,7 @@ def gen_docgen():
     proj.add_class('Function', bases=['Section'])
     proj.add_class('Class',    bases=['Section'])
     proj.add_class('Module')
-    proj.add_class('ProjectDocumentation')
+    proj.add_class('Project')
 
     # ====================================================================================================
     # Step 3 : Add documentation
@@ -77,7 +77,7 @@ def gen_docgen():
 
         > [!NOTE]
         > Documentating a class must be explicitly requested with
-        [ProjectDocumentation](projectdocumentation.md#add_class)
+        [Project](projectdocumentation.md#add_class)
         """)
 
     struct.new_section("Parser classes")
@@ -86,7 +86,7 @@ def gen_docgen():
     struct.write()
 
     struct.new_section("DocGen classes")
-    struct.write("- [ProjectDocumentation](projectdocumentation.md) : Project documentation\n")
+    struct.write("- [Project](projectdocumentation.md) : Project documentation\n")
     struct.write("- [Class](class.md) : Class documentation\n")
     struct.write("- [Function](function.md) : Function documentation\n")
     struct.write("- [Section](section.md) : Base documentation section\n")
@@ -124,7 +124,7 @@ def gen_docgen():
 - [Function](function.md)
 - [Module](module.md)
 - [Parser](parser.md)
-- [ProjectDocumentation](projectdocumentation.md)
+- [Project](project.md)
 - [Return](return.md)
 - [Section](section.md)
 
