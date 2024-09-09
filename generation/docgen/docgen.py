@@ -1034,7 +1034,7 @@ class ProjectDocumentation(Section):
         4. Compile the documentation to build links between pages
         5. Write the documentation files
 
-        The example below illustrates the steps. For a working example, see [Index](index.md).
+        The example below illustrates the steps. For a working example, see <!Index>.
 
         ``` python
         # Step 1 : Read project files from root folder
