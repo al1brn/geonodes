@@ -1,6 +1,10 @@
 # Argument
 
 
+> inherits from: [Section](section.md) 
+
+> inherited: [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section)
+
 
 ``` python
 
@@ -34,10 +38,6 @@ Yield line argument
 
 
 - _str_ : formatted argument line
-> inherits from:[Section](section.md)
-
-> inherited: [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section)
-
 
 
 

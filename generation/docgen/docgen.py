@@ -280,6 +280,23 @@ class Section(list):
 
         return section
 
+    def write_header(self, comment='\n', parse=True):
+        """ Append text to the header comment
+
+        Arguments
+        ---------
+        - comment (str) : the text to write
+        - parse (bool = True) : parse the comment
+        """
+
+        if parse:
+            comment = self.parse_comment(comment)
+
+        if self._comment is None:
+            self._comment = comment
+        else:
+            self._comment += comment
+
     def write(self, comment='\n', parse=True):
         """ Append text to the current text
 
@@ -973,25 +990,25 @@ class Class(Section):
 
         sepa = None
         if len(self.bases):
-            self.write(f"\n> inherits from: ")
+            self.write_header(f"\n> inherits from: ", parse=False)
             for name in self.bases:
-                self.write(f"[{name}]({name.lower()}.md) ")
-            self.write('\n')
+                self.write_header(f"[{name}]({name.lower()}.md) ", parse=False)
+            self.write_header('\n', parse=False)
             sepa = '\n'
 
         if len(self.inherited):
-            self.write("\n> inherited: " + ", ".join(self.inherited))
+            self.write_header("\n> inherited: " + ", ".join(self.inherited), parse=False)
             sepa = '\n'
 
         if len(self.subclasses):
-            self.write(f"\n> subclasses: ")
+            self.write_header(f"\n> subclasses: ", parse=False)
             for name in self.subclasses:
-                self.write(f"[{name}]({name.lower()}.md) ")
-            self.write('\n')
+                self.write_header(f"[{name}]({name.lower()}.md) ", parse=False)
+            self.write_header('\n', parse=False)
             sepa = '\n'
 
         if sepa is not None:
-            self.write(sepa)
+            self.write_header(sepa, parse=False)
 
         # ----------------------------------------------------------------------------------------------------
         # Methods table of content
@@ -1003,11 +1020,11 @@ class Class(Section):
 
             for letter in sorted(alpha.keys()):
                 methods = sorted(alpha[letter], key=lambda s: s.title)
-                section.write(f"- {letter} : ")
+                section.write(f"- {letter} : ", parse=False)
                 for s in methods:
-                    section.write(f"[{s.title}](#{s.link_token}) ")
-                section.write('\n')
-            section.write('\n')
+                    section.write(f"[{s.title}](#{s.link_token}) ", parse=False)
+                section.write('\n', parse=False)
+            section.write('\n', parse=False)
 
         # ----------------------------------------------------------------------------------------------------
         # Extra

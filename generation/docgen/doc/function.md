@@ -1,6 +1,10 @@
 # Function
 
 
+> inherits from: [Section](section.md) 
+
+> inherited: [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section)
+
 
 # Properties
 

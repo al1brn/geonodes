@@ -1,6 +1,9 @@
 # Section
 
 
+> subclasses: [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) 
+
+
 
 ``` python
 Section(self, title, comment=None, level=0, **kwargs)
@@ -554,6 +557,26 @@ Section.write(self, comment='\n', parse=True)
 Append text to the current text
 
 The current text is either the comment if this section if there is not sub sections, or the comment of the last sub sections.
+
+
+
+##### Arguments
+
+
+
+- **comment** (_str_) : the text to write
+- **parse** (_bool_ = True) : parse the comment
+
+
+
+<sub>[top](#section) [index](index.md)</sub>
+## write_header
+
+``` python
+Section.write_header(self, comment='\n', parse=True)
+```
+
+Append text to the header comment
 
 
 

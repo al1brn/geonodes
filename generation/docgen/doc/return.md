@@ -1,6 +1,10 @@
 # Return
 
 
+> inherits from: [Section](section.md) 
+
+> inherited: [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section)
+
 
 ``` python
 
@@ -34,10 +38,6 @@ Yield line return
 
 
 - _str_ : formatted return line
-> inherits from:[Section](section.md)
-
-> inherited: [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section), [Section](section.md#section)
-
 
 
 
