@@ -844,7 +844,7 @@ class Class(Section):
         # Properties documented in the comment section
         #
         # Comment parsing may have created properties doc in 'props' section of some functions
-        # (normally __init__)
+        # (normally in __init__.comment)
 
         for meth in self.methods:
             for prop in meth.props:
@@ -906,9 +906,9 @@ class Class(Section):
         init = self.methods.get_section('__init__')
         if init is not None:
             if self.comment is None:
-                self.comment = init.comment
+                self._comment = init.comment
             else:
-                self.comment += '\n\n' + init.comment
+                self._comment += '\n\n' + init.comment
             self.methods.remove(init)
 
         # ----------------------------------------------------------------------------------------------------
@@ -1351,6 +1351,12 @@ def gen_docgen():
     # Step 4 : Compile
 
     proj.compile()
+
+    print(list(proj.classes.keys()))
+    section = proj.classes.get('ProjectDocumentation')
+    #print(section.methods.get_section('__init__').comment)
+    print(section.comment)
+
 
     # ====================================================================================================
     # Step 5 : Create the documentation

@@ -18,11 +18,13 @@ The example below illustrates the steps. For a working example, see <!Index>.
 ``` python
 # Step 1 : Read project files from root folder
 
-proj = ProjectDocumentation("Project", "Documentation starts here") proj.load_files(my_folder, sub_folders=['sub1', 'sub2'])
+proj = ProjectDocumentation("Project", "Documentation starts here")
+proj.load_files(my_folder, sub_folders=['sub1', 'sub2'])
 
 # Step 2 : Declare the classes to document
 
-proj.add_class('Point',  capture = ['Geometry']) proj.add_class('Vector', bases=['Point'])
+proj.add_class('Point',  capture = ['Geometry'])
+proj.add_class('Vector', bases=['Point'])
 
 # Step 3 : Add documentation
 
