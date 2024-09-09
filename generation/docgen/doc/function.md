@@ -2,17 +2,6 @@
 
 
 
-
-> inherits from: [Section](section.md) 
-
-> inherited: <!Section#FromSource>, <!Section#__init__>, <!Section#alphabetical_sections>, <!Section#as_dict>, <!Section#build>, <!Section#build_extra>, <!Section#build_header>, <!Section#build_sections>, <!Section#comment>, <!Section#extra>, <!Section#fixed_level>, <!Section#get_section>, <!Section#in_toc>, <!Section#iteration>, <!Section#level>, <!Section#link_to>, <!Section#link_token>, <!Section#md_file_name>, <!Section#new_section>, <!Section#page>, <!Section#print>, <!Section#sort_sections>, <!Section#sorted_sections>, <!Section#title>, <!Section#toc>, <!Section#with_sections_only>, <!Section#write>
-## Methods and Properties
-- A : [arguments](#arguments) 
-- F : [FromDoc](#fromdoc) 
-- I : [init](#init) 
-- P : [parse_comment](#parse_comment) 
-- R : [returns](#returns) 
-
 # Properties
 
 

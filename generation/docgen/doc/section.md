@@ -19,25 +19,6 @@ It inherits from a list into which sub sections are stored. A Section produces d
 
 
 
-
-> subclasses: [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) 
-
-## Methods and Properties
-- A : [alphabetical_sections](#alphabetical_sections) [as_dict](#as_dict) 
-- B : [build](#build) [build_extra](#build_extra) [build_header](#build_header) [build_sections](#build_sections) 
-- C : [comment](#comment) 
-- E : [extra](#extra) 
-- F : [fixed_level](#fixed_level) 
-- G : [get_section](#get_section) 
-- I : [in_toc](#in_toc) [init](#init) [iteration](#iteration) 
-- L : [link_to](#link_to) [link_token](#link_token) 
-- M : [md_file_name](#md_file_name) [md_file_name](#md_file_name) 
-- N : [new_section](#new_section) 
-- P : [page](#page) [parse_comment](#parse_comment) [print](#print) 
-- S : [sort_sections](#sort_sections) [sorted_sections](#sorted_sections) [sorted_sections](#sorted_sections) 
-- T : [title](#title) [toc](#toc) 
-- W : [with_sections_only](#with_sections_only) [write](#write) 
-
 # Properties
 
 

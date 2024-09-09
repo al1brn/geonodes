@@ -926,44 +926,28 @@ class Class(Section):
 
         inherited = {}
 
-        if False:
-            for base_class in self.bases:
-                base_class_ = project.objects.get(base_class)
-                if base_class_ is None:
-                    print(f"CAUTION Class inheritance error: base class '{base_class}' not found in {list(project.objects.keys())}")
-                    continue
+        #classes = project.objects
 
-                for prop in base_class_.properties:
+        for class_ in project.objects.values():
+
+            if not isinstance(class_, Class):
+                continue
+
+            # ----- Sub classes
+
+            if self.title in class_.bases:
+                self.subclasses.append(class_.title)
+
+            # ----- Inherited properties and methods
+
+            if class_.title in self.bases:
+                for prop in class_.properties:
                     if self.properties.get_section(prop.title) is None:
-                        inherited[prop.title] = f"<!{base_class}#{prop.title}>"
+                        inherited[prop.title] = f"<!{class_.title}#{prop.title}>"
 
-                for meth in base_class_.methods:
+                for meth in class_.methods:
                     if self.methods.get_section(meth.title) is None:
-                        inherited[meth.title] = f"<!{base_class}#{meth.title}>"
-
-        if True:
-            #classes = project.objects
-
-            for class_ in project.objects.values():
-
-                if not isinstance(class_, Class):
-                    continue
-
-                # ----- Sub classes
-
-                if self.title in class_.bases:
-                    self.subclasses.append(class_.title)
-
-                # ----- Inherited properties and methods
-
-                if class_.title in self.bases:
-                    for prop in class_.properties:
-                        if self.properties.get_section(prop.title) is None:
-                            inherited[prop.title] = f"<!{class_.title}#{prop.title}>"
-
-                    for meth in class_.methods:
-                        if self.methods.get_section(meth.title) is None:
-                            inherited[meth.title] = f"<!{class_.title}#{meth.title}>"
+                        inherited[meth.title] = f"<!{class_.title}#{meth.title}>"
 
         if len(inherited):
             self.inherited = [inherited[key] for key in sorted(inherited.keys())]
@@ -983,6 +967,47 @@ class Class(Section):
                         comment = prop.comment + '\n\n'
                     comment += f"Returns\n- {prop.type}\n"
                     self.properties.append(Function(prop.title, comment))
+
+        # ====================================================================================================
+        # Add to the header comment
+
+        sepa = None
+        if len(self.bases):
+            self.write(f"\n> inherits from: ")
+            for name in self.bases:
+                self.write(f"[{name}]({name.lower()}.md) ")
+            self.write('\n')
+            sepa = '\n'
+
+        if len(self.inherited):
+            self.write("\n> inherited: " + ", ".join(self.inherited))
+            sepa = '\n'
+
+        if len(self.subclasses):
+            self.write(f"\n> subclasses: ")
+            for name in self.subclasses:
+                self.write(f"[{name}]({name.lower()}.md) ")
+            self.write('\n')
+            sepa = '\n'
+
+        if sepa is not None:
+            self.write(sepa)
+
+        # ----------------------------------------------------------------------------------------------------
+        # Methods table of content
+
+        if len(self.methods) or len(self.properties):
+            section = self.new_section("Methods and Properties")
+
+            alpha = self.methods.alphabetical_sections(self.properties.alphabetical_sections())
+
+            for letter in sorted(alpha.keys()):
+                methods = sorted(alpha[letter], key=lambda s: s.title)
+                section.write(f"- {letter} : ")
+                for s in methods:
+                    section.write(f"[{s.title}](#{s.link_token}) ")
+                section.write('\n')
+            section.write('\n')
 
         # ----------------------------------------------------------------------------------------------------
         # Extra
@@ -1066,43 +1091,45 @@ class Class(Section):
         # ----------------------------------------------------------------------------------------------------
         # Inheritance / sub classes
 
-        sepa = None
-        if len(self.bases):
-            yield f"\n> inherits from: "
-            for name in self.bases:
-                yield f"[{name}]({name.lower()}.md) "
-            yield '\n'
-            sepa = '\n'
+        if False:
+            sepa = None
+            if len(self.bases):
+                yield f"\n> inherits from: "
+                for name in self.bases:
+                    yield f"[{name}]({name.lower()}.md) "
+                yield '\n'
+                sepa = '\n'
 
-        if len(self.inherited):
-            yield "\n> inherited: " + ", ".join(self.inherited)
-            sepa = '\n'
+            if len(self.inherited):
+                yield "\n> inherited: " + ", ".join(self.inherited)
+                sepa = '\n'
 
-        if len(self.subclasses):
-            yield f"\n> subclasses: "
-            for name in self.subclasses:
-                yield f"[{name}]({name.lower()}.md) "
-            yield '\n'
-            sepa = '\n'
+            if len(self.subclasses):
+                yield f"\n> subclasses: "
+                for name in self.subclasses:
+                    yield f"[{name}]({name.lower()}.md) "
+                yield '\n'
+                sepa = '\n'
 
-        if sepa is not None:
-            yield sepa
+            if sepa is not None:
+                yield sepa
 
         # ----------------------------------------------------------------------------------------------------
         # Methods table of content
 
-        if len(self.methods) or len(self.properties):
-            yield "## Methods and Properties\n"
+        if False:
+            if len(self.methods) or len(self.properties):
+                yield "## Methods and Properties\n"
 
-            alpha = self.methods.alphabetical_sections(self.properties.alphabetical_sections())
+                alpha = self.methods.alphabetical_sections(self.properties.alphabetical_sections())
 
-            for letter in sorted(alpha.keys()):
-                methods = sorted(alpha[letter], key=lambda s: s.title)
-                yield f"- {letter} : "
-                for s in methods:
-                    yield f"[{s.title}](#{s.link_token}) "
+                for letter in sorted(alpha.keys()):
+                    methods = sorted(alpha[letter], key=lambda s: s.title)
+                    yield f"- {letter} : "
+                    for s in methods:
+                        yield f"[{s.title}](#{s.link_token}) "
+                    yield '\n'
                 yield '\n'
-            yield '\n'
 
         # ----------------------------------------------------------------------------------------------------
         # Properties and methods
@@ -1608,10 +1635,7 @@ class Project(Section):
 
         self.iteration(compile_section)
         for object in self.objects.values():
-            if isinstance(object, Class):
-                object.compile(self)
-            #if a is not None:
-            #    print(f"CAUTION: Compilation error on object '{a.title}'")
+            object.compile(self)
 
         # ----------------------------------------------------------------------------------------------------
         # Apply the hooks

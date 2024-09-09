@@ -16,14 +16,6 @@ Simple python source code parser.
 
 
 
-## Methods and Properties
-- B : [back](#back) 
-- C : [current](#current) 
-- E : [eof](#eof) [eol](#eol) [equal](#equal) 
-- F : [FromFile](#fromfile) 
-- P : [previous](#previous) [previous](#previous) [python_split](#python_split) 
-- R : [read](#read) [read](#read) [reset](#reset) 
-
 # Properties
 
 

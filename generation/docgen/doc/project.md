@@ -46,17 +46,6 @@ proj.create_documentation(...)
 
 
 
-## Methods and Properties
-- A : [add_class](#add_class) [add_page](#add_page) [add_source](#add_source) [apply_hooks](#apply_hooks) 
-- C : [compile_project](#compile_project) [create_index_file](#create_index_file) 
-- G : [get_refdoc](#get_refdoc) 
-- L : [load_files](#load_files) 
-- N : [new_page](#new_page) 
-- O : [object_link](#object_link) 
-- P : [pages](#pages) 
-- R : [refdocs](#refdocs) 
-- S : [sections](#sections) [set_hook](#set_hook) 
-
 # Properties
 
 
