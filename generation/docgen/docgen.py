@@ -1133,19 +1133,26 @@ class ProjectDocumentation(Section):
         > [!NOTE]
         > Text embedded in a _source code_ zone is not replaced
 
-        If a function is passed for replacement rather than a string, its template must be
-        `def repl(match_obj, section)` where:
-        - match_obj : the result of re.search()
-        - section : the section where there is a match
+        A function can be passed rather than a string as for `re.sub(expr, repl, text)`.
 
-        > [!CAUTION]
-        > This template is different from the one of replacement function in `re.search` function
-        > which accepts only one argument.
+        Here, the passed function can accept a second positional argument if a reference
+        to the current section is required:
+
+        ``` python
+        def replace(match_obj, section):
+            # section is the Section instance where the replacement occurs
+            pass
+        ```
+
+        > [!NOTE]
+        > By default, a hook is used to define links between pages based on the
+        > syntax : `<!Section title#Sub section title>` which is converted in <!ProjectDocumentation#set_hook>
+        > for instance.
 
         Arguments
         ---------
             - expr (str) : RegEx expression
-            - repl (str or function) : replacement function or string
+            - repl (str or function) : replacement string or function
         """
         self.hooks.append({'expr': expr, 'repl': repl})
 
@@ -1157,7 +1164,7 @@ class ProjectDocumentation(Section):
         # ----------------------------------------------------------------------------------------------------
         # <!Section title#Sub section in the page> substitution
 
-        def repl_link(m, section):
+        def repl_link(m):
             names = m.group(1).split('#')
             if len(names) == 1:
                 name = names[0].strip()
@@ -1201,7 +1208,10 @@ class ProjectDocumentation(Section):
             if isinstance(func, str):
                 repl = func
             else:
-                repl = lambda m: func(m, self)
+                if len(inspect.getfullargspec(func).args) == 1:
+                    repl = func
+                else:
+                    repl = lambda m: func(m, self)
 
             txt, d = extract_source(comment)
             if len(d):
