@@ -88,7 +88,7 @@ class Section(list):
         # Instance of [!TOKEN] in a comment will be replaced by the the substitution text.
         ```
 
-        Due to the piece of code above, the token `[!TOKEN]` is replaced by `substitution text': **[!TOKEN]**
+        Due to the piece of code above, the token `[!TOK  EN]` is replaced by `substitution text': **[!TOKEN]**
 
         > [!NOTE]
         > Text embedded in a _source code_ zone is not replaced
