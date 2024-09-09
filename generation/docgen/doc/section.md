@@ -170,10 +170,10 @@ Hooks are applied each time a comment is added to the documentation.
 ``` python
 # Instance of [!TOKEN] will be replaced by the substitution text.
 
-Section.add_hook("[!TOKEN]", "substitution text")
+Section.add_hook(r"\[!TOKEN\]", "substitution text")
 ```
 
-Due to the piece of code above, the token `[!TOK  EN]` is replaced by `substitution text`: **substitution text**
+Due to the piece of code above, the token `substitution text` is replaced here: **substitution text**
 
 > [!NOTE]
 > Text embedded in a _source code_ zone is not replaced
