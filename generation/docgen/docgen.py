@@ -1701,7 +1701,7 @@ def gen_docgen():
 
     page = proj.new_page("Demo", "This demo file is the source code used to generate this documentation\n\n")
 
-    proj.write_source(inspect.getsource(gen_docgen))
+    page.write_source(inspect.getsource(gen_docgen))
 
     # ====================================================================================================
     # Finalize the index file (the project Section)
