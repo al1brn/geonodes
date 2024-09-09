@@ -18,7 +18,7 @@ The example below illustrates the steps. For a working example, see [Index](inde
 ``` python
 # Step 1 : Read project files from root folder
 
-proj = ProjectDocumentation.FromFiles('Test', folder=my_folder, sub_folders=['sub1', 'sub2'])
+proj = ProjectDocumentation("Project", "Documentation starts here") proj.load_files(my_folder, sub_folders=['sub1', 'sub2'])
 
 # Step 2 : Declare the classes to document
 
@@ -35,7 +35,6 @@ proj.compile()
 # Step 5 : Create the documentation
 
 proj.create_documentation(doc_folder)
-
 ```
 
 
@@ -43,6 +42,7 @@ proj.create_documentation(doc_folder)
 ## Methods and Properties
 - A : [add_class](#add_class) [add_module](#add_module) 
 - C : [compile](#compile) [create_index_file](#create_index_file) 
+- L : [load_files](#load_files) 
 
 # Methods
 
@@ -118,6 +118,30 @@ Create the index file
 ##### Arguments
 
 - **file_name** (_str_) : file name to write
+
+
+
+<sub>[top](#projectdocumentation) [index](index.md)</sub>
+## load_files
+
+``` python
+ProjectDocumentation.load_files(self, folder, sub_folders=[])
+```
+
+Load content from source code files.
+
+Each file is loaded in an instance of <!Module> in the <!#modules> list.
+
+
+
+##### Arguments
+
+- **folder** (_str_) : main folder
+- **sub_folders** (_str_) : sub folders to explore
+
+##### Returns
+
+- _self_
 
 
 

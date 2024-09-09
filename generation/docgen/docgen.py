@@ -1039,7 +1039,8 @@ class ProjectDocumentation(Section):
         ``` python
         # Step 1 : Read project files from root folder
 
-        proj = ProjectDocumentation.FromFiles('Test', folder=my_folder, sub_folders=['sub1', 'sub2'])
+        proj = ProjectDocumentation("Project", "Documentation starts here")
+        proj.load_files(my_folder, sub_folders=['sub1', 'sub2'])
 
         # Step 2 : Declare the classes to document
 
@@ -1057,7 +1058,6 @@ class ProjectDocumentation(Section):
         # Step 5 : Create the documentation
 
         proj.create_documentation(doc_folder)
-
         ```
 
         Arguments
@@ -1067,16 +1067,9 @@ class ProjectDocumentation(Section):
         - classes_section (bool = True) : add a section listing the classes
         """
 
-        print("PROJECT")
-        print('-'*40)
-        print(comment)
-        print('-'*40)
-
         super().__init__(title, comment)
         self.classes_section = classes_section
-
-        print(self.comment)
-        print('-'*40)
+        self.hooks = []
 
         # ----- Modules contain the source modules with their classes and functions
 
@@ -1100,12 +1093,22 @@ class ProjectDocumentation(Section):
         self.modules[name] = Module(name, text)
 
     # ----------------------------------------------------------------------------------------------------
-    # Read the modules from files
+    # Load modules from files
 
-    @classmethod
-    def FromFiles(cls, name, folder, sub_folders=[], comment=None, classes_section=True):
+    def load_files(self, folder, sub_folders=[]):
+        """ Load content from source code files.
 
-        proj = cls(name, comment=comment, classes_section=classes_section)
+        Each file is loaded in an instance of <!Module> in the <!#modules> list.
+
+        Arguments
+        ---------
+        - folder (str) : main folder
+        - sub_folders (str) : sub folders to explore
+
+        Returns
+        -------
+        - self
+        """
 
         root_folder = Path(folder)
         all_folders = ["."] + sub_folders
@@ -1122,9 +1125,9 @@ class ProjectDocumentation(Section):
                 if not fpath.match("*.py"):
                     continue
                 print("Parse", fpath)
-                proj.add_module(key + fpath.stem, fpath.read_text())
+                self.add_module(key + fpath.stem, fpath.read_text())
 
-        return proj
+        return self
 
     # ----------------------------------------------------------------------------------------------------
     # Get a class from a module
@@ -1291,7 +1294,8 @@ def gen_docgen():
     comment = "This is the **DocGen** documentation generated with the projet itself."
 
     root = Path(__file__).parents[0]
-    proj = ProjectDocumentation.FromFiles('Simple Python Documentation Generator', folder=root, sub_folders=[], comment=comment)
+    proj = ProjectDocumentation('Simple Python Documentation Generator', comment=comment)
+    proj.load_files(root, sub_folders=[])
 
     # ====================================================================================================
     # Step 2 : Declare the classes to document

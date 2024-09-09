@@ -46,7 +46,8 @@ def gen_docgen():
     comment = "This is the **DocGen** documentation generated with the projet itself."
 
     root = Path(__file__).parents[0]
-    proj = ProjectDocumentation.FromFiles('Simple Python Documentation Generator', folder=root, sub_folders=[], comment=comment)
+    proj = ProjectDocumentation('Simple Python Documentation Generator', comment=comment)
+    proj.load_files(root, sub_folders=[])
 
     # ====================================================================================================
     # Step 2 : Declare the classes to document
