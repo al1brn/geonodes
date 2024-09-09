@@ -1159,7 +1159,7 @@ class ProjectDocumentation(Section):
         # <!Section title#Sub section in the page> substitution
 
         def repl_link(m, section):
-            names = m.group(0).split('#')
+            names = m.group(1).split('#')
             if len(names) == 1:
                 name = names[0].strip()
                 return f"[{name}]({title_to_file_name(name)})"
@@ -1188,7 +1188,7 @@ class ProjectDocumentation(Section):
         # ----------------------------------------------------------------------------------------------------
         # The default hooks to combine with the custom hooks
 
-        def_hooks = [{'expr': r"<![\w# ]*>", 'func': repl_link}]
+        def_hooks = [{'expr': r"<!([\w# ]*)>", 'func': repl_link}]
 
         # ----------------------------------------------------------------------------------------------------
         # Main
