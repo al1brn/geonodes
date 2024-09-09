@@ -926,24 +926,25 @@ class Class(Section):
 
         inherited = {}
 
-        for base_class in self.bases:
-            base_class_ = project.objects.get(base_class)
-            if base_class_ is None:
-                print(f"CAUTION Class inheritance error: base class '{base_class}' not found in {list(project.objects.keys())}")
-                continue
-
-            for prop in base_class_.properties:
-                if self.properties.get_section(prop.title) is None:
-                    inherited[prop.title] = f"<!{base_class}#{prop.title}>"
-
-            for meth in base_class_.methods:
-                if self.methods.get_section(meth.title) is None:
-                    inherited[meth.title] = f"<!{base_class}#{meth.title}>"
-
         if False:
-            classes = project.objects
+            for base_class in self.bases:
+                base_class_ = project.objects.get(base_class)
+                if base_class_ is None:
+                    print(f"CAUTION Class inheritance error: base class '{base_class}' not found in {list(project.objects.keys())}")
+                    continue
 
-            for class_ in classes.values():
+                for prop in base_class_.properties:
+                    if self.properties.get_section(prop.title) is None:
+                        inherited[prop.title] = f"<!{base_class}#{prop.title}>"
+
+                for meth in base_class_.methods:
+                    if self.methods.get_section(meth.title) is None:
+                        inherited[meth.title] = f"<!{base_class}#{meth.title}>"
+
+        if True:
+            #classes = project.objects
+
+            for class_ in project.objects.values():
 
                 if not isinstance(class_, Class):
                     continue
@@ -958,11 +959,11 @@ class Class(Section):
                 if class_.title in self.bases:
                     for prop in class_.properties:
                         if self.properties.get_section(prop.title) is None:
-                            inherited[prop.title] = f"[{prop.title}]({class_.title.lower()}.md#{prop.link_token})"
+                            inherited[prop.title] = f"<!{class_.title}#{prop.title}>"
 
                     for meth in class_.methods:
                         if self.methods.get_section(meth.title) is None:
-                            inherited[meth.title] = f"[{meth.title}]({class_.title.lower()}.md#{meth.link_token})"
+                            inherited[meth.title] = f"<!{class_.title}#{meth.title}>"
 
         if len(inherited):
             self.inherited = [inherited[key] for key in sorted(inherited.keys())]
@@ -1208,8 +1209,11 @@ class Project(Section):
 
         obj = self.objects.get(name)
         if obj is None:
-            print(f"CAUTION: impossible to link toward '{name}'. This object is not referenced.")
-            return f"[LINK ERROR to '{name}'](index.md)"
+            # Let's try a page
+            obj = self.pages.get(name)
+            if obj is None:
+                print(f"CAUTION: impossible to link toward '{name}'. This object is not referenced.")
+                return f"[LINK ERROR to '{name}'](index.md)"
 
         # Link with token or not
 
@@ -1606,7 +1610,7 @@ class Project(Section):
         for object in self.objects.values():
             a = object.iteration(compile_section)
             if a is not None:
-                print(f"CAUTION: Compilation error on object", a.title)
+                print(f"CAUTION: Compilation error on object '{a.title}'")
 
         # ----------------------------------------------------------------------------------------------------
         # Apply the hooks
@@ -1618,7 +1622,7 @@ class Project(Section):
         for page in self.pages.values():
             a = page.iteration(apply_hooks)
             if a is not None:
-                print(f"CAUTION: hook error on object", a.title)
+                print(f"CAUTION: hook error on object '{a.title}'")
 
         # ----------------------------------------------------------------------------------------------------
         # Classes section

@@ -37,7 +37,7 @@ Pages are created and manually fed by reference documentation or by manuel addit
 
 ## Demo
 
-You can see in [LINK ERROR to 'Demo'](index.md) the source code used to generate this documentation.
+You can see in [Demo](demo.md) the source code used to generate this documentation.
 
 
 
