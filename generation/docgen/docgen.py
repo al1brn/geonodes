@@ -236,7 +236,7 @@ class Section(list):
     # ====================================================================================================
     # Compile
 
-    def compile(self, project=None):
+    def compile(self, project):
         pass
 
     # ====================================================================================================
@@ -903,7 +903,7 @@ class Class(Section):
     # ====================================================================================================
     # Compile
 
-    def compile(self, project=None):
+    def compile(self, project):
         """ Compile the class
 
         **project** refers to the global <!Project> documentation.
@@ -1598,7 +1598,7 @@ class Project(Section):
     # ====================================================================================================
     # Compile the documentation
 
-    def compile(self, project=None):
+    def compile_project(self):
 
         # ----------------------------------------------------------------------------------------------------
         # Compile the classes
@@ -1608,9 +1608,10 @@ class Project(Section):
 
         self.iteration(compile_section)
         for object in self.objects.values():
-            a = object.iteration(compile_section)
-            if a is not None:
-                print(f"CAUTION: Compilation error on object '{a.title}'")
+            if isinstance(object, Class):
+                object.compile(self)
+            #if a is not None:
+            #    print(f"CAUTION: Compilation error on object '{a.title}'")
 
         # ----------------------------------------------------------------------------------------------------
         # Apply the hooks
@@ -1674,7 +1675,7 @@ class Project(Section):
 
     def create_documentation(self, doc_folder):
 
-        self.compile()
+        self.compile_project()
 
         doc_folder = Path(doc_folder)
 

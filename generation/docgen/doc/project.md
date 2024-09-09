@@ -48,7 +48,7 @@ proj.create_documentation(...)
 
 ## Methods and Properties
 - A : [add_class](#add_class) [add_page](#add_page) [add_source](#add_source) [apply_hooks](#apply_hooks) 
-- C : [compile](#compile) [create_index_file](#create_index_file) 
+- C : [compile_project](#compile_project) [create_index_file](#create_index_file) 
 - G : [get_refdoc](#get_refdoc) 
 - L : [load_files](#load_files) 
 - N : [new_page](#new_page) 
@@ -222,10 +222,10 @@ Project.apply_hooks(self, comment)
 
 
 <sub>[top](#project) [index](index.md)</sub>
-## compile
+## compile_project
 
 ``` python
-Project.compile(self, project=None)
+Project.compile_project(self)
 ```
 
 Compile the classes

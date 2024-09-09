@@ -112,7 +112,7 @@ This method allows to get the documentation of inherited items of a class which 
 ## compile
 
 ``` python
-Class.compile(self, project=None)
+Class.compile(self, project)
 ```
 
 Compile the class
