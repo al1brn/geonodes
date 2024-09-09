@@ -1,43 +1,6 @@
 # Simple Python Documentation Generator
 
-This is the **DocGen** documentation generated with the projet itself.
-
-## Project classes
-
-
-The project is made of two layers.
-1. The first layer is the parser which parses python source code. It returns a list of items (classes and functions) with their comment.
-2. The second layer builds documented classes from the results of the parsing. One can them organize the documentation in the desired hierarchy.
-
-> [!NOTE]
-> Documentating a class must be explicitly requested with
-[Project](projectdocumentation.md#add_class)
-
-
-### Parser classes
-
-- [Parser](parser.md) : simple python source code parser
-- [Doc](doc.md) : list of items documentation returned by the [Parser](parser.md)
-
-
-
-
-### DocGen classes
-
-- [Project](projectdocumentation.md) : Project documentation
-- [Class](class.md) : Class documentation
-- [Function](function.md) : Function documentation
-- [Section](section.md) : Base documentation section
-
-
-
-
-## Source code example
-
-
-The example given below is the source code used to generate this documentation:
-
-``` python
+This is the **DocGen** documentation generated with the projet itself.``` python
 def gen_docgen():
 
     # ====================================================================================================
@@ -50,84 +13,100 @@ def gen_docgen():
     proj.load_files(root, sub_folders=[])
 
     # ====================================================================================================
-    # Step 2 : Declare the classes to document
+    # Step 2 : Build the pages
 
-    proj.add_class('Parser',   capture = ['Reader'])
-    proj.add_class('Doc')
+    page = proj.new_page("Parser module", "Simple python source parser\n\n")
+    page.write("The module <!Parser> parse source file and returns the documentation as a liste of <!Doc> instances.")
+
+    proj.add_class('Parser', page,  capture = ['Reader'])
+    proj.add_class('Doc', page)
 
     proj.add_class('Section')
     proj.add_class('Argument', bases=['Section'])
     proj.add_class('Return',   bases=['Section'])
     proj.add_class('Function', bases=['Section'])
     proj.add_class('Class',    bases=['Section'])
-    proj.add_class('Module')
     proj.add_class('Project')
 
     # ====================================================================================================
-    # Step 3 : Add documentation
+    # Step 3 : Add complementary pages
 
-    # ----- A structured presentation of the classes
+    page = proj.new_page("Demo", "This demo file is the source code used to generate this documentation\n\n")
 
-    struct = proj.new_section("Project classes", comment="""
-        The project is made of two layers.
-        1. The first layer is the parser which parses python source code. It returns
-           a list of items (classes and functions) with their comment.
-        2. The second layer builds documented classes from the results of the parsing.
-           One can them organize the documentation in the desired hierarchy.
-
-        > [!NOTE]
-        > Documentating a class must be explicitly requested with
-        [Project](projectdocumentation.md#add_class)
-        """)
-
-    struct.new_section("Parser classes")
-    struct.write("- [Parser](parser.md) : simple python source code parser\n")
-    struct.write("- [Doc](doc.md) : list of items documentation returned by the [Parser](parser.md)\n")
-    struct.write()
-
-    struct.new_section("DocGen classes")
-    struct.write("- [Project](projectdocumentation.md) : Project documentation\n")
-    struct.write("- [Class](class.md) : Class documentation\n")
-    struct.write("- [Function](function.md) : Function documentation\n")
-    struct.write("- [Section](section.md) : Base documentation section\n")
-
-    # ----- This source code
-
-    proj.new_section("Source code example", comment="""
-        The example given below is the source code used to generate this documentation:
-
-        """)
     proj.write_source(inspect.getsource(gen_docgen))
 
     # ====================================================================================================
-    # Step 4 : Compile
+    # Finalize the index file (the project Section)
 
-    # Demo custom hook
-    proj.set_hook(r"\[!TOKEN\]", "substitution text")
+    struct = proj.new_section("Project classes", comment="""
+        The project is made of two layers.
+        1. The first layer is the reference document read from source files
+        2. The second layer is a the set of pages of the documentation
 
-    proj.compile()
+        Pages are created and manually fed by reference documentation
+        or by manuel additions.
+        """)
+
+    struct.new_section("Parser classes")
+    struct.write("- <!Parser>) : simple python source code parser\n")
+    struct.write("- <!Doc> : list of items documentation returned by the [Parser](parser.md)\n")
+    struct.write()
+
+    struct.new_section("DocGen classes")
+    struct.write("- <!Project> : Project documentation\n")
+    struct.write("- <!Class> : Class documentation\n")
+    struct.write("- <!Function> : Function documentation\n")
+    struct.write("- <!Section> : Base documentation section\n")
+
+    proj.new_section("Demo", "You can see in <!Demo> the source code used to generate this documentation.")
 
     # ====================================================================================================
     # Step 5 : Create the documentation
+
+    # Demo custom hook
+    proj.set_hook(r"\[!TOKEN\]", "substitution text")
 
     proj.create_documentation(doc_folder=root / 'doc')
 ```
 
 
 
+# Content
 
-## Classes
+- [Demo](#demo)
+- [Project classes](#project-classes)
 
-- [Argument](argument.md)
-- [Class](class.md)
-- [Doc](doc.md)
-- [Function](function.md)
-- [Module](module.md)
-- [Parser](parser.md)
-- [Project](project.md)
-- [Return](return.md)
-- [Section](section.md)
+## Project classes
 
+
+The project is made of two layers.
+1. The first layer is the reference document read from source files
+2. The second layer is a the set of pages of the documentation
+
+Pages are created and manually fed by reference documentation or by manuel additions.
+
+
+### Parser classes
+
+- [Parser](parser_module.md#parser)) : simple python source code parser
+- [Doc](parser_module.md#doc) : list of items documentation returned by the [Parser](parser.md)
+
+
+
+
+### DocGen classes
+
+- [Project](project.md) : Project documentation
+- [Class](class.md) : Class documentation
+- [Function](function.md) : Function documentation
+- [Section](section.md) : Base documentation section
+
+
+
+
+## Demo
+
+You can see in [LINK ERROR to 'Demo'](index.md) the source code used to generate this documentation.
 
 
 

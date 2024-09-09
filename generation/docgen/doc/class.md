@@ -2,27 +2,10 @@
 
 
 
-``` python
-Class(self, class_name, comment)
-```
-
-Section documenting a class
-
-The structure of the document is:
-- title (class name)
-- header comment
-- properties & methods table of contents
-- Properties section with the documented properties as sub sections
-- Methods section withe the documented methods as sub sections
-
-The class documentation is completed afterward by the [compile](#compile) method which get the links coming from inheritance between classes.
-
-
-
 
 > inherits from: [Section](section.md) 
 
-> inherited: [alphabetical_sections](section.md#alphabetical_sections), [build_extra](section.md#build_extra), [build_header](section.md#build_header), [build_sections](section.md#build_sections), [comment](section.md#comment), [extra](section.md#extra), [get_section](section.md#get_section), [init](section.md#init), [level](section.md#level), [link_to](section.md#link_to), [link_token](section.md#link_token), [md_file_name](section.md#md_file_name), [new_section](section.md#new_section), [parse_comment](section.md#parse_comment), [print](section.md#print), [sort_sections](section.md#sort_sections), [sorted_sections](section.md#sorted_sections), [title](section.md#title), [with_sections_only](section.md#with_sections_only), [write](section.md#write)
+> inherited: [FromSource](section.md#fromsource), [__init__](section.md#__init__), [alphabetical_sections](section.md#alphabetical_sections), [as_dict](section.md#as_dict), [build_extra](section.md#build_extra), [build_header](section.md#build_header), [build_sections](section.md#build_sections), [comment](section.md#comment), [extra](section.md#extra), [fixed_level](section.md#fixed_level), [get_section](section.md#get_section), [in_toc](section.md#in_toc), [init](section.md#init), [iteration](section.md#iteration), [level](section.md#level), [link_to](section.md#link_to), [link_token](section.md#link_token), [md_file_name](section.md#md_file_name), [new_section](section.md#new_section), [page](section.md#page), [parse_comment](section.md#parse_comment), [print](section.md#print), [sort_sections](section.md#sort_sections), [sorted_sections](section.md#sorted_sections), [title](section.md#title), [toc](section.md#toc), [with_sections_only](section.md#with_sections_only), [write](section.md#write)
 ## Methods and Properties
 - B : [build](#build) 
 - C : [capture_class](#capture_class) [compile](#compile) 
@@ -61,7 +44,7 @@ Class.properties
 > **Decorators**: Class method
 
 ``` python
-Class.FromDoc(cls, doc, ignore_uncommented=True)
+Class.FromDoc(cls, doc, ignore_uncommented=True, **kwargs)
 ```
 
 Creates a Class document from a Doc parsed from source file
@@ -102,7 +85,7 @@ Yield the Class documentation lines
 ## capture_class
 
 ``` python
-Class.capture_class(self, other)
+Class.capture_class(self, other, with_comment=False)
 ```
 
 Capture methods and properties from another Class
@@ -129,12 +112,14 @@ This method allows to get the documentation of inherited items of a class which 
 ## compile
 
 ``` python
-Class.compile(self, classes)
+Class.compile(self, project=None)
 ```
 
-Compile links with other classes
+Compile the class
 
-**classes** argument is a dict of **Class**:
+**project** refers to the global [Project](project.md) documentation.
+
+Class compilation is:
 - Load each class based on this one into to the **subclasses** attribute.
 - Load the methods and properties inherited from parent classes
 
@@ -144,7 +129,13 @@ Compile links with other classes
 
 
 
-- **classes** (_dict_) : dict of _Class_
+- **project** : 
+
+##### Returns
+
+
+
+- _self_ : 
 
 
 

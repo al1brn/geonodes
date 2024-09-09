@@ -3,51 +3,106 @@
 
 
 ``` python
-Project(self, title, comment=None, classes_section=True)
+Project(self, title, comment=None, toc='Content')
 ```
 
 Project documentation
 
-Building project documentation follows the following steps:
-1. Create the modules, typically by loading source files
-2. Add the classes to document. The classes must be documented in a module
-3. Add documentation
-4. Compile the documentation to build links between pages
-5. Write the documentation files
+Project documentation allows to build a full project documentation from parsing source code, loading complementary documentation file and also by dynamically adding documentation.
 
-The example below illustrates the steps. For a working example, see [Source code example](index.md#source-code-example) in [Index](index.md).
+The final documentation is written ad **MarkDown** files with **index.md** as main entrance for the documentation.
+
+> [!IMPORTANT]
+> All files are written in the same folder. The page titles must be unique in order
+> to avoid overwritting content.
+
+The document is built by:
+- creating pages and writing content into it
+- creating pages from parsed source code
+
+The parsed source code is stored in [refdoc](#) dictionary with one entry per parsed file. The parsed source contain classes and function documentation which can be transfered into pages.
+
+When transferring, a class can be enriched with other classed, either to specify inherited methods and properties or to complement the documentation with inheritance. See [add_class](#).
+
+The following example is pseudo code for documentation building.
 
 ``` python
-# Step 1 : Read project files from root folder
+# Create the project
+proj = Project(...)
 
-proj = Project("Project", "Documentation starts here")
-proj.load_files(my_folder, sub_folders=['sub1', 'sub2'])
+# Parse source files to feed proj.refdoc dict
+proj.load_files(...)
 
-# Step 2 : Declare the classes to document
+# Create pages from reference documentation
+proj.add_class(...)
 
-proj.add_class('Point',  capture = ['Geometry'])
-proj.add_class('Vector', bases=['Point'])
+# Add 'manual' pages
+page proj.new_page("Tutorial")
+page.write(...)
 
-# Step 3 : Add documentation
-
-proj.new_section("Presentation", comment = "This the a geometry project")
-
-# Step 4 : Compile
-
-proj.compile()
-
-# Step 5 : Create the documentation
-
-proj.create_documentation(doc_folder)
+# Create the documentation
+proj.create_documentation(...)
 ```
 
 
 
 ## Methods and Properties
-- A : [add_class](#add_class) [add_module](#add_module) [apply_hooks](#apply_hooks) 
+- A : [add_class](#add_class) [add_page](#add_page) [add_source](#add_source) [apply_hooks](#apply_hooks) 
 - C : [compile](#compile) [create_index_file](#create_index_file) 
+- G : [get_refdoc](#get_refdoc) 
 - L : [load_files](#load_files) 
-- S : [set_hook](#set_hook) 
+- N : [new_page](#new_page) 
+- O : [object_link](#object_link) 
+- P : [pages](#pages) 
+- R : [refdocs](#refdocs) 
+- S : [sections](#sections) [set_hook](#set_hook) 
+
+# Properties
+
+
+
+# pages
+
+
+
+
+##### Returns
+
+
+
+- _None_ : 
+
+
+
+<sub>[top](#project) [index](index.md)</sub>
+# refdocs
+
+
+
+
+##### Returns
+
+
+
+- _None_ : 
+
+
+
+<sub>[top](#project) [index](index.md)</sub>
+# sections
+
+
+
+
+##### Returns
+
+
+
+- _None_ : 
+
+
+
+<sub>[top](#project) [index](index.md)</sub>
 
 # Methods
 
@@ -56,16 +111,17 @@ proj.create_documentation(doc_folder)
 ## add_class
 
 ``` python
-Project.add_class(self, class_name, module_name=None, bases=[], capture=[])
+Project.add_class(self, class_name, page=None, bases=[], capture=[], file_key=None)
 ```
 
-Add a class in the documented classes
+Build documentation for a class from reference documentation.
 
-The class is searched in all modules. If there exists homonymes in different modules, 'module_name' specifies the module to get the class from.
+The class must exist in one of the reference documentation [refdoc](#).
 
-The 'capture' list contains base classes to copy documentation from. Hence, there exists two ways to manage inheritance:
-- bases : the documentation makes the inheritance explicit by giving the base class and links to the inherited methods and properties
-- capture : the documentation doesn't mention the inheritance but gives directly the documentation as if it were part of the class
+Class documentation is built with the following steps:
+1. read the class documented in [refdoc](#)
+2. reference the base classes in the array [Class](class.md#class)
+3. add the documentation of properties and methods of classes included in **capture** argument
 
 > **Explicit inheritance**
 > _class_name_ : inherits from base_class
@@ -75,6 +131,11 @@ The 'capture' list contains base classes to copy documentation from. Hence, ther
 > _class_name_
 > methods : **method1**, **method2**
 
+if **target_page** is None, a specific page will be create, otherwise, the class documentation will be append to the existing page specified by the argument.
+
+> [!NOTE]
+> The page where the class is documented can be retreive with attribute [Section](section.md#section).
+
 
 
 ##### Arguments
@@ -82,22 +143,69 @@ The 'capture' list contains base classes to copy documentation from. Hence, ther
 
 
 - **class_name** (_str_) : class name
-- **module_name** (_str_ = None) : name of the source file module if the class exists in several modules
-- **bases** (_list_ = []) : list of base classes
-- **capture** (_list_ = []) : list of classes to copy methods and properties from
+- **page** : 
+- **bases** : 
+- **capture** : 
+- **file_key** (_str_ = None) : file key in [files](#)
+
+##### Returns
+
+
+
+- _<!Class> : created class_ : 
 
 
 
 <sub>[top](#project) [index](index.md)</sub>
-## add_module
+## add_page
 
 ``` python
-Project.add_module(self, name, text)
+Project.add_page(self, page)
 ```
 
-Add a module
+Add a page in the documentation
 
 
+
+##### Arguments
+
+
+
+- **page** : 
+
+##### Returns
+
+
+
+- _<!Section> : the argument **page**_ : 
+
+
+
+<sub>[top](#project) [index](index.md)</sub>
+## add_source
+
+``` python
+Project.add_source(self, key, text)
+```
+
+Add a source code.
+
+The source code is parsed and the resulting [Section](section.md) is stored in the [refdoc](#) dict.
+
+
+
+##### Arguments
+
+
+
+- **key** (_str_) : source file key
+- **text** (_str_) : the source code
+
+##### Returns
+
+
+
+- _Section_ : 
 
 
 
@@ -108,7 +216,7 @@ Add a module
 Project.apply_hooks(self, comment)
 ```
 
-[Sub section in the page](section_title.md#sub-section-in-the-page) in [Section title](section_title.md) substitution
+[LINK ERROR to 'Section title'](index.md) substitution
 
 
 
@@ -117,10 +225,10 @@ Project.apply_hooks(self, comment)
 ## compile
 
 ``` python
-Project.compile(self)
+Project.compile(self, project=None)
 ```
 
-apply hooks function for iteration
+Compile the classes
 
 
 
@@ -145,15 +253,44 @@ Create the index file
 
 
 <sub>[top](#project) [index](index.md)</sub>
+## get_refdoc
+
+``` python
+Project.get_refdoc(self, name, key=None, halt=True)
+```
+
+Get a reference documentation from the base
+
+If **key** argument is None, the **name** is searched in the whole dictionary, otherwise the search is performed only in the specified key.
+
+
+
+##### Arguments
+
+
+
+- **name** (_str_) : title of the reference documentation
+- **key** (_str_ = None) : source file key
+- **halt** (_bool_ = True) : raise an exception if not found
+
+##### Returns
+
+
+
+- _<!Section> : found section, None if not found_ : 
+
+
+
+<sub>[top](#project) [index](index.md)</sub>
 ## load_files
 
 ``` python
-Project.load_files(self, folder, sub_folders=[])
+Project.load_files(self, folder=None, sub_folders=[], key=None)
 ```
 
-Load content from source code files.
+Enrich the reference doc by parsing source files.
 
-Each file is loaded in an instance of [Module](module.md) in the [modules](#modules) list.
+All the files with `.py` extension are parsed.
 
 
 
@@ -163,12 +300,57 @@ Each file is loaded in an instance of [Module](module.md) in the [modules](#modu
 
 - **folder** (_str_) : main folder
 - **sub_folders** (_str_) : sub folders to explore
+- **key** (_str_ = None) : 
 
 ##### Returns
 
 
 
 - _self_ : 
+
+
+
+<sub>[top](#project) [index](index.md)</sub>
+## new_page
+
+``` python
+Project.new_page(self, title, comment=None, toc=None, in_toc=True)
+```
+
+Add a page in the documentation
+
+> [!CAUTION]
+> **title** argument is used a as key in [pages](#) dictionary. It must be unique
+> in the scope of the project
+
+
+
+##### Arguments
+
+
+
+- **title** (_str_) : page title
+- **comment** (_str_) : comment
+- **toc** (_str_ = None) : title of the content section, None if no content section is required
+- **in_toc** (_bool_ = True) : include the the documentation table of content
+
+##### Returns
+
+
+
+- _<!Page>_ : 
+
+
+
+<sub>[top](#project) [index](index.md)</sub>
+## object_link
+
+``` python
+Project.object_link(self, name, token=None)
+```
+
+Token only
+
 
 
 
@@ -206,7 +388,7 @@ pass
 
 > [!NOTE]
 > By default, a hook is used to define links between pages based on the
-> syntax : `<!Section title#Sub section title>` which is converted in [set_hook](project.md#set_hook) in [Project](project.md).
+> syntax : `<!Section title#Sub section title>` which is converted in [Project](project.md#project).
 
 
 

@@ -14,7 +14,6 @@ from .pyparser import Parser, md_normalize, extract_source, replace_source
 # - automatic building from files
 # - manual adds
 
-
 def title_to_file_name(title):
     return f"{title.lower().replace(' ', '_')}.md"
 
@@ -26,34 +25,39 @@ def title_to_token(title):
 
 class Section(list):
 
-    def __init__(self, title, comment=None, level=0, with_sections_only=False, sort_sections=False):
+    def __init__(self, title, comment=None, level=0, **kwargs):
         """ Elementary base of a documentation
 
-        A **Section** is basically a title and a comment.
+        A **Section** is basically a title, a header section and sub sections
 
-        It inherits from a list into which sub sections can be stored.
+        It inherits from a list into which sub sections are stored.
         A Section produces documentation:
+        - Header (level 0)
         - Header
-        - Comment
-        - Loop on sub sections
+        - Table of content section (level 1)
+        - Loop on sub sections (level 1)
         - Extra (for intrapage links)
 
         Properties
         ----------
         - title (str) : Section title
-        - level (int) : Indentation level
         - with_sections_only (bool) : The section is printed only if
           the list of sub sections is not empty
-        - sort_sections (bool) : The sections are printed in alphabetical order
+        - sort_sections (bool) : The sections are placed in alphabetical order
         - extra (str) : Extra text at the end of the documentation
+        - in_toc(bool) : section is included in the owner section table of content
+        - toc (str) : name of the toc section, None if no toc is generated
+        - fixed_level (bool) : level is fixed and can't be changed
+        - page (<!Section>) : the page where this section will appear
 
         Arguments
         ---------
         - title (str) : section title
         - comment (str = None) : header comment
-        - level (int = 0) : indentation level
+        - level (int = 0) : indentation level. If the value is negative, the absolute value
+          is taken and the level is considered as fixed (see <!#fixed_level>)
         - with_sections_only (bool=False) : ignore if there is no sub sections
-        - sort_sections (bool = False) : sort the sub sections before writting them
+        - sort_sections (bool) : sort the sub sections before writting them
         """
 
         super().__init__()
@@ -62,14 +66,29 @@ class Section(list):
 
         self.title              = title
         self._comment           = None
-        self.level              = level
-        self.with_sections_only = with_sections_only
-        self.sort_sections      = sort_sections
+        self._level             = abs(level)
+        self.fixed_level        = level < 0
+        self.with_sections_only = False
+        self.sort_sections      = False
+
+        self.toc                = None
+        self.in_toc             = True
+
         self.extra              = None
+        self.docs               = None
+        self.page               = None
 
         # ----- Overridable init
+        # To create other attributes
 
         self.init()
+
+        # ----- Set the keyword arguments
+
+        for param, value in kwargs.items():
+            if param not in self.__dict__:
+                raise AttributeError(f"{type(self).__name__} init error: '{param}' attribute doesn't exist!")
+            setattr(self, param, value)
 
         # ----- Comment after init is done
 
@@ -78,6 +97,52 @@ class Section(list):
     def __str__(self):
         scomm = 'None' if self.comment is None else self.comment[:10] + '...'
         return f"<Section {type(self).__name__} '{self.title}' {len(self)}: {scomm}>"
+
+    # ====================================================================================================
+    # Get the content from a source file
+
+    @classmethod
+    def FromSource(cls, name, text):
+        """ Get the content from a source file.
+
+        The source is parsed and a <!Section> is added for each class and global function.
+        Arguments
+        ---------
+        - text (str) : source code to parse
+
+        Returns
+        -------
+        - Section
+        """
+
+        section = Section(name)
+
+        # ----- Parse the source code and keep a reference to it
+
+        section.docs = Parser(text).documentation()
+
+        # ----- Add a section per class / function
+
+        for doc in section.docs.values():
+            if doc.is_class:
+                section.append(Class.FromDoc(doc))
+            else:
+                section.append(Function.FromDoc(doc))
+
+        return section
+
+    # ====================================================================================================
+    # As a dict
+
+    @property
+    def as_dict(self):
+        """ Return as a dictionary
+
+        Returns
+        -------
+        - dict : section title: section
+        """
+        return {section.title: section for section in self}
 
     # ====================================================================================================
     # Specific init
@@ -112,12 +177,67 @@ class Section(list):
         self._comment = self.parse_comment(value)
 
     # ====================================================================================================
+    # Level property
+
+    @property
+    def level(self):
+        """ Indentation level
+
+        When set, the sub sections levels are set with the passed value plus 1.
+
+        Returns
+        -------
+        - int
+        """
+        return self._level
+
+    @level.setter
+    def level(self, value):
+        if self.fixed_level:
+            return
+        self._level = value
+        for section in self:
+            section.level = value + 1
+
+    # ====================================================================================================
     # Iteration
 
     def iteration(self, f):
-        f(self)
+        """ Run the function on the section and sub sections
+
+        The method halts on the first section for which the function
+        return `True` and returns this section.
+        If the function doesn't return `True`, the methods is run on all sections
+        and return `None`.
+
+        Arguments
+        ---------
+        - f (function of template f(section)) : the function to run
+
+        Returns
+        -------
+        - Section or None
+        """
+        try:
+            ok = f(self)
+        except:
+            return self
+
+        if ok == True:
+            return self
+
         for section in self:
-            section.iteration(f)
+            s = section.iteration(f)
+            if s is not None:
+                return s
+
+        return None
+
+    # ====================================================================================================
+    # Compile
+
+    def compile(self, project=None):
+        pass
 
     # ====================================================================================================
     # Parse the comment
@@ -233,6 +353,15 @@ class Section(list):
     def get_section(self, title):
         """ Look for a sub section by its title
 
+        > [!NOTE]
+        > This function searches only in the direct children, not in the whole tree.
+
+        To search a section in the whole tree, use <!#iteration> method:
+
+        ``` python
+        sub_section = parent_section.iteration(lambda s: s.title == 'The title')
+        ```
+
         Arguments
         ---------
         - title (str) : the section to look for
@@ -298,6 +427,16 @@ class Section(list):
         if self.comment is not None:
             yield self.comment + '\n\n'
 
+    def build_toc(self):
+        if self.toc is None:
+            return
+
+        yield f"{'#'*(self.level + 1)} {self.toc}\n\n"
+        for section in self.sorted_sections:
+            if section.in_toc:
+                yield f"- [{section.title}](#{section.link_token})\n"
+        yield '\n'
+
     def build_sections(self):
         """ Yield the lines of the sections parts
         """
@@ -331,6 +470,9 @@ class Section(list):
             return
 
         for line in self.build_header():
+            yield line
+
+        for line in self.build_toc():
             yield line
 
         for line in self.build_sections():
@@ -435,26 +577,18 @@ class Return(Section):
 # Function section
 
 class Function(Section):
-    def __init__(self, name, comment=None, level=1):
-        """ Section dedicated to function documentation.
+    """ Section dedicated to function documentation.
 
-        A **Function** is made of two sections:
-        - Properties
-        - Methods
+    The comment can contain description of Arguments and Returns.
+    The comment is parsed in order to extract this information and to
+    write the document is a homogeneous way.
 
-        The comment can contain description of Arguments and Returns.
-        The comment is parsed in order to extract this information and to
-        write the document is a homogeneous way.
-
-        Arguments
-        ---------
-        - name (str) : function or method name
-        - comment (str = None) : header comment
-        - level (int = 1) : indentation level
-        """
-        super().__init__(name, level=level)
-
-        self.comment = comment
+    Arguments
+    ---------
+    - name (str) : function or method name
+    - comment (str = None) : header comment
+    - level (int = 1) : indentation level
+    """
 
     # ====================================================================================================
     # Specific init
@@ -607,7 +741,7 @@ class Function(Section):
     # Initialize from a Doc class coming from pyparse
 
     @classmethod
-    def FromDoc(cls, doc, class_name=None):
+    def FromDoc(cls, doc, class_name=None, **kwargs):
         """ Create a class from an instance of Doc
 
         Doc is a class read by the **Parser**.
@@ -670,7 +804,7 @@ class Function(Section):
         # ----------------------------------------------------------------------------------------------------
         # Create the Function instance
 
-        inst = cls(doc.name, comment)
+        inst = cls(doc.name, comment, **kwargs)
 
         # Complementary information
 
@@ -687,26 +821,31 @@ class Function(Section):
 # Class documentation
 
 class Class(Section):
+    """ Section documenting a class
 
-    def __init__(self, class_name, comment):
-        """ Section documenting a class
+    The structure of the document is:
+    - title (class name)
+    - header comment
+    - properties & methods table of contents
+    - Properties section with the documented properties as sub sections
+    - Methods section withe the documented methods as sub sections
 
-        The structure of the document is:
-        - title (class name)
-        - header comment
-        - properties & methods table of contents
-        - Properties section with the documented properties as sub sections
-        - Methods section withe the documented methods as sub sections
+    The class documentation is completed afterward by the [compile](#compile) method
+    which get the links coming from inheritance between classes.
 
-        The class documentation is completed afterward by the [compile](#compile) method
-        which get the links coming from inheritance between classes.
+    Properties
+    ----------
+    - bases (list of str) : name of the base classes
+    - subclasses (list of str) : name of the sub classes
+    - inherited (list of str) : properties and methods inherited from base classes
 
-        Arguments
-        ---------
-        - class_name (str) : class name
-        - comment (str) : header comment
-        """
-        super().__init__(class_name, comment)
+    Arguments
+    ---------
+    - class_name (str) : class name
+    - comment (str) : header comment
+    """
+
+    def init(self):
 
         self.append(Section('Properties', with_sections_only=True, sort_sections=True))
         self.append(Section('Methods',    with_sections_only=True, sort_sections=True))
@@ -716,7 +855,7 @@ class Class(Section):
         self.inherited  = []
 
     @classmethod
-    def FromDoc(cls, doc, ignore_uncommented=True):
+    def FromDoc(cls, doc, ignore_uncommented=True, **kwargs):
         """ Creates a Class document from a Doc parsed from source file
 
         The **doc** argument contains the list of documents methods and properties.
@@ -731,13 +870,13 @@ class Class(Section):
         -------
         - Class : document on the class
         """
-        inst = cls(doc.name, doc.comment)
+        inst = cls(doc.name, doc.comment, **kwargs)
 
         inst.bases.extend(doc.bases)
 
         for d in doc.funcs.values():
             if not(d.comment is None and ignore_uncommented):
-                inst.methods.append(Function.FromDoc(d, class_name=doc.name))
+                inst.methods.append(Function.FromDoc(d, class_name=doc.name, level=1))
 
         return inst
 
@@ -764,20 +903,28 @@ class Class(Section):
     # ====================================================================================================
     # Compile
 
-    def compile(self, classes):
-        """ Compile links with other classes
+    def compile(self, project=None):
+        """ Compile the class
 
-        **classes** argument is a dict of **Class**:
+        **project** refers to the global <!Project> documentation.
+
+        Class compilation is:
         - Load each class based on this one into to the **subclasses** attribute.
         - Load the methods and properties inherited from parent classes
 
         Arguments
         ---------
-        - classes (dict) : dict of _Class_
+        - project (<!Project>) : main project
+
+        Returns
+        -------
+        - self
         """
 
         # ----------------------------------------------------------------------------------------------------
         # Inheritance
+
+        classes = project.objects
 
         inherited = {}
 
@@ -827,11 +974,10 @@ class Class(Section):
         for section in self.methods:
             section.extra = f"\n<sub>[top](#{self.link_token}) [index](index.md)</sub>"
 
-
     # ====================================================================================================
     # Capture methods and properties from another class
 
-    def capture_class(self, other):
+    def capture_class(self, other, with_comment=False):
         """ Capture methods and properties from another Class
 
         This method allows to get the documentation of inherited items of a class
@@ -845,6 +991,10 @@ class Class(Section):
         -------
         - self
         """
+
+        if self._comment is None and with_comment:
+            self._comment = other._comment
+
         for section in other.properties:
             if self.properties.get_section(section.title) is None:
                 self.properties.append(section)
@@ -945,132 +1095,168 @@ class Class(Section):
             yield line
 
 # =============================================================================================================================
-# Module documentation
-
-class Module:
-    def __init__(self, name, text):
-        """ Module documentation
-
-        A Module is built by parsing source file.
-        If builds two dicts:
-        - classes
-        - functions
-
-        The documents items can be then retrieved to build or enrich
-        project documentation
-
-        > [!NOTE]
-        > The module documentation is not intended written but to served as documentation
-        > source for classes to actually document.
-
-        Arguments
-        ---------
-        - name (str) : module name
-        - text (str) : source code to parse
-        """
-
-        self.name = name
-        self.docs = Parser(text).documentation()
-
-        self.classes   = {}
-        self.functions = {}
-
-        for doc in self.docs.values():
-            if doc.is_class:
-                self.classes[doc.name] = Class.FromDoc(doc)
-            else:
-                self.functions[doc.name] = Function.FromDoc(doc)
-
-# =============================================================================================================================
 # Project documentation
 
 class Project(Section):
 
-    def __init__(self, title, comment=None, classes_section=True):
+    def __init__(self, title, comment=None, toc='Content'):
         """ Project documentation
 
-        Building project documentation follows the following steps:
-        1. Create the modules, typically by loading source files
-        2. Add the classes to document. The classes must be documented in a module
-        3. Add documentation
-        4. Compile the documentation to build links between pages
-        5. Write the documentation files
+        Project documentation allows to build a full project documentation
+        from parsing source code, loading complementary documentation file and also
+        by dynamically adding documentation.
 
-        The example below illustrates the steps. For a working example, see <!Index#Source code example>.
+        The final documentation is written ad **MarkDown** files with **index.md** as main
+        entrance for the documentation.
+
+        > [!IMPORTANT]
+        > All files are written in the same folder. The page titles must be unique in order
+        > to avoid overwritting content.
+
+        The document is built by:
+        - creating pages and writing content into it
+        - creating pages from parsed source code
+
+        The parsed source code is stored in <!#refdoc> dictionary with one entry per parsed file.
+        The parsed source contain classes and function documentation which can be transfered
+        into pages.
+
+        When transferring, a class can be enriched with other classed, either to specify
+        inherited methods and properties or to complement the documentation with inheritance.
+        See <!#add_class>.
+
+        The following example is pseudo code for documentation building.
 
         ``` python
-        # Step 1 : Read project files from root folder
+        # Create the project
+        proj = Project(...)
 
-        proj = Project("Project", "Documentation starts here")
-        proj.load_files(my_folder, sub_folders=['sub1', 'sub2'])
+        # Parse source files to feed proj.refdoc dict
+        proj.load_files(...)
 
-        # Step 2 : Declare the classes to document
+        # Create pages from reference documentation
+        proj.add_class(...)
 
-        proj.add_class('Point',  capture = ['Geometry'])
-        proj.add_class('Vector', bases=['Point'])
+        # Add 'manual' pages
+        page proj.new_page("Tutorial")
+        page.write(...)
 
-        # Step 3 : Add documentation
-
-        proj.new_section("Presentation", comment = "This the a geometry project")
-
-        # Step 4 : Compile
-
-        proj.compile()
-
-        # Step 5 : Create the documentation
-
-        proj.create_documentation(doc_folder)
+        # Create the documentation
+        proj.create_documentation(...)
         ```
+
+        Properties
+        ----------
+        - refdocs (dict of <!Section>) : reference documentation loaded from source file
+        - pages (dict of <!Section>) : the pages to create in the final documentation
+        - sections (list of <!Section>) : dictionary of documented items
 
         Arguments
         ---------
         - title (str) : project name
         - comment (str) : header comment
-        - classes_section (bool = True) : add a section listing the classes
+        - toc (str = 'Content') : name of the table of content section, None if
+          this section is not required
         """
 
-        super().__init__(title, comment)
-        self.classes_section = classes_section
+        super().__init__(title, comment, toc=toc)
         self.hooks = []
 
-        # ----- Modules contain the source modules with their classes and functions
+        # LAYER 1
+        # Reference documentation: typically the result of parsing source files
 
-        self.modules    = {}
+        self.refdoc = {}
 
-        # ----- Classes and Functions contain the documented items
-        # built from the modules or added manually
+        # LAYER 2
+        # Final pages: one file is written per page
 
-        self.classes    = {}
-        self.functions  = {}
+        self.pages    = {}
+
+        # Documented Objects
+
+        self.objects = {}
+
+    def object_link(self, name, token=None):
+
+        # Token only
+
+        if name is None or name == "":
+            if token is None or token == "":
+                return ""
+            else:
+                return f"[{token}](#{title_to_token(name)})"
+
+        # The page where the object will appear
+
+        obj = self.objects.get(name)
+        if obj is None:
+            print(f"CAUTION: impossible to link toward '{name}'. This object is not referenced.")
+            return f"[LINK ERROR to '{name}'](index.md)"
+
+        # Link with token or not
+
+        if obj.page is None or obj.page.title == name:
+            if token is None or token == "":
+                return f"[{name}]({title_to_file_name(name)})"
+            else:
+                return f"[{name}]({title_to_file_name(name)}#{title_to_token(name)})"
+
+        else:
+            return f"[{name}]({title_to_file_name(obj.page.title)}#{title_to_token(name)})"
+
 
     # ====================================================================================================
-    # Modules : source
+    # ====================================================================================================
+    # LAYER 1: Reference documentation management
+    # ====================================================================================================
+    # ====================================================================================================
 
     # ----------------------------------------------------------------------------------------------------
-    # Add a module
+    # Add a source file
 
-    def add_module(self, name, text):
-        """ Add a module
+    def add_source(self, key, text):
+        """ Add a source code.
+
+        The source code is parsed and the resulting <!Section> is stored in the <!#refdoc> dict.
+
+        Arguments
+        ---------
+        - key (str) : source file key
+        - text (str) : the source code
+
+        Returns
+        -------
+        - Section
         """
-        self.modules[name] = Module(name, text)
+
+        if key in self.refdoc:
+            raise Exception(f"Impossible to add the source keyed by '{key}': key already exists in {list(self.refdoc.keys())}")
+
+        self.refdoc[key] = Section.FromSource(key, text)
+
+        return self.refdoc[key]
 
     # ----------------------------------------------------------------------------------------------------
-    # Load modules from files
+    # Load source files from a folder
 
-    def load_files(self, folder, sub_folders=[]):
-        """ Load content from source code files.
+    def load_files(self, folder=None, sub_folders=[], key=None):
+        """ Enrich the reference doc by parsing source files.
 
-        Each file is loaded in an instance of <!Module> in the <!#modules> list.
+        All the files with `.py` extension are parsed.
 
         Arguments
         ---------
         - folder (str) : main folder
         - sub_folders (str) : sub folders to explore
+        - key (str=None) :
 
         Returns
         -------
         - self
         """
+
+        if key is None:
+            key = Path(folder).stem
 
         root_folder = Path(folder)
         all_folders = ["."] + sub_folders
@@ -1078,38 +1264,227 @@ class Project(Section):
         for subf in all_folders:
             if subf == '.':
                 path = root_folder
-                key = '.'
+                file_key = key
             else:
                 path = root_folder / subf
-                key = subf + '.'
+                file_key = str(Path(key) / subf)
 
             for fpath in path.iterdir():
                 if not fpath.match("*.py"):
                     continue
                 print("Parse", fpath)
-                self.add_module(key + fpath.stem, fpath.read_text())
+                self.add_source(str(Path(file_key) / fpath.stem), fpath.read_text())
 
         return self
 
     # ----------------------------------------------------------------------------------------------------
-    # Get a class from a module
+    # Get a reference doc
 
-    def get_module_class(self, class_name, module_name=None, halt=True):
+    def get_refdoc(self, name, key=None, halt=True):
+        """ Get a reference documentation from the base
 
+        If **key** argument is None, the **name** is searched in the whole dictionary,
+        otherwise the search is performed only in the specified key.
+
+        Arguments
+        ---------
+        - name (str) : title of the reference documentation
+        - key (str = None) : source file key
+        - halt (bool = True) : raise an exception if not found
+
+        Returns
+        -------
+        - <!Section> : found section, None if not found
+        """
         class_ = None
-        if module_name is None:
-            for m in self.modules.values():
-                fc = m.classes.get(class_name)
-                if fc is not None:
-                    class_ = fc
+        if key is None:
+            for source_section in self.refdoc.values():
+                section = source_section.get_section(name)
+                if section is not None:
+                    class_ = section
                     break
         else:
-            class_ = self.modules[module_name].get(class_name)
+            source = self.refdoc.get(key)
+            if source is None:
+                raise Exception(f"RefDoc file key '{key}' doesn't exists in files {list(self.refdoc.keys())}")
+            class_ = source.get(name)
 
         if class_ is None and halt:
-            raise Exception(f"Class '{class_name}' not found in modules {list(self.modules.keys())}")
+            raise Exception(f"Reference doc named '{name}' not found in files {list(self.refdoc.keys())}")
 
         return class_
+
+    # ----------------------------------------------------------------------------------------------------
+    # Ref doc content
+
+    @property
+    def refdoc_content(self):
+        return {key: [s.title for s in section] for key, section in self.refdoc.items()}
+
+    # ====================================================================================================
+    # ====================================================================================================
+    # LAYER 2: Pages management
+    # ====================================================================================================
+    # ====================================================================================================    #
+
+    # ----------------------------------------------------------------------------------------------------
+    # Add a page
+
+    def add_page(self, page):
+        """ Add a page in the documentation
+
+        Arguments
+        ---------
+        - page (<!Section>) : the page to add
+
+        Returns
+        -------
+        - <!Section> : the argument **page**
+        """
+        if page.title in self.pages.keys():
+            print("Existing pages:", list(self.pages.keys()))
+            raise Exception(f"Project error when adding section '{page.title}' : the page key '{page.title}' already exists!")
+
+        self.pages[page.title] = page
+
+        # Auto reference, no fear !
+        page.page = page
+
+        return page
+
+    # ----------------------------------------------------------------------------------------------------
+    # Create a new page
+
+    def new_page(self, title, comment=None, toc=None, in_toc=True):
+        """ Add a page in the documentation
+
+        > [!CAUTION]
+        > **title** argument is used a as key in <!#pages> dictionary. It must be unique
+        > in the scope of the project
+
+        Arguments
+        ---------
+        - title (str) : page title
+        - comment (str) : comment
+        - toc (str = None) : title of the content section, None if no content section is required
+        - in_toc (bool = True) : include the the documentation table of content
+
+        Returns
+        -------
+        - <!Page>
+        """
+        page = Section(title, comment)
+
+        page.toc = toc
+        page.in_toc = in_toc
+
+        return self.add_page(page)
+
+    # ----------------------------------------------------------------------------------------------------
+    # Section in pages
+
+    def add_section_to_page(self, section, page):
+
+        if page is None:
+            return self.add_page(section)
+
+        else:
+            if isinstance(page, str):
+                target = self.pages[target_page]
+            else:
+                target = page
+
+            target.append(section)
+            section.page = page
+
+            return section
+
+    # ----------------------------------------------------------------------------------------------------
+    # Build class documentation from source
+
+    def add_class(self, class_name, page=None, bases=[], capture=[], file_key=None):
+        """ Build documentation for a class from reference documentation.
+
+        The class must exist in one of the reference documentation <!#refdoc>.
+
+        Class documentation is built with the following steps:
+        1. read the class documented in <!#refdoc>
+        2. reference the base classes in the array <!Class#bases>
+        3. add the documentation of properties and methods of classes included in **capture**
+           argument
+
+        > **Explicit inheritance**
+        > _class_name_ : inherits from base_class
+        > inherited methods : **method1**, **method2**
+
+        > **Hidden inheritance**
+        > _class_name_
+        > methods : **method1**, **method2**
+
+        if **target_page** is None, a specific page will be create, otherwise, the class documentation
+        will be append to the existing page specified by the argument.
+
+        > [!NOTE]
+        > The page where the class is documented can be retreive with attribute <!Section#page>.
+
+        Arguments
+        ---------
+        - class_name (str) : class name
+        - page (<!Section> or str = None) : name of the page where to include the class documentation
+        - bases (list of strs = []) : list of base classes
+        - capture (list of strs or <!Class> = []) : list of classes to copy methods and properties from
+        - file_key (str = None) : file key in <!#files>
+
+        Returns
+        -------
+        - <!Class> : created class
+        """
+
+        # ---------------------------------------------------------------------------
+        # Let's create a properly documented class
+
+        from_class = self.get_refdoc(class_name, key=file_key, halt=True)
+        assert(isinstance(from_class, Class))
+
+        # ----- Create the class from the module
+
+        class_ = Class(class_name).capture_class(from_class, with_comment=True)
+
+        # ----- Set the inheritance
+
+        for cname in bases:
+            class_.bases.append(cname)
+        class_.bases = list(set(class_.bases))
+
+        # ----- Capture transparent root classes
+
+        for cname in capture:
+            if isinstance(cname, str):
+                from_class = self.get_refdoc(cname)
+            else:
+                from_class = cname
+            class_.capture_class(from_class)
+
+        # ---------------------------------------------------------------------------
+        # We register and place it in a page
+
+        self.objects[class_.title] = class_
+
+        return self.add_section_to_page(class_, page)
+
+    # ----------------------------------------------------------------------------------------------------
+    # Sections content
+
+    @property
+    def pages_content(self):
+        return [s.title for s in self.pages.values()]
+
+    @property
+    def objects_content(self):
+        a = []
+        for o in self.objects.values():
+            a.append(f"'{o.title}' in '{o.page.title}'")
+        return a
 
     # ====================================================================================================
     # Hooks
@@ -1166,29 +1541,9 @@ class Project(Section):
         def repl_link(m):
             names = m.group(1).split('#')
             if len(names) == 1:
-                name = names[0].strip()
-                return f"[{name}]({title_to_file_name(name)})"
-
-            file  = names[0].strip()
-            token = names[1].strip()
-
-            # ----- No file : only a link within the page
-
-            if file == "":
-                return f"[{token}](#{title_to_token(token)})"
-
-            # ----- Link to the file
-
-            file_link = f"[{file}]({title_to_file_name(file)})"
-
-            if token == "":
-                return file_link
-
-            # ----- Link to a file and a token
-
-            token_link = f"[{token}]({title_to_file_name(file)}#{title_to_token(token)})"
-
-            return f"{token_link} in {file_link}"
+                return self.object_link(names[0].strip())
+            else:
+                return self.object_link(names[0].strip(), names[1].strip())
 
         # ----------------------------------------------------------------------------------------------------
         # The default hooks to combine with the custom hooks
@@ -1213,103 +1568,48 @@ class Project(Section):
                     repl = lambda m: func(m, self)
 
             txt, d = extract_source(comment)
-            if len(d):
-                print('-'*100)
-                print(txt)
-                print()
             txt = re.sub(hook['expr'], repl, txt)
             comment = replace_source(txt, d)
 
         return comment
 
     # ====================================================================================================
-    # Add a class to be documented
-
-    def add_class(self, class_name, module_name=None, bases=[], capture=[]):
-        """ Add a class in the documented classes
-
-        The class is searched in all modules.
-        If there exists homonymes in different modules, 'module_name' specifies
-        the module to get the class from.
-
-        The 'capture' list contains base classes to copy documentation from.
-        Hence, there exists two ways to manage inheritance:
-        - bases : the documentation makes the inheritance explicit by giving the
-          base class and links to the inherited methods and properties
-        - capture : the documentation doesn't mention the inheritance but gives
-          directly the documentation as if it were part of the class
-
-        > **Explicit inheritance**
-        > _class_name_ : inherits from base_class
-        > inherited methods : **method1**, **method2**
-
-        > **Hidden inheritance**
-        > _class_name_
-        > methods : **method1**, **method2**
-
-        Arguments
-        ---------
-        - class_name (str) : class name
-        - module_name (str = None) : name of the source file module if the class
-          exists in several modules
-        - bases (list = []) : list of base classes
-        - capture (list = []) : list of classes to copy methods and properties from
-        """
-
-        if self.classes.get(class_name) is not None:
-            raise Exception(f"Add class error: {class_name} already exists")
-
-        from_class = self.get_module_class(class_name, module_name=module_name)
-
-        # ----- Create the class from the module
-
-        class_ = Class(class_name, from_class.comment).capture_class(from_class)
-
-        # ----- Set the inheritance
-
-        for cname in bases:
-            class_.bases.append(cname)
-        class_.bases = list(set(class_.bases))
-
-        # ----- Capture transparent root classes
-
-        for cname in capture:
-            class_.capture_class(self.get_module_class(cname))
-
-        # ----- Register the class to comment
-
-        self.classes[class_name] = class_
-
-        return class_
-
-    # ====================================================================================================
     # Compile the documentation
 
-    def compile(self):
+    def compile(self, project=None):
 
         # ----------------------------------------------------------------------------------------------------
-        # apply hooks function for iteration
+        # Compile the classes
+
+        def compile_section(section):
+            section.compile(self)
+
+        self.iteration(compile_section)
+        for object in self.objects.values():
+            a = object.iteration(compile_section)
+            if a is not None:
+                print(f"CAUTION: Compilation error on object", a.title)
+
+        # ----------------------------------------------------------------------------------------------------
+        # Apply the hooks
 
         def apply_hooks(section):
             section._comment = self.apply_hooks(section._comment)
 
         self.iteration(apply_hooks)
-
-        # ----------------------------------------------------------------------------------------------------
-        # Compile each class
-
-        for class_ in self.classes.values():
-            class_.compile(self.classes)
-            class_.iteration(apply_hooks)
+        for page in self.pages.values():
+            a = page.iteration(apply_hooks)
+            if a is not None:
+                print(f"CAUTION: hook error on object", a.title)
 
         # ----------------------------------------------------------------------------------------------------
         # Classes section
 
-        if self.classes_section:
-            links = ""
-            for class_name in sorted(self.classes.keys()):
-                links += f"- [{class_name}]({class_name.lower()}.md)\n"
-            self.append(Section("Classes", comment=links, level=1))
+        #if self.classes_section:
+        #    links = ""
+        #    for class_name in sorted(self.classes.keys()):
+        #        links += f"- [{class_name}]({class_name.lower()}.md)\n"
+        #    self.append(Section("Classes", comment=links, level=1))
 
 
     # ====================================================================================================
@@ -1326,7 +1626,6 @@ class Project(Section):
         print(f"Create index: {file_name}")
 
         with Path(file_name).open(mode='w') as f:
-
             for line in self.build():
                 f.write(line)
 
@@ -1353,13 +1652,15 @@ class Project(Section):
 
     def create_documentation(self, doc_folder):
 
+        self.compile()
+
         doc_folder = Path(doc_folder)
 
-        for class_name, class_ in self.classes.items():
-            file_path = doc_folder / class_.md_file_name
-            print(f"Create ‘{class_name}' : {file_path}")
+        for page_name, page in self.pages.items():
+            file_path = doc_folder / page.md_file_name
+            print(f"Create ‘{page_name}' : {file_path}")
             with file_path.open(mode='w') as f:
-                for line in class_.build():
+                for line in page.build():
                     f.write(line)
 
         self.create_index_file(doc_folder / 'index.md')
@@ -1380,64 +1681,57 @@ def gen_docgen():
     proj.load_files(root, sub_folders=[])
 
     # ====================================================================================================
-    # Step 2 : Declare the classes to document
+    # Step 2 : Build the pages
 
-    proj.add_class('Parser',   capture = ['Reader'])
-    proj.add_class('Doc')
+    page = proj.new_page("Parser module", "Simple python source parser\n\n")
+    page.write("The module <!Parser> parse source file and returns the documentation as a liste of <!Doc> instances.")
+
+    proj.add_class('Parser', page,  capture = ['Reader'])
+    proj.add_class('Doc', page)
 
     proj.add_class('Section')
     proj.add_class('Argument', bases=['Section'])
     proj.add_class('Return',   bases=['Section'])
     proj.add_class('Function', bases=['Section'])
     proj.add_class('Class',    bases=['Section'])
-    proj.add_class('Module')
     proj.add_class('Project')
 
     # ====================================================================================================
-    # Step 3 : Add documentation
+    # Step 3 : Add complementary pages
 
-    # ----- A structured presentation of the classes
+    page = proj.new_page("Demo", "This demo file is the source code used to generate this documentation\n\n")
 
-    struct = proj.new_section("Project classes", comment="""
-        The project is made of two layers.
-        1. The first layer is the parser which parses python source code. It returns
-           a list of items (classes and functions) with their comment.
-        2. The second layer builds documented classes from the results of the parsing.
-           One can them organize the documentation in the desired hierarchy.
-
-        > [!NOTE]
-        > Documentating a class must be explicitly requested with
-        [Project](projectdocumentation.md#add_class)
-        """)
-
-    struct.new_section("Parser classes")
-    struct.write("- [Parser](parser.md) : simple python source code parser\n")
-    struct.write("- [Doc](doc.md) : list of items documentation returned by the [Parser](parser.md)\n")
-    struct.write()
-
-    struct.new_section("DocGen classes")
-    struct.write("- [Project](projectdocumentation.md) : Project documentation\n")
-    struct.write("- [Class](class.md) : Class documentation\n")
-    struct.write("- [Function](function.md) : Function documentation\n")
-    struct.write("- [Section](section.md) : Base documentation section\n")
-
-    # ----- This source code
-
-    proj.new_section("Source code example", comment="""
-        The example given below is the source code used to generate this documentation:
-
-        """)
     proj.write_source(inspect.getsource(gen_docgen))
 
     # ====================================================================================================
-    # Step 4 : Compile
+    # Finalize the index file (the project Section)
 
-    # Demo custom hook
-    proj.set_hook(r"\[!TOKEN\]", "substitution text")
+    struct = proj.new_section("Project classes", comment="""
+        The project is made of two layers.
+        1. The first layer is the reference document read from source files
+        2. The second layer is a the set of pages of the documentation
 
-    proj.compile()
+        Pages are created and manually fed by reference documentation
+        or by manuel additions.
+        """)
+
+    struct.new_section("Parser classes")
+    struct.write("- <!Parser>) : simple python source code parser\n")
+    struct.write("- <!Doc> : list of items documentation returned by the [Parser](parser.md)\n")
+    struct.write()
+
+    struct.new_section("DocGen classes")
+    struct.write("- <!Project> : Project documentation\n")
+    struct.write("- <!Class> : Class documentation\n")
+    struct.write("- <!Function> : Function documentation\n")
+    struct.write("- <!Section> : Base documentation section\n")
+
+    proj.new_section("Demo", "You can see in <!Demo> the source code used to generate this documentation.")
 
     # ====================================================================================================
     # Step 5 : Create the documentation
+
+    # Demo custom hook
+    proj.set_hook(r"\[!TOKEN\]", "substitution text")
 
     proj.create_documentation(doc_folder=root / 'doc')

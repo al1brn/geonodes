@@ -3,43 +3,62 @@
 
 
 ``` python
-Section(self, title, comment=None, level=0, with_sections_only=False, sort_sections=False)
+Section(self, title, comment=None, level=0, **kwargs)
 ```
 
 Elementary base of a documentation
 
-A **Section** is basically a title and a comment.
+A **Section** is basically a title, a header section and sub sections
 
-It inherits from a list into which sub sections can be stored. A Section produces documentation:
+It inherits from a list into which sub sections are stored. A Section produces documentation:
+- Header (level 0)
 - Header
-- Comment
-- Loop on sub sections
+- Table of content section (level 1)
+- Loop on sub sections (level 1)
 - Extra (for intrapage links)
 
 
 
 
-> subclasses: [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) 
+> subclasses: [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) 
 
 ## Methods and Properties
-- A : [alphabetical_sections](#alphabetical_sections) 
+- A : [alphabetical_sections](#alphabetical_sections) [as_dict](#as_dict) 
 - B : [build](#build) [build_extra](#build_extra) [build_header](#build_header) [build_sections](#build_sections) 
 - C : [comment](#comment) 
 - E : [extra](#extra) 
+- F : [fixed_level](#fixed_level) 
 - G : [get_section](#get_section) 
-- I : [init](#init) 
-- L : [level](#level) [link_to](#link_to) 
-- M : [md_file_name](#md_file_name) 
+- I : [in_toc](#in_toc) [init](#init) [iteration](#iteration) 
+- L : [link_to](#link_to) [link_token](#link_token) 
+- M : [md_file_name](#md_file_name) [md_file_name](#md_file_name) 
 - N : [new_section](#new_section) 
-- P : [parse_comment](#parse_comment) [print](#print) 
+- P : [page](#page) [parse_comment](#parse_comment) [print](#print) 
 - S : [sort_sections](#sort_sections) [sorted_sections](#sorted_sections) [sorted_sections](#sorted_sections) 
-- T : [title](#title) 
+- T : [title](#title) [toc](#toc) 
 - W : [with_sections_only](#with_sections_only) [write](#write) 
 
 # Properties
 
 
 
+## as_dict
+
+``` python
+Section.as_dict
+```
+
+
+
+##### Returns
+
+
+
+- _dict_ : section title: section
+
+
+
+<sub>[top](#section) [index](index.md)</sub>
 ## comment
 
 ``` python
@@ -59,7 +78,7 @@ Comment property
 
 
 <sub>[top](#section) [index](index.md)</sub>
-## extra
+# extra
 
 Extra text at the end of the documentation
 
@@ -74,9 +93,9 @@ Extra text at the end of the documentation
 
 
 <sub>[top](#section) [index](index.md)</sub>
-## level
+# fixed_level
 
-Indentation level
+level is fixed and can't be changed
 
 
 
@@ -84,7 +103,22 @@ Indentation level
 
 
 
-- _int_ : 
+- _bool_ : 
+
+
+
+<sub>[top](#section) [index](index.md)</sub>
+# in_toc
+
+section is included in the owner section table of content
+
+
+
+##### Returns
+
+
+
+- _bool_ : 
 
 
 
@@ -108,9 +142,23 @@ MD Document file name
 
 
 <sub>[top](#section) [index](index.md)</sub>
-## sort_sections
+# page
 
-The sections are printed in alphabetical order
+
+
+
+##### Returns
+
+
+
+- _None_ : 
+
+
+
+<sub>[top](#section) [index](index.md)</sub>
+# sort_sections
+
+The sections are placed in alphabetical order
 
 
 
@@ -142,7 +190,7 @@ Sort the sub sections in alphabetical order
 
 
 <sub>[top](#section) [index](index.md)</sub>
-## title
+# title
 
 Section title
 
@@ -157,7 +205,22 @@ Section title
 
 
 <sub>[top](#section) [index](index.md)</sub>
-## with_sections_only
+# toc
+
+name of the toc section, None if no toc is generated
+
+
+
+##### Returns
+
+
+
+- _str_ : 
+
+
+
+<sub>[top](#section) [index](index.md)</sub>
+# with_sections_only
 
 The section is printed only if the list of sub sections is not empty
 
@@ -281,6 +344,15 @@ Section.get_section(self, title)
 
 Look for a sub section by its title
 
+> [!NOTE]
+> This function searches only in the direct children, not in the whole tree.
+
+To search a section in the whole tree, use [iteration](#) method:
+
+``` python
+sub_section = parent_section.iteration(lambda s: s.title == 'The title')
+```
+
 
 
 ##### Arguments
@@ -318,6 +390,33 @@ Default method is empty.
 
 
 <sub>[top](#section) [index](index.md)</sub>
+## iteration
+
+``` python
+Section.iteration(self, f)
+```
+
+Run the function on the section and sub sections
+
+The method halts on the first section for which the function return `True` and returns this section. If the function doesn't return `True`, the methods is run on all sections and return `None`.
+
+
+
+##### Arguments
+
+
+
+- **f** : 
+
+##### Returns
+
+
+
+- _Section_ : 
+
+
+
+<sub>[top](#section) [index](index.md)</sub>
 ## link_to
 
 ``` python
@@ -333,6 +432,46 @@ MD link
 
 
 - _str_ : [title](url + link_token)
+
+
+
+<sub>[top](#section) [index](index.md)</sub>
+## link_token
+
+``` python
+Section.link_token
+```
+
+MD link token
+
+The markdown token is the lower case title where spaces are replaces by '-' char
+
+
+
+##### Returns
+
+
+
+- _str_ : markdown token
+
+
+
+<sub>[top](#section) [index](index.md)</sub>
+## md_file_name
+
+``` python
+Section.md_file_name
+```
+
+MD Document file name
+
+
+
+##### Returns
+
+
+
+- _str_ : markdown file name
 
 
 

@@ -2,24 +2,10 @@
 
 
 
-``` python
-Function(self, name, comment=None, level=1)
-```
-
-Section dedicated to function documentation.
-
-A **Function** is made of two sections:
-- Properties
-- Methods
-
-The comment can contain description of Arguments and Returns. The comment is parsed in order to extract this information and to write the document is a homogeneous way.
-
-
-
 
 > inherits from: [Section](section.md) 
 
-> inherited: [alphabetical_sections](section.md#alphabetical_sections), [build](section.md#build), [build_extra](section.md#build_extra), [build_header](section.md#build_header), [build_sections](section.md#build_sections), [comment](section.md#comment), [extra](section.md#extra), [get_section](section.md#get_section), [level](section.md#level), [link_to](section.md#link_to), [link_token](section.md#link_token), [md_file_name](section.md#md_file_name), [new_section](section.md#new_section), [print](section.md#print), [sort_sections](section.md#sort_sections), [sorted_sections](section.md#sorted_sections), [title](section.md#title), [with_sections_only](section.md#with_sections_only), [write](section.md#write)
+> inherited: [FromSource](section.md#fromsource), [__init__](section.md#__init__), [alphabetical_sections](section.md#alphabetical_sections), [as_dict](section.md#as_dict), [build](section.md#build), [build_extra](section.md#build_extra), [build_header](section.md#build_header), [build_sections](section.md#build_sections), [comment](section.md#comment), [extra](section.md#extra), [fixed_level](section.md#fixed_level), [get_section](section.md#get_section), [in_toc](section.md#in_toc), [iteration](section.md#iteration), [level](section.md#level), [link_to](section.md#link_to), [link_token](section.md#link_token), [md_file_name](section.md#md_file_name), [new_section](section.md#new_section), [page](section.md#page), [print](section.md#print), [sort_sections](section.md#sort_sections), [sorted_sections](section.md#sorted_sections), [title](section.md#title), [toc](section.md#toc), [with_sections_only](section.md#with_sections_only), [write](section.md#write)
 ## Methods and Properties
 - A : [arguments](#arguments) 
 - F : [FromDoc](#fromdoc) 
@@ -58,7 +44,7 @@ Function.arguments
 > **Decorators**: Class method
 
 ``` python
-Function.FromDoc(cls, doc, class_name=None)
+Function.FromDoc(cls, doc, class_name=None, **kwargs)
 ```
 
 Create a class from an instance of Doc
