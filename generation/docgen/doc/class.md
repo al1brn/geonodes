@@ -1,5 +1,7 @@
 # Class
 
+
+
 ``` python
 Class(self, class_name, comment)
 ```
@@ -20,7 +22,7 @@ The class documentation is completed afterward by the [compile](#compile) method
 
 > inherits from: [Section](section.md) 
 
-> inherited: [add_hook](section.md#add_hook), [alphabetical_sections](section.md#alphabetical_sections), [build_extra](section.md#build_extra), [build_header](section.md#build_header), [build_sections](section.md#build_sections), [comment](section.md#comment), [extra](section.md#extra), [get_section](section.md#get_section), [init](section.md#init), [level](section.md#level), [link_to](section.md#link_to), [link_token](section.md#link_token), [md_file_name](section.md#md_file_name), [new_section](section.md#new_section), [parse_comment](section.md#parse_comment), [print](section.md#print), [sort_sections](section.md#sort_sections), [sorted_sections](section.md#sorted_sections), [title](section.md#title), [with_sections_only](section.md#with_sections_only), [write](section.md#write)
+> inherited: [alphabetical_sections](section.md#alphabetical_sections), [build_extra](section.md#build_extra), [build_header](section.md#build_header), [build_sections](section.md#build_sections), [comment](section.md#comment), [extra](section.md#extra), [get_section](section.md#get_section), [init](section.md#init), [level](section.md#level), [link_to](section.md#link_to), [link_token](section.md#link_token), [md_file_name](section.md#md_file_name), [new_section](section.md#new_section), [parse_comment](section.md#parse_comment), [print](section.md#print), [sort_sections](section.md#sort_sections), [sorted_sections](section.md#sorted_sections), [title](section.md#title), [with_sections_only](section.md#with_sections_only), [write](section.md#write)
 ## Methods and Properties
 - B : [build](#build) 
 - C : [capture_class](#capture_class) [compile](#compile) 
@@ -29,6 +31,8 @@ The class documentation is completed afterward by the [compile](#compile) method
 - P : [properties](#properties) 
 
 # Properties
+
+
 
 ## properties
 
@@ -40,6 +44,8 @@ Class.properties
 
 ##### Returns
 
+
+
 - _Section_ : title is 'Properties', sub sections are documented properties
 
 
@@ -47,6 +53,8 @@ Class.properties
 <sub>[top](#class) [index](index.md)</sub>
 
 # Methods
+
+
 
 ## FromDoc
 
@@ -64,10 +72,14 @@ The **doc** argument contains the list of documents methods and properties.
 
 ##### Arguments
 
+
+
 - **doc** (_Doc_) : Doc parsed from a sourc file
 - **exclude_uncommented** (_bool_ = True) : exclude the methods which are not commented in the source file
 
 ##### Returns
+
+
 
 - _Class_ : document on the class
 
@@ -101,11 +113,15 @@ This method allows to get the documentation of inherited items of a class which 
 
 ##### Arguments
 
+
+
 - **other** (_Class_) : class to copy methods and properties from
 
 ##### Returns
 
-- _self_
+
+
+- _self_ : 
 
 
 
@@ -126,6 +142,8 @@ Compile links with other classes
 
 ##### Arguments
 
+
+
 - **classes** (_dict_) : dict of _Class_
 
 
@@ -142,6 +160,8 @@ Methods Section
 
 
 ##### Returns
+
+
 
 - _Section_ : title is 'Methods', sub sections are documented methods
 

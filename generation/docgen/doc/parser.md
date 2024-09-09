@@ -1,5 +1,7 @@
 # Parser
 
+
+
 ``` python
 Reader(self, text)
 ```
@@ -18,6 +20,8 @@ Simple python source code parser.
 
 # Properties
 
+
+
 ## eol
 
 ``` python
@@ -29,6 +33,8 @@ End of line flag
 
 
 ##### Returns
+
+
 
 - _Boolean_ : True if end of line is reached, False otherwise
 
@@ -46,6 +52,8 @@ Read the previous char
 
 
 ##### Returns
+
+
 
 - _str_ : Previous character or None if start of file
 
@@ -66,6 +74,8 @@ After reading, the cursor is incremented
 
 ##### Returns
 
+
+
 - _str_ : Next character or None if end of file
 
 
@@ -73,6 +83,8 @@ After reading, the cursor is incremented
 <sub>[top](#parser) [index](index.md)</sub>
 
 # Methods
+
+
 
 ## FromFile
 
@@ -87,6 +99,8 @@ Initialize a parser from a file.
 
 
 ##### Arguments
+
+
 
 - **fname** (_str_) : full path of the file top parse
 
@@ -120,6 +134,8 @@ Getting the current char doesn't move the cursor.
 
 ##### Returns
 
+
+
 - _str_ : Next character or None if end of file
 
 
@@ -136,6 +152,8 @@ End of file flag
 
 
 ##### Returns
+
+
 
 - _Boolean_ : True if end of file is reached, False otherwise
 
@@ -154,9 +172,13 @@ Compare the string starting at the cursor with the argument
 
 ##### Arguments
 
+
+
 - **s** (_str_) : the string to compare with
 
 ##### Returns
+
+
 
 - _Boolean_ : True if the text at the cursor is equal to the argument
 
@@ -174,6 +196,8 @@ Read the previous char
 
 
 ##### Returns
+
+
 
 - _str_ : Previous character or None if start of file
 
@@ -214,6 +238,8 @@ After reading, the cursor is incremented
 
 
 ##### Returns
+
+
 
 - _str_ : Next character or None if end of file
 

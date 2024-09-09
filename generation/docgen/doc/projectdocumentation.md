@@ -1,5 +1,7 @@
 # ProjectDocumentation
 
+
+
 ``` python
 ProjectDocumentation(self, title, comment=None, classes_section=True)
 ```
@@ -45,8 +47,11 @@ proj.create_documentation(doc_folder)
 - A : [add_class](#add_class) [add_module](#add_module) 
 - C : [compile](#compile) [create_index_file](#create_index_file) 
 - L : [load_files](#load_files) 
+- S : [set_hook](#set_hook) 
 
 # Methods
+
+
 
 ## add_class
 
@@ -73,6 +78,8 @@ The 'capture' list contains base classes to copy documentation from. Hence, ther
 
 
 ##### Arguments
+
+
 
 - **class_name** (_str_) : class name
 - **module_name** (_str_ = None) : name of the source file module if the class exists in several modules
@@ -101,7 +108,7 @@ Add a module
 ProjectDocumentation.compile(self)
 ```
 
-Compile each class
+apply hooks function for iteration
 
 
 
@@ -118,6 +125,8 @@ Create the index file
 
 
 ##### Arguments
+
+
 
 - **file_name** (_str_) : file name to write
 
@@ -138,12 +147,60 @@ Each file is loaded in an instance of <!Module> in the <!#modules> list.
 
 ##### Arguments
 
+
+
 - **folder** (_str_) : main folder
 - **sub_folders** (_str_) : sub folders to explore
 
 ##### Returns
 
-- _self_
+
+
+- _self_ : 
+
+
+
+<sub>[top](#projectdocumentation) [index](index.md)</sub>
+## set_hook
+
+> **Decorators**: Class method
+
+``` python
+ProjectDocumentation.set_hook(self, expr, repl)
+```
+
+Replace a regular expression by as substitution string
+
+Hooks are applied to the documentation at compilation time.
+
+``` python
+# Instance of [!TOKEN] will be replaced by the substitution text.
+
+proj.set_hook(r"\[!TOKEN\]", "substitution text")
+```
+
+Due to the piece of code above, the token `[!TOKEN]` is replaced here: **[!TOKEN]**
+
+> [!NOTE]
+> Text embedded in a _source code_ zone is not replaced
+
+If a function is passed for replacement rather than a string, its template must be
+`def repl(match_obj, section)` where:
+- match_obj : the result of re.search()
+- section : the section where there is a match
+
+> [!CAUTION]
+> This template is different from the one ot eplacement function in `re.search` function
+> which accepts only one argument.
+
+
+
+##### Arguments
+
+
+
+- **expr** (_str_) : RegEx expression
+- **repl** : 
 
 
 

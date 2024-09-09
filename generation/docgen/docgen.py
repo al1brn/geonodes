@@ -19,8 +19,6 @@ from .pyparser import Parser, md_normalize, extract_source, replace_source
 
 class Section(list):
 
-    HOOKS  = []
-
     def __init__(self, title, comment=None, level=0, with_sections_only=False, sort_sections=False):
         """ Elementary base of a documentation
 
@@ -75,33 +73,6 @@ class Section(list):
         return f"<Section {type(self).__name__} '{self.title}' {len(self)}: {scomm}>"
 
     # ====================================================================================================
-    # Add a hook
-
-    @classmethod
-    def add_hook(cls, expr, func):
-        """ Replace a regular expression by as substitution string
-
-        Hooks are applied each time a comment is added to the documentation.
-
-        ``` python
-        # Instance of [!TOKEN] will be replaced by the substitution text.
-
-        Section.add_hook(r"\[!TOKEN\]", "substitution text")
-        ```
-
-        Due to the piece of code above, the token `[!TOKEN]` is replaced here: **[!TOKEN]**
-
-        > [!NOTE]
-        > Text embedded in a _source code_ zone is not replaced
-
-        Arguments
-        ---------
-            - expr (str) : RegEx expression
-            - func (function or str) : replacement function or string
-        """
-        cls.HOOKS.append({'expr': expr, 'func': func})
-
-    # ====================================================================================================
     # Specific init
 
     def init(self):
@@ -134,34 +105,21 @@ class Section(list):
         self._comment = self.parse_comment(value)
 
     # ====================================================================================================
+    # Iteration
+
+    def iteration(self, f):
+        f(self)
+        for section in self:
+            section.iteration(f)
+
+    # ====================================================================================================
     # Parse the comment
-
-    def apply_hooks(self, comment):
-
-        if comment is None:
-            return None
-
-        comment = md_normalize(comment)
-
-        for hook in Section.HOOKS:
-
-            func = hook['func']
-            if isinstance(func, str):
-                repl = func
-            else:
-                repl = lambda m: func(m, self)
-
-            txt, d = extract_source(comment)
-            txt = re.sub(hook['expr'], repl, txt)
-            comment = replace_source(txt, d)
-
-        return comment
 
     def parse_comment(self, comment):
         """ Parse comment to extract information
 
         This method extract information embbeded in the comment and returns the cleaned text.
-        The default implementation apply the hooks
+        The default implementation normalizes the markdwon comment.
 
         Arguments
         ---------
@@ -171,7 +129,7 @@ class Section(list):
         -------
         - str : the cleaned comment
         """
-        return self.apply_hooks(comment)
+        return md_normalize(comment)
 
     # ====================================================================================================
     # Dynamic documentation
@@ -211,22 +169,18 @@ class Section(list):
             self[-1].write(comment, parse=parse)
 
         else:
-            if self._comment is None:
-                if parse:
-                    self.comment = comment
-                else:
-                    self._comment = comment
-            else:
-                if parse:
-                    self._comment += self.parse_comment(comment)
-                else:
-                    self._comment += comment
+            if parse:
+                comment = self.parse_comment(comment)
 
+            if self._comment is None:
+                self._comment = comment
+            else:
+                self._comment += comment
 
     def write_source(self, source):
-        self.write("``` python\n")
+        self.write("``` python\n", parse=False)
         self.write(source.replace("`", "'"), parse=False)
-        self.write("```\n\n")
+        self.write("```\n\n", parse=False)
 
     # ====================================================================================================
     # Properties
@@ -615,7 +569,6 @@ class Function(Section):
                     else:
                         self.returns.append(Return(match.group(1), match.group(3)))
 
-
         return new_comment
 
     # ====================================================================================================
@@ -800,7 +753,7 @@ class Class(Section):
         return self.get_section('Methods')
 
     # ====================================================================================================
-    # Get the sub classes
+    # Compile
 
     def compile(self, classes):
         """ Compile links with other classes
@@ -1150,6 +1103,67 @@ class ProjectDocumentation(Section):
         return class_
 
     # ====================================================================================================
+    # Hooks
+
+    # ----------------------------------------------------------------------------------------------------
+    # Set a hook
+
+    @classmethod
+    def set_hook(self, expr, repl):
+        """ Replace a regular expression by as substitution string
+
+        Hooks are applied to the documentation at compilation time.
+
+        ``` python
+        # Instance of [!TOKEN] will be replaced by the substitution text.
+
+        proj.set_hook(r"\[!TOKEN\]", "substitution text")
+        ```
+
+        Due to the piece of code above, the token `[!TOKEN]` is replaced here: **[!TOKEN]**
+
+        > [!NOTE]
+        > Text embedded in a _source code_ zone is not replaced
+
+        If a function is passed for replacement rather than a string, its template must be
+        `def repl(match_obj, section)` where:
+        - match_obj : the result of re.search()
+        - section : the section where there is a match
+
+        > [!CAUTION]
+        > This template is different from the one ot eplacement function in `re.search` function
+        > which accepts only one argument.
+
+        Arguments
+        ---------
+            - expr (str) : RegEx expression
+            - repl (str or function) : replacement function or string
+        """
+        self.hooks.append({'expr': expr, 'func': func})
+
+    # ----------------------------------------------------------------------------------------------------
+    # Apply the hooks
+
+    def apply_hooks(self, comment):
+
+        if comment is None:
+            return None
+
+        for hook in self.hooks:
+
+            func = hook['func']
+            if isinstance(func, str):
+                repl = func
+            else:
+                repl = lambda m: func(m, self)
+
+            txt, d = extract_source(comment)
+            txt = re.sub(hook['expr'], repl, txt)
+            comment = replace_source(txt, d)
+
+        return comment
+
+    # ====================================================================================================
     # Add a class to be documented
 
     def add_class(self, class_name, module_name=None, bases=[], capture=[]):
@@ -1215,10 +1229,19 @@ class ProjectDocumentation(Section):
     def compile(self):
 
         # ----------------------------------------------------------------------------------------------------
+        # apply hooks function for iteration
+
+        def apply_hooks(section):
+            section._comment = self.apply_hooks(section._comment)
+
+        self.iteration(apply_hooks)
+
+        # ----------------------------------------------------------------------------------------------------
         # Compile each class
 
         for class_ in self.classes.values():
             class_.compile(self.classes)
+            class_.iteration(apply_hooks)
 
         # ----------------------------------------------------------------------------------------------------
         # Classes section
