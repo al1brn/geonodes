@@ -1622,6 +1622,9 @@ class Project(Section):
         if comment is None:
             return None
 
+        # ---- Extract source code
+        txt, d = extract_source(comment)
+
         for hook in def_hooks + self.hooks:
 
             func = hook['repl']
@@ -1633,9 +1636,10 @@ class Project(Section):
                 else:
                     repl = lambda m: func(m, self)
 
-            txt, d = extract_source(comment)
             txt = re.sub(hook['expr'], repl, txt)
-            comment = replace_source(txt, d)
+
+        # ----- Replace source code
+        comment = replace_source(txt, d)
 
         return comment
 
