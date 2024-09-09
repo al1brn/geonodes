@@ -19,7 +19,7 @@ Pages are created and manually fed by reference documentation or by manuel addit
 
 ### Parser classes
 
-- [Parser](parser_module.md#parser)) : simple python source code parser
+- [Parser](parser_module.md#parser) : simple python source code parser
 - [Doc](parser_module.md#doc) : list of items documentation returned by the [Parser](parser.md)
 
 

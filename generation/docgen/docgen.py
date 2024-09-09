@@ -1716,7 +1716,7 @@ def gen_docgen():
         """)
 
     struct.new_section("Parser classes")
-    struct.write("- <!Parser>) : simple python source code parser\n")
+    struct.write("- <!Parser> : simple python source code parser\n")
     struct.write("- <!Doc> : list of items documentation returned by the [Parser](parser.md)\n")
     struct.write()
 
