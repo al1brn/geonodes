@@ -1139,7 +1139,7 @@ class ProjectDocumentation(Section):
         - section : the section where there is a match
 
         > [!CAUTION]
-        > This template is different from the one ot eplacement function in `re.search` function
+        > This template is different from the one of replacement function in `re.search` function
         > which accepts only one argument.
 
         Arguments
@@ -1204,6 +1204,10 @@ class ProjectDocumentation(Section):
                 repl = lambda m: func(m, self)
 
             txt, d = extract_source(comment)
+            if len(d):
+                print('-'*100)
+                print(txt)
+                print()
             txt = re.sub(hook['expr'], repl, txt)
             comment = replace_source(txt, d)
 

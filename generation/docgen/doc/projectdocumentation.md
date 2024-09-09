@@ -189,7 +189,7 @@ Hooks are applied to the documentation at compilation time.
 proj.set_hook(r"\[!TOKEN\]", "substitution text")
 ```
 
-Due to the piece of code above, the token `substitution text` is replaced here: **substitution text**
+Due to the piece of code above, the token `[!TOKEN]` is replaced here: **substitution text**
 
 > [!NOTE]
 > Text embedded in a _source code_ zone is not replaced
@@ -200,7 +200,7 @@ If a function is passed for replacement rather than a string, its template must 
 - section : the section where there is a match
 
 > [!CAUTION]
-> This template is different from the one ot eplacement function in `re.search` function
+> This template is different from the one of replacement function in `re.search` function
 > which accepts only one argument.
 
 

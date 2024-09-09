@@ -142,6 +142,7 @@ def extract_source(comment):
         return key
 
     expr = r"```[^`]*```|`[\w ]*`"
+    expr = r"```[^`]*```|`[^\n]*`"
 
     return re.sub(expr, extract, comment), d
 
