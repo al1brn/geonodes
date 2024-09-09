@@ -109,7 +109,7 @@ The class must exist in one of the reference documentation [refdoc](#).
 
 Class documentation is built with the following steps:
 1. read the class documented in [refdoc](#)
-2. reference the base classes in the array [bases](class.md#class)
+2. reference the base classes in the array [bases](class.md#bases)
 3. add the documentation of properties and methods of classes included in **capture** argument
 
 > **Explicit inheritance**
@@ -123,7 +123,7 @@ Class documentation is built with the following steps:
 if **target_page** is None, a specific page will be create, otherwise, the class documentation will be append to the existing page specified by the argument.
 
 > [!NOTE]
-> The page where the class is documented can be retreive with attribute [page](section.md#section).
+> The page where the class is documented can be retreive with attribute [page](section.md#page).
 
 
 
@@ -377,7 +377,7 @@ pass
 
 > [!NOTE]
 > By default, a hook is used to define links between pages based on the
-> syntax : `<!Section title#Sub section title>` which is converted in [set_hook](project.md#project).
+> syntax : `<!Section title#Sub section title>` which is converted in [set_hook](project.md#set_hook).
 
 
 

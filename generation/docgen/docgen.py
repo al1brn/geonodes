@@ -1265,7 +1265,7 @@ class Project(Section):
             if token is None or token == "":
                 return f"[{name}]({title_to_file_name(name)})"
             else:
-                return f"[{token}]({title_to_file_name(name)}#{title_to_token(name)})"
+                return f"[{token}]({title_to_file_name(name)}#{title_to_token(token)})"
 
         else:
             return f"[{name}]({title_to_file_name(obj.page.title)}#{title_to_token(name)})"
