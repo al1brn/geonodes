@@ -16,8 +16,8 @@ module : floatclass
 classes
 -------
 - IntFloat      : Base class for Integer and Float
-- Integer       : DataSocket of type 'INT'
-- Float         : DataSocket of type 'FLOAT'
+- Integer       : Socket of type 'INT'
+- Float         : Socket of type 'FLOAT'
 
 functions
 ---------
@@ -61,12 +61,12 @@ class IntFloat(ValueSocket):
         Arguments
         ---------
         - factor (Float) : socket 'Factor' (Factor_Float)
-        - other (DataSocket) : socket 'B' (B_Float)
+        - other (Socket) : socket 'B' (B_Float)
         - clamp_factor (bool): Node.clamp_factor
 
         Returns
         -------
-        - DataSocket
+        - Socket
         """
         return Float(Node('Mix', {'Factor': factor, 'A': self, 'B': other}, clamp_factor=clamp_factor, data_type='FLOAT')._out)
 

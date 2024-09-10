@@ -23,7 +23,7 @@ functions
 - clean             : clean a string
 - prefix_figure     : prefix a string by '_' if it is a number, e.g. : '3D Cursor' -> _3d_cursor
 - socket_name       : transform a user name in snake case python name, e.g. : "Color Ramp" -> 'color_ramp'
-- get_bsocket       : get a blender socket from a value which can be a DataSocket or a blender.types.NodeSocket
+- get_bsocket       : get a blender socket from a value which can be a Socket or a blender.types.NodeSocket
 - get_socket_type   : get a socket type in SOCKET_TYPES.keys() from either a socket or a value
 - get_data_type     : get a data type in DATA_TYPES from either a socket or a value
 - get_input_type    : get an input type in INPUT_TYPES from either a socket or a value
@@ -154,7 +154,7 @@ def socket_name(name):
         return prefix_figure(remove_accents(clean(name, '_').lower()))
 
 # =============================================================================================================================
-# Get a blender socket from either a Blender NodeSocket or a DataSocket
+# Get a blender socket from either a Blender NodeSocket or a Socket
 
 def get_bsocket(value):
     if isinstance(value, bpy.types.NodeSocket):
@@ -167,7 +167,7 @@ def get_bsocket(value):
 
 def get_socket_type(value, restrict_to=None, default=None):
 
-    # ----- It is a DataSocket
+    # ----- It is a Socket
 
     socket_type = default
     if hasattr(value, 'SOCKET_TYPE'):

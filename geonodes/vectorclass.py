@@ -18,9 +18,9 @@ classes
 -------
 - VectorLike    : Base class for Vector,Rotation and Color
 - VectRot       : Base class for Vector and Rotation
-- Vector        : DataSocket of type 'VECTOR'
-- Rotation      : DataSocket of type 'ROTATION'
-- Matrix        : DataSocket of type 'MATRIX'
+- Vector        : Socket of type 'VECTOR'
+- Rotation      : Socket of type 'ROTATION'
+- Matrix        : Socket of type 'MATRIX'
 
 functions
 ---------

@@ -11,21 +11,21 @@ Scripting Geometry Nodes
 
 module : socketclass
 --------------------
-- Provides the base class for data socket DataSocket which wraps an output socket of a Node
+- Provides the base class for data socket Socket which wraps an output socket of a Node
 - Implement simple Data Sockets:
 
 classes
 -------
-- NodeCache     : Interface for DataSocket and Domain which can cache created nodes
-- DataSocket    : Wraps the output socket of node and exposes nodes creation as methods or properties
-- ValueSocket   : DataSocket subtype for sockets representing a value (i.e. attributes)
-- String        : DataSocket of type 'STRING'
-- Material      : DataSocket of type 'MATERIAL'
-- Image         : DataSocket of type 'IMAGE'
-- Object        : DataSocket of type 'OBJECT'
-- Collection    : DataSocket of type 'COLLECTION'
-- Menu          : DataSocket of type 'MENU'
-- TextureRoot   : DataSocket of type 'TEXTURE'
+- NodeCache     : Interface for Socket and Domain which can cache created nodes
+- Socket    : Wraps the output socket of node and exposes nodes creation as methods or properties
+- ValueSocket   : Socket subtype for sockets representing a value (i.e. attributes)
+- String        : Socket of type 'STRING'
+- Material      : Socket of type 'MATERIAL'
+- Image         : Socket of type 'IMAGE'
+- Object        : Socket of type 'OBJECT'
+- Collection    : Socket of type 'COLLECTION'
+- Menu          : Socket of type 'MENU'
+- TextureRoot   : Socket of type 'TEXTURE'
 
 functions
 ---------
@@ -100,8 +100,8 @@ class NodeCache:
 # =============================================================================================================================
 # =============================================================================================================================
 
-class DataSocket(NodeCache):
-    """ DataSocket documentation
+class Socket(NodeCache):
+    """ Socket documentation
     """
 
     SOCKET_TYPE = None
@@ -114,7 +114,7 @@ class DataSocket(NodeCache):
 
         bsocket = utils.get_bsocket(socket)
         if bsocket is None:
-            raise NodeError(f"Impossible to initialize DataSocket with a non socket argument: {socket}", socket_type=self.SOCKET_TYPE)
+            raise NodeError(f"Impossible to initialize Socket with a non socket argument: {socket}", socket_type=self.SOCKET_TYPE)
         else:
             self._bsocket = bsocket
         self._reset()
@@ -125,7 +125,7 @@ class DataSocket(NodeCache):
     def _jump(self, socket, reset=True):
         bsocket = utils.get_bsocket(socket)
         if bsocket is None:
-            raise NodeError(f"DataSocket error: Impossible to jump to socket {socket}")
+            raise NodeError(f"Socket error: Impossible to jump to socket {socket}")
 
         self._bsocket = bsocket
         if reset:
@@ -141,7 +141,7 @@ class DataSocket(NodeCache):
         return f"<{self._class_name} {self.SOCKET_TYPE} [{self.node._bnode.name}].'{self._bsocket.name}'>"
 
     #def __str__(self):
-    #    return f"<DataSocket {self.SOCKET_TYPE} [{self.node._bnode.name}].'{self._bsocket.name}'>"
+    #    return f"<Socket {self.SOCKET_TYPE} [{self.node._bnode.name}].'{self._bsocket.name}'>"
 
     # ====================================================================================================
     # Socket type to data type conversion, depending on the nodes
@@ -450,12 +450,12 @@ class DataSocket(NodeCache):
 
         Arguments
         ---------
-        - *values : list of DataSockets to select into
+        - *values : list of Sockets to select into
         - index (Integer) : socket 'Index' (Index)
 
         Returns
         -------
-        - DataSocket
+        - Socket
         """
 
         # ----- Create the nodes
@@ -521,7 +521,7 @@ class DataSocket(NodeCache):
 
         Returns
         -------
-        - DataSocket
+        - Socket
         """
 
         res = Node('Switch', {'Switch': condition, 'False': false, 'True': true}, input_type=cls.input_type(default='GEOMETRY'))._out
@@ -599,7 +599,7 @@ class DataSocket(NodeCache):
 
         Arguments
         ---------
-        - *values : list of DataSockets to select into
+        - *values : list of Sockets to select into
         - index (Integer) : socket 'Index' (Index)
 
         Returns
@@ -670,7 +670,7 @@ class DataSocket(NodeCache):
 # =============================================================================================================================
 # =============================================================================================================================
 
-class ValueSocket(DataSocket):
+class ValueSocket(Socket):
 
     # =============================================================================================================================
     # Constructors
@@ -706,7 +706,7 @@ class ValueSocket(DataSocket):
 
         Returns
         -------
-        - DataSocket [exists_]
+        - Socket [exists_]
         """
         attribute = Node('Named Attribute', {'Name': name}, data_type=cls.data_type())._out
         attribute.exists_ = attribute.node.exists
@@ -743,7 +743,7 @@ class ValueSocket(DataSocket):
 
         Returns
         -------
-        - DataSocket [exists_]
+        - Socket [exists_]
         """
         return cls.NamedAttribute(name=name)
 
@@ -753,18 +753,18 @@ class ValueSocket(DataSocket):
 # =============================================================================================================================
 # =============================================================================================================================
 
-class String(DataSocket):
+class String(Socket):
 
     SOCKET_TYPE = 'STRING'
 
     def __init__(self, value="", name=None, tip=None):
-        """ DataSocket of type String
+        """ Socket of type String
 
         A group input socket of type String is created if the name is not None.
 
         Arguments
         ---------
-        - value (str or DataSocket) : initial value
+        - value (str or Socket) : initial value
         - name (str = None) : group input socket name if not None
         - tip (str = None) : user type for group input socket
         """
@@ -1012,7 +1012,7 @@ class String(DataSocket):
 # =============================================================================================================================
 # =============================================================================================================================
 
-class Material(DataSocket):
+class Material(Socket):
 
     SOCKET_TYPE = 'MATERIAL'
 
@@ -1045,7 +1045,7 @@ class Material(DataSocket):
 # =============================================================================================================================
 # =============================================================================================================================
 
-class Image(DataSocket):
+class Image(Socket):
 
     SOCKET_TYPE = 'IMAGE'
 
@@ -1115,7 +1115,7 @@ class Image(DataSocket):
 # =============================================================================================================================
 # =============================================================================================================================
 
-class TextureRoot(DataSocket):
+class TextureRoot(Socket):
 
     SOCKET_TYPE = 'TEXTURE'
 
@@ -1155,7 +1155,7 @@ class TextureRoot(DataSocket):
 # =============================================================================================================================
 # =============================================================================================================================
 
-class Object(DataSocket):
+class Object(Socket):
 
     SOCKET_TYPE = 'OBJECT'
 
@@ -1257,7 +1257,7 @@ class Object(DataSocket):
 # =============================================================================================================================
 # =============================================================================================================================
 
-class Collection(DataSocket):
+class Collection(Socket):
 
     SOCKET_TYPE = 'COLLECTION'
 
@@ -1328,7 +1328,7 @@ class Collection(DataSocket):
 # =============================================================================================================================
 # =============================================================================================================================
 
-class Menu(DataSocket):
+class Menu(Socket):
 
     SOCKET_TYPE = 'MENU'
 

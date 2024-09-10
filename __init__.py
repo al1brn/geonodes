@@ -20,7 +20,7 @@ from .geonodes.geonodes import GeoNodes
 from .geonodes.staticclass import nd
 from .geonodes import gnmath
 
-from .geonodes.socketclass import DataSocket, String, Material, Image, Object, Collection, Menu
+from .geonodes.socketclass import Socket, String, Material, Image, Object, Collection, Menu
 
 from .geonodes.booleanclass import Boolean
 from .geonodes.colorclass import Color

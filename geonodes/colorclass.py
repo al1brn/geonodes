@@ -15,7 +15,7 @@ module : colorclass
 
 classes
 -------
-- Color         : DataSocket of type 'RGBA'
+- Color         : Socket of type 'RGBA'
 
 functions
 ---------
@@ -44,13 +44,13 @@ class Color(VectorLike):
     SOCKET_TYPE = 'RGBA'
 
     def __init__(self, value=(0., 0., 0., 1.), name=None, tip=None):
-        """ DataSocket of type COLOR (RGBA)
+        """ Socket of type COLOR (RGBA)
 
         [!Node] RGB, Combine Color, Color
 
         Arguments
         ---------
-        - value (tuple or DataSocket = (0, 0, 0, 1)) : initial value
+        - value (tuple or Socket = (0, 0, 0, 1)) : initial value
         - name (str = None) : Create an Group Input socket with the provided str if not None
         - tip (str = None) : User tip (for Group Input sockets)
         """

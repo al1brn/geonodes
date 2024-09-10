@@ -18,7 +18,7 @@ from .geonodes import GeoNodes
 from .staticclass import nd
 from . import gnmath
 
-from .socketclass import DataSocket, String, Material, Image, Object, Collection, Menu
+from .socketclass import Socket, String, Material, Image, Object, Collection, Menu
 from .zones import Repeat, Simulation
 
 from .booleanclass import Boolean

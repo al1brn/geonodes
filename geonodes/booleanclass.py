@@ -15,7 +15,7 @@ module : booleanclass
 
 classes
 -------
-- Boolean       : DataSocket of type 'BOOLEAN'
+- Boolean       : Socket of type 'BOOLEAN'
 
 functions
 ---------
@@ -40,13 +40,13 @@ class Boolean(ValueSocket):
     SOCKET_TYPE = 'BOOLEAN'
 
     def __init__(self, value=False, name=None, tip=None, subtype='NONE'):
-        """ DataSocket of type BOOLEAN
+        """ Socket of type BOOLEAN
 
         [!Node] Boolean
 
         Arguments
         ---------
-        - value (bool or DataSocket = False) : initial value
+        - value (bool or Socket = False) : initial value
         - name (str = None) : Create an Group Input socket with the provided str if not None
         - tip (str = None) : User tip (for Group Input sockets)
         - subtype (str='NONE') : socket subtype

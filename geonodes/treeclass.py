@@ -1028,7 +1028,7 @@ class Node:
             self.plug_value_into_socket(socket_value, self.in_socket(sck.name))
 
     # ----------------------------------------------------------------------------------------------------
-    # Create a DataSocket from an output Blender NodeSocket
+    # Create a Socket from an output Blender NodeSocket
 
     @staticmethod
     def data_socket(bsocket):

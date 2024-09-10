@@ -67,7 +67,7 @@ classes
 - Corner        : CORNER domain
 - Spline        : SPLINE domain
 - Instance      : INSTANCE domain
-- Geometry      : DataSocket of type 'Geometry'
+- Geometry      : Socket of type 'Geometry'
 - Mesh          : Subclass of Geometry specific to Mesh
 - Curve         : Subclass of Geometry specific to Curve
 - Instances     : Subclass of Geometry specific to Instances
@@ -89,7 +89,7 @@ from .scripterror import NodeError
 from . import constants
 from . import utils
 from .treeclass import Tree, Node, Layout
-from .socketclass import NodeCache, DataSocket
+from .socketclass import NodeCache, Socket
 from .booleanclass import Boolean
 from .floatclass import Float
 from .staticclass import nd
@@ -399,19 +399,19 @@ class GeoBase:
 # =============================================================================================================================
 # =============================================================================================================================
 
-class Geometry(DataSocket, GeoBase):
+class Geometry(Socket, GeoBase):
 
     SOCKET_TYPE = 'GEOMETRY'
 
     def __init__(self, value=None, name=None, tip=None):
-        """ DataSocket of type 'GEOMETRY'.
+        """ Socket of type 'GEOMETRY'.
 
         If value is None, a Group Input socket of type Geometry is created.
         When a Group Input socket is created, default name 'Geometry' is used if name argument is None.
 
         Arguments
         ---------
-        - value (DataSocket = None) : initial value
+        - value (Socket = None) : initial value
         - name (str = None) : Create an Group Input socket with the provided str
         - tip (str = None) : User tip (for Group Input sockets)
         - subtype (str='NONE') : socket subtype
@@ -487,7 +487,7 @@ class Geometry(DataSocket, GeoBase):
 
         Arguments
         ---------
-        - value (DataSocket) : socket
+        - value (Socket) : socket
 
         Returns
         -------
@@ -989,12 +989,12 @@ class Domain(GeoBase, NodeCache):
 
         Arguments
         ---------
-        - attribute (DataSocket) : attribute to capture
-        - **others (DataSockets): named attributes to capture
+        - attribute (Socket) : attribute to capture
+        - **others (Sockets): named attributes to capture
 
         Returns
         -------
-        - DataSocket (no keyword arguments) or Node (when keyword arguments)
+        - Socket (no keyword arguments) or Node (when keyword arguments)
         """
 
         node = self._node('Capture Attribute')
@@ -1095,7 +1095,7 @@ class Domain(GeoBase, NodeCache):
 
         Returns
         -------
-        - DataSocket
+        - Socket
         """
 
         return self._node('Sample Index', {'Value': value, 'Index': index}, clamp=clamp, data_type=utils.get_data_type(value))._out
@@ -1361,7 +1361,7 @@ class Domain(GeoBase, NodeCache):
 
         Returns
         -------
-        - DataSocket
+        - Socket
         """
 
         data_type = utils.get_data_type(value)
@@ -1381,7 +1381,7 @@ class Domain(GeoBase, NodeCache):
 
         Returns
         -------
-        - DataSocket
+        - Socket
         """
 
         data_type = utils.get_data_type(value)
@@ -1658,7 +1658,7 @@ class SplinePoint(Point):
 
         Returns
         -------
-        - DataSocket 'Left'
+        - Socket 'Left'
         """
 
         return self.handle_positions(relative=False).left
@@ -1683,7 +1683,7 @@ class SplinePoint(Point):
 
         Returns
         -------
-        - DataSocket 'Right'
+        - Socket 'Right'
         """
         return self.handle_positions(relative=False).right
 
@@ -1709,7 +1709,7 @@ class SplinePoint(Point):
 
         Returns
         -------
-        - DataSocket 'Left'
+        - Socket 'Left'
         """
         return self.handle_positions(relative=True).left
 
@@ -1733,7 +1733,7 @@ class SplinePoint(Point):
 
         Returns
         -------
-        - DataSocket 'Right'
+        - Socket 'Right'
         """
         return self.handle_positions(relative=True).right
 
@@ -4279,7 +4279,7 @@ class Curve(Geometry):
 
         Returns
         -------
-        - DataSocket [position_, tangent_, normal_]
+        - Socket [position_, tangent_, normal_]
         """
 
         sockets = {'Curves': self, 'Value': value, 'Curve Index': curve_index}
