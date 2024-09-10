@@ -104,6 +104,10 @@ from .staticclass import nd
 # =============================================================================================================================
 
 class GeoBase:
+    """ Base class for Geometry and Domain.
+    
+    Implement auto selection mechanism.
+    """
 
     @property
     def _geo_type(self):
@@ -400,6 +404,8 @@ class GeoBase:
 # =============================================================================================================================
 
 class Geometry(Socket, GeoBase):
+    """ Geometry Class
+    """
 
     SOCKET_TYPE = 'GEOMETRY'
 

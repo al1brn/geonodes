@@ -532,7 +532,10 @@ class Doc:
 
     def __repr__(self):
         indent = "" if (self.is_class or self.class_doc is None) else "    "
-        scomm = f"\n{indent}    | ".join([""] + self.comment.split("\n"))
+        if self.comment is None:
+            scomm = ""
+        else:
+            scomm = f"\n{indent}    | ".join([""] + self.comment.split("\n"))
         if self.is_class:
             sfuncs = "\n".join([repr(func) for func in self.funcs.values()])
             return f"{'='*100}\nclass {self.name}\n{scomm}\n{sfuncs}"
@@ -829,10 +832,9 @@ class Parser(Reader):
             # ----- Normally, class of def header
 
             lines = packet[2]
-
             for line_index, line in enumerate(lines):
 
-                match = re.search(r"(def|class)\s+(\w+)([^:]*)", line)
+                match = re.search(r"^\W?(def|class)\s+(\w+)([^:]*)", line)
                 if match is None:
                     continue
 
