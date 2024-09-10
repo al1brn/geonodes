@@ -145,45 +145,6 @@ if **page** is None, the resulting [Class](class.md) is considered as a page and
 
 
 <sub>[top](#project) [index](index.md)</sub>
-## add_function
-
-``` python
-Project.add_function(self, function_name, page=None, file_key=None, function_key=None, exact=True, only_commented=True)
-```
-
-Copy function documentation reference documentation to pages.
-
-The function must exist in one of the reference documentation [refdoc](#).
-
-Once completed, the function is registered in [objects](#) and placed in the page.
-
-if **page** is None, the resulting [Function](function.md) is considered as a page and added to [pages](#). If **page** is not None, the class documentation is appended to it.
-
-> [!NOTE]
-> The page where the class is documented can be retrieved with attribute [page](section.md#page).
-
-
-
-##### Arguments
-
-
-
-- **function_name** (_str_) : class name
-- **page** : 
-- **file_key** (_str_ = None) : file key in [files](#)
-- **function_key** (_str_ = None) : key of the function in [pages](#)
-- **exact** (_bool_ = True) : use exact name if True, regular expression otherwise
-- **only_commented** (_bool_ = True) : don't include uncommented functions
-
-##### Returns
-
-
-
-- _<!Function> : created class_ : 
-
-
-
-<sub>[top](#project) [index](index.md)</sub>
 ## add_page
 
 ``` python

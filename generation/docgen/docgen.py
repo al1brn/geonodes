@@ -1495,7 +1495,7 @@ class Project(Section):
     # ----------------------------------------------------------------------------------------------------
     # Section in pages
 
-    def add_section_to_page(self, section, page, sub_level = 1):
+    def add_section_to_page(self, section, page, sub_level=0):
 
         if page is None:
             return self.add_page(section)
@@ -1595,7 +1595,8 @@ class Project(Section):
     # ----------------------------------------------------------------------------------------------------
     # Add documentation for a function
 
-    def add_function(self, function_name, page=None, file_key=None, function_key=None, exact=True, only_commented=True):
+    def add_function(self, function_name, page=None, file_key=None, function_key=None,
+        exact=True, only_commented=True, sub_level=1):
         """ Copy function documentation reference documentation to pages.
 
         The function must exist in one of the reference documentation <!#refdoc>.
@@ -1617,6 +1618,7 @@ class Project(Section):
         - function_key (str=None) : key of the function in <!#pages>
         - exact (bool = True) : use exact name if True, regular expression otherwise
         - only_commented (bool = True) : don't include uncommented functions
+        - sub_level (int=1) : incrementation level to page.level
 
         Returns
         -------
@@ -1645,7 +1647,7 @@ class Project(Section):
             fkey = function_.title if function_key is None else function_key
             self.objects[fkey] = function_
 
-            return self.add_section_to_page(function_, page)
+            return self.add_section_to_page(function_, page, sub_level=sub_level)
 
         objs = []
         for f_ in function_:
@@ -1656,7 +1658,7 @@ class Project(Section):
 
             fkey = ("" if function_key is None else function_key) + f_.title
             self.objects[fkey] = f_
-            objs.append(self.add_section_to_page(f_, page))
+            objs.append(self.add_section_to_page(f_, page, sub_level=sub_level))
 
         return objs
 

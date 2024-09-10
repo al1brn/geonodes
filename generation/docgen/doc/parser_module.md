@@ -4,7 +4,7 @@ Simple python source parser
 
 The module [Parser](parser_module.md#parser) parse source file and returns the documentation as a liste of [Doc](parser_module.md#doc) instances.
 
-## Parser
+# Parser
 
 
 
@@ -16,11 +16,11 @@ Simple python source code parser.
 
 
 
-### Properties
+## Properties
 
 
 
-#### eol
+### eol
 
 ``` python
 Reader.eol
@@ -30,7 +30,7 @@ End of line flag
 
 
 
-##### Returns
+#### Returns
 
 
 
@@ -39,7 +39,7 @@ End of line flag
 
 
 <sub>[top](#parser) [index](index.md)</sub>
-#### previous
+### previous
 
 ``` python
 Reader.previous
@@ -49,7 +49,7 @@ Read the previous char
 
 
 
-##### Returns
+#### Returns
 
 
 
@@ -58,7 +58,7 @@ Read the previous char
 
 
 <sub>[top](#parser) [index](index.md)</sub>
-#### read
+### read
 
 ``` python
 Reader.read
@@ -70,7 +70,7 @@ After reading, the cursor is incremented
 
 
 
-##### Returns
+#### Returns
 
 
 
@@ -80,11 +80,11 @@ After reading, the cursor is incremented
 
 <sub>[top](#parser) [index](index.md)</sub>
 
-### Methods
+## Methods
 
 
 
-#### FromFile
+### FromFile
 
 > **Decorators**: Class method
 
@@ -96,7 +96,7 @@ Initialize a parser from a file.
 
 
 
-##### Arguments
+#### Arguments
 
 
 
@@ -105,7 +105,7 @@ Initialize a parser from a file.
 
 
 <sub>[top](#parser) [index](index.md)</sub>
-#### back
+### back
 
 ``` python
 Reader.back(self)
@@ -118,7 +118,7 @@ Move the cursor one step backwards
 
 
 <sub>[top](#parser) [index](index.md)</sub>
-#### current
+### current
 
 ``` python
 Reader.current
@@ -130,7 +130,7 @@ Getting the current char doesn't move the cursor.
 
 
 
-##### Returns
+#### Returns
 
 
 
@@ -139,7 +139,7 @@ Getting the current char doesn't move the cursor.
 
 
 <sub>[top](#parser) [index](index.md)</sub>
-#### eof
+### eof
 
 ``` python
 Reader.eof
@@ -149,7 +149,7 @@ End of file flag
 
 
 
-##### Returns
+#### Returns
 
 
 
@@ -158,7 +158,7 @@ End of file flag
 
 
 <sub>[top](#parser) [index](index.md)</sub>
-#### equal
+### equal
 
 ``` python
 Reader.equal(self, s)
@@ -168,13 +168,13 @@ Compare the string starting at the cursor with the argument
 
 
 
-##### Arguments
+#### Arguments
 
 
 
 - **s** (_str_) : the string to compare with
 
-##### Returns
+#### Returns
 
 
 
@@ -183,7 +183,7 @@ Compare the string starting at the cursor with the argument
 
 
 <sub>[top](#parser) [index](index.md)</sub>
-#### previous
+### previous
 
 ``` python
 Reader.previous
@@ -193,7 +193,7 @@ Read the previous char
 
 
 
-##### Returns
+#### Returns
 
 
 
@@ -202,7 +202,7 @@ Read the previous char
 
 
 <sub>[top](#parser) [index](index.md)</sub>
-#### python_split
+### python_split
 
 ``` python
 Parser.python_split(self)
@@ -223,7 +223,7 @@ yield
 
 
 <sub>[top](#parser) [index](index.md)</sub>
-#### read
+### read
 
 ``` python
 Reader.read
@@ -235,7 +235,7 @@ After reading, the cursor is incremented
 
 
 
-##### Returns
+#### Returns
 
 
 
@@ -244,7 +244,7 @@ After reading, the cursor is incremented
 
 
 <sub>[top](#parser) [index](index.md)</sub>
-#### reset
+### reset
 
 ``` python
 Reader.reset(self)
@@ -258,7 +258,7 @@ Reset the cursor to the start of the text
 
 <sub>[top](#parser) [index](index.md)</sub>
 
-## Doc
+# Doc
 
 
 
