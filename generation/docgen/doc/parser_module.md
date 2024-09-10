@@ -287,4 +287,56 @@ which returns:
 
 
 
+# ok_comment
+
+``` python
+ok_comment(s)
+```
+
+
+
+
+# md_normalize
+
+``` python
+md_normalize(text)
+```
+
+Normalize markdown text
+
+Merge the lines not separated by a blank line
+
+
+
+##### Arguments
+
+
+
+- **text** (_srt_) : the mark down text to normalize
+
+##### Returns
+
+
+
+- _str_ : normalized mark down text
+
+
+# extract_source
+
+``` python
+extract_source(comment)
+```
+
+
+
+
+# replace_source
+
+``` python
+replace_source(comment, d)
+```
+
+
+
+
 

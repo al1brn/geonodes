@@ -854,10 +854,11 @@ class Parser(Reader):
 
                 # ----- Do we have a comment after ?
 
-                aft = packets[packet_index+1]
-                if packets[packet_index+1][0] == 'COMMENT':
-                    if aft[0] == 'COMMENT':
-                        doc.aft_comment = "\n".join(aft[2])
+                if len(packets) > packet_index + 1:
+                    aft = packets[packet_index + 1]
+                    if packets[packet_index + 1][0] == 'COMMENT':
+                        if aft[0] == 'COMMENT':
+                            doc.aft_comment = "\n".join(aft[2])
 
                 # ----- A new class
 

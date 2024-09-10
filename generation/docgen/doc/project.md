@@ -103,27 +103,26 @@ proj.create_documentation(...)
 Project.add_class(self, class_name, page=None, bases=[], capture=[], file_key=None)
 ```
 
-Build documentation for a class from reference documentation.
+Copy class documentation from reference documentation to pages
 
 The class must exist in one of the reference documentation [refdoc](#).
 
-Class documentation is built with the following steps:
-1. read the class documented in [refdoc](#)
-2. reference the base classes in the array [bases](class.md#bases)
-3. add the documentation of properties and methods of classes included in **capture** argument
+The class documentation is completed with **bases** and **capture** arguments.
 
-> **Explicit inheritance**
+> Explicit inheritance with **bases**
 > _class_name_ : inherits from base_class
 > inherited methods : **method1**, **method2**
 
-> **Hidden inheritance**
+> Hidden inheritance with **capture**
 > _class_name_
 > methods : **method1**, **method2**
 
-if **target_page** is None, a specific page will be create, otherwise, the class documentation will be append to the existing page specified by the argument.
+Once completed, the class is registered in [objects](#) and placed in the page.
+
+if **page** is None, the resulting [Class](class.md) is considered as a page and added to [pages](#). If **page** is not None, the class documentation is appended to it.
 
 > [!NOTE]
-> The page where the class is documented can be retreive with attribute [page](section.md#page).
+> The page where the class is documented can be retreived with attribute [page](section.md#page).
 
 
 
@@ -142,6 +141,45 @@ if **target_page** is None, a specific page will be create, otherwise, the class
 
 
 - _<!Class> : created class_ : 
+
+
+
+<sub>[top](#project) [index](index.md)</sub>
+## add_function
+
+``` python
+Project.add_function(self, function_name, page=None, file_key=None, function_key=None, exact=True, only_commented=True)
+```
+
+Copy function documentation reference documentation to pages.
+
+The function must exist in one of the reference documentation [refdoc](#).
+
+Once completed, the function is registered in [objects](#) and placed in the page.
+
+if **page** is None, the resulting [Function](function.md) is considered as a page and added to [pages](#). If **page** is not None, the class documentation is appended to it.
+
+> [!NOTE]
+> The page where the class is documented can be retrieved with attribute [page](section.md#page).
+
+
+
+##### Arguments
+
+
+
+- **function_name** (_str_) : class name
+- **page** : 
+- **file_key** (_str_ = None) : file key in [files](#)
+- **function_key** (_str_ = None) : key of the function in [pages](#)
+- **exact** (_bool_ = True) : use exact name if True, regular expression otherwise
+- **only_commented** (_bool_ = True) : don't include uncommented functions
+
+##### Returns
+
+
+
+- _<!Function> : created class_ : 
 
 
 
@@ -245,12 +283,14 @@ Create the index file
 ## get_refdoc
 
 ``` python
-Project.get_refdoc(self, name, key=None, halt=True)
+Project.get_refdoc(self, name, key=None, exact=True, halt=True)
 ```
 
 Get a reference documentation from the base
 
 If **key** argument is None, the **name** is searched in the whole dictionary, otherwise the search is performed only in the specified key.
+
+If **exact** is False, name is considered as a regular expression. All the title matching this expression is returned in a list.
 
 
 
@@ -260,13 +300,14 @@ If **key** argument is None, the **name** is searched in the whole dictionary, o
 
 - **name** (_str_) : title of the reference documentation
 - **key** (_str_ = None) : source file key
+- **exact** (_bool_ = True) : use exact name if True, regular expression otherwise
 - **halt** (_bool_ = True) : raise an exception if not found
 
 ##### Returns
 
 
 
-- _<!Section> : found section, None if not found_ : 
+- _<!Section> or list : found section if exact is True, list of sections otherwise_ : 
 
 
 

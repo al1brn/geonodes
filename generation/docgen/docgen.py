@@ -124,6 +124,9 @@ class Section(list):
         # ----- Add a section per class / function
 
         for doc in section.docs.values():
+            if doc.name == 'import':
+                continue
+
             if doc.is_class:
                 section.append(Class.FromDoc(doc))
             else:
@@ -1346,34 +1349,74 @@ class Project(Section):
     # ----------------------------------------------------------------------------------------------------
     # Get a reference doc
 
-    def get_refdoc(self, name, key=None, halt=True):
+    def get_refdoc(self, name, key=None, exact=True, halt=True):
         """ Get a reference documentation from the base
 
         If **key** argument is None, the **name** is searched in the whole dictionary,
         otherwise the search is performed only in the specified key.
 
+        If **exact** is False, name is considered as a regular expression.
+        All the title matching this expression is returned in a list.
+
         Arguments
         ---------
         - name (str) : title of the reference documentation
         - key (str = None) : source file key
+        - exact (bool = True) : use exact name if True, regular expression otherwise
         - halt (bool = True) : raise an exception if not found
 
         Returns
         -------
-        - <!Section> : found section, None if not found
+        - <!Section> or list : found section if exact is True, list of sections otherwise
         """
-        class_ = None
+
+        # ----------------------------------------------------------------------------------------------------
+        # Get the resources to explore
+
         if key is None:
-            for source_section in self.refdoc.values():
-                section = source_section.get_section(name)
+            refs = list(self.refdoc.values())
+        else:
+            refs = [self.refdoc[key]]
+
+        # ----------------------------------------------------------------------------------------------------
+        # Exact search
+
+        class_ = None
+        if exact:
+            for ref in refs:
+                section = ref.get_section(name)
                 if section is not None:
                     class_ = section
                     break
+
+        # ----------------------------------------------------------------------------------------------------
+        # Regular expression
+
         else:
-            source = self.refdoc.get(key)
-            if source is None:
-                raise Exception(f"RefDoc file key '{key}' doesn't exists in files {list(self.refdoc.keys())}")
-            class_ = source.get(name)
+            class_ = []
+            for ref in refs:
+                for section in ref:
+                    try:
+                        if re.search(name, section.title) is not None:
+                            class_.append(section)
+                    except Exception as e:
+                        print(f"Wrong regular expression '{name}'")
+                        raise e
+
+
+        if False: # OLD
+            class_ = None
+            if key is None:
+                for source_section in self.refdoc.values():
+                    section = source_section.get_section(name)
+                    if section is not None:
+                        class_ = section
+                        break
+            else:
+                source = self.refdoc.get(key)
+                if source is None:
+                    raise Exception(f"RefDoc file key '{key}' doesn't exists in files {list(self.refdoc.keys())}")
+                class_ = source.get(name)
 
         if class_ is None and halt:
             raise Exception(f"Reference doc named '{name}' not found in files {list(self.refdoc.keys())}")
@@ -1466,32 +1509,31 @@ class Project(Section):
             return section
 
     # ----------------------------------------------------------------------------------------------------
-    # Build class documentation from source
+    # Add documentation for a class
 
     def add_class(self, class_name, page=None, bases=[], capture=[], file_key=None):
-        """ Build documentation for a class from reference documentation.
+        """ Copy class documentation from reference documentation to pages
 
         The class must exist in one of the reference documentation <!#refdoc>.
 
-        Class documentation is built with the following steps:
-        1. read the class documented in <!#refdoc>
-        2. reference the base classes in the array <!Class#bases>
-        3. add the documentation of properties and methods of classes included in **capture**
-           argument
+        The class documentation is completed with **bases** and **capture** arguments.
 
-        > **Explicit inheritance**
+        > Explicit inheritance with **bases**
         > _class_name_ : inherits from base_class
         > inherited methods : **method1**, **method2**
 
-        > **Hidden inheritance**
+        > Hidden inheritance with **capture**
         > _class_name_
         > methods : **method1**, **method2**
 
-        if **target_page** is None, a specific page will be create, otherwise, the class documentation
-        will be append to the existing page specified by the argument.
+        Once completed, the class is registered in <!#objects> and placed in the page.
+
+        if **page** is None, the resulting <!Class> is considered as a page and
+        added to <!#pages>. If **page** is not None, the class documentation
+        is appended to it.
 
         > [!NOTE]
-        > The page where the class is documented can be retreive with attribute <!Section#page>.
+        > The page where the class is documented can be retreived with attribute <!Section#page>.
 
         Arguments
         ---------
@@ -1505,6 +1547,14 @@ class Project(Section):
         -------
         - <!Class> : created class
         """
+
+        # ---------------------------------------------------------------------------
+        # A list of names
+
+        if isinstance(class_name, (tuple, list)):
+            for cname in class_name:
+                self.add_class(cname, page=page, bases=bases, capture=capture, file_key=file_key)
+            return None
 
         # ---------------------------------------------------------------------------
         # Let's create a properly documented class
@@ -1537,6 +1587,74 @@ class Project(Section):
         self.objects[class_.title] = class_
 
         return self.add_section_to_page(class_, page)
+
+    # ----------------------------------------------------------------------------------------------------
+    # Add documentation for a function
+
+    def add_function(self, function_name, page=None, file_key=None, function_key=None, exact=True, only_commented=True):
+        """ Copy function documentation reference documentation to pages.
+
+        The function must exist in one of the reference documentation <!#refdoc>.
+
+        Once completed, the function is registered in <!#objects> and placed in the page.
+
+        if **page** is None, the resulting <!Function> is considered as a page and
+        added to <!#pages>. If **page** is not None, the class documentation
+        is appended to it.
+
+        > [!NOTE]
+        > The page where the class is documented can be retrieved with attribute <!Section#page>.
+
+        Arguments
+        ---------
+        - function_name (str) : class name
+        - page (<!Section> or str = None) : name of the page where to include the class documentation
+        - file_key (str = None) : file key in <!#files>
+        - function_key (str=None) : key of the function in <!#pages>
+        - exact (bool = True) : use exact name if True, regular expression otherwise
+        - only_commented (bool = True) : don't include uncommented functions
+
+        Returns
+        -------
+        - <!Function> : created class
+        """
+
+        # ---------------------------------------------------------------------------
+        # A list of names
+
+        if isinstance(function_name, (tuple, list)):
+            for fname in function_name:
+                self.add_function(fname, page=page, file_key=file_key)
+            return None
+
+        # ---------------------------------------------------------------------------
+        # Let's create a properly documented class
+
+        function_ = self.get_refdoc(function_name, key=file_key, halt=True, exact=exact)
+        if exact:
+            assert(isinstance(function_, Function))
+
+        # ---------------------------------------------------------------------------
+        # We register and place it in a page
+
+        if exact:
+            fkey = function_.title if function_key is None else function_key
+            self.objects[fkey] = function_
+
+            return self.add_section_to_page(function_, page)
+
+        objs = []
+        for f_ in function_:
+            if not isinstance(f_, Function):
+                continue
+            if f_.comment is None or f_.comment == "" and only_commented:
+                continue
+
+            fkey = ("" if function_key is None else function_key) + f_.title
+            self.objects[fkey] = f_
+            objs.append(self.add_section_to_page(f_, page))
+
+        return objs
 
     # ----------------------------------------------------------------------------------------------------
     # Sections content
@@ -1756,6 +1874,7 @@ def gen_docgen():
 
     proj.add_class('Parser', page,  capture = ['Reader'])
     proj.add_class('Doc', page)
+    proj.add_function('.', page=page, file_key='docgen/pyparser', exact=False, only_commented=True)
 
     proj.add_class('Section')
     proj.add_class('Argument', bases=['Section'])
