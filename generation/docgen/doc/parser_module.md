@@ -4,6 +4,12 @@ Simple python source parser
 
 The module [Parser](parser_module.md#parser) parse source file and returns the documentation as a liste of [Doc](parser_module.md#doc) instances.
 
+# Content
+
+- [Doc](#doc)
+- [Functions](#functions)
+- [Parser](#parser)
+
 # Parser
 
 

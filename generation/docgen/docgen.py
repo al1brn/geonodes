@@ -1875,7 +1875,7 @@ def gen_docgen():
     # ====================================================================================================
     # Step 2 : Build the pages
 
-    page = proj.new_page("Parser module", "Simple python source parser\n\n")
+    page = proj.new_page("Parser module", "Simple python source parser\n\n", toc='Content')
     page.write("The module <!Parser> parse source file and returns the documentation as a liste of <!Doc> instances.")
 
     proj.add_class('Parser', page,  capture = ['Reader'])
