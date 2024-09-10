@@ -281,6 +281,9 @@ class Section(list):
         section = Section(title, comment=comment, level=self.level + sub_level)
         self.append(section)
 
+        # Reference to the top page
+        section.page = self.page
+
         return section
 
     def write_header(self, comment='\n', parse=True):
@@ -1492,7 +1495,7 @@ class Project(Section):
     # ----------------------------------------------------------------------------------------------------
     # Section in pages
 
-    def add_section_to_page(self, section, page):
+    def add_section_to_page(self, section, page, sub_level = 1):
 
         if page is None:
             return self.add_page(section)
@@ -1504,7 +1507,8 @@ class Project(Section):
                 target = page
 
             target.append(section)
-            section.page = page
+            section.page = page.page
+            section.level = page.level + sub_level
 
             return section
 
@@ -1874,7 +1878,8 @@ def gen_docgen():
 
     proj.add_class('Parser', page,  capture = ['Reader'])
     proj.add_class('Doc', page)
-    proj.add_function('.', page=page, file_key='docgen/pyparser', exact=False, only_commented=True)
+    functions = page.new_section("Functions")
+    proj.add_function('.', page=functions, file_key='docgen/pyparser', exact=False, only_commented=True)
 
     proj.add_class('Section')
     proj.add_class('Argument', bases=['Section'])

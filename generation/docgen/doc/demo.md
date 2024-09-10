@@ -22,7 +22,8 @@ def gen_docgen():
 
     proj.add_class('Parser', page,  capture = ['Reader'])
     proj.add_class('Doc', page)
-    proj.add_function('.', page=page, file_key='docgen/pyparser', exact=False, only_commented=True)
+    functions = page.new_section("Functions")
+    proj.add_function('.', page=functions, file_key='docgen/pyparser', exact=False, only_commented=True)
 
     proj.add_class('Section')
     proj.add_class('Argument', bases=['Section'])

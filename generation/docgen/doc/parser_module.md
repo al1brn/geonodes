@@ -4,7 +4,7 @@ Simple python source parser
 
 The module [Parser](parser_module.md#parser) parse source file and returns the documentation as a liste of [Doc](parser_module.md#doc) instances.
 
-# Parser
+## Parser
 
 
 
@@ -16,11 +16,11 @@ Simple python source code parser.
 
 
 
-# Properties
+### Properties
 
 
 
-## eol
+#### eol
 
 ``` python
 Reader.eol
@@ -39,7 +39,7 @@ End of line flag
 
 
 <sub>[top](#parser) [index](index.md)</sub>
-## previous
+#### previous
 
 ``` python
 Reader.previous
@@ -58,7 +58,7 @@ Read the previous char
 
 
 <sub>[top](#parser) [index](index.md)</sub>
-## read
+#### read
 
 ``` python
 Reader.read
@@ -80,11 +80,11 @@ After reading, the cursor is incremented
 
 <sub>[top](#parser) [index](index.md)</sub>
 
-# Methods
+### Methods
 
 
 
-## FromFile
+#### FromFile
 
 > **Decorators**: Class method
 
@@ -105,7 +105,7 @@ Initialize a parser from a file.
 
 
 <sub>[top](#parser) [index](index.md)</sub>
-## back
+#### back
 
 ``` python
 Reader.back(self)
@@ -118,7 +118,7 @@ Move the cursor one step backwards
 
 
 <sub>[top](#parser) [index](index.md)</sub>
-## current
+#### current
 
 ``` python
 Reader.current
@@ -139,7 +139,7 @@ Getting the current char doesn't move the cursor.
 
 
 <sub>[top](#parser) [index](index.md)</sub>
-## eof
+#### eof
 
 ``` python
 Reader.eof
@@ -158,7 +158,7 @@ End of file flag
 
 
 <sub>[top](#parser) [index](index.md)</sub>
-## equal
+#### equal
 
 ``` python
 Reader.equal(self, s)
@@ -183,7 +183,7 @@ Compare the string starting at the cursor with the argument
 
 
 <sub>[top](#parser) [index](index.md)</sub>
-## previous
+#### previous
 
 ``` python
 Reader.previous
@@ -202,7 +202,7 @@ Read the previous char
 
 
 <sub>[top](#parser) [index](index.md)</sub>
-## python_split
+#### python_split
 
 ``` python
 Parser.python_split(self)
@@ -223,7 +223,7 @@ yield
 
 
 <sub>[top](#parser) [index](index.md)</sub>
-## read
+#### read
 
 ``` python
 Reader.read
@@ -244,7 +244,7 @@ After reading, the cursor is incremented
 
 
 <sub>[top](#parser) [index](index.md)</sub>
-## reset
+#### reset
 
 ``` python
 Reader.reset(self)
@@ -258,7 +258,7 @@ Reset the cursor to the start of the text
 
 <sub>[top](#parser) [index](index.md)</sub>
 
-# Doc
+## Doc
 
 
 
@@ -287,7 +287,11 @@ which returns:
 
 
 
-# ok_comment
+## Functions
+
+
+
+### ok_comment
 
 ``` python
 ok_comment(s)
@@ -296,7 +300,7 @@ ok_comment(s)
 
 
 
-# md_normalize
+### md_normalize
 
 ``` python
 md_normalize(text)
@@ -308,20 +312,20 @@ Merge the lines not separated by a blank line
 
 
 
-##### Arguments
+#### Arguments
 
 
 
 - **text** (_srt_) : the mark down text to normalize
 
-##### Returns
+#### Returns
 
 
 
 - _str_ : normalized mark down text
 
 
-# extract_source
+### extract_source
 
 ``` python
 extract_source(comment)
@@ -330,11 +334,12 @@ extract_source(comment)
 
 
 
-# replace_source
+### replace_source
 
 ``` python
 replace_source(comment, d)
 ```
+
 
 
 
