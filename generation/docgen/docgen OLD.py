@@ -1,21 +1,9 @@
-""" Markdown python documentation generator
-
-Generate documentation for python project based on the source file.
-"""
-
 import re
 from pprint import pprint
 from pathlib import Path
 import inspect
 
-#from .pyparser import Parser, md_normalize, extract_source, replace_source
-
-
-
-
-
-
-
+from .pyparser import Parser, md_normalize, extract_source, replace_source
 
 # =============================================================================================================================
 # Manages the documentation of a project
@@ -31,169 +19,6 @@ def title_to_file_name(title):
 
 def title_to_token(title):
     return title.lower().replace(' ', '-')
-
-# =============================================================================================================================
-# Parse comment to extract information
-
-def parse_comment(comment):
-    """ Function comment parser
-
-    The Function parser extracts Properties, Arguments and Returns sections.
-    The corresponding lines are removed to build the 'new_comment' text.
-
-    The lists are generated from the structure
-
-    Arguments
-    ---------
-    - comment (str) : the raw comment
-
-    Returns
-    -------
-    - dict : {'new_comment', 'properties', 'arguments', 'returns', 'raises'}
-    """
-    
-    if comment is None:
-        return {'new_comment': None}
-    
-    list_expr = r"^(\w*) ?\n-+ ?\n(([^\w\n]+.*\n)*)"
-    
-    for m in re.finditer(list_expr, comment + '\n\n', flags=re.MULTILINE):
-        
-        title = m.group(1).strip().lower()
-        
-        lines = []
-        for line in m.group(2).split('\n'):
-            if line.strip() == '':
-                continue
-            if line[0] == ' ':
-                lines[-1] += ' ' + line.strip()
-            else:
-                lines.append(line.strip())
-        
-        
-        if title in ['property', 'properties']:
-            pass
-        
-        elif title in ['argument', 'arguments']:
-            pass
-        
-        elif title in ['return', 'returns']:
-            pass
-        
-        elif title in ['raise', 'raises']:
-            pass
-        
-        print(title)
-        print('-'*20)
-        print("\n".join(lines))
-        print('-'*20)
-        
-    return
-    
-    
-    
-    
-    
-    
-
-    context = 'COMMENT'
-    new_comment = ""
-
-    add_blank = False
-    blank_count = 0
-    for raw_line in comment.split("\n"):
-
-        if add_blank:
-            if blank_count < 1:
-                new_comment += "\n"
-                blank_count += 1
-            add_blank = False
-
-        line = raw_line.strip()
-        if line[:8].lower() == 'argument':
-            context = 'ARGUMENTS'
-            continue
-        elif line[:6].lower() == 'return':
-            context = 'RETURNS'
-            continue
-        elif line[:10].lower() == 'properties':
-            context = 'PROPERTIES'
-            continue
-
-
-        if context == 'COMMENT':
-            if line == "":
-                add_blank = True
-            else:
-                new_comment += line + "\n"
-                add_blank = False
-                blank_count = 0
-
-        else:
-            if line == "":
-                add_blank = True
-                continue
-
-            if line[0] != '-':
-                context = 'COMMENT'
-                new_comment += '\n' + line + '\n'
-                add_blank = False
-                blank_count = 0
-                continue
-
-            if line[1] == '-':
-                continue
-
-            if context in ['ARGUMENTS', 'PROPERTIES']:
-                target_section = self.arguments if context == 'ARGUMENTS' else self.props
-
-                expr = r"-\s*(\w+)\s*(\((\w+)\s*(=\s*(.+))?\))?(\s*:\s*(.+))?"
-                match = re.search(expr, line)
-
-                if match is None:
-                    target_section.append(Argument(name = line[2:]))
-                else:
-                    target_section.append(Argument(
-                        name        = match.group(1),
-                        type        = match.group(3),
-                        default     = match.group(5),
-                        description = match.group(7)))
-
-            elif context == 'RETURNS':
-                expr = r"-\s*(\w+)(\s*:\s*(.+))?"
-                match = re.search(expr, line)
-
-                if match is None:
-                    self.returns.append(Return(name = line[2:]))
-                else:
-                    self.returns.append(Return(match.group(1), match.group(3)))
-
-    return new_comment
-
-comment = """ Test
-some comment
-
-Properties
-----------
-- Test
-  continued
-- Test2
-mlqkjfqlm
-
-Raises
-------
-- ljslfdkj
-  skhfkjs
-
-
-ttot
-"""
-
-
-
-parse_comment(comment)
-
-
 
 # =============================================================================================================================
 # Section
@@ -825,7 +650,7 @@ class Function(Section):
     def parse_comment(self, comment):
         """ Function comment parser
 
-        The Function parser extracts Properties, Arguments and Returns sections.
+        The Function parser extracts Arguments and Returns sections.
         The corresponding lines are remove from the comment to feed the two sections.
 
         The lists are generated from the structure

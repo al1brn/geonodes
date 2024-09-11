@@ -4,6 +4,24 @@
 Created on Tue Sep 10 07:44:18 2024
 
 @author: alain
+
+
+Module parser
+
+This module implements a simple python parser which extract comments
+form a source code file.
+
+The parsing returns nested dicts where a dict contains information on the documented item
+
+A base dict structure is:
+    
+- obj      : module, class, function, ...
+- name     : python name
+- comment  : the first multilines string after item declaration
+- subs     : dict of dicts containing sub items
+
+In addition to this structure, a dict can contain complementory values such as inheritance for
+classes or arguments for functions
 """
 
 import re
@@ -13,8 +31,8 @@ from pprint import pprint
 # =============================================================================================================================
 # Align comment
 
-def realign_comment(comment):
-    """ Move lines of a text leftwards.
+def del_margin(comment):
+    """ Move lines leftwards to suppress margin.
     
     Comment read in source code can have a non nul left margin whcih is interprated in markdown.
     This method:
@@ -81,18 +99,18 @@ def realign_comment(comment):
     # in order that the left most line sticks to the margin
                 
     if min_indent is None:
-        return None
+        return ("\n".join(lines)).strip()
     else:
         return "\n".join([lines[0].strip()] + [" "*(indent - min_indent) + line for indent, line in indents])
 
 # =============================================================================================================================
 # A cursor on a text
 
-class Source:
+class Text:
     def __init__(self, text):
         """ Implements a simple text reader.
         
-        The Source class manages a cursor on a multilines string.
+        The Text class manages a cursor on a multilines string.
         It offers basic function to read around the cursor (backward and forwards).
         It also implements features to move to (or after) a target and
         to replace a text segment by replacement string.
@@ -147,7 +165,17 @@ class Source:
         """
         return self.text[self.cursor]
     
-    def value(self, start=1, count=None):
+    @property
+    def from_cursor(self):
+        """ Return the text from the cursor.
+        
+        Returns
+        -------
+        - str : text from the cursor
+        """
+        return self.text[self.cursor:]
+    
+    def __call__(self, start=1, count=None):
         """ Read the string around the cursor
         
         One or two argumentscan be passed:
@@ -161,14 +189,14 @@ class Source:
          
          ``` python
          # Read 3 characters from the cursor
-         a = source.value(3)
+         a = text(3)
          
          # Read the character preceeding the cursor
-         b = source.value(-1, 1)
+         b = text(-1, 1)
          
          # Note that the two following lines return the same result
-         c = source.value()
-         c = source.c
+         c = text()
+         c = text.c
          ```
          
          Arguments
@@ -190,62 +218,154 @@ class Source:
             
         return self.text[s:][:count]
     
-    def move(self, count=1):
+    def move(self, offset=1):
         """ Move the cursor of the given offset
         
         Arguments
         ---------
-        - count (int = 1) : cursor offset
+        - offset (int = 1) : cursor offset
         
         Returns
         -------
         - int : new cursor position
         """
-        self.cursor = min(len(self.text), self.cursor + count)
+        self.cursor = min(len(self.text), self.cursor + offset)
         if self.eof:
             return None
         else:
             return self.cursor
         
-    def move_to(self, target):
-        """ Move the cursor until it reaches the given argument
+    def find(self, target, regex=False, halt=True):
+        """ Find a target into the text
         
-        Note that an error is raised if the target is not found.
+        > [!IMPORTANT]
+        > The search starts at the cursor
         
-        Arguments
-        ---------
-        - target (str) : the string to reach
+        The target can be a single string or a tuple of strings.
+        The function return the target and the cursor is place just after
+        the target
         
-        Returns
-        -------
-        - int : the new cursor position
-        """
-        i = self.text[self.cursor + 1:].index(target)
-        self.cursor = self.cursor + 1 + i
-        return self.cursor
-        
-    def move_after(self, target):
-        """ Move the cursor after the given argument
-        
-        Note that an error is raised if the target is not found.
-        
-        The function is equivalent to:
+        An error is raised if the target is not found and **halt** is True.
         
         ``` python
-        source.move_to(target)
-        return source.move(len(target))
+        text = Text("Search for A B C")
+        
+        print(text.find("B"))
+        # > B
+        
+        text.cursor = 0
+        print(text.find(("A", "B", "C")))
+        # > A
+        
+        print(Text("Find this number: 123!").find(r"\d+"))
+        # > 123
         ```
         
         Arguments
         ---------
-        - target (str) : the string to reach
+        - target (str or tuple of strs) : the string(s) to reach
+        - regex (bool = False) : target is a regular expression or not
+        - halt (bool = True) : raise an exception if not found
         
         Returns
         -------
         - int : the new cursor position
         """
-        self.move_to(target)
-        return self.move(len(target))
+        
+        def to_regex(s):
+            if regex:
+                return s
+            
+            s_ = ""
+            for c in s:
+                if c in "\\^$.|?*()[]{}":
+                    s_ += '\\'
+                s_ += c
+
+            return s_
+        
+        if isinstance(target, str):
+            expr = to_regex(target)
+        else:
+            expr = "|".join([to_regex(s) for s in target])
+            
+        m = re.search(expr, self.text[self.cursor:])
+        if m is None:
+            if halt:
+                raise Exception(f"Text.find error: target {target} not found from cursor {self.cursor} in> {self(20)}...")
+            else:
+                return None
+        
+        self.cursor += m.span()[1]
+        
+        return m.group(0)
+        
+    def move_to(self, target, regex=False, halt=True):
+        """ Move the cursor until it reaches the given target.
+        
+        This function execute a <!find> on the target and places the
+        cursor just before the target.
+        
+        ``` python
+        found = self.find(target)
+        return self.move(-len(found))
+        ```
+        
+        ``` python
+        text = Text("Just go HERE")
+        
+        text.move_to("HERE")
+        print(text.from_cursor)
+        # > HERE
+        ```
+        
+        Arguments
+        ---------
+        - target (str or tuple of strs) : the string(s) to reach
+        
+        Returns
+        -------
+        - int : the new cursor position
+        """
+        
+        found = self.find(target, regex=regex, halt=halt)
+        if found is None:
+            return None
+        else:
+            return self.move(-len(target))
+        
+    def move_after(self, target, regex=False, halt=True):
+        """ Move the cursor until it reaches the given target.
+        
+        This function execute a <!find> on the target and places the
+        cursor just before the target.
+        
+        ``` python
+        self.find(target)
+        return self.cursor
+        ```
+        
+        ``` python
+        text = Text("Go after TARGET: here")
+        
+        text.move_after("TARGET")
+        print(text.from_cursor)
+        # > : here
+        ```
+        
+        Arguments
+        ---------
+        - target (str or tuple of strs) : the string(s) to reach
+        
+        Returns
+        -------
+        - int : the new cursor position
+        """
+        found = self.find(target, regex=regex, halt=halt)
+        if found is None:
+            return None
+        else:
+            return self.cursor
         
     def replace(self, start, end, repl):
         """ Replace the text between two positions by a replacement string.
@@ -263,12 +383,12 @@ class Source:
         ```python
         line = "Line of text with a token <My Token>."
         
-        source = Source(line)
-        start = source.move_to('<')
-        end = source.move_after('>')
-        token = source.replace(start, end, "HERE WAS A TOKEN")
+        text = Text(line)
+        start = text.move_to('<')
+        end = text.move_after('>')
+        token = text.replace(start, end, "HERE WAS A TOKEN")
         
-        print(source.text)
+        print(text.text)
         # Line of text with a token HERE WAS A TOKEN.
         
         print(token)
@@ -290,6 +410,57 @@ class Source:
         self.text = self.text[:start] + repl + self.text[end:]
         self.cursor = start + len(repl)
         return suppressed
+    
+# =============================================================================================================================
+# Extract strings
+
+def extract_strings(text):
+    """ Replace string by an index.
+    
+    This pretreatment ensure that the content of strings could interfer with
+    regular expression
+    
+    Arguments
+    ---------
+    - text (str) : text to extract strings from
+    
+    Returns
+    -------
+    - str, list : cleaned text and list of extracted strings
+    """
+    
+    expr1 = r'("[^"\\]*(?:\\.[^"\\]*)*")'
+    expr2 = r"('[^'\\]*(?:\\.[^'\\]*)*')"
+    
+    strings = []
+    def repl(m):
+        index = f"'{len(strings)}'"
+        strings.append(m.group(0))
+        return index
+    
+    text = re.sub(expr1, repl, text, flags=re.MULTILINE)
+    text = re.sub(expr2, repl, text, flags=re.MULTILINE)
+    
+    return text, strings
+
+def replace_strings(text, strings):
+    """ Replace the extracted strings.
+    
+    Arguments
+    ---------
+    - text (str) : text with replaced strings
+    - strings : list of strings
+    
+    Returns
+    -------
+    - Text with original strings
+    """
+    
+    for index, s in enumerate(strings):
+        text = text.replace(f"'{index}'", s)
+        
+    return text
+    
     
 # =============================================================================================================================
 # Clean python source
@@ -316,7 +487,7 @@ def clean_python(text):
     - list : list of strings
     """
     
-    source = Source(text)
+    source = Text(text)
     comments = []
     strings  = []
     
@@ -331,24 +502,28 @@ def clean_python(text):
         if c == '#':
             source.replace(source.cursor, source.move_after('\n'), "")
             
-        elif c == '"' and source.value(3) == '"""':
+        elif c == '"' and source(3) == '"""':
             index = f"<COMMENT {len(comments)}>"
-            comments.append(realign_comment(source.replace(source.cursor, source.move_after('"""'), index)))
+            
+            start = source.cursor
+            source.move(3)
+            comments.append(del_margin(source.replace(start, source.move_after('"""'), index)))
+            
             
         elif c in ["'", '"']:
             raw = False
             if source.cursor > 0:
-                raw = source.value(-1, 1) == 'r'
+                raw = source(-1, 1) == 'r'
                 
             a = source.cursor
             while True:
                 source.move()
                 assert(not source.eof)
-                if source.value() == c:
+                if source() == c:
                     b = source.move()
                     break
                     
-                elif source.value() == "\\":
+                elif source() == "\\":
                     if not raw:
                         source.move()
 
@@ -372,28 +547,254 @@ def clean_python(text):
             
     return text, comments, strings
 
+
+# =============================================================================================================================
+# Parse comment list line
+
+def parse_list_line(line):
+    """ Parse a list line in a comment
+    
+    syntax:
+    - name (type = default) : description
+    
+    Default value could contain parenthesis as in `Vector = (1, 2, 3)`,
+    the parsing is done by reading the line char per char to handle
+    parenthesis nesting.
+    
+    ``` python
+    line = "- text (str = None) : text to parse"
+    pprint(parse_list_line(line))
+    # > {'default': 'None',
+    # > 'description': 'text to parse',
+    # > 'name': 'text',
+    # > 'obj' : 'str'}
+    ```
+    """
+    
+    if line is None:
+        return None
+    
+    # ----------------------------------------------------------------------------------------------------
+    # We need at least a name
+    
+    line, strings = extract_strings(line)
+    
+    text = Text(line.strip())
+    name = text.find(r"\w+", regex=True, halt=False)
+    if name is None:
+        return None
+
+    items = {
+        'name'        : name,
+        'type'        : None,
+        'default'     : None,
+        'description' : None,
+        }
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Next possible sepa is ( or : 
+    
+    sepa = text.find(('(', ':'), halt=False)
+    
+    if sepa is None:
+        items['description'] = replace_strings(text.from_cursor, strings)
+        get_descr = False
+        
+    # ----------------------------------------------------------------------------------------------------
+    # Open parenthesis : (type = default)
+        
+    elif sepa == '(':
+        
+        cursor   = text.cursor
+        type_def = None
+        
+        level = 1        
+        while True: # No fear
+            sepa = text.find(('(', ')'), halt=False)
+
+            if sepa is None:
+                break
+                
+            elif sepa == '(':
+                level += 1
+                
+            elif sepa == ')':
+                level -= 1
+                
+            if level == 0:
+                type_def = replace_strings(text.text[cursor:text.cursor-1], strings)
+                break
+            
+        # ( and ) nesting is not consistent
+        # We give the raw result in description
+            
+        if type_def is None:
+            text.cursor = cursor - 1
+            items['description'] = replace_string(text.from_cursor, strings)
+            
+        # We have the interior of ( ... ) in type def
+        # syntax is: type = default
+            
+        else:
+            m = re.search(r"([^=]+)(=(.*))", type_def.strip())
+            if m is None:
+                items['type']    = replace_strings(type_def.strip(), strings)
+            else:
+                items['type']    = replace_strings(m.group(1).strip(), strings)
+                items['default'] = replace_strings(m.group(3).strip(), strings)
+                
+            # ----- we are still in a proper syntax
+            
+            sepa = text.find(':', halt=False)
+        
+    # ----------------------------------------------------------------------------------------------------
+    # Open parenthesis : (type = default)
+    
+    if sepa == ':':
+        items['description'] = replace_strings(text.from_cursor.strip(), strings)
+        
+    return items
+
+
+# =============================================================================================================================
+# Parse comment to extract information
+
+def extract_lists(comment, titles):
+    """ Extract lists from a comment.
+
+    This parser extracts Properties, Arguments and Returns sections.
+    The corresponding lines are removed to build the 'new_comment' text.
+
+    The lists are generated from the structure
+
+    Arguments
+    ---------
+    - comment (str) : the raw comment
+    - titles (str or list of strs) : the titles of the lists to extract
+
+    Returns
+    -------
+    - str, dict: comment without the lists, lists as dict
+    """
+    
+    TITLES = {
+        'property'   : 'properties',
+        'properties' : 'properties',
+        'argument'   : 'arguments',
+        'arguments'  : 'arguments',
+        'return'     : 'returns',
+        'returns'    : 'returns',
+        'raise'      : 'raises',
+        'raises'     : 'raises',
+        }
+
+    if comment is None:
+        return None, {}
+    
+    if isinstance(titles, str):
+        titles = [titles]
+    
+    lists = {}
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Replacement function
+    
+    def repl(m):
+        
+        # ----- List title
+        
+        title = m.group(1).strip().lower()
+        if not title in TITLES:
+            return m.group(0)
+        
+        if not title in titles:
+            return m.group(0)
+        
+        # ----- Merge the lines to have one single line per item
+        
+        lines = []
+        for line in m.group(2).split('\n'):
+            if line.strip() == '':
+                continue
+            if line[0] == ' ':
+                lines[-1] += ' ' + line.strip()
+            else:
+                lines.append(line.strip())
+                
+        # ----- Parse the items
+        
+        lists[title] = [parse_list_line(line) for line in lines]
+        
+        # ----- Delete in the comment
+        
+        return ""
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Substitution in the comment
+    
+    list_expr = r"^(\w*) ?\n-+ ?\n(([^\w\n]+.*\n)*)"
+    
+    comment = re.sub(list_expr, repl, comment + '\n\n\n', flags=re.MULTILINE)
+    
+    return comment.strip(), lists
+
+
+# =============================================================================================================================
+# Structures describing documented objects
+
+def new_struct(obj, name, comment=None, subs=None, **kwargs):
+    struct = {'obj' : obj, 'name': name, 'comment': comment, **kwargs}
+    if subs is not None:
+        struct['subs'] = subs
+    return struct
+
+def new_module(name, comment=None, subs={}):
+    return new_struct('module', name, comment, subs=subs)
+
+def new_class(name, comment=None, subs={}, inherits=[]):
+    return new_struct('class', name, comment, subs=subs, inherits=inherits)
+
+def new_function(name, comment=None, decorators=[], args=None, arguments=[], raises={}, returns={}):
+    return new_struct('function', name, comment, args=args, arguments=arguments, raises=raises, returns=returns)
+
+def new_property(name, comment=None, type=None, default=None, setter=None, getter=None):
+    return new_struct('property', name, comment, type=type, default=default, setter=setter, getter=getter)
+
+
 # =============================================================================================================================
 # Parse python source code
 
 def parse(text):
     """ Parse a python file source
     
-    Extracton returns
-    - classes:
-      - inherictance
-      - methods (see functions)
-      - properties made of decorated methods
+    The parser returns a dictionary giving the content of the module:
+        
+    - module
       - comment
-    - functions:
-      - decorators
-      - arguments
+      - subs : dict of classes and functions
+    - class
+      - name
       - comment
+      - inherits (list)
+      - subs : dict of properties and functions (methods)
+    - function
+      - name
+      - comment
+      - args (str)
+      - decorators (list of strs)
+      - raises: list of dicts for raises
+      - arguments: list of dicts for arguments
+      - returns: list of dicts for returns
+    - property
+      - name
+      - comment
+      - type
+      - default
+      - setter : function
+      - getter : function
       
     The parsing is done with regular expressions.
     
-    This process works only if strings and comments are removed.
-    This is why the first step is to _clean_ the source file using <!clean_python>.
-     
     Arguments
     ---------
     - text (str) : source code to parse
@@ -409,6 +810,13 @@ def parse(text):
     clean, comments, strings = clean_python(text)
     
     # ----------------------------------------------------------------------------------------------------
+    # Documentation result
+    
+    module_subs= {}
+    
+    module = new_module('Module', comments[0] if len(comments) else None, subs=module_subs)
+    
+    # ----------------------------------------------------------------------------------------------------
     # Look for class definitions:
     #
     # class CLASS_NAME (...):
@@ -416,29 +824,41 @@ def parse(text):
     
     class_expr = r"^class\s*([\w]*)\s*(\(([^\)]*)\))*\s*:\s*([\n\s])*(<COMMENT ([0-9]+)>)?"
     
-    
     starts = []
-    classes = {}
     for m in re.finditer(class_expr, clean, flags=re.MULTILINE):
         
         class_name = m.group(1)
+        starts.append((m.span()[0], class_name))
+        
+        # ----- Comment 
 
         icomm = m.group(6)
         comment = None if icomm is None else comments[int(icomm)]
-
         
-        classes[m.group(1)] = {
-            'name'        : class_name,
-            'inheritance' : m.group(3),
-            'comment'     : comment,
-            'methods'     : {},
-            'properties'  : {},
-            }
+        # Extract properties from the comment
         
-        starts.append((m.span()[0], class_name))
+        comment, lists = extract_lists(comment, 'properties')
+        
+        # ----- Create the class
+        
+        class_ = new_class(class_name, comment, inherits=m.group(3))
+        
+        # Add the properties declared in the comment
+        
+        props = lists.get('properties', [])
+        for info in props:
+            prop_name = info['name']
+            class_['subs'][prop_name] = new_property(prop_name, info['description'], type=info['type'], default=info['default'])
+        
+        # ----- Put the class in the subs of the module
+        
+        module_subs[class_name] = class_
+        
+        
+    # ----- Build the list of classes order by their appearance in the source file
+    # This list will permit to know to whom further methods must be attached
         
     starts = sorted(starts, key=lambda x: x[0])
-    
 
     # ----------------------------------------------------------------------------------------------------
     # Look for functions definitions:
@@ -449,8 +869,18 @@ def parse(text):
     
     func_expr = r"^(((\s*)@([\w\.]*)\s*\n)*)(\s*)def +(\w*)\s*(\((.*)\)\s*):\s*([\n\s])*(<COMMENT ([0-9]+)>)?"
     
-    functions = {}
     for m in re.finditer(func_expr, clean, flags=re.MULTILINE):
+        
+        # ----------------------------------------------------------------------------------------------------
+        # Name and args
+            
+        name = m.group(6)
+        args = re.sub(r"  +", " ", m.group(8))
+        
+        DEBUG = name == 'clean_python'
+        
+        # ----------------------------------------------------------------------------------------------------
+        # Decorators
         
         is_setter = False
         is_getter = False
@@ -466,29 +896,61 @@ def parse(text):
                 is_getter = True
             decorators.append(deco)
             
+        # ----------------------------------------------------------------------------------------------------
+        # Indentation
+            
         if m.group(5) is None:
             indent = 0
         else:
             indent = len(m.group(5))
-            
-        name = m.group(6)
-        args = re.sub(r"  +", " ", m.group(8))
+
+        # ----------------------------------------------------------------------------------------------------
+        # Comment
 
         icomm = m.group(11)
         comment = None if icomm is None else comments[int(icomm)]
         
-        function_ = {
-            'name'        : name,
-            'decorators'  : decorators,
-            'args'        : args,
-            'comment'     : comment,
-            }
+        if DEBUG:
+            print('COMMENT', name)
+            print('-'*50)
+            print(comment)
+            
         
+        # Extract lists
+        
+        comment, lists = extract_lists(comment, ['raises', 'arguments', 'returns'])
+        
+        if DEBUG:
+            print('EXTRACTED COMMENT', name)
+            print('-'*50)
+            print(comment)
+        
+        
+        # ----------------------------------------------------------------------------------------------------
+        # Create the function dict
+        
+        function_ = new_function(name, comment, decorators=decorators, args=args)
+        
+        # Add the lists
+        
+        for title, items in lists.items():
+            function_[title] = items
+
+        # ----------------------------------------------------------------------------------------------------
+        # Place the function at module level or in a class
+        
+        # ----- Indentation is null : this is function at module level
         
         if indent == 0:
-            functions[name] = function_
+
+            module_subs[name] = function_
+            
+        # ----- This is a class method
             
         else:
+            
+            # ----- Let's find the last class declared before the function
+            
             func_start = m.span()[0]
             
             last_class_name = None
@@ -497,56 +959,60 @@ def parse(text):
                     break
                 last_class_name = class_name
                 
-            class_ = classes[last_class_name]
+            class_     = module_subs[last_class_name]
+            class_subs = class_['subs']
+            
+            # ----- If the method is a getter or a getter we create a class property
                 
             if is_setter or is_getter:
-                prop_ = class_['properties'].get(name)
+                prop_ = class_subs.get(name)
                 if prop_ is None:
-                    prop_ = {'name': name, 'getter': None, 'setter': None}
-                    class_['properties'][name] = prop_
+                    prop_ = new_property(name)
+                    class_subs[name] = prop_
+                    
                 if is_setter:
                     prop_['setter'] = function_
                 else:
                     prop_['getter'] = function_
+                    
+            # ----- Otherwise we create a method
 
             else:
-                class_['methods'][name] = function_
+                class_subs[name] = function_
                 
-            
-                
-                
-                
-            
-            
-    #pprint(classes)
-    #pprint(functions)
+    return module
+
+
+# =============================================================================================================================
+# Tests
+
+# -----------------------------------------------------------------------------------------------------------------------------
+# Dump the content of a dict
+
+def dump_dict(d, indent=0):
     
+    INCR = 4
     
+    if len(d) == 0:
+        return
     
-
-
-
-fpath = "/Users/alain/Documents/blender/scripts/modules/geonodes/geonodes/textures.py"
-fpath = "/Users/alain/Documents/blender/scripts/modules/geonodes/geonodes/geometryclass.py"
-
-text = Path(fpath).read_text()
-
-
-parse(text)
-
-
-line = "Line of text with a token <My Token>."
-
-source = Source(line)
-start = source.move_to('<')
-end = source.move_after('>')
-token = source.replace(start, end, "HERE WAS A TOKEN")
-
-print(source.text)
-print(token)
-
-
-  
+    print(f"{' '*indent}{d['name']} ({d['obj' ]})")
+    if d['comment'] is not None:
+        print(f"{' '*indent}> {d['comment'][:20]}...")
+    print()
     
+    for sub, sub_ in d.get('subs', {}).items():
+        dump_dict(sub_, indent + 1*INCR)
+        
+        
+def test():
+    text = Path(__file__).read_text()
+
+    module = parse(text)
     
+    #dump_dict(module)
     
+    pprint(module['subs']['clean_python'])
+    
+test()
+
