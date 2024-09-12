@@ -1,4 +1,4 @@
-# documentation { #documentation }
+# documentation
 
 
 Created on Wed Sep 11 17:42:12 2024
@@ -6,17 +6,17 @@ Created on Wed Sep 11 17:42:12 2024
 @author: alain
 
 
-## Functions { #functions-1 }
+## Functions
 
-## Classes { #classes-1 }
+## Classes
 
-### Section { #section }
+### Section
 
 Version document item
 
-#### Properties { #properties-2 }
+#### Properties
 
-#### Methods { #methods-2 }
+#### Methods
 
 
 
@@ -30,7 +30,7 @@ Section(title, comment=None)
 
 
 
-##### iteration { #iteration }
+##### iteration
 
 Run the function on the section and sub sections
 
@@ -45,16 +45,16 @@ iteration(f, *args)
 
 
 
-###### Arguments { #arguments-3 }
+###### Arguments
 
 - **f** (function of template f(section)) : the function to run
 
-###### Returns { #returns-7 }
+###### Returns
 
 - **Section** :  or None
 
 
-##### sections { #sections }
+##### sections
 
 Flat list of sections and sub sections
 
@@ -64,7 +64,7 @@ sections(with_owner=False)
 
 
 
-##### get_section { #get_section }
+##### get_section
 
 Get a section by its title or path
 
@@ -74,7 +74,7 @@ get_section(title)
 
 
 
-##### new_section { #new_section }
+##### new_section
 
 Add a sub section
 
@@ -84,18 +84,18 @@ new_section(title, comment=None)
 
 
 
-###### Arguments { #arguments-4 }
+###### Arguments
 
 - **title** (str) : section title
 - - **comment** (str) : header comment
 - - **sub_level** (_int_ = 1) : level increment
 
-###### Returns { #returns-8 }
+###### Returns
 
 - **Section** : 
 
 
-##### write_header { #write_header }
+##### write_header
 
 Append text to the header comment
 
@@ -105,11 +105,11 @@ write_header(comment)
 
 
 
-###### Arguments { #arguments-5 }
+###### Arguments
 
 - **comment** (str) : the text to write
 
-##### write { #write }
+##### write
 
 Append text to the current text
 
@@ -122,11 +122,11 @@ write(comment)
 
 
 
-###### Arguments { #arguments-6 }
+###### Arguments
 
 - **comment** (str) : the text to write
 
-##### print { #print }
+##### print
 
 Print the documentation in the console
 
@@ -138,7 +138,7 @@ print(full=False)
 
 
 
-### Documentation { #documentation-1 }
+### Documentation
 
 Whole project documentation
 
@@ -147,9 +147,9 @@ and whose sections are alse pages.
 
 [LINK ERROR: page 'Section' not found]() [LINK ERROR: page 'Section' not found]() must be unique.
 
-#### Properties { #properties-3 }
+#### Properties
 
-#### Methods { #methods-3 }
+#### Methods
 
 
 
@@ -163,7 +163,7 @@ Documentation(title, comment=None)
 
 
 
-##### load_source { #load_source }
+##### load_source
 
 Add a source code.
 
@@ -175,17 +175,17 @@ load_source(key, text)
 
 
 
-###### Arguments { #arguments-7 }
+###### Arguments
 
 - **key** (str) : source file key
 - - **text** (str) : the source code
 
-###### Returns { #returns-9 }
+###### Returns
 
 - **Section** : 
 
 
-##### load_file { #load_file }
+##### load_file
 
 Enrich the reference doc by parsing source files.
 
@@ -197,18 +197,18 @@ load_file(file_name, key=None)
 
 
 
-###### Arguments { #arguments-8 }
+###### Arguments
 
 - **folder** (str) : main folder
 - - **sub_folders** (str) : sub folders to explore
 - - **key** (_str_ = None) : 
 
-###### Returns { #returns-10 }
+###### Returns
 
 - **self** : 
 
 
-##### load_files { #load_files }
+##### load_files
 
 Enrich the reference doc by parsing source files.
 
@@ -220,18 +220,18 @@ load_files(folder=None, sub_folders=[], key=None, verbose=True)
 
 
 
-###### Arguments { #arguments-9 }
+###### Arguments
 
 - **folder** (str) : main folder
 - - **sub_folders** (str) : sub folders to explore
 - - **key** (_str_ = None) : 
 
-###### Returns { #returns-11 }
+###### Returns
 
 - **self** : 
 
 
-##### hide_classes { #hide_classes }
+##### hide_classes
 
 Undocument classes
 
@@ -243,7 +243,7 @@ hide_classes(classes, verbose=True)
 
 
 
-##### add_page { #add_page }
+##### add_page
 
 Add a page in the documentation
 
@@ -253,15 +253,15 @@ add_page(section)
 
 
 
-###### Arguments { #arguments-10 }
+###### Arguments
 
 - **page** ([LINK ERROR: page 'Section' not found]()) : the page to add
 
-###### Returns { #returns-12 }
+###### Returns
 
 - **Section** : the argument **page**
 
-##### new_page { #new_page }
+##### new_page
 
 Add a page in the documentation
 
@@ -275,17 +275,17 @@ new_page(title, comment=None)
 
 
 
-###### Arguments { #arguments-11 }
+###### Arguments
 
 - **title** (str) : page title
 - - **comment** (str) : comment
 
-###### Returns { #returns-13 }
+###### Returns
 
 - **Section** : >
 
 
-##### set_hook { #set_hook }
+##### set_hook
 
 Replace a regular expression by as substitution string
 
@@ -323,11 +323,11 @@ set_hook(expr, repl)
 
 
 
-###### Arguments { #arguments-12 }
+###### Arguments
 
 - **expr** (str) : RegEx expression - repl (str or function) : replacement string or function
 
-##### solve_links { #solve_links }
+##### solve_links
 
 Solve user links into MD links.
 
@@ -352,11 +352,11 @@ solve_links(ignore_source=False)
 
 
 
-###### Arguments { #arguments-13 }
+###### Arguments
 
 - **ignore_source** (_bool_ = False) : Do not extract source before solving (already done)
 
-##### solve_hooks { #solve_hooks }
+##### solve_hooks
 
 Solve all the hooks for a section.
 
@@ -366,11 +366,11 @@ solve_hooks(include_links=True)
 
 
 
-###### Arguments { #arguments-14 }
+###### Arguments
 
 - **include_links** (_bool_ = True) : solve also the links
 
-##### compile { #compile }
+##### compile
 
 Initialize sections parameters at their good values
 
@@ -380,7 +380,7 @@ compile()
 
 
 
-##### create_index_file { #create_index_file }
+##### create_index_file
 
 Create the index file
 
@@ -390,7 +390,7 @@ create_index_file(file_name)
 
 
 
-###### Arguments { #arguments-15 }
+###### Arguments
 
 - **file_name** (str) : file name to write
 

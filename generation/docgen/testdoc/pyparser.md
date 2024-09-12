@@ -1,4 +1,4 @@
-# pyparser { #pyparser }
+# pyparser
 
 
 Created on Wed Jun  8 09:00:41 2022
@@ -6,9 +6,9 @@ Created on Wed Jun  8 09:00:41 2022
 @author: alain.bernard@loreal.com
 
 
-## Functions { #functions }
+## Functions
 
-### md_normalize { #md_normalize }
+### md_normalize
 
 Normalize markdown text
 
@@ -20,28 +20,28 @@ md_normalize(text)
 
 
 
-#### Arguments { #arguments }
+#### Arguments
 
 - **text** (srt) : the mark down text to normalize
 
-#### Returns { #returns }
+#### Returns
 
 - **str** : normalized mark down text
 
-## Classes { #classes }
+## Classes
 
-### Reader { #reader }
+### Reader
 
 Simple python source code parser.
 
-#### Properties { #properties }
+#### Properties
 
-##### eol { #eol }
+##### eol
 
 End of line flag> type Boolean
 
 
-###### Getter { #getter }
+###### Getter
 
 End of line flag
 
@@ -51,16 +51,16 @@ eol()
 
 
 
-####### Returns { #returns-1 }
+####### Returns
 
 - **Boolean** : True if end of line is reached, False otherwise
 
-##### eof { #eof }
+##### eof
 
 End of file flag> type Boolean
 
 
-###### Getter { #getter-1 }
+###### Getter
 
 End of file flag
 
@@ -70,18 +70,18 @@ eof()
 
 
 
-####### Returns { #returns-2 }
+####### Returns
 
 - **Boolean** : True if end of file is reached, False otherwise
 
-##### read { #read }
+##### read
 
 Read the next char
 
 After reading, the cursor is incremented> type str
 
 
-###### Getter { #getter-2 }
+###### Getter
 
 Read the next char
 
@@ -93,18 +93,18 @@ read()
 
 
 
-####### Returns { #returns-3 }
+####### Returns
 
 - **str** : Next character or None if end of file
 
-##### current { #current }
+##### current
 
 Read the current char
 
 Getting the current char doesn't move the cursor.> type str
 
 
-###### Getter { #getter-3 }
+###### Getter
 
 Read the current char
 
@@ -116,16 +116,16 @@ current()
 
 
 
-####### Returns { #returns-4 }
+####### Returns
 
 - **str** : Next character or None if end of file
 
-##### previous { #previous }
+##### previous
 
 Read the previous char> type str
 
 
-###### Getter { #getter-4 }
+###### Getter
 
 Read the previous char
 
@@ -135,11 +135,11 @@ previous()
 
 
 
-####### Returns { #returns-5 }
+####### Returns
 
 - **str** : Previous character or None if start of file
 
-#### Methods { #methods }
+#### Methods
 
 
 
@@ -153,7 +153,7 @@ Reader(text)
 
 
 
-##### FromFile { #fromfile }
+##### FromFile
 
 Initialize a parser from a file.
 
@@ -163,11 +163,11 @@ FromFile(fname)
 
 
 
-###### Arguments { #arguments-1 }
+###### Arguments
 
 - **fname** (str) : full path of the file top parse
 
-##### reset { #reset }
+##### reset
 
 Reset the cursor to the start of the text
 
@@ -177,7 +177,7 @@ reset()
 
 
 
-##### back { #back }
+##### back
 
 Move the cursor one step backwards
 
@@ -187,7 +187,7 @@ back()
 
 
 
-##### equal { #equal }
+##### equal
 
 Compare the string starting at the cursor with the argument
 
@@ -197,15 +197,15 @@ equal(s)
 
 
 
-###### Arguments { #arguments-2 }
+###### Arguments
 
 - **s** (str) : the string to compare with
 
-###### Returns { #returns-6 }
+###### Returns
 
 - **Boolean** : True if the text at the cursor is equal to the argument
 
-### Doc { #doc }
+### Doc
 
 Item documentation
 
@@ -227,9 +227,9 @@ which returns:
 2. name
 3. args | base class
 
-#### Properties { #properties-1 }
+#### Properties
 
-#### Methods { #methods-1 }
+#### Methods
 
 
 

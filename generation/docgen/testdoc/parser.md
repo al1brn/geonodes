@@ -1,4 +1,4 @@
-# parser { #parser }
+# parser
 
 
 Created on Tue Sep 10 07:44:18 2024
@@ -24,9 +24,9 @@ In addition to this structure, a dict can contain complementory values such as i
 classes or arguments for functions
 
 
-## Functions { #functions-3 }
+## Functions
 
-### del_margin { #del_margin }
+### del_margin
 
 Move lines leftwards to suppress margin.
 
@@ -58,15 +58,15 @@ del_margin(comment)
 
 
 
-#### Arguments { #arguments-39 }
+#### Arguments
 
 - **comment** (str) : the comment
 
-#### Returns { #returns-46 }
+#### Returns
 
 - **str** : the realigned comment
 
-### extract_strings { #extract_strings }
+### extract_strings
 
 Replace string by an index.
 
@@ -79,15 +79,15 @@ extract_strings(text)
 
 
 
-#### Arguments { #arguments-40 }
+#### Arguments
 
 - **text** (str) : text to extract strings from
 
-#### Returns { #returns-47 }
+#### Returns
 
 - **str** : cleaned text and list of extracted strings
 
-### replace_strings { #replace_strings }
+### replace_strings
 
 Replace the extracted strings.
 
@@ -97,17 +97,17 @@ replace_strings(text, strings)
 
 
 
-#### Arguments { #arguments-41 }
+#### Arguments
 
 - **text** (str) : text with replaced strings
 - - **strings** : list of strings
 
-#### Returns { #returns-48 }
+#### Returns
 
 - **Text** :  with original strings
 
 
-### extract_source { #extract_source }
+### extract_source
 
 Replace source code block by an index.
 
@@ -120,15 +120,15 @@ extract_source(text)
 
 
 
-#### Arguments { #arguments-42 }
+#### Arguments
 
 - **text** (str) : text to extract source code from
 
-#### Returns { #returns-49 }
+#### Returns
 
 - **str** : cleaned text and list of extracted pieces of code
 
-### replace_source { #replace_source }
+### replace_source
 
 Replace the extracted strings.
 
@@ -138,17 +138,17 @@ replace_source(text, strings)
 
 
 
-#### Arguments { #arguments-43 }
+#### Arguments
 
 - **text** (str) : text with replaced pieces of code
 - - **strings** : list of pieces of code
 
-#### Returns { #returns-50 }
+#### Returns
 
 - **Text** :  with original strings
 
 
-### clean_python { #clean_python }
+### clean_python
 
 Clean python source code
 
@@ -166,17 +166,17 @@ clean_python(text)
 
 
 
-#### Arguments { #arguments-44 }
+#### Arguments
 
 - **text** (str) : source code to clean
 
-#### Returns { #returns-51 }
+#### Returns
 
 - **str** : cleaned text
 - - **list** : list of comments
 - - **list** : list of strings
 
-### parse_list_line { #parse_list_line }
+### parse_list_line
 
 Parse a list line in a comment
 
@@ -202,7 +202,7 @@ parse_list_line(line)
 
 
 
-### extract_lists { #extract_lists }
+### extract_lists
 
 Extract lists from a comment.
 
@@ -217,16 +217,16 @@ extract_lists(comment, titles)
 
 
 
-#### Arguments { #arguments-45 }
+#### Arguments
 
 - **comment** (str) : the raw comment
 - - **titles** (str or list of strs) : the titles of the lists to extract
 
-#### Returns { #returns-52 }
+#### Returns
 
 - **str** : comment without the lists, lists as dict
 
-### parse_module { #parse_module }
+### parse_module
 
 Parse a python file source
 
@@ -264,15 +264,15 @@ parse_module(text, module_name="119")
 
 
 
-#### Arguments { #arguments-46 }
+#### Arguments
 
 - **text** (str) : source code to parse
 
-#### Returns { #returns-53 }
+#### Returns
 
 - **dict** : classes and functions
 
-### parse_files { #parse_files }
+### parse_files
 
 Load files from a folder.
 
@@ -284,18 +284,18 @@ parse_files(folder, sub_folders=[], key=None, verbose=False)
 
 
 
-#### Arguments { #arguments-47 }
+#### Arguments
 
 - **folder** (str) : main folder
 - - **sub_folders** (str) : sub folders to explore
 - - **key** (_str_ = None) : 
 
-#### Returns { #returns-54 }
+#### Returns
 
 - **dict** : 
 
 
-### capture_inheritance { #capture_inheritance }
+### capture_inheritance
 
 Capture properties et methods from another class
 
@@ -310,13 +310,13 @@ capture_inheritance(class_, base_, remove=True)
 
 
 
-#### Arguments { #arguments-48 }
+#### Arguments
 
 - **class_** (dict) : the class to enrich
 - - **base_** (dict) : the class to capture properties and methods from
 - - **remove** (_bool_ = True) : remove base name from inheritance list
 
-### capture_inheritances { #capture_inheritances }
+### capture_inheritances
 
 Capture inheritances
 
@@ -331,16 +331,16 @@ capture_inheritances(class_, modules_, include=None, exclude=[], verbose=True)
 
 
 
-#### Arguments { #arguments-49 }
+#### Arguments
 
 - **class_** (dict) : the class to enrich
 - - **modules_** (dict) : the hierarchy containing base classes to capture from
 - - **include** (_list_ = None) : limit capture to the given list
 - - **exclude** (_list_ = []) : exclude classes in the given list
 
-## Classes { #classes-3 }
+## Classes
 
-### Text { #text }
+### Text
 
 Implements a simple text reader.
 
@@ -353,14 +353,14 @@ Properties
 ----------
 - cursor (int) : current position
 
-#### Properties { #properties-11 }
+#### Properties
 
-##### eof { #eof-1 }
+##### eof
 
 End of text is reached> type bool
 
 
-###### Getter { #getter-15 }
+###### Getter
 
 End of text is reached
 
@@ -370,16 +370,16 @@ eof()
 
 
 
-####### Returns { #returns-55 }
+####### Returns
 
 - **bool** : True if end of text is reached
 
-##### eol { #eol-1 }
+##### eol
 
 End of line is reached> type bool
 
 
-###### Getter { #getter-16 }
+###### Getter
 
 End of line is reached
 
@@ -389,11 +389,11 @@ eol()
 
 
 
-####### Returns { #returns-56 }
+####### Returns
 
 - **bool** : True if current char is eol (or if eof is True)
 
-##### c { #c }
+##### c
 
 Current character
 
@@ -404,7 +404,7 @@ return self.text[self.cursor]
 ```> type str
 
 
-###### Getter { #getter-17 }
+###### Getter
 
 Current character
 
@@ -420,16 +420,16 @@ c()
 
 
 
-####### Returns { #returns-57 }
+####### Returns
 
 - **str** : the character at cursor
 
-##### from_cursor { #from_cursor }
+##### from_cursor
 
 Return the text from the cursor.> type str
 
 
-###### Getter { #getter-18 }
+###### Getter
 
 Return the text from the cursor.
 
@@ -439,11 +439,11 @@ from_cursor()
 
 
 
-####### Returns { #returns-58 }
+####### Returns
 
 - **str** : text from the cursor
 
-#### Methods { #methods-11 }
+#### Methods
 
 
 
@@ -457,7 +457,7 @@ Text(text)
 
 
 
-##### __call__ { #__call__ }
+##### __call__
 
 Read the string around the cursor
 
@@ -498,7 +498,7 @@ __call__(start=1, count=None)
 
 
 
-##### move { #move }
+##### move
 
 Move the cursor of the given offset
 
@@ -508,15 +508,15 @@ move(offset=1)
 
 
 
-###### Arguments { #arguments-50 }
+###### Arguments
 
 - **offset** (_int_ = 1) : cursor offset
 
-###### Returns { #returns-59 }
+###### Returns
 
 - **int** : new cursor position
 
-##### find { #find }
+##### find
 
 Find a target into the text
 
@@ -549,17 +549,17 @@ find(target, regex=False, halt=True)
 
 
 
-###### Arguments { #arguments-51 }
+###### Arguments
 
 - **target** (str or tuple of strs) : the string(s) to reach
 - - **regex** (_bool_ = False) : target is a regular expression or not
 - - **halt** (_bool_ = True) : raise an exception if not found
 
-###### Returns { #returns-60 }
+###### Returns
 
 - **int** : the new cursor position
 
-##### move_to { #move_to }
+##### move_to
 
 Move the cursor until it reaches the given target.
 
@@ -585,15 +585,15 @@ move_to(target, regex=False, halt=True)
 
 
 
-###### Arguments { #arguments-52 }
+###### Arguments
 
 - **target** (str or tuple of strs) : the string(s) to reach
 
-###### Returns { #returns-61 }
+###### Returns
 
 - **int** : the new cursor position
 
-##### move_after { #move_after }
+##### move_after
 
 Move the cursor until it reaches the given target.
 
@@ -619,15 +619,15 @@ move_after(target, regex=False, halt=True)
 
 
 
-###### Arguments { #arguments-53 }
+###### Arguments
 
 - **target** (str or tuple of strs) : the string(s) to reach
 
-###### Returns { #returns-62 }
+###### Returns
 
 - **int** : the new cursor position
 
-##### replace { #replace }
+##### replace
 
 Replace the text between two positions by a replacement string.
 
@@ -662,13 +662,13 @@ replace(start, end, repl)
 
 
 
-###### Arguments { #arguments-54 }
+###### Arguments
 
 - **start** (int) : start index of replaced part
 - - **end** (int) : end index of replace part
 - - **repl** (str) : the replacement string
 
-###### Returns { #returns-63 }
+###### Returns
 
 - **str** : the replaced string
 
