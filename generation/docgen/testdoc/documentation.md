@@ -18,6 +18,8 @@ Version document item
 
 #### Methods
 
+
+
 ``` python
 Section(title, comment=None)
 ```
@@ -35,7 +37,9 @@ Run the function on the section and sub sections
 The method halts on the first section for which the function
 return `True` and returns this section.
 If the function doesn't return `True`, the methods is run on all sections
-and return `None`.``` python
+and return `None`.
+
+``` python
 iteration(f, *args)
 ```
 
@@ -52,7 +56,9 @@ iteration(f, *args)
 
 ##### sections
 
-Flat list of sections and sub sections``` python
+Flat list of sections and sub sections
+
+``` python
 sections(with_owner=False)
 ```
 
@@ -60,7 +66,9 @@ sections(with_owner=False)
 
 ##### get_section
 
-Get a section by its title or path``` python
+Get a section by its title or path
+
+``` python
 get_section(title)
 ```
 
@@ -68,7 +76,9 @@ get_section(title)
 
 ##### new_section
 
-Add a sub section``` python
+Add a sub section
+
+``` python
 new_section(title, comment=None)
 ```
 
@@ -87,7 +97,9 @@ new_section(title, comment=None)
 
 ##### write_header
 
-Append text to the header comment``` python
+Append text to the header comment
+
+``` python
 write_header(comment)
 ```
 
@@ -102,7 +114,9 @@ write_header(comment)
 Append text to the current text
 
 The current text is either the comment if this section if there is not sub sections,
-or the comment of the last sub sections.``` python
+or the comment of the last sub sections.
+
+``` python
 write(comment)
 ```
 
@@ -116,7 +130,9 @@ write(comment)
 
 Print the documentation in the console
 
-For debug purpose.``` python
+For debug purpose.
+
+``` python
 print(full=False)
 ```
 
@@ -135,6 +151,8 @@ and whose sections are alse pages.
 
 #### Methods
 
+
+
 ``` python
 Documentation(title, comment=None)
 ```
@@ -149,7 +167,9 @@ Documentation(title, comment=None)
 
 Add a source code.
 
-The source code is parsed and the resulting [LINK ERROR: page 'Section' not found]() is stored in the [LINK ERROR: page '' not found]() dict.``` python
+The source code is parsed and the resulting [LINK ERROR: page 'Section' not found]() is stored in the [LINK ERROR: page '' not found]() dict.
+
+``` python
 load_source(key, text)
 ```
 
@@ -169,7 +189,9 @@ load_source(key, text)
 
 Enrich the reference doc by parsing source files.
 
-All the files with `.py` extension are parsed.``` python
+All the files with `.py` extension are parsed.
+
+``` python
 load_file(file_name, key=None)
 ```
 
@@ -190,7 +212,9 @@ load_file(file_name, key=None)
 
 Enrich the reference doc by parsing source files.
 
-All the files with `.py` extension are parsed.``` python
+All the files with `.py` extension are parsed.
+
+``` python
 load_files(folder=None, sub_folders=[], key=None, verbose=True)
 ```
 
@@ -211,7 +235,9 @@ load_files(folder=None, sub_folders=[], key=None, verbose=True)
 
 Undocument classes
 
-Properties and methods of undocumented classes are capture by inherited classes``` python
+Properties and methods of undocumented classes are capture by inherited classes
+
+``` python
 hide_classes(classes, verbose=True)
 ```
 
@@ -219,7 +245,9 @@ hide_classes(classes, verbose=True)
 
 ##### add_page
 
-Add a page in the documentation``` python
+Add a page in the documentation
+
+``` python
 add_page(section)
 ```
 
@@ -239,7 +267,9 @@ Add a page in the documentation
 
 > [!CAUTION]
 > **title** argument is used a as key in [LINK ERROR: page '' not found]() dictionary. It must be unique
-> in the scope of the project``` python
+> in the scope of the project
+
+``` python
 new_page(title, comment=None)
 ```
 
@@ -285,7 +315,9 @@ def replace(match_obj, section):
 
 > [!NOTE]
 > By default, a hook is used to define links between pages based on the
-> syntax : `<!Section title#Sub section title>` which is converted in [LINK ERROR: page 'Project' not found]().``` python
+> syntax : `<!Section title#Sub section title>` which is converted in [LINK ERROR: page 'Project' not found]().
+
+``` python
 set_hook(expr, repl)
 ```
 
@@ -312,7 +344,9 @@ Syntax of user link is made of three parts is
 > If a link can't be solved, the links contains an error message.
 
 > [!IMPORTANT]
-> [LINK ERROR: section '_token' not found]() and [LINK ERROR: section 'is_page' not found]() must have been set correctly before solving the links.``` python
+> [LINK ERROR: section '_token' not found]() and [LINK ERROR: section 'is_page' not found]() must have been set correctly before solving the links.
+
+``` python
 solve_links(ignore_source=False)
 ```
 
@@ -324,7 +358,9 @@ solve_links(ignore_source=False)
 
 ##### solve_hooks
 
-Solve all the hooks for a section.``` python
+Solve all the hooks for a section.
+
+``` python
 solve_hooks(include_links=True)
 ```
 
@@ -336,7 +372,9 @@ solve_hooks(include_links=True)
 
 ##### compile
 
-Initialize sections parameters at their good values``` python
+Initialize sections parameters at their good values
+
+``` python
 compile()
 ```
 
@@ -344,7 +382,9 @@ compile()
 
 ##### create_index_file
 
-Create the index file``` python
+Create the index file
+
+``` python
 create_index_file(file_name)
 ```
 

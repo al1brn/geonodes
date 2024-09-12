@@ -50,7 +50,9 @@ Is realigned:
 | with a margin:
 | - because it is written as a multiline comment string
 |   with indentation
-| Text continues here``` python
+| Text continues here
+
+``` python
 del_margin(comment)
 ```
 
@@ -69,7 +71,9 @@ del_margin(comment)
 Replace string by an index.
 
 This pretreatment ensure that the content of strings won't interfer with
-regular expression``` python
+regular expression
+
+``` python
 extract_strings(text)
 ```
 
@@ -85,7 +89,9 @@ extract_strings(text)
 
 ### replace_strings
 
-Replace the extracted strings.``` python
+Replace the extracted strings.
+
+``` python
 replace_strings(text, strings)
 ```
 
@@ -106,7 +112,9 @@ replace_strings(text, strings)
 Replace source code block by an index.
 
 This pretreatment ensure that the content of sourcode won't interfer with
-regular expression``` python
+regular expression
+
+``` python
 extract_source(text)
 ```
 
@@ -122,7 +130,9 @@ extract_source(text)
 
 ### replace_source
 
-Replace the extracted strings.``` python
+Replace the extracted strings.
+
+``` python
 replace_source(text, strings)
 ```
 
@@ -148,7 +158,9 @@ Clean python source code
 - Group multilines instructions between ( and )
 
 Comments and strings are store in lists.
-Comments are replaced by <COMMENT index> and strings by "index"``` python
+Comments are replaced by <COMMENT index> and strings by "index"
+
+``` python
 clean_python(text)
 ```
 
@@ -182,7 +194,9 @@ pprint(parse_list_line(line))
 # > 'description': 'text to parse',
 # > 'name': 'text',
 # > 'obj' : 'str'}
-`````` python
+```
+
+``` python
 parse_list_line(line)
 ```
 
@@ -195,7 +209,9 @@ Extract lists from a comment.
 This parser extracts Properties, Arguments and Returns sections.
 The corresponding lines are removed to build the 'new_comment' text.
 
-The lists are generated from the structure``` python
+The lists are generated from the structure
+
+``` python
 extract_lists(comment, titles)
 ```
 
@@ -240,7 +256,9 @@ The parser returns a dictionary giving the content of the module:
   - setter : function
   - getter : function
 
-The parsing is done with regular expressions.``` python
+The parsing is done with regular expressions.
+
+``` python
 parse_module(text, module_name="119")
 ```
 
@@ -258,7 +276,9 @@ parse_module(text, module_name="119")
 
 Load files from a folder.
 
-All the files with `.py` extension are parsed.``` python
+All the files with `.py` extension are parsed.
+
+``` python
 parse_files(folder, sub_folders=[], key=None, verbose=False)
 ```
 
@@ -282,7 +302,9 @@ Capture properties et methods from another class
 Allow to document class items as it were not inherited.
 
 > [!Note]
-> if the name of the base class is in the inherits list, it is removed from it``` python
+> if the name of the base class is in the inherits list, it is removed from it
+
+``` python
 capture_inheritance(class_, base_, remove=True)
 ```
 
@@ -301,7 +323,9 @@ Capture inheritances
 Allow to document class items as it were not inherited.
 
 > [!Note]
-> if the name of the base class is in the inherits list, it is removed from it``` python
+> if the name of the base class is in the inherits list, it is removed from it
+
+``` python
 capture_inheritances(class_, modules_, include=None, exclude=[], verbose=True)
 ```
 
@@ -338,7 +362,9 @@ End of text is reached> type bool
 
 ###### Getter
 
-End of text is reached``` python
+End of text is reached
+
+``` python
 eof()
 ```
 
@@ -355,7 +381,9 @@ End of line is reached> type bool
 
 ###### Getter
 
-End of line is reached``` python
+End of line is reached
+
+``` python
 eol()
 ```
 
@@ -384,7 +412,9 @@ Note that an error is raised if [LINK ERROR: page 'eof' not found]() is True.
 
 ``` python
 return self.text[self.cursor]
-`````` python
+```
+
+``` python
 c()
 ```
 
@@ -401,7 +431,9 @@ Return the text from the cursor.> type str
 
 ###### Getter
 
-Return the text from the cursor.``` python
+Return the text from the cursor.
+
+``` python
 from_cursor()
 ```
 
@@ -412,6 +444,8 @@ from_cursor()
 - **str** : text from the cursor
 
 #### Methods
+
+
 
 ``` python
 Text(text)
@@ -456,7 +490,9 @@ One or two argumentscan be passed:
 
  Returns
  -------
- - str : the read characters``` python
+ - str : the read characters
+
+``` python
 __call__(start=1, count=None)
 ```
 
@@ -464,7 +500,9 @@ __call__(start=1, count=None)
 
 ##### move
 
-Move the cursor of the given offset``` python
+Move the cursor of the given offset
+
+``` python
 move(offset=1)
 ```
 
@@ -503,7 +541,9 @@ print(text.find(("A", "B", "C")))
 
 print(Text("Find this number: 123!").find(r"\d+"))
 # > 123
-`````` python
+```
+
+``` python
 find(target, regex=False, halt=True)
 ```
 
@@ -537,7 +577,9 @@ text = Text("Just go HERE")
 text.move_to("HERE")
 print(text.from_cursor)
 # > HERE
-`````` python
+```
+
+``` python
 move_to(target, regex=False, halt=True)
 ```
 
@@ -569,7 +611,9 @@ text = Text("Go after TARGET: here")
 text.move_after("TARGET")
 print(text.from_cursor)
 # > : here
-`````` python
+```
+
+``` python
 move_after(target, regex=False, halt=True)
 ```
 
@@ -610,7 +654,9 @@ print(text.text)
 
 print(token)
 # <My Token>
-`````` python
+```
+
+``` python
 replace(start, end, repl)
 ```
 

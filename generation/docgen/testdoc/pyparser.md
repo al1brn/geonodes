@@ -12,7 +12,9 @@ Created on Wed Jun  8 09:00:41 2022
 
 Normalize markdown text
 
-Merge the lines not separated by a blank line``` python
+Merge the lines not separated by a blank line
+
+``` python
 md_normalize(text)
 ```
 
@@ -41,7 +43,9 @@ End of line flag> type Boolean
 
 ###### Getter
 
-End of line flag``` python
+End of line flag
+
+``` python
 eol()
 ```
 
@@ -58,7 +62,9 @@ End of file flag> type Boolean
 
 ###### Getter
 
-End of file flag``` python
+End of file flag
+
+``` python
 eof()
 ```
 
@@ -79,7 +85,9 @@ After reading, the cursor is incremented> type str
 
 Read the next char
 
-After reading, the cursor is incremented``` python
+After reading, the cursor is incremented
+
+``` python
 read()
 ```
 
@@ -100,7 +108,9 @@ Getting the current char doesn't move the cursor.> type str
 
 Read the current char
 
-Getting the current char doesn't move the cursor.``` python
+Getting the current char doesn't move the cursor.
+
+``` python
 current()
 ```
 
@@ -117,7 +127,9 @@ Read the previous char> type str
 
 ###### Getter
 
-Read the previous char``` python
+Read the previous char
+
+``` python
 previous()
 ```
 
@@ -128,6 +140,8 @@ previous()
 - **str** : Previous character or None if start of file
 
 #### Methods
+
+
 
 ``` python
 Reader(text)
@@ -141,7 +155,9 @@ Reader(text)
 
 ##### FromFile
 
-Initialize a parser from a file.``` python
+Initialize a parser from a file.
+
+``` python
 FromFile(fname)
 ```
 
@@ -153,7 +169,9 @@ FromFile(fname)
 
 ##### reset
 
-Reset the cursor to the start of the text``` python
+Reset the cursor to the start of the text
+
+``` python
 reset()
 ```
 
@@ -161,7 +179,9 @@ reset()
 
 ##### back
 
-Move the cursor one step backwards``` python
+Move the cursor one step backwards
+
+``` python
 back()
 ```
 
@@ -169,7 +189,9 @@ back()
 
 ##### equal
 
-Compare the string starting at the cursor with the argument``` python
+Compare the string starting at the cursor with the argument
+
+``` python
 equal(s)
 ```
 
@@ -208,6 +230,8 @@ which returns:
 #### Properties
 
 #### Methods
+
+
 
 ``` python
 Doc(match)

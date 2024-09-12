@@ -73,7 +73,9 @@ Return as a dictionary> type dict
 
 ###### Getter
 
-Return as a dictionary``` python
+Return as a dictionary
+
+``` python
 as_dict()
 ```
 
@@ -90,7 +92,9 @@ Comment property> type str
 
 ###### Getter
 
-Comment property``` python
+Comment property
+
+``` python
 comment()
 ```
 
@@ -101,6 +105,8 @@ comment()
 - **str** : Section header comment
 
 ###### Setter
+
+
 
 ``` python
 comment(value)
@@ -119,7 +125,9 @@ When set, the sub sections levels are set with the passed value plus 1.> type in
 
 Indentation level
 
-When set, the sub sections levels are set with the passed value plus 1.``` python
+When set, the sub sections levels are set with the passed value plus 1.
+
+``` python
 level()
 ```
 
@@ -131,6 +139,8 @@ level()
 
 
 ###### Setter
+
+
 
 ``` python
 level(value)
@@ -145,7 +155,9 @@ MD Document file name> type str
 
 ###### Getter
 
-MD Document file name``` python
+MD Document file name
+
+``` python
 md_file_name()
 ```
 
@@ -166,7 +178,9 @@ The markdown token is the lower case title where spaces are replaces by '-' char
 
 MD link token
 
-The markdown token is the lower case title where spaces are replaces by '-' char``` python
+The markdown token is the lower case title where spaces are replaces by '-' char
+
+``` python
 link_token()
 ```
 
@@ -183,7 +197,9 @@ Sort the sub sections in alphabetical order> type List
 
 ###### Getter
 
-Sort the sub sections in alphabetical order``` python
+Sort the sub sections in alphabetical order
+
+``` python
 sorted_sections()
 ```
 
@@ -194,6 +210,8 @@ sorted_sections()
 - **List** : list of the sub sections sorted in alphabetical order
 
 #### Methods
+
+
 
 ``` python
 Section(title, comment=None, level=0, **kwargs)
@@ -209,7 +227,9 @@ Section(title, comment=None, level=0, **kwargs)
 
 Get the content from a source file.
 
-The source is parsed and a [LINK ERROR: page 'Section' not found]() is added for each class and global function.``` python
+The source is parsed and a [LINK ERROR: page 'Section' not found]() is added for each class and global function.
+
+``` python
 FromSource(name, text)
 ```
 
@@ -233,7 +253,9 @@ This complementary initialisation takes place at the end of **__init__**, before
 
 Allows to initialize attributes which are used in [parse_comment](#parse_comment) method.
 
-Default method is empty.``` python
+Default method is empty.
+
+``` python
 init()
 ```
 
@@ -246,7 +268,9 @@ Run the function on the section and sub sections
 The method halts on the first section for which the function
 return `True` and returns this section.
 If the function doesn't return `True`, the methods is run on all sections
-and return `None`.``` python
+and return `None`.
+
+``` python
 iteration(f)
 ```
 
@@ -266,7 +290,9 @@ iteration(f)
 Parse comment to extract information
 
 This method extract information embbeded in the comment and returns the cleaned text.
-The default implementation normalizes the markdwon comment.``` python
+The default implementation normalizes the markdwon comment.
+
+``` python
 parse_comment(comment)
 ```
 
@@ -282,7 +308,9 @@ parse_comment(comment)
 
 ##### new_section
 
-Add a sub section``` python
+Add a sub section
+
+``` python
 new_section(title, comment=None, sub_level=1)
 ```
 
@@ -301,7 +329,9 @@ new_section(title, comment=None, sub_level=1)
 
 ##### write_header
 
-Append text to the header comment``` python
+Append text to the header comment
+
+``` python
 write_header(comment="8", parse=True)
 ```
 
@@ -317,7 +347,9 @@ write_header(comment="8", parse=True)
 Append text to the current text
 
 The current text is either the comment if this section if there is not sub sections,
-or the comment of the last sub sections.``` python
+or the comment of the last sub sections.
+
+``` python
 write(comment="9", parse=True)
 ```
 
@@ -330,7 +362,9 @@ write(comment="9", parse=True)
 
 ##### link_to
 
-MD link``` python
+MD link
+
+``` python
 link_to(url="14")
 ```
 
@@ -351,7 +385,9 @@ To search a section in the whole tree, use [LINK ERROR: page '' not found]() met
 
 ``` python
 sub_section = parent_section.iteration(lambda s: s.title == 'The title')
-`````` python
+```
+
+``` python
 get_section(title)
 ```
 
@@ -376,7 +412,9 @@ Used to diplay a table of content when there is a great number of sections.
 {'A': ['a section', 'another section',
  'O': ['other section']
  }
-`````` python
+```
+
+``` python
 alphabetical_sections(alpha=None)
 ```
 
@@ -393,7 +431,9 @@ alphabetical_sections(alpha=None)
 
 ##### build_header
 
-Yield the lines of the header part``` python
+Yield the lines of the header part
+
+``` python
 build_header()
 ```
 
@@ -401,7 +441,9 @@ build_header()
 
 ##### build_sections
 
-Yield the lines of the sections parts``` python
+Yield the lines of the sections parts
+
+``` python
 build_sections()
 ```
 
@@ -409,7 +451,9 @@ build_sections()
 
 ##### build_extra
 
-Yield extra lines at the end of the section documentation``` python
+Yield extra lines at the end of the section documentation
+
+``` python
 build_extra()
 ```
 
@@ -423,7 +467,9 @@ The method yields the lines from method **build_header** and the from
 **build_sections**.
 
 If the flag **with_sections_only** is set, nothing is yield if there is no
-sub sections.``` python
+sub sections.
+
+``` python
 build()
 ```
 
@@ -437,7 +483,9 @@ build()
 
 Print the documentation in the console
 
-For debug purpose.``` python
+For debug purpose.
+
+``` python
 print()
 ```
 
@@ -456,6 +504,8 @@ Yield a line for argument documentation:
 
 #### Methods
 
+
+
 ``` python
 Argument(name, type=None, default=None, description=None)
 ```
@@ -468,7 +518,9 @@ Argument(name, type=None, default=None, description=None)
 
 ##### build
 
-Yield line argument``` python
+Yield line argument
+
+``` python
 build()
 ```
 
@@ -491,6 +543,8 @@ Yield a line for return documentation:
 
 #### Methods
 
+
+
 ``` python
 Return(name, description=None)
 ```
@@ -503,7 +557,9 @@ Return(name, description=None)
 
 ##### build
 
-Yield line return``` python
+Yield line return
+
+``` python
 build()
 ```
 
@@ -536,7 +592,9 @@ Arguments Section> type Section
 
 ###### Getter
 
-Arguments Section``` python
+Arguments Section
+
+``` python
 arguments()
 ```
 
@@ -553,7 +611,9 @@ Arguments Section> type Section
 
 ###### Getter
 
-Arguments Section``` python
+Arguments Section
+
+``` python
 returns()
 ```
 
@@ -575,7 +635,9 @@ A Function section is made of two sections:
 
 It also create stores other information:
 - decorators
-- arguments``` python
+- arguments
+
+``` python
 init()
 ```
 
@@ -588,7 +650,9 @@ Function comment parser
 The Function parser extracts Arguments and Returns sections.
 The corresponding lines are remove from the comment to feed the two sections.
 
-The lists are generated from the structure``` python
+The lists are generated from the structure
+
+``` python
 parse_comment(comment)
 ```
 
@@ -598,7 +662,9 @@ parse_comment(comment)
 
 Create a class from an instance of Doc
 
-Doc is a class read by the **Parser**.``` python
+Doc is a class read by the **Parser**.
+
+``` python
 FromDoc(doc, class_name=None, **kwargs)
 ```
 
@@ -652,7 +718,9 @@ Properties Section> type Section
 
 ###### Getter
 
-Properties Section``` python
+Properties Section
+
+``` python
 properties()
 ```
 
@@ -669,7 +737,9 @@ Methods Section> type Section
 
 ###### Getter
 
-Methods Section``` python
+Methods Section
+
+``` python
 methods()
 ```
 
@@ -685,7 +755,9 @@ methods()
 
 Creates a Class document from a Doc parsed from source file
 
-The **doc** argument contains the list of documents methods and properties.``` python
+The **doc** argument contains the list of documents methods and properties.
+
+``` python
 FromDoc(doc, ignore_uncommented=True, **kwargs)
 ```
 
@@ -708,7 +780,9 @@ Compile the class
 
 Class compilation is:
 - Load each class based on this one into to the **subclasses** attribute.
-- Load the methods and properties inherited from parent classes``` python
+- Load the methods and properties inherited from parent classes
+
+``` python
 compile(project)
 ```
 
@@ -728,7 +802,9 @@ compile(project)
 Capture methods and properties from another Class
 
 This method allows to get the documentation of inherited items of a class
-which is not documentated.``` python
+which is not documentated.
+
+``` python
 capture_class(other, with_comment=False)
 ```
 
@@ -745,7 +821,9 @@ capture_class(other, with_comment=False)
 
 ##### build
 
-Yield the Class documentation lines``` python
+Yield the Class documentation lines
+
+``` python
 build()
 ```
 
@@ -808,6 +886,8 @@ Properties
 
 #### Methods
 
+
+
 ``` python
 Project(title, comment=None, toc="131")
 ```
@@ -822,7 +902,9 @@ Project(title, comment=None, toc="131")
 
 Add a source code.
 
-The source code is parsed and the resulting [LINK ERROR: page 'Section' not found]() is stored in the [LINK ERROR: page '' not found]() dict.``` python
+The source code is parsed and the resulting [LINK ERROR: page 'Section' not found]() is stored in the [LINK ERROR: page '' not found]() dict.
+
+``` python
 add_source(key, text)
 ```
 
@@ -842,7 +924,9 @@ add_source(key, text)
 
 Enrich the reference doc by parsing source files.
 
-All the files with `.py` extension are parsed.``` python
+All the files with `.py` extension are parsed.
+
+``` python
 load_files(folder=None, sub_folders=[], key=None)
 ```
 
@@ -867,7 +951,9 @@ If **key** argument is None, the **name** is searched in the whole dictionary,
 otherwise the search is performed only in the specified key.
 
 If **exact** is False, name is considered as a regular expression.
-All the title matching this expression is returned in a list.``` python
+All the title matching this expression is returned in a list.
+
+``` python
 get_refdoc(name, key=None, exact=True, halt=True)
 ```
 
@@ -886,7 +972,9 @@ get_refdoc(name, key=None, exact=True, halt=True)
 
 ##### add_page
 
-Add a page in the documentation``` python
+Add a page in the documentation
+
+``` python
 add_page(page)
 ```
 
@@ -906,7 +994,9 @@ Add a page in the documentation
 
 > [!CAUTION]
 > **title** argument is used a as key in [LINK ERROR: page '' not found]() dictionary. It must be unique
-> in the scope of the project``` python
+> in the scope of the project
+
+``` python
 new_page(title, comment=None, toc=None, in_toc=True)
 ```
 
@@ -947,7 +1037,9 @@ added to [LINK ERROR: page '' not found](). If **page** is not None, the class d
 is appended to it.
 
 > [!NOTE]
-> The page where the class is documented can be retreived with attribute [LINK ERROR: page 'Section' not found]().``` python
+> The page where the class is documented can be retreived with attribute [LINK ERROR: page 'Section' not found]().
+
+``` python
 add_class(class_name, page=None, bases=[], capture=[], file_key=None)
 ```
 
@@ -978,7 +1070,9 @@ added to [LINK ERROR: page '' not found](). If **page** is not None, the class d
 is appended to it.
 
 > [!NOTE]
-> The page where the class is documented can be retrieved with attribute [LINK ERROR: page 'Section' not found]().``` python
+> The page where the class is documented can be retrieved with attribute [LINK ERROR: page 'Section' not found]().
+
+``` python
 add_function(function_name, page=None, file_key=None, function_key=None, exact=True, only_commented=True, sub_level=1)
 ```
 
@@ -1028,7 +1122,9 @@ def replace(match_obj, section):
 
 > [!NOTE]
 > By default, a hook is used to define links between pages based on the
-> syntax : `<!Section title#Sub section title>` which is converted in [LINK ERROR: page 'Project' not found]().``` python
+> syntax : `<!Section title#Sub section title>` which is converted in [LINK ERROR: page 'Project' not found]().
+
+``` python
 set_hook(expr, repl)
 ```
 
@@ -1040,7 +1136,9 @@ set_hook(expr, repl)
 
 ##### create_index_file
 
-Create the index file``` python
+Create the index file
+
+``` python
 create_index_file(file_name)
 ```
 

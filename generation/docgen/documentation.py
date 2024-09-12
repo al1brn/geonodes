@@ -254,7 +254,7 @@ class Section(list):
                 self.comment += comment
 
     def write_source(self, source):
-        self.write("``` python\n")
+        self.write("\n\n``` python\n")
         self.write(source.replace("`", "'"))
         self.write("\n```\n\n")       
 
