@@ -391,7 +391,7 @@ class Section(list):
     
     def yield_content(self):
         
-        if False:
+        if True:
             yield f'<h{self.depth+1} id="{self._token}">{self.title}</h{self.depth+1}>'
             #yield f"#{'#'*self.depth} {self.title}\n\n"
         else:

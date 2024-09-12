@@ -1,16 +1,10 @@
-# docgenerator { #docgenerator }
-
-
+<h1 id="docgenerator">docgenerator</h1>
 Created on Fri Aug  9 08:10:09 2024
 
 @author: alain
 
 
-## Functions { #functions }
-
-### node_call_parser { #node_call_parser }
-
-Parse source code to find Node(node_name, sockets, **params)
+<h2 id="functions">Functions</h2><h3 id="node_call_parser">node_call_parser</h3>Parse source code to find Node(node_name, sockets, **params)
 
 ``` python
 node_call_parser(code, print_code=False)
@@ -18,13 +12,8 @@ node_call_parser(code, print_code=False)
 
 
 
-#### Arguments { #arguments }
+<h4 id="arguments">Arguments</h4>- **code** (str) : source code text
 
-- **code** (str) : source code text
+<h4 id="returns">Returns</h4>- **tuple** (str, dict, dict) : node_name, sockets initialization, params initialisation
 
-#### Returns { #returns }
-
-- **tuple** (str, dict, dict) : node_name, sockets initialization, params initialisation
-
-## Classes { #classes }
-
+<h2 id="classes">Classes</h2>

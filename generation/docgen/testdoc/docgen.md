@@ -1,15 +1,9 @@
-# docgen { #docgen }
-
-Markdown python documentation generator
+<h1 id="docgen">docgen</h1>Markdown python documentation generator
 
 Generate documentation for python project based on the source file.
 
 
-## Functions { #functions }
-
-### parse_comment { #parse_comment }
-
-Function comment parser
+<h2 id="functions">Functions</h2><h3 id="parse_comment">parse_comment</h3>Function comment parser
 
 The Function parser extracts Properties, Arguments and Returns sections.
 The corresponding lines are removed to build the 'new_comment' text.
@@ -22,19 +16,11 @@ parse_comment(comment)
 
 
 
-#### Arguments { #arguments }
+<h4 id="arguments">Arguments</h4>- **comment** (str) : the raw comment
 
-- **comment** (str) : the raw comment
+<h4 id="returns">Returns</h4>- **dict** : {'new_comment', 'properties', 'arguments', 'returns', 'raises'}
 
-#### Returns { #returns }
-
-- **dict** : {'new_comment', 'properties', 'arguments', 'returns', 'raises'}
-
-## Classes { #classes }
-
-### Section { #section }
-
-Elementary base of a documentation
+<h2 id="classes">Classes</h2><h3 id="section">Section</h3>Elementary base of a documentation
 
 A **Section** is basically a title, a header section and sub sections
 
@@ -58,16 +44,10 @@ Properties
 - fixed_level (bool) : level is fixed and can't be changed
 - page ([LINK ERROR: page 'Section' not found]()) : the page where this section will appear
 
-#### Properties { #properties }
-
-##### as_dict { #as_dict }
-
-Return as a dictionary> type dict
+<h4 id="properties">Properties</h4><h5 id="as_dict">as_dict</h5>Return as a dictionary> type dict
 
 
-###### Getter { #getter }
-
-Return as a dictionary
+<h6 id="getter">Getter</h6>Return as a dictionary
 
 ``` python
 as_dict()
@@ -75,18 +55,12 @@ as_dict()
 
 
 
-####### Returns { #returns-1 }
+<h7 id="returns-1">Returns</h7>- **dict** : section title: section
 
-- **dict** : section title: section
-
-##### comment { #comment }
-
-Comment property> type str
+<h5 id="comment">comment</h5>Comment property> type str
 
 
-###### Getter { #getter-1 }
-
-Comment property
+<h6 id="getter-1">Getter</h6>Comment property
 
 ``` python
 comment()
@@ -94,13 +68,9 @@ comment()
 
 
 
-####### Returns { #returns-2 }
+<h7 id="returns-2">Returns</h7>- **str** : Section header comment
 
-- **str** : Section header comment
-
-###### Setter { #setter }
-
-
+<h6 id="setter">Setter</h6>
 
 ``` python
 comment(value)
@@ -108,16 +78,12 @@ comment(value)
 
 
 
-##### level { #level }
-
-Indentation level
+<h5 id="level">level</h5>Indentation level
 
 When set, the sub sections levels are set with the passed value plus 1.> type int
 
 
-###### Getter { #getter-2 }
-
-Indentation level
+<h6 id="getter-2">Getter</h6>Indentation level
 
 When set, the sub sections levels are set with the passed value plus 1.
 
@@ -127,14 +93,10 @@ level()
 
 
 
-####### Returns { #returns-3 }
-
-- **int** : 
+<h7 id="returns-3">Returns</h7>- **int** : 
 
 
-###### Setter { #setter-1 }
-
-
+<h6 id="setter-1">Setter</h6>
 
 ``` python
 level(value)
@@ -142,14 +104,10 @@ level(value)
 
 
 
-##### md_file_name { #md_file_name }
-
-MD Document file name> type str
+<h5 id="md_file_name">md_file_name</h5>MD Document file name> type str
 
 
-###### Getter { #getter-3 }
-
-MD Document file name
+<h6 id="getter-3">Getter</h6>MD Document file name
 
 ``` python
 md_file_name()
@@ -157,20 +115,14 @@ md_file_name()
 
 
 
-####### Returns { #returns-4 }
+<h7 id="returns-4">Returns</h7>- **str** : markdown file name
 
-- **str** : markdown file name
-
-##### link_token { #link_token }
-
-MD link token
+<h5 id="link_token">link_token</h5>MD link token
 
 The markdown token is the lower case title where spaces are replaces by '-' char> type str
 
 
-###### Getter { #getter-4 }
-
-MD link token
+<h6 id="getter-4">Getter</h6>MD link token
 
 The markdown token is the lower case title where spaces are replaces by '-' char
 
@@ -180,18 +132,12 @@ link_token()
 
 
 
-####### Returns { #returns-5 }
+<h7 id="returns-5">Returns</h7>- **str** : markdown token
 
-- **str** : markdown token
-
-##### sorted_sections { #sorted_sections }
-
-Sort the sub sections in alphabetical order> type List
+<h5 id="sorted_sections">sorted_sections</h5>Sort the sub sections in alphabetical order> type List
 
 
-###### Getter { #getter-5 }
-
-Sort the sub sections in alphabetical order
+<h6 id="getter-5">Getter</h6>Sort the sub sections in alphabetical order
 
 ``` python
 sorted_sections()
@@ -199,13 +145,9 @@ sorted_sections()
 
 
 
-####### Returns { #returns-6 }
+<h7 id="returns-6">Returns</h7>- **List** : list of the sub sections sorted in alphabetical order
 
-- **List** : list of the sub sections sorted in alphabetical order
-
-#### Methods { #methods }
-
-
+<h4 id="methods">Methods</h4>
 
 ``` python
 Section(title, comment=None, level=0, **kwargs)
@@ -217,9 +159,7 @@ Section(title, comment=None, level=0, **kwargs)
 
 
 
-##### FromSource { #fromsource }
-
-Get the content from a source file.
+<h5 id="fromsource">FromSource</h5>Get the content from a source file.
 
 The source is parsed and a [LINK ERROR: page 'Section' not found]() is added for each class and global function.
 
@@ -229,18 +169,12 @@ FromSource(name, text)
 
 
 
-###### Arguments { #arguments-1 }
+<h6 id="arguments-1">Arguments</h6>- **text** (str) : source code to parse
 
-- **text** (str) : source code to parse
-
-###### Returns { #returns-7 }
-
-- **Section** : 
+<h6 id="returns-7">Returns</h6>- **Section** : 
 
 
-##### init { #init }
-
-Class initialisation
+<h5 id="init">init</h5>Class initialisation
 
 This complementary initialisation takes place at the end of **__init__**, before
 [parse_comment](#parse_comment) is called.
@@ -255,9 +189,7 @@ init()
 
 
 
-##### iteration { #iteration }
-
-Run the function on the section and sub sections
+<h5 id="iteration">iteration</h5>Run the function on the section and sub sections
 
 The method halts on the first section for which the function
 return `True` and returns this section.
@@ -270,18 +202,12 @@ iteration(f)
 
 
 
-###### Arguments { #arguments-2 }
+<h6 id="arguments-2">Arguments</h6>- **f** (function of template f(section)) : the function to run
 
-- **f** (function of template f(section)) : the function to run
-
-###### Returns { #returns-8 }
-
-- **Section** :  or None
+<h6 id="returns-8">Returns</h6>- **Section** :  or None
 
 
-##### parse_comment { #parse_comment-1 }
-
-Parse comment to extract information
+<h5 id="parse_comment-1">parse_comment</h5>Parse comment to extract information
 
 This method extract information embbeded in the comment and returns the cleaned text.
 The default implementation normalizes the markdwon comment.
@@ -292,17 +218,11 @@ parse_comment(comment)
 
 
 
-###### Arguments { #arguments-3 }
+<h6 id="arguments-3">Arguments</h6>- **comment** (str) : the raw comment
 
-- **comment** (str) : the raw comment
+<h6 id="returns-9">Returns</h6>- **str** : the cleaned comment
 
-###### Returns { #returns-9 }
-
-- **str** : the cleaned comment
-
-##### new_section { #new_section }
-
-Add a sub section
+<h5 id="new_section">new_section</h5>Add a sub section
 
 ``` python
 new_section(title, comment=None, sub_level=1)
@@ -310,20 +230,14 @@ new_section(title, comment=None, sub_level=1)
 
 
 
-###### Arguments { #arguments-4 }
-
-- **title** (str) : section title
+<h6 id="arguments-4">Arguments</h6>- **title** (str) : section title
 - - **comment** (str) : header comment
 - - **sub_level** (_int_ = 1) : level increment
 
-###### Returns { #returns-10 }
-
-- **Section** : 
+<h6 id="returns-10">Returns</h6>- **Section** : 
 
 
-##### write_header { #write_header }
-
-Append text to the header comment
+<h5 id="write_header">write_header</h5>Append text to the header comment
 
 ``` python
 write_header(comment="51", parse=True)
@@ -331,14 +245,10 @@ write_header(comment="51", parse=True)
 
 
 
-###### Arguments { #arguments-5 }
-
-- **comment** (str) : the text to write
+<h6 id="arguments-5">Arguments</h6>- **comment** (str) : the text to write
 - - **parse** (_bool_ = True) : parse the comment
 
-##### write { #write }
-
-Append text to the current text
+<h5 id="write">write</h5>Append text to the current text
 
 The current text is either the comment if this section if there is not sub sections,
 or the comment of the last sub sections.
@@ -349,14 +259,10 @@ write(comment="52", parse=True)
 
 
 
-###### Arguments { #arguments-6 }
-
-- **comment** (str) : the text to write
+<h6 id="arguments-6">Arguments</h6>- **comment** (str) : the text to write
 - - **parse** (_bool_ = True) : parse the comment
 
-##### link_to { #link_to }
-
-MD link
+<h5 id="link_to">link_to</h5>MD link
 
 ``` python
 link_to(url="57")
@@ -364,13 +270,9 @@ link_to(url="57")
 
 
 
-###### Returns { #returns-11 }
+<h6 id="returns-11">Returns</h6>- **str** : [title](url + link_token)
 
-- **str** : [title](url + link_token)
-
-##### get_section { #get_section }
-
-Look for a sub section by its title
+<h5 id="get_section">get_section</h5>Look for a sub section by its title
 
 > [!NOTE]
 > This function searches only in the direct children, not in the whole tree.
@@ -387,18 +289,12 @@ get_section(title)
 
 
 
-###### Arguments { #arguments-7 }
+<h6 id="arguments-7">Arguments</h6>- **title** (str) : the section to look for
 
-- **title** (str) : the section to look for
-
-###### Returns { #returns-12 }
-
-- **Section** :  if found, None otherwise
+<h6 id="returns-12">Returns</h6>- **Section** :  if found, None otherwise
 
 
-##### alphabetical_sections { #alphabetical_sections }
-
-Build a dictionary keyed by the section title initials
+<h5 id="alphabetical_sections">alphabetical_sections</h5>Build a dictionary keyed by the section title initials
 
 Used to diplay a table of content when there is a great number of sections.
 
@@ -414,18 +310,12 @@ alphabetical_sections(alpha=None)
 
 
 
-###### Arguments { #arguments-8 }
+<h6 id="arguments-8">Arguments</h6>- **alpha** (_dict_ = None) : dictionary to feed
 
-- **alpha** (_dict_ = None) : dictionary to feed
-
-###### Returns { #returns-13 }
-
-- **dict** :  of list of Sections
+<h6 id="returns-13">Returns</h6>- **dict** :  of list of Sections
 
 
-##### build_header { #build_header }
-
-Yield the lines of the header part
+<h5 id="build_header">build_header</h5>Yield the lines of the header part
 
 ``` python
 build_header()
@@ -433,9 +323,7 @@ build_header()
 
 
 
-##### build_sections { #build_sections }
-
-Yield the lines of the sections parts
+<h5 id="build_sections">build_sections</h5>Yield the lines of the sections parts
 
 ``` python
 build_sections()
@@ -443,9 +331,7 @@ build_sections()
 
 
 
-##### build_extra { #build_extra }
-
-Yield extra lines at the end of the section documentation
+<h5 id="build_extra">build_extra</h5>Yield extra lines at the end of the section documentation
 
 ``` python
 build_extra()
@@ -453,9 +339,7 @@ build_extra()
 
 
 
-##### build { #build }
-
-Yield the lines of the section
+<h5 id="build">build</h5>Yield the lines of the section
 
 The method yields the lines from method **build_header** and the from
 **build_sections**.
@@ -469,13 +353,9 @@ build()
 
 
 
-###### Returns { #returns-14 }
+<h6 id="returns-14">Returns</h6>- **str** : documentation lines for the sections
 
-- **str** : documentation lines for the sections
-
-##### print { #print }
-
-Print the documentation in the console
+<h5 id="print">print</h5>Print the documentation in the console
 
 For debug purpose.
 
@@ -485,20 +365,14 @@ print()
 
 
 
-### Argument { #argument }
-
-Function argument
+<h3 id="argument">Argument</h3>Function argument
 
 Yield a line for argument documentation:
 ```
 - name (type = default) : description
 ```
 
-#### Properties { #properties-1 }
-
-#### Methods { #methods-1 }
-
-
+<h4 id="properties-1">Properties</h4><h4 id="methods-1">Methods</h4>
 
 ``` python
 Argument(name, type=None, default=None, description=None)
@@ -510,9 +384,7 @@ Argument(name, type=None, default=None, description=None)
 
 
 
-##### build { #build-1 }
-
-Yield line argument
+<h5 id="build-1">build</h5>Yield line argument
 
 ``` python
 build()
@@ -520,24 +392,16 @@ build()
 
 
 
-###### Returns { #returns-15 }
+<h6 id="returns-15">Returns</h6>- **str** : formatted argument line
 
-- **str** : formatted argument line
-
-### Return { #return }
-
-Function returns
+<h3 id="return">Return</h3>Function returns
 
 Yield a line for return documentation:
 ```
 - name  : description
 ```
 
-#### Properties { #properties-2 }
-
-#### Methods { #methods-2 }
-
-
+<h4 id="properties-2">Properties</h4><h4 id="methods-2">Methods</h4>
 
 ``` python
 Return(name, description=None)
@@ -549,9 +413,7 @@ Return(name, description=None)
 
 
 
-##### build { #build-2 }
-
-Yield line return
+<h5 id="build-2">build</h5>Yield line return
 
 ``` python
 build()
@@ -559,13 +421,9 @@ build()
 
 
 
-###### Returns { #returns-16 }
+<h6 id="returns-16">Returns</h6>- **str** : formatted return line
 
-- **str** : formatted return line
-
-### Function { #function }
-
-Section dedicated to function documentation.
+<h3 id="function">Function</h3>Section dedicated to function documentation.
 
 The comment can contain description of Arguments and Returns.
 The comment is parsed in order to extract this information and to
@@ -577,16 +435,10 @@ Arguments
 - comment (str = None) : header comment
 - level (int = 1) : indentation level
 
-#### Properties { #properties-3 }
-
-##### arguments { #arguments-9 }
-
-Arguments Section> type Section
+<h4 id="properties-3">Properties</h4><h5 id="arguments-9">arguments</h5>Arguments Section> type Section
 
 
-###### Getter { #getter-6 }
-
-Arguments Section
+<h6 id="getter-6">Getter</h6>Arguments Section
 
 ``` python
 arguments()
@@ -594,18 +446,12 @@ arguments()
 
 
 
-####### Returns { #returns-17 }
+<h7 id="returns-17">Returns</h7>- **Section** : title is 'Arguments', sub sections are [Argument](#argument)
 
-- **Section** : title is 'Arguments', sub sections are [Argument](#argument)
-
-##### returns { #returns-18 }
-
-Arguments Section> type Section
+<h5 id="returns-18">returns</h5>Arguments Section> type Section
 
 
-###### Getter { #getter-7 }
-
-Arguments Section
+<h6 id="getter-7">Getter</h6>Arguments Section
 
 ``` python
 returns()
@@ -613,15 +459,9 @@ returns()
 
 
 
-####### Returns { #returns-19 }
+<h7 id="returns-19">Returns</h7>- **Section** : title is 'Arguments', sub sections are [Return](#return)
 
-- **Section** : title is 'Arguments', sub sections are [Return](#return)
-
-#### Methods { #methods-3 }
-
-##### init { #init-1 }
-
-Function section specific init
+<h4 id="methods-3">Methods</h4><h5 id="init-1">init</h5>Function section specific init
 
 A Function section is made of two sections:
 - Arguments
@@ -637,9 +477,7 @@ init()
 
 
 
-##### parse_comment { #parse_comment-2 }
-
-Function comment parser
+<h5 id="parse_comment-2">parse_comment</h5>Function comment parser
 
 The Function parser extracts Properties, Arguments and Returns sections.
 The corresponding lines are remove from the comment to feed the two sections.
@@ -652,9 +490,7 @@ parse_comment(comment)
 
 
 
-##### FromDoc { #fromdoc }
-
-Create a class from an instance of Doc
+<h5 id="fromdoc">FromDoc</h5>Create a class from an instance of Doc
 
 Doc is a class read by the **Parser**.
 
@@ -664,13 +500,9 @@ FromDoc(doc, class_name=None, **kwargs)
 
 
 
-###### Arguments { #arguments-10 }
+<h6 id="arguments-10">Arguments</h6>- **doc** (Doc) : Doc parsed by **Parser**
 
-- **doc** (Doc) : Doc parsed by **Parser**
-
-### Class { #class }
-
-Section documenting a class
+<h3 id="class">Class</h3>Section documenting a class
 
 The structure of the document is:
 - title (class name)
@@ -688,31 +520,19 @@ Arguments
 - class_name (str) : class name
 - comment (str) : header comment
 
-#### Properties { #properties-4 }
-
-##### bases { #bases }
-
-name of the base classes> type list of str
+<h4 id="properties-4">Properties</h4><h5 id="bases">bases</h5>name of the base classes> type list of str
 
 
-##### subclasses { #subclasses }
-
-name of the sub classes> type list of str
+<h5 id="subclasses">subclasses</h5>name of the sub classes> type list of str
 
 
-##### inherited { #inherited }
-
-properties and methods inherited from base classes> type list of str
+<h5 id="inherited">inherited</h5>properties and methods inherited from base classes> type list of str
 
 
-##### properties { #properties-5 }
-
-Properties Section> type Section
+<h5 id="properties-5">properties</h5>Properties Section> type Section
 
 
-###### Getter { #getter-8 }
-
-Properties Section
+<h6 id="getter-8">Getter</h6>Properties Section
 
 ``` python
 properties()
@@ -720,18 +540,12 @@ properties()
 
 
 
-####### Returns { #returns-20 }
+<h7 id="returns-20">Returns</h7>- **Section** : title is 'Properties', sub sections are documented properties
 
-- **Section** : title is 'Properties', sub sections are documented properties
-
-##### methods { #methods-4 }
-
-Methods Section> type Section
+<h5 id="methods-4">methods</h5>Methods Section> type Section
 
 
-###### Getter { #getter-9 }
-
-Methods Section
+<h6 id="getter-9">Getter</h6>Methods Section
 
 ``` python
 methods()
@@ -739,15 +553,9 @@ methods()
 
 
 
-####### Returns { #returns-21 }
+<h7 id="returns-21">Returns</h7>- **Section** : title is 'Methods', sub sections are documented methods
 
-- **Section** : title is 'Methods', sub sections are documented methods
-
-#### Methods { #methods-5 }
-
-##### FromDoc { #fromdoc-1 }
-
-Creates a Class document from a Doc parsed from source file
+<h4 id="methods-5">Methods</h4><h5 id="fromdoc-1">FromDoc</h5>Creates a Class document from a Doc parsed from source file
 
 The **doc** argument contains the list of documents methods and properties.
 
@@ -757,18 +565,12 @@ FromDoc(doc, ignore_uncommented=True, **kwargs)
 
 
 
-###### Arguments { #arguments-11 }
-
-- **doc** (Doc) : Doc parsed from a sourc file
+<h6 id="arguments-11">Arguments</h6>- **doc** (Doc) : Doc parsed from a sourc file
 - - **exclude_uncommented** (_bool_ = True) : exclude the methods which are not commented in the source file
 
-###### Returns { #returns-22 }
+<h6 id="returns-22">Returns</h6>- **Class** : document on the class
 
-- **Class** : document on the class
-
-##### compile { #compile }
-
-Compile the class
+<h5 id="compile">compile</h5>Compile the class
 
 **project** refers to the global [LINK ERROR: page 'Project' not found]() documentation.
 
@@ -782,18 +584,12 @@ compile(project)
 
 
 
-###### Arguments { #arguments-12 }
+<h6 id="arguments-12">Arguments</h6>- **project** ([LINK ERROR: page 'Project' not found]()) : main project
 
-- **project** ([LINK ERROR: page 'Project' not found]()) : main project
-
-###### Returns { #returns-23 }
-
-- **self** : 
+<h6 id="returns-23">Returns</h6>- **self** : 
 
 
-##### capture_class { #capture_class }
-
-Capture methods and properties from another Class
+<h5 id="capture_class">capture_class</h5>Capture methods and properties from another Class
 
 This method allows to get the documentation of inherited items of a class
 which is not documentated.
@@ -804,18 +600,12 @@ capture_class(other, with_comment=False)
 
 
 
-###### Arguments { #arguments-13 }
+<h6 id="arguments-13">Arguments</h6>- **other** (Class) : class to copy methods and properties from
 
-- **other** (Class) : class to copy methods and properties from
-
-###### Returns { #returns-24 }
-
-- **self** : 
+<h6 id="returns-24">Returns</h6>- **self** : 
 
 
-##### build { #build-3 }
-
-Yield the Class documentation lines
+<h5 id="build-3">build</h5>Yield the Class documentation lines
 
 ``` python
 build()
@@ -823,9 +613,7 @@ build()
 
 
 
-### Project { #project }
-
-Project documentation
+<h3 id="project">Project</h3>Project documentation
 
 Project documentation allows to build a full project documentation
 from parsing source code, loading complementary documentation file and also
@@ -876,11 +664,7 @@ Properties
 - pages (dict of [LINK ERROR: page 'Section' not found]()) : the pages to create in the final documentation
 - sections (list of [LINK ERROR: page 'Section' not found]()) : dictionary of documented items
 
-#### Properties { #properties-6 }
-
-#### Methods { #methods-6 }
-
-
+<h4 id="properties-6">Properties</h4><h4 id="methods-6">Methods</h4>
 
 ``` python
 Project(title, comment=None, toc="174")
@@ -892,9 +676,7 @@ Project(title, comment=None, toc="174")
 
 
 
-##### add_source { #add_source }
-
-Add a source code.
+<h5 id="add_source">add_source</h5>Add a source code.
 
 The source code is parsed and the resulting [LINK ERROR: page 'Section' not found]() is stored in the [LINK ERROR: page '' not found]() dict.
 
@@ -904,19 +686,13 @@ add_source(key, text)
 
 
 
-###### Arguments { #arguments-14 }
-
-- **key** (str) : source file key
+<h6 id="arguments-14">Arguments</h6>- **key** (str) : source file key
 - - **text** (str) : the source code
 
-###### Returns { #returns-25 }
-
-- **Section** : 
+<h6 id="returns-25">Returns</h6>- **Section** : 
 
 
-##### load_files { #load_files }
-
-Enrich the reference doc by parsing source files.
+<h5 id="load_files">load_files</h5>Enrich the reference doc by parsing source files.
 
 All the files with `.py` extension are parsed.
 
@@ -926,20 +702,14 @@ load_files(folder=None, sub_folders=[], key=None)
 
 
 
-###### Arguments { #arguments-15 }
-
-- **folder** (str) : main folder
+<h6 id="arguments-15">Arguments</h6>- **folder** (str) : main folder
 - - **sub_folders** (str) : sub folders to explore
 - - **key** (_str_ = None) : 
 
-###### Returns { #returns-26 }
-
-- **self** : 
+<h6 id="returns-26">Returns</h6>- **self** : 
 
 
-##### get_refdoc { #get_refdoc }
-
-Get a reference documentation from the base
+<h5 id="get_refdoc">get_refdoc</h5>Get a reference documentation from the base
 
 If **key** argument is None, the **name** is searched in the whole dictionary,
 otherwise the search is performed only in the specified key.
@@ -953,20 +723,14 @@ get_refdoc(name, key=None, exact=True, halt=True)
 
 
 
-###### Arguments { #arguments-16 }
-
-- **name** (str) : title of the reference documentation
+<h6 id="arguments-16">Arguments</h6>- **name** (str) : title of the reference documentation
 - - **key** (_str_ = None) : source file key
 - - **exact** (_bool_ = True) : use exact name if True, regular expression otherwise
 - - **halt** (_bool_ = True) : raise an exception if not found
 
-###### Returns { #returns-27 }
+<h6 id="returns-27">Returns</h6>- **Section** : found section if exact is True, list of sections otherwise
 
-- **Section** : found section if exact is True, list of sections otherwise
-
-##### add_page { #add_page }
-
-Add a page in the documentation
+<h5 id="add_page">add_page</h5>Add a page in the documentation
 
 ``` python
 add_page(page)
@@ -974,17 +738,11 @@ add_page(page)
 
 
 
-###### Arguments { #arguments-17 }
+<h6 id="arguments-17">Arguments</h6>- **page** ([LINK ERROR: page 'Section' not found]()) : the page to add
 
-- **page** ([LINK ERROR: page 'Section' not found]()) : the page to add
+<h6 id="returns-28">Returns</h6>- **Section** : the argument **page**
 
-###### Returns { #returns-28 }
-
-- **Section** : the argument **page**
-
-##### new_page { #new_page }
-
-Add a page in the documentation
+<h5 id="new_page">new_page</h5>Add a page in the documentation
 
 > [!CAUTION]
 > **title** argument is used a as key in [LINK ERROR: page '' not found]() dictionary. It must be unique
@@ -996,21 +754,15 @@ new_page(title, comment=None, toc=None, in_toc=True)
 
 
 
-###### Arguments { #arguments-18 }
-
-- **title** (str) : page title
+<h6 id="arguments-18">Arguments</h6>- **title** (str) : page title
 - - **comment** (str) : comment
 - - **toc** (_str_ = None) : title of the content section, None if no content section is required
 - - **in_toc** (_bool_ = True) : include the the documentation table of content
 
-###### Returns { #returns-29 }
-
-- **Page** : >
+<h6 id="returns-29">Returns</h6>- **Page** : >
 
 
-##### add_class { #add_class }
-
-Copy class documentation from reference documentation to pages
+<h5 id="add_class">add_class</h5>Copy class documentation from reference documentation to pages
 
 The class must exist in one of the reference documentation [LINK ERROR: page '' not found]().
 
@@ -1039,21 +791,15 @@ add_class(class_name, page=None, bases=[], capture=[], file_key=None)
 
 
 
-###### Arguments { #arguments-19 }
-
-- **class_name** (str) : class name
+<h6 id="arguments-19">Arguments</h6>- **class_name** (str) : class name
 - - **page** (_[LINK ERROR: page 'Section' not found]() or str_ = None) : name of the page where to include the class documentation
 - - **bases** (_list of strs_ = []) : list of base classes
 - - **capture** (_list of strs or [LINK ERROR: page 'Class' not found]()_ = []) : list of classes to copy methods and properties from
 - - **file_key** (_str_ = None) : file key in [LINK ERROR: page '' not found]()
 
-###### Returns { #returns-30 }
+<h6 id="returns-30">Returns</h6>- **Class** : created class
 
-- **Class** : created class
-
-##### add_function { #add_function }
-
-Copy function documentation reference documentation to pages.
+<h5 id="add_function">add_function</h5>Copy function documentation reference documentation to pages.
 
 The function must exist in one of the reference documentation [LINK ERROR: page '' not found]().
 
@@ -1072,9 +818,7 @@ add_function(function_name, page=None, file_key=None, function_key=None, exact=T
 
 
 
-###### Arguments { #arguments-20 }
-
-- **function_name** (str) : class name
+<h6 id="arguments-20">Arguments</h6>- **function_name** (str) : class name
 - - **page** (_[LINK ERROR: page 'Section' not found]() or str_ = None) : name of the page where to include the class documentation
 - - **file_key** (_str_ = None) : file key in [LINK ERROR: page '' not found]()
 - - **function_key** (_str_ = None) : key of the function in [LINK ERROR: page '' not found]()
@@ -1082,13 +826,9 @@ add_function(function_name, page=None, file_key=None, function_key=None, exact=T
 - - **only_commented** (_bool_ = True) : don't include uncommented functions
 - - **sub_level** (_int_ = 1) : incrementation level to page.level
 
-###### Returns { #returns-31 }
+<h6 id="returns-31">Returns</h6>- **Function** : created class
 
-- **Function** : created class
-
-##### set_hook { #set_hook }
-
-Replace a regular expression by as substitution string
+<h5 id="set_hook">set_hook</h5>Replace a regular expression by as substitution string
 
 Hooks are applied to the documentation at compilation time.
 
@@ -1124,13 +864,9 @@ set_hook(expr, repl)
 
 
 
-###### Arguments { #arguments-21 }
+<h6 id="arguments-21">Arguments</h6>- **expr** (str) : RegEx expression - repl (str or function) : replacement string or function
 
-- **expr** (str) : RegEx expression - repl (str or function) : replacement string or function
-
-##### create_index_file { #create_index_file }
-
-Create the index file
+<h5 id="create_index_file">create_index_file</h5>Create the index file
 
 ``` python
 create_index_file(file_name)
@@ -1138,7 +874,5 @@ create_index_file(file_name)
 
 
 
-###### Arguments { #arguments-22 }
-
-- **file_name** (str) : file name to write
+<h6 id="arguments-22">Arguments</h6>- **file_name** (str) : file name to write
 
