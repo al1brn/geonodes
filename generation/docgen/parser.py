@@ -923,7 +923,7 @@ def struct_list(struct, name_only=True, **kwargs):
 # =============================================================================================================================
 # Parse python source code
 
-def parse_module(text):
+def parse_module(text, module_name='Module'):
     """ Parse a python file source
 
     The parser returns a dictionary giving the content of the module:
@@ -973,7 +973,7 @@ def parse_module(text):
 
     module_subs= {}
 
-    module = new_module('Module', comments[0] if len(comments) else None, subs=module_subs)
+    module = new_module(module_name, comments[0] if len(comments) else None, subs=module_subs)
 
     # ----------------------------------------------------------------------------------------------------
     # Look for class definitions:

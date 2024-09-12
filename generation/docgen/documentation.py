@@ -150,7 +150,7 @@ class Section(list):
         if self._page is None:
             return self
         else:
-            return self.page
+            return self._page
         
     @page.setter
     def page(self, value):
@@ -493,7 +493,7 @@ class Documentation(Section):
         if key in self.modules:
             raise Exception(f"Impossible to add the source keyed by '{key}': key already exists in {list(self.modules.keys())}")
 
-        self.modules[key] = parse_module(text)
+        self.modules[key] = parse_module(text, module_name=Path(key).stem)
 
         return key
     
@@ -899,7 +899,7 @@ class Documentation(Section):
         # ----------------------------------------------------------------------------------------------------
         # Apply the hooks
         
-        #self.solve_hooks(include_links=True)
+        self.solve_hooks(include_links=True)
             
             
     # ====================================================================================================
