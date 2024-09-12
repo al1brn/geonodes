@@ -388,7 +388,9 @@ class Section(list):
     
     def yield_content(self):
         
-        yield f"#{'#'*self.depth} {self.title}\n\n"
+        a_, _a = '{', '}'
+        
+        yield f"#{'#'*self.depth} {self.title} {a_}{self._token}{_a}\n\n"
         
         if self.comment is not None:
             yield self.comment + '\n\n'
