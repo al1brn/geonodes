@@ -24,7 +24,7 @@ In addition to this structure, a dict can contain complementory values such as i
 classes or arguments for functions
 
 
-## Functions { #functions-3 }
+## Functions { #functions }
 
 ### del_margin { #del_margin }
 
@@ -58,11 +58,11 @@ del_margin(comment)
 
 
 
-#### Arguments { #arguments-39 }
+#### Arguments { #arguments }
 
 - **comment** (str) : the comment
 
-#### Returns { #returns-46 }
+#### Returns { #returns }
 
 - **str** : the realigned comment
 
@@ -79,11 +79,11 @@ extract_strings(text)
 
 
 
-#### Arguments { #arguments-40 }
+#### Arguments { #arguments-1 }
 
 - **text** (str) : text to extract strings from
 
-#### Returns { #returns-47 }
+#### Returns { #returns-1 }
 
 - **str** : cleaned text and list of extracted strings
 
@@ -97,12 +97,12 @@ replace_strings(text, strings)
 
 
 
-#### Arguments { #arguments-41 }
+#### Arguments { #arguments-2 }
 
 - **text** (str) : text with replaced strings
 - - **strings** : list of strings
 
-#### Returns { #returns-48 }
+#### Returns { #returns-2 }
 
 - **Text** :  with original strings
 
@@ -120,11 +120,11 @@ extract_source(text)
 
 
 
-#### Arguments { #arguments-42 }
+#### Arguments { #arguments-3 }
 
 - **text** (str) : text to extract source code from
 
-#### Returns { #returns-49 }
+#### Returns { #returns-3 }
 
 - **str** : cleaned text and list of extracted pieces of code
 
@@ -138,12 +138,12 @@ replace_source(text, strings)
 
 
 
-#### Arguments { #arguments-43 }
+#### Arguments { #arguments-4 }
 
 - **text** (str) : text with replaced pieces of code
 - - **strings** : list of pieces of code
 
-#### Returns { #returns-50 }
+#### Returns { #returns-4 }
 
 - **Text** :  with original strings
 
@@ -166,11 +166,11 @@ clean_python(text)
 
 
 
-#### Arguments { #arguments-44 }
+#### Arguments { #arguments-5 }
 
 - **text** (str) : source code to clean
 
-#### Returns { #returns-51 }
+#### Returns { #returns-5 }
 
 - **str** : cleaned text
 - - **list** : list of comments
@@ -217,12 +217,12 @@ extract_lists(comment, titles)
 
 
 
-#### Arguments { #arguments-45 }
+#### Arguments { #arguments-6 }
 
 - **comment** (str) : the raw comment
 - - **titles** (str or list of strs) : the titles of the lists to extract
 
-#### Returns { #returns-52 }
+#### Returns { #returns-6 }
 
 - **str** : comment without the lists, lists as dict
 
@@ -264,11 +264,11 @@ parse_module(text, module_name="119")
 
 
 
-#### Arguments { #arguments-46 }
+#### Arguments { #arguments-7 }
 
 - **text** (str) : source code to parse
 
-#### Returns { #returns-53 }
+#### Returns { #returns-7 }
 
 - **dict** : classes and functions
 
@@ -284,13 +284,13 @@ parse_files(folder, sub_folders=[], key=None, verbose=False)
 
 
 
-#### Arguments { #arguments-47 }
+#### Arguments { #arguments-8 }
 
 - **folder** (str) : main folder
 - - **sub_folders** (str) : sub folders to explore
 - - **key** (_str_ = None) : 
 
-#### Returns { #returns-54 }
+#### Returns { #returns-8 }
 
 - **dict** : 
 
@@ -310,7 +310,7 @@ capture_inheritance(class_, base_, remove=True)
 
 
 
-#### Arguments { #arguments-48 }
+#### Arguments { #arguments-9 }
 
 - **class_** (dict) : the class to enrich
 - - **base_** (dict) : the class to capture properties and methods from
@@ -331,14 +331,14 @@ capture_inheritances(class_, modules_, include=None, exclude=[], verbose=True)
 
 
 
-#### Arguments { #arguments-49 }
+#### Arguments { #arguments-10 }
 
 - **class_** (dict) : the class to enrich
 - - **modules_** (dict) : the hierarchy containing base classes to capture from
 - - **include** (_list_ = None) : limit capture to the given list
 - - **exclude** (_list_ = []) : exclude classes in the given list
 
-## Classes { #classes-3 }
+## Classes { #classes }
 
 ### Text { #text }
 
@@ -353,14 +353,14 @@ Properties
 ----------
 - cursor (int) : current position
 
-#### Properties { #properties-11 }
+#### Properties { #properties }
 
-##### eof { #eof-1 }
+##### eof { #eof }
 
 End of text is reached> type bool
 
 
-###### Getter { #getter-15 }
+###### Getter { #getter }
 
 End of text is reached
 
@@ -370,16 +370,16 @@ eof()
 
 
 
-####### Returns { #returns-55 }
+####### Returns { #returns-9 }
 
 - **bool** : True if end of text is reached
 
-##### eol { #eol-1 }
+##### eol { #eol }
 
 End of line is reached> type bool
 
 
-###### Getter { #getter-16 }
+###### Getter { #getter-1 }
 
 End of line is reached
 
@@ -389,7 +389,7 @@ eol()
 
 
 
-####### Returns { #returns-56 }
+####### Returns { #returns-10 }
 
 - **bool** : True if current char is eol (or if eof is True)
 
@@ -404,7 +404,7 @@ return self.text[self.cursor]
 ```> type str
 
 
-###### Getter { #getter-17 }
+###### Getter { #getter-2 }
 
 Current character
 
@@ -420,7 +420,7 @@ c()
 
 
 
-####### Returns { #returns-57 }
+####### Returns { #returns-11 }
 
 - **str** : the character at cursor
 
@@ -429,7 +429,7 @@ c()
 Return the text from the cursor.> type str
 
 
-###### Getter { #getter-18 }
+###### Getter { #getter-3 }
 
 Return the text from the cursor.
 
@@ -439,11 +439,11 @@ from_cursor()
 
 
 
-####### Returns { #returns-58 }
+####### Returns { #returns-12 }
 
 - **str** : text from the cursor
 
-#### Methods { #methods-11 }
+#### Methods { #methods }
 
 
 
@@ -508,11 +508,11 @@ move(offset=1)
 
 
 
-###### Arguments { #arguments-50 }
+###### Arguments { #arguments-11 }
 
 - **offset** (_int_ = 1) : cursor offset
 
-###### Returns { #returns-59 }
+###### Returns { #returns-13 }
 
 - **int** : new cursor position
 
@@ -549,13 +549,13 @@ find(target, regex=False, halt=True)
 
 
 
-###### Arguments { #arguments-51 }
+###### Arguments { #arguments-12 }
 
 - **target** (str or tuple of strs) : the string(s) to reach
 - - **regex** (_bool_ = False) : target is a regular expression or not
 - - **halt** (_bool_ = True) : raise an exception if not found
 
-###### Returns { #returns-60 }
+###### Returns { #returns-14 }
 
 - **int** : the new cursor position
 
@@ -585,11 +585,11 @@ move_to(target, regex=False, halt=True)
 
 
 
-###### Arguments { #arguments-52 }
+###### Arguments { #arguments-13 }
 
 - **target** (str or tuple of strs) : the string(s) to reach
 
-###### Returns { #returns-61 }
+###### Returns { #returns-15 }
 
 - **int** : the new cursor position
 
@@ -619,11 +619,11 @@ move_after(target, regex=False, halt=True)
 
 
 
-###### Arguments { #arguments-53 }
+###### Arguments { #arguments-14 }
 
 - **target** (str or tuple of strs) : the string(s) to reach
 
-###### Returns { #returns-62 }
+###### Returns { #returns-16 }
 
 - **int** : the new cursor position
 
@@ -662,13 +662,13 @@ replace(start, end, repl)
 
 
 
-###### Arguments { #arguments-54 }
+###### Arguments { #arguments-15 }
 
 - **start** (int) : start index of replaced part
 - - **end** (int) : end index of replace part
 - - **repl** (str) : the replacement string
 
-###### Returns { #returns-63 }
+###### Returns { #returns-17 }
 
 - **str** : the replaced string
 

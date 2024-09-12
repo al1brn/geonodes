@@ -900,8 +900,7 @@ class Documentation(Section):
         for section in self:
             section.is_page = True
             section.depth = 0
-        
-        self.set_tokens()
+            section.set_tokens()
             
         # ----------------------------------------------------------------------------------------------------
         # Apply the hooks

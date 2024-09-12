@@ -6,7 +6,7 @@ Created on Fri Aug  9 08:10:09 2024
 @author: alain
 
 
-## Functions { #functions-5 }
+## Functions { #functions }
 
 ### node_call_parser { #node_call_parser }
 
@@ -18,13 +18,13 @@ node_call_parser(code, print_code=False)
 
 
 
-#### Arguments { #arguments-77 }
+#### Arguments { #arguments }
 
 - **code** (str) : source code text
 
-#### Returns { #returns-95 }
+#### Returns { #returns }
 
 - **tuple** (str, dict, dict) : node_name, sockets initialization, params initialisation
 
-## Classes { #classes-5 }
+## Classes { #classes }
 

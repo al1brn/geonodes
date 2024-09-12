@@ -5,7 +5,7 @@ Markdown python documentation generator
 Generate documentation for python project based on the source file.
 
 
-## Functions { #functions-2 }
+## Functions { #functions }
 
 ### parse_comment { #parse_comment }
 
@@ -22,17 +22,17 @@ parse_comment(comment)
 
 
 
-#### Arguments { #arguments-16 }
+#### Arguments { #arguments }
 
 - **comment** (str) : the raw comment
 
-#### Returns { #returns-14 }
+#### Returns { #returns }
 
 - **dict** : {'new_comment', 'properties', 'arguments', 'returns', 'raises'}
 
-## Classes { #classes-2 }
+## Classes { #classes }
 
-### Section { #section-1 }
+### Section { #section }
 
 Elementary base of a documentation
 
@@ -58,14 +58,14 @@ Properties
 - fixed_level (bool) : level is fixed and can't be changed
 - page ([LINK ERROR: page 'Section' not found]()) : the page where this section will appear
 
-#### Properties { #properties-4 }
+#### Properties { #properties }
 
 ##### as_dict { #as_dict }
 
 Return as a dictionary> type dict
 
 
-###### Getter { #getter-5 }
+###### Getter { #getter }
 
 Return as a dictionary
 
@@ -75,7 +75,7 @@ as_dict()
 
 
 
-####### Returns { #returns-15 }
+####### Returns { #returns-1 }
 
 - **dict** : section title: section
 
@@ -84,7 +84,7 @@ as_dict()
 Comment property> type str
 
 
-###### Getter { #getter-6 }
+###### Getter { #getter-1 }
 
 Comment property
 
@@ -94,7 +94,7 @@ comment()
 
 
 
-####### Returns { #returns-16 }
+####### Returns { #returns-2 }
 
 - **str** : Section header comment
 
@@ -115,7 +115,7 @@ Indentation level
 When set, the sub sections levels are set with the passed value plus 1.> type int
 
 
-###### Getter { #getter-7 }
+###### Getter { #getter-2 }
 
 Indentation level
 
@@ -127,7 +127,7 @@ level()
 
 
 
-####### Returns { #returns-17 }
+####### Returns { #returns-3 }
 
 - **int** : 
 
@@ -147,7 +147,7 @@ level(value)
 MD Document file name> type str
 
 
-###### Getter { #getter-8 }
+###### Getter { #getter-3 }
 
 MD Document file name
 
@@ -157,7 +157,7 @@ md_file_name()
 
 
 
-####### Returns { #returns-18 }
+####### Returns { #returns-4 }
 
 - **str** : markdown file name
 
@@ -168,7 +168,7 @@ MD link token
 The markdown token is the lower case title where spaces are replaces by '-' char> type str
 
 
-###### Getter { #getter-9 }
+###### Getter { #getter-4 }
 
 MD link token
 
@@ -180,7 +180,7 @@ link_token()
 
 
 
-####### Returns { #returns-19 }
+####### Returns { #returns-5 }
 
 - **str** : markdown token
 
@@ -189,7 +189,7 @@ link_token()
 Sort the sub sections in alphabetical order> type List
 
 
-###### Getter { #getter-10 }
+###### Getter { #getter-5 }
 
 Sort the sub sections in alphabetical order
 
@@ -199,11 +199,11 @@ sorted_sections()
 
 
 
-####### Returns { #returns-20 }
+####### Returns { #returns-6 }
 
 - **List** : list of the sub sections sorted in alphabetical order
 
-#### Methods { #methods-4 }
+#### Methods { #methods }
 
 
 
@@ -229,11 +229,11 @@ FromSource(name, text)
 
 
 
-###### Arguments { #arguments-17 }
+###### Arguments { #arguments-1 }
 
 - **text** (str) : source code to parse
 
-###### Returns { #returns-21 }
+###### Returns { #returns-7 }
 
 - **Section** : 
 
@@ -255,7 +255,7 @@ init()
 
 
 
-##### iteration { #iteration-1 }
+##### iteration { #iteration }
 
 Run the function on the section and sub sections
 
@@ -270,11 +270,11 @@ iteration(f)
 
 
 
-###### Arguments { #arguments-18 }
+###### Arguments { #arguments-2 }
 
 - **f** (function of template f(section)) : the function to run
 
-###### Returns { #returns-22 }
+###### Returns { #returns-8 }
 
 - **Section** :  or None
 
@@ -292,15 +292,15 @@ parse_comment(comment)
 
 
 
-###### Arguments { #arguments-19 }
+###### Arguments { #arguments-3 }
 
 - **comment** (str) : the raw comment
 
-###### Returns { #returns-23 }
+###### Returns { #returns-9 }
 
 - **str** : the cleaned comment
 
-##### new_section { #new_section-1 }
+##### new_section { #new_section }
 
 Add a sub section
 
@@ -310,18 +310,18 @@ new_section(title, comment=None, sub_level=1)
 
 
 
-###### Arguments { #arguments-20 }
+###### Arguments { #arguments-4 }
 
 - **title** (str) : section title
 - - **comment** (str) : header comment
 - - **sub_level** (_int_ = 1) : level increment
 
-###### Returns { #returns-24 }
+###### Returns { #returns-10 }
 
 - **Section** : 
 
 
-##### write_header { #write_header-1 }
+##### write_header { #write_header }
 
 Append text to the header comment
 
@@ -331,12 +331,12 @@ write_header(comment="51", parse=True)
 
 
 
-###### Arguments { #arguments-21 }
+###### Arguments { #arguments-5 }
 
 - **comment** (str) : the text to write
 - - **parse** (_bool_ = True) : parse the comment
 
-##### write { #write-1 }
+##### write { #write }
 
 Append text to the current text
 
@@ -349,7 +349,7 @@ write(comment="52", parse=True)
 
 
 
-###### Arguments { #arguments-22 }
+###### Arguments { #arguments-6 }
 
 - **comment** (str) : the text to write
 - - **parse** (_bool_ = True) : parse the comment
@@ -364,11 +364,11 @@ link_to(url="57")
 
 
 
-###### Returns { #returns-25 }
+###### Returns { #returns-11 }
 
 - **str** : [title](url + link_token)
 
-##### get_section { #get_section-1 }
+##### get_section { #get_section }
 
 Look for a sub section by its title
 
@@ -387,11 +387,11 @@ get_section(title)
 
 
 
-###### Arguments { #arguments-23 }
+###### Arguments { #arguments-7 }
 
 - **title** (str) : the section to look for
 
-###### Returns { #returns-26 }
+###### Returns { #returns-12 }
 
 - **Section** :  if found, None otherwise
 
@@ -414,11 +414,11 @@ alphabetical_sections(alpha=None)
 
 
 
-###### Arguments { #arguments-24 }
+###### Arguments { #arguments-8 }
 
 - **alpha** (_dict_ = None) : dictionary to feed
 
-###### Returns { #returns-27 }
+###### Returns { #returns-13 }
 
 - **dict** :  of list of Sections
 
@@ -469,11 +469,11 @@ build()
 
 
 
-###### Returns { #returns-28 }
+###### Returns { #returns-14 }
 
 - **str** : documentation lines for the sections
 
-##### print { #print-1 }
+##### print { #print }
 
 Print the documentation in the console
 
@@ -494,9 +494,9 @@ Yield a line for argument documentation:
 - name (type = default) : description
 ```
 
-#### Properties { #properties-5 }
+#### Properties { #properties-1 }
 
-#### Methods { #methods-5 }
+#### Methods { #methods-1 }
 
 
 
@@ -520,7 +520,7 @@ build()
 
 
 
-###### Returns { #returns-29 }
+###### Returns { #returns-15 }
 
 - **str** : formatted argument line
 
@@ -533,9 +533,9 @@ Yield a line for return documentation:
 - name  : description
 ```
 
-#### Properties { #properties-6 }
+#### Properties { #properties-2 }
 
-#### Methods { #methods-6 }
+#### Methods { #methods-2 }
 
 
 
@@ -559,7 +559,7 @@ build()
 
 
 
-###### Returns { #returns-30 }
+###### Returns { #returns-16 }
 
 - **str** : formatted return line
 
@@ -577,14 +577,14 @@ Arguments
 - comment (str = None) : header comment
 - level (int = 1) : indentation level
 
-#### Properties { #properties-7 }
+#### Properties { #properties-3 }
 
-##### arguments { #arguments-25 }
+##### arguments { #arguments-9 }
 
 Arguments Section> type Section
 
 
-###### Getter { #getter-11 }
+###### Getter { #getter-6 }
 
 Arguments Section
 
@@ -594,16 +594,16 @@ arguments()
 
 
 
-####### Returns { #returns-31 }
+####### Returns { #returns-17 }
 
 - **Section** : title is 'Arguments', sub sections are [Argument](#argument)
 
-##### returns { #returns-32 }
+##### returns { #returns-18 }
 
 Arguments Section> type Section
 
 
-###### Getter { #getter-12 }
+###### Getter { #getter-7 }
 
 Arguments Section
 
@@ -613,11 +613,11 @@ returns()
 
 
 
-####### Returns { #returns-33 }
+####### Returns { #returns-19 }
 
 - **Section** : title is 'Arguments', sub sections are [Return](#return)
 
-#### Methods { #methods-7 }
+#### Methods { #methods-3 }
 
 ##### init { #init-1 }
 
@@ -664,7 +664,7 @@ FromDoc(doc, class_name=None, **kwargs)
 
 
 
-###### Arguments { #arguments-26 }
+###### Arguments { #arguments-10 }
 
 - **doc** (Doc) : Doc parsed by **Parser**
 
@@ -688,7 +688,7 @@ Arguments
 - class_name (str) : class name
 - comment (str) : header comment
 
-#### Properties { #properties-8 }
+#### Properties { #properties-4 }
 
 ##### bases { #bases }
 
@@ -705,12 +705,12 @@ name of the sub classes> type list of str
 properties and methods inherited from base classes> type list of str
 
 
-##### properties { #properties-9 }
+##### properties { #properties-5 }
 
 Properties Section> type Section
 
 
-###### Getter { #getter-13 }
+###### Getter { #getter-8 }
 
 Properties Section
 
@@ -720,16 +720,16 @@ properties()
 
 
 
-####### Returns { #returns-34 }
+####### Returns { #returns-20 }
 
 - **Section** : title is 'Properties', sub sections are documented properties
 
-##### methods { #methods-8 }
+##### methods { #methods-4 }
 
 Methods Section> type Section
 
 
-###### Getter { #getter-14 }
+###### Getter { #getter-9 }
 
 Methods Section
 
@@ -739,11 +739,11 @@ methods()
 
 
 
-####### Returns { #returns-35 }
+####### Returns { #returns-21 }
 
 - **Section** : title is 'Methods', sub sections are documented methods
 
-#### Methods { #methods-9 }
+#### Methods { #methods-5 }
 
 ##### FromDoc { #fromdoc-1 }
 
@@ -757,16 +757,16 @@ FromDoc(doc, ignore_uncommented=True, **kwargs)
 
 
 
-###### Arguments { #arguments-27 }
+###### Arguments { #arguments-11 }
 
 - **doc** (Doc) : Doc parsed from a sourc file
 - - **exclude_uncommented** (_bool_ = True) : exclude the methods which are not commented in the source file
 
-###### Returns { #returns-36 }
+###### Returns { #returns-22 }
 
 - **Class** : document on the class
 
-##### compile { #compile-1 }
+##### compile { #compile }
 
 Compile the class
 
@@ -782,11 +782,11 @@ compile(project)
 
 
 
-###### Arguments { #arguments-28 }
+###### Arguments { #arguments-12 }
 
 - **project** ([LINK ERROR: page 'Project' not found]()) : main project
 
-###### Returns { #returns-37 }
+###### Returns { #returns-23 }
 
 - **self** : 
 
@@ -804,11 +804,11 @@ capture_class(other, with_comment=False)
 
 
 
-###### Arguments { #arguments-29 }
+###### Arguments { #arguments-13 }
 
 - **other** (Class) : class to copy methods and properties from
 
-###### Returns { #returns-38 }
+###### Returns { #returns-24 }
 
 - **self** : 
 
@@ -876,9 +876,9 @@ Properties
 - pages (dict of [LINK ERROR: page 'Section' not found]()) : the pages to create in the final documentation
 - sections (list of [LINK ERROR: page 'Section' not found]()) : dictionary of documented items
 
-#### Properties { #properties-10 }
+#### Properties { #properties-6 }
 
-#### Methods { #methods-10 }
+#### Methods { #methods-6 }
 
 
 
@@ -904,17 +904,17 @@ add_source(key, text)
 
 
 
-###### Arguments { #arguments-30 }
+###### Arguments { #arguments-14 }
 
 - **key** (str) : source file key
 - - **text** (str) : the source code
 
-###### Returns { #returns-39 }
+###### Returns { #returns-25 }
 
 - **Section** : 
 
 
-##### load_files { #load_files-1 }
+##### load_files { #load_files }
 
 Enrich the reference doc by parsing source files.
 
@@ -926,13 +926,13 @@ load_files(folder=None, sub_folders=[], key=None)
 
 
 
-###### Arguments { #arguments-31 }
+###### Arguments { #arguments-15 }
 
 - **folder** (str) : main folder
 - - **sub_folders** (str) : sub folders to explore
 - - **key** (_str_ = None) : 
 
-###### Returns { #returns-40 }
+###### Returns { #returns-26 }
 
 - **self** : 
 
@@ -953,18 +953,18 @@ get_refdoc(name, key=None, exact=True, halt=True)
 
 
 
-###### Arguments { #arguments-32 }
+###### Arguments { #arguments-16 }
 
 - **name** (str) : title of the reference documentation
 - - **key** (_str_ = None) : source file key
 - - **exact** (_bool_ = True) : use exact name if True, regular expression otherwise
 - - **halt** (_bool_ = True) : raise an exception if not found
 
-###### Returns { #returns-41 }
+###### Returns { #returns-27 }
 
 - **Section** : found section if exact is True, list of sections otherwise
 
-##### add_page { #add_page-1 }
+##### add_page { #add_page }
 
 Add a page in the documentation
 
@@ -974,15 +974,15 @@ add_page(page)
 
 
 
-###### Arguments { #arguments-33 }
+###### Arguments { #arguments-17 }
 
 - **page** ([LINK ERROR: page 'Section' not found]()) : the page to add
 
-###### Returns { #returns-42 }
+###### Returns { #returns-28 }
 
 - **Section** : the argument **page**
 
-##### new_page { #new_page-1 }
+##### new_page { #new_page }
 
 Add a page in the documentation
 
@@ -996,14 +996,14 @@ new_page(title, comment=None, toc=None, in_toc=True)
 
 
 
-###### Arguments { #arguments-34 }
+###### Arguments { #arguments-18 }
 
 - **title** (str) : page title
 - - **comment** (str) : comment
 - - **toc** (_str_ = None) : title of the content section, None if no content section is required
 - - **in_toc** (_bool_ = True) : include the the documentation table of content
 
-###### Returns { #returns-43 }
+###### Returns { #returns-29 }
 
 - **Page** : >
 
@@ -1039,7 +1039,7 @@ add_class(class_name, page=None, bases=[], capture=[], file_key=None)
 
 
 
-###### Arguments { #arguments-35 }
+###### Arguments { #arguments-19 }
 
 - **class_name** (str) : class name
 - - **page** (_[LINK ERROR: page 'Section' not found]() or str_ = None) : name of the page where to include the class documentation
@@ -1047,7 +1047,7 @@ add_class(class_name, page=None, bases=[], capture=[], file_key=None)
 - - **capture** (_list of strs or [LINK ERROR: page 'Class' not found]()_ = []) : list of classes to copy methods and properties from
 - - **file_key** (_str_ = None) : file key in [LINK ERROR: page '' not found]()
 
-###### Returns { #returns-44 }
+###### Returns { #returns-30 }
 
 - **Class** : created class
 
@@ -1072,7 +1072,7 @@ add_function(function_name, page=None, file_key=None, function_key=None, exact=T
 
 
 
-###### Arguments { #arguments-36 }
+###### Arguments { #arguments-20 }
 
 - **function_name** (str) : class name
 - - **page** (_[LINK ERROR: page 'Section' not found]() or str_ = None) : name of the page where to include the class documentation
@@ -1082,11 +1082,11 @@ add_function(function_name, page=None, file_key=None, function_key=None, exact=T
 - - **only_commented** (_bool_ = True) : don't include uncommented functions
 - - **sub_level** (_int_ = 1) : incrementation level to page.level
 
-###### Returns { #returns-45 }
+###### Returns { #returns-31 }
 
 - **Function** : created class
 
-##### set_hook { #set_hook-1 }
+##### set_hook { #set_hook }
 
 Replace a regular expression by as substitution string
 
@@ -1124,11 +1124,11 @@ set_hook(expr, repl)
 
 
 
-###### Arguments { #arguments-37 }
+###### Arguments { #arguments-21 }
 
 - **expr** (str) : RegEx expression - repl (str or function) : replacement string or function
 
-##### create_index_file { #create_index_file-1 }
+##### create_index_file { #create_index_file }
 
 Create the index file
 
@@ -1138,7 +1138,7 @@ create_index_file(file_name)
 
 
 
-###### Arguments { #arguments-38 }
+###### Arguments { #arguments-22 }
 
 - **file_name** (str) : file name to write
 

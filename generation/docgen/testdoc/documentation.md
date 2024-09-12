@@ -6,17 +6,17 @@ Created on Wed Sep 11 17:42:12 2024
 @author: alain
 
 
-## Functions { #functions-1 }
+## Functions { #functions }
 
-## Classes { #classes-1 }
+## Classes { #classes }
 
 ### Section { #section }
 
 Version document item
 
-#### Properties { #properties-2 }
+#### Properties { #properties }
 
-#### Methods { #methods-2 }
+#### Methods { #methods }
 
 
 
@@ -45,11 +45,11 @@ iteration(f, *args)
 
 
 
-###### Arguments { #arguments-3 }
+###### Arguments { #arguments }
 
 - **f** (function of template f(section)) : the function to run
 
-###### Returns { #returns-7 }
+###### Returns { #returns }
 
 - **Section** :  or None
 
@@ -84,13 +84,13 @@ new_section(title, comment=None)
 
 
 
-###### Arguments { #arguments-4 }
+###### Arguments { #arguments-1 }
 
 - **title** (str) : section title
 - - **comment** (str) : header comment
 - - **sub_level** (_int_ = 1) : level increment
 
-###### Returns { #returns-8 }
+###### Returns { #returns-1 }
 
 - **Section** : 
 
@@ -105,7 +105,7 @@ write_header(comment)
 
 
 
-###### Arguments { #arguments-5 }
+###### Arguments { #arguments-2 }
 
 - **comment** (str) : the text to write
 
@@ -122,7 +122,7 @@ write(comment)
 
 
 
-###### Arguments { #arguments-6 }
+###### Arguments { #arguments-3 }
 
 - **comment** (str) : the text to write
 
@@ -147,9 +147,9 @@ and whose sections are alse pages.
 
 [LINK ERROR: page 'Section' not found]() [LINK ERROR: page 'Section' not found]() must be unique.
 
-#### Properties { #properties-3 }
+#### Properties { #properties-1 }
 
-#### Methods { #methods-3 }
+#### Methods { #methods-1 }
 
 
 
@@ -175,12 +175,12 @@ load_source(key, text)
 
 
 
-###### Arguments { #arguments-7 }
+###### Arguments { #arguments-4 }
 
 - **key** (str) : source file key
 - - **text** (str) : the source code
 
-###### Returns { #returns-9 }
+###### Returns { #returns-2 }
 
 - **Section** : 
 
@@ -197,13 +197,13 @@ load_file(file_name, key=None)
 
 
 
-###### Arguments { #arguments-8 }
+###### Arguments { #arguments-5 }
 
 - **folder** (str) : main folder
 - - **sub_folders** (str) : sub folders to explore
 - - **key** (_str_ = None) : 
 
-###### Returns { #returns-10 }
+###### Returns { #returns-3 }
 
 - **self** : 
 
@@ -220,13 +220,13 @@ load_files(folder=None, sub_folders=[], key=None, verbose=True)
 
 
 
-###### Arguments { #arguments-9 }
+###### Arguments { #arguments-6 }
 
 - **folder** (str) : main folder
 - - **sub_folders** (str) : sub folders to explore
 - - **key** (_str_ = None) : 
 
-###### Returns { #returns-11 }
+###### Returns { #returns-4 }
 
 - **self** : 
 
@@ -253,11 +253,11 @@ add_page(section)
 
 
 
-###### Arguments { #arguments-10 }
+###### Arguments { #arguments-7 }
 
 - **page** ([LINK ERROR: page 'Section' not found]()) : the page to add
 
-###### Returns { #returns-12 }
+###### Returns { #returns-5 }
 
 - **Section** : the argument **page**
 
@@ -275,12 +275,12 @@ new_page(title, comment=None)
 
 
 
-###### Arguments { #arguments-11 }
+###### Arguments { #arguments-8 }
 
 - **title** (str) : page title
 - - **comment** (str) : comment
 
-###### Returns { #returns-13 }
+###### Returns { #returns-6 }
 
 - **Section** : >
 
@@ -323,7 +323,7 @@ set_hook(expr, repl)
 
 
 
-###### Arguments { #arguments-12 }
+###### Arguments { #arguments-9 }
 
 - **expr** (str) : RegEx expression - repl (str or function) : replacement string or function
 
@@ -352,7 +352,7 @@ solve_links(ignore_source=False)
 
 
 
-###### Arguments { #arguments-13 }
+###### Arguments { #arguments-10 }
 
 - **ignore_source** (_bool_ = False) : Do not extract source before solving (already done)
 
@@ -366,7 +366,7 @@ solve_hooks(include_links=True)
 
 
 
-###### Arguments { #arguments-14 }
+###### Arguments { #arguments-11 }
 
 - **include_links** (_bool_ = True) : solve also the links
 
@@ -390,7 +390,7 @@ create_index_file(file_name)
 
 
 
-###### Arguments { #arguments-15 }
+###### Arguments { #arguments-12 }
 
 - **file_name** (str) : file name to write
 
