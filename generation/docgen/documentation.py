@@ -392,7 +392,8 @@ class Section(list):
     def yield_content(self):
         
         if False:
-            yield f"#{'#'*self.depth} {self.title}\n\n"
+            yield f'<h{self.depth+1} id="{self._token}">{self.title}</h{self.depth+1}>'
+            #yield f"#{'#'*self.depth} {self.title}\n\n"
         else:
             a_, _a = '{', '}'
             yield f"#{'#'*self.depth} {self.title} {a_} #{self._token} {_a}\n\n"
