@@ -384,11 +384,14 @@ class Section(list):
         return section
     
     # ====================================================================================================
-    # yield lines
+    # yield lines   
+    # del margin = https://github.com/al1brn/geonodes/blob/main/generation/docgen/testdoc/parser.md#arguments
+    # extract strings = https://github.com/al1brn/geonodes/blob/main/generation/docgen/testdoc/parser.md#arguments-1
+    # last = https://github.com/al1brn/geonodes/blob/main/generation/docgen/testdoc/parser.md#arguments-16
     
     def yield_content(self):
         
-        if True:
+        if False:
             yield f"#{'#'*self.depth} {self.title}\n\n"
         else:
             a_, _a = '{', '}'
