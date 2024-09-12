@@ -74,8 +74,8 @@ def del_margin(comment):
     ---------
     - comment (str) : the comment
 
-    Return
-    ------
+    Returns
+    -------
     - str : the realigned comment
     """
 
@@ -495,7 +495,7 @@ def extract_source(text):
 
     strings = []
     def repl(m):
-        index = f"```{len(strings)}```"
+        index = f"${len(strings)}<"
         strings.append(m.group(0))
         return index
 
@@ -518,7 +518,7 @@ def replace_source(text, strings):
     """
 
     for index, s in enumerate(strings):
-        text = text.replace(f"```{index}```", s)
+        text = text.replace(f"${index}<", s)
 
     return text
 

@@ -50,12 +50,7 @@ Is realigned:
 | with a margin:
 | - because it is written as a multiline comment string
 |   with indentation
-| Text continues here
-
-
-Return
-------
-- str : the realigned comment``` python
+| Text continues here``` python
 del_margin(comment)
 ```
 
@@ -64,6 +59,10 @@ del_margin(comment)
 #### Arguments
 
 - **comment** (str) : the comment
+
+#### Returns
+
+- **str** : the realigned comment
 
 ### extract_strings
 
