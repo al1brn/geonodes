@@ -29,12 +29,12 @@ from pathlib import Path
 from pprint import pprint
 
 # For ref
-#regex_string1 = r'("[^"\\]*(?:\\.[^"\\]*)*")'
-#regex_string2 = r"('[^'\\]*(?:\\.[^'\\]*)*')"
+regex_string1 = r'("[^"\\]*(?:\\.[^"\\]*)*")'
+regex_string2 = r"('[^'\\]*(?:\\.[^'\\]*)*')"
 
 regex_source  = r"`((``[^`]*``)|([^`\n]*))`"
-regex_string1 = r'"([^"\\\n]*(\\.)*)*"'
-regex_string2 = r"'([^'\\\n]*(\\.)*)*'"
+#regex_string1 = r'"([^"\\\n]*(\\.)*)*"'
+#regex_string2 = r"'([^'\\\n]*(\\.)*)*'"
 regex_strings = f"({regex_string1})|({regex_string2})"
 
 regex_csource  = re.compile(regex_source,  flags=re.MULTILINE)

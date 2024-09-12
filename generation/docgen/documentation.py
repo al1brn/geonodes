@@ -362,17 +362,17 @@ class Section(list):
         
         elif struct['obj'] == 'property':
             
-            if struct['type'] is not None:
+            if struct.get('type') is not None:
                 section.write(f"> type {struct['type']}\n")
-            if struct['default'] is not None:
+            if struct.get('default') is not None:
                 section.write(f"> default {struct['default']}\n")
                 
-            if struct['getter'] is not None:
+            if struct.get('getter') is not None:
                 sct = Section.FromParsed(struct['getter'], ignore_uncommented=ignore_uncommented)
                 sct.title = 'Getter'
                 section.append(sct)
                 
-            if struct['setter'] is not None:
+            if struct.get('setter') is not None:
                 sct = Section.FromParsed(struct['setter'], ignore_uncommented=ignore_uncommented)
                 sct.title = 'Setter'
                 section.append(sct)
@@ -646,7 +646,8 @@ class Documentation(Section):
         """
         if self.get_section(section.title) is not None:
             print("Existing pages:", [s.title for s in self])
-            raise Exception(f"Error when adding page '{page.title}' : the page already exists!")
+            return
+            #raise Exception(f"Error when adding page '{section.title}' : the page already exists!")
             
         section._page = None
         self.append(section)
@@ -832,7 +833,7 @@ class Documentation(Section):
         # ----------------------------------------------------------------------------------------------------
         # Solve the hooks for a section
     
-        def solve_section(self, section):
+        def solve_section(section):
             
             if section.comment is None:
                 return
@@ -947,7 +948,7 @@ class Documentation(Section):
         
         for page in self:
             file_path = doc_folder / page.file_name
-            print(f"Create ‘{page_name}' : {file_path}")
+            print(f"Create ‘{page.title}' : {file_path}")
             with file_path.open(mode='w') as f:
                 for line in page.yield_content():
                     f.write(line)
@@ -962,7 +963,7 @@ class Documentation(Section):
 # Test on the current folder
 
 def gen_docgen():
-
+    
     # ====================================================================================================
     # Step 1 : Load project files from root folder
 
@@ -971,6 +972,7 @@ def gen_docgen():
     if True:
         root = Path(__file__).parents[0]
         proj = Documentation('Simple Python Documentation Generator', comment=comment)
+        
         proj.load_files(root, sub_folders=[])
         
         
@@ -992,6 +994,11 @@ def gen_docgen():
     # ====================================================================================================
     # Tune reference doc
     
+    for module in proj.modules.values():
+        print("Module", module['name'])
+        proj.add_page(Section.FromParsed(module))
+    
+    print("ALIVE")
     proj.create_documentation(doc_folder=root / 'testdoc')
     
     
@@ -1058,34 +1065,5 @@ def gen_docgen():
 
     proj.create_documentation(doc_folder=root / 'doc')
     
-#gen_docgen()
 
-text = """ Comment
-
-    - <!index>
-    - <!Test#Section 2>
-    - <!Test#Section 2"Custom full>
-    - <#Section 2>
-    - <#Section 2"Custom section only>
-    - <!Test"Custom page only>
-    
-    End of comment
-"""
-
-proj = Documentation("Test", text)
-proj.new_section("Section 1", str(text))
-proj.new_section("Section 2", str(text)).new_section("Section 2")
-proj.new_section("Section 3", str(text))
-
-proj.compile()
-proj.solve_links()
-
-proj.print(full=True)
-
-#print(proj.comment)
-
-proj.iteration(lambda s: print(s.title, s.token))
-
-
-        
-
+gen_docgen()
