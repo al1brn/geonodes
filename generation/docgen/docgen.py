@@ -8,7 +8,13 @@ from pprint import pprint
 from pathlib import Path
 import inspect
 
-#from .pyparser import Parser, md_normalize, extract_source, replace_source
+from parser import del_margin, parse_module, parse_files
+
+
+
+
+
+
 
 
 
@@ -51,16 +57,16 @@ def parse_comment(comment):
     -------
     - dict : {'new_comment', 'properties', 'arguments', 'returns', 'raises'}
     """
-    
+
     if comment is None:
         return {'new_comment': None}
-    
+
     list_expr = r"^(\w*) ?\n-+ ?\n(([^\w\n]+.*\n)*)"
-    
+
     for m in re.finditer(list_expr, comment + '\n\n', flags=re.MULTILINE):
-        
+
         title = m.group(1).strip().lower()
-        
+
         lines = []
         for line in m.group(2).split('\n'):
             if line.strip() == '':
@@ -69,32 +75,32 @@ def parse_comment(comment):
                 lines[-1] += ' ' + line.strip()
             else:
                 lines.append(line.strip())
-        
-        
+
+
         if title in ['property', 'properties']:
             pass
-        
+
         elif title in ['argument', 'arguments']:
             pass
-        
+
         elif title in ['return', 'returns']:
             pass
-        
+
         elif title in ['raise', 'raises']:
             pass
-        
+
         print(title)
         print('-'*20)
         print("\n".join(lines))
         print('-'*20)
-        
+
     return
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
 
     context = 'COMMENT'
     new_comment = ""
