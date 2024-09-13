@@ -6,6 +6,14 @@ Created on Fri Sep 13 08:33:58 2024
 @author: alain
 """
 
+from pprint import pprint
+from pathlib import Path
+
+from parser import format_list_line, parse_file_source, parse_files
+from parser import struct_search, struct_iter, struct_list, capture_inheritance
+from parser import extract_source, replace_source
+
+
 def title_to_file_name(title):
     return f"{title.lower().replace(' ', '_')}.md"
 
@@ -41,28 +49,15 @@ class Section:
         self.ignore_if_empty = ignore_if_empty
         
     def __str__(self):
-        stype   = "P" if self.is_page else "S"
+        stype   = "P" if self.is_page else " "
         if self.is_module:
             stype = "M"
         if self.is_top:
             stype = "T"
         shidden = "H" if self.hidden  else "D"
             
-        return f"<{stype} {self.depth} {self.depth_in_page} {shidden} [{self.module}] {self.title}>"
-        
-    # =============================================================================================================================
-    # Children management
+        return f"<{self.depth} {stype}{shidden} '{self.module:8s}'{'  '*self.depth_in_page} {self.title}>"
     
-    def append(self, section):
-        section.owner = self
-        self.children.append(section)
-        if self.sort_sections:
-            self.sort()
-        return section
-            
-    def sort(self):
-        self.children.sort(key=lambda s: s.title)
-        
     # =============================================================================================================================
     # Hierarchy iteration
     
@@ -79,14 +74,67 @@ class Section:
                 return res
             
         return None
+        
+    # =============================================================================================================================
+    # Children management
     
-    def dump(self):
+    def append(self, section):
+        section.owner = self
+        self.children.append(section)
+        if self.sort_sections:
+            self.sort()
+        return section
+            
+    def sort(self):
+        self.children.sort(key=lambda s: s.title)
+        
+    def get_section(self, title=None, condition=None, **kwargs):
+        
+        # ----------------------------------------------------------------------------------------------------
+        # Function : test if title matches and conditions are ok
+        
+        def ok_section(section, title_):
+            if title_ is not None and section.title != title_:
+                return False
+                
+            for k, v in kwargs.items():
+                if getattr(section, k) != v:
+                    return False
+                
+            if condition is not None and not condition(section):
+                return False
+                
+            return True
 
-        def func(sct):
-            print(f"{'   '*sct.depth_in_page}- {sct.title}")
+        # ----------------------------------------------------------------------------------------------------
+        # No condition on title
+        
+        if title is None:
+            return self.iteration(ok_section, None)
+        
+        # ----------------------------------------------------------------------------------------------------
+        # Title is simple
+        
+        p = title.find('.')
+        if p < 0:
+            return self.iteration(ok_section, title)
 
-        self.iteration(func)
-    
+        # ----------------------------------------------------------------------------------------------------
+        # Title is composed
+        
+        parent = self.get_section(title[:p])
+        if parent is None:
+            return None
+        else:
+            return parent.get_section(title[p+1:], **kwargs)
+
+    def get_module(self, title, condition=None, **kwargs):
+        return self.get_section(title, condition=condition, is_module=True, **kwargs)
+
+    def get_page(self, title, condition=None, **kwargs):
+        return self.get_section(title, condition=condition, is_page=True, **kwargs)
+        
+        
     # =============================================================================================================================
     # Properties
     
@@ -159,9 +207,18 @@ class Section:
             
     # -----------------------------------------------------------------------------------------------------------------------------
     # Content
+    
+    @property
+    def has_toc(self):
+        if self.is_page:
+            return self.iteration(lambda s: s.in_toc)
+        else:
+            return False
         
     @property
     def has_content(self):
+        
+        DEBUG = self.title == 'Section'
 
         if not self.ignore_if_empty:
             return True
@@ -173,13 +230,22 @@ class Section:
             if section.is_page:
                 continue
             
+            if DEBUG:
+                print("DEBUG", section.title, section.hidden)
+            
             if not section.hidden:
                 return True
+            
+        if self.has_toc:
+            return True
             
         return False
     
     @property
     def hidden(self):
+        if self.is_top:
+            return False
+        
         return not self.has_content
             
     # -----------------------------------------------------------------------------------------------------------------------------
@@ -187,6 +253,9 @@ class Section:
 
     @property
     def file_name(self):
+        if self.is_top:
+            return "//index.md"
+        
         if self.is_page:
             module_path = self.module_path
             if module_path != '':
@@ -247,45 +316,359 @@ class Section:
     def add_section(self, title, comment=None, **kwargs):
         return self.append(Section(title, comment, **kwargs))
     
+    def get_create_section(self, title, comment=None,**kwargs):
+        for section in self.children:
+            if section.title == title:
+                return section
+        return self.add_section(title, comment=comment, **kwargs)
+            
+    
+    # =============================================================================================================================
+    # Dynamic write
+    
+    def write(self, text):
+        """ Append text to the header comment
+
+        Arguments
+        ---------
+        - text (str) : the text to write
+        """
+        
+        if text is None:
+            return
+
+        if self.comment is None:
+            self.comment = text
+        else:
+            self.comment += text
+
+    def write_source(self, source):
+        self.write("\n\n``` python\n")
+        self.write(source.replace("`", "'"))
+        self.write("\n```\n\n")      
+        
+    # =============================================================================================================================
+    # Build the whole documentation
+    
+    def get_content(self):
+        """ Returns the text to write in the page
+        """
+        
+        header = f"#{'#'*self.depth_in_page} {self.title}\n\n"
+        
+        text = None
+        
+        if not self.ignore_if_empty:
+            text = header
+            
+        if self.comment is not None:
+            if text is None:
+                text = header + self.comment
+            else:
+                text += self.comment
+                
+        for section in self.children:
+            if section.hidden:
+                continue
+            
+            sub_text = section.get_content()
+            if sub_text is not None:
+                if text is None:
+                    text = header + sub_text
+                else:
+                    text += '\n\n' + sub_text
+
+        return text
+    
+    def get_documentation(self, doc_folder=None):
+        """ Write the section into a dict
+        
+        Arguments
+        ---------
+        - doc (dict) : the dict where to write the documentation        
+        """
+        
+        doc = {}
+        if doc_folder is not None:
+            doc_folder = Path(doc_folder)
+        
+        def create_file(section):
+            if not section.is_page:
+                return
+            
+            text = section.get_content()
+            if text is not None:
+                file_name = section.file_name
+                assert(file_name not in doc)
+                doc[file_name] = text
+                
+                if doc_folder is not None:
+                    with (doc_folder / file_name).open(mode='w') as f:
+                        f.write(text)
+                
+        self.iteration(create_file)
+        
+        return doc
+    
+    # =============================================================================================================================
+    # Add dict description (structure returned by code parsing)
+    
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Add a file
+    
+    def add_file_dict(self, file_dict):
+        
+        assert(file_dict['obj'] == 'file')
+        
+        #page = self.add_page(struct['name'], comment=struct['comment'], in_toc=True)
+        
+        # ---- Two main sections
+        
+        functions = self.get_create_section('Functions', sort_sections=True)
+        classes   = self.get_create_section('Classes',   sort_sections=True)
+        
+        # ----- Loop on the file content
+            
+        for obj in file_dict['subs'].values():
+
+            if obj.get('hidden', False):
+                continue
+            
+            if obj['obj'] == 'function':
+                functions.add_function_dict(obj)
+                
+            elif obj['obj'] == 'class':
+                classes.add_class_dict(obj)
+                
+            else:
+                assert(False)
+                    
+                #toc_items.append((obj_section.title, f"[{obj_section.title}](#{obj_section.anchor})"))
+                    
+            # ----- Format the page
+                    
+            #functions.sort(key=lambda s: s.title)
+            #classes.sort(key=lambda s: s.title)
+            
+            #section.insert(0, Section.Toc(toc_items, 'Content'))    
+            
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Add a class
+    
+    def add_class_dict(self, class_dict, ignore_uncommented=False):
+        
+        assert(class_dict['obj'] == 'class')
+        
+        # ----- Page dedicated to the class
+        
+        page = self.add_page(class_dict['name'], comment=class_dict['comment'], in_toc=True)
+            
+        properties = page.add_section('Properties', sort_sections=True)
+        methods    = page.add_section('Methods',    sort_sections=True)
+        
+        if class_dict.get('__init__') is not None:
+            if class_dict.get('args') is not None:
+                page.write_source(f"{page.title}({class_dict['args']})")
+            
+            #if struct['__init__']['comment'] is not None:
+            #    init_ = Section.FromParsed(struct['__init__'])
+            #    class_page.write("\n\n**__init__**\n\n")
+            #    class_page.write(init_.comment)
+            
+        # ----- Loop on properties and methods 
+        
+        for obj in class_dict['subs'].values():
+            
+            if obj.get('hidden', False):
+                continue
+            
+            if obj['obj'] == 'property':
+                properties.add_property_dict(obj)
+                
+            elif obj['obj'] == 'function':
+                methods.add_function_dict(obj)
+                
+            else:
+                assert(False)
+                
+            #toc_items.append((obj_section.title, f"[{obj_section.title}](#{obj_section.anchor})"))
+
+        # ----- Format the page
+                
+        #properties.sort(key=lambda s: s.title)
+        #methods.sort(key=lambda s: s.title)
+        
+        #section.insert(0, Section.Toc(toc_items, 'Content'))
+        
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Add a property
+    
+    def add_property_dict(self, prop_dict):
+        
+        assert(prop_dict['obj'] == 'property')
+        
+        section = self.add_section(prop_dict['name'], prop_dict['comment'], in_toc=True)
+        
+        if prop_dict.get('type') is not None:
+            section.write(f"> type {prop_dict['type']}\n")
+            
+        if prop_dict.get('default') is not None:
+            section.write(f"> default {prop_dict['default']}\n")
+            
+        if prop_dict.get('getter') is not None:
+            section.add_function_dict(prop_dict['getter'])
+            
+        if prop_dict.get('setter') is not None:
+            section.add_function_dict(prop_dict['setter'])
+                
+
+    # ----------------------------------------------------------------------------------------------------
+    # Function / Method
+    
+    def add_function_dict(self, func_dict):
+    
+        assert(func_dict['obj'] == 'function')
+        
+        section = self.add_section(func_dict['name'], func_dict['comment'], in_toc=True)
+        
+        if func_dict.get('args') is not None:
+            section.write_source(f"{section.title}({func_dict['args']})")
+        
+        if len(func_dict['raises']):
+            sub = section.add_section('Raises', "\n- ".join([format_list_line(d) for d in func_dict['raises']]))
+                                  
+        if len(func_dict['arguments']):
+            sub = section.add_section('Arguments', "\n- ".join([format_list_line(d) for d in func_dict['arguments']]))
+                                  
+        if len(func_dict['returns']):
+            sub = section.add_section('Returns', "\n- ".join([format_list_line(d) for d in func_dict['returns']]))
+                                      
+    
     # =============================================================================================================================
     # dev and test
+
+    @classmethod
+    def TestStructure(cls):
+        
+        top = cls("Top", "Top text")
+        top.add_section("Top section", "Top section text")
+        top.add_section("Top section", "Top section text")
+        top.add_section("Hidden section")
+        top.add_page("First page", "First page text")
+        top.add_page("Second page", "Second page text")
+        
+        module = top.add_module("M1", "Module 1", "Module 1 text")
+        module.add_section("M1 Section")
+        module.add_section("M1 Section")
+        module.add_section("Homonym")
+        module.add_page("First page", "First page text")
+        module.add_page("Second page", "Second page text")
+        
+        module = top.add_module("M2", "Module 2")
+        module.add_section("M2 Section A", "Section text")
+        module.add_section("M2 Section B", "Section text")
+        module.add_section("Homonym")
+        
+        submodule = module.add_module("M21", "Hidden Module")
+        submodule.add_page("Far page").add_section("Far section", "text")
+        
+        page = module.add_page("Page 1", "Page text")
+        page = module.add_page("Page 2", "Page text")
+        page = module.add_page("Target section")
+        page = module.add_page("Hidden page")
+        
+        top.add_module("M3", "Hidden Module")
+        
+        return top
     
-    def dump_struct(self, title='Section dump'):
-        print(title)
+    def dump(self):
+        print()
+        print("Dump of", self.title)
         print('-'*50)
+        print()
         def func(section):
             print(str(section), section.anchor)
             
         self.iteration(func)
         print()
-    
-    @classmethod
-    def TestStructure(cls):
         
-        top = Section("Top")
-        page = top.add_section("Top section")
-        page = top.add_section("Top section")
+    def print(self, text_max=100):
+        print()
+        print("Print documentation of", self.title)
+        print('-'*50)
+        print()
+        
+        doc = self.get_documentation()
+        for file_name, text in doc.items():
+            print('.'*50)
+            print('::::',file_name)
+            print('')
+            if len(text) > text_max:
+                print(text[:text_max], '...')
+            else:
+                print(text)
+        
+    @staticmethod
+    def test_dump():
+        
+        top = Section.TestStructure()
 
-        module = top.add_module("M1", "Module 1")
-        module.add_section("M1 Section")
-        module.add_section("M1 Section")
+        top.dump()
         
-        module = top.add_module("M2", "Module 2")
-        module.add_section("M2 Section")
-        module.add_section("M2 Section")
-        
-        submodule = module.add_module("M21", "Section 1")
-        submodule.add_page("Far page").add_section("Far section")
-        
-        page = module.add_page("Page 1")
-        page = module.add_page("Page 2")
-        
-        
-        return top
+    @staticmethod
+    def test_get():
 
+        top = Section.TestStructure()
 
-top = Section.TestStructure()
-top.dump_struct() 
-            
+        top.dump()
         
         
+        print()
+        print("Get section / page / module")
+        print('-'*50)        
+        
+        for target in ["Target section", "M2 Section A", "Hidden Module"]:
+            print(f"Get Section '{target}' : {top.get_section(target)}")
+                    
+        for target in ["Target section", "M2 Section A", "Hidden Module"]:
+            print(f"Get Page '{target}' : {top.get_page(target)}")
+                    
+        for target in ["Target section", "M2 Section A", "Hidden Module"]:
+            print(f"Get Module '{target}' : {top.get_module(target)}")
+
+        print()
+        print("Section path")
+        print('-'*50)        
+        target = "Module 1.Homonym"
+        print(target, ':', top.get_section(target))
+        target = "Module 2.Homonym"
+        print(target, ':', top.get_section(target))
+
+    @staticmethod
+    def test_doc():
+
+        top = Section.TestStructure()
+
+        top.dump()
+        
+        top.print()
+        
+        
+    @staticmethod
+    def test_self():
+        
+        proj = Section("Documentation")
+        folder = Path(__file__).parents[0]
+        print(str(folder))
+        
+        text = parse_file_source(Path(__file__).read_text())
+        
+        proj.add_file_dict(text)
+        
+        proj.dump()
+        
+        proj.print()
+        
+                    
+Section.test_self()
+                

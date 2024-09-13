@@ -15,7 +15,7 @@ The parsing returns nested dicts where a dict contains information on the docume
 
 A base dict structure is:
 
-- obj      : module, class, function, ...
+- obj      : file, class, function, ...
 - name     : python name
 - comment  : the first multilines string after item declaration
 - subs     : dict of dicts containing sub items
@@ -896,8 +896,8 @@ def new_struct(obj, name, comment=None, subs=None, **kwargs):
         struct['subs'] = subs
     return struct
 
-def new_module(name, comment=None, subs=None):
-    return new_struct('module', name, comment, subs={} if subs is None else subs)
+def new_file(name, comment=None, subs=None):
+    return new_struct('file', name, comment, subs={} if subs is None else subs)
 
 def new_class(name, comment=None, subs=None, inherits=None):
     return new_struct('class', name, comment, subs={} if subs is None else subs, inherits=[] if inherits is None else inherits)
@@ -981,12 +981,12 @@ def struct_list(struct, name_only=True, **kwargs):
 # =============================================================================================================================
 # Parse python source code
 
-def parse_module(text, module_name='Module'):
+def parse_file_source(text, file_name='File'):
     """ Parse a python file source
 
-    The parser returns a dictionary giving the content of the module:
+    The parser returns a dictionary giving the content of the file:
 
-    - module
+    - file
       - comment
       - subs : dict of classes and functions
     - class
@@ -1029,9 +1029,9 @@ def parse_module(text, module_name='Module'):
     # ----------------------------------------------------------------------------------------------------
     # Documentation result
 
-    module_subs= {}
+    file_subs= {}
 
-    module = new_module(module_name, comments[0] if len(comments) else None, subs=module_subs)
+    file = new_file(file_name, comments[0] if len(comments) else None, subs=file_subs)
 
     # ----------------------------------------------------------------------------------------------------
     # Look for class definitions:
@@ -1072,9 +1072,9 @@ def parse_module(text, module_name='Module'):
             prop_name = info['name']
             class_['subs'][prop_name] = new_property(prop_name, info['description'], type=info['type'], default=info['default'])
 
-        # ----- Put the class in the subs of the module
+        # ----- Put the class in the subs of the file
 
-        module_subs[class_name] = class_
+        file_subs[class_name] = class_
 
 
     # ----- Build the list of classes order by their appearance in the source file
@@ -1165,13 +1165,13 @@ def parse_module(text, module_name='Module'):
             function_[title] = items
 
         # ----------------------------------------------------------------------------------------------------
-        # Place the function at module level or in a class
+        # Place the function at file level or in a class
 
-        # ----- Indentation is null : this is function at module level
+        # ----- Indentation is null : this is function at file level
 
         if indent == 0:
 
-            module_subs[name] = function_
+            file_subs[name] = function_
             
             # update start positions to avoid a sub function to be interpreted as a previous class method
             
@@ -1195,7 +1195,7 @@ def parse_module(text, module_name='Module'):
             if last_class_name is None:
                 raise Exception(f"Sorry shouldn't append: wrong indentation for function '{name}'")
 
-            class_ = module_subs[last_class_name]
+            class_ = file_subs[last_class_name]
             
             # it's a sub function: don't care
             if class_['obj'] != 'class':
@@ -1237,12 +1237,12 @@ def parse_module(text, module_name='Module'):
             else:
                 class_subs[name] = function_
 
-    return module
+    return file
 
 # =============================================================================================================================
 # Parse source files to build the reference documentation
 
-def parse_files(folder, sub_folders=[], key=None, verbose=False):
+def parse_files(folder, key="", verbose=False):
     """ Load files from a folder.
 
     All the files with `.py` extension are parsed.
@@ -1250,41 +1250,27 @@ def parse_files(folder, sub_folders=[], key=None, verbose=False):
     Arguments
     ---------
     - folder (str) : main folder
-    - sub_folders (str) : sub folders to explore
-    - key (str=None) :
+    - root (str=None) :
 
     Returns
     -------
     - dict
     """
 
-    modules = {}
+    files = {}
+    root_key = Path(key)
 
-    if key is None:
-        key = Path(folder).stem
-        
-    root_folder = Path(folder)
-    all_folders = ["."] + sub_folders
+    for fpath in Path(folder).iterdir():
+        if not fpath.match("*.py"):
+            continue
 
-    for subf in all_folders:
-        if subf == '.':
-            path = root_folder
-            file_key = key
-        else:
-            path = root_folder / subf
-            file_key = str(Path(key) / subf)
+        file_key = str(root_key / fpath.stem)
+        if verbose:
+            print(f"Loading {fpath.name} in file '{file_key}'")
             
-        for fpath in path.iterdir():
-            if not fpath.match("*.py"):
-                continue
+        files[file_key] = parse_file_source(fpath.read_text(), fpath.stem)
 
-            module_key = str(Path(file_key) / fpath.stem)
-            if verbose:
-                print(f"Loading {fpath.name} in module '{module_key}'")
-                
-            modules[module_key] = parse_module(fpath.read_text())
-
-    return modules
+    return files
 
 # =============================================================================================================================
 # Class : capture inheritance from another class
@@ -1323,7 +1309,7 @@ def capture_inheritance(class_, base_, remove=True):
             
     return class_
 
-def capture_inheritances(class_, modules_, include=None, exclude=[], verbose=True):
+def capture_inheritances(class_, files_, include=None, exclude=[], verbose=True):
     """ Capture inheritances
     
     Allow to document class items as it were not inherited.
@@ -1334,7 +1320,7 @@ def capture_inheritances(class_, modules_, include=None, exclude=[], verbose=Tru
     Arguments
     ---------
     - class_ (dict) : the class to enrich
-    - modules_ (dict) : the hierarchy containing base classes to capture from
+    - files_ (dict) : the hierarchy containing base classes to capture from
     - include (list = None) : limit capture to the given list
     - exclude (list = []) : exclude classes in the given list
     """
@@ -1350,7 +1336,7 @@ def capture_inheritances(class_, modules_, include=None, exclude=[], verbose=Tru
         if base_name in exclude:
             continue
         
-        base_ = struct_search(modules_, obj='class', name=base_name)
+        base_ = struct_search(files_, obj='class', name=base_name)
         if base_ is None:
             continue
         
@@ -1391,12 +1377,12 @@ def dump_dict(d, indent=0):
 def test():
     text = Path(__file__).read_text()
 
-    module = parse_module(text)
+    file = parse_file(text)
 
-    #dump_dict(module)
+    #dump_dict(file)
 
-    pprint(module['subs']['clean_python'])
-    pprint(module['subs']['Text'])
+    pprint(file['subs']['clean_python'])
+    pprint(file['subs']['Text'])
 
 
 def test_folder(folder=None, sub_folders=[]):
