@@ -515,15 +515,15 @@ class Section:
         
         section = self.add_section(prop_dict['name'], prop_dict['comment'], in_toc=True)
         
+        if prop_dict.get('getter') is not None or prop_dict.get('setter') is not None:
+            section.write(f"\n> {'getter' if prop_dict.get('getter') is not None else ''} {'setter' if prop_dict.get('setter') is not None else ''}\n")
+            
         if prop_dict.get('type') is not None:
-            section.write(f"> type {prop_dict['type']}\n")
+            section.write(f"\n> type {prop_dict['type']}\n")
             
         if prop_dict.get('default') is not None:
-            section.write(f"> default {prop_dict['default']}\n")
+            section.write(f"\n> default {prop_dict['default']}\n")
 
-        if prop_dict.get('getter') is not None or prop_dict.get('setter') is not None:
-            section.write(f"> {'getter' if prop_dict.get('getter') is not None else ''} {'setter' if prop_dict.get('setter') is not None else ''}\n")
-            
         #if prop_dict.get('getter') is not None:
         #    section.add_function_dict(prop_dict['getter'])
             

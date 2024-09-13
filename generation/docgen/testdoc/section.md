@@ -18,71 +18,86 @@ Section(title, comment=None, sort_sections=False, in_toc=False, module=None, is_
 
 ### anchor
 
+
 > getter 
 
 
 ### depth
+
 
 > getter 
 
 
 ### depth_in_page
 
+
 > getter 
 
 
 ### file_name
+
 
 > getter 
 
 
 ### has_content
 
+
 > getter 
 
 
 ### has_toc
+
 
 > getter 
 
 
 ### hidden
 
+
 > getter 
 
 
 ### homonyms_count
+
 
 > getter 
 
 
 ### is_module
 
+
 > getter 
 
 
 ### is_page
+
 
 > getter setter
 
 
 ### is_top
 
-Is top section> type bool
+Is top section
 > getter 
+
+> type bool
 
 
 ### module
+
 
 > getter 
 
 
 ### module_path
 
+
 > getter 
 
 
 ### page
+
 
 > getter 
 
