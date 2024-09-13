@@ -20,99 +20,99 @@ Section(title, comment=None, sort_sections=False, in_toc=False, module=None, is_
 
 
 
-> getter 
+- getter 
 
 
 ### depth
 
 
 
-> getter 
+- getter 
 
 
 ### depth_in_page
 
 
 
-> getter 
+- getter 
 
 
 ### file_name
 
 
 
-> getter 
+- getter 
 
 
 ### has_content
 
 
 
-> getter 
+- getter 
 
 
 ### has_toc
 
 
 
-> getter 
+- getter 
 
 
 ### hidden
 
 
 
-> getter 
+- getter 
 
 
 ### homonyms_count
 
 
 
-> getter 
+- getter 
 
 
 ### is_module
 
 
 
-> getter 
+- getter 
 
 
 ### is_page
 
 
 
-> getter setter
+- getter setter
 
 
 ### is_top
 
 Is top section
 
-> getter 
-> type bool
+- getter 
+- type bool
 
 
 ### module
 
 
 
-> getter 
+- getter 
 
 
 ### module_path
 
 
 
-> getter 
+- getter 
 
 
 ### page
 
 
 
-> getter 
+- getter 
 
 
 ## Methods

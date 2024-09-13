@@ -518,15 +518,15 @@ class Section:
         sepa = '\n\n'
         
         if prop_dict.get('getter') is not None or prop_dict.get('setter') is not None:
-            section.write(f"{sepa}> {'getter' if prop_dict.get('getter') is not None else ''} {'setter' if prop_dict.get('setter') is not None else ''}")
+            section.write(f"{sepa}- {'getter' if prop_dict.get('getter') is not None else ''} {'setter' if prop_dict.get('setter') is not None else ''}")
             sepa = '\n'
             
         if prop_dict.get('type') is not None:
-            section.write(f"{sepa}> type {prop_dict['type']}")
+            section.write(f"{sepa}- type {prop_dict['type']}")
             sepa = '\n'
             
         if prop_dict.get('default') is not None:
-            section.write(f"{sepa}> default {prop_dict['default']}")
+            section.write(f"{sepa}- default {prop_dict['default']}")
             sepa = '\n'
             
         section.write(sepa)
