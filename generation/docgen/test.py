@@ -254,13 +254,13 @@ class Section:
     @property
     def file_name(self):
         if self.is_top:
-            return "//index.md"
+            return "/index.md"
         
         if self.is_page:
             module_path = self.module_path
             if module_path != '':
                 module_path += '-'
-            return '//' + module_path + title_to_file_name(self.title)
+            return '/' + module_path + title_to_file_name(self.title)
         else:
             return self.page.file_name
         
@@ -403,7 +403,7 @@ class Section:
                 doc[file_name] = text
                 
                 if doc_folder is not None:
-                    with (doc_folder / file_name).open(mode='w') as f:
+                    with (doc_folder / str(file_name)[1:]).open(mode='w') as f:
                         f.write(text)
                 
         self.iteration(create_file)
@@ -665,9 +665,11 @@ class Section:
         
         proj.add_file_dict(text)
         
-        proj.dump()
+        #proj.dump()
         
-        proj.print()
+        #proj.print()
+        
+        proj.get_documentation(folder / "testdoc")
         
                     
 Section.test_self()
