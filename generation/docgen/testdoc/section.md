@@ -18,180 +18,72 @@ Section(title, comment=None, sort_sections=False, in_toc=False, module=None, is_
 
 ### anchor
 
-#### anchor
-
-
-
-``` python
-anchor()
-```
-
+> getter 
 
 
 ### depth
 
-#### depth
-
-
-
-``` python
-depth()
-```
-
+> getter 
 
 
 ### depth_in_page
 
-#### depth_in_page
-
-
-
-``` python
-depth_in_page()
-```
-
+> getter 
 
 
 ### file_name
 
-#### file_name
-
-
-
-``` python
-file_name()
-```
-
+> getter 
 
 
 ### has_content
 
-#### has_content
-
-
-
-``` python
-has_content()
-```
-
+> getter 
 
 
 ### has_toc
 
-#### has_toc
-
-
-
-``` python
-has_toc()
-```
-
+> getter 
 
 
 ### hidden
 
-#### hidden
-
-
-
-``` python
-hidden()
-```
-
+> getter 
 
 
 ### homonyms_count
 
-#### homonyms_count
-
-
-
-``` python
-homonyms_count()
-```
-
+> getter 
 
 
 ### is_module
 
-#### is_module
-
-
-
-``` python
-is_module()
-```
-
+> getter 
 
 
 ### is_page
 
-#### is_page
-
-
-
-``` python
-is_page()
-```
-
-
-
-#### is_page
-
-
-
-``` python
-is_page(value)
-```
-
+> getter setter
 
 
 ### is_top
 
-#### is_top
-
-
-
-``` python
-is_top()
-```
-
+> getter 
 
 
 ### module
 
-#### module
-
-
-
-``` python
-module()
-```
-
+> getter 
 
 
 ### module_path
 
-#### module_path
-
-
-
-``` python
-module_path()
-```
-
+> getter 
 
 
 ### page
 
-#### page
-
-
-
-``` python
-page()
-```
-
+> getter 
 
 
 ## Methods

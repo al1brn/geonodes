@@ -514,12 +514,15 @@ class Section:
             
         if prop_dict.get('default') is not None:
             section.write(f"> default {prop_dict['default']}\n")
+
+        if prop_dict.get('getter') is not None or prop_dict.get('setter') is not None:
+            section.write(f"> {'getter' if prop_dict.get('getter') is not None else ''} {'setter' if prop_dict.get('setter') is not None else ''}\n")
             
-        if prop_dict.get('getter') is not None:
-            section.add_function_dict(prop_dict['getter'])
+        #if prop_dict.get('getter') is not None:
+        #    section.add_function_dict(prop_dict['getter'])
             
-        if prop_dict.get('setter') is not None:
-            section.add_function_dict(prop_dict['setter'])
+        #if prop_dict.get('setter') is not None:
+        #    section.add_function_dict(prop_dict['setter'])
                 
 
     # ----------------------------------------------------------------------------------------------------
