@@ -316,7 +316,7 @@ class Section(list):
             
             text = ""
             for first in sorted(list(alpha.keys())):
-                text += "\n- " + " ".join(alpha[first])
+                text += f"\n- {first}" + " ".join(alpha[first])
                 
         # Done
                 
@@ -1074,7 +1074,6 @@ def gen_docgen():
         print("Module", module['name'])
         proj.add_page(Section.FromParsed(module))
     
-    print("ALIVE")
     proj.create_documentation(doc_folder=root / 'testdoc')
     
     

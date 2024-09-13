@@ -27,12 +27,12 @@ and whose sections are alse pages.
 #### Content
 
 
-- [add_page](#add_page)
-- [compile](#compile) [create_index_file](#create_index_file)
-- [hide_classes](#hide_classes)
-- [load_source](#load_source) [load_file](#load_file) [load_files](#load_files)
-- [new_page](#new_page)
-- [set_hook](#set_hook) [solve_links](#solve_links) [solve_hooks](#solve_hooks)
+- a[add_page](#add_page)
+- c[compile](#compile) [create_index_file](#create_index_file)
+- h[hide_classes](#hide_classes)
+- l[load_source](#load_source) [load_file](#load_file) [load_files](#load_files)
+- n[new_page](#new_page)
+- s[set_hook](#set_hook) [solve_links](#solve_links) [solve_hooks](#solve_hooks)
 
 #### Properties
 
