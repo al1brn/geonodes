@@ -316,7 +316,7 @@ class Section(list):
             
             text = ""
             for first in sorted(list(alpha.keys())):
-                text += f"\n- {first} : " + " ".join(alpha[first])
+                text += f"\n- {first} : " + " :black_small_square: ".join(alpha[first])
                 
         # Done
                 

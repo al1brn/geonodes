@@ -28,11 +28,11 @@ and whose sections are alse pages.
 
 
 - A : [add_page](#add_page)
-- C : [compile](#compile) [create_index_file](#create_index_file)
+- C : [compile](#compile) :black_small_square: [create_index_file](#create_index_file)
 - H : [hide_classes](#hide_classes)
-- L : [load_source](#load_source) [load_file](#load_file) [load_files](#load_files)
+- L : [load_source](#load_source) :black_small_square: [load_file](#load_file) :black_small_square: [load_files](#load_files)
 - N : [new_page](#new_page)
-- S : [set_hook](#set_hook) [solve_links](#solve_links) [solve_hooks](#solve_hooks)
+- S : [set_hook](#set_hook) :black_small_square: [solve_links](#solve_links) :black_small_square: [solve_hooks](#solve_hooks)
 
 #### Properties
 
