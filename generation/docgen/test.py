@@ -250,8 +250,6 @@ class Section:
     @property
     def has_content(self):
         
-        DEBUG = self.title == 'Section'
-
         if not self.ignore_if_empty:
             return True
         
@@ -261,9 +259,6 @@ class Section:
         for section in self.children:
             if section.is_page:
                 continue
-            
-            if DEBUG:
-                print("DEBUG", section.title, section.hidden)
             
             if not section.hidden:
                 return True
@@ -281,7 +276,7 @@ class Section:
         return not self.has_content
             
     # -----------------------------------------------------------------------------------------------------------------------------
-    # file name / anchor
+    # File name / anchor
 
     @property
     def file_name(self):
@@ -353,7 +348,56 @@ class Section:
             if section.title == title:
                 return section
         return self.add_section(title, comment=comment, **kwargs)
+    
+    # =============================================================================================================================
+    # Table of content
+    
+    def get_toc(self, title='Content'):
+        
+        if not self.is_page:
+            return None
+        
+        items = {}
+        
+        def get_items(section):
+            if section.in_toc:
+                items[section.title] = section
+                
+        self.iteration(get_items)
+        if items is None:
+            return None
+        
+        
+        sorted_keys = sorted(items.keys())
+        
+        # ----------------------------------------------------------------------------------------------------
+        # A simple ordered list
+        
+        if len(items) < 1000:
+            text = "\n- ".join([items[key].title for key in sorted_keys])
             
+        # ----------------------------------------------------------------------------------------------------
+        # One line per initial
+        
+        else:
+            alpha = {}
+            for item in items:
+                first = item[0][0].upper()
+                first_list = alpha.get(first)
+                if first_list is None:
+                    first_list = [item[1]]
+                    alpha[first] = first_list
+                else:
+                    first_list.append(item[1])
+            
+            text = ""
+            for first in sorted(list(alpha.keys())):
+                text += f"\n- {first} : " + " :black_small_square: ".join(alpha[first])
+                
+        # Done
+                
+        return f"\n\n{title}\n\n" + text + "\n\n"        
+    
     
     # =============================================================================================================================
     # Dynamic write
@@ -397,8 +441,11 @@ class Section:
         header += f"#{'#'*self.depth_in_page} {self.title}\n\n"
         
         text = None
+        content = self.get_toc()
         
-        if not self.ignore_if_empty:
+        # ----- Header and comment
+        
+        if content is not None or not self.ignore_if_empty:
             text = header
             
         if self.comment is not None:
@@ -406,6 +453,13 @@ class Section:
                 text = header + self.comment
             else:
                 text += self.comment
+                
+        # ----- Content
+        
+        if content is not None:
+            text += content
+                
+        # ----- Children sections
                 
         for section in self.children:
             if section.hidden:
