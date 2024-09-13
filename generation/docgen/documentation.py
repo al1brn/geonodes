@@ -38,6 +38,8 @@ class Section(list):
         self._depth  = 0
         self._anchor  = None
         
+        self.navigation = f"\n\n<sub>[top](#{self.anchor}) [index](index.md)</sub>\n\n"
+        
         
     def __str__(self):
         return f"<Section({len(self)}) {self.depth}. {self.title}>"
@@ -192,6 +194,7 @@ class Section(list):
             title = self.title
         return f"[{title}]({link})"
     
+    
     # ====================================================================================================
     # Dynamic documentation
 
@@ -316,7 +319,7 @@ class Section(list):
             
             text = ""
             for first in sorted(list(alpha.keys())):
-                text += f"\n- :{first}: : " + " :black_small_square: ".join(alpha[first])
+                text += f"\n- {first} : " + " :black_small_square: ".join(alpha[first])
                 
         # Done
                 
@@ -333,8 +336,6 @@ class Section(list):
         
         # ----------------------------------------------------------------------------------------------------
         # Module
-        #
-        # 
         
         if struct['obj'] == 'module':
             
@@ -348,6 +349,8 @@ class Section(list):
                     continue
                 
                 obj_section = Section.FromParsed(obj, ignore_uncommented=ignore_uncommented)
+                
+                obj_section.comment += section.navigation
                 
                 if obj['obj'] == 'function':
                     functions.append(obj_section)
@@ -392,6 +395,9 @@ class Section(list):
                     continue
                 
                 obj_section = Section.FromParsed(obj, ignore_uncommented=ignore_uncommented)
+                
+                obj_section.comment += section.navigation
+                
                 
                 if obj['obj'] == 'property':
                     properties.append(obj_section)

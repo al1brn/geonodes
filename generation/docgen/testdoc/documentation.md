@@ -24,15 +24,19 @@ and whose sections are alse pages.
 
 [LINK ERROR: page 'Section' not found]() [LINK ERROR: page 'Section' not found]() must be unique.
 
+<sub>[top](#documentation) [index](index.md)</sub>
+
+
+
 #### Content
 
 
-- :A: : [add_page](#add_page)
-- :C: : [compile](#compile) :black_small_square: [create_index_file](#create_index_file)
-- :H: : [hide_classes](#hide_classes)
-- :L: : [load_source](#load_source) :black_small_square: [load_file](#load_file) :black_small_square: [load_files](#load_files)
-- :N: : [new_page](#new_page)
-- :S: : [set_hook](#set_hook) :black_small_square: [solve_links](#solve_links) :black_small_square: [solve_hooks](#solve_hooks)
+- A : [add_page](#add_page)
+- C : [compile](#compile) :black_small_square: [create_index_file](#create_index_file)
+- H : [hide_classes](#hide_classes)
+- L : [load_source](#load_source) :black_small_square: [load_file](#load_file) :black_small_square: [load_files](#load_files)
+- N : [new_page](#new_page)
+- S : [set_hook](#set_hook) :black_small_square: [solve_links](#solve_links) :black_small_square: [solve_hooks](#solve_hooks)
 
 #### Properties
 
@@ -56,6 +60,10 @@ add_page(section)
 
 
 
+<sub>[top](#documentation) [index](index.md)</sub>
+
+
+
 ###### Arguments
 
 - **page** ([LINK ERROR: page 'Section' not found]()) : the page to add
@@ -74,6 +82,10 @@ compile()
 
 
 
+<sub>[top](#documentation) [index](index.md)</sub>
+
+
+
 ##### create_index_file
 
 Create the index file
@@ -81,6 +93,10 @@ Create the index file
 ``` python
 create_index_file(file_name)
 ```
+
+
+
+<sub>[top](#documentation) [index](index.md)</sub>
 
 
 
@@ -100,6 +116,10 @@ hide_classes(classes, verbose=True)
 
 
 
+<sub>[top](#documentation) [index](index.md)</sub>
+
+
+
 ##### load_file
 
 Enrich the reference doc by parsing source files.
@@ -109,6 +129,10 @@ All the files with `.py` extension are parsed.
 ``` python
 load_file(file_name, key=None)
 ```
+
+
+
+<sub>[top](#documentation) [index](index.md)</sub>
 
 
 
@@ -134,6 +158,10 @@ load_files(folder=None, sub_folders=[], key=None, verbose=True)
 
 
 
+<sub>[top](#documentation) [index](index.md)</sub>
+
+
+
 ###### Arguments
 
 - **folder** (str) : main folder
@@ -153,6 +181,10 @@ The source code is parsed and the resulting [LINK ERROR: page 'Section' not foun
 ``` python
 load_source(key, text)
 ```
+
+
+
+<sub>[top](#documentation) [index](index.md)</sub>
 
 
 
@@ -176,6 +208,10 @@ Add a page in the documentation
 ``` python
 new_page(title, comment=None)
 ```
+
+
+
+<sub>[top](#documentation) [index](index.md)</sub>
 
 
 
@@ -226,6 +262,10 @@ set_hook(expr, repl)
 
 
 
+<sub>[top](#documentation) [index](index.md)</sub>
+
+
+
 ###### Arguments
 
 - **expr** (str) : RegEx expression - repl (str or function) : replacement string or function
@@ -237,6 +277,10 @@ Solve all the hooks for a section.
 ``` python
 solve_hooks(include_links=True)
 ```
+
+
+
+<sub>[top](#documentation) [index](index.md)</sub>
 
 
 
@@ -269,6 +313,10 @@ solve_links(ignore_source=False)
 
 
 
+<sub>[top](#documentation) [index](index.md)</sub>
+
+
+
 ###### Arguments
 
 - **ignore_source** (_bool_ = False) : Do not extract source before solving (already done)
@@ -276,6 +324,10 @@ solve_links(ignore_source=False)
 ### Section
 
 Version document item
+
+<sub>[top](#documentation) [index](index.md)</sub>
+
+
 
 #### Content
 
@@ -305,8 +357,12 @@ Section(title, comment=None)
 Create a table of content from the given list
 
 ``` python
-Toc(items, title="16")
+Toc(items, title="17")
 ```
+
+
+
+<sub>[top](#section) [index](index.md)</sub>
 
 
 
@@ -328,6 +384,10 @@ get_section(title)
 
 
 
+<sub>[top](#section) [index](index.md)</sub>
+
+
+
 ##### iteration
 
 Run the function on the section and sub sections
@@ -340,6 +400,10 @@ and return `None`.
 ``` python
 iteration(f, *args)
 ```
+
+
+
+<sub>[top](#section) [index](index.md)</sub>
 
 
 
@@ -358,6 +422,10 @@ Add a sub section
 ``` python
 new_section(title, comment=None)
 ```
+
+
+
+<sub>[top](#section) [index](index.md)</sub>
 
 
 
@@ -383,6 +451,10 @@ print(full=False)
 
 
 
+<sub>[top](#section) [index](index.md)</sub>
+
+
+
 ##### sections
 
 Flat list of sections and sub sections
@@ -390,6 +462,10 @@ Flat list of sections and sub sections
 ``` python
 sections(with_owner=False)
 ```
+
+
+
+<sub>[top](#section) [index](index.md)</sub>
 
 
 
@@ -406,6 +482,10 @@ write(comment)
 
 
 
+<sub>[top](#section) [index](index.md)</sub>
+
+
+
 ###### Arguments
 
 - **comment** (str) : the text to write
@@ -417,6 +497,10 @@ Append text to the header comment
 ``` python
 write_header(comment)
 ```
+
+
+
+<sub>[top](#section) [index](index.md)</sub>
 
 
 

@@ -32,6 +32,10 @@ parse_comment(comment)
 
 
 
+<sub>[top](#docgen) [index](index.md)</sub>
+
+
+
 #### Arguments
 
 - **comment** (str) : the raw comment
@@ -50,6 +54,10 @@ Yield a line for argument documentation:
 ```
 - name (type = default) : description
 ```
+
+<sub>[top](#docgen) [index](index.md)</sub>
+
+
 
 #### Content
 
@@ -77,6 +85,10 @@ build()
 
 
 
+<sub>[top](#argument) [index](index.md)</sub>
+
+
+
 ###### Returns
 
 - **str** : formatted argument line
@@ -101,6 +113,10 @@ Arguments
 - class_name (str) : class name
 - comment (str) : header comment
 
+<sub>[top](#docgen) [index](index.md)</sub>
+
+
+
 #### Content
 
 [FromDoc](#fromdoc)
@@ -120,14 +136,26 @@ Arguments
 name of the base classes> type list of str
 
 
+<sub>[top](#class) [index](index.md)</sub>
+
+
+
 ##### inherited
 
 properties and methods inherited from base classes> type list of str
 
 
+<sub>[top](#class) [index](index.md)</sub>
+
+
+
 ##### methods
 
 Methods Section> type Section
+
+
+<sub>[top](#class) [index](index.md)</sub>
+
 
 
 ###### Getter
@@ -149,6 +177,10 @@ methods()
 Properties Section> type Section
 
 
+<sub>[top](#class) [index](index.md)</sub>
+
+
+
 ###### Getter
 
 Properties Section
@@ -168,6 +200,10 @@ properties()
 name of the sub classes> type list of str
 
 
+<sub>[top](#class) [index](index.md)</sub>
+
+
+
 #### Methods
 
 ##### FromDoc
@@ -179,6 +215,10 @@ The **doc** argument contains the list of documents methods and properties.
 ``` python
 FromDoc(doc, ignore_uncommented=True, **kwargs)
 ```
+
+
+
+<sub>[top](#class) [index](index.md)</sub>
 
 
 
@@ -201,6 +241,10 @@ build()
 
 
 
+<sub>[top](#class) [index](index.md)</sub>
+
+
+
 ##### capture_class
 
 Capture methods and properties from another Class
@@ -211,6 +255,10 @@ which is not documentated.
 ``` python
 capture_class(other, with_comment=False)
 ```
+
+
+
+<sub>[top](#class) [index](index.md)</sub>
 
 
 
@@ -238,6 +286,10 @@ compile(project)
 
 
 
+<sub>[top](#class) [index](index.md)</sub>
+
+
+
 ###### Arguments
 
 - **project** ([LINK ERROR: page 'Project' not found]()) : main project
@@ -260,6 +312,10 @@ Arguments
 - comment (str = None) : header comment
 - level (int = 1) : indentation level
 
+<sub>[top](#docgen) [index](index.md)</sub>
+
+
+
 #### Content
 
 [FromDoc](#fromdoc)
@@ -273,6 +329,10 @@ Arguments
 ##### arguments
 
 Arguments Section> type Section
+
+
+<sub>[top](#function) [index](index.md)</sub>
+
 
 
 ###### Getter
@@ -292,6 +352,10 @@ arguments()
 ##### returns
 
 Arguments Section> type Section
+
+
+<sub>[top](#function) [index](index.md)</sub>
+
 
 
 ###### Getter
@@ -322,6 +386,10 @@ FromDoc(doc, class_name=None, **kwargs)
 
 
 
+<sub>[top](#function) [index](index.md)</sub>
+
+
+
 ###### Arguments
 
 - **doc** (Doc) : Doc parsed by **Parser**
@@ -344,6 +412,10 @@ init()
 
 
 
+<sub>[top](#function) [index](index.md)</sub>
+
+
+
 ##### parse_comment
 
 Function comment parser
@@ -356,6 +428,10 @@ The lists are generated from the structure
 ``` python
 parse_comment(comment)
 ```
+
+
+
+<sub>[top](#function) [index](index.md)</sub>
 
 
 
@@ -412,6 +488,10 @@ Properties
 - pages (dict of [LINK ERROR: page 'Section' not found]()) : the pages to create in the final documentation
 - sections (list of [LINK ERROR: page 'Section' not found]()) : dictionary of documented items
 
+<sub>[top](#docgen) [index](index.md)</sub>
+
+
+
 #### Content
 
 [add_class](#add_class)
@@ -467,6 +547,10 @@ add_class(class_name, page=None, bases=[], capture=[], file_key=None)
 
 
 
+<sub>[top](#project) [index](index.md)</sub>
+
+
+
 ###### Arguments
 
 - **class_name** (str) : class name
@@ -500,6 +584,10 @@ add_function(function_name, page=None, file_key=None, function_key=None, exact=T
 
 
 
+<sub>[top](#project) [index](index.md)</sub>
+
+
+
 ###### Arguments
 
 - **function_name** (str) : class name
@@ -524,6 +612,10 @@ add_page(page)
 
 
 
+<sub>[top](#project) [index](index.md)</sub>
+
+
+
 ###### Arguments
 
 - **page** ([LINK ERROR: page 'Section' not found]()) : the page to add
@@ -541,6 +633,10 @@ The source code is parsed and the resulting [LINK ERROR: page 'Section' not foun
 ``` python
 add_source(key, text)
 ```
+
+
+
+<sub>[top](#project) [index](index.md)</sub>
 
 
 
@@ -563,6 +659,10 @@ create_index_file(file_name)
 
 
 
+<sub>[top](#project) [index](index.md)</sub>
+
+
+
 ###### Arguments
 
 - **file_name** (str) : file name to write
@@ -580,6 +680,10 @@ All the title matching this expression is returned in a list.
 ``` python
 get_refdoc(name, key=None, exact=True, halt=True)
 ```
+
+
+
+<sub>[top](#project) [index](index.md)</sub>
 
 
 
@@ -606,6 +710,10 @@ load_files(folder=None, sub_folders=[], key=None)
 
 
 
+<sub>[top](#project) [index](index.md)</sub>
+
+
+
 ###### Arguments
 
 - **folder** (str) : main folder
@@ -627,6 +735,10 @@ Add a page in the documentation
 ``` python
 new_page(title, comment=None, toc=None, in_toc=True)
 ```
+
+
+
+<sub>[top](#project) [index](index.md)</sub>
 
 
 
@@ -679,6 +791,10 @@ set_hook(expr, repl)
 
 
 
+<sub>[top](#project) [index](index.md)</sub>
+
+
+
 ###### Arguments
 
 - **expr** (str) : RegEx expression - repl (str or function) : replacement string or function
@@ -691,6 +807,10 @@ Yield a line for return documentation:
 ```
 - name  : description
 ```
+
+<sub>[top](#docgen) [index](index.md)</sub>
+
+
 
 #### Content
 
@@ -715,6 +835,10 @@ Yield line return
 ``` python
 build()
 ```
+
+
+
+<sub>[top](#return) [index](index.md)</sub>
 
 
 
@@ -748,27 +872,35 @@ Properties
 - fixed_level (bool) : level is fixed and can't be changed
 - page ([LINK ERROR: page 'Section' not found]()) : the page where this section will appear
 
+<sub>[top](#docgen) [index](index.md)</sub>
+
+
+
 #### Content
 
 
-- :A: : [as_dict](#as_dict) :black_small_square: [alphabetical_sections](#alphabetical_sections)
-- :B: : [build_header](#build_header) :black_small_square: [build_sections](#build_sections) :black_small_square: [build_extra](#build_extra) :black_small_square: [build](#build)
-- :C: : [comment](#comment)
-- :F: : [FromSource](#fromsource)
-- :G: : [get_section](#get_section)
-- :I: : [init](#init) :black_small_square: [iteration](#iteration)
-- :L: : [level](#level) :black_small_square: [link_token](#link_token) :black_small_square: [link_to](#link_to)
-- :M: : [md_file_name](#md_file_name)
-- :N: : [new_section](#new_section)
-- :P: : [parse_comment](#parse_comment) :black_small_square: [print](#print)
-- :S: : [sorted_sections](#sorted_sections)
-- :W: : [write_header](#write_header) :black_small_square: [write](#write)
+- A : [as_dict](#as_dict) :black_small_square: [alphabetical_sections](#alphabetical_sections)
+- B : [build_header](#build_header) :black_small_square: [build_sections](#build_sections) :black_small_square: [build_extra](#build_extra) :black_small_square: [build](#build)
+- C : [comment](#comment)
+- F : [FromSource](#fromsource)
+- G : [get_section](#get_section)
+- I : [init](#init) :black_small_square: [iteration](#iteration)
+- L : [level](#level) :black_small_square: [link_token](#link_token) :black_small_square: [link_to](#link_to)
+- M : [md_file_name](#md_file_name)
+- N : [new_section](#new_section)
+- P : [parse_comment](#parse_comment) :black_small_square: [print](#print)
+- S : [sorted_sections](#sorted_sections)
+- W : [write_header](#write_header) :black_small_square: [write](#write)
 
 #### Properties
 
 ##### as_dict
 
 Return as a dictionary> type dict
+
+
+<sub>[top](#section) [index](index.md)</sub>
+
 
 
 ###### Getter
@@ -788,6 +920,10 @@ as_dict()
 ##### comment
 
 Comment property> type str
+
+
+<sub>[top](#section) [index](index.md)</sub>
+
 
 
 ###### Getter
@@ -819,6 +955,10 @@ comment(value)
 Indentation level
 
 When set, the sub sections levels are set with the passed value plus 1.> type int
+
+
+<sub>[top](#section) [index](index.md)</sub>
+
 
 
 ###### Getter
@@ -854,6 +994,10 @@ MD link token
 The markdown token is the lower case title where spaces are replaces by '-' char> type str
 
 
+<sub>[top](#section) [index](index.md)</sub>
+
+
+
 ###### Getter
 
 MD link token
@@ -875,6 +1019,10 @@ link_token()
 MD Document file name> type str
 
 
+<sub>[top](#section) [index](index.md)</sub>
+
+
+
 ###### Getter
 
 MD Document file name
@@ -892,6 +1040,10 @@ md_file_name()
 ##### sorted_sections
 
 Sort the sub sections in alphabetical order> type List
+
+
+<sub>[top](#section) [index](index.md)</sub>
+
 
 
 ###### Getter
@@ -930,6 +1082,10 @@ FromSource(name, text)
 
 
 
+<sub>[top](#section) [index](index.md)</sub>
+
+
+
 ###### Arguments
 
 - **text** (str) : source code to parse
@@ -953,6 +1109,10 @@ Used to diplay a table of content when there is a great number of sections.
 ``` python
 alphabetical_sections(alpha=None)
 ```
+
+
+
+<sub>[top](#section) [index](index.md)</sub>
 
 
 
@@ -980,6 +1140,10 @@ build()
 
 
 
+<sub>[top](#section) [index](index.md)</sub>
+
+
+
 ###### Returns
 
 - **str** : documentation lines for the sections
@@ -994,6 +1158,10 @@ build_extra()
 
 
 
+<sub>[top](#section) [index](index.md)</sub>
+
+
+
 ##### build_header
 
 Yield the lines of the header part
@@ -1004,6 +1172,10 @@ build_header()
 
 
 
+<sub>[top](#section) [index](index.md)</sub>
+
+
+
 ##### build_sections
 
 Yield the lines of the sections parts
@@ -1011,6 +1183,10 @@ Yield the lines of the sections parts
 ``` python
 build_sections()
 ```
+
+
+
+<sub>[top](#section) [index](index.md)</sub>
 
 
 
@@ -1030,6 +1206,10 @@ sub_section = parent_section.iteration(lambda s: s.title == 'The title')
 ``` python
 get_section(title)
 ```
+
+
+
+<sub>[top](#section) [index](index.md)</sub>
 
 
 
@@ -1058,6 +1238,10 @@ init()
 
 
 
+<sub>[top](#section) [index](index.md)</sub>
+
+
+
 ##### iteration
 
 Run the function on the section and sub sections
@@ -1070,6 +1254,10 @@ and return `None`.
 ``` python
 iteration(f)
 ```
+
+
+
+<sub>[top](#section) [index](index.md)</sub>
 
 
 
@@ -1091,6 +1279,10 @@ link_to(url="57")
 
 
 
+<sub>[top](#section) [index](index.md)</sub>
+
+
+
 ###### Returns
 
 - **str** : [title](url + link_token)
@@ -1102,6 +1294,10 @@ Add a sub section
 ``` python
 new_section(title, comment=None, sub_level=1)
 ```
+
+
+
+<sub>[top](#section) [index](index.md)</sub>
 
 
 
@@ -1128,6 +1324,10 @@ parse_comment(comment)
 
 
 
+<sub>[top](#section) [index](index.md)</sub>
+
+
+
 ###### Arguments
 
 - **comment** (str) : the raw comment
@@ -1148,6 +1348,10 @@ print()
 
 
 
+<sub>[top](#section) [index](index.md)</sub>
+
+
+
 ##### write
 
 Append text to the current text
@@ -1158,6 +1362,10 @@ or the comment of the last sub sections.
 ``` python
 write(comment="52", parse=True)
 ```
+
+
+
+<sub>[top](#section) [index](index.md)</sub>
 
 
 
@@ -1173,6 +1381,10 @@ Append text to the header comment
 ``` python
 write_header(comment="51", parse=True)
 ```
+
+
+
+<sub>[top](#section) [index](index.md)</sub>
 
 
 

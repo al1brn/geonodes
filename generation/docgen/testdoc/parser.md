@@ -27,12 +27,12 @@ classes or arguments for functions
 ## Content
 
 
-- :C: : [clean_python](#clean_python) :black_small_square: [capture_inheritance](#capture_inheritance) :black_small_square: [capture_inheritances](#capture_inheritances)
-- :D: : [del_margin](#del_margin)
-- :E: : [extract_strings](#extract_strings) :black_small_square: [extract_source](#extract_source) :black_small_square: [extract_lists](#extract_lists)
-- :P: : [parse_list_line](#parse_list_line) :black_small_square: [parse_module](#parse_module) :black_small_square: [parse_files](#parse_files)
-- :R: : [replace_strings](#replace_strings) :black_small_square: [replace_source](#replace_source)
-- :T: : [Text](#text)
+- C : [clean_python](#clean_python) :black_small_square: [capture_inheritance](#capture_inheritance) :black_small_square: [capture_inheritances](#capture_inheritances)
+- D : [del_margin](#del_margin)
+- E : [extract_strings](#extract_strings) :black_small_square: [extract_source](#extract_source) :black_small_square: [extract_lists](#extract_lists)
+- P : [parse_list_line](#parse_list_line) :black_small_square: [parse_module](#parse_module) :black_small_square: [parse_files](#parse_files)
+- R : [replace_strings](#replace_strings) :black_small_square: [replace_source](#replace_source)
+- T : [Text](#text)
 
 ## Functions
 
@@ -48,6 +48,10 @@ Allow to document class items as it were not inherited.
 ``` python
 capture_inheritance(class_, base_, remove=True)
 ```
+
+
+
+<sub>[top](#parser) [index](index.md)</sub>
 
 
 
@@ -69,6 +73,10 @@ Allow to document class items as it were not inherited.
 ``` python
 capture_inheritances(class_, modules_, include=None, exclude=[], verbose=True)
 ```
+
+
+
+<sub>[top](#parser) [index](index.md)</sub>
 
 
 
@@ -94,6 +102,10 @@ Comments are replaced by <COMMENT index> and strings by "index"
 ``` python
 clean_python(text)
 ```
+
+
+
+<sub>[top](#parser) [index](index.md)</sub>
 
 
 
@@ -139,6 +151,10 @@ del_margin(comment)
 
 
 
+<sub>[top](#parser) [index](index.md)</sub>
+
+
+
 #### Arguments
 
 - **comment** (str) : the comment
@@ -159,6 +175,10 @@ The lists are generated from the structure
 ``` python
 extract_lists(comment, titles)
 ```
+
+
+
+<sub>[top](#parser) [index](index.md)</sub>
 
 
 
@@ -184,6 +204,10 @@ extract_source(text)
 
 
 
+<sub>[top](#parser) [index](index.md)</sub>
+
+
+
 #### Arguments
 
 - **text** (str) : text to extract source code from
@@ -205,6 +229,10 @@ extract_strings(text)
 
 
 
+<sub>[top](#parser) [index](index.md)</sub>
+
+
+
 #### Arguments
 
 - **text** (str) : text to extract strings from
@@ -222,6 +250,10 @@ All the files with `.py` extension are parsed.
 ``` python
 parse_files(folder, sub_folders=[], key=None, verbose=False)
 ```
+
+
+
+<sub>[top](#parser) [index](index.md)</sub>
 
 
 
@@ -258,6 +290,10 @@ pprint(parse_list_line(line))
 ``` python
 parse_list_line(line)
 ```
+
+
+
+<sub>[top](#parser) [index](index.md)</sub>
 
 
 
@@ -299,6 +335,10 @@ parse_module(text, module_name="124")
 
 
 
+<sub>[top](#parser) [index](index.md)</sub>
+
+
+
 #### Arguments
 
 - **text** (str) : source code to parse
@@ -314,6 +354,10 @@ Replace the extracted strings.
 ``` python
 replace_source(text, strings)
 ```
+
+
+
+<sub>[top](#parser) [index](index.md)</sub>
 
 
 
@@ -333,6 +377,10 @@ Replace the extracted strings.
 ``` python
 replace_strings(text, strings)
 ```
+
+
+
+<sub>[top](#parser) [index](index.md)</sub>
 
 
 
@@ -360,15 +408,19 @@ Properties
 ----------
 - cursor (int) : current position
 
+<sub>[top](#parser) [index](index.md)</sub>
+
+
+
 #### Content
 
 
-- :C: : [c](#c)
-- :E: : [eof](#eof) :black_small_square: [eol](#eol) :black_small_square: [extract_strings](#extract_strings)
-- :F: : [from_cursor](#from_cursor) :black_small_square: [find](#find)
-- :M: : [move](#move) :black_small_square: [move_to](#move_to) :black_small_square: [move_after](#move_after)
-- :R: : [replace](#replace)
-- :_: : [__call__](#__call__)
+- C : [c](#c)
+- E : [eof](#eof) :black_small_square: [eol](#eol) :black_small_square: [extract_strings](#extract_strings)
+- F : [from_cursor](#from_cursor) :black_small_square: [find](#find)
+- M : [move](#move) :black_small_square: [move_to](#move_to) :black_small_square: [move_after](#move_after)
+- R : [replace](#replace)
+- _ : [__call__](#__call__)
 
 #### Properties
 
@@ -381,6 +433,10 @@ Note that an error is raised if [LINK ERROR: page 'eof' not found]() is True.
 ``` python
 return self.text[self.cursor]
 ```> type str
+
+
+<sub>[top](#text) [index](index.md)</sub>
+
 
 
 ###### Getter
@@ -408,6 +464,10 @@ c()
 End of text is reached> type bool
 
 
+<sub>[top](#text) [index](index.md)</sub>
+
+
+
 ###### Getter
 
 End of text is reached
@@ -427,6 +487,10 @@ eof()
 End of line is reached> type bool
 
 
+<sub>[top](#text) [index](index.md)</sub>
+
+
+
 ###### Getter
 
 End of line is reached
@@ -444,6 +508,10 @@ eol()
 ##### from_cursor
 
 Return the text from the cursor.> type str
+
+
+<sub>[top](#text) [index](index.md)</sub>
+
 
 
 ###### Getter
@@ -511,6 +579,10 @@ __call__(start=1, count=None)
 
 
 
+<sub>[top](#text) [index](index.md)</sub>
+
+
+
 ##### extract_strings
 
 Extract strings from a text and returns the extracted text and the list of extracted strings.
@@ -518,6 +590,10 @@ Extract strings from a text and returns the extracted text and the list of extra
 ``` python
 extract_strings(text)
 ```
+
+
+
+<sub>[top](#text) [index](index.md)</sub>
 
 
 
@@ -563,6 +639,10 @@ find(target, regex=False, halt=True)
 
 
 
+<sub>[top](#text) [index](index.md)</sub>
+
+
+
 ###### Arguments
 
 - **target** (str or tuple of strs) : the string(s) to reach
@@ -580,6 +660,10 @@ Move the cursor of the given offset
 ``` python
 move(offset=1)
 ```
+
+
+
+<sub>[top](#text) [index](index.md)</sub>
 
 
 
@@ -617,6 +701,10 @@ move_after(target, regex=False, halt=True)
 
 
 
+<sub>[top](#text) [index](index.md)</sub>
+
+
+
 ###### Arguments
 
 - **target** (str or tuple of strs) : the string(s) to reach
@@ -648,6 +736,10 @@ print(text.from_cursor)
 ``` python
 move_to(target, regex=False, halt=True)
 ```
+
+
+
+<sub>[top](#text) [index](index.md)</sub>
 
 
 
@@ -691,6 +783,10 @@ print(token)
 ``` python
 replace(start, end, repl)
 ```
+
+
+
+<sub>[top](#text) [index](index.md)</sub>
 
 
 

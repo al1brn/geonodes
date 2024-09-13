@@ -26,6 +26,10 @@ md_normalize(text)
 
 
 
+<sub>[top](#pyparser) [index](index.md)</sub>
+
+
+
 #### Arguments
 
 - **text** (srt) : the mark down text to normalize
@@ -58,6 +62,10 @@ which returns:
 2. name
 3. args | base class
 
+<sub>[top](#pyparser) [index](index.md)</sub>
+
+
+
 #### Content
 
 
@@ -78,6 +86,10 @@ Doc(match)
 
 Simple python source code parser.
 
+<sub>[top](#pyparser) [index](index.md)</sub>
+
+
+
 #### Content
 
 [FromFile](#fromfile)
@@ -97,6 +109,10 @@ Simple python source code parser.
 Read the current char
 
 Getting the current char doesn't move the cursor.> type str
+
+
+<sub>[top](#reader) [index](index.md)</sub>
+
 
 
 ###### Getter
@@ -120,6 +136,10 @@ current()
 End of file flag> type Boolean
 
 
+<sub>[top](#reader) [index](index.md)</sub>
+
+
+
 ###### Getter
 
 End of file flag
@@ -137,6 +157,10 @@ eof()
 ##### eol
 
 End of line flag> type Boolean
+
+
+<sub>[top](#reader) [index](index.md)</sub>
+
 
 
 ###### Getter
@@ -158,6 +182,10 @@ eol()
 Read the previous char> type str
 
 
+<sub>[top](#reader) [index](index.md)</sub>
+
+
+
 ###### Getter
 
 Read the previous char
@@ -177,6 +205,10 @@ previous()
 Read the next char
 
 After reading, the cursor is incremented> type str
+
+
+<sub>[top](#reader) [index](index.md)</sub>
+
 
 
 ###### Getter
@@ -215,6 +247,10 @@ FromFile(fname)
 
 
 
+<sub>[top](#reader) [index](index.md)</sub>
+
+
+
 ###### Arguments
 
 - **fname** (str) : full path of the file top parse
@@ -229,6 +265,10 @@ back()
 
 
 
+<sub>[top](#reader) [index](index.md)</sub>
+
+
+
 ##### equal
 
 Compare the string starting at the cursor with the argument
@@ -236,6 +276,10 @@ Compare the string starting at the cursor with the argument
 ``` python
 equal(s)
 ```
+
+
+
+<sub>[top](#reader) [index](index.md)</sub>
 
 
 
@@ -254,6 +298,10 @@ Reset the cursor to the start of the text
 ``` python
 reset()
 ```
+
+
+
+<sub>[top](#reader) [index](index.md)</sub>
 
 
 
