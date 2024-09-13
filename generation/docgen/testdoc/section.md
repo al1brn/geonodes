@@ -19,10 +19,12 @@ Section(title, comment=None, sort_sections=False, in_toc=False, module=None, is_
 ### anchor
 
 
+
 > getter 
 
 
 ### depth
+
 
 
 > getter 
@@ -31,10 +33,12 @@ Section(title, comment=None, sort_sections=False, in_toc=False, module=None, is_
 ### depth_in_page
 
 
+
 > getter 
 
 
 ### file_name
+
 
 
 > getter 
@@ -43,10 +47,12 @@ Section(title, comment=None, sort_sections=False, in_toc=False, module=None, is_
 ### has_content
 
 
+
 > getter 
 
 
 ### has_toc
+
 
 
 > getter 
@@ -55,10 +61,12 @@ Section(title, comment=None, sort_sections=False, in_toc=False, module=None, is_
 ### hidden
 
 
+
 > getter 
 
 
 ### homonyms_count
+
 
 
 > getter 
@@ -67,10 +75,12 @@ Section(title, comment=None, sort_sections=False, in_toc=False, module=None, is_
 ### is_module
 
 
+
 > getter 
 
 
 ### is_page
+
 
 
 > getter setter
@@ -79,6 +89,7 @@ Section(title, comment=None, sort_sections=False, in_toc=False, module=None, is_
 ### is_top
 
 Is top section
+
 > getter 
 
 > type bool
@@ -87,16 +98,19 @@ Is top section
 ### module
 
 
+
 > getter 
 
 
 ### module_path
 
 
+
 > getter 
 
 
 ### page
+
 
 
 > getter 
