@@ -361,7 +361,7 @@ class Section:
         
         def get_items(section):
             if section.in_toc:
-                items[section.title] = section
+                items[section.title] = section.link_to()
                 
         self.iteration(get_items)
         if items is None:
@@ -374,7 +374,7 @@ class Section:
         # A simple ordered list
         
         if len(items) < 10:
-            text = "\n- ".join([items[key].title for key in sorted_keys])
+            text = "\n- ".join([items[key] for key in sorted_keys])
             
         # ----------------------------------------------------------------------------------------------------
         # One line per initial
@@ -385,7 +385,7 @@ class Section:
                 first = key[0].upper()
                 first_list = alpha.get(first)
                 if first_list is None:
-                    first_list = [key]
+                    first_list = [items[key]]
                     alpha[first] = first_list
                 else:
                     first_list.append(key)
