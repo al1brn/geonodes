@@ -9,7 +9,7 @@ Properties
 - module (string = None) : module the page belongs to, section is not a page if None
 
 ``` python
-Section(title, comment=None, sort_sections=False, in_toc=False, module=None, is_page=False, ignore_if_empty=True)
+Section(title, comment=None, sort_sections=False, in_toc=False, module=None, is_page=False, ignore_if_empty=True, top_bar=False)
 ```
 
 
@@ -24,7 +24,6 @@ Section(title, comment=None, sort_sections=False, in_toc=False, module=None, is_
 
 
 <sub>[top](#{self.page.anchor}) [index](index.md)</sub>
-----------
 
 
 
@@ -36,7 +35,6 @@ Section(title, comment=None, sort_sections=False, in_toc=False, module=None, is_
 
 
 <sub>[top](#{self.page.anchor}) [index](index.md)</sub>
-----------
 
 
 
@@ -48,7 +46,6 @@ Section(title, comment=None, sort_sections=False, in_toc=False, module=None, is_
 
 
 <sub>[top](#{self.page.anchor}) [index](index.md)</sub>
-----------
 
 
 
@@ -60,7 +57,6 @@ Section(title, comment=None, sort_sections=False, in_toc=False, module=None, is_
 
 
 <sub>[top](#{self.page.anchor}) [index](index.md)</sub>
-----------
 
 
 
@@ -72,7 +68,6 @@ Section(title, comment=None, sort_sections=False, in_toc=False, module=None, is_
 
 
 <sub>[top](#{self.page.anchor}) [index](index.md)</sub>
-----------
 
 
 
@@ -84,7 +79,6 @@ Section(title, comment=None, sort_sections=False, in_toc=False, module=None, is_
 
 
 <sub>[top](#{self.page.anchor}) [index](index.md)</sub>
-----------
 
 
 
@@ -96,7 +90,6 @@ Section(title, comment=None, sort_sections=False, in_toc=False, module=None, is_
 
 
 <sub>[top](#{self.page.anchor}) [index](index.md)</sub>
-----------
 
 
 
@@ -108,7 +101,6 @@ Section(title, comment=None, sort_sections=False, in_toc=False, module=None, is_
 
 
 <sub>[top](#{self.page.anchor}) [index](index.md)</sub>
-----------
 
 
 
@@ -120,7 +112,6 @@ Section(title, comment=None, sort_sections=False, in_toc=False, module=None, is_
 
 
 <sub>[top](#{self.page.anchor}) [index](index.md)</sub>
-----------
 
 
 
@@ -132,7 +123,6 @@ Section(title, comment=None, sort_sections=False, in_toc=False, module=None, is_
 
 
 <sub>[top](#{self.page.anchor}) [index](index.md)</sub>
-----------
 
 
 
@@ -145,7 +135,6 @@ Is top section
 
 
 <sub>[top](#{self.page.anchor}) [index](index.md)</sub>
-----------
 
 
 
@@ -157,7 +146,6 @@ Is top section
 
 
 <sub>[top](#{self.page.anchor}) [index](index.md)</sub>
-----------
 
 
 
@@ -169,7 +157,6 @@ Is top section
 
 
 <sub>[top](#{self.page.anchor}) [index](index.md)</sub>
-----------
 
 
 
@@ -181,7 +168,6 @@ Is top section
 
 
 <sub>[top](#{self.page.anchor}) [index](index.md)</sub>
-----------
 
 
 

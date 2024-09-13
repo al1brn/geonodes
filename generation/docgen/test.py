@@ -23,7 +23,7 @@ def title_to_anchor(title):
 
 class Section:
     
-    def __init__(self, title, comment=None, sort_sections=False, in_toc=False, module=None, is_page=False, ignore_if_empty=True):
+    def __init__(self, title, comment=None, sort_sections=False, in_toc=False, module=None, is_page=False, ignore_if_empty=True, top_bar=False):
         """ Section
         
         
@@ -47,6 +47,7 @@ class Section:
         self.sort_sections   = sort_sections
         self.in_toc          = in_toc
         self.ignore_if_empty = ignore_if_empty
+        self.top_bar         = False
         
     def __str__(self):
         stype   = "P" if self.is_page else " "
@@ -354,7 +355,7 @@ class Section:
         self.write("\n```\n\n")
         
     def write_navigation(self):
-        self.write("\n\n<sub>[top](#{self.page.anchor}) [index](index.md)</sub>\n----------\n\n")
+        self.write("\n\n<sub>[top](#{self.page.anchor}) [index](index.md)</sub>\n\n")
         
         
     # =============================================================================================================================
@@ -364,7 +365,11 @@ class Section:
         """ Returns the text to write in the page
         """
         
-        header = f"#{'#'*self.depth_in_page} {self.title}\n\n"
+        if self.top_bar:
+            header = "----------\n"
+        else:
+            header = ""
+        header += f"#{'#'*self.depth_in_page} {self.title}\n\n"
         
         text = None
         
@@ -517,7 +522,7 @@ class Section:
         
         assert(prop_dict['obj'] == 'property')
         
-        section = self.add_section(prop_dict['name'], prop_dict['comment'], in_toc=True)
+        section = self.add_section(prop_dict['name'], prop_dict['comment'], in_toc=True, top_bar=True)
         
         sepa = '\n\n'
         
@@ -551,7 +556,7 @@ class Section:
     
         assert(func_dict['obj'] == 'function')
         
-        section = self.add_section(func_dict['name'], func_dict['comment'], in_toc=True)
+        section = self.add_section(func_dict['name'], func_dict['comment'], in_toc=True, top_bar=True)
         
         if func_dict.get('args') is not None:
             section.write_source(f"{section.title}({func_dict['args']})")
