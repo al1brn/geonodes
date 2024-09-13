@@ -351,7 +351,11 @@ class Section:
     def write_source(self, source):
         self.write("\n\n``` python\n")
         self.write(source.replace("`", "'"))
-        self.write("\n```\n\n")      
+        self.write("\n```\n\n")
+        
+    def write_navigation(self):
+        self.write(f"\n\n<sub>[top](#{self.page.anchor}) [index](index.md)</sub>\n\n")
+        
         
     # =============================================================================================================================
     # Build the whole documentation
@@ -522,7 +526,7 @@ class Section:
             sepa = '\n'
             
         if prop_dict.get('type') is not None:
-            section.write(f"{sepa}- type {prop_dict['type']}")
+            section.write(f"{sepa}- type **{prop_dict['type']}**")
             sepa = '\n'
             
         if prop_dict.get('default') is not None:
@@ -530,6 +534,8 @@ class Section:
             sepa = '\n'
             
         section.write(sepa)
+        
+        section.write_navigation()
 
         #if prop_dict.get('getter') is not None:
         #    section.add_function_dict(prop_dict['getter'])

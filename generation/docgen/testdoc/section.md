@@ -23,11 +23,19 @@ Section(title, comment=None, sort_sections=False, in_toc=False, module=None, is_
 - getter 
 
 
+<sub>[top](#section) [index](index.md)</sub>
+
+
+
 ### depth
 
 
 
 - getter 
+
+
+<sub>[top](#section) [index](index.md)</sub>
+
 
 
 ### depth_in_page
@@ -37,11 +45,19 @@ Section(title, comment=None, sort_sections=False, in_toc=False, module=None, is_
 - getter 
 
 
+<sub>[top](#section) [index](index.md)</sub>
+
+
+
 ### file_name
 
 
 
 - getter 
+
+
+<sub>[top](#section) [index](index.md)</sub>
+
 
 
 ### has_content
@@ -51,11 +67,19 @@ Section(title, comment=None, sort_sections=False, in_toc=False, module=None, is_
 - getter 
 
 
+<sub>[top](#section) [index](index.md)</sub>
+
+
+
 ### has_toc
 
 
 
 - getter 
+
+
+<sub>[top](#section) [index](index.md)</sub>
+
 
 
 ### hidden
@@ -65,11 +89,19 @@ Section(title, comment=None, sort_sections=False, in_toc=False, module=None, is_
 - getter 
 
 
+<sub>[top](#section) [index](index.md)</sub>
+
+
+
 ### homonyms_count
 
 
 
 - getter 
+
+
+<sub>[top](#section) [index](index.md)</sub>
+
 
 
 ### is_module
@@ -79,6 +111,10 @@ Section(title, comment=None, sort_sections=False, in_toc=False, module=None, is_
 - getter 
 
 
+<sub>[top](#section) [index](index.md)</sub>
+
+
+
 ### is_page
 
 
@@ -86,12 +122,20 @@ Section(title, comment=None, sort_sections=False, in_toc=False, module=None, is_
 - getter setter
 
 
+<sub>[top](#section) [index](index.md)</sub>
+
+
+
 ### is_top
 
 Is top section
 
 - getter 
-- type bool
+- type **bool**
+
+
+<sub>[top](#section) [index](index.md)</sub>
+
 
 
 ### module
@@ -101,6 +145,10 @@ Is top section
 - getter 
 
 
+<sub>[top](#section) [index](index.md)</sub>
+
+
+
 ### module_path
 
 
@@ -108,11 +156,19 @@ Is top section
 - getter 
 
 
+<sub>[top](#section) [index](index.md)</sub>
+
+
+
 ### page
 
 
 
 - getter 
+
+
+<sub>[top](#section) [index](index.md)</sub>
+
 
 
 ## Methods
@@ -404,6 +460,16 @@ write(text)
 #### Arguments
 
 - **text** (str) : the text to write
+
+### write_navigation
+
+
+
+``` python
+write_navigation()
+```
+
+
 
 ### write_source
 
