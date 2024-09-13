@@ -27,12 +27,12 @@ classes or arguments for functions
 ## Content
 
 
-- T[Text](#text)
-- c[clean_python](#clean_python) [capture_inheritance](#capture_inheritance) [capture_inheritances](#capture_inheritances)
-- d[del_margin](#del_margin)
-- e[extract_strings](#extract_strings) [extract_source](#extract_source) [extract_lists](#extract_lists)
-- p[parse_list_line](#parse_list_line) [parse_module](#parse_module) [parse_files](#parse_files)
-- r[replace_strings](#replace_strings) [replace_source](#replace_source)
+- C : [clean_python](#clean_python) [capture_inheritance](#capture_inheritance) [capture_inheritances](#capture_inheritances)
+- D : [del_margin](#del_margin)
+- E : [extract_strings](#extract_strings) [extract_source](#extract_source) [extract_lists](#extract_lists)
+- P : [parse_list_line](#parse_list_line) [parse_module](#parse_module) [parse_files](#parse_files)
+- R : [replace_strings](#replace_strings) [replace_source](#replace_source)
+- T : [Text](#text)
 
 ## Functions
 
@@ -363,12 +363,12 @@ Properties
 #### Content
 
 
-- _[__call__](#__call__)
-- c[c](#c)
-- e[eof](#eof) [eol](#eol) [extract_strings](#extract_strings)
-- f[from_cursor](#from_cursor) [find](#find)
-- m[move](#move) [move_to](#move_to) [move_after](#move_after)
-- r[replace](#replace)
+- C : [c](#c)
+- E : [eof](#eof) [eol](#eol) [extract_strings](#extract_strings)
+- F : [from_cursor](#from_cursor) [find](#find)
+- M : [move](#move) [move_to](#move_to) [move_after](#move_after)
+- R : [replace](#replace)
+- _ : [__call__](#__call__)
 
 #### Properties
 

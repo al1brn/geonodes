@@ -306,7 +306,7 @@ class Section(list):
         else:
             alpha = {}
             for item in items:
-                first = item[0][0]
+                first = item[0][0].upper()
                 first_list = alpha.get(first)
                 if first_list is None:
                     first_list = [item[1]]
@@ -316,7 +316,7 @@ class Section(list):
             
             text = ""
             for first in sorted(list(alpha.keys())):
-                text += f"\n- {first}" + " ".join(alpha[first])
+                text += f"\n- {first} : " + " ".join(alpha[first])
                 
         # Done
                 

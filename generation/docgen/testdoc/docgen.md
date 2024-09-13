@@ -751,18 +751,18 @@ Properties
 #### Content
 
 
-- F[FromSource](#fromsource)
-- a[as_dict](#as_dict) [alphabetical_sections](#alphabetical_sections)
-- b[build_header](#build_header) [build_sections](#build_sections) [build_extra](#build_extra) [build](#build)
-- c[comment](#comment)
-- g[get_section](#get_section)
-- i[init](#init) [iteration](#iteration)
-- l[level](#level) [link_token](#link_token) [link_to](#link_to)
-- m[md_file_name](#md_file_name)
-- n[new_section](#new_section)
-- p[parse_comment](#parse_comment) [print](#print)
-- s[sorted_sections](#sorted_sections)
-- w[write_header](#write_header) [write](#write)
+- A : [as_dict](#as_dict) [alphabetical_sections](#alphabetical_sections)
+- B : [build_header](#build_header) [build_sections](#build_sections) [build_extra](#build_extra) [build](#build)
+- C : [comment](#comment)
+- F : [FromSource](#fromsource)
+- G : [get_section](#get_section)
+- I : [init](#init) [iteration](#iteration)
+- L : [level](#level) [link_token](#link_token) [link_to](#link_to)
+- M : [md_file_name](#md_file_name)
+- N : [new_section](#new_section)
+- P : [parse_comment](#parse_comment) [print](#print)
+- S : [sorted_sections](#sorted_sections)
+- W : [write_header](#write_header) [write](#write)
 
 #### Properties
 
