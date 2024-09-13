@@ -361,7 +361,7 @@ class Section:
         
         def get_items(section):
             if section.in_toc:
-                items[section.title] = section.link_to()
+                items[section.title] = f"[{section.title}](#{section.anchor})"
                 
         self.iteration(get_items)
         if items is None:
@@ -388,7 +388,7 @@ class Section:
                     first_list = [items[key]]
                     alpha[first] = first_list
                 else:
-                    first_list.append(key)
+                    first_list.append(items[key])
             
             text = ""
             for first in sorted(list(alpha.keys())):
