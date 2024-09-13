@@ -1,12 +1,38 @@
 # Section
 
-Section
+Document section
 
+Project documentation is made of **pages** organized in **modules**.
+Modules and pages are articulated as folders and files but the document
+hierarchy doesn't have to stick to the structure of the source folders.
 
-Properties
-----------
-- is_page (bool = False) : is a page if <#module> is not None
-- module (string = None) : module the page belongs to, section is not a page if None
+The documentation is based on the versatile class <!Section> which can be:
+- a text section in a page
+- a documentation page
+- a module
+- the whole documentation itself
+
+A <!Section> is basically a list of **sub sections** with a header <!Section#comment>.
+Its attributes drive its behavior:
+    
+- <!Section#is_page> : the section is written in a dedicated page, otherwise
+  it is written if the flow of the <!Section#page> it belongs to.
+  Wheter a section is a page or not is taken into account to build links toward this section.
+  
+  
+``` python
+doc = Documentation("Project documentation")
+
+# ----- Load source files in the documentation main modules
+
+doc.load_folder(folder_path1)
+doc.load_folder(folder_path2)
+
+# ----- Create another module from other folder
+
+module = doc.new_module("Some module", folder_path3)
+module.load_folder(folder_path3)
+```
 
 ``` python
 Section(title, comment=None, sort_sections=False, in_toc=False, module=None, is_page=False, ignore_if_empty=True, top_bar=None)
