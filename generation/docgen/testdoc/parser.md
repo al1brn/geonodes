@@ -27,12 +27,12 @@ classes or arguments for functions
 ## Content
 
 
-- C : [clean_python](#clean_python) :black_small_square: [capture_inheritance](#capture_inheritance) :black_small_square: [capture_inheritances](#capture_inheritances)
-- D : [del_margin](#del_margin)
-- E : [extract_strings](#extract_strings) :black_small_square: [extract_source](#extract_source) :black_small_square: [extract_lists](#extract_lists)
-- P : [parse_list_line](#parse_list_line) :black_small_square: [parse_module](#parse_module) :black_small_square: [parse_files](#parse_files)
-- R : [replace_strings](#replace_strings) :black_small_square: [replace_source](#replace_source)
-- T : [Text](#text)
+- :C: : [clean_python](#clean_python) :black_small_square: [capture_inheritance](#capture_inheritance) :black_small_square: [capture_inheritances](#capture_inheritances)
+- :D: : [del_margin](#del_margin)
+- :E: : [extract_strings](#extract_strings) :black_small_square: [extract_source](#extract_source) :black_small_square: [extract_lists](#extract_lists)
+- :P: : [parse_list_line](#parse_list_line) :black_small_square: [parse_module](#parse_module) :black_small_square: [parse_files](#parse_files)
+- :R: : [replace_strings](#replace_strings) :black_small_square: [replace_source](#replace_source)
+- :T: : [Text](#text)
 
 ## Functions
 
@@ -363,12 +363,12 @@ Properties
 #### Content
 
 
-- C : [c](#c)
-- E : [eof](#eof) :black_small_square: [eol](#eol) :black_small_square: [extract_strings](#extract_strings)
-- F : [from_cursor](#from_cursor) :black_small_square: [find](#find)
-- M : [move](#move) :black_small_square: [move_to](#move_to) :black_small_square: [move_after](#move_after)
-- R : [replace](#replace)
-- _ : [__call__](#__call__)
+- :C: : [c](#c)
+- :E: : [eof](#eof) :black_small_square: [eol](#eol) :black_small_square: [extract_strings](#extract_strings)
+- :F: : [from_cursor](#from_cursor) :black_small_square: [find](#find)
+- :M: : [move](#move) :black_small_square: [move_to](#move_to) :black_small_square: [move_after](#move_after)
+- :R: : [replace](#replace)
+- :_: : [__call__](#__call__)
 
 #### Properties
 

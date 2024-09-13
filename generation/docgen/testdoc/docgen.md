@@ -751,18 +751,18 @@ Properties
 #### Content
 
 
-- A : [as_dict](#as_dict) :black_small_square: [alphabetical_sections](#alphabetical_sections)
-- B : [build_header](#build_header) :black_small_square: [build_sections](#build_sections) :black_small_square: [build_extra](#build_extra) :black_small_square: [build](#build)
-- C : [comment](#comment)
-- F : [FromSource](#fromsource)
-- G : [get_section](#get_section)
-- I : [init](#init) :black_small_square: [iteration](#iteration)
-- L : [level](#level) :black_small_square: [link_token](#link_token) :black_small_square: [link_to](#link_to)
-- M : [md_file_name](#md_file_name)
-- N : [new_section](#new_section)
-- P : [parse_comment](#parse_comment) :black_small_square: [print](#print)
-- S : [sorted_sections](#sorted_sections)
-- W : [write_header](#write_header) :black_small_square: [write](#write)
+- :A: : [as_dict](#as_dict) :black_small_square: [alphabetical_sections](#alphabetical_sections)
+- :B: : [build_header](#build_header) :black_small_square: [build_sections](#build_sections) :black_small_square: [build_extra](#build_extra) :black_small_square: [build](#build)
+- :C: : [comment](#comment)
+- :F: : [FromSource](#fromsource)
+- :G: : [get_section](#get_section)
+- :I: : [init](#init) :black_small_square: [iteration](#iteration)
+- :L: : [level](#level) :black_small_square: [link_token](#link_token) :black_small_square: [link_to](#link_to)
+- :M: : [md_file_name](#md_file_name)
+- :N: : [new_section](#new_section)
+- :P: : [parse_comment](#parse_comment) :black_small_square: [print](#print)
+- :S: : [sorted_sections](#sorted_sections)
+- :W: : [write_header](#write_header) :black_small_square: [write](#write)
 
 #### Properties
 
