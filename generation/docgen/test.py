@@ -143,6 +143,12 @@ class Section:
     
     @property
     def is_top(self):
+        """ Is top section
+        
+        Returns
+        -------
+        - bool : True if owner is None
+        """
         return self.owner is None
 
     @property
