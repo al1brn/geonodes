@@ -522,7 +522,7 @@ class Section:
             sepa = '\n'
             
         if prop_dict.get('type') is not None:
-            section.write(f"{sepa}\n> type {prop_dict['type']}")
+            section.write(f"{sepa}> type {prop_dict['type']}")
             sepa = '\n'
             
         if prop_dict.get('default') is not None:

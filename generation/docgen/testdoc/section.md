@@ -91,7 +91,6 @@ Section(title, comment=None, sort_sections=False, in_toc=False, module=None, is_
 Is top section
 
 > getter 
-
 > type bool
 
 
