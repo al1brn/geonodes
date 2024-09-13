@@ -23,7 +23,8 @@ Section(title, comment=None, sort_sections=False, in_toc=False, module=None, is_
 - getter 
 
 
-<sub>[top](#section) [index](index.md)</sub>
+<sub>[top](#{self.page.anchor}) [index](index.md)</sub>
+----------
 
 
 
@@ -34,7 +35,8 @@ Section(title, comment=None, sort_sections=False, in_toc=False, module=None, is_
 - getter 
 
 
-<sub>[top](#section) [index](index.md)</sub>
+<sub>[top](#{self.page.anchor}) [index](index.md)</sub>
+----------
 
 
 
@@ -45,7 +47,8 @@ Section(title, comment=None, sort_sections=False, in_toc=False, module=None, is_
 - getter 
 
 
-<sub>[top](#section) [index](index.md)</sub>
+<sub>[top](#{self.page.anchor}) [index](index.md)</sub>
+----------
 
 
 
@@ -56,7 +59,8 @@ Section(title, comment=None, sort_sections=False, in_toc=False, module=None, is_
 - getter 
 
 
-<sub>[top](#section) [index](index.md)</sub>
+<sub>[top](#{self.page.anchor}) [index](index.md)</sub>
+----------
 
 
 
@@ -67,7 +71,8 @@ Section(title, comment=None, sort_sections=False, in_toc=False, module=None, is_
 - getter 
 
 
-<sub>[top](#section) [index](index.md)</sub>
+<sub>[top](#{self.page.anchor}) [index](index.md)</sub>
+----------
 
 
 
@@ -78,7 +83,8 @@ Section(title, comment=None, sort_sections=False, in_toc=False, module=None, is_
 - getter 
 
 
-<sub>[top](#section) [index](index.md)</sub>
+<sub>[top](#{self.page.anchor}) [index](index.md)</sub>
+----------
 
 
 
@@ -89,7 +95,8 @@ Section(title, comment=None, sort_sections=False, in_toc=False, module=None, is_
 - getter 
 
 
-<sub>[top](#section) [index](index.md)</sub>
+<sub>[top](#{self.page.anchor}) [index](index.md)</sub>
+----------
 
 
 
@@ -100,7 +107,8 @@ Section(title, comment=None, sort_sections=False, in_toc=False, module=None, is_
 - getter 
 
 
-<sub>[top](#section) [index](index.md)</sub>
+<sub>[top](#{self.page.anchor}) [index](index.md)</sub>
+----------
 
 
 
@@ -111,7 +119,8 @@ Section(title, comment=None, sort_sections=False, in_toc=False, module=None, is_
 - getter 
 
 
-<sub>[top](#section) [index](index.md)</sub>
+<sub>[top](#{self.page.anchor}) [index](index.md)</sub>
+----------
 
 
 
@@ -122,7 +131,8 @@ Section(title, comment=None, sort_sections=False, in_toc=False, module=None, is_
 - getter setter
 
 
-<sub>[top](#section) [index](index.md)</sub>
+<sub>[top](#{self.page.anchor}) [index](index.md)</sub>
+----------
 
 
 
@@ -134,7 +144,8 @@ Is top section
 - type **bool**
 
 
-<sub>[top](#section) [index](index.md)</sub>
+<sub>[top](#{self.page.anchor}) [index](index.md)</sub>
+----------
 
 
 
@@ -145,7 +156,8 @@ Is top section
 - getter 
 
 
-<sub>[top](#section) [index](index.md)</sub>
+<sub>[top](#{self.page.anchor}) [index](index.md)</sub>
+----------
 
 
 
@@ -156,7 +168,8 @@ Is top section
 - getter 
 
 
-<sub>[top](#section) [index](index.md)</sub>
+<sub>[top](#{self.page.anchor}) [index](index.md)</sub>
+----------
 
 
 
@@ -167,7 +180,8 @@ Is top section
 - getter 
 
 
-<sub>[top](#section) [index](index.md)</sub>
+<sub>[top](#{self.page.anchor}) [index](index.md)</sub>
+----------
 
 
 
