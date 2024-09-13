@@ -1,4 +1,6 @@
-<h1 id="parser">parser</h1>
+# parser
+
+
 Created on Tue Sep 10 07:44:18 2024
 
 @author: alain
@@ -22,7 +24,92 @@ In addition to this structure, a dict can contain complementory values such as i
 classes or arguments for functions
 
 
-<h2 id="functions">Functions</h2><h3 id="del_margin">del_margin</h3>Move lines leftwards to suppress margin.
+## Content
+
+
+- [Text](#text)
+- [clean_python](#clean_python) [capture_inheritance](#capture_inheritance) [capture_inheritances](#capture_inheritances)
+- [del_margin](#del_margin)
+- [extract_strings](#extract_strings) [extract_source](#extract_source) [extract_lists](#extract_lists)
+- [parse_list_line](#parse_list_line) [parse_module](#parse_module) [parse_files](#parse_files)
+- [replace_strings](#replace_strings) [replace_source](#replace_source)
+
+## Functions
+
+### capture_inheritance
+
+Capture properties et methods from another class
+
+Allow to document class items as it were not inherited.
+
+> [!Note]
+> if the name of the base class is in the inherits list, it is removed from it
+
+``` python
+capture_inheritance(class_, base_, remove=True)
+```
+
+
+
+#### Arguments
+
+- **class_** (dict) : the class to enrich
+- - **base_** (dict) : the class to capture properties and methods from
+- - **remove** (_bool_ = True) : remove base name from inheritance list
+
+### capture_inheritances
+
+Capture inheritances
+
+Allow to document class items as it were not inherited.
+
+> [!Note]
+> if the name of the base class is in the inherits list, it is removed from it
+
+``` python
+capture_inheritances(class_, modules_, include=None, exclude=[], verbose=True)
+```
+
+
+
+#### Arguments
+
+- **class_** (dict) : the class to enrich
+- - **modules_** (dict) : the hierarchy containing base classes to capture from
+- - **include** (_list_ = None) : limit capture to the given list
+- - **exclude** (_list_ = []) : exclude classes in the given list
+
+### clean_python
+
+Clean python source code
+
+- Replace the comments by an comment index
+- Replace the strings by an index
+- Remove the blank lines
+- Group multilines instructions between ( and )
+
+Comments and strings are store in lists.
+Comments are replaced by <COMMENT index> and strings by "index"
+
+``` python
+clean_python(text)
+```
+
+
+
+#### Arguments
+
+- **text** (str) : source code to clean
+
+#### Returns
+
+- **str** : cleaned text
+- - **list** : list of comments
+- - **list** : list of strings
+
+### del_margin
+
+Move lines leftwards to suppress margin.
 
 Comment read in source code can have a non nul left margin whcih is interprated in markdown.
 This method:
@@ -52,40 +139,41 @@ del_margin(comment)
 
 
 
-<h4 id="arguments">Arguments</h4>- **comment** (str) : the comment
+#### Arguments
 
-<h4 id="returns">Returns</h4>- **str** : the realigned comment
+- **comment** (str) : the comment
 
-<h3 id="extract_strings">extract_strings</h3>Replace string by an index.
+#### Returns
 
-This pretreatment ensure that the content of strings won't interfer with
-regular expression
+- **str** : the realigned comment
+
+### extract_lists
+
+Extract lists from a comment.
+
+This parser extracts Properties, Arguments and Returns sections.
+The corresponding lines are removed to build the 'new_comment' text.
+
+The lists are generated from the structure
 
 ``` python
-extract_strings(text)
+extract_lists(comment, titles)
 ```
 
 
 
-<h4 id="arguments-1">Arguments</h4>- **text** (str) : text to extract strings from
+#### Arguments
 
-<h4 id="returns-1">Returns</h4>- **str** : cleaned text and list of extracted strings
+- **comment** (str) : the raw comment
+- - **titles** (str or list of strs) : the titles of the lists to extract
 
-<h3 id="replace_strings">replace_strings</h3>Replace the extracted strings.
+#### Returns
 
-``` python
-replace_strings(text, strings)
-```
+- **str** : comment without the lists, lists as dict
 
+### extract_source
 
-
-<h4 id="arguments-2">Arguments</h4>- **text** (str) : text with replaced strings
-- - **strings** : list of strings
-
-<h4 id="returns-2">Returns</h4>- **Text** :  with original strings
-
-
-<h3 id="extract_source">extract_source</h3>Replace source code block by an index.
+Replace source code block by an index.
 
 This pretreatment ensure that the content of sourcode won't interfer with
 regular expression
@@ -96,47 +184,60 @@ extract_source(text)
 
 
 
-<h4 id="arguments-3">Arguments</h4>- **text** (str) : text to extract source code from
+#### Arguments
 
-<h4 id="returns-3">Returns</h4>- **str** : cleaned text and list of extracted pieces of code
+- **text** (str) : text to extract source code from
 
-<h3 id="replace_source">replace_source</h3>Replace the extracted strings.
+#### Returns
+
+- **str** : cleaned text and list of extracted pieces of code
+
+### extract_strings
+
+Replace string by an index.
+
+This pretreatment ensure that the content of strings won't interfer with
+regular expression
 
 ``` python
-replace_source(text, strings)
+extract_strings(text)
 ```
 
 
 
-<h4 id="arguments-4">Arguments</h4>- **text** (str) : text with replaced pieces of code
-- - **strings** : list of pieces of code
+#### Arguments
 
-<h4 id="returns-4">Returns</h4>- **Text** :  with original strings
+- **text** (str) : text to extract strings from
 
+#### Returns
 
-<h3 id="clean_python">clean_python</h3>Clean python source code
+- **str** : cleaned text and list of extracted strings
 
-- Replace the comments by an comment index
-- Replace the strings by an index
-- Remove the blank lines
-- Group multilines instructions between ( and )
+### parse_files
 
-Comments and strings are store in lists.
-Comments are replaced by <COMMENT index> and strings by "index"
+Load files from a folder.
+
+All the files with `.py` extension are parsed.
 
 ``` python
-clean_python(text)
+parse_files(folder, sub_folders=[], key=None, verbose=False)
 ```
 
 
 
-<h4 id="arguments-5">Arguments</h4>- **text** (str) : source code to clean
+#### Arguments
 
-<h4 id="returns-5">Returns</h4>- **str** : cleaned text
-- - **list** : list of comments
-- - **list** : list of strings
+- **folder** (str) : main folder
+- - **sub_folders** (str) : sub folders to explore
+- - **key** (_str_ = None) : 
 
-<h3 id="parse_list_line">parse_list_line</h3>Parse a list line in a comment
+#### Returns
+
+- **dict** : 
+
+### parse_list_line
+
+Parse a list line in a comment
 
 syntax:
 - name (type = default) : description
@@ -160,25 +261,9 @@ parse_list_line(line)
 
 
 
-<h3 id="extract_lists">extract_lists</h3>Extract lists from a comment.
+### parse_module
 
-This parser extracts Properties, Arguments and Returns sections.
-The corresponding lines are removed to build the 'new_comment' text.
-
-The lists are generated from the structure
-
-``` python
-extract_lists(comment, titles)
-```
-
-
-
-<h4 id="arguments-6">Arguments</h4>- **comment** (str) : the raw comment
-- - **titles** (str or list of strs) : the titles of the lists to extract
-
-<h4 id="returns-6">Returns</h4>- **str** : comment without the lists, lists as dict
-
-<h3 id="parse_module">parse_module</h3>Parse a python file source
+Parse a python file source
 
 The parser returns a dictionary giving the content of the module:
 
@@ -209,68 +294,62 @@ The parser returns a dictionary giving the content of the module:
 The parsing is done with regular expressions.
 
 ``` python
-parse_module(text, module_name="119")
+parse_module(text, module_name="124")
 ```
 
 
 
-<h4 id="arguments-7">Arguments</h4>- **text** (str) : source code to parse
+#### Arguments
 
-<h4 id="returns-7">Returns</h4>- **dict** : classes and functions
+- **text** (str) : source code to parse
 
-<h3 id="parse_files">parse_files</h3>Load files from a folder.
+#### Returns
 
-All the files with `.py` extension are parsed.
+- **dict** : classes and functions
+
+### replace_source
+
+Replace the extracted strings.
 
 ``` python
-parse_files(folder, sub_folders=[], key=None, verbose=False)
+replace_source(text, strings)
 ```
 
 
 
-<h4 id="arguments-8">Arguments</h4>- **folder** (str) : main folder
-- - **sub_folders** (str) : sub folders to explore
-- - **key** (_str_ = None) : 
+#### Arguments
 
-<h4 id="returns-8">Returns</h4>- **dict** : 
+- **text** (str) : text with replaced pieces of code
+- - **strings** : list of pieces of code
 
+#### Returns
 
-<h3 id="capture_inheritance">capture_inheritance</h3>Capture properties et methods from another class
+- **Text** : 
 
-Allow to document class items as it were not inherited.
+### replace_strings
 
-> [!Note]
-> if the name of the base class is in the inherits list, it is removed from it
+Replace the extracted strings.
 
 ``` python
-capture_inheritance(class_, base_, remove=True)
+replace_strings(text, strings)
 ```
 
 
 
-<h4 id="arguments-9">Arguments</h4>- **class_** (dict) : the class to enrich
-- - **base_** (dict) : the class to capture properties and methods from
-- - **remove** (_bool_ = True) : remove base name from inheritance list
+#### Arguments
 
-<h3 id="capture_inheritances">capture_inheritances</h3>Capture inheritances
+- **text** (str) : text with replaced strings
+- - **strings** : list of strings
 
-Allow to document class items as it were not inherited.
+#### Returns
 
-> [!Note]
-> if the name of the base class is in the inherits list, it is removed from it
+- **Text** : 
 
-``` python
-capture_inheritances(class_, modules_, include=None, exclude=[], verbose=True)
-```
+## Classes
 
+### Text
 
-
-<h4 id="arguments-10">Arguments</h4>- **class_** (dict) : the class to enrich
-- - **modules_** (dict) : the hierarchy containing base classes to capture from
-- - **include** (_list_ = None) : limit capture to the given list
-- - **exclude** (_list_ = []) : exclude classes in the given list
-
-<h2 id="classes">Classes</h2><h3 id="text">Text</h3>Implements a simple text reader.
+Implements a simple text reader.
 
 The Text class manages a cursor on a multilines string.
 It offers basic function to read around the cursor (backward and forwards).
@@ -281,33 +360,21 @@ Properties
 ----------
 - cursor (int) : current position
 
-<h4 id="properties">Properties</h4><h5 id="eof">eof</h5>End of text is reached> type bool
+#### Content
 
 
-<h6 id="getter">Getter</h6>End of text is reached
+- [__call__](#__call__)
+- [c](#c)
+- [eof](#eof) [eol](#eol) [extract_strings](#extract_strings)
+- [from_cursor](#from_cursor) [find](#find)
+- [move](#move) [move_to](#move_to) [move_after](#move_after)
+- [replace](#replace)
 
-``` python
-eof()
-```
+#### Properties
 
+##### c
 
-
-<h7 id="returns-9">Returns</h7>- **bool** : True if end of text is reached
-
-<h5 id="eol">eol</h5>End of line is reached> type bool
-
-
-<h6 id="getter-1">Getter</h6>End of line is reached
-
-``` python
-eol()
-```
-
-
-
-<h7 id="returns-10">Returns</h7>- **bool** : True if current char is eol (or if eof is True)
-
-<h5 id="c">c</h5>Current character
+Current character
 
 Note that an error is raised if [LINK ERROR: page 'eof' not found]() is True.
 
@@ -316,7 +383,9 @@ return self.text[self.cursor]
 ```> type str
 
 
-<h6 id="getter-2">Getter</h6>Current character
+###### Getter
+
+Current character
 
 Note that an error is raised if [LINK ERROR: page 'eof' not found]() is True.
 
@@ -330,12 +399,56 @@ c()
 
 
 
-<h7 id="returns-11">Returns</h7>- **str** : the character at cursor
+####### Returns
 
-<h5 id="from_cursor">from_cursor</h5>Return the text from the cursor.> type str
+- **str** : the character at cursor
+
+##### eof
+
+End of text is reached> type bool
 
 
-<h6 id="getter-3">Getter</h6>Return the text from the cursor.
+###### Getter
+
+End of text is reached
+
+``` python
+eof()
+```
+
+
+
+####### Returns
+
+- **bool** : True if end of text is reached
+
+##### eol
+
+End of line is reached> type bool
+
+
+###### Getter
+
+End of line is reached
+
+``` python
+eol()
+```
+
+
+
+####### Returns
+
+- **bool** : True if current char is eol (or if eof is True)
+
+##### from_cursor
+
+Return the text from the cursor.> type str
+
+
+###### Getter
+
+Return the text from the cursor.
 
 ``` python
 from_cursor()
@@ -343,9 +456,13 @@ from_cursor()
 
 
 
-<h7 id="returns-12">Returns</h7>- **str** : text from the cursor
+####### Returns
 
-<h4 id="methods">Methods</h4>
+- **str** : text from the cursor
+
+#### Methods
+
+
 
 ``` python
 Text(text)
@@ -353,11 +470,9 @@ Text(text)
 
 
 
-#### __init__
+##### __call__
 
-
-
-<h5 id="__call__">__call__</h5>Read the string around the cursor
+Read the string around the cursor
 
 One or two argumentscan be passed:
 - If only one argument is passed (**count** is None), it is used as the number of chars
@@ -396,19 +511,28 @@ __call__(start=1, count=None)
 
 
 
-<h5 id="move">move</h5>Move the cursor of the given offset
+##### extract_strings
+
+Extract strings from a text and returns the extracted text and the list of extracted strings.
 
 ``` python
-move(offset=1)
+extract_strings(text)
 ```
 
 
 
-<h6 id="arguments-11">Arguments</h6>- **offset** (_int_ = 1) : cursor offset
+###### Arguments
 
-<h6 id="returns-13">Returns</h6>- **int** : new cursor position
+- **text** (str) : the text to extract strings from
 
-<h5 id="find">find</h5>Find a target into the text
+###### Returns
+
+- **str** : text with strings replaced by 'index'
+- - **list** : list of extracted strings
+
+##### find
+
+Find a target into the text
 
 > [!IMPORTANT]
 > The search starts at the cursor
@@ -439,41 +563,37 @@ find(target, regex=False, halt=True)
 
 
 
-<h6 id="arguments-12">Arguments</h6>- **target** (str or tuple of strs) : the string(s) to reach
+###### Arguments
+
+- **target** (str or tuple of strs) : the string(s) to reach
 - - **regex** (_bool_ = False) : target is a regular expression or not
 - - **halt** (_bool_ = True) : raise an exception if not found
 
-<h6 id="returns-14">Returns</h6>- **int** : the new cursor position
+###### Returns
 
-<h5 id="move_to">move_to</h5>Move the cursor until it reaches the given target.
+- **int** : the new cursor position
 
-This function execute a [LINK ERROR: page 'find' not found]() on the target and places the
-cursor just before the target.
+##### move
 
-``` python
-found = self.find(target)
-return self.move(-len(found))
-```
+Move the cursor of the given offset
 
 ``` python
-text = Text("Just go HERE")
-
-text.move_to("HERE")
-print(text.from_cursor)
-# > HERE
-```
-
-``` python
-move_to(target, regex=False, halt=True)
+move(offset=1)
 ```
 
 
 
-<h6 id="arguments-13">Arguments</h6>- **target** (str or tuple of strs) : the string(s) to reach
+###### Arguments
 
-<h6 id="returns-15">Returns</h6>- **int** : the new cursor position
+- **offset** (_int_ = 1) : cursor offset
 
-<h5 id="move_after">move_after</h5>Move the cursor until it reaches the given target.
+###### Returns
+
+- **int** : new cursor position
+
+##### move_after
+
+Move the cursor until it reaches the given target.
 
 This function execute a [LINK ERROR: page 'find' not found]() on the target and places the
 cursor just before the target.
@@ -497,11 +617,51 @@ move_after(target, regex=False, halt=True)
 
 
 
-<h6 id="arguments-14">Arguments</h6>- **target** (str or tuple of strs) : the string(s) to reach
+###### Arguments
 
-<h6 id="returns-16">Returns</h6>- **int** : the new cursor position
+- **target** (str or tuple of strs) : the string(s) to reach
 
-<h5 id="replace">replace</h5>Replace the text between two positions by a replacement string.
+###### Returns
+
+- **int** : the new cursor position
+
+##### move_to
+
+Move the cursor until it reaches the given target.
+
+This function execute a [LINK ERROR: page 'find' not found]() on the target and places the
+cursor just before the target.
+
+``` python
+found = self.find(target)
+return self.move(-len(found))
+```
+
+``` python
+text = Text("Just go HERE")
+
+text.move_to("HERE")
+print(text.from_cursor)
+# > HERE
+```
+
+``` python
+move_to(target, regex=False, halt=True)
+```
+
+
+
+###### Arguments
+
+- **target** (str or tuple of strs) : the string(s) to reach
+
+###### Returns
+
+- **int** : the new cursor position
+
+##### replace
+
+Replace the text between two positions by a replacement string.
 
 After the operation, the cursor is placed after the replacement string.
 
@@ -534,9 +694,13 @@ replace(start, end, repl)
 
 
 
-<h6 id="arguments-15">Arguments</h6>- **start** (int) : start index of replaced part
+###### Arguments
+
+- **start** (int) : start index of replaced part
 - - **end** (int) : end index of replace part
 - - **repl** (str) : the replacement string
 
-<h6 id="returns-17">Returns</h6>- **str** : the replaced string
+###### Returns
+
+- **str** : the replaced string
 

@@ -19,7 +19,7 @@ from parser import extract_source, replace_source
 def title_to_file_name(title):
     return f"{title.lower().replace(' ', '_')}.md"
 
-def title_to_token(title):
+def title_to_anchor(title):
     return title.lower().replace(' ', '-')
 
 class Section(list):
@@ -36,7 +36,7 @@ class Section(list):
         
         self._page   = None
         self._depth  = 0
-        self._token  = None
+        self._anchor  = None
         
         
     def __str__(self):
@@ -130,19 +130,19 @@ class Section(list):
     # ====================================================================================================
     # Tokens
     
-    def set_tokens(self):
-        self._token = title_to_token(self.title)
-        tokens = {self._token: 1}
+    def set_anchors(self):
+        self._anchor = title_to_anchor(self.title)
+        anchors = {self._anchor: 1}
         
         for section in self.sections():
-            token = title_to_token(section.title)
-            if token in tokens:
-                count = tokens[token]
-                section._token = f"{token}-{count}"
-                tokens[token] = count + 1
+            anchor = title_to_anchor(section.title)
+            if anchor in anchors:
+                count = anchors[anchor]
+                section._anchor = f"{anchor}-{count}"
+                anchors[anchor] = count + 1
             else:
-                section._token = f"{token}"
-                tokens[token] = 1
+                section._anchor = f"{anchor}"
+                anchors[anchor] = 1
     
     
     @property
@@ -178,14 +178,14 @@ class Section(list):
             return self.page.file_name
 
     @property
-    def token(self):
-        if self._token is None:
-            return title_to_token(self.title)
+    def anchor(self):
+        if self._anchor is None:
+            return title_to_anchor(self.title)
         else:
-            return self._token
+            return self._anchor
         
     def mdlink(self, title=None, local=False):
-        link = f"#{self.token}"
+        link = f"#{self.anchor}"
         if not local:
             link = self.file_name + link
         if title is None:
@@ -275,7 +275,52 @@ class Section(list):
         toc = Section(name, comment = "\n".join([f"<#{section_name}>" for section_name in section_names]))
         self.insert(0, toc)
         return toc
-
+    
+    # ====================================================================================================
+    # A table of contents
+    
+    @classmethod
+    def Toc(cls, items, title='Content'):
+        """ Create a table of content from the given list
+        
+        Arguments
+        ---------
+        - items (list) : list of couples (key, value)
+        
+        Returns
+        -------
+        - Section
+        """
+        
+        sorted_items = sorted(items, key=lambda item: item[0])
+        
+        # ----------------------------------------------------------------------------------------------------
+        # A simple ordered list
+        
+        if len(items) < 10:
+            text = "\n- ".join([item[1] for item in sorted_items])
+            
+        # ----------------------------------------------------------------------------------------------------
+        # One line per initial
+        
+        else:
+            alpha = {}
+            for item in items:
+                first = item[0][0]
+                first_list = alpha.get(first)
+                if first_list is None:
+                    first_list = [item[1]]
+                    alpha[first] = first_list
+                else:
+                    first_list.append(item[1])
+            
+            text = ""
+            for first in sorted(list(alpha.keys())):
+                text += "\n- " + " ".join(alpha[first])
+                
+        # Done
+                
+        return cls(title, comment=text)
         
     # ====================================================================================================
     # From parsed documentation
@@ -288,11 +333,14 @@ class Section(list):
         
         # ----------------------------------------------------------------------------------------------------
         # Module
+        #
+        # 
         
         if struct['obj'] == 'module':
             
             functions = section.new_section('Functions')
             classes   = section.new_section('Classes')
+            toc_items = []
             
             for obj in struct['subs'].values():
 
@@ -300,12 +348,24 @@ class Section(list):
                     continue
                 
                 obj_section = Section.FromParsed(obj, ignore_uncommented=ignore_uncommented)
+                
                 if obj['obj'] == 'function':
                     functions.append(obj_section)
+                    
                 elif obj['obj'] == 'class':
                     classes.append(obj_section)
+                    
                 else:
                     assert(False)
+                    
+                toc_items.append((obj_section.title, f"[{obj_section.title}](#{obj_section.anchor})"))
+                    
+            # ----- Format the page
+                    
+            functions.sort(key=lambda s: s.title)
+            classes.sort(key=lambda s: s.title)
+            
+            section.insert(0, Section.Toc(toc_items, 'Content'))
                     
         # ----------------------------------------------------------------------------------------------------
         # Class
@@ -314,16 +374,16 @@ class Section(list):
             
             properties = section.new_section('Properties')
             methods    = section.new_section('Methods')
+            toc_items  = []
             
             if struct.get('__init__') is not None:
                 if struct.get('args') is not None:
                     section.write_source(f"{name}({struct['args']})")
-
-                init_ = Section.FromParsed(struct['__init__'])
                 
-                
-                section.write("\n\n#### __init__\n\n")
-                section.write(init_.comment)
+                if struct['__init__']['comment'] is not None:
+                    init_ = Section.FromParsed(struct['__init__'])
+                    section.write("\n\n**__init__**\n\n")
+                    section.write(init_.comment)
                 
             
             for obj in struct['subs'].values():
@@ -335,10 +395,22 @@ class Section(list):
                 
                 if obj['obj'] == 'property':
                     properties.append(obj_section)
+                    
                 elif obj['obj'] == 'function':
                     methods.append(obj_section)
+                    
                 else:
                     assert(False)
+                    
+                toc_items.append((obj_section.title, f"[{obj_section.title}](#{obj_section.anchor})"))
+
+            # ----- Format the page
+                    
+            properties.sort(key=lambda s: s.title)
+            methods.sort(key=lambda s: s.title)
+            
+            section.insert(0, Section.Toc(toc_items, 'Content'))
+                
 
         # ----------------------------------------------------------------------------------------------------
         # Function / Method
@@ -385,18 +457,15 @@ class Section(list):
     
     # ====================================================================================================
     # yield lines   
-    # del margin = https://github.com/al1brn/geonodes/blob/main/generation/docgen/testdoc/parser.md#arguments
-    # extract strings = https://github.com/al1brn/geonodes/blob/main/generation/docgen/testdoc/parser.md#arguments-1
-    # last = https://github.com/al1brn/geonodes/blob/main/generation/docgen/testdoc/parser.md#arguments-16
     
     def yield_content(self):
         
         if True:
-            yield f'<h{self.depth+1} id="{self._token}">{self.title}</h{self.depth+1}>'
-            #yield f"#{'#'*self.depth} {self.title}\n\n"
+            #yield f'<h{self.depth+1} id="{self._anchor}">{self.title}</h{self.depth+1}>'
+            yield f"#{'#'*self.depth} {self.title}\n\n"
         else:
             a_, _a = '{', '}'
-            yield f"#{'#'*self.depth} {self.title} {a_} #{self._token} {_a}\n\n"
+            yield f"#{'#'*self.depth} {self.title} {a_} #{self._anchor} {_a}\n\n"
         
         if self.comment is not None:
             yield self.comment + '\n\n'
@@ -440,7 +509,7 @@ class Documentation(Section):
         super().__init__(title, comment=comment)
         
         self.key     = 'index'
-        self._token  = 'index'
+        self._anchor  = 'index'
         self.is_page = True
         
         # ----- A module of modules
@@ -700,7 +769,7 @@ class Documentation(Section):
         proj.set_hook(r"\[!TOKEN\]", "substitution text")
         ```
 
-        Due to the piece of code above, the token `[!TOKEN]` is replaced here: **[!TOKEN]**
+        Due to the piece of code above, the anchor `[!TOKEN]` is replaced here: **[!TOKEN]**
 
         > [!NOTE]
         > Text embedded in a _source code_ zone is not replaced
@@ -774,7 +843,7 @@ class Documentation(Section):
                 if target_section is None:
                     display = f"LINK ERROR: section '{section_title}' not found"
                 else:
-                    path += f"#{target_section.token}"
+                    path += f"#{target_section.anchor}"
                 
             return f"[{display}]({path})"
         
@@ -818,7 +887,7 @@ class Documentation(Section):
         > If a link can't be solved, the links contains an error message.
         
         > [!IMPORTANT]
-        > <#_token> and <#is_page> must have been set correctly before solving the links.
+        > <#_anchor> and <#is_page> must have been set correctly before solving the links.
          
         Arguments
         ---------
@@ -901,7 +970,7 @@ class Documentation(Section):
         for section in self:
             section.is_page = True
             section.depth = 0
-            section.set_tokens()
+            section.set_anchors()
             
         # ----------------------------------------------------------------------------------------------------
         # Apply the hooks

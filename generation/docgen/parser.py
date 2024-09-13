@@ -33,14 +33,8 @@ regex_string1 = r'("[^"\\]*(?:\\.[^"\\]*)*")'
 regex_string2 = r"('[^'\\]*(?:\\.[^'\\]*)*')"
 
 regex_source  = r"`((``[^`]*``)|([^`\n]*))`"
-#regex_string1 = r'"([^"\\\n]*(\\.)*)*"'
-#regex_string2 = r"'([^'\\\n]*(\\.)*)*'"
-regex_strings = f"({regex_string1})|({regex_string2})"
 
 regex_csource  = re.compile(regex_source,  flags=re.MULTILINE)
-regex_cstring1 = re.compile(regex_string1, flags=re.MULTILINE)
-regex_cstring2 = re.compile(regex_string2, flags=re.MULTILINE)
-regex_cstrings = re.compile(regex_strings, flags=re.MULTILINE)    
 
 # =============================================================================================================================
 # Align comment
@@ -137,7 +131,7 @@ class Text:
         ---------
         - text (str) : the managed text
         """
-        self.text   = text + '\n'
+        self.text   = text
         self.cursor = 0
         
     def __str__(self):
@@ -151,7 +145,7 @@ class Text:
         -------
         - bool : True if end of text is reached
         """
-        return self.cursor == len(self.text)
+        return self.cursor >= len(self.text)
 
     @property
     def eol(self):
@@ -311,6 +305,7 @@ class Text:
             if halt:
                 raise Exception(f"Text.find error: target {target} not found from cursor {self.cursor} in> {self(20)}...")
             else:
+                self.cursor = len(self.text)
                 return None
 
         self.cursor += m.span()[1]
@@ -427,6 +422,69 @@ class Text:
         self.text = self.text[:start] + repl + self.text[end:]
         self.cursor = start + len(repl)
         return suppressed
+    
+    # ====================================================================================================
+    # Extract strings from a text
+    
+    @classmethod
+    def extract_strings(cls, text):
+        """ Extract strings from a text and returns the extracted text and the list of extracted strings.
+        
+        Arguments
+        ---------
+        - text (str) : the text to extract strings from
+        
+        Returns
+        -------
+        - str : text with strings replaced by 'index'
+        - list of strs : list of extracted strings
+        """
+
+        strings = []
+        stxt = cls(text)
+        
+        while not stxt.eof:
+    
+            quote = stxt.find(('"', "'"), halt=False)
+            if quote is None:
+                return stxt.text, strings
+            
+            a = stxt.cursor - 1
+            b = None
+            
+            # ----------------------------------------------------------------------------------------------------
+            # Multiline strings
+            
+            if stxt(3) == '"""':
+                b = stxt.move_after('"""', halt=False)
+                if b is None:
+                    break
+
+            # ----------------------------------------------------------------------------------------------------
+            # Single line strings
+            
+            else:
+                while not stxt.eof:
+                    b = stxt.move_after(quote, halt=False)
+                    if b is None:
+                        break
+                    
+                    if stxt.cursor == a + 1  or stxt(-2, 1) != "\\":
+                        break
+                    
+                if b is None:
+                    return stxt.text, strings
+                
+            strings.append(stxt.replace(a, b, f"'{len(strings)}'"))
+            
+        return stxt.text, strings
+    
+    @staticmethod
+    def replace_strings(text, strings):
+        for index, string in enumerate(strings):
+            text = text.replace(f"'{index}'", string)
+        return text
+    
 
 # =============================================================================================================================
 # Extract strings
@@ -445,8 +503,10 @@ def extract_strings(text):
     -------
     - str, list : cleaned text and list of extracted strings
     """
+    return Text.extract_strings(text)
 
-    strings = []
+    # OLD OLD OLD
+    
     def repl(m):
         index = f"'{len(strings)}'"
         strings.append(m.group(0))
@@ -469,11 +529,9 @@ def replace_strings(text, strings):
     -------
     - Text with original strings
     """
+    return Text.replace_strings(text, strings)
 
-    for index, s in enumerate(strings):
-        text = text.replace(f"'{index}'", s)
 
-    return text
 
 # =============================================================================================================================
 # Extract strings
@@ -549,7 +607,7 @@ def clean_python(text):
     - list : list of strings
     """
 
-    source = Text(text)
+    source = Text(text + '\n\n')
     comments = []
     strings  = []
 
