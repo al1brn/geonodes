@@ -22,9 +22,79 @@ def title_to_file_name(title):
 def title_to_anchor(title):
     return title.lower().replace(' ', '-')
 
+# =============================================================================================================================
+# Section
+
 class Section(list):
     def __init__(self, title, comment=None):
-        """ Version document item
+        """ Document section
+        
+        Project documentation is made of **pages** organized in **modules**.
+        Modules and pages are articulated as folders and files but the document
+        hierarchy doesn't have to stick to the structure of the source folders.
+        
+        Loading a source file will return **classes** and global **functions**:
+        - each class is documented in a dedicated page
+        - functions are documented in a module page
+        - TBD : global objects (vars for instance) will be treated as functions
+        
+        Hence, loading a source file, or  files from a folder, is done with a target module:
+        - functions will be added to the module page
+        - classes will be added as pages of the modules and refered in the module page
+        
+        Here after is the template for a module page:
+            
+        ```
+        # Module name
+        ...
+        
+        ## Content
+        - classes (links to dedicated pages)
+          - MyClass1
+          - MyClass2
+          
+        - functions (page anchors)
+          - my_function1
+          - my_function2
+          
+        ## my_function1
+        ...
+        
+        ## my_function2
+        ...
+        ```
+        
+        The documentation is based on the versatile class <!Section> which can be:
+        - a text section in a page
+        - a documentation page
+        - a module
+        - the whole documentation itself
+        
+        A <!Section> is basically a list of **sub sections** with a header <!Section#comment>.
+        Its attributes drive its behavior:
+            
+        - <!Section#is_page> : the section is written in a dedicated page, otherwise
+          it is written if the flow of the <!Section#page> it belongs to.
+          Wheter a section is a page or not is taken into account to build links toward this section.
+        
+        
+        A <!Section> is intended to be written in
+          the documentation file as comment followed by its sub sections.
+          
+          
+        ``` python
+        doc = Documentation("Project documentation")
+        
+        # ----- Load source files in the documentation main modules
+        
+        doc.load_folder(folder_path1)
+        doc.load_folder(folder_path2)
+        
+        # ----- Create another module from other folder
+        
+        module = doc.new_module("Some module", folder_path3)
+        module.load_folder(folder_path3)
+        ```
         """
         
         super().__init__()
