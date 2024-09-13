@@ -373,7 +373,7 @@ class Section:
         # ----------------------------------------------------------------------------------------------------
         # A simple ordered list
         
-        if len(items) < 1000:
+        if len(items) < 10:
             text = "\n- ".join([items[key].title for key in sorted_keys])
             
         # ----------------------------------------------------------------------------------------------------
@@ -381,14 +381,14 @@ class Section:
         
         else:
             alpha = {}
-            for item in items:
-                first = item[0][0].upper()
+            for key in sorted_keys:
+                first = key[0].upper()
                 first_list = alpha.get(first)
                 if first_list is None:
-                    first_list = [item[1]]
+                    first_list = [key]
                     alpha[first] = first_list
                 else:
-                    first_list.append(item[1])
+                    first_list.append(key)
             
             text = ""
             for first in sorted(list(alpha.keys())):

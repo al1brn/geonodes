@@ -42,53 +42,21 @@ Section(title, comment=None, sort_sections=False, in_toc=False, module=None, is_
 
 Content
 
-Section
-- TestStructure
-- __str__
-- add_class_dict
-- add_file_dict
-- add_function_dict
-- add_module
-- add_page
-- add_property_dict
-- add_section
-- anchor
-- append
-- create_file
-- depth
-- depth_in_page
-- dump
-- file_name
-- func
-- get_content
-- get_create_section
-- get_documentation
-- get_items
-- get_module
-- get_page
-- get_section
-- get_toc
-- has_content
-- has_toc
-- hidden
-- homonyms_count
-- is_module
-- is_page
-- is_top
-- iteration
-- link_to
-- module
-- module_path
-- page
-- print
-- sort
-- test_doc
-- test_dump
-- test_get
-- test_self
-- write
-- write_navigation
-- write_source
+
+- A : add_class_dict :black_small_square: add_file_dict :black_small_square: add_function_dict :black_small_square: add_module :black_small_square: add_page :black_small_square: add_property_dict :black_small_square: add_section :black_small_square: anchor :black_small_square: append
+- C : create_file
+- D : depth :black_small_square: depth_in_page :black_small_square: dump
+- F : file_name :black_small_square: func
+- G : get_content :black_small_square: get_create_section :black_small_square: get_documentation :black_small_square: get_items :black_small_square: get_module :black_small_square: get_page :black_small_square: get_section :black_small_square: get_toc
+- H : has_content :black_small_square: has_toc :black_small_square: hidden :black_small_square: homonyms_count
+- I : is_module :black_small_square: is_page :black_small_square: is_top :black_small_square: iteration
+- L : link_to
+- M : module :black_small_square: module_path
+- P : page :black_small_square: print
+- S : Section :black_small_square: sort
+- T : TestStructure :black_small_square: test_doc :black_small_square: test_dump :black_small_square: test_get :black_small_square: test_self
+- W : write :black_small_square: write_navigation :black_small_square: write_source
+- _ : __str__
 
 
 
