@@ -9,13 +9,14 @@ Properties
 - module (string = None) : module the page belongs to, section is not a page if None
 
 ``` python
-Section(title, comment=None, sort_sections=False, in_toc=False, module=None, is_page=False, ignore_if_empty=True, top_bar=False)
+Section(title, comment=None, sort_sections=False, in_toc=False, module=None, is_page=False, ignore_if_empty=True, top_bar=None)
 ```
 
 
 
 ## Properties
 
+----------
 ### anchor
 
 
@@ -27,6 +28,7 @@ Section(title, comment=None, sort_sections=False, in_toc=False, module=None, is_
 
 
 
+----------
 ### depth
 
 
@@ -38,6 +40,7 @@ Section(title, comment=None, sort_sections=False, in_toc=False, module=None, is_
 
 
 
+----------
 ### depth_in_page
 
 
@@ -49,6 +52,7 @@ Section(title, comment=None, sort_sections=False, in_toc=False, module=None, is_
 
 
 
+----------
 ### file_name
 
 
@@ -60,6 +64,7 @@ Section(title, comment=None, sort_sections=False, in_toc=False, module=None, is_
 
 
 
+----------
 ### has_content
 
 
@@ -71,6 +76,7 @@ Section(title, comment=None, sort_sections=False, in_toc=False, module=None, is_
 
 
 
+----------
 ### has_toc
 
 
@@ -82,6 +88,7 @@ Section(title, comment=None, sort_sections=False, in_toc=False, module=None, is_
 
 
 
+----------
 ### hidden
 
 
@@ -93,6 +100,7 @@ Section(title, comment=None, sort_sections=False, in_toc=False, module=None, is_
 
 
 
+----------
 ### homonyms_count
 
 
@@ -104,6 +112,7 @@ Section(title, comment=None, sort_sections=False, in_toc=False, module=None, is_
 
 
 
+----------
 ### is_module
 
 
@@ -115,6 +124,7 @@ Section(title, comment=None, sort_sections=False, in_toc=False, module=None, is_
 
 
 
+----------
 ### is_page
 
 
@@ -126,6 +136,7 @@ Section(title, comment=None, sort_sections=False, in_toc=False, module=None, is_
 
 
 
+----------
 ### is_top
 
 Is top section
@@ -138,6 +149,7 @@ Is top section
 
 
 
+----------
 ### module
 
 
@@ -149,6 +161,7 @@ Is top section
 
 
 
+----------
 ### module_path
 
 
@@ -160,6 +173,7 @@ Is top section
 
 
 
+----------
 ### page
 
 
@@ -173,6 +187,7 @@ Is top section
 
 ## Methods
 
+----------
 ### TestStructure
 
 
@@ -183,6 +198,7 @@ TestStructure()
 
 
 
+----------
 ### __str__
 
 
@@ -193,6 +209,7 @@ __str__()
 
 
 
+----------
 ### add_class_dict
 
 
@@ -203,6 +220,7 @@ add_class_dict(class_dict, ignore_uncommented=False)
 
 
 
+----------
 ### add_file_dict
 
 
@@ -213,6 +231,7 @@ add_file_dict(file_dict)
 
 
 
+----------
 ### add_function_dict
 
 
@@ -223,6 +242,7 @@ add_function_dict(func_dict)
 
 
 
+----------
 ### add_module
 
 
@@ -233,6 +253,7 @@ add_module(module, title, comment=None, **kwargs)
 
 
 
+----------
 ### add_page
 
 
@@ -243,6 +264,7 @@ add_page(title, comment=None, **kwargs)
 
 
 
+----------
 ### add_property_dict
 
 
@@ -253,6 +275,7 @@ add_property_dict(prop_dict)
 
 
 
+----------
 ### add_section
 
 
@@ -263,6 +286,7 @@ add_section(title, comment=None, **kwargs)
 
 
 
+----------
 ### append
 
 
@@ -273,6 +297,7 @@ append(section)
 
 
 
+----------
 ### create_file
 
 
@@ -283,6 +308,7 @@ create_file(section)
 
 
 
+----------
 ### dump
 
 
@@ -293,6 +319,7 @@ dump()
 
 
 
+----------
 ### func
 
 
@@ -303,6 +330,7 @@ func(section)
 
 
 
+----------
 ### get_content
 
 Returns the text to write in the page
@@ -313,6 +341,7 @@ get_content()
 
 
 
+----------
 ### get_create_section
 
 
@@ -323,6 +352,7 @@ get_create_section(title, comment=None,**kwargs)
 
 
 
+----------
 ### get_documentation
 
 Write the section into a dict
@@ -337,6 +367,7 @@ get_documentation(doc_folder=None)
 
 - **doc** (dict) : the dict where to write the documentation
 
+----------
 ### get_module
 
 
@@ -347,6 +378,7 @@ get_module(title, condition=None, **kwargs)
 
 
 
+----------
 ### get_page
 
 
@@ -357,6 +389,7 @@ get_page(title, condition=None, **kwargs)
 
 
 
+----------
 ### get_section
 
 
@@ -367,6 +400,7 @@ get_section(title=None, condition=None, **kwargs)
 
 
 
+----------
 ### iteration
 
 
@@ -377,6 +411,7 @@ iteration(func, *args, include_top=True)
 
 
 
+----------
 ### link_to
 
 
@@ -387,6 +422,7 @@ link_to(absolute=True, title=None)
 
 
 
+----------
 ### print
 
 
@@ -397,6 +433,7 @@ print(text_max=100)
 
 
 
+----------
 ### sort
 
 
@@ -407,6 +444,7 @@ sort()
 
 
 
+----------
 ### test_doc
 
 
@@ -417,6 +455,7 @@ test_doc()
 
 
 
+----------
 ### test_dump
 
 
@@ -427,6 +466,7 @@ test_dump()
 
 
 
+----------
 ### test_get
 
 
@@ -437,6 +477,7 @@ test_get()
 
 
 
+----------
 ### test_self
 
 
@@ -447,6 +488,7 @@ test_self()
 
 
 
+----------
 ### write
 
 Append text to the header comment
@@ -461,6 +503,7 @@ write(text)
 
 - **text** (str) : the text to write
 
+----------
 ### write_navigation
 
 
@@ -471,6 +514,7 @@ write_navigation()
 
 
 
+----------
 ### write_source
 
 

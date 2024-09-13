@@ -2,6 +2,7 @@
 
 ## Functions
 
+----------
 ### title_to_anchor
 
 
@@ -12,6 +13,7 @@ title_to_anchor(title)
 
 
 
+----------
 ### title_to_file_name
 
 

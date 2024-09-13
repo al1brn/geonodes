@@ -23,7 +23,7 @@ def title_to_anchor(title):
 
 class Section:
     
-    def __init__(self, title, comment=None, sort_sections=False, in_toc=False, module=None, is_page=False, ignore_if_empty=True, top_bar=False):
+    def __init__(self, title, comment=None, sort_sections=False, in_toc=False, module=None, is_page=False, ignore_if_empty=True, top_bar=None):
         """ Section
         
         
@@ -47,7 +47,7 @@ class Section:
         self.sort_sections   = sort_sections
         self.in_toc          = in_toc
         self.ignore_if_empty = ignore_if_empty
-        self.top_bar         = False
+        self.top_bar         = top_bar
         
     def __str__(self):
         stype   = "P" if self.is_page else " "
@@ -365,10 +365,10 @@ class Section:
         """ Returns the text to write in the page
         """
         
-        if self.top_bar:
-            header = "----------\n"
-        else:
+        if self.top_bar is None:
             header = ""
+        else:
+            header = self.top_bar * 10 + "\n"
         header += f"#{'#'*self.depth_in_page} {self.title}\n\n"
         
         text = None
@@ -522,7 +522,7 @@ class Section:
         
         assert(prop_dict['obj'] == 'property')
         
-        section = self.add_section(prop_dict['name'], prop_dict['comment'], in_toc=True, top_bar=True)
+        section = self.add_section(prop_dict['name'], prop_dict['comment'], in_toc=True, top_bar='-')
         
         sepa = '\n\n'
         
@@ -556,7 +556,7 @@ class Section:
     
         assert(func_dict['obj'] == 'function')
         
-        section = self.add_section(func_dict['name'], func_dict['comment'], in_toc=True, top_bar=True)
+        section = self.add_section(func_dict['name'], func_dict['comment'], in_toc=True, top_bar='-')
         
         if func_dict.get('args') is not None:
             section.write_source(f"{section.title}({func_dict['args']})")
