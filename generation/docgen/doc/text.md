@@ -7,10 +7,6 @@ It offers basic function to read around the cursor (backward and forwards).
 It also implements features to move to (or after) a target and
 to replace a text segment by replacement string.
 
-Properties
-----------
-- cursor (int) : current position
-
 ``` python
 Text(text)
 ```
@@ -20,7 +16,7 @@ Text(text)
 ## Content
 
 
-- C : [c](#c)
+- C : [c](#c) :black_small_square: [cursor](#cursor)
 - E : [eof](#eof) :black_small_square: [eol](#eol) :black_small_square: [extract_strings](#extract_strings)
 - F : [find](#find) :black_small_square: [from_cursor](#from_cursor)
 - M : [move](#move) :black_small_square: [move_after](#move_after) :black_small_square: [move_to](#move_to)
@@ -45,6 +41,18 @@ return self.text[self.cursor]
 
 - getter 
 - type **str**
+
+
+<sub>[top](#text) [index](index.md)</sub>
+
+
+
+----------
+### cursor
+
+current position
+
+- type **int**
 
 
 <sub>[top](#text) [index](index.md)</sub>

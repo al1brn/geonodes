@@ -1,4 +1,4 @@
-# Documentation Genrator
+# Documentation Generator
 
 
 
@@ -43,7 +43,7 @@ capture_inheritance(class_, base_, remove=True)
 
 
 
-<sub>[top](#documentation-genrator) [index](index.md)</sub>
+<sub>[top](#documentation-generator) [index](index.md)</sub>
 
 
 
@@ -72,7 +72,7 @@ capture_inheritances(class_, files_, include=None, exclude=[], verbose=True)
 
 
 
-<sub>[top](#documentation-genrator) [index](index.md)</sub>
+<sub>[top](#documentation-generator) [index](index.md)</sub>
 
 
 
@@ -109,7 +109,7 @@ clean_python(text)
 
 
 
-<sub>[top](#documentation-genrator) [index](index.md)</sub>
+<sub>[top](#documentation-generator) [index](index.md)</sub>
 
 
 
@@ -158,7 +158,7 @@ del_margin(comment)
 
 
 
-<sub>[top](#documentation-genrator) [index](index.md)</sub>
+<sub>[top](#documentation-generator) [index](index.md)</sub>
 
 
 
@@ -173,7 +173,7 @@ dump_dict(d, indent=0)
 
 
 
-<sub>[top](#documentation-genrator) [index](index.md)</sub>
+<sub>[top](#documentation-generator) [index](index.md)</sub>
 
 
 
@@ -206,7 +206,7 @@ extract_lists(comment, titles)
 
 
 
-<sub>[top](#documentation-genrator) [index](index.md)</sub>
+<sub>[top](#documentation-generator) [index](index.md)</sub>
 
 
 
@@ -236,7 +236,7 @@ extract_source(text)
 
 
 
-<sub>[top](#documentation-genrator) [index](index.md)</sub>
+<sub>[top](#documentation-generator) [index](index.md)</sub>
 
 
 
@@ -266,7 +266,7 @@ extract_strings(text)
 
 
 
-<sub>[top](#documentation-genrator) [index](index.md)</sub>
+<sub>[top](#documentation-generator) [index](index.md)</sub>
 
 
 
@@ -281,7 +281,7 @@ format_list_line(d)
 
 
 
-<sub>[top](#documentation-genrator) [index](index.md)</sub>
+<sub>[top](#documentation-generator) [index](index.md)</sub>
 
 
 
@@ -296,7 +296,7 @@ new_class(name, comment=None, subs=None, inherits=None)
 
 
 
-<sub>[top](#documentation-genrator) [index](index.md)</sub>
+<sub>[top](#documentation-generator) [index](index.md)</sub>
 
 
 
@@ -311,7 +311,7 @@ new_file(name, comment=None, subs=None)
 
 
 
-<sub>[top](#documentation-genrator) [index](index.md)</sub>
+<sub>[top](#documentation-generator) [index](index.md)</sub>
 
 
 
@@ -326,7 +326,7 @@ new_function(name, comment=None, decorators=None, args=None, arguments=None, rai
 
 
 
-<sub>[top](#documentation-genrator) [index](index.md)</sub>
+<sub>[top](#documentation-generator) [index](index.md)</sub>
 
 
 
@@ -341,7 +341,7 @@ new_property(name, comment=None, type=None, default=None, setter=None, getter=No
 
 
 
-<sub>[top](#documentation-genrator) [index](index.md)</sub>
+<sub>[top](#documentation-generator) [index](index.md)</sub>
 
 
 
@@ -356,7 +356,7 @@ new_struct(obj, name, comment=None, subs=None, **kwargs)
 
 
 
-<sub>[top](#documentation-genrator) [index](index.md)</sub>
+<sub>[top](#documentation-generator) [index](index.md)</sub>
 
 
 
@@ -411,7 +411,7 @@ parse_file_source(text, file_name="124")
 
 
 
-<sub>[top](#documentation-genrator) [index](index.md)</sub>
+<sub>[top](#documentation-generator) [index](index.md)</sub>
 
 
 
@@ -423,7 +423,7 @@ Load files from a folder.
 All the files with `.py` extension are parsed.
 
 ``` python
-parse_files(folder, key="171", verbose=False)
+parse_files(folder, key="179", verbose=False)
 ```
 
 
@@ -441,7 +441,7 @@ parse_files(folder, key="171", verbose=False)
 
 
 
-<sub>[top](#documentation-genrator) [index](index.md)</sub>
+<sub>[top](#documentation-generator) [index](index.md)</sub>
 
 
 
@@ -472,7 +472,7 @@ parse_list_line(line)
 
 
 
-<sub>[top](#documentation-genrator) [index](index.md)</sub>
+<sub>[top](#documentation-generator) [index](index.md)</sub>
 
 
 
@@ -500,7 +500,7 @@ replace_source(text, strings)
 
 
 
-<sub>[top](#documentation-genrator) [index](index.md)</sub>
+<sub>[top](#documentation-generator) [index](index.md)</sub>
 
 
 
@@ -528,7 +528,7 @@ replace_strings(text, strings)
 
 
 
-<sub>[top](#documentation-genrator) [index](index.md)</sub>
+<sub>[top](#documentation-generator) [index](index.md)</sub>
 
 
 
@@ -543,7 +543,7 @@ struct_iter(struct, f, *args, **kwargs)
 
 
 
-<sub>[top](#documentation-genrator) [index](index.md)</sub>
+<sub>[top](#documentation-generator) [index](index.md)</sub>
 
 
 
@@ -558,7 +558,7 @@ struct_list(struct, name_only=True, **kwargs)
 
 
 
-<sub>[top](#documentation-genrator) [index](index.md)</sub>
+<sub>[top](#documentation-generator) [index](index.md)</sub>
 
 
 
@@ -573,7 +573,7 @@ struct_search(struct, **kwargs)
 
 
 
-<sub>[top](#documentation-genrator) [index](index.md)</sub>
+<sub>[top](#documentation-generator) [index](index.md)</sub>
 
 
 
@@ -588,7 +588,7 @@ test()
 
 
 
-<sub>[top](#documentation-genrator) [index](index.md)</sub>
+<sub>[top](#documentation-generator) [index](index.md)</sub>
 
 
 
@@ -603,7 +603,7 @@ test_folder(folder=None, sub_folders=[])
 
 
 
-<sub>[top](#documentation-genrator) [index](index.md)</sub>
+<sub>[top](#documentation-generator) [index](index.md)</sub>
 
 
 
@@ -618,7 +618,7 @@ title_to_anchor(title)
 
 
 
-<sub>[top](#documentation-genrator) [index](index.md)</sub>
+<sub>[top](#documentation-generator) [index](index.md)</sub>
 
 
 
@@ -633,5 +633,5 @@ title_to_file_name(title)
 
 
 
-<sub>[top](#documentation-genrator) [index](index.md)</sub>
+<sub>[top](#documentation-generator) [index](index.md)</sub>
 

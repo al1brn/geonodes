@@ -2,13 +2,6 @@
 
 Project Documentation
 
-Properties
-----------
-- doc_folder (str) : target folder for documentation files
-- source_folder (str) : root folder for files
-- parsed (dict) : dictionary of loaded and parsed filed
-- hooks (list) : list of regular expressions and hook function to apply on the documentation
-
 ``` python
 Documentation(title, doc_folder, source_folder=None)
 ```
@@ -19,12 +12,13 @@ Documentation(title, doc_folder, source_folder=None)
 
 
 - C : [classes_list](#classes_list)
-- D : [docgen_documentation](#docgen_documentation) :black_small_square: [document_folder](#document_folder)
+- D : [doc_folder](#doc_folder) :black_small_square: [docgen_documentation](#docgen_documentation) :black_small_square: [document_folder](#document_folder)
+- F : [file_info](#file_info) :black_small_square: [files](#files) :black_small_square: [files_content](#files_content) :black_small_square: [files_iter](#files_iter) :black_small_square: [files_list](#files_list) :black_small_square: [files_search](#files_search)
 - G : [get_class](#get_class)
-- H : [hide](#hide) :black_small_square: [hide_classes](#hide_classes)
+- H : [hide](#hide) :black_small_square: [hide_classes](#hide_classes) :black_small_square: [hooks](#hooks)
 - L : [load_file](#load_file) :black_small_square: [load_folder](#load_folder) :black_small_square: [load_source](#load_source)
-- M : [module_info](#module_info) :black_small_square: [modules](#modules) :black_small_square: [modules_content](#modules_content) :black_small_square: [modules_iter](#modules_iter) :black_small_square: [modules_list](#modules_list) :black_small_square: [modules_search](#modules_search)
-- S : [set_hook](#set_hook) :black_small_square: [solve_hooks](#solve_hooks) :black_small_square: [solve_links](#solve_links) :black_small_square: [solve_section](#solve_section) :black_small_square: [solve_section_links](#solve_section_links)
+- P : [parsed](#parsed)
+- S : [set_hook](#set_hook) :black_small_square: [solve_hooks](#solve_hooks) :black_small_square: [solve_links](#solve_links) :black_small_square: [solve_section](#solve_section) :black_small_square: [solve_section_links](#solve_section_links) :black_small_square: [source_folder](#source_folder)
 - T : [test_file](#test_file)
 
 
@@ -45,12 +39,60 @@ List of classes
 
 
 ----------
-### modules
+### doc_folder
+
+target folder for documentation files
+
+- type **str**
+
+
+<sub>[top](#documentation) [index](index.md)</sub>
+
+
+
+----------
+### files
 
 Dictionary of parsed files.
 
 - getter 
 - type **dict**
+
+
+<sub>[top](#documentation) [index](index.md)</sub>
+
+
+
+----------
+### hooks
+
+list of regular expressions and hook function to apply on the documentation
+
+- type **list**
+
+
+<sub>[top](#documentation) [index](index.md)</sub>
+
+
+
+----------
+### parsed
+
+dictionary of loaded and parsed filed
+
+- type **dict**
+
+
+<sub>[top](#documentation) [index](index.md)</sub>
+
+
+
+----------
+### source_folder
+
+root folder for files
+
+- type **str**
 
 
 <sub>[top](#documentation) [index](index.md)</sub>
@@ -81,6 +123,81 @@ docgen_documentation()
 
 ``` python
 document_folder(folder_key)
+```
+
+
+
+<sub>[top](#documentation) [index](index.md)</sub>
+
+
+
+----------
+### file_info
+
+
+
+``` python
+file_info(key)
+```
+
+
+
+<sub>[top](#documentation) [index](index.md)</sub>
+
+
+
+----------
+### files_content
+
+
+
+``` python
+files_content()
+```
+
+
+
+<sub>[top](#documentation) [index](index.md)</sub>
+
+
+
+----------
+### files_iter
+
+
+
+``` python
+files_iter(f, *args, **kwargs)
+```
+
+
+
+<sub>[top](#documentation) [index](index.md)</sub>
+
+
+
+----------
+### files_list
+
+
+
+``` python
+files_list(name_only=True, **kwargs)
+```
+
+
+
+<sub>[top](#documentation) [index](index.md)</sub>
+
+
+
+----------
+### files_search
+
+
+
+``` python
+files_search(**kwargs)
 ```
 
 
@@ -151,7 +268,7 @@ load_file(file_key, file_name, verbose=False)
 
 #### Arguments
 
-- **file_key** (str) : file key in [modules](#modules)
+- **file_key** (str) : file key in [files](#files)
 - - **file_name** (str) : file path
 
 
@@ -166,7 +283,7 @@ load_file(file_key, file_name, verbose=False)
 Enrich the reference doc by parsing source files.
 
 > [!CAUTION]
-> if [LINK ERROR: section 'source_folder' not found]() is not None, folder is relative to it
+> if [source_folder](#source_folder) is not None, folder is relative to it
 
 All the files with `.py` extension are parsed.
 
@@ -178,7 +295,7 @@ load_folder(folder, verbose=True)
 
 #### Arguments
 
-- **folder** (str) : absolute folder or folder relative to [LINK ERROR: section 'source_folder' not found]() if not None
+- **folder** (str) : absolute folder or folder relative to [source_folder](#source_folder) if not None
 
 
 
@@ -215,81 +332,6 @@ load_source(key, text)
 #### Returns
 
 - **Section** : 
-
-
-
-<sub>[top](#documentation) [index](index.md)</sub>
-
-
-
-----------
-### module_info
-
-
-
-``` python
-module_info(key)
-```
-
-
-
-<sub>[top](#documentation) [index](index.md)</sub>
-
-
-
-----------
-### modules_content
-
-
-
-``` python
-modules_content()
-```
-
-
-
-<sub>[top](#documentation) [index](index.md)</sub>
-
-
-
-----------
-### modules_iter
-
-
-
-``` python
-modules_iter(f, *args, **kwargs)
-```
-
-
-
-<sub>[top](#documentation) [index](index.md)</sub>
-
-
-
-----------
-### modules_list
-
-
-
-``` python
-modules_list(name_only=True, **kwargs)
-```
-
-
-
-<sub>[top](#documentation) [index](index.md)</sub>
-
-
-
-----------
-### modules_search
-
-
-
-``` python
-modules_search(**kwargs)
-```
 
 
 

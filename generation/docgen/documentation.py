@@ -821,7 +821,7 @@ class Documentation(Section):
         # ----------------------------------------------------------------------------------------------------
         # Source filers
         
-        self.parsed = {'obj': 'module', 'name': 'title', 'comment': None, 'subs': {}}
+        self.parsed = {'obj': 'file', 'name': 'title', 'comment': None, 'subs': {}}
         
         # ----- Compile regex expression to solve links
         
@@ -836,7 +836,7 @@ class Documentation(Section):
     # Documentation from file management
     
     @property
-    def modules(self):
+    def files(self):
         """ Dictionary of parsed files.
         
         Returns
@@ -845,17 +845,17 @@ class Documentation(Section):
         """
         return self.parsed['subs']
     
-    def modules_search(self, **kwargs):
+    def files_search(self, **kwargs):
         return struct_search(self.parsed, **kwargs)
     
-    def modules_iter(self, f, *args, **kwargs):
+    def files_iter(self, f, *args, **kwargs):
         return struct_iter(self.parsed, f, *args, **kwargs)
     
-    def modules_list(self, name_only=True, **kwargs):
+    def files_list(self, name_only=True, **kwargs):
         return struct_list(self.parsed, name_only=name_only, **kwargs)
     
     def get_class(self, class_name):
-        return self.modules_search(obj='class', name=class_name)
+        return self.files_search(obj='class', name=class_name)
     
     @property
     def classes_list(self):
@@ -865,7 +865,7 @@ class Documentation(Section):
         -------
         - list : list of class dictionaries
         """
-        return self.modules_list(obj='class')
+        return self.files_list(obj='class')
         
     # ----------------------------------------------------------------------------------------------------
     # Add a source file
@@ -885,10 +885,10 @@ class Documentation(Section):
         - Section
         """
         
-        if key in self.modules:
-            raise Exception(f"Impossible to add the source keyed by '{key}': key already exists in {list(self.modules.keys())}")
+        if key in self.files:
+            raise Exception(f"Impossible to add the source keyed by '{key}': key already exists in {list(self.files.keys())}")
 
-        self.modules[key] = parse_file_source(text)
+        self.files[key] = parse_file_source(text)
         
     
     # ----------------------------------------------------------------------------------------------------
@@ -901,7 +901,7 @@ class Documentation(Section):
 
         Arguments
         ---------
-        - file_key (str) : file key in <#modules>
+        - file_key (str) : file key in <#files>
         - file_name (str) : file path
         """
         
@@ -909,7 +909,7 @@ class Documentation(Section):
 
         self.load_source(file_key, Path(file_name).read_text())
         if verbose:
-            print(f"load {Path(file_name).name} : ", self.module_info(file_key))
+            print(f"load {Path(file_name).name} : ", self.file_info(file_key))
         
 
     # ----------------------------------------------------------------------------------------------------
@@ -951,20 +951,20 @@ class Documentation(Section):
 
         return self
     
-    def module_info(self, key):
+    def file_info(self, key):
         
-        module = self.modules.get(key)
+        file = self.files.get(key)
         
-        if module is None:
-            return f"Module '{key}' not found in {list(self.modules.keys())}"
+        if file is None:
+            return f"File '{key}' not found in {list(self.files.keys())}"
         
         else:
-            nclasses = len([s for s in module['subs'].values() if s['obj'] == 'class'])
-            nfuncs   = len([s for s in module['subs'].values() if s['obj'] == 'function'])
-            return f"Module '{key}' : {nclasses} classes, {nfuncs} functions"
+            nclasses = len([s for s in file['subs'].values() if s['obj'] == 'class'])
+            nfuncs   = len([s for s in file['subs'].values() if s['obj'] == 'function'])
+            return f"File '{key}' : {nclasses} classes, {nfuncs} functions"
     
-    def modules_content(self):
-        return f"{len(self.modules)} modules:\n" + "\n".join([self.module_info(key) for key in self.modules])
+    def files_content(self):
+        return f"{len(self.files)} files:\n" + "\n".join([self.file_info(key) for key in self.files])
     
     # ----------------------------------------------------------------------------------------------------
     # Hidden inheritance
@@ -979,7 +979,7 @@ class Documentation(Section):
             classes = [classes]
         
         for base_name in classes:
-            base_ = self.modules_search(obj='class', name=base_name)
+            base_ = self.files_search(obj='class', name=base_name)
             if base_ is None:
                 raise Exception(f"Hide classes: class '{base_name}' not found")
                 
@@ -991,7 +991,7 @@ class Documentation(Section):
                         print(f"Hide '{base_name}' inheritance in '{class_['name']}'")
                     capture_inheritance(class_, base_, remove=True)
                 
-            self.modules_iter(hide, obj='class')
+            self.files_iter(hide, obj='class')
     
 
     # =============================================================================================================================
@@ -1197,7 +1197,7 @@ class Documentation(Section):
         
         title = Path(folder_key).stem
         
-        init_dict = self.modules.get(str(Path(folder_key) / '__init__'))
+        init_dict = self.files.get(str(Path(folder_key) / '__init__'))
         if init_dict is None:
             comment = None
         else:
@@ -1209,7 +1209,7 @@ class Documentation(Section):
         else:
             module = self.add_module(title, comment, in_toc=True)
         
-        for key, file_dict in self.modules.items():
+        for key, file_dict in self.files.items():
             if str(Path(key).parents[0]) == folder_key:
                 module.add_file_dict(file_dict)
         
@@ -1229,12 +1229,14 @@ class Documentation(Section):
         # -----------------------------------------------------------------------------------------------------------------------------
         # Initialize the documentation
             
-        doc = Documentation("Documentation Genrator", doc_folder)
+        doc = Documentation("Documentation Generator", doc_folder)
         
         # -----------------------------------------------------------------------------------------------------------------------------
         # Load the source files
         
         doc.load_folder('', verbose=True)
+        file = doc.files_search(name='Documentation')
+        pprint(file.get('comment'))
         
         # -----------------------------------------------------------------------------------------------------------------------------
         # Adding and twisting
@@ -1255,29 +1257,6 @@ class Documentation(Section):
         #doc.print()
         
         doc.get_documentation()
-        
-        
-        
-        
-        
-        
-        return
-        
-        
-        
-        text = parse_file_source(Path(__file__).read_text())
-        
-        proj.add_file_dict(text)
-        
-        #proj.dump()
-        
-        #proj.print()
-        
-        sect = proj.get_section('Section')
-        print(sect)
-        print(sect.is_page, sect.file_name, sect.link_to(False), sect.link_to(True))
-        
-        proj.get_documentation(True)
         
         
         

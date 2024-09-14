@@ -6,7 +6,7 @@ Created on Tue Sep 10 07:44:18 2024
 @author: alain
 
 
-Module parser
+File parser
 
 This module implements a simple python parser which extract comments
 form a source code file.
@@ -1058,7 +1058,6 @@ def parse_file_source(text, file_name='File'):
 
         # ----- Create the class
         
-        
         inherits = m.group(3)
         if inherits is not None:
             inherits = [s.strip() for s in m.group(3).split(',')]
@@ -1152,7 +1151,7 @@ def parse_file_source(text, file_name='File'):
 
         # Extract lists
 
-        comment, lists = extract_lists(comment, ['raises', 'arguments', 'returns'])
+        comment, lists = extract_lists(comment, ['raises', 'arguments', 'returns', 'properties'])
 
         # ----------------------------------------------------------------------------------------------------
         # Create the function dict
@@ -1229,6 +1228,13 @@ def parse_file_source(text, file_name='File'):
                     
                 class_['args'] = function_.get('args')
                 function_['args'] = None
+                
+                props = function_.get('properties', [])
+                for info in props:
+                    prop_name = info['name']
+                    if class_['subs'].get(prop_name) is None:
+                        class_['subs'][prop_name] = new_property(prop_name, info['description'], type=info['type'], default=info['default'])
+                
                     
                 class_['__init__'] = function_
 
