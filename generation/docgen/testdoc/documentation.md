@@ -2,7 +2,7 @@
 
 Project Documentation
 
-A Secction
+A Section
 
 ``` python
 Documentation(title, doc_folder, source_folder=None)
@@ -12,7 +12,7 @@ Documentation(title, doc_folder, source_folder=None)
 
 Content
 
-[Documentation](/documentation.md#documentation)
+[Documentation](documentation.md#documentation)
 - [test_file](#test_file)
 
 

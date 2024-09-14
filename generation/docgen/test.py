@@ -288,13 +288,13 @@ class Section:
     @property
     def file_name(self):
         if self.is_top:
-            return "/index.md"
+            return "index.md"
         
         if self.is_page:
             module_path = self.module_path
             if module_path != '':
                 module_path += '-'
-            return '/' + module_path + title_to_file_name(self.title)
+            return module_path + title_to_file_name(self.title)
         else:
             return self.page.file_name
         
@@ -505,7 +505,7 @@ class Section:
                 doc[file_name] = text
                 
                 if create_files:
-                    with (self.top.doc_folder / str(file_name)[1:]).open(mode='w') as f:
+                    with (self.top.doc_folder / str(file_name)).open(mode='w') as f:
                         f.write(text)
                 
         self.iteration(create_file)
@@ -773,12 +773,18 @@ class Section:
 # Documentation class
 
 class Documentation(Section):
-    """ Project Documentation
-    
-    A Secction
-    """
-    
     def __init__(self, title, doc_folder, source_folder=None):
+        """ Project Documentation
+        
+        A Section
+        
+        Arguments
+        ---------
+        - title (str) : documentation title, displayed as title of index.md file
+        - doc_folder (str) : target folder for documentation
+        - source_folder (str) : root folder where to load files from
+        """
+    
         
         super().__init__(title)
         self.doc_folder = Path(doc_folder)
@@ -812,7 +818,11 @@ class Documentation(Section):
         
         #proj.print()
         
-        proj.get_documentation(folder / "testdoc")
+        sect = proj.get_section('Section')
+        print(sect)
+        print(sect.is_page, sect.file_name, sect.link_to(False), sect.link_to(True))
+        
+        proj.get_documentation(True)
         
     
     
