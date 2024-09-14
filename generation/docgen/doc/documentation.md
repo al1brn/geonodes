@@ -149,7 +149,7 @@ load_file(file_key, file_name, verbose=False)
 
 
 
-### Arguments
+#### Arguments
 
 - **file_key** (str) : file key in <#modules>
 - - **file_name** (str) : file path
@@ -176,13 +176,13 @@ load_folder(folder, verbose=True)
 
 
 
-### Arguments
+#### Arguments
 
 - **folder** (str) : absolute folder or folder relative to <#source_folder> if not None
 
 
 
-### Returns
+#### Returns
 
 - **self** : 
 
@@ -205,14 +205,14 @@ load_source(key, text)
 
 
 
-### Arguments
+#### Arguments
 
 - **key** (str) : source file key
 - - **text** (str) : the source code
 
 
 
-### Returns
+#### Returns
 
 - **Section** : 
 
@@ -336,7 +336,7 @@ set_hook(expr, repl)
 
 
 
-### Arguments
+#### Arguments
 
 - **expr** (str) : RegEx expression - repl (str or function) : replacement string or function
 
@@ -357,7 +357,7 @@ solve_hooks(include_links=True)
 
 
 
-### Arguments
+#### Arguments
 
 - **include_links** (_bool_ = True) : solve also the links
 
@@ -393,7 +393,7 @@ solve_links(ignore_source=False)
 
 
 
-### Arguments
+#### Arguments
 
 - **ignore_source** (_bool_ = False) : Do not extract source before solving (already done)
 

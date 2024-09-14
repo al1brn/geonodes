@@ -35,7 +35,7 @@ capture_inheritance(class_, base_, remove=True)
 
 
 
-### Arguments
+#### Arguments
 
 - **class_** (dict) : the class to enrich
 - - **base_** (dict) : the class to capture properties and methods from
@@ -63,7 +63,7 @@ capture_inheritances(class_, files_, include=None, exclude=[], verbose=True)
 
 
 
-### Arguments
+#### Arguments
 
 - **class_** (dict) : the class to enrich
 - - **files_** (dict) : the hierarchy containing base classes to capture from
@@ -95,13 +95,13 @@ clean_python(text)
 
 
 
-### Arguments
+#### Arguments
 
 - **text** (str) : source code to clean
 
 
 
-### Returns
+#### Returns
 
 - **str** : cleaned text
 - - **list** : list of comments
@@ -146,13 +146,13 @@ del_margin(comment)
 
 
 
-### Arguments
+#### Arguments
 
 - **comment** (str) : the comment
 
 
 
-### Returns
+#### Returns
 
 - **str** : the realigned comment
 
@@ -193,14 +193,14 @@ extract_lists(comment, titles)
 
 
 
-### Arguments
+#### Arguments
 
 - **comment** (str) : the raw comment
 - - **titles** (str or list of strs) : the titles of the lists to extract
 
 
 
-### Returns
+#### Returns
 
 - **str** : comment without the lists, lists as dict
 
@@ -224,13 +224,13 @@ extract_source(text)
 
 
 
-### Arguments
+#### Arguments
 
 - **text** (str) : text to extract source code from
 
 
 
-### Returns
+#### Returns
 
 - **str** : cleaned text and list of extracted pieces of code
 
@@ -254,13 +254,13 @@ extract_strings(text)
 
 
 
-### Arguments
+#### Arguments
 
 - **text** (str) : text to extract strings from
 
 
 
-### Returns
+#### Returns
 
 - **str** : cleaned text and list of extracted strings
 
@@ -399,13 +399,13 @@ parse_file_source(text, file_name="124")
 
 
 
-### Arguments
+#### Arguments
 
 - **text** (str) : source code to parse
 
 
 
-### Returns
+#### Returns
 
 - **dict** : classes and functions
 
@@ -428,14 +428,14 @@ parse_files(folder, key="171", verbose=False)
 
 
 
-### Arguments
+#### Arguments
 
 - **folder** (str) : main folder
 - - **root** (_str_ = None) : 
 
 
 
-### Returns
+#### Returns
 
 - **dict** : 
 
@@ -487,14 +487,14 @@ replace_source(text, strings)
 
 
 
-### Arguments
+#### Arguments
 
 - **text** (str) : text with replaced pieces of code
 - - **strings** : list of pieces of code
 
 
 
-### Returns
+#### Returns
 
 - **Text** : 
 
@@ -515,14 +515,14 @@ replace_strings(text, strings)
 
 
 
-### Arguments
+#### Arguments
 
 - **text** (str) : text with replaced strings
 - - **strings** : list of strings
 
 
 
-### Returns
+#### Returns
 
 - **Text** : 
 

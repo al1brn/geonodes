@@ -668,13 +668,13 @@ class Section:
             section.write_source(f"{section.title}({func_dict['args']})")
         
         if len(func_dict['raises']):
-            sub = section.write_header(3, 'Raises', "\n- ".join([format_list_line(d) for d in func_dict['raises']]))
+            sub = section.write_header(4, 'Raises', "\n- ".join([format_list_line(d) for d in func_dict['raises']]))
                                   
         if len(func_dict['arguments']):
-            sub = section.write_header(3, 'Arguments', "\n- ".join([format_list_line(d) for d in func_dict['arguments']]))
+            sub = section.write_header(4, 'Arguments', "\n- ".join([format_list_line(d) for d in func_dict['arguments']]))
                                   
         if len(func_dict['returns']):
-            sub = section.write_header(3, 'Returns', "\n- ".join([format_list_line(d) for d in func_dict['returns']]))
+            sub = section.write_header(4, 'Returns', "\n- ".join([format_list_line(d) for d in func_dict['returns']]))
             
         section.write_navigation()
                                       

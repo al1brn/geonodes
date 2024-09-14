@@ -164,13 +164,13 @@ extract_strings(text)
 
 
 
-### Arguments
+#### Arguments
 
 - **text** (str) : the text to extract strings from
 
 
 
-### Returns
+#### Returns
 
 - **str** : text with strings replaced by 'index'
 - - **list** : list of extracted strings
@@ -215,7 +215,7 @@ find(target, regex=False, halt=True)
 
 
 
-### Arguments
+#### Arguments
 
 - **target** (str or tuple of strs) : the string(s) to reach
 - - **regex** (_bool_ = False) : target is a regular expression or not
@@ -223,7 +223,7 @@ find(target, regex=False, halt=True)
 
 
 
-### Returns
+#### Returns
 
 - **int** : the new cursor position
 
@@ -244,13 +244,13 @@ move(offset=1)
 
 
 
-### Arguments
+#### Arguments
 
 - **offset** (_int_ = 1) : cursor offset
 
 
 
-### Returns
+#### Returns
 
 - **int** : new cursor position
 
@@ -287,13 +287,13 @@ move_after(target, regex=False, halt=True)
 
 
 
-### Arguments
+#### Arguments
 
 - **target** (str or tuple of strs) : the string(s) to reach
 
 
 
-### Returns
+#### Returns
 
 - **int** : the new cursor position
 
@@ -330,13 +330,13 @@ move_to(target, regex=False, halt=True)
 
 
 
-### Arguments
+#### Arguments
 
 - **target** (str or tuple of strs) : the string(s) to reach
 
 
 
-### Returns
+#### Returns
 
 - **int** : the new cursor position
 
@@ -382,7 +382,7 @@ replace(start, end, repl)
 
 
 
-### Arguments
+#### Arguments
 
 - **start** (int) : start index of replaced part
 - - **end** (int) : end index of replace part
@@ -390,7 +390,7 @@ replace(start, end, repl)
 
 
 
-### Returns
+#### Returns
 
 - **str** : the replaced string
 

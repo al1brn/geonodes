@@ -481,7 +481,7 @@ get_documentation(create_files=True)
 
 
 
-### Arguments
+#### Arguments
 
 - **doc** (dict) : the dict where to write the documentation
 
@@ -682,7 +682,7 @@ write(text)
 
 
 
-### Arguments
+#### Arguments
 
 - **text** (str) : the text to write
 
@@ -708,7 +708,7 @@ write_header(level, title, text)
 
 
 
-### Arguments
+#### Arguments
 
 - **level** (int) : header level
 - - **title** (str) : header title
