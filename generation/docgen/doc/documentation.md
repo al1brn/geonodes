@@ -149,14 +149,16 @@ load_file(file_key, file_name, verbose=False)
 
 
 
-<sub>[top](#documentation) [index](index.md)</sub>
-
-
-
-#### Arguments
+### Arguments
 
 - **file_key** (str) : file key in <#modules>
 - - **file_name** (str) : file path
+
+
+
+<sub>[top](#documentation) [index](index.md)</sub>
+
+
 
 ----------
 ### load_folder
@@ -174,17 +176,21 @@ load_folder(folder, verbose=True)
 
 
 
-<sub>[top](#documentation) [index](index.md)</sub>
-
-
-
-#### Arguments
+### Arguments
 
 - **folder** (str) : absolute folder or folder relative to <#source_folder> if not None
 
-#### Returns
+
+
+### Returns
 
 - **self** : 
+
+
+
+<sub>[top](#documentation) [index](index.md)</sub>
+
+
 
 ----------
 ### load_source
@@ -199,18 +205,22 @@ load_source(key, text)
 
 
 
-<sub>[top](#documentation) [index](index.md)</sub>
-
-
-
-#### Arguments
+### Arguments
 
 - **key** (str) : source file key
 - - **text** (str) : the source code
 
-#### Returns
+
+
+### Returns
 
 - **Section** : 
+
+
+
+<sub>[top](#documentation) [index](index.md)</sub>
+
+
 
 ----------
 ### module_info
@@ -326,13 +336,15 @@ set_hook(expr, repl)
 
 
 
+### Arguments
+
+- **expr** (str) : RegEx expression - repl (str or function) : replacement string or function
+
+
+
 <sub>[top](#documentation) [index](index.md)</sub>
 
 
-
-#### Arguments
-
-- **expr** (str) : RegEx expression - repl (str or function) : replacement string or function
 
 ----------
 ### solve_hooks
@@ -345,13 +357,15 @@ solve_hooks(include_links=True)
 
 
 
+### Arguments
+
+- **include_links** (_bool_ = True) : solve also the links
+
+
+
 <sub>[top](#documentation) [index](index.md)</sub>
 
 
-
-#### Arguments
-
-- **include_links** (_bool_ = True) : solve also the links
 
 ----------
 ### solve_links
@@ -379,13 +393,15 @@ solve_links(ignore_source=False)
 
 
 
+### Arguments
+
+- **ignore_source** (_bool_ = False) : Do not extract source before solving (already done)
+
+
+
 <sub>[top](#documentation) [index](index.md)</sub>
 
 
-
-#### Arguments
-
-- **ignore_source** (_bool_ = False) : Do not extract source before solving (already done)
 
 ----------
 ### solve_section

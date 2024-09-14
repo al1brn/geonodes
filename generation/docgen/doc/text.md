@@ -164,18 +164,22 @@ extract_strings(text)
 
 
 
-<sub>[top](#text) [index](index.md)</sub>
-
-
-
-#### Arguments
+### Arguments
 
 - **text** (str) : the text to extract strings from
 
-#### Returns
+
+
+### Returns
 
 - **str** : text with strings replaced by 'index'
 - - **list** : list of extracted strings
+
+
+
+<sub>[top](#text) [index](index.md)</sub>
+
+
 
 ----------
 ### find
@@ -211,19 +215,23 @@ find(target, regex=False, halt=True)
 
 
 
-<sub>[top](#text) [index](index.md)</sub>
-
-
-
-#### Arguments
+### Arguments
 
 - **target** (str or tuple of strs) : the string(s) to reach
 - - **regex** (_bool_ = False) : target is a regular expression or not
 - - **halt** (_bool_ = True) : raise an exception if not found
 
-#### Returns
+
+
+### Returns
 
 - **int** : the new cursor position
+
+
+
+<sub>[top](#text) [index](index.md)</sub>
+
+
 
 ----------
 ### move
@@ -236,17 +244,21 @@ move(offset=1)
 
 
 
-<sub>[top](#text) [index](index.md)</sub>
-
-
-
-#### Arguments
+### Arguments
 
 - **offset** (_int_ = 1) : cursor offset
 
-#### Returns
+
+
+### Returns
 
 - **int** : new cursor position
+
+
+
+<sub>[top](#text) [index](index.md)</sub>
+
+
 
 ----------
 ### move_after
@@ -275,17 +287,21 @@ move_after(target, regex=False, halt=True)
 
 
 
-<sub>[top](#text) [index](index.md)</sub>
-
-
-
-#### Arguments
+### Arguments
 
 - **target** (str or tuple of strs) : the string(s) to reach
 
-#### Returns
+
+
+### Returns
 
 - **int** : the new cursor position
+
+
+
+<sub>[top](#text) [index](index.md)</sub>
+
+
 
 ----------
 ### move_to
@@ -314,17 +330,21 @@ move_to(target, regex=False, halt=True)
 
 
 
-<sub>[top](#text) [index](index.md)</sub>
-
-
-
-#### Arguments
+### Arguments
 
 - **target** (str or tuple of strs) : the string(s) to reach
 
-#### Returns
+
+
+### Returns
 
 - **int** : the new cursor position
+
+
+
+<sub>[top](#text) [index](index.md)</sub>
+
+
 
 ----------
 ### replace
@@ -362,19 +382,23 @@ replace(start, end, repl)
 
 
 
-<sub>[top](#text) [index](index.md)</sub>
-
-
-
-#### Arguments
+### Arguments
 
 - **start** (int) : start index of replaced part
 - - **end** (int) : end index of replace part
 - - **repl** (str) : the replacement string
 
-#### Returns
+
+
+### Returns
 
 - **str** : the replaced string
+
+
+
+<sub>[top](#text) [index](index.md)</sub>
+
+
 
 ----------
 ### replace_strings

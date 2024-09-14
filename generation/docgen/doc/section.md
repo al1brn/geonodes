@@ -55,7 +55,7 @@ Section(title, comment=None, sort_sections=False, in_toc=False, module=None, is_
 - P : [page](#page) :black_small_square: [print](#print)
 - S : [sort](#sort)
 - T : [TestStructure](#teststructure) :black_small_square: [test_doc](#test_doc) :black_small_square: [test_dump](#test_dump) :black_small_square: [test_get](#test_get) :black_small_square: [top](#top)
-- W : [write](#write) :black_small_square: [write_navigation](#write_navigation) :black_small_square: [write_source](#write_source)
+- W : [write](#write) :black_small_square: [write_header](#write_header) :black_small_square: [write_navigation](#write_navigation) :black_small_square: [write_source](#write_source)
 - _ : [__str__](#__str__)
 
 
@@ -481,13 +481,15 @@ get_documentation(create_files=True)
 
 
 
+### Arguments
+
+- **doc** (dict) : the dict where to write the documentation
+
+
+
 <sub>[top](#section) [index](index.md)</sub>
 
 
-
-#### Arguments
-
-- **doc** (dict) : the dict where to write the documentation
 
 ----------
 ### get_items
@@ -680,13 +682,43 @@ write(text)
 
 
 
+### Arguments
+
+- **text** (str) : the text to write
+
+
+
 <sub>[top](#section) [index](index.md)</sub>
 
 
 
-#### Arguments
+----------
+### write_header
 
-- **text** (str) : the text to write
+Write a section in the text stream
+
+This method write MD text corresponding to a header followed by text.
+
+> [!NOTE]
+> This method doesn't create a section in the hierarchy, contrary to <#add_section>
+
+``` python
+write_header(level, title, text)
+```
+
+
+
+### Arguments
+
+- **level** (int) : header level
+- - **title** (str) : header title
+- - **text** (str) : text
+
+
+
+<sub>[top](#section) [index](index.md)</sub>
+
+
 
 ----------
 ### write_navigation

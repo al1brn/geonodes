@@ -438,6 +438,23 @@ class Section:
         self.write(source.replace("`", "'"))
         self.write("\n```\n\n")
         
+    def write_header(self, level, title, text):
+        """ Write a section in the text stream
+        
+        This method write MD text corresponding to a header followed by text.
+        
+        > [!NOTE]
+        > This method doesn't create a section in the hierarchy, contrary to <#add_section>
+        
+        Arguments
+        ---------
+        - level (int) : header level
+        - title (str) : header title
+        - text (str) : text
+        """
+        self.write(f"\n\n{'#'*level} {title}\n\n{text}\n\n")
+        
+        
     def write_navigation(self):
         self.write(f"\n\n<sub>[top](#{self.page.anchor}) [index](index.md)</sub>\n\n")
         
@@ -651,13 +668,13 @@ class Section:
             section.write_source(f"{section.title}({func_dict['args']})")
         
         if len(func_dict['raises']):
-            sub = section.add_section('Raises', "\n- ".join([format_list_line(d) for d in func_dict['raises']]))
+            sub = section.write_header(3, 'Raises', "\n- ".join([format_list_line(d) for d in func_dict['raises']]))
                                   
         if len(func_dict['arguments']):
-            sub = section.add_section('Arguments', "\n- ".join([format_list_line(d) for d in func_dict['arguments']]))
+            sub = section.write_header(3, 'Arguments', "\n- ".join([format_list_line(d) for d in func_dict['arguments']]))
                                   
         if len(func_dict['returns']):
-            sub = section.add_section('Returns', "\n- ".join([format_list_line(d) for d in func_dict['returns']]))
+            sub = section.write_header(3, 'Returns', "\n- ".join([format_list_line(d) for d in func_dict['returns']]))
             
         section.write_navigation()
                                       

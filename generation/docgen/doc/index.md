@@ -35,15 +35,17 @@ capture_inheritance(class_, base_, remove=True)
 
 
 
-<sub>[top](#documentation-genrator) [index](index.md)</sub>
-
-
-
-#### Arguments
+### Arguments
 
 - **class_** (dict) : the class to enrich
 - - **base_** (dict) : the class to capture properties and methods from
 - - **remove** (_bool_ = True) : remove base name from inheritance list
+
+
+
+<sub>[top](#documentation-genrator) [index](index.md)</sub>
+
+
 
 ----------
 ### capture_inheritances
@@ -61,16 +63,18 @@ capture_inheritances(class_, files_, include=None, exclude=[], verbose=True)
 
 
 
-<sub>[top](#documentation-genrator) [index](index.md)</sub>
-
-
-
-#### Arguments
+### Arguments
 
 - **class_** (dict) : the class to enrich
 - - **files_** (dict) : the hierarchy containing base classes to capture from
 - - **include** (_list_ = None) : limit capture to the given list
 - - **exclude** (_list_ = []) : exclude classes in the given list
+
+
+
+<sub>[top](#documentation-genrator) [index](index.md)</sub>
+
+
 
 ----------
 ### clean_python
@@ -91,19 +95,23 @@ clean_python(text)
 
 
 
-<sub>[top](#documentation-genrator) [index](index.md)</sub>
-
-
-
-#### Arguments
+### Arguments
 
 - **text** (str) : source code to clean
 
-#### Returns
+
+
+### Returns
 
 - **str** : cleaned text
 - - **list** : list of comments
 - - **list** : list of strings
+
+
+
+<sub>[top](#documentation-genrator) [index](index.md)</sub>
+
+
 
 ----------
 ### del_margin
@@ -138,17 +146,21 @@ del_margin(comment)
 
 
 
-<sub>[top](#documentation-genrator) [index](index.md)</sub>
-
-
-
-#### Arguments
+### Arguments
 
 - **comment** (str) : the comment
 
-#### Returns
+
+
+### Returns
 
 - **str** : the realigned comment
+
+
+
+<sub>[top](#documentation-genrator) [index](index.md)</sub>
+
+
 
 ----------
 ### dump_dict
@@ -181,18 +193,22 @@ extract_lists(comment, titles)
 
 
 
-<sub>[top](#documentation-genrator) [index](index.md)</sub>
-
-
-
-#### Arguments
+### Arguments
 
 - **comment** (str) : the raw comment
 - - **titles** (str or list of strs) : the titles of the lists to extract
 
-#### Returns
+
+
+### Returns
 
 - **str** : comment without the lists, lists as dict
+
+
+
+<sub>[top](#documentation-genrator) [index](index.md)</sub>
+
+
 
 ----------
 ### extract_source
@@ -208,17 +224,21 @@ extract_source(text)
 
 
 
-<sub>[top](#documentation-genrator) [index](index.md)</sub>
-
-
-
-#### Arguments
+### Arguments
 
 - **text** (str) : text to extract source code from
 
-#### Returns
+
+
+### Returns
 
 - **str** : cleaned text and list of extracted pieces of code
+
+
+
+<sub>[top](#documentation-genrator) [index](index.md)</sub>
+
+
 
 ----------
 ### extract_strings
@@ -234,17 +254,21 @@ extract_strings(text)
 
 
 
-<sub>[top](#documentation-genrator) [index](index.md)</sub>
-
-
-
-#### Arguments
+### Arguments
 
 - **text** (str) : text to extract strings from
 
-#### Returns
+
+
+### Returns
 
 - **str** : cleaned text and list of extracted strings
+
+
+
+<sub>[top](#documentation-genrator) [index](index.md)</sub>
+
+
 
 ----------
 ### format_list_line
@@ -375,17 +399,21 @@ parse_file_source(text, file_name="124")
 
 
 
-<sub>[top](#documentation-genrator) [index](index.md)</sub>
-
-
-
-#### Arguments
+### Arguments
 
 - **text** (str) : source code to parse
 
-#### Returns
+
+
+### Returns
 
 - **dict** : classes and functions
+
+
+
+<sub>[top](#documentation-genrator) [index](index.md)</sub>
+
+
 
 ----------
 ### parse_files
@@ -400,18 +428,22 @@ parse_files(folder, key="171", verbose=False)
 
 
 
-<sub>[top](#documentation-genrator) [index](index.md)</sub>
-
-
-
-#### Arguments
+### Arguments
 
 - **folder** (str) : main folder
 - - **root** (_str_ = None) : 
 
-#### Returns
+
+
+### Returns
 
 - **dict** : 
+
+
+
+<sub>[top](#documentation-genrator) [index](index.md)</sub>
+
+
 
 ----------
 ### parse_list_line
@@ -455,18 +487,22 @@ replace_source(text, strings)
 
 
 
-<sub>[top](#documentation-genrator) [index](index.md)</sub>
-
-
-
-#### Arguments
+### Arguments
 
 - **text** (str) : text with replaced pieces of code
 - - **strings** : list of pieces of code
 
-#### Returns
+
+
+### Returns
 
 - **Text** : 
+
+
+
+<sub>[top](#documentation-genrator) [index](index.md)</sub>
+
+
 
 ----------
 ### replace_strings
@@ -479,18 +515,22 @@ replace_strings(text, strings)
 
 
 
-<sub>[top](#documentation-genrator) [index](index.md)</sub>
-
-
-
-#### Arguments
+### Arguments
 
 - **text** (str) : text with replaced strings
 - - **strings** : list of strings
 
-#### Returns
+
+
+### Returns
 
 - **Text** : 
+
+
+
+<sub>[top](#documentation-genrator) [index](index.md)</sub>
+
+
 
 ----------
 ### struct_iter
