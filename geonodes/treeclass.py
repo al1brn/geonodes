@@ -310,7 +310,7 @@ class Tree:
 
         if not cls.STACK:
             #raise NodeError(f"No tree is open")
-            print("CAUTION: not tree is open")
+            #print("CAUTION: not tree is open")
             return None
         return cls.STACK[-1]
 

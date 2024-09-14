@@ -25,101 +25,35 @@ import re
 from .parser import parse_meta_comment, extract_source, replace_source, del_margin, extract_lists
 
 # =============================================================================================================================
-# Base information
+# List item info
 
-class Info:
+EMPTY  ='_EMPTY'
+            
+class ListItem:
     
-    REGISTRED = []
     
-    EMPTY = '_EMPTY'
-    
-    def __init__(self, obj, name, comment=None, **kwargs):
-        """ Root class for informations
+    def __init__(self, name, type=None, default=EMPTY, description=None, **kwargs):
+        """ An information line into a list
+        
+        This class is used to information displayed in a single lines.
+        
+        The line is intended to be displayed as `name (type = default) : description`.
+        
+        Properties
+        ----------
+        - name (str) : name attribute
+        - type (str)  : type attribute
+        - default (str) : default attribute
+        - description (str) : description        
         """
         
-        self.obj     = obj
-        self.name    = name
-        self.comment = del_margin(comment)
-        self.hidden  = False
+        self.name        = name
+        self.type        = type
+        self.default     = default
+        self.description = description
         
-        for k, v in kwargs.items():
-            setattr(self, k, v)
-            
-    def __str__(self):
-        return f"<{type(self).__name__} {self.name}>"
-            
-    def get(self, prop_name, default=None):
-        if hasattr(self, prop_name):
-            return getattr(self, prop_name)
-        else:
-            return default
-        
-    @classmethod
-    def FromObject(cls, object, name=None):
-        return None
-        
-    @staticmethod
-    def from_object(object, name=None):
-        
-        if name in Info.REGISTRED:
-            return None
-        
-        Info.REGISTRED.append(name)
-        
-        if isinstance(object, property):
-            return PropertyInfo.FromObject(object, name=name)
-        
-        if inspect.ismodule(object):
-            return ModuleInfo.FromObject(object, name=name)
-        
-        elif inspect.isclass(object):
-            if object.__name__ in ('wdir', 'type', 'object'):
-                return None
-            return ClassInfo.FromObject(object, name=name)
-        
-        elif inspect.isfunction(object):
-            return FunctionInfo.FromObject(object, name=name)
-        
-        elif inspect.ismethod(object):
-            print("METHOD", object.__name__)
-            print("object:", inspect.getdoc(object))
-            print("func  :", inspect.getdoc(object.__func__))
-            return FunctionInfo.FromObject(object.__func__, name=name)
-        
-        else:
-            print("??? PROP", object, type(object))
-
-            stype = object.__name__ if hasattr(object, '__name__') else type(object).__name__
-            sdef = None
-            try:
-                sdef = str(object)
-            except:
-                sdef = '???'
-                
-            return PropertyInfo(name, type=stype, default=sdef)
-        
-    def parse_comment(self):
-        
-        if self.comment is None:
-            return None
-        
-        comment, props = parse_meta_comment(self.comment)
-        if len(props):
-            self._meta = props
-            
-        self.comment = comment
-        
-        return self.comment
-        
-        
-    def print(self):
-        print(str(self))
-        
-        
-            
-class ListItemInfo(Info):
-    def __init__(self, name, comment=None, type=Info.EMPTY, default=Info.EMPTY, **kwargs):
-        super().__init__('listitem', name, comment, type=type, default=default, **kwargs)
+        for k, v in kwargs:
+            setattr(self, v)
         
     def __str__(self):
         s = f"- {self.name}"
@@ -131,68 +65,275 @@ class ListItemInfo(Info):
                 s += f" = {self.default}"
             s += ")"
         
-        if self.comment is not None:
-            s += f" : {self.comment}"
+        if self.description is not None:
+            s += f" : {self.description}"
             
         return s
             
     @property
     def has_type(self):
-        return self.type != Info.EMPTY
+        """ Check if <#type> is not None
+        
+        Returns
+        -------
+        - bool
+        """
+        return self.type is not None
     
     @property
     def has_default(self):
-        return self.default != Info.EMPTY
+        """ Check if <#default> is different from <#EMPTY>
+        
+        Returns
+        -------
+        - bool
+        """
+        return self.default != EMPTY
+    
+    @property
+    def has_description(self):
+        """ Check if <#description> is not None
+        
+        Returns
+        -------
+        - bool
+        """
+        return self.description is not None
         
     @classmethod
-    def FromParameter(cls, param):
+    def FromParameter(cls, param, description=None):
+        """ Create an instance from the python paramer description.
+        
+        Returns
+        -------
+        - ListItem
+        """
         name    = param.name
-        type    = Info.EMPTY if param.annotation == param.empty else param.annotation
-        default = Info.EMPTY if param.default == param.empty else param.default
-        return cls(name, type=type, default=default)
-    
+        type    = EMPTY if param.annotation == param.empty else param.annotation
+        default = EMPTY if param.default == param.empty else param.default
+        return cls(name, type=type, default=default, description=None)
+
 # =============================================================================================================================
-# Property Info
+# Base information
+
+class Object_:
+    
+    obj_type = None
+    
+    def __init__(self, name, comment=None, **kwargs):
+        """ Root class for informations on python objects
+        
+        The minimum information is <#name> and <#comment> can be completed
+        by sub classes.
+        
+        Properties
+        ----------
+        - name (str) : module name, class name, property name...
+        - comment (str) : comment in __doc__
+        - obj_type (str) : (read only) name of the object type 
+        
+        Arguments
+        ---------
+        - name (str) : object name
+        - comment (str = None) : comment
+        - kwargs : additional properties
+        """
+        
+        self.name    = name
+        self.comment = del_margin(comment)
+        self.hidden  = False
+        
+        for k, v in kwargs.items():
+            setattr(self, k, v)
             
-class PropertyInfo(Info):
-    """ Information on property
-    """
-    def __init__(self, name, comment=None, type=Info.EMPTY, default=Info.EMPTY, fget=None, fset=None, **kwargs):
-        super().__init__('property', name, comment, type=type, default=default, fget=fget, fset=fset, **kwargs)
+    def __str__(self):
+        return f"<{type(self).__name__} {self.name}>"
+            
+    def get(self, prop_name, default=None):
+        """ Get an optional property
+        
+        Arguments
+        ---------
+        - prop_name (str) : name of the property to read
+        - default (any = None) : default value if the property doesn't exist
+        
+        Returns
+        -------
+        - any : the property or None if it doesn't exist
+        """
+
+        if hasattr(self, prop_name):
+            return getattr(self, prop_name)
+        else:
+            return default
+        
+    # ====================================================================================================
+    # Create from a python object
         
     @classmethod
     def FromObject(cls, object, name=None):
+        return None
+    
+    # ====================================================================================================
+    # Parse the comment
+
+    def parse_comment(self):
+        """ Collect extra information from the comment
+        
+        The default comment parser extracts meta information for doc generator:
+        - $ DOC START : ignore lines above
+        - $ DO END : ignore lines after
+        - $ SET prop = 123 : pass properties to the doc generator 
+        
+        Returns
+        -------
+        - str : self.comment
+        """
+        
+        if self.comment is None:
+            return None
+        
+        comment, props = parse_meta_comment(self.comment)
+        if len(props):
+            self._meta = props
+            
+        self.comment = comment
+        
+        return self.comment
+    
+    # =============================================================================================================================
+    # Print the content
+        
+    def print(self):
+        print(str(self))
+        
+
+# =============================================================================================================================
+# Property Info
+            
+class Property_(Object_):
+    
+    obj_type = 'property'
+    
+    def __init__(self, name, comment=None, type=None, default=EMPTY, fget=None, fset=None, **kwargs):
+        """ Information on property
+        
+        Properties
+        ----------
+        - type (str) : type of the property
+        - default (str) : default value
+        - fget (Function_) : getter <!Function_>
+        - fset (Function_) : setter <!Function_>
+        
+        Arguments
+        ---------
+        - name (str) : object name
+        - comment (str = None) : comment
+        - type (str = None) : type of the property
+        - default (str = EMPTY) : default value
+        - fget (Function_ = None) : getter <!Function_>
+        - fset (Function_ = None) : setter <!Function_>        
+        """
+        super().__init__(name, comment, type=type, default=default, fget=fget, fset=fset, **kwargs)
+        
+    @classmethod
+    def FromObject(cls, object, name=None, verbose=False):
+        """ Create a Property_ instance from a property
+        
+        > [!NOTE]
+        > If name is None, the name is read from fget
+        
+        Arguments
+        ---------
+        - object (property) : the object the scan
+        - name (str = None) : name
+        """
         if name is None:
-            name = object.fget.__name__
+            try:
+                name = object.fget.__name__
+            except:
+                print(f"WARNNG: impossible to get the property name of object of type '{type(object)}'")
+                name = 'UNDEFINED'
             
         fget, fset = None, None
         try:
-            fget = None if object.fget is None else FunctionInfo.FromObject(object.fget)
+            fget = None if object.fget is None else Function_.FromObject(object.fget)
         except:
             pass
+
         try:
-            fset = None if object.fset is None else FunctionInfo.FromObject(object.fset)
+            fset = None if object.fset is None else Function_.FromObject(object.fset)
         except:
             pass
         
+        if verbose:
+            print("Property", name)
+        
         return cls(name, inspect.getdoc(object), fget=fget, fset=fset)
+    
+    @classmethod
+    def FromStatic(cls, object, name=None):
+        """ Creare a Property_ instance from a static property in a module or a class
+        
+        Arguments
+        ---------
+        - object
+        - name (str = None)
+        
+        Returns
+        -------
+        - Property_
+        """        
+        stype = object.__name__ if hasattr(object, '__name__') else type(object).__name__
+        try:
+            sdef = str(object)
+        except:
+            sdef = '???'
+            
+        if len(sdef) > 30:
+            sdef = sdef[:30] + '...'
+            
+        return cls(name, type=stype, default=sdef)
+    
+    # =============================================================================================================================
+    # Print the content
     
     def print(self):
         fget = '-' if self.fget is None else 'X'
         fset = '-' if self.fset is None else 'X'
-        stype = '' if self.type == Info.EMPTY else self.type
-        sdef  = '' if self.default == Info.EMPTY else self.default
+        stype = '' if self.type == EMPTY else self.type
+        sdef  = '' if self.default == EMPTY else self.default
         print(f"P {self.name} {fget}{fset} {stype} ({sdef})")
     
 # =============================================================================================================================
 # Function info
         
-class FunctionInfo(Info):
-    """ Information on function
-    """
+class Function_(Object_):
+    
+    obj_type = 'function'
+    
     def __init__(self, name, comment=None, signature=None, decorators=None, arguments=None, raises=None, returns=None, **kwargs):
+        """ Description of a function
+
+        Properties
+        ----------
+        - signature (str) : function signature
+        - decorators(list) : list of decorators
+        - arguments (list) : list of <!ListItem>
+        - raises (list) : list of <!ListItem>
+        - returns (list) : list of <!ListItem>
         
-        super().__init__('function', name, comment, signature=signature, **kwargs)
+        Arguments
+        ---------
+        - name (str) : object name
+        - comment (str = None) : comment
+        - signature (str = None) : function signature
+        - decorators(list = None) : list of decorators
+        - arguments (list = None) : list of <!ListItem>
+        - raises (list = None) : list of <!ListItem>
+        - returns (list = None) : list of <!ListItem>
+        """
+        super().__init__(name, comment, signature=signature, **kwargs)
         
         self.decorators = [] if decorators is None else decorators
         self.arguments  = [] if arguments  is None else arguments
@@ -200,10 +341,23 @@ class FunctionInfo(Info):
         self.returns    = [] if returns    is None else returns
         
     @classmethod
-    def FromObject(cls, object, name=None):
+    def FromObject(cls, object, name=None, verbose=False):
+        """ Create a Function_ instance from a function
+        
+        > [!NOTE]
+        > If **name** argument is none, `object.__name__` is taken.
+        
+        Arguments
+        ---------
+        - object (function) : the object to scan
+        - name (str = None) : name of the object
+        """
         
         if name is None:
             name = object.__name__
+            
+        if verbose:
+            print(f"Function", name)
             
         try:
             sig = inspect.signature(object)        
@@ -212,15 +366,23 @@ class FunctionInfo(Info):
 
         function_ = cls(name, inspect.getdoc(object), signature=str(sig))
         
+        # ----- Parse the parameters in the signature if it exists
+        
         if not isinstance(sig, str):
             for param in sig.parameters.values():
-                function_.arguments.append(ListItemInfo.FromParameter(param))
+                function_.arguments.append(ListItem.FromParameter(param))
+                
+        # ----- Parse the comment
             
         function_.parse_comment()
 
         return function_
     
     def parse_comment(self):
+        """ Function comment parser
+        
+        The parser looks for list names Arguments, Raises and Returns.
+        """
         
         if super().parse_comment() is None:
             return None
@@ -253,7 +415,7 @@ class FunctionInfo(Info):
                     # ----- No, let's create it
                     
                     if cur is None:
-                        cur = ListItemInfo(name)
+                        cur = ListItem(name)
                         getattr(self, list_name).append(cur)
                         
                     # ---- Complete with a lesser priority
@@ -262,10 +424,13 @@ class FunctionInfo(Info):
                         cur.type = arg['type']
                     if not cur.has_default and arg.get('default') is not None:
                         cur.default = arg['default']
-                    if cur.comment is None and arg.get('description') is not None:
+                    if not cur.has_description and arg.get('description') is not None:
                         cur.comment = arg['description']
                 
         self.comment = comment
+
+    # =============================================================================================================================
+    # Print the content
     
     def print(self):
         print(f"Function {self.name}{self.signature}")
@@ -284,9 +449,17 @@ class FunctionInfo(Info):
 # =============================================================================================================================
 # Root class for Info with members
         
-class Parent(Info):
-    def __init__(self, obj, name, comment=None, **kwargs):
-        super().__init__(obj, name, comment, **kwargs)
+class Parent(Object_):
+    def __init__(self, name, comment=None, **kwargs):
+        """ Root class from Class and Module.
+        
+        This class creat a <#members> dictionary
+        
+        Properties
+        ----------
+        - members (dict) : dictionary of members
+        """
+        super().__init__(name, comment, **kwargs)
         self.members = {}
         
     def __str__(self):
@@ -295,59 +468,90 @@ class Parent(Info):
     def __repr__(self):
         return str(self) + "\n- " + "\n- ".join([str(member) for member in self.members.values()])
         
-        
-    def add_member(self, info):
-        if info is None:
+    def add_member(self, object_):
+        if object_ is None:
             return
-        self.members[info.name] = info
-        return info
+        self.members[object_.name] = object_
+        return object_
     
 # =============================================================================================================================
 # Class Info
         
-class ClassInfo(Parent):
-    """ Information on a class
-    """
+class Class_(Parent):
+    
+    obj_type = 'class'
+    
     def __init__(self, name, comment=None, bases=None, **kwargs):
-        """ Class Info Init
+        """ Information on a class
+        
+        Properties
+        ----------
+        - bases (list) : list of base classes
+        - _init (Function_) : <!Function_> description for __init__ function if it exists 
         
         Arguments
         ---------
         - name (str) : class name
         - comment (str) : comment
+        - bases (list) : list of base classes
+        - kwargs : complementary information
         """
-        super().__init__('class', name, comment, **kwargs)
+        super().__init__(name, comment, **kwargs)
         self.bases = [] if bases is None else bases
         self._init = None
         
-    def target(self, param):
-        """ Method doc
-        """
-        pass
-    
-    @property
-    def prop(self):
-        return True
-        
     @classmethod
-    def FromObject(cls, object, name=None):
+    def FromObject(cls, object, name=None, verbose=False):
+        """ Create an Class_ instance from a python class
+
+        > [!NOTE]
+        > If **name** argument is none, `object.__name__` is taken.
+        
+        The method `__init__` is not stored in the <#members> dictionary but in <#_init> property.
+        
+        > [!CAUTION]
+        > All dunder methods are ignored in this version
+        
+        Arguments
+        ---------
+        - object (function) : the object to scan
+        - name (str = None) : name of the object
+        """
         
         if name is None:
             name = object.__name__
+            
+        if verbose:
+            print("Class", name)
         
         class_ = cls(object.__name__, inspect.getdoc(object), [b.__name__ for b in object.__bases__])
 
         for m_name, m_obj in inspect.getmembers(object):
+            
             is_init = m_name == '__init__'
             if is_init:
-                class_._init = Info.from_object(m_obj)
+                class_._init = Function_.FromObject(m_obj)
                 
             else:
                 if m_name[:2] == '__':
                     continue
-                class_.add_member(Info.from_object(m_obj, m_name))
-            
+                
+                if inspect.isclass(m_obj):
+                    class_.add_member(Class_.FromObject(m_obj, name=m_name))
+                
+                elif inspect.isfunction(m_obj):
+                    class_.add_member(Function_.FromObject(m_obj, name=m_name))
+                
+                elif inspect.ismethod(m_obj):
+                    class_.add_member(Function_.FromObject(m_obj.__func__, name=m_name))
+                
+                else:
+                    class_.add_member(Property_.FromStatic(m_obj, name=m_name))
+
         return class_
+            
+    # =============================================================================================================================
+    # Print the content
     
     def print(self):
         print('='*50)
@@ -362,33 +566,87 @@ class ClassInfo(Parent):
         print()
         for obj_ in self.members.values():
             obj_.print()
-        
-        
-class FileInfo(Parent):
-    """ Information on a file
-    """
-    def __init__(self, name, comment=None, **kwargs):
-        super().__init__('class', name, comment, **kwargs)
 
-class ModuleInfo(Parent):
-    """ Information on a folder
-    """
-    def __init__(self, name, comment=None, **kwargs):
-        super().__init__('module', name, comment, **kwargs)
+# =============================================================================================================================
+# Class Info
+
+class Module_(Parent):
+    
+    obj_type = 'module'
+    
+    PACKAGES = {}
+    
+    def __init__(self, name, comment=None, package=None, **kwargs):
+        """ Information on a module
+        
+        Arguments
+        ---------
+        - name (str) : class name
+        - comment (str) : comment
+        - package (str) : package
+        - kwargs : complementary information        
+        """
+        super().__init__(name, comment, **kwargs)
+        self.package = str(package)
+        self.PACKAGES[self.package] = self
+        
+    def is_same_package(self, package):
+        return package.split('.')[0] == self.package.split('.')[0]
         
     @classmethod
-    def FromObject(cls, object, name=None):
-        module_ = cls(object.__name__, inspect.getdoc(object))
-        for k, v in inspect.getmembers(object):
-            print(k)
-            if k[:2] == '__':
+    def FromObject(cls, object, name=None, verbose=False):
+        """ Create an Module_ instance from a python module
+
+        > [!NOTE]
+        > If **name** argument is none, `object.__name__` is taken.
+        
+        Arguments
+        ---------
+        - object (function) : the object to scan
+        - name (str = None) : name of the object
+        """
+        
+        package = str(object.__package__)
+        if package in cls.PACKAGES:
+            return cls.PACKAGES[package]
+            
+        if name is None:
+            name = object.__name__
+            
+        if verbose:
+            print(f"Module '{name}', package '{package}'...")
+        
+        module_ = cls(object.__name__, inspect.getdoc(object), package=package)
+        for m_name, m_obj in inspect.getmembers(object):
+
+            if m_name[:2] == '__':
                 continue
-            if k in module_.members:
+            if m_name in module_.members:
                 continue
-            module_.add_member(Info.from_object(v, name=k))
-            print(k, len(module_.members))
+            
+            
+            if inspect.ismodule(m_obj):
+                package = str(m_obj.__package__)
+                if not module_.is_same_package(package):
+                    if verbose:
+                        print(f"Module '{module_.name}' ignore sub module '{m_name}': package '{package}' not in '{module_.package}'")
+                    continue
+                
+                module_.add_member(Module_.FromObject(m_obj, name=m_name))
+            
+            elif inspect.isfunction(m_obj):
+                module_.add_member(Function_.FromObject(m_obj, name=m_name))
+            
+            elif inspect.isclass(m_obj):
+                module_.add_member(Class_.FromObject(m_obj, name=m_name, verbose=verbose))
+            
+            else:
+                module_.add_member(Property_.FromStatic(m_obj, name=m_name))
             
         return module_
+    
+    # =============================================================================================================================
+    # Print the content
 
     def print(self):
         print('='*50)
@@ -400,34 +658,36 @@ class ModuleInfo(Parent):
         #    self._init.print()
         
         print()
-        print("Properties")
+        print("Modules")
         print('-------')
         for oi in self.members.values():
-            if oi.obj == 'property':
+            if oi.obj_type == 'module':
+                print(f"- {oi.name}")
+        print()
+        
+        print()
+        print("Properties")
+        print('----------')
+        for oi in self.members.values():
+            if oi.obj_type == 'property':
                 oi.print()
         print()
         
         print("Classes")
         print('-------')
         for oi in self.members.values():
-            if oi.obj == 'class':
+            if oi.obj_type == 'class':
                 print(str(oi))
         print()
 
         print("Functions")
         print('---------')
         for oi in self.members.values():
-            if oi.obj == 'function':
+            if oi.obj_type == 'function':
                 print(str(oi))
         print()
 
-
-
-#class_ = ClassInfo.FromObject(ClassInfo)
-#class_.print()
-
-
-  
+        
         
         
         
