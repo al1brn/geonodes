@@ -89,15 +89,21 @@ class Section:
     
     def iteration(self, func, *args, include_top=True):
         
+        
+        ok_children = True
         if include_top:
             res = func(self, *args)
+                    
             if res == True:
                 return self
             
-        for section in self.children:
-            res = section.iteration(func, *args, include_top=True)
-            if res is not None:
-                return res
+            ok_children = res != 'NO CHILDREN'
+            
+        if ok_children:
+            for section in self.children:
+                res = section.iteration(func, *args, include_top=True)
+                if res is not None:
+                    return res
             
         return None
         
@@ -370,6 +376,7 @@ class Section:
             if section.in_toc:
                 #items[section.title] = f"[{section.title}](#{section.anchor})"
                 items[section.title] = section.link_to(absolute=section.is_page)
+                return 'NO CHILDREN'
                 
         self.iteration(get_items)
         if items is None:
