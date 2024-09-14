@@ -176,6 +176,13 @@ class Section:
         - bool : True if owner is None
         """
         return self.owner is None
+    
+    @property
+    def top(self):
+        if self.owner is None:
+            return self
+        else:
+            return self.owner.top
 
     @property
     def depth(self):
@@ -474,7 +481,7 @@ class Section:
 
         return text
     
-    def get_documentation(self, doc_folder=None):
+    def get_documentation(self, create_files=True):
         """ Write the section into a dict
         
         Arguments
@@ -483,8 +490,8 @@ class Section:
         """
         
         doc = {}
-        if doc_folder is not None:
-            doc_folder = Path(doc_folder)
+        if create_files:
+            create_files = self.top.doc_folder is not None
         
         def create_file(section):
             if not section.is_page:
@@ -496,8 +503,8 @@ class Section:
                 assert(file_name not in doc)
                 doc[file_name] = text
                 
-                if doc_folder is not None:
-                    with (doc_folder / str(file_name)[1:]).open(mode='w') as f:
+                if create_files:
+                    with (self.top.doc_folder / str(file_name)[1:]).open(mode='w') as f:
                         f.write(text)
                 
         self.iteration(create_file)
@@ -760,12 +767,41 @@ class Section:
         top.print()
         
         
-    @staticmethod
-    def test_self():
         
-        proj = Section("Documentation")
-        folder = Path(__file__).parents[0]
-        print(str(folder))
+# =============================================================================================================================
+# Documentation class
+
+class Documentation(Section):
+    """ Project Documentation
+    
+    A Secction
+    """
+    
+    def __init__(self, title, doc_folder, source_folder=None):
+        
+        super().__init__(title)
+        self.doc_folder = Path(doc_folder)
+        self.source_folder = source_folder
+        
+    # =============================================================================================================================
+    # Dev and tests
+
+    @classmethod
+    def test_file(cls, file_name=None, doc_folder=None):
+
+        
+        if file_name is None:
+            file_name = __file__
+            
+        folder = Path(file_name).parents[0]
+        
+        if doc_folder is None:
+            doc_folder = folder / 'testdoc'
+        
+        print("doc_folder", str(doc_folder))
+            
+            
+        proj = cls("Documentation", doc_folder)
         
         text = parse_file_source(Path(__file__).read_text())
         
@@ -777,6 +813,11 @@ class Section:
         
         proj.get_documentation(folder / "testdoc")
         
+    
+    
+        
+        
+        
                     
-Section.test_self()
+Documentation.test_file()
                 

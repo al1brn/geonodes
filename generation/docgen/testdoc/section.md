@@ -54,7 +54,7 @@ Content
 - M : [module](#module) :black_small_square: [module_path](#module_path)
 - P : [page](#page) :black_small_square: [print](#print)
 - S : [Section](#section) :black_small_square: [sort](#sort)
-- T : [TestStructure](#teststructure) :black_small_square: [test_doc](#test_doc) :black_small_square: [test_dump](#test_dump) :black_small_square: [test_get](#test_get) :black_small_square: [test_self](#test_self)
+- T : [TestStructure](#teststructure) :black_small_square: [test_doc](#test_doc) :black_small_square: [test_dump](#test_dump) :black_small_square: [test_get](#test_get) :black_small_square: [top](#top)
 - W : [write](#write) :black_small_square: [write_navigation](#write_navigation) :black_small_square: [write_source](#write_source)
 - _ : [__str__](#__str__)
 
@@ -221,6 +221,18 @@ Is top section
 
 ----------
 ### page
+
+
+
+- getter 
+
+
+<sub>[top](#{self.page.anchor}) [index](index.md)</sub>
+
+
+
+----------
+### top
 
 
 
@@ -404,7 +416,7 @@ get_create_section(title, comment=None,**kwargs)
 Write the section into a dict
 
 ``` python
-get_documentation(doc_folder=None)
+get_documentation(create_files=True)
 ```
 
 
@@ -541,17 +553,6 @@ test_dump()
 
 ``` python
 test_get()
-```
-
-
-
-----------
-### test_self
-
-
-
-``` python
-test_self()
 ```
 
 
