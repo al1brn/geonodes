@@ -1233,7 +1233,9 @@ class Documentation(Section):
         
         #doc.dump()
         
-        doc.print()
+        #doc.print()
+        
+        doc.get_documentation()
         
         
         
