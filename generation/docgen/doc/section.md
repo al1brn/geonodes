@@ -6,17 +6,17 @@ Project documentation is made of **pages** organized in **modules**.
 Modules and pages are articulated as folders and files but the document
 hierarchy doesn't have to stick to the structure of the source folders.
 
-The documentation is based on the versatile class <!Section> which can be:
+The documentation is based on the versatile class [Section](section.md) which can be:
 - a text section in a page
 - a documentation page
 - a module
 - the whole documentation itself
 
-A <!Section> is basically a list of **sub sections** with a header <!Section#comment>.
+A [Section](section.md) is basically a list of **sub sections** with a header [LINK ERROR: section 'comment' not found](section.md).
 Its attributes drive its behavior:
     
-- <!Section#is_page> : the section is written in a dedicated page, otherwise
-  it is written if the flow of the <!Section#page> it belongs to.
+- [is_page](section.md#is_page) : the section is written in a dedicated page, otherwise
+  it is written if the flow of the [page](section.md#page) it belongs to.
   Wheter a section is a page or not is taken into account to build links toward this section.
   
   
@@ -700,7 +700,7 @@ Write a section in the text stream
 This method write MD text corresponding to a header followed by text.
 
 > [!NOTE]
-> This method doesn't create a section in the hierarchy, contrary to <#add_section>
+> This method doesn't create a section in the hierarchy, contrary to [add_section](#add_section)
 
 ``` python
 write_header(level, title, text)

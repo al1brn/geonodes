@@ -151,7 +151,7 @@ load_file(file_key, file_name, verbose=False)
 
 #### Arguments
 
-- **file_key** (str) : file key in <#modules>
+- **file_key** (str) : file key in [modules](#modules)
 - - **file_name** (str) : file path
 
 
@@ -166,7 +166,7 @@ load_file(file_key, file_name, verbose=False)
 Enrich the reference doc by parsing source files.
 
 > [!CAUTION]
-> if <#source_folder> is not None, folder is relative to it
+> if [LINK ERROR: section 'source_folder' not found]() is not None, folder is relative to it
 
 All the files with `.py` extension are parsed.
 
@@ -178,7 +178,7 @@ load_folder(folder, verbose=True)
 
 #### Arguments
 
-- **folder** (str) : absolute folder or folder relative to <#source_folder> if not None
+- **folder** (str) : absolute folder or folder relative to [LINK ERROR: section 'source_folder' not found]() if not None
 
 
 
@@ -197,7 +197,7 @@ load_folder(folder, verbose=True)
 
 Add a source code.
 
-The source code is parsed and the resulting dict is stored in the <!#parsed> dict.
+The source code is parsed and the resulting dict is stored in the [LINK ERROR: page '' not found]() dict.
 
 ``` python
 load_source(key, text)
@@ -328,7 +328,7 @@ def replace(match_obj, section):
 
 > [!NOTE]
 > By default, a hook is used to define links between pages based on the
-> syntax : `<!Section title#Sub section title>` which is converted in <!Project#set_hook>.
+> syntax : `<!Section title#Sub section title>` which is converted in [LINK ERROR: page 'Project' not found]().
 
 ``` python
 set_hook(expr, repl)
@@ -385,7 +385,7 @@ Syntax of user link is made of three parts is
 > If a link can't be solved, the links contains an error message.
 
 > [!IMPORTANT]
-> <#_anchor> and <#is_page> must have been set correctly before solving the links.
+> [LINK ERROR: section '_anchor' not found]() and [LINK ERROR: section 'is_page' not found]() must have been set correctly before solving the links.
 
 ``` python
 solve_links(ignore_source=False)

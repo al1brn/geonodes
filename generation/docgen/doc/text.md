@@ -37,7 +37,7 @@ Text(text)
 
 Current character
 
-Note that an error is raised if <!eof> is True.
+Note that an error is raised if [LINK ERROR: page 'eof' not found]() is True.
 
 ``` python
 return self.text[self.cursor]
@@ -265,7 +265,7 @@ move(offset=1)
 
 Move the cursor until it reaches the given target.
 
-This function execute a <!find> on the target and places the
+This function execute a [LINK ERROR: page 'find' not found]() on the target and places the
 cursor just before the target.
 
 ``` python
@@ -308,7 +308,7 @@ move_after(target, regex=False, halt=True)
 
 Move the cursor until it reaches the given target.
 
-This function execute a <!find> on the target and places the
+This function execute a [LINK ERROR: page 'find' not found]() on the target and places the
 cursor just before the target.
 
 ``` python
