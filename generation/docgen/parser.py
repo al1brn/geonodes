@@ -976,6 +976,67 @@ def struct_list(struct, name_only=True, **kwargs):
     struct_iter(struct, add, **kwargs)
     
     return structs
+
+# =============================================================================================================================
+# Parse comment (for meta tage)
+
+def parse_meta_comment(comment):
+    """ Parse the comment itsel to extract meta tags
+    
+    Tags are `$` starting at the beginin of the line followed by a command line:
+        
+    - DOC START : extract comment from here
+    - DOC END : don't extract after after
+    - SET property value : property value pair
+    """
+    
+    meta = r"^\$ *(?P<command>[\w]*) *(?P<param>.*)\n"
+    
+    props = {}
+    
+    index = 0
+    while True:
+
+        m = re.search(meta, comment[index:], flags=re.MULTILINE)
+
+        if m is None:
+            return comment, props
+        
+        command = m.group('command').upper()
+        param   = m.group('param')
+        if param is not None:
+            param = param.strip()
+        
+        # ----------------------------------------------------------------------------------------------------
+        # DOC command
+        
+        if command == 'DOC':
+            if param is None or param == '' or param.upper() == 'START':
+                comment = comment[index + m.span()[1]:]
+                index = 0
+                
+            elif param.upper() == 'END':
+                return comment[:index + m.span()[0]], props
+            
+            else:
+                print(f"CAUTION: invalid meta command {m.group(1)}, DOC option must be in ('START','END') not '{param}'")
+                index += m.span()[1]
+                
+        # ----------------------------------------------------------------------------------------------------
+        # SET command
+        
+        elif command == 'SET':
+            
+            try:
+                exec(param, None, props)
+            except Exception as e:
+                print(f"CAUTION: invalid meta command {m.group(1)}, impossible to exec instruction:\n> {param}'\n{str(e)}")
+            
+            comment = comment[:index + m.span()[0]] + comment[index + m.span()[1]:]
+            index += m.span()[0]
+                
+    return comment, props
+
     
 
 # =============================================================================================================================
@@ -1242,6 +1303,22 @@ def parse_file_source(text, file_name='File'):
 
             else:
                 class_subs[name] = function_
+                
+    # ----------------------------------------------------------------------------------------------------
+    # Parse meta commands in comment
+    
+    def meta(struct):
+        comment = struct['comment']
+        if comment is None:
+            return
+        comment, props = parse_meta_comment(comment)
+        
+        struct['comment'] = comment
+        for k, v in props:
+            struct[k] = v
+            
+    struct_iter(file, meta)
+    
 
     return file
 

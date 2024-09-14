@@ -1,13 +1,6 @@
 # Documentation Generator
 
 
-Created on Sat Sep 14 07:41:35 2024
-
-@author: alain
-
-
-$ DOC START
-
 This module generates a simple but yet acceptable project documentation package
 for a python package.
 
@@ -82,7 +75,7 @@ This is not displayed
 - E : [extract_lists](#extract_lists) :black_small_square: [extract_source](#extract_source) :black_small_square: [extract_strings](#extract_strings)
 - F : [format_list_line](#format_list_line)
 - N : [new_class](#new_class) :black_small_square: [new_file](#new_file) :black_small_square: [new_function](#new_function) :black_small_square: [new_property](#new_property) :black_small_square: [new_struct](#new_struct)
-- P : [parse_file_source](#parse_file_source) :black_small_square: [parse_files](#parse_files) :black_small_square: [parse_list_line](#parse_list_line)
+- P : [parse_file_source](#parse_file_source) :black_small_square: [parse_files](#parse_files) :black_small_square: [parse_list_line](#parse_list_line) :black_small_square: [parse_meta_comment](#parse_meta_comment)
 - R : [replace_source](#replace_source) :black_small_square: [replace_strings](#replace_strings)
 - S : [Section](section.md#section) :black_small_square: [struct_iter](#struct_iter) :black_small_square: [struct_list](#struct_list) :black_small_square: [struct_search](#struct_search)
 - T : [Text](text.md#text) :black_small_square: [test](#test) :black_small_square: [test_folder](#test_folder) :black_small_square: [title_to_anchor](#title_to_anchor) :black_small_square: [title_to_file_name](#title_to_file_name)
@@ -466,7 +459,7 @@ The parser returns a dictionary giving the content of the file:
 The parsing is done with regular expressions.
 
 ``` python
-parse_file_source(text, file_name="124")
+parse_file_source(text, file_name="134")
 ```
 
 
@@ -495,7 +488,7 @@ Load files from a folder.
 All the files with `.py` extension are parsed.
 
 ``` python
-parse_files(folder, key="179", verbose=False)
+parse_files(folder, key="191", verbose=False)
 ```
 
 
@@ -540,6 +533,27 @@ pprint(parse_list_line(line))
 
 ``` python
 parse_list_line(line)
+```
+
+
+
+<sub>[top](#documentation-generator) [index](index.md)</sub>
+
+
+
+----------
+### parse_meta_comment
+
+Parse the comment itsel to extract meta tags
+
+Tags are `$` starting at the beginin of the line followed by a command line:
+    
+- DOC START : extract comment from here
+- DOC END : don't extract after after
+- SET property value : property value pair
+
+``` python
+parse_meta_comment(comment)
 ```
 
 
