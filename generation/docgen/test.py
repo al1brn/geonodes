@@ -378,7 +378,7 @@ class Section:
                 items[section.title] = section.link_to(absolute=section.is_page)
                 return 'NO CHILDREN'
                 
-        self.iteration(get_items)
+        self.iteration(get_items, include_top = False)
         if items is None:
             return None
         
