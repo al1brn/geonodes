@@ -1198,6 +1198,7 @@ class Documentation(Section):
         title = Path(folder_key).stem
         
         init_dict = self.files.get(str(Path(folder_key) / '__init__'))
+        
         if init_dict is None:
             comment = None
         else:
@@ -1206,6 +1207,12 @@ class Documentation(Section):
         if title == "":
             # Root folder
             module = self
+            if module.comment is None:
+                module.comment = comment
+            else:
+                module.comment += '\n\n' + comment
+                
+                
         else:
             module = self.add_module(title, comment, in_toc=True)
         
