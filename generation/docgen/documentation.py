@@ -1,17 +1,16 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Wed Sep 11 17:42:12 2024
+Created on Fri Sep 13 08:33:58 2024
 
 @author: alain
 """
 
-import re
-from pathlib import Path
 from pprint import pprint
+from pathlib import Path
+import re
 
-
-from parser import format_list_line, parse_module, parse_files
+from parser import format_list_line, parse_file_source, parse_files
 from parser import struct_search, struct_iter, struct_list, capture_inheritance
 from parser import extract_source, replace_source
 
@@ -22,47 +21,15 @@ def title_to_file_name(title):
 def title_to_anchor(title):
     return title.lower().replace(' ', '-')
 
-# =============================================================================================================================
-# Section
 
-class Section(list):
-    def __init__(self, title, comment=None):
+class Section:
+    
+    def __init__(self, title, comment=None, sort_sections=False, in_toc=False, module=None, is_page=False, ignore_if_empty=True, top_bar=None):
         """ Document section
         
         Project documentation is made of **pages** organized in **modules**.
         Modules and pages are articulated as folders and files but the document
         hierarchy doesn't have to stick to the structure of the source folders.
-        
-        Loading a source file will return **classes** and global **functions**:
-        - each class is documented in a dedicated page
-        - functions are documented in a module page
-        - TBD : global objects (vars for instance) will be treated as functions
-        
-        Hence, loading a source file, or  files from a folder, is done with a target module:
-        - functions will be added to the module page
-        - classes will be added as pages of the modules and refered in the module page
-        
-        Here after is the template for a module page:
-            
-        ```
-        # Module name
-        ...
-        
-        ## Content
-        - classes (links to dedicated pages)
-          - MyClass1
-          - MyClass2
-          
-        - functions (page anchors)
-          - my_function1
-          - my_function2
-          
-        ## my_function1
-        ...
-        
-        ## my_function2
-        ...
-        ```
         
         The documentation is based on the versatile class <!Section> which can be:
         - a text section in a page
@@ -76,10 +43,6 @@ class Section(list):
         - <!Section#is_page> : the section is written in a dedicated page, otherwise
           it is written if the flow of the <!Section#page> it belongs to.
           Wheter a section is a page or not is taken into account to build links toward this section.
-        
-        
-        A <!Section> is intended to be written in
-          the documentation file as comment followed by its sub sections.
           
           
         ``` python
@@ -95,297 +58,352 @@ class Section(list):
         module = doc.new_module("Some module", folder_path3)
         module.load_folder(folder_path3)
         ```
-        """
+        """        
+        self.owner    = None
+        self._module  = module
+        self._is_page = is_page or module is not None
         
-        super().__init__()
+        self.children = []
         
+        # Header content
         self.title   = title
         self.comment = comment
         
-        self.key     = None
-        
-        self._page   = None
-        self._depth  = 0
-        self._anchor  = None
-        
-        self.navigation = f"\n\n<sub>[top](#{self.anchor}) [index](index.md)</sub>\n\n"
-        
+        # Options
+        self.sort_sections   = sort_sections
+        self.in_toc          = in_toc
+        self.ignore_if_empty = ignore_if_empty
+        self.top_bar         = top_bar
         
     def __str__(self):
-        return f"<Section({len(self)}) {self.depth}. {self.title}>"
-        
-    def __repr__(self):
-        return str(self)
-        
-    # ====================================================================================================
-    # Sections management
+        stype   = "P" if self.is_page else " "
+        if self.is_module:
+            stype = "M"
+        if self.is_top:
+            stype = "T"
+        shidden = "H" if self.hidden  else "D"
+            
+        return f"<{self.depth} {stype}{shidden} '{self.module:8s}'{'  '*self.depth_in_page} {self.title}>"
     
-    # ----------------------------------------------------------------------------------------------------
-    # Iteration on sections and subsections
+    # =============================================================================================================================
+    # Hierarchy iteration
+    
+    def iteration(self, func, *args, include_top=True):
+        
+        
+        ok_children = True
+        if include_top:
+            res = func(self, *args)
+                    
+            if res == True:
+                return self
+            
+            ok_children = res != 'NO CHILDREN'
+            
+        if ok_children:
+            for section in self.children:
+                res = section.iteration(func, *args, include_top=True)
+                if res is not None:
+                    return res
+            
+        return None
+        
+    # =============================================================================================================================
+    # Children management
+    
+    def append(self, section):
+        section.owner = self
+        self.children.append(section)
+        if self.sort_sections:
+            self.sort()
+        return section
+            
+    def sort(self):
+        self.children.sort(key=lambda s: s.title)
+        
+    def get_section(self, title=None, condition=None, **kwargs):
+        
+        # ----------------------------------------------------------------------------------------------------
+        # Function : test if title matches and conditions are ok
+        
+        def ok_section(section, title_):
+            if title_ is not None and section.title != title_:
+                return False
+                
+            for k, v in kwargs.items():
+                if getattr(section, k) != v:
+                    return False
+                
+            if condition is not None and not condition(section):
+                return False
+                
+            return True
 
-    def iteration(self, f, *args):
-        """ Run the function on the section and sub sections
+        # ----------------------------------------------------------------------------------------------------
+        # No condition on title
+        
+        if title is None:
+            return self.iteration(ok_section, None)
+        
+        # ----------------------------------------------------------------------------------------------------
+        # Title is simple
+        
+        p = title.find('.')
+        if p < 0:
+            return self.iteration(ok_section, title)
 
-        The method halts on the first section for which the function
-        return `True` and returns this section.
-        If the function doesn't return `True`, the methods is run on all sections
-        and return `None`.
+        # ----------------------------------------------------------------------------------------------------
+        # Title is composed
+        
+        parent = self.get_section(title[:p])
+        if parent is None:
+            return None
+        else:
+            return parent.get_section(title[p+1:], **kwargs)
 
-        Arguments
-        ---------
-        - f (function of template f(section)) : the function to run
+    def get_module(self, title, condition=None, **kwargs):
+        return self.get_section(title, condition=condition, is_module=True, **kwargs)
 
+    def get_page(self, title, condition=None, **kwargs):
+        return self.get_section(title, condition=condition, is_page=True, **kwargs)
+        
+        
+    # =============================================================================================================================
+    # Properties
+    
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Hierarchy
+    
+    @property
+    def is_top(self):
+        """ Is top section
+        
         Returns
         -------
-        - Section or None
+        - bool : True if owner is None
         """
-        ok = f(self, *args)
-
-        if ok == True:
-            return self
-
-        for section in self:
-            s = section.iteration(f, *args)
-            if s is not None:
-                return s
-
-        return None        
-
-    # ----------------------------------------------------------------------------------------------------
-    # Flat list of sections and sub sections
-        
-    def sections(self, with_owner=False):
-        """ Flat list of sections and sub sections
-        """
-        res = []
-        for section in self:
-            if with_owner:
-                res.append((self, section))
-            else:
-                res.append(section)
-            res.extend(section.sections(with_owner=with_owner))
-        return res
-
-    # ----------------------------------------------------------------------------------------------------
-    # Get a section by its title or path
-    
-    def get_section(self, title):
-        """ Get a section by its title or path
-        """
-        section = self
-        for sub_title in title.split('.'):
-            found = None
-            for s in section:
-                if s.title == sub_title:
-                    found = s
-                    break
-            if found is None:
-                return None
-            
-            section = found
-            
-        return section
-
-    # ====================================================================================================
-    # Depth
+        return self.owner is None
     
     @property
-    def depth(self):
-        return self._depth
-    
-    @depth.setter
-    def depth(self, value):
-        self._depth = value
-        for section in self:
-            section.depth = value + 1
-
-    # ====================================================================================================
-    # Tokens
-    
-    def set_anchors(self):
-        self._anchor = title_to_anchor(self.title)
-        anchors = {self._anchor: 1}
-        
-        for section in self.sections():
-            anchor = title_to_anchor(section.title)
-            if anchor in anchors:
-                count = anchors[anchor]
-                section._anchor = f"{anchor}-{count}"
-                anchors[anchor] = count + 1
-            else:
-                section._anchor = f"{anchor}"
-                anchors[anchor] = 1
-    
-    
-    @property
-    def page(self):
-        if self._page is None:
+    def top(self):
+        if self.owner is None:
             return self
         else:
-            return self._page
-        
-    @page.setter
-    def page(self, value):
-        self._page = None if value == self else value
-        for section in self:
-            section.page = value
-        
+            return self.owner.top
+
+    @property
+    def depth(self):
+        if self.owner is None:
+            return 0
+        else:
+            return self.owner.depth + 1
+    
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Pages
+    
     @property
     def is_page(self):
-        return self._page is None
+        return self.is_top or self._is_page
     
     @is_page.setter
     def is_page(self, value):
-        if value == True:
-            self.page  = self
-        else:
-            self.page = value
-        
+        self._is_page = value
     
+    @property
+    def page(self):
+        return self if self.is_page else self.owner.page
+            
+    @property
+    def depth_in_page(self):
+        if self.is_page:
+            return 0
+        else:
+            return self.owner.depth_in_page + 1
+        
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Module
+    
+    @property
+    def is_module(self):
+        return self.is_top or self._module is not None
+    
+    @property
+    def module(self):
+        if self.is_top:
+            return ""
+        elif self._module is None:
+            return self.owner.module
+        else:
+            return self._module
+
+    @property
+    def module_path(self):
+        if self.is_top:
+            return ""
+
+        elif self._module is None:
+            return self.owner.module_path
+
+        else:
+            owner_path = self.owner.module_path
+            if owner_path == "":
+                return self._module
+            else:
+                return owner_path + '-' + self._module
+            
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Content
+    
+    @property
+    def has_toc(self):
+        if self.is_page:
+            return self.iteration(lambda s: s.in_toc)
+        else:
+            return False
+        
+    @property
+    def has_content(self):
+        
+        if not self.ignore_if_empty:
+            return True
+        
+        if self.comment is not None:
+            return True
+        
+        for section in self.children:
+            if section.is_page:
+                continue
+            
+            if not section.hidden:
+                return True
+            
+        if self.has_toc:
+            return True
+            
+        return False
+    
+    @property
+    def hidden(self):
+        if self.is_top:
+            return False
+        
+        return not self.has_content
+            
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # File name / anchor
+
     @property
     def file_name(self):
+        if self.is_top:
+            return "index.md"
+        
         if self.is_page:
-            return title_to_file_name(self.title if self.key is None else self.key)
+            module_path = self.module_path
+            if module_path != '':
+                module_path += '-'
+            return module_path + title_to_file_name(self.title)
         else:
             return self.page.file_name
-
+        
+    @property
+    def homonyms_count(self):
+            
+        anchor = title_to_anchor(self.title)
+        
+        def func(section, counter):
+            if self == section:
+                return True
+            
+            if not section.hidden:
+                return False
+            
+            if title_to_anchor(section.title) == anchor:
+                counter[0] += 1
+        
+        if self.is_page:
+            return 0
+        
+        counter = [0]
+        self.page.iteration(func, counter)
+        
+        return counter[0]
+        
+        
     @property
     def anchor(self):
-        if self._anchor is None:
-            return title_to_anchor(self.title)
+
+        anchor = title_to_anchor(self.title)
+        if self.is_page:
+            return anchor
         else:
-            return self._anchor
-        
-    def mdlink(self, title=None, local=False):
-        link = f"#{self.anchor}"
-        if not local:
-            link = self.file_name + link
-        if title is None:
-            title = self.title
-        return f"[{title}]({link})"
-    
-    
-    # ====================================================================================================
-    # Dynamic documentation
-
-    def new_section(self, title, comment=None):
-        """ Add a sub section
-
-        Arguments
-        ---------
-        - title (str) : section title
-        - comment (str) : header comment
-        - sub_level (int = 1) : level increment
-
-        Returns
-        -------
-        - Section
-        """
-
-        section = Section(title, comment=comment)
-        self.append(section)
-
-        return section
-
-    def write_header(self, comment):
-        """ Append text to the header comment
-
-        Arguments
-        ---------
-        - comment (str) : the text to write
-        """
-        
-        if comment is None:
-            return
-
-        if self._comment is None:
-            self._comment = comment
-        else:
-            self._comment += comment
-
-    def write(self, comment):
-        """ Append text to the current text
-
-        The current text is either the comment if this section if there is not sub sections,
-        or the comment of the last sub sections.
-
-        Arguments
-        ---------
-        - comment (str) : the text to write
-        """
-        
-        if comment is None:
-            return
-
-        if len(self):
-            self[-1].write(comment)
-
-        else:
-            if self.comment is None:
-                self.comment = comment
+            count = self.homonyms_count
+            if count == 0:
+                return anchor
             else:
-                self.comment += comment
-
-    def write_source(self, source):
-        self.write("\n\n``` python\n")
-        self.write(source.replace("`", "'"))
-        self.write("\n```\n\n")       
-
-    # ====================================================================================================
-    # Add a table of contents
-    
-    def add_toc(self, name='Content', sub_sections=False):
-        
-        if sub_sections:
-            section_names = []
-            for section in self:
-                section_names.extend([s.title for s in section])
-            section_names = sorted(section_names)
+                return f"{anchor}-{count}"
             
-        else:
-            section_names = sorted([s.title for s in self])
-            
-        toc = Section(name, comment = "\n".join([f"<#{section_name}>" for section_name in section_names]))
-        self.insert(0, toc)
-        return toc
+    def link_to(self, absolute=True, title=None):
+        return f"[{self.title if title is None else title}]({self.file_name if absolute else ''}#{self.anchor})"
+        
+    # =============================================================================================================================
+    # Add sections
     
-    # ====================================================================================================
-    # A table of contents
+    def add_module(self, module, title, comment=None, **kwargs):
+        return self.add_section(title, comment, module=module, **kwargs)
     
-    @classmethod
-    def Toc(cls, items, title='Content'):
-        """ Create a table of content from the given list
+    def add_page(self, title, comment=None, **kwargs):
+        return self.add_section(title, comment, is_page=True, **kwargs)
+
+    def add_section(self, title, comment=None, **kwargs):
+        return self.append(Section(title, comment, **kwargs))
+    
+    def get_create_section(self, title, comment=None,**kwargs):
+        for section in self.children:
+            if section.title == title:
+                return section
+        return self.add_section(title, comment=comment, **kwargs)
+    
+    # =============================================================================================================================
+    # Table of content
+    
+    def get_toc(self, title='Content', level=2):
         
-        Arguments
-        ---------
-        - items (list) : list of couples (key, value)
+        if not self.is_page:
+            return None
         
-        Returns
-        -------
-        - Section
-        """
+        items = {}
         
-        sorted_items = sorted(items, key=lambda item: item[0])
+        def get_items(section):
+            if section.in_toc:
+                items[section.title] = section.link_to(absolute=section.is_page)
+                return 'NO CHILDREN'
+                
+        self.iteration(get_items, include_top = False)
+        if items is None:
+            return None
+        
+        
+        sorted_keys = sorted(items.keys())
         
         # ----------------------------------------------------------------------------------------------------
         # A simple ordered list
         
         if len(items) < 10:
-            text = "\n- ".join([item[1] for item in sorted_items])
+            text = "\n- ".join([items[key] for key in sorted_keys])
             
         # ----------------------------------------------------------------------------------------------------
         # One line per initial
         
         else:
             alpha = {}
-            for item in items:
-                first = item[0][0].upper()
+            for key in sorted_keys:
+                first = key[0].upper()
                 first_list = alpha.get(first)
                 if first_list is None:
-                    first_list = [item[1]]
+                    first_list = [items[key]]
                     alpha[first] = first_list
                 else:
-                    first_list.append(item[1])
+                    first_list.append(items[key])
             
             text = ""
             for first in sorted(list(alpha.keys())):
@@ -393,202 +411,398 @@ class Section(list):
                 
         # Done
                 
-        return cls(title, comment=text)
-        
-    # ====================================================================================================
-    # From parsed documentation
+        return f"\n\n{'#'*level} {title}\n\n" + text + "\n\n"        
     
-    @classmethod
-    def FromParsed(cls, struct, ignore_uncommented=True):
-        
-        name    = struct['name']
-        section = cls(name, struct['comment'])
-        
-        # ----------------------------------------------------------------------------------------------------
-        # Module
-        
-        if struct['obj'] == 'module':
-            
-            functions = section.new_section('Functions')
-            classes   = section.new_section('Classes')
-            toc_items = []
-            
-            for obj in struct['subs'].values():
+    
+    # =============================================================================================================================
+    # Dynamic write
+    
+    def write(self, text):
+        """ Append text to the header comment
 
-                if obj['comment'] is None and ignore_uncommented:
-                    continue
-                
-                obj_section = Section.FromParsed(obj, ignore_uncommented=ignore_uncommented)
-                
-                obj_section.comment += section.navigation
-                
-                if obj['obj'] == 'function':
-                    functions.append(obj_section)
-                    
-                elif obj['obj'] == 'class':
-                    classes.append(obj_section)
-                    
-                else:
-                    assert(False)
-                    
-                toc_items.append((obj_section.title, f"[{obj_section.title}](#{obj_section.anchor})"))
-                    
-            # ----- Format the page
-                    
-            functions.sort(key=lambda s: s.title)
-            classes.sort(key=lambda s: s.title)
-            
-            section.insert(0, Section.Toc(toc_items, 'Content'))
-                    
-        # ----------------------------------------------------------------------------------------------------
-        # Class
+        Arguments
+        ---------
+        - text (str) : the text to write
+        """
         
-        elif struct['obj'] == 'class':
-            
-            properties = section.new_section('Properties')
-            methods    = section.new_section('Methods')
-            toc_items  = []
-            
-            if struct.get('__init__') is not None:
-                if struct.get('args') is not None:
-                    section.write_source(f"{name}({struct['args']})")
-                
-                if struct['__init__']['comment'] is not None:
-                    init_ = Section.FromParsed(struct['__init__'])
-                    section.write("\n\n**__init__**\n\n")
-                    section.write(init_.comment)
-                
-            
-            for obj in struct['subs'].values():
-                
-                if obj['comment'] is None and ignore_uncommented:
-                    continue
-                
-                obj_section = Section.FromParsed(obj, ignore_uncommented=ignore_uncommented)
-                
-                obj_section.comment += section.navigation
-                
-                
-                if obj['obj'] == 'property':
-                    properties.append(obj_section)
-                    
-                elif obj['obj'] == 'function':
-                    methods.append(obj_section)
-                    
-                else:
-                    assert(False)
-                    
-                toc_items.append((obj_section.title, f"[{obj_section.title}](#{obj_section.anchor})"))
+        if text is None:
+            return
 
-            # ----- Format the page
-                    
-            properties.sort(key=lambda s: s.title)
-            methods.sort(key=lambda s: s.title)
-            
-            section.insert(0, Section.Toc(toc_items, 'Content'))
-                
-
-        # ----------------------------------------------------------------------------------------------------
-        # Function / Method
-        
-        elif struct['obj'] == 'function':
-            
-            if struct.get('args') is not None:
-                section.write_source(f"{name}({struct['args']})")
-            
-            if len(struct['raises']):
-                sub = section.new_section('Raises', "\n- ".join([format_list_line(d) for d in struct['raises']]))
-                                      
-            if len(struct['arguments']):
-                sub = section.new_section('Arguments', "\n- ".join([format_list_line(d) for d in struct['arguments']]))
-                                      
-            if len(struct['returns']):
-                sub = section.new_section('Returns', "\n- ".join([format_list_line(d) for d in struct['returns']]))
-                                      
-        # ----------------------------------------------------------------------------------------------------
-        # Function / Method
-        
-        elif struct['obj'] == 'property':
-            
-            if struct.get('type') is not None:
-                section.write(f"> type {struct['type']}\n")
-            if struct.get('default') is not None:
-                section.write(f"> default {struct['default']}\n")
-                
-            if struct.get('getter') is not None:
-                sct = Section.FromParsed(struct['getter'], ignore_uncommented=ignore_uncommented)
-                sct.title = 'Getter'
-                section.append(sct)
-                
-            if struct.get('setter') is not None:
-                sct = Section.FromParsed(struct['setter'], ignore_uncommented=ignore_uncommented)
-                sct.title = 'Setter'
-                section.append(sct)
-                
+        if self.comment is None:
+            self.comment = text
         else:
-            assert(False)
-            
+            self.comment += text
+
+    def write_source(self, source):
+        self.write("\n\n``` python\n")
+        self.write(source.replace("`", "'"))
+        self.write("\n```\n\n")
         
-        return section
-    
-    # ====================================================================================================
-    # yield lines   
-    
-    def yield_content(self):
+    def write_navigation(self):
+        self.write(f"\n\n<sub>[top](#{self.page.anchor}) [index](index.md)</sub>\n\n")
         
-        if True:
-            #yield f'<h{self.depth+1} id="{self._anchor}">{self.title}</h{self.depth+1}>'
-            yield f"#{'#'*self.depth} {self.title}\n\n"
+        
+    # =============================================================================================================================
+    # Build the whole documentation
+    
+    def get_content(self):
+        """ Returns the text to write in the page
+        """
+        
+        if self.top_bar is None:
+            header = ""
         else:
-            a_, _a = '{', '}'
-            yield f"#{'#'*self.depth} {self.title} {a_} #{self._anchor} {_a}\n\n"
+            header = self.top_bar * 10 + "\n"
+        header += f"#{'#'*self.depth_in_page} {self.title}\n\n"
         
+        text = None
+        content = self.get_toc()
+        
+        # ----- Header and comment
+        
+        if content is not None or not self.ignore_if_empty:
+            text = header
+            
         if self.comment is not None:
-            yield self.comment + '\n\n'
-            
-        for section in self:
-            for line in section.yield_content():
-                yield line
-            
-
-    # ====================================================================================================
-    # Debug
-
-    def print(self, full=False):
-        """ Print the documentation in the console
-
-        For debug purpose.
-        """
-        INDENT = '   '
-        print(f"{INDENT*(self.depth+1)} # {self.title}")
-        if self.comment is not None and full:
-            print(self.comment)
-            
-        for section in self:
-            section.print(full=full)
-            continue
-
-
-# =============================================================================================================================
-# Documentation        
+            if text is None:
+                text = header + self.comment
+            else:
+                text += self.comment
                 
-class Documentation(Section):
-    def __init__(self, title, comment=None):
-        """ Whole project documentation
+        # ----- Content
         
-        A **Project** is a <!Section> which is the top level page of the document,
-        and whose sections are alse pages.
+        if content is not None:
+            text += content
+                
+        # ----- Children sections
+                
+        for section in self.children:
+            if section.hidden:
+                continue
+            
+            sub_text = section.get_content()
+            if sub_text is not None:
+                if text is None:
+                    text = header + sub_text
+                else:
+                    text += '\n\n' + sub_text
+
+        return text
+    
+    def get_documentation(self, create_files=True):
+        """ Write the section into a dict
         
-        <!Section> <!Section#title> must be unique.
+        Arguments
+        ---------
+        - doc (dict) : the dict where to write the documentation        
         """
         
-        super().__init__(title, comment=comment)
+        doc = {}
+        if create_files:
+            create_files = self.top.doc_folder is not None
         
-        self.key     = 'index'
-        self._anchor  = 'index'
-        self.is_page = True
+        def create_file(section):
+            if not section.is_page:
+                return
+            
+            text = section.get_content()
+            if text is not None:
+                file_name = section.file_name
+                assert(file_name not in doc)
+                doc[file_name] = text
+                
+                if create_files:
+                    with (self.top.doc_folder / str(file_name)).open(mode='w') as f:
+                        f.write(text)
+                
+        self.iteration(create_file)
         
-        # ----- A module of modules
+        return doc
+    
+    # =============================================================================================================================
+    # Add dict description (structure returned by code parsing)
+    
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Add a file
+    
+    def add_file_dict(self, file_dict):
+        
+        assert(file_dict['obj'] == 'file')
+        
+        #page = self.add_page(struct['name'], comment=struct['comment'], in_toc=True)
+        
+        # ---- Two main sections
+        
+        functions = self.get_create_section('Functions', sort_sections=True)
+        classes   = self.get_create_section('Classes',   sort_sections=True)
+        
+        # ----- Loop on the file content
+            
+        for obj in file_dict['subs'].values():
+
+            if obj.get('hidden', False):
+                continue
+            
+            if obj['obj'] == 'function':
+                functions.add_function_dict(obj)
+                
+            elif obj['obj'] == 'class':
+                classes.add_class_dict(obj)
+                
+            else:
+                assert(False)
+                    
+                #toc_items.append((obj_section.title, f"[{obj_section.title}](#{obj_section.anchor})"))
+                    
+            # ----- Format the page
+                    
+            #functions.sort(key=lambda s: s.title)
+            #classes.sort(key=lambda s: s.title)
+            
+            #section.insert(0, Section.Toc(toc_items, 'Content'))    
+            
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Add a class
+    
+    def add_class_dict(self, class_dict, ignore_uncommented=False):
+        
+        assert(class_dict['obj'] == 'class')
+        
+        # ----- Page dedicated to the class
+        
+        page = self.add_page(class_dict['name'], comment=class_dict['comment'], in_toc=True)
+            
+        properties = page.add_section('Properties', sort_sections=True)
+        methods    = page.add_section('Methods',    sort_sections=True)
+        
+        if class_dict.get('__init__') is not None:
+            if class_dict.get('args') is not None:
+                page.write_source(f"{page.title}({class_dict['args']})")
+            
+            #if struct['__init__']['comment'] is not None:
+            #    init_ = Section.FromParsed(struct['__init__'])
+            #    class_page.write("\n\n**__init__**\n\n")
+            #    class_page.write(init_.comment)
+            
+        # ----- Loop on properties and methods 
+        
+        for obj in class_dict['subs'].values():
+            
+            if obj.get('hidden', False):
+                continue
+            
+            if obj['obj'] == 'property':
+                properties.add_property_dict(obj)
+                
+            elif obj['obj'] == 'function':
+                methods.add_function_dict(obj)
+                
+            else:
+                assert(False)
+                
+            #toc_items.append((obj_section.title, f"[{obj_section.title}](#{obj_section.anchor})"))
+
+        # ----- Format the page
+                
+        #properties.sort(key=lambda s: s.title)
+        #methods.sort(key=lambda s: s.title)
+        
+        #section.insert(0, Section.Toc(toc_items, 'Content'))
+        
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Add a property
+    
+    def add_property_dict(self, prop_dict):
+        
+        assert(prop_dict['obj'] == 'property')
+        
+        section = self.add_section(prop_dict['name'], prop_dict['comment'], in_toc=True, top_bar='-')
+        
+        sepa = '\n\n'
+        
+        if prop_dict.get('getter') is not None or prop_dict.get('setter') is not None:
+            section.write(f"{sepa}- {'getter' if prop_dict.get('getter') is not None else ''} {'setter' if prop_dict.get('setter') is not None else ''}")
+            sepa = '\n'
+            
+        if prop_dict.get('type') is not None:
+            section.write(f"{sepa}- type **{prop_dict['type']}**")
+            sepa = '\n'
+            
+        if prop_dict.get('default') is not None:
+            section.write(f"{sepa}- default {prop_dict['default']}")
+            sepa = '\n'
+            
+        section.write(sepa)
+        
+        section.write_navigation()
+
+                
+
+    # ----------------------------------------------------------------------------------------------------
+    # Function / Method
+    
+    def add_function_dict(self, func_dict):
+    
+        assert(func_dict['obj'] == 'function')
+        
+        section = self.add_section(func_dict['name'], func_dict['comment'], in_toc=True, top_bar='-')
+        
+        if func_dict.get('args') is not None:
+            section.write_source(f"{section.title}({func_dict['args']})")
+        
+        if len(func_dict['raises']):
+            sub = section.add_section('Raises', "\n- ".join([format_list_line(d) for d in func_dict['raises']]))
+                                  
+        if len(func_dict['arguments']):
+            sub = section.add_section('Arguments', "\n- ".join([format_list_line(d) for d in func_dict['arguments']]))
+                                  
+        if len(func_dict['returns']):
+            sub = section.add_section('Returns', "\n- ".join([format_list_line(d) for d in func_dict['returns']]))
+            
+        section.write_navigation()
+                                      
+    
+    # =============================================================================================================================
+    # dev and test
+
+    @classmethod
+    def TestStructure(cls):
+        
+        top = cls("Top", "Top text")
+        top.add_section("Top section", "Top section text")
+        top.add_section("Top section", "Top section text")
+        top.add_section("Hidden section")
+        top.add_page("First page", "First page text")
+        top.add_page("Second page", "Second page text")
+        
+        module = top.add_module("M1", "Module 1", "Module 1 text")
+        module.add_section("M1 Section")
+        module.add_section("M1 Section")
+        module.add_section("Homonym")
+        module.add_page("First page", "First page text")
+        module.add_page("Second page", "Second page text")
+        
+        module = top.add_module("M2", "Module 2")
+        module.add_section("M2 Section A", "Section text")
+        module.add_section("M2 Section B", "Section text")
+        module.add_section("Homonym")
+        
+        submodule = module.add_module("M21", "Hidden Module")
+        submodule.add_page("Far page").add_section("Far section", "text")
+        
+        page = module.add_page("Page 1", "Page text")
+        page = module.add_page("Page 2", "Page text")
+        page = module.add_page("Target section")
+        page = module.add_page("Hidden page")
+        
+        top.add_module("M3", "Hidden Module")
+        
+        return top
+    
+    def dump(self):
+        print()
+        print("Dump of", self.title)
+        print('-'*50)
+        print()
+        def func(section):
+            print(str(section), section.anchor)
+            
+        self.iteration(func)
+        print()
+        
+    def print(self, text_max=100):
+        print()
+        print("Print documentation of", self.title)
+        print('-'*50)
+        print()
+        
+        doc = self.get_documentation()
+        for file_name, text in doc.items():
+            print('.'*50)
+            print('::::',file_name)
+            print('')
+            if len(text) > text_max:
+                print(text[:text_max], '...')
+            else:
+                print(text)
+        
+    @staticmethod
+    def test_dump():
+        
+        top = Section.TestStructure()
+
+        top.dump()
+        
+    @staticmethod
+    def test_get():
+
+        top = Section.TestStructure()
+
+        top.dump()
+        
+        
+        print()
+        print("Get section / page / module")
+        print('-'*50)        
+        
+        for target in ["Target section", "M2 Section A", "Hidden Module"]:
+            print(f"Get Section '{target}' : {top.get_section(target)}")
+                    
+        for target in ["Target section", "M2 Section A", "Hidden Module"]:
+            print(f"Get Page '{target}' : {top.get_page(target)}")
+                    
+        for target in ["Target section", "M2 Section A", "Hidden Module"]:
+            print(f"Get Module '{target}' : {top.get_module(target)}")
+
+        print()
+        print("Section path")
+        print('-'*50)        
+        target = "Module 1.Homonym"
+        print(target, ':', top.get_section(target))
+        target = "Module 2.Homonym"
+        print(target, ':', top.get_section(target))
+
+    @staticmethod
+    def test_doc():
+
+        top = Section.TestStructure()
+
+        top.dump()
+        
+        top.print()
+        
+        
+        
+# =============================================================================================================================
+# Documentation class
+
+class Documentation(Section):
+    def __init__(self, title, doc_folder, source_folder=None):
+        """ Project Documentation
+        
+        Properties
+        ----------
+        - doc_folder (str) : target folder for documentation files
+        - source_folder (str) : root folder for files
+        - parsed (dict) : dictionary of loaded and parsed filed
+        - hooks (list) : list of regular expressions and hook function to apply on the documentation
+        
+        Arguments
+        ---------
+        - title (str) : documentation title, displayed as title of index.md file
+        - doc_folder (str) : target folder for documentation
+        - source_folder (str) : root folder where to load files from
+        """
+        
+        super().__init__(title)
+        
+        # Source and target folders
+        
+        self.doc_folder = Path(doc_folder)
+        self.source_folder = source_folder
+        
+        # ----------------------------------------------------------------------------------------------------
+        # Source filers
         
         self.parsed = {'obj': 'module', 'name': 'title', 'comment': None, 'subs': {}}
         
@@ -606,6 +820,12 @@ class Documentation(Section):
     
     @property
     def modules(self):
+        """ Dictionary of parsed files.
+        
+        Returns
+        -------
+        - dict
+        """
         return self.parsed['subs']
     
     def modules_search(self, **kwargs):
@@ -622,8 +842,13 @@ class Documentation(Section):
     
     @property
     def classes_list(self):
+        """ List of classes
+        
+        Returns
+        -------
+        - list : list of class dictionaries
+        """
         return self.modules_list(obj='class')
-    
         
     # ----------------------------------------------------------------------------------------------------
     # Add a source file
@@ -631,7 +856,7 @@ class Documentation(Section):
     def load_source(self, key, text):
         """ Add a source code.
 
-        The source code is parsed and the resulting <!Section> is stored in the <!#refdoc> dict.
+        The source code is parsed and the resulting dict is stored in the <!#parsed> dict.
 
         Arguments
         ---------
@@ -646,93 +871,76 @@ class Documentation(Section):
         if key in self.modules:
             raise Exception(f"Impossible to add the source keyed by '{key}': key already exists in {list(self.modules.keys())}")
 
-        self.modules[key] = parse_module(text, module_name=Path(key).stem)
-
-        return key
+        self.modules[key] = parse_file_source(text)
+        
     
     # ----------------------------------------------------------------------------------------------------
     # Load source files from a folder
 
-    def load_file(self, file_name, key=None):
+    def load_file(self, file_key, file_name, verbose=False):
         """ Enrich the reference doc by parsing source files.
 
         All the files with `.py` extension are parsed.
 
         Arguments
         ---------
-        - folder (str) : main folder
-        - sub_folders (str) : sub folders to explore
-        - key (str=None) :
-
-        Returns
-        -------
-        - self
+        - file_key (str) : file key in <#modules>
+        - file_name (str) : file path
         """
         
-        path = Path(file_name)
-        if not path.exists():
-            raise Exception(f"File {file_name} doesn't exist")
+        file_key = str(file_key)
 
-        if key is None:
-            key = path(folder).stem
-            
-        self.load_source(key, path.read_text())
+        self.load_source(file_key, Path(file_name).read_text())
+        if verbose:
+            print(f"load {Path(file_name).name} : ", self.module_info(file_key))
         
-        return key
 
     # ----------------------------------------------------------------------------------------------------
     # Load source files from a folder
 
-    def load_files(self, folder=None, sub_folders=[], key=None, verbose=True):
+    def load_folder(self, folder, verbose=True):
         """ Enrich the reference doc by parsing source files.
+        
+        > [!CAUTION]
+        > if <#source_folder> is not None, folder is relative to it
 
         All the files with `.py` extension are parsed.
 
         Arguments
         ---------
-        - folder (str) : main folder
-        - sub_folders (str) : sub folders to explore
-        - key (str=None) :
+        - folder (str) : absolute folder or folder relative to <#source_folder> if not None
 
         Returns
         -------
         - self
         """
-
-        root_folder = Path(folder)
-        if not root_folder.exists():
-            raise Exception(f"File {file_name} doesn't exist")
-        if not root_folder.is_dir():
-            raise Exception(f"Path {file_name} is not a folded")
         
-        if key is None:
-            key = root_folder.stem
+        if self.source_folder is None:
+            abs_folder = Path(folder)
+        else:
+            abs_folder = self.source_folder / folder
 
-        all_folders = ["."] + sub_folders
+        if not abs_folder.exists():
+            raise Exception(f"Folder {folder} doesn't exist")
+        if not abs_folder.is_dir():
+            raise Exception(f"Path {folder} is not a folder")
 
-        for subf in all_folders:
-            if subf == '.':
-                path = root_folder
-                file_key = key
-            else:
-                path = root_folder / subf
-                file_key = str(Path(key) / subf)
-
-            for fpath in path.iterdir():
-                if not fpath.match("*.py"):
-                    continue
-                load_key = str(Path(file_key) / fpath.stem)
-
-                self.load_source(load_key, fpath.read_text())
-                if verbose:
-                    print(f"load {fpath.name} : ", self.module_info(load_key))
+        folder_key = Path(folder)
+        for fpath in abs_folder.iterdir():
+            if not fpath.match("*.py"):
+                continue
+            
+            self.load_file(folder_key / fpath.stem, fpath, verbose=verbose)
 
         return self
     
     def module_info(self, key):
+        
         module = self.modules.get(key)
+        
         if module is None:
-            return f"Module '{key}' not founds"
+            return f"Module '{key}' not found in {list(self.modules.keys())}"
+        
         else:
             nclasses = len([s for s in module['subs'].values() if s['obj'] == 'class'])
             nfuncs   = len([s for s in module['subs'].values() if s['obj'] == 'function'])
@@ -768,66 +976,7 @@ class Documentation(Section):
                 
             self.modules_iter(hide, obj='class')
     
-    
-    # =============================================================================================================================
-    # Add pages to the documentation
-    
-    def get_page(self, title):
-        
-        if title == 'index' or title == self.title:
-            return self
-        
-        
-        for section in self:
-            if section.title == title:
-                return section
-        return None
-    
-    # ----------------------------------------------------------------------------------------------------
-    # Add a page
 
-    def add_page(self, section):
-        """ Add a page in the documentation
-
-        Arguments
-        ---------
-        - page (<!Section>) : the page to add
-
-        Returns
-        -------
-        - <!Section> : the argument **page**
-        """
-        if self.get_section(section.title) is not None:
-            print("Existing pages:", [s.title for s in self])
-            return
-            #raise Exception(f"Error when adding page '{section.title}' : the page already exists!")
-            
-        section._page = None
-        self.append(section)
-            
-        return section
-
-    # ----------------------------------------------------------------------------------------------------
-    # Create a new page
-
-    def new_page(self, title, comment=None):
-        """ Add a page in the documentation
-
-        > [!CAUTION]
-        > **title** argument is used a as key in <!#pages> dictionary. It must be unique
-        > in the scope of the project
-
-        Arguments
-        ---------
-        - title (str) : page title
-        - comment (str) : comment
-
-        Returns
-        -------
-        - <!Section>
-        """
-        return self.add_page(Section(title, comment))
-    
     # =============================================================================================================================
     # Hook function
     
@@ -1023,198 +1172,135 @@ class Documentation(Section):
         # Main : iteration on all sections
         
         self.iteration(solve_section)
-    
-            
+        
     # =============================================================================================================================
-    # Creating the documentation files
+    # Put items in the documentation to build
     
-    # -----------------------------------------------------------------------------------------------------------------------------
-    # Custom links
+    def document_folder(self, folder_key):
         
-    
-    
-    # -----------------------------------------------------------------------------------------------------------------------------
-    # Compilation
-    
-    def compile(self):
-        """ Initialize sections parameters at their good values
-        """
+        title = Path(folder_key).stem
         
-        # ----------------------------------------------------------------------------------------------------
-        # Section proper structure paremeters
-        
-        for section in self:
-            section.is_page = True
-            section.depth = 0
-            section.set_anchors()
+        init_dict = self.modules.get(str(Path(folder_key) / '__init__'))
+        if init_dict is None:
+            comment = None
+        else:
+            comment = init_dict['comment']
             
-        # ----------------------------------------------------------------------------------------------------
-        # Apply the hooks
+        if title == "":
+            # Root folder
+            module = self
+        else:
+            module = self.add_module(title, comment, in_toc=True)
         
-        self.solve_hooks(include_links=True)
+        for key, file_dict in self.modules.items():
+            if str(Path(key).parents[0]) == folder_key:
+                module.add_file_dict(file_dict)
+        
+        
+    # =============================================================================================================================
+    # Create self documentation
+    
+    @staticmethod
+    def docgen_documentation():
+        
+        # -----------------------------------------------------------------------------------------------------------------------------
+        # Target folder as sub folder 'doc' in the current folder
+        
+        folder = Path(__file__).parents[0]
+        doc_folder = folder / 'doc'
+        
+        # -----------------------------------------------------------------------------------------------------------------------------
+        # Initialize the documentation
+            
+        doc = Documentation("Documentation Genrator", doc_folder)
+        
+        # -----------------------------------------------------------------------------------------------------------------------------
+        # Load the source files
+        
+        doc.load_folder('', verbose=True)
+        
+        # -----------------------------------------------------------------------------------------------------------------------------
+        # Adding and twisting
+        
+        
+        # -----------------------------------------------------------------------------------------------------------------------------
+        # Structure
+        
+        doc.document_folder('.')
+        
+        # -----------------------------------------------------------------------------------------------------------------------------
+        # Write
+        
+        #doc.dump()
+        
+        doc.print()
+        
+        
+        
+        
+        
+        
+        return
+        
+        
+        
+        text = parse_file_source(Path(__file__).read_text())
+        
+        proj.add_file_dict(text)
+        
+        #proj.dump()
+        
+        #proj.print()
+        
+        sect = proj.get_section('Section')
+        print(sect)
+        print(sect.is_page, sect.file_name, sect.link_to(False), sect.link_to(True))
+        
+        proj.get_documentation(True)
+        
+        
+        
+        
+        
+    # =============================================================================================================================
+    # Dev and tests
+
+    @classmethod
+    def test_file(cls, file_name=None, doc_folder=None):
+
+        
+        if file_name is None:
+            file_name = __file__
+            
+        folder = Path(file_name).parents[0]
+        
+        if doc_folder is None:
+            doc_folder = folder / 'testdoc'
+        
+        print("doc_folder", str(doc_folder))
             
             
-    # ====================================================================================================
-    # Write the index
-
-    def create_index_file(self, file_name):
-        """ Create the index file
-
-        Arguments
-        ---------
-        - file_name (str) : file name to write
-        """
-
-        print(f"Create index: {file_name}")
-
-        with Path(file_name).open(mode='w') as f:
-            for line in self.build():
-                f.write(line)
-
-            if False:
-
-                # ----- Project name
-
-                f.write(f"# {self.name}\n\n")
-
-                # ----- Modules
-
-                # Later
-
-                # ----- Classes
-
-                f.write(f"## Classes\n\n")
-
-                for key in sorted(self.classes):
-                    f.write(f"- [{key}]({key.lower()}.md)\n")
-
-
-    # ====================================================================================================
-    # Create the documentation files
-
-    def create_documentation(self, doc_folder):
-
-        self.compile()
-
-        doc_folder = Path(doc_folder)
+        proj = cls("Documentation", doc_folder)
         
-        for page in self:
-            file_path = doc_folder / page.file_name
-            print(f"Create ‘{page.title}' : {file_path}")
-            with file_path.open(mode='w') as f:
-                for line in page.yield_content():
-                    f.write(line)
-
-        #self.create_index_file(doc_folder / 'index.md')
-            
-
-    
-
-    
-# =============================================================================================================================
-# Test on the current folder
-
-def gen_docgen():
-    
-    # ====================================================================================================
-    # Step 1 : Load project files from root folder
-
-    comment = "This is the **DocGen** documentation generated with the projet itself."
-    
-    if True:
-        root = Path(__file__).parents[0]
-        proj = Documentation('Simple Python Documentation Generator', comment=comment)
+        text = parse_file_source(Path(__file__).read_text())
         
-        proj.load_files(root, sub_folders=[])
+        proj.add_file_dict(text)
         
+        #proj.dump()
         
-    else:
-        folder = Path("/Users/alain/Documents/blender/scripts/modules/geonodes")
-        proj = Documentation('Script nodes')
-        #proj.load_files(folder)
-        proj.load_files(folder / 'geonodes')
+        #proj.print()
         
-        print('-'*50)
-        print('CLASSES', proj.classes_list)
-        #proj.load_files(folder / 'shadernodes')
-
-        gn = proj.get_class('GeoNodes')
-        pprint(gn['inherits'])
-        proj.hide_classes('Tree')
-        pprint(gn['inherits'])
+        sect = proj.get_section('Section')
+        print(sect)
+        print(sect.is_page, sect.file_name, sect.link_to(False), sect.link_to(True))
         
-    # ====================================================================================================
-    # Tune reference doc
-    
-    for module in proj.modules.values():
-        print("Module", module['name'])
-        proj.add_page(Section.FromParsed(module))
-    
-    proj.create_documentation(doc_folder=root / 'testdoc')
-    
-    
-
+        proj.get_documentation(True)
         
     
-    # ====================================================================================================
-    # Step 2 : Build the pages
-
-    page = proj.new_page("Parser module", "Simple python source parser\n\n")
-    page.write("The module <!Parser> parse source file and returns the documentation as a liste of <!Doc> instances.")
     
-    return
-
-    proj.add_class('Parser', page,  capture = ['Reader'])
-    proj.add_class('Doc', page)
-    functions = page.new_section("Functions")
-    proj.add_function('.', page=functions, file_key='docgen/pyparser', exact=False, only_commented=True)
-
-    proj.add_class('Section')
-    proj.add_class('Argument', bases=['Section'])
-    proj.add_class('Return',   bases=['Section'])
-    proj.add_class('Function', bases=['Section'])
-    proj.add_class('Class',    bases=['Section'])
-    proj.add_class('Project')
-
-    # ====================================================================================================
-    # Step 3 : Add complementary pages
-
-    page = proj.new_page("Demo", "This demo file is the source code used to generate this documentation\n\n")
-
-    page.write_source(inspect.getsource(gen_docgen))
-
-    # ====================================================================================================
-    # Finalize the index file (the project Section)
-
-    struct = proj.new_section("Project classes", comment="""
-        The project is made of two layers.
-        1. The first layer is the reference document read from source files
-        2. The second layer is a the set of pages of the documentation
-
-        Pages are created and manually fed by reference documentation
-        or by manuel additions.
-        """)
-
-    struct.new_section("Parser classes")
-    struct.write("- <!Parser> : simple python source code parser\n")
-    struct.write("- <!Doc> : list of items documentation returned by the [Parser](parser.md)\n")
-    struct.write()
-
-    struct.new_section("DocGen classes")
-    struct.write("- <!Project> : Project documentation\n")
-    struct.write("- <!Class> : Class documentation\n")
-    struct.write("- <!Function> : Function documentation\n")
-    struct.write("- <!Section> : Base documentation section\n")
-
-    proj.new_section("Demo", "You can see in <!Demo> the source code used to generate this documentation.")
-
-    # ====================================================================================================
-    # Step 5 : Create the documentation
-
-    # Demo custom hook
-    proj.set_hook(r"\[!TOKEN\]", "substitution text")
-
-    proj.create_documentation(doc_folder=root / 'doc')
-    
-
-gen_docgen()
+        
+        
+        
+                    
+Documentation.docgen_documentation()
+                
