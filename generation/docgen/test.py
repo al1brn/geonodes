@@ -439,7 +439,7 @@ class Section:
         self.write("\n```\n\n")
         
     def write_navigation(self):
-        self.write("\n\n<sub>[top](#{self.page.anchor}) [index](index.md)</sub>\n\n")
+        self.write(f"\n\n<sub>[top](#{self.page.anchor}) [index](index.md)</sub>\n\n")
         
         
     # =============================================================================================================================
