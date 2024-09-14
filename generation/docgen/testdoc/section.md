@@ -256,6 +256,10 @@ TestStructure()
 
 
 
+<sub>[top](#section) [index](index.md)</sub>
+
+
+
 ----------
 ### __str__
 
@@ -264,6 +268,10 @@ TestStructure()
 ``` python
 __str__()
 ```
+
+
+
+<sub>[top](#section) [index](index.md)</sub>
 
 
 
@@ -278,6 +286,10 @@ add_class_dict(class_dict, ignore_uncommented=False)
 
 
 
+<sub>[top](#section) [index](index.md)</sub>
+
+
+
 ----------
 ### add_file_dict
 
@@ -286,6 +298,10 @@ add_class_dict(class_dict, ignore_uncommented=False)
 ``` python
 add_file_dict(file_dict)
 ```
+
+
+
+<sub>[top](#section) [index](index.md)</sub>
 
 
 
@@ -300,6 +316,10 @@ add_function_dict(func_dict)
 
 
 
+<sub>[top](#section) [index](index.md)</sub>
+
+
+
 ----------
 ### add_module
 
@@ -308,6 +328,10 @@ add_function_dict(func_dict)
 ``` python
 add_module(module, title, comment=None, **kwargs)
 ```
+
+
+
+<sub>[top](#section) [index](index.md)</sub>
 
 
 
@@ -322,6 +346,10 @@ add_page(title, comment=None, **kwargs)
 
 
 
+<sub>[top](#section) [index](index.md)</sub>
+
+
+
 ----------
 ### add_property_dict
 
@@ -330,6 +358,10 @@ add_page(title, comment=None, **kwargs)
 ``` python
 add_property_dict(prop_dict)
 ```
+
+
+
+<sub>[top](#section) [index](index.md)</sub>
 
 
 
@@ -344,6 +376,10 @@ add_section(title, comment=None, **kwargs)
 
 
 
+<sub>[top](#section) [index](index.md)</sub>
+
+
+
 ----------
 ### append
 
@@ -352,6 +388,10 @@ add_section(title, comment=None, **kwargs)
 ``` python
 append(section)
 ```
+
+
+
+<sub>[top](#section) [index](index.md)</sub>
 
 
 
@@ -366,6 +406,10 @@ create_file(section)
 
 
 
+<sub>[top](#section) [index](index.md)</sub>
+
+
+
 ----------
 ### dump
 
@@ -374,6 +418,10 @@ create_file(section)
 ``` python
 dump()
 ```
+
+
+
+<sub>[top](#section) [index](index.md)</sub>
 
 
 
@@ -388,6 +436,10 @@ func(section)
 
 
 
+<sub>[top](#section) [index](index.md)</sub>
+
+
+
 ----------
 ### get_content
 
@@ -396,6 +448,10 @@ Returns the text to write in the page
 ``` python
 get_content()
 ```
+
+
+
+<sub>[top](#section) [index](index.md)</sub>
 
 
 
@@ -410,6 +466,10 @@ get_create_section(title, comment=None,**kwargs)
 
 
 
+<sub>[top](#section) [index](index.md)</sub>
+
+
+
 ----------
 ### get_documentation
 
@@ -418,6 +478,10 @@ Write the section into a dict
 ``` python
 get_documentation(create_files=True)
 ```
+
+
+
+<sub>[top](#section) [index](index.md)</sub>
 
 
 
@@ -436,6 +500,10 @@ get_items(section)
 
 
 
+<sub>[top](#section) [index](index.md)</sub>
+
+
+
 ----------
 ### get_module
 
@@ -444,6 +512,10 @@ get_items(section)
 ``` python
 get_module(title, condition=None, **kwargs)
 ```
+
+
+
+<sub>[top](#section) [index](index.md)</sub>
 
 
 
@@ -458,6 +530,10 @@ get_page(title, condition=None, **kwargs)
 
 
 
+<sub>[top](#section) [index](index.md)</sub>
+
+
+
 ----------
 ### get_section
 
@@ -466,6 +542,10 @@ get_page(title, condition=None, **kwargs)
 ``` python
 get_section(title=None, condition=None, **kwargs)
 ```
+
+
+
+<sub>[top](#section) [index](index.md)</sub>
 
 
 
@@ -480,6 +560,10 @@ get_toc(title="21", level=2)
 
 
 
+<sub>[top](#section) [index](index.md)</sub>
+
+
+
 ----------
 ### iteration
 
@@ -488,6 +572,10 @@ get_toc(title="21", level=2)
 ``` python
 iteration(func, *args, include_top=True)
 ```
+
+
+
+<sub>[top](#section) [index](index.md)</sub>
 
 
 
@@ -502,6 +590,10 @@ link_to(absolute=True, title=None)
 
 
 
+<sub>[top](#section) [index](index.md)</sub>
+
+
+
 ----------
 ### print
 
@@ -510,6 +602,10 @@ link_to(absolute=True, title=None)
 ``` python
 print(text_max=100)
 ```
+
+
+
+<sub>[top](#section) [index](index.md)</sub>
 
 
 
@@ -524,6 +620,10 @@ sort()
 
 
 
+<sub>[top](#section) [index](index.md)</sub>
+
+
+
 ----------
 ### test_doc
 
@@ -532,6 +632,10 @@ sort()
 ``` python
 test_doc()
 ```
+
+
+
+<sub>[top](#section) [index](index.md)</sub>
 
 
 
@@ -546,6 +650,10 @@ test_dump()
 
 
 
+<sub>[top](#section) [index](index.md)</sub>
+
+
+
 ----------
 ### test_get
 
@@ -557,6 +665,10 @@ test_get()
 
 
 
+<sub>[top](#section) [index](index.md)</sub>
+
+
+
 ----------
 ### write
 
@@ -565,6 +677,10 @@ Append text to the header comment
 ``` python
 write(text)
 ```
+
+
+
+<sub>[top](#section) [index](index.md)</sub>
 
 
 
@@ -583,6 +699,10 @@ write_navigation()
 
 
 
+<sub>[top](#section) [index](index.md)</sub>
+
+
+
 ----------
 ### write_source
 
@@ -591,4 +711,8 @@ write_navigation()
 ``` python
 write_source(source)
 ```
+
+
+
+<sub>[top](#section) [index](index.md)</sub>
 

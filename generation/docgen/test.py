@@ -374,7 +374,6 @@ class Section:
         
         def get_items(section):
             if section.in_toc:
-                #items[section.title] = f"[{section.title}](#{section.anchor})"
                 items[section.title] = section.link_to(absolute=section.is_page)
                 return 'NO CHILDREN'
                 
@@ -636,11 +635,6 @@ class Section:
         
         section.write_navigation()
 
-        #if prop_dict.get('getter') is not None:
-        #    section.add_function_dict(prop_dict['getter'])
-            
-        #if prop_dict.get('setter') is not None:
-        #    section.add_function_dict(prop_dict['setter'])
                 
 
     # ----------------------------------------------------------------------------------------------------
@@ -663,6 +657,9 @@ class Section:
                                   
         if len(func_dict['returns']):
             sub = section.add_section('Returns', "\n- ".join([format_list_line(d) for d in func_dict['returns']]))
+            
+        section.write_navigation()
+            
                                       
     
     # =============================================================================================================================
