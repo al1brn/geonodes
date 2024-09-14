@@ -36,6 +36,7 @@ regex_source  = r"`((``[^`]*``)|([^`\n]*))`"
 
 regex_csource  = re.compile(regex_source,  flags=re.MULTILINE)
 
+
 # =============================================================================================================================
 # Align comment
 
@@ -77,6 +78,9 @@ def del_margin(comment):
         return None
 
     # Removes leading and ending triple quotes
+    
+    if not isinstance(comment, str):
+        comment = str(comment)
 
     if comment[:3] == '"""':
         comment = comment[3:-3]
@@ -706,9 +710,9 @@ def parse_list_line(line):
 
     items = {
         'name'        : name,
-        'type'        : None,
-        'default'     : None,
-        'description' : None,
+        #'type'        : None,
+        #'default'     : None,
+        #'description' : None,
         }
 
     # ----------------------------------------------------------------------------------------------------
@@ -779,7 +783,7 @@ def parse_list_line(line):
 # =============================================================================================================================
 # Parse comment to extract information
 
-def extract_lists(comment, titles):
+def extract_lists(comment, *titles):
     """ Extract lists from a comment.
 
     This parser extracts Properties, Arguments and Returns sections.
@@ -810,9 +814,6 @@ def extract_lists(comment, titles):
 
     if comment is None:
         return None, {}
-
-    if isinstance(titles, str):
-        titles = [titles]
 
     lists = {}
 
