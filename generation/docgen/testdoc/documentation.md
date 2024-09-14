@@ -10,7 +10,7 @@ Documentation(title, doc_folder, source_folder=None)
 
 
 
-Content
+## Content
 
 [test_file](#test_file)
 

@@ -365,7 +365,7 @@ class Section:
     # =============================================================================================================================
     # Table of content
     
-    def get_toc(self, title='Content'):
+    def get_toc(self, title='Content', level=2):
         
         if not self.is_page:
             return None
@@ -411,7 +411,7 @@ class Section:
                 
         # Done
                 
-        return f"\n\n{title}\n\n" + text + "\n\n"        
+        return f"\n\n{'#'*level} {title}\n\n" + text + "\n\n"        
     
     
     # =============================================================================================================================

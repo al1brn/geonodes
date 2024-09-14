@@ -40,7 +40,7 @@ Section(title, comment=None, sort_sections=False, in_toc=False, module=None, is_
 
 
 
-Content
+## Content
 
 
 - A : [add_class_dict](#add_class_dict) :black_small_square: [add_file_dict](#add_file_dict) :black_small_square: [add_function_dict](#add_function_dict) :black_small_square: [add_module](#add_module) :black_small_square: [add_page](#add_page) :black_small_square: [add_property_dict](#add_property_dict) :black_small_square: [add_section](#add_section) :black_small_square: [anchor](#anchor) :black_small_square: [append](#append)
@@ -475,7 +475,7 @@ get_section(title=None, condition=None, **kwargs)
 
 
 ``` python
-get_toc(title="21")
+get_toc(title="21", level=2)
 ```
 
 

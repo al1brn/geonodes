@@ -2,7 +2,7 @@
 
 
 
-Content
+## Content
 
 [Documentation](documentation.md#documentation)
 - [Section](section.md#section)
