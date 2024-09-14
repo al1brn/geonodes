@@ -368,7 +368,8 @@ class Section:
         
         def get_items(section):
             if section.in_toc:
-                items[section.title] = f"[{section.title}](#{section.anchor})"
+                #items[section.title] = f"[{section.title}](#{section.anchor})"
+                items[section.title] = section.link_to(absolute=section.is_page)
                 
         self.iteration(get_items)
         if items is None:
