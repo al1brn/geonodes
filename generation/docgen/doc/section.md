@@ -1,7 +1,7 @@
 # Section
 
 
-[TEST](geonodes/generation/docgen/doc/index.md)
+[TEST](index.md)
 
 > subclasses: [Argument](argument.md) [Return](return.md) [Function](function.md) [Class](class.md) 
 
