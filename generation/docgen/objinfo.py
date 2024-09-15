@@ -25,7 +25,10 @@ import re
 from .parser import parse_meta_comment, extract_source, replace_source, del_margin, extract_lists
 
 # =============================================================================================================================
-# List item info
+# Lists in comment
+
+# -----------------------------------------------------------------------------------------------------------------------------
+# List item in CommentList
 
 EMPTY  ='_EMPTY'
             
@@ -52,9 +55,9 @@ class ListItem:
         self.default     = default
         self.description = description
         
-        for k, v in kwargs:
-            setattr(self, v)
-        
+        for k, v in kwargs.items():
+            setattr(self, k, v)
+            
     def __str__(self):
         s = f"- {self.name}"
         if self.has_type or self.has_default:
@@ -69,6 +72,47 @@ class ListItem:
             s += f" : {self.description}"
             
         return s
+            
+    @classmethod
+    def FromOther(cls, other):
+        
+        item = cls(name=other.name)
+        for k in dir(other):
+            if not k in dir(ListItem):
+                setattr(item, k, getattr(other, k))
+                
+        return item
+    
+    @classmethod
+    def FromParameter(cls, param, description=None):
+        """ Create an instance from the python paramer description.
+        
+        Returns
+        -------
+        - ListItem
+        """
+        name    = param.name
+        type    = None  if param.annotation == param.empty else param.annotation
+        default = EMPTY if param.default == param.empty else param.default
+        
+        return cls(name, type=type, default=default, description=None)
+    
+    def get(self, attribute, default=None):
+        """ Get a custom attribute value
+        
+        Arguments
+        ---------
+        - attribute (str) : attribute name
+        - default : value to return if the attribute doesn't exist
+        
+        Returns
+        -------
+        - Any : attribute value or default if it doesn't exist
+        """
+        if attribute in dir(self):
+            return getattr(self, attribute)
+        else:
+            return default
             
     @property
     def has_type(self):
@@ -99,19 +143,159 @@ class ListItem:
         - bool
         """
         return self.description is not None
+    
+    def complete_with(self, other:ListItem):
+        """ Complete with another list item.
         
-    @classmethod
-    def FromParameter(cls, param, description=None):
-        """ Create an instance from the python paramer description.
+        Replace empty attributes by values coming from the other ListItem.
+        """
+        if not self.has_type:
+            self.type = other.type
+        if not self.has_default:
+            self.default = other.default
+        if not self.has_description:
+            self.decrption = other.description
+            
+        for k in dir(other):
+            if not k in dir(self):
+                setattr(self, getattr(other, k))
+                
+    @property
+    def markdown(self):
+        s = f"- **{self.name}**"
+        if self.has_type or self.has_default:
+            s += " ("
+            if self.has_type:
+                s += f"_{self.type}_"
+            if self.has_default:
+                s += f" = {self.default}"
+            s += ")"
+            
+        if self.has_description:
+            s += f" : {self.description}"
+            
+        return s + "\n"
+        
+        
+# -----------------------------------------------------------------------------------------------------------------------------
+# Comment list
+
+class DescriptionList(list):
+    """ Description list made
+    
+    A description list is a list of Listtem
+    
+    A description is coming from the following syntax in a comment:
+    
+    ````
+    title
+    -----
+    - name (type = default) : description
+    - name (type = default) : description
+    ```
+    
+    Only `name` is mandatory.
+    
+    > [!NOTE]
+    > A description list for the arguments is built from the signature of a function
+    > and can be enriched by a 'Arguments' list in a comment. See <#complete_with>.
+    """
+    
+    def get(self, name):
+        """ Get a list item by its name
+        
+        Argument
+        --------
+        - name (str) : item name
         
         Returns
         -------
-        - ListItem
+        - ListItem : None if not found
         """
-        name    = param.name
-        type    = EMPTY if param.annotation == param.empty else param.annotation
-        default = EMPTY if param.default == param.empty else param.default
-        return cls(name, type=type, default=default, description=None)
+        for item in self:
+            if item.name == name:
+                return item
+        return None
+        
+    
+    def complete_with(self, other):
+        """ Complete a list with another list
+        
+        If a list item doesn't exist, it is created
+        If it already exists, empty fields (<!ListItem#type>, <!ListItem#default >and <!ListItem#description>)
+        are set with values coming from other.
+        
+        This feature is used to build arguments list. 
+            
+        ``` python
+        def foo(arg1, arg2:int, arg3='value', arg4:float=3.14):
+        ```
+        
+        Will generate the following argument list:
+
+        ````
+        Arguments
+        ---------
+        - arg1
+        - arg2 (int)
+        - arg3 (='value')
+        - arg4 (float = 3.14)
+        ```
+        
+        This list can be enriched with the following list written in the function comment:
+        
+        
+        ````
+        Arguments
+        ---------
+        - arg1 (int) : first argument
+        - arg3 (str) : third argument        
+        ```
+        
+        Which will produce the final enriched list:
+
+        ````
+        Arguments
+        ---------
+        - arg1(int) : first argument
+        - arg2 (int)
+        - arg3 (str='value') : third argument 
+        - arg4 (float = 3.14)
+        ```
+        
+        Arguments
+        ---------
+        - other : DescriptionList
+        """
+        
+        if other is None:
+            return
+        
+        for other_item in other:
+            
+            item = self.get(other_item.name)
+            
+            if item is None:
+                self.append(ListItem.FromOther(other_item))
+                
+            else:
+                item.complete_with(other_item)
+
+    # ====================================================================================================
+    # Markdwon
+    
+    def markdown(self, title):
+        return f"\n\n{title}:\n" + "".join([item.markdown for item in self]) + '\n'
+                
+    # ====================================================================================================
+    # Print content
+    
+    def print(self, title):
+        print(list_name)
+        print("-"*len(title))
+        for arg in self:
+            print(str(arg))
+    
 
 # =============================================================================================================================
 # Base information
@@ -130,7 +314,9 @@ class Object_:
         ----------
         - name (str) : module name, class name, property name...
         - comment (str) : comment in __doc__
-        - obj_type (str) : (read only) name of the object type 
+        - obj_type (str) : (read only) name of the object type
+        - meta_props (dict) : dictionary of options set by meta instruction $ SET
+        - meta_lists (ditc) : dictionary of <!DescriptionList> extracted in the comment
         
         Arguments
         ---------
@@ -143,8 +329,16 @@ class Object_:
         self.comment = del_margin(comment)
         self.hidden  = False
         
+        self.meta_props = {}
+        self.meta_lists = {}
+        
         for k, v in kwargs.items():
             setattr(self, k, v)
+            
+        # ----- Parse the cmment
+        
+        self.parse_comment()
+        
             
     def __str__(self):
         return f"<{type(self).__name__} {self.name}>"
@@ -180,26 +374,50 @@ class Object_:
     def parse_comment(self):
         """ Collect extra information from the comment
         
-        The default comment parser extracts meta information for doc generator:
+        Inline commands
+        ---------------
         - $ DOC START : ignore lines above
         - $ DO END : ignore lines after
-        - $ SET prop = 123 : pass properties to the doc generator 
+        - $ SET prop = 123 : pass properties to the doc generator
         
-        Returns
-        -------
-        - str : self.comment
+        In addition, special lists are extracted to create <!DescriptionList>
+        
+        Extracted lists
+        ---------------
+        - raises
+        - arguments
+        - returns
+        - properties
         """
         
         if self.comment is None:
-            return None
+            return
+        
+        # ----------------------------------------------------------------------------------------------------
+        # Extract meta commands
         
         comment, props = parse_meta_comment(self.comment)
-        if len(props):
-            self._meta = props
-            
-        self.comment = comment
+        for k, v in props.items():
+            self.meta_props[k] = v
+
+        # ----------------------------------------------------------------------------------------------------
+        # Extract the lists from the comment
         
-        return self.comment
+        comment, lists = extract_lists(comment, 'arguments', 'raises', 'returns', 'properties')
+        for k, v in lists:
+            self.meta_lists[k] = v
+
+        # ----------------------------------------------------------------------------------------------------
+        # Done
+                
+        self.comment = comment
+
+    # =============================================================================================================================
+    # Write documentation
+    
+    def document(self, doc):
+        pass
+
     
     # =============================================================================================================================
     # Print the content
@@ -237,6 +455,21 @@ class Property_(Object_):
         super().__init__(name, comment, type=type, default=default, fget=fget, fset=fset, **kwargs)
         
     @classmethod
+    def FromListItem(self, item):
+        """ Create a property from a list item
+        
+        Arguments
+        ---------
+        - item (ListItem) : information on the property to create
+
+        Returns
+        -------
+        - Property_        
+        """
+        return Property_(item.name, comment=item.description, type=item.type, default=item.default)
+        
+        
+    @classmethod
     def FromObject(cls, object, name=None, verbose=False):
         """ Create a Property_ instance from a property
         
@@ -247,6 +480,10 @@ class Property_(Object_):
         ---------
         - object (property) : the object the scan
         - name (str = None) : name
+        
+        Returns
+        -------
+        - Property_
         """
         if name is None:
             try:
@@ -295,6 +532,30 @@ class Property_(Object_):
             
         return cls(name, type=stype, default=sdef)
     
+    def complete_with(self, other):
+        """ Enrich the description with another one
+        
+        A Property_ can be created either in properties list in a comment
+        or by scaning object.
+        This function allows to merge information coming from these two sources
+        
+        Arguments
+        ---------
+        - other (Property) : contains complementary description
+        """
+        
+        if self.comment is None:
+            self.comment = other.comment
+        if self.type is None:
+            self.type = other.type
+        if self.default == EMPTY:
+            self.default = other.default
+        if self.fget is None:
+            self.fget = other.fget
+        if self.fset is None:
+            self.fset = other.fset
+        
+    
     # =============================================================================================================================
     # Print the content
     
@@ -336,9 +597,16 @@ class Function_(Object_):
         super().__init__(name, comment, signature=signature, **kwargs)
         
         self.decorators = [] if decorators is None else decorators
-        self.arguments  = [] if arguments  is None else arguments
-        self.raises     = [] if raises     is None else raises
-        self.returns    = [] if returns    is None else returns
+        self.arguments  = DescriptionList() if arguments  is None else arguments
+        self.raises     = DescriptionList() if raises     is None else raises
+        self.returns    = DescriptionList() if returns    is None else returns
+        
+        # Enrich argument list with extracted list
+        
+        arg_list = self.meta_lists.get('arguments')
+        if arg_list is not None:
+            self.arguments.complete_with(arg_list)
+        
         
     @classmethod
     def FromObject(cls, object, name=None, verbose=False):
@@ -364,71 +632,17 @@ class Function_(Object_):
         except:
             sig = '()'
 
-        function_ = cls(name, inspect.getdoc(object), signature=str(sig))
-        
         # ----- Parse the parameters in the signature if it exists
         
+        arguments = DescriptionList()
         if not isinstance(sig, str):
             for param in sig.parameters.values():
-                function_.arguments.append(ListItem.FromParameter(param))
+                arguments.append(ListItem.FromParameter(param))
                 
-        # ----- Parse the comment
-            
-        function_.parse_comment()
+        # ----- Create the function
 
-        return function_
+        return cls(name, inspect.getdoc(object), signature=str(sig), arguments=arguments)
     
-    def parse_comment(self):
-        """ Function comment parser
-        
-        The parser looks for list names Arguments, Raises and Returns.
-        """
-        
-        if super().parse_comment() is None:
-            return None
-        
-        # ----------------------------------------------------------------------------------------------------
-        # Extract the lists from the comment
-        
-        comment, lists = extract_lists(self.comment, 'arguments', 'raises', 'returns')
-        
-        # ----------------------------------------------------------------------------------------------------
-        # Arguments : can complete information from signature
-        
-        for list_name in ('arguments', 'raises', 'returns'):
-            
-            list_ = lists.get(list_name)
-            
-            if list_ is not None:
-                for arg in list_:
-                    
-                    name = arg['name']
-                    cur = None
-                    
-                    # ----- Already documented ?
-                    
-                    for a in getattr(self, list_name):
-                        if a.name == name:
-                            cur = a
-                            break
-                        
-                    # ----- No, let's create it
-                    
-                    if cur is None:
-                        cur = ListItem(name)
-                        getattr(self, list_name).append(cur)
-                        
-                    # ---- Complete with a lesser priority
-                    
-                    if not cur.has_type and arg.get('type') is not None:
-                        cur.type = arg['type']
-                    if not cur.has_default and arg.get('default') is not None:
-                        cur.default = arg['default']
-                    if not cur.has_description and arg.get('description') is not None:
-                        cur.comment = arg['description']
-                
-        self.comment = comment
-
     # =============================================================================================================================
     # Print the content
     
@@ -474,6 +688,9 @@ class Parent(Object_):
         self.members[object_.name] = object_
         return object_
     
+    def get_member(self, name):
+        return self.members.get(name)
+    
 # =============================================================================================================================
 # Class Info
         
@@ -499,6 +716,24 @@ class Class_(Parent):
         super().__init__(name, comment, **kwargs)
         self.bases = [] if bases is None else bases
         self._init = None
+        
+        # ----- Properties described in a list of properties
+        
+        props = self.meta_lists.get('properties')
+        if props is not None:
+            for name, item in props.items():
+                user_prop = Property_.FromListItem(item)
+                prop = self.get_member(name)
+                if prop is None:
+                    self.add_member(user_prop)
+                else:
+                    prop.complete_with(user_prop)
+                
+                
+                
+                
+        
+        
         
     @classmethod
     def FromObject(cls, object, name=None, verbose=False):

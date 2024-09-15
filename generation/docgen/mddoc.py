@@ -1036,32 +1036,34 @@ class Section:
 # Documentation class
 
 class Doc(Section):
-    def __init__(self, title, doc_folder, source_folder=None):
+    def __init__(self, title, doc_folder):
         """ Markdown documentation package
         
         This class is a subclass of <!Section> and is to top section of the
-        hierarchy of sections
+        hierarchy of sections.
+        
+        It provides <#hooks> facility for documentation post treatment such as text replacement
+        or links resolution.
         
         Properties
         ----------
         - doc_folder (str) : target folder for documentation files
-        - source_folder (str) : root folder for files
-        - parsed (dict) : dictionary of loaded and parsed filed
         - hooks (list) : list of regular expressions and hook function to apply on the documentation
         
         Arguments
         ---------
         - title (str) : documentation title, displayed as title of index.md file
         - doc_folder (str) : target folder for documentation
-        - source_folder (str) : root folder where to load files from
         """
         
         super().__init__(title)
         
         # Source and target folders
         
-        self.doc_folder = Path(doc_folder)
-        self.source_folder = source_folder
+        if doc_folder is None:
+            self.doc_folder = None
+        else:
+            self.doc_folder = Path(doc_folder)
         
         # ----------------------------------------------------------------------------------------------------
         # Source filers
@@ -1076,168 +1078,6 @@ class Doc(Section):
         # ----- Custom hooks
         
         self.hooks = []
-        
-    # =============================================================================================================================
-    # Documentation from file management
-    
-    @property
-    def files(self):
-        """ Dictionary of parsed files.
-        
-        Returns
-        -------
-        - dict
-        """
-        return self.parsed['subs']
-    
-    def files_search(self, **kwargs):
-        return struct_search(self.parsed, **kwargs)
-    
-    def files_iter(self, f, *args, **kwargs):
-        return struct_iter(self.parsed, f, *args, **kwargs)
-    
-    def files_list(self, name_only=True, **kwargs):
-        return struct_list(self.parsed, name_only=name_only, **kwargs)
-    
-    def get_class(self, class_name):
-        return self.files_search(obj='class', name=class_name)
-    
-    @property
-    def classes_list(self):
-        """ List of classes
-        
-        Returns
-        -------
-        - list : list of class dictionaries
-        """
-        return self.files_list(obj='class')
-        
-    # ----------------------------------------------------------------------------------------------------
-    # Add a source file
-
-    def load_source(self, key, text):
-        """ Add a source code.
-
-        The source code is parsed and the resulting dict is stored in the <!#parsed> dict.
-
-        Arguments
-        ---------
-        - key (str) : source file key
-        - text (str) : the source code
-
-        Returns
-        -------
-        - Section
-        """
-        
-        if key in self.files:
-            raise Exception(f"Impossible to add the source keyed by '{key}': key already exists in {list(self.files.keys())}")
-
-        self.files[key] = parse_file_source(text)
-        
-    
-    # ----------------------------------------------------------------------------------------------------
-    # Load source files from a folder
-
-    def load_file(self, file_key, file_name, verbose=False):
-        """ Enrich the reference doc by parsing source files.
-
-        All the files with `.py` extension are parsed.
-
-        Arguments
-        ---------
-        - file_key (str) : file key in <#files>
-        - file_name (str) : file path
-        """
-        
-        file_key = str(file_key)
-
-        self.load_source(file_key, Path(file_name).read_text())
-        if verbose:
-            print(f"load {Path(file_name).name} : ", self.file_info(file_key))
-        
-
-    # ----------------------------------------------------------------------------------------------------
-    # Load source files from a folder
-
-    def load_folder(self, folder, verbose=True):
-        """ Enrich the reference doc by parsing source files.
-        
-        > [!CAUTION]
-        > if <#source_folder> is not None, folder is relative to it
-
-        All the files with `.py` extension are parsed.
-
-        Arguments
-        ---------
-        - folder (str) : absolute folder or folder relative to <#source_folder> if not None
-
-        Returns
-        -------
-        - self
-        """
-        
-        if self.source_folder is None:
-            abs_folder = Path(folder)
-        else:
-            abs_folder = self.source_folder / folder
-
-        if not abs_folder.exists():
-            raise Exception(f"Folder {folder} doesn't exist")
-        if not abs_folder.is_dir():
-            raise Exception(f"Path {folder} is not a folder")
-
-        folder_key = Path(folder)
-        for fpath in abs_folder.iterdir():
-            if not fpath.match("*.py"):
-                continue
-            
-            self.load_file(folder_key / fpath.stem, fpath, verbose=verbose)
-
-        return self
-    
-    def file_info(self, key):
-        
-        file = self.files.get(key)
-        
-        if file is None:
-            return f"File '{key}' not found in {list(self.files.keys())}"
-        
-        else:
-            nclasses = len([s for s in file['subs'].values() if s['obj'] == 'class'])
-            nfuncs   = len([s for s in file['subs'].values() if s['obj'] == 'function'])
-            return f"File '{key}' : {nclasses} classes, {nfuncs} functions"
-    
-    def files_content(self):
-        return f"{len(self.files)} files:\n" + "\n".join([self.file_info(key) for key in self.files])
-    
-    # ----------------------------------------------------------------------------------------------------
-    # Hidden inheritance
-    
-    def hide_classes(self, classes, verbose=True):
-        """ Undocument classes
-        
-        Properties and methods of undocumented classes are capture by inherited classes
-        """
-        
-        if isinstance(classes, str):
-            classes = [classes]
-        
-        for base_name in classes:
-            base_ = self.files_search(obj='class', name=base_name)
-            if base_ is None:
-                raise Exception(f"Hide classes: class '{base_name}' not found")
-                
-            base_['hidden'] = True
-                
-            def hide(class_):
-                if base_name in class_['inherits']:
-                    if verbose:
-                        print(f"Hide '{base_name}' inheritance in '{class_['name']}'")
-                    capture_inheritance(class_, base_, remove=True)
-                
-            self.files_iter(hide, obj='class')
-    
 
     # =============================================================================================================================
     # Hook function
@@ -1308,31 +1148,48 @@ class Doc(Section):
                     display = section_title.strip()
             else:
                 display = display.strip()
-        
+                
             # ----------------------------------------------------------------------------------------------------
-            # File
+            # Only page title or section title
+            
+            if page_title is None or section_title is None:
                 
-            path = ""
-            target_page = section.page
+                single_title = page_title if section_title is None else section_title
                 
-            if page_title is not None:
-                target_page = self.get_page(page_title.strip())
-                if target_page is None:
-                    display = f"LINK ERROR: page '{page_title}' not found"
-                else:
-                    path = target_page.file_name
-        
-            # ----------------------------------------------------------------------------------------------------
-            # Token
+                if single_title is None:
+                    return m.group(0)
                 
-            if target_page is not None and section_title is not None:
-                target_section = target_page.get_section(section_title.strip())
+                # ----- Let's try in the page
+                
+                target_page = section.page
+                target_section = target_page.get_section(single_title.strip())
+                
+                # ----- Not found, let's try in the whole doc
+                
                 if target_section is None:
-                    display = f"LINK ERROR: section '{section_title}' not found"
-                else:
-                    path += f"#{target_section.anchor}"
+                    target_section = self.get_section(single_title.strip())
+                    if target_section is None:
+                        return f"[LINK ERROR: section '{single_title}' not found]()"
+                    else:
+                        return f"[{display}]({target_page.file_name}#{target_section.anchor})"
                 
-            return f"[{display}]({path})"
+                # ----- Found : intra link only
+                
+                else:                
+                    return f"[{display}](#{target_section.anchor})"
+                
+            # ----------------------------------------------------------------------------------------------------
+            # We have both, let's respect that !
+            
+            target_page = self.get_page(page_title.strip())
+            if target_page is None:
+                return f"[LINK ERROR: page '{page_title}' not found]()"
+            
+            target_section = target_page.get_section(section_title.strip())
+            if target_section is None:
+                return f"[LINK ERROR: section '{single_title}' not found]({target_page.file_name})"
+            else:
+                return f"[{display}]({target_page.file_name}#{target_section.anchor})"
         
         # ----- Main
         
@@ -1436,79 +1293,61 @@ class Doc(Section):
         self.iteration(solve_section)
         
     # =============================================================================================================================
-    # Put items in the documentation to build
-    
-    def document_folder(self, folder_key):
-        
-        title = Path(folder_key).stem
-        
-        init_dict = self.files.get(str(Path(folder_key) / '__init__'))
-        
-        if init_dict is None:
-            comment = None
-        else:
-            comment = init_dict['comment']
-            
-        if title == "":
-            # Root folder
-            module = self
-            if module.comment is None:
-                module.comment = comment
-            else:
-                module.comment += '\n\n' + comment
-                
-                
-        else:
-            module = self.add_module(title, comment, in_toc=True)
-        
-        for key, file_dict in self.files.items():
-            if str(Path(key).parents[0]) == folder_key:
-                module.add_file_dict(file_dict)
-        
-        
-    # =============================================================================================================================
     # Create self documentation
     
     @staticmethod
-    def docgen_documentation():
-        
-        # -----------------------------------------------------------------------------------------------------------------------------
-        # Target folder as sub folder 'doc' in the current folder
-        
-        folder = Path(__file__).parents[0]
-        doc_folder = folder / 'doc'
-        
-        # -----------------------------------------------------------------------------------------------------------------------------
-        # Initialize the documentation
-            
-        doc = Documentation("Documentation Generator", doc_folder)
-        
-        # -----------------------------------------------------------------------------------------------------------------------------
-        # Load the source files
-        
-        doc.load_folder('', verbose=True)
-        file = doc.files_search(name='Documentation')
-        pprint(file.get('comment'))
-        
-        # -----------------------------------------------------------------------------------------------------------------------------
-        # Adding and twisting
+    def demo():
         
         
-        # -----------------------------------------------------------------------------------------------------------------------------
-        # Structure
+        doc = Doc("Demo documentation", None)
+        doc.write("Some introduction")
+
+        section1 = doc.add_section("A simple section", in_toc=True)
+        section1.write("This is simple a section")
+        section1.write_source("# With pyton sample\na = 123")
         
-        doc.document_folder('.')
+        section2 = doc.add_section("Another section", in_toc=True)
+        section2.write("Another simple a section")
+        section2.add_section("HOMONYM", "Shared named")
+
+        section3 = doc.add_section("External pages", in_toc=False)
+        page1 = section3.add_page("Page 1", "Some content 1", in_toc=True)
+        page2 = section3.add_page("Page 2", "Some content 2", in_toc=True)
+        page3 = section3.add_page("Page 3", "Some content 3", in_toc=True)
+        s31 = page2.add_section("Section 1 in page 3", "Some content")
+        s32 = page2.add_section("Section 2 in page 3", "Somme content")
+        s33 = page2.add_section("HOMONYM", "Shared named")
+        
+        print(page1.is_page)
+        
+        links = doc.add_section("Let try the links")
+        links.write("- index : <!Demo documentation>\n")
+        links.write("- intra section1 : <#A simple section>\n")
+        links.write("- intra section2 : <#Another section>\n")
+        
+        links.write(f"- page 1 : <!{page1.title}>\n")
+        links.write(f"- page 2 : <!{page2.title}>\n")
+        links.write(f"- page 3 : <!{page3.title}>\n")
+        
+        links.write(f"- section 1 on page 3 : <!{s31.title}>\n")
+        links.write(f"- section 2 on page 3 : <#{s32.title}>\n")
+        links.write(f" - Homonym intra: <#HOMONYM>")
+        links.write(f" - Homonym intra: <!HOMONYM>")
+        links.write(f" - Homonym page 2: <!{page2.title}#HOMONYM>")
+        
+        # -----
         
         doc.solve_hooks()
+        files = doc.get_documentation(False) 
         
-        # -----------------------------------------------------------------------------------------------------------------------------
-        # Write
-        
-        #doc.dump()
-        
-        #doc.print()
-        
-        doc.get_documentation()
+        for k, v in files.items():
+            print()
+            print(k)
+            print("-"*80)
+            pprint(v)
+            
+        #print(list(files.keys()))
+        #pprint()
         
         
         
@@ -1548,11 +1387,4 @@ class Doc(Section):
         
         proj.get_documentation(True)
         
-    
-    
-        
-        
-        
-                    
-Documentation.docgen_documentation()
-                
+Doc.demo()                
