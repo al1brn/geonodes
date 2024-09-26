@@ -45,7 +45,7 @@ clamp(min=None, max=None, clamp_type='MINMAX')
 
 > **node** : [Clamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/clamp.html)
 
-[Clamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/clamp.html)
+
 
 #### Arguments:
 - **min** (_Float_ = None) : socket 'Min' (Min)
@@ -70,7 +70,7 @@ color_ramp(keep=None)
 
 > **node** : [Color Ramp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../interface/controls/templates/color_ramp.html)
 
-[Color Ramp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../interface/controls/templates/color_ramp.html)
+
 
 #### Arguments:
 - **keep** ( = None)
@@ -93,7 +93,7 @@ curve(factor=None, keep=None)
 
 > **node** : [Float Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/float_curve.html)
 
-[Float Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/float_curve.html)
+
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket 'Factor' (Factor)
@@ -117,7 +117,7 @@ equal(other)
 
 > **node** : [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
-[Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+
 
 #### Arguments:
 - **other** (_Float_) : socket 'B' (B)
@@ -140,7 +140,7 @@ greater_equal(other)
 
 > **node** : [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
-[Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+
 
 #### Arguments:
 - **other** (_Float_) : socket 'B' (B)
@@ -163,7 +163,7 @@ greater_than(other)
 
 > **node** : [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
-[Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+
 
 #### Arguments:
 - **other** (_Float_) : socket 'B' (B)
@@ -186,7 +186,7 @@ less_equal(other)
 
 > **node** : [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
-[Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+
 
 #### Arguments:
 - **other** (_Float_) : socket 'B' (B)
@@ -209,7 +209,7 @@ less_than(other)
 
 > **node** : [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
-[Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+
 
 #### Arguments:
 - **other** (_Float_) : socket 'B' (B)
@@ -232,7 +232,7 @@ map_range(from_min=None, from_max=None, to_min=None, to_max=None, clamp=None, in
 
 > **node** : [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
 
-[Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
+
 
 #### Arguments:
 - **from_min** (_Float_ = None) : socket 'From Min' (From Min)
@@ -260,7 +260,7 @@ map_range_linear(from_min=None, from_max=None, to_min=None, to_max=None, clamp=N
 
 > **node** : [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
 
-[Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
+
 
 #### Arguments:
 - **from_min** (_Float_ = None) : socket 'From Min' (From Min)
@@ -287,7 +287,7 @@ map_range_smooth(from_min=None, from_max=None, to_min=None, to_max=None, clamp=N
 
 > **node** : [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
 
-[Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
+
 
 #### Arguments:
 - **from_min** (_Float_ = None) : socket 'From Min' (From Min)
@@ -314,7 +314,7 @@ map_range_smoother(from_min=None, from_max=None, to_min=None, to_max=None, clamp
 
 > **node** : [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
 
-[Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
+
 
 #### Arguments:
 - **from_min** (_Float_ = None) : socket 'From Min' (From Min)
@@ -341,7 +341,7 @@ map_range_stepped(from_min=None, from_max=None, to_min=None, to_max=None, clamp=
 
 > **node** : [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
 
-[Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
+
 
 #### Arguments:
 - **from_min** (_Float_ = None) : socket 'From Min' (From Min)
@@ -368,7 +368,7 @@ mix(factor=None, other=None, clamp_factor=None)
 
 > **node** : [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
-[Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket 'Factor' (Factor_Float)
@@ -393,7 +393,7 @@ Named(name)
 
 > **node** : [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
-[Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
+
 
 'Named' is a synonym of 'NamedAttribute'
 
@@ -435,7 +435,7 @@ NamedAttribute(name)
 
 > **node** : [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
-[Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
+
 
 'Named' is a synonym of 'NamedAttribute'
 
@@ -477,7 +477,7 @@ not_equal(other)
 
 > **node** : [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
-[Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+
 
 #### Arguments:
 - **other** (_Float_) : socket 'B' (B)
@@ -500,7 +500,7 @@ to_string(decimals=None)
 
 > **node** : [Value to String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/value_to_string.html)
 
-[Value to String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/value_to_string.html)
+
 
 #### Arguments:
 - **decimals** (_Integer_ = None) : socket 'Decimals' (Decimals)

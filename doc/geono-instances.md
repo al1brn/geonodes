@@ -46,7 +46,7 @@ FromGeometry(*geometries)
 
 > **node** : [Geometry to Instance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_to_instance.html)
 
-[Geometry to Instance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_to_instance.html)
+
 
 #### Arguments:
 - **geometries** (_Geometry_) : socket 'Geometry' (Geometry)
@@ -69,7 +69,7 @@ FromString(string=None, size=None, character_spacing=None, word_spacing=None, li
 
 > **node** : [String to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/string_to_curves.html)
 
-[String to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/string_to_curves.html)
+
 
 #### Arguments:
 - **string** (_String_ = None) : socket 'String' (String)
@@ -102,7 +102,7 @@ on_points(points, pick_instance=None, instance_index=None, rotation=None, scale=
 
 > **node** : [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html)
 
-[Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html)
+
 
 #### Arguments:
 - **points**
@@ -129,7 +129,7 @@ realize(realize_all=None, depth=None)
 
 > **node** : [Realize Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/realize_instances.html)
 
-[Realize Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/realize_instances.html)
+
 
 #### Arguments:
 - **realize_all** (_Boolean_ = None) : socket 'Realize All' (Realize All)
@@ -153,7 +153,7 @@ rotate(rotation=None, pivot_point=None, local_space=None)
 
 > **node** : [Rotate Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/rotate_instances.html)
 
-[Rotate Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/rotate_instances.html)
+
 
 #### Arguments:
 - **rotation** (_Rotation_ = None) : socket 'Rotation' (Rotation)
@@ -178,7 +178,7 @@ scale(scale=None, center=None, local_space=None)
 
 > **node** : [Scale Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/scale_instances.html)
 
-[Scale Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/scale_instances.html)
+
 
 #### Arguments:
 - **scale** (_Vector_ = None) : socket 'Scale' (Scale)
@@ -203,7 +203,7 @@ to_points(position=None, radius=None)
 
 > **node** : [Instances to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instances_to_points.html)
 
-[Instances to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instances_to_points.html)
+
 
 #### Arguments:
 - **position** (_Vector_ = None) : socket 'Position' (Position)
@@ -227,7 +227,7 @@ translate(translation=None, local_space=None)
 
 > **node** : [Translate Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/translate_instances.html)
 
-[Translate Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/translate_instances.html)
+
 
 #### Arguments:
 - **translation** (_Vector_ = None) : socket 'Translation' (Translation)
