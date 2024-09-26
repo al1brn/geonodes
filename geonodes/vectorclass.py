@@ -5,6 +5,8 @@ Created on 2024/07/26
 
 @author: alain
 
+$ DOC transparent
+
 -----------------------------------------------------
 geonodes module
 - Scripting Geometry Nodes

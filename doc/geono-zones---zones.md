@@ -50,18 +50,6 @@ updates
 ## Content
 
 - [Simulation](geono-zones-simulation.md#simulation)
-- [utils](geono-zones-utils---utils.md#utils)
-  - [constants](geono-zones-utils-const---constants.md#constants)
-  - [del_tree](geono-zones-utils---utils.md#del_tree)
-  - [get_tree](geono-zones-utils---utils.md#get_tree)
-
-## Modules
-
-
-
-- [utils](geono-zones-utils---utils.md#utils)
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [zones](geono-zones---zones.md#zones) :black_small_square: [Content](geono-zones---zones.md#content) :black_small_square: [zones](geono-zones---zones.md#zones)</sub>
 
 ## Classes
 
