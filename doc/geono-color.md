@@ -8,11 +8,11 @@ Color(value=(0.0, 0.0, 0.0, 1.0), name=None, tip=None)
 
 Socket of type COLOR (RGBA)
 
-> **Node** : [RGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeRGB.html#bpy.types.ShaderNodeRGB)
+ERROR: Node 'RGB' not found
 
-> **Node** : [Combine Color](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineColor.html#bpy.types.FunctionNodeCombineColor)
+ERROR: Node 'Combine Color' not found
 
-> **Node** : [Color](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputColor.html#bpy.types.FunctionNodeInputColor)
+[Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/color/index.html)
 
 #### Arguments:
 - **value** (_tuple or Socket_ = (0.0, 0.0, 0.0, 1.0)) : initial value
@@ -55,7 +55,7 @@ Socket of type COLOR (RGBA)
 
 Alpha component
 
-> **Node** : [Separate Color](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html#bpy.types.FunctionNodeSeparateColor)
+ERROR: Node 'Separate Color' not found
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Properties](geono-color.md#properties)</sub>
 
@@ -66,7 +66,7 @@ Alpha component
 
 Blue component
 
-> **Node** : [Separate Color](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html#bpy.types.FunctionNodeSeparateColor)
+ERROR: Node 'Separate Color' not found
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Properties](geono-color.md#properties)</sub>
 
@@ -77,7 +77,7 @@ Blue component
 
 Green component
 
-> **Node** : [Separate Color](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html#bpy.types.FunctionNodeSeparateColor)
+ERROR: Node 'Separate Color' not found
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Properties](geono-color.md#properties)</sub>
 
@@ -88,7 +88,7 @@ Green component
 
 Hue component
 
-> **Node** : [Separate Color](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html#bpy.types.FunctionNodeSeparateColor)
+ERROR: Node 'Separate Color' not found
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Properties](geono-color.md#properties)</sub>
 
@@ -99,7 +99,7 @@ Hue component
 
 Lightness component
 
-> **Node** : [Separate Color](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html#bpy.types.FunctionNodeSeparateColor)
+ERROR: Node 'Separate Color' not found
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Properties](geono-color.md#properties)</sub>
 
@@ -110,7 +110,7 @@ Lightness component
 
 Red component
 
-> **Node** : [Separate Color](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html#bpy.types.FunctionNodeSeparateColor)
+ERROR: Node 'Separate Color' not found
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Properties](geono-color.md#properties)</sub>
 
@@ -121,7 +121,7 @@ Red component
 
 Saturation component
 
-> **Node** : [Separate Color](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html#bpy.types.FunctionNodeSeparateColor)
+ERROR: Node 'Separate Color' not found
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Properties](geono-color.md#properties)</sub>
 
@@ -132,7 +132,7 @@ Saturation component
 
 Conversion to black and white.
 
-> **Node** : [RGB to BW](https://docs.blender.org/api/current/bpy.types.ShaderNodeRGBToBW.html#bpy.types.ShaderNodeRGBToBW)
+ERROR: Node 'RGB to BW' not found
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Properties](geono-color.md#properties)</sub>
 
@@ -143,7 +143,7 @@ Conversion to black and white.
 
 Value component
 
-> **Node** : [Separate Color](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html#bpy.types.FunctionNodeSeparateColor)
+ERROR: Node 'Separate Color' not found
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Properties](geono-color.md#properties)</sub>
 
@@ -162,7 +162,7 @@ add(factor=None, other=None, clamp_result=False, clamp_factor=True)
 
 Mix with another color : ADD
 
-> **Node** : [Mix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html#bpy.types.ShaderNodeMix)
+[Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../compositing/types/color/mix/index.html)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -188,7 +188,7 @@ ambient_occlusion(distance=None, normal=None, inside=False, only_local=False, sa
 
 Shader node Ambient Occlusion.
 
-> **Node** : [Color Attribute](https://docs.blender.org/api/current/bpy.types.ShaderNodeVertexColor.html#bpy.types.ShaderNodeVertexColor)
+ERROR: Node 'Color Attribute' not found
 
 #### Arguments:
 - **distance** (_Float_ = None) : socket
@@ -215,7 +215,7 @@ Attribute(name)
 
 Shader node Color Attribute.
 
-> **Node** : [Color Attribute](https://docs.blender.org/api/current/bpy.types.ShaderNodeVertexColor.html#bpy.types.ShaderNodeVertexColor)
+ERROR: Node 'Color Attribute' not found
 
 #### Arguments:
 - **name** (_str_)
@@ -238,7 +238,7 @@ Blackbody(temperature=None)
 
 Constructor : Black body.
 
-> **Node** : [Blackbody](https://docs.blender.org/api/current/bpy.types.ShaderNodeBlackbody.html#bpy.types.ShaderNodeBlackbody)
+ERROR: Node 'Blackbody' not found
 
 #### Arguments:
 - **temperature** (_Float_ = None) : socket
@@ -261,7 +261,7 @@ brighter(other)
 
 Compare with another Color : BRIGHTER
 
-> **Node** : [Compare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html#bpy.types.FunctionNodeCompare)
+ERROR: Node 'Compare' not found
 
 #### Arguments:
 - **other** (_Color_) : socket
@@ -284,7 +284,7 @@ brightness_contrast(bright=None, contrast=None)
 
 Brightness and contrast.
 
-> **Node** : [Brightness/Contrast](https://docs.blender.org/api/current/bpy.types.ShaderNodeBrightContrast.html#bpy.types.ShaderNodeBrightContrast)
+ERROR: Node 'Brightness/Contrast' not found
 
 #### Arguments:
 - **bright** (_Float_ = None) : socket
@@ -308,7 +308,7 @@ burn(factor=None, other=None, clamp_result=False, clamp_factor=True)
 
 Mix with another color : BURN
 
-> **Node** : [Mix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html#bpy.types.ShaderNodeMix)
+[Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../compositing/types/color/mix/index.html)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -334,7 +334,7 @@ ColorRamp(fac=None, keep=None)
 
 Constructor : Color Ramp
 
-> **Node** : [Color Ramp](https://docs.blender.org/api/current/bpy.types.ShaderNodeValToRGB.html#bpy.types.ShaderNodeValToRGB)
+ERROR: Node 'Color Ramp' not found
 
 #### Arguments:
 - **fac** (_Float_ = None)
@@ -358,7 +358,7 @@ Combine(a=0, b=0, c=0, alpha=1, mode='RGB')
 
 Constructor : Combine Color
 
-> **Node** : [Combine Color](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineColor.html#bpy.types.FunctionNodeCombineColor)
+ERROR: Node 'Combine Color' not found
 
 #### Arguments:
 - **a** (_Float_ = 0) : depending on mode
@@ -385,7 +385,7 @@ CombineHSL(hue=0, saturation=0, lightness=0, alpha=1)
 
 Constructor : Combine Color from HSL
 
-> **Node** : [Combine Color](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineColor.html#bpy.types.FunctionNodeCombineColor)
+ERROR: Node 'Combine Color' not found
 
 #### Arguments:
 - **hue** (_Float_ = 0)
@@ -411,7 +411,7 @@ CombineHSV(hue=0, saturation=0, value=0, alpha=1)
 
 Constructor : Combine Color from HSV
 
-> **Node** : [Combine Color](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineColor.html#bpy.types.FunctionNodeCombineColor)
+ERROR: Node 'Combine Color' not found
 
 #### Arguments:
 - **hue** (_Float_ = 0)
@@ -437,7 +437,7 @@ CombineRGB(red=0, green=0, blue=0, alpha=1)
 
 Constructor : Combine Color from RGB
 
-> **Node** : [Combine Color](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineColor.html#bpy.types.FunctionNodeCombineColor)
+ERROR: Node 'Combine Color' not found
 
 #### Arguments:
 - **red** (_Float_ = 0)
@@ -463,7 +463,7 @@ curves(fac=None, keep=None)
 
 Color curves.
 
-> **Node** : [RGB Curves](https://docs.blender.org/api/current/bpy.types.ShaderNodeRGBCurve.html#bpy.types.ShaderNodeRGBCurve)
+ERROR: Node 'RGB Curves' not found
 
 #### Arguments:
 - **fac** (_Float_ = None) : socket
@@ -487,7 +487,7 @@ darken(factor=None, other=None, clamp_result=False, clamp_factor=True)
 
 Mix with another color : DARKEN
 
-> **Node** : [Mix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html#bpy.types.ShaderNodeMix)
+[Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../compositing/types/color/mix/index.html)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -513,7 +513,7 @@ darker(other)
 
 Compare with another Color : DARKER
 
-> **Node** : [Compare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html#bpy.types.FunctionNodeCompare)
+ERROR: Node 'Compare' not found
 
 #### Arguments:
 - **other** (_Color_) : socket
@@ -536,7 +536,7 @@ difference(factor=None, other=None, clamp_result=False, clamp_factor=True)
 
 Mix with another color : DIFFERENCE
 
-> **Node** : [Mix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html#bpy.types.ShaderNodeMix)
+[Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../compositing/types/color/mix/index.html)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -562,7 +562,7 @@ divide(factor=None, other=None, clamp_result=False, clamp_factor=True)
 
 Mix with another color : DIVIDE
 
-> **Node** : [Mix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html#bpy.types.ShaderNodeMix)
+[Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../compositing/types/color/mix/index.html)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -588,7 +588,7 @@ dodge(factor=None, other=None, clamp_result=False, clamp_factor=True)
 
 Mix with another color : DODGE
 
-> **Node** : [Mix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html#bpy.types.ShaderNodeMix)
+[Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../compositing/types/color/mix/index.html)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -614,7 +614,7 @@ equal(other, epsilon=None)
 
 Compare with another Color : EQUAL
 
-> **Node** : [Compare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html#bpy.types.FunctionNodeCompare)
+ERROR: Node 'Compare' not found
 
 #### Arguments:
 - **other** (_Color_) : socket
@@ -638,7 +638,7 @@ exclusion(factor=None, other=None, clamp_result=False, clamp_factor=True)
 
 Mix with another color : EXCLUSION
 
-> **Node** : [Mix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html#bpy.types.ShaderNodeMix)
+[Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../compositing/types/color/mix/index.html)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -664,7 +664,7 @@ FromShader(shader)
 
 Constructor : Shader to RGB.
 
-> **Node** : [Shader to RGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeShaderToRGB.html#bpy.types.ShaderNodeShaderToRGB)
+[Shader to RGB](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/converter/shader_to_rgb.html)
 
 #### Arguments:
 - **shader** (_Shader_) : socket
@@ -687,7 +687,7 @@ gamma(gamma=None)
 
 Gamma.
 
-> **Node** : [Gamma](https://docs.blender.org/api/current/bpy.types.ShaderNodeGamma.html#bpy.types.ShaderNodeGamma)
+ERROR: Node 'Gamma' not found
 
 #### Arguments:
 - **gamma** (_Float_ = None) : socket
@@ -710,7 +710,7 @@ hue_saturation_value(hue=None, saturation=None, value=None, fac=None)
 
 Hue / saturation / value.
 
-> **Node** : [Hue/Saturation/Value](https://docs.blender.org/api/current/bpy.types.ShaderNodeHueSaturation.html#bpy.types.ShaderNodeHueSaturation)
+ERROR: Node 'Hue/Saturation/Value' not found
 
 #### Arguments:
 - **hue** (_Float_ = None) : socket
@@ -736,7 +736,7 @@ invert(fac=None)
 
 Invert.
 
-> **Node** : [Invert Color](https://docs.blender.org/api/current/bpy.types.ShaderNodeInvert.html#bpy.types.ShaderNodeInvert)
+ERROR: Node 'Invert Color' not found
 
 #### Arguments:
 - **fac** (_Float_ = None) : socket
@@ -759,7 +759,7 @@ lighten(factor=None, other=None, clamp_result=False, clamp_factor=True)
 
 Mix with another color : LIGHTEN
 
-> **Node** : [Mix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html#bpy.types.ShaderNodeMix)
+[Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../compositing/types/color/mix/index.html)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -785,7 +785,7 @@ linear_light(factor=None, other=None, clamp_result=False, clamp_factor=True)
 
 Mix with another color : LINEAR LIGHT
 
-> **Node** : [Mix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html#bpy.types.ShaderNodeMix)
+[Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../compositing/types/color/mix/index.html)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -811,7 +811,7 @@ mix(factor=None, other=None, clamp_result=False, clamp_factor=True, blend_type='
 
 Mix with another color
 
-> **Node** : [Mix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html#bpy.types.ShaderNodeMix)
+[Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../compositing/types/color/mix/index.html)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -838,7 +838,7 @@ mix_color(factor=None, other=None, clamp_result=False, clamp_factor=True)
 
 Mix with another color : COLOR
 
-> **Node** : [Mix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html#bpy.types.ShaderNodeMix)
+[Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../compositing/types/color/mix/index.html)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -864,7 +864,7 @@ mix_hue(factor=None, other=None, clamp_result=False, clamp_factor=True)
 
 Mix with another color : HUE
 
-> **Node** : [Mix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html#bpy.types.ShaderNodeMix)
+[Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../compositing/types/color/mix/index.html)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -890,7 +890,7 @@ mix_saturation(factor=None, other=None, clamp_result=False, clamp_factor=True)
 
 Mix with another color : SATURATION
 
-> **Node** : [Mix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html#bpy.types.ShaderNodeMix)
+[Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../compositing/types/color/mix/index.html)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -916,7 +916,7 @@ mix_value(factor=None, other=None, clamp_result=False, clamp_factor=True)
 
 Mix with another color : VALUE
 
-> **Node** : [Mix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html#bpy.types.ShaderNodeMix)
+[Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../compositing/types/color/mix/index.html)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -942,7 +942,7 @@ multiply(factor=None, other=None, clamp_result=False, clamp_factor=True)
 
 Mix with another color : MULTIPLY
 
-> **Node** : [Mix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html#bpy.types.ShaderNodeMix)
+[Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../compositing/types/color/mix/index.html)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -968,7 +968,7 @@ normal_map(strength=None, space='TANGENT', uv_map='')
 
 Normal map.
 
-> **Node** : [Normal Map](https://docs.blender.org/api/current/bpy.types.ShaderNodeNormalMap.html#bpy.types.ShaderNodeNormalMap)
+ERROR: Node 'Normal Map' not found
 
 #### Arguments:
 - **strength** (_Float_ = None) : socket
@@ -993,7 +993,7 @@ not_equal(other, epsilon=None)
 
 Compare with another Color : NOT EQUAL
 
-> **Node** : [Compare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html#bpy.types.FunctionNodeCompare)
+ERROR: Node 'Compare' not found
 
 #### Arguments:
 - **other** (_Color_) : socket
@@ -1017,7 +1017,7 @@ overlay(factor=None, other=None, clamp_result=False, clamp_factor=True)
 
 Mix with another color : OVERLAY
 
-> **Node** : [Mix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html#bpy.types.ShaderNodeMix)
+[Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../compositing/types/color/mix/index.html)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -1043,7 +1043,7 @@ screen(factor=None, other=None, clamp_result=False, clamp_factor=True)
 
 Mix with another color : SCREEN
 
-> **Node** : [Mix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html#bpy.types.ShaderNodeMix)
+[Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../compositing/types/color/mix/index.html)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -1069,7 +1069,7 @@ soft_light(factor=None, other=None, clamp_result=False, clamp_factor=True)
 
 Mix with another color : SOFT LIGHT
 
-> **Node** : [Mix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html#bpy.types.ShaderNodeMix)
+[Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../compositing/types/color/mix/index.html)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -1095,7 +1095,7 @@ subtract(factor=None, other=None, clamp_result=False, clamp_factor=True)
 
 Mix with another color : SUBTRACT
 
-> **Node** : [Mix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html#bpy.types.ShaderNodeMix)
+[Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../compositing/types/color/mix/index.html)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -1121,7 +1121,7 @@ vector_displacement(midlevel=None, scale=None, space='TANGENT')
 
 Normal map.
 
-> **Node** : [Normal Map](https://docs.blender.org/api/current/bpy.types.ShaderNodeNormalMap.html#bpy.types.ShaderNodeNormalMap)
+ERROR: Node 'Normal Map' not found
 
 #### Arguments:
 - **midlevel** (_Float_ = None) : socket
@@ -1146,7 +1146,7 @@ Wavelength(wavelength=None)
 
 Constructor : Wave Length.
 
-> **Node** : [Wavelength](https://docs.blender.org/api/current/bpy.types.ShaderNodeWavelength.html#bpy.types.ShaderNodeWavelength)
+ERROR: Node 'Wavelength' not found
 
 #### Arguments:
 - **wavelength** (_Float_ = None) : socket

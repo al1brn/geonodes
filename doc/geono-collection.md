@@ -35,7 +35,7 @@ Class Collection data socket
 Info(collection=None, separate_children=None, reset_children=None, original=True)
 ```
 
-> **Node** : [Collection Info](https://docs.blender.org/api/current/bpy.types.GeometryNodeCollectionInfo.html#bpy.types.GeometryNodeCollectionInfo)
+ERROR: Node 'Collection Info' not found
 
 #### Arguments:
 - **collection** (_Collection_ = None) : socket 'Collection' (Collection)
@@ -59,7 +59,7 @@ Info(collection=None, separate_children=None, reset_children=None, original=True
 info(separate_children=None, reset_children=None, original=True)
 ```
 
-> **Node** : [Collection Info](https://docs.blender.org/api/current/bpy.types.GeometryNodeCollectionInfo.html#bpy.types.GeometryNodeCollectionInfo)
+ERROR: Node 'Collection Info' not found
 
 #### Arguments:
 - **separate_children** (_Boolean_ = None) : socket 'Separate Children' (Separate Children)

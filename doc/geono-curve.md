@@ -47,9 +47,9 @@ When a Group Input socket is created, default name 'Geometry' is used if name ar
 > _type_: **Float**
 >
 
-> **Node** : [Curve Length](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveLength.html#bpy.types.GeometryNodeCurveLength)
+ERROR: Node 'Curve Length' not found
 
-> **Node** : [Curve Length](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveLength.html#bpy.types.GeometryNodeCurveLength)
+ERROR: Node 'Curve Length' not found
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-curve.md#curve) :black_small_square: [Content](geono-curve.md#content) :black_small_square: [Properties](geono-curve.md#properties)</sub>
 
@@ -58,9 +58,9 @@ When a Group Input socket is created, default name 'Geometry' is used if name ar
 > _type_: **Float**
 >
 
-> **Node** : [Radius](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputRadius.html#bpy.types.GeometryNodeInputRadius)
+ERROR: Node 'Radius' not found
 
-> **Node** : [Radius](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputRadius.html#bpy.types.GeometryNodeInputRadius)
+ERROR: Node 'Radius' not found
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-curve.md#curve) :black_small_square: [Content](geono-curve.md#content) :black_small_square: [Properties](geono-curve.md#properties)</sub>
 
@@ -69,9 +69,9 @@ When a Group Input socket is created, default name 'Geometry' is used if name ar
 > _type_: **Float**
 >
 
-> **Node** : [Curve Tilt](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputCurveTilt.html#bpy.types.GeometryNodeInputCurveTilt)
+ERROR: Node 'Curve Tilt' not found
 
-> **Node** : [Curve Tilt](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputCurveTilt.html#bpy.types.GeometryNodeInputCurveTilt)
+ERROR: Node 'Curve Tilt' not found
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-curve.md#curve) :black_small_square: [Content](geono-curve.md#content) :black_small_square: [Properties](geono-curve.md#properties)</sub>
 
@@ -88,9 +88,9 @@ When a Group Input socket is created, default name 'Geometry' is used if name ar
 Arc(resolution=None, radius=None, start_angle=None, sweep_angle=None, start=None, middle=None, end=None, offset_angle=None, connect_center=None, invert_arc=None)
 ```
 
-> **Node** : [Arc](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveArc.html#bpy.types.GeometryNodeCurveArc)
+ERROR: Node 'Arc' not found
 
-> **Node** : [Arc](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveArc.html#bpy.types.GeometryNodeCurveArc)
+ERROR: Node 'Arc' not found
 
 'mode' is set to 'POINTS' if one in (start, middle, end, offset_angle) is not None, 'RADIUS' otherwise.
 
@@ -124,9 +124,9 @@ Arc(resolution=None, radius=None, start_angle=None, sweep_angle=None, start=None
 BezierSegment(resolution=None, start=None, start_handle=None, end_handle=None, end=None, mode='POSITION')
 ```
 
-> **Node** : [Bézier Segment](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveBezierSegment.html#bpy.types.GeometryNodeCurvePrimitiveBezierSegment)
+ERROR: Node 'Bézier Segment' not found
 
-> **Node** : [Bézier Segment](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveBezierSegment.html#bpy.types.GeometryNodeCurvePrimitiveBezierSegment)
+ERROR: Node 'Bézier Segment' not found
 
 #### Arguments:
 - **resolution** (_Integer_ = None) : socket 'Resolution' (Resolution)
@@ -152,9 +152,9 @@ BezierSegment(resolution=None, start=None, start_handle=None, end_handle=None, e
 Circle(resolution=None, radius=None, point_1=None, point_2=None, point_3=None)
 ```
 
-> **Node** : [Curve Circle](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveCircle.html#bpy.types.GeometryNodeCurvePrimitiveCircle)
+ERROR: Node 'Curve Circle' not found
 
-> **Node** : [Curve Circle](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveCircle.html#bpy.types.GeometryNodeCurvePrimitiveCircle)
+ERROR: Node 'Curve Circle' not found
 
 'mode' is set to 'POINTS' if one in (point_1, point_2, point_) is not None, 'RADIUS' otherwise
 
@@ -183,9 +183,9 @@ Circle(resolution=None, radius=None, point_1=None, point_2=None, point_3=None)
 curve_of_point(point_index=None)
 ```
 
-> **Node** : [Curve of Point](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveOfPoint.html#bpy.types.GeometryNodeCurveOfPoint)
+ERROR: Node 'Curve of Point' not found
 
-> **Node** : [Curve of Point](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveOfPoint.html#bpy.types.GeometryNodeCurveOfPoint)
+ERROR: Node 'Curve of Point' not found
 
 #### Arguments:
 - **point_index** (_Integer_ = None) : socket 'Point Index' (Point Index)
@@ -206,9 +206,9 @@ curve_of_point(point_index=None)
 deform_on_surface()
 ```
 
-> **Node** : [Deform Curves on Surface](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeformCurvesOnSurface.html#bpy.types.GeometryNodeDeformCurvesOnSurface)
+ERROR: Node 'Deform Curves on Surface' not found
 
-> **Node** : [Deform Curves on Surface](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeformCurvesOnSurface.html#bpy.types.GeometryNodeDeformCurvesOnSurface)
+ERROR: Node 'Deform Curves on Surface' not found
 
 #### Returns:
 - **Curve** :
@@ -224,9 +224,9 @@ deform_on_surface()
 endpoint_selection(start_size=None, end_size=None)
 ```
 
-> **Node** : [Endpoint Selection](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveEndpointSelection.html#bpy.types.GeometryNodeCurveEndpointSelection)
+ERROR: Node 'Endpoint Selection' not found
 
-> **Node** : [Endpoint Selection](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveEndpointSelection.html#bpy.types.GeometryNodeCurveEndpointSelection)
+ERROR: Node 'Endpoint Selection' not found
 
 #### Arguments:
 - **start_size** (_Integer_ = None) : socket 'Start Size' (Start Size)
@@ -248,9 +248,9 @@ endpoint_selection(start_size=None, end_size=None)
 fill(group_id=None, mode='TRIANGLES')
 ```
 
-> **Node** : [Fill Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeFillCurve.html#bpy.types.GeometryNodeFillCurve)
+ERROR: Node 'Fill Curve' not found
 
-> **Node** : [Fill Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeFillCurve.html#bpy.types.GeometryNodeFillCurve)
+ERROR: Node 'Fill Curve' not found
 
 #### Arguments:
 - **group_id** (_Integer_ = None) : socket 'Group ID' (Group ID)
@@ -272,9 +272,9 @@ fill(group_id=None, mode='TRIANGLES')
 fillet(radius=None, limit_radius=None, count=None, mode='BEZIER')
 ```
 
-> **Node** : [Fillet Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeFilletCurve.html#bpy.types.GeometryNodeFilletCurve)
+ERROR: Node 'Fillet Curve' not found
 
-> **Node** : [Fillet Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeFilletCurve.html#bpy.types.GeometryNodeFilletCurve)
+ERROR: Node 'Fillet Curve' not found
 
 #### Arguments:
 - **radius** (_Float_ = None) : socket 'Radius' (Radius)
@@ -298,9 +298,9 @@ fillet(radius=None, limit_radius=None, count=None, mode='BEZIER')
 FromEdgePaths(mesh, next_vertex_index=None)
 ```
 
-> **Node** : [Edge Paths to Curves](https://docs.blender.org/api/current/bpy.types.GeometryNodeEdgePathsToCurves.html#bpy.types.GeometryNodeEdgePathsToCurves)
+ERROR: Node 'Edge Paths to Curves' not found
 
-> **Node** : [Edge Paths to Curves](https://docs.blender.org/api/current/bpy.types.GeometryNodeEdgePathsToCurves.html#bpy.types.GeometryNodeEdgePathsToCurves)
+ERROR: Node 'Edge Paths to Curves' not found
 
 #### Arguments:
 - **mesh** (_Geometry_) : socket 'Mesh' (Mesh)
@@ -322,9 +322,9 @@ FromEdgePaths(mesh, next_vertex_index=None)
 FromMesh(mesh)
 ```
 
-> **Node** : [Mesh to Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToCurve.html#bpy.types.GeometryNodeMeshToCurve)
+ERROR: Node 'Mesh to Curve' not found
 
-> **Node** : [Mesh to Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToCurve.html#bpy.types.GeometryNodeMeshToCurve)
+ERROR: Node 'Mesh to Curve' not found
 
 #### Arguments:
 - **mesh** (_Geometry_) : socket 'Mesh' (Mesh)
@@ -345,9 +345,9 @@ FromMesh(mesh)
 FromPoints(points, curve_group_id=None, weight=None)
 ```
 
-> **Node** : [Points to Curves](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToCurves.html#bpy.types.GeometryNodePointsToCurves)
+ERROR: Node 'Points to Curves' not found
 
-> **Node** : [Points to Curves](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToCurves.html#bpy.types.GeometryNodePointsToCurves)
+ERROR: Node 'Points to Curves' not found
 
 #### Arguments:
 - **points** (_Geometry_) : socket 'Points' (Points)
@@ -370,9 +370,9 @@ FromPoints(points, curve_group_id=None, weight=None)
 interpolate(guide_up=None, guide_group_id=None, points=None, point_up=None, point_group_id=None, max_neighbors=None)
 ```
 
-> **Node** : [Interpolate Curves](https://docs.blender.org/api/current/bpy.types.GeometryNodeInterpolateCurves.html#bpy.types.GeometryNodeInterpolateCurves)
+ERROR: Node 'Interpolate Curves' not found
 
-> **Node** : [Interpolate Curves](https://docs.blender.org/api/current/bpy.types.GeometryNodeInterpolateCurves.html#bpy.types.GeometryNodeInterpolateCurves)
+ERROR: Node 'Interpolate Curves' not found
 
 #### Arguments:
 - **guide_up** (_Vector_ = None) : socket 'Guide Up' (Guide Up)
@@ -398,9 +398,9 @@ interpolate(guide_up=None, guide_group_id=None, points=None, point_up=None, poin
 Kite(width=None, bottom_height=None, top_height=None)
 ```
 
-> **Node** : [Quadrilateral](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveQuadrilateral.html#bpy.types.GeometryNodeCurvePrimitiveQuadrilateral)
+ERROR: Node 'Quadrilateral' not found
 
-> **Node** : [Quadrilateral](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveQuadrilateral.html#bpy.types.GeometryNodeCurvePrimitiveQuadrilateral)
+ERROR: Node 'Quadrilateral' not found
 
 #### Arguments:
 - **width** (_Float_ = None) : socket 'Width' (Width)
@@ -423,9 +423,9 @@ Kite(width=None, bottom_height=None, top_height=None)
 Line(start=None, end=None, direction=None, length=None)
 ```
 
-> **Node** : [Curve Line](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveLine.html#bpy.types.GeometryNodeCurvePrimitiveLine)
+ERROR: Node 'Curve Line' not found
 
-> **Node** : [Curve Line](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveLine.html#bpy.types.GeometryNodeCurvePrimitiveLine)
+ERROR: Node 'Curve Line' not found
 
 'mode' is set to 'DIRECTION' if one in (direction, length) is not None, 'POINTS' otherwise.
 
@@ -453,9 +453,9 @@ Line(start=None, end=None, direction=None, length=None)
 offset_point_in_curve(point_index=None, offset=None)
 ```
 
-> **Node** : [Offset Point in Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeOffsetPointInCurve.html#bpy.types.GeometryNodeOffsetPointInCurve)
+ERROR: Node 'Offset Point in Curve' not found
 
-> **Node** : [Offset Point in Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeOffsetPointInCurve.html#bpy.types.GeometryNodeOffsetPointInCurve)
+ERROR: Node 'Offset Point in Curve' not found
 
 #### Arguments:
 - **point_index** (_Integer_ = None) : socket 'Point Index' (Point Index)
@@ -477,9 +477,9 @@ offset_point_in_curve(point_index=None, offset=None)
 Parallelogram(width=None, height=None, offset=None)
 ```
 
-> **Node** : [Quadrilateral](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveQuadrilateral.html#bpy.types.GeometryNodeCurvePrimitiveQuadrilateral)
+ERROR: Node 'Quadrilateral' not found
 
-> **Node** : [Quadrilateral](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveQuadrilateral.html#bpy.types.GeometryNodeCurvePrimitiveQuadrilateral)
+ERROR: Node 'Quadrilateral' not found
 
 #### Arguments:
 - **width** (_Float_ = None) : socket 'Width' (Width)
@@ -502,9 +502,9 @@ Parallelogram(width=None, height=None, offset=None)
 Points(point_1=None, point_2=None, point_3=None, point_4=None)
 ```
 
-> **Node** : [Quadrilateral](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveQuadrilateral.html#bpy.types.GeometryNodeCurvePrimitiveQuadrilateral)
+ERROR: Node 'Quadrilateral' not found
 
-> **Node** : [Quadrilateral](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveQuadrilateral.html#bpy.types.GeometryNodeCurvePrimitiveQuadrilateral)
+ERROR: Node 'Quadrilateral' not found
 
 #### Arguments:
 - **point_1** ( = None)
@@ -528,9 +528,9 @@ Points(point_1=None, point_2=None, point_3=None, point_4=None)
 points_of_curve(curve_index=None, weights=None, sort_index=None)
 ```
 
-> **Node** : [Points of Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsOfCurve.html#bpy.types.GeometryNodePointsOfCurve)
+ERROR: Node 'Points of Curve' not found
 
-> **Node** : [Points of Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsOfCurve.html#bpy.types.GeometryNodePointsOfCurve)
+ERROR: Node 'Points of Curve' not found
 
 #### Arguments:
 - **curve_index** (_Integer_ = None) : socket 'Curve Index' (Curve Index)
@@ -553,9 +553,9 @@ points_of_curve(curve_index=None, weights=None, sort_index=None)
 QuadraticBezier(resolution=None, start=None, middle=None, end=None)
 ```
 
-> **Node** : [Quadratic Bézier](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveQuadraticBezier.html#bpy.types.GeometryNodeCurveQuadraticBezier)
+ERROR: Node 'Quadratic Bézier' not found
 
-> **Node** : [Quadratic Bézier](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveQuadraticBezier.html#bpy.types.GeometryNodeCurveQuadraticBezier)
+ERROR: Node 'Quadratic Bézier' not found
 
 #### Arguments:
 - **resolution** (_Integer_ = None) : socket 'Resolution' (Resolution)
@@ -579,9 +579,9 @@ QuadraticBezier(resolution=None, start=None, middle=None, end=None)
 Quadrilateral(width=None, height=None)
 ```
 
-> **Node** : [Quadrilateral](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveQuadrilateral.html#bpy.types.GeometryNodeCurvePrimitiveQuadrilateral)
+ERROR: Node 'Quadrilateral' not found
 
-> **Node** : [Quadrilateral](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveQuadrilateral.html#bpy.types.GeometryNodeCurvePrimitiveQuadrilateral)
+ERROR: Node 'Quadrilateral' not found
 
 #### Arguments:
 - **width** (_Float_ = None) : socket 'Width' (Width)
@@ -603,9 +603,9 @@ Quadrilateral(width=None, height=None)
 Rectangle(width=None, height=None)
 ```
 
-> **Node** : [Quadrilateral](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveQuadrilateral.html#bpy.types.GeometryNodeCurvePrimitiveQuadrilateral)
+ERROR: Node 'Quadrilateral' not found
 
-> **Node** : [Quadrilateral](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveQuadrilateral.html#bpy.types.GeometryNodeCurvePrimitiveQuadrilateral)
+ERROR: Node 'Quadrilateral' not found
 
 #### Arguments:
 - **width** (_Float_ = None) : socket 'Width' (Width)
@@ -627,9 +627,9 @@ Rectangle(width=None, height=None)
 resample(count=None, length=None)
 ```
 
-> **Node** : [Resample Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeResampleCurve.html#bpy.types.GeometryNodeResampleCurve)
+ERROR: Node 'Resample Curve' not found
 
-> **Node** : [Resample Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeResampleCurve.html#bpy.types.GeometryNodeResampleCurve)
+ERROR: Node 'Resample Curve' not found
 
 Parameter 'mode'
 ---------------
@@ -658,9 +658,9 @@ Parameter 'mode'
 reverse()
 ```
 
-> **Node** : [Reverse Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeReverseCurve.html#bpy.types.GeometryNodeReverseCurve)
+ERROR: Node 'Reverse Curve' not found
 
-> **Node** : [Reverse Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeReverseCurve.html#bpy.types.GeometryNodeReverseCurve)
+ERROR: Node 'Reverse Curve' not found
 
 #### Returns:
 - **Curve** :
@@ -676,9 +676,9 @@ reverse()
 sample(value=None, factor=None, length=None, curve_index=None, all_curves=False)
 ```
 
-> **Node** : [Sample Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleCurve.html#bpy.types.GeometryNodeSampleCurve)
+ERROR: Node 'Sample Curve' not found
 
-> **Node** : [Sample Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleCurve.html#bpy.types.GeometryNodeSampleCurve)
+ERROR: Node 'Sample Curve' not found
 
 'mode' is set to 'LENGTH' if factor is None, else 'FACTOR'
 
@@ -708,9 +708,9 @@ sample(value=None, factor=None, length=None, curve_index=None, all_curves=False)
 set_normal(mode='MINIMUM_TWIST')
 ```
 
-> **Node** : [Set Curve Normal](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveNormal.html#bpy.types.GeometryNodeSetCurveNormal)
+ERROR: Node 'Set Curve Normal' not found
 
-> **Node** : [Set Curve Normal](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveNormal.html#bpy.types.GeometryNodeSetCurveNormal)
+ERROR: Node 'Set Curve Normal' not found
 
 #### Arguments:
 - **mode** (_str_ = MINIMUM_TWIST) : Node.mode in ('MINIMUM_TWIST', 'Z_UP', 'FREE')
@@ -731,9 +731,9 @@ set_normal(mode='MINIMUM_TWIST')
 set_normal_free()
 ```
 
-> **Node** : [Set Curve Normal](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveNormal.html#bpy.types.GeometryNodeSetCurveNormal)
+ERROR: Node 'Set Curve Normal' not found
 
-> **Node** : [Set Curve Normal](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveNormal.html#bpy.types.GeometryNodeSetCurveNormal)
+ERROR: Node 'Set Curve Normal' not found
 
 #### Returns:
 - **Curve** :
@@ -749,9 +749,9 @@ set_normal_free()
 set_normal_z_up()
 ```
 
-> **Node** : [Set Curve Normal](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveNormal.html#bpy.types.GeometryNodeSetCurveNormal)
+ERROR: Node 'Set Curve Normal' not found
 
-> **Node** : [Set Curve Normal](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveNormal.html#bpy.types.GeometryNodeSetCurveNormal)
+ERROR: Node 'Set Curve Normal' not found
 
 #### Returns:
 - **Curve** :
@@ -767,9 +767,9 @@ set_normal_z_up()
 Spiral(resolution=None, rotations=None, start_radius=None, end_radius=None, height=None, reverse=None)
 ```
 
-> **Node** : [Spiral](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSpiral.html#bpy.types.GeometryNodeCurveSpiral)
+ERROR: Node 'Spiral' not found
 
-> **Node** : [Spiral](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSpiral.html#bpy.types.GeometryNodeCurveSpiral)
+ERROR: Node 'Spiral' not found
 
 #### Arguments:
 - **resolution** (_Integer_ = None) : socket 'Resolution' (Resolution)
@@ -795,9 +795,9 @@ Spiral(resolution=None, rotations=None, start_radius=None, end_radius=None, heig
 Star(points=None, inner_radius=None, outer_radius=None, twist=None)
 ```
 
-> **Node** : [Star](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveStar.html#bpy.types.GeometryNodeCurveStar)
+ERROR: Node 'Star' not found
 
-> **Node** : [Star](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveStar.html#bpy.types.GeometryNodeCurveStar)
+ERROR: Node 'Star' not found
 
 #### Arguments:
 - **points** (_Integer_ = None) : socket 'Points' (Points)
@@ -821,9 +821,9 @@ Star(points=None, inner_radius=None, outer_radius=None, twist=None)
 subdivide(cuts=None)
 ```
 
-> **Node** : [Subdivide Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeSubdivideCurve.html#bpy.types.GeometryNodeSubdivideCurve)
+ERROR: Node 'Subdivide Curve' not found
 
-> **Node** : [Subdivide Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeSubdivideCurve.html#bpy.types.GeometryNodeSubdivideCurve)
+ERROR: Node 'Subdivide Curve' not found
 
 #### Arguments:
 - **cuts** (_Integer_ = None) : socket 'Cuts' (Cuts)
@@ -844,9 +844,9 @@ subdivide(cuts=None)
 to_mesh(profile_curve=None, fill_caps=None)
 ```
 
-> **Node** : [Curve to Mesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveToMesh.html#bpy.types.GeometryNodeCurveToMesh)
+ERROR: Node 'Curve to Mesh' not found
 
-> **Node** : [Curve to Mesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveToMesh.html#bpy.types.GeometryNodeCurveToMesh)
+ERROR: Node 'Curve to Mesh' not found
 
 #### Arguments:
 - **profile_curve** (_Geometry_ = None) : socket 'Profile Curve' (Profile Curve)
@@ -868,9 +868,9 @@ to_mesh(profile_curve=None, fill_caps=None)
 to_points(count=None, length=None, mode='EVALUATED')
 ```
 
-> **Node** : [Curve to Points](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveToPoints.html#bpy.types.GeometryNodeCurveToPoints)
+ERROR: Node 'Curve to Points' not found
 
-> **Node** : [Curve to Points](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveToPoints.html#bpy.types.GeometryNodeCurveToPoints)
+ERROR: Node 'Curve to Points' not found
 
 #### Arguments:
 - **count** (_Integer_ = None) : socket 'Count' (Count)
@@ -893,9 +893,9 @@ to_points(count=None, length=None, mode='EVALUATED')
 Trapezoid(height=None, bottom_width=None, top_width=None, offset=None)
 ```
 
-> **Node** : [Quadrilateral](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveQuadrilateral.html#bpy.types.GeometryNodeCurvePrimitiveQuadrilateral)
+ERROR: Node 'Quadrilateral' not found
 
-> **Node** : [Quadrilateral](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveQuadrilateral.html#bpy.types.GeometryNodeCurvePrimitiveQuadrilateral)
+ERROR: Node 'Quadrilateral' not found
 
 #### Arguments:
 - **height** (_Float_ = None) : socket 'Height' (Height)
@@ -919,9 +919,9 @@ Trapezoid(height=None, bottom_width=None, top_width=None, offset=None)
 trim(start=None, end=None, mode='FACTOR')
 ```
 
-> **Node** : [Trim Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeTrimCurve.html#bpy.types.GeometryNodeTrimCurve)
+ERROR: Node 'Trim Curve' not found
 
-> **Node** : [Trim Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeTrimCurve.html#bpy.types.GeometryNodeTrimCurve)
+ERROR: Node 'Trim Curve' not found
 
 #### Arguments:
 - **start** (_Float_ = None) : socket 'Start' (Start)
@@ -944,9 +944,9 @@ trim(start=None, end=None, mode='FACTOR')
 trim_factor(start=None, end=None)
 ```
 
-> **Node** : [Trim Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeTrimCurve.html#bpy.types.GeometryNodeTrimCurve)
+ERROR: Node 'Trim Curve' not found
 
-> **Node** : [Trim Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeTrimCurve.html#bpy.types.GeometryNodeTrimCurve)
+ERROR: Node 'Trim Curve' not found
 
 #### Arguments:
 - **start** (_Float_ = None) : socket 'Start' (Start)
@@ -968,9 +968,9 @@ trim_factor(start=None, end=None)
 trim_length(start=None, end=None)
 ```
 
-> **Node** : [Trim Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeTrimCurve.html#bpy.types.GeometryNodeTrimCurve)
+ERROR: Node 'Trim Curve' not found
 
-> **Node** : [Trim Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeTrimCurve.html#bpy.types.GeometryNodeTrimCurve)
+ERROR: Node 'Trim Curve' not found
 
 #### Arguments:
 - **start** (_Float_ = None) : socket 'Start' (Start)

@@ -43,9 +43,9 @@ When a Group Input socket is created, default name 'Geometry' is used if name ar
 FromCurve(curve, count=None, length=None, mode='COUNT')
 ```
 
-> **Node** : [Curve to Points](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveToPoints.html#bpy.types.GeometryNodeCurveToPoints)
+ERROR: Node 'Curve to Points' not found
 
-> **Node** : [Curve to Points](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveToPoints.html#bpy.types.GeometryNodeCurveToPoints)
+ERROR: Node 'Curve to Points' not found
 
 #### Arguments:
 - **curve** (_Geometry_) : socket 'Curve' (Curve)
@@ -69,9 +69,9 @@ FromCurve(curve, count=None, length=None, mode='COUNT')
 FromInstances(instances, position=None, radius=None)
 ```
 
-> **Node** : [Instances to Points](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstancesToPoints.html#bpy.types.GeometryNodeInstancesToPoints)
+ERROR: Node 'Instances to Points' not found
 
-> **Node** : [Instances to Points](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstancesToPoints.html#bpy.types.GeometryNodeInstancesToPoints)
+ERROR: Node 'Instances to Points' not found
 
 #### Arguments:
 - **instances** (_Geometry_) : socket 'Instances' (Instances)
@@ -94,9 +94,9 @@ FromInstances(instances, position=None, radius=None)
 FromMesh(mesh, position=None, radius=None, mode='POINTS')
 ```
 
-> **Node** : [Mesh to Points](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToPoints.html#bpy.types.GeometryNodeMeshToPoints)
+ERROR: Node 'Mesh to Points' not found
 
-> **Node** : [Mesh to Points](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToPoints.html#bpy.types.GeometryNodeMeshToPoints)
+ERROR: Node 'Mesh to Points' not found
 
 #### Arguments:
 - **mesh** (_Mesh_) : socket 'Mesh' (Mesh)
@@ -120,9 +120,9 @@ FromMesh(mesh, position=None, radius=None, mode='POINTS')
 Points(count=1, position=None, radius=None)
 ```
 
-> **Node** : [Points](https://docs.blender.org/api/current/bpy.types.GeometryNodePoints.html#bpy.types.GeometryNodePoints)
+ERROR: Node 'Points' not found
 
-> **Node** : [Points](https://docs.blender.org/api/current/bpy.types.GeometryNodePoints.html#bpy.types.GeometryNodePoints)
+ERROR: Node 'Points' not found
 
 #### Arguments:
 - **count** (_Integer_ = 1) : socket 'Count' (Count)
@@ -145,9 +145,9 @@ Points(count=1, position=None, radius=None)
 to_curves(curve_group_id=None, weight=None)
 ```
 
-> **Node** : [Points to Curves](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToCurves.html#bpy.types.GeometryNodePointsToCurves)
+ERROR: Node 'Points to Curves' not found
 
-> **Node** : [Points to Curves](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToCurves.html#bpy.types.GeometryNodePointsToCurves)
+ERROR: Node 'Points to Curves' not found
 
 #### Arguments:
 - **curve_group_id** (_Integer_ = None) : socket 'Curve Group ID' (Curve Group ID)
@@ -169,9 +169,9 @@ to_curves(curve_group_id=None, weight=None)
 to_vertices()
 ```
 
-> **Node** : [Points to Vertices](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToVertices.html#bpy.types.GeometryNodePointsToVertices)
+ERROR: Node 'Points to Vertices' not found
 
-> **Node** : [Points to Vertices](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToVertices.html#bpy.types.GeometryNodePointsToVertices)
+ERROR: Node 'Points to Vertices' not found
 
 #### Returns:
 - **Mesh** :
@@ -187,9 +187,9 @@ to_vertices()
 to_volume(density=None, voxel_size=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_AMOUNT')
 ```
 
-> **Node** : [Points to Volume](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToVolume.html#bpy.types.GeometryNodePointsToVolume)
+ERROR: Node 'Points to Volume' not found
 
-> **Node** : [Points to Volume](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToVolume.html#bpy.types.GeometryNodePointsToVolume)
+ERROR: Node 'Points to Volume' not found
 
 #### Arguments:
 - **density** (_Float_ = None) : socket 'Density' (Density)

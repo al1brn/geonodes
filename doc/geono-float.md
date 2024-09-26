@@ -43,9 +43,9 @@ Float(value=0.0, name=None, min=None, max=None, tip=None, subtype='NONE')
 clamp(min=None, max=None, clamp_type='MINMAX')
 ```
 
-> **Node** : [Clamp](https://docs.blender.org/api/current/bpy.types.ShaderNodeClamp.html#bpy.types.ShaderNodeClamp)
+ERROR: Node 'Clamp' not found
 
-> **Node** : [Clamp](https://docs.blender.org/api/current/bpy.types.ShaderNodeClamp.html#bpy.types.ShaderNodeClamp)
+ERROR: Node 'Clamp' not found
 
 #### Arguments:
 - **min** (_Float_ = None) : socket 'Min' (Min)
@@ -68,9 +68,9 @@ clamp(min=None, max=None, clamp_type='MINMAX')
 color_ramp(keep=None)
 ```
 
-> **Node** : [Color Ramp](https://docs.blender.org/api/current/bpy.types.ShaderNodeValToRGB.html#bpy.types.ShaderNodeValToRGB)
+ERROR: Node 'Color Ramp' not found
 
-> **Node** : [Color Ramp](https://docs.blender.org/api/current/bpy.types.ShaderNodeValToRGB.html#bpy.types.ShaderNodeValToRGB)
+ERROR: Node 'Color Ramp' not found
 
 #### Arguments:
 - **keep** ( = None)
@@ -91,9 +91,9 @@ color_ramp(keep=None)
 curve(factor=None, keep=None)
 ```
 
-> **Node** : [Float Curve](https://docs.blender.org/api/current/bpy.types.ShaderNodeFloatCurve.html#bpy.types.ShaderNodeFloatCurve)
+[Float Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/float_curve.html)
 
-> **Node** : [Float Curve](https://docs.blender.org/api/current/bpy.types.ShaderNodeFloatCurve.html#bpy.types.ShaderNodeFloatCurve)
+[Float Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/float_curve.html)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket 'Factor' (Factor)
@@ -115,9 +115,9 @@ curve(factor=None, keep=None)
 equal(other, epsilon=None)
 ```
 
-> **Node** : [Compare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html#bpy.types.FunctionNodeCompare)
+ERROR: Node 'Compare' not found
 
-> **Node** : [Compare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html#bpy.types.FunctionNodeCompare)
+ERROR: Node 'Compare' not found
 
 #### Arguments:
 - **other** (_Float_) : socket 'B' (B)
@@ -139,9 +139,9 @@ equal(other, epsilon=None)
 greater_equal(other)
 ```
 
-> **Node** : [Compare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html#bpy.types.FunctionNodeCompare)
+ERROR: Node 'Compare' not found
 
-> **Node** : [Compare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html#bpy.types.FunctionNodeCompare)
+ERROR: Node 'Compare' not found
 
 #### Arguments:
 - **other** (_Float_) : socket 'B' (B)
@@ -162,9 +162,9 @@ greater_equal(other)
 greater_than(other)
 ```
 
-> **Node** : [Compare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html#bpy.types.FunctionNodeCompare)
+ERROR: Node 'Compare' not found
 
-> **Node** : [Compare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html#bpy.types.FunctionNodeCompare)
+ERROR: Node 'Compare' not found
 
 #### Arguments:
 - **other** (_Float_) : socket 'B' (B)
@@ -185,9 +185,9 @@ greater_than(other)
 less_equal(other)
 ```
 
-> **Node** : [Compare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html#bpy.types.FunctionNodeCompare)
+ERROR: Node 'Compare' not found
 
-> **Node** : [Compare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html#bpy.types.FunctionNodeCompare)
+ERROR: Node 'Compare' not found
 
 #### Arguments:
 - **other** (_Float_) : socket 'B' (B)
@@ -208,9 +208,9 @@ less_equal(other)
 less_than(other)
 ```
 
-> **Node** : [Compare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html#bpy.types.FunctionNodeCompare)
+ERROR: Node 'Compare' not found
 
-> **Node** : [Compare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html#bpy.types.FunctionNodeCompare)
+ERROR: Node 'Compare' not found
 
 #### Arguments:
 - **other** (_Float_) : socket 'B' (B)
@@ -231,9 +231,9 @@ less_than(other)
 map_range(from_min=None, from_max=None, to_min=None, to_max=None, clamp=None, interpolation_type='LINEAR')
 ```
 
-> **Node** : [Map Range](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html#bpy.types.ShaderNodeMapRange)
+ERROR: Node 'Map Range' not found
 
-> **Node** : [Map Range](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html#bpy.types.ShaderNodeMapRange)
+ERROR: Node 'Map Range' not found
 
 #### Arguments:
 - **from_min** (_Float_ = None) : socket 'From Min' (From Min)
@@ -259,9 +259,9 @@ map_range(from_min=None, from_max=None, to_min=None, to_max=None, clamp=None, in
 map_range_linear(from_min=None, from_max=None, to_min=None, to_max=None, clamp=None)
 ```
 
-> **Node** : [Map Range](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html#bpy.types.ShaderNodeMapRange)
+ERROR: Node 'Map Range' not found
 
-> **Node** : [Map Range](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html#bpy.types.ShaderNodeMapRange)
+ERROR: Node 'Map Range' not found
 
 #### Arguments:
 - **from_min** (_Float_ = None) : socket 'From Min' (From Min)
@@ -286,9 +286,9 @@ map_range_linear(from_min=None, from_max=None, to_min=None, to_max=None, clamp=N
 map_range_smooth(from_min=None, from_max=None, to_min=None, to_max=None, clamp=None)
 ```
 
-> **Node** : [Map Range](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html#bpy.types.ShaderNodeMapRange)
+ERROR: Node 'Map Range' not found
 
-> **Node** : [Map Range](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html#bpy.types.ShaderNodeMapRange)
+ERROR: Node 'Map Range' not found
 
 #### Arguments:
 - **from_min** (_Float_ = None) : socket 'From Min' (From Min)
@@ -313,9 +313,9 @@ map_range_smooth(from_min=None, from_max=None, to_min=None, to_max=None, clamp=N
 map_range_smoother(from_min=None, from_max=None, to_min=None, to_max=None, clamp=None)
 ```
 
-> **Node** : [Map Range](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html#bpy.types.ShaderNodeMapRange)
+ERROR: Node 'Map Range' not found
 
-> **Node** : [Map Range](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html#bpy.types.ShaderNodeMapRange)
+ERROR: Node 'Map Range' not found
 
 #### Arguments:
 - **from_min** (_Float_ = None) : socket 'From Min' (From Min)
@@ -340,9 +340,9 @@ map_range_smoother(from_min=None, from_max=None, to_min=None, to_max=None, clamp
 map_range_stepped(from_min=None, from_max=None, to_min=None, to_max=None, clamp=None)
 ```
 
-> **Node** : [Map Range](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html#bpy.types.ShaderNodeMapRange)
+ERROR: Node 'Map Range' not found
 
-> **Node** : [Map Range](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html#bpy.types.ShaderNodeMapRange)
+ERROR: Node 'Map Range' not found
 
 #### Arguments:
 - **from_min** (_Float_ = None) : socket 'From Min' (From Min)
@@ -367,9 +367,9 @@ map_range_stepped(from_min=None, from_max=None, to_min=None, to_max=None, clamp=
 mix(factor=None, other=None, clamp_factor=None)
 ```
 
-> **Node** : [Mix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html#bpy.types.ShaderNodeMix)
+[Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../compositing/types/color/mix/index.html)
 
-> **Node** : [Mix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html#bpy.types.ShaderNodeMix)
+[Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../compositing/types/color/mix/index.html)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket 'Factor' (Factor_Float)
@@ -392,9 +392,9 @@ mix(factor=None, other=None, clamp_factor=None)
 Named(name)
 ```
 
-> **Node** : [Named Attribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html#bpy.types.GeometryNodeInputNamedAttribute)
+ERROR: Node 'Named Attribute' not found
 
-> **Node** : [Named Attribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html#bpy.types.GeometryNodeInputNamedAttribute)
+ERROR: Node 'Named Attribute' not found
 
 'Named' is a synonym of 'NamedAttribute'
 
@@ -434,9 +434,9 @@ with GeoNodes("Named Attributes"):
 NamedAttribute(name)
 ```
 
-> **Node** : [Named Attribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html#bpy.types.GeometryNodeInputNamedAttribute)
+ERROR: Node 'Named Attribute' not found
 
-> **Node** : [Named Attribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html#bpy.types.GeometryNodeInputNamedAttribute)
+ERROR: Node 'Named Attribute' not found
 
 'Named' is a synonym of 'NamedAttribute'
 
@@ -476,9 +476,9 @@ with GeoNodes("Named Attributes"):
 not_equal(other, epsilon=None)
 ```
 
-> **Node** : [Compare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html#bpy.types.FunctionNodeCompare)
+ERROR: Node 'Compare' not found
 
-> **Node** : [Compare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html#bpy.types.FunctionNodeCompare)
+ERROR: Node 'Compare' not found
 
 #### Arguments:
 - **other** (_Float_) : socket 'B' (B)
@@ -500,9 +500,9 @@ not_equal(other, epsilon=None)
 to_string(decimals=None)
 ```
 
-> **Node** : [Value to String](https://docs.blender.org/api/current/bpy.types.FunctionNodeValueToString.html#bpy.types.FunctionNodeValueToString)
+ERROR: Node 'Value to String' not found
 
-> **Node** : [Value to String](https://docs.blender.org/api/current/bpy.types.FunctionNodeValueToString.html#bpy.types.FunctionNodeValueToString)
+ERROR: Node 'Value to String' not found
 
 #### Arguments:
 - **decimals** (_Integer_ = None) : socket 'Decimals' (Decimals)

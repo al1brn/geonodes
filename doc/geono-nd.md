@@ -47,7 +47,7 @@ Initialize self.  See help(type(self)) for accurate signature.
 accumulate_field(value=None, group_id=None, data_type='FLOAT', domain='POINT')
 ```
 
-> **Node** : [Accumulate Field](https://docs.blender.org/api/current/bpy.types.GeometryNodeAccumulateField.html#bpy.types.GeometryNodeAccumulateField)
+ERROR: Node 'Accumulate Field' not found
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (Value)
@@ -71,7 +71,7 @@ accumulate_field(value=None, group_id=None, data_type='FLOAT', domain='POINT')
 active_element(domain='POINT')
 ```
 
-> **Node** : [Active Element](https://docs.blender.org/api/current/bpy.types.GeometryNodeToolActiveElement.html#bpy.types.GeometryNodeToolActiveElement)
+[Active Element](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/3dview/controls/pivot_point/active_element.html)
 
 #### Arguments:
 - **domain** (_str_ = POINT) : Node.domain in ('POINT', 'EDGE', 'FACE')
@@ -92,7 +92,7 @@ active_element(domain='POINT')
 align_euler_to_vector(rotation=None, factor=None, vector=None, axis='X', pivot_axis='AUTO')
 ```
 
-> **Node** : [Align Euler to Vector](https://docs.blender.org/api/current/bpy.types.FunctionNodeAlignEulerToVector.html#bpy.types.FunctionNodeAlignEulerToVector)
+ERROR: Node 'Align Euler to Vector' not found
 
 #### Arguments:
 - **rotation** (_Vector_ = None) : socket 'Rotation' (Rotation)
@@ -117,7 +117,7 @@ align_euler_to_vector(rotation=None, factor=None, vector=None, axis='X', pivot_a
 align_rotation_to_vector(rotation=None, factor=None, vector=None, axis='Z', pivot_axis='AUTO')
 ```
 
-> **Node** : [Align Rotation to Vector](https://docs.blender.org/api/current/bpy.types.FunctionNodeAlignRotationToVector.html#bpy.types.FunctionNodeAlignRotationToVector)
+ERROR: Node 'Align Rotation to Vector' not found
 
 #### Arguments:
 - **rotation** (_Rotation_ = None) : socket 'Rotation' (Rotation)
@@ -142,7 +142,7 @@ align_rotation_to_vector(rotation=None, factor=None, vector=None, axis='Z', pivo
 arc(resolution=None, radius=None, start_angle=None, sweep_angle=None, connect_center=None, invert_arc=None, mode='RADIUS')
 ```
 
-> **Node** : [Arc](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveArc.html#bpy.types.GeometryNodeCurveArc)
+ERROR: Node 'Arc' not found
 
 #### Arguments:
 - **resolution** (_Integer_ = None) : socket 'Resolution' (Resolution)
@@ -169,7 +169,7 @@ arc(resolution=None, radius=None, start_angle=None, sweep_angle=None, connect_ce
 attribute_statistic(geometry=None, selection=None, attribute=None, data_type='FLOAT', domain='POINT')
 ```
 
-> **Node** : [Attribute Statistic](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html#bpy.types.GeometryNodeAttributeStatistic)
+ERROR: Node 'Attribute Statistic' not found
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -194,7 +194,7 @@ attribute_statistic(geometry=None, selection=None, attribute=None, data_type='FL
 axes_to_rotation(primary_axis_1=None, secondary_axis_1=None, primary_axis='Z', secondary_axis='X')
 ```
 
-> **Node** : [Axes to Rotation](https://docs.blender.org/api/current/bpy.types.FunctionNodeAxesToRotation.html#bpy.types.FunctionNodeAxesToRotation)
+ERROR: Node 'Axes to Rotation' not found
 
 #### Arguments:
 - **primary_axis_1** (_Vector_ = None) : socket 'Primary Axis' (Primary Axis)
@@ -218,7 +218,7 @@ axes_to_rotation(primary_axis_1=None, secondary_axis_1=None, primary_axis='Z', s
 axis_angle_to_rotation(axis=None, angle=None)
 ```
 
-> **Node** : [Axis Angle to Rotation](https://docs.blender.org/api/current/bpy.types.FunctionNodeAxisAngleToRotation.html#bpy.types.FunctionNodeAxisAngleToRotation)
+ERROR: Node 'Axis Angle to Rotation' not found
 
 #### Arguments:
 - **axis** (_Vector_ = None) : socket 'Axis' (Axis)
@@ -240,7 +240,7 @@ axis_angle_to_rotation(axis=None, angle=None)
 bake(geometry=None, active_index=0, active_item=None, bake_items=None)
 ```
 
-> **Node** : [Bake](https://docs.blender.org/api/current/bpy.types.GeometryNodeBake.html#bpy.types.GeometryNodeBake)
+ERROR: Node 'Bake' not found
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Item_0)
@@ -264,7 +264,7 @@ bake(geometry=None, active_index=0, active_item=None, bake_items=None)
 bezier_segment(resolution=None, start=None, start_handle=None, end_handle=None, end=None, mode='POSITION')
 ```
 
-> **Node** : [Bézier Segment](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveBezierSegment.html#bpy.types.GeometryNodeCurvePrimitiveBezierSegment)
+ERROR: Node 'Bézier Segment' not found
 
 #### Arguments:
 - **resolution** (_Integer_ = None) : socket 'Resolution' (Resolution)
@@ -290,7 +290,7 @@ bezier_segment(resolution=None, start=None, start_handle=None, end_handle=None, 
 blackbody(temperature=None)
 ```
 
-> **Node** : [Blackbody](https://docs.blender.org/api/current/bpy.types.ShaderNodeBlackbody.html#bpy.types.ShaderNodeBlackbody)
+ERROR: Node 'Blackbody' not found
 
 #### Arguments:
 - **temperature** (_Float_ = None) : socket 'Temperature' (Temperature)
@@ -311,7 +311,7 @@ blackbody(temperature=None)
 blur_attribute(value=None, iterations=None, weight=None, data_type='FLOAT')
 ```
 
-> **Node** : [Blur Attribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeBlurAttribute.html#bpy.types.GeometryNodeBlurAttribute)
+ERROR: Node 'Blur Attribute' not found
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (Value)
@@ -335,7 +335,7 @@ blur_attribute(value=None, iterations=None, weight=None, data_type='FLOAT')
 boolean(boolean=False)
 ```
 
-> **Node** : [Boolean](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputBool.html#bpy.types.FunctionNodeInputBool)
+ERROR: Node 'Boolean' not found
 
 #### Arguments:
 - **boolean** (_bool_ = False) : Node.boolean
@@ -356,7 +356,7 @@ boolean(boolean=False)
 boolean_math(boolean=None, boolean_1=None, operation='AND')
 ```
 
-> **Node** : [Boolean Math](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html#bpy.types.FunctionNodeBooleanMath)
+ERROR: Node 'Boolean Math' not found
 
 #### Arguments:
 - **boolean** (_Boolean_ = None) : socket 'Boolean' (Boolean)
@@ -379,7 +379,7 @@ boolean_math(boolean=None, boolean_1=None, operation='AND')
 bounding_box(geometry=None)
 ```
 
-> **Node** : [Bounding Box](https://docs.blender.org/api/current/bpy.types.GeometryNodeBoundBox.html#bpy.types.GeometryNodeBoundBox)
+ERROR: Node 'Bounding Box' not found
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -400,7 +400,7 @@ bounding_box(geometry=None)
 brick_texture(vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, color_mapping=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2, texture_mapping=None)
 ```
 
-> **Node** : [Brick Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexBrick.html#bpy.types.ShaderNodeTexBrick)
+ERROR: Node 'Brick Texture' not found
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -436,7 +436,7 @@ brick_texture(vector=None, color1=None, color2=None, mortar=None, scale=None, mo
 capture_attribute(geometry=None, active_index=0, active_item=None, capture_items=None, domain='POINT')
 ```
 
-> **Node** : [Capture Attribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeCaptureAttribute.html#bpy.types.GeometryNodeCaptureAttribute)
+ERROR: Node 'Capture Attribute' not found
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -461,7 +461,7 @@ capture_attribute(geometry=None, active_index=0, active_item=None, capture_items
 checker_texture(vector=None, color1=None, color2=None, scale=None, color_mapping=None, texture_mapping=None)
 ```
 
-> **Node** : [Checker Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexChecker.html#bpy.types.ShaderNodeTexChecker)
+ERROR: Node 'Checker Texture' not found
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -487,7 +487,7 @@ checker_texture(vector=None, color1=None, color2=None, scale=None, color_mapping
 clamp(value=None, min=None, max=None, clamp_type='MINMAX')
 ```
 
-> **Node** : [Clamp](https://docs.blender.org/api/current/bpy.types.ShaderNodeClamp.html#bpy.types.ShaderNodeClamp)
+ERROR: Node 'Clamp' not found
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (Value)
@@ -511,7 +511,7 @@ clamp(value=None, min=None, max=None, clamp_type='MINMAX')
 collection_info(collection=None, separate_children=None, reset_children=None, transform_space='ORIGINAL')
 ```
 
-> **Node** : [Collection Info](https://docs.blender.org/api/current/bpy.types.GeometryNodeCollectionInfo.html#bpy.types.GeometryNodeCollectionInfo)
+ERROR: Node 'Collection Info' not found
 
 #### Arguments:
 - **collection** (_Collection_ = None) : socket 'Collection' (Collection)
@@ -535,7 +535,7 @@ collection_info(collection=None, separate_children=None, reset_children=None, tr
 color(value=None)
 ```
 
-> **Node** : [Color](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputColor.html#bpy.types.FunctionNodeInputColor)
+[Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/color/index.html)
 
 #### Arguments:
 - **value** (_bpy_prop_array_ = None) : Node.value
@@ -556,7 +556,7 @@ color(value=None)
 color_ramp(fac=None, color_ramp=None)
 ```
 
-> **Node** : [Color Ramp](https://docs.blender.org/api/current/bpy.types.ShaderNodeValToRGB.html#bpy.types.ShaderNodeValToRGB)
+ERROR: Node 'Color Ramp' not found
 
 #### Arguments:
 - **fac** (_Float_ = None) : socket 'Fac' (Fac)
@@ -578,7 +578,7 @@ color_ramp(fac=None, color_ramp=None)
 combine_color(red=None, green=None, blue=None, alpha=None, mode='RGB')
 ```
 
-> **Node** : [Combine Color](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineColor.html#bpy.types.FunctionNodeCombineColor)
+ERROR: Node 'Combine Color' not found
 
 #### Arguments:
 - **red** (_Float_ = None) : socket 'Red' (Red)
@@ -603,7 +603,7 @@ combine_color(red=None, green=None, blue=None, alpha=None, mode='RGB')
 combine_matrix(column_1_row_1=None, column_1_row_2=None, column_1_row_3=None, column_1_row_4=None, column_2_row_1=None, column_2_row_2=None, column_2_row_3=None, column_2_row_4=None, column_3_row_1=None, column_3_row_2=None, column_3_row_3=None, column_3_row_4=None, column_4_row_1=None, column_4_row_2=None, column_4_row_3=None, column_4_row_4=None)
 ```
 
-> **Node** : [Combine Matrix](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineMatrix.html#bpy.types.FunctionNodeCombineMatrix)
+ERROR: Node 'Combine Matrix' not found
 
 #### Arguments:
 - **column_1_row_1** (_Float_ = None) : socket 'Column 1 Row 1' (Column 1 Row 1)
@@ -639,7 +639,7 @@ combine_matrix(column_1_row_1=None, column_1_row_2=None, column_1_row_3=None, co
 combine_transform(translation=None, rotation=None, scale=None)
 ```
 
-> **Node** : [Combine Transform](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineTransform.html#bpy.types.FunctionNodeCombineTransform)
+ERROR: Node 'Combine Transform' not found
 
 #### Arguments:
 - **translation** (_Vector_ = None) : socket 'Translation' (Translation)
@@ -662,7 +662,7 @@ combine_transform(translation=None, rotation=None, scale=None)
 combine_xyz(x=None, y=None, z=None)
 ```
 
-> **Node** : [Combine XYZ](https://docs.blender.org/api/current/bpy.types.ShaderNodeCombineXYZ.html#bpy.types.ShaderNodeCombineXYZ)
+ERROR: Node 'Combine XYZ' not found
 
 #### Arguments:
 - **x** (_Float_ = None) : socket 'X' (X)
@@ -685,7 +685,7 @@ combine_xyz(x=None, y=None, z=None)
 compare(a=None, b=None, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN')
 ```
 
-> **Node** : [Compare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html#bpy.types.FunctionNodeCompare)
+ERROR: Node 'Compare' not found
 
 #### Arguments:
 - **a** (_Float_ = None) : socket 'A' (A)
@@ -710,7 +710,7 @@ compare(a=None, b=None, data_type='FLOAT', mode='ELEMENT', operation='GREATER_TH
 cone(vertices=None, side_segments=None, fill_segments=None, radius_top=None, radius_bottom=None, depth=None, fill_type='NGON')
 ```
 
-> **Node** : [Cone](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshCone.html#bpy.types.GeometryNodeMeshCone)
+ERROR: Node 'Cone' not found
 
 #### Arguments:
 - **vertices** (_Integer_ = None) : socket 'Vertices' (Vertices)
@@ -737,7 +737,7 @@ cone(vertices=None, side_segments=None, fill_segments=None, radius_top=None, rad
 convex_hull(geometry=None)
 ```
 
-> **Node** : [Convex Hull](https://docs.blender.org/api/current/bpy.types.GeometryNodeConvexHull.html#bpy.types.GeometryNodeConvexHull)
+[Convex Hull](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../meshes/editing/mesh/convex_hull.html)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -758,7 +758,7 @@ convex_hull(geometry=None)
 corners_of_edge(edge_index=None, weights=None, sort_index=None)
 ```
 
-> **Node** : [Corners of Edge](https://docs.blender.org/api/current/bpy.types.GeometryNodeCornersOfEdge.html#bpy.types.GeometryNodeCornersOfEdge)
+ERROR: Node 'Corners of Edge' not found
 
 #### Arguments:
 - **edge_index** (_Integer_ = None) : socket 'Edge Index' (Edge Index)
@@ -781,7 +781,7 @@ corners_of_edge(edge_index=None, weights=None, sort_index=None)
 corners_of_face(face_index=None, weights=None, sort_index=None)
 ```
 
-> **Node** : [Corners of Face](https://docs.blender.org/api/current/bpy.types.GeometryNodeCornersOfFace.html#bpy.types.GeometryNodeCornersOfFace)
+ERROR: Node 'Corners of Face' not found
 
 #### Arguments:
 - **face_index** (_Integer_ = None) : socket 'Face Index' (Face Index)
@@ -804,7 +804,7 @@ corners_of_face(face_index=None, weights=None, sort_index=None)
 corners_of_vertex(vertex_index=None, weights=None, sort_index=None)
 ```
 
-> **Node** : [Corners of Vertex](https://docs.blender.org/api/current/bpy.types.GeometryNodeCornersOfVertex.html#bpy.types.GeometryNodeCornersOfVertex)
+ERROR: Node 'Corners of Vertex' not found
 
 #### Arguments:
 - **vertex_index** (_Integer_ = None) : socket 'Vertex Index' (Vertex Index)
@@ -827,7 +827,7 @@ corners_of_vertex(vertex_index=None, weights=None, sort_index=None)
 cube(size=None, vertices_x=None, vertices_y=None, vertices_z=None)
 ```
 
-> **Node** : [Cube](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshCube.html#bpy.types.GeometryNodeMeshCube)
+ERROR: Node 'Cube' not found
 
 #### Arguments:
 - **size** (_Vector_ = None) : socket 'Size' (Size)
@@ -851,7 +851,7 @@ cube(size=None, vertices_x=None, vertices_y=None, vertices_z=None)
 curve_circle(resolution=None, radius=None, mode='RADIUS')
 ```
 
-> **Node** : [Curve Circle](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveCircle.html#bpy.types.GeometryNodeCurvePrimitiveCircle)
+ERROR: Node 'Curve Circle' not found
 
 #### Arguments:
 - **resolution** (_Integer_ = None) : socket 'Resolution' (Resolution)
@@ -874,7 +874,7 @@ curve_circle(resolution=None, radius=None, mode='RADIUS')
 curve_handle_positions(relative=None)
 ```
 
-> **Node** : [Curve Handle Positions](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputCurveHandlePositions.html#bpy.types.GeometryNodeInputCurveHandlePositions)
+ERROR: Node 'Curve Handle Positions' not found
 
 #### Arguments:
 - **relative** (_Boolean_ = None) : socket 'Relative' (Relative)
@@ -895,7 +895,7 @@ curve_handle_positions(relative=None)
 curve_length(curve=None)
 ```
 
-> **Node** : [Curve Length](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveLength.html#bpy.types.GeometryNodeCurveLength)
+ERROR: Node 'Curve Length' not found
 
 #### Arguments:
 - **curve** (_Geometry_ = None) : socket 'Curve' (Curve)
@@ -916,7 +916,7 @@ curve_length(curve=None)
 curve_line(start=None, end=None, mode='POINTS')
 ```
 
-> **Node** : [Curve Line](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveLine.html#bpy.types.GeometryNodeCurvePrimitiveLine)
+ERROR: Node 'Curve Line' not found
 
 #### Arguments:
 - **start** (_Vector_ = None) : socket 'Start' (Start)
@@ -939,7 +939,7 @@ curve_line(start=None, end=None, mode='POINTS')
 curve_of_point(point_index=None)
 ```
 
-> **Node** : [Curve of Point](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveOfPoint.html#bpy.types.GeometryNodeCurveOfPoint)
+ERROR: Node 'Curve of Point' not found
 
 #### Arguments:
 - **point_index** (_Integer_ = None) : socket 'Point Index' (Point Index)
@@ -960,7 +960,7 @@ curve_of_point(point_index=None)
 curve_to_mesh(curve=None, profile_curve=None, fill_caps=None)
 ```
 
-> **Node** : [Curve to Mesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveToMesh.html#bpy.types.GeometryNodeCurveToMesh)
+ERROR: Node 'Curve to Mesh' not found
 
 #### Arguments:
 - **curve** (_Geometry_ = None) : socket 'Curve' (Curve)
@@ -983,7 +983,7 @@ curve_to_mesh(curve=None, profile_curve=None, fill_caps=None)
 curve_to_points(curve=None, count=None, mode='COUNT')
 ```
 
-> **Node** : [Curve to Points](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveToPoints.html#bpy.types.GeometryNodeCurveToPoints)
+ERROR: Node 'Curve to Points' not found
 
 #### Arguments:
 - **curve** (_Geometry_ = None) : socket 'Curve' (Curve)
@@ -1006,7 +1006,7 @@ curve_to_points(curve=None, count=None, mode='COUNT')
 cylinder(vertices=None, side_segments=None, fill_segments=None, radius=None, depth=None, fill_type='NGON')
 ```
 
-> **Node** : [Cylinder](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshCylinder.html#bpy.types.GeometryNodeMeshCylinder)
+ERROR: Node 'Cylinder' not found
 
 #### Arguments:
 - **vertices** (_Integer_ = None) : socket 'Vertices' (Vertices)
@@ -1032,7 +1032,7 @@ cylinder(vertices=None, side_segments=None, fill_segments=None, radius=None, dep
 deform_curves_on_surface(curves=None)
 ```
 
-> **Node** : [Deform Curves on Surface](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeformCurvesOnSurface.html#bpy.types.GeometryNodeDeformCurvesOnSurface)
+ERROR: Node 'Deform Curves on Surface' not found
 
 #### Arguments:
 - **curves** (_Geometry_ = None) : socket 'Curves' (Curves)
@@ -1053,7 +1053,7 @@ deform_curves_on_surface(curves=None)
 delete_geometry(geometry=None, selection=None, domain='POINT', mode='ALL')
 ```
 
-> **Node** : [Delete Geometry](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html#bpy.types.GeometryNodeDeleteGeometry)
+ERROR: Node 'Delete Geometry' not found
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -1077,7 +1077,7 @@ delete_geometry(geometry=None, selection=None, domain='POINT', mode='ALL')
 distribute_points_in_grid(grid=None, density=None, seed=None, mode='DENSITY_RANDOM')
 ```
 
-> **Node** : [Distribute Points in Grid](https://docs.blender.org/api/current/bpy.types.GeometryNodeDistributePointsInGrid.html#bpy.types.GeometryNodeDistributePointsInGrid)
+ERROR: Node 'Distribute Points in Grid' not found
 
 #### Arguments:
 - **grid** (_Float_ = None) : socket 'Grid' (Grid)
@@ -1101,7 +1101,7 @@ distribute_points_in_grid(grid=None, density=None, seed=None, mode='DENSITY_RAND
 distribute_points_in_volume(volume=None, density=None, seed=None, mode='DENSITY_RANDOM')
 ```
 
-> **Node** : [Distribute Points in Volume](https://docs.blender.org/api/current/bpy.types.GeometryNodeDistributePointsInVolume.html#bpy.types.GeometryNodeDistributePointsInVolume)
+[Distribute Points in Volume](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/distribute_points_in_volume.html)
 
 #### Arguments:
 - **volume** (_Geometry_ = None) : socket 'Volume' (Volume)
@@ -1125,7 +1125,7 @@ distribute_points_in_volume(volume=None, density=None, seed=None, mode='DENSITY_
 distribute_points_on_faces(mesh=None, selection=None, density=None, seed=None, distribute_method='RANDOM', use_legacy_normal=False)
 ```
 
-> **Node** : [Distribute Points on Faces](https://docs.blender.org/api/current/bpy.types.GeometryNodeDistributePointsOnFaces.html#bpy.types.GeometryNodeDistributePointsOnFaces)
+[Distribute Points on Faces](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/distribute_points_on_faces.html)
 
 #### Arguments:
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (Mesh)
@@ -1151,7 +1151,7 @@ distribute_points_on_faces(mesh=None, selection=None, density=None, seed=None, d
 domain_size(geometry=None, component='MESH')
 ```
 
-> **Node** : [Domain Size](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html#bpy.types.GeometryNodeAttributeDomainSize)
+ERROR: Node 'Domain Size' not found
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -1173,7 +1173,7 @@ domain_size(geometry=None, component='MESH')
 dual_mesh(mesh=None, keep_boundaries=None)
 ```
 
-> **Node** : [Dual Mesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeDualMesh.html#bpy.types.GeometryNodeDualMesh)
+ERROR: Node 'Dual Mesh' not found
 
 #### Arguments:
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (Mesh)
@@ -1195,7 +1195,7 @@ dual_mesh(mesh=None, keep_boundaries=None)
 duplicate_elements(geometry=None, selection=None, amount=None, domain='POINT')
 ```
 
-> **Node** : [Duplicate Elements](https://docs.blender.org/api/current/bpy.types.GeometryNodeDuplicateElements.html#bpy.types.GeometryNodeDuplicateElements)
+ERROR: Node 'Duplicate Elements' not found
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -1219,7 +1219,7 @@ duplicate_elements(geometry=None, selection=None, amount=None, domain='POINT')
 edge_paths_to_curves(mesh=None, start_vertices=None, next_vertex_index=None)
 ```
 
-> **Node** : [Edge Paths to Curves](https://docs.blender.org/api/current/bpy.types.GeometryNodeEdgePathsToCurves.html#bpy.types.GeometryNodeEdgePathsToCurves)
+ERROR: Node 'Edge Paths to Curves' not found
 
 #### Arguments:
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (Mesh)
@@ -1242,7 +1242,7 @@ edge_paths_to_curves(mesh=None, start_vertices=None, next_vertex_index=None)
 edge_paths_to_selection(start_vertices=None, next_vertex_index=None)
 ```
 
-> **Node** : [Edge Paths to Selection](https://docs.blender.org/api/current/bpy.types.GeometryNodeEdgePathsToSelection.html#bpy.types.GeometryNodeEdgePathsToSelection)
+ERROR: Node 'Edge Paths to Selection' not found
 
 #### Arguments:
 - **start_vertices** (_Boolean_ = None) : socket 'Start Vertices' (Start Vertices)
@@ -1264,7 +1264,7 @@ edge_paths_to_selection(start_vertices=None, next_vertex_index=None)
 edges_of_corner(corner_index=None)
 ```
 
-> **Node** : [Edges of Corner](https://docs.blender.org/api/current/bpy.types.GeometryNodeEdgesOfCorner.html#bpy.types.GeometryNodeEdgesOfCorner)
+ERROR: Node 'Edges of Corner' not found
 
 #### Arguments:
 - **corner_index** (_Integer_ = None) : socket 'Corner Index' (Corner Index)
@@ -1285,7 +1285,7 @@ edges_of_corner(corner_index=None)
 edges_of_vertex(vertex_index=None, weights=None, sort_index=None)
 ```
 
-> **Node** : [Edges of Vertex](https://docs.blender.org/api/current/bpy.types.GeometryNodeEdgesOfVertex.html#bpy.types.GeometryNodeEdgesOfVertex)
+ERROR: Node 'Edges of Vertex' not found
 
 #### Arguments:
 - **vertex_index** (_Integer_ = None) : socket 'Vertex Index' (Vertex Index)
@@ -1308,7 +1308,7 @@ edges_of_vertex(vertex_index=None, weights=None, sort_index=None)
 edges_to_face_groups(boundary_edges=None)
 ```
 
-> **Node** : [Edges to Face Groups](https://docs.blender.org/api/current/bpy.types.GeometryNodeEdgesToFaceGroups.html#bpy.types.GeometryNodeEdgesToFaceGroups)
+ERROR: Node 'Edges to Face Groups' not found
 
 #### Arguments:
 - **boundary_edges** (_Boolean_ = None) : socket 'Boundary Edges' (Boundary Edges)
@@ -1329,7 +1329,7 @@ edges_to_face_groups(boundary_edges=None)
 endpoint_selection(start_size=None, end_size=None)
 ```
 
-> **Node** : [Endpoint Selection](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveEndpointSelection.html#bpy.types.GeometryNodeCurveEndpointSelection)
+ERROR: Node 'Endpoint Selection' not found
 
 #### Arguments:
 - **start_size** (_Integer_ = None) : socket 'Start Size' (Start Size)
@@ -1351,7 +1351,7 @@ endpoint_selection(start_size=None, end_size=None)
 euler_to_rotation(euler=None)
 ```
 
-> **Node** : [Euler to Rotation](https://docs.blender.org/api/current/bpy.types.FunctionNodeEulerToRotation.html#bpy.types.FunctionNodeEulerToRotation)
+ERROR: Node 'Euler to Rotation' not found
 
 #### Arguments:
 - **euler** (_Vector_ = None) : socket 'Euler' (Euler)
@@ -1372,7 +1372,7 @@ euler_to_rotation(euler=None)
 evaluate_at_index(index=None, value=None, data_type='FLOAT', domain='POINT')
 ```
 
-> **Node** : [Evaluate at Index](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldAtIndex.html#bpy.types.GeometryNodeFieldAtIndex)
+ERROR: Node 'Evaluate at Index' not found
 
 #### Arguments:
 - **index** (_Integer_ = None) : socket 'Index' (Index)
@@ -1396,7 +1396,7 @@ evaluate_at_index(index=None, value=None, data_type='FLOAT', domain='POINT')
 evaluate_on_domain(value=None, data_type='FLOAT', domain='POINT')
 ```
 
-> **Node** : [Evaluate on Domain](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldOnDomain.html#bpy.types.GeometryNodeFieldOnDomain)
+ERROR: Node 'Evaluate on Domain' not found
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (Value)
@@ -1419,7 +1419,7 @@ evaluate_on_domain(value=None, data_type='FLOAT', domain='POINT')
 extrude_mesh(mesh=None, selection=None, offset=None, offset_scale=None, individual=None, mode='FACES')
 ```
 
-> **Node** : [Extrude Mesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeExtrudeMesh.html#bpy.types.GeometryNodeExtrudeMesh)
+ERROR: Node 'Extrude Mesh' not found
 
 #### Arguments:
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (Mesh)
@@ -1445,7 +1445,7 @@ extrude_mesh(mesh=None, selection=None, offset=None, offset_scale=None, individu
 face_group_boundaries(face_group_id=None)
 ```
 
-> **Node** : [Face Group Boundaries](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshFaceSetBoundaries.html#bpy.types.GeometryNodeMeshFaceSetBoundaries)
+ERROR: Node 'Face Group Boundaries' not found
 
 #### Arguments:
 - **face_group_id** (_Integer_ = None) : socket 'Face Group ID' (Face Set)
@@ -1466,7 +1466,7 @@ face_group_boundaries(face_group_id=None)
 face_of_corner(corner_index=None)
 ```
 
-> **Node** : [Face of Corner](https://docs.blender.org/api/current/bpy.types.GeometryNodeFaceOfCorner.html#bpy.types.GeometryNodeFaceOfCorner)
+ERROR: Node 'Face of Corner' not found
 
 #### Arguments:
 - **corner_index** (_Integer_ = None) : socket 'Corner Index' (Corner Index)
@@ -1487,7 +1487,7 @@ face_of_corner(corner_index=None)
 fill_curve(curve=None, group_id=None, mode='TRIANGLES')
 ```
 
-> **Node** : [Fill Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeFillCurve.html#bpy.types.GeometryNodeFillCurve)
+ERROR: Node 'Fill Curve' not found
 
 #### Arguments:
 - **curve** (_Geometry_ = None) : socket 'Curve' (Curve)
@@ -1510,7 +1510,7 @@ fill_curve(curve=None, group_id=None, mode='TRIANGLES')
 fillet_curve(curve=None, radius=None, limit_radius=None, mode='BEZIER')
 ```
 
-> **Node** : [Fillet Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeFilletCurve.html#bpy.types.GeometryNodeFilletCurve)
+ERROR: Node 'Fillet Curve' not found
 
 #### Arguments:
 - **curve** (_Geometry_ = None) : socket 'Curve' (Curve)
@@ -1534,7 +1534,7 @@ fillet_curve(curve=None, radius=None, limit_radius=None, mode='BEZIER')
 flip_faces(mesh=None, selection=None)
 ```
 
-> **Node** : [Flip Faces](https://docs.blender.org/api/current/bpy.types.GeometryNodeFlipFaces.html#bpy.types.GeometryNodeFlipFaces)
+ERROR: Node 'Flip Faces' not found
 
 #### Arguments:
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (Mesh)
@@ -1556,7 +1556,7 @@ flip_faces(mesh=None, selection=None)
 float_curve(factor=None, value=None, mapping=None)
 ```
 
-> **Node** : [Float Curve](https://docs.blender.org/api/current/bpy.types.ShaderNodeFloatCurve.html#bpy.types.ShaderNodeFloatCurve)
+[Float Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/float_curve.html)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket 'Factor' (Factor)
@@ -1579,7 +1579,7 @@ float_curve(factor=None, value=None, mapping=None)
 float_to_integer(float=None, rounding_mode='ROUND')
 ```
 
-> **Node** : [Float to Integer](https://docs.blender.org/api/current/bpy.types.FunctionNodeFloatToInt.html#bpy.types.FunctionNodeFloatToInt)
+ERROR: Node 'Float to Integer' not found
 
 #### Arguments:
 - **float** (_Float_ = None) : socket 'Float' (Float)
@@ -1601,7 +1601,7 @@ float_to_integer(float=None, rounding_mode='ROUND')
 frame(label_size=20, shrink=True, text=None)
 ```
 
-> **Node** : [Frame](https://docs.blender.org/api/current/bpy.types.NodeFrame.html#bpy.types.NodeFrame)
+ERROR: Node 'Frame' not found
 
 #### Arguments:
 - **label_size** (_int_ = 20) : Node.label_size
@@ -1619,7 +1619,7 @@ frame(label_size=20, shrink=True, text=None)
 geometry_proximity(geometry=None, group_id=None, sample_position=None, sample_group_id=None, target_element='FACES')
 ```
 
-> **Node** : [Geometry Proximity](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html#bpy.types.GeometryNodeProximity)
+ERROR: Node 'Geometry Proximity' not found
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Target)
@@ -1644,7 +1644,7 @@ geometry_proximity(geometry=None, group_id=None, sample_position=None, sample_gr
 geometry_to_instance(geometry=None)
 ```
 
-> **Node** : [Geometry to Instance](https://docs.blender.org/api/current/bpy.types.GeometryNodeGeometryToInstance.html#bpy.types.GeometryNodeGeometryToInstance)
+ERROR: Node 'Geometry to Instance' not found
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -1665,7 +1665,7 @@ geometry_to_instance(geometry=None)
 get_named_grid(volume=None, name=None, remove=None, data_type='FLOAT')
 ```
 
-> **Node** : [Get Named Grid](https://docs.blender.org/api/current/bpy.types.GeometryNodeGetNamedGrid.html#bpy.types.GeometryNodeGetNamedGrid)
+ERROR: Node 'Get Named Grid' not found
 
 #### Arguments:
 - **volume** (_Geometry_ = None) : socket 'Volume' (Volume)
@@ -1689,7 +1689,7 @@ get_named_grid(volume=None, name=None, remove=None, data_type='FLOAT')
 gradient_texture(vector=None, color_mapping=None, gradient_type='LINEAR', texture_mapping=None)
 ```
 
-> **Node** : [Gradient Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html#bpy.types.ShaderNodeTexGradient)
+ERROR: Node 'Gradient Texture' not found
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -1713,7 +1713,7 @@ gradient_texture(vector=None, color_mapping=None, gradient_type='LINEAR', textur
 grid(size_x=None, size_y=None, vertices_x=None, vertices_y=None)
 ```
 
-> **Node** : [Grid](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshGrid.html#bpy.types.GeometryNodeMeshGrid)
+ERROR: Node 'Grid' not found
 
 #### Arguments:
 - **size_x** (_Float_ = None) : socket 'Size X' (Size X)
@@ -1737,7 +1737,7 @@ grid(size_x=None, size_y=None, vertices_x=None, vertices_y=None)
 grid_to_mesh(grid=None, threshold=None, adaptivity=None)
 ```
 
-> **Node** : [Grid to Mesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeGridToMesh.html#bpy.types.GeometryNodeGridToMesh)
+ERROR: Node 'Grid to Mesh' not found
 
 #### Arguments:
 - **grid** (_Float_ = None) : socket 'Grid' (Grid)
@@ -1760,7 +1760,7 @@ grid_to_mesh(grid=None, threshold=None, adaptivity=None)
 group(node_tree=None)
 ```
 
-> **Node** : [Group](https://docs.blender.org/api/current/bpy.types.GeometryNodeGroup.html#bpy.types.GeometryNodeGroup)
+[Group](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/groups.html)
 
 #### Arguments:
 - **node_tree** (_NoneType_ = None) : Node.node_tree
@@ -1776,7 +1776,7 @@ group(node_tree=None)
 group_output(is_active_output=True)
 ```
 
-> **Node** : [Group Output](https://docs.blender.org/api/current/bpy.types.NodeGroupOutput.html#bpy.types.NodeGroupOutput)
+ERROR: Node 'Group Output' not found
 
 #### Arguments:
 - **is_active_output** (_bool_ = True) : Node.is_active_output
@@ -1792,7 +1792,7 @@ group_output(is_active_output=True)
 handle_type_selection(handle_type='AUTO', mode={'LEFT', 'RIGHT'})
 ```
 
-> **Node** : [Handle Type Selection](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveHandleTypeSelection.html#bpy.types.GeometryNodeCurveHandleTypeSelection)
+ERROR: Node 'Handle Type Selection' not found
 
 #### Arguments:
 - **handle_type** (_str_ = AUTO) : Node.handle_type in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
@@ -1814,7 +1814,7 @@ handle_type_selection(handle_type='AUTO', mode={'LEFT', 'RIGHT'})
 ico_sphere(radius=None, subdivisions=None)
 ```
 
-> **Node** : [Ico Sphere](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshIcoSphere.html#bpy.types.GeometryNodeMeshIcoSphere)
+ERROR: Node 'Ico Sphere' not found
 
 #### Arguments:
 - **radius** (_Float_ = None) : socket 'Radius' (Radius)
@@ -1836,7 +1836,7 @@ ico_sphere(radius=None, subdivisions=None)
 image(image=None)
 ```
 
-> **Node** : [Image](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputImage.html#bpy.types.GeometryNodeInputImage)
+ERROR: Node 'Image' not found
 
 #### Arguments:
 - **image** (_NoneType_ = None) : Node.image
@@ -1857,7 +1857,7 @@ image(image=None)
 image_info(image=None, frame=None)
 ```
 
-> **Node** : [Image Info](https://docs.blender.org/api/current/bpy.types.GeometryNodeImageInfo.html#bpy.types.GeometryNodeImageInfo)
+ERROR: Node 'Image Info' not found
 
 #### Arguments:
 - **image** (_Image_ = None) : socket 'Image' (Image)
@@ -1879,7 +1879,7 @@ image_info(image=None, frame=None)
 image_texture(image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear')
 ```
 
-> **Node** : [Image Texture](https://docs.blender.org/api/current/bpy.types.GeometryNodeImageTexture.html#bpy.types.GeometryNodeImageTexture)
+ERROR: Node 'Image Texture' not found
 
 #### Arguments:
 - **image** (_Image_ = None) : socket 'Image' (Image)
@@ -1904,7 +1904,7 @@ image_texture(image=None, vector=None, frame=None, extension='REPEAT', interpola
 index_of_nearest(position=None, group_id=None)
 ```
 
-> **Node** : [Index of Nearest](https://docs.blender.org/api/current/bpy.types.GeometryNodeIndexOfNearest.html#bpy.types.GeometryNodeIndexOfNearest)
+[Index of Nearest](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/index_of_nearest.html)
 
 #### Arguments:
 - **position** (_Vector_ = None) : socket 'Position' (Position)
@@ -1926,7 +1926,7 @@ index_of_nearest(position=None, group_id=None)
 index_switch(index=None, _0=None, _1=None, data_type='GEOMETRY', index_switch_items=None)
 ```
 
-> **Node** : [Index Switch](https://docs.blender.org/api/current/bpy.types.GeometryNodeIndexSwitch.html#bpy.types.GeometryNodeIndexSwitch)
+ERROR: Node 'Index Switch' not found
 
 #### Arguments:
 - **index** (_Integer_ = None) : socket 'Index' (Index)
@@ -1951,7 +1951,7 @@ index_switch(index=None, _0=None, _1=None, data_type='GEOMETRY', index_switch_it
 instance_on_points(points=None, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None)
 ```
 
-> **Node** : [Instance on Points](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstanceOnPoints.html#bpy.types.GeometryNodeInstanceOnPoints)
+ERROR: Node 'Instance on Points' not found
 
 #### Arguments:
 - **points** (_Geometry_ = None) : socket 'Points' (Points)
@@ -1978,7 +1978,7 @@ instance_on_points(points=None, selection=None, instance=None, pick_instance=Non
 instances_to_points(instances=None, selection=None, position=None, radius=None)
 ```
 
-> **Node** : [Instances to Points](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstancesToPoints.html#bpy.types.GeometryNodeInstancesToPoints)
+ERROR: Node 'Instances to Points' not found
 
 #### Arguments:
 - **instances** (_Geometry_ = None) : socket 'Instances' (Instances)
@@ -2002,7 +2002,7 @@ instances_to_points(instances=None, selection=None, position=None, radius=None)
 integer(integer=0)
 ```
 
-> **Node** : [Integer](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputInt.html#bpy.types.FunctionNodeInputInt)
+ERROR: Node 'Integer' not found
 
 #### Arguments:
 - **integer** (_int_ = 0) : Node.integer
@@ -2023,7 +2023,7 @@ integer(integer=0)
 interpolate_curves(guide_curves=None, guide_up=None, guide_group_id=None, points=None, point_up=None, point_group_id=None, max_neighbors=None)
 ```
 
-> **Node** : [Interpolate Curves](https://docs.blender.org/api/current/bpy.types.GeometryNodeInterpolateCurves.html#bpy.types.GeometryNodeInterpolateCurves)
+ERROR: Node 'Interpolate Curves' not found
 
 #### Arguments:
 - **guide_curves** (_Geometry_ = None) : socket 'Guide Curves' (Guide Curves)
@@ -2050,7 +2050,7 @@ interpolate_curves(guide_curves=None, guide_up=None, guide_group_id=None, points
 invert_matrix(matrix=None)
 ```
 
-> **Node** : [Invert Matrix](https://docs.blender.org/api/current/bpy.types.FunctionNodeInvertMatrix.html#bpy.types.FunctionNodeInvertMatrix)
+ERROR: Node 'Invert Matrix' not found
 
 #### Arguments:
 - **matrix** (_Matrix_ = None) : socket 'Matrix' (Matrix)
@@ -2071,7 +2071,7 @@ invert_matrix(matrix=None)
 invert_rotation(rotation=None)
 ```
 
-> **Node** : [Invert Rotation](https://docs.blender.org/api/current/bpy.types.FunctionNodeInvertRotation.html#bpy.types.FunctionNodeInvertRotation)
+ERROR: Node 'Invert Rotation' not found
 
 #### Arguments:
 - **rotation** (_Rotation_ = None) : socket 'Rotation' (Rotation)
@@ -2092,7 +2092,7 @@ invert_rotation(rotation=None)
 is_face_planar(threshold=None)
 ```
 
-> **Node** : [Is Face Planar](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceIsPlanar.html#bpy.types.GeometryNodeInputMeshFaceIsPlanar)
+ERROR: Node 'Is Face Planar' not found
 
 #### Arguments:
 - **threshold** (_Float_ = None) : socket 'Threshold' (Threshold)
@@ -2113,7 +2113,7 @@ is_face_planar(threshold=None)
 join_geometry(geometry=None)
 ```
 
-> **Node** : [Join Geometry](https://docs.blender.org/api/current/bpy.types.GeometryNodeJoinGeometry.html#bpy.types.GeometryNodeJoinGeometry)
+ERROR: Node 'Join Geometry' not found
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -2134,7 +2134,7 @@ join_geometry(geometry=None)
 join_strings(delimiter=None, strings=None)
 ```
 
-> **Node** : [Join Strings](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringJoin.html#bpy.types.GeometryNodeStringJoin)
+ERROR: Node 'Join Strings' not found
 
 #### Arguments:
 - **delimiter** (_String_ = None) : socket 'Delimiter' (Delimiter)
@@ -2156,7 +2156,7 @@ join_strings(delimiter=None, strings=None)
 magic_texture(vector=None, scale=None, distortion=None, color_mapping=None, texture_mapping=None, turbulence_depth=2)
 ```
 
-> **Node** : [Magic Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexMagic.html#bpy.types.ShaderNodeTexMagic)
+ERROR: Node 'Magic Texture' not found
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -2182,7 +2182,7 @@ magic_texture(vector=None, scale=None, distortion=None, color_mapping=None, text
 map_range(value=None, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True, data_type='FLOAT', interpolation_type='LINEAR')
 ```
 
-> **Node** : [Map Range](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html#bpy.types.ShaderNodeMapRange)
+ERROR: Node 'Map Range' not found
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (Value)
@@ -2210,7 +2210,7 @@ map_range(value=None, from_min=None, from_max=None, to_min=None, to_max=None, cl
 material(material=None)
 ```
 
-> **Node** : [Material](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMaterial.html#bpy.types.GeometryNodeInputMaterial)
+[Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/freestyle/view_layer/line_style/modifiers/color/material.html)
 
 #### Arguments:
 - **material** (_NoneType_ = None) : Node.material
@@ -2231,7 +2231,7 @@ material(material=None)
 material_selection(material=None)
 ```
 
-> **Node** : [Material Selection](https://docs.blender.org/api/current/bpy.types.GeometryNodeMaterialSelection.html#bpy.types.GeometryNodeMaterialSelection)
+ERROR: Node 'Material Selection' not found
 
 #### Arguments:
 - **material** (_Material_ = None) : socket 'Material' (Material)
@@ -2252,7 +2252,7 @@ material_selection(material=None)
 math(value=None, value_1=None, operation='ADD', use_clamp=False)
 ```
 
-> **Node** : [Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html#bpy.types.ShaderNodeMath)
+[Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/index.html)
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (Value)
@@ -2276,7 +2276,7 @@ math(value=None, value_1=None, operation='ADD', use_clamp=False)
 menu_switch(menu=None, a=None, b=None, active_index=1, data_type='GEOMETRY')
 ```
 
-> **Node** : [Menu Switch](https://docs.blender.org/api/current/bpy.types.GeometryNodeMenuSwitch.html#bpy.types.GeometryNodeMenuSwitch)
+ERROR: Node 'Menu Switch' not found
 
 #### Arguments:
 - **menu** (_Menu_ = None) : socket 'Menu' (Menu)
@@ -2301,7 +2301,7 @@ menu_switch(menu=None, a=None, b=None, active_index=1, data_type='GEOMETRY')
 merge_by_distance(geometry=None, selection=None, distance=None, mode='ALL')
 ```
 
-> **Node** : [Merge by Distance](https://docs.blender.org/api/current/bpy.types.GeometryNodeMergeByDistance.html#bpy.types.GeometryNodeMergeByDistance)
+ERROR: Node 'Merge by Distance' not found
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -2325,7 +2325,7 @@ merge_by_distance(geometry=None, selection=None, distance=None, mode='ALL')
 mesh_boolean(mesh_1=None, mesh_2=None, self_intersection=None, hole_tolerant=None, operation='DIFFERENCE', solver='FLOAT')
 ```
 
-> **Node** : [Mesh Boolean](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshBoolean.html#bpy.types.GeometryNodeMeshBoolean)
+ERROR: Node 'Mesh Boolean' not found
 
 #### Arguments:
 - **mesh_1** (_Geometry_ = None) : socket 'Mesh 1' (Mesh 1)
@@ -2351,7 +2351,7 @@ mesh_boolean(mesh_1=None, mesh_2=None, self_intersection=None, hole_tolerant=Non
 mesh_circle(vertices=None, radius=None, fill_type='NONE')
 ```
 
-> **Node** : [Mesh Circle](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshCircle.html#bpy.types.GeometryNodeMeshCircle)
+ERROR: Node 'Mesh Circle' not found
 
 #### Arguments:
 - **vertices** (_Integer_ = None) : socket 'Vertices' (Vertices)
@@ -2374,7 +2374,7 @@ mesh_circle(vertices=None, radius=None, fill_type='NONE')
 mesh_line(count=None, start_location=None, offset=None, count_mode='TOTAL', mode='OFFSET')
 ```
 
-> **Node** : [Mesh Line](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshLine.html#bpy.types.GeometryNodeMeshLine)
+ERROR: Node 'Mesh Line' not found
 
 #### Arguments:
 - **count** (_Integer_ = None) : socket 'Count' (Count)
@@ -2399,7 +2399,7 @@ mesh_line(count=None, start_location=None, offset=None, count_mode='TOTAL', mode
 mesh_to_curve(mesh=None, selection=None)
 ```
 
-> **Node** : [Mesh to Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToCurve.html#bpy.types.GeometryNodeMeshToCurve)
+ERROR: Node 'Mesh to Curve' not found
 
 #### Arguments:
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (Mesh)
@@ -2421,7 +2421,7 @@ mesh_to_curve(mesh=None, selection=None)
 mesh_to_density_grid(mesh=None, density=None, voxel_size=None, gradient_width=None)
 ```
 
-> **Node** : [Mesh to Density Grid](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToDensityGrid.html#bpy.types.GeometryNodeMeshToDensityGrid)
+ERROR: Node 'Mesh to Density Grid' not found
 
 #### Arguments:
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (Mesh)
@@ -2445,7 +2445,7 @@ mesh_to_density_grid(mesh=None, density=None, voxel_size=None, gradient_width=No
 mesh_to_points(mesh=None, selection=None, position=None, radius=None, mode='VERTICES')
 ```
 
-> **Node** : [Mesh to Points](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToPoints.html#bpy.types.GeometryNodeMeshToPoints)
+ERROR: Node 'Mesh to Points' not found
 
 #### Arguments:
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (Mesh)
@@ -2470,7 +2470,7 @@ mesh_to_points(mesh=None, selection=None, position=None, radius=None, mode='VERT
 mesh_to_sdf_grid(mesh=None, voxel_size=None, band_width=None)
 ```
 
-> **Node** : [Mesh to SDF Grid](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToSDFGrid.html#bpy.types.GeometryNodeMeshToSDFGrid)
+ERROR: Node 'Mesh to SDF Grid' not found
 
 #### Arguments:
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (Mesh)
@@ -2493,7 +2493,7 @@ mesh_to_sdf_grid(mesh=None, voxel_size=None, band_width=None)
 mesh_to_volume(mesh=None, density=None, voxel_amount=None, interior_band_width=None, resolution_mode='VOXEL_AMOUNT')
 ```
 
-> **Node** : [Mesh to Volume](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToVolume.html#bpy.types.GeometryNodeMeshToVolume)
+ERROR: Node 'Mesh to Volume' not found
 
 #### Arguments:
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (Mesh)
@@ -2518,7 +2518,7 @@ mesh_to_volume(mesh=None, density=None, voxel_amount=None, interior_band_width=N
 mix(factor=None, a=None, b=None, blend_type='MIX', clamp_factor=True, clamp_result=False, data_type='FLOAT', factor_mode='UNIFORM')
 ```
 
-> **Node** : [Mix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html#bpy.types.ShaderNodeMix)
+[Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../compositing/types/color/mix/index.html)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket 'Factor' (Factor_Float)
@@ -2546,7 +2546,7 @@ mix(factor=None, a=None, b=None, blend_type='MIX', clamp_factor=True, clamp_resu
 multiply_matrices(matrix=None, matrix_1=None)
 ```
 
-> **Node** : [Multiply Matrices](https://docs.blender.org/api/current/bpy.types.FunctionNodeMatrixMultiply.html#bpy.types.FunctionNodeMatrixMultiply)
+ERROR: Node 'Multiply Matrices' not found
 
 #### Arguments:
 - **matrix** (_Matrix_ = None) : socket 'Matrix' (Matrix)
@@ -2568,7 +2568,7 @@ multiply_matrices(matrix=None, matrix_1=None)
 named_attribute(name=None, data_type='FLOAT')
 ```
 
-> **Node** : [Named Attribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html#bpy.types.GeometryNodeInputNamedAttribute)
+ERROR: Node 'Named Attribute' not found
 
 #### Arguments:
 - **name** (_String_ = None) : socket 'Name' (Name)
@@ -2590,7 +2590,7 @@ named_attribute(name=None, data_type='FLOAT')
 named_layer_selection(name=None)
 ```
 
-> **Node** : [Named Layer Selection](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedLayerSelection.html#bpy.types.GeometryNodeInputNamedLayerSelection)
+ERROR: Node 'Named Layer Selection' not found
 
 #### Arguments:
 - **name** (_String_ = None) : socket 'Name' (Name)
@@ -2611,7 +2611,7 @@ named_layer_selection(name=None)
 noise_texture(vector=None, scale=None, detail=None, roughness=None, lacunarity=None, distortion=None, color_mapping=None, noise_dimensions='3D', noise_type='FBM', normalize=True, texture_mapping=None)
 ```
 
-> **Node** : [Noise Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexNoise.html#bpy.types.ShaderNodeTexNoise)
+ERROR: Node 'Noise Texture' not found
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -2642,7 +2642,7 @@ noise_texture(vector=None, scale=None, detail=None, roughness=None, lacunarity=N
 object_info(object=None, as_instance=None, transform_space='ORIGINAL')
 ```
 
-> **Node** : [Object Info](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html#bpy.types.GeometryNodeObjectInfo)
+ERROR: Node 'Object Info' not found
 
 #### Arguments:
 - **object** (_Object_ = None) : socket 'Object' (Object)
@@ -2665,7 +2665,7 @@ object_info(object=None, as_instance=None, transform_space='ORIGINAL')
 offset_corner_in_face(corner_index=None, offset=None)
 ```
 
-> **Node** : [Offset Corner in Face](https://docs.blender.org/api/current/bpy.types.GeometryNodeOffsetCornerInFace.html#bpy.types.GeometryNodeOffsetCornerInFace)
+ERROR: Node 'Offset Corner in Face' not found
 
 #### Arguments:
 - **corner_index** (_Integer_ = None) : socket 'Corner Index' (Corner Index)
@@ -2687,7 +2687,7 @@ offset_corner_in_face(corner_index=None, offset=None)
 offset_point_in_curve(point_index=None, offset=None)
 ```
 
-> **Node** : [Offset Point in Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeOffsetPointInCurve.html#bpy.types.GeometryNodeOffsetPointInCurve)
+ERROR: Node 'Offset Point in Curve' not found
 
 #### Arguments:
 - **point_index** (_Integer_ = None) : socket 'Point Index' (Point Index)
@@ -2709,7 +2709,7 @@ offset_point_in_curve(point_index=None, offset=None)
 pack_uv_islands(uv=None, selection=None, margin=None, rotate=None)
 ```
 
-> **Node** : [Pack UV Islands](https://docs.blender.org/api/current/bpy.types.GeometryNodeUVPackIslands.html#bpy.types.GeometryNodeUVPackIslands)
+ERROR: Node 'Pack UV Islands' not found
 
 #### Arguments:
 - **uv** (_Vector_ = None) : socket 'UV' (UV)
@@ -2733,7 +2733,7 @@ pack_uv_islands(uv=None, selection=None, margin=None, rotate=None)
 points(count=None, position=None, radius=None)
 ```
 
-> **Node** : [Points](https://docs.blender.org/api/current/bpy.types.GeometryNodePoints.html#bpy.types.GeometryNodePoints)
+ERROR: Node 'Points' not found
 
 #### Arguments:
 - **count** (_Integer_ = None) : socket 'Count' (Count)
@@ -2756,7 +2756,7 @@ points(count=None, position=None, radius=None)
 points_of_curve(curve_index=None, weights=None, sort_index=None)
 ```
 
-> **Node** : [Points of Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsOfCurve.html#bpy.types.GeometryNodePointsOfCurve)
+ERROR: Node 'Points of Curve' not found
 
 #### Arguments:
 - **curve_index** (_Integer_ = None) : socket 'Curve Index' (Curve Index)
@@ -2779,7 +2779,7 @@ points_of_curve(curve_index=None, weights=None, sort_index=None)
 points_to_curves(points=None, curve_group_id=None, weight=None)
 ```
 
-> **Node** : [Points to Curves](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToCurves.html#bpy.types.GeometryNodePointsToCurves)
+ERROR: Node 'Points to Curves' not found
 
 #### Arguments:
 - **points** (_Geometry_ = None) : socket 'Points' (Points)
@@ -2802,7 +2802,7 @@ points_to_curves(points=None, curve_group_id=None, weight=None)
 points_to_sdf_grid(points=None, radius=None, voxel_size=None)
 ```
 
-> **Node** : [Points to SDF Grid](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToSDFGrid.html#bpy.types.GeometryNodePointsToSDFGrid)
+ERROR: Node 'Points to SDF Grid' not found
 
 #### Arguments:
 - **points** (_Geometry_ = None) : socket 'Points' (Points)
@@ -2825,7 +2825,7 @@ points_to_sdf_grid(points=None, radius=None, voxel_size=None)
 points_to_vertices(points=None, selection=None)
 ```
 
-> **Node** : [Points to Vertices](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToVertices.html#bpy.types.GeometryNodePointsToVertices)
+ERROR: Node 'Points to Vertices' not found
 
 #### Arguments:
 - **points** (_Geometry_ = None) : socket 'Points' (Points)
@@ -2847,7 +2847,7 @@ points_to_vertices(points=None, selection=None)
 points_to_volume(points=None, density=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_AMOUNT')
 ```
 
-> **Node** : [Points to Volume](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToVolume.html#bpy.types.GeometryNodePointsToVolume)
+ERROR: Node 'Points to Volume' not found
 
 #### Arguments:
 - **points** (_Geometry_ = None) : socket 'Points' (Points)
@@ -2872,7 +2872,7 @@ points_to_volume(points=None, density=None, voxel_amount=None, radius=None, reso
 project_point(vector=None, transform=None)
 ```
 
-> **Node** : [Project Point](https://docs.blender.org/api/current/bpy.types.FunctionNodeProjectPoint.html#bpy.types.FunctionNodeProjectPoint)
+ERROR: Node 'Project Point' not found
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -2894,7 +2894,7 @@ project_point(vector=None, transform=None)
 quadratic_bezier(resolution=None, start=None, middle=None, end=None)
 ```
 
-> **Node** : [Quadratic Bézier](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveQuadraticBezier.html#bpy.types.GeometryNodeCurveQuadraticBezier)
+ERROR: Node 'Quadratic Bézier' not found
 
 #### Arguments:
 - **resolution** (_Integer_ = None) : socket 'Resolution' (Resolution)
@@ -2918,7 +2918,7 @@ quadratic_bezier(resolution=None, start=None, middle=None, end=None)
 quadrilateral(width=None, height=None, mode='RECTANGLE')
 ```
 
-> **Node** : [Quadrilateral](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveQuadrilateral.html#bpy.types.GeometryNodeCurvePrimitiveQuadrilateral)
+ERROR: Node 'Quadrilateral' not found
 
 #### Arguments:
 - **width** (_Float_ = None) : socket 'Width' (Width)
@@ -2941,7 +2941,7 @@ quadrilateral(width=None, height=None, mode='RECTANGLE')
 quaternion_to_rotation(w=None, x=None, y=None, z=None)
 ```
 
-> **Node** : [Quaternion to Rotation](https://docs.blender.org/api/current/bpy.types.FunctionNodeQuaternionToRotation.html#bpy.types.FunctionNodeQuaternionToRotation)
+ERROR: Node 'Quaternion to Rotation' not found
 
 #### Arguments:
 - **w** (_Float_ = None) : socket 'W' (W)
@@ -2965,7 +2965,7 @@ quaternion_to_rotation(w=None, x=None, y=None, z=None)
 random_value(min=None, max=None, id=None, seed=None, data_type='FLOAT')
 ```
 
-> **Node** : [Random Value](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html#bpy.types.FunctionNodeRandomValue)
+ERROR: Node 'Random Value' not found
 
 #### Arguments:
 - **min** (_Float_ = None) : socket 'Min' (Min_001)
@@ -2990,7 +2990,7 @@ random_value(min=None, max=None, id=None, seed=None, data_type='FLOAT')
 raycast(target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None, data_type='FLOAT', mapping='INTERPOLATED')
 ```
 
-> **Node** : [Raycast](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html#bpy.types.GeometryNodeRaycast)
+ERROR: Node 'Raycast' not found
 
 #### Arguments:
 - **target_geometry** (_Geometry_ = None) : socket 'Target Geometry' (Target Geometry)
@@ -3017,7 +3017,7 @@ raycast(target_geometry=None, attribute=None, source_position=None, ray_directio
 realize_instances(geometry=None, selection=None, realize_all=None, depth=None)
 ```
 
-> **Node** : [Realize Instances](https://docs.blender.org/api/current/bpy.types.GeometryNodeRealizeInstances.html#bpy.types.GeometryNodeRealizeInstances)
+ERROR: Node 'Realize Instances' not found
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -3041,7 +3041,7 @@ realize_instances(geometry=None, selection=None, realize_all=None, depth=None)
 remove_named_attribute(geometry=None, name=None, pattern_mode='EXACT')
 ```
 
-> **Node** : [Remove Named Attribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeRemoveAttribute.html#bpy.types.GeometryNodeRemoveAttribute)
+ERROR: Node 'Remove Named Attribute' not found
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -3064,7 +3064,7 @@ remove_named_attribute(geometry=None, name=None, pattern_mode='EXACT')
 repeat_input(iterations=None, pair_with_output=None, paired_output=None)
 ```
 
-> **Node** : [Repeat Input](https://docs.blender.org/api/current/bpy.types.GeometryNodeRepeatInput.html#bpy.types.GeometryNodeRepeatInput)
+ERROR: Node 'Repeat Input' not found
 
 #### Arguments:
 - **iterations** (_Integer_ = None) : socket 'Iterations' (Iterations)
@@ -3082,7 +3082,7 @@ repeat_input(iterations=None, pair_with_output=None, paired_output=None)
 repeat_output(geometry=None, active_index=0, active_item=None, inspection_index=0, repeat_items=None)
 ```
 
-> **Node** : [Repeat Output](https://docs.blender.org/api/current/bpy.types.GeometryNodeRepeatOutput.html#bpy.types.GeometryNodeRepeatOutput)
+ERROR: Node 'Repeat Output' not found
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Item_0)
@@ -3107,7 +3107,7 @@ repeat_output(geometry=None, active_index=0, active_item=None, inspection_index=
 replace_material(geometry=None, old=None, new=None)
 ```
 
-> **Node** : [Replace Material](https://docs.blender.org/api/current/bpy.types.GeometryNodeReplaceMaterial.html#bpy.types.GeometryNodeReplaceMaterial)
+ERROR: Node 'Replace Material' not found
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -3130,7 +3130,7 @@ replace_material(geometry=None, old=None, new=None)
 replace_string(string=None, find=None, replace=None)
 ```
 
-> **Node** : [Replace String](https://docs.blender.org/api/current/bpy.types.FunctionNodeReplaceString.html#bpy.types.FunctionNodeReplaceString)
+ERROR: Node 'Replace String' not found
 
 #### Arguments:
 - **string** (_String_ = None) : socket 'String' (String)
@@ -3153,7 +3153,7 @@ replace_string(string=None, find=None, replace=None)
 reroute(input=None)
 ```
 
-> **Node** : [Reroute](https://docs.blender.org/api/current/bpy.types.NodeReroute.html#bpy.types.NodeReroute)
+ERROR: Node 'Reroute' not found
 
 #### Arguments:
 - **input** (_Color_ = None) : socket 'Input' (Input)
@@ -3174,7 +3174,7 @@ reroute(input=None)
 resample_curve(curve=None, selection=None, count=None, mode='COUNT')
 ```
 
-> **Node** : [Resample Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeResampleCurve.html#bpy.types.GeometryNodeResampleCurve)
+ERROR: Node 'Resample Curve' not found
 
 #### Arguments:
 - **curve** (_Geometry_ = None) : socket 'Curve' (Curve)
@@ -3198,7 +3198,7 @@ resample_curve(curve=None, selection=None, count=None, mode='COUNT')
 reverse_curve(curve=None, selection=None)
 ```
 
-> **Node** : [Reverse Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeReverseCurve.html#bpy.types.GeometryNodeReverseCurve)
+ERROR: Node 'Reverse Curve' not found
 
 #### Arguments:
 - **curve** (_Geometry_ = None) : socket 'Curve' (Curve)
@@ -3220,7 +3220,7 @@ reverse_curve(curve=None, selection=None)
 rgb_curves(fac=None, color=None, mapping=None)
 ```
 
-> **Node** : [RGB Curves](https://docs.blender.org/api/current/bpy.types.ShaderNodeRGBCurve.html#bpy.types.ShaderNodeRGBCurve)
+ERROR: Node 'RGB Curves' not found
 
 #### Arguments:
 - **fac** (_Float_ = None) : socket 'Fac' (Fac)
@@ -3243,7 +3243,7 @@ rgb_curves(fac=None, color=None, mapping=None)
 rotate_euler(rotation=None, rotate_by=None, rotation_type='EULER', space='OBJECT')
 ```
 
-> **Node** : [Rotate Euler](https://docs.blender.org/api/current/bpy.types.FunctionNodeRotateEuler.html#bpy.types.FunctionNodeRotateEuler)
+ERROR: Node 'Rotate Euler' not found
 
 #### Arguments:
 - **rotation** (_Vector_ = None) : socket 'Rotation' (Rotation)
@@ -3267,7 +3267,7 @@ rotate_euler(rotation=None, rotate_by=None, rotation_type='EULER', space='OBJECT
 rotate_instances(instances=None, selection=None, rotation=None, pivot_point=None, local_space=None)
 ```
 
-> **Node** : [Rotate Instances](https://docs.blender.org/api/current/bpy.types.GeometryNodeRotateInstances.html#bpy.types.GeometryNodeRotateInstances)
+ERROR: Node 'Rotate Instances' not found
 
 #### Arguments:
 - **instances** (_Geometry_ = None) : socket 'Instances' (Instances)
@@ -3292,7 +3292,7 @@ rotate_instances(instances=None, selection=None, rotation=None, pivot_point=None
 rotate_rotation(rotation=None, rotate_by=None, rotation_space='GLOBAL')
 ```
 
-> **Node** : [Rotate Rotation](https://docs.blender.org/api/current/bpy.types.FunctionNodeRotateRotation.html#bpy.types.FunctionNodeRotateRotation)
+ERROR: Node 'Rotate Rotation' not found
 
 #### Arguments:
 - **rotation** (_Rotation_ = None) : socket 'Rotation' (Rotation)
@@ -3315,7 +3315,7 @@ rotate_rotation(rotation=None, rotate_by=None, rotation_space='GLOBAL')
 rotate_vector(vector=None, rotation=None)
 ```
 
-> **Node** : [Rotate Vector](https://docs.blender.org/api/current/bpy.types.FunctionNodeRotateVector.html#bpy.types.FunctionNodeRotateVector)
+ERROR: Node 'Rotate Vector' not found
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -3337,7 +3337,7 @@ rotate_vector(vector=None, rotation=None)
 rotation(rotation_euler=None)
 ```
 
-> **Node** : [Rotation](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputRotation.html#bpy.types.FunctionNodeInputRotation)
+[Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/index.html)
 
 #### Arguments:
 - **rotation_euler** (_Euler_ = None) : Node.rotation_euler
@@ -3358,7 +3358,7 @@ rotation(rotation_euler=None)
 rotation_to_axis_angle(rotation=None)
 ```
 
-> **Node** : [Rotation to Axis Angle](https://docs.blender.org/api/current/bpy.types.FunctionNodeRotationToAxisAngle.html#bpy.types.FunctionNodeRotationToAxisAngle)
+ERROR: Node 'Rotation to Axis Angle' not found
 
 #### Arguments:
 - **rotation** (_Rotation_ = None) : socket 'Rotation' (Rotation)
@@ -3379,7 +3379,7 @@ rotation_to_axis_angle(rotation=None)
 rotation_to_euler(rotation=None)
 ```
 
-> **Node** : [Rotation to Euler](https://docs.blender.org/api/current/bpy.types.FunctionNodeRotationToEuler.html#bpy.types.FunctionNodeRotationToEuler)
+ERROR: Node 'Rotation to Euler' not found
 
 #### Arguments:
 - **rotation** (_Rotation_ = None) : socket 'Rotation' (Rotation)
@@ -3400,7 +3400,7 @@ rotation_to_euler(rotation=None)
 rotation_to_quaternion(rotation=None)
 ```
 
-> **Node** : [Rotation to Quaternion](https://docs.blender.org/api/current/bpy.types.FunctionNodeRotationToQuaternion.html#bpy.types.FunctionNodeRotationToQuaternion)
+ERROR: Node 'Rotation to Quaternion' not found
 
 #### Arguments:
 - **rotation** (_Rotation_ = None) : socket 'Rotation' (Rotation)
@@ -3421,7 +3421,7 @@ rotation_to_quaternion(rotation=None)
 sample_curve(curves=None, value=None, factor=None, curve_index=None, data_type='FLOAT', mode='FACTOR', use_all_curves=False)
 ```
 
-> **Node** : [Sample Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleCurve.html#bpy.types.GeometryNodeSampleCurve)
+ERROR: Node 'Sample Curve' not found
 
 #### Arguments:
 - **curves** (_Geometry_ = None) : socket 'Curves' (Curves)
@@ -3448,7 +3448,7 @@ sample_curve(curves=None, value=None, factor=None, curve_index=None, data_type='
 sample_grid(grid=None, position=None, data_type='FLOAT', interpolation_mode='TRILINEAR')
 ```
 
-> **Node** : [Sample Grid](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleGrid.html#bpy.types.GeometryNodeSampleGrid)
+ERROR: Node 'Sample Grid' not found
 
 #### Arguments:
 - **grid** (_Float_ = None) : socket 'Grid' (Grid)
@@ -3472,7 +3472,7 @@ sample_grid(grid=None, position=None, data_type='FLOAT', interpolation_mode='TRI
 sample_grid_index(grid=None, x=None, y=None, z=None, data_type='FLOAT')
 ```
 
-> **Node** : [Sample Grid Index](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleGridIndex.html#bpy.types.GeometryNodeSampleGridIndex)
+ERROR: Node 'Sample Grid Index' not found
 
 #### Arguments:
 - **grid** (_Float_ = None) : socket 'Grid' (Grid)
@@ -3497,7 +3497,7 @@ sample_grid_index(grid=None, x=None, y=None, z=None, data_type='FLOAT')
 sample_index(geometry=None, value=None, index=None, clamp=False, data_type='FLOAT', domain='POINT')
 ```
 
-> **Node** : [Sample Index](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleIndex.html#bpy.types.GeometryNodeSampleIndex)
+ERROR: Node 'Sample Index' not found
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -3523,7 +3523,7 @@ sample_index(geometry=None, value=None, index=None, clamp=False, data_type='FLOA
 sample_nearest(geometry=None, sample_position=None, domain='POINT')
 ```
 
-> **Node** : [Sample Nearest](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleNearest.html#bpy.types.GeometryNodeSampleNearest)
+ERROR: Node 'Sample Nearest' not found
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -3546,7 +3546,7 @@ sample_nearest(geometry=None, sample_position=None, domain='POINT')
 sample_nearest_surface(mesh=None, value=None, group_id=None, sample_position=None, sample_group_id=None, data_type='FLOAT')
 ```
 
-> **Node** : [Sample Nearest Surface](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleNearestSurface.html#bpy.types.GeometryNodeSampleNearestSurface)
+ERROR: Node 'Sample Nearest Surface' not found
 
 #### Arguments:
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (Mesh)
@@ -3572,7 +3572,7 @@ sample_nearest_surface(mesh=None, value=None, group_id=None, sample_position=Non
 sample_uv_surface(mesh=None, value=None, uv_map=None, sample_uv=None, data_type='FLOAT')
 ```
 
-> **Node** : [Sample UV Surface](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleUVSurface.html#bpy.types.GeometryNodeSampleUVSurface)
+ERROR: Node 'Sample UV Surface' not found
 
 #### Arguments:
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (Mesh)
@@ -3597,7 +3597,7 @@ sample_uv_surface(mesh=None, value=None, uv_map=None, sample_uv=None, data_type=
 scale_elements(geometry=None, selection=None, scale=None, center=None, domain='FACE', scale_mode='UNIFORM')
 ```
 
-> **Node** : [Scale Elements](https://docs.blender.org/api/current/bpy.types.GeometryNodeScaleElements.html#bpy.types.GeometryNodeScaleElements)
+ERROR: Node 'Scale Elements' not found
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -3623,7 +3623,7 @@ scale_elements(geometry=None, selection=None, scale=None, center=None, domain='F
 scale_instances(instances=None, selection=None, scale=None, center=None, local_space=None)
 ```
 
-> **Node** : [Scale Instances](https://docs.blender.org/api/current/bpy.types.GeometryNodeScaleInstances.html#bpy.types.GeometryNodeScaleInstances)
+ERROR: Node 'Scale Instances' not found
 
 #### Arguments:
 - **instances** (_Geometry_ = None) : socket 'Instances' (Instances)
@@ -3648,7 +3648,7 @@ scale_instances(instances=None, selection=None, scale=None, center=None, local_s
 sdf_grid_boolean(grid_1=None, grid_2=None, operation='DIFFERENCE')
 ```
 
-> **Node** : [SDF Grid Boolean](https://docs.blender.org/api/current/bpy.types.GeometryNodeSDFGridBoolean.html#bpy.types.GeometryNodeSDFGridBoolean)
+ERROR: Node 'SDF Grid Boolean' not found
 
 #### Arguments:
 - **grid_1** (_Float_ = None) : socket 'Grid 1' (Grid 1)
@@ -3671,7 +3671,7 @@ sdf_grid_boolean(grid_1=None, grid_2=None, operation='DIFFERENCE')
 separate_color(color=None, mode='RGB')
 ```
 
-> **Node** : [Separate Color](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html#bpy.types.FunctionNodeSeparateColor)
+ERROR: Node 'Separate Color' not found
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -3693,7 +3693,7 @@ separate_color(color=None, mode='RGB')
 separate_components(geometry=None)
 ```
 
-> **Node** : [Separate Components](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html#bpy.types.GeometryNodeSeparateComponents)
+ERROR: Node 'Separate Components' not found
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -3714,7 +3714,7 @@ separate_components(geometry=None)
 separate_geometry(geometry=None, selection=None, domain='POINT')
 ```
 
-> **Node** : [Separate Geometry](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateGeometry.html#bpy.types.GeometryNodeSeparateGeometry)
+ERROR: Node 'Separate Geometry' not found
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -3737,7 +3737,7 @@ separate_geometry(geometry=None, selection=None, domain='POINT')
 separate_matrix(matrix=None)
 ```
 
-> **Node** : [Separate Matrix](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateMatrix.html#bpy.types.FunctionNodeSeparateMatrix)
+ERROR: Node 'Separate Matrix' not found
 
 #### Arguments:
 - **matrix** (_Matrix_ = None) : socket 'Matrix' (Matrix)
@@ -3758,7 +3758,7 @@ separate_matrix(matrix=None)
 separate_transform(transform=None)
 ```
 
-> **Node** : [Separate Transform](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateTransform.html#bpy.types.FunctionNodeSeparateTransform)
+ERROR: Node 'Separate Transform' not found
 
 #### Arguments:
 - **transform** (_Matrix_ = None) : socket 'Transform' (Transform)
@@ -3779,7 +3779,7 @@ separate_transform(transform=None)
 separate_xyz(vector=None)
 ```
 
-> **Node** : [Separate XYZ](https://docs.blender.org/api/current/bpy.types.ShaderNodeSeparateXYZ.html#bpy.types.ShaderNodeSeparateXYZ)
+ERROR: Node 'Separate XYZ' not found
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -3800,7 +3800,7 @@ separate_xyz(vector=None)
 set_curve_normal(curve=None, selection=None, mode='MINIMUM_TWIST')
 ```
 
-> **Node** : [Set Curve Normal](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveNormal.html#bpy.types.GeometryNodeSetCurveNormal)
+ERROR: Node 'Set Curve Normal' not found
 
 #### Arguments:
 - **curve** (_Geometry_ = None) : socket 'Curve' (Curve)
@@ -3823,7 +3823,7 @@ set_curve_normal(curve=None, selection=None, mode='MINIMUM_TWIST')
 set_curve_radius(curve=None, selection=None, radius=None)
 ```
 
-> **Node** : [Set Curve Radius](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveRadius.html#bpy.types.GeometryNodeSetCurveRadius)
+ERROR: Node 'Set Curve Radius' not found
 
 #### Arguments:
 - **curve** (_Geometry_ = None) : socket 'Curve' (Curve)
@@ -3846,7 +3846,7 @@ set_curve_radius(curve=None, selection=None, radius=None)
 set_curve_tilt(curve=None, selection=None, tilt=None)
 ```
 
-> **Node** : [Set Curve Tilt](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveTilt.html#bpy.types.GeometryNodeSetCurveTilt)
+ERROR: Node 'Set Curve Tilt' not found
 
 #### Arguments:
 - **curve** (_Geometry_ = None) : socket 'Curve' (Curve)
@@ -3869,7 +3869,7 @@ set_curve_tilt(curve=None, selection=None, tilt=None)
 set_face_set(mesh=None, selection=None, face_set=None)
 ```
 
-> **Node** : [Set Face Set](https://docs.blender.org/api/current/bpy.types.GeometryNodeToolSetFaceSet.html#bpy.types.GeometryNodeToolSetFaceSet)
+ERROR: Node 'Set Face Set' not found
 
 #### Arguments:
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (Mesh)
@@ -3892,7 +3892,7 @@ set_face_set(mesh=None, selection=None, face_set=None)
 set_handle_positions(curve=None, selection=None, position=None, offset=None, mode='LEFT')
 ```
 
-> **Node** : [Set Handle Positions](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveHandlePositions.html#bpy.types.GeometryNodeSetCurveHandlePositions)
+ERROR: Node 'Set Handle Positions' not found
 
 #### Arguments:
 - **curve** (_Geometry_ = None) : socket 'Curve' (Curve)
@@ -3917,7 +3917,7 @@ set_handle_positions(curve=None, selection=None, position=None, offset=None, mod
 set_handle_type(curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'})
 ```
 
-> **Node** : [Set Handle Type](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSetHandles.html#bpy.types.GeometryNodeCurveSetHandles)
+ERROR: Node 'Set Handle Type' not found
 
 #### Arguments:
 - **curve** (_Geometry_ = None) : socket 'Curve' (Curve)
@@ -3941,7 +3941,7 @@ set_handle_type(curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'R
 set_id(geometry=None, selection=None, id=None)
 ```
 
-> **Node** : [Set ID](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetID.html#bpy.types.GeometryNodeSetID)
+ERROR: Node 'Set ID' not found
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -3964,7 +3964,7 @@ set_id(geometry=None, selection=None, id=None)
 set_instance_transform(instances=None, selection=None, transform=None)
 ```
 
-> **Node** : [Set Instance Transform](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetInstanceTransform.html#bpy.types.GeometryNodeSetInstanceTransform)
+ERROR: Node 'Set Instance Transform' not found
 
 #### Arguments:
 - **instances** (_Geometry_ = None) : socket 'Instances' (Instances)
@@ -3987,7 +3987,7 @@ set_instance_transform(instances=None, selection=None, transform=None)
 set_material(geometry=None, selection=None, material=None)
 ```
 
-> **Node** : [Set Material](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html#bpy.types.GeometryNodeSetMaterial)
+ERROR: Node 'Set Material' not found
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -4010,7 +4010,7 @@ set_material(geometry=None, selection=None, material=None)
 set_material_index(geometry=None, selection=None, material_index=None)
 ```
 
-> **Node** : [Set Material Index](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterialIndex.html#bpy.types.GeometryNodeSetMaterialIndex)
+ERROR: Node 'Set Material Index' not found
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -4033,7 +4033,7 @@ set_material_index(geometry=None, selection=None, material_index=None)
 set_point_radius(points=None, selection=None, radius=None)
 ```
 
-> **Node** : [Set Point Radius](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetPointRadius.html#bpy.types.GeometryNodeSetPointRadius)
+ERROR: Node 'Set Point Radius' not found
 
 #### Arguments:
 - **points** (_Geometry_ = None) : socket 'Points' (Points)
@@ -4056,7 +4056,7 @@ set_point_radius(points=None, selection=None, radius=None)
 set_position(geometry=None, selection=None, position=None, offset=None)
 ```
 
-> **Node** : [Set Position](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetPosition.html#bpy.types.GeometryNodeSetPosition)
+ERROR: Node 'Set Position' not found
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -4080,7 +4080,7 @@ set_position(geometry=None, selection=None, position=None, offset=None)
 set_selection(geometry=None, selection=None, domain='POINT')
 ```
 
-> **Node** : [Set Selection](https://docs.blender.org/api/current/bpy.types.GeometryNodeToolSetSelection.html#bpy.types.GeometryNodeToolSetSelection)
+ERROR: Node 'Set Selection' not found
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -4103,7 +4103,7 @@ set_selection(geometry=None, selection=None, domain='POINT')
 set_shade_smooth(geometry=None, selection=None, shade_smooth=None, domain='FACE')
 ```
 
-> **Node** : [Set Shade Smooth](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetShadeSmooth.html#bpy.types.GeometryNodeSetShadeSmooth)
+ERROR: Node 'Set Shade Smooth' not found
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -4127,7 +4127,7 @@ set_shade_smooth(geometry=None, selection=None, shade_smooth=None, domain='FACE'
 set_spline_cyclic(geometry=None, selection=None, cyclic=None)
 ```
 
-> **Node** : [Set Spline Cyclic](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetSplineCyclic.html#bpy.types.GeometryNodeSetSplineCyclic)
+ERROR: Node 'Set Spline Cyclic' not found
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -4150,7 +4150,7 @@ set_spline_cyclic(geometry=None, selection=None, cyclic=None)
 set_spline_resolution(geometry=None, selection=None, resolution=None)
 ```
 
-> **Node** : [Set Spline Resolution](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetSplineResolution.html#bpy.types.GeometryNodeSetSplineResolution)
+ERROR: Node 'Set Spline Resolution' not found
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -4173,7 +4173,7 @@ set_spline_resolution(geometry=None, selection=None, resolution=None)
 set_spline_type(curve=None, selection=None, spline_type='POLY')
 ```
 
-> **Node** : [Set Spline Type](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSplineType.html#bpy.types.GeometryNodeCurveSplineType)
+ERROR: Node 'Set Spline Type' not found
 
 #### Arguments:
 - **curve** (_Geometry_ = None) : socket 'Curve' (Curve)
@@ -4196,7 +4196,7 @@ set_spline_type(curve=None, selection=None, spline_type='POLY')
 shortest_edge_paths(end_vertex=None, edge_cost=None)
 ```
 
-> **Node** : [Shortest Edge Paths](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputShortestEdgePaths.html#bpy.types.GeometryNodeInputShortestEdgePaths)
+ERROR: Node 'Shortest Edge Paths' not found
 
 #### Arguments:
 - **end_vertex** (_Boolean_ = None) : socket 'End Vertex' (End Vertex)
@@ -4218,7 +4218,7 @@ shortest_edge_paths(end_vertex=None, edge_cost=None)
 simulation_input(pair_with_output=None, paired_output=None)
 ```
 
-> **Node** : [Simulation Input](https://docs.blender.org/api/current/bpy.types.GeometryNodeSimulationInput.html#bpy.types.GeometryNodeSimulationInput)
+ERROR: Node 'Simulation Input' not found
 
 #### Arguments:
 - **pair_with_output** (_bpy_func_ = None) : Node.pair_with_output
@@ -4240,7 +4240,7 @@ simulation_input(pair_with_output=None, paired_output=None)
 simulation_output(skip=None, geometry=None, active_index=0, active_item=None, state_items=None)
 ```
 
-> **Node** : [Simulation Output](https://docs.blender.org/api/current/bpy.types.GeometryNodeSimulationOutput.html#bpy.types.GeometryNodeSimulationOutput)
+ERROR: Node 'Simulation Output' not found
 
 #### Arguments:
 - **skip** (_Boolean_ = None) : socket 'Skip' (Skip)
@@ -4265,7 +4265,7 @@ simulation_output(skip=None, geometry=None, active_index=0, active_item=None, st
 slice_string(string=None, position=None, length=None)
 ```
 
-> **Node** : [Slice String](https://docs.blender.org/api/current/bpy.types.FunctionNodeSliceString.html#bpy.types.FunctionNodeSliceString)
+ERROR: Node 'Slice String' not found
 
 #### Arguments:
 - **string** (_String_ = None) : socket 'String' (String)
@@ -4288,7 +4288,7 @@ slice_string(string=None, position=None, length=None)
 sort_elements(geometry=None, selection=None, group_id=None, sort_weight=None, domain='POINT')
 ```
 
-> **Node** : [Sort Elements](https://docs.blender.org/api/current/bpy.types.GeometryNodeSortElements.html#bpy.types.GeometryNodeSortElements)
+[Sort Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../meshes/editing/mesh/sort_elements.html)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -4313,7 +4313,7 @@ sort_elements(geometry=None, selection=None, group_id=None, sort_weight=None, do
 spiral(resolution=None, rotations=None, start_radius=None, end_radius=None, height=None, reverse=None)
 ```
 
-> **Node** : [Spiral](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSpiral.html#bpy.types.GeometryNodeCurveSpiral)
+ERROR: Node 'Spiral' not found
 
 #### Arguments:
 - **resolution** (_Integer_ = None) : socket 'Resolution' (Resolution)
@@ -4339,7 +4339,7 @@ spiral(resolution=None, rotations=None, start_radius=None, end_radius=None, heig
 split_edges(mesh=None, selection=None)
 ```
 
-> **Node** : [Split Edges](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplitEdges.html#bpy.types.GeometryNodeSplitEdges)
+ERROR: Node 'Split Edges' not found
 
 #### Arguments:
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (Mesh)
@@ -4361,7 +4361,7 @@ split_edges(mesh=None, selection=None)
 split_to_instances(geometry=None, selection=None, group_id=None, domain='POINT')
 ```
 
-> **Node** : [Split to Instances](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplitToInstances.html#bpy.types.GeometryNodeSplitToInstances)
+ERROR: Node 'Split to Instances' not found
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -4385,7 +4385,7 @@ split_to_instances(geometry=None, selection=None, group_id=None, domain='POINT')
 star(points=None, inner_radius=None, outer_radius=None, twist=None)
 ```
 
-> **Node** : [Star](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveStar.html#bpy.types.GeometryNodeCurveStar)
+ERROR: Node 'Star' not found
 
 #### Arguments:
 - **points** (_Integer_ = None) : socket 'Points' (Points)
@@ -4409,7 +4409,7 @@ star(points=None, inner_radius=None, outer_radius=None, twist=None)
 store_named_attribute(geometry=None, selection=None, name=None, value=None, data_type='FLOAT', domain='POINT')
 ```
 
-> **Node** : [Store Named Attribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html#bpy.types.GeometryNodeStoreNamedAttribute)
+ERROR: Node 'Store Named Attribute' not found
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -4435,7 +4435,7 @@ store_named_attribute(geometry=None, selection=None, name=None, value=None, data
 store_named_grid(volume=None, name=None, grid=None, data_type='FLOAT')
 ```
 
-> **Node** : [Store Named Grid](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedGrid.html#bpy.types.GeometryNodeStoreNamedGrid)
+ERROR: Node 'Store Named Grid' not found
 
 #### Arguments:
 - **volume** (_Geometry_ = None) : socket 'Volume' (Volume)
@@ -4459,7 +4459,7 @@ store_named_grid(volume=None, name=None, grid=None, data_type='FLOAT')
 string(string='')
 ```
 
-> **Node** : [String](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputString.html#bpy.types.FunctionNodeInputString)
+ERROR: Node 'String' not found
 
 #### Arguments:
 - **string** (_str_ = ) : Node.string
@@ -4480,7 +4480,7 @@ string(string='')
 string_length(string=None)
 ```
 
-> **Node** : [String Length](https://docs.blender.org/api/current/bpy.types.FunctionNodeStringLength.html#bpy.types.FunctionNodeStringLength)
+ERROR: Node 'String Length' not found
 
 #### Arguments:
 - **string** (_String_ = None) : socket 'String' (String)
@@ -4501,7 +4501,7 @@ string_length(string=None)
 string_to_curves(string=None, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, align_x='LEFT', align_y='TOP_BASELINE', font=None, overflow='OVERFLOW', pivot_mode='BOTTOM_LEFT')
 ```
 
-> **Node** : [String to Curves](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringToCurves.html#bpy.types.GeometryNodeStringToCurves)
+ERROR: Node 'String to Curves' not found
 
 #### Arguments:
 - **string** (_String_ = None) : socket 'String' (String)
@@ -4532,7 +4532,7 @@ string_to_curves(string=None, size=None, character_spacing=None, word_spacing=No
 subdivide_curve(curve=None, cuts=None)
 ```
 
-> **Node** : [Subdivide Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeSubdivideCurve.html#bpy.types.GeometryNodeSubdivideCurve)
+ERROR: Node 'Subdivide Curve' not found
 
 #### Arguments:
 - **curve** (_Geometry_ = None) : socket 'Curve' (Curve)
@@ -4554,7 +4554,7 @@ subdivide_curve(curve=None, cuts=None)
 subdivide_mesh(mesh=None, level=None)
 ```
 
-> **Node** : [Subdivide Mesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeSubdivideMesh.html#bpy.types.GeometryNodeSubdivideMesh)
+ERROR: Node 'Subdivide Mesh' not found
 
 #### Arguments:
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (Mesh)
@@ -4576,7 +4576,7 @@ subdivide_mesh(mesh=None, level=None)
 subdivision_surface(mesh=None, level=None, edge_crease=None, vertex_crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES')
 ```
 
-> **Node** : [Subdivision Surface](https://docs.blender.org/api/current/bpy.types.GeometryNodeSubdivisionSurface.html#bpy.types.GeometryNodeSubdivisionSurface)
+ERROR: Node 'Subdivision Surface' not found
 
 #### Arguments:
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (Mesh)
@@ -4602,7 +4602,7 @@ subdivision_surface(mesh=None, level=None, edge_crease=None, vertex_crease=None,
 switch(switch=None, false=None, true=None, input_type='GEOMETRY')
 ```
 
-> **Node** : [Switch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html#bpy.types.GeometryNodeSwitch)
+ERROR: Node 'Switch' not found
 
 #### Arguments:
 - **switch** (_Boolean_ = None) : socket 'Switch' (Switch)
@@ -4626,7 +4626,7 @@ switch(switch=None, false=None, true=None, input_type='GEOMETRY')
 transform_direction(direction=None, transform=None)
 ```
 
-> **Node** : [Transform Direction](https://docs.blender.org/api/current/bpy.types.FunctionNodeTransformDirection.html#bpy.types.FunctionNodeTransformDirection)
+ERROR: Node 'Transform Direction' not found
 
 #### Arguments:
 - **direction** (_Vector_ = None) : socket 'Direction' (Direction)
@@ -4648,7 +4648,7 @@ transform_direction(direction=None, transform=None)
 transform_geometry(geometry=None, translation=None, rotation=None, scale=None, mode='COMPONENTS')
 ```
 
-> **Node** : [Transform Geometry](https://docs.blender.org/api/current/bpy.types.GeometryNodeTransform.html#bpy.types.GeometryNodeTransform)
+ERROR: Node 'Transform Geometry' not found
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -4673,7 +4673,7 @@ transform_geometry(geometry=None, translation=None, rotation=None, scale=None, m
 transform_point(vector=None, transform=None)
 ```
 
-> **Node** : [Transform Point](https://docs.blender.org/api/current/bpy.types.FunctionNodeTransformPoint.html#bpy.types.FunctionNodeTransformPoint)
+ERROR: Node 'Transform Point' not found
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -4695,7 +4695,7 @@ transform_point(vector=None, transform=None)
 translate_instances(instances=None, selection=None, translation=None, local_space=None)
 ```
 
-> **Node** : [Translate Instances](https://docs.blender.org/api/current/bpy.types.GeometryNodeTranslateInstances.html#bpy.types.GeometryNodeTranslateInstances)
+ERROR: Node 'Translate Instances' not found
 
 #### Arguments:
 - **instances** (_Geometry_ = None) : socket 'Instances' (Instances)
@@ -4719,7 +4719,7 @@ translate_instances(instances=None, selection=None, translation=None, local_spac
 transpose_matrix(matrix=None)
 ```
 
-> **Node** : [Transpose Matrix](https://docs.blender.org/api/current/bpy.types.FunctionNodeTransposeMatrix.html#bpy.types.FunctionNodeTransposeMatrix)
+ERROR: Node 'Transpose Matrix' not found
 
 #### Arguments:
 - **matrix** (_Matrix_ = None) : socket 'Matrix' (Matrix)
@@ -4740,7 +4740,7 @@ transpose_matrix(matrix=None)
 triangulate(mesh=None, selection=None, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL')
 ```
 
-> **Node** : [Triangulate](https://docs.blender.org/api/current/bpy.types.GeometryNodeTriangulate.html#bpy.types.GeometryNodeTriangulate)
+ERROR: Node 'Triangulate' not found
 
 #### Arguments:
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (Mesh)
@@ -4765,7 +4765,7 @@ triangulate(mesh=None, selection=None, minimum_vertices=None, ngon_method='BEAUT
 trim_curve(curve=None, selection=None, start=None, end=None, mode='FACTOR')
 ```
 
-> **Node** : [Trim Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeTrimCurve.html#bpy.types.GeometryNodeTrimCurve)
+ERROR: Node 'Trim Curve' not found
 
 #### Arguments:
 - **curve** (_Geometry_ = None) : socket 'Curve' (Curve)
@@ -4790,7 +4790,7 @@ trim_curve(curve=None, selection=None, start=None, end=None, mode='FACTOR')
 uv_sphere(segments=None, rings=None, radius=None)
 ```
 
-> **Node** : [UV Sphere](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshUVSphere.html#bpy.types.GeometryNodeMeshUVSphere)
+ERROR: Node 'UV Sphere' not found
 
 #### Arguments:
 - **segments** (_Integer_ = None) : socket 'Segments' (Segments)
@@ -4813,7 +4813,7 @@ uv_sphere(segments=None, rings=None, radius=None)
 uv_unwrap(selection=None, seam=None, margin=None, fill_holes=None, method='ANGLE_BASED')
 ```
 
-> **Node** : [UV Unwrap](https://docs.blender.org/api/current/bpy.types.GeometryNodeUVUnwrap.html#bpy.types.GeometryNodeUVUnwrap)
+ERROR: Node 'UV Unwrap' not found
 
 #### Arguments:
 - **selection** (_Boolean_ = None) : socket 'Selection' (Selection)
@@ -4838,7 +4838,7 @@ uv_unwrap(selection=None, seam=None, margin=None, fill_holes=None, method='ANGLE
 value_to_string(value=None, decimals=None)
 ```
 
-> **Node** : [Value to String](https://docs.blender.org/api/current/bpy.types.FunctionNodeValueToString.html#bpy.types.FunctionNodeValueToString)
+ERROR: Node 'Value to String' not found
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (Value)
@@ -4860,7 +4860,7 @@ value_to_string(value=None, decimals=None)
 vector(vector=None)
 ```
 
-> **Node** : [Vector](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputVector.html#bpy.types.FunctionNodeInputVector)
+[Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/index.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : Node.vector
@@ -4881,7 +4881,7 @@ vector(vector=None)
 vector_curves(fac=None, vector=None, mapping=None)
 ```
 
-> **Node** : [Vector Curves](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorCurve.html#bpy.types.ShaderNodeVectorCurve)
+ERROR: Node 'Vector Curves' not found
 
 #### Arguments:
 - **fac** (_Float_ = None) : socket 'Fac' (Fac)
@@ -4904,7 +4904,7 @@ vector_curves(fac=None, vector=None, mapping=None)
 vector_math(vector=None, vector_1=None, operation='ADD')
 ```
 
-> **Node** : [Vector Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html#bpy.types.ShaderNodeVectorMath)
+ERROR: Node 'Vector Math' not found
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -4927,7 +4927,7 @@ vector_math(vector=None, vector_1=None, operation='ADD')
 vector_rotate(vector=None, center=None, axis=None, angle=None, invert=False, rotation_type='AXIS_ANGLE')
 ```
 
-> **Node** : [Vector Rotate](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorRotate.html#bpy.types.ShaderNodeVectorRotate)
+ERROR: Node 'Vector Rotate' not found
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -4953,7 +4953,7 @@ vector_rotate(vector=None, center=None, axis=None, angle=None, invert=False, rot
 vertex_of_corner(corner_index=None)
 ```
 
-> **Node** : [Vertex of Corner](https://docs.blender.org/api/current/bpy.types.GeometryNodeVertexOfCorner.html#bpy.types.GeometryNodeVertexOfCorner)
+ERROR: Node 'Vertex of Corner' not found
 
 #### Arguments:
 - **corner_index** (_Integer_ = None) : socket 'Corner Index' (Corner Index)
@@ -4974,7 +4974,7 @@ vertex_of_corner(corner_index=None)
 viewer(geometry=None, value=None, data_type='FLOAT', domain='AUTO')
 ```
 
-> **Node** : [Viewer](https://docs.blender.org/api/current/bpy.types.GeometryNodeViewer.html#bpy.types.GeometryNodeViewer)
+ERROR: Node 'Viewer' not found
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -4993,7 +4993,7 @@ viewer(geometry=None, value=None, data_type='FLOAT', domain='AUTO')
 volume_cube(density=None, background=None, min=None, max=None, resolution_x=None, resolution_y=None, resolution_z=None)
 ```
 
-> **Node** : [Volume Cube](https://docs.blender.org/api/current/bpy.types.GeometryNodeVolumeCube.html#bpy.types.GeometryNodeVolumeCube)
+ERROR: Node 'Volume Cube' not found
 
 #### Arguments:
 - **density** (_Float_ = None) : socket 'Density' (Density)
@@ -5020,7 +5020,7 @@ volume_cube(density=None, background=None, min=None, max=None, resolution_x=None
 volume_to_mesh(volume=None, threshold=None, adaptivity=None, resolution_mode='GRID')
 ```
 
-> **Node** : [Volume to Mesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeVolumeToMesh.html#bpy.types.GeometryNodeVolumeToMesh)
+ERROR: Node 'Volume to Mesh' not found
 
 #### Arguments:
 - **volume** (_Geometry_ = None) : socket 'Volume' (Volume)
@@ -5044,7 +5044,7 @@ volume_to_mesh(volume=None, threshold=None, adaptivity=None, resolution_mode='GR
 voronoi_texture(vector=None, scale=None, detail=None, roughness=None, lacunarity=None, randomness=None, color_mapping=None, distance='EUCLIDEAN', feature='F1', normalize=False, texture_mapping=None, voronoi_dimensions='3D')
 ```
 
-> **Node** : [Voronoi Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html#bpy.types.ShaderNodeTexVoronoi)
+ERROR: Node 'Voronoi Texture' not found
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -5076,7 +5076,7 @@ voronoi_texture(vector=None, scale=None, detail=None, roughness=None, lacunarity
 wave_texture(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', color_mapping=None, rings_direction='X', texture_mapping=None, wave_profile='SIN', wave_type='BANDS')
 ```
 
-> **Node** : [Wave Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html#bpy.types.ShaderNodeTexWave)
+ERROR: Node 'Wave Texture' not found
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -5109,7 +5109,7 @@ wave_texture(vector=None, scale=None, distortion=None, detail=None, detail_scale
 white_noise_texture(vector=None, noise_dimensions='3D')
 ```
 
-> **Node** : [White Noise Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html#bpy.types.ShaderNodeTexWhiteNoise)
+ERROR: Node 'White Noise Texture' not found
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)

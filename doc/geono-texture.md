@@ -42,9 +42,9 @@ Class Image data socket
 Brick(vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None)
 ```
 
-> **Node** : [Brick Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexBrick.html#bpy.types.ShaderNodeTexBrick)
+ERROR: Node 'Brick Texture' not found
 
-> **Node** : [Brick Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexBrick.html#bpy.types.ShaderNodeTexBrick)
+ERROR: Node 'Brick Texture' not found
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -74,9 +74,9 @@ Brick(vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_siz
 Checker(vector=None, color1=None, color2=None, scale=None)
 ```
 
-> **Node** : [Checker Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexChecker.html#bpy.types.ShaderNodeTexChecker)
+ERROR: Node 'Checker Texture' not found
 
-> **Node** : [Checker Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexChecker.html#bpy.types.ShaderNodeTexChecker)
+ERROR: Node 'Checker Texture' not found
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -100,9 +100,9 @@ Checker(vector=None, color1=None, color2=None, scale=None)
 Gradient(vector=None)
 ```
 
-> **Node** : [Gradient Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html#bpy.types.ShaderNodeTexGradient)
+ERROR: Node 'Gradient Texture' not found
 
-> **Node** : [Gradient Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html#bpy.types.ShaderNodeTexGradient)
+ERROR: Node 'Gradient Texture' not found
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -123,9 +123,9 @@ Gradient(vector=None)
 Image(image=None, vector=None, frame=None, interpolation='Linear', extension='REPEAT')
 ```
 
-> **Node** : [Image Texture](https://docs.blender.org/api/current/bpy.types.GeometryNodeImageTexture.html#bpy.types.GeometryNodeImageTexture)
+ERROR: Node 'Image Texture' not found
 
-> **Node** : [Image Texture](https://docs.blender.org/api/current/bpy.types.GeometryNodeImageTexture.html#bpy.types.GeometryNodeImageTexture)
+ERROR: Node 'Image Texture' not found
 
 #### Arguments:
 - **image** (_Image_ = None) : socket 'Image' (Image)
@@ -150,9 +150,9 @@ Image(image=None, vector=None, frame=None, interpolation='Linear', extension='RE
 Magic(vector=None, scale=None, distortion=None)
 ```
 
-> **Node** : [Magic Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexMagic.html#bpy.types.ShaderNodeTexMagic)
+ERROR: Node 'Magic Texture' not found
 
-> **Node** : [Magic Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexMagic.html#bpy.types.ShaderNodeTexMagic)
+ERROR: Node 'Magic Texture' not found
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -175,9 +175,9 @@ Magic(vector=None, scale=None, distortion=None)
 Noise(vector=None, w=None, scale=None, detail=None, roughness=None, lacunarity=None, offset=None, gain=None, distortion=None, dim='3D', noise_type='FBM')
 ```
 
-> **Node** : [Noise Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexNoise.html#bpy.types.ShaderNodeTexNoise)
+ERROR: Node 'Noise Texture' not found
 
-> **Node** : [Noise Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexNoise.html#bpy.types.ShaderNodeTexNoise)
+ERROR: Node 'Noise Texture' not found
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -208,9 +208,9 @@ Noise(vector=None, w=None, scale=None, detail=None, roughness=None, lacunarity=N
 Voronoi(vector=None, w=None, scale=None, detail=None, roughness=None, lacunarity=None, smoothness=None, exponent=None, randomness=None, dim='3D', feature='F1', distance='EUCLIDEAN')
 ```
 
-> **Node** : [Voronoi Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html#bpy.types.ShaderNodeTexVoronoi)
+ERROR: Node 'Voronoi Texture' not found
 
-> **Node** : [Voronoi Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html#bpy.types.ShaderNodeTexVoronoi)
+ERROR: Node 'Voronoi Texture' not found
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -242,9 +242,9 @@ Voronoi(vector=None, w=None, scale=None, detail=None, roughness=None, lacunarity
 Wave(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, wave_type='BANDS', bands_direction='X', rings_direction='X', wave_profile='SIN')
 ```
 
-> **Node** : [Wave Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html#bpy.types.ShaderNodeTexWave)
+ERROR: Node 'Wave Texture' not found
 
-> **Node** : [Wave Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html#bpy.types.ShaderNodeTexWave)
+ERROR: Node 'Wave Texture' not found
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -275,9 +275,9 @@ Wave(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, d
 WhiteNoise(vector=None, w=None, dim='3D')
 ```
 
-> **Node** : [White Noise Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html#bpy.types.ShaderNodeTexWhiteNoise)
+ERROR: Node 'White Noise Texture' not found
 
-> **Node** : [White Noise Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html#bpy.types.ShaderNodeTexWhiteNoise)
+ERROR: Node 'White Noise Texture' not found
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)

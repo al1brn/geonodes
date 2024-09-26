@@ -45,7 +45,7 @@ Initialize self.  See help(type(self)) for accurate signature.
 add_shader(shader=None, shader_1=None)
 ```
 
-> **Node** : [Add Shader](https://docs.blender.org/api/current/bpy.types.ShaderNodeAddShader.html#bpy.types.ShaderNodeAddShader)
+[Add Shader](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/add.html)
 
 #### Arguments:
 - **shader** (_Shader_ = None) : socket 'Shader' (Shader)
@@ -67,7 +67,7 @@ add_shader(shader=None, shader_1=None)
 ambient_occlusion(color=None, distance=None, normal=None, inside=False, only_local=False, samples=16)
 ```
 
-> **Node** : [Ambient Occlusion](https://docs.blender.org/api/current/bpy.types.ShaderNodeAmbientOcclusion.html#bpy.types.ShaderNodeAmbientOcclusion)
+[Ambient Occlusion](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/input/ao.html)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -93,7 +93,7 @@ ambient_occlusion(color=None, distance=None, normal=None, inside=False, only_loc
 aov_output(color=None, value=None, aov_name='')
 ```
 
-> **Node** : [AOV Output](https://docs.blender.org/api/current/bpy.types.ShaderNodeOutputAOV.html#bpy.types.ShaderNodeOutputAOV)
+ERROR: Node 'AOV Output' not found
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -111,7 +111,7 @@ aov_output(color=None, value=None, aov_name='')
 attribute(attribute_name='', attribute_type='GEOMETRY')
 ```
 
-> **Node** : [Attribute](https://docs.blender.org/api/current/bpy.types.ShaderNodeAttribute.html#bpy.types.ShaderNodeAttribute)
+ERROR: Node 'Attribute' not found
 
 #### Arguments:
 - **attribute_name** (_str_ = ) : Node.attribute_name
@@ -133,7 +133,7 @@ attribute(attribute_name='', attribute_type='GEOMETRY')
 background(color=None, strength=None)
 ```
 
-> **Node** : [Background](https://docs.blender.org/api/current/bpy.types.ShaderNodeBackground.html#bpy.types.ShaderNodeBackground)
+[Background](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/background.html)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -155,7 +155,7 @@ background(color=None, strength=None)
 bevel(radius=None, normal=None, samples=4)
 ```
 
-> **Node** : [Bevel](https://docs.blender.org/api/current/bpy.types.ShaderNodeBevel.html#bpy.types.ShaderNodeBevel)
+ERROR: Node 'Bevel' not found
 
 #### Arguments:
 - **radius** (_Float_ = None) : socket 'Radius' (Radius)
@@ -178,7 +178,7 @@ bevel(radius=None, normal=None, samples=4)
 blackbody(temperature=None)
 ```
 
-> **Node** : [Blackbody](https://docs.blender.org/api/current/bpy.types.ShaderNodeBlackbody.html#bpy.types.ShaderNodeBlackbody)
+ERROR: Node 'Blackbody' not found
 
 #### Arguments:
 - **temperature** (_Float_ = None) : socket 'Temperature' (Temperature)
@@ -199,7 +199,7 @@ blackbody(temperature=None)
 brick_texture(vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, color_mapping=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2, texture_mapping=None)
 ```
 
-> **Node** : [Brick Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexBrick.html#bpy.types.ShaderNodeTexBrick)
+ERROR: Node 'Brick Texture' not found
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -235,7 +235,7 @@ brick_texture(vector=None, color1=None, color2=None, mortar=None, scale=None, mo
 brightness_contrast(color=None, bright=None, contrast=None)
 ```
 
-> **Node** : [Brightness/Contrast](https://docs.blender.org/api/current/bpy.types.ShaderNodeBrightContrast.html#bpy.types.ShaderNodeBrightContrast)
+ERROR: Node 'Brightness/Contrast' not found
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -258,7 +258,7 @@ brightness_contrast(color=None, bright=None, contrast=None)
 bump(strength=None, distance=None, height=None, normal=None, invert=False)
 ```
 
-> **Node** : [Bump](https://docs.blender.org/api/current/bpy.types.ShaderNodeBump.html#bpy.types.ShaderNodeBump)
+ERROR: Node 'Bump' not found
 
 #### Arguments:
 - **strength** (_Float_ = None) : socket 'Strength' (Strength)
@@ -283,7 +283,7 @@ bump(strength=None, distance=None, height=None, normal=None, invert=False)
 checker_texture(vector=None, color1=None, color2=None, scale=None, color_mapping=None, texture_mapping=None)
 ```
 
-> **Node** : [Checker Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexChecker.html#bpy.types.ShaderNodeTexChecker)
+ERROR: Node 'Checker Texture' not found
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -309,7 +309,7 @@ checker_texture(vector=None, color1=None, color2=None, scale=None, color_mapping
 clamp(value=None, min=None, max=None, clamp_type='MINMAX')
 ```
 
-> **Node** : [Clamp](https://docs.blender.org/api/current/bpy.types.ShaderNodeClamp.html#bpy.types.ShaderNodeClamp)
+ERROR: Node 'Clamp' not found
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (Value)
@@ -333,7 +333,7 @@ clamp(value=None, min=None, max=None, clamp_type='MINMAX')
 color_attribute(layer_name='')
 ```
 
-> **Node** : [Color Attribute](https://docs.blender.org/api/current/bpy.types.ShaderNodeVertexColor.html#bpy.types.ShaderNodeVertexColor)
+ERROR: Node 'Color Attribute' not found
 
 #### Arguments:
 - **layer_name** (_str_ = ) : Node.layer_name
@@ -354,7 +354,7 @@ color_attribute(layer_name='')
 color_ramp(fac=None, color_ramp=None)
 ```
 
-> **Node** : [Color Ramp](https://docs.blender.org/api/current/bpy.types.ShaderNodeValToRGB.html#bpy.types.ShaderNodeValToRGB)
+ERROR: Node 'Color Ramp' not found
 
 #### Arguments:
 - **fac** (_Float_ = None) : socket 'Fac' (Fac)
@@ -376,7 +376,7 @@ color_ramp(fac=None, color_ramp=None)
 combine_color(red=None, green=None, blue=None, mode='RGB')
 ```
 
-> **Node** : [Combine Color](https://docs.blender.org/api/current/bpy.types.ShaderNodeCombineColor.html#bpy.types.ShaderNodeCombineColor)
+ERROR: Node 'Combine Color' not found
 
 #### Arguments:
 - **red** (_Float_ = None) : socket 'Red' (Red)
@@ -400,7 +400,7 @@ combine_color(red=None, green=None, blue=None, mode='RGB')
 combine_xyz(x=None, y=None, z=None)
 ```
 
-> **Node** : [Combine XYZ](https://docs.blender.org/api/current/bpy.types.ShaderNodeCombineXYZ.html#bpy.types.ShaderNodeCombineXYZ)
+ERROR: Node 'Combine XYZ' not found
 
 #### Arguments:
 - **x** (_Float_ = None) : socket 'X' (X)
@@ -423,7 +423,7 @@ combine_xyz(x=None, y=None, z=None)
 diffuse_bsdf(color=None, roughness=None, normal=None)
 ```
 
-> **Node** : [Diffuse BSDF](https://docs.blender.org/api/current/bpy.types.ShaderNodeBsdfDiffuse.html#bpy.types.ShaderNodeBsdfDiffuse)
+[Diffuse BSDF](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/diffuse.html)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -446,7 +446,7 @@ diffuse_bsdf(color=None, roughness=None, normal=None)
 displacement(height=None, midlevel=None, scale=None, normal=None, space='OBJECT')
 ```
 
-> **Node** : [Displacement](https://docs.blender.org/api/current/bpy.types.ShaderNodeDisplacement.html#bpy.types.ShaderNodeDisplacement)
+[Displacement](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/materials/components/displacement.html)
 
 #### Arguments:
 - **height** (_Float_ = None) : socket 'Height' (Height)
@@ -471,7 +471,7 @@ displacement(height=None, midlevel=None, scale=None, normal=None, space='OBJECT'
 emission(color=None, strength=None)
 ```
 
-> **Node** : [Emission](https://docs.blender.org/api/current/bpy.types.ShaderNodeEmission.html#bpy.types.ShaderNodeEmission)
+[Emission](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../physics/particles/emitter/emission.html)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -493,7 +493,7 @@ emission(color=None, strength=None)
 environment_texture(vector=None, color_mapping=None, image=None, image_user=None, interpolation='Linear', projection='EQUIRECTANGULAR', texture_mapping=None)
 ```
 
-> **Node** : [Environment Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexEnvironment.html#bpy.types.ShaderNodeTexEnvironment)
+ERROR: Node 'Environment Texture' not found
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -520,7 +520,7 @@ environment_texture(vector=None, color_mapping=None, image=None, image_user=None
 float_curve(factor=None, value=None, mapping=None)
 ```
 
-> **Node** : [Float Curve](https://docs.blender.org/api/current/bpy.types.ShaderNodeFloatCurve.html#bpy.types.ShaderNodeFloatCurve)
+[Float Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/float_curve.html)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket 'Factor' (Factor)
@@ -543,7 +543,7 @@ float_curve(factor=None, value=None, mapping=None)
 frame(label_size=20, shrink=True, text=None)
 ```
 
-> **Node** : [Frame](https://docs.blender.org/api/current/bpy.types.NodeFrame.html#bpy.types.NodeFrame)
+ERROR: Node 'Frame' not found
 
 #### Arguments:
 - **label_size** (_int_ = 20) : Node.label_size
@@ -561,7 +561,7 @@ frame(label_size=20, shrink=True, text=None)
 fresnel(ior=None, normal=None)
 ```
 
-> **Node** : [Fresnel](https://docs.blender.org/api/current/bpy.types.ShaderNodeFresnel.html#bpy.types.ShaderNodeFresnel)
+ERROR: Node 'Fresnel' not found
 
 #### Arguments:
 - **ior** (_Float_ = None) : socket 'IOR' (IOR)
@@ -583,7 +583,7 @@ fresnel(ior=None, normal=None)
 gamma(color=None, gamma=None)
 ```
 
-> **Node** : [Gamma](https://docs.blender.org/api/current/bpy.types.ShaderNodeGamma.html#bpy.types.ShaderNodeGamma)
+ERROR: Node 'Gamma' not found
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -605,7 +605,7 @@ gamma(color=None, gamma=None)
 glass_bsdf(color=None, roughness=None, ior=None, normal=None, distribution='MULTI_GGX')
 ```
 
-> **Node** : [Glass BSDF](https://docs.blender.org/api/current/bpy.types.ShaderNodeBsdfGlass.html#bpy.types.ShaderNodeBsdfGlass)
+[Glass BSDF](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/glass.html)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -630,7 +630,7 @@ glass_bsdf(color=None, roughness=None, ior=None, normal=None, distribution='MULT
 glossy_bsdf(color=None, roughness=None, anisotropy=None, rotation=None, normal=None, tangent=None, distribution='MULTI_GGX')
 ```
 
-> **Node** : [Glossy BSDF](https://docs.blender.org/api/current/bpy.types.ShaderNodeBsdfAnisotropic.html#bpy.types.ShaderNodeBsdfAnisotropic)
+[Glossy BSDF](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/glossy.html)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -657,7 +657,7 @@ glossy_bsdf(color=None, roughness=None, anisotropy=None, rotation=None, normal=N
 gradient_texture(vector=None, color_mapping=None, gradient_type='LINEAR', texture_mapping=None)
 ```
 
-> **Node** : [Gradient Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html#bpy.types.ShaderNodeTexGradient)
+ERROR: Node 'Gradient Texture' not found
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -681,7 +681,7 @@ gradient_texture(vector=None, color_mapping=None, gradient_type='LINEAR', textur
 group(node_tree=None)
 ```
 
-> **Node** : [Group](https://docs.blender.org/api/current/bpy.types.ShaderNodeGroup.html#bpy.types.ShaderNodeGroup)
+[Group](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/groups.html)
 
 #### Arguments:
 - **node_tree** (_NoneType_ = None) : Node.node_tree
@@ -697,7 +697,7 @@ group(node_tree=None)
 group_output(is_active_output=True)
 ```
 
-> **Node** : [Group Output](https://docs.blender.org/api/current/bpy.types.NodeGroupOutput.html#bpy.types.NodeGroupOutput)
+ERROR: Node 'Group Output' not found
 
 #### Arguments:
 - **is_active_output** (_bool_ = True) : Node.is_active_output
@@ -713,7 +713,7 @@ group_output(is_active_output=True)
 hair_bsdf(color=None, offset=None, roughnessu=None, roughnessv=None, tangent=None, component='Reflection')
 ```
 
-> **Node** : [Hair BSDF](https://docs.blender.org/api/current/bpy.types.ShaderNodeBsdfHair.html#bpy.types.ShaderNodeBsdfHair)
+[Hair BSDF](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/hair.html)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -739,7 +739,7 @@ hair_bsdf(color=None, offset=None, roughnessu=None, roughnessv=None, tangent=Non
 holdout()
 ```
 
-> **Node** : [Holdout](https://docs.blender.org/api/current/bpy.types.ShaderNodeHoldout.html#bpy.types.ShaderNodeHoldout)
+[Holdout](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/holdout.html)
 
 #### Returns:
 - **holdout** (_Shader_)
@@ -755,7 +755,7 @@ holdout()
 hue_saturation_value(hue=None, saturation=None, value=None, fac=None, color=None)
 ```
 
-> **Node** : [Hue/Saturation/Value](https://docs.blender.org/api/current/bpy.types.ShaderNodeHueSaturation.html#bpy.types.ShaderNodeHueSaturation)
+ERROR: Node 'Hue/Saturation/Value' not found
 
 #### Arguments:
 - **hue** (_Float_ = None) : socket 'Hue' (Hue)
@@ -780,7 +780,7 @@ hue_saturation_value(hue=None, saturation=None, value=None, fac=None, color=None
 ies_texture(vector=None, strength=None, filepath='', ies=None, mode='INTERNAL')
 ```
 
-> **Node** : [IES Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexIES.html#bpy.types.ShaderNodeTexIES)
+ERROR: Node 'IES Texture' not found
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -805,7 +805,7 @@ ies_texture(vector=None, strength=None, filepath='', ies=None, mode='INTERNAL')
 image_texture(vector=None, color_mapping=None, extension='REPEAT', image=None, image_user=None, interpolation='Linear', projection='FLAT', projection_blend=0.0, texture_mapping=None)
 ```
 
-> **Node** : [Image Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexImage.html#bpy.types.ShaderNodeTexImage)
+ERROR: Node 'Image Texture' not found
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -834,7 +834,7 @@ image_texture(vector=None, color_mapping=None, extension='REPEAT', image=None, i
 invert_color(fac=None, color=None)
 ```
 
-> **Node** : [Invert Color](https://docs.blender.org/api/current/bpy.types.ShaderNodeInvert.html#bpy.types.ShaderNodeInvert)
+ERROR: Node 'Invert Color' not found
 
 #### Arguments:
 - **fac** (_Float_ = None) : socket 'Fac' (Fac)
@@ -856,7 +856,7 @@ invert_color(fac=None, color=None)
 layer_weight(blend=None, normal=None)
 ```
 
-> **Node** : [Layer Weight](https://docs.blender.org/api/current/bpy.types.ShaderNodeLayerWeight.html#bpy.types.ShaderNodeLayerWeight)
+ERROR: Node 'Layer Weight' not found
 
 #### Arguments:
 - **blend** (_Float_ = None) : socket 'Blend' (Blend)
@@ -878,7 +878,7 @@ layer_weight(blend=None, normal=None)
 light_falloff(strength=None, smooth=None)
 ```
 
-> **Node** : [Light Falloff](https://docs.blender.org/api/current/bpy.types.ShaderNodeLightFalloff.html#bpy.types.ShaderNodeLightFalloff)
+ERROR: Node 'Light Falloff' not found
 
 #### Arguments:
 - **strength** (_Float_ = None) : socket 'Strength' (Strength)
@@ -900,7 +900,7 @@ light_falloff(strength=None, smooth=None)
 light_output(surface=None, is_active_output=True, target='ALL')
 ```
 
-> **Node** : [Light Output](https://docs.blender.org/api/current/bpy.types.ShaderNodeOutputLight.html#bpy.types.ShaderNodeOutputLight)
+ERROR: Node 'Light Output' not found
 
 #### Arguments:
 - **surface** (_Shader_ = None) : socket 'Surface' (Surface)
@@ -918,7 +918,7 @@ light_output(surface=None, is_active_output=True, target='ALL')
 line_style_output(color=None, color_fac=None, alpha=None, alpha_fac=None, blend_type='MIX', is_active_output=True, target='ALL', use_alpha=False, use_clamp=False)
 ```
 
-> **Node** : [Line Style Output](https://docs.blender.org/api/current/bpy.types.ShaderNodeOutputLineStyle.html#bpy.types.ShaderNodeOutputLineStyle)
+ERROR: Node 'Line Style Output' not found
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -942,7 +942,7 @@ line_style_output(color=None, color_fac=None, alpha=None, alpha_fac=None, blend_
 magic_texture(vector=None, scale=None, distortion=None, color_mapping=None, texture_mapping=None, turbulence_depth=2)
 ```
 
-> **Node** : [Magic Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexMagic.html#bpy.types.ShaderNodeTexMagic)
+ERROR: Node 'Magic Texture' not found
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -968,7 +968,7 @@ magic_texture(vector=None, scale=None, distortion=None, color_mapping=None, text
 mapping(vector=None, location=None, rotation=None, scale=None, vector_type='POINT')
 ```
 
-> **Node** : [Mapping](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapping.html#bpy.types.ShaderNodeMapping)
+ERROR: Node 'Mapping' not found
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -993,7 +993,7 @@ mapping(vector=None, location=None, rotation=None, scale=None, vector_type='POIN
 map_range(value=None, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True, data_type='FLOAT', interpolation_type='LINEAR')
 ```
 
-> **Node** : [Map Range](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html#bpy.types.ShaderNodeMapRange)
+ERROR: Node 'Map Range' not found
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (Value)
@@ -1021,7 +1021,7 @@ map_range(value=None, from_min=None, from_max=None, to_min=None, to_max=None, cl
 material_output(surface=None, volume=None, displacement=None, thickness=None, is_active_output=True, target='ALL')
 ```
 
-> **Node** : [Material Output](https://docs.blender.org/api/current/bpy.types.ShaderNodeOutputMaterial.html#bpy.types.ShaderNodeOutputMaterial)
+ERROR: Node 'Material Output' not found
 
 #### Arguments:
 - **surface** (_Shader_ = None) : socket 'Surface' (Surface)
@@ -1042,7 +1042,7 @@ material_output(surface=None, volume=None, displacement=None, thickness=None, is
 math(value=None, value_1=None, operation='ADD', use_clamp=False)
 ```
 
-> **Node** : [Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html#bpy.types.ShaderNodeMath)
+[Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/index.html)
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (Value)
@@ -1066,7 +1066,7 @@ math(value=None, value_1=None, operation='ADD', use_clamp=False)
 mix(factor=None, a=None, b=None, blend_type='MIX', clamp_factor=True, clamp_result=False, data_type='FLOAT', factor_mode='UNIFORM')
 ```
 
-> **Node** : [Mix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html#bpy.types.ShaderNodeMix)
+[Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../compositing/types/color/mix/index.html)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket 'Factor' (Factor_Float)
@@ -1094,7 +1094,7 @@ mix(factor=None, a=None, b=None, blend_type='MIX', clamp_factor=True, clamp_resu
 mix_shader(fac=None, shader=None, shader_1=None)
 ```
 
-> **Node** : [Mix Shader](https://docs.blender.org/api/current/bpy.types.ShaderNodeMixShader.html#bpy.types.ShaderNodeMixShader)
+[Mix Shader](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/mix.html)
 
 #### Arguments:
 - **fac** (_Float_ = None) : socket 'Fac' (Fac)
@@ -1117,7 +1117,7 @@ mix_shader(fac=None, shader=None, shader_1=None)
 noise_texture(vector=None, scale=None, detail=None, roughness=None, lacunarity=None, distortion=None, color_mapping=None, noise_dimensions='3D', noise_type='FBM', normalize=True, texture_mapping=None)
 ```
 
-> **Node** : [Noise Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexNoise.html#bpy.types.ShaderNodeTexNoise)
+ERROR: Node 'Noise Texture' not found
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -1148,7 +1148,7 @@ noise_texture(vector=None, scale=None, detail=None, roughness=None, lacunarity=N
 normal(normal=None)
 ```
 
-> **Node** : [Normal](https://docs.blender.org/api/current/bpy.types.ShaderNodeNormal.html#bpy.types.ShaderNodeNormal)
+ERROR: Node 'Normal' not found
 
 #### Arguments:
 - **normal** (_Vector_ = None) : socket 'Normal' (Normal)
@@ -1169,7 +1169,7 @@ normal(normal=None)
 normal_map(strength=None, color=None, space='TANGENT', uv_map='')
 ```
 
-> **Node** : [Normal Map](https://docs.blender.org/api/current/bpy.types.ShaderNodeNormalMap.html#bpy.types.ShaderNodeNormalMap)
+ERROR: Node 'Normal Map' not found
 
 #### Arguments:
 - **strength** (_Float_ = None) : socket 'Strength' (Strength)
@@ -1193,7 +1193,7 @@ normal_map(strength=None, color=None, space='TANGENT', uv_map='')
 point_density(vector=None, cache_point_density=None, calc_point_density=None, calc_point_density_minmax=None, interpolation='Linear', object=None, particle_color_source='PARTICLE_AGE', particle_system=None, point_source='PARTICLE_SYSTEM', radius=0.30000001192092896, resolution=100, space='OBJECT', vertex_attribute_name='', vertex_color_source='VERTEX_COLOR')
 ```
 
-> **Node** : [Point Density](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexPointDensity.html#bpy.types.ShaderNodeTexPointDensity)
+ERROR: Node 'Point Density' not found
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -1227,7 +1227,7 @@ point_density(vector=None, cache_point_density=None, calc_point_density=None, ca
 position(attribute_type='GEOMETRY')
 ```
 
-> **Node** : [Attribute](https://docs.blender.org/api/current/bpy.types.ShaderNodeAttribute.html#bpy.types.ShaderNodeAttribute)
+ERROR: Node 'Attribute' not found
 - attribute_type in ('GEOMETRY', 'OBJECT', 'INSTANCER', 'VIEW_LAYER')
 
 #### Arguments:
@@ -1244,7 +1244,7 @@ position(attribute_type='GEOMETRY')
 principled_bsdf(base_color=None, metallic=None, roughness=None, ior=None, alpha=None, normal=None, subsurface_weight=None, subsurface_radius=None, subsurface_scale=None, subsurface_anisotropy=None, specular_ior_level=None, specular_tint=None, anisotropic=None, anisotropic_rotation=None, tangent=None, transmission_weight=None, coat_weight=None, coat_roughness=None, coat_ior=None, coat_tint=None, coat_normal=None, sheen_weight=None, sheen_roughness=None, sheen_tint=None, emission_color=None, emission_strength=None, thin_film_thickness=None, thin_film_ior=None, distribution='MULTI_GGX', subsurface_method='RANDOM_WALK')
 ```
 
-> **Node** : [Principled BSDF](https://docs.blender.org/api/current/bpy.types.ShaderNodeBsdfPrincipled.html#bpy.types.ShaderNodeBsdfPrincipled)
+[Principled BSDF](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/principled.html)
 
 #### Arguments:
 - **base_color** (_Color_ = None) : socket 'Base Color' (Base Color)
@@ -1294,7 +1294,7 @@ principled_bsdf(base_color=None, metallic=None, roughness=None, ior=None, alpha=
 principled_hair_bsdf(color=None, roughness=None, radial_roughness=None, coat=None, ior=None, offset=None, random_roughness=None, random=None, model='CHIANG', parametrization='COLOR')
 ```
 
-> **Node** : [Principled Hair BSDF](https://docs.blender.org/api/current/bpy.types.ShaderNodeBsdfHairPrincipled.html#bpy.types.ShaderNodeBsdfHairPrincipled)
+[Principled Hair BSDF](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/hair_principled.html)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -1324,7 +1324,7 @@ principled_hair_bsdf(color=None, roughness=None, radial_roughness=None, coat=Non
 principled_volume(color=None, color_attribute=None, density=None, density_attribute=None, anisotropy=None, absorption_color=None, emission_strength=None, emission_color=None, blackbody_intensity=None, blackbody_tint=None, temperature=None, temperature_attribute=None)
 ```
 
-> **Node** : [Principled Volume](https://docs.blender.org/api/current/bpy.types.ShaderNodeVolumePrincipled.html#bpy.types.ShaderNodeVolumePrincipled)
+[Principled Volume](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/volume_principled.html)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -1356,7 +1356,7 @@ principled_volume(color=None, color_attribute=None, density=None, density_attrib
 ray_portal_bsdf(color=None, position=None, direction=None)
 ```
 
-> **Node** : [Ray Portal BSDF](https://docs.blender.org/api/current/bpy.types.ShaderNodeBsdfRayPortal.html#bpy.types.ShaderNodeBsdfRayPortal)
+[Ray Portal BSDF](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/ray_portal.html)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -1379,7 +1379,7 @@ ray_portal_bsdf(color=None, position=None, direction=None)
 refraction_bsdf(color=None, roughness=None, ior=None, normal=None, distribution='BECKMANN')
 ```
 
-> **Node** : [Refraction BSDF](https://docs.blender.org/api/current/bpy.types.ShaderNodeBsdfRefraction.html#bpy.types.ShaderNodeBsdfRefraction)
+[Refraction BSDF](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/refraction.html)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -1404,7 +1404,7 @@ refraction_bsdf(color=None, roughness=None, ior=None, normal=None, distribution=
 reroute(input=None)
 ```
 
-> **Node** : [Reroute](https://docs.blender.org/api/current/bpy.types.NodeReroute.html#bpy.types.NodeReroute)
+ERROR: Node 'Reroute' not found
 
 #### Arguments:
 - **input** (_Color_ = None) : socket 'Input' (Input)
@@ -1425,7 +1425,7 @@ reroute(input=None)
 rgb_curves(fac=None, color=None, mapping=None)
 ```
 
-> **Node** : [RGB Curves](https://docs.blender.org/api/current/bpy.types.ShaderNodeRGBCurve.html#bpy.types.ShaderNodeRGBCurve)
+ERROR: Node 'RGB Curves' not found
 
 #### Arguments:
 - **fac** (_Float_ = None) : socket 'Fac' (Fac)
@@ -1448,7 +1448,7 @@ rgb_curves(fac=None, color=None, mapping=None)
 rgb_to_bw(color=None)
 ```
 
-> **Node** : [RGB to BW](https://docs.blender.org/api/current/bpy.types.ShaderNodeRGBToBW.html#bpy.types.ShaderNodeRGBToBW)
+ERROR: Node 'RGB to BW' not found
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -1469,7 +1469,7 @@ rgb_to_bw(color=None)
 script(bytecode='', bytecode_hash='', filepath='', mode='INTERNAL', script=None, use_auto_update=False)
 ```
 
-> **Node** : [Script](https://docs.blender.org/api/current/bpy.types.ShaderNodeScript.html#bpy.types.ShaderNodeScript)
+ERROR: Node 'Script' not found
 
 #### Arguments:
 - **bytecode** (_str_ = ) : Node.bytecode
@@ -1490,7 +1490,7 @@ script(bytecode='', bytecode_hash='', filepath='', mode='INTERNAL', script=None,
 separate_color(color=None, mode='RGB')
 ```
 
-> **Node** : [Separate Color](https://docs.blender.org/api/current/bpy.types.ShaderNodeSeparateColor.html#bpy.types.ShaderNodeSeparateColor)
+ERROR: Node 'Separate Color' not found
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -1512,7 +1512,7 @@ separate_color(color=None, mode='RGB')
 separate_xyz(vector=None)
 ```
 
-> **Node** : [Separate XYZ](https://docs.blender.org/api/current/bpy.types.ShaderNodeSeparateXYZ.html#bpy.types.ShaderNodeSeparateXYZ)
+ERROR: Node 'Separate XYZ' not found
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -1533,7 +1533,7 @@ separate_xyz(vector=None)
 shader_to_rgb(shader=None)
 ```
 
-> **Node** : [Shader to RGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeShaderToRGB.html#bpy.types.ShaderNodeShaderToRGB)
+[Shader to RGB](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/converter/shader_to_rgb.html)
 
 #### Arguments:
 - **shader** (_Shader_ = None) : socket 'Shader' (Shader)
@@ -1554,7 +1554,7 @@ shader_to_rgb(shader=None)
 sharp_face(attribute_type='GEOMETRY')
 ```
 
-> **Node** : [Attribute](https://docs.blender.org/api/current/bpy.types.ShaderNodeAttribute.html#bpy.types.ShaderNodeAttribute)
+ERROR: Node 'Attribute' not found
 - attribute_type in ('GEOMETRY', 'OBJECT', 'INSTANCER', 'VIEW_LAYER')
 
 #### Arguments:
@@ -1571,7 +1571,7 @@ sharp_face(attribute_type='GEOMETRY')
 sheen_bsdf(color=None, roughness=None, normal=None, distribution='MICROFIBER')
 ```
 
-> **Node** : [Sheen BSDF](https://docs.blender.org/api/current/bpy.types.ShaderNodeBsdfSheen.html#bpy.types.ShaderNodeBsdfSheen)
+[Sheen BSDF](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/sheen.html)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -1595,7 +1595,7 @@ sheen_bsdf(color=None, roughness=None, normal=None, distribution='MICROFIBER')
 sky_texture(air_density=1.0, altitude=0.0, color_mapping=None, dust_density=1.0, ground_albedo=0.30000001192092896, ozone_density=1.0, sky_type='NISHITA', sun_direction=None, sun_disc=True, sun_elevation=0.2617993950843811, sun_intensity=1.0, sun_rotation=0.0, sun_size=0.009512044489383698, texture_mapping=None, turbidity=2.200000047683716)
 ```
 
-> **Node** : [Sky Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexSky.html#bpy.types.ShaderNodeTexSky)
+ERROR: Node 'Sky Texture' not found
 
 #### Arguments:
 - **air_density** (_float_ = 1.0) : Node.air_density
@@ -1630,7 +1630,7 @@ sky_texture(air_density=1.0, altitude=0.0, color_mapping=None, dust_density=1.0,
 specular_bsdf(base_color=None, specular=None, roughness=None, emissive_color=None, transparency=None, normal=None, clear_coat=None, clear_coat_roughness=None, clear_coat_normal=None)
 ```
 
-> **Node** : [Specular BSDF](https://docs.blender.org/api/current/bpy.types.ShaderNodeEeveeSpecular.html#bpy.types.ShaderNodeEeveeSpecular)
+[Specular BSDF](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/specular_bsdf.html)
 
 #### Arguments:
 - **base_color** (_Color_ = None) : socket 'Base Color' (Base Color)
@@ -1659,7 +1659,7 @@ specular_bsdf(base_color=None, specular=None, roughness=None, emissive_color=Non
 subsurface_scattering(color=None, scale=None, radius=None, ior=None, roughness=None, anisotropy=None, normal=None, falloff='RANDOM_WALK')
 ```
 
-> **Node** : [Subsurface Scattering](https://docs.blender.org/api/current/bpy.types.ShaderNodeSubsurfaceScattering.html#bpy.types.ShaderNodeSubsurfaceScattering)
+[Subsurface Scattering](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/sss.html)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -1687,7 +1687,7 @@ subsurface_scattering(color=None, scale=None, radius=None, ior=None, roughness=N
 tangent(axis='Z', direction_type='RADIAL', uv_map='')
 ```
 
-> **Node** : [Tangent](https://docs.blender.org/api/current/bpy.types.ShaderNodeTangent.html#bpy.types.ShaderNodeTangent)
+[Tangent](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/freestyle/view_layer/line_style/modifiers/color/tangent.html)
 
 #### Arguments:
 - **axis** (_str_ = Z) : Node.axis in ('X', 'Y', 'Z')
@@ -1710,7 +1710,7 @@ tangent(axis='Z', direction_type='RADIAL', uv_map='')
 texture_coordinate(from_instancer=False, object=None)
 ```
 
-> **Node** : [Texture Coordinate](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexCoord.html#bpy.types.ShaderNodeTexCoord)
+ERROR: Node 'Texture Coordinate' not found
 
 #### Arguments:
 - **from_instancer** (_bool_ = False) : Node.from_instancer
@@ -1732,7 +1732,7 @@ texture_coordinate(from_instancer=False, object=None)
 toon_bsdf(color=None, size=None, smooth=None, normal=None, component='DIFFUSE')
 ```
 
-> **Node** : [Toon BSDF](https://docs.blender.org/api/current/bpy.types.ShaderNodeBsdfToon.html#bpy.types.ShaderNodeBsdfToon)
+[Toon BSDF](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/toon.html)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -1757,7 +1757,7 @@ toon_bsdf(color=None, size=None, smooth=None, normal=None, component='DIFFUSE')
 translucent_bsdf(color=None, normal=None)
 ```
 
-> **Node** : [Translucent BSDF](https://docs.blender.org/api/current/bpy.types.ShaderNodeBsdfTranslucent.html#bpy.types.ShaderNodeBsdfTranslucent)
+[Translucent BSDF](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/translucent.html)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -1779,7 +1779,7 @@ translucent_bsdf(color=None, normal=None)
 transparent_bsdf(color=None)
 ```
 
-> **Node** : [Transparent BSDF](https://docs.blender.org/api/current/bpy.types.ShaderNodeBsdfTransparent.html#bpy.types.ShaderNodeBsdfTransparent)
+[Transparent BSDF](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/transparent.html)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -1800,7 +1800,7 @@ transparent_bsdf(color=None)
 uv_along_stroke(use_tips=False)
 ```
 
-> **Node** : [UV Along Stroke](https://docs.blender.org/api/current/bpy.types.ShaderNodeUVAlongStroke.html#bpy.types.ShaderNodeUVAlongStroke)
+ERROR: Node 'UV Along Stroke' not found
 
 #### Arguments:
 - **use_tips** (_bool_ = False) : Node.use_tips
@@ -1821,7 +1821,7 @@ uv_along_stroke(use_tips=False)
 uvmap(attribute_type='GEOMETRY')
 ```
 
-> **Node** : [Attribute](https://docs.blender.org/api/current/bpy.types.ShaderNodeAttribute.html#bpy.types.ShaderNodeAttribute)
+ERROR: Node 'Attribute' not found
 - attribute_type in ('GEOMETRY', 'OBJECT', 'INSTANCER', 'VIEW_LAYER')
 
 #### Arguments:
@@ -1838,7 +1838,7 @@ uvmap(attribute_type='GEOMETRY')
 uv_map(from_instancer=False, uv_map='')
 ```
 
-> **Node** : [UV Map](https://docs.blender.org/api/current/bpy.types.ShaderNodeUVMap.html#bpy.types.ShaderNodeUVMap)
+ERROR: Node 'UV Map' not found
 
 #### Arguments:
 - **from_instancer** (_bool_ = False) : Node.from_instancer
@@ -1860,7 +1860,7 @@ uv_map(from_instancer=False, uv_map='')
 vector_curves(fac=None, vector=None, mapping=None)
 ```
 
-> **Node** : [Vector Curves](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorCurve.html#bpy.types.ShaderNodeVectorCurve)
+ERROR: Node 'Vector Curves' not found
 
 #### Arguments:
 - **fac** (_Float_ = None) : socket 'Fac' (Fac)
@@ -1883,7 +1883,7 @@ vector_curves(fac=None, vector=None, mapping=None)
 vector_displacement(vector=None, midlevel=None, scale=None, space='TANGENT')
 ```
 
-> **Node** : [Vector Displacement](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorDisplacement.html#bpy.types.ShaderNodeVectorDisplacement)
+ERROR: Node 'Vector Displacement' not found
 
 #### Arguments:
 - **vector** (_Color_ = None) : socket 'Vector' (Vector)
@@ -1907,7 +1907,7 @@ vector_displacement(vector=None, midlevel=None, scale=None, space='TANGENT')
 vector_math(vector=None, vector_1=None, operation='ADD')
 ```
 
-> **Node** : [Vector Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html#bpy.types.ShaderNodeVectorMath)
+ERROR: Node 'Vector Math' not found
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -1930,7 +1930,7 @@ vector_math(vector=None, vector_1=None, operation='ADD')
 vector_rotate(vector=None, center=None, axis=None, angle=None, invert=False, rotation_type='AXIS_ANGLE')
 ```
 
-> **Node** : [Vector Rotate](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorRotate.html#bpy.types.ShaderNodeVectorRotate)
+ERROR: Node 'Vector Rotate' not found
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -1956,7 +1956,7 @@ vector_rotate(vector=None, center=None, axis=None, angle=None, invert=False, rot
 vector_transform(vector=None, convert_from='WORLD', convert_to='OBJECT', vector_type='VECTOR')
 ```
 
-> **Node** : [Vector Transform](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorTransform.html#bpy.types.ShaderNodeVectorTransform)
+ERROR: Node 'Vector Transform' not found
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -1980,7 +1980,7 @@ vector_transform(vector=None, convert_from='WORLD', convert_to='OBJECT', vector_
 volume_absorption(color=None, density=None)
 ```
 
-> **Node** : [Volume Absorption](https://docs.blender.org/api/current/bpy.types.ShaderNodeVolumeAbsorption.html#bpy.types.ShaderNodeVolumeAbsorption)
+[Volume Absorption](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/volume_absorption.html)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -2002,7 +2002,7 @@ volume_absorption(color=None, density=None)
 volume_scatter(color=None, density=None, anisotropy=None)
 ```
 
-> **Node** : [Volume Scatter](https://docs.blender.org/api/current/bpy.types.ShaderNodeVolumeScatter.html#bpy.types.ShaderNodeVolumeScatter)
+[Volume Scatter](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/volume_scatter.html)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -2025,7 +2025,7 @@ volume_scatter(color=None, density=None, anisotropy=None)
 voronoi_texture(vector=None, scale=None, detail=None, roughness=None, lacunarity=None, randomness=None, color_mapping=None, distance='EUCLIDEAN', feature='F1', normalize=False, texture_mapping=None, voronoi_dimensions='3D')
 ```
 
-> **Node** : [Voronoi Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html#bpy.types.ShaderNodeTexVoronoi)
+ERROR: Node 'Voronoi Texture' not found
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -2057,7 +2057,7 @@ voronoi_texture(vector=None, scale=None, detail=None, roughness=None, lacunarity
 wavelength(wavelength=None)
 ```
 
-> **Node** : [Wavelength](https://docs.blender.org/api/current/bpy.types.ShaderNodeWavelength.html#bpy.types.ShaderNodeWavelength)
+ERROR: Node 'Wavelength' not found
 
 #### Arguments:
 - **wavelength** (_Float_ = None) : socket 'Wavelength' (Wavelength)
@@ -2078,7 +2078,7 @@ wavelength(wavelength=None)
 wave_texture(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', color_mapping=None, rings_direction='X', texture_mapping=None, wave_profile='SIN', wave_type='BANDS')
 ```
 
-> **Node** : [Wave Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html#bpy.types.ShaderNodeTexWave)
+ERROR: Node 'Wave Texture' not found
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -2111,7 +2111,7 @@ wave_texture(vector=None, scale=None, distortion=None, detail=None, detail_scale
 white_noise_texture(vector=None, noise_dimensions='3D')
 ```
 
-> **Node** : [White Noise Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html#bpy.types.ShaderNodeTexWhiteNoise)
+ERROR: Node 'White Noise Texture' not found
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -2133,7 +2133,7 @@ white_noise_texture(vector=None, noise_dimensions='3D')
 wireframe(size=None, use_pixel_size=False)
 ```
 
-> **Node** : [Wireframe](https://docs.blender.org/api/current/bpy.types.ShaderNodeWireframe.html#bpy.types.ShaderNodeWireframe)
+[Wireframe](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../meshes/editing/face/wireframe.html)
 
 #### Arguments:
 - **size** (_Float_ = None) : socket 'Size' (Size)
@@ -2155,7 +2155,7 @@ wireframe(size=None, use_pixel_size=False)
 world_output(surface=None, volume=None, is_active_output=True, target='ALL')
 ```
 
-> **Node** : [World Output](https://docs.blender.org/api/current/bpy.types.ShaderNodeOutputWorld.html#bpy.types.ShaderNodeOutputWorld)
+ERROR: Node 'World Output' not found
 
 #### Arguments:
 - **surface** (_Shader_ = None) : socket 'Surface' (Surface)

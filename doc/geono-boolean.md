@@ -8,7 +8,7 @@ Boolean(value=False, name=None, tip=None, subtype='NONE')
 
 Socket of type BOOLEAN
 
-> **Node** : [Boolean](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputBool.html#bpy.types.FunctionNodeInputBool)
+ERROR: Node 'Boolean' not found
 
 #### Arguments:
 - **value** (_bool or Socket_ = False) : initial value
@@ -39,9 +39,9 @@ Socket of type BOOLEAN
 Named(name)
 ```
 
-> **Node** : [Named Attribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html#bpy.types.GeometryNodeInputNamedAttribute)
+ERROR: Node 'Named Attribute' not found
 
-> **Node** : [Named Attribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html#bpy.types.GeometryNodeInputNamedAttribute)
+ERROR: Node 'Named Attribute' not found
 
 'Named' is a synonym of 'NamedAttribute'
 
@@ -81,9 +81,9 @@ with GeoNodes("Named Attributes"):
 NamedAttribute(name)
 ```
 
-> **Node** : [Named Attribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html#bpy.types.GeometryNodeInputNamedAttribute)
+ERROR: Node 'Named Attribute' not found
 
-> **Node** : [Named Attribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html#bpy.types.GeometryNodeInputNamedAttribute)
+ERROR: Node 'Named Attribute' not found
 
 'Named' is a synonym of 'NamedAttribute'
 
@@ -125,7 +125,7 @@ Random(probability=None, id=None, seed=None)
 
 Constructor : random Boolean.
 
-> **Node** : [Random Value](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html#bpy.types.FunctionNodeRandomValue)
+ERROR: Node 'Random Value' not found
 
 #### Arguments:
 - **probability** (_Float_ = None)

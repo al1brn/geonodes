@@ -41,7 +41,7 @@ Geometry Class
 
 Property node 'Bounding Box' (GeometryNodeBoundBox)
 
-> **Node** : [Bounding Box](https://docs.blender.org/api/current/bpy.types.GeometryNodeBoundBox.html#bpy.types.GeometryNodeBoundBox)
+ERROR: Node 'Bounding Box' not found
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Properties](geono-geometry.md#properties)</sub>
 
@@ -52,7 +52,7 @@ Property node 'Bounding Box' (GeometryNodeBoundBox)
 
 Property node 'Convex Hull' (GeometryNodeConvexHull)
 
-> **Node** : [Convex Hull](https://docs.blender.org/api/current/bpy.types.GeometryNodeConvexHull.html#bpy.types.GeometryNodeConvexHull)
+[Convex Hull](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../meshes/editing/mesh/convex_hull.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Properties](geono-geometry.md#properties)</sub>
 
@@ -63,7 +63,7 @@ Property node 'Convex Hull' (GeometryNodeConvexHull)
 
 Property curve component
 
-> **Node** : [Separate Components](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html#bpy.types.GeometryNodeSeparateComponents)
+ERROR: Node 'Separate Components' not found
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Properties](geono-geometry.md#properties)</sub>
 
@@ -72,9 +72,9 @@ Property curve component
 > _type_: **Integer**
 >
 
-> **Node** : [ID](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputID.html#bpy.types.GeometryNodeInputID)
+ERROR: Node 'ID' not found
 
-> **Node** : [ID](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputID.html#bpy.types.GeometryNodeInputID)
+ERROR: Node 'ID' not found
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Properties](geono-geometry.md#properties)</sub>
 
@@ -85,7 +85,7 @@ Property curve component
 
 Property instances component
 
-> **Node** : [Separate Components](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html#bpy.types.GeometryNodeSeparateComponents)
+ERROR: Node 'Separate Components' not found
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Properties](geono-geometry.md#properties)</sub>
 
@@ -94,9 +94,9 @@ Property instances component
 > _type_: **Integer**
 >
 
-> **Node** : [Material Index](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMaterialIndex.html#bpy.types.GeometryNodeInputMaterialIndex)
+ERROR: Node 'Material Index' not found
 
-> **Node** : [Material Index](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMaterialIndex.html#bpy.types.GeometryNodeInputMaterialIndex)
+ERROR: Node 'Material Index' not found
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Properties](geono-geometry.md#properties)</sub>
 
@@ -107,7 +107,7 @@ Property instances component
 
 Property mesh component
 
-> **Node** : [Separate Components](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html#bpy.types.GeometryNodeSeparateComponents)
+ERROR: Node 'Separate Components' not found
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Properties](geono-geometry.md#properties)</sub>
 
@@ -118,7 +118,7 @@ Property mesh component
 
 Property cloud component
 
-> **Node** : [Separate Components](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html#bpy.types.GeometryNodeSeparateComponents)
+ERROR: Node 'Separate Components' not found
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Properties](geono-geometry.md#properties)</sub>
 
@@ -127,9 +127,9 @@ Property cloud component
 > _type_: **Vector**
 >
 
-> **Node** : [Position](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputPosition.html#bpy.types.GeometryNodeInputPosition)
+ERROR: Node 'Position' not found
 
-> **Node** : [Position](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputPosition.html#bpy.types.GeometryNodeInputPosition)
+ERROR: Node 'Position' not found
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Properties](geono-geometry.md#properties)</sub>
 
@@ -140,7 +140,7 @@ Property cloud component
 
 Property node 'Separate Components' (GeometryNodeSeparateComponents)
 
-> **Node** : [Separate Components](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html#bpy.types.GeometryNodeSeparateComponents)
+ERROR: Node 'Separate Components' not found
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Properties](geono-geometry.md#properties)</sub>
 
@@ -151,7 +151,7 @@ Property node 'Separate Components' (GeometryNodeSeparateComponents)
 
 Property volume component
 
-> **Node** : [Separate Components](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html#bpy.types.GeometryNodeSeparateComponents)
+ERROR: Node 'Separate Components' not found
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Properties](geono-geometry.md#properties)</sub>
 
@@ -168,9 +168,9 @@ Property volume component
 index_of_nearest(position=None, group_id=None)
 ```
 
-> **Node** : [Index of Nearest](https://docs.blender.org/api/current/bpy.types.GeometryNodeIndexOfNearest.html#bpy.types.GeometryNodeIndexOfNearest)
+[Index of Nearest](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/index_of_nearest.html)
 
-> **Node** : [Index of Nearest](https://docs.blender.org/api/current/bpy.types.GeometryNodeIndexOfNearest.html#bpy.types.GeometryNodeIndexOfNearest)
+[Index of Nearest](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/index_of_nearest.html)
 
 #### Arguments:
 - **position** (_Vector_ = None) : socket 'Position' (Position)
@@ -192,9 +192,9 @@ index_of_nearest(position=None, group_id=None)
 join(*geometries)
 ```
 
-> **Node** : [Join Geometry](https://docs.blender.org/api/current/bpy.types.GeometryNodeJoinGeometry.html#bpy.types.GeometryNodeJoinGeometry)
+ERROR: Node 'Join Geometry' not found
 
-> **Node** : [Join Geometry](https://docs.blender.org/api/current/bpy.types.GeometryNodeJoinGeometry.html#bpy.types.GeometryNodeJoinGeometry)
+ERROR: Node 'Join Geometry' not found
 
 Operator + can be used : ``` geo + other_geo ``` is equivalent to ``` geo.join(other) ```
 If all the geometries are of the same type, the returned geometry uses this type.
@@ -232,9 +232,9 @@ assert(isinstance(geo, Geometry))
 merge_by_distance(distance=None, mode='ALL')
 ```
 
-> **Node** : [Merge by Distance](https://docs.blender.org/api/current/bpy.types.GeometryNodeMergeByDistance.html#bpy.types.GeometryNodeMergeByDistance)
+ERROR: Node 'Merge by Distance' not found
 
-> **Node** : [Merge by Distance](https://docs.blender.org/api/current/bpy.types.GeometryNodeMergeByDistance.html#bpy.types.GeometryNodeMergeByDistance)
+ERROR: Node 'Merge by Distance' not found
 
 #### Arguments:
 - **distance** (_Float_ = None) : socket 'Distance' (Distance)
@@ -256,9 +256,9 @@ merge_by_distance(distance=None, mode='ALL')
 raycast(attribute=None, source_position=None, ray_direction=None, ray_length=None, interpolated=True)
 ```
 
-> **Node** : [Raycast](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html#bpy.types.GeometryNodeRaycast)
+ERROR: Node 'Raycast' not found
 
-> **Node** : [Raycast](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html#bpy.types.GeometryNodeRaycast)
+ERROR: Node 'Raycast' not found
 
 mapping in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4')
 
@@ -287,7 +287,7 @@ remove_named_attribute(name, exact=True)
 
 Remove named attribute
 
-> **Node** : [Remove Named Attribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeRemoveAttribute.html#bpy.types.GeometryNodeRemoveAttribute)
+ERROR: Node 'Remove Named Attribute' not found
 
 #### Arguments:
 - **name** (_String_) : socket
@@ -309,9 +309,9 @@ Remove named attribute
 replace_material(old=None, new=None)
 ```
 
-> **Node** : [Replace Material](https://docs.blender.org/api/current/bpy.types.GeometryNodeReplaceMaterial.html#bpy.types.GeometryNodeReplaceMaterial)
+ERROR: Node 'Replace Material' not found
 
-> **Node** : [Replace Material](https://docs.blender.org/api/current/bpy.types.GeometryNodeReplaceMaterial.html#bpy.types.GeometryNodeReplaceMaterial)
+ERROR: Node 'Replace Material' not found
 
 #### Arguments:
 - **old** (_Material_ = None) : socket 'Old' (Old)
@@ -335,7 +335,7 @@ set_id(id=None)
 
 Set ID.
 
-> **Node** : [Set ID](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetID.html#bpy.types.GeometryNodeSetID)
+ERROR: Node 'Set ID' not found
 
 #### Arguments:
 - **id** (_Integer_ = None) : socket
@@ -358,7 +358,7 @@ set_material(material=None)
 
 Set Material.
 
-> **Node** : [Set Material](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html#bpy.types.GeometryNodeSetMaterial)
+ERROR: Node 'Set Material' not found
 
 #### Arguments:
 - **material** (_Material_ = None) : socket
@@ -381,7 +381,7 @@ set_position(position=None, offset=None)
 
 Set Position.
 
-> **Node** : [Set Position](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetPosition.html#bpy.types.GeometryNodeSetPosition)
+ERROR: Node 'Set Position' not found
 
 #### Arguments:
 - **position** (_Vector_ = None) : socket
@@ -405,7 +405,7 @@ set_shade_smooth(shade_smooth=True, edge=False)
 
 Set Shade Smooth.
 
-> **Node** : [Set Shade Smooth](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetShadeSmooth.html#bpy.types.GeometryNodeSetShadeSmooth)
+ERROR: Node 'Set Shade Smooth' not found
 
 #### Arguments:
 - **shade_smooth** (_Boolean_ = True) : socket
@@ -427,9 +427,9 @@ Set Shade Smooth.
 to_instance(*geometries)
 ```
 
-> **Node** : [Geometry to Instance](https://docs.blender.org/api/current/bpy.types.GeometryNodeGeometryToInstance.html#bpy.types.GeometryNodeGeometryToInstance)
+ERROR: Node 'Geometry to Instance' not found
 
-> **Node** : [Geometry to Instance](https://docs.blender.org/api/current/bpy.types.GeometryNodeGeometryToInstance.html#bpy.types.GeometryNodeGeometryToInstance)
+ERROR: Node 'Geometry to Instance' not found
 
 #### Arguments:
 - **geometries** (_Geometry_) : socket 'Geometry' (Geometry)
@@ -450,9 +450,9 @@ to_instance(*geometries)
 transform(translation=None, rotation=None, scale=None, matrix=None)
 ```
 
-> **Node** : [Transform Geometry](https://docs.blender.org/api/current/bpy.types.GeometryNodeTransform.html#bpy.types.GeometryNodeTransform)
+ERROR: Node 'Transform Geometry' not found
 
-> **Node** : [Transform Geometry](https://docs.blender.org/api/current/bpy.types.GeometryNodeTransform.html#bpy.types.GeometryNodeTransform)
+ERROR: Node 'Transform Geometry' not found
 
 If 'matrix' argument is None, the mode 'COMPONENTS' is set.
 If 'matrix' argument is not NOne, the mode 'MATRIX' is set and the other arguments are ignored.
@@ -481,7 +481,7 @@ viewer(value=None)
 
 Create a viewer node.
 
-> **Node** : [Viewer](https://docs.blender.org/api/current/bpy.types.GeometryNodeViewer.html#bpy.types.GeometryNodeViewer)
+ERROR: Node 'Viewer' not found
 
 #### Arguments:
 - **value** (_Socket_ = None) : socket
