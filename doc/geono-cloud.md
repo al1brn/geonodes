@@ -44,7 +44,8 @@ FromCurve(curve, count=None, length=None, mode='COUNT')
 ```
 
 [Curve to Points](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveToPoints.html#bpy.types.GeometryNodeCurveToPoints)
-[!Node] Curve to Points
+
+[Curve to Points](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveToPoints.html#bpy.types.GeometryNodeCurveToPoints)
 
 #### Arguments:
 - **curve** (_Geometry_) : socket 'Curve' (Curve)
@@ -69,7 +70,8 @@ FromInstances(instances, position=None, radius=None)
 ```
 
 [Instances to Points](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstancesToPoints.html#bpy.types.GeometryNodeInstancesToPoints)
-[!Node] Instances to Points
+
+[Instances to Points](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstancesToPoints.html#bpy.types.GeometryNodeInstancesToPoints)
 
 #### Arguments:
 - **instances** (_Geometry_) : socket 'Instances' (Instances)
@@ -93,7 +95,8 @@ FromMesh(mesh, position=None, radius=None, mode='POINTS')
 ```
 
 [Mesh to Points](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToPoints.html#bpy.types.GeometryNodeMeshToPoints)
-[!Node] Mesh to Points
+
+[Mesh to Points](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToPoints.html#bpy.types.GeometryNodeMeshToPoints)
 
 #### Arguments:
 - **mesh** (_Mesh_) : socket 'Mesh' (Mesh)
@@ -118,7 +121,8 @@ Points(count=1, position=None, radius=None)
 ```
 
 [Points](https://docs.blender.org/api/current/bpy.types.GeometryNodePoints.html#bpy.types.GeometryNodePoints)
-[!Node] Points
+
+[Points](https://docs.blender.org/api/current/bpy.types.GeometryNodePoints.html#bpy.types.GeometryNodePoints)
 
 #### Arguments:
 - **count** (_Integer_ = 1) : socket 'Count' (Count)
@@ -142,7 +146,8 @@ to_curves(curve_group_id=None, weight=None)
 ```
 
 [Points to Curves](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToCurves.html#bpy.types.GeometryNodePointsToCurves)
-[!Node] Points to Curves
+
+[Points to Curves](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToCurves.html#bpy.types.GeometryNodePointsToCurves)
 
 #### Arguments:
 - **curve_group_id** (_Integer_ = None) : socket 'Curve Group ID' (Curve Group ID)
@@ -165,7 +170,8 @@ to_vertices()
 ```
 
 [Points to Vertices](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToVertices.html#bpy.types.GeometryNodePointsToVertices)
-[!Node] Points to Vertices
+
+[Points to Vertices](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToVertices.html#bpy.types.GeometryNodePointsToVertices)
 
 #### Returns:
 - **Mesh** :
@@ -182,7 +188,8 @@ to_volume(density=None, voxel_size=None, voxel_amount=None, radius=None, resolut
 ```
 
 [Points to Volume](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToVolume.html#bpy.types.GeometryNodePointsToVolume)
-[!Node] Points to Volume
+
+[Points to Volume](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToVolume.html#bpy.types.GeometryNodePointsToVolume)
 
 #### Arguments:
 - **density** (_Float_ = None) : socket 'Density' (Density)

@@ -45,7 +45,7 @@ Initialize self.  See help(type(self)) for accurate signature.
 add_shader(shader=None, shader_1=None)
 ```
 
-Node 'Add Shader' (ShaderNodeAddShader)
+[Add Shader](https://docs.blender.org/api/current/bpy.types.ShaderNodeAddShader.html#bpy.types.ShaderNodeAddShader)
 
 #### Arguments:
 - **shader** (_Shader_ = None) : socket 'Shader' (Shader)
@@ -67,7 +67,7 @@ Node 'Add Shader' (ShaderNodeAddShader)
 ambient_occlusion(color=None, distance=None, normal=None, inside=False, only_local=False, samples=16)
 ```
 
-Node 'Ambient Occlusion' (ShaderNodeAmbientOcclusion)
+[Ambient Occlusion](https://docs.blender.org/api/current/bpy.types.ShaderNodeAmbientOcclusion.html#bpy.types.ShaderNodeAmbientOcclusion)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -93,7 +93,7 @@ Node 'Ambient Occlusion' (ShaderNodeAmbientOcclusion)
 aov_output(color=None, value=None, aov_name='')
 ```
 
-Node 'AOV Output' (ShaderNodeOutputAOV)
+[AOV Output](https://docs.blender.org/api/current/bpy.types.ShaderNodeOutputAOV.html#bpy.types.ShaderNodeOutputAOV)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -111,7 +111,7 @@ Node 'AOV Output' (ShaderNodeOutputAOV)
 attribute(attribute_name='', attribute_type='GEOMETRY')
 ```
 
-Node 'Attribute' (ShaderNodeAttribute)
+[Attribute](https://docs.blender.org/api/current/bpy.types.ShaderNodeAttribute.html#bpy.types.ShaderNodeAttribute)
 
 #### Arguments:
 - **attribute_name** (_str_ = ) : Node.attribute_name
@@ -133,7 +133,7 @@ Node 'Attribute' (ShaderNodeAttribute)
 background(color=None, strength=None)
 ```
 
-Node 'Background' (ShaderNodeBackground)
+[Background](https://docs.blender.org/api/current/bpy.types.ShaderNodeBackground.html#bpy.types.ShaderNodeBackground)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -155,7 +155,7 @@ Node 'Background' (ShaderNodeBackground)
 bevel(radius=None, normal=None, samples=4)
 ```
 
-Node 'Bevel' (ShaderNodeBevel)
+[Bevel](https://docs.blender.org/api/current/bpy.types.ShaderNodeBevel.html#bpy.types.ShaderNodeBevel)
 
 #### Arguments:
 - **radius** (_Float_ = None) : socket 'Radius' (Radius)
@@ -178,7 +178,7 @@ Node 'Bevel' (ShaderNodeBevel)
 blackbody(temperature=None)
 ```
 
-Node 'Blackbody' (ShaderNodeBlackbody)
+[Blackbody](https://docs.blender.org/api/current/bpy.types.ShaderNodeBlackbody.html#bpy.types.ShaderNodeBlackbody)
 
 #### Arguments:
 - **temperature** (_Float_ = None) : socket 'Temperature' (Temperature)
@@ -199,7 +199,7 @@ Node 'Blackbody' (ShaderNodeBlackbody)
 brick_texture(vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, color_mapping=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2, texture_mapping=None)
 ```
 
-Node 'Brick Texture' (ShaderNodeTexBrick)
+[Brick Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexBrick.html#bpy.types.ShaderNodeTexBrick)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -235,7 +235,7 @@ Node 'Brick Texture' (ShaderNodeTexBrick)
 brightness_contrast(color=None, bright=None, contrast=None)
 ```
 
-Node 'Brightness/Contrast' (ShaderNodeBrightContrast)
+[Brightness/Contrast](https://docs.blender.org/api/current/bpy.types.ShaderNodeBrightContrast.html#bpy.types.ShaderNodeBrightContrast)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -258,7 +258,7 @@ Node 'Brightness/Contrast' (ShaderNodeBrightContrast)
 bump(strength=None, distance=None, height=None, normal=None, invert=False)
 ```
 
-Node 'Bump' (ShaderNodeBump)
+[Bump](https://docs.blender.org/api/current/bpy.types.ShaderNodeBump.html#bpy.types.ShaderNodeBump)
 
 #### Arguments:
 - **strength** (_Float_ = None) : socket 'Strength' (Strength)
@@ -283,7 +283,7 @@ Node 'Bump' (ShaderNodeBump)
 checker_texture(vector=None, color1=None, color2=None, scale=None, color_mapping=None, texture_mapping=None)
 ```
 
-Node 'Checker Texture' (ShaderNodeTexChecker)
+[Checker Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexChecker.html#bpy.types.ShaderNodeTexChecker)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -309,7 +309,7 @@ Node 'Checker Texture' (ShaderNodeTexChecker)
 clamp(value=None, min=None, max=None, clamp_type='MINMAX')
 ```
 
-Node 'Clamp' (ShaderNodeClamp)
+[Clamp](https://docs.blender.org/api/current/bpy.types.ShaderNodeClamp.html#bpy.types.ShaderNodeClamp)
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (Value)
@@ -333,7 +333,7 @@ Node 'Clamp' (ShaderNodeClamp)
 color_attribute(layer_name='')
 ```
 
-Node 'Color Attribute' (ShaderNodeVertexColor)
+[Color Attribute](https://docs.blender.org/api/current/bpy.types.ShaderNodeVertexColor.html#bpy.types.ShaderNodeVertexColor)
 
 #### Arguments:
 - **layer_name** (_str_ = ) : Node.layer_name
@@ -354,7 +354,7 @@ Node 'Color Attribute' (ShaderNodeVertexColor)
 color_ramp(fac=None, color_ramp=None)
 ```
 
-Node 'Color Ramp' (ShaderNodeValToRGB)
+[Color Ramp](https://docs.blender.org/api/current/bpy.types.ShaderNodeValToRGB.html#bpy.types.ShaderNodeValToRGB)
 
 #### Arguments:
 - **fac** (_Float_ = None) : socket 'Fac' (Fac)
@@ -376,7 +376,7 @@ Node 'Color Ramp' (ShaderNodeValToRGB)
 combine_color(red=None, green=None, blue=None, mode='RGB')
 ```
 
-Node 'Combine Color' (ShaderNodeCombineColor)
+[Combine Color](https://docs.blender.org/api/current/bpy.types.ShaderNodeCombineColor.html#bpy.types.ShaderNodeCombineColor)
 
 #### Arguments:
 - **red** (_Float_ = None) : socket 'Red' (Red)
@@ -400,7 +400,7 @@ Node 'Combine Color' (ShaderNodeCombineColor)
 combine_xyz(x=None, y=None, z=None)
 ```
 
-Node 'Combine XYZ' (ShaderNodeCombineXYZ)
+[Combine XYZ](https://docs.blender.org/api/current/bpy.types.ShaderNodeCombineXYZ.html#bpy.types.ShaderNodeCombineXYZ)
 
 #### Arguments:
 - **x** (_Float_ = None) : socket 'X' (X)
@@ -423,7 +423,7 @@ Node 'Combine XYZ' (ShaderNodeCombineXYZ)
 diffuse_bsdf(color=None, roughness=None, normal=None)
 ```
 
-Node 'Diffuse BSDF' (ShaderNodeBsdfDiffuse)
+[Diffuse BSDF](https://docs.blender.org/api/current/bpy.types.ShaderNodeBsdfDiffuse.html#bpy.types.ShaderNodeBsdfDiffuse)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -446,7 +446,7 @@ Node 'Diffuse BSDF' (ShaderNodeBsdfDiffuse)
 displacement(height=None, midlevel=None, scale=None, normal=None, space='OBJECT')
 ```
 
-Node 'Displacement' (ShaderNodeDisplacement)
+[Displacement](https://docs.blender.org/api/current/bpy.types.ShaderNodeDisplacement.html#bpy.types.ShaderNodeDisplacement)
 
 #### Arguments:
 - **height** (_Float_ = None) : socket 'Height' (Height)
@@ -471,7 +471,7 @@ Node 'Displacement' (ShaderNodeDisplacement)
 emission(color=None, strength=None)
 ```
 
-Node 'Emission' (ShaderNodeEmission)
+[Emission](https://docs.blender.org/api/current/bpy.types.ShaderNodeEmission.html#bpy.types.ShaderNodeEmission)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -493,7 +493,7 @@ Node 'Emission' (ShaderNodeEmission)
 environment_texture(vector=None, color_mapping=None, image=None, image_user=None, interpolation='Linear', projection='EQUIRECTANGULAR', texture_mapping=None)
 ```
 
-Node 'Environment Texture' (ShaderNodeTexEnvironment)
+[Environment Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexEnvironment.html#bpy.types.ShaderNodeTexEnvironment)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -520,7 +520,7 @@ Node 'Environment Texture' (ShaderNodeTexEnvironment)
 float_curve(factor=None, value=None, mapping=None)
 ```
 
-Node 'Float Curve' (ShaderNodeFloatCurve)
+[Float Curve](https://docs.blender.org/api/current/bpy.types.ShaderNodeFloatCurve.html#bpy.types.ShaderNodeFloatCurve)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket 'Factor' (Factor)
@@ -543,7 +543,7 @@ Node 'Float Curve' (ShaderNodeFloatCurve)
 frame(label_size=20, shrink=True, text=None)
 ```
 
-Node 'Frame' (NodeFrame)
+[Frame](https://docs.blender.org/api/current/bpy.types.NodeFrame.html#bpy.types.NodeFrame)
 
 #### Arguments:
 - **label_size** (_int_ = 20) : Node.label_size
@@ -561,7 +561,7 @@ Node 'Frame' (NodeFrame)
 fresnel(ior=None, normal=None)
 ```
 
-Node 'Fresnel' (ShaderNodeFresnel)
+[Fresnel](https://docs.blender.org/api/current/bpy.types.ShaderNodeFresnel.html#bpy.types.ShaderNodeFresnel)
 
 #### Arguments:
 - **ior** (_Float_ = None) : socket 'IOR' (IOR)
@@ -583,7 +583,7 @@ Node 'Fresnel' (ShaderNodeFresnel)
 gamma(color=None, gamma=None)
 ```
 
-Node 'Gamma' (ShaderNodeGamma)
+[Gamma](https://docs.blender.org/api/current/bpy.types.ShaderNodeGamma.html#bpy.types.ShaderNodeGamma)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -605,7 +605,7 @@ Node 'Gamma' (ShaderNodeGamma)
 glass_bsdf(color=None, roughness=None, ior=None, normal=None, distribution='MULTI_GGX')
 ```
 
-Node 'Glass BSDF' (ShaderNodeBsdfGlass)
+[Glass BSDF](https://docs.blender.org/api/current/bpy.types.ShaderNodeBsdfGlass.html#bpy.types.ShaderNodeBsdfGlass)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -630,7 +630,7 @@ Node 'Glass BSDF' (ShaderNodeBsdfGlass)
 glossy_bsdf(color=None, roughness=None, anisotropy=None, rotation=None, normal=None, tangent=None, distribution='MULTI_GGX')
 ```
 
-Node 'Glossy BSDF' (ShaderNodeBsdfAnisotropic)
+[Glossy BSDF](https://docs.blender.org/api/current/bpy.types.ShaderNodeBsdfAnisotropic.html#bpy.types.ShaderNodeBsdfAnisotropic)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -657,7 +657,7 @@ Node 'Glossy BSDF' (ShaderNodeBsdfAnisotropic)
 gradient_texture(vector=None, color_mapping=None, gradient_type='LINEAR', texture_mapping=None)
 ```
 
-Node 'Gradient Texture' (ShaderNodeTexGradient)
+[Gradient Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html#bpy.types.ShaderNodeTexGradient)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -681,7 +681,7 @@ Node 'Gradient Texture' (ShaderNodeTexGradient)
 group(node_tree=None)
 ```
 
-Node 'Group' (ShaderNodeGroup)
+[Group](https://docs.blender.org/api/current/bpy.types.ShaderNodeGroup.html#bpy.types.ShaderNodeGroup)
 
 #### Arguments:
 - **node_tree** (_NoneType_ = None) : Node.node_tree
@@ -697,7 +697,7 @@ Node 'Group' (ShaderNodeGroup)
 group_output(is_active_output=True)
 ```
 
-Node 'Group Output' (NodeGroupOutput)
+[Group Output](https://docs.blender.org/api/current/bpy.types.NodeGroupOutput.html#bpy.types.NodeGroupOutput)
 
 #### Arguments:
 - **is_active_output** (_bool_ = True) : Node.is_active_output
@@ -713,7 +713,7 @@ Node 'Group Output' (NodeGroupOutput)
 hair_bsdf(color=None, offset=None, roughnessu=None, roughnessv=None, tangent=None, component='Reflection')
 ```
 
-Node 'Hair BSDF' (ShaderNodeBsdfHair)
+[Hair BSDF](https://docs.blender.org/api/current/bpy.types.ShaderNodeBsdfHair.html#bpy.types.ShaderNodeBsdfHair)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -739,7 +739,7 @@ Node 'Hair BSDF' (ShaderNodeBsdfHair)
 holdout()
 ```
 
-Node 'Holdout' (ShaderNodeHoldout)
+[Holdout](https://docs.blender.org/api/current/bpy.types.ShaderNodeHoldout.html#bpy.types.ShaderNodeHoldout)
 
 #### Returns:
 - **holdout** (_Shader_)
@@ -755,7 +755,7 @@ Node 'Holdout' (ShaderNodeHoldout)
 hue_saturation_value(hue=None, saturation=None, value=None, fac=None, color=None)
 ```
 
-Node 'Hue/Saturation/Value' (ShaderNodeHueSaturation)
+[Hue/Saturation/Value](https://docs.blender.org/api/current/bpy.types.ShaderNodeHueSaturation.html#bpy.types.ShaderNodeHueSaturation)
 
 #### Arguments:
 - **hue** (_Float_ = None) : socket 'Hue' (Hue)
@@ -780,7 +780,7 @@ Node 'Hue/Saturation/Value' (ShaderNodeHueSaturation)
 ies_texture(vector=None, strength=None, filepath='', ies=None, mode='INTERNAL')
 ```
 
-Node 'IES Texture' (ShaderNodeTexIES)
+[IES Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexIES.html#bpy.types.ShaderNodeTexIES)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -805,7 +805,7 @@ Node 'IES Texture' (ShaderNodeTexIES)
 image_texture(vector=None, color_mapping=None, extension='REPEAT', image=None, image_user=None, interpolation='Linear', projection='FLAT', projection_blend=0.0, texture_mapping=None)
 ```
 
-Node 'Image Texture' (ShaderNodeTexImage)
+[Image Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexImage.html#bpy.types.ShaderNodeTexImage)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -834,7 +834,7 @@ Node 'Image Texture' (ShaderNodeTexImage)
 invert_color(fac=None, color=None)
 ```
 
-Node 'Invert Color' (ShaderNodeInvert)
+[Invert Color](https://docs.blender.org/api/current/bpy.types.ShaderNodeInvert.html#bpy.types.ShaderNodeInvert)
 
 #### Arguments:
 - **fac** (_Float_ = None) : socket 'Fac' (Fac)
@@ -856,7 +856,7 @@ Node 'Invert Color' (ShaderNodeInvert)
 layer_weight(blend=None, normal=None)
 ```
 
-Node 'Layer Weight' (ShaderNodeLayerWeight)
+[Layer Weight](https://docs.blender.org/api/current/bpy.types.ShaderNodeLayerWeight.html#bpy.types.ShaderNodeLayerWeight)
 
 #### Arguments:
 - **blend** (_Float_ = None) : socket 'Blend' (Blend)
@@ -878,7 +878,7 @@ Node 'Layer Weight' (ShaderNodeLayerWeight)
 light_falloff(strength=None, smooth=None)
 ```
 
-Node 'Light Falloff' (ShaderNodeLightFalloff)
+[Light Falloff](https://docs.blender.org/api/current/bpy.types.ShaderNodeLightFalloff.html#bpy.types.ShaderNodeLightFalloff)
 
 #### Arguments:
 - **strength** (_Float_ = None) : socket 'Strength' (Strength)
@@ -900,7 +900,7 @@ Node 'Light Falloff' (ShaderNodeLightFalloff)
 light_output(surface=None, is_active_output=True, target='ALL')
 ```
 
-Node 'Light Output' (ShaderNodeOutputLight)
+[Light Output](https://docs.blender.org/api/current/bpy.types.ShaderNodeOutputLight.html#bpy.types.ShaderNodeOutputLight)
 
 #### Arguments:
 - **surface** (_Shader_ = None) : socket 'Surface' (Surface)
@@ -918,7 +918,7 @@ Node 'Light Output' (ShaderNodeOutputLight)
 line_style_output(color=None, color_fac=None, alpha=None, alpha_fac=None, blend_type='MIX', is_active_output=True, target='ALL', use_alpha=False, use_clamp=False)
 ```
 
-Node 'Line Style Output' (ShaderNodeOutputLineStyle)
+[Line Style Output](https://docs.blender.org/api/current/bpy.types.ShaderNodeOutputLineStyle.html#bpy.types.ShaderNodeOutputLineStyle)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -942,7 +942,7 @@ Node 'Line Style Output' (ShaderNodeOutputLineStyle)
 magic_texture(vector=None, scale=None, distortion=None, color_mapping=None, texture_mapping=None, turbulence_depth=2)
 ```
 
-Node 'Magic Texture' (ShaderNodeTexMagic)
+[Magic Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexMagic.html#bpy.types.ShaderNodeTexMagic)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -968,7 +968,7 @@ Node 'Magic Texture' (ShaderNodeTexMagic)
 mapping(vector=None, location=None, rotation=None, scale=None, vector_type='POINT')
 ```
 
-Node 'Mapping' (ShaderNodeMapping)
+[Mapping](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapping.html#bpy.types.ShaderNodeMapping)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -993,7 +993,7 @@ Node 'Mapping' (ShaderNodeMapping)
 map_range(value=None, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True, data_type='FLOAT', interpolation_type='LINEAR')
 ```
 
-Node 'Map Range' (ShaderNodeMapRange)
+[Map Range](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html#bpy.types.ShaderNodeMapRange)
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (Value)
@@ -1021,7 +1021,7 @@ Node 'Map Range' (ShaderNodeMapRange)
 material_output(surface=None, volume=None, displacement=None, thickness=None, is_active_output=True, target='ALL')
 ```
 
-Node 'Material Output' (ShaderNodeOutputMaterial)
+[Material Output](https://docs.blender.org/api/current/bpy.types.ShaderNodeOutputMaterial.html#bpy.types.ShaderNodeOutputMaterial)
 
 #### Arguments:
 - **surface** (_Shader_ = None) : socket 'Surface' (Surface)
@@ -1042,7 +1042,7 @@ Node 'Material Output' (ShaderNodeOutputMaterial)
 math(value=None, value_1=None, operation='ADD', use_clamp=False)
 ```
 
-Node 'Math' (ShaderNodeMath)
+[Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html#bpy.types.ShaderNodeMath)
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (Value)
@@ -1066,7 +1066,7 @@ Node 'Math' (ShaderNodeMath)
 mix(factor=None, a=None, b=None, blend_type='MIX', clamp_factor=True, clamp_result=False, data_type='FLOAT', factor_mode='UNIFORM')
 ```
 
-Node 'Mix' (ShaderNodeMix)
+[Mix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html#bpy.types.ShaderNodeMix)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket 'Factor' (Factor_Float)
@@ -1094,7 +1094,7 @@ Node 'Mix' (ShaderNodeMix)
 mix_shader(fac=None, shader=None, shader_1=None)
 ```
 
-Node 'Mix Shader' (ShaderNodeMixShader)
+[Mix Shader](https://docs.blender.org/api/current/bpy.types.ShaderNodeMixShader.html#bpy.types.ShaderNodeMixShader)
 
 #### Arguments:
 - **fac** (_Float_ = None) : socket 'Fac' (Fac)
@@ -1117,7 +1117,7 @@ Node 'Mix Shader' (ShaderNodeMixShader)
 noise_texture(vector=None, scale=None, detail=None, roughness=None, lacunarity=None, distortion=None, color_mapping=None, noise_dimensions='3D', noise_type='FBM', normalize=True, texture_mapping=None)
 ```
 
-Node 'Noise Texture' (ShaderNodeTexNoise)
+[Noise Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexNoise.html#bpy.types.ShaderNodeTexNoise)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -1148,7 +1148,7 @@ Node 'Noise Texture' (ShaderNodeTexNoise)
 normal(normal=None)
 ```
 
-Node 'Normal' (ShaderNodeNormal)
+[Normal](https://docs.blender.org/api/current/bpy.types.ShaderNodeNormal.html#bpy.types.ShaderNodeNormal)
 
 #### Arguments:
 - **normal** (_Vector_ = None) : socket 'Normal' (Normal)
@@ -1169,7 +1169,7 @@ Node 'Normal' (ShaderNodeNormal)
 normal_map(strength=None, color=None, space='TANGENT', uv_map='')
 ```
 
-Node 'Normal Map' (ShaderNodeNormalMap)
+[Normal Map](https://docs.blender.org/api/current/bpy.types.ShaderNodeNormalMap.html#bpy.types.ShaderNodeNormalMap)
 
 #### Arguments:
 - **strength** (_Float_ = None) : socket 'Strength' (Strength)
@@ -1193,7 +1193,7 @@ Node 'Normal Map' (ShaderNodeNormalMap)
 point_density(vector=None, cache_point_density=None, calc_point_density=None, calc_point_density_minmax=None, interpolation='Linear', object=None, particle_color_source='PARTICLE_AGE', particle_system=None, point_source='PARTICLE_SYSTEM', radius=0.30000001192092896, resolution=100, space='OBJECT', vertex_attribute_name='', vertex_color_source='VERTEX_COLOR')
 ```
 
-Node 'Point Density' (ShaderNodeTexPointDensity)
+[Point Density](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexPointDensity.html#bpy.types.ShaderNodeTexPointDensity)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -1227,7 +1227,8 @@ Node 'Point Density' (ShaderNodeTexPointDensity)
 position(attribute_type='GEOMETRY')
 ```
 
-[Attribute](https://docs.blender.org/api/current/bpy.types.ShaderNodeAttribute.html#bpy.types.ShaderNodeAttribute)- attribute_type in ('GEOMETRY', 'OBJECT', 'INSTANCER', 'VIEW_LAYER')
+[Attribute](https://docs.blender.org/api/current/bpy.types.ShaderNodeAttribute.html#bpy.types.ShaderNodeAttribute)
+- attribute_type in ('GEOMETRY', 'OBJECT', 'INSTANCER', 'VIEW_LAYER')
 
 #### Arguments:
 - **attribute_type** ( = GEOMETRY)
@@ -1243,7 +1244,7 @@ position(attribute_type='GEOMETRY')
 principled_bsdf(base_color=None, metallic=None, roughness=None, ior=None, alpha=None, normal=None, subsurface_weight=None, subsurface_radius=None, subsurface_scale=None, subsurface_anisotropy=None, specular_ior_level=None, specular_tint=None, anisotropic=None, anisotropic_rotation=None, tangent=None, transmission_weight=None, coat_weight=None, coat_roughness=None, coat_ior=None, coat_tint=None, coat_normal=None, sheen_weight=None, sheen_roughness=None, sheen_tint=None, emission_color=None, emission_strength=None, thin_film_thickness=None, thin_film_ior=None, distribution='MULTI_GGX', subsurface_method='RANDOM_WALK')
 ```
 
-Node 'Principled BSDF' (ShaderNodeBsdfPrincipled)
+[Principled BSDF](https://docs.blender.org/api/current/bpy.types.ShaderNodeBsdfPrincipled.html#bpy.types.ShaderNodeBsdfPrincipled)
 
 #### Arguments:
 - **base_color** (_Color_ = None) : socket 'Base Color' (Base Color)
@@ -1293,7 +1294,7 @@ Node 'Principled BSDF' (ShaderNodeBsdfPrincipled)
 principled_hair_bsdf(color=None, roughness=None, radial_roughness=None, coat=None, ior=None, offset=None, random_roughness=None, random=None, model='CHIANG', parametrization='COLOR')
 ```
 
-Node 'Principled Hair BSDF' (ShaderNodeBsdfHairPrincipled)
+[Principled Hair BSDF](https://docs.blender.org/api/current/bpy.types.ShaderNodeBsdfHairPrincipled.html#bpy.types.ShaderNodeBsdfHairPrincipled)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -1323,7 +1324,7 @@ Node 'Principled Hair BSDF' (ShaderNodeBsdfHairPrincipled)
 principled_volume(color=None, color_attribute=None, density=None, density_attribute=None, anisotropy=None, absorption_color=None, emission_strength=None, emission_color=None, blackbody_intensity=None, blackbody_tint=None, temperature=None, temperature_attribute=None)
 ```
 
-Node 'Principled Volume' (ShaderNodeVolumePrincipled)
+[Principled Volume](https://docs.blender.org/api/current/bpy.types.ShaderNodeVolumePrincipled.html#bpy.types.ShaderNodeVolumePrincipled)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -1355,7 +1356,7 @@ Node 'Principled Volume' (ShaderNodeVolumePrincipled)
 ray_portal_bsdf(color=None, position=None, direction=None)
 ```
 
-Node 'Ray Portal BSDF' (ShaderNodeBsdfRayPortal)
+[Ray Portal BSDF](https://docs.blender.org/api/current/bpy.types.ShaderNodeBsdfRayPortal.html#bpy.types.ShaderNodeBsdfRayPortal)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -1378,7 +1379,7 @@ Node 'Ray Portal BSDF' (ShaderNodeBsdfRayPortal)
 refraction_bsdf(color=None, roughness=None, ior=None, normal=None, distribution='BECKMANN')
 ```
 
-Node 'Refraction BSDF' (ShaderNodeBsdfRefraction)
+[Refraction BSDF](https://docs.blender.org/api/current/bpy.types.ShaderNodeBsdfRefraction.html#bpy.types.ShaderNodeBsdfRefraction)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -1403,7 +1404,7 @@ Node 'Refraction BSDF' (ShaderNodeBsdfRefraction)
 reroute(input=None)
 ```
 
-Node 'Reroute' (NodeReroute)
+[Reroute](https://docs.blender.org/api/current/bpy.types.NodeReroute.html#bpy.types.NodeReroute)
 
 #### Arguments:
 - **input** (_Color_ = None) : socket 'Input' (Input)
@@ -1424,7 +1425,7 @@ Node 'Reroute' (NodeReroute)
 rgb_curves(fac=None, color=None, mapping=None)
 ```
 
-Node 'RGB Curves' (ShaderNodeRGBCurve)
+[RGB Curves](https://docs.blender.org/api/current/bpy.types.ShaderNodeRGBCurve.html#bpy.types.ShaderNodeRGBCurve)
 
 #### Arguments:
 - **fac** (_Float_ = None) : socket 'Fac' (Fac)
@@ -1447,7 +1448,7 @@ Node 'RGB Curves' (ShaderNodeRGBCurve)
 rgb_to_bw(color=None)
 ```
 
-Node 'RGB to BW' (ShaderNodeRGBToBW)
+[RGB to BW](https://docs.blender.org/api/current/bpy.types.ShaderNodeRGBToBW.html#bpy.types.ShaderNodeRGBToBW)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -1468,7 +1469,7 @@ Node 'RGB to BW' (ShaderNodeRGBToBW)
 script(bytecode='', bytecode_hash='', filepath='', mode='INTERNAL', script=None, use_auto_update=False)
 ```
 
-Node 'Script' (ShaderNodeScript)
+[Script](https://docs.blender.org/api/current/bpy.types.ShaderNodeScript.html#bpy.types.ShaderNodeScript)
 
 #### Arguments:
 - **bytecode** (_str_ = ) : Node.bytecode
@@ -1489,7 +1490,7 @@ Node 'Script' (ShaderNodeScript)
 separate_color(color=None, mode='RGB')
 ```
 
-Node 'Separate Color' (ShaderNodeSeparateColor)
+[Separate Color](https://docs.blender.org/api/current/bpy.types.ShaderNodeSeparateColor.html#bpy.types.ShaderNodeSeparateColor)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -1511,7 +1512,7 @@ Node 'Separate Color' (ShaderNodeSeparateColor)
 separate_xyz(vector=None)
 ```
 
-Node 'Separate XYZ' (ShaderNodeSeparateXYZ)
+[Separate XYZ](https://docs.blender.org/api/current/bpy.types.ShaderNodeSeparateXYZ.html#bpy.types.ShaderNodeSeparateXYZ)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -1532,7 +1533,7 @@ Node 'Separate XYZ' (ShaderNodeSeparateXYZ)
 shader_to_rgb(shader=None)
 ```
 
-Node 'Shader to RGB' (ShaderNodeShaderToRGB)
+[Shader to RGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeShaderToRGB.html#bpy.types.ShaderNodeShaderToRGB)
 
 #### Arguments:
 - **shader** (_Shader_ = None) : socket 'Shader' (Shader)
@@ -1553,7 +1554,8 @@ Node 'Shader to RGB' (ShaderNodeShaderToRGB)
 sharp_face(attribute_type='GEOMETRY')
 ```
 
-[Attribute](https://docs.blender.org/api/current/bpy.types.ShaderNodeAttribute.html#bpy.types.ShaderNodeAttribute)- attribute_type in ('GEOMETRY', 'OBJECT', 'INSTANCER', 'VIEW_LAYER')
+[Attribute](https://docs.blender.org/api/current/bpy.types.ShaderNodeAttribute.html#bpy.types.ShaderNodeAttribute)
+- attribute_type in ('GEOMETRY', 'OBJECT', 'INSTANCER', 'VIEW_LAYER')
 
 #### Arguments:
 - **attribute_type** ( = GEOMETRY)
@@ -1569,7 +1571,7 @@ sharp_face(attribute_type='GEOMETRY')
 sheen_bsdf(color=None, roughness=None, normal=None, distribution='MICROFIBER')
 ```
 
-Node 'Sheen BSDF' (ShaderNodeBsdfSheen)
+[Sheen BSDF](https://docs.blender.org/api/current/bpy.types.ShaderNodeBsdfSheen.html#bpy.types.ShaderNodeBsdfSheen)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -1593,7 +1595,7 @@ Node 'Sheen BSDF' (ShaderNodeBsdfSheen)
 sky_texture(air_density=1.0, altitude=0.0, color_mapping=None, dust_density=1.0, ground_albedo=0.30000001192092896, ozone_density=1.0, sky_type='NISHITA', sun_direction=None, sun_disc=True, sun_elevation=0.2617993950843811, sun_intensity=1.0, sun_rotation=0.0, sun_size=0.009512044489383698, texture_mapping=None, turbidity=2.200000047683716)
 ```
 
-Node 'Sky Texture' (ShaderNodeTexSky)
+[Sky Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexSky.html#bpy.types.ShaderNodeTexSky)
 
 #### Arguments:
 - **air_density** (_float_ = 1.0) : Node.air_density
@@ -1628,7 +1630,7 @@ Node 'Sky Texture' (ShaderNodeTexSky)
 specular_bsdf(base_color=None, specular=None, roughness=None, emissive_color=None, transparency=None, normal=None, clear_coat=None, clear_coat_roughness=None, clear_coat_normal=None)
 ```
 
-Node 'Specular BSDF' (ShaderNodeEeveeSpecular)
+[Specular BSDF](https://docs.blender.org/api/current/bpy.types.ShaderNodeEeveeSpecular.html#bpy.types.ShaderNodeEeveeSpecular)
 
 #### Arguments:
 - **base_color** (_Color_ = None) : socket 'Base Color' (Base Color)
@@ -1657,7 +1659,7 @@ Node 'Specular BSDF' (ShaderNodeEeveeSpecular)
 subsurface_scattering(color=None, scale=None, radius=None, ior=None, roughness=None, anisotropy=None, normal=None, falloff='RANDOM_WALK')
 ```
 
-Node 'Subsurface Scattering' (ShaderNodeSubsurfaceScattering)
+[Subsurface Scattering](https://docs.blender.org/api/current/bpy.types.ShaderNodeSubsurfaceScattering.html#bpy.types.ShaderNodeSubsurfaceScattering)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -1685,7 +1687,7 @@ Node 'Subsurface Scattering' (ShaderNodeSubsurfaceScattering)
 tangent(axis='Z', direction_type='RADIAL', uv_map='')
 ```
 
-Node 'Tangent' (ShaderNodeTangent)
+[Tangent](https://docs.blender.org/api/current/bpy.types.ShaderNodeTangent.html#bpy.types.ShaderNodeTangent)
 
 #### Arguments:
 - **axis** (_str_ = Z) : Node.axis in ('X', 'Y', 'Z')
@@ -1708,7 +1710,7 @@ Node 'Tangent' (ShaderNodeTangent)
 texture_coordinate(from_instancer=False, object=None)
 ```
 
-Node 'Texture Coordinate' (ShaderNodeTexCoord)
+[Texture Coordinate](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexCoord.html#bpy.types.ShaderNodeTexCoord)
 
 #### Arguments:
 - **from_instancer** (_bool_ = False) : Node.from_instancer
@@ -1730,7 +1732,7 @@ Node 'Texture Coordinate' (ShaderNodeTexCoord)
 toon_bsdf(color=None, size=None, smooth=None, normal=None, component='DIFFUSE')
 ```
 
-Node 'Toon BSDF' (ShaderNodeBsdfToon)
+[Toon BSDF](https://docs.blender.org/api/current/bpy.types.ShaderNodeBsdfToon.html#bpy.types.ShaderNodeBsdfToon)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -1755,7 +1757,7 @@ Node 'Toon BSDF' (ShaderNodeBsdfToon)
 translucent_bsdf(color=None, normal=None)
 ```
 
-Node 'Translucent BSDF' (ShaderNodeBsdfTranslucent)
+[Translucent BSDF](https://docs.blender.org/api/current/bpy.types.ShaderNodeBsdfTranslucent.html#bpy.types.ShaderNodeBsdfTranslucent)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -1777,7 +1779,7 @@ Node 'Translucent BSDF' (ShaderNodeBsdfTranslucent)
 transparent_bsdf(color=None)
 ```
 
-Node 'Transparent BSDF' (ShaderNodeBsdfTransparent)
+[Transparent BSDF](https://docs.blender.org/api/current/bpy.types.ShaderNodeBsdfTransparent.html#bpy.types.ShaderNodeBsdfTransparent)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -1798,7 +1800,7 @@ Node 'Transparent BSDF' (ShaderNodeBsdfTransparent)
 uv_along_stroke(use_tips=False)
 ```
 
-Node 'UV Along Stroke' (ShaderNodeUVAlongStroke)
+[UV Along Stroke](https://docs.blender.org/api/current/bpy.types.ShaderNodeUVAlongStroke.html#bpy.types.ShaderNodeUVAlongStroke)
 
 #### Arguments:
 - **use_tips** (_bool_ = False) : Node.use_tips
@@ -1819,7 +1821,8 @@ Node 'UV Along Stroke' (ShaderNodeUVAlongStroke)
 uvmap(attribute_type='GEOMETRY')
 ```
 
-[Attribute](https://docs.blender.org/api/current/bpy.types.ShaderNodeAttribute.html#bpy.types.ShaderNodeAttribute)- attribute_type in ('GEOMETRY', 'OBJECT', 'INSTANCER', 'VIEW_LAYER')
+[Attribute](https://docs.blender.org/api/current/bpy.types.ShaderNodeAttribute.html#bpy.types.ShaderNodeAttribute)
+- attribute_type in ('GEOMETRY', 'OBJECT', 'INSTANCER', 'VIEW_LAYER')
 
 #### Arguments:
 - **attribute_type** ( = GEOMETRY)
@@ -1835,7 +1838,7 @@ uvmap(attribute_type='GEOMETRY')
 uv_map(from_instancer=False, uv_map='')
 ```
 
-Node 'UV Map' (ShaderNodeUVMap)
+[UV Map](https://docs.blender.org/api/current/bpy.types.ShaderNodeUVMap.html#bpy.types.ShaderNodeUVMap)
 
 #### Arguments:
 - **from_instancer** (_bool_ = False) : Node.from_instancer
@@ -1857,7 +1860,7 @@ Node 'UV Map' (ShaderNodeUVMap)
 vector_curves(fac=None, vector=None, mapping=None)
 ```
 
-Node 'Vector Curves' (ShaderNodeVectorCurve)
+[Vector Curves](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorCurve.html#bpy.types.ShaderNodeVectorCurve)
 
 #### Arguments:
 - **fac** (_Float_ = None) : socket 'Fac' (Fac)
@@ -1880,7 +1883,7 @@ Node 'Vector Curves' (ShaderNodeVectorCurve)
 vector_displacement(vector=None, midlevel=None, scale=None, space='TANGENT')
 ```
 
-Node 'Vector Displacement' (ShaderNodeVectorDisplacement)
+[Vector Displacement](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorDisplacement.html#bpy.types.ShaderNodeVectorDisplacement)
 
 #### Arguments:
 - **vector** (_Color_ = None) : socket 'Vector' (Vector)
@@ -1904,7 +1907,7 @@ Node 'Vector Displacement' (ShaderNodeVectorDisplacement)
 vector_math(vector=None, vector_1=None, operation='ADD')
 ```
 
-Node 'Vector Math' (ShaderNodeVectorMath)
+[Vector Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html#bpy.types.ShaderNodeVectorMath)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -1927,7 +1930,7 @@ Node 'Vector Math' (ShaderNodeVectorMath)
 vector_rotate(vector=None, center=None, axis=None, angle=None, invert=False, rotation_type='AXIS_ANGLE')
 ```
 
-Node 'Vector Rotate' (ShaderNodeVectorRotate)
+[Vector Rotate](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorRotate.html#bpy.types.ShaderNodeVectorRotate)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -1953,7 +1956,7 @@ Node 'Vector Rotate' (ShaderNodeVectorRotate)
 vector_transform(vector=None, convert_from='WORLD', convert_to='OBJECT', vector_type='VECTOR')
 ```
 
-Node 'Vector Transform' (ShaderNodeVectorTransform)
+[Vector Transform](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorTransform.html#bpy.types.ShaderNodeVectorTransform)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -1977,7 +1980,7 @@ Node 'Vector Transform' (ShaderNodeVectorTransform)
 volume_absorption(color=None, density=None)
 ```
 
-Node 'Volume Absorption' (ShaderNodeVolumeAbsorption)
+[Volume Absorption](https://docs.blender.org/api/current/bpy.types.ShaderNodeVolumeAbsorption.html#bpy.types.ShaderNodeVolumeAbsorption)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -1999,7 +2002,7 @@ Node 'Volume Absorption' (ShaderNodeVolumeAbsorption)
 volume_scatter(color=None, density=None, anisotropy=None)
 ```
 
-Node 'Volume Scatter' (ShaderNodeVolumeScatter)
+[Volume Scatter](https://docs.blender.org/api/current/bpy.types.ShaderNodeVolumeScatter.html#bpy.types.ShaderNodeVolumeScatter)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -2022,7 +2025,7 @@ Node 'Volume Scatter' (ShaderNodeVolumeScatter)
 voronoi_texture(vector=None, scale=None, detail=None, roughness=None, lacunarity=None, randomness=None, color_mapping=None, distance='EUCLIDEAN', feature='F1', normalize=False, texture_mapping=None, voronoi_dimensions='3D')
 ```
 
-Node 'Voronoi Texture' (ShaderNodeTexVoronoi)
+[Voronoi Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html#bpy.types.ShaderNodeTexVoronoi)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -2054,7 +2057,7 @@ Node 'Voronoi Texture' (ShaderNodeTexVoronoi)
 wavelength(wavelength=None)
 ```
 
-Node 'Wavelength' (ShaderNodeWavelength)
+[Wavelength](https://docs.blender.org/api/current/bpy.types.ShaderNodeWavelength.html#bpy.types.ShaderNodeWavelength)
 
 #### Arguments:
 - **wavelength** (_Float_ = None) : socket 'Wavelength' (Wavelength)
@@ -2075,7 +2078,7 @@ Node 'Wavelength' (ShaderNodeWavelength)
 wave_texture(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', color_mapping=None, rings_direction='X', texture_mapping=None, wave_profile='SIN', wave_type='BANDS')
 ```
 
-Node 'Wave Texture' (ShaderNodeTexWave)
+[Wave Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html#bpy.types.ShaderNodeTexWave)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -2108,7 +2111,7 @@ Node 'Wave Texture' (ShaderNodeTexWave)
 white_noise_texture(vector=None, noise_dimensions='3D')
 ```
 
-Node 'White Noise Texture' (ShaderNodeTexWhiteNoise)
+[White Noise Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html#bpy.types.ShaderNodeTexWhiteNoise)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -2130,7 +2133,7 @@ Node 'White Noise Texture' (ShaderNodeTexWhiteNoise)
 wireframe(size=None, use_pixel_size=False)
 ```
 
-Node 'Wireframe' (ShaderNodeWireframe)
+[Wireframe](https://docs.blender.org/api/current/bpy.types.ShaderNodeWireframe.html#bpy.types.ShaderNodeWireframe)
 
 #### Arguments:
 - **size** (_Float_ = None) : socket 'Size' (Size)
@@ -2152,7 +2155,7 @@ Node 'Wireframe' (ShaderNodeWireframe)
 world_output(surface=None, volume=None, is_active_output=True, target='ALL')
 ```
 
-Node 'World Output' (ShaderNodeOutputWorld)
+[World Output](https://docs.blender.org/api/current/bpy.types.ShaderNodeOutputWorld.html#bpy.types.ShaderNodeOutputWorld)
 
 #### Arguments:
 - **surface** (_Shader_ = None) : socket 'Surface' (Surface)

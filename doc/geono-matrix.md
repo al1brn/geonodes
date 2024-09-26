@@ -49,7 +49,9 @@ Named(name)
 ```
 
 [Named Attribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html#bpy.types.GeometryNodeInputNamedAttribute)
+
 [Named Attribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html#bpy.types.GeometryNodeInputNamedAttribute)
+
 'Named' is a synonym of 'NamedAttribute'
 
 ``` python
@@ -89,7 +91,9 @@ NamedAttribute(name)
 ```
 
 [Named Attribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html#bpy.types.GeometryNodeInputNamedAttribute)
+
 [Named Attribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html#bpy.types.GeometryNodeInputNamedAttribute)
+
 'Named' is a synonym of 'NamedAttribute'
 
 ``` python

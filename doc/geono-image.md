@@ -35,7 +35,7 @@ Class Image data socket
 Info(image=None, frame=None)
 ```
 
-Node 'Image Info' (GeometryNodeImageInfo)
+[Image Info](https://docs.blender.org/api/current/bpy.types.GeometryNodeImageInfo.html#bpy.types.GeometryNodeImageInfo)
 
 #### Arguments:
 - **image** (_Image_ = None) : socket 'Image' (Image)
@@ -57,7 +57,7 @@ Node 'Image Info' (GeometryNodeImageInfo)
 info(frame=None)
 ```
 
-Node 'Image Info' (GeometryNodeImageInfo)
+[Image Info](https://docs.blender.org/api/current/bpy.types.GeometryNodeImageInfo.html#bpy.types.GeometryNodeImageInfo)
 
 #### Arguments:
 - **frame** (_Integer_ = None) : socket 'Frame' (Frame)

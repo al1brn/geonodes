@@ -43,7 +43,8 @@ Brick(vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_siz
 ```
 
 [Brick Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexBrick.html#bpy.types.ShaderNodeTexBrick)
-[!Node] Brick Texture
+
+[Brick Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexBrick.html#bpy.types.ShaderNodeTexBrick)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -74,7 +75,8 @@ Checker(vector=None, color1=None, color2=None, scale=None)
 ```
 
 [Checker Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexChecker.html#bpy.types.ShaderNodeTexChecker)
-[!Node] Checker Texture
+
+[Checker Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexChecker.html#bpy.types.ShaderNodeTexChecker)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -99,7 +101,8 @@ Gradient(vector=None)
 ```
 
 [Gradient Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html#bpy.types.ShaderNodeTexGradient)
-[!Node] Gradient Texture
+
+[Gradient Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html#bpy.types.ShaderNodeTexGradient)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -121,7 +124,8 @@ Image(image=None, vector=None, frame=None, interpolation='Linear', extension='RE
 ```
 
 [Image Texture](https://docs.blender.org/api/current/bpy.types.GeometryNodeImageTexture.html#bpy.types.GeometryNodeImageTexture)
-[!Node] Image Texture
+
+[Image Texture](https://docs.blender.org/api/current/bpy.types.GeometryNodeImageTexture.html#bpy.types.GeometryNodeImageTexture)
 
 #### Arguments:
 - **image** (_Image_ = None) : socket 'Image' (Image)
@@ -147,7 +151,8 @@ Magic(vector=None, scale=None, distortion=None)
 ```
 
 [Magic Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexMagic.html#bpy.types.ShaderNodeTexMagic)
-[!Node] Magic Texture
+
+[Magic Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexMagic.html#bpy.types.ShaderNodeTexMagic)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -171,7 +176,8 @@ Noise(vector=None, w=None, scale=None, detail=None, roughness=None, lacunarity=N
 ```
 
 [Noise Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexNoise.html#bpy.types.ShaderNodeTexNoise)
-[!Node] Noise Texture
+
+[Noise Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexNoise.html#bpy.types.ShaderNodeTexNoise)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -203,7 +209,8 @@ Voronoi(vector=None, w=None, scale=None, detail=None, roughness=None, lacunarity
 ```
 
 [Voronoi Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html#bpy.types.ShaderNodeTexVoronoi)
-[!Node] Voronoi Texture
+
+[Voronoi Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html#bpy.types.ShaderNodeTexVoronoi)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -236,7 +243,8 @@ Wave(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, d
 ```
 
 [Wave Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html#bpy.types.ShaderNodeTexWave)
-[!Node] Wave Texture
+
+[Wave Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html#bpy.types.ShaderNodeTexWave)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -268,7 +276,8 @@ WhiteNoise(vector=None, w=None, dim='3D')
 ```
 
 [White Noise Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html#bpy.types.ShaderNodeTexWhiteNoise)
-[!Node] White Noise Texture
+
+[White Noise Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html#bpy.types.ShaderNodeTexWhiteNoise)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)

@@ -41,7 +41,7 @@ Geometry Class
 
 Property node 'Bounding Box' (GeometryNodeBoundBox)
 
-[!Node] Bounding Box
+[Bounding Box](https://docs.blender.org/api/current/bpy.types.GeometryNodeBoundBox.html#bpy.types.GeometryNodeBoundBox)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Properties](geono-geometry.md#properties)</sub>
 
@@ -52,7 +52,7 @@ Property node 'Bounding Box' (GeometryNodeBoundBox)
 
 Property node 'Convex Hull' (GeometryNodeConvexHull)
 
-[!Node] Convex Hull
+[Convex Hull](https://docs.blender.org/api/current/bpy.types.GeometryNodeConvexHull.html#bpy.types.GeometryNodeConvexHull)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Properties](geono-geometry.md#properties)</sub>
 
@@ -63,7 +63,7 @@ Property node 'Convex Hull' (GeometryNodeConvexHull)
 
 Property curve component
 
-[!Node] Separate Components
+[Separate Components](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html#bpy.types.GeometryNodeSeparateComponents)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Properties](geono-geometry.md#properties)</sub>
 
@@ -73,7 +73,8 @@ Property curve component
 >
 
 [ID](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputID.html#bpy.types.GeometryNodeInputID)
-[!Node] ID
+
+[ID](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputID.html#bpy.types.GeometryNodeInputID)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Properties](geono-geometry.md#properties)</sub>
 
@@ -84,7 +85,7 @@ Property curve component
 
 Property instances component
 
-[!Node] Separate Components
+[Separate Components](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html#bpy.types.GeometryNodeSeparateComponents)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Properties](geono-geometry.md#properties)</sub>
 
@@ -94,7 +95,8 @@ Property instances component
 >
 
 [Material Index](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMaterialIndex.html#bpy.types.GeometryNodeInputMaterialIndex)
-[!Node] Material Index
+
+[Material Index](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMaterialIndex.html#bpy.types.GeometryNodeInputMaterialIndex)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Properties](geono-geometry.md#properties)</sub>
 
@@ -105,7 +107,7 @@ Property instances component
 
 Property mesh component
 
-[!Node] Separate Components
+[Separate Components](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html#bpy.types.GeometryNodeSeparateComponents)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Properties](geono-geometry.md#properties)</sub>
 
@@ -116,7 +118,7 @@ Property mesh component
 
 Property cloud component
 
-[!Node] Separate Components
+[Separate Components](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html#bpy.types.GeometryNodeSeparateComponents)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Properties](geono-geometry.md#properties)</sub>
 
@@ -126,7 +128,8 @@ Property cloud component
 >
 
 [Position](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputPosition.html#bpy.types.GeometryNodeInputPosition)
-[!Node] Position
+
+[Position](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputPosition.html#bpy.types.GeometryNodeInputPosition)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Properties](geono-geometry.md#properties)</sub>
 
@@ -137,7 +140,7 @@ Property cloud component
 
 Property node 'Separate Components' (GeometryNodeSeparateComponents)
 
-[!Node] Separate Components
+[Separate Components](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html#bpy.types.GeometryNodeSeparateComponents)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Properties](geono-geometry.md#properties)</sub>
 
@@ -148,7 +151,7 @@ Property node 'Separate Components' (GeometryNodeSeparateComponents)
 
 Property volume component
 
-[!Node] Separate Components
+[Separate Components](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html#bpy.types.GeometryNodeSeparateComponents)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Properties](geono-geometry.md#properties)</sub>
 
@@ -166,7 +169,8 @@ index_of_nearest(position=None, group_id=None)
 ```
 
 [Index of Nearest](https://docs.blender.org/api/current/bpy.types.GeometryNodeIndexOfNearest.html#bpy.types.GeometryNodeIndexOfNearest)
-[!Node] Index of Nearest
+
+[Index of Nearest](https://docs.blender.org/api/current/bpy.types.GeometryNodeIndexOfNearest.html#bpy.types.GeometryNodeIndexOfNearest)
 
 #### Arguments:
 - **position** (_Vector_ = None) : socket 'Position' (Position)
@@ -189,7 +193,9 @@ join(*geometries)
 ```
 
 [Join Geometry](https://docs.blender.org/api/current/bpy.types.GeometryNodeJoinGeometry.html#bpy.types.GeometryNodeJoinGeometry)
+
 [Join Geometry](https://docs.blender.org/api/current/bpy.types.GeometryNodeJoinGeometry.html#bpy.types.GeometryNodeJoinGeometry)
+
 Operator + can be used : ``` geo + other_geo ``` is equivalent to ``` geo.join(other) ```
 If all the geometries are of the same type, the returned geometry uses this type.
 
@@ -227,7 +233,8 @@ merge_by_distance(distance=None, mode='ALL')
 ```
 
 [Merge by Distance](https://docs.blender.org/api/current/bpy.types.GeometryNodeMergeByDistance.html#bpy.types.GeometryNodeMergeByDistance)
-[!Node] Merge by Distance
+
+[Merge by Distance](https://docs.blender.org/api/current/bpy.types.GeometryNodeMergeByDistance.html#bpy.types.GeometryNodeMergeByDistance)
 
 #### Arguments:
 - **distance** (_Float_ = None) : socket 'Distance' (Distance)
@@ -250,7 +257,9 @@ raycast(attribute=None, source_position=None, ray_direction=None, ray_length=Non
 ```
 
 [Raycast](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html#bpy.types.GeometryNodeRaycast)
+
 [Raycast](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html#bpy.types.GeometryNodeRaycast)
+
 mapping in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4')
 
 #### Arguments:
@@ -278,7 +287,7 @@ remove_named_attribute(name, exact=True)
 
 Remove named attribute
 
-[!Node] Remove Named Attribute
+[Remove Named Attribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeRemoveAttribute.html#bpy.types.GeometryNodeRemoveAttribute)
 
 #### Arguments:
 - **name** (_String_) : socket
@@ -301,7 +310,8 @@ replace_material(old=None, new=None)
 ```
 
 [Replace Material](https://docs.blender.org/api/current/bpy.types.GeometryNodeReplaceMaterial.html#bpy.types.GeometryNodeReplaceMaterial)
-[!Node] Replace Material
+
+[Replace Material](https://docs.blender.org/api/current/bpy.types.GeometryNodeReplaceMaterial.html#bpy.types.GeometryNodeReplaceMaterial)
 
 #### Arguments:
 - **old** (_Material_ = None) : socket 'Old' (Old)
@@ -325,7 +335,7 @@ set_id(id=None)
 
 Set ID.
 
-[!Node] Set ID
+[Set ID](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetID.html#bpy.types.GeometryNodeSetID)
 
 #### Arguments:
 - **id** (_Integer_ = None) : socket
@@ -348,7 +358,7 @@ set_material(material=None)
 
 Set Material.
 
-[!Node] Set Material
+[Set Material](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html#bpy.types.GeometryNodeSetMaterial)
 
 #### Arguments:
 - **material** (_Material_ = None) : socket
@@ -371,7 +381,7 @@ set_position(position=None, offset=None)
 
 Set Position.
 
-[!Node] Set Position
+[Set Position](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetPosition.html#bpy.types.GeometryNodeSetPosition)
 
 #### Arguments:
 - **position** (_Vector_ = None) : socket
@@ -395,7 +405,7 @@ set_shade_smooth(shade_smooth=True, edge=False)
 
 Set Shade Smooth.
 
-[!Node] Set Shade Smooth
+[Set Shade Smooth](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetShadeSmooth.html#bpy.types.GeometryNodeSetShadeSmooth)
 
 #### Arguments:
 - **shade_smooth** (_Boolean_ = True) : socket
@@ -418,7 +428,8 @@ to_instance(*geometries)
 ```
 
 [Geometry to Instance](https://docs.blender.org/api/current/bpy.types.GeometryNodeGeometryToInstance.html#bpy.types.GeometryNodeGeometryToInstance)
-[!Node] Geometry to Instance
+
+[Geometry to Instance](https://docs.blender.org/api/current/bpy.types.GeometryNodeGeometryToInstance.html#bpy.types.GeometryNodeGeometryToInstance)
 
 #### Arguments:
 - **geometries** (_Geometry_) : socket 'Geometry' (Geometry)
@@ -440,7 +451,9 @@ transform(translation=None, rotation=None, scale=None, matrix=None)
 ```
 
 [Transform Geometry](https://docs.blender.org/api/current/bpy.types.GeometryNodeTransform.html#bpy.types.GeometryNodeTransform)
+
 [Transform Geometry](https://docs.blender.org/api/current/bpy.types.GeometryNodeTransform.html#bpy.types.GeometryNodeTransform)
+
 If 'matrix' argument is None, the mode 'COMPONENTS' is set.
 If 'matrix' argument is not NOne, the mode 'MATRIX' is set and the other arguments are ignored.
 
@@ -468,7 +481,7 @@ viewer(value=None)
 
 Create a viewer node.
 
-[!Node] Viewer
+[Viewer](https://docs.blender.org/api/current/bpy.types.GeometryNodeViewer.html#bpy.types.GeometryNodeViewer)
 
 #### Arguments:
 - **value** (_Socket_ = None) : socket

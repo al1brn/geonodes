@@ -70,7 +70,7 @@ Parameters
 info(as_instance=None, original=True)
 ```
 
-Node 'Object Info' (GeometryNodeObjectInfo)
+[Object Info](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html#bpy.types.GeometryNodeObjectInfo)
 
 #### Arguments:
 - **as_instance** (_Boolean_ = None) : socket 'As Instance' (As Instance)

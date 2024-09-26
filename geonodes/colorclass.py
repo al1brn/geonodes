@@ -878,7 +878,7 @@ class Color(VectorLike):
     def to_bw(self):
         """ Conversion to black and white.
 
-        [!Node] RGG to BW
+        [!Node] RGB to BW
 
         Returns
         -------

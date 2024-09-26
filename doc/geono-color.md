@@ -8,7 +8,11 @@ Color(value=(0.0, 0.0, 0.0, 1.0), name=None, tip=None)
 
 Socket of type COLOR (RGBA)
 
-[!Node] RGB, Combine Color, Color
+[RGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeRGB.html#bpy.types.ShaderNodeRGB)
+
+[Combine Color](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineColor.html#bpy.types.FunctionNodeCombineColor)
+
+[Color](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputColor.html#bpy.types.FunctionNodeInputColor)
 
 #### Arguments:
 - **value** (_tuple or Socket_ = (0.0, 0.0, 0.0, 1.0)) : initial value
@@ -51,7 +55,7 @@ Socket of type COLOR (RGBA)
 
 Alpha component
 
-[!Node] Separate Color
+[Separate Color](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html#bpy.types.FunctionNodeSeparateColor)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Properties](geono-color.md#properties)</sub>
 
@@ -62,7 +66,7 @@ Alpha component
 
 Blue component
 
-[!Node] Separate Color
+[Separate Color](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html#bpy.types.FunctionNodeSeparateColor)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Properties](geono-color.md#properties)</sub>
 
@@ -73,7 +77,7 @@ Blue component
 
 Green component
 
-[!Node] Separate Color
+[Separate Color](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html#bpy.types.FunctionNodeSeparateColor)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Properties](geono-color.md#properties)</sub>
 
@@ -84,7 +88,7 @@ Green component
 
 Hue component
 
-[!Node] Separate Color
+[Separate Color](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html#bpy.types.FunctionNodeSeparateColor)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Properties](geono-color.md#properties)</sub>
 
@@ -95,7 +99,7 @@ Hue component
 
 Lightness component
 
-[!Node] Separate Color
+[Separate Color](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html#bpy.types.FunctionNodeSeparateColor)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Properties](geono-color.md#properties)</sub>
 
@@ -106,7 +110,7 @@ Lightness component
 
 Red component
 
-[!Node] Separate Color
+[Separate Color](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html#bpy.types.FunctionNodeSeparateColor)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Properties](geono-color.md#properties)</sub>
 
@@ -117,7 +121,7 @@ Red component
 
 Saturation component
 
-[!Node] Separate Color
+[Separate Color](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html#bpy.types.FunctionNodeSeparateColor)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Properties](geono-color.md#properties)</sub>
 
@@ -128,7 +132,7 @@ Saturation component
 
 Conversion to black and white.
 
-[!Node] RGG to BW
+[RGB to BW](https://docs.blender.org/api/current/bpy.types.ShaderNodeRGBToBW.html#bpy.types.ShaderNodeRGBToBW)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Properties](geono-color.md#properties)</sub>
 
@@ -139,7 +143,7 @@ Conversion to black and white.
 
 Value component
 
-[!Node] Separate Color
+[Separate Color](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html#bpy.types.FunctionNodeSeparateColor)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Properties](geono-color.md#properties)</sub>
 
@@ -158,7 +162,7 @@ add(factor=None, other=None, clamp_result=False, clamp_factor=True)
 
 Mix with another color : ADD
 
-[!Node] Mix
+[Mix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html#bpy.types.ShaderNodeMix)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -184,7 +188,7 @@ ambient_occlusion(distance=None, normal=None, inside=False, only_local=False, sa
 
 Shader node Ambient Occlusion.
 
-[!Node] Color Attribute
+[Color Attribute](https://docs.blender.org/api/current/bpy.types.ShaderNodeVertexColor.html#bpy.types.ShaderNodeVertexColor)
 
 #### Arguments:
 - **distance** (_Float_ = None) : socket
@@ -211,7 +215,7 @@ Attribute(name)
 
 Shader node Color Attribute.
 
-[!Node] Color Attribute
+[Color Attribute](https://docs.blender.org/api/current/bpy.types.ShaderNodeVertexColor.html#bpy.types.ShaderNodeVertexColor)
 
 #### Arguments:
 - **name** (_str_)
@@ -234,7 +238,7 @@ Blackbody(temperature=None)
 
 Constructor : Black body.
 
-[!Node] Blackbody
+[Blackbody](https://docs.blender.org/api/current/bpy.types.ShaderNodeBlackbody.html#bpy.types.ShaderNodeBlackbody)
 
 #### Arguments:
 - **temperature** (_Float_ = None) : socket
@@ -257,7 +261,7 @@ brighter(other)
 
 Compare with another Color : BRIGHTER
 
-[!Node] Compare
+[Compare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html#bpy.types.FunctionNodeCompare)
 
 #### Arguments:
 - **other** (_Color_) : socket
@@ -280,7 +284,7 @@ brightness_contrast(bright=None, contrast=None)
 
 Brightness and contrast.
 
-[!Node] Brightness/Contrast
+[Brightness/Contrast](https://docs.blender.org/api/current/bpy.types.ShaderNodeBrightContrast.html#bpy.types.ShaderNodeBrightContrast)
 
 #### Arguments:
 - **bright** (_Float_ = None) : socket
@@ -304,7 +308,7 @@ burn(factor=None, other=None, clamp_result=False, clamp_factor=True)
 
 Mix with another color : BURN
 
-[!Node] Mix
+[Mix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html#bpy.types.ShaderNodeMix)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -330,7 +334,7 @@ ColorRamp(fac=None, keep=None)
 
 Constructor : Color Ramp
 
-[!Node] Color Ramp
+[Color Ramp](https://docs.blender.org/api/current/bpy.types.ShaderNodeValToRGB.html#bpy.types.ShaderNodeValToRGB)
 
 #### Arguments:
 - **fac** (_Float_ = None)
@@ -354,7 +358,7 @@ Combine(a=0, b=0, c=0, alpha=1, mode='RGB')
 
 Constructor : Combine Color
 
-[!Node] Combine Color
+[Combine Color](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineColor.html#bpy.types.FunctionNodeCombineColor)
 
 #### Arguments:
 - **a** (_Float_ = 0) : depending on mode
@@ -381,7 +385,7 @@ CombineHSL(hue=0, saturation=0, lightness=0, alpha=1)
 
 Constructor : Combine Color from HSL
 
-[!Node] Combine Color
+[Combine Color](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineColor.html#bpy.types.FunctionNodeCombineColor)
 
 #### Arguments:
 - **hue** (_Float_ = 0)
@@ -407,7 +411,7 @@ CombineHSV(hue=0, saturation=0, value=0, alpha=1)
 
 Constructor : Combine Color from HSV
 
-[!Node] Combine Color
+[Combine Color](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineColor.html#bpy.types.FunctionNodeCombineColor)
 
 #### Arguments:
 - **hue** (_Float_ = 0)
@@ -433,7 +437,7 @@ CombineRGB(red=0, green=0, blue=0, alpha=1)
 
 Constructor : Combine Color from RGB
 
-[!Node] Combine Color
+[Combine Color](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineColor.html#bpy.types.FunctionNodeCombineColor)
 
 #### Arguments:
 - **red** (_Float_ = 0)
@@ -459,7 +463,7 @@ curves(fac=None, keep=None)
 
 Color curves.
 
-[!Node] RGB Curves
+[RGB Curves](https://docs.blender.org/api/current/bpy.types.ShaderNodeRGBCurve.html#bpy.types.ShaderNodeRGBCurve)
 
 #### Arguments:
 - **fac** (_Float_ = None) : socket
@@ -483,7 +487,7 @@ darken(factor=None, other=None, clamp_result=False, clamp_factor=True)
 
 Mix with another color : DARKEN
 
-[!Node] Mix
+[Mix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html#bpy.types.ShaderNodeMix)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -509,7 +513,7 @@ darker(other)
 
 Compare with another Color : DARKER
 
-[!Node] Compare
+[Compare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html#bpy.types.FunctionNodeCompare)
 
 #### Arguments:
 - **other** (_Color_) : socket
@@ -532,7 +536,7 @@ difference(factor=None, other=None, clamp_result=False, clamp_factor=True)
 
 Mix with another color : DIFFERENCE
 
-[!Node] Mix
+[Mix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html#bpy.types.ShaderNodeMix)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -558,7 +562,7 @@ divide(factor=None, other=None, clamp_result=False, clamp_factor=True)
 
 Mix with another color : DIVIDE
 
-[!Node] Mix
+[Mix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html#bpy.types.ShaderNodeMix)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -584,7 +588,7 @@ dodge(factor=None, other=None, clamp_result=False, clamp_factor=True)
 
 Mix with another color : DODGE
 
-[!Node] Mix
+[Mix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html#bpy.types.ShaderNodeMix)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -610,7 +614,7 @@ equal(other, epsilon=None)
 
 Compare with another Color : EQUAL
 
-[!Node] Compare
+[Compare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html#bpy.types.FunctionNodeCompare)
 
 #### Arguments:
 - **other** (_Color_) : socket
@@ -634,7 +638,7 @@ exclusion(factor=None, other=None, clamp_result=False, clamp_factor=True)
 
 Mix with another color : EXCLUSION
 
-[!Node] Mix
+[Mix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html#bpy.types.ShaderNodeMix)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -660,7 +664,7 @@ FromShader(shader)
 
 Constructor : Shader to RGB.
 
-[!Node] Shader to RGB
+[Shader to RGB](https://docs.blender.org/api/current/bpy.types.ShaderNodeShaderToRGB.html#bpy.types.ShaderNodeShaderToRGB)
 
 #### Arguments:
 - **shader** (_Shader_) : socket
@@ -683,7 +687,7 @@ gamma(gamma=None)
 
 Gamma.
 
-[!Node] Gamma
+[Gamma](https://docs.blender.org/api/current/bpy.types.ShaderNodeGamma.html#bpy.types.ShaderNodeGamma)
 
 #### Arguments:
 - **gamma** (_Float_ = None) : socket
@@ -706,7 +710,7 @@ hue_saturation_value(hue=None, saturation=None, value=None, fac=None)
 
 Hue / saturation / value.
 
-[!Node] Hue/Saturation/Value
+[Hue/Saturation/Value](https://docs.blender.org/api/current/bpy.types.ShaderNodeHueSaturation.html#bpy.types.ShaderNodeHueSaturation)
 
 #### Arguments:
 - **hue** (_Float_ = None) : socket
@@ -732,7 +736,7 @@ invert(fac=None)
 
 Invert.
 
-[!Node] Invert Color
+[Invert Color](https://docs.blender.org/api/current/bpy.types.ShaderNodeInvert.html#bpy.types.ShaderNodeInvert)
 
 #### Arguments:
 - **fac** (_Float_ = None) : socket
@@ -755,7 +759,7 @@ lighten(factor=None, other=None, clamp_result=False, clamp_factor=True)
 
 Mix with another color : LIGHTEN
 
-[!Node] Mix
+[Mix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html#bpy.types.ShaderNodeMix)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -781,7 +785,7 @@ linear_light(factor=None, other=None, clamp_result=False, clamp_factor=True)
 
 Mix with another color : LINEAR LIGHT
 
-[!Node] Mix
+[Mix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html#bpy.types.ShaderNodeMix)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -807,7 +811,7 @@ mix(factor=None, other=None, clamp_result=False, clamp_factor=True, blend_type='
 
 Mix with another color
 
-[!Node] Mix
+[Mix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html#bpy.types.ShaderNodeMix)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -834,7 +838,7 @@ mix_color(factor=None, other=None, clamp_result=False, clamp_factor=True)
 
 Mix with another color : COLOR
 
-[!Node] Mix
+[Mix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html#bpy.types.ShaderNodeMix)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -860,7 +864,7 @@ mix_hue(factor=None, other=None, clamp_result=False, clamp_factor=True)
 
 Mix with another color : HUE
 
-[!Node] Mix
+[Mix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html#bpy.types.ShaderNodeMix)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -886,7 +890,7 @@ mix_saturation(factor=None, other=None, clamp_result=False, clamp_factor=True)
 
 Mix with another color : SATURATION
 
-[!Node] Mix
+[Mix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html#bpy.types.ShaderNodeMix)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -912,7 +916,7 @@ mix_value(factor=None, other=None, clamp_result=False, clamp_factor=True)
 
 Mix with another color : VALUE
 
-[!Node] Mix
+[Mix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html#bpy.types.ShaderNodeMix)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -938,7 +942,7 @@ multiply(factor=None, other=None, clamp_result=False, clamp_factor=True)
 
 Mix with another color : MULTIPLY
 
-[!Node] Mix
+[Mix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html#bpy.types.ShaderNodeMix)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -964,7 +968,7 @@ normal_map(strength=None, space='TANGENT', uv_map='')
 
 Normal map.
 
-[!Node] Normal Map
+[Normal Map](https://docs.blender.org/api/current/bpy.types.ShaderNodeNormalMap.html#bpy.types.ShaderNodeNormalMap)
 
 #### Arguments:
 - **strength** (_Float_ = None) : socket
@@ -989,7 +993,7 @@ not_equal(other, epsilon=None)
 
 Compare with another Color : NOT EQUAL
 
-[!Node] Compare
+[Compare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html#bpy.types.FunctionNodeCompare)
 
 #### Arguments:
 - **other** (_Color_) : socket
@@ -1013,7 +1017,7 @@ overlay(factor=None, other=None, clamp_result=False, clamp_factor=True)
 
 Mix with another color : OVERLAY
 
-[!Node] Mix
+[Mix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html#bpy.types.ShaderNodeMix)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -1039,7 +1043,7 @@ screen(factor=None, other=None, clamp_result=False, clamp_factor=True)
 
 Mix with another color : SCREEN
 
-[!Node] Mix
+[Mix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html#bpy.types.ShaderNodeMix)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -1065,7 +1069,7 @@ soft_light(factor=None, other=None, clamp_result=False, clamp_factor=True)
 
 Mix with another color : SOFT LIGHT
 
-[!Node] Mix
+[Mix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html#bpy.types.ShaderNodeMix)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -1091,7 +1095,7 @@ subtract(factor=None, other=None, clamp_result=False, clamp_factor=True)
 
 Mix with another color : SUBTRACT
 
-[!Node] Mix
+[Mix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html#bpy.types.ShaderNodeMix)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -1117,7 +1121,7 @@ vector_displacement(midlevel=None, scale=None, space='TANGENT')
 
 Normal map.
 
-[!Node] Normal Map
+[Normal Map](https://docs.blender.org/api/current/bpy.types.ShaderNodeNormalMap.html#bpy.types.ShaderNodeNormalMap)
 
 #### Arguments:
 - **midlevel** (_Float_ = None) : socket
@@ -1142,7 +1146,7 @@ Wavelength(wavelength=None)
 
 Constructor : Wave Length.
 
-[!Node] Wavelength
+[Wavelength](https://docs.blender.org/api/current/bpy.types.ShaderNodeWavelength.html#bpy.types.ShaderNodeWavelength)
 
 #### Arguments:
 - **wavelength** (_Float_ = None) : socket

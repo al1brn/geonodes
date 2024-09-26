@@ -44,7 +44,8 @@ clamp(min=None, max=None, clamp_type='MINMAX')
 ```
 
 [Clamp](https://docs.blender.org/api/current/bpy.types.ShaderNodeClamp.html#bpy.types.ShaderNodeClamp)
-[!Node] Clamp
+
+[Clamp](https://docs.blender.org/api/current/bpy.types.ShaderNodeClamp.html#bpy.types.ShaderNodeClamp)
 
 #### Arguments:
 - **min** (_Float_ = None) : socket 'Min' (Min)
@@ -68,7 +69,8 @@ color_ramp(keep=None)
 ```
 
 [Color Ramp](https://docs.blender.org/api/current/bpy.types.ShaderNodeValToRGB.html#bpy.types.ShaderNodeValToRGB)
-[!Node] Color Ramp
+
+[Color Ramp](https://docs.blender.org/api/current/bpy.types.ShaderNodeValToRGB.html#bpy.types.ShaderNodeValToRGB)
 
 #### Arguments:
 - **keep** ( = None)
@@ -90,7 +92,8 @@ curve(factor=None, keep=None)
 ```
 
 [Float Curve](https://docs.blender.org/api/current/bpy.types.ShaderNodeFloatCurve.html#bpy.types.ShaderNodeFloatCurve)
-[!Node] Float Curve
+
+[Float Curve](https://docs.blender.org/api/current/bpy.types.ShaderNodeFloatCurve.html#bpy.types.ShaderNodeFloatCurve)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket 'Factor' (Factor)
@@ -113,7 +116,8 @@ equal(other, epsilon=None)
 ```
 
 [Compare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html#bpy.types.FunctionNodeCompare)
-[!Node] Compare
+
+[Compare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html#bpy.types.FunctionNodeCompare)
 
 #### Arguments:
 - **other** (_Float_) : socket 'B' (B)
@@ -136,7 +140,8 @@ greater_equal(other)
 ```
 
 [Compare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html#bpy.types.FunctionNodeCompare)
-[!Node] Compare
+
+[Compare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html#bpy.types.FunctionNodeCompare)
 
 #### Arguments:
 - **other** (_Float_) : socket 'B' (B)
@@ -158,7 +163,8 @@ greater_than(other)
 ```
 
 [Compare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html#bpy.types.FunctionNodeCompare)
-[!Node] Compare
+
+[Compare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html#bpy.types.FunctionNodeCompare)
 
 #### Arguments:
 - **other** (_Float_) : socket 'B' (B)
@@ -180,7 +186,8 @@ less_equal(other)
 ```
 
 [Compare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html#bpy.types.FunctionNodeCompare)
-[!Node] Compare
+
+[Compare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html#bpy.types.FunctionNodeCompare)
 
 #### Arguments:
 - **other** (_Float_) : socket 'B' (B)
@@ -202,7 +209,8 @@ less_than(other)
 ```
 
 [Compare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html#bpy.types.FunctionNodeCompare)
-[!Node] Compare
+
+[Compare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html#bpy.types.FunctionNodeCompare)
 
 #### Arguments:
 - **other** (_Float_) : socket 'B' (B)
@@ -224,7 +232,8 @@ map_range(from_min=None, from_max=None, to_min=None, to_max=None, clamp=None, in
 ```
 
 [Map Range](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html#bpy.types.ShaderNodeMapRange)
-[!Node] Map Range
+
+[Map Range](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html#bpy.types.ShaderNodeMapRange)
 
 #### Arguments:
 - **from_min** (_Float_ = None) : socket 'From Min' (From Min)
@@ -251,7 +260,8 @@ map_range_linear(from_min=None, from_max=None, to_min=None, to_max=None, clamp=N
 ```
 
 [Map Range](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html#bpy.types.ShaderNodeMapRange)
-[!Node] Map Range
+
+[Map Range](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html#bpy.types.ShaderNodeMapRange)
 
 #### Arguments:
 - **from_min** (_Float_ = None) : socket 'From Min' (From Min)
@@ -277,7 +287,8 @@ map_range_smooth(from_min=None, from_max=None, to_min=None, to_max=None, clamp=N
 ```
 
 [Map Range](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html#bpy.types.ShaderNodeMapRange)
-[!Node] Map Range
+
+[Map Range](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html#bpy.types.ShaderNodeMapRange)
 
 #### Arguments:
 - **from_min** (_Float_ = None) : socket 'From Min' (From Min)
@@ -303,7 +314,8 @@ map_range_smoother(from_min=None, from_max=None, to_min=None, to_max=None, clamp
 ```
 
 [Map Range](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html#bpy.types.ShaderNodeMapRange)
-[!Node] Map Range
+
+[Map Range](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html#bpy.types.ShaderNodeMapRange)
 
 #### Arguments:
 - **from_min** (_Float_ = None) : socket 'From Min' (From Min)
@@ -329,7 +341,8 @@ map_range_stepped(from_min=None, from_max=None, to_min=None, to_max=None, clamp=
 ```
 
 [Map Range](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html#bpy.types.ShaderNodeMapRange)
-[!Node] Map Range
+
+[Map Range](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html#bpy.types.ShaderNodeMapRange)
 
 #### Arguments:
 - **from_min** (_Float_ = None) : socket 'From Min' (From Min)
@@ -355,7 +368,8 @@ mix(factor=None, other=None, clamp_factor=None)
 ```
 
 [Mix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html#bpy.types.ShaderNodeMix)
-[!Node] Mix
+
+[Mix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html#bpy.types.ShaderNodeMix)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket 'Factor' (Factor_Float)
@@ -379,7 +393,9 @@ Named(name)
 ```
 
 [Named Attribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html#bpy.types.GeometryNodeInputNamedAttribute)
+
 [Named Attribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html#bpy.types.GeometryNodeInputNamedAttribute)
+
 'Named' is a synonym of 'NamedAttribute'
 
 ``` python
@@ -419,7 +435,9 @@ NamedAttribute(name)
 ```
 
 [Named Attribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html#bpy.types.GeometryNodeInputNamedAttribute)
+
 [Named Attribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html#bpy.types.GeometryNodeInputNamedAttribute)
+
 'Named' is a synonym of 'NamedAttribute'
 
 ``` python
@@ -459,7 +477,8 @@ not_equal(other, epsilon=None)
 ```
 
 [Compare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html#bpy.types.FunctionNodeCompare)
-[!Node] Compare
+
+[Compare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html#bpy.types.FunctionNodeCompare)
 
 #### Arguments:
 - **other** (_Float_) : socket 'B' (B)
@@ -482,7 +501,8 @@ to_string(decimals=None)
 ```
 
 [Value to String](https://docs.blender.org/api/current/bpy.types.FunctionNodeValueToString.html#bpy.types.FunctionNodeValueToString)
-[!Node] Value to String
+
+[Value to String](https://docs.blender.org/api/current/bpy.types.FunctionNodeValueToString.html#bpy.types.FunctionNodeValueToString)
 
 #### Arguments:
 - **decimals** (_Integer_ = None) : socket 'Decimals' (Decimals)

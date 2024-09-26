@@ -45,7 +45,8 @@ FromGeometry(*geometries)
 ```
 
 [Geometry to Instance](https://docs.blender.org/api/current/bpy.types.GeometryNodeGeometryToInstance.html#bpy.types.GeometryNodeGeometryToInstance)
-[!Node] Geometry to Instance
+
+[Geometry to Instance](https://docs.blender.org/api/current/bpy.types.GeometryNodeGeometryToInstance.html#bpy.types.GeometryNodeGeometryToInstance)
 
 #### Arguments:
 - **geometries** (_Geometry_) : socket 'Geometry' (Geometry)
@@ -67,7 +68,8 @@ FromString(string=None, size=None, character_spacing=None, word_spacing=None, li
 ```
 
 [String to Curves](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringToCurves.html#bpy.types.GeometryNodeStringToCurves)
-[!Node] String to Curves
+
+[String to Curves](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringToCurves.html#bpy.types.GeometryNodeStringToCurves)
 
 #### Arguments:
 - **string** (_String_ = None) : socket 'String' (String)
@@ -99,7 +101,8 @@ on_points(points, pick_instance=None, instance_index=None, rotation=None, scale=
 ```
 
 [Instance on Points](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstanceOnPoints.html#bpy.types.GeometryNodeInstanceOnPoints)
-[!Node] Instance on Points
+
+[Instance on Points](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstanceOnPoints.html#bpy.types.GeometryNodeInstanceOnPoints)
 
 #### Arguments:
 - **points**
@@ -125,7 +128,8 @@ realize(realize_all=None, depth=None)
 ```
 
 [Realize Instances](https://docs.blender.org/api/current/bpy.types.GeometryNodeRealizeInstances.html#bpy.types.GeometryNodeRealizeInstances)
-[!Node] Realize Instances
+
+[Realize Instances](https://docs.blender.org/api/current/bpy.types.GeometryNodeRealizeInstances.html#bpy.types.GeometryNodeRealizeInstances)
 
 #### Arguments:
 - **realize_all** (_Boolean_ = None) : socket 'Realize All' (Realize All)
@@ -148,7 +152,8 @@ rotate(rotation=None, pivot_point=None, local_space=None)
 ```
 
 [Rotate Instances](https://docs.blender.org/api/current/bpy.types.GeometryNodeRotateInstances.html#bpy.types.GeometryNodeRotateInstances)
-[!Node] Rotate Instances
+
+[Rotate Instances](https://docs.blender.org/api/current/bpy.types.GeometryNodeRotateInstances.html#bpy.types.GeometryNodeRotateInstances)
 
 #### Arguments:
 - **rotation** (_Rotation_ = None) : socket 'Rotation' (Rotation)
@@ -172,7 +177,8 @@ scale(scale=None, center=None, local_space=None)
 ```
 
 [Scale Instances](https://docs.blender.org/api/current/bpy.types.GeometryNodeScaleInstances.html#bpy.types.GeometryNodeScaleInstances)
-[!Node] Scale Instances
+
+[Scale Instances](https://docs.blender.org/api/current/bpy.types.GeometryNodeScaleInstances.html#bpy.types.GeometryNodeScaleInstances)
 
 #### Arguments:
 - **scale** (_Vector_ = None) : socket 'Scale' (Scale)
@@ -196,7 +202,8 @@ to_points(position=None, radius=None)
 ```
 
 [Instances to Points](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstancesToPoints.html#bpy.types.GeometryNodeInstancesToPoints)
-[!Node] Instances to Points
+
+[Instances to Points](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstancesToPoints.html#bpy.types.GeometryNodeInstancesToPoints)
 
 #### Arguments:
 - **position** (_Vector_ = None) : socket 'Position' (Position)
@@ -219,7 +226,8 @@ translate(translation=None, local_space=None)
 ```
 
 [Translate Instances](https://docs.blender.org/api/current/bpy.types.GeometryNodeTranslateInstances.html#bpy.types.GeometryNodeTranslateInstances)
-[!Node] Translate Instances
+
+[Translate Instances](https://docs.blender.org/api/current/bpy.types.GeometryNodeTranslateInstances.html#bpy.types.GeometryNodeTranslateInstances)
 
 #### Arguments:
 - **translation** (_Vector_ = None) : socket 'Translation' (Translation)

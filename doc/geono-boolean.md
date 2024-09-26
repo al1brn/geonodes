@@ -8,7 +8,7 @@ Boolean(value=False, name=None, tip=None, subtype='NONE')
 
 Socket of type BOOLEAN
 
-[!Node] Boolean
+[Boolean](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputBool.html#bpy.types.FunctionNodeInputBool)
 
 #### Arguments:
 - **value** (_bool or Socket_ = False) : initial value
@@ -40,7 +40,9 @@ Named(name)
 ```
 
 [Named Attribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html#bpy.types.GeometryNodeInputNamedAttribute)
+
 [Named Attribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html#bpy.types.GeometryNodeInputNamedAttribute)
+
 'Named' is a synonym of 'NamedAttribute'
 
 ``` python
@@ -80,7 +82,9 @@ NamedAttribute(name)
 ```
 
 [Named Attribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html#bpy.types.GeometryNodeInputNamedAttribute)
+
 [Named Attribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html#bpy.types.GeometryNodeInputNamedAttribute)
+
 'Named' is a synonym of 'NamedAttribute'
 
 ``` python
@@ -121,7 +125,7 @@ Random(probability=None, id=None, seed=None)
 
 Constructor : random Boolean.
 
-[!Node] Random Value
+[Random Value](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html#bpy.types.FunctionNodeRandomValue)
 
 #### Arguments:
 - **probability** (_Float_ = None)

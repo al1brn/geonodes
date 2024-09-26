@@ -40,7 +40,7 @@ A group input socket of type String is created if the name is not None.
 > _type_: **Node**
 >
 
-Node 'String Length' (FunctionNodeStringLength)
+[String Length](https://docs.blender.org/api/current/bpy.types.FunctionNodeStringLength.html#bpy.types.FunctionNodeStringLength)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [String](geono-string.md#string) :black_small_square: [Content](geono-string.md#content) :black_small_square: [Properties](geono-string.md#properties)</sub>
 
@@ -58,6 +58,7 @@ equal(other)
 ```
 
 [Compare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html#bpy.types.FunctionNodeCompare)
+
 Node compare with data_type = 'STRING' and operation = 'EQUAL'
 
 #### Arguments:
@@ -79,7 +80,7 @@ Node compare with data_type = 'STRING' and operation = 'EQUAL'
 FromValue(value, decimals=0)
 ```
 
-Node 'Value to String' (FunctionNodeValueToString)
+[Value to String](https://docs.blender.org/api/current/bpy.types.FunctionNodeValueToString.html#bpy.types.FunctionNodeValueToString)
 
 #### Arguments:
 - **value** (_Float_) : socket 'Value' (Value)
@@ -101,7 +102,7 @@ Node 'Value to String' (FunctionNodeValueToString)
 Join(*strings, delimiter=None)
 ```
 
-Node 'Join Strings' (GeometryNodeStringJoin)
+[Join Strings](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringJoin.html#bpy.types.GeometryNodeStringJoin)
 
 #### Arguments:
 - **strings** (_String_) : socket 'Strings' (Strings)
@@ -123,7 +124,7 @@ Node 'Join Strings' (GeometryNodeStringJoin)
 join(*strings)
 ```
 
-Node 'Join Strings' (GeometryNodeStringJoin)
+[Join Strings](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringJoin.html#bpy.types.GeometryNodeStringJoin)
 
 #### Arguments:
 - **strings** (_String_) : socket 'Strings' (Strings)
@@ -145,6 +146,7 @@ not_equal(other)
 ```
 
 [Compare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html#bpy.types.FunctionNodeCompare)
+
 Node compare with data_type = 'STRING' and operation = 'NOT_EQUAL'
 
 #### Arguments:
@@ -166,7 +168,7 @@ Node compare with data_type = 'STRING' and operation = 'NOT_EQUAL'
 replace(find=None, replace=None)
 ```
 
-Node 'Replace String' (FunctionNodeReplaceString)
+[Replace String](https://docs.blender.org/api/current/bpy.types.FunctionNodeReplaceString.html#bpy.types.FunctionNodeReplaceString)
 
 #### Arguments:
 - **find** (_String_ = None) : socket 'Find' (Find)
@@ -188,7 +190,7 @@ Node 'Replace String' (FunctionNodeReplaceString)
 slice(position=0, length=10)
 ```
 
-Node 'Slice String' (FunctionNodeSliceString)
+[Slice String](https://docs.blender.org/api/current/bpy.types.FunctionNodeSliceString.html#bpy.types.FunctionNodeSliceString)
 
 #### Arguments:
 - **position** (_Integer_ = 0) : socket 'Position' (Position)
@@ -210,7 +212,7 @@ Node 'Slice String' (FunctionNodeSliceString)
 to_curves(size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, text_box_height=None, overflow='OVERFLOW', align_x='LEFT', align_y='TOP_BASELINE', pivot_mode='BOTTOM_LEFT', font=None)
 ```
 
-Node 'String to Curves' (GeometryNodeStringToCurves)
+[String to Curves](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringToCurves.html#bpy.types.GeometryNodeStringToCurves)
 
 #### Arguments:
 - **size** (_Float_ = None) : socket 'Size' (Size)

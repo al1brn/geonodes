@@ -77,6 +77,7 @@ Math ABSOLUTE.
 
 [Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html#bpy.types.ShaderNodeMath)
 
+
 Returns
 - Float
 
@@ -99,6 +100,7 @@ Math ACOS.
 
 [Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html#bpy.types.ShaderNodeMath)
 
+
 Returns
 - Float
 
@@ -120,6 +122,7 @@ add(value, other, use_clamp=None)
 Math ADD.
 
 [Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html#bpy.types.ShaderNodeMath)
+
 
 Returns
 - Float
@@ -144,6 +147,7 @@ Math ASIN.
 
 [Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html#bpy.types.ShaderNodeMath)
 
+
 Returns
 - Float
 
@@ -166,6 +170,7 @@ Math ATAN.
 
 [Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html#bpy.types.ShaderNodeMath)
 
+
 Returns
 - Float
 
@@ -187,6 +192,7 @@ atan2(value, other, use_clamp=None)
 Math ATAN2.
 
 [Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html#bpy.types.ShaderNodeMath)
+
 
 Returns
 - Float
@@ -211,6 +217,7 @@ Boolean AND.
 
 [Boolean Math](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html#bpy.types.FunctionNodeBooleanMath)
 
+
 Returns
 - Boolean
 
@@ -233,6 +240,7 @@ Boolean NOT.
 
 [Boolean Math](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html#bpy.types.FunctionNodeBooleanMath)
 
+
 Returns
 - Boolean
 
@@ -253,6 +261,7 @@ bor(value, other)
 Boolean OR.
 
 [Boolean Math](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html#bpy.types.FunctionNodeBooleanMath)
+
 
 Returns
 - Boolean
@@ -275,6 +284,7 @@ bsubtract(value, other)
 Boolean NIMPLY.
 
 [Boolean Math](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html#bpy.types.FunctionNodeBooleanMath)
+
 
 Returns
 - Boolean
@@ -299,6 +309,7 @@ Ceiling.
 [Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html#bpy.types.ShaderNodeMath)
 
 [Float to Integer](https://docs.blender.org/api/current/bpy.types.FunctionNodeFloatToInt.html#bpy.types.FunctionNodeFloatToInt)
+
 Implements 'Math' node in ShaderNodes and 'Float to Integer' for GeoNodes.
 
 rounding_mode in ('ROUND', 'FLOOR', 'CEILING', 'TRUNCATE')
@@ -326,6 +337,7 @@ Math COMPARE.
 
 [Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html#bpy.types.ShaderNodeMath)
 
+
 Returns
 - Float
 
@@ -350,6 +362,7 @@ Math COS.
 
 [Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html#bpy.types.ShaderNodeMath)
 
+
 Returns
 - Float
 
@@ -371,6 +384,7 @@ cosh(value, use_clamp=None)
 Math COSH.
 
 [Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html#bpy.types.ShaderNodeMath)
+
 
 Returns
 - Float
@@ -394,6 +408,7 @@ Vector Math CROSS PRODUCT.
 
 [Vector Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html#bpy.types.ShaderNodeVectorMath)
 
+
 Returns
 - Vector
 
@@ -415,6 +430,7 @@ degrees(value, use_clamp=None)
 Math DEGREES.
 
 [Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html#bpy.types.ShaderNodeMath)
+
 
 Returns
 - Float
@@ -438,6 +454,7 @@ Vector Math DISTANCE.
 
 [Vector Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html#bpy.types.ShaderNodeVectorMath)
 
+
 Returns
 - Float
 
@@ -459,6 +476,7 @@ divide(value, other, use_clamp=None)
 Math DIVIDE.
 
 [Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html#bpy.types.ShaderNodeMath)
+
 
 Returns
 - Float
@@ -483,6 +501,7 @@ Vector Math DOT PRODUCT.
 
 [Vector Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html#bpy.types.ShaderNodeVectorMath)
 
+
 Returns
 - Float
 
@@ -504,6 +523,7 @@ equal(value, other)
 Boolean XNOR.
 
 [Boolean Math](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html#bpy.types.FunctionNodeBooleanMath)
+
 
 Returns
 - Boolean
@@ -527,6 +547,7 @@ Math EXPONENT.
 
 [Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html#bpy.types.ShaderNodeMath)
 
+
 Returns
 - Float
 
@@ -549,6 +570,7 @@ Math EXPONENT.
 
 [Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html#bpy.types.ShaderNodeMath)
 
+
 Returns
 - Float
 
@@ -570,6 +592,7 @@ faceforward(value, incident=None, reference=None)
 Vector Math FACE FORWARD.
 
 [Vector Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html#bpy.types.ShaderNodeVectorMath)
+
 
 Returns
 - Vector
@@ -595,6 +618,7 @@ Floor.
 [Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html#bpy.types.ShaderNodeMath)
 
 [Float to Integer](https://docs.blender.org/api/current/bpy.types.FunctionNodeFloatToInt.html#bpy.types.FunctionNodeFloatToInt)
+
 Implements 'Math' node in ShaderNodes and 'Float to Integer' for GeoNodes.
 
 rounding_mode in ('ROUND', 'FLOOR', 'CEILING', 'TRUNCATE')
@@ -622,6 +646,7 @@ Math FLOORED MODULO.
 
 [Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html#bpy.types.ShaderNodeMath)
 
+
 Returns
 - Float
 
@@ -645,6 +670,7 @@ Math FRACT.
 
 [Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html#bpy.types.ShaderNodeMath)
 
+
 Returns
 - Float
 
@@ -666,6 +692,7 @@ greater_than(value, threshold, use_clamp=None)
 Math GREATER THAN.
 
 [Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html#bpy.types.ShaderNodeMath)
+
 
 Returns
 - Float
@@ -690,6 +717,7 @@ Boolean IMPLY.
 
 [Boolean Math](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html#bpy.types.FunctionNodeBooleanMath)
 
+
 Returns
 - Boolean
 
@@ -711,6 +739,7 @@ inverse_sqrt(value, use_clamp=None)
 Math INVERSE SQRT.
 
 [Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html#bpy.types.ShaderNodeMath)
+
 
 Returns
 - Float
@@ -734,6 +763,7 @@ Vector Math LENGTH.
 
 [Vector Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html#bpy.types.ShaderNodeVectorMath)
 
+
 Returns
 - Float
 
@@ -754,6 +784,7 @@ less_than(value, threshold, use_clamp=None)
 Math LESS_THAN.
 
 [Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html#bpy.types.ShaderNodeMath)
+
 
 Returns
 - Float
@@ -778,6 +809,7 @@ Math neperian LOGARITHM (using base = e).
 
 [Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html#bpy.types.ShaderNodeMath)
 
+
 Returns
 - Float
 
@@ -799,6 +831,7 @@ log(value, base=10, use_clamp=None)
 Math LOGARITHM.
 
 [Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html#bpy.types.ShaderNodeMath)
+
 
 Returns
 - Float
@@ -823,6 +856,7 @@ Math CEIL.
 
 [Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html#bpy.types.ShaderNodeMath)
 
+
 Returns
 - Float
 
@@ -844,6 +878,7 @@ math_floor(value, use_clamp=None)
 Math FLOOR.
 
 [Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html#bpy.types.ShaderNodeMath)
+
 
 Returns
 - Float
@@ -867,6 +902,7 @@ Math ROUND.
 
 [Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html#bpy.types.ShaderNodeMath)
 
+
 Returns
 - Float
 
@@ -889,6 +925,7 @@ Math TRUNC.
 
 [Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html#bpy.types.ShaderNodeMath)
 
+
 Returns
 - Float
 
@@ -910,6 +947,7 @@ max(value, other, use_clamp=None)
 Math MAXIMUM.
 
 [Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html#bpy.types.ShaderNodeMath)
+
 
 Returns
 - Float
@@ -934,6 +972,7 @@ Math MINIMUM.
 
 [Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html#bpy.types.ShaderNodeMath)
 
+
 Returns
 - Float
 
@@ -956,6 +995,7 @@ modulo(value, other, use_clamp=None)
 Math MODULO.
 
 [Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html#bpy.types.ShaderNodeMath)
+
 
 Returns
 - Float
@@ -980,6 +1020,7 @@ Math MULTIPLY.
 
 [Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html#bpy.types.ShaderNodeMath)
 
+
 Returns
 - Float
 
@@ -1002,6 +1043,7 @@ multiply_add(value, multiplier, addend, use_clamp=None)
 Math MULTIPLY ADD.
 
 [Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html#bpy.types.ShaderNodeMath)
+
 
 Returns
 - Float
@@ -1027,6 +1069,7 @@ Boolean NAND.
 
 [Boolean Math](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html#bpy.types.FunctionNodeBooleanMath)
 
+
 Returns
 - Boolean
 
@@ -1048,6 +1091,7 @@ nimply(value, other)
 Boolean NIMPLY.
 
 [Boolean Math](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html#bpy.types.FunctionNodeBooleanMath)
+
 
 Returns
 - Boolean
@@ -1071,6 +1115,7 @@ Boolean NOR.
 
 [Boolean Math](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html#bpy.types.FunctionNodeBooleanMath)
 
+
 Returns
 - Boolean
 
@@ -1093,6 +1138,7 @@ Vector Math NORMALIZE.
 
 [Vector Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html#bpy.types.ShaderNodeVectorMath)
 
+
 Returns
 - Vector
 
@@ -1113,6 +1159,7 @@ not_equal(value, other)
 Boolean XOR.
 
 [Boolean Math](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html#bpy.types.FunctionNodeBooleanMath)
+
 
 Returns
 - Boolean
@@ -1135,6 +1182,7 @@ ping_pong(value, scale=None, use_clamp=None)
 Math PINGPONG.
 
 [Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html#bpy.types.ShaderNodeMath)
+
 
 Returns
 - Float
@@ -1159,6 +1207,7 @@ Math PINGPONG.
 
 [Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html#bpy.types.ShaderNodeMath)
 
+
 Returns
 - Float
 
@@ -1181,6 +1230,7 @@ power(base, exponent, use_clamp=None)
 Math POWER.
 
 [Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html#bpy.types.ShaderNodeMath)
+
 
 Returns
 - Float
@@ -1205,6 +1255,7 @@ Vector Math PROJECT.
 
 [Vector Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html#bpy.types.ShaderNodeVectorMath)
 
+
 Returns
 - Vector
 
@@ -1226,6 +1277,7 @@ radians(value, use_clamp=None)
 Math RADIANS.
 
 [Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html#bpy.types.ShaderNodeMath)
+
 
 Returns
 - Float
@@ -1249,6 +1301,7 @@ Vector Math REFLECT.
 
 [Vector Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html#bpy.types.ShaderNodeVectorMath)
 
+
 Returns
 - Vector
 
@@ -1270,6 +1323,7 @@ refract(value, other, ior=None)
 Vector Math REFRACT.
 
 [Vector Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html#bpy.types.ShaderNodeVectorMath)
+
 
 Returns
 - Vector
@@ -1295,6 +1349,7 @@ Round.
 [Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html#bpy.types.ShaderNodeMath)
 
 [Float to Integer](https://docs.blender.org/api/current/bpy.types.FunctionNodeFloatToInt.html#bpy.types.FunctionNodeFloatToInt)
+
 Implements 'Math' node in ShaderNodes and 'Float to Integer' for GeoNodes.
 
 rounding_mode in ('ROUND', 'FLOOR', 'CEILING', 'TRUNCATE')
@@ -1322,6 +1377,7 @@ Vector Math SCALE.
 
 [Vector Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html#bpy.types.ShaderNodeVectorMath)
 
+
 Returns
 - Vector
 
@@ -1344,6 +1400,7 @@ Math SIGN.
 
 [Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html#bpy.types.ShaderNodeMath)
 
+
 Returns
 - Float
 
@@ -1364,6 +1421,7 @@ sin(value, use_clamp=None)
 Math SIN.
 
 [Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html#bpy.types.ShaderNodeMath)
+
 
 Returns
 - Float
@@ -1387,6 +1445,7 @@ Math SINH.
 
 [Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html#bpy.types.ShaderNodeMath)
 
+
 Returns
 - Float
 
@@ -1408,6 +1467,7 @@ smooth_max(value, other, distance=None, use_clamp=None)
 Math SMOOTH MAX.
 
 [Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html#bpy.types.ShaderNodeMath)
+
 
 Returns
 - Float
@@ -1433,6 +1493,7 @@ Math SMOOTH_MIN.
 
 [Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html#bpy.types.ShaderNodeMath)
 
+
 Returns
 - Float
 
@@ -1457,6 +1518,7 @@ Math SNAP.
 
 [Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html#bpy.types.ShaderNodeMath)
 
+
 Returns
 - Float
 
@@ -1480,6 +1542,7 @@ Math SQRT.
 
 [Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html#bpy.types.ShaderNodeMath)
 
+
 Returns
 - Float
 
@@ -1501,6 +1564,7 @@ subtract(value, other, use_clamp=None)
 Math SUBTRACT.
 
 [Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html#bpy.types.ShaderNodeMath)
+
 
 Returns
 - Float
@@ -1525,6 +1589,7 @@ Math TAN.
 
 [Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html#bpy.types.ShaderNodeMath)
 
+
 Returns
 - Float
 
@@ -1546,6 +1611,7 @@ tanh(value, use_clamp=None)
 Math TANH.
 
 [Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html#bpy.types.ShaderNodeMath)
+
 
 Returns
 - Float
@@ -1570,6 +1636,7 @@ Truncate.
 [Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html#bpy.types.ShaderNodeMath)
 
 [Float to Integer](https://docs.blender.org/api/current/bpy.types.FunctionNodeFloatToInt.html#bpy.types.FunctionNodeFloatToInt)
+
 Implements 'Math' node in ShaderNodes and 'Float to Integer' for GeoNodes.
 
 rounding_mode in ('ROUND', 'FLOOR', 'CEILING', 'TRUNCATE')
@@ -1597,6 +1664,7 @@ Vector Math ABS.
 
 [Vector Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html#bpy.types.ShaderNodeVectorMath)
 
+
 Returns
 - Vector
 
@@ -1617,6 +1685,7 @@ vadd(value, other)
 Vector Math ADD.
 
 [Vector Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html#bpy.types.ShaderNodeVectorMath)
+
 
 Returns
 - Vector
@@ -1640,6 +1709,7 @@ Vector Math CEIL.
 
 [Vector Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html#bpy.types.ShaderNodeVectorMath)
 
+
 Returns
 - Vector
 
@@ -1661,6 +1731,7 @@ Vector Math COS.
 
 [Vector Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html#bpy.types.ShaderNodeVectorMath)
 
+
 Returns
 - Vector
 
@@ -1681,6 +1752,7 @@ vdivide(value, other)
 Vector Math DIVIDE.
 
 [Vector Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html#bpy.types.ShaderNodeVectorMath)
+
 
 Returns
 - Vector
@@ -1704,6 +1776,7 @@ Vector Math FLOOR.
 
 [Vector Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html#bpy.types.ShaderNodeVectorMath)
 
+
 Returns
 - Vector
 
@@ -1725,6 +1798,7 @@ Vector Math FRACT.
 
 [Vector Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html#bpy.types.ShaderNodeVectorMath)
 
+
 Returns
 - Vector
 
@@ -1745,6 +1819,7 @@ vmax(value, other)
 Vector Math MAXIMUM.
 
 [Vector Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html#bpy.types.ShaderNodeVectorMath)
+
 
 Returns
 - Vector
@@ -1768,6 +1843,7 @@ Vector Math MINIMUM.
 
 [Vector Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html#bpy.types.ShaderNodeVectorMath)
 
+
 Returns
 - Vector
 
@@ -1789,6 +1865,7 @@ vmodulo(value, other)
 Vector Math MODULO.
 
 [Vector Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html#bpy.types.ShaderNodeVectorMath)
+
 
 Returns
 - Vector
@@ -1812,6 +1889,7 @@ Vector Math MULTIPLY.
 
 [Vector Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html#bpy.types.ShaderNodeVectorMath)
 
+
 Returns
 - Vector
 
@@ -1833,6 +1911,7 @@ vmultiply_add(value, multiplier, addend)
 Vector Math MULTIPLY ADD.
 
 [Vector Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html#bpy.types.ShaderNodeVectorMath)
+
 
 Returns
 - Vector
@@ -1857,6 +1936,7 @@ Vector Math SIN.
 
 [Vector Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html#bpy.types.ShaderNodeVectorMath)
 
+
 Returns
 - Vector
 
@@ -1877,6 +1957,7 @@ vsnap(value, increment)
 Vector Math SNAP.
 
 [Vector Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html#bpy.types.ShaderNodeVectorMath)
+
 
 Returns
 - Vector
@@ -1900,6 +1981,7 @@ Vector Math SUBTRACT.
 
 [Vector Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html#bpy.types.ShaderNodeVectorMath)
 
+
 Returns
 - Vector
 
@@ -1922,6 +2004,7 @@ Vector Math TAN.
 
 [Vector Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html#bpy.types.ShaderNodeVectorMath)
 
+
 Returns
 - Vector
 
@@ -1942,6 +2025,7 @@ vwrap(value, max=None, min=None)
 Vector Math WRAP.
 
 [Vector Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html#bpy.types.ShaderNodeVectorMath)
+
 
 Returns
 - Vector
@@ -1965,6 +2049,7 @@ wrap(value, max=None, min=None, use_clamp=None)
 Math WRAP.
 
 [Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html#bpy.types.ShaderNodeMath)
+
 
 Returns
 - Float
@@ -1990,6 +2075,7 @@ Boolean XNOR.
 
 [Boolean Math](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html#bpy.types.FunctionNodeBooleanMath)
 
+
 Returns
 - Boolean
 
@@ -2011,6 +2097,7 @@ xor(value, other)
 Boolean XOR.
 
 [Boolean Math](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html#bpy.types.FunctionNodeBooleanMath)
+
 
 Returns
 - Boolean
