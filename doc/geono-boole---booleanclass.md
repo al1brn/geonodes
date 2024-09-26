@@ -27,6 +27,8 @@ updates
 ## Content
 
 - [Boolean](geono-boole-boolean.md#boolean)
+  - [Named](geono-boole-boolean.md#named)
+  - [NamedAttribute](geono-boole-boolean.md#namedattribute)
   - [Random](geono-boole-boolean.md#random)
 - [utils](geono-boole-utils---utils.md#utils)
   - [constants](geono-boole-utils-const---constants.md#constants)

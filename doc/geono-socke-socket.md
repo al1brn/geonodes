@@ -1,7 +1,5 @@
 # Socket
 
-> Bases classes: [NodeCache](geono-socke-nodecache.md#nodecache)
-
 ``` python
 Socket(socket)
 ```
@@ -10,10 +8,6 @@ Socket documentation
 
 #### Arguments:
 - **socket**
-
-### Inherited
-
-[\_cache](geono-socke-nodecache.md#_cache) :black_small_square: [\_cache_reset](geono-socke-nodecache.md#_cache_reset) :black_small_square:
 
 ## Content
 

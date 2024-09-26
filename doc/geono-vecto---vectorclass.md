@@ -32,6 +32,8 @@ updates
 ## Content
 
 - [Matrix](geono-vecto-matrix.md#matrix)
+  - [Named](geono-vecto-matrix.md#named)
+  - [NamedAttribute](geono-vecto-matrix.md#namedattribute)
 - [utils](geono-vecto-utils---utils.md#utils)
   - [constants](geono-vecto-utils-const---constants.md#constants)
   - [del_tree](geono-vecto-utils---utils.md#del_tree)
@@ -56,6 +58,5 @@ updates
 - [Matrix](geono-vecto-matrix.md#matrix)
 - [Rotation](geono-vecto-rotation.md#rotation)
 - [Vector](geono-vecto-vector.md#vector)
-- [VectorLike](geono-vecto-vectorlike.md#vectorlike)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [vectorclass](geono-vecto---vectorclass.md#vectorclass) :black_small_square: [Content](geono-vecto---vectorclass.md#content) :black_small_square: [vectorclass](geono-vecto---vectorclass.md#vectorclass)</sub>

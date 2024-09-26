@@ -27,6 +27,7 @@ A better and more pythonistic way to script nodes, is to use a <!Socket> subclas
   - <!Rotation>
   - <!Matrix>
   - <!String>
+  - <!Menu>
 - Blender resources:
   - <!Collection>
   - <!Object>

@@ -1,6 +1,6 @@
 # Geometry
 
-> Bases classes: [Socket](geono-socke-socket.md#socket) :black_small_square: [GeoBase](geono-geome-geobase.md#geobase)
+> Bases classes: [Socket](geono-socke-socket.md#socket)
 
 ``` python
 Geometry(value=None, name=None, tip=None)
@@ -15,17 +15,17 @@ Geometry Class
 
 ### Inherited
 
-[blur](geono-socke-socket.md#blur) :black_small_square: [\_cache](geono-socke-nodecache.md#_cache) :black_small_square: [\_cache_reset](geono-socke-nodecache.md#_cache_reset) :black_small_square: [check_in_list](geono-socke-socket.md#check_in_list) :black_small_square: [data_type](geono-socke-socket.md#data_type) :black_small_square: [\_geometry_class](geono-socke-socket.md#_geometry_class) :black_small_square: [\_geo_type](geono-geome-geobase.md#_geo_type) :black_small_square: [\_\_getattr__](geono-socke-socket.md#__getattr__) :black_small_square: [\_\_getitem__](geono-geome-geobase.md#__getitem__) :black_small_square: [id](geono-geome-geobase.md#id) :black_small_square: [IndexSwitch](geono-socke-socket.md#indexswitch) :black_small_square: [index_switch](geono-socke-socket.md#index_switch) :black_small_square: [input_type](geono-socke-socket.md#input_type) :black_small_square: [\_jump](geono-socke-socket.md#_jump) :black_small_square: [\_lc](geono-socke-socket.md#_lc) :black_small_square: [\_lcop](geono-socke-socket.md#_lcop) :black_small_square: [material](geono-geome-geobase.md#material) :black_small_square: [material_index](geono-geome-geobase.md#material_index) :black_small_square: [material_selection](geono-geome-geobase.md#material_selection) :black_small_square: [MenuSwitch](geono-socke-socket.md#menuswitch) :black_small_square: [menu_switch](geono-socke-socket.md#menu_switch) :black_small_square: [node](geono-socke-socket.md#node) :black_small_square: [node_color](geono-socke-socket.md#node_color) :black_small_square: [node_label](geono-socke-socket.md#node_label) :black_small_square: [offset](geono-geome-geobase.md#offset) :black_small_square: [out](geono-socke-socket.md#out) :black_small_square: [position](geono-geome-geobase.md#position) :black_small_square: [\_raw_sel](geono-geome-geobase.md#_raw_sel) :black_small_square: [replace_material](geono-geome-geobase.md#replace_material) :black_small_square: [\_reset](geono-socke-socket.md#_reset) :black_small_square: [\_sel](geono-geome-geobase.md#_sel) :black_small_square: [socket_type](geono-socke-socket.md#socket_type) :black_small_square: [\_\_str__](geono-socke-socket.md#__str__) :black_small_square: [Switch](geono-socke-socket.md#switch) :black_small_square: [switch](geono-socke-socket.md#switch) :black_small_square: [to_output](geono-socke-socket.md#to_output) :black_small_square:
+[blur](geono-socke-socket.md#blur) :black_small_square: [\_cache](geono-socke-nodecache.md#_cache) :black_small_square: [\_cache_reset](geono-socke-nodecache.md#_cache_reset) :black_small_square: [check_in_list](geono-socke-socket.md#check_in_list) :black_small_square: [data_type](geono-socke-socket.md#data_type) :black_small_square: [\_geometry_class](geono-socke-socket.md#_geometry_class) :black_small_square: [\_\_getattr__](geono-socke-socket.md#__getattr__) :black_small_square: [IndexSwitch](geono-socke-socket.md#indexswitch) :black_small_square: [index_switch](geono-socke-socket.md#index_switch) :black_small_square: [input_type](geono-socke-socket.md#input_type) :black_small_square: [\_jump](geono-socke-socket.md#_jump) :black_small_square: [\_lc](geono-socke-socket.md#_lc) :black_small_square: [\_lcop](geono-socke-socket.md#_lcop) :black_small_square: [MenuSwitch](geono-socke-socket.md#menuswitch) :black_small_square: [menu_switch](geono-socke-socket.md#menu_switch) :black_small_square: [node](geono-socke-socket.md#node) :black_small_square: [node_color](geono-socke-socket.md#node_color) :black_small_square: [node_label](geono-socke-socket.md#node_label) :black_small_square: [out](geono-socke-socket.md#out) :black_small_square: [\_reset](geono-socke-socket.md#_reset) :black_small_square: [socket_type](geono-socke-socket.md#socket_type) :black_small_square: [\_\_str__](geono-socke-socket.md#__str__) :black_small_square: [Switch](geono-socke-socket.md#switch) :black_small_square: [switch](geono-socke-socket.md#switch) :black_small_square: [to_output](geono-socke-socket.md#to_output) :black_small_square:
 
 ## Content
 
 - **B** : [bounding_box](geono-geome-geometry.md#bounding_box)
 - **C** : [convex_hull](geono-geome-geometry.md#convex_hull) :black_small_square: [curve](geono-geome-geometry.md#curve)
-- **I** : [index_of_nearest](geono-geome-geometry.md#index_of_nearest) :black_small_square: [instances](geono-geome-geometry.md#instances)
+- **I** : [id](geono-geome-geometry.md#id) :black_small_square: [index_of_nearest](geono-geome-geometry.md#index_of_nearest) :black_small_square: [instances](geono-geome-geometry.md#instances)
 - **J** : [join](geono-geome-geometry.md#join)
-- **M** : [merge_by_distance](geono-geome-geometry.md#merge_by_distance) :black_small_square: [mesh](geono-geome-geometry.md#mesh)
-- **P** : [point_cloud](geono-geome-geometry.md#point_cloud)
-- **R** : [raycast](geono-geome-geometry.md#raycast) :black_small_square: [remove_named_attribute](geono-geome-geometry.md#remove_named_attribute)
+- **M** : [material_index](geono-geome-geometry.md#material_index) :black_small_square: [merge_by_distance](geono-geome-geometry.md#merge_by_distance) :black_small_square: [mesh](geono-geome-geometry.md#mesh)
+- **P** : [point_cloud](geono-geome-geometry.md#point_cloud) :black_small_square: [position](geono-geome-geometry.md#position)
+- **R** : [raycast](geono-geome-geometry.md#raycast) :black_small_square: [remove_named_attribute](geono-geome-geometry.md#remove_named_attribute) :black_small_square: [replace_material](geono-geome-geometry.md#replace_material)
 - **S** : [separate_components](geono-geome-geometry.md#separate_components) :black_small_square: [set_id](geono-geome-geometry.md#set_id) :black_small_square: [set_material](geono-geome-geometry.md#set_material) :black_small_square: [set_position](geono-geome-geometry.md#set_position) :black_small_square: [set_shade_smooth](geono-geome-geometry.md#set_shade_smooth)
 - **T** : [to_instance](geono-geome-geometry.md#to_instance) :black_small_square: [transform](geono-geome-geometry.md#transform)
 - **V** : [viewer](geono-geome-geometry.md#viewer) :black_small_square: [volume](geono-geome-geometry.md#volume)
@@ -67,6 +67,17 @@ Property curve component
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geome-geometry.md#geometry) :black_small_square: [Content](geono-geome-geometry.md#content) :black_small_square: [Properties](geono-geome-geometry.md#properties)</sub>
 
+### id
+
+> _type_: **Integer**
+>
+
+Node 'ID' (GeometryNodeInputID)
+
+[!Node] ID
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geome-geometry.md#geometry) :black_small_square: [Content](geono-geome-geometry.md#content) :black_small_square: [Properties](geono-geome-geometry.md#properties)</sub>
+
 ### instances
 
 > _type_: **Instances**
@@ -75,6 +86,17 @@ Property curve component
 Property instances component
 
 [!Node] Separate Components
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geome-geometry.md#geometry) :black_small_square: [Content](geono-geome-geometry.md#content) :black_small_square: [Properties](geono-geome-geometry.md#properties)</sub>
+
+### material_index
+
+> _type_: **Integer**
+>
+
+Node 'Material Index' (GeometryNodeInputMaterialIndex)
+
+[!Node] Material Index
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geome-geometry.md#geometry) :black_small_square: [Content](geono-geome-geometry.md#content) :black_small_square: [Properties](geono-geome-geometry.md#properties)</sub>
 
@@ -97,6 +119,17 @@ Property mesh component
 Property cloud component
 
 [!Node] Separate Components
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geome-geometry.md#geometry) :black_small_square: [Content](geono-geome-geometry.md#content) :black_small_square: [Properties](geono-geome-geometry.md#properties)</sub>
+
+### position
+
+> _type_: **Vector**
+>
+
+Node 'Position' (GeometryNodeInputPosition)
+
+[!Node] Position
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geome-geometry.md#geometry) :black_small_square: [Content](geono-geome-geometry.md#content) :black_small_square: [Properties](geono-geome-geometry.md#properties)</sub>
 
@@ -259,6 +292,30 @@ Remove named attribute
 #### Arguments:
 - **name** (_String_) : socket
 - **exact** (_Boolean_ = True) : pattern_mode = 'EXACT' if True else 'WILDCARD'
+
+
+
+#### Returns:
+- **Geometry** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geome-geometry.md#geometry) :black_small_square: [Content](geono-geome-geometry.md#content) :black_small_square: [Methods](geono-geome-geometry.md#methods)</sub>
+
+----------
+### replace_material()
+
+> method
+
+``` python
+replace_material(old=None, new=None)
+```
+
+Node 'Replace Material' (GeometryNodeReplaceMaterial)
+
+[!Node] Replace Material
+
+#### Arguments:
+- **old** (_Material_ = None) : socket 'Old' (Old)
+- **new** (_Material_ = None) : socket 'New' (New)
 
 
 
