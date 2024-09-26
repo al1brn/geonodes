@@ -60,7 +60,7 @@ Tree: Shader
 Tangent(axis='Z', direction_type='RADIAL', uv_map='')
 ```
 
-> Node : [Tangent](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/input/tangent.html)
+> **node** : [Tangent](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/input/tangent.html)
 - axis in ('X', 'Y', 'Z')
 - direction_type in ('RADIAL', 'UV_MAP')
 
@@ -80,7 +80,7 @@ Tangent(axis='Z', direction_type='RADIAL', uv_map='')
 UVMap(uv_map='', from_instancer=False)
 ```
 
-> Node : [UV Map](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/input/uv_map.html)
+> **node** : [UV Map](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/input/uv_map.html)
 
 #### Arguments:
 - **uv_map** ( = )

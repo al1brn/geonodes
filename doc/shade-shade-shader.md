@@ -39,7 +39,7 @@ Shader(socket)
 Diffuse(color=None, roughness=None, normal=None)
 ```
 
-ERROR: Node 'Diffuse BSDF' not found
+> **node** : [Diffuse BSDF](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/diffuse.html)
 
 #### Arguments:
 - **color** ( = None)
@@ -57,7 +57,7 @@ ERROR: Node 'Diffuse BSDF' not found
 Emission(color=None, strength=None)
 ```
 
-ERROR: Node 'Emission' not found
+> **node** : [Emission](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../physics/particles/emitter/emission.html)
 
 #### Arguments:
 - **color** ( = None)
@@ -74,7 +74,7 @@ ERROR: Node 'Emission' not found
 Glass(color=None, roughness=None, ior=None, normal=None, distribution='MULTI_GGX')
 ```
 
-ERROR: Node 'Glass BSDF' not found
+> **node** : [Glass BSDF](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/glass.html)
 - distribution in ('BECKMANN', 'GGX', 'MULTI_GGX')
 
 #### Arguments:
@@ -95,7 +95,7 @@ ERROR: Node 'Glass BSDF' not found
 Glossy(color=None, roughness=None, anisotropy=None, rotation=None, normal=None, tangent=None, distribution='MULTI_GGX')
 ```
 
-ERROR: Node 'Glossy BSDF' not found
+> **node** : [Glossy BSDF](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/glossy.html)
 - distribution in ('BECKMANN', 'GGX', 'ASHIKHMIN_SHIRLEY', 'MULTI_GGX')
 
 #### Arguments:
@@ -118,7 +118,7 @@ ERROR: Node 'Glossy BSDF' not found
 Holdout()
 ```
 
-ERROR: Node 'Holdout' not found
+> **node** : [Holdout](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/holdout.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Shader](shade-shade-shader.md#shader) :black_small_square: [Content](shade-shade-shader.md#content) :black_small_square: [Methods](shade-shade-shader.md#methods)</sub>
 
@@ -131,7 +131,7 @@ ERROR: Node 'Holdout' not found
 Principled(base_color=None, metallic=None, roughness=None, ior=None, alpha=None, normal=None, subsurface_weight=None, subsurface_radius=None, subsurface_scale=None, subsurface_anisotropy=None, specular_ior_level=None, specular_tint=None, anisotropic=None, anisotropic_rotation=None, tangent=None, transmission_weight=None, coat_weight=None, coat_roughness=None, coat_ior=None, coat_tint=None, coat_normal=None, sheen_weight=None, sheen_roughness=None, sheen_tint=None, emission_color=None, emission_strength=None, thin_film_thickness=None, thin_film_ior=None, distribution='MULTI_GGX', subsurface_method='RANDOM_WALK')
 ```
 
-ERROR: Node 'Principled BSDF' not found
+> **node** : [Principled BSDF](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/principled.html)
 - distribution in ('GGX', 'MULTI_GGX')
 - subsurface_method in ('BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN')
 
@@ -178,7 +178,7 @@ ERROR: Node 'Principled BSDF' not found
 Refraction(color=None, roughness=None, ior=None, normal=None, distribution='BECKMANN')
 ```
 
-ERROR: Node 'Refraction BSDF' not found
+> **node** : [Refraction BSDF](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/refraction.html)
 - distribution in ('BECKMANN', 'GGX')
 
 #### Arguments:
@@ -199,7 +199,7 @@ ERROR: Node 'Refraction BSDF' not found
 Specular(base_color=None, specular=None, roughness=None, emissive_color=None, transparency=None, normal=None, clear_coat=None, clear_coat_roughness=None, clear_coat_normal=None)
 ```
 
-ERROR: Node 'Specular BSDF' not found
+> **node** : [Specular BSDF](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/specular_bsdf.html)
 
 #### Arguments:
 - **base_color** ( = None)
@@ -223,7 +223,7 @@ ERROR: Node 'Specular BSDF' not found
 SubsurfaceScattering(color=None, scale=None, radius=None, ior=None, roughness=None, anisotropy=None, normal=None, falloff='RANDOM_WALK')
 ```
 
-ERROR: Node 'Subsurface Scattering' not found
+> **node** : [Subsurface Scattering](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/sss.html)
 - falloff in ('BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN')
 
 #### Arguments:
@@ -247,7 +247,7 @@ ERROR: Node 'Subsurface Scattering' not found
 Translucent(color=None, normal=None)
 ```
 
-ERROR: Node 'Translucent BSDF' not found
+> **node** : [Translucent BSDF](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/translucent.html)
 
 #### Arguments:
 - **color** ( = None)
@@ -264,7 +264,7 @@ ERROR: Node 'Translucent BSDF' not found
 Transparent(color=None)
 ```
 
-ERROR: Node 'Transparent BSDF' not found
+> **node** : [Transparent BSDF](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/transparent.html)
 
 #### Arguments:
 - **color** ( = None)

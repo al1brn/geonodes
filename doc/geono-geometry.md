@@ -41,7 +41,7 @@ Geometry Class
 
 Property node 'Bounding Box' (GeometryNodeBoundBox)
 
-> Node : [Bounding Box](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/bounding_box.html)
+[Bounding Box](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/3dview/controls/pivot_point/bounding_box_center.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Properties](geono-geometry.md#properties)</sub>
 
@@ -52,7 +52,7 @@ Property node 'Bounding Box' (GeometryNodeBoundBox)
 
 Property node 'Convex Hull' (GeometryNodeConvexHull)
 
-> Node : [Convex Hull](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/convex_hull.html)
+[Convex Hull](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../meshes/editing/mesh/convex_hull.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Properties](geono-geometry.md#properties)</sub>
 
@@ -63,7 +63,7 @@ Property node 'Convex Hull' (GeometryNodeConvexHull)
 
 Property curve component
 
-> Node : [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/separate_components.html)
+[Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/separate_components.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Properties](geono-geometry.md#properties)</sub>
 
@@ -72,9 +72,9 @@ Property curve component
 > _type_: **Integer**
 >
 
-> Node : [ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/id.html)
+> **node** : [ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/id.html)
 
-> Node : [ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/id.html)
+[ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/id.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Properties](geono-geometry.md#properties)</sub>
 
@@ -85,7 +85,7 @@ Property curve component
 
 Property instances component
 
-> Node : [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/separate_components.html)
+[Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/separate_components.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Properties](geono-geometry.md#properties)</sub>
 
@@ -94,9 +94,9 @@ Property instances component
 > _type_: **Integer**
 >
 
-> Node : [Material Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_index.html)
+> **node** : [Material Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_index.html)
 
-> Node : [Material Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_index.html)
+[Material Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_index.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Properties](geono-geometry.md#properties)</sub>
 
@@ -107,7 +107,7 @@ Property instances component
 
 Property mesh component
 
-> Node : [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/separate_components.html)
+[Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/separate_components.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Properties](geono-geometry.md#properties)</sub>
 
@@ -118,7 +118,7 @@ Property mesh component
 
 Property cloud component
 
-> Node : [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/separate_components.html)
+[Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/separate_components.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Properties](geono-geometry.md#properties)</sub>
 
@@ -127,9 +127,9 @@ Property cloud component
 > _type_: **Vector**
 >
 
-> Node : [Position](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/position.html)
+> **node** : [Position](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/position.html)
 
-> Node : [Position](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/position.html)
+[Position](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/position.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Properties](geono-geometry.md#properties)</sub>
 
@@ -140,7 +140,7 @@ Property cloud component
 
 Property node 'Separate Components' (GeometryNodeSeparateComponents)
 
-> Node : [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/separate_components.html)
+[Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/separate_components.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Properties](geono-geometry.md#properties)</sub>
 
@@ -151,7 +151,7 @@ Property node 'Separate Components' (GeometryNodeSeparateComponents)
 
 Property volume component
 
-> Node : [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/separate_components.html)
+[Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/separate_components.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Properties](geono-geometry.md#properties)</sub>
 
@@ -168,9 +168,9 @@ Property volume component
 index_of_nearest(position=None, group_id=None)
 ```
 
-ERROR: Node 'Index of Nearest' not found
+> **node** : [Index of Nearest](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/index_of_nearest.html)
 
-ERROR: Node 'Index of Nearest' not found
+[Index of Nearest](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/index_of_nearest.html)
 
 #### Arguments:
 - **position** (_Vector_ = None) : socket 'Position' (Position)
@@ -192,9 +192,9 @@ ERROR: Node 'Index of Nearest' not found
 join(*geometries)
 ```
 
-> Node : [Join Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/join_geometry.html)
+> **node** : [Join Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/join_geometry.html)
 
-> Node : [Join Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/join_geometry.html)
+[Join Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/join_geometry.html)
 
 Operator + can be used : ``` geo + other_geo ``` is equivalent to ``` geo.join(other) ```
 If all the geometries are of the same type, the returned geometry uses this type.
@@ -232,9 +232,9 @@ assert(isinstance(geo, Geometry))
 merge_by_distance(distance=None, mode='ALL')
 ```
 
-> Node : [Merge by Distance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/merge_by_distance.html)
+> **node** : [Merge by Distance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/merge_by_distance.html)
 
-> Node : [Merge by Distance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/merge_by_distance.html)
+[Merge by Distance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/merge_by_distance.html)
 
 #### Arguments:
 - **distance** (_Float_ = None) : socket 'Distance' (Distance)
@@ -256,9 +256,9 @@ merge_by_distance(distance=None, mode='ALL')
 raycast(attribute=None, source_position=None, ray_direction=None, ray_length=None, interpolated=True)
 ```
 
-> Node : [Raycast](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/raycast.html)
+> **node** : [Raycast](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/raycast.html)
 
-> Node : [Raycast](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/raycast.html)
+[Raycast](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/raycast.html)
 
 mapping in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4')
 
@@ -287,7 +287,7 @@ remove_named_attribute(name, exact=True)
 
 Remove named attribute
 
-> Node : [Remove Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/remove_named_attribute.html)
+[Remove Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/remove_named_attribute.html)
 
 #### Arguments:
 - **name** (_String_) : socket
@@ -309,9 +309,9 @@ Remove named attribute
 replace_material(old=None, new=None)
 ```
 
-> Node : [Replace Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/replace_material.html)
+> **node** : [Replace Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/replace_material.html)
 
-> Node : [Replace Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/replace_material.html)
+[Replace Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/replace_material.html)
 
 #### Arguments:
 - **old** (_Material_ = None) : socket 'Old' (Old)
@@ -335,7 +335,7 @@ set_id(id=None)
 
 Set ID.
 
-> Node : [Set ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/write/set_id.html)
+[Set ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/write/set_id.html)
 
 #### Arguments:
 - **id** (_Integer_ = None) : socket
@@ -358,7 +358,7 @@ set_material(material=None)
 
 Set Material.
 
-> Node : [Set Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html)
+[Set Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html)
 
 #### Arguments:
 - **material** (_Material_ = None) : socket
@@ -381,7 +381,7 @@ set_position(position=None, offset=None)
 
 Set Position.
 
-> Node : [Set Position](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/write/set_position.html)
+[Set Position](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/write/set_position.html)
 
 #### Arguments:
 - **position** (_Vector_ = None) : socket
@@ -405,7 +405,7 @@ set_shade_smooth(shade_smooth=True, edge=False)
 
 Set Shade Smooth.
 
-> Node : [Set Shade Smooth](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/write/set_shade_smooth.html)
+[Set Shade Smooth](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/write/set_shade_smooth.html)
 
 #### Arguments:
 - **shade_smooth** (_Boolean_ = True) : socket
@@ -427,9 +427,9 @@ Set Shade Smooth.
 to_instance(*geometries)
 ```
 
-> Node : [Geometry to Instance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_to_instance.html)
+> **node** : [Geometry to Instance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_to_instance.html)
 
-> Node : [Geometry to Instance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_to_instance.html)
+[Geometry to Instance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_to_instance.html)
 
 #### Arguments:
 - **geometries** (_Geometry_) : socket 'Geometry' (Geometry)
@@ -450,9 +450,9 @@ to_instance(*geometries)
 transform(translation=None, rotation=None, scale=None, matrix=None)
 ```
 
-> Node : [Transform Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/transform_geometry.html)
+> **node** : [Transform Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/transform_geometry.html)
 
-> Node : [Transform Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/transform_geometry.html)
+[Transform Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/transform_geometry.html)
 
 If 'matrix' argument is None, the mode 'COMPONENTS' is set.
 If 'matrix' argument is not NOne, the mode 'MATRIX' is set and the other arguments are ignored.
@@ -481,7 +481,7 @@ viewer(value=None)
 
 Create a viewer node.
 
-> Node : [Viewer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/output/viewer.html)
+[Viewer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/output/viewer.html)
 
 #### Arguments:
 - **value** (_Socket_ = None) : socket

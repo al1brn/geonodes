@@ -8,7 +8,7 @@ Boolean(value=False, name=None, tip=None, subtype='NONE')
 
 Socket of type BOOLEAN
 
-> Node : [Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/constant/boolean.html)
+[Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../modifiers/generate/booleans.html)
 
 #### Arguments:
 - **value** (_bool or Socket_ = False) : initial value
@@ -39,9 +39,9 @@ Socket of type BOOLEAN
 Named(name)
 ```
 
-> Node : [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
+> **node** : [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
-> Node : [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
+[Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
 'Named' is a synonym of 'NamedAttribute'
 
@@ -81,9 +81,9 @@ with GeoNodes("Named Attributes"):
 NamedAttribute(name)
 ```
 
-> Node : [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
+> **node** : [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
-> Node : [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
+[Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
 'Named' is a synonym of 'NamedAttribute'
 
@@ -125,7 +125,7 @@ Random(probability=None, id=None, seed=None)
 
 Constructor : random Boolean.
 
-> Node : [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html)
+[Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html)
 
 #### Arguments:
 - **probability** (_Float_ = None)

@@ -46,9 +46,9 @@ Returns the node owning the socket.
 blur(iterations=None, weight=None)
 ```
 
-> Node : [Blur Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/blur_attribute.html)
+> **node** : [Blur Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/blur_attribute.html)
 
-> Node : [Blur Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/blur_attribute.html)
+[Blur Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/blur_attribute.html)
 
 #### Arguments:
 - **iterations** (_Integer_ = None) : socket 'Iterations' (Iterations)
@@ -70,9 +70,9 @@ blur(iterations=None, weight=None)
 IndexSwitch(*values, index=0)
 ```
 
-> Node : [Index Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/index_switch.html)
+> **node** : [Index Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/index_switch.html)
 
-> Node : [Index Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/index_switch.html)
+[Index Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/index_switch.html)
 
 ``` python
 with GeoNodes("Index Switch demo"):
@@ -110,9 +110,9 @@ with GeoNodes("Index Switch demo"):
 index_switch(*values, index=0)
 ```
 
-> Node : [Index Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/index_switch.html)
+> **node** : [Index Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/index_switch.html)
 
-> Node : [Index Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/index_switch.html)
+[Index Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/index_switch.html)
 
 Self is used as first socket in the node.
 
@@ -185,9 +185,9 @@ with GeoNodes("Node label and color"):
 MenuSwitch(items={'A': None, 'B': None}, menu=0, name='Menu', tip=None)
 ```
 
-> Node : [Menu Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/menu_switch.html)
+> **node** : [Menu Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/menu_switch.html)
 
-> Node : [Menu Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/menu_switch.html)
+[Menu Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/menu_switch.html)
 
 The items of the Menu Switch node are provided in the 'items' dict.
 An group input socket named after the 'name' argument is linked to menu selector.
@@ -230,9 +230,9 @@ with GeoNodes("Menu Switch demo"):
 menu_switch(self_name='A', items={'B': None}, menu=0, name='Menu', tip=None)
 ```
 
-> Node : [Menu Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/menu_switch.html)
+> **node** : [Menu Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/menu_switch.html)
 
-> Node : [Menu Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/menu_switch.html)
+[Menu Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/menu_switch.html)
 
 Self is connected to the first menu item with the name provided as argument.
 
@@ -306,9 +306,9 @@ The "Do nothing" modifier is simply ``` Geometry().out() ```
 Switch(condition=None, false=None, true=None)
 ```
 
-> Node : [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html)
+> **node** : [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html)
 
-> Node : [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html)
+[Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html)
 
 ``` python
 with GeoNodes("Switch demo"):
@@ -345,9 +345,9 @@ with GeoNodes("Switch demo"):
 switch(condition=None, true=None)
 ```
 
-> Node : [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html)
+> **node** : [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html)
 
-> Node : [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html)
+[Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html)
 
 Self is connected to 'false' socket.
 

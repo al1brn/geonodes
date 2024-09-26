@@ -35,7 +35,7 @@ Class Collection data socket
 Info(collection=None, separate_children=None, reset_children=None, original=True)
 ```
 
-> Node : [Collection Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene/collection_info.html)
+> **node** : [Collection Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene/collection_info.html)
 
 #### Arguments:
 - **collection** (_Collection_ = None) : socket 'Collection' (Collection)
@@ -59,7 +59,7 @@ Info(collection=None, separate_children=None, reset_children=None, original=True
 info(separate_children=None, reset_children=None, original=True)
 ```
 
-> Node : [Collection Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene/collection_info.html)
+> **node** : [Collection Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene/collection_info.html)
 
 #### Arguments:
 - **separate_children** (_Boolean_ = None) : socket 'Separate Children' (Separate Children)
