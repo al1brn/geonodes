@@ -72,8 +72,7 @@ Property curve component
 > _type_: **Integer**
 >
 
-Node 'ID' (GeometryNodeInputID)
-
+[ID](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputID.html#bpy.types.GeometryNodeInputID)
 [!Node] ID
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Properties](geono-geometry.md#properties)</sub>
@@ -94,8 +93,7 @@ Property instances component
 > _type_: **Integer**
 >
 
-Node 'Material Index' (GeometryNodeInputMaterialIndex)
-
+[Material Index](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMaterialIndex.html#bpy.types.GeometryNodeInputMaterialIndex)
 [!Node] Material Index
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Properties](geono-geometry.md#properties)</sub>
@@ -127,8 +125,7 @@ Property cloud component
 > _type_: **Vector**
 >
 
-Node 'Position' (GeometryNodeInputPosition)
-
+[Position](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputPosition.html#bpy.types.GeometryNodeInputPosition)
 [!Node] Position
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Properties](geono-geometry.md#properties)</sub>
@@ -168,8 +165,7 @@ Property volume component
 index_of_nearest(position=None, group_id=None)
 ```
 
-Node 'Index of Nearest' (GeometryNodeIndexOfNearest)
-
+[Index of Nearest](https://docs.blender.org/api/current/bpy.types.GeometryNodeIndexOfNearest.html#bpy.types.GeometryNodeIndexOfNearest)
 [!Node] Index of Nearest
 
 #### Arguments:
@@ -192,9 +188,8 @@ Node 'Index of Nearest' (GeometryNodeIndexOfNearest)
 join(*geometries)
 ```
 
-Node 'Join Geometry' (GeometryNodeJoinGeometry)
-
-
+[Join Geometry](https://docs.blender.org/api/current/bpy.types.GeometryNodeJoinGeometry.html#bpy.types.GeometryNodeJoinGeometry)
+[Join Geometry](https://docs.blender.org/api/current/bpy.types.GeometryNodeJoinGeometry.html#bpy.types.GeometryNodeJoinGeometry)
 Operator + can be used : ``` geo + other_geo ``` is equivalent to ``` geo.join(other) ```
 If all the geometries are of the same type, the returned geometry uses this type.
 
@@ -231,8 +226,7 @@ assert(isinstance(geo, Geometry))
 merge_by_distance(distance=None, mode='ALL')
 ```
 
-Node 'Merge by Distance' (GeometryNodeMergeByDistance)
-
+[Merge by Distance](https://docs.blender.org/api/current/bpy.types.GeometryNodeMergeByDistance.html#bpy.types.GeometryNodeMergeByDistance)
 [!Node] Merge by Distance
 
 #### Arguments:
@@ -255,9 +249,8 @@ Node 'Merge by Distance' (GeometryNodeMergeByDistance)
 raycast(attribute=None, source_position=None, ray_direction=None, ray_length=None, interpolated=True)
 ```
 
-Node 'Raycast' (GeometryNodeRaycast)
-
-
+[Raycast](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html#bpy.types.GeometryNodeRaycast)
+[Raycast](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html#bpy.types.GeometryNodeRaycast)
 mapping in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4')
 
 #### Arguments:
@@ -307,8 +300,7 @@ Remove named attribute
 replace_material(old=None, new=None)
 ```
 
-Node 'Replace Material' (GeometryNodeReplaceMaterial)
-
+[Replace Material](https://docs.blender.org/api/current/bpy.types.GeometryNodeReplaceMaterial.html#bpy.types.GeometryNodeReplaceMaterial)
 [!Node] Replace Material
 
 #### Arguments:
@@ -425,8 +417,7 @@ Set Shade Smooth.
 to_instance(*geometries)
 ```
 
-Node 'Geometry to Instance' (GeometryNodeGeometryToInstance)
-
+[Geometry to Instance](https://docs.blender.org/api/current/bpy.types.GeometryNodeGeometryToInstance.html#bpy.types.GeometryNodeGeometryToInstance)
 [!Node] Geometry to Instance
 
 #### Arguments:
@@ -448,9 +439,8 @@ Node 'Geometry to Instance' (GeometryNodeGeometryToInstance)
 transform(translation=None, rotation=None, scale=None, matrix=None)
 ```
 
-Node 'Transform Geometry' (GeometryNodeTransform)
-
-
+[Transform Geometry](https://docs.blender.org/api/current/bpy.types.GeometryNodeTransform.html#bpy.types.GeometryNodeTransform)
+[Transform Geometry](https://docs.blender.org/api/current/bpy.types.GeometryNodeTransform.html#bpy.types.GeometryNodeTransform)
 If 'matrix' argument is None, the mode 'COMPONENTS' is set.
 If 'matrix' argument is not NOne, the mode 'MATRIX' is set and the other arguments are ignored.
 

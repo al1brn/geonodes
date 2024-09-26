@@ -60,8 +60,7 @@ Tree: Shader
 Tangent(axis='Z', direction_type='RADIAL', uv_map='')
 ```
 
-Node 'Tangent' (ShaderNodeTangent)
-- axis in ('X', 'Y', 'Z')
+[Tangent](https://docs.blender.org/api/current/bpy.types.ShaderNodeTangent.html#bpy.types.ShaderNodeTangent)- axis in ('X', 'Y', 'Z')
 - direction_type in ('RADIAL', 'UV_MAP')
 
 #### Arguments:

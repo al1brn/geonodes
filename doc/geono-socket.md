@@ -46,8 +46,7 @@ Returns the node owning the socket.
 blur(iterations=None, weight=None)
 ```
 
-Node 'Blur Attribute' (GeometryNodeBlurAttribute)
-
+[Blur Attribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeBlurAttribute.html#bpy.types.GeometryNodeBlurAttribute)
 [!Node] Blur Attribute
 
 #### Arguments:
@@ -70,9 +69,8 @@ Node 'Blur Attribute' (GeometryNodeBlurAttribute)
 IndexSwitch(*values, index=0)
 ```
 
-Node 'Index Switch' (GeometryNodeIndexSwitch)
-
-
+[Index Switch](https://docs.blender.org/api/current/bpy.types.GeometryNodeIndexSwitch.html#bpy.types.GeometryNodeIndexSwitch)
+[Index Switch](https://docs.blender.org/api/current/bpy.types.GeometryNodeIndexSwitch.html#bpy.types.GeometryNodeIndexSwitch)
 ``` python
 with GeoNodes("Index Switch demo"):
 
@@ -109,9 +107,8 @@ with GeoNodes("Index Switch demo"):
 index_switch(*values, index=0)
 ```
 
-Node 'Index Switch' (GeometryNodeIndexSwitch)
-
-
+[Index Switch](https://docs.blender.org/api/current/bpy.types.GeometryNodeIndexSwitch.html#bpy.types.GeometryNodeIndexSwitch)
+[Index Switch](https://docs.blender.org/api/current/bpy.types.GeometryNodeIndexSwitch.html#bpy.types.GeometryNodeIndexSwitch)
 Self is used as first socket in the node.
 
 ``` python
@@ -183,9 +180,8 @@ with GeoNodes("Node label and color"):
 MenuSwitch(items={'A': None, 'B': None}, menu=0, name='Menu', tip=None)
 ```
 
-Node 'Menu Switch' (GeometryNodeMenuSwitch)
-
-
+[Menu Switch](https://docs.blender.org/api/current/bpy.types.GeometryNodeMenuSwitch.html#bpy.types.GeometryNodeMenuSwitch)
+[Menu Switch](https://docs.blender.org/api/current/bpy.types.GeometryNodeMenuSwitch.html#bpy.types.GeometryNodeMenuSwitch)
 The items of the Menu Switch node are provided in the 'items' dict.
 An group input socket named after the 'name' argument is linked to menu selector.
 
@@ -227,9 +223,8 @@ with GeoNodes("Menu Switch demo"):
 menu_switch(self_name='A', items={'B': None}, menu=0, name='Menu', tip=None)
 ```
 
-Node 'Menu Switch' (GeometryNodeMenuSwitch)
-
-
+[Menu Switch](https://docs.blender.org/api/current/bpy.types.GeometryNodeMenuSwitch.html#bpy.types.GeometryNodeMenuSwitch)
+[Menu Switch](https://docs.blender.org/api/current/bpy.types.GeometryNodeMenuSwitch.html#bpy.types.GeometryNodeMenuSwitch)
 Self is connected to the first menu item with the name provided as argument.
 
 ``` python
@@ -302,9 +297,8 @@ The "Do nothing" modifier is simply ``` Geometry().out() ```
 Switch(condition=None, false=None, true=None)
 ```
 
-Node 'Switch' (GeometryNodeSwitch)
-
-
+[Switch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html#bpy.types.GeometryNodeSwitch)
+[Switch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html#bpy.types.GeometryNodeSwitch)
 ``` python
 with GeoNodes("Switch demo"):
 
@@ -340,9 +334,8 @@ with GeoNodes("Switch demo"):
 switch(condition=None, true=None)
 ```
 
-Node 'Switch' (GeometryNodeSwitch)
-
-
+[Switch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html#bpy.types.GeometryNodeSwitch)
+[Switch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html#bpy.types.GeometryNodeSwitch)
 Self is connected to 'false' socket.
 
 ``` python

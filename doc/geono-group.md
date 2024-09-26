@@ -8,7 +8,7 @@ Group(group_name, sockets={}, **kwargs)
 
 Node Group
 
-
+[Group](https://docs.blender.org/api/current/bpy.types.GeometryNodeGroup.html#bpy.types.GeometryNodeGroup)
 Create a node 'Group' with the tree provided with 'group_name' argument.
 
 The sockets can be initialized either using the sockets dictionary or using they snake_case name
@@ -71,7 +71,7 @@ Prefix(prefix, group_name, sockets={}, **kwargs)
 
 Call a Group with a prefixed named.
 
-
+[Group](https://docs.blender.org/api/current/bpy.types.GeometryNodeGroup.html#bpy.types.GeometryNodeGroup)
 Using a prefix for groups of the same type can be usefull in big projects with
 a lot of groups.
 

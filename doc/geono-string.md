@@ -57,8 +57,7 @@ Node 'String Length' (FunctionNodeStringLength)
 equal(other)
 ```
 
-Node 'Compare' (FunctionNodeCompare)
-
+[Compare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html#bpy.types.FunctionNodeCompare)
 Node compare with data_type = 'STRING' and operation = 'EQUAL'
 
 #### Arguments:
@@ -145,8 +144,7 @@ Node 'Join Strings' (GeometryNodeStringJoin)
 not_equal(other)
 ```
 
-Node 'Compare' (FunctionNodeCompare)
-
+[Compare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html#bpy.types.FunctionNodeCompare)
 Node compare with data_type = 'STRING' and operation = 'NOT_EQUAL'
 
 #### Arguments:

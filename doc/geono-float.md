@@ -43,8 +43,7 @@ Float(value=0.0, name=None, min=None, max=None, tip=None, subtype='NONE')
 clamp(min=None, max=None, clamp_type='MINMAX')
 ```
 
-Node 'Clamp' (ShaderNodeClamp)
-
+[Clamp](https://docs.blender.org/api/current/bpy.types.ShaderNodeClamp.html#bpy.types.ShaderNodeClamp)
 [!Node] Clamp
 
 #### Arguments:
@@ -68,8 +67,7 @@ Node 'Clamp' (ShaderNodeClamp)
 color_ramp(keep=None)
 ```
 
-Node 'Color Ramp' (ShaderNodeValToRGB)
-
+[Color Ramp](https://docs.blender.org/api/current/bpy.types.ShaderNodeValToRGB.html#bpy.types.ShaderNodeValToRGB)
 [!Node] Color Ramp
 
 #### Arguments:
@@ -91,8 +89,7 @@ Node 'Color Ramp' (ShaderNodeValToRGB)
 curve(factor=None, keep=None)
 ```
 
-Node 'Float Curve' (ShaderNodeFloatCurve)
-
+[Float Curve](https://docs.blender.org/api/current/bpy.types.ShaderNodeFloatCurve.html#bpy.types.ShaderNodeFloatCurve)
 [!Node] Float Curve
 
 #### Arguments:
@@ -115,8 +112,7 @@ Node 'Float Curve' (ShaderNodeFloatCurve)
 equal(other, epsilon=None)
 ```
 
-Node 'Compare' (FunctionNodeCompare)
-
+[Compare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html#bpy.types.FunctionNodeCompare)
 [!Node] Compare
 
 #### Arguments:
@@ -139,8 +135,7 @@ Node 'Compare' (FunctionNodeCompare)
 greater_equal(other)
 ```
 
-Node 'Compare' (FunctionNodeCompare)
-
+[Compare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html#bpy.types.FunctionNodeCompare)
 [!Node] Compare
 
 #### Arguments:
@@ -162,8 +157,7 @@ Node 'Compare' (FunctionNodeCompare)
 greater_than(other)
 ```
 
-Node 'Compare' (FunctionNodeCompare)
-
+[Compare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html#bpy.types.FunctionNodeCompare)
 [!Node] Compare
 
 #### Arguments:
@@ -185,8 +179,7 @@ Node 'Compare' (FunctionNodeCompare)
 less_equal(other)
 ```
 
-Node 'Compare' (FunctionNodeCompare)
-
+[Compare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html#bpy.types.FunctionNodeCompare)
 [!Node] Compare
 
 #### Arguments:
@@ -208,8 +201,7 @@ Node 'Compare' (FunctionNodeCompare)
 less_than(other)
 ```
 
-Node 'Compare' (FunctionNodeCompare)
-
+[Compare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html#bpy.types.FunctionNodeCompare)
 [!Node] Compare
 
 #### Arguments:
@@ -231,8 +223,7 @@ Node 'Compare' (FunctionNodeCompare)
 map_range(from_min=None, from_max=None, to_min=None, to_max=None, clamp=None, interpolation_type='LINEAR')
 ```
 
-Node 'Map Range' (ShaderNodeMapRange)
-
+[Map Range](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html#bpy.types.ShaderNodeMapRange)
 [!Node] Map Range
 
 #### Arguments:
@@ -259,8 +250,7 @@ Node 'Map Range' (ShaderNodeMapRange)
 map_range_linear(from_min=None, from_max=None, to_min=None, to_max=None, clamp=None)
 ```
 
-Node 'Map Range' (ShaderNodeMapRange)
-
+[Map Range](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html#bpy.types.ShaderNodeMapRange)
 [!Node] Map Range
 
 #### Arguments:
@@ -286,8 +276,7 @@ Node 'Map Range' (ShaderNodeMapRange)
 map_range_smooth(from_min=None, from_max=None, to_min=None, to_max=None, clamp=None)
 ```
 
-Node 'Map Range' (ShaderNodeMapRange)
-
+[Map Range](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html#bpy.types.ShaderNodeMapRange)
 [!Node] Map Range
 
 #### Arguments:
@@ -313,8 +302,7 @@ Node 'Map Range' (ShaderNodeMapRange)
 map_range_smoother(from_min=None, from_max=None, to_min=None, to_max=None, clamp=None)
 ```
 
-Node 'Map Range' (ShaderNodeMapRange)
-
+[Map Range](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html#bpy.types.ShaderNodeMapRange)
 [!Node] Map Range
 
 #### Arguments:
@@ -340,8 +328,7 @@ Node 'Map Range' (ShaderNodeMapRange)
 map_range_stepped(from_min=None, from_max=None, to_min=None, to_max=None, clamp=None)
 ```
 
-Node 'Map Range' (ShaderNodeMapRange)
-
+[Map Range](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html#bpy.types.ShaderNodeMapRange)
 [!Node] Map Range
 
 #### Arguments:
@@ -367,8 +354,7 @@ Node 'Map Range' (ShaderNodeMapRange)
 mix(factor=None, other=None, clamp_factor=None)
 ```
 
-Node 'Mix' (ShaderNodeMix)
-
+[Mix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html#bpy.types.ShaderNodeMix)
 [!Node] Mix
 
 #### Arguments:
@@ -392,9 +378,8 @@ Node 'Mix' (ShaderNodeMix)
 Named(name)
 ```
 
-Node 'Named Attribute' (GeometryNodeInputNamedAttribute)
-
-
+[Named Attribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html#bpy.types.GeometryNodeInputNamedAttribute)
+[Named Attribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html#bpy.types.GeometryNodeInputNamedAttribute)
 'Named' is a synonym of 'NamedAttribute'
 
 ``` python
@@ -433,9 +418,8 @@ with GeoNodes("Named Attributes"):
 NamedAttribute(name)
 ```
 
-Node 'Named Attribute' (GeometryNodeInputNamedAttribute)
-
-
+[Named Attribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html#bpy.types.GeometryNodeInputNamedAttribute)
+[Named Attribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html#bpy.types.GeometryNodeInputNamedAttribute)
 'Named' is a synonym of 'NamedAttribute'
 
 ``` python
@@ -474,8 +458,7 @@ with GeoNodes("Named Attributes"):
 not_equal(other, epsilon=None)
 ```
 
-Node 'Compare' (FunctionNodeCompare)
-
+[Compare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html#bpy.types.FunctionNodeCompare)
 [!Node] Compare
 
 #### Arguments:
@@ -498,8 +481,7 @@ Node 'Compare' (FunctionNodeCompare)
 to_string(decimals=None)
 ```
 
-Node 'Value to String' (FunctionNodeValueToString)
-
+[Value to String](https://docs.blender.org/api/current/bpy.types.FunctionNodeValueToString.html#bpy.types.FunctionNodeValueToString)
 [!Node] Value to String
 
 #### Arguments:

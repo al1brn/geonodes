@@ -44,8 +44,7 @@ When a Group Input socket is created, default name 'Geometry' is used if name ar
 FromGeometry(*geometries)
 ```
 
-Node 'Geometry to Instance' (GeometryNodeGeometryToInstance)
-
+[Geometry to Instance](https://docs.blender.org/api/current/bpy.types.GeometryNodeGeometryToInstance.html#bpy.types.GeometryNodeGeometryToInstance)
 [!Node] Geometry to Instance
 
 #### Arguments:
@@ -67,8 +66,7 @@ Node 'Geometry to Instance' (GeometryNodeGeometryToInstance)
 FromString(string=None, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, text_box_height=None, overflow='OVERFLOW', align_x='LEFT', align_y='TOP_BASELINE', pivot_mode='BOTTOM_LEFT')
 ```
 
-Node 'String to Curves' (GeometryNodeStringToCurves)
-
+[String to Curves](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringToCurves.html#bpy.types.GeometryNodeStringToCurves)
 [!Node] String to Curves
 
 #### Arguments:
@@ -100,8 +98,7 @@ Node 'String to Curves' (GeometryNodeStringToCurves)
 on_points(points, pick_instance=None, instance_index=None, rotation=None, scale=None)
 ```
 
-Node 'Instance on Points' (GeometryNodeInstanceOnPoints)
-
+[Instance on Points](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstanceOnPoints.html#bpy.types.GeometryNodeInstanceOnPoints)
 [!Node] Instance on Points
 
 #### Arguments:
@@ -127,8 +124,7 @@ Node 'Instance on Points' (GeometryNodeInstanceOnPoints)
 realize(realize_all=None, depth=None)
 ```
 
-Node 'Realize Instances' (GeometryNodeRealizeInstances)
-
+[Realize Instances](https://docs.blender.org/api/current/bpy.types.GeometryNodeRealizeInstances.html#bpy.types.GeometryNodeRealizeInstances)
 [!Node] Realize Instances
 
 #### Arguments:
@@ -151,8 +147,7 @@ Node 'Realize Instances' (GeometryNodeRealizeInstances)
 rotate(rotation=None, pivot_point=None, local_space=None)
 ```
 
-Node 'Rotate Instances' (GeometryNodeRotateInstances)
-
+[Rotate Instances](https://docs.blender.org/api/current/bpy.types.GeometryNodeRotateInstances.html#bpy.types.GeometryNodeRotateInstances)
 [!Node] Rotate Instances
 
 #### Arguments:
@@ -176,8 +171,7 @@ Node 'Rotate Instances' (GeometryNodeRotateInstances)
 scale(scale=None, center=None, local_space=None)
 ```
 
-Node 'Scale Instances' (GeometryNodeScaleInstances)
-
+[Scale Instances](https://docs.blender.org/api/current/bpy.types.GeometryNodeScaleInstances.html#bpy.types.GeometryNodeScaleInstances)
 [!Node] Scale Instances
 
 #### Arguments:
@@ -201,8 +195,7 @@ Node 'Scale Instances' (GeometryNodeScaleInstances)
 to_points(position=None, radius=None)
 ```
 
-Node 'Instances to Points' (GeometryNodeInstancesToPoints)
-
+[Instances to Points](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstancesToPoints.html#bpy.types.GeometryNodeInstancesToPoints)
 [!Node] Instances to Points
 
 #### Arguments:
@@ -225,8 +218,7 @@ Node 'Instances to Points' (GeometryNodeInstancesToPoints)
 translate(translation=None, local_space=None)
 ```
 
-Node 'Translate Instances' (GeometryNodeTranslateInstances)
-
+[Translate Instances](https://docs.blender.org/api/current/bpy.types.GeometryNodeTranslateInstances.html#bpy.types.GeometryNodeTranslateInstances)
 [!Node] Translate Instances
 
 #### Arguments:

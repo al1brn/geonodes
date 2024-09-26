@@ -47,8 +47,7 @@ When a Group Input socket is created, default name 'Geometry' is used if name ar
 > _type_: **Float**
 >
 
-Node 'Curve Length' (GeometryNodeCurveLength)
-
+[Curve Length](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveLength.html#bpy.types.GeometryNodeCurveLength)
 [!Node] Curve Length
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-curve.md#curve) :black_small_square: [Content](geono-curve.md#content) :black_small_square: [Properties](geono-curve.md#properties)</sub>
@@ -58,8 +57,7 @@ Node 'Curve Length' (GeometryNodeCurveLength)
 > _type_: **Float**
 >
 
-Node 'Radius' (GeometryNodeInputRadius)
-
+[Radius](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputRadius.html#bpy.types.GeometryNodeInputRadius)
 [!Node] Radius
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-curve.md#curve) :black_small_square: [Content](geono-curve.md#content) :black_small_square: [Properties](geono-curve.md#properties)</sub>
@@ -69,8 +67,7 @@ Node 'Radius' (GeometryNodeInputRadius)
 > _type_: **Float**
 >
 
-Node 'Curve Tilt' (GeometryNodeInputCurveTilt)
-
+[Curve Tilt](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputCurveTilt.html#bpy.types.GeometryNodeInputCurveTilt)
 [!Node] Curve Tilt
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-curve.md#curve) :black_small_square: [Content](geono-curve.md#content) :black_small_square: [Properties](geono-curve.md#properties)</sub>
@@ -88,9 +85,8 @@ Node 'Curve Tilt' (GeometryNodeInputCurveTilt)
 Arc(resolution=None, radius=None, start_angle=None, sweep_angle=None, start=None, middle=None, end=None, offset_angle=None, connect_center=None, invert_arc=None)
 ```
 
-Node 'Arc' (GeometryNodeCurveArc)
-
-
+[Arc](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveArc.html#bpy.types.GeometryNodeCurveArc)
+[Arc](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveArc.html#bpy.types.GeometryNodeCurveArc)
 'mode' is set to 'POINTS' if one in (start, middle, end, offset_angle) is not None, 'RADIUS' otherwise.
 
 - mode (str): Node.mode in ('POINTS', 'RADIUS')
@@ -123,8 +119,7 @@ Node 'Arc' (GeometryNodeCurveArc)
 BezierSegment(resolution=None, start=None, start_handle=None, end_handle=None, end=None, mode='POSITION')
 ```
 
-Node 'Bézier Segment' (GeometryNodeCurvePrimitiveBezierSegment)
-
+[Bézier Segment](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveBezierSegment.html#bpy.types.GeometryNodeCurvePrimitiveBezierSegment)
 [!Node] Bézier Segment
 
 #### Arguments:
@@ -151,9 +146,8 @@ Node 'Bézier Segment' (GeometryNodeCurvePrimitiveBezierSegment)
 Circle(resolution=None, radius=None, point_1=None, point_2=None, point_3=None)
 ```
 
-Node 'Curve Circle' (GeometryNodeCurvePrimitiveCircle)
-
-
+[Curve Circle](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveCircle.html#bpy.types.GeometryNodeCurvePrimitiveCircle)
+[Curve Circle](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveCircle.html#bpy.types.GeometryNodeCurvePrimitiveCircle)
 'mode' is set to 'POINTS' if one in (point_1, point_2, point_) is not None, 'RADIUS' otherwise
 
 - mode (str): Node.mode in ('POINTS', 'RADIUS')
@@ -181,8 +175,7 @@ Node 'Curve Circle' (GeometryNodeCurvePrimitiveCircle)
 curve_of_point(point_index=None)
 ```
 
-Node 'Curve of Point' (GeometryNodeCurveOfPoint)
-
+[Curve of Point](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveOfPoint.html#bpy.types.GeometryNodeCurveOfPoint)
 [!Node] Curve of Point
 
 #### Arguments:
@@ -204,8 +197,7 @@ Node 'Curve of Point' (GeometryNodeCurveOfPoint)
 deform_on_surface()
 ```
 
-Node 'Deform Curves on Surface' (GeometryNodeDeformCurvesOnSurface)
-
+[Deform Curves on Surface](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeformCurvesOnSurface.html#bpy.types.GeometryNodeDeformCurvesOnSurface)
 [!Node] Deform Curves on Surface
 
 #### Returns:
@@ -222,8 +214,7 @@ Node 'Deform Curves on Surface' (GeometryNodeDeformCurvesOnSurface)
 endpoint_selection(start_size=None, end_size=None)
 ```
 
-Node 'Endpoint Selection' (GeometryNodeCurveEndpointSelection)
-
+[Endpoint Selection](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveEndpointSelection.html#bpy.types.GeometryNodeCurveEndpointSelection)
 [!Node] Endpoint Selection
 
 #### Arguments:
@@ -246,8 +237,7 @@ Node 'Endpoint Selection' (GeometryNodeCurveEndpointSelection)
 fill(group_id=None, mode='TRIANGLES')
 ```
 
-Node 'Fill Curve' (GeometryNodeFillCurve)
-
+[Fill Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeFillCurve.html#bpy.types.GeometryNodeFillCurve)
 [!Node] Fill Curve
 
 #### Arguments:
@@ -270,8 +260,7 @@ Node 'Fill Curve' (GeometryNodeFillCurve)
 fillet(radius=None, limit_radius=None, count=None, mode='BEZIER')
 ```
 
-Node 'Fillet Curve' (GeometryNodeFilletCurve)
-
+[Fillet Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeFilletCurve.html#bpy.types.GeometryNodeFilletCurve)
 [!Node] Fillet Curve
 
 #### Arguments:
@@ -296,8 +285,7 @@ Node 'Fillet Curve' (GeometryNodeFilletCurve)
 FromEdgePaths(mesh, next_vertex_index=None)
 ```
 
-Node 'Edge Paths to Curves' (GeometryNodeEdgePathsToCurves)
-
+[Edge Paths to Curves](https://docs.blender.org/api/current/bpy.types.GeometryNodeEdgePathsToCurves.html#bpy.types.GeometryNodeEdgePathsToCurves)
 [!Node] Edge Paths to Curves
 
 #### Arguments:
@@ -320,8 +308,7 @@ Node 'Edge Paths to Curves' (GeometryNodeEdgePathsToCurves)
 FromMesh(mesh)
 ```
 
-Node 'Mesh to Curve' (GeometryNodeMeshToCurve)
-
+[Mesh to Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToCurve.html#bpy.types.GeometryNodeMeshToCurve)
 [!Node] Mesh to Curve
 
 #### Arguments:
@@ -343,8 +330,7 @@ Node 'Mesh to Curve' (GeometryNodeMeshToCurve)
 FromPoints(points, curve_group_id=None, weight=None)
 ```
 
-Node 'Points to Curves' (GeometryNodePointsToCurves)
-
+[Points to Curves](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToCurves.html#bpy.types.GeometryNodePointsToCurves)
 [!Node] Points to Curves
 
 #### Arguments:
@@ -368,8 +354,7 @@ Node 'Points to Curves' (GeometryNodePointsToCurves)
 interpolate(guide_up=None, guide_group_id=None, points=None, point_up=None, point_group_id=None, max_neighbors=None)
 ```
 
-Node 'Interpolate Curves' (GeometryNodeInterpolateCurves)
-
+[Interpolate Curves](https://docs.blender.org/api/current/bpy.types.GeometryNodeInterpolateCurves.html#bpy.types.GeometryNodeInterpolateCurves)
 [!Node] Interpolate Curves
 
 #### Arguments:
@@ -396,8 +381,7 @@ Node 'Interpolate Curves' (GeometryNodeInterpolateCurves)
 Kite(width=None, bottom_height=None, top_height=None)
 ```
 
-Node 'Quadrilateral' (GeometryNodeCurvePrimitiveQuadrilateral)
-
+[Quadrilateral](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveQuadrilateral.html#bpy.types.GeometryNodeCurvePrimitiveQuadrilateral)
 [!Node] Quadrilateral
 
 #### Arguments:
@@ -421,9 +405,8 @@ Node 'Quadrilateral' (GeometryNodeCurvePrimitiveQuadrilateral)
 Line(start=None, end=None, direction=None, length=None)
 ```
 
-Node 'Curve Line' (GeometryNodeCurvePrimitiveLine)
-
-
+[Curve Line](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveLine.html#bpy.types.GeometryNodeCurvePrimitiveLine)
+[Curve Line](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveLine.html#bpy.types.GeometryNodeCurvePrimitiveLine)
 'mode' is set to 'DIRECTION' if one in (direction, length) is not None, 'POINTS' otherwise.
 
 - mode (str): Node.mode in ('POINTS', 'DIRECTION')
@@ -450,8 +433,7 @@ Node 'Curve Line' (GeometryNodeCurvePrimitiveLine)
 offset_point_in_curve(point_index=None, offset=None)
 ```
 
-Node 'Offset Point in Curve' (GeometryNodeOffsetPointInCurve)
-
+[Offset Point in Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeOffsetPointInCurve.html#bpy.types.GeometryNodeOffsetPointInCurve)
 [!Node] Offset Point in Curve
 
 #### Arguments:
@@ -474,8 +456,7 @@ Node 'Offset Point in Curve' (GeometryNodeOffsetPointInCurve)
 Parallelogram(width=None, height=None, offset=None)
 ```
 
-Node 'Quadrilateral' (GeometryNodeCurvePrimitiveQuadrilateral)
-
+[Quadrilateral](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveQuadrilateral.html#bpy.types.GeometryNodeCurvePrimitiveQuadrilateral)
 [!Node] Quadrilateral
 
 #### Arguments:
@@ -499,8 +480,7 @@ Node 'Quadrilateral' (GeometryNodeCurvePrimitiveQuadrilateral)
 Points(point_1=None, point_2=None, point_3=None, point_4=None)
 ```
 
-Node 'Quadrilateral' (GeometryNodeCurvePrimitiveQuadrilateral)
-
+[Quadrilateral](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveQuadrilateral.html#bpy.types.GeometryNodeCurvePrimitiveQuadrilateral)
 [!Node] Quadrilateral
 
 #### Arguments:
@@ -525,8 +505,7 @@ Node 'Quadrilateral' (GeometryNodeCurvePrimitiveQuadrilateral)
 points_of_curve(curve_index=None, weights=None, sort_index=None)
 ```
 
-Node 'Points of Curve' (GeometryNodePointsOfCurve)
-
+[Points of Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsOfCurve.html#bpy.types.GeometryNodePointsOfCurve)
 [!Node] Points of Curve
 
 #### Arguments:
@@ -550,8 +529,7 @@ Node 'Points of Curve' (GeometryNodePointsOfCurve)
 QuadraticBezier(resolution=None, start=None, middle=None, end=None)
 ```
 
-Node 'Quadratic Bézier' (GeometryNodeCurveQuadraticBezier)
-
+[Quadratic Bézier](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveQuadraticBezier.html#bpy.types.GeometryNodeCurveQuadraticBezier)
 [!Node] Quadratic Bézier
 
 #### Arguments:
@@ -576,8 +554,7 @@ Node 'Quadratic Bézier' (GeometryNodeCurveQuadraticBezier)
 Quadrilateral(width=None, height=None)
 ```
 
-Node 'Quadrilateral' (GeometryNodeCurvePrimitiveQuadrilateral)
-
+[Quadrilateral](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveQuadrilateral.html#bpy.types.GeometryNodeCurvePrimitiveQuadrilateral)
 [!Node] Quadrilateral
 
 #### Arguments:
@@ -600,8 +577,7 @@ Node 'Quadrilateral' (GeometryNodeCurvePrimitiveQuadrilateral)
 Rectangle(width=None, height=None)
 ```
 
-Node 'Quadrilateral' (GeometryNodeCurvePrimitiveQuadrilateral)
-
+[Quadrilateral](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveQuadrilateral.html#bpy.types.GeometryNodeCurvePrimitiveQuadrilateral)
 [!Node] Quadrilateral
 
 #### Arguments:
@@ -624,9 +600,8 @@ Node 'Quadrilateral' (GeometryNodeCurvePrimitiveQuadrilateral)
 resample(count=None, length=None)
 ```
 
-Node 'Resample Curve' (GeometryNodeResampleCurve)
-
-
+[Resample Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeResampleCurve.html#bpy.types.GeometryNodeResampleCurve)
+[Resample Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeResampleCurve.html#bpy.types.GeometryNodeResampleCurve)
 Parameter 'mode'
 ---------------
 - mode (str): Node.mode in ('EVALUATED', 'COUNT', 'LENGTH')
@@ -654,8 +629,7 @@ Parameter 'mode'
 reverse()
 ```
 
-Node 'Reverse Curve' (GeometryNodeReverseCurve)
-
+[Reverse Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeReverseCurve.html#bpy.types.GeometryNodeReverseCurve)
 [!Node] Reverse Curve
 
 #### Returns:
@@ -672,9 +646,8 @@ Node 'Reverse Curve' (GeometryNodeReverseCurve)
 sample(value=None, factor=None, length=None, curve_index=None, all_curves=False)
 ```
 
-Node 'Sample Curve' (GeometryNodeSampleCurve)
-
-
+[Sample Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleCurve.html#bpy.types.GeometryNodeSampleCurve)
+[Sample Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleCurve.html#bpy.types.GeometryNodeSampleCurve)
 'mode' is set to 'LENGTH' if factor is None, else 'FACTOR'
 
 - data_type (str): Node.data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4')
@@ -703,8 +676,7 @@ Node 'Sample Curve' (GeometryNodeSampleCurve)
 set_normal(mode='MINIMUM_TWIST')
 ```
 
-Node 'Set Curve Normal' (GeometryNodeSetCurveNormal)
-
+[Set Curve Normal](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveNormal.html#bpy.types.GeometryNodeSetCurveNormal)
 [!Node] Set Curve Normal
 
 #### Arguments:
@@ -726,8 +698,7 @@ Node 'Set Curve Normal' (GeometryNodeSetCurveNormal)
 set_normal_free()
 ```
 
-Node 'Set Curve Normal' (GeometryNodeSetCurveNormal)
-
+[Set Curve Normal](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveNormal.html#bpy.types.GeometryNodeSetCurveNormal)
 [!Node] Set Curve Normal
 
 #### Returns:
@@ -744,8 +715,7 @@ Node 'Set Curve Normal' (GeometryNodeSetCurveNormal)
 set_normal_z_up()
 ```
 
-Node 'Set Curve Normal' (GeometryNodeSetCurveNormal)
-
+[Set Curve Normal](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveNormal.html#bpy.types.GeometryNodeSetCurveNormal)
 [!Node] Set Curve Normal
 
 #### Returns:
@@ -762,8 +732,7 @@ Node 'Set Curve Normal' (GeometryNodeSetCurveNormal)
 Spiral(resolution=None, rotations=None, start_radius=None, end_radius=None, height=None, reverse=None)
 ```
 
-Node 'Spiral' (GeometryNodeCurveSpiral)
-
+[Spiral](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSpiral.html#bpy.types.GeometryNodeCurveSpiral)
 [!Node] Spiral
 
 #### Arguments:
@@ -790,8 +759,7 @@ Node 'Spiral' (GeometryNodeCurveSpiral)
 Star(points=None, inner_radius=None, outer_radius=None, twist=None)
 ```
 
-Node 'Star' (GeometryNodeCurveStar)
-
+[Star](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveStar.html#bpy.types.GeometryNodeCurveStar)
 [!Node] Star
 
 #### Arguments:
@@ -816,8 +784,7 @@ Node 'Star' (GeometryNodeCurveStar)
 subdivide(cuts=None)
 ```
 
-Node 'Subdivide Curve' (GeometryNodeSubdivideCurve)
-
+[Subdivide Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeSubdivideCurve.html#bpy.types.GeometryNodeSubdivideCurve)
 [!Node] Subdivide Curve
 
 #### Arguments:
@@ -839,8 +806,7 @@ Node 'Subdivide Curve' (GeometryNodeSubdivideCurve)
 to_mesh(profile_curve=None, fill_caps=None)
 ```
 
-Node 'Curve to Mesh' (GeometryNodeCurveToMesh)
-
+[Curve to Mesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveToMesh.html#bpy.types.GeometryNodeCurveToMesh)
 [!Node] Curve to Mesh
 
 #### Arguments:
@@ -863,8 +829,7 @@ Node 'Curve to Mesh' (GeometryNodeCurveToMesh)
 to_points(count=None, length=None, mode='EVALUATED')
 ```
 
-Node 'Curve to Points' (GeometryNodeCurveToPoints)
-
+[Curve to Points](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveToPoints.html#bpy.types.GeometryNodeCurveToPoints)
 [!Node] Curve to Points
 
 #### Arguments:
@@ -888,8 +853,7 @@ Node 'Curve to Points' (GeometryNodeCurveToPoints)
 Trapezoid(height=None, bottom_width=None, top_width=None, offset=None)
 ```
 
-Node 'Quadrilateral' (GeometryNodeCurvePrimitiveQuadrilateral)
-
+[Quadrilateral](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveQuadrilateral.html#bpy.types.GeometryNodeCurvePrimitiveQuadrilateral)
 [!Node] Quadrilateral
 
 #### Arguments:
@@ -914,8 +878,7 @@ Node 'Quadrilateral' (GeometryNodeCurvePrimitiveQuadrilateral)
 trim(start=None, end=None, mode='FACTOR')
 ```
 
-Node 'Trim Curve' (GeometryNodeTrimCurve)
-
+[Trim Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeTrimCurve.html#bpy.types.GeometryNodeTrimCurve)
 [!Node] Trim Curve
 
 #### Arguments:
@@ -939,8 +902,7 @@ Node 'Trim Curve' (GeometryNodeTrimCurve)
 trim_factor(start=None, end=None)
 ```
 
-Node 'Trim Curve' (GeometryNodeTrimCurve)
-
+[Trim Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeTrimCurve.html#bpy.types.GeometryNodeTrimCurve)
 [!Node] Trim Curve
 
 #### Arguments:
@@ -963,8 +925,7 @@ Node 'Trim Curve' (GeometryNodeTrimCurve)
 trim_length(start=None, end=None)
 ```
 
-Node 'Trim Curve' (GeometryNodeTrimCurve)
-
+[Trim Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeTrimCurve.html#bpy.types.GeometryNodeTrimCurve)
 [!Node] Trim Curve
 
 #### Arguments:

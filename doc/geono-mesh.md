@@ -43,8 +43,7 @@ When a Group Input socket is created, default name 'Geometry' is used if name ar
 > _type_: **Node**
 >
 
-Node 'Mesh Island' (GeometryNodeInputMeshIsland)
-
+[Mesh Island](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshIsland.html#bpy.types.GeometryNodeInputMeshIsland)
 [!Node] Mesh Island
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-mesh.md#mesh) :black_small_square: [Content](geono-mesh.md#content) :black_small_square: [Properties](geono-mesh.md#properties)</sub>
@@ -54,8 +53,7 @@ Node 'Mesh Island' (GeometryNodeInputMeshIsland)
 > _type_: **Integer**
 >
 
-Node 'Mesh Island' (GeometryNodeInputMeshIsland)
-
+[Mesh Island](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshIsland.html#bpy.types.GeometryNodeInputMeshIsland)
 [!Node] Mesh Island
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-mesh.md#mesh) :black_small_square: [Content](geono-mesh.md#content) :black_small_square: [Properties](geono-mesh.md#properties)</sub>
@@ -65,8 +63,7 @@ Node 'Mesh Island' (GeometryNodeInputMeshIsland)
 > _type_: **Integer**
 >
 
-Node 'Mesh Island' (GeometryNodeInputMeshIsland)
-
+[Mesh Island](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshIsland.html#bpy.types.GeometryNodeInputMeshIsland)
 [!Node] Mesh Island
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-mesh.md#mesh) :black_small_square: [Content](geono-mesh.md#content) :black_small_square: [Properties](geono-mesh.md#properties)</sub>
@@ -84,8 +81,7 @@ Node 'Mesh Island' (GeometryNodeInputMeshIsland)
 boolean(*meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT', operation='DIFFERENCE')
 ```
 
-Node 'Mesh Boolean' (GeometryNodeMeshBoolean)
-
+[Mesh Boolean](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshBoolean.html#bpy.types.GeometryNodeMeshBoolean)
 [!Node] Mesh Boolean
 
 #### Arguments:
@@ -219,8 +215,7 @@ Constructor Node 'Cylinder' (GeometryNodeMeshCylinder)
 difference(*meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT')
 ```
 
-Node 'Mesh Boolean' (GeometryNodeMeshBoolean)
-
+[Mesh Boolean](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshBoolean.html#bpy.types.GeometryNodeMeshBoolean)
 [!Node] Mesh Boolean
 
 #### Arguments:
@@ -270,9 +265,8 @@ Constructor Node 'Mesh Circle' (GeometryNodeMeshCircle)
 distribute_points_on_faces(density=None, distance_min=None, density_max=None, density_factor=None, seed=None)
 ```
 
-Node 'Distribute Points on Faces' (GeometryNodeDistributePointsOnFaces)
-
-
+[Distribute Points on Faces](https://docs.blender.org/api/current/bpy.types.GeometryNodeDistributePointsOnFaces.html#bpy.types.GeometryNodeDistributePointsOnFaces)
+[Distribute Points on Faces](https://docs.blender.org/api/current/bpy.types.GeometryNodeDistributePointsOnFaces.html#bpy.types.GeometryNodeDistributePointsOnFaces)
 if 'density' argument is not None, 'RANDOM' method is applied, 'POISSON' otherwise
 
 - distribute_method (str): Node.distribute_method in ('RANDOM', 'POISSON')
@@ -301,8 +295,7 @@ if 'density' argument is not None, 'RANDOM' method is applied, 'POISSON' otherwi
 dual(keep_boundaries=None)
 ```
 
-Node 'Dual Mesh' (GeometryNodeDualMesh)
-
+[Dual Mesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeDualMesh.html#bpy.types.GeometryNodeDualMesh)
 [!Node] Dual Mesh
 
 #### Arguments:
@@ -450,8 +443,7 @@ Constructor Node 'Ico Sphere' (GeometryNodeMeshIcoSphere)
 intersect(*meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT')
 ```
 
-Node 'Mesh Boolean' (GeometryNodeMeshBoolean)
-
+[Mesh Boolean](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshBoolean.html#bpy.types.GeometryNodeMeshBoolean)
 [!Node] Mesh Boolean
 
 #### Arguments:
@@ -478,7 +470,7 @@ Line(count=None, start_location=None, offset=None, end_location=None, resolution
 
 Constructor Node 'Mesh Line' (GeometryNodeMeshLine)
 
-
+[Mesh Line](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshLine.html#bpy.types.GeometryNodeMeshLine)
 - count_mode (str): Node.count_mode in ('TOTAL', 'RESOLUTION')
 - mode (str): Node.mode in ('OFFSET', 'END_POINTS')
 
@@ -511,7 +503,7 @@ LineOffset(start_location=None, offset=None, count=None)
 
 Constructor Node 'Mesh Line' (GeometryNodeMeshLine)
 
-
+[Mesh Line](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshLine.html#bpy.types.GeometryNodeMeshLine)
 Line from start to end point
 
 #### Arguments:
@@ -537,7 +529,7 @@ LineTo(start_location=None, end_location=None, count=None, resolution=None)
 
 Constructor Node 'Mesh Line' (GeometryNodeMeshLine)
 
-
+[Mesh Line](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshLine.html#bpy.types.GeometryNodeMeshLine)
 Line from start to end point
 
 #### Arguments:
@@ -562,8 +554,7 @@ Line from start to end point
 pack_uv_islands(uv=None, margin=None, rotate=None)
 ```
 
-Node 'Pack UV Islands' (GeometryNodeUVPackIslands)
-
+[Pack UV Islands](https://docs.blender.org/api/current/bpy.types.GeometryNodeUVPackIslands.html#bpy.types.GeometryNodeUVPackIslands)
 [!Node] Pack UV Islands
 
 #### Arguments:
@@ -611,9 +602,8 @@ Constructor Node 'Grid' (GeometryNodeMeshGrid)
 sample_nearest_surface(value=None, group_id=None, sample_position=None, sample_group_id=None)
 ```
 
-Node 'Sample Nearest Surface' (GeometryNodeSampleNearestSurface)
-
-
+[Sample Nearest Surface](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleNearestSurface.html#bpy.types.GeometryNodeSampleNearestSurface)
+[Sample Nearest Surface](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleNearestSurface.html#bpy.types.GeometryNodeSampleNearestSurface)
 - data_type (str): Node.data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4')
 
 #### Arguments:
@@ -638,8 +628,7 @@ Node 'Sample Nearest Surface' (GeometryNodeSampleNearestSurface)
 sample_uv_surface(value=None, uv_map=None, sample_uv=None)
 ```
 
-Node 'Sample UV Surface' (GeometryNodeSampleUVSurface)
-
+[Sample UV Surface](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleUVSurface.html#bpy.types.GeometryNodeSampleUVSurface)
 [!Node] Sample UV Surface
 
 #### Arguments:
@@ -663,8 +652,7 @@ Node 'Sample UV Surface' (GeometryNodeSampleUVSurface)
 subdivide(level=None)
 ```
 
-Node 'Subdivide Mesh' (GeometryNodeSubdivideMesh)
-
+[Subdivide Mesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeSubdivideMesh.html#bpy.types.GeometryNodeSubdivideMesh)
 [!Node] Subdivide Mesh
 
 #### Arguments:
@@ -686,8 +674,7 @@ Node 'Subdivide Mesh' (GeometryNodeSubdivideMesh)
 subdivision_surface(level=None, edge_crease=None, vertex_crease=None, uv_smooth='PRESERVE_BOUNDARIES', boundary_smooth='ALL')
 ```
 
-Node 'Subdivision Surface' (GeometryNodeSubdivisionSurface)
-
+[Subdivision Surface](https://docs.blender.org/api/current/bpy.types.GeometryNodeSubdivisionSurface.html#bpy.types.GeometryNodeSubdivisionSurface)
 [!Node] Subdivision Surface
 
 #### Arguments:
@@ -713,8 +700,7 @@ Node 'Subdivision Surface' (GeometryNodeSubdivisionSurface)
 to_curve()
 ```
 
-Node 'Mesh to Curve' (GeometryNodeMeshToCurve)
-
+[Mesh to Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToCurve.html#bpy.types.GeometryNodeMeshToCurve)
 [!Node] Mesh to Curve
 
 #### Returns:
@@ -731,9 +717,8 @@ Node 'Mesh to Curve' (GeometryNodeMeshToCurve)
 to_volume(density=None, voxel_amount=None, interior_band_width=None, voxel_size=None, amount=True)
 ```
 
-Node 'Mesh to Volume' (GeometryNodeMeshToVolume)
-
-
+[Mesh to Volume](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToVolume.html#bpy.types.GeometryNodeMeshToVolume)
+[Mesh to Volume](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToVolume.html#bpy.types.GeometryNodeMeshToVolume)
 - resolution_mode (str): Node.resolution_mode in ('VOXEL_AMOUNT', 'VOXEL_SIZE')
 
 #### Arguments:
@@ -759,8 +744,7 @@ Node 'Mesh to Volume' (GeometryNodeMeshToVolume)
 triangulate(minimum_vertices=None, quad_method='SHORTEST_DIAGONAL', ngon_method='BEAUTY')
 ```
 
-Node 'Triangulate' (GeometryNodeTriangulate)
-
+[Triangulate](https://docs.blender.org/api/current/bpy.types.GeometryNodeTriangulate.html#bpy.types.GeometryNodeTriangulate)
 [!Node] Triangulate
 
 #### Arguments:
@@ -784,8 +768,7 @@ Node 'Triangulate' (GeometryNodeTriangulate)
 union(*meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT')
 ```
 
-Node 'Mesh Boolean' (GeometryNodeMeshBoolean)
-
+[Mesh Boolean](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshBoolean.html#bpy.types.GeometryNodeMeshBoolean)
 [!Node] Mesh Boolean
 
 #### Arguments:
@@ -810,8 +793,7 @@ Node 'Mesh Boolean' (GeometryNodeMeshBoolean)
 UVSphere(segments=32, rings=16, radius=1.0)
 ```
 
-Node 'UV Sphere' (GeometryNodeMeshUVSphere)
-
+[UV Sphere](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshUVSphere.html#bpy.types.GeometryNodeMeshUVSphere)
 [!Node] UV Sphere
 
 #### Arguments:
@@ -835,8 +817,7 @@ Node 'UV Sphere' (GeometryNodeMeshUVSphere)
 uv_unwrap(seam=None, margin=None, fill_holes=False, method='ANGLE_BASED')
 ```
 
-Node 'UV Unwrap' (GeometryNodeUVUnwrap)
-
+[UV Unwrap](https://docs.blender.org/api/current/bpy.types.GeometryNodeUVUnwrap.html#bpy.types.GeometryNodeUVUnwrap)
 [!Node] UV Unwrap
 
 #### Arguments:

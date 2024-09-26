@@ -1227,8 +1227,7 @@ Node 'Point Density' (ShaderNodeTexPointDensity)
 position(attribute_type='GEOMETRY')
 ```
 
-Node 'Attribute' (ShaderNodeAttribute)
-- attribute_type in ('GEOMETRY', 'OBJECT', 'INSTANCER', 'VIEW_LAYER')
+[Attribute](https://docs.blender.org/api/current/bpy.types.ShaderNodeAttribute.html#bpy.types.ShaderNodeAttribute)- attribute_type in ('GEOMETRY', 'OBJECT', 'INSTANCER', 'VIEW_LAYER')
 
 #### Arguments:
 - **attribute_type** ( = GEOMETRY)
@@ -1554,8 +1553,7 @@ Node 'Shader to RGB' (ShaderNodeShaderToRGB)
 sharp_face(attribute_type='GEOMETRY')
 ```
 
-Node 'Attribute' (ShaderNodeAttribute)
-- attribute_type in ('GEOMETRY', 'OBJECT', 'INSTANCER', 'VIEW_LAYER')
+[Attribute](https://docs.blender.org/api/current/bpy.types.ShaderNodeAttribute.html#bpy.types.ShaderNodeAttribute)- attribute_type in ('GEOMETRY', 'OBJECT', 'INSTANCER', 'VIEW_LAYER')
 
 #### Arguments:
 - **attribute_type** ( = GEOMETRY)
@@ -1821,8 +1819,7 @@ Node 'UV Along Stroke' (ShaderNodeUVAlongStroke)
 uvmap(attribute_type='GEOMETRY')
 ```
 
-Node 'Attribute' (ShaderNodeAttribute)
-- attribute_type in ('GEOMETRY', 'OBJECT', 'INSTANCER', 'VIEW_LAYER')
+[Attribute](https://docs.blender.org/api/current/bpy.types.ShaderNodeAttribute.html#bpy.types.ShaderNodeAttribute)- attribute_type in ('GEOMETRY', 'OBJECT', 'INSTANCER', 'VIEW_LAYER')
 
 #### Arguments:
 - **attribute_type** ( = GEOMETRY)

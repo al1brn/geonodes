@@ -43,8 +43,7 @@ When a Group Input socket is created, default name 'Geometry' is used if name ar
 FromCurve(curve, count=None, length=None, mode='COUNT')
 ```
 
-Node 'Curve to Points' (GeometryNodeCurveToPoints)
-
+[Curve to Points](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveToPoints.html#bpy.types.GeometryNodeCurveToPoints)
 [!Node] Curve to Points
 
 #### Arguments:
@@ -69,8 +68,7 @@ Node 'Curve to Points' (GeometryNodeCurveToPoints)
 FromInstances(instances, position=None, radius=None)
 ```
 
-Node 'Instances to Points' (GeometryNodeInstancesToPoints)
-
+[Instances to Points](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstancesToPoints.html#bpy.types.GeometryNodeInstancesToPoints)
 [!Node] Instances to Points
 
 #### Arguments:
@@ -94,8 +92,7 @@ Node 'Instances to Points' (GeometryNodeInstancesToPoints)
 FromMesh(mesh, position=None, radius=None, mode='POINTS')
 ```
 
-Node 'Mesh to Points' (GeometryNodeMeshToPoints)
-
+[Mesh to Points](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToPoints.html#bpy.types.GeometryNodeMeshToPoints)
 [!Node] Mesh to Points
 
 #### Arguments:
@@ -120,8 +117,7 @@ Node 'Mesh to Points' (GeometryNodeMeshToPoints)
 Points(count=1, position=None, radius=None)
 ```
 
-Node 'Points' (GeometryNodePoints)
-
+[Points](https://docs.blender.org/api/current/bpy.types.GeometryNodePoints.html#bpy.types.GeometryNodePoints)
 [!Node] Points
 
 #### Arguments:
@@ -145,8 +141,7 @@ Node 'Points' (GeometryNodePoints)
 to_curves(curve_group_id=None, weight=None)
 ```
 
-Node 'Points to Curves' (GeometryNodePointsToCurves)
-
+[Points to Curves](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToCurves.html#bpy.types.GeometryNodePointsToCurves)
 [!Node] Points to Curves
 
 #### Arguments:
@@ -169,8 +164,7 @@ Node 'Points to Curves' (GeometryNodePointsToCurves)
 to_vertices()
 ```
 
-Node 'Points to Vertices' (GeometryNodePointsToVertices)
-
+[Points to Vertices](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToVertices.html#bpy.types.GeometryNodePointsToVertices)
 [!Node] Points to Vertices
 
 #### Returns:
@@ -187,8 +181,7 @@ Node 'Points to Vertices' (GeometryNodePointsToVertices)
 to_volume(density=None, voxel_size=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_AMOUNT')
 ```
 
-Node 'Points to Volume' (GeometryNodePointsToVolume)
-
+[Points to Volume](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToVolume.html#bpy.types.GeometryNodePointsToVolume)
 [!Node] Points to Volume
 
 #### Arguments:

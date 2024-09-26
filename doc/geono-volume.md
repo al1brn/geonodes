@@ -46,8 +46,7 @@ When a Group Input socket is created, default name 'Geometry' is used if name ar
 Cube(density=None, background=None, min=None, max=None, resolution_x=None, resolution_y=None, resolution_z=None)
 ```
 
-Node 'Volume Cube' (GeometryNodeVolumeCube)
-
+[Volume Cube](https://docs.blender.org/api/current/bpy.types.GeometryNodeVolumeCube.html#bpy.types.GeometryNodeVolumeCube)
 [!Node] Volume Cube
 
 #### Arguments:
@@ -75,8 +74,7 @@ Node 'Volume Cube' (GeometryNodeVolumeCube)
 distribute_grid(spacing=None, threshold=None)
 ```
 
-Node 'Distribute Points in Volume' (GeometryNodeDistributePointsInVolume)
-
+[Distribute Points in Volume](https://docs.blender.org/api/current/bpy.types.GeometryNodeDistributePointsInVolume.html#bpy.types.GeometryNodeDistributePointsInVolume)
 [!Node] Distribute Points in Volume
 
 #### Arguments:
@@ -99,8 +97,7 @@ Node 'Distribute Points in Volume' (GeometryNodeDistributePointsInVolume)
 distribute_points(density=None, seed=None, spacing=None, threshold=None, mode='DENSITY_RANDOM')
 ```
 
-Node 'Distribute Points in Volume' (GeometryNodeDistributePointsInVolume)
-
+[Distribute Points in Volume](https://docs.blender.org/api/current/bpy.types.GeometryNodeDistributePointsInVolume.html#bpy.types.GeometryNodeDistributePointsInVolume)
 [!Node] Distribute Points in Volume
 
 #### Arguments:
@@ -126,8 +123,7 @@ Node 'Distribute Points in Volume' (GeometryNodeDistributePointsInVolume)
 distribute_random(density=None, seed=None)
 ```
 
-Node 'Distribute Points in Volume' (GeometryNodeDistributePointsInVolume)
-
+[Distribute Points in Volume](https://docs.blender.org/api/current/bpy.types.GeometryNodeDistributePointsInVolume.html#bpy.types.GeometryNodeDistributePointsInVolume)
 [!Node] Distribute Points in Volume
 
 #### Arguments:
@@ -150,8 +146,7 @@ Node 'Distribute Points in Volume' (GeometryNodeDistributePointsInVolume)
 FromMesh(mesh, density=None, voxel_amount=None, interior_band_width=None, voxel_size=None, amount=True)
 ```
 
-Node 'Mesh to Volume' (GeometryNodeMeshToVolume)
-
+[Mesh to Volume](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToVolume.html#bpy.types.GeometryNodeMeshToVolume)
 [!Node] Mesh to Volume
 
 #### Arguments:
@@ -178,8 +173,7 @@ Node 'Mesh to Volume' (GeometryNodeMeshToVolume)
 FromPoints(points, density=None, voxel_size=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_AMOUNT')
 ```
 
-Node 'Points to Volume' (GeometryNodePointsToVolume)
-
+[Points to Volume](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToVolume.html#bpy.types.GeometryNodePointsToVolume)
 [!Node] Points to Volume
 
 #### Arguments:
@@ -206,8 +200,7 @@ Node 'Points to Volume' (GeometryNodePointsToVolume)
 to_mesh(voxel_size=None, voxel_amount=None, threshold=None, adaptivity=None, resolution_mode='GRID')
 ```
 
-Node 'Volume to Mesh' (GeometryNodeVolumeToMesh)
-
+[Volume to Mesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeVolumeToMesh.html#bpy.types.GeometryNodeVolumeToMesh)
 [!Node] Volume to Mesh
 
 #### Arguments:
@@ -233,8 +226,7 @@ Node 'Volume to Mesh' (GeometryNodeVolumeToMesh)
 to_mesh_amount(voxel_amount=None, threshold=None, adaptivity=None)
 ```
 
-Node 'Volume to Mesh' (GeometryNodeVolumeToMesh)
-
+[Volume to Mesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeVolumeToMesh.html#bpy.types.GeometryNodeVolumeToMesh)
 [!Node] Volume to Mesh
 
 #### Arguments:
@@ -258,8 +250,7 @@ Node 'Volume to Mesh' (GeometryNodeVolumeToMesh)
 to_mesh_grid(threshold=None, adaptivity=None)
 ```
 
-Node 'Volume to Mesh' (GeometryNodeVolumeToMesh)
-
+[Volume to Mesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeVolumeToMesh.html#bpy.types.GeometryNodeVolumeToMesh)
 [!Node] Volume to Mesh
 
 #### Arguments:
@@ -282,8 +273,7 @@ Node 'Volume to Mesh' (GeometryNodeVolumeToMesh)
 to_mesh_size(voxel_size=None, threshold=None, adaptivity=None)
 ```
 
-Node 'Volume to Mesh' (GeometryNodeVolumeToMesh)
-
+[Volume to Mesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeVolumeToMesh.html#bpy.types.GeometryNodeVolumeToMesh)
 [!Node] Volume to Mesh
 
 #### Arguments:
