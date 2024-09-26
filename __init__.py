@@ -1,7 +1,7 @@
 """ Scripting nodes
 
 Scripting nodes starts by instantianting a <!Tree>, either a <!GeoNodes"Geometry nodes tree> or
-a <!ShaderNode"Shader nodes tree>:
+a <!ShaderNodes"Shader nodes tree>:
     
 ``` python
 with GeoNodes("Geometry Nodes"):
