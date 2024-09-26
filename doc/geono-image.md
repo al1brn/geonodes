@@ -35,7 +35,7 @@ Class Image data socket
 Info(image=None, frame=None)
 ```
 
-[Image Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene/image_info.html)
+> Node : [Image Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene/image_info.html)
 
 #### Arguments:
 - **image** (_Image_ = None) : socket 'Image' (Image)
@@ -57,7 +57,7 @@ Info(image=None, frame=None)
 info(frame=None)
 ```
 
-[Image Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene/image_info.html)
+> Node : [Image Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene/image_info.html)
 
 #### Arguments:
 - **frame** (_Integer_ = None) : socket 'Frame' (Frame)

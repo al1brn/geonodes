@@ -40,7 +40,7 @@ A group input socket of type String is created if the name is not None.
 > _type_: **Node**
 >
 
-[String Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/string_length.html)
+> Node : [String Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/string_length.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [String](geono-string.md#string) :black_small_square: [Content](geono-string.md#content) :black_small_square: [Properties](geono-string.md#properties)</sub>
 
@@ -57,7 +57,7 @@ A group input socket of type String is created if the name is not None.
 equal(other)
 ```
 
-[Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+> Node : [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
 Node compare with data_type = 'STRING' and operation = 'EQUAL'
 
@@ -80,7 +80,7 @@ Node compare with data_type = 'STRING' and operation = 'EQUAL'
 FromValue(value, decimals=0)
 ```
 
-[Value to String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/value_to_string.html)
+> Node : [Value to String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/value_to_string.html)
 
 #### Arguments:
 - **value** (_Float_) : socket 'Value' (Value)
@@ -102,7 +102,7 @@ FromValue(value, decimals=0)
 Join(*strings, delimiter=None)
 ```
 
-[Join Strings](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/join_strings.html)
+> Node : [Join Strings](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/join_strings.html)
 
 #### Arguments:
 - **strings** (_String_) : socket 'Strings' (Strings)
@@ -124,7 +124,7 @@ Join(*strings, delimiter=None)
 join(*strings)
 ```
 
-[Join Strings](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/join_strings.html)
+> Node : [Join Strings](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/join_strings.html)
 
 #### Arguments:
 - **strings** (_String_) : socket 'Strings' (Strings)
@@ -145,7 +145,7 @@ join(*strings)
 not_equal(other)
 ```
 
-[Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+> Node : [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
 Node compare with data_type = 'STRING' and operation = 'NOT_EQUAL'
 
@@ -168,7 +168,7 @@ Node compare with data_type = 'STRING' and operation = 'NOT_EQUAL'
 replace(find=None, replace=None)
 ```
 
-[Replace String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/replace_string.html)
+> Node : [Replace String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/replace_string.html)
 
 #### Arguments:
 - **find** (_String_ = None) : socket 'Find' (Find)
@@ -190,7 +190,7 @@ replace(find=None, replace=None)
 slice(position=0, length=10)
 ```
 
-[Slice String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/slice_string.html)
+> Node : [Slice String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/slice_string.html)
 
 #### Arguments:
 - **position** (_Integer_ = 0) : socket 'Position' (Position)
@@ -212,7 +212,7 @@ slice(position=0, length=10)
 to_curves(size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, text_box_height=None, overflow='OVERFLOW', align_x='LEFT', align_y='TOP_BASELINE', pivot_mode='BOTTOM_LEFT', font=None)
 ```
 
-[String to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/string_to_curves.html)
+> Node : [String to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/string_to_curves.html)
 
 #### Arguments:
 - **size** (_Float_ = None) : socket 'Size' (Size)

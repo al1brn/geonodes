@@ -8,11 +8,11 @@ Color(value=(0.0, 0.0, 0.0, 1.0), name=None, tip=None)
 
 Socket of type COLOR (RGBA)
 
-[RGB](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/input/rgb.html)
+> Node : [RGB](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/input/rgb.html)
 
-[Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/combine_color.html)
+> Node : [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/combine_color.html)
 
-[Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/constant/color.html)
+> Node : [Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/constant/color.html)
 
 #### Arguments:
 - **value** (_tuple or Socket_ = (0.0, 0.0, 0.0, 1.0)) : initial value
@@ -55,7 +55,7 @@ Socket of type COLOR (RGBA)
 
 Alpha component
 
-[Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
+> Node : [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Properties](geono-color.md#properties)</sub>
 
@@ -66,7 +66,7 @@ Alpha component
 
 Blue component
 
-[Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
+> Node : [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Properties](geono-color.md#properties)</sub>
 
@@ -77,7 +77,7 @@ Blue component
 
 Green component
 
-[Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
+> Node : [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Properties](geono-color.md#properties)</sub>
 
@@ -88,7 +88,7 @@ Green component
 
 Hue component
 
-[Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
+> Node : [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Properties](geono-color.md#properties)</sub>
 
@@ -99,7 +99,7 @@ Hue component
 
 Lightness component
 
-[Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
+> Node : [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Properties](geono-color.md#properties)</sub>
 
@@ -110,7 +110,7 @@ Lightness component
 
 Red component
 
-[Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
+> Node : [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Properties](geono-color.md#properties)</sub>
 
@@ -121,7 +121,7 @@ Red component
 
 Saturation component
 
-[Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
+> Node : [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Properties](geono-color.md#properties)</sub>
 
@@ -132,7 +132,7 @@ Saturation component
 
 Conversion to black and white.
 
-[RGB to BW](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/rgb_to_bw.html)
+> Node : [RGB to BW](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/rgb_to_bw.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Properties](geono-color.md#properties)</sub>
 
@@ -143,7 +143,7 @@ Conversion to black and white.
 
 Value component
 
-[Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
+> Node : [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Properties](geono-color.md#properties)</sub>
 
@@ -162,7 +162,7 @@ add(factor=None, other=None, clamp_result=False, clamp_factor=True)
 
 Mix with another color : ADD
 
-[Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+> Node : [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -188,7 +188,7 @@ ambient_occlusion(distance=None, normal=None, inside=False, only_local=False, sa
 
 Shader node Ambient Occlusion.
 
-[Color Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/input/vertex_color.html)
+> Node : [Color Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/input/vertex_color.html)
 
 #### Arguments:
 - **distance** (_Float_ = None) : socket
@@ -215,7 +215,7 @@ Attribute(name)
 
 Shader node Color Attribute.
 
-[Color Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/input/vertex_color.html)
+> Node : [Color Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/input/vertex_color.html)
 
 #### Arguments:
 - **name** (_str_)
@@ -238,7 +238,7 @@ Blackbody(temperature=None)
 
 Constructor : Black body.
 
-[Blackbody](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/color/blackbody.html)
+> Node : [Blackbody](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/color/blackbody.html)
 
 #### Arguments:
 - **temperature** (_Float_ = None) : socket
@@ -261,7 +261,7 @@ brighter(other)
 
 Compare with another Color : BRIGHTER
 
-[Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+> Node : [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
 #### Arguments:
 - **other** (_Color_) : socket
@@ -284,7 +284,7 @@ brightness_contrast(bright=None, contrast=None)
 
 Brightness and contrast.
 
-[Brightness/Contrast](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/color/bright_contrast.html)
+> Node : [Brightness/Contrast](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/color/bright_contrast.html)
 
 #### Arguments:
 - **bright** (_Float_ = None) : socket
@@ -308,7 +308,7 @@ burn(factor=None, other=None, clamp_result=False, clamp_factor=True)
 
 Mix with another color : BURN
 
-[Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+> Node : [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -334,7 +334,7 @@ ColorRamp(fac=None, keep=None)
 
 Constructor : Color Ramp
 
-[Color Ramp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/color_ramp.html)
+> Node : [Color Ramp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/color_ramp.html)
 
 #### Arguments:
 - **fac** (_Float_ = None)
@@ -358,7 +358,7 @@ Combine(a=0, b=0, c=0, alpha=1, mode='RGB')
 
 Constructor : Combine Color
 
-[Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/combine_color.html)
+> Node : [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/combine_color.html)
 
 #### Arguments:
 - **a** (_Float_ = 0) : depending on mode
@@ -385,7 +385,7 @@ CombineHSL(hue=0, saturation=0, lightness=0, alpha=1)
 
 Constructor : Combine Color from HSL
 
-[Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/combine_color.html)
+> Node : [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/combine_color.html)
 
 #### Arguments:
 - **hue** (_Float_ = 0)
@@ -411,7 +411,7 @@ CombineHSV(hue=0, saturation=0, value=0, alpha=1)
 
 Constructor : Combine Color from HSV
 
-[Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/combine_color.html)
+> Node : [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/combine_color.html)
 
 #### Arguments:
 - **hue** (_Float_ = 0)
@@ -437,7 +437,7 @@ CombineRGB(red=0, green=0, blue=0, alpha=1)
 
 Constructor : Combine Color from RGB
 
-[Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/combine_color.html)
+> Node : [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/combine_color.html)
 
 #### Arguments:
 - **red** (_Float_ = 0)
@@ -463,7 +463,7 @@ curves(fac=None, keep=None)
 
 Color curves.
 
-[RGB Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/rgb_curves.html)
+> Node : [RGB Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/rgb_curves.html)
 
 #### Arguments:
 - **fac** (_Float_ = None) : socket
@@ -487,7 +487,7 @@ darken(factor=None, other=None, clamp_result=False, clamp_factor=True)
 
 Mix with another color : DARKEN
 
-[Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+> Node : [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -513,7 +513,7 @@ darker(other)
 
 Compare with another Color : DARKER
 
-[Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+> Node : [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
 #### Arguments:
 - **other** (_Color_) : socket
@@ -536,7 +536,7 @@ difference(factor=None, other=None, clamp_result=False, clamp_factor=True)
 
 Mix with another color : DIFFERENCE
 
-[Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+> Node : [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -562,7 +562,7 @@ divide(factor=None, other=None, clamp_result=False, clamp_factor=True)
 
 Mix with another color : DIVIDE
 
-[Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+> Node : [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -588,7 +588,7 @@ dodge(factor=None, other=None, clamp_result=False, clamp_factor=True)
 
 Mix with another color : DODGE
 
-[Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+> Node : [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -614,7 +614,7 @@ equal(other, epsilon=None)
 
 Compare with another Color : EQUAL
 
-[Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+> Node : [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
 #### Arguments:
 - **other** (_Color_) : socket
@@ -638,7 +638,7 @@ exclusion(factor=None, other=None, clamp_result=False, clamp_factor=True)
 
 Mix with another color : EXCLUSION
 
-[Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+> Node : [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -687,7 +687,7 @@ gamma(gamma=None)
 
 Gamma.
 
-[Gamma](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/color/gamma.html)
+> Node : [Gamma](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/color/gamma.html)
 
 #### Arguments:
 - **gamma** (_Float_ = None) : socket
@@ -710,7 +710,7 @@ hue_saturation_value(hue=None, saturation=None, value=None, fac=None)
 
 Hue / saturation / value.
 
-[Hue/Saturation/Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/hue_saturation.html)
+> Node : [Hue/Saturation/Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/hue_saturation.html)
 
 #### Arguments:
 - **hue** (_Float_ = None) : socket
@@ -736,7 +736,7 @@ invert(fac=None)
 
 Invert.
 
-[Invert Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/invert_color.html)
+> Node : [Invert Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/invert_color.html)
 
 #### Arguments:
 - **fac** (_Float_ = None) : socket
@@ -759,7 +759,7 @@ lighten(factor=None, other=None, clamp_result=False, clamp_factor=True)
 
 Mix with another color : LIGHTEN
 
-[Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+> Node : [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -785,7 +785,7 @@ linear_light(factor=None, other=None, clamp_result=False, clamp_factor=True)
 
 Mix with another color : LINEAR LIGHT
 
-[Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+> Node : [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -811,7 +811,7 @@ mix(factor=None, other=None, clamp_result=False, clamp_factor=True, blend_type='
 
 Mix with another color
 
-[Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+> Node : [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -838,7 +838,7 @@ mix_color(factor=None, other=None, clamp_result=False, clamp_factor=True)
 
 Mix with another color : COLOR
 
-[Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+> Node : [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -864,7 +864,7 @@ mix_hue(factor=None, other=None, clamp_result=False, clamp_factor=True)
 
 Mix with another color : HUE
 
-[Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+> Node : [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -890,7 +890,7 @@ mix_saturation(factor=None, other=None, clamp_result=False, clamp_factor=True)
 
 Mix with another color : SATURATION
 
-[Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+> Node : [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -916,7 +916,7 @@ mix_value(factor=None, other=None, clamp_result=False, clamp_factor=True)
 
 Mix with another color : VALUE
 
-[Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+> Node : [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -942,7 +942,7 @@ multiply(factor=None, other=None, clamp_result=False, clamp_factor=True)
 
 Mix with another color : MULTIPLY
 
-[Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+> Node : [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -968,7 +968,7 @@ normal_map(strength=None, space='TANGENT', uv_map='')
 
 Normal map.
 
-[Normal Map](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/vector/normal_map.html)
+> Node : [Normal Map](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/vector/normal_map.html)
 
 #### Arguments:
 - **strength** (_Float_ = None) : socket
@@ -993,7 +993,7 @@ not_equal(other, epsilon=None)
 
 Compare with another Color : NOT EQUAL
 
-[Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+> Node : [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
 #### Arguments:
 - **other** (_Color_) : socket
@@ -1017,7 +1017,7 @@ overlay(factor=None, other=None, clamp_result=False, clamp_factor=True)
 
 Mix with another color : OVERLAY
 
-[Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+> Node : [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -1043,7 +1043,7 @@ screen(factor=None, other=None, clamp_result=False, clamp_factor=True)
 
 Mix with another color : SCREEN
 
-[Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+> Node : [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -1069,7 +1069,7 @@ soft_light(factor=None, other=None, clamp_result=False, clamp_factor=True)
 
 Mix with another color : SOFT LIGHT
 
-[Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+> Node : [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -1095,7 +1095,7 @@ subtract(factor=None, other=None, clamp_result=False, clamp_factor=True)
 
 Mix with another color : SUBTRACT
 
-[Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+> Node : [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket
@@ -1121,7 +1121,7 @@ vector_displacement(midlevel=None, scale=None, space='TANGENT')
 
 Normal map.
 
-[Normal Map](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/vector/normal_map.html)
+> Node : [Normal Map](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/vector/normal_map.html)
 
 #### Arguments:
 - **midlevel** (_Float_ = None) : socket
@@ -1146,7 +1146,7 @@ Wavelength(wavelength=None)
 
 Constructor : Wave Length.
 
-[Wavelength](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/converter/wavelength.html)
+> Node : [Wavelength](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/converter/wavelength.html)
 
 #### Arguments:
 - **wavelength** (_Float_ = None) : socket

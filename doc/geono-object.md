@@ -70,7 +70,7 @@ Parameters
 info(as_instance=None, original=True)
 ```
 
-[Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene/object_info.html)
+> Node : [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene/object_info.html)
 
 #### Arguments:
 - **as_instance** (_Boolean_ = None) : socket 'As Instance' (As Instance)
