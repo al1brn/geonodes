@@ -44,9 +44,9 @@ When a Group Input socket is created, default name 'Geometry' is used if name ar
 FromGeometry(*geometries)
 ```
 
-ERROR: Node 'Geometry to Instance' not found
+[Geometry to Instance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_to_instance.html)
 
-ERROR: Node 'Geometry to Instance' not found
+[Geometry to Instance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_to_instance.html)
 
 #### Arguments:
 - **geometries** (_Geometry_) : socket 'Geometry' (Geometry)
@@ -67,9 +67,9 @@ ERROR: Node 'Geometry to Instance' not found
 FromString(string=None, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, text_box_height=None, overflow='OVERFLOW', align_x='LEFT', align_y='TOP_BASELINE', pivot_mode='BOTTOM_LEFT')
 ```
 
-ERROR: Node 'String to Curves' not found
+[String to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/string_to_curves.html)
 
-ERROR: Node 'String to Curves' not found
+[String to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/string_to_curves.html)
 
 #### Arguments:
 - **string** (_String_ = None) : socket 'String' (String)
@@ -100,9 +100,9 @@ ERROR: Node 'String to Curves' not found
 on_points(points, pick_instance=None, instance_index=None, rotation=None, scale=None)
 ```
 
-ERROR: Node 'Instance on Points' not found
+[Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html)
 
-ERROR: Node 'Instance on Points' not found
+[Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html)
 
 #### Arguments:
 - **points**
@@ -127,9 +127,9 @@ ERROR: Node 'Instance on Points' not found
 realize(realize_all=None, depth=None)
 ```
 
-ERROR: Node 'Realize Instances' not found
+[Realize Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/realize_instances.html)
 
-ERROR: Node 'Realize Instances' not found
+[Realize Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/realize_instances.html)
 
 #### Arguments:
 - **realize_all** (_Boolean_ = None) : socket 'Realize All' (Realize All)
@@ -151,9 +151,9 @@ ERROR: Node 'Realize Instances' not found
 rotate(rotation=None, pivot_point=None, local_space=None)
 ```
 
-ERROR: Node 'Rotate Instances' not found
+[Rotate Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/rotate_instances.html)
 
-ERROR: Node 'Rotate Instances' not found
+[Rotate Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/rotate_instances.html)
 
 #### Arguments:
 - **rotation** (_Rotation_ = None) : socket 'Rotation' (Rotation)
@@ -176,9 +176,9 @@ ERROR: Node 'Rotate Instances' not found
 scale(scale=None, center=None, local_space=None)
 ```
 
-ERROR: Node 'Scale Instances' not found
+[Scale Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/scale_instances.html)
 
-ERROR: Node 'Scale Instances' not found
+[Scale Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/scale_instances.html)
 
 #### Arguments:
 - **scale** (_Vector_ = None) : socket 'Scale' (Scale)
@@ -201,9 +201,9 @@ ERROR: Node 'Scale Instances' not found
 to_points(position=None, radius=None)
 ```
 
-ERROR: Node 'Instances to Points' not found
+[Instances to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instances_to_points.html)
 
-ERROR: Node 'Instances to Points' not found
+[Instances to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instances_to_points.html)
 
 #### Arguments:
 - **position** (_Vector_ = None) : socket 'Position' (Position)
@@ -225,9 +225,9 @@ ERROR: Node 'Instances to Points' not found
 translate(translation=None, local_space=None)
 ```
 
-ERROR: Node 'Translate Instances' not found
+[Translate Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/translate_instances.html)
 
-ERROR: Node 'Translate Instances' not found
+[Translate Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/translate_instances.html)
 
 #### Arguments:
 - **translation** (_Vector_ = None) : socket 'Translation' (Translation)

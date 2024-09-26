@@ -48,9 +48,9 @@ matrix = Matrix([[0, 1, 0, 0], [1, 0, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]]) # Node
 Named(name)
 ```
 
-ERROR: Node 'Named Attribute' not found
+[Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
-ERROR: Node 'Named Attribute' not found
+[Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
 'Named' is a synonym of 'NamedAttribute'
 
@@ -90,9 +90,9 @@ with GeoNodes("Named Attributes"):
 NamedAttribute(name)
 ```
 
-ERROR: Node 'Named Attribute' not found
+[Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
-ERROR: Node 'Named Attribute' not found
+[Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
 'Named' is a synonym of 'NamedAttribute'
 

@@ -8,7 +8,7 @@ Group(group_name, sockets={}, **kwargs)
 
 Node Group
 
-[Group](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/groups.html)
+ERROR: Node 'Group' not found
 
 Create a node 'Group' with the tree provided with 'group_name' argument.
 
@@ -72,7 +72,7 @@ Prefix(prefix, group_name, sockets={}, **kwargs)
 
 Call a Group with a prefixed named.
 
-[Group](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/groups.html)
+ERROR: Node 'Group' not found
 
 Using a prefix for groups of the same type can be usefull in big projects with
 a lot of groups.

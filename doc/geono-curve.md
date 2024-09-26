@@ -47,9 +47,9 @@ When a Group Input socket is created, default name 'Geometry' is used if name ar
 > _type_: **Float**
 >
 
-ERROR: Node 'Curve Length' not found
+[Curve Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/curve_length.html)
 
-ERROR: Node 'Curve Length' not found
+[Curve Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/curve_length.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-curve.md#curve) :black_small_square: [Content](geono-curve.md#content) :black_small_square: [Properties](geono-curve.md#properties)</sub>
 
@@ -58,9 +58,9 @@ ERROR: Node 'Curve Length' not found
 > _type_: **Float**
 >
 
-ERROR: Node 'Radius' not found
+[Radius](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/radius.html)
 
-ERROR: Node 'Radius' not found
+[Radius](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/radius.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-curve.md#curve) :black_small_square: [Content](geono-curve.md#content) :black_small_square: [Properties](geono-curve.md#properties)</sub>
 
@@ -69,9 +69,9 @@ ERROR: Node 'Radius' not found
 > _type_: **Float**
 >
 
-ERROR: Node 'Curve Tilt' not found
+[Curve Tilt](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/curve_tilt.html)
 
-ERROR: Node 'Curve Tilt' not found
+[Curve Tilt](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/curve_tilt.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-curve.md#curve) :black_small_square: [Content](geono-curve.md#content) :black_small_square: [Properties](geono-curve.md#properties)</sub>
 
@@ -88,9 +88,9 @@ ERROR: Node 'Curve Tilt' not found
 Arc(resolution=None, radius=None, start_angle=None, sweep_angle=None, start=None, middle=None, end=None, offset_angle=None, connect_center=None, invert_arc=None)
 ```
 
-ERROR: Node 'Arc' not found
+[Arc](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/arc.html)
 
-ERROR: Node 'Arc' not found
+[Arc](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/arc.html)
 
 'mode' is set to 'POINTS' if one in (start, middle, end, offset_angle) is not None, 'RADIUS' otherwise.
 
@@ -152,9 +152,9 @@ ERROR: Node 'Bézier Segment' not found
 Circle(resolution=None, radius=None, point_1=None, point_2=None, point_3=None)
 ```
 
-ERROR: Node 'Curve Circle' not found
+[Curve Circle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/curve_circle.html)
 
-ERROR: Node 'Curve Circle' not found
+[Curve Circle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/curve_circle.html)
 
 'mode' is set to 'POINTS' if one in (point_1, point_2, point_) is not None, 'RADIUS' otherwise
 
@@ -183,9 +183,9 @@ ERROR: Node 'Curve Circle' not found
 curve_of_point(point_index=None)
 ```
 
-ERROR: Node 'Curve of Point' not found
+[Curve of Point](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/topology/curve_of_point.html)
 
-ERROR: Node 'Curve of Point' not found
+[Curve of Point](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/topology/curve_of_point.html)
 
 #### Arguments:
 - **point_index** (_Integer_ = None) : socket 'Point Index' (Point Index)
@@ -206,9 +206,9 @@ ERROR: Node 'Curve of Point' not found
 deform_on_surface()
 ```
 
-ERROR: Node 'Deform Curves on Surface' not found
+[Deform Curves on Surface](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/deform_curves_on_surface.html)
 
-ERROR: Node 'Deform Curves on Surface' not found
+[Deform Curves on Surface](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/deform_curves_on_surface.html)
 
 #### Returns:
 - **Curve** :
@@ -224,9 +224,9 @@ ERROR: Node 'Deform Curves on Surface' not found
 endpoint_selection(start_size=None, end_size=None)
 ```
 
-ERROR: Node 'Endpoint Selection' not found
+[Endpoint Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/endpoint_selection.html)
 
-ERROR: Node 'Endpoint Selection' not found
+[Endpoint Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/endpoint_selection.html)
 
 #### Arguments:
 - **start_size** (_Integer_ = None) : socket 'Start Size' (Start Size)
@@ -248,9 +248,9 @@ ERROR: Node 'Endpoint Selection' not found
 fill(group_id=None, mode='TRIANGLES')
 ```
 
-ERROR: Node 'Fill Curve' not found
+[Fill Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/fill_curve.html)
 
-ERROR: Node 'Fill Curve' not found
+[Fill Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/fill_curve.html)
 
 #### Arguments:
 - **group_id** (_Integer_ = None) : socket 'Group ID' (Group ID)
@@ -272,9 +272,9 @@ ERROR: Node 'Fill Curve' not found
 fillet(radius=None, limit_radius=None, count=None, mode='BEZIER')
 ```
 
-ERROR: Node 'Fillet Curve' not found
+[Fillet Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/fillet_curve.html)
 
-ERROR: Node 'Fillet Curve' not found
+[Fillet Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/fillet_curve.html)
 
 #### Arguments:
 - **radius** (_Float_ = None) : socket 'Radius' (Radius)
@@ -298,9 +298,9 @@ ERROR: Node 'Fillet Curve' not found
 FromEdgePaths(mesh, next_vertex_index=None)
 ```
 
-ERROR: Node 'Edge Paths to Curves' not found
+[Edge Paths to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/edge_paths_to_curves.html)
 
-ERROR: Node 'Edge Paths to Curves' not found
+[Edge Paths to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/edge_paths_to_curves.html)
 
 #### Arguments:
 - **mesh** (_Geometry_) : socket 'Mesh' (Mesh)
@@ -322,9 +322,9 @@ ERROR: Node 'Edge Paths to Curves' not found
 FromMesh(mesh)
 ```
 
-ERROR: Node 'Mesh to Curve' not found
+[Mesh to Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_curve.html)
 
-ERROR: Node 'Mesh to Curve' not found
+[Mesh to Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_curve.html)
 
 #### Arguments:
 - **mesh** (_Geometry_) : socket 'Mesh' (Mesh)
@@ -345,9 +345,9 @@ ERROR: Node 'Mesh to Curve' not found
 FromPoints(points, curve_group_id=None, weight=None)
 ```
 
-ERROR: Node 'Points to Curves' not found
+[Points to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points_to_curves.html)
 
-ERROR: Node 'Points to Curves' not found
+[Points to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points_to_curves.html)
 
 #### Arguments:
 - **points** (_Geometry_) : socket 'Points' (Points)
@@ -370,9 +370,9 @@ ERROR: Node 'Points to Curves' not found
 interpolate(guide_up=None, guide_group_id=None, points=None, point_up=None, point_group_id=None, max_neighbors=None)
 ```
 
-ERROR: Node 'Interpolate Curves' not found
+[Interpolate Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/interpolate_curves.html)
 
-ERROR: Node 'Interpolate Curves' not found
+[Interpolate Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/interpolate_curves.html)
 
 #### Arguments:
 - **guide_up** (_Vector_ = None) : socket 'Guide Up' (Guide Up)
@@ -398,9 +398,9 @@ ERROR: Node 'Interpolate Curves' not found
 Kite(width=None, bottom_height=None, top_height=None)
 ```
 
-ERROR: Node 'Quadrilateral' not found
+[Quadrilateral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/quadrilateral.html)
 
-ERROR: Node 'Quadrilateral' not found
+[Quadrilateral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/quadrilateral.html)
 
 #### Arguments:
 - **width** (_Float_ = None) : socket 'Width' (Width)
@@ -423,9 +423,9 @@ ERROR: Node 'Quadrilateral' not found
 Line(start=None, end=None, direction=None, length=None)
 ```
 
-ERROR: Node 'Curve Line' not found
+[Curve Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/curve_line.html)
 
-ERROR: Node 'Curve Line' not found
+[Curve Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/curve_line.html)
 
 'mode' is set to 'DIRECTION' if one in (direction, length) is not None, 'POINTS' otherwise.
 
@@ -453,9 +453,9 @@ ERROR: Node 'Curve Line' not found
 offset_point_in_curve(point_index=None, offset=None)
 ```
 
-ERROR: Node 'Offset Point in Curve' not found
+[Offset Point in Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/topology/offset_point_in_curve.html)
 
-ERROR: Node 'Offset Point in Curve' not found
+[Offset Point in Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/topology/offset_point_in_curve.html)
 
 #### Arguments:
 - **point_index** (_Integer_ = None) : socket 'Point Index' (Point Index)
@@ -477,9 +477,9 @@ ERROR: Node 'Offset Point in Curve' not found
 Parallelogram(width=None, height=None, offset=None)
 ```
 
-ERROR: Node 'Quadrilateral' not found
+[Quadrilateral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/quadrilateral.html)
 
-ERROR: Node 'Quadrilateral' not found
+[Quadrilateral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/quadrilateral.html)
 
 #### Arguments:
 - **width** (_Float_ = None) : socket 'Width' (Width)
@@ -502,9 +502,9 @@ ERROR: Node 'Quadrilateral' not found
 Points(point_1=None, point_2=None, point_3=None, point_4=None)
 ```
 
-ERROR: Node 'Quadrilateral' not found
+[Quadrilateral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/quadrilateral.html)
 
-ERROR: Node 'Quadrilateral' not found
+[Quadrilateral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/quadrilateral.html)
 
 #### Arguments:
 - **point_1** ( = None)
@@ -528,9 +528,9 @@ ERROR: Node 'Quadrilateral' not found
 points_of_curve(curve_index=None, weights=None, sort_index=None)
 ```
 
-ERROR: Node 'Points of Curve' not found
+[Points of Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/topology/points_of_curve.html)
 
-ERROR: Node 'Points of Curve' not found
+[Points of Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/topology/points_of_curve.html)
 
 #### Arguments:
 - **curve_index** (_Integer_ = None) : socket 'Curve Index' (Curve Index)
@@ -579,9 +579,9 @@ ERROR: Node 'Quadratic Bézier' not found
 Quadrilateral(width=None, height=None)
 ```
 
-ERROR: Node 'Quadrilateral' not found
+[Quadrilateral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/quadrilateral.html)
 
-ERROR: Node 'Quadrilateral' not found
+[Quadrilateral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/quadrilateral.html)
 
 #### Arguments:
 - **width** (_Float_ = None) : socket 'Width' (Width)
@@ -603,9 +603,9 @@ ERROR: Node 'Quadrilateral' not found
 Rectangle(width=None, height=None)
 ```
 
-ERROR: Node 'Quadrilateral' not found
+[Quadrilateral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/quadrilateral.html)
 
-ERROR: Node 'Quadrilateral' not found
+[Quadrilateral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/quadrilateral.html)
 
 #### Arguments:
 - **width** (_Float_ = None) : socket 'Width' (Width)
@@ -627,9 +627,9 @@ ERROR: Node 'Quadrilateral' not found
 resample(count=None, length=None)
 ```
 
-ERROR: Node 'Resample Curve' not found
+[Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/resample_curve.html)
 
-ERROR: Node 'Resample Curve' not found
+[Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/resample_curve.html)
 
 Parameter 'mode'
 ---------------
@@ -658,9 +658,9 @@ Parameter 'mode'
 reverse()
 ```
 
-ERROR: Node 'Reverse Curve' not found
+[Reverse Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/reverse_curve.html)
 
-ERROR: Node 'Reverse Curve' not found
+[Reverse Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/reverse_curve.html)
 
 #### Returns:
 - **Curve** :
@@ -676,9 +676,9 @@ ERROR: Node 'Reverse Curve' not found
 sample(value=None, factor=None, length=None, curve_index=None, all_curves=False)
 ```
 
-ERROR: Node 'Sample Curve' not found
+[Sample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/sample/sample_curve.html)
 
-ERROR: Node 'Sample Curve' not found
+[Sample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/sample/sample_curve.html)
 
 'mode' is set to 'LENGTH' if factor is None, else 'FACTOR'
 
@@ -708,9 +708,9 @@ ERROR: Node 'Sample Curve' not found
 set_normal(mode='MINIMUM_TWIST')
 ```
 
-ERROR: Node 'Set Curve Normal' not found
+[Set Curve Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_curve_normal.html)
 
-ERROR: Node 'Set Curve Normal' not found
+[Set Curve Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_curve_normal.html)
 
 #### Arguments:
 - **mode** (_str_ = MINIMUM_TWIST) : Node.mode in ('MINIMUM_TWIST', 'Z_UP', 'FREE')
@@ -731,9 +731,9 @@ ERROR: Node 'Set Curve Normal' not found
 set_normal_free()
 ```
 
-ERROR: Node 'Set Curve Normal' not found
+[Set Curve Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_curve_normal.html)
 
-ERROR: Node 'Set Curve Normal' not found
+[Set Curve Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_curve_normal.html)
 
 #### Returns:
 - **Curve** :
@@ -749,9 +749,9 @@ ERROR: Node 'Set Curve Normal' not found
 set_normal_z_up()
 ```
 
-ERROR: Node 'Set Curve Normal' not found
+[Set Curve Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_curve_normal.html)
 
-ERROR: Node 'Set Curve Normal' not found
+[Set Curve Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_curve_normal.html)
 
 #### Returns:
 - **Curve** :
@@ -795,9 +795,9 @@ ERROR: Node 'Spiral' not found
 Star(points=None, inner_radius=None, outer_radius=None, twist=None)
 ```
 
-ERROR: Node 'Star' not found
+[Star](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/star.html)
 
-ERROR: Node 'Star' not found
+[Star](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/star.html)
 
 #### Arguments:
 - **points** (_Integer_ = None) : socket 'Points' (Points)
@@ -821,9 +821,9 @@ ERROR: Node 'Star' not found
 subdivide(cuts=None)
 ```
 
-ERROR: Node 'Subdivide Curve' not found
+[Subdivide Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/subdivide_curve.html)
 
-ERROR: Node 'Subdivide Curve' not found
+[Subdivide Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/subdivide_curve.html)
 
 #### Arguments:
 - **cuts** (_Integer_ = None) : socket 'Cuts' (Cuts)
@@ -844,9 +844,9 @@ ERROR: Node 'Subdivide Curve' not found
 to_mesh(profile_curve=None, fill_caps=None)
 ```
 
-ERROR: Node 'Curve to Mesh' not found
+[Curve to Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curve_to_mesh.html)
 
-ERROR: Node 'Curve to Mesh' not found
+[Curve to Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curve_to_mesh.html)
 
 #### Arguments:
 - **profile_curve** (_Geometry_ = None) : socket 'Profile Curve' (Profile Curve)
@@ -868,9 +868,9 @@ ERROR: Node 'Curve to Mesh' not found
 to_points(count=None, length=None, mode='EVALUATED')
 ```
 
-ERROR: Node 'Curve to Points' not found
+[Curve to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curve_to_points.html)
 
-ERROR: Node 'Curve to Points' not found
+[Curve to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curve_to_points.html)
 
 #### Arguments:
 - **count** (_Integer_ = None) : socket 'Count' (Count)
@@ -893,9 +893,9 @@ ERROR: Node 'Curve to Points' not found
 Trapezoid(height=None, bottom_width=None, top_width=None, offset=None)
 ```
 
-ERROR: Node 'Quadrilateral' not found
+[Quadrilateral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/quadrilateral.html)
 
-ERROR: Node 'Quadrilateral' not found
+[Quadrilateral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/quadrilateral.html)
 
 #### Arguments:
 - **height** (_Float_ = None) : socket 'Height' (Height)
@@ -919,9 +919,9 @@ ERROR: Node 'Quadrilateral' not found
 trim(start=None, end=None, mode='FACTOR')
 ```
 
-ERROR: Node 'Trim Curve' not found
+[Trim Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/trim_curve.html)
 
-ERROR: Node 'Trim Curve' not found
+[Trim Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/trim_curve.html)
 
 #### Arguments:
 - **start** (_Float_ = None) : socket 'Start' (Start)
@@ -944,9 +944,9 @@ ERROR: Node 'Trim Curve' not found
 trim_factor(start=None, end=None)
 ```
 
-ERROR: Node 'Trim Curve' not found
+[Trim Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/trim_curve.html)
 
-ERROR: Node 'Trim Curve' not found
+[Trim Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/trim_curve.html)
 
 #### Arguments:
 - **start** (_Float_ = None) : socket 'Start' (Start)
@@ -968,9 +968,9 @@ ERROR: Node 'Trim Curve' not found
 trim_length(start=None, end=None)
 ```
 
-ERROR: Node 'Trim Curve' not found
+[Trim Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/trim_curve.html)
 
-ERROR: Node 'Trim Curve' not found
+[Trim Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/trim_curve.html)
 
 #### Arguments:
 - **start** (_Float_ = None) : socket 'Start' (Start)

@@ -43,9 +43,9 @@ When a Group Input socket is created, default name 'Geometry' is used if name ar
 FromCurve(curve, count=None, length=None, mode='COUNT')
 ```
 
-ERROR: Node 'Curve to Points' not found
+[Curve to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curve_to_points.html)
 
-ERROR: Node 'Curve to Points' not found
+[Curve to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curve_to_points.html)
 
 #### Arguments:
 - **curve** (_Geometry_) : socket 'Curve' (Curve)
@@ -69,9 +69,9 @@ ERROR: Node 'Curve to Points' not found
 FromInstances(instances, position=None, radius=None)
 ```
 
-ERROR: Node 'Instances to Points' not found
+[Instances to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instances_to_points.html)
 
-ERROR: Node 'Instances to Points' not found
+[Instances to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instances_to_points.html)
 
 #### Arguments:
 - **instances** (_Geometry_) : socket 'Instances' (Instances)
@@ -94,9 +94,9 @@ ERROR: Node 'Instances to Points' not found
 FromMesh(mesh, position=None, radius=None, mode='POINTS')
 ```
 
-ERROR: Node 'Mesh to Points' not found
+[Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_points.html)
 
-ERROR: Node 'Mesh to Points' not found
+[Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_points.html)
 
 #### Arguments:
 - **mesh** (_Mesh_) : socket 'Mesh' (Mesh)
@@ -120,9 +120,9 @@ ERROR: Node 'Mesh to Points' not found
 Points(count=1, position=None, radius=None)
 ```
 
-ERROR: Node 'Points' not found
+[Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points.html)
 
-ERROR: Node 'Points' not found
+[Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points.html)
 
 #### Arguments:
 - **count** (_Integer_ = 1) : socket 'Count' (Count)
@@ -145,9 +145,9 @@ ERROR: Node 'Points' not found
 to_curves(curve_group_id=None, weight=None)
 ```
 
-ERROR: Node 'Points to Curves' not found
+[Points to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points_to_curves.html)
 
-ERROR: Node 'Points to Curves' not found
+[Points to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points_to_curves.html)
 
 #### Arguments:
 - **curve_group_id** (_Integer_ = None) : socket 'Curve Group ID' (Curve Group ID)
@@ -169,9 +169,9 @@ ERROR: Node 'Points to Curves' not found
 to_vertices()
 ```
 
-ERROR: Node 'Points to Vertices' not found
+[Points to Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points_to_vertices.html)
 
-ERROR: Node 'Points to Vertices' not found
+[Points to Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points_to_vertices.html)
 
 #### Returns:
 - **Mesh** :
@@ -187,9 +187,9 @@ ERROR: Node 'Points to Vertices' not found
 to_volume(density=None, voxel_size=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_AMOUNT')
 ```
 
-ERROR: Node 'Points to Volume' not found
+[Points to Volume](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points_to_volume.html)
 
-ERROR: Node 'Points to Volume' not found
+[Points to Volume](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points_to_volume.html)
 
 #### Arguments:
 - **density** (_Float_ = None) : socket 'Density' (Density)

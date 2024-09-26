@@ -43,9 +43,9 @@ Integer(value=0, name=None, min=None, max=None, tip=None, subtype='NONE')
 clamp(min=None, max=None, clamp_type='MINMAX')
 ```
 
-ERROR: Node 'Clamp' not found
+[Clamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/clamp.html)
 
-ERROR: Node 'Clamp' not found
+[Clamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/clamp.html)
 
 #### Arguments:
 - **min** (_Float_ = None) : socket 'Min' (Min)
@@ -68,9 +68,9 @@ ERROR: Node 'Clamp' not found
 color_ramp(keep=None)
 ```
 
-ERROR: Node 'Color Ramp' not found
+[Color Ramp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/color_ramp.html)
 
-ERROR: Node 'Color Ramp' not found
+[Color Ramp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/color_ramp.html)
 
 #### Arguments:
 - **keep** ( = None)
@@ -91,9 +91,9 @@ ERROR: Node 'Color Ramp' not found
 curve(factor=None, keep=None)
 ```
 
-[Float Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/float_curve.html)
+ERROR: Node 'Float Curve' not found
 
-[Float Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/float_curve.html)
+ERROR: Node 'Float Curve' not found
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket 'Factor' (Factor)
@@ -115,9 +115,9 @@ curve(factor=None, keep=None)
 equal(other)
 ```
 
-ERROR: Node 'Compare' not found
+[Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
-ERROR: Node 'Compare' not found
+[Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
 #### Arguments:
 - **other** (_Float_) : socket 'B' (B)
@@ -138,9 +138,9 @@ ERROR: Node 'Compare' not found
 greater_equal(other)
 ```
 
-ERROR: Node 'Compare' not found
+[Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
-ERROR: Node 'Compare' not found
+[Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
 #### Arguments:
 - **other** (_Float_) : socket 'B' (B)
@@ -161,9 +161,9 @@ ERROR: Node 'Compare' not found
 greater_than(other)
 ```
 
-ERROR: Node 'Compare' not found
+[Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
-ERROR: Node 'Compare' not found
+[Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
 #### Arguments:
 - **other** (_Float_) : socket 'B' (B)
@@ -184,9 +184,9 @@ ERROR: Node 'Compare' not found
 less_equal(other)
 ```
 
-ERROR: Node 'Compare' not found
+[Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
-ERROR: Node 'Compare' not found
+[Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
 #### Arguments:
 - **other** (_Float_) : socket 'B' (B)
@@ -207,9 +207,9 @@ ERROR: Node 'Compare' not found
 less_than(other)
 ```
 
-ERROR: Node 'Compare' not found
+[Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
-ERROR: Node 'Compare' not found
+[Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
 #### Arguments:
 - **other** (_Float_) : socket 'B' (B)
@@ -230,9 +230,9 @@ ERROR: Node 'Compare' not found
 map_range(from_min=None, from_max=None, to_min=None, to_max=None, clamp=None, interpolation_type='LINEAR')
 ```
 
-ERROR: Node 'Map Range' not found
+[Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
 
-ERROR: Node 'Map Range' not found
+[Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
 
 #### Arguments:
 - **from_min** (_Float_ = None) : socket 'From Min' (From Min)
@@ -258,9 +258,9 @@ ERROR: Node 'Map Range' not found
 map_range_linear(from_min=None, from_max=None, to_min=None, to_max=None, clamp=None)
 ```
 
-ERROR: Node 'Map Range' not found
+[Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
 
-ERROR: Node 'Map Range' not found
+[Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
 
 #### Arguments:
 - **from_min** (_Float_ = None) : socket 'From Min' (From Min)
@@ -285,9 +285,9 @@ ERROR: Node 'Map Range' not found
 map_range_smooth(from_min=None, from_max=None, to_min=None, to_max=None, clamp=None)
 ```
 
-ERROR: Node 'Map Range' not found
+[Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
 
-ERROR: Node 'Map Range' not found
+[Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
 
 #### Arguments:
 - **from_min** (_Float_ = None) : socket 'From Min' (From Min)
@@ -312,9 +312,9 @@ ERROR: Node 'Map Range' not found
 map_range_smoother(from_min=None, from_max=None, to_min=None, to_max=None, clamp=None)
 ```
 
-ERROR: Node 'Map Range' not found
+[Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
 
-ERROR: Node 'Map Range' not found
+[Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
 
 #### Arguments:
 - **from_min** (_Float_ = None) : socket 'From Min' (From Min)
@@ -339,9 +339,9 @@ ERROR: Node 'Map Range' not found
 map_range_stepped(from_min=None, from_max=None, to_min=None, to_max=None, clamp=None)
 ```
 
-ERROR: Node 'Map Range' not found
+[Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
 
-ERROR: Node 'Map Range' not found
+[Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
 
 #### Arguments:
 - **from_min** (_Float_ = None) : socket 'From Min' (From Min)
@@ -366,9 +366,9 @@ ERROR: Node 'Map Range' not found
 mix(factor=None, other=None, clamp_factor=None)
 ```
 
-[Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../compositing/types/color/mix/index.html)
+[Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
-[Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../compositing/types/color/mix/index.html)
+[Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket 'Factor' (Factor_Float)
@@ -391,9 +391,9 @@ mix(factor=None, other=None, clamp_factor=None)
 Named(name)
 ```
 
-ERROR: Node 'Named Attribute' not found
+[Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
-ERROR: Node 'Named Attribute' not found
+[Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
 'Named' is a synonym of 'NamedAttribute'
 
@@ -433,9 +433,9 @@ with GeoNodes("Named Attributes"):
 NamedAttribute(name)
 ```
 
-ERROR: Node 'Named Attribute' not found
+[Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
-ERROR: Node 'Named Attribute' not found
+[Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
 'Named' is a synonym of 'NamedAttribute'
 
@@ -475,9 +475,9 @@ with GeoNodes("Named Attributes"):
 not_equal(other)
 ```
 
-ERROR: Node 'Compare' not found
+[Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
-ERROR: Node 'Compare' not found
+[Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
 #### Arguments:
 - **other** (_Float_) : socket 'B' (B)
@@ -498,9 +498,9 @@ ERROR: Node 'Compare' not found
 to_string(decimals=None)
 ```
 
-ERROR: Node 'Value to String' not found
+[Value to String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/value_to_string.html)
 
-ERROR: Node 'Value to String' not found
+[Value to String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/value_to_string.html)
 
 #### Arguments:
 - **decimals** (_Integer_ = None) : socket 'Decimals' (Decimals)

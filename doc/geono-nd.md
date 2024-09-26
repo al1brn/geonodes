@@ -47,7 +47,7 @@ Initialize self.  See help(type(self)) for accurate signature.
 accumulate_field(value=None, group_id=None, data_type='FLOAT', domain='POINT')
 ```
 
-ERROR: Node 'Accumulate Field' not found
+[Accumulate Field](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/accumulate_field.html)
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (Value)
@@ -71,7 +71,7 @@ ERROR: Node 'Accumulate Field' not found
 active_element(domain='POINT')
 ```
 
-[Active Element](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/3dview/controls/pivot_point/active_element.html)
+[Active Element](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/active_element.html)
 
 #### Arguments:
 - **domain** (_str_ = POINT) : Node.domain in ('POINT', 'EDGE', 'FACE')
@@ -92,7 +92,7 @@ active_element(domain='POINT')
 align_euler_to_vector(rotation=None, factor=None, vector=None, axis='X', pivot_axis='AUTO')
 ```
 
-ERROR: Node 'Align Euler to Vector' not found
+[Align Euler to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/deprecated/align_euler_to_vector.html)
 
 #### Arguments:
 - **rotation** (_Vector_ = None) : socket 'Rotation' (Rotation)
@@ -117,7 +117,7 @@ ERROR: Node 'Align Euler to Vector' not found
 align_rotation_to_vector(rotation=None, factor=None, vector=None, axis='Z', pivot_axis='AUTO')
 ```
 
-ERROR: Node 'Align Rotation to Vector' not found
+[Align Rotation to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/align_rotation_to_vector.html)
 
 #### Arguments:
 - **rotation** (_Rotation_ = None) : socket 'Rotation' (Rotation)
@@ -142,7 +142,7 @@ ERROR: Node 'Align Rotation to Vector' not found
 arc(resolution=None, radius=None, start_angle=None, sweep_angle=None, connect_center=None, invert_arc=None, mode='RADIUS')
 ```
 
-ERROR: Node 'Arc' not found
+[Arc](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/arc.html)
 
 #### Arguments:
 - **resolution** (_Integer_ = None) : socket 'Resolution' (Resolution)
@@ -169,7 +169,7 @@ ERROR: Node 'Arc' not found
 attribute_statistic(geometry=None, selection=None, attribute=None, data_type='FLOAT', domain='POINT')
 ```
 
-ERROR: Node 'Attribute Statistic' not found
+[Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -218,7 +218,7 @@ ERROR: Node 'Axes to Rotation' not found
 axis_angle_to_rotation(axis=None, angle=None)
 ```
 
-ERROR: Node 'Axis Angle to Rotation' not found
+[Axis Angle to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/axis_angle_to_rotation.html)
 
 #### Arguments:
 - **axis** (_Vector_ = None) : socket 'Axis' (Axis)
@@ -240,7 +240,7 @@ ERROR: Node 'Axis Angle to Rotation' not found
 bake(geometry=None, active_index=0, active_item=None, bake_items=None)
 ```
 
-ERROR: Node 'Bake' not found
+[Bake](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/bake.html)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Item_0)
@@ -290,7 +290,7 @@ ERROR: Node 'Bézier Segment' not found
 blackbody(temperature=None)
 ```
 
-ERROR: Node 'Blackbody' not found
+[Blackbody](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/color/blackbody.html)
 
 #### Arguments:
 - **temperature** (_Float_ = None) : socket 'Temperature' (Temperature)
@@ -311,7 +311,7 @@ ERROR: Node 'Blackbody' not found
 blur_attribute(value=None, iterations=None, weight=None, data_type='FLOAT')
 ```
 
-ERROR: Node 'Blur Attribute' not found
+[Blur Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/blur_attribute.html)
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (Value)
@@ -335,7 +335,7 @@ ERROR: Node 'Blur Attribute' not found
 boolean(boolean=False)
 ```
 
-ERROR: Node 'Boolean' not found
+[Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/constant/boolean.html)
 
 #### Arguments:
 - **boolean** (_bool_ = False) : Node.boolean
@@ -356,7 +356,7 @@ ERROR: Node 'Boolean' not found
 boolean_math(boolean=None, boolean_1=None, operation='AND')
 ```
 
-ERROR: Node 'Boolean Math' not found
+[Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
 
 #### Arguments:
 - **boolean** (_Boolean_ = None) : socket 'Boolean' (Boolean)
@@ -379,7 +379,7 @@ ERROR: Node 'Boolean Math' not found
 bounding_box(geometry=None)
 ```
 
-ERROR: Node 'Bounding Box' not found
+[Bounding Box](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/bounding_box.html)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -400,7 +400,7 @@ ERROR: Node 'Bounding Box' not found
 brick_texture(vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, color_mapping=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2, texture_mapping=None)
 ```
 
-ERROR: Node 'Brick Texture' not found
+[Brick Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/brick.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -436,7 +436,7 @@ ERROR: Node 'Brick Texture' not found
 capture_attribute(geometry=None, active_index=0, active_item=None, capture_items=None, domain='POINT')
 ```
 
-ERROR: Node 'Capture Attribute' not found
+[Capture Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/capture_attribute.html)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -461,7 +461,7 @@ ERROR: Node 'Capture Attribute' not found
 checker_texture(vector=None, color1=None, color2=None, scale=None, color_mapping=None, texture_mapping=None)
 ```
 
-ERROR: Node 'Checker Texture' not found
+[Checker Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/checker.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -487,7 +487,7 @@ ERROR: Node 'Checker Texture' not found
 clamp(value=None, min=None, max=None, clamp_type='MINMAX')
 ```
 
-ERROR: Node 'Clamp' not found
+[Clamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/clamp.html)
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (Value)
@@ -511,7 +511,7 @@ ERROR: Node 'Clamp' not found
 collection_info(collection=None, separate_children=None, reset_children=None, transform_space='ORIGINAL')
 ```
 
-ERROR: Node 'Collection Info' not found
+[Collection Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene/collection_info.html)
 
 #### Arguments:
 - **collection** (_Collection_ = None) : socket 'Collection' (Collection)
@@ -535,7 +535,7 @@ ERROR: Node 'Collection Info' not found
 color(value=None)
 ```
 
-[Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/color/index.html)
+[Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/constant/color.html)
 
 #### Arguments:
 - **value** (_bpy_prop_array_ = None) : Node.value
@@ -556,7 +556,7 @@ color(value=None)
 color_ramp(fac=None, color_ramp=None)
 ```
 
-ERROR: Node 'Color Ramp' not found
+[Color Ramp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/color_ramp.html)
 
 #### Arguments:
 - **fac** (_Float_ = None) : socket 'Fac' (Fac)
@@ -578,7 +578,7 @@ ERROR: Node 'Color Ramp' not found
 combine_color(red=None, green=None, blue=None, alpha=None, mode='RGB')
 ```
 
-ERROR: Node 'Combine Color' not found
+[Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/combine_color.html)
 
 #### Arguments:
 - **red** (_Float_ = None) : socket 'Red' (Red)
@@ -603,7 +603,7 @@ ERROR: Node 'Combine Color' not found
 combine_matrix(column_1_row_1=None, column_1_row_2=None, column_1_row_3=None, column_1_row_4=None, column_2_row_1=None, column_2_row_2=None, column_2_row_3=None, column_2_row_4=None, column_3_row_1=None, column_3_row_2=None, column_3_row_3=None, column_3_row_4=None, column_4_row_1=None, column_4_row_2=None, column_4_row_3=None, column_4_row_4=None)
 ```
 
-ERROR: Node 'Combine Matrix' not found
+[Combine Matrix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/combine_matrix.html)
 
 #### Arguments:
 - **column_1_row_1** (_Float_ = None) : socket 'Column 1 Row 1' (Column 1 Row 1)
@@ -639,7 +639,7 @@ ERROR: Node 'Combine Matrix' not found
 combine_transform(translation=None, rotation=None, scale=None)
 ```
 
-ERROR: Node 'Combine Transform' not found
+[Combine Transform](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/combine_transform.html)
 
 #### Arguments:
 - **translation** (_Vector_ = None) : socket 'Translation' (Translation)
@@ -662,7 +662,7 @@ ERROR: Node 'Combine Transform' not found
 combine_xyz(x=None, y=None, z=None)
 ```
 
-ERROR: Node 'Combine XYZ' not found
+[Combine XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/combine_xyz.html)
 
 #### Arguments:
 - **x** (_Float_ = None) : socket 'X' (X)
@@ -685,7 +685,7 @@ ERROR: Node 'Combine XYZ' not found
 compare(a=None, b=None, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN')
 ```
 
-ERROR: Node 'Compare' not found
+[Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
 #### Arguments:
 - **a** (_Float_ = None) : socket 'A' (A)
@@ -710,7 +710,7 @@ ERROR: Node 'Compare' not found
 cone(vertices=None, side_segments=None, fill_segments=None, radius_top=None, radius_bottom=None, depth=None, fill_type='NGON')
 ```
 
-ERROR: Node 'Cone' not found
+[Cone](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/cone.html)
 
 #### Arguments:
 - **vertices** (_Integer_ = None) : socket 'Vertices' (Vertices)
@@ -737,7 +737,7 @@ ERROR: Node 'Cone' not found
 convex_hull(geometry=None)
 ```
 
-[Convex Hull](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../meshes/editing/mesh/convex_hull.html)
+[Convex Hull](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/convex_hull.html)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -758,7 +758,7 @@ convex_hull(geometry=None)
 corners_of_edge(edge_index=None, weights=None, sort_index=None)
 ```
 
-ERROR: Node 'Corners of Edge' not found
+[Corners of Edge](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/corners_of_edge.html)
 
 #### Arguments:
 - **edge_index** (_Integer_ = None) : socket 'Edge Index' (Edge Index)
@@ -781,7 +781,7 @@ ERROR: Node 'Corners of Edge' not found
 corners_of_face(face_index=None, weights=None, sort_index=None)
 ```
 
-ERROR: Node 'Corners of Face' not found
+[Corners of Face](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/corners_of_face.html)
 
 #### Arguments:
 - **face_index** (_Integer_ = None) : socket 'Face Index' (Face Index)
@@ -804,7 +804,7 @@ ERROR: Node 'Corners of Face' not found
 corners_of_vertex(vertex_index=None, weights=None, sort_index=None)
 ```
 
-ERROR: Node 'Corners of Vertex' not found
+[Corners of Vertex](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/corners_of_vertex.html)
 
 #### Arguments:
 - **vertex_index** (_Integer_ = None) : socket 'Vertex Index' (Vertex Index)
@@ -827,7 +827,7 @@ ERROR: Node 'Corners of Vertex' not found
 cube(size=None, vertices_x=None, vertices_y=None, vertices_z=None)
 ```
 
-ERROR: Node 'Cube' not found
+[Cube](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/cube.html)
 
 #### Arguments:
 - **size** (_Vector_ = None) : socket 'Size' (Size)
@@ -851,7 +851,7 @@ ERROR: Node 'Cube' not found
 curve_circle(resolution=None, radius=None, mode='RADIUS')
 ```
 
-ERROR: Node 'Curve Circle' not found
+[Curve Circle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/curve_circle.html)
 
 #### Arguments:
 - **resolution** (_Integer_ = None) : socket 'Resolution' (Resolution)
@@ -895,7 +895,7 @@ ERROR: Node 'Curve Handle Positions' not found
 curve_length(curve=None)
 ```
 
-ERROR: Node 'Curve Length' not found
+[Curve Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/curve_length.html)
 
 #### Arguments:
 - **curve** (_Geometry_ = None) : socket 'Curve' (Curve)
@@ -916,7 +916,7 @@ ERROR: Node 'Curve Length' not found
 curve_line(start=None, end=None, mode='POINTS')
 ```
 
-ERROR: Node 'Curve Line' not found
+[Curve Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/curve_line.html)
 
 #### Arguments:
 - **start** (_Vector_ = None) : socket 'Start' (Start)
@@ -939,7 +939,7 @@ ERROR: Node 'Curve Line' not found
 curve_of_point(point_index=None)
 ```
 
-ERROR: Node 'Curve of Point' not found
+[Curve of Point](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/topology/curve_of_point.html)
 
 #### Arguments:
 - **point_index** (_Integer_ = None) : socket 'Point Index' (Point Index)
@@ -960,7 +960,7 @@ ERROR: Node 'Curve of Point' not found
 curve_to_mesh(curve=None, profile_curve=None, fill_caps=None)
 ```
 
-ERROR: Node 'Curve to Mesh' not found
+[Curve to Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curve_to_mesh.html)
 
 #### Arguments:
 - **curve** (_Geometry_ = None) : socket 'Curve' (Curve)
@@ -983,7 +983,7 @@ ERROR: Node 'Curve to Mesh' not found
 curve_to_points(curve=None, count=None, mode='COUNT')
 ```
 
-ERROR: Node 'Curve to Points' not found
+[Curve to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curve_to_points.html)
 
 #### Arguments:
 - **curve** (_Geometry_ = None) : socket 'Curve' (Curve)
@@ -1006,7 +1006,7 @@ ERROR: Node 'Curve to Points' not found
 cylinder(vertices=None, side_segments=None, fill_segments=None, radius=None, depth=None, fill_type='NGON')
 ```
 
-ERROR: Node 'Cylinder' not found
+[Cylinder](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/cylinder.html)
 
 #### Arguments:
 - **vertices** (_Integer_ = None) : socket 'Vertices' (Vertices)
@@ -1032,7 +1032,7 @@ ERROR: Node 'Cylinder' not found
 deform_curves_on_surface(curves=None)
 ```
 
-ERROR: Node 'Deform Curves on Surface' not found
+[Deform Curves on Surface](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/deform_curves_on_surface.html)
 
 #### Arguments:
 - **curves** (_Geometry_ = None) : socket 'Curves' (Curves)
@@ -1053,7 +1053,7 @@ ERROR: Node 'Deform Curves on Surface' not found
 delete_geometry(geometry=None, selection=None, domain='POINT', mode='ALL')
 ```
 
-ERROR: Node 'Delete Geometry' not found
+[Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/delete_geometry.html)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -1101,7 +1101,7 @@ ERROR: Node 'Distribute Points in Grid' not found
 distribute_points_in_volume(volume=None, density=None, seed=None, mode='DENSITY_RANDOM')
 ```
 
-[Distribute Points in Volume](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/distribute_points_in_volume.html)
+ERROR: Node 'Distribute Points in Volume' not found
 
 #### Arguments:
 - **volume** (_Geometry_ = None) : socket 'Volume' (Volume)
@@ -1125,7 +1125,7 @@ distribute_points_in_volume(volume=None, density=None, seed=None, mode='DENSITY_
 distribute_points_on_faces(mesh=None, selection=None, density=None, seed=None, distribute_method='RANDOM', use_legacy_normal=False)
 ```
 
-[Distribute Points on Faces](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/distribute_points_on_faces.html)
+ERROR: Node 'Distribute Points on Faces' not found
 
 #### Arguments:
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (Mesh)
@@ -1151,7 +1151,7 @@ distribute_points_on_faces(mesh=None, selection=None, density=None, seed=None, d
 domain_size(geometry=None, component='MESH')
 ```
 
-ERROR: Node 'Domain Size' not found
+[Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -1173,7 +1173,7 @@ ERROR: Node 'Domain Size' not found
 dual_mesh(mesh=None, keep_boundaries=None)
 ```
 
-ERROR: Node 'Dual Mesh' not found
+[Dual Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/dual_mesh.html)
 
 #### Arguments:
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (Mesh)
@@ -1195,7 +1195,7 @@ ERROR: Node 'Dual Mesh' not found
 duplicate_elements(geometry=None, selection=None, amount=None, domain='POINT')
 ```
 
-ERROR: Node 'Duplicate Elements' not found
+[Duplicate Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/duplicate_elements.html)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -1219,7 +1219,7 @@ ERROR: Node 'Duplicate Elements' not found
 edge_paths_to_curves(mesh=None, start_vertices=None, next_vertex_index=None)
 ```
 
-ERROR: Node 'Edge Paths to Curves' not found
+[Edge Paths to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/edge_paths_to_curves.html)
 
 #### Arguments:
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (Mesh)
@@ -1242,7 +1242,7 @@ ERROR: Node 'Edge Paths to Curves' not found
 edge_paths_to_selection(start_vertices=None, next_vertex_index=None)
 ```
 
-ERROR: Node 'Edge Paths to Selection' not found
+[Edge Paths to Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/edge_paths_to_selection.html)
 
 #### Arguments:
 - **start_vertices** (_Boolean_ = None) : socket 'Start Vertices' (Start Vertices)
@@ -1264,7 +1264,7 @@ ERROR: Node 'Edge Paths to Selection' not found
 edges_of_corner(corner_index=None)
 ```
 
-ERROR: Node 'Edges of Corner' not found
+[Edges of Corner](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/edges_of_corner.html)
 
 #### Arguments:
 - **corner_index** (_Integer_ = None) : socket 'Corner Index' (Corner Index)
@@ -1285,7 +1285,7 @@ ERROR: Node 'Edges of Corner' not found
 edges_of_vertex(vertex_index=None, weights=None, sort_index=None)
 ```
 
-ERROR: Node 'Edges of Vertex' not found
+[Edges of Vertex](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/edges_of_vertex.html)
 
 #### Arguments:
 - **vertex_index** (_Integer_ = None) : socket 'Vertex Index' (Vertex Index)
@@ -1308,7 +1308,7 @@ ERROR: Node 'Edges of Vertex' not found
 edges_to_face_groups(boundary_edges=None)
 ```
 
-ERROR: Node 'Edges to Face Groups' not found
+[Edges to Face Groups](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edges_to_face_groups.html)
 
 #### Arguments:
 - **boundary_edges** (_Boolean_ = None) : socket 'Boundary Edges' (Boundary Edges)
@@ -1329,7 +1329,7 @@ ERROR: Node 'Edges to Face Groups' not found
 endpoint_selection(start_size=None, end_size=None)
 ```
 
-ERROR: Node 'Endpoint Selection' not found
+[Endpoint Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/endpoint_selection.html)
 
 #### Arguments:
 - **start_size** (_Integer_ = None) : socket 'Start Size' (Start Size)
@@ -1351,7 +1351,7 @@ ERROR: Node 'Endpoint Selection' not found
 euler_to_rotation(euler=None)
 ```
 
-ERROR: Node 'Euler to Rotation' not found
+[Euler to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/euler_to_rotation.html)
 
 #### Arguments:
 - **euler** (_Vector_ = None) : socket 'Euler' (Euler)
@@ -1372,7 +1372,7 @@ ERROR: Node 'Euler to Rotation' not found
 evaluate_at_index(index=None, value=None, data_type='FLOAT', domain='POINT')
 ```
 
-ERROR: Node 'Evaluate at Index' not found
+[Evaluate at Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/evaluate_at_index.html)
 
 #### Arguments:
 - **index** (_Integer_ = None) : socket 'Index' (Index)
@@ -1396,7 +1396,7 @@ ERROR: Node 'Evaluate at Index' not found
 evaluate_on_domain(value=None, data_type='FLOAT', domain='POINT')
 ```
 
-ERROR: Node 'Evaluate on Domain' not found
+[Evaluate on Domain](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/evaluate_on_domain.html)
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (Value)
@@ -1419,7 +1419,7 @@ ERROR: Node 'Evaluate on Domain' not found
 extrude_mesh(mesh=None, selection=None, offset=None, offset_scale=None, individual=None, mode='FACES')
 ```
 
-ERROR: Node 'Extrude Mesh' not found
+[Extrude Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/extrude_mesh.html)
 
 #### Arguments:
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (Mesh)
@@ -1445,7 +1445,7 @@ ERROR: Node 'Extrude Mesh' not found
 face_group_boundaries(face_group_id=None)
 ```
 
-ERROR: Node 'Face Group Boundaries' not found
+[Face Group Boundaries](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/face_group_boundaries.html)
 
 #### Arguments:
 - **face_group_id** (_Integer_ = None) : socket 'Face Group ID' (Face Set)
@@ -1466,7 +1466,7 @@ ERROR: Node 'Face Group Boundaries' not found
 face_of_corner(corner_index=None)
 ```
 
-ERROR: Node 'Face of Corner' not found
+[Face of Corner](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/face_of_corner.html)
 
 #### Arguments:
 - **corner_index** (_Integer_ = None) : socket 'Corner Index' (Corner Index)
@@ -1487,7 +1487,7 @@ ERROR: Node 'Face of Corner' not found
 fill_curve(curve=None, group_id=None, mode='TRIANGLES')
 ```
 
-ERROR: Node 'Fill Curve' not found
+[Fill Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/fill_curve.html)
 
 #### Arguments:
 - **curve** (_Geometry_ = None) : socket 'Curve' (Curve)
@@ -1510,7 +1510,7 @@ ERROR: Node 'Fill Curve' not found
 fillet_curve(curve=None, radius=None, limit_radius=None, mode='BEZIER')
 ```
 
-ERROR: Node 'Fillet Curve' not found
+[Fillet Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/fillet_curve.html)
 
 #### Arguments:
 - **curve** (_Geometry_ = None) : socket 'Curve' (Curve)
@@ -1534,7 +1534,7 @@ ERROR: Node 'Fillet Curve' not found
 flip_faces(mesh=None, selection=None)
 ```
 
-ERROR: Node 'Flip Faces' not found
+[Flip Faces](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/flip_faces.html)
 
 #### Arguments:
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (Mesh)
@@ -1556,7 +1556,7 @@ ERROR: Node 'Flip Faces' not found
 float_curve(factor=None, value=None, mapping=None)
 ```
 
-[Float Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/float_curve.html)
+ERROR: Node 'Float Curve' not found
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket 'Factor' (Factor)
@@ -1579,7 +1579,7 @@ float_curve(factor=None, value=None, mapping=None)
 float_to_integer(float=None, rounding_mode='ROUND')
 ```
 
-ERROR: Node 'Float to Integer' not found
+[Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/float_to_integer.html)
 
 #### Arguments:
 - **float** (_Float_ = None) : socket 'Float' (Float)
@@ -1601,7 +1601,7 @@ ERROR: Node 'Float to Integer' not found
 frame(label_size=20, shrink=True, text=None)
 ```
 
-ERROR: Node 'Frame' not found
+[Frame](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../interface/controls/nodes/frame.html)
 
 #### Arguments:
 - **label_size** (_int_ = 20) : Node.label_size
@@ -1619,7 +1619,7 @@ ERROR: Node 'Frame' not found
 geometry_proximity(geometry=None, group_id=None, sample_position=None, sample_group_id=None, target_element='FACES')
 ```
 
-ERROR: Node 'Geometry Proximity' not found
+[Geometry Proximity](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/geometry_proximity.html)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Target)
@@ -1644,7 +1644,7 @@ ERROR: Node 'Geometry Proximity' not found
 geometry_to_instance(geometry=None)
 ```
 
-ERROR: Node 'Geometry to Instance' not found
+[Geometry to Instance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_to_instance.html)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -1689,7 +1689,7 @@ ERROR: Node 'Get Named Grid' not found
 gradient_texture(vector=None, color_mapping=None, gradient_type='LINEAR', texture_mapping=None)
 ```
 
-ERROR: Node 'Gradient Texture' not found
+[Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -1713,7 +1713,7 @@ ERROR: Node 'Gradient Texture' not found
 grid(size_x=None, size_y=None, vertices_x=None, vertices_y=None)
 ```
 
-ERROR: Node 'Grid' not found
+[Grid](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/grid.html)
 
 #### Arguments:
 - **size_x** (_Float_ = None) : socket 'Size X' (Size X)
@@ -1760,7 +1760,7 @@ ERROR: Node 'Grid to Mesh' not found
 group(node_tree=None)
 ```
 
-[Group](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/groups.html)
+ERROR: Node 'Group' not found
 
 #### Arguments:
 - **node_tree** (_NoneType_ = None) : Node.node_tree
@@ -1792,7 +1792,7 @@ ERROR: Node 'Group Output' not found
 handle_type_selection(handle_type='AUTO', mode={'LEFT', 'RIGHT'})
 ```
 
-ERROR: Node 'Handle Type Selection' not found
+[Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
 
 #### Arguments:
 - **handle_type** (_str_ = AUTO) : Node.handle_type in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
@@ -1836,7 +1836,7 @@ ERROR: Node 'Ico Sphere' not found
 image(image=None)
 ```
 
-ERROR: Node 'Image' not found
+[Image](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/input/image.html)
 
 #### Arguments:
 - **image** (_NoneType_ = None) : Node.image
@@ -1857,7 +1857,7 @@ ERROR: Node 'Image' not found
 image_info(image=None, frame=None)
 ```
 
-ERROR: Node 'Image Info' not found
+[Image Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene/image_info.html)
 
 #### Arguments:
 - **image** (_Image_ = None) : socket 'Image' (Image)
@@ -1879,7 +1879,7 @@ ERROR: Node 'Image Info' not found
 image_texture(image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear')
 ```
 
-ERROR: Node 'Image Texture' not found
+[Image Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/image.html)
 
 #### Arguments:
 - **image** (_Image_ = None) : socket 'Image' (Image)
@@ -1904,7 +1904,7 @@ ERROR: Node 'Image Texture' not found
 index_of_nearest(position=None, group_id=None)
 ```
 
-[Index of Nearest](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/index_of_nearest.html)
+ERROR: Node 'Index of Nearest' not found
 
 #### Arguments:
 - **position** (_Vector_ = None) : socket 'Position' (Position)
@@ -1926,7 +1926,7 @@ index_of_nearest(position=None, group_id=None)
 index_switch(index=None, _0=None, _1=None, data_type='GEOMETRY', index_switch_items=None)
 ```
 
-ERROR: Node 'Index Switch' not found
+[Index Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/index_switch.html)
 
 #### Arguments:
 - **index** (_Integer_ = None) : socket 'Index' (Index)
@@ -1951,7 +1951,7 @@ ERROR: Node 'Index Switch' not found
 instance_on_points(points=None, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None)
 ```
 
-ERROR: Node 'Instance on Points' not found
+[Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html)
 
 #### Arguments:
 - **points** (_Geometry_ = None) : socket 'Points' (Points)
@@ -1978,7 +1978,7 @@ ERROR: Node 'Instance on Points' not found
 instances_to_points(instances=None, selection=None, position=None, radius=None)
 ```
 
-ERROR: Node 'Instances to Points' not found
+[Instances to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instances_to_points.html)
 
 #### Arguments:
 - **instances** (_Geometry_ = None) : socket 'Instances' (Instances)
@@ -2002,7 +2002,7 @@ ERROR: Node 'Instances to Points' not found
 integer(integer=0)
 ```
 
-ERROR: Node 'Integer' not found
+[Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/constant/integer.html)
 
 #### Arguments:
 - **integer** (_int_ = 0) : Node.integer
@@ -2023,7 +2023,7 @@ ERROR: Node 'Integer' not found
 interpolate_curves(guide_curves=None, guide_up=None, guide_group_id=None, points=None, point_up=None, point_group_id=None, max_neighbors=None)
 ```
 
-ERROR: Node 'Interpolate Curves' not found
+[Interpolate Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/interpolate_curves.html)
 
 #### Arguments:
 - **guide_curves** (_Geometry_ = None) : socket 'Guide Curves' (Guide Curves)
@@ -2050,7 +2050,7 @@ ERROR: Node 'Interpolate Curves' not found
 invert_matrix(matrix=None)
 ```
 
-ERROR: Node 'Invert Matrix' not found
+[Invert Matrix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/invert_matrix.html)
 
 #### Arguments:
 - **matrix** (_Matrix_ = None) : socket 'Matrix' (Matrix)
@@ -2071,7 +2071,7 @@ ERROR: Node 'Invert Matrix' not found
 invert_rotation(rotation=None)
 ```
 
-ERROR: Node 'Invert Rotation' not found
+[Invert Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/invert_rotation.html)
 
 #### Arguments:
 - **rotation** (_Rotation_ = None) : socket 'Rotation' (Rotation)
@@ -2092,7 +2092,7 @@ ERROR: Node 'Invert Rotation' not found
 is_face_planar(threshold=None)
 ```
 
-ERROR: Node 'Is Face Planar' not found
+[Is Face Planar](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/face_is_planar.html)
 
 #### Arguments:
 - **threshold** (_Float_ = None) : socket 'Threshold' (Threshold)
@@ -2113,7 +2113,7 @@ ERROR: Node 'Is Face Planar' not found
 join_geometry(geometry=None)
 ```
 
-ERROR: Node 'Join Geometry' not found
+[Join Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/join_geometry.html)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -2134,7 +2134,7 @@ ERROR: Node 'Join Geometry' not found
 join_strings(delimiter=None, strings=None)
 ```
 
-ERROR: Node 'Join Strings' not found
+[Join Strings](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/join_strings.html)
 
 #### Arguments:
 - **delimiter** (_String_ = None) : socket 'Delimiter' (Delimiter)
@@ -2156,7 +2156,7 @@ ERROR: Node 'Join Strings' not found
 magic_texture(vector=None, scale=None, distortion=None, color_mapping=None, texture_mapping=None, turbulence_depth=2)
 ```
 
-ERROR: Node 'Magic Texture' not found
+[Magic Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/magic.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -2182,7 +2182,7 @@ ERROR: Node 'Magic Texture' not found
 map_range(value=None, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True, data_type='FLOAT', interpolation_type='LINEAR')
 ```
 
-ERROR: Node 'Map Range' not found
+[Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (Value)
@@ -2210,7 +2210,7 @@ ERROR: Node 'Map Range' not found
 material(material=None)
 ```
 
-[Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/freestyle/view_layer/line_style/modifiers/color/material.html)
+[Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/constant/material.html)
 
 #### Arguments:
 - **material** (_NoneType_ = None) : Node.material
@@ -2231,7 +2231,7 @@ material(material=None)
 material_selection(material=None)
 ```
 
-ERROR: Node 'Material Selection' not found
+[Material Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_selection.html)
 
 #### Arguments:
 - **material** (_Material_ = None) : socket 'Material' (Material)
@@ -2252,7 +2252,7 @@ ERROR: Node 'Material Selection' not found
 math(value=None, value_1=None, operation='ADD', use_clamp=False)
 ```
 
-[Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/index.html)
+[Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (Value)
@@ -2276,7 +2276,7 @@ math(value=None, value_1=None, operation='ADD', use_clamp=False)
 menu_switch(menu=None, a=None, b=None, active_index=1, data_type='GEOMETRY')
 ```
 
-ERROR: Node 'Menu Switch' not found
+[Menu Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/menu_switch.html)
 
 #### Arguments:
 - **menu** (_Menu_ = None) : socket 'Menu' (Menu)
@@ -2301,7 +2301,7 @@ ERROR: Node 'Menu Switch' not found
 merge_by_distance(geometry=None, selection=None, distance=None, mode='ALL')
 ```
 
-ERROR: Node 'Merge by Distance' not found
+[Merge by Distance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/merge_by_distance.html)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -2325,7 +2325,7 @@ ERROR: Node 'Merge by Distance' not found
 mesh_boolean(mesh_1=None, mesh_2=None, self_intersection=None, hole_tolerant=None, operation='DIFFERENCE', solver='FLOAT')
 ```
 
-ERROR: Node 'Mesh Boolean' not found
+[Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html)
 
 #### Arguments:
 - **mesh_1** (_Geometry_ = None) : socket 'Mesh 1' (Mesh 1)
@@ -2351,7 +2351,7 @@ ERROR: Node 'Mesh Boolean' not found
 mesh_circle(vertices=None, radius=None, fill_type='NONE')
 ```
 
-ERROR: Node 'Mesh Circle' not found
+[Mesh Circle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/mesh_circle.html)
 
 #### Arguments:
 - **vertices** (_Integer_ = None) : socket 'Vertices' (Vertices)
@@ -2374,7 +2374,7 @@ ERROR: Node 'Mesh Circle' not found
 mesh_line(count=None, start_location=None, offset=None, count_mode='TOTAL', mode='OFFSET')
 ```
 
-ERROR: Node 'Mesh Line' not found
+[Mesh Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/mesh_line.html)
 
 #### Arguments:
 - **count** (_Integer_ = None) : socket 'Count' (Count)
@@ -2399,7 +2399,7 @@ ERROR: Node 'Mesh Line' not found
 mesh_to_curve(mesh=None, selection=None)
 ```
 
-ERROR: Node 'Mesh to Curve' not found
+[Mesh to Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_curve.html)
 
 #### Arguments:
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (Mesh)
@@ -2445,7 +2445,7 @@ ERROR: Node 'Mesh to Density Grid' not found
 mesh_to_points(mesh=None, selection=None, position=None, radius=None, mode='VERTICES')
 ```
 
-ERROR: Node 'Mesh to Points' not found
+[Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_points.html)
 
 #### Arguments:
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (Mesh)
@@ -2493,7 +2493,7 @@ ERROR: Node 'Mesh to SDF Grid' not found
 mesh_to_volume(mesh=None, density=None, voxel_amount=None, interior_band_width=None, resolution_mode='VOXEL_AMOUNT')
 ```
 
-ERROR: Node 'Mesh to Volume' not found
+[Mesh to Volume](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_volume.html)
 
 #### Arguments:
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (Mesh)
@@ -2518,7 +2518,7 @@ ERROR: Node 'Mesh to Volume' not found
 mix(factor=None, a=None, b=None, blend_type='MIX', clamp_factor=True, clamp_result=False, data_type='FLOAT', factor_mode='UNIFORM')
 ```
 
-[Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../compositing/types/color/mix/index.html)
+[Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket 'Factor' (Factor_Float)
@@ -2546,7 +2546,7 @@ mix(factor=None, a=None, b=None, blend_type='MIX', clamp_factor=True, clamp_resu
 multiply_matrices(matrix=None, matrix_1=None)
 ```
 
-ERROR: Node 'Multiply Matrices' not found
+[Multiply Matrices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/multiply_matrices.html)
 
 #### Arguments:
 - **matrix** (_Matrix_ = None) : socket 'Matrix' (Matrix)
@@ -2568,7 +2568,7 @@ ERROR: Node 'Multiply Matrices' not found
 named_attribute(name=None, data_type='FLOAT')
 ```
 
-ERROR: Node 'Named Attribute' not found
+[Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
 #### Arguments:
 - **name** (_String_ = None) : socket 'Name' (Name)
@@ -2611,7 +2611,7 @@ ERROR: Node 'Named Layer Selection' not found
 noise_texture(vector=None, scale=None, detail=None, roughness=None, lacunarity=None, distortion=None, color_mapping=None, noise_dimensions='3D', noise_type='FBM', normalize=True, texture_mapping=None)
 ```
 
-ERROR: Node 'Noise Texture' not found
+[Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -2642,7 +2642,7 @@ ERROR: Node 'Noise Texture' not found
 object_info(object=None, as_instance=None, transform_space='ORIGINAL')
 ```
 
-ERROR: Node 'Object Info' not found
+[Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene/object_info.html)
 
 #### Arguments:
 - **object** (_Object_ = None) : socket 'Object' (Object)
@@ -2665,7 +2665,7 @@ ERROR: Node 'Object Info' not found
 offset_corner_in_face(corner_index=None, offset=None)
 ```
 
-ERROR: Node 'Offset Corner in Face' not found
+[Offset Corner in Face](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/offset_corner_in_face.html)
 
 #### Arguments:
 - **corner_index** (_Integer_ = None) : socket 'Corner Index' (Corner Index)
@@ -2687,7 +2687,7 @@ ERROR: Node 'Offset Corner in Face' not found
 offset_point_in_curve(point_index=None, offset=None)
 ```
 
-ERROR: Node 'Offset Point in Curve' not found
+[Offset Point in Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/topology/offset_point_in_curve.html)
 
 #### Arguments:
 - **point_index** (_Integer_ = None) : socket 'Point Index' (Point Index)
@@ -2709,7 +2709,7 @@ ERROR: Node 'Offset Point in Curve' not found
 pack_uv_islands(uv=None, selection=None, margin=None, rotate=None)
 ```
 
-ERROR: Node 'Pack UV Islands' not found
+[Pack UV Islands](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/uv/pack_uv_islands.html)
 
 #### Arguments:
 - **uv** (_Vector_ = None) : socket 'UV' (UV)
@@ -2733,7 +2733,7 @@ ERROR: Node 'Pack UV Islands' not found
 points(count=None, position=None, radius=None)
 ```
 
-ERROR: Node 'Points' not found
+[Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points.html)
 
 #### Arguments:
 - **count** (_Integer_ = None) : socket 'Count' (Count)
@@ -2756,7 +2756,7 @@ ERROR: Node 'Points' not found
 points_of_curve(curve_index=None, weights=None, sort_index=None)
 ```
 
-ERROR: Node 'Points of Curve' not found
+[Points of Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/topology/points_of_curve.html)
 
 #### Arguments:
 - **curve_index** (_Integer_ = None) : socket 'Curve Index' (Curve Index)
@@ -2779,7 +2779,7 @@ ERROR: Node 'Points of Curve' not found
 points_to_curves(points=None, curve_group_id=None, weight=None)
 ```
 
-ERROR: Node 'Points to Curves' not found
+[Points to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points_to_curves.html)
 
 #### Arguments:
 - **points** (_Geometry_ = None) : socket 'Points' (Points)
@@ -2825,7 +2825,7 @@ ERROR: Node 'Points to SDF Grid' not found
 points_to_vertices(points=None, selection=None)
 ```
 
-ERROR: Node 'Points to Vertices' not found
+[Points to Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points_to_vertices.html)
 
 #### Arguments:
 - **points** (_Geometry_ = None) : socket 'Points' (Points)
@@ -2847,7 +2847,7 @@ ERROR: Node 'Points to Vertices' not found
 points_to_volume(points=None, density=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_AMOUNT')
 ```
 
-ERROR: Node 'Points to Volume' not found
+[Points to Volume](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points_to_volume.html)
 
 #### Arguments:
 - **points** (_Geometry_ = None) : socket 'Points' (Points)
@@ -2872,7 +2872,7 @@ ERROR: Node 'Points to Volume' not found
 project_point(vector=None, transform=None)
 ```
 
-ERROR: Node 'Project Point' not found
+[Project Point](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/project_point.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -2918,7 +2918,7 @@ ERROR: Node 'Quadratic Bézier' not found
 quadrilateral(width=None, height=None, mode='RECTANGLE')
 ```
 
-ERROR: Node 'Quadrilateral' not found
+[Quadrilateral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/quadrilateral.html)
 
 #### Arguments:
 - **width** (_Float_ = None) : socket 'Width' (Width)
@@ -2941,7 +2941,7 @@ ERROR: Node 'Quadrilateral' not found
 quaternion_to_rotation(w=None, x=None, y=None, z=None)
 ```
 
-ERROR: Node 'Quaternion to Rotation' not found
+[Quaternion to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/quaternion_to_rotation.html)
 
 #### Arguments:
 - **w** (_Float_ = None) : socket 'W' (W)
@@ -2965,7 +2965,7 @@ ERROR: Node 'Quaternion to Rotation' not found
 random_value(min=None, max=None, id=None, seed=None, data_type='FLOAT')
 ```
 
-ERROR: Node 'Random Value' not found
+[Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html)
 
 #### Arguments:
 - **min** (_Float_ = None) : socket 'Min' (Min_001)
@@ -2990,7 +2990,7 @@ ERROR: Node 'Random Value' not found
 raycast(target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None, data_type='FLOAT', mapping='INTERPOLATED')
 ```
 
-ERROR: Node 'Raycast' not found
+[Raycast](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/raycast.html)
 
 #### Arguments:
 - **target_geometry** (_Geometry_ = None) : socket 'Target Geometry' (Target Geometry)
@@ -3017,7 +3017,7 @@ ERROR: Node 'Raycast' not found
 realize_instances(geometry=None, selection=None, realize_all=None, depth=None)
 ```
 
-ERROR: Node 'Realize Instances' not found
+[Realize Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/realize_instances.html)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -3041,7 +3041,7 @@ ERROR: Node 'Realize Instances' not found
 remove_named_attribute(geometry=None, name=None, pattern_mode='EXACT')
 ```
 
-ERROR: Node 'Remove Named Attribute' not found
+[Remove Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/remove_named_attribute.html)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -3107,7 +3107,7 @@ ERROR: Node 'Repeat Output' not found
 replace_material(geometry=None, old=None, new=None)
 ```
 
-ERROR: Node 'Replace Material' not found
+[Replace Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/replace_material.html)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -3130,7 +3130,7 @@ ERROR: Node 'Replace Material' not found
 replace_string(string=None, find=None, replace=None)
 ```
 
-ERROR: Node 'Replace String' not found
+[Replace String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/replace_string.html)
 
 #### Arguments:
 - **string** (_String_ = None) : socket 'String' (String)
@@ -3153,7 +3153,7 @@ ERROR: Node 'Replace String' not found
 reroute(input=None)
 ```
 
-ERROR: Node 'Reroute' not found
+[Reroute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../interface/controls/nodes/reroute.html)
 
 #### Arguments:
 - **input** (_Color_ = None) : socket 'Input' (Input)
@@ -3174,7 +3174,7 @@ ERROR: Node 'Reroute' not found
 resample_curve(curve=None, selection=None, count=None, mode='COUNT')
 ```
 
-ERROR: Node 'Resample Curve' not found
+[Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/resample_curve.html)
 
 #### Arguments:
 - **curve** (_Geometry_ = None) : socket 'Curve' (Curve)
@@ -3198,7 +3198,7 @@ ERROR: Node 'Resample Curve' not found
 reverse_curve(curve=None, selection=None)
 ```
 
-ERROR: Node 'Reverse Curve' not found
+[Reverse Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/reverse_curve.html)
 
 #### Arguments:
 - **curve** (_Geometry_ = None) : socket 'Curve' (Curve)
@@ -3220,7 +3220,7 @@ ERROR: Node 'Reverse Curve' not found
 rgb_curves(fac=None, color=None, mapping=None)
 ```
 
-ERROR: Node 'RGB Curves' not found
+[RGB Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/rgb_curves.html)
 
 #### Arguments:
 - **fac** (_Float_ = None) : socket 'Fac' (Fac)
@@ -3243,7 +3243,7 @@ ERROR: Node 'RGB Curves' not found
 rotate_euler(rotation=None, rotate_by=None, rotation_type='EULER', space='OBJECT')
 ```
 
-ERROR: Node 'Rotate Euler' not found
+[Rotate Euler](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/deprecated/rotate_euler.html)
 
 #### Arguments:
 - **rotation** (_Vector_ = None) : socket 'Rotation' (Rotation)
@@ -3267,7 +3267,7 @@ ERROR: Node 'Rotate Euler' not found
 rotate_instances(instances=None, selection=None, rotation=None, pivot_point=None, local_space=None)
 ```
 
-ERROR: Node 'Rotate Instances' not found
+[Rotate Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/rotate_instances.html)
 
 #### Arguments:
 - **instances** (_Geometry_ = None) : socket 'Instances' (Instances)
@@ -3292,7 +3292,7 @@ ERROR: Node 'Rotate Instances' not found
 rotate_rotation(rotation=None, rotate_by=None, rotation_space='GLOBAL')
 ```
 
-ERROR: Node 'Rotate Rotation' not found
+[Rotate Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/rotate_rotation.html)
 
 #### Arguments:
 - **rotation** (_Rotation_ = None) : socket 'Rotation' (Rotation)
@@ -3315,7 +3315,7 @@ ERROR: Node 'Rotate Rotation' not found
 rotate_vector(vector=None, rotation=None)
 ```
 
-ERROR: Node 'Rotate Vector' not found
+[Rotate Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/rotate_vector.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -3337,7 +3337,7 @@ ERROR: Node 'Rotate Vector' not found
 rotation(rotation_euler=None)
 ```
 
-[Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/index.html)
+[Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/constant/rotation.html)
 
 #### Arguments:
 - **rotation_euler** (_Euler_ = None) : Node.rotation_euler
@@ -3379,7 +3379,7 @@ ERROR: Node 'Rotation to Axis Angle' not found
 rotation_to_euler(rotation=None)
 ```
 
-ERROR: Node 'Rotation to Euler' not found
+[Rotation to Euler](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/rotation_to_euler.html)
 
 #### Arguments:
 - **rotation** (_Rotation_ = None) : socket 'Rotation' (Rotation)
@@ -3400,7 +3400,7 @@ ERROR: Node 'Rotation to Euler' not found
 rotation_to_quaternion(rotation=None)
 ```
 
-ERROR: Node 'Rotation to Quaternion' not found
+[Rotation to Quaternion](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/rotation_to_quaternion.html)
 
 #### Arguments:
 - **rotation** (_Rotation_ = None) : socket 'Rotation' (Rotation)
@@ -3421,7 +3421,7 @@ ERROR: Node 'Rotation to Quaternion' not found
 sample_curve(curves=None, value=None, factor=None, curve_index=None, data_type='FLOAT', mode='FACTOR', use_all_curves=False)
 ```
 
-ERROR: Node 'Sample Curve' not found
+[Sample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/sample/sample_curve.html)
 
 #### Arguments:
 - **curves** (_Geometry_ = None) : socket 'Curves' (Curves)
@@ -3497,7 +3497,7 @@ ERROR: Node 'Sample Grid Index' not found
 sample_index(geometry=None, value=None, index=None, clamp=False, data_type='FLOAT', domain='POINT')
 ```
 
-ERROR: Node 'Sample Index' not found
+[Sample Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/sample_index.html)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -3523,7 +3523,7 @@ ERROR: Node 'Sample Index' not found
 sample_nearest(geometry=None, sample_position=None, domain='POINT')
 ```
 
-ERROR: Node 'Sample Nearest' not found
+[Sample Nearest](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/sample_nearest.html)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -3546,7 +3546,7 @@ ERROR: Node 'Sample Nearest' not found
 sample_nearest_surface(mesh=None, value=None, group_id=None, sample_position=None, sample_group_id=None, data_type='FLOAT')
 ```
 
-ERROR: Node 'Sample Nearest Surface' not found
+[Sample Nearest Surface](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/sample/sample_nearest_surface.html)
 
 #### Arguments:
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (Mesh)
@@ -3572,7 +3572,7 @@ ERROR: Node 'Sample Nearest Surface' not found
 sample_uv_surface(mesh=None, value=None, uv_map=None, sample_uv=None, data_type='FLOAT')
 ```
 
-ERROR: Node 'Sample UV Surface' not found
+[Sample UV Surface](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/sample/sample_uv_surface.html)
 
 #### Arguments:
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (Mesh)
@@ -3597,7 +3597,7 @@ ERROR: Node 'Sample UV Surface' not found
 scale_elements(geometry=None, selection=None, scale=None, center=None, domain='FACE', scale_mode='UNIFORM')
 ```
 
-ERROR: Node 'Scale Elements' not found
+[Scale Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/scale_elements.html)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -3623,7 +3623,7 @@ ERROR: Node 'Scale Elements' not found
 scale_instances(instances=None, selection=None, scale=None, center=None, local_space=None)
 ```
 
-ERROR: Node 'Scale Instances' not found
+[Scale Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/scale_instances.html)
 
 #### Arguments:
 - **instances** (_Geometry_ = None) : socket 'Instances' (Instances)
@@ -3671,7 +3671,7 @@ ERROR: Node 'SDF Grid Boolean' not found
 separate_color(color=None, mode='RGB')
 ```
 
-ERROR: Node 'Separate Color' not found
+[Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -3693,7 +3693,7 @@ ERROR: Node 'Separate Color' not found
 separate_components(geometry=None)
 ```
 
-ERROR: Node 'Separate Components' not found
+[Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/separate_components.html)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -3714,7 +3714,7 @@ ERROR: Node 'Separate Components' not found
 separate_geometry(geometry=None, selection=None, domain='POINT')
 ```
 
-ERROR: Node 'Separate Geometry' not found
+[Separate Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/separate_geometry.html)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -3737,7 +3737,7 @@ ERROR: Node 'Separate Geometry' not found
 separate_matrix(matrix=None)
 ```
 
-ERROR: Node 'Separate Matrix' not found
+[Separate Matrix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/separate_matrix.html)
 
 #### Arguments:
 - **matrix** (_Matrix_ = None) : socket 'Matrix' (Matrix)
@@ -3758,7 +3758,7 @@ ERROR: Node 'Separate Matrix' not found
 separate_transform(transform=None)
 ```
 
-ERROR: Node 'Separate Transform' not found
+[Separate Transform](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/separate_transform.html)
 
 #### Arguments:
 - **transform** (_Matrix_ = None) : socket 'Transform' (Transform)
@@ -3779,7 +3779,7 @@ ERROR: Node 'Separate Transform' not found
 separate_xyz(vector=None)
 ```
 
-ERROR: Node 'Separate XYZ' not found
+[Separate XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/separate_xyz.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -3800,7 +3800,7 @@ ERROR: Node 'Separate XYZ' not found
 set_curve_normal(curve=None, selection=None, mode='MINIMUM_TWIST')
 ```
 
-ERROR: Node 'Set Curve Normal' not found
+[Set Curve Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_curve_normal.html)
 
 #### Arguments:
 - **curve** (_Geometry_ = None) : socket 'Curve' (Curve)
@@ -3823,7 +3823,7 @@ ERROR: Node 'Set Curve Normal' not found
 set_curve_radius(curve=None, selection=None, radius=None)
 ```
 
-ERROR: Node 'Set Curve Radius' not found
+[Set Curve Radius](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_curve_radius.html)
 
 #### Arguments:
 - **curve** (_Geometry_ = None) : socket 'Curve' (Curve)
@@ -3846,7 +3846,7 @@ ERROR: Node 'Set Curve Radius' not found
 set_curve_tilt(curve=None, selection=None, tilt=None)
 ```
 
-ERROR: Node 'Set Curve Tilt' not found
+[Set Curve Tilt](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_curve_tilt.html)
 
 #### Arguments:
 - **curve** (_Geometry_ = None) : socket 'Curve' (Curve)
@@ -3869,7 +3869,7 @@ ERROR: Node 'Set Curve Tilt' not found
 set_face_set(mesh=None, selection=None, face_set=None)
 ```
 
-ERROR: Node 'Set Face Set' not found
+[Set Face Set](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/write/set_face_set.html)
 
 #### Arguments:
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (Mesh)
@@ -3892,7 +3892,7 @@ ERROR: Node 'Set Face Set' not found
 set_handle_positions(curve=None, selection=None, position=None, offset=None, mode='LEFT')
 ```
 
-ERROR: Node 'Set Handle Positions' not found
+[Set Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_positions.html)
 
 #### Arguments:
 - **curve** (_Geometry_ = None) : socket 'Curve' (Curve)
@@ -3917,7 +3917,7 @@ ERROR: Node 'Set Handle Positions' not found
 set_handle_type(curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'})
 ```
 
-ERROR: Node 'Set Handle Type' not found
+[Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html)
 
 #### Arguments:
 - **curve** (_Geometry_ = None) : socket 'Curve' (Curve)
@@ -3941,7 +3941,7 @@ ERROR: Node 'Set Handle Type' not found
 set_id(geometry=None, selection=None, id=None)
 ```
 
-ERROR: Node 'Set ID' not found
+[Set ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/write/set_id.html)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -3964,7 +3964,7 @@ ERROR: Node 'Set ID' not found
 set_instance_transform(instances=None, selection=None, transform=None)
 ```
 
-ERROR: Node 'Set Instance Transform' not found
+[Set Instance Transform](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/set_instance_transform.html)
 
 #### Arguments:
 - **instances** (_Geometry_ = None) : socket 'Instances' (Instances)
@@ -3987,7 +3987,7 @@ ERROR: Node 'Set Instance Transform' not found
 set_material(geometry=None, selection=None, material=None)
 ```
 
-ERROR: Node 'Set Material' not found
+[Set Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -4010,7 +4010,7 @@ ERROR: Node 'Set Material' not found
 set_material_index(geometry=None, selection=None, material_index=None)
 ```
 
-ERROR: Node 'Set Material Index' not found
+[Set Material Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material_index.html)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -4033,7 +4033,7 @@ ERROR: Node 'Set Material Index' not found
 set_point_radius(points=None, selection=None, radius=None)
 ```
 
-ERROR: Node 'Set Point Radius' not found
+[Set Point Radius](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/set_point_radius.html)
 
 #### Arguments:
 - **points** (_Geometry_ = None) : socket 'Points' (Points)
@@ -4056,7 +4056,7 @@ ERROR: Node 'Set Point Radius' not found
 set_position(geometry=None, selection=None, position=None, offset=None)
 ```
 
-ERROR: Node 'Set Position' not found
+[Set Position](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/write/set_position.html)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -4080,7 +4080,7 @@ ERROR: Node 'Set Position' not found
 set_selection(geometry=None, selection=None, domain='POINT')
 ```
 
-ERROR: Node 'Set Selection' not found
+[Set Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/write/set_selection.html)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -4103,7 +4103,7 @@ ERROR: Node 'Set Selection' not found
 set_shade_smooth(geometry=None, selection=None, shade_smooth=None, domain='FACE')
 ```
 
-ERROR: Node 'Set Shade Smooth' not found
+[Set Shade Smooth](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/write/set_shade_smooth.html)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -4127,7 +4127,7 @@ ERROR: Node 'Set Shade Smooth' not found
 set_spline_cyclic(geometry=None, selection=None, cyclic=None)
 ```
 
-ERROR: Node 'Set Spline Cyclic' not found
+[Set Spline Cyclic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_spline_cyclic.html)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -4150,7 +4150,7 @@ ERROR: Node 'Set Spline Cyclic' not found
 set_spline_resolution(geometry=None, selection=None, resolution=None)
 ```
 
-ERROR: Node 'Set Spline Resolution' not found
+[Set Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_spline_resolution.html)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -4173,7 +4173,7 @@ ERROR: Node 'Set Spline Resolution' not found
 set_spline_type(curve=None, selection=None, spline_type='POLY')
 ```
 
-ERROR: Node 'Set Spline Type' not found
+[Set Spline Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_spline_type.html)
 
 #### Arguments:
 - **curve** (_Geometry_ = None) : socket 'Curve' (Curve)
@@ -4196,7 +4196,7 @@ ERROR: Node 'Set Spline Type' not found
 shortest_edge_paths(end_vertex=None, edge_cost=None)
 ```
 
-ERROR: Node 'Shortest Edge Paths' not found
+[Shortest Edge Paths](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/shortest_edge_paths.html)
 
 #### Arguments:
 - **end_vertex** (_Boolean_ = None) : socket 'End Vertex' (End Vertex)
@@ -4265,7 +4265,7 @@ ERROR: Node 'Simulation Output' not found
 slice_string(string=None, position=None, length=None)
 ```
 
-ERROR: Node 'Slice String' not found
+[Slice String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/slice_string.html)
 
 #### Arguments:
 - **string** (_String_ = None) : socket 'String' (String)
@@ -4288,7 +4288,7 @@ ERROR: Node 'Slice String' not found
 sort_elements(geometry=None, selection=None, group_id=None, sort_weight=None, domain='POINT')
 ```
 
-[Sort Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../meshes/editing/mesh/sort_elements.html)
+[Sort Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/sort_elements.html)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -4339,7 +4339,7 @@ ERROR: Node 'Spiral' not found
 split_edges(mesh=None, selection=None)
 ```
 
-ERROR: Node 'Split Edges' not found
+[Split Edges](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/split_edges.html)
 
 #### Arguments:
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (Mesh)
@@ -4361,7 +4361,7 @@ ERROR: Node 'Split Edges' not found
 split_to_instances(geometry=None, selection=None, group_id=None, domain='POINT')
 ```
 
-ERROR: Node 'Split to Instances' not found
+[Split to Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/split_to_instances.html)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -4385,7 +4385,7 @@ ERROR: Node 'Split to Instances' not found
 star(points=None, inner_radius=None, outer_radius=None, twist=None)
 ```
 
-ERROR: Node 'Star' not found
+[Star](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/star.html)
 
 #### Arguments:
 - **points** (_Integer_ = None) : socket 'Points' (Points)
@@ -4409,7 +4409,7 @@ ERROR: Node 'Star' not found
 store_named_attribute(geometry=None, selection=None, name=None, value=None, data_type='FLOAT', domain='POINT')
 ```
 
-ERROR: Node 'Store Named Attribute' not found
+[Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -4459,7 +4459,7 @@ ERROR: Node 'Store Named Grid' not found
 string(string='')
 ```
 
-ERROR: Node 'String' not found
+[String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/constant/string.html)
 
 #### Arguments:
 - **string** (_str_ = ) : Node.string
@@ -4480,7 +4480,7 @@ ERROR: Node 'String' not found
 string_length(string=None)
 ```
 
-ERROR: Node 'String Length' not found
+[String Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/string_length.html)
 
 #### Arguments:
 - **string** (_String_ = None) : socket 'String' (String)
@@ -4501,7 +4501,7 @@ ERROR: Node 'String Length' not found
 string_to_curves(string=None, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, align_x='LEFT', align_y='TOP_BASELINE', font=None, overflow='OVERFLOW', pivot_mode='BOTTOM_LEFT')
 ```
 
-ERROR: Node 'String to Curves' not found
+[String to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/string_to_curves.html)
 
 #### Arguments:
 - **string** (_String_ = None) : socket 'String' (String)
@@ -4532,7 +4532,7 @@ ERROR: Node 'String to Curves' not found
 subdivide_curve(curve=None, cuts=None)
 ```
 
-ERROR: Node 'Subdivide Curve' not found
+[Subdivide Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/subdivide_curve.html)
 
 #### Arguments:
 - **curve** (_Geometry_ = None) : socket 'Curve' (Curve)
@@ -4554,7 +4554,7 @@ ERROR: Node 'Subdivide Curve' not found
 subdivide_mesh(mesh=None, level=None)
 ```
 
-ERROR: Node 'Subdivide Mesh' not found
+[Subdivide Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/subdivide_mesh.html)
 
 #### Arguments:
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (Mesh)
@@ -4576,7 +4576,7 @@ ERROR: Node 'Subdivide Mesh' not found
 subdivision_surface(mesh=None, level=None, edge_crease=None, vertex_crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES')
 ```
 
-ERROR: Node 'Subdivision Surface' not found
+[Subdivision Surface](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/subdivision_surface.html)
 
 #### Arguments:
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (Mesh)
@@ -4602,7 +4602,7 @@ ERROR: Node 'Subdivision Surface' not found
 switch(switch=None, false=None, true=None, input_type='GEOMETRY')
 ```
 
-ERROR: Node 'Switch' not found
+[Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html)
 
 #### Arguments:
 - **switch** (_Boolean_ = None) : socket 'Switch' (Switch)
@@ -4626,7 +4626,7 @@ ERROR: Node 'Switch' not found
 transform_direction(direction=None, transform=None)
 ```
 
-ERROR: Node 'Transform Direction' not found
+[Transform Direction](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/transform_direction.html)
 
 #### Arguments:
 - **direction** (_Vector_ = None) : socket 'Direction' (Direction)
@@ -4648,7 +4648,7 @@ ERROR: Node 'Transform Direction' not found
 transform_geometry(geometry=None, translation=None, rotation=None, scale=None, mode='COMPONENTS')
 ```
 
-ERROR: Node 'Transform Geometry' not found
+[Transform Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/transform_geometry.html)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -4673,7 +4673,7 @@ ERROR: Node 'Transform Geometry' not found
 transform_point(vector=None, transform=None)
 ```
 
-ERROR: Node 'Transform Point' not found
+[Transform Point](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/transform_point.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -4695,7 +4695,7 @@ ERROR: Node 'Transform Point' not found
 translate_instances(instances=None, selection=None, translation=None, local_space=None)
 ```
 
-ERROR: Node 'Translate Instances' not found
+[Translate Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/translate_instances.html)
 
 #### Arguments:
 - **instances** (_Geometry_ = None) : socket 'Instances' (Instances)
@@ -4719,7 +4719,7 @@ ERROR: Node 'Translate Instances' not found
 transpose_matrix(matrix=None)
 ```
 
-ERROR: Node 'Transpose Matrix' not found
+[Transpose Matrix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/transpose_matrix.html)
 
 #### Arguments:
 - **matrix** (_Matrix_ = None) : socket 'Matrix' (Matrix)
@@ -4740,7 +4740,7 @@ ERROR: Node 'Transpose Matrix' not found
 triangulate(mesh=None, selection=None, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL')
 ```
 
-ERROR: Node 'Triangulate' not found
+[Triangulate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/triangulate.html)
 
 #### Arguments:
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (Mesh)
@@ -4765,7 +4765,7 @@ ERROR: Node 'Triangulate' not found
 trim_curve(curve=None, selection=None, start=None, end=None, mode='FACTOR')
 ```
 
-ERROR: Node 'Trim Curve' not found
+[Trim Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/trim_curve.html)
 
 #### Arguments:
 - **curve** (_Geometry_ = None) : socket 'Curve' (Curve)
@@ -4790,7 +4790,7 @@ ERROR: Node 'Trim Curve' not found
 uv_sphere(segments=None, rings=None, radius=None)
 ```
 
-ERROR: Node 'UV Sphere' not found
+[UV Sphere](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/uv_sphere.html)
 
 #### Arguments:
 - **segments** (_Integer_ = None) : socket 'Segments' (Segments)
@@ -4813,7 +4813,7 @@ ERROR: Node 'UV Sphere' not found
 uv_unwrap(selection=None, seam=None, margin=None, fill_holes=None, method='ANGLE_BASED')
 ```
 
-ERROR: Node 'UV Unwrap' not found
+[UV Unwrap](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/uv/uv_unwrap.html)
 
 #### Arguments:
 - **selection** (_Boolean_ = None) : socket 'Selection' (Selection)
@@ -4838,7 +4838,7 @@ ERROR: Node 'UV Unwrap' not found
 value_to_string(value=None, decimals=None)
 ```
 
-ERROR: Node 'Value to String' not found
+[Value to String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/value_to_string.html)
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (Value)
@@ -4860,7 +4860,7 @@ ERROR: Node 'Value to String' not found
 vector(vector=None)
 ```
 
-[Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/index.html)
+[Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/constant/vector.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : Node.vector
@@ -4881,7 +4881,7 @@ vector(vector=None)
 vector_curves(fac=None, vector=None, mapping=None)
 ```
 
-ERROR: Node 'Vector Curves' not found
+[Vector Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_curves.html)
 
 #### Arguments:
 - **fac** (_Float_ = None) : socket 'Fac' (Fac)
@@ -4904,7 +4904,7 @@ ERROR: Node 'Vector Curves' not found
 vector_math(vector=None, vector_1=None, operation='ADD')
 ```
 
-ERROR: Node 'Vector Math' not found
+[Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -4927,7 +4927,7 @@ ERROR: Node 'Vector Math' not found
 vector_rotate(vector=None, center=None, axis=None, angle=None, invert=False, rotation_type='AXIS_ANGLE')
 ```
 
-ERROR: Node 'Vector Rotate' not found
+[Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_rotate.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -4953,7 +4953,7 @@ ERROR: Node 'Vector Rotate' not found
 vertex_of_corner(corner_index=None)
 ```
 
-ERROR: Node 'Vertex of Corner' not found
+[Vertex of Corner](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/vertex_of_corner.html)
 
 #### Arguments:
 - **corner_index** (_Integer_ = None) : socket 'Corner Index' (Corner Index)
@@ -4974,7 +4974,7 @@ ERROR: Node 'Vertex of Corner' not found
 viewer(geometry=None, value=None, data_type='FLOAT', domain='AUTO')
 ```
 
-ERROR: Node 'Viewer' not found
+[Viewer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/output/viewer.html)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -4993,7 +4993,7 @@ ERROR: Node 'Viewer' not found
 volume_cube(density=None, background=None, min=None, max=None, resolution_x=None, resolution_y=None, resolution_z=None)
 ```
 
-ERROR: Node 'Volume Cube' not found
+[Volume Cube](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/primitives/volume_cube.html)
 
 #### Arguments:
 - **density** (_Float_ = None) : socket 'Density' (Density)
@@ -5020,7 +5020,7 @@ ERROR: Node 'Volume Cube' not found
 volume_to_mesh(volume=None, threshold=None, adaptivity=None, resolution_mode='GRID')
 ```
 
-ERROR: Node 'Volume to Mesh' not found
+[Volume to Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/operations/volume_to_mesh.html)
 
 #### Arguments:
 - **volume** (_Geometry_ = None) : socket 'Volume' (Volume)
@@ -5044,7 +5044,7 @@ ERROR: Node 'Volume to Mesh' not found
 voronoi_texture(vector=None, scale=None, detail=None, roughness=None, lacunarity=None, randomness=None, color_mapping=None, distance='EUCLIDEAN', feature='F1', normalize=False, texture_mapping=None, voronoi_dimensions='3D')
 ```
 
-ERROR: Node 'Voronoi Texture' not found
+[Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -5076,7 +5076,7 @@ ERROR: Node 'Voronoi Texture' not found
 wave_texture(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', color_mapping=None, rings_direction='X', texture_mapping=None, wave_profile='SIN', wave_type='BANDS')
 ```
 
-ERROR: Node 'Wave Texture' not found
+[Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -5109,7 +5109,7 @@ ERROR: Node 'Wave Texture' not found
 white_noise_texture(vector=None, noise_dimensions='3D')
 ```
 
-ERROR: Node 'White Noise Texture' not found
+[White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)

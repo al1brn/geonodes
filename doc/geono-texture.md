@@ -42,9 +42,9 @@ Class Image data socket
 Brick(vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None)
 ```
 
-ERROR: Node 'Brick Texture' not found
+[Brick Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/brick.html)
 
-ERROR: Node 'Brick Texture' not found
+[Brick Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/brick.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -74,9 +74,9 @@ ERROR: Node 'Brick Texture' not found
 Checker(vector=None, color1=None, color2=None, scale=None)
 ```
 
-ERROR: Node 'Checker Texture' not found
+[Checker Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/checker.html)
 
-ERROR: Node 'Checker Texture' not found
+[Checker Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/checker.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -100,9 +100,9 @@ ERROR: Node 'Checker Texture' not found
 Gradient(vector=None)
 ```
 
-ERROR: Node 'Gradient Texture' not found
+[Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html)
 
-ERROR: Node 'Gradient Texture' not found
+[Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -123,9 +123,9 @@ ERROR: Node 'Gradient Texture' not found
 Image(image=None, vector=None, frame=None, interpolation='Linear', extension='REPEAT')
 ```
 
-ERROR: Node 'Image Texture' not found
+[Image Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/image.html)
 
-ERROR: Node 'Image Texture' not found
+[Image Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/image.html)
 
 #### Arguments:
 - **image** (_Image_ = None) : socket 'Image' (Image)
@@ -150,9 +150,9 @@ ERROR: Node 'Image Texture' not found
 Magic(vector=None, scale=None, distortion=None)
 ```
 
-ERROR: Node 'Magic Texture' not found
+[Magic Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/magic.html)
 
-ERROR: Node 'Magic Texture' not found
+[Magic Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/magic.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -175,9 +175,9 @@ ERROR: Node 'Magic Texture' not found
 Noise(vector=None, w=None, scale=None, detail=None, roughness=None, lacunarity=None, offset=None, gain=None, distortion=None, dim='3D', noise_type='FBM')
 ```
 
-ERROR: Node 'Noise Texture' not found
+[Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html)
 
-ERROR: Node 'Noise Texture' not found
+[Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -208,9 +208,9 @@ ERROR: Node 'Noise Texture' not found
 Voronoi(vector=None, w=None, scale=None, detail=None, roughness=None, lacunarity=None, smoothness=None, exponent=None, randomness=None, dim='3D', feature='F1', distance='EUCLIDEAN')
 ```
 
-ERROR: Node 'Voronoi Texture' not found
+[Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html)
 
-ERROR: Node 'Voronoi Texture' not found
+[Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -242,9 +242,9 @@ ERROR: Node 'Voronoi Texture' not found
 Wave(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, wave_type='BANDS', bands_direction='X', rings_direction='X', wave_profile='SIN')
 ```
 
-ERROR: Node 'Wave Texture' not found
+[Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html)
 
-ERROR: Node 'Wave Texture' not found
+[Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -275,9 +275,9 @@ ERROR: Node 'Wave Texture' not found
 WhiteNoise(vector=None, w=None, dim='3D')
 ```
 
-ERROR: Node 'White Noise Texture' not found
+[White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html)
 
-ERROR: Node 'White Noise Texture' not found
+[White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)

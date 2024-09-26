@@ -8,7 +8,7 @@ Boolean(value=False, name=None, tip=None, subtype='NONE')
 
 Socket of type BOOLEAN
 
-ERROR: Node 'Boolean' not found
+[Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/constant/boolean.html)
 
 #### Arguments:
 - **value** (_bool or Socket_ = False) : initial value
@@ -39,9 +39,9 @@ ERROR: Node 'Boolean' not found
 Named(name)
 ```
 
-ERROR: Node 'Named Attribute' not found
+[Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
-ERROR: Node 'Named Attribute' not found
+[Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
 'Named' is a synonym of 'NamedAttribute'
 
@@ -81,9 +81,9 @@ with GeoNodes("Named Attributes"):
 NamedAttribute(name)
 ```
 
-ERROR: Node 'Named Attribute' not found
+[Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
-ERROR: Node 'Named Attribute' not found
+[Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
 'Named' is a synonym of 'NamedAttribute'
 
@@ -125,7 +125,7 @@ Random(probability=None, id=None, seed=None)
 
 Constructor : random Boolean.
 
-ERROR: Node 'Random Value' not found
+[Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html)
 
 #### Arguments:
 - **probability** (_Float_ = None)
