@@ -34,7 +34,7 @@ VolumeShader(socket)
 Absorption(color=None, density=None)
 ```
 
-[Volume Absorption](https://docs.blender.org/api/current/bpy.types.ShaderNodeVolumeAbsorption.html#bpy.types.ShaderNodeVolumeAbsorption)
+> **Node** : [Volume Absorption](https://docs.blender.org/api/current/bpy.types.ShaderNodeVolumeAbsorption.html#bpy.types.ShaderNodeVolumeAbsorption)
 
 #### Arguments:
 - **color** ( = None)
@@ -51,7 +51,7 @@ Absorption(color=None, density=None)
 Principled(color=None, color_attribute=None, density=None, density_attribute=None, anisotropy=None, absorption_color=None, emission_strength=None, emission_color=None, blackbody_intensity=None, blackbody_tint=None, temperature=None, temperature_attribute=None)
 ```
 
-[Principled Volume](https://docs.blender.org/api/current/bpy.types.ShaderNodeVolumePrincipled.html#bpy.types.ShaderNodeVolumePrincipled)
+> **Node** : [Principled Volume](https://docs.blender.org/api/current/bpy.types.ShaderNodeVolumePrincipled.html#bpy.types.ShaderNodeVolumePrincipled)
 
 #### Arguments:
 - **color** ( = None)
@@ -78,7 +78,7 @@ Principled(color=None, color_attribute=None, density=None, density_attribute=Non
 Scatter(color=None, density=None, anisotropy=None)
 ```
 
-[Volume Scatter](https://docs.blender.org/api/current/bpy.types.ShaderNodeVolumeScatter.html#bpy.types.ShaderNodeVolumeScatter)
+> **Node** : [Volume Scatter](https://docs.blender.org/api/current/bpy.types.ShaderNodeVolumeScatter.html#bpy.types.ShaderNodeVolumeScatter)
 
 #### Arguments:
 - **color** ( = None)

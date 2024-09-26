@@ -39,7 +39,7 @@ Shader(socket)
 Diffuse(color=None, roughness=None, normal=None)
 ```
 
-[Diffuse BSDF](https://docs.blender.org/api/current/bpy.types.ShaderNodeBsdfDiffuse.html#bpy.types.ShaderNodeBsdfDiffuse)
+> **Node** : [Diffuse BSDF](https://docs.blender.org/api/current/bpy.types.ShaderNodeBsdfDiffuse.html#bpy.types.ShaderNodeBsdfDiffuse)
 
 #### Arguments:
 - **color** ( = None)
@@ -57,7 +57,7 @@ Diffuse(color=None, roughness=None, normal=None)
 Emission(color=None, strength=None)
 ```
 
-[Emission](https://docs.blender.org/api/current/bpy.types.ShaderNodeEmission.html#bpy.types.ShaderNodeEmission)
+> **Node** : [Emission](https://docs.blender.org/api/current/bpy.types.ShaderNodeEmission.html#bpy.types.ShaderNodeEmission)
 
 #### Arguments:
 - **color** ( = None)
@@ -74,7 +74,7 @@ Emission(color=None, strength=None)
 Glass(color=None, roughness=None, ior=None, normal=None, distribution='MULTI_GGX')
 ```
 
-[Glass BSDF](https://docs.blender.org/api/current/bpy.types.ShaderNodeBsdfGlass.html#bpy.types.ShaderNodeBsdfGlass)
+> **Node** : [Glass BSDF](https://docs.blender.org/api/current/bpy.types.ShaderNodeBsdfGlass.html#bpy.types.ShaderNodeBsdfGlass)
 - distribution in ('BECKMANN', 'GGX', 'MULTI_GGX')
 
 #### Arguments:
@@ -95,7 +95,7 @@ Glass(color=None, roughness=None, ior=None, normal=None, distribution='MULTI_GGX
 Glossy(color=None, roughness=None, anisotropy=None, rotation=None, normal=None, tangent=None, distribution='MULTI_GGX')
 ```
 
-[Glossy BSDF](https://docs.blender.org/api/current/bpy.types.ShaderNodeBsdfAnisotropic.html#bpy.types.ShaderNodeBsdfAnisotropic)
+> **Node** : [Glossy BSDF](https://docs.blender.org/api/current/bpy.types.ShaderNodeBsdfAnisotropic.html#bpy.types.ShaderNodeBsdfAnisotropic)
 - distribution in ('BECKMANN', 'GGX', 'ASHIKHMIN_SHIRLEY', 'MULTI_GGX')
 
 #### Arguments:
@@ -118,7 +118,7 @@ Glossy(color=None, roughness=None, anisotropy=None, rotation=None, normal=None, 
 Holdout()
 ```
 
-[Holdout](https://docs.blender.org/api/current/bpy.types.ShaderNodeHoldout.html#bpy.types.ShaderNodeHoldout)
+> **Node** : [Holdout](https://docs.blender.org/api/current/bpy.types.ShaderNodeHoldout.html#bpy.types.ShaderNodeHoldout)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Shader](shade-shade-shader.md#shader) :black_small_square: [Content](shade-shade-shader.md#content) :black_small_square: [Methods](shade-shade-shader.md#methods)</sub>
 
@@ -131,7 +131,7 @@ Holdout()
 Principled(base_color=None, metallic=None, roughness=None, ior=None, alpha=None, normal=None, subsurface_weight=None, subsurface_radius=None, subsurface_scale=None, subsurface_anisotropy=None, specular_ior_level=None, specular_tint=None, anisotropic=None, anisotropic_rotation=None, tangent=None, transmission_weight=None, coat_weight=None, coat_roughness=None, coat_ior=None, coat_tint=None, coat_normal=None, sheen_weight=None, sheen_roughness=None, sheen_tint=None, emission_color=None, emission_strength=None, thin_film_thickness=None, thin_film_ior=None, distribution='MULTI_GGX', subsurface_method='RANDOM_WALK')
 ```
 
-[Principled BSDF](https://docs.blender.org/api/current/bpy.types.ShaderNodeBsdfPrincipled.html#bpy.types.ShaderNodeBsdfPrincipled)
+> **Node** : [Principled BSDF](https://docs.blender.org/api/current/bpy.types.ShaderNodeBsdfPrincipled.html#bpy.types.ShaderNodeBsdfPrincipled)
 - distribution in ('GGX', 'MULTI_GGX')
 - subsurface_method in ('BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN')
 
@@ -178,7 +178,7 @@ Principled(base_color=None, metallic=None, roughness=None, ior=None, alpha=None,
 Refraction(color=None, roughness=None, ior=None, normal=None, distribution='BECKMANN')
 ```
 
-[Refraction BSDF](https://docs.blender.org/api/current/bpy.types.ShaderNodeBsdfRefraction.html#bpy.types.ShaderNodeBsdfRefraction)
+> **Node** : [Refraction BSDF](https://docs.blender.org/api/current/bpy.types.ShaderNodeBsdfRefraction.html#bpy.types.ShaderNodeBsdfRefraction)
 - distribution in ('BECKMANN', 'GGX')
 
 #### Arguments:
@@ -199,7 +199,7 @@ Refraction(color=None, roughness=None, ior=None, normal=None, distribution='BECK
 Specular(base_color=None, specular=None, roughness=None, emissive_color=None, transparency=None, normal=None, clear_coat=None, clear_coat_roughness=None, clear_coat_normal=None)
 ```
 
-[Specular BSDF](https://docs.blender.org/api/current/bpy.types.ShaderNodeEeveeSpecular.html#bpy.types.ShaderNodeEeveeSpecular)
+> **Node** : [Specular BSDF](https://docs.blender.org/api/current/bpy.types.ShaderNodeEeveeSpecular.html#bpy.types.ShaderNodeEeveeSpecular)
 
 #### Arguments:
 - **base_color** ( = None)
@@ -223,7 +223,7 @@ Specular(base_color=None, specular=None, roughness=None, emissive_color=None, tr
 SubsurfaceScattering(color=None, scale=None, radius=None, ior=None, roughness=None, anisotropy=None, normal=None, falloff='RANDOM_WALK')
 ```
 
-[Subsurface Scattering](https://docs.blender.org/api/current/bpy.types.ShaderNodeSubsurfaceScattering.html#bpy.types.ShaderNodeSubsurfaceScattering)
+> **Node** : [Subsurface Scattering](https://docs.blender.org/api/current/bpy.types.ShaderNodeSubsurfaceScattering.html#bpy.types.ShaderNodeSubsurfaceScattering)
 - falloff in ('BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN')
 
 #### Arguments:
@@ -247,7 +247,7 @@ SubsurfaceScattering(color=None, scale=None, radius=None, ior=None, roughness=No
 Translucent(color=None, normal=None)
 ```
 
-[Translucent BSDF](https://docs.blender.org/api/current/bpy.types.ShaderNodeBsdfTranslucent.html#bpy.types.ShaderNodeBsdfTranslucent)
+> **Node** : [Translucent BSDF](https://docs.blender.org/api/current/bpy.types.ShaderNodeBsdfTranslucent.html#bpy.types.ShaderNodeBsdfTranslucent)
 
 #### Arguments:
 - **color** ( = None)
@@ -264,7 +264,7 @@ Translucent(color=None, normal=None)
 Transparent(color=None)
 ```
 
-[Transparent BSDF](https://docs.blender.org/api/current/bpy.types.ShaderNodeBsdfTransparent.html#bpy.types.ShaderNodeBsdfTransparent)
+> **Node** : [Transparent BSDF](https://docs.blender.org/api/current/bpy.types.ShaderNodeBsdfTransparent.html#bpy.types.ShaderNodeBsdfTransparent)
 
 #### Arguments:
 - **color** ( = None)

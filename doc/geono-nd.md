@@ -47,7 +47,7 @@ Initialize self.  See help(type(self)) for accurate signature.
 accumulate_field(value=None, group_id=None, data_type='FLOAT', domain='POINT')
 ```
 
-[Accumulate Field](https://docs.blender.org/api/current/bpy.types.GeometryNodeAccumulateField.html#bpy.types.GeometryNodeAccumulateField)
+> **Node** : [Accumulate Field](https://docs.blender.org/api/current/bpy.types.GeometryNodeAccumulateField.html#bpy.types.GeometryNodeAccumulateField)
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (Value)
@@ -71,7 +71,7 @@ accumulate_field(value=None, group_id=None, data_type='FLOAT', domain='POINT')
 active_element(domain='POINT')
 ```
 
-[Active Element](https://docs.blender.org/api/current/bpy.types.GeometryNodeToolActiveElement.html#bpy.types.GeometryNodeToolActiveElement)
+> **Node** : [Active Element](https://docs.blender.org/api/current/bpy.types.GeometryNodeToolActiveElement.html#bpy.types.GeometryNodeToolActiveElement)
 
 #### Arguments:
 - **domain** (_str_ = POINT) : Node.domain in ('POINT', 'EDGE', 'FACE')
@@ -92,7 +92,7 @@ active_element(domain='POINT')
 align_euler_to_vector(rotation=None, factor=None, vector=None, axis='X', pivot_axis='AUTO')
 ```
 
-[Align Euler to Vector](https://docs.blender.org/api/current/bpy.types.FunctionNodeAlignEulerToVector.html#bpy.types.FunctionNodeAlignEulerToVector)
+> **Node** : [Align Euler to Vector](https://docs.blender.org/api/current/bpy.types.FunctionNodeAlignEulerToVector.html#bpy.types.FunctionNodeAlignEulerToVector)
 
 #### Arguments:
 - **rotation** (_Vector_ = None) : socket 'Rotation' (Rotation)
@@ -117,7 +117,7 @@ align_euler_to_vector(rotation=None, factor=None, vector=None, axis='X', pivot_a
 align_rotation_to_vector(rotation=None, factor=None, vector=None, axis='Z', pivot_axis='AUTO')
 ```
 
-[Align Rotation to Vector](https://docs.blender.org/api/current/bpy.types.FunctionNodeAlignRotationToVector.html#bpy.types.FunctionNodeAlignRotationToVector)
+> **Node** : [Align Rotation to Vector](https://docs.blender.org/api/current/bpy.types.FunctionNodeAlignRotationToVector.html#bpy.types.FunctionNodeAlignRotationToVector)
 
 #### Arguments:
 - **rotation** (_Rotation_ = None) : socket 'Rotation' (Rotation)
@@ -142,7 +142,7 @@ align_rotation_to_vector(rotation=None, factor=None, vector=None, axis='Z', pivo
 arc(resolution=None, radius=None, start_angle=None, sweep_angle=None, connect_center=None, invert_arc=None, mode='RADIUS')
 ```
 
-[Arc](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveArc.html#bpy.types.GeometryNodeCurveArc)
+> **Node** : [Arc](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveArc.html#bpy.types.GeometryNodeCurveArc)
 
 #### Arguments:
 - **resolution** (_Integer_ = None) : socket 'Resolution' (Resolution)
@@ -169,7 +169,7 @@ arc(resolution=None, radius=None, start_angle=None, sweep_angle=None, connect_ce
 attribute_statistic(geometry=None, selection=None, attribute=None, data_type='FLOAT', domain='POINT')
 ```
 
-[Attribute Statistic](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html#bpy.types.GeometryNodeAttributeStatistic)
+> **Node** : [Attribute Statistic](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeStatistic.html#bpy.types.GeometryNodeAttributeStatistic)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -194,7 +194,7 @@ attribute_statistic(geometry=None, selection=None, attribute=None, data_type='FL
 axes_to_rotation(primary_axis_1=None, secondary_axis_1=None, primary_axis='Z', secondary_axis='X')
 ```
 
-[Axes to Rotation](https://docs.blender.org/api/current/bpy.types.FunctionNodeAxesToRotation.html#bpy.types.FunctionNodeAxesToRotation)
+> **Node** : [Axes to Rotation](https://docs.blender.org/api/current/bpy.types.FunctionNodeAxesToRotation.html#bpy.types.FunctionNodeAxesToRotation)
 
 #### Arguments:
 - **primary_axis_1** (_Vector_ = None) : socket 'Primary Axis' (Primary Axis)
@@ -218,7 +218,7 @@ axes_to_rotation(primary_axis_1=None, secondary_axis_1=None, primary_axis='Z', s
 axis_angle_to_rotation(axis=None, angle=None)
 ```
 
-[Axis Angle to Rotation](https://docs.blender.org/api/current/bpy.types.FunctionNodeAxisAngleToRotation.html#bpy.types.FunctionNodeAxisAngleToRotation)
+> **Node** : [Axis Angle to Rotation](https://docs.blender.org/api/current/bpy.types.FunctionNodeAxisAngleToRotation.html#bpy.types.FunctionNodeAxisAngleToRotation)
 
 #### Arguments:
 - **axis** (_Vector_ = None) : socket 'Axis' (Axis)
@@ -240,7 +240,7 @@ axis_angle_to_rotation(axis=None, angle=None)
 bake(geometry=None, active_index=0, active_item=None, bake_items=None)
 ```
 
-[Bake](https://docs.blender.org/api/current/bpy.types.GeometryNodeBake.html#bpy.types.GeometryNodeBake)
+> **Node** : [Bake](https://docs.blender.org/api/current/bpy.types.GeometryNodeBake.html#bpy.types.GeometryNodeBake)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Item_0)
@@ -264,7 +264,7 @@ bake(geometry=None, active_index=0, active_item=None, bake_items=None)
 bezier_segment(resolution=None, start=None, start_handle=None, end_handle=None, end=None, mode='POSITION')
 ```
 
-[Bézier Segment](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveBezierSegment.html#bpy.types.GeometryNodeCurvePrimitiveBezierSegment)
+> **Node** : [Bézier Segment](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveBezierSegment.html#bpy.types.GeometryNodeCurvePrimitiveBezierSegment)
 
 #### Arguments:
 - **resolution** (_Integer_ = None) : socket 'Resolution' (Resolution)
@@ -290,7 +290,7 @@ bezier_segment(resolution=None, start=None, start_handle=None, end_handle=None, 
 blackbody(temperature=None)
 ```
 
-[Blackbody](https://docs.blender.org/api/current/bpy.types.ShaderNodeBlackbody.html#bpy.types.ShaderNodeBlackbody)
+> **Node** : [Blackbody](https://docs.blender.org/api/current/bpy.types.ShaderNodeBlackbody.html#bpy.types.ShaderNodeBlackbody)
 
 #### Arguments:
 - **temperature** (_Float_ = None) : socket 'Temperature' (Temperature)
@@ -311,7 +311,7 @@ blackbody(temperature=None)
 blur_attribute(value=None, iterations=None, weight=None, data_type='FLOAT')
 ```
 
-[Blur Attribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeBlurAttribute.html#bpy.types.GeometryNodeBlurAttribute)
+> **Node** : [Blur Attribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeBlurAttribute.html#bpy.types.GeometryNodeBlurAttribute)
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (Value)
@@ -335,7 +335,7 @@ blur_attribute(value=None, iterations=None, weight=None, data_type='FLOAT')
 boolean(boolean=False)
 ```
 
-[Boolean](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputBool.html#bpy.types.FunctionNodeInputBool)
+> **Node** : [Boolean](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputBool.html#bpy.types.FunctionNodeInputBool)
 
 #### Arguments:
 - **boolean** (_bool_ = False) : Node.boolean
@@ -356,7 +356,7 @@ boolean(boolean=False)
 boolean_math(boolean=None, boolean_1=None, operation='AND')
 ```
 
-[Boolean Math](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html#bpy.types.FunctionNodeBooleanMath)
+> **Node** : [Boolean Math](https://docs.blender.org/api/current/bpy.types.FunctionNodeBooleanMath.html#bpy.types.FunctionNodeBooleanMath)
 
 #### Arguments:
 - **boolean** (_Boolean_ = None) : socket 'Boolean' (Boolean)
@@ -379,7 +379,7 @@ boolean_math(boolean=None, boolean_1=None, operation='AND')
 bounding_box(geometry=None)
 ```
 
-[Bounding Box](https://docs.blender.org/api/current/bpy.types.GeometryNodeBoundBox.html#bpy.types.GeometryNodeBoundBox)
+> **Node** : [Bounding Box](https://docs.blender.org/api/current/bpy.types.GeometryNodeBoundBox.html#bpy.types.GeometryNodeBoundBox)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -400,7 +400,7 @@ bounding_box(geometry=None)
 brick_texture(vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, color_mapping=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2, texture_mapping=None)
 ```
 
-[Brick Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexBrick.html#bpy.types.ShaderNodeTexBrick)
+> **Node** : [Brick Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexBrick.html#bpy.types.ShaderNodeTexBrick)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -436,7 +436,7 @@ brick_texture(vector=None, color1=None, color2=None, mortar=None, scale=None, mo
 capture_attribute(geometry=None, active_index=0, active_item=None, capture_items=None, domain='POINT')
 ```
 
-[Capture Attribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeCaptureAttribute.html#bpy.types.GeometryNodeCaptureAttribute)
+> **Node** : [Capture Attribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeCaptureAttribute.html#bpy.types.GeometryNodeCaptureAttribute)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -461,7 +461,7 @@ capture_attribute(geometry=None, active_index=0, active_item=None, capture_items
 checker_texture(vector=None, color1=None, color2=None, scale=None, color_mapping=None, texture_mapping=None)
 ```
 
-[Checker Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexChecker.html#bpy.types.ShaderNodeTexChecker)
+> **Node** : [Checker Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexChecker.html#bpy.types.ShaderNodeTexChecker)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -487,7 +487,7 @@ checker_texture(vector=None, color1=None, color2=None, scale=None, color_mapping
 clamp(value=None, min=None, max=None, clamp_type='MINMAX')
 ```
 
-[Clamp](https://docs.blender.org/api/current/bpy.types.ShaderNodeClamp.html#bpy.types.ShaderNodeClamp)
+> **Node** : [Clamp](https://docs.blender.org/api/current/bpy.types.ShaderNodeClamp.html#bpy.types.ShaderNodeClamp)
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (Value)
@@ -511,7 +511,7 @@ clamp(value=None, min=None, max=None, clamp_type='MINMAX')
 collection_info(collection=None, separate_children=None, reset_children=None, transform_space='ORIGINAL')
 ```
 
-[Collection Info](https://docs.blender.org/api/current/bpy.types.GeometryNodeCollectionInfo.html#bpy.types.GeometryNodeCollectionInfo)
+> **Node** : [Collection Info](https://docs.blender.org/api/current/bpy.types.GeometryNodeCollectionInfo.html#bpy.types.GeometryNodeCollectionInfo)
 
 #### Arguments:
 - **collection** (_Collection_ = None) : socket 'Collection' (Collection)
@@ -535,7 +535,7 @@ collection_info(collection=None, separate_children=None, reset_children=None, tr
 color(value=None)
 ```
 
-[Color](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputColor.html#bpy.types.FunctionNodeInputColor)
+> **Node** : [Color](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputColor.html#bpy.types.FunctionNodeInputColor)
 
 #### Arguments:
 - **value** (_bpy_prop_array_ = None) : Node.value
@@ -556,7 +556,7 @@ color(value=None)
 color_ramp(fac=None, color_ramp=None)
 ```
 
-[Color Ramp](https://docs.blender.org/api/current/bpy.types.ShaderNodeValToRGB.html#bpy.types.ShaderNodeValToRGB)
+> **Node** : [Color Ramp](https://docs.blender.org/api/current/bpy.types.ShaderNodeValToRGB.html#bpy.types.ShaderNodeValToRGB)
 
 #### Arguments:
 - **fac** (_Float_ = None) : socket 'Fac' (Fac)
@@ -578,7 +578,7 @@ color_ramp(fac=None, color_ramp=None)
 combine_color(red=None, green=None, blue=None, alpha=None, mode='RGB')
 ```
 
-[Combine Color](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineColor.html#bpy.types.FunctionNodeCombineColor)
+> **Node** : [Combine Color](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineColor.html#bpy.types.FunctionNodeCombineColor)
 
 #### Arguments:
 - **red** (_Float_ = None) : socket 'Red' (Red)
@@ -603,7 +603,7 @@ combine_color(red=None, green=None, blue=None, alpha=None, mode='RGB')
 combine_matrix(column_1_row_1=None, column_1_row_2=None, column_1_row_3=None, column_1_row_4=None, column_2_row_1=None, column_2_row_2=None, column_2_row_3=None, column_2_row_4=None, column_3_row_1=None, column_3_row_2=None, column_3_row_3=None, column_3_row_4=None, column_4_row_1=None, column_4_row_2=None, column_4_row_3=None, column_4_row_4=None)
 ```
 
-[Combine Matrix](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineMatrix.html#bpy.types.FunctionNodeCombineMatrix)
+> **Node** : [Combine Matrix](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineMatrix.html#bpy.types.FunctionNodeCombineMatrix)
 
 #### Arguments:
 - **column_1_row_1** (_Float_ = None) : socket 'Column 1 Row 1' (Column 1 Row 1)
@@ -639,7 +639,7 @@ combine_matrix(column_1_row_1=None, column_1_row_2=None, column_1_row_3=None, co
 combine_transform(translation=None, rotation=None, scale=None)
 ```
 
-[Combine Transform](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineTransform.html#bpy.types.FunctionNodeCombineTransform)
+> **Node** : [Combine Transform](https://docs.blender.org/api/current/bpy.types.FunctionNodeCombineTransform.html#bpy.types.FunctionNodeCombineTransform)
 
 #### Arguments:
 - **translation** (_Vector_ = None) : socket 'Translation' (Translation)
@@ -662,7 +662,7 @@ combine_transform(translation=None, rotation=None, scale=None)
 combine_xyz(x=None, y=None, z=None)
 ```
 
-[Combine XYZ](https://docs.blender.org/api/current/bpy.types.ShaderNodeCombineXYZ.html#bpy.types.ShaderNodeCombineXYZ)
+> **Node** : [Combine XYZ](https://docs.blender.org/api/current/bpy.types.ShaderNodeCombineXYZ.html#bpy.types.ShaderNodeCombineXYZ)
 
 #### Arguments:
 - **x** (_Float_ = None) : socket 'X' (X)
@@ -685,7 +685,7 @@ combine_xyz(x=None, y=None, z=None)
 compare(a=None, b=None, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN')
 ```
 
-[Compare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html#bpy.types.FunctionNodeCompare)
+> **Node** : [Compare](https://docs.blender.org/api/current/bpy.types.FunctionNodeCompare.html#bpy.types.FunctionNodeCompare)
 
 #### Arguments:
 - **a** (_Float_ = None) : socket 'A' (A)
@@ -710,7 +710,7 @@ compare(a=None, b=None, data_type='FLOAT', mode='ELEMENT', operation='GREATER_TH
 cone(vertices=None, side_segments=None, fill_segments=None, radius_top=None, radius_bottom=None, depth=None, fill_type='NGON')
 ```
 
-[Cone](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshCone.html#bpy.types.GeometryNodeMeshCone)
+> **Node** : [Cone](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshCone.html#bpy.types.GeometryNodeMeshCone)
 
 #### Arguments:
 - **vertices** (_Integer_ = None) : socket 'Vertices' (Vertices)
@@ -737,7 +737,7 @@ cone(vertices=None, side_segments=None, fill_segments=None, radius_top=None, rad
 convex_hull(geometry=None)
 ```
 
-[Convex Hull](https://docs.blender.org/api/current/bpy.types.GeometryNodeConvexHull.html#bpy.types.GeometryNodeConvexHull)
+> **Node** : [Convex Hull](https://docs.blender.org/api/current/bpy.types.GeometryNodeConvexHull.html#bpy.types.GeometryNodeConvexHull)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -758,7 +758,7 @@ convex_hull(geometry=None)
 corners_of_edge(edge_index=None, weights=None, sort_index=None)
 ```
 
-[Corners of Edge](https://docs.blender.org/api/current/bpy.types.GeometryNodeCornersOfEdge.html#bpy.types.GeometryNodeCornersOfEdge)
+> **Node** : [Corners of Edge](https://docs.blender.org/api/current/bpy.types.GeometryNodeCornersOfEdge.html#bpy.types.GeometryNodeCornersOfEdge)
 
 #### Arguments:
 - **edge_index** (_Integer_ = None) : socket 'Edge Index' (Edge Index)
@@ -781,7 +781,7 @@ corners_of_edge(edge_index=None, weights=None, sort_index=None)
 corners_of_face(face_index=None, weights=None, sort_index=None)
 ```
 
-[Corners of Face](https://docs.blender.org/api/current/bpy.types.GeometryNodeCornersOfFace.html#bpy.types.GeometryNodeCornersOfFace)
+> **Node** : [Corners of Face](https://docs.blender.org/api/current/bpy.types.GeometryNodeCornersOfFace.html#bpy.types.GeometryNodeCornersOfFace)
 
 #### Arguments:
 - **face_index** (_Integer_ = None) : socket 'Face Index' (Face Index)
@@ -804,7 +804,7 @@ corners_of_face(face_index=None, weights=None, sort_index=None)
 corners_of_vertex(vertex_index=None, weights=None, sort_index=None)
 ```
 
-[Corners of Vertex](https://docs.blender.org/api/current/bpy.types.GeometryNodeCornersOfVertex.html#bpy.types.GeometryNodeCornersOfVertex)
+> **Node** : [Corners of Vertex](https://docs.blender.org/api/current/bpy.types.GeometryNodeCornersOfVertex.html#bpy.types.GeometryNodeCornersOfVertex)
 
 #### Arguments:
 - **vertex_index** (_Integer_ = None) : socket 'Vertex Index' (Vertex Index)
@@ -827,7 +827,7 @@ corners_of_vertex(vertex_index=None, weights=None, sort_index=None)
 cube(size=None, vertices_x=None, vertices_y=None, vertices_z=None)
 ```
 
-[Cube](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshCube.html#bpy.types.GeometryNodeMeshCube)
+> **Node** : [Cube](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshCube.html#bpy.types.GeometryNodeMeshCube)
 
 #### Arguments:
 - **size** (_Vector_ = None) : socket 'Size' (Size)
@@ -851,7 +851,7 @@ cube(size=None, vertices_x=None, vertices_y=None, vertices_z=None)
 curve_circle(resolution=None, radius=None, mode='RADIUS')
 ```
 
-[Curve Circle](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveCircle.html#bpy.types.GeometryNodeCurvePrimitiveCircle)
+> **Node** : [Curve Circle](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveCircle.html#bpy.types.GeometryNodeCurvePrimitiveCircle)
 
 #### Arguments:
 - **resolution** (_Integer_ = None) : socket 'Resolution' (Resolution)
@@ -874,7 +874,7 @@ curve_circle(resolution=None, radius=None, mode='RADIUS')
 curve_handle_positions(relative=None)
 ```
 
-[Curve Handle Positions](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputCurveHandlePositions.html#bpy.types.GeometryNodeInputCurveHandlePositions)
+> **Node** : [Curve Handle Positions](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputCurveHandlePositions.html#bpy.types.GeometryNodeInputCurveHandlePositions)
 
 #### Arguments:
 - **relative** (_Boolean_ = None) : socket 'Relative' (Relative)
@@ -895,7 +895,7 @@ curve_handle_positions(relative=None)
 curve_length(curve=None)
 ```
 
-[Curve Length](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveLength.html#bpy.types.GeometryNodeCurveLength)
+> **Node** : [Curve Length](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveLength.html#bpy.types.GeometryNodeCurveLength)
 
 #### Arguments:
 - **curve** (_Geometry_ = None) : socket 'Curve' (Curve)
@@ -916,7 +916,7 @@ curve_length(curve=None)
 curve_line(start=None, end=None, mode='POINTS')
 ```
 
-[Curve Line](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveLine.html#bpy.types.GeometryNodeCurvePrimitiveLine)
+> **Node** : [Curve Line](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveLine.html#bpy.types.GeometryNodeCurvePrimitiveLine)
 
 #### Arguments:
 - **start** (_Vector_ = None) : socket 'Start' (Start)
@@ -939,7 +939,7 @@ curve_line(start=None, end=None, mode='POINTS')
 curve_of_point(point_index=None)
 ```
 
-[Curve of Point](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveOfPoint.html#bpy.types.GeometryNodeCurveOfPoint)
+> **Node** : [Curve of Point](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveOfPoint.html#bpy.types.GeometryNodeCurveOfPoint)
 
 #### Arguments:
 - **point_index** (_Integer_ = None) : socket 'Point Index' (Point Index)
@@ -960,7 +960,7 @@ curve_of_point(point_index=None)
 curve_to_mesh(curve=None, profile_curve=None, fill_caps=None)
 ```
 
-[Curve to Mesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveToMesh.html#bpy.types.GeometryNodeCurveToMesh)
+> **Node** : [Curve to Mesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveToMesh.html#bpy.types.GeometryNodeCurveToMesh)
 
 #### Arguments:
 - **curve** (_Geometry_ = None) : socket 'Curve' (Curve)
@@ -983,7 +983,7 @@ curve_to_mesh(curve=None, profile_curve=None, fill_caps=None)
 curve_to_points(curve=None, count=None, mode='COUNT')
 ```
 
-[Curve to Points](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveToPoints.html#bpy.types.GeometryNodeCurveToPoints)
+> **Node** : [Curve to Points](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveToPoints.html#bpy.types.GeometryNodeCurveToPoints)
 
 #### Arguments:
 - **curve** (_Geometry_ = None) : socket 'Curve' (Curve)
@@ -1006,7 +1006,7 @@ curve_to_points(curve=None, count=None, mode='COUNT')
 cylinder(vertices=None, side_segments=None, fill_segments=None, radius=None, depth=None, fill_type='NGON')
 ```
 
-[Cylinder](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshCylinder.html#bpy.types.GeometryNodeMeshCylinder)
+> **Node** : [Cylinder](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshCylinder.html#bpy.types.GeometryNodeMeshCylinder)
 
 #### Arguments:
 - **vertices** (_Integer_ = None) : socket 'Vertices' (Vertices)
@@ -1032,7 +1032,7 @@ cylinder(vertices=None, side_segments=None, fill_segments=None, radius=None, dep
 deform_curves_on_surface(curves=None)
 ```
 
-[Deform Curves on Surface](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeformCurvesOnSurface.html#bpy.types.GeometryNodeDeformCurvesOnSurface)
+> **Node** : [Deform Curves on Surface](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeformCurvesOnSurface.html#bpy.types.GeometryNodeDeformCurvesOnSurface)
 
 #### Arguments:
 - **curves** (_Geometry_ = None) : socket 'Curves' (Curves)
@@ -1053,7 +1053,7 @@ deform_curves_on_surface(curves=None)
 delete_geometry(geometry=None, selection=None, domain='POINT', mode='ALL')
 ```
 
-[Delete Geometry](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html#bpy.types.GeometryNodeDeleteGeometry)
+> **Node** : [Delete Geometry](https://docs.blender.org/api/current/bpy.types.GeometryNodeDeleteGeometry.html#bpy.types.GeometryNodeDeleteGeometry)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -1077,7 +1077,7 @@ delete_geometry(geometry=None, selection=None, domain='POINT', mode='ALL')
 distribute_points_in_grid(grid=None, density=None, seed=None, mode='DENSITY_RANDOM')
 ```
 
-[Distribute Points in Grid](https://docs.blender.org/api/current/bpy.types.GeometryNodeDistributePointsInGrid.html#bpy.types.GeometryNodeDistributePointsInGrid)
+> **Node** : [Distribute Points in Grid](https://docs.blender.org/api/current/bpy.types.GeometryNodeDistributePointsInGrid.html#bpy.types.GeometryNodeDistributePointsInGrid)
 
 #### Arguments:
 - **grid** (_Float_ = None) : socket 'Grid' (Grid)
@@ -1101,7 +1101,7 @@ distribute_points_in_grid(grid=None, density=None, seed=None, mode='DENSITY_RAND
 distribute_points_in_volume(volume=None, density=None, seed=None, mode='DENSITY_RANDOM')
 ```
 
-[Distribute Points in Volume](https://docs.blender.org/api/current/bpy.types.GeometryNodeDistributePointsInVolume.html#bpy.types.GeometryNodeDistributePointsInVolume)
+> **Node** : [Distribute Points in Volume](https://docs.blender.org/api/current/bpy.types.GeometryNodeDistributePointsInVolume.html#bpy.types.GeometryNodeDistributePointsInVolume)
 
 #### Arguments:
 - **volume** (_Geometry_ = None) : socket 'Volume' (Volume)
@@ -1125,7 +1125,7 @@ distribute_points_in_volume(volume=None, density=None, seed=None, mode='DENSITY_
 distribute_points_on_faces(mesh=None, selection=None, density=None, seed=None, distribute_method='RANDOM', use_legacy_normal=False)
 ```
 
-[Distribute Points on Faces](https://docs.blender.org/api/current/bpy.types.GeometryNodeDistributePointsOnFaces.html#bpy.types.GeometryNodeDistributePointsOnFaces)
+> **Node** : [Distribute Points on Faces](https://docs.blender.org/api/current/bpy.types.GeometryNodeDistributePointsOnFaces.html#bpy.types.GeometryNodeDistributePointsOnFaces)
 
 #### Arguments:
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (Mesh)
@@ -1151,7 +1151,7 @@ distribute_points_on_faces(mesh=None, selection=None, density=None, seed=None, d
 domain_size(geometry=None, component='MESH')
 ```
 
-[Domain Size](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html#bpy.types.GeometryNodeAttributeDomainSize)
+> **Node** : [Domain Size](https://docs.blender.org/api/current/bpy.types.GeometryNodeAttributeDomainSize.html#bpy.types.GeometryNodeAttributeDomainSize)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -1173,7 +1173,7 @@ domain_size(geometry=None, component='MESH')
 dual_mesh(mesh=None, keep_boundaries=None)
 ```
 
-[Dual Mesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeDualMesh.html#bpy.types.GeometryNodeDualMesh)
+> **Node** : [Dual Mesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeDualMesh.html#bpy.types.GeometryNodeDualMesh)
 
 #### Arguments:
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (Mesh)
@@ -1195,7 +1195,7 @@ dual_mesh(mesh=None, keep_boundaries=None)
 duplicate_elements(geometry=None, selection=None, amount=None, domain='POINT')
 ```
 
-[Duplicate Elements](https://docs.blender.org/api/current/bpy.types.GeometryNodeDuplicateElements.html#bpy.types.GeometryNodeDuplicateElements)
+> **Node** : [Duplicate Elements](https://docs.blender.org/api/current/bpy.types.GeometryNodeDuplicateElements.html#bpy.types.GeometryNodeDuplicateElements)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -1219,7 +1219,7 @@ duplicate_elements(geometry=None, selection=None, amount=None, domain='POINT')
 edge_paths_to_curves(mesh=None, start_vertices=None, next_vertex_index=None)
 ```
 
-[Edge Paths to Curves](https://docs.blender.org/api/current/bpy.types.GeometryNodeEdgePathsToCurves.html#bpy.types.GeometryNodeEdgePathsToCurves)
+> **Node** : [Edge Paths to Curves](https://docs.blender.org/api/current/bpy.types.GeometryNodeEdgePathsToCurves.html#bpy.types.GeometryNodeEdgePathsToCurves)
 
 #### Arguments:
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (Mesh)
@@ -1242,7 +1242,7 @@ edge_paths_to_curves(mesh=None, start_vertices=None, next_vertex_index=None)
 edge_paths_to_selection(start_vertices=None, next_vertex_index=None)
 ```
 
-[Edge Paths to Selection](https://docs.blender.org/api/current/bpy.types.GeometryNodeEdgePathsToSelection.html#bpy.types.GeometryNodeEdgePathsToSelection)
+> **Node** : [Edge Paths to Selection](https://docs.blender.org/api/current/bpy.types.GeometryNodeEdgePathsToSelection.html#bpy.types.GeometryNodeEdgePathsToSelection)
 
 #### Arguments:
 - **start_vertices** (_Boolean_ = None) : socket 'Start Vertices' (Start Vertices)
@@ -1264,7 +1264,7 @@ edge_paths_to_selection(start_vertices=None, next_vertex_index=None)
 edges_of_corner(corner_index=None)
 ```
 
-[Edges of Corner](https://docs.blender.org/api/current/bpy.types.GeometryNodeEdgesOfCorner.html#bpy.types.GeometryNodeEdgesOfCorner)
+> **Node** : [Edges of Corner](https://docs.blender.org/api/current/bpy.types.GeometryNodeEdgesOfCorner.html#bpy.types.GeometryNodeEdgesOfCorner)
 
 #### Arguments:
 - **corner_index** (_Integer_ = None) : socket 'Corner Index' (Corner Index)
@@ -1285,7 +1285,7 @@ edges_of_corner(corner_index=None)
 edges_of_vertex(vertex_index=None, weights=None, sort_index=None)
 ```
 
-[Edges of Vertex](https://docs.blender.org/api/current/bpy.types.GeometryNodeEdgesOfVertex.html#bpy.types.GeometryNodeEdgesOfVertex)
+> **Node** : [Edges of Vertex](https://docs.blender.org/api/current/bpy.types.GeometryNodeEdgesOfVertex.html#bpy.types.GeometryNodeEdgesOfVertex)
 
 #### Arguments:
 - **vertex_index** (_Integer_ = None) : socket 'Vertex Index' (Vertex Index)
@@ -1308,7 +1308,7 @@ edges_of_vertex(vertex_index=None, weights=None, sort_index=None)
 edges_to_face_groups(boundary_edges=None)
 ```
 
-[Edges to Face Groups](https://docs.blender.org/api/current/bpy.types.GeometryNodeEdgesToFaceGroups.html#bpy.types.GeometryNodeEdgesToFaceGroups)
+> **Node** : [Edges to Face Groups](https://docs.blender.org/api/current/bpy.types.GeometryNodeEdgesToFaceGroups.html#bpy.types.GeometryNodeEdgesToFaceGroups)
 
 #### Arguments:
 - **boundary_edges** (_Boolean_ = None) : socket 'Boundary Edges' (Boundary Edges)
@@ -1329,7 +1329,7 @@ edges_to_face_groups(boundary_edges=None)
 endpoint_selection(start_size=None, end_size=None)
 ```
 
-[Endpoint Selection](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveEndpointSelection.html#bpy.types.GeometryNodeCurveEndpointSelection)
+> **Node** : [Endpoint Selection](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveEndpointSelection.html#bpy.types.GeometryNodeCurveEndpointSelection)
 
 #### Arguments:
 - **start_size** (_Integer_ = None) : socket 'Start Size' (Start Size)
@@ -1351,7 +1351,7 @@ endpoint_selection(start_size=None, end_size=None)
 euler_to_rotation(euler=None)
 ```
 
-[Euler to Rotation](https://docs.blender.org/api/current/bpy.types.FunctionNodeEulerToRotation.html#bpy.types.FunctionNodeEulerToRotation)
+> **Node** : [Euler to Rotation](https://docs.blender.org/api/current/bpy.types.FunctionNodeEulerToRotation.html#bpy.types.FunctionNodeEulerToRotation)
 
 #### Arguments:
 - **euler** (_Vector_ = None) : socket 'Euler' (Euler)
@@ -1372,7 +1372,7 @@ euler_to_rotation(euler=None)
 evaluate_at_index(index=None, value=None, data_type='FLOAT', domain='POINT')
 ```
 
-[Evaluate at Index](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldAtIndex.html#bpy.types.GeometryNodeFieldAtIndex)
+> **Node** : [Evaluate at Index](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldAtIndex.html#bpy.types.GeometryNodeFieldAtIndex)
 
 #### Arguments:
 - **index** (_Integer_ = None) : socket 'Index' (Index)
@@ -1396,7 +1396,7 @@ evaluate_at_index(index=None, value=None, data_type='FLOAT', domain='POINT')
 evaluate_on_domain(value=None, data_type='FLOAT', domain='POINT')
 ```
 
-[Evaluate on Domain](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldOnDomain.html#bpy.types.GeometryNodeFieldOnDomain)
+> **Node** : [Evaluate on Domain](https://docs.blender.org/api/current/bpy.types.GeometryNodeFieldOnDomain.html#bpy.types.GeometryNodeFieldOnDomain)
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (Value)
@@ -1419,7 +1419,7 @@ evaluate_on_domain(value=None, data_type='FLOAT', domain='POINT')
 extrude_mesh(mesh=None, selection=None, offset=None, offset_scale=None, individual=None, mode='FACES')
 ```
 
-[Extrude Mesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeExtrudeMesh.html#bpy.types.GeometryNodeExtrudeMesh)
+> **Node** : [Extrude Mesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeExtrudeMesh.html#bpy.types.GeometryNodeExtrudeMesh)
 
 #### Arguments:
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (Mesh)
@@ -1445,7 +1445,7 @@ extrude_mesh(mesh=None, selection=None, offset=None, offset_scale=None, individu
 face_group_boundaries(face_group_id=None)
 ```
 
-[Face Group Boundaries](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshFaceSetBoundaries.html#bpy.types.GeometryNodeMeshFaceSetBoundaries)
+> **Node** : [Face Group Boundaries](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshFaceSetBoundaries.html#bpy.types.GeometryNodeMeshFaceSetBoundaries)
 
 #### Arguments:
 - **face_group_id** (_Integer_ = None) : socket 'Face Group ID' (Face Set)
@@ -1466,7 +1466,7 @@ face_group_boundaries(face_group_id=None)
 face_of_corner(corner_index=None)
 ```
 
-[Face of Corner](https://docs.blender.org/api/current/bpy.types.GeometryNodeFaceOfCorner.html#bpy.types.GeometryNodeFaceOfCorner)
+> **Node** : [Face of Corner](https://docs.blender.org/api/current/bpy.types.GeometryNodeFaceOfCorner.html#bpy.types.GeometryNodeFaceOfCorner)
 
 #### Arguments:
 - **corner_index** (_Integer_ = None) : socket 'Corner Index' (Corner Index)
@@ -1487,7 +1487,7 @@ face_of_corner(corner_index=None)
 fill_curve(curve=None, group_id=None, mode='TRIANGLES')
 ```
 
-[Fill Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeFillCurve.html#bpy.types.GeometryNodeFillCurve)
+> **Node** : [Fill Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeFillCurve.html#bpy.types.GeometryNodeFillCurve)
 
 #### Arguments:
 - **curve** (_Geometry_ = None) : socket 'Curve' (Curve)
@@ -1510,7 +1510,7 @@ fill_curve(curve=None, group_id=None, mode='TRIANGLES')
 fillet_curve(curve=None, radius=None, limit_radius=None, mode='BEZIER')
 ```
 
-[Fillet Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeFilletCurve.html#bpy.types.GeometryNodeFilletCurve)
+> **Node** : [Fillet Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeFilletCurve.html#bpy.types.GeometryNodeFilletCurve)
 
 #### Arguments:
 - **curve** (_Geometry_ = None) : socket 'Curve' (Curve)
@@ -1534,7 +1534,7 @@ fillet_curve(curve=None, radius=None, limit_radius=None, mode='BEZIER')
 flip_faces(mesh=None, selection=None)
 ```
 
-[Flip Faces](https://docs.blender.org/api/current/bpy.types.GeometryNodeFlipFaces.html#bpy.types.GeometryNodeFlipFaces)
+> **Node** : [Flip Faces](https://docs.blender.org/api/current/bpy.types.GeometryNodeFlipFaces.html#bpy.types.GeometryNodeFlipFaces)
 
 #### Arguments:
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (Mesh)
@@ -1556,7 +1556,7 @@ flip_faces(mesh=None, selection=None)
 float_curve(factor=None, value=None, mapping=None)
 ```
 
-[Float Curve](https://docs.blender.org/api/current/bpy.types.ShaderNodeFloatCurve.html#bpy.types.ShaderNodeFloatCurve)
+> **Node** : [Float Curve](https://docs.blender.org/api/current/bpy.types.ShaderNodeFloatCurve.html#bpy.types.ShaderNodeFloatCurve)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket 'Factor' (Factor)
@@ -1579,7 +1579,7 @@ float_curve(factor=None, value=None, mapping=None)
 float_to_integer(float=None, rounding_mode='ROUND')
 ```
 
-[Float to Integer](https://docs.blender.org/api/current/bpy.types.FunctionNodeFloatToInt.html#bpy.types.FunctionNodeFloatToInt)
+> **Node** : [Float to Integer](https://docs.blender.org/api/current/bpy.types.FunctionNodeFloatToInt.html#bpy.types.FunctionNodeFloatToInt)
 
 #### Arguments:
 - **float** (_Float_ = None) : socket 'Float' (Float)
@@ -1601,7 +1601,7 @@ float_to_integer(float=None, rounding_mode='ROUND')
 frame(label_size=20, shrink=True, text=None)
 ```
 
-[Frame](https://docs.blender.org/api/current/bpy.types.NodeFrame.html#bpy.types.NodeFrame)
+> **Node** : [Frame](https://docs.blender.org/api/current/bpy.types.NodeFrame.html#bpy.types.NodeFrame)
 
 #### Arguments:
 - **label_size** (_int_ = 20) : Node.label_size
@@ -1619,7 +1619,7 @@ frame(label_size=20, shrink=True, text=None)
 geometry_proximity(geometry=None, group_id=None, sample_position=None, sample_group_id=None, target_element='FACES')
 ```
 
-[Geometry Proximity](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html#bpy.types.GeometryNodeProximity)
+> **Node** : [Geometry Proximity](https://docs.blender.org/api/current/bpy.types.GeometryNodeProximity.html#bpy.types.GeometryNodeProximity)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Target)
@@ -1644,7 +1644,7 @@ geometry_proximity(geometry=None, group_id=None, sample_position=None, sample_gr
 geometry_to_instance(geometry=None)
 ```
 
-[Geometry to Instance](https://docs.blender.org/api/current/bpy.types.GeometryNodeGeometryToInstance.html#bpy.types.GeometryNodeGeometryToInstance)
+> **Node** : [Geometry to Instance](https://docs.blender.org/api/current/bpy.types.GeometryNodeGeometryToInstance.html#bpy.types.GeometryNodeGeometryToInstance)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -1665,7 +1665,7 @@ geometry_to_instance(geometry=None)
 get_named_grid(volume=None, name=None, remove=None, data_type='FLOAT')
 ```
 
-[Get Named Grid](https://docs.blender.org/api/current/bpy.types.GeometryNodeGetNamedGrid.html#bpy.types.GeometryNodeGetNamedGrid)
+> **Node** : [Get Named Grid](https://docs.blender.org/api/current/bpy.types.GeometryNodeGetNamedGrid.html#bpy.types.GeometryNodeGetNamedGrid)
 
 #### Arguments:
 - **volume** (_Geometry_ = None) : socket 'Volume' (Volume)
@@ -1689,7 +1689,7 @@ get_named_grid(volume=None, name=None, remove=None, data_type='FLOAT')
 gradient_texture(vector=None, color_mapping=None, gradient_type='LINEAR', texture_mapping=None)
 ```
 
-[Gradient Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html#bpy.types.ShaderNodeTexGradient)
+> **Node** : [Gradient Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexGradient.html#bpy.types.ShaderNodeTexGradient)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -1713,7 +1713,7 @@ gradient_texture(vector=None, color_mapping=None, gradient_type='LINEAR', textur
 grid(size_x=None, size_y=None, vertices_x=None, vertices_y=None)
 ```
 
-[Grid](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshGrid.html#bpy.types.GeometryNodeMeshGrid)
+> **Node** : [Grid](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshGrid.html#bpy.types.GeometryNodeMeshGrid)
 
 #### Arguments:
 - **size_x** (_Float_ = None) : socket 'Size X' (Size X)
@@ -1737,7 +1737,7 @@ grid(size_x=None, size_y=None, vertices_x=None, vertices_y=None)
 grid_to_mesh(grid=None, threshold=None, adaptivity=None)
 ```
 
-[Grid to Mesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeGridToMesh.html#bpy.types.GeometryNodeGridToMesh)
+> **Node** : [Grid to Mesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeGridToMesh.html#bpy.types.GeometryNodeGridToMesh)
 
 #### Arguments:
 - **grid** (_Float_ = None) : socket 'Grid' (Grid)
@@ -1760,7 +1760,7 @@ grid_to_mesh(grid=None, threshold=None, adaptivity=None)
 group(node_tree=None)
 ```
 
-[Group](https://docs.blender.org/api/current/bpy.types.GeometryNodeGroup.html#bpy.types.GeometryNodeGroup)
+> **Node** : [Group](https://docs.blender.org/api/current/bpy.types.GeometryNodeGroup.html#bpy.types.GeometryNodeGroup)
 
 #### Arguments:
 - **node_tree** (_NoneType_ = None) : Node.node_tree
@@ -1776,7 +1776,7 @@ group(node_tree=None)
 group_output(is_active_output=True)
 ```
 
-[Group Output](https://docs.blender.org/api/current/bpy.types.NodeGroupOutput.html#bpy.types.NodeGroupOutput)
+> **Node** : [Group Output](https://docs.blender.org/api/current/bpy.types.NodeGroupOutput.html#bpy.types.NodeGroupOutput)
 
 #### Arguments:
 - **is_active_output** (_bool_ = True) : Node.is_active_output
@@ -1792,7 +1792,7 @@ group_output(is_active_output=True)
 handle_type_selection(handle_type='AUTO', mode={'LEFT', 'RIGHT'})
 ```
 
-[Handle Type Selection](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveHandleTypeSelection.html#bpy.types.GeometryNodeCurveHandleTypeSelection)
+> **Node** : [Handle Type Selection](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveHandleTypeSelection.html#bpy.types.GeometryNodeCurveHandleTypeSelection)
 
 #### Arguments:
 - **handle_type** (_str_ = AUTO) : Node.handle_type in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
@@ -1814,7 +1814,7 @@ handle_type_selection(handle_type='AUTO', mode={'LEFT', 'RIGHT'})
 ico_sphere(radius=None, subdivisions=None)
 ```
 
-[Ico Sphere](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshIcoSphere.html#bpy.types.GeometryNodeMeshIcoSphere)
+> **Node** : [Ico Sphere](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshIcoSphere.html#bpy.types.GeometryNodeMeshIcoSphere)
 
 #### Arguments:
 - **radius** (_Float_ = None) : socket 'Radius' (Radius)
@@ -1836,7 +1836,7 @@ ico_sphere(radius=None, subdivisions=None)
 image(image=None)
 ```
 
-[Image](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputImage.html#bpy.types.GeometryNodeInputImage)
+> **Node** : [Image](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputImage.html#bpy.types.GeometryNodeInputImage)
 
 #### Arguments:
 - **image** (_NoneType_ = None) : Node.image
@@ -1857,7 +1857,7 @@ image(image=None)
 image_info(image=None, frame=None)
 ```
 
-[Image Info](https://docs.blender.org/api/current/bpy.types.GeometryNodeImageInfo.html#bpy.types.GeometryNodeImageInfo)
+> **Node** : [Image Info](https://docs.blender.org/api/current/bpy.types.GeometryNodeImageInfo.html#bpy.types.GeometryNodeImageInfo)
 
 #### Arguments:
 - **image** (_Image_ = None) : socket 'Image' (Image)
@@ -1879,7 +1879,7 @@ image_info(image=None, frame=None)
 image_texture(image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear')
 ```
 
-[Image Texture](https://docs.blender.org/api/current/bpy.types.GeometryNodeImageTexture.html#bpy.types.GeometryNodeImageTexture)
+> **Node** : [Image Texture](https://docs.blender.org/api/current/bpy.types.GeometryNodeImageTexture.html#bpy.types.GeometryNodeImageTexture)
 
 #### Arguments:
 - **image** (_Image_ = None) : socket 'Image' (Image)
@@ -1904,7 +1904,7 @@ image_texture(image=None, vector=None, frame=None, extension='REPEAT', interpola
 index_of_nearest(position=None, group_id=None)
 ```
 
-[Index of Nearest](https://docs.blender.org/api/current/bpy.types.GeometryNodeIndexOfNearest.html#bpy.types.GeometryNodeIndexOfNearest)
+> **Node** : [Index of Nearest](https://docs.blender.org/api/current/bpy.types.GeometryNodeIndexOfNearest.html#bpy.types.GeometryNodeIndexOfNearest)
 
 #### Arguments:
 - **position** (_Vector_ = None) : socket 'Position' (Position)
@@ -1926,7 +1926,7 @@ index_of_nearest(position=None, group_id=None)
 index_switch(index=None, _0=None, _1=None, data_type='GEOMETRY', index_switch_items=None)
 ```
 
-[Index Switch](https://docs.blender.org/api/current/bpy.types.GeometryNodeIndexSwitch.html#bpy.types.GeometryNodeIndexSwitch)
+> **Node** : [Index Switch](https://docs.blender.org/api/current/bpy.types.GeometryNodeIndexSwitch.html#bpy.types.GeometryNodeIndexSwitch)
 
 #### Arguments:
 - **index** (_Integer_ = None) : socket 'Index' (Index)
@@ -1951,7 +1951,7 @@ index_switch(index=None, _0=None, _1=None, data_type='GEOMETRY', index_switch_it
 instance_on_points(points=None, selection=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None)
 ```
 
-[Instance on Points](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstanceOnPoints.html#bpy.types.GeometryNodeInstanceOnPoints)
+> **Node** : [Instance on Points](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstanceOnPoints.html#bpy.types.GeometryNodeInstanceOnPoints)
 
 #### Arguments:
 - **points** (_Geometry_ = None) : socket 'Points' (Points)
@@ -1978,7 +1978,7 @@ instance_on_points(points=None, selection=None, instance=None, pick_instance=Non
 instances_to_points(instances=None, selection=None, position=None, radius=None)
 ```
 
-[Instances to Points](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstancesToPoints.html#bpy.types.GeometryNodeInstancesToPoints)
+> **Node** : [Instances to Points](https://docs.blender.org/api/current/bpy.types.GeometryNodeInstancesToPoints.html#bpy.types.GeometryNodeInstancesToPoints)
 
 #### Arguments:
 - **instances** (_Geometry_ = None) : socket 'Instances' (Instances)
@@ -2002,7 +2002,7 @@ instances_to_points(instances=None, selection=None, position=None, radius=None)
 integer(integer=0)
 ```
 
-[Integer](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputInt.html#bpy.types.FunctionNodeInputInt)
+> **Node** : [Integer](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputInt.html#bpy.types.FunctionNodeInputInt)
 
 #### Arguments:
 - **integer** (_int_ = 0) : Node.integer
@@ -2023,7 +2023,7 @@ integer(integer=0)
 interpolate_curves(guide_curves=None, guide_up=None, guide_group_id=None, points=None, point_up=None, point_group_id=None, max_neighbors=None)
 ```
 
-[Interpolate Curves](https://docs.blender.org/api/current/bpy.types.GeometryNodeInterpolateCurves.html#bpy.types.GeometryNodeInterpolateCurves)
+> **Node** : [Interpolate Curves](https://docs.blender.org/api/current/bpy.types.GeometryNodeInterpolateCurves.html#bpy.types.GeometryNodeInterpolateCurves)
 
 #### Arguments:
 - **guide_curves** (_Geometry_ = None) : socket 'Guide Curves' (Guide Curves)
@@ -2050,7 +2050,7 @@ interpolate_curves(guide_curves=None, guide_up=None, guide_group_id=None, points
 invert_matrix(matrix=None)
 ```
 
-[Invert Matrix](https://docs.blender.org/api/current/bpy.types.FunctionNodeInvertMatrix.html#bpy.types.FunctionNodeInvertMatrix)
+> **Node** : [Invert Matrix](https://docs.blender.org/api/current/bpy.types.FunctionNodeInvertMatrix.html#bpy.types.FunctionNodeInvertMatrix)
 
 #### Arguments:
 - **matrix** (_Matrix_ = None) : socket 'Matrix' (Matrix)
@@ -2071,7 +2071,7 @@ invert_matrix(matrix=None)
 invert_rotation(rotation=None)
 ```
 
-[Invert Rotation](https://docs.blender.org/api/current/bpy.types.FunctionNodeInvertRotation.html#bpy.types.FunctionNodeInvertRotation)
+> **Node** : [Invert Rotation](https://docs.blender.org/api/current/bpy.types.FunctionNodeInvertRotation.html#bpy.types.FunctionNodeInvertRotation)
 
 #### Arguments:
 - **rotation** (_Rotation_ = None) : socket 'Rotation' (Rotation)
@@ -2092,7 +2092,7 @@ invert_rotation(rotation=None)
 is_face_planar(threshold=None)
 ```
 
-[Is Face Planar](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceIsPlanar.html#bpy.types.GeometryNodeInputMeshFaceIsPlanar)
+> **Node** : [Is Face Planar](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMeshFaceIsPlanar.html#bpy.types.GeometryNodeInputMeshFaceIsPlanar)
 
 #### Arguments:
 - **threshold** (_Float_ = None) : socket 'Threshold' (Threshold)
@@ -2113,7 +2113,7 @@ is_face_planar(threshold=None)
 join_geometry(geometry=None)
 ```
 
-[Join Geometry](https://docs.blender.org/api/current/bpy.types.GeometryNodeJoinGeometry.html#bpy.types.GeometryNodeJoinGeometry)
+> **Node** : [Join Geometry](https://docs.blender.org/api/current/bpy.types.GeometryNodeJoinGeometry.html#bpy.types.GeometryNodeJoinGeometry)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -2134,7 +2134,7 @@ join_geometry(geometry=None)
 join_strings(delimiter=None, strings=None)
 ```
 
-[Join Strings](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringJoin.html#bpy.types.GeometryNodeStringJoin)
+> **Node** : [Join Strings](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringJoin.html#bpy.types.GeometryNodeStringJoin)
 
 #### Arguments:
 - **delimiter** (_String_ = None) : socket 'Delimiter' (Delimiter)
@@ -2156,7 +2156,7 @@ join_strings(delimiter=None, strings=None)
 magic_texture(vector=None, scale=None, distortion=None, color_mapping=None, texture_mapping=None, turbulence_depth=2)
 ```
 
-[Magic Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexMagic.html#bpy.types.ShaderNodeTexMagic)
+> **Node** : [Magic Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexMagic.html#bpy.types.ShaderNodeTexMagic)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -2182,7 +2182,7 @@ magic_texture(vector=None, scale=None, distortion=None, color_mapping=None, text
 map_range(value=None, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True, data_type='FLOAT', interpolation_type='LINEAR')
 ```
 
-[Map Range](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html#bpy.types.ShaderNodeMapRange)
+> **Node** : [Map Range](https://docs.blender.org/api/current/bpy.types.ShaderNodeMapRange.html#bpy.types.ShaderNodeMapRange)
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (Value)
@@ -2210,7 +2210,7 @@ map_range(value=None, from_min=None, from_max=None, to_min=None, to_max=None, cl
 material(material=None)
 ```
 
-[Material](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMaterial.html#bpy.types.GeometryNodeInputMaterial)
+> **Node** : [Material](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputMaterial.html#bpy.types.GeometryNodeInputMaterial)
 
 #### Arguments:
 - **material** (_NoneType_ = None) : Node.material
@@ -2231,7 +2231,7 @@ material(material=None)
 material_selection(material=None)
 ```
 
-[Material Selection](https://docs.blender.org/api/current/bpy.types.GeometryNodeMaterialSelection.html#bpy.types.GeometryNodeMaterialSelection)
+> **Node** : [Material Selection](https://docs.blender.org/api/current/bpy.types.GeometryNodeMaterialSelection.html#bpy.types.GeometryNodeMaterialSelection)
 
 #### Arguments:
 - **material** (_Material_ = None) : socket 'Material' (Material)
@@ -2252,7 +2252,7 @@ material_selection(material=None)
 math(value=None, value_1=None, operation='ADD', use_clamp=False)
 ```
 
-[Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html#bpy.types.ShaderNodeMath)
+> **Node** : [Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeMath.html#bpy.types.ShaderNodeMath)
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (Value)
@@ -2276,7 +2276,7 @@ math(value=None, value_1=None, operation='ADD', use_clamp=False)
 menu_switch(menu=None, a=None, b=None, active_index=1, data_type='GEOMETRY')
 ```
 
-[Menu Switch](https://docs.blender.org/api/current/bpy.types.GeometryNodeMenuSwitch.html#bpy.types.GeometryNodeMenuSwitch)
+> **Node** : [Menu Switch](https://docs.blender.org/api/current/bpy.types.GeometryNodeMenuSwitch.html#bpy.types.GeometryNodeMenuSwitch)
 
 #### Arguments:
 - **menu** (_Menu_ = None) : socket 'Menu' (Menu)
@@ -2301,7 +2301,7 @@ menu_switch(menu=None, a=None, b=None, active_index=1, data_type='GEOMETRY')
 merge_by_distance(geometry=None, selection=None, distance=None, mode='ALL')
 ```
 
-[Merge by Distance](https://docs.blender.org/api/current/bpy.types.GeometryNodeMergeByDistance.html#bpy.types.GeometryNodeMergeByDistance)
+> **Node** : [Merge by Distance](https://docs.blender.org/api/current/bpy.types.GeometryNodeMergeByDistance.html#bpy.types.GeometryNodeMergeByDistance)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -2325,7 +2325,7 @@ merge_by_distance(geometry=None, selection=None, distance=None, mode='ALL')
 mesh_boolean(mesh_1=None, mesh_2=None, self_intersection=None, hole_tolerant=None, operation='DIFFERENCE', solver='FLOAT')
 ```
 
-[Mesh Boolean](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshBoolean.html#bpy.types.GeometryNodeMeshBoolean)
+> **Node** : [Mesh Boolean](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshBoolean.html#bpy.types.GeometryNodeMeshBoolean)
 
 #### Arguments:
 - **mesh_1** (_Geometry_ = None) : socket 'Mesh 1' (Mesh 1)
@@ -2351,7 +2351,7 @@ mesh_boolean(mesh_1=None, mesh_2=None, self_intersection=None, hole_tolerant=Non
 mesh_circle(vertices=None, radius=None, fill_type='NONE')
 ```
 
-[Mesh Circle](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshCircle.html#bpy.types.GeometryNodeMeshCircle)
+> **Node** : [Mesh Circle](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshCircle.html#bpy.types.GeometryNodeMeshCircle)
 
 #### Arguments:
 - **vertices** (_Integer_ = None) : socket 'Vertices' (Vertices)
@@ -2374,7 +2374,7 @@ mesh_circle(vertices=None, radius=None, fill_type='NONE')
 mesh_line(count=None, start_location=None, offset=None, count_mode='TOTAL', mode='OFFSET')
 ```
 
-[Mesh Line](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshLine.html#bpy.types.GeometryNodeMeshLine)
+> **Node** : [Mesh Line](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshLine.html#bpy.types.GeometryNodeMeshLine)
 
 #### Arguments:
 - **count** (_Integer_ = None) : socket 'Count' (Count)
@@ -2399,7 +2399,7 @@ mesh_line(count=None, start_location=None, offset=None, count_mode='TOTAL', mode
 mesh_to_curve(mesh=None, selection=None)
 ```
 
-[Mesh to Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToCurve.html#bpy.types.GeometryNodeMeshToCurve)
+> **Node** : [Mesh to Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToCurve.html#bpy.types.GeometryNodeMeshToCurve)
 
 #### Arguments:
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (Mesh)
@@ -2421,7 +2421,7 @@ mesh_to_curve(mesh=None, selection=None)
 mesh_to_density_grid(mesh=None, density=None, voxel_size=None, gradient_width=None)
 ```
 
-[Mesh to Density Grid](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToDensityGrid.html#bpy.types.GeometryNodeMeshToDensityGrid)
+> **Node** : [Mesh to Density Grid](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToDensityGrid.html#bpy.types.GeometryNodeMeshToDensityGrid)
 
 #### Arguments:
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (Mesh)
@@ -2445,7 +2445,7 @@ mesh_to_density_grid(mesh=None, density=None, voxel_size=None, gradient_width=No
 mesh_to_points(mesh=None, selection=None, position=None, radius=None, mode='VERTICES')
 ```
 
-[Mesh to Points](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToPoints.html#bpy.types.GeometryNodeMeshToPoints)
+> **Node** : [Mesh to Points](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToPoints.html#bpy.types.GeometryNodeMeshToPoints)
 
 #### Arguments:
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (Mesh)
@@ -2470,7 +2470,7 @@ mesh_to_points(mesh=None, selection=None, position=None, radius=None, mode='VERT
 mesh_to_sdf_grid(mesh=None, voxel_size=None, band_width=None)
 ```
 
-[Mesh to SDF Grid](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToSDFGrid.html#bpy.types.GeometryNodeMeshToSDFGrid)
+> **Node** : [Mesh to SDF Grid](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToSDFGrid.html#bpy.types.GeometryNodeMeshToSDFGrid)
 
 #### Arguments:
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (Mesh)
@@ -2493,7 +2493,7 @@ mesh_to_sdf_grid(mesh=None, voxel_size=None, band_width=None)
 mesh_to_volume(mesh=None, density=None, voxel_amount=None, interior_band_width=None, resolution_mode='VOXEL_AMOUNT')
 ```
 
-[Mesh to Volume](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToVolume.html#bpy.types.GeometryNodeMeshToVolume)
+> **Node** : [Mesh to Volume](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshToVolume.html#bpy.types.GeometryNodeMeshToVolume)
 
 #### Arguments:
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (Mesh)
@@ -2518,7 +2518,7 @@ mesh_to_volume(mesh=None, density=None, voxel_amount=None, interior_band_width=N
 mix(factor=None, a=None, b=None, blend_type='MIX', clamp_factor=True, clamp_result=False, data_type='FLOAT', factor_mode='UNIFORM')
 ```
 
-[Mix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html#bpy.types.ShaderNodeMix)
+> **Node** : [Mix](https://docs.blender.org/api/current/bpy.types.ShaderNodeMix.html#bpy.types.ShaderNodeMix)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket 'Factor' (Factor_Float)
@@ -2546,7 +2546,7 @@ mix(factor=None, a=None, b=None, blend_type='MIX', clamp_factor=True, clamp_resu
 multiply_matrices(matrix=None, matrix_1=None)
 ```
 
-[Multiply Matrices](https://docs.blender.org/api/current/bpy.types.FunctionNodeMatrixMultiply.html#bpy.types.FunctionNodeMatrixMultiply)
+> **Node** : [Multiply Matrices](https://docs.blender.org/api/current/bpy.types.FunctionNodeMatrixMultiply.html#bpy.types.FunctionNodeMatrixMultiply)
 
 #### Arguments:
 - **matrix** (_Matrix_ = None) : socket 'Matrix' (Matrix)
@@ -2568,7 +2568,7 @@ multiply_matrices(matrix=None, matrix_1=None)
 named_attribute(name=None, data_type='FLOAT')
 ```
 
-[Named Attribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html#bpy.types.GeometryNodeInputNamedAttribute)
+> **Node** : [Named Attribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedAttribute.html#bpy.types.GeometryNodeInputNamedAttribute)
 
 #### Arguments:
 - **name** (_String_ = None) : socket 'Name' (Name)
@@ -2590,7 +2590,7 @@ named_attribute(name=None, data_type='FLOAT')
 named_layer_selection(name=None)
 ```
 
-[Named Layer Selection](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedLayerSelection.html#bpy.types.GeometryNodeInputNamedLayerSelection)
+> **Node** : [Named Layer Selection](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputNamedLayerSelection.html#bpy.types.GeometryNodeInputNamedLayerSelection)
 
 #### Arguments:
 - **name** (_String_ = None) : socket 'Name' (Name)
@@ -2611,7 +2611,7 @@ named_layer_selection(name=None)
 noise_texture(vector=None, scale=None, detail=None, roughness=None, lacunarity=None, distortion=None, color_mapping=None, noise_dimensions='3D', noise_type='FBM', normalize=True, texture_mapping=None)
 ```
 
-[Noise Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexNoise.html#bpy.types.ShaderNodeTexNoise)
+> **Node** : [Noise Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexNoise.html#bpy.types.ShaderNodeTexNoise)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -2642,7 +2642,7 @@ noise_texture(vector=None, scale=None, detail=None, roughness=None, lacunarity=N
 object_info(object=None, as_instance=None, transform_space='ORIGINAL')
 ```
 
-[Object Info](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html#bpy.types.GeometryNodeObjectInfo)
+> **Node** : [Object Info](https://docs.blender.org/api/current/bpy.types.GeometryNodeObjectInfo.html#bpy.types.GeometryNodeObjectInfo)
 
 #### Arguments:
 - **object** (_Object_ = None) : socket 'Object' (Object)
@@ -2665,7 +2665,7 @@ object_info(object=None, as_instance=None, transform_space='ORIGINAL')
 offset_corner_in_face(corner_index=None, offset=None)
 ```
 
-[Offset Corner in Face](https://docs.blender.org/api/current/bpy.types.GeometryNodeOffsetCornerInFace.html#bpy.types.GeometryNodeOffsetCornerInFace)
+> **Node** : [Offset Corner in Face](https://docs.blender.org/api/current/bpy.types.GeometryNodeOffsetCornerInFace.html#bpy.types.GeometryNodeOffsetCornerInFace)
 
 #### Arguments:
 - **corner_index** (_Integer_ = None) : socket 'Corner Index' (Corner Index)
@@ -2687,7 +2687,7 @@ offset_corner_in_face(corner_index=None, offset=None)
 offset_point_in_curve(point_index=None, offset=None)
 ```
 
-[Offset Point in Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeOffsetPointInCurve.html#bpy.types.GeometryNodeOffsetPointInCurve)
+> **Node** : [Offset Point in Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeOffsetPointInCurve.html#bpy.types.GeometryNodeOffsetPointInCurve)
 
 #### Arguments:
 - **point_index** (_Integer_ = None) : socket 'Point Index' (Point Index)
@@ -2709,7 +2709,7 @@ offset_point_in_curve(point_index=None, offset=None)
 pack_uv_islands(uv=None, selection=None, margin=None, rotate=None)
 ```
 
-[Pack UV Islands](https://docs.blender.org/api/current/bpy.types.GeometryNodeUVPackIslands.html#bpy.types.GeometryNodeUVPackIslands)
+> **Node** : [Pack UV Islands](https://docs.blender.org/api/current/bpy.types.GeometryNodeUVPackIslands.html#bpy.types.GeometryNodeUVPackIslands)
 
 #### Arguments:
 - **uv** (_Vector_ = None) : socket 'UV' (UV)
@@ -2733,7 +2733,7 @@ pack_uv_islands(uv=None, selection=None, margin=None, rotate=None)
 points(count=None, position=None, radius=None)
 ```
 
-[Points](https://docs.blender.org/api/current/bpy.types.GeometryNodePoints.html#bpy.types.GeometryNodePoints)
+> **Node** : [Points](https://docs.blender.org/api/current/bpy.types.GeometryNodePoints.html#bpy.types.GeometryNodePoints)
 
 #### Arguments:
 - **count** (_Integer_ = None) : socket 'Count' (Count)
@@ -2756,7 +2756,7 @@ points(count=None, position=None, radius=None)
 points_of_curve(curve_index=None, weights=None, sort_index=None)
 ```
 
-[Points of Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsOfCurve.html#bpy.types.GeometryNodePointsOfCurve)
+> **Node** : [Points of Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsOfCurve.html#bpy.types.GeometryNodePointsOfCurve)
 
 #### Arguments:
 - **curve_index** (_Integer_ = None) : socket 'Curve Index' (Curve Index)
@@ -2779,7 +2779,7 @@ points_of_curve(curve_index=None, weights=None, sort_index=None)
 points_to_curves(points=None, curve_group_id=None, weight=None)
 ```
 
-[Points to Curves](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToCurves.html#bpy.types.GeometryNodePointsToCurves)
+> **Node** : [Points to Curves](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToCurves.html#bpy.types.GeometryNodePointsToCurves)
 
 #### Arguments:
 - **points** (_Geometry_ = None) : socket 'Points' (Points)
@@ -2802,7 +2802,7 @@ points_to_curves(points=None, curve_group_id=None, weight=None)
 points_to_sdf_grid(points=None, radius=None, voxel_size=None)
 ```
 
-[Points to SDF Grid](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToSDFGrid.html#bpy.types.GeometryNodePointsToSDFGrid)
+> **Node** : [Points to SDF Grid](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToSDFGrid.html#bpy.types.GeometryNodePointsToSDFGrid)
 
 #### Arguments:
 - **points** (_Geometry_ = None) : socket 'Points' (Points)
@@ -2825,7 +2825,7 @@ points_to_sdf_grid(points=None, radius=None, voxel_size=None)
 points_to_vertices(points=None, selection=None)
 ```
 
-[Points to Vertices](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToVertices.html#bpy.types.GeometryNodePointsToVertices)
+> **Node** : [Points to Vertices](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToVertices.html#bpy.types.GeometryNodePointsToVertices)
 
 #### Arguments:
 - **points** (_Geometry_ = None) : socket 'Points' (Points)
@@ -2847,7 +2847,7 @@ points_to_vertices(points=None, selection=None)
 points_to_volume(points=None, density=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_AMOUNT')
 ```
 
-[Points to Volume](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToVolume.html#bpy.types.GeometryNodePointsToVolume)
+> **Node** : [Points to Volume](https://docs.blender.org/api/current/bpy.types.GeometryNodePointsToVolume.html#bpy.types.GeometryNodePointsToVolume)
 
 #### Arguments:
 - **points** (_Geometry_ = None) : socket 'Points' (Points)
@@ -2872,7 +2872,7 @@ points_to_volume(points=None, density=None, voxel_amount=None, radius=None, reso
 project_point(vector=None, transform=None)
 ```
 
-[Project Point](https://docs.blender.org/api/current/bpy.types.FunctionNodeProjectPoint.html#bpy.types.FunctionNodeProjectPoint)
+> **Node** : [Project Point](https://docs.blender.org/api/current/bpy.types.FunctionNodeProjectPoint.html#bpy.types.FunctionNodeProjectPoint)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -2894,7 +2894,7 @@ project_point(vector=None, transform=None)
 quadratic_bezier(resolution=None, start=None, middle=None, end=None)
 ```
 
-[Quadratic Bézier](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveQuadraticBezier.html#bpy.types.GeometryNodeCurveQuadraticBezier)
+> **Node** : [Quadratic Bézier](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveQuadraticBezier.html#bpy.types.GeometryNodeCurveQuadraticBezier)
 
 #### Arguments:
 - **resolution** (_Integer_ = None) : socket 'Resolution' (Resolution)
@@ -2918,7 +2918,7 @@ quadratic_bezier(resolution=None, start=None, middle=None, end=None)
 quadrilateral(width=None, height=None, mode='RECTANGLE')
 ```
 
-[Quadrilateral](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveQuadrilateral.html#bpy.types.GeometryNodeCurvePrimitiveQuadrilateral)
+> **Node** : [Quadrilateral](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurvePrimitiveQuadrilateral.html#bpy.types.GeometryNodeCurvePrimitiveQuadrilateral)
 
 #### Arguments:
 - **width** (_Float_ = None) : socket 'Width' (Width)
@@ -2941,7 +2941,7 @@ quadrilateral(width=None, height=None, mode='RECTANGLE')
 quaternion_to_rotation(w=None, x=None, y=None, z=None)
 ```
 
-[Quaternion to Rotation](https://docs.blender.org/api/current/bpy.types.FunctionNodeQuaternionToRotation.html#bpy.types.FunctionNodeQuaternionToRotation)
+> **Node** : [Quaternion to Rotation](https://docs.blender.org/api/current/bpy.types.FunctionNodeQuaternionToRotation.html#bpy.types.FunctionNodeQuaternionToRotation)
 
 #### Arguments:
 - **w** (_Float_ = None) : socket 'W' (W)
@@ -2965,7 +2965,7 @@ quaternion_to_rotation(w=None, x=None, y=None, z=None)
 random_value(min=None, max=None, id=None, seed=None, data_type='FLOAT')
 ```
 
-[Random Value](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html#bpy.types.FunctionNodeRandomValue)
+> **Node** : [Random Value](https://docs.blender.org/api/current/bpy.types.FunctionNodeRandomValue.html#bpy.types.FunctionNodeRandomValue)
 
 #### Arguments:
 - **min** (_Float_ = None) : socket 'Min' (Min_001)
@@ -2990,7 +2990,7 @@ random_value(min=None, max=None, id=None, seed=None, data_type='FLOAT')
 raycast(target_geometry=None, attribute=None, source_position=None, ray_direction=None, ray_length=None, data_type='FLOAT', mapping='INTERPOLATED')
 ```
 
-[Raycast](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html#bpy.types.GeometryNodeRaycast)
+> **Node** : [Raycast](https://docs.blender.org/api/current/bpy.types.GeometryNodeRaycast.html#bpy.types.GeometryNodeRaycast)
 
 #### Arguments:
 - **target_geometry** (_Geometry_ = None) : socket 'Target Geometry' (Target Geometry)
@@ -3017,7 +3017,7 @@ raycast(target_geometry=None, attribute=None, source_position=None, ray_directio
 realize_instances(geometry=None, selection=None, realize_all=None, depth=None)
 ```
 
-[Realize Instances](https://docs.blender.org/api/current/bpy.types.GeometryNodeRealizeInstances.html#bpy.types.GeometryNodeRealizeInstances)
+> **Node** : [Realize Instances](https://docs.blender.org/api/current/bpy.types.GeometryNodeRealizeInstances.html#bpy.types.GeometryNodeRealizeInstances)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -3041,7 +3041,7 @@ realize_instances(geometry=None, selection=None, realize_all=None, depth=None)
 remove_named_attribute(geometry=None, name=None, pattern_mode='EXACT')
 ```
 
-[Remove Named Attribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeRemoveAttribute.html#bpy.types.GeometryNodeRemoveAttribute)
+> **Node** : [Remove Named Attribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeRemoveAttribute.html#bpy.types.GeometryNodeRemoveAttribute)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -3064,7 +3064,7 @@ remove_named_attribute(geometry=None, name=None, pattern_mode='EXACT')
 repeat_input(iterations=None, pair_with_output=None, paired_output=None)
 ```
 
-[Repeat Input](https://docs.blender.org/api/current/bpy.types.GeometryNodeRepeatInput.html#bpy.types.GeometryNodeRepeatInput)
+> **Node** : [Repeat Input](https://docs.blender.org/api/current/bpy.types.GeometryNodeRepeatInput.html#bpy.types.GeometryNodeRepeatInput)
 
 #### Arguments:
 - **iterations** (_Integer_ = None) : socket 'Iterations' (Iterations)
@@ -3082,7 +3082,7 @@ repeat_input(iterations=None, pair_with_output=None, paired_output=None)
 repeat_output(geometry=None, active_index=0, active_item=None, inspection_index=0, repeat_items=None)
 ```
 
-[Repeat Output](https://docs.blender.org/api/current/bpy.types.GeometryNodeRepeatOutput.html#bpy.types.GeometryNodeRepeatOutput)
+> **Node** : [Repeat Output](https://docs.blender.org/api/current/bpy.types.GeometryNodeRepeatOutput.html#bpy.types.GeometryNodeRepeatOutput)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Item_0)
@@ -3107,7 +3107,7 @@ repeat_output(geometry=None, active_index=0, active_item=None, inspection_index=
 replace_material(geometry=None, old=None, new=None)
 ```
 
-[Replace Material](https://docs.blender.org/api/current/bpy.types.GeometryNodeReplaceMaterial.html#bpy.types.GeometryNodeReplaceMaterial)
+> **Node** : [Replace Material](https://docs.blender.org/api/current/bpy.types.GeometryNodeReplaceMaterial.html#bpy.types.GeometryNodeReplaceMaterial)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -3130,7 +3130,7 @@ replace_material(geometry=None, old=None, new=None)
 replace_string(string=None, find=None, replace=None)
 ```
 
-[Replace String](https://docs.blender.org/api/current/bpy.types.FunctionNodeReplaceString.html#bpy.types.FunctionNodeReplaceString)
+> **Node** : [Replace String](https://docs.blender.org/api/current/bpy.types.FunctionNodeReplaceString.html#bpy.types.FunctionNodeReplaceString)
 
 #### Arguments:
 - **string** (_String_ = None) : socket 'String' (String)
@@ -3153,7 +3153,7 @@ replace_string(string=None, find=None, replace=None)
 reroute(input=None)
 ```
 
-[Reroute](https://docs.blender.org/api/current/bpy.types.NodeReroute.html#bpy.types.NodeReroute)
+> **Node** : [Reroute](https://docs.blender.org/api/current/bpy.types.NodeReroute.html#bpy.types.NodeReroute)
 
 #### Arguments:
 - **input** (_Color_ = None) : socket 'Input' (Input)
@@ -3174,7 +3174,7 @@ reroute(input=None)
 resample_curve(curve=None, selection=None, count=None, mode='COUNT')
 ```
 
-[Resample Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeResampleCurve.html#bpy.types.GeometryNodeResampleCurve)
+> **Node** : [Resample Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeResampleCurve.html#bpy.types.GeometryNodeResampleCurve)
 
 #### Arguments:
 - **curve** (_Geometry_ = None) : socket 'Curve' (Curve)
@@ -3198,7 +3198,7 @@ resample_curve(curve=None, selection=None, count=None, mode='COUNT')
 reverse_curve(curve=None, selection=None)
 ```
 
-[Reverse Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeReverseCurve.html#bpy.types.GeometryNodeReverseCurve)
+> **Node** : [Reverse Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeReverseCurve.html#bpy.types.GeometryNodeReverseCurve)
 
 #### Arguments:
 - **curve** (_Geometry_ = None) : socket 'Curve' (Curve)
@@ -3220,7 +3220,7 @@ reverse_curve(curve=None, selection=None)
 rgb_curves(fac=None, color=None, mapping=None)
 ```
 
-[RGB Curves](https://docs.blender.org/api/current/bpy.types.ShaderNodeRGBCurve.html#bpy.types.ShaderNodeRGBCurve)
+> **Node** : [RGB Curves](https://docs.blender.org/api/current/bpy.types.ShaderNodeRGBCurve.html#bpy.types.ShaderNodeRGBCurve)
 
 #### Arguments:
 - **fac** (_Float_ = None) : socket 'Fac' (Fac)
@@ -3243,7 +3243,7 @@ rgb_curves(fac=None, color=None, mapping=None)
 rotate_euler(rotation=None, rotate_by=None, rotation_type='EULER', space='OBJECT')
 ```
 
-[Rotate Euler](https://docs.blender.org/api/current/bpy.types.FunctionNodeRotateEuler.html#bpy.types.FunctionNodeRotateEuler)
+> **Node** : [Rotate Euler](https://docs.blender.org/api/current/bpy.types.FunctionNodeRotateEuler.html#bpy.types.FunctionNodeRotateEuler)
 
 #### Arguments:
 - **rotation** (_Vector_ = None) : socket 'Rotation' (Rotation)
@@ -3267,7 +3267,7 @@ rotate_euler(rotation=None, rotate_by=None, rotation_type='EULER', space='OBJECT
 rotate_instances(instances=None, selection=None, rotation=None, pivot_point=None, local_space=None)
 ```
 
-[Rotate Instances](https://docs.blender.org/api/current/bpy.types.GeometryNodeRotateInstances.html#bpy.types.GeometryNodeRotateInstances)
+> **Node** : [Rotate Instances](https://docs.blender.org/api/current/bpy.types.GeometryNodeRotateInstances.html#bpy.types.GeometryNodeRotateInstances)
 
 #### Arguments:
 - **instances** (_Geometry_ = None) : socket 'Instances' (Instances)
@@ -3292,7 +3292,7 @@ rotate_instances(instances=None, selection=None, rotation=None, pivot_point=None
 rotate_rotation(rotation=None, rotate_by=None, rotation_space='GLOBAL')
 ```
 
-[Rotate Rotation](https://docs.blender.org/api/current/bpy.types.FunctionNodeRotateRotation.html#bpy.types.FunctionNodeRotateRotation)
+> **Node** : [Rotate Rotation](https://docs.blender.org/api/current/bpy.types.FunctionNodeRotateRotation.html#bpy.types.FunctionNodeRotateRotation)
 
 #### Arguments:
 - **rotation** (_Rotation_ = None) : socket 'Rotation' (Rotation)
@@ -3315,7 +3315,7 @@ rotate_rotation(rotation=None, rotate_by=None, rotation_space='GLOBAL')
 rotate_vector(vector=None, rotation=None)
 ```
 
-[Rotate Vector](https://docs.blender.org/api/current/bpy.types.FunctionNodeRotateVector.html#bpy.types.FunctionNodeRotateVector)
+> **Node** : [Rotate Vector](https://docs.blender.org/api/current/bpy.types.FunctionNodeRotateVector.html#bpy.types.FunctionNodeRotateVector)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -3337,7 +3337,7 @@ rotate_vector(vector=None, rotation=None)
 rotation(rotation_euler=None)
 ```
 
-[Rotation](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputRotation.html#bpy.types.FunctionNodeInputRotation)
+> **Node** : [Rotation](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputRotation.html#bpy.types.FunctionNodeInputRotation)
 
 #### Arguments:
 - **rotation_euler** (_Euler_ = None) : Node.rotation_euler
@@ -3358,7 +3358,7 @@ rotation(rotation_euler=None)
 rotation_to_axis_angle(rotation=None)
 ```
 
-[Rotation to Axis Angle](https://docs.blender.org/api/current/bpy.types.FunctionNodeRotationToAxisAngle.html#bpy.types.FunctionNodeRotationToAxisAngle)
+> **Node** : [Rotation to Axis Angle](https://docs.blender.org/api/current/bpy.types.FunctionNodeRotationToAxisAngle.html#bpy.types.FunctionNodeRotationToAxisAngle)
 
 #### Arguments:
 - **rotation** (_Rotation_ = None) : socket 'Rotation' (Rotation)
@@ -3379,7 +3379,7 @@ rotation_to_axis_angle(rotation=None)
 rotation_to_euler(rotation=None)
 ```
 
-[Rotation to Euler](https://docs.blender.org/api/current/bpy.types.FunctionNodeRotationToEuler.html#bpy.types.FunctionNodeRotationToEuler)
+> **Node** : [Rotation to Euler](https://docs.blender.org/api/current/bpy.types.FunctionNodeRotationToEuler.html#bpy.types.FunctionNodeRotationToEuler)
 
 #### Arguments:
 - **rotation** (_Rotation_ = None) : socket 'Rotation' (Rotation)
@@ -3400,7 +3400,7 @@ rotation_to_euler(rotation=None)
 rotation_to_quaternion(rotation=None)
 ```
 
-[Rotation to Quaternion](https://docs.blender.org/api/current/bpy.types.FunctionNodeRotationToQuaternion.html#bpy.types.FunctionNodeRotationToQuaternion)
+> **Node** : [Rotation to Quaternion](https://docs.blender.org/api/current/bpy.types.FunctionNodeRotationToQuaternion.html#bpy.types.FunctionNodeRotationToQuaternion)
 
 #### Arguments:
 - **rotation** (_Rotation_ = None) : socket 'Rotation' (Rotation)
@@ -3421,7 +3421,7 @@ rotation_to_quaternion(rotation=None)
 sample_curve(curves=None, value=None, factor=None, curve_index=None, data_type='FLOAT', mode='FACTOR', use_all_curves=False)
 ```
 
-[Sample Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleCurve.html#bpy.types.GeometryNodeSampleCurve)
+> **Node** : [Sample Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleCurve.html#bpy.types.GeometryNodeSampleCurve)
 
 #### Arguments:
 - **curves** (_Geometry_ = None) : socket 'Curves' (Curves)
@@ -3448,7 +3448,7 @@ sample_curve(curves=None, value=None, factor=None, curve_index=None, data_type='
 sample_grid(grid=None, position=None, data_type='FLOAT', interpolation_mode='TRILINEAR')
 ```
 
-[Sample Grid](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleGrid.html#bpy.types.GeometryNodeSampleGrid)
+> **Node** : [Sample Grid](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleGrid.html#bpy.types.GeometryNodeSampleGrid)
 
 #### Arguments:
 - **grid** (_Float_ = None) : socket 'Grid' (Grid)
@@ -3472,7 +3472,7 @@ sample_grid(grid=None, position=None, data_type='FLOAT', interpolation_mode='TRI
 sample_grid_index(grid=None, x=None, y=None, z=None, data_type='FLOAT')
 ```
 
-[Sample Grid Index](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleGridIndex.html#bpy.types.GeometryNodeSampleGridIndex)
+> **Node** : [Sample Grid Index](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleGridIndex.html#bpy.types.GeometryNodeSampleGridIndex)
 
 #### Arguments:
 - **grid** (_Float_ = None) : socket 'Grid' (Grid)
@@ -3497,7 +3497,7 @@ sample_grid_index(grid=None, x=None, y=None, z=None, data_type='FLOAT')
 sample_index(geometry=None, value=None, index=None, clamp=False, data_type='FLOAT', domain='POINT')
 ```
 
-[Sample Index](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleIndex.html#bpy.types.GeometryNodeSampleIndex)
+> **Node** : [Sample Index](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleIndex.html#bpy.types.GeometryNodeSampleIndex)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -3523,7 +3523,7 @@ sample_index(geometry=None, value=None, index=None, clamp=False, data_type='FLOA
 sample_nearest(geometry=None, sample_position=None, domain='POINT')
 ```
 
-[Sample Nearest](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleNearest.html#bpy.types.GeometryNodeSampleNearest)
+> **Node** : [Sample Nearest](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleNearest.html#bpy.types.GeometryNodeSampleNearest)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -3546,7 +3546,7 @@ sample_nearest(geometry=None, sample_position=None, domain='POINT')
 sample_nearest_surface(mesh=None, value=None, group_id=None, sample_position=None, sample_group_id=None, data_type='FLOAT')
 ```
 
-[Sample Nearest Surface](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleNearestSurface.html#bpy.types.GeometryNodeSampleNearestSurface)
+> **Node** : [Sample Nearest Surface](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleNearestSurface.html#bpy.types.GeometryNodeSampleNearestSurface)
 
 #### Arguments:
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (Mesh)
@@ -3572,7 +3572,7 @@ sample_nearest_surface(mesh=None, value=None, group_id=None, sample_position=Non
 sample_uv_surface(mesh=None, value=None, uv_map=None, sample_uv=None, data_type='FLOAT')
 ```
 
-[Sample UV Surface](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleUVSurface.html#bpy.types.GeometryNodeSampleUVSurface)
+> **Node** : [Sample UV Surface](https://docs.blender.org/api/current/bpy.types.GeometryNodeSampleUVSurface.html#bpy.types.GeometryNodeSampleUVSurface)
 
 #### Arguments:
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (Mesh)
@@ -3597,7 +3597,7 @@ sample_uv_surface(mesh=None, value=None, uv_map=None, sample_uv=None, data_type=
 scale_elements(geometry=None, selection=None, scale=None, center=None, domain='FACE', scale_mode='UNIFORM')
 ```
 
-[Scale Elements](https://docs.blender.org/api/current/bpy.types.GeometryNodeScaleElements.html#bpy.types.GeometryNodeScaleElements)
+> **Node** : [Scale Elements](https://docs.blender.org/api/current/bpy.types.GeometryNodeScaleElements.html#bpy.types.GeometryNodeScaleElements)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -3623,7 +3623,7 @@ scale_elements(geometry=None, selection=None, scale=None, center=None, domain='F
 scale_instances(instances=None, selection=None, scale=None, center=None, local_space=None)
 ```
 
-[Scale Instances](https://docs.blender.org/api/current/bpy.types.GeometryNodeScaleInstances.html#bpy.types.GeometryNodeScaleInstances)
+> **Node** : [Scale Instances](https://docs.blender.org/api/current/bpy.types.GeometryNodeScaleInstances.html#bpy.types.GeometryNodeScaleInstances)
 
 #### Arguments:
 - **instances** (_Geometry_ = None) : socket 'Instances' (Instances)
@@ -3648,7 +3648,7 @@ scale_instances(instances=None, selection=None, scale=None, center=None, local_s
 sdf_grid_boolean(grid_1=None, grid_2=None, operation='DIFFERENCE')
 ```
 
-[SDF Grid Boolean](https://docs.blender.org/api/current/bpy.types.GeometryNodeSDFGridBoolean.html#bpy.types.GeometryNodeSDFGridBoolean)
+> **Node** : [SDF Grid Boolean](https://docs.blender.org/api/current/bpy.types.GeometryNodeSDFGridBoolean.html#bpy.types.GeometryNodeSDFGridBoolean)
 
 #### Arguments:
 - **grid_1** (_Float_ = None) : socket 'Grid 1' (Grid 1)
@@ -3671,7 +3671,7 @@ sdf_grid_boolean(grid_1=None, grid_2=None, operation='DIFFERENCE')
 separate_color(color=None, mode='RGB')
 ```
 
-[Separate Color](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html#bpy.types.FunctionNodeSeparateColor)
+> **Node** : [Separate Color](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateColor.html#bpy.types.FunctionNodeSeparateColor)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -3693,7 +3693,7 @@ separate_color(color=None, mode='RGB')
 separate_components(geometry=None)
 ```
 
-[Separate Components](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html#bpy.types.GeometryNodeSeparateComponents)
+> **Node** : [Separate Components](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateComponents.html#bpy.types.GeometryNodeSeparateComponents)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -3714,7 +3714,7 @@ separate_components(geometry=None)
 separate_geometry(geometry=None, selection=None, domain='POINT')
 ```
 
-[Separate Geometry](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateGeometry.html#bpy.types.GeometryNodeSeparateGeometry)
+> **Node** : [Separate Geometry](https://docs.blender.org/api/current/bpy.types.GeometryNodeSeparateGeometry.html#bpy.types.GeometryNodeSeparateGeometry)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -3737,7 +3737,7 @@ separate_geometry(geometry=None, selection=None, domain='POINT')
 separate_matrix(matrix=None)
 ```
 
-[Separate Matrix](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateMatrix.html#bpy.types.FunctionNodeSeparateMatrix)
+> **Node** : [Separate Matrix](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateMatrix.html#bpy.types.FunctionNodeSeparateMatrix)
 
 #### Arguments:
 - **matrix** (_Matrix_ = None) : socket 'Matrix' (Matrix)
@@ -3758,7 +3758,7 @@ separate_matrix(matrix=None)
 separate_transform(transform=None)
 ```
 
-[Separate Transform](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateTransform.html#bpy.types.FunctionNodeSeparateTransform)
+> **Node** : [Separate Transform](https://docs.blender.org/api/current/bpy.types.FunctionNodeSeparateTransform.html#bpy.types.FunctionNodeSeparateTransform)
 
 #### Arguments:
 - **transform** (_Matrix_ = None) : socket 'Transform' (Transform)
@@ -3779,7 +3779,7 @@ separate_transform(transform=None)
 separate_xyz(vector=None)
 ```
 
-[Separate XYZ](https://docs.blender.org/api/current/bpy.types.ShaderNodeSeparateXYZ.html#bpy.types.ShaderNodeSeparateXYZ)
+> **Node** : [Separate XYZ](https://docs.blender.org/api/current/bpy.types.ShaderNodeSeparateXYZ.html#bpy.types.ShaderNodeSeparateXYZ)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -3800,7 +3800,7 @@ separate_xyz(vector=None)
 set_curve_normal(curve=None, selection=None, mode='MINIMUM_TWIST')
 ```
 
-[Set Curve Normal](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveNormal.html#bpy.types.GeometryNodeSetCurveNormal)
+> **Node** : [Set Curve Normal](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveNormal.html#bpy.types.GeometryNodeSetCurveNormal)
 
 #### Arguments:
 - **curve** (_Geometry_ = None) : socket 'Curve' (Curve)
@@ -3823,7 +3823,7 @@ set_curve_normal(curve=None, selection=None, mode='MINIMUM_TWIST')
 set_curve_radius(curve=None, selection=None, radius=None)
 ```
 
-[Set Curve Radius](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveRadius.html#bpy.types.GeometryNodeSetCurveRadius)
+> **Node** : [Set Curve Radius](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveRadius.html#bpy.types.GeometryNodeSetCurveRadius)
 
 #### Arguments:
 - **curve** (_Geometry_ = None) : socket 'Curve' (Curve)
@@ -3846,7 +3846,7 @@ set_curve_radius(curve=None, selection=None, radius=None)
 set_curve_tilt(curve=None, selection=None, tilt=None)
 ```
 
-[Set Curve Tilt](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveTilt.html#bpy.types.GeometryNodeSetCurveTilt)
+> **Node** : [Set Curve Tilt](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveTilt.html#bpy.types.GeometryNodeSetCurveTilt)
 
 #### Arguments:
 - **curve** (_Geometry_ = None) : socket 'Curve' (Curve)
@@ -3869,7 +3869,7 @@ set_curve_tilt(curve=None, selection=None, tilt=None)
 set_face_set(mesh=None, selection=None, face_set=None)
 ```
 
-[Set Face Set](https://docs.blender.org/api/current/bpy.types.GeometryNodeToolSetFaceSet.html#bpy.types.GeometryNodeToolSetFaceSet)
+> **Node** : [Set Face Set](https://docs.blender.org/api/current/bpy.types.GeometryNodeToolSetFaceSet.html#bpy.types.GeometryNodeToolSetFaceSet)
 
 #### Arguments:
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (Mesh)
@@ -3892,7 +3892,7 @@ set_face_set(mesh=None, selection=None, face_set=None)
 set_handle_positions(curve=None, selection=None, position=None, offset=None, mode='LEFT')
 ```
 
-[Set Handle Positions](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveHandlePositions.html#bpy.types.GeometryNodeSetCurveHandlePositions)
+> **Node** : [Set Handle Positions](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetCurveHandlePositions.html#bpy.types.GeometryNodeSetCurveHandlePositions)
 
 #### Arguments:
 - **curve** (_Geometry_ = None) : socket 'Curve' (Curve)
@@ -3917,7 +3917,7 @@ set_handle_positions(curve=None, selection=None, position=None, offset=None, mod
 set_handle_type(curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'})
 ```
 
-[Set Handle Type](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSetHandles.html#bpy.types.GeometryNodeCurveSetHandles)
+> **Node** : [Set Handle Type](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSetHandles.html#bpy.types.GeometryNodeCurveSetHandles)
 
 #### Arguments:
 - **curve** (_Geometry_ = None) : socket 'Curve' (Curve)
@@ -3941,7 +3941,7 @@ set_handle_type(curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'R
 set_id(geometry=None, selection=None, id=None)
 ```
 
-[Set ID](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetID.html#bpy.types.GeometryNodeSetID)
+> **Node** : [Set ID](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetID.html#bpy.types.GeometryNodeSetID)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -3964,7 +3964,7 @@ set_id(geometry=None, selection=None, id=None)
 set_instance_transform(instances=None, selection=None, transform=None)
 ```
 
-[Set Instance Transform](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetInstanceTransform.html#bpy.types.GeometryNodeSetInstanceTransform)
+> **Node** : [Set Instance Transform](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetInstanceTransform.html#bpy.types.GeometryNodeSetInstanceTransform)
 
 #### Arguments:
 - **instances** (_Geometry_ = None) : socket 'Instances' (Instances)
@@ -3987,7 +3987,7 @@ set_instance_transform(instances=None, selection=None, transform=None)
 set_material(geometry=None, selection=None, material=None)
 ```
 
-[Set Material](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html#bpy.types.GeometryNodeSetMaterial)
+> **Node** : [Set Material](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterial.html#bpy.types.GeometryNodeSetMaterial)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -4010,7 +4010,7 @@ set_material(geometry=None, selection=None, material=None)
 set_material_index(geometry=None, selection=None, material_index=None)
 ```
 
-[Set Material Index](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterialIndex.html#bpy.types.GeometryNodeSetMaterialIndex)
+> **Node** : [Set Material Index](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetMaterialIndex.html#bpy.types.GeometryNodeSetMaterialIndex)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -4033,7 +4033,7 @@ set_material_index(geometry=None, selection=None, material_index=None)
 set_point_radius(points=None, selection=None, radius=None)
 ```
 
-[Set Point Radius](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetPointRadius.html#bpy.types.GeometryNodeSetPointRadius)
+> **Node** : [Set Point Radius](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetPointRadius.html#bpy.types.GeometryNodeSetPointRadius)
 
 #### Arguments:
 - **points** (_Geometry_ = None) : socket 'Points' (Points)
@@ -4056,7 +4056,7 @@ set_point_radius(points=None, selection=None, radius=None)
 set_position(geometry=None, selection=None, position=None, offset=None)
 ```
 
-[Set Position](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetPosition.html#bpy.types.GeometryNodeSetPosition)
+> **Node** : [Set Position](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetPosition.html#bpy.types.GeometryNodeSetPosition)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -4080,7 +4080,7 @@ set_position(geometry=None, selection=None, position=None, offset=None)
 set_selection(geometry=None, selection=None, domain='POINT')
 ```
 
-[Set Selection](https://docs.blender.org/api/current/bpy.types.GeometryNodeToolSetSelection.html#bpy.types.GeometryNodeToolSetSelection)
+> **Node** : [Set Selection](https://docs.blender.org/api/current/bpy.types.GeometryNodeToolSetSelection.html#bpy.types.GeometryNodeToolSetSelection)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -4103,7 +4103,7 @@ set_selection(geometry=None, selection=None, domain='POINT')
 set_shade_smooth(geometry=None, selection=None, shade_smooth=None, domain='FACE')
 ```
 
-[Set Shade Smooth](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetShadeSmooth.html#bpy.types.GeometryNodeSetShadeSmooth)
+> **Node** : [Set Shade Smooth](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetShadeSmooth.html#bpy.types.GeometryNodeSetShadeSmooth)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -4127,7 +4127,7 @@ set_shade_smooth(geometry=None, selection=None, shade_smooth=None, domain='FACE'
 set_spline_cyclic(geometry=None, selection=None, cyclic=None)
 ```
 
-[Set Spline Cyclic](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetSplineCyclic.html#bpy.types.GeometryNodeSetSplineCyclic)
+> **Node** : [Set Spline Cyclic](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetSplineCyclic.html#bpy.types.GeometryNodeSetSplineCyclic)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -4150,7 +4150,7 @@ set_spline_cyclic(geometry=None, selection=None, cyclic=None)
 set_spline_resolution(geometry=None, selection=None, resolution=None)
 ```
 
-[Set Spline Resolution](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetSplineResolution.html#bpy.types.GeometryNodeSetSplineResolution)
+> **Node** : [Set Spline Resolution](https://docs.blender.org/api/current/bpy.types.GeometryNodeSetSplineResolution.html#bpy.types.GeometryNodeSetSplineResolution)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -4173,7 +4173,7 @@ set_spline_resolution(geometry=None, selection=None, resolution=None)
 set_spline_type(curve=None, selection=None, spline_type='POLY')
 ```
 
-[Set Spline Type](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSplineType.html#bpy.types.GeometryNodeCurveSplineType)
+> **Node** : [Set Spline Type](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSplineType.html#bpy.types.GeometryNodeCurveSplineType)
 
 #### Arguments:
 - **curve** (_Geometry_ = None) : socket 'Curve' (Curve)
@@ -4196,7 +4196,7 @@ set_spline_type(curve=None, selection=None, spline_type='POLY')
 shortest_edge_paths(end_vertex=None, edge_cost=None)
 ```
 
-[Shortest Edge Paths](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputShortestEdgePaths.html#bpy.types.GeometryNodeInputShortestEdgePaths)
+> **Node** : [Shortest Edge Paths](https://docs.blender.org/api/current/bpy.types.GeometryNodeInputShortestEdgePaths.html#bpy.types.GeometryNodeInputShortestEdgePaths)
 
 #### Arguments:
 - **end_vertex** (_Boolean_ = None) : socket 'End Vertex' (End Vertex)
@@ -4218,7 +4218,7 @@ shortest_edge_paths(end_vertex=None, edge_cost=None)
 simulation_input(pair_with_output=None, paired_output=None)
 ```
 
-[Simulation Input](https://docs.blender.org/api/current/bpy.types.GeometryNodeSimulationInput.html#bpy.types.GeometryNodeSimulationInput)
+> **Node** : [Simulation Input](https://docs.blender.org/api/current/bpy.types.GeometryNodeSimulationInput.html#bpy.types.GeometryNodeSimulationInput)
 
 #### Arguments:
 - **pair_with_output** (_bpy_func_ = None) : Node.pair_with_output
@@ -4240,7 +4240,7 @@ simulation_input(pair_with_output=None, paired_output=None)
 simulation_output(skip=None, geometry=None, active_index=0, active_item=None, state_items=None)
 ```
 
-[Simulation Output](https://docs.blender.org/api/current/bpy.types.GeometryNodeSimulationOutput.html#bpy.types.GeometryNodeSimulationOutput)
+> **Node** : [Simulation Output](https://docs.blender.org/api/current/bpy.types.GeometryNodeSimulationOutput.html#bpy.types.GeometryNodeSimulationOutput)
 
 #### Arguments:
 - **skip** (_Boolean_ = None) : socket 'Skip' (Skip)
@@ -4265,7 +4265,7 @@ simulation_output(skip=None, geometry=None, active_index=0, active_item=None, st
 slice_string(string=None, position=None, length=None)
 ```
 
-[Slice String](https://docs.blender.org/api/current/bpy.types.FunctionNodeSliceString.html#bpy.types.FunctionNodeSliceString)
+> **Node** : [Slice String](https://docs.blender.org/api/current/bpy.types.FunctionNodeSliceString.html#bpy.types.FunctionNodeSliceString)
 
 #### Arguments:
 - **string** (_String_ = None) : socket 'String' (String)
@@ -4288,7 +4288,7 @@ slice_string(string=None, position=None, length=None)
 sort_elements(geometry=None, selection=None, group_id=None, sort_weight=None, domain='POINT')
 ```
 
-[Sort Elements](https://docs.blender.org/api/current/bpy.types.GeometryNodeSortElements.html#bpy.types.GeometryNodeSortElements)
+> **Node** : [Sort Elements](https://docs.blender.org/api/current/bpy.types.GeometryNodeSortElements.html#bpy.types.GeometryNodeSortElements)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -4313,7 +4313,7 @@ sort_elements(geometry=None, selection=None, group_id=None, sort_weight=None, do
 spiral(resolution=None, rotations=None, start_radius=None, end_radius=None, height=None, reverse=None)
 ```
 
-[Spiral](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSpiral.html#bpy.types.GeometryNodeCurveSpiral)
+> **Node** : [Spiral](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveSpiral.html#bpy.types.GeometryNodeCurveSpiral)
 
 #### Arguments:
 - **resolution** (_Integer_ = None) : socket 'Resolution' (Resolution)
@@ -4339,7 +4339,7 @@ spiral(resolution=None, rotations=None, start_radius=None, end_radius=None, heig
 split_edges(mesh=None, selection=None)
 ```
 
-[Split Edges](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplitEdges.html#bpy.types.GeometryNodeSplitEdges)
+> **Node** : [Split Edges](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplitEdges.html#bpy.types.GeometryNodeSplitEdges)
 
 #### Arguments:
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (Mesh)
@@ -4361,7 +4361,7 @@ split_edges(mesh=None, selection=None)
 split_to_instances(geometry=None, selection=None, group_id=None, domain='POINT')
 ```
 
-[Split to Instances](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplitToInstances.html#bpy.types.GeometryNodeSplitToInstances)
+> **Node** : [Split to Instances](https://docs.blender.org/api/current/bpy.types.GeometryNodeSplitToInstances.html#bpy.types.GeometryNodeSplitToInstances)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -4385,7 +4385,7 @@ split_to_instances(geometry=None, selection=None, group_id=None, domain='POINT')
 star(points=None, inner_radius=None, outer_radius=None, twist=None)
 ```
 
-[Star](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveStar.html#bpy.types.GeometryNodeCurveStar)
+> **Node** : [Star](https://docs.blender.org/api/current/bpy.types.GeometryNodeCurveStar.html#bpy.types.GeometryNodeCurveStar)
 
 #### Arguments:
 - **points** (_Integer_ = None) : socket 'Points' (Points)
@@ -4409,7 +4409,7 @@ star(points=None, inner_radius=None, outer_radius=None, twist=None)
 store_named_attribute(geometry=None, selection=None, name=None, value=None, data_type='FLOAT', domain='POINT')
 ```
 
-[Store Named Attribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html#bpy.types.GeometryNodeStoreNamedAttribute)
+> **Node** : [Store Named Attribute](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedAttribute.html#bpy.types.GeometryNodeStoreNamedAttribute)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -4435,7 +4435,7 @@ store_named_attribute(geometry=None, selection=None, name=None, value=None, data
 store_named_grid(volume=None, name=None, grid=None, data_type='FLOAT')
 ```
 
-[Store Named Grid](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedGrid.html#bpy.types.GeometryNodeStoreNamedGrid)
+> **Node** : [Store Named Grid](https://docs.blender.org/api/current/bpy.types.GeometryNodeStoreNamedGrid.html#bpy.types.GeometryNodeStoreNamedGrid)
 
 #### Arguments:
 - **volume** (_Geometry_ = None) : socket 'Volume' (Volume)
@@ -4459,7 +4459,7 @@ store_named_grid(volume=None, name=None, grid=None, data_type='FLOAT')
 string(string='')
 ```
 
-[String](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputString.html#bpy.types.FunctionNodeInputString)
+> **Node** : [String](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputString.html#bpy.types.FunctionNodeInputString)
 
 #### Arguments:
 - **string** (_str_ = ) : Node.string
@@ -4480,7 +4480,7 @@ string(string='')
 string_length(string=None)
 ```
 
-[String Length](https://docs.blender.org/api/current/bpy.types.FunctionNodeStringLength.html#bpy.types.FunctionNodeStringLength)
+> **Node** : [String Length](https://docs.blender.org/api/current/bpy.types.FunctionNodeStringLength.html#bpy.types.FunctionNodeStringLength)
 
 #### Arguments:
 - **string** (_String_ = None) : socket 'String' (String)
@@ -4501,7 +4501,7 @@ string_length(string=None)
 string_to_curves(string=None, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, align_x='LEFT', align_y='TOP_BASELINE', font=None, overflow='OVERFLOW', pivot_mode='BOTTOM_LEFT')
 ```
 
-[String to Curves](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringToCurves.html#bpy.types.GeometryNodeStringToCurves)
+> **Node** : [String to Curves](https://docs.blender.org/api/current/bpy.types.GeometryNodeStringToCurves.html#bpy.types.GeometryNodeStringToCurves)
 
 #### Arguments:
 - **string** (_String_ = None) : socket 'String' (String)
@@ -4532,7 +4532,7 @@ string_to_curves(string=None, size=None, character_spacing=None, word_spacing=No
 subdivide_curve(curve=None, cuts=None)
 ```
 
-[Subdivide Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeSubdivideCurve.html#bpy.types.GeometryNodeSubdivideCurve)
+> **Node** : [Subdivide Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeSubdivideCurve.html#bpy.types.GeometryNodeSubdivideCurve)
 
 #### Arguments:
 - **curve** (_Geometry_ = None) : socket 'Curve' (Curve)
@@ -4554,7 +4554,7 @@ subdivide_curve(curve=None, cuts=None)
 subdivide_mesh(mesh=None, level=None)
 ```
 
-[Subdivide Mesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeSubdivideMesh.html#bpy.types.GeometryNodeSubdivideMesh)
+> **Node** : [Subdivide Mesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeSubdivideMesh.html#bpy.types.GeometryNodeSubdivideMesh)
 
 #### Arguments:
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (Mesh)
@@ -4576,7 +4576,7 @@ subdivide_mesh(mesh=None, level=None)
 subdivision_surface(mesh=None, level=None, edge_crease=None, vertex_crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES')
 ```
 
-[Subdivision Surface](https://docs.blender.org/api/current/bpy.types.GeometryNodeSubdivisionSurface.html#bpy.types.GeometryNodeSubdivisionSurface)
+> **Node** : [Subdivision Surface](https://docs.blender.org/api/current/bpy.types.GeometryNodeSubdivisionSurface.html#bpy.types.GeometryNodeSubdivisionSurface)
 
 #### Arguments:
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (Mesh)
@@ -4602,7 +4602,7 @@ subdivision_surface(mesh=None, level=None, edge_crease=None, vertex_crease=None,
 switch(switch=None, false=None, true=None, input_type='GEOMETRY')
 ```
 
-[Switch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html#bpy.types.GeometryNodeSwitch)
+> **Node** : [Switch](https://docs.blender.org/api/current/bpy.types.GeometryNodeSwitch.html#bpy.types.GeometryNodeSwitch)
 
 #### Arguments:
 - **switch** (_Boolean_ = None) : socket 'Switch' (Switch)
@@ -4626,7 +4626,7 @@ switch(switch=None, false=None, true=None, input_type='GEOMETRY')
 transform_direction(direction=None, transform=None)
 ```
 
-[Transform Direction](https://docs.blender.org/api/current/bpy.types.FunctionNodeTransformDirection.html#bpy.types.FunctionNodeTransformDirection)
+> **Node** : [Transform Direction](https://docs.blender.org/api/current/bpy.types.FunctionNodeTransformDirection.html#bpy.types.FunctionNodeTransformDirection)
 
 #### Arguments:
 - **direction** (_Vector_ = None) : socket 'Direction' (Direction)
@@ -4648,7 +4648,7 @@ transform_direction(direction=None, transform=None)
 transform_geometry(geometry=None, translation=None, rotation=None, scale=None, mode='COMPONENTS')
 ```
 
-[Transform Geometry](https://docs.blender.org/api/current/bpy.types.GeometryNodeTransform.html#bpy.types.GeometryNodeTransform)
+> **Node** : [Transform Geometry](https://docs.blender.org/api/current/bpy.types.GeometryNodeTransform.html#bpy.types.GeometryNodeTransform)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -4673,7 +4673,7 @@ transform_geometry(geometry=None, translation=None, rotation=None, scale=None, m
 transform_point(vector=None, transform=None)
 ```
 
-[Transform Point](https://docs.blender.org/api/current/bpy.types.FunctionNodeTransformPoint.html#bpy.types.FunctionNodeTransformPoint)
+> **Node** : [Transform Point](https://docs.blender.org/api/current/bpy.types.FunctionNodeTransformPoint.html#bpy.types.FunctionNodeTransformPoint)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -4695,7 +4695,7 @@ transform_point(vector=None, transform=None)
 translate_instances(instances=None, selection=None, translation=None, local_space=None)
 ```
 
-[Translate Instances](https://docs.blender.org/api/current/bpy.types.GeometryNodeTranslateInstances.html#bpy.types.GeometryNodeTranslateInstances)
+> **Node** : [Translate Instances](https://docs.blender.org/api/current/bpy.types.GeometryNodeTranslateInstances.html#bpy.types.GeometryNodeTranslateInstances)
 
 #### Arguments:
 - **instances** (_Geometry_ = None) : socket 'Instances' (Instances)
@@ -4719,7 +4719,7 @@ translate_instances(instances=None, selection=None, translation=None, local_spac
 transpose_matrix(matrix=None)
 ```
 
-[Transpose Matrix](https://docs.blender.org/api/current/bpy.types.FunctionNodeTransposeMatrix.html#bpy.types.FunctionNodeTransposeMatrix)
+> **Node** : [Transpose Matrix](https://docs.blender.org/api/current/bpy.types.FunctionNodeTransposeMatrix.html#bpy.types.FunctionNodeTransposeMatrix)
 
 #### Arguments:
 - **matrix** (_Matrix_ = None) : socket 'Matrix' (Matrix)
@@ -4740,7 +4740,7 @@ transpose_matrix(matrix=None)
 triangulate(mesh=None, selection=None, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL')
 ```
 
-[Triangulate](https://docs.blender.org/api/current/bpy.types.GeometryNodeTriangulate.html#bpy.types.GeometryNodeTriangulate)
+> **Node** : [Triangulate](https://docs.blender.org/api/current/bpy.types.GeometryNodeTriangulate.html#bpy.types.GeometryNodeTriangulate)
 
 #### Arguments:
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (Mesh)
@@ -4765,7 +4765,7 @@ triangulate(mesh=None, selection=None, minimum_vertices=None, ngon_method='BEAUT
 trim_curve(curve=None, selection=None, start=None, end=None, mode='FACTOR')
 ```
 
-[Trim Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeTrimCurve.html#bpy.types.GeometryNodeTrimCurve)
+> **Node** : [Trim Curve](https://docs.blender.org/api/current/bpy.types.GeometryNodeTrimCurve.html#bpy.types.GeometryNodeTrimCurve)
 
 #### Arguments:
 - **curve** (_Geometry_ = None) : socket 'Curve' (Curve)
@@ -4790,7 +4790,7 @@ trim_curve(curve=None, selection=None, start=None, end=None, mode='FACTOR')
 uv_sphere(segments=None, rings=None, radius=None)
 ```
 
-[UV Sphere](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshUVSphere.html#bpy.types.GeometryNodeMeshUVSphere)
+> **Node** : [UV Sphere](https://docs.blender.org/api/current/bpy.types.GeometryNodeMeshUVSphere.html#bpy.types.GeometryNodeMeshUVSphere)
 
 #### Arguments:
 - **segments** (_Integer_ = None) : socket 'Segments' (Segments)
@@ -4813,7 +4813,7 @@ uv_sphere(segments=None, rings=None, radius=None)
 uv_unwrap(selection=None, seam=None, margin=None, fill_holes=None, method='ANGLE_BASED')
 ```
 
-[UV Unwrap](https://docs.blender.org/api/current/bpy.types.GeometryNodeUVUnwrap.html#bpy.types.GeometryNodeUVUnwrap)
+> **Node** : [UV Unwrap](https://docs.blender.org/api/current/bpy.types.GeometryNodeUVUnwrap.html#bpy.types.GeometryNodeUVUnwrap)
 
 #### Arguments:
 - **selection** (_Boolean_ = None) : socket 'Selection' (Selection)
@@ -4838,7 +4838,7 @@ uv_unwrap(selection=None, seam=None, margin=None, fill_holes=None, method='ANGLE
 value_to_string(value=None, decimals=None)
 ```
 
-[Value to String](https://docs.blender.org/api/current/bpy.types.FunctionNodeValueToString.html#bpy.types.FunctionNodeValueToString)
+> **Node** : [Value to String](https://docs.blender.org/api/current/bpy.types.FunctionNodeValueToString.html#bpy.types.FunctionNodeValueToString)
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (Value)
@@ -4860,7 +4860,7 @@ value_to_string(value=None, decimals=None)
 vector(vector=None)
 ```
 
-[Vector](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputVector.html#bpy.types.FunctionNodeInputVector)
+> **Node** : [Vector](https://docs.blender.org/api/current/bpy.types.FunctionNodeInputVector.html#bpy.types.FunctionNodeInputVector)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : Node.vector
@@ -4881,7 +4881,7 @@ vector(vector=None)
 vector_curves(fac=None, vector=None, mapping=None)
 ```
 
-[Vector Curves](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorCurve.html#bpy.types.ShaderNodeVectorCurve)
+> **Node** : [Vector Curves](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorCurve.html#bpy.types.ShaderNodeVectorCurve)
 
 #### Arguments:
 - **fac** (_Float_ = None) : socket 'Fac' (Fac)
@@ -4904,7 +4904,7 @@ vector_curves(fac=None, vector=None, mapping=None)
 vector_math(vector=None, vector_1=None, operation='ADD')
 ```
 
-[Vector Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html#bpy.types.ShaderNodeVectorMath)
+> **Node** : [Vector Math](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorMath.html#bpy.types.ShaderNodeVectorMath)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -4927,7 +4927,7 @@ vector_math(vector=None, vector_1=None, operation='ADD')
 vector_rotate(vector=None, center=None, axis=None, angle=None, invert=False, rotation_type='AXIS_ANGLE')
 ```
 
-[Vector Rotate](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorRotate.html#bpy.types.ShaderNodeVectorRotate)
+> **Node** : [Vector Rotate](https://docs.blender.org/api/current/bpy.types.ShaderNodeVectorRotate.html#bpy.types.ShaderNodeVectorRotate)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -4953,7 +4953,7 @@ vector_rotate(vector=None, center=None, axis=None, angle=None, invert=False, rot
 vertex_of_corner(corner_index=None)
 ```
 
-[Vertex of Corner](https://docs.blender.org/api/current/bpy.types.GeometryNodeVertexOfCorner.html#bpy.types.GeometryNodeVertexOfCorner)
+> **Node** : [Vertex of Corner](https://docs.blender.org/api/current/bpy.types.GeometryNodeVertexOfCorner.html#bpy.types.GeometryNodeVertexOfCorner)
 
 #### Arguments:
 - **corner_index** (_Integer_ = None) : socket 'Corner Index' (Corner Index)
@@ -4974,7 +4974,7 @@ vertex_of_corner(corner_index=None)
 viewer(geometry=None, value=None, data_type='FLOAT', domain='AUTO')
 ```
 
-[Viewer](https://docs.blender.org/api/current/bpy.types.GeometryNodeViewer.html#bpy.types.GeometryNodeViewer)
+> **Node** : [Viewer](https://docs.blender.org/api/current/bpy.types.GeometryNodeViewer.html#bpy.types.GeometryNodeViewer)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -4993,7 +4993,7 @@ viewer(geometry=None, value=None, data_type='FLOAT', domain='AUTO')
 volume_cube(density=None, background=None, min=None, max=None, resolution_x=None, resolution_y=None, resolution_z=None)
 ```
 
-[Volume Cube](https://docs.blender.org/api/current/bpy.types.GeometryNodeVolumeCube.html#bpy.types.GeometryNodeVolumeCube)
+> **Node** : [Volume Cube](https://docs.blender.org/api/current/bpy.types.GeometryNodeVolumeCube.html#bpy.types.GeometryNodeVolumeCube)
 
 #### Arguments:
 - **density** (_Float_ = None) : socket 'Density' (Density)
@@ -5020,7 +5020,7 @@ volume_cube(density=None, background=None, min=None, max=None, resolution_x=None
 volume_to_mesh(volume=None, threshold=None, adaptivity=None, resolution_mode='GRID')
 ```
 
-[Volume to Mesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeVolumeToMesh.html#bpy.types.GeometryNodeVolumeToMesh)
+> **Node** : [Volume to Mesh](https://docs.blender.org/api/current/bpy.types.GeometryNodeVolumeToMesh.html#bpy.types.GeometryNodeVolumeToMesh)
 
 #### Arguments:
 - **volume** (_Geometry_ = None) : socket 'Volume' (Volume)
@@ -5044,7 +5044,7 @@ volume_to_mesh(volume=None, threshold=None, adaptivity=None, resolution_mode='GR
 voronoi_texture(vector=None, scale=None, detail=None, roughness=None, lacunarity=None, randomness=None, color_mapping=None, distance='EUCLIDEAN', feature='F1', normalize=False, texture_mapping=None, voronoi_dimensions='3D')
 ```
 
-[Voronoi Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html#bpy.types.ShaderNodeTexVoronoi)
+> **Node** : [Voronoi Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexVoronoi.html#bpy.types.ShaderNodeTexVoronoi)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -5076,7 +5076,7 @@ voronoi_texture(vector=None, scale=None, detail=None, roughness=None, lacunarity
 wave_texture(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', color_mapping=None, rings_direction='X', texture_mapping=None, wave_profile='SIN', wave_type='BANDS')
 ```
 
-[Wave Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html#bpy.types.ShaderNodeTexWave)
+> **Node** : [Wave Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWave.html#bpy.types.ShaderNodeTexWave)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -5109,7 +5109,7 @@ wave_texture(vector=None, scale=None, distortion=None, detail=None, detail_scale
 white_noise_texture(vector=None, noise_dimensions='3D')
 ```
 
-[White Noise Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html#bpy.types.ShaderNodeTexWhiteNoise)
+> **Node** : [White Noise Texture](https://docs.blender.org/api/current/bpy.types.ShaderNodeTexWhiteNoise.html#bpy.types.ShaderNodeTexWhiteNoise)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
