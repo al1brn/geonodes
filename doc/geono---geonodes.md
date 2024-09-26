@@ -6,11 +6,12 @@
 
 - **B** : [booleanclass](geono-boole---booleanclass.md#booleanclass)
 - **C** : [colorclass](geono-color---colorclass.md#colorclass) :black_small_square: [constants](geono-const2---constants.md#constants)
-- **F** : [floatclass](geono-float---floatclass.md#floatclass)
+- **F** : [Float](geono-float.md#float)
 - **G** : [geometryclass](geono-geome---geometryclass.md#geometryclass) :black_small_square: [geonodes](geono-geono---geonodes.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath)
+- **I** : [Integer](geono-integer.md#integer)
 - **S** : [scripterror](geono-scrip---scripterror.md#scripterror) :black_small_square: [socketclass](geono-socke---socketclass.md#socketclass) :black_small_square: [staticclass](geono-stati---staticclass.md#staticclass)
 - **T** : [textures](geono-textu---textures.md#textures) :black_small_square: [treearrange](geono-treea---treearrange.md#treearrange) :black_small_square: [treeclass](geono-treec---treeclass.md#treeclass)
-- **U** : [utils](geono-utils6---utils.md#utils)
+- **U** : [utils](geono-utils5---utils.md#utils) :black_small_square: [utils](geono-utils6---utils.md#utils)
 - **V** : [vectorclass](geono-vecto---vectorclass.md#vectorclass)
 - **Z** : [zones](geono-zones---zones.md#zones)
 
@@ -21,7 +22,6 @@
 - [booleanclass](geono-boole---booleanclass.md#booleanclass)
 - [colorclass](geono-color---colorclass.md#colorclass)
 - [constants](geono-const2---constants.md#constants)
-- [floatclass](geono-float---floatclass.md#floatclass)
 - [geometryclass](geono-geome---geometryclass.md#geometryclass)
 - [geonodes](geono-geono---geonodes.md#geonodes)
 - [gnmath](geono-gnmat---gnmath.md#gnmath)
@@ -31,8 +31,18 @@
 - [textures](geono-textu---textures.md#textures)
 - [treearrange](geono-treea---treearrange.md#treearrange)
 - [treeclass](geono-treec---treeclass.md#treeclass)
+- [utils](geono-utils5---utils.md#utils)
 - [utils](geono-utils6---utils.md#utils)
 - [vectorclass](geono-vecto---vectorclass.md#vectorclass)
 - [zones](geono-zones---zones.md#zones)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [geonodes](geono---geonodes.md#geonodes) :black_small_square: [Content](geono---geonodes.md#content) :black_small_square: [geonodes](geono---geonodes.md#geonodes)</sub>
+
+## Classes
+
+
+
+- [Float](geono-float.md#float)
+- [Integer](geono-integer.md#integer)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [geonodes](geono---geonodes.md#geonodes) :black_small_square: [Content](geono---geonodes.md#content) :black_small_square: [geonodes](geono---geonodes.md#geonodes)</sub>

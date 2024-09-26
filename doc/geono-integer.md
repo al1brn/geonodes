@@ -22,13 +22,13 @@ Integer(value=0, name=None, min=None, max=None, tip=None, subtype='NONE')
 
 ## Content
 
-- **C** : [clamp](geono-float-integer.md#clamp) :black_small_square: [color_ramp](geono-float-integer.md#color_ramp) :black_small_square: [curve](geono-float-integer.md#curve)
-- **E** : [equal](geono-float-integer.md#equal)
-- **G** : [greater_equal](geono-float-integer.md#greater_equal) :black_small_square: [greater_than](geono-float-integer.md#greater_than)
-- **L** : [less_equal](geono-float-integer.md#less_equal) :black_small_square: [less_than](geono-float-integer.md#less_than)
-- **M** : [map_range](geono-float-integer.md#map_range) :black_small_square: [map_range_linear](geono-float-integer.md#map_range_linear) :black_small_square: [map_range_smooth](geono-float-integer.md#map_range_smooth) :black_small_square: [map_range_smoother](geono-float-integer.md#map_range_smoother) :black_small_square: [map_range_stepped](geono-float-integer.md#map_range_stepped) :black_small_square: [mix](geono-float-integer.md#mix)
-- **N** : [Named](geono-float-integer.md#named) :black_small_square: [NamedAttribute](geono-float-integer.md#namedattribute) :black_small_square: [not_equal](geono-float-integer.md#not_equal)
-- **T** : [to_string](geono-float-integer.md#to_string)
+- **C** : [clamp](geono-integer.md#clamp) :black_small_square: [color_ramp](geono-integer.md#color_ramp) :black_small_square: [curve](geono-integer.md#curve)
+- **E** : [equal](geono-integer.md#equal)
+- **G** : [greater_equal](geono-integer.md#greater_equal) :black_small_square: [greater_than](geono-integer.md#greater_than)
+- **L** : [less_equal](geono-integer.md#less_equal) :black_small_square: [less_than](geono-integer.md#less_than)
+- **M** : [map_range](geono-integer.md#map_range) :black_small_square: [map_range_linear](geono-integer.md#map_range_linear) :black_small_square: [map_range_smooth](geono-integer.md#map_range_smooth) :black_small_square: [map_range_smoother](geono-integer.md#map_range_smoother) :black_small_square: [map_range_stepped](geono-integer.md#map_range_stepped) :black_small_square: [mix](geono-integer.md#mix)
+- **N** : [Named](geono-integer.md#named) :black_small_square: [NamedAttribute](geono-integer.md#namedattribute) :black_small_square: [not_equal](geono-integer.md#not_equal)
+- **T** : [to_string](geono-integer.md#to_string)
 
 ## Methods
 
@@ -57,7 +57,7 @@ Node 'Clamp' (ShaderNodeClamp)
 #### Returns:
 - **Float** :
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](geono-float-integer.md#integer) :black_small_square: [Content](geono-float-integer.md#content) :black_small_square: [Methods](geono-float-integer.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](geono-integer.md#integer) :black_small_square: [Content](geono-integer.md#content) :black_small_square: [Methods](geono-integer.md#methods)</sub>
 
 ----------
 ### color_ramp()
@@ -80,7 +80,7 @@ Node 'Color Ramp' (ShaderNodeValToRGB)
 #### Returns:
 - **Color** :
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](geono-float-integer.md#integer) :black_small_square: [Content](geono-float-integer.md#content) :black_small_square: [Methods](geono-float-integer.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](geono-integer.md#integer) :black_small_square: [Content](geono-integer.md#content) :black_small_square: [Methods](geono-integer.md#methods)</sub>
 
 ----------
 ### curve()
@@ -104,7 +104,7 @@ Node 'Float Curve' (ShaderNodeFloatCurve)
 #### Returns:
 - **Float** :
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](geono-float-integer.md#integer) :black_small_square: [Content](geono-float-integer.md#content) :black_small_square: [Methods](geono-float-integer.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](geono-integer.md#integer) :black_small_square: [Content](geono-integer.md#content) :black_small_square: [Methods](geono-integer.md#methods)</sub>
 
 ----------
 ### equal()
@@ -127,7 +127,7 @@ Node 'Compare' (FunctionNodeCompare)
 #### Returns:
 - **Boolean** :
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](geono-float-integer.md#integer) :black_small_square: [Content](geono-float-integer.md#content) :black_small_square: [Methods](geono-float-integer.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](geono-integer.md#integer) :black_small_square: [Content](geono-integer.md#content) :black_small_square: [Methods](geono-integer.md#methods)</sub>
 
 ----------
 ### greater_equal()
@@ -150,7 +150,7 @@ Node 'Compare' (FunctionNodeCompare)
 #### Returns:
 - **Boolean** :
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](geono-float-integer.md#integer) :black_small_square: [Content](geono-float-integer.md#content) :black_small_square: [Methods](geono-float-integer.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](geono-integer.md#integer) :black_small_square: [Content](geono-integer.md#content) :black_small_square: [Methods](geono-integer.md#methods)</sub>
 
 ----------
 ### greater_than()
@@ -173,7 +173,7 @@ Node 'Compare' (FunctionNodeCompare)
 #### Returns:
 - **Boolean** :
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](geono-float-integer.md#integer) :black_small_square: [Content](geono-float-integer.md#content) :black_small_square: [Methods](geono-float-integer.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](geono-integer.md#integer) :black_small_square: [Content](geono-integer.md#content) :black_small_square: [Methods](geono-integer.md#methods)</sub>
 
 ----------
 ### less_equal()
@@ -196,7 +196,7 @@ Node 'Compare' (FunctionNodeCompare)
 #### Returns:
 - **Boolean** :
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](geono-float-integer.md#integer) :black_small_square: [Content](geono-float-integer.md#content) :black_small_square: [Methods](geono-float-integer.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](geono-integer.md#integer) :black_small_square: [Content](geono-integer.md#content) :black_small_square: [Methods](geono-integer.md#methods)</sub>
 
 ----------
 ### less_than()
@@ -219,7 +219,7 @@ Node 'Compare' (FunctionNodeCompare)
 #### Returns:
 - **Boolean** :
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](geono-float-integer.md#integer) :black_small_square: [Content](geono-float-integer.md#content) :black_small_square: [Methods](geono-float-integer.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](geono-integer.md#integer) :black_small_square: [Content](geono-integer.md#content) :black_small_square: [Methods](geono-integer.md#methods)</sub>
 
 ----------
 ### map_range()
@@ -247,7 +247,7 @@ Node 'Map Range' (ShaderNodeMapRange)
 #### Returns:
 - **Float** :
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](geono-float-integer.md#integer) :black_small_square: [Content](geono-float-integer.md#content) :black_small_square: [Methods](geono-float-integer.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](geono-integer.md#integer) :black_small_square: [Content](geono-integer.md#content) :black_small_square: [Methods](geono-integer.md#methods)</sub>
 
 ----------
 ### map_range_linear()
@@ -274,7 +274,7 @@ Node 'Map Range' (ShaderNodeMapRange)
 #### Returns:
 - **Float** :
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](geono-float-integer.md#integer) :black_small_square: [Content](geono-float-integer.md#content) :black_small_square: [Methods](geono-float-integer.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](geono-integer.md#integer) :black_small_square: [Content](geono-integer.md#content) :black_small_square: [Methods](geono-integer.md#methods)</sub>
 
 ----------
 ### map_range_smooth()
@@ -301,7 +301,7 @@ Node 'Map Range' (ShaderNodeMapRange)
 #### Returns:
 - **Float** :
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](geono-float-integer.md#integer) :black_small_square: [Content](geono-float-integer.md#content) :black_small_square: [Methods](geono-float-integer.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](geono-integer.md#integer) :black_small_square: [Content](geono-integer.md#content) :black_small_square: [Methods](geono-integer.md#methods)</sub>
 
 ----------
 ### map_range_smoother()
@@ -328,7 +328,7 @@ Node 'Map Range' (ShaderNodeMapRange)
 #### Returns:
 - **Float** :
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](geono-float-integer.md#integer) :black_small_square: [Content](geono-float-integer.md#content) :black_small_square: [Methods](geono-float-integer.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](geono-integer.md#integer) :black_small_square: [Content](geono-integer.md#content) :black_small_square: [Methods](geono-integer.md#methods)</sub>
 
 ----------
 ### map_range_stepped()
@@ -355,7 +355,7 @@ Node 'Map Range' (ShaderNodeMapRange)
 #### Returns:
 - **Float** :
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](geono-float-integer.md#integer) :black_small_square: [Content](geono-float-integer.md#content) :black_small_square: [Methods](geono-float-integer.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](geono-integer.md#integer) :black_small_square: [Content](geono-integer.md#content) :black_small_square: [Methods](geono-integer.md#methods)</sub>
 
 ----------
 ### mix()
@@ -380,7 +380,7 @@ Node 'Mix' (ShaderNodeMix)
 #### Returns:
 - **Socket** :
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](geono-float-integer.md#integer) :black_small_square: [Content](geono-float-integer.md#content) :black_small_square: [Methods](geono-float-integer.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](geono-integer.md#integer) :black_small_square: [Content](geono-integer.md#content) :black_small_square: [Methods](geono-integer.md#methods)</sub>
 
 ----------
 ### Named()
@@ -421,7 +421,7 @@ with GeoNodes("Named Attributes"):
 #### Returns:
 - **Socket** :
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](geono-float-integer.md#integer) :black_small_square: [Content](geono-float-integer.md#content) :black_small_square: [Methods](geono-float-integer.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](geono-integer.md#integer) :black_small_square: [Content](geono-integer.md#content) :black_small_square: [Methods](geono-integer.md#methods)</sub>
 
 ----------
 ### NamedAttribute()
@@ -462,7 +462,7 @@ with GeoNodes("Named Attributes"):
 #### Returns:
 - **Socket** :
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](geono-float-integer.md#integer) :black_small_square: [Content](geono-float-integer.md#content) :black_small_square: [Methods](geono-float-integer.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](geono-integer.md#integer) :black_small_square: [Content](geono-integer.md#content) :black_small_square: [Methods](geono-integer.md#methods)</sub>
 
 ----------
 ### not_equal()
@@ -485,7 +485,7 @@ Node 'Compare' (FunctionNodeCompare)
 #### Returns:
 - **Boolean** :
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](geono-float-integer.md#integer) :black_small_square: [Content](geono-float-integer.md#content) :black_small_square: [Methods](geono-float-integer.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](geono-integer.md#integer) :black_small_square: [Content](geono-integer.md#content) :black_small_square: [Methods](geono-integer.md#methods)</sub>
 
 ----------
 ### to_string()
@@ -508,4 +508,4 @@ Node 'Value to String' (FunctionNodeValueToString)
 #### Returns:
 - **String** :
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](geono-float-integer.md#integer) :black_small_square: [Content](geono-float-integer.md#content) :black_small_square: [Methods](geono-float-integer.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](geono-integer.md#integer) :black_small_square: [Content](geono-integer.md#content) :black_small_square: [Methods](geono-integer.md#methods)</sub>
