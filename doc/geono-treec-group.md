@@ -1,6 +1,6 @@
 # Group
 
-> Bases classes: [Node](geono-treec-node.md)
+> Bases classes: [Node](geono-treec-node.md#node)
 
 ``` python
 Group(group_name, sockets={}, **kwargs)
@@ -117,6 +117,4 @@ with GeoNodes("Call a group"):
 #### Returns:
 - **Node** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#group) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-treec-group.md#methods)</sub>
-
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#group) :black_small_square: [Content](#content) :black_small_square: [Group](geono-treec-group.md)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Group](geono-treec-group.md#group) :black_small_square: [Content](geono-treec-group.md#content) :black_small_square: [Methods](geono-treec-group.md#methods)</sub>

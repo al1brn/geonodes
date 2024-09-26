@@ -1,6 +1,6 @@
 # String
 
-> Bases classes: [Socket](geono-socke-socket.md)
+> Bases classes: [Socket](geono-socke-socket.md#socket)
 
 ``` python
 String(value='', name=None, tip=None)
@@ -42,7 +42,7 @@ A group input socket of type String is created if the name is not None.
 
 Node 'String Length' (FunctionNodeStringLength)
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#string) :black_small_square: [Content](#content) :black_small_square: [String](geono-socke-string.md)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [String](geono-socke-string.md#string) :black_small_square: [Content](geono-socke-string.md#content) :black_small_square: [Properties](geono-socke-string.md#properties)</sub>
 
 ## Methods
 
@@ -69,7 +69,7 @@ Node compare with data_type = 'STRING' and operation = 'EQUAL'
 #### Returns:
 - **result** (_Boolean_)
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#string) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-socke-string.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [String](geono-socke-string.md#string) :black_small_square: [Content](geono-socke-string.md#content) :black_small_square: [Methods](geono-socke-string.md#methods)</sub>
 
 ----------
 ### FromValue()
@@ -91,7 +91,7 @@ Node 'Value to String' (FunctionNodeValueToString)
 #### Returns:
 - **string** (_String_)
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#string) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-socke-string.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [String](geono-socke-string.md#string) :black_small_square: [Content](geono-socke-string.md#content) :black_small_square: [Methods](geono-socke-string.md#methods)</sub>
 
 ----------
 ### Join()
@@ -113,7 +113,7 @@ Node 'Join Strings' (GeometryNodeStringJoin)
 #### Returns:
 - **string** (_String_)
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#string) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-socke-string.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [String](geono-socke-string.md#string) :black_small_square: [Content](geono-socke-string.md#content) :black_small_square: [Methods](geono-socke-string.md#methods)</sub>
 
 ----------
 ### join()
@@ -134,7 +134,7 @@ Node 'Join Strings' (GeometryNodeStringJoin)
 #### Returns:
 - **string** (_String_)
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#string) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-socke-string.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [String](geono-socke-string.md#string) :black_small_square: [Content](geono-socke-string.md#content) :black_small_square: [Methods](geono-socke-string.md#methods)</sub>
 
 ----------
 ### not_equal()
@@ -157,7 +157,7 @@ Node compare with data_type = 'STRING' and operation = 'NOT_EQUAL'
 #### Returns:
 - **result** (_Boolean_)
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#string) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-socke-string.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [String](geono-socke-string.md#string) :black_small_square: [Content](geono-socke-string.md#content) :black_small_square: [Methods](geono-socke-string.md#methods)</sub>
 
 ----------
 ### replace()
@@ -179,7 +179,7 @@ Node 'Replace String' (FunctionNodeReplaceString)
 #### Returns:
 - **string** (_String_)
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#string) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-socke-string.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [String](geono-socke-string.md#string) :black_small_square: [Content](geono-socke-string.md#content) :black_small_square: [Methods](geono-socke-string.md#methods)</sub>
 
 ----------
 ### slice()
@@ -201,7 +201,7 @@ Node 'Slice String' (FunctionNodeSliceString)
 #### Returns:
 - **string** (_String_)
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#string) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-socke-string.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [String](geono-socke-string.md#string) :black_small_square: [Content](geono-socke-string.md#content) :black_small_square: [Methods](geono-socke-string.md#methods)</sub>
 
 ----------
 ### to_curves()
@@ -232,6 +232,4 @@ Node 'String to Curves' (GeometryNodeStringToCurves)
 #### Returns:
 - **curve_instances** (_GEOMETRY_)
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#string) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-socke-string.md#methods)</sub>
-
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#string) :black_small_square: [Content](#content) :black_small_square: [String](geono-socke-string.md)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [String](geono-socke-string.md#string) :black_small_square: [Content](geono-socke-string.md#content) :black_small_square: [Methods](geono-socke-string.md#methods)</sub>

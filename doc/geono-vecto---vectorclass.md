@@ -31,12 +31,12 @@ updates
 
 ## Content
 
-- [Matrix](geono-vecto-matrix.md)
-- [utils](geono-vecto-utils---utils.md)
-  - [constants](geono-vecto-utils-const---constants.md)
+- [Matrix](geono-vecto-matrix.md#matrix)
+- [utils](geono-vecto-utils---utils.md#utils)
+  - [constants](geono-vecto-utils-const---constants.md#constants)
   - [del_tree](geono-vecto-utils---utils.md#del_tree)
   - [get_tree](geono-vecto-utils---utils.md#get_tree)
-- [Vector](geono-vecto-vector.md)
+- [Vector](geono-vecto-vector.md#vector)
   - [normal](geono-vecto-vector.md#normal)
   - [Tangent](geono-vecto-vector.md#tangent)
   - [UVMap](geono-vecto-vector.md#uvmap)
@@ -45,18 +45,17 @@ updates
 
 
 
-- [utils](geono-vecto-utils---utils.md)
+- [utils](geono-vecto-utils---utils.md#utils)
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#vectorclass) :black_small_square: [Content](#content) :black_small_square: [vectorclass](geono-vecto---vectorclass.md)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [vectorclass](geono-vecto---vectorclass.md#vectorclass) :black_small_square: [Content](geono-vecto---vectorclass.md#content) :black_small_square: [vectorclass](geono-vecto---vectorclass.md#vectorclass)</sub>
 
 ## Classes
 
 
 
-- [Matrix](geono-vecto-matrix.md)
-- [Rotation](geono-vecto-rotation.md)
-- [Vector](geono-vecto-vector.md)
-- [VectorLike](geono-vecto-vectorlike.md)
-- [VectRot](geono-vecto-vectrot.md)
+- [Matrix](geono-vecto-matrix.md#matrix)
+- [Rotation](geono-vecto-rotation.md#rotation)
+- [Vector](geono-vecto-vector.md#vector)
+- [VectorLike](geono-vecto-vectorlike.md#vectorlike)
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#vectorclass) :black_small_square: [Content](#content) :black_small_square: [vectorclass](geono-vecto---vectorclass.md)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [vectorclass](geono-vecto---vectorclass.md#vectorclass) :black_small_square: [Content](geono-vecto---vectorclass.md#content) :black_small_square: [vectorclass](geono-vecto---vectorclass.md#vectorclass)</sub>

@@ -1,6 +1,6 @@
 # Color
 
-> Bases classes: [VectorLike](geono-vecto-vectorlike.md)
+> Bases classes: [VectorLike](geono-vecto-vectorlike.md#vectorlike)
 
 ``` python
 Color(value=(0.0, 0.0, 0.0, 1.0), name=None, tip=None)
@@ -53,6 +53,8 @@ Alpha component
 
 [!Node] Separate Color
 
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color-color.md#color) :black_small_square: [Content](geono-color-color.md#content) :black_small_square: [Properties](geono-color-color.md#properties)</sub>
+
 ### blue
 
 > _type_: **Float**
@@ -61,6 +63,8 @@ Alpha component
 Blue component
 
 [!Node] Separate Color
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color-color.md#color) :black_small_square: [Content](geono-color-color.md#content) :black_small_square: [Properties](geono-color-color.md#properties)</sub>
 
 ### green
 
@@ -71,6 +75,8 @@ Green component
 
 [!Node] Separate Color
 
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color-color.md#color) :black_small_square: [Content](geono-color-color.md#content) :black_small_square: [Properties](geono-color-color.md#properties)</sub>
+
 ### hue
 
 > _type_: **Float**
@@ -79,6 +85,8 @@ Green component
 Hue component
 
 [!Node] Separate Color
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color-color.md#color) :black_small_square: [Content](geono-color-color.md#content) :black_small_square: [Properties](geono-color-color.md#properties)</sub>
 
 ### lightness
 
@@ -89,6 +97,8 @@ Lightness component
 
 [!Node] Separate Color
 
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color-color.md#color) :black_small_square: [Content](geono-color-color.md#content) :black_small_square: [Properties](geono-color-color.md#properties)</sub>
+
 ### red
 
 > _type_: **Float**
@@ -97,6 +107,8 @@ Lightness component
 Red component
 
 [!Node] Separate Color
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color-color.md#color) :black_small_square: [Content](geono-color-color.md#content) :black_small_square: [Properties](geono-color-color.md#properties)</sub>
 
 ### saturation
 
@@ -107,6 +119,8 @@ Saturation component
 
 [!Node] Separate Color
 
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color-color.md#color) :black_small_square: [Content](geono-color-color.md#content) :black_small_square: [Properties](geono-color-color.md#properties)</sub>
+
 ### to_bw
 
 > _type_: **Float**
@@ -115,6 +129,8 @@ Saturation component
 Conversion to black and white.
 
 [!Node] RGG to BW
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color-color.md#color) :black_small_square: [Content](geono-color-color.md#content) :black_small_square: [Properties](geono-color-color.md#properties)</sub>
 
 ### value
 
@@ -125,7 +141,7 @@ Value component
 
 [!Node] Separate Color
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#color) :black_small_square: [Content](#content) :black_small_square: [Color](geono-color-color.md)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color-color.md#color) :black_small_square: [Content](geono-color-color.md#content) :black_small_square: [Properties](geono-color-color.md#properties)</sub>
 
 ## Methods
 
@@ -155,7 +171,7 @@ Mix with another color : ADD
 #### Returns:
 - **Color** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#color) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color-color.md#color) :black_small_square: [Content](geono-color-color.md#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
 
 ----------
 ### ambient_occlusion()
@@ -182,7 +198,7 @@ Shader node Ambient Occlusion.
 #### Returns:
 - **Color** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#color) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color-color.md#color) :black_small_square: [Content](geono-color-color.md#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
 
 ----------
 ### Attribute()
@@ -205,7 +221,7 @@ Shader node Color Attribute.
 #### Returns:
 - **Color** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#color) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color-color.md#color) :black_small_square: [Content](geono-color-color.md#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
 
 ----------
 ### Blackbody()
@@ -228,7 +244,7 @@ Constructor : Black body.
 #### Returns:
 - **Color** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#color) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color-color.md#color) :black_small_square: [Content](geono-color-color.md#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
 
 ----------
 ### brighter()
@@ -251,7 +267,7 @@ Compare with another Color : BRIGHTER
 #### Returns:
 - **Boolean** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#color) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color-color.md#color) :black_small_square: [Content](geono-color-color.md#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
 
 ----------
 ### brightness_contrast()
@@ -275,7 +291,7 @@ Brightness and contrast.
 #### Returns:
 - **Color** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#color) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color-color.md#color) :black_small_square: [Content](geono-color-color.md#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
 
 ----------
 ### burn()
@@ -301,7 +317,7 @@ Mix with another color : BURN
 #### Returns:
 - **Color** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#color) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color-color.md#color) :black_small_square: [Content](geono-color-color.md#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
 
 ----------
 ### ColorRamp()
@@ -325,7 +341,7 @@ Constructor : Color Ramp
 #### Returns:
 - **Color** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#color) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color-color.md#color) :black_small_square: [Content](geono-color-color.md#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
 
 ----------
 ### Combine()
@@ -352,7 +368,7 @@ Constructor : Combine Color
 #### Returns:
 - **Color** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#color) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color-color.md#color) :black_small_square: [Content](geono-color-color.md#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
 
 ----------
 ### CombineHSL()
@@ -378,7 +394,7 @@ Constructor : Combine Color from HSL
 #### Returns:
 - **Color** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#color) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color-color.md#color) :black_small_square: [Content](geono-color-color.md#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
 
 ----------
 ### CombineHSV()
@@ -404,7 +420,7 @@ Constructor : Combine Color from HSV
 #### Returns:
 - **Color** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#color) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color-color.md#color) :black_small_square: [Content](geono-color-color.md#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
 
 ----------
 ### CombineRGB()
@@ -430,7 +446,7 @@ Constructor : Combine Color from RGB
 #### Returns:
 - **Color** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#color) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color-color.md#color) :black_small_square: [Content](geono-color-color.md#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
 
 ----------
 ### curves()
@@ -454,7 +470,7 @@ Color curves.
 #### Returns:
 - **Color** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#color) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color-color.md#color) :black_small_square: [Content](geono-color-color.md#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
 
 ----------
 ### darken()
@@ -480,7 +496,7 @@ Mix with another color : DARKEN
 #### Returns:
 - **Color** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#color) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color-color.md#color) :black_small_square: [Content](geono-color-color.md#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
 
 ----------
 ### darker()
@@ -503,7 +519,7 @@ Compare with another Color : DARKER
 #### Returns:
 - **Boolean** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#color) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color-color.md#color) :black_small_square: [Content](geono-color-color.md#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
 
 ----------
 ### difference()
@@ -529,7 +545,7 @@ Mix with another color : DIFFERENCE
 #### Returns:
 - **Color** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#color) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color-color.md#color) :black_small_square: [Content](geono-color-color.md#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
 
 ----------
 ### divide()
@@ -555,7 +571,7 @@ Mix with another color : DIVIDE
 #### Returns:
 - **Color** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#color) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color-color.md#color) :black_small_square: [Content](geono-color-color.md#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
 
 ----------
 ### dodge()
@@ -581,7 +597,7 @@ Mix with another color : DODGE
 #### Returns:
 - **Color** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#color) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color-color.md#color) :black_small_square: [Content](geono-color-color.md#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
 
 ----------
 ### equal()
@@ -605,7 +621,7 @@ Compare with another Color : EQUAL
 #### Returns:
 - **Boolean** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#color) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color-color.md#color) :black_small_square: [Content](geono-color-color.md#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
 
 ----------
 ### exclusion()
@@ -631,7 +647,7 @@ Mix with another color : EXCLUSION
 #### Returns:
 - **Color** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#color) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color-color.md#color) :black_small_square: [Content](geono-color-color.md#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
 
 ----------
 ### FromShader()
@@ -654,7 +670,7 @@ Constructor : Shader to RGB.
 #### Returns:
 - **Color** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#color) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color-color.md#color) :black_small_square: [Content](geono-color-color.md#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
 
 ----------
 ### gamma()
@@ -677,7 +693,7 @@ Gamma.
 #### Returns:
 - **Color** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#color) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color-color.md#color) :black_small_square: [Content](geono-color-color.md#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
 
 ----------
 ### hue_saturation_value()
@@ -703,7 +719,7 @@ Hue / saturation / value.
 #### Returns:
 - **Color** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#color) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color-color.md#color) :black_small_square: [Content](geono-color-color.md#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
 
 ----------
 ### invert()
@@ -726,7 +742,7 @@ Invert.
 #### Returns:
 - **Color** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#color) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color-color.md#color) :black_small_square: [Content](geono-color-color.md#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
 
 ----------
 ### lighten()
@@ -752,7 +768,7 @@ Mix with another color : LIGHTEN
 #### Returns:
 - **Color** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#color) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color-color.md#color) :black_small_square: [Content](geono-color-color.md#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
 
 ----------
 ### linear_light()
@@ -778,7 +794,7 @@ Mix with another color : LINEAR LIGHT
 #### Returns:
 - **Color** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#color) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color-color.md#color) :black_small_square: [Content](geono-color-color.md#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
 
 ----------
 ### mix()
@@ -805,7 +821,7 @@ Mix with another color
 #### Returns:
 - **Color** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#color) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color-color.md#color) :black_small_square: [Content](geono-color-color.md#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
 
 ----------
 ### mix_color()
@@ -831,7 +847,7 @@ Mix with another color : COLOR
 #### Returns:
 - **Color** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#color) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color-color.md#color) :black_small_square: [Content](geono-color-color.md#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
 
 ----------
 ### mix_hue()
@@ -857,7 +873,7 @@ Mix with another color : HUE
 #### Returns:
 - **Color** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#color) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color-color.md#color) :black_small_square: [Content](geono-color-color.md#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
 
 ----------
 ### mix_saturation()
@@ -883,7 +899,7 @@ Mix with another color : SATURATION
 #### Returns:
 - **Color** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#color) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color-color.md#color) :black_small_square: [Content](geono-color-color.md#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
 
 ----------
 ### mix_value()
@@ -909,7 +925,7 @@ Mix with another color : VALUE
 #### Returns:
 - **Color** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#color) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color-color.md#color) :black_small_square: [Content](geono-color-color.md#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
 
 ----------
 ### multiply()
@@ -935,7 +951,7 @@ Mix with another color : MULTIPLY
 #### Returns:
 - **Color** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#color) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color-color.md#color) :black_small_square: [Content](geono-color-color.md#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
 
 ----------
 ### normal_map()
@@ -960,7 +976,7 @@ Normal map.
 #### Returns:
 - **Color** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#color) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color-color.md#color) :black_small_square: [Content](geono-color-color.md#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
 
 ----------
 ### not_equal()
@@ -984,7 +1000,7 @@ Compare with another Color : NOT EQUAL
 #### Returns:
 - **Boolean** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#color) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color-color.md#color) :black_small_square: [Content](geono-color-color.md#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
 
 ----------
 ### overlay()
@@ -1010,7 +1026,7 @@ Mix with another color : OVERLAY
 #### Returns:
 - **Color** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#color) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color-color.md#color) :black_small_square: [Content](geono-color-color.md#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
 
 ----------
 ### screen()
@@ -1036,7 +1052,7 @@ Mix with another color : SCREEN
 #### Returns:
 - **Color** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#color) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color-color.md#color) :black_small_square: [Content](geono-color-color.md#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
 
 ----------
 ### soft_light()
@@ -1062,7 +1078,7 @@ Mix with another color : SOFT LIGHT
 #### Returns:
 - **Color** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#color) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color-color.md#color) :black_small_square: [Content](geono-color-color.md#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
 
 ----------
 ### subtract()
@@ -1088,7 +1104,7 @@ Mix with another color : SUBTRACT
 #### Returns:
 - **Color** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#color) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color-color.md#color) :black_small_square: [Content](geono-color-color.md#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
 
 ----------
 ### vector_displacement()
@@ -1113,7 +1129,7 @@ Normal map.
 #### Returns:
 - **Color** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#color) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color-color.md#color) :black_small_square: [Content](geono-color-color.md#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
 
 ----------
 ### Wavelength()
@@ -1136,6 +1152,4 @@ Constructor : Wave Length.
 #### Returns:
 - **Color** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#color) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>
-
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#color) :black_small_square: [Content](#content) :black_small_square: [Color](geono-color-color.md)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color-color.md#color) :black_small_square: [Content](geono-color-color.md#content) :black_small_square: [Methods](geono-color-color.md#methods)</sub>

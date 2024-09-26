@@ -1,6 +1,6 @@
 # Image
 
-> Bases classes: [Socket](geono-socke-socket.md)
+> Bases classes: [Socket](geono-socke-socket.md#socket)
 
 ``` python
 Image(value=None, name=None, tip=None)
@@ -46,7 +46,7 @@ Node 'Image Info' (GeometryNodeImageInfo)
 #### Returns:
 - **Node** : [width (Integer), height (Integer), has_alpha (Boolean), frame_count (Integer), fps (Float)]
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#image) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-socke-image.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Image](geono-socke-image.md#image) :black_small_square: [Content](geono-socke-image.md#content) :black_small_square: [Methods](geono-socke-image.md#methods)</sub>
 
 ----------
 ### info()
@@ -67,6 +67,4 @@ Node 'Image Info' (GeometryNodeImageInfo)
 #### Returns:
 - **Node** : [width (Integer), height (Integer), has_alpha (Boolean), frame_count (Integer), fps (Float)]
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#image) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-socke-image.md#methods)</sub>
-
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#image) :black_small_square: [Content](#content) :black_small_square: [Image](geono-socke-image.md)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Image](geono-socke-image.md#image) :black_small_square: [Content](geono-socke-image.md#content) :black_small_square: [Methods](geono-socke-image.md#methods)</sub>

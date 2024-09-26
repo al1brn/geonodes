@@ -112,7 +112,7 @@ with GeoNodes("Node sockets access"):
 
 Returns the first enabled output socket.
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#node) :black_small_square: [Content](#content) :black_small_square: [Node](geono-treec-node.md)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Node](geono-treec-node.md#node) :black_small_square: [Content](geono-treec-node.md#content) :black_small_square: [Properties](geono-treec-node.md#properties)</sub>
 
 ## Methods
 
@@ -170,6 +170,4 @@ with GeoNodes("Connect several sockets"):
 #### Returns:
 - **Node** : self
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#node) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-treec-node.md#methods)</sub>
-
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#node) :black_small_square: [Content](#content) :black_small_square: [Node](geono-treec-node.md)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Node](geono-treec-node.md#node) :black_small_square: [Content](geono-treec-node.md#content) :black_small_square: [Methods](geono-treec-node.md#methods)</sub>

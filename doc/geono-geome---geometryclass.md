@@ -85,47 +85,39 @@ updates
 
 ## Content
 
-- **C** : [Cloud](geono-geome-cloud.md) :black_small_square: [CloudPoint](geono-geome-cloudpoint.md) :black_small_square: [constants](geono-geome-const---constants.md) :black_small_square: [Corner](geono-geome-corner.md) :black_small_square: [Curve](geono-geome-curve.md)
-- **D** : [Domain](geono-geome-domain.md)
-- **E** : [Edge](geono-geome-edge.md)
-- **F** : [Face](geono-geome-face.md)
-- **G** : [GeoBase](geono-geome-geobase.md) :black_small_square: [Geometry](geono-geome-geometry.md)
-- **I** : [Instance](geono-geome-instance.md) :black_small_square: [Instances](geono-geome-instances.md)
-- **M** : [Mesh](geono-geome-mesh.md)
-- **P** : [Point](geono-geome-point.md)
-- **S** : [Spline](geono-geome-spline.md) :black_small_square: [SplinePoint](geono-geome-splinepoint.md)
-- **U** : [utils](geono-geome-utils---utils.md)
-- **V** : [Vertex](geono-geome-vertex.md) :black_small_square: [Volume](geono-geome-volume.md)
+- **C** : [Cloud](geono-geome-cloud.md#cloud) :black_small_square: [CloudPoint](geono-geome-cloudpoint.md#cloudpoint) :black_small_square: [constants](geono-geome-const---constants.md#constants) :black_small_square: [Curve](geono-geome-curve.md#curve)
+- **F** : [Face](geono-geome-face.md#face)
+- **G** : [GeoBase](geono-geome-geobase.md#geobase) :black_small_square: [Geometry](geono-geome-geometry.md#geometry)
+- **I** : [Instances](geono-geome-instances.md#instances)
+- **M** : [Mesh](geono-geome-mesh.md#mesh)
+- **P** : [Point](geono-geome-point.md#point)
+- **S** : [SplinePoint](geono-geome-splinepoint.md#splinepoint)
+- **U** : [utils](geono-geome-utils---utils.md#utils)
+- **V** : [Volume](geono-geome-volume.md#volume)
 
 ## Modules
 
 
 
-- [constants](geono-geome-const---constants.md)
-- [utils](geono-geome-utils---utils.md)
+- [constants](geono-geome-const---constants.md#constants)
+- [utils](geono-geome-utils---utils.md#utils)
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#geometryclass) :black_small_square: [Content](#content) :black_small_square: [geometryclass](geono-geome---geometryclass.md)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [geometryclass](geono-geome---geometryclass.md#geometryclass) :black_small_square: [Content](geono-geome---geometryclass.md#content) :black_small_square: [geometryclass](geono-geome---geometryclass.md#geometryclass)</sub>
 
 ## Classes
 
 
 
-- [Cloud](geono-geome-cloud.md)
-- [CloudPoint](geono-geome-cloudpoint.md)
-- [Corner](geono-geome-corner.md)
-- [Curve](geono-geome-curve.md)
-- [Domain](geono-geome-domain.md)
-- [Edge](geono-geome-edge.md)
-- [Face](geono-geome-face.md)
-- [GeoBase](geono-geome-geobase.md)
-- [Geometry](geono-geome-geometry.md)
-- [Instance](geono-geome-instance.md)
-- [Instances](geono-geome-instances.md)
-- [Mesh](geono-geome-mesh.md)
-- [Point](geono-geome-point.md)
-- [Spline](geono-geome-spline.md)
-- [SplinePoint](geono-geome-splinepoint.md)
-- [Vertex](geono-geome-vertex.md)
-- [Volume](geono-geome-volume.md)
+- [Cloud](geono-geome-cloud.md#cloud)
+- [CloudPoint](geono-geome-cloudpoint.md#cloudpoint)
+- [Curve](geono-geome-curve.md#curve)
+- [Face](geono-geome-face.md#face)
+- [GeoBase](geono-geome-geobase.md#geobase)
+- [Geometry](geono-geome-geometry.md#geometry)
+- [Instances](geono-geome-instances.md#instances)
+- [Mesh](geono-geome-mesh.md#mesh)
+- [Point](geono-geome-point.md#point)
+- [SplinePoint](geono-geome-splinepoint.md#splinepoint)
+- [Volume](geono-geome-volume.md#volume)
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#geometryclass) :black_small_square: [Content](#content) :black_small_square: [geometryclass](geono-geome---geometryclass.md)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [geometryclass](geono-geome---geometryclass.md#geometryclass) :black_small_square: [Content](geono-geome---geometryclass.md#content) :black_small_square: [geometryclass](geono-geome---geometryclass.md#geometryclass)</sub>

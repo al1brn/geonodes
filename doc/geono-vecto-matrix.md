@@ -1,6 +1,6 @@
 # Matrix
 
-> Bases classes: [ValueSocket](geono-socke-valuesocket.md)
+> Bases classes: [ValueSocket](geono-socke-valuesocket.md#valuesocket)
 
 ``` python
 Matrix(value=None, name=None, tip=None)

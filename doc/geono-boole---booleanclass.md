@@ -26,10 +26,10 @@ updates
 
 ## Content
 
-- [Boolean](geono-boole-boolean.md)
+- [Boolean](geono-boole-boolean.md#boolean)
   - [Random](geono-boole-boolean.md#random)
-- [utils](geono-boole-utils---utils.md)
-  - [constants](geono-boole-utils-const---constants.md)
+- [utils](geono-boole-utils---utils.md#utils)
+  - [constants](geono-boole-utils-const---constants.md#constants)
   - [del_tree](geono-boole-utils---utils.md#del_tree)
   - [get_tree](geono-boole-utils---utils.md#get_tree)
 
@@ -37,14 +37,14 @@ updates
 
 
 
-- [utils](geono-boole-utils---utils.md)
+- [utils](geono-boole-utils---utils.md#utils)
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#booleanclass) :black_small_square: [Content](#content) :black_small_square: [booleanclass](geono-boole---booleanclass.md)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [booleanclass](geono-boole---booleanclass.md#booleanclass) :black_small_square: [Content](geono-boole---booleanclass.md#content) :black_small_square: [booleanclass](geono-boole---booleanclass.md#booleanclass)</sub>
 
 ## Classes
 
 
 
-- [Boolean](geono-boole-boolean.md)
+- [Boolean](geono-boole-boolean.md#boolean)
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#booleanclass) :black_small_square: [Content](#content) :black_small_square: [booleanclass](geono-boole---booleanclass.md)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [booleanclass](geono-boole---booleanclass.md#booleanclass) :black_small_square: [Content](geono-boole---booleanclass.md#content) :black_small_square: [booleanclass](geono-boole---booleanclass.md#booleanclass)</sub>

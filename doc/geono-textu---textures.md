@@ -43,7 +43,7 @@ updates
 
 ## Content
 
-- [Texture](geono-textu-texture.md)
+- [Texture](geono-textu-texture.md#texture)
 - [Brick](geono-textu-texture.md#brick)
 - [Checker](geono-textu-texture.md#checker)
 - [Gradient](geono-textu-texture.md#gradient)
@@ -58,6 +58,6 @@ updates
 
 
 
-- [Texture](geono-textu-texture.md)
+- [Texture](geono-textu-texture.md#texture)
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#textures) :black_small_square: [Content](#content) :black_small_square: [textures](geono-textu---textures.md)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [textures](geono-textu---textures.md#textures) :black_small_square: [Content](geono-textu---textures.md#content) :black_small_square: [textures](geono-textu---textures.md#textures)</sub>

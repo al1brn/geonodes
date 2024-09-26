@@ -1,6 +1,6 @@
 # Curve
 
-> Bases classes: [Geometry](geono-geome-geometry.md)
+> Bases classes: [Geometry](geono-geome-geometry.md#geometry)
 
 ``` python
 Curve(value=None, name=None, tip=None)
@@ -51,6 +51,8 @@ Node 'Curve Length' (GeometryNodeCurveLength)
 
 [!Node] Curve Length
 
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-geome-curve.md#curve) :black_small_square: [Content](geono-geome-curve.md#content) :black_small_square: [Properties](geono-geome-curve.md#properties)</sub>
+
 ### radius
 
 > _type_: **Float**
@@ -59,6 +61,8 @@ Node 'Curve Length' (GeometryNodeCurveLength)
 Node 'Radius' (GeometryNodeInputRadius)
 
 [!Node] Radius
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-geome-curve.md#curve) :black_small_square: [Content](geono-geome-curve.md#content) :black_small_square: [Properties](geono-geome-curve.md#properties)</sub>
 
 ### tilt
 
@@ -69,7 +73,7 @@ Node 'Curve Tilt' (GeometryNodeInputCurveTilt)
 
 [!Node] Curve Tilt
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#curve) :black_small_square: [Content](#content) :black_small_square: [Curve](geono-geome-curve.md)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-geome-curve.md#curve) :black_small_square: [Content](geono-geome-curve.md#content) :black_small_square: [Properties](geono-geome-curve.md#properties)</sub>
 
 ## Methods
 
@@ -109,7 +113,7 @@ Node 'Arc' (GeometryNodeCurveArc)
 #### Returns:
 - **Curve** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#curve) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-geome-curve.md#curve) :black_small_square: [Content](geono-geome-curve.md#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
 
 ----------
 ### BezierSegment()
@@ -137,7 +141,7 @@ Node 'Bézier Segment' (GeometryNodeCurvePrimitiveBezierSegment)
 #### Returns:
 - **Curve** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#curve) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-geome-curve.md#curve) :black_small_square: [Content](geono-geome-curve.md#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
 
 ----------
 ### Circle()
@@ -168,7 +172,7 @@ Node 'Curve Circle' (GeometryNodeCurvePrimitiveCircle)
 #### Returns:
 - **Curve** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#curve) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-geome-curve.md#curve) :black_small_square: [Content](geono-geome-curve.md#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
 
 ----------
 ### curve_of_point()
@@ -191,7 +195,7 @@ Node 'Curve of Point' (GeometryNodeCurveOfPoint)
 #### Returns:
 - **Node** : [curve_index (Integer), index_in_curve (Integer)]
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#curve) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-geome-curve.md#curve) :black_small_square: [Content](geono-geome-curve.md#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
 
 ----------
 ### deform_on_surface()
@@ -209,7 +213,7 @@ Node 'Deform Curves on Surface' (GeometryNodeDeformCurvesOnSurface)
 #### Returns:
 - **Curve** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#curve) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-geome-curve.md#curve) :black_small_square: [Content](geono-geome-curve.md#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
 
 ----------
 ### endpoint_selection()
@@ -233,7 +237,7 @@ Node 'Endpoint Selection' (GeometryNodeCurveEndpointSelection)
 #### Returns:
 - **Boolean** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#curve) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-geome-curve.md#curve) :black_small_square: [Content](geono-geome-curve.md#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
 
 ----------
 ### fill()
@@ -257,7 +261,7 @@ Node 'Fill Curve' (GeometryNodeFillCurve)
 #### Returns:
 - **Mesh** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#curve) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-geome-curve.md#curve) :black_small_square: [Content](geono-geome-curve.md#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
 
 ----------
 ### fillet()
@@ -283,7 +287,7 @@ Node 'Fillet Curve' (GeometryNodeFilletCurve)
 #### Returns:
 - **Curve** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#curve) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-geome-curve.md#curve) :black_small_square: [Content](geono-geome-curve.md#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
 
 ----------
 ### FromEdgePaths()
@@ -307,7 +311,7 @@ Node 'Edge Paths to Curves' (GeometryNodeEdgePathsToCurves)
 #### Returns:
 - **Curve** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#curve) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-geome-curve.md#curve) :black_small_square: [Content](geono-geome-curve.md#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
 
 ----------
 ### FromMesh()
@@ -330,7 +334,7 @@ Node 'Mesh to Curve' (GeometryNodeMeshToCurve)
 #### Returns:
 - **Curve** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#curve) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-geome-curve.md#curve) :black_small_square: [Content](geono-geome-curve.md#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
 
 ----------
 ### FromPoints()
@@ -355,7 +359,7 @@ Node 'Points to Curves' (GeometryNodePointsToCurves)
 #### Returns:
 - **Curve** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#curve) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-geome-curve.md#curve) :black_small_square: [Content](geono-geome-curve.md#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
 
 ----------
 ### interpolate()
@@ -383,7 +387,7 @@ Node 'Interpolate Curves' (GeometryNodeInterpolateCurves)
 #### Returns:
 - **Curve** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#curve) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-geome-curve.md#curve) :black_small_square: [Content](geono-geome-curve.md#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
 
 ----------
 ### Kite()
@@ -408,7 +412,7 @@ Node 'Quadrilateral' (GeometryNodeCurvePrimitiveQuadrilateral)
 #### Returns:
 - **Curve** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#curve) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-geome-curve.md#curve) :black_small_square: [Content](geono-geome-curve.md#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
 
 ----------
 ### Line()
@@ -438,7 +442,7 @@ Node 'Curve Line' (GeometryNodeCurvePrimitiveLine)
 #### Returns:
 - **Curve** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#curve) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-geome-curve.md#curve) :black_small_square: [Content](geono-geome-curve.md#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
 
 ----------
 ### offset_point_in_curve()
@@ -462,7 +466,7 @@ Node 'Offset Point in Curve' (GeometryNodeOffsetPointInCurve)
 #### Returns:
 - **Node** : [is_valid_offset (Boolean), point_index (Integer)]
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#curve) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-geome-curve.md#curve) :black_small_square: [Content](geono-geome-curve.md#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
 
 ----------
 ### Parallelogram()
@@ -487,7 +491,7 @@ Node 'Quadrilateral' (GeometryNodeCurvePrimitiveQuadrilateral)
 #### Returns:
 - **Curve** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#curve) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-geome-curve.md#curve) :black_small_square: [Content](geono-geome-curve.md#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
 
 ----------
 ### Points()
@@ -513,7 +517,7 @@ Node 'Quadrilateral' (GeometryNodeCurvePrimitiveQuadrilateral)
 #### Returns:
 - **Curve** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#curve) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-geome-curve.md#curve) :black_small_square: [Content](geono-geome-curve.md#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
 
 ----------
 ### points_of_curve()
@@ -538,7 +542,7 @@ Node 'Points of Curve' (GeometryNodePointsOfCurve)
 #### Returns:
 - **Node** : [point_index (Integer), total (Integer)]
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#curve) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-geome-curve.md#curve) :black_small_square: [Content](geono-geome-curve.md#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
 
 ----------
 ### QuadraticBezier()
@@ -564,7 +568,7 @@ Node 'Quadratic Bézier' (GeometryNodeCurveQuadraticBezier)
 #### Returns:
 - **Curve** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#curve) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-geome-curve.md#curve) :black_small_square: [Content](geono-geome-curve.md#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
 
 ----------
 ### Quadrilateral()
@@ -588,7 +592,7 @@ Node 'Quadrilateral' (GeometryNodeCurvePrimitiveQuadrilateral)
 #### Returns:
 - **Curve** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#curve) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-geome-curve.md#curve) :black_small_square: [Content](geono-geome-curve.md#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
 
 ----------
 ### Rectangle()
@@ -612,7 +616,7 @@ Node 'Quadrilateral' (GeometryNodeCurvePrimitiveQuadrilateral)
 #### Returns:
 - **Curve** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#curve) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-geome-curve.md#curve) :black_small_square: [Content](geono-geome-curve.md#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
 
 ----------
 ### resample()
@@ -643,7 +647,7 @@ Parameter 'mode'
 #### Returns:
 - **Curve** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#curve) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-geome-curve.md#curve) :black_small_square: [Content](geono-geome-curve.md#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
 
 ----------
 ### reverse()
@@ -661,7 +665,7 @@ Node 'Reverse Curve' (GeometryNodeReverseCurve)
 #### Returns:
 - **Curve** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#curve) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-geome-curve.md#curve) :black_small_square: [Content](geono-geome-curve.md#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
 
 ----------
 ### sample()
@@ -693,7 +697,7 @@ Node 'Sample Curve' (GeometryNodeSampleCurve)
 #### Returns:
 - **Socket** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#curve) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-geome-curve.md#curve) :black_small_square: [Content](geono-geome-curve.md#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
 
 ----------
 ### set_normal()
@@ -716,7 +720,7 @@ Node 'Set Curve Normal' (GeometryNodeSetCurveNormal)
 #### Returns:
 - **Curve** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#curve) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-geome-curve.md#curve) :black_small_square: [Content](geono-geome-curve.md#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
 
 ----------
 ### set_normal_free()
@@ -734,7 +738,7 @@ Node 'Set Curve Normal' (GeometryNodeSetCurveNormal)
 #### Returns:
 - **Curve** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#curve) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-geome-curve.md#curve) :black_small_square: [Content](geono-geome-curve.md#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
 
 ----------
 ### set_normal_z_up()
@@ -752,7 +756,7 @@ Node 'Set Curve Normal' (GeometryNodeSetCurveNormal)
 #### Returns:
 - **Curve** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#curve) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-geome-curve.md#curve) :black_small_square: [Content](geono-geome-curve.md#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
 
 ----------
 ### Spiral()
@@ -780,7 +784,7 @@ Node 'Spiral' (GeometryNodeCurveSpiral)
 #### Returns:
 - **Curve** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#curve) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-geome-curve.md#curve) :black_small_square: [Content](geono-geome-curve.md#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
 
 ----------
 ### Star()
@@ -806,7 +810,7 @@ Node 'Star' (GeometryNodeCurveStar)
 #### Returns:
 - **Curve** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#curve) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-geome-curve.md#curve) :black_small_square: [Content](geono-geome-curve.md#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
 
 ----------
 ### subdivide()
@@ -829,7 +833,7 @@ Node 'Subdivide Curve' (GeometryNodeSubdivideCurve)
 #### Returns:
 - **Curve** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#curve) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-geome-curve.md#curve) :black_small_square: [Content](geono-geome-curve.md#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
 
 ----------
 ### to_mesh()
@@ -853,7 +857,7 @@ Node 'Curve to Mesh' (GeometryNodeCurveToMesh)
 #### Returns:
 - **Mesh** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#curve) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-geome-curve.md#curve) :black_small_square: [Content](geono-geome-curve.md#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
 
 ----------
 ### to_points()
@@ -878,7 +882,7 @@ Node 'Curve to Points' (GeometryNodeCurveToPoints)
 #### Returns:
 - **Cloud** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#curve) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-geome-curve.md#curve) :black_small_square: [Content](geono-geome-curve.md#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
 
 ----------
 ### Trapezoid()
@@ -904,7 +908,7 @@ Node 'Quadrilateral' (GeometryNodeCurvePrimitiveQuadrilateral)
 #### Returns:
 - **Curve** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#curve) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-geome-curve.md#curve) :black_small_square: [Content](geono-geome-curve.md#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
 
 ----------
 ### trim()
@@ -929,7 +933,7 @@ Node 'Trim Curve' (GeometryNodeTrimCurve)
 #### Returns:
 - **Curve** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#curve) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-geome-curve.md#curve) :black_small_square: [Content](geono-geome-curve.md#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
 
 ----------
 ### trim_factor()
@@ -953,7 +957,7 @@ Node 'Trim Curve' (GeometryNodeTrimCurve)
 #### Returns:
 - **Curve** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#curve) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-geome-curve.md#curve) :black_small_square: [Content](geono-geome-curve.md#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
 
 ----------
 ### trim_length()
@@ -977,6 +981,4 @@ Node 'Trim Curve' (GeometryNodeTrimCurve)
 #### Returns:
 - **Curve** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#curve) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>
-
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#curve) :black_small_square: [Content](#content) :black_small_square: [Curve](geono-geome-curve.md)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-geome-curve.md#curve) :black_small_square: [Content](geono-geome-curve.md#content) :black_small_square: [Methods](geono-geome-curve.md#methods)</sub>

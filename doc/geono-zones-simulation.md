@@ -1,7 +1,5 @@
 # Simulation
 
-> Bases classes: [Zone](geono-zones-zone.md)
-
 ``` python
 Simulation(sockets={}, **kwargs)
 ```
@@ -70,7 +68,3 @@ Args:
 #### Arguments:
 - **sockets** ( = {})
 - **kwargs**
-
-### Inherited
-
-[\_\_enter__](geono-zones-zone.md#__enter__) :black_small_square: [\_\_exit__](geono-zones-zone.md#__exit__) :black_small_square: [\_\_getattr__](geono-zones-zone.md#__getattr__) :black_small_square: [init_zone](geono-zones-zone.md#init_zone) :black_small_square: [\_\_setattr__](geono-zones-zone.md#__setattr__) :black_small_square: [\_\_str__](geono-zones-zone.md#__str__) :black_small_square:

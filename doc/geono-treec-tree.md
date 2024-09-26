@@ -62,6 +62,8 @@ Returns a Group Input Node.
 
 If the node doesn't already exist, it is created.
 
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Tree](geono-treec-tree.md#tree) :black_small_square: [Content](geono-treec-tree.md#content) :black_small_square: [Properties](geono-treec-tree.md#properties)</sub>
+
 ### output_node
 
 > _type_: **Node**
@@ -71,7 +73,7 @@ Returns a Group Output Node.
 
 If the node doesn't already exist, it is created.
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#tree) :black_small_square: [Content](#content) :black_small_square: [Tree](geono-treec-tree.md)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Tree](geono-treec-tree.md#tree) :black_small_square: [Content](geono-treec-tree.md#content) :black_small_square: [Properties](geono-treec-tree.md#properties)</sub>
 
 ## Methods
 
@@ -95,7 +97,7 @@ This method is called when the Tree is poped from the stack.
 #### Returns:
 - **None** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#tree) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-treec-tree.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Tree](geono-treec-tree.md#tree) :black_small_square: [Content](geono-treec-tree.md#content) :black_small_square: [Methods](geono-treec-tree.md#methods)</sub>
 
 ----------
 ### clear()
@@ -110,7 +112,7 @@ Clear the content of the Tree.
 
 Remove all the nodes in the Tree.
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#tree) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-treec-tree.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Tree](geono-treec-tree.md#tree) :black_small_square: [Content](geono-treec-tree.md#content) :black_small_square: [Methods](geono-treec-tree.md#methods)</sub>
 
 ----------
 ### link()
@@ -132,7 +134,7 @@ Create a link between two sockets.
 #### Returns:
 - **Link** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#tree) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-treec-tree.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Tree](geono-treec-tree.md#tree) :black_small_square: [Content](geono-treec-tree.md#content) :black_small_square: [Methods](geono-treec-tree.md#methods)</sub>
 
 ----------
 ### new_input()
@@ -161,7 +163,7 @@ This is an input socket of the tree, then an output socket of the input node.
 #### Returns:
 - **Socket** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#tree) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-treec-tree.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Tree](geono-treec-tree.md#tree) :black_small_square: [Content](geono-treec-tree.md#content) :black_small_square: [Methods](geono-treec-tree.md#methods)</sub>
 
 ----------
 ### new_input_from_input_socket()
@@ -183,7 +185,7 @@ Create a new group input socket from an existing input socket.
 #### Returns:
 - **Socket** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#tree) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-treec-tree.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Tree](geono-treec-tree.md#tree) :black_small_square: [Content](geono-treec-tree.md#content) :black_small_square: [Methods](geono-treec-tree.md#methods)</sub>
 
 ----------
 ### new_output()
@@ -207,7 +209,7 @@ This is an output socket of the tree, then an input socket of the input node.
 #### Returns:
 - **Socket** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#tree) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-treec-tree.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Tree](geono-treec-tree.md#tree) :black_small_square: [Content](geono-treec-tree.md#content) :black_small_square: [Methods](geono-treec-tree.md#methods)</sub>
 
 ----------
 ### remove_groups()
@@ -234,6 +236,4 @@ Remove Groups created by GeoNodes.
 #### Returns:
 - **None** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#tree) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-treec-tree.md#methods)</sub>
-
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#tree) :black_small_square: [Content](#content) :black_small_square: [Tree](geono-treec-tree.md)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Tree](geono-treec-tree.md#tree) :black_small_square: [Content](geono-treec-tree.md#content) :black_small_square: [Methods](geono-treec-tree.md#methods)</sub>

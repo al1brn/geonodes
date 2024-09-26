@@ -1,6 +1,6 @@
 # CloudPoint
 
-> Bases classes: [Point](geono-geome-point.md)
+> Bases classes: [Point](geono-geome-point.md#point)
 
 ``` python
 CloudPoint(geometry)
@@ -32,4 +32,4 @@ Node 'Radius' (GeometryNodeInputRadius)
 
 [!Node] Radius
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#cloudpoint) :black_small_square: [Content](#content) :black_small_square: [CloudPoint](geono-geome-cloudpoint.md)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [CloudPoint](geono-geome-cloudpoint.md#cloudpoint) :black_small_square: [Content](geono-geome-cloudpoint.md#content) :black_small_square: [Properties](geono-geome-cloudpoint.md#properties)</sub>

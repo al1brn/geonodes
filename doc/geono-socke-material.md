@@ -1,6 +1,6 @@
 # Material
 
-> Bases classes: [Socket](geono-socke-socket.md)
+> Bases classes: [Socket](geono-socke-socket.md#socket)
 
 ``` python
 Material(value=None, name=None, tip=None)

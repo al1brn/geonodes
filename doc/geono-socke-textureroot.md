@@ -1,6 +1,6 @@
 # TextureRoot
 
-> Bases classes: [Socket](geono-socke-socket.md)
+> Bases classes: [Socket](geono-socke-socket.md#socket)
 
 ``` python
 TextureRoot(value=None, name=None, tip=None)

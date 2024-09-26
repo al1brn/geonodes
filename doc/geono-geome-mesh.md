@@ -1,6 +1,6 @@
 # Mesh
 
-> Bases classes: [Geometry](geono-geome-geometry.md)
+> Bases classes: [Geometry](geono-geome-geometry.md#geometry)
 
 ``` python
 Mesh(value=None, name=None, tip=None)
@@ -47,6 +47,8 @@ Node 'Mesh Island' (GeometryNodeInputMeshIsland)
 
 [!Node] Mesh Island
 
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-geome-mesh.md#mesh) :black_small_square: [Content](geono-geome-mesh.md#content) :black_small_square: [Properties](geono-geome-mesh.md#properties)</sub>
+
 ### island_count
 
 > _type_: **Integer**
@@ -55,6 +57,8 @@ Node 'Mesh Island' (GeometryNodeInputMeshIsland)
 Node 'Mesh Island' (GeometryNodeInputMeshIsland)
 
 [!Node] Mesh Island
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-geome-mesh.md#mesh) :black_small_square: [Content](geono-geome-mesh.md#content) :black_small_square: [Properties](geono-geome-mesh.md#properties)</sub>
 
 ### island_index
 
@@ -65,7 +69,7 @@ Node 'Mesh Island' (GeometryNodeInputMeshIsland)
 
 [!Node] Mesh Island
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#mesh) :black_small_square: [Content](#content) :black_small_square: [Mesh](geono-geome-mesh.md)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-geome-mesh.md#mesh) :black_small_square: [Content](geono-geome-mesh.md#content) :black_small_square: [Properties](geono-geome-mesh.md#properties)</sub>
 
 ## Methods
 
@@ -96,7 +100,7 @@ Node 'Mesh Boolean' (GeometryNodeMeshBoolean)
 #### Returns:
 - **Mesh** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#mesh) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-geome-mesh.md#mesh) :black_small_square: [Content](geono-geome-mesh.md#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
 
 ----------
 ### Circle()
@@ -121,7 +125,7 @@ Constructor Node 'Mesh Circle' (GeometryNodeMeshCircle)
 #### Returns:
 - **Mesh** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#mesh) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-geome-mesh.md#mesh) :black_small_square: [Content](geono-geome-mesh.md#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
 
 ----------
 ### Cone()
@@ -150,7 +154,7 @@ Constructor Node 'Cone' (GeometryNodeMeshCone)
 #### Returns:
 - **Mesh** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#mesh) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-geome-mesh.md#mesh) :black_small_square: [Content](geono-geome-mesh.md#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
 
 ----------
 ### Cube()
@@ -176,7 +180,7 @@ Constructor Node 'Cube' (GeometryNodeMeshCube)
 #### Returns:
 - **Mesh** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#mesh) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-geome-mesh.md#mesh) :black_small_square: [Content](geono-geome-mesh.md#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
 
 ----------
 ### Cylinder()
@@ -204,7 +208,7 @@ Constructor Node 'Cylinder' (GeometryNodeMeshCylinder)
 #### Returns:
 - **Mesh** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#mesh) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-geome-mesh.md#mesh) :black_small_square: [Content](geono-geome-mesh.md#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
 
 ----------
 ### difference()
@@ -230,7 +234,7 @@ Node 'Mesh Boolean' (GeometryNodeMeshBoolean)
 #### Returns:
 - **Mesh** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#mesh) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-geome-mesh.md#mesh) :black_small_square: [Content](geono-geome-mesh.md#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
 
 ----------
 ### Disk()
@@ -255,7 +259,7 @@ Constructor Node 'Mesh Circle' (GeometryNodeMeshCircle)
 #### Returns:
 - **Mesh** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#mesh) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-geome-mesh.md#mesh) :black_small_square: [Content](geono-geome-mesh.md#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
 
 ----------
 ### distribute_points_on_faces()
@@ -287,7 +291,7 @@ if 'density' argument is not None, 'RANDOM' method is applied, 'POISSON' otherwi
 #### Returns:
 - **Points** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#mesh) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-geome-mesh.md#mesh) :black_small_square: [Content](geono-geome-mesh.md#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
 
 ----------
 ### dual()
@@ -310,7 +314,7 @@ Node 'Dual Mesh' (GeometryNodeDualMesh)
 #### Returns:
 - **Mesh** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#mesh) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-geome-mesh.md#mesh) :black_small_square: [Content](geono-geome-mesh.md#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
 
 ----------
 ### FromCurve()
@@ -335,7 +339,7 @@ Constructor Node 'Curve to Mesh' (GeometryNodeCurveToMesh)
 #### Returns:
 - **Mesh** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#mesh) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-geome-mesh.md#mesh) :black_small_square: [Content](geono-geome-mesh.md#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
 
 ----------
 ### FromPoints()
@@ -358,7 +362,7 @@ Constructor Node 'Points to Vertices' (GeometryNodePointsToVertices)
 #### Returns:
 - **Mesh** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#mesh) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-geome-mesh.md#mesh) :black_small_square: [Content](geono-geome-mesh.md#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
 
 ----------
 ### FromVolume()
@@ -386,7 +390,7 @@ Constructor Node 'Volume to Mesh' (GeometryNodeVolumeToMesh)
 #### Returns:
 - **Mesh** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#mesh) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-geome-mesh.md#mesh) :black_small_square: [Content](geono-geome-mesh.md#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
 
 ----------
 ### Grid()
@@ -412,7 +416,7 @@ Constructor Node 'Grid' (GeometryNodeMeshGrid)
 #### Returns:
 - **Mesh** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#mesh) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-geome-mesh.md#mesh) :black_small_square: [Content](geono-geome-mesh.md#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
 
 ----------
 ### IcoSphere()
@@ -436,7 +440,7 @@ Constructor Node 'Ico Sphere' (GeometryNodeMeshIcoSphere)
 #### Returns:
 - **Mesh** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#mesh) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-geome-mesh.md#mesh) :black_small_square: [Content](geono-geome-mesh.md#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
 
 ----------
 ### intersect()
@@ -462,7 +466,7 @@ Node 'Mesh Boolean' (GeometryNodeMeshBoolean)
 #### Returns:
 - **Mesh** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#mesh) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-geome-mesh.md#mesh) :black_small_square: [Content](geono-geome-mesh.md#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
 
 ----------
 ### Line()
@@ -496,7 +500,7 @@ If resolution is None, count_mode is set to 'TOTAL' else to 'RESOLUTION'
 #### Returns:
 - **Mesh** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#mesh) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-geome-mesh.md#mesh) :black_small_square: [Content](geono-geome-mesh.md#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
 
 ----------
 ### LineOffset()
@@ -523,7 +527,7 @@ Line from start to end point
 #### Returns:
 - **Mesh** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#mesh) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-geome-mesh.md#mesh) :black_small_square: [Content](geono-geome-mesh.md#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
 
 ----------
 ### LineTo()
@@ -551,7 +555,7 @@ Line from start to end point
 #### Returns:
 - **Mesh** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#mesh) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-geome-mesh.md#mesh) :black_small_square: [Content](geono-geome-mesh.md#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
 
 ----------
 ### pack_uv_islands()
@@ -576,7 +580,7 @@ Node 'Pack UV Islands' (GeometryNodeUVPackIslands)
 #### Returns:
 - **Vector** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#mesh) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-geome-mesh.md#mesh) :black_small_square: [Content](geono-geome-mesh.md#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
 
 ----------
 ### Plane()
@@ -600,7 +604,7 @@ Constructor Node 'Grid' (GeometryNodeMeshGrid)
 #### Returns:
 - **Mesh** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#mesh) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-geome-mesh.md#mesh) :black_small_square: [Content](geono-geome-mesh.md#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
 
 ----------
 ### sample_nearest_surface()
@@ -628,7 +632,7 @@ Node 'Sample Nearest Surface' (GeometryNodeSampleNearestSurface)
 #### Returns:
 - **Float** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#mesh) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-geome-mesh.md#mesh) :black_small_square: [Content](geono-geome-mesh.md#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
 
 ----------
 ### sample_uv_surface()
@@ -653,7 +657,7 @@ Node 'Sample UV Surface' (GeometryNodeSampleUVSurface)
 #### Returns:
 - **Float** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#mesh) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-geome-mesh.md#mesh) :black_small_square: [Content](geono-geome-mesh.md#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
 
 ----------
 ### subdivide()
@@ -676,7 +680,7 @@ Node 'Subdivide Mesh' (GeometryNodeSubdivideMesh)
 #### Returns:
 - **Mesh** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#mesh) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-geome-mesh.md#mesh) :black_small_square: [Content](geono-geome-mesh.md#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
 
 ----------
 ### subdivision_surface()
@@ -703,7 +707,7 @@ Node 'Subdivision Surface' (GeometryNodeSubdivisionSurface)
 #### Returns:
 - **Mesh** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#mesh) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-geome-mesh.md#mesh) :black_small_square: [Content](geono-geome-mesh.md#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
 
 ----------
 ### to_curve()
@@ -721,7 +725,7 @@ Node 'Mesh to Curve' (GeometryNodeMeshToCurve)
 #### Returns:
 - **Curve** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#mesh) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-geome-mesh.md#mesh) :black_small_square: [Content](geono-geome-mesh.md#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
 
 ----------
 ### to_volume()
@@ -750,7 +754,7 @@ Node 'Mesh to Volume' (GeometryNodeMeshToVolume)
 #### Returns:
 - **Volume** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#mesh) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-geome-mesh.md#mesh) :black_small_square: [Content](geono-geome-mesh.md#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
 
 ----------
 ### triangulate()
@@ -775,7 +779,7 @@ Node 'Triangulate' (GeometryNodeTriangulate)
 #### Returns:
 - **Mesh** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#mesh) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-geome-mesh.md#mesh) :black_small_square: [Content](geono-geome-mesh.md#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
 
 ----------
 ### union()
@@ -801,7 +805,7 @@ Node 'Mesh Boolean' (GeometryNodeMeshBoolean)
 #### Returns:
 - **Mesh** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#mesh) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-geome-mesh.md#mesh) :black_small_square: [Content](geono-geome-mesh.md#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
 
 ----------
 ### UVSphere()
@@ -826,7 +830,7 @@ Node 'UV Sphere' (GeometryNodeMeshUVSphere)
 #### Returns:
 - **Mesh** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#mesh) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-geome-mesh.md#mesh) :black_small_square: [Content](geono-geome-mesh.md#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
 
 ----------
 ### uv_unwrap()
@@ -852,6 +856,4 @@ Node 'UV Unwrap' (GeometryNodeUVUnwrap)
 #### Returns:
 - **uv** (_Vector_)
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#mesh) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>
-
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#mesh) :black_small_square: [Content](#content) :black_small_square: [Mesh](geono-geome-mesh.md)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-geome-mesh.md#mesh) :black_small_square: [Content](geono-geome-mesh.md#content) :black_small_square: [Methods](geono-geome-mesh.md#methods)</sub>

@@ -1,6 +1,6 @@
 # Point
 
-> Bases classes: [Domain](geono-geome-domain.md)
+> Bases classes: [Domain](geono-geome-domain.md#domain)
 
 ``` python
 Point(geometry)
@@ -35,7 +35,7 @@ Node 'Domain Size' (GeometryNodeAttributeDomainSize)
 
 Socket 'Point Count' of node 'Domain Size'
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#point) :black_small_square: [Content](#content) :black_small_square: [Point](geono-geome-point.md)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Point](geono-geome-point.md#point) :black_small_square: [Content](geono-geome-point.md#content) :black_small_square: [Properties](geono-geome-point.md#properties)</sub>
 
 ## Methods
 
@@ -66,6 +66,4 @@ Node 'Instance on Points' (GeometryNodeInstanceOnPoints)
 #### Returns:
 - **instances** (_Geometry_)
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#point) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-point.md#methods)</sub>
-
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#point) :black_small_square: [Content](#content) :black_small_square: [Point](geono-geome-point.md)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Point](geono-geome-point.md#point) :black_small_square: [Content](geono-geome-point.md#content) :black_small_square: [Methods](geono-geome-point.md#methods)</sub>

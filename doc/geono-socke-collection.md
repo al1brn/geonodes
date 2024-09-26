@@ -1,6 +1,6 @@
 # Collection
 
-> Bases classes: [Socket](geono-socke-socket.md)
+> Bases classes: [Socket](geono-socke-socket.md#socket)
 
 ``` python
 Collection(value=None, name=None, tip=None)
@@ -48,7 +48,7 @@ Node 'Collection Info' (GeometryNodeCollectionInfo)
 #### Returns:
 - **instances** (_GEOMETRY_)
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#collection) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-socke-collection.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Collection](geono-socke-collection.md#collection) :black_small_square: [Content](geono-socke-collection.md#content) :black_small_square: [Methods](geono-socke-collection.md#methods)</sub>
 
 ----------
 ### info()
@@ -71,6 +71,4 @@ Node 'Collection Info' (GeometryNodeCollectionInfo)
 #### Returns:
 - **instances** (_GEOMETRY_)
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#collection) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-socke-collection.md#methods)</sub>
-
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#collection) :black_small_square: [Content](#content) :black_small_square: [Collection](geono-socke-collection.md)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Collection](geono-socke-collection.md#collection) :black_small_square: [Content](geono-socke-collection.md#content) :black_small_square: [Methods](geono-socke-collection.md#methods)</sub>

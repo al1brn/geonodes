@@ -1,6 +1,6 @@
 # Socket
 
-> Bases classes: [NodeCache](geono-socke-nodecache.md)
+> Bases classes: [NodeCache](geono-socke-nodecache.md#nodecache)
 
 ``` python
 Socket(socket)
@@ -37,7 +37,7 @@ Socket documentation
 
 Returns the node owning the socket.
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#socket) :black_small_square: [Content](#content) :black_small_square: [Socket](geono-socke-socket.md)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Socket](geono-socke-socket.md#socket) :black_small_square: [Content](geono-socke-socket.md#content) :black_small_square: [Properties](geono-socke-socket.md#properties)</sub>
 
 ## Methods
 
@@ -65,7 +65,7 @@ Node 'Blur Attribute' (GeometryNodeBlurAttribute)
 #### Returns:
 - **value** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#socket) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-socke-socket.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Socket](geono-socke-socket.md#socket) :black_small_square: [Content](geono-socke-socket.md#content) :black_small_square: [Methods](geono-socke-socket.md#methods)</sub>
 
 ----------
 ### IndexSwitch()
@@ -105,7 +105,7 @@ with GeoNodes("Index Switch demo"):
 #### Returns:
 - **Socket** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#socket) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-socke-socket.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Socket](geono-socke-socket.md#socket) :black_small_square: [Content](geono-socke-socket.md#content) :black_small_square: [Methods](geono-socke-socket.md#methods)</sub>
 
 ----------
 ### index_switch()
@@ -147,7 +147,7 @@ with GeoNodes("Index Switch demo"):
 #### Returns:
 - **output** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#socket) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-socke-socket.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Socket](geono-socke-socket.md#socket) :black_small_square: [Content](geono-socke-socket.md#content) :black_small_square: [Methods](geono-socke-socket.md#methods)</sub>
 
 ----------
 ### \_lc()
@@ -180,7 +180,7 @@ with GeoNodes("Node label and color"):
 #### Returns:
 - **self** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#socket) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-socke-socket.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Socket](geono-socke-socket.md#socket) :black_small_square: [Content](geono-socke-socket.md#content) :black_small_square: [Methods](geono-socke-socket.md#methods)</sub>
 
 ----------
 ### MenuSwitch()
@@ -225,7 +225,7 @@ with GeoNodes("Menu Switch demo"):
 #### Returns:
 - **output** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#socket) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-socke-socket.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Socket](geono-socke-socket.md#socket) :black_small_square: [Content](geono-socke-socket.md#content) :black_small_square: [Methods](geono-socke-socket.md#methods)</sub>
 
 ----------
 ### menu_switch()
@@ -270,7 +270,7 @@ with GeoNodes("Menu Switch demo"):
 #### Returns:
 - **output** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#socket) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-socke-socket.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Socket](geono-socke-socket.md#socket) :black_small_square: [Content](geono-socke-socket.md#content) :black_small_square: [Methods](geono-socke-socket.md#methods)</sub>
 
 ----------
 ### out()
@@ -301,7 +301,7 @@ The "Do nothing" modifier is simply ``` Geometry().out() ```
 #### Returns:
 - **None** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#socket) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-socke-socket.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Socket](geono-socke-socket.md#socket) :black_small_square: [Content](geono-socke-socket.md#content) :black_small_square: [Methods](geono-socke-socket.md#methods)</sub>
 
 ----------
 ### Switch()
@@ -340,7 +340,7 @@ with GeoNodes("Switch demo"):
 #### Returns:
 - **Socket** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#socket) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-socke-socket.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Socket](geono-socke-socket.md#socket) :black_small_square: [Content](geono-socke-socket.md#content) :black_small_square: [Methods](geono-socke-socket.md#methods)</sub>
 
 ----------
 ### switch()
@@ -380,7 +380,7 @@ with GeoNodes("Switch demo"):
 #### Returns:
 - **output** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#socket) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-socke-socket.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Socket](geono-socke-socket.md#socket) :black_small_square: [Content](geono-socke-socket.md#content) :black_small_square: [Methods](geono-socke-socket.md#methods)</sub>
 
 ----------
 ### to_output()
@@ -396,6 +396,4 @@ Plug a socket to an output socket.
 #### Arguments:
 - **name** ( = None)
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#socket) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-socke-socket.md#methods)</sub>
-
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#socket) :black_small_square: [Content](#content) :black_small_square: [Socket](geono-socke-socket.md)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Socket](geono-socke-socket.md#socket) :black_small_square: [Content](geono-socke-socket.md#content) :black_small_square: [Methods](geono-socke-socket.md#methods)</sub>

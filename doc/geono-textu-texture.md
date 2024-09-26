@@ -1,6 +1,6 @@
 # Texture
 
-> Bases classes: [TextureRoot](geono-socke-textureroot.md)
+> Bases classes: [TextureRoot](geono-socke-textureroot.md#textureroot)
 
 ``` python
 Texture(value=None, name=None, tip=None)
@@ -63,7 +63,7 @@ Node 'Brick Texture' (ShaderNodeTexBrick)
 #### Returns:
 - **Node** : [color (Color), fac (Float)]
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#texture) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-textu-texture.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Texture](geono-textu-texture.md#texture) :black_small_square: [Content](geono-textu-texture.md#content) :black_small_square: [Methods](geono-textu-texture.md#methods)</sub>
 
 ----------
 ### Checker()
@@ -89,7 +89,7 @@ Node 'Checker Texture' (ShaderNodeTexChecker)
 #### Returns:
 - **Node** : [color (Color), fac (Float)]
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#texture) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-textu-texture.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Texture](geono-textu-texture.md#texture) :black_small_square: [Content](geono-textu-texture.md#content) :black_small_square: [Methods](geono-textu-texture.md#methods)</sub>
 
 ----------
 ### Gradient()
@@ -112,7 +112,7 @@ Node 'Gradient Texture' (ShaderNodeTexGradient)
 #### Returns:
 - **Node** : [color (Color), fac (Float)]
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#texture) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-textu-texture.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Texture](geono-textu-texture.md#texture) :black_small_square: [Content](geono-textu-texture.md#content) :black_small_square: [Methods](geono-textu-texture.md#methods)</sub>
 
 ----------
 ### Image()
@@ -139,7 +139,7 @@ Node 'Image Texture' (GeometryNodeImageTexture)
 #### Returns:
 - **Node** : [color (Color), alpha (Float)]
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#texture) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-textu-texture.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Texture](geono-textu-texture.md#texture) :black_small_square: [Content](geono-textu-texture.md#content) :black_small_square: [Methods](geono-textu-texture.md#methods)</sub>
 
 ----------
 ### Magic()
@@ -164,7 +164,7 @@ Node 'Magic Texture' (ShaderNodeTexMagic)
 #### Returns:
 - **Node** : [color (Color), fac (Float)]
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#texture) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-textu-texture.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Texture](geono-textu-texture.md#texture) :black_small_square: [Content](geono-textu-texture.md#content) :black_small_square: [Methods](geono-textu-texture.md#methods)</sub>
 
 ----------
 ### Noise()
@@ -197,7 +197,7 @@ Node 'Noise Texture' (ShaderNodeTexNoise)
 #### Returns:
 - **Node** : [fac (Float), color (Color)]
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#texture) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-textu-texture.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Texture](geono-textu-texture.md#texture) :black_small_square: [Content](geono-textu-texture.md#content) :black_small_square: [Methods](geono-textu-texture.md#methods)</sub>
 
 ----------
 ### Voronoi()
@@ -231,7 +231,7 @@ Node 'Voronoi Texture' (ShaderNodeTexVoronoi)
 #### Returns:
 - **Node** : [distance (Float), color (Color), position (Vector), w (Float), radius (Float)]
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#texture) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-textu-texture.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Texture](geono-textu-texture.md#texture) :black_small_square: [Content](geono-textu-texture.md#content) :black_small_square: [Methods](geono-textu-texture.md#methods)</sub>
 
 ----------
 ### Wave()
@@ -264,7 +264,7 @@ Node 'Wave Texture' (ShaderNodeTexWave)
 #### Returns:
 - **Node** : [color (Color), fac (Float)]
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#texture) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-textu-texture.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Texture](geono-textu-texture.md#texture) :black_small_square: [Content](geono-textu-texture.md#content) :black_small_square: [Methods](geono-textu-texture.md#methods)</sub>
 
 ----------
 ### WhiteNoise()
@@ -289,6 +289,4 @@ Node 'White Noise Texture' (ShaderNodeTexWhiteNoise)
 #### Returns:
 - **Node** : [value (Float), color (Color)]
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#texture) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-textu-texture.md#methods)</sub>
-
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#texture) :black_small_square: [Content](#content) :black_small_square: [Texture](geono-textu-texture.md)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Texture](geono-textu-texture.md#texture) :black_small_square: [Content](geono-textu-texture.md#content) :black_small_square: [Methods](geono-textu-texture.md#methods)</sub>

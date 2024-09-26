@@ -1,6 +1,6 @@
 # Boolean
 
-> Bases classes: [ValueSocket](geono-socke-valuesocket.md)
+> Bases classes: [ValueSocket](geono-socke-valuesocket.md#valuesocket)
 
 ``` python
 Boolean(value=False, name=None, tip=None, subtype='NONE')
@@ -51,6 +51,4 @@ Constructor : random Boolean.
 #### Returns:
 - **Boolean** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#boolean) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-boole-boolean.md#methods)</sub>
-
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#boolean) :black_small_square: [Content](#content) :black_small_square: [Boolean](geono-boole-boolean.md)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Boolean](geono-boole-boolean.md#boolean) :black_small_square: [Content](geono-boole-boolean.md#content) :black_small_square: [Methods](geono-boole-boolean.md#methods)</sub>

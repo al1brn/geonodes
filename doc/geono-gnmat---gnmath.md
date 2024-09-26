@@ -85,7 +85,7 @@ Returns
 - **value** (_Float_) : value
 - **use_clamp** (_bool_ = None) : use_clamp flag
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### acos()
@@ -108,7 +108,7 @@ Returns
 - **value** (_Float_) : value
 - **use_clamp** (_bool_ = None) : use_clamp flag
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### add()
@@ -132,7 +132,7 @@ Returns
 - **other** (_Float_) : second value
 - **use_clamp** (_bool_ = None) : use_clamp flag
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### asin()
@@ -155,7 +155,7 @@ Returns
 - **value** (_Float_) : value
 - **use_clamp** (_bool_ = None) : use_clamp flag
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### atan()
@@ -178,7 +178,7 @@ Returns
 - **value** (_Float_) : value
 - **use_clamp** (_bool_ = None) : use_clamp flag
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### atan2()
@@ -202,7 +202,7 @@ Returns
 - **other** (_Float_) : other value
 - **use_clamp** (_bool_ = None) : use_clamp flag
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### band()
@@ -225,7 +225,7 @@ Returns
 - **value** (_Boolean_) : first value
 - **other** (_Boolean_) : second value
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### bnot()
@@ -247,7 +247,7 @@ Returns
 #### Arguments:
 - **value** (_Boolean_) : value
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### bor()
@@ -270,7 +270,7 @@ Returns
 - **value** (_Boolean_) : first value
 - **other** (_Boolean_) : second value
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### bsubtract()
@@ -293,7 +293,7 @@ Returns
 - **value** (_Boolean_) : first value
 - **other** (_Boolean_) : second value
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### ceil()
@@ -320,7 +320,7 @@ Returns
 - **value** (_Float_) : value
 - **use_clamp** (_bool_ = None) : use_clamp flag
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### compare()
@@ -345,7 +345,7 @@ Returns
 - **epsilon** (_Float_ = None) : epsilon
 - **use_clamp** (_bool_ = None) : use_clamp flag
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### cos()
@@ -368,7 +368,7 @@ Returns
 - **value** (_Float_) : value
 - **use_clamp** (_bool_ = None) : use_clamp flag
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### cosh()
@@ -391,7 +391,7 @@ Returns
 - **value** (_Float_) : value
 - **use_clamp** (_bool_ = None) : use_clamp flag
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### cross_product()
@@ -414,7 +414,7 @@ Returns
 - **value** (_Vector_) : vector
 - **other** (_Vector_) : other vector
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### degrees()
@@ -437,7 +437,7 @@ Returns
 - **value** (_Float_) : value
 - **use_clamp** (_bool_ = None) : use_clamp flag
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### distance()
@@ -460,7 +460,7 @@ Returns
 - **value** (_Vector_) : vector
 - **other** (_Vector_) : other vector
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### divide()
@@ -484,7 +484,7 @@ Returns
 - **other** (_Float_) : second value
 - **use_clamp** (_bool_ = None) : use_clamp flag
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### dot_product()
@@ -507,7 +507,7 @@ Returns
 - **value** (_Vector_) : vector
 - **other** (_Vector_) : other vector
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### equal()
@@ -530,7 +530,7 @@ Returns
 - **value** (_Boolean_) : first value
 - **other** (_Boolean_) : second value
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### exp()
@@ -553,7 +553,7 @@ Returns
 - **value** (_Float_) : value
 - **use_clamp** (_bool_ = None) : use_clamp flag
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### exponent()
@@ -576,7 +576,7 @@ Returns
 - **value** (_Float_) : value
 - **use_clamp** (_bool_ = None) : use_clamp flag
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### faceforward()
@@ -600,7 +600,7 @@ Returns
 - **incident** (_Vector_ = None) : incident vector
 - **reference** (_Vector_ = None) : reference vector
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### floor()
@@ -627,7 +627,7 @@ Returns
 - **value** (_Float_) : value
 - **use_clamp** (_bool_ = None) : use_clamp flag
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### floored_modulo()
@@ -651,7 +651,7 @@ Returns
 - **other** (_Float_) : other value
 - **use_clamp** (_bool_ = None) : use_clamp flag
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### fract()
@@ -674,7 +674,7 @@ Returns
 - **value** (_Float_) : value
 - **use_clamp** (_bool_ = None) : use_clamp flag
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### greater_than()
@@ -698,7 +698,7 @@ Returns
 - **threshold** (_Float_) : second value
 - **use_clamp** (_bool_ = None) : use_clamp flag
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### imply()
@@ -721,7 +721,7 @@ Returns
 - **value** (_Boolean_) : first value
 - **other** (_Boolean_) : second value
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### inverse_sqrt()
@@ -744,7 +744,7 @@ Returns
 - **value** (_Float_) : value
 - **use_clamp** (_bool_ = None) : use_clamp flag
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### length()
@@ -766,7 +766,7 @@ Returns
 #### Arguments:
 - **value** (_Vector_) : vector
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### less_than()
@@ -790,7 +790,7 @@ Returns
 - **threshold** (_Float_) : second value
 - **use_clamp** (_bool_ = None) : use_clamp flag
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### ln()
@@ -813,7 +813,7 @@ Returns
 - **value** (_Float_) : value
 - **use_clamp** (_bool_ = None) : use_clamp flag
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### log()
@@ -837,7 +837,7 @@ Returns
 - **base** (_Float_ = 10) : second value
 - **use_clamp** (_bool_ = None) : use_clamp flag
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### math_ceil()
@@ -860,7 +860,7 @@ Returns
 - **value** (_Float_) : value
 - **use_clamp** (_bool_ = None) : use_clamp flag
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### math_floor()
@@ -883,7 +883,7 @@ Returns
 - **value** (_Float_) : value
 - **use_clamp** (_bool_ = None) : use_clamp flag
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### math_round()
@@ -906,7 +906,7 @@ Returns
 - **value** (_Float_) : value
 - **use_clamp** (_bool_ = None) : use_clamp flag
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### math_trunc()
@@ -929,7 +929,7 @@ Returns
 - **value** (_Float_) : value
 - **use_clamp** (_bool_ = None) : use_clamp flag
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### max()
@@ -953,7 +953,7 @@ Returns
 - **other** (_Float_) : second value
 - **use_clamp** (_bool_ = None) : use_clamp flag
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### min()
@@ -977,7 +977,7 @@ Returns
 - **other** (_Float_) : second value
 - **use_clamp** (_bool_ = None) : use_clamp flag
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### modulo()
@@ -1001,7 +1001,7 @@ Returns
 - **other** (_Float_) : other value
 - **use_clamp** (_bool_ = None) : use_clamp flag
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### multiply()
@@ -1025,7 +1025,7 @@ Returns
 - **other** (_Float_) : second value
 - **use_clamp** (_bool_ = None) : use_clamp flag
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### multiply_add()
@@ -1050,7 +1050,7 @@ Returns
 - **addend** (_Float_) : add end value
 - **use_clamp** (_bool_ = None) : use_clamp flag
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### nand()
@@ -1073,7 +1073,7 @@ Returns
 - **value** (_Boolean_) : first value
 - **other** (_Boolean_) : second value
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### nimply()
@@ -1096,7 +1096,7 @@ Returns
 - **value** (_Boolean_) : first value
 - **other** (_Boolean_) : second value
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### nor()
@@ -1119,7 +1119,7 @@ Returns
 - **value** (_Boolean_) : first value
 - **other** (_Boolean_) : second value
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### normalize()
@@ -1141,7 +1141,7 @@ Returns
 #### Arguments:
 - **value** (_Vector_) : vector
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### not_equal()
@@ -1164,7 +1164,7 @@ Returns
 - **value** (_Boolean_) : first value
 - **other** (_Boolean_) : second value
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### ping_pong()
@@ -1188,7 +1188,7 @@ Returns
 - **scale** (_Float_ = None) : other value
 - **use_clamp** (_bool_ = None) : use_clamp flag
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### pingpong()
@@ -1212,7 +1212,7 @@ Returns
 - **scale** (_Float_ = None) : other value
 - **use_clamp** (_bool_ = None) : use_clamp flag
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### power()
@@ -1236,7 +1236,7 @@ Returns
 - **exponent** (_Float_) : exponent value
 - **use_clamp** (_bool_ = None) : use_clamp flag
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### project()
@@ -1259,7 +1259,7 @@ Returns
 - **value** (_Vector_) : vector
 - **other** (_Vector_) : other vector
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### radians()
@@ -1282,7 +1282,7 @@ Returns
 - **value** (_Float_) : value
 - **use_clamp** (_bool_ = None) : use_clamp flag
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### reflect()
@@ -1305,7 +1305,7 @@ Returns
 - **value** (_Vector_) : vector
 - **other** (_Vector_) : other vector
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### refract()
@@ -1329,7 +1329,7 @@ Returns
 - **other** (_Vector_) : other vector
 - **ior** (_Float_ = None) : IOR
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### round()
@@ -1356,7 +1356,7 @@ Returns
 - **value** (_Float_) : value
 - **use_clamp** (_bool_ = None) : use_clamp flag
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### scale()
@@ -1379,7 +1379,7 @@ Returns
 - **value** (_Vector_) : vector
 - **scale** (_Float_) : scale factor
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### sign()
@@ -1401,7 +1401,7 @@ Returns
 #### Arguments:
 - **value** (_Float_) : value
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### sin()
@@ -1424,7 +1424,7 @@ Returns
 - **value** (_Float_) : value
 - **use_clamp** (_bool_ = None) : use_clamp flag
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### sinh()
@@ -1447,7 +1447,7 @@ Returns
 - **value** (_Float_) : value
 - **use_clamp** (_bool_ = None) : use_clamp flag
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### smooth_max()
@@ -1472,7 +1472,7 @@ Returns
 - **distance** (_Float_ = None) : distance
 - **use_clamp** (_bool_ = None) : use_clamp flag
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### smooth_min()
@@ -1497,7 +1497,7 @@ Returns
 - **distance** (_Float_ = None) : distance
 - **use_clamp** (_bool_ = None) : use_clamp flag
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### snap()
@@ -1521,7 +1521,7 @@ Returns
 - **increment** (_Float_ = None) : other value
 - **use_clamp** (_bool_ = None) : use_clamp flag
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### sqrt()
@@ -1544,7 +1544,7 @@ Returns
 - **value** (_Float_) : value
 - **use_clamp** (_bool_ = None) : use_clamp flag
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### subtract()
@@ -1568,7 +1568,7 @@ Returns
 - **other** (_Float_) : second value
 - **use_clamp** (_bool_ = None) : use_clamp flag
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### tan()
@@ -1591,7 +1591,7 @@ Returns
 - **value** (_Float_) : value
 - **use_clamp** (_bool_ = None) : use_clamp flag
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### tanh()
@@ -1614,7 +1614,7 @@ Returns
 - **value** (_Float_) : value
 - **use_clamp** (_bool_ = None) : use_clamp flag
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### trunc()
@@ -1641,7 +1641,7 @@ Returns
 - **value** (_Float_) : value
 - **use_clamp** (_bool_ = None) : use_clamp flag
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### vabs()
@@ -1663,7 +1663,7 @@ Returns
 #### Arguments:
 - **value** (_Vector_) : vector
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### vadd()
@@ -1686,7 +1686,7 @@ Returns
 - **value** (_Vector_) : vector
 - **other** (_Vector_) : other vector
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### vceil()
@@ -1708,7 +1708,7 @@ Returns
 #### Arguments:
 - **value** (_Vector_) : vector
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### vcos()
@@ -1730,7 +1730,7 @@ Returns
 #### Arguments:
 - **value** (_Vector_) : vector
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### vdivide()
@@ -1753,7 +1753,7 @@ Returns
 - **value** (_Vector_) : vector
 - **other** (_Vector_) : other vector
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### vfloor()
@@ -1775,7 +1775,7 @@ Returns
 #### Arguments:
 - **value** (_Vector_) : vector
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### vfract()
@@ -1797,7 +1797,7 @@ Returns
 #### Arguments:
 - **value** (_Vector_) : vector
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### vmax()
@@ -1820,7 +1820,7 @@ Returns
 - **value** (_Vector_) : vector
 - **other** (_Vector_) : other vector
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### vmin()
@@ -1843,7 +1843,7 @@ Returns
 - **value** (_Vector_) : vector
 - **other** (_Vector_) : other vector
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### vmodulo()
@@ -1866,7 +1866,7 @@ Returns
 - **value** (_Vector_) : vector
 - **other**
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### vmultiply()
@@ -1889,7 +1889,7 @@ Returns
 - **value** (_Vector_) : vector
 - **other** (_Vector_) : other vector
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### vmultiply_add()
@@ -1913,7 +1913,7 @@ Returns
 - **multiplier** (_Vector_) : other vector
 - **addend** (_Vector_) : add end vector
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### vsin()
@@ -1935,7 +1935,7 @@ Returns
 #### Arguments:
 - **value** (_Vector_) : vector
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### vsnap()
@@ -1958,7 +1958,7 @@ Returns
 - **value** (_Vector_) : vector
 - **increment** (_Vector_) : increment vector
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### vsubtract()
@@ -1981,7 +1981,7 @@ Returns
 - **value** (_Vector_) : vector
 - **other** (_Vector_) : other vector
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### vtan()
@@ -2003,7 +2003,7 @@ Returns
 #### Arguments:
 - **value** (_Vector_) : vector
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### vwrap()
@@ -2027,7 +2027,7 @@ Returns
 - **max** (_Vector_ = None) : max vector
 - **min** (_Vector_ = None) : min vector
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### wrap()
@@ -2052,7 +2052,7 @@ Returns
 - **min** (_Float_ = None) : min value
 - **use_clamp** (_bool_ = None) : use_clamp flag
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### xnor()
@@ -2075,7 +2075,7 @@ Returns
 - **value** (_Boolean_) : first value
 - **other** (_Boolean_) : second value
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
 ----------
 ### xor()
@@ -2098,6 +2098,6 @@ Returns
 - **value** (_Boolean_) : first value
 - **other** (_Boolean_) : second value
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [Functions](geono-gnmat---gnmath.md#functions)</sub>
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#gnmath) :black_small_square: [Content](#content) :black_small_square: [gnmath](geono-gnmat---gnmath.md)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath) :black_small_square: [Content](geono-gnmat---gnmath.md#content) :black_small_square: [gnmath](geono-gnmat---gnmath.md#gnmath)</sub>

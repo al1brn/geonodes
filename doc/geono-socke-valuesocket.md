@@ -1,6 +1,6 @@
 # ValueSocket
 
-> Bases classes: [Socket](geono-socke-socket.md)
+> Bases classes: [Socket](geono-socke-socket.md#socket)
 
 ``` python
 ValueSocket(socket)
@@ -64,7 +64,7 @@ with GeoNodes("Named Attributes"):
 #### Returns:
 - **Socket** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#valuesocket) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-socke-valuesocket.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [ValueSocket](geono-socke-valuesocket.md#valuesocket) :black_small_square: [Content](geono-socke-valuesocket.md#content) :black_small_square: [Methods](geono-socke-valuesocket.md#methods)</sub>
 
 ----------
 ### NamedAttribute()
@@ -106,6 +106,4 @@ with GeoNodes("Named Attributes"):
 #### Returns:
 - **Socket** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#valuesocket) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-socke-valuesocket.md#methods)</sub>
-
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#valuesocket) :black_small_square: [Content](#content) :black_small_square: [ValueSocket](geono-socke-valuesocket.md)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [ValueSocket](geono-socke-valuesocket.md#valuesocket) :black_small_square: [Content](geono-socke-valuesocket.md#content) :black_small_square: [Methods](geono-socke-valuesocket.md#methods)</sub>

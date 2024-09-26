@@ -26,7 +26,7 @@ updates
 
 ## Content
 
-- [Shader](shade-shade-shader.md)
+- [Shader](shade-shade-shader.md#shader)
   - [Diffuse](shade-shade-shader.md#diffuse)
   - [Emission](shade-shade-shader.md#emission)
   - [Glass](shade-shade-shader.md#glass)
@@ -38,7 +38,7 @@ updates
   - [SubsurfaceScattering](shade-shade-shader.md#subsurfacescattering)
   - [Translucent](shade-shade-shader.md#translucent)
   - [Transparent](shade-shade-shader.md#transparent)
-- [VolumeShader](shade-shade-volumeshader.md)
+- [VolumeShader](shade-shade-volumeshader.md#volumeshader)
   - [Absorption](shade-shade-volumeshader.md#absorption)
   - [Principled](shade-shade-volumeshader.md#principled)
   - [Scatter](shade-shade-volumeshader.md#scatter)
@@ -47,8 +47,7 @@ updates
 
 
 
-- [Shader](shade-shade-shader.md)
-- [ShaderRoot](shade-shade-shaderroot.md)
-- [VolumeShader](shade-shade-volumeshader.md)
+- [Shader](shade-shade-shader.md#shader)
+- [VolumeShader](shade-shade-volumeshader.md#volumeshader)
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#shaderclass) :black_small_square: [Content](#content) :black_small_square: [shaderclass](shade-shade---shaderclass.md)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [shaderclass](shade-shade---shaderclass.md#shaderclass) :black_small_square: [Content](shade-shade---shaderclass.md#content) :black_small_square: [shaderclass](shade-shade---shaderclass.md#shaderclass)</sub>

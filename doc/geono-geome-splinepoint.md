@@ -1,6 +1,6 @@
 # SplinePoint
 
-> Bases classes: [Point](geono-geome-point.md)
+> Bases classes: [Point](geono-geome-point.md#point)
 
 ``` python
 SplinePoint(geometry)
@@ -33,12 +33,16 @@ SplinePoint(geometry)
 
 [!Node] Handle Type Selection
 
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](geono-geome-splinepoint.md#splinepoint) :black_small_square: [Content](geono-geome-splinepoint.md#content) :black_small_square: [Properties](geono-geome-splinepoint.md#properties)</sub>
+
 ### handle_auto
 
 > _type_: **?**
 >
 
 [!Node] Handle Type Selection
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](geono-geome-splinepoint.md#splinepoint) :black_small_square: [Content](geono-geome-splinepoint.md#content) :black_small_square: [Properties](geono-geome-splinepoint.md#properties)</sub>
 
 ### handle_free
 
@@ -47,12 +51,16 @@ SplinePoint(geometry)
 
 [!Node] Handle Type Selection
 
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](geono-geome-splinepoint.md#splinepoint) :black_small_square: [Content](geono-geome-splinepoint.md#content) :black_small_square: [Properties](geono-geome-splinepoint.md#properties)</sub>
+
 ### handle_vector
 
 > _type_: **?**
 >
 
 [!Node] Handle Type Selection
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](geono-geome-splinepoint.md#splinepoint) :black_small_square: [Content](geono-geome-splinepoint.md#content) :black_small_square: [Properties](geono-geome-splinepoint.md#properties)</sub>
 
 ### left_handle_align
 
@@ -61,6 +69,8 @@ SplinePoint(geometry)
 
 [!Node] Handle Type Selection
 
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](geono-geome-splinepoint.md#splinepoint) :black_small_square: [Content](geono-geome-splinepoint.md#content) :black_small_square: [Properties](geono-geome-splinepoint.md#properties)</sub>
+
 ### left_handle_auto
 
 > _type_: **?**
@@ -68,12 +78,16 @@ SplinePoint(geometry)
 
 [!Node] Handle Type Selection
 
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](geono-geome-splinepoint.md#splinepoint) :black_small_square: [Content](geono-geome-splinepoint.md#content) :black_small_square: [Properties](geono-geome-splinepoint.md#properties)</sub>
+
 ### left_handle_free
 
 > _type_: **?**
 >
 
 [!Node] Handle Type Selection
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](geono-geome-splinepoint.md#splinepoint) :black_small_square: [Content](geono-geome-splinepoint.md#content) :black_small_square: [Properties](geono-geome-splinepoint.md#properties)</sub>
 
 ### left_handle_offset
 
@@ -84,6 +98,8 @@ Node 'Curve Handle Positions' (GeometryNodeInputCurveHandlePositions)
 
 [!Node] Curve Handle Positions
 
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](geono-geome-splinepoint.md#splinepoint) :black_small_square: [Content](geono-geome-splinepoint.md#content) :black_small_square: [Properties](geono-geome-splinepoint.md#properties)</sub>
+
 ### left_handle_position
 
 > _type_: **Socket**
@@ -93,12 +109,16 @@ Node 'Curve Handle Positions' (GeometryNodeInputCurveHandlePositions)
 
 [!Node] Curve Handle Positions
 
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](geono-geome-splinepoint.md#splinepoint) :black_small_square: [Content](geono-geome-splinepoint.md#content) :black_small_square: [Properties](geono-geome-splinepoint.md#properties)</sub>
+
 ### left_handle_vector
 
 > _type_: **?**
 >
 
 [!Node] Handle Type Selection
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](geono-geome-splinepoint.md#splinepoint) :black_small_square: [Content](geono-geome-splinepoint.md#content) :black_small_square: [Properties](geono-geome-splinepoint.md#properties)</sub>
 
 ### right_handle_align
 
@@ -107,6 +127,8 @@ Node 'Curve Handle Positions' (GeometryNodeInputCurveHandlePositions)
 
 [!Node] Handle Type Selection
 
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](geono-geome-splinepoint.md#splinepoint) :black_small_square: [Content](geono-geome-splinepoint.md#content) :black_small_square: [Properties](geono-geome-splinepoint.md#properties)</sub>
+
 ### right_handle_auto
 
 > _type_: **?**
@@ -114,12 +136,16 @@ Node 'Curve Handle Positions' (GeometryNodeInputCurveHandlePositions)
 
 [!Node] Handle Type Selection
 
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](geono-geome-splinepoint.md#splinepoint) :black_small_square: [Content](geono-geome-splinepoint.md#content) :black_small_square: [Properties](geono-geome-splinepoint.md#properties)</sub>
+
 ### right_handle_free
 
 > _type_: **?**
 >
 
 [!Node] Handle Type Selection
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](geono-geome-splinepoint.md#splinepoint) :black_small_square: [Content](geono-geome-splinepoint.md#content) :black_small_square: [Properties](geono-geome-splinepoint.md#properties)</sub>
 
 ### right_handle_offset
 
@@ -130,6 +156,8 @@ Node 'Curve Handle Positions' (GeometryNodeInputCurveHandlePositions)
 
 [!Node] Curve Handle Positions
 
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](geono-geome-splinepoint.md#splinepoint) :black_small_square: [Content](geono-geome-splinepoint.md#content) :black_small_square: [Properties](geono-geome-splinepoint.md#properties)</sub>
+
 ### right_handle_position
 
 > _type_: **Socket**
@@ -139,6 +167,8 @@ Node 'Curve Handle Positions' (GeometryNodeInputCurveHandlePositions)
 
 [!Node] Curve Handle Positions
 
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](geono-geome-splinepoint.md#splinepoint) :black_small_square: [Content](geono-geome-splinepoint.md#content) :black_small_square: [Properties](geono-geome-splinepoint.md#properties)</sub>
+
 ### right_handle_vector
 
 > _type_: **?**
@@ -146,7 +176,7 @@ Node 'Curve Handle Positions' (GeometryNodeInputCurveHandlePositions)
 
 [!Node] Handle Type Selection
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#splinepoint) :black_small_square: [Content](#content) :black_small_square: [SplinePoint](geono-geome-splinepoint.md)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](geono-geome-splinepoint.md#splinepoint) :black_small_square: [Content](geono-geome-splinepoint.md#content) :black_small_square: [Properties](geono-geome-splinepoint.md#properties)</sub>
 
 ## Methods
 
@@ -173,7 +203,7 @@ Node 'Curve Handle Positions' (GeometryNodeInputCurveHandlePositions)
 #### Returns:
 - **Node** : [left (Vector), right (Vector)]
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#splinepoint) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-splinepoint.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](geono-geome-splinepoint.md#splinepoint) :black_small_square: [Content](geono-geome-splinepoint.md#content) :black_small_square: [Methods](geono-geome-splinepoint.md#methods)</sub>
 
 ----------
 ### handle_type_selection()
@@ -198,7 +228,7 @@ Node 'Handle Type Selection' (GeometryNodeCurveHandleTypeSelection)
 #### Returns:
 - **Boolean** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#splinepoint) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-splinepoint.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](geono-geome-splinepoint.md#splinepoint) :black_small_square: [Content](geono-geome-splinepoint.md#content) :black_small_square: [Methods](geono-geome-splinepoint.md#methods)</sub>
 
 ----------
 ### set_handle_positions()
@@ -274,7 +304,7 @@ with GeoNodes("Curve handles"):
 #### Returns:
 - **curve** (_Geometry_)
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#splinepoint) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-splinepoint.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](geono-geome-splinepoint.md#splinepoint) :black_small_square: [Content](geono-geome-splinepoint.md#content) :black_small_square: [Methods](geono-geome-splinepoint.md#methods)</sub>
 
 ----------
 ### set_handle_type()
@@ -350,6 +380,4 @@ with GeoNodes("Curve handles"):
 #### Returns:
 - **curve** (_Geometry_)
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#splinepoint) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-splinepoint.md#methods)</sub>
-
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#splinepoint) :black_small_square: [Content](#content) :black_small_square: [SplinePoint](geono-geome-splinepoint.md)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](geono-geome-splinepoint.md#splinepoint) :black_small_square: [Content](geono-geome-splinepoint.md#content) :black_small_square: [Methods](geono-geome-splinepoint.md#methods)</sub>

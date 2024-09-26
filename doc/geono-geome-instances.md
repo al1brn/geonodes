@@ -1,6 +1,6 @@
 # Instances
 
-> Bases classes: [Geometry](geono-geome-geometry.md)
+> Bases classes: [Geometry](geono-geome-geometry.md#geometry)
 
 ``` python
 Instances(value=None, name=None, tip=None)
@@ -56,7 +56,7 @@ Node 'Geometry to Instance' (GeometryNodeGeometryToInstance)
 #### Returns:
 - **Instances** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#instances) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-instances.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Instances](geono-geome-instances.md#instances) :black_small_square: [Content](geono-geome-instances.md#content) :black_small_square: [Methods](geono-geome-instances.md#methods)</sub>
 
 ----------
 ### FromString()
@@ -89,7 +89,7 @@ Node 'String to Curves' (GeometryNodeStringToCurves)
 #### Returns:
 - **Instances** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#instances) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-instances.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Instances](geono-geome-instances.md#instances) :black_small_square: [Content](geono-geome-instances.md#content) :black_small_square: [Methods](geono-geome-instances.md#methods)</sub>
 
 ----------
 ### on_points()
@@ -116,7 +116,7 @@ Node 'Instance on Points' (GeometryNodeInstanceOnPoints)
 #### Returns:
 - **Instances** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#instances) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-instances.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Instances](geono-geome-instances.md#instances) :black_small_square: [Content](geono-geome-instances.md#content) :black_small_square: [Methods](geono-geome-instances.md#methods)</sub>
 
 ----------
 ### realize()
@@ -140,7 +140,7 @@ Node 'Realize Instances' (GeometryNodeRealizeInstances)
 #### Returns:
 - **Geometry** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#instances) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-instances.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Instances](geono-geome-instances.md#instances) :black_small_square: [Content](geono-geome-instances.md#content) :black_small_square: [Methods](geono-geome-instances.md#methods)</sub>
 
 ----------
 ### rotate()
@@ -165,7 +165,7 @@ Node 'Rotate Instances' (GeometryNodeRotateInstances)
 #### Returns:
 - **Instances** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#instances) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-instances.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Instances](geono-geome-instances.md#instances) :black_small_square: [Content](geono-geome-instances.md#content) :black_small_square: [Methods](geono-geome-instances.md#methods)</sub>
 
 ----------
 ### scale()
@@ -190,7 +190,7 @@ Node 'Scale Instances' (GeometryNodeScaleInstances)
 #### Returns:
 - **Instances** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#instances) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-instances.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Instances](geono-geome-instances.md#instances) :black_small_square: [Content](geono-geome-instances.md#content) :black_small_square: [Methods](geono-geome-instances.md#methods)</sub>
 
 ----------
 ### to_points()
@@ -214,7 +214,7 @@ Node 'Instances to Points' (GeometryNodeInstancesToPoints)
 #### Returns:
 - **Points** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#instances) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-instances.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Instances](geono-geome-instances.md#instances) :black_small_square: [Content](geono-geome-instances.md#content) :black_small_square: [Methods](geono-geome-instances.md#methods)</sub>
 
 ----------
 ### translate()
@@ -238,6 +238,4 @@ Node 'Translate Instances' (GeometryNodeTranslateInstances)
 #### Returns:
 - **Instances** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#instances) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-instances.md#methods)</sub>
-
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#instances) :black_small_square: [Content](#content) :black_small_square: [Instances](geono-geome-instances.md)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Instances](geono-geome-instances.md#instances) :black_small_square: [Content](geono-geome-instances.md#content) :black_small_square: [Methods](geono-geome-instances.md#methods)</sub>

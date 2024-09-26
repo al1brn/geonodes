@@ -34,6 +34,8 @@ Node 'ID' (GeometryNodeInputID)
 
 [!Node] ID
 
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [GeoBase](geono-geome-geobase.md#geobase) :black_small_square: [Content](geono-geome-geobase.md#content) :black_small_square: [Properties](geono-geome-geobase.md#properties)</sub>
+
 ### material_index
 
 > _type_: **Integer**
@@ -42,6 +44,8 @@ Node 'ID' (GeometryNodeInputID)
 Node 'Material Index' (GeometryNodeInputMaterialIndex)
 
 [!Node] Material Index
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [GeoBase](geono-geome-geobase.md#geobase) :black_small_square: [Content](geono-geome-geobase.md#content) :black_small_square: [Properties](geono-geome-geobase.md#properties)</sub>
 
 ### position
 
@@ -52,7 +56,7 @@ Node 'Position' (GeometryNodeInputPosition)
 
 [!Node] Position
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#geobase) :black_small_square: [Content](#content) :black_small_square: [GeoBase](geono-geome-geobase.md)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [GeoBase](geono-geome-geobase.md#geobase) :black_small_square: [Content](geono-geome-geobase.md#content) :black_small_square: [Properties](geono-geome-geobase.md#properties)</sub>
 
 ## Methods
 
@@ -80,7 +84,7 @@ Node 'Replace Material' (GeometryNodeReplaceMaterial)
 #### Returns:
 - **Geometry** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#geobase) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-geobase.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [GeoBase](geono-geome-geobase.md#geobase) :black_small_square: [Content](geono-geome-geobase.md#content) :black_small_square: [Methods](geono-geome-geobase.md#methods)</sub>
 
 ----------
 ### set_id()
@@ -103,7 +107,7 @@ Node 'Set ID' (GeometryNodeSetID)
 #### Returns:
 - **Geometry** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#geobase) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-geobase.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [GeoBase](geono-geome-geobase.md#geobase) :black_small_square: [Content](geono-geome-geobase.md#content) :black_small_square: [Methods](geono-geome-geobase.md#methods)</sub>
 
 ----------
 ### set_position()
@@ -127,6 +131,4 @@ Node 'Set Position' (GeometryNodeSetPosition)
 #### Returns:
 - **Geometry** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#geobase) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-geobase.md#methods)</sub>
-
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#geobase) :black_small_square: [Content](#content) :black_small_square: [GeoBase](geono-geome-geobase.md)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [GeoBase](geono-geome-geobase.md#geobase) :black_small_square: [Content](geono-geome-geobase.md#content) :black_small_square: [Methods](geono-geome-geobase.md#methods)</sub>

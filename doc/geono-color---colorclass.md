@@ -26,7 +26,7 @@ updates
 
 ## Content
 
-- [Color](geono-color-color.md)
+- [Color](geono-color-color.md#color)
   - [alpha](geono-color-color.md#alpha)
   - [blue](geono-color-color.md#blue)
   - [green](geono-color-color.md#green)
@@ -76,8 +76,8 @@ updates
   - [subtract](geono-color-color.md#subtract)
   - [vector_displacement](geono-color-color.md#vector_displacement)
   - [Wavelength](geono-color-color.md#wavelength)
-- [utils](geono-color-utils---utils.md)
-  - [constants](geono-color-utils-const---constants.md)
+- [utils](geono-color-utils---utils.md#utils)
+  - [constants](geono-color-utils-const---constants.md#constants)
   - [del_tree](geono-color-utils---utils.md#del_tree)
   - [get_tree](geono-color-utils---utils.md#get_tree)
 
@@ -85,14 +85,14 @@ updates
 
 
 
-- [utils](geono-color-utils---utils.md)
+- [utils](geono-color-utils---utils.md#utils)
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#colorclass) :black_small_square: [Content](#content) :black_small_square: [colorclass](geono-color---colorclass.md)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [colorclass](geono-color---colorclass.md#colorclass) :black_small_square: [Content](geono-color---colorclass.md#content) :black_small_square: [colorclass](geono-color---colorclass.md#colorclass)</sub>
 
 ## Classes
 
 
 
-- [Color](geono-color-color.md)
+- [Color](geono-color-color.md#color)
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#colorclass) :black_small_square: [Content](#content) :black_small_square: [colorclass](geono-color---colorclass.md)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [colorclass](geono-color---colorclass.md#colorclass) :black_small_square: [Content](geono-color---colorclass.md#content) :black_small_square: [colorclass](geono-color---colorclass.md#colorclass)</sub>

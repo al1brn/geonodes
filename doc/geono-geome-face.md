@@ -1,6 +1,6 @@
 # Face
 
-> Bases classes: [Domain](geono-geome-domain.md)
+> Bases classes: [Domain](geono-geome-domain.md#domain)
 
 ``` python
 Face(geometry)
@@ -39,6 +39,8 @@ Node 'Face Area' (GeometryNodeInputMeshFaceArea)
 
 [!Node] Face Area
 
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](geono-geome-face.md#face) :black_small_square: [Content](geono-geome-face.md#content) :black_small_square: [Properties](geono-geome-face.md#properties)</sub>
+
 ### count
 
 > _type_: **Integer**
@@ -50,6 +52,8 @@ Node 'Domain Size' (GeometryNodeAttributeDomainSize)
 
 Socket 'Face Count' of node 'Domain Size'
 
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](geono-geome-face.md#face) :black_small_square: [Content](geono-geome-face.md#content) :black_small_square: [Properties](geono-geome-face.md#properties)</sub>
+
 ### neighbors
 
 > _type_: **Node**
@@ -58,6 +62,8 @@ Socket 'Face Count' of node 'Domain Size'
 Node 'Face Neighbors' (GeometryNodeInputMeshFaceNeighbors)
 
 [!Node] Face Neighbors
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](geono-geome-face.md#face) :black_small_square: [Content](geono-geome-face.md#content) :black_small_square: [Properties](geono-geome-face.md#properties)</sub>
 
 ### neighbors_face_count
 
@@ -68,6 +74,8 @@ Node 'Face Neighbors' (GeometryNodeInputMeshVertexNeighbors)
 
 [!Node] Face Neighbors
 
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](geono-geome-face.md#face) :black_small_square: [Content](geono-geome-face.md#content) :black_small_square: [Properties](geono-geome-face.md#properties)</sub>
+
 ### neighbors_vertex_count
 
 > _type_: **Integer**
@@ -76,6 +84,8 @@ Node 'Face Neighbors' (GeometryNodeInputMeshVertexNeighbors)
 Node 'Face Neighbors' (GeometryNodeInputMeshVertexNeighbors)
 
 [!Node] Face Neighbors
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](geono-geome-face.md#face) :black_small_square: [Content](geono-geome-face.md#content) :black_small_square: [Properties](geono-geome-face.md#properties)</sub>
 
 ### smooth
 
@@ -86,7 +96,7 @@ Node 'Is Face Smooth' (GeometryNodeInputShadeSmooth)
 
 [!Node] Is Face Smooth
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#face) :black_small_square: [Content](#content) :black_small_square: [Face](geono-geome-face.md)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](geono-geome-face.md#face) :black_small_square: [Content](geono-geome-face.md#content) :black_small_square: [Properties](geono-geome-face.md#properties)</sub>
 
 ## Methods
 
@@ -115,7 +125,7 @@ Node 'Corners of Face' (GeometryNodeCornersOfFace)
 #### Returns:
 - **Integer** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#face) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-face.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](geono-geome-face.md#face) :black_small_square: [Content](geono-geome-face.md#content) :black_small_square: [Methods](geono-geome-face.md#methods)</sub>
 
 ----------
 ### distribute_points()
@@ -147,7 +157,7 @@ if 'density' argument is not None, 'RANDOM' method is applied, 'POISSON' otherwi
 #### Returns:
 - **Points** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#face) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-face.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](geono-geome-face.md#face) :black_small_square: [Content](geono-geome-face.md#content) :black_small_square: [Methods](geono-geome-face.md#methods)</sub>
 
 ----------
 ### flip()
@@ -165,7 +175,7 @@ Node 'Flip Faces' (GeometryNodeFlipFaces)
 #### Returns:
 - **Mesh** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#face) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-face.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](geono-geome-face.md#face) :black_small_square: [Content](geono-geome-face.md#content) :black_small_square: [Methods](geono-geome-face.md#methods)</sub>
 
 ----------
 ### group_boundaries()
@@ -188,7 +198,7 @@ Node 'Face Group Boundaries' (GeometryNodeMeshFaceSetBoundaries)
 #### Returns:
 - **Boolean** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#face) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-face.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](geono-geome-face.md#face) :black_small_square: [Content](geono-geome-face.md#content) :black_small_square: [Methods](geono-geome-face.md#methods)</sub>
 
 ----------
 ### is_planar()
@@ -211,7 +221,7 @@ Node 'Is Face Planar' (GeometryNodeInputMeshFaceIsPlanar)
 #### Returns:
 - **Boolean** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#face) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-face.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](geono-geome-face.md#face) :black_small_square: [Content](geono-geome-face.md#content) :black_small_square: [Methods](geono-geome-face.md#methods)</sub>
 
 ----------
 ### scale()
@@ -239,6 +249,4 @@ Node 'Scale Elements' (GeometryNodeScaleElements)
 #### Returns:
 - **Mesh** :
 
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#face) :black_small_square: [Content](#content) :black_small_square: [Methods](geono-geome-face.md#methods)</sub>
-
-<sub>:arrow_right: [index](index.md) :black_small_square: [top](#face) :black_small_square: [Content](#content) :black_small_square: [Face](geono-geome-face.md)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](geono-geome-face.md#face) :black_small_square: [Content](geono-geome-face.md#content) :black_small_square: [Methods](geono-geome-face.md#methods)</sub>
