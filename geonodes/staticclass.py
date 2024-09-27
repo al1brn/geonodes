@@ -64,14 +64,14 @@ class nd:
 
     ``` python
     # Node 'Set Position'
-    nd.set_position(...)
+    nd.set_position()
     ```
 
-    ## Returned values
+    ### Returned values
 
-    When the node has only one output socket, this socket is returned.
-    when the node has several output sockets, the node is returned. Output sockets
-    can be read using their **snake_case** name:
+    - When the node has only one output socket, this socket is returned.
+    - When the node has several output sockets, the node is returned.
+    - Output sockets can be read using their **snake_case** name:
 
     ``` python
     # 'Set Position' node has  only one output socket
@@ -83,7 +83,7 @@ class nd:
     angle = node.angle
     ```
 
-    ## Methods
+    ### Methods
 
     Nodes with input sockets accept are exposed as methods the arguments of which are the **snake_case**
     name of their input sockets:
@@ -92,7 +92,7 @@ class nd:
     node = nd.set_position(geometry=None, selection=None, position=None, offset=None)
     ```
 
-    ## Properties
+    ### Properties
 
     Nodes with no output sockets are implemented as properties:
 
