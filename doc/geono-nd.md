@@ -1,10 +1,7 @@
 # nd
 
-``` python
-nd(/, *args, **kwargs)
-```
-
 > All nodes
+
 
 This class exposes all possible Geometry Nodes under their **snake_case** name.
 
@@ -32,7 +29,7 @@ angle = node.angle
 ### Methods arguments
 
 Methods arguments are:
-- the snake case name of their sockets
+- the snake case name of the node sockets
 - the node parameters
 
 ``` python
@@ -55,10 +52,6 @@ node = nd.special_characters
 line_break = node.line_break
 tab = node.tab
 ```
-
-#### Arguments:
-- **args**
-- **kwargs**
 
 ## Content
 
@@ -1839,14 +1832,14 @@ group_output(is_active_output=True)
 > classmethod
 
 ``` python
-handle_type_selection(handle_type='AUTO', mode={'LEFT', 'RIGHT'})
+handle_type_selection(handle_type='AUTO', mode={'RIGHT', 'LEFT'})
 ```
 
 > **node** : [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
 
 #### Arguments:
 - **handle_type** (_str_ = AUTO) : Node.handle_type in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-- **mode** (_set_ = {'LEFT', 'RIGHT'}) : Node.mode
+- **mode** (_set_ = {'RIGHT', 'LEFT'}) : Node.mode
 
 
 
@@ -3964,7 +3957,7 @@ set_handle_positions(curve=None, selection=None, position=None, offset=None, mod
 > classmethod
 
 ``` python
-set_handle_type(curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'})
+set_handle_type(curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'})
 ```
 
 > **node** : [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html)
@@ -3973,7 +3966,7 @@ set_handle_type(curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'R
 - **curve** (_Geometry_ = None) : socket 'Curve' (Curve)
 - **selection** (_Boolean_ = None) : socket 'Selection' (Selection)
 - **handle_type** (_str_ = AUTO) : Node.handle_type in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-- **mode** (_set_ = {'LEFT', 'RIGHT'}) : Node.mode
+- **mode** (_set_ = {'RIGHT', 'LEFT'}) : Node.mode
 
 
 
