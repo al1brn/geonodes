@@ -52,6 +52,7 @@ moved_geometry = geometry.set_position(...)
 
 ## Content
 
+- [Cross Reference](cross_reference.md#cross_reference)
 - [geonodes](geono---geonodes.md#geonodes)
   - [geonodes](geono-geono---geonodes.md#geonodes)
   - [gnmath](geono-gnmat---gnmath.md#gnmath)
@@ -95,3 +96,5 @@ moved_geometry = geometry.set_position(...)
 - [shadernodes](shade---shadernodes.md#shadernodes)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [geonodes](index.md#geonodes) :black_small_square: [Content](index.md#content) :black_small_square: [geonodes](index.md#geonodes)</sub>
+
+- [Cross Reference](cross_reference.md#cross_reference)
