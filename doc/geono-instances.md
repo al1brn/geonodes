@@ -6,10 +6,20 @@
 Instances(value=None, name=None, tip=None)
 ```
 
-Socket of type 'GEOMETRY'.
+> Instances Geometry
 
-If value is None, a Group Input socket of type Geometry is created.
-When a Group Input socket is created, default name 'Geometry' is used if name argument is None.
+> [!NOTE]
+> The name of geometry class is plural : **Instances** when the name of the
+> domain is singular : [Instance](geono-instance.md#instance). The named of the domain property is [insts](geono-instances.md#insts).
+
+The **Instances** class exposes all methods specific to instances.
+Since there is no ambiguity, the word **instances** is omitted in the name of
+the methods:
+
+``` python
+realized = instances.realize() # Node 'Realize Instances'
+```
+Nodes requiring a domain parameter, are implemented in the domain [insts](geono-instances.md#insts).
 
 #### Arguments:
 - **value** (_Socket_ = None) : initial value
@@ -24,12 +34,26 @@ When a Group Input socket is created, default name 'Geometry' is used if name ar
 
 - [FromGeometry](geono-instances.md#fromgeometry)
 - [FromString](geono-instances.md#fromstring)
+- [insts](geono-instances.md#insts)
 - [on_points](geono-instances.md#on_points)
 - [realize](geono-instances.md#realize)
 - [rotate](geono-instances.md#rotate)
 - [scale](geono-instances.md#scale)
 - [to_points](geono-instances.md#to_points)
 - [translate](geono-instances.md#translate)
+
+## Properties
+
+
+
+### insts
+
+> _type_: **Instance**
+>
+
+INSTANCES domain
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Instances](geono-instances.md#instances) :black_small_square: [Content](geono-instances.md#content) :black_small_square: [Properties](geono-instances.md#properties)</sub>
 
 ## Methods
 

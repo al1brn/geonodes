@@ -6,10 +6,21 @@
 Cloud(value=None, name=None, tip=None)
 ```
 
-Socket of type 'GEOMETRY'.
+> Cloud of Points Geometry
 
-If value is None, a Group Input socket of type Geometry is created.
-When a Group Input socket is created, default name 'Geometry' is used if name argument is None.
+> [!NOTE]
+> In Blender, the name can vary between **Point Cloud** or "Points".
+> In GeoNodes, the geometry is named **Cloud**.
+
+The **Cloud** exposes all methods specific to points cloud.
+Since there is no ambiguity, the word **points** is omitted in the name of
+the methods:
+
+``` python
+curves = cloud.to_curves() # Node 'Points to Curves'
+```
+
+Nodes requiring a domain parameter, are implemented in the domain [points](geono-cloud.md#points).
 
 #### Arguments:
 - **value** (_Socket_ = None) : initial value
@@ -25,10 +36,24 @@ When a Group Input socket is created, default name 'Geometry' is used if name ar
 - [FromCurve](geono-cloud.md#fromcurve)
 - [FromInstances](geono-cloud.md#frominstances)
 - [FromMesh](geono-cloud.md#frommesh)
+- [points](geono-cloud.md#points)
 - [Points](geono-cloud.md#points)
 - [to_curves](geono-cloud.md#to_curves)
 - [to_vertices](geono-cloud.md#to_vertices)
 - [to_volume](geono-cloud.md#to_volume)
+
+## Properties
+
+
+
+### points
+
+> _type_: **CloudPoint**
+>
+
+POINT domain
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Cloud](geono-cloud.md#cloud) :black_small_square: [Content](geono-cloud.md#content) :black_small_square: [Properties](geono-cloud.md#properties)</sub>
 
 ## Methods
 

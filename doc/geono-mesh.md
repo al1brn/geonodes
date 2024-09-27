@@ -6,10 +6,19 @@
 Mesh(value=None, name=None, tip=None)
 ```
 
-Socket of type 'GEOMETRY'.
+> Mesh Geometry
 
-If value is None, a Group Input socket of type Geometry is created.
-When a Group Input socket is created, default name 'Geometry' is used if name argument is None.
+The **Mesh** exposes all methods specific to meshes.
+Since there is no ambiguity, the word **mesh** is omitted in the **snake_case** name of
+the methods:
+
+``` python
+mesh = Mesh.Line() # Node 'Mesh Line'
+cloud = mesh.to_points() # Node 'Mesh to Points'
+```
+
+Nodes requiring a domain parameter, are implemented in one of the four domains of Mesh: [points](geono-mesh.md#points),
+[faces](geono-mesh.md#faces), [edges](geono-mesh.md#edges) or [corners](geono-mesh.md#corners).
 
 #### Arguments:
 - **value** (_Socket_ = None) : initial value
@@ -23,13 +32,14 @@ When a Group Input socket is created, default name 'Geometry' is used if name ar
 ## Content
 
 - **B** : [boolean](geono-mesh.md#boolean)
-- **C** : [Circle](geono-mesh.md#circle) :black_small_square: [Cone](geono-mesh.md#cone) :black_small_square: [Cube](geono-mesh.md#cube) :black_small_square: [Cylinder](geono-mesh.md#cylinder)
+- **C** : [Circle](geono-mesh.md#circle) :black_small_square: [Cone](geono-mesh.md#cone) :black_small_square: [corners](geono-mesh.md#corners) :black_small_square: [Cube](geono-mesh.md#cube) :black_small_square: [Cylinder](geono-mesh.md#cylinder)
 - **D** : [difference](geono-mesh.md#difference) :black_small_square: [Disk](geono-mesh.md#disk) :black_small_square: [distribute_points_on_faces](geono-mesh.md#distribute_points_on_faces) :black_small_square: [dual](geono-mesh.md#dual)
-- **F** : [FromCurve](geono-mesh.md#fromcurve) :black_small_square: [FromPoints](geono-mesh.md#frompoints) :black_small_square: [FromVolume](geono-mesh.md#fromvolume)
+- **E** : [edges](geono-mesh.md#edges)
+- **F** : [faces](geono-mesh.md#faces) :black_small_square: [FromCurve](geono-mesh.md#fromcurve) :black_small_square: [FromPoints](geono-mesh.md#frompoints) :black_small_square: [FromVolume](geono-mesh.md#fromvolume)
 - **G** : [Grid](geono-mesh.md#grid)
 - **I** : [IcoSphere](geono-mesh.md#icosphere) :black_small_square: [intersect](geono-mesh.md#intersect) :black_small_square: [island](geono-mesh.md#island) :black_small_square: [island_count](geono-mesh.md#island_count) :black_small_square: [island_index](geono-mesh.md#island_index)
 - **L** : [Line](geono-mesh.md#line) :black_small_square: [LineOffset](geono-mesh.md#lineoffset) :black_small_square: [LineTo](geono-mesh.md#lineto)
-- **P** : [pack_uv_islands](geono-mesh.md#pack_uv_islands) :black_small_square: [Plane](geono-mesh.md#plane)
+- **P** : [pack_uv_islands](geono-mesh.md#pack_uv_islands) :black_small_square: [Plane](geono-mesh.md#plane) :black_small_square: [points](geono-mesh.md#points)
 - **S** : [sample_nearest_surface](geono-mesh.md#sample_nearest_surface) :black_small_square: [sample_uv_surface](geono-mesh.md#sample_uv_surface) :black_small_square: [subdivide](geono-mesh.md#subdivide) :black_small_square: [subdivision_surface](geono-mesh.md#subdivision_surface)
 - **T** : [to_curve](geono-mesh.md#to_curve) :black_small_square: [to_volume](geono-mesh.md#to_volume) :black_small_square: [triangulate](geono-mesh.md#triangulate)
 - **U** : [union](geono-mesh.md#union) :black_small_square: [UVSphere](geono-mesh.md#uvsphere) :black_small_square: [uv_unwrap](geono-mesh.md#uv_unwrap)
@@ -37,6 +47,33 @@ When a Group Input socket is created, default name 'Geometry' is used if name ar
 ## Properties
 
 
+
+### corners
+
+> _type_: **Corner**
+>
+
+CORNER domain
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-mesh.md#mesh) :black_small_square: [Content](geono-mesh.md#content) :black_small_square: [Properties](geono-mesh.md#properties)</sub>
+
+### edges
+
+> _type_: **Edge**
+>
+
+EDGE domain
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-mesh.md#mesh) :black_small_square: [Content](geono-mesh.md#content) :black_small_square: [Properties](geono-mesh.md#properties)</sub>
+
+### faces
+
+> _type_: **Face**
+>
+
+FACE domain
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-mesh.md#mesh) :black_small_square: [Content](geono-mesh.md#content) :black_small_square: [Properties](geono-mesh.md#properties)</sub>
 
 ### island
 
@@ -62,6 +99,15 @@ When a Group Input socket is created, default name 'Geometry' is used if name ar
 >
 
 > **node** : [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/mesh_island.html)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-mesh.md#mesh) :black_small_square: [Content](geono-mesh.md#content) :black_small_square: [Properties](geono-mesh.md#properties)</sub>
+
+### points
+
+> _type_: **Vertex**
+>
+
+POINT domain
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-mesh.md#mesh) :black_small_square: [Content](geono-mesh.md#content) :black_small_square: [Properties](geono-mesh.md#properties)</sub>
 

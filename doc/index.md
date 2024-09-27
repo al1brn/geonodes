@@ -58,14 +58,14 @@ A better and more pythonistic way to script nodes, is to use a [Socket](geono-so
 #### Domains
 
 Geometries have specific [Domain](geono-domain.md#domain):
-- [Vertex](geono-vertex.md#vertex) ([Mesh](geono-mesh.md#mesh) [impossible to find the section 'points' in page 'Mesh'](geono-mesh.md#mesh) property)
-- [Edge](geono-edge.md#edge)  ([Mesh](geono-mesh.md#mesh) [impossible to find the section 'edges' in page 'Mesh'](geono-mesh.md#mesh) property)
-- [Face](geono-face.md#face)  ([Mesh](geono-mesh.md#mesh) [impossible to find the section 'faces' in page 'Mesh'](geono-mesh.md#mesh) property)
-- [Corner](geono-corner.md#corner)  ([Mesh](geono-mesh.md#mesh) [impossible to find the section 'corners' in page 'Mesh'](geono-mesh.md#mesh) property)
-- [SplinePoint](geono-splinepoint.md#splinepoint) ([Curve](geono-curve.md#curve) [impossible to find the section 'points' in page 'Curve'](geono-curve.md#curve) property)
+- [Vertex](geono-vertex.md#vertex) ([Mesh](geono-mesh.md#mesh) [points](geono-mesh.md#points) property)
+- [Edge](geono-edge.md#edge)  ([Mesh](geono-mesh.md#mesh) [edges](geono-mesh.md#edges) property)
+- [Face](geono-face.md#face)  ([Mesh](geono-mesh.md#mesh) [faces](geono-mesh.md#faces) property)
+- [Corner](geono-corner.md#corner)  ([Mesh](geono-mesh.md#mesh) [corners](geono-mesh.md#corners) property)
+- [SplinePoint](geono-splinepoint.md#splinepoint) ([Curve](geono-curve.md#curve) [points](geono-curve.md#points) property)
 - [Spline](geono-spline.md#spline) ([Curve](geono-curve.md#curve) [impossible to find the section 'splines' in page 'Curve'](geono-curve.md#curve) property)
-- [CloudPoint](geono-cloudpoint.md#cloudpoint) ([Cloud](geono-cloud.md#cloud) [impossible to find the section 'points' in page 'Cloud'](geono-cloud.md#cloud) property)
-- [Instance](geono-instance.md#instance) ([Instances](geono-instances.md#instances) [impossible to find the section 'insts' in page 'Instances'](geono-instances.md#instances) property)
+- [CloudPoint](geono-cloudpoint.md#cloudpoint) ([Cloud](geono-cloud.md#cloud) [points](geono-cloud.md#points) property)
+- [Instance](geono-instance.md#instance) ([Instances](geono-instances.md#instances) [insts](geono-instances.md#insts) property)
 
 #### maths
 

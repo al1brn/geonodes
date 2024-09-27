@@ -6,7 +6,10 @@
 Geometry(value=None, name=None, tip=None)
 ```
 
-Geometry Class
+Socket of type 'GEOMETRY'.
+
+If value is None, a Group Input socket of type Geometry is created.
+When a Group Input socket is created, default name 'Geometry' is used if name argument is None.
 
 #### Arguments:
 - **value** (_Socket_ = None) : initial value

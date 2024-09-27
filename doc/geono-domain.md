@@ -4,7 +4,23 @@
 Domain(geometry)
 ```
 
+> Base class for geometry domains
 
+A domain stores the default value to be set in node needing a **domain** parameter
+such as 'Store Named Attibute.
+
+All nodes requiring a domain parameter are implemented as domain method
+
+``` python
+cube = Mesh.Cube()
+cube.faces.store_named_attribute() # doamin = 'FACE'
+```
+
+> [!IMPORTANT]
+> Domains are never instantiated directly but created by geometries.
+
+Properties:
+- _geo (Geometry) : the geometry the domain belongs to
 
 #### Arguments:
 - **geometry**

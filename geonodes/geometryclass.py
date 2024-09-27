@@ -5,7 +5,6 @@ Created on 2024/07/26
 
 $ DOC transparent
 
-
 -----------------------------------------------------
 Scripting Geometry Nodes
 -----------------------------------------------------
@@ -108,7 +107,7 @@ from .staticclass import nd
 
 class GeoBase:
     """ Base class for Geometry and Domain.
-    
+
     Implement auto selection mechanism.
     """
 
@@ -407,8 +406,6 @@ class GeoBase:
 # =============================================================================================================================
 
 class Geometry(Socket, GeoBase):
-    """ Geometry Class
-    """
 
     SOCKET_TYPE = 'GEOMETRY'
 
@@ -877,6 +874,24 @@ class Domain(GeoBase, NodeCache):
     DOMAIN_NAME = None
 
     def __init__(self, geometry):
+        """ > Base class for geometry domains
+
+        A domain stores the default value to be set in node needing a **domain** parameter
+        such as 'Store Named Attibute.
+
+        All nodes requiring a domain parameter are implemented as domain method
+
+        ``` python
+        cube = Mesh.Cube()
+        cube.faces.store_named_attribute() # doamin = 'FACE'
+        ```
+
+        > [!IMPORTANT]
+        > Domains are never instantiated directly but created by geometries.
+
+        Properties:
+        - _geo (Geometry) : the geometry the domain belongs to
+        """
         self._geo  = geometry
         self._cache_reset()
 
@@ -1446,6 +1461,9 @@ class Point(Domain):
 
 class Vertex(Point):
 
+    """ > Point domain of a <!Mesh>
+    """
+
     # ----- Vertex neighbors
 
     @property
@@ -1567,6 +1585,9 @@ class Vertex(Point):
         return index
 
 class SplinePoint(Point):
+
+    """ > Point domain of a <!Curve>
+    """
 
     # ----- Handle positions
 
@@ -2053,6 +2074,8 @@ class SplinePoint(Point):
 
 
 class CloudPoint(Point):
+    """ > Point domain of a <!Cloud>
+    """
 
     # ----- Radius
 
@@ -2090,6 +2113,9 @@ class CloudPoint(Point):
 # =============================================================================================================================
 
 class Face(Domain):
+    """ > Face domain of a <!Mesh>
+    """
+
     DOMAIN_NAME = 'FACE'
 
     @property
@@ -2310,6 +2336,9 @@ class Face(Domain):
 # =============================================================================================================================
 
 class Edge(Domain):
+    """ > Edge domain of a <!Mesh>
+    """
+
     DOMAIN_NAME = 'EDGE'
 
     @property
@@ -2596,6 +2625,9 @@ class Edge(Domain):
 # =============================================================================================================================
 
 class Corner(Domain):
+    """ > Corner domain of a <!Mesh>
+    """
+
     DOMAIN_NAME = 'CORNER'
 
     @property
@@ -2694,6 +2726,9 @@ class Corner(Domain):
 # =============================================================================================================================
 
 class Spline(Domain):
+
+    """ > Curve, or Spline, domain of a <!Curve>
+    """
 
     DOMAIN_NAME = 'CURVE'
 
@@ -2837,6 +2872,15 @@ class Spline(Domain):
 # =============================================================================================================================
 
 class Instance(Domain):
+    """ > Instant domain of <!Instances>
+
+    > [!NOTE]
+    > The geometry has only one domain sharing the same:
+    > - <!Instances> : name of geometry class
+    > - **Instance** : name of domain class
+    > - <!Instances#insts> : name of the domain property of class <!Instances>
+    """
+
     DOMAIN_NAME = 'INSTANCE'
 
     @property
@@ -2975,6 +3019,27 @@ class Instance(Domain):
 # =============================================================================================================================
 
 class Mesh(Geometry):
+    """ > Mesh Geometry
+
+    The **Mesh** exposes all methods specific to meshes.
+    Since there is no ambiguity, the word **mesh** is omitted in the **snake_case** name of
+    the methods:
+
+    ``` python
+    mesh = Mesh.Line() # Node 'Mesh Line'
+    cloud = mesh.to_points() # Node 'Mesh to Points'
+    ```
+
+    Nodes requiring a domain parameter, are implemented in one of the four domains of Mesh: <#points>,
+    <#faces>, <#edges> or <#corners>.
+
+    Properties
+    ----------
+    - points (Vertex) : POINT domain
+    - faces (Face) : FACE domain
+    - edges (Edge) : EDGE domain
+    - corners (Corner) : CORNER domain
+    """
 
     def _reset(self):
 
@@ -3686,6 +3751,25 @@ class Mesh(Geometry):
 # =============================================================================================================================
 
 class Curve(Geometry):
+    """ > Curve Geometry
+
+    The **Curve** exposes all methods specific to curves.
+    Since there is no ambiguity, the word **curve** is omitted in the name of
+    the methods:
+
+    ``` python
+    curve = Curve.Line() # Node 'Curve Line'
+    mesh= curve.fill() # Node 'Fill Curve'
+    ```
+
+    Nodes requiring a domain parameter, are implemented in one of the two domains of **Curve** <#points>,
+    <#splines>.
+
+    Properties
+    ----------
+    - points (SplinePoint) : POINT domain
+    - faces (Spline) : CURVE (or SPLINE) domain
+    """
 
     def _reset(self):
 
@@ -4537,6 +4621,26 @@ class Curve(Geometry):
 # =============================================================================================================================
 
 class Cloud(Geometry):
+    """ > Cloud of Points Geometry
+
+    > [!NOTE]
+    > In Blender, the name can vary between **Point Cloud** or "Points".
+    > In GeoNodes, the geometry is named **Cloud**.
+
+    The **Cloud** exposes all methods specific to points cloud.
+    Since there is no ambiguity, the word **points** is omitted in the name of
+    the methods:
+
+    ``` python
+    curves = cloud.to_curves() # Node 'Points to Curves'
+    ```
+
+    Nodes requiring a domain parameter, are implemented in the domain <#points>.
+
+    Properties
+    ----------
+    - points (CloudPoint) : POINT domain
+    """
 
     def _reset(self):
 
@@ -4723,6 +4827,25 @@ class Cloud(Geometry):
 # =============================================================================================================================
 
 class Instances(Geometry):
+    """ > Instances Geometry
+
+    > [!NOTE]
+    > The name of geometry class is plural : **Instances** when the name of the
+    > domain is singular : <!Instance>. The named of the domain property is <#insts>.
+
+    The **Instances** class exposes all methods specific to instances.
+    Since there is no ambiguity, the word **instances** is omitted in the name of
+    the methods:
+
+    ``` python
+    realized = instances.realize() # Node 'Realize Instances'
+    ```
+    Nodes requiring a domain parameter, are implemented in the domain <#insts>.
+
+    Properties
+    ----------
+    - insts (Instance) : INSTANCES domain
+    """
 
     def _reset(self):
 
@@ -4913,8 +5036,16 @@ class Instances(Geometry):
 # =============================================================================================================================
 
 class Volume(Geometry):
+    """ > Volume Geometry
 
-    DOMAIN_NAME = 'VOLUME'
+    The **Volume** class exposes all methods specific to volume.
+    Since there is no ambiguity, the word **volume** is omitted in the name of
+    the methods:
+
+    ``` python
+    cube = Volume.Cube() # Node 'Volume Cube'
+    ```
+    """
 
     def _reset(self):
         super()._reset()

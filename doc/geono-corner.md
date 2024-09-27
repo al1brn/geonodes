@@ -6,7 +6,7 @@
 Corner(geometry)
 ```
 
-
+> Corner domain of a [Mesh](geono-mesh.md#mesh)
 
 #### Arguments:
 - **geometry**

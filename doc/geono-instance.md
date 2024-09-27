@@ -6,7 +6,13 @@
 Instance(geometry)
 ```
 
+> Instant domain of [Instances](geono-instances.md#instances)
 
+> [!NOTE]
+> The geometry has only one domain sharing the same:
+> - [Instances](geono-instances.md#instances) : name of geometry class
+> - **Instance** : name of domain class
+> - [insts](geono-instances.md#insts) : name of the domain property of class [Instances](geono-instances.md#instances)
 
 #### Arguments:
 - **geometry**

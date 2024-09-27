@@ -6,10 +6,19 @@
 Curve(value=None, name=None, tip=None)
 ```
 
-Socket of type 'GEOMETRY'.
+> Curve Geometry
 
-If value is None, a Group Input socket of type Geometry is created.
-When a Group Input socket is created, default name 'Geometry' is used if name argument is None.
+The **Curve** exposes all methods specific to curves.
+Since there is no ambiguity, the word **curve** is omitted in the name of
+the methods:
+
+``` python
+curve = Curve.Line() # Node 'Curve Line'
+mesh= curve.fill() # Node 'Fill Curve'
+```
+
+Nodes requiring a domain parameter, are implemented in one of the two domains of **Curve** [points](geono-curve.md#points),
+['#splines' not found]().
 
 #### Arguments:
 - **value** (_Socket_ = None) : initial value
@@ -27,12 +36,12 @@ When a Group Input socket is created, default name 'Geometry' is used if name ar
 - **C** : [Circle](geono-curve.md#circle) :black_small_square: [curve_of_point](geono-curve.md#curve_of_point)
 - **D** : [deform_on_surface](geono-curve.md#deform_on_surface)
 - **E** : [endpoint_selection](geono-curve.md#endpoint_selection)
-- **F** : [fill](geono-curve.md#fill) :black_small_square: [fillet](geono-curve.md#fillet) :black_small_square: [FromEdgePaths](geono-curve.md#fromedgepaths) :black_small_square: [FromMesh](geono-curve.md#frommesh) :black_small_square: [FromPoints](geono-curve.md#frompoints)
+- **F** : [faces](geono-curve.md#faces) :black_small_square: [fill](geono-curve.md#fill) :black_small_square: [fillet](geono-curve.md#fillet) :black_small_square: [FromEdgePaths](geono-curve.md#fromedgepaths) :black_small_square: [FromMesh](geono-curve.md#frommesh) :black_small_square: [FromPoints](geono-curve.md#frompoints)
 - **I** : [interpolate](geono-curve.md#interpolate)
 - **K** : [Kite](geono-curve.md#kite)
 - **L** : [length](geono-curve.md#length) :black_small_square: [Line](geono-curve.md#line)
 - **O** : [offset_point_in_curve](geono-curve.md#offset_point_in_curve)
-- **P** : [Parallelogram](geono-curve.md#parallelogram) :black_small_square: [Points](geono-curve.md#points) :black_small_square: [points_of_curve](geono-curve.md#points_of_curve)
+- **P** : [Parallelogram](geono-curve.md#parallelogram) :black_small_square: [points](geono-curve.md#points) :black_small_square: [Points](geono-curve.md#points) :black_small_square: [points_of_curve](geono-curve.md#points_of_curve)
 - **Q** : [QuadraticBezier](geono-curve.md#quadraticbezier) :black_small_square: [Quadrilateral](geono-curve.md#quadrilateral)
 - **R** : [radius](geono-curve.md#radius) :black_small_square: [Rectangle](geono-curve.md#rectangle) :black_small_square: [resample](geono-curve.md#resample) :black_small_square: [reverse](geono-curve.md#reverse)
 - **S** : [sample](geono-curve.md#sample) :black_small_square: [set_normal](geono-curve.md#set_normal) :black_small_square: [set_normal_free](geono-curve.md#set_normal_free) :black_small_square: [set_normal_z_up](geono-curve.md#set_normal_z_up) :black_small_square: [Spiral](geono-curve.md#spiral) :black_small_square: [Star](geono-curve.md#star) :black_small_square: [subdivide](geono-curve.md#subdivide)
@@ -42,12 +51,30 @@ When a Group Input socket is created, default name 'Geometry' is used if name ar
 
 
 
+### faces
+
+> _type_: **Spline**
+>
+
+CURVE (or SPLINE) domain
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-curve.md#curve) :black_small_square: [Content](geono-curve.md#content) :black_small_square: [Properties](geono-curve.md#properties)</sub>
+
 ### length
 
 > _type_: **Float**
 >
 
 > **node** : [Curve Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/curve_length.html)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-curve.md#curve) :black_small_square: [Content](geono-curve.md#content) :black_small_square: [Properties](geono-curve.md#properties)</sub>
+
+### points
+
+> _type_: **SplinePoint**
+>
+
+POINT domain
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-curve.md#curve) :black_small_square: [Content](geono-curve.md#content) :black_small_square: [Properties](geono-curve.md#properties)</sub>
 

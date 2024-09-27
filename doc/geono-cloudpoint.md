@@ -6,7 +6,7 @@
 CloudPoint(geometry)
 ```
 
-
+> Point domain of a [Cloud](geono-cloud.md#cloud)
 
 #### Arguments:
 - **geometry**

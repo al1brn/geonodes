@@ -6,10 +6,15 @@
 Volume(value=None, name=None, tip=None)
 ```
 
-Socket of type 'GEOMETRY'.
+> Volume Geometry
 
-If value is None, a Group Input socket of type Geometry is created.
-When a Group Input socket is created, default name 'Geometry' is used if name argument is None.
+The **Volume** class exposes all methods specific to volume.
+Since there is no ambiguity, the word **volume** is omitted in the name of
+the methods:
+
+``` python
+cube = Volume.Cube() # Node 'Volume Cube'
+```
 
 #### Arguments:
 - **value** (_Socket_ = None) : initial value

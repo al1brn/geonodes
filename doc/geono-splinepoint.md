@@ -6,7 +6,7 @@
 SplinePoint(geometry)
 ```
 
-
+> Point domain of a [Curve](geono-curve.md#curve)
 
 #### Arguments:
 - **geometry**
