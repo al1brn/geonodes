@@ -4,7 +4,53 @@
 nd(/, *args, **kwargs)
 ```
 
-Initialize self.  See help(type(self)) for accurate signature.
+All nodes
+
+This class exposes all possible Geometry Nodes under their **snake_case** name.
+
+``` python
+# Node 'Set Position'
+nd.set_position(...)
+```
+
+## Returned values
+
+When the node has only one output socket, this socket is returned.
+when the node has several output sockets, the node is returned. Output sockets
+can be read using their **snake_case** name:
+
+``` python
+# 'Set Position' node has  only one output socket
+geometry = nd.set_position(...)
+
+# 'Rotation to Axis Angle' node has two output sockets
+node = nd.rotation_to_axis_angle()
+axis = node.axis
+angle = node.angle
+```
+
+## Methods
+
+Nodes with input sockets accept are exposed as methods the arguments of which are the **snake_case**
+name of their input sockets:
+
+``` python
+node = nd.set_position(geometry=None, selection=None, position=None, offset=None)
+```
+
+## Properties
+
+Nodes with no output sockets are implemented as properties:
+
+``` python
+# Node 'Index'
+index = nd.index
+
+# Node 'Special Characters'
+node = nd.special_characters
+line_break = node.line_break
+tab = node.tab
+```
 
 #### Arguments:
 - **args**
@@ -1789,14 +1835,14 @@ group_output(is_active_output=True)
 > classmethod
 
 ``` python
-handle_type_selection(handle_type='AUTO', mode={'RIGHT', 'LEFT'})
+handle_type_selection(handle_type='AUTO', mode={'LEFT', 'RIGHT'})
 ```
 
 > **node** : [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
 
 #### Arguments:
 - **handle_type** (_str_ = AUTO) : Node.handle_type in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-- **mode** (_set_ = {'RIGHT', 'LEFT'}) : Node.mode
+- **mode** (_set_ = {'LEFT', 'RIGHT'}) : Node.mode
 
 
 
@@ -3914,7 +3960,7 @@ set_handle_positions(curve=None, selection=None, position=None, offset=None, mod
 > classmethod
 
 ``` python
-set_handle_type(curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'})
+set_handle_type(curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'})
 ```
 
 > **node** : [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html)
@@ -3923,7 +3969,7 @@ set_handle_type(curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', '
 - **curve** (_Geometry_ = None) : socket 'Curve' (Curve)
 - **selection** (_Boolean_ = None) : socket 'Selection' (Selection)
 - **handle_type** (_str_ = AUTO) : Node.handle_type in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-- **mode** (_set_ = {'RIGHT', 'LEFT'}) : Node.mode
+- **mode** (_set_ = {'LEFT', 'RIGHT'}) : Node.mode
 
 
 
