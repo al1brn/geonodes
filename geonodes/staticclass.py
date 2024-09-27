@@ -58,6 +58,54 @@ node_explore.gen_static_class()
 """
 
 class nd:
+    """ All nodes
+
+    This class exposes all possible Geometry Nodes under their **snake_case** name.
+
+    ``` python
+    # Node 'Set Position'
+    nd.set_position(...)
+    ```
+
+    ## Returned values
+
+    When the node has only one output socket, this socket is returned.
+    when the node has several output sockets, the node is returned. Output sockets
+    can be read using their **snake_case** name:
+
+    ``` python
+    # 'Set Position' node has  only one output socket
+    geometry = nd.set_position(...)
+
+    # 'Rotation to Axis Angle' node has two output sockets
+    node = nd.rotation_to_axis_angle()
+    axis = node.axis
+    angle = node.angle
+    ```
+
+    ## Methods
+
+    Nodes with input sockets accept are exposed as methods the arguments of which are the **snake_case**
+    name of their input sockets:
+
+    ``` python
+    node = nd.set_position(geometry=None, selection=None, position=None, offset=None)
+    ```
+
+    ## Properties
+
+    Nodes with no output sockets are implemented as properties:
+
+    ``` python
+    # Node 'Index'
+    index = nd.index
+
+    # Node 'Special Characters'
+    node = nd.special_characters
+    line_break = node.line_break
+    tab = node.tab
+    ```
+    """
 
     @classmethod
     def align_euler_to_vector(cls, rotation=None, factor=None, vector=None, axis='X', pivot_axis='AUTO'):
