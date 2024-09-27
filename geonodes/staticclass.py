@@ -58,7 +58,7 @@ node_explore.gen_static_class()
 """
 
 class nd:
-    """ All nodes
+    """ > All nodes
 
     This class exposes all possible Geometry Nodes under their **snake_case** name.
 
@@ -83,18 +83,22 @@ class nd:
     angle = node.angle
     ```
 
-    ### Methods
+    ### Methods arguments
 
-    Nodes with input sockets accept are exposed as methods the arguments of which are the **snake_case**
-    name of their input sockets:
+    Methods arguments are:
+    - the snake case name of their sockets
+    - the node parameters
 
     ``` python
     node = nd.set_position(geometry=None, selection=None, position=None, offset=None)
+
+    # 'Math' node has two parameters : operation and use_clamp
+    sum = nd.math(value=1, value_1=1, operation='ADD', use_clamp=False)
     ```
 
     ### Properties
 
-    Nodes with no output sockets are implemented as properties:
+    Nodes with no output socket are implemented as properties:
 
     ``` python
     # Node 'Index'

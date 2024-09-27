@@ -4,7 +4,7 @@
 nd(/, *args, **kwargs)
 ```
 
-All nodes
+> All nodes
 
 This class exposes all possible Geometry Nodes under their **snake_case** name.
 
@@ -21,7 +21,7 @@ nd.set_position()
 
 ``` python
 # 'Set Position' node has  only one output socket
-geometry = nd.set_position(...)
+geometry = nd.set_position()
 
 # 'Rotation to Axis Angle' node has two output sockets
 node = nd.rotation_to_axis_angle()
@@ -29,18 +29,22 @@ axis = node.axis
 angle = node.angle
 ```
 
-### Methods
+### Methods arguments
 
-Nodes with input sockets accept are exposed as methods the arguments of which are the **snake_case**
-name of their input sockets:
+Methods arguments are:
+- the snake case name of their sockets
+- the node parameters
 
 ``` python
 node = nd.set_position(geometry=None, selection=None, position=None, offset=None)
+
+# 'Math' node has two parameters : operation and use_clamp
+sum = nd.math(value=1, value_1=1, operation='ADD', use_clamp=False)
 ```
 
 ### Properties
 
-Nodes with no output sockets are implemented as properties:
+Nodes with no output socket are implemented as properties:
 
 ``` python
 # Node 'Index'
