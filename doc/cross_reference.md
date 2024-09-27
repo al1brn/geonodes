@@ -8,11 +8,11 @@ You will find here how nodes are implemented
 - **B** : [Background](cross_reference.md#background) :black_small_square: [Bake](cross_reference.md#bake) :black_small_square: [Bevel](cross_reference.md#bevel) :black_small_square: [Blackbody](cross_reference.md#blackbody) :black_small_square: [Blur Attribute](cross_reference.md#blur-attribute) :black_small_square: [Boolean](cross_reference.md#boolean) :black_small_square: [Boolean Math](cross_reference.md#boolean-math) :black_small_square: [Bounding Box](cross_reference.md#bounding-box) :black_small_square: [Brick Texture](cross_reference.md#brick-texture) :black_small_square: [Brightness Contrast](cross_reference.md#brightness-contrast) :black_small_square: [Bump](cross_reference.md#bump) :black_small_square: [Bézier Segment](cross_reference.md#bézier-segment)
 - **C** : [Capture Attribute](cross_reference.md#capture-attribute) :black_small_square: [Checker Texture](cross_reference.md#checker-texture) :black_small_square: [Clamp](cross_reference.md#clamp) :black_small_square: [Collection Info](cross_reference.md#collection-info) :black_small_square: [Color](cross_reference.md#color) :black_small_square: [Color Attribute](cross_reference.md#color-attribute) :black_small_square: [Color Ramp](cross_reference.md#color-ramp) :black_small_square: [Combine Color](cross_reference.md#combine-color) :black_small_square: [Combine Matrix](cross_reference.md#combine-matrix) :black_small_square: [Combine Transform](cross_reference.md#combine-transform) :black_small_square: [Combine XYZ](cross_reference.md#combine-xyz) :black_small_square: [Compare](cross_reference.md#compare) :black_small_square: [Cone](cross_reference.md#cone) :black_small_square: [Convex Hull](cross_reference.md#convex-hull) :black_small_square: [Corners of Edge](cross_reference.md#corners-of-edge) :black_small_square: [Corners of Face](cross_reference.md#corners-of-face) :black_small_square: [Corners of Vertex](cross_reference.md#corners-of-vertex) :black_small_square: [Cube](cross_reference.md#cube) :black_small_square: [Curve Circle](cross_reference.md#curve-circle) :black_small_square: [Curve Handle Positions](cross_reference.md#curve-handle-positions) :black_small_square: [Curve Length](cross_reference.md#curve-length) :black_small_square: [Curve Line](cross_reference.md#curve-line) :black_small_square: [Curve of Point](cross_reference.md#curve-of-point) :black_small_square: [Curve Tilt](cross_reference.md#curve-tilt) :black_small_square: [Curve to Mesh](cross_reference.md#curve-to-mesh) :black_small_square: [Curve to Points](cross_reference.md#curve-to-points) :black_small_square: [Cylinder](cross_reference.md#cylinder)
 - **D** : [Deform Curves on Surface](cross_reference.md#deform-curves-on-surface) :black_small_square: [Delete Geometry](cross_reference.md#delete-geometry) :black_small_square: [Diffuse BSDF](cross_reference.md#diffuse-bsdf) :black_small_square: [Displacement](cross_reference.md#displacement) :black_small_square: [Distribute Points in Grid](cross_reference.md#distribute-points-in-grid) :black_small_square: [Distribute Points in Volume](cross_reference.md#distribute-points-in-volume) :black_small_square: [Distribute Points on Faces](cross_reference.md#distribute-points-on-faces) :black_small_square: [Domain Size](cross_reference.md#domain-size) :black_small_square: [Dual Mesh](cross_reference.md#dual-mesh) :black_small_square: [Duplicate Elements](cross_reference.md#duplicate-elements)
-- **E** : [Edge Paths to Curves](cross_reference.md#edge-paths-to-curves) :black_small_square: [Edge Paths to Selection](cross_reference.md#edge-paths-to-selection) :black_small_square: [Edges of Corner](cross_reference.md#edges-of-corner) :black_small_square: [Edges of Vertex](cross_reference.md#edges-of-vertex) :black_small_square: [Edges to Face Groups](cross_reference.md#edges-to-face-groups) :black_small_square: [Emission](cross_reference.md#emission) :black_small_square: [Endpoint Selection](cross_reference.md#endpoint-selection) :black_small_square: [Environment Texture](cross_reference.md#environment-texture) :black_small_square: [Euler to Rotation](cross_reference.md#euler-to-rotation) :black_small_square: [Evaluate at Index](cross_reference.md#evaluate-at-index) :black_small_square: [Evaluate on Domain](cross_reference.md#evaluate-on-domain) :black_small_square: [Extrude Mesh](cross_reference.md#extrude-mesh)
-- **F** : [Face Group Boundaries](cross_reference.md#face-group-boundaries) :black_small_square: [Face of Corner](cross_reference.md#face-of-corner) :black_small_square: [Fill Curve](cross_reference.md#fill-curve) :black_small_square: [Fillet Curve](cross_reference.md#fillet-curve) :black_small_square: [Flip Faces](cross_reference.md#flip-faces) :black_small_square: [Float Curve](cross_reference.md#float-curve) :black_small_square: [Float to Integer](cross_reference.md#float-to-integer) :black_small_square: [Frame](cross_reference.md#frame) :black_small_square: [Fresnel](cross_reference.md#fresnel)
+- **E** : [Edge Angle](cross_reference.md#edge-angle) :black_small_square: [Edge Neighbors](cross_reference.md#edge-neighbors) :black_small_square: [Edge Paths to Curves](cross_reference.md#edge-paths-to-curves) :black_small_square: [Edge Paths to Selection](cross_reference.md#edge-paths-to-selection) :black_small_square: [Edge Vertices](cross_reference.md#edge-vertices) :black_small_square: [Edges of Corner](cross_reference.md#edges-of-corner) :black_small_square: [Edges of Vertex](cross_reference.md#edges-of-vertex) :black_small_square: [Edges to Face Groups](cross_reference.md#edges-to-face-groups) :black_small_square: [Emission](cross_reference.md#emission) :black_small_square: [Endpoint Selection](cross_reference.md#endpoint-selection) :black_small_square: [Environment Texture](cross_reference.md#environment-texture) :black_small_square: [Euler to Rotation](cross_reference.md#euler-to-rotation) :black_small_square: [Evaluate at Index](cross_reference.md#evaluate-at-index) :black_small_square: [Evaluate on Domain](cross_reference.md#evaluate-on-domain) :black_small_square: [Extrude Mesh](cross_reference.md#extrude-mesh)
+- **F** : [Face Area](cross_reference.md#face-area) :black_small_square: [Face Group Boundaries](cross_reference.md#face-group-boundaries) :black_small_square: [Face Neighbors](cross_reference.md#face-neighbors) :black_small_square: [Face of Corner](cross_reference.md#face-of-corner) :black_small_square: [Fill Curve](cross_reference.md#fill-curve) :black_small_square: [Fillet Curve](cross_reference.md#fillet-curve) :black_small_square: [Flip Faces](cross_reference.md#flip-faces) :black_small_square: [Float Curve](cross_reference.md#float-curve) :black_small_square: [Float to Integer](cross_reference.md#float-to-integer) :black_small_square: [Frame](cross_reference.md#frame) :black_small_square: [Fresnel](cross_reference.md#fresnel)
 - **G** : [Gamma](cross_reference.md#gamma) :black_small_square: [Geometry Proximity](cross_reference.md#geometry-proximity) :black_small_square: [Geometry to Instance](cross_reference.md#geometry-to-instance) :black_small_square: [Get Named Grid](cross_reference.md#get-named-grid) :black_small_square: [Glass BSDF](cross_reference.md#glass-bsdf) :black_small_square: [Glossy BSDF](cross_reference.md#glossy-bsdf) :black_small_square: [Gradient Texture](cross_reference.md#gradient-texture) :black_small_square: [Grid](cross_reference.md#grid) :black_small_square: [Grid to Mesh](cross_reference.md#grid-to-mesh) :black_small_square: [Group](cross_reference.md#group) :black_small_square: [Group Output](cross_reference.md#group-output)
 - **H** : [Hair BSDF](cross_reference.md#hair-bsdf) :black_small_square: [Handle Type Selection](cross_reference.md#handle-type-selection) :black_small_square: [Holdout](cross_reference.md#holdout) :black_small_square: [Hue Saturation Value](cross_reference.md#hue-saturation-value)
-- **I** : [Ico Sphere](cross_reference.md#ico-sphere) :black_small_square: [ID](cross_reference.md#id) :black_small_square: [IES Texture](cross_reference.md#ies-texture) :black_small_square: [Image](cross_reference.md#image) :black_small_square: [Image Info](cross_reference.md#image-info) :black_small_square: [Image Texture](cross_reference.md#image-texture) :black_small_square: [Index of Nearest](cross_reference.md#index-of-nearest) :black_small_square: [Index Switch](cross_reference.md#index-switch) :black_small_square: [Instance on Points](cross_reference.md#instance-on-points) :black_small_square: [Instances to Points](cross_reference.md#instances-to-points) :black_small_square: [Integer](cross_reference.md#integer) :black_small_square: [Interpolate Curves](cross_reference.md#interpolate-curves) :black_small_square: [Invert Color](cross_reference.md#invert-color) :black_small_square: [Invert Matrix](cross_reference.md#invert-matrix) :black_small_square: [Invert Rotation](cross_reference.md#invert-rotation) :black_small_square: [Is Face Planar](cross_reference.md#is-face-planar)
+- **I** : [Ico Sphere](cross_reference.md#ico-sphere) :black_small_square: [ID](cross_reference.md#id) :black_small_square: [IES Texture](cross_reference.md#ies-texture) :black_small_square: [Image](cross_reference.md#image) :black_small_square: [Image Info](cross_reference.md#image-info) :black_small_square: [Image Texture](cross_reference.md#image-texture) :black_small_square: [Index of Nearest](cross_reference.md#index-of-nearest) :black_small_square: [Index Switch](cross_reference.md#index-switch) :black_small_square: [Instance on Points](cross_reference.md#instance-on-points) :black_small_square: [Instance Rotation](cross_reference.md#instance-rotation) :black_small_square: [Instance Scale](cross_reference.md#instance-scale) :black_small_square: [Instance Transform](cross_reference.md#instance-transform) :black_small_square: [Instances to Points](cross_reference.md#instances-to-points) :black_small_square: [Integer](cross_reference.md#integer) :black_small_square: [Interpolate Curves](cross_reference.md#interpolate-curves) :black_small_square: [Invert Color](cross_reference.md#invert-color) :black_small_square: [Invert Matrix](cross_reference.md#invert-matrix) :black_small_square: [Invert Rotation](cross_reference.md#invert-rotation) :black_small_square: [Is Edge Smooth](cross_reference.md#is-edge-smooth) :black_small_square: [Is Face Planar](cross_reference.md#is-face-planar) :black_small_square: [Is Face Smooth](cross_reference.md#is-face-smooth) :black_small_square: [Is Spline Cyclic](cross_reference.md#is-spline-cyclic)
 - **J** : [Join Geometry](cross_reference.md#join-geometry) :black_small_square: [Join Strings](cross_reference.md#join-strings)
 - **L** : [Layer Weight](cross_reference.md#layer-weight) :black_small_square: [Light Falloff](cross_reference.md#light-falloff) :black_small_square: [Light Output](cross_reference.md#light-output) :black_small_square: [Line Style Output](cross_reference.md#line-style-output)
 - **M** : [Magic Texture](cross_reference.md#magic-texture) :black_small_square: [Map Range](cross_reference.md#map-range) :black_small_square: [Mapping](cross_reference.md#mapping) :black_small_square: [Material](cross_reference.md#material) :black_small_square: [Material Index](cross_reference.md#material-index) :black_small_square: [Material Output](cross_reference.md#material-output) :black_small_square: [Material Selection](cross_reference.md#material-selection) :black_small_square: [Math](cross_reference.md#math) :black_small_square: [Menu Switch](cross_reference.md#menu-switch) :black_small_square: [Merge by Distance](cross_reference.md#merge-by-distance) :black_small_square: [Mesh Boolean](cross_reference.md#mesh-boolean) :black_small_square: [Mesh Circle](cross_reference.md#mesh-circle) :black_small_square: [Mesh Island](cross_reference.md#mesh-island) :black_small_square: [Mesh Line](cross_reference.md#mesh-line) :black_small_square: [Mesh to Curve](cross_reference.md#mesh-to-curve) :black_small_square: [Mesh to Density Grid](cross_reference.md#mesh-to-density-grid) :black_small_square: [Mesh to Points](cross_reference.md#mesh-to-points) :black_small_square: [Mesh to SDF Grid](cross_reference.md#mesh-to-sdf-grid) :black_small_square: [Mesh to Volume](cross_reference.md#mesh-to-volume) :black_small_square: [Mix](cross_reference.md#mix) :black_small_square: [Mix Shader](cross_reference.md#mix-shader) :black_small_square: [Multiply Matrices](cross_reference.md#multiply-matrices)
@@ -21,14 +21,15 @@ You will find here how nodes are implemented
 - **P** : [Pack UV Islands](cross_reference.md#pack-uv-islands) :black_small_square: [Point Density](cross_reference.md#point-density) :black_small_square: [Points](cross_reference.md#points) :black_small_square: [Points of Curve](cross_reference.md#points-of-curve) :black_small_square: [Points to Curves](cross_reference.md#points-to-curves) :black_small_square: [Points to SDF Grid](cross_reference.md#points-to-sdf-grid) :black_small_square: [Points to Vertices](cross_reference.md#points-to-vertices) :black_small_square: [Points to Volume](cross_reference.md#points-to-volume) :black_small_square: [Position](cross_reference.md#position) :black_small_square: [Principled BSDF](cross_reference.md#principled-bsdf) :black_small_square: [Principled Hair BSDF](cross_reference.md#principled-hair-bsdf) :black_small_square: [Principled Volume](cross_reference.md#principled-volume) :black_small_square: [Project Point](cross_reference.md#project-point)
 - **Q** : [Quadratic Bézier](cross_reference.md#quadratic-bézier) :black_small_square: [Quadrilateral](cross_reference.md#quadrilateral) :black_small_square: [Quaternion to Rotation](cross_reference.md#quaternion-to-rotation)
 - **R** : [Radius](cross_reference.md#radius) :black_small_square: [Random Value](cross_reference.md#random-value) :black_small_square: [Ray Portal BSDF](cross_reference.md#ray-portal-bsdf) :black_small_square: [Raycast](cross_reference.md#raycast) :black_small_square: [Realize Instances](cross_reference.md#realize-instances) :black_small_square: [Refraction BSDF](cross_reference.md#refraction-bsdf) :black_small_square: [Remove Named Attribute](cross_reference.md#remove-named-attribute) :black_small_square: [Repeat Input](cross_reference.md#repeat-input) :black_small_square: [Repeat Output](cross_reference.md#repeat-output) :black_small_square: [Replace Material](cross_reference.md#replace-material) :black_small_square: [Replace String](cross_reference.md#replace-string) :black_small_square: [Reroute](cross_reference.md#reroute) :black_small_square: [Resample Curve](cross_reference.md#resample-curve) :black_small_square: [Reverse Curve](cross_reference.md#reverse-curve) :black_small_square: [RGB](cross_reference.md#rgb) :black_small_square: [RGB Curves](cross_reference.md#rgb-curves) :black_small_square: [RGB to BW](cross_reference.md#rgb-to-bw) :black_small_square: [Rotate Euler](cross_reference.md#rotate-euler) :black_small_square: [Rotate Instances](cross_reference.md#rotate-instances) :black_small_square: [Rotate Rotation](cross_reference.md#rotate-rotation) :black_small_square: [Rotate Vector](cross_reference.md#rotate-vector) :black_small_square: [Rotation](cross_reference.md#rotation) :black_small_square: [Rotation to Axis Angle](cross_reference.md#rotation-to-axis-angle) :black_small_square: [Rotation to Euler](cross_reference.md#rotation-to-euler) :black_small_square: [Rotation to Quaternion](cross_reference.md#rotation-to-quaternion)
-- **S** : [Sample Curve](cross_reference.md#sample-curve) :black_small_square: [Sample Grid](cross_reference.md#sample-grid) :black_small_square: [Sample Grid Index](cross_reference.md#sample-grid-index) :black_small_square: [Sample Index](cross_reference.md#sample-index) :black_small_square: [Sample Nearest](cross_reference.md#sample-nearest) :black_small_square: [Sample Nearest Surface](cross_reference.md#sample-nearest-surface) :black_small_square: [Sample UV Surface](cross_reference.md#sample-uv-surface) :black_small_square: [Scale Elements](cross_reference.md#scale-elements) :black_small_square: [Scale Instances](cross_reference.md#scale-instances) :black_small_square: [Script](cross_reference.md#script) :black_small_square: [SDF Grid Boolean](cross_reference.md#sdf-grid-boolean) :black_small_square: [Separate Color](cross_reference.md#separate-color) :black_small_square: [Separate Components](cross_reference.md#separate-components) :black_small_square: [Separate Geometry](cross_reference.md#separate-geometry) :black_small_square: [Separate Matrix](cross_reference.md#separate-matrix) :black_small_square: [Separate Transform](cross_reference.md#separate-transform) :black_small_square: [Separate XYZ](cross_reference.md#separate-xyz) :black_small_square: [Set Curve Normal](cross_reference.md#set-curve-normal) :black_small_square: [Set Curve Radius](cross_reference.md#set-curve-radius) :black_small_square: [Set Curve Tilt](cross_reference.md#set-curve-tilt) :black_small_square: [Set Face Set](cross_reference.md#set-face-set) :black_small_square: [Set Handle Positions](cross_reference.md#set-handle-positions) :black_small_square: [Set Handle Type](cross_reference.md#set-handle-type) :black_small_square: [Set ID](cross_reference.md#set-id) :black_small_square: [Set Instance Transform](cross_reference.md#set-instance-transform) :black_small_square: [Set Material](cross_reference.md#set-material) :black_small_square: [Set Material Index](cross_reference.md#set-material-index) :black_small_square: [Set Point Radius](cross_reference.md#set-point-radius) :black_small_square: [Set Position](cross_reference.md#set-position) :black_small_square: [Set Selection](cross_reference.md#set-selection) :black_small_square: [Set Shade Smooth](cross_reference.md#set-shade-smooth) :black_small_square: [Set Spline Cyclic](cross_reference.md#set-spline-cyclic) :black_small_square: [Set Spline Resolution](cross_reference.md#set-spline-resolution) :black_small_square: [Set Spline Type](cross_reference.md#set-spline-type) :black_small_square: [Shader to RGB](cross_reference.md#shader-to-rgb) :black_small_square: [Sheen BSDF](cross_reference.md#sheen-bsdf) :black_small_square: [Shortest Edge Paths](cross_reference.md#shortest-edge-paths) :black_small_square: [Simulation Input](cross_reference.md#simulation-input) :black_small_square: [Simulation Output](cross_reference.md#simulation-output) :black_small_square: [Sky Texture](cross_reference.md#sky-texture) :black_small_square: [Slice String](cross_reference.md#slice-string) :black_small_square: [Sort Elements](cross_reference.md#sort-elements) :black_small_square: [Specular BSDF](cross_reference.md#specular-bsdf) :black_small_square: [Spiral](cross_reference.md#spiral) :black_small_square: [Split Edges](cross_reference.md#split-edges) :black_small_square: [Split to Instances](cross_reference.md#split-to-instances) :black_small_square: [Star](cross_reference.md#star) :black_small_square: [Store Named Attribute](cross_reference.md#store-named-attribute) :black_small_square: [Store Named Grid](cross_reference.md#store-named-grid) :black_small_square: [String](cross_reference.md#string) :black_small_square: [String Length](cross_reference.md#string-length) :black_small_square: [String to Curves](cross_reference.md#string-to-curves) :black_small_square: [Subdivide Curve](cross_reference.md#subdivide-curve) :black_small_square: [Subdivide Mesh](cross_reference.md#subdivide-mesh) :black_small_square: [Subdivision Surface](cross_reference.md#subdivision-surface) :black_small_square: [Subsurface Scattering](cross_reference.md#subsurface-scattering) :black_small_square: [Switch](cross_reference.md#switch)
+- **S** : [Sample Curve](cross_reference.md#sample-curve) :black_small_square: [Sample Grid](cross_reference.md#sample-grid) :black_small_square: [Sample Grid Index](cross_reference.md#sample-grid-index) :black_small_square: [Sample Index](cross_reference.md#sample-index) :black_small_square: [Sample Nearest](cross_reference.md#sample-nearest) :black_small_square: [Sample Nearest Surface](cross_reference.md#sample-nearest-surface) :black_small_square: [Sample UV Surface](cross_reference.md#sample-uv-surface) :black_small_square: [Scale Elements](cross_reference.md#scale-elements) :black_small_square: [Scale Instances](cross_reference.md#scale-instances) :black_small_square: [Script](cross_reference.md#script) :black_small_square: [SDF Grid Boolean](cross_reference.md#sdf-grid-boolean) :black_small_square: [Separate Color](cross_reference.md#separate-color) :black_small_square: [Separate Components](cross_reference.md#separate-components) :black_small_square: [Separate Geometry](cross_reference.md#separate-geometry) :black_small_square: [Separate Matrix](cross_reference.md#separate-matrix) :black_small_square: [Separate Transform](cross_reference.md#separate-transform) :black_small_square: [Separate XYZ](cross_reference.md#separate-xyz) :black_small_square: [Set Curve Normal](cross_reference.md#set-curve-normal) :black_small_square: [Set Curve Radius](cross_reference.md#set-curve-radius) :black_small_square: [Set Curve Tilt](cross_reference.md#set-curve-tilt) :black_small_square: [Set Face Set](cross_reference.md#set-face-set) :black_small_square: [Set Handle Positions](cross_reference.md#set-handle-positions) :black_small_square: [Set Handle Type](cross_reference.md#set-handle-type) :black_small_square: [Set ID](cross_reference.md#set-id) :black_small_square: [Set Instance Transform](cross_reference.md#set-instance-transform) :black_small_square: [Set Material](cross_reference.md#set-material) :black_small_square: [Set Material Index](cross_reference.md#set-material-index) :black_small_square: [Set Point Radius](cross_reference.md#set-point-radius) :black_small_square: [Set Position](cross_reference.md#set-position) :black_small_square: [Set Selection](cross_reference.md#set-selection) :black_small_square: [Set Shade Smooth](cross_reference.md#set-shade-smooth) :black_small_square: [Set Spline Cyclic](cross_reference.md#set-spline-cyclic) :black_small_square: [Set Spline Resolution](cross_reference.md#set-spline-resolution) :black_small_square: [Set Spline Type](cross_reference.md#set-spline-type) :black_small_square: [Shader to RGB](cross_reference.md#shader-to-rgb) :black_small_square: [Sheen BSDF](cross_reference.md#sheen-bsdf) :black_small_square: [Shortest Edge Paths](cross_reference.md#shortest-edge-paths) :black_small_square: [Simulation Input](cross_reference.md#simulation-input) :black_small_square: [Simulation Output](cross_reference.md#simulation-output) :black_small_square: [Sky Texture](cross_reference.md#sky-texture) :black_small_square: [Slice String](cross_reference.md#slice-string) :black_small_square: [Sort Elements](cross_reference.md#sort-elements) :black_small_square: [Specular BSDF](cross_reference.md#specular-bsdf) :black_small_square: [Spiral](cross_reference.md#spiral) :black_small_square: [Spline Parameter](cross_reference.md#spline-parameter) :black_small_square: [Spline Resolution](cross_reference.md#spline-resolution) :black_small_square: [Split Edges](cross_reference.md#split-edges) :black_small_square: [Split to Instances](cross_reference.md#split-to-instances) :black_small_square: [Star](cross_reference.md#star) :black_small_square: [Store Named Attribute](cross_reference.md#store-named-attribute) :black_small_square: [Store Named Grid](cross_reference.md#store-named-grid) :black_small_square: [String](cross_reference.md#string) :black_small_square: [String Length](cross_reference.md#string-length) :black_small_square: [String to Curves](cross_reference.md#string-to-curves) :black_small_square: [Subdivide Curve](cross_reference.md#subdivide-curve) :black_small_square: [Subdivide Mesh](cross_reference.md#subdivide-mesh) :black_small_square: [Subdivision Surface](cross_reference.md#subdivision-surface) :black_small_square: [Subsurface Scattering](cross_reference.md#subsurface-scattering) :black_small_square: [Switch](cross_reference.md#switch)
 - **T** : [Tangent](cross_reference.md#tangent) :black_small_square: [Texture Coordinate](cross_reference.md#texture-coordinate) :black_small_square: [Toon BSDF](cross_reference.md#toon-bsdf) :black_small_square: [Transform Direction](cross_reference.md#transform-direction) :black_small_square: [Transform Geometry](cross_reference.md#transform-geometry) :black_small_square: [Transform Point](cross_reference.md#transform-point) :black_small_square: [Translate Instances](cross_reference.md#translate-instances) :black_small_square: [Translucent BSDF](cross_reference.md#translucent-bsdf) :black_small_square: [Transparent BSDF](cross_reference.md#transparent-bsdf) :black_small_square: [Transpose Matrix](cross_reference.md#transpose-matrix) :black_small_square: [Triangulate](cross_reference.md#triangulate) :black_small_square: [Trim Curve](cross_reference.md#trim-curve)
 - **U** : [UV Along Stroke](cross_reference.md#uv-along-stroke) :black_small_square: [UV Map](cross_reference.md#uv-map) :black_small_square: [UV Sphere](cross_reference.md#uv-sphere) :black_small_square: [UV Unwrap](cross_reference.md#uv-unwrap)
-- **V** : [Value to String](cross_reference.md#value-to-string) :black_small_square: [Vector](cross_reference.md#vector) :black_small_square: [Vector Curves](cross_reference.md#vector-curves) :black_small_square: [Vector Displacement](cross_reference.md#vector-displacement) :black_small_square: [Vector Math](cross_reference.md#vector-math) :black_small_square: [Vector Rotate](cross_reference.md#vector-rotate) :black_small_square: [Vector Transform](cross_reference.md#vector-transform) :black_small_square: [Vertex of Corner](cross_reference.md#vertex-of-corner) :black_small_square: [Viewer](cross_reference.md#viewer) :black_small_square: [Volume Absorption](cross_reference.md#volume-absorption) :black_small_square: [Volume Cube](cross_reference.md#volume-cube) :black_small_square: [Volume Scatter](cross_reference.md#volume-scatter) :black_small_square: [Volume to Mesh](cross_reference.md#volume-to-mesh) :black_small_square: [Voronoi Texture](cross_reference.md#voronoi-texture)
+- **V** : [Value to String](cross_reference.md#value-to-string) :black_small_square: [Vector](cross_reference.md#vector) :black_small_square: [Vector Curves](cross_reference.md#vector-curves) :black_small_square: [Vector Displacement](cross_reference.md#vector-displacement) :black_small_square: [Vector Math](cross_reference.md#vector-math) :black_small_square: [Vector Rotate](cross_reference.md#vector-rotate) :black_small_square: [Vector Transform](cross_reference.md#vector-transform) :black_small_square: [Vertex Neighbors](cross_reference.md#vertex-neighbors) :black_small_square: [Vertex of Corner](cross_reference.md#vertex-of-corner) :black_small_square: [Viewer](cross_reference.md#viewer) :black_small_square: [Volume Absorption](cross_reference.md#volume-absorption) :black_small_square: [Volume Cube](cross_reference.md#volume-cube) :black_small_square: [Volume Scatter](cross_reference.md#volume-scatter) :black_small_square: [Volume to Mesh](cross_reference.md#volume-to-mesh) :black_small_square: [Voronoi Texture](cross_reference.md#voronoi-texture)
 - **W** : [Wave Texture](cross_reference.md#wave-texture) :black_small_square: [Wavelength](cross_reference.md#wavelength) :black_small_square: [White Noise Texture](cross_reference.md#white-noise-texture) :black_small_square: [Wireframe](cross_reference.md#wireframe) :black_small_square: [World Output](cross_reference.md#world-output)
 
 #### Accumulate Field
 
+- [Domain](geono-domain.md#domain) :white_small_square: [accumulate_field](geono-domain.md#accumulate_field)
 - [nd](geono-nd.md#nd) :white_small_square: [accumulate_field](geono-nd.md#accumulate_field)
 
 #### Active Element
@@ -150,6 +151,8 @@ You will find here how nodes are implemented
 
 #### Capture Attribute
 
+- [Domain](geono-domain.md#domain) :white_small_square: [capture](geono-domain.md#capture)
+- [Domain](geono-domain.md#domain) :white_small_square: [capture_attribute](geono-domain.md#capture_attribute)
 - [nd](geono-nd.md#nd) :white_small_square: [capture_attribute](geono-nd.md#capture_attribute)
 
 #### Checker Texture
@@ -247,14 +250,17 @@ You will find here how nodes are implemented
 
 #### Corners of Edge
 
+- [Edge](geono-edge.md#edge) :white_small_square: [corner_index](geono-edge.md#corner_index)
 - [nd](geono-nd.md#nd) :white_small_square: [corners_of_edge](geono-nd.md#corners_of_edge)
 
 #### Corners of Face
 
+- [Face](geono-face.md#face) :white_small_square: [corner_index](geono-face.md#corner_index)
 - [nd](geono-nd.md#nd) :white_small_square: [corners_of_face](geono-nd.md#corners_of_face)
 
 #### Corners of Vertex
 
+- [Vertex](geono-vertex.md#vertex) :white_small_square: [corner_index](geono-vertex.md#corner_index)
 - [nd](geono-nd.md#nd) :white_small_square: [corners_of_vertex](geono-nd.md#corners_of_vertex)
 
 #### Cube
@@ -269,6 +275,11 @@ You will find here how nodes are implemented
 
 #### Curve Handle Positions
 
+- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [handle_positions](geono-splinepoint.md#handle_positions)
+- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [left_handle_offset](geono-splinepoint.md#left_handle_offset)
+- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [left_handle_position](geono-splinepoint.md#left_handle_position)
+- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [right_handle_offset](geono-splinepoint.md#right_handle_offset)
+- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [right_handle_position](geono-splinepoint.md#right_handle_position)
 - [nd](geono-nd.md#nd) :white_small_square: [curve_handle_positions](geono-nd.md#curve_handle_positions)
 
 #### Curve Length
@@ -314,6 +325,11 @@ You will find here how nodes are implemented
 
 #### Delete Geometry
 
+- [Domain](geono-domain.md#domain) :white_small_square: [delete](geono-domain.md#delete)
+- [Domain](geono-domain.md#domain) :white_small_square: [delete_all](geono-domain.md#delete_all)
+- [Domain](geono-domain.md#domain) :white_small_square: [delete_edges_and_faces](geono-domain.md#delete_edges_and_faces)
+- [Domain](geono-domain.md#domain) :white_small_square: [delete_faces](geono-domain.md#delete_faces)
+- [Domain](geono-domain.md#domain) :white_small_square: [delete_geometry](geono-domain.md#delete_geometry)
 - [nd](geono-nd.md#nd) :white_small_square: [delete_geometry](geono-nd.md#delete_geometry)
 
 #### Diffuse BSDF
@@ -338,11 +354,19 @@ You will find here how nodes are implemented
 
 #### Distribute Points on Faces
 
+- [Face](geono-face.md#face) :white_small_square: [distribute_points](geono-face.md#distribute_points)
 - [Mesh](geono-mesh.md#mesh) :white_small_square: [distribute_points_on_faces](geono-mesh.md#distribute_points_on_faces)
 - [nd](geono-nd.md#nd) :white_small_square: [distribute_points_on_faces](geono-nd.md#distribute_points_on_faces)
 
 #### Domain Size
 
+- [CloudPoint](geono-cloudpoint.md#cloudpoint) :white_small_square: [count](geono-cloudpoint.md#count)
+- [Corner](geono-corner.md#corner) :white_small_square: [count](geono-corner.md#count)
+- [Edge](geono-edge.md#edge) :white_small_square: [count](geono-edge.md#count)
+- [Face](geono-face.md#face) :white_small_square: [count](geono-face.md#count)
+- [Spline](geono-spline.md#spline) :white_small_square: [count](geono-spline.md#count)
+- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [count](geono-splinepoint.md#count)
+- [Vertex](geono-vertex.md#vertex) :white_small_square: [count](geono-vertex.md#count)
 - [nd](geono-nd.md#nd) :white_small_square: [domain_size](geono-nd.md#domain_size)
 
 #### Dual Mesh
@@ -352,27 +376,52 @@ You will find here how nodes are implemented
 
 #### Duplicate Elements
 
+- [Domain](geono-domain.md#domain) :white_small_square: [duplicate_elements](geono-domain.md#duplicate_elements)
 - [nd](geono-nd.md#nd) :white_small_square: [duplicate_elements](geono-nd.md#duplicate_elements)
+
+#### Edge Angle
+
+- [Edge](geono-edge.md#edge) :white_small_square: [angle](geono-edge.md#angle)
+- [Edge](geono-edge.md#edge) :white_small_square: [signed_angle](geono-edge.md#signed_angle)
+- [Edge](geono-edge.md#edge) :white_small_square: [unsigned_angle](geono-edge.md#unsigned_angle)
+
+#### Edge Neighbors
+
+- [Edge](geono-edge.md#edge) :white_small_square: [neighbors](geono-edge.md#neighbors)
 
 #### Edge Paths to Curves
 
 - [Curve](geono-curve.md#curve) :white_small_square: [FromEdgePaths](geono-curve.md#fromedgepaths)
+- [Edge](geono-edge.md#edge) :white_small_square: [paths_to_curves](geono-edge.md#paths_to_curves)
+- [Vertex](geono-vertex.md#vertex) :white_small_square: [edge_paths_to_curves](geono-vertex.md#edge_paths_to_curves)
 - [nd](geono-nd.md#nd) :white_small_square: [edge_paths_to_curves](geono-nd.md#edge_paths_to_curves)
 
 #### Edge Paths to Selection
 
+- [Vertex](geono-vertex.md#vertex) :white_small_square: [paths_to_selection](geono-vertex.md#paths_to_selection)
 - [nd](geono-nd.md#nd) :white_small_square: [edge_paths_to_selection](geono-nd.md#edge_paths_to_selection)
+
+#### Edge Vertices
+
+- [Edge](geono-edge.md#edge) :white_small_square: [position_1](geono-edge.md#position_1)
+- [Edge](geono-edge.md#edge) :white_small_square: [position_2](geono-edge.md#position_2)
+- [Edge](geono-edge.md#edge) :white_small_square: [vertex_index_1](geono-edge.md#vertex_index_1)
+- [Edge](geono-edge.md#edge) :white_small_square: [vertex_index_2](geono-edge.md#vertex_index_2)
+- [Edge](geono-edge.md#edge) :white_small_square: [vertices](geono-edge.md#vertices)
 
 #### Edges of Corner
 
+- [Corner](geono-corner.md#corner) :white_small_square: [next_edge_index](geono-corner.md#next_edge_index)
 - [nd](geono-nd.md#nd) :white_small_square: [edges_of_corner](geono-nd.md#edges_of_corner)
 
 #### Edges of Vertex
 
+- [Vertex](geono-vertex.md#vertex) :white_small_square: [edge_index](geono-vertex.md#edge_index)
 - [nd](geono-nd.md#nd) :white_small_square: [edges_of_vertex](geono-nd.md#edges_of_vertex)
 
 #### Edges to Face Groups
 
+- [Edge](geono-edge.md#edge) :white_small_square: [to_face_groups](geono-edge.md#to_face_groups)
 - [nd](geono-nd.md#nd) :white_small_square: [edges_to_face_groups](geono-nd.md#edges_to_face_groups)
 
 #### Emission
@@ -395,22 +444,37 @@ You will find here how nodes are implemented
 
 #### Evaluate at Index
 
+- [Domain](geono-domain.md#domain) :white_small_square: [evaluate_at_index](geono-domain.md#evaluate_at_index)
 - [nd](geono-nd.md#nd) :white_small_square: [evaluate_at_index](geono-nd.md#evaluate_at_index)
 
 #### Evaluate on Domain
 
+- [Domain](geono-domain.md#domain) :white_small_square: [evaluate_on_domain](geono-domain.md#evaluate_on_domain)
 - [nd](geono-nd.md#nd) :white_small_square: [evaluate_on_domain](geono-nd.md#evaluate_on_domain)
 
 #### Extrude Mesh
 
+- [Domain](geono-domain.md#domain) :white_small_square: [extrude](geono-domain.md#extrude)
 - [nd](geono-nd.md#nd) :white_small_square: [extrude_mesh](geono-nd.md#extrude_mesh)
+
+#### Face Area
+
+- [Face](geono-face.md#face) :white_small_square: [area](geono-face.md#area)
 
 #### Face Group Boundaries
 
+- [Face](geono-face.md#face) :white_small_square: [group_boundaries](geono-face.md#group_boundaries)
 - [nd](geono-nd.md#nd) :white_small_square: [face_group_boundaries](geono-nd.md#face_group_boundaries)
+
+#### Face Neighbors
+
+- [Face](geono-face.md#face) :white_small_square: [neighbors](geono-face.md#neighbors)
+- [Face](geono-face.md#face) :white_small_square: [neighbors_face_count](geono-face.md#neighbors_face_count)
+- [Face](geono-face.md#face) :white_small_square: [neighbors_vertex_count](geono-face.md#neighbors_vertex_count)
 
 #### Face of Corner
 
+- [Corner](geono-corner.md#corner) :white_small_square: [face_index](geono-corner.md#face_index)
 - [nd](geono-nd.md#nd) :white_small_square: [face_of_corner](geono-nd.md#face_of_corner)
 
 #### Fill Curve
@@ -425,6 +489,7 @@ You will find here how nodes are implemented
 
 #### Flip Faces
 
+- [Face](geono-face.md#face) :white_small_square: [flip](geono-face.md#flip)
 - [nd](geono-nd.md#nd) :white_small_square: [flip_faces](geono-nd.md#flip_faces)
 
 #### Float Curve
@@ -458,6 +523,7 @@ You will find here how nodes are implemented
 
 #### Geometry Proximity
 
+- [Domain](geono-domain.md#domain) :white_small_square: [proximity](geono-domain.md#proximity)
 - [nd](geono-nd.md#nd) :white_small_square: [geometry_proximity](geono-nd.md#geometry_proximity)
 
 #### Geometry to Instance
@@ -514,6 +580,19 @@ You will find here how nodes are implemented
 
 #### Handle Type Selection
 
+- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [handle_align](geono-splinepoint.md#handle_align)
+- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [handle_auto](geono-splinepoint.md#handle_auto)
+- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [handle_free](geono-splinepoint.md#handle_free)
+- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [handle_type_selection](geono-splinepoint.md#handle_type_selection)
+- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [handle_vector](geono-splinepoint.md#handle_vector)
+- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [left_handle_align](geono-splinepoint.md#left_handle_align)
+- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [left_handle_auto](geono-splinepoint.md#left_handle_auto)
+- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [left_handle_free](geono-splinepoint.md#left_handle_free)
+- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [left_handle_vector](geono-splinepoint.md#left_handle_vector)
+- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [right_handle_align](geono-splinepoint.md#right_handle_align)
+- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [right_handle_auto](geono-splinepoint.md#right_handle_auto)
+- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [right_handle_free](geono-splinepoint.md#right_handle_free)
+- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [right_handle_vector](geono-splinepoint.md#right_handle_vector)
 - [nd](geono-nd.md#nd) :white_small_square: [handle_type_selection](geono-nd.md#handle_type_selection)
 
 #### Holdout
@@ -533,6 +612,7 @@ You will find here how nodes are implemented
 
 #### ID
 
+- [Domain](geono-domain.md#domain) :white_small_square: [id](geono-domain.md#id)
 - [Geometry](geono-geometry.md#geometry) :white_small_square: [id](geono-geometry.md#id)
 
 #### IES Texture
@@ -568,8 +648,23 @@ You will find here how nodes are implemented
 
 #### Instance on Points
 
+- [CloudPoint](geono-cloudpoint.md#cloudpoint) :white_small_square: [instance_on](geono-cloudpoint.md#instance_on)
 - [Instances](geono-instances.md#instances) :white_small_square: [on_points](geono-instances.md#on_points)
+- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [instance_on](geono-splinepoint.md#instance_on)
+- [Vertex](geono-vertex.md#vertex) :white_small_square: [instance_on](geono-vertex.md#instance_on)
 - [nd](geono-nd.md#nd) :white_small_square: [instance_on_points](geono-nd.md#instance_on_points)
+
+#### Instance Rotation
+
+- [Instance](geono-instance.md#instance) :white_small_square: [rotation](geono-instance.md#rotation)
+
+#### Instance Scale
+
+- [Instance](geono-instance.md#instance) :white_small_square: [scale](geono-instance.md#scale)
+
+#### Instance Transform
+
+- [Instance](geono-instance.md#instance) :white_small_square: [transform](geono-instance.md#transform)
 
 #### Instances to Points
 
@@ -599,9 +694,22 @@ You will find here how nodes are implemented
 
 - [nd](geono-nd.md#nd) :white_small_square: [invert_rotation](geono-nd.md#invert_rotation)
 
+#### Is Edge Smooth
+
+- [Edge](geono-edge.md#edge) :white_small_square: [smooth](geono-edge.md#smooth)
+
 #### Is Face Planar
 
+- [Face](geono-face.md#face) :white_small_square: [is_planar](geono-face.md#is_planar)
 - [nd](geono-nd.md#nd) :white_small_square: [is_face_planar](geono-nd.md#is_face_planar)
+
+#### Is Face Smooth
+
+- [Face](geono-face.md#face) :white_small_square: [smooth](geono-face.md#smooth)
+
+#### Is Spline Cyclic
+
+- [Spline](geono-spline.md#spline) :white_small_square: [is_cyclic](geono-spline.md#is_cyclic)
 
 #### Join Geometry
 
@@ -661,6 +769,7 @@ You will find here how nodes are implemented
 
 #### Material Index
 
+- [Domain](geono-domain.md#domain) :white_small_square: [material_index](geono-domain.md#material_index)
 - [Geometry](geono-geometry.md#geometry) :white_small_square: [material_index](geono-geometry.md#material_index)
 
 #### Material Output
@@ -775,6 +884,7 @@ You will find here how nodes are implemented
 #### Mesh to Points
 
 - [Cloud](geono-cloud.md#cloud) :white_small_square: [FromMesh](geono-cloud.md#frommesh)
+- [Domain](geono-domain.md#domain) :white_small_square: [to_points](geono-domain.md#to_points)
 - [nd](geono-nd.md#nd) :white_small_square: [mesh_to_points](geono-nd.md#mesh_to_points)
 
 #### Mesh to SDF Grid
@@ -860,6 +970,7 @@ You will find here how nodes are implemented
 
 #### Offset Corner in Face
 
+- [Corner](geono-corner.md#corner) :white_small_square: [offset_in_face](geono-corner.md#offset_in_face)
 - [nd](geono-nd.md#nd) :white_small_square: [offset_corner_in_face](geono-nd.md#offset_corner_in_face)
 
 #### Offset Point in Curve
@@ -910,6 +1021,7 @@ You will find here how nodes are implemented
 
 #### Position
 
+- [Domain](geono-domain.md#domain) :white_small_square: [position](geono-domain.md#position)
 - [Geometry](geono-geometry.md#geometry) :white_small_square: [position](geono-geometry.md#position)
 
 #### Principled BSDF
@@ -951,6 +1063,7 @@ You will find here how nodes are implemented
 
 #### Radius
 
+- [CloudPoint](geono-cloudpoint.md#cloudpoint) :white_small_square: [radius](geono-cloudpoint.md#radius)
 - [Curve](geono-curve.md#curve) :white_small_square: [radius](geono-curve.md#radius)
 
 #### Random Value
@@ -992,6 +1105,7 @@ You will find here how nodes are implemented
 
 #### Replace Material
 
+- [Domain](geono-domain.md#domain) :white_small_square: [replace_material](geono-domain.md#replace_material)
 - [Geometry](geono-geometry.md#geometry) :white_small_square: [replace_material](geono-geometry.md#replace_material)
 - [nd](geono-nd.md#nd) :white_small_square: [replace_material](geono-nd.md#replace_material)
 
@@ -1078,10 +1192,12 @@ You will find here how nodes are implemented
 
 #### Sample Index
 
+- [Domain](geono-domain.md#domain) :white_small_square: [sample_index](geono-domain.md#sample_index)
 - [nd](geono-nd.md#nd) :white_small_square: [sample_index](geono-nd.md#sample_index)
 
 #### Sample Nearest
 
+- [Domain](geono-domain.md#domain) :white_small_square: [sample_nearest](geono-domain.md#sample_nearest)
 - [nd](geono-nd.md#nd) :white_small_square: [sample_nearest](geono-nd.md#sample_nearest)
 
 #### Sample Nearest Surface
@@ -1096,6 +1212,8 @@ You will find here how nodes are implemented
 
 #### Scale Elements
 
+- [Edge](geono-edge.md#edge) :white_small_square: [scale](geono-edge.md#scale)
+- [Face](geono-face.md#face) :white_small_square: [scale](geono-face.md#scale)
 - [nd](geono-nd.md#nd) :white_small_square: [scale_elements](geono-nd.md#scale_elements)
 
 #### Scale Instances
@@ -1136,6 +1254,7 @@ You will find here how nodes are implemented
 
 #### Separate Geometry
 
+- [Domain](geono-domain.md#domain) :white_small_square: [separate](geono-domain.md#separate)
 - [nd](geono-nd.md#nd) :white_small_square: [separate_geometry](geono-nd.md#separate_geometry)
 
 #### Separate Matrix
@@ -1172,14 +1291,17 @@ You will find here how nodes are implemented
 
 #### Set Handle Positions
 
+- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [set_handle_positions](geono-splinepoint.md#set_handle_positions)
 - [nd](geono-nd.md#nd) :white_small_square: [set_handle_positions](geono-nd.md#set_handle_positions)
 
 #### Set Handle Type
 
+- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [set_handle_type](geono-splinepoint.md#set_handle_type)
 - [nd](geono-nd.md#nd) :white_small_square: [set_handle_type](geono-nd.md#set_handle_type)
 
 #### Set ID
 
+- [Domain](geono-domain.md#domain) :white_small_square: [set_id](geono-domain.md#set_id)
 - [Geometry](geono-geometry.md#geometry) :white_small_square: [set_id](geono-geometry.md#set_id)
 - [nd](geono-nd.md#nd) :white_small_square: [set_id](geono-nd.md#set_id)
 
@@ -1202,6 +1324,7 @@ You will find here how nodes are implemented
 
 #### Set Position
 
+- [Domain](geono-domain.md#domain) :white_small_square: [set_position](geono-domain.md#set_position)
 - [Geometry](geono-geometry.md#geometry) :white_small_square: [set_position](geono-geometry.md#set_position)
 - [nd](geono-nd.md#nd) :white_small_square: [set_position](geono-nd.md#set_position)
 
@@ -1237,6 +1360,7 @@ You will find here how nodes are implemented
 
 #### Shortest Edge Paths
 
+- [Edge](geono-edge.md#edge) :white_small_square: [shortest_paths](geono-edge.md#shortest_paths)
 - [nd](geono-nd.md#nd) :white_small_square: [shortest_edge_paths](geono-nd.md#shortest_edge_paths)
 
 #### Simulation Input
@@ -1258,6 +1382,7 @@ You will find here how nodes are implemented
 
 #### Sort Elements
 
+- [Domain](geono-domain.md#domain) :white_small_square: [sort_elements](geono-domain.md#sort_elements)
 - [nd](geono-nd.md#nd) :white_small_square: [sort_elements](geono-nd.md#sort_elements)
 
 #### Specular BSDF
@@ -1270,12 +1395,22 @@ You will find here how nodes are implemented
 - [Curve](geono-curve.md#curve) :white_small_square: [Spiral](geono-curve.md#spiral)
 - [nd](geono-nd.md#nd) :white_small_square: [spiral](geono-nd.md#spiral)
 
+#### Spline Parameter
+
+- [Spline](geono-spline.md#spline) :white_small_square: [parameter](geono-spline.md#parameter)
+
+#### Spline Resolution
+
+- [Spline](geono-spline.md#spline) :white_small_square: [resolution](geono-spline.md#resolution)
+
 #### Split Edges
 
+- [Edge](geono-edge.md#edge) :white_small_square: [split](geono-edge.md#split)
 - [nd](geono-nd.md#nd) :white_small_square: [split_edges](geono-nd.md#split_edges)
 
 #### Split to Instances
 
+- [Domain](geono-domain.md#domain) :white_small_square: [split_to_instances](geono-domain.md#split_to_instances)
 - [nd](geono-nd.md#nd) :white_small_square: [split_to_instances](geono-nd.md#split_to_instances)
 
 #### Star
@@ -1285,6 +1420,8 @@ You will find here how nodes are implemented
 
 #### Store Named Attribute
 
+- [Domain](geono-domain.md#domain) :white_small_square: [store](geono-domain.md#store)
+- [Domain](geono-domain.md#domain) :white_small_square: [store_named_attribute](geono-domain.md#store_named_attribute)
 - [nd](geono-nd.md#nd) :white_small_square: [store_named_attribute](geono-nd.md#store_named_attribute)
 
 #### Store Named Grid
@@ -1360,6 +1497,7 @@ You will find here how nodes are implemented
 
 #### Translate Instances
 
+- [Instance](geono-instance.md#instance) :white_small_square: [translate](geono-instance.md#translate)
 - [Instances](geono-instances.md#instances) :white_small_square: [translate](geono-instances.md#translate)
 - [nd](geono-nd.md#nd) :white_small_square: [translate_instances](geono-nd.md#translate_instances)
 
@@ -1469,8 +1607,15 @@ You will find here how nodes are implemented
 
 - [snd](shade-shade1-snd.md#snd) :white_small_square: [vector_transform](shade-shade1-snd.md#vector_transform)
 
+#### Vertex Neighbors
+
+- [Vertex](geono-vertex.md#vertex) :white_small_square: [neighbors](geono-vertex.md#neighbors)
+- [Vertex](geono-vertex.md#vertex) :white_small_square: [neighbors_face_count](geono-vertex.md#neighbors_face_count)
+- [Vertex](geono-vertex.md#vertex) :white_small_square: [neighbors_vertex_count](geono-vertex.md#neighbors_vertex_count)
+
 #### Vertex of Corner
 
+- [Corner](geono-corner.md#corner) :white_small_square: [vertex_index](geono-corner.md#vertex_index)
 - [nd](geono-nd.md#nd) :white_small_square: [vertex_of_corner](geono-nd.md#vertex_of_corner)
 
 #### Viewer
