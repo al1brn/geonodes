@@ -1,6 +1,6 @@
 """ Scripting nodes
 
-$ DOC toc_max_depth = 0
+$ DOC toc_max_depth = 1
 
 Scripting nodes starts by instantianting a <!Tree>, either a <!GeoNodes"Geometry nodes tree> or
 a <!ShaderNodes"Shader nodes tree>:
