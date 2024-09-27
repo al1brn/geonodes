@@ -1,43 +1,18 @@
 # gnmath
 
-Created on 2024/07/26
+> math library
 
-@author: alain
+**gnmath** libray contains the math functions for data [Booleans>, <!Float"Floats](geono-boolean.md#boolean) and
+[Vectors](geono-vector.md#vector) using the following nodes:
+- **'Boolean Math'**
+- **'Math'**
+- **'Vector Math'**
 
------------------------------------------------------
-Scripting Geometry Nodes
------------------------------------------------------
-
-module : gnmath
----------------
-- Implement geometry nodes math functions
-
-Note that this module is name gnmath rather than math to avoid collision with math standard module
-
-classes
--------
-
-functions
----------
-'Math', 'Vector math' and 'Boolean Math' functions
-When there is a collision between Math and Vector Math, the vector math function is prefixed by character 'v':
-    - sin(Float)
-    - vsin(vector)
-
-Boolean math is prefixed by character 'b' when the name collides with python operator:
-    - band(bool1, bool2)
-    - xor(bool1, bool2)
-
-round, ceil, floor and trunc are implemented by 'Math' node and 'Float to Integer' node.
-The second one returns an Integer rather than a Float.
-The implementation from 'Math' is prefixed with 'math_':
-    - math_floor() -> Float
-    -floor() -> Integer
-
-updates
--------
-- creation : 2024/07/23
-- update : 2024/09/04
+The name of the functions is the name of the 'operation' parameter of the node,
+with some changes according the following rules:
+- use python math library when it exists: [sin](geono-gnmat---gnmath.md#sin) and [cos](geono-gnmat---gnmath.md#cos) rather than 'sine' and 'cosine' for instance
+- prefix with char ***'v'*** for [Vector](geono-vector.md#vector) functions when it collides with a [Float](geono-float.md#float) function.
+- prefix with char ***'b'*** boolean reserved keywords : [band](geono-gnmat---gnmath.md#band), [bor](geono-gnmat---gnmath.md#bor) and [bnot](geono-gnmat---gnmath.md#bnot)
 
 ## Content
 

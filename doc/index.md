@@ -63,7 +63,7 @@ Geometries have specific [Domain](geono-domain.md#domain):
 - [Face](geono-face.md#face)  ([Mesh](geono-mesh.md#mesh) [faces](geono-mesh.md#faces) property)
 - [Corner](geono-corner.md#corner)  ([Mesh](geono-mesh.md#mesh) [corners](geono-mesh.md#corners) property)
 - [SplinePoint](geono-splinepoint.md#splinepoint) ([Curve](geono-curve.md#curve) [points](geono-curve.md#points) property)
-- [Spline](geono-spline.md#spline) ([Curve](geono-curve.md#curve) [impossible to find the section 'splines' in page 'Curve'](geono-curve.md#curve) property)
+- [Spline](geono-spline.md#spline) ([Curve](geono-curve.md#curve) [splines](geono-curve.md#splines) property)
 - [CloudPoint](geono-cloudpoint.md#cloudpoint) ([Cloud](geono-cloud.md#cloud) [points](geono-cloud.md#points) property)
 - [Instance](geono-instance.md#instance) ([Instances](geono-instances.md#instances) [insts](geono-instances.md#insts) property)
 

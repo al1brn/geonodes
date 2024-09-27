@@ -3753,7 +3753,7 @@ class Mesh(Geometry):
 class Curve(Geometry):
     """ > Curve Geometry
 
-    The **Curve** exposes all methods specific to curves.
+    The **Curve** class exposes all methods specific to curves.
     Since there is no ambiguity, the word **curve** is omitted in the name of
     the methods:
 
@@ -3768,7 +3768,7 @@ class Curve(Geometry):
     Properties
     ----------
     - points (SplinePoint) : POINT domain
-    - faces (Spline) : CURVE (or SPLINE) domain
+    - splines (Spline) : CURVE (or SPLINE) domain
     """
 
     def _reset(self):

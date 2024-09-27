@@ -37,6 +37,21 @@ updates
 -------
 - creation : 2024/07/23
 - update : 2024/09/04
+
+$ DOC START
+> math library
+
+**gnmath** libray contains the math functions for data <!Boolean"Booleans>, <!Float"Floats> and
+<!Vector"Vectors> using the following nodes:
+- **'Boolean Math'**
+- **'Math'**
+- **'Vector Math'**
+
+The name of the functions is the name of the 'operation' parameter of the node,
+with some changes according the following rules:
+- use python math library when it exists: <#sin> and <#cos> rather than 'sine' and 'cosine' for instance
+- prefix with char ***'v'*** for <!Vector> functions when it collides with a <!Float> function.
+- prefix with char ***'b'*** boolean reserved keywords : <#band>, <#bor> and <#bnot>
 """
 
 import numpy as np

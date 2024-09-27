@@ -8,7 +8,7 @@ Curve(value=None, name=None, tip=None)
 
 > Curve Geometry
 
-The **Curve** exposes all methods specific to curves.
+The **Curve** class exposes all methods specific to curves.
 Since there is no ambiguity, the word **curve** is omitted in the name of
 the methods:
 
@@ -18,7 +18,7 @@ mesh= curve.fill() # Node 'Fill Curve'
 ```
 
 Nodes requiring a domain parameter, are implemented in one of the two domains of **Curve** [points](geono-curve.md#points),
-['#splines' not found]().
+[splines](geono-curve.md#splines).
 
 #### Arguments:
 - **value** (_Socket_ = None) : initial value
@@ -36,7 +36,7 @@ Nodes requiring a domain parameter, are implemented in one of the two domains of
 - **C** : [Circle](geono-curve.md#circle) :black_small_square: [curve_of_point](geono-curve.md#curve_of_point)
 - **D** : [deform_on_surface](geono-curve.md#deform_on_surface)
 - **E** : [endpoint_selection](geono-curve.md#endpoint_selection)
-- **F** : [faces](geono-curve.md#faces) :black_small_square: [fill](geono-curve.md#fill) :black_small_square: [fillet](geono-curve.md#fillet) :black_small_square: [FromEdgePaths](geono-curve.md#fromedgepaths) :black_small_square: [FromMesh](geono-curve.md#frommesh) :black_small_square: [FromPoints](geono-curve.md#frompoints)
+- **F** : [fill](geono-curve.md#fill) :black_small_square: [fillet](geono-curve.md#fillet) :black_small_square: [FromEdgePaths](geono-curve.md#fromedgepaths) :black_small_square: [FromMesh](geono-curve.md#frommesh) :black_small_square: [FromPoints](geono-curve.md#frompoints)
 - **I** : [interpolate](geono-curve.md#interpolate)
 - **K** : [Kite](geono-curve.md#kite)
 - **L** : [length](geono-curve.md#length) :black_small_square: [Line](geono-curve.md#line)
@@ -44,21 +44,12 @@ Nodes requiring a domain parameter, are implemented in one of the two domains of
 - **P** : [Parallelogram](geono-curve.md#parallelogram) :black_small_square: [points](geono-curve.md#points) :black_small_square: [Points](geono-curve.md#points) :black_small_square: [points_of_curve](geono-curve.md#points_of_curve)
 - **Q** : [QuadraticBezier](geono-curve.md#quadraticbezier) :black_small_square: [Quadrilateral](geono-curve.md#quadrilateral)
 - **R** : [radius](geono-curve.md#radius) :black_small_square: [Rectangle](geono-curve.md#rectangle) :black_small_square: [resample](geono-curve.md#resample) :black_small_square: [reverse](geono-curve.md#reverse)
-- **S** : [sample](geono-curve.md#sample) :black_small_square: [set_normal](geono-curve.md#set_normal) :black_small_square: [set_normal_free](geono-curve.md#set_normal_free) :black_small_square: [set_normal_z_up](geono-curve.md#set_normal_z_up) :black_small_square: [Spiral](geono-curve.md#spiral) :black_small_square: [Star](geono-curve.md#star) :black_small_square: [subdivide](geono-curve.md#subdivide)
+- **S** : [sample](geono-curve.md#sample) :black_small_square: [set_normal](geono-curve.md#set_normal) :black_small_square: [set_normal_free](geono-curve.md#set_normal_free) :black_small_square: [set_normal_z_up](geono-curve.md#set_normal_z_up) :black_small_square: [Spiral](geono-curve.md#spiral) :black_small_square: [splines](geono-curve.md#splines) :black_small_square: [Star](geono-curve.md#star) :black_small_square: [subdivide](geono-curve.md#subdivide)
 - **T** : [tilt](geono-curve.md#tilt) :black_small_square: [to_mesh](geono-curve.md#to_mesh) :black_small_square: [to_points](geono-curve.md#to_points) :black_small_square: [Trapezoid](geono-curve.md#trapezoid) :black_small_square: [trim](geono-curve.md#trim) :black_small_square: [trim_factor](geono-curve.md#trim_factor) :black_small_square: [trim_length](geono-curve.md#trim_length)
 
 ## Properties
 
 
-
-### faces
-
-> _type_: **Spline**
->
-
-CURVE (or SPLINE) domain
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-curve.md#curve) :black_small_square: [Content](geono-curve.md#content) :black_small_square: [Properties](geono-curve.md#properties)</sub>
 
 ### length
 
@@ -84,6 +75,15 @@ POINT domain
 >
 
 > **node** : [Radius](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/radius.html)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-curve.md#curve) :black_small_square: [Content](geono-curve.md#content) :black_small_square: [Properties](geono-curve.md#properties)</sub>
+
+### splines
+
+> _type_: **Spline**
+>
+
+CURVE (or SPLINE) domain
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-curve.md#curve) :black_small_square: [Content](geono-curve.md#content) :black_small_square: [Properties](geono-curve.md#properties)</sub>
 
