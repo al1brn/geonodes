@@ -1,16 +1,16 @@
 """ Scripting nodes
 
-$ DOC toc_max_depth = 1
+$ DOC toc_max_depth = 0
 
 Scripting nodes starts by instantianting a <!Tree>, either a <!GeoNodes"Geometry nodes tree> or
 a <!ShaderNodes"Shader nodes tree>:
-    
+
 ``` python
 with GeoNodes("Geometry Nodes"):
     pass
 ```
 
-Once the current tree instantiated, nodes can be created by instancianting a <!Node> class, for instance:    
+Once the current tree instantiated, nodes can be created by instancianting a <!Node> class, for instance:
 
 ``` python
 with GeoNodes("Geometry Nodes"):
@@ -19,7 +19,7 @@ with GeoNodes("Geometry Nodes"):
 ```
 
 A better and more pythonistic way to script nodes, is to use a <!Socket> subclass among:
-    
+
 - Data sockets:
   - <!Boolean>
   - <!Integer>
@@ -42,7 +42,7 @@ A better and more pythonistic way to script nodes, is to use a <!Socket> subclas
   - <!Cloud>
   - <!Instances>
   - <!Volume>
-  
+
 ``` python
 geometry = Geometry()
 # Create a 'Set Position' node by calling the method of Geometry
