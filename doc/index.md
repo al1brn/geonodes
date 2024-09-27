@@ -8,41 +8,18 @@
 Scripting nodes starts by instantianting a [Tree](geono-tree.md#tree), either a [Geometry nodes tree](geono-geono-geonodes.md#geonodes) or
 a [Shader nodes tree](shade-shade1-shadernodes.md#shadernodes):
 
-``` python
-with GeoNodes("Geometry Nodes"):
-    pass
-```
-
 Exiting from a tree context can be done by raising the [Break](geono-break.md#break) exception.
 
 ### Node class
 
 Once the current tree instantiated, nodes can be created by instancianting a [Node](geono-node.md#node) class, for instance:
 
-``` python
-with GeoNodes("Geometry Nodes"):
-    node = Node('Set Position', {'Geometry': ..., 'Selection': ..., 'Offset': ...})
-    result = node.geometry
-```
-
-#### Special nodes
-
 [Group](geono-group.md#group) is used to call a group. [GroupF](geono-groupf.md#groupf) does the same by exposing the **snake_name** name of
 the called group.
 
 Use [Layout](geono-layout.md#layout) class to group nodes in a Layout:
 
-``` python
-with Layout("This a description"):
-    # Nodes created in the context blocks are placed in the layout
-    pass
-```
-
-#### Zones
-
 Zones are create using [Repeat](geono-zones-repeat.md#repeat) and [Simulation](geono-zones-simulation.md#simulation).
-
-#### nd et snd classes
 
 The special class [nd](geono-nd.md#nd) (for _nodes_) exposes all nodes by the **snake_case** name.
 
@@ -78,12 +55,6 @@ A better and more pythonistic way to script nodes, is to use a [Socket](geono-so
   - [Shader](shade-shade-shader.md#shader)
   - [VolumeShader](shade-shade-volumeshader.md#volumeshader)
 
-``` python
-geometry = Geometry()
-# Create a 'Set Position' node by calling the method of Geometry
-moved_geometry = geometry.set_position(...)
-```
-
 #### Domains
 
 Geometries have specific [Domain](geono-domain.md#domain):
@@ -95,16 +66,6 @@ Geometries have specific [Domain](geono-domain.md#domain):
 - [Spline](geono-spline.md#spline) ([Curve](geono-curve.md#curve) [impossible to find the section 'splines' in page 'Curve'](geono-curve.md#curve) property)
 - [CloudPoint](geono-cloudpoint.md#cloudpoint) ([Cloud](geono-cloud.md#cloud) [impossible to find the section 'points' in page 'Cloud'](geono-cloud.md#cloud) property)
 - [Instance](geono-instance.md#instance) ([Instances](geono-instances.md#instances) [impossible to find the section 'insts' in page 'Instances'](geono-instances.md#instances) property)
-
-> [!NOTE]
-> Domains are never instancied directly but by their geometry.
-
-``` python
-# A Mesh is instantiated with four domains
-cube = Mesh.Cube()
-# Extrusion of faces
-extruded_cube = cube.faces.extrude()
-```
 
 #### maths
 
