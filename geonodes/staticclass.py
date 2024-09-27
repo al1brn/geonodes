@@ -75,7 +75,7 @@ class nd:
 
     ``` python
     # 'Set Position' node has  only one output socket
-    geometry = nd.set_position(...)
+    geometry = nd.set_position()
 
     # 'Rotation to Axis Angle' node has two output sockets
     node = nd.rotation_to_axis_angle()
