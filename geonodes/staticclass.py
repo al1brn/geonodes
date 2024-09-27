@@ -60,6 +60,8 @@ node_explore.gen_static_class()
 class nd:
     """ > All nodes
 
+    $ DOC no_init
+
     This class exposes all possible Geometry Nodes under their **snake_case** name.
 
     ``` python
@@ -86,7 +88,7 @@ class nd:
     ### Methods arguments
 
     Methods arguments are:
-    - the snake case name of their sockets
+    - the snake case name of the node sockets
     - the node parameters
 
     ``` python
