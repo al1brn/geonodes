@@ -14,7 +14,7 @@ Exiting from a tree context can be done by raising the [Break](geono-break.md#br
 
 Once the current tree instantiated, nodes can be created by instancianting a [Node](geono-node.md#node) class, for instance:
 
-[Group](cross_reference.md#group) is used to call a group. [GroupF](geono-groupf.md#groupf) does the same by exposing the **snake_name** name of
+[Group](geono-group.md#group) is used to call a group. [GroupF](geono-groupf.md#groupf) does the same by exposing the **snake_name** name of
 the called group.
 
 Use [Layout](geono-layout.md#layout) class to group nodes in a Layout:
@@ -30,20 +30,20 @@ Use [snd](shade-shade1-snd.md#snd) (for _shader nodes_) when scripting [ShaderNo
 A better and more pythonistic way to script nodes, is to use a [Socket](geono-socket.md#socket) subclass among:
 
 - Data sockets:
-  - [Boolean](cross_reference.md#boolean)
-  - [Integer](cross_reference.md#integer)
+  - [Boolean](geono-boolean.md#boolean)
+  - [Integer](geono-integer.md#integer)
   - [Float](geono-float.md#float)
-  - [Color](cross_reference.md#color)
-  - [Vector](cross_reference.md#vector)
-  - [Rotation](cross_reference.md#rotation)
+  - [Color](geono-color.md#color)
+  - [Vector](geono-vector.md#vector)
+  - [Rotation](geono-rotation.md#rotation)
   - [Matrix](geono-matrix.md#matrix)
-  - [String](cross_reference.md#string)
+  - [String](geono-string.md#string)
   - [Menu](geono-menu.md#menu)
 - Blender resources:
   - [Collection](geono-collection.md#collection)
   - [Object](geono-object.md#object)
-  - [Image](cross_reference.md#image)
-  - [Material](cross_reference.md#material)
+  - [Image](geono-image.md#image)
+  - [Material](geono-material.md#material)
   - [Texture](geono-texture.md#texture)
 - [Geometry](geono-geometry.md#geometry) socket:
   - [Mesh](geono-mesh.md#mesh)
@@ -127,4 +127,10 @@ The module [gnmath](geono-gnmat---gnmath.md#gnmath) provides math functions and 
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [geonodes](index.md#geonodes) :black_small_square: [Content](index.md#content) :black_small_square: [geonodes](index.md#geonodes)</sub>
 
+## Miscellaneous
+
+
+
 - [Cross Reference](cross_reference.md#cross-reference)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [geonodes](index.md#geonodes) :black_small_square: [Content](index.md#content) :black_small_square: [geonodes](index.md#geonodes)</sub>
