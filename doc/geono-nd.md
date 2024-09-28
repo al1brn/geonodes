@@ -114,7 +114,7 @@ accumulate_field(value=None, group_id=None, data_type='FLOAT', domain='POINT')
 active_element(domain='POINT')
 ```
 
-> **node** : [Active Element](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/3dview/controls/pivot_point/active_element.html)
+> **node** : [Active Element](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/active_element.html)
 
 #### Arguments:
 - **domain** (_str_ = POINT) : Node.domain in ('POINT', 'EDGE', 'FACE')
@@ -378,7 +378,7 @@ blur_attribute(value=None, iterations=None, weight=None, data_type='FLOAT')
 boolean(boolean=False)
 ```
 
-> **node** : [Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../modifiers/generate/booleans.html)
+> **node** : [Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/constant/boolean.html)
 
 #### Arguments:
 - **boolean** (_bool_ = False) : Node.boolean
@@ -422,7 +422,7 @@ boolean_math(boolean=None, boolean_1=None, operation='AND')
 bounding_box(geometry=None)
 ```
 
-> **node** : [Bounding Box](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/3dview/controls/pivot_point/bounding_box_center.html)
+> **node** : [Bounding Box](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/bounding_box.html)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -578,7 +578,7 @@ collection_info(collection=None, separate_children=None, reset_children=None, tr
 color(value=None)
 ```
 
-> **node** : [Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../interface/controls/templates/color_picker.html)
+> **node** : [Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/constant/color.html)
 
 #### Arguments:
 - **value** (_bpy_prop_array_ = None) : Node.value
@@ -599,7 +599,7 @@ color(value=None)
 color_ramp(fac=None, color_ramp=None)
 ```
 
-> **node** : [Color Ramp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../interface/controls/templates/color_ramp.html)
+> **node** : [Color Ramp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/color_ramp.html)
 
 #### Arguments:
 - **fac** (_Float_ = None) : socket 'Fac' (Fac)
@@ -780,7 +780,7 @@ cone(vertices=None, side_segments=None, fill_segments=None, radius_top=None, rad
 convex_hull(geometry=None)
 ```
 
-> **node** : [Convex Hull](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../meshes/editing/mesh/convex_hull.html)
+> **node** : [Convex Hull](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/convex_hull.html)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -1144,7 +1144,7 @@ distribute_points_in_grid(grid=None, density=None, seed=None, mode='DENSITY_RAND
 distribute_points_in_volume(volume=None, density=None, seed=None, mode='DENSITY_RANDOM')
 ```
 
-> **node** : [Distribute Points in Volume](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/distribute_points_in_volume.html)
+> **node** : ERROR: Node 'Distribute Points in Volume' not found
 
 #### Arguments:
 - **volume** (_Geometry_ = None) : socket 'Volume' (Volume)
@@ -1168,7 +1168,7 @@ distribute_points_in_volume(volume=None, density=None, seed=None, mode='DENSITY_
 distribute_points_on_faces(mesh=None, selection=None, density=None, seed=None, distribute_method='RANDOM', use_legacy_normal=False)
 ```
 
-> **node** : [Distribute Points on Faces](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/distribute_points_on_faces.html)
+> **node** : ERROR: Node 'Distribute Points on Faces' not found
 
 #### Arguments:
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (Mesh)
@@ -1599,7 +1599,7 @@ flip_faces(mesh=None, selection=None)
 float_curve(factor=None, value=None, mapping=None)
 ```
 
-> **node** : [Float Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/float_curve.html)
+> **node** : ERROR: Node 'Float Curve' not found
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket 'Factor' (Factor)
@@ -1756,7 +1756,7 @@ gradient_texture(vector=None, color_mapping=None, gradient_type='LINEAR', textur
 grid(size_x=None, size_y=None, vertices_x=None, vertices_y=None)
 ```
 
-> **node** : [Grid](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../meshes/editing/face/grid_fill.html)
+> **node** : [Grid](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/grid.html)
 
 #### Arguments:
 - **size_x** (_Float_ = None) : socket 'Size X' (Size X)
@@ -1803,7 +1803,7 @@ grid_to_mesh(grid=None, threshold=None, adaptivity=None)
 group(node_tree=None)
 ```
 
-> **node** : [Group](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/groups.html)
+> **node** : ERROR: Node 'Group' not found
 
 #### Arguments:
 - **node_tree** (_NoneType_ = None) : Node.node_tree
@@ -1879,7 +1879,7 @@ ico_sphere(radius=None, subdivisions=None)
 image(image=None)
 ```
 
-> **node** : [Image](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/image/index.html)
+> **node** : [Image](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/input/image.html)
 
 #### Arguments:
 - **image** (_NoneType_ = None) : Node.image
@@ -1947,7 +1947,7 @@ image_texture(image=None, vector=None, frame=None, extension='REPEAT', interpola
 index_of_nearest(position=None, group_id=None)
 ```
 
-> **node** : [Index of Nearest](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/index_of_nearest.html)
+> **node** : ERROR: Node 'Index of Nearest' not found
 
 #### Arguments:
 - **position** (_Vector_ = None) : socket 'Position' (Position)
@@ -2536,7 +2536,7 @@ mesh_to_sdf_grid(mesh=None, voxel_size=None, band_width=None)
 mesh_to_volume(mesh=None, density=None, voxel_amount=None, interior_band_width=None, resolution_mode='VOXEL_AMOUNT')
 ```
 
-> **node** : [Mesh to Volume](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../modifiers/generate/mesh_to_volume.html)
+> **node** : [Mesh to Volume](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_volume.html)
 
 #### Arguments:
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (Mesh)
@@ -2776,7 +2776,7 @@ pack_uv_islands(uv=None, selection=None, margin=None, rotate=None)
 points(count=None, position=None, radius=None)
 ```
 
-> **node** : [Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/topology/points_of_curve.html)
+> **node** : [Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points.html)
 
 #### Arguments:
 - **count** (_Integer_ = None) : socket 'Count' (Count)
@@ -4331,7 +4331,7 @@ slice_string(string=None, position=None, length=None)
 sort_elements(geometry=None, selection=None, group_id=None, sort_weight=None, domain='POINT')
 ```
 
-> **node** : [Sort Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../meshes/editing/mesh/sort_elements.html)
+> **node** : [Sort Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/sort_elements.html)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (Geometry)
@@ -4428,7 +4428,7 @@ split_to_instances(geometry=None, selection=None, group_id=None, domain='POINT')
 star(points=None, inner_radius=None, outer_radius=None, twist=None)
 ```
 
-> **node** : [Star](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/3dview/startup_scene.html)
+> **node** : [Star](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/star.html)
 
 #### Arguments:
 - **points** (_Integer_ = None) : socket 'Points' (Points)
@@ -4619,7 +4619,7 @@ subdivide_mesh(mesh=None, level=None)
 subdivision_surface(mesh=None, level=None, edge_crease=None, vertex_crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES')
 ```
 
-> **node** : [Subdivision Surface](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../modifiers/generate/subdivision_surface.html)
+> **node** : [Subdivision Surface](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/subdivision_surface.html)
 
 #### Arguments:
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (Mesh)
@@ -4783,7 +4783,7 @@ transpose_matrix(matrix=None)
 triangulate(mesh=None, selection=None, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL')
 ```
 
-> **node** : [Triangulate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../meshes/editing/face/triangulate_faces.html)
+> **node** : [Triangulate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/triangulate.html)
 
 #### Arguments:
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (Mesh)
@@ -5063,7 +5063,7 @@ volume_cube(density=None, background=None, min=None, max=None, resolution_x=None
 volume_to_mesh(volume=None, threshold=None, adaptivity=None, resolution_mode='GRID')
 ```
 
-> **node** : [Volume to Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../modifiers/generate/volume_to_mesh.html)
+> **node** : [Volume to Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/operations/volume_to_mesh.html)
 
 #### Arguments:
 - **volume** (_Geometry_ = None) : socket 'Volume' (Volume)

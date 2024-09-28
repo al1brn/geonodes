@@ -68,7 +68,7 @@ clamp(min=None, max=None, clamp_type='MINMAX')
 color_ramp(keep=None)
 ```
 
-> **node** : [Color Ramp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../interface/controls/templates/color_ramp.html)
+> **node** : [Color Ramp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/color_ramp.html)
 
 
 
@@ -91,7 +91,7 @@ color_ramp(keep=None)
 curve(factor=None, keep=None)
 ```
 
-> **node** : [Float Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/float_curve.html)
+> **node** : ERROR: Node 'Float Curve' not found
 
 
 

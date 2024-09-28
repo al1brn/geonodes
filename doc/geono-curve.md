@@ -816,7 +816,7 @@ Spiral(resolution=None, rotations=None, start_radius=None, end_radius=None, heig
 Star(points=None, inner_radius=None, outer_radius=None, twist=None)
 ```
 
-> **node** : [Star](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/3dview/startup_scene.html)
+> **node** : [Star](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/star.html)
 
 
 

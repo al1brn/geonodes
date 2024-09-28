@@ -34,7 +34,7 @@ VolumeShader(socket)
 Absorption(color=None, density=None)
 ```
 
-> **node** : [Volume Absorption](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/volume_absorption.html)
+> **node** : ERROR: Node 'Volume Absorption' not found
 
 #### Arguments:
 - **color** ( = None)
@@ -51,7 +51,7 @@ Absorption(color=None, density=None)
 Principled(color=None, color_attribute=None, density=None, density_attribute=None, anisotropy=None, absorption_color=None, emission_strength=None, emission_color=None, blackbody_intensity=None, blackbody_tint=None, temperature=None, temperature_attribute=None)
 ```
 
-> **node** : [Principled Volume](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/volume_principled.html)
+> **node** : ERROR: Node 'Principled Volume' not found
 
 #### Arguments:
 - **color** ( = None)
@@ -78,7 +78,7 @@ Principled(color=None, color_attribute=None, density=None, density_attribute=Non
 Scatter(color=None, density=None, anisotropy=None)
 ```
 
-> **node** : [Volume Scatter](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/volume_scatter.html)
+> **node** : ERROR: Node 'Volume Scatter' not found
 
 #### Arguments:
 - **color** ( = None)

@@ -145,7 +145,7 @@ FromMesh(mesh, position=None, radius=None, mode='POINTS')
 Points(count=1, position=None, radius=None)
 ```
 
-> **node** : [Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/topology/points_of_curve.html)
+> **node** : [Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points.html)
 
 
 

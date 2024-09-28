@@ -45,7 +45,7 @@ Initialize self.  See help(type(self)) for accurate signature.
 add_shader(shader=None, shader_1=None)
 ```
 
-> **node** : [Add Shader](https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/add.html)
+> **node** : ERROR: Node 'Add Shader' not found
 
 #### Arguments:
 - **shader** (_Shader_ = None) : socket 'Shader' (Shader)
@@ -67,7 +67,7 @@ add_shader(shader=None, shader_1=None)
 ambient_occlusion(color=None, distance=None, normal=None, inside=False, only_local=False, samples=16)
 ```
 
-> **node** : [Ambient Occlusion](https://docs.blender.org/manual/en/latest/render/shader_nodes/input/ao.html)
+> **node** : ERROR: Node 'Ambient Occlusion' not found
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -111,7 +111,7 @@ aov_output(color=None, value=None, aov_name='')
 attribute(attribute_name='', attribute_type='GEOMETRY')
 ```
 
-> **node** : [Attribute](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../modeling/geometry_nodes/attributes_reference.html)
+> **node** : [Attribute](https://docs.blender.org/manual/en/latest/render/shader_nodes/input/attribute.html)
 
 #### Arguments:
 - **attribute_name** (_str_ = ) : Node.attribute_name
@@ -133,7 +133,7 @@ attribute(attribute_name='', attribute_type='GEOMETRY')
 background(color=None, strength=None)
 ```
 
-> **node** : [Background](https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/background.html)
+> **node** : ERROR: Node 'Background' not found
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -155,7 +155,7 @@ background(color=None, strength=None)
 bevel(radius=None, normal=None, samples=4)
 ```
 
-> **node** : [Bevel](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../modeling/meshes/editing/vertex/bevel_vertices.html)
+> **node** : [Bevel](https://docs.blender.org/manual/en/latest/render/shader_nodes/input/bevel.html)
 
 #### Arguments:
 - **radius** (_Float_ = None) : socket 'Radius' (Radius)
@@ -354,7 +354,7 @@ color_attribute(layer_name='')
 color_ramp(fac=None, color_ramp=None)
 ```
 
-> **node** : [Color Ramp](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../interface/controls/templates/color_ramp.html)
+> **node** : [Color Ramp](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/converter/color_ramp.html)
 
 #### Arguments:
 - **fac** (_Float_ = None) : socket 'Fac' (Fac)
@@ -423,7 +423,7 @@ combine_xyz(x=None, y=None, z=None)
 diffuse_bsdf(color=None, roughness=None, normal=None)
 ```
 
-> **node** : [Diffuse BSDF](https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/diffuse.html)
+> **node** : ERROR: Node 'Diffuse BSDF' not found
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -446,7 +446,7 @@ diffuse_bsdf(color=None, roughness=None, normal=None)
 displacement(height=None, midlevel=None, scale=None, normal=None, space='OBJECT')
 ```
 
-> **node** : [Displacement](https://docs.blender.org/manual/en/latest/render/shader_nodes/../materials/components/displacement.html)
+> **node** : [Displacement](https://docs.blender.org/manual/en/latest/render/shader_nodes/vector/displacement.html)
 
 #### Arguments:
 - **height** (_Float_ = None) : socket 'Height' (Height)
@@ -471,7 +471,7 @@ displacement(height=None, midlevel=None, scale=None, normal=None, space='OBJECT'
 emission(color=None, strength=None)
 ```
 
-> **node** : [Emission](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../physics/particles/emitter/emission.html)
+> **node** : ERROR: Node 'Emission' not found
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -520,7 +520,7 @@ environment_texture(vector=None, color_mapping=None, image=None, image_user=None
 float_curve(factor=None, value=None, mapping=None)
 ```
 
-> **node** : [Float Curve](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../modeling/geometry_nodes/utilities/math/float_curve.html)
+> **node** : ERROR: Node 'Float Curve' not found
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket 'Factor' (Factor)
@@ -605,7 +605,7 @@ gamma(color=None, gamma=None)
 glass_bsdf(color=None, roughness=None, ior=None, normal=None, distribution='MULTI_GGX')
 ```
 
-> **node** : [Glass BSDF](https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/glass.html)
+> **node** : ERROR: Node 'Glass BSDF' not found
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -630,7 +630,7 @@ glass_bsdf(color=None, roughness=None, ior=None, normal=None, distribution='MULT
 glossy_bsdf(color=None, roughness=None, anisotropy=None, rotation=None, normal=None, tangent=None, distribution='MULTI_GGX')
 ```
 
-> **node** : [Glossy BSDF](https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/glossy.html)
+> **node** : ERROR: Node 'Glossy BSDF' not found
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -681,7 +681,7 @@ gradient_texture(vector=None, color_mapping=None, gradient_type='LINEAR', textur
 group(node_tree=None)
 ```
 
-> **node** : [Group](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/groups.html)
+> **node** : ERROR: Node 'Group' not found
 
 #### Arguments:
 - **node_tree** (_NoneType_ = None) : Node.node_tree
@@ -697,7 +697,7 @@ group(node_tree=None)
 group_output(is_active_output=True)
 ```
 
-> **node** : [Group Output](https://docs.blender.org/manual/en/latest/render/shader_nodes/groups.html#group-output)
+> **node** : ERROR: Node 'Group Output' not found
 
 #### Arguments:
 - **is_active_output** (_bool_ = True) : Node.is_active_output
@@ -713,7 +713,7 @@ group_output(is_active_output=True)
 hair_bsdf(color=None, offset=None, roughnessu=None, roughnessv=None, tangent=None, component='Reflection')
 ```
 
-> **node** : [Hair BSDF](https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/hair.html)
+> **node** : ERROR: Node 'Hair BSDF' not found
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -739,7 +739,7 @@ hair_bsdf(color=None, offset=None, roughnessu=None, roughnessv=None, tangent=Non
 holdout()
 ```
 
-> **node** : [Holdout](https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/holdout.html)
+> **node** : ERROR: Node 'Holdout' not found
 
 #### Returns:
 - **holdout** (_Shader_)
@@ -1094,7 +1094,7 @@ mix(factor=None, a=None, b=None, blend_type='MIX', clamp_factor=True, clamp_resu
 mix_shader(fac=None, shader=None, shader_1=None)
 ```
 
-> **node** : [Mix Shader](https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/mix.html)
+> **node** : ERROR: Node 'Mix Shader' not found
 
 #### Arguments:
 - **fac** (_Float_ = None) : socket 'Fac' (Fac)
@@ -1148,7 +1148,7 @@ noise_texture(vector=None, scale=None, detail=None, roughness=None, lacunarity=N
 normal(normal=None)
 ```
 
-> **node** : [Normal](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../modeling/meshes/editing/mesh/normals.html)
+> **node** : [Normal](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../modeling/geometry_nodes/geometry/read/normal.html)
 
 #### Arguments:
 - **normal** (_Vector_ = None) : socket 'Normal' (Normal)
@@ -1227,7 +1227,7 @@ point_density(vector=None, cache_point_density=None, calc_point_density=None, ca
 position(attribute_type='GEOMETRY')
 ```
 
-> **node** : [Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attributes_reference.html)
+> **node** : [Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/input/attribute.html)
 - attribute_type in ('GEOMETRY', 'OBJECT', 'INSTANCER', 'VIEW_LAYER')
 
 #### Arguments:
@@ -1244,7 +1244,7 @@ position(attribute_type='GEOMETRY')
 principled_bsdf(base_color=None, metallic=None, roughness=None, ior=None, alpha=None, normal=None, subsurface_weight=None, subsurface_radius=None, subsurface_scale=None, subsurface_anisotropy=None, specular_ior_level=None, specular_tint=None, anisotropic=None, anisotropic_rotation=None, tangent=None, transmission_weight=None, coat_weight=None, coat_roughness=None, coat_ior=None, coat_tint=None, coat_normal=None, sheen_weight=None, sheen_roughness=None, sheen_tint=None, emission_color=None, emission_strength=None, thin_film_thickness=None, thin_film_ior=None, distribution='MULTI_GGX', subsurface_method='RANDOM_WALK')
 ```
 
-> **node** : [Principled BSDF](https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/principled.html)
+> **node** : ERROR: Node 'Principled BSDF' not found
 
 #### Arguments:
 - **base_color** (_Color_ = None) : socket 'Base Color' (Base Color)
@@ -1294,7 +1294,7 @@ principled_bsdf(base_color=None, metallic=None, roughness=None, ior=None, alpha=
 principled_hair_bsdf(color=None, roughness=None, radial_roughness=None, coat=None, ior=None, offset=None, random_roughness=None, random=None, model='CHIANG', parametrization='COLOR')
 ```
 
-> **node** : [Principled Hair BSDF](https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/hair_principled.html)
+> **node** : ERROR: Node 'Principled Hair BSDF' not found
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -1324,7 +1324,7 @@ principled_hair_bsdf(color=None, roughness=None, radial_roughness=None, coat=Non
 principled_volume(color=None, color_attribute=None, density=None, density_attribute=None, anisotropy=None, absorption_color=None, emission_strength=None, emission_color=None, blackbody_intensity=None, blackbody_tint=None, temperature=None, temperature_attribute=None)
 ```
 
-> **node** : [Principled Volume](https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/volume_principled.html)
+> **node** : ERROR: Node 'Principled Volume' not found
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -1356,7 +1356,7 @@ principled_volume(color=None, color_attribute=None, density=None, density_attrib
 ray_portal_bsdf(color=None, position=None, direction=None)
 ```
 
-> **node** : [Ray Portal BSDF](https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/ray_portal.html)
+> **node** : ERROR: Node 'Ray Portal BSDF' not found
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -1379,7 +1379,7 @@ ray_portal_bsdf(color=None, position=None, direction=None)
 refraction_bsdf(color=None, roughness=None, ior=None, normal=None, distribution='BECKMANN')
 ```
 
-> **node** : [Refraction BSDF](https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/refraction.html)
+> **node** : ERROR: Node 'Refraction BSDF' not found
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -1469,7 +1469,7 @@ rgb_to_bw(color=None)
 script(bytecode='', bytecode_hash='', filepath='', mode='INTERNAL', script=None, use_auto_update=False)
 ```
 
-> **node** : [Script](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../advanced/scripting/index.html)
+> **node** : [Script](https://docs.blender.org/manual/en/latest/render/shader_nodes/osl.html#script-node)
 
 #### Arguments:
 - **bytecode** (_str_ = ) : Node.bytecode
@@ -1533,7 +1533,7 @@ separate_xyz(vector=None)
 shader_to_rgb(shader=None)
 ```
 
-> **node** : [Shader to RGB](https://docs.blender.org/manual/en/latest/render/shader_nodes/converter/shader_to_rgb.html)
+> **node** : ERROR: Node 'Shader to RGB' not found
 
 #### Arguments:
 - **shader** (_Shader_ = None) : socket 'Shader' (Shader)
@@ -1554,7 +1554,7 @@ shader_to_rgb(shader=None)
 sharp_face(attribute_type='GEOMETRY')
 ```
 
-> **node** : [Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attributes_reference.html)
+> **node** : [Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/input/attribute.html)
 - attribute_type in ('GEOMETRY', 'OBJECT', 'INSTANCER', 'VIEW_LAYER')
 
 #### Arguments:
@@ -1571,7 +1571,7 @@ sharp_face(attribute_type='GEOMETRY')
 sheen_bsdf(color=None, roughness=None, normal=None, distribution='MICROFIBER')
 ```
 
-> **node** : [Sheen BSDF](https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/sheen.html)
+> **node** : ERROR: Node 'Sheen BSDF' not found
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -1630,7 +1630,7 @@ sky_texture(air_density=1.0, altitude=0.0, color_mapping=None, dust_density=1.0,
 specular_bsdf(base_color=None, specular=None, roughness=None, emissive_color=None, transparency=None, normal=None, clear_coat=None, clear_coat_roughness=None, clear_coat_normal=None)
 ```
 
-> **node** : [Specular BSDF](https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/specular_bsdf.html)
+> **node** : ERROR: Node 'Specular BSDF' not found
 
 #### Arguments:
 - **base_color** (_Color_ = None) : socket 'Base Color' (Base Color)
@@ -1659,7 +1659,7 @@ specular_bsdf(base_color=None, specular=None, roughness=None, emissive_color=Non
 subsurface_scattering(color=None, scale=None, radius=None, ior=None, roughness=None, anisotropy=None, normal=None, falloff='RANDOM_WALK')
 ```
 
-> **node** : [Subsurface Scattering](https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/sss.html)
+> **node** : ERROR: Node 'Subsurface Scattering' not found
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -1732,7 +1732,7 @@ texture_coordinate(from_instancer=False, object=None)
 toon_bsdf(color=None, size=None, smooth=None, normal=None, component='DIFFUSE')
 ```
 
-> **node** : [Toon BSDF](https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/toon.html)
+> **node** : ERROR: Node 'Toon BSDF' not found
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -1757,7 +1757,7 @@ toon_bsdf(color=None, size=None, smooth=None, normal=None, component='DIFFUSE')
 translucent_bsdf(color=None, normal=None)
 ```
 
-> **node** : [Translucent BSDF](https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/translucent.html)
+> **node** : ERROR: Node 'Translucent BSDF' not found
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -1779,7 +1779,7 @@ translucent_bsdf(color=None, normal=None)
 transparent_bsdf(color=None)
 ```
 
-> **node** : [Transparent BSDF](https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/transparent.html)
+> **node** : ERROR: Node 'Transparent BSDF' not found
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -1821,7 +1821,7 @@ uv_along_stroke(use_tips=False)
 uvmap(attribute_type='GEOMETRY')
 ```
 
-> **node** : [Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attributes_reference.html)
+> **node** : [Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/input/attribute.html)
 - attribute_type in ('GEOMETRY', 'OBJECT', 'INSTANCER', 'VIEW_LAYER')
 
 #### Arguments:
@@ -1980,7 +1980,7 @@ vector_transform(vector=None, convert_from='WORLD', convert_to='OBJECT', vector_
 volume_absorption(color=None, density=None)
 ```
 
-> **node** : [Volume Absorption](https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/volume_absorption.html)
+> **node** : ERROR: Node 'Volume Absorption' not found
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -2002,7 +2002,7 @@ volume_absorption(color=None, density=None)
 volume_scatter(color=None, density=None, anisotropy=None)
 ```
 
-> **node** : [Volume Scatter](https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/volume_scatter.html)
+> **node** : ERROR: Node 'Volume Scatter' not found
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -2133,7 +2133,7 @@ white_noise_texture(vector=None, noise_dimensions='3D')
 wireframe(size=None, use_pixel_size=False)
 ```
 
-> **node** : [Wireframe](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../modeling/meshes/editing/face/wireframe.html)
+> **node** : [Wireframe](https://docs.blender.org/manual/en/latest/render/shader_nodes/input/wireframe.html)
 
 #### Arguments:
 - **size** (_Float_ = None) : socket 'Size' (Size)

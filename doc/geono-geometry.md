@@ -44,7 +44,7 @@ When a Group Input socket is created, default name 'Geometry' is used if name ar
 
 Property node 'Bounding Box' (GeometryNodeBoundBox)
 
-[Bounding Box](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/3dview/controls/pivot_point/bounding_box_center.html)
+[Bounding Box](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/bounding_box.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Properties](geono-geometry.md#properties)</sub>
 
@@ -55,7 +55,7 @@ Property node 'Bounding Box' (GeometryNodeBoundBox)
 
 Property node 'Convex Hull' (GeometryNodeConvexHull)
 
-[Convex Hull](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../meshes/editing/mesh/convex_hull.html)
+[Convex Hull](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/convex_hull.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Properties](geono-geometry.md#properties)</sub>
 
@@ -165,7 +165,7 @@ Property volume component
 index_of_nearest(position=None, group_id=None)
 ```
 
-> **node** : [Index of Nearest](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/index_of_nearest.html)
+> **node** : ERROR: Node 'Index of Nearest' not found
 
 
 

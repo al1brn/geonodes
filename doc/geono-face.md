@@ -126,7 +126,7 @@ corner_index(face_index=None, weights=None, sort_index=None)
 distribute_points(density=None, distance_min=None, density_max=None, density_factor=None, seed=None)
 ```
 
-> **node** : [Distribute Points on Faces](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/distribute_points_on_faces.html)
+> **node** : ERROR: Node 'Distribute Points on Faces' not found
 
 
 

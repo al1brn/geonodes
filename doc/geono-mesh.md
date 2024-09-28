@@ -310,7 +310,7 @@ Constructor Node 'Mesh Circle' (GeometryNodeMeshCircle)
 distribute_points_on_faces(density=None, distance_min=None, density_max=None, density_factor=None, seed=None)
 ```
 
-> **node** : [Distribute Points on Faces](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/distribute_points_on_faces.html)
+> **node** : ERROR: Node 'Distribute Points on Faces' not found
 
 
 
@@ -415,7 +415,7 @@ FromVolume(volume, voxel_size=None, voxel_amount=None, threshold=None, adaptivit
 
 Constructor Node 'Volume to Mesh' (GeometryNodeVolumeToMesh)
 
-[Volume to Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../modifiers/generate/volume_to_mesh.html)
+[Volume to Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/operations/volume_to_mesh.html)
 
 #### Arguments:
 - **volume** (_Geometry_) : socket 'Volume' (Volume)
@@ -443,7 +443,7 @@ Grid(size_x=1.0, size_y=1.0, vertices_x=3, vertices_y=3)
 
 Constructor Node 'Grid' (GeometryNodeMeshGrid)
 
-[Grid](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../meshes/editing/face/grid_fill.html)
+[Grid](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/grid.html)
 
 #### Arguments:
 - **size_x** (_Float_ = 1.0) : socket 'Size X' (Size X)
@@ -633,7 +633,7 @@ Plane(size_x=1.0, size_y=1.0)
 
 Constructor Node 'Grid' (GeometryNodeMeshGrid)
 
-[Grid](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../meshes/editing/face/grid_fill.html)
+[Grid](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/grid.html)
 
 #### Arguments:
 - **size_x** (_Float_ = 1.0) : socket 'Size X' (Size X)
@@ -731,7 +731,7 @@ subdivide(level=None)
 subdivision_surface(level=None, edge_crease=None, vertex_crease=None, uv_smooth='PRESERVE_BOUNDARIES', boundary_smooth='ALL')
 ```
 
-> **node** : [Subdivision Surface](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../modifiers/generate/subdivision_surface.html)
+> **node** : [Subdivision Surface](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/subdivision_surface.html)
 
 
 
@@ -776,7 +776,7 @@ to_curve()
 to_volume(density=None, voxel_amount=None, interior_band_width=None, voxel_size=None, amount=True)
 ```
 
-> **node** : [Mesh to Volume](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../modifiers/generate/mesh_to_volume.html)
+> **node** : [Mesh to Volume](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_volume.html)
 
 
 
@@ -805,7 +805,7 @@ to_volume(density=None, voxel_amount=None, interior_band_width=None, voxel_size=
 triangulate(minimum_vertices=None, quad_method='SHORTEST_DIAGONAL', ngon_method='BEAUTY')
 ```
 
-> **node** : [Triangulate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../meshes/editing/face/triangulate_faces.html)
+> **node** : [Triangulate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/triangulate.html)
 
 
 

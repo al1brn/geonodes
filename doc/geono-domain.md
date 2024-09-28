@@ -563,7 +563,7 @@ set_position(position=None, offset=None)
 sort_elements(group_id=None, sort_weight=None)
 ```
 
-> **node** : [Sort Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../meshes/editing/mesh/sort_elements.html)
+> **node** : [Sort Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/sort_elements.html)
 
 
 

@@ -8,7 +8,7 @@ Color(value=(0.0, 0.0, 0.0, 1.0), name=None, tip=None)
 
 Socket of type COLOR (RGBA)
 
-[RGB](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/rgb_curves.html), [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/combine_color.html), [Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../interface/controls/templates/color_picker.html)
+[RGB](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/input/rgb.html), [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/combine_color.html), [Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/constant/color.html)
 
 #### Arguments:
 - **value** (_tuple or Socket_ = (0.0, 0.0, 0.0, 1.0)) : initial value
@@ -330,7 +330,7 @@ ColorRamp(fac=None, keep=None)
 
 Constructor : Color Ramp
 
-[Color Ramp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../interface/controls/templates/color_ramp.html)
+[Color Ramp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/color_ramp.html)
 
 #### Arguments:
 - **fac** (_Float_ = None)
@@ -660,7 +660,7 @@ FromShader(shader)
 
 Constructor : Shader to RGB.
 
-[Shader to RGB](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/converter/shader_to_rgb.html)
+ERROR: Node 'Shader to RGB' not found
 
 #### Arguments:
 - **shader** (_Shader_) : socket

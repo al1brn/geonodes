@@ -8,7 +8,7 @@ Boolean(value=False, name=None, tip=None, subtype='NONE')
 
 Socket of type BOOLEAN
 
-[Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../modifiers/generate/booleans.html)
+[Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/constant/boolean.html)
 
 #### Arguments:
 - **value** (_bool or Socket_ = False) : initial value
