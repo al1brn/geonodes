@@ -1180,7 +1180,7 @@ to_output(name=None)
 vector_displacement(midlevel=None, scale=None, space='TANGENT')
 ```
 
-Normal map.
+Vector displacement
 
 [!SHADER]
 
