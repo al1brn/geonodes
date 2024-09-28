@@ -87,8 +87,7 @@ ceiling()
 
 > Ceiling
 
-:hotsprings: Behaves differently in **GeoNodes** and **ShaderNodes**
-
+[!MIX]
 
 > [!IMPORTANT]
 > - **GeoNodes** : [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/float_to_integer.html)
@@ -202,8 +201,7 @@ equal(other, epsilon=None)
 
 > Equal to another value
 
-:hotsprings: Behaves differently in **GeoNodes** and **ShaderNodes**
-
+[!MIX]
 
 > [!IMPORTANT]
 > - **GeoNodes** : [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
@@ -251,8 +249,7 @@ floor()
 
 > Floor
 
-:hotsprings: Behaves differently in **GeoNodes** and **ShaderNodes**
-
+[!MIX]
 
 > [!IMPORTANT]
 > - **GeoNodes** : [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/float_to_integer.html)
@@ -297,8 +294,7 @@ greater_than(other)
 
 > Greater than another value
 
-:hotsprings: Behaves differently in **GeoNodes** and **ShaderNodes**
-
+[!MIX]
 
 > [!IMPORTANT]
 > - **GeoNodes** : [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
@@ -348,8 +344,7 @@ less_than(other)
 
 > Less than another value
 
-:hotsprings: Behaves differently in **GeoNodes** and **ShaderNodes**
-
+[!MIX]
 
 > [!IMPORTANT]
 > - **GeoNodes** : [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
@@ -686,8 +681,7 @@ round()
 
 > Rounding
 
-:hotsprings: Behaves differently in **GeoNodes** and **ShaderNodes**
-
+[!MIX]
 
 > [!IMPORTANT]
 > - **GeoNodes** : [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/float_to_integer.html)
@@ -767,8 +761,7 @@ to_output(name=None)
 
 > Connect to output
 
-:hotsprings: Behaves differently in **GeoNodes** and **ShaderNodes**
-
+[!MIX]
 
 > [!IMPORTANT]
 > - Geometry Nodes : create a group output socket with the provided name
@@ -813,8 +806,7 @@ truncate()
 
 > Truncate
 
-:hotsprings: Behaves differently in **GeoNodes** and **ShaderNodes**
-
+[!MIX]
 
 > [!IMPORTANT]
 > - **GeoNodes** : [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/float_to_integer.html)

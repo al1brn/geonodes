@@ -13,15 +13,16 @@ SplinePoint(geometry)
 
 ### Inherited
 
-[accumulate_field](geono-domain.md#accumulate_field) :black_small_square: [attribute_statistic](geono-domain.md#attribute_statistic) :black_small_square: [\_cache](geono-socke-nodecache.md#_cache) :black_small_square: [\_cache_reset](geono-socke-nodecache.md#_cache_reset) :black_small_square: [capture](geono-domain.md#capture) :black_small_square: [capture_attribute](geono-domain.md#capture_attribute) :black_small_square: [delete](geono-domain.md#delete) :black_small_square: [delete_all](geono-domain.md#delete_all) :black_small_square: [delete_edges_and_faces](geono-domain.md#delete_edges_and_faces) :black_small_square: [delete_faces](geono-domain.md#delete_faces) :black_small_square: [delete_geometry](geono-domain.md#delete_geometry) :black_small_square: [domain_name](geono-domain.md#domain_name) :black_small_square: [duplicate_elements](geono-domain.md#duplicate_elements) :black_small_square: [evaluate_at_index](geono-domain.md#evaluate_at_index) :black_small_square: [evaluate_on_domain](geono-domain.md#evaluate_on_domain) :black_small_square: [exclude_corner](geono-domain.md#exclude_corner) :black_small_square: [extrude](geono-domain.md#extrude) :black_small_square: [\_geo_type](geono-geome-geobase.md#_geo_type) :black_small_square: [\_\_getitem__](geono-geome-geobase.md#__getitem__) :black_small_square: [id](geono-geome-geobase.md#id) :black_small_square: [material](geono-geome-geobase.md#material) :black_small_square: [material_index](geono-geome-geobase.md#material_index) :black_small_square: [material_selection](geono-geome-geobase.md#material_selection) :black_small_square: [\_node](geono-domain.md#_node) :black_small_square: [offset](geono-geome-geobase.md#offset) :black_small_square: [plural_domain](geono-domain.md#plural_domain) :black_small_square: [position](geono-geome-geobase.md#position) :black_small_square: [proximity](geono-domain.md#proximity) :black_small_square: [\_raw_sel](geono-geome-geobase.md#_raw_sel) :black_small_square: [replace_material](geono-geome-geobase.md#replace_material) :black_small_square: [restrict_domain](geono-domain.md#restrict_domain) :black_small_square: [sample_index](geono-domain.md#sample_index) :black_small_square: [sample_nearest](geono-domain.md#sample_nearest) :black_small_square: [\_sel](geono-domain.md#_sel) :black_small_square: [separate](geono-domain.md#separate) :black_small_square: [set_id](geono-geome-geobase.md#set_id) :black_small_square: [set_position](geono-geome-geobase.md#set_position) :black_small_square: [sort_elements](geono-domain.md#sort_elements) :black_small_square: [split_to_instances](geono-domain.md#split_to_instances) :black_small_square: [store](geono-domain.md#store) :black_small_square: [store_named_attribute](geono-domain.md#store_named_attribute) :black_small_square: [\_\_str__](geono-domain.md#__str__) :black_small_square: [to_points](geono-domain.md#to_points) :black_small_square: [viewer](geono-domain.md#viewer) :black_small_square:
+[accumulate_field](geono-domain.md#accumulate_field) :black_small_square: [attribute_statistic](geono-domain.md#attribute_statistic) :black_small_square: [\_cache](geono-socke-nodecache.md#_cache) :black_small_square: [\_cache_reset](geono-socke-nodecache.md#_cache_reset) :black_small_square: [capture](geono-domain.md#capture) :black_small_square: [capture_attribute](geono-domain.md#capture_attribute) :black_small_square: [delete](geono-domain.md#delete) :black_small_square: [delete_all](geono-domain.md#delete_all) :black_small_square: [delete_edges_and_faces](geono-domain.md#delete_edges_and_faces) :black_small_square: [delete_faces](geono-domain.md#delete_faces) :black_small_square: [delete_geometry](geono-domain.md#delete_geometry) :black_small_square: [domain_name](geono-domain.md#domain_name) :black_small_square: [duplicate_elements](geono-domain.md#duplicate_elements) :black_small_square: [evaluate_at_index](geono-domain.md#evaluate_at_index) :black_small_square: [evaluate_on_domain](geono-domain.md#evaluate_on_domain) :black_small_square: [exclude_corner](geono-domain.md#exclude_corner) :black_small_square: [extrude](geono-domain.md#extrude) :black_small_square: [\_geo_type](geono-geome-geobase.md#_geo_type) :black_small_square: [\_\_getitem__](geono-geome-geobase.md#__getitem__) :black_small_square: [id](geono-geome-geobase.md#id) :black_small_square: [\_jump](geono-domain.md#_jump) :black_small_square: [material](geono-geome-geobase.md#material) :black_small_square: [material_index](geono-geome-geobase.md#material_index) :black_small_square: [material_selection](geono-geome-geobase.md#material_selection) :black_small_square: [\_node](geono-domain.md#_node) :black_small_square: [offset](geono-geome-geobase.md#offset) :black_small_square: [plural_domain](geono-domain.md#plural_domain) :black_small_square: [position](geono-geome-geobase.md#position) :black_small_square: [proximity](geono-domain.md#proximity) :black_small_square: [\_raw_sel](geono-geome-geobase.md#_raw_sel) :black_small_square: [replace_material](geono-geome-geobase.md#replace_material) :black_small_square: [restrict_domain](geono-domain.md#restrict_domain) :black_small_square: [sample_index](geono-domain.md#sample_index) :black_small_square: [sample_nearest](geono-domain.md#sample_nearest) :black_small_square: [\_sel](geono-domain.md#_sel) :black_small_square: [separate](geono-domain.md#separate) :black_small_square: [set_id](geono-geome-geobase.md#set_id) :black_small_square: [set_position](geono-geome-geobase.md#set_position) :black_small_square: [sort_elements](geono-domain.md#sort_elements) :black_small_square: [split_to_instances](geono-domain.md#split_to_instances) :black_small_square: [store](geono-domain.md#store) :black_small_square: [store_named_attribute](geono-domain.md#store_named_attribute) :black_small_square: [\_\_str__](geono-domain.md#__str__) :black_small_square: [to_points](geono-domain.md#to_points) :black_small_square: [viewer](geono-domain.md#viewer) :black_small_square:
 
 ## Content
 
-- **C** : [count](geono-splinepoint.md#count)
-- **H** : [handle_align](geono-splinepoint.md#handle_align) :black_small_square: [handle_auto](geono-splinepoint.md#handle_auto) :black_small_square: [handle_free](geono-splinepoint.md#handle_free) :black_small_square: [handle_positions](geono-splinepoint.md#handle_positions) :black_small_square: [handle_type_selection](geono-splinepoint.md#handle_type_selection) :black_small_square: [handle_vector](geono-splinepoint.md#handle_vector)
-- **I** : [instance_on](geono-splinepoint.md#instance_on)
-- **L** : [left_handle_align](geono-splinepoint.md#left_handle_align) :black_small_square: [left_handle_auto](geono-splinepoint.md#left_handle_auto) :black_small_square: [left_handle_free](geono-splinepoint.md#left_handle_free) :black_small_square: [left_handle_offset](geono-splinepoint.md#left_handle_offset) :black_small_square: [left_handle_position](geono-splinepoint.md#left_handle_position) :black_small_square: [left_handle_vector](geono-splinepoint.md#left_handle_vector)
-- **R** : [right_handle_align](geono-splinepoint.md#right_handle_align) :black_small_square: [right_handle_auto](geono-splinepoint.md#right_handle_auto) :black_small_square: [right_handle_free](geono-splinepoint.md#right_handle_free) :black_small_square: [right_handle_offset](geono-splinepoint.md#right_handle_offset) :black_small_square: [right_handle_position](geono-splinepoint.md#right_handle_position) :black_small_square: [right_handle_vector](geono-splinepoint.md#right_handle_vector)
+- **C** : [count](geono-splinepoint.md#count) :black_small_square: [curve_index](geono-splinepoint.md#curve_index)
+- **H** : [handle_align](geono-splinepoint.md#handle_align) :black_small_square: [handle_auto](geono-splinepoint.md#handle_auto) :black_small_square: [handle_free](geono-splinepoint.md#handle_free) :black_small_square: [handle_positions](geono-splinepoint.md#handle_positions) :black_small_square: [handle_type](geono-splinepoint.md#handle_type) :black_small_square: [handle_type_selection](geono-splinepoint.md#handle_type_selection) :black_small_square: [handle_vector](geono-splinepoint.md#handle_vector)
+- **I** : [index_in_curve](geono-splinepoint.md#index_in_curve) :black_small_square: [instance_on](geono-splinepoint.md#instance_on)
+- **L** : [left_handle_align](geono-splinepoint.md#left_handle_align) :black_small_square: [left_handle_auto](geono-splinepoint.md#left_handle_auto) :black_small_square: [left_handle_free](geono-splinepoint.md#left_handle_free) :black_small_square: [left_handle_offset](geono-splinepoint.md#left_handle_offset) :black_small_square: [left_handle_position](geono-splinepoint.md#left_handle_position) :black_small_square: [left_handle_type](geono-splinepoint.md#left_handle_type) :black_small_square: [left_handle_vector](geono-splinepoint.md#left_handle_vector)
+- **O** : [offset_in_curve](geono-splinepoint.md#offset_in_curve)
+- **R** : [right_handle_align](geono-splinepoint.md#right_handle_align) :black_small_square: [right_handle_auto](geono-splinepoint.md#right_handle_auto) :black_small_square: [right_handle_free](geono-splinepoint.md#right_handle_free) :black_small_square: [right_handle_offset](geono-splinepoint.md#right_handle_offset) :black_small_square: [right_handle_position](geono-splinepoint.md#right_handle_position) :black_small_square: [right_handle_type](geono-splinepoint.md#right_handle_type) :black_small_square: [right_handle_vector](geono-splinepoint.md#right_handle_vector)
 - **S** : [set_handle_positions](geono-splinepoint.md#set_handle_positions) :black_small_square: [set_handle_type](geono-splinepoint.md#set_handle_type)
 
 ## Properties
@@ -33,169 +34,272 @@ SplinePoint(geometry)
 > _type_: **Integer**
 >
 
-> **node** : [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
-
-> Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
-
-Socket 'Point Count' of node 'Domain Size'
+> Socket 'Point Count' of node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](geono-splinepoint.md#splinepoint) :black_small_square: [Content](geono-splinepoint.md#content) :black_small_square: [Properties](geono-splinepoint.md#properties)</sub>
 
 ### handle_align
 
-> _type_: **?**
+> _type_: **Boolean**
 >
 
-> Node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
+> Handle align property
+
+- getter : node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
+- setter : node [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html), **handle_type** = 'ALIGN'
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](geono-splinepoint.md#splinepoint) :black_small_square: [Content](geono-splinepoint.md#content) :black_small_square: [Properties](geono-splinepoint.md#properties)</sub>
 
 ### handle_auto
 
-> _type_: **?**
+> _type_: **Boolean**
 >
 
-> Node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
+> Handle auto property
+
+- getter : node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
+- setter : node [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html), **handle_type** = 'AUTO'
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](geono-splinepoint.md#splinepoint) :black_small_square: [Content](geono-splinepoint.md#content) :black_small_square: [Properties](geono-splinepoint.md#properties)</sub>
 
 ### handle_free
 
-> _type_: **?**
+> _type_: **Boolean**
 >
 
-> Node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
+> Handle free property
+
+- getter : node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
+- setter : node [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html), **handle_type** = 'FREE'
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](geono-splinepoint.md#splinepoint) :black_small_square: [Content](geono-splinepoint.md#content) :black_small_square: [Properties](geono-splinepoint.md#properties)</sub>
+
+### handle_type
+
+> _type_: **Error**
+>
+
+> Handle type write only property
+
+Set the curve handle type
+
+``` python
+curve.handle_type = 'FREE'
+```
+
+- getter : None, write only Property
+- setter : node [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](geono-splinepoint.md#splinepoint) :black_small_square: [Content](geono-splinepoint.md#content) :black_small_square: [Properties](geono-splinepoint.md#properties)</sub>
 
 ### handle_vector
 
-> _type_: **?**
+> _type_: **Boolean**
 >
 
-> Node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
+> Handle vector property
+
+- getter : node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
+- setter : node [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html), **handle_type** = 'VECTOR'
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](geono-splinepoint.md#splinepoint) :black_small_square: [Content](geono-splinepoint.md#content) :black_small_square: [Properties](geono-splinepoint.md#properties)</sub>
 
 ### left_handle_align
 
-> _type_: **?**
+> _type_: **Boolean**
 >
 
-> Node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
+> Left handle auto property
+
+- getter : node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
+- setter : node [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html), **handle_type** = 'ALIGN'
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](geono-splinepoint.md#splinepoint) :black_small_square: [Content](geono-splinepoint.md#content) :black_small_square: [Properties](geono-splinepoint.md#properties)</sub>
 
 ### left_handle_auto
 
-> _type_: **?**
+> _type_: **Boolean**
 >
 
-> Node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
+> Left handle auto property
+
+- getter : node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
+- setter : node [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html), **handle_type** = 'AUTO'
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](geono-splinepoint.md#splinepoint) :black_small_square: [Content](geono-splinepoint.md#content) :black_small_square: [Properties](geono-splinepoint.md#properties)</sub>
 
 ### left_handle_free
 
-> _type_: **?**
+> _type_: **Boolean**
 >
 
-> Node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
+> Left handle free property
+
+- getter : node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
+- setter : node [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html), **handle_type** = 'FREE'
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](geono-splinepoint.md#splinepoint) :black_small_square: [Content](geono-splinepoint.md#content) :black_small_square: [Properties](geono-splinepoint.md#properties)</sub>
 
 ### left_handle_offset
 
-> _type_: **Socket**
+> _type_: **Vector**
 >
 
-> **node** : ERROR: Node 'Curve Handle Positions' not found
+> Left handle offset property
 
-> Node ERROR: Node 'Curve Handle Positions' not found
+- getter : socket 'Left' of node ERROR: Node 'Handle Positions' not found, relative
+- setter : node [Set Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_positions.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](geono-splinepoint.md#splinepoint) :black_small_square: [Content](geono-splinepoint.md#content) :black_small_square: [Properties](geono-splinepoint.md#properties)</sub>
 
 ### left_handle_position
 
-> _type_: **Socket**
+> _type_: **Vector**
 >
 
-> **node** : ERROR: Node 'Curve Handle Positions' not found
+> Left handle property
 
-> Node ERROR: Node 'Curve Handle Positions' not found
+- getter : socket 'Left' of node ERROR: Node 'Handle Positions' not found
+- setter : node [Set Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_positions.html)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](geono-splinepoint.md#splinepoint) :black_small_square: [Content](geono-splinepoint.md#content) :black_small_square: [Properties](geono-splinepoint.md#properties)</sub>
+
+### left_handle_type
+
+> _type_: **Error**
+>
+
+> Left handle type write only property
+
+Set the curve handle type
+
+- getter : None, write only Property
+- setter : node [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](geono-splinepoint.md#splinepoint) :black_small_square: [Content](geono-splinepoint.md#content) :black_small_square: [Properties](geono-splinepoint.md#properties)</sub>
 
 ### left_handle_vector
 
-> _type_: **?**
+> _type_: **Boolean**
 >
 
-> Node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
+> Left handle vector property
+
+- getter : node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
+- setter : node [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html), **handle_type** = 'VECTOR'
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](geono-splinepoint.md#splinepoint) :black_small_square: [Content](geono-splinepoint.md#content) :black_small_square: [Properties](geono-splinepoint.md#properties)</sub>
 
 ### right_handle_align
 
-> _type_: **?**
+> _type_: **Boolean**
 >
 
-> Node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
+> Right handle align property
+
+- getter : node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
+- setter : node [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html), **handle_type** = 'ALIGN'
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](geono-splinepoint.md#splinepoint) :black_small_square: [Content](geono-splinepoint.md#content) :black_small_square: [Properties](geono-splinepoint.md#properties)</sub>
 
 ### right_handle_auto
 
-> _type_: **?**
+> _type_: **Boolean**
 >
 
-> Node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
+> Right handle auto property
+
+- getter : node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
+- setter : node [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html), **handle_type** = 'AUTO'
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](geono-splinepoint.md#splinepoint) :black_small_square: [Content](geono-splinepoint.md#content) :black_small_square: [Properties](geono-splinepoint.md#properties)</sub>
 
 ### right_handle_free
 
-> _type_: **?**
+> _type_: **Boolean**
 >
 
-> Node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
+> Right handle free property
+
+- getter : node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
+- setter : node [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html), **handle_type** = 'FREE'
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](geono-splinepoint.md#splinepoint) :black_small_square: [Content](geono-splinepoint.md#content) :black_small_square: [Properties](geono-splinepoint.md#properties)</sub>
 
 ### right_handle_offset
 
-> _type_: **Socket**
+> _type_: **Vector**
 >
 
-> **node** : ERROR: Node 'Curve Handle Positions' not found
+> Right handle offset property
 
-> Node ERROR: Node 'Curve Handle Positions' not found
+- getter : socket 'Right' of node ERROR: Node 'Handle Positions' not found, relative
+- setter : node [Set Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_positions.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](geono-splinepoint.md#splinepoint) :black_small_square: [Content](geono-splinepoint.md#content) :black_small_square: [Properties](geono-splinepoint.md#properties)</sub>
 
 ### right_handle_position
 
-> _type_: **Socket**
+> _type_: **Vector**
 >
 
-> **node** : ERROR: Node 'Curve Handle Positions' not found
+> Right handle position property
 
-> Node ERROR: Node 'Curve Handle Positions' not found
+- getter : socket 'Right' of node ERROR: Node 'Handle Positions' not found
+- setter : node [Set Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_positions.html)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](geono-splinepoint.md#splinepoint) :black_small_square: [Content](geono-splinepoint.md#content) :black_small_square: [Properties](geono-splinepoint.md#properties)</sub>
+
+### right_handle_type
+
+> _type_: **Error**
+>
+
+> Right handle type write only property
+
+Set the curve handle type
+
+- getter : None, write only Property
+- setter : node [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](geono-splinepoint.md#splinepoint) :black_small_square: [Content](geono-splinepoint.md#content) :black_small_square: [Properties](geono-splinepoint.md#properties)</sub>
 
 ### right_handle_vector
 
-> _type_: **?**
+> _type_: **Boolean**
 >
 
-> Node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
+> Right handle vector property
+
+- getter : node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
+- setter : node [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html), **handle_type** = 'VECTOR'
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](geono-splinepoint.md#splinepoint) :black_small_square: [Content](geono-splinepoint.md#content) :black_small_square: [Properties](geono-splinepoint.md#properties)</sub>
 
 ## Methods
 
 
+
+----------
+### curve_index()
+
+> method
+
+``` python
+curve_index(point_index=None)
+```
+
+> Socket 'Curve Index' of node <&Curve of Point>
+
+#### Arguments:
+- **point_index** (_Integer_ = None) : point index
+
+
+
+#### Returns:
+- **Integer** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](geono-splinepoint.md#splinepoint) :black_small_square: [Content](geono-splinepoint.md#content) :black_small_square: [Methods](geono-splinepoint.md#methods)</sub>
 
 ----------
 ### handle_positions()
@@ -206,8 +310,6 @@ Socket 'Point Count' of node 'Domain Size'
 handle_positions(relative=None)
 ```
 
-> **node** : ERROR: Node 'Curve Handle Positions' not found
-
 > Node ERROR: Node 'Curve Handle Positions' not found
 
 #### Arguments:
@@ -216,7 +318,7 @@ handle_positions(relative=None)
 
 
 #### Returns:
-- **Node** : [left (Vector), right (Vector)]
+- **Node** : 'Curve Handle Positions' node
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](geono-splinepoint.md#splinepoint) :black_small_square: [Content](geono-splinepoint.md#content) :black_small_square: [Methods](geono-splinepoint.md#methods)</sub>
 
@@ -228,8 +330,6 @@ handle_positions(relative=None)
 ``` python
 handle_type_selection(left=True, right=True, handle_type='AUTO')
 ```
-
-> **node** : [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
 
 > Node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
 
@@ -246,6 +346,27 @@ handle_type_selection(left=True, right=True, handle_type='AUTO')
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](geono-splinepoint.md#splinepoint) :black_small_square: [Content](geono-splinepoint.md#content) :black_small_square: [Methods](geono-splinepoint.md#methods)</sub>
 
 ----------
+### index_in_curve()
+
+> method
+
+``` python
+index_in_curve(point_index=None)
+```
+
+> Socket 'Index in Curve' of node <&Curve of Point>
+
+#### Arguments:
+- **point_index** (_Integer_ = None) : point index
+
+
+
+#### Returns:
+- **Integer** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](geono-splinepoint.md#splinepoint) :black_small_square: [Content](geono-splinepoint.md#content) :black_small_square: [Methods](geono-splinepoint.md#methods)</sub>
+
+----------
 ### instance_on()
 
 > method
@@ -253,8 +374,6 @@ handle_type_selection(left=True, right=True, handle_type='AUTO')
 ``` python
 instance_on(instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None)
 ```
-
-> **node** : [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html)
 
 > Node [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html)
 
@@ -273,6 +392,28 @@ instance_on(instance=None, pick_instance=None, instance_index=None, rotation=Non
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](geono-splinepoint.md#splinepoint) :black_small_square: [Content](geono-splinepoint.md#content) :black_small_square: [Methods](geono-splinepoint.md#methods)</sub>
 
 ----------
+### offset_in_curve()
+
+> method
+
+``` python
+offset_in_curve(point_index=None, offset=None)
+```
+
+> Socket 'Point Index' of node <&Offset Point in Curve>
+
+#### Arguments:
+- **point_index** ( = None)
+- **offset** ( = None)
+
+
+
+#### Returns:
+- **Integer** : spline index
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](geono-splinepoint.md#splinepoint) :black_small_square: [Content](geono-splinepoint.md#content) :black_small_square: [Methods](geono-splinepoint.md#methods)</sub>
+
+----------
 ### set_handle_positions()
 
 > method
@@ -280,8 +421,6 @@ instance_on(instance=None, pick_instance=None, instance_index=None, rotation=Non
 ``` python
 set_handle_positions(position=None, offset=None, mode=None)
 ```
-
-> **node** : [Set Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_positions.html)
 
 > Node [Set Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_positions.html)
 
@@ -344,7 +483,7 @@ with GeoNodes("Curve handles"):
 
 
 #### Returns:
-- **curve** (_Geometry_)
+- **Curve** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](geono-splinepoint.md#splinepoint) :black_small_square: [Content](geono-splinepoint.md#content) :black_small_square: [Methods](geono-splinepoint.md#methods)</sub>
 
@@ -356,8 +495,6 @@ with GeoNodes("Curve handles"):
 ``` python
 set_handle_type(left=True, right=True, handle_type='AUTO')
 ```
-
-> **node** : [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html)
 
 > Node [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html)
 
@@ -420,6 +557,6 @@ with GeoNodes("Curve handles"):
 
 
 #### Returns:
-- **curve** (_Geometry_)
+- **Curve** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](geono-splinepoint.md#splinepoint) :black_small_square: [Content](geono-splinepoint.md#content) :black_small_square: [Methods](geono-splinepoint.md#methods)</sub>

@@ -85,7 +85,9 @@ updates
 - update : 2024/09/04
 """
 
+from inspect import Arguments
 import bpy
+from bpy.types import Property, PythonConstraint, SmoothModifier
 
 from .scripterror import NodeError
 from . import constants
@@ -122,9 +124,10 @@ class GeoBase:
 
     @property
     def position(self):
-        """ Node 'Position' (GeometryNodeInputPosition)
+        """ > Position property
 
-        > Node <&Node Position>
+        - getter : node <&Node Position>
+        - setter : node <&Node Set Position>
 
         Returns
         -------
@@ -134,41 +137,35 @@ class GeoBase:
 
     @position.setter
     def position(self, value):
-        """ Node 'Set Position' (GeometryNodeSetPosition)
-
-        > Node <&Node Set Position>
-
-        Arguments
-        ---------
-        - value (Vector) : socket 'Position' (Position)
-        """
         node = Node('Set Position', {'Geometry': self._geo, 'Selection': self._sel, 'Position': value})
-        return self._geo._jump(node._out)
+        return self._jump(node._out)
 
     @property
     def offset(self):
+        """ > Offset write only property
+
+        - getter : None
+        - setter : <&Node Set Position>
+
+        Returns
+        -------
+        - Error
+        """
         raise NodeError(f"offset is write only property")
 
     @offset.setter
     def offset(self, value):
-        """ Node 'Set Position' (GeometryNodeSetPosition)
-
-        > Node <&Node Set Position>
-
-        Arguments
-        ---------
-        - value (Vector) : socket 'Offset' (Offset)
-        """
         node = Node('Set Position', {'Geometry': self._geo, 'Selection': self._sel, 'Offset': value})
-        return self._geo._jump(node._out)
+        return self._jump(node._out)
 
     # ----- ID
 
     @property
     def id(self):
-        """ Node 'ID' (GeometryNodeInputID)
+        """ > Id property
 
-        > Node <&Node ID>
+        - getter : <&Node ID>
+        - setter : <&Node Set ID>
 
         Returns
         -------
@@ -178,24 +175,17 @@ class GeoBase:
 
     @id.setter
     def id(self, value):
-        """ Node 'Set ID' (GeometryNodeSetID)
-
-        > Node <&Node Set ID>
-
-        Arguments
-        ---------
-        - value (Integer) : socket 'ID' (ID)
-        """
         node = Node('Set ID', {'Geometry': self._geo, 'Selection': self._sel, 'ID': value})
-        return self._geo._jump(node._out)
+        return self._jump(node._out)
 
     # ----- Material
 
     @property
     def material_index(self):
-        """ Node 'Material Index' (GeometryNodeInputMaterialIndex)
+        """ > Material index property
 
-        > Node <&Node Material Index>
+        - getter : <&Node Material Index>
+        - setter : <&Node Set Material Index>
 
         Returns
         -------
@@ -205,31 +195,24 @@ class GeoBase:
 
     @material_index.setter
     def material_index(self, value):
-        """ Node 'Set Material Index' (GeometryNodeSetMaterialIndex)
-
-        > Node <&Node Set Material Index>
-
-        Arguments
-        ---------
-        - value (Integer) : socket 'Material Index' (Material Index)
-        """
-        self._geo._jump(Node('Set Material Index', {'Geometry': self._geo, 'Selection': self._sel, 'Material Index': value})._out)
+        self._jump(Node('Set Material Index', {'Geometry': self._geo, 'Selection': self._sel, 'Material Index': value})._out)
 
     @property
     def material(self):
+        """ > Material write only property
+
+        - getter : None
+        - setter : <&Node Set Material>
+
+        Returns
+        -------
+        - Error
+        """
         raise NodeError(f"material is write only property")
 
     @material.setter
     def material(self, value):
-        """ Node 'Set Material' (GeometryNodeSetMaterial)
-
-        > Node <&Node Set Material>
-
-        Arguments
-        ---------
-        - value (Material) : socket 'Material' (Material)
-        """
-        self._geo._jump(Node('Set Material', {'Geometry': self._geo, 'Selection': self._sel, 'Material': value})._out)
+        self._jump(Node('Set Material', {'Geometry': self._geo, 'Selection': self._sel, 'Material': value})._out)
 
     @classmethod
     def material_selection(cls, material=None):
@@ -239,9 +222,7 @@ class GeoBase:
     # Methods
 
     def set_position(self, position=None, offset=None):
-        """ Node 'Set Position' (GeometryNodeSetPosition)
-
-        > Node <&Node Set Position>
+        """ > Node <&Node Set Position>
 
         Arguments
         ---------
@@ -256,9 +237,7 @@ class GeoBase:
         return self._geo_type(node._out)
 
     def set_id(self, id=None):
-        """ Node 'Set ID' (GeometryNodeSetID)
-
-        > Node <&Node Set ID>
+        """ > Node <&Node Set ID>
 
         Arguments
         ---------
@@ -274,9 +253,7 @@ class GeoBase:
         return self._geo_type(node._out)
 
     def replace_material(self, old=None, new=None):
-        """ Node 'Replace Material' (GeometryNodeReplaceMaterial)
-
-        > Node <&Node Replace Material>
+        """ > Node <&Node Replace Material>
 
         Arguments
         ---------
@@ -360,44 +337,6 @@ class GeoBase:
         self._selection = selection
         return self
 
-        """
-        if selection is None:
-            self._selection = None
-            return self
-
-        if isinstance(selection, slice):
-            with Layout(f"selection = {selection}", color='AUTO_GEN'):
-                if selection.start is None:
-                    selection = nd.index.less_than(selection.stop)
-                elif selection.stop is None:
-                    selection = nd.index.greater_equal(selection.start)
-                else:
-                    a = (selection.start + selection.stop)/2
-                    dist = a - selection.start + .1
-                    selection = Float(nd.index).equal(a, epsilon=dist)
-
-        elif isinstance(selection, tuple):
-            with Layout(f"selection = tuple", color='AUTO_GEN'):
-                sel = None
-                idx = nd.index
-                for item in selection:
-                    if sel is None:
-                        sel = idx.equal(item)
-                    else:
-                        sel |= idx.equal(item)
-
-                selection = sel
-
-        else:
-            socket_type = utils.get_socket_type(selection)
-            if socket_type in ['INT', 'VALUE', 'FLOAT']:
-                with Layout(f"selection = []", color='AUTO_GEN'):
-                    selection = nd.index.equal(selection)
-
-        self._selection = Boolean(selection)
-
-        return self
-        """
 
 # =============================================================================================================================
 # =============================================================================================================================
@@ -415,12 +354,16 @@ class Geometry(Socket, GeoBase):
         If value is None, a Group Input socket of type Geometry is created.
         When a Group Input socket is created, default name 'Geometry' is used if name argument is None.
 
+        ``` python
+        geometry = Geometry() # Default group input geometry
+        geometry = Geometry(name="Mesh") # Input group geometry
+        ```
+
         Arguments
         ---------
         - value (Socket = None) : initial value
         - name (str = None) : Create an Group Input socket with the provided str
         - tip (str = None) : User tip (for Group Input sockets)
-        - subtype (str='NONE') : socket subtype
         """
 
         bsock = utils.get_bsocket(value)
@@ -487,9 +430,7 @@ class Geometry(Socket, GeoBase):
     # ----- Viewer
 
     def viewer(self, value=None):
-        """ Create a viewer node.
-
-        > Node <&Node Viewer>
+        """ > Node <&Node Viewer>
 
         Arguments
         ---------
@@ -504,9 +445,7 @@ class Geometry(Socket, GeoBase):
     # ----- Operations
 
     def set_id(self, id=None):
-        """ Set ID.
-
-        > Node <&Node Set ID>
+        """ > Node <&Node Set ID>
 
         Arguments
         ---------
@@ -519,9 +458,7 @@ class Geometry(Socket, GeoBase):
         return Node("Set ID", {'Geometry': self, 'Selection': self._sel, 'ID': id})._out
 
     def set_position(self, position=None, offset=None):
-        """ Set Position.
-
-        > Node <&Node Set Position>
+        """ > Node <&Node Set Position>
 
         Arguments
         ---------
@@ -534,9 +471,7 @@ class Geometry(Socket, GeoBase):
         return Node("Set Position", {'Geometry': self, 'Selection': self._sel, 'Position': position, 'Offset': offset})._out
 
     def set_material(self, material=None):
-        """ Set Material.
-
-        > Node <&Node Set Material>
+        """ > Node <&Node Set Material>
 
         Arguments
         ---------
@@ -549,9 +484,7 @@ class Geometry(Socket, GeoBase):
         return Node("Set Material", {'Geometry': self, 'Selection': self._sel, 'Material': material})._out
 
     def set_shade_smooth(self, shade_smooth=True, edge=False):
-        """ Set Shade Smooth.
-
-        > Node <&Node Set Shade Smooth>
+        """ > Node <&Node Set Shade Smooth>
 
         Arguments
         ---------
@@ -566,9 +499,7 @@ class Geometry(Socket, GeoBase):
     # ----- Remove named attribute
 
     def remove_named_attribute(self, name, exact=True):
-        """ Remove named attribute
-
-        > Node <&Node Remove Named Attribute>
+        """ > Node <&Node Remove Named Attribute>
 
         Arguments
         ---------
@@ -590,9 +521,7 @@ class Geometry(Socket, GeoBase):
 
     @staticmethod
     def index_of_nearest(position=None, group_id=None):
-        """ Node 'Index of Nearest' (GeometryNodeIndexOfNearest)
-
-        > Node <&Node Index of Nearest>
+        """ > Node <&Node Index of Nearest>
 
         Arguments
         ---------
@@ -604,16 +533,12 @@ class Geometry(Socket, GeoBase):
         - Integer, [has_neighbor_]
         """
 
-        index = Node('Index of Nearest', {'Position': position, 'Group ID': group_id})._out
-        index.has_neighbor_ = index.node.has_neighbor
-        return index
+        return Node('Index of Nearest', {'Position': position, 'Group ID': group_id})._out
 
     # ----- Raycast
 
     def raycast(self, attribute=None, source_position=None, ray_direction=None, ray_length=None, interpolated=True):
-        """ Node 'Raycast' (GeometryNodeRaycast)
-
-        > Node <&Node Raycast>
+        """ > Node <&Node Raycast>
 
         mapping in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4')
 
@@ -627,7 +552,7 @@ class Geometry(Socket, GeoBase):
 
         Returns
         -------
-        - Node: [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Float)]
+        - Node: 'RayCast' node
         """
 
         data_type = utils.get_data_type(attribute, restrict_to=['FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4'])
@@ -639,6 +564,12 @@ class Geometry(Socket, GeoBase):
     # Geometry Operations
 
     def bake(self, **kwargs):
+        """ Node <&Node Bake>
+
+        Returns
+        -------
+        - Node : 'Bake' node
+        """
 
         node = Node('Bake', {'Geometry': self})
 
@@ -652,35 +583,32 @@ class Geometry(Socket, GeoBase):
 
     @property
     def bounding_box(self):
-        """ Property node 'Bounding Box' (GeometryNodeBoundBox)
+        """ > Bounding box read only property
 
-        > Node <&Node Bounding Box>
+        - getter : <&Node Bounding Box>
+        - setter : None
 
         Returns
         -------
         - Mesh [min_, max_]
         """
-        bb = Mesh(Node('Bounding Box', {'Geometry': self})._out)
-        bb.min_ = bb.node.min
-        bb.max_ = bb.node.max
-        return bb
+        return Mesh(Node('Bounding Box', {'Geometry': self})._out)
 
     @property
     def convex_hull(self):
-        """ Property node 'Convex Hull' (GeometryNodeConvexHull)
+        """ > Convex hull read only property
 
-        > Node <&Node Convex Hull>
+        - getter : <&Node Convex Hull>
+        - setter : None
 
         Returns
         -------
-        - convex_hull (Geometry)
+        - Mesh
         """
         return Mesh(Node('Convex Hull', {'Geometry': self})._out)
 
     def merge_by_distance(self, distance=None, mode='ALL'):
-        """ Node 'Merge by Distance' (GeometryNodeMergeByDistance)
-
-        > Node <&Node Merge by Distance>
+        """ > Node <&Node Merge by Distance>
 
         Arguments
         ---------
@@ -689,17 +617,16 @@ class Geometry(Socket, GeoBase):
 
         Returns
         -------
-        - geometry (Geometry)
+        - Geometry
         """
         return self._geo_type(self._node('Merge by Distance', {'Distance': distance}, mode=mode)._out)
 
     def transform(self, translation=None, rotation=None, scale=None, matrix=None):
-        """ Node 'Transform Geometry' (GeometryNodeTransform)
+        """ > Node <&Node Transform Geometry>
 
-        > Node <&Node Transform Geometry>
-
-        If 'matrix' argument is None, the mode 'COMPONENTS' is set.
-        If 'matrix' argument is not NOne, the mode 'MATRIX' is set and the other arguments are ignored.
+        > [!NOTE]
+        > - If **matrix** argument is None, the mode 'COMPONENTS' is set.
+        > - If **matrix** argument is not NOne, the mode 'MATRIX' is set and the other arguments are ignored.
 
         Arguments
         ---------
@@ -710,7 +637,7 @@ class Geometry(Socket, GeoBase):
 
         Returns
         -------
-        - geometry (Geometry)
+        - Geometry
         """
         if matrix is None:
             return self._geo_type(Node('Transform Geometry', {'Geometry': self, 'Translation': translation, 'Rotation': rotation, 'Scale': scale}, mode='COMPONENTS')._out)
@@ -719,21 +646,19 @@ class Geometry(Socket, GeoBase):
 
     @property
     def separate_components(self):
-        """ Property node 'Separate Components' (GeometryNodeSeparateComponents)
+        """ > Node <&Node Separate Components>
 
-        > Node <&Node Separate Components>
+        > See <#mesh>, <#curve>, <#point_cloud>, <#instances> and <#volume> properties
 
         Returns
         -------
-        - Node: [mesh (Geometry), curve (Geometry), grease_pencil (Geometry), point_cloud (Geometry), volume (Geometry), instances (Geometry)]
+        - Node : 'Separate components node
         """
         return self._cache('Separate Components', {'Geometry': self})
 
     @property
     def mesh(self):
-        """ Property mesh component
-
-        > Node <&Node Separate Components>
+        """ > Socket 'Mesh' of node <&Node Separate Components>
 
         Returns
         -------
@@ -743,9 +668,7 @@ class Geometry(Socket, GeoBase):
 
     @property
     def curve(self):
-        """ Property curve component
-
-        > Node <&Node Separate Components>
+        """ > Socket 'Curve' of node <&Node Separate Components>
 
         Returns
         -------
@@ -755,9 +678,7 @@ class Geometry(Socket, GeoBase):
 
     @property
     def point_cloud(self):
-        """ Property cloud component
-
-        > Node <&Node Separate Components>
+        """ > Socket 'Point Cloud' of node <&Node Separate Components>
 
         Returns
         -------
@@ -767,9 +688,7 @@ class Geometry(Socket, GeoBase):
 
     @property
     def volume(self):
-        """ Property volume component
-
-        > Node <&Node Separate Components>
+        """ > Socket 'Volume' of node <&Node Separate Components>
 
         Returns
         -------
@@ -779,9 +698,7 @@ class Geometry(Socket, GeoBase):
 
     @property
     def instances(self):
-        """ Property instances component
-
-        > Node <&Node Separate Components>
+        """ > Socket Instances of node <&Node Separate Components>
 
         Returns
         -------
@@ -790,9 +707,7 @@ class Geometry(Socket, GeoBase):
         return Instances(self.separate_components.instances)
 
     def join(self, *geometries):
-        """ Node 'Join Geometry' (GeometryNodeJoinGeometry)
-
-        > Node <&Node Join Geometry>
+        """ > Node <&Node Join Geometry>
 
         Operator + can be used : ``` geo + other_geo ``` is equivalent to ``` geo.join(other) ```
         If all the geometries are of the same type, the returned geometry uses this type.
@@ -820,11 +735,7 @@ class Geometry(Socket, GeoBase):
         - Geometry
         """
 
-        if False and self.node._bnode.bl_idname == 'GeometryNodeJoinGeometry':
-            node = self.node
-            node.set_input_sockets({'Geometry': list(geometries)})
-        else:
-            node = Node('Join Geometry', {'Geometry': [self] + list(geometries)})
+        node = Node('Join Geometry', {'Geometry': [self] + list(geometries)})
 
         geo = node._out
         classes = set()
@@ -840,9 +751,7 @@ class Geometry(Socket, GeoBase):
     # Operations
 
     def to_instance(self, *geometries):
-        """ Node 'Geometry to Instance' (GeometryNodeGeometryToInstance)
-
-        > Node <&Node Geometry to Instance>
+        """ > Node <&Node Geometry to Instance>
 
         Arguments
         ---------
@@ -897,6 +806,11 @@ class Domain(GeoBase, NodeCache):
 
     def __str__(self):
         return f"<Domain {self.DOMAIN_NAME} of {self._geo}>"
+
+    # ----- Jump
+
+    def _jump(self, socket):
+        return self._jump(socket)
 
     # ----- Overrides selection
     # Selection can be done either on the geometry or on the domain (or both but strange !)
@@ -971,11 +885,27 @@ class Domain(GeoBase, NodeCache):
     # ----- Viewer
 
     def viewer(self, value=None):
+        """ > Node <&Node Viewer>
+
+        Arguments
+        ---------
+        - value (Socket = None) : value to view
+        """
         return self._node('Viewer', {'Value': value}, data_type=utils.get_data_type(value))
 
     # ----- Attribute statistic
 
     def attribute_statistic(self, attribute=None):
+        """ > Node <&Node Attribute Statistic>
+
+        Arguments
+        ---------
+        - attribute (Socket = None) : attribute to compute statistic
+
+        Returns
+        -------
+        - Node : 'Attribute Statistic Node'
+        """
         data_type = utils.get_data_type(attribute, ['FLOAT_VECTOR', 'VECTOR', 'ROTATION', 'COLOR'], 'FLOAT')
 
         return self._node('Attribute Statistic', {'Attribute': attribute}, data_type=data_type, use_cache=False)
@@ -983,11 +913,9 @@ class Domain(GeoBase, NodeCache):
     # ----- Capture attribute
 
     def capture_attribute(self, attribute=None, **others):
-        """ Node 'Capture Attribute' (GeometryNodeCaptureAttribute)
+        """ > Node <&Node Capture Attribute>
 
-        > Node <&Node Capture Attribute>
-
-        This method return the capture of 'attribute' argument if not keyword arguments are provided,
+        This method return the capture of 'attribute' argument if no keyword arguments are provided,
         otherwise returns the node.
 
         ``` python
@@ -1027,7 +955,7 @@ class Domain(GeoBase, NodeCache):
             raise NodeError("'Capture Attribute' error: need at least one attribute")
         node._set_items(sockets)
 
-        self._geo._jump(node._out)
+        self._jump(node._out)
 
         if len(others) == 0:
             return node.attribute
@@ -1035,24 +963,19 @@ class Domain(GeoBase, NodeCache):
             return node
 
     def capture(self, attribute=None, **others):
-        """ Node 'Capture Attribute' (GeometryNodeCaptureAttribute)
+        """ > Node <&Node Capture Attribute>
 
-        > Node <&Node Capture Attribute>
-
-        synonym of 'capture_named_attribute'
+        > see <#capture_attribute>
         """
         return self.capture_attribute(attribute=attribute, **others)
 
     # ----- Store named attribute
 
     def store_named_attribute(self, name, value=None):
-        """ Node 'Store Named Attribute' (GeometryNodeStoreNamedAttribute)
-
-        > Node <&Node Store Named Attribute>
+        """ > Node <&Node Store Named Attribute>
 
         - data_type (str): Node.data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BYTE_COLOR', 'BOOLEAN', 'FLOAT2', 'INT8', 'QUATERNION', 'FLOAT4X4')
         - domain (str): Node.domain in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
-
 
         Arguments
         ---------
@@ -1063,18 +986,15 @@ class Domain(GeoBase, NodeCache):
         -------
         - Geometry
         """
-
         data_type   = utils.get_data_type(value)
         node = self._node('Store Named Attribute', {'Name': name, 'Value': value}, data_type=data_type)
 
-        return self._geo._jump(node._out)
+        return self._jump(node._out)
 
     def store(self, name, value=None):
-        """ Node 'Store Named Attribute' (GeometryNodeStoreNamedAttribute)
+        """ > Node <&Node Store Named Attribute>
 
-        > Node <&Node Store Named Attribute>
-
-        Synonym of 'store_named_attribute'
+        > See <#store_named_attribute>
         """
         return self.store_named_attribute(name, value=value)
 
@@ -1082,9 +1002,7 @@ class Domain(GeoBase, NodeCache):
     # Sample nodes with domain
 
     def proximity(self, group_id=None, sample_position=None, sample_group_id=None):
-        """ Node 'Geometry Proximity' (GeometryNodeProximity)
-
-        > Node <&Node Geometry Proximity>
+        """ > Node <&Node Geometry Proximity>
 
         Arguments
         ---------
@@ -1094,19 +1012,14 @@ class Domain(GeoBase, NodeCache):
 
         Returns
         -------
-        - Vector [distance_, is_valid_]
+        - Vector
         """
 
         target = self.restrict_domain(['POINT', 'EDGE', 'FACE'], 'Proximity')
-        position = Node('Geometry Proximity', {'Geometry': self._geo, 'Group ID': group_id, 'Sample Position': sample_position, 'Sample Group ID': sample_group_id}, target_element=self.DOMAIN_NAME + 'S')._out
-        position.distance_ = position.node.distance
-        position.is_valid_ = position.node.is_valid
-        return position
+        return Node('Geometry Proximity', {'Geometry': self._geo, 'Group ID': group_id, 'Sample Position': sample_position, 'Sample Group ID': sample_group_id}, target_element=self.DOMAIN_NAME + 'S')._out
 
     def sample_index(self, value=None, index=0, clamp=False):
-        """ Node 'Sample Index' (GeometryNodeSampleIndex)
-
-        > Node <&Node Sample Index>
+        """ > Node <&Node Sample Index>
 
         - data_type (str): Node.data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4')
         - domain (str): Node.domain in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
@@ -1125,9 +1038,7 @@ class Domain(GeoBase, NodeCache):
         return self._node('Sample Index', {'Value': value, 'Index': index}, clamp=clamp, data_type=utils.get_data_type(value))._out
 
     def sample_nearest(self, sample_position=None):
-        """ Node 'Sample Nearest' (GeometryNodeSampleNearest)
-
-        > Node <&Node Sample Nearest>
+        """ > Node <&Node Sample Nearest>
 
         - domain (str): Node.domain in ('POINT', 'EDGE', 'FACE', 'CORNER')
 
@@ -1139,16 +1050,13 @@ class Domain(GeoBase, NodeCache):
         -------
         - Integer
         """
-
         return self._node('Sample Nearest', {'Sample Position': sample_position})._out
 
     # ====================================================================================================
     # Geometry Operations
 
     def delete_geometry(self, mode='ALL'):
-        """ Node 'Delete Geometry' (GeometryNodeDeleteGeometry)
-
-        > Node <&Node Delete Geometry>
+        """ > Node <&Node Delete Geometry>
 
         - domain (str): Node.domain in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
 
@@ -1158,52 +1066,51 @@ class Domain(GeoBase, NodeCache):
 
         Returns
         -------
-        - geometry (Geometry)
+        - Geometry
         """
         self.exclude_corner('delete_geometry')
         return self._geo_type(self._node('Delete Geometry', mode=mode)._out)
 
     def delete(self, mode='ALL'):
-        """ Node 'Delete Geometry' (GeometryNodeDeleteGeometry)
+        """ > Node <&Node Delete Geometry>
 
-        > Node <&Node Delete Geometry>
-
-        Synonym of 'delete_geometry'
+        > See <#delete_geometry>
         """
 
         return self.delete_geometry(mode=mode)
 
     def delete_all(self):
-        """ Node 'Delete Geometry' (GeometryNodeDeleteGeometry)
+        """ > Node <&Node Delete Geometry>
 
-        > Node <&Node Delete Geometry>
-
-        Shortcut for : ``` domain.delete_geometry(mode='ALL') ```
+        Shortcut for :
+        ``` python
+        domain.delete_geometry(mode='ALL')
+        ```
         """
         return self.delete_geometry(mode='ALL')
 
     def delete_faces(self):
-        """ Node 'Delete Geometry' (GeometryNodeDeleteGeometry)
+        """ > Node <&Node Delete Geometry>
 
-        > Node <&Node Delete Geometry>
-
-        Shortcut for : ``` domain.delete_geometry(mode='ONLY_FACE') ```
+        Shortcut for :
+        ``` python
+        domain.delete_geometry(mode='ONLY_FACE')
+        ```
         """
         return self.delete_geometry(mode='ONLY_FACE')
 
     def delete_edges_and_faces(self):
-        """ Node 'Delete Geometry' (GeometryNodeDeleteGeometry)
+        """ > Node <&Node Delete Geometry>
 
-        > Node <&Node Delete Geometry>
-
-        Shortcut for : ``` domain.delete_geometry(mode='EDGE_FACE') ```
+        Shortcut for :
+        ``` python
+        domain.delete_geometry(mode='EDGE_FACE')
+        ```
         """
         return self.delete_geometry(mode='EDGE_FACE')
 
     def duplicate_elements(self, amount=1):
-        """ Node 'Duplicate Elements' (GeometryNodeDuplicateElements)
-
-        > Node <&Node Duplicate Elements>
+        """ > Node <&Node Duplicate Elements>
 
         - domain (str): Node.domain in ('POINT', 'EDGE', 'FACE', 'SPLINE', 'INSTANCE')
 
@@ -1213,20 +1120,15 @@ class Domain(GeoBase, NodeCache):
 
         Returns
         -------
-        - Geometry [duplicate_index_]
+        - Geometry
         """
 
         self.exclude_corner('duplicate_elements')
         domain = self.domain_name(rename={'CURVE': 'SPLINE'})
-        #geo = self._geo_type(self._node('Duplicate Elements', {'Amount': amount}, domain=domain)._out)
-        geo =self._geo_type(Node('Duplicate Elements', {'Geometry': self._geo, 'Selection': self._sel, 'Amount': amount}, domain=domain)._out)
-        geo.duplicate_index_= geo.node.duplicate_index
-        return geo
+        return self._geo_type(Node('Duplicate Elements', {'Geometry': self._geo, 'Selection': self._sel, 'Amount': amount}, domain=domain)._out)
 
     def sort_elements(self, group_id=None, sort_weight=None):
-        """ Node 'Sort Elements' (GeometryNodeSortElements)
-
-        > Node <&Node Sort Elements>
+        """ > Node <&Node Sort Elements>
 
         - domain (str): Node.domain in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
 
@@ -1239,31 +1141,24 @@ class Domain(GeoBase, NodeCache):
         -------
         - Geometry
         """
-
         self.exclude_corner('sort_elements')
         return self._geo_type(self._node('Sort Elements', {'Group ID': group_id, 'Sort Weight': sort_weight})._out)
 
     def separate(self):
-        """ Node 'Separate Geometry' (GeometryNodeSeparateGeometry)
-
-        > Node <&Node Separate Geometry>
+        """ > Node <&Node Separate Geometry>
 
         - domain (str): Node.domain in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
 
         Returns
         -------
-        - Geometry [inverted_]
+        - Geometry
         """
 
         self.exclude_corner('separate')
-        geo = self._geo_type(self._node('Separate Geometry')._out)
-        geo.inverted_ = self._geo_type(geo.node.inverted)
-        return geo
+        return self._geo_type(self._node('Separate Geometry'))._out
 
     def split_to_instances(self, group_id=None):
-        """ Node 'Split to Instances' (GeometryNodeSplitToInstances)
-
-        > Node <&Node Split to Instances>
+        """ > Node <&Node Split to Instances>
 
         - domain (str): Node.domain in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
 
@@ -1273,20 +1168,16 @@ class Domain(GeoBase, NodeCache):
 
         Returns
         -------
-        - instances [group_id_]
+        - instances
         """
 
         self.exclude_corner('split_to_instances')
-        instances = Instances(self._node('Split to Instances', {'Group ID': group_id})._out)
-        instances.group_id_ = instances.node.group_id
-        return instances
+        return Instances(self._node('Split to Instances', {'Group ID': group_id})._out)
 
     # ----- Mesh conversion to points
 
     def to_points(self, position=None, radius=None):
-        """ Node 'Mesh to Points' (GeometryNodeMeshToPoints)
-
-        > Node <&Node Mesh to Points>
+        """ > Node <&Node Mesh to Points>
 
         - mode (str): Node.mode in ('VERTICES', 'EDGES', 'FACES', 'CORNERS')
 
@@ -1306,9 +1197,7 @@ class Domain(GeoBase, NodeCache):
     # ----- Extrusion
 
     def extrude(self, offset=None, offset_scale=None, individual=None):
-        """ Node 'Extrude Mesh' (GeometryNodeExtrudeMesh)
-
-        > Node <&Node Extrude Mesh>
+        """ > Node <&Node Extrude Mesh>
 
         - mode (str): Node.mode in ('VERTICES', 'EDGES', 'FACES')
 
@@ -1341,18 +1230,12 @@ class Domain(GeoBase, NodeCache):
         mode = self.plural_domain(['POINT', 'EDGE', 'FACE'], 'Extrude Mesh')
         node = Node('Extrude Mesh', {'Mesh': self._geo, 'Selection': self._sel, 'Offset': offset, 'Offset Scale': offset_scale, 'Individual': individual}, mode = mode)
 
-        mesh = Mesh(node.mesh)
-        mesh.top_  = node.top
-        mesh.side_ = node.side
-
-        return mesh
+        return Mesh(node.mesh)
 
     # ----- Field
 
     def accumulate_field(self, value=None, group_id=None, ):
-        """ Node 'Accumulate Field' (GeometryNodeAccumulateField)
-
-        > Node <&Node Accumulate Field>
+        """ > Node <&Node Accumulate Field>
 
         - data_type (str): Node.data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'TRANSFORM')
         - domain (str): Node.domain in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
@@ -1364,16 +1247,13 @@ class Domain(GeoBase, NodeCache):
 
         Returns
         -------
-        - Node: [leading (Float), trailing (Float), total (Float)]
+        - Node : 'Accumulate Field'
         """
-
         data_type = utils.get_data_type(value, ('FLOAT', 'INT', 'FLOAT_VECTOR', 'TRANSFORM'))
         return Node('Accumulate Field', {'Value': value, 'Group ID': group_id}, data_type=data_type, domain=self.DOMAIN_NAME)
 
     def evaluate_at_index(self, index=None, value=None):
-        """ Node 'Evaluate at Index' (GeometryNodeFieldAtIndex)
-
-        > Node <&Node Evaluate at Index>
+        """ > Node <&Node Evaluate at Index>
 
         - data_type (str): Node.data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4')
         - domain (str): Node.domain in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
@@ -1387,14 +1267,11 @@ class Domain(GeoBase, NodeCache):
         -------
         - Socket
         """
-
         data_type = utils.get_data_type(value)
         return Node('Evaluate at Index', {'Index': index, 'Value': value}, data_type=data_type, domain=self.DOMAIN_NAME)._out
 
     def evaluate_on_domain(self, value=None):
-        """ Node 'Evaluate on Domain' (GeometryNodeFieldOnDomain)
-
-        > Node <&Node Evaluate on Domain>
+        """ > Node <&Node Evaluate on Domain>
 
         - data_type (str): Node.data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4')
         - domain (str): Node.domain in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
@@ -1407,7 +1284,6 @@ class Domain(GeoBase, NodeCache):
         -------
         - Socket
         """
-
         data_type = utils.get_data_type(value)
         return Node('Evaluate on Domain', {'Value': value}, data_type=data_type, domain=self.DOMAIN_NAME)._out
 
@@ -1423,11 +1299,7 @@ class Point(Domain):
 
     @property
     def count(self):
-        """ Node 'Domain Size' (GeometryNodeAttributeDomainSize)
-
-        > Node <&Node Domain Size>
-
-        Socket 'Point Count' of node 'Domain Size'
+        """ > Socket 'Point Count' of node <&Node Domain Size>
 
         Returns
         -------
@@ -1438,9 +1310,7 @@ class Point(Domain):
     # ----- Instance on points
 
     def instance_on(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
-        """ Node 'Instance on Points' (GeometryNodeInstanceOnPoints)
-
-        > Node <&Node Instance on Points>
+        """ > Node <&Node Instance on Points>
 
         Arguments
         ---------
@@ -1468,47 +1338,38 @@ class Vertex(Point):
 
     @property
     def neighbors(self):
-        """ Node 'Vertex Neighbors' (GeometryNodeInputMeshVertexNeighbors)
-
-        > Node <&Node Vertex Neighbors>
+        """ > Node <&Node Vertex Neighbors>
 
         Returns
         -------
-        - Node: [vertex_count (Integer), face_count (Integer)]
+        - Node : 'Vertex Neighbors' node
         """
-
         return self._cache('Vertex Neighbors')
 
     @property
     def neighbors_vertex_count(self):
-        """ Node 'Vertex Neighbors' (GeometryNodeInputMeshVertexNeighbors)
-
-        > Node <&Node Vertex Neighbors>
+        """ > Socket 'Vertex Count' of node <&Node Vertex Neighbors>
 
         Returns
         -------
-        - Integer : Socket 'Vertex Count' of node 'Vertex Neighbors'
+        - Integer
         """
         return self.neighbors.vertex_count
 
     @property
     def neighbors_face_count(self):
-        """ Node 'Vertex Neighbors' (GeometryNodeInputMeshVertexNeighbors)
-
-        > Node <&Node Vertex Neighbors>
+        """ > Socket 'Face Count' of node <&Node Vertex Neighbors>
 
         Returns
         -------
-        - Integer : Socket 'Face Count' of node 'Vertex Neighbors'
+        - Integer
         """
         return self.neighbors.face_count
 
     # ----- Edge paths to selection
 
     def paths_to_selection(self, next_vertex_index):
-        """ Node 'Edge Paths to Selection' (GeometryNodeEdgePathsToSelection)
-
-        > Node <&Node Edge Paths to Selection>
+        """ > Node <&Node Edge Paths to Selection>
 
         Arguments
         ---------
@@ -1525,9 +1386,7 @@ class Vertex(Point):
     # ----- Edge paths to curves
 
     def edge_paths_to_curves(self, next_vertex_index=None):
-        """ Node 'Edge Paths to Curves' (GeometryNodeEdgePathsToCurves)
-
-        > Node <&Node Edge Paths to Curves>
+        """ > Node <&Node Edge Paths to Curves>
 
         Arguments
         ---------
@@ -1544,9 +1403,7 @@ class Vertex(Point):
 
     @classmethod
     def edge_index(cls, vertex_index=None, weights=None, sort_index=None):
-        """ Node 'Edges of Vertex' (GeometryNodeEdgesOfVertex)
-
-        > Node <&Node Edges of Vertex>
+        """ > Node <&Node Edges of Vertex>
 
         Arguments
         ---------
@@ -1556,18 +1413,14 @@ class Vertex(Point):
 
         Returns
         -------
-        - Integer [total_]
+        - Integer
         """
 
-        index = Node('Edges of Vertex', {'Vertex Index': vertex_index, 'Weights': weights, 'Sort Index': sort_index})._out
-        index.total_ = index.node.total
-        return index
+        return Node('Edges of Vertex', {'Vertex Index': vertex_index, 'Weights': weights, 'Sort Index': sort_index})._out
 
     @classmethod
     def corner_index(cls, vertex_index=None, weights=None, sort_index=None):
-        """ Node 'Corners of Vertex' (GeometryNodeCornersOfVertex)
-
-        > Node <&Node Corners of Vertex>
+        """ > Node <&Node Corners of Vertex>
 
         Arguments
         ---------
@@ -1577,25 +1430,24 @@ class Vertex(Point):
 
         Returns
         -------
-        - Integer [total_]
+        - Integer
         """
-
-        index = Node('Corners of Vertex', {'Vertex Index': vertex_index, 'Weights': weights, 'Sort Index': sort_index})._out
-        index.total_ = index.node.total
-        return index
+        return Node('Corners of Vertex', {'Vertex Index': vertex_index, 'Weights': weights, 'Sort Index': sort_index})._out
 
 class SplinePoint(Point):
-
     """ > Point domain of a <!Curve>
+
+    Methods of **SplinePoint** class are nodes which accept 'POINT' domain.
+
+    In addition, the nodes <*Curve of Point> and <*Offset Point in Curve> are implemented
+    in methods <#curve_index>, <#index_in_curve> and <#offset_in_curve>.
     """
 
     # ----- Handle positions
 
     @classmethod
     def handle_positions(cls, relative=None):
-        """ Node 'Curve Handle Positions' (GeometryNodeInputCurveHandlePositions)
-
-        > Node <&Node Curve Handle Positions>
+        """ > Node <&Node Curve Handle Positions>
 
         Arguments
         ---------
@@ -1603,15 +1455,13 @@ class SplinePoint(Point):
 
         Returns
         -------
-        - Node: [left (Vector), right (Vector)]
+        - Node : 'Curve Handle Positions' node
         """
 
         return Node('Curve Handle Positions', {'Relative': relative})
 
     def set_handle_positions(self, position=None, offset=None, mode=None):
-        """ Node 'Set Handle Positions' (GeometryNodeSetCurveHandlePositions)
-
-        > Node <&Node Set Handle Positions>
+        """ > Node <&Node Set Handle Positions>
 
         ``` python
         with GeoNodes("Curve handles"):
@@ -1672,120 +1522,88 @@ class SplinePoint(Point):
 
         Returns
         -------
-        - curve (Geometry)
+        - Curve
         """
-
-        self._geo._jump(Node('Set Handle Positions', {'Curve': self._geo, 'Selection': self._sel, 'Position': position, 'Offset': offset}, mode=mode)._out)
+        return Curve(Node('Set Handle Positions', {'Curve': self._geo, 'Selection': self._sel, 'Position': position, 'Offset': offset}, mode=mode)._out)
 
     # -----------------------------------------------------------------------------------------------------------------------------
     # Handle position properties
 
     @property
     def left_handle_position(self):
-        """ Node 'Curve Handle Positions' (GeometryNodeInputCurveHandlePositions)
+        """ > Left handle property
 
-        > Node <&Node Curve Handle Positions>
+        - getter : socket 'Left' of node <&Node Handle Positions>
+        - setter : node <&Node Set Handle Positions>
 
         Returns
         -------
-        - Socket 'Left'
+        - Vector
         """
-
         return self.handle_positions(relative=False).left
 
     @left_handle_position.setter
     def left_handle_position(self, value):
-        """ Node 'Set Handle Positions' (GeometryNodeSetCurveHandlePositions)
-
-        > Node <&Node Set Handle Positions>
-
-        Arguments
-        ---------
-        - value (Vector) : socket 'Position' (Position)
-        """
-        self.set_handle_positions(position=value, mode='LEFT')
+        self._jump(self.set_handle_positions(position=value, mode='LEFT'))
 
     @property
     def right_handle_position(self):
-        """ Node 'Curve Handle Positions' (GeometryNodeInputCurveHandlePositions)
+        """ > Right handle position property
 
-        > Node <&Node Curve Handle Positions>
+        - getter : socket 'Right' of node <&Node Handle Positions>
+        - setter : node <&Node Set Handle Positions>
 
         Returns
         -------
-        - Socket 'Right'
+        - Vector
         """
         return self.handle_positions(relative=False).right
 
     @right_handle_position.setter
     def right_handle_position(self, value):
-        """ Node 'Set Handle Positions' (GeometryNodeSetCurveHandlePositions)
-
-        > Node <&Node Set Handle Positions>
-
-        Arguments
-        ---------
-        - value (Vector) : socket 'Position' (Position)
-        """
-        self.set_handle_positions(position=value, mode='RIGHT')
+        self._jump(self.set_handle_positions(position=value, mode='RIGHT'))
 
     # Offset
 
     @property
     def left_handle_offset(self):
-        """ Node 'Curve Handle Positions' (GeometryNodeInputCurveHandlePositions)
+        """ > Left handle offset property
 
-        > Node <&Node Curve Handle Positions>
+        - getter : socket 'Left' of node <&Node Handle Positions>, relative
+        - setter : node <&Node Set Handle Positions>
 
         Returns
         -------
-        - Socket 'Left'
+        - Vector
         """
         return self.handle_positions(relative=True).left
 
     @left_handle_offset.setter
     def left_handle_offset(self, value):
-        """ Node 'Set Handle Positions' (GeometryNodeSetCurveHandlePositions)
-
-        > Node <&Node Set Handle Positions>
-
-        Arguments
-        ---------
-        - value (Vector) : socket 'Position' (Position)
-        """
-        self.set_handle_positions(offset=value, mode='LEFT')
+        self._jump(self.set_handle_positions(offset=value, mode='LEFT'))
 
     @property
     def right_handle_offset(self):
-        """ Node 'Curve Handle Positions' (GeometryNodeInputCurveHandlePositions)
+        """ > Right handle offset property
 
-        > Node <&Node Curve Handle Positions>
+        - getter : socket 'Right' of node <&Node Handle Positions>, relative
+        - setter : node <&Node Set Handle Positions>
 
         Returns
         -------
-        - Socket 'Right'
+        - Vector
         """
         return self.handle_positions(relative=True).right
 
     @right_handle_offset.setter
     def right_handle_offset(self, value):
-        """ Node 'Set Handle Positions' (GeometryNodeSetCurveHandlePositions)
-
-        > Node <&Node Set Handle Positions>
-
-        Arguments
-        ---------
-        - value (Vector) : socket 'Position' (Position)
-        """
-        self.set_handle_positions(offset=value, mode='RIGHT')
+        self._jump(self.set_handle_positions(offset=value, mode='RIGHT'))
 
     # ----- Handle type
 
     @classmethod
     def handle_type_selection(cls, left=True, right=True, handle_type='AUTO'):
-        """ Node 'Handle Type Selection' (GeometryNodeCurveHandleTypeSelection)
-
-        > Node <&Node Handle Type Selection>
+        """ > Node <&Node Handle Type Selection>
 
         Arguments
         ---------
@@ -1806,9 +1624,7 @@ class SplinePoint(Point):
         return Node('Handle Type Selection', mode=mode, handle_type=handle_type)._out
 
     def set_handle_type(self, left=True, right=True, handle_type='AUTO'):
-        """ Node 'Set Handle Type' (GeometryNodeCurveSetHandles)
-
-        > Node <&Node Set Handle Type>
+        """ > Node <&Node Set Handle Type>
 
         ``` python
         with GeoNodes("Curve handles"):
@@ -1869,7 +1685,7 @@ class SplinePoint(Point):
 
         Returns
         -------
-        - curve (Geometry)
+        - Curve
         """
 
         mode = set()
@@ -1877,7 +1693,7 @@ class SplinePoint(Point):
             mode.add('LEFT')
         if right:
             mode.add('RIGHT')
-        self._geo._jump(Node('Set Handle Type', {'Curve': self._geo, 'Selection': self._sel}, mode=mode, handle_type=handle_type)._out)
+        return Curve(Node('Set Handle Type', {'Curve': self._geo, 'Selection': self._sel}, mode=mode, handle_type=handle_type)._out)
 
     # -----------------------------------------------------------------------------------------------------------------------------
     # Handle types as enum in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
@@ -1886,190 +1702,326 @@ class SplinePoint(Point):
 
     @property
     def handle_type(self):
+        """ > Handle type write only property
+
+        Set the curve handle type
+
+        ``` python
+        curve.handle_type = 'FREE'
+        ```
+
+        - getter : None, write only Property
+        - setter : node <&Node Set Handle Type>
+
+        Returns
+        -------
+        - Error
+        """
         raise NodeError(f"Property 'handle_type' is write only")
 
     @handle_type.setter
     def handle_type(self, value):
-        """ > Node <&Node Set Handle Type>
-        """
-        self.set_handle_type(left=True, right=True, handle_type=value)
+        self._jump(self.set_handle_type(left=True, right=True, handle_type=value))
 
     # ----- Left only
 
     @property
     def left_handle_type(self):
+        """ > Left handle type write only property
+
+        Set the curve handle type
+
+        - getter : None, write only Property
+        - setter : node <&Node Set Handle Type>
+
+        Returns
+        -------
+        - Error
+        """
         raise NodeError(f"Property 'left_handle_type' is write only")
 
     @left_handle_type.setter
     def left_handle_type(self, value):
-        """ > Node <&Node Set Handle Type>
-        """
-        self.set_handle_type(left=True, right=False, handle_type=value)
+        self._jump(self.set_handle_type(left=True, right=False, handle_type=value))
 
     # ----- Right only
 
     @property
     def right_handle_type(self):
+        """ > Right handle type write only property
+
+        Set the curve handle type
+
+        - getter : None, write only Property
+        - setter : node <&Node Set Handle Type>
+
+        Returns
+        -------
+        - Error
+        """
         raise NodeError(f"Property 'right_handle_type' is write only")
 
     @right_handle_type.setter
     def right_handle_type(self, value):
-        """ > Node <&Node Set Handle Type>
-        """
-        self.set_handle_type(left=False, right=True, handle_type=value)
+        self._jump(self.set_handle_type(left=False, right=True, handle_type=value))
 
     # -----------------------------------------------------------------------------------------------------------------------------
     # Left and Right Handle types as boolean properties
 
     @property
     def handle_auto(self):
-        """ > Node <&Node Handle Type Selection>
+        """ > Handle auto property
+
+        - getter : node <&Node Handle Type Selection>
+        - setter : node <&Node Set Handle Type>, **handle_type** = 'AUTO'
+
+        Returns
+        -------
+        - Boolean
         """
         return self.handle_type_selection(left=True, right=True, handle_type='AUTO')
 
     @handle_auto.setter
     def handle_auto(self, value):
-        """ > Node <&Node Set Handle Type>
-        """
-        self.set_handle_type(left=True, right=True, handle_type='AUTO')
+        self._jump(self.set_handle_type(left=True, right=True, handle_type='AUTO'))
 
     @property
     def handle_free(self):
-        """ > Node <&Node Handle Type Selection>
+        """ > Handle free property
+
+        - getter : node <&Node Handle Type Selection>
+        - setter : node <&Node Set Handle Type>, **handle_type** = 'FREE'
+
+        Returns
+        -------
+        - Boolean
         """
         return self.handle_type_selection(left=True, right=True, handle_type='FREE')
 
     @handle_free.setter
     def handle_free(self, value):
-        """ > Node <&Node Set Handle Type>
-        """
-        self.set_handle_type(left=True, right=True, handle_type='FREE')
+        self._jump(self.set_handle_type(left=True, right=True, handle_type='FREE'))
 
     @property
     def handle_vector(self):
-        """ > Node <&Node Handle Type Selection>
+        """ > Handle vector property
+
+        - getter : node <&Node Handle Type Selection>
+        - setter : node <&Node Set Handle Type>, **handle_type** = 'VECTOR'
+
+        Returns
+        -------
+        - Boolean
         """
         return self.handle_type_selection(left=True, right=True, handle_type='VECTOR')
 
     @handle_vector.setter
     def handle_vector(self, value):
-        """ > Node <&Node Set Handle Type>
-        """
-        self.set_handle_type(left=True, right=True, handle_type='VECTOR')
+        self._jump(self.set_handle_type(left=True, right=True, handle_type='VECTOR'))
 
     @property
     def handle_align(self):
-        """ > Node <&Node Handle Type Selection>
+        """ > Handle align property
+
+        - getter : node <&Node Handle Type Selection>
+        - setter : node <&Node Set Handle Type>, **handle_type** = 'ALIGN'
+
+        Returns
+        -------
+        - Boolean
         """
         return self.handle_type_selection(left=True, right=True, handle_type='ALIGN')
 
     @handle_align.setter
     def handle_align(self, value):
-        """ > Node <&Node Set Handle Type>
-        """
-        self.set_handle_type(left=True, right=True, handle_type='ALIGN')
+        self._jump(self.set_handle_type(left=True, right=True, handle_type='ALIGN'))
 
     # -----------------------------------------------------------------------------------------------------------------------------
     # Left Handle types as boolean properties
 
     @property
     def left_handle_auto(self):
-        """ > Node <&Node Handle Type Selection>
+        """ > Left handle auto property
+
+        - getter : node <&Node Handle Type Selection>
+        - setter : node <&Node Set Handle Type>, **handle_type** = 'AUTO'
+
+        Returns
+        -------
+        - Boolean
         """
         return self.handle_type_selection(left=True, right=False, handle_type='AUTO')
 
     @left_handle_auto.setter
     def left_handle_auto(self, value):
-        """ > Node <&Node Set Handle Type>
-        """
-        self.set_handle_type(left=True, right=False, handle_type='AUTO')
+        self._jump(self.set_handle_type(left=True, right=False, handle_type='AUTO'))
 
     @property
     def left_handle_free(self):
-        """ > Node <&Node Handle Type Selection>
+        """ > Left handle free property
+
+        - getter : node <&Node Handle Type Selection>
+        - setter : node <&Node Set Handle Type>, **handle_type** = 'FREE'
+
+        Returns
+        -------
+        - Boolean
         """
         return self.handle_type_selection(left=True, right=False, handle_type='FREE')
 
     @left_handle_free.setter
     def left_handle_free(self, value):
-        """ > Node <&Node Set Handle Type>
-        """
-        self.set_handle_type(left=True, right=False, handle_type='FREE')
+        self._jump(self.set_handle_type(left=True, right=False, handle_type='FREE'))
 
     @property
     def left_handle_vector(self):
-        """ > Node <&Node Handle Type Selection>
+        """ > Left handle vector property
+
+        - getter : node <&Node Handle Type Selection>
+        - setter : node <&Node Set Handle Type>, **handle_type** = 'VECTOR'
+
+        Returns
+        -------
+        - Boolean
         """
         return self.handle_type_selection(left=True, right=False, handle_type='VECTOR')
 
     @left_handle_vector.setter
     def left_handle_vector(self, value):
-        """ > Node <&Node Set Handle Type>
-        """
-        self.set_handle_type(left=True, right=False, handle_type='VECTOR')
+        self._jump(self.set_handle_type(left=True, right=False, handle_type='VECTOR'))
 
     @property
     def left_handle_align(self):
-        """ > Node <&Node Handle Type Selection>
+        """ > Left handle auto property
+
+        - getter : node <&Node Handle Type Selection>
+        - setter : node <&Node Set Handle Type>, **handle_type** = 'ALIGN'
+
+        Returns
+        -------
+        - Boolean
         """
         return self.handle_type_selection(left=True, right=False, handle_type='ALIGN')
 
     @left_handle_align.setter
     def left_handle_align(self, value):
-        """ > Node <&Node Set Handle Type>
-        """
-        self.set_handle_type(left=True, right=False, handle_type='ALIGN')
+        self._jump(self.set_handle_type(left=True, right=False, handle_type='ALIGN'))
 
     # -----------------------------------------------------------------------------------------------------------------------------
     # Right Handle types as boolean properties
 
     @property
     def right_handle_auto(self):
-        """ > Node <&Node Handle Type Selection>
+        """ > Right handle auto property
+
+        - getter : node <&Node Handle Type Selection>
+        - setter : node <&Node Set Handle Type>, **handle_type** = 'AUTO'
+
+        Returns
+        -------
+        - Boolean
         """
         return self.handle_type_selection(left=False, right=True, handle_type='AUTO')
 
     @right_handle_auto.setter
     def right_handle_auto(self, value):
-        """ > Node <&Node Set Handle Type>
-        """
-        self.set_handle_type(left=False, right=True, handle_type='AUTO')
+        self._jump(self.set_handle_type(left=False, right=True, handle_type='AUTO'))
 
     @property
     def right_handle_free(self):
-        """ > Node <&Node Handle Type Selection>
+        """ > Right handle free property
+
+        - getter : node <&Node Handle Type Selection>
+        - setter : node <&Node Set Handle Type>, **handle_type** = 'FREE'
+
+        Returns
+        -------
+        - Boolean
         """
         return self.handle_type_selection(left=False, right=True, handle_type='FREE')
 
     @right_handle_free.setter
     def right_handle_free(self, value):
-        """ > Node <&Node Set Handle Type>
-        """
-        self.set_handle_type(left=False, right=True, handle_type='FREE')
+        self._jump(self.set_handle_type(left=False, right=True, handle_type='FREE'))
 
     @property
     def right_handle_vector(self):
-        """ > Node <&Node Handle Type Selection>
+        """ > Right handle vector property
+
+        - getter : node <&Node Handle Type Selection>
+        - setter : node <&Node Set Handle Type>, **handle_type** = 'VECTOR'
+
+        Returns
+        -------
+        - Boolean
         """
         return self.handle_type_selection(left=False, right=True, handle_type='VECTOR')
 
     @right_handle_vector.setter
     def right_handle_vector(self, value):
-        """ > Node <&Node Set Handle Type>
-        """
-        self.set_handle_type(left=False, right=True, handle_type='VECTOR')
+        self._jump(self.set_handle_type(left=False, right=True, handle_type='VECTOR'))
 
     @property
     def right_handle_align(self):
-        """ > Node <&Node Handle Type Selection>
+        """ > Right handle align property
+
+        - getter : node <&Node Handle Type Selection>
+        - setter : node <&Node Set Handle Type>, **handle_type** = 'ALIGN'
+
+        Returns
+        -------
+        - Boolean
         """
         return self.handle_type_selection(left=False, right=True, handle_type='ALIGN')
 
     @right_handle_align.setter
     def right_handle_align(self, value):
-        """ > Node <&Node Set Handle Type>
+        self._jump(self.set_handle_type(left=False, right=True, handle_type='ALIGN'))
+
+    # ----- Topology
+
+    def curve_index(self, point_index=None):
+        """ > Socket 'Curve Index' of node <&Curve of Point>
+
+        Arguments
+        ---------
+        - point_index (Integer = None) : point index
+
+        Returns
+        -------
+        - Integer
         """
-        self.set_handle_type(left=False, right=True, handle_type='ALIGN')
+        return Node('Curve of Point', {'Point Index': point_index}).curve_index
+
+    def index_in_curve(self, point_index=None):
+        """ > Socket 'Index in Curve' of node <&Curve of Point>
+
+        Arguments
+        ---------
+        - point_index (Integer = None) : point index
+
+        Returns
+        -------
+        - Integer
+        """
+        return Node('Curve of Point', {'Point Index': point_index}).index_in_curve
+
+    def offset_in_curve(self, point_index=None, offset=None):
+        """ > Socket 'Point Index' of node <&Offset Point in Curve>
+
+        Arguments
+        ---------
+        - index (Integer = None) : point index
+
+        Returns
+        -------
+        - Integer : spline index
+        """
+        return Node('Offset Point in Curve', {'Point Index': point_index, 'Offset': offset}).point_index
+
+
+
+
 
 
 
@@ -2081,9 +2033,10 @@ class CloudPoint(Point):
 
     @property
     def radius(self):
-        """ Node 'Radius' (GeometryNodeInputRadius)
+        """ > Radius property
 
-        > Node <&Node Radius>
+        - getter : node <&Node Radius>
+        - setter : node <&Node Set Point Radius>
 
         Returns
         -------
@@ -2093,17 +2046,7 @@ class CloudPoint(Point):
 
     @radius.setter
     def radius(self, value):
-        """ Node 'Set Point Radius' (GeometryNodeSetPointRadius)
-
-        > Node <&Node Set Point Radius>
-
-        Arguments
-        ---------
-        - value (Float) : socket 'Radius' (Radius)
-        """
-        self._geo._jump(Node('Set Point Radius', {'Points': self._geo, 'Selection': self._sel, 'Radius': value})._out)
-
-
+        self._jump(Node('Set Point Radius', {'Points': self._geo, 'Selection': self._sel, 'Radius': value})._out)
 
 
 # =============================================================================================================================
@@ -2120,11 +2063,7 @@ class Face(Domain):
 
     @property
     def count(self):
-        """ Node 'Domain Size' (GeometryNodeAttributeDomainSize)
-
-        > Node <&Node Domain Size>
-
-        Socket 'Face Count' of node 'Domain Size'
+        """ > Socket 'Face Count' of node <&Node Domain Size>
 
         Returns
         -------
@@ -2139,9 +2078,10 @@ class Face(Domain):
 
     @property
     def smooth(self):
-        """ Node 'Is Face Smooth' (GeometryNodeInputShadeSmooth)
+        """ > Smooth property
 
-        > Node <&Node Is Face Smooth>
+        - getter : node <&Node Is Face Smooth>
+        - setter : node <&Node Set Shade Smooth>
 
         Returns
         -------
@@ -2151,23 +2091,14 @@ class Face(Domain):
 
     @smooth.setter
     def smooth(self, value):
-        """ Node 'Set Shade Smooth' (GeometryNodeSetShadeSmooth)
-
-        > Node <&Node Set Shade Smooth>
-
-        - domain (str): Node.domain in ('EDGE', 'FACE')
-
-        Arguments
-        ---------
-        - shade_smooth (Boolean) : socket 'Shade Smooth' (Shade Smooth)
-        """
-        self._geo._jump(Node('Set Shade Smooth', {'Geometry': self._geo, 'Selection': self._sel, 'Shade Smooth': value}, domain='FACE')._out)
+        self._jump(Node('Set Shade Smooth', {'Geometry': self._geo, 'Selection': self._sel, 'Shade Smooth': value}, domain='FACE')._out)
 
     @property
     def area(self):
-        """ Node 'Face Area' (GeometryNodeInputMeshFaceArea)
+        """ > Area read only property
 
-        > Node <&Node Face Area>
+        - getter : <&Node Face Area>
+        - setter : None
 
         Returns
         -------
@@ -2176,9 +2107,7 @@ class Face(Domain):
         return Node('Face Area')._out
 
     def is_planar(self, threshold=None):
-        """ Node 'Is Face Planar' (GeometryNodeInputMeshFaceIsPlanar)
-
-        > Node <&Node Is Face Planar>
+        """ > Node <&Node Is Face Planar>
 
         Arguments
         ---------
@@ -2191,9 +2120,7 @@ class Face(Domain):
         return Node('Is Face Planar', {'Threshold': threshold})._out
 
     def group_boundaries(self, face_group_id=None):
-        """ Node 'Face Group Boundaries' (GeometryNodeMeshFaceSetBoundaries)
-
-        > Node <&Node Face Group Boundaries>
+        """ > Node <&Node Face Group Boundaries>
 
         Arguments
         ---------
@@ -2207,46 +2134,38 @@ class Face(Domain):
 
     @property
     def neighbors(self):
-        """ Node 'Face Neighbors' (GeometryNodeInputMeshFaceNeighbors)
-
-        > Node <&Node Face Neighbors>
+        """ > Node <&Node Face Neighbors>
 
         Returns
         -------
-        - Node: [vertex_count (Integer), face_count (Integer)]
+        - Node : node 'Face Neighbors'
         """
         return self._cache('Face Neighbors')
 
     @property
     def neighbors_vertex_count(self):
-        """ Node 'Face Neighbors' (GeometryNodeInputMeshVertexNeighbors)
-
-        > Node <&Node Face Neighbors>
+        """ > Socket 'Vertex Count' of node <&Node Face Neighbors>
 
         Returns
         -------
-        - Integer : Socket 'Vertex Count' of node 'Vertex Neighbors'
+        - Integer
         """
         return self.neighbors.vertex_count
 
     @property
     def neighbors_face_count(self):
-        """ Node 'Face Neighbors' (GeometryNodeInputMeshVertexNeighbors)
-
-        > Node <&Node Face Neighbors>
+        """ > Socket 'Face Count' of node <&Node Face Neighbors>
 
         Returns
         -------
-        - Integer : Socket 'Face Count' of node 'Vertex Neighbors'
+        - Integer
         """
         return self.neighbors.face_count
 
     # ----- Flip
 
     def flip(self):
-        """ Node 'Flip Faces' (GeometryNodeFlipFaces)
-
-        > Node <&Node Flip Faces>
+        """ > Node <&Node Flip Faces>
 
         Returns
         -------
@@ -2257,9 +2176,7 @@ class Face(Domain):
     # ----- Scale
 
     def scale(self, scale=None, center=None, uniform=True):
-        """ Node 'Scale Elements' (GeometryNodeScaleElements)
-
-        > Node <&Node Scale Elements>
+        """ > Node <&Node Scale Elements>
 
         - domain (str): Node.domain in ('FACE', 'EDGE')
         - scale_mode (str): Node.scale_mode in ('UNIFORM', 'SINGLE_AXIS')
@@ -2281,9 +2198,7 @@ class Face(Domain):
 
     @classmethod
     def corner_index(cls, face_index=None, weights=None, sort_index=None):
-        """ Node 'Corners of Face' (GeometryNodeCornersOfFace)
-
-        > Node <&Node Corners of Face>
+        """ > Node <&Node Corners of Face>
 
         Arguments
         ---------
@@ -2293,18 +2208,14 @@ class Face(Domain):
 
         Returns
         -------
-        - Integer [total_]
+        - Integer
         """
-        index = Node('Corners of Face', {'Face Index': face_index, 'Weights': weights, 'Sort Index': sort_index})._out
-        index.total_ = index.node.total
-        return index
+        return Node('Corners of Face', {'Face Index': face_index, 'Weights': weights, 'Sort Index': sort_index})._out
 
     # ----- Distribute
 
     def distribute_points(self, density=None, distance_min=None, density_max=None, density_factor=None, seed=None):
-        """ Node 'Distribute Points on Faces' (GeometryNodeDistributePointsOnFaces)
-
-        > Node <&Node Distribute Points on Faces>
+        """ > Node <&Node Distribute Points on Faces>
 
         if 'density' argument is not None, 'RANDOM' method is applied, 'POISSON' otherwise
 
@@ -2321,10 +2232,10 @@ class Face(Domain):
 
         Returns
         -------
-        - Points [normal_, rotation_
+        - Points
         """
         return self._geo[self._sel].distribute_points_on_faces(density=density, distance_min=distance_min, density_max=density_max,
-            density_factor=density_factor, seed=seed)
+            density_factor=density_factor, seed=seed)._out
 
 
 
@@ -2343,11 +2254,7 @@ class Edge(Domain):
 
     @property
     def count(self):
-        """ Node 'Domain Size' (GeometryNodeAttributeDomainSize)
-
-        > Node <&Node Domain Size>
-
-        Socket 'Edge Count' of node 'Domain Size'
+        """ > Socket 'Edge Count' of node <&Node Domain Size>
 
         Returns
         -------
@@ -2362,37 +2269,35 @@ class Edge(Domain):
 
     @property
     def angle(self):
-        """ Node 'Edge Angle' (GeometryNodeInputMeshEdgeAngle)
+        """ > Node <&Node Edge Angle>
 
-        > Node <&Node Edge Angle>
+        > [!IMPORTANT]
+        > This method return the node, use <#unsigned_angle> and <#signed_angle> to
+        > get directly the sockets
 
         Returns
         -------
-        - Node: [unsigned_angle (Float), signed_angle (Float)]
+        - Node
         """
         return self._cache('Edge Angle')
 
     @property
     def unsigned_angle(self):
-        """ Node 'Edge Angle' (GeometryNodeInputMeshEdgeAngle)
-
-        > Node <&Node Edge Angle>
+        """ > Socket 'Unsigned Angle' of node <&Node Edge Angle>
 
         Returns
         -------
-        - Float : socket 'Unsigned Angle'
+        - Float
         """
         return self.angle.unsigned_angle
 
     @property
     def signed_angle(self):
-        """ Node 'Edge Angle' (GeometryNodeInputMeshEdgeAngle)
-
-        > Node <&Node Edge Angle>
+        """ > Socket 'Signed Angle' of node <&Node Edge Angle>
 
         Returns
         -------
-        - Float : socket 'Signed Angle'
+        - Float
         """
         return self.angle.signed_angle
 
@@ -2400,9 +2305,10 @@ class Edge(Domain):
 
     @property
     def neighbors(self):
-        """ Node 'Edge Neighbors' (GeometryNodeInputMeshEdgeNeighbors)
+        """ > Neighbors read only property
 
-        > Node <&Node Edge Neighbors>
+        - getter : <&Node Edge Neighbors>
+        - setter : None
 
         Returns
         -------
@@ -2414,61 +2320,51 @@ class Edge(Domain):
 
     @property
     def vertices(self):
-        """ Node 'Edge Vertices' (GeometryNodeInputMeshEdgeVertices)
-
-        > Node <&Node Edge Vertices>
+        """ > Node <&Node Edge Vertices>
 
         Returns
         -------
-        - Node: [vertex_index_1 (Integer), vertex_index_2 (Integer), position_1 (Vector), position_2 (Vector)]
+        - Node : Node 'Edge Vertices'
         """
         return self._cache('Edge Vertices')
 
     @property
     def vertex_index_1(self):
-        """ Node 'Edge Vertices' (GeometryNodeInputMeshEdgeVertices)
-
-        > Node <&Node Edge Vertices>
+        """ > Socket 'Vertex Index 1' of node <&Node Edge Vertices>
 
         Returns
         -------
-        - Integer : socket 'Vertex Index 1'
+        - Integer
         """
         return self.vertices.vertex_index_1
 
     @property
     def vertex_index_2(self):
-        """ Node 'Edge Vertices' (GeometryNodeInputMeshEdgeVertices)
-
-        > Node <&Node Edge Vertices>
+        """ > Socket 'Vertex Index 2' of node <&Node Edge Vertices>
 
         Returns
         -------
-        - Integer : socket 'Vertex Index 2'
+        - Integer
         """
         return self.vertices.vertex_index_2
 
     @property
     def position_1(self):
-        """ Node 'Edge Vertices' (GeometryNodeInputMeshEdgeVertices)
-
-        > Node <&Node Edge Vertices>
+        """ > Socket 'Position 1' of node <&Node Edge Vertices>
 
         Returns
         -------
-        - Vector : socket 'Vertices Index 1'
+        - Vector
         """
         return self.vertices.position_1
 
     @property
     def position_2(self):
-        """ Node 'Edge Vertices' (GeometryNodeInputMeshEdgeVertices)
-
-        > Node <&Node Edge Vertices>
+        """ > Socket 'Position 2' of node <&Node Edge Vertices>
 
         Returns
         -------
-        - Vector : socket 'Vertices Index 1'
+        - Vector
         """
         return self.vertices.position_2
 
@@ -2476,9 +2372,10 @@ class Edge(Domain):
 
     @property
     def smooth(self):
-        """ Node 'Is Edge Smooth' (GeometryNodeInputEdgeSmooth)
+        """ > Smooth property
 
-        > Node <&Node Is Edge Smooth>
+        - getter : node <&Node Is Edge Smooth>
+        - setter : node <&Node Set Shade Smooth>
 
         Returns
         -------
@@ -2488,24 +2385,12 @@ class Edge(Domain):
 
     @smooth.setter
     def smooth(self, value):
-        """ Node 'Set Shade Smooth' (GeometryNodeSetShadeSmooth)
-
-        > Node <&Node Set Shade Smooth>
-
-        - domain (str): Node.domain in ('EDGE', 'FACE')
-
-        Arguments
-        ---------
-        - shade_smooth (Boolean) : socket 'Shade Smooth' (Shade Smooth)
-        """
-        self._geo._jump(Node('Set Shade Smooth', {'Geometry': self._geo, 'Selection': self._sel, 'Shade Smooth': value}, domain='EDGE')._out)
+        self._jump(Node('Set Shade Smooth', {'Geometry': self._geo, 'Selection': self._sel, 'Shade Smooth': value}, domain='EDGE')._out)
 
     # ----- Shortest Edge Paths
 
     def shortest_paths(self, edge_cost=None):
-        """ Node 'Shortest Edge Paths' (GeometryNodeInputShortestEdgePaths)
-
-        > Node <&Node Shortest Edge Paths>
+        """ > Node <&Node Shortest Edge Paths>
 
         Arguments
         ---------
@@ -2514,24 +2399,16 @@ class Edge(Domain):
 
         Returns
         -------
-        - Integer [total_cost_]
+        - Integer
         """
 
-        index = Node('Shortest Edge Paths', {'End Vertex': self._sel, 'Edge Cost': edge_cost}).next_vertex_index
-        index.total_cost_ = index.node.total_cost
-        return index
+        return Node('Shortest Edge Paths', {'End Vertex': self._sel, 'Edge Cost': edge_cost})._out
 
     # ----- To face groups
 
     @property
     def to_face_groups(self):
-        """ Node 'Edges to Face Groups' (GeometryNodeEdgesToFaceGroups)
-
-        > Node <&Node Edges to Face Groups>
-
-        Arguments
-        ---------
-        - boundary_edges (Boolean) : socket 'Boundary Edges' (Boundary Edges)
+        """ > Node <&Node Edges to Face Groups>
 
         Returns
         -------
@@ -2542,9 +2419,7 @@ class Edge(Domain):
     # ----- Split
 
     def split(self):
-        """ Node 'Split Edges' (GeometryNodeSplitEdges)
-
-        > Node <&Node Split Edges>
+        """ > Node <&Node Split Edges>
 
         Returns
         -------
@@ -2555,9 +2430,7 @@ class Edge(Domain):
     # ----- Scale
 
     def scale(self, scale=None, center=None, uniform=True):
-        """ Node 'Scale Elements' (GeometryNodeScaleElements)
-
-        > Node <&Node Scale Elements>
+        """ > Node <&Node Scale Elements>
 
         - domain (str): Node.domain in ('FACE', 'EDGE')
         - scale_mode (str): Node.scale_mode in ('UNIFORM', 'SINGLE_AXIS')
@@ -2580,9 +2453,7 @@ class Edge(Domain):
 
     @classmethod
     def corner_index(cls, edge_index=None, weights=None, sort_index=None):
-        """ Node 'Corners of Edge' (GeometryNodeCornersOfEdge)
-
-        > Node <&Node Corners of Edge>
+        """ > Node <&Node Corners of Edge>
 
         Arguments
         ---------
@@ -2592,18 +2463,14 @@ class Edge(Domain):
 
         Returns
         -------
-        - Integer [total_]
+        - Integer
         """
-        index = Node('Corners of Edge', {'Edge Index': edge_index, 'Weights': weights, 'Sort Index': sort_index})._out
-        index.total_ = index.node.total
-        return index
+        return Node('Corners of Edge', {'Edge Index': edge_index, 'Weights': weights, 'Sort Index': sort_index})._out
 
     # ----- Edge paths to curves
 
     def paths_to_curves(self, start_vertices=None, next_vertex_index=None):
-        """ Node 'Edge Paths to Curves' (GeometryNodeEdgePathsToCurves)
-
-        > Node <&Node Edge Paths to Curves>
+        """ > Node <&Node Edge Paths to Curves>
 
         Arguments
         ---------
@@ -2614,7 +2481,6 @@ class Edge(Domain):
         -------
         - Curve
         """
-
         return Curve(Node('Edge Paths to Curves', {'Mesh': self._geo, 'Start Vertices': start_vertices, 'Next Vertex Index': next_vertex_index})._out)
 
 
@@ -2632,11 +2498,7 @@ class Corner(Domain):
 
     @property
     def count(self):
-        """ Node 'Domain Size' (GeometryNodeAttributeDomainSize)
-
-        > Node <&Node Domain Size>
-
-        Socket 'Corner Count' of node 'Domain Size'
+        """ > Socket 'Corner Count' of node <&Node Domain Size>
 
         Returns
         -------
@@ -2648,9 +2510,7 @@ class Corner(Domain):
 
     @classmethod
     def next_edge_index(cls, corner_index=None):
-        """ Node 'Edges of Corner' (GeometryNodeEdgesOfCorner)
-
-        > Node <&Node Edges of Corner>
+        """ > Node <&Node Edges of Corner>
 
         Arguments
         ---------
@@ -2658,18 +2518,14 @@ class Corner(Domain):
 
         Returns
         -------
-        - Integer [previous_edge_index_]
+        - Integer
         """
 
-        index = Node('Edges of Corner', {'Corner Index': corner_index})._out
-        index.previous_edge_index_ = index.node.previous_edge_index
-        return index
+        return Node('Edges of Corner', {'Corner Index': corner_index})._out
 
     @classmethod
     def face_index(cls, corner_index=None):
-        """ Node 'Face of Corner' (GeometryNodeFaceOfCorner)
-
-        > Node <&Node Face of Corner>
+        """ > Node <&Node Face of Corner>
 
         Arguments
         ---------
@@ -2677,17 +2533,13 @@ class Corner(Domain):
 
         Returns
         -------
-        - Integer [index_in_face_]
+        - Integer
         """
-        index = Node('Face of Corner', {'Corner Index': corner_index})._out
-        index.index_in_face_ = index.node.index_in_face
-        return index
+        return Node('Face of Corner', {'Corner Index': corner_index})._out
 
     @classmethod
     def offset_in_face(cls, corner_index=None, offset=None):
-        """ Node 'Offset Corner in Face' (GeometryNodeOffsetCornerInFace)
-
-        > Node <&Node Offset Corner in Face>
+        """ > Node <&Node Offset Corner in Face>
 
         Arguments
         ---------
@@ -2702,9 +2554,7 @@ class Corner(Domain):
 
     @classmethod
     def vertex_index(cls, corner_index=None):
-        """ Node 'Vertex of Corner' (GeometryNodeVertexOfCorner)
-
-        > Node <&Node Vertex of Corner>
+        """ > Node <&Node Vertex of Corner>
 
         Arguments
         ---------
@@ -2726,19 +2576,18 @@ class Corner(Domain):
 # =============================================================================================================================
 
 class Spline(Domain):
-
     """ > Curve, or Spline, domain of a <!Curve>
+
+    Methods of **Spline** class are nodes which accept a SPLINE or CURVE domain.
+
+    In addition, the node <*Points of Curve> is implemented as method <#points>.
     """
 
     DOMAIN_NAME = 'CURVE'
 
     @property
     def count(self):
-        """ Node 'Domain Size' (GeometryNodeAttributeDomainSize)
-
-        > Node <&Node Domain Size>
-
-        Socket 'Spline Count' of node 'Domain Size'
+        """ > Socket 'Spline Count' of node <&Node Domain Size>
 
         Returns
         -------
@@ -2753,9 +2602,10 @@ class Spline(Domain):
 
     @property
     def is_cyclic(self):
-        """ Node 'Is Spline Cyclic' (GeometryNodeInputSplineCyclic)
+        """ > Is cyclic property
 
-        > Node <&Node Is Spline Cyclic>
+        - getter : node <&Node Is Spline Cyclic>
+        - setter : node <&Node Set Spline Cyclic>
 
         Returns
         -------
@@ -2765,23 +2615,16 @@ class Spline(Domain):
 
     @is_cyclic.setter
     def is_cyclic(self, value):
-        """ Node 'Set Spline Cyclic' (GeometryNodeSetSplineCyclic)
-
-        > Node <&Node Set Spline Cyclic>
-
-        Arguments
-        ---------
-        - value (Boolean) : socket 'Cyclic' (Cyclic)
-        """
-        return self._geo._jump(Node('Set Spline Cyclic', {'Geometry': self._geo, 'Selection': self._sel, 'Cyclic': value})._out)
+        return self._jump(Node('Set Spline Cyclic', {'Geometry': self._geo, 'Selection': self._sel, 'Cyclic': value})._out)
 
     # ----- Resolution
 
     @property
     def resolution(self):
-        """ Node 'Spline Resolution' (GeometryNodeInputSplineResolution)
+        """ > Resolution property
 
-        > Node <&Node Spline Resolution>
+        - getter : node <&Node Spline Resolution>
+        - setter : node <&Node Set Spline Resolution>
 
         Returns
         -------
@@ -2791,78 +2634,86 @@ class Spline(Domain):
 
     @resolution.setter
     def resolution(self, value=None):
-        """ Node 'Set Spline Resolution' (GeometryNodeSetSplineResolution)
-
-        > Node <&Node Set Spline Resolution>
-
-        Arguments
-        ---------
-        - value (Integer) : socket 'Resolution' (Resolution)
-        """
-        self._geo._jump(Node('Set Spline Resolution', {'Geometry': self._geo, 'Resolution': value})._out)
+        self._jump(Node('Set Spline Resolution', {'Geometry': self._geo, 'Resolution': value})._out)
 
     # ----- Spline type
 
     @property
     def type(self):
+        """ > Type wite only property
+
+        > [!Note]
+        > Write only property
+
+        - getter : None, write only property
+        - setter : node <&Node Set Spline Type>, value in ('CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS')
+
+        Returns
+        -------
+        - Error
+        """
         raise NodeError(f"Curve.spline_type is write only.")
 
     @type.setter
     def type(self, value):
-        """ Node 'Set Spline Type' (GeometryNodeCurveSplineType)
-
-        > Node <&Node Set Spline Type>
-
-        Arguments
-        ---------
-        - value (str): Node.spline_type in ('CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS')
-        """
-        self._geo._jump(Node('Set Spline Type', {'Curve': self._geo, 'Selection': self._sel}, spline_type=value)._out)
+        self._jump(Node('Set Spline Type', {'Curve': self._geo, 'Selection': self._sel}, spline_type=value)._out)
 
     # ----- Read only
 
     @property
     def parameter(self):
-        """ Node 'Spline Parameter' (GeometryNodeSplineParameter)
+        """ > Node <&Node Spline Parameter>
 
-        > Node <&Node Spline Parameter>
+        ``` python
+        factor = curve.parameter.factor
+        length = curve.parameter.length
+        index = curve.parameter.index
+        ```
 
         Returns
         -------
-        - Node: [factor (Float), length (Float), index (Integer)]
+        - Node : node 'Spline Parameter'
         """
         return self._cache('Spline Parameter')
 
     @classmethod
     @property
     def length(cls):
-        """ Node 'Spline Length' (GeometryNodeSplineLength)
-
-        > Node <&Node Spline Length>
+        """ > Socket 'Length' of node <&Node Spline Length>
 
         Returns
         -------
-        - Integer [point_count_]
+        - Float
         """
-        length = Node('Spline Length')._out
-        length.point_count_ = length.node.point_count
-        return length
+        return Node('Spline Length')._out
 
     @classmethod
     @property
     def point_count(cls):
-        """ Node 'Spline Length' (GeometryNodeSplineLength)
-
-        > Node <&Node Spline Length>
+        """ > Socket 'Point Count' of Node <&Node Spline Length>
 
         Returns
         -------
-        - Integer [length_]
+        - Integer
         """
-        node = Node('Spline Length')
-        point_count = node.point_count
-        point_count.length_ = node.length
-        return point_count
+        return Node('Spline Length').point_count
+
+    # ----- Topology
+
+    def points(self, curve_index=None, weights=None, sort_index=None):
+        """ > Socket 'Point Index' of node <&Points of curve>
+
+        Arguments
+        ---------
+        - curve_index (Integer = None) : socket 'Curve Index'
+        - weights (Float = None) : socket 'Weights'
+        - sort_index (Integer = None) : socket 'Sort Index'
+
+        Returns
+        -------
+        - Integer
+        """
+        return Node('Points of Curve', {'Curve Index': curve_index, 'Weights': weights, 'Sort Index': sort_index}).point_index
 
 
 # =============================================================================================================================
@@ -2885,6 +2736,12 @@ class Instance(Domain):
 
     @property
     def count(self):
+        """ > Socket 'Instance Count' of node <&Node Domain Size>
+
+        Returns
+        -------
+        - Integer
+        """
         return self._geo.domain_size.instance_count
 
     # ====================================================================================================
@@ -2894,9 +2751,10 @@ class Instance(Domain):
 
     @property
     def transform(self):
-        """ Node 'Instance Transform' (GeometryNodeInstanceTransform)
+        """ > Transform property
 
-        > Node <&Node Instance Transform>
+        - getter : <&Node Instance Transform>
+        - setter : <@Node Set Instance Transform>
 
         Returns
         -------
@@ -2906,22 +2764,12 @@ class Instance(Domain):
 
     @transform.setter
     def transform(self, value):
-        """ Node 'Set Instance Transform' (GeometryNodeSetInstanceTransform)
-
-        > Node <&Node Set Instance Transform>
-
-        Arguments
-        ---------
-        - value (Matrix) : socket 'Transform' (Transform)
-        """
-        return self._geo._jump(Node('Set Instance Transform', {'Instances': self._geo, 'Selection': self._sel, 'Transform': value})._out)
+        return self._jump(Node('Set Instance Transform', {'Instances': self._geo, 'Selection': self._sel, 'Transform': value})._out)
 
     # ----- Translate
 
     def translate(self, translation=None, local_space=None):
-        """ Node 'Translate Instances' (GeometryNodeTranslateInstances)
-
-        > Node <&Node Translate Instances>
+        """ > Node <&Node Translate Instances>
 
         Arguments
         ---------
@@ -2930,17 +2778,27 @@ class Instance(Domain):
 
         Returns
         -------
-        - self
+        - Instances
         """
-        return self._geo._jump(Node('Translate Instances', {'Instances': self._geo, 'Selection': self._sel, 'Translation': translation, 'Local Space': local_space})._out)
+        return Instances(Node('Translate Instances', {'Instances': self._geo, 'Selection': self._sel, 'Translation': translation, 'Local Space': local_space})._out)
 
     # ----- Scale
 
     @property
     def scale(self):
-        """ Node 'Instance Scale' (GeometryNodeInputInstanceScale)
+        """ > Scale property
 
-        > Node <&Node Instance Scale>
+        - getter : <&Node Instance Scale>
+        - setter : <&Node Scale Instances>
+
+        Scale can be set either by a <!Vector> argument or by a dict with keys
+        in ('Scale', 'Center', 'Local Space')
+
+        ``` python
+        instances = Instances()
+        instances.insts.scale = (1, 2, 3)
+        instances.insts.scale = {'Scale': (1, 2, 3), 'Center': (10, 11, 12), 'Local Space': True}
+        ```
 
         Returns
         -------
@@ -2950,26 +2808,6 @@ class Instance(Domain):
 
     @scale.setter
     def scale(self, value):
-        """ Node 'Scale Instances' (GeometryNodeScaleInstances)
-
-        > Node <&Node Scale Instances>
-
-        scale can be set either by a Vector argument or by a dict with keys in ('Scale', 'Center', 'Local Space')
-
-        ``` python
-        instances = Instances()
-        instances.insts.scale = (1, 2, 3)
-        instances.insts.scale = {'Scale': (1, 2, 3), 'Center': (10, 11, 12), 'Local Space': True}
-        ```
-
-        Arguments
-        ---------
-        - value (Vector or dict) : socket 'Scale' (Scale)
-
-        Returns
-        -------
-        - instances (Geometry)
-        """
         keys = ['Scale', 'Center', 'Local Space']
         sockets = {'Instances': self._geo, 'Selection': self._sel}
         if isinstance(value, dict):
@@ -2980,15 +2818,25 @@ class Instance(Domain):
         else:
             sockets['Scale'] = value
 
-        return self._geo._jump(Node('Scale Instances', sockets)._out)
+        return self._jump(Node('Scale Instances', sockets)._out)
 
     # ----- Rotation
 
     @property
     def rotation(self):
-        """ Node 'Instance Rotation' (GeometryNodeInputInstanceRotation)
+        """ > Rotation property
 
-        > Node <&Node Instance Rotation>
+       - getter : <&Node Instance Rotation>
+       - setter : <&Node Rotate Instances>
+
+        Rotation can be set either by a <!Rotation> argument or by a dict with keys
+        in ('Rotation', 'Pivot Point', 'Local Space')
+
+        ``` python
+        instances = Instances()
+        instances.insts.rotation = (1, 2, 3)
+        instances.insts.rotation = {'Rotation': (1, 2, 3), 'Pivot Point': (10, 11, 12), 'Local Space': True}
+        ```
 
         Returns
         -------
@@ -3008,9 +2856,7 @@ class Instance(Domain):
         else:
             sockets['Rotation'] = value
 
-        return self._geo._jump(Node('Rotate Instances', sockets)._out)
-
-
+        return self._jump(Node('Rotate Instances', sockets)._out)
 
 # =============================================================================================================================
 # =============================================================================================================================
@@ -3055,9 +2901,7 @@ class Mesh(Geometry):
 
     @classmethod
     def FromCurve(cls, curve=None, profile_curve=None, fill_caps=None):
-        """ Constructor Node 'Curve to Mesh' (GeometryNodeCurveToMesh)
-
-        > Node <&Node Curve to Mesh>
+        """ > Constructor node <&Node Curve to Mesh>
 
         Arguments
         ---------
@@ -3073,9 +2917,7 @@ class Mesh(Geometry):
 
     @classmethod
     def FromPoints(cls, points):
-        """ Constructor Node 'Points to Vertices' (GeometryNodePointsToVertices)
-
-        > Node <&Node Points to Vertices>
+        """ > Constructor node <&Node Points to Vertices>
 
         Arguments
         ---------
@@ -3089,9 +2931,7 @@ class Mesh(Geometry):
 
     @classmethod
     def FromVolume(cls, volume, voxel_size=None, voxel_amount=None, threshold=None, adaptivity=None, resolution_mode='GRID'):
-        """ Constructor Node 'Volume to Mesh' (GeometryNodeVolumeToMesh)
-
-        > Node <&Node Volume to Mesh>
+        """ > Constructor node <&Node Volume to Mesh>
 
         Arguments
         ---------
@@ -3113,49 +2953,33 @@ class Mesh(Geometry):
 
     @property
     def island(self):
-        """ Node 'Mesh Island' (GeometryNodeInputMeshIsland)
+        """ > Node <&Node Mesh Island>
 
-        > Node <&Node Mesh Island>
+        ``` python
+        mesh = Mesh.Cube()
+        index = mesh.island.index
+        count = mesh.island.count
+        ```
 
         Returns
         -------
-        - Node: [island_index (Integer), island_count (Integer)]
+        - Node : 'Mesh Island' node
         """
         return self._cache('Mesh Island')
 
     @property
-    def island_index(self):
-        """ Node 'Mesh Island' (GeometryNodeInputMeshIsland)
-
-        > Node <&Node Mesh Island>
-
-        Returns
-        -------
-        - Integer : socket 'Island Index'
-        """
-        return self.island.island_index
-
-    @property
-    def island_count(self):
-        """ Node 'Mesh Island' (GeometryNodeInputMeshIsland)
-
-        > Node <&Node Mesh Island>
-
-        Returns
-        -------
-        - Integer : socket 'Island Count'
-        """
-        return self.island.island_count
-
-    @property
     def domain_size(self):
+        """ > Node <&Domain Size>, component = 'MESH'
+
+        Returns
+        -------
+        - Node : 'Domain Size" node
+        """
         return self._cache('Domain Size', {'Geometry': self}, component='MESH')
 
     @classmethod
     def Cube(self, size=(1, 1, 1), vertices_x=2, vertices_y=2, vertices_z=2):
-        """ Constructor Node 'Cube' (GeometryNodeMeshCube)
-
-        > Node <&Node Cube>
+        """ > Constructor node <&Node Cube>
 
         Arguments
         ---------
@@ -3166,18 +2990,13 @@ class Mesh(Geometry):
 
         Returns
         -------
-        - Mesh [uv_map_]
+        - Mesh
         """
-        node = Node('Cube', {'Size': size, 'Vertices X': vertices_x, 'Vertices Y': vertices_y, 'Vertices Z': vertices_z})
-        mesh = Mesh(node.mesh)
-        mesh.uv_map_ = node.uv_map
-        return mesh
+        node = Mesh(Node('Cube', {'Size': size, 'Vertices X': vertices_x, 'Vertices Y': vertices_y, 'Vertices Z': vertices_z})._out)
 
     @classmethod
     def Line(cls, count=None, start_location=None, offset=None, end_location=None, resolution=None):
-        """ Constructor Node 'Mesh Line' (GeometryNodeMeshLine)
-
-        > Node <&Node Mesh Line>
+        """ > Constructor node <&Node Mesh Line>
 
         - count_mode (str): Node.count_mode in ('TOTAL', 'RESOLUTION')
         - mode (str): Node.mode in ('OFFSET', 'END_POINTS')
@@ -3200,17 +3019,15 @@ class Mesh(Geometry):
         """
         if end_location is not None or resolution is not None:
             count_mode = 'TOTAL' if resolution is None else 'RESOLUTION'
-            return Node('Mesh Line', {'Count': count, 'Start Location': start_location, 'Offset': end_location},
-                mode='END_POINTS', count_mode=count_mode)._out
+            return Mesh(Node('Mesh Line', {'Count': count, 'Start Location': start_location, 'Offset': end_location},
+                mode='END_POINTS', count_mode=count_mode)._out)
         else:
-            return Node('Mesh Line', {'Count': count, 'Start Location': start_location, 'Offset': offset},
-                mode='OFFSET')._out
+            return Mesh(Node('Mesh Line', {'Count': count, 'Start Location': start_location, 'Offset': offset},
+                mode='OFFSET')._out)
 
     @classmethod
     def LineTo(cls, start_location=None, end_location=None, count=None, resolution=None):
-        """ Constructor Node 'Mesh Line' (GeometryNodeMeshLine)
-
-        > Node <&Node Mesh Line>
+        """ > Constructor node <&Node Mesh Line>
 
         Line from start to end point
 
@@ -3229,9 +3046,7 @@ class Mesh(Geometry):
 
     @classmethod
     def LineOffset(cls, start_location=None, offset=None, count=None):
-        """ Constructor Node 'Mesh Line' (GeometryNodeMeshLine)
-
-        > Node <&Node Mesh Line>
+        """ > Constructor node <&Node Mesh Line>
 
         Line from start to end point
 
@@ -3249,9 +3064,7 @@ class Mesh(Geometry):
 
     @classmethod
     def Cone(cls, vertices=32, side_segments=1, fill_segments=1, radius_top=0.0, radius_bottom=1.0, depth=2.0, fill_type='NGON'):
-        """ Constructor Node 'Cone' (GeometryNodeMeshCone)
-
-        > Node <&Node Cone>
+        """ > Constructor node <&Node Cone>
 
         Arguments
         ---------
@@ -3265,23 +3078,15 @@ class Mesh(Geometry):
 
         Returns
         -------
-        - Mesh [top_, bottom_, side_, uv_map_]
+        - Mesh
         """
 
-        node = Node('Cone', {'Vertices': vertices, 'Side Segments': side_segments, 'Fill Segments': fill_segments,
-            'Radius Top': radius_top, 'Radius Bottom': radius_bottom, 'Depth': depth}, fill_type=fill_type)
-        mesh = Mesh(node.mesh)
-        mesh.top_ = node.top
-        mesh.bottom_ = node.bottom
-        mesh.side_ = node.side
-        mesh.uv_map_ = node.uv_map
-        return mesh
+        return Mesh(Node('Cone', {'Vertices': vertices, 'Side Segments': side_segments, 'Fill Segments': fill_segments,
+            'Radius Top': radius_top, 'Radius Bottom': radius_bottom, 'Depth': depth}, fill_type=fill_type)._out)
 
     @classmethod
     def Cylinder(cls, vertices=32, side_segments=1, fill_segments=1, radius=1.0, depth=2.0, fill_type='NGON'):
-        """ Constructor Node 'Cylinder' (GeometryNodeMeshCylinder)
-
-        > Node <&Node Cylinder>
+        """ > Constructor node <&Node Cylinder>
 
         Arguments
         ---------
@@ -3294,22 +3099,14 @@ class Mesh(Geometry):
 
         Returns
         -------
-        - Mesh [top_, side_, bottom_, uv_map_]
+        - Mesh
         """
-        node = Node('Cylinder', {'Vertices': vertices, 'Side Segments': side_segments, 'Fill Segments': fill_segments,
-            'Radius': radius, 'Depth': depth}, fill_type=fill_type)
-        mesh = Mesh(node.mesh)
-        mesh.top_ = node.top
-        mesh.bottom_ = node.bottom
-        mesh.side_ = node.side
-        mesh.uv_map_ = node.uv_map
-        return mesh
+        return Mesh(Node('Cylinder', {'Vertices': vertices, 'Side Segments': side_segments, 'Fill Segments': fill_segments,
+            'Radius': radius, 'Depth': depth}, fill_type=fill_type)._out)
 
     @classmethod
     def Circle(cls, vertices=32, radius=1.0, fill_type='NONE'):
-        """ Constructor Node 'Mesh Circle' (GeometryNodeMeshCircle)
-
-        > Node <&Node Mesh Circle>
+        """ > Constructor node <&Node Mesh Circle>
 
         Arguments
         ---------
@@ -3321,15 +3118,11 @@ class Mesh(Geometry):
         -------
         - Mesh
         """
-        node = Node('Mesh Circle', {'Vertices': vertices, 'Radius': radius}, fill_type=fill_type)
-        mesh = Mesh(node.mesh)
-        return mesh
+        return Mesh(Node('Mesh Circle', {'Vertices': vertices, 'Radius': radius}, fill_type=fill_type)._out)
 
     @classmethod
     def Disk(cls, vertices=32, radius=1.0, fill_type='NGON'):
-        """ Constructor Node 'Mesh Circle' (GeometryNodeMeshCircle)
-
-        > Node <&Node Mesh Circle>
+        """ > Constructor node <&Node Mesh Circle>
 
         Arguments
         ---------
@@ -3345,9 +3138,7 @@ class Mesh(Geometry):
 
     @classmethod
     def Grid(cls, size_x=1.0, size_y=1.0, vertices_x=3, vertices_y=3):
-        """ Constructor Node 'Grid' (GeometryNodeMeshGrid)
-
-        > Node <&Node Grid>
+        """ > Constructor node <&Node Grid>
 
         Arguments
         ---------
@@ -3358,18 +3149,13 @@ class Mesh(Geometry):
 
         Returns
         -------
-        - Mesh [uv_map_]
+        - Mesh
         """
-        node = Node('Grid', {'Size X': size_x, 'Size Y': size_y, 'Vertices X': vertices_x, 'Vertices Y': vertices_y})
-        mesh = Mesh(node.mesh)
-        mesh.uv_map_ = node.uv_map
-        return mesh
+        return Mesh(Node('Grid', {'Size X': size_x, 'Size Y': size_y, 'Vertices X': vertices_x, 'Vertices Y': vertices_y})._out)
 
     @classmethod
     def Plane(cls, size_x=1.0, size_y=1.0):
-        """ Constructor Node 'Grid' (GeometryNodeMeshGrid)
-
-        > Node <&Node Grid>
+        """ > Constructor node <&Node Grid>
 
         Arguments
         ---------
@@ -3378,16 +3164,14 @@ class Mesh(Geometry):
 
         Returns
         -------
-        - Mesh [uv_map_]
+        - Mesh
         """
         return cls.Grid(size_x=size_x, size_y=size_y, vertices_x=2, vertices_y=2)
 
 
     @classmethod
     def IcoSphere(cls, radius=1.0, subdivisions=1):
-        """ Constructor Node 'Ico Sphere' (GeometryNodeMeshIcoSphere)
-
-        > Node <&Node Ico Sphere>
+        """ > Constructor node <&Node Ico Sphere>
 
         Arguments
         ---------
@@ -3396,18 +3180,13 @@ class Mesh(Geometry):
 
         Returns
         -------
-        - Mesh [uv_map_]
+        - Mesh
         """
-        node = Node('Ico Sphere', {'Radius': radius, 'Subdivisions': subdivisions})
-        mesh = Mesh(node.mesh)
-        mesh.uv_map_ = node.uv_map
-        return mesh
+        return Mesh(Node('Ico Sphere', {'Radius': radius, 'Subdivisions': subdivisions})._out)
 
     @classmethod
     def UVSphere(cls, segments=32, rings=16, radius=1.0):
-        """ Node 'UV Sphere' (GeometryNodeMeshUVSphere)
-
-        > Node <&Node UV Sphere>
+        """ > Constructor node <&Node UV Sphere>
 
         Arguments
         ---------
@@ -3417,20 +3196,15 @@ class Mesh(Geometry):
 
         Returns
         -------
-        - Mesh [uv_map_]
+        - Mesh
         """
-        node = Node('UV Sphere', {'Segments': segments, 'Rings': rings, 'Radius': radius})
-        mesh = Mesh(node.mesh)
-        mesh.uv_map_ = node.uv_map
-        return mesh
+        return Mesh(Node('UV Sphere', {'Segments': segments, 'Rings': rings, 'Radius': radius})._out)
 
     # =============================================================================================================================
     # Sample
 
     def sample_nearest_surface(self, value=None, group_id=None, sample_position=None, sample_group_id=None):
-        """ Node 'Sample Nearest Surface' (GeometryNodeSampleNearestSurface)
-
-        > Node <&Node Sample Nearest Surface>
+        """ > Node <&Node Sample Nearest Surface>
 
         - data_type (str): Node.data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4')
 
@@ -3443,17 +3217,13 @@ class Mesh(Geometry):
 
         Returns
         -------
-        - Float [is_valid_]
+        - Float
         """
         data_type = utils.get_data_type(value)
-        res = Node('Sample Nearest Surface', {'Mesh': self, 'Value': value, 'Group ID': group_id, 'Sample Position': sample_position, 'Sample Group ID': sample_group_id}, data_type=data_type)._out
-        res.is_valid_ = res.node.is_valid
-        return res
+        return Node('Sample Nearest Surface', {'Mesh': self, 'Value': value, 'Group ID': group_id, 'Sample Position': sample_position, 'Sample Group ID': sample_group_id}, data_type=data_type)._out
 
     def sample_uv_surface(self, value=None, uv_map=None, sample_uv=None):
-        """ Node 'Sample UV Surface' (GeometryNodeSampleUVSurface)
-
-        > Node <&Node Sample UV Surface>
+        """ > Node <&Node Sample UV Surface>
 
         Arguments
         ---------
@@ -3464,20 +3234,16 @@ class Mesh(Geometry):
 
         Returns
         -------
-        - Float [is_valid_]
+        - Float
         """
         data_type = utils.get_data_type(value)
-        res = Node('Sample UV Surface', {'Mesh': self, 'Value': value, 'UV Map': uv_map, 'Sample UV': sample_uv}, data_type=data_type)._out
-        res.is_valid_ = res.node.is_valid
-        return res
+        return Node('Sample UV Surface', {'Mesh': self, 'Value': value, 'UV Map': uv_map, 'Sample UV': sample_uv}, data_type=data_type)._out
 
     # =============================================================================================================================
     # Conversion
 
     def to_curve(self):
-        """ Node 'Mesh to Curve' (GeometryNodeMeshToCurve)
-
-        > Node <&Node Mesh to Curve>
+        """ > Node <&Node Mesh to Curve>
 
         Returns
         -------
@@ -3486,9 +3252,7 @@ class Mesh(Geometry):
         return Curve(Node('Mesh to Curve', {'Mesh': self, 'Selection': self._sel})._out)
 
     def to_volume(self, density=None, voxel_amount=None, interior_band_width=None, voxel_size=None, amount=True):
-        """ Node 'Mesh to Volume' (GeometryNodeMeshToVolume)
-
-        > Node <&Node Mesh to Volume>
+        """ > Node <&Node Mesh to Volume>
 
         - resolution_mode (str): Node.resolution_mode in ('VOXEL_AMOUNT', 'VOXEL_SIZE')
 
@@ -3513,9 +3277,7 @@ class Mesh(Geometry):
     # Operations
 
     def dual(self, keep_boundaries=None):
-        """ Node 'Dual Mesh' (GeometryNodeDualMesh)
-
-        > Node <&Node Dual Mesh>
+        """ > Node <&Node Dual Mesh>
 
         Arguments
         ---------
@@ -3528,9 +3290,7 @@ class Mesh(Geometry):
         return Mesh(Node('Dual Mesh', {'Mesh': self, 'Keep Boundaries': keep_boundaries})._out)
 
     def subdivide(self, level=None):
-        """ Node 'Subdivide Mesh' (GeometryNodeSubdivideMesh)
-
-        > Node <&Node Subdivide Mesh>
+        """ > Node <&Node Subdivide Mesh>
 
         Arguments
         ---------
@@ -3543,10 +3303,7 @@ class Mesh(Geometry):
         return Mesh(Node('Subdivide Mesh', {'Mesh': self, 'Level': level})._out)
 
     def triangulate(self, minimum_vertices=None, quad_method='SHORTEST_DIAGONAL', ngon_method='BEAUTY'):
-        """ Node 'Triangulate' (GeometryNodeTriangulate)
-
-        > Node <&Node Triangulate>
-
+        """ > Node <&Node Triangulate>
 
         Arguments
         ---------
@@ -3562,9 +3319,7 @@ class Mesh(Geometry):
             quad_method=quad_method, ngon_method=ngon_method)._out)
 
     def subdivision_surface(self, level=None, edge_crease=None, vertex_crease=None, uv_smooth='PRESERVE_BOUNDARIES', boundary_smooth='ALL'):
-        """ Node 'Subdivision Surface' (GeometryNodeSubdivisionSurface)
-
-        > Node <&Node Subdivision Surface>
+        """ > Node <&Node Subdivision Surface>
 
         Arguments
         ---------
@@ -3581,15 +3336,10 @@ class Mesh(Geometry):
         return Mesh(Node('Subdivision Surface', {'Mesh': self, 'Level': level, 'Edge Crease': edge_crease, 'Vertex Crease': vertex_crease},
             uv_smooth=uv_smooth, boundary_smooth=boundary_smooth)._out)
 
-    #def smooth_by_angle(self, angle=None, ignore_sharpness=None):
-    #    return Mesh(Node('Smooth by Angle', {'Mesh': self, 'Angle': angle, 'Ignore Sharpness': ignore_sharpness})._out)
-
     # ----- Mesh Boolean
 
     def boolean(self, *meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT', operation='DIFFERENCE'):
-        """ Node 'Mesh Boolean' (GeometryNodeMeshBoolean)
-
-        > Node <&Node Mesh Boolean>
+        """ > Node <&Node Mesh Boolean>
 
         Arguments
         ---------
@@ -3601,7 +3351,7 @@ class Mesh(Geometry):
 
         Returns
         -------
-        - Mesh [intersecting_edges_]
+        - Mesh
         """
         if operation == 'DIFFERENCE':
             sockets = {'Mesh 1': self, 'Mesh 2': list(meshes)}
@@ -3611,9 +3361,7 @@ class Mesh(Geometry):
         return Mesh(Node('Mesh Boolean', sockets, solver=solver, operation=operation)._out)
 
     def difference(self, *meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT'):
-        """ Node 'Mesh Boolean' (GeometryNodeMeshBoolean)
-
-        > Node <&Node Mesh Boolean>
+        """ > Node <&Node Mesh Boolean>
 
         Arguments
         ---------
@@ -3624,14 +3372,12 @@ class Mesh(Geometry):
 
         Returns
         -------
-        - Mesh [intersecting_edges_]
+        - Mesh
         """
         return self.boolean(*meshes, self_intersection=self_intersection, hole_tolerant=hole_tolerant, solver=solver, operation='DIFFERENCE')
 
     def intersect(self, *meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT'):
-        """ Node 'Mesh Boolean' (GeometryNodeMeshBoolean)
-
-        > Node <&Node Mesh Boolean>
+        """ > Node <&Node Mesh Boolean>
 
         Arguments
         ---------
@@ -3642,14 +3388,12 @@ class Mesh(Geometry):
 
         Returns
         -------
-        - Mesh [intersecting_edges_]
+        - Mesh
         """
         return self.boolean(*meshes, self_intersection=self_intersection, hole_tolerant=hole_tolerant, solver=solver, operation='INTERSECT')
 
     def union(self, *meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT'):
-        """ Node 'Mesh Boolean' (GeometryNodeMeshBoolean)
-
-        > Node <&Node Mesh Boolean>
+        """ > Node <&Node Mesh Boolean>
 
         Arguments
         ---------
@@ -3660,17 +3404,14 @@ class Mesh(Geometry):
 
         Returns
         -------
-        - Mesh [intersecting_edges_]
+        - Mesh
         """
         return self.boolean(*meshes, self_intersection=self_intersection, hole_tolerant=hole_tolerant, solver=solver, operation='UNION')
-
 
     # ----- UV
 
     def pack_uv_islands(self, uv=None, margin=None, rotate=None):
-        """ Node 'Pack UV Islands' (GeometryNodeUVPackIslands)
-
-        > Node <&Node Pack UV Islands>
+        """ > Node <&Node Pack UV Islands>
 
         Arguments
         ---------
@@ -3685,9 +3426,7 @@ class Mesh(Geometry):
         return Node('Pack UV Islands', {'UV': uv, 'Selection': self._sel, 'Margin': margin, 'Rotate': rotate})._out
 
     def uv_unwrap(self, seam=None, margin=None, fill_holes=False, method='ANGLE_BASED'):
-        """ Node 'UV Unwrap' (GeometryNodeUVUnwrap)
-
-        > Node <&Node UV Unwrap>
+        """ > Node <&Node UV Unwrap>
 
         Arguments
         ---------
@@ -3698,16 +3437,14 @@ class Mesh(Geometry):
 
         Returns
         -------
-        - uv (Vector)
+        - Vector
         """
         return Node('UV Unwrap', {'Selection': self._sel, 'Seam': seam, 'Margin': margin, 'Fill Holes': fill_holes}, method=method)._out
 
     # ----- Distribute points
 
     def distribute_points_on_faces(self, density=None, distance_min=None, density_max=None, density_factor=None, seed=None):#, poisson=False):
-        """ Node 'Distribute Points on Faces' (GeometryNodeDistributePointsOnFaces)
-
-        > Node <&Node Distribute Points on Faces>
+        """ > Node <&Node Distribute Points on Faces>
 
         if 'density' argument is not None, 'RANDOM' method is applied, 'POISSON' otherwise
 
@@ -3724,7 +3461,7 @@ class Mesh(Geometry):
 
         Returns
         -------
-        - Points [normal_, rotation_
+        - Cloud
         """
 
         # Poisson
@@ -3738,10 +3475,7 @@ class Mesh(Geometry):
             node = Node('Distribute Points on Faces', {'Mesh': self, 'Selection': self._sel,
                 'Density': density, 'Seed': seed}, distribute_method = 'RANDOM')
 
-        points = Cloud(node._out)
-        points.normal_   = node.normal
-        points.rotation_ = node.rotation
-        return points
+        return Cloud(node._out)
 
 
 # =============================================================================================================================
@@ -3785,9 +3519,7 @@ class Curve(Geometry):
 
     @classmethod
     def Circle(cls, resolution=None, radius=None, point_1=None, point_2=None, point_3=None):
-        """ Node 'Curve Circle' (GeometryNodeCurvePrimitiveCircle)
-
-        > Node <&Node Curve Circle>
+        """ > Constructor node <&Node Curve Circle>
 
         'mode' is set to 'POINTS' if one in (point_1, point_2, point_) is not None, 'RADIUS' otherwise
 
@@ -3807,9 +3539,7 @@ class Curve(Geometry):
         """
 
         if point_1 is not None or point_2 is not None or point_3 is not None:
-            curve = cls(Node('Curve Circle', {'Resolution': resolution, 'Point 1': point_1, 'Point 2': point_2, 'Point 3': point_3}, mode='POINTS')._out)
-            curve.center_ = curve.node.center
-            return curve
+            return cls(Node('Curve Circle', {'Resolution': resolution, 'Point 1': point_1, 'Point 2': point_2, 'Point 3': point_3}, mode='POINTS')._out)
         else:
             return cls(Node('Curve Circle', {'Resolution': resolution, 'Radius': radius}, mode='RADIUS')._out)
 
@@ -3819,9 +3549,7 @@ class Curve(Geometry):
     def Arc(cls, resolution=None, radius=None, start_angle=None, sweep_angle=None,
                  start=None, middle=None, end=None, offset_angle=None,
                  connect_center=None, invert_arc=None):
-        """ Node 'Arc' (GeometryNodeCurveArc)
-
-        > Node <&Node Arc>
+        """ > Constructor node <&Node Arc>
 
         'mode' is set to 'POINTS' if one in (start, middle, end, offset_angle) is not None, 'RADIUS' otherwise.
 
@@ -3842,17 +3570,13 @@ class Curve(Geometry):
 
         Returns
         -------
-        - Curve [center_, normal_, radius_]
+        - Curve
         """
 
 
         if start is not None or middle is not None or end is not None or offset_angle is not None:
-            curve = cls(Node('Arc', {'Resolution': resolution, 'Start': start, 'Middle': middle, 'End': end, 'Offset Angle': offset_angle,
+            return cls(Node('Arc', {'Resolution': resolution, 'Start': start, 'Middle': middle, 'End': end, 'Offset Angle': offset_angle,
                             'Connect Center': connect_center, 'Invert Arc': invert_arc}, mode='POINTS')._out)
-            curve.center_ = curve.node.center
-            curve.normal_ = curve.node.normal
-            curve.radius_ = curve.node.radius
-            return curve
 
         else:
             return cls(Node('Arc', {'Resolution': resolution, 'Radius': radius, 'Start Angle': start_angle, 'Sweep Angle': sweep_angle,
@@ -3862,9 +3586,7 @@ class Curve(Geometry):
 
     @classmethod
     def Line(cls, start=None, end=None, direction=None, length=None):
-        """ Node 'Curve Line' (GeometryNodeCurvePrimitiveLine)
-
-        > Node <&Node Curve Line>
+        """ > Constructor node <&Node Curve Line>
 
         'mode' is set to 'DIRECTION' if one in (direction, length) is not None, 'POINTS' otherwise.
 
@@ -3884,13 +3606,11 @@ class Curve(Geometry):
         else:
             return cls(Node('Curve Line', {'Start': start, 'End': end}, mode='POINTS')._out)
 
-    # ----- Beziers
+    # ----- Bezier
 
     @classmethod
     def BezierSegment(cls, resolution=None, start=None, start_handle=None, end_handle=None, end=None, mode='POSITION'):
-        """ Node 'Bézier Segment' (GeometryNodeCurvePrimitiveBezierSegment)
-
-        > Node <&Node Bézier Segment>
+        """ > Constructor node <&Node Bézier Segment>
 
         Arguments
         ---------
@@ -3910,9 +3630,7 @@ class Curve(Geometry):
 
     @classmethod
     def QuadraticBezier(cls, resolution=None, start=None, middle=None, end=None):
-        """ Node 'Quadratic Bézier' (GeometryNodeCurveQuadraticBezier)
-
-        > Node <&Node Quadratic Bézier>
+        """ > Constructor node <&Node Quadratic Bézier>
 
         Arguments
         ---------
@@ -3931,9 +3649,7 @@ class Curve(Geometry):
 
     @classmethod
     def Spiral(cls, resolution=None, rotations=None, start_radius=None, end_radius=None, height=None, reverse=None):
-        """ Node 'Spiral' (GeometryNodeCurveSpiral)
-
-        > Node <&Node Spiral>
+        """ > Constructor node <&Node Spiral>
 
         Arguments
         ---------
@@ -3953,9 +3669,7 @@ class Curve(Geometry):
 
     @classmethod
     def Star(cls, points=None, inner_radius=None, outer_radius=None, twist=None):
-        """ Node 'Star' (GeometryNodeCurveStar)
-
-        > Node <&Node Star>
+        """ > Constructor node <&Node Star>
 
         Arguments
         ---------
@@ -3966,19 +3680,15 @@ class Curve(Geometry):
 
         Returns
         -------
-        - Curve [outer_points_]
+        - Curve
         """
-        curve = cls(Node('Star', {'Points': points, 'Inner Radius': inner_radius, 'Outer Radius': outer_radius, 'Twist': twist})._out)
-        curve.outer_points_ = curve.node.outer_points
-        return curve
+        return cls(Node('Star', {'Points': points, 'Inner Radius': inner_radius, 'Outer Radius': outer_radius, 'Twist': twist})._out)
 
     # ----- Quadrilateral
-    # mode in ('RECTANGLE', 'PARALLELOGRAM', 'TRAPEZOID', 'KITE', 'POINTS')
+
     @classmethod
     def Quadrilateral(cls, width=None, height=None):
-        """ Node 'Quadrilateral' (GeometryNodeCurvePrimitiveQuadrilateral)
-
-        > Node <&Node Quadrilateral>
+        """ > Constructor node <&Node Quadrilateral>
 
         Arguments
         ---------
@@ -3994,9 +3704,7 @@ class Curve(Geometry):
 
     @classmethod
     def Rectangle(cls, width=None, height=None):
-        """ Node 'Quadrilateral' (GeometryNodeCurvePrimitiveQuadrilateral)
-
-        > Node <&Node Quadrilateral>
+        """ > Constructor node <&Node Quadrilateral>
 
         Arguments
         ---------
@@ -4011,9 +3719,7 @@ class Curve(Geometry):
 
     @classmethod
     def Parallelogram(cls, width=None, height=None, offset=None):
-        """ Node 'Quadrilateral' (GeometryNodeCurvePrimitiveQuadrilateral)
-
-        > Node <&Node Quadrilateral>
+        """ > Constructor node <&Node Quadrilateral>
 
         Arguments
         ---------
@@ -4028,9 +3734,7 @@ class Curve(Geometry):
 
     @classmethod
     def Trapezoid(cls, height=None, bottom_width=None, top_width=None, offset=None):
-        """ Node 'Quadrilateral' (GeometryNodeCurvePrimitiveQuadrilateral)
-
-        > Node <&Node Quadrilateral>
+        """ > Constructor node <&Node Quadrilateral>
 
         Arguments
         ---------
@@ -4047,9 +3751,7 @@ class Curve(Geometry):
 
     @classmethod
     def Kite(cls, width=None, bottom_height=None, top_height=None):
-        """ Node 'Quadrilateral' (GeometryNodeCurvePrimitiveQuadrilateral)
-
-        > Node <&Node Quadrilateral>
+        """ > Constructor node <&Node Quadrilateral>
 
         Arguments
         ---------
@@ -4064,9 +3766,7 @@ class Curve(Geometry):
 
     @classmethod
     def Points(cls, point_1=None, point_2=None, point_3=None, point_4=None):
-        """ Node 'Quadrilateral' (GeometryNodeCurvePrimitiveQuadrilateral)
-
-        > Node <&Node Quadrilateral>
+        """ > Constructor node <&Node Quadrilateral>
 
         Arguments
         ---------
@@ -4083,9 +3783,7 @@ class Curve(Geometry):
 
     @classmethod
     def FromMesh(cls, mesh):
-        """ Node 'Mesh to Curve' (GeometryNodeMeshToCurve)
-
-        > Node <&Node Mesh to Curve>
+        """ > Constructor node <&Node Mesh to Curve>
 
         Arguments
         ---------
@@ -4099,9 +3797,7 @@ class Curve(Geometry):
 
     @classmethod
     def FromEdgePaths(cls, mesh, next_vertex_index=None):
-        """ Node 'Edge Paths to Curves' (GeometryNodeEdgePathsToCurves)
-
-        > Node <&Node Edge Paths to Curves>
+        """ > Constructor Constructor node <&Node Edge Paths to Curves>
 
         Arguments
         ---------
@@ -4117,9 +3813,7 @@ class Curve(Geometry):
 
     @classmethod
     def FromPoints(cls, points, curve_group_id=None, weight=None):
-        """ Node 'Points to Curves' (GeometryNodePointsToCurves)
-
-        > Node <&Node Points to Curves>
+        """ > Constructor node <&Node Points to Curves>
 
         Arguments
         ---------
@@ -4138,90 +3832,81 @@ class Curve(Geometry):
 
     @property
     def domain_size(self):
+        """ > Node <&Domain Size>, component = 'CURVE'
+
+        Returns
+        -------
+        - Node : 'Domain Size" node
+        """
         return self._cache('Domain Size', {'Geometry': self}, component='CURVE')
 
     # ----- Radius
 
     @property
     def radius(self):
-        """ Node 'Radius' (GeometryNodeInputRadius)
+        """ > Radius property
 
-        > Node <&Node Radius>
+       - getter : <&Node Radius>
+       - setter : <&Node Set Curve Radius>
 
         Returns
         -------
         - Float
         """
-
         return Node('Radius')._out
 
     @radius.setter
     def radius(self, value):
-        """ Node 'Set Curve Radius' (GeometryNodeSetCurveRadius)
-
-        > Node <&Node Set Curve Radius>
-
-        Arguments
-        ---------
-        - value (Float) : socket 'Radius' (Radius)
-        """
-
         self._jump(Node('Set Curve Radius', {'Curve': self, 'Selection': self._sel, 'Radius': value})._out)
 
     # ----- Tilt
 
     @property
     def tilt(self):
-        """ Node 'Curve Tilt' (GeometryNodeInputCurveTilt)
+        """ > Tilt property
 
-        > Node <&Node Curve Tilt>
+       - getter : <&Node Curve Tilt>
+       - setter : <&Node Set Curve Tilt>
 
         Returns
         -------
         - Float
         """
-
         return Node('Curve Tilt')._out
 
     @tilt.setter
     def tilt(self, value):
-        """ Node 'Set Curve Tilt' (GeometryNodeSetCurveTilt)
-
-        > Node <&Node Set Curve Tilt>
-
-        Arguments
-        ---------
-        - tilt (Float) : socket 'Tilt' (Tilt)
-        """
-
         self._jump(Node('Set Curve Tilt', {'Curve': self, 'Selection': self._sel, 'Tilt': value})._out)
 
     # ----- Curve normal
 
     @property
     def normal(self):
+        """ > Normal write only property, normal in ('MINIMUM_TWIST', 'Z_UP', 'FREE')
+
+
+
+       - getter : None
+       - setter : <&Node Set Curve Normal>
+
+        Returns
+        -------
+        - Error
+        """
+
         raise NodeError(f"Curve.normal property is write only")
 
     @normal.setter
     def normal(self, value):
-        """ Node 'Set Curve Normal' (GeometryNodeSetCurveNormal)
-
-        > Node <&Node Set Curve Normal>
-
-        Arguments
-        ---------
-        - mode (str): Node.mode in ('MINIMUM_TWIST', 'Z_UP', 'FREE')
-        """
-
         return self._jump(Node('Set Curve Normal', {'Curve': self, 'Selection': self._sel}, mode=value)._out)
-
 
     @classmethod
     @property
     def tangent(cls):
-        """ Node 'Curve Tangent' (GeometryNodeInputTangent)
+        """ > Tangent read only property
 
-        > Node <&Node Curve Tangent>
+       - getter : <&Node Curve Tangent>
+       - setter : None
 
         Returns
         -------
@@ -4231,9 +3916,10 @@ class Curve(Geometry):
 
     @property
     def length(self):
-        """ Node 'Curve Length' (GeometryNodeCurveLength)
+        """ > Length read only property
 
-        > Node <&Node Curve Length>
+       - getter : <&Node Curve Length>
+       - setter : None
 
         Returns
         -------
@@ -4243,9 +3929,7 @@ class Curve(Geometry):
 
     @classmethod
     def endpoint_selection(cls, start_size=None, end_size=None):
-        """ Node 'Endpoint Selection' (GeometryNodeCurveEndpointSelection)
-
-        > Node <&Node Endpoint Selection>
+        """ > Node <&Node Endpoint Selection>
 
         Arguments
         ---------
@@ -4263,9 +3947,7 @@ class Curve(Geometry):
 
     @classmethod
     def curve_of_point(cls, point_index=None):
-        """ Node 'Curve of Point' (GeometryNodeCurveOfPoint)
-
-        > Node <&Node Curve of Point>
+        """ > Node <&Node Curve of Point>
 
         Arguments
         ---------
@@ -4273,15 +3955,13 @@ class Curve(Geometry):
 
         Returns
         -------
-        - Node: [curve_index (Integer), index_in_curve (Integer)]
+        - Node : 'Curve of Point' node
         """
         return Node('Curve of Point', {'Point Index': point_index})
 
     @classmethod
     def offset_point_in_curve(cls, point_index=None, offset=None):
-        """ Node 'Offset Point in Curve' (GeometryNodeOffsetPointInCurve)
-
-        > Node <&Node Offset Point in Curve>
+        """ > Node <&Node Offset Point in Curve>
 
         Arguments
         ---------
@@ -4290,15 +3970,13 @@ class Curve(Geometry):
 
         Returns
         -------
-        - Node: [is_valid_offset (Boolean), point_index (Integer)]
+        - Node : 'Offset Point in Curve' node
         """
         return Node('Offset Point in Curve', {'Point Index': point_index, 'Offset': offset})
 
     @classmethod
     def points_of_curve(cls, curve_index=None, weights=None, sort_index=None):
-        """ Node 'Points of Curve' (GeometryNodePointsOfCurve)
-
-        > Node <&Node Points of Curve>
+        """ > Node <&Node Points of Curve>
 
         Arguments
         ---------
@@ -4308,7 +3986,7 @@ class Curve(Geometry):
 
         Returns
         -------
-        - Node: [point_index (Integer), total (Integer)]
+        - Node : 'Points of Curve' node
         """
         return Node('Points of Curve', {'Curve Index': curve_index, 'Weights': weights, 'Sort Index': sort_index})
 
@@ -4316,9 +3994,7 @@ class Curve(Geometry):
     # Methods
 
     def set_normal(self, mode='MINIMUM_TWIST'):
-        """ Node 'Set Curve Normal' (GeometryNodeSetCurveNormal)
-
-        > Node <&Node Set Curve Normal>
+        """ > Node <&Node Set Curve Normal>
 
         Arguments
         ---------
@@ -4331,9 +4007,7 @@ class Curve(Geometry):
         return Curve(Node('Set Curve Normal', {'Curve': self, 'Selection': self._sel}, mode=mode)._out)
 
     def set_normal_z_up(self):
-        """ Node 'Set Curve Normal' (GeometryNodeSetCurveNormal)
-
-        > Node <&Node Set Curve Normal>
+        """ > Node <&Node Set Curve Normal>
 
         Returns
         -------
@@ -4342,9 +4016,7 @@ class Curve(Geometry):
         return self.set_normal(mode='Z_UP')
 
     def set_normal_free(self):
-        """ Node 'Set Curve Normal' (GeometryNodeSetCurveNormal)
-
-        > Node <&Node Set Curve Normal>
+        """ > Node <&Node Set Curve Normal>
 
         Returns
         -------
@@ -4353,9 +4025,7 @@ class Curve(Geometry):
         return self.set_normal(mode='FREE')
 
     def sample(self, value=None, factor=None, length=None, curve_index=None, all_curves=False):
-        """ Node 'Sample Curve' (GeometryNodeSampleCurve)
-
-        > Node <&Node Sample Curve>
+        """ > Node <&Node Sample Curve>
 
         'mode' is set to 'LENGTH' if factor is None, else 'FACTOR'
 
@@ -4383,19 +4053,13 @@ class Curve(Geometry):
             mode = 'LENGTH'
             sockets['Length'] = length
 
-        res = Node('Sample Curve', sockets, data_type=utils.get_data_type(value), mode=mode, use_all_curves=all_curves)._out
-        res.position_ = res.node.position
-        res.tangent_  = res.node.tangent
-        res.normal_   = res.node.normal
-        return res
+        return Node('Sample Curve', sockets, data_type=utils.get_data_type(value), mode=mode, use_all_curves=all_curves)._out
 
     # =============================================================================================================================
     # Operations
 
     def to_mesh(self, profile_curve=None, fill_caps=None):
-        """ Node 'Curve to Mesh' (GeometryNodeCurveToMesh)
-
-        > Node <&Node Curve to Mesh>
+        """ > Node <&Node Curve to Mesh>
 
         Arguments
         ---------
@@ -4409,9 +4073,7 @@ class Curve(Geometry):
         return Mesh.FromCurve(self, profile_curve=profile_curve, fill_caps=fill_caps)
 
     def to_points(self, count=None, length=None, mode='EVALUATED'):
-        """ Node 'Curve to Points' (GeometryNodeCurveToPoints)
-
-        > Node <&Node Curve to Points>
+        """ > Node <&Node Curve to Points>
 
         Arguments
         ---------
@@ -4426,9 +4088,7 @@ class Curve(Geometry):
         return Cloud.FromCurve(curve=self, count=count, length=length, mode='EVALUATED')
 
     def deform_on_surface(self):
-        """ Node 'Deform Curves on Surface' (GeometryNodeDeformCurvesOnSurface)
-
-        > Node <&Node Deform Curves on Surface>
+        """ > Node <&Node Deform Curves on Surface>
 
         Returns
         -------
@@ -4439,9 +4099,7 @@ class Curve(Geometry):
     # ----- Fill curve
 
     def fill(self, group_id=None, mode='TRIANGLES'):
-        """ Node 'Fill Curve' (GeometryNodeFillCurve)
-
-        > Node <&Node Fill Curve>
+        """ > Node <&Node Fill Curve>
 
         Arguments
         ---------
@@ -4457,9 +4115,7 @@ class Curve(Geometry):
     # ----- Fillet curve
 
     def fillet(self, radius=None, limit_radius=None, count=None, mode='BEZIER'):
-        """ Node 'Fillet Curve' (GeometryNodeFilletCurve)
-
-        > Node <&Node Fillet Curve>
+        """ > Node <&Node Fillet Curve>
 
         Arguments
         ---------
@@ -4477,9 +4133,7 @@ class Curve(Geometry):
     # ----- Interpolate curves
 
     def interpolate(self, guide_up=None, guide_group_id=None, points=None, point_up=None, point_group_id=None, max_neighbors=None):
-        """ Node 'Interpolate Curves' (GeometryNodeInterpolateCurves)
-
-        > Node <&Node Interpolate Curves>
+        """ > Node <&Node Interpolate Curves>
 
         Arguments
         ---------
@@ -4492,20 +4146,15 @@ class Curve(Geometry):
 
         Returns
         -------
-        - Curve [closest_index_, closest_weight_]
+        - Curve
         """
-        curve = Curve(Node('Interpolate Curves', {'Guide Curves': self, 'Guide Up': guide_up, 'Guide Group ID': guide_group_id,
+        return Curve(Node('Interpolate Curves', {'Guide Curves': self, 'Guide Up': guide_up, 'Guide Group ID': guide_group_id,
             'Points': points, 'Point Up': point_up, 'Point Group ID': point_group_id, 'Max Neighbors': max_neighbors})._out)
-        curve.closest_index_  = curve.node.closest_index
-        curve.closest_weight_ = curve.node.closest_weight
-        return curve
 
     # ----- Resample
 
     def resample(self, count=None, length=None):
-        """ Node 'Resample Curve' (GeometryNodeResampleCurve)
-
-        > Node <&Node Resample Curve>
+        """ > Node <&Node Resample Curve>
 
         Parameter 'mode'
         ---------------
@@ -4537,9 +4186,7 @@ class Curve(Geometry):
     # ----- Trim
 
     def trim(self, start=None, end=None, mode='FACTOR'):
-        """ Node 'Trim Curve' (GeometryNodeTrimCurve)
-
-        > Node <&Node Trim Curve>
+        """ > Node <&Node Trim Curve>
 
         Arguments
         ---------
@@ -4554,9 +4201,7 @@ class Curve(Geometry):
         return Curve(Node('Trim Curve', {'Curve': self, 'Selection': self._sel, 'Start': start, 'End': end}, mode=mode)._out)
 
     def trim_factor(self, start=None, end=None):
-        """ Node 'Trim Curve' (GeometryNodeTrimCurve)
-
-        > Node <&Node Trim Curve>
+        """ > Node <&Node Trim Curve>
 
         Arguments
         ---------
@@ -4570,9 +4215,7 @@ class Curve(Geometry):
         return self.trim(start=start, end=end, mode='FACTOR')
 
     def trim_length(self, start=None, end=None):
-        """ Node 'Trim Curve' (GeometryNodeTrimCurve)
-
-        > Node <&Node Trim Curve>
+        """ > Node <&Node Trim Curve>
 
         Arguments
         ---------
@@ -4588,9 +4231,7 @@ class Curve(Geometry):
     # ----- Various
 
     def reverse(self):
-        """ Node 'Reverse Curve' (GeometryNodeReverseCurve)
-
-        > Node <&Node Reverse Curve>
+        """ > Node <&Node Reverse Curve>
 
         Returns
         -------
@@ -4599,9 +4240,7 @@ class Curve(Geometry):
         return Curve(Node('Reverse Curve', {'Curve': self, 'Selection': self._sel})._out)
 
     def subdivide(self, cuts=None):
-        """ Node 'Subdivide Curve' (GeometryNodeSubdivideCurve)
-
-        > Node <&Node Subdivide Curve>
+        """ > Node <&Node Subdivide Curve>
 
         Arguments
         ---------
@@ -4653,9 +4292,7 @@ class Cloud(Geometry):
 
     @classmethod
     def Points(cls, count=1, position=None, radius=None):
-        """ Node 'Points' (GeometryNodePoints)
-
-        > Node <&Node Points>
+        """ > Constructor node <&Node Points>
 
         Arguments
         ---------
@@ -4673,9 +4310,7 @@ class Cloud(Geometry):
 
     @classmethod
     def FromCurve(cls, curve, count=None, length=None, mode='COUNT'):
-        """ Node 'Curve to Points' (GeometryNodeCurveToPoints)
-
-        > Node <&Node Curve to Points>
+        """ > Constructor node <&Node Curve to Points>
 
         Arguments
         ---------
@@ -4687,19 +4322,13 @@ class Cloud(Geometry):
         -------
         - Cloud [tangent_, normal_, rotation_]
         """
-        points = Node('Curve to Points', {'Curve': curve, 'Count': count, 'Length': length}, mode=mode)._out
-        points.tangent_ = points.node.tangent
-        points.normal_ = points.node.normal
-        points.rotation_ = points.node.rotation
-        return points
+        return Node('Curve to Points', {'Curve': curve, 'Count': count, 'Length': length}, mode=mode)._out
 
     # ----- Instances to points
 
     @classmethod
     def FromInstances(cls, instances, position=None, radius=None):
-        """ Node 'Instances to Points' (GeometryNodeInstancesToPoints)
-
-        > Node <&Node Instances to Points>
+        """ > Constructor node <&Node Instances to Points>
 
         Arguments
         ---------
@@ -4717,9 +4346,7 @@ class Cloud(Geometry):
 
     @classmethod
     def FromMesh(cls, mesh, position=None, radius=None, mode='POINTS'):
-        """ Node 'Mesh to Points' (GeometryNodeMeshToPoints)
-
-        > Node <&Node Mesh to Points>
+        """ > Constructor node <&Node Mesh to Points>
 
         Arguments
         ---------
@@ -4744,18 +4371,66 @@ class Cloud(Geometry):
 
     @classmethod
     def FromVertices(cls, mesh, position=None, radius=None):
+        """ > Constructor node <&Node Mesh to Points>, mode VERTICES
+
+        Arguments
+        ---------
+        - mesh (Mesh) : socket 'Mesh' (Mesh)
+        - position (Vector) : socket 'Position' (Position)
+        - radius (Float) : socket 'Radius' (Radius)
+
+        Returns
+        -------
+        - Cloud
+        """
         return Mesh(mesh)[mesh._sel].points.to_points(position=position, radius=radius)
 
     @classmethod
     def FromFaces(cls, mesh, position=None, radius=None):
+        """ > Constructor node <&Node Mesh to Points>, mode FACES
+
+        Arguments
+        ---------
+        - mesh (Mesh) : socket 'Mesh' (Mesh)
+        - position (Vector) : socket 'Position' (Position)
+        - radius (Float) : socket 'Radius' (Radius)
+
+        Returns
+        -------
+        - Cloud
+        """
         return Mesh(mesh)[mesh._sel].faces.to_points(position=position, radius=radius)
 
     @classmethod
     def FromCorners(cls, mesh, position=None, radius=None):
+        """ > Constructor node <&Node Mesh to Points>, mode CORNERS
+
+        Arguments
+        ---------
+        - mesh (Mesh) : socket 'Mesh' (Mesh)
+        - position (Vector) : socket 'Position' (Position)
+        - radius (Float) : socket 'Radius' (Radius)
+
+        Returns
+        -------
+        - Cloud
+        """
         return Mesh(mesh)[mesh._sel].corners.to_points(position=position, radius=radius)
 
     @classmethod
     def FromEdges(cls, mesh, position=None, radius=None):
+        """ > Constructor node <&Node Mesh to Points>, mode EDGES
+
+        Arguments
+        ---------
+        - mesh (Mesh) : socket 'Mesh' (Mesh)
+        - position (Vector) : socket 'Position' (Position)
+        - radius (Float) : socket 'Radius' (Radius)
+
+        Returns
+        -------
+        - Cloud
+        """
         return Mesh(mesh)[mesh._sel].edges.to_points(position=position, radius=radius)
 
     # =============================================================================================================================
@@ -4763,6 +4438,12 @@ class Cloud(Geometry):
 
     @property
     def domain_size(self):
+        """ > Node <&Domain Size>, component = 'POINTCLOUD'
+
+        Returns
+        -------
+        - Node : 'Domain Size" node
+        """
         return self._cache('Domain Size', {'Geometry': self}, component='POINTCLOUD')
 
     # =============================================================================================================================
@@ -4771,9 +4452,7 @@ class Cloud(Geometry):
     # ----- to curves
 
     def to_curves(self, curve_group_id=None, weight=None):
-        """ Node 'Points to Curves' (GeometryNodePointsToCurves)
-
-        > Node <&Node Points to Curves>
+        """ > Node <&Node Points to Curves>
 
         Arguments
         ---------
@@ -4789,9 +4468,7 @@ class Cloud(Geometry):
     # ----- to mesh
 
     def to_vertices(self):
-        """ Node 'Points to Vertices' (GeometryNodePointsToVertices)
-
-        > Node <&Node Points to Vertices>
+        """ > Node <&Node Points to Vertices>
 
         Returns
         -------
@@ -4802,9 +4479,7 @@ class Cloud(Geometry):
     # ----- to volume
 
     def to_volume(self, density=None, voxel_size=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_AMOUNT'):
-        """ Node 'Points to Volume' (GeometryNodePointsToVolume)
-
-        > Node <&Node Points to Volume>
+        """ > Node <&Node Points to Volume>
 
         Arguments
         ---------
@@ -4858,9 +4533,7 @@ class Instances(Geometry):
 
     @classmethod
     def FromGeometry(cls, *geometries):
-        """ Node 'Geometry to Instance' (GeometryNodeGeometryToInstance)
-
-        > Node <&Node Geometry to Instance>
+        """ > Constructor node <&Node Geometry to Instance>
 
         Arguments
         ---------
@@ -4875,9 +4548,7 @@ class Instances(Geometry):
     @classmethod
     def FromString(cls, string=None, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, text_box_height=None,
                 overflow='OVERFLOW', align_x='LEFT', align_y='TOP_BASELINE', pivot_mode='BOTTOM_LEFT'):
-        """ Node 'String to Curves' (GeometryNodeStringToCurves)
-
-        > Node <&Node String to Curves>
+        """ > Constructor node <&Node String to Curves>
 
         Arguments
         ---------
@@ -4898,30 +4569,29 @@ class Instances(Geometry):
         -------
         - Instances [remainder_, line_, pivot_point_]
         """
-        node = Node('String to Curves', {'String': string, 'Size': size, 'Character Spacing': character_spacing,
+        return cls(Node('String to Curves', {'String': string, 'Size': size, 'Character Spacing': character_spacing,
             'Word Spacing': word_spacing, 'Line Spacing': line_spacing,
             'Text Box Width': text_box_width, 'Text Box Height': text_box_height},
-            overflow=overflow, align_x=align_x, align_y=align_y, pivot_mode=pivot_mode)
-        insts = cls(node._out)
-        insts.remainder_ = node.remainder
-        insts.line_ = node.line
-        insts.pivot_point_ = node.pivot_point
-        return insts
+            overflow=overflow, align_x=align_x, align_y=align_y, pivot_mode=pivot_mode)._ut)
 
     # =============================================================================================================================
     # Properties
 
     @property
     def domain_size(self):
+        """ > Node <&Domain Size>, component = 'INSTANCES'
+
+        Returns
+        -------
+        - Node : 'Domain Size" node
+        """
         return self._cache('Domain Size', {'Geometry': self}, component='INSTANCES')
 
     # =============================================================================================================================
     # Operations
 
     def realize(self, realize_all=None, depth=None):
-        """ Node 'Realize Instances' (GeometryNodeRealizeInstances)
-
-        > Node <&Node Realize Instances>
+        """ > Node <&Node Realize Instances>
 
         Arguments
         ---------
@@ -4935,9 +4605,7 @@ class Instances(Geometry):
         return Node('Realize Instances', {'Geometry': self, 'Selection': self._sel, 'Realize All': realize_all, 'Depth': depth})._out
 
     def to_points(self, position=None, radius=None):
-        """ Node 'Instances to Points' (GeometryNodeInstancesToPoints)
-
-        > Node <&Node Instances to Points>
+        """ > Node <&Node Instances to Points>
 
         Arguments
         ---------
@@ -4951,9 +4619,7 @@ class Instances(Geometry):
         return Cloud(Node('Instances to Points', {'Instances': self, 'Selection': self._sel, 'Position': position, 'Radius': radius})._out)
 
     def on_points(self, points, pick_instance=None, instance_index=None, rotation=None, scale=None):
-        """ Node 'Instance on Points' (GeometryNodeInstanceOnPoints)
-
-        > Node <&Node Instance on Points>
+        """ > Node <&Node Instance on Points>
 
         Arguments
         ---------
@@ -4975,9 +4641,7 @@ class Instances(Geometry):
         return points.instance_on(instance=self, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale)
 
     def translate(self, translation=None, local_space=None):
-        """ Node 'Translate Instances' (GeometryNodeTranslateInstances)
-
-        > Node <&Node Translate Instances>
+        """ > Node <&Node Translate Instances>
 
         Arguments
         ---------
@@ -4991,9 +4655,7 @@ class Instances(Geometry):
         return Instances(Node('Translate Instances', {'Instances': self, 'Selection': self._sel, 'Translation': translation, 'Local Space': local_space})._out)
 
     def scale(self, scale=None, center=None, local_space=None):
-        """ Node 'Scale Instances' (GeometryNodeScaleInstances)
-
-        > Node <&Node Scale Instances>
+        """ > Node <&Node Scale Instances>
 
         Arguments
         ---------
@@ -5007,13 +4669,8 @@ class Instances(Geometry):
         """
         return Instances(Node('Scale Instances', {'Instances': self, 'Selection': self._sel, 'Scale': scale, 'Center': center, 'Local Space': local_space})._out)
 
-        #self.insts.scale = {'scale': scale, 'center': center, 'local_space': local_space}
-        #return self
-
     def rotate(self, rotation=None, pivot_point=None, local_space=None):
-        """ Node 'Rotate Instances' (GeometryNodeRotateInstances)
-
-        > Node <&Node Rotate Instances>
+        """ > Node <&Node Rotate Instances>
 
         Arguments
         ---------
@@ -5026,8 +4683,6 @@ class Instances(Geometry):
         - Instances
         """
         return Instances(Node('Rotate Instances', {'Instances': self, 'Selection': self._sel, 'Rotation': rotation, 'Pivot Point': pivot_point, 'Local Space': local_space})._out)
-        #self.insts.rotation = {'rotation': rotation, 'pivot_point': pivot_point, 'local_space': local_space}
-        #return self
 
 # =============================================================================================================================
 # =============================================================================================================================
@@ -5055,9 +4710,7 @@ class Volume(Geometry):
 
     @classmethod
     def Cube(cls, density=None, background=None, min=None, max=None, resolution_x=None, resolution_y=None, resolution_z=None):
-        """ Node 'Volume Cube' (GeometryNodeVolumeCube)
-
-        > Node <&Node Volume Cube>
+        """ > Constructor node <&Node Volume Cube>
 
         Arguments
         ---------
@@ -5078,9 +4731,7 @@ class Volume(Geometry):
 
     @classmethod
     def FromMesh(cls, mesh, density=None, voxel_amount=None, interior_band_width=None, voxel_size=None, amount=True):
-        """ Node 'Mesh to Volume' (GeometryNodeMeshToVolume)
-
-        > Node <&Node Mesh to Volume>
+        """ > Constructor node <&Node Mesh to Volume>
 
         Arguments
         ---------
@@ -5098,9 +4749,7 @@ class Volume(Geometry):
 
     @classmethod
     def FromPoints(cls, points, density=None, voxel_size=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_AMOUNT'):
-        """ Node 'Points to Volume' (GeometryNodePointsToVolume)
-
-        > Node <&Node Points to Volume>
+        """ > Node <&Node Points to Volume>
 
         Arguments
         ---------
@@ -5120,9 +4769,7 @@ class Volume(Geometry):
     # Methods
 
     def distribute_points(self, density=None, seed=None, spacing=None, threshold=None, mode='DENSITY_RANDOM'):
-        """ Node 'Distribute Points in Volume' (GeometryNodeDistributePointsInVolume)
-
-        > Node <&Node Distribute Points in Volume>
+        """ > Node <&Node Distribute Points in Volume>
 
         Arguments
         ---------
@@ -5140,9 +4787,7 @@ class Volume(Geometry):
             'Seed': seed, 'Spacing': spacing, 'Threshold': threshold}, mode=mode)._out)
 
     def distribute_random(self, density=None, seed=None):
-        """ Node 'Distribute Points in Volume' (GeometryNodeDistributePointsInVolume)
-
-        > Node <&Node Distribute Points in Volume>
+        """ > Node <&Node Distribute Points in Volume>
 
         Arguments
         ---------
@@ -5156,9 +4801,7 @@ class Volume(Geometry):
         return self.distribute_points(density=density, seed=seed, mode='DENSITY_RANDOM')
 
     def distribute_grid(self, spacing=None, threshold=None):
-        """ Node 'Distribute Points in Volume' (GeometryNodeDistributePointsInVolume)
-
-        > Node <&Node Distribute Points in Volume>
+        """ > Node <&Node Distribute Points in Volume>
 
         Arguments
         ---------
@@ -5172,9 +4815,7 @@ class Volume(Geometry):
         return self.distribute_points(spacing=spacing, threshold=threshold, mode='DENSITY_GRID')
 
     def to_mesh(self, voxel_size=None, voxel_amount=None, threshold=None, adaptivity=None, resolution_mode='GRID'):
-        """ Node 'Volume to Mesh' (GeometryNodeVolumeToMesh)
-
-        > Node <&Node Volume to Mesh>
+        """ > Node <&Node Volume to Mesh>
 
         Arguments
         ---------
@@ -5202,9 +4843,7 @@ class Volume(Geometry):
 
 
     def to_mesh_grid(self, threshold=None, adaptivity=None):
-        """ Node 'Volume to Mesh' (GeometryNodeVolumeToMesh)
-
-        > Node <&Node Volume to Mesh>
+        """ > Node <&Node Volume to Mesh>
 
         Arguments
         ---------
@@ -5218,9 +4857,7 @@ class Volume(Geometry):
         return self.to_mesh(threshold=threshold, adaptivity=adaptivity, resolution_mode='GRID')
 
     def to_mesh_amount(self, voxel_amount=None, threshold=None, adaptivity=None):
-        """ Node 'Volume to Mesh' (GeometryNodeVolumeToMesh)
-
-        > Node <&Node Volume to Mesh>
+        """ > Node <&Node Volume to Mesh>
 
         Arguments
         ---------
@@ -5235,9 +4872,7 @@ class Volume(Geometry):
         return self.to_mesh(voxel_amount=voxel_amount, threshold=threshold, adaptivity=adaptivity, resolution_mode='VOXEL_AMOUNT')
 
     def to_mesh_size(self, voxel_size=None, threshold=None, adaptivity=None):
-        """ Node 'Volume to Mesh' (GeometryNodeVolumeToMesh)
-
-        > Node <&Node Volume to Mesh>
+        """ > Node <&Node Volume to Mesh>
 
         Arguments
         ---------

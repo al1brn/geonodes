@@ -11,6 +11,11 @@ Socket of type 'GEOMETRY'.
 If value is None, a Group Input socket of type Geometry is created.
 When a Group Input socket is created, default name 'Geometry' is used if name argument is None.
 
+``` python
+geometry = Geometry() # Default group input geometry
+geometry = Geometry(name="Mesh") # Input group geometry
+```
+
 #### Arguments:
 - **value** (_Socket_ = None) : initial value
 - **name** (_str_ = None) : Create an Group Input socket with the provided str
@@ -22,11 +27,12 @@ When a Group Input socket is created, default name 'Geometry' is used if name ar
 
 ## Content
 
-- **B** : [bounding_box](geono-geometry.md#bounding_box)
+- **B** : [bake](geono-geometry.md#bake) :black_small_square: [bounding_box](geono-geometry.md#bounding_box)
 - **C** : [convex_hull](geono-geometry.md#convex_hull) :black_small_square: [curve](geono-geometry.md#curve)
 - **I** : [id](geono-geometry.md#id) :black_small_square: [index_of_nearest](geono-geometry.md#index_of_nearest) :black_small_square: [instances](geono-geometry.md#instances)
 - **J** : [join](geono-geometry.md#join)
-- **M** : [material_index](geono-geometry.md#material_index) :black_small_square: [merge_by_distance](geono-geometry.md#merge_by_distance) :black_small_square: [mesh](geono-geometry.md#mesh)
+- **M** : [material](geono-geometry.md#material) :black_small_square: [material_index](geono-geometry.md#material_index) :black_small_square: [merge_by_distance](geono-geometry.md#merge_by_distance) :black_small_square: [mesh](geono-geometry.md#mesh)
+- **O** : [offset](geono-geometry.md#offset)
 - **P** : [point_cloud](geono-geometry.md#point_cloud) :black_small_square: [position](geono-geometry.md#position)
 - **R** : [raycast](geono-geometry.md#raycast) :black_small_square: [remove_named_attribute](geono-geometry.md#remove_named_attribute) :black_small_square: [replace_material](geono-geometry.md#replace_material)
 - **S** : [separate_components](geono-geometry.md#separate_components) :black_small_square: [set_id](geono-geometry.md#set_id) :black_small_square: [set_material](geono-geometry.md#set_material) :black_small_square: [set_position](geono-geometry.md#set_position) :black_small_square: [set_shade_smooth](geono-geometry.md#set_shade_smooth)
@@ -42,20 +48,22 @@ When a Group Input socket is created, default name 'Geometry' is used if name ar
 > _type_: **Mesh**
 >
 
-Property node 'Bounding Box' (GeometryNodeBoundBox)
+> Bounding box read only property
 
-> Node [Bounding Box](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/bounding_box.html)
+- getter : [Bounding Box](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/bounding_box.html)
+- setter : None
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Properties](geono-geometry.md#properties)</sub>
 
 ### convex_hull
 
-> _type_: **convex_hull**
+> _type_: **Mesh**
 >
 
-Property node 'Convex Hull' (GeometryNodeConvexHull)
+> Convex hull read only property
 
-> Node [Convex Hull](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/convex_hull.html)
+- getter : [Convex Hull](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/convex_hull.html)
+- setter : None
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Properties](geono-geometry.md#properties)</sub>
 
@@ -64,9 +72,7 @@ Property node 'Convex Hull' (GeometryNodeConvexHull)
 > _type_: **Curve**
 >
 
-Property curve component
-
-> Node [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/separate_components.html)
+> Socket 'Curve' of node [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/separate_components.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Properties](geono-geometry.md#properties)</sub>
 
@@ -75,9 +81,10 @@ Property curve component
 > _type_: **Integer**
 >
 
-> **node** : [ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/id.html)
+> Id property
 
-> Node [ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/id.html)
+- getter : [ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/id.html)
+- setter : [Set ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/write/set_id.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Properties](geono-geometry.md#properties)</sub>
 
@@ -86,9 +93,19 @@ Property curve component
 > _type_: **Instances**
 >
 
-Property instances component
+> Socket Instances of node [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/separate_components.html)
 
-> Node [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/separate_components.html)
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Properties](geono-geometry.md#properties)</sub>
+
+### material
+
+> _type_: **Error**
+>
+
+> Material write only property
+
+- getter : None
+- setter : [Set Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Properties](geono-geometry.md#properties)</sub>
 
@@ -97,9 +114,10 @@ Property instances component
 > _type_: **Integer**
 >
 
-> **node** : [Material Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_index.html)
+> Material index property
 
-> Node [Material Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_index.html)
+- getter : [Material Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_index.html)
+- setter : [Set Material Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material_index.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Properties](geono-geometry.md#properties)</sub>
 
@@ -108,9 +126,19 @@ Property instances component
 > _type_: **Mesh**
 >
 
-Property mesh component
+> Socket 'Mesh' of node [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/separate_components.html)
 
-> Node [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/separate_components.html)
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Properties](geono-geometry.md#properties)</sub>
+
+### offset
+
+> _type_: **Error**
+>
+
+> Offset write only property
+
+- getter : None
+- setter : [Set Position](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/write/set_position.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Properties](geono-geometry.md#properties)</sub>
 
@@ -119,9 +147,7 @@ Property mesh component
 > _type_: **Cloud**
 >
 
-Property cloud component
-
-> Node [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/separate_components.html)
+> Socket 'Point Cloud' of node [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/separate_components.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Properties](geono-geometry.md#properties)</sub>
 
@@ -130,9 +156,10 @@ Property cloud component
 > _type_: **Vector**
 >
 
-> **node** : [Position](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/position.html)
+> Position property
 
-> Node [Position](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/position.html)
+- getter : node [Position](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/position.html)
+- setter : node [Set Position](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/write/set_position.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Properties](geono-geometry.md#properties)</sub>
 
@@ -141,9 +168,9 @@ Property cloud component
 > _type_: **Node**
 >
 
-Property node 'Separate Components' (GeometryNodeSeparateComponents)
-
 > Node [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/separate_components.html)
+
+> See [mesh](geono-geometry.md#mesh), [curve](geono-geometry.md#curve), [point_cloud](geono-geometry.md#point_cloud), [instances](geono-geometry.md#instances) and [volume](geono-geometry.md#volume) properties
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Properties](geono-geometry.md#properties)</sub>
 
@@ -152,15 +179,34 @@ Property node 'Separate Components' (GeometryNodeSeparateComponents)
 > _type_: **Volume**
 >
 
-Property volume component
-
-> Node [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/separate_components.html)
+> Socket 'Volume' of node [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/separate_components.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Properties](geono-geometry.md#properties)</sub>
 
 ## Methods
 
 
+
+----------
+### bake()
+
+> method
+
+``` python
+bake(**kwargs)
+```
+
+Node [Bake](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/bake.html)
+
+#### Arguments:
+- **kwargs**
+
+
+
+#### Returns:
+- **Node** : 'Bake' node
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Methods](geono-geometry.md#methods)</sub>
 
 ----------
 ### index_of_nearest()
@@ -170,8 +216,6 @@ Property volume component
 ``` python
 index_of_nearest(position=None, group_id=None)
 ```
-
-> **node** : ERROR: Node 'Index of Nearest' not found
 
 > Node ERROR: Node 'Index of Nearest' not found
 
@@ -194,8 +238,6 @@ index_of_nearest(position=None, group_id=None)
 ``` python
 join(*geometries)
 ```
-
-> **node** : [Join Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/join_geometry.html)
 
 > Node [Join Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/join_geometry.html)
 
@@ -235,8 +277,6 @@ assert(isinstance(geo, Geometry))
 merge_by_distance(distance=None, mode='ALL')
 ```
 
-> **node** : [Merge by Distance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/merge_by_distance.html)
-
 > Node [Merge by Distance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/merge_by_distance.html)
 
 #### Arguments:
@@ -246,7 +286,7 @@ merge_by_distance(distance=None, mode='ALL')
 
 
 #### Returns:
-- **geometry** (_Geometry_)
+- **Geometry** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Methods](geono-geometry.md#methods)</sub>
 
@@ -258,8 +298,6 @@ merge_by_distance(distance=None, mode='ALL')
 ``` python
 raycast(attribute=None, source_position=None, ray_direction=None, ray_length=None, interpolated=True)
 ```
-
-> **node** : [Raycast](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/raycast.html)
 
 > Node [Raycast](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/raycast.html)
 
@@ -275,7 +313,7 @@ mapping in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNIO
 
 
 #### Returns:
-- **Node** : [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Float)]
+- **Node** : 'RayCast' node
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Methods](geono-geometry.md#methods)</sub>
 
@@ -287,8 +325,6 @@ mapping in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNIO
 ``` python
 remove_named_attribute(name, exact=True)
 ```
-
-Remove named attribute
 
 > Node [Remove Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/remove_named_attribute.html)
 
@@ -312,8 +348,6 @@ Remove named attribute
 replace_material(old=None, new=None)
 ```
 
-> **node** : [Replace Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/replace_material.html)
-
 > Node [Replace Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/replace_material.html)
 
 #### Arguments:
@@ -336,8 +370,6 @@ replace_material(old=None, new=None)
 set_id(id=None)
 ```
 
-Set ID.
-
 > Node [Set ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/write/set_id.html)
 
 #### Arguments:
@@ -359,8 +391,6 @@ Set ID.
 set_material(material=None)
 ```
 
-Set Material.
-
 > Node [Set Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html)
 
 #### Arguments:
@@ -381,8 +411,6 @@ Set Material.
 ``` python
 set_position(position=None, offset=None)
 ```
-
-Set Position.
 
 > Node [Set Position](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/write/set_position.html)
 
@@ -406,8 +434,6 @@ Set Position.
 set_shade_smooth(shade_smooth=True, edge=False)
 ```
 
-Set Shade Smooth.
-
 > Node [Set Shade Smooth](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/write/set_shade_smooth.html)
 
 #### Arguments:
@@ -430,8 +456,6 @@ Set Shade Smooth.
 to_instance(*geometries)
 ```
 
-> **node** : [Geometry to Instance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_to_instance.html)
-
 > Node [Geometry to Instance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_to_instance.html)
 
 #### Arguments:
@@ -453,12 +477,11 @@ to_instance(*geometries)
 transform(translation=None, rotation=None, scale=None, matrix=None)
 ```
 
-> **node** : [Transform Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/transform_geometry.html)
-
 > Node [Transform Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/transform_geometry.html)
 
-If 'matrix' argument is None, the mode 'COMPONENTS' is set.
-If 'matrix' argument is not NOne, the mode 'MATRIX' is set and the other arguments are ignored.
+> [!NOTE]
+> - If **matrix** argument is None, the mode 'COMPONENTS' is set.
+> - If **matrix** argument is not NOne, the mode 'MATRIX' is set and the other arguments are ignored.
 
 #### Arguments:
 - **translation** (_Vector_ = None) : socket 'Translation' (Translation)
@@ -469,7 +492,7 @@ If 'matrix' argument is not NOne, the mode 'MATRIX' is set and the other argumen
 
 
 #### Returns:
-- **geometry** (_Geometry_)
+- **Geometry** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Methods](geono-geometry.md#methods)</sub>
 
@@ -481,8 +504,6 @@ If 'matrix' argument is not NOne, the mode 'MATRIX' is set and the other argumen
 ``` python
 viewer(value=None)
 ```
-
-Create a viewer node.
 
 > Node [Viewer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/output/viewer.html)
 

@@ -5,7 +5,6 @@ You will find here how nodes are implemented
 #### Accumulate Field
 
 - [Domain](geono-domain.md#domain) :white_small_square: [accumulate_field](geono-domain.md#accumulate_field)
-- [Domain](geono-domain.md#domain) :white_small_square: [accumulate_field](geono-domain.md#accumulate_field)
 - [nd](geono-nd.md#nd) :white_small_square: [accumulate_field](geono-nd.md#accumulate_field)
 
 #### Active Element
@@ -23,7 +22,6 @@ You will find here how nodes are implemented
 #### Arc
 
 - [Curve](geono-curve.md#curve) :white_small_square: [Arc](geono-curve.md#arc)
-- [Curve](geono-curve.md#curve) :white_small_square: [Arc](geono-curve.md#arc)
 - [nd](geono-nd.md#nd) :white_small_square: [arc](geono-nd.md#arc)
 
 #### Attribute
@@ -35,6 +33,7 @@ You will find here how nodes are implemented
 
 #### Attribute Statistic
 
+- [Domain](geono-domain.md#domain) :white_small_square: [attribute_statistic](geono-domain.md#attribute_statistic)
 - [nd](geono-nd.md#nd) :white_small_square: [attribute_statistic](geono-nd.md#attribute_statistic)
 
 #### Axes to Rotation
@@ -47,6 +46,7 @@ You will find here how nodes are implemented
 
 #### Bake
 
+- [Geometry](geono-geometry.md#geometry) :white_small_square: [bake](geono-geometry.md#bake)
 - [nd](geono-nd.md#nd) :white_small_square: [bake](geono-nd.md#bake)
 
 #### Blackbody
@@ -96,14 +96,11 @@ You will find here how nodes are implemented
 #### Bézier Segment
 
 - [Curve](geono-curve.md#curve) :white_small_square: [BezierSegment](geono-curve.md#beziersegment)
-- [Curve](geono-curve.md#curve) :white_small_square: [BezierSegment](geono-curve.md#beziersegment)
 - [nd](geono-nd.md#nd) :white_small_square: [bezier_segment](geono-nd.md#bezier_segment)
 
 #### Capture Attribute
 
 - [Domain](geono-domain.md#domain) :white_small_square: [capture](geono-domain.md#capture)
-- [Domain](geono-domain.md#domain) :white_small_square: [capture](geono-domain.md#capture)
-- [Domain](geono-domain.md#domain) :white_small_square: [capture_attribute](geono-domain.md#capture_attribute)
 - [Domain](geono-domain.md#domain) :white_small_square: [capture_attribute](geono-domain.md#capture_attribute)
 - [nd](geono-nd.md#nd) :white_small_square: [capture_attribute](geono-nd.md#capture_attribute)
 
@@ -142,7 +139,7 @@ You will find here how nodes are implemented
 
 #### Combine Color
 
-- [Color](geono-color.md#color) :white_small_square: [impossible to find the section 'Color' in page 'Color'](geono-color.md#color)
+- [Color](geono-color.md#color) :white_small_square: [Impossible to find the section 'Color' in page 'Color'](geono-color.md#color)
 - [Color](geono-color.md#color) :white_small_square: [Combine](geono-color.md#combine)
 - [Color](geono-color.md#color) :white_small_square: [CombineHSL](geono-color.md#combinehsl)
 - [Color](geono-color.md#color) :white_small_square: [CombineHSV](geono-color.md#combinehsv)
@@ -205,7 +202,7 @@ You will find here how nodes are implemented
 - **E** : [Edge Angle](cross_reference.md#edge-angle) :black_small_square: [Edge Neighbors](cross_reference.md#edge-neighbors) :black_small_square: [Edge Paths to Curves](cross_reference.md#edge-paths-to-curves) :black_small_square: [Edge Paths to Selection](cross_reference.md#edge-paths-to-selection) :black_small_square: [Edge Vertices](cross_reference.md#edge-vertices) :black_small_square: [Edges of Corner](cross_reference.md#edges-of-corner) :black_small_square: [Edges of Vertex](cross_reference.md#edges-of-vertex) :black_small_square: [Edges to Face Groups](cross_reference.md#edges-to-face-groups) :black_small_square: [Emission](cross_reference.md#emission) :black_small_square: [Endpoint Selection](cross_reference.md#endpoint-selection) :black_small_square: [Euler to Rotation](cross_reference.md#euler-to-rotation) :black_small_square: [Evaluate at Index](cross_reference.md#evaluate-at-index) :black_small_square: [Evaluate on Domain](cross_reference.md#evaluate-on-domain) :black_small_square: [Extrude Mesh](cross_reference.md#extrude-mesh)
 - **F** : [Face Area](cross_reference.md#face-area) :black_small_square: [Face Group Boundaries](cross_reference.md#face-group-boundaries) :black_small_square: [Face Neighbors](cross_reference.md#face-neighbors) :black_small_square: [Face of Corner](cross_reference.md#face-of-corner) :black_small_square: [Fill Curve](cross_reference.md#fill-curve) :black_small_square: [Fillet Curve](cross_reference.md#fillet-curve) :black_small_square: [Flip Faces](cross_reference.md#flip-faces) :black_small_square: [Float Curve](cross_reference.md#float-curve) :black_small_square: [Float to Integer](cross_reference.md#float-to-integer) :black_small_square: [Frame](cross_reference.md#frame)
 - **G** : [Geometry Proximity](cross_reference.md#geometry-proximity) :black_small_square: [Geometry to Instance](cross_reference.md#geometry-to-instance) :black_small_square: [Get Named Grid](cross_reference.md#get-named-grid) :black_small_square: [Glass BSDF](cross_reference.md#glass-bsdf) :black_small_square: [Glossy BSDF](cross_reference.md#glossy-bsdf) :black_small_square: [Gradient Texture](cross_reference.md#gradient-texture) :black_small_square: [Grid](cross_reference.md#grid) :black_small_square: [Grid to Mesh](cross_reference.md#grid-to-mesh) :black_small_square: [Group](cross_reference.md#group) :black_small_square: [Group Output](cross_reference.md#group-output)
-- **H** : [Handle Type Selection](cross_reference.md#handle-type-selection) :black_small_square: [Holdout](cross_reference.md#holdout)
+- **H** : [Handle Positions](cross_reference.md#handle-positions) :black_small_square: [Handle Type Selection](cross_reference.md#handle-type-selection) :black_small_square: [Holdout](cross_reference.md#holdout)
 - **I** : [Ico Sphere](cross_reference.md#ico-sphere) :black_small_square: [ID](cross_reference.md#id) :black_small_square: [Image](cross_reference.md#image) :black_small_square: [Image Info](cross_reference.md#image-info) :black_small_square: [Image Texture](cross_reference.md#image-texture) :black_small_square: [Index of Nearest](cross_reference.md#index-of-nearest) :black_small_square: [Index Switch](cross_reference.md#index-switch) :black_small_square: [Instance on Points](cross_reference.md#instance-on-points) :black_small_square: [Instance Rotation](cross_reference.md#instance-rotation) :black_small_square: [Instance Scale](cross_reference.md#instance-scale) :black_small_square: [Instance Transform](cross_reference.md#instance-transform) :black_small_square: [Instances to Points](cross_reference.md#instances-to-points) :black_small_square: [Integer](cross_reference.md#integer) :black_small_square: [Interpolate Curves](cross_reference.md#interpolate-curves) :black_small_square: [Invert Matrix](cross_reference.md#invert-matrix) :black_small_square: [Invert Rotation](cross_reference.md#invert-rotation) :black_small_square: [Is Edge Smooth](cross_reference.md#is-edge-smooth) :black_small_square: [Is Face Planar](cross_reference.md#is-face-planar) :black_small_square: [Is Face Smooth](cross_reference.md#is-face-smooth) :black_small_square: [Is Spline Cyclic](cross_reference.md#is-spline-cyclic)
 - **J** : [Join Geometry](cross_reference.md#join-geometry) :black_small_square: [Join Strings](cross_reference.md#join-strings)
 - **M** : [Magic Texture](cross_reference.md#magic-texture) :black_small_square: [Map Range](cross_reference.md#map-range) :black_small_square: [Material](cross_reference.md#material) :black_small_square: [Material Index](cross_reference.md#material-index) :black_small_square: [Material Selection](cross_reference.md#material-selection) :black_small_square: [Math](cross_reference.md#math) :black_small_square: [Menu Switch](cross_reference.md#menu-switch) :black_small_square: [Merge by Distance](cross_reference.md#merge-by-distance) :black_small_square: [Mesh Boolean](cross_reference.md#mesh-boolean) :black_small_square: [Mesh Circle](cross_reference.md#mesh-circle) :black_small_square: [Mesh Island](cross_reference.md#mesh-island) :black_small_square: [Mesh Line](cross_reference.md#mesh-line) :black_small_square: [Mesh to Curve](cross_reference.md#mesh-to-curve) :black_small_square: [Mesh to Density Grid](cross_reference.md#mesh-to-density-grid) :black_small_square: [Mesh to Points](cross_reference.md#mesh-to-points) :black_small_square: [Mesh to SDF Grid](cross_reference.md#mesh-to-sdf-grid) :black_small_square: [Mesh to Volume](cross_reference.md#mesh-to-volume) :black_small_square: [Mix](cross_reference.md#mix) :black_small_square: [Multiply Matrices](cross_reference.md#multiply-matrices)
@@ -228,18 +225,15 @@ You will find here how nodes are implemented
 #### Corners of Edge
 
 - [Edge](geono-edge.md#edge) :white_small_square: [corner_index](geono-edge.md#corner_index)
-- [Edge](geono-edge.md#edge) :white_small_square: [corner_index](geono-edge.md#corner_index)
 - [nd](geono-nd.md#nd) :white_small_square: [corners_of_edge](geono-nd.md#corners_of_edge)
 
 #### Corners of Face
 
 - [Face](geono-face.md#face) :white_small_square: [corner_index](geono-face.md#corner_index)
-- [Face](geono-face.md#face) :white_small_square: [corner_index](geono-face.md#corner_index)
 - [nd](geono-nd.md#nd) :white_small_square: [corners_of_face](geono-nd.md#corners_of_face)
 
 #### Corners of Vertex
 
-- [Vertex](geono-vertex.md#vertex) :white_small_square: [corner_index](geono-vertex.md#corner_index)
 - [Vertex](geono-vertex.md#vertex) :white_small_square: [corner_index](geono-vertex.md#corner_index)
 - [nd](geono-nd.md#nd) :white_small_square: [corners_of_vertex](geono-nd.md#corners_of_vertex)
 
@@ -251,49 +245,34 @@ You will find here how nodes are implemented
 #### Curve Circle
 
 - [Curve](geono-curve.md#curve) :white_small_square: [Circle](geono-curve.md#circle)
-- [Curve](geono-curve.md#curve) :white_small_square: [Circle](geono-curve.md#circle)
 - [nd](geono-nd.md#nd) :white_small_square: [curve_circle](geono-nd.md#curve_circle)
 
 #### Curve Handle Positions
 
 - [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [handle_positions](geono-splinepoint.md#handle_positions)
-- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [handle_positions](geono-splinepoint.md#handle_positions)
-- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [left_handle_offset](geono-splinepoint.md#left_handle_offset)
-- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [left_handle_offset](geono-splinepoint.md#left_handle_offset)
-- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [left_handle_position](geono-splinepoint.md#left_handle_position)
-- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [left_handle_position](geono-splinepoint.md#left_handle_position)
-- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [right_handle_offset](geono-splinepoint.md#right_handle_offset)
-- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [right_handle_offset](geono-splinepoint.md#right_handle_offset)
-- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [right_handle_position](geono-splinepoint.md#right_handle_position)
-- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [right_handle_position](geono-splinepoint.md#right_handle_position)
 - [nd](geono-nd.md#nd) :white_small_square: [curve_handle_positions](geono-nd.md#curve_handle_positions)
 
 #### Curve Length
 
-- [Curve](geono-curve.md#curve) :white_small_square: [length](geono-curve.md#length)
 - [Curve](geono-curve.md#curve) :white_small_square: [length](geono-curve.md#length)
 - [nd](geono-nd.md#nd) :white_small_square: [curve_length](geono-nd.md#curve_length)
 
 #### Curve Line
 
 - [Curve](geono-curve.md#curve) :white_small_square: [Line](geono-curve.md#line)
-- [Curve](geono-curve.md#curve) :white_small_square: [Line](geono-curve.md#line)
 - [nd](geono-nd.md#nd) :white_small_square: [curve_line](geono-nd.md#curve_line)
 
 #### Curve of Point
 
-- [Curve](geono-curve.md#curve) :white_small_square: [curve_of_point](geono-curve.md#curve_of_point)
 - [Curve](geono-curve.md#curve) :white_small_square: [curve_of_point](geono-curve.md#curve_of_point)
 - [nd](geono-nd.md#nd) :white_small_square: [curve_of_point](geono-nd.md#curve_of_point)
 
 #### Curve Tilt
 
 - [Curve](geono-curve.md#curve) :white_small_square: [tilt](geono-curve.md#tilt)
-- [Curve](geono-curve.md#curve) :white_small_square: [tilt](geono-curve.md#tilt)
 
 #### Curve to Mesh
 
-- [Curve](geono-curve.md#curve) :white_small_square: [to_mesh](geono-curve.md#to_mesh)
 - [Curve](geono-curve.md#curve) :white_small_square: [to_mesh](geono-curve.md#to_mesh)
 - [Mesh](geono-mesh.md#mesh) :white_small_square: [FromCurve](geono-mesh.md#fromcurve)
 - [nd](geono-nd.md#nd) :white_small_square: [curve_to_mesh](geono-nd.md#curve_to_mesh)
@@ -301,8 +280,6 @@ You will find here how nodes are implemented
 #### Curve to Points
 
 - [Cloud](geono-cloud.md#cloud) :white_small_square: [FromCurve](geono-cloud.md#fromcurve)
-- [Cloud](geono-cloud.md#cloud) :white_small_square: [FromCurve](geono-cloud.md#fromcurve)
-- [Curve](geono-curve.md#curve) :white_small_square: [to_points](geono-curve.md#to_points)
 - [Curve](geono-curve.md#curve) :white_small_square: [to_points](geono-curve.md#to_points)
 - [nd](geono-nd.md#nd) :white_small_square: [curve_to_points](geono-nd.md#curve_to_points)
 
@@ -314,20 +291,14 @@ You will find here how nodes are implemented
 #### Deform Curves on Surface
 
 - [Curve](geono-curve.md#curve) :white_small_square: [deform_on_surface](geono-curve.md#deform_on_surface)
-- [Curve](geono-curve.md#curve) :white_small_square: [deform_on_surface](geono-curve.md#deform_on_surface)
 - [nd](geono-nd.md#nd) :white_small_square: [deform_curves_on_surface](geono-nd.md#deform_curves_on_surface)
 
 #### Delete Geometry
 
 - [Domain](geono-domain.md#domain) :white_small_square: [delete](geono-domain.md#delete)
-- [Domain](geono-domain.md#domain) :white_small_square: [delete](geono-domain.md#delete)
-- [Domain](geono-domain.md#domain) :white_small_square: [delete_all](geono-domain.md#delete_all)
 - [Domain](geono-domain.md#domain) :white_small_square: [delete_all](geono-domain.md#delete_all)
 - [Domain](geono-domain.md#domain) :white_small_square: [delete_edges_and_faces](geono-domain.md#delete_edges_and_faces)
-- [Domain](geono-domain.md#domain) :white_small_square: [delete_edges_and_faces](geono-domain.md#delete_edges_and_faces)
 - [Domain](geono-domain.md#domain) :white_small_square: [delete_faces](geono-domain.md#delete_faces)
-- [Domain](geono-domain.md#domain) :white_small_square: [delete_faces](geono-domain.md#delete_faces)
-- [Domain](geono-domain.md#domain) :white_small_square: [delete_geometry](geono-domain.md#delete_geometry)
 - [Domain](geono-domain.md#domain) :white_small_square: [delete_geometry](geono-domain.md#delete_geometry)
 - [nd](geono-nd.md#nd) :white_small_square: [delete_geometry](geono-nd.md#delete_geometry)
 
@@ -343,109 +314,80 @@ You will find here how nodes are implemented
 #### Distribute Points in Volume
 
 - [Volume](geono-volume.md#volume) :white_small_square: [distribute_grid](geono-volume.md#distribute_grid)
-- [Volume](geono-volume.md#volume) :white_small_square: [distribute_grid](geono-volume.md#distribute_grid)
 - [Volume](geono-volume.md#volume) :white_small_square: [distribute_points](geono-volume.md#distribute_points)
-- [Volume](geono-volume.md#volume) :white_small_square: [distribute_points](geono-volume.md#distribute_points)
-- [Volume](geono-volume.md#volume) :white_small_square: [distribute_random](geono-volume.md#distribute_random)
 - [Volume](geono-volume.md#volume) :white_small_square: [distribute_random](geono-volume.md#distribute_random)
 - [nd](geono-nd.md#nd) :white_small_square: [distribute_points_in_volume](geono-nd.md#distribute_points_in_volume)
 
 #### Distribute Points on Faces
 
 - [Face](geono-face.md#face) :white_small_square: [distribute_points](geono-face.md#distribute_points)
-- [Face](geono-face.md#face) :white_small_square: [distribute_points](geono-face.md#distribute_points)
-- [Mesh](geono-mesh.md#mesh) :white_small_square: [distribute_points_on_faces](geono-mesh.md#distribute_points_on_faces)
 - [Mesh](geono-mesh.md#mesh) :white_small_square: [distribute_points_on_faces](geono-mesh.md#distribute_points_on_faces)
 - [nd](geono-nd.md#nd) :white_small_square: [distribute_points_on_faces](geono-nd.md#distribute_points_on_faces)
 
 #### Domain Size
 
 - [CloudPoint](geono-cloudpoint.md#cloudpoint) :white_small_square: [count](geono-cloudpoint.md#count)
-- [CloudPoint](geono-cloudpoint.md#cloudpoint) :white_small_square: [count](geono-cloudpoint.md#count)
-- [Corner](geono-corner.md#corner) :white_small_square: [count](geono-corner.md#count)
 - [Corner](geono-corner.md#corner) :white_small_square: [count](geono-corner.md#count)
 - [Edge](geono-edge.md#edge) :white_small_square: [count](geono-edge.md#count)
-- [Edge](geono-edge.md#edge) :white_small_square: [count](geono-edge.md#count)
 - [Face](geono-face.md#face) :white_small_square: [count](geono-face.md#count)
-- [Face](geono-face.md#face) :white_small_square: [count](geono-face.md#count)
-- [Spline](geono-spline.md#spline) :white_small_square: [count](geono-spline.md#count)
+- [Instance](geono-instance.md#instance) :white_small_square: [count](geono-instance.md#count)
 - [Spline](geono-spline.md#spline) :white_small_square: [count](geono-spline.md#count)
 - [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [count](geono-splinepoint.md#count)
-- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [count](geono-splinepoint.md#count)
-- [Vertex](geono-vertex.md#vertex) :white_small_square: [count](geono-vertex.md#count)
 - [Vertex](geono-vertex.md#vertex) :white_small_square: [count](geono-vertex.md#count)
 - [nd](geono-nd.md#nd) :white_small_square: [domain_size](geono-nd.md#domain_size)
 
 #### Dual Mesh
 
 - [Mesh](geono-mesh.md#mesh) :white_small_square: [dual](geono-mesh.md#dual)
-- [Mesh](geono-mesh.md#mesh) :white_small_square: [dual](geono-mesh.md#dual)
 - [nd](geono-nd.md#nd) :white_small_square: [dual_mesh](geono-nd.md#dual_mesh)
 
 #### Duplicate Elements
 
-- [Domain](geono-domain.md#domain) :white_small_square: [duplicate_elements](geono-domain.md#duplicate_elements)
 - [Domain](geono-domain.md#domain) :white_small_square: [duplicate_elements](geono-domain.md#duplicate_elements)
 - [nd](geono-nd.md#nd) :white_small_square: [duplicate_elements](geono-nd.md#duplicate_elements)
 
 #### Edge Angle
 
 - [Edge](geono-edge.md#edge) :white_small_square: [angle](geono-edge.md#angle)
-- [Edge](geono-edge.md#edge) :white_small_square: [angle](geono-edge.md#angle)
 - [Edge](geono-edge.md#edge) :white_small_square: [signed_angle](geono-edge.md#signed_angle)
-- [Edge](geono-edge.md#edge) :white_small_square: [signed_angle](geono-edge.md#signed_angle)
-- [Edge](geono-edge.md#edge) :white_small_square: [unsigned_angle](geono-edge.md#unsigned_angle)
 - [Edge](geono-edge.md#edge) :white_small_square: [unsigned_angle](geono-edge.md#unsigned_angle)
 
 #### Edge Neighbors
 
 - [Edge](geono-edge.md#edge) :white_small_square: [neighbors](geono-edge.md#neighbors)
-- [Edge](geono-edge.md#edge) :white_small_square: [neighbors](geono-edge.md#neighbors)
 
 #### Edge Paths to Curves
 
 - [Curve](geono-curve.md#curve) :white_small_square: [FromEdgePaths](geono-curve.md#fromedgepaths)
-- [Curve](geono-curve.md#curve) :white_small_square: [FromEdgePaths](geono-curve.md#fromedgepaths)
 - [Edge](geono-edge.md#edge) :white_small_square: [paths_to_curves](geono-edge.md#paths_to_curves)
-- [Edge](geono-edge.md#edge) :white_small_square: [paths_to_curves](geono-edge.md#paths_to_curves)
-- [Vertex](geono-vertex.md#vertex) :white_small_square: [edge_paths_to_curves](geono-vertex.md#edge_paths_to_curves)
 - [Vertex](geono-vertex.md#vertex) :white_small_square: [edge_paths_to_curves](geono-vertex.md#edge_paths_to_curves)
 - [nd](geono-nd.md#nd) :white_small_square: [edge_paths_to_curves](geono-nd.md#edge_paths_to_curves)
 
 #### Edge Paths to Selection
 
 - [Vertex](geono-vertex.md#vertex) :white_small_square: [paths_to_selection](geono-vertex.md#paths_to_selection)
-- [Vertex](geono-vertex.md#vertex) :white_small_square: [paths_to_selection](geono-vertex.md#paths_to_selection)
 - [nd](geono-nd.md#nd) :white_small_square: [edge_paths_to_selection](geono-nd.md#edge_paths_to_selection)
 
 #### Edge Vertices
 
 - [Edge](geono-edge.md#edge) :white_small_square: [position_1](geono-edge.md#position_1)
-- [Edge](geono-edge.md#edge) :white_small_square: [position_1](geono-edge.md#position_1)
-- [Edge](geono-edge.md#edge) :white_small_square: [position_2](geono-edge.md#position_2)
 - [Edge](geono-edge.md#edge) :white_small_square: [position_2](geono-edge.md#position_2)
 - [Edge](geono-edge.md#edge) :white_small_square: [vertex_index_1](geono-edge.md#vertex_index_1)
-- [Edge](geono-edge.md#edge) :white_small_square: [vertex_index_1](geono-edge.md#vertex_index_1)
 - [Edge](geono-edge.md#edge) :white_small_square: [vertex_index_2](geono-edge.md#vertex_index_2)
-- [Edge](geono-edge.md#edge) :white_small_square: [vertex_index_2](geono-edge.md#vertex_index_2)
-- [Edge](geono-edge.md#edge) :white_small_square: [vertices](geono-edge.md#vertices)
 - [Edge](geono-edge.md#edge) :white_small_square: [vertices](geono-edge.md#vertices)
 
 #### Edges of Corner
 
-- [Corner](geono-corner.md#corner) :white_small_square: [next_edge_index](geono-corner.md#next_edge_index)
 - [Corner](geono-corner.md#corner) :white_small_square: [next_edge_index](geono-corner.md#next_edge_index)
 - [nd](geono-nd.md#nd) :white_small_square: [edges_of_corner](geono-nd.md#edges_of_corner)
 
 #### Edges of Vertex
 
 - [Vertex](geono-vertex.md#vertex) :white_small_square: [edge_index](geono-vertex.md#edge_index)
-- [Vertex](geono-vertex.md#vertex) :white_small_square: [edge_index](geono-vertex.md#edge_index)
 - [nd](geono-nd.md#nd) :white_small_square: [edges_of_vertex](geono-nd.md#edges_of_vertex)
 
 #### Edges to Face Groups
 
-- [Edge](geono-edge.md#edge) :white_small_square: [to_face_groups](geono-edge.md#to_face_groups)
 - [Edge](geono-edge.md#edge) :white_small_square: [to_face_groups](geono-edge.md#to_face_groups)
 - [nd](geono-nd.md#nd) :white_small_square: [edges_to_face_groups](geono-nd.md#edges_to_face_groups)
 
@@ -457,7 +399,6 @@ You will find here how nodes are implemented
 #### Endpoint Selection
 
 - [Curve](geono-curve.md#curve) :white_small_square: [endpoint_selection](geono-curve.md#endpoint_selection)
-- [Curve](geono-curve.md#curve) :white_small_square: [endpoint_selection](geono-curve.md#endpoint_selection)
 - [nd](geono-nd.md#nd) :white_small_square: [endpoint_selection](geono-nd.md#endpoint_selection)
 
 #### Euler to Rotation
@@ -467,62 +408,50 @@ You will find here how nodes are implemented
 #### Evaluate at Index
 
 - [Domain](geono-domain.md#domain) :white_small_square: [evaluate_at_index](geono-domain.md#evaluate_at_index)
-- [Domain](geono-domain.md#domain) :white_small_square: [evaluate_at_index](geono-domain.md#evaluate_at_index)
 - [nd](geono-nd.md#nd) :white_small_square: [evaluate_at_index](geono-nd.md#evaluate_at_index)
 
 #### Evaluate on Domain
 
-- [Domain](geono-domain.md#domain) :white_small_square: [evaluate_on_domain](geono-domain.md#evaluate_on_domain)
 - [Domain](geono-domain.md#domain) :white_small_square: [evaluate_on_domain](geono-domain.md#evaluate_on_domain)
 - [nd](geono-nd.md#nd) :white_small_square: [evaluate_on_domain](geono-nd.md#evaluate_on_domain)
 
 #### Extrude Mesh
 
 - [Domain](geono-domain.md#domain) :white_small_square: [extrude](geono-domain.md#extrude)
-- [Domain](geono-domain.md#domain) :white_small_square: [extrude](geono-domain.md#extrude)
 - [nd](geono-nd.md#nd) :white_small_square: [extrude_mesh](geono-nd.md#extrude_mesh)
 
 #### Face Area
 
 - [Face](geono-face.md#face) :white_small_square: [area](geono-face.md#area)
-- [Face](geono-face.md#face) :white_small_square: [area](geono-face.md#area)
 
 #### Face Group Boundaries
 
-- [Face](geono-face.md#face) :white_small_square: [group_boundaries](geono-face.md#group_boundaries)
 - [Face](geono-face.md#face) :white_small_square: [group_boundaries](geono-face.md#group_boundaries)
 - [nd](geono-nd.md#nd) :white_small_square: [face_group_boundaries](geono-nd.md#face_group_boundaries)
 
 #### Face Neighbors
 
 - [Face](geono-face.md#face) :white_small_square: [neighbors](geono-face.md#neighbors)
-- [Face](geono-face.md#face) :white_small_square: [neighbors](geono-face.md#neighbors)
 - [Face](geono-face.md#face) :white_small_square: [neighbors_face_count](geono-face.md#neighbors_face_count)
-- [Face](geono-face.md#face) :white_small_square: [neighbors_face_count](geono-face.md#neighbors_face_count)
-- [Face](geono-face.md#face) :white_small_square: [neighbors_vertex_count](geono-face.md#neighbors_vertex_count)
 - [Face](geono-face.md#face) :white_small_square: [neighbors_vertex_count](geono-face.md#neighbors_vertex_count)
 
 #### Face of Corner
 
-- [Corner](geono-corner.md#corner) :white_small_square: [face_index](geono-corner.md#face_index)
 - [Corner](geono-corner.md#corner) :white_small_square: [face_index](geono-corner.md#face_index)
 - [nd](geono-nd.md#nd) :white_small_square: [face_of_corner](geono-nd.md#face_of_corner)
 
 #### Fill Curve
 
 - [Curve](geono-curve.md#curve) :white_small_square: [fill](geono-curve.md#fill)
-- [Curve](geono-curve.md#curve) :white_small_square: [fill](geono-curve.md#fill)
 - [nd](geono-nd.md#nd) :white_small_square: [fill_curve](geono-nd.md#fill_curve)
 
 #### Fillet Curve
 
 - [Curve](geono-curve.md#curve) :white_small_square: [fillet](geono-curve.md#fillet)
-- [Curve](geono-curve.md#curve) :white_small_square: [fillet](geono-curve.md#fillet)
 - [nd](geono-nd.md#nd) :white_small_square: [fillet_curve](geono-nd.md#fillet_curve)
 
 #### Flip Faces
 
-- [Face](geono-face.md#face) :white_small_square: [flip](geono-face.md#flip)
 - [Face](geono-face.md#face) :white_small_square: [flip](geono-face.md#flip)
 - [nd](geono-nd.md#nd) :white_small_square: [flip_faces](geono-nd.md#flip_faces)
 
@@ -554,14 +483,11 @@ You will find here how nodes are implemented
 #### Geometry Proximity
 
 - [Domain](geono-domain.md#domain) :white_small_square: [proximity](geono-domain.md#proximity)
-- [Domain](geono-domain.md#domain) :white_small_square: [proximity](geono-domain.md#proximity)
 - [nd](geono-nd.md#nd) :white_small_square: [geometry_proximity](geono-nd.md#geometry_proximity)
 
 #### Geometry to Instance
 
 - [Geometry](geono-geometry.md#geometry) :white_small_square: [to_instance](geono-geometry.md#to_instance)
-- [Geometry](geono-geometry.md#geometry) :white_small_square: [to_instance](geono-geometry.md#to_instance)
-- [Instances](geono-instances.md#instances) :white_small_square: [FromGeometry](geono-instances.md#fromgeometry)
 - [Instances](geono-instances.md#instances) :white_small_square: [FromGeometry](geono-instances.md#fromgeometry)
 - [nd](geono-nd.md#nd) :white_small_square: [geometry_to_instance](geono-nd.md#geometry_to_instance)
 
@@ -608,12 +534,18 @@ You will find here how nodes are implemented
 - [nd](geono-nd.md#nd) :white_small_square: [group_output](geono-nd.md#group_output)
 - [snd](shade-shade1-snd.md#snd) :white_small_square: [group_output](shade-shade1-snd.md#group_output)
 
+#### Handle Positions
+
+- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [left_handle_offset](geono-splinepoint.md#left_handle_offset)
+- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [left_handle_position](geono-splinepoint.md#left_handle_position)
+- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [right_handle_offset](geono-splinepoint.md#right_handle_offset)
+- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [right_handle_position](geono-splinepoint.md#right_handle_position)
+
 #### Handle Type Selection
 
 - [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [handle_align](geono-splinepoint.md#handle_align)
 - [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [handle_auto](geono-splinepoint.md#handle_auto)
 - [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [handle_free](geono-splinepoint.md#handle_free)
-- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [handle_type_selection](geono-splinepoint.md#handle_type_selection)
 - [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [handle_type_selection](geono-splinepoint.md#handle_type_selection)
 - [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [handle_vector](geono-splinepoint.md#handle_vector)
 - [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [left_handle_align](geono-splinepoint.md#left_handle_align)
@@ -639,8 +571,6 @@ You will find here how nodes are implemented
 #### ID
 
 - [Domain](geono-domain.md#domain) :white_small_square: [id](geono-domain.md#id)
-- [Domain](geono-domain.md#domain) :white_small_square: [id](geono-domain.md#id)
-- [Geometry](geono-geometry.md#geometry) :white_small_square: [id](geono-geometry.md#id)
 - [Geometry](geono-geometry.md#geometry) :white_small_square: [id](geono-geometry.md#id)
 
 #### Image
@@ -663,7 +593,6 @@ You will find here how nodes are implemented
 #### Index of Nearest
 
 - [Geometry](geono-geometry.md#geometry) :white_small_square: [index_of_nearest](geono-geometry.md#index_of_nearest)
-- [Geometry](geono-geometry.md#geometry) :white_small_square: [index_of_nearest](geono-geometry.md#index_of_nearest)
 - [nd](geono-nd.md#nd) :white_small_square: [index_of_nearest](geono-nd.md#index_of_nearest)
 
 #### Index Switch
@@ -677,35 +606,26 @@ You will find here how nodes are implemented
 #### Instance on Points
 
 - [CloudPoint](geono-cloudpoint.md#cloudpoint) :white_small_square: [instance_on](geono-cloudpoint.md#instance_on)
-- [CloudPoint](geono-cloudpoint.md#cloudpoint) :white_small_square: [instance_on](geono-cloudpoint.md#instance_on)
-- [Instances](geono-instances.md#instances) :white_small_square: [on_points](geono-instances.md#on_points)
 - [Instances](geono-instances.md#instances) :white_small_square: [on_points](geono-instances.md#on_points)
 - [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [instance_on](geono-splinepoint.md#instance_on)
-- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [instance_on](geono-splinepoint.md#instance_on)
-- [Vertex](geono-vertex.md#vertex) :white_small_square: [instance_on](geono-vertex.md#instance_on)
 - [Vertex](geono-vertex.md#vertex) :white_small_square: [instance_on](geono-vertex.md#instance_on)
 - [nd](geono-nd.md#nd) :white_small_square: [instance_on_points](geono-nd.md#instance_on_points)
 
 #### Instance Rotation
 
 - [Instance](geono-instance.md#instance) :white_small_square: [rotation](geono-instance.md#rotation)
-- [Instance](geono-instance.md#instance) :white_small_square: [rotation](geono-instance.md#rotation)
 
 #### Instance Scale
 
-- [Instance](geono-instance.md#instance) :white_small_square: [scale](geono-instance.md#scale)
 - [Instance](geono-instance.md#instance) :white_small_square: [scale](geono-instance.md#scale)
 
 #### Instance Transform
 
 - [Instance](geono-instance.md#instance) :white_small_square: [transform](geono-instance.md#transform)
-- [Instance](geono-instance.md#instance) :white_small_square: [transform](geono-instance.md#transform)
 
 #### Instances to Points
 
 - [Cloud](geono-cloud.md#cloud) :white_small_square: [FromInstances](geono-cloud.md#frominstances)
-- [Cloud](geono-cloud.md#cloud) :white_small_square: [FromInstances](geono-cloud.md#frominstances)
-- [Instances](geono-instances.md#instances) :white_small_square: [to_points](geono-instances.md#to_points)
 - [Instances](geono-instances.md#instances) :white_small_square: [to_points](geono-instances.md#to_points)
 - [nd](geono-nd.md#nd) :white_small_square: [instances_to_points](geono-nd.md#instances_to_points)
 
@@ -715,7 +635,6 @@ You will find here how nodes are implemented
 
 #### Interpolate Curves
 
-- [Curve](geono-curve.md#curve) :white_small_square: [interpolate](geono-curve.md#interpolate)
 - [Curve](geono-curve.md#curve) :white_small_square: [interpolate](geono-curve.md#interpolate)
 - [nd](geono-nd.md#nd) :white_small_square: [interpolate_curves](geono-nd.md#interpolate_curves)
 
@@ -730,27 +649,22 @@ You will find here how nodes are implemented
 #### Is Edge Smooth
 
 - [Edge](geono-edge.md#edge) :white_small_square: [smooth](geono-edge.md#smooth)
-- [Edge](geono-edge.md#edge) :white_small_square: [smooth](geono-edge.md#smooth)
 
 #### Is Face Planar
 
-- [Face](geono-face.md#face) :white_small_square: [is_planar](geono-face.md#is_planar)
 - [Face](geono-face.md#face) :white_small_square: [is_planar](geono-face.md#is_planar)
 - [nd](geono-nd.md#nd) :white_small_square: [is_face_planar](geono-nd.md#is_face_planar)
 
 #### Is Face Smooth
 
 - [Face](geono-face.md#face) :white_small_square: [smooth](geono-face.md#smooth)
-- [Face](geono-face.md#face) :white_small_square: [smooth](geono-face.md#smooth)
 
 #### Is Spline Cyclic
 
 - [Spline](geono-spline.md#spline) :white_small_square: [is_cyclic](geono-spline.md#is_cyclic)
-- [Spline](geono-spline.md#spline) :white_small_square: [is_cyclic](geono-spline.md#is_cyclic)
 
 #### Join Geometry
 
-- [Geometry](geono-geometry.md#geometry) :white_small_square: [join](geono-geometry.md#join)
 - [Geometry](geono-geometry.md#geometry) :white_small_square: [join](geono-geometry.md#join)
 - [nd](geono-nd.md#nd) :white_small_square: [join_geometry](geono-nd.md#join_geometry)
 
@@ -789,8 +703,6 @@ You will find here how nodes are implemented
 #### Material Index
 
 - [Domain](geono-domain.md#domain) :white_small_square: [material_index](geono-domain.md#material_index)
-- [Domain](geono-domain.md#domain) :white_small_square: [material_index](geono-domain.md#material_index)
-- [Geometry](geono-geometry.md#geometry) :white_small_square: [material_index](geono-geometry.md#material_index)
 - [Geometry](geono-geometry.md#geometry) :white_small_square: [material_index](geono-geometry.md#material_index)
 
 #### Material Selection
@@ -868,18 +780,13 @@ You will find here how nodes are implemented
 #### Merge by Distance
 
 - [Geometry](geono-geometry.md#geometry) :white_small_square: [merge_by_distance](geono-geometry.md#merge_by_distance)
-- [Geometry](geono-geometry.md#geometry) :white_small_square: [merge_by_distance](geono-geometry.md#merge_by_distance)
 - [nd](geono-nd.md#nd) :white_small_square: [merge_by_distance](geono-nd.md#merge_by_distance)
 
 #### Mesh Boolean
 
 - [Mesh](geono-mesh.md#mesh) :white_small_square: [boolean](geono-mesh.md#boolean)
-- [Mesh](geono-mesh.md#mesh) :white_small_square: [boolean](geono-mesh.md#boolean)
-- [Mesh](geono-mesh.md#mesh) :white_small_square: [difference](geono-mesh.md#difference)
 - [Mesh](geono-mesh.md#mesh) :white_small_square: [difference](geono-mesh.md#difference)
 - [Mesh](geono-mesh.md#mesh) :white_small_square: [intersect](geono-mesh.md#intersect)
-- [Mesh](geono-mesh.md#mesh) :white_small_square: [intersect](geono-mesh.md#intersect)
-- [Mesh](geono-mesh.md#mesh) :white_small_square: [union](geono-mesh.md#union)
 - [Mesh](geono-mesh.md#mesh) :white_small_square: [union](geono-mesh.md#union)
 - [nd](geono-nd.md#nd) :white_small_square: [mesh_boolean](geono-nd.md#mesh_boolean)
 
@@ -892,11 +799,6 @@ You will find here how nodes are implemented
 #### Mesh Island
 
 - [Mesh](geono-mesh.md#mesh) :white_small_square: [island](geono-mesh.md#island)
-- [Mesh](geono-mesh.md#mesh) :white_small_square: [island](geono-mesh.md#island)
-- [Mesh](geono-mesh.md#mesh) :white_small_square: [island_count](geono-mesh.md#island_count)
-- [Mesh](geono-mesh.md#mesh) :white_small_square: [island_count](geono-mesh.md#island_count)
-- [Mesh](geono-mesh.md#mesh) :white_small_square: [island_index](geono-mesh.md#island_index)
-- [Mesh](geono-mesh.md#mesh) :white_small_square: [island_index](geono-mesh.md#island_index)
 
 #### Mesh Line
 
@@ -908,8 +810,6 @@ You will find here how nodes are implemented
 #### Mesh to Curve
 
 - [Curve](geono-curve.md#curve) :white_small_square: [FromMesh](geono-curve.md#frommesh)
-- [Curve](geono-curve.md#curve) :white_small_square: [FromMesh](geono-curve.md#frommesh)
-- [Mesh](geono-mesh.md#mesh) :white_small_square: [to_curve](geono-mesh.md#to_curve)
 - [Mesh](geono-mesh.md#mesh) :white_small_square: [to_curve](geono-mesh.md#to_curve)
 - [nd](geono-nd.md#nd) :white_small_square: [mesh_to_curve](geono-nd.md#mesh_to_curve)
 
@@ -919,9 +819,11 @@ You will find here how nodes are implemented
 
 #### Mesh to Points
 
+- [Cloud](geono-cloud.md#cloud) :white_small_square: [FromCorners](geono-cloud.md#fromcorners)
+- [Cloud](geono-cloud.md#cloud) :white_small_square: [FromEdges](geono-cloud.md#fromedges)
+- [Cloud](geono-cloud.md#cloud) :white_small_square: [FromFaces](geono-cloud.md#fromfaces)
 - [Cloud](geono-cloud.md#cloud) :white_small_square: [FromMesh](geono-cloud.md#frommesh)
-- [Cloud](geono-cloud.md#cloud) :white_small_square: [FromMesh](geono-cloud.md#frommesh)
-- [Domain](geono-domain.md#domain) :white_small_square: [to_points](geono-domain.md#to_points)
+- [Cloud](geono-cloud.md#cloud) :white_small_square: [FromVertices](geono-cloud.md#fromvertices)
 - [Domain](geono-domain.md#domain) :white_small_square: [to_points](geono-domain.md#to_points)
 - [nd](geono-nd.md#nd) :white_small_square: [mesh_to_points](geono-nd.md#mesh_to_points)
 
@@ -932,8 +834,6 @@ You will find here how nodes are implemented
 #### Mesh to Volume
 
 - [Mesh](geono-mesh.md#mesh) :white_small_square: [to_volume](geono-mesh.md#to_volume)
-- [Mesh](geono-mesh.md#mesh) :white_small_square: [to_volume](geono-mesh.md#to_volume)
-- [Volume](geono-volume.md#volume) :white_small_square: [FromMesh](geono-volume.md#frommesh)
 - [Volume](geono-volume.md#volume) :white_small_square: [FromMesh](geono-volume.md#frommesh)
 - [nd](geono-nd.md#nd) :white_small_square: [mesh_to_volume](geono-nd.md#mesh_to_volume)
 
@@ -1006,38 +906,31 @@ You will find here how nodes are implemented
 #### Offset Corner in Face
 
 - [Corner](geono-corner.md#corner) :white_small_square: [offset_in_face](geono-corner.md#offset_in_face)
-- [Corner](geono-corner.md#corner) :white_small_square: [offset_in_face](geono-corner.md#offset_in_face)
 - [nd](geono-nd.md#nd) :white_small_square: [offset_corner_in_face](geono-nd.md#offset_corner_in_face)
 
 #### Offset Point in Curve
 
-- [Curve](geono-curve.md#curve) :white_small_square: [offset_point_in_curve](geono-curve.md#offset_point_in_curve)
 - [Curve](geono-curve.md#curve) :white_small_square: [offset_point_in_curve](geono-curve.md#offset_point_in_curve)
 - [nd](geono-nd.md#nd) :white_small_square: [offset_point_in_curve](geono-nd.md#offset_point_in_curve)
 
 #### Pack UV Islands
 
 - [Mesh](geono-mesh.md#mesh) :white_small_square: [pack_uv_islands](geono-mesh.md#pack_uv_islands)
-- [Mesh](geono-mesh.md#mesh) :white_small_square: [pack_uv_islands](geono-mesh.md#pack_uv_islands)
 - [nd](geono-nd.md#nd) :white_small_square: [pack_uv_islands](geono-nd.md#pack_uv_islands)
 
 #### Points
 
-- [Cloud](geono-cloud.md#cloud) :white_small_square: [Points](geono-cloud.md#points)
 - [Cloud](geono-cloud.md#cloud) :white_small_square: [Points](geono-cloud.md#points)
 - [nd](geono-nd.md#nd) :white_small_square: [points](geono-nd.md#points)
 
 #### Points of Curve
 
 - [Curve](geono-curve.md#curve) :white_small_square: [points_of_curve](geono-curve.md#points_of_curve)
-- [Curve](geono-curve.md#curve) :white_small_square: [points_of_curve](geono-curve.md#points_of_curve)
 - [nd](geono-nd.md#nd) :white_small_square: [points_of_curve](geono-nd.md#points_of_curve)
 
 #### Points to Curves
 
 - [Cloud](geono-cloud.md#cloud) :white_small_square: [to_curves](geono-cloud.md#to_curves)
-- [Cloud](geono-cloud.md#cloud) :white_small_square: [to_curves](geono-cloud.md#to_curves)
-- [Curve](geono-curve.md#curve) :white_small_square: [FromPoints](geono-curve.md#frompoints)
 - [Curve](geono-curve.md#curve) :white_small_square: [FromPoints](geono-curve.md#frompoints)
 - [nd](geono-nd.md#nd) :white_small_square: [points_to_curves](geono-nd.md#points_to_curves)
 
@@ -1048,23 +941,18 @@ You will find here how nodes are implemented
 #### Points to Vertices
 
 - [Cloud](geono-cloud.md#cloud) :white_small_square: [to_vertices](geono-cloud.md#to_vertices)
-- [Cloud](geono-cloud.md#cloud) :white_small_square: [to_vertices](geono-cloud.md#to_vertices)
 - [Mesh](geono-mesh.md#mesh) :white_small_square: [FromPoints](geono-mesh.md#frompoints)
 - [nd](geono-nd.md#nd) :white_small_square: [points_to_vertices](geono-nd.md#points_to_vertices)
 
 #### Points to Volume
 
 - [Cloud](geono-cloud.md#cloud) :white_small_square: [to_volume](geono-cloud.md#to_volume)
-- [Cloud](geono-cloud.md#cloud) :white_small_square: [to_volume](geono-cloud.md#to_volume)
-- [Volume](geono-volume.md#volume) :white_small_square: [FromPoints](geono-volume.md#frompoints)
 - [Volume](geono-volume.md#volume) :white_small_square: [FromPoints](geono-volume.md#frompoints)
 - [nd](geono-nd.md#nd) :white_small_square: [points_to_volume](geono-nd.md#points_to_volume)
 
 #### Position
 
 - [Domain](geono-domain.md#domain) :white_small_square: [position](geono-domain.md#position)
-- [Domain](geono-domain.md#domain) :white_small_square: [position](geono-domain.md#position)
-- [Geometry](geono-geometry.md#geometry) :white_small_square: [position](geono-geometry.md#position)
 - [Geometry](geono-geometry.md#geometry) :white_small_square: [position](geono-geometry.md#position)
 
 #### Principled BSDF
@@ -1084,22 +972,15 @@ You will find here how nodes are implemented
 #### Quadratic Bézier
 
 - [Curve](geono-curve.md#curve) :white_small_square: [QuadraticBezier](geono-curve.md#quadraticbezier)
-- [Curve](geono-curve.md#curve) :white_small_square: [QuadraticBezier](geono-curve.md#quadraticbezier)
 - [nd](geono-nd.md#nd) :white_small_square: [quadratic_bezier](geono-nd.md#quadratic_bezier)
 
 #### Quadrilateral
 
 - [Curve](geono-curve.md#curve) :white_small_square: [Kite](geono-curve.md#kite)
-- [Curve](geono-curve.md#curve) :white_small_square: [Kite](geono-curve.md#kite)
-- [Curve](geono-curve.md#curve) :white_small_square: [Parallelogram](geono-curve.md#parallelogram)
 - [Curve](geono-curve.md#curve) :white_small_square: [Parallelogram](geono-curve.md#parallelogram)
 - [Curve](geono-curve.md#curve) :white_small_square: [Points](geono-curve.md#points)
-- [Curve](geono-curve.md#curve) :white_small_square: [Points](geono-curve.md#points)
-- [Curve](geono-curve.md#curve) :white_small_square: [Quadrilateral](geono-curve.md#quadrilateral)
 - [Curve](geono-curve.md#curve) :white_small_square: [Quadrilateral](geono-curve.md#quadrilateral)
 - [Curve](geono-curve.md#curve) :white_small_square: [Rectangle](geono-curve.md#rectangle)
-- [Curve](geono-curve.md#curve) :white_small_square: [Rectangle](geono-curve.md#rectangle)
-- [Curve](geono-curve.md#curve) :white_small_square: [Trapezoid](geono-curve.md#trapezoid)
 - [Curve](geono-curve.md#curve) :white_small_square: [Trapezoid](geono-curve.md#trapezoid)
 - [nd](geono-nd.md#nd) :white_small_square: [quadrilateral](geono-nd.md#quadrilateral)
 
@@ -1110,8 +991,6 @@ You will find here how nodes are implemented
 #### Radius
 
 - [CloudPoint](geono-cloudpoint.md#cloudpoint) :white_small_square: [radius](geono-cloudpoint.md#radius)
-- [CloudPoint](geono-cloudpoint.md#cloudpoint) :white_small_square: [radius](geono-cloudpoint.md#radius)
-- [Curve](geono-curve.md#curve) :white_small_square: [radius](geono-curve.md#radius)
 - [Curve](geono-curve.md#curve) :white_small_square: [radius](geono-curve.md#radius)
 
 #### Random Value
@@ -1123,12 +1002,10 @@ You will find here how nodes are implemented
 #### Raycast
 
 - [Geometry](geono-geometry.md#geometry) :white_small_square: [raycast](geono-geometry.md#raycast)
-- [Geometry](geono-geometry.md#geometry) :white_small_square: [raycast](geono-geometry.md#raycast)
 - [nd](geono-nd.md#nd) :white_small_square: [raycast](geono-nd.md#raycast)
 
 #### Realize Instances
 
-- [Instances](geono-instances.md#instances) :white_small_square: [realize](geono-instances.md#realize)
 - [Instances](geono-instances.md#instances) :white_small_square: [realize](geono-instances.md#realize)
 - [nd](geono-nd.md#nd) :white_small_square: [realize_instances](geono-nd.md#realize_instances)
 
@@ -1153,8 +1030,6 @@ You will find here how nodes are implemented
 #### Replace Material
 
 - [Domain](geono-domain.md#domain) :white_small_square: [replace_material](geono-domain.md#replace_material)
-- [Domain](geono-domain.md#domain) :white_small_square: [replace_material](geono-domain.md#replace_material)
-- [Geometry](geono-geometry.md#geometry) :white_small_square: [replace_material](geono-geometry.md#replace_material)
 - [Geometry](geono-geometry.md#geometry) :white_small_square: [replace_material](geono-geometry.md#replace_material)
 - [nd](geono-nd.md#nd) :white_small_square: [replace_material](geono-nd.md#replace_material)
 
@@ -1171,18 +1046,16 @@ You will find here how nodes are implemented
 #### Resample Curve
 
 - [Curve](geono-curve.md#curve) :white_small_square: [resample](geono-curve.md#resample)
-- [Curve](geono-curve.md#curve) :white_small_square: [resample](geono-curve.md#resample)
 - [nd](geono-nd.md#nd) :white_small_square: [resample_curve](geono-nd.md#resample_curve)
 
 #### Reverse Curve
 
 - [Curve](geono-curve.md#curve) :white_small_square: [reverse](geono-curve.md#reverse)
-- [Curve](geono-curve.md#curve) :white_small_square: [reverse](geono-curve.md#reverse)
 - [nd](geono-nd.md#nd) :white_small_square: [reverse_curve](geono-nd.md#reverse_curve)
 
 #### RGB
 
-- [Color](geono-color.md#color) :white_small_square: [impossible to find the section 'Color' in page 'Color'](geono-color.md#color)
+- [Color](geono-color.md#color) :white_small_square: [Impossible to find the section 'Color' in page 'Color'](geono-color.md#color)
 
 #### RGB Curves
 
@@ -1196,7 +1069,7 @@ You will find here how nodes are implemented
 
 #### Rotate Instances
 
-- [Instances](geono-instances.md#instances) :white_small_square: [rotate](geono-instances.md#rotate)
+- [Instance](geono-instance.md#instance) :white_small_square: [rotation](geono-instance.md#rotation)
 - [Instances](geono-instances.md#instances) :white_small_square: [rotate](geono-instances.md#rotate)
 - [nd](geono-nd.md#nd) :white_small_square: [rotate_instances](geono-nd.md#rotate_instances)
 
@@ -1227,7 +1100,6 @@ You will find here how nodes are implemented
 #### Sample Curve
 
 - [Curve](geono-curve.md#curve) :white_small_square: [sample](geono-curve.md#sample)
-- [Curve](geono-curve.md#curve) :white_small_square: [sample](geono-curve.md#sample)
 - [nd](geono-nd.md#nd) :white_small_square: [sample_curve](geono-nd.md#sample_curve)
 
 #### Sample Grid
@@ -1241,38 +1113,32 @@ You will find here how nodes are implemented
 #### Sample Index
 
 - [Domain](geono-domain.md#domain) :white_small_square: [sample_index](geono-domain.md#sample_index)
-- [Domain](geono-domain.md#domain) :white_small_square: [sample_index](geono-domain.md#sample_index)
 - [nd](geono-nd.md#nd) :white_small_square: [sample_index](geono-nd.md#sample_index)
 
 #### Sample Nearest
 
-- [Domain](geono-domain.md#domain) :white_small_square: [sample_nearest](geono-domain.md#sample_nearest)
 - [Domain](geono-domain.md#domain) :white_small_square: [sample_nearest](geono-domain.md#sample_nearest)
 - [nd](geono-nd.md#nd) :white_small_square: [sample_nearest](geono-nd.md#sample_nearest)
 
 #### Sample Nearest Surface
 
 - [Mesh](geono-mesh.md#mesh) :white_small_square: [sample_nearest_surface](geono-mesh.md#sample_nearest_surface)
-- [Mesh](geono-mesh.md#mesh) :white_small_square: [sample_nearest_surface](geono-mesh.md#sample_nearest_surface)
 - [nd](geono-nd.md#nd) :white_small_square: [sample_nearest_surface](geono-nd.md#sample_nearest_surface)
 
 #### Sample UV Surface
 
-- [Mesh](geono-mesh.md#mesh) :white_small_square: [sample_uv_surface](geono-mesh.md#sample_uv_surface)
 - [Mesh](geono-mesh.md#mesh) :white_small_square: [sample_uv_surface](geono-mesh.md#sample_uv_surface)
 - [nd](geono-nd.md#nd) :white_small_square: [sample_uv_surface](geono-nd.md#sample_uv_surface)
 
 #### Scale Elements
 
 - [Edge](geono-edge.md#edge) :white_small_square: [scale](geono-edge.md#scale)
-- [Edge](geono-edge.md#edge) :white_small_square: [scale](geono-edge.md#scale)
-- [Face](geono-face.md#face) :white_small_square: [scale](geono-face.md#scale)
 - [Face](geono-face.md#face) :white_small_square: [scale](geono-face.md#scale)
 - [nd](geono-nd.md#nd) :white_small_square: [scale_elements](geono-nd.md#scale_elements)
 
 #### Scale Instances
 
-- [Instances](geono-instances.md#instances) :white_small_square: [scale](geono-instances.md#scale)
+- [Instance](geono-instance.md#instance) :white_small_square: [scale](geono-instance.md#scale)
 - [Instances](geono-instances.md#instances) :white_small_square: [scale](geono-instances.md#scale)
 - [nd](geono-nd.md#nd) :white_small_square: [scale_instances](geono-nd.md#scale_instances)
 
@@ -1309,7 +1175,6 @@ You will find here how nodes are implemented
 #### Separate Geometry
 
 - [Domain](geono-domain.md#domain) :white_small_square: [separate](geono-domain.md#separate)
-- [Domain](geono-domain.md#domain) :white_small_square: [separate](geono-domain.md#separate)
 - [nd](geono-nd.md#nd) :white_small_square: [separate_geometry](geono-nd.md#separate_geometry)
 
 #### Separate Matrix
@@ -1327,20 +1192,20 @@ You will find here how nodes are implemented
 
 #### Set Curve Normal
 
-- [Curve](geono-curve.md#curve) :white_small_square: [set_normal](geono-curve.md#set_normal)
+- [Curve](geono-curve.md#curve) :white_small_square: [normal](geono-curve.md#normal)
 - [Curve](geono-curve.md#curve) :white_small_square: [set_normal](geono-curve.md#set_normal)
 - [Curve](geono-curve.md#curve) :white_small_square: [set_normal_free](geono-curve.md#set_normal_free)
-- [Curve](geono-curve.md#curve) :white_small_square: [set_normal_free](geono-curve.md#set_normal_free)
-- [Curve](geono-curve.md#curve) :white_small_square: [set_normal_z_up](geono-curve.md#set_normal_z_up)
 - [Curve](geono-curve.md#curve) :white_small_square: [set_normal_z_up](geono-curve.md#set_normal_z_up)
 - [nd](geono-nd.md#nd) :white_small_square: [set_curve_normal](geono-nd.md#set_curve_normal)
 
 #### Set Curve Radius
 
+- [Curve](geono-curve.md#curve) :white_small_square: [radius](geono-curve.md#radius)
 - [nd](geono-nd.md#nd) :white_small_square: [set_curve_radius](geono-nd.md#set_curve_radius)
 
 #### Set Curve Tilt
 
+- [Curve](geono-curve.md#curve) :white_small_square: [tilt](geono-curve.md#tilt)
 - [nd](geono-nd.md#nd) :white_small_square: [set_curve_tilt](geono-nd.md#set_curve_tilt)
 
 #### Set Face Set
@@ -1349,21 +1214,39 @@ You will find here how nodes are implemented
 
 #### Set Handle Positions
 
-- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [set_handle_positions](geono-splinepoint.md#set_handle_positions)
+- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [left_handle_offset](geono-splinepoint.md#left_handle_offset)
+- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [left_handle_position](geono-splinepoint.md#left_handle_position)
+- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [right_handle_offset](geono-splinepoint.md#right_handle_offset)
+- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [right_handle_position](geono-splinepoint.md#right_handle_position)
 - [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [set_handle_positions](geono-splinepoint.md#set_handle_positions)
 - [nd](geono-nd.md#nd) :white_small_square: [set_handle_positions](geono-nd.md#set_handle_positions)
 
 #### Set Handle Type
 
-- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [set_handle_type](geono-splinepoint.md#set_handle_type)
+- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [handle_align](geono-splinepoint.md#handle_align)
+- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [handle_auto](geono-splinepoint.md#handle_auto)
+- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [handle_free](geono-splinepoint.md#handle_free)
+- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [handle_type](geono-splinepoint.md#handle_type)
+- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [handle_vector](geono-splinepoint.md#handle_vector)
+- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [left_handle_align](geono-splinepoint.md#left_handle_align)
+- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [left_handle_auto](geono-splinepoint.md#left_handle_auto)
+- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [left_handle_free](geono-splinepoint.md#left_handle_free)
+- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [left_handle_type](geono-splinepoint.md#left_handle_type)
+- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [left_handle_vector](geono-splinepoint.md#left_handle_vector)
+- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [right_handle_align](geono-splinepoint.md#right_handle_align)
+- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [right_handle_auto](geono-splinepoint.md#right_handle_auto)
+- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [right_handle_free](geono-splinepoint.md#right_handle_free)
+- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [right_handle_type](geono-splinepoint.md#right_handle_type)
+- [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [right_handle_vector](geono-splinepoint.md#right_handle_vector)
 - [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [set_handle_type](geono-splinepoint.md#set_handle_type)
 - [nd](geono-nd.md#nd) :white_small_square: [set_handle_type](geono-nd.md#set_handle_type)
 
 #### Set ID
 
-- [Domain](geono-domain.md#domain) :white_small_square: [set_id](geono-domain.md#set_id)
+- [Domain](geono-domain.md#domain) :white_small_square: [id](geono-domain.md#id)
 - [Domain](geono-domain.md#domain) :white_small_square: [set_id](geono-domain.md#set_id)
 - [Geometry](geono-geometry.md#geometry) :white_small_square: [set_id](geono-geometry.md#set_id)
+- [Geometry](geono-geometry.md#geometry) :white_small_square: [id](geono-geometry.md#id)
 - [nd](geono-nd.md#nd) :white_small_square: [set_id](geono-nd.md#set_id)
 
 #### Set Instance Transform
@@ -1372,22 +1255,30 @@ You will find here how nodes are implemented
 
 #### Set Material
 
+- [Domain](geono-domain.md#domain) :white_small_square: [material](geono-domain.md#material)
 - [Geometry](geono-geometry.md#geometry) :white_small_square: [set_material](geono-geometry.md#set_material)
+- [Geometry](geono-geometry.md#geometry) :white_small_square: [material](geono-geometry.md#material)
 - [nd](geono-nd.md#nd) :white_small_square: [set_material](geono-nd.md#set_material)
 
 #### Set Material Index
 
+- [Domain](geono-domain.md#domain) :white_small_square: [material_index](geono-domain.md#material_index)
+- [Geometry](geono-geometry.md#geometry) :white_small_square: [material_index](geono-geometry.md#material_index)
 - [nd](geono-nd.md#nd) :white_small_square: [set_material_index](geono-nd.md#set_material_index)
 
 #### Set Point Radius
 
+- [CloudPoint](geono-cloudpoint.md#cloudpoint) :white_small_square: [radius](geono-cloudpoint.md#radius)
 - [nd](geono-nd.md#nd) :white_small_square: [set_point_radius](geono-nd.md#set_point_radius)
 
 #### Set Position
 
-- [Domain](geono-domain.md#domain) :white_small_square: [set_position](geono-domain.md#set_position)
+- [Domain](geono-domain.md#domain) :white_small_square: [offset](geono-domain.md#offset)
+- [Domain](geono-domain.md#domain) :white_small_square: [position](geono-domain.md#position)
 - [Domain](geono-domain.md#domain) :white_small_square: [set_position](geono-domain.md#set_position)
 - [Geometry](geono-geometry.md#geometry) :white_small_square: [set_position](geono-geometry.md#set_position)
+- [Geometry](geono-geometry.md#geometry) :white_small_square: [offset](geono-geometry.md#offset)
+- [Geometry](geono-geometry.md#geometry) :white_small_square: [position](geono-geometry.md#position)
 - [nd](geono-nd.md#nd) :white_small_square: [set_position](geono-nd.md#set_position)
 
 #### Set Selection
@@ -1396,24 +1287,28 @@ You will find here how nodes are implemented
 
 #### Set Shade Smooth
 
+- [Edge](geono-edge.md#edge) :white_small_square: [smooth](geono-edge.md#smooth)
+- [Face](geono-face.md#face) :white_small_square: [smooth](geono-face.md#smooth)
 - [Geometry](geono-geometry.md#geometry) :white_small_square: [set_shade_smooth](geono-geometry.md#set_shade_smooth)
 - [nd](geono-nd.md#nd) :white_small_square: [set_shade_smooth](geono-nd.md#set_shade_smooth)
 
 #### Set Spline Cyclic
 
+- [Spline](geono-spline.md#spline) :white_small_square: [is_cyclic](geono-spline.md#is_cyclic)
 - [nd](geono-nd.md#nd) :white_small_square: [set_spline_cyclic](geono-nd.md#set_spline_cyclic)
 
 #### Set Spline Resolution
 
+- [Spline](geono-spline.md#spline) :white_small_square: [resolution](geono-spline.md#resolution)
 - [nd](geono-nd.md#nd) :white_small_square: [set_spline_resolution](geono-nd.md#set_spline_resolution)
 
 #### Set Spline Type
 
+- [Spline](geono-spline.md#spline) :white_small_square: [type](geono-spline.md#type)
 - [nd](geono-nd.md#nd) :white_small_square: [set_spline_type](geono-nd.md#set_spline_type)
 
 #### Shortest Edge Paths
 
-- [Edge](geono-edge.md#edge) :white_small_square: [shortest_paths](geono-edge.md#shortest_paths)
 - [Edge](geono-edge.md#edge) :white_small_square: [shortest_paths](geono-edge.md#shortest_paths)
 - [nd](geono-nd.md#nd) :white_small_square: [shortest_edge_paths](geono-nd.md#shortest_edge_paths)
 
@@ -1433,7 +1328,6 @@ You will find here how nodes are implemented
 #### Sort Elements
 
 - [Domain](geono-domain.md#domain) :white_small_square: [sort_elements](geono-domain.md#sort_elements)
-- [Domain](geono-domain.md#domain) :white_small_square: [sort_elements](geono-domain.md#sort_elements)
 - [nd](geono-nd.md#nd) :white_small_square: [sort_elements](geono-nd.md#sort_elements)
 
 #### Specular BSDF
@@ -1444,42 +1338,34 @@ You will find here how nodes are implemented
 #### Spiral
 
 - [Curve](geono-curve.md#curve) :white_small_square: [Spiral](geono-curve.md#spiral)
-- [Curve](geono-curve.md#curve) :white_small_square: [Spiral](geono-curve.md#spiral)
 - [nd](geono-nd.md#nd) :white_small_square: [spiral](geono-nd.md#spiral)
 
 #### Spline Parameter
 
 - [Spline](geono-spline.md#spline) :white_small_square: [parameter](geono-spline.md#parameter)
-- [Spline](geono-spline.md#spline) :white_small_square: [parameter](geono-spline.md#parameter)
 
 #### Spline Resolution
 
 - [Spline](geono-spline.md#spline) :white_small_square: [resolution](geono-spline.md#resolution)
-- [Spline](geono-spline.md#spline) :white_small_square: [resolution](geono-spline.md#resolution)
 
 #### Split Edges
 
-- [Edge](geono-edge.md#edge) :white_small_square: [split](geono-edge.md#split)
 - [Edge](geono-edge.md#edge) :white_small_square: [split](geono-edge.md#split)
 - [nd](geono-nd.md#nd) :white_small_square: [split_edges](geono-nd.md#split_edges)
 
 #### Split to Instances
 
 - [Domain](geono-domain.md#domain) :white_small_square: [split_to_instances](geono-domain.md#split_to_instances)
-- [Domain](geono-domain.md#domain) :white_small_square: [split_to_instances](geono-domain.md#split_to_instances)
 - [nd](geono-nd.md#nd) :white_small_square: [split_to_instances](geono-nd.md#split_to_instances)
 
 #### Star
 
-- [Curve](geono-curve.md#curve) :white_small_square: [Star](geono-curve.md#star)
 - [Curve](geono-curve.md#curve) :white_small_square: [Star](geono-curve.md#star)
 - [nd](geono-nd.md#nd) :white_small_square: [star](geono-nd.md#star)
 
 #### Store Named Attribute
 
 - [Domain](geono-domain.md#domain) :white_small_square: [store](geono-domain.md#store)
-- [Domain](geono-domain.md#domain) :white_small_square: [store](geono-domain.md#store)
-- [Domain](geono-domain.md#domain) :white_small_square: [store_named_attribute](geono-domain.md#store_named_attribute)
 - [Domain](geono-domain.md#domain) :white_small_square: [store_named_attribute](geono-domain.md#store_named_attribute)
 - [nd](geono-nd.md#nd) :white_small_square: [store_named_attribute](geono-nd.md#store_named_attribute)
 
@@ -1499,25 +1385,21 @@ You will find here how nodes are implemented
 #### String to Curves
 
 - [Instances](geono-instances.md#instances) :white_small_square: [FromString](geono-instances.md#fromstring)
-- [Instances](geono-instances.md#instances) :white_small_square: [FromString](geono-instances.md#fromstring)
 - [String](geono-string.md#string) :white_small_square: [to_curves](geono-string.md#to_curves)
 - [nd](geono-nd.md#nd) :white_small_square: [string_to_curves](geono-nd.md#string_to_curves)
 
 #### Subdivide Curve
 
 - [Curve](geono-curve.md#curve) :white_small_square: [subdivide](geono-curve.md#subdivide)
-- [Curve](geono-curve.md#curve) :white_small_square: [subdivide](geono-curve.md#subdivide)
 - [nd](geono-nd.md#nd) :white_small_square: [subdivide_curve](geono-nd.md#subdivide_curve)
 
 #### Subdivide Mesh
 
 - [Mesh](geono-mesh.md#mesh) :white_small_square: [subdivide](geono-mesh.md#subdivide)
-- [Mesh](geono-mesh.md#mesh) :white_small_square: [subdivide](geono-mesh.md#subdivide)
 - [nd](geono-nd.md#nd) :white_small_square: [subdivide_mesh](geono-nd.md#subdivide_mesh)
 
 #### Subdivision Surface
 
-- [Mesh](geono-mesh.md#mesh) :white_small_square: [subdivision_surface](geono-mesh.md#subdivision_surface)
 - [Mesh](geono-mesh.md#mesh) :white_small_square: [subdivision_surface](geono-mesh.md#subdivision_surface)
 - [nd](geono-nd.md#nd) :white_small_square: [subdivision_surface](geono-nd.md#subdivision_surface)
 
@@ -1546,7 +1428,6 @@ You will find here how nodes are implemented
 #### Transform Geometry
 
 - [Geometry](geono-geometry.md#geometry) :white_small_square: [transform](geono-geometry.md#transform)
-- [Geometry](geono-geometry.md#geometry) :white_small_square: [transform](geono-geometry.md#transform)
 - [nd](geono-nd.md#nd) :white_small_square: [transform_geometry](geono-nd.md#transform_geometry)
 
 #### Transform Point
@@ -1556,8 +1437,6 @@ You will find here how nodes are implemented
 #### Translate Instances
 
 - [Instance](geono-instance.md#instance) :white_small_square: [translate](geono-instance.md#translate)
-- [Instance](geono-instance.md#instance) :white_small_square: [translate](geono-instance.md#translate)
-- [Instances](geono-instances.md#instances) :white_small_square: [translate](geono-instances.md#translate)
 - [Instances](geono-instances.md#instances) :white_small_square: [translate](geono-instances.md#translate)
 - [nd](geono-nd.md#nd) :white_small_square: [translate_instances](geono-nd.md#translate_instances)
 
@@ -1578,16 +1457,12 @@ You will find here how nodes are implemented
 #### Triangulate
 
 - [Mesh](geono-mesh.md#mesh) :white_small_square: [triangulate](geono-mesh.md#triangulate)
-- [Mesh](geono-mesh.md#mesh) :white_small_square: [triangulate](geono-mesh.md#triangulate)
 - [nd](geono-nd.md#nd) :white_small_square: [triangulate](geono-nd.md#triangulate)
 
 #### Trim Curve
 
 - [Curve](geono-curve.md#curve) :white_small_square: [trim](geono-curve.md#trim)
-- [Curve](geono-curve.md#curve) :white_small_square: [trim](geono-curve.md#trim)
 - [Curve](geono-curve.md#curve) :white_small_square: [trim_factor](geono-curve.md#trim_factor)
-- [Curve](geono-curve.md#curve) :white_small_square: [trim_factor](geono-curve.md#trim_factor)
-- [Curve](geono-curve.md#curve) :white_small_square: [trim_length](geono-curve.md#trim_length)
 - [Curve](geono-curve.md#curve) :white_small_square: [trim_length](geono-curve.md#trim_length)
 - [nd](geono-nd.md#nd) :white_small_square: [trim_curve](geono-nd.md#trim_curve)
 
@@ -1599,19 +1474,17 @@ You will find here how nodes are implemented
 #### UV Sphere
 
 - [Mesh](geono-mesh.md#mesh) :white_small_square: [UVSphere](geono-mesh.md#uvsphere)
-- [Mesh](geono-mesh.md#mesh) :white_small_square: [UVSphere](geono-mesh.md#uvsphere)
 - [nd](geono-nd.md#nd) :white_small_square: [uv_sphere](geono-nd.md#uv_sphere)
 
 #### UV Unwrap
 
 - [Mesh](geono-mesh.md#mesh) :white_small_square: [uv_unwrap](geono-mesh.md#uv_unwrap)
-- [Mesh](geono-mesh.md#mesh) :white_small_square: [uv_unwrap](geono-mesh.md#uv_unwrap)
 - [nd](geono-nd.md#nd) :white_small_square: [uv_unwrap](geono-nd.md#uv_unwrap)
 
 #### Value
 
-- [Float](geono-float.md#float) :white_small_square: [impossible to find the section 'Float' in page 'Float'](geono-float.md#float)
-- [Integer](geono-integer.md#integer) :white_small_square: [impossible to find the section 'Integer' in page 'Integer'](geono-integer.md#integer)
+- [Float](geono-float.md#float) :white_small_square: [Impossible to find the section 'Float' in page 'Float'](geono-float.md#float)
+- [Integer](geono-integer.md#integer) :white_small_square: [Impossible to find the section 'Integer' in page 'Integer'](geono-integer.md#integer)
 
 #### Value to String
 
@@ -1669,20 +1542,17 @@ You will find here how nodes are implemented
 #### Vertex Neighbors
 
 - [Vertex](geono-vertex.md#vertex) :white_small_square: [neighbors](geono-vertex.md#neighbors)
-- [Vertex](geono-vertex.md#vertex) :white_small_square: [neighbors](geono-vertex.md#neighbors)
 - [Vertex](geono-vertex.md#vertex) :white_small_square: [neighbors_face_count](geono-vertex.md#neighbors_face_count)
-- [Vertex](geono-vertex.md#vertex) :white_small_square: [neighbors_face_count](geono-vertex.md#neighbors_face_count)
-- [Vertex](geono-vertex.md#vertex) :white_small_square: [neighbors_vertex_count](geono-vertex.md#neighbors_vertex_count)
 - [Vertex](geono-vertex.md#vertex) :white_small_square: [neighbors_vertex_count](geono-vertex.md#neighbors_vertex_count)
 
 #### Vertex of Corner
 
 - [Corner](geono-corner.md#corner) :white_small_square: [vertex_index](geono-corner.md#vertex_index)
-- [Corner](geono-corner.md#corner) :white_small_square: [vertex_index](geono-corner.md#vertex_index)
 - [nd](geono-nd.md#nd) :white_small_square: [vertex_of_corner](geono-nd.md#vertex_of_corner)
 
 #### Viewer
 
+- [Domain](geono-domain.md#domain) :white_small_square: [viewer](geono-domain.md#viewer)
 - [Geometry](geono-geometry.md#geometry) :white_small_square: [viewer](geono-geometry.md#viewer)
 - [nd](geono-nd.md#nd) :white_small_square: [viewer](geono-nd.md#viewer)
 
@@ -1693,7 +1563,6 @@ You will find here how nodes are implemented
 
 #### Volume Cube
 
-- [Volume](geono-volume.md#volume) :white_small_square: [Cube](geono-volume.md#cube)
 - [Volume](geono-volume.md#volume) :white_small_square: [Cube](geono-volume.md#cube)
 - [nd](geono-nd.md#nd) :white_small_square: [volume_cube](geono-nd.md#volume_cube)
 
@@ -1706,12 +1575,8 @@ You will find here how nodes are implemented
 
 - [Mesh](geono-mesh.md#mesh) :white_small_square: [FromVolume](geono-mesh.md#fromvolume)
 - [Volume](geono-volume.md#volume) :white_small_square: [to_mesh](geono-volume.md#to_mesh)
-- [Volume](geono-volume.md#volume) :white_small_square: [to_mesh](geono-volume.md#to_mesh)
-- [Volume](geono-volume.md#volume) :white_small_square: [to_mesh_amount](geono-volume.md#to_mesh_amount)
 - [Volume](geono-volume.md#volume) :white_small_square: [to_mesh_amount](geono-volume.md#to_mesh_amount)
 - [Volume](geono-volume.md#volume) :white_small_square: [to_mesh_grid](geono-volume.md#to_mesh_grid)
-- [Volume](geono-volume.md#volume) :white_small_square: [to_mesh_grid](geono-volume.md#to_mesh_grid)
-- [Volume](geono-volume.md#volume) :white_small_square: [to_mesh_size](geono-volume.md#to_mesh_size)
 - [Volume](geono-volume.md#volume) :white_small_square: [to_mesh_size](geono-volume.md#to_mesh_size)
 - [nd](geono-nd.md#nd) :white_small_square: [volume_to_mesh](geono-nd.md#volume_to_mesh)
 

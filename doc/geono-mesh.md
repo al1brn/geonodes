@@ -33,11 +33,11 @@ Nodes requiring a domain parameter, are implemented in one of the four domains o
 
 - **B** : [boolean](geono-mesh.md#boolean)
 - **C** : [Circle](geono-mesh.md#circle) :black_small_square: [Cone](geono-mesh.md#cone) :black_small_square: [corners](geono-mesh.md#corners) :black_small_square: [Cube](geono-mesh.md#cube) :black_small_square: [Cylinder](geono-mesh.md#cylinder)
-- **D** : [difference](geono-mesh.md#difference) :black_small_square: [Disk](geono-mesh.md#disk) :black_small_square: [distribute_points_on_faces](geono-mesh.md#distribute_points_on_faces) :black_small_square: [dual](geono-mesh.md#dual)
+- **D** : [difference](geono-mesh.md#difference) :black_small_square: [Disk](geono-mesh.md#disk) :black_small_square: [distribute_points_on_faces](geono-mesh.md#distribute_points_on_faces) :black_small_square: [domain_size](geono-mesh.md#domain_size) :black_small_square: [dual](geono-mesh.md#dual)
 - **E** : [edges](geono-mesh.md#edges)
 - **F** : [faces](geono-mesh.md#faces) :black_small_square: [FromCurve](geono-mesh.md#fromcurve) :black_small_square: [FromPoints](geono-mesh.md#frompoints) :black_small_square: [FromVolume](geono-mesh.md#fromvolume)
 - **G** : [Grid](geono-mesh.md#grid)
-- **I** : [IcoSphere](geono-mesh.md#icosphere) :black_small_square: [intersect](geono-mesh.md#intersect) :black_small_square: [island](geono-mesh.md#island) :black_small_square: [island_count](geono-mesh.md#island_count) :black_small_square: [island_index](geono-mesh.md#island_index)
+- **I** : [IcoSphere](geono-mesh.md#icosphere) :black_small_square: [intersect](geono-mesh.md#intersect) :black_small_square: [island](geono-mesh.md#island)
 - **L** : [Line](geono-mesh.md#line) :black_small_square: [LineOffset](geono-mesh.md#lineoffset) :black_small_square: [LineTo](geono-mesh.md#lineto)
 - **P** : [pack_uv_islands](geono-mesh.md#pack_uv_islands) :black_small_square: [Plane](geono-mesh.md#plane) :black_small_square: [points](geono-mesh.md#points)
 - **S** : [sample_nearest_surface](geono-mesh.md#sample_nearest_surface) :black_small_square: [sample_uv_surface](geono-mesh.md#sample_uv_surface) :black_small_square: [subdivide](geono-mesh.md#subdivide) :black_small_square: [subdivision_surface](geono-mesh.md#subdivision_surface)
@@ -54,6 +54,15 @@ Nodes requiring a domain parameter, are implemented in one of the four domains o
 >
 
 CORNER domain
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-mesh.md#mesh) :black_small_square: [Content](geono-mesh.md#content) :black_small_square: [Properties](geono-mesh.md#properties)</sub>
+
+### domain_size
+
+> _type_: **Node**
+>
+
+> Node <&Domain Size>, component = 'MESH'
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-mesh.md#mesh) :black_small_square: [Content](geono-mesh.md#content) :black_small_square: [Properties](geono-mesh.md#properties)</sub>
 
@@ -80,31 +89,13 @@ FACE domain
 > _type_: **Node**
 >
 
-> **node** : [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/mesh_island.html)
-
 > Node [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/mesh_island.html)
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-mesh.md#mesh) :black_small_square: [Content](geono-mesh.md#content) :black_small_square: [Properties](geono-mesh.md#properties)</sub>
-
-### island_count
-
-> _type_: **Integer**
->
-
-> **node** : [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/mesh_island.html)
-
-> Node [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/mesh_island.html)
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-mesh.md#mesh) :black_small_square: [Content](geono-mesh.md#content) :black_small_square: [Properties](geono-mesh.md#properties)</sub>
-
-### island_index
-
-> _type_: **Integer**
->
-
-> **node** : [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/mesh_island.html)
-
-> Node [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/mesh_island.html)
+``` python
+mesh = Mesh.Cube()
+index = mesh.island.index
+count = mesh.island.count
+```
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-mesh.md#mesh) :black_small_square: [Content](geono-mesh.md#content) :black_small_square: [Properties](geono-mesh.md#properties)</sub>
 
@@ -129,8 +120,6 @@ POINT domain
 ``` python
 boolean(*meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT', operation='DIFFERENCE')
 ```
-
-> **node** : [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html)
 
 > Node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html)
 
@@ -157,9 +146,7 @@ boolean(*meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT', ope
 Circle(vertices=32, radius=1.0, fill_type='NONE')
 ```
 
-Constructor Node 'Mesh Circle' (GeometryNodeMeshCircle)
-
-> Node [Mesh Circle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/mesh_circle.html)
+> Constructor node [Mesh Circle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/mesh_circle.html)
 
 #### Arguments:
 - **vertices** (_Integer_ = 32) : socket 'Vertices' (Vertices)
@@ -182,9 +169,7 @@ Constructor Node 'Mesh Circle' (GeometryNodeMeshCircle)
 Cone(vertices=32, side_segments=1, fill_segments=1, radius_top=0.0, radius_bottom=1.0, depth=2.0, fill_type='NGON')
 ```
 
-Constructor Node 'Cone' (GeometryNodeMeshCone)
-
-> Node [Cone](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/cone.html)
+> Constructor node [Cone](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/cone.html)
 
 #### Arguments:
 - **vertices** (_Integer_ = 32) : socket 'Vertices' (Vertices)
@@ -211,9 +196,7 @@ Constructor Node 'Cone' (GeometryNodeMeshCone)
 Cube(size=(1, 1, 1), vertices_x=2, vertices_y=2, vertices_z=2)
 ```
 
-Constructor Node 'Cube' (GeometryNodeMeshCube)
-
-> Node [Cube](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/cube.html)
+> Constructor node [Cube](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/cube.html)
 
 #### Arguments:
 - **size** (_Vector_ = (1, 1, 1)) : socket 'Size' (Size)
@@ -237,9 +220,7 @@ Constructor Node 'Cube' (GeometryNodeMeshCube)
 Cylinder(vertices=32, side_segments=1, fill_segments=1, radius=1.0, depth=2.0, fill_type='NGON')
 ```
 
-Constructor Node 'Cylinder' (GeometryNodeMeshCylinder)
-
-> Node [Cylinder](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/cylinder.html)
+> Constructor node [Cylinder](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/cylinder.html)
 
 #### Arguments:
 - **vertices** (_Integer_ = 32) : socket 'Vertices' (Vertices)
@@ -265,8 +246,6 @@ Constructor Node 'Cylinder' (GeometryNodeMeshCylinder)
 difference(*meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT')
 ```
 
-> **node** : [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html)
-
 > Node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html)
 
 #### Arguments:
@@ -291,9 +270,7 @@ difference(*meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT')
 Disk(vertices=32, radius=1.0, fill_type='NGON')
 ```
 
-Constructor Node 'Mesh Circle' (GeometryNodeMeshCircle)
-
-> Node [Mesh Circle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/mesh_circle.html)
+> Constructor node [Mesh Circle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/mesh_circle.html)
 
 #### Arguments:
 - **vertices** (_Integer_ = 32) : socket 'Vertices' (Vertices)
@@ -316,8 +293,6 @@ Constructor Node 'Mesh Circle' (GeometryNodeMeshCircle)
 distribute_points_on_faces(density=None, distance_min=None, density_max=None, density_factor=None, seed=None)
 ```
 
-> **node** : ERROR: Node 'Distribute Points on Faces' not found
-
 > Node ERROR: Node 'Distribute Points on Faces' not found
 
 if 'density' argument is not None, 'RANDOM' method is applied, 'POISSON' otherwise
@@ -335,7 +310,7 @@ if 'density' argument is not None, 'RANDOM' method is applied, 'POISSON' otherwi
 
 
 #### Returns:
-- **Points** :
+- **Cloud** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-mesh.md#mesh) :black_small_square: [Content](geono-mesh.md#content) :black_small_square: [Methods](geono-mesh.md#methods)</sub>
 
@@ -347,8 +322,6 @@ if 'density' argument is not None, 'RANDOM' method is applied, 'POISSON' otherwi
 ``` python
 dual(keep_boundaries=None)
 ```
-
-> **node** : [Dual Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/dual_mesh.html)
 
 > Node [Dual Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/dual_mesh.html)
 
@@ -371,9 +344,7 @@ dual(keep_boundaries=None)
 FromCurve(curve=None, profile_curve=None, fill_caps=None)
 ```
 
-Constructor Node 'Curve to Mesh' (GeometryNodeCurveToMesh)
-
-> Node [Curve to Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curve_to_mesh.html)
+> Constructor node [Curve to Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curve_to_mesh.html)
 
 #### Arguments:
 - **curve** (_Geometry_ = None) : socket 'Curve' (Curve)
@@ -396,9 +367,7 @@ Constructor Node 'Curve to Mesh' (GeometryNodeCurveToMesh)
 FromPoints(points)
 ```
 
-Constructor Node 'Points to Vertices' (GeometryNodePointsToVertices)
-
-> Node [Points to Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points_to_vertices.html)
+> Constructor node [Points to Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points_to_vertices.html)
 
 #### Arguments:
 - **points** (_Geometry_) : socket 'Points' (Points)
@@ -419,9 +388,7 @@ Constructor Node 'Points to Vertices' (GeometryNodePointsToVertices)
 FromVolume(volume, voxel_size=None, voxel_amount=None, threshold=None, adaptivity=None, resolution_mode='GRID')
 ```
 
-Constructor Node 'Volume to Mesh' (GeometryNodeVolumeToMesh)
-
-> Node [Volume to Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/operations/volume_to_mesh.html)
+> Constructor node [Volume to Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/operations/volume_to_mesh.html)
 
 #### Arguments:
 - **volume** (_Geometry_) : socket 'Volume' (Volume)
@@ -447,9 +414,7 @@ Constructor Node 'Volume to Mesh' (GeometryNodeVolumeToMesh)
 Grid(size_x=1.0, size_y=1.0, vertices_x=3, vertices_y=3)
 ```
 
-Constructor Node 'Grid' (GeometryNodeMeshGrid)
-
-> Node [Grid](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/grid.html)
+> Constructor node [Grid](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/grid.html)
 
 #### Arguments:
 - **size_x** (_Float_ = 1.0) : socket 'Size X' (Size X)
@@ -473,9 +438,7 @@ Constructor Node 'Grid' (GeometryNodeMeshGrid)
 IcoSphere(radius=1.0, subdivisions=1)
 ```
 
-Constructor Node 'Ico Sphere' (GeometryNodeMeshIcoSphere)
-
-> Node ERROR: Node 'Ico Sphere' not found
+> Constructor node ERROR: Node 'Ico Sphere' not found
 
 #### Arguments:
 - **radius** (_Float_ = 1.0) : socket 'Radius' (Radius)
@@ -496,8 +459,6 @@ Constructor Node 'Ico Sphere' (GeometryNodeMeshIcoSphere)
 ``` python
 intersect(*meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT')
 ```
-
-> **node** : [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html)
 
 > Node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html)
 
@@ -523,9 +484,7 @@ intersect(*meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT')
 Line(count=None, start_location=None, offset=None, end_location=None, resolution=None)
 ```
 
-Constructor Node 'Mesh Line' (GeometryNodeMeshLine)
-
-> Node [Mesh Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/mesh_line.html)
+> Constructor node [Mesh Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/mesh_line.html)
 
 - count_mode (str): Node.count_mode in ('TOTAL', 'RESOLUTION')
 - mode (str): Node.mode in ('OFFSET', 'END_POINTS')
@@ -557,9 +516,7 @@ If resolution is None, count_mode is set to 'TOTAL' else to 'RESOLUTION'
 LineOffset(start_location=None, offset=None, count=None)
 ```
 
-Constructor Node 'Mesh Line' (GeometryNodeMeshLine)
-
-> Node [Mesh Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/mesh_line.html)
+> Constructor node [Mesh Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/mesh_line.html)
 
 Line from start to end point
 
@@ -584,9 +541,7 @@ Line from start to end point
 LineTo(start_location=None, end_location=None, count=None, resolution=None)
 ```
 
-Constructor Node 'Mesh Line' (GeometryNodeMeshLine)
-
-> Node [Mesh Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/mesh_line.html)
+> Constructor node [Mesh Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/mesh_line.html)
 
 Line from start to end point
 
@@ -612,8 +567,6 @@ Line from start to end point
 pack_uv_islands(uv=None, margin=None, rotate=None)
 ```
 
-> **node** : [Pack UV Islands](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/uv/pack_uv_islands.html)
-
 > Node [Pack UV Islands](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/uv/pack_uv_islands.html)
 
 #### Arguments:
@@ -637,9 +590,7 @@ pack_uv_islands(uv=None, margin=None, rotate=None)
 Plane(size_x=1.0, size_y=1.0)
 ```
 
-Constructor Node 'Grid' (GeometryNodeMeshGrid)
-
-> Node [Grid](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/grid.html)
+> Constructor node [Grid](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/grid.html)
 
 #### Arguments:
 - **size_x** (_Float_ = 1.0) : socket 'Size X' (Size X)
@@ -660,8 +611,6 @@ Constructor Node 'Grid' (GeometryNodeMeshGrid)
 ``` python
 sample_nearest_surface(value=None, group_id=None, sample_position=None, sample_group_id=None)
 ```
-
-> **node** : [Sample Nearest Surface](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/sample/sample_nearest_surface.html)
 
 > Node [Sample Nearest Surface](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/sample/sample_nearest_surface.html)
 
@@ -689,8 +638,6 @@ sample_nearest_surface(value=None, group_id=None, sample_position=None, sample_g
 sample_uv_surface(value=None, uv_map=None, sample_uv=None)
 ```
 
-> **node** : [Sample UV Surface](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/sample/sample_uv_surface.html)
-
 > Node [Sample UV Surface](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/sample/sample_uv_surface.html)
 
 #### Arguments:
@@ -714,8 +661,6 @@ sample_uv_surface(value=None, uv_map=None, sample_uv=None)
 subdivide(level=None)
 ```
 
-> **node** : [Subdivide Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/subdivide_mesh.html)
-
 > Node [Subdivide Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/subdivide_mesh.html)
 
 #### Arguments:
@@ -736,8 +681,6 @@ subdivide(level=None)
 ``` python
 subdivision_surface(level=None, edge_crease=None, vertex_crease=None, uv_smooth='PRESERVE_BOUNDARIES', boundary_smooth='ALL')
 ```
-
-> **node** : [Subdivision Surface](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/subdivision_surface.html)
 
 > Node [Subdivision Surface](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/subdivision_surface.html)
 
@@ -764,8 +707,6 @@ subdivision_surface(level=None, edge_crease=None, vertex_crease=None, uv_smooth=
 to_curve()
 ```
 
-> **node** : [Mesh to Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_curve.html)
-
 > Node [Mesh to Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_curve.html)
 
 #### Returns:
@@ -781,8 +722,6 @@ to_curve()
 ``` python
 to_volume(density=None, voxel_amount=None, interior_band_width=None, voxel_size=None, amount=True)
 ```
-
-> **node** : [Mesh to Volume](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_volume.html)
 
 > Node [Mesh to Volume](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_volume.html)
 
@@ -811,8 +750,6 @@ to_volume(density=None, voxel_amount=None, interior_band_width=None, voxel_size=
 triangulate(minimum_vertices=None, quad_method='SHORTEST_DIAGONAL', ngon_method='BEAUTY')
 ```
 
-> **node** : [Triangulate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/triangulate.html)
-
 > Node [Triangulate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/triangulate.html)
 
 #### Arguments:
@@ -835,8 +772,6 @@ triangulate(minimum_vertices=None, quad_method='SHORTEST_DIAGONAL', ngon_method=
 ``` python
 union(*meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT')
 ```
-
-> **node** : [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html)
 
 > Node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html)
 
@@ -862,9 +797,7 @@ union(*meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT')
 UVSphere(segments=32, rings=16, radius=1.0)
 ```
 
-> **node** : [UV Sphere](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/uv_sphere.html)
-
-> Node [UV Sphere](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/uv_sphere.html)
+> Constructor node [UV Sphere](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/uv_sphere.html)
 
 #### Arguments:
 - **segments** (_Integer_ = 32) : socket 'Segments' (Segments)
@@ -887,8 +820,6 @@ UVSphere(segments=32, rings=16, radius=1.0)
 uv_unwrap(seam=None, margin=None, fill_holes=False, method='ANGLE_BASED')
 ```
 
-> **node** : [UV Unwrap](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/uv/uv_unwrap.html)
-
 > Node [UV Unwrap](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/uv/uv_unwrap.html)
 
 #### Arguments:
@@ -900,6 +831,6 @@ uv_unwrap(seam=None, margin=None, fill_holes=False, method='ANGLE_BASED')
 
 
 #### Returns:
-- **uv** (_Vector_)
+- **Vector** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-mesh.md#mesh) :black_small_square: [Content](geono-mesh.md#content) :black_small_square: [Methods](geono-mesh.md#methods)</sub>

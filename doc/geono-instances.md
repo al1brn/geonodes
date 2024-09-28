@@ -32,6 +32,7 @@ Nodes requiring a domain parameter, are implemented in the domain [insts](geono-
 
 ## Content
 
+- [domain_size](geono-instances.md#domain_size)
 - [FromGeometry](geono-instances.md#fromgeometry)
 - [FromString](geono-instances.md#fromstring)
 - [insts](geono-instances.md#insts)
@@ -45,6 +46,15 @@ Nodes requiring a domain parameter, are implemented in the domain [insts](geono-
 ## Properties
 
 
+
+### domain_size
+
+> _type_: **Node**
+>
+
+> Node <&Domain Size>, component = 'INSTANCES'
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Instances](geono-instances.md#instances) :black_small_square: [Content](geono-instances.md#content) :black_small_square: [Properties](geono-instances.md#properties)</sub>
 
 ### insts
 
@@ -68,9 +78,7 @@ INSTANCES domain
 FromGeometry(*geometries)
 ```
 
-> **node** : [Geometry to Instance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_to_instance.html)
-
-> Node [Geometry to Instance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_to_instance.html)
+> Constructor node [Geometry to Instance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_to_instance.html)
 
 #### Arguments:
 - **geometries** (_Geometry_) : socket 'Geometry' (Geometry)
@@ -91,9 +99,7 @@ FromGeometry(*geometries)
 FromString(string=None, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, text_box_height=None, overflow='OVERFLOW', align_x='LEFT', align_y='TOP_BASELINE', pivot_mode='BOTTOM_LEFT')
 ```
 
-> **node** : [String to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/string_to_curves.html)
-
-> Node [String to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/string_to_curves.html)
+> Constructor node [String to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/string_to_curves.html)
 
 #### Arguments:
 - **string** (_String_ = None) : socket 'String' (String)
@@ -124,8 +130,6 @@ FromString(string=None, size=None, character_spacing=None, word_spacing=None, li
 on_points(points, pick_instance=None, instance_index=None, rotation=None, scale=None)
 ```
 
-> **node** : [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html)
-
 > Node [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html)
 
 #### Arguments:
@@ -151,8 +155,6 @@ on_points(points, pick_instance=None, instance_index=None, rotation=None, scale=
 realize(realize_all=None, depth=None)
 ```
 
-> **node** : [Realize Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/realize_instances.html)
-
 > Node [Realize Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/realize_instances.html)
 
 #### Arguments:
@@ -174,8 +176,6 @@ realize(realize_all=None, depth=None)
 ``` python
 rotate(rotation=None, pivot_point=None, local_space=None)
 ```
-
-> **node** : [Rotate Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/rotate_instances.html)
 
 > Node [Rotate Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/rotate_instances.html)
 
@@ -200,8 +200,6 @@ rotate(rotation=None, pivot_point=None, local_space=None)
 scale(scale=None, center=None, local_space=None)
 ```
 
-> **node** : [Scale Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/scale_instances.html)
-
 > Node [Scale Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/scale_instances.html)
 
 #### Arguments:
@@ -225,8 +223,6 @@ scale(scale=None, center=None, local_space=None)
 to_points(position=None, radius=None)
 ```
 
-> **node** : [Instances to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instances_to_points.html)
-
 > Node [Instances to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instances_to_points.html)
 
 #### Arguments:
@@ -248,8 +244,6 @@ to_points(position=None, radius=None)
 ``` python
 translate(translation=None, local_space=None)
 ```
-
-> **node** : [Translate Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/translate_instances.html)
 
 > Node [Translate Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/translate_instances.html)
 

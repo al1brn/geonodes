@@ -27,16 +27,18 @@ Properties:
 
 ## Content
 
-- **A** : [accumulate_field](geono-domain.md#accumulate_field)
+- **A** : [accumulate_field](geono-domain.md#accumulate_field) :black_small_square: [attribute_statistic](geono-domain.md#attribute_statistic)
 - **C** : [capture](geono-domain.md#capture) :black_small_square: [capture_attribute](geono-domain.md#capture_attribute)
 - **D** : [delete](geono-domain.md#delete) :black_small_square: [delete_all](geono-domain.md#delete_all) :black_small_square: [delete_edges_and_faces](geono-domain.md#delete_edges_and_faces) :black_small_square: [delete_faces](geono-domain.md#delete_faces) :black_small_square: [delete_geometry](geono-domain.md#delete_geometry) :black_small_square: [duplicate_elements](geono-domain.md#duplicate_elements)
 - **E** : [evaluate_at_index](geono-domain.md#evaluate_at_index) :black_small_square: [evaluate_on_domain](geono-domain.md#evaluate_on_domain) :black_small_square: [extrude](geono-domain.md#extrude)
 - **I** : [id](geono-domain.md#id)
-- **M** : [material_index](geono-domain.md#material_index)
+- **M** : [material](geono-domain.md#material) :black_small_square: [material_index](geono-domain.md#material_index)
+- **O** : [offset](geono-domain.md#offset)
 - **P** : [position](geono-domain.md#position) :black_small_square: [proximity](geono-domain.md#proximity)
 - **R** : [replace_material](geono-domain.md#replace_material)
 - **S** : [sample_index](geono-domain.md#sample_index) :black_small_square: [sample_nearest](geono-domain.md#sample_nearest) :black_small_square: [separate](geono-domain.md#separate) :black_small_square: [set_id](geono-domain.md#set_id) :black_small_square: [set_position](geono-domain.md#set_position) :black_small_square: [sort_elements](geono-domain.md#sort_elements) :black_small_square: [split_to_instances](geono-domain.md#split_to_instances) :black_small_square: [store](geono-domain.md#store) :black_small_square: [store_named_attribute](geono-domain.md#store_named_attribute)
 - **T** : [to_points](geono-domain.md#to_points)
+- **V** : [viewer](geono-domain.md#viewer)
 
 ## Properties
 
@@ -47,9 +49,22 @@ Properties:
 > _type_: **Integer**
 >
 
-> **node** : [ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/id.html)
+> Id property
 
-> Node [ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/id.html)
+- getter : [ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/id.html)
+- setter : [Set ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/write/set_id.html)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Domain](geono-domain.md#domain) :black_small_square: [Content](geono-domain.md#content) :black_small_square: [Properties](geono-domain.md#properties)</sub>
+
+### material
+
+> _type_: **Error**
+>
+
+> Material write only property
+
+- getter : None
+- setter : [Set Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Domain](geono-domain.md#domain) :black_small_square: [Content](geono-domain.md#content) :black_small_square: [Properties](geono-domain.md#properties)</sub>
 
@@ -58,9 +73,22 @@ Properties:
 > _type_: **Integer**
 >
 
-> **node** : [Material Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_index.html)
+> Material index property
 
-> Node [Material Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_index.html)
+- getter : [Material Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_index.html)
+- setter : [Set Material Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material_index.html)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Domain](geono-domain.md#domain) :black_small_square: [Content](geono-domain.md#content) :black_small_square: [Properties](geono-domain.md#properties)</sub>
+
+### offset
+
+> _type_: **Error**
+>
+
+> Offset write only property
+
+- getter : None
+- setter : [Set Position](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/write/set_position.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Domain](geono-domain.md#domain) :black_small_square: [Content](geono-domain.md#content) :black_small_square: [Properties](geono-domain.md#properties)</sub>
 
@@ -69,9 +97,10 @@ Properties:
 > _type_: **Vector**
 >
 
-> **node** : [Position](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/position.html)
+> Position property
 
-> Node [Position](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/position.html)
+- getter : node [Position](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/position.html)
+- setter : node [Set Position](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/write/set_position.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Domain](geono-domain.md#domain) :black_small_square: [Content](geono-domain.md#content) :black_small_square: [Properties](geono-domain.md#properties)</sub>
 
@@ -88,8 +117,6 @@ Properties:
 accumulate_field(value=None, group_id=None)
 ```
 
-> **node** : [Accumulate Field](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/accumulate_field.html)
-
 > Node [Accumulate Field](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/accumulate_field.html)
 
 - data_type (str): Node.data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'TRANSFORM')
@@ -102,7 +129,28 @@ accumulate_field(value=None, group_id=None)
 
 
 #### Returns:
-- **Node** : [leading (Float), trailing (Float), total (Float)]
+- **Node** : 'Accumulate Field'
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Domain](geono-domain.md#domain) :black_small_square: [Content](geono-domain.md#content) :black_small_square: [Methods](geono-domain.md#methods)</sub>
+
+----------
+### attribute_statistic()
+
+> method
+
+``` python
+attribute_statistic(attribute=None)
+```
+
+> Node [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html)
+
+#### Arguments:
+- **attribute** (_Socket_ = None) : attribute to compute statistic
+
+
+
+#### Returns:
+- **Node** : 'Attribute Statistic Node'
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Domain](geono-domain.md#domain) :black_small_square: [Content](geono-domain.md#content) :black_small_square: [Methods](geono-domain.md#methods)</sub>
 
@@ -115,11 +163,9 @@ accumulate_field(value=None, group_id=None)
 capture(attribute=None, **others)
 ```
 
-> **node** : [Capture Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/capture_attribute.html)
-
 > Node [Capture Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/capture_attribute.html)
 
-synonym of 'capture_named_attribute'
+> see [capture_attribute](geono-domain.md#capture_attribute)
 
 #### Arguments:
 - **attribute** ( = None)
@@ -136,11 +182,9 @@ synonym of 'capture_named_attribute'
 capture_attribute(attribute=None, **others)
 ```
 
-> **node** : [Capture Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/capture_attribute.html)
-
 > Node [Capture Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/capture_attribute.html)
 
-This method return the capture of 'attribute' argument if not keyword arguments are provided,
+This method return the capture of 'attribute' argument if no keyword arguments are provided,
 otherwise returns the node.
 
 ``` python
@@ -184,11 +228,9 @@ with GeoNodes("Capture Attribute"):
 delete(mode='ALL')
 ```
 
-> **node** : [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/delete_geometry.html)
-
 > Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/delete_geometry.html)
 
-Synonym of 'delete_geometry'
+> See [delete_geometry](geono-domain.md#delete_geometry)
 
 #### Arguments:
 - **mode** ( = ALL)
@@ -204,11 +246,12 @@ Synonym of 'delete_geometry'
 delete_all()
 ```
 
-> **node** : [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/delete_geometry.html)
-
 > Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/delete_geometry.html)
 
-Shortcut for : ``` domain.delete_geometry(mode='ALL') ```
+Shortcut for :
+``` python
+domain.delete_geometry(mode='ALL')
+```
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Domain](geono-domain.md#domain) :black_small_square: [Content](geono-domain.md#content) :black_small_square: [Methods](geono-domain.md#methods)</sub>
 
@@ -221,11 +264,12 @@ Shortcut for : ``` domain.delete_geometry(mode='ALL') ```
 delete_edges_and_faces()
 ```
 
-> **node** : [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/delete_geometry.html)
-
 > Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/delete_geometry.html)
 
-Shortcut for : ``` domain.delete_geometry(mode='EDGE_FACE') ```
+Shortcut for :
+``` python
+domain.delete_geometry(mode='EDGE_FACE')
+```
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Domain](geono-domain.md#domain) :black_small_square: [Content](geono-domain.md#content) :black_small_square: [Methods](geono-domain.md#methods)</sub>
 
@@ -238,11 +282,12 @@ Shortcut for : ``` domain.delete_geometry(mode='EDGE_FACE') ```
 delete_faces()
 ```
 
-> **node** : [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/delete_geometry.html)
-
 > Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/delete_geometry.html)
 
-Shortcut for : ``` domain.delete_geometry(mode='ONLY_FACE') ```
+Shortcut for :
+``` python
+domain.delete_geometry(mode='ONLY_FACE')
+```
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Domain](geono-domain.md#domain) :black_small_square: [Content](geono-domain.md#content) :black_small_square: [Methods](geono-domain.md#methods)</sub>
 
@@ -255,8 +300,6 @@ Shortcut for : ``` domain.delete_geometry(mode='ONLY_FACE') ```
 delete_geometry(mode='ALL')
 ```
 
-> **node** : [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/delete_geometry.html)
-
 > Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/delete_geometry.html)
 
 - domain (str): Node.domain in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
@@ -267,7 +310,7 @@ delete_geometry(mode='ALL')
 
 
 #### Returns:
-- **geometry** (_Geometry_)
+- **Geometry** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Domain](geono-domain.md#domain) :black_small_square: [Content](geono-domain.md#content) :black_small_square: [Methods](geono-domain.md#methods)</sub>
 
@@ -279,8 +322,6 @@ delete_geometry(mode='ALL')
 ``` python
 duplicate_elements(amount=1)
 ```
-
-> **node** : [Duplicate Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/duplicate_elements.html)
 
 > Node [Duplicate Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/duplicate_elements.html)
 
@@ -304,8 +345,6 @@ duplicate_elements(amount=1)
 ``` python
 evaluate_at_index(index=None, value=None)
 ```
-
-> **node** : [Evaluate at Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/evaluate_at_index.html)
 
 > Node [Evaluate at Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/evaluate_at_index.html)
 
@@ -332,8 +371,6 @@ evaluate_at_index(index=None, value=None)
 evaluate_on_domain(value=None)
 ```
 
-> **node** : [Evaluate on Domain](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/evaluate_on_domain.html)
-
 > Node [Evaluate on Domain](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/evaluate_on_domain.html)
 
 - data_type (str): Node.data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4')
@@ -357,8 +394,6 @@ evaluate_on_domain(value=None)
 ``` python
 extrude(offset=None, offset_scale=None, individual=None)
 ```
-
-> **node** : [Extrude Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/extrude_mesh.html)
 
 > Node [Extrude Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/extrude_mesh.html)
 
@@ -400,8 +435,6 @@ with GeoNodes("Extrusion"):
 proximity(group_id=None, sample_position=None, sample_group_id=None)
 ```
 
-> **node** : [Geometry Proximity](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/geometry_proximity.html)
-
 > Node [Geometry Proximity](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/geometry_proximity.html)
 
 #### Arguments:
@@ -425,8 +458,6 @@ proximity(group_id=None, sample_position=None, sample_group_id=None)
 replace_material(old=None, new=None)
 ```
 
-> **node** : [Replace Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/replace_material.html)
-
 > Node [Replace Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/replace_material.html)
 
 #### Arguments:
@@ -448,8 +479,6 @@ replace_material(old=None, new=None)
 ``` python
 sample_index(value=None, index=0, clamp=False)
 ```
-
-> **node** : [Sample Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/sample_index.html)
 
 > Node [Sample Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/sample_index.html)
 
@@ -477,8 +506,6 @@ sample_index(value=None, index=0, clamp=False)
 sample_nearest(sample_position=None)
 ```
 
-> **node** : [Sample Nearest](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/sample_nearest.html)
-
 > Node [Sample Nearest](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/sample_nearest.html)
 
 - domain (str): Node.domain in ('POINT', 'EDGE', 'FACE', 'CORNER')
@@ -502,8 +529,6 @@ sample_nearest(sample_position=None)
 separate()
 ```
 
-> **node** : [Separate Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/separate_geometry.html)
-
 > Node [Separate Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/separate_geometry.html)
 
 - domain (str): Node.domain in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
@@ -521,8 +546,6 @@ separate()
 ``` python
 set_id(id=None)
 ```
-
-> **node** : [Set ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/write/set_id.html)
 
 > Node [Set ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/write/set_id.html)
 
@@ -545,8 +568,6 @@ set_id(id=None)
 set_position(position=None, offset=None)
 ```
 
-> **node** : [Set Position](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/write/set_position.html)
-
 > Node [Set Position](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/write/set_position.html)
 
 #### Arguments:
@@ -568,8 +589,6 @@ set_position(position=None, offset=None)
 ``` python
 sort_elements(group_id=None, sort_weight=None)
 ```
-
-> **node** : [Sort Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/sort_elements.html)
 
 > Node [Sort Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/sort_elements.html)
 
@@ -595,8 +614,6 @@ sort_elements(group_id=None, sort_weight=None)
 split_to_instances(group_id=None)
 ```
 
-> **node** : [Split to Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/split_to_instances.html)
-
 > Node [Split to Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/split_to_instances.html)
 
 - domain (str): Node.domain in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
@@ -620,11 +637,9 @@ split_to_instances(group_id=None)
 store(name, value=None)
 ```
 
-> **node** : [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html)
-
 > Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html)
 
-Synonym of 'store_named_attribute'
+> See [store_named_attribute](geono-domain.md#store_named_attribute)
 
 #### Arguments:
 - **name**
@@ -640,8 +655,6 @@ Synonym of 'store_named_attribute'
 ``` python
 store_named_attribute(name, value=None)
 ```
-
-> **node** : [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html)
 
 > Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html)
 
@@ -668,8 +681,6 @@ store_named_attribute(name, value=None)
 to_points(position=None, radius=None)
 ```
 
-> **node** : [Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_points.html)
-
 > Node [Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_points.html)
 
 - mode (str): Node.mode in ('VERTICES', 'EDGES', 'FACES', 'CORNERS')
@@ -682,5 +693,21 @@ to_points(position=None, radius=None)
 
 #### Returns:
 - **Geometry** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Domain](geono-domain.md#domain) :black_small_square: [Content](geono-domain.md#content) :black_small_square: [Methods](geono-domain.md#methods)</sub>
+
+----------
+### viewer()
+
+> method
+
+``` python
+viewer(value=None)
+```
+
+> Node [Viewer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/output/viewer.html)
+
+#### Arguments:
+- **value** (_Socket_ = None) : value to view
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Domain](geono-domain.md#domain) :black_small_square: [Content](geono-domain.md#content) :black_small_square: [Methods](geono-domain.md#methods)</sub>
