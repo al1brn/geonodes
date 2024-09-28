@@ -75,7 +75,9 @@ Property curve component
 > _type_: **Integer**
 >
 
-> **node** : [ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/id.html)
+
+
+[ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/id.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Properties](geono-geometry.md#properties)</sub>
 
@@ -95,7 +97,9 @@ Property instances component
 > _type_: **Integer**
 >
 
-> **node** : [Material Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_index.html)
+
+
+[Material Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_index.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Properties](geono-geometry.md#properties)</sub>
 
@@ -126,7 +130,9 @@ Property cloud component
 > _type_: **Vector**
 >
 
-> **node** : [Position](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/position.html)
+
+
+[Position](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/position.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geono-geometry.md#geometry) :black_small_square: [Content](geono-geometry.md#content) :black_small_square: [Properties](geono-geometry.md#properties)</sub>
 
@@ -165,9 +171,9 @@ Property volume component
 index_of_nearest(position=None, group_id=None)
 ```
 
-> **node** : ERROR: Node 'Index of Nearest' not found
 
 
+ERROR: Node 'Index of Nearest' not found
 
 #### Arguments:
 - **position** (_Vector_ = None) : socket 'Position' (Position)
@@ -189,9 +195,9 @@ index_of_nearest(position=None, group_id=None)
 join(*geometries)
 ```
 
-> **node** : [Join Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/join_geometry.html)
 
 
+[Join Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/join_geometry.html)
 
 Operator + can be used : ``` geo + other_geo ``` is equivalent to ``` geo.join(other) ```
 If all the geometries are of the same type, the returned geometry uses this type.
@@ -229,9 +235,9 @@ assert(isinstance(geo, Geometry))
 merge_by_distance(distance=None, mode='ALL')
 ```
 
-> **node** : [Merge by Distance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/merge_by_distance.html)
 
 
+[Merge by Distance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/merge_by_distance.html)
 
 #### Arguments:
 - **distance** (_Float_ = None) : socket 'Distance' (Distance)
@@ -253,9 +259,9 @@ merge_by_distance(distance=None, mode='ALL')
 raycast(attribute=None, source_position=None, ray_direction=None, ray_length=None, interpolated=True)
 ```
 
-> **node** : [Raycast](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/raycast.html)
 
 
+[Raycast](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/raycast.html)
 
 mapping in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4')
 
@@ -306,9 +312,9 @@ Remove named attribute
 replace_material(old=None, new=None)
 ```
 
-> **node** : [Replace Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/replace_material.html)
 
 
+[Replace Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/replace_material.html)
 
 #### Arguments:
 - **old** (_Material_ = None) : socket 'Old' (Old)
@@ -424,9 +430,9 @@ Set Shade Smooth.
 to_instance(*geometries)
 ```
 
-> **node** : [Geometry to Instance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_to_instance.html)
 
 
+[Geometry to Instance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_to_instance.html)
 
 #### Arguments:
 - **geometries** (_Geometry_) : socket 'Geometry' (Geometry)
@@ -447,9 +453,9 @@ to_instance(*geometries)
 transform(translation=None, rotation=None, scale=None, matrix=None)
 ```
 
-> **node** : [Transform Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/transform_geometry.html)
 
 
+[Transform Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/transform_geometry.html)
 
 If 'matrix' argument is None, the mode 'COMPONENTS' is set.
 If 'matrix' argument is not NOne, the mode 'MATRIX' is set and the other arguments are ignored.

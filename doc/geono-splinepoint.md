@@ -33,9 +33,9 @@ SplinePoint(geometry)
 > _type_: **Integer**
 >
 
-> **node** : [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
 
 
+[Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
 
 Socket 'Point Count' of node 'Domain Size'
 
@@ -109,7 +109,9 @@ Socket 'Point Count' of node 'Domain Size'
 > _type_: **Socket**
 >
 
-> **node** : ERROR: Node 'Curve Handle Positions' not found
+
+
+ERROR: Node 'Curve Handle Positions' not found
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](geono-splinepoint.md#splinepoint) :black_small_square: [Content](geono-splinepoint.md#content) :black_small_square: [Properties](geono-splinepoint.md#properties)</sub>
 
@@ -118,7 +120,9 @@ Socket 'Point Count' of node 'Domain Size'
 > _type_: **Socket**
 >
 
-> **node** : ERROR: Node 'Curve Handle Positions' not found
+
+
+ERROR: Node 'Curve Handle Positions' not found
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](geono-splinepoint.md#splinepoint) :black_small_square: [Content](geono-splinepoint.md#content) :black_small_square: [Properties](geono-splinepoint.md#properties)</sub>
 
@@ -163,7 +167,9 @@ Socket 'Point Count' of node 'Domain Size'
 > _type_: **Socket**
 >
 
-> **node** : ERROR: Node 'Curve Handle Positions' not found
+
+
+ERROR: Node 'Curve Handle Positions' not found
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](geono-splinepoint.md#splinepoint) :black_small_square: [Content](geono-splinepoint.md#content) :black_small_square: [Properties](geono-splinepoint.md#properties)</sub>
 
@@ -172,7 +178,9 @@ Socket 'Point Count' of node 'Domain Size'
 > _type_: **Socket**
 >
 
-> **node** : ERROR: Node 'Curve Handle Positions' not found
+
+
+ERROR: Node 'Curve Handle Positions' not found
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](geono-splinepoint.md#splinepoint) :black_small_square: [Content](geono-splinepoint.md#content) :black_small_square: [Properties](geono-splinepoint.md#properties)</sub>
 
@@ -198,9 +206,9 @@ Socket 'Point Count' of node 'Domain Size'
 handle_positions(relative=None)
 ```
 
-> **node** : ERROR: Node 'Curve Handle Positions' not found
 
 
+ERROR: Node 'Curve Handle Positions' not found
 
 #### Arguments:
 - **relative** (_Boolean_ = None) : socket 'Relative' (Relative)
@@ -221,9 +229,9 @@ handle_positions(relative=None)
 handle_type_selection(left=True, right=True, handle_type='AUTO')
 ```
 
-> **node** : [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
 
 
+[Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
 
 #### Arguments:
 - **left** (_bool_ = True) : left handle
@@ -246,9 +254,9 @@ handle_type_selection(left=True, right=True, handle_type='AUTO')
 instance_on(instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None)
 ```
 
-> **node** : [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html)
 
 
+[Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html)
 
 #### Arguments:
 - **instance** (_Geometry_ = None) : socket 'Instance' (Instance)
@@ -273,9 +281,9 @@ instance_on(instance=None, pick_instance=None, instance_index=None, rotation=Non
 set_handle_positions(position=None, offset=None, mode=None)
 ```
 
-> **node** : [Set Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_positions.html)
 
 
+[Set Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_positions.html)
 
 ``` python
 with GeoNodes("Curve handles"):
@@ -349,9 +357,9 @@ with GeoNodes("Curve handles"):
 set_handle_type(left=True, right=True, handle_type='AUTO')
 ```
 
-> **node** : [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html)
 
 
+[Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html)
 
 ``` python
 with GeoNodes("Curve handles"):

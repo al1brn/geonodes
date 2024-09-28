@@ -32,9 +32,9 @@ Corner(geometry)
 > _type_: **Integer**
 >
 
-> **node** : [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
 
 
+[Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
 
 Socket 'Corner Count' of node 'Domain Size'
 
@@ -53,9 +53,9 @@ Socket 'Corner Count' of node 'Domain Size'
 face_index(corner_index=None)
 ```
 
-> **node** : [Face of Corner](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/face_of_corner.html)
 
 
+[Face of Corner](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/face_of_corner.html)
 
 #### Arguments:
 - **corner_index** (_Integer_ = None) : socket 'Corner Index' (Corner Index)
@@ -76,9 +76,9 @@ face_index(corner_index=None)
 next_edge_index(corner_index=None)
 ```
 
-> **node** : [Edges of Corner](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/edges_of_corner.html)
 
 
+[Edges of Corner](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/edges_of_corner.html)
 
 #### Arguments:
 - **corner_index** (_Integer_ = None) : socket 'Corner Index' (Corner Index)
@@ -99,9 +99,9 @@ next_edge_index(corner_index=None)
 offset_in_face(corner_index=None, offset=None)
 ```
 
-> **node** : [Offset Corner in Face](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/offset_corner_in_face.html)
 
 
+[Offset Corner in Face](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/offset_corner_in_face.html)
 
 #### Arguments:
 - **corner_index** (_Integer_ = None) : socket 'Corner Index' (Corner Index)
@@ -123,9 +123,9 @@ offset_in_face(corner_index=None, offset=None)
 vertex_index(corner_index=None)
 ```
 
-> **node** : [Vertex of Corner](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/vertex_of_corner.html)
 
 
+[Vertex of Corner](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/vertex_of_corner.html)
 
 #### Arguments:
 - **corner_index** (_Integer_ = None) : socket 'Corner Index' (Corner Index)

@@ -37,7 +37,9 @@ Instance(geometry)
 > _type_: **Rotation**
 >
 
-> **node** : [Instance Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_rotation.html)
+
+
+[Instance Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_rotation.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Instance](geono-instance.md#instance) :black_small_square: [Content](geono-instance.md#content) :black_small_square: [Properties](geono-instance.md#properties)</sub>
 
@@ -46,7 +48,9 @@ Instance(geometry)
 > _type_: **Vector**
 >
 
-> **node** : [Instance Scale](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_scale.html)
+
+
+[Instance Scale](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_scale.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Instance](geono-instance.md#instance) :black_small_square: [Content](geono-instance.md#content) :black_small_square: [Properties](geono-instance.md#properties)</sub>
 
@@ -55,7 +59,9 @@ Instance(geometry)
 > _type_: **Matrix**
 >
 
-> **node** : [Instance Transform](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_transform.html)
+
+
+[Instance Transform](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_transform.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Instance](geono-instance.md#instance) :black_small_square: [Content](geono-instance.md#content) :black_small_square: [Properties](geono-instance.md#properties)</sub>
 
@@ -72,9 +78,9 @@ Instance(geometry)
 translate(translation=None, local_space=None)
 ```
 
-> **node** : [Translate Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/translate_instances.html)
 
 
+[Translate Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/translate_instances.html)
 
 #### Arguments:
 - **translation** (_Vector_ = None) : socket 'Translation' (Translation)

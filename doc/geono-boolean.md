@@ -39,9 +39,9 @@ Socket of type BOOLEAN
 Named(name)
 ```
 
-> **node** : [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
 
+[Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
 'Named' is a synonym of 'NamedAttribute'
 
@@ -81,9 +81,9 @@ with GeoNodes("Named Attributes"):
 NamedAttribute(name)
 ```
 
-> **node** : [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
 
+[Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
 'Named' is a synonym of 'NamedAttribute'
 

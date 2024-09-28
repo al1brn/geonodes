@@ -161,7 +161,7 @@ Saturation component
 
 Conversion to black and white.
 
-[!SHADER]
+> ShaderNodes node
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Properties](geono-color.md#properties)</sub>
 
@@ -217,7 +217,8 @@ ambient_occlusion(distance=None, normal=None, inside=False, only_local=False, sa
 
 Shader node Ambient Occlusion.
 
-[!SHADER]
+> ShaderNodes node
+
 
 
 #### Arguments:
@@ -245,7 +246,8 @@ Attribute(name)
 
 Shader node Color Attribute.
 
-[!SHADER]
+> ShaderNodes node
+
 
 
 #### Arguments:
@@ -269,7 +271,8 @@ Blackbody(temperature=None)
 
 Constructor : Black body.
 
-[!SHADER]
+> ShaderNodes node
+
 
 
 #### Arguments:
@@ -316,7 +319,8 @@ brightness_contrast(bright=None, contrast=None)
 
 Brightness and contrast.
 
-[!SHADER]
+> ShaderNodes node
+
 
 
 #### Arguments:
@@ -697,7 +701,8 @@ FromShader(shader)
 
 Constructor : Shader to RGB.
 
-[!SHADER]
+> ShaderNodes node
+
 
 
 #### Arguments:
@@ -721,7 +726,8 @@ gamma(gamma=None)
 
 Gamma.
 
-[!SHADER]
+> ShaderNodes node
+
 
 
 #### Arguments:
@@ -745,7 +751,8 @@ hue_saturation_value(hue=None, saturation=None, value=None, fac=None)
 
 Hue / saturation / value.
 
-[!SHADER]
+> ShaderNodes node
+
 
 
 #### Arguments:
@@ -772,7 +779,8 @@ invert(fac=None)
 
 Invert.
 
-[!SHADER]
+> ShaderNodes node
+
 
 
 #### Arguments:
@@ -1005,7 +1013,8 @@ normal_map(strength=None, space='TANGENT', uv_map='')
 
 Normal map.
 
-[!SHADER]
+> ShaderNodes node
+
 
 
 #### Arguments:
@@ -1159,7 +1168,8 @@ to_output(name=None)
 
 > Connect to the output node
 
-[!MIX]
+> GeoNodes or ShaderNodes
+
 
 
 > 
@@ -1182,7 +1192,8 @@ vector_displacement(midlevel=None, scale=None, space='TANGENT')
 
 Vector displacement
 
-[!SHADER]
+> ShaderNodes node
+
 
 
 #### Arguments:
@@ -1208,7 +1219,8 @@ Wavelength(wavelength=None)
 
 Constructor : Wave Length.
 
-[!SHADER]
+> ShaderNodes node
+
 
 
 #### Arguments:

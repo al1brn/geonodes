@@ -31,9 +31,9 @@ Spline(geometry)
 > _type_: **Integer**
 >
 
-> **node** : [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
 
 
+[Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
 
 Socket 'Spline Count' of node 'Domain Size'
 
@@ -44,7 +44,9 @@ Socket 'Spline Count' of node 'Domain Size'
 > _type_: **Boolean**
 >
 
-> **node** : [Is Spline Cyclic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/is_spline_cyclic.html)
+
+
+[Is Spline Cyclic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/is_spline_cyclic.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Spline](geono-spline.md#spline) :black_small_square: [Content](geono-spline.md#content) :black_small_square: [Properties](geono-spline.md#properties)</sub>
 
@@ -53,7 +55,9 @@ Socket 'Spline Count' of node 'Domain Size'
 > _type_: **Node**
 >
 
-> **node** : [Spline Parameter](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/spline_parameter.html)
+
+
+[Spline Parameter](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/spline_parameter.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Spline](geono-spline.md#spline) :black_small_square: [Content](geono-spline.md#content) :black_small_square: [Properties](geono-spline.md#properties)</sub>
 
@@ -62,6 +66,8 @@ Socket 'Spline Count' of node 'Domain Size'
 > _type_: **Integer**
 >
 
-> **node** : [Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/spline_resolution.html)
+
+
+[Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/spline_resolution.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Spline](geono-spline.md#spline) :black_small_square: [Content](geono-spline.md#content) :black_small_square: [Properties](geono-spline.md#properties)</sub>
