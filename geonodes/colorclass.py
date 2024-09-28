@@ -1018,7 +1018,7 @@ class Color(VectorLike):
         return node._out
 
     def vector_displacement(self, midlevel=None, scale=None, space='TANGENT'):
-        """ Normal map.
+        """ Vector displacement
 
         [!SHADER]
         [!ShaderNode] Vector Displacement
