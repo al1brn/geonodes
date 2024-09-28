@@ -6,7 +6,7 @@
 Face(geometry)
 ```
 
-> Face domain of a [Mesh](geono-mesh.md#mesh)
+> Face domain of a ['Mesh' not found]()
 
 #### Arguments:
 - **geometry**

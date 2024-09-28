@@ -10,7 +10,7 @@ Instances(value=None, name=None, tip=None)
 
 > [!NOTE]
 > The name of geometry class is plural : **Instances** when the name of the
-> domain is singular : [Instance](geono-instance.md#instance). The named of the domain property is [insts](geono-instances.md#insts).
+> domain is singular : ['Instance' not found](). The named of the domain property is [insts](geono-instances.md#insts).
 
 The **Instances** class exposes all methods specific to instances.
 Since there is no ambiguity, the word **instances** is omitted in the name of

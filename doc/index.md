@@ -14,7 +14,7 @@ Exiting from a tree context can be done by raising the [Break](geono-break.md#br
 
 Once the current tree instantiated, nodes can be created by instancianting a [Node](geono-node.md#node) class, for instance:
 
-[Group](geono-group.md#group) is used to call a group. [GroupF](geono-groupf.md#groupf) does the same by exposing the **snake_name** name of
+[Group](cross_reference.md#group) is used to call a group. [GroupF](geono-groupf.md#groupf) does the same by exposing the **snake_name** name of
 the called group.
 
 Use [Layout](geono-layout.md#layout) class to group nodes in a Layout:
@@ -30,20 +30,20 @@ Use [snd](shade-shade1-snd.md#snd) (for _shader nodes_) when scripting [ShaderNo
 A better and more pythonistic way to script nodes, is to use a [Socket](geono-socket.md#socket) subclass among:
 
 - Data sockets:
-  - [Boolean](geono-boolean.md#boolean)
-  - [Integer](geono-integer.md#integer)
+  - [Boolean](cross_reference.md#boolean)
+  - [Integer](cross_reference.md#integer)
   - [Float](geono-float.md#float)
-  - [Color](geono-color.md#color)
-  - [Vector](geono-vector.md#vector)
-  - [Rotation](geono-rotation.md#rotation)
+  - [Color](cross_reference.md#color)
+  - [Vector](cross_reference.md#vector)
+  - [Rotation](cross_reference.md#rotation)
   - [Matrix](geono-matrix.md#matrix)
-  - [String](geono-string.md#string)
+  - [String](cross_reference.md#string)
   - [Menu](geono-menu.md#menu)
 - Blender resources:
   - [Collection](geono-collection.md#collection)
   - [Object](geono-object.md#object)
-  - [Image](geono-image.md#image)
-  - [Material](geono-material.md#material)
+  - [Image](cross_reference.md#image)
+  - [Material](cross_reference.md#material)
   - [Texture](geono-texture.md#texture)
 - [Geometry](geono-geometry.md#geometry) socket:
   - [Mesh](geono-mesh.md#mesh)
@@ -58,11 +58,11 @@ A better and more pythonistic way to script nodes, is to use a [Socket](geono-so
 #### Domains
 
 Geometries have specific [Domain](geono-domain.md#domain):
-- [Vertex](geono-vertex.md#vertex) ([Mesh](geono-mesh.md#mesh) [points](geono-mesh.md#points) property)
+- [Vertex](geono-vertex.md#vertex) ([Mesh](geono-mesh.md#mesh) [points](geono-cloud.md#points) property)
 - [Edge](geono-edge.md#edge)  ([Mesh](geono-mesh.md#mesh) [edges](geono-mesh.md#edges) property)
 - [Face](geono-face.md#face)  ([Mesh](geono-mesh.md#mesh) [faces](geono-mesh.md#faces) property)
 - [Corner](geono-corner.md#corner)  ([Mesh](geono-mesh.md#mesh) [corners](geono-mesh.md#corners) property)
-- [SplinePoint](geono-splinepoint.md#splinepoint) ([Curve](geono-curve.md#curve) [points](geono-curve.md#points) property)
+- [SplinePoint](geono-splinepoint.md#splinepoint) ([Curve](geono-curve.md#curve) [points](geono-cloud.md#points) property)
 - [Spline](geono-spline.md#spline) ([Curve](geono-curve.md#curve) [splines](geono-curve.md#splines) property)
 - [CloudPoint](geono-cloudpoint.md#cloudpoint) ([Cloud](geono-cloud.md#cloud) [points](geono-cloud.md#points) property)
 - [Instance](geono-instance.md#instance) ([Instances](geono-instances.md#instances) [insts](geono-instances.md#insts) property)

@@ -50,7 +50,7 @@ $ DOC START
 The name of the functions is the name of the 'operation' parameter of the node,
 with some changes according the following rules:
 - use python math library when it exists: <#sin> and <#cos> rather than 'sine' and 'cosine' for instance
-- prefix with char ***'v'*** for <!Vector> functions when it collides with a <!Float> function.
+- prefix with char ***'v'*** for <!Vector> functions when it collides with a <!Float> function : <#vsin> and <#vcos> for instance
 - prefix with char ***'b'*** boolean reserved keywords : <#band>, <#bor> and <#bnot>
 """
 

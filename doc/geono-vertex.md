@@ -6,7 +6,7 @@
 Vertex(geometry)
 ```
 
-> Point domain of a [Mesh](geono-mesh.md#mesh)
+> Point domain of a ['Mesh' not found]()
 
 #### Arguments:
 - **geometry**
