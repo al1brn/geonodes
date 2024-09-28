@@ -45,7 +45,7 @@ Initialize self.  See help(type(self)) for accurate signature.
 add_shader(shader=None, shader_1=None)
 ```
 
-> **node** : [Add Shader](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/add.html)
+> **node** : [Add Shader](https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/add.html)
 
 #### Arguments:
 - **shader** (_Shader_ = None) : socket 'Shader' (Shader)
@@ -67,7 +67,7 @@ add_shader(shader=None, shader_1=None)
 ambient_occlusion(color=None, distance=None, normal=None, inside=False, only_local=False, samples=16)
 ```
 
-> **node** : [Ambient Occlusion](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/input/ao.html)
+> **node** : [Ambient Occlusion](https://docs.blender.org/manual/en/latest/render/shader_nodes/input/ao.html)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -93,7 +93,7 @@ ambient_occlusion(color=None, distance=None, normal=None, inside=False, only_loc
 aov_output(color=None, value=None, aov_name='')
 ```
 
-> **node** : [AOV Output](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/output/aov.html)
+> **node** : [AOV Output](https://docs.blender.org/manual/en/latest/render/shader_nodes/output/aov.html)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -111,7 +111,7 @@ aov_output(color=None, value=None, aov_name='')
 attribute(attribute_name='', attribute_type='GEOMETRY')
 ```
 
-> **node** : [Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attributes_reference.html)
+> **node** : [Attribute](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../modeling/geometry_nodes/attributes_reference.html)
 
 #### Arguments:
 - **attribute_name** (_str_ = ) : Node.attribute_name
@@ -133,7 +133,7 @@ attribute(attribute_name='', attribute_type='GEOMETRY')
 background(color=None, strength=None)
 ```
 
-> **node** : [Background](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/background.html)
+> **node** : [Background](https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/background.html)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -155,7 +155,7 @@ background(color=None, strength=None)
 bevel(radius=None, normal=None, samples=4)
 ```
 
-> **node** : [Bevel](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../meshes/editing/vertex/bevel_vertices.html)
+> **node** : [Bevel](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../modeling/meshes/editing/vertex/bevel_vertices.html)
 
 #### Arguments:
 - **radius** (_Float_ = None) : socket 'Radius' (Radius)
@@ -178,7 +178,7 @@ bevel(radius=None, normal=None, samples=4)
 blackbody(temperature=None)
 ```
 
-> **node** : [Blackbody](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/color/blackbody.html)
+> **node** : [Blackbody](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../modeling/geometry_nodes/utilities/color/blackbody.html)
 
 #### Arguments:
 - **temperature** (_Float_ = None) : socket 'Temperature' (Temperature)
@@ -199,7 +199,7 @@ blackbody(temperature=None)
 brick_texture(vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, color_mapping=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2, texture_mapping=None)
 ```
 
-> **node** : [Brick Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/brick.html)
+> **node** : [Brick Texture](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../modeling/geometry_nodes/texture/brick.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -235,7 +235,7 @@ brick_texture(vector=None, color1=None, color2=None, mortar=None, scale=None, mo
 brightness_contrast(color=None, bright=None, contrast=None)
 ```
 
-> **node** : [Brightness/Contrast](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/color/bright_contrast.html)
+> **node** : [Brightness/Contrast](https://docs.blender.org/manual/en/latest/render/shader_nodes/color/bright_contrast.html)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -258,7 +258,7 @@ brightness_contrast(color=None, bright=None, contrast=None)
 bump(strength=None, distance=None, height=None, normal=None, invert=False)
 ```
 
-> **node** : [Bump](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/vector/bump.html)
+> **node** : [Bump](https://docs.blender.org/manual/en/latest/render/shader_nodes/vector/bump.html)
 
 #### Arguments:
 - **strength** (_Float_ = None) : socket 'Strength' (Strength)
@@ -283,7 +283,7 @@ bump(strength=None, distance=None, height=None, normal=None, invert=False)
 checker_texture(vector=None, color1=None, color2=None, scale=None, color_mapping=None, texture_mapping=None)
 ```
 
-> **node** : [Checker Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/checker.html)
+> **node** : [Checker Texture](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../modeling/geometry_nodes/texture/checker.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -309,7 +309,7 @@ checker_texture(vector=None, color1=None, color2=None, scale=None, color_mapping
 clamp(value=None, min=None, max=None, clamp_type='MINMAX')
 ```
 
-> **node** : [Clamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/clamp.html)
+> **node** : [Clamp](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../modeling/geometry_nodes/utilities/math/clamp.html)
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (Value)
@@ -333,7 +333,7 @@ clamp(value=None, min=None, max=None, clamp_type='MINMAX')
 color_attribute(layer_name='')
 ```
 
-> **node** : [Color Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/input/vertex_color.html)
+> **node** : [Color Attribute](https://docs.blender.org/manual/en/latest/render/shader_nodes/input/vertex_color.html)
 
 #### Arguments:
 - **layer_name** (_str_ = ) : Node.layer_name
@@ -354,7 +354,7 @@ color_attribute(layer_name='')
 color_ramp(fac=None, color_ramp=None)
 ```
 
-> **node** : [Color Ramp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../interface/controls/templates/color_ramp.html)
+> **node** : [Color Ramp](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../interface/controls/templates/color_ramp.html)
 
 #### Arguments:
 - **fac** (_Float_ = None) : socket 'Fac' (Fac)
@@ -376,7 +376,7 @@ color_ramp(fac=None, color_ramp=None)
 combine_color(red=None, green=None, blue=None, mode='RGB')
 ```
 
-> **node** : [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/combine_color.html)
+> **node** : [Combine Color](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/color/combine_color.html)
 
 #### Arguments:
 - **red** (_Float_ = None) : socket 'Red' (Red)
@@ -400,7 +400,7 @@ combine_color(red=None, green=None, blue=None, mode='RGB')
 combine_xyz(x=None, y=None, z=None)
 ```
 
-> **node** : [Combine XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/combine_xyz.html)
+> **node** : [Combine XYZ](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../modeling/geometry_nodes/utilities/vector/combine_xyz.html)
 
 #### Arguments:
 - **x** (_Float_ = None) : socket 'X' (X)
@@ -423,7 +423,7 @@ combine_xyz(x=None, y=None, z=None)
 diffuse_bsdf(color=None, roughness=None, normal=None)
 ```
 
-> **node** : [Diffuse BSDF](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/diffuse.html)
+> **node** : [Diffuse BSDF](https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/diffuse.html)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -446,7 +446,7 @@ diffuse_bsdf(color=None, roughness=None, normal=None)
 displacement(height=None, midlevel=None, scale=None, normal=None, space='OBJECT')
 ```
 
-> **node** : [Displacement](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/materials/components/displacement.html)
+> **node** : [Displacement](https://docs.blender.org/manual/en/latest/render/shader_nodes/../materials/components/displacement.html)
 
 #### Arguments:
 - **height** (_Float_ = None) : socket 'Height' (Height)
@@ -471,7 +471,7 @@ displacement(height=None, midlevel=None, scale=None, normal=None, space='OBJECT'
 emission(color=None, strength=None)
 ```
 
-> **node** : [Emission](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../physics/particles/emitter/emission.html)
+> **node** : [Emission](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../physics/particles/emitter/emission.html)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -493,7 +493,7 @@ emission(color=None, strength=None)
 environment_texture(vector=None, color_mapping=None, image=None, image_user=None, interpolation='Linear', projection='EQUIRECTANGULAR', texture_mapping=None)
 ```
 
-> **node** : [Environment Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/textures/environment.html)
+> **node** : [Environment Texture](https://docs.blender.org/manual/en/latest/render/shader_nodes/textures/environment.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -520,7 +520,7 @@ environment_texture(vector=None, color_mapping=None, image=None, image_user=None
 float_curve(factor=None, value=None, mapping=None)
 ```
 
-> **node** : [Float Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/float_curve.html)
+> **node** : [Float Curve](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../modeling/geometry_nodes/utilities/math/float_curve.html)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket 'Factor' (Factor)
@@ -543,7 +543,7 @@ float_curve(factor=None, value=None, mapping=None)
 frame(label_size=20, shrink=True, text=None)
 ```
 
-> **node** : [Frame](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../interface/controls/nodes/frame.html)
+> **node** : [Frame](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../interface/controls/nodes/frame.html)
 
 #### Arguments:
 - **label_size** (_int_ = 20) : Node.label_size
@@ -561,7 +561,7 @@ frame(label_size=20, shrink=True, text=None)
 fresnel(ior=None, normal=None)
 ```
 
-> **node** : [Fresnel](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/input/fresnel.html)
+> **node** : [Fresnel](https://docs.blender.org/manual/en/latest/render/shader_nodes/input/fresnel.html)
 
 #### Arguments:
 - **ior** (_Float_ = None) : socket 'IOR' (IOR)
@@ -583,7 +583,7 @@ fresnel(ior=None, normal=None)
 gamma(color=None, gamma=None)
 ```
 
-> **node** : [Gamma](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/color/gamma.html)
+> **node** : [Gamma](https://docs.blender.org/manual/en/latest/render/shader_nodes/color/gamma.html)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -605,7 +605,7 @@ gamma(color=None, gamma=None)
 glass_bsdf(color=None, roughness=None, ior=None, normal=None, distribution='MULTI_GGX')
 ```
 
-> **node** : [Glass BSDF](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/glass.html)
+> **node** : [Glass BSDF](https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/glass.html)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -630,7 +630,7 @@ glass_bsdf(color=None, roughness=None, ior=None, normal=None, distribution='MULT
 glossy_bsdf(color=None, roughness=None, anisotropy=None, rotation=None, normal=None, tangent=None, distribution='MULTI_GGX')
 ```
 
-> **node** : [Glossy BSDF](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/glossy.html)
+> **node** : [Glossy BSDF](https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/glossy.html)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -657,7 +657,7 @@ glossy_bsdf(color=None, roughness=None, anisotropy=None, rotation=None, normal=N
 gradient_texture(vector=None, color_mapping=None, gradient_type='LINEAR', texture_mapping=None)
 ```
 
-> **node** : [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html)
+> **node** : [Gradient Texture](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../modeling/geometry_nodes/texture/gradient.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -681,7 +681,7 @@ gradient_texture(vector=None, color_mapping=None, gradient_type='LINEAR', textur
 group(node_tree=None)
 ```
 
-> **node** : [Group](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/groups.html)
+> **node** : [Group](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/groups.html)
 
 #### Arguments:
 - **node_tree** (_NoneType_ = None) : Node.node_tree
@@ -697,7 +697,7 @@ group(node_tree=None)
 group_output(is_active_output=True)
 ```
 
-> **node** : ERROR: Node 'Group Output' not found
+> **node** : [Group Output](https://docs.blender.org/manual/en/latest/render/shader_nodes/groups.html#group-output)
 
 #### Arguments:
 - **is_active_output** (_bool_ = True) : Node.is_active_output
@@ -713,7 +713,7 @@ group_output(is_active_output=True)
 hair_bsdf(color=None, offset=None, roughnessu=None, roughnessv=None, tangent=None, component='Reflection')
 ```
 
-> **node** : [Hair BSDF](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/hair.html)
+> **node** : [Hair BSDF](https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/hair.html)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -739,7 +739,7 @@ hair_bsdf(color=None, offset=None, roughnessu=None, roughnessv=None, tangent=Non
 holdout()
 ```
 
-> **node** : [Holdout](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/holdout.html)
+> **node** : [Holdout](https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/holdout.html)
 
 #### Returns:
 - **holdout** (_Shader_)
@@ -755,7 +755,7 @@ holdout()
 hue_saturation_value(hue=None, saturation=None, value=None, fac=None, color=None)
 ```
 
-> **node** : [Hue/Saturation/Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/hue_saturation.html)
+> **node** : [Hue/Saturation/Value](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/color/hue_saturation.html)
 
 #### Arguments:
 - **hue** (_Float_ = None) : socket 'Hue' (Hue)
@@ -780,7 +780,7 @@ hue_saturation_value(hue=None, saturation=None, value=None, fac=None, color=None
 ies_texture(vector=None, strength=None, filepath='', ies=None, mode='INTERNAL')
 ```
 
-> **node** : [IES Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/textures/ies.html)
+> **node** : [IES Texture](https://docs.blender.org/manual/en/latest/render/shader_nodes/textures/ies.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -805,7 +805,7 @@ ies_texture(vector=None, strength=None, filepath='', ies=None, mode='INTERNAL')
 image_texture(vector=None, color_mapping=None, extension='REPEAT', image=None, image_user=None, interpolation='Linear', projection='FLAT', projection_blend=0.0, texture_mapping=None)
 ```
 
-> **node** : [Image Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/image.html)
+> **node** : [Image Texture](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../modeling/geometry_nodes/texture/image.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -834,7 +834,7 @@ image_texture(vector=None, color_mapping=None, extension='REPEAT', image=None, i
 invert_color(fac=None, color=None)
 ```
 
-> **node** : [Invert Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/invert_color.html)
+> **node** : [Invert Color](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/color/invert_color.html)
 
 #### Arguments:
 - **fac** (_Float_ = None) : socket 'Fac' (Fac)
@@ -856,7 +856,7 @@ invert_color(fac=None, color=None)
 layer_weight(blend=None, normal=None)
 ```
 
-> **node** : [Layer Weight](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/input/layer_weight.html)
+> **node** : [Layer Weight](https://docs.blender.org/manual/en/latest/render/shader_nodes/input/layer_weight.html)
 
 #### Arguments:
 - **blend** (_Float_ = None) : socket 'Blend' (Blend)
@@ -878,7 +878,7 @@ layer_weight(blend=None, normal=None)
 light_falloff(strength=None, smooth=None)
 ```
 
-> **node** : [Light Falloff](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/color/light_falloff.html)
+> **node** : [Light Falloff](https://docs.blender.org/manual/en/latest/render/shader_nodes/color/light_falloff.html)
 
 #### Arguments:
 - **strength** (_Float_ = None) : socket 'Strength' (Strength)
@@ -942,7 +942,7 @@ line_style_output(color=None, color_fac=None, alpha=None, alpha_fac=None, blend_
 magic_texture(vector=None, scale=None, distortion=None, color_mapping=None, texture_mapping=None, turbulence_depth=2)
 ```
 
-> **node** : [Magic Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/magic.html)
+> **node** : [Magic Texture](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../modeling/geometry_nodes/texture/magic.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -968,7 +968,7 @@ magic_texture(vector=None, scale=None, distortion=None, color_mapping=None, text
 mapping(vector=None, location=None, rotation=None, scale=None, vector_type='POINT')
 ```
 
-> **node** : [Mapping](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/vector/mapping.html)
+> **node** : [Mapping](https://docs.blender.org/manual/en/latest/render/shader_nodes/vector/mapping.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -993,7 +993,7 @@ mapping(vector=None, location=None, rotation=None, scale=None, vector_type='POIN
 map_range(value=None, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True, data_type='FLOAT', interpolation_type='LINEAR')
 ```
 
-> **node** : [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
+> **node** : [Map Range](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../modeling/geometry_nodes/utilities/math/map_range.html)
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (Value)
@@ -1021,7 +1021,7 @@ map_range(value=None, from_min=None, from_max=None, to_min=None, to_max=None, cl
 material_output(surface=None, volume=None, displacement=None, thickness=None, is_active_output=True, target='ALL')
 ```
 
-> **node** : [Material Output](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/output/material.html)
+> **node** : [Material Output](https://docs.blender.org/manual/en/latest/render/shader_nodes/output/material.html)
 
 #### Arguments:
 - **surface** (_Shader_ = None) : socket 'Surface' (Surface)
@@ -1042,7 +1042,7 @@ material_output(surface=None, volume=None, displacement=None, thickness=None, is
 math(value=None, value_1=None, operation='ADD', use_clamp=False)
 ```
 
-> **node** : [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> **node** : [Math](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (Value)
@@ -1066,7 +1066,7 @@ math(value=None, value_1=None, operation='ADD', use_clamp=False)
 mix(factor=None, a=None, b=None, blend_type='MIX', clamp_factor=True, clamp_result=False, data_type='FLOAT', factor_mode='UNIFORM')
 ```
 
-> **node** : [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+> **node** : [Mix](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket 'Factor' (Factor_Float)
@@ -1094,7 +1094,7 @@ mix(factor=None, a=None, b=None, blend_type='MIX', clamp_factor=True, clamp_resu
 mix_shader(fac=None, shader=None, shader_1=None)
 ```
 
-> **node** : [Mix Shader](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/mix.html)
+> **node** : [Mix Shader](https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/mix.html)
 
 #### Arguments:
 - **fac** (_Float_ = None) : socket 'Fac' (Fac)
@@ -1117,7 +1117,7 @@ mix_shader(fac=None, shader=None, shader_1=None)
 noise_texture(vector=None, scale=None, detail=None, roughness=None, lacunarity=None, distortion=None, color_mapping=None, noise_dimensions='3D', noise_type='FBM', normalize=True, texture_mapping=None)
 ```
 
-> **node** : [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html)
+> **node** : [Noise Texture](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../modeling/geometry_nodes/texture/noise.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -1148,7 +1148,7 @@ noise_texture(vector=None, scale=None, detail=None, roughness=None, lacunarity=N
 normal(normal=None)
 ```
 
-> **node** : [Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../meshes/editing/mesh/normals.html)
+> **node** : [Normal](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../modeling/meshes/editing/mesh/normals.html)
 
 #### Arguments:
 - **normal** (_Vector_ = None) : socket 'Normal' (Normal)
@@ -1169,7 +1169,7 @@ normal(normal=None)
 normal_map(strength=None, color=None, space='TANGENT', uv_map='')
 ```
 
-> **node** : [Normal Map](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/vector/normal_map.html)
+> **node** : [Normal Map](https://docs.blender.org/manual/en/latest/render/shader_nodes/vector/normal_map.html)
 
 #### Arguments:
 - **strength** (_Float_ = None) : socket 'Strength' (Strength)
@@ -1193,7 +1193,7 @@ normal_map(strength=None, color=None, space='TANGENT', uv_map='')
 point_density(vector=None, cache_point_density=None, calc_point_density=None, calc_point_density_minmax=None, interpolation='Linear', object=None, particle_color_source='PARTICLE_AGE', particle_system=None, point_source='PARTICLE_SYSTEM', radius=0.30000001192092896, resolution=100, space='OBJECT', vertex_attribute_name='', vertex_color_source='VERTEX_COLOR')
 ```
 
-> **node** : [Point Density](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/textures/point_density.html)
+> **node** : [Point Density](https://docs.blender.org/manual/en/latest/render/shader_nodes/textures/point_density.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -1244,7 +1244,7 @@ position(attribute_type='GEOMETRY')
 principled_bsdf(base_color=None, metallic=None, roughness=None, ior=None, alpha=None, normal=None, subsurface_weight=None, subsurface_radius=None, subsurface_scale=None, subsurface_anisotropy=None, specular_ior_level=None, specular_tint=None, anisotropic=None, anisotropic_rotation=None, tangent=None, transmission_weight=None, coat_weight=None, coat_roughness=None, coat_ior=None, coat_tint=None, coat_normal=None, sheen_weight=None, sheen_roughness=None, sheen_tint=None, emission_color=None, emission_strength=None, thin_film_thickness=None, thin_film_ior=None, distribution='MULTI_GGX', subsurface_method='RANDOM_WALK')
 ```
 
-> **node** : [Principled BSDF](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/principled.html)
+> **node** : [Principled BSDF](https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/principled.html)
 
 #### Arguments:
 - **base_color** (_Color_ = None) : socket 'Base Color' (Base Color)
@@ -1294,7 +1294,7 @@ principled_bsdf(base_color=None, metallic=None, roughness=None, ior=None, alpha=
 principled_hair_bsdf(color=None, roughness=None, radial_roughness=None, coat=None, ior=None, offset=None, random_roughness=None, random=None, model='CHIANG', parametrization='COLOR')
 ```
 
-> **node** : [Principled Hair BSDF](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/hair_principled.html)
+> **node** : [Principled Hair BSDF](https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/hair_principled.html)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -1324,7 +1324,7 @@ principled_hair_bsdf(color=None, roughness=None, radial_roughness=None, coat=Non
 principled_volume(color=None, color_attribute=None, density=None, density_attribute=None, anisotropy=None, absorption_color=None, emission_strength=None, emission_color=None, blackbody_intensity=None, blackbody_tint=None, temperature=None, temperature_attribute=None)
 ```
 
-> **node** : [Principled Volume](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/volume_principled.html)
+> **node** : [Principled Volume](https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/volume_principled.html)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -1356,7 +1356,7 @@ principled_volume(color=None, color_attribute=None, density=None, density_attrib
 ray_portal_bsdf(color=None, position=None, direction=None)
 ```
 
-> **node** : [Ray Portal BSDF](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/ray_portal.html)
+> **node** : [Ray Portal BSDF](https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/ray_portal.html)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -1379,7 +1379,7 @@ ray_portal_bsdf(color=None, position=None, direction=None)
 refraction_bsdf(color=None, roughness=None, ior=None, normal=None, distribution='BECKMANN')
 ```
 
-> **node** : [Refraction BSDF](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/refraction.html)
+> **node** : [Refraction BSDF](https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/refraction.html)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -1404,7 +1404,7 @@ refraction_bsdf(color=None, roughness=None, ior=None, normal=None, distribution=
 reroute(input=None)
 ```
 
-> **node** : [Reroute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../interface/controls/nodes/reroute.html)
+> **node** : [Reroute](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../interface/controls/nodes/reroute.html)
 
 #### Arguments:
 - **input** (_Color_ = None) : socket 'Input' (Input)
@@ -1425,7 +1425,7 @@ reroute(input=None)
 rgb_curves(fac=None, color=None, mapping=None)
 ```
 
-> **node** : [RGB Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/rgb_curves.html)
+> **node** : [RGB Curves](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/color/rgb_curves.html)
 
 #### Arguments:
 - **fac** (_Float_ = None) : socket 'Fac' (Fac)
@@ -1448,7 +1448,7 @@ rgb_curves(fac=None, color=None, mapping=None)
 rgb_to_bw(color=None)
 ```
 
-> **node** : [RGB to BW](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/rgb_to_bw.html)
+> **node** : [RGB to BW](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/converter/rgb_to_bw.html)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -1469,7 +1469,7 @@ rgb_to_bw(color=None)
 script(bytecode='', bytecode_hash='', filepath='', mode='INTERNAL', script=None, use_auto_update=False)
 ```
 
-> **node** : [Script](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../advanced/scripting/index.html)
+> **node** : [Script](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../advanced/scripting/index.html)
 
 #### Arguments:
 - **bytecode** (_str_ = ) : Node.bytecode
@@ -1490,7 +1490,7 @@ script(bytecode='', bytecode_hash='', filepath='', mode='INTERNAL', script=None,
 separate_color(color=None, mode='RGB')
 ```
 
-> **node** : [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
+> **node** : [Separate Color](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/color/separate_color.html)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -1512,7 +1512,7 @@ separate_color(color=None, mode='RGB')
 separate_xyz(vector=None)
 ```
 
-> **node** : [Separate XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/separate_xyz.html)
+> **node** : [Separate XYZ](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../modeling/geometry_nodes/utilities/vector/separate_xyz.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -1533,7 +1533,7 @@ separate_xyz(vector=None)
 shader_to_rgb(shader=None)
 ```
 
-> **node** : [Shader to RGB](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/converter/shader_to_rgb.html)
+> **node** : [Shader to RGB](https://docs.blender.org/manual/en/latest/render/shader_nodes/converter/shader_to_rgb.html)
 
 #### Arguments:
 - **shader** (_Shader_ = None) : socket 'Shader' (Shader)
@@ -1571,7 +1571,7 @@ sharp_face(attribute_type='GEOMETRY')
 sheen_bsdf(color=None, roughness=None, normal=None, distribution='MICROFIBER')
 ```
 
-> **node** : [Sheen BSDF](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/sheen.html)
+> **node** : [Sheen BSDF](https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/sheen.html)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -1595,7 +1595,7 @@ sheen_bsdf(color=None, roughness=None, normal=None, distribution='MICROFIBER')
 sky_texture(air_density=1.0, altitude=0.0, color_mapping=None, dust_density=1.0, ground_albedo=0.30000001192092896, ozone_density=1.0, sky_type='NISHITA', sun_direction=None, sun_disc=True, sun_elevation=0.2617993950843811, sun_intensity=1.0, sun_rotation=0.0, sun_size=0.009512044489383698, texture_mapping=None, turbidity=2.200000047683716)
 ```
 
-> **node** : [Sky Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/textures/sky.html)
+> **node** : [Sky Texture](https://docs.blender.org/manual/en/latest/render/shader_nodes/textures/sky.html)
 
 #### Arguments:
 - **air_density** (_float_ = 1.0) : Node.air_density
@@ -1630,7 +1630,7 @@ sky_texture(air_density=1.0, altitude=0.0, color_mapping=None, dust_density=1.0,
 specular_bsdf(base_color=None, specular=None, roughness=None, emissive_color=None, transparency=None, normal=None, clear_coat=None, clear_coat_roughness=None, clear_coat_normal=None)
 ```
 
-> **node** : [Specular BSDF](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/specular_bsdf.html)
+> **node** : [Specular BSDF](https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/specular_bsdf.html)
 
 #### Arguments:
 - **base_color** (_Color_ = None) : socket 'Base Color' (Base Color)
@@ -1659,7 +1659,7 @@ specular_bsdf(base_color=None, specular=None, roughness=None, emissive_color=Non
 subsurface_scattering(color=None, scale=None, radius=None, ior=None, roughness=None, anisotropy=None, normal=None, falloff='RANDOM_WALK')
 ```
 
-> **node** : [Subsurface Scattering](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/sss.html)
+> **node** : [Subsurface Scattering](https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/sss.html)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -1687,7 +1687,7 @@ subsurface_scattering(color=None, scale=None, radius=None, ior=None, roughness=N
 tangent(axis='Z', direction_type='RADIAL', uv_map='')
 ```
 
-> **node** : [Tangent](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/input/tangent.html)
+> **node** : [Tangent](https://docs.blender.org/manual/en/latest/render/shader_nodes/input/tangent.html)
 
 #### Arguments:
 - **axis** (_str_ = Z) : Node.axis in ('X', 'Y', 'Z')
@@ -1710,7 +1710,7 @@ tangent(axis='Z', direction_type='RADIAL', uv_map='')
 texture_coordinate(from_instancer=False, object=None)
 ```
 
-> **node** : [Texture Coordinate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/input/texture_coordinate.html)
+> **node** : [Texture Coordinate](https://docs.blender.org/manual/en/latest/render/shader_nodes/input/texture_coordinate.html)
 
 #### Arguments:
 - **from_instancer** (_bool_ = False) : Node.from_instancer
@@ -1732,7 +1732,7 @@ texture_coordinate(from_instancer=False, object=None)
 toon_bsdf(color=None, size=None, smooth=None, normal=None, component='DIFFUSE')
 ```
 
-> **node** : [Toon BSDF](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/toon.html)
+> **node** : [Toon BSDF](https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/toon.html)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -1757,7 +1757,7 @@ toon_bsdf(color=None, size=None, smooth=None, normal=None, component='DIFFUSE')
 translucent_bsdf(color=None, normal=None)
 ```
 
-> **node** : [Translucent BSDF](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/translucent.html)
+> **node** : [Translucent BSDF](https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/translucent.html)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -1779,7 +1779,7 @@ translucent_bsdf(color=None, normal=None)
 transparent_bsdf(color=None)
 ```
 
-> **node** : [Transparent BSDF](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/transparent.html)
+> **node** : [Transparent BSDF](https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/transparent.html)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -1838,7 +1838,7 @@ uvmap(attribute_type='GEOMETRY')
 uv_map(from_instancer=False, uv_map='')
 ```
 
-> **node** : [UV Map](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/input/uv_map.html)
+> **node** : [UV Map](https://docs.blender.org/manual/en/latest/render/shader_nodes/input/uv_map.html)
 
 #### Arguments:
 - **from_instancer** (_bool_ = False) : Node.from_instancer
@@ -1860,7 +1860,7 @@ uv_map(from_instancer=False, uv_map='')
 vector_curves(fac=None, vector=None, mapping=None)
 ```
 
-> **node** : [Vector Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_curves.html)
+> **node** : [Vector Curves](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../modeling/geometry_nodes/utilities/vector/vector_curves.html)
 
 #### Arguments:
 - **fac** (_Float_ = None) : socket 'Fac' (Fac)
@@ -1883,7 +1883,7 @@ vector_curves(fac=None, vector=None, mapping=None)
 vector_displacement(vector=None, midlevel=None, scale=None, space='TANGENT')
 ```
 
-> **node** : [Vector Displacement](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/vector/vector_displacement.html)
+> **node** : [Vector Displacement](https://docs.blender.org/manual/en/latest/render/shader_nodes/vector/vector_displacement.html)
 
 #### Arguments:
 - **vector** (_Color_ = None) : socket 'Vector' (Vector)
@@ -1907,7 +1907,7 @@ vector_displacement(vector=None, midlevel=None, scale=None, space='TANGENT')
 vector_math(vector=None, vector_1=None, operation='ADD')
 ```
 
-> **node** : [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> **node** : [Vector Math](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -1930,7 +1930,7 @@ vector_math(vector=None, vector_1=None, operation='ADD')
 vector_rotate(vector=None, center=None, axis=None, angle=None, invert=False, rotation_type='AXIS_ANGLE')
 ```
 
-> **node** : [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_rotate.html)
+> **node** : [Vector Rotate](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../modeling/geometry_nodes/utilities/vector/vector_rotate.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -1956,7 +1956,7 @@ vector_rotate(vector=None, center=None, axis=None, angle=None, invert=False, rot
 vector_transform(vector=None, convert_from='WORLD', convert_to='OBJECT', vector_type='VECTOR')
 ```
 
-> **node** : [Vector Transform](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/vector/transform.html)
+> **node** : [Vector Transform](https://docs.blender.org/manual/en/latest/render/shader_nodes/vector/transform.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -1980,7 +1980,7 @@ vector_transform(vector=None, convert_from='WORLD', convert_to='OBJECT', vector_
 volume_absorption(color=None, density=None)
 ```
 
-> **node** : [Volume Absorption](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/volume_absorption.html)
+> **node** : [Volume Absorption](https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/volume_absorption.html)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -2002,7 +2002,7 @@ volume_absorption(color=None, density=None)
 volume_scatter(color=None, density=None, anisotropy=None)
 ```
 
-> **node** : [Volume Scatter](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/shader/volume_scatter.html)
+> **node** : [Volume Scatter](https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/volume_scatter.html)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (Color)
@@ -2025,7 +2025,7 @@ volume_scatter(color=None, density=None, anisotropy=None)
 voronoi_texture(vector=None, scale=None, detail=None, roughness=None, lacunarity=None, randomness=None, color_mapping=None, distance='EUCLIDEAN', feature='F1', normalize=False, texture_mapping=None, voronoi_dimensions='3D')
 ```
 
-> **node** : [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html)
+> **node** : [Voronoi Texture](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../modeling/geometry_nodes/texture/voronoi.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -2057,7 +2057,7 @@ voronoi_texture(vector=None, scale=None, detail=None, roughness=None, lacunarity
 wavelength(wavelength=None)
 ```
 
-> **node** : [Wavelength](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/converter/wavelength.html)
+> **node** : [Wavelength](https://docs.blender.org/manual/en/latest/render/shader_nodes/converter/wavelength.html)
 
 #### Arguments:
 - **wavelength** (_Float_ = None) : socket 'Wavelength' (Wavelength)
@@ -2078,7 +2078,7 @@ wavelength(wavelength=None)
 wave_texture(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', color_mapping=None, rings_direction='X', texture_mapping=None, wave_profile='SIN', wave_type='BANDS')
 ```
 
-> **node** : [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html)
+> **node** : [Wave Texture](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../modeling/geometry_nodes/texture/wave.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -2111,7 +2111,7 @@ wave_texture(vector=None, scale=None, distortion=None, detail=None, detail_scale
 white_noise_texture(vector=None, noise_dimensions='3D')
 ```
 
-> **node** : [White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html)
+> **node** : [White Noise Texture](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../modeling/geometry_nodes/texture/white_noise.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (Vector)
@@ -2133,7 +2133,7 @@ white_noise_texture(vector=None, noise_dimensions='3D')
 wireframe(size=None, use_pixel_size=False)
 ```
 
-> **node** : [Wireframe](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../meshes/editing/face/wireframe.html)
+> **node** : [Wireframe](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../modeling/meshes/editing/face/wireframe.html)
 
 #### Arguments:
 - **size** (_Float_ = None) : socket 'Size' (Size)
