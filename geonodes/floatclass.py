@@ -499,8 +499,8 @@ class Float(IntFloat):
         [!MIX]
 
         > [!IMPORTANT]
-        > - **GeoNodes** : <&ShaderNode Float to Integer>
-        > - **ShaderNodes** : <&Node Float to Integer>
+        > - **GeoNodes** : <&Node Float to Integer>
+        > - **ShaderNodes** : <&Node Math>
 
         Returns
         -------

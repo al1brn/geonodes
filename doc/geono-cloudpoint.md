@@ -30,7 +30,7 @@ CloudPoint(geometry)
 > _type_: **Integer**
 >
 
-
+> **node** : [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
 
 [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
 
@@ -43,7 +43,7 @@ Socket 'Point Count' of node 'Domain Size'
 > _type_: **Float**
 >
 
-
+> **node** : [Radius](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/radius.html)
 
 [Radius](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/radius.html)
 
@@ -62,7 +62,7 @@ Socket 'Point Count' of node 'Domain Size'
 instance_on(instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None)
 ```
 
-
+> **node** : [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html)
 
 [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html)
 

@@ -35,7 +35,7 @@ Edge(geometry)
 > _type_: **Node**
 >
 
-
+> **node** : [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edge_angle.html)
 
 [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edge_angle.html)
 
@@ -46,7 +46,7 @@ Edge(geometry)
 > _type_: **Integer**
 >
 
-
+> **node** : [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
 
 [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
 
@@ -59,7 +59,7 @@ Socket 'Edge Count' of node 'Domain Size'
 > _type_: **Integer**
 >
 
-
+> **node** : [Edge Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edge_neighbors.html)
 
 [Edge Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edge_neighbors.html)
 
@@ -70,7 +70,7 @@ Socket 'Edge Count' of node 'Domain Size'
 > _type_: **Vector**
 >
 
-
+> **node** : [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edge_vertices.html)
 
 [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edge_vertices.html)
 
@@ -81,7 +81,7 @@ Socket 'Edge Count' of node 'Domain Size'
 > _type_: **Vector**
 >
 
-
+> **node** : [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edge_vertices.html)
 
 [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edge_vertices.html)
 
@@ -92,7 +92,7 @@ Socket 'Edge Count' of node 'Domain Size'
 > _type_: **Float**
 >
 
-
+> **node** : [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edge_angle.html)
 
 [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edge_angle.html)
 
@@ -103,7 +103,7 @@ Socket 'Edge Count' of node 'Domain Size'
 > _type_: **Boolean**
 >
 
-
+> **node** : [Is Edge Smooth](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/is_edge_smooth.html)
 
 [Is Edge Smooth](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/is_edge_smooth.html)
 
@@ -114,7 +114,7 @@ Socket 'Edge Count' of node 'Domain Size'
 > _type_: **Integer**
 >
 
-
+> **node** : [Edges to Face Groups](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edges_to_face_groups.html)
 
 [Edges to Face Groups](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edges_to_face_groups.html)
 
@@ -125,7 +125,7 @@ Socket 'Edge Count' of node 'Domain Size'
 > _type_: **Float**
 >
 
-
+> **node** : [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edge_angle.html)
 
 [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edge_angle.html)
 
@@ -136,7 +136,7 @@ Socket 'Edge Count' of node 'Domain Size'
 > _type_: **Integer**
 >
 
-
+> **node** : [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edge_vertices.html)
 
 [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edge_vertices.html)
 
@@ -147,7 +147,7 @@ Socket 'Edge Count' of node 'Domain Size'
 > _type_: **Integer**
 >
 
-
+> **node** : [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edge_vertices.html)
 
 [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edge_vertices.html)
 
@@ -158,7 +158,7 @@ Socket 'Edge Count' of node 'Domain Size'
 > _type_: **Node**
 >
 
-
+> **node** : [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edge_vertices.html)
 
 [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edge_vertices.html)
 
@@ -177,7 +177,7 @@ Socket 'Edge Count' of node 'Domain Size'
 corner_index(edge_index=None, weights=None, sort_index=None)
 ```
 
-
+> **node** : [Corners of Edge](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/corners_of_edge.html)
 
 [Corners of Edge](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/corners_of_edge.html)
 
@@ -202,7 +202,7 @@ corner_index(edge_index=None, weights=None, sort_index=None)
 paths_to_curves(start_vertices=None, next_vertex_index=None)
 ```
 
-
+> **node** : [Edge Paths to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/edge_paths_to_curves.html)
 
 [Edge Paths to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/edge_paths_to_curves.html)
 
@@ -226,7 +226,7 @@ paths_to_curves(start_vertices=None, next_vertex_index=None)
 scale(scale=None, center=None, uniform=True)
 ```
 
-
+> **node** : [Scale Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/scale_elements.html)
 
 [Scale Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/scale_elements.html)
 
@@ -254,7 +254,7 @@ scale(scale=None, center=None, uniform=True)
 shortest_paths(edge_cost=None)
 ```
 
-
+> **node** : [Shortest Edge Paths](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/shortest_edge_paths.html)
 
 [Shortest Edge Paths](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/shortest_edge_paths.html)
 
@@ -277,7 +277,7 @@ shortest_paths(edge_cost=None)
 split()
 ```
 
-
+> **node** : [Split Edges](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/split_edges.html)
 
 [Split Edges](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/split_edges.html)
 

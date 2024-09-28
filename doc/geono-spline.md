@@ -31,7 +31,7 @@ Spline(geometry)
 > _type_: **Integer**
 >
 
-
+> **node** : [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
 
 [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
 
@@ -44,7 +44,7 @@ Socket 'Spline Count' of node 'Domain Size'
 > _type_: **Boolean**
 >
 
-
+> **node** : [Is Spline Cyclic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/is_spline_cyclic.html)
 
 [Is Spline Cyclic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/is_spline_cyclic.html)
 
@@ -55,7 +55,7 @@ Socket 'Spline Count' of node 'Domain Size'
 > _type_: **Node**
 >
 
-
+> **node** : [Spline Parameter](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/spline_parameter.html)
 
 [Spline Parameter](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/spline_parameter.html)
 
@@ -66,7 +66,7 @@ Socket 'Spline Count' of node 'Domain Size'
 > _type_: **Integer**
 >
 
-
+> **node** : [Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/spline_resolution.html)
 
 [Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/spline_resolution.html)
 

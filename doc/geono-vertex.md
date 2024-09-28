@@ -36,7 +36,7 @@ Vertex(geometry)
 > _type_: **Integer**
 >
 
-
+> **node** : [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
 
 [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
 
@@ -49,7 +49,7 @@ Socket 'Point Count' of node 'Domain Size'
 > _type_: **Node**
 >
 
-
+> **node** : [Vertex Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/vertex_neighbors.html)
 
 [Vertex Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/vertex_neighbors.html)
 
@@ -60,7 +60,7 @@ Socket 'Point Count' of node 'Domain Size'
 > _type_: **Integer**
 >
 
-
+> **node** : [Vertex Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/vertex_neighbors.html)
 
 [Vertex Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/vertex_neighbors.html)
 
@@ -71,7 +71,7 @@ Socket 'Point Count' of node 'Domain Size'
 > _type_: **Integer**
 >
 
-
+> **node** : [Vertex Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/vertex_neighbors.html)
 
 [Vertex Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/vertex_neighbors.html)
 
@@ -90,7 +90,7 @@ Socket 'Point Count' of node 'Domain Size'
 corner_index(vertex_index=None, weights=None, sort_index=None)
 ```
 
-
+> **node** : [Corners of Vertex](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/corners_of_vertex.html)
 
 [Corners of Vertex](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/corners_of_vertex.html)
 
@@ -115,7 +115,7 @@ corner_index(vertex_index=None, weights=None, sort_index=None)
 edge_index(vertex_index=None, weights=None, sort_index=None)
 ```
 
-
+> **node** : [Edges of Vertex](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/edges_of_vertex.html)
 
 [Edges of Vertex](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/edges_of_vertex.html)
 
@@ -140,7 +140,7 @@ edge_index(vertex_index=None, weights=None, sort_index=None)
 edge_paths_to_curves(next_vertex_index=None)
 ```
 
-
+> **node** : [Edge Paths to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/edge_paths_to_curves.html)
 
 [Edge Paths to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/edge_paths_to_curves.html)
 
@@ -163,7 +163,7 @@ edge_paths_to_curves(next_vertex_index=None)
 instance_on(instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None)
 ```
 
-
+> **node** : [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html)
 
 [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html)
 
@@ -190,7 +190,7 @@ instance_on(instance=None, pick_instance=None, instance_index=None, rotation=Non
 paths_to_selection(next_vertex_index)
 ```
 
-
+> **node** : [Edge Paths to Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/edge_paths_to_selection.html)
 
 [Edge Paths to Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/edge_paths_to_selection.html)
 

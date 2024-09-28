@@ -115,7 +115,7 @@ ERROR: Node 'Float Curve' not found
 equal(other)
 ```
 
-
+> **node** : [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
 [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
@@ -138,7 +138,7 @@ equal(other)
 greater_equal(other)
 ```
 
-
+> **node** : [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
 [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
@@ -161,7 +161,7 @@ greater_equal(other)
 greater_than(other)
 ```
 
-
+> **node** : [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
 [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
@@ -184,7 +184,7 @@ greater_than(other)
 less_equal(other)
 ```
 
-
+> **node** : [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
 [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
@@ -207,7 +207,7 @@ less_equal(other)
 less_than(other)
 ```
 
-
+> **node** : [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
 [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
@@ -391,7 +391,7 @@ mix(factor=None, other=None, clamp_factor=None)
 Named(name)
 ```
 
-
+> **node** : [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
 [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
@@ -433,7 +433,7 @@ with GeoNodes("Named Attributes"):
 NamedAttribute(name)
 ```
 
-
+> **node** : [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
 [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
@@ -475,7 +475,7 @@ with GeoNodes("Named Attributes"):
 not_equal(other)
 ```
 
-
+> **node** : [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
 [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 

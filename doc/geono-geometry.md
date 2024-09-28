@@ -75,7 +75,7 @@ Property curve component
 > _type_: **Integer**
 >
 
-
+> **node** : [ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/id.html)
 
 [ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/id.html)
 
@@ -97,7 +97,7 @@ Property instances component
 > _type_: **Integer**
 >
 
-
+> **node** : [Material Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_index.html)
 
 [Material Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_index.html)
 
@@ -130,7 +130,7 @@ Property cloud component
 > _type_: **Vector**
 >
 
-
+> **node** : [Position](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/position.html)
 
 [Position](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/position.html)
 
@@ -171,7 +171,7 @@ Property volume component
 index_of_nearest(position=None, group_id=None)
 ```
 
-
+> **node** : ERROR: Node 'Index of Nearest' not found
 
 ERROR: Node 'Index of Nearest' not found
 
@@ -195,7 +195,7 @@ ERROR: Node 'Index of Nearest' not found
 join(*geometries)
 ```
 
-
+> **node** : [Join Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/join_geometry.html)
 
 [Join Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/join_geometry.html)
 
@@ -235,7 +235,7 @@ assert(isinstance(geo, Geometry))
 merge_by_distance(distance=None, mode='ALL')
 ```
 
-
+> **node** : [Merge by Distance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/merge_by_distance.html)
 
 [Merge by Distance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/merge_by_distance.html)
 
@@ -259,7 +259,7 @@ merge_by_distance(distance=None, mode='ALL')
 raycast(attribute=None, source_position=None, ray_direction=None, ray_length=None, interpolated=True)
 ```
 
-
+> **node** : [Raycast](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/raycast.html)
 
 [Raycast](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/raycast.html)
 
@@ -312,7 +312,7 @@ Remove named attribute
 replace_material(old=None, new=None)
 ```
 
-
+> **node** : [Replace Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/replace_material.html)
 
 [Replace Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/replace_material.html)
 
@@ -430,7 +430,7 @@ Set Shade Smooth.
 to_instance(*geometries)
 ```
 
-
+> **node** : [Geometry to Instance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_to_instance.html)
 
 [Geometry to Instance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_to_instance.html)
 
@@ -453,7 +453,7 @@ to_instance(*geometries)
 transform(translation=None, rotation=None, scale=None, matrix=None)
 ```
 
-
+> **node** : [Transform Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/transform_geometry.html)
 
 [Transform Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/transform_geometry.html)
 

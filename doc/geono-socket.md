@@ -46,7 +46,7 @@ Returns the node owning the socket.
 blur(iterations=None, weight=None)
 ```
 
-
+> **node** : [Blur Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/blur_attribute.html)
 
 [Blur Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/blur_attribute.html)
 
@@ -70,7 +70,7 @@ blur(iterations=None, weight=None)
 IndexSwitch(*values, index=0)
 ```
 
-
+> **node** : [Index Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/index_switch.html)
 
 [Index Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/index_switch.html)
 
@@ -110,7 +110,7 @@ with GeoNodes("Index Switch demo"):
 index_switch(*values, index=0)
 ```
 
-
+> **node** : [Index Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/index_switch.html)
 
 [Index Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/index_switch.html)
 
@@ -185,7 +185,7 @@ with GeoNodes("Node label and color"):
 MenuSwitch(items={'A': None, 'B': None}, menu=0, name='Menu', tip=None)
 ```
 
-
+> **node** : [Menu Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/menu_switch.html)
 
 [Menu Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/menu_switch.html)
 
@@ -230,7 +230,7 @@ with GeoNodes("Menu Switch demo"):
 menu_switch(self_name='A', items={'B': None}, menu=0, name='Menu', tip=None)
 ```
 
-
+> **node** : [Menu Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/menu_switch.html)
 
 [Menu Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/menu_switch.html)
 
@@ -306,7 +306,7 @@ The "Do nothing" modifier is simply ``` Geometry().out() ```
 Switch(condition=None, false=None, true=None)
 ```
 
-
+> **node** : [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html)
 
 [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html)
 
@@ -345,7 +345,7 @@ with GeoNodes("Switch demo"):
 switch(condition=None, true=None)
 ```
 
-
+> **node** : [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html)
 
 [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html)
 

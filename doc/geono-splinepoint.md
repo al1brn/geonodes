@@ -33,7 +33,7 @@ SplinePoint(geometry)
 > _type_: **Integer**
 >
 
-
+> **node** : [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
 
 [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
 
@@ -109,7 +109,7 @@ Socket 'Point Count' of node 'Domain Size'
 > _type_: **Socket**
 >
 
-
+> **node** : ERROR: Node 'Curve Handle Positions' not found
 
 ERROR: Node 'Curve Handle Positions' not found
 
@@ -120,7 +120,7 @@ ERROR: Node 'Curve Handle Positions' not found
 > _type_: **Socket**
 >
 
-
+> **node** : ERROR: Node 'Curve Handle Positions' not found
 
 ERROR: Node 'Curve Handle Positions' not found
 
@@ -167,7 +167,7 @@ ERROR: Node 'Curve Handle Positions' not found
 > _type_: **Socket**
 >
 
-
+> **node** : ERROR: Node 'Curve Handle Positions' not found
 
 ERROR: Node 'Curve Handle Positions' not found
 
@@ -178,7 +178,7 @@ ERROR: Node 'Curve Handle Positions' not found
 > _type_: **Socket**
 >
 
-
+> **node** : ERROR: Node 'Curve Handle Positions' not found
 
 ERROR: Node 'Curve Handle Positions' not found
 
@@ -206,7 +206,7 @@ ERROR: Node 'Curve Handle Positions' not found
 handle_positions(relative=None)
 ```
 
-
+> **node** : ERROR: Node 'Curve Handle Positions' not found
 
 ERROR: Node 'Curve Handle Positions' not found
 
@@ -229,7 +229,7 @@ ERROR: Node 'Curve Handle Positions' not found
 handle_type_selection(left=True, right=True, handle_type='AUTO')
 ```
 
-
+> **node** : [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
 
 [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
 
@@ -254,7 +254,7 @@ handle_type_selection(left=True, right=True, handle_type='AUTO')
 instance_on(instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None)
 ```
 
-
+> **node** : [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html)
 
 [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html)
 
@@ -281,7 +281,7 @@ instance_on(instance=None, pick_instance=None, instance_index=None, rotation=Non
 set_handle_positions(position=None, offset=None, mode=None)
 ```
 
-
+> **node** : [Set Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_positions.html)
 
 [Set Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_positions.html)
 
@@ -357,7 +357,7 @@ with GeoNodes("Curve handles"):
 set_handle_type(left=True, right=True, handle_type='AUTO')
 ```
 
-
+> **node** : [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html)
 
 [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html)
 

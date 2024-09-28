@@ -56,7 +56,7 @@ Nodes requiring a domain parameter, are implemented in one of the two domains of
 > _type_: **Float**
 >
 
-
+> **node** : [Curve Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/curve_length.html)
 
 [Curve Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/curve_length.html)
 
@@ -76,7 +76,7 @@ POINT domain
 > _type_: **Float**
 >
 
-
+> **node** : [Radius](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/radius.html)
 
 [Radius](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/radius.html)
 
@@ -96,7 +96,7 @@ CURVE (or SPLINE) domain
 > _type_: **Float**
 >
 
-
+> **node** : [Curve Tilt](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/curve_tilt.html)
 
 [Curve Tilt](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/curve_tilt.html)
 
@@ -115,7 +115,7 @@ CURVE (or SPLINE) domain
 Arc(resolution=None, radius=None, start_angle=None, sweep_angle=None, start=None, middle=None, end=None, offset_angle=None, connect_center=None, invert_arc=None)
 ```
 
-
+> **node** : [Arc](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/arc.html)
 
 [Arc](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/arc.html)
 
@@ -151,7 +151,7 @@ Arc(resolution=None, radius=None, start_angle=None, sweep_angle=None, start=None
 BezierSegment(resolution=None, start=None, start_handle=None, end_handle=None, end=None, mode='POSITION')
 ```
 
-
+> **node** : ERROR: Node 'Bézier Segment' not found
 
 ERROR: Node 'Bézier Segment' not found
 
@@ -179,7 +179,7 @@ ERROR: Node 'Bézier Segment' not found
 Circle(resolution=None, radius=None, point_1=None, point_2=None, point_3=None)
 ```
 
-
+> **node** : [Curve Circle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/curve_circle.html)
 
 [Curve Circle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/curve_circle.html)
 
@@ -210,7 +210,7 @@ Circle(resolution=None, radius=None, point_1=None, point_2=None, point_3=None)
 curve_of_point(point_index=None)
 ```
 
-
+> **node** : [Curve of Point](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/topology/curve_of_point.html)
 
 [Curve of Point](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/topology/curve_of_point.html)
 
@@ -233,7 +233,7 @@ curve_of_point(point_index=None)
 deform_on_surface()
 ```
 
-
+> **node** : [Deform Curves on Surface](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/deform_curves_on_surface.html)
 
 [Deform Curves on Surface](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/deform_curves_on_surface.html)
 
@@ -251,7 +251,7 @@ deform_on_surface()
 endpoint_selection(start_size=None, end_size=None)
 ```
 
-
+> **node** : [Endpoint Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/endpoint_selection.html)
 
 [Endpoint Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/endpoint_selection.html)
 
@@ -275,7 +275,7 @@ endpoint_selection(start_size=None, end_size=None)
 fill(group_id=None, mode='TRIANGLES')
 ```
 
-
+> **node** : [Fill Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/fill_curve.html)
 
 [Fill Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/fill_curve.html)
 
@@ -299,7 +299,7 @@ fill(group_id=None, mode='TRIANGLES')
 fillet(radius=None, limit_radius=None, count=None, mode='BEZIER')
 ```
 
-
+> **node** : [Fillet Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/fillet_curve.html)
 
 [Fillet Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/fillet_curve.html)
 
@@ -325,7 +325,7 @@ fillet(radius=None, limit_radius=None, count=None, mode='BEZIER')
 FromEdgePaths(mesh, next_vertex_index=None)
 ```
 
-
+> **node** : [Edge Paths to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/edge_paths_to_curves.html)
 
 [Edge Paths to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/edge_paths_to_curves.html)
 
@@ -349,7 +349,7 @@ FromEdgePaths(mesh, next_vertex_index=None)
 FromMesh(mesh)
 ```
 
-
+> **node** : [Mesh to Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_curve.html)
 
 [Mesh to Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_curve.html)
 
@@ -372,7 +372,7 @@ FromMesh(mesh)
 FromPoints(points, curve_group_id=None, weight=None)
 ```
 
-
+> **node** : [Points to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points_to_curves.html)
 
 [Points to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points_to_curves.html)
 
@@ -397,7 +397,7 @@ FromPoints(points, curve_group_id=None, weight=None)
 interpolate(guide_up=None, guide_group_id=None, points=None, point_up=None, point_group_id=None, max_neighbors=None)
 ```
 
-
+> **node** : [Interpolate Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/interpolate_curves.html)
 
 [Interpolate Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/interpolate_curves.html)
 
@@ -425,7 +425,7 @@ interpolate(guide_up=None, guide_group_id=None, points=None, point_up=None, poin
 Kite(width=None, bottom_height=None, top_height=None)
 ```
 
-
+> **node** : [Quadrilateral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/quadrilateral.html)
 
 [Quadrilateral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/quadrilateral.html)
 
@@ -450,7 +450,7 @@ Kite(width=None, bottom_height=None, top_height=None)
 Line(start=None, end=None, direction=None, length=None)
 ```
 
-
+> **node** : [Curve Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/curve_line.html)
 
 [Curve Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/curve_line.html)
 
@@ -480,7 +480,7 @@ Line(start=None, end=None, direction=None, length=None)
 offset_point_in_curve(point_index=None, offset=None)
 ```
 
-
+> **node** : [Offset Point in Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/topology/offset_point_in_curve.html)
 
 [Offset Point in Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/topology/offset_point_in_curve.html)
 
@@ -504,7 +504,7 @@ offset_point_in_curve(point_index=None, offset=None)
 Parallelogram(width=None, height=None, offset=None)
 ```
 
-
+> **node** : [Quadrilateral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/quadrilateral.html)
 
 [Quadrilateral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/quadrilateral.html)
 
@@ -529,7 +529,7 @@ Parallelogram(width=None, height=None, offset=None)
 Points(point_1=None, point_2=None, point_3=None, point_4=None)
 ```
 
-
+> **node** : [Quadrilateral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/quadrilateral.html)
 
 [Quadrilateral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/quadrilateral.html)
 
@@ -555,7 +555,7 @@ Points(point_1=None, point_2=None, point_3=None, point_4=None)
 points_of_curve(curve_index=None, weights=None, sort_index=None)
 ```
 
-
+> **node** : [Points of Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/topology/points_of_curve.html)
 
 [Points of Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/topology/points_of_curve.html)
 
@@ -580,7 +580,7 @@ points_of_curve(curve_index=None, weights=None, sort_index=None)
 QuadraticBezier(resolution=None, start=None, middle=None, end=None)
 ```
 
-
+> **node** : ERROR: Node 'Quadratic Bézier' not found
 
 ERROR: Node 'Quadratic Bézier' not found
 
@@ -606,7 +606,7 @@ ERROR: Node 'Quadratic Bézier' not found
 Quadrilateral(width=None, height=None)
 ```
 
-
+> **node** : [Quadrilateral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/quadrilateral.html)
 
 [Quadrilateral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/quadrilateral.html)
 
@@ -630,7 +630,7 @@ Quadrilateral(width=None, height=None)
 Rectangle(width=None, height=None)
 ```
 
-
+> **node** : [Quadrilateral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/quadrilateral.html)
 
 [Quadrilateral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/quadrilateral.html)
 
@@ -654,7 +654,7 @@ Rectangle(width=None, height=None)
 resample(count=None, length=None)
 ```
 
-
+> **node** : [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/resample_curve.html)
 
 [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/resample_curve.html)
 
@@ -685,7 +685,7 @@ Parameter 'mode'
 reverse()
 ```
 
-
+> **node** : [Reverse Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/reverse_curve.html)
 
 [Reverse Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/reverse_curve.html)
 
@@ -703,7 +703,7 @@ reverse()
 sample(value=None, factor=None, length=None, curve_index=None, all_curves=False)
 ```
 
-
+> **node** : [Sample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/sample/sample_curve.html)
 
 [Sample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/sample/sample_curve.html)
 
@@ -735,7 +735,7 @@ sample(value=None, factor=None, length=None, curve_index=None, all_curves=False)
 set_normal(mode='MINIMUM_TWIST')
 ```
 
-
+> **node** : [Set Curve Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_curve_normal.html)
 
 [Set Curve Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_curve_normal.html)
 
@@ -758,7 +758,7 @@ set_normal(mode='MINIMUM_TWIST')
 set_normal_free()
 ```
 
-
+> **node** : [Set Curve Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_curve_normal.html)
 
 [Set Curve Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_curve_normal.html)
 
@@ -776,7 +776,7 @@ set_normal_free()
 set_normal_z_up()
 ```
 
-
+> **node** : [Set Curve Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_curve_normal.html)
 
 [Set Curve Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_curve_normal.html)
 
@@ -794,7 +794,7 @@ set_normal_z_up()
 Spiral(resolution=None, rotations=None, start_radius=None, end_radius=None, height=None, reverse=None)
 ```
 
-
+> **node** : ERROR: Node 'Spiral' not found
 
 ERROR: Node 'Spiral' not found
 
@@ -822,7 +822,7 @@ ERROR: Node 'Spiral' not found
 Star(points=None, inner_radius=None, outer_radius=None, twist=None)
 ```
 
-
+> **node** : [Star](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/star.html)
 
 [Star](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/star.html)
 
@@ -848,7 +848,7 @@ Star(points=None, inner_radius=None, outer_radius=None, twist=None)
 subdivide(cuts=None)
 ```
 
-
+> **node** : [Subdivide Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/subdivide_curve.html)
 
 [Subdivide Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/subdivide_curve.html)
 
@@ -871,7 +871,7 @@ subdivide(cuts=None)
 to_mesh(profile_curve=None, fill_caps=None)
 ```
 
-
+> **node** : [Curve to Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curve_to_mesh.html)
 
 [Curve to Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curve_to_mesh.html)
 
@@ -895,7 +895,7 @@ to_mesh(profile_curve=None, fill_caps=None)
 to_points(count=None, length=None, mode='EVALUATED')
 ```
 
-
+> **node** : [Curve to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curve_to_points.html)
 
 [Curve to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curve_to_points.html)
 
@@ -920,7 +920,7 @@ to_points(count=None, length=None, mode='EVALUATED')
 Trapezoid(height=None, bottom_width=None, top_width=None, offset=None)
 ```
 
-
+> **node** : [Quadrilateral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/quadrilateral.html)
 
 [Quadrilateral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/quadrilateral.html)
 
@@ -946,7 +946,7 @@ Trapezoid(height=None, bottom_width=None, top_width=None, offset=None)
 trim(start=None, end=None, mode='FACTOR')
 ```
 
-
+> **node** : [Trim Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/trim_curve.html)
 
 [Trim Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/trim_curve.html)
 
@@ -971,7 +971,7 @@ trim(start=None, end=None, mode='FACTOR')
 trim_factor(start=None, end=None)
 ```
 
-
+> **node** : [Trim Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/trim_curve.html)
 
 [Trim Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/trim_curve.html)
 
@@ -995,7 +995,7 @@ trim_factor(start=None, end=None)
 trim_length(start=None, end=None)
 ```
 
-
+> **node** : [Trim Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/trim_curve.html)
 
 [Trim Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/trim_curve.html)
 

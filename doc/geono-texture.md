@@ -42,7 +42,7 @@ Class Image data socket
 Brick(vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None)
 ```
 
-
+> **node** : [Brick Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/brick.html)
 
 [Brick Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/brick.html)
 
@@ -74,7 +74,7 @@ Brick(vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_siz
 Checker(vector=None, color1=None, color2=None, scale=None)
 ```
 
-
+> **node** : [Checker Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/checker.html)
 
 [Checker Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/checker.html)
 
@@ -100,7 +100,7 @@ Checker(vector=None, color1=None, color2=None, scale=None)
 Gradient(vector=None)
 ```
 
-
+> **node** : [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html)
 
 [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html)
 
@@ -123,7 +123,7 @@ Gradient(vector=None)
 Image(image=None, vector=None, frame=None, interpolation='Linear', extension='REPEAT')
 ```
 
-
+> **node** : [Image Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/image.html)
 
 [Image Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/image.html)
 
@@ -150,7 +150,7 @@ Image(image=None, vector=None, frame=None, interpolation='Linear', extension='RE
 Magic(vector=None, scale=None, distortion=None)
 ```
 
-
+> **node** : [Magic Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/magic.html)
 
 [Magic Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/magic.html)
 
@@ -175,7 +175,7 @@ Magic(vector=None, scale=None, distortion=None)
 Noise(vector=None, w=None, scale=None, detail=None, roughness=None, lacunarity=None, offset=None, gain=None, distortion=None, dim='3D', noise_type='FBM')
 ```
 
-
+> **node** : [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html)
 
 [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html)
 
@@ -208,7 +208,7 @@ Noise(vector=None, w=None, scale=None, detail=None, roughness=None, lacunarity=N
 Voronoi(vector=None, w=None, scale=None, detail=None, roughness=None, lacunarity=None, smoothness=None, exponent=None, randomness=None, dim='3D', feature='F1', distance='EUCLIDEAN')
 ```
 
-
+> **node** : [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html)
 
 [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html)
 
@@ -242,7 +242,7 @@ Voronoi(vector=None, w=None, scale=None, detail=None, roughness=None, lacunarity
 Wave(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, wave_type='BANDS', bands_direction='X', rings_direction='X', wave_profile='SIN')
 ```
 
-
+> **node** : [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html)
 
 [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html)
 
@@ -275,7 +275,7 @@ Wave(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, d
 WhiteNoise(vector=None, w=None, dim='3D')
 ```
 
-
+> **node** : [White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html)
 
 [White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html)
 

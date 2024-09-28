@@ -37,7 +37,7 @@ Instance(geometry)
 > _type_: **Rotation**
 >
 
-
+> **node** : [Instance Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_rotation.html)
 
 [Instance Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_rotation.html)
 
@@ -48,7 +48,7 @@ Instance(geometry)
 > _type_: **Vector**
 >
 
-
+> **node** : [Instance Scale](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_scale.html)
 
 [Instance Scale](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_scale.html)
 
@@ -59,7 +59,7 @@ Instance(geometry)
 > _type_: **Matrix**
 >
 
-
+> **node** : [Instance Transform](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_transform.html)
 
 [Instance Transform](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_transform.html)
 
@@ -78,7 +78,7 @@ Instance(geometry)
 translate(translation=None, local_space=None)
 ```
 
-
+> **node** : [Translate Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/translate_instances.html)
 
 [Translate Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/translate_instances.html)
 
