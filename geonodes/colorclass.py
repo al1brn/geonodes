@@ -793,7 +793,7 @@ class Color(VectorLike):
     # Shader
 
     def to_output(self, name=None):
-        """ > Connect to the output node
+        """ > Connect to output
 
         [!MIX]
         [!ShaderNode] AOV Output

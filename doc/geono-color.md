@@ -163,6 +163,8 @@ Conversion to black and white.
 
 > ShaderNodes only
 
+[RGB to BW](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/converter/rgb_to_bw.html)
+
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Properties](geono-color.md#properties)</sub>
 
 ### value
@@ -219,7 +221,7 @@ Shader node Ambient Occlusion.
 
 > ShaderNodes only
 
-
+[Color Attribute](https://docs.blender.org/manual/en/latest/render/shader_nodes/input/vertex_color.html)
 
 #### Arguments:
 - **distance** (_Float_ = None) : socket
@@ -248,7 +250,7 @@ Shader node Color Attribute.
 
 > ShaderNodes only
 
-
+[Color Attribute](https://docs.blender.org/manual/en/latest/render/shader_nodes/input/vertex_color.html)
 
 #### Arguments:
 - **name** (_str_)
@@ -273,7 +275,7 @@ Constructor : Black body.
 
 > ShaderNodes only
 
-
+[Blackbody](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../modeling/geometry_nodes/utilities/color/blackbody.html)
 
 #### Arguments:
 - **temperature** (_Float_ = None) : socket
@@ -321,7 +323,7 @@ Brightness and contrast.
 
 > ShaderNodes only
 
-
+[Brightness/Contrast](https://docs.blender.org/manual/en/latest/render/shader_nodes/color/bright_contrast.html)
 
 #### Arguments:
 - **bright** (_Float_ = None) : socket
@@ -703,7 +705,7 @@ Constructor : Shader to RGB.
 
 > ShaderNodes only
 
-
+ERROR: Node 'Shader to RGB' not found
 
 #### Arguments:
 - **shader** (_Shader_) : socket
@@ -728,7 +730,7 @@ Gamma.
 
 > ShaderNodes only
 
-
+[Gamma](https://docs.blender.org/manual/en/latest/render/shader_nodes/color/gamma.html)
 
 #### Arguments:
 - **gamma** (_Float_ = None) : socket
@@ -753,7 +755,7 @@ Hue / saturation / value.
 
 > ShaderNodes only
 
-
+[Hue/Saturation/Value](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/color/hue_saturation.html)
 
 #### Arguments:
 - **hue** (_Float_ = None) : socket
@@ -781,7 +783,7 @@ Invert.
 
 > ShaderNodes only
 
-
+[Invert Color](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/color/invert_color.html)
 
 #### Arguments:
 - **fac** (_Float_ = None) : socket
@@ -1015,7 +1017,7 @@ Normal map.
 
 > ShaderNodes only
 
-
+[Normal Map](https://docs.blender.org/manual/en/latest/render/shader_nodes/vector/normal_map.html)
 
 #### Arguments:
 - **strength** (_Float_ = None) : socket
@@ -1171,7 +1173,7 @@ to_output(name=None)
 > [!IMPORTANT]
 > Behaves differently in GeoNodes and ShaderNodes
 
-
+[AOV Output](https://docs.blender.org/manual/en/latest/render/shader_nodes/output/aov.html)
 
 > 
 > - Geometry Nodes : create a group output socket with the provided name
@@ -1195,7 +1197,7 @@ Vector displacement
 
 > ShaderNodes only
 
-
+[Vector Displacement](https://docs.blender.org/manual/en/latest/render/shader_nodes/vector/vector_displacement.html)
 
 #### Arguments:
 - **midlevel** (_Float_ = None) : socket
@@ -1222,7 +1224,7 @@ Constructor : Wave Length.
 
 > ShaderNodes only
 
-
+[Wavelength](https://docs.blender.org/manual/en/latest/render/shader_nodes/converter/wavelength.html)
 
 #### Arguments:
 - **wavelength** (_Float_ = None) : socket

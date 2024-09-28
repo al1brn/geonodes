@@ -82,7 +82,7 @@ with GeoNodes("Node sockets access"):
     extruded_geo.out()
 ```
 
-> 
+> [!Note] The '_out' property returns the first enabled output socket
 
 #### Arguments:
 - **node_name** (_str_) : Node name
