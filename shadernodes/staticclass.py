@@ -77,7 +77,7 @@ class StaticClass:
 
     @classmethod
     def frame(cls, label_size=20, shrink=True, text=None):
-        """ Node 'Frame' (NodeFrame)
+        """ ShaderNode 'Frame' (NodeFrame)
 
         Arguments
         ---------
@@ -93,7 +93,7 @@ class StaticClass:
     @classmethod
     @property
     def group_input(cls):
-        """ Node 'Group Input' (NodeGroupInput)
+        """ ShaderNode 'Group Input' (NodeGroupInput)
 
         Returns
         -------
@@ -105,7 +105,7 @@ class StaticClass:
 
     @classmethod
     def group_output(cls, is_active_output=True):
-        """ Node 'Group Output' (NodeGroupOutput)
+        """ ShaderNode 'Group Output' (NodeGroupOutput)
 
         Arguments
         ---------
@@ -118,7 +118,7 @@ class StaticClass:
 
     @classmethod
     def reroute(cls, input=None):
-        """ Node 'Reroute' (NodeReroute)
+        """ ShaderNode 'Reroute' (NodeReroute)
 
         Arguments
         ---------
@@ -135,7 +135,7 @@ class StaticClass:
 
     @classmethod
     def add_shader(cls, shader=None, shader_1=None):
-        """ Node 'Add Shader' (ShaderNodeAddShader)
+        """ ShaderNode 'Add Shader' (ShaderNodeAddShader)
 
         Arguments
         ---------
@@ -153,7 +153,7 @@ class StaticClass:
 
     @classmethod
     def ambient_occlusion(cls, color=None, distance=None, normal=None, inside=False, only_local=False, samples=16):
-        """ Node 'Ambient Occlusion' (ShaderNodeAmbientOcclusion)
+        """ ShaderNode 'Ambient Occlusion' (ShaderNodeAmbientOcclusion)
 
         Arguments
         ---------
@@ -175,7 +175,7 @@ class StaticClass:
 
     @classmethod
     def attribute(cls, attribute_name='', attribute_type='GEOMETRY'):
-        """ Node 'Attribute' (ShaderNodeAttribute)
+        """ ShaderNode 'Attribute' (ShaderNodeAttribute)
 
         Arguments
         ---------
@@ -193,7 +193,7 @@ class StaticClass:
 
     @classmethod
     def background(cls, color=None, strength=None):
-        """ Node 'Background' (ShaderNodeBackground)
+        """ ShaderNode 'Background' (ShaderNodeBackground)
 
         Arguments
         ---------
@@ -211,7 +211,7 @@ class StaticClass:
 
     @classmethod
     def bevel(cls, radius=None, normal=None, samples=4):
-        """ Node 'Bevel' (ShaderNodeBevel)
+        """ ShaderNode 'Bevel' (ShaderNodeBevel)
 
         Arguments
         ---------
@@ -230,7 +230,7 @@ class StaticClass:
 
     @classmethod
     def blackbody(cls, temperature=None):
-        """ Node 'Blackbody' (ShaderNodeBlackbody)
+        """ ShaderNode 'Blackbody' (ShaderNodeBlackbody)
 
         Arguments
         ---------
@@ -247,7 +247,7 @@ class StaticClass:
 
     @classmethod
     def brightness_contrast(cls, color=None, bright=None, contrast=None):
-        """ Node 'Brightness/Contrast' (ShaderNodeBrightContrast)
+        """ ShaderNode 'Brightness/Contrast' (ShaderNodeBrightContrast)
 
         Arguments
         ---------
@@ -266,7 +266,7 @@ class StaticClass:
 
     @classmethod
     def glossy_bsdf(cls, color=None, roughness=None, anisotropy=None, rotation=None, normal=None, tangent=None, distribution='MULTI_GGX'):
-        """ Node 'Glossy BSDF' (ShaderNodeBsdfAnisotropic)
+        """ ShaderNode 'Glossy BSDF' (ShaderNodeBsdfAnisotropic)
 
         Arguments
         ---------
@@ -289,7 +289,7 @@ class StaticClass:
 
     @classmethod
     def diffuse_bsdf(cls, color=None, roughness=None, normal=None):
-        """ Node 'Diffuse BSDF' (ShaderNodeBsdfDiffuse)
+        """ ShaderNode 'Diffuse BSDF' (ShaderNodeBsdfDiffuse)
 
         Arguments
         ---------
@@ -308,7 +308,7 @@ class StaticClass:
 
     @classmethod
     def glass_bsdf(cls, color=None, roughness=None, ior=None, normal=None, distribution='MULTI_GGX'):
-        """ Node 'Glass BSDF' (ShaderNodeBsdfGlass)
+        """ ShaderNode 'Glass BSDF' (ShaderNodeBsdfGlass)
 
         Arguments
         ---------
@@ -329,7 +329,7 @@ class StaticClass:
 
     @classmethod
     def hair_bsdf(cls, color=None, offset=None, roughnessu=None, roughnessv=None, tangent=None, component='Reflection'):
-        """ Node 'Hair BSDF' (ShaderNodeBsdfHair)
+        """ ShaderNode 'Hair BSDF' (ShaderNodeBsdfHair)
 
         Arguments
         ---------
@@ -351,7 +351,7 @@ class StaticClass:
 
     @classmethod
     def principled_hair_bsdf(cls, color=None, roughness=None, radial_roughness=None, coat=None, ior=None, offset=None, random_roughness=None, random=None, model='CHIANG', parametrization='COLOR'):
-        """ Node 'Principled Hair BSDF' (ShaderNodeBsdfHairPrincipled)
+        """ ShaderNode 'Principled Hair BSDF' (ShaderNodeBsdfHairPrincipled)
 
         Arguments
         ---------
@@ -377,7 +377,7 @@ class StaticClass:
 
     @classmethod
     def principled_bsdf(cls, base_color=None, metallic=None, roughness=None, ior=None, alpha=None, normal=None, subsurface_weight=None, subsurface_radius=None, subsurface_scale=None, subsurface_anisotropy=None, specular_ior_level=None, specular_tint=None, anisotropic=None, anisotropic_rotation=None, tangent=None, transmission_weight=None, coat_weight=None, coat_roughness=None, coat_ior=None, coat_tint=None, coat_normal=None, sheen_weight=None, sheen_roughness=None, sheen_tint=None, emission_color=None, emission_strength=None, thin_film_thickness=None, thin_film_ior=None, distribution='MULTI_GGX', subsurface_method='RANDOM_WALK'):
-        """ Node 'Principled BSDF' (ShaderNodeBsdfPrincipled)
+        """ ShaderNode 'Principled BSDF' (ShaderNodeBsdfPrincipled)
 
         Arguments
         ---------
@@ -423,7 +423,7 @@ class StaticClass:
 
     @classmethod
     def ray_portal_bsdf(cls, color=None, position=None, direction=None):
-        """ Node 'Ray Portal BSDF' (ShaderNodeBsdfRayPortal)
+        """ ShaderNode 'Ray Portal BSDF' (ShaderNodeBsdfRayPortal)
 
         Arguments
         ---------
@@ -442,7 +442,7 @@ class StaticClass:
 
     @classmethod
     def refraction_bsdf(cls, color=None, roughness=None, ior=None, normal=None, distribution='BECKMANN'):
-        """ Node 'Refraction BSDF' (ShaderNodeBsdfRefraction)
+        """ ShaderNode 'Refraction BSDF' (ShaderNodeBsdfRefraction)
 
         Arguments
         ---------
@@ -463,7 +463,7 @@ class StaticClass:
 
     @classmethod
     def sheen_bsdf(cls, color=None, roughness=None, normal=None, distribution='MICROFIBER'):
-        """ Node 'Sheen BSDF' (ShaderNodeBsdfSheen)
+        """ ShaderNode 'Sheen BSDF' (ShaderNodeBsdfSheen)
 
         Arguments
         ---------
@@ -483,7 +483,7 @@ class StaticClass:
 
     @classmethod
     def toon_bsdf(cls, color=None, size=None, smooth=None, normal=None, component='DIFFUSE'):
-        """ Node 'Toon BSDF' (ShaderNodeBsdfToon)
+        """ ShaderNode 'Toon BSDF' (ShaderNodeBsdfToon)
 
         Arguments
         ---------
@@ -504,7 +504,7 @@ class StaticClass:
 
     @classmethod
     def translucent_bsdf(cls, color=None, normal=None):
-        """ Node 'Translucent BSDF' (ShaderNodeBsdfTranslucent)
+        """ ShaderNode 'Translucent BSDF' (ShaderNodeBsdfTranslucent)
 
         Arguments
         ---------
@@ -522,7 +522,7 @@ class StaticClass:
 
     @classmethod
     def transparent_bsdf(cls, color=None):
-        """ Node 'Transparent BSDF' (ShaderNodeBsdfTransparent)
+        """ ShaderNode 'Transparent BSDF' (ShaderNodeBsdfTransparent)
 
         Arguments
         ---------
@@ -539,7 +539,7 @@ class StaticClass:
 
     @classmethod
     def bump(cls, strength=None, distance=None, height=None, normal=None, invert=False):
-        """ Node 'Bump' (ShaderNodeBump)
+        """ ShaderNode 'Bump' (ShaderNodeBump)
 
         Arguments
         ---------
@@ -561,7 +561,7 @@ class StaticClass:
     @classmethod
     @property
     def camera_data(cls):
-        """ Node 'Camera Data' (ShaderNodeCameraData)
+        """ ShaderNode 'Camera Data' (ShaderNodeCameraData)
 
         Returns
         -------
@@ -574,7 +574,7 @@ class StaticClass:
 
     @classmethod
     def clamp(cls, value=None, min=None, max=None, clamp_type='MINMAX'):
-        """ Node 'Clamp' (ShaderNodeClamp)
+        """ ShaderNode 'Clamp' (ShaderNodeClamp)
 
         Arguments
         ---------
@@ -594,7 +594,7 @@ class StaticClass:
 
     @classmethod
     def combine_color(cls, red=None, green=None, blue=None, mode='RGB'):
-        """ Node 'Combine Color' (ShaderNodeCombineColor)
+        """ ShaderNode 'Combine Color' (ShaderNodeCombineColor)
 
         Arguments
         ---------
@@ -614,7 +614,7 @@ class StaticClass:
 
     @classmethod
     def combine_xyz(cls, x=None, y=None, z=None):
-        """ Node 'Combine XYZ' (ShaderNodeCombineXYZ)
+        """ ShaderNode 'Combine XYZ' (ShaderNodeCombineXYZ)
 
         Arguments
         ---------
@@ -633,7 +633,7 @@ class StaticClass:
 
     @classmethod
     def displacement(cls, height=None, midlevel=None, scale=None, normal=None, space='OBJECT'):
-        """ Node 'Displacement' (ShaderNodeDisplacement)
+        """ ShaderNode 'Displacement' (ShaderNodeDisplacement)
 
         Arguments
         ---------
@@ -654,7 +654,7 @@ class StaticClass:
 
     @classmethod
     def specular_bsdf(cls, base_color=None, specular=None, roughness=None, emissive_color=None, transparency=None, normal=None, clear_coat=None, clear_coat_roughness=None, clear_coat_normal=None):
-        """ Node 'Specular BSDF' (ShaderNodeEeveeSpecular)
+        """ ShaderNode 'Specular BSDF' (ShaderNodeEeveeSpecular)
 
         Arguments
         ---------
@@ -679,7 +679,7 @@ class StaticClass:
 
     @classmethod
     def emission(cls, color=None, strength=None):
-        """ Node 'Emission' (ShaderNodeEmission)
+        """ ShaderNode 'Emission' (ShaderNodeEmission)
 
         Arguments
         ---------
@@ -697,7 +697,7 @@ class StaticClass:
 
     @classmethod
     def float_curve(cls, factor=None, value=None, mapping=None):
-        """ Node 'Float Curve' (ShaderNodeFloatCurve)
+        """ ShaderNode 'Float Curve' (ShaderNodeFloatCurve)
 
         Arguments
         ---------
@@ -716,7 +716,7 @@ class StaticClass:
 
     @classmethod
     def fresnel(cls, ior=None, normal=None):
-        """ Node 'Fresnel' (ShaderNodeFresnel)
+        """ ShaderNode 'Fresnel' (ShaderNodeFresnel)
 
         Arguments
         ---------
@@ -734,7 +734,7 @@ class StaticClass:
 
     @classmethod
     def gamma(cls, color=None, gamma=None):
-        """ Node 'Gamma' (ShaderNodeGamma)
+        """ ShaderNode 'Gamma' (ShaderNodeGamma)
 
         Arguments
         ---------
@@ -752,7 +752,7 @@ class StaticClass:
 
     @classmethod
     def group(cls, node_tree=None):
-        """ Node 'Group' (ShaderNodeGroup)
+        """ ShaderNode 'Group' (ShaderNodeGroup)
 
         Arguments
         ---------
@@ -766,7 +766,7 @@ class StaticClass:
     @classmethod
     @property
     def curves_info(cls):
-        """ Node 'Curves Info' (ShaderNodeHairInfo)
+        """ ShaderNode 'Curves Info' (ShaderNodeHairInfo)
 
         Returns
         -------
@@ -779,7 +779,7 @@ class StaticClass:
 
     @classmethod
     def holdout(cls):
-        """ Node 'Holdout' (ShaderNodeHoldout)
+        """ ShaderNode 'Holdout' (ShaderNodeHoldout)
 
         Returns
         -------
@@ -792,7 +792,7 @@ class StaticClass:
 
     @classmethod
     def hue_saturation_value(cls, hue=None, saturation=None, value=None, fac=None, color=None):
-        """ Node 'Hue/Saturation/Value' (ShaderNodeHueSaturation)
+        """ ShaderNode 'Hue/Saturation/Value' (ShaderNodeHueSaturation)
 
         Arguments
         ---------
@@ -813,7 +813,7 @@ class StaticClass:
 
     @classmethod
     def invert_color(cls, fac=None, color=None):
-        """ Node 'Invert Color' (ShaderNodeInvert)
+        """ ShaderNode 'Invert Color' (ShaderNodeInvert)
 
         Arguments
         ---------
@@ -831,7 +831,7 @@ class StaticClass:
 
     @classmethod
     def layer_weight(cls, blend=None, normal=None):
-        """ Node 'Layer Weight' (ShaderNodeLayerWeight)
+        """ ShaderNode 'Layer Weight' (ShaderNodeLayerWeight)
 
         Arguments
         ---------
@@ -849,7 +849,7 @@ class StaticClass:
 
     @classmethod
     def light_falloff(cls, strength=None, smooth=None):
-        """ Node 'Light Falloff' (ShaderNodeLightFalloff)
+        """ ShaderNode 'Light Falloff' (ShaderNodeLightFalloff)
 
         Arguments
         ---------
@@ -868,7 +868,7 @@ class StaticClass:
     @classmethod
     @property
     def light_path(cls):
-        """ Node 'Light Path' (ShaderNodeLightPath)
+        """ ShaderNode 'Light Path' (ShaderNodeLightPath)
 
         Returns
         -------
@@ -881,7 +881,7 @@ class StaticClass:
 
     @classmethod
     def map_range(cls, value=None, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True, data_type='FLOAT', interpolation_type='LINEAR'):
-        """ Node 'Map Range' (ShaderNodeMapRange)
+        """ ShaderNode 'Map Range' (ShaderNodeMapRange)
 
         Arguments
         ---------
@@ -905,7 +905,7 @@ class StaticClass:
 
     @classmethod
     def mapping(cls, vector=None, location=None, rotation=None, scale=None, vector_type='POINT'):
-        """ Node 'Mapping' (ShaderNodeMapping)
+        """ ShaderNode 'Mapping' (ShaderNodeMapping)
 
         Arguments
         ---------
@@ -926,7 +926,7 @@ class StaticClass:
 
     @classmethod
     def math(cls, value=None, value_1=None, operation='ADD', use_clamp=False):
-        """ Node 'Math' (ShaderNodeMath)
+        """ ShaderNode 'Math' (ShaderNodeMath)
 
         Arguments
         ---------
@@ -946,7 +946,7 @@ class StaticClass:
 
     @classmethod
     def mix(cls, factor=None, a=None, b=None, blend_type='MIX', clamp_factor=True, clamp_result=False, data_type='FLOAT', factor_mode='UNIFORM'):
-        """ Node 'Mix' (ShaderNodeMix)
+        """ ShaderNode 'Mix' (ShaderNodeMix)
 
         Arguments
         ---------
@@ -970,7 +970,7 @@ class StaticClass:
 
     @classmethod
     def mix_shader(cls, fac=None, shader=None, shader_1=None):
-        """ Node 'Mix Shader' (ShaderNodeMixShader)
+        """ ShaderNode 'Mix Shader' (ShaderNodeMixShader)
 
         Arguments
         ---------
@@ -990,7 +990,7 @@ class StaticClass:
     @classmethod
     @property
     def geometry(cls):
-        """ Node 'Geometry' (ShaderNodeNewGeometry)
+        """ ShaderNode 'Geometry' (ShaderNodeNewGeometry)
 
         Returns
         -------
@@ -1003,7 +1003,7 @@ class StaticClass:
 
     @classmethod
     def normal(cls, normal=None):
-        """ Node 'Normal' (ShaderNodeNormal)
+        """ ShaderNode 'Normal' (ShaderNodeNormal)
 
         Arguments
         ---------
@@ -1020,7 +1020,7 @@ class StaticClass:
 
     @classmethod
     def normal_map(cls, strength=None, color=None, space='TANGENT', uv_map=''):
-        """ Node 'Normal Map' (ShaderNodeNormalMap)
+        """ ShaderNode 'Normal Map' (ShaderNodeNormalMap)
 
         Arguments
         ---------
@@ -1041,7 +1041,7 @@ class StaticClass:
     @classmethod
     @property
     def object_info(cls):
-        """ Node 'Object Info' (ShaderNodeObjectInfo)
+        """ ShaderNode 'Object Info' (ShaderNodeObjectInfo)
 
         Returns
         -------
@@ -1054,7 +1054,7 @@ class StaticClass:
 
     @classmethod
     def aov_output(cls, color=None, value=None, aov_name=''):
-        """ Node 'AOV Output' (ShaderNodeOutputAOV)
+        """ ShaderNode 'AOV Output' (ShaderNodeOutputAOV)
 
         Arguments
         ---------
@@ -1069,7 +1069,7 @@ class StaticClass:
 
     @classmethod
     def light_output(cls, surface=None, is_active_output=True, target='ALL'):
-        """ Node 'Light Output' (ShaderNodeOutputLight)
+        """ ShaderNode 'Light Output' (ShaderNodeOutputLight)
 
         Arguments
         ---------
@@ -1084,7 +1084,7 @@ class StaticClass:
 
     @classmethod
     def line_style_output(cls, color=None, color_fac=None, alpha=None, alpha_fac=None, blend_type='MIX', is_active_output=True, target='ALL', use_alpha=False, use_clamp=False):
-        """ Node 'Line Style Output' (ShaderNodeOutputLineStyle)
+        """ ShaderNode 'Line Style Output' (ShaderNodeOutputLineStyle)
 
         Arguments
         ---------
@@ -1105,7 +1105,7 @@ class StaticClass:
 
     @classmethod
     def material_output(cls, surface=None, volume=None, displacement=None, thickness=None, is_active_output=True, target='ALL'):
-        """ Node 'Material Output' (ShaderNodeOutputMaterial)
+        """ ShaderNode 'Material Output' (ShaderNodeOutputMaterial)
 
         Arguments
         ---------
@@ -1123,7 +1123,7 @@ class StaticClass:
 
     @classmethod
     def world_output(cls, surface=None, volume=None, is_active_output=True, target='ALL'):
-        """ Node 'World Output' (ShaderNodeOutputWorld)
+        """ ShaderNode 'World Output' (ShaderNodeOutputWorld)
 
         Arguments
         ---------
@@ -1140,7 +1140,7 @@ class StaticClass:
     @classmethod
     @property
     def particle_info(cls):
-        """ Node 'Particle Info' (ShaderNodeParticleInfo)
+        """ ShaderNode 'Particle Info' (ShaderNodeParticleInfo)
 
         Returns
         -------
@@ -1154,7 +1154,7 @@ class StaticClass:
     @classmethod
     @property
     def point_info(cls):
-        """ Node 'Point Info' (ShaderNodePointInfo)
+        """ ShaderNode 'Point Info' (ShaderNodePointInfo)
 
         Returns
         -------
@@ -1168,7 +1168,7 @@ class StaticClass:
     @classmethod
     @property
     def rgb(cls):
-        """ Node 'RGB' (ShaderNodeRGB)
+        """ ShaderNode 'RGB' (ShaderNodeRGB)
 
         Returns
         -------
@@ -1181,7 +1181,7 @@ class StaticClass:
 
     @classmethod
     def rgb_curves(cls, fac=None, color=None, mapping=None):
-        """ Node 'RGB Curves' (ShaderNodeRGBCurve)
+        """ ShaderNode 'RGB Curves' (ShaderNodeRGBCurve)
 
         Arguments
         ---------
@@ -1200,7 +1200,7 @@ class StaticClass:
 
     @classmethod
     def rgb_to_bw(cls, color=None):
-        """ Node 'RGB to BW' (ShaderNodeRGBToBW)
+        """ ShaderNode 'RGB to BW' (ShaderNodeRGBToBW)
 
         Arguments
         ---------
@@ -1217,7 +1217,7 @@ class StaticClass:
 
     @classmethod
     def script(cls, bytecode='', bytecode_hash='', filepath='', mode='INTERNAL', script=None, use_auto_update=False):
-        """ Node 'Script' (ShaderNodeScript)
+        """ ShaderNode 'Script' (ShaderNodeScript)
 
         Arguments
         ---------
@@ -1235,7 +1235,7 @@ class StaticClass:
 
     @classmethod
     def separate_color(cls, color=None, mode='RGB'):
-        """ Node 'Separate Color' (ShaderNodeSeparateColor)
+        """ ShaderNode 'Separate Color' (ShaderNodeSeparateColor)
 
         Arguments
         ---------
@@ -1253,7 +1253,7 @@ class StaticClass:
 
     @classmethod
     def separate_xyz(cls, vector=None):
-        """ Node 'Separate XYZ' (ShaderNodeSeparateXYZ)
+        """ ShaderNode 'Separate XYZ' (ShaderNodeSeparateXYZ)
 
         Arguments
         ---------
@@ -1270,7 +1270,7 @@ class StaticClass:
 
     @classmethod
     def shader_to_rgb(cls, shader=None):
-        """ Node 'Shader to RGB' (ShaderNodeShaderToRGB)
+        """ ShaderNode 'Shader to RGB' (ShaderNodeShaderToRGB)
 
         Arguments
         ---------
@@ -1287,7 +1287,7 @@ class StaticClass:
 
     @classmethod
     def subsurface_scattering(cls, color=None, scale=None, radius=None, ior=None, roughness=None, anisotropy=None, normal=None, falloff='RANDOM_WALK'):
-        """ Node 'Subsurface Scattering' (ShaderNodeSubsurfaceScattering)
+        """ ShaderNode 'Subsurface Scattering' (ShaderNodeSubsurfaceScattering)
 
         Arguments
         ---------
@@ -1311,7 +1311,7 @@ class StaticClass:
 
     @classmethod
     def tangent(cls, axis='Z', direction_type='RADIAL', uv_map=''):
-        """ Node 'Tangent' (ShaderNodeTangent)
+        """ ShaderNode 'Tangent' (ShaderNodeTangent)
 
         Arguments
         ---------
@@ -1330,7 +1330,7 @@ class StaticClass:
 
     @classmethod
     def brick_texture(cls, vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, color_mapping=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2, texture_mapping=None):
-        """ Node 'Brick Texture' (ShaderNodeTexBrick)
+        """ ShaderNode 'Brick Texture' (ShaderNodeTexBrick)
 
         Arguments
         ---------
@@ -1362,7 +1362,7 @@ class StaticClass:
 
     @classmethod
     def checker_texture(cls, vector=None, color1=None, color2=None, scale=None, color_mapping=None, texture_mapping=None):
-        """ Node 'Checker Texture' (ShaderNodeTexChecker)
+        """ ShaderNode 'Checker Texture' (ShaderNodeTexChecker)
 
         Arguments
         ---------
@@ -1384,7 +1384,7 @@ class StaticClass:
 
     @classmethod
     def texture_coordinate(cls, from_instancer=False, object=None):
-        """ Node 'Texture Coordinate' (ShaderNodeTexCoord)
+        """ ShaderNode 'Texture Coordinate' (ShaderNodeTexCoord)
 
         Arguments
         ---------
@@ -1402,7 +1402,7 @@ class StaticClass:
 
     @classmethod
     def environment_texture(cls, vector=None, color_mapping=None, image=None, image_user=None, interpolation='Linear', projection='EQUIRECTANGULAR', texture_mapping=None):
-        """ Node 'Environment Texture' (ShaderNodeTexEnvironment)
+        """ ShaderNode 'Environment Texture' (ShaderNodeTexEnvironment)
 
         Arguments
         ---------
@@ -1425,7 +1425,7 @@ class StaticClass:
 
     @classmethod
     def gradient_texture(cls, vector=None, color_mapping=None, gradient_type='LINEAR', texture_mapping=None):
-        """ Node 'Gradient Texture' (ShaderNodeTexGradient)
+        """ ShaderNode 'Gradient Texture' (ShaderNodeTexGradient)
 
         Arguments
         ---------
@@ -1445,7 +1445,7 @@ class StaticClass:
 
     @classmethod
     def ies_texture(cls, vector=None, strength=None, filepath='', ies=None, mode='INTERNAL'):
-        """ Node 'IES Texture' (ShaderNodeTexIES)
+        """ ShaderNode 'IES Texture' (ShaderNodeTexIES)
 
         Arguments
         ---------
@@ -1466,7 +1466,7 @@ class StaticClass:
 
     @classmethod
     def image_texture(cls, vector=None, color_mapping=None, extension='REPEAT', image=None, image_user=None, interpolation='Linear', projection='FLAT', projection_blend=0.0, texture_mapping=None):
-        """ Node 'Image Texture' (ShaderNodeTexImage)
+        """ ShaderNode 'Image Texture' (ShaderNodeTexImage)
 
         Arguments
         ---------
@@ -1491,7 +1491,7 @@ class StaticClass:
 
     @classmethod
     def magic_texture(cls, vector=None, scale=None, distortion=None, color_mapping=None, texture_mapping=None, turbulence_depth=2):
-        """ Node 'Magic Texture' (ShaderNodeTexMagic)
+        """ ShaderNode 'Magic Texture' (ShaderNodeTexMagic)
 
         Arguments
         ---------
@@ -1513,7 +1513,7 @@ class StaticClass:
 
     @classmethod
     def noise_texture(cls, vector=None, scale=None, detail=None, roughness=None, lacunarity=None, distortion=None, color_mapping=None, noise_dimensions='3D', noise_type='FBM', normalize=True, texture_mapping=None):
-        """ Node 'Noise Texture' (ShaderNodeTexNoise)
+        """ ShaderNode 'Noise Texture' (ShaderNodeTexNoise)
 
         Arguments
         ---------
@@ -1540,7 +1540,7 @@ class StaticClass:
 
     @classmethod
     def point_density(cls, vector=None, cache_point_density=None, calc_point_density=None, calc_point_density_minmax=None, interpolation='Linear', object=None, particle_color_source='PARTICLE_AGE', particle_system=None, point_source='PARTICLE_SYSTEM', radius=0.30000001192092896, resolution=100, space='OBJECT', vertex_attribute_name='', vertex_color_source='VERTEX_COLOR'):
-        """ Node 'Point Density' (ShaderNodeTexPointDensity)
+        """ ShaderNode 'Point Density' (ShaderNodeTexPointDensity)
 
         Arguments
         ---------
@@ -1570,7 +1570,7 @@ class StaticClass:
 
     @classmethod
     def sky_texture(cls, air_density=1.0, altitude=0.0, color_mapping=None, dust_density=1.0, ground_albedo=0.30000001192092896, ozone_density=1.0, sky_type='NISHITA', sun_direction=None, sun_disc=True, sun_elevation=0.2617993950843811, sun_intensity=1.0, sun_rotation=0.0, sun_size=0.009512044489383698, texture_mapping=None, turbidity=2.200000047683716):
-        """ Node 'Sky Texture' (ShaderNodeTexSky)
+        """ ShaderNode 'Sky Texture' (ShaderNodeTexSky)
 
         Arguments
         ---------
@@ -1601,7 +1601,7 @@ class StaticClass:
 
     @classmethod
     def voronoi_texture(cls, vector=None, scale=None, detail=None, roughness=None, lacunarity=None, randomness=None, color_mapping=None, distance='EUCLIDEAN', feature='F1', normalize=False, texture_mapping=None, voronoi_dimensions='3D'):
-        """ Node 'Voronoi Texture' (ShaderNodeTexVoronoi)
+        """ ShaderNode 'Voronoi Texture' (ShaderNodeTexVoronoi)
 
         Arguments
         ---------
@@ -1629,7 +1629,7 @@ class StaticClass:
 
     @classmethod
     def wave_texture(cls, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', color_mapping=None, rings_direction='X', texture_mapping=None, wave_profile='SIN', wave_type='BANDS'):
-        """ Node 'Wave Texture' (ShaderNodeTexWave)
+        """ ShaderNode 'Wave Texture' (ShaderNodeTexWave)
 
         Arguments
         ---------
@@ -1658,7 +1658,7 @@ class StaticClass:
 
     @classmethod
     def white_noise_texture(cls, vector=None, noise_dimensions='3D'):
-        """ Node 'White Noise Texture' (ShaderNodeTexWhiteNoise)
+        """ ShaderNode 'White Noise Texture' (ShaderNodeTexWhiteNoise)
 
         Arguments
         ---------
@@ -1676,7 +1676,7 @@ class StaticClass:
 
     @classmethod
     def uv_along_stroke(cls, use_tips=False):
-        """ Node 'UV Along Stroke' (ShaderNodeUVAlongStroke)
+        """ ShaderNode 'UV Along Stroke' (ShaderNodeUVAlongStroke)
 
         Arguments
         ---------
@@ -1693,7 +1693,7 @@ class StaticClass:
 
     @classmethod
     def uv_map(cls, from_instancer=False, uv_map=''):
-        """ Node 'UV Map' (ShaderNodeUVMap)
+        """ ShaderNode 'UV Map' (ShaderNodeUVMap)
 
         Arguments
         ---------
@@ -1711,7 +1711,7 @@ class StaticClass:
 
     @classmethod
     def color_ramp(cls, fac=None, color_ramp=None):
-        """ Node 'Color Ramp' (ShaderNodeValToRGB)
+        """ ShaderNode 'Color Ramp' (ShaderNodeValToRGB)
 
         Arguments
         ---------
@@ -1730,7 +1730,7 @@ class StaticClass:
     @classmethod
     @property
     def value(cls):
-        """ Node 'Value' (ShaderNodeValue)
+        """ ShaderNode 'Value' (ShaderNodeValue)
 
         Returns
         -------
@@ -1743,7 +1743,7 @@ class StaticClass:
 
     @classmethod
     def vector_curves(cls, fac=None, vector=None, mapping=None):
-        """ Node 'Vector Curves' (ShaderNodeVectorCurve)
+        """ ShaderNode 'Vector Curves' (ShaderNodeVectorCurve)
 
         Arguments
         ---------
@@ -1762,7 +1762,7 @@ class StaticClass:
 
     @classmethod
     def vector_displacement(cls, vector=None, midlevel=None, scale=None, space='TANGENT'):
-        """ Node 'Vector Displacement' (ShaderNodeVectorDisplacement)
+        """ ShaderNode 'Vector Displacement' (ShaderNodeVectorDisplacement)
 
         Arguments
         ---------
@@ -1782,7 +1782,7 @@ class StaticClass:
 
     @classmethod
     def vector_math(cls, vector=None, vector_1=None, operation='ADD'):
-        """ Node 'Vector Math' (ShaderNodeVectorMath)
+        """ ShaderNode 'Vector Math' (ShaderNodeVectorMath)
 
         Arguments
         ---------
@@ -1801,7 +1801,7 @@ class StaticClass:
 
     @classmethod
     def vector_rotate(cls, vector=None, center=None, axis=None, angle=None, invert=False, rotation_type='AXIS_ANGLE'):
-        """ Node 'Vector Rotate' (ShaderNodeVectorRotate)
+        """ ShaderNode 'Vector Rotate' (ShaderNodeVectorRotate)
 
         Arguments
         ---------
@@ -1823,7 +1823,7 @@ class StaticClass:
 
     @classmethod
     def vector_transform(cls, vector=None, convert_from='WORLD', convert_to='OBJECT', vector_type='VECTOR'):
-        """ Node 'Vector Transform' (ShaderNodeVectorTransform)
+        """ ShaderNode 'Vector Transform' (ShaderNodeVectorTransform)
 
         Arguments
         ---------
@@ -1843,7 +1843,7 @@ class StaticClass:
 
     @classmethod
     def color_attribute(cls, layer_name=''):
-        """ Node 'Color Attribute' (ShaderNodeVertexColor)
+        """ ShaderNode 'Color Attribute' (ShaderNodeVertexColor)
 
         Arguments
         ---------
@@ -1860,7 +1860,7 @@ class StaticClass:
 
     @classmethod
     def volume_absorption(cls, color=None, density=None):
-        """ Node 'Volume Absorption' (ShaderNodeVolumeAbsorption)
+        """ ShaderNode 'Volume Absorption' (ShaderNodeVolumeAbsorption)
 
         Arguments
         ---------
@@ -1879,7 +1879,7 @@ class StaticClass:
     @classmethod
     @property
     def volume_info(cls):
-        """ Node 'Volume Info' (ShaderNodeVolumeInfo)
+        """ ShaderNode 'Volume Info' (ShaderNodeVolumeInfo)
 
         Returns
         -------
@@ -1892,7 +1892,7 @@ class StaticClass:
 
     @classmethod
     def principled_volume(cls, color=None, color_attribute=None, density=None, density_attribute=None, anisotropy=None, absorption_color=None, emission_strength=None, emission_color=None, blackbody_intensity=None, blackbody_tint=None, temperature=None, temperature_attribute=None):
-        """ Node 'Principled Volume' (ShaderNodeVolumePrincipled)
+        """ ShaderNode 'Principled Volume' (ShaderNodeVolumePrincipled)
 
         Arguments
         ---------
@@ -1920,7 +1920,7 @@ class StaticClass:
 
     @classmethod
     def volume_scatter(cls, color=None, density=None, anisotropy=None):
-        """ Node 'Volume Scatter' (ShaderNodeVolumeScatter)
+        """ ShaderNode 'Volume Scatter' (ShaderNodeVolumeScatter)
 
         Arguments
         ---------
@@ -1939,7 +1939,7 @@ class StaticClass:
 
     @classmethod
     def wavelength(cls, wavelength=None):
-        """ Node 'Wavelength' (ShaderNodeWavelength)
+        """ ShaderNode 'Wavelength' (ShaderNodeWavelength)
 
         Arguments
         ---------
@@ -1956,7 +1956,7 @@ class StaticClass:
 
     @classmethod
     def wireframe(cls, size=None, use_pixel_size=False):
-        """ Node 'Wireframe' (ShaderNodeWireframe)
+        """ ShaderNode 'Wireframe' (ShaderNodeWireframe)
 
         Arguments
         ---------
