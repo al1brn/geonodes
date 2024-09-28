@@ -161,7 +161,7 @@ Saturation component
 
 Conversion to black and white.
 
-:sunrise: ShaderNodes only
+:sunrise: **ShaderNodes** only
 
 [RGB to BW](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/converter/rgb_to_bw.html)
 
@@ -219,7 +219,7 @@ ambient_occlusion(distance=None, normal=None, inside=False, only_local=False, sa
 
 Shader node Ambient Occlusion.
 
-:sunrise: ShaderNodes only
+:sunrise: **ShaderNodes** only
 
 [Color Attribute](https://docs.blender.org/manual/en/latest/render/shader_nodes/input/vertex_color.html)
 
@@ -248,7 +248,7 @@ Attribute(name)
 
 Shader node Color Attribute.
 
-:sunrise: ShaderNodes only
+:sunrise: **ShaderNodes** only
 
 [Color Attribute](https://docs.blender.org/manual/en/latest/render/shader_nodes/input/vertex_color.html)
 
@@ -273,7 +273,7 @@ Blackbody(temperature=None)
 
 Constructor : Black body.
 
-:sunrise: ShaderNodes only
+:sunrise: **ShaderNodes** only
 
 [Blackbody](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../modeling/geometry_nodes/utilities/color/blackbody.html)
 
@@ -321,7 +321,7 @@ brightness_contrast(bright=None, contrast=None)
 
 Brightness and contrast.
 
-:sunrise: ShaderNodes only
+:sunrise: **ShaderNodes** only
 
 [Brightness/Contrast](https://docs.blender.org/manual/en/latest/render/shader_nodes/color/bright_contrast.html)
 
@@ -703,7 +703,7 @@ FromShader(shader)
 
 Constructor : Shader to RGB.
 
-:sunrise: ShaderNodes only
+:sunrise: **ShaderNodes** only
 
 ERROR: Node 'Shader to RGB' not found
 
@@ -728,7 +728,7 @@ gamma(gamma=None)
 
 Gamma.
 
-:sunrise: ShaderNodes only
+:sunrise: **ShaderNodes** only
 
 [Gamma](https://docs.blender.org/manual/en/latest/render/shader_nodes/color/gamma.html)
 
@@ -753,7 +753,7 @@ hue_saturation_value(hue=None, saturation=None, value=None, fac=None)
 
 Hue / saturation / value.
 
-:sunrise: ShaderNodes only
+:sunrise: **ShaderNodes** only
 
 [Hue/Saturation/Value](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/color/hue_saturation.html)
 
@@ -781,7 +781,7 @@ invert(fac=None)
 
 Invert.
 
-:sunrise: ShaderNodes only
+:sunrise: **ShaderNodes** only
 
 [Invert Color](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/color/invert_color.html)
 
@@ -1015,7 +1015,7 @@ normal_map(strength=None, space='TANGENT', uv_map='')
 
 Normal map.
 
-:sunrise: ShaderNodes only
+:sunrise: **ShaderNodes** only
 
 [Normal Map](https://docs.blender.org/manual/en/latest/render/shader_nodes/vector/normal_map.html)
 
@@ -1170,7 +1170,7 @@ to_output(name=None)
 
 > Connect to output
 
-:hotsprings: Behaves differently in GeoNodes and ShaderNodes
+:hotsprings: Behaves differently in **GeoNodes** and **ShaderNodes**
 
 
 > [!IMPORTANT]
@@ -1193,7 +1193,7 @@ vector_displacement(midlevel=None, scale=None, space='TANGENT')
 
 Vector displacement
 
-:sunrise: ShaderNodes only
+:sunrise: **ShaderNodes** only
 
 [Vector Displacement](https://docs.blender.org/manual/en/latest/render/shader_nodes/vector/vector_displacement.html)
 
@@ -1220,7 +1220,7 @@ Wavelength(wavelength=None)
 
 Constructor : Wave Length.
 
-:sunrise: ShaderNodes only
+:sunrise: **ShaderNodes** only
 
 [Wavelength](https://docs.blender.org/manual/en/latest/render/shader_nodes/converter/wavelength.html)
 

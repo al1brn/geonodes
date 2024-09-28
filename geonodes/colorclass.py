@@ -197,9 +197,7 @@ class Color(VectorLike):
         -------
         - Color [alpha_]
         """
-        col = Node('Color Ramp', {'Fac': fac}, _keep=keep)._out
-        col.alpha_ = col.node.alpha
-        return col
+        return Node('Color Ramp', {'Fac': fac}, _keep=keep)._out
 
     # ====================================================================================================
     # Properties
@@ -826,10 +824,7 @@ class Color(VectorLike):
         - Color : 'Color' socket, [alpha_]
 
         """
-        node = Node('Color Attribute', layer_name=name)
-        color = node["Color"]
-        color.alpha_ = node["Alpha"]
-        return color
+        return Node('Color Attribute', layer_name=name)._out
 
     def ambient_occlusion(self, distance=None, normal=None, inside=False, only_local=False, samples=16):
         """ Shader node Ambient Occlusion.
@@ -850,10 +845,7 @@ class Color(VectorLike):
         - Color : 'Color' socket, [ao_]
 
         """
-        node = Node('Ambient Occlusion', {'Color': self, 'Distance': distance, 'Normal': normal}, inside=inside, only_local=only_local, samples=samples)
-        col = node._out
-        col.ao_ = node.ao
-        return col
+        return Node('Ambient Occlusion', {'Color': self, 'Distance': distance, 'Normal': normal}, inside=inside, only_local=only_local, samples=samples)._out
 
     # ----- Converter
 
@@ -889,10 +881,7 @@ class Color(VectorLike):
         -------
         - Color : 'Color' socket, [alpha_]
         """
-        node = Node('Shader to RGB', {'Shader': shader})
-        col = node._out
-        col.alpha_ = node.alpha
-        return col
+        return Node('Shader to RGB', {'Shader': shader})._out
 
     @classmethod
     def Wavelength(cls, wavelength=None):
@@ -941,8 +930,7 @@ class Color(VectorLike):
         -------
         - Color : 'Color' socket
         """
-        node = Node('Brightness/Contrast', {'Color': self, 'Bright': bright, 'Contrast': contrast})
-        return node._out
+        return Node('Brightness/Contrast', {'Color': self, 'Bright': bright, 'Contrast': contrast})._out
 
     def gamma(self, gamma=None):
         """ Gamma.

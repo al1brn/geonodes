@@ -6,15 +6,36 @@
 Float(value=0.0, name=None, min=None, max=None, tip=None, subtype='NONE')
 ```
 
+> Socket of type VALUE
 
+[Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/constant/value.html)
+
+If **value** argument is None:
+- if **name** argument is None, a node 'Value' is added
+- otherwise a new group input is created using **min**, **max**, **tip** and **subtype**
+  arguments
+
+If **value** argument is not None, a new **Float** is created from the value, either
+by transtyping or creating a 'Value' node.
+
+``` python
+float = Float()      # 'Value' node with default initial vlaue
+float = Float(3.14). # 'Value' node with 3.14 initial value
+float = Float(3.14, name="User input", subtype='ANGLE') # Create a new float group input
+```
 
 #### Arguments:
-- **value** ( = 0.0)
-- **name** ( = None)
-- **min** ( = None)
-- **max** ( = None)
-- **tip** ( = None)
-- **subtype** ( = NONE)
+- **value** (_tuple or Socket_ = 0.0) : initial value
+- **name** (_str_ = None) : Create an Group Input socket with the provided str if not None
+- **min** (_float_ = None) : minimum value
+- **max** (_float_ = None) : maximum value
+- **tip** (_str_ = None) : User tip (for Group Input sockets)
+- **subtype** (_str_ = NONE) : sub type for group input
+
+
+
+#### Returns:
+- **Float** : 
 
 ### Inherited
 
@@ -22,17 +43,43 @@ Float(value=0.0, name=None, min=None, max=None, tip=None, subtype='NONE')
 
 ## Content
 
+- **A** : [Angle](geono-float.md#angle)
 - **C** : [clamp](geono-float.md#clamp) :black_small_square: [color_ramp](geono-float.md#color_ramp) :black_small_square: [curve](geono-float.md#curve)
+- **D** : [Distance](geono-float.md#distance)
 - **E** : [equal](geono-float.md#equal)
+- **F** : [Factor](geono-float.md#factor)
 - **G** : [greater_equal](geono-float.md#greater_equal) :black_small_square: [greater_than](geono-float.md#greater_than)
 - **L** : [less_equal](geono-float.md#less_equal) :black_small_square: [less_than](geono-float.md#less_than)
 - **M** : [map_range](geono-float.md#map_range) :black_small_square: [map_range_linear](geono-float.md#map_range_linear) :black_small_square: [map_range_smooth](geono-float.md#map_range_smooth) :black_small_square: [map_range_smoother](geono-float.md#map_range_smoother) :black_small_square: [map_range_stepped](geono-float.md#map_range_stepped) :black_small_square: [mix](geono-float.md#mix)
 - **N** : [Named](geono-float.md#named) :black_small_square: [NamedAttribute](geono-float.md#namedattribute) :black_small_square: [not_equal](geono-float.md#not_equal)
-- **T** : [to_string](geono-float.md#to_string)
+- **P** : [Percentage](geono-float.md#percentage)
+- **R** : [Random](geono-float.md#random) :black_small_square: [round](geono-float.md#round)
+- **T** : [Time](geono-float.md#time) :black_small_square: [TimeAbsolute](geono-float.md#timeabsolute) :black_small_square: [to_integer](geono-float.md#to_integer) :black_small_square: [to_string](geono-float.md#to_string)
+- **W** : [WaveLength](geono-float.md#wavelength)
 
 ## Methods
 
 
+
+----------
+### Angle()
+
+> classmethod
+
+``` python
+Angle(value=0.0, name='Angle', min=None, max=None, tip=None)
+```
+
+> Angle group input
+
+#### Arguments:
+- **value** ( = 0.0)
+- **name** ( = Angle)
+- **min** ( = None)
+- **max** ( = None)
+- **tip** ( = None)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](geono-float.md#float) :black_small_square: [Content](geono-float.md#content) :black_small_square: [Methods](geono-float.md#methods)</sub>
 
 ----------
 ### clamp()
@@ -43,7 +90,7 @@ Float(value=0.0, name=None, min=None, max=None, tip=None, subtype='NONE')
 clamp(min=None, max=None, clamp_type='MINMAX')
 ```
 
-
+> Clamp
 
 [Clamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/clamp.html)
 
@@ -68,7 +115,7 @@ clamp(min=None, max=None, clamp_type='MINMAX')
 color_ramp(keep=None)
 ```
 
-
+> Color Ramp
 
 [Color Ramp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/color_ramp.html)
 
@@ -78,7 +125,7 @@ color_ramp(keep=None)
 
 
 #### Returns:
-- **Color** :
+- **Color** : [alpha_]
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](geono-float.md#float) :black_small_square: [Content](geono-float.md#content) :black_small_square: [Methods](geono-float.md#methods)</sub>
 
@@ -91,7 +138,7 @@ color_ramp(keep=None)
 curve(factor=None, keep=None)
 ```
 
-
+> Float Curve
 
 ERROR: Node 'Float Curve' not found
 
@@ -103,6 +150,26 @@ ERROR: Node 'Float Curve' not found
 
 #### Returns:
 - **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](geono-float.md#float) :black_small_square: [Content](geono-float.md#content) :black_small_square: [Methods](geono-float.md#methods)</sub>
+
+----------
+### Distance()
+
+> classmethod
+
+``` python
+Distance(value=0.0, name='Distance', min=None, max=None, tip=None)
+```
+
+> Distance group input
+
+#### Arguments:
+- **value** ( = 0.0)
+- **name** ( = Distance)
+- **min** ( = None)
+- **max** ( = None)
+- **tip** ( = None)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](geono-float.md#float) :black_small_square: [Content](geono-float.md#content) :black_small_square: [Methods](geono-float.md#methods)</sub>
 
@@ -127,6 +194,26 @@ equal(other, epsilon=None)
 
 #### Returns:
 - **Boolean** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](geono-float.md#float) :black_small_square: [Content](geono-float.md#content) :black_small_square: [Methods](geono-float.md#methods)</sub>
+
+----------
+### Factor()
+
+> classmethod
+
+``` python
+Factor(value=0.0, name='Factor', min=0, max=1, tip=None)
+```
+
+> Factor group input
+
+#### Arguments:
+- **value** ( = 0.0)
+- **name** ( = Factor)
+- **min** ( = 0)
+- **max** ( = 1)
+- **tip** ( = None)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](geono-float.md#float) :black_small_square: [Content](geono-float.md#content) :black_small_square: [Methods](geono-float.md#methods)</sub>
 
@@ -231,7 +318,7 @@ less_than(other)
 map_range(from_min=None, from_max=None, to_min=None, to_max=None, clamp=None, interpolation_type='LINEAR')
 ```
 
-
+> Map range
 
 [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
 
@@ -259,7 +346,7 @@ map_range(from_min=None, from_max=None, to_min=None, to_max=None, clamp=None, in
 map_range_linear(from_min=None, from_max=None, to_min=None, to_max=None, clamp=None)
 ```
 
-
+> Map Range, LINEAR interpolation
 
 [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
 
@@ -286,7 +373,7 @@ map_range_linear(from_min=None, from_max=None, to_min=None, to_max=None, clamp=N
 map_range_smooth(from_min=None, from_max=None, to_min=None, to_max=None, clamp=None)
 ```
 
-
+> Map Range, SMOOTH interpolation
 
 [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
 
@@ -313,7 +400,7 @@ map_range_smooth(from_min=None, from_max=None, to_min=None, to_max=None, clamp=N
 map_range_smoother(from_min=None, from_max=None, to_min=None, to_max=None, clamp=None)
 ```
 
-
+> Map Range, SMOOTHER interpolation
 
 [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
 
@@ -340,7 +427,7 @@ map_range_smoother(from_min=None, from_max=None, to_min=None, to_max=None, clamp
 map_range_stepped(from_min=None, from_max=None, to_min=None, to_max=None, clamp=None)
 ```
 
-
+> Map Range, STEPPED interpolation
 
 [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
 
@@ -367,7 +454,7 @@ map_range_stepped(from_min=None, from_max=None, to_min=None, to_max=None, clamp=
 mix(factor=None, other=None, clamp_factor=None)
 ```
 
-
+> Mix
 
 [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
@@ -492,6 +579,128 @@ not_equal(other, epsilon=None)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](geono-float.md#float) :black_small_square: [Content](geono-float.md#content) :black_small_square: [Methods](geono-float.md#methods)</sub>
 
 ----------
+### Percentage()
+
+> classmethod
+
+``` python
+Percentage(value=0.0, name='Percentage', min=None, max=None, tip=None)
+```
+
+> Percentage group input
+
+#### Arguments:
+- **value** ( = 0.0)
+- **name** ( = Percentage)
+- **min** ( = None)
+- **max** ( = None)
+- **tip** ( = None)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](geono-float.md#float) :black_small_square: [Content](geono-float.md#content) :black_small_square: [Methods](geono-float.md#methods)</sub>
+
+----------
+### Random()
+
+> classmethod
+
+``` python
+Random(min=None, max=None, id=None, seed=None)
+```
+
+> Random float
+
+[Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html)
+
+#### Arguments:
+- **min** ( = None)
+- **max** ( = None)
+- **id** ( = None)
+- **seed** ( = None)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](geono-float.md#float) :black_small_square: [Content](geono-float.md#content) :black_small_square: [Methods](geono-float.md#methods)</sub>
+
+----------
+### round()
+
+> method
+
+``` python
+round()
+```
+
+> Rounding
+
+:hotsprings: Behaves differently in **GeoNodes** and **ShaderNodes**
+
+
+> [!IMPORTANT]
+> - **GeoNodes** : [Float to Integer](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../modeling/geometry_nodes/utilities/math/float_to_integer.html)
+> - **ShaderNodes** : 
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](geono-float.md#float) :black_small_square: [Content](geono-float.md#content) :black_small_square: [Methods](geono-float.md#methods)</sub>
+
+----------
+### Time()
+
+> classmethod
+
+``` python
+Time(value=0.0, name='Time', min=None, max=None, tip=None)
+```
+
+> Time group input
+
+#### Arguments:
+- **value** ( = 0.0)
+- **name** ( = Time)
+- **min** ( = None)
+- **max** ( = None)
+- **tip** ( = None)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](geono-float.md#float) :black_small_square: [Content](geono-float.md#content) :black_small_square: [Methods](geono-float.md#methods)</sub>
+
+----------
+### TimeAbsolute()
+
+> classmethod
+
+``` python
+TimeAbsolute(value=0.0, name='TimeAbsolute', min=None, max=None, tip=None)
+```
+
+> Time Absolute group input
+
+#### Arguments:
+- **value** ( = 0.0)
+- **name** ( = TimeAbsolute)
+- **min** ( = None)
+- **max** ( = None)
+- **tip** ( = None)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](geono-float.md#float) :black_small_square: [Content](geono-float.md#content) :black_small_square: [Methods](geono-float.md#methods)</sub>
+
+----------
+### to_integer()
+
+> method
+
+``` python
+to_integer(rounding_mode=None)
+```
+
+> Conversion to integer
+
+[Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/float_to_integer.html)
+
+#### Arguments:
+- **rounding_mode** ( = None)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](geono-float.md#float) :black_small_square: [Content](geono-float.md#content) :black_small_square: [Methods](geono-float.md#methods)</sub>
+
+----------
 ### to_string()
 
 > method
@@ -500,7 +709,7 @@ not_equal(other, epsilon=None)
 to_string(decimals=None)
 ```
 
-
+> To String
 
 [Value to String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/value_to_string.html)
 
@@ -511,5 +720,25 @@ to_string(decimals=None)
 
 #### Returns:
 - **String** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](geono-float.md#float) :black_small_square: [Content](geono-float.md#content) :black_small_square: [Methods](geono-float.md#methods)</sub>
+
+----------
+### WaveLength()
+
+> classmethod
+
+``` python
+WaveLength(value=0.0, name='WaveLength', min=None, max=None, tip=None)
+```
+
+> Wave Length group input
+
+#### Arguments:
+- **value** ( = 0.0)
+- **name** ( = WaveLength)
+- **min** ( = None)
+- **max** ( = None)
+- **tip** ( = None)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](geono-float.md#float) :black_small_square: [Content](geono-float.md#content) :black_small_square: [Methods](geono-float.md#methods)</sub>

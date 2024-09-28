@@ -43,7 +43,7 @@ Integer(value=0, name=None, min=None, max=None, tip=None, subtype='NONE')
 clamp(min=None, max=None, clamp_type='MINMAX')
 ```
 
-
+> Clamp
 
 [Clamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/clamp.html)
 
@@ -68,7 +68,7 @@ clamp(min=None, max=None, clamp_type='MINMAX')
 color_ramp(keep=None)
 ```
 
-
+> Color Ramp
 
 [Color Ramp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/color_ramp.html)
 
@@ -78,7 +78,7 @@ color_ramp(keep=None)
 
 
 #### Returns:
-- **Color** :
+- **Color** : [alpha_]
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](geono-integer.md#integer) :black_small_square: [Content](geono-integer.md#content) :black_small_square: [Methods](geono-integer.md#methods)</sub>
 
@@ -91,7 +91,7 @@ color_ramp(keep=None)
 curve(factor=None, keep=None)
 ```
 
-
+> Float Curve
 
 ERROR: Node 'Float Curve' not found
 
@@ -230,7 +230,7 @@ less_than(other)
 map_range(from_min=None, from_max=None, to_min=None, to_max=None, clamp=None, interpolation_type='LINEAR')
 ```
 
-
+> Map range
 
 [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
 
@@ -258,7 +258,7 @@ map_range(from_min=None, from_max=None, to_min=None, to_max=None, clamp=None, in
 map_range_linear(from_min=None, from_max=None, to_min=None, to_max=None, clamp=None)
 ```
 
-
+> Map Range, LINEAR interpolation
 
 [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
 
@@ -285,7 +285,7 @@ map_range_linear(from_min=None, from_max=None, to_min=None, to_max=None, clamp=N
 map_range_smooth(from_min=None, from_max=None, to_min=None, to_max=None, clamp=None)
 ```
 
-
+> Map Range, SMOOTH interpolation
 
 [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
 
@@ -312,7 +312,7 @@ map_range_smooth(from_min=None, from_max=None, to_min=None, to_max=None, clamp=N
 map_range_smoother(from_min=None, from_max=None, to_min=None, to_max=None, clamp=None)
 ```
 
-
+> Map Range, SMOOTHER interpolation
 
 [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
 
@@ -339,7 +339,7 @@ map_range_smoother(from_min=None, from_max=None, to_min=None, to_max=None, clamp
 map_range_stepped(from_min=None, from_max=None, to_min=None, to_max=None, clamp=None)
 ```
 
-
+> Map Range, STEPPED interpolation
 
 [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
 
@@ -366,7 +366,7 @@ map_range_stepped(from_min=None, from_max=None, to_min=None, to_max=None, clamp=
 mix(factor=None, other=None, clamp_factor=None)
 ```
 
-
+> Mix
 
 [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
@@ -498,7 +498,7 @@ not_equal(other)
 to_string(decimals=None)
 ```
 
-
+> To String
 
 [Value to String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/value_to_string.html)
 

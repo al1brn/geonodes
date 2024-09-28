@@ -57,7 +57,7 @@ class IntFloat(ValueSocket):
     # ----- Mix
 
     def mix(self, factor=None, other=None, clamp_factor=None):
-        """ Node 'Mix' (ShaderNodeMix)
+        """ > Mix
 
         [!Node] Mix
 
@@ -76,7 +76,7 @@ class IntFloat(ValueSocket):
     # ----- Clamp
 
     def clamp(self, min=None, max=None, clamp_type='MINMAX'):
-        """ Node 'Clamp' (ShaderNodeClamp)
+        """ > Clamp
 
         [!Node] Clamp
 
@@ -93,7 +93,7 @@ class IntFloat(ValueSocket):
         return Float(Node('Clamp', {'Value': self, 'Min': min, 'Max': max}, clamp_type=clamp_type)._out)
 
     def map_range(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=None, interpolation_type='LINEAR'):
-        """ Node 'Map Range' (ShaderNodeMapRange)
+        """ > Map range
 
         [!Node] Map Range
 
@@ -113,7 +113,7 @@ class IntFloat(ValueSocket):
         return Float(Node('Map Range', {'Value': self, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}, clamp=clamp, interpolation_type=interpolation_type)._out)
 
     def map_range_linear(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=None):
-        """ Node 'Map Range' (ShaderNodeMapRange)
+        """ > Map Range, LINEAR interpolation
 
         [!Node] Map Range
 
@@ -133,7 +133,7 @@ class IntFloat(ValueSocket):
         return self.map_range(from_min, from_max, to_min, to_max, clamp=clamp, interpolation_type='LINEAR')
 
     def map_range_stepped(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=None):
-        """ Node 'Map Range' (ShaderNodeMapRange)
+        """ > Map Range, STEPPED interpolation
 
         [!Node] Map Range
 
@@ -153,7 +153,7 @@ class IntFloat(ValueSocket):
         return self.map_range(from_min, from_max, to_min, to_max, clamp=clamp, interpolation_type='STEPPED')
 
     def map_range_smooth(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=None):
-        """ Node 'Map Range' (ShaderNodeMapRange)
+        """ > Map Range, SMOOTH interpolation
 
         [!Node] Map Range
 
@@ -173,7 +173,7 @@ class IntFloat(ValueSocket):
         return self.map_range(from_min, from_max, to_min, to_max, clamp=clamp, interpolation_type='SMOOTHSTEP')
 
     def map_range_smoother(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=None):
-        """ Node 'Map Range' (ShaderNodeMapRange)
+        """ > Map Range, SMOOTHER interpolation
 
         [!Node] Map Range
 
@@ -193,21 +193,18 @@ class IntFloat(ValueSocket):
         return self.map_range(from_min, from_max, to_min, to_max, clamp=clamp, interpolation_type='SMOOTHERSTEP')
 
     def color_ramp(self, keep=None):
-        """ Node 'Color Ramp' (ShaderNodeValToRGB)
+        """ > Color Ramp
 
         [!Node] Color Ramp
 
         Returns
         -------
-        - Color [alpha_]
+        - Color : [alpha_]
         """
-        node = Node('Color Ramp', {'Fac': self}, _keep=keep)
-        col = node._out
-        col.alpha_ = node.alpha
-        return col
+        return Node('Color Ramp', {'Fac': self}, _keep=keep)._out
 
     def to_string(self, decimals=None):
-        """ Node 'Value to String' (FunctionNodeValueToString)
+        """ > To String
 
         [!Node] Value to String
 
@@ -222,7 +219,7 @@ class IntFloat(ValueSocket):
         return Node('Value to String', {'Value': self, 'Decimals': decimals})._out
 
     def curve(self, factor=None, keep=None):
-        """ Node 'Float Curve' (ShaderNodeFloatCurve)
+        """ > Float Curve
 
         [!Node] Float Curve
 
@@ -389,6 +386,38 @@ class Float(IntFloat):
     SOCKET_TYPE = 'VALUE'
 
     def __init__(self, value=0., name=None, min=None, max=None, tip=None, subtype='NONE'):
+        """ > Socket of type VALUE
+
+        [!Node] Value
+
+        If **value** argument is None:
+        - if **name** argument is None, a node 'Value' is added
+        - otherwise a new group input is created using **min**, **max**, **tip** and **subtype**
+          arguments
+
+        If **value** argument is not None, a new **Float** is created from the value, either
+        by transtyping or creating a 'Value' node.
+
+        ``` python
+        float = Float()      # 'Value' node with default initial vlaue
+        float = Float(3.14). # 'Value' node with 3.14 initial value
+        float = Float(3.14, name="User input", subtype='ANGLE') # Create a new float group input
+        ```
+
+        Arguments
+        ---------
+        - value (tuple or Socket = (0, 0, 0, 1)) : initial value
+        - name (str = None) : Create an Group Input socket with the provided str if not None
+        - min (float = None) : minimum value
+        - max (float = None) : maximum value
+        - tip (str = None) : User tip (for Group Input sockets)
+        - subtype (str = None) : sub type for group input
+
+        Returns
+        -------
+        - Float
+        """
+
         bsock = utils.get_bsocket(value)
         if bsock is None:
             if name is None:
@@ -404,34 +433,52 @@ class Float(IntFloat):
 
     @classmethod
     def Percentage(cls, value=0., name='Percentage', min=None, max=None, tip=None):
+        """ > Percentage group input
+        """
         return cls(value=value, name=name, min=min, max=max, tip=tip, subtype='PERCENTAGE')
 
     @classmethod
     def Factor(cls, value=0., name='Factor', min=0, max=1, tip=None):
+        """ > Factor group input
+        """
         return cls(value=value, name=name, min=min, max=max, tip=tip, subtype='FACTOR')
 
     @classmethod
     def Angle(cls, value=0., name='Angle', min=None, max=None, tip=None):
+        """ > Angle group input
+        """
         return cls(value=value, name=name, min=min, max=max, tip=tip, subtype='ANGLE')
 
     @classmethod
     def Time(cls, value=0., name='Time', min=None, max=None, tip=None):
+        """ > Time group input
+        """
         return cls(value=value, name=name, min=min, max=max, tip=tip, subtype='TIME')
 
     @classmethod
     def TimeAbsolute(cls, value=0., name='TimeAbsolute', min=None, max=None, tip=None):
+        """ > Time Absolute group input
+        """
         return cls(value=value, name=name, min=min, max=max, tip=tip, subtype='TIME_ABSOLUTE')
 
     @classmethod
     def Distance(cls, value=0., name='Distance', min=None, max=None, tip=None):
+        """ > Distance group input
+        """
         return cls(value=value, name=name, min=min, max=max, tip=tip, subtype='DISTANCE')
 
     @classmethod
     def WaveLength(cls, value=0., name='WaveLength', min=None, max=None, tip=None):
+        """ > Wave Length group input
+        """
         return cls(value=value, name=name, min=min, max=max, tip=tip, subtype='WAVELENGTH')
 
     @classmethod
     def Random(cls, min=None, max=None, id=None, seed=None):
+        """ > Random float
+
+        [!Node] Random Value
+        """
         return Node('Random Value', {'Min': min, 'Max': max, 'ID': id, 'Seed': seed}, data_type='FLOAT')._out
 
     # ====================================================================================================
@@ -440,9 +487,25 @@ class Float(IntFloat):
     # ----- To integer
 
     def to_integer(self, rounding_mode=None):
+        """ > Conversion to integer
+
+        [!Node] Float to Integer
+        """
         return Node('Float to Integer', {0: self}, rounding_mode=rounding_mode)._out
 
     def round(self):
+        """ > Rounding
+
+        [!MIX]
+
+        > [!IMPORTANT]
+        > - **GeoNodes** : <&ShaderNode Float to Integer>
+        > - **ShaderNodes** : <&Node Float to Integer>
+
+        Returns
+        -------
+        - Float or Integer
+        """
         if Tree.is_geonodes:
             return self.to_integer(rounding_mode='ROUND')
         else:
