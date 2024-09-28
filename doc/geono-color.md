@@ -28,15 +28,15 @@ Socket of type COLOR (RGBA)
 - **E** : [equal](geono-color.md#equal) :black_small_square: [exclusion](geono-color.md#exclusion)
 - **F** : [FromShader](geono-color.md#fromshader)
 - **G** : [gamma](geono-color.md#gamma) :black_small_square: [green](geono-color.md#green)
-- **H** : [hue](geono-color.md#hue) :black_small_square: [hue_saturation_value](geono-color.md#hue_saturation_value)
+- **H** : [HSL](geono-color.md#hsl) :black_small_square: [HSV](geono-color.md#hsv) :black_small_square: [hue](geono-color.md#hue) :black_small_square: [hue_saturation_value](geono-color.md#hue_saturation_value)
 - **I** : [invert](geono-color.md#invert)
 - **L** : [lighten](geono-color.md#lighten) :black_small_square: [lightness](geono-color.md#lightness) :black_small_square: [linear_light](geono-color.md#linear_light)
 - **M** : [mix](geono-color.md#mix) :black_small_square: [mix_color](geono-color.md#mix_color) :black_small_square: [mix_hue](geono-color.md#mix_hue) :black_small_square: [mix_saturation](geono-color.md#mix_saturation) :black_small_square: [mix_value](geono-color.md#mix_value) :black_small_square: [multiply](geono-color.md#multiply)
 - **N** : [normal_map](geono-color.md#normal_map) :black_small_square: [not_equal](geono-color.md#not_equal)
 - **O** : [overlay](geono-color.md#overlay)
-- **R** : [red](geono-color.md#red)
+- **R** : [red](geono-color.md#red) :black_small_square: [RGB](geono-color.md#rgb)
 - **S** : [saturation](geono-color.md#saturation) :black_small_square: [screen](geono-color.md#screen) :black_small_square: [soft_light](geono-color.md#soft_light) :black_small_square: [subtract](geono-color.md#subtract)
-- **T** : [to_bw](geono-color.md#to_bw)
+- **T** : [to_bw](geono-color.md#to_bw) :black_small_square: [to_output](geono-color.md#to_output)
 - **V** : [value](geono-color.md#value) :black_small_square: [vector_displacement](geono-color.md#vector_displacement)
 - **W** : [Wavelength](geono-color.md#wavelength)
 
@@ -77,6 +77,28 @@ Green component
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Properties](geono-color.md#properties)</sub>
 
+### HSL
+
+> _type_: **Node**
+>
+
+Separate HSL Node
+
+[Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Properties](geono-color.md#properties)</sub>
+
+### HSV
+
+> _type_: **Node**
+>
+
+Separate HSV Node
+
+[Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Properties](geono-color.md#properties)</sub>
+
 ### hue
 
 > _type_: **Float**
@@ -110,6 +132,17 @@ Red component
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Properties](geono-color.md#properties)</sub>
 
+### RGB
+
+> _type_: **Node**
+>
+
+Separate RGB Node
+
+[Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Properties](geono-color.md#properties)</sub>
+
 ### saturation
 
 > _type_: **Float**
@@ -128,7 +161,7 @@ Saturation component
 
 Conversion to black and white.
 
-[RGB to BW](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/rgb_to_bw.html)
+[!SHADER]
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Properties](geono-color.md#properties)</sub>
 
@@ -169,7 +202,7 @@ Mix with another color : ADD
 
 
 #### Returns:
-- **Color** :
+- **Color** : 'Result' socket
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Methods](geono-color.md#methods)</sub>
 
@@ -184,7 +217,8 @@ ambient_occlusion(distance=None, normal=None, inside=False, only_local=False, sa
 
 Shader node Ambient Occlusion.
 
-[Color Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/input/vertex_color.html)
+[!SHADER]
+
 
 #### Arguments:
 - **distance** (_Float_ = None) : socket
@@ -196,7 +230,7 @@ Shader node Ambient Occlusion.
 
 
 #### Returns:
-- **Color** :
+- **Color** : 'Color' socket, [ao_]
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Methods](geono-color.md#methods)</sub>
 
@@ -211,7 +245,8 @@ Attribute(name)
 
 Shader node Color Attribute.
 
-[Color Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/input/vertex_color.html)
+[!SHADER]
+
 
 #### Arguments:
 - **name** (_str_)
@@ -219,7 +254,7 @@ Shader node Color Attribute.
 
 
 #### Returns:
-- **Color** :
+- **Color** : 'Color' socket, [alpha_]
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Methods](geono-color.md#methods)</sub>
 
@@ -234,7 +269,8 @@ Blackbody(temperature=None)
 
 Constructor : Black body.
 
-[Blackbody](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/color/blackbody.html)
+[!SHADER]
+
 
 #### Arguments:
 - **temperature** (_Float_ = None) : socket
@@ -242,7 +278,7 @@ Constructor : Black body.
 
 
 #### Returns:
-- **Color** :
+- **Color** : 'Color' socket
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Methods](geono-color.md#methods)</sub>
 
@@ -265,7 +301,7 @@ Compare with another Color : BRIGHTER
 
 
 #### Returns:
-- **Boolean** :
+- **Boolean** : 'Result' socket
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Methods](geono-color.md#methods)</sub>
 
@@ -280,7 +316,8 @@ brightness_contrast(bright=None, contrast=None)
 
 Brightness and contrast.
 
-[Brightness/Contrast](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/color/bright_contrast.html)
+[!SHADER]
+
 
 #### Arguments:
 - **bright** (_Float_ = None) : socket
@@ -289,7 +326,7 @@ Brightness and contrast.
 
 
 #### Returns:
-- **Color** :
+- **Color** : 'Color' socket
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Methods](geono-color.md#methods)</sub>
 
@@ -315,7 +352,7 @@ Mix with another color : BURN
 
 
 #### Returns:
-- **Color** :
+- **Color** : 'Result' socket
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Methods](geono-color.md#methods)</sub>
 
@@ -468,7 +505,7 @@ Color curves.
 
 
 #### Returns:
-- **Color** :
+- **Color** : 'Color' socket
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Methods](geono-color.md#methods)</sub>
 
@@ -494,7 +531,7 @@ Mix with another color : DARKEN
 
 
 #### Returns:
-- **Color** :
+- **Color** : 'Result' socket
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Methods](geono-color.md#methods)</sub>
 
@@ -517,7 +554,7 @@ Compare with another Color : DARKER
 
 
 #### Returns:
-- **Boolean** :
+- **Boolean** : 'Result' socket
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Methods](geono-color.md#methods)</sub>
 
@@ -543,7 +580,7 @@ Mix with another color : DIFFERENCE
 
 
 #### Returns:
-- **Color** :
+- **Color** : 'Result' socket
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Methods](geono-color.md#methods)</sub>
 
@@ -569,7 +606,7 @@ Mix with another color : DIVIDE
 
 
 #### Returns:
-- **Color** :
+- **Color** : 'Result' socket
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Methods](geono-color.md#methods)</sub>
 
@@ -595,7 +632,7 @@ Mix with another color : DODGE
 
 
 #### Returns:
-- **Color** :
+- **Color** : 'Result' socket
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Methods](geono-color.md#methods)</sub>
 
@@ -619,7 +656,7 @@ Compare with another Color : EQUAL
 
 
 #### Returns:
-- **Boolean** :
+- **Boolean** : 'Result' socket
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Methods](geono-color.md#methods)</sub>
 
@@ -645,7 +682,7 @@ Mix with another color : EXCLUSION
 
 
 #### Returns:
-- **Color** :
+- **Color** : 'Result' socket
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Methods](geono-color.md#methods)</sub>
 
@@ -660,7 +697,8 @@ FromShader(shader)
 
 Constructor : Shader to RGB.
 
-ERROR: Node 'Shader to RGB' not found
+[!SHADER]
+
 
 #### Arguments:
 - **shader** (_Shader_) : socket
@@ -668,7 +706,7 @@ ERROR: Node 'Shader to RGB' not found
 
 
 #### Returns:
-- **Color** :
+- **Color** : 'Color' socket, [alpha_]
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Methods](geono-color.md#methods)</sub>
 
@@ -683,7 +721,8 @@ gamma(gamma=None)
 
 Gamma.
 
-[Gamma](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/color/gamma.html)
+[!SHADER]
+
 
 #### Arguments:
 - **gamma** (_Float_ = None) : socket
@@ -691,7 +730,7 @@ Gamma.
 
 
 #### Returns:
-- **Color** :
+- **Color** : 'Gamma' socket
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Methods](geono-color.md#methods)</sub>
 
@@ -706,7 +745,8 @@ hue_saturation_value(hue=None, saturation=None, value=None, fac=None)
 
 Hue / saturation / value.
 
-[Hue/Saturation/Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/hue_saturation.html)
+[!SHADER]
+
 
 #### Arguments:
 - **hue** (_Float_ = None) : socket
@@ -717,7 +757,7 @@ Hue / saturation / value.
 
 
 #### Returns:
-- **Color** :
+- **Color** : 'Color' socket
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Methods](geono-color.md#methods)</sub>
 
@@ -732,7 +772,8 @@ invert(fac=None)
 
 Invert.
 
-[Invert Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/invert_color.html)
+[!SHADER]
+
 
 #### Arguments:
 - **fac** (_Float_ = None) : socket
@@ -740,7 +781,7 @@ Invert.
 
 
 #### Returns:
-- **Color** :
+- **Color** : 'Color' socket
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Methods](geono-color.md#methods)</sub>
 
@@ -766,7 +807,7 @@ Mix with another color : LIGHTEN
 
 
 #### Returns:
-- **Color** :
+- **Color** : 'Result' socket
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Methods](geono-color.md#methods)</sub>
 
@@ -792,7 +833,7 @@ Mix with another color : LINEAR LIGHT
 
 
 #### Returns:
-- **Color** :
+- **Color** : 'Result' socket
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Methods](geono-color.md#methods)</sub>
 
@@ -819,7 +860,7 @@ Mix with another color
 
 
 #### Returns:
-- **Color** :
+- **Color** : 'Result' socket
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Methods](geono-color.md#methods)</sub>
 
@@ -845,7 +886,7 @@ Mix with another color : COLOR
 
 
 #### Returns:
-- **Color** :
+- **Color** : 'Result' socket
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Methods](geono-color.md#methods)</sub>
 
@@ -871,7 +912,7 @@ Mix with another color : HUE
 
 
 #### Returns:
-- **Color** :
+- **Color** : 'Result' socket
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Methods](geono-color.md#methods)</sub>
 
@@ -897,7 +938,7 @@ Mix with another color : SATURATION
 
 
 #### Returns:
-- **Color** :
+- **Color** : 'Result' socket
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Methods](geono-color.md#methods)</sub>
 
@@ -923,7 +964,7 @@ Mix with another color : VALUE
 
 
 #### Returns:
-- **Color** :
+- **Color** : 'Result' socket
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Methods](geono-color.md#methods)</sub>
 
@@ -949,7 +990,7 @@ Mix with another color : MULTIPLY
 
 
 #### Returns:
-- **Color** :
+- **Color** : 'Result' socket
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Methods](geono-color.md#methods)</sub>
 
@@ -964,7 +1005,8 @@ normal_map(strength=None, space='TANGENT', uv_map='')
 
 Normal map.
 
-[Normal Map](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/vector/normal_map.html)
+[!SHADER]
+
 
 #### Arguments:
 - **strength** (_Float_ = None) : socket
@@ -974,7 +1016,7 @@ Normal map.
 
 
 #### Returns:
-- **Color** :
+- **Color** : 'Color' socket
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Methods](geono-color.md#methods)</sub>
 
@@ -998,7 +1040,7 @@ Compare with another Color : NOT EQUAL
 
 
 #### Returns:
-- **Boolean** :
+- **Boolean** : 'Result' socket
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Methods](geono-color.md#methods)</sub>
 
@@ -1024,7 +1066,7 @@ Mix with another color : OVERLAY
 
 
 #### Returns:
-- **Color** :
+- **Color** : 'Result' socket
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Methods](geono-color.md#methods)</sub>
 
@@ -1050,7 +1092,7 @@ Mix with another color : SCREEN
 
 
 #### Returns:
-- **Color** :
+- **Color** : 'Result' socket
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Methods](geono-color.md#methods)</sub>
 
@@ -1076,7 +1118,7 @@ Mix with another color : SOFT LIGHT
 
 
 #### Returns:
-- **Color** :
+- **Color** : 'Result' socket
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Methods](geono-color.md#methods)</sub>
 
@@ -1102,7 +1144,30 @@ Mix with another color : SUBTRACT
 
 
 #### Returns:
-- **Color** :
+- **Color** : 'Result' socket
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Methods](geono-color.md#methods)</sub>
+
+----------
+### to_output()
+
+> method
+
+``` python
+to_output(name=None)
+```
+
+> Connect to the output node
+
+[!MIX]
+
+
+> 
+> - Geometry Nodes : create a group output socket with the provided name
+> - Shader : create a node 'AOV Ouput'
+
+#### Arguments:
+- **name** ( = None)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Methods](geono-color.md#methods)</sub>
 
@@ -1117,7 +1182,8 @@ vector_displacement(midlevel=None, scale=None, space='TANGENT')
 
 Normal map.
 
-[Normal Map](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/vector/normal_map.html)
+[!SHADER]
+
 
 #### Arguments:
 - **midlevel** (_Float_ = None) : socket
@@ -1127,7 +1193,7 @@ Normal map.
 
 
 #### Returns:
-- **Color** :
+- **Vector** : 'Displacement' socket
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Methods](geono-color.md#methods)</sub>
 
@@ -1142,7 +1208,8 @@ Wavelength(wavelength=None)
 
 Constructor : Wave Length.
 
-[Wavelength](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/converter/wavelength.html)
+[!SHADER]
+
 
 #### Arguments:
 - **wavelength** (_Float_ = None) : socket
@@ -1150,6 +1217,6 @@ Constructor : Wave Length.
 
 
 #### Returns:
-- **Color** :
+- **Color** : 'Color' socket
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Methods](geono-color.md#methods)</sub>

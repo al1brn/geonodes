@@ -208,14 +208,38 @@ class Color(VectorLike):
 
     @property
     def RGB(self):
+        """ Separate RGB Node
+
+        [!Node] Separate Color
+
+        Returns
+        -------
+        - Node : 'Separate Color' node
+        """
         return self._cache('Separate Color', {'Color': self}, mode='RGB', cache_name='RGB')
 
     @property
     def HSV(self):
+        """ Separate HSV Node
+
+        [!Node] Separate Color
+
+        Returns
+        -------
+        - Node : 'Separate Color' node
+        """
         return self._cache('Separate Color', {'Color': self}, mode='HSV', cache_name='HSV')
 
     @property
     def HSL(self):
+        """ Separate HSL Node
+
+        [!Node] Separate Color
+
+        Returns
+        -------
+        - Node : 'Separate Color' node
+        """
         return self._cache('Separate Color', {'Color': self}, mode='HSL', cache_name='HSL')
 
     @property
@@ -226,7 +250,7 @@ class Color(VectorLike):
 
         Returns
         -------
-        - Float
+        - Float : 'Red' socket
         """
         return self.RGB.red
 
@@ -238,7 +262,7 @@ class Color(VectorLike):
 
         Returns
         -------
-        - Float
+        - Float : 'Green' socket
         """
         return self.RGB.green
 
@@ -250,7 +274,7 @@ class Color(VectorLike):
 
         Returns
         -------
-        - Float
+        - Float : 'Blue' socket
         """
         return self.RGB.blue
 
@@ -262,7 +286,7 @@ class Color(VectorLike):
 
         Returns
         -------
-        - Float
+        - Float : 'Alpha' socket
         """
         node = self._cached_nodes.get('RGB')
         if node is None:
@@ -282,7 +306,7 @@ class Color(VectorLike):
 
         Returns
         -------
-        - Float
+        - Float : 'Hue' socket
         """
         node = self._cached_nodes.get('HSV')
         if node is None:
@@ -299,7 +323,7 @@ class Color(VectorLike):
 
         Returns
         -------
-        - Float
+        - Float : 'Saturation' socket
         """
         node = self._cached_nodes.get('HSV')
         if node is Node:
@@ -316,7 +340,7 @@ class Color(VectorLike):
 
         Returns
         -------
-        - Float
+        - Float : 'Value' socket
         """
         return self.HSV.blue
 
@@ -328,7 +352,7 @@ class Color(VectorLike):
 
         Returns
         -------
-        - Float
+        - Float : 'Lightness' socket
         """
         return self.HSL.blue
 
@@ -354,7 +378,7 @@ class Color(VectorLike):
 
         Returns
         -------
-        - Color
+        - Color : 'Result' socket
         """
         return Node('Mix', {'Factor': factor, 'A': self, 'B': other},
             clamp_result=False, clamp_factor=True, blend_type=blend_type, data_type='RGBA')._out
@@ -373,7 +397,7 @@ class Color(VectorLike):
 
         Returns
         -------
-        - Color
+        - Color : 'Result' socket
         """
         return self.mix(factor=factor, other=other, clamp_result=clamp_result, clamp_factor=clamp_factor, blend_type='DARKEN')
 
@@ -391,7 +415,7 @@ class Color(VectorLike):
 
         Returns
         -------
-        - Color
+        - Color : 'Result' socket
         """
         return self.mix(factor=factor, other=other, clamp_result=clamp_result, clamp_factor=clamp_factor, blend_type='MULTIPLY')
 
@@ -409,7 +433,7 @@ class Color(VectorLike):
 
         Returns
         -------
-        - Color
+        - Color : 'Result' socket
         """
         return self.mix(factor=factor, other=other, clamp_result=clamp_result, clamp_factor=clamp_factor, blend_type='BURN')
 
@@ -427,7 +451,7 @@ class Color(VectorLike):
 
         Returns
         -------
-        - Color
+        - Color : 'Result' socket
         """
         return self.mix(factor=factor, other=other, clamp_result=clamp_result, clamp_factor=clamp_factor, blend_type='LIGHTEN')
 
@@ -445,7 +469,7 @@ class Color(VectorLike):
 
         Returns
         -------
-        - Color
+        - Color : 'Result' socket
         """
         return self.mix(factor=factor, other=other, clamp_result=clamp_result, clamp_factor=clamp_factor, blend_type='SCREEN')
 
@@ -463,7 +487,7 @@ class Color(VectorLike):
 
         Returns
         -------
-        - Color
+        - Color : 'Result' socket
         """
         return self.mix(factor=factor, other=other, clamp_result=clamp_result, clamp_factor=clamp_factor, blend_type='DODGE')
 
@@ -481,7 +505,7 @@ class Color(VectorLike):
 
         Returns
         -------
-        - Color
+        - Color : 'Result' socket
         """
         return self.mix(factor=factor, other=other, clamp_result=clamp_result, clamp_factor=clamp_factor, blend_type='ADD')
 
@@ -499,7 +523,7 @@ class Color(VectorLike):
 
         Returns
         -------
-        - Color
+        - Color : 'Result' socket
         """
         return self.mix(factor=factor, other=other, clamp_result=clamp_result, clamp_factor=clamp_factor, blend_type='OVERLAY')
 
@@ -517,7 +541,7 @@ class Color(VectorLike):
 
         Returns
         -------
-        - Color
+        - Color : 'Result' socket
         """
         return self.mix(factor=factor, other=other, clamp_result=clamp_result, clamp_factor=clamp_factor, blend_type='SOFT_LIGHT')
 
@@ -535,7 +559,7 @@ class Color(VectorLike):
 
         Returns
         -------
-        - Color
+        - Color : 'Result' socket
         """
         return self.mix(factor=factor, other=other, clamp_result=clamp_result, clamp_factor=clamp_factor, blend_type='LINEAR_LIGHT')
 
@@ -553,7 +577,7 @@ class Color(VectorLike):
 
         Returns
         -------
-        - Color
+        - Color : 'Result' socket
         """
         return self.mix(factor=factor, other=other, clamp_result=clamp_result, clamp_factor=clamp_factor, blend_type='DIFFERENCE')
 
@@ -571,7 +595,7 @@ class Color(VectorLike):
 
         Returns
         -------
-        - Color
+        - Color : 'Result' socket
         """
         return self.mix(factor=factor, other=other, clamp_result=clamp_result, clamp_factor=clamp_factor, blend_type='EXCLUSION')
 
@@ -589,7 +613,7 @@ class Color(VectorLike):
 
         Returns
         -------
-        - Color
+        - Color : 'Result' socket
         """
         return self.mix(factor=factor, other=other, clamp_result=clamp_result, clamp_factor=clamp_factor, blend_type='SUBTRACT')
 
@@ -607,7 +631,7 @@ class Color(VectorLike):
 
         Returns
         -------
-        - Color
+        - Color : 'Result' socket
         """
         return self.mix(factor=factor, other=other, clamp_result=clamp_result, clamp_factor=clamp_factor, blend_type='DIVIDE')
 
@@ -625,7 +649,7 @@ class Color(VectorLike):
 
         Returns
         -------
-        - Color
+        - Color : 'Result' socket
         """
         return self.mix(factor=factor, other=other, clamp_result=clamp_result, clamp_factor=clamp_factor, blend_type='HUE')
 
@@ -643,7 +667,7 @@ class Color(VectorLike):
 
         Returns
         -------
-        - Color
+        - Color : 'Result' socket
         """
         return self.mix(factor=factor, other=other, clamp_result=clamp_result, clamp_factor=clamp_factor, blend_type='SATURATION')
 
@@ -661,7 +685,7 @@ class Color(VectorLike):
 
         Returns
         -------
-        - Color
+        - Color : 'Result' socket
         """
         return self.mix(factor=factor, other=other, clamp_result=clamp_result, clamp_factor=clamp_factor, blend_type='COLOR')
 
@@ -679,7 +703,7 @@ class Color(VectorLike):
 
         Returns
         -------
-        - Color
+        - Color : 'Result' socket
         """
         return self.mix(factor=factor, other=other, clamp_result=clamp_result, clamp_factor=clamp_factor, blend_type='VALUE')
 
@@ -696,7 +720,7 @@ class Color(VectorLike):
 
         Returns
         -------
-        - Color
+        - Color : 'Color' socket
         """
         return Node('RGB Curves', {'Fac': fac, 'Color': self}, _keep=keep)._out
 
@@ -714,7 +738,7 @@ class Color(VectorLike):
 
         Returns
         -------
-        - Boolean
+        - Boolean : 'Result' socket
         """
         # operation in ('EQUAL', 'NOT_EQUAL', 'BRIGHTER', 'DARKER')
         return Node("Compare", {'A': self, 'B': other, 'Epsilon': epsilon}, data_type='RGBA', operation='EQUAL')._out
@@ -731,7 +755,7 @@ class Color(VectorLike):
 
         Returns
         -------
-        - Boolean
+        - Boolean : 'Result' socket
         """
         return Node("Compare", {'A': self, 'B': other, 'Epsilon': epsilon}, data_type='RGBA', operation='NOT_EQUAL')._out
 
@@ -746,7 +770,7 @@ class Color(VectorLike):
 
         Returns
         -------
-        - Boolean
+        - Boolean : 'Result' socket
         """
         return Node("Compare", {'A': self, 'B': other}, data_type='RGBA', operation='BRIGHTER')._out
 
@@ -761,7 +785,7 @@ class Color(VectorLike):
 
         Returns
         -------
-        - Boolean
+        - Boolean : 'Result' socket
         """
         return Node("Compare", {'A': self, 'B': other}, data_type='RGBA', operation='DARKER')._out
 
@@ -769,6 +793,15 @@ class Color(VectorLike):
     # Shader
 
     def to_output(self, name=None):
+        """ > Connect to the output node
+
+        [!MIX]
+        [!ShaderNode] AOV Output
+
+        > [!IMPORTANT]
+        > - Geometry Nodes : create a group output socket with the provided name
+        > - Shader : create a node 'AOV Ouput'
+        """
         if self._tree._btree.bl_idname == 'ShaderNodeTree' and not self._tree._is_group:
             if name is None:
                 name = 'Color'
@@ -782,7 +815,8 @@ class Color(VectorLike):
     def Attribute(cls, name):
         """ Shader node Color Attribute.
 
-        [!Node] Color Attribute
+        [!SHADER]
+        [!ShaderNode] Color Attribute
 
         Arguments
         ---------
@@ -790,7 +824,7 @@ class Color(VectorLike):
 
         Returns
         -------
-        - Color [alpha_]
+        - Color : 'Color' socket, [alpha_]
 
         """
         node = Node('Color Attribute', layer_name=name)
@@ -801,7 +835,8 @@ class Color(VectorLike):
     def ambient_occlusion(self, distance=None, normal=None, inside=False, only_local=False, samples=16):
         """ Shader node Ambient Occlusion.
 
-        [!Node] Color Attribute
+        [!SHADER]
+        [!ShaderNode] Color Attribute
 
         Arguments
         ---------
@@ -813,7 +848,7 @@ class Color(VectorLike):
 
         Returns
         -------
-        - Color [ao_]
+        - Color : 'Color' socket, [ao_]
 
         """
         node = Node('Ambient Occlusion', {'Color': self, 'Distance': distance, 'Normal': normal}, inside=inside, only_local=only_local, samples=samples)
@@ -827,7 +862,8 @@ class Color(VectorLike):
     def Blackbody(cls, temperature=None):
         """ Constructor : Black body.
 
-        [!Node] Blackbody
+        [!SHADER]
+        [!ShaderNode] Blackbody
 
         Arguments
         ---------
@@ -835,7 +871,7 @@ class Color(VectorLike):
 
         Returns
         -------
-        - Color
+        - Color : 'Color' socket
         """
         return Node('Blackbody', {'Temperature': temperature})._out
 
@@ -843,7 +879,8 @@ class Color(VectorLike):
     def FromShader(cls, shader):
         """ Constructor : Shader to RGB.
 
-        [!Node] Shader to RGB
+        [!SHADER]
+        [!ShaderNode] Shader to RGB
 
         Arguments
         ---------
@@ -851,7 +888,7 @@ class Color(VectorLike):
 
         Returns
         -------
-        - Color [alpha_]
+        - Color : 'Color' socket, [alpha_]
         """
         node = Node('Shader to RGB', {'Shader': shader})
         col = node._out
@@ -862,7 +899,8 @@ class Color(VectorLike):
     def Wavelength(cls, wavelength=None):
         """ Constructor : Wave Length.
 
-        [!Node] Wavelength
+        [!SHADER]
+        [!ShaderNode] Wavelength
 
         Arguments
         ---------
@@ -870,7 +908,7 @@ class Color(VectorLike):
 
         Returns
         -------
-        - Color
+        - Color : 'Color' socket
         """
         return Node('Wavelength', {'Wavelength': wavelength})._out
 
@@ -878,11 +916,12 @@ class Color(VectorLike):
     def to_bw(self):
         """ Conversion to black and white.
 
-        [!Node] RGB to BW
+        [!SHADER]
+        [!ShaderNode] RGB to BW
 
         Returns
         -------
-        - Float
+        - Float : 'Val' socket
         """
         return Node('RGB to BW', {'Color': self})._out
 
@@ -891,7 +930,8 @@ class Color(VectorLike):
     def brightness_contrast(self, bright=None, contrast=None):
         """ Brightness and contrast.
 
-        [!Node] Brightness/Contrast
+        [!SHADER]
+        [!ShaderNode] Brightness/Contrast
 
         Arguments
         ---------
@@ -900,7 +940,7 @@ class Color(VectorLike):
 
         Returns
         -------
-        - Color
+        - Color : 'Color' socket
         """
         node = Node('Brightness/Contrast', {'Color': self, 'Bright': bright, 'Contrast': contrast})
         return node._out
@@ -908,7 +948,8 @@ class Color(VectorLike):
     def gamma(self, gamma=None):
         """ Gamma.
 
-        [!Node] Gamma
+        [!SHADER]
+        [!ShaderNode] Gamma
 
         Arguments
         ---------
@@ -916,7 +957,7 @@ class Color(VectorLike):
 
         Returns
         -------
-        - Color
+        - Color : 'Gamma' socket
         """
         node = Node('Gamma', {'Color': self, 'Gamma': gamma})
         return node._out
@@ -924,7 +965,8 @@ class Color(VectorLike):
     def hue_saturation_value(self, hue=None, saturation=None, value=None, fac=None):
         """ Hue / saturation / value.
 
-        [!Node] Hue/Saturation/Value
+        [!SHADER]
+        [!ShaderNode] Hue/Saturation/Value
 
         Arguments
         ---------
@@ -935,7 +977,7 @@ class Color(VectorLike):
 
         Returns
         -------
-        - Color
+        - Color : 'Color' socket
         """
         node = Node('Hue/Saturation/Value', {'Hue': hue, 'Saturation': saturation, 'Value': value, 'Fac': fac, 'Color': self})
         return node._out
@@ -943,7 +985,8 @@ class Color(VectorLike):
     def invert(self, fac=None):
         """ Invert.
 
-        [!Node] Invert Color
+        [!SHADER]
+        [!ShaderNode] Invert Color
 
         Arguments
         ---------
@@ -951,7 +994,7 @@ class Color(VectorLike):
 
         Returns
         -------
-        - Color
+        - Color : 'Color' socket
         """
         node = Node('Invert Color', {'Fac': fac, 'Color': self})
         return node._out
@@ -959,7 +1002,8 @@ class Color(VectorLike):
     def normal_map(self, strength=None, space='TANGENT', uv_map=''):
         """ Normal map.
 
-        [!Node] Normal Map
+        [!SHADER]
+        [!ShaderNode] Normal Map
 
         Arguments
         ---------
@@ -968,7 +1012,7 @@ class Color(VectorLike):
 
         Returns
         -------
-        - Color
+        - Color : 'Color' socket
         """
         node = Node('Normal Map', {'Strength': strength, 'Color': self}, space=space, uv_map=uv_map)
         return node._out
@@ -976,7 +1020,8 @@ class Color(VectorLike):
     def vector_displacement(self, midlevel=None, scale=None, space='TANGENT'):
         """ Normal map.
 
-        [!Node] Normal Map
+        [!SHADER]
+        [!ShaderNode] Vector Displacement
 
         Arguments
         ---------
@@ -987,7 +1032,7 @@ class Color(VectorLike):
 
         Returns
         -------
-        - Color
+        - Vector : 'Displacement' socket
         """
         node = Node('Vector Displacement', {'Vector': self, 'Midlevel': midlevel, 'Scale': scale}, space=space)
         return node._out

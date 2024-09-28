@@ -69,7 +69,6 @@ You will find here how nodes are implemented
 
 #### Blackbody
 
-- [Color](geono-color.md#color) :white_small_square: [Blackbody](geono-color.md#blackbody)
 - [nd](geono-nd.md#nd) :white_small_square: [blackbody](geono-nd.md#blackbody)
 - [snd](shade-shade1-snd.md#snd) :white_small_square: [blackbody](shade-shade1-snd.md#blackbody)
 
@@ -112,7 +111,6 @@ You will find here how nodes are implemented
 
 #### Brightness Contrast
 
-- [Color](geono-color.md#color) :white_small_square: [brightness_contrast](geono-color.md#brightness_contrast)
 - [snd](shade-shade1-snd.md#snd) :white_small_square: [brightness_contrast](shade-shade1-snd.md#brightness_contrast)
 
 #### Bump
@@ -156,8 +154,6 @@ You will find here how nodes are implemented
 
 #### Color Attribute
 
-- [Color](geono-color.md#color) :white_small_square: [Attribute](geono-color.md#attribute)
-- [Color](geono-color.md#color) :white_small_square: [ambient_occlusion](geono-color.md#ambient_occlusion)
 - [snd](shade-shade1-snd.md#snd) :white_small_square: [color_attribute](shade-shade1-snd.md#color_attribute)
 
 #### Color Ramp
@@ -518,7 +514,6 @@ You will find here how nodes are implemented
 
 #### Gamma
 
-- [Color](geono-color.md#color) :white_small_square: [gamma](geono-color.md#gamma)
 - [snd](shade-shade1-snd.md#snd) :white_small_square: [gamma](shade-shade1-snd.md#gamma)
 
 #### Geometry Proximity
@@ -602,7 +597,6 @@ You will find here how nodes are implemented
 
 #### Hue Saturation Value
 
-- [Color](geono-color.md#color) :white_small_square: [hue_saturation_value](geono-color.md#hue_saturation_value)
 - [snd](shade-shade1-snd.md#snd) :white_small_square: [hue_saturation_value](shade-shade1-snd.md#hue_saturation_value)
 
 #### Ico Sphere
@@ -683,7 +677,6 @@ You will find here how nodes are implemented
 
 #### Invert Color
 
-- [Color](geono-color.md#color) :white_small_square: [invert](geono-color.md#invert)
 - [snd](shade-shade1-snd.md#snd) :white_small_square: [invert_color](shade-shade1-snd.md#invert_color)
 
 #### Invert Matrix
@@ -959,8 +952,6 @@ You will find here how nodes are implemented
 
 #### Normal Map
 
-- [Color](geono-color.md#color) :white_small_square: [normal_map](geono-color.md#normal_map)
-- [Color](geono-color.md#color) :white_small_square: [vector_displacement](geono-color.md#vector_displacement)
 - [snd](shade-shade1-snd.md#snd) :white_small_square: [normal_map](shade-shade1-snd.md#normal_map)
 
 #### Object Info
@@ -1141,7 +1132,6 @@ You will find here how nodes are implemented
 
 #### RGB to BW
 
-- [Color](geono-color.md#color) :white_small_square: [to_bw](geono-color.md#to_bw)
 - [snd](shade-shade1-snd.md#snd) :white_small_square: [rgb_to_bw](shade-shade1-snd.md#rgb_to_bw)
 
 #### Rotate Euler
@@ -1231,6 +1221,9 @@ You will find here how nodes are implemented
 
 #### Separate Color
 
+- [Color](geono-color.md#color) :white_small_square: [HSL](geono-color.md#hsl)
+- [Color](geono-color.md#color) :white_small_square: [HSV](geono-color.md#hsv)
+- [Color](geono-color.md#color) :white_small_square: [RGB](geono-color.md#rgb)
 - [Color](geono-color.md#color) :white_small_square: [alpha](geono-color.md#alpha)
 - [Color](geono-color.md#color) :white_small_square: [blue](geono-color.md#blue)
 - [Color](geono-color.md#color) :white_small_square: [green](geono-color.md#green)
@@ -1351,7 +1344,6 @@ You will find here how nodes are implemented
 
 #### Shader to RGB
 
-- [Color](geono-color.md#color) :white_small_square: [FromShader](geono-color.md#fromshader)
 - [snd](shade-shade1-snd.md#snd) :white_small_square: [shader_to_rgb](shade-shade1-snd.md#shader_to_rgb)
 
 #### Sheen BSDF
@@ -1661,7 +1653,6 @@ You will find here how nodes are implemented
 
 #### Wavelength
 
-- [Color](geono-color.md#color) :white_small_square: [Wavelength](geono-color.md#wavelength)
 - [snd](shade-shade1-snd.md#snd) :white_small_square: [wavelength](shade-shade1-snd.md#wavelength)
 
 #### White Noise Texture
