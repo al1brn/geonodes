@@ -161,7 +161,7 @@ Saturation component
 
 Conversion to black and white.
 
-> ShaderNodes node
+> ShaderNodes only
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Properties](geono-color.md#properties)</sub>
 
@@ -217,7 +217,7 @@ ambient_occlusion(distance=None, normal=None, inside=False, only_local=False, sa
 
 Shader node Ambient Occlusion.
 
-> ShaderNodes node
+> ShaderNodes only
 
 
 
@@ -246,7 +246,7 @@ Attribute(name)
 
 Shader node Color Attribute.
 
-> ShaderNodes node
+> ShaderNodes only
 
 
 
@@ -271,7 +271,7 @@ Blackbody(temperature=None)
 
 Constructor : Black body.
 
-> ShaderNodes node
+> ShaderNodes only
 
 
 
@@ -319,7 +319,7 @@ brightness_contrast(bright=None, contrast=None)
 
 Brightness and contrast.
 
-> ShaderNodes node
+> ShaderNodes only
 
 
 
@@ -701,7 +701,7 @@ FromShader(shader)
 
 Constructor : Shader to RGB.
 
-> ShaderNodes node
+> ShaderNodes only
 
 
 
@@ -726,7 +726,7 @@ gamma(gamma=None)
 
 Gamma.
 
-> ShaderNodes node
+> ShaderNodes only
 
 
 
@@ -751,7 +751,7 @@ hue_saturation_value(hue=None, saturation=None, value=None, fac=None)
 
 Hue / saturation / value.
 
-> ShaderNodes node
+> ShaderNodes only
 
 
 
@@ -779,7 +779,7 @@ invert(fac=None)
 
 Invert.
 
-> ShaderNodes node
+> ShaderNodes only
 
 
 
@@ -1013,7 +1013,7 @@ normal_map(strength=None, space='TANGENT', uv_map='')
 
 Normal map.
 
-> ShaderNodes node
+> ShaderNodes only
 
 
 
@@ -1168,7 +1168,8 @@ to_output(name=None)
 
 > Connect to the output node
 
-> GeoNodes or ShaderNodes
+> [!IMPORTANT]
+> Behaves differently in GeoNodes and ShaderNodes
 
 
 
@@ -1192,7 +1193,7 @@ vector_displacement(midlevel=None, scale=None, space='TANGENT')
 
 Vector displacement
 
-> ShaderNodes node
+> ShaderNodes only
 
 
 
@@ -1219,7 +1220,7 @@ Wavelength(wavelength=None)
 
 Constructor : Wave Length.
 
-> ShaderNodes node
+> ShaderNodes only
 
 
 
