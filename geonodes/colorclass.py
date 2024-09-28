@@ -797,7 +797,7 @@ class Color(VectorLike):
 
         > [!IMPORTANT]
         > - Geometry Nodes : create a group output socket with the provided name
-        > - Shader : create a node [!ShaderNode] AOV Output
+        > - Shader : create a node <&ShaderNode AOV Output>
         """
         if self._tree._btree.bl_idname == 'ShaderNodeTree' and not self._tree._is_group:
             if name is None:

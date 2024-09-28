@@ -512,18 +512,54 @@ class Float(IntFloat):
             return Node('Math', {0: self}, operation='ROUND')._out
 
     def floor(self):
+        """ > Floor
+
+        [!MIX]
+
+        > [!IMPORTANT]
+        > - **GeoNodes** : <&Node Float to Integer>
+        > - **ShaderNodes** : <&Node Math>
+
+        Returns
+        -------
+        - Float or Integer
+        """
         if Tree.is_geonodes:
             return self.to_integer(rounding_mode='FLOOR')
         else:
             return Node('Math', {0: self}, operation='FLOOR')._out
 
     def ceiling(self):
+        """ > Ceiling
+
+        [!MIX]
+
+        > [!IMPORTANT]
+        > - **GeoNodes** : <&Node Float to Integer>
+        > - **ShaderNodes** : <&Node Math>
+
+        Returns
+        -------
+        - Float or Integer
+        """
         if Tree.is_geonodes:
             return self.to_integer(rounding_mode='CEILING')
         else:
             return Node('Math', {0: self}, operation='CEIL')._out
 
     def truncate(self):
+        """ > Truncate
+
+        [!MIX]
+
+        > [!IMPORTANT]
+        > - **GeoNodes** : <&Node Float to Integer>
+        > - **ShaderNodes** : <&Node Math>
+
+        Returns
+        -------
+        - Float or Integer
+        """
         if Tree.is_geonodes:
             return self.to_integer(rounding_mode='TRUNCATE')
         else:
@@ -533,9 +569,13 @@ class Float(IntFloat):
     # Comparison
 
     def less_than(self, other):
-        """ Node 'Compare' (FunctionNodeCompare)
+        """ > Less than another value
 
-        [!Node] Compare
+        [!MIX]
+
+        > [!IMPORTANT]
+        > - **GeoNodes** : <&Node Compare>
+        > - **ShaderNodes** : <&Node Math>
 
         Arguments
         ---------
@@ -543,7 +583,7 @@ class Float(IntFloat):
 
         Returns
         -------
-        - Boolean
+        - Boolean or Float
         """
         if Tree.is_geonodes:
             return Node("Compare", {'A': self, 'B': other}, operation='LESS_THAN', data_type='FLOAT')._out
@@ -551,9 +591,9 @@ class Float(IntFloat):
             return Node('Math', {0: self, 1: other}, operation='LESS_THAN')._out
 
     def less_equal(self, other):
-        """ Node 'Compare' (FunctionNodeCompare)
+        """ > Less than another value
 
-        [!Node] Compare
+        > Node <&Node Compare>
 
         Arguments
         ---------
@@ -566,9 +606,13 @@ class Float(IntFloat):
         return Node("Compare", {'A': self, 'B': other}, operation='LESS_EQUAL', data_type='FLOAT')._out
 
     def greater_than(self, other):
-        """ Node 'Compare' (FunctionNodeCompare)
+        """ > Greater than another value
 
-        [!Node] Compare
+        [!MIX]
+
+        > [!IMPORTANT]
+        > - **GeoNodes** : <&Node Compare>
+        > - **ShaderNodes** : <&Node Math>
 
         Arguments
         ---------
@@ -576,7 +620,7 @@ class Float(IntFloat):
 
         Returns
         -------
-        - Boolean
+        - Boolean or Float
         """
         if Tree.is_geonodes:
             return Node("Compare", {'A': self, 'B': other}, operation='GREATER_THAN', data_type='FLOAT')._out
@@ -584,9 +628,9 @@ class Float(IntFloat):
             return Node('Math', {0: self, 1: other}, operation='GREATER_THAN')._out
 
     def greater_equal(self, other):
-        """ Node 'Compare' (FunctionNodeCompare)
+        """ > Greater than another value
 
-        [!Node] Compare
+        > Node <&Node Compare>
 
         Arguments
         ---------
@@ -599,9 +643,13 @@ class Float(IntFloat):
         return Node("Compare", {'A': self, 'B': other}, operation='GREATER_EQUAL', data_type='FLOAT')._out
 
     def equal(self, other, epsilon=None):
-        """ Node 'Compare' (FunctionNodeCompare)
+        """ > Equal to another value
 
-        [!Node] Compare
+        [!MIX]
+
+        > [!IMPORTANT]
+        > - **GeoNodes** : <&Node Compare>
+        > - **ShaderNodes** : <&Node Math>
 
         Arguments
         ---------
@@ -610,7 +658,7 @@ class Float(IntFloat):
 
         Returns
         -------
-        - Boolean
+        - Boolean or Float
         """
         if Tree.is_geonodes:
             return Node("Compare", {'A': self, 'B': other, 'Epsilon': epsilon}, operation='EQUAL', data_type='FLOAT')._out
@@ -618,9 +666,9 @@ class Float(IntFloat):
             return Node('Math', {0: self, 1: other, 2: epsilon}, operation='COMPARE')._out
 
     def not_equal(self, other, epsilon=None):
-        """ Node 'Compare' (FunctionNodeCompare)
+        """ > Not equal to another value
 
-        [!Node] Compare
+        > Node <&Node Compare>
 
         Arguments
         ---------
@@ -637,6 +685,14 @@ class Float(IntFloat):
     # Output
 
     def to_output(self, name=None):
+        """ > Connect to output
+
+        [!MIX]
+
+        > [!IMPORTANT]
+        > - Geometry Nodes : create a group output socket with the provided name
+        > - Shader : create a node <&ShaderNode AOV Output>
+        """
         if self._tree._btree.bl_idname == 'ShaderNodeTree' and not self._tree._is_group:
             if name is None:
                 self._tree.set_thickness(self)

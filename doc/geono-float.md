@@ -44,17 +44,17 @@ float = Float(3.14, name="User input", subtype='ANGLE') # Create a new float gro
 ## Content
 
 - **A** : [Angle](geono-float.md#angle)
-- **C** : [clamp](geono-float.md#clamp) :black_small_square: [color_ramp](geono-float.md#color_ramp) :black_small_square: [curve](geono-float.md#curve)
+- **C** : [ceiling](geono-float.md#ceiling) :black_small_square: [clamp](geono-float.md#clamp) :black_small_square: [color_ramp](geono-float.md#color_ramp) :black_small_square: [curve](geono-float.md#curve)
 - **D** : [Distance](geono-float.md#distance)
 - **E** : [equal](geono-float.md#equal)
-- **F** : [Factor](geono-float.md#factor)
+- **F** : [Factor](geono-float.md#factor) :black_small_square: [floor](geono-float.md#floor)
 - **G** : [greater_equal](geono-float.md#greater_equal) :black_small_square: [greater_than](geono-float.md#greater_than)
 - **L** : [less_equal](geono-float.md#less_equal) :black_small_square: [less_than](geono-float.md#less_than)
 - **M** : [map_range](geono-float.md#map_range) :black_small_square: [map_range_linear](geono-float.md#map_range_linear) :black_small_square: [map_range_smooth](geono-float.md#map_range_smooth) :black_small_square: [map_range_smoother](geono-float.md#map_range_smoother) :black_small_square: [map_range_stepped](geono-float.md#map_range_stepped) :black_small_square: [mix](geono-float.md#mix)
 - **N** : [Named](geono-float.md#named) :black_small_square: [NamedAttribute](geono-float.md#namedattribute) :black_small_square: [not_equal](geono-float.md#not_equal)
 - **P** : [Percentage](geono-float.md#percentage)
 - **R** : [Random](geono-float.md#random) :black_small_square: [round](geono-float.md#round)
-- **T** : [Time](geono-float.md#time) :black_small_square: [TimeAbsolute](geono-float.md#timeabsolute) :black_small_square: [to_integer](geono-float.md#to_integer) :black_small_square: [to_string](geono-float.md#to_string)
+- **T** : [Time](geono-float.md#time) :black_small_square: [TimeAbsolute](geono-float.md#timeabsolute) :black_small_square: [to_integer](geono-float.md#to_integer) :black_small_square: [to_output](geono-float.md#to_output) :black_small_square: [to_string](geono-float.md#to_string) :black_small_square: [truncate](geono-float.md#truncate)
 - **W** : [WaveLength](geono-float.md#wavelength)
 
 ## Methods
@@ -78,6 +78,29 @@ Angle(value=0.0, name='Angle', min=None, max=None, tip=None)
 - **min** ( = None)
 - **max** ( = None)
 - **tip** ( = None)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](geono-float.md#float) :black_small_square: [Content](geono-float.md#content) :black_small_square: [Methods](geono-float.md#methods)</sub>
+
+----------
+### ceiling()
+
+> method
+
+``` python
+ceiling()
+```
+
+> Ceiling
+
+:hotsprings: Behaves differently in **GeoNodes** and **ShaderNodes**
+
+
+> [!IMPORTANT]
+> - **GeoNodes** : [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/float_to_integer.html)
+> - **ShaderNodes** : [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](geono-float.md#float) :black_small_square: [Content](geono-float.md#content) :black_small_square: [Methods](geono-float.md#methods)</sub>
 
@@ -182,9 +205,14 @@ Distance(value=0.0, name='Distance', min=None, max=None, tip=None)
 equal(other, epsilon=None)
 ```
 
-> **node** : [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+> Equal to another value
 
-[Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+:hotsprings: Behaves differently in **GeoNodes** and **ShaderNodes**
+
+
+> [!IMPORTANT]
+> - **GeoNodes** : [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+> - **ShaderNodes** : [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Arguments:
 - **other** (_Float_) : socket 'B' (B)
@@ -218,6 +246,29 @@ Factor(value=0.0, name='Factor', min=0, max=1, tip=None)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](geono-float.md#float) :black_small_square: [Content](geono-float.md#content) :black_small_square: [Methods](geono-float.md#methods)</sub>
 
 ----------
+### floor()
+
+> method
+
+``` python
+floor()
+```
+
+> Floor
+
+:hotsprings: Behaves differently in **GeoNodes** and **ShaderNodes**
+
+
+> [!IMPORTANT]
+> - **GeoNodes** : [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/float_to_integer.html)
+> - **ShaderNodes** : [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](geono-float.md#float) :black_small_square: [Content](geono-float.md#content) :black_small_square: [Methods](geono-float.md#methods)</sub>
+
+----------
 ### greater_equal()
 
 > method
@@ -226,9 +277,9 @@ Factor(value=0.0, name='Factor', min=0, max=1, tip=None)
 greater_equal(other)
 ```
 
-> **node** : [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+> Greater than another value
 
-[Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+> Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
 #### Arguments:
 - **other** (_Float_) : socket 'B' (B)
@@ -249,9 +300,14 @@ greater_equal(other)
 greater_than(other)
 ```
 
-> **node** : [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+> Greater than another value
 
-[Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+:hotsprings: Behaves differently in **GeoNodes** and **ShaderNodes**
+
+
+> [!IMPORTANT]
+> - **GeoNodes** : [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+> - **ShaderNodes** : [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Arguments:
 - **other** (_Float_) : socket 'B' (B)
@@ -272,9 +328,9 @@ greater_than(other)
 less_equal(other)
 ```
 
-> **node** : [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+> Less than another value
 
-[Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+> Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
 #### Arguments:
 - **other** (_Float_) : socket 'B' (B)
@@ -295,9 +351,14 @@ less_equal(other)
 less_than(other)
 ```
 
-> **node** : [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+> Less than another value
 
-[Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+:hotsprings: Behaves differently in **GeoNodes** and **ShaderNodes**
+
+
+> [!IMPORTANT]
+> - **GeoNodes** : [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+> - **ShaderNodes** : [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Arguments:
 - **other** (_Float_) : socket 'B' (B)
@@ -563,9 +624,9 @@ with GeoNodes("Named Attributes"):
 not_equal(other, epsilon=None)
 ```
 
-> **node** : [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+> Not equal to another value
 
-[Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+> Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
 #### Arguments:
 - **other** (_Float_) : socket 'B' (B)
@@ -701,6 +762,29 @@ to_integer(rounding_mode=None)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](geono-float.md#float) :black_small_square: [Content](geono-float.md#content) :black_small_square: [Methods](geono-float.md#methods)</sub>
 
 ----------
+### to_output()
+
+> method
+
+``` python
+to_output(name=None)
+```
+
+> Connect to output
+
+:hotsprings: Behaves differently in **GeoNodes** and **ShaderNodes**
+
+
+> [!IMPORTANT]
+> - Geometry Nodes : create a group output socket with the provided name
+> - Shader : create a node [AOV Output](https://docs.blender.org/manual/en/latest/render/shader_nodes/output/aov.html)
+
+#### Arguments:
+- **name** ( = None)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](geono-float.md#float) :black_small_square: [Content](geono-float.md#content) :black_small_square: [Methods](geono-float.md#methods)</sub>
+
+----------
 ### to_string()
 
 > method
@@ -720,6 +804,29 @@ to_string(decimals=None)
 
 #### Returns:
 - **String** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](geono-float.md#float) :black_small_square: [Content](geono-float.md#content) :black_small_square: [Methods](geono-float.md#methods)</sub>
+
+----------
+### truncate()
+
+> method
+
+``` python
+truncate()
+```
+
+> Truncate
+
+:hotsprings: Behaves differently in **GeoNodes** and **ShaderNodes**
+
+
+> [!IMPORTANT]
+> - **GeoNodes** : [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/float_to_integer.html)
+> - **ShaderNodes** : [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](geono-float.md#float) :black_small_square: [Content](geono-float.md#content) :black_small_square: [Methods](geono-float.md#methods)</sub>
 

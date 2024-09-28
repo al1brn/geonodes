@@ -170,16 +170,10 @@ You will find here how nodes are implemented
 - [Color](geono-color.md#color) :white_small_square: [equal](geono-color.md#equal)
 - [Color](geono-color.md#color) :white_small_square: [not_equal](geono-color.md#not_equal)
 - [Float](geono-float.md#float) :white_small_square: [equal](geono-float.md#equal)
-- [Float](geono-float.md#float) :white_small_square: [equal](geono-float.md#equal)
-- [Float](geono-float.md#float) :white_small_square: [greater_equal](geono-float.md#greater_equal)
 - [Float](geono-float.md#float) :white_small_square: [greater_equal](geono-float.md#greater_equal)
 - [Float](geono-float.md#float) :white_small_square: [greater_than](geono-float.md#greater_than)
-- [Float](geono-float.md#float) :white_small_square: [greater_than](geono-float.md#greater_than)
-- [Float](geono-float.md#float) :white_small_square: [less_equal](geono-float.md#less_equal)
 - [Float](geono-float.md#float) :white_small_square: [less_equal](geono-float.md#less_equal)
 - [Float](geono-float.md#float) :white_small_square: [less_than](geono-float.md#less_than)
-- [Float](geono-float.md#float) :white_small_square: [less_than](geono-float.md#less_than)
-- [Float](geono-float.md#float) :white_small_square: [not_equal](geono-float.md#not_equal)
 - [Float](geono-float.md#float) :white_small_square: [not_equal](geono-float.md#not_equal)
 - [Integer](geono-integer.md#integer) :white_small_square: [equal](geono-integer.md#equal)
 - [Integer](geono-integer.md#integer) :white_small_square: [equal](geono-integer.md#equal)
@@ -541,8 +535,11 @@ You will find here how nodes are implemented
 
 #### Float to Integer
 
+- [Float](geono-float.md#float) :white_small_square: [ceiling](geono-float.md#ceiling)
+- [Float](geono-float.md#float) :white_small_square: [floor](geono-float.md#floor)
 - [Float](geono-float.md#float) :white_small_square: [round](geono-float.md#round)
 - [Float](geono-float.md#float) :white_small_square: [to_integer](geono-float.md#to_integer)
+- [Float](geono-float.md#float) :white_small_square: [truncate](geono-float.md#truncate)
 - [ceil](geono-gnmat---gnmath.md#ceil)
 - [floor](geono-gnmat---gnmath.md#floor)
 - [round](geono-gnmat---gnmath.md#round)
@@ -802,7 +799,13 @@ You will find here how nodes are implemented
 
 #### Math
 
+- [Float](geono-float.md#float) :white_small_square: [ceiling](geono-float.md#ceiling)
+- [Float](geono-float.md#float) :white_small_square: [equal](geono-float.md#equal)
+- [Float](geono-float.md#float) :white_small_square: [floor](geono-float.md#floor)
+- [Float](geono-float.md#float) :white_small_square: [greater_than](geono-float.md#greater_than)
+- [Float](geono-float.md#float) :white_small_square: [less_than](geono-float.md#less_than)
 - [Float](geono-float.md#float) :white_small_square: [round](geono-float.md#round)
+- [Float](geono-float.md#float) :white_small_square: [truncate](geono-float.md#truncate)
 - [abs](geono-gnmat---gnmath.md#abs)
 - [acos](geono-gnmat---gnmath.md#acos)
 - [add](geono-gnmat---gnmath.md#add)
