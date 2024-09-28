@@ -32,7 +32,7 @@ CloudPoint(geometry)
 
 > **node** : [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
 
-[Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
+> Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
 
 Socket 'Point Count' of node 'Domain Size'
 
@@ -45,7 +45,7 @@ Socket 'Point Count' of node 'Domain Size'
 
 > **node** : [Radius](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/radius.html)
 
-[Radius](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/radius.html)
+> Node [Radius](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/radius.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [CloudPoint](geono-cloudpoint.md#cloudpoint) :black_small_square: [Content](geono-cloudpoint.md#content) :black_small_square: [Properties](geono-cloudpoint.md#properties)</sub>
 
@@ -64,7 +64,7 @@ instance_on(instance=None, pick_instance=None, instance_index=None, rotation=Non
 
 > **node** : [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html)
 
-[Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html)
+> Node [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html)
 
 #### Arguments:
 - **instance** (_Geometry_ = None) : socket 'Instance' (Instance)

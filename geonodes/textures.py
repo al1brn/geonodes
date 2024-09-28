@@ -55,7 +55,7 @@ class Texture(TextureRoot):
         bias=None, brick_width=None, row_height=None):
         """ Node 'Brick Texture' (ShaderNodeTexBrick)
 
-        [!Node] Brick Texture
+        > Node <&Node Brick Texture>
 
         Arguments
         ---------
@@ -81,7 +81,7 @@ class Texture(TextureRoot):
     def Checker(vector=None, color1=None, color2=None, scale=None):
         """ Node 'Checker Texture' (ShaderNodeTexChecker)
 
-        [!Node] Checker Texture
+        > Node <&Node Checker Texture>
 
         Arguments
         ---------
@@ -100,7 +100,7 @@ class Texture(TextureRoot):
     def Gradient(vector=None):
         """ Node 'Gradient Texture' (ShaderNodeTexGradient)
 
-        [!Node] Gradient Texture
+        > Node <&Node Gradient Texture>
 
         Arguments
         ---------
@@ -116,7 +116,7 @@ class Texture(TextureRoot):
     def Image(image=None, vector=None, frame=None, interpolation='Linear', extension='REPEAT'):
         """ Node 'Image Texture' (GeometryNodeImageTexture)
 
-        [!Node] Image Texture
+        > Node <&Node Image Texture>
 
         Arguments
         ---------
@@ -137,7 +137,7 @@ class Texture(TextureRoot):
     def Magic(vector=None, scale=None, distortion=None):
         """ Node 'Magic Texture' (ShaderNodeTexMagic)
 
-        [!Node] Magic Texture
+        > Node <&Node Magic Texture>
 
         Arguments
         ---------
@@ -156,7 +156,7 @@ class Texture(TextureRoot):
         dim='3D', noise_type='FBM'):
         """ Node 'Noise Texture' (ShaderNodeTexNoise)
 
-        [!Node] Noise Texture
+        > Node <&Node Noise Texture>
 
         Arguments
         ---------
@@ -185,7 +185,7 @@ class Texture(TextureRoot):
         exponent=None, randomness=None, dim='3D', feature='F1', distance='EUCLIDEAN'):
         """ Node 'Voronoi Texture' (ShaderNodeTexVoronoi)
 
-        [!Node] Voronoi Texture
+        > Node <&Node Voronoi Texture>
 
         Arguments
         ---------
@@ -215,7 +215,7 @@ class Texture(TextureRoot):
         wave_type = 'BANDS', bands_direction='X', rings_direction='X', wave_profile='SIN'):
         """ Node 'Wave Texture' (ShaderNodeTexWave)
 
-        [!Node] Wave Texture
+        > Node <&Node Wave Texture>
 
         Arguments
         ---------
@@ -243,7 +243,7 @@ class Texture(TextureRoot):
     def WhiteNoise(vector=None, w=None, dim='3D'):
         """ Node 'White Noise Texture' (ShaderNodeTexWhiteNoise)
 
-        [!Node] White Noise Texture
+        > Node <&Node White Noise Texture>
 
         Arguments
         ---------

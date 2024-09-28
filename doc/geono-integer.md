@@ -6,15 +6,31 @@
 Integer(value=0, name=None, min=None, max=None, tip=None, subtype='NONE')
 ```
 
+> Socket of type INTEGER
 
+> Node [Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/constant/value.html)
+
+If **value** argument is None:
+- if **name** argument is None, a node 'Integer' is added
+- otherwise a new group input is created using **min**, **max**, **tip** and **subtype**
+  arguments
+
+If **value** argument is not None, a new **Integer** is created from the value, either
+by transtyping or creating a 'Value' node.
+
+``` python
+i = Integer()      # 'Integer' node with default initial vlaue
+i = Integer(123). # 'Integer' node with 123 initial value
+i = Integer(123, name="User input", subtype='PERCENTAGE') # Create a new integer group input
+```
 
 #### Arguments:
-- **value** ( = 0)
-- **name** ( = None)
-- **min** ( = None)
-- **max** ( = None)
-- **tip** ( = None)
-- **subtype** ( = NONE)
+- **value** (_integer or Socket_ = 0) : initial value
+- **name** (_str_ = None) : Create an Group Input socket with the provided str if not None
+- **min** (_float_ = None) : minimum value
+- **max** (_float_ = None) : maximum value
+- **tip** (_str_ = None) : User tip (for Group Input sockets)
+- **subtype** (_str_ = NONE) : sub type for group input
 
 ### Inherited
 
@@ -24,10 +40,12 @@ Integer(value=0, name=None, min=None, max=None, tip=None, subtype='NONE')
 
 - **C** : [clamp](geono-integer.md#clamp) :black_small_square: [color_ramp](geono-integer.md#color_ramp) :black_small_square: [curve](geono-integer.md#curve)
 - **E** : [equal](geono-integer.md#equal)
+- **F** : [Factor](geono-integer.md#factor)
 - **G** : [greater_equal](geono-integer.md#greater_equal) :black_small_square: [greater_than](geono-integer.md#greater_than)
 - **L** : [less_equal](geono-integer.md#less_equal) :black_small_square: [less_than](geono-integer.md#less_than)
 - **M** : [map_range](geono-integer.md#map_range) :black_small_square: [map_range_linear](geono-integer.md#map_range_linear) :black_small_square: [map_range_smooth](geono-integer.md#map_range_smooth) :black_small_square: [map_range_smoother](geono-integer.md#map_range_smoother) :black_small_square: [map_range_stepped](geono-integer.md#map_range_stepped) :black_small_square: [mix](geono-integer.md#mix)
 - **N** : [Named](geono-integer.md#named) :black_small_square: [NamedAttribute](geono-integer.md#namedattribute) :black_small_square: [not_equal](geono-integer.md#not_equal)
+- **P** : [Percentage](geono-integer.md#percentage)
 - **T** : [to_string](geono-integer.md#to_string)
 
 ## Methods
@@ -45,7 +63,7 @@ clamp(min=None, max=None, clamp_type='MINMAX')
 
 > Clamp
 
-[Clamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/clamp.html)
+> Node [Clamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/clamp.html)
 
 #### Arguments:
 - **min** (_Float_ = None) : socket 'Min' (Min)
@@ -70,7 +88,7 @@ color_ramp(keep=None)
 
 > Color Ramp
 
-[Color Ramp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/color_ramp.html)
+> Node [Color Ramp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/color_ramp.html)
 
 #### Arguments:
 - **keep** ( = None)
@@ -93,7 +111,7 @@ curve(factor=None, keep=None)
 
 > Float Curve
 
-ERROR: Node 'Float Curve' not found
+> Node ERROR: Node 'Float Curve' not found
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket 'Factor' (Factor)
@@ -117,7 +135,7 @@ equal(other)
 
 > **node** : [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
-[Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+> Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
 #### Arguments:
 - **other** (_Float_) : socket 'B' (B)
@@ -126,6 +144,26 @@ equal(other)
 
 #### Returns:
 - **Boolean** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](geono-integer.md#integer) :black_small_square: [Content](geono-integer.md#content) :black_small_square: [Methods](geono-integer.md#methods)</sub>
+
+----------
+### Factor()
+
+> classmethod
+
+``` python
+Factor(value=0, name='Factor', min=100, max=100, tip=None)
+```
+
+> Integer factor group input
+
+#### Arguments:
+- **value** ( = 0)
+- **name** ( = Factor)
+- **min** ( = 100)
+- **max** ( = 100)
+- **tip** ( = None)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](geono-integer.md#integer) :black_small_square: [Content](geono-integer.md#content) :black_small_square: [Methods](geono-integer.md#methods)</sub>
 
@@ -140,7 +178,7 @@ greater_equal(other)
 
 > **node** : [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
-[Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+> Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
 #### Arguments:
 - **other** (_Float_) : socket 'B' (B)
@@ -163,7 +201,7 @@ greater_than(other)
 
 > **node** : [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
-[Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+> Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
 #### Arguments:
 - **other** (_Float_) : socket 'B' (B)
@@ -186,7 +224,7 @@ less_equal(other)
 
 > **node** : [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
-[Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+> Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
 #### Arguments:
 - **other** (_Float_) : socket 'B' (B)
@@ -209,7 +247,7 @@ less_than(other)
 
 > **node** : [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
-[Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+> Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
 #### Arguments:
 - **other** (_Float_) : socket 'B' (B)
@@ -232,7 +270,7 @@ map_range(from_min=None, from_max=None, to_min=None, to_max=None, clamp=None, in
 
 > Map range
 
-[Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
+> Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
 
 #### Arguments:
 - **from_min** (_Float_ = None) : socket 'From Min' (From Min)
@@ -260,7 +298,7 @@ map_range_linear(from_min=None, from_max=None, to_min=None, to_max=None, clamp=N
 
 > Map Range, LINEAR interpolation
 
-[Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
+> Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
 
 #### Arguments:
 - **from_min** (_Float_ = None) : socket 'From Min' (From Min)
@@ -287,7 +325,7 @@ map_range_smooth(from_min=None, from_max=None, to_min=None, to_max=None, clamp=N
 
 > Map Range, SMOOTH interpolation
 
-[Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
+> Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
 
 #### Arguments:
 - **from_min** (_Float_ = None) : socket 'From Min' (From Min)
@@ -314,7 +352,7 @@ map_range_smoother(from_min=None, from_max=None, to_min=None, to_max=None, clamp
 
 > Map Range, SMOOTHER interpolation
 
-[Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
+> Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
 
 #### Arguments:
 - **from_min** (_Float_ = None) : socket 'From Min' (From Min)
@@ -341,7 +379,7 @@ map_range_stepped(from_min=None, from_max=None, to_min=None, to_max=None, clamp=
 
 > Map Range, STEPPED interpolation
 
-[Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
+> Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
 
 #### Arguments:
 - **from_min** (_Float_ = None) : socket 'From Min' (From Min)
@@ -368,7 +406,7 @@ mix(factor=None, other=None, clamp_factor=None)
 
 > Mix
 
-[Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+> Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket 'Factor' (Factor_Float)
@@ -393,7 +431,7 @@ Named(name)
 
 > **node** : [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
-[Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
+> Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
 'Named' is a synonym of 'NamedAttribute'
 
@@ -435,7 +473,7 @@ NamedAttribute(name)
 
 > **node** : [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
-[Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
+> Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
 'Named' is a synonym of 'NamedAttribute'
 
@@ -477,7 +515,7 @@ not_equal(other)
 
 > **node** : [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
-[Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+> Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
 #### Arguments:
 - **other** (_Float_) : socket 'B' (B)
@@ -486,6 +524,26 @@ not_equal(other)
 
 #### Returns:
 - **Boolean** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](geono-integer.md#integer) :black_small_square: [Content](geono-integer.md#content) :black_small_square: [Methods](geono-integer.md#methods)</sub>
+
+----------
+### Percentage()
+
+> classmethod
+
+``` python
+Percentage(value=0, name='Percentage', min=0, max=100, tip=None)
+```
+
+> Integer percentage group input
+
+#### Arguments:
+- **value** ( = 0)
+- **name** ( = Percentage)
+- **min** ( = 0)
+- **max** ( = 100)
+- **tip** ( = None)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](geono-integer.md#integer) :black_small_square: [Content](geono-integer.md#content) :black_small_square: [Methods](geono-integer.md#methods)</sub>
 
@@ -500,7 +558,7 @@ to_string(decimals=None)
 
 > To String
 
-[Value to String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/value_to_string.html)
+> Node [Value to String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/value_to_string.html)
 
 #### Arguments:
 - **decimals** (_Integer_ = None) : socket 'Decimals' (Decimals)

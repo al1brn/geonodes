@@ -8,7 +8,7 @@ Float(value=0.0, name=None, min=None, max=None, tip=None, subtype='NONE')
 
 > Socket of type VALUE
 
-[Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/constant/value.html)
+> Node [Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/constant/value.html)
 
 If **value** argument is None:
 - if **name** argument is None, a node 'Value' is added
@@ -25,17 +25,12 @@ float = Float(3.14, name="User input", subtype='ANGLE') # Create a new float gro
 ```
 
 #### Arguments:
-- **value** (_tuple or Socket_ = 0.0) : initial value
+- **value** (_float or Socket_ = 0.0) : initial value
 - **name** (_str_ = None) : Create an Group Input socket with the provided str if not None
 - **min** (_float_ = None) : minimum value
 - **max** (_float_ = None) : maximum value
 - **tip** (_str_ = None) : User tip (for Group Input sockets)
 - **subtype** (_str_ = NONE) : sub type for group input
-
-
-
-#### Returns:
-- **Float** : 
 
 ### Inherited
 
@@ -115,7 +110,7 @@ clamp(min=None, max=None, clamp_type='MINMAX')
 
 > Clamp
 
-[Clamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/clamp.html)
+> Node [Clamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/clamp.html)
 
 #### Arguments:
 - **min** (_Float_ = None) : socket 'Min' (Min)
@@ -140,7 +135,7 @@ color_ramp(keep=None)
 
 > Color Ramp
 
-[Color Ramp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/color_ramp.html)
+> Node [Color Ramp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/color_ramp.html)
 
 #### Arguments:
 - **keep** ( = None)
@@ -163,7 +158,7 @@ curve(factor=None, keep=None)
 
 > Float Curve
 
-ERROR: Node 'Float Curve' not found
+> Node ERROR: Node 'Float Curve' not found
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket 'Factor' (Factor)
@@ -381,7 +376,7 @@ map_range(from_min=None, from_max=None, to_min=None, to_max=None, clamp=None, in
 
 > Map range
 
-[Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
+> Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
 
 #### Arguments:
 - **from_min** (_Float_ = None) : socket 'From Min' (From Min)
@@ -409,7 +404,7 @@ map_range_linear(from_min=None, from_max=None, to_min=None, to_max=None, clamp=N
 
 > Map Range, LINEAR interpolation
 
-[Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
+> Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
 
 #### Arguments:
 - **from_min** (_Float_ = None) : socket 'From Min' (From Min)
@@ -436,7 +431,7 @@ map_range_smooth(from_min=None, from_max=None, to_min=None, to_max=None, clamp=N
 
 > Map Range, SMOOTH interpolation
 
-[Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
+> Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
 
 #### Arguments:
 - **from_min** (_Float_ = None) : socket 'From Min' (From Min)
@@ -463,7 +458,7 @@ map_range_smoother(from_min=None, from_max=None, to_min=None, to_max=None, clamp
 
 > Map Range, SMOOTHER interpolation
 
-[Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
+> Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
 
 #### Arguments:
 - **from_min** (_Float_ = None) : socket 'From Min' (From Min)
@@ -490,7 +485,7 @@ map_range_stepped(from_min=None, from_max=None, to_min=None, to_max=None, clamp=
 
 > Map Range, STEPPED interpolation
 
-[Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
+> Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
 
 #### Arguments:
 - **from_min** (_Float_ = None) : socket 'From Min' (From Min)
@@ -517,7 +512,7 @@ mix(factor=None, other=None, clamp_factor=None)
 
 > Mix
 
-[Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+> Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket 'Factor' (Factor_Float)
@@ -542,7 +537,7 @@ Named(name)
 
 > **node** : [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
-[Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
+> Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
 'Named' is a synonym of 'NamedAttribute'
 
@@ -584,7 +579,7 @@ NamedAttribute(name)
 
 > **node** : [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
-[Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
+> Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
 'Named' is a synonym of 'NamedAttribute'
 
@@ -670,7 +665,7 @@ Random(min=None, max=None, id=None, seed=None)
 
 > Random float
 
-[Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html)
+> Node [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html)
 
 #### Arguments:
 - **min** ( = None)
@@ -754,7 +749,7 @@ to_integer(rounding_mode=None)
 
 > Conversion to integer
 
-[Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/float_to_integer.html)
+> Node [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/float_to_integer.html)
 
 #### Arguments:
 - **rounding_mode** ( = None)
@@ -795,7 +790,7 @@ to_string(decimals=None)
 
 > To String
 
-[Value to String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/value_to_string.html)
+> Node [Value to String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/value_to_string.html)
 
 #### Arguments:
 - **decimals** (_Integer_ = None) : socket 'Decimals' (Decimals)

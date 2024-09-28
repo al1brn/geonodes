@@ -45,7 +45,7 @@ class Boolean(ValueSocket):
     def __init__(self, value=False, name=None, tip=None, subtype='NONE'):
         """ Socket of type BOOLEAN
 
-        [!Node] Boolean
+        > Node <&Node Boolean>
 
         Arguments
         ---------
@@ -117,7 +117,7 @@ class Boolean(ValueSocket):
     def Random(cls, probability=None, id=None, seed=None):
         """ Constructor : random Boolean.
 
-        [!Node] Random Value
+        > Node <&Node Random Value>
 
         Arguments
         ---------

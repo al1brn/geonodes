@@ -333,7 +333,7 @@ class Socket(NodeCache):
     def MenuSwitch(cls, items={'A': None, 'B': None}, menu=0, name="Menu", tip=None):
         """ Node 'Menu Switch' (GeometryNodeMenuSwitch)
 
-        [!Node] Menu Switch
+        > Node <&Node Menu Switch>
 
         The items of the Menu Switch node are provided in the 'items' dict.
         An group input socket named after the 'name' argument is linked to menu selector.
@@ -432,7 +432,7 @@ class Socket(NodeCache):
     def IndexSwitch(cls, *values, index=0):
         """ Node 'Index Switch' (GeometryNodeIndexSwitch)
 
-        [!Node] Index Switch
+        > Node <&Node Index Switch>
 
         ``` python
         with GeoNodes("Index Switch demo"):
@@ -499,7 +499,7 @@ class Socket(NodeCache):
     def Switch(cls, condition=None, false=None, true=None):
         """ Node 'Switch' (GeometryNodeSwitch)
 
-        [!Node] Switch
+        > Node <&Node Switch>
 
         ``` python
         with GeoNodes("Switch demo"):
@@ -542,7 +542,7 @@ class Socket(NodeCache):
     def menu_switch(self, self_name='A', items={'B': None}, menu=0, name="Menu", tip=None):
         """ Node 'Menu Switch' (GeometryNodeMenuSwitch)
 
-        [!Node] Menu Switch
+        > Node <&Node Menu Switch>
 
         Self is connected to the first menu item with the name provided as argument.
 
@@ -579,7 +579,7 @@ class Socket(NodeCache):
     def index_switch(self, *values, index=0):
         """ Node 'Index Switch' (GeometryNodeIndexSwitch)
 
-        [!Node] Index Switch
+        > Node <&Node Index Switch>
 
         Self is used as first socket in the node.
 
@@ -614,7 +614,7 @@ class Socket(NodeCache):
     def switch(self, condition=None, true=None):
         """ Node 'Switch' (GeometryNodeSwitch)
 
-        [!Node] Switch
+        > Node <&Node Switch>
 
         Self is connected to 'false' socket.
 
@@ -650,7 +650,7 @@ class Socket(NodeCache):
     def blur(self, iterations=None, weight=None):
         """ Node 'Blur Attribute' (GeometryNodeBlurAttribute)
 
-        [!Node] Blur Attribute
+        > Node <&Node Blur Attribute>
 
         Arguments
         ---------
@@ -681,7 +681,7 @@ class ValueSocket(Socket):
     def NamedAttribute(cls, name):
         """ Node 'Named Attribute' (GeometryNodeInputNamedAttribute)
 
-        [!Node] Named Attribute
+        > Node <&Node Named Attribute>
 
         'Named' is a synonym of 'NamedAttribute'
 
@@ -718,7 +718,7 @@ class ValueSocket(Socket):
     def Named(cls, name):
         """ Node 'Named Attribute' (GeometryNodeInputNamedAttribute)
 
-        [!Node] Named Attribute
+        > Node <&Node Named Attribute>
 
         'Named' is a synonym of 'NamedAttribute'
 

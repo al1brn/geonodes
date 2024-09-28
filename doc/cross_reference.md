@@ -62,7 +62,7 @@ You will find here how nodes are implemented
 
 #### Boolean
 
-- [Boolean](geono-boolean.md#boolean) :white_small_square: [impossible to find the section 'Boolean' in page 'Boolean'](geono-boolean.md#boolean)
+- [Boolean](cross_reference.md#boolean) :white_small_square: [Boolean](cross_reference.md#boolean)
 - [nd](geono-nd.md#nd) :white_small_square: [boolean](geono-nd.md#boolean)
 
 #### Boolean Math
@@ -129,7 +129,7 @@ You will find here how nodes are implemented
 
 #### Color
 
-- [Color](geono-color.md#color) :white_small_square: [impossible to find the section 'Color' in page 'Color'](geono-color.md#color)
+- [Color](cross_reference.md#color) :white_small_square: [Color](cross_reference.md#color)
 - [nd](geono-nd.md#nd) :white_small_square: [color](geono-nd.md#color)
 
 #### Color Ramp
@@ -599,8 +599,8 @@ You will find here how nodes are implemented
 #### Group
 
 - [nd](geono-nd.md#nd) :white_small_square: [group](geono-nd.md#group)
-- [Group](geono-group.md#group) :white_small_square: [impossible to find the section 'Group' in page 'Group'](geono-group.md#group)
-- [Group](geono-group.md#group) :white_small_square: [Prefix](geono-group.md#prefix)
+- [Group](cross_reference.md#group) :white_small_square: [Group](cross_reference.md#group)
+- [Group](cross_reference.md#group) :white_small_square: [Prefix](geono-group.md#prefix)
 - [snd](shade-shade1-snd.md#snd) :white_small_square: [group](shade-shade1-snd.md#group)
 
 #### Group Output
@@ -1611,6 +1611,7 @@ You will find here how nodes are implemented
 #### Value
 
 - [Float](geono-float.md#float) :white_small_square: [impossible to find the section 'Float' in page 'Float'](geono-float.md#float)
+- [Integer](geono-integer.md#integer) :white_small_square: [impossible to find the section 'Integer' in page 'Integer'](geono-integer.md#integer)
 
 #### Value to String
 

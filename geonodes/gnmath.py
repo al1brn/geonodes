@@ -64,7 +64,7 @@ from .treeclass import Tree, Node
 def band(value, other):
     """ Boolean AND.
 
-    [!Node] Boolean Math
+    > Node <&Node Boolean Math>
 
     Arguments
     ---------
@@ -80,7 +80,7 @@ def band(value, other):
 def bor(value, other):
     """ Boolean OR.
 
-    [!Node] Boolean Math
+    > Node <&Node Boolean Math>
 
     Arguments
     ---------
@@ -96,7 +96,7 @@ def bor(value, other):
 def bnot(value):
     """ Boolean NOT.
 
-    [!Node] Boolean Math
+    > Node <&Node Boolean Math>
 
     Arguments
     ---------
@@ -111,7 +111,7 @@ def bnot(value):
 def nand(value, other):
     """ Boolean NAND.
 
-    [!Node] Boolean Math
+    > Node <&Node Boolean Math>
 
     Arguments
     ---------
@@ -127,7 +127,7 @@ def nand(value, other):
 def nor(value, other):
     """ Boolean NOR.
 
-    [!Node] Boolean Math
+    > Node <&Node Boolean Math>
 
     Arguments
     ---------
@@ -143,7 +143,7 @@ def nor(value, other):
 def xnor(value, other):
     """ Boolean XNOR.
 
-    [!Node] Boolean Math
+    > Node <&Node Boolean Math>
 
     Arguments
     ---------
@@ -159,7 +159,7 @@ def xnor(value, other):
 def equal(value, other):
     """ Boolean XNOR.
 
-    [!Node] Boolean Math
+    > Node <&Node Boolean Math>
 
     Arguments
     ---------
@@ -175,7 +175,7 @@ def equal(value, other):
 def xor(value, other):
     """ Boolean XOR.
 
-    [!Node] Boolean Math
+    > Node <&Node Boolean Math>
 
     Arguments
     ---------
@@ -191,7 +191,7 @@ def xor(value, other):
 def not_equal(value, other):
     """ Boolean XOR.
 
-    [!Node] Boolean Math
+    > Node <&Node Boolean Math>
 
     Arguments
     ---------
@@ -207,7 +207,7 @@ def not_equal(value, other):
 def imply(value, other):
     """ Boolean IMPLY.
 
-    [!Node] Boolean Math
+    > Node <&Node Boolean Math>
 
     Arguments
     ---------
@@ -223,7 +223,7 @@ def imply(value, other):
 def nimply(value, other):
     """ Boolean NIMPLY.
 
-    [!Node] Boolean Math
+    > Node <&Node Boolean Math>
 
     Arguments
     ---------
@@ -239,7 +239,7 @@ def nimply(value, other):
 def bsubtract(value, other):
     """ Boolean NIMPLY.
 
-    [!Node] Boolean Math
+    > Node <&Node Boolean Math>
 
     Arguments
     ---------
@@ -259,7 +259,7 @@ def bsubtract(value, other):
 def add(value, other, use_clamp=None):
     """ Math ADD.
 
-    [!Node] Math
+    > Node <&Node Math>
 
     Arguments
     ---------
@@ -276,7 +276,7 @@ def add(value, other, use_clamp=None):
 def subtract(value, other, use_clamp=None):
     """ Math SUBTRACT.
 
-    [!Node] Math
+    > Node <&Node Math>
 
     Arguments
     ---------
@@ -293,7 +293,7 @@ def subtract(value, other, use_clamp=None):
 def multiply(value, other, use_clamp=None):
     """ Math MULTIPLY.
 
-    [!Node] Math
+    > Node <&Node Math>
 
     Arguments
     ---------
@@ -310,7 +310,7 @@ def multiply(value, other, use_clamp=None):
 def divide(value, other, use_clamp=None):
     """ Math DIVIDE.
 
-    [!Node] Math
+    > Node <&Node Math>
 
     Arguments
     ---------
@@ -327,7 +327,7 @@ def divide(value, other, use_clamp=None):
 def multiply_add(value, multiplier, addend, use_clamp=None):
     """ Math MULTIPLY ADD.
 
-    [!Node] Math
+    > Node <&Node Math>
 
     Arguments
     ---------
@@ -345,7 +345,7 @@ def multiply_add(value, multiplier, addend, use_clamp=None):
 def power(base, exponent, use_clamp=None):
     """ Math POWER.
 
-    [!Node] Math
+    > Node <&Node Math>
 
     Arguments
     ---------
@@ -361,7 +361,7 @@ def power(base, exponent, use_clamp=None):
 def log(value, base=10, use_clamp=None):
     """ Math LOGARITHM.
 
-    [!Node] Math
+    > Node <&Node Math>
 
     Arguments
     ---------
@@ -378,7 +378,7 @@ def log(value, base=10, use_clamp=None):
 def ln(value, use_clamp=None):
     """ Math neperian LOGARITHM (using base = e).
 
-    [!Node] Math
+    > Node <&Node Math>
 
     Arguments
     ---------
@@ -394,7 +394,7 @@ def ln(value, use_clamp=None):
 def sqrt(value, use_clamp=None):
     """ Math SQRT.
 
-    [!Node] Math
+    > Node <&Node Math>
 
     Arguments
     ---------
@@ -410,7 +410,7 @@ def sqrt(value, use_clamp=None):
 def inverse_sqrt(value, use_clamp=None):
     """ Math INVERSE SQRT.
 
-    [!Node] Math
+    > Node <&Node Math>
 
     Arguments
     ---------
@@ -426,7 +426,7 @@ def inverse_sqrt(value, use_clamp=None):
 def abs(value, use_clamp=None):
     """ Math ABSOLUTE.
 
-    [!Node] Math
+    > Node <&Node Math>
 
     Arguments
     ---------
@@ -442,7 +442,7 @@ def abs(value, use_clamp=None):
 def exponent(value, use_clamp=None):
     """ Math EXPONENT.
 
-    [!Node] Math
+    > Node <&Node Math>
 
     Arguments
     ---------
@@ -458,7 +458,7 @@ def exponent(value, use_clamp=None):
 def exp(value, use_clamp=None):
     """ Math EXPONENT.
 
-    [!Node] Math
+    > Node <&Node Math>
 
     Arguments
     ---------
@@ -473,7 +473,7 @@ def exp(value, use_clamp=None):
 def min(value, other, use_clamp=None):
     """ Math MINIMUM.
 
-    [!Node] Math
+    > Node <&Node Math>
 
     Arguments
     ---------
@@ -490,7 +490,7 @@ def min(value, other, use_clamp=None):
 def max(value, other, use_clamp=None):
     """ Math MAXIMUM.
 
-    [!Node] Math
+    > Node <&Node Math>
 
     Arguments
     ---------
@@ -507,7 +507,7 @@ def max(value, other, use_clamp=None):
 def less_than(value, threshold, use_clamp=None):
     """ Math LESS_THAN.
 
-    [!Node] Math
+    > Node <&Node Math>
 
     Arguments
     ---------
@@ -524,7 +524,7 @@ def less_than(value, threshold, use_clamp=None):
 def greater_than(value, threshold, use_clamp=None):
     """ Math GREATER THAN.
 
-    [!Node] Math
+    > Node <&Node Math>
 
     Arguments
     ---------
@@ -541,7 +541,7 @@ def greater_than(value, threshold, use_clamp=None):
 def sign(value):
     """ Math SIGN.
 
-    [!Node] Math
+    > Node <&Node Math>
 
     Arguments
     ---------
@@ -556,7 +556,7 @@ def sign(value):
 def compare(value, other, epsilon=None, use_clamp=None):
     """ Math COMPARE.
 
-    [!Node] Math
+    > Node <&Node Math>
 
     Arguments
     ---------
@@ -574,7 +574,7 @@ def compare(value, other, epsilon=None, use_clamp=None):
 def smooth_min(value, other, distance=None, use_clamp=None):
     """ Math SMOOTH_MIN.
 
-    [!Node] Math
+    > Node <&Node Math>
 
     Arguments
     ---------
@@ -592,7 +592,7 @@ def smooth_min(value, other, distance=None, use_clamp=None):
 def smooth_max(value, other, distance=None, use_clamp=None):
     """ Math SMOOTH MAX.
 
-    [!Node] Math
+    > Node <&Node Math>
 
     Arguments
     ---------
@@ -610,7 +610,7 @@ def smooth_max(value, other, distance=None, use_clamp=None):
 def math_round(value, use_clamp=None):
     """ Math ROUND.
 
-    [!Node] Math
+    > Node <&Node Math>
 
     Arguments
     ---------
@@ -626,7 +626,7 @@ def math_round(value, use_clamp=None):
 def math_floor(value, use_clamp=None):
     """ Math FLOOR.
 
-    [!Node] Math
+    > Node <&Node Math>
 
     Arguments
     ---------
@@ -641,7 +641,7 @@ def math_floor(value, use_clamp=None):
 def math_ceil(value, use_clamp=None):
     """ Math CEIL.
 
-    [!Node] Math
+    > Node <&Node Math>
 
     Arguments
     ---------
@@ -656,7 +656,7 @@ def math_ceil(value, use_clamp=None):
 def math_trunc(value, use_clamp=None):
     """ Math TRUNC.
 
-    [!Node] Math
+    > Node <&Node Math>
 
     Arguments
     ---------
@@ -671,7 +671,7 @@ def math_trunc(value, use_clamp=None):
 def round(value, use_clamp=None):
     """ Round.
 
-    [!Node] Math, Float to Integer
+    > Node <&Node Math, Float to Integer>
 
     Implements 'Math' node in ShaderNodes and 'Float to Integer' for GeoNodes.
 
@@ -693,7 +693,7 @@ def round(value, use_clamp=None):
 def floor(value, use_clamp=None):
     """ Floor.
 
-    [!Node] Math, Float to Integer
+    > Node <&Node Math, Float to Integer>
 
     Implements 'Math' node in ShaderNodes and 'Float to Integer' for GeoNodes.
 
@@ -715,7 +715,7 @@ def floor(value, use_clamp=None):
 def ceil(value, use_clamp=None):
     """ Ceiling.
 
-    [!Node] Math, Float to Integer
+    > Node <&Node Math, Float to Integer>
 
     Implements 'Math' node in ShaderNodes and 'Float to Integer' for GeoNodes.
 
@@ -737,7 +737,7 @@ def ceil(value, use_clamp=None):
 def trunc(value, use_clamp=None):
     """ Truncate.
 
-    [!Node] Math, Float to Integer
+    > Node <&Node Math, Float to Integer>
 
     Implements 'Math' node in ShaderNodes and 'Float to Integer' for GeoNodes.
 
@@ -760,7 +760,7 @@ def trunc(value, use_clamp=None):
 def fract(value, use_clamp=None):
     """ Math FRACT.
 
-    [!Node] Math
+    > Node <&Node Math>
 
     Arguments
     ---------
@@ -775,7 +775,7 @@ def fract(value, use_clamp=None):
 def modulo(value, other, use_clamp=None):
     """ Math MODULO.
 
-    [!Node] Math
+    > Node <&Node Math>
 
     Arguments
     ---------
@@ -791,7 +791,7 @@ def modulo(value, other, use_clamp=None):
 def floored_modulo(value, other, use_clamp=None):
     """ Math FLOORED MODULO.
 
-    [!Node] Math
+    > Node <&Node Math>
 
     Arguments
     ---------
@@ -807,7 +807,7 @@ def floored_modulo(value, other, use_clamp=None):
 def wrap(value, max=None, min=None, use_clamp=None):
     """ Math WRAP.
 
-    [!Node] Math
+    > Node <&Node Math>
 
     Arguments
     ---------
@@ -824,7 +824,7 @@ def wrap(value, max=None, min=None, use_clamp=None):
 def snap(value, increment=None, use_clamp=None):
     """ Math SNAP.
 
-    [!Node] Math
+    > Node <&Node Math>
 
     Arguments
     ---------
@@ -840,7 +840,7 @@ def snap(value, increment=None, use_clamp=None):
 def ping_pong(value, scale=None, use_clamp=None):
     """ Math PINGPONG.
 
-    [!Node] Math
+    > Node <&Node Math>
 
     Arguments
     ---------
@@ -856,7 +856,7 @@ def ping_pong(value, scale=None, use_clamp=None):
 def pingpong(value, scale=None, use_clamp=None):
     """ Math PINGPONG.
 
-    [!Node] Math
+    > Node <&Node Math>
 
     Arguments
     ---------
@@ -872,7 +872,7 @@ def pingpong(value, scale=None, use_clamp=None):
 def sin(value, use_clamp=None):
     """ Math SIN.
 
-    [!Node] Math
+    > Node <&Node Math>
 
     Arguments
     ---------
@@ -887,7 +887,7 @@ def sin(value, use_clamp=None):
 def cos(value, use_clamp=None):
     """ Math COS.
 
-    [!Node] Math
+    > Node <&Node Math>
 
     Arguments
     ---------
@@ -902,7 +902,7 @@ def cos(value, use_clamp=None):
 def tan(value, use_clamp=None):
     """ Math TAN.
 
-    [!Node] Math
+    > Node <&Node Math>
 
     Arguments
     ---------
@@ -917,7 +917,7 @@ def tan(value, use_clamp=None):
 def asin(value, use_clamp=None):
     """ Math ASIN.
 
-    [!Node] Math
+    > Node <&Node Math>
 
     Arguments
     ---------
@@ -932,7 +932,7 @@ def asin(value, use_clamp=None):
 def acos(value, use_clamp=None):
     """ Math ACOS.
 
-    [!Node] Math
+    > Node <&Node Math>
 
     Arguments
     ---------
@@ -947,7 +947,7 @@ def acos(value, use_clamp=None):
 def atan(value, use_clamp=None):
     """ Math ATAN.
 
-    [!Node] Math
+    > Node <&Node Math>
 
     Arguments
     ---------
@@ -962,7 +962,7 @@ def atan(value, use_clamp=None):
 def atan2(value, other, use_clamp=None):
     """ Math ATAN2.
 
-    [!Node] Math
+    > Node <&Node Math>
 
     Arguments
     ---------
@@ -978,7 +978,7 @@ def atan2(value, other, use_clamp=None):
 def sinh(value, use_clamp=None):
     """ Math SINH.
 
-    [!Node] Math
+    > Node <&Node Math>
 
     Arguments
     ---------
@@ -993,7 +993,7 @@ def sinh(value, use_clamp=None):
 def cosh(value, use_clamp=None):
     """ Math COSH.
 
-    [!Node] Math
+    > Node <&Node Math>
 
     Arguments
     ---------
@@ -1008,7 +1008,7 @@ def cosh(value, use_clamp=None):
 def tanh(value, use_clamp=None):
     """ Math TANH.
 
-    [!Node] Math
+    > Node <&Node Math>
 
     Arguments
     ---------
@@ -1023,7 +1023,7 @@ def tanh(value, use_clamp=None):
 def radians(value, use_clamp=None):
     """ Math RADIANS.
 
-    [!Node] Math
+    > Node <&Node Math>
 
     Arguments
     ---------
@@ -1038,7 +1038,7 @@ def radians(value, use_clamp=None):
 def degrees(value, use_clamp=None):
     """ Math DEGREES.
 
-    [!Node] Math
+    > Node <&Node Math>
 
     Arguments
     ---------
@@ -1056,7 +1056,7 @@ def degrees(value, use_clamp=None):
 def vadd(value, other):
     """ Vector Math ADD.
 
-    [!Node] Vector Math
+    > Node <&Node Vector Math>
 
     Arguments
     ---------
@@ -1072,7 +1072,7 @@ def vadd(value, other):
 def vsubtract(value, other):
     """ Vector Math SUBTRACT.
 
-    [!Node] Vector Math
+    > Node <&Node Vector Math>
 
     Arguments
     ---------
@@ -1087,7 +1087,7 @@ def vsubtract(value, other):
 def vmultiply(value, other):
     """ Vector Math MULTIPLY.
 
-    [!Node] Vector Math
+    > Node <&Node Vector Math>
 
     Arguments
     ---------
@@ -1102,7 +1102,7 @@ def vmultiply(value, other):
 def vdivide(value, other):
     """ Vector Math DIVIDE.
 
-    [!Node] Vector Math
+    > Node <&Node Vector Math>
 
     Arguments
     ---------
@@ -1117,7 +1117,7 @@ def vdivide(value, other):
 def vmultiply_add(value, multiplier, addend):
     """ Vector Math MULTIPLY ADD.
 
-    [!Node] Vector Math
+    > Node <&Node Vector Math>
 
     Arguments
     ---------
@@ -1133,7 +1133,7 @@ def vmultiply_add(value, multiplier, addend):
 def cross_product(value, other):
     """ Vector Math CROSS PRODUCT.
 
-    [!Node] Vector Math
+    > Node <&Node Vector Math>
 
     Arguments
     ---------
@@ -1148,7 +1148,7 @@ def cross_product(value, other):
 def project(value, other):
     """ Vector Math PROJECT.
 
-    [!Node] Vector Math
+    > Node <&Node Vector Math>
 
     Arguments
     ---------
@@ -1163,7 +1163,7 @@ def project(value, other):
 def reflect(value, other):
     """ Vector Math REFLECT.
 
-    [!Node] Vector Math
+    > Node <&Node Vector Math>
 
     Arguments
     ---------
@@ -1178,7 +1178,7 @@ def reflect(value, other):
 def refract(value, other, ior=None):
     """ Vector Math REFRACT.
 
-    [!Node] Vector Math
+    > Node <&Node Vector Math>
 
     Arguments
     ---------
@@ -1194,7 +1194,7 @@ def refract(value, other, ior=None):
 def faceforward(value, incident=None, reference=None):
     """ Vector Math FACE FORWARD.
 
-    [!Node] Vector Math
+    > Node <&Node Vector Math>
 
     Arguments
     ---------
@@ -1210,7 +1210,7 @@ def faceforward(value, incident=None, reference=None):
 def dot_product(value, other):
     """ Vector Math DOT PRODUCT.
 
-    [!Node] Vector Math
+    > Node <&Node Vector Math>
 
     Arguments
     ---------
@@ -1225,7 +1225,7 @@ def dot_product(value, other):
 def distance(value, other):
     """ Vector Math DISTANCE.
 
-    [!Node] Vector Math
+    > Node <&Node Vector Math>
 
     Arguments
     ---------
@@ -1240,7 +1240,7 @@ def distance(value, other):
 def length(value):
     """ Vector Math LENGTH.
 
-    [!Node] Vector Math
+    > Node <&Node Vector Math>
 
     Arguments
     ---------
@@ -1254,7 +1254,7 @@ def length(value):
 def scale(value, scale):
     """ Vector Math SCALE.
 
-    [!Node] Vector Math
+    > Node <&Node Vector Math>
 
     Arguments
     ---------
@@ -1269,7 +1269,7 @@ def scale(value, scale):
 def normalize(value):
     """ Vector Math NORMALIZE.
 
-    [!Node] Vector Math
+    > Node <&Node Vector Math>
 
     Arguments
     ---------
@@ -1283,7 +1283,7 @@ def normalize(value):
 def vabs(value):
     """ Vector Math ABS.
 
-    [!Node] Vector Math
+    > Node <&Node Vector Math>
 
     Arguments
     ---------
@@ -1297,7 +1297,7 @@ def vabs(value):
 def vmin(value, other):
     """ Vector Math MINIMUM.
 
-    [!Node] Vector Math
+    > Node <&Node Vector Math>
 
     Arguments
     ---------
@@ -1312,7 +1312,7 @@ def vmin(value, other):
 def vmax(value, other):
     """ Vector Math MAXIMUM.
 
-    [!Node] Vector Math
+    > Node <&Node Vector Math>
 
     Arguments
     ---------
@@ -1327,7 +1327,7 @@ def vmax(value, other):
 def vfloor(value):
     """ Vector Math FLOOR.
 
-    [!Node] Vector Math
+    > Node <&Node Vector Math>
 
     Arguments
     ---------
@@ -1341,7 +1341,7 @@ def vfloor(value):
 def vceil(value):
     """ Vector Math CEIL.
 
-    [!Node] Vector Math
+    > Node <&Node Vector Math>
 
     Arguments
     ---------
@@ -1355,7 +1355,7 @@ def vceil(value):
 def vfract(value):
     """ Vector Math FRACT.
 
-    [!Node] Vector Math
+    > Node <&Node Vector Math>
 
     Arguments
     ---------
@@ -1369,7 +1369,7 @@ def vfract(value):
 def vmodulo(value, other):
     """ Vector Math MODULO.
 
-    [!Node] Vector Math
+    > Node <&Node Vector Math>
 
     Arguments
     ---------
@@ -1383,7 +1383,7 @@ def vmodulo(value, other):
 def vwrap(value, max=None, min=None):
     """ Vector Math WRAP.
 
-    [!Node] Vector Math
+    > Node <&Node Vector Math>
 
     Arguments
     ---------
@@ -1399,7 +1399,7 @@ def vwrap(value, max=None, min=None):
 def vsnap(value, increment):
     """ Vector Math SNAP.
 
-    [!Node] Vector Math
+    > Node <&Node Vector Math>
 
     Arguments
     ---------
@@ -1414,7 +1414,7 @@ def vsnap(value, increment):
 def vsin(value):
     """ Vector Math SIN.
 
-    [!Node] Vector Math
+    > Node <&Node Vector Math>
 
     Arguments
     ---------
@@ -1428,7 +1428,7 @@ def vsin(value):
 def vcos(value):
     """ Vector Math COS.
 
-    [!Node] Vector Math
+    > Node <&Node Vector Math>
 
     Arguments
     ---------
@@ -1442,7 +1442,7 @@ def vcos(value):
 def vtan(value):
     """ Vector Math TAN.
 
-    [!Node] Vector Math
+    > Node <&Node Vector Math>
 
     Arguments
     ---------

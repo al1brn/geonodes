@@ -48,7 +48,7 @@ class Color(VectorLike):
     def __init__(self, value=(0., 0., 0., 1.), name=None, tip=None):
         """ Socket of type COLOR (RGBA)
 
-        [!Node] RGB, Combine Color, Color
+        > Nodes <&Node RGB> <&Node Combine Color> <&Node Color>
 
         Arguments
         ---------
@@ -89,7 +89,7 @@ class Color(VectorLike):
     def Combine(cls, a=0, b=0, c=0, alpha=1, mode='RGB'):
         """ Constructor : Combine Color
 
-        [!Node] Combine Color
+        > Node <&Node Combine Color>
 
         Arguments
         ---------
@@ -113,7 +113,7 @@ class Color(VectorLike):
     def CombineRGB(cls, red=0, green=0, blue=0, alpha=1):
         """ Constructor : Combine Color from RGB
 
-        [!Node] Combine Color
+        > Node <&Node Combine Color>
 
         Arguments
         ---------
@@ -133,7 +133,7 @@ class Color(VectorLike):
     def CombineHSV(cls, hue=0, saturation=0, value=0, alpha=1):
         """ Constructor : Combine Color from HSV
 
-        [!Node] Combine Color
+        > Node <&Node Combine Color>
 
         Arguments
         ---------
@@ -152,7 +152,7 @@ class Color(VectorLike):
     def CombineHSL(cls, hue=0, saturation=0, lightness=0, alpha=1):
         """ Constructor : Combine Color from HSL
 
-        [!Node] Combine Color
+        > Node <&Node Combine Color>
 
         Arguments
         ---------
@@ -171,7 +171,7 @@ class Color(VectorLike):
     def Blackbody(cls, temperature=None):
         """ Constructor : Black Body
 
-        [!Node] Blackbody
+        > Node <&Node Blackbody>
 
         Arguments
         ---------
@@ -187,7 +187,7 @@ class Color(VectorLike):
     def ColorRamp(cls, fac=None, keep=None):
         """ Constructor : Color Ramp
 
-        [!Node] Color Ramp
+        > Node <&Node Color Ramp>
 
         Arguments
         ---------
@@ -208,7 +208,7 @@ class Color(VectorLike):
     def RGB(self):
         """ Separate RGB Node
 
-        [!Node] Separate Color
+        > Node <&Node Separate Color>
 
         Returns
         -------
@@ -220,7 +220,7 @@ class Color(VectorLike):
     def HSV(self):
         """ Separate HSV Node
 
-        [!Node] Separate Color
+        > Node <&Node Separate Color>
 
         Returns
         -------
@@ -232,7 +232,7 @@ class Color(VectorLike):
     def HSL(self):
         """ Separate HSL Node
 
-        [!Node] Separate Color
+        > Node <&Node Separate Color>
 
         Returns
         -------
@@ -244,7 +244,7 @@ class Color(VectorLike):
     def red(self):
         """ Red component
 
-        [!Node] Separate Color
+        > Node <&Node Separate Color>
 
         Returns
         -------
@@ -256,7 +256,7 @@ class Color(VectorLike):
     def green(self):
         """ Green component
 
-        [!Node] Separate Color
+        > Node <&Node Separate Color>
 
         Returns
         -------
@@ -268,7 +268,7 @@ class Color(VectorLike):
     def blue(self):
         """ Blue component
 
-        [!Node] Separate Color
+        > Node <&Node Separate Color>
 
         Returns
         -------
@@ -280,7 +280,7 @@ class Color(VectorLike):
     def alpha(self):
         """ Alpha component
 
-        [!Node] Separate Color
+        > Node <&Node Separate Color>
 
         Returns
         -------
@@ -300,7 +300,7 @@ class Color(VectorLike):
     def hue(self):
         """ Hue component
 
-        [!Node] Separate Color
+        > Node <&Node Separate Color>
 
         Returns
         -------
@@ -317,7 +317,7 @@ class Color(VectorLike):
     def saturation(self):
         """ Saturation component
 
-        [!Node] Separate Color
+        > Node <&Node Separate Color>
 
         Returns
         -------
@@ -334,7 +334,7 @@ class Color(VectorLike):
     def value(self):
         """ Value component
 
-        [!Node] Separate Color
+        > Node <&Node Separate Color>
 
         Returns
         -------
@@ -346,7 +346,7 @@ class Color(VectorLike):
     def lightness(self):
         """ Lightness component
 
-        [!Node] Separate Color
+        > Node <&Node Separate Color>
 
         Returns
         -------
@@ -362,7 +362,7 @@ class Color(VectorLike):
     def mix(self, factor=None, other=None, clamp_result=False, clamp_factor=True, blend_type='MIX'):
         """ Mix with another color
 
-        [!Node] Mix
+        > Node <&Node Mix>
 
         Arguments
         ---------
@@ -384,7 +384,7 @@ class Color(VectorLike):
     def darken(self, factor=None, other=None, clamp_result=False, clamp_factor=True):
         """ Mix with another color : DARKEN
 
-        [!Node] Mix
+        > Node <&Node Mix>
 
         Arguments
         ---------
@@ -402,7 +402,7 @@ class Color(VectorLike):
     def multiply(self, factor=None, other=None, clamp_result=False, clamp_factor=True):
         """ Mix with another color : MULTIPLY
 
-        [!Node] Mix
+        > Node <&Node Mix>
 
         Arguments
         ---------
@@ -420,7 +420,7 @@ class Color(VectorLike):
     def burn(self, factor=None, other=None, clamp_result=False, clamp_factor=True):
         """ Mix with another color : BURN
 
-        [!Node] Mix
+        > Node <&Node Mix>
 
         Arguments
         ---------
@@ -438,7 +438,7 @@ class Color(VectorLike):
     def lighten(self, factor=None, other=None, clamp_result=False, clamp_factor=True):
         """ Mix with another color : LIGHTEN
 
-        [!Node] Mix
+        > Node <&Node Mix>
 
         Arguments
         ---------
@@ -456,7 +456,7 @@ class Color(VectorLike):
     def screen(self, factor=None, other=None, clamp_result=False, clamp_factor=True):
         """ Mix with another color : SCREEN
 
-        [!Node] Mix
+        > Node <&Node Mix>
 
         Arguments
         ---------
@@ -474,7 +474,7 @@ class Color(VectorLike):
     def dodge(self, factor=None, other=None, clamp_result=False, clamp_factor=True):
         """ Mix with another color : DODGE
 
-        [!Node] Mix
+        > Node <&Node Mix>
 
         Arguments
         ---------
@@ -492,7 +492,7 @@ class Color(VectorLike):
     def add(self, factor=None, other=None, clamp_result=False, clamp_factor=True):
         """ Mix with another color : ADD
 
-        [!Node] Mix
+        > Node <&Node Mix>
 
         Arguments
         ---------
@@ -510,7 +510,7 @@ class Color(VectorLike):
     def overlay(self, factor=None, other=None, clamp_result=False, clamp_factor=True):
         """ Mix with another color : OVERLAY
 
-        [!Node] Mix
+        > Node <&Node Mix>
 
         Arguments
         ---------
@@ -528,7 +528,7 @@ class Color(VectorLike):
     def soft_light(self, factor=None, other=None, clamp_result=False, clamp_factor=True):
         """ Mix with another color : SOFT LIGHT
 
-        [!Node] Mix
+        > Node <&Node Mix>
 
         Arguments
         ---------
@@ -546,7 +546,7 @@ class Color(VectorLike):
     def linear_light(self, factor=None, other=None, clamp_result=False, clamp_factor=True):
         """ Mix with another color : LINEAR LIGHT
 
-        [!Node] Mix
+        > Node <&Node Mix>
 
         Arguments
         ---------
@@ -564,7 +564,7 @@ class Color(VectorLike):
     def difference(self, factor=None, other=None, clamp_result=False, clamp_factor=True):
         """ Mix with another color : DIFFERENCE
 
-        [!Node] Mix
+        > Node <&Node Mix>
 
         Arguments
         ---------
@@ -582,7 +582,7 @@ class Color(VectorLike):
     def exclusion(self, factor=None, other=None, clamp_result=False, clamp_factor=True):
         """ Mix with another color : EXCLUSION
 
-        [!Node] Mix
+        > Node <&Node Mix>
 
         Arguments
         ---------
@@ -600,7 +600,7 @@ class Color(VectorLike):
     def subtract(self, factor=None, other=None, clamp_result=False, clamp_factor=True):
         """ Mix with another color : SUBTRACT
 
-        [!Node] Mix
+        > Node <&Node Mix>
 
         Arguments
         ---------
@@ -618,7 +618,7 @@ class Color(VectorLike):
     def divide(self, factor=None, other=None, clamp_result=False, clamp_factor=True):
         """ Mix with another color : DIVIDE
 
-        [!Node] Mix
+        > Node <&Node Mix>
 
         Arguments
         ---------
@@ -636,7 +636,7 @@ class Color(VectorLike):
     def mix_hue(self, factor=None, other=None, clamp_result=False, clamp_factor=True):
         """ Mix with another color : HUE
 
-        [!Node] Mix
+        > Node <&Node Mix>
 
         Arguments
         ---------
@@ -654,7 +654,7 @@ class Color(VectorLike):
     def mix_saturation(self, factor=None, other=None, clamp_result=False, clamp_factor=True):
         """ Mix with another color : SATURATION
 
-        [!Node] Mix
+        > Node <&Node Mix>
 
         Arguments
         ---------
@@ -672,7 +672,7 @@ class Color(VectorLike):
     def mix_color(self, factor=None, other=None, clamp_result=False, clamp_factor=True):
         """ Mix with another color : COLOR
 
-        [!Node] Mix
+        > Node <&Node Mix>
 
         Arguments
         ---------
@@ -690,7 +690,7 @@ class Color(VectorLike):
     def mix_value(self, factor=None, other=None, clamp_result=False, clamp_factor=True):
         """ Mix with another color : VALUE
 
-        [!Node] Mix
+        > Node <&Node Mix>
 
         Arguments
         ---------
@@ -710,7 +710,7 @@ class Color(VectorLike):
     def curves(self, fac=None, keep=None):
         """ Color curves.
 
-        [!Node] RGB Curves
+        > Node <&Node RGB Curves>
 
         Arguments
         ---------
@@ -727,7 +727,7 @@ class Color(VectorLike):
     def equal(self, other, epsilon=None):
         """ Compare with another Color : EQUAL
 
-        [!Node] Compare
+        > Node <&Node Compare>
 
         Arguments
         ---------
@@ -744,7 +744,7 @@ class Color(VectorLike):
     def not_equal(self, other, epsilon=None):
         """ Compare with another Color : NOT EQUAL
 
-        [!Node] Compare
+        > Node <&Node Compare>
 
         Arguments
         ---------
@@ -760,7 +760,7 @@ class Color(VectorLike):
     def brighter(self, other):
         """ Compare with another Color : BRIGHTER
 
-        [!Node] Compare
+        > Node <&Node Compare>
 
         Arguments
         ---------
@@ -775,7 +775,7 @@ class Color(VectorLike):
     def darker(self, other):
         """ Compare with another Color : DARKER
 
-        [!Node] Compare
+        > Node <&Node Compare>
 
         Arguments
         ---------
@@ -813,7 +813,7 @@ class Color(VectorLike):
         """ Shader node Color Attribute.
 
         [!SHADER]
-        [!ShaderNode] Color Attribute
+        > Node <&ShaderNode Color Attribute>
 
         Arguments
         ---------
@@ -830,7 +830,7 @@ class Color(VectorLike):
         """ Shader node Ambient Occlusion.
 
         [!SHADER]
-        [!ShaderNode] Color Attribute
+        > Node <&ShaderNode Color Attribute>
 
         Arguments
         ---------
@@ -854,7 +854,7 @@ class Color(VectorLike):
         """ Constructor : Black body.
 
         [!SHADER]
-        [!ShaderNode] Blackbody
+        > Node <&ShaderNode Blackbody>
 
         Arguments
         ---------
@@ -871,7 +871,7 @@ class Color(VectorLike):
         """ Constructor : Shader to RGB.
 
         [!SHADER]
-        [!ShaderNode] Shader to RGB
+        > Node <&ShaderNode Shader to RGB>
 
         Arguments
         ---------
@@ -888,7 +888,7 @@ class Color(VectorLike):
         """ Constructor : Wave Length.
 
         [!SHADER]
-        [!ShaderNode] Wavelength
+        > Node <&ShaderNode Wavelength>
 
         Arguments
         ---------
@@ -905,7 +905,7 @@ class Color(VectorLike):
         """ Conversion to black and white.
 
         [!SHADER]
-        [!ShaderNode] RGB to BW
+        > Node <&ShaderNode RGB to BW>
 
         Returns
         -------
@@ -919,7 +919,7 @@ class Color(VectorLike):
         """ Brightness and contrast.
 
         [!SHADER]
-        [!ShaderNode] Brightness/Contrast
+        > Node <&ShaderNode Brightness/Contrast>
 
         Arguments
         ---------
@@ -936,7 +936,7 @@ class Color(VectorLike):
         """ Gamma.
 
         [!SHADER]
-        [!ShaderNode] Gamma
+        > Node <&ShaderNode Gamma>
 
         Arguments
         ---------
@@ -953,7 +953,7 @@ class Color(VectorLike):
         """ Hue / saturation / value.
 
         [!SHADER]
-        [!ShaderNode] Hue/Saturation/Value
+        > Node <&ShaderNode Hue/Saturation/Value>
 
         Arguments
         ---------
@@ -973,7 +973,7 @@ class Color(VectorLike):
         """ Invert.
 
         [!SHADER]
-        [!ShaderNode] Invert Color
+        > Node <&ShaderNode Invert Color>
 
         Arguments
         ---------
@@ -990,7 +990,7 @@ class Color(VectorLike):
         """ Normal map.
 
         [!SHADER]
-        [!ShaderNode] Normal Map
+        > Node <&ShaderNode Normal Map>
 
         Arguments
         ---------
@@ -1008,7 +1008,7 @@ class Color(VectorLike):
         """ Vector displacement
 
         [!SHADER]
-        [!ShaderNode] Vector Displacement
+        > Node <&ShaderNode Vector Displacement>
 
         Arguments
         ---------

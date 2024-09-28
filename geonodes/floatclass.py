@@ -59,7 +59,7 @@ class IntFloat(ValueSocket):
     def mix(self, factor=None, other=None, clamp_factor=None):
         """ > Mix
 
-        [!Node] Mix
+        > Node <&Node Mix>
 
         Arguments
         ---------
@@ -78,7 +78,7 @@ class IntFloat(ValueSocket):
     def clamp(self, min=None, max=None, clamp_type='MINMAX'):
         """ > Clamp
 
-        [!Node] Clamp
+        > Node <&Node Clamp>
 
         Arguments
         ---------
@@ -95,7 +95,7 @@ class IntFloat(ValueSocket):
     def map_range(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=None, interpolation_type='LINEAR'):
         """ > Map range
 
-        [!Node] Map Range
+        > Node <&Node Map Range>
 
         Arguments
         ---------
@@ -115,7 +115,7 @@ class IntFloat(ValueSocket):
     def map_range_linear(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=None):
         """ > Map Range, LINEAR interpolation
 
-        [!Node] Map Range
+        > Node <&Node Map Range>
 
         Arguments
         ---------
@@ -135,7 +135,7 @@ class IntFloat(ValueSocket):
     def map_range_stepped(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=None):
         """ > Map Range, STEPPED interpolation
 
-        [!Node] Map Range
+        > Node <&Node Map Range>
 
         Arguments
         ---------
@@ -155,7 +155,7 @@ class IntFloat(ValueSocket):
     def map_range_smooth(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=None):
         """ > Map Range, SMOOTH interpolation
 
-        [!Node] Map Range
+        > Node <&Node Map Range>
 
         Arguments
         ---------
@@ -175,7 +175,7 @@ class IntFloat(ValueSocket):
     def map_range_smoother(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=None):
         """ > Map Range, SMOOTHER interpolation
 
-        [!Node] Map Range
+        > Node <&Node Map Range>
 
         Arguments
         ---------
@@ -195,7 +195,7 @@ class IntFloat(ValueSocket):
     def color_ramp(self, keep=None):
         """ > Color Ramp
 
-        [!Node] Color Ramp
+        > Node <&Node Color Ramp>
 
         Returns
         -------
@@ -206,7 +206,7 @@ class IntFloat(ValueSocket):
     def to_string(self, decimals=None):
         """ > To String
 
-        [!Node] Value to String
+        > Node <&Node Value to String>
 
         Arguments
         ---------
@@ -221,7 +221,7 @@ class IntFloat(ValueSocket):
     def curve(self, factor=None, keep=None):
         """ > Float Curve
 
-        [!Node] Float Curve
+        > Node <&Node Float Curve>
 
         Arguments
         ---------
@@ -388,7 +388,7 @@ class Float(IntFloat):
     def __init__(self, value=0., name=None, min=None, max=None, tip=None, subtype='NONE'):
         """ > Socket of type VALUE
 
-        [!Node] Value
+        > Node <&Node Value>
 
         If **value** argument is None:
         - if **name** argument is None, a node 'Value' is added
@@ -406,16 +406,12 @@ class Float(IntFloat):
 
         Arguments
         ---------
-        - value (tuple or Socket = (0, 0, 0, 1)) : initial value
+        - value (float or Socket = 0.) : initial value
         - name (str = None) : Create an Group Input socket with the provided str if not None
         - min (float = None) : minimum value
         - max (float = None) : maximum value
         - tip (str = None) : User tip (for Group Input sockets)
         - subtype (str = None) : sub type for group input
-
-        Returns
-        -------
-        - Float
         """
 
         bsock = utils.get_bsocket(value)
@@ -477,7 +473,7 @@ class Float(IntFloat):
     def Random(cls, min=None, max=None, id=None, seed=None):
         """ > Random float
 
-        [!Node] Random Value
+        > Node <&Node Random Value>
         """
         return Node('Random Value', {'Min': min, 'Max': max, 'ID': id, 'Seed': seed}, data_type='FLOAT')._out
 
@@ -489,7 +485,7 @@ class Float(IntFloat):
     def to_integer(self, rounding_mode=None):
         """ > Conversion to integer
 
-        [!Node] Float to Integer
+        > Node <&Node Float to Integer>
         """
         return Node('Float to Integer', {0: self}, rounding_mode=rounding_mode)._out
 
@@ -713,6 +709,33 @@ class Integer(IntFloat):
     SOCKET_TYPE = 'INT'
 
     def __init__(self, value=0, name=None, min=None, max=None, tip=None, subtype='NONE'):
+        """ > Socket of type INTEGER
+
+        > Node <&Node Value>
+
+        If **value** argument is None:
+        - if **name** argument is None, a node 'Integer' is added
+        - otherwise a new group input is created using **min**, **max**, **tip** and **subtype**
+          arguments
+
+        If **value** argument is not None, a new **Integer** is created from the value, either
+        by transtyping or creating a 'Value' node.
+
+        ``` python
+        i = Integer()      # 'Integer' node with default initial vlaue
+        i = Integer(123). # 'Integer' node with 123 initial value
+        i = Integer(123, name="User input", subtype='PERCENTAGE') # Create a new integer group input
+        ```
+
+        Arguments
+        ---------
+        - value (integer or Socket = 0) : initial value
+        - name (str = None) : Create an Group Input socket with the provided str if not None
+        - min (float = None) : minimum value
+        - max (float = None) : maximum value
+        - tip (str = None) : User tip (for Group Input sockets)
+        - subtype (str = None) : sub type for group input
+        """
         bsock = utils.get_bsocket(value)
         if bsock is None:
             if name is None:
@@ -727,10 +750,14 @@ class Integer(IntFloat):
 
     @classmethod
     def Percentage(cls, value=0, name='Percentage', min=0, max=100, tip=None):
+        """ > Integer percentage group input
+        """
         return cls(value=value, name=name, min=min, max=max, tip=tip, subtype='PERCENTAGE')
 
     @classmethod
     def Factor(cls, value=0, name='Factor', min=100, max=100, tip=None):
+        """ > Integer factor group input
+        """
         return cls(value=value, name=name, min=min, max=max, tip=tip, subtype='FACTOR')
 
     @classmethod
@@ -747,7 +774,7 @@ class Integer(IntFloat):
     def less_than(self, other):
         """ Node 'Compare' (FunctionNodeCompare)
 
-        [!Node] Compare
+        > Node <&Node Compare>
 
         Arguments
         ---------
@@ -762,7 +789,7 @@ class Integer(IntFloat):
     def less_equal(self, other):
         """ Node 'Compare' (FunctionNodeCompare)
 
-        [!Node] Compare
+        > Node <&Node Compare>
 
         Arguments
         ---------
@@ -777,7 +804,7 @@ class Integer(IntFloat):
     def greater_than(self, other):
         """ Node 'Compare' (FunctionNodeCompare)
 
-        [!Node] Compare
+        > Node <&Node Compare>
 
         Arguments
         ---------
@@ -792,7 +819,7 @@ class Integer(IntFloat):
     def greater_equal(self, other):
         """ Node 'Compare' (FunctionNodeCompare)
 
-        [!Node] Compare
+        > Node <&Node Compare>
 
         Arguments
         ---------
@@ -807,7 +834,7 @@ class Integer(IntFloat):
     def equal(self, other):
         """ Node 'Compare' (FunctionNodeCompare)
 
-        [!Node] Compare
+        > Node <&Node Compare>
 
         Arguments
         ---------
@@ -822,7 +849,7 @@ class Integer(IntFloat):
     def not_equal(self, other):
         """ Node 'Compare' (FunctionNodeCompare)
 
-        [!Node] Compare
+        > Node <&Node Compare>
 
         Arguments
         ---------

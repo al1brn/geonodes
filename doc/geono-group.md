@@ -8,7 +8,7 @@ Group(group_name, sockets={}, **kwargs)
 
 Node Group
 
-ERROR: Node 'Group' not found
+> Node ERROR: Node 'Group' not found
 
 Create a node 'Group' with the tree provided with 'group_name' argument.
 
@@ -72,7 +72,7 @@ Prefix(prefix, group_name, sockets={}, **kwargs)
 
 Call a Group with a prefixed named.
 
-ERROR: Node 'Group' not found
+> Node ERROR: Node 'Group' not found
 
 Using a prefix for groups of the same type can be usefull in big projects with
 a lot of groups.

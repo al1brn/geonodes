@@ -37,7 +37,7 @@ Edge(geometry)
 
 > **node** : [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edge_angle.html)
 
-[Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edge_angle.html)
+> Node [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edge_angle.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Edge](geono-edge.md#edge) :black_small_square: [Content](geono-edge.md#content) :black_small_square: [Properties](geono-edge.md#properties)</sub>
 
@@ -48,7 +48,7 @@ Edge(geometry)
 
 > **node** : [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
 
-[Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
+> Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
 
 Socket 'Edge Count' of node 'Domain Size'
 
@@ -61,7 +61,7 @@ Socket 'Edge Count' of node 'Domain Size'
 
 > **node** : [Edge Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edge_neighbors.html)
 
-[Edge Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edge_neighbors.html)
+> Node [Edge Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edge_neighbors.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Edge](geono-edge.md#edge) :black_small_square: [Content](geono-edge.md#content) :black_small_square: [Properties](geono-edge.md#properties)</sub>
 
@@ -72,7 +72,7 @@ Socket 'Edge Count' of node 'Domain Size'
 
 > **node** : [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edge_vertices.html)
 
-[Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edge_vertices.html)
+> Node [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edge_vertices.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Edge](geono-edge.md#edge) :black_small_square: [Content](geono-edge.md#content) :black_small_square: [Properties](geono-edge.md#properties)</sub>
 
@@ -83,7 +83,7 @@ Socket 'Edge Count' of node 'Domain Size'
 
 > **node** : [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edge_vertices.html)
 
-[Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edge_vertices.html)
+> Node [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edge_vertices.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Edge](geono-edge.md#edge) :black_small_square: [Content](geono-edge.md#content) :black_small_square: [Properties](geono-edge.md#properties)</sub>
 
@@ -94,7 +94,7 @@ Socket 'Edge Count' of node 'Domain Size'
 
 > **node** : [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edge_angle.html)
 
-[Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edge_angle.html)
+> Node [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edge_angle.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Edge](geono-edge.md#edge) :black_small_square: [Content](geono-edge.md#content) :black_small_square: [Properties](geono-edge.md#properties)</sub>
 
@@ -105,7 +105,7 @@ Socket 'Edge Count' of node 'Domain Size'
 
 > **node** : [Is Edge Smooth](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/is_edge_smooth.html)
 
-[Is Edge Smooth](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/is_edge_smooth.html)
+> Node [Is Edge Smooth](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/is_edge_smooth.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Edge](geono-edge.md#edge) :black_small_square: [Content](geono-edge.md#content) :black_small_square: [Properties](geono-edge.md#properties)</sub>
 
@@ -116,7 +116,7 @@ Socket 'Edge Count' of node 'Domain Size'
 
 > **node** : [Edges to Face Groups](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edges_to_face_groups.html)
 
-[Edges to Face Groups](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edges_to_face_groups.html)
+> Node [Edges to Face Groups](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edges_to_face_groups.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Edge](geono-edge.md#edge) :black_small_square: [Content](geono-edge.md#content) :black_small_square: [Properties](geono-edge.md#properties)</sub>
 
@@ -127,7 +127,7 @@ Socket 'Edge Count' of node 'Domain Size'
 
 > **node** : [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edge_angle.html)
 
-[Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edge_angle.html)
+> Node [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edge_angle.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Edge](geono-edge.md#edge) :black_small_square: [Content](geono-edge.md#content) :black_small_square: [Properties](geono-edge.md#properties)</sub>
 
@@ -138,7 +138,7 @@ Socket 'Edge Count' of node 'Domain Size'
 
 > **node** : [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edge_vertices.html)
 
-[Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edge_vertices.html)
+> Node [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edge_vertices.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Edge](geono-edge.md#edge) :black_small_square: [Content](geono-edge.md#content) :black_small_square: [Properties](geono-edge.md#properties)</sub>
 
@@ -149,7 +149,7 @@ Socket 'Edge Count' of node 'Domain Size'
 
 > **node** : [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edge_vertices.html)
 
-[Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edge_vertices.html)
+> Node [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edge_vertices.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Edge](geono-edge.md#edge) :black_small_square: [Content](geono-edge.md#content) :black_small_square: [Properties](geono-edge.md#properties)</sub>
 
@@ -160,7 +160,7 @@ Socket 'Edge Count' of node 'Domain Size'
 
 > **node** : [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edge_vertices.html)
 
-[Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edge_vertices.html)
+> Node [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edge_vertices.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Edge](geono-edge.md#edge) :black_small_square: [Content](geono-edge.md#content) :black_small_square: [Properties](geono-edge.md#properties)</sub>
 
@@ -179,7 +179,7 @@ corner_index(edge_index=None, weights=None, sort_index=None)
 
 > **node** : [Corners of Edge](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/corners_of_edge.html)
 
-[Corners of Edge](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/corners_of_edge.html)
+> Node [Corners of Edge](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/corners_of_edge.html)
 
 #### Arguments:
 - **edge_index** (_Integer_ = None) : socket 'Edge Index' (Edge Index)
@@ -204,7 +204,7 @@ paths_to_curves(start_vertices=None, next_vertex_index=None)
 
 > **node** : [Edge Paths to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/edge_paths_to_curves.html)
 
-[Edge Paths to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/edge_paths_to_curves.html)
+> Node [Edge Paths to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/edge_paths_to_curves.html)
 
 #### Arguments:
 - **start_vertices** (_Boolean_ = None) : socket 'Start Vertices' (Start Vertices)
@@ -228,7 +228,7 @@ scale(scale=None, center=None, uniform=True)
 
 > **node** : [Scale Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/scale_elements.html)
 
-[Scale Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/scale_elements.html)
+> Node [Scale Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/scale_elements.html)
 
 - domain (str): Node.domain in ('FACE', 'EDGE')
 - scale_mode (str): Node.scale_mode in ('UNIFORM', 'SINGLE_AXIS')
@@ -256,7 +256,7 @@ shortest_paths(edge_cost=None)
 
 > **node** : [Shortest Edge Paths](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/shortest_edge_paths.html)
 
-[Shortest Edge Paths](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/shortest_edge_paths.html)
+> Node [Shortest Edge Paths](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/shortest_edge_paths.html)
 
 #### Arguments:
 - **edge_cost** (_Float_ = None) : socket 'Edge Cost' (Edge Cost)
@@ -279,7 +279,7 @@ split()
 
 > **node** : [Split Edges](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/split_edges.html)
 
-[Split Edges](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/split_edges.html)
+> Node [Split Edges](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/split_edges.html)
 
 #### Returns:
 - **Mesh** :

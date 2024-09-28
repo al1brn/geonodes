@@ -39,7 +39,7 @@ Instance(geometry)
 
 > **node** : [Instance Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_rotation.html)
 
-[Instance Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_rotation.html)
+> Node [Instance Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_rotation.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Instance](geono-instance.md#instance) :black_small_square: [Content](geono-instance.md#content) :black_small_square: [Properties](geono-instance.md#properties)</sub>
 
@@ -50,7 +50,7 @@ Instance(geometry)
 
 > **node** : [Instance Scale](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_scale.html)
 
-[Instance Scale](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_scale.html)
+> Node [Instance Scale](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_scale.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Instance](geono-instance.md#instance) :black_small_square: [Content](geono-instance.md#content) :black_small_square: [Properties](geono-instance.md#properties)</sub>
 
@@ -61,7 +61,7 @@ Instance(geometry)
 
 > **node** : [Instance Transform](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_transform.html)
 
-[Instance Transform](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_transform.html)
+> Node [Instance Transform](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_transform.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Instance](geono-instance.md#instance) :black_small_square: [Content](geono-instance.md#content) :black_small_square: [Properties](geono-instance.md#properties)</sub>
 
@@ -80,7 +80,7 @@ translate(translation=None, local_space=None)
 
 > **node** : [Translate Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/translate_instances.html)
 
-[Translate Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/translate_instances.html)
+> Node [Translate Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/translate_instances.html)
 
 #### Arguments:
 - **translation** (_Vector_ = None) : socket 'Translation' (Translation)

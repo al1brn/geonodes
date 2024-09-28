@@ -1653,7 +1653,7 @@ class Group(Node):
     def __init__(self, group_name, sockets={}, **kwargs):
         """ Node Group
 
-        [!Node] Group
+        > Node <&Node Group>
 
         Create a node 'Group' with the tree provided with 'group_name' argument.
 
@@ -1712,7 +1712,7 @@ class Group(Node):
     def Prefix(cls, prefix, group_name, sockets={}, **kwargs):
         """ Call a Group with a prefixed named.
 
-        [!Node] Group
+        > Node <&Node Group>
 
         Using a prefix for groups of the same type can be usefull in big projects with
         a lot of groups.
