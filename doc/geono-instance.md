@@ -6,13 +6,13 @@
 Instance(geometry)
 ```
 
-> Instant domain of ['Instances' not found]()
+> Instant domain of [Instances](geono-instances.md#instances)
 
 > [!NOTE]
 > The geometry has only one domain sharing the same:
-> - ['Instances' not found]() : name of geometry class
+> - [Instances](geono-instances.md#instances) : name of geometry class
 > - **Instance** : name of domain class
-> - [page 'Instances' not found in '!Instances#insts']() : name of the domain property of class ['Instances' not found]()
+> - [impossible to find the section 'insts' in page 'Instances'](geono-instances.md#instances) : name of the domain property of class [Instances](geono-instances.md#instances)
 
 #### Arguments:
 - **geometry**

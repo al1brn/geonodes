@@ -6,7 +6,7 @@
 Spline(geometry)
 ```
 
-> Curve, or Spline, domain of a ['Curve' not found]()
+> Curve, or Spline, domain of a [Curve](geono-curve.md#curve)
 
 #### Arguments:
 - **geometry**

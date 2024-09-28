@@ -4624,7 +4624,7 @@ class Cloud(Geometry):
     """ > Cloud of Points Geometry
 
     > [!NOTE]
-    > In Blender, the name can vary between **Point Cloud** or "Points".
+    > In Blender, the name can vary between **Point Cloud** and **Points**.
     > In GeoNodes, the geometry is named **Cloud**.
 
     The **Cloud** exposes all methods specific to points cloud.

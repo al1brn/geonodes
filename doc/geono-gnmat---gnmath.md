@@ -2,8 +2,8 @@
 
 > math library
 
-**gnmath** libray contains the math functions for data ['Boolean' not found]() and
-['Vector' not found]() using the following nodes:
+**gnmath** libray contains the math functions for data [Booleans>, <!Float"Floats](geono-boolean.md#boolean) and
+[Vectors](geono-vector.md#vector) using the following nodes:
 - **'Boolean Math'**
 - **'Math'**
 - **'Vector Math'**
@@ -11,7 +11,7 @@
 The name of the functions is the name of the 'operation' parameter of the node,
 with some changes according the following rules:
 - use python math library when it exists: [sin](geono-gnmat---gnmath.md#sin) and [cos](geono-gnmat---gnmath.md#cos) rather than 'sine' and 'cosine' for instance
-- prefix with char ***'v'*** for ['Vector' not found]() functions when it collides with a ['Float' not found]() function : [vsin](geono-gnmat---gnmath.md#vsin) and [vcos](geono-gnmat---gnmath.md#vcos) for instance
+- prefix with char ***'v'*** for [Vector](geono-vector.md#vector) functions when it collides with a [Float](geono-float.md#float) function : [vsin](geono-gnmat---gnmath.md#vsin) and [vcos](geono-gnmat---gnmath.md#vcos) for instance
 - prefix with char ***'b'*** boolean reserved keywords : [band](geono-gnmat---gnmath.md#band), [bor](geono-gnmat---gnmath.md#bor) and [bnot](geono-gnmat---gnmath.md#bnot)
 
 ## Content

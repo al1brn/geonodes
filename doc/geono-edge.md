@@ -6,7 +6,7 @@
 Edge(geometry)
 ```
 
-> Edge domain of a ['Mesh' not found]()
+> Edge domain of a [Mesh](geono-mesh.md#mesh)
 
 #### Arguments:
 - **geometry**
