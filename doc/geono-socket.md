@@ -4,10 +4,24 @@
 Socket(socket)
 ```
 
-Socket documentation
+> The output socket of a [Node](geono-node.md#node)
+
+**Socket** is the base class for data classes such as [Float](geono-float.md#float), [Image](geono-image.md#image) or [Geometry](geono-geometry.md#geometry).
+
+It refers to an **output** socket of a [Node](geono-node.md#node). A socket can be set to the **input** socket
+of another [Node](geono-node.md#node) to create a link between the two nodes:
+
+``` python
+# cube is the output socket 'Mesh' of the node 'Cube'
+cube = Node("Cube").mesh
+
+# cube is set the to socket 'geometry' of node 'Set Position'
+node = Node("Set Position")
+node.geometry = cube
+```
 
 #### Arguments:
-- **socket**
+- **socket** (_NodeSocket_) : the output socket to wrap
 
 ## Content
 
@@ -15,7 +29,7 @@ Socket documentation
 - **I** : [IndexSwitch](geono-socket.md#indexswitch) :black_small_square: [index_switch](geono-socket.md#index_switch)
 - **L** : [\_lc](geono-socket.md#_lc)
 - **M** : [MenuSwitch](geono-socket.md#menuswitch) :black_small_square: [menu_switch](geono-socket.md#menu_switch)
-- **N** : [node](geono-socket.md#node)
+- **N** : [node](geono-socket.md#node) :black_small_square: [node_color](geono-socket.md#node_color) :black_small_square: [node_label](geono-socket.md#node_label)
 - **O** : [out](geono-socket.md#out)
 - **S** : [Switch](geono-socket.md#switch) :black_small_square: [switch](geono-socket.md#switch)
 - **T** : [to_output](geono-socket.md#to_output)
@@ -33,6 +47,24 @@ Returns the node owning the socket.
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Socket](geono-socket.md#socket) :black_small_square: [Content](geono-socket.md#content) :black_small_square: [Properties](geono-socket.md#properties)</sub>
 
+### node_color
+
+> _type_: **mathutils**
+>
+
+Node color
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Socket](geono-socket.md#socket) :black_small_square: [Content](geono-socket.md#content) :black_small_square: [Properties](geono-socket.md#properties)</sub>
+
+### node_label
+
+> _type_: **str**
+>
+
+Node Label
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Socket](geono-socket.md#socket) :black_small_square: [Content](geono-socket.md#content) :black_small_square: [Properties](geono-socket.md#properties)</sub>
+
 ## Methods
 
 
@@ -45,8 +77,6 @@ Returns the node owning the socket.
 ``` python
 blur(iterations=None, weight=None)
 ```
-
-> **node** : [Blur Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/blur_attribute.html)
 
 > Node [Blur Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/blur_attribute.html)
 
@@ -69,8 +99,6 @@ blur(iterations=None, weight=None)
 ``` python
 IndexSwitch(*values, index=0)
 ```
-
-> **node** : [Index Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/index_switch.html)
 
 > Node [Index Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/index_switch.html)
 
@@ -109,8 +137,6 @@ with GeoNodes("Index Switch demo"):
 ``` python
 index_switch(*values, index=0)
 ```
-
-> **node** : [Index Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/index_switch.html)
 
 > Node [Index Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/index_switch.html)
 
@@ -185,8 +211,6 @@ with GeoNodes("Node label and color"):
 MenuSwitch(items={'A': None, 'B': None}, menu=0, name='Menu', tip=None)
 ```
 
-> **node** : [Menu Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/menu_switch.html)
-
 > Node [Menu Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/menu_switch.html)
 
 The items of the Menu Switch node are provided in the 'items' dict.
@@ -229,8 +253,6 @@ with GeoNodes("Menu Switch demo"):
 ``` python
 menu_switch(self_name='A', items={'B': None}, menu=0, name='Menu', tip=None)
 ```
-
-> **node** : [Menu Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/menu_switch.html)
 
 > Node [Menu Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/menu_switch.html)
 
@@ -306,8 +328,6 @@ The "Do nothing" modifier is simply ``` Geometry().out() ```
 Switch(condition=None, false=None, true=None)
 ```
 
-> **node** : [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html)
-
 > Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html)
 
 ``` python
@@ -344,8 +364,6 @@ with GeoNodes("Switch demo"):
 ``` python
 switch(condition=None, true=None)
 ```
-
-> **node** : [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html)
 
 > Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html)
 
@@ -386,6 +404,8 @@ to_output(name=None)
 ```
 
 Plug a socket to an output socket.
+
+> Legacy : use [out](geono-socket.md#out)
 
 #### Arguments:
 - **name** ( = None)

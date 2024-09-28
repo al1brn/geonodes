@@ -38,7 +38,7 @@ Edge(geometry)
 > Node [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edge_angle.html)
 
 > [!IMPORTANT]
-> This method return the node, use [unsigned_angle](geono-edge.md#unsigned_angle) and ['#signe_angle' not found]() to
+> This method return the node, use [unsigned_angle](geono-edge.md#unsigned_angle) and [signed_angle](geono-edge.md#signed_angle) to
 > get directly the sockets
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Edge](geono-edge.md#edge) :black_small_square: [Content](geono-edge.md#content) :black_small_square: [Properties](geono-edge.md#properties)</sub>

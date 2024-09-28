@@ -8,6 +8,10 @@ Spline(geometry)
 
 > Curve, or Spline, domain of a [Curve](geono-curve.md#curve)
 
+Methods of **Spline** class are nodes which accept a SPLINE or CURVE domain.
+
+In addition, the node <*Points of Curve> is implemented as method [points](geono-spline.md#points).
+
 #### Arguments:
 - **geometry**
 

@@ -57,7 +57,6 @@ You will find here how nodes are implemented
 #### Blur Attribute
 
 - [Socket](geono-socket.md#socket) :white_small_square: [blur](geono-socket.md#blur)
-- [Socket](geono-socket.md#socket) :white_small_square: [blur](geono-socket.md#blur)
 - [nd](geono-nd.md#nd) :white_small_square: [blur_attribute](geono-nd.md#blur_attribute)
 
 #### Boolean
@@ -205,7 +204,7 @@ You will find here how nodes are implemented
 - **H** : [Handle Positions](cross_reference.md#handle-positions) :black_small_square: [Handle Type Selection](cross_reference.md#handle-type-selection) :black_small_square: [Holdout](cross_reference.md#holdout)
 - **I** : [Ico Sphere](cross_reference.md#ico-sphere) :black_small_square: [ID](cross_reference.md#id) :black_small_square: [Image](cross_reference.md#image) :black_small_square: [Image Info](cross_reference.md#image-info) :black_small_square: [Image Texture](cross_reference.md#image-texture) :black_small_square: [Index of Nearest](cross_reference.md#index-of-nearest) :black_small_square: [Index Switch](cross_reference.md#index-switch) :black_small_square: [Instance on Points](cross_reference.md#instance-on-points) :black_small_square: [Instance Rotation](cross_reference.md#instance-rotation) :black_small_square: [Instance Scale](cross_reference.md#instance-scale) :black_small_square: [Instance Transform](cross_reference.md#instance-transform) :black_small_square: [Instances to Points](cross_reference.md#instances-to-points) :black_small_square: [Integer](cross_reference.md#integer) :black_small_square: [Interpolate Curves](cross_reference.md#interpolate-curves) :black_small_square: [Invert Matrix](cross_reference.md#invert-matrix) :black_small_square: [Invert Rotation](cross_reference.md#invert-rotation) :black_small_square: [Is Edge Smooth](cross_reference.md#is-edge-smooth) :black_small_square: [Is Face Planar](cross_reference.md#is-face-planar) :black_small_square: [Is Face Smooth](cross_reference.md#is-face-smooth) :black_small_square: [Is Spline Cyclic](cross_reference.md#is-spline-cyclic)
 - **J** : [Join Geometry](cross_reference.md#join-geometry) :black_small_square: [Join Strings](cross_reference.md#join-strings)
-- **M** : [Magic Texture](cross_reference.md#magic-texture) :black_small_square: [Map Range](cross_reference.md#map-range) :black_small_square: [Material](cross_reference.md#material) :black_small_square: [Material Index](cross_reference.md#material-index) :black_small_square: [Material Selection](cross_reference.md#material-selection) :black_small_square: [Math](cross_reference.md#math) :black_small_square: [Menu Switch](cross_reference.md#menu-switch) :black_small_square: [Merge by Distance](cross_reference.md#merge-by-distance) :black_small_square: [Mesh Boolean](cross_reference.md#mesh-boolean) :black_small_square: [Mesh Circle](cross_reference.md#mesh-circle) :black_small_square: [Mesh Island](cross_reference.md#mesh-island) :black_small_square: [Mesh Line](cross_reference.md#mesh-line) :black_small_square: [Mesh to Curve](cross_reference.md#mesh-to-curve) :black_small_square: [Mesh to Density Grid](cross_reference.md#mesh-to-density-grid) :black_small_square: [Mesh to Points](cross_reference.md#mesh-to-points) :black_small_square: [Mesh to SDF Grid](cross_reference.md#mesh-to-sdf-grid) :black_small_square: [Mesh to Volume](cross_reference.md#mesh-to-volume) :black_small_square: [Mix](cross_reference.md#mix) :black_small_square: [Multiply Matrices](cross_reference.md#multiply-matrices)
+- **M** : [Magic Texture](cross_reference.md#magic-texture) :black_small_square: [Map Range](cross_reference.md#map-range) :black_small_square: [Material](cross_reference.md#material) :black_small_square: [Material Index](cross_reference.md#material-index) :black_small_square: [Material Selection](cross_reference.md#material-selection) :black_small_square: [Math](cross_reference.md#math) :black_small_square: [Menu Switch](cross_reference.md#menu-switch) :black_small_square: [MenuSwitch](cross_reference.md#menuswitch) :black_small_square: [Merge by Distance](cross_reference.md#merge-by-distance) :black_small_square: [Mesh Boolean](cross_reference.md#mesh-boolean) :black_small_square: [Mesh Circle](cross_reference.md#mesh-circle) :black_small_square: [Mesh Island](cross_reference.md#mesh-island) :black_small_square: [Mesh Line](cross_reference.md#mesh-line) :black_small_square: [Mesh to Curve](cross_reference.md#mesh-to-curve) :black_small_square: [Mesh to Density Grid](cross_reference.md#mesh-to-density-grid) :black_small_square: [Mesh to Points](cross_reference.md#mesh-to-points) :black_small_square: [Mesh to SDF Grid](cross_reference.md#mesh-to-sdf-grid) :black_small_square: [Mesh to Volume](cross_reference.md#mesh-to-volume) :black_small_square: [Mix](cross_reference.md#mix) :black_small_square: [Multiply Matrices](cross_reference.md#multiply-matrices)
 - **N** : [Named Attribute](cross_reference.md#named-attribute) :black_small_square: [Named Layer Selection](cross_reference.md#named-layer-selection) :black_small_square: [Noise Texture](cross_reference.md#noise-texture)
 - **O** : [Object Info](cross_reference.md#object-info) :black_small_square: [Offset Corner in Face](cross_reference.md#offset-corner-in-face) :black_small_square: [Offset Point in Curve](cross_reference.md#offset-point-in-curve)
 - **P** : [Pack UV Islands](cross_reference.md#pack-uv-islands) :black_small_square: [Points](cross_reference.md#points) :black_small_square: [Points of Curve](cross_reference.md#points-of-curve) :black_small_square: [Points to Curves](cross_reference.md#points-to-curves) :black_small_square: [Points to SDF Grid](cross_reference.md#points-to-sdf-grid) :black_small_square: [Points to Vertices](cross_reference.md#points-to-vertices) :black_small_square: [Points to Volume](cross_reference.md#points-to-volume) :black_small_square: [Position](cross_reference.md#position) :black_small_square: [Principled BSDF](cross_reference.md#principled-bsdf) :black_small_square: [Principled Volume](cross_reference.md#principled-volume) :black_small_square: [Project Point](cross_reference.md#project-point)
@@ -575,12 +574,18 @@ You will find here how nodes are implemented
 
 #### Image
 
+- [Image](cross_reference.md#image) :white_small_square: [Image](cross_reference.md#image)
 - [nd](geono-nd.md#nd) :white_small_square: [image](geono-nd.md#image)
 
 #### Image Info
 
 - [Image](geono-image.md#image) :white_small_square: [Info](geono-image.md#info)
+- [Image](geono-image.md#image) :white_small_square: [fps](geono-image.md#fps)
+- [Image](geono-image.md#image) :white_small_square: [frame_count](geono-image.md#frame_count)
+- [Image](geono-image.md#image) :white_small_square: [has_alpha](geono-image.md#has_alpha)
+- [Image](geono-image.md#image) :white_small_square: [height](geono-image.md#height)
 - [Image](geono-image.md#image) :white_small_square: [info](geono-image.md#info)
+- [Image](geono-image.md#image) :white_small_square: [width](geono-image.md#width)
 - [nd](geono-nd.md#nd) :white_small_square: [image_info](geono-nd.md#image_info)
 
 #### Image Texture
@@ -598,8 +603,6 @@ You will find here how nodes are implemented
 #### Index Switch
 
 - [Socket](geono-socket.md#socket) :white_small_square: [IndexSwitch](geono-socket.md#indexswitch)
-- [Socket](geono-socket.md#socket) :white_small_square: [IndexSwitch](geono-socket.md#indexswitch)
-- [Socket](geono-socket.md#socket) :white_small_square: [index_switch](geono-socket.md#index_switch)
 - [Socket](geono-socket.md#socket) :white_small_square: [index_switch](geono-socket.md#index_switch)
 - [nd](geono-nd.md#nd) :white_small_square: [index_switch](geono-nd.md#index_switch)
 
@@ -698,6 +701,7 @@ You will find here how nodes are implemented
 
 #### Material
 
+- [Material](cross_reference.md#material) :white_small_square: [Material](cross_reference.md#material)
 - [nd](geono-nd.md#nd) :white_small_square: [material](geono-nd.md#material)
 
 #### Material Index
@@ -772,10 +776,12 @@ You will find here how nodes are implemented
 #### Menu Switch
 
 - [Socket](geono-socket.md#socket) :white_small_square: [MenuSwitch](geono-socket.md#menuswitch)
-- [Socket](geono-socket.md#socket) :white_small_square: [MenuSwitch](geono-socket.md#menuswitch)
-- [Socket](geono-socket.md#socket) :white_small_square: [menu_switch](geono-socket.md#menu_switch)
 - [Socket](geono-socket.md#socket) :white_small_square: [menu_switch](geono-socket.md#menu_switch)
 - [nd](geono-nd.md#nd) :white_small_square: [menu_switch](geono-nd.md#menu_switch)
+
+#### MenuSwitch
+
+- [Menu](geono-menu.md#menu) :white_small_square: [Impossible to find the section 'Menu' in page 'Menu'](geono-menu.md#menu)
 
 #### Merge by Distance
 
@@ -870,21 +876,13 @@ You will find here how nodes are implemented
 #### Named Attribute
 
 - [Boolean](geono-boolean.md#boolean) :white_small_square: [Named](geono-boolean.md#named)
-- [Boolean](geono-boolean.md#boolean) :white_small_square: [Named](geono-boolean.md#named)
-- [Boolean](geono-boolean.md#boolean) :white_small_square: [NamedAttribute](geono-boolean.md#namedattribute)
 - [Boolean](geono-boolean.md#boolean) :white_small_square: [NamedAttribute](geono-boolean.md#namedattribute)
 - [Float](geono-float.md#float) :white_small_square: [Named](geono-float.md#named)
-- [Float](geono-float.md#float) :white_small_square: [Named](geono-float.md#named)
-- [Float](geono-float.md#float) :white_small_square: [NamedAttribute](geono-float.md#namedattribute)
 - [Float](geono-float.md#float) :white_small_square: [NamedAttribute](geono-float.md#namedattribute)
 - [Integer](geono-integer.md#integer) :white_small_square: [Named](geono-integer.md#named)
-- [Integer](geono-integer.md#integer) :white_small_square: [Named](geono-integer.md#named)
-- [Integer](geono-integer.md#integer) :white_small_square: [NamedAttribute](geono-integer.md#namedattribute)
 - [Integer](geono-integer.md#integer) :white_small_square: [NamedAttribute](geono-integer.md#namedattribute)
 - [nd](geono-nd.md#nd) :white_small_square: [named_attribute](geono-nd.md#named_attribute)
 - [Matrix](geono-matrix.md#matrix) :white_small_square: [Named](geono-matrix.md#named)
-- [Matrix](geono-matrix.md#matrix) :white_small_square: [Named](geono-matrix.md#named)
-- [Matrix](geono-matrix.md#matrix) :white_small_square: [NamedAttribute](geono-matrix.md#namedattribute)
 - [Matrix](geono-matrix.md#matrix) :white_small_square: [NamedAttribute](geono-matrix.md#namedattribute)
 
 #### Named Layer Selection
@@ -900,6 +898,7 @@ You will find here how nodes are implemented
 
 #### Object Info
 
+- [Object](geono-object.md#object) :white_small_square: [Info](geono-object.md#info)
 - [Object](geono-object.md#object) :white_small_square: [info](geono-object.md#info)
 - [nd](geono-nd.md#nd) :white_small_square: [object_info](geono-nd.md#object_info)
 
@@ -1375,6 +1374,7 @@ You will find here how nodes are implemented
 
 #### String
 
+- [String](cross_reference.md#string) :white_small_square: [String](cross_reference.md#string)
 - [nd](geono-nd.md#nd) :white_small_square: [string](geono-nd.md#string)
 
 #### String Length
@@ -1411,8 +1411,6 @@ You will find here how nodes are implemented
 #### Switch
 
 - [Socket](geono-socket.md#socket) :white_small_square: [Switch](geono-socket.md#switch)
-- [Socket](geono-socket.md#socket) :white_small_square: [Switch](geono-socket.md#switch)
-- [Socket](geono-socket.md#socket) :white_small_square: [switch](geono-socket.md#switch)
 - [Socket](geono-socket.md#socket) :white_small_square: [switch](geono-socket.md#switch)
 - [nd](geono-nd.md#nd) :white_small_square: [switch](geono-nd.md#switch)
 

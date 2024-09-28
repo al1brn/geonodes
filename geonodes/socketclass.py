@@ -19,7 +19,7 @@ module : socketclass
 classes
 -------
 - NodeCache     : Interface for Socket and Domain which can cache created nodes
-- Socket    : Wraps the output socket of node and exposes nodes creation as methods or properties
+- Socket        : Wraps the output socket of node and exposes nodes creation as methods or properties
 - ValueSocket   : Socket subtype for sockets representing a value (i.e. attributes)
 - String        : Socket of type 'STRING'
 - Material      : Socket of type 'MATERIAL'
@@ -42,6 +42,8 @@ import numpy as np
 
 import bpy
 import mathutils
+
+#from geonodes.geometryclass import Geometry
 
 from .scripterror import NodeError
 from . import constants
@@ -103,8 +105,6 @@ class NodeCache:
 # =============================================================================================================================
 
 class Socket(NodeCache):
-    """ Socket documentation
-    """
 
     SOCKET_TYPE = None
 
@@ -112,6 +112,26 @@ class Socket(NodeCache):
     # Initialization
 
     def __init__(self, socket):
+        """ > The output socket of a <!Node>
+
+        **Socket** is the base class for data classes such as <!Float>, <!Image> or <!Geometry>.
+
+        It refers to an **output** socket of a <!Node>. A socket can be set to the **input** socket
+        of another <!Node> to create a link between the two nodes:
+
+        ``` python
+        # cube is the output socket 'Mesh' of the node 'Cube'
+        cube = Node("Cube").mesh
+
+        # cube is set the to socket 'geometry' of node 'Set Position'
+        node = Node("Set Position")
+        node.geometry = cube
+        ```
+
+        Arguments
+        ---------
+        - socket (NodeSocket) : the output socket to wrap
+        """
         self._tree = Tree.current_tree
 
         bsocket = utils.get_bsocket(socket)
@@ -160,6 +180,36 @@ class Socket(NodeCache):
     def input_type(cls, restrict_to=None, default='FLOAT'):
         return utils.get_input_type(cls, restrict_to=restrict_to, default=default)
 
+    @classmethod
+    def get_socket_class(cls, value):
+
+        socket_type = utils.get_socket_type(value)
+
+        if Tree.is_geonodes:
+            from . import Boolean, Integer, Float, Vector, Rotation, Matrix, Color, String, Menu, Geometry
+            from . import Material, Image, Object, Collection, Texture
+            from . import Mesh, Curve, Cloud, Volume, Instances
+            socket_class = {
+                'BOOLEAN': Boolean, 'INT': Integer, 'VALUE': Float,
+                'VECTOR': Vector, 'ROTATION': Rotation, 'MATRIX': Matrix, 'RGBA': Color,
+                'STRING': String, 'MENU': Menu,
+                'GEOMETRY': Geometry,
+                'MATERIAL': Material, 'IMAGE': Image, 'OBJECT': Object,
+                'COLLECTION': Collection, 'TEXTURE': Texture,
+                }
+            return socket_class[socket_type]
+
+        elif Tree.is_shader:
+            from geonodes import Float, Vector, Color, String, Shader
+
+            socket_class = {
+                'VALUE': Float, 'VECTOR': Vector, 'RGBA': Color,
+                'STRING': String, 'SHADER': Shader,
+                }
+            return socket_class[socket_type]
+        else:
+            assert(False)
+
     # ----- Math modul
 
     @classmethod
@@ -186,6 +236,12 @@ class Socket(NodeCache):
 
     @property
     def node_color(self):
+        """ Node color
+
+        Returns
+        -------
+        - mathutils.Color
+        """
         return self.node._color
 
     @node_color.setter
@@ -194,6 +250,12 @@ class Socket(NodeCache):
 
     @property
     def node_label(self):
+        """ Node Label
+
+        Returns
+        -------
+        - str
+        """
         return self.node._label
 
     @node_label.setter
@@ -257,33 +319,15 @@ class Socket(NodeCache):
     def to_output(self, name=None):
         """ Plug a socket to an output socket.
 
+        > Legacy : use <#out>
+
         Arguments
         ---------
             - socket (Socket) : the socket to plug to the output
             - name (str = None) : output socket name
         """
+        self.out(name)
 
-        tree = self._tree
-        bl_idname = self._bsocket.bl_idname
-        if name is None:
-            name = self.input_type().title()
-
-        # ----------------------------------------------------------------------------------------------------
-        # Output socket creation if
-        # - It doesn't already exist
-        # - The tree is not a group
-
-        if self.SOCKET_TYPE == 'GEOMETRY':
-            tree = Tree.current_tree
-            if not(tree.has_output_geometry or tree._is_group):
-                tree.set_output_geometry(self, name)
-                return
-
-        # ----------------------------------------------------------------------------------------------------
-        # New output socket
-
-        bsocket = tree.new_output(bl_idname, name)
-        tree.link(self, bsocket)
 
     def out(self, name=None):
         """ Plug the value to the Group Output Node.
@@ -306,7 +350,27 @@ class Socket(NodeCache):
         -------
         - None
         """
-        self.to_output(name)
+        tree = self._tree
+        bl_idname = self._bsocket.bl_idname
+        if name is None:
+            name = self.input_type().title()
+
+        # ----------------------------------------------------------------------------------------------------
+        # Output socket creation if
+        # - It doesn't already exist
+        # - The tree is not a group
+
+        if self.SOCKET_TYPE == 'GEOMETRY':
+            tree = Tree.current_tree
+            if not(tree.has_output_geometry or tree._is_group):
+                tree.set_output_geometry(self, name)
+                return
+
+        # ----------------------------------------------------------------------------------------------------
+        # New output socket
+
+        bsocket = tree.new_output(bl_idname, name)
+        tree.link(self, bsocket)
 
     # =============================================================================================================================
     # Constructors
@@ -331,9 +395,7 @@ class Socket(NodeCache):
 
     @classmethod
     def MenuSwitch(cls, items={'A': None, 'B': None}, menu=0, name="Menu", tip=None):
-        """ Node 'Menu Switch' (GeometryNodeMenuSwitch)
-
-        > Node <&Node Menu Switch>
+        """ > Node <&Node Menu Switch>
 
         The items of the Menu Switch node are provided in the 'items' dict.
         An group input socket named after the 'name' argument is linked to menu selector.
@@ -366,38 +428,21 @@ class Socket(NodeCache):
         - output
         """
 
+        return Menu(None, name=name, menu=menu, items=items, tip=tip, input_type=cls.input_type())
+
+        cls.input_type()
+
         # ----- Create the nodes
 
         node = Node('Menu Switch', data_type=cls.input_type())
 
         # ----- Create the items
 
-        if True:
-            node._set_items(items, clear=True)
-
-        else:
-            enum_items = node._bnode.enum_items
-            menu_index = None
-            for i, (menu_name, menu_value) in enumerate(items.items()):
-
-                # ----- Create the socket
-
-                if i < len(enum_items):
-                    enum_items[i].name = menu_name
-                else:
-                    enum_items.new(menu_name)
-
-                # ----- Is it the menu socket
-
-                if isinstance(menu, str) and menu == menu_name:
-                    menu_index = i
-
-                # ----- Plug the value
-
-                node.plug_value_into_socket(menu_value, node.in_socket(1 + i))
+        node._set_items(items, clear=True)
 
         # ----- Plug the menu
 
+        menu_index = None
         if isinstance(menu, int):
             menu_index = menu
 
@@ -430,9 +475,7 @@ class Socket(NodeCache):
 
     @classmethod
     def IndexSwitch(cls, *values, index=0):
-        """ Node 'Index Switch' (GeometryNodeIndexSwitch)
-
-        > Node <&Node Index Switch>
+        """ > Node <&Node Index Switch>
 
         ``` python
         with GeoNodes("Index Switch demo"):
@@ -497,9 +540,7 @@ class Socket(NodeCache):
 
     @classmethod
     def Switch(cls, condition=None, false=None, true=None):
-        """ Node 'Switch' (GeometryNodeSwitch)
-
-        > Node <&Node Switch>
+        """ > Node <&Node Switch>
 
         ``` python
         with GeoNodes("Switch demo"):
@@ -540,9 +581,7 @@ class Socket(NodeCache):
     # Method versions
 
     def menu_switch(self, self_name='A', items={'B': None}, menu=0, name="Menu", tip=None):
-        """ Node 'Menu Switch' (GeometryNodeMenuSwitch)
-
-        > Node <&Node Menu Switch>
+        """ > Node <&Node Menu Switch>
 
         Self is connected to the first menu item with the name provided as argument.
 
@@ -577,9 +616,7 @@ class Socket(NodeCache):
         return self.MenuSwitch({self_name: self, **items}, menu=menu, name=name, tip=tip)
 
     def index_switch(self, *values, index=0):
-        """ Node 'Index Switch' (GeometryNodeIndexSwitch)
-
-        > Node <&Node Index Switch>
+        """ > Node <&Node Index Switch>
 
         Self is used as first socket in the node.
 
@@ -612,9 +649,7 @@ class Socket(NodeCache):
         return self.IndexSwitch(self, *values, index=index)
 
     def switch(self, condition=None, true=None):
-        """ Node 'Switch' (GeometryNodeSwitch)
-
-        > Node <&Node Switch>
+        """ > Node <&Node Switch>
 
         Self is connected to 'false' socket.
 
@@ -648,9 +683,7 @@ class Socket(NodeCache):
     # Methods
 
     def blur(self, iterations=None, weight=None):
-        """ Node 'Blur Attribute' (GeometryNodeBlurAttribute)
-
-        > Node <&Node Blur Attribute>
+        """ > Node <&Node Blur Attribute>
 
         Arguments
         ---------
@@ -679,9 +712,7 @@ class ValueSocket(Socket):
 
     @classmethod
     def NamedAttribute(cls, name):
-        """ Node 'Named Attribute' (GeometryNodeInputNamedAttribute)
-
-        > Node <&Node Named Attribute>
+        """ > Node <&Node Named Attribute>
 
         'Named' is a synonym of 'NamedAttribute'
 
@@ -716,9 +747,7 @@ class ValueSocket(Socket):
 
     @classmethod
     def Named(cls, name):
-        """ Node 'Named Attribute' (GeometryNodeInputNamedAttribute)
-
-        > Node <&Node Named Attribute>
+        """ > Node <&Node Named Attribute>
 
         'Named' is a synonym of 'NamedAttribute'
 
@@ -762,6 +791,8 @@ class String(Socket):
     def __init__(self, value="", name=None, tip=None):
         """ Socket of type String
 
+        Node <&Node String>
+
         A group input socket of type String is created if the name is not None.
 
         Arguments
@@ -785,7 +816,7 @@ class String(Socket):
 
     @classmethod
     def FromValue(cls, value, decimals=0):
-        """ Node 'Value to String' (FunctionNodeValueToString)
+        """ > Node <&Node Value to String>
 
         Arguments
         ---------
@@ -801,7 +832,7 @@ class String(Socket):
 
     @classmethod
     def Join(cls, *strings, delimiter=None):
-        """ Node 'Join Strings' (GeometryNodeStringJoin)
+        """ > Node <&Node Join Strings>
 
         Arguments
         ---------
@@ -821,47 +852,43 @@ class String(Socket):
     @classmethod
     @property
     def special_characters(cls):
-        """ Node 'Special Characters' (FunctionNodeInputSpecialCharacters)
+        """ > Node <&Node Special Characters>
 
         Returns
         -------
-        - Node: [line_break (String), tab (String)]
+        - Node = 'Special Characters' node
         """
         return Node('Special Characters')
 
     @classmethod
     @property
     def line_break(cls):
-        """ Node 'Special Characters' (FunctionNodeInputSpecialCharacters)
+        """ > Socket 'Line Break' of node <&Node Special Characters>
 
         Returns
         -------
-        - line_break (String)
+        - String
         """
         return cls.special_characters.line_break
 
     @classmethod
     @property
     def tab(cls):
-        """ Node 'Special Characters' (FunctionNodeInputSpecialCharacters)
+        """ > Socket 'Tab' of node <&Node Special Characters>
 
         Returns
         -------
-        - tab (String)
+        - String
         """
         return cls.special_characters.tab
 
     @property
     def length(self):
-        """ Node 'String Length' (FunctionNodeStringLength)
-
-        Arguments
-        ---------
-        - self (String) : socket 'String' (String)
+        """ > Node <&Node String Length>
 
         Returns
         -------
-        - Node: [length (Int)]
+        - Integer
         """
 
         return Node('String Length')._out
@@ -870,7 +897,7 @@ class String(Socket):
     # Methods
 
     def join(self, *strings):
-        """ Node 'Join Strings' (GeometryNodeStringJoin)
+        """ > Node <&Node Join Strings>
 
         Arguments
         ---------
@@ -879,13 +906,13 @@ class String(Socket):
 
         Returns
         -------
-        - string (String)
+        - String
         """
 
         return Node('Join Strings', {'Delimiter': self, 'Strings': list(strings)})._out
 
     def replace(self, find=None, replace=None):
-        """ Node 'Replace String' (FunctionNodeReplaceString)
+        """ > Node <&Node Replace String>
 
         Arguments
         ---------
@@ -895,13 +922,13 @@ class String(Socket):
 
         Returns
         -------
-        - string (String)
+        - String
         """
 
         return Node('Replace String', {'String': self, 'Find': find, 'Replace': replace})._out
 
     def slice(self, position=0, length=10):
-        """ Node 'Slice String' (FunctionNodeSliceString)
+        """ > Node <&Node Slice String>
 
         Arguments
         ---------
@@ -911,14 +938,14 @@ class String(Socket):
 
         Returns
         -------
-        - string (String)
+        - String
         """
 
         return Node('Slice String', {'String': self, 'Position': position, 'Length': length})._out
 
     def to_curves(self, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, text_box_height=None,
                 overflow='OVERFLOW', align_x='LEFT', align_y='TOP_BASELINE', pivot_mode='BOTTOM_LEFT', font=None):
-        """ Node 'String to Curves' (GeometryNodeStringToCurves)
+        """ > Node <&Node String to Curves>
 
         Arguments
         ---------
@@ -948,7 +975,7 @@ class String(Socket):
     # ----- Comparison
 
     def equal(self, other):
-        """ Node 'Compare' (FunctionNodeCompare)
+        """ > Node <&Node Compare>
 
         Node compare with data_type = 'STRING' and operation = 'EQUAL'
 
@@ -959,14 +986,14 @@ class String(Socket):
 
         Returns
         -------
-        - result (Boolean)
+        - Boolean
         """
 
         # operation in ('EQUAL', 'NOT_EQUAL', 'BRIGHTER', 'DARKER')
         return Node("Compare", {'A': self, 'B': other}, data_type='STRING', operation='EQUAL')._out
 
     def not_equal(self, other):
-        """ Node 'Compare' (FunctionNodeCompare)
+        """ > Node <&Node Compare>
 
         Node compare with data_type = 'STRING' and operation = 'NOT_EQUAL'
 
@@ -977,7 +1004,7 @@ class String(Socket):
 
         Returns
         -------
-        - result (Boolean)
+        - Boolean
         """
 
         return Node("Compare", {'A': self, 'B': other}, data_type='STRING', operation='NOT_EQUAL')._out
@@ -1021,6 +1048,8 @@ class Material(Socket):
     def __init__(self, value=None, name=None, tip=None):
         """ Class Material data socket
 
+        Node <&Node Material>
+
         Arguments
         ---------
         - value (bpy.types.Material or str = None) : material or material name in bpy.data.materials
@@ -1054,6 +1083,8 @@ class Image(Socket):
     def __init__(self, value=None, name=None, tip=None):
         """ Class Image data socket
 
+        Node <&Node Image>
+
         Arguments
         ---------
         - value (bpy.types.Image or str = None) : image or image name in bpy.data.images
@@ -1080,9 +1111,9 @@ class Image(Socket):
     # ====================================================================================================
     # Methods
 
-    @staticmethod
-    def Info(image=None, frame=None):
-        """ Node 'Image Info' (GeometryNodeImageInfo)
+    @classmethod
+    def Info(cls, image=None, frame=None):
+        """ > Node <&Node Image Info>
 
         Arguments
         ---------
@@ -1091,13 +1122,13 @@ class Image(Socket):
 
         Returns
         -------
-        - Node: [width (Integer), height (Integer), has_alpha (Boolean), frame_count (Integer), fps (Float)]
+        - Node : 'Image Info' node
         """
 
         return Node("Image Info", {"Image": image, "Frame": frame})
 
     def info(self, frame=None):
-        """ Node 'Image Info' (GeometryNodeImageInfo)
+        """ > Node <&Node Image Info>
 
         Arguments
         ---------
@@ -1106,10 +1137,60 @@ class Image(Socket):
 
         Returns
         -------
-        - Node: [width (Integer), height (Integer), has_alpha (Boolean), frame_count (Integer), fps (Float)]
+        - Node : 'Image Info' node
         """
-
         return self._cache("Image Info", {"Image": self, "Frame": frame})
+
+    @property
+    def width(self):
+        """ Socket 'Width' of node <&Node Image Info>
+
+        Returns
+        -------
+        - Integer
+        """
+        return self.info.width
+
+    @property
+    def height(self):
+        """ Socket 'Height' of node <&Node Image Info>
+
+        Returns
+        -------
+        - Integer
+        """
+        return self.info.height
+
+    @property
+    def has_alpha(self):
+        """ Socket 'Has Alpha' of node <&Node Image Info>
+
+        Returns
+        -------
+        - Boolean
+        """
+        return self.info.has_alpha
+
+    @property
+    def frame_count(self):
+        """ Socket 'Frame Count' of node <&Node Image Info>
+
+        Returns
+        -------
+        - Integer
+        """
+        return self.info.frame_count
+
+    @property
+    def fps(self):
+        """ Socket 'FPS' of node <&Node Image Info>
+
+        Returns
+        -------
+        - Float
+        """
+        return self.info.fps
+
 
 # =============================================================================================================================
 # =============================================================================================================================
@@ -1122,7 +1203,7 @@ class TextureRoot(Socket):
     SOCKET_TYPE = 'TEXTURE'
 
     def __init__(self, value=None, name=None, tip=None):
-        """ Class Image data socket
+        """ Socket of type Texture
 
         Arguments
         ---------
@@ -1186,22 +1267,22 @@ class Object(Socket):
     @classmethod
     @property
     def Self(cls):
-        """ Node 'Self Object' (GeometryNodeSelfObject)
+        """ > Node <&Node Self Object>
 
         Returns
         -------
-        - self_object (Object)
+        - Object
         """
         return Node("Self Object")._out
 
     @classmethod
     @property
     def ActiveCamera(cls):
-        """ Node 'Active Camera' (GeometryNodeInputActiveCamera)
+        """ > Node <&Node Active Camera>
 
         Returns
         -------
-        - active_camera (Object)
+        - Object
         """
 
         return Node("Active Camera")._out
@@ -1209,21 +1290,9 @@ class Object(Socket):
     # ====================================================================================================
     # Methods
 
-    @staticmethod
-    def Info(object=None, as_instance=None, original=True):
-        """ Node 'Object Info'
-
-        Tree: Geometry Nodes
-
-        Sockets
-        -------
-        - Object (Object) : object
-        - As Instance (Boolean) : as_instance
-        - original (Boolean) : original
-
-        Parameters
-        ----------
-        - transform_space = 'ORIGINAL' or 'RELATIVE'
+    @classmethod
+    def Info(cls, object=None, as_instance=None, original=True):
+        """ > Node <&Node Object Info>
 
         Arguments
         ---------
@@ -1233,22 +1302,21 @@ class Object(Socket):
 
         Returns
         -------
-        - Node 'Object Info'
+        - Node : 'Object Info' node
         """
         return Node("Object Info", {"Object": object, "As Instance": as_instance}, transform_space = 'ORIGINAL' if original else 'RELATIVE')
 
     def info(self, as_instance=None, original=True):
-        """ Node 'Object Info' (GeometryNodeObjectInfo)
+        """ > Node <&Node Object Info>
 
         Arguments
         ---------
-        - self (Object) : socket 'Object' (Object)
         - as_instance (Boolean) : socket 'As Instance' (As Instance)
         - original (bool) : Node.transform_space in = 'ORIGINAL' if True else 'RELATIVE'
 
         Returns
         -------
-        - Node: [transform (Matrix), location (Vector), rotation (Rotation), scale (Vector), geometry (GEOMETRY)]
+        - Node : 'Object Info' node
         """
 
         return self._cache("Object Info", {"Object": self, "As Instance": as_instance}, transform_space = 'ORIGINAL' if original else 'RELATIVE')
@@ -1288,9 +1356,9 @@ class Collection(Socket):
     # ====================================================================================================
     # Methods
 
-    @staticmethod
-    def Info(collection=None, separate_children=None, reset_children=None, original=True):
-        """ Node 'Collection Info' (GeometryNodeCollectionInfo)
+    @classmethod
+    def Info(cls, collection=None, separate_children=None, reset_children=None, original=True):
+        """ > Node <&Node Collection Info>
 
         Arguments
         ---------
@@ -1301,26 +1369,23 @@ class Collection(Socket):
 
         Returns
         -------
-        - instances (GEOMETRY)
+        - Instances
         """
-
         return Node("Collection Info", {"Collection": collection, "Separate Children": separate_children, "Reset Children": reset_children}, transform_space = 'ORIGINAL' if original else 'RELATIVE')._out
 
     def info(self, separate_children=None, reset_children=None, original=True):
-        """ Node 'Collection Info' (GeometryNodeCollectionInfo)
+        """ > Node <&Node Collection Info>
 
         Arguments
         ---------
-        - self : socket 'Collection' (Collection)
         - separate_children (Boolean) : socket 'Separate Children' (Separate Children)
         - reset_children (Boolean) : socket 'Reset Children' (Reset Children)
         - original (bool) : Node.transform_space = 'ORIGINAL' if True else 'RELATIVE'
 
         Returns
         -------
-        - instances (GEOMETRY)
+        - Instances
         """
-
         return self._cache("Collection Info", {"Collection": self, "Separate Children": separate_children, "Reset Children": reset_children}, transform_space = 'ORIGINAL' if original else 'RELATIVE')
 
 
@@ -1334,5 +1399,43 @@ class Menu(Socket):
 
     SOCKET_TYPE = 'MENU'
 
-    # ====================================================================================================
-    # Constructors
+    def __init__(self, socket=None, name="Menu", menu=0, items={'A': None, 'B': None}, tip=None, input_type=None):
+        """ > Menu socket, node <&Node MenuSwitch>
+
+        Arguments
+        ---------
+        - socket (NodeSocket = None) :
+        - name (str = 'Menu') : name of the group input socket
+        - menu (int or str) : index or name of the default value
+        - items (dict) : menu names and values
+        - tip (str = None) : user tip
+        """
+
+        if socket is not None:
+            super().__init__(socket)
+            return
+
+        # ----------------------------------------------------------------------------------------------------
+        # Get data type from first value in the items dict
+
+        if len(items) < 2:
+            raise NodeError(f"Menu needs at least two items")
+
+        if input_type is None:
+            v = list(items.values())[0]
+            input_type = 'GEOMETRY' if v is None else utils.get_input_type(v)
+
+        node = Node('Menu Switch', data_type=input_type)
+
+        # Set the items
+
+        node._set_items(items, clear=True)
+
+        # Plug the menu
+
+        if isinstance(menu, int):
+            menu = list(items.keys())[menu]
+
+        menu_socket = Tree.new_input('NodeSocketMenu', name=name, value=None, description=tip)
+        node.plug_value_into_socket(menu_socket, node.in_socket('Menu'))
+        Tree.current_tree.set_input_socket_default(menu_socket, menu)

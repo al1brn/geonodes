@@ -8,6 +8,11 @@ SplinePoint(geometry)
 
 > Point domain of a [Curve](geono-curve.md#curve)
 
+Methods of **SplinePoint** class are nodes which accept 'POINT' domain.
+
+In addition, the nodes <*Curve of Point> and <*Offset Point in Curve> are implemented
+in methods [curve_index](geono-splinepoint.md#curve_index), [index_in_curve](geono-splinepoint.md#index_in_curve) and [offset_in_curve](geono-splinepoint.md#offset_in_curve).
+
 #### Arguments:
 - **geometry**
 

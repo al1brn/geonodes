@@ -1045,7 +1045,6 @@ class Node:
             from . import Boolean, Integer, Float, Vector, Rotation, Matrix, Color, Geometry, Material, Image, Object, Collection, Texture, String, Menu
             from . import Mesh, Curve, Cloud, Volume, Instances
 
-
             socket_class = {'BOOLEAN': Boolean, 'INT': Integer, 'VALUE': Float, 'VECTOR': Vector, 'ROTATION': Rotation, 'MATRIX': Matrix, 'RGBA': Color,
                 'STRING': String, 'MENU': Menu,
                     'GEOMETRY': Geometry,

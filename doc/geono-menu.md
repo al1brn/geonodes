@@ -1,19 +1,20 @@
-# Material
+# Menu
 
 > Bases classes: [Socket](geono-socket.md#socket)
 
 ``` python
-Material(value=None, name=None, tip=None)
+Menu(socket=None, name='Menu', menu=0, items={'A': None, 'B': None}, tip=None, input_type=None)
 ```
 
-Class Material data socket
-
-Node [Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/constant/material.html)
+> Menu socket, node ERROR: Node 'MenuSwitch' not found
 
 #### Arguments:
-- **value** (_bpy.types.Material or str_ = None) : material or material name in bpy.data.materials
-- **name** (_str_ = None) : create a group input socket of type Material if not None
-- **tip** (_str_ = None) : user tip for group input socket
+- **socket** (_NodeSocket_ = None) : 
+- **name** (_str_ = Menu) : name of the group input socket
+- **menu** (_int or str_ = 0) : index or name of the default value
+- **items** (_dict_ = {'A': None, 'B': None}) : menu names and values
+- **tip** (_str_ = None) : user tip
+- **input_type** ( = None)
 
 ### Inherited
 

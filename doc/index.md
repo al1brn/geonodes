@@ -100,6 +100,7 @@ The module [gnmath](geono-gnmat---gnmath.md#gnmath) provides math functions and 
   - [Layout](geono-layout.md#layout)
   - [Material](geono-material.md#material)
   - [Matrix](geono-matrix.md#matrix)
+  - [Menu](geono-menu.md#menu)
   - [Mesh](geono-mesh.md#mesh)
   - [nd](geono-nd.md#nd)
   - [Node](geono-node.md#node)
