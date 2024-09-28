@@ -1168,16 +1168,15 @@ Mix with another color : SUBTRACT
 to_output(name=None)
 ```
 
-> Connect to the output node
+> Connect to output
 
 > [!IMPORTANT]
 > Behaves differently in GeoNodes and ShaderNodes
 
-[AOV Output](https://docs.blender.org/manual/en/latest/render/shader_nodes/output/aov.html)
 
-> 
+> [!IMPORTANT]
 > - Geometry Nodes : create a group output socket with the provided name
-> - Shader : create a node 'AOV Ouput'
+> - Shader : create a node [AOV Output](https://docs.blender.org/manual/en/latest/render/shader_nodes/output/aov.html)
 
 #### Arguments:
 - **name** ( = None)
