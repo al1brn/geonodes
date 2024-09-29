@@ -63,6 +63,8 @@ class NodeInfo:
 
         self.bnode = bnode
         self.btree = btree
+        self.is_gnodes = self.btree.bl_idname == 'GeometryNodeTree'
+        self.is_shader = self.btree.bl_idname == 'ShaderNodeTree'
 
         # ----------------------------------------------------------------------------------------------------
         # Make sure STD_ATTRS is initialized
@@ -338,17 +340,23 @@ class NodeInfo:
 
     def yield_comment(self):
 
+        NEW_FORMAT = True
+
         _tab = " "*4
         c3 = '"""'
-
-        #return_node = self.out_sockets_count > 1
 
         sockets = self.get_sockets()
         params  = self.get_parameters()
 
-        yield f"{_tab*2}{c3} Node '{self.bnode.name}' ({self.bnode.bl_idname})"
+        if NEW_FORMAT:
+            snode = "ShaderNode" if self.is_shader else "Node"
+            yield f"\n\n{_tab*2}{c3} > Node <&{snode} {self.bnode.name}>"
+        else:
+            yield f"{_tab*2}{c3} Node '{self.bnode.name}' ({self.bnode.bl_idname})"
+            yield f"\n\n{_tab*2}[!Node] {self.bnode.name}"
 
-        yield f"\n\n{_tab*2}[!Node] {self.bnode.name}"
+        if self.is_shader:
+            yield f"\n\n{_tab*2}[!SHADER]"
 
         if sockets['has_items'] or params['has_items'] or self.has_items:
             yield f"\n\n{_tab*2}Arguments"
@@ -367,10 +375,15 @@ class NodeInfo:
             yield f"\n\n{_tab*2}Returns"
             yield f"\n{_tab*2}-------"
 
-            if True:
-                bsocket = self.bnode.outputs[0]
-                if bsocket.type != 'CUSTOM':
+            bsocket = self.bnode.outputs[0]
+            if bsocket.type != 'CUSTOM':
+
+                if NEW_FORMAT:
+                    out_socket = constants.CLASS_NAMES[self.bnode.outputs[0].type]
+
+                else:
                     out_socket = self.out_socket_str(self.bnode.outputs[0])
+
                     sepa = ' ['
                     for i in range(1, len(self.bnode.outputs)):
                         bsocket = self.bnode.outputs[i]
@@ -382,16 +395,9 @@ class NodeInfo:
                     if sepa != ' [':
                         out_socket += ']'
 
-                    yield f"\n{_tab*2}- {out_socket}"
-                else:
-                    yield f"\n{_tab*2}- None"
-
+                yield f"\n{_tab*2}- {out_socket}"
             else:
-                out_sockets = [f"{utils.socket_name(bsocket.name)} ({constants.CLASS_NAMES[bsocket.type]})" for bsocket in self.bnode.outputs if bsocket.type != 'CUSTOM']
-                if return_node:
-                    yield f"\n{_tab*2}- Node: [{', '.join(out_sockets)}]"
-                elif len(out_sockets):
-                    yield f"\n{_tab*2}- {out_sockets[0]}"
+                yield f"\n{_tab*2}- None"
 
         yield f"\n{_tab*2}{c3}\n\n"
 

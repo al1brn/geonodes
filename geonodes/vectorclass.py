@@ -34,6 +34,9 @@ updates
 """
 
 
+from sys import version
+from time import thread_time_ns
+from bpy.types import CompositorNodeAntiAliasing, PythonConstraint
 import numpy as np
 
 import bpy
@@ -173,20 +176,44 @@ class VectRot(VectorLike):
 
     @property
     def separate_xyz(self):
+        """ > Node <&Separate XYZ"
+
+        Returns
+        -------
+        - Node
+        """
         if self._separate_xyz is None:
             self._separate_xyz = Node("Separate XYZ", {'Vector': self})
         return self._separate_xyz
 
     @property
     def x(self):
+        """ Socket 'X' of node <&Separate XYZ>
+
+        Returns
+        -------
+        - Float
+        """
         return self.separate_xyz.x
 
     @property
     def y(self):
+        """ Socket 'Y' of node <&Separate XYZ>
+
+        Returns
+        -------
+        - Float
+        """
         return self.separate_xyz.y
 
     @property
     def z(self):
+        """ Socket 'Z' of node <&Separate XYZ>
+
+        Returns
+        -------
+        - Float
+        """
         return self.separate_xyz.z
 
     # ====================================================================================================
@@ -194,10 +221,22 @@ class VectRot(VectorLike):
 
     @classmethod
     def Combine(cls, x, y, z):
-        return cls(Node('Combine XYZ', {0: x, 1: y, 2:z})._out)
+        """ Constructor node <&Combine XYZ>
+
+        Returns
+        -------
+        - Vector
+        """
+        return cls(Node('Combine XYZ', [x, y, z])._out)
 
     @classmethod
     def Random(cls, min=None, max=None, id=None, seed=None):
+        """ Constructor node <&Random Value>
+
+        Returns
+        -------
+        - Vector
+        """
         return cls(Node('Random Value', {'Min': min, 'Max': max, 'ID': id, 'Seed': seed}, data_type='FLOAT_VECTOR')._out)
 
     # ====================================================================================================
@@ -357,6 +396,31 @@ class Vector(VectRot):
     SOCKET_TYPE = 'VECTOR'
 
     def __init__(self, value=(0, 0, 0), name=None, tip=None, subtype='NONE'):
+        """ > Socket of type VECTOR
+
+        If **value** argument is None:
+        - if **name** argument is None, a node 'Vector' is added
+        - otherwise a new group input is created using **tip** and **subtype**
+          arguments
+
+        If **value** argument is not None, a new **Vector** is created from the value:
+        - using a <&Node Vector> node if the **value** is a float or a tuple of floats
+        - using a <&Node Combine XYZ> node if the **value** is a tuple containing <!Socket"Sockets>
+
+        ``` python
+        vect = Vector()                    # 'Vector' node
+        vect = Vector((1, 2, 3.14)).       # 'Vector' node
+        vect = Vector((Float(1), 2, 3.14)) # 'Combine XYZ' node
+        vect = Vector(name="User input").  # Create a new Vector group input
+        ```
+
+        Arguments
+        ---------
+        - value (tuple of floats or Sockets) : initial value
+        - name (str = None) : Create an Group Input socket with the provided str if not None
+        - tip (str = None) : User tip (for Group Input sockets)
+        - subtype (str = None) : sub type for group input
+        """
         bsock = utils.get_bsocket(value)
         if bsock is None:
             if name is None:
@@ -375,36 +439,84 @@ class Vector(VectRot):
 
     @classmethod
     def Translation(cls, value=(0., 0., 0.), name='Translation', tip=None):
+        """ > Translation group input
+
+        Returns
+        -------
+        - Vector
+        """
         return cls(value=value, name=name, tip=tip, subtype='TRANSLATION')
 
     @classmethod
     def Direction(cls, value=(0., 0., 0.), name='Direction', tip=None):
+        """ > Direction group input
+
+        Returns
+        -------
+        - Vector
+        """
         return cls(value=value, name=name, tip=tip, subtype='DIRECTION')
 
     @classmethod
     def Velocity(cls, value=(0., 0., 0.), name='Velocity', tip=None):
+        """ > Velocity group input
+
+        Returns
+        -------
+        - Vector
+        """
         return cls(value=value, name=name, tip=tip, subtype='VELOCITY')
 
     @classmethod
     def Acceleration(cls, value=(0., 0., 0.), name='Acceleration', tip=None):
+        """ > Acceleration group input
+
+        Returns
+        -------
+        - Vector
+        """
         return cls(value=value, name=name, tip=tip, subtype='ACCELERATION')
 
     @classmethod
     def Euler(cls, value=(0., 0., 0.), name='Euler', tip=None):
+        """ > Euler group input
+
+        Returns
+        -------
+        - Vector
+        """
         return cls(value=value, name=name, tip=tip, subtype='EULER')
 
     @classmethod
     def XYZ(cls, value=(0., 0., 0.), name='XYZ', tip=None):
+        """ > XYZ group input
+
+        Returns
+        -------
+        - Vector
+        """
         return cls(value=value, name=name, tip=tip, subtype='XYZ')
 
     @classmethod
     def FromRotation(cls, rotation=None):
+        """ > Constructor node <&Rotation to Euler>
+
+        Returns
+        -------
+        - Vector
+        """
         return Rotation(rotation).to_euler()
 
     # ====================================================================================================
     # Conversion
 
     def to_rotation(self):
+        """ Node <&Euler to Rotation>
+
+        Returns
+        -------
+        - Rotation
+        """
         return Rotation.FromEuler(self)
 
     # ====================================================================================================
@@ -413,133 +525,381 @@ class Vector(VectRot):
     # ----- Mix
 
     def mix(self, factor=None, other=None, clamp_factor=None, factor_mode=None):
+        """ > Node <&Mix>
+
+        Arguments
+        ---------
+        - factor (Float = None) : socket 'Factor'
+        - other (Vector = None) : socket 'B'
+        - clamp_factor (bool = None) : clamp_factor parameter
+        - factor_mode (str in 'UNIFORM', 'NON_UNIFORM')
+
+        Returns
+        -------
+        - Vector
+        """
         return Vector(Node('Mix', {'Factor': factor, 'A': self, 'B': other}, clamp_factor=clamp_factor, factor_mode=factor_mode, data_type='VECTOR')._out)
 
     def mix_uniform(self, factor=None, other=None, clamp_factor=None):
+        """ > Node <&Mix>, factor_mode = 'UNIFORM'
+
+        Arguments
+        ---------
+        - factor (Float = None) : socket 'Factor'
+        - other (Vector = None) : socket 'B'
+        - clamp_factor (bool = None) : clamp_factor parameter
+
+        Returns
+        -------
+        - Vector
+        """
         return self.mix(factor, other, clamp_factor, factor_mode='UNIFORM')
 
     def mix_non_uniform(self, factor=None, other=None, clamp_factor=None):
+        """ > Node <&Mix>, factor_mode = 'NON_UNIFORM'
+
+        Arguments
+        ---------
+        - factor (Float = None) : socket 'Factor'
+        - other (Vector = None) : socket 'B'
+        - clamp_factor (bool = None) : clamp_factor parameter
+
+        Returns
+        -------
+        - Vector
+        """
         return self.mix(factor, other, clamp_factor, factor_mode='NON_UNIFORM')
 
     # ----- Rotation
 
     def vector_rotate(self, center=None, axis=None, angle=None, rotation=None, invert=None, rotation_type=None):
+        """ > Node <&Node Vector Rotate>
+
+        Arguments
+        ---------
+        - center (Vector) : socket 'Center' (Center)
+        - axis (Vector) : socket 'Axis' (Axis)
+        - angle (Float) : socket 'Angle' (Angle)
+        - rotation (Vector) : socket 'Rotation' (Rotation)
+        - invert (bool): Node.invert
+        - rotation_type (str): Node.rotation_type in ('AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ')
+
+        Returns
+        -------
+        - Vector
+        """
         return Vector(Node('Vector Rotate', {'Vector': self, 'Center': center, 'Axis': axis, 'Angle': angle, 'Rotation': rotation},
             invert=invert, rotation_type=rotation_type)._out)
 
     def rotate_axis(self, center=None, axis=None, angle=None, invert=None):
+        """ > Node <&Node Vector Rotate>, rotation_type = 'AXIS_ANGLE'
+
+        Arguments
+        ---------
+        - center (Vector) : socket 'Center' (Center)
+        - axis (Vector) : socket 'Axis' (Axis)
+        - angle (Float) : socket 'Angle' (Angle)
+        - invert (bool): Node.invert
+
+        Returns
+        -------
+        - Vector
+        """
         return Vector(Node('Vector Rotate', {'Vector': self, 'Center': center, 'Axis': axis, 'Angle': angle},
             invert=invert, rotation_type='AXIS_ANGLE')._out)
 
     def rotate_x(self, center=None, angle=None, invert=None):
+        """ > Node <&Node Vector Rotate>, rotation_type = 'X_AXIS'
+
+        Arguments
+        ---------
+        - center (Vector) : socket 'Center' (Center)
+        - angle (Float) : socket 'Angle' (Angle)
+        - invert (bool): Node.invert
+
+        Returns
+        -------
+        - Vector
+        """
         return Vector(Node('Vector Rotate', {'Vector': self, 'Center': center, 'Angle': angle},
             invert=invert, rotation_type='X_AXIS')._out)
 
     def rotate_y(self, center=None, angle=None, invert=None):
+        """ > Node <&Node Vector Rotate>, rotation_type = 'Y_AXIS'
+
+        Arguments
+        ---------
+        - center (Vector) : socket 'Center' (Center)
+        - angle (Float) : socket 'Angle' (Angle)
+        - invert (bool): Node.invert
+
+        Returns
+        -------
+        - Vector
+        """
         return Vector(Node('Vector Rotate', {'Vector': self, 'Center': center, 'Angle': angle},
             invert=invert, rotation_type='Y_AXIS')._out)
 
     def rotate_z(self, center=None, angle=None, invert=None):
+        """ > Node <&Node Vector Rotate>, rotation_type = 'Z_AXIS'
+
+        Arguments
+        ---------
+        - center (Vector) : socket 'Center' (Center)
+        - angle (Float) : socket 'Angle' (Angle)
+        - invert (bool): Node.invert
+
+        Returns
+        -------
+        - Vector
+        """
         return Vector(Node('Vector Rotate', {'Vector': self, 'Center': center, 'Angle': angle},
             invert=invert, rotation_type='Z_AXIS')._out)
 
     def rotate_euler(self, center=None, rotation=None, invert=None):
+        """ > Node <&Node Vector Rotate>, rotation_type = 'EULER_XYZ'
+
+        Arguments
+        ---------
+        - center (Vector) : socket 'Center' (Center)
+        - rotation (Vector) : socket 'Rotation' (Rotation)
+        - invert (bool): Node.invert
+
+        Returns
+        -------
+        - Vector
+        """
         return Vector(Node('Vector Rotate', {'Vector': self, 'Center': center, 'Rotation': rotation},
             invert=invert, rotation_type='EULER_XYZ')._out)
 
     def rotate(self, rotation=None):
+        """ > Node <&Node Rotate Vector>
+
+        Arguments
+        ---------
+        - rotation (Rotation) : socket 'Rotation' (Rotation)
+
+        Returns
+        -------
+        - Vector
+        """
         return Vector(Node('Rotate Vector', {'Vector': self, 'Rotation': rotation})._out)
 
     # ----- Geometry
 
     def index_of_nearest(self, group_id=None):
-        index = Node('Index of Nearest', {'Position': self, 'Group ID': group_id})._out
-        index.has_neighbor_ = index.node.has_neighbor
-        return index
+        """ > Node <&Node Index of Nearest>
+
+        Arguments
+        ---------
+        - group_id (Integer) : socket 'Group ID' (Group ID)
+
+        Returns
+        -------
+        - Integer
+        """
+        return Node('Index of Nearest', {'Position': self, 'Group ID': group_id})._out
 
     # ====================================================================================================
     # Shader
 
-    def to_output(self, name=None):
+    def out(self, name=None):
+        """ > Plug the Vector to the group output
+
+        [!MIX]
+
+        > [!NOTE]
+        > - <!GeoNodes> : the Vector is plug as group output
+        > - <!ShaderNoder> : if **name** argument is None, the vecteur is plugged
+        >.  into the `Displacement` socket of <&ShaderNode &Material Output>,
+        >   otherwise it is plugged to a <&ShaderNode AOV Output> node.
+
+        """
         if self._tree._btree.bl_idname == 'ShaderNodeTree' and not self._tree._is_group:
             if name is None:
                 self._tree.set_displacement(self)
             else:
                 self._tree.aov_output(name=name, color=self)
         else:
-            super().to_output(name=name)
+            super().out(name=name)
 
-    def displacement_out(self, target='ALL'):
+    def displacement_out(self, target='ALL
+        """ > Plug the value to 'Displacement' socket of <&ShaderNode Material Output> node
+
+        [!SHADER]
+        """
         self._tree.set_displacement(self, target=target)
 
 
     @classmethod
     def Tangent(cls, axis='Z', direction_type='RADIAL', uv_map=''):
-        """ Node 'Tangent' (ShaderNodeTangent)
-        - axis in ('X', 'Y', 'Z')
-        - direction_type in ('RADIAL', 'UV_MAP')
-        """
+        """ > Node <&ShaderNode Tangent>
 
+        [!SHADER]
+
+        Arguments
+        ---------
+        - axis (str): Node.axis in ('X', 'Y', 'Z')
+        - direction_type (str): Node.direction_type in ('RADIAL', 'UV_MAP')
+        - uv_map (str): Node.uv_map
+
+        Returns
+        -------
+        - Vector
+        """
         node = Node('Tangent', axis=axis, direction_type=direction_type, uv_map=uv_map)
         return node._out
 
     @classmethod
     def UVMap(cls, uv_map='', from_instancer=False):
-        """ Node 'UV Map' (ShaderNodeUVMap)
-        """
+        """ > Node <&ShaderNode UV Map>
 
+        [!SHADER]
+
+        Arguments
+        ---------
+        - uv_map (str): Node.uv_map
+        - from_instancer (bool): Node.from_instancer
+
+        Returns
+        -------
+        - Vector
+        """
         node = Node('UV Map', from_instancer=from_instancer, uv_map=uv_map)
         return node._out
 
     # ----- Vector
 
     def bump(self, strength=None, distance=None, height=None, invert=False):
+        """ > Node <&ShaderNode Bump>
+
+        [!SHADER]
+
+        > [!NOTE]
+        > Self Vector is plugged to 'Normal' socket
+
+        Arguments
+        ---------
+        - strength (Float) : socket 'Strength' (Strength)
+        - distance (Float) : socket 'Distance' (Distance)
+        - height (Float) : socket 'Height' (Height)
+        - invert (bool): Node.invert
+
+        Returns
+        -------
+        - Vector
+        """
         node = Node('Bump', {'Strength': strength, 'Distance': distance, 'Height': height, 'Normal': self}, invert=invert)
         return node._out
 
     def displacement(self, height=None, midlevel=None, scale=None, space='OBJECT'):
+        """ > Node <&ShaderNode Displacement>
+
+        [!SHADER]
+
+        > [!NOTE]
+        > Self Vector is plugged to 'Normal' socket
+
+        Arguments
+        ---------
+        - height (Float) : socket 'Height' (Height)
+        - midlevel (Float) : socket 'Midlevel' (Midlevel)
+        - scale (Float) : socket 'Scale' (Scale)
+        - space (str): Node.space in ('OBJECT', 'WORLD')
+
+        Returns
+        -------
+        - Vector
+        """
         node = Node('Displacement', {'Height': height, 'Midlevel': midlevel, 'Scale': scale, 'Normal': self}, space=space)
         return node._out
 
     def mapping(self, location=None, rotation=None, scale=None, vector_type='POINT'):
-        # vector_type in ('POINT', 'TEXTURE', 'VECTOR', 'NORMAL')
-        node = Node('Mapping', {'Vector': self, 'Location': location, 'Rotation': rotation, 'Scale': scale}, vector_type=vector_type)
-        return node._out
+        """ > Node <&ShaderNode Mapping>
 
-    def normal(self, normal=None):
-        """Node 'Normal'
-
-        Tree: Shader
+        [!SHADER]
 
         Arguments
         ---------
-        - normal (Vector) :
+        - location (Vector) : socket 'Location' (Location)
+        - rotation (Vector) : socket 'Rotation' (Rotation)
+        - scale (Vector) : socket 'Scale' (Scale)
+        - vector_type (str): Node.vector_type in ('POINT', 'TEXTURE', 'VECTOR', 'NORMAL')
+
+        Returns
+        -------
+        - Vector
+        """
+        node = Node('Mapping', {'Vector': self, 'Location': location, 'Rotation': rotation, 'Scale': scale}, vector_type=vector_type)
+        return node._out
+
+    def normal(self):
+        """ > Node <&ShaderNode Normal>
+
+        [!SHADER]
 
         Returns
         -------
         - Vector
         """
         node = Node('Normal', {'Normal': self})
-        vec = node._out
-        vec._bsocket.default_value = normal
-        vec.dot_ = node.dot
-        return vec
+        vect = node._out
+        vect._bsocket.default_value = normal
+        return vect
 
     @classmethod
     def NormalMap(cls, strength=None, color=None, space='TANGENT', uv_map=''):
-        # space in ('TANGENT', 'OBJECT', 'WORLD', 'BLENDER_OBJECT', 'BLENDER_WORLD')
+        """ > Constructor node <&ShaderNode Normal Map>
+
+        [!SHADER]
+
+        Arguments
+        ---------
+        - strength (Float) : socket 'Strength' (Strength)
+        - color (Color) : socket 'Color' (Color)
+        - space (str): Node.space in ('TANGENT', 'OBJECT', 'WORLD', 'BLENDER_OBJECT', 'BLENDER_WORLD')
+        - uv_map (str): Node.uv_map
+
+        Returns
+        -------
+        - Vector
+        """
         node = Node('Normal Map', {'Strength': strength, 'Color': color}, space=space, uv_map=uv_map)
         return node._out
 
     def vector_displacement(self, midlevel=None, scale=None, space='TANGENT'):
-        # space in ('TANGENT', 'OBJECT', 'WORLD')
+        """ > Node <&ShaderNode Vector Displacement>
+
+        [!SHADER]
+
+        Arguments
+        ---------
+        - midlevel (Float) : socket 'Midlevel' (Midlevel)
+        - scale (Float) : socket 'Scale' (Scale)
+        - space (str): Node.space in ('TANGENT', 'OBJECT', 'WORLD')
+
+        Returns
+        -------
+        - Vector
+        """
         node = Node('Vector Displacement', {'Vector': self, 'Midlevel': midlevel, 'Scale': scale}, space=space)
         return node._out
 
     def transform(self, convert_from='WORLD', convert_to='OBJECT', vector_type='NORMAL'):
-        # convert_from in ('WORLD', 'OBJECT', 'CAMERA')
-        # convert_to in ('WORLD', 'OBJECT', 'CAMERA')
-        # vector_type in ('POINT', 'VECTOR', 'NORMAL')
+        """ > Node <&ShaderNode Vector Transform>
+
+        [!SHADER]
+
+        Arguments
+        ---------
+        - convert_from (str): Node.convert_from in ('WORLD', 'OBJECT', 'CAMERA')
+        - convert_to (str): Node.convert_to in ('WORLD', 'OBJECT', 'CAMERA')
+        - vector_type (str): Node.vector_type in ('POINT', 'VECTOR', 'NORMAL')
+
+        Returns
+        -------
+        - Vector
+        """
         node = Node('Vector Transform', {'Vector': self}, convert_from=convert_from, convert_to=convert_to, vector_type=vector_type)
         return node._out
 
@@ -555,12 +915,38 @@ class Rotation(VectRot):
     SOCKET_TYPE = 'ROTATION'
 
     def __init__(self, value=(0., 0., 0.), name=None, tip=None):
+        """ > Socket of type ROTATION
+
+        If **value** argument is None:
+        - if **name** argument is None, a node <&Node Rotation> is added
+        - otherwise a new group input is created using **tip** argument.
+
+        If **value** argument is not None, a new **Rotation** is created from the value:
+        - using a <&Node Rotation> node if the **value** is a float or a tuple of floats
+        - using <&Node Combine XYZ> and <&Node Euler to Rotation> nodes if the **value**
+          is a tuple containing <!Socket"Sockets>
+
+        ``` python
+        rot = Rotation()                    # 'Rotation' node
+        rot = Rotation((1, 2, 3.14)).       # 'Rotation' node
+        rot = Rotation((Float(1), 2, 3.14)) # 'Combine XYZ' + 'Euler to Rotation' nodes
+        rot = Rotation(name="User input").  # Create a new Rotation group input
+        ```
+
+        Arguments
+        ---------
+        - value (tuple of floats or Sockets) : initial value
+        - name (str = None) : Create an Group Input socket with the provided str if not None
+        - tip (str = None) : User tip (for Group Input sockets)
+        """
+
         bsock = utils.get_bsocket(value)
         if bsock is None:
             if name is None:
                 a = utils.value_to_array(value, (3,))
                 if utils.has_bsocket(a):
-                    bsock = Node('Combine XYZ', {0: a[0], 1: a[1], 2:a[2]})._out
+                    bsock = Vector(value).to_rotation()
+                    #bsock = Node('Combine XYZ', {0: a[0], 1: a[1], 2:a[2]})._out
                 else:
                     bsock = Node('Rotation', rotation_euler=value)._out
             else:
@@ -572,107 +958,576 @@ class Rotation(VectRot):
     # Constructors
 
     @classmethod
-    def AxesToRotation(cls, axis_1='Z', target_1=(0, 0, 1), axis_2='X', target_2=(1, 0, 0)):
-        return Node('Axes to Rotation', {'Primary Axis': target_1, 'Secondary Axis': target_2}, primary_axis=axis_1, secondary_axis=axis_2)._out
+    def AxesToRotation(cls, primary_axis=None, secondary_axis=None, primary_align='Z', secondary_align='X'):
+        """ > Constructor node <&Node Axes to Rotation>
+
+        > [!NOTE]
+        > This constructor is homonym of <#FromAxes> constructor
+        > See also <#FromXYAxes>, <#FromYXAxes>, <#FromXZAxes>, <#FromZXAxes>, <#FromYZAxes>, <#FromZYAxes>,
+
+        > [!NOTE]
+        > In the node <*Node Axes to Rotation>, the parameter names is the **snake_case** version
+        > of the sockets (primary_target and 'Primary Target').
+        > It is why, the corresponding arguments are renamed into **primary_align** and **secondary_align**.
+
+        Arguments
+        ---------
+        - primary_axis (Vector) : socket 'Primary Axis' (Primary Axis)
+        - secondary_axis (Vector) : socket 'Secondary Axis' (Secondary Axis)
+        - primary_align (str): Node.primary_axis in ('X', 'Y', 'Z')
+        - secondary_align (str): Node.secondary_axis in ('X', 'Y', 'Z')
+
+        Returns
+        -------
+        - Rotation
+        """
+        return Node('Axes to Rotation', {'Primary Axis': primary_axis, 'Secondary Axis': secondary_axis}, primary_axis=primary_align, secondary_axis=secondary_align)._out
 
     @classmethod
-    def FromAxes(cls, axis_1='Z', target_1=(0, 0, 1), axis_2='X', target_2=(1, 0, 0)):
-        return cls.AxesToRotation(axis_1, target_1, axis_2, target_2)
+    def FromAxes(cls, primary_axis=None, secondary_axis=None, primary_align='Z', secondary_align='X'):
+        """ > Constructor node <&Node Axes to Rotation>
+
+        > [!NOTE]
+        > This constructor is synonym of <#AxesToRotation> constructor
+        > See also <#FromXYAxes>, <#FromYXAxes>, <#FromXZAxes>, <#FromZXAxes>, <#FromYZAxes>, <#FromZYAxes>,
+
+        > [!NOTE]
+        > In the node <*Node Axes to Rotation>, the parameter names is the **snake_case** version
+        > of the sockets (primary_target and 'Primary Target').
+        > It is why, the corresponding arguments are renamed into **primary_align** and **secondary_align**.
+
+        Arguments
+        ---------
+        - primary_axis (Vector) : socket 'Primary Axis' (Primary Axis)
+        - secondary_axis (Vector) : socket 'Secondary Axis' (Secondary Axis)
+        - primary_align (str): Node.primary_axis in ('X', 'Y', 'Z')
+        - secondary_align (str): Node.secondary_axis in ('X', 'Y', 'Z')
+
+        Returns
+        -------
+        - Rotation
+        """
+        return Node('Axes to Rotation', {'Primary Axis': primary_axis, 'Secondary Axis': secondary_axis}, primary_axis=primary_align, secondary_axis=secondary_align)._out
+
+
+    @classmethod
+    def FromXYAxes(cls, primary_axis=None, secondary_axis=None):
+        """ > Constructor node <&Node Axes to Rotation>, with XY alignment
+
+        Arguments
+        ---------
+        - primary_axis (Vector) : axis aligned with X
+        - secondary_axis (Vector) : axis aligned with Y
+
+        Returns
+        -------
+        - Rotation
+        """
+        return cls.AxesToRotation(primary_axis=primary_axis, secondary_axis=secondary_axis,
+            ,primary_align='X', secondary_align='Y)
+
+    @classmethod
+    def FromYXAxes(cls, primary_axis=None, secondary_axis=None):
+        """ > Constructor node <&Node Axes to Rotation>, with YX alignment
+
+        Arguments
+        ---------
+        - primary_axis (Vector) : axis aligned with Y
+        - secondary_axis (Vector) : axis aligned with X
+
+        Returns
+        -------
+        - Rotation
+        """
+        return cls.AxesToRotation(primary_axis=primary_axis, secondary_axis=secondary_axis,
+            ,primary_align='X', secondary_align='Y)
+
+    @classmethod
+    def FromXZAxes(cls, primary_axis=None, secondary_axis=None):
+        """ > Constructor node <&Node Axes to Rotation>, with XZ alignment
+
+        Arguments
+        ---------
+        - primary_axis (Vector) : axis aligned with X
+        - secondary_axis (Vector) : axis aligned with Z
+
+        Returns
+        -------
+        - Rotation
+        """
+        return cls.AxesToRotation(primary_axis=primary_axis, secondary_axis=secondary_axis,
+            ,primary_align='X', secondary_align='Y)
+
+    @classmethod
+    def FromZXAxes(cls, primary_axis=None, secondary_axis=None):
+        """ > Constructor node <&Node Axes to Rotation>, with ZX alignment
+
+        Arguments
+        ---------
+        - primary_axis (Vector) : axis aligned with Z
+        - secondary_axis (Vector) : axis aligned with X
+
+        Returns
+        -------
+        - Rotation
+        """
+        return cls.AxesToRotation(primary_axis=primary_axis, secondary_axis=secondary_axis,
+            ,primary_align='X', secondary_align='Y)
+
+    @classmethod
+    def FromYZAxes(cls, primary_axis=None, secondary_axis=None):
+        """ > Constructor node <&Node Axes to Rotation>, with YZ alignment
+
+        Arguments
+        ---------
+        - primary_axis (Vector) : axis aligned with Y
+        - secondary_axis (Vector) : axis aligned with Z
+
+        Returns
+        -------
+        - Rotation
+        """
+        return cls.AxesToRotation(primary_axis=primary_axis, secondary_axis=secondary_axis,
+            ,primary_align='X', secondary_align='Y)
+
+    @classmethod
+    def FromZYAxes(cls, primary_axis=None, secondary_axis=None):
+        """ > Constructor node <&Node Axes to Rotation>, with ZY alignment
+
+        Arguments
+        ---------
+        - primary_axis (Vector) : axis aligned with Z
+        - secondary_axis (Vector) : axis aligned with Y
+
+        Returns
+        -------
+        - Rotation
+        """
+        return cls.AxesToRotation(primary_axis=primary_axis, secondary_axis=secondary_axis,
+            ,primary_align='X', secondary_align='Y)
 
     @classmethod
     def AxisAngleToRotation(cls, axis=(0, 0, 1), angle=0):
+        """ > Node <&Node Axis Angle to Rotation>
+
+        > [!NOTE]
+        > This constructor is homonym of <#FromAxisAngle> constructor
+
+        Arguments
+        ---------
+        - axis (Vector) : socket 'Axis' (Axis)
+        - angle (Float) : socket 'Angle' (Angle)
+
+        Returns
+        -------
+        - Rotation
+        """
         return Node('Axis Angle to Rotation', {'Axis': axis, 'Angle': angle})._out
 
     @classmethod
     def FromAxisAngle(cls, axis=(0, 0, 1), angle=0):
+        """ > Node <&Node Axis Angle to Rotation>
+
+        > [!NOTE]
+        > This constructor is homonym of <#AxisAngleToRotation> constructor
+
+        Arguments
+        ---------
+        - axis (Vector) : socket 'Axis' (Axis)
+        - angle (Float) : socket 'Angle' (Angle)
+
+        Returns
+        -------
+        - Rotation
+        """
         return cls.AxisAngleToRotation(axis, angle)
 
     @classmethod
     def EulerToRotation(cls, euler=(0, 0, 0)):
+        """ > Node <&Node Euler to Rotation>
+
+        > [!NOTE]
+        > This constructor is homonym of <#FromEuler> constructor
+
+        Arguments
+        ---------
+        - euler (Vector) : socket 'Euler' (Euler)
+
+        Returns
+        -------
+        - Rotation
+        """
         return Node('Euler to Rotation', {'Euler': euler})._out
 
     @classmethod
     def FromEuler(cls, euler=(0, 0, 0)):
+        """ > Node <&Node Euler to Rotation>
+
+        > [!NOTE]
+        > This constructor is homonym of <#EulerToRotation> constructor
+
+        Arguments
+        ---------
+        - euler (Vector) : socket 'Euler' (Euler)
+
+        Returns
+        -------
+        - Rotation
+        """
         return cls.EulerToRotation(euler)
 
     @classmethod
     def QuaternionToRotation(cls, w=0, x=0, y=0, z=0):
+        """ > Node <&Node Quaternion to Rotation>
+
+        > [!NOTE]
+        > This constructor is homonym of <#FromQuaternion> constructor
+
+        Arguments
+        ---------
+        - w (Float) : socket 'W' (W)
+        - x (Float) : socket 'X' (X)
+        - y (Float) : socket 'Y' (Y)
+        - z (Float) : socket 'Z' (Z)
+
+        Returns
+        -------
+        - Rotation
+        """
         return Node('Quaternion to Rotation', {'W': w, 'X': x, 'Y': y, 'Z': z})._out
 
     @classmethod
     def FromQuaternion(cls, w=0, x=0, y=0, z=0):
+        """ > Node <&Node Quaternion to Rotation>
+
+        > [!NOTE]
+        > This constructor is homonym of <#QuaternionToRotation> constructor
+
+        Arguments
+        ---------
+        - w (Float) : socket 'W' (W)
+        - x (Float) : socket 'X' (X)
+        - y (Float) : socket 'Y' (Y)
+        - z (Float) : socket 'Z' (Z)
+
+        Returns
+        -------
+        - Rotation
+        """
         return cls.QuaternionToRotation(w, x, y, z)
 
     @classmethod
-    def AlignToVector(cls, vector=None, factor=None, axis=None, pivot_axis=None):
-        return Node('Align Rotation to Vector', {'Rotation': None, 'Factor': factor, 'Vector': vector},
+    def AlignToVector(cls, vector=None, factor=None, axis='Z', pivot_axis='AUTO'):
+        """ > Constructor node <&Node Align Rotation to Vector>
+
+        > [!NOTE]
+        > This constructor creates a <*Node Align Rotation to Vector> node without
+        > connecting the 'Rotation' input socket. To align a **Rotation** other than
+        > **Identity** uses method <#align_to_vector>
+
+        Arguments
+        ---------
+        - vector (Vector) : socket 'Vector' (Vector)
+        - factor (Float) : socket 'Factor' (Factor)
+        - axis (str): Node.axis in ('X', 'Y', 'Z')
+        - pivot_axis (str): Node.pivot_axis in ('AUTO', 'X', 'Y', 'Z')
+
+        Returns
+        -------
+        - Rotation
+        """
+        return Node('Align Rotation to Vector', {'Factor': factor, 'Vector': vector},
             axis=axis, pivot_axis=pivot_axis)._out
 
     @classmethod
     def AlignXToVector(cls, vector=None, factor=None, pivot_axis=None):
+        """ > Constructor node <&Node Align Rotation to Vector>, axis = X
+
+        > [!NOTE]
+        > This constructor creates a <*Node Align Rotation to Vector> node without
+        > connecting the 'Rotation' input socket. To align a **Rotation** other than
+        > **Identity** uses method <#align_x_to_vector>
+
+        Arguments
+        ---------
+        - vector (Vector) : socket 'Vector' (Vector)
+        - factor (Float) : socket 'Factor' (Factor)
+        - pivot_axis (str): Node.pivot_axis in ('AUTO', 'X', 'Y', 'Z')
+
+        Returns
+        -------
+        - Rotation
+        """
         return cls.AlignToVector(vector, factor, axis='X', pivot_axis=pivot_axis)
 
     @classmethod
     def AlignYToVector(cls, vector=None, factor=None, pivot_axis=None):
+        """ > Constructor node <&Node Align Rotation to Vector>, axis = Y
+
+        > [!NOTE]
+        > This constructor creates a <*Node Align Rotation to Vector> node without
+        > connecting the 'Rotation' input socket. To align a **Rotation** other than
+        > **Identity** uses method <#align_y_to_vector>
+
+        Arguments
+        ---------
+        - vector (Vector) : socket 'Vector' (Vector)
+        - factor (Float) : socket 'Factor' (Factor)
+        - pivot_axis (str): Node.pivot_axis in ('AUTO', 'X', 'Y', 'Z')
+
+        Returns
+        -------
+        - Rotation
+        """
         return cls.AlignToVector(vector, factor, axis='Y', pivot_axis=pivot_axis)
 
     @classmethod
     def AlignZToVector(cls, vector=None, factor=None, pivot_axis=None):
+        """ > Constructor node <&Node Align Rotation to Vector>, axis = Z
+
+        > [!NOTE]
+        > This constructor creates a <*Node Align Rotation to Vector> node without
+        > connecting the 'Rotation' input socket. To align a **Rotation** other than
+        > **Identity** uses method <#align_z_to_vector>
+
+        Arguments
+        ---------
+        - vector (Vector) : socket 'Vector' (Vector)
+        - factor (Float) : socket 'Factor' (Factor)
+        - pivot_axis (str): Node.pivot_axis in ('AUTO', 'X', 'Y', 'Z')
+
+        Returns
+        -------
+        - Rotation
+        """
         return cls.AlignToVector(vector, factor, axis='Z', pivot_axis=pivot_axis)
 
     # ====================================================================================================
     # Conversion
 
     def to_axis_angle(self):
-        return Node("Rotation to Axis Angle", {'Rotation': self})
+        """ > Node <&Node Rotation to Axis Angle>
+
+        > [!NOTE]
+        > The method returns the <!Vector>. To get the angle, you can use
+        > the **peer socket** naming :
+
+        ``` python
+        vect = rotation.to_axis_angle()
+        angle = vect.angle_ # equivalent to vect.node.angle
+        ```
+
+        Returns
+        -------
+        - Vector
+        """
+        return Node("Rotation to Axis Angle", {'Rotation': self})._out
 
     def to_euler(self):
+        """ > Node <&Node Rotation to Euler>
+
+        Returns
+        -------
+        - Vector
+        """
         return Node("Rotation to Euler", {'Rotation': self})._out
 
     def to_quaternion(self):
+        """ > Node <&Node Rotation to Quaternion>
+
+        > [!CAUTION]
+        > By exception, this method returns the node, not the first output socket
+
+        ``` python
+        quat = rotation.to_quaternion()
+        w = quat.w
+        x = quat.x
+        y = quat.y
+        z = quat.z
+        ```
+
+        Arguments
+        ---------
+        - rotation (Rotation) : socket 'Rotation' (Rotation)
+
+        Returns
+        -------
+        - Node : node with **w**, **x**, **y** and **z** properties
+        """
         return Node("Rotation to Quaternion", {'Rotation': self})
 
     # ====================================================================================================
     # Methods
 
     def mix(self, factor=None, other=None, clamp_factor=None):
+        """ > Node <&Node Mix>
+
+        Arguments
+        ---------
+        - factor (Float) : socket 'Factor' (Factor_Float)
+        - other (Rotation) : socket 'B' (B_Float)
+        - clamp_factor (bool): Node.clamp_factor
+
+        Returns
+        -------
+        - Rotation
+        """
         return Rotation(Node('Mix', {'Factor': factor, 'A': self, 'B': other}, clamp_factor=clamp_factor, data_type='ROTATION'))
 
     # ----- Rotate vector
 
     def rotate_vector(self, vector=None):
+        """ > Node <&Node Rotate Vector>
+
+        > [!NOTE]
+        > Operator **@** can be used as an alternative
+
+        ``` python
+        # Rotate vector v
+        w = rotation.rotate_vector(v)
+
+        # or
+        w = rotation @ v
+        ```
+
+        Arguments
+        ---------
+        - vector (Vector) : socket 'Vector' (Vector)
+
+        Returns
+        -------
+        - Vector
+        """
         return Vector(Node('Rotate Vector', {'Vector': vector, 'Rotation': self})._out)
 
     # ----- Rotation
 
     def rotate(self, rotate_by=None, rotation_space='GLOBAL'):
-        # rotation_space in ('GLOBAL', 'LOCAL')
+        """ > Node <&Node Rotate Rotation>
+
+        > See also <#rotate_local> and <#rotate_global>
+
+        Arguments
+        ---------
+        - rotate_by (Rotation) : socket 'Rotate By' (Rotate By)
+        - rotation_space (str): Node.rotation_space in ('GLOBAL', 'LOCAL')
+
+        Returns
+        -------
+        - Rotation
+        """
         return Rotation(Node('Rotate Rotation', {'Rotation': self, 'Rotate By': rotate_by}, rotation_space=rotation_space)._out)
 
     def rotate_local(self, rotate_by=None):
+        """ > Node <&Node Rotate Rotation>, rotation_space='LOCAL'
+
+        Arguments
+        ---------
+        - rotate_by (Rotation) : socket 'Rotate By' (Rotate By)
+
+        Returns
+        -------
+        - Rotation
+        """
         return Rotation(Node('Rotate Rotation', {'Rotation': self, 'Rotate By': rotate_by}, rotation_space='LOCAL')._out)
 
     def rotate_global(self, rotate_by=None):
+        """ > Node <&Node Rotate Rotation>, rotation_space='GLOBAL'
+
+        > [!NOTE]
+        > Operator **@** can be used as an alternative
+
+        ``` python
+        # Rotate rotation r
+        s = rotation.rotate_global(r)
+
+        # or
+        s = rotation @ r
+        ```
+
+        Arguments
+        ---------
+        - rotate_by (Rotation) : socket 'Rotate By' (Rotate By)
+
+        Returns
+        -------
+        - Rotation
+        """
         return Rotation(Node('Rotate Rotation', {'Rotation': self, 'Rotate By': rotate_by}, rotation_space='GLOBAL')._out)
 
     # ----- Align to vector
 
-    def align_to_vector(self, vector=None, factor=None, axis=None, pivot_axis=None):
+    def align_to_vector(self, vector=None, factor=None, axis='Z', pivot_axis='AUTO'):
+        """ > Node <&Node Align Rotation to Vector>
+
+        Arguments
+        ---------
+        - factor (Float) : socket 'Factor' (Factor)
+        - vector (Vector) : socket 'Vector' (Vector)
+        - axis (str): Node.axis in ('X', 'Y', 'Z')
+        - pivot_axis (str): Node.pivot_axis in ('AUTO', 'X', 'Y', 'Z')
+
+        Returns
+        -------
+        - Rotation
+        """
         return Rotation(Node('Align Rotation to Vector', {'Rotation': self, 'Factor': factor, 'Vector': vector},
             axis=axis, pivot_axis=pivot_axis)._out)
 
     def align_x_to_vector(self, vector=None, factor=None, pivot_axis=None):
+        """ > Node <&Node Align Rotation to Vector>, axis = 'X'
+
+        Arguments
+        ---------
+        - factor (Float) : socket 'Factor' (Factor)
+        - vector (Vector) : socket 'Vector' (Vector)
+        - pivot_axis (str): Node.pivot_axis in ('AUTO', 'X', 'Y', 'Z')
+
+        Returns
+        -------
+        - Rotation
+        """
         return self.align_to_vector(vector, factor, axis='X', pivot_axis=pivot_axis)
 
     def align_y_to_vector(self, vector=None, factor=None, pivot_axis=None):
+        """ > Node <&Node Align Rotation to Vector>, axis = 'Y'
+
+        Arguments
+        ---------
+        - factor (Float) : socket 'Factor' (Factor)
+        - vector (Vector) : socket 'Vector' (Vector)
+        - pivot_axis (str): Node.pivot_axis in ('AUTO', 'X', 'Y', 'Z')
+
+        Returns
+        -------
+        - Rotation
+        """
         return self.align_to_vector(vector, factor, axis='Y', pivot_axis=pivot_axis)
 
     def align_z_to_vector(self, vector=None, factor=None, pivot_axis=None):
+        """ > Node <&Node Align Rotation to Vector>, axis = 'Z'
+
+        Arguments
+        ---------
+        - factor (Float) : socket 'Factor' (Factor)
+        - vector (Vector) : socket 'Vector' (Vector)
+        - pivot_axis (str): Node.pivot_axis in ('AUTO', 'X', 'Y', 'Z')
+
+        Returns
+        -------
+        - Rotation
+        """
         return self.align_to_vector(vector, factor, axis='Z', pivot_axis=pivot_axis)
 
     # ----- Invert
 
     def invert(self):
+        """ > Node <&Node Invert Rotation>
+
+        Returns
+        -------
+        - Rotation
+        """
         return Rotation(Node('Invert Rotation', {'Rotation': self})._out)
 
     # ====================================================================================================
@@ -703,14 +1558,12 @@ class Matrix(ValueSocket):
         """ Matrix data socket ('MATRIX')
 
         A Matrix socket can be initialized with an array of size 16 (the shape is ignored)
-        If the value is None, a 'Combine Matrix' with no input link is created.
+        If **value** is None, a <&Node Combine Matrix> with no input link is created.
 
-        If the 'name' argument is not None, a group input is created, using value as default initialization
+        If **name** argument is not None, a group input is created, using value as default initialization
 
         ``` python
-        import numpy as np
-
-        input = Matrix(None, "My Matrix") # Group input to type 'Matrix' with name 'My Matrix' is created
+        input = Matrix(None, "My Matrix") # Group input of type 'Matrix' with name 'My Matrix' is created
         identity = Matrix() # Identity matrix
         matrix = Matrix([[0, 1, 0, 0], [1, 0, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]]) # Node 'Combine Matrix' with an array 16 floats
         ```
@@ -745,21 +1598,66 @@ class Matrix(ValueSocket):
                 c2r1=0, c2r2=1, c2r3=0, c2r4=0,
                 c3r1=0, c3r2=0, c3r3=1, c3r4=0,
                 c4r1=0, c4r2=0, c4r3=0, c4r4=1):
+        """ > Constructor node <&Node Combine Matrix>
 
-            return Node('Combine Matrix', {
-                 0: c1r1,  1: c1r2,  2: c1r3,  3: c1r4,
-                 4: c1r1,  5: c1r2,  6: c1r3,  7: c1r4,
-                 8: c1r1,  9: c1r2, 10: c1r3, 10: c1r4,
-                12: c1r1, 13: c1r2, 14: c1r3, 15: c1r4,
-                })._out
+        Arguments
+        ---------
+        - c1r1 (Float) : socket 'Column 1 Row 1' (Column 1 Row 1)
+        - c1r2 (Float) : socket 'Column 1 Row 2' (Column 1 Row 2)
+        - c1r3 (Float) : socket 'Column 1 Row 3' (Column 1 Row 3)
+        - c1r4 (Float) : socket 'Column 1 Row 4' (Column 1 Row 4)
+        - c2r1 (Float) : socket 'Column 2 Row 1' (Column 2 Row 1)
+        - c2r2 (Float) : socket 'Column 2 Row 2' (Column 2 Row 2)
+        - c2r3 (Float) : socket 'Column 2 Row 3' (Column 2 Row 3)
+        - c2r4 (Float) : socket 'Column 2 Row 4' (Column 2 Row 4)
+        - c3r1 (Float) : socket 'Column 3 Row 1' (Column 3 Row 1)
+        - c3r2 (Float) : socket 'Column 3 Row 2' (Column 3 Row 2)
+        - c3r3 (Float) : socket 'Column 3 Row 3' (Column 3 Row 3)
+        - c3r4 (Float) : socket 'Column 3 Row 4' (Column 3 Row 4)
+        - c4r1 (Float) : socket 'Column 4 Row 1' (Column 4 Row 1)
+        - c4r2 (Float) : socket 'Column 4 Row 2' (Column 4 Row 2)
+        - c4r3 (Float) : socket 'Column 4 Row 3' (Column 4 Row 3)
+        - c4r4 (Float) : socket 'Column 4 Row 4' (Column 4 Row 4)
+
+        Returns
+        -------
+        - Matrix
+        """
+        return Node('Combine Matrix', {
+                0: c1r1,  1: c1r2,  2: c1r3,  3: c1r4,
+                4: c1r1,  5: c1r2,  6: c1r3,  7: c1r4,
+                8: c1r1,  9: c1r2, 10: c1r3, 10: c1r4,
+            12: c1r1, 13: c1r2, 14: c1r3, 15: c1r4,
+            })._out
 
     @classmethod
     def FromArray(cls, array):
-        a = utils.value_to_array(array, (16,))
+        """ > Constructor node <&Node Combine Matrix>
+
+        Arguments
+        ---------
+        - array (array of size 16) : 16 values to use as matrix components
+
+        Returns
+        -------
+        - Matrix
+        """        a = utils.value_to_array(array, (16,))
         return Node('Combine Matrix', list(a))._out
 
     @classmethod
     def Transform(cls, translation=None, rotation=None, scale=None):
+        """ > Constructor node <&Node Combine Transform>
+
+        Arguments
+        ---------
+        - translation (Vector) : socket 'Translation' (Translation)
+        - rotation (Rotation) : socket 'Rotation' (Rotation)
+        - scale (Vector) : socket 'Scale' (Scale)
+
+        Returns
+        -------
+        - Matrix
+        """
         return Node('Combine Transform', {'Translation': translation, 'Rotation': rotation, 'Scale': scale})._out
 
     # ====================================================================================================
@@ -769,74 +1667,185 @@ class Matrix(ValueSocket):
 
     @property
     def separate_matrix(self):
+        """ > Node <&Node Separate Matrix>
+
+        > [!CAUTION]
+        > By exception, this method returns the node, not the first output socket
+
+        Returns
+        -------
+        - Node
+        """
         return self._cache('Separate Matrix', {'Matrix': self})
 
     @property
     def c1r1(self):
+        """ > Node <&Node Separate Matrix>, column 1 row 1
+
+        Returns
+        -------
+        - Float
+        """
         return self.separate_matrix[0]
 
     @property
     def c1r2(self):
+        """ > Node <&Node Separate Matrix>, column 1 row 2
+
+        Returns
+        -------
+        - Float
+        """
         return self.separate_matrix[1]
 
     @property
     def c1r3(self):
+        """ > Node <&Node Separate Matrix>, column 1 row 3
+
+        Returns
+        -------
+        - Float
+        """
         return self.separate_matrix[2]
 
     @property
     def c1r4(self):
+        """ > Node <&Node Separate Matrix>, column 1 row 4
+
+        Returns
+        -------
+        - Float
+        """
         return self.separate_matrix[3]
 
     @property
     def c2r1(self):
+        """ > Node <&Node Separate Matrix>, column 2 row 1
+
+        Returns
+        -------
+        - Float
+        """
         return self.separate_matrix[4]
 
     @property
     def c2r2(self):
+        """ > Node <&Node Separate Matrix>, column 2 row 2
+
+        Returns
+        -------
+        - Float
+        """
         return self.separate_matrix[5]
 
     @property
     def c2r3(self):
+        """ > Node <&Node Separate Matrix>, column 2 row 3
+
+        Returns
+        -------
+        - Float
+        """
         return self.separate_matrix[6]
 
     @property
     def c2r4(self):
+        """ > Node <&Node Separate Matrix>, column 2 row 4
+
+        Returns
+        -------
+        - Float
+        """
         return self.separate_matrix[7]
 
     @property
     def c3r1(self):
+        """ > Node <&Node Separate Matrix>, column 3 row 1
+
+        Returns
+        -------
+        - Float
+        """
         return self.separate_matrix[8]
 
     @property
     def c3r2(self):
+        """ > Node <&Node Separate Matrix>, column 3 row 2
+
+        Returns
+        -------
+        - Float
+        """
         return self.separate_matrix[9]
 
     @property
     def c3r3(self):
+        """ > Node <&Node Separate Matrix>, column 3 row 3
+
+        Returns
+        -------
+        - Float
+        """
         return self.separate_matrix[10]
 
     @property
     def c3r4(self):
+        """ > Node <&Node Separate Matrix>, column 3 row 4
+
+        Returns
+        -------
+        - Float
+        """
         return self.separate_matrix[11]
 
     @property
     def c4r1(self):
+        """ > Node <&Node Separate Matrix>, column 4 row 1
+
+        Returns
+        -------
+        - Float
+        """
         return self.separate_matrix[12]
 
     @property
     def c4r2(self):
+        """ > Node <&Node Separate Matrix>, column 4 row 2
+
+        Returns
+        -------
+        - Float
+        """
         return self.separate_matrix[13]
 
     @property
     def c4r3(self):
+        """ > Node <&Node Separate Matrix>, column 4 row 3
+
+        Returns
+        -------
+        - Float
+        """
         return self.separate_matrix[14]
 
     @property
     def c4r4(self):
+        """ > Node <&Node Separate Matrix>, column 4 row 4
+
+        Returns
+        -------
+        - Float
+        """
         return self.separate_matrix[15]
 
     @property
     def array(self):
+        """ > Node <&Node Separate Matrix> as a numpy array shaped (4, 4)
+
+        Returns
+        -------
+        - numpy ndarray
+        """
         node = self.separate_matrix
         return np.reshape(np.array([node[i] for i in range(16)], object), (4, 4))
 
@@ -844,41 +1853,142 @@ class Matrix(ValueSocket):
 
     @property
     def separate_transform(self):
+        """ > Node <&Node Separate Transform>
+
+        > [!CAUTION]
+        > By exception, this property returns the node, not the first output socket
+
+        Returns
+        -------
+        - Node
+        """
         return self._cache('Separate Transform', {'Transform': self})
 
     @property
     def translation(self):
+        """ > Socket 'Translation' of node <&Node Separate Transform>
+
+        Returns
+        -------
+        - Vector
+        """
         return self.separate_transform.translation
 
     @property
     def rotation(self):
+        """ > Socket 'Rotation' of node <&Node Separate Transform>
+
+        Returns
+        -------
+        - Rotation
+        """
         return self.separate_transform.rotation
 
     @property
     def scale(self):
+        """ > Socket 'Scale' of node <&Node Separate Transform>
+
+        Returns
+        -------
+        - Vector
+        """
         return self.separate_transform.scale
 
     # ====================================================================================================
     # Methods
 
     def transpose(self):
+        """ > Node <&Node Transpose Matrix>
+
+        Returns
+        -------
+        - Matrix
+        """
         return Node('Transpose Matrix', {'Matrix': self})._out
 
     def invert(self):
+        """ > Node <&Node Invert Matrix>
+
+        Returns
+        -------
+        - Matrix
+        """
         matrix = Node('Invert Matrix', {'Matrix': self})._out
         matrix.invertible_ = matrix.node.invertible
         return matrix
 
     def multiply(self, other):
+        """ > Node <&Node Multiply Matrices>
+
+        > [!NOTE]
+        > Operator **@** can be used as an alternative
+
+        ``` python
+        # Multiply to matrices
+        mat3 = mat0.multiply(mat1)
+
+        # or
+        mat3 = mat0 @ mat1
+        ```
+
+        Arguments
+        ---------
+        - other (Matrix) : socket 'Matrix' (Matrix_001)
+
+        Returns
+        -------
+        - Matrix
+        """
         return Node('Multiply Matrices', {0: self, 1: Matrix(other)})._out
 
     def transform_point(self, vector):
+        """ > Node <&Node Transform Point>
+
+        > [!NOTE]
+        > Operator **@** can be used as an alternative
+
+        ``` python
+        # Transform a point
+        Q = mat.transform_point(P)
+
+        # or
+        Q = mat @ P
+        ```
+
+        Arguments
+        ---------
+        - vector (Vector) : socket 'Vector' (Vector)
+
+        Returns
+        -------
+        - Vector
+        """
         return Node('Transform Point', {'Transform': self, 'Vector': vector})._out
 
     def project_point(self, vector):
+        """ > Node <&Node Project Point>
+
+        Arguments
+        ---------
+        - vector (Vector) : socket 'Vector' (Vector)
+
+        Returns
+        -------
+        - Vector
+        """
         return Node('Project Point', {'Transform': self, 'Vector': vector})._out
 
     def transform_direction(self, vector):
+        """ > Node <&Node Transform Direction>
+
+        Arguments
+        ---------
+        - direction (Vector) : socket 'Direction' (Direction)
+
+        Returns
+        -------
+        - Vector
+        """
         return Node('Transform Direction', {'Transform': self, 'Direction': vector})._out
 
     # ====================================================================================================

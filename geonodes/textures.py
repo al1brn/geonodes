@@ -15,7 +15,7 @@ module : textures
 -----------------
 - Create the textures
 
-This module implementes texture creation as class meythod of Texture class.
+This module implements texture creation as class methods of Texture class.
 Texture class inherits from TextureRoot which can be created as a Group Input.
 
 ```  python
@@ -53,9 +53,7 @@ class Texture(TextureRoot):
     @staticmethod
     def Brick(vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None,
         bias=None, brick_width=None, row_height=None):
-        """ Node 'Brick Texture' (ShaderNodeTexBrick)
-
-        > Node <&Node Brick Texture>
+        """ > Node <&Node Brick Texture>
 
         Arguments
         ---------
@@ -72,16 +70,14 @@ class Texture(TextureRoot):
 
         Returns
         -------
-        - Node: [color (Color), fac (Float)]
+        - Node
         """
         return Node('Brick Texture', {'Vector': vector, 'Color1': color1, 'Color2': color2, 'Mortar': mortar,
             'Scale': scale, 'Mortar Size': mortar_size, 'Mortar Smooth': mortar_smooth, 'Bias': bias, 'Brick Width': brick_width, 'Row Height': row_height})
 
     @staticmethod
     def Checker(vector=None, color1=None, color2=None, scale=None):
-        """ Node 'Checker Texture' (ShaderNodeTexChecker)
-
-        > Node <&Node Checker Texture>
+        """ > Node <&Node Checker Texture>
 
         Arguments
         ---------
@@ -92,15 +88,13 @@ class Texture(TextureRoot):
 
         Returns
         -------
-        - Node: [color (Color), fac (Float)]
+        - Node
         """
         return Node('Checker Texture', {'Vector': vector, 'Color1': color1, 'Color2': color2, 'Scale': scale})
 
     @staticmethod
     def Gradient(vector=None):
-        """ Node 'Gradient Texture' (ShaderNodeTexGradient)
-
-        > Node <&Node Gradient Texture>
+        """ > Node <&Node Gradient Texture>
 
         Arguments
         ---------
@@ -108,15 +102,13 @@ class Texture(TextureRoot):
 
         Returns
         -------
-        - Node: [color (Color), fac (Float)]
+        - Node
         """
         return Node('Gradient Texture', {'Vector': vector})
 
     @staticmethod
     def Image(image=None, vector=None, frame=None, interpolation='Linear', extension='REPEAT'):
-        """ Node 'Image Texture' (GeometryNodeImageTexture)
-
-        > Node <&Node Image Texture>
+        """ > Node <&Node Image Texture>
 
         Arguments
         ---------
@@ -128,16 +120,14 @@ class Texture(TextureRoot):
 
         Returns
         -------
-        - Node: [color (Color), alpha (Float)]
+        - Node
         """
         return Node('Image Texture', {'Image': image, 'Vector': vector, 'Frame': frame},
             interpolation=interpolation, extension=extension)
 
     @staticmethod
     def Magic(vector=None, scale=None, distortion=None):
-        """ Node 'Magic Texture' (ShaderNodeTexMagic)
-
-        > Node <&Node Magic Texture>
+        """ > Node <&Node Magic Texture>
 
         Arguments
         ---------
@@ -147,16 +137,14 @@ class Texture(TextureRoot):
 
         Returns
         -------
-        - Node: [color (Color), fac (Float)]
+        - Node
         """
         return Node('Magic Texture', {'Vector': vector, 'Scale': scale, 'Distortion': distortion})
 
     @staticmethod
     def Noise(vector=None, w=None, scale=None, detail=None, roughness=None, lacunarity=None, offset=None, gain=None, distortion=None,
         dim='3D', noise_type='FBM'):
-        """ Node 'Noise Texture' (ShaderNodeTexNoise)
-
-        > Node <&Node Noise Texture>
+        """ > Node <&Node Noise Texture>
 
         Arguments
         ---------
@@ -174,7 +162,7 @@ class Texture(TextureRoot):
 
         Returns
         -------
-        - Node: [fac (Float), color (Color)]
+        - Node
         """
         return Node('Noise Texture', {'Vector': vector, 'W': w, 'Scale': scale, 'Detail': detail,
             'Roughness': roughness, 'Lacunarity': lacunarity, 'Offset': offset,
@@ -183,9 +171,7 @@ class Texture(TextureRoot):
     @staticmethod
     def Voronoi(vector=None, w=None, scale=None, detail=None, roughness=None, lacunarity=None, smoothness=None,
         exponent=None, randomness=None, dim='3D', feature='F1', distance='EUCLIDEAN'):
-        """ Node 'Voronoi Texture' (ShaderNodeTexVoronoi)
-
-        > Node <&Node Voronoi Texture>
+        """ > Node <&Node Voronoi Texture>
 
         Arguments
         ---------
@@ -204,7 +190,7 @@ class Texture(TextureRoot):
 
         Returns
         -------
-        - Node: [distance (Float), color (Color), position (Vector), w (Float), radius (Float)]
+        - Node
         """
         return Node('Voronoi Texture', {'Vector': vector, 'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness,
             'Lacunarity': lacunarity, 'Smoothness': smoothness, 'Exponent': exponent, 'Randomness': randomness},
@@ -213,9 +199,7 @@ class Texture(TextureRoot):
     @staticmethod
     def Wave(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None,
         wave_type = 'BANDS', bands_direction='X', rings_direction='X', wave_profile='SIN'):
-        """ Node 'Wave Texture' (ShaderNodeTexWave)
-
-        > Node <&Node Wave Texture>
+        """ > Node <&Node Wave Texture>
 
         Arguments
         ---------
@@ -233,7 +217,7 @@ class Texture(TextureRoot):
 
         Returns
         -------
-        - Node: [color (Color), fac (Float)]
+        - Node
         """
         return Node('Wave Texture', {'Vector': vector, 'Scale': scale, 'Distortion': distortion, 'Detail': detail,
             'Detail Scale': detail_scale, 'Detail Roughness': detail_roughness, 'Phase Offset': phase_offset},
@@ -241,9 +225,7 @@ class Texture(TextureRoot):
 
     @staticmethod
     def WhiteNoise(vector=None, w=None, dim='3D'):
-        """ Node 'White Noise Texture' (ShaderNodeTexWhiteNoise)
-
-        > Node <&Node White Noise Texture>
+        """ > Node <&Node White Noise Texture>
 
         Arguments
         ---------
@@ -253,6 +235,6 @@ class Texture(TextureRoot):
 
         Returns
         -------
-        - Node: [value (Float), color (Color)]
+        - Node
         """
         return Node('White Noise Texture', {'Vector': vector, 'W': w}, noise_dimensions=dim)

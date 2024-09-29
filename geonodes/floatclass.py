@@ -401,7 +401,7 @@ class Float(IntFloat):
         ``` python
         float = Float()      # 'Value' node with default initial vlaue
         float = Float(3.14). # 'Value' node with 3.14 initial value
-        float = Float(3.14, name="User input", subtype='ANGLE') # Create a new float group input
+        float = Float(3.14, name="User input", subtype='ANGLE') # Create a new Float group input
         ```
 
         Arguments
@@ -680,7 +680,7 @@ class Float(IntFloat):
     # ====================================================================================================
     # Output
 
-    def to_output(self, name=None):
+    def out(self, name=None):
         """ > Connect to output
 
         [!MIX]

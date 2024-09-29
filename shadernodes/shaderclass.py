@@ -79,7 +79,7 @@ class ShaderRoot(ValueSocket):
 
 class Shader(ShaderRoot):
 
-    def to_output(self, name=None):
+    def out(self, name=None):
         if self._tree._is_group:
             super().to_output(name=name)
         else:
@@ -188,7 +188,7 @@ class Shader(ShaderRoot):
 
 class VolumeShader(ShaderRoot):
 
-    def to_output(self, name=None):
+    def out(self, name=None):
         print("Vlume shader I'm OK")
         if self._tree._is_group:
             super().to_output(name=name)

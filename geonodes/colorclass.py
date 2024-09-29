@@ -790,7 +790,7 @@ class Color(VectorLike):
     # ====================================================================================================
     # Shader
 
-    def to_output(self, name=None):
+    def out(self, name=None):
         """ > Connect to output
 
         [!MIX]

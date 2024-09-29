@@ -128,6 +128,24 @@ class Socket(NodeCache):
         node.geometry = cube
         ```
 
+        > [!IMPORTANT]
+        > You can access to the other output sockets of the node in two different ways:
+        > - using <#node> attribute
+        > - using ***peer socket** naming convention where the **snake_case** name of
+        >.  the other sockets is suffixed by '_'
+
+        The example below shows how to access the to 'UV Map' socket of node <*Cube>:
+
+        ``` python
+        # cube is the output socket 'Mesh' of the node 'Cube'
+        cube = Mesh.Cube()
+
+        # Getting 'UV Map' through the node
+        uv_map = cube.node.uv_map
+
+        # Or using the 'peer socket' naming convention
+        uv_map = cuve.uv_map_
+
         Arguments
         ---------
         - socket (NodeSocket) : the output socket to wrap
@@ -1400,7 +1418,7 @@ class Menu(Socket):
     SOCKET_TYPE = 'MENU'
 
     def __init__(self, socket=None, name="Menu", menu=0, items={'A': None, 'B': None}, tip=None, input_type=None):
-        """ > Menu socket, node <&Node MenuSwitch>
+        """ > Menu socket, node <&Node Menu Switch>
 
         Arguments
         ---------

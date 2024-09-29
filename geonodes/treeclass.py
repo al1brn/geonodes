@@ -148,11 +148,11 @@ class Tree:
     _total_time  = 0.
 
     def __init__(self, tree_name, tree_type='GeometryNodeTree', clear=True, fake_user=False, is_group=False, prefix=None):
-        """ Root class for GeoNodes and ShaderNodes trees.
+        """ Root class for <!GeoNodes> and <!ShaderNodes> trees.
 
         The system manages a stack of Trees. When a Tree is created, it is placed at the top of the stack
         and becomes the current tree.
-        The Tree is poped from the stack with the method Tree.pop.
+        The Tree is poped from the stack with the method <#pop>.
 
         Better use the context management syntax:
 
@@ -164,14 +164,21 @@ class Tree:
 
             pass
 
-        # Raises an error
+        # Returns None
         tree = Tree.current_tree
         ```
 
         > [!IMPORTANT]
-        > If you create a tree with an existing name, the existing Tree won't be overriden if it was not
-        > a tree created by **GeoNodes**. The string 'GEONODES' is added in the description attribute of
-        > node groups created by **GeoNodes** in order to differentiate generated Trees from yours.
+        > Trees scripted with **geonodes** are kept distinct from manually created trees by putting the
+        > marker string _'GEONODES'_ in the description attribute. If you initialize a Tree with the
+        > name of an existing tree:
+        > - it will be cleared if it is a tree scripted with **geonodes**
+        > - it will be renamed if it is not the case
+        > This avoids to accidentally delete a manually created tree.
+
+        > [!CAUTION]
+        > This doesn't work with materials embedded shaders. So, make sure not to override
+        > a existing shader when instantiating a new <!ShaderNodes>.
 
         Arguments
         ---------
@@ -235,7 +242,7 @@ class Tree:
 
     @staticmethod
     def remove_groups(names=None, prefix=None, geonodes=True, shadernodes=True):
-        """ Remove Groups created by GeoNodes.
+        """ > Remove Groups created by GeoNodes.
 
         > [!IMPORTANT]
         > This method can only remove groups created by **GeoNodes**.
@@ -301,9 +308,9 @@ class Tree:
     @classmethod
     @property
     def current_tree(cls):
-        """ Get the Current Tree.
+        """ > Get the Current Tree.
 
-        Raises an error if not Tree is currently open
+        Returns None if no Tree is currently open
 
         Returns
         -------
@@ -315,14 +322,6 @@ class Tree:
             #print("CAUTION: not tree is open")
             return None
         return cls.STACK[-1]
-
-    # ----------------------------------------------------------------------------------------------------
-    # Gen code utility
-
-    #@property
-    #def _node_infos(self):
-    #    from .node_explore import NodeInfo
-    #    return [NodeInfo(self._btree, bnode) for bnode in self._btree.nodes]
 
     # ====================================================================================================
     # Some methods
@@ -343,7 +342,7 @@ class Tree:
     @classmethod
     @property
     def is_geonodes(cls):
-        """ Current Tree is Geometry Nodes.
+        """ > Current Tree is Geometry Nodes.
 
         Returns
         -------
@@ -355,7 +354,7 @@ class Tree:
     @classmethod
     @property
     def is_shader(cls):
-        """ Current Tree is Shader Nodes.
+        """ > Current Tree is Shader Nodes.
 
         Returns
         -------
@@ -402,10 +401,36 @@ class Tree:
     # Context manager
 
     def push(self):
+        """ > Make this tree the current one
+
+        > [!IMPORTANT]
+        > This methods shouldn't be called directly, better use a **with** context block.
+
+        ``` python
+        with Tree("My Name"):
+            pass
+        ```
+        """
         Tree.STACK.append(self)
         self._start_time = time()
 
     def pop(self):
+        """ > Remove this tree from the stack
+
+        > [!IMPORTANT]
+        > This methods shouldn't be called directly, better use a **with** context block.
+
+        Calls <#arrange> to arrange the location of the nodes.
+
+        Raises
+        ------
+        - NodeError : if this tree is not the current one
+
+        ``` python
+        with Tree("My Name"):
+            pass
+        ```
+        """
         tree = Tree.STACK.pop()
         if tree != self:
             raise NodeError(f"Error in tree stack management")
@@ -436,9 +461,9 @@ class Tree:
     # Arranges nodes
 
     def arrange(self):
-        """ Arrange the nodes in the editor.
+        """ > Arrange the nodes in the editor.
 
-        Tries to arrange properly the nodes from left to right.
+        Try to arrange properly the nodes from left to right.
 
         This method is called when the Tree is poped from the stack.
 
@@ -475,7 +500,7 @@ class Tree:
     # Create a link
 
     def link(self, out_socket, in_socket):
-        """ Create a link between two sockets.
+        """ > Create a link between two sockets.
 
         Arguments
         ---------
@@ -500,13 +525,13 @@ class Tree:
 
     @property
     def input_node(self):
-        """ Returns a Group Input Node.
+        """ > Return a <&Node Group Input> node
 
         If the node doesn't already exist, it is created.
 
         Returns
         -------
-        - Node 'Group Input'
+        - Node
         """
 
         for node in self._nodes:
@@ -516,13 +541,13 @@ class Tree:
 
     @property
     def output_node(self):
-        """ Returns a Group Output Node.
+        """ Returns a <&Node Group Output> node
 
         If the node doesn't already exist, it is created.
 
         Returns
         -------
-        - Node 'Group Output'
+        - Node
         """
 
         for node in self._nodes:
@@ -603,7 +628,7 @@ class Tree:
                   value = None, min_value = None, max_value = None, description = ""):
         """ Create a new input socket.
 
-        This is an input socket of the tree, then an output socket of the input node.
+        This is an **input socket** of the Tree, hence an **output socket** of the <&Group Input> node.
 
         Arguments
         ---------
@@ -691,7 +716,7 @@ class Tree:
     def new_output(self, bl_idname, name):
         """ Create a new output socket.
 
-        This is an output socket of the tree, then an input socket of the input node.
+        This is an **output socket** of the Tree, hence an input socket of the <&Group Output> node.
 
         Arguments
         ---------
@@ -726,7 +751,7 @@ class Tree:
 
         Arguments
         ---------
-        - input_socket (socket) : a node input socket
+        - input_socket (socket) : a node input _insocket
         - name (str = None) : name of the group input socket to create
 
         Returns
@@ -820,9 +845,10 @@ class Node:
 
         The node wrapper exposes input and output sockets and the node parameters.
         At creation time, input sockets are initialized with a dict using their name as key ;
-        paramers are initialized as keyword arguments:
+        parameters are initialized as keyword arguments:
 
-        > [!Note] The most often, the name of the socket can be used as key in the initialization dict.
+        > [!NOTE]
+        > The most often, the name of the socket can be used as key in the initialization dict.
         > But in some cases, this doesn't apply:
         > - Several sockets can share the same names (example: 'Math' node has two 'Value' input socket)
         > - Display name is different from the python name (example: 'Math' node, operation 'COMPARE', actual name
@@ -832,7 +858,8 @@ class Node:
         - The index of the socket in the list
         - The 'identifier' of the socket
 
-        When the sockets are initialized in there order, a list of the value can be passed rather than a dict.
+        When the sockets are initialized in there order, the values can be passed
+        as a list rather than as a dict.
 
         ``` python
         with GeoNodes("Node initialization"):
@@ -851,14 +878,16 @@ class Node:
             node = Node("Math", [2., 2., .1], operation='COMPARE')
         ```
 
-        Once initialized, the sockets can be accessed either as list items keyed by the sockets name, index or identifier or
-        as node attribute using their snake case name.
+        Once initialized, the sockets can be accessed either as list items keyed by the sockets name,
+        index or identifier or as node attribute using their snake case name.
 
-        - **Setting** a node attribute or item array is interpretated as plugging a value into an input socket
-        - **Getting** a node attribute or item array is interpretated as reading the value from an output socket
+        > [!IMPORTANT]
+        > Setting and getting a socket:
+        > - **Setting** a node socket is interpretated as plugging a value into an **input socket**
+        > - **Getting** a node socket is interpretated as getting an **output socket**
 
         ``` python
-        with GeoNodes("Node sockets access"):
+        with GeoNodes("Getting and setting node sockets"):
 
             # Input geometry socket
             geo = Geometry()
@@ -894,7 +923,8 @@ class Node:
             extruded_geo.out()
         ```
 
-        > [!Note] The '_out' property returns the first enabled output socket
+        > [!NOTE]
+       >  The '_out' property returns the first enabled output socket
 
         Arguments
         ---------
@@ -902,10 +932,6 @@ class Node:
         - sockets (dict or list) : initialization values for the node input sockets
         - _items (dict = {}) : dynamic sockets to create
         - **kwargs : node parameters initialization
-
-        Returns
-        -------
-        - Node
         """
 
         # ----------------------------------------------------------------------------------------------------
@@ -1126,23 +1152,6 @@ class Node:
                     break
                 else:
                     disabled_bsocket = bsock
-
-        """
-        try:
-            bsocket = bsockets[name]
-        except:
-            bsocket = None
-            for bsock in bsockets:
-                #if not bsock.enabled:
-                #    continue
-
-                if bsock.name == bsocket or utils.socket_name(bsock.name) == name:
-                    if bsock.enabled:
-                        bsocket = bsock
-                        break
-                    else:
-                        is_disabled = True
-        """
 
         if bsocket is None:
             bsocket = disabled_bsocket
