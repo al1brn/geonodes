@@ -317,7 +317,7 @@ class Socket(NodeCache):
     # Access to other output sockets of the owning node
 
     def __getattr__(self, name):
-        if name[-1] != '_':
+        if not (len(name) > 1 and name[-2] != '_' and name[-1] == '_'):
             raise AttributeError(f"Class {type(self).__name__} as no property named '{name}'")
 
         return getattr(self.node, name[:-1])

@@ -6,7 +6,7 @@
 Menu(socket=None, name='Menu', menu=0, items={'A': None, 'B': None}, tip=None, input_type=None)
 ```
 
-> Menu socket, node ERROR: Node 'MenuSwitch' not found
+> Menu socket, node [Menu Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/menu_switch.html)
 
 #### Arguments:
 - **socket** (_NodeSocket_ = None) : 

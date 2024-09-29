@@ -810,7 +810,7 @@ class Domain(GeoBase, NodeCache):
     # ----- Jump
 
     def _jump(self, socket):
-        return self._jump(socket)
+        return self._geo._jump(socket)
 
     # ----- Overrides selection
     # Selection can be done either on the geometry or on the domain (or both but strange !)
@@ -835,8 +835,6 @@ class Domain(GeoBase, NodeCache):
         all_sockets = {**sockets}
         if geometry is not None:
             all_sockets[geometry] = self._geo
-        #if selection is not None:
-        #    all_sockets[selection] = self._sel
 
         all_parameters = {**parameters}
         if domain is not None:

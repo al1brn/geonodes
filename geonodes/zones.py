@@ -5,6 +5,8 @@ Created on 2024/07/26
 
 @author: alain
 
+$ DOC transparent
+
 -----------------------------------------------------
 geonodes module
 - Scripting Geometry Nodes
@@ -58,39 +60,118 @@ from .treeclass import Tree, Node
 # A zone
 
 class Zone:
-    def init_zone(self, sockets={}, create_geometry=True, **kwargs):
+    def init_zone(self, sockets={}, create_geometry=True, **snake_case_sockets):
+        """ > Two nodes zone
+
+        **Zone** is the root class for <!Simulation> and <!Repeat> zones.
+
+        #### With block
+
+        A **Zone** is intended to be used in a **with** block:
+
+        ``` python
+        with Zone(...) as zone:
+            ...
+        ```
+
+        #### Sockets definition
+
+        The zone sockets can be defined in two ways:
+        - using the **sockets** dict argument
+        - using the **snake_case_sockets** key word arguments
+
+        ````python
+        # Create a zone with 2 sockets:
+        # - First Socket
+        # - second_ocket
+        with Zone(socket={"First Socket": Float(3.14)}, second_socket=Geometry()) as zone:
+            ...
+        ```
+
+        > [!NOTE]
+        > The sockets are created on the two nodes and, in both nodes, as input and output sockets.
+        > Hence, a single name correspond two 4 sockets:
+        > - input socket of the first node
+        > - output socket of the first node
+        > - input socket of the second node
+        > - output socket of the second node
+
+        #### Getting and setting zone sockets
+
+        Zone sockets are accessed through their **snake_case** name whatever the manner they have
+        been initialized:
+
+        ``` python
+        with Zone(socket={"First Socket": Float(3.14)}, second_socket=Geometry()) as zone:
+            a = zone.first_socket
+            b = zone.second_socket
+        ```
+
+        Inside the **with** block:
+        - **getting** a socket: output socket of the first node
+        - **setting** a socket: input socket of the second node
+
+        Outside the **with** block:
+        - **getting** a socket: output socket of the second node
+        - **setting** a socket: Error
+
+        Even if it is not easy to describe, this is in fact quite straightforward:
+
+        ``` python
+        with Repeat(geometry=None, index=0, iterations=10) as repeat_zone:
+
+            # Value of the current index
+            index = repeat_zone.index
+
+            # ...
+
+            # Update the index for next loop
+            repeat_zone.index = index + 1
+
+            # Incrementing is also valid
+            repeat_zone.index += 1
+
+        # Outside the block, we have accees to the result of the loop
+        geo = repeat_zone.geometry
+        ```
+
+        Arguments
+        ---------
+        - sockets (dict = {}) : sockets to create
+        - create_geometry (bool=True) : ensure the 'Geometry' socket is created
+        - snake_case_sockets : sockets to create
+        """
+
+        all_sockets = {**sockets, **snake_case_sockets}
 
         # ---- Add initial Geometry socket if necessary
 
         if create_geometry:
-            create = len(kwargs) == 0
-            if not create:
-                val0 = list(kwargs.values())[0]
-                if val0 is not None:
-                    create = utils.get_input_type(val0) != 'GEOMETRY'
-        else:
-            create = False
-
-        if create:
-            all_sockets = {'Geometry': None, **kwargs}
-        else:
-            all_sockets = kwargs
+            if len(all_sockets) == 0:
+                all_sockets = {'Geometry': None}
+            else:
+                first_val = all_sockets[list(all_sockets.keys())[0]]
+                if first_val is not None and utils.get_input_type(first_val) != 'GEOMETRY':
+                    all_sockets = {'Geometry': None, **all_sockets}
 
         # ----- Create the simulation state items
 
-        self._output._set_items(_items=sockets, clear=True, **kwargs)
+        self._output._set_items(_items=all_sockets, clear=True)
+        for name, value in all_sockets.items():
+            self._input.plug_value_into_socket(value, name)
 
         # ----- Variables used within the with statement
 
-        self._locals = {name: self._input.out_socket(name) for name in kwargs.keys()}
+        all_sockets = {utils.socket_name(name): value for name, value in all_sockets.items()}
+        self._locals = {pname: self._input.out_socket(pname) for pname in all_sockets.keys()}
 
         # ----- Ensure the proper sub class of geometries
 
-        for k in self._locals.keys():
-            geo = self._locals[k]
+        for pname in self._locals.keys():
+            geo = self._locals[pname]
             if geo.SOCKET_TYPE == 'GEOMETRY':
-                if all_sockets[k] is not None:
-                    self._locals[k] = type(all_sockets[k])(geo)
+                if all_sockets[pname] is not None:
+                    self._locals[pname] = type(all_sockets[pname])(geo)
 
         self._closed = True
 
@@ -159,7 +240,40 @@ class Zone:
 
 class Repeat(Zone):
 
-    def __init__(self, sockets={}, iterations=1, **kwargs):
+    def __init__(self, sockets={}, iterations=1, **snake_case_sockets):
+        """ > Reapeat zone
+
+        > See <!Zone>
+
+        ``` python
+        from geonodes import *
+
+        with GeoNodes("Demo Repeat"):
+
+            with Repeat(Geometry=Geometry(), z=3, iterations=5) as repeat_zone:
+
+                # Lopp geomety
+                geo = repeat_zone.geometry
+
+                # Offset upwards
+                geo = geo.set_position(offset=(0, 0, repeat_zone.z))
+
+                # Join to loop geometry (CAUTION: exponential growth)
+                repeat_zone.geometry += geo
+
+                # Net vertical offset
+                repeat_zone.z *= 2
+
+            # Result to output
+            repeat_zone.geometry.out()
+        ```
+
+        Arguments
+        ---------
+        - sockets (dict = {}) : sockets to create
+        - iterations (int = 1) : Iterations socket
+        - snake_case_sockets : sockets to create
+        """
 
         tree = Tree.current_tree
 
@@ -169,76 +283,54 @@ class Repeat(Zone):
         self._output = Node('GeometryNodeRepeatOutput')
         self._input._bnode.pair_with_output(self._output._bnode)
 
-        self.init_zone(sockets=sockets, create_geometry=True, **kwargs)
+        self.init_zone(sockets=sockets, create_geometry=True, **snake_case_sockets)
         self._input.iterations = iterations
 
 # ====================================================================================================
 # Simulation zone
 
 class Simulation(Zone):
-    """ > Create a simulation zone**
 
-    This class Simulation generates the two nodes of a simulation zone: simulation input and output nodes.
-    The simulation exposes as class attributes the geometry and the simulation variables used in the simulation zone.
+    def __init__(self, sockets={}, **snake_case_sockets):
+        """ > Simulation zone
 
-    The key of the keyword arguments is used to name the sockets of the input and output node.
+        > See <!Zone>
 
-    ``` python
-    simul = Simulation(geometry=mesh, speed=(0, 0, 0))
-    simul.geometry  # The geometry within the simulation zone
-    simul.speed     # The speed within the simulation zone
-    ```
+        ``` python
+        from geonodes import *
 
-    When the simulation loop is terminated, the changes on the simulation variables must be connected to
-    the output nodes : ` simul.output.geometry = simul.geometry `. This is done automatically with the 'close' method :
+        with GeoNodes("Demo Simulation"):
 
-    ``` python
-    simul = Simulation(geometry=mesh, speed=(0, 0, 0))
-    simul.geometry.faces.shade_smooth = True
-    simul.speed += (0, 0, 1)
-    simul.close()
-    ```
+            cloud = Cloud.Points(count=100, position=Vector.Random(-5, 5))
 
-    Bettter use the context manager through a `with` statement:
+            with Simulation(cloud=cloud, index=0) as sim_zone:
 
-    ``` python
-    with gn.Simulation(geometry=mesh, speed=(0, 0, 0)) as simul:
-        simul.geometry.faces.shade_smooth = True
-        simul.speed += (0, 0, 1)
-    ```
+                # Current points
+                cloud = sim_zone.cloud
 
-    Once the simulation is closed, the variables are the output sockets of the simulation output node.
-    They can be used to get the result of a simulation step:
+                # Get the nearest index
+                index = nd.index_of_nearest(position=nd.position).index
 
-    ``` python
-    with gn.Simulation(geometry=mesh) as simul:
-        # simul.geometry refers to the geometry inside the simulation zone
-        simul.geometry.faces.shade_smooth = True
+                # Nearest position
+                nearest_pos = cloud.points.sample_index(nd.position, index=index)
 
-    # Outside the simulation zone, the geometry refers to the result of the simulation
-    # Let's connect the result of the simulation to the output of the tree
-    tree.og = simul.geometry
-    ```
+                # Direction
+                v = (nearest_pos - nd.position).normalize()
 
-    ### A working demo:
+                #cloud.points.offset = v.normalize()*(dist-.5)/2 + Vector.Random(-.2, .2, seed=nd.scene_time.frame)
+                cloud.points.offset = v*.1 + Vector.Random(-.2, .2, seed=nd.scene_time.frame)
 
-    ``` python
-    from geonodes.nodes import GeoNodes
+                sim_zone.cloud = cloud
 
-    with GeoNodes("Simulation demo") as tree:
+            # Result to output
+            sim_zone.cloud.out()
+        ```
 
-        with tree.Simulation(tree.ig) as simul:
-            simul.geometry.VERTS.set_position(offset = tree.Random(-1, 1, seed=tree.frame).scale(.1))
-
-    tree.og = simul.geometry
-    ```
-
-    Args:
-    - **kwargs : variables to use within the loop. Each key word creates a variable accessible within the simulation step
-      and, once the simulation closed, as the result of the simulation.
-    """
-
-    def __init__(self, sockets={}, **kwargs):
+        Arguments
+        ---------
+        - sockets (dict = {}) : sockets to create
+        - snake_case_sockets : sockets to create
+        """
 
         # ----- Create an link the input and output simulation nodes
 
@@ -246,5 +338,4 @@ class Simulation(Zone):
         self._output = Node('GeometryNodeSimulationOutput')
         self._input._bnode.pair_with_output(self._output._bnode)
 
-
-        self.init_zone(sockets=sockets, create_geometry=True, **kwargs)
+        self.init_zone(sockets=sockets, create_geometry=True, **snake_case_sockets)

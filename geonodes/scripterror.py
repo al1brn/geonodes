@@ -100,7 +100,13 @@ class NodeError(Exception):
             code_lines = []
             if blend_text:
                 lines = bpy.data.texts[text_key].lines
-                code_lines = [f"{i}> {lines[i].body}" for i in range(code_line0, code_line1)]
+                #code_lines = [f"{i}> {lines[i].body}" for i in range(code_line0, code_line1)]
+                code_lines = []
+                for i in range(code_line0, code_line1):
+                    try:
+                        code_lines.append(f"{i}> {lines[i].body}")
+                    except:
+                        pass
             else:
                 try:
                     with open(frame_info.filename, 'r') as f:

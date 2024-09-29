@@ -4,11 +4,11 @@
 Tree(tree_name, tree_type='GeometryNodeTree', clear=True, fake_user=False, is_group=False, prefix=None)
 ```
 
-Root class for GeoNodes and ShaderNodes trees.
+Root class for [GeoNodes](geono-geono-geonodes.md#geonodes) and [ShaderNodes](shade-shade1-shadernodes.md#shadernodes) trees.
 
 The system manages a stack of Trees. When a Tree is created, it is placed at the top of the stack
 and becomes the current tree.
-The Tree is poped from the stack with the method Tree.pop.
+The Tree is poped from the stack with the method [pop](geono-tree.md#pop).
 
 Better use the context management syntax:
 
@@ -20,14 +20,21 @@ with GeoNodes("My Tree"):
 
     pass
 
-# Raises an error
+# Returns None
 tree = Tree.current_tree
 ```
 
 > [!IMPORTANT]
-> If you create a tree with an existing name, the existing Tree won't be overriden if it was not
-> a tree created by **GeoNodes**. The string 'GEONODES' is added in the description attribute of
-> node groups created by **GeoNodes** in order to differentiate generated Trees from yours.
+> Trees scripted with **geonodes** are kept distinct from manually created trees by putting the
+> marker string _'GEONODES'_ in the description attribute. If you initialize a Tree with the
+> name of an existing tree:
+> - it will be cleared if it is a tree scripted with **geonodes**
+> - it will be renamed if it is not the case
+> This avoids to accidentally delete a manually created tree.
+
+> [!CAUTION]
+> This doesn't work with materials embedded shaders. So, make sure not to override
+> a existing shader when instantiating a new [ShaderNodes](shade-shade1-shadernodes.md#shadernodes).
 
 #### Arguments:
 - **tree_name** (_str_) : tree name
@@ -39,15 +46,14 @@ tree = Tree.current_tree
 
 ## Content
 
-- [arrange](geono-tree.md#arrange)
-- [clear](geono-tree.md#clear)
-- [input_node](geono-tree.md#input_node)
-- [link](geono-tree.md#link)
-- [new_input](geono-tree.md#new_input)
-- [new_input_from_input_socket](geono-tree.md#new_input_from_input_socket)
-- [new_output](geono-tree.md#new_output)
-- [output_node](geono-tree.md#output_node)
-- [remove_groups](geono-tree.md#remove_groups)
+- **A** : [arrange](geono-tree.md#arrange)
+- **C** : [clear](geono-tree.md#clear)
+- **I** : [input_node](geono-tree.md#input_node)
+- **L** : [link](geono-tree.md#link)
+- **N** : [new_input](geono-tree.md#new_input) :black_small_square: [new_input_from_input_socket](geono-tree.md#new_input_from_input_socket) :black_small_square: [new_output](geono-tree.md#new_output)
+- **O** : [output_node](geono-tree.md#output_node)
+- **P** : [pop](geono-tree.md#pop) :black_small_square: [push](geono-tree.md#push)
+- **R** : [remove_groups](geono-tree.md#remove_groups)
 
 ## Properties
 
@@ -58,7 +64,7 @@ tree = Tree.current_tree
 > _type_: **Node**
 >
 
-Returns a Group Input Node.
+> Return a ERROR: Node 'Group Input' not found node
 
 If the node doesn't already exist, it is created.
 
@@ -69,7 +75,7 @@ If the node doesn't already exist, it is created.
 > _type_: **Node**
 >
 
-Returns a Group Output Node.
+Returns a ERROR: Node 'Group Output' not found node
 
 If the node doesn't already exist, it is created.
 
@@ -88,9 +94,9 @@ If the node doesn't already exist, it is created.
 arrange()
 ```
 
-Arrange the nodes in the editor.
+> Arrange the nodes in the editor.
 
-Tries to arrange properly the nodes from left to right.
+Try to arrange properly the nodes from left to right.
 
 This method is called when the Tree is poped from the stack.
 
@@ -123,7 +129,7 @@ Remove all the nodes in the Tree.
 link(out_socket, in_socket)
 ```
 
-Create a link between two sockets.
+> Create a link between two sockets.
 
 #### Arguments:
 - **out_socket** (_socket_) : a node output socket
@@ -147,7 +153,7 @@ new_input(bl_idname, name, subtype='NONE', value=None, min_value=None, max_value
 
 Create a new input socket.
 
-This is an input socket of the tree, then an output socket of the input node.
+This is an **input socket** of the Tree, hence an **output socket** of the <&Group Input> node.
 
 #### Arguments:
 - **bl_idname** (_str_) : socket bl_idname - name (str) : Socket name - value (any = None) : Default value - min_value (any = None) : Minimum value - max_value (any = None) : Maxium value - description (str = None) : user tip
@@ -177,7 +183,7 @@ new_input_from_input_socket(input_socket, name=None)
 Create a new group input socket from an existing input socket.
 
 #### Arguments:
-- **input_socket** (_socket_) : a node input socket
+- **input_socket** (_socket_) : a node input _insocket
 - **name** (_str_ = None) : name of the group input socket to create
 
 
@@ -198,7 +204,7 @@ new_output(bl_idname, name)
 
 Create a new output socket.
 
-This is an output socket of the tree, then an input socket of the input node.
+This is an **output socket** of the Tree, hence an input socket of the <&Group Output> node.
 
 #### Arguments:
 - **bl_idname** (_str_) : socket bl_idname - name (str) : Socket name
@@ -212,6 +218,54 @@ This is an output socket of the tree, then an input socket of the input node.
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Tree](geono-tree.md#tree) :black_small_square: [Content](geono-tree.md#content) :black_small_square: [Methods](geono-tree.md#methods)</sub>
 
 ----------
+### pop()
+
+> method
+
+``` python
+pop()
+```
+
+> Remove this tree from the stack
+
+> [!IMPORTANT]
+> This methods shouldn't be called directly, better use a **with** context block.
+
+Calls [arrange](geono-tree.md#arrange) to arrange the location of the nodes.
+
+
+``` python
+with Tree("My Name"):
+    pass
+```
+
+#### Raises:
+- **NodeError** : if this tree is not the current one
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Tree](geono-tree.md#tree) :black_small_square: [Content](geono-tree.md#content) :black_small_square: [Methods](geono-tree.md#methods)</sub>
+
+----------
+### push()
+
+> method
+
+``` python
+push()
+```
+
+> Make this tree the current one
+
+> [!IMPORTANT]
+> This methods shouldn't be called directly, better use a **with** context block.
+
+``` python
+with Tree("My Name"):
+    pass
+```
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Tree](geono-tree.md#tree) :black_small_square: [Content](geono-tree.md#content) :black_small_square: [Methods](geono-tree.md#methods)</sub>
+
+----------
 ### remove_groups()
 
 > staticmethod
@@ -220,7 +274,7 @@ This is an output socket of the tree, then an input socket of the input node.
 remove_groups(names=None, prefix=None, geonodes=True, shadernodes=True)
 ```
 
-Remove Groups created by GeoNodes.
+> Remove Groups created by GeoNodes.
 
 > [!IMPORTANT]
 > This method can only remove groups created by **GeoNodes**.

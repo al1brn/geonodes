@@ -42,8 +42,6 @@ Socket of type Texture
 Brick(vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None)
 ```
 
-> **node** : [Brick Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/brick.html)
-
 > Node [Brick Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/brick.html)
 
 #### Arguments:
@@ -61,7 +59,7 @@ Brick(vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_siz
 
 
 #### Returns:
-- **Node** : [color (Color), fac (Float)]
+- **Node** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Texture](geono-texture.md#texture) :black_small_square: [Content](geono-texture.md#content) :black_small_square: [Methods](geono-texture.md#methods)</sub>
 
@@ -74,8 +72,6 @@ Brick(vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_siz
 Checker(vector=None, color1=None, color2=None, scale=None)
 ```
 
-> **node** : [Checker Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/checker.html)
-
 > Node [Checker Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/checker.html)
 
 #### Arguments:
@@ -87,7 +83,7 @@ Checker(vector=None, color1=None, color2=None, scale=None)
 
 
 #### Returns:
-- **Node** : [color (Color), fac (Float)]
+- **Node** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Texture](geono-texture.md#texture) :black_small_square: [Content](geono-texture.md#content) :black_small_square: [Methods](geono-texture.md#methods)</sub>
 
@@ -100,8 +96,6 @@ Checker(vector=None, color1=None, color2=None, scale=None)
 Gradient(vector=None)
 ```
 
-> **node** : [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html)
-
 > Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html)
 
 #### Arguments:
@@ -110,7 +104,7 @@ Gradient(vector=None)
 
 
 #### Returns:
-- **Node** : [color (Color), fac (Float)]
+- **Node** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Texture](geono-texture.md#texture) :black_small_square: [Content](geono-texture.md#content) :black_small_square: [Methods](geono-texture.md#methods)</sub>
 
@@ -122,8 +116,6 @@ Gradient(vector=None)
 ``` python
 Image(image=None, vector=None, frame=None, interpolation='Linear', extension='REPEAT')
 ```
-
-> **node** : [Image Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/image.html)
 
 > Node [Image Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/image.html)
 
@@ -137,7 +129,7 @@ Image(image=None, vector=None, frame=None, interpolation='Linear', extension='RE
 
 
 #### Returns:
-- **Node** : [color (Color), alpha (Float)]
+- **Node** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Texture](geono-texture.md#texture) :black_small_square: [Content](geono-texture.md#content) :black_small_square: [Methods](geono-texture.md#methods)</sub>
 
@@ -150,8 +142,6 @@ Image(image=None, vector=None, frame=None, interpolation='Linear', extension='RE
 Magic(vector=None, scale=None, distortion=None)
 ```
 
-> **node** : [Magic Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/magic.html)
-
 > Node [Magic Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/magic.html)
 
 #### Arguments:
@@ -162,7 +152,7 @@ Magic(vector=None, scale=None, distortion=None)
 
 
 #### Returns:
-- **Node** : [color (Color), fac (Float)]
+- **Node** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Texture](geono-texture.md#texture) :black_small_square: [Content](geono-texture.md#content) :black_small_square: [Methods](geono-texture.md#methods)</sub>
 
@@ -174,8 +164,6 @@ Magic(vector=None, scale=None, distortion=None)
 ``` python
 Noise(vector=None, w=None, scale=None, detail=None, roughness=None, lacunarity=None, offset=None, gain=None, distortion=None, dim='3D', noise_type='FBM')
 ```
-
-> **node** : [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html)
 
 > Node [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html)
 
@@ -195,7 +183,7 @@ Noise(vector=None, w=None, scale=None, detail=None, roughness=None, lacunarity=N
 
 
 #### Returns:
-- **Node** : [fac (Float), color (Color)]
+- **Node** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Texture](geono-texture.md#texture) :black_small_square: [Content](geono-texture.md#content) :black_small_square: [Methods](geono-texture.md#methods)</sub>
 
@@ -207,8 +195,6 @@ Noise(vector=None, w=None, scale=None, detail=None, roughness=None, lacunarity=N
 ``` python
 Voronoi(vector=None, w=None, scale=None, detail=None, roughness=None, lacunarity=None, smoothness=None, exponent=None, randomness=None, dim='3D', feature='F1', distance='EUCLIDEAN')
 ```
-
-> **node** : [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html)
 
 > Node [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html)
 
@@ -229,7 +215,7 @@ Voronoi(vector=None, w=None, scale=None, detail=None, roughness=None, lacunarity
 
 
 #### Returns:
-- **Node** : [distance (Float), color (Color), position (Vector), w (Float), radius (Float)]
+- **Node** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Texture](geono-texture.md#texture) :black_small_square: [Content](geono-texture.md#content) :black_small_square: [Methods](geono-texture.md#methods)</sub>
 
@@ -241,8 +227,6 @@ Voronoi(vector=None, w=None, scale=None, detail=None, roughness=None, lacunarity
 ``` python
 Wave(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, wave_type='BANDS', bands_direction='X', rings_direction='X', wave_profile='SIN')
 ```
-
-> **node** : [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html)
 
 > Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html)
 
@@ -262,7 +246,7 @@ Wave(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, d
 
 
 #### Returns:
-- **Node** : [color (Color), fac (Float)]
+- **Node** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Texture](geono-texture.md#texture) :black_small_square: [Content](geono-texture.md#content) :black_small_square: [Methods](geono-texture.md#methods)</sub>
 
@@ -275,8 +259,6 @@ Wave(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, d
 WhiteNoise(vector=None, w=None, dim='3D')
 ```
 
-> **node** : [White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html)
-
 > Node [White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html)
 
 #### Arguments:
@@ -287,6 +269,6 @@ WhiteNoise(vector=None, w=None, dim='3D')
 
 
 #### Returns:
-- **Node** : [value (Float), color (Color)]
+- **Node** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Texture](geono-texture.md#texture) :black_small_square: [Content](geono-texture.md#content) :black_small_square: [Methods](geono-texture.md#methods)</sub>

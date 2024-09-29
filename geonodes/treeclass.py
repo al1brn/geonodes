@@ -1352,7 +1352,7 @@ class Node:
 
         out_socket = utils.get_bsocket(value)
         if out_socket is not None:
-            self._tree.link(out_socket, in_socket)
+            link = self._tree.link(out_socket, in_socket)
             return
 
         # ----------------------------------------------------------------------------------------------------

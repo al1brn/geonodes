@@ -19,7 +19,7 @@ the called group.
 
 Use [Layout](geono-layout.md#layout) class to group nodes in a Layout:
 
-Zones are create using [Repeat](geono-zones-repeat.md#repeat) and [Simulation](geono-zones-simulation.md#simulation).
+Zones are create using [Repeat](geono-repeat.md#repeat) and [Simulation](geono-simulation.md#simulation).
 
 The special class [nd](geono-nd.md#nd) (for _nodes_) exposes all nodes by the **snake_case** name.
 
@@ -77,7 +77,6 @@ The module [gnmath](geono-gnmat---gnmath.md#gnmath) provides math functions and 
 - [geonodes](geono---geonodes.md#geonodes)
   - [geonodes](geono-geono---geonodes.md#geonodes)
   - [gnmath](geono-gnmat---gnmath.md#gnmath)
-  - [zones](geono-zones---zones.md#zones)
   - [Boolean](geono-boolean.md#boolean)
   - [Break](geono-break.md#break)
   - [Cloud](geono-cloud.md#cloud)
@@ -105,6 +104,9 @@ The module [gnmath](geono-gnmat---gnmath.md#gnmath) provides math functions and 
   - [nd](geono-nd.md#nd)
   - [Node](geono-node.md#node)
   - [Object](geono-object.md#object)
+  - [Repeat](geono-repeat.md#repeat)
+  - [Rotation](geono-rotation.md#rotation)
+  - [Simulation](geono-simulation.md#simulation)
   - [Socket](geono-socket.md#socket)
   - [Spline](geono-spline.md#spline)
   - [SplinePoint](geono-splinepoint.md#splinepoint)

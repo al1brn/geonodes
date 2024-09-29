@@ -6,95 +6,102 @@ Node(node_name, sockets={}, _items={}, _keep=None, **parameters)
 
 Node wrapper.
 
-The node wrapper exposes input and output sockets and the node parameters.
-At creation time, input sockets are initialized with a dict using their name as key ;
-paramers are initialized as keyword arguments:
+ The node wrapper exposes input and output sockets and the node parameters.
+ At creation time, input sockets are initialized with a dict using their name as key ;
+ parameters are initialized as keyword arguments:
 
-> [!Note] The most often, the name of the socket can be used as key in the initialization dict.
-> But in some cases, this doesn't apply:
-> - Several sockets can share the same names (example: 'Math' node has two 'Value' input socket)
-> - Display name is different from the python name (example: 'Math' node, operation 'COMPARE', actual name
->   of 'Epsilon' socket is 'Value')
+ > [!NOTE]
+ > The most often, the name of the socket can be used as key in the initialization dict.
+ > But in some cases, this doesn't apply:
+ > - Several sockets can share the same names (example: 'Math' node has two 'Value' input socket)
+ > - Display name is different from the python name (example: 'Math' node, operation 'COMPARE', actual name
+ >   of 'Epsilon' socket is 'Value')
 
-In order to to handle these specific cases, the dict keys can be:
-- The index of the socket in the list
-- The 'identifier' of the socket
+ In order to to handle these specific cases, the dict keys can be:
+ - The index of the socket in the list
+ - The 'identifier' of the socket
 
-When the sockets are initialized in there order, a list of the value can be passed rather than a dict.
+ When the sockets are initialized in there order, the values can be passed
+ as a list rather than as a dict.
 
-``` python
-with GeoNodes("Node initialization"):
+ ``` python
+ with GeoNodes("Node initialization"):
 
-    # Dict syntax to create a circle
-    node = Node("Mesh Circle", {'Vertices': 32, 'Radius': 1.}, fill_type='NGON')
+     # Dict syntax to create a circle
+     node = Node("Mesh Circle", {'Vertices': 32, 'Radius': 1.}, fill_type='NGON')
 
-    # Dict syntax using the socket identifier as key on a node with homonym sockets
-    node = Node("Math", {'Value': 2, 'Value_001': 2}, operation='ADD')
+     # Dict syntax using the socket identifier as key on a node with homonym sockets
+     node = Node("Math", {'Value': 2, 'Value_001': 2}, operation='ADD')
 
-    # Dict key words can be socket index
-    node = Node("Math", {0: 2, 1: 2}, operation='ADD')
+     # Dict key words can be socket index
+     node = Node("Math", {0: 2, 1: 2}, operation='ADD')
 
-    # A list of values can be used to initialize the sockets in the order they appear
-    # Epsilon is initialized to .1
-    node = Node("Math", [2., 2., .1], operation='COMPARE')
-```
+     # A list of values can be used to initialize the sockets in the order they appear
+     # Epsilon is initialized to .1
+     node = Node("Math", [2., 2., .1], operation='COMPARE')
+ ```
 
-Once initialized, the sockets can be accessed either as list items keyed by the sockets name, index or identifier or
-as node attribute using their snake case name.
+ Once initialized, the sockets can be accessed either as list items keyed by the sockets name,
+ index or identifier or as node attribute using their snake case name.
 
-- **Setting** a node attribute or item array is interpretated as plugging a value into an input socket
-- **Getting** a node attribute or item array is interpretated as reading the value from an output socket
+ > [!IMPORTANT]
+ > Setting and getting a socket:
+ > - **Setting** a node socket is interpretated as plugging a value into an **input socket**
+ > - **Getting** a node socket is interpretated as getting an **output socket**
 
-``` python
-with GeoNodes("Node sockets access"):
+ ``` python
+ with GeoNodes("Getting and setting node sockets"):
 
-    # Input geometry socket
-    geo = Geometry()
+     # Input geometry socket
+     geo = Geometry()
 
-    # Create the node
-    node = Node("Extrude Mesh")
+     # Create the node
+     node = Node("Extrude Mesh")
 
-    # Change the parameter
-    node.mode = 'EDGES'
+     # Change the parameter
+     node.mode = 'EDGES'
 
-    # Plug 'Geometry' socket with list item syntax
-    node["Mesh"] = geo
+     # Plug 'Geometry' socket with list item syntax
+     node["Mesh"] = geo
 
-    # Plug 'Selection' socket with ordered list syntax
-    node["Selection"] = Boolean(True)
+     # Plug 'Selection' socket with ordered list syntax
+     node["Selection"] = Boolean(True)
 
-    # Plug 'Offset Scale' with snake case syntax
-    node.offset_scale = 0.5
+     # Plug 'Offset Scale' with snake case syntax
+     node.offset_scale = 0.5
 
-    # Read the output geometry : snake case syntax
-    extruded_geo = node.mesh
+     # Read the output geometry : snake case syntax
+     extruded_geo = node.mesh
 
-    # Read the top selection : list syntax
-    top_selection = node["Top"]
+     # Read the top selection : list syntax
+     top_selection = node["Top"]
 
-    # Read the side selection : index list syntax
-    side_selection = node[2]
+     # Read the side selection : index list syntax
+     side_selection = node[2]
 
-    # Use the sockets in another node
-    top_selection |= side_selection
+     # Use the sockets in another node
+     top_selection |= side_selection
 
-    # Connect to the group output geometry
-    extruded_geo.out()
-```
+     # Connect to the group output geometry
+     extruded_geo.out()
+ ```
 
-> [!Note] The '_out' property returns the first enabled output socket
+ > [!NOTE]
+>  The '_out' property returns the first enabled output socket
+
+ Arguments
+ ---------
+ - node_name (str) : Node name
+ - sockets (dict or list) : initialization values for the node input sockets
+ - _items (dict = {}) : dynamic sockets to create
+ - **kwargs : node parameters initialization
 
 #### Arguments:
-- **node_name** (_str_) : Node name
-- **sockets** (_dict or list_ = {}) : initialization values for the node input sockets
-- **_items** (_dict_ = {}) : dynamic sockets to create
+- **node_name**
+- **sockets** ( = {})
+- **_items** ( = {})
 - **_keep** ( = None)
 - **parameters**
-
-
-
-#### Returns:
-- **Node** :
 
 ## Content
 

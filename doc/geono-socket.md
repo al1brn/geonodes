@@ -20,6 +20,24 @@ node = Node("Set Position")
 node.geometry = cube
 ```
 
+> [!IMPORTANT]
+> You can access to the other output sockets of the node in two different ways:
+> - using [node](geono-socket.md#node) attribute
+> - using ***peer socket** naming convention where the **snake_case** name of
+>.  the other sockets is suffixed by '_'
+
+The example below shows how to access the to 'UV Map' socket of node <*Cube>:
+
+``` python
+# cube is the output socket 'Mesh' of the node 'Cube'
+cube = Mesh.Cube()
+
+# Getting 'UV Map' through the node
+uv_map = cube.node.uv_map
+
+# Or using the 'peer socket' naming convention
+uv_map = cuve.uv_map_
+
 #### Arguments:
 - **socket** (_NodeSocket_) : the output socket to wrap
 

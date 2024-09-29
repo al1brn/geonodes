@@ -35,8 +35,6 @@ updates
 
 
 from sys import version
-from time import thread_time_ns
-from bpy.types import CompositorNodeAntiAliasing, PythonConstraint
 import numpy as np
 
 import bpy
@@ -723,7 +721,7 @@ class Vector(VectRot):
         else:
             super().out(name=name)
 
-    def displacement_out(self, target='ALL
+    def displacement_out(self, target='ALL'):
         """ > Plug the value to 'Displacement' socket of <&ShaderNode Material Output> node
 
         [!SHADER]
@@ -1024,7 +1022,7 @@ class Rotation(VectRot):
         - Rotation
         """
         return cls.AxesToRotation(primary_axis=primary_axis, secondary_axis=secondary_axis,
-            ,primary_align='X', secondary_align='Y)
+            primary_align='X', secondary_align='Y')
 
     @classmethod
     def FromYXAxes(cls, primary_axis=None, secondary_axis=None):
@@ -1040,7 +1038,7 @@ class Rotation(VectRot):
         - Rotation
         """
         return cls.AxesToRotation(primary_axis=primary_axis, secondary_axis=secondary_axis,
-            ,primary_align='X', secondary_align='Y)
+            primary_align='Y', secondary_align='X')
 
     @classmethod
     def FromXZAxes(cls, primary_axis=None, secondary_axis=None):
@@ -1056,7 +1054,7 @@ class Rotation(VectRot):
         - Rotation
         """
         return cls.AxesToRotation(primary_axis=primary_axis, secondary_axis=secondary_axis,
-            ,primary_align='X', secondary_align='Y)
+            primary_align='X', secondary_align='Z')
 
     @classmethod
     def FromZXAxes(cls, primary_axis=None, secondary_axis=None):
@@ -1072,7 +1070,7 @@ class Rotation(VectRot):
         - Rotation
         """
         return cls.AxesToRotation(primary_axis=primary_axis, secondary_axis=secondary_axis,
-            ,primary_align='X', secondary_align='Y)
+            primary_align='Z', secondary_align='X')
 
     @classmethod
     def FromYZAxes(cls, primary_axis=None, secondary_axis=None):
@@ -1088,7 +1086,7 @@ class Rotation(VectRot):
         - Rotation
         """
         return cls.AxesToRotation(primary_axis=primary_axis, secondary_axis=secondary_axis,
-            ,primary_align='X', secondary_align='Y)
+            primary_align='Y', secondary_align='Z')
 
     @classmethod
     def FromZYAxes(cls, primary_axis=None, secondary_axis=None):
@@ -1104,7 +1102,7 @@ class Rotation(VectRot):
         - Rotation
         """
         return cls.AxesToRotation(primary_axis=primary_axis, secondary_axis=secondary_axis,
-            ,primary_align='X', secondary_align='Y)
+            primary_align='Z', secondary_align='Y')
 
     @classmethod
     def AxisAngleToRotation(cls, axis=(0, 0, 1), angle=0):
@@ -1641,7 +1639,8 @@ class Matrix(ValueSocket):
         Returns
         -------
         - Matrix
-        """        a = utils.value_to_array(array, (16,))
+        """
+        a = utils.value_to_array(array, (16,))
         return Node('Combine Matrix', list(a))._out
 
     @classmethod

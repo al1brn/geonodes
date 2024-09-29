@@ -21,7 +21,7 @@ by transtyping or creating a 'Value' node.
 ``` python
 float = Float()      # 'Value' node with default initial vlaue
 float = Float(3.14). # 'Value' node with 3.14 initial value
-float = Float(3.14, name="User input", subtype='ANGLE') # Create a new float group input
+float = Float(3.14, name="User input", subtype='ANGLE') # Create a new Float group input
 ```
 
 #### Arguments:
@@ -34,7 +34,7 @@ float = Float(3.14, name="User input", subtype='ANGLE') # Create a new float gro
 
 ### Inherited
 
-[blur](geono-socket.md#blur) :black_small_square: [\_cache](geono-socke-nodecache.md#_cache) :black_small_square: [\_cache_reset](geono-socke-nodecache.md#_cache_reset) :black_small_square: [check_in_list](geono-socket.md#check_in_list) :black_small_square: [data_type](geono-socket.md#data_type) :black_small_square: [\_geometry_class](geono-socket.md#_geometry_class) :black_small_square: [\_\_getattr__](geono-socket.md#__getattr__) :black_small_square: [get_socket_class](geono-socket.md#get_socket_class) :black_small_square: [IndexSwitch](geono-socket.md#indexswitch) :black_small_square: [index_switch](geono-socket.md#index_switch) :black_small_square: [input_type](geono-socket.md#input_type) :black_small_square: [\_jump](geono-socket.md#_jump) :black_small_square: [\_lc](geono-socket.md#_lc) :black_small_square: [\_lcop](geono-socket.md#_lcop) :black_small_square: [MenuSwitch](geono-socket.md#menuswitch) :black_small_square: [menu_switch](geono-socket.md#menu_switch) :black_small_square: [node](geono-socket.md#node) :black_small_square: [node_color](geono-socket.md#node_color) :black_small_square: [node_label](geono-socket.md#node_label) :black_small_square: [out](geono-socket.md#out) :black_small_square: [\_reset](geono-socket.md#_reset) :black_small_square: [socket_type](geono-socket.md#socket_type) :black_small_square: [\_\_str__](geono-socket.md#__str__) :black_small_square: [Switch](geono-socket.md#switch) :black_small_square: [switch](geono-socket.md#switch) :black_small_square:
+[blur](geono-socket.md#blur) :black_small_square: [\_cache](geono-socke-nodecache.md#_cache) :black_small_square: [\_cache_reset](geono-socke-nodecache.md#_cache_reset) :black_small_square: [check_in_list](geono-socket.md#check_in_list) :black_small_square: [data_type](geono-socket.md#data_type) :black_small_square: [\_geometry_class](geono-socket.md#_geometry_class) :black_small_square: [\_\_getattr__](geono-socket.md#__getattr__) :black_small_square: [get_socket_class](geono-socket.md#get_socket_class) :black_small_square: [IndexSwitch](geono-socket.md#indexswitch) :black_small_square: [index_switch](geono-socket.md#index_switch) :black_small_square: [input_type](geono-socket.md#input_type) :black_small_square: [\_jump](geono-socket.md#_jump) :black_small_square: [\_lc](geono-socket.md#_lc) :black_small_square: [\_lcop](geono-socket.md#_lcop) :black_small_square: [MenuSwitch](geono-socket.md#menuswitch) :black_small_square: [menu_switch](geono-socket.md#menu_switch) :black_small_square: [node](geono-socket.md#node) :black_small_square: [node_color](geono-socket.md#node_color) :black_small_square: [node_label](geono-socket.md#node_label) :black_small_square: [\_reset](geono-socket.md#_reset) :black_small_square: [socket_type](geono-socket.md#socket_type) :black_small_square: [\_\_str__](geono-socket.md#__str__) :black_small_square: [Switch](geono-socket.md#switch) :black_small_square: [switch](geono-socket.md#switch) :black_small_square: [to_output](geono-socket.md#to_output) :black_small_square:
 
 ## Content
 
@@ -47,9 +47,10 @@ float = Float(3.14, name="User input", subtype='ANGLE') # Create a new float gro
 - **L** : [less_equal](geono-float.md#less_equal) :black_small_square: [less_than](geono-float.md#less_than)
 - **M** : [map_range](geono-float.md#map_range) :black_small_square: [map_range_linear](geono-float.md#map_range_linear) :black_small_square: [map_range_smooth](geono-float.md#map_range_smooth) :black_small_square: [map_range_smoother](geono-float.md#map_range_smoother) :black_small_square: [map_range_stepped](geono-float.md#map_range_stepped) :black_small_square: [mix](geono-float.md#mix)
 - **N** : [Named](geono-float.md#named) :black_small_square: [NamedAttribute](geono-float.md#namedattribute) :black_small_square: [not_equal](geono-float.md#not_equal)
+- **O** : [out](geono-float.md#out)
 - **P** : [Percentage](geono-float.md#percentage)
 - **R** : [Random](geono-float.md#random) :black_small_square: [round](geono-float.md#round)
-- **T** : [Time](geono-float.md#time) :black_small_square: [TimeAbsolute](geono-float.md#timeabsolute) :black_small_square: [to_integer](geono-float.md#to_integer) :black_small_square: [to_output](geono-float.md#to_output) :black_small_square: [to_string](geono-float.md#to_string) :black_small_square: [truncate](geono-float.md#truncate)
+- **T** : [Time](geono-float.md#time) :black_small_square: [TimeAbsolute](geono-float.md#timeabsolute) :black_small_square: [to_integer](geono-float.md#to_integer) :black_small_square: [to_string](geono-float.md#to_string) :black_small_square: [truncate](geono-float.md#truncate)
 - **W** : [WaveLength](geono-float.md#wavelength)
 
 ## Methods
@@ -626,6 +627,28 @@ not_equal(other, epsilon=None)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](geono-float.md#float) :black_small_square: [Content](geono-float.md#content) :black_small_square: [Methods](geono-float.md#methods)</sub>
 
 ----------
+### out()
+
+> method
+
+``` python
+out(name=None)
+```
+
+> Connect to output
+
+[!MIX]
+
+> [!IMPORTANT]
+> - Geometry Nodes : create a group output socket with the provided name
+> - Shader : create a node [AOV Output](https://docs.blender.org/manual/en/latest/render/shader_nodes/output/aov.html)
+
+#### Arguments:
+- **name** ( = None)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](geono-float.md#float) :black_small_square: [Content](geono-float.md#content) :black_small_square: [Methods](geono-float.md#methods)</sub>
+
+----------
 ### Percentage()
 
 > classmethod
@@ -743,28 +766,6 @@ to_integer(rounding_mode=None)
 
 #### Arguments:
 - **rounding_mode** ( = None)
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](geono-float.md#float) :black_small_square: [Content](geono-float.md#content) :black_small_square: [Methods](geono-float.md#methods)</sub>
-
-----------
-### to_output()
-
-> method
-
-``` python
-to_output(name=None)
-```
-
-> Connect to output
-
-[!MIX]
-
-> [!IMPORTANT]
-> - Geometry Nodes : create a group output socket with the provided name
-> - Shader : create a node [AOV Output](https://docs.blender.org/manual/en/latest/render/shader_nodes/output/aov.html)
-
-#### Arguments:
-- **name** ( = None)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](geono-float.md#float) :black_small_square: [Content](geono-float.md#content) :black_small_square: [Methods](geono-float.md#methods)</sub>
 
