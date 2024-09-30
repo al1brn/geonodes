@@ -72,20 +72,10 @@ def cross_ref(tree, name, section):
     while class_ is not None and class_.tag != 'Classes':
         class_ = class_.parent
         
-    if class_ is None:
-        #print(f"ERROR: impossible to find a class for node '{name}' cross reference in section '{section.title}'")
-        class_ = section
-        
     cref = nodes.get(name)
     if cref is None:
         cref = []
         nodes[name] = cref
-        
-    # ----- Could already exist due to intermediary classes hiding
-    
-    for a, b in cref:
-        if a is class_ and b is section:
-            return
         
     cref.append((class_, section))
     
