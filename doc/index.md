@@ -11,17 +11,17 @@
 ### Create nodes
 
 - [Node](geono-node.md#node) : base class to create any node in a tree
-- [Group](geono-group.md#group) : create a ERROR: Node 'Group' not found node
-- [GroupF](geono-groupf.md#groupf) : a different way to create a ERROR: Node 'Group' not found node
+- [Group](geono-group.md#group) : create a <*Node Group> node
+- [GroupF](geono-groupf.md#groupf) : a different way to create a <*Node Group> node
 - [Layout](geono-layout.md#layout) : to place nodes in a frame
 - [Repeat](geono-repeat.md#repeat) and [Simulation](geono-simulation.md#simulation) : create a [Zone](geono-zone.md#zone)
 
 ### Libraries
 
 - [gnmath](geono-gnmat---gnmath.md#gnmath) : math library providing mathematical functions coming from nodes
-  [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html), [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html) and [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
+  <*Node Math>, <*Node Vector Math> and <*Node Boolean Math>
 - [nd](geono-nd.md#nd) (for _nodes_) : this special class exposes one method or property per node,
-  especially useful for input nodes such as [Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/input_index.html) or [Position](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/position.html)
+  especially useful for input nodes such as <*Node Index> or <*Node Position>
 - [snd](macro-shade1-shade1-snd.md#snd) (for _shader nodes_) : same as [nd](geono-nd.md#nd) for shader node
 
 ### Sockets
@@ -72,11 +72,12 @@ Geometries have specific [Domain](geono-domain.md#domain):
 
 #### Cross reference
 
-- ['Cross Reference' not found]() : to see how each Geometry Node can be scripted
-- ['Shader Cross Reference' not found]() : to see how each Shader Node can be scripted
+- [Cross Reference](cross_reference.md#cross-reference) : to see how each Geometry Node can be scripted
+- [Shader Cross Reference](shader_cross_reference.md#shader-cross-reference) : to see how each Shader Node can be scripted
 
 ## Content
 
+- [Cross Reference](cross_reference.md#cross-reference)
 - [demos](demos---demos.md#demos)
   - [arrows](demos-arrow---arrows.md#arrows)
   - [counters](demos-count---counters.md#counters)
@@ -148,6 +149,7 @@ Geometries have specific [Domain](geono-domain.md#domain):
   - [impulsion](macro---macros.md#impulsion)
   - [integrals](macro---macros.md#integrals)
   - [solidify](macro---macros.md#solidify)
+- [Shader Cross Reference](shader_cross_reference.md#shader-cross-reference)
 - [shadernodes](shade3---shadernodes.md#shadernodes)
   - [shaderclass](shade3-shade---shaderclass.md#shaderclass)
   - [shadernodes](shade3-shade1---shadernodes.md#shadernodes)
@@ -165,5 +167,11 @@ Geometries have specific [Domain](geono-domain.md#domain):
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [geonodes](index.md#geonodes) :black_small_square: [Content](index.md#content) :black_small_square: [geonodes](index.md#geonodes)</sub>
 
+## Miscellaneous
+
+
+
 - [Cross Reference](cross_reference.md#cross-reference)
 - [Shader Cross Reference](shader_cross_reference.md#shader-cross-reference)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [geonodes](index.md#geonodes) :black_small_square: [Content](index.md#content) :black_small_square: [geonodes](index.md#geonodes)</sub>
