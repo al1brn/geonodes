@@ -73,7 +73,7 @@ Geometries have specific [Domain](geono-domain.md#domain):
 #### Cross reference
 
 [Cross Reference](cross_reference.md#cross-reference) : to see how each Geometry Node can be scripted
-['Shader Cross Reference' not found]() : to see how each Shader Node can be scripted
+[Shader Cross Reference](shader_cross_reference.md#shader-cross-reference) : to see how each Shader Node can be scripted
 
 ## Content
 
@@ -121,6 +121,7 @@ Geometries have specific [Domain](geono-domain.md#domain):
   - [Vertex](geono-vertex.md#vertex)
   - [Volume](geono-volume.md#volume)
   - [Zone](geono-zone.md#zone)
+- [Shader Cross Reference](shader_cross_reference.md#shader-cross-reference)
 - [shadernodes](shade---shadernodes.md#shadernodes)
   - [shaderclass](shade-shade---shaderclass.md#shaderclass)
   - [shadernodes](shade-shade1---shadernodes.md#shadernodes)
@@ -140,5 +141,6 @@ Geometries have specific [Domain](geono-domain.md#domain):
 
 
 - [Cross Reference](cross_reference.md#cross-reference)
+- [Shader Cross Reference](shader_cross_reference.md#shader-cross-reference)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [geonodes](index.md#geonodes) :black_small_square: [Content](index.md#content) :black_small_square: [geonodes](index.md#geonodes)</sub>
