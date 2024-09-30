@@ -228,6 +228,8 @@ def geonodes_documentation(write_files=True):
             else:
                 if class_.hidden:
                     continue
+                
+                print(class_.hidden, class_.title, member_.title)
                 node_section.write(f"- <!{class_.title}> :white_small_square: <!{class_.title}#{member_.title}>\n")
 
     # -----------------------------------------------------------------------------------------------------------------------------
