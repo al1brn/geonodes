@@ -71,8 +71,8 @@ Geometries have specific <!Domain>:
 
 #### Cross reference
 
-<!Cross Reference> : to see how each Geometry Node can be scripted
-<!Shader Cross Reference> : to see how each Shader Node can be scripted
+- <!Cross Reference> : to see how each Geometry Node can be scripted
+- <!Shader Cross Reference> : to see how each Shader Node can be scripted
 """
 
 import numpy as np

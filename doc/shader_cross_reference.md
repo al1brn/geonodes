@@ -8,23 +8,23 @@ You will find here how nodes are implemented
 
 #### Add Shader
 
-- [snd](shade-shade1-snd.md#snd) :white_small_square: [add_shader](shade-shade1-snd.md#add_shader)
+- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'add_shader' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Ambient Occlusion
 
-- [snd](shade-shade1-snd.md#snd) :white_small_square: [ambient_occlusion](shade-shade1-snd.md#ambient_occlusion)
+- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'ambient_occlusion' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### AOV Output
 
-- [snd](shade-shade1-snd.md#snd) :white_small_square: [aov_output](shade-shade1-snd.md#aov_output)
+- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'aov_output' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Background
 
-- [snd](shade-shade1-snd.md#snd) :white_small_square: [background](shade-shade1-snd.md#background)
+- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'background' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Bevel
 
-- [snd](shade-shade1-snd.md#snd) :white_small_square: [bevel](shade-shade1-snd.md#bevel)
+- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'bevel' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Blackbody
 
@@ -32,15 +32,15 @@ You will find here how nodes are implemented
 
 #### Brightness Contrast
 
-- [snd](shade-shade1-snd.md#snd) :white_small_square: [brightness_contrast](shade-shade1-snd.md#brightness_contrast)
+- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'brightness_contrast' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Bump
 
-- [snd](shade-shade1-snd.md#snd) :white_small_square: [bump](shade-shade1-snd.md#bump)
+- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'bump' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Color Attribute
 
-- [snd](shade-shade1-snd.md#snd) :white_small_square: [color_attribute](shade-shade1-snd.md#color_attribute)
+- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'color_attribute' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 ## Content
 
@@ -67,140 +67,140 @@ You will find here how nodes are implemented
 
 #### Displacement
 
-- [snd](shade-shade1-snd.md#snd) :white_small_square: [displacement](shade-shade1-snd.md#displacement)
+- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'displacement' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Environment Texture
 
-- [snd](shade-shade1-snd.md#snd) :white_small_square: [environment_texture](shade-shade1-snd.md#environment_texture)
+- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'environment_texture' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Fresnel
 
-- [snd](shade-shade1-snd.md#snd) :white_small_square: [fresnel](shade-shade1-snd.md#fresnel)
+- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'fresnel' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Gamma
 
-- [snd](shade-shade1-snd.md#snd) :white_small_square: [gamma](shade-shade1-snd.md#gamma)
+- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'gamma' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Hair BSDF
 
-- [snd](shade-shade1-snd.md#snd) :white_small_square: [hair_bsdf](shade-shade1-snd.md#hair_bsdf)
+- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'hair_bsdf' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Hue Saturation Value
 
-- [snd](shade-shade1-snd.md#snd) :white_small_square: [hue_saturation_value](shade-shade1-snd.md#hue_saturation_value)
+- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'hue_saturation_value' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### IES Texture
 
-- [snd](shade-shade1-snd.md#snd) :white_small_square: [ies_texture](shade-shade1-snd.md#ies_texture)
+- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'ies_texture' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Invert Color
 
-- [snd](shade-shade1-snd.md#snd) :white_small_square: [invert_color](shade-shade1-snd.md#invert_color)
+- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'invert_color' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Layer Weight
 
-- [snd](shade-shade1-snd.md#snd) :white_small_square: [layer_weight](shade-shade1-snd.md#layer_weight)
+- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'layer_weight' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Light Falloff
 
-- [snd](shade-shade1-snd.md#snd) :white_small_square: [light_falloff](shade-shade1-snd.md#light_falloff)
+- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'light_falloff' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Light Output
 
-- [snd](shade-shade1-snd.md#snd) :white_small_square: [light_output](shade-shade1-snd.md#light_output)
+- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'light_output' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Line Style Output
 
-- [snd](shade-shade1-snd.md#snd) :white_small_square: [line_style_output](shade-shade1-snd.md#line_style_output)
+- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'line_style_output' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Mapping
 
-- [snd](shade-shade1-snd.md#snd) :white_small_square: [mapping](shade-shade1-snd.md#mapping)
+- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'mapping' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Material Output
 
-- [snd](shade-shade1-snd.md#snd) :white_small_square: [material_output](shade-shade1-snd.md#material_output)
+- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'material_output' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Mix Shader
 
-- [snd](shade-shade1-snd.md#snd) :white_small_square: [mix_shader](shade-shade1-snd.md#mix_shader)
+- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'mix_shader' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Normal
 
-- [snd](shade-shade1-snd.md#snd) :white_small_square: [normal](shade-shade1-snd.md#normal)
+- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'normal' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Normal Map
 
-- [snd](shade-shade1-snd.md#snd) :white_small_square: [normal_map](shade-shade1-snd.md#normal_map)
+- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'normal_map' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Point Density
 
-- [snd](shade-shade1-snd.md#snd) :white_small_square: [point_density](shade-shade1-snd.md#point_density)
+- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'point_density' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Principled Hair BSDF
 
-- [snd](shade-shade1-snd.md#snd) :white_small_square: [principled_hair_bsdf](shade-shade1-snd.md#principled_hair_bsdf)
+- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'principled_hair_bsdf' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Ray Portal BSDF
 
-- [snd](shade-shade1-snd.md#snd) :white_small_square: [ray_portal_bsdf](shade-shade1-snd.md#ray_portal_bsdf)
+- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'ray_portal_bsdf' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### RGB to BW
 
-- [snd](shade-shade1-snd.md#snd) :white_small_square: [rgb_to_bw](shade-shade1-snd.md#rgb_to_bw)
+- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'rgb_to_bw' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Script
 
-- [snd](shade-shade1-snd.md#snd) :white_small_square: [script](shade-shade1-snd.md#script)
+- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'script' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Shader to RGB
 
-- [snd](shade-shade1-snd.md#snd) :white_small_square: [shader_to_rgb](shade-shade1-snd.md#shader_to_rgb)
+- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'shader_to_rgb' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Sheen BSDF
 
-- [snd](shade-shade1-snd.md#snd) :white_small_square: [sheen_bsdf](shade-shade1-snd.md#sheen_bsdf)
+- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'sheen_bsdf' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Sky Texture
 
-- [snd](shade-shade1-snd.md#snd) :white_small_square: [sky_texture](shade-shade1-snd.md#sky_texture)
+- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'sky_texture' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Tangent
 
-- [snd](shade-shade1-snd.md#snd) :white_small_square: [tangent](shade-shade1-snd.md#tangent)
+- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'tangent' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Texture Coordinate
 
-- [snd](shade-shade1-snd.md#snd) :white_small_square: [texture_coordinate](shade-shade1-snd.md#texture_coordinate)
+- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'texture_coordinate' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Toon BSDF
 
-- [snd](shade-shade1-snd.md#snd) :white_small_square: [toon_bsdf](shade-shade1-snd.md#toon_bsdf)
+- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'toon_bsdf' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### UV Along Stroke
 
-- [snd](shade-shade1-snd.md#snd) :white_small_square: [uv_along_stroke](shade-shade1-snd.md#uv_along_stroke)
+- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'uv_along_stroke' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### UV Map
 
-- [snd](shade-shade1-snd.md#snd) :white_small_square: [uv_map](shade-shade1-snd.md#uv_map)
+- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'uv_map' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Vector Displacement
 
-- [snd](shade-shade1-snd.md#snd) :white_small_square: [vector_displacement](shade-shade1-snd.md#vector_displacement)
+- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'vector_displacement' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Vector Transform
 
-- [snd](shade-shade1-snd.md#snd) :white_small_square: [vector_transform](shade-shade1-snd.md#vector_transform)
+- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'vector_transform' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Wavelength
 
-- [snd](shade-shade1-snd.md#snd) :white_small_square: [wavelength](shade-shade1-snd.md#wavelength)
+- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'wavelength' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Wireframe
 
-- [snd](shade-shade1-snd.md#snd) :white_small_square: [wireframe](shade-shade1-snd.md#wireframe)
+- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'wireframe' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### World Output
 
-- [snd](shade-shade1-snd.md#snd) :white_small_square: [world_output](shade-shade1-snd.md#world_output)
+- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'world_output' in page 'snd'](macro-shade1-shade1-snd.md#snd)

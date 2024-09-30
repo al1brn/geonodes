@@ -4,7 +4,7 @@
 Tree(tree_name, tree_type='GeometryNodeTree', clear=True, fake_user=False, is_group=False, prefix=None)
 ```
 
-Root class for [GeoNodes](geono-geono-geonodes.md#geonodes) and [ShaderNodes](shade-shade1-shadernodes.md#shadernodes) trees.
+Root class for [GeoNodes](geono-geono-geonodes.md#geonodes) and [ShaderNodes](macro-shade1-shade1-shadernodes.md#shadernodes) trees.
 
 The system manages a stack of Trees. When a Tree is created, it is placed at the top of the stack
 and becomes the current tree.
@@ -34,7 +34,7 @@ tree = Tree.current_tree
 
 > [!CAUTION]
 > This doesn't work with materials embedded shaders. So, make sure not to override
-> a existing shader when instantiating a new [ShaderNodes](shade-shade1-shadernodes.md#shadernodes).
+> a existing shader when instantiating a new [ShaderNodes](macro-shade1-shade1-shadernodes.md#shadernodes).
 
 #### Arguments:
 - **tree_name** (_str_) : tree name

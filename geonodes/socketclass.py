@@ -1444,6 +1444,7 @@ class Menu(Socket):
             input_type = 'GEOMETRY' if v is None else utils.get_input_type(v)
 
         node = Node('Menu Switch', data_type=input_type)
+        super().__init__(node._out)
 
         # Set the items
 

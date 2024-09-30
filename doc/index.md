@@ -5,7 +5,7 @@
 
 ### Initialize a tree
 
-- [GeoNodes](geono-geono-geonodes.md#geonodes) and [ShaderNodes](shade-shade1-shadernodes.md#shadernodes) : scripting nodes starts by instantianting a [Tree](geono-tree.md#tree)
+- [GeoNodes](geono-geono-geonodes.md#geonodes) and [ShaderNodes](macro-shade1-shade1-shadernodes.md#shadernodes) : scripting nodes starts by instantianting a [Tree](geono-tree.md#tree)
 - [Break](geono-break.md#break) : exiting from a tree context can be done by raising this exception
 
 ### Create nodes
@@ -22,7 +22,7 @@
   <*Node Math>, <*Node Vector Math> and <*Node Boolean Math>
 - [nd](geono-nd.md#nd) (for _nodes_) : this special class exposes one method or property per node,
   especially useful for input nodes such as <*Node Index> or <*Node Position>
-- [snd](shade-shade1-snd.md#snd) (for _shader nodes_) : same as [nd](geono-nd.md#nd) for shader node
+- [snd](macro-shade1-shade1-snd.md#snd) (for _shader nodes_) : same as [nd](geono-nd.md#nd) for shader node
 
 ### Sockets
 
@@ -51,8 +51,8 @@ Rather than using [Node](geono-node.md#node) class, scripting nodes is done by u
   - [Instances](geono-instances.md#instances)
   - [Volume](geono-volume.md#volume)
 - Shaders specific:
-  - [Shader](shade-shade-shader.md#shader)
-  - [VolumeShader](shade-shade-volumeshader.md#volumeshader)
+  - [Shader](macro-shade1-shade-shader.md#shader)
+  - [VolumeShader](macro-shade1-shade-volumeshader.md#volumeshader)
 
 #### Domains
 
@@ -72,12 +72,26 @@ Geometries have specific [Domain](geono-domain.md#domain):
 
 #### Cross reference
 
-[Cross Reference](cross_reference.md#cross-reference) : to see how each Geometry Node can be scripted
-[Shader Cross Reference](shader_cross_reference.md#shader-cross-reference) : to see how each Shader Node can be scripted
+- [Cross Reference](cross_reference.md#cross-reference) : to see how each Geometry Node can be scripted
+- [Shader Cross Reference](shader_cross_reference.md#shader-cross-reference) : to see how each Shader Node can be scripted
 
 ## Content
 
 - [Cross Reference](cross_reference.md#cross-reference)
+- [demos](demos---demos.md#demos)
+  - [arrows](demos-arrow---arrows.md#arrows)
+  - [counters](demos-count---counters.md#counters)
+  - [curly](demos-curly---curly.md#curly)
+  - [explosion](demos-explo---explosion.md#explosion)
+  - [fields](demos-field---fields.md#fields)
+  - [fourd](demos-fourd---fourd.md#fourd)
+  - [gravity](demos-gravi---gravity.md#gravity)
+  - [helloworld](demos-hello---helloworld.md#helloworld)
+  - [rain](demos-rain---rain.md#rain)
+  - [relativity](demos-relat---relativity.md#relativity)
+  - [shaders](demos-shade---shaders.md#shaders)
+- [generation](gener---generation.md#generation)
+  - [gendoc](gener-gendo---gendoc.md#gendoc)
 - [geonodes](geono---geonodes.md#geonodes)
   - [geonodes](geono-geono---geonodes.md#geonodes)
   - [gnmath](geono-gnmat---gnmath.md#gnmath)
@@ -93,6 +107,7 @@ Geometries have specific [Domain](geono-domain.md#domain):
   - [Edge](geono-edge.md#edge)
   - [Face](geono-face.md#face)
   - [Float](geono-float.md#float)
+  - [GeoBase](geono-geobase.md#geobase)
   - [Geometry](geono-geometry.md#geometry)
   - [Group](geono-group.md#group)
   - [GroupF](geono-groupf.md#groupf)
@@ -100,6 +115,7 @@ Geometries have specific [Domain](geono-domain.md#domain):
   - [Instance](geono-instance.md#instance)
   - [Instances](geono-instances.md#instances)
   - [Integer](geono-integer.md#integer)
+  - [IntFloat](geono-intfloat.md#intfloat)
   - [Layout](geono-layout.md#layout)
   - [Material](geono-material.md#material)
   - [Matrix](geono-matrix.md#matrix)
@@ -107,7 +123,9 @@ Geometries have specific [Domain](geono-domain.md#domain):
   - [Mesh](geono-mesh.md#mesh)
   - [nd](geono-nd.md#nd)
   - [Node](geono-node.md#node)
+  - [NodeCache](geono-nodecache.md#nodecache)
   - [Object](geono-object.md#object)
+  - [Point](geono-point.md#point)
   - [Repeat](geono-repeat.md#repeat)
   - [Rotation](geono-rotation.md#rotation)
   - [Simulation](geono-simulation.md#simulation)
@@ -116,23 +134,39 @@ Geometries have specific [Domain](geono-domain.md#domain):
   - [SplinePoint](geono-splinepoint.md#splinepoint)
   - [String](geono-string.md#string)
   - [Texture](geono-texture.md#texture)
+  - [TextureRoot](geono-textureroot.md#textureroot)
   - [Tree](geono-tree.md#tree)
+  - [ValueSocket](geono-valuesocket.md#valuesocket)
   - [Vector](geono-vector.md#vector)
+  - [VectorLike](geono-vectorlike.md#vectorlike)
+  - [VectRot](geono-vectrot.md#vectrot)
   - [Vertex](geono-vertex.md#vertex)
   - [Volume](geono-volume.md#volume)
   - [Zone](geono-zone.md#zone)
+- [macros](macro---macros.md#macros)
+  - [demos](macro-demos---demos.md#demos)
+  - [generation](macro-gener---generation.md#generation)
+  - [geonodes](macro-geono---geonodes.md#geonodes)
+  - [shadernodes](macro-shade1---shadernodes.md#shadernodes)
+  - [double_integrals](macro---macros.md#double_integrals)
+  - [impulsion](macro---macros.md#impulsion)
+  - [integrals](macro---macros.md#integrals)
+  - [solidify](macro---macros.md#solidify)
 - [Shader Cross Reference](shader_cross_reference.md#shader-cross-reference)
-- [shadernodes](shade---shadernodes.md#shadernodes)
-  - [shaderclass](shade-shade---shaderclass.md#shaderclass)
-  - [shadernodes](shade-shade1---shadernodes.md#shadernodes)
-  - [staticclass](shade-stati---staticclass.md#staticclass)
+- [shadernodes](shade3---shadernodes.md#shadernodes)
+  - [shaderclass](shade3-shade---shaderclass.md#shaderclass)
+  - [shadernodes](shade3-shade1---shadernodes.md#shadernodes)
+  - [staticclass](shade3-stati---staticclass.md#staticclass)
 
 ## Modules
 
 
 
+- [demos](demos---demos.md#demos)
+- [generation](gener---generation.md#generation)
 - [geonodes](geono---geonodes.md#geonodes)
-- [shadernodes](shade---shadernodes.md#shadernodes)
+- [macros](macro---macros.md#macros)
+- [shadernodes](shade3---shadernodes.md#shadernodes)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [geonodes](index.md#geonodes) :black_small_square: [Content](index.md#content) :black_small_square: [geonodes](index.md#geonodes)</sub>
 

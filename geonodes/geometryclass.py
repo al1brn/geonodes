@@ -540,7 +540,7 @@ class Geometry(Socket, GeoBase):
     def raycast(self, attribute=None, source_position=None, ray_direction=None, ray_length=None, interpolated=True):
         """ > Node <&Node Raycast>
 
-        mapping in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4')
+        [!RETURN_NODE]
 
         Arguments
         ---------
@@ -565,6 +565,8 @@ class Geometry(Socket, GeoBase):
 
     def bake(self, **kwargs):
         """ Node <&Node Bake>
+
+        [!RETURN_NODE]
 
         Returns
         -------
@@ -913,6 +915,8 @@ class Domain(GeoBase, NodeCache):
     def capture_attribute(self, attribute=None, **others):
         """ > Node <&Node Capture Attribute>
 
+        [!RETURN_NODE]
+
         This method return the capture of 'attribute' argument if no keyword arguments are provided,
         otherwise returns the node.
 
@@ -1147,13 +1151,15 @@ class Domain(GeoBase, NodeCache):
 
         - domain (str): Node.domain in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
 
+        [!RETURN_NODE]
+
         Returns
         -------
         - Geometry
         """
 
         self.exclude_corner('separate')
-        return self._geo_type(self._node('Separate Geometry'))._out
+        return self._geo_type(self._node('Separate Geometry'))
 
     def split_to_instances(self, group_id=None):
         """ > Node <&Node Split to Instances>
