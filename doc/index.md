@@ -167,3 +167,6 @@ Geometries have specific [Domain](geono-domain.md#domain):
 - [shadernodes](shade3---shadernodes.md#shadernodes)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [geonodes](index.md#geonodes) :black_small_square: [Content](index.md#content) :black_small_square: [geonodes](index.md#geonodes)</sub>
+
+- [Cross Reference](cross_reference.md#cross-reference)
+- [Shader Cross Reference](shader_cross_reference.md#shader-cross-reference)

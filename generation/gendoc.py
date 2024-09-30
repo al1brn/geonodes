@@ -192,9 +192,11 @@ def geonodes_documentation(write_files=True):
     # -----------------------------------------------------------------------------------------------------------------------------
     # Add the cross reference page
     
-    """
-    
-    print("Cross references...")    
+    doc.cook()
+
+
+    print("Cross references...")
+
     cross_page = doc.top_section.new_page("Cross Reference",
             in_toc=True, parent_toc_depth=0,
             toc=True, sort_sections=True, toc_flat=True, toc_sort=True)
@@ -218,21 +220,10 @@ def geonodes_documentation(write_files=True):
         node_section = cross_page.new(node_name.replace('/', ' '), in_toc=True, depth_shift=2)
         for class_, member_ in refs:
             
-            if class_ is not None:
-                if class_.title == 'VectRot':
-                    for k in dir(class_):
-                        if k.startswith('__'):
-                            continue
-                        print(f"{k:20s}: {getattr(class_, k)}")
-                    aaa
-                    print(class_.title, member_.title, ' ? ', class_.hidden)
-                continue
-            
             if class_ is None:
                 node_section.write(f"- <!{member_.title}>\n")
             else:
                 node_section.write(f"- <!{class_.title}> :white_small_square: <!{class_.title}#{member_.title}>\n")
-    """
 
     # -----------------------------------------------------------------------------------------------------------------------------
     # Finally create documentation
