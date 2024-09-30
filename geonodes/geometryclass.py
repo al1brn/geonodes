@@ -540,7 +540,7 @@ class Geometry(Socket, GeoBase):
     def raycast(self, attribute=None, source_position=None, ray_direction=None, ray_length=None, interpolated=True):
         """ > Node <&Node Raycast>
 
-        [!RETURN_NODE]
+        [&RETURN_NODE]
 
         Arguments
         ---------
@@ -566,7 +566,7 @@ class Geometry(Socket, GeoBase):
     def bake(self, **kwargs):
         """ Node <&Node Bake>
 
-        [!RETURN_NODE]
+        [&RETURN_NODE]
 
         Returns
         -------
@@ -915,7 +915,7 @@ class Domain(GeoBase, NodeCache):
     def capture_attribute(self, attribute=None, **others):
         """ > Node <&Node Capture Attribute>
 
-        [!RETURN_NODE]
+        [&RETURN_NODE]
 
         This method return the capture of 'attribute' argument if no keyword arguments are provided,
         otherwise returns the node.
@@ -1151,7 +1151,7 @@ class Domain(GeoBase, NodeCache):
 
         - domain (str): Node.domain in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
 
-        [!RETURN_NODE]
+        [&RETURN_NODE]
 
         Returns
         -------

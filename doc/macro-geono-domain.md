@@ -122,7 +122,7 @@ capture_attribute(attribute=None, **others)
 
 > Node [Capture Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/capture_attribute.html)
 
-[!RETURN_NODE]
+[&RETURN_NODE]
 
 This method return the capture of 'attribute' argument if no keyword arguments are provided,
 otherwise returns the node.
@@ -451,7 +451,7 @@ separate()
 
 - domain (str): Node.domain in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
 
-[!RETURN_NODE]
+[&RETURN_NODE]
 
 #### Returns:
 - **Geometry** :

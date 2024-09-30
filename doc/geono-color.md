@@ -161,7 +161,7 @@ Saturation component
 
 Conversion to black and white.
 
-[!SHADER]
+[&SHADER]
 > Node [RGB to BW](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/converter/rgb_to_bw.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](geono-color.md#color) :black_small_square: [Content](geono-color.md#content) :black_small_square: [Properties](geono-color.md#properties)</sub>
@@ -218,7 +218,7 @@ ambient_occlusion(distance=None, normal=None, inside=False, only_local=False, sa
 
 Shader node Ambient Occlusion.
 
-[!SHADER]
+[&SHADER]
 > Node [Color Attribute](https://docs.blender.org/manual/en/latest/render/shader_nodes/input/vertex_color.html)
 
 #### Arguments:
@@ -246,7 +246,7 @@ Attribute(name)
 
 Shader node Color Attribute.
 
-[!SHADER]
+[&SHADER]
 > Node [Color Attribute](https://docs.blender.org/manual/en/latest/render/shader_nodes/input/vertex_color.html)
 
 #### Arguments:
@@ -270,7 +270,7 @@ Blackbody(temperature=None)
 
 Constructor : Black body.
 
-[!SHADER]
+[&SHADER]
 > Node [Blackbody](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../modeling/geometry_nodes/utilities/color/blackbody.html)
 
 #### Arguments:
@@ -317,7 +317,7 @@ brightness_contrast(bright=None, contrast=None)
 
 Brightness and contrast.
 
-[!SHADER]
+[&SHADER]
 > Node [Brightness/Contrast](https://docs.blender.org/manual/en/latest/render/shader_nodes/color/bright_contrast.html)
 
 #### Arguments:
@@ -698,7 +698,7 @@ FromShader(shader)
 
 Constructor : Shader to RGB.
 
-[!SHADER]
+[&SHADER]
 > Node ERROR: Node 'Shader to RGB' not found
 
 #### Arguments:
@@ -722,7 +722,7 @@ gamma(gamma=None)
 
 Gamma.
 
-[!SHADER]
+[&SHADER]
 > Node [Gamma](https://docs.blender.org/manual/en/latest/render/shader_nodes/color/gamma.html)
 
 #### Arguments:
@@ -746,7 +746,7 @@ hue_saturation_value(hue=None, saturation=None, value=None, fac=None)
 
 Hue / saturation / value.
 
-[!SHADER]
+[&SHADER]
 > Node [Hue/Saturation/Value](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/color/hue_saturation.html)
 
 #### Arguments:
@@ -773,7 +773,7 @@ invert(fac=None)
 
 Invert.
 
-[!SHADER]
+[&SHADER]
 > Node [Invert Color](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/color/invert_color.html)
 
 #### Arguments:
@@ -1006,7 +1006,7 @@ normal_map(strength=None, space='TANGENT', uv_map='')
 
 Normal map.
 
-[!SHADER]
+[&SHADER]
 > Node [Normal Map](https://docs.blender.org/manual/en/latest/render/shader_nodes/vector/normal_map.html)
 
 #### Arguments:
@@ -1056,7 +1056,7 @@ out(name=None)
 
 > Connect to output
 
-[!MIX]
+[&SHADER]
 
 > [!IMPORTANT]
 > - Geometry Nodes : create a group output socket with the provided name
@@ -1182,7 +1182,7 @@ vector_displacement(midlevel=None, scale=None, space='TANGENT')
 
 Vector displacement
 
-[!SHADER]
+[&SHADER]
 > Node [Vector Displacement](https://docs.blender.org/manual/en/latest/render/shader_nodes/vector/vector_displacement.html)
 
 #### Arguments:
@@ -1208,7 +1208,7 @@ Wavelength(wavelength=None)
 
 Constructor : Wave Length.
 
-[!SHADER]
+[&SHADER]
 > Node [Wavelength](https://docs.blender.org/manual/en/latest/render/shader_nodes/converter/wavelength.html)
 
 #### Arguments:

@@ -492,7 +492,7 @@ class Float(IntFloat):
     def round(self):
         """ > Rounding
 
-        [!MIX]
+        [&SHADER]
 
         > [!IMPORTANT]
         > - **GeoNodes** : <&Node Float to Integer>
@@ -510,7 +510,7 @@ class Float(IntFloat):
     def floor(self):
         """ > Floor
 
-        [!MIX]
+        [&SHADER]
 
         > [!IMPORTANT]
         > - **GeoNodes** : <&Node Float to Integer>
@@ -528,7 +528,7 @@ class Float(IntFloat):
     def ceiling(self):
         """ > Ceiling
 
-        [!MIX]
+        [&SHADER]
 
         > [!IMPORTANT]
         > - **GeoNodes** : <&Node Float to Integer>
@@ -546,7 +546,7 @@ class Float(IntFloat):
     def truncate(self):
         """ > Truncate
 
-        [!MIX]
+        [&SHADER]
 
         > [!IMPORTANT]
         > - **GeoNodes** : <&Node Float to Integer>
@@ -567,7 +567,7 @@ class Float(IntFloat):
     def less_than(self, other):
         """ > Less than another value
 
-        [!MIX]
+        [&SHADER]
 
         > [!IMPORTANT]
         > - **GeoNodes** : <&Node Compare>
@@ -604,7 +604,7 @@ class Float(IntFloat):
     def greater_than(self, other):
         """ > Greater than another value
 
-        [!MIX]
+        [&SHADER]
 
         > [!IMPORTANT]
         > - **GeoNodes** : <&Node Compare>
@@ -641,7 +641,7 @@ class Float(IntFloat):
     def equal(self, other, epsilon=None):
         """ > Equal to another value
 
-        [!MIX]
+        [&SHADER]
 
         > [!IMPORTANT]
         > - **GeoNodes** : <&Node Compare>
@@ -683,7 +683,7 @@ class Float(IntFloat):
     def out(self, name=None):
         """ > Connect to output
 
-        [!MIX]
+        [&SHADER]
 
         > [!IMPORTANT]
         > - Geometry Nodes : create a group output socket with the provided name

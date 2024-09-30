@@ -88,7 +88,7 @@ ceiling()
 
 > Ceiling
 
-[!MIX]
+[&SHADER]
 
 > [!IMPORTANT]
 > - **GeoNodes** : [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/float_to_integer.html)
@@ -202,7 +202,7 @@ equal(other, epsilon=None)
 
 > Equal to another value
 
-[!MIX]
+[&SHADER]
 
 > [!IMPORTANT]
 > - **GeoNodes** : [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
@@ -250,7 +250,7 @@ floor()
 
 > Floor
 
-[!MIX]
+[&SHADER]
 
 > [!IMPORTANT]
 > - **GeoNodes** : [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/float_to_integer.html)
@@ -295,7 +295,7 @@ greater_than(other)
 
 > Greater than another value
 
-[!MIX]
+[&SHADER]
 
 > [!IMPORTANT]
 > - **GeoNodes** : [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
@@ -345,7 +345,7 @@ less_than(other)
 
 > Less than another value
 
-[!MIX]
+[&SHADER]
 
 > [!IMPORTANT]
 > - **GeoNodes** : [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
@@ -637,7 +637,7 @@ out(name=None)
 
 > Connect to output
 
-[!MIX]
+[&SHADER]
 
 > [!IMPORTANT]
 > - Geometry Nodes : create a group output socket with the provided name
@@ -700,7 +700,7 @@ round()
 
 > Rounding
 
-[!MIX]
+[&SHADER]
 
 > [!IMPORTANT]
 > - **GeoNodes** : [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/float_to_integer.html)
@@ -803,7 +803,7 @@ truncate()
 
 > Truncate
 
-[!MIX]
+[&SHADER]
 
 > [!IMPORTANT]
 > - **GeoNodes** : [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/float_to_integer.html)

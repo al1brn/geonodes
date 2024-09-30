@@ -353,10 +353,10 @@ class NodeInfo:
             yield f"\n\n{_tab*2}{c3} > Node <&{snode} {self.bnode.name}>"
         else:
             yield f"{_tab*2}{c3} Node '{self.bnode.name}' ({self.bnode.bl_idname})"
-            yield f"\n\n{_tab*2}[!Node] {self.bnode.name}"
+            yield f"\n\n{_tab*2}<&NODE {self.bnode.name}>"
 
         if self.is_shader:
-            yield f"\n\n{_tab*2}[!SHADER]"
+            yield f"\n\n{_tab*2}[&SHADER]"
 
         if sockets['has_items'] or params['has_items'] or self.has_items:
             yield f"\n\n{_tab*2}Arguments"
@@ -530,7 +530,7 @@ class NodeInfo:
 
         yield f"{_tab*2}{c3} Node '{self.bnode.name}' ({self.bnode.bl_idname})"
 
-        yield f"\n\n{_tab*2}[!Node] {self.bnode.name}"
+        yield f"\n\n{_tab*2}<&NODE {self.bnode.name}>"
 
         if sockets['has_items'] or params['has_items']:
             yield f"\n\n{_tab*2}Arguments"

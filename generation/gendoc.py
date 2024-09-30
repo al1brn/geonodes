@@ -59,7 +59,13 @@ def get_node_link(tree, name):
     return f"[{name}]({base + m.group('url')})"
 
 # =============================================================================================================================
-# 3 possible regular expressions
+# Methods tags
+
+# [$COMMAND]
+# Accepted commands are
+# - SHADER : method is specific to shaders
+# - MIX : method behaves differently in shader / geonodes
+# - RETURN_NODE : returns a node, not as socket
 
 # [!Node] node name, node name
 expr1 = r"\[!(?P<cmd>\w*)\] *(?P<names>.*)"

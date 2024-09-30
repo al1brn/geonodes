@@ -198,7 +198,7 @@ bake(**kwargs)
 
 Node [Bake](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/bake.html)
 
-[!RETURN_NODE]
+[&RETURN_NODE]
 
 #### Arguments:
 - **kwargs**
@@ -303,7 +303,7 @@ raycast(attribute=None, source_position=None, ray_direction=None, ray_length=Non
 
 > Node [Raycast](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/raycast.html)
 
-[!RETURN_NODE]
+[&RETURN_NODE]
 
 #### Arguments:
 - **attribute** (_Float_ = None) : socket 'Attribute' (Attribute)

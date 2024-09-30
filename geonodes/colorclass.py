@@ -793,7 +793,7 @@ class Color(VectorLike):
     def out(self, name=None):
         """ > Connect to output
 
-        [!MIX]
+        [&SHADER]
 
         > [!IMPORTANT]
         > - Geometry Nodes : create a group output socket with the provided name
@@ -812,7 +812,7 @@ class Color(VectorLike):
     def Attribute(cls, name):
         """ Shader node Color Attribute.
 
-        [!SHADER]
+        [&SHADER]
         > Node <&ShaderNode Color Attribute>
 
         Arguments
@@ -829,7 +829,7 @@ class Color(VectorLike):
     def ambient_occlusion(self, distance=None, normal=None, inside=False, only_local=False, samples=16):
         """ Shader node Ambient Occlusion.
 
-        [!SHADER]
+        [&SHADER]
         > Node <&ShaderNode Color Attribute>
 
         Arguments
@@ -853,7 +853,7 @@ class Color(VectorLike):
     def Blackbody(cls, temperature=None):
         """ Constructor : Black body.
 
-        [!SHADER]
+        [&SHADER]
         > Node <&ShaderNode Blackbody>
 
         Arguments
@@ -870,7 +870,7 @@ class Color(VectorLike):
     def FromShader(cls, shader):
         """ Constructor : Shader to RGB.
 
-        [!SHADER]
+        [&SHADER]
         > Node <&ShaderNode Shader to RGB>
 
         Arguments
@@ -887,7 +887,7 @@ class Color(VectorLike):
     def Wavelength(cls, wavelength=None):
         """ Constructor : Wave Length.
 
-        [!SHADER]
+        [&SHADER]
         > Node <&ShaderNode Wavelength>
 
         Arguments
@@ -904,7 +904,7 @@ class Color(VectorLike):
     def to_bw(self):
         """ Conversion to black and white.
 
-        [!SHADER]
+        [&SHADER]
         > Node <&ShaderNode RGB to BW>
 
         Returns
@@ -918,7 +918,7 @@ class Color(VectorLike):
     def brightness_contrast(self, bright=None, contrast=None):
         """ Brightness and contrast.
 
-        [!SHADER]
+        [&SHADER]
         > Node <&ShaderNode Brightness/Contrast>
 
         Arguments
@@ -935,7 +935,7 @@ class Color(VectorLike):
     def gamma(self, gamma=None):
         """ Gamma.
 
-        [!SHADER]
+        [&SHADER]
         > Node <&ShaderNode Gamma>
 
         Arguments
@@ -952,7 +952,7 @@ class Color(VectorLike):
     def hue_saturation_value(self, hue=None, saturation=None, value=None, fac=None):
         """ Hue / saturation / value.
 
-        [!SHADER]
+        [&SHADER]
         > Node <&ShaderNode Hue/Saturation/Value>
 
         Arguments
@@ -972,7 +972,7 @@ class Color(VectorLike):
     def invert(self, fac=None):
         """ Invert.
 
-        [!SHADER]
+        [&SHADER]
         > Node <&ShaderNode Invert Color>
 
         Arguments
@@ -989,7 +989,7 @@ class Color(VectorLike):
     def normal_map(self, strength=None, space='TANGENT', uv_map=''):
         """ Normal map.
 
-        [!SHADER]
+        [&SHADER]
         > Node <&ShaderNode Normal Map>
 
         Arguments
@@ -1007,7 +1007,7 @@ class Color(VectorLike):
     def vector_displacement(self, midlevel=None, scale=None, space='TANGENT'):
         """ Vector displacement
 
-        [!SHADER]
+        [&SHADER]
         > Node <&ShaderNode Vector Displacement>
 
         Arguments
