@@ -26,7 +26,7 @@ node.geometry = cube
 > - using ***peer socket** naming convention where the **snake_case** name of
 >.  the other sockets is suffixed by '_'
 
-The example below shows how to access the to 'UV Map' socket of node <*Cube>:
+The example below shows how to access the to 'UV Map' socket of node [Cube](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/cube.html):
 
 ``` python
 # cube is the output socket 'Mesh' of the node 'Cube'

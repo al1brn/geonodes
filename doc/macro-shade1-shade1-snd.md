@@ -35,7 +35,7 @@ Initialize self.  See help(type(self)) for accurate signature.
 position(attribute_type='GEOMETRY')
 ```
 
-> **node** : [Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/input/attribute.html)
+Node 'Attribute' (ShaderNodeAttribute)
 - attribute_type in ('GEOMETRY', 'OBJECT', 'INSTANCER', 'VIEW_LAYER')
 
 #### Arguments:
@@ -52,7 +52,7 @@ position(attribute_type='GEOMETRY')
 sharp_face(attribute_type='GEOMETRY')
 ```
 
-> **node** : [Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/input/attribute.html)
+Node 'Attribute' (ShaderNodeAttribute)
 - attribute_type in ('GEOMETRY', 'OBJECT', 'INSTANCER', 'VIEW_LAYER')
 
 #### Arguments:
@@ -69,7 +69,7 @@ sharp_face(attribute_type='GEOMETRY')
 uvmap(attribute_type='GEOMETRY')
 ```
 
-> **node** : [Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/input/attribute.html)
+Node 'Attribute' (ShaderNodeAttribute)
 - attribute_type in ('GEOMETRY', 'OBJECT', 'INSTANCER', 'VIEW_LAYER')
 
 #### Arguments:

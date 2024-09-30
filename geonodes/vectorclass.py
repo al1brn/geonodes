@@ -523,7 +523,7 @@ class Vector(VectRot):
     # ----- Mix
 
     def mix(self, factor=None, other=None, clamp_factor=None, factor_mode=None):
-        """ > Node <&Mix>
+        """ > Node <&Node Mix>
 
         Arguments
         ---------
@@ -539,7 +539,7 @@ class Vector(VectRot):
         return Vector(Node('Mix', {'Factor': factor, 'A': self, 'B': other}, clamp_factor=clamp_factor, factor_mode=factor_mode, data_type='VECTOR')._out)
 
     def mix_uniform(self, factor=None, other=None, clamp_factor=None):
-        """ > Node <&Mix>, factor_mode = 'UNIFORM'
+        """ > Node <&Node Mix>, factor_mode = 'UNIFORM'
 
         Arguments
         ---------
@@ -554,7 +554,7 @@ class Vector(VectRot):
         return self.mix(factor, other, clamp_factor, factor_mode='UNIFORM')
 
     def mix_non_uniform(self, factor=None, other=None, clamp_factor=None):
-        """ > Node <&Mix>, factor_mode = 'NON_UNIFORM'
+        """ > Node <&Node Mix>, factor_mode = 'NON_UNIFORM'
 
         Arguments
         ---------

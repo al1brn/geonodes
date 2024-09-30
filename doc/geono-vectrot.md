@@ -28,7 +28,7 @@ node.geometry = cube
 > - using ***peer socket** naming convention where the **snake_case** name of
 >.  the other sockets is suffixed by '_'
 
-The example below shows how to access the to 'UV Map' socket of node <*Cube>:
+The example below shows how to access the to 'UV Map' socket of node [Cube](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/cube.html):
 
 ``` python
 # cube is the output socket 'Mesh' of the node 'Cube'
@@ -74,7 +74,7 @@ uv_map = cuve.uv_map_
 > _type_: **Float**
 >
 
-Socket 'X' of node <&Separate XYZ>
+Socket 'X' of node ERROR: Node 'XYZ' not found
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [VectRot](geono-vectrot.md#vectrot) :black_small_square: [Content](geono-vectrot.md#content) :black_small_square: [Properties](geono-vectrot.md#properties)</sub>
 
@@ -83,7 +83,7 @@ Socket 'X' of node <&Separate XYZ>
 > _type_: **Float**
 >
 
-Socket 'Y' of node <&Separate XYZ>
+Socket 'Y' of node ERROR: Node 'XYZ' not found
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [VectRot](geono-vectrot.md#vectrot) :black_small_square: [Content](geono-vectrot.md#content) :black_small_square: [Properties](geono-vectrot.md#properties)</sub>
 
@@ -92,7 +92,7 @@ Socket 'Y' of node <&Separate XYZ>
 > _type_: **Float**
 >
 
-Socket 'Z' of node <&Separate XYZ>
+Socket 'Z' of node ERROR: Node 'XYZ' not found
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [VectRot](geono-vectrot.md#vectrot) :black_small_square: [Content](geono-vectrot.md#content) :black_small_square: [Properties](geono-vectrot.md#properties)</sub>
 
@@ -109,7 +109,7 @@ Socket 'Z' of node <&Separate XYZ>
 Combine(x, y, z)
 ```
 
-Constructor node <&Combine XYZ>
+Constructor node ERROR: Node 'XYZ' not found
 
 #### Arguments:
 - **x**
@@ -132,7 +132,7 @@ Constructor node <&Combine XYZ>
 Random(min=None, max=None, id=None, seed=None)
 ```
 
-Constructor node <&Random Value>
+Constructor node [Value](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../modeling/geometry_nodes/input/constant/value.html)
 
 #### Arguments:
 - **min** ( = None)

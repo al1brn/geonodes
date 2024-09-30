@@ -209,7 +209,7 @@ Euler(value=(0.0, 0.0, 0.0), name='Euler', tip=None)
 FromRotation(rotation=None)
 ```
 
-> Constructor node <&Rotation to Euler>
+> Constructor node ERROR: Node 'to Euler' not found
 
 #### Arguments:
 - **rotation** ( = None)
@@ -277,8 +277,7 @@ mapping(location=None, rotation=None, scale=None, vector_type='POINT')
 mix(factor=None, other=None, clamp_factor=None, factor_mode=None)
 ```
 
-> Node :hotsprings: Behaves differently in **GeoNodes** and **ShaderNodes**
-
+> Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket 'Factor'
@@ -302,8 +301,7 @@ mix(factor=None, other=None, clamp_factor=None, factor_mode=None)
 mix_non_uniform(factor=None, other=None, clamp_factor=None)
 ```
 
-> Node :hotsprings: Behaves differently in **GeoNodes** and **ShaderNodes**
-, factor_mode = 'NON_UNIFORM'
+> Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html), factor_mode = 'NON_UNIFORM'
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket 'Factor'
@@ -326,8 +324,7 @@ mix_non_uniform(factor=None, other=None, clamp_factor=None)
 mix_uniform(factor=None, other=None, clamp_factor=None)
 ```
 
-> Node :hotsprings: Behaves differently in **GeoNodes** and **ShaderNodes**
-, factor_mode = 'UNIFORM'
+> Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html), factor_mode = 'UNIFORM'
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket 'Factor'
@@ -580,7 +577,7 @@ Tangent(axis='Z', direction_type='RADIAL', uv_map='')
 to_rotation()
 ```
 
-Node <&Euler to Rotation>
+Node ERROR: Node 'to Rotation' not found
 
 #### Returns:
 - **Rotation** :

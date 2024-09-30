@@ -10,7 +10,7 @@ SplinePoint(geometry)
 
 Methods of **SplinePoint** class are nodes which accept 'POINT' domain.
 
-In addition, the nodes <*Curve of Point> and <*Offset Point in Curve> are implemented
+In addition, the nodes [Curve of Point](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/topology/curve_of_point.html) and ERROR: Node 'Point in Curve' not found are implemented
 in methods [curve_index](macro-geono-splinepoint.md#curve_index), [index_in_curve](macro-geono-splinepoint.md#index_in_curve) and [offset_in_curve](macro-geono-splinepoint.md#offset_in_curve).
 
 #### Arguments:
@@ -285,7 +285,7 @@ Set the curve handle type
 curve_index(point_index=None)
 ```
 
-> Socket 'Curve Index' of node <&Curve of Point>
+> Socket 'Curve Index' of node ERROR: Node 'of Point' not found
 
 #### Arguments:
 - **point_index** (_Integer_ = None) : point index
@@ -350,7 +350,7 @@ handle_type_selection(left=True, right=True, handle_type='AUTO')
 index_in_curve(point_index=None)
 ```
 
-> Socket 'Index in Curve' of node <&Curve of Point>
+> Socket 'Index in Curve' of node ERROR: Node 'of Point' not found
 
 #### Arguments:
 - **point_index** (_Integer_ = None) : point index
@@ -371,7 +371,7 @@ index_in_curve(point_index=None)
 offset_in_curve(point_index=None, offset=None)
 ```
 
-> Socket 'Point Index' of node <&Offset Point in Curve>
+> Socket 'Point Index' of node ERROR: Node 'Point in Curve' not found
 
 #### Arguments:
 - **point_index** ( = None)

@@ -73,7 +73,7 @@ vect = Vector(name="User input").  # Create a new Vector group input
 > _type_: **Float**
 >
 
-Socket 'X' of node <&Separate XYZ>
+Socket 'X' of node ERROR: Node 'XYZ' not found
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Vector](geono-vector.md#vector) :black_small_square: [Content](geono-vector.md#content) :black_small_square: [Properties](geono-vector.md#properties)</sub>
 
@@ -82,7 +82,7 @@ Socket 'X' of node <&Separate XYZ>
 > _type_: **Float**
 >
 
-Socket 'Y' of node <&Separate XYZ>
+Socket 'Y' of node ERROR: Node 'XYZ' not found
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Vector](geono-vector.md#vector) :black_small_square: [Content](geono-vector.md#content) :black_small_square: [Properties](geono-vector.md#properties)</sub>
 
@@ -91,7 +91,7 @@ Socket 'Y' of node <&Separate XYZ>
 > _type_: **Float**
 >
 
-Socket 'Z' of node <&Separate XYZ>
+Socket 'Z' of node ERROR: Node 'XYZ' not found
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Vector](geono-vector.md#vector) :black_small_square: [Content](geono-vector.md#content) :black_small_square: [Properties](geono-vector.md#properties)</sub>
 
@@ -160,7 +160,7 @@ bump(strength=None, distance=None, height=None, invert=False)
 Combine(x, y, z)
 ```
 
-Constructor node <&Combine XYZ>
+Constructor node ERROR: Node 'XYZ' not found
 
 #### Arguments:
 - **x**
@@ -276,7 +276,7 @@ Euler(value=(0.0, 0.0, 0.0), name='Euler', tip=None)
 FromRotation(rotation=None)
 ```
 
-> Constructor node <&Rotation to Euler>
+> Constructor node ERROR: Node 'to Euler' not found
 
 #### Arguments:
 - **rotation** ( = None)
@@ -344,8 +344,7 @@ mapping(location=None, rotation=None, scale=None, vector_type='POINT')
 mix(factor=None, other=None, clamp_factor=None, factor_mode=None)
 ```
 
-> Node :hotsprings: Behaves differently in **GeoNodes** and **ShaderNodes**
-
+> Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket 'Factor'
@@ -369,8 +368,7 @@ mix(factor=None, other=None, clamp_factor=None, factor_mode=None)
 mix_non_uniform(factor=None, other=None, clamp_factor=None)
 ```
 
-> Node :hotsprings: Behaves differently in **GeoNodes** and **ShaderNodes**
-, factor_mode = 'NON_UNIFORM'
+> Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html), factor_mode = 'NON_UNIFORM'
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket 'Factor'
@@ -393,8 +391,7 @@ mix_non_uniform(factor=None, other=None, clamp_factor=None)
 mix_uniform(factor=None, other=None, clamp_factor=None)
 ```
 
-> Node :hotsprings: Behaves differently in **GeoNodes** and **ShaderNodes**
-, factor_mode = 'UNIFORM'
+> Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html), factor_mode = 'UNIFORM'
 
 #### Arguments:
 - **factor** (_Float_ = None) : socket 'Factor'
@@ -485,7 +482,7 @@ out(name=None)
 Random(min=None, max=None, id=None, seed=None)
 ```
 
-Constructor node <&Random Value>
+Constructor node [Value](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../modeling/geometry_nodes/input/constant/value.html)
 
 #### Arguments:
 - **min** ( = None)
@@ -671,7 +668,7 @@ Tangent(axis='Z', direction_type='RADIAL', uv_map='')
 to_rotation()
 ```
 
-Node <&Euler to Rotation>
+Node ERROR: Node 'to Rotation' not found
 
 #### Returns:
 - **Rotation** :

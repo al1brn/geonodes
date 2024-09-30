@@ -46,7 +46,7 @@ ref_search = r'<a class="reference internal" href="(?P<url>[^"]*)">(NODE_NAME) N
 # ----- Return the url of the node
 
 def get_node_link(tree, name):
-    if tree == 'Node':
+    if tree == 'NODE':
         ref  = gnodes_ref
         base = gnodes_url
     else:
@@ -59,101 +59,84 @@ def get_node_link(tree, name):
     return f"[{name}]({base + m.group('url')})"
 
 # =============================================================================================================================
-# Methods tags
-
-# [$COMMAND]
-# Accepted commands are
-# - SHADER : method is specific to shaders
-# - MIX : method behaves differently in shader / geonodes
-# - RETURN_NODE : returns a node, not as socket
-
-# [!Node] node name, node name
-expr1 = r"\[!(?P<cmd>\w*)\] *(?P<names>.*)"
-
-# <&Node node name> : cross reference
-# <*Node node name> : no cross reference
-expr1b = r"<(?P<cross>(&|\*))(?P<cmd>\w*) *(?P<names>[^>]*)>"
-
-# Node 'node name' (bl_idname)
-expr2 = r"^(?P<tree>(Node)|(ShaderNode)) *'(?P<name>[^']*)' \((?P<blid>\w*)\)"
-
-cexpr1  = re.compile(expr1,  flags = re.MULTILINE)
-cexpr1b = re.compile(expr1b, flags = re.MULTILINE)
-cexpr2  = re.compile(expr2,  flags = re.MULTILINE)
+# Cross references
 
 g_nodes = {}
 s_nodes = {}
 
 def cross_ref(tree, name, section):
     
-    nodes = g_nodes if tree == 'Node' else s_nodes
+    nodes = g_nodes if tree == 'NODE' else s_nodes
     
     class_ = section
     while class_ is not None and class_.tag != 'Classes':
         class_ = class_.parent
         
-    cref = g_nodes.get(name)
+    if class_ is None:
+        #print(f"ERROR: impossible to find a class for node '{name}' cross reference in section '{section.title}'")
+        class_ = section
+        
+    cref = nodes.get(name)
     if cref is None:
         cref = []
         nodes[name] = cref
         
     cref.append((class_, section))
     
-def replace1(m, section):
+    #print("CROSS REF", class_.title, section.title)
+    #print("->", type(cref[0]), ':', type(cref[0][0]), type(cref[0][1]), cref[0][0].title, cref[0][1].title)
 
-    cross = m.group('cross')
-    cmd   = m.group('cmd').strip()
-    names = m.group('names')
+# =============================================================================================================================
+# Regular expressions
+
+# -----------------------------------------------------------------------------------------------------------------------------
+# [&COMMAND]
+#
+# Accepted commands are
+# - SHADER : method is specific to shaders
+# - MIX : method behaves differently in shader / geonodes
+# - RETURN_NODE : returns a node, not as socket
+
+tag_expr = r"\[&(?P<tag>\w*)\]"
+ctag     = re.compile(tag_expr,  flags = re.MULTILINE)
+
+def tag_replace(m, section):
+
+    tag = m.group('tag').strip()
     
-    # [!SHADER] : only in ShaderNodes
-    # [!MIX] : two behaviors
-    
-    if cmd.upper() == 'SHADER':
+    if tag.upper() == 'SHADER':
         return ":sunrise: **ShaderNodes** only\n"
     
-    elif cmd.upper() == 'MIX':
-        #return f"> [!IMPORTANT]\n> Behaves differently in GeoNodes and ShaderNodes\n"
+    elif tag.upper() == 'MIX':
         return ":hotsprings: Behaves differently in **GeoNodes** and **ShaderNodes**\n"
     
-    elif cmd.upper() == 'RETURN_NODE':
+    elif tag.upper() == 'RETURN_NODE':
         return ":warning: returns the **node**, not a socket"
     
-    # Not for us!
-    
-    if cmd.upper() not in ['NODE', 'SHADERNODE']:
-        return m.group(0)
-    
-    # [!Node] or [!ShaderNode]
-    
-    if cmd.upper() == 'NODE':
-        cmd = 'Node'
     else:
-        cmd = 'ShaderNode'
-        
-    s = ""
-    for a_name in names.split(','):
-        name = a_name.strip()
-        
-        if s != "":
-            s += ', '
-            
-        if cross:
-            cross_ref(cmd, name, section)
-        
-        s += get_node_link(cmd, name)
-        
-    return s
+        print(f"UNKNOWN Method tag: '{tag}' in '{m.group(0)}'")
+        return m.group(0)
 
-# OLD VERSION
+# -----------------------------------------------------------------------------------------------------------------------------
+# <&Node node name> or <*Node node name>
+#
+# Reference to blender documentation
+# - & : add a cross reference
+# - * : don't add a crosse reference
 
-def replace2(m, section):
+bnode_expr = r"<(?P<cross>(&|\*))(?P<tree>\w*) *(?P<name>[^>]*)>"
+cbnode = re.compile(bnode_expr, flags = re.MULTILINE)
+
+def bnode_replace(m, section):
     
-    tree = m.group('tree')
-    name = m.group('name').strip()
+    cross = m.group('cross')
+    tree  = m.group('tree').upper()
+    name  = m.group('name').strip()
     
-    cross_ref(tree, name, section)
+    if cross == '&':
+        cross_ref(tree, name, section)
     
-    return "> **node** : " + get_node_link(tree, name)
+    return get_node_link(tree, name)
     
 
 # =============================================================================================================================
@@ -197,9 +180,8 @@ def geonodes_documentation(write_files=True):
         if section.comment is None:
             continue
         
-        #section.comment = cexpr1.sub(lambda m: replace1(m, section), section.comment)
-        section.comment = cexpr1b.sub(lambda m: replace1(m, section), section.comment)
-        section.comment = cexpr2.sub(lambda m: replace2(m, section), section.comment)
+        section.comment = ctag.sub(  lambda m: tag_replace(  m, section), section.comment)
+        section.comment = cbnode.sub(lambda m: bnode_replace(m, section), section.comment)
         
     # -----------------------------------------------------------------------------------------------------------------------------
     # Add the cross reference page
@@ -223,7 +205,7 @@ def geonodes_documentation(write_files=True):
             toc=True, sort_sections=True, toc_flat=True, toc_sort=True)
     cross_page.write("You will find here how nodes are implemented")
     
-
+    
     for node_name, refs in s_nodes.items():
         node_section = cross_page.new(node_name.replace('/', ' '), in_toc=True, depth_shift=2)
         for class_, member_ in refs:
@@ -237,6 +219,8 @@ def geonodes_documentation(write_files=True):
     
     print("Create documentation files...")
     doc.create_documentation(folder)
+    
+    print("Done")
     
 
 

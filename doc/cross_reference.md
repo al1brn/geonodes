@@ -23,12 +23,8 @@ You will find here how nodes are implemented
 
 - [nd](geono-nd.md#nd) :white_small_square: [align_rotation_to_vector](geono-nd.md#align_rotation_to_vector)
 - [Rotation](geono-rotation.md#rotation) :white_small_square: [AlignToVector](geono-rotation.md#aligntovector)
-- [Rotation](geono-rotation.md#rotation) :white_small_square: [AlignToVector](geono-rotation.md#aligntovector)
-- [Rotation](geono-rotation.md#rotation) :white_small_square: [AlignXToVector](geono-rotation.md#alignxtovector)
 - [Rotation](geono-rotation.md#rotation) :white_small_square: [AlignXToVector](geono-rotation.md#alignxtovector)
 - [Rotation](geono-rotation.md#rotation) :white_small_square: [AlignYToVector](geono-rotation.md#alignytovector)
-- [Rotation](geono-rotation.md#rotation) :white_small_square: [AlignYToVector](geono-rotation.md#alignytovector)
-- [Rotation](geono-rotation.md#rotation) :white_small_square: [AlignZToVector](geono-rotation.md#alignztovector)
 - [Rotation](geono-rotation.md#rotation) :white_small_square: [AlignZToVector](geono-rotation.md#alignztovector)
 - [Rotation](geono-rotation.md#rotation) :white_small_square: [align_to_vector](geono-rotation.md#align_to_vector)
 - [Rotation](geono-rotation.md#rotation) :white_small_square: [align_x_to_vector](geono-rotation.md#align_x_to_vector)
@@ -36,12 +32,8 @@ You will find here how nodes are implemented
 - [Rotation](geono-rotation.md#rotation) :white_small_square: [align_z_to_vector](geono-rotation.md#align_z_to_vector)
 - [nd](geono-nd.md#nd) :white_small_square: [align_rotation_to_vector](geono-nd.md#align_rotation_to_vector)
 - [Rotation](geono-rotation.md#rotation) :white_small_square: [AlignToVector](geono-rotation.md#aligntovector)
-- [Rotation](geono-rotation.md#rotation) :white_small_square: [AlignToVector](geono-rotation.md#aligntovector)
-- [Rotation](geono-rotation.md#rotation) :white_small_square: [AlignXToVector](geono-rotation.md#alignxtovector)
 - [Rotation](geono-rotation.md#rotation) :white_small_square: [AlignXToVector](geono-rotation.md#alignxtovector)
 - [Rotation](geono-rotation.md#rotation) :white_small_square: [AlignYToVector](geono-rotation.md#alignytovector)
-- [Rotation](geono-rotation.md#rotation) :white_small_square: [AlignYToVector](geono-rotation.md#alignytovector)
-- [Rotation](geono-rotation.md#rotation) :white_small_square: [AlignZToVector](geono-rotation.md#alignztovector)
 - [Rotation](geono-rotation.md#rotation) :white_small_square: [AlignZToVector](geono-rotation.md#alignztovector)
 - [Rotation](geono-rotation.md#rotation) :white_small_square: [align_to_vector](geono-rotation.md#align_to_vector)
 - [Rotation](geono-rotation.md#rotation) :white_small_square: [align_x_to_vector](geono-rotation.md#align_x_to_vector)
@@ -55,17 +47,6 @@ You will find here how nodes are implemented
 - [Curve](geono-curve.md#curve) :white_small_square: [Arc](geono-curve.md#arc)
 - [nd](geono-nd.md#nd) :white_small_square: [arc](geono-nd.md#arc)
 
-#### Attribute
-
-- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [position](macro-shade1-shade1-snd.md#position)
-- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [sharp_face](macro-shade1-shade1-snd.md#sharp_face)
-- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [uvmap](macro-shade1-shade1-snd.md#uvmap)
-- [StaticClass](macro-shade1-stati-staticclass.md#staticclass) :white_small_square: [attribute](macro-shade1-stati-staticclass.md#attribute)
-- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [position](macro-shade1-shade1-snd.md#position)
-- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [sharp_face](macro-shade1-shade1-snd.md#sharp_face)
-- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [uvmap](macro-shade1-shade1-snd.md#uvmap)
-- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'attribute' in page 'snd'](macro-shade1-shade1-snd.md#snd)
-
 #### Attribute Statistic
 
 - [Domain](geono-domain.md#domain) :white_small_square: [attribute_statistic](geono-domain.md#attribute_statistic)
@@ -77,8 +58,6 @@ You will find here how nodes are implemented
 
 - [nd](geono-nd.md#nd) :white_small_square: [axes_to_rotation](geono-nd.md#axes_to_rotation)
 - [Rotation](geono-rotation.md#rotation) :white_small_square: [AxesToRotation](geono-rotation.md#axestorotation)
-- [Rotation](geono-rotation.md#rotation) :white_small_square: [AxesToRotation](geono-rotation.md#axestorotation)
-- [Rotation](geono-rotation.md#rotation) :white_small_square: [FromAxes](geono-rotation.md#fromaxes)
 - [Rotation](geono-rotation.md#rotation) :white_small_square: [FromAxes](geono-rotation.md#fromaxes)
 - [Rotation](geono-rotation.md#rotation) :white_small_square: [FromXYAxes](geono-rotation.md#fromxyaxes)
 - [Rotation](geono-rotation.md#rotation) :white_small_square: [FromXZAxes](geono-rotation.md#fromxzaxes)
@@ -88,8 +67,6 @@ You will find here how nodes are implemented
 - [Rotation](geono-rotation.md#rotation) :white_small_square: [FromZYAxes](geono-rotation.md#fromzyaxes)
 - [nd](geono-nd.md#nd) :white_small_square: [axes_to_rotation](geono-nd.md#axes_to_rotation)
 - [Rotation](geono-rotation.md#rotation) :white_small_square: [AxesToRotation](geono-rotation.md#axestorotation)
-- [Rotation](geono-rotation.md#rotation) :white_small_square: [AxesToRotation](geono-rotation.md#axestorotation)
-- [Rotation](geono-rotation.md#rotation) :white_small_square: [FromAxes](geono-rotation.md#fromaxes)
 - [Rotation](geono-rotation.md#rotation) :white_small_square: [FromAxes](geono-rotation.md#fromaxes)
 - [Rotation](geono-rotation.md#rotation) :white_small_square: [FromXYAxes](geono-rotation.md#fromxyaxes)
 - [Rotation](geono-rotation.md#rotation) :white_small_square: [FromXZAxes](geono-rotation.md#fromxzaxes)
@@ -117,10 +94,7 @@ You will find here how nodes are implemented
 #### Blackbody
 
 - [nd](geono-nd.md#nd) :white_small_square: [blackbody](geono-nd.md#blackbody)
-- [Color](geono-color.md#color) :white_small_square: [Blackbody](geono-color.md#blackbody)
 - [nd](geono-nd.md#nd) :white_small_square: [blackbody](geono-nd.md#blackbody)
-- [StaticClass](macro-shade1-stati-staticclass.md#staticclass) :white_small_square: [blackbody](macro-shade1-stati-staticclass.md#blackbody)
-- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'blackbody' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Blur Attribute
 
@@ -138,31 +112,31 @@ You will find here how nodes are implemented
 
 #### Boolean Math
 
-- [band](geono-gnmat---gnmath.md#band)
-- [bnot](geono-gnmat---gnmath.md#bnot)
-- [bor](geono-gnmat---gnmath.md#bor)
-- [bsubtract](geono-gnmat---gnmath.md#bsubtract)
-- [equal](geono-gnmat---gnmath.md#equal)
-- [imply](geono-gnmat---gnmath.md#imply)
-- [nand](geono-gnmat---gnmath.md#nand)
-- [nimply](geono-gnmat---gnmath.md#nimply)
-- [nor](geono-gnmat---gnmath.md#nor)
-- [not_equal](geono-gnmat---gnmath.md#not_equal)
-- [xnor](geono-gnmat---gnmath.md#xnor)
-- [xor](geono-gnmat---gnmath.md#xor)
+- [band](geono-gnmat---gnmath.md#band) :white_small_square: [band](geono-gnmat---gnmath.md#band)
+- [bnot](geono-gnmat---gnmath.md#bnot) :white_small_square: [bnot](geono-gnmat---gnmath.md#bnot)
+- [bor](geono-gnmat---gnmath.md#bor) :white_small_square: [bor](geono-gnmat---gnmath.md#bor)
+- [bsubtract](geono-gnmat---gnmath.md#bsubtract) :white_small_square: [bsubtract](geono-gnmat---gnmath.md#bsubtract)
+- [equal](geono-gnmat---gnmath.md#equal) :white_small_square: [equal](geono-gnmat---gnmath.md#equal)
+- [imply](geono-gnmat---gnmath.md#imply) :white_small_square: [imply](geono-gnmat---gnmath.md#imply)
+- [nand](geono-gnmat---gnmath.md#nand) :white_small_square: [nand](geono-gnmat---gnmath.md#nand)
+- [nimply](geono-gnmat---gnmath.md#nimply) :white_small_square: [nimply](geono-gnmat---gnmath.md#nimply)
+- [nor](geono-gnmat---gnmath.md#nor) :white_small_square: [nor](geono-gnmat---gnmath.md#nor)
+- [not_equal](geono-gnmat---gnmath.md#not_equal) :white_small_square: [not_equal](geono-gnmat---gnmath.md#not_equal)
+- [xnor](geono-gnmat---gnmath.md#xnor) :white_small_square: [xnor](geono-gnmat---gnmath.md#xnor)
+- [xor](geono-gnmat---gnmath.md#xor) :white_small_square: [xor](geono-gnmat---gnmath.md#xor)
 - [nd](geono-nd.md#nd) :white_small_square: [boolean_math](geono-nd.md#boolean_math)
-- [band](geono-gnmat---gnmath.md#band)
-- [bnot](geono-gnmat---gnmath.md#bnot)
-- [bor](geono-gnmat---gnmath.md#bor)
-- [bsubtract](geono-gnmat---gnmath.md#bsubtract)
-- [equal](geono-gnmat---gnmath.md#equal)
-- [imply](geono-gnmat---gnmath.md#imply)
-- [nand](geono-gnmat---gnmath.md#nand)
-- [nimply](geono-gnmat---gnmath.md#nimply)
-- [nor](geono-gnmat---gnmath.md#nor)
-- [not_equal](geono-gnmat---gnmath.md#not_equal)
-- [xnor](geono-gnmat---gnmath.md#xnor)
-- [xor](geono-gnmat---gnmath.md#xor)
+- [band](geono-gnmat---gnmath.md#band) :white_small_square: [band](geono-gnmat---gnmath.md#band)
+- [bnot](geono-gnmat---gnmath.md#bnot) :white_small_square: [bnot](geono-gnmat---gnmath.md#bnot)
+- [bor](geono-gnmat---gnmath.md#bor) :white_small_square: [bor](geono-gnmat---gnmath.md#bor)
+- [bsubtract](geono-gnmat---gnmath.md#bsubtract) :white_small_square: [bsubtract](geono-gnmat---gnmath.md#bsubtract)
+- [equal](geono-gnmat---gnmath.md#equal) :white_small_square: [equal](geono-gnmat---gnmath.md#equal)
+- [imply](geono-gnmat---gnmath.md#imply) :white_small_square: [imply](geono-gnmat---gnmath.md#imply)
+- [nand](geono-gnmat---gnmath.md#nand) :white_small_square: [nand](geono-gnmat---gnmath.md#nand)
+- [nimply](geono-gnmat---gnmath.md#nimply) :white_small_square: [nimply](geono-gnmat---gnmath.md#nimply)
+- [nor](geono-gnmat---gnmath.md#nor) :white_small_square: [nor](geono-gnmat---gnmath.md#nor)
+- [not_equal](geono-gnmat---gnmath.md#not_equal) :white_small_square: [not_equal](geono-gnmat---gnmath.md#not_equal)
+- [xnor](geono-gnmat---gnmath.md#xnor) :white_small_square: [xnor](geono-gnmat---gnmath.md#xnor)
+- [xor](geono-gnmat---gnmath.md#xor) :white_small_square: [xor](geono-gnmat---gnmath.md#xor)
 - [nd](geono-nd.md#nd) :white_small_square: [boolean_math](geono-nd.md#boolean_math)
 
 #### Bounding Box
@@ -178,8 +152,6 @@ You will find here how nodes are implemented
 - [Texture](geono-texture.md#texture) :white_small_square: [Brick](geono-texture.md#brick)
 - [nd](geono-nd.md#nd) :white_small_square: [brick_texture](geono-nd.md#brick_texture)
 - [Texture](geono-texture.md#texture) :white_small_square: [Brick](geono-texture.md#brick)
-- [StaticClass](macro-shade1-stati-staticclass.md#staticclass) :white_small_square: [brick_texture](macro-shade1-stati-staticclass.md#brick_texture)
-- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'brick_texture' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Bézier Segment
 
@@ -203,8 +175,6 @@ You will find here how nodes are implemented
 - [Texture](geono-texture.md#texture) :white_small_square: [Checker](geono-texture.md#checker)
 - [nd](geono-nd.md#nd) :white_small_square: [checker_texture](geono-nd.md#checker_texture)
 - [Texture](geono-texture.md#texture) :white_small_square: [Checker](geono-texture.md#checker)
-- [StaticClass](macro-shade1-stati-staticclass.md#staticclass) :white_small_square: [checker_texture](macro-shade1-stati-staticclass.md#checker_texture)
-- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'checker_texture' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Clamp
 
@@ -213,8 +183,6 @@ You will find here how nodes are implemented
 - [Integer](geono-integer.md#integer) :white_small_square: [clamp](geono-integer.md#clamp)
 - [nd](geono-nd.md#nd) :white_small_square: [clamp](geono-nd.md#clamp)
 - [nd](geono-nd.md#nd) :white_small_square: [clamp](geono-nd.md#clamp)
-- [StaticClass](macro-shade1-stati-staticclass.md#staticclass) :white_small_square: [clamp](macro-shade1-stati-staticclass.md#clamp)
-- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'clamp' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Collection Info
 
@@ -241,8 +209,6 @@ You will find here how nodes are implemented
 - [nd](geono-nd.md#nd) :white_small_square: [color_ramp](geono-nd.md#color_ramp)
 - [Color](geono-color.md#color) :white_small_square: [ColorRamp](geono-color.md#colorramp)
 - [nd](geono-nd.md#nd) :white_small_square: [color_ramp](geono-nd.md#color_ramp)
-- [StaticClass](macro-shade1-stati-staticclass.md#staticclass) :white_small_square: [color_ramp](macro-shade1-stati-staticclass.md#color_ramp)
-- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'color_ramp' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Combine Color
 
@@ -258,8 +224,6 @@ You will find here how nodes are implemented
 - [Color](geono-color.md#color) :white_small_square: [CombineHSV](geono-color.md#combinehsv)
 - [Color](geono-color.md#color) :white_small_square: [CombineRGB](geono-color.md#combinergb)
 - [nd](geono-nd.md#nd) :white_small_square: [combine_color](geono-nd.md#combine_color)
-- [StaticClass](macro-shade1-stati-staticclass.md#staticclass) :white_small_square: [combine_color](macro-shade1-stati-staticclass.md#combine_color)
-- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'combine_color' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Combine Matrix
 
@@ -287,8 +251,6 @@ You will find here how nodes are implemented
 - [nd](geono-nd.md#nd) :white_small_square: [combine_xyz](geono-nd.md#combine_xyz)
 - [Rotation](geono-rotation.md#rotation) :white_small_square: [Rotation](geono-rotation.md#rotation)
 - [Vector](geono-vector.md#vector) :white_small_square: [Vector](geono-vector.md#vector)
-- [StaticClass](macro-shade1-stati-staticclass.md#staticclass) :white_small_square: [combine_xyz](macro-shade1-stati-staticclass.md#combine_xyz)
-- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'combine_xyz' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Compare
 
@@ -303,16 +265,10 @@ You will find here how nodes are implemented
 - [Float](geono-float.md#float) :white_small_square: [less_than](geono-float.md#less_than)
 - [Float](geono-float.md#float) :white_small_square: [not_equal](geono-float.md#not_equal)
 - [Integer](geono-integer.md#integer) :white_small_square: [equal](geono-integer.md#equal)
-- [Integer](geono-integer.md#integer) :white_small_square: [equal](geono-integer.md#equal)
-- [Integer](geono-integer.md#integer) :white_small_square: [greater_equal](geono-integer.md#greater_equal)
 - [Integer](geono-integer.md#integer) :white_small_square: [greater_equal](geono-integer.md#greater_equal)
 - [Integer](geono-integer.md#integer) :white_small_square: [greater_than](geono-integer.md#greater_than)
-- [Integer](geono-integer.md#integer) :white_small_square: [greater_than](geono-integer.md#greater_than)
-- [Integer](geono-integer.md#integer) :white_small_square: [less_equal](geono-integer.md#less_equal)
 - [Integer](geono-integer.md#integer) :white_small_square: [less_equal](geono-integer.md#less_equal)
 - [Integer](geono-integer.md#integer) :white_small_square: [less_than](geono-integer.md#less_than)
-- [Integer](geono-integer.md#integer) :white_small_square: [less_than](geono-integer.md#less_than)
-- [Integer](geono-integer.md#integer) :white_small_square: [not_equal](geono-integer.md#not_equal)
 - [Integer](geono-integer.md#integer) :white_small_square: [not_equal](geono-integer.md#not_equal)
 - [String](geono-string.md#string) :white_small_square: [equal](geono-string.md#equal)
 - [String](geono-string.md#string) :white_small_square: [not_equal](geono-string.md#not_equal)
@@ -328,16 +284,10 @@ You will find here how nodes are implemented
 - [Float](geono-float.md#float) :white_small_square: [less_than](geono-float.md#less_than)
 - [Float](geono-float.md#float) :white_small_square: [not_equal](geono-float.md#not_equal)
 - [Integer](geono-integer.md#integer) :white_small_square: [equal](geono-integer.md#equal)
-- [Integer](geono-integer.md#integer) :white_small_square: [equal](geono-integer.md#equal)
-- [Integer](geono-integer.md#integer) :white_small_square: [greater_equal](geono-integer.md#greater_equal)
 - [Integer](geono-integer.md#integer) :white_small_square: [greater_equal](geono-integer.md#greater_equal)
 - [Integer](geono-integer.md#integer) :white_small_square: [greater_than](geono-integer.md#greater_than)
-- [Integer](geono-integer.md#integer) :white_small_square: [greater_than](geono-integer.md#greater_than)
-- [Integer](geono-integer.md#integer) :white_small_square: [less_equal](geono-integer.md#less_equal)
 - [Integer](geono-integer.md#integer) :white_small_square: [less_equal](geono-integer.md#less_equal)
 - [Integer](geono-integer.md#integer) :white_small_square: [less_than](geono-integer.md#less_than)
-- [Integer](geono-integer.md#integer) :white_small_square: [less_than](geono-integer.md#less_than)
-- [Integer](geono-integer.md#integer) :white_small_square: [not_equal](geono-integer.md#not_equal)
 - [Integer](geono-integer.md#integer) :white_small_square: [not_equal](geono-integer.md#not_equal)
 - [String](geono-string.md#string) :white_small_square: [equal](geono-string.md#equal)
 - [String](geono-string.md#string) :white_small_square: [not_equal](geono-string.md#not_equal)
@@ -352,26 +302,26 @@ You will find here how nodes are implemented
 
 ## Content
 
-- **A** : [Accumulate Field](cross_reference.md#accumulate-field) :black_small_square: [Active Element](cross_reference.md#active-element) :black_small_square: [Align Euler to Vector](cross_reference.md#align-euler-to-vector) :black_small_square: [Align Rotation to Vector](cross_reference.md#align-rotation-to-vector) :black_small_square: [Arc](cross_reference.md#arc) :black_small_square: [Attribute](cross_reference.md#attribute) :black_small_square: [Attribute Statistic](cross_reference.md#attribute-statistic) :black_small_square: [Axes to Rotation](cross_reference.md#axes-to-rotation) :black_small_square: [Axis Angle to Rotation](cross_reference.md#axis-angle-to-rotation)
+- **A** : [Accumulate Field](cross_reference.md#accumulate-field) :black_small_square: [Active Element](cross_reference.md#active-element) :black_small_square: [Align Euler to Vector](cross_reference.md#align-euler-to-vector) :black_small_square: [Align Rotation to Vector](cross_reference.md#align-rotation-to-vector) :black_small_square: [Arc](cross_reference.md#arc) :black_small_square: [Attribute Statistic](cross_reference.md#attribute-statistic) :black_small_square: [Axes to Rotation](cross_reference.md#axes-to-rotation) :black_small_square: [Axis Angle to Rotation](cross_reference.md#axis-angle-to-rotation)
 - **B** : [Bake](cross_reference.md#bake) :black_small_square: [Blackbody](cross_reference.md#blackbody) :black_small_square: [Blur Attribute](cross_reference.md#blur-attribute) :black_small_square: [Boolean](cross_reference.md#boolean) :black_small_square: [Boolean Math](cross_reference.md#boolean-math) :black_small_square: [Bounding Box](cross_reference.md#bounding-box) :black_small_square: [Brick Texture](cross_reference.md#brick-texture) :black_small_square: [Bézier Segment](cross_reference.md#bézier-segment)
 - **C** : [Capture Attribute](cross_reference.md#capture-attribute) :black_small_square: [Checker Texture](cross_reference.md#checker-texture) :black_small_square: [Clamp](cross_reference.md#clamp) :black_small_square: [Collection Info](cross_reference.md#collection-info) :black_small_square: [Color](cross_reference.md#color) :black_small_square: [Color Ramp](cross_reference.md#color-ramp) :black_small_square: [Combine Color](cross_reference.md#combine-color) :black_small_square: [Combine Matrix](cross_reference.md#combine-matrix) :black_small_square: [Combine Transform](cross_reference.md#combine-transform) :black_small_square: [Combine XYZ](cross_reference.md#combine-xyz) :black_small_square: [Compare](cross_reference.md#compare) :black_small_square: [Cone](cross_reference.md#cone) :black_small_square: [Convex Hull](cross_reference.md#convex-hull) :black_small_square: [Corners of Edge](cross_reference.md#corners-of-edge) :black_small_square: [Corners of Face](cross_reference.md#corners-of-face) :black_small_square: [Corners of Vertex](cross_reference.md#corners-of-vertex) :black_small_square: [Cube](cross_reference.md#cube) :black_small_square: [Curve Circle](cross_reference.md#curve-circle) :black_small_square: [Curve Handle Positions](cross_reference.md#curve-handle-positions) :black_small_square: [Curve Length](cross_reference.md#curve-length) :black_small_square: [Curve Line](cross_reference.md#curve-line) :black_small_square: [Curve of Point](cross_reference.md#curve-of-point) :black_small_square: [Curve Tilt](cross_reference.md#curve-tilt) :black_small_square: [Curve to Mesh](cross_reference.md#curve-to-mesh) :black_small_square: [Curve to Points](cross_reference.md#curve-to-points) :black_small_square: [Cylinder](cross_reference.md#cylinder)
-- **D** : [Deform Curves on Surface](cross_reference.md#deform-curves-on-surface) :black_small_square: [Delete Geometry](cross_reference.md#delete-geometry) :black_small_square: [Diffuse BSDF](cross_reference.md#diffuse-bsdf) :black_small_square: [Distribute Points in Grid](cross_reference.md#distribute-points-in-grid) :black_small_square: [Distribute Points in Volume](cross_reference.md#distribute-points-in-volume) :black_small_square: [Distribute Points on Faces](cross_reference.md#distribute-points-on-faces) :black_small_square: [Domain Size](cross_reference.md#domain-size) :black_small_square: [Dual Mesh](cross_reference.md#dual-mesh) :black_small_square: [Duplicate Elements](cross_reference.md#duplicate-elements)
-- **E** : [Edge Angle](cross_reference.md#edge-angle) :black_small_square: [Edge Neighbors](cross_reference.md#edge-neighbors) :black_small_square: [Edge Paths to Curves](cross_reference.md#edge-paths-to-curves) :black_small_square: [Edge Paths to Selection](cross_reference.md#edge-paths-to-selection) :black_small_square: [Edge Vertices](cross_reference.md#edge-vertices) :black_small_square: [Edges of Corner](cross_reference.md#edges-of-corner) :black_small_square: [Edges of Vertex](cross_reference.md#edges-of-vertex) :black_small_square: [Edges to Face Groups](cross_reference.md#edges-to-face-groups) :black_small_square: [Emission](cross_reference.md#emission) :black_small_square: [Endpoint Selection](cross_reference.md#endpoint-selection) :black_small_square: [Euler to Rotation](cross_reference.md#euler-to-rotation) :black_small_square: [Evaluate at Index](cross_reference.md#evaluate-at-index) :black_small_square: [Evaluate on Domain](cross_reference.md#evaluate-on-domain) :black_small_square: [Extrude Mesh](cross_reference.md#extrude-mesh)
+- **D** : [Deform Curves on Surface](cross_reference.md#deform-curves-on-surface) :black_small_square: [Delete Geometry](cross_reference.md#delete-geometry) :black_small_square: [Distribute Points in Grid](cross_reference.md#distribute-points-in-grid) :black_small_square: [Distribute Points in Volume](cross_reference.md#distribute-points-in-volume) :black_small_square: [Distribute Points on Faces](cross_reference.md#distribute-points-on-faces) :black_small_square: [Domain Size](cross_reference.md#domain-size) :black_small_square: [Dual Mesh](cross_reference.md#dual-mesh) :black_small_square: [Duplicate Elements](cross_reference.md#duplicate-elements)
+- **E** : [Edge Angle](cross_reference.md#edge-angle) :black_small_square: [Edge Neighbors](cross_reference.md#edge-neighbors) :black_small_square: [Edge Paths to Curves](cross_reference.md#edge-paths-to-curves) :black_small_square: [Edge Paths to Selection](cross_reference.md#edge-paths-to-selection) :black_small_square: [Edge Vertices](cross_reference.md#edge-vertices) :black_small_square: [Edges of Corner](cross_reference.md#edges-of-corner) :black_small_square: [Edges of Vertex](cross_reference.md#edges-of-vertex) :black_small_square: [Edges to Face Groups](cross_reference.md#edges-to-face-groups) :black_small_square: [Endpoint Selection](cross_reference.md#endpoint-selection) :black_small_square: [Euler to Rotation](cross_reference.md#euler-to-rotation) :black_small_square: [Evaluate at Index](cross_reference.md#evaluate-at-index) :black_small_square: [Evaluate on Domain](cross_reference.md#evaluate-on-domain) :black_small_square: [Extrude Mesh](cross_reference.md#extrude-mesh)
 - **F** : [Face Area](cross_reference.md#face-area) :black_small_square: [Face Group Boundaries](cross_reference.md#face-group-boundaries) :black_small_square: [Face Neighbors](cross_reference.md#face-neighbors) :black_small_square: [Face of Corner](cross_reference.md#face-of-corner) :black_small_square: [Fill Curve](cross_reference.md#fill-curve) :black_small_square: [Fillet Curve](cross_reference.md#fillet-curve) :black_small_square: [Flip Faces](cross_reference.md#flip-faces) :black_small_square: [Float Curve](cross_reference.md#float-curve) :black_small_square: [Float to Integer](cross_reference.md#float-to-integer) :black_small_square: [Frame](cross_reference.md#frame)
-- **G** : [Geometry Proximity](cross_reference.md#geometry-proximity) :black_small_square: [Geometry to Instance](cross_reference.md#geometry-to-instance) :black_small_square: [Get Named Grid](cross_reference.md#get-named-grid) :black_small_square: [Glass BSDF](cross_reference.md#glass-bsdf) :black_small_square: [Glossy BSDF](cross_reference.md#glossy-bsdf) :black_small_square: [Gradient Texture](cross_reference.md#gradient-texture) :black_small_square: [Grid](cross_reference.md#grid) :black_small_square: [Grid to Mesh](cross_reference.md#grid-to-mesh) :black_small_square: [Group](cross_reference.md#group) :black_small_square: [Group Input](cross_reference.md#group-input) :black_small_square: [Group Output](cross_reference.md#group-output)
-- **H** : [Handle Positions](cross_reference.md#handle-positions) :black_small_square: [Handle Type Selection](cross_reference.md#handle-type-selection) :black_small_square: [Holdout](cross_reference.md#holdout)
+- **G** : [Geometry Proximity](cross_reference.md#geometry-proximity) :black_small_square: [Geometry to Instance](cross_reference.md#geometry-to-instance) :black_small_square: [Get Named Grid](cross_reference.md#get-named-grid) :black_small_square: [Gradient Texture](cross_reference.md#gradient-texture) :black_small_square: [Grid](cross_reference.md#grid) :black_small_square: [Grid to Mesh](cross_reference.md#grid-to-mesh) :black_small_square: [Group](cross_reference.md#group) :black_small_square: [Group Input](cross_reference.md#group-input) :black_small_square: [Group Output](cross_reference.md#group-output)
+- **H** : [Handle Positions](cross_reference.md#handle-positions) :black_small_square: [Handle Type Selection](cross_reference.md#handle-type-selection)
 - **I** : [Ico Sphere](cross_reference.md#ico-sphere) :black_small_square: [ID](cross_reference.md#id) :black_small_square: [Image](cross_reference.md#image) :black_small_square: [Image Info](cross_reference.md#image-info) :black_small_square: [Image Texture](cross_reference.md#image-texture) :black_small_square: [Index of Nearest](cross_reference.md#index-of-nearest) :black_small_square: [Index Switch](cross_reference.md#index-switch) :black_small_square: [Instance on Points](cross_reference.md#instance-on-points) :black_small_square: [Instance Rotation](cross_reference.md#instance-rotation) :black_small_square: [Instance Scale](cross_reference.md#instance-scale) :black_small_square: [Instance Transform](cross_reference.md#instance-transform) :black_small_square: [Instances to Points](cross_reference.md#instances-to-points) :black_small_square: [Integer](cross_reference.md#integer) :black_small_square: [Interpolate Curves](cross_reference.md#interpolate-curves) :black_small_square: [Invert Matrix](cross_reference.md#invert-matrix) :black_small_square: [Invert Rotation](cross_reference.md#invert-rotation) :black_small_square: [Is Edge Smooth](cross_reference.md#is-edge-smooth) :black_small_square: [Is Face Planar](cross_reference.md#is-face-planar) :black_small_square: [Is Face Smooth](cross_reference.md#is-face-smooth) :black_small_square: [Is Spline Cyclic](cross_reference.md#is-spline-cyclic)
 - **J** : [Join Geometry](cross_reference.md#join-geometry) :black_small_square: [Join Strings](cross_reference.md#join-strings)
-- **M** : [Magic Texture](cross_reference.md#magic-texture) :black_small_square: [Map Range](cross_reference.md#map-range) :black_small_square: [Material](cross_reference.md#material) :black_small_square: [Material Index](cross_reference.md#material-index) :black_small_square: [Material Selection](cross_reference.md#material-selection) :black_small_square: [Math](cross_reference.md#math) :black_small_square: [Menu Switch](cross_reference.md#menu-switch) :black_small_square: [Merge by Distance](cross_reference.md#merge-by-distance) :black_small_square: [Mesh Boolean](cross_reference.md#mesh-boolean) :black_small_square: [Mesh Circle](cross_reference.md#mesh-circle) :black_small_square: [Mesh Island](cross_reference.md#mesh-island) :black_small_square: [Mesh Line](cross_reference.md#mesh-line) :black_small_square: [Mesh to Curve](cross_reference.md#mesh-to-curve) :black_small_square: [Mesh to Density Grid](cross_reference.md#mesh-to-density-grid) :black_small_square: [Mesh to Points](cross_reference.md#mesh-to-points) :black_small_square: [Mesh to SDF Grid](cross_reference.md#mesh-to-sdf-grid) :black_small_square: [Mesh to Volume](cross_reference.md#mesh-to-volume) :black_small_square: [Mix](cross_reference.md#mix) :black_small_square: [Multiply Matrices](cross_reference.md#multiply-matrices)
+- **M** : [Magic Texture](cross_reference.md#magic-texture) :black_small_square: [Map Range](cross_reference.md#map-range) :black_small_square: [Material](cross_reference.md#material) :black_small_square: [Material Index](cross_reference.md#material-index) :black_small_square: [Material Selection](cross_reference.md#material-selection) :black_small_square: [Math](cross_reference.md#math) :black_small_square: [Math, Float to Integer](cross_reference.md#math,-float-to-integer) :black_small_square: [Menu Switch](cross_reference.md#menu-switch) :black_small_square: [Merge by Distance](cross_reference.md#merge-by-distance) :black_small_square: [Mesh Boolean](cross_reference.md#mesh-boolean) :black_small_square: [Mesh Circle](cross_reference.md#mesh-circle) :black_small_square: [Mesh Island](cross_reference.md#mesh-island) :black_small_square: [Mesh Line](cross_reference.md#mesh-line) :black_small_square: [Mesh to Curve](cross_reference.md#mesh-to-curve) :black_small_square: [Mesh to Density Grid](cross_reference.md#mesh-to-density-grid) :black_small_square: [Mesh to Points](cross_reference.md#mesh-to-points) :black_small_square: [Mesh to SDF Grid](cross_reference.md#mesh-to-sdf-grid) :black_small_square: [Mesh to Volume](cross_reference.md#mesh-to-volume) :black_small_square: [Mix](cross_reference.md#mix) :black_small_square: [Multiply Matrices](cross_reference.md#multiply-matrices)
 - **N** : [Named Attribute](cross_reference.md#named-attribute) :black_small_square: [Named Layer Selection](cross_reference.md#named-layer-selection) :black_small_square: [Noise Texture](cross_reference.md#noise-texture)
 - **O** : [Object Info](cross_reference.md#object-info) :black_small_square: [Offset Corner in Face](cross_reference.md#offset-corner-in-face) :black_small_square: [Offset Point in Curve](cross_reference.md#offset-point-in-curve)
-- **P** : [Pack UV Islands](cross_reference.md#pack-uv-islands) :black_small_square: [Points](cross_reference.md#points) :black_small_square: [Points of Curve](cross_reference.md#points-of-curve) :black_small_square: [Points to Curves](cross_reference.md#points-to-curves) :black_small_square: [Points to SDF Grid](cross_reference.md#points-to-sdf-grid) :black_small_square: [Points to Vertices](cross_reference.md#points-to-vertices) :black_small_square: [Points to Volume](cross_reference.md#points-to-volume) :black_small_square: [Position](cross_reference.md#position) :black_small_square: [Principled BSDF](cross_reference.md#principled-bsdf) :black_small_square: [Principled Volume](cross_reference.md#principled-volume) :black_small_square: [Project Point](cross_reference.md#project-point)
+- **P** : [Pack UV Islands](cross_reference.md#pack-uv-islands) :black_small_square: [Points](cross_reference.md#points) :black_small_square: [Points of Curve](cross_reference.md#points-of-curve) :black_small_square: [Points to Curves](cross_reference.md#points-to-curves) :black_small_square: [Points to SDF Grid](cross_reference.md#points-to-sdf-grid) :black_small_square: [Points to Vertices](cross_reference.md#points-to-vertices) :black_small_square: [Points to Volume](cross_reference.md#points-to-volume) :black_small_square: [Position](cross_reference.md#position) :black_small_square: [Project Point](cross_reference.md#project-point)
 - **Q** : [Quadratic Bézier](cross_reference.md#quadratic-bézier) :black_small_square: [Quadrilateral](cross_reference.md#quadrilateral) :black_small_square: [Quaternion to Rotation](cross_reference.md#quaternion-to-rotation)
-- **R** : [Radius](cross_reference.md#radius) :black_small_square: [Random Value](cross_reference.md#random-value) :black_small_square: [Raycast](cross_reference.md#raycast) :black_small_square: [Realize Instances](cross_reference.md#realize-instances) :black_small_square: [Refraction BSDF](cross_reference.md#refraction-bsdf) :black_small_square: [Remove Named Attribute](cross_reference.md#remove-named-attribute) :black_small_square: [Repeat Input](cross_reference.md#repeat-input) :black_small_square: [Repeat Output](cross_reference.md#repeat-output) :black_small_square: [Replace Material](cross_reference.md#replace-material) :black_small_square: [Replace String](cross_reference.md#replace-string) :black_small_square: [Reroute](cross_reference.md#reroute) :black_small_square: [Resample Curve](cross_reference.md#resample-curve) :black_small_square: [Reverse Curve](cross_reference.md#reverse-curve) :black_small_square: [RGB](cross_reference.md#rgb) :black_small_square: [RGB Curves](cross_reference.md#rgb-curves) :black_small_square: [Rotate Euler](cross_reference.md#rotate-euler) :black_small_square: [Rotate Instances](cross_reference.md#rotate-instances) :black_small_square: [Rotate Rotation](cross_reference.md#rotate-rotation) :black_small_square: [Rotate Vector](cross_reference.md#rotate-vector) :black_small_square: [Rotation](cross_reference.md#rotation) :black_small_square: [Rotation to Axis Angle](cross_reference.md#rotation-to-axis-angle) :black_small_square: [Rotation to Euler](cross_reference.md#rotation-to-euler) :black_small_square: [Rotation to Quaternion](cross_reference.md#rotation-to-quaternion)
-- **S** : [Sample Curve](cross_reference.md#sample-curve) :black_small_square: [Sample Grid](cross_reference.md#sample-grid) :black_small_square: [Sample Grid Index](cross_reference.md#sample-grid-index) :black_small_square: [Sample Index](cross_reference.md#sample-index) :black_small_square: [Sample Nearest](cross_reference.md#sample-nearest) :black_small_square: [Sample Nearest Surface](cross_reference.md#sample-nearest-surface) :black_small_square: [Sample UV Surface](cross_reference.md#sample-uv-surface) :black_small_square: [Scale Elements](cross_reference.md#scale-elements) :black_small_square: [Scale Instances](cross_reference.md#scale-instances) :black_small_square: [SDF Grid Boolean](cross_reference.md#sdf-grid-boolean) :black_small_square: [Separate Color](cross_reference.md#separate-color) :black_small_square: [Separate Components](cross_reference.md#separate-components) :black_small_square: [Separate Geometry](cross_reference.md#separate-geometry) :black_small_square: [Separate Matrix](cross_reference.md#separate-matrix) :black_small_square: [Separate Transform](cross_reference.md#separate-transform) :black_small_square: [Separate XYZ](cross_reference.md#separate-xyz) :black_small_square: [Set Curve Normal](cross_reference.md#set-curve-normal) :black_small_square: [Set Curve Radius](cross_reference.md#set-curve-radius) :black_small_square: [Set Curve Tilt](cross_reference.md#set-curve-tilt) :black_small_square: [Set Face Set](cross_reference.md#set-face-set) :black_small_square: [Set Handle Positions](cross_reference.md#set-handle-positions) :black_small_square: [Set Handle Type](cross_reference.md#set-handle-type) :black_small_square: [Set ID](cross_reference.md#set-id) :black_small_square: [Set Instance Transform](cross_reference.md#set-instance-transform) :black_small_square: [Set Material](cross_reference.md#set-material) :black_small_square: [Set Material Index](cross_reference.md#set-material-index) :black_small_square: [Set Point Radius](cross_reference.md#set-point-radius) :black_small_square: [Set Position](cross_reference.md#set-position) :black_small_square: [Set Selection](cross_reference.md#set-selection) :black_small_square: [Set Shade Smooth](cross_reference.md#set-shade-smooth) :black_small_square: [Set Spline Cyclic](cross_reference.md#set-spline-cyclic) :black_small_square: [Set Spline Resolution](cross_reference.md#set-spline-resolution) :black_small_square: [Set Spline Type](cross_reference.md#set-spline-type) :black_small_square: [Shortest Edge Paths](cross_reference.md#shortest-edge-paths) :black_small_square: [Simulation Input](cross_reference.md#simulation-input) :black_small_square: [Simulation Output](cross_reference.md#simulation-output) :black_small_square: [Slice String](cross_reference.md#slice-string) :black_small_square: [Sort Elements](cross_reference.md#sort-elements) :black_small_square: [Specular BSDF](cross_reference.md#specular-bsdf) :black_small_square: [Spiral](cross_reference.md#spiral) :black_small_square: [Spline Parameter](cross_reference.md#spline-parameter) :black_small_square: [Spline Resolution](cross_reference.md#spline-resolution) :black_small_square: [Split Edges](cross_reference.md#split-edges) :black_small_square: [Split to Instances](cross_reference.md#split-to-instances) :black_small_square: [Star](cross_reference.md#star) :black_small_square: [Store Named Attribute](cross_reference.md#store-named-attribute) :black_small_square: [Store Named Grid](cross_reference.md#store-named-grid) :black_small_square: [String](cross_reference.md#string) :black_small_square: [String Length](cross_reference.md#string-length) :black_small_square: [String to Curves](cross_reference.md#string-to-curves) :black_small_square: [Subdivide Curve](cross_reference.md#subdivide-curve) :black_small_square: [Subdivide Mesh](cross_reference.md#subdivide-mesh) :black_small_square: [Subdivision Surface](cross_reference.md#subdivision-surface) :black_small_square: [Subsurface Scattering](cross_reference.md#subsurface-scattering) :black_small_square: [Switch](cross_reference.md#switch)
-- **T** : [Transform Direction](cross_reference.md#transform-direction) :black_small_square: [Transform Geometry](cross_reference.md#transform-geometry) :black_small_square: [Transform Point](cross_reference.md#transform-point) :black_small_square: [Translate Instances](cross_reference.md#translate-instances) :black_small_square: [Translucent BSDF](cross_reference.md#translucent-bsdf) :black_small_square: [Transparent BSDF](cross_reference.md#transparent-bsdf) :black_small_square: [Transpose Matrix](cross_reference.md#transpose-matrix) :black_small_square: [Triangulate](cross_reference.md#triangulate) :black_small_square: [Trim Curve](cross_reference.md#trim-curve)
+- **R** : [Radius](cross_reference.md#radius) :black_small_square: [Random Value](cross_reference.md#random-value) :black_small_square: [Raycast](cross_reference.md#raycast) :black_small_square: [Realize Instances](cross_reference.md#realize-instances) :black_small_square: [Remove Named Attribute](cross_reference.md#remove-named-attribute) :black_small_square: [Repeat Input](cross_reference.md#repeat-input) :black_small_square: [Repeat Output](cross_reference.md#repeat-output) :black_small_square: [Replace Material](cross_reference.md#replace-material) :black_small_square: [Replace String](cross_reference.md#replace-string) :black_small_square: [Reroute](cross_reference.md#reroute) :black_small_square: [Resample Curve](cross_reference.md#resample-curve) :black_small_square: [Reverse Curve](cross_reference.md#reverse-curve) :black_small_square: [RGB](cross_reference.md#rgb) :black_small_square: [RGB Curves](cross_reference.md#rgb-curves) :black_small_square: [Rotate Euler](cross_reference.md#rotate-euler) :black_small_square: [Rotate Instances](cross_reference.md#rotate-instances) :black_small_square: [Rotate Rotation](cross_reference.md#rotate-rotation) :black_small_square: [Rotate Vector](cross_reference.md#rotate-vector) :black_small_square: [Rotation](cross_reference.md#rotation) :black_small_square: [Rotation to Axis Angle](cross_reference.md#rotation-to-axis-angle) :black_small_square: [Rotation to Euler](cross_reference.md#rotation-to-euler) :black_small_square: [Rotation to Quaternion](cross_reference.md#rotation-to-quaternion)
+- **S** : [Sample Curve](cross_reference.md#sample-curve) :black_small_square: [Sample Grid](cross_reference.md#sample-grid) :black_small_square: [Sample Grid Index](cross_reference.md#sample-grid-index) :black_small_square: [Sample Index](cross_reference.md#sample-index) :black_small_square: [Sample Nearest](cross_reference.md#sample-nearest) :black_small_square: [Sample Nearest Surface](cross_reference.md#sample-nearest-surface) :black_small_square: [Sample UV Surface](cross_reference.md#sample-uv-surface) :black_small_square: [Scale Elements](cross_reference.md#scale-elements) :black_small_square: [Scale Instances](cross_reference.md#scale-instances) :black_small_square: [SDF Grid Boolean](cross_reference.md#sdf-grid-boolean) :black_small_square: [Separate Color](cross_reference.md#separate-color) :black_small_square: [Separate Components](cross_reference.md#separate-components) :black_small_square: [Separate Geometry](cross_reference.md#separate-geometry) :black_small_square: [Separate Matrix](cross_reference.md#separate-matrix) :black_small_square: [Separate Transform](cross_reference.md#separate-transform) :black_small_square: [Separate XYZ](cross_reference.md#separate-xyz) :black_small_square: [Set Curve Normal](cross_reference.md#set-curve-normal) :black_small_square: [Set Curve Radius](cross_reference.md#set-curve-radius) :black_small_square: [Set Curve Tilt](cross_reference.md#set-curve-tilt) :black_small_square: [Set Face Set](cross_reference.md#set-face-set) :black_small_square: [Set Handle Positions](cross_reference.md#set-handle-positions) :black_small_square: [Set Handle Type](cross_reference.md#set-handle-type) :black_small_square: [Set ID](cross_reference.md#set-id) :black_small_square: [Set Instance Transform](cross_reference.md#set-instance-transform) :black_small_square: [Set Material](cross_reference.md#set-material) :black_small_square: [Set Material Index](cross_reference.md#set-material-index) :black_small_square: [Set Point Radius](cross_reference.md#set-point-radius) :black_small_square: [Set Position](cross_reference.md#set-position) :black_small_square: [Set Selection](cross_reference.md#set-selection) :black_small_square: [Set Shade Smooth](cross_reference.md#set-shade-smooth) :black_small_square: [Set Spline Cyclic](cross_reference.md#set-spline-cyclic) :black_small_square: [Set Spline Resolution](cross_reference.md#set-spline-resolution) :black_small_square: [Set Spline Type](cross_reference.md#set-spline-type) :black_small_square: [Shortest Edge Paths](cross_reference.md#shortest-edge-paths) :black_small_square: [Simulation Input](cross_reference.md#simulation-input) :black_small_square: [Simulation Output](cross_reference.md#simulation-output) :black_small_square: [Slice String](cross_reference.md#slice-string) :black_small_square: [Sort Elements](cross_reference.md#sort-elements) :black_small_square: [Spiral](cross_reference.md#spiral) :black_small_square: [Spline Parameter](cross_reference.md#spline-parameter) :black_small_square: [Spline Resolution](cross_reference.md#spline-resolution) :black_small_square: [Split Edges](cross_reference.md#split-edges) :black_small_square: [Split to Instances](cross_reference.md#split-to-instances) :black_small_square: [Star](cross_reference.md#star) :black_small_square: [Store Named Attribute](cross_reference.md#store-named-attribute) :black_small_square: [Store Named Grid](cross_reference.md#store-named-grid) :black_small_square: [String](cross_reference.md#string) :black_small_square: [String Length](cross_reference.md#string-length) :black_small_square: [String to Curves](cross_reference.md#string-to-curves) :black_small_square: [Subdivide Curve](cross_reference.md#subdivide-curve) :black_small_square: [Subdivide Mesh](cross_reference.md#subdivide-mesh) :black_small_square: [Subdivision Surface](cross_reference.md#subdivision-surface) :black_small_square: [Switch](cross_reference.md#switch)
+- **T** : [Transform Direction](cross_reference.md#transform-direction) :black_small_square: [Transform Geometry](cross_reference.md#transform-geometry) :black_small_square: [Transform Point](cross_reference.md#transform-point) :black_small_square: [Translate Instances](cross_reference.md#translate-instances) :black_small_square: [Transpose Matrix](cross_reference.md#transpose-matrix) :black_small_square: [Triangulate](cross_reference.md#triangulate) :black_small_square: [Trim Curve](cross_reference.md#trim-curve)
 - **U** : [UV Sphere](cross_reference.md#uv-sphere) :black_small_square: [UV Unwrap](cross_reference.md#uv-unwrap)
-- **V** : [Value](cross_reference.md#value) :black_small_square: [Value to String](cross_reference.md#value-to-string) :black_small_square: [Vector](cross_reference.md#vector) :black_small_square: [Vector Curves](cross_reference.md#vector-curves) :black_small_square: [Vector Math](cross_reference.md#vector-math) :black_small_square: [Vector Rotate](cross_reference.md#vector-rotate) :black_small_square: [Vertex Neighbors](cross_reference.md#vertex-neighbors) :black_small_square: [Vertex of Corner](cross_reference.md#vertex-of-corner) :black_small_square: [Viewer](cross_reference.md#viewer) :black_small_square: [Volume Absorption](cross_reference.md#volume-absorption) :black_small_square: [Volume Cube](cross_reference.md#volume-cube) :black_small_square: [Volume Scatter](cross_reference.md#volume-scatter) :black_small_square: [Volume to Mesh](cross_reference.md#volume-to-mesh) :black_small_square: [Voronoi Texture](cross_reference.md#voronoi-texture)
+- **V** : [Value](cross_reference.md#value) :black_small_square: [Value to String](cross_reference.md#value-to-string) :black_small_square: [Vector](cross_reference.md#vector) :black_small_square: [Vector Curves](cross_reference.md#vector-curves) :black_small_square: [Vector Math](cross_reference.md#vector-math) :black_small_square: [Vector Rotate](cross_reference.md#vector-rotate) :black_small_square: [Vertex Neighbors](cross_reference.md#vertex-neighbors) :black_small_square: [Vertex of Corner](cross_reference.md#vertex-of-corner) :black_small_square: [Viewer](cross_reference.md#viewer) :black_small_square: [Volume Cube](cross_reference.md#volume-cube) :black_small_square: [Volume to Mesh](cross_reference.md#volume-to-mesh) :black_small_square: [Voronoi Texture](cross_reference.md#voronoi-texture)
 - **W** : [Wave Texture](cross_reference.md#wave-texture) :black_small_square: [White Noise Texture](cross_reference.md#white-noise-texture)
 
 #### Convex Hull
@@ -495,13 +445,6 @@ You will find here how nodes are implemented
 - [Domain](geono-domain.md#domain) :white_small_square: [delete_faces](geono-domain.md#delete_faces)
 - [Domain](geono-domain.md#domain) :white_small_square: [delete_geometry](geono-domain.md#delete_geometry)
 - [nd](geono-nd.md#nd) :white_small_square: [delete_geometry](geono-nd.md#delete_geometry)
-
-#### Diffuse BSDF
-
-- [Shader](macro-shade1-shade-shader.md#shader) :white_small_square: [Diffuse](macro-shade1-shade-shader.md#diffuse)
-- [StaticClass](macro-shade1-stati-staticclass.md#staticclass) :white_small_square: [diffuse_bsdf](macro-shade1-stati-staticclass.md#diffuse_bsdf)
-- [Shader](macro-shade1-shade-shader.md#shader) :white_small_square: [Diffuse](macro-shade1-shade-shader.md#diffuse)
-- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'diffuse_bsdf' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Distribute Points in Grid
 
@@ -627,13 +570,6 @@ You will find here how nodes are implemented
 - [Edge](geono-edge.md#edge) :white_small_square: [to_face_groups](geono-edge.md#to_face_groups)
 - [nd](geono-nd.md#nd) :white_small_square: [edges_to_face_groups](geono-nd.md#edges_to_face_groups)
 
-#### Emission
-
-- [Shader](macro-shade1-shade-shader.md#shader) :white_small_square: [Emission](macro-shade1-shade-shader.md#emission)
-- [StaticClass](macro-shade1-stati-staticclass.md#staticclass) :white_small_square: [emission](macro-shade1-stati-staticclass.md#emission)
-- [Shader](macro-shade1-shade-shader.md#shader) :white_small_square: [Emission](macro-shade1-shade-shader.md#emission)
-- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'emission' in page 'snd'](macro-shade1-shade1-snd.md#snd)
-
 #### Endpoint Selection
 
 - [Curve](geono-curve.md#curve) :white_small_square: [endpoint_selection](geono-curve.md#endpoint_selection)
@@ -729,8 +665,6 @@ You will find here how nodes are implemented
 - [Integer](geono-integer.md#integer) :white_small_square: [curve](geono-integer.md#curve)
 - [nd](geono-nd.md#nd) :white_small_square: [float_curve](geono-nd.md#float_curve)
 - [nd](geono-nd.md#nd) :white_small_square: [float_curve](geono-nd.md#float_curve)
-- [StaticClass](macro-shade1-stati-staticclass.md#staticclass) :white_small_square: [float_curve](macro-shade1-stati-staticclass.md#float_curve)
-- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'float_curve' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Float to Integer
 
@@ -739,28 +673,18 @@ You will find here how nodes are implemented
 - [Float](geono-float.md#float) :white_small_square: [round](geono-float.md#round)
 - [Float](geono-float.md#float) :white_small_square: [to_integer](geono-float.md#to_integer)
 - [Float](geono-float.md#float) :white_small_square: [truncate](geono-float.md#truncate)
-- [ceil](geono-gnmat---gnmath.md#ceil)
-- [floor](geono-gnmat---gnmath.md#floor)
-- [round](geono-gnmat---gnmath.md#round)
-- [trunc](geono-gnmat---gnmath.md#trunc)
 - [nd](geono-nd.md#nd) :white_small_square: [float_to_integer](geono-nd.md#float_to_integer)
 - [Float](geono-float.md#float) :white_small_square: [ceiling](geono-float.md#ceiling)
 - [Float](geono-float.md#float) :white_small_square: [floor](geono-float.md#floor)
 - [Float](geono-float.md#float) :white_small_square: [round](geono-float.md#round)
 - [Float](geono-float.md#float) :white_small_square: [to_integer](geono-float.md#to_integer)
 - [Float](geono-float.md#float) :white_small_square: [truncate](geono-float.md#truncate)
-- [ceil](geono-gnmat---gnmath.md#ceil)
-- [floor](geono-gnmat---gnmath.md#floor)
-- [round](geono-gnmat---gnmath.md#round)
-- [trunc](geono-gnmat---gnmath.md#trunc)
 - [nd](geono-nd.md#nd) :white_small_square: [float_to_integer](geono-nd.md#float_to_integer)
 
 #### Frame
 
 - [nd](geono-nd.md#nd) :white_small_square: [frame](geono-nd.md#frame)
 - [nd](geono-nd.md#nd) :white_small_square: [frame](geono-nd.md#frame)
-- [StaticClass](macro-shade1-stati-staticclass.md#staticclass) :white_small_square: [frame](macro-shade1-stati-staticclass.md#frame)
-- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'frame' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Geometry Proximity
 
@@ -783,28 +707,12 @@ You will find here how nodes are implemented
 - [nd](geono-nd.md#nd) :white_small_square: [get_named_grid](geono-nd.md#get_named_grid)
 - [nd](geono-nd.md#nd) :white_small_square: [get_named_grid](geono-nd.md#get_named_grid)
 
-#### Glass BSDF
-
-- [Shader](macro-shade1-shade-shader.md#shader) :white_small_square: [Glass](macro-shade1-shade-shader.md#glass)
-- [StaticClass](macro-shade1-stati-staticclass.md#staticclass) :white_small_square: [glass_bsdf](macro-shade1-stati-staticclass.md#glass_bsdf)
-- [Shader](macro-shade1-shade-shader.md#shader) :white_small_square: [Glass](macro-shade1-shade-shader.md#glass)
-- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'glass_bsdf' in page 'snd'](macro-shade1-shade1-snd.md#snd)
-
-#### Glossy BSDF
-
-- [Shader](macro-shade1-shade-shader.md#shader) :white_small_square: [Glossy](macro-shade1-shade-shader.md#glossy)
-- [StaticClass](macro-shade1-stati-staticclass.md#staticclass) :white_small_square: [glossy_bsdf](macro-shade1-stati-staticclass.md#glossy_bsdf)
-- [Shader](macro-shade1-shade-shader.md#shader) :white_small_square: [Glossy](macro-shade1-shade-shader.md#glossy)
-- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'glossy_bsdf' in page 'snd'](macro-shade1-shade1-snd.md#snd)
-
 #### Gradient Texture
 
 - [nd](geono-nd.md#nd) :white_small_square: [gradient_texture](geono-nd.md#gradient_texture)
 - [Texture](geono-texture.md#texture) :white_small_square: [Gradient](geono-texture.md#gradient)
 - [nd](geono-nd.md#nd) :white_small_square: [gradient_texture](geono-nd.md#gradient_texture)
 - [Texture](geono-texture.md#texture) :white_small_square: [Gradient](geono-texture.md#gradient)
-- [StaticClass](macro-shade1-stati-staticclass.md#staticclass) :white_small_square: [gradient_texture](macro-shade1-stati-staticclass.md#gradient_texture)
-- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'gradient_texture' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Grid
 
@@ -828,8 +736,6 @@ You will find here how nodes are implemented
 - [nd](geono-nd.md#nd) :white_small_square: [group](geono-nd.md#group)
 - [Group](cross_reference.md#group) :white_small_square: [Group](cross_reference.md#group)
 - [Group](cross_reference.md#group) :white_small_square: [Prefix](geono-group.md#prefix)
-- [StaticClass](macro-shade1-stati-staticclass.md#staticclass) :white_small_square: [group](macro-shade1-stati-staticclass.md#group)
-- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'group' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Group Input
 
@@ -842,8 +748,6 @@ You will find here how nodes are implemented
 - [Tree](geono-tree.md#tree) :white_small_square: [output_node](geono-tree.md#output_node)
 - [nd](geono-nd.md#nd) :white_small_square: [group_output](geono-nd.md#group_output)
 - [Tree](geono-tree.md#tree) :white_small_square: [output_node](geono-tree.md#output_node)
-- [StaticClass](macro-shade1-stati-staticclass.md#staticclass) :white_small_square: [group_output](macro-shade1-stati-staticclass.md#group_output)
-- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'group_output' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Handle Positions
 
@@ -886,13 +790,6 @@ You will find here how nodes are implemented
 - [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [right_handle_free](geono-splinepoint.md#right_handle_free)
 - [SplinePoint](geono-splinepoint.md#splinepoint) :white_small_square: [right_handle_vector](geono-splinepoint.md#right_handle_vector)
 - [nd](geono-nd.md#nd) :white_small_square: [handle_type_selection](geono-nd.md#handle_type_selection)
-
-#### Holdout
-
-- [Shader](macro-shade1-shade-shader.md#shader) :white_small_square: [Holdout](macro-shade1-shade-shader.md#holdout)
-- [StaticClass](macro-shade1-stati-staticclass.md#staticclass) :white_small_square: [holdout](macro-shade1-stati-staticclass.md#holdout)
-- [Shader](macro-shade1-shade-shader.md#shader) :white_small_square: [Holdout](macro-shade1-shade-shader.md#holdout)
-- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'holdout' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Ico Sphere
 
@@ -939,8 +836,6 @@ You will find here how nodes are implemented
 - [Texture](geono-texture.md#texture) :white_small_square: [Image](geono-texture.md#image)
 - [nd](geono-nd.md#nd) :white_small_square: [image_texture](geono-nd.md#image_texture)
 - [Texture](geono-texture.md#texture) :white_small_square: [Image](geono-texture.md#image)
-- [StaticClass](macro-shade1-stati-staticclass.md#staticclass) :white_small_square: [image_texture](macro-shade1-stati-staticclass.md#image_texture)
-- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'image_texture' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Index of Nearest
 
@@ -1065,8 +960,6 @@ You will find here how nodes are implemented
 - [Texture](geono-texture.md#texture) :white_small_square: [Magic](geono-texture.md#magic)
 - [nd](geono-nd.md#nd) :white_small_square: [magic_texture](geono-nd.md#magic_texture)
 - [Texture](geono-texture.md#texture) :white_small_square: [Magic](geono-texture.md#magic)
-- [StaticClass](macro-shade1-stati-staticclass.md#staticclass) :white_small_square: [magic_texture](macro-shade1-stati-staticclass.md#magic_texture)
-- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'magic_texture' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Map Range
 
@@ -1087,8 +980,6 @@ You will find here how nodes are implemented
 - [Integer](geono-integer.md#integer) :white_small_square: [map_range_stepped](geono-integer.md#map_range_stepped)
 - [nd](geono-nd.md#nd) :white_small_square: [map_range](geono-nd.md#map_range)
 - [nd](geono-nd.md#nd) :white_small_square: [map_range](geono-nd.md#map_range)
-- [StaticClass](macro-shade1-stati-staticclass.md#staticclass) :white_small_square: [map_range](macro-shade1-stati-staticclass.md#map_range)
-- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'map_range' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Material
 
@@ -1117,54 +1008,50 @@ You will find here how nodes are implemented
 - [Float](geono-float.md#float) :white_small_square: [less_than](geono-float.md#less_than)
 - [Float](geono-float.md#float) :white_small_square: [round](geono-float.md#round)
 - [Float](geono-float.md#float) :white_small_square: [truncate](geono-float.md#truncate)
-- [abs](geono-gnmat---gnmath.md#abs)
-- [acos](geono-gnmat---gnmath.md#acos)
-- [add](geono-gnmat---gnmath.md#add)
-- [asin](geono-gnmat---gnmath.md#asin)
-- [atan](geono-gnmat---gnmath.md#atan)
-- [atan2](geono-gnmat---gnmath.md#atan2)
-- [ceil](geono-gnmat---gnmath.md#ceil)
-- [compare](geono-gnmat---gnmath.md#compare)
-- [cos](geono-gnmat---gnmath.md#cos)
-- [cosh](geono-gnmat---gnmath.md#cosh)
-- [degrees](geono-gnmat---gnmath.md#degrees)
-- [divide](geono-gnmat---gnmath.md#divide)
-- [exp](geono-gnmat---gnmath.md#exp)
-- [exponent](geono-gnmat---gnmath.md#exponent)
-- [floor](geono-gnmat---gnmath.md#floor)
-- [floored_modulo](geono-gnmat---gnmath.md#floored_modulo)
-- [fract](geono-gnmat---gnmath.md#fract)
-- [greater_than](geono-gnmat---gnmath.md#greater_than)
-- [inverse_sqrt](geono-gnmat---gnmath.md#inverse_sqrt)
-- [less_than](geono-gnmat---gnmath.md#less_than)
-- [ln](geono-gnmat---gnmath.md#ln)
-- [log](geono-gnmat---gnmath.md#log)
-- [math_ceil](geono-gnmat---gnmath.md#math_ceil)
-- [math_floor](geono-gnmat---gnmath.md#math_floor)
-- [math_round](geono-gnmat---gnmath.md#math_round)
-- [math_trunc](geono-gnmat---gnmath.md#math_trunc)
-- [max](geono-gnmat---gnmath.md#max)
-- [min](geono-gnmat---gnmath.md#min)
-- [modulo](geono-gnmat---gnmath.md#modulo)
-- [multiply](geono-gnmat---gnmath.md#multiply)
-- [multiply_add](geono-gnmat---gnmath.md#multiply_add)
-- [ping_pong](geono-gnmat---gnmath.md#ping_pong)
-- [pingpong](geono-gnmat---gnmath.md#pingpong)
-- [power](geono-gnmat---gnmath.md#power)
-- [radians](geono-gnmat---gnmath.md#radians)
-- [round](geono-gnmat---gnmath.md#round)
-- [sign](geono-gnmat---gnmath.md#sign)
-- [sin](geono-gnmat---gnmath.md#sin)
-- [sinh](geono-gnmat---gnmath.md#sinh)
-- [smooth_max](geono-gnmat---gnmath.md#smooth_max)
-- [smooth_min](geono-gnmat---gnmath.md#smooth_min)
-- [snap](geono-gnmat---gnmath.md#snap)
-- [sqrt](geono-gnmat---gnmath.md#sqrt)
-- [subtract](geono-gnmat---gnmath.md#subtract)
-- [tan](geono-gnmat---gnmath.md#tan)
-- [tanh](geono-gnmat---gnmath.md#tanh)
-- [trunc](geono-gnmat---gnmath.md#trunc)
-- [wrap](geono-gnmat---gnmath.md#wrap)
+- [abs](geono-gnmat---gnmath.md#abs) :white_small_square: [abs](geono-gnmat---gnmath.md#abs)
+- [acos](geono-gnmat---gnmath.md#acos) :white_small_square: [acos](geono-gnmat---gnmath.md#acos)
+- [add](geono-gnmat---gnmath.md#add) :white_small_square: [add](geono-gnmat---gnmath.md#add)
+- [asin](geono-gnmat---gnmath.md#asin) :white_small_square: [asin](geono-gnmat---gnmath.md#asin)
+- [atan](geono-gnmat---gnmath.md#atan) :white_small_square: [atan](geono-gnmat---gnmath.md#atan)
+- [atan2](geono-gnmat---gnmath.md#atan2) :white_small_square: [atan2](geono-gnmat---gnmath.md#atan2)
+- [compare](geono-gnmat---gnmath.md#compare) :white_small_square: [compare](geono-gnmat---gnmath.md#compare)
+- [cos](geono-gnmat---gnmath.md#cos) :white_small_square: [cos](geono-gnmat---gnmath.md#cos)
+- [cosh](geono-gnmat---gnmath.md#cosh) :white_small_square: [cosh](geono-gnmat---gnmath.md#cosh)
+- [degrees](geono-gnmat---gnmath.md#degrees) :white_small_square: [degrees](geono-gnmat---gnmath.md#degrees)
+- [divide](geono-gnmat---gnmath.md#divide) :white_small_square: [divide](geono-gnmat---gnmath.md#divide)
+- [exp](geono-gnmat---gnmath.md#exp) :white_small_square: [exp](geono-gnmat---gnmath.md#exp)
+- [exponent](geono-gnmat---gnmath.md#exponent) :white_small_square: [exponent](geono-gnmat---gnmath.md#exponent)
+- [floored_modulo](geono-gnmat---gnmath.md#floored_modulo) :white_small_square: [floored_modulo](geono-gnmat---gnmath.md#floored_modulo)
+- [fract](geono-gnmat---gnmath.md#fract) :white_small_square: [fract](geono-gnmat---gnmath.md#fract)
+- [greater_than](geono-gnmat---gnmath.md#greater_than) :white_small_square: [greater_than](geono-gnmat---gnmath.md#greater_than)
+- [inverse_sqrt](geono-gnmat---gnmath.md#inverse_sqrt) :white_small_square: [inverse_sqrt](geono-gnmat---gnmath.md#inverse_sqrt)
+- [less_than](geono-gnmat---gnmath.md#less_than) :white_small_square: [less_than](geono-gnmat---gnmath.md#less_than)
+- [ln](geono-gnmat---gnmath.md#ln) :white_small_square: [ln](geono-gnmat---gnmath.md#ln)
+- [log](geono-gnmat---gnmath.md#log) :white_small_square: [log](geono-gnmat---gnmath.md#log)
+- [math_ceil](geono-gnmat---gnmath.md#math_ceil) :white_small_square: [math_ceil](geono-gnmat---gnmath.md#math_ceil)
+- [math_floor](geono-gnmat---gnmath.md#math_floor) :white_small_square: [math_floor](geono-gnmat---gnmath.md#math_floor)
+- [math_round](geono-gnmat---gnmath.md#math_round) :white_small_square: [math_round](geono-gnmat---gnmath.md#math_round)
+- [math_trunc](geono-gnmat---gnmath.md#math_trunc) :white_small_square: [math_trunc](geono-gnmat---gnmath.md#math_trunc)
+- [max](geono-gnmat---gnmath.md#max) :white_small_square: [max](geono-gnmat---gnmath.md#max)
+- [min](geono-gnmat---gnmath.md#min) :white_small_square: [min](geono-gnmat---gnmath.md#min)
+- [modulo](geono-gnmat---gnmath.md#modulo) :white_small_square: [modulo](geono-gnmat---gnmath.md#modulo)
+- [multiply](geono-gnmat---gnmath.md#multiply) :white_small_square: [multiply](geono-gnmat---gnmath.md#multiply)
+- [multiply_add](geono-gnmat---gnmath.md#multiply_add) :white_small_square: [multiply_add](geono-gnmat---gnmath.md#multiply_add)
+- [ping_pong](geono-gnmat---gnmath.md#ping_pong) :white_small_square: [ping_pong](geono-gnmat---gnmath.md#ping_pong)
+- [pingpong](geono-gnmat---gnmath.md#pingpong) :white_small_square: [pingpong](geono-gnmat---gnmath.md#pingpong)
+- [power](geono-gnmat---gnmath.md#power) :white_small_square: [power](geono-gnmat---gnmath.md#power)
+- [radians](geono-gnmat---gnmath.md#radians) :white_small_square: [radians](geono-gnmat---gnmath.md#radians)
+- [sign](geono-gnmat---gnmath.md#sign) :white_small_square: [sign](geono-gnmat---gnmath.md#sign)
+- [sin](geono-gnmat---gnmath.md#sin) :white_small_square: [sin](geono-gnmat---gnmath.md#sin)
+- [sinh](geono-gnmat---gnmath.md#sinh) :white_small_square: [sinh](geono-gnmat---gnmath.md#sinh)
+- [smooth_max](geono-gnmat---gnmath.md#smooth_max) :white_small_square: [smooth_max](geono-gnmat---gnmath.md#smooth_max)
+- [smooth_min](geono-gnmat---gnmath.md#smooth_min) :white_small_square: [smooth_min](geono-gnmat---gnmath.md#smooth_min)
+- [snap](geono-gnmat---gnmath.md#snap) :white_small_square: [snap](geono-gnmat---gnmath.md#snap)
+- [sqrt](geono-gnmat---gnmath.md#sqrt) :white_small_square: [sqrt](geono-gnmat---gnmath.md#sqrt)
+- [subtract](geono-gnmat---gnmath.md#subtract) :white_small_square: [subtract](geono-gnmat---gnmath.md#subtract)
+- [tan](geono-gnmat---gnmath.md#tan) :white_small_square: [tan](geono-gnmat---gnmath.md#tan)
+- [tanh](geono-gnmat---gnmath.md#tanh) :white_small_square: [tanh](geono-gnmat---gnmath.md#tanh)
+- [wrap](geono-gnmat---gnmath.md#wrap) :white_small_square: [wrap](geono-gnmat---gnmath.md#wrap)
 - [nd](geono-nd.md#nd) :white_small_square: [math](geono-nd.md#math)
 - [Float](geono-float.md#float) :white_small_square: [ceiling](geono-float.md#ceiling)
 - [Float](geono-float.md#float) :white_small_square: [equal](geono-float.md#equal)
@@ -1173,57 +1060,62 @@ You will find here how nodes are implemented
 - [Float](geono-float.md#float) :white_small_square: [less_than](geono-float.md#less_than)
 - [Float](geono-float.md#float) :white_small_square: [round](geono-float.md#round)
 - [Float](geono-float.md#float) :white_small_square: [truncate](geono-float.md#truncate)
-- [abs](geono-gnmat---gnmath.md#abs)
-- [acos](geono-gnmat---gnmath.md#acos)
-- [add](geono-gnmat---gnmath.md#add)
-- [asin](geono-gnmat---gnmath.md#asin)
-- [atan](geono-gnmat---gnmath.md#atan)
-- [atan2](geono-gnmat---gnmath.md#atan2)
-- [ceil](geono-gnmat---gnmath.md#ceil)
-- [compare](geono-gnmat---gnmath.md#compare)
-- [cos](geono-gnmat---gnmath.md#cos)
-- [cosh](geono-gnmat---gnmath.md#cosh)
-- [degrees](geono-gnmat---gnmath.md#degrees)
-- [divide](geono-gnmat---gnmath.md#divide)
-- [exp](geono-gnmat---gnmath.md#exp)
-- [exponent](geono-gnmat---gnmath.md#exponent)
-- [floor](geono-gnmat---gnmath.md#floor)
-- [floored_modulo](geono-gnmat---gnmath.md#floored_modulo)
-- [fract](geono-gnmat---gnmath.md#fract)
-- [greater_than](geono-gnmat---gnmath.md#greater_than)
-- [inverse_sqrt](geono-gnmat---gnmath.md#inverse_sqrt)
-- [less_than](geono-gnmat---gnmath.md#less_than)
-- [ln](geono-gnmat---gnmath.md#ln)
-- [log](geono-gnmat---gnmath.md#log)
-- [math_ceil](geono-gnmat---gnmath.md#math_ceil)
-- [math_floor](geono-gnmat---gnmath.md#math_floor)
-- [math_round](geono-gnmat---gnmath.md#math_round)
-- [math_trunc](geono-gnmat---gnmath.md#math_trunc)
-- [max](geono-gnmat---gnmath.md#max)
-- [min](geono-gnmat---gnmath.md#min)
-- [modulo](geono-gnmat---gnmath.md#modulo)
-- [multiply](geono-gnmat---gnmath.md#multiply)
-- [multiply_add](geono-gnmat---gnmath.md#multiply_add)
-- [ping_pong](geono-gnmat---gnmath.md#ping_pong)
-- [pingpong](geono-gnmat---gnmath.md#pingpong)
-- [power](geono-gnmat---gnmath.md#power)
-- [radians](geono-gnmat---gnmath.md#radians)
-- [round](geono-gnmat---gnmath.md#round)
-- [sign](geono-gnmat---gnmath.md#sign)
-- [sin](geono-gnmat---gnmath.md#sin)
-- [sinh](geono-gnmat---gnmath.md#sinh)
-- [smooth_max](geono-gnmat---gnmath.md#smooth_max)
-- [smooth_min](geono-gnmat---gnmath.md#smooth_min)
-- [snap](geono-gnmat---gnmath.md#snap)
-- [sqrt](geono-gnmat---gnmath.md#sqrt)
-- [subtract](geono-gnmat---gnmath.md#subtract)
-- [tan](geono-gnmat---gnmath.md#tan)
-- [tanh](geono-gnmat---gnmath.md#tanh)
-- [trunc](geono-gnmat---gnmath.md#trunc)
-- [wrap](geono-gnmat---gnmath.md#wrap)
+- [abs](geono-gnmat---gnmath.md#abs) :white_small_square: [abs](geono-gnmat---gnmath.md#abs)
+- [acos](geono-gnmat---gnmath.md#acos) :white_small_square: [acos](geono-gnmat---gnmath.md#acos)
+- [add](geono-gnmat---gnmath.md#add) :white_small_square: [add](geono-gnmat---gnmath.md#add)
+- [asin](geono-gnmat---gnmath.md#asin) :white_small_square: [asin](geono-gnmat---gnmath.md#asin)
+- [atan](geono-gnmat---gnmath.md#atan) :white_small_square: [atan](geono-gnmat---gnmath.md#atan)
+- [atan2](geono-gnmat---gnmath.md#atan2) :white_small_square: [atan2](geono-gnmat---gnmath.md#atan2)
+- [compare](geono-gnmat---gnmath.md#compare) :white_small_square: [compare](geono-gnmat---gnmath.md#compare)
+- [cos](geono-gnmat---gnmath.md#cos) :white_small_square: [cos](geono-gnmat---gnmath.md#cos)
+- [cosh](geono-gnmat---gnmath.md#cosh) :white_small_square: [cosh](geono-gnmat---gnmath.md#cosh)
+- [degrees](geono-gnmat---gnmath.md#degrees) :white_small_square: [degrees](geono-gnmat---gnmath.md#degrees)
+- [divide](geono-gnmat---gnmath.md#divide) :white_small_square: [divide](geono-gnmat---gnmath.md#divide)
+- [exp](geono-gnmat---gnmath.md#exp) :white_small_square: [exp](geono-gnmat---gnmath.md#exp)
+- [exponent](geono-gnmat---gnmath.md#exponent) :white_small_square: [exponent](geono-gnmat---gnmath.md#exponent)
+- [floored_modulo](geono-gnmat---gnmath.md#floored_modulo) :white_small_square: [floored_modulo](geono-gnmat---gnmath.md#floored_modulo)
+- [fract](geono-gnmat---gnmath.md#fract) :white_small_square: [fract](geono-gnmat---gnmath.md#fract)
+- [greater_than](geono-gnmat---gnmath.md#greater_than) :white_small_square: [greater_than](geono-gnmat---gnmath.md#greater_than)
+- [inverse_sqrt](geono-gnmat---gnmath.md#inverse_sqrt) :white_small_square: [inverse_sqrt](geono-gnmat---gnmath.md#inverse_sqrt)
+- [less_than](geono-gnmat---gnmath.md#less_than) :white_small_square: [less_than](geono-gnmat---gnmath.md#less_than)
+- [ln](geono-gnmat---gnmath.md#ln) :white_small_square: [ln](geono-gnmat---gnmath.md#ln)
+- [log](geono-gnmat---gnmath.md#log) :white_small_square: [log](geono-gnmat---gnmath.md#log)
+- [math_ceil](geono-gnmat---gnmath.md#math_ceil) :white_small_square: [math_ceil](geono-gnmat---gnmath.md#math_ceil)
+- [math_floor](geono-gnmat---gnmath.md#math_floor) :white_small_square: [math_floor](geono-gnmat---gnmath.md#math_floor)
+- [math_round](geono-gnmat---gnmath.md#math_round) :white_small_square: [math_round](geono-gnmat---gnmath.md#math_round)
+- [math_trunc](geono-gnmat---gnmath.md#math_trunc) :white_small_square: [math_trunc](geono-gnmat---gnmath.md#math_trunc)
+- [max](geono-gnmat---gnmath.md#max) :white_small_square: [max](geono-gnmat---gnmath.md#max)
+- [min](geono-gnmat---gnmath.md#min) :white_small_square: [min](geono-gnmat---gnmath.md#min)
+- [modulo](geono-gnmat---gnmath.md#modulo) :white_small_square: [modulo](geono-gnmat---gnmath.md#modulo)
+- [multiply](geono-gnmat---gnmath.md#multiply) :white_small_square: [multiply](geono-gnmat---gnmath.md#multiply)
+- [multiply_add](geono-gnmat---gnmath.md#multiply_add) :white_small_square: [multiply_add](geono-gnmat---gnmath.md#multiply_add)
+- [ping_pong](geono-gnmat---gnmath.md#ping_pong) :white_small_square: [ping_pong](geono-gnmat---gnmath.md#ping_pong)
+- [pingpong](geono-gnmat---gnmath.md#pingpong) :white_small_square: [pingpong](geono-gnmat---gnmath.md#pingpong)
+- [power](geono-gnmat---gnmath.md#power) :white_small_square: [power](geono-gnmat---gnmath.md#power)
+- [radians](geono-gnmat---gnmath.md#radians) :white_small_square: [radians](geono-gnmat---gnmath.md#radians)
+- [sign](geono-gnmat---gnmath.md#sign) :white_small_square: [sign](geono-gnmat---gnmath.md#sign)
+- [sin](geono-gnmat---gnmath.md#sin) :white_small_square: [sin](geono-gnmat---gnmath.md#sin)
+- [sinh](geono-gnmat---gnmath.md#sinh) :white_small_square: [sinh](geono-gnmat---gnmath.md#sinh)
+- [smooth_max](geono-gnmat---gnmath.md#smooth_max) :white_small_square: [smooth_max](geono-gnmat---gnmath.md#smooth_max)
+- [smooth_min](geono-gnmat---gnmath.md#smooth_min) :white_small_square: [smooth_min](geono-gnmat---gnmath.md#smooth_min)
+- [snap](geono-gnmat---gnmath.md#snap) :white_small_square: [snap](geono-gnmat---gnmath.md#snap)
+- [sqrt](geono-gnmat---gnmath.md#sqrt) :white_small_square: [sqrt](geono-gnmat---gnmath.md#sqrt)
+- [subtract](geono-gnmat---gnmath.md#subtract) :white_small_square: [subtract](geono-gnmat---gnmath.md#subtract)
+- [tan](geono-gnmat---gnmath.md#tan) :white_small_square: [tan](geono-gnmat---gnmath.md#tan)
+- [tanh](geono-gnmat---gnmath.md#tanh) :white_small_square: [tanh](geono-gnmat---gnmath.md#tanh)
+- [wrap](geono-gnmat---gnmath.md#wrap) :white_small_square: [wrap](geono-gnmat---gnmath.md#wrap)
 - [nd](geono-nd.md#nd) :white_small_square: [math](geono-nd.md#math)
-- [StaticClass](macro-shade1-stati-staticclass.md#staticclass) :white_small_square: [math](macro-shade1-stati-staticclass.md#math)
-- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'math' in page 'snd'](macro-shade1-shade1-snd.md#snd)
+
+#### Math, Float to Integer
+
+- [ceil](geono-gnmat---gnmath.md#ceil) :white_small_square: [ceil](geono-gnmat---gnmath.md#ceil)
+- [floor](geono-gnmat---gnmath.md#floor) :white_small_square: [floor](geono-gnmat---gnmath.md#floor)
+- [round](geono-gnmat---gnmath.md#round) :white_small_square: [round](geono-gnmat---gnmath.md#round)
+- [trunc](geono-gnmat---gnmath.md#trunc) :white_small_square: [trunc](geono-gnmat---gnmath.md#trunc)
+- [ceil](geono-gnmat---gnmath.md#ceil) :white_small_square: [ceil](geono-gnmat---gnmath.md#ceil)
+- [floor](geono-gnmat---gnmath.md#floor) :white_small_square: [floor](geono-gnmat---gnmath.md#floor)
+- [round](geono-gnmat---gnmath.md#round) :white_small_square: [round](geono-gnmat---gnmath.md#round)
+- [trunc](geono-gnmat---gnmath.md#trunc) :white_small_square: [trunc](geono-gnmat---gnmath.md#trunc)
 
 #### Menu Switch
 
@@ -1352,6 +1244,9 @@ You will find here how nodes are implemented
 - [Integer](geono-integer.md#integer) :white_small_square: [mix](geono-integer.md#mix)
 - [nd](geono-nd.md#nd) :white_small_square: [mix](geono-nd.md#mix)
 - [Rotation](geono-rotation.md#rotation) :white_small_square: [mix](geono-rotation.md#mix)
+- [Vector](geono-vector.md#vector) :white_small_square: [mix](geono-vector.md#mix)
+- [Vector](geono-vector.md#vector) :white_small_square: [mix_non_uniform](geono-vector.md#mix_non_uniform)
+- [Vector](geono-vector.md#vector) :white_small_square: [mix_uniform](geono-vector.md#mix_uniform)
 - [Color](geono-color.md#color) :white_small_square: [add](geono-color.md#add)
 - [Color](geono-color.md#color) :white_small_square: [burn](geono-color.md#burn)
 - [Color](geono-color.md#color) :white_small_square: [darken](geono-color.md#darken)
@@ -1373,8 +1268,9 @@ You will find here how nodes are implemented
 - [Color](geono-color.md#color) :white_small_square: [subtract](geono-color.md#subtract)
 - [nd](geono-nd.md#nd) :white_small_square: [mix](geono-nd.md#mix)
 - [Rotation](geono-rotation.md#rotation) :white_small_square: [mix](geono-rotation.md#mix)
-- [StaticClass](macro-shade1-stati-staticclass.md#staticclass) :white_small_square: [mix](macro-shade1-stati-staticclass.md#mix)
-- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'mix' in page 'snd'](macro-shade1-shade1-snd.md#snd)
+- [Vector](geono-vector.md#vector) :white_small_square: [mix](geono-vector.md#mix)
+- [Vector](geono-vector.md#vector) :white_small_square: [mix_non_uniform](geono-vector.md#mix_non_uniform)
+- [Vector](geono-vector.md#vector) :white_small_square: [mix_uniform](geono-vector.md#mix_uniform)
 
 #### Multiply Matrices
 
@@ -1409,8 +1305,6 @@ You will find here how nodes are implemented
 - [Texture](geono-texture.md#texture) :white_small_square: [Noise](geono-texture.md#noise)
 - [nd](geono-nd.md#nd) :white_small_square: [noise_texture](geono-nd.md#noise_texture)
 - [Texture](geono-texture.md#texture) :white_small_square: [Noise](geono-texture.md#noise)
-- [StaticClass](macro-shade1-stati-staticclass.md#staticclass) :white_small_square: [noise_texture](macro-shade1-stati-staticclass.md#noise_texture)
-- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'noise_texture' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Object Info
 
@@ -1494,20 +1388,6 @@ You will find here how nodes are implemented
 - [GeoBase](geono-geobase.md#geobase) :white_small_square: [position](geono-geobase.md#position)
 - [Geometry](geono-geometry.md#geometry) :white_small_square: [position](geono-geometry.md#position)
 
-#### Principled BSDF
-
-- [Shader](macro-shade1-shade-shader.md#shader) :white_small_square: [Principled](macro-shade1-shade-shader.md#principled)
-- [StaticClass](macro-shade1-stati-staticclass.md#staticclass) :white_small_square: [principled_bsdf](macro-shade1-stati-staticclass.md#principled_bsdf)
-- [Shader](macro-shade1-shade-shader.md#shader) :white_small_square: [Principled](macro-shade1-shade-shader.md#principled)
-- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'principled_bsdf' in page 'snd'](macro-shade1-shade1-snd.md#snd)
-
-#### Principled Volume
-
-- [VolumeShader](macro-shade1-shade-volumeshader.md#volumeshader) :white_small_square: [Principled](macro-shade1-shade-volumeshader.md#principled)
-- [StaticClass](macro-shade1-stati-staticclass.md#staticclass) :white_small_square: [principled_volume](macro-shade1-stati-staticclass.md#principled_volume)
-- [VolumeShader](macro-shade1-shade-volumeshader.md#volumeshader) :white_small_square: [Principled](macro-shade1-shade-volumeshader.md#principled)
-- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'principled_volume' in page 'snd'](macro-shade1-shade1-snd.md#snd)
-
 #### Project Point
 
 - [nd](geono-nd.md#nd) :white_small_square: [project_point](geono-nd.md#project_point)
@@ -1578,13 +1458,6 @@ You will find here how nodes are implemented
 - [Instances](geono-instances.md#instances) :white_small_square: [realize](geono-instances.md#realize)
 - [nd](geono-nd.md#nd) :white_small_square: [realize_instances](geono-nd.md#realize_instances)
 
-#### Refraction BSDF
-
-- [Shader](macro-shade1-shade-shader.md#shader) :white_small_square: [Refraction](macro-shade1-shade-shader.md#refraction)
-- [StaticClass](macro-shade1-stati-staticclass.md#staticclass) :white_small_square: [refraction_bsdf](macro-shade1-stati-staticclass.md#refraction_bsdf)
-- [Shader](macro-shade1-shade-shader.md#shader) :white_small_square: [Refraction](macro-shade1-shade-shader.md#refraction)
-- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'refraction_bsdf' in page 'snd'](macro-shade1-shade1-snd.md#snd)
-
 #### Remove Named Attribute
 
 - [Geometry](geono-geometry.md#geometry) :white_small_square: [remove_named_attribute](geono-geometry.md#remove_named_attribute)
@@ -1621,8 +1494,6 @@ You will find here how nodes are implemented
 
 - [nd](geono-nd.md#nd) :white_small_square: [reroute](geono-nd.md#reroute)
 - [nd](geono-nd.md#nd) :white_small_square: [reroute](geono-nd.md#reroute)
-- [StaticClass](macro-shade1-stati-staticclass.md#staticclass) :white_small_square: [reroute](macro-shade1-stati-staticclass.md#reroute)
-- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'reroute' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Resample Curve
 
@@ -1649,8 +1520,6 @@ You will find here how nodes are implemented
 - [nd](geono-nd.md#nd) :white_small_square: [rgb_curves](geono-nd.md#rgb_curves)
 - [Color](geono-color.md#color) :white_small_square: [curves](geono-color.md#curves)
 - [nd](geono-nd.md#nd) :white_small_square: [rgb_curves](geono-nd.md#rgb_curves)
-- [StaticClass](macro-shade1-stati-staticclass.md#staticclass) :white_small_square: [rgb_curves](macro-shade1-stati-staticclass.md#rgb_curves)
-- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'rgb_curves' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Rotate Euler
 
@@ -1810,8 +1679,6 @@ You will find here how nodes are implemented
 - [Color](geono-color.md#color) :white_small_square: [saturation](geono-color.md#saturation)
 - [Color](geono-color.md#color) :white_small_square: [value](geono-color.md#value)
 - [nd](geono-nd.md#nd) :white_small_square: [separate_color](geono-nd.md#separate_color)
-- [StaticClass](macro-shade1-stati-staticclass.md#staticclass) :white_small_square: [separate_color](macro-shade1-stati-staticclass.md#separate_color)
-- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'separate_color' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Separate Components
 
@@ -1895,8 +1762,6 @@ You will find here how nodes are implemented
 
 - [nd](geono-nd.md#nd) :white_small_square: [separate_xyz](geono-nd.md#separate_xyz)
 - [nd](geono-nd.md#nd) :white_small_square: [separate_xyz](geono-nd.md#separate_xyz)
-- [StaticClass](macro-shade1-stati-staticclass.md#staticclass) :white_small_square: [separate_xyz](macro-shade1-stati-staticclass.md#separate_xyz)
-- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'separate_xyz' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Set Curve Normal
 
@@ -2107,13 +1972,6 @@ You will find here how nodes are implemented
 - [Domain](geono-domain.md#domain) :white_small_square: [sort_elements](geono-domain.md#sort_elements)
 - [nd](geono-nd.md#nd) :white_small_square: [sort_elements](geono-nd.md#sort_elements)
 
-#### Specular BSDF
-
-- [Shader](macro-shade1-shade-shader.md#shader) :white_small_square: [Specular](macro-shade1-shade-shader.md#specular)
-- [StaticClass](macro-shade1-stati-staticclass.md#staticclass) :white_small_square: [specular_bsdf](macro-shade1-stati-staticclass.md#specular_bsdf)
-- [Shader](macro-shade1-shade-shader.md#shader) :white_small_square: [Specular](macro-shade1-shade-shader.md#specular)
-- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'specular_bsdf' in page 'snd'](macro-shade1-shade1-snd.md#snd)
-
 #### Spiral
 
 - [Curve](geono-curve.md#curve) :white_small_square: [Spiral](geono-curve.md#spiral)
@@ -2210,13 +2068,6 @@ You will find here how nodes are implemented
 - [Mesh](geono-mesh.md#mesh) :white_small_square: [subdivision_surface](geono-mesh.md#subdivision_surface)
 - [nd](geono-nd.md#nd) :white_small_square: [subdivision_surface](geono-nd.md#subdivision_surface)
 
-#### Subsurface Scattering
-
-- [Shader](macro-shade1-shade-shader.md#shader) :white_small_square: [SubsurfaceScattering](macro-shade1-shade-shader.md#subsurfacescattering)
-- [StaticClass](macro-shade1-stati-staticclass.md#staticclass) :white_small_square: [subsurface_scattering](macro-shade1-stati-staticclass.md#subsurface_scattering)
-- [Shader](macro-shade1-shade-shader.md#shader) :white_small_square: [SubsurfaceScattering](macro-shade1-shade-shader.md#subsurfacescattering)
-- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'subsurface_scattering' in page 'snd'](macro-shade1-shade1-snd.md#snd)
-
 #### Switch
 
 - [Socket](geono-socket.md#socket) :white_small_square: [Switch](geono-socket.md#switch)
@@ -2255,20 +2106,6 @@ You will find here how nodes are implemented
 - [Instance](geono-instance.md#instance) :white_small_square: [translate](geono-instance.md#translate)
 - [Instances](geono-instances.md#instances) :white_small_square: [translate](geono-instances.md#translate)
 - [nd](geono-nd.md#nd) :white_small_square: [translate_instances](geono-nd.md#translate_instances)
-
-#### Translucent BSDF
-
-- [Shader](macro-shade1-shade-shader.md#shader) :white_small_square: [Translucent](macro-shade1-shade-shader.md#translucent)
-- [StaticClass](macro-shade1-stati-staticclass.md#staticclass) :white_small_square: [translucent_bsdf](macro-shade1-stati-staticclass.md#translucent_bsdf)
-- [Shader](macro-shade1-shade-shader.md#shader) :white_small_square: [Translucent](macro-shade1-shade-shader.md#translucent)
-- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'translucent_bsdf' in page 'snd'](macro-shade1-shade1-snd.md#snd)
-
-#### Transparent BSDF
-
-- [Shader](macro-shade1-shade-shader.md#shader) :white_small_square: [Transparent](macro-shade1-shade-shader.md#transparent)
-- [StaticClass](macro-shade1-stati-staticclass.md#staticclass) :white_small_square: [transparent_bsdf](macro-shade1-stati-staticclass.md#transparent_bsdf)
-- [Shader](macro-shade1-shade-shader.md#shader) :white_small_square: [Transparent](macro-shade1-shade-shader.md#transparent)
-- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'transparent_bsdf' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Transpose Matrix
 
@@ -2337,69 +2174,65 @@ You will find here how nodes are implemented
 
 - [nd](geono-nd.md#nd) :white_small_square: [vector_curves](geono-nd.md#vector_curves)
 - [nd](geono-nd.md#nd) :white_small_square: [vector_curves](geono-nd.md#vector_curves)
-- [StaticClass](macro-shade1-stati-staticclass.md#staticclass) :white_small_square: [vector_curves](macro-shade1-stati-staticclass.md#vector_curves)
-- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'vector_curves' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Vector Math
 
-- [cross_product](geono-gnmat---gnmath.md#cross_product)
-- [distance](geono-gnmat---gnmath.md#distance)
-- [dot_product](geono-gnmat---gnmath.md#dot_product)
-- [faceforward](geono-gnmat---gnmath.md#faceforward)
-- [length](demos-fourd-v4.md#length)
-- [normalize](geono-gnmat---gnmath.md#normalize)
-- [project](geono-gnmat---gnmath.md#project)
-- [reflect](geono-gnmat---gnmath.md#reflect)
-- [refract](geono-gnmat---gnmath.md#refract)
-- [scale](geono-gnmat---gnmath.md#scale)
-- [vabs](geono-gnmat---gnmath.md#vabs)
-- [vadd](geono-gnmat---gnmath.md#vadd)
-- [vceil](geono-gnmat---gnmath.md#vceil)
-- [vcos](geono-gnmat---gnmath.md#vcos)
-- [vdivide](geono-gnmat---gnmath.md#vdivide)
-- [vfloor](geono-gnmat---gnmath.md#vfloor)
-- [vfract](geono-gnmat---gnmath.md#vfract)
-- [vmax](geono-gnmat---gnmath.md#vmax)
-- [vmin](geono-gnmat---gnmath.md#vmin)
-- [vmodulo](geono-gnmat---gnmath.md#vmodulo)
-- [vmultiply](geono-gnmat---gnmath.md#vmultiply)
-- [vmultiply_add](geono-gnmat---gnmath.md#vmultiply_add)
-- [vsin](geono-gnmat---gnmath.md#vsin)
-- [vsnap](geono-gnmat---gnmath.md#vsnap)
-- [vsubtract](geono-gnmat---gnmath.md#vsubtract)
-- [vtan](geono-gnmat---gnmath.md#vtan)
-- [vwrap](geono-gnmat---gnmath.md#vwrap)
+- [cross_product](geono-gnmat---gnmath.md#cross_product) :white_small_square: [cross_product](geono-gnmat---gnmath.md#cross_product)
+- [distance](geono-gnmat---gnmath.md#distance) :white_small_square: [distance](geono-gnmat---gnmath.md#distance)
+- [dot_product](geono-gnmat---gnmath.md#dot_product) :white_small_square: [dot_product](geono-gnmat---gnmath.md#dot_product)
+- [faceforward](geono-gnmat---gnmath.md#faceforward) :white_small_square: [faceforward](geono-gnmat---gnmath.md#faceforward)
+- [length](demos-fourd-v4.md#length) :white_small_square: [length](demos-fourd-v4.md#length)
+- [normalize](geono-gnmat---gnmath.md#normalize) :white_small_square: [normalize](geono-gnmat---gnmath.md#normalize)
+- [project](geono-gnmat---gnmath.md#project) :white_small_square: [project](geono-gnmat---gnmath.md#project)
+- [reflect](geono-gnmat---gnmath.md#reflect) :white_small_square: [reflect](geono-gnmat---gnmath.md#reflect)
+- [refract](geono-gnmat---gnmath.md#refract) :white_small_square: [refract](geono-gnmat---gnmath.md#refract)
+- [scale](geono-gnmat---gnmath.md#scale) :white_small_square: [scale](geono-gnmat---gnmath.md#scale)
+- [vabs](geono-gnmat---gnmath.md#vabs) :white_small_square: [vabs](geono-gnmat---gnmath.md#vabs)
+- [vadd](geono-gnmat---gnmath.md#vadd) :white_small_square: [vadd](geono-gnmat---gnmath.md#vadd)
+- [vceil](geono-gnmat---gnmath.md#vceil) :white_small_square: [vceil](geono-gnmat---gnmath.md#vceil)
+- [vcos](geono-gnmat---gnmath.md#vcos) :white_small_square: [vcos](geono-gnmat---gnmath.md#vcos)
+- [vdivide](geono-gnmat---gnmath.md#vdivide) :white_small_square: [vdivide](geono-gnmat---gnmath.md#vdivide)
+- [vfloor](geono-gnmat---gnmath.md#vfloor) :white_small_square: [vfloor](geono-gnmat---gnmath.md#vfloor)
+- [vfract](geono-gnmat---gnmath.md#vfract) :white_small_square: [vfract](geono-gnmat---gnmath.md#vfract)
+- [vmax](geono-gnmat---gnmath.md#vmax) :white_small_square: [vmax](geono-gnmat---gnmath.md#vmax)
+- [vmin](geono-gnmat---gnmath.md#vmin) :white_small_square: [vmin](geono-gnmat---gnmath.md#vmin)
+- [vmodulo](geono-gnmat---gnmath.md#vmodulo) :white_small_square: [vmodulo](geono-gnmat---gnmath.md#vmodulo)
+- [vmultiply](geono-gnmat---gnmath.md#vmultiply) :white_small_square: [vmultiply](geono-gnmat---gnmath.md#vmultiply)
+- [vmultiply_add](geono-gnmat---gnmath.md#vmultiply_add) :white_small_square: [vmultiply_add](geono-gnmat---gnmath.md#vmultiply_add)
+- [vsin](geono-gnmat---gnmath.md#vsin) :white_small_square: [vsin](geono-gnmat---gnmath.md#vsin)
+- [vsnap](geono-gnmat---gnmath.md#vsnap) :white_small_square: [vsnap](geono-gnmat---gnmath.md#vsnap)
+- [vsubtract](geono-gnmat---gnmath.md#vsubtract) :white_small_square: [vsubtract](geono-gnmat---gnmath.md#vsubtract)
+- [vtan](geono-gnmat---gnmath.md#vtan) :white_small_square: [vtan](geono-gnmat---gnmath.md#vtan)
+- [vwrap](geono-gnmat---gnmath.md#vwrap) :white_small_square: [vwrap](geono-gnmat---gnmath.md#vwrap)
 - [nd](geono-nd.md#nd) :white_small_square: [vector_math](geono-nd.md#vector_math)
-- [cross_product](geono-gnmat---gnmath.md#cross_product)
-- [distance](geono-gnmat---gnmath.md#distance)
-- [dot_product](geono-gnmat---gnmath.md#dot_product)
-- [faceforward](geono-gnmat---gnmath.md#faceforward)
-- [length](demos-fourd-v4.md#length)
-- [normalize](geono-gnmat---gnmath.md#normalize)
-- [project](geono-gnmat---gnmath.md#project)
-- [reflect](geono-gnmat---gnmath.md#reflect)
-- [refract](geono-gnmat---gnmath.md#refract)
-- [scale](geono-gnmat---gnmath.md#scale)
-- [vabs](geono-gnmat---gnmath.md#vabs)
-- [vadd](geono-gnmat---gnmath.md#vadd)
-- [vceil](geono-gnmat---gnmath.md#vceil)
-- [vcos](geono-gnmat---gnmath.md#vcos)
-- [vdivide](geono-gnmat---gnmath.md#vdivide)
-- [vfloor](geono-gnmat---gnmath.md#vfloor)
-- [vfract](geono-gnmat---gnmath.md#vfract)
-- [vmax](geono-gnmat---gnmath.md#vmax)
-- [vmin](geono-gnmat---gnmath.md#vmin)
-- [vmodulo](geono-gnmat---gnmath.md#vmodulo)
-- [vmultiply](geono-gnmat---gnmath.md#vmultiply)
-- [vmultiply_add](geono-gnmat---gnmath.md#vmultiply_add)
-- [vsin](geono-gnmat---gnmath.md#vsin)
-- [vsnap](geono-gnmat---gnmath.md#vsnap)
-- [vsubtract](geono-gnmat---gnmath.md#vsubtract)
-- [vtan](geono-gnmat---gnmath.md#vtan)
-- [vwrap](geono-gnmat---gnmath.md#vwrap)
+- [cross_product](geono-gnmat---gnmath.md#cross_product) :white_small_square: [cross_product](geono-gnmat---gnmath.md#cross_product)
+- [distance](geono-gnmat---gnmath.md#distance) :white_small_square: [distance](geono-gnmat---gnmath.md#distance)
+- [dot_product](geono-gnmat---gnmath.md#dot_product) :white_small_square: [dot_product](geono-gnmat---gnmath.md#dot_product)
+- [faceforward](geono-gnmat---gnmath.md#faceforward) :white_small_square: [faceforward](geono-gnmat---gnmath.md#faceforward)
+- [length](demos-fourd-v4.md#length) :white_small_square: [length](demos-fourd-v4.md#length)
+- [normalize](geono-gnmat---gnmath.md#normalize) :white_small_square: [normalize](geono-gnmat---gnmath.md#normalize)
+- [project](geono-gnmat---gnmath.md#project) :white_small_square: [project](geono-gnmat---gnmath.md#project)
+- [reflect](geono-gnmat---gnmath.md#reflect) :white_small_square: [reflect](geono-gnmat---gnmath.md#reflect)
+- [refract](geono-gnmat---gnmath.md#refract) :white_small_square: [refract](geono-gnmat---gnmath.md#refract)
+- [scale](geono-gnmat---gnmath.md#scale) :white_small_square: [scale](geono-gnmat---gnmath.md#scale)
+- [vabs](geono-gnmat---gnmath.md#vabs) :white_small_square: [vabs](geono-gnmat---gnmath.md#vabs)
+- [vadd](geono-gnmat---gnmath.md#vadd) :white_small_square: [vadd](geono-gnmat---gnmath.md#vadd)
+- [vceil](geono-gnmat---gnmath.md#vceil) :white_small_square: [vceil](geono-gnmat---gnmath.md#vceil)
+- [vcos](geono-gnmat---gnmath.md#vcos) :white_small_square: [vcos](geono-gnmat---gnmath.md#vcos)
+- [vdivide](geono-gnmat---gnmath.md#vdivide) :white_small_square: [vdivide](geono-gnmat---gnmath.md#vdivide)
+- [vfloor](geono-gnmat---gnmath.md#vfloor) :white_small_square: [vfloor](geono-gnmat---gnmath.md#vfloor)
+- [vfract](geono-gnmat---gnmath.md#vfract) :white_small_square: [vfract](geono-gnmat---gnmath.md#vfract)
+- [vmax](geono-gnmat---gnmath.md#vmax) :white_small_square: [vmax](geono-gnmat---gnmath.md#vmax)
+- [vmin](geono-gnmat---gnmath.md#vmin) :white_small_square: [vmin](geono-gnmat---gnmath.md#vmin)
+- [vmodulo](geono-gnmat---gnmath.md#vmodulo) :white_small_square: [vmodulo](geono-gnmat---gnmath.md#vmodulo)
+- [vmultiply](geono-gnmat---gnmath.md#vmultiply) :white_small_square: [vmultiply](geono-gnmat---gnmath.md#vmultiply)
+- [vmultiply_add](geono-gnmat---gnmath.md#vmultiply_add) :white_small_square: [vmultiply_add](geono-gnmat---gnmath.md#vmultiply_add)
+- [vsin](geono-gnmat---gnmath.md#vsin) :white_small_square: [vsin](geono-gnmat---gnmath.md#vsin)
+- [vsnap](geono-gnmat---gnmath.md#vsnap) :white_small_square: [vsnap](geono-gnmat---gnmath.md#vsnap)
+- [vsubtract](geono-gnmat---gnmath.md#vsubtract) :white_small_square: [vsubtract](geono-gnmat---gnmath.md#vsubtract)
+- [vtan](geono-gnmat---gnmath.md#vtan) :white_small_square: [vtan](geono-gnmat---gnmath.md#vtan)
+- [vwrap](geono-gnmat---gnmath.md#vwrap) :white_small_square: [vwrap](geono-gnmat---gnmath.md#vwrap)
 - [nd](geono-nd.md#nd) :white_small_square: [vector_math](geono-nd.md#vector_math)
-- [StaticClass](macro-shade1-stati-staticclass.md#staticclass) :white_small_square: [vector_math](macro-shade1-stati-staticclass.md#vector_math)
-- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'vector_math' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Vector Rotate
 
@@ -2417,8 +2250,6 @@ You will find here how nodes are implemented
 - [Vector](geono-vector.md#vector) :white_small_square: [rotate_y](geono-vector.md#rotate_y)
 - [Vector](geono-vector.md#vector) :white_small_square: [rotate_z](geono-vector.md#rotate_z)
 - [Vector](geono-vector.md#vector) :white_small_square: [vector_rotate](geono-vector.md#vector_rotate)
-- [StaticClass](macro-shade1-stati-staticclass.md#staticclass) :white_small_square: [vector_rotate](macro-shade1-stati-staticclass.md#vector_rotate)
-- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'vector_rotate' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Vertex Neighbors
 
@@ -2445,26 +2276,12 @@ You will find here how nodes are implemented
 - [Geometry](geono-geometry.md#geometry) :white_small_square: [viewer](geono-geometry.md#viewer)
 - [nd](geono-nd.md#nd) :white_small_square: [viewer](geono-nd.md#viewer)
 
-#### Volume Absorption
-
-- [VolumeShader](macro-shade1-shade-volumeshader.md#volumeshader) :white_small_square: [Absorption](macro-shade1-shade-volumeshader.md#absorption)
-- [StaticClass](macro-shade1-stati-staticclass.md#staticclass) :white_small_square: [volume_absorption](macro-shade1-stati-staticclass.md#volume_absorption)
-- [VolumeShader](macro-shade1-shade-volumeshader.md#volumeshader) :white_small_square: [Absorption](macro-shade1-shade-volumeshader.md#absorption)
-- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'volume_absorption' in page 'snd'](macro-shade1-shade1-snd.md#snd)
-
 #### Volume Cube
 
 - [Volume](geono-volume.md#volume) :white_small_square: [Cube](geono-volume.md#cube)
 - [nd](geono-nd.md#nd) :white_small_square: [volume_cube](geono-nd.md#volume_cube)
 - [Volume](geono-volume.md#volume) :white_small_square: [Cube](geono-volume.md#cube)
 - [nd](geono-nd.md#nd) :white_small_square: [volume_cube](geono-nd.md#volume_cube)
-
-#### Volume Scatter
-
-- [VolumeShader](macro-shade1-shade-volumeshader.md#volumeshader) :white_small_square: [Scatter](macro-shade1-shade-volumeshader.md#scatter)
-- [StaticClass](macro-shade1-stati-staticclass.md#staticclass) :white_small_square: [volume_scatter](macro-shade1-stati-staticclass.md#volume_scatter)
-- [VolumeShader](macro-shade1-shade-volumeshader.md#volumeshader) :white_small_square: [Scatter](macro-shade1-shade-volumeshader.md#scatter)
-- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'volume_scatter' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Volume to Mesh
 
@@ -2487,8 +2304,6 @@ You will find here how nodes are implemented
 - [Texture](geono-texture.md#texture) :white_small_square: [Voronoi](geono-texture.md#voronoi)
 - [nd](geono-nd.md#nd) :white_small_square: [voronoi_texture](geono-nd.md#voronoi_texture)
 - [Texture](geono-texture.md#texture) :white_small_square: [Voronoi](geono-texture.md#voronoi)
-- [StaticClass](macro-shade1-stati-staticclass.md#staticclass) :white_small_square: [voronoi_texture](macro-shade1-stati-staticclass.md#voronoi_texture)
-- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'voronoi_texture' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### Wave Texture
 
@@ -2496,8 +2311,6 @@ You will find here how nodes are implemented
 - [Texture](geono-texture.md#texture) :white_small_square: [Wave](geono-texture.md#wave)
 - [nd](geono-nd.md#nd) :white_small_square: [wave_texture](geono-nd.md#wave_texture)
 - [Texture](geono-texture.md#texture) :white_small_square: [Wave](geono-texture.md#wave)
-- [StaticClass](macro-shade1-stati-staticclass.md#staticclass) :white_small_square: [wave_texture](macro-shade1-stati-staticclass.md#wave_texture)
-- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'wave_texture' in page 'snd'](macro-shade1-shade1-snd.md#snd)
 
 #### White Noise Texture
 
@@ -2505,5 +2318,3 @@ You will find here how nodes are implemented
 - [Texture](geono-texture.md#texture) :white_small_square: [WhiteNoise](geono-texture.md#whitenoise)
 - [nd](geono-nd.md#nd) :white_small_square: [white_noise_texture](geono-nd.md#white_noise_texture)
 - [Texture](geono-texture.md#texture) :white_small_square: [WhiteNoise](geono-texture.md#whitenoise)
-- [StaticClass](macro-shade1-stati-staticclass.md#staticclass) :white_small_square: [white_noise_texture](macro-shade1-stati-staticclass.md#white_noise_texture)
-- [snd](macro-shade1-shade1-snd.md#snd) :white_small_square: [Impossible to find the section 'white_noise_texture' in page 'snd'](macro-shade1-shade1-snd.md#snd)

@@ -1443,7 +1443,7 @@ class SplinePoint(Point):
 
     Methods of **SplinePoint** class are nodes which accept 'POINT' domain.
 
-    In addition, the nodes <*Curve of Point> and <*Offset Point in Curve> are implemented
+    In addition, the nodes <*Node Curve of Point> and <*Offset Point in Curve> are implemented
     in methods <#curve_index>, <#index_in_curve> and <#offset_in_curve>.
     """
 
@@ -2584,7 +2584,7 @@ class Spline(Domain):
 
     Methods of **Spline** class are nodes which accept a SPLINE or CURVE domain.
 
-    In addition, the node <*Points of Curve> is implemented as method <#points>.
+    In addition, the node <*Node Points of Curve> is implemented as method <#points>.
     """
 
     DOMAIN_NAME = 'CURVE'

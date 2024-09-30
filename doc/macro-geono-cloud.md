@@ -47,7 +47,7 @@ Nodes requiring a domain parameter, are implemented in the domain [points](macro
 > _type_: **Node**
 >
 
-> Node <&Domain Size>, component = 'POINTCLOUD'
+> Node ERROR: Node 'Size' not found, component = 'POINTCLOUD'
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Cloud](macro-geono-cloud.md#cloud) :black_small_square: [Content](macro-geono-cloud.md#content) :black_small_square: [Properties](macro-geono-cloud.md#properties)</sub>
 

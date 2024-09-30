@@ -28,7 +28,7 @@ node.geometry = cube
 > - using ***peer socket** naming convention where the **snake_case** name of
 >.  the other sockets is suffixed by '_'
 
-The example below shows how to access the to 'UV Map' socket of node <*Cube>:
+The example below shows how to access the to 'UV Map' socket of node [Cube](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/cube.html):
 
 ``` python
 # cube is the output socket 'Mesh' of the node 'Cube'
@@ -71,7 +71,7 @@ uv_map = cuve.uv_map_
 Diffuse(color=None, roughness=None, normal=None)
 ```
 
-> **node** : ERROR: Node 'Diffuse BSDF' not found
+Node 'Diffuse BSDF' (ShaderNodeBsdfDiffuse)
 
 #### Arguments:
 - **color** ( = None)
@@ -89,7 +89,7 @@ Diffuse(color=None, roughness=None, normal=None)
 Emission(color=None, strength=None)
 ```
 
-> **node** : ERROR: Node 'Emission' not found
+Node 'Emission' (ShaderNodeEmission)
 
 #### Arguments:
 - **color** ( = None)
@@ -106,7 +106,7 @@ Emission(color=None, strength=None)
 Glass(color=None, roughness=None, ior=None, normal=None, distribution='MULTI_GGX')
 ```
 
-> **node** : ERROR: Node 'Glass BSDF' not found
+Node 'Glass BSDF' (ShaderNodeBsdfGlass)
 - distribution in ('BECKMANN', 'GGX', 'MULTI_GGX')
 
 #### Arguments:
@@ -127,7 +127,7 @@ Glass(color=None, roughness=None, ior=None, normal=None, distribution='MULTI_GGX
 Glossy(color=None, roughness=None, anisotropy=None, rotation=None, normal=None, tangent=None, distribution='MULTI_GGX')
 ```
 
-> **node** : ERROR: Node 'Glossy BSDF' not found
+Node 'Glossy BSDF' (ShaderNodeBsdfAnisotropic)
 - distribution in ('BECKMANN', 'GGX', 'ASHIKHMIN_SHIRLEY', 'MULTI_GGX')
 
 #### Arguments:
@@ -150,7 +150,7 @@ Glossy(color=None, roughness=None, anisotropy=None, rotation=None, normal=None, 
 Holdout()
 ```
 
-> **node** : ERROR: Node 'Holdout' not found
+Node 'Holdout' (ShaderNodeHoldout)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Shader](macro-shade1-shade-shader.md#shader) :black_small_square: [Content](macro-shade1-shade-shader.md#content) :black_small_square: [Methods](macro-shade1-shade-shader.md#methods)</sub>
 
@@ -163,7 +163,7 @@ Holdout()
 Principled(base_color=None, metallic=None, roughness=None, ior=None, alpha=None, normal=None, subsurface_weight=None, subsurface_radius=None, subsurface_scale=None, subsurface_anisotropy=None, specular_ior_level=None, specular_tint=None, anisotropic=None, anisotropic_rotation=None, tangent=None, transmission_weight=None, coat_weight=None, coat_roughness=None, coat_ior=None, coat_tint=None, coat_normal=None, sheen_weight=None, sheen_roughness=None, sheen_tint=None, emission_color=None, emission_strength=None, thin_film_thickness=None, thin_film_ior=None, distribution='MULTI_GGX', subsurface_method='RANDOM_WALK')
 ```
 
-> **node** : ERROR: Node 'Principled BSDF' not found
+Node 'Principled BSDF' (ShaderNodeBsdfPrincipled)
 - distribution in ('GGX', 'MULTI_GGX')
 - subsurface_method in ('BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN')
 
@@ -210,7 +210,7 @@ Principled(base_color=None, metallic=None, roughness=None, ior=None, alpha=None,
 Refraction(color=None, roughness=None, ior=None, normal=None, distribution='BECKMANN')
 ```
 
-> **node** : ERROR: Node 'Refraction BSDF' not found
+Node 'Refraction BSDF' (ShaderNodeBsdfRefraction)
 - distribution in ('BECKMANN', 'GGX')
 
 #### Arguments:
@@ -231,7 +231,7 @@ Refraction(color=None, roughness=None, ior=None, normal=None, distribution='BECK
 Specular(base_color=None, specular=None, roughness=None, emissive_color=None, transparency=None, normal=None, clear_coat=None, clear_coat_roughness=None, clear_coat_normal=None)
 ```
 
-> **node** : ERROR: Node 'Specular BSDF' not found
+Node 'Specular BSDF' (ShaderNodeEeveeSpecular)
 
 #### Arguments:
 - **base_color** ( = None)
@@ -255,7 +255,7 @@ Specular(base_color=None, specular=None, roughness=None, emissive_color=None, tr
 SubsurfaceScattering(color=None, scale=None, radius=None, ior=None, roughness=None, anisotropy=None, normal=None, falloff='RANDOM_WALK')
 ```
 
-> **node** : ERROR: Node 'Subsurface Scattering' not found
+Node 'Subsurface Scattering' (ShaderNodeSubsurfaceScattering)
 - falloff in ('BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN')
 
 #### Arguments:
@@ -279,7 +279,7 @@ SubsurfaceScattering(color=None, scale=None, radius=None, ior=None, roughness=No
 Translucent(color=None, normal=None)
 ```
 
-> **node** : ERROR: Node 'Translucent BSDF' not found
+Node 'Translucent BSDF' (ShaderNodeBsdfTranslucent)
 
 #### Arguments:
 - **color** ( = None)
@@ -296,7 +296,7 @@ Translucent(color=None, normal=None)
 Transparent(color=None)
 ```
 
-> **node** : ERROR: Node 'Transparent BSDF' not found
+Node 'Transparent BSDF' (ShaderNodeBsdfTransparent)
 
 #### Arguments:
 - **color** ( = None)

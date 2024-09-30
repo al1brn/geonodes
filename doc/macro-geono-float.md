@@ -87,7 +87,8 @@ ceiling()
 
 > Ceiling
 
-[&SHADER]
+:sunrise: **ShaderNodes** only
+
 
 > [!IMPORTANT]
 > - **GeoNodes** : [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/float_to_integer.html)
@@ -129,7 +130,8 @@ equal(other, epsilon=None)
 
 > Equal to another value
 
-[&SHADER]
+:sunrise: **ShaderNodes** only
+
 
 > [!IMPORTANT]
 > - **GeoNodes** : [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
@@ -177,7 +179,8 @@ floor()
 
 > Floor
 
-[&SHADER]
+:sunrise: **ShaderNodes** only
+
 
 > [!IMPORTANT]
 > - **GeoNodes** : [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/float_to_integer.html)
@@ -222,7 +225,8 @@ greater_than(other)
 
 > Greater than another value
 
-[&SHADER]
+:sunrise: **ShaderNodes** only
+
 
 > [!IMPORTANT]
 > - **GeoNodes** : [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
@@ -272,7 +276,8 @@ less_than(other)
 
 > Less than another value
 
-[&SHADER]
+:sunrise: **ShaderNodes** only
+
 
 > [!IMPORTANT]
 > - **GeoNodes** : [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
@@ -323,7 +328,8 @@ out(name=None)
 
 > Connect to output
 
-[&SHADER]
+:sunrise: **ShaderNodes** only
+
 
 > [!IMPORTANT]
 > - Geometry Nodes : create a group output socket with the provided name
@@ -386,7 +392,8 @@ round()
 
 > Rounding
 
-[&SHADER]
+:sunrise: **ShaderNodes** only
+
 
 > [!IMPORTANT]
 > - **GeoNodes** : [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/float_to_integer.html)
@@ -466,7 +473,8 @@ truncate()
 
 > Truncate
 
-[&SHADER]
+:sunrise: **ShaderNodes** only
+
 
 > [!IMPORTANT]
 > - **GeoNodes** : [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/float_to_integer.html)

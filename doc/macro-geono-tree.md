@@ -153,7 +153,7 @@ new_input(bl_idname, name, subtype='NONE', value=None, min_value=None, max_value
 
 Create a new input socket.
 
-This is an **input socket** of the Tree, hence an **output socket** of the <&Group Input> node.
+This is an **input socket** of the Tree, hence an **output socket** of the ERROR: Node 'Input' not found node.
 
 #### Arguments:
 - **bl_idname** (_str_) : socket bl_idname - name (str) : Socket name - value (any = None) : Default value - min_value (any = None) : Minimum value - max_value (any = None) : Maxium value - description (str = None) : user tip
@@ -204,7 +204,7 @@ new_output(bl_idname, name)
 
 Create a new output socket.
 
-This is an **output socket** of the Tree, hence an input socket of the <&Group Output> node.
+This is an **output socket** of the Tree, hence an input socket of the [Output](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/output/output.html) node.
 
 #### Arguments:
 - **bl_idname** (_str_) : socket bl_idname - name (str) : Socket name

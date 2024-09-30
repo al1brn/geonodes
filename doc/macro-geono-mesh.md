@@ -62,7 +62,7 @@ CORNER domain
 > _type_: **Node**
 >
 
-> Node <&Domain Size>, component = 'MESH'
+> Node ERROR: Node 'Size' not found, component = 'MESH'
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](macro-geono-mesh.md#mesh) :black_small_square: [Content](macro-geono-mesh.md#content) :black_small_square: [Properties](macro-geono-mesh.md#properties)</sub>
 

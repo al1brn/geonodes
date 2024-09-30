@@ -134,7 +134,7 @@ class Socket(NodeCache):
         > - using ***peer socket** naming convention where the **snake_case** name of
         >.  the other sockets is suffixed by '_'
 
-        The example below shows how to access the to 'UV Map' socket of node <*Cube>:
+        The example below shows how to access the to 'UV Map' socket of node <*Node Cube>:
 
         ``` python
         # cube is the output socket 'Mesh' of the node 'Cube'

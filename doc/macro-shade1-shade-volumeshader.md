@@ -28,7 +28,7 @@ node.geometry = cube
 > - using ***peer socket** naming convention where the **snake_case** name of
 >.  the other sockets is suffixed by '_'
 
-The example below shows how to access the to 'UV Map' socket of node <*Cube>:
+The example below shows how to access the to 'UV Map' socket of node [Cube](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/cube.html):
 
 ``` python
 # cube is the output socket 'Mesh' of the node 'Cube'
@@ -66,7 +66,7 @@ uv_map = cuve.uv_map_
 Absorption(color=None, density=None)
 ```
 
-> **node** : ERROR: Node 'Volume Absorption' not found
+Node 'Volume Absorption' (ShaderNodeVolumeAbsorption)
 
 #### Arguments:
 - **color** ( = None)
@@ -83,7 +83,7 @@ Absorption(color=None, density=None)
 Principled(color=None, color_attribute=None, density=None, density_attribute=None, anisotropy=None, absorption_color=None, emission_strength=None, emission_color=None, blackbody_intensity=None, blackbody_tint=None, temperature=None, temperature_attribute=None)
 ```
 
-> **node** : ERROR: Node 'Principled Volume' not found
+Node 'Principled Volume' (ShaderNodeVolumePrincipled)
 
 #### Arguments:
 - **color** ( = None)
@@ -110,7 +110,7 @@ Principled(color=None, color_attribute=None, density=None, density_attribute=Non
 Scatter(color=None, density=None, anisotropy=None)
 ```
 
-> **node** : ERROR: Node 'Volume Scatter' not found
+Node 'Volume Scatter' (ShaderNodeVolumeScatter)
 
 #### Arguments:
 - **color** ( = None)

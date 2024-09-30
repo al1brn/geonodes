@@ -10,7 +10,7 @@ Spline(geometry)
 
 Methods of **Spline** class are nodes which accept a SPLINE or CURVE domain.
 
-In addition, the node <*Points of Curve> is implemented as method [points](macro-geono-spline.md#points).
+In addition, the node [Points of Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/topology/points_of_curve.html) is implemented as method [points](macro-geono-spline.md#points).
 
 #### Arguments:
 - **geometry**
@@ -108,7 +108,7 @@ index = curve.parameter.index
 points(curve_index=None, weights=None, sort_index=None)
 ```
 
-> Socket 'Point Index' of node <&Points of curve>
+> Socket 'Point Index' of node ERROR: Node 'of curve' not found
 
 #### Arguments:
 - **curve_index** (_Integer_ = None) : socket 'Curve Index'

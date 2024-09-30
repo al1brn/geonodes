@@ -281,7 +281,7 @@ ceil(value, use_clamp=None)
 
 Ceiling.
 
-> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html), [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/float_to_integer.html)
+> Node ERROR: Node 'Math, Float to Integer' not found
 
 Implements 'Math' node in ShaderNodes and 'Float to Integer' for GeoNodes.
 
@@ -588,7 +588,7 @@ floor(value, use_clamp=None)
 
 Floor.
 
-> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html), [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/float_to_integer.html)
+> Node ERROR: Node 'Math, Float to Integer' not found
 
 Implements 'Math' node in ShaderNodes and 'Float to Integer' for GeoNodes.
 
@@ -1317,7 +1317,7 @@ round(value, use_clamp=None)
 
 Round.
 
-> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html), [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/float_to_integer.html)
+> Node ERROR: Node 'Math, Float to Integer' not found
 
 Implements 'Math' node in ShaderNodes and 'Float to Integer' for GeoNodes.
 
@@ -1602,7 +1602,7 @@ trunc(value, use_clamp=None)
 
 Truncate.
 
-> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html), [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/float_to_integer.html)
+> Node ERROR: Node 'Math, Float to Integer' not found
 
 Implements 'Math' node in ShaderNodes and 'Float to Integer' for GeoNodes.
 

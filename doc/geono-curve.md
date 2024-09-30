@@ -57,7 +57,7 @@ Nodes requiring a domain parameter, are implemented in one of the two domains of
 > _type_: **Node**
 >
 
-> Node <&Domain Size>, component = 'CURVE'
+> Node ERROR: Node 'Size' not found, component = 'CURVE'
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](geono-curve.md#curve) :black_small_square: [Content](geono-curve.md#content) :black_small_square: [Properties](geono-curve.md#properties)</sub>
 

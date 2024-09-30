@@ -52,7 +52,7 @@ Nodes requiring a domain parameter, are implemented in the domain [insts](geono-
 > _type_: **Node**
 >
 
-> Node <&Domain Size>, component = 'INSTANCES'
+> Node ERROR: Node 'Size' not found, component = 'INSTANCES'
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Instances](geono-instances.md#instances) :black_small_square: [Content](geono-instances.md#content) :black_small_square: [Properties](geono-instances.md#properties)</sub>
 

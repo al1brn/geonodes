@@ -133,7 +133,7 @@ curve(factor=None, keep=None)
 equal(other)
 ```
 
-> **node** : [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+Node 'Compare' (FunctionNodeCompare)
 
 > Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
@@ -176,7 +176,7 @@ Factor(value=0, name='Factor', min=100, max=100, tip=None)
 greater_equal(other)
 ```
 
-> **node** : [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+Node 'Compare' (FunctionNodeCompare)
 
 > Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
@@ -199,7 +199,7 @@ greater_equal(other)
 greater_than(other)
 ```
 
-> **node** : [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+Node 'Compare' (FunctionNodeCompare)
 
 > Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
@@ -222,7 +222,7 @@ greater_than(other)
 less_equal(other)
 ```
 
-> **node** : [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+Node 'Compare' (FunctionNodeCompare)
 
 > Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
@@ -245,7 +245,7 @@ less_equal(other)
 less_than(other)
 ```
 
-> **node** : [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+Node 'Compare' (FunctionNodeCompare)
 
 > Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
@@ -509,7 +509,7 @@ with GeoNodes("Named Attributes"):
 not_equal(other)
 ```
 
-> **node** : [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+Node 'Compare' (FunctionNodeCompare)
 
 > Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 

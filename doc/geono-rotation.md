@@ -67,7 +67,7 @@ rot = Rotation(name="User input").  # Create a new Rotation group input
 > _type_: **Float**
 >
 
-Socket 'X' of node <&Separate XYZ>
+Socket 'X' of node ERROR: Node 'XYZ' not found
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Rotation](geono-rotation.md#rotation) :black_small_square: [Content](geono-rotation.md#content) :black_small_square: [Properties](geono-rotation.md#properties)</sub>
 
@@ -76,7 +76,7 @@ Socket 'X' of node <&Separate XYZ>
 > _type_: **Float**
 >
 
-Socket 'Y' of node <&Separate XYZ>
+Socket 'Y' of node ERROR: Node 'XYZ' not found
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Rotation](geono-rotation.md#rotation) :black_small_square: [Content](geono-rotation.md#content) :black_small_square: [Properties](geono-rotation.md#properties)</sub>
 
@@ -85,7 +85,7 @@ Socket 'Y' of node <&Separate XYZ>
 > _type_: **Float**
 >
 
-Socket 'Z' of node <&Separate XYZ>
+Socket 'Z' of node ERROR: Node 'XYZ' not found
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Rotation](geono-rotation.md#rotation) :black_small_square: [Content](geono-rotation.md#content) :black_small_square: [Properties](geono-rotation.md#properties)</sub>
 
@@ -366,7 +366,7 @@ AxisAngleToRotation(axis=(0, 0, 1), angle=0)
 Combine(x, y, z)
 ```
 
-Constructor node <&Combine XYZ>
+Constructor node ERROR: Node 'XYZ' not found
 
 #### Arguments:
 - **x**
@@ -720,7 +720,7 @@ QuaternionToRotation(w=0, x=0, y=0, z=0)
 Random(min=None, max=None, id=None, seed=None)
 ```
 
-Constructor node <&Random Value>
+Constructor node [Value](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../modeling/geometry_nodes/input/constant/value.html)
 
 #### Arguments:
 - **min** ( = None)
