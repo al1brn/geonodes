@@ -202,7 +202,21 @@ def geonodes_documentation(write_files=True):
     
     for node_name, refs in s_nodes.items():
         node_section = cross_page.new(node_name.replace('/', ' '), in_toc=True, depth_shift=2)
+        done = []
         for class_, member_ in refs:
+            
+            go = True
+            
+            for a, b in done:
+                if a is class_ and b is member_:
+                    go = False
+                    break
+            if not go:
+                continue
+            
+            done.append((class_, member_))
+            
+            
             if class_ is None:
                 node_section.write(f"- <!{member_.title}>\n")
             else:
