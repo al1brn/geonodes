@@ -208,7 +208,8 @@ def geonodes_documentation(write_files=True):
                     continue
                 
                 print(class_.hidden, class_.title, member_.title)
-                node_section.write(f"- <!{class_.title}> :white_small_square: <!{class_.title}#{member_.title}>\n")
+                #node_section.write(f"- <!{class_.title}> :white_small_square: <!{class_.title}#{member_.title}>\n")
+                node_section.write(f"- //{class_.title}// :white_small_square: //{class_.title}#{member_.title}//\n")
 
     cross_page = doc.top_section.new_page("Shader Cross Reference",
             in_toc=True, parent_toc_depth=0,
