@@ -54,7 +54,7 @@ with Zone({"First Socket": Geometry()}, second_socket=Float(3.14)) as zone:
     ...
 ```
 
-<img src="images/zone_sockets.png center 600">
+<img src="images/zone_sockets.png" class="center" width="{opt}">
 
 > [!NOTE]
 > The sockets are created on the two nodes and, in both nodes, as input and output sockets.
