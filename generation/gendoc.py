@@ -226,6 +226,8 @@ def geonodes_documentation(write_files=True):
             if class_ is None:
                 node_section.write(f"- <!{member_.title}>\n")
             else:
+                if class_.hidden:
+                    continue
                 node_section.write(f"- <!{class_.title}> :white_small_square: <!{class_.title}#{member_.title}>\n")
 
     # -----------------------------------------------------------------------------------------------------------------------------
