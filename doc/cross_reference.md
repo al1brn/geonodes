@@ -1559,9 +1559,7 @@ You will find here how nodes are implemented
 
 - [nd](geono-nd.md#nd) :white_small_square: [rotation](geono-nd.md#rotation)
 - [Rotation](cross_reference.md#rotation) :white_small_square: [Rotation](cross_reference.md#rotation)
-- [Rotation](cross_reference.md#rotation) :white_small_square: [Rotation](cross_reference.md#rotation)
 - [nd](geono-nd.md#nd) :white_small_square: [rotation](geono-nd.md#rotation)
-- [Rotation](cross_reference.md#rotation) :white_small_square: [Rotation](cross_reference.md#rotation)
 - [Rotation](cross_reference.md#rotation) :white_small_square: [Rotation](cross_reference.md#rotation)
 
 #### Rotation to Axis Angle

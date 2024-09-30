@@ -81,10 +81,14 @@ def cross_ref(tree, name, section):
         cref = []
         nodes[name] = cref
         
+    # ----- Could already exist due to intermediary classes hiding
+    
+    for a, b in cref:
+        if a is class_ and b is section:
+            return
+        
     cref.append((class_, section))
     
-    #print("CROSS REF", class_.title, section.title)
-    #print("->", type(cref[0]), ':', type(cref[0][0]), type(cref[0][1]), cref[0][0].title, cref[0][1].title)
 
 # =============================================================================================================================
 # Regular expressions
