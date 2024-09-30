@@ -72,6 +72,9 @@ def cross_ref(tree, name, section):
     while class_ is not None and class_.tag != 'Classes':
         class_ = class_.parent
         
+    if class_ is not None and class_.hidden:
+        return
+        
     cref = nodes.get(name)
     if cref is None:
         cref = []
