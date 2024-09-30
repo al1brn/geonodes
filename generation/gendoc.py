@@ -164,6 +164,15 @@ def geonodes_documentation(write_files=True):
     print("Replacements...")
     child_iter = doc.top_section.all_values()
     for section in child_iter:
+        
+        
+        
+        
+        break
+    
+    
+    
+        
         if section.is_hidden:
             child_iter.no_child()
             continue
@@ -177,8 +186,13 @@ def geonodes_documentation(write_files=True):
         section.comment = ctag.sub(  lambda m: tag_replace(  m, section), section.comment)
         section.comment = cbnode.sub(lambda m: bnode_replace(m, section), section.comment)
         
+    doc.set_hook(tag_expr, tag_replace)
+    doc.set_hook(bnode_expr, bnode_replace)
+        
     # -----------------------------------------------------------------------------------------------------------------------------
     # Add the cross reference page
+    
+    """
     
     print("Cross references...")    
     cross_page = doc.top_section.new_page("Cross Reference",
@@ -204,13 +218,21 @@ def geonodes_documentation(write_files=True):
         node_section = cross_page.new(node_name.replace('/', ' '), in_toc=True, depth_shift=2)
         for class_, member_ in refs:
             
-            if class_ is not None and class_.is_hidden:
+            if class_ is not None:
+                if class_.title == 'VectRot':
+                    for k in dir(class_):
+                        if k.startswith('__'):
+                            continue
+                        print(f"{k:20s}: {getattr(class_, k)}")
+                    aaa
+                    print(class_.title, member_.title, ' ? ', class_.hidden)
                 continue
             
             if class_ is None:
                 node_section.write(f"- <!{member_.title}>\n")
             else:
                 node_section.write(f"- <!{class_.title}> :white_small_square: <!{class_.title}#{member_.title}>\n")
+    """
 
     # -----------------------------------------------------------------------------------------------------------------------------
     # Finally create documentation
