@@ -19,6 +19,7 @@
 - **S** : [Simulation](geono-simulation.md#simulation) :black_small_square: [Socket](geono-socket.md#socket) :black_small_square: [Spline](geono-spline.md#spline) :black_small_square: [SplinePoint](geono-splinepoint.md#splinepoint) :black_small_square: [String](geono-string.md#string)
 - **T** : [Texture](geono-texture.md#texture) :black_small_square: [Tree](geono-tree.md#tree)
 - **V** : [Vector](geono-vector.md#vector) :black_small_square: [Vertex](geono-vertex.md#vertex) :black_small_square: [Volume](geono-volume.md#volume)
+- **Z** : [Zone](geono-zone.md#zone)
 
 ## Modules
 
@@ -72,5 +73,6 @@
 - [Vector](geono-vector.md#vector)
 - [Vertex](geono-vertex.md#vertex)
 - [Volume](geono-volume.md#volume)
+- [Zone](geono-zone.md#zone)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [geonodes](geono---geonodes.md#geonodes) :black_small_square: [Content](geono---geonodes.md#content) :black_small_square: [geonodes](geono---geonodes.md#geonodes)</sub>

@@ -2,31 +2,30 @@
 
 $ DOC toc_max_depth = 1
 
-### Tree
+### Initialize a tree
 
-Scripting nodes starts by instantianting a <!Tree>, either a <!GeoNodes"Geometry nodes tree> or
-a <!ShaderNodes"Shader nodes tree>:
+- <!GeoNodes> and <!ShaderNodes> : scripting nodes starts by instantianting a <!Tree>
+- <!Break> : exiting from a tree context can be done by raising this exception
 
-Exiting from a tree context can be done by raising the <!Break> exception.
+### Create nodes
 
-### Node class
+- <!Node> : base class to create any node in a tree
+- <!Group> : create a <*Node Group> node
+- <!GroupF> : a different way to create a <*Node Group> node
+- <!Layout> : to place nodes in a frame
+- <!Repeat> and <!Simulation> : create a <!Zone>
 
-Once the current tree instantiated, nodes can be created by instancianting a <!Node> class, for instance:
+### Libraries
 
-<!Group> is used to call a group. <!GroupF> does the same by exposing the **snake_name** name of
-the called group.
-
-Use <!Layout> class to group nodes in a Layout:
-
-Zones are create using <!Repeat> and <!Simulation>.
-
-The special class <!nd> (for _nodes_) exposes all nodes by the **snake_case** name.
-
-Use <!snd> (for _shader nodes_) when scripting <!ShaderNodes>.
+- <!gnmath> : math library providing mathematical functions coming from nodes
+  <*Node Math>, <*Node Vector Math> and <*Node Boolean Math>
+- <!nd> (for _nodes_) : this special class expses one method or property per node,
+  especially useful for input nodes such as <*Node Index> or <*Node Position>
+- <!snd> (for _shader nodes_) : same as <!nd> for shader node
 
 ### Sockets
 
-A better and more pythonistic way to script nodes, is to use a <!Socket> subclass among:
+Rather than using <!Node> class, scripting nodes is done by using <!Socket> classes:
 
 - Data sockets:
   - <!Boolean>
@@ -66,9 +65,6 @@ Geometries have specific <!Domain>:
 - <!CloudPoint> (<!Cloud> <!Cloud#points> property)
 - <!Instance> (<!Instances> <!Instances#insts> property)
 
-#### maths
-
-The module <!gnmath> provides math functions and be uses as standard python **math** library.
 """
 
 import numpy as np
@@ -86,7 +82,7 @@ d360   = tau
 e      = np.e
 
 from .geonodes.treeclass import Layout, Break, Tree, Node, Group, GroupF
-from .geonodes.zones import Repeat, Simulation
+from .geonodes.zones import Zone, Repeat, Simulation
 
 from .geonodes.geonodes import GeoNodes
 

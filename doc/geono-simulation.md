@@ -1,111 +1,49 @@
 # Simulation
 
+> Bases classes: [Zone](geono-zone.md#zone)
+
 ``` python
 Simulation(sockets={}, **snake_case_sockets)
 ```
 
 > Simulation zone
 
-> See ['Zone' not found]()
+> See [Zone](geono-zone.md#zone)
+
+``` python
+from geonodes import *
+
+with GeoNodes("Demo Simulation"):
+
+    cloud = Cloud.Points(count=100, position=Vector.Random(-5, 5))
+
+    with Simulation(cloud=cloud, index=0) as sim_zone:
+
+        # Current points
+        cloud = sim_zone.cloud
+
+        # Get the nearest index
+        index = nd.index_of_nearest(position=nd.position).index
+
+        # Nearest position
+        nearest_pos = cloud.points.sample_index(nd.position, index=index)
+
+        # Direction
+        v = (nearest_pos - nd.position).normalize()
+
+        #cloud.points.offset = v.normalize()*(dist-.5)/2 + Vector.Random(-.2, .2, seed=nd.scene_time.frame)
+        cloud.points.offset = v*.1 + Vector.Random(-.2, .2, seed=nd.scene_time.frame)
+
+        sim_zone.cloud = cloud
+
+    # Result to output
+    sim_zone.cloud.out()
+```
 
 #### Arguments:
 - **sockets** (_dict_ = {}) : sockets to create
 - **snake_case_sockets** : sockets to create
 
-## Content
+### Inherited
 
-- [init_zone](geono-simulation.md#init_zone)
-
-## Methods
-
-
-
-----------
-### init_zone()
-
-> method
-
-``` python
-init_zone(sockets={}, create_geometry=True, **snake_case_sockets)
-```
-
-> Two nodes zone
-
-**Zone** is the root class for [Simulation](geono-simulation.md#simulation) and [Repeat](geono-repeat.md#repeat) zones.
-
-#### With block
-
-A **Zone** is intended to be used in a **with** block:
-
-``` python
-with Zone(...) as zone:
-    ...
-```
-
-#### Sockets definition
-
-The zone sockets can be defined in two ways:
-- using the **sockets** dict argument
-- using the **snake_case_sockets** key word arguments
-
-````python
-# Create a zone with 2 sockets:
-# - First Socket
-# - second_ocket
-with Zone(socket={"First Socket": Float(3.14)}, second_socket=Geometry()) as zone:
-    ...
-```
-
-> [!NOTE]
-> The sockets are created on the two nodes and, in both nodes, as input and output sockets.
-> Hence, a single name correspond two 4 sockets:
-> - input socket of the first node
-> - output socket of the first node
-> - input socket of the second node
-> - output socket of the second node
-
-#### Getting and setting zone sockets
-
-Zone sockets are accessed through their **snake_case** name whatever the manner they have
-been initialized:
-
-``` python
-with Zone(socket={"First Socket": Float(3.14)}, second_socket=Geometry()) as zone:
-    a = zone.first_socket
-    b = zone.second_socket
-```
-
-Inside the **with** block:
-- **getting** a socket: output socket of the first node
-- **setting** a socket: input socket of the second node
-
-Outside the **with** block:
-- **getting** a socket: output socket of the second node
-- **setting** a socket: Error
-
-Even if it is not easy to describe, this is in fact quite straightforward:
-
-``` python
-with Repeat(geometry=None, index=0, iterations=10) as repeat_zone:
-
-    # Value of the current index
-    index = repeat_zone.index
-
-    # ...
-
-    # Update the index for next loop
-    repeat_zone.index = index + 1
-
-    # Incrementing is also valid
-    repeat_zone.index += 1
-
-# Outside the block, we have accees to the result of the loop
-geo = repeat_zone.geometry
-```
-
-#### Arguments:
-- **sockets** (_dict_ = {}) : sockets to create
-- **create_geometry** (_bool_ = True) : ensure the 'Geometry' socket is created
-- **snake_case_sockets** : sockets to create
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Simulation](geono-simulation.md#simulation) :black_small_square: [Content](geono-simulation.md#content) :black_small_square: [Methods](geono-simulation.md#methods)</sub>
+[\_\_enter__](geono-zone.md#__enter__) :black_small_square: [\_\_exit__](geono-zone.md#__exit__) :black_small_square: [\_\_getattr__](geono-zone.md#__getattr__) :black_small_square: [init_zone](geono-zone.md#init_zone) :black_small_square: [\_\_setattr__](geono-zone.md#__setattr__) :black_small_square: [\_\_str__](geono-zone.md#__str__) :black_small_square:

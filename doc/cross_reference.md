@@ -160,7 +160,7 @@ You will find here how nodes are implemented
 
 #### Combine Color
 
-- [Color](geono-color.md#color) :white_small_square: [Impossible to find the section 'Color' in page 'Color'](geono-color.md#color)
+- [Color](geono-color.md#color) :white_small_square: [Color](geono-color.md#color)
 - [Color](geono-color.md#color) :white_small_square: [Combine](geono-color.md#combine)
 - [Color](geono-color.md#color) :white_small_square: [CombineHSL](geono-color.md#combinehsl)
 - [Color](geono-color.md#color) :white_small_square: [CombineHSV](geono-color.md#combinehsv)
@@ -171,7 +171,7 @@ You will find here how nodes are implemented
 #### Combine Matrix
 
 - [nd](geono-nd.md#nd) :white_small_square: [combine_matrix](geono-nd.md#combine_matrix)
-- [Matrix](geono-matrix.md#matrix) :white_small_square: [Impossible to find the section 'Matrix' in page 'Matrix'](geono-matrix.md#matrix)
+- [Matrix](geono-matrix.md#matrix) :white_small_square: [Matrix](geono-matrix.md#matrix)
 - [Matrix](geono-matrix.md#matrix) :white_small_square: [Combine](geono-matrix.md#combine)
 - [Matrix](geono-matrix.md#matrix) :white_small_square: [FromArray](geono-matrix.md#fromarray)
 
@@ -183,8 +183,8 @@ You will find here how nodes are implemented
 #### Combine XYZ
 
 - [nd](geono-nd.md#nd) :white_small_square: [combine_xyz](geono-nd.md#combine_xyz)
-- [Rotation](geono-rotation.md#rotation) :white_small_square: [Impossible to find the section 'Rotation' in page 'Rotation'](geono-rotation.md#rotation)
-- [Vector](geono-vector.md#vector) :white_small_square: [Impossible to find the section 'Vector' in page 'Vector'](geono-vector.md#vector)
+- [Rotation](geono-rotation.md#rotation) :white_small_square: [Rotation](geono-rotation.md#rotation)
+- [Vector](geono-vector.md#vector) :white_small_square: [Vector](geono-vector.md#vector)
 - [snd](shade-shade1-snd.md#snd) :white_small_square: [combine_xyz](shade-shade1-snd.md#combine_xyz)
 
 #### Compare
@@ -431,7 +431,7 @@ You will find here how nodes are implemented
 #### Euler to Rotation
 
 - [nd](geono-nd.md#nd) :white_small_square: [euler_to_rotation](geono-nd.md#euler_to_rotation)
-- [Rotation](geono-rotation.md#rotation) :white_small_square: [Impossible to find the section 'Rotation' in page 'Rotation'](geono-rotation.md#rotation)
+- [Rotation](geono-rotation.md#rotation) :white_small_square: [Rotation](geono-rotation.md#rotation)
 - [Rotation](geono-rotation.md#rotation) :white_small_square: [EulerToRotation](geono-rotation.md#eulertorotation)
 - [Rotation](geono-rotation.md#rotation) :white_small_square: [FromEuler](geono-rotation.md#fromeuler)
 
@@ -811,7 +811,7 @@ You will find here how nodes are implemented
 
 #### Menu Switch
 
-- [Menu](geono-menu.md#menu) :white_small_square: [Impossible to find the section 'Menu' in page 'Menu'](geono-menu.md#menu)
+- [Menu](geono-menu.md#menu) :white_small_square: [Menu](geono-menu.md#menu)
 - [Socket](geono-socket.md#socket) :white_small_square: [MenuSwitch](geono-socket.md#menuswitch)
 - [Socket](geono-socket.md#socket) :white_small_square: [menu_switch](geono-socket.md#menu_switch)
 - [nd](geono-nd.md#nd) :white_small_square: [menu_switch](geono-nd.md#menu_switch)
@@ -1091,7 +1091,7 @@ You will find here how nodes are implemented
 
 #### RGB
 
-- [Color](geono-color.md#color) :white_small_square: [Impossible to find the section 'Color' in page 'Color'](geono-color.md#color)
+- [Color](geono-color.md#color) :white_small_square: [Color](geono-color.md#color)
 
 #### RGB Curves
 
@@ -1543,8 +1543,8 @@ You will find here how nodes are implemented
 
 #### Value
 
-- [Float](geono-float.md#float) :white_small_square: [Impossible to find the section 'Float' in page 'Float'](geono-float.md#float)
-- [Integer](geono-integer.md#integer) :white_small_square: [Impossible to find the section 'Integer' in page 'Integer'](geono-integer.md#integer)
+- [Float](geono-float.md#float) :white_small_square: [Float](geono-float.md#float)
+- [Integer](geono-integer.md#integer) :white_small_square: [Integer](geono-integer.md#integer)
 
 #### Value to String
 

@@ -3,31 +3,30 @@
 > Scripting nodes
 
 
-### Tree
+### Initialize a tree
 
-Scripting nodes starts by instantianting a [Tree](geono-tree.md#tree), either a [Geometry nodes tree](geono-geono-geonodes.md#geonodes) or
-a [Shader nodes tree](shade-shade1-shadernodes.md#shadernodes):
+- [GeoNodes](geono-geono-geonodes.md#geonodes) and [ShaderNodes](shade-shade1-shadernodes.md#shadernodes) : scripting nodes starts by instantianting a [Tree](geono-tree.md#tree)
+- [Break](geono-break.md#break) : exiting from a tree context can be done by raising this exception
 
-Exiting from a tree context can be done by raising the [Break](geono-break.md#break) exception.
+### Create nodes
 
-### Node class
+- [Node](geono-node.md#node) : base class to create any node in a tree
+- [Group](geono-group.md#group) : create a <*Node Group> node
+- [GroupF](geono-groupf.md#groupf) : a different way to create a <*Node Group> node
+- [Layout](geono-layout.md#layout) : to place nodes in a frame
+- [Repeat](geono-repeat.md#repeat) and [Simulation](geono-simulation.md#simulation) : create a [Zone](geono-zone.md#zone)
 
-Once the current tree instantiated, nodes can be created by instancianting a [Node](geono-node.md#node) class, for instance:
+### Libraries
 
-[Group](geono-group.md#group) is used to call a group. [GroupF](geono-groupf.md#groupf) does the same by exposing the **snake_name** name of
-the called group.
-
-Use [Layout](geono-layout.md#layout) class to group nodes in a Layout:
-
-Zones are create using [Repeat](geono-repeat.md#repeat) and [Simulation](geono-simulation.md#simulation).
-
-The special class [nd](geono-nd.md#nd) (for _nodes_) exposes all nodes by the **snake_case** name.
-
-Use [snd](shade-shade1-snd.md#snd) (for _shader nodes_) when scripting [ShaderNodes](shade-shade1-shadernodes.md#shadernodes).
+- [gnmath](geono-gnmat---gnmath.md#gnmath) : math library providing mathematical functions coming from nodes
+  <*Node Math>, <*Node Vector Math> and <*Node Boolean Math>
+- [nd](geono-nd.md#nd) (for _nodes_) : this special class expses one method or property per node,
+  especially useful for input nodes such as <*Node Index> or <*Node Position>
+- [snd](shade-shade1-snd.md#snd) (for _shader nodes_) : same as [nd](geono-nd.md#nd) for shader node
 
 ### Sockets
 
-A better and more pythonistic way to script nodes, is to use a [Socket](geono-socket.md#socket) subclass among:
+Rather than using [Node](geono-node.md#node) class, scripting nodes is done by using [Socket](geono-socket.md#socket) classes:
 
 - Data sockets:
   - [Boolean](geono-boolean.md#boolean)
@@ -66,10 +65,6 @@ Geometries have specific [Domain](geono-domain.md#domain):
 - [Spline](geono-spline.md#spline) ([Curve](geono-curve.md#curve) [splines](geono-curve.md#splines) property)
 - [CloudPoint](geono-cloudpoint.md#cloudpoint) ([Cloud](geono-cloud.md#cloud) [points](geono-cloud.md#points) property)
 - [Instance](geono-instance.md#instance) ([Instances](geono-instances.md#instances) [insts](geono-instances.md#insts) property)
-
-#### maths
-
-The module [gnmath](geono-gnmat---gnmath.md#gnmath) provides math functions and be uses as standard python **math** library.
 
 ## Content
 
@@ -116,6 +111,7 @@ The module [gnmath](geono-gnmat---gnmath.md#gnmath) provides math functions and 
   - [Vector](geono-vector.md#vector)
   - [Vertex](geono-vertex.md#vertex)
   - [Volume](geono-volume.md#volume)
+  - [Zone](geono-zone.md#zone)
 - [shadernodes](shade---shadernodes.md#shadernodes)
   - [shaderclass](shade-shade---shaderclass.md#shaderclass)
   - [shadernodes](shade-shade1---shadernodes.md#shadernodes)

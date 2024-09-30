@@ -708,7 +708,7 @@ class Vector(VectRot):
 
         > [!NOTE]
         > - <!GeoNodes> : the Vector is plug as group output
-        > - <!ShaderNoder> : if **name** argument is None, the vecteur is plugged
+        > - <!ShaderNodes> : if **name** argument is None, the vecteur is plugged
         >.  into the `Displacement` socket of <&ShaderNode &Material Output>,
         >   otherwise it is plugged to a <&ShaderNode AOV Output> node.
 
