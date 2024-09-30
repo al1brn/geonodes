@@ -96,7 +96,7 @@ instances.insts.scale = {'Scale': (1, 2, 3), 'Center': (10, 11, 12), 'Local Spac
 > Transform property
 
 - getter : [Instance Transform](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_transform.html)
-- setter : <img src="Node Set Instance Transform">
+- setter : <img src="images/Node Set Instance Transform">
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Instance](geono-instance.md#instance) :black_small_square: [Content](geono-instance.md#content) :black_small_square: [Properties](geono-instance.md#properties)</sub>
 
