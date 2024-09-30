@@ -226,8 +226,6 @@ You will find here how nodes are implemented
 - <!Matrix> :white_small_square: <!Matrix#Named>
 - <!Matrix> :white_small_square: <!Matrix#NamedAttribute>
 - <!nd> :white_small_square: <!nd#named_attribute>
-- <!ValueSocket> :white_small_square: <!ValueSocket#Named>
-- <!ValueSocket> :white_small_square: <!ValueSocket#NamedAttribute>
 - <!nd> :white_small_square: <!nd#named_attribute>
 
 #### Random Value

@@ -93,16 +93,11 @@ You will find here how nodes are implemented
 - <!Vector> :white_small_square: <!Vector#y>
 - <!Vector> :white_small_square: <!Vector#z>
 - <!Vector> :white_small_square: <!Vector#Combine>
-- <!VectRot> :white_small_square: <!VectRot#x>
-- <!VectRot> :white_small_square: <!VectRot#y>
-- <!VectRot> :white_small_square: <!VectRot#z>
-- <!VectRot> :white_small_square: <!VectRot#Combine>
 
 #### Value
 
 - <!Rotation> :white_small_square: <!Rotation#Random>
 - <!Vector> :white_small_square: <!Vector#Random>
-- <!VectRot> :white_small_square: <!VectRot#Random>
 
 #### of curve
 
