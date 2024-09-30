@@ -46,13 +46,15 @@ The zone sockets can be defined in two ways:
 - using the **sockets** dict argument
 - using the **snake_case_sockets** key word arguments
 
-````python
+``` python
 # Create a zone with 2 sockets:
 # - First Socket
-# - second_ocket
-with Zone(socket={"First Socket": Float(3.14)}, second_socket=Geometry()) as zone:
+# - second_socket
+with Zone({"First Socket": Geometry()}, second_socket=Float(3.14)) as zone:
     ...
 ```
+
+<img src="zone_sockets.png center 600">
 
 > [!NOTE]
 > The sockets are created on the two nodes and, in both nodes, as input and output sockets.
@@ -68,7 +70,7 @@ Zone sockets are accessed through their **snake_case** name whatever the manner 
 been initialized:
 
 ``` python
-with Zone(socket={"First Socket": Float(3.14)}, second_socket=Geometry()) as zone:
+with Zone({"First Socket": Geometry()}, second_socket=Float(3.14)) as zone:
     a = zone.first_socket
     b = zone.second_socket
 ```
@@ -102,8 +104,8 @@ geo = repeat_zone.geometry
 ```
 
 #### Arguments:
-- **sockets** (_dict_ = {}) : sockets to create
+- **sockets** (_dict_ = {}) : sockets to create, string names
 - **create_geometry** (_bool_ = True) : ensure the 'Geometry' socket is created
-- **snake_case_sockets** : sockets to create
+- **snake_case_sockets** : sockets to create, snake_case names
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Zone](geono-zone.md#zone) :black_small_square: [Content](geono-zone.md#content) :black_small_square: [Methods](geono-zone.md#methods)</sub>

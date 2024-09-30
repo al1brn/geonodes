@@ -19,7 +19,7 @@ $ DOC toc_max_depth = 1
 
 - <!gnmath> : math library providing mathematical functions coming from nodes
   <*Node Math>, <*Node Vector Math> and <*Node Boolean Math>
-- <!nd> (for _nodes_) : this special class expses one method or property per node,
+- <!nd> (for _nodes_) : this special class exposes one method or property per node,
   especially useful for input nodes such as <*Node Index> or <*Node Position>
 - <!snd> (for _shader nodes_) : same as <!nd> for shader node
 
@@ -56,15 +56,23 @@ Rather than using <!Node> class, scripting nodes is done by using <!Socket> clas
 #### Domains
 
 Geometries have specific <!Domain>:
-- <!Vertex> (<!Mesh> <!Mesh#points> property)
-- <!Edge>  (<!Mesh> <!Mesh#edges> property)
-- <!Face>  (<!Mesh> <!Mesh#faces> property)
-- <!Corner>  (<!Mesh> <!Mesh#corners> property)
-- <!SplinePoint> (<!Curve> <!Curve#points> property)
-- <!Spline> (<!Curve> <!Curve#splines> property)
-- <!CloudPoint> (<!Cloud> <!Cloud#points> property)
-- <!Instance> (<!Instances> <!Instances#insts> property)
+- <!Mesh> :
+  - <!Vertex> : property <!Mesh#points>
+  - <!Edge> : property <!Mesh#edges>
+  - <!Face> : property <!Mesh#faces>
+  - <!Corner> : property <!Mesh#corners>
+- <!Curve> :
+  - <!SplinePoint> : property <!Curve#points>
+  - <!Spline> : property <!Curve#splines>
+- <!Cloud> :
+  - <!CloudPoint> : property <!Cloud#points>
+- <!Instances> :
+  - <!Instance> : property <!Instances#insts>
 
+#### Cross reference
+
+<!Cross Reference> : to see how each Geometry Node can be scripted
+<!Shader Cross Reference> : to see how each Shader Node can be scripted
 """
 
 import numpy as np

@@ -80,13 +80,15 @@ class Zone:
         - using the **sockets** dict argument
         - using the **snake_case_sockets** key word arguments
 
-        ````python
+        ``` python
         # Create a zone with 2 sockets:
         # - First Socket
-        # - second_ocket
-        with Zone(socket={"First Socket": Float(3.14)}, second_socket=Geometry()) as zone:
+        # - second_socket
+        with Zone({"First Socket": Geometry()}, second_socket=Float(3.14)) as zone:
             ...
         ```
+
+        <@zone_sockets.png center 600>
 
         > [!NOTE]
         > The sockets are created on the two nodes and, in both nodes, as input and output sockets.
@@ -102,7 +104,7 @@ class Zone:
         been initialized:
 
         ``` python
-        with Zone(socket={"First Socket": Float(3.14)}, second_socket=Geometry()) as zone:
+        with Zone({"First Socket": Geometry()}, second_socket=Float(3.14)) as zone:
             a = zone.first_socket
             b = zone.second_socket
         ```
@@ -137,9 +139,9 @@ class Zone:
 
         Arguments
         ---------
-        - sockets (dict = {}) : sockets to create
+        - sockets (dict = {}) : sockets to create, string names
         - create_geometry (bool=True) : ensure the 'Geometry' socket is created
-        - snake_case_sockets : sockets to create
+        - snake_case_sockets : sockets to create, snake_case names
         """
 
         all_sockets = {**sockets, **snake_case_sockets}
@@ -283,7 +285,7 @@ class Repeat(Zone):
         self._output = Node('GeometryNodeRepeatOutput')
         self._input._bnode.pair_with_output(self._output._bnode)
 
-        self.init_zone(sockets=sockets, create_geometry=True, **snake_case_sockets)
+        self.init_zone(sockets, create_geometry=True, **snake_case_sockets)
         self._input.iterations = iterations
 
 # ====================================================================================================
@@ -338,4 +340,4 @@ class Simulation(Zone):
         self._output = Node('GeometryNodeSimulationOutput')
         self._input._bnode.pair_with_output(self._output._bnode)
 
-        self.init_zone(sockets=sockets, create_geometry=True, **snake_case_sockets)
+        self.init_zone(sockets, create_geometry=True, **snake_case_sockets)

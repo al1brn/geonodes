@@ -20,7 +20,7 @@
 
 - [gnmath](geono-gnmat---gnmath.md#gnmath) : math library providing mathematical functions coming from nodes
   <*Node Math>, <*Node Vector Math> and <*Node Boolean Math>
-- [nd](geono-nd.md#nd) (for _nodes_) : this special class expses one method or property per node,
+- [nd](geono-nd.md#nd) (for _nodes_) : this special class exposes one method or property per node,
   especially useful for input nodes such as <*Node Index> or <*Node Position>
 - [snd](shade-shade1-snd.md#snd) (for _shader nodes_) : same as [nd](geono-nd.md#nd) for shader node
 
@@ -57,14 +57,23 @@ Rather than using [Node](geono-node.md#node) class, scripting nodes is done by u
 #### Domains
 
 Geometries have specific [Domain](geono-domain.md#domain):
-- [Vertex](geono-vertex.md#vertex) ([Mesh](geono-mesh.md#mesh) [points](geono-mesh.md#points) property)
-- [Edge](geono-edge.md#edge)  ([Mesh](geono-mesh.md#mesh) [edges](geono-mesh.md#edges) property)
-- [Face](geono-face.md#face)  ([Mesh](geono-mesh.md#mesh) [faces](geono-mesh.md#faces) property)
-- [Corner](geono-corner.md#corner)  ([Mesh](geono-mesh.md#mesh) [corners](geono-mesh.md#corners) property)
-- [SplinePoint](geono-splinepoint.md#splinepoint) ([Curve](geono-curve.md#curve) [points](geono-curve.md#points) property)
-- [Spline](geono-spline.md#spline) ([Curve](geono-curve.md#curve) [splines](geono-curve.md#splines) property)
-- [CloudPoint](geono-cloudpoint.md#cloudpoint) ([Cloud](geono-cloud.md#cloud) [points](geono-cloud.md#points) property)
-- [Instance](geono-instance.md#instance) ([Instances](geono-instances.md#instances) [insts](geono-instances.md#insts) property)
+- [Mesh](geono-mesh.md#mesh) :
+  - [Vertex](geono-vertex.md#vertex) : property [points](geono-mesh.md#points)
+  - [Edge](geono-edge.md#edge) : property [edges](geono-mesh.md#edges)
+  - [Face](geono-face.md#face) : property [faces](geono-mesh.md#faces)
+  - [Corner](geono-corner.md#corner) : property [corners](geono-mesh.md#corners)
+- [Curve](geono-curve.md#curve) :
+  - [SplinePoint](geono-splinepoint.md#splinepoint) : property [points](geono-curve.md#points)
+  - [Spline](geono-spline.md#spline) : property [splines](geono-curve.md#splines)
+- [Cloud](geono-cloud.md#cloud) :
+  - [CloudPoint](geono-cloudpoint.md#cloudpoint) : property [points](geono-cloud.md#points)
+- [Instances](geono-instances.md#instances) :
+  - [Instance](geono-instance.md#instance) : property [insts](geono-instances.md#insts)
+
+#### Cross reference
+
+[Cross Reference](cross_reference.md#cross-reference) : to see how each Geometry Node can be scripted
+['Shader Cross Reference' not found]() : to see how each Shader Node can be scripted
 
 ## Content
 
