@@ -2,6 +2,28 @@
 
 You will find here how nodes are implemented
 
+## Content
+
+- **&** : [&Material Output](shader_cross_reference.md#&material-output)
+- **A** : [AOV Output](shader_cross_reference.md#aov-output)
+- **B** : [Blackbody](shader_cross_reference.md#blackbody) :black_small_square: [Brightness Contrast](shader_cross_reference.md#brightness-contrast) :black_small_square: [Bump](shader_cross_reference.md#bump)
+- **C** : [Color Attribute](shader_cross_reference.md#color-attribute)
+- **D** : [Displacement](shader_cross_reference.md#displacement)
+- **G** : [Gamma](shader_cross_reference.md#gamma)
+- **H** : [Hue Saturation Value](shader_cross_reference.md#hue-saturation-value)
+- **I** : [Input](shader_cross_reference.md#input) :black_small_square: [Invert Color](shader_cross_reference.md#invert-color)
+- **M** : [Mapping](shader_cross_reference.md#mapping) :black_small_square: [Material Output](shader_cross_reference.md#material-output)
+- **N** : [Normal](shader_cross_reference.md#normal) :black_small_square: [Normal Map](shader_cross_reference.md#normal-map)
+- **O** : [of curve](shader_cross_reference.md#of-curve) :black_small_square: [of Point](shader_cross_reference.md#of-point) :black_small_square: [Output](shader_cross_reference.md#output)
+- **P** : [Point in Curve](shader_cross_reference.md#point-in-curve)
+- **R** : [RGB to BW](shader_cross_reference.md#rgb-to-bw)
+- **S** : [Shader to RGB](shader_cross_reference.md#shader-to-rgb) :black_small_square: [Size](shader_cross_reference.md#size)
+- **T** : [Tangent](shader_cross_reference.md#tangent) :black_small_square: [to Euler](shader_cross_reference.md#to-euler) :black_small_square: [to Rotation](shader_cross_reference.md#to-rotation)
+- **U** : [UV Map](shader_cross_reference.md#uv-map)
+- **V** : [Value](shader_cross_reference.md#value) :black_small_square: [Vector Displacement](shader_cross_reference.md#vector-displacement) :black_small_square: [Vector Transform](shader_cross_reference.md#vector-transform)
+- **W** : [Wavelength](shader_cross_reference.md#wavelength)
+- **X** : [XYZ](shader_cross_reference.md#xyz)
+
 #### &Material Output
 
 - [Vector](geono-vector.md#vector) :white_small_square: [out](geono-vector.md#out)
@@ -28,28 +50,6 @@ You will find here how nodes are implemented
 
 - [Color](geono-color.md#color) :white_small_square: [Attribute](geono-color.md#attribute)
 - [Color](geono-color.md#color) :white_small_square: [ambient_occlusion](geono-color.md#ambient_occlusion)
-
-## Content
-
-- **&** : [&Material Output](shader_cross_reference.md#&material-output)
-- **A** : [AOV Output](shader_cross_reference.md#aov-output)
-- **B** : [Blackbody](shader_cross_reference.md#blackbody) :black_small_square: [Brightness Contrast](shader_cross_reference.md#brightness-contrast) :black_small_square: [Bump](shader_cross_reference.md#bump)
-- **C** : [Color Attribute](shader_cross_reference.md#color-attribute)
-- **D** : [Displacement](shader_cross_reference.md#displacement)
-- **G** : [Gamma](shader_cross_reference.md#gamma)
-- **H** : [Hue Saturation Value](shader_cross_reference.md#hue-saturation-value)
-- **I** : [Input](shader_cross_reference.md#input) :black_small_square: [Invert Color](shader_cross_reference.md#invert-color)
-- **M** : [Mapping](shader_cross_reference.md#mapping) :black_small_square: [Material Output](shader_cross_reference.md#material-output)
-- **N** : [Normal](shader_cross_reference.md#normal) :black_small_square: [Normal Map](shader_cross_reference.md#normal-map)
-- **O** : [of curve](shader_cross_reference.md#of-curve) :black_small_square: [of Point](shader_cross_reference.md#of-point) :black_small_square: [Output](shader_cross_reference.md#output)
-- **P** : [Point in Curve](shader_cross_reference.md#point-in-curve)
-- **R** : [RGB to BW](shader_cross_reference.md#rgb-to-bw)
-- **S** : [Shader to RGB](shader_cross_reference.md#shader-to-rgb) :black_small_square: [Size](shader_cross_reference.md#size)
-- **T** : [Tangent](shader_cross_reference.md#tangent) :black_small_square: [to Euler](shader_cross_reference.md#to-euler) :black_small_square: [to Rotation](shader_cross_reference.md#to-rotation)
-- **U** : [UV Map](shader_cross_reference.md#uv-map)
-- **V** : [Value](shader_cross_reference.md#value) :black_small_square: [Vector Displacement](shader_cross_reference.md#vector-displacement) :black_small_square: [Vector Transform](shader_cross_reference.md#vector-transform)
-- **W** : [Wavelength](shader_cross_reference.md#wavelength)
-- **X** : [XYZ](shader_cross_reference.md#xyz)
 
 #### Displacement
 
