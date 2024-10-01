@@ -80,6 +80,17 @@ def cross_ref(tree, name, section):
         cref = []
         nodes[name] = cref
         
+    if class_ is None:
+        for a, b in cref:
+            if a is None and b.title == section.title:
+                return
+    else:
+        for a, b in cref:
+            if a is None:
+                continue
+            if a.title == class_.title and b.title == section.title:
+                return
+        
     cref.append((class_, section))
     
 
@@ -132,9 +143,6 @@ def bnode_replace(m, section):
     
     if cross == '&':
         cross_ref(tree, name, section)
-        
-    if name == 'Curve' and section.title == 'Arc':
-        aaa
     
     return get_node_link(tree, name)
     
@@ -148,7 +156,7 @@ def geonodes_documentation(write_files=True):
     from pathlib import Path
     
     print('-'*100)
-    print("Generates documentation of geonodes")
+    print("Generate documentation of geonodes")
     print()
     
     import geonodes
@@ -210,7 +218,6 @@ def geonodes_documentation(write_files=True):
                 if class_.hidden:
                     continue
                 
-                print(class_.hidden, class_.title, member_.title)
                 node_section.write(f"- <!{class_.title}> :white_small_square: <!{class_.title}#{member_.title}>\n")
 
     cross_page = doc.top_section.new_page("Shader Cross Reference",
