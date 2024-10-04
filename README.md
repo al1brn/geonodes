@@ -5,8 +5,8 @@
 ## Short
 
 **Geometry Nodes** is a powerful **Blender** feature allowing the creation of amazing 3D models.
-However, nodes trees can rapidly look like a _spaghetti plate_ difficult to understand and to maintain.
-Complex formulas are not easy to build and debugging can be a headache.<br>
+However, nodes trees can rapidly look like a _spaghetti plate_ difficult to understand and to maintain;
+complex formulas are not easy to build; and debugging can be a headache.<br>
 
 > The purpose of **_geonodes_** is to to create geometry nodes with python scripts.<br>
 
@@ -28,14 +28,14 @@ You keep the full power of Blender _Geometry Nodes_ but with the elegance of Pyt
 ## Better a demo than long words
 
 The following script creates a surface from a grid by computing
-`z = sin(d)/d` where `d=sqrt(x^2 + y^2)` is the distance of the vertex to the center.
+`z = sin(d)/d` where `d=sqrt(x^2 + y^2)` is the vertex distance to the center.
 
 <img src="doc/images/hello_world_black.png" width="600" class="center">
 
 ```python
 from geonodes import *
 
-# Create the Geometry nodes named "Hello World"
+# Create the Geometry Nodes named "Hello World"
 
 with GeoNodes("Hello World"):
 
