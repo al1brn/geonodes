@@ -23,17 +23,15 @@ updates
 - update   : 20242/09/04
 """
 
-from bpy.types import Attribute, SEQUENCER_PT_view_safe_areas
 from geonodes import *
-
 
 def demo():
 
     # ====================================================================================================
     # Shaders for digits
 
-    with sh.ShaderNodes("LCD On"):
-        ped = sh.Shader.Principled(
+    with ShaderNodes("LCD On"):
+        ped = Shader.Principled(
             base_color = Color.CombineHSV(0, 0, 0),
             roughness  = .3,
             metallic   = .2,
@@ -41,8 +39,8 @@ def demo():
 
         ped.out()
 
-    with sh.ShaderNodes("LCD Off"):
-        ped = sh.Shader.Principled(
+    with ShaderNodes("LCD Off"):
+        ped = Shader.Principled(
             base_color = Color.CombineHSV(0, 0, 0.396),
             roughness  = .3,
             metallic   = .2,
@@ -53,15 +51,15 @@ def demo():
     # ====================================================================================================
     # Shaders for figures
 
-    with sh.ShaderNodes("Wheel Figure"):
+    with ShaderNodes("Wheel Figure"):
 
-        wheel_index = sh.nd.attribute("Wheel").fac
+        wheel_index = snd.attribute("Wheel").fac
         black = Color.Combine(.05, .05, .05)
         red   = Color.Combine(.95, .05, .05)
 
         col = black.mix(wheel_index.equal(0), red)
 
-        ped = sh.Shader.Principled(
+        ped = Shader.Principled(
             base_color = col,
             roughness  = .3,
             metallic   = .2,
@@ -69,9 +67,9 @@ def demo():
 
         ped.out()
 
-    with sh.ShaderNodes("Wheel Background"):
+    with ShaderNodes("Wheel Background"):
 
-        ped = sh.Shader.Principled(
+        ped = Shader.Principled(
             base_color = (.95, .95, .95),
             roughness  = .3,
             metallic   = .2,
@@ -79,9 +77,9 @@ def demo():
 
         ped.out()
 
-    with sh.ShaderNodes("Wheel Box"):
+    with ShaderNodes("Wheel Box"):
 
-        ped = sh.Shader.Principled(
+        ped = Shader.Principled(
             base_color = (.95, .95, .95),
             roughness  = .1,
             metallic   = .95,
@@ -153,8 +151,8 @@ def demo():
             digit += item3
 
         with Layout("Item 4"):
-            item4 = item3.transform(scale=(1, 1, -1))
-            item4 = item4.faces.flip()
+            item4 = Mesh(item3).transform(scale=(1, 1, -1))
+            item4.faces.flip()
 
             digit += item4
 
@@ -173,25 +171,25 @@ def demo():
             zero_off = Mesh(digit)
 
             with Layout("Horizontal Bottom"):
-                digit.faces[6].material = on_mat.switch(value.equal(1) | value.equal(4) | value.equal(7), off_mat)
+                digit.faces[0].material = on_mat.switch(value.equal(1) | value.equal(4) | value.equal(7), off_mat)
 
             with Layout("Horizontal Middle"):
-                digit.faces[5].material = on_mat.switch(value.equal(0) | value.equal(1) | value.equal(7), off_mat)
+                digit.faces[1].material = on_mat.switch(value.equal(0) | value.equal(1) | value.equal(7), off_mat)
 
             with Layout("Horizontal Top"):
-                digit.faces[4].material = on_mat.switch(value.equal(1) | value.equal(4), off_mat)
+                digit.faces[2].material = on_mat.switch(value.equal(1) | value.equal(4), off_mat)
 
             with Layout("Vertical Left Bottom"):
                 digit.faces[3].material = off_mat.switch(value.equal(0) | value.equal(2) | value.equal(6) | value.equal(8), on_mat)
 
             with Layout("Vertical Left Top"):
-                digit.faces[2].material = off_mat.switch(value.equal(0) | value.equal(4) | value.equal(5) | value.equal(6) | (value >= 8), on_mat)
+                digit.faces[4].material = off_mat.switch(value.equal(0) | value.equal(4) | value.equal(5) | value.equal(6) | (value >= 8), on_mat)
 
             with Layout("Vertical Right Bottom"):
-                digit.faces[1].material = on_mat.switch(value.equal(2), off_mat)
+                digit.faces[5].material = on_mat.switch(value.equal(2), off_mat)
 
             with Layout("Vertical Right Top"):
-                digit.faces[0].material = on_mat.switch(value.equal(5) | value.equal(6), off_mat)
+                digit.faces[6].material = on_mat.switch(value.equal(5) | value.equal(6), off_mat)
 
         with Layout("Display 0"):
             digit = zero_off.switch(ok_0 | value.not_equal(0), digit)
@@ -221,7 +219,7 @@ def demo():
 
         with Repeat(mesh=None, value=value, index = 0, iterations=digits) as rep:
 
-            rep.mesh = rep.mesh.transform(translation=(size_factor*size, 0, 0))
+            rep.mesh.transform(translation=(size_factor*size, 0, 0))
             digit_value = round(rep.value % 10)
             res_value = (rep.value - digit_value)/10
             rep.value = res_value
@@ -241,7 +239,7 @@ def demo():
         mesh = rep.mesh
 
         with Layout("Sign"):
-            signed_mesh = mesh.transform(translation=(size_factor*size, 0, 0))
+            signed_mesh = Mesh(mesh).transform(translation=(size_factor*size, 0, 0))
 
             signed_mesh = signed_mesh + Group("Digit", {
                 "On"         : on_mat,
@@ -252,11 +250,9 @@ def demo():
                 "Positive"   : sign > 0,
             }).geometry
 
-        mesh = mesh.switch(minus, signed_mesh)
-        mesh = mesh.transform(translation=(0, y_offset, 0))
-        mesh = Mesh(mesh)
+        mesh = Mesh(mesh).switch(minus, signed_mesh)
+        mesh.transform(translation=(0, y_offset, 0))
         mesh.faces.store("Color", color)
-
         mesh += Geometry.Switch(merge, None, Geometry())
 
         mesh.out()
@@ -316,7 +312,7 @@ def demo():
             side = size*.15
             z    = size*.25
             square = Mesh.Grid(size_x=side, size_y=side, vertices_x=2, vertices_y=2).transform(rotation=(halfpi, 0, 0))
-            square0 = square.transform(translation=(0, 0, -z))
+            square0 = Mesh(square).transform(translation=(0, 0, -z))
             square1 = square.transform(translation=(0, 0, z))
             squares = square0 + square1
             squares.points.offset = (nd.position.z*.4*shear, 0, 0)

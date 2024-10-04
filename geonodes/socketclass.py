@@ -334,19 +334,6 @@ class Socket(NodeCache):
     # =============================================================================================================================
     # To output
 
-    def to_output(self, name=None):
-        """ Plug a socket to an output socket.
-
-        > Legacy : use <#out>
-
-        Arguments
-        ---------
-            - socket (Socket) : the socket to plug to the output
-            - name (str = None) : output socket name
-        """
-        self.out(name)
-
-
     def out(self, name=None):
         """ Plug the value to the Group Output Node.
 
@@ -443,14 +430,37 @@ class Socket(NodeCache):
 
         Returns
         -------
-        - output
+        - Socket
         """
 
-        return Menu(None, name=name, menu=menu, items=items, tip=tip, input_type=cls.input_type())
+        # Create the node
+
+        node = Node('Menu Switch', data_type=cls.input_type())
+
+        # Set the items
+
+        node._set_items(items, clear=True)
+
+        # Plug the menu
+
+        if isinstance(menu, int):
+            menu = list(items.keys())[menu]
+
+        menu_socket = Tree.new_input('NodeSocketMenu', name=name, value=None, description=tip)
+        node.plug_value_into_socket(menu_socket, node.in_socket('Menu'))
+        Tree.current_tree.set_input_socket_default(menu_socket, menu)
+
+        # Done
+
+        return cls(node._out)
+
+
+
+        #return Menu(None, name=name, menu=menu, items=items, tip=tip, input_type=cls.input_type())
 
         cls.input_type()
 
-        # ----- Create the nodes
+        # ----- Create the node
 
         node = Node('Menu Switch', data_type=cls.input_type())
 
@@ -478,15 +488,9 @@ class Socket(NodeCache):
         if set_menu_index:
             Tree.current_tree.set_input_socket_default(menu_socket, list(items.keys())[menu_index])
 
-        # ----- Geometry type
+        # ----- Done
 
-        res = node._out
-        if cls.SOCKET_TYPE == 'GEOMETRY':
-            geo_class = cls._geometry_class(list(items.values()))
-            if geo_class is not None:
-                res = geo_class(res)
-
-        return res
+        return cls(node._out)
 
     # -----------------------------------------------------------------------------------------------------------------------------
     # Index switch
@@ -543,15 +547,9 @@ class Socket(NodeCache):
 
         node.plug_value_into_socket(index, node.in_socket('Index'))
 
-        # ----- Geometry type
+        # ----- Done
 
-        res = node._out
-        if cls.SOCKET_TYPE == 'GEOMETRY':
-            geo_class = cls._geometry_class(list(values))
-            if geo_class is not None:
-                res = geo_class(res)
-
-        return res
+        return cls(node._out)
 
     # -----------------------------------------------------------------------------------------------------------------------------
     # Switch
@@ -584,22 +582,15 @@ class Socket(NodeCache):
         -------
         - Socket
         """
-
-        res = Node('Switch', {'Switch': condition, 'False': false, 'True': true}, input_type=cls.input_type(default='GEOMETRY'))._out
-
-        if cls.SOCKET_TYPE == 'GEOMETRY':
-            geo_class = cls._geometry_class([false, true])
-            if geo_class is not None:
-                res = geo_class(res)
-
-        return res
-
+        return cls(Node('Switch', {'Switch': condition, 'False': false, 'True': true}, input_type=cls.input_type(default='GEOMETRY'))._out)
 
     # -----------------------------------------------------------------------------------------------------------------------------
     # Method versions
 
     def menu_switch(self, self_name='A', items={'B': None}, menu=0, name="Menu", tip=None):
         """ > Node <&Node Menu Switch>
+
+        [&NO_JUMP]
 
         Self is connected to the first menu item with the name provided as argument.
 
@@ -629,12 +620,14 @@ class Socket(NodeCache):
 
         Returns
         -------
-        - output
+        - Socket
         """
         return self.MenuSwitch({self_name: self, **items}, menu=menu, name=name, tip=tip)
 
     def index_switch(self, *values, index=0):
         """ > Node <&Node Index Switch>
+
+        [&NO_JUMP]
 
         Self is used as first socket in the node.
 
@@ -661,13 +654,14 @@ class Socket(NodeCache):
 
         Returns
         -------
-        - output
+        - Socket
         """
-
         return self.IndexSwitch(self, *values, index=index)
 
     def switch(self, condition=None, true=None):
         """ > Node <&Node Switch>
+
+        [&NO_JUMP]
 
         Self is connected to 'false' socket.
 
@@ -693,7 +687,7 @@ class Socket(NodeCache):
 
         Returns
         -------
-        - output
+        - Socket
         """
         return self.Switch(condition=condition, false=self, true=true)
 
@@ -703,6 +697,8 @@ class Socket(NodeCache):
     def blur(self, iterations=None, weight=None):
         """ > Node <&Node Blur Attribute>
 
+        [&NO_JUMP]
+
         Arguments
         ---------
         - self : socket 'Value'
@@ -711,7 +707,7 @@ class Socket(NodeCache):
 
         Returns
         -------
-        - value
+        - Socket
         """
 
         data_type = self.data_type(['FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR'])
@@ -760,11 +756,9 @@ class ValueSocket(Socket):
 
         Returns
         -------
-        - Socket [exists_]
+        - Socket
         """
-        attribute = Node('Named Attribute', {'Name': name}, data_type=cls.data_type())._out
-        attribute.exists_ = attribute.node.exists
-        return attribute
+        return Node('Named Attribute', {'Name': name}, data_type=cls.data_type())._out
 
     @classmethod
     def Named(cls, name):
@@ -846,7 +840,7 @@ class String(Socket):
 
         Returns
         -------
-        - string (String)
+        - String
         """
 
         return value.to_string(decimals=decimals)
@@ -862,7 +856,7 @@ class String(Socket):
 
         Returns
         -------
-        - string (String)
+        - String
         """
 
         return String(delimiter).join(*strings)
@@ -874,6 +868,8 @@ class String(Socket):
     @property
     def special_characters(cls):
         """ > Node <&Node Special Characters>
+
+        [&RETURN_NODE]
 
         Returns
         -------
@@ -911,7 +907,6 @@ class String(Socket):
         -------
         - Integer
         """
-
         return Node('String Length')._out
 
     # ====================================================================================================
@@ -919,6 +914,8 @@ class String(Socket):
 
     def join(self, *strings):
         """ > Node <&Node Join Strings>
+
+        [&NO_JUMP]
 
         Arguments
         ---------
@@ -929,11 +926,12 @@ class String(Socket):
         -------
         - String
         """
-
         return Node('Join Strings', {'Delimiter': self, 'Strings': list(strings)})._out
 
     def replace(self, find=None, replace=None):
         """ > Node <&Node Replace String>
+
+        [&NO_JUMP]
 
         Arguments
         ---------
@@ -945,11 +943,12 @@ class String(Socket):
         -------
         - String
         """
-
         return Node('Replace String', {'String': self, 'Find': find, 'Replace': replace})._out
 
     def slice(self, position=0, length=10):
         """ > Node <&Node Slice String>
+
+        [&NO_JUMP]
 
         Arguments
         ---------
@@ -985,7 +984,7 @@ class String(Socket):
 
         Returns
         -------
-        - curve_instances (GEOMETRY)
+        - Curve
         """
 
         from .geometryclass import Instances
@@ -1431,10 +1430,14 @@ class Menu(Socket):
         - items (dict) : menu names and values
         - tip (str = None) : user tip
         """
+        if socket is None:
+            raise Exception("Menu Socket can't be instantiated directly, use 'Socket.MenuSwitch' instead")
 
-        if socket is not None:
+        else:
             super().__init__(socket)
             return
+
+        # OLD OLD OLD
 
         # ----------------------------------------------------------------------------------------------------
         # Get data type from first value in the items dict

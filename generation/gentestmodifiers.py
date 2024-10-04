@@ -1,6 +1,4 @@
-from bpy.types import Attribute, SEQUENCER_PT_view_safe_areas
-from ..geonodes import *
-from .. import shadernodes as sh
+from geonodes import *
 
 def demo():
 
@@ -57,9 +55,9 @@ def demo():
 
             a += b*c/123 - 789
             A = (gnmath.multiply_add(a, b, c))._lc("gnmath")
-            B = (A * (b, c))._lc("v * (m, a)")
-            B *= b, c
-            B._lc("v *= m, a")
+            #B = (A * (b, c))._lc("v * (m, a)")
+            #B *= b, c
+            #B._lc("v *= m, a")
 
         with Layout("Power"):
             a, b = Float(10), Float(20)
@@ -111,9 +109,9 @@ def demo():
 
             A = b*c/123 - 789
             A = (gnmath.multiply_add(a, b, c))._lc("gnmath")
-            B = (A * (b, c))._lc("v * (m, a)")
-            B *= b, c
-            B._lc("v *= m, a")
+            #B = (A * (b, c))._lc("v * (m, a)")
+            #B *= b, c
+            #B._lc("v *= m, a")
             C = a*pi
 
         with Layout("Vectors operations"):
@@ -314,45 +312,40 @@ def demo():
         with Layout("Capture Attribute"):
             mesh = Mesh()
 
-            # A single anonymous attribute
-            p = mesh.points.capture_attribute(nd.position)
-            assert(isinstance(p, Vector))
+            mesh.points.capture_attribute(pos = nd.position, index=nd.index)
+            assert(isinstance(mesh.pos_, Vector))
+            assert(isinstance(mesh.index_, Integer))
 
-            # Only named attributes
-            node = mesh.faces.capture_attribute(pos=nd.position, idx=nd.material_index)
-            assert(isinstance(node, Node))
-            assert(isinstance(node.pos, Vector))
-            assert(isinstance(node.idx, Integer))
-
-            # Anonymous attribute plus named attributes
-            node = mesh.faces.capture_attribute(nd.position, idx=nd.material_index)
-            assert(isinstance(node, Node))
-            assert(isinstance(node.attribute, Vector))
-            assert(isinstance(node.idx, Integer))
 
         with Layout("Operations"):
             mesh = Mesh()
 
-            mesh = mesh.points.duplicate_elements(10)
+            mesh.points.duplicate_elements(10)
 
-            mesh = mesh.faces.delete_faces()
-            mesh = mesh.edges.delete_edges_and_faces()
-            mesh = mesh.points.delete_all()
-            mesh = mesh.edges.sort_elements(group_id=i, sort_weight=f)
-            mesh = mesh.faces.separate()
-            a = mesh.faces.split_to_instances(group_id=i)
-            a = mesh.faces.to_points(position=v, radius=f)
+            mesh.faces.delete_faces()
+            mesh.edges.delete_edges_and_faces()
+            mesh.points.delete_all()
+            mesh.edges.sort_elements(group_id=i, sort_weight=f)
+            selected = mesh.points.separate()
+            inverted = selected.inverted_
+            mesh.faces.split_to_instances(group_id=i)
+            mesh.faces.to_points(position=v, radius=f)
 
         with Layout("Extrusion"):
 
             cube = Mesh.Cube()
 
-            cube = cube.faces.extrude(nd.normal, .5)
-            cube = cube.faces[cube.top_].extrude(offset_scale=0)
+            cube.faces.extrude(nd.normal, .5)
+            cube.faces[cube.top_].extrude(offset_scale=0)
+
+            # Next cube extrusion will change top_
             top = cube.top_
-            cube = cube.faces[top].scale(scale=.8, uniform=False)
-            cube = cube.faces[top].scale(scale=.6, uniform=True)
-            cube = cube.faces[top].extrude(offset_scale=.5)
+
+            cube.faces[top].scale(scale=.8, uniform=False)
+            cube.faces[top].scale(scale=.6, uniform=True)
+            cube.faces[top].extrude(offset_scale=.5)
+            cube.faces[cube.top_].flip()
+
 
         with Layout("Vertex"):
             mesh = Mesh()
@@ -376,8 +369,8 @@ def demo():
             a = mesh.faces.is_planar
             a = mesh.faces.neighbors_face_count
             a = mesh.faces.neighbors_vertex_count
-            mesh = mesh.faces.flip()
-            mesh = mesh.faces.scale(2, 0, False)
+            mesh.faces.flip()
+            mesh.faces.scale(2, 0, False)
             a = mesh.faces.corner_index(i, f, False)
             points = mesh.faces.distribute_points(density=1.)
             points = mesh.faces.distribute_points(density=None)
@@ -504,22 +497,23 @@ def demo():
 
         with Layout("Basic"):
 
-            geo = geo.set_position(nd.position, 2)
+            geo.set_position(nd.position, 2)
 
 
         with Layout("Join"):
+
+            geo = Geometry.Join(Mesh.Cube(), Mesh.IcoSphere(), Curve.Circle())
+            geo = Mesh.Join(Mesh.Cube(), Mesh.IcoSphere(), Curve.Circle())
+            geo.join(Mesh.Cube())
 
             geo = geo + Mesh.Cube().set_position(offset=(3, 0, 0))
             geo += Mesh.Cone().set_position(offset=(6, 0, 0)), Mesh.IcoSphere().set_position(offset=(9, 0, 0)),
 
         with Layout("Operations"):
 
-            geo = geo.replace_material()
-
+            geo.replace_material()
 
         geo.out()
-
-
 
     # =============================================================================================================================
     # Mesh
@@ -571,16 +565,20 @@ def demo():
         with Layout("Operations"):
 
             cube = Mesh.Cube()
-            cube = cube.dual()
-            cube = cube.subdivide(2)
-            cube = cube.triangulate()
-            cube = cube.subdivision_surface()
+            cube.dual()
+            cube.subdivide(2)
+            cube.triangulate()
+            cube.subdivision_surface()
             cube.distribute_points_on_faces()
 
         with Layout("Boolean"):
-            meshes.append(cyl.intersect(cone))
-            meshes.append(cyl.union(cone))
-            meshes.append(cyl.difference(cone))
+            meshes.append(Mesh.Intersect(cyl, cone))
+            meshes.append(Mesh.Union(cyl, cone))
+            meshes.append(Mesh.Difference(cyl, cone))
+
+            meshes.append(cyl - cone) # Difference
+            meshes.append(cyl / cone) # Intersection
+            meshes.append(cyl * cone) # Union
 
             meshes.append(cone.intersect(cyl))
             meshes.append(cone.union(cyl))
@@ -641,11 +639,16 @@ def demo():
         with Layout("Topology"):
             curve = Curve()
 
-            a = curve.curve_of_point(1).curve_index
-            a += curve.offset_point_in_curve(1, 1).point_index
-            a += curve.points_of_curve(1, 2, False).point_index
+            a = curve.curve_of_point(1)
+            a += a.index_in_curve_
+            b = curve.offset_point_in_curve(1, 1)
+            a += b
+            c = b.is_valid_offset_
+            b = curve.points_of_curve(1, 2, False)
+            a += b
+            a += b.total_
 
-            curve = curve.set_normal().set_normal_z_up().set_normal_free()
+            curve.set_normal().set_normal_z_up().set_normal_free()
 
         with Layout("Operations"):
             curve = Curve()
@@ -657,13 +660,13 @@ def demo():
             geo += curve.fill(a)
             geo += curve.fillet(1., False, 10)
             geo += curve.interpolate(v, i, Cloud.Points(), v, i, i)
-            geo += curve.resample(10)._lc("Resample COUNT")
-            geo += curve.resample(length=.1)._lc("Resample LENGTH")
-            geo += curve.resample()._lc("Resample EVALUATED")
-            geo += curve.trim_length(1, 2)
-            geo += curve.trim_factor(.1, .2)
-            geo += curve.reverse()
-            geo += curve.subdivide(2)
+            curve.resample(10)._lc("Resample COUNT")
+            curve.resample(length=.1)._lc("Resample LENGTH")
+            curve.resample()._lc("Resample EVALUATED")
+            curve.trim_length(1, 2)
+            curve.trim_factor(.1, .2)
+            curve.reverse()
+            curve.subdivide(2)
 
     with GeoNodes("Test Cloud"):
         cloud = Cloud()

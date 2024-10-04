@@ -280,10 +280,6 @@ class IntFloat(ValueSocket):
     # ----- Multiplication
 
     def __mul__(self, other):
-        # multiply add
-        if isinstance(other, tuple) and len(other) == 2:
-            return self.math.multiply_add(self, other[0], other[1])
-
         if utils.is_vector_like(other):
             return self.math.scale(other, self)
         return self.math.multiply(self, other)
@@ -695,7 +691,7 @@ class Float(IntFloat):
             else:
                 self._tree.aov_output(name=name, value=self)
         else:
-            super().to_output(name=name)
+            super().out(name=name)
 
     def thickness_out(self, target='ALL'):
         self._tree.set_thickness(self, target=target)

@@ -34,7 +34,7 @@ with Repeat(geometry=None, offset=(1, 2, 3), index=0, iteration=10) as repeat_bl
 
     repeat_block.index += 1
 
-repeat_block.geometry.to_output()
+repeat_block.geometry.out()
 ```
 
 classes

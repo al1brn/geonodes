@@ -56,7 +56,7 @@ uv_map = cuve.uv_map_
 - **N** : [node](macro-geono-socket.md#node) :black_small_square: [node_color](macro-geono-socket.md#node_color) :black_small_square: [node_label](macro-geono-socket.md#node_label)
 - **O** : [out](macro-geono-socket.md#out)
 - **S** : [Switch](macro-geono-socket.md#switch) :black_small_square: [switch](macro-geono-socket.md#switch)
-- **T** : [to_output](macro-geono-socket.md#to_output)
+- **T** : [out](macro-geono-socket.md#out)
 
 ## Properties
 
@@ -419,12 +419,12 @@ with GeoNodes("Switch demo"):
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Socket](macro-geono-socket.md#socket) :black_small_square: [Content](macro-geono-socket.md#content) :black_small_square: [Methods](macro-geono-socket.md#methods)</sub>
 
 ----------
-### to_output()
+### out()
 
 > method
 
 ``` python
-to_output(name=None)
+out(name=None)
 ```
 
 Plug a socket to an output socket.

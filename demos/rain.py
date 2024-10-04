@@ -152,7 +152,7 @@ def demo():
                 z = dip_position.z
 
                 dips = dips.points[z.less_equal(z_water)].separate()
-                start_projs = dips.inverted_
+                start_projs = Cloud(dips.inverted_)
 
                 dips.points.store("Age", 0)
                 sim.dips += dips
@@ -160,7 +160,7 @@ def demo():
             with Layout("Update age"):
                 age = Float.Named("Age")
                 sim.dips.points.store("Age", age + sim.delta_time)
-                sim.dips = sim.dips.points[age.greater_than(age_max)].delete()
+                sim.dips.points[age.greater_than(age_max)].delete()
 
             with Layout("New Projections"):
                 new_projs = start_projs.points.duplicate_elements(amount=Integer.Random(3, 7, seed=nd.scene_time.frame + 1000))
@@ -176,7 +176,7 @@ def demo():
                 sim.projs.points.store("Speed", new_speed)
 
             with Layout("Kill Projections"):
-                sim.projs = sim.projs.points[nd.position.z.less_than(z_water)].delete()
+                sim.projs.points[nd.position.z.less_than(z_water)].delete()
 
         pts = sim.dips
 

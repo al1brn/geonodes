@@ -110,16 +110,22 @@ ctag     = re.compile(tag_expr,  flags = re.MULTILINE)
 
 def tag_replace(m, section):
 
-    tag = m.group('tag').strip()
+    tag = m.group('tag').strip().upper()
     
-    if tag.upper() == 'SHADER':
+    if tag == 'SHADER':
         return ":sunrise: **ShaderNodes** only\n"
     
-    elif tag.upper() == 'MIX':
+    elif tag == 'MIX':
         return ":hotsprings: Behaves differently in **GeoNodes** and **ShaderNodes**\n"
     
-    elif tag.upper() == 'RETURN_NODE':
+    elif tag == 'RETURN_NODE':
         return ":warning: returns the **node**, not a socket"
+    
+    elif tag == 'JUMP':
+        return ""
+    
+    elif tag == 'NO_JUMP':
+        return ""
     
     else:
         print(f"UNKNOWN Method tag: '{tag}' in '{m.group(0)}'")

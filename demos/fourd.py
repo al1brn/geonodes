@@ -926,7 +926,7 @@ def build_vectors():
             y = (a0*c1 - b1*c0)/D
             y.out("y")
 
-        #tree.abs(D).less_than(0.001).to_output("Error")
+        #tree.abs(D).less_than(0.001).out("Error")
         (abs(D) < 0.001).out("Error")
         Vector((x, y, 0)).length.out("Length")
 
@@ -1404,7 +1404,7 @@ def build_extrusions():
 
         mesh = rep.mesh
 
-        mesh.to_output("Mesh")
+        mesh.out("Mesh")
 
     # ----------------------------------------------------------------------------------------------------
     # GROUP - Mesh along a curve
@@ -1568,8 +1568,8 @@ def build_lights():
 
         r.out()
 
-        front_a.to_output("Front A")
-        front_b.to_output("Front B")
+        front_a.out("Front A")
+        front_b.out("Front B")
 
     # ----------------------------------------------------------------------------------------------------
     # MODIFIER - Capture light from an emitter

@@ -736,7 +736,7 @@ updates
     - [out](macro-geono-socket.md#out)
     - [Switch](macro-geono-socket.md#switch)
     - [switch](macro-geono-socket.md#switch)
-    - [to_output](macro-geono-socket.md#to_output)
+    - [out](macro-geono-socket.md#out)
   - [Spline](macro-geono-spline.md#spline)
     - [count](macro-geono-spline.md#count)
     - [is_cyclic](macro-geono-spline.md#is_cyclic)

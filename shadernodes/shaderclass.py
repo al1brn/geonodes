@@ -81,7 +81,7 @@ class Shader(ShaderRoot):
 
     def out(self, name=None):
         if self._tree._is_group:
-            super().to_output(name=name)
+            super().out(name=name)
         else:
             self._tree.surface=self
 
@@ -189,9 +189,8 @@ class Shader(ShaderRoot):
 class VolumeShader(ShaderRoot):
 
     def out(self, name=None):
-        print("Vlume shader I'm OK")
         if self._tree._is_group:
-            super().to_output(name=name)
+            super().out(name=name)
         else:
             self._tree.volume=self
 

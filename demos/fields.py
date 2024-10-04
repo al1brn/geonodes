@@ -97,8 +97,8 @@ def demo():
 
             transformed_position = forward_position.switch(reverse, backward_position)
 
-        transformed_position.to_output("Position")
-        transformed_vector.to_output(  "Vector")
+        transformed_position.out("Position")
+        transformed_vector.out(  "Vector")
 
     # =============================================================================================================================
     # Compute Curl
@@ -200,7 +200,7 @@ def demo():
 
             with Layout("Extrude from this first displacement"):
 
-                mesh = mesh.points[rep.top].extrude(offset=v0)
+                mesh.points[rep.top].extrude(offset=v0)
                 top  = mesh.top_
 
             with Layout("Displacement from extruded point"):
@@ -488,10 +488,10 @@ def demo():
 
     with GeoNodes("Magnet", is_group=True, prefix=field_prefix):
 
-        width_scale  = Float(1., "Width Scale",  0.01, tip="Width scale")
-        location     = Vector(0, "Location", tip="Magnet location")
-        rotation     = Rotation(0, "Rotation", tip="Magnet rotation")
-        speed        = Vector(0, "Speed", tip="Magnet speed in percentage of the speed of light")
+        width_scale = Float(1., "Width Scale",  0.01, tip="Width scale")
+        location    = Vector(0, "Location", tip="Magnet location")
+        rotation    = Rotation(0, "Rotation", tip="Magnet rotation")
+        speed       = Vector(0, "Speed", tip="Magnet speed in percentage of the speed of light")
 
         # ----- Computation is made for a magnet centered along the x axis
 
@@ -533,21 +533,21 @@ def demo():
 
         # ----- Done
 
-        E.to_output("E")
-        B.to_output("B")
+        E.out("E")
+        B.out("B")
 
     # =============================================================================================================================
     # Points in space where to compute the fields
 
     with GeoNodes("Source Points", prefix=util_prefix):
 
-        location    = Vector(0,         "Location")
-        size        = Vector((5, 5, 5), "Size")
-        density     = Float(1,          "Density")
-        rotation    = Rotation(0,       "Rotation")
-        max_dist    = Float(100,        "Max Distance", 1, tip="Remove points farther than maximum distance to the center")
-        center      = Vector(0,         "Center for Max Distance", tip="Center to compute maximum distance")
-        seed        = Integer(0,        "Seed")
+        location = Vector(0,         "Location")
+        size     = Vector((5, 5, 5), "Size")
+        density  = Float(1,          "Density")
+        rotation = Rotation(0,       "Rotation")
+        max_dist = Float(100,        "Max Distance", 1, tip="Remove points farther than maximum distance to the center")
+        center   = Vector(0,         "Center for Max Distance", tip="Center to compute maximum distance")
+        seed     = Integer(0,        "Seed")
 
         geo = Geometry()
 
@@ -563,7 +563,7 @@ def demo():
 
         with Layout("Disk"):
             disk = Mesh.Disk()
-            disk = disk.transform(scale=(size.x, size.y, 1))
+            disk.transform(scale=(size.x, size.y, 1))
             disk_cloud = disk.faces.distribute_points(density=density, seed=seed)
 
         with Layout("Cube"):
@@ -572,12 +572,12 @@ def demo():
 
         with Layout("Cylinder"):
             cyl = Mesh.Cylinder(depth=1)
-            cyl = cyl.transform(scale=(size.x, size.y, size.z))
+            cyl.transform(scale=(size.x, size.y, size.z))
             cyl_cloud = cyl.to_volume(density=density).distribute_points(seed=seed)
 
         with Layout("Sphere"):
             sphere = Mesh.UVSphere()
-            sphere = sphere.transform(scale=(size.x, size.y, size.z))
+            sphere.transform(scale=(size.x, size.y, size.z))
             sphere_cloud = sphere.to_volume(density=density).distribute_points(seed=seed)
 
         cloud = Cloud.MenuSwitch(items={
@@ -591,8 +591,8 @@ def demo():
             'Sphere'           : sphere_cloud,
         }, menu='Cube', name='Shape')
 
-        cloud = cloud.transform(translation=location, rotation=rotation)
-        cloud = cloud.points[nd.position.distance(center).greater_than(max_dist)].delete()
+        cloud.transform(translation=location, rotation=rotation)
+        cloud.points[nd.position.distance(center).greater_than(max_dist)].delete()
 
         cloud.out()
 
@@ -613,7 +613,7 @@ def demo():
             arrows_group.plug_node_into(include=['Scale', 'Logarithm'], rename={'Color': 'Arrow Color'})
             arrows_mat = Material("Arrow", "Arrows Material")
             arrows_group.shaft = arrows_mat
-            arrows_group.head= arrows_mat
+            arrows_group.head  = arrows_mat
             arrows = arrows_group._out
 
         with Layout("Lines of field computation"):
@@ -638,7 +638,7 @@ def demo():
             show_lines_arrows = Boolean(False, "Arrows on Lines")
             lar_delta = Float(.5, "Interval",.1, tip="Distance between arrows on the lines of field")
             lar_scale = Float(1., "Lines Arrows Scale",.01, tip="Scale of arrows on the lines of field")
-            lar_origins = curves.resample(length=gnmath.max(.1, lar_delta))
+            lar_origins = Curve(curves).resample(length=gnmath.max(.1, lar_delta))
             lar_vectors = lar_origins.tangent.scale(Float.Named("Intensity")*lar_scale)
 
             lar_group = Group("Arrows", {'Geometry': lar_origins, 'Vectors': lar_vectors})
@@ -660,8 +660,12 @@ def demo():
         # ----------------------------------------------------------------------------------------------------
         # Source points
 
+        # Make sure Input geometry exists
+
+        geo = Geometry()
+
         source_node = Group.Prefix(util_prefix, "Source Points")
-        source_node.plug_node_into(include=['Size', 'Density', 'Seed', 'Shape'])
+        source_node.plug_node_into(include=['Geometry', 'Size', 'Density', 'Seed', 'Shape'])
         cloud = source_node._out
 
         use_magnetic = Boolean(False, "Magnetic Field", tip="Magnetic field if True, electric field otherwise")

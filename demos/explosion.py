@@ -44,29 +44,29 @@ def demo():
 
         # ----- Input geometry is supposed to be points
 
-        points = Cloud(name="Points", tip="Geometry with points")
+        cloud = Cloud(name="Points", tip="Geometry with points")
 
         # ----- Initialization
 
         with Layout("Initial speed and rotation"):
             speed = Vector.Named("Speed")
             speed = speed.switch(-speed.exists_, Vector.Random(-speed_max, speed_max, seed=seed))
-            points.points.store("Speed", speed)
+            cloud.points.store("Speed", speed)
 
             rotation = Vector.Named("Rotation")
             rotation = Vector.Random(0, tau, seed=seed+1).switch(rotation.exists_, rotation)
-            points.points.store("Rotation", rotation)
+            cloud.points.store("Rotation", rotation)
 
             omega = Vector.Random(0, tau, seed=seed+2)
 
-        with Simulation(points=points, speed=speed) as sim:
+        with Simulation(cloud=cloud, speed=speed) as sim:
 
             sim.skip = nd.scene_time.frame.less_than(frame0)
 
             dt = sim.delta_time
 
             with Layout("Speed"):
-                old_speed = sim.points.points.capture(sim.speed)
+                old_speed = sim.cloud.points.capture(sim.speed)
 
                 with Layout("Viscosity"):
                     speed_norm = old_speed.length
@@ -78,16 +78,16 @@ def demo():
 
                 new_speed = old_speed + acc*dt
 
-                sim.points.points.offset = (old_speed + new_speed)*dt
+                sim.cloud.points.offset = (old_speed + new_speed)*dt
 
             sim.speed = new_speed
 
             with Layout("Rotation"):
                 old_rot = Rotation(Vector.Named("Rotation"))
                 new_rot = old_rot.rotate(omega*dt)
-                sim.points.points.store("Rotation", new_rot)
+                sim.cloud.points.store("Rotation", new_rot)
 
-        sim.points.out()
+        sim.cloud.out()
 
     # =============================================================================================================================
     # Explode particles places on the input mesh
@@ -108,25 +108,26 @@ def demo():
 
         with Layout("Generate the points on the input mesh"):
             selection = (nd.normal @ (0, 0, 1)).greater_than(0).switch(-only_up, True)
-            points = Mesh().faces[selection].distribute_points(density=density, seed=seed)
+            cloud = Mesh().faces[selection].distribute_points(density=density, seed=seed)
+            normal = cloud.normal_
 
         with Layout("Random speeds, aligned with normal plus some noise"):
-            speed = points.normal_ * (max_speed * Float.Random(0, 1, seed=seed + 1))
-            points.points.store("Speed", speed)
+            speed = normal * (max_speed * Float.Random(0, 1, seed=seed + 1))
+            cloud.points.store("Speed", speed)
 
         with Layout("Rotation aligned with normals"):
-            rotation = Rotation.AlignToVector(points.normal_)
-            points.points.store("Rotation", rotation)
+            rotation = Rotation.AlignToVector(normal)
+            cloud = cloud.points.store("Rotation", rotation)
 
         with Layout("Gravity loop"):
             simul = Group("Gravity",
-                    {'Points': points,
+                    {'Points': cloud,
                      'Start Frame': frame0,
                      'Gravity': gravity,
                      'Viscosity factor': vis_fac,
                      'Viscosity exponent': vis_exp,
                     })
-            points = Cloud(simul.geometry)
+            cloud = Cloud(simul.geometry)
 
         with Layout("Instances coming from collection"):
             coll_parts = particles.info(separate_children=True).instances
@@ -155,8 +156,8 @@ def demo():
         parts = rand_parts.switch(use_coll, coll_parts)
 
         with Layout("Put particles on the points and rotate with Rotation attribute"):
-            insts = parts.on_points(points, pick_instance=True)
-            insts.insts.rotation = points.points.sample_index(Vector.Named("Rotation"), nd.index)
+            insts = parts.on_points(cloud, pick_instance=True)
+            insts.insts.rotation = cloud.points.sample_index(Vector.Named("Rotation"), nd.index)
 
         with Layout("Final geometry"):
             insts.switch(nd.scene_time.frame.less_than(frame0), Mesh()).out('Geometry')

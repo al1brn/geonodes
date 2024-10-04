@@ -224,6 +224,8 @@ class GeoBase:
     def set_position(self, position=None, offset=None):
         """ > Node <&Node Set Position>
 
+        [&JUMP]
+
         Arguments
         ---------
         - position (Vector) : socket 'Position' (Position)
@@ -231,13 +233,15 @@ class GeoBase:
 
         Returns
         -------
-        - Geometry
+        - Geometry : self
         """
         node = Node('Set Position', {'Geometry': self._geo, 'Selection': self._sel, 'Position': position, 'Offset': offset})._out
-        return self._geo_type(node._out)
+        return self._jump(node._out)
 
     def set_id(self, id=None):
         """ > Node <&Node Set ID>
+
+        [&JUMP]
 
         Arguments
         ---------
@@ -250,10 +254,12 @@ class GeoBase:
         - Geometry
         """
         node = Node('Set ID', {'Geometry': self._geo, 'Selection': self._sel, 'ID': id})
-        return self._geo_type(node._out)
+        return self._jump(node._out)
 
     def replace_material(self, old=None, new=None):
         """ > Node <&Node Replace Material>
+
+        [&JUMP]
 
         Arguments
         ---------
@@ -262,10 +268,10 @@ class GeoBase:
 
         Returns
         -------
-        - Geometry
+        - Geometry : self
         """
         node = Node('Replace Material', {'Geometry': self._geo, 'Old': old, 'New': new})
-        return self._geo_type(node._out)
+        return self._jump(node._out)
 
     # ====================================================================================================
     # Selection mechanism
@@ -447,18 +453,22 @@ class Geometry(Socket, GeoBase):
     def set_id(self, id=None):
         """ > Node <&Node Set ID>
 
+        [&JUMP]
+
         Arguments
         ---------
         - id (Integer) : socket
 
         Returns
         -------
-        - Geometry
+        - Geometry : self
         """
-        return Node("Set ID", {'Geometry': self, 'Selection': self._sel, 'ID': id})._out
+        return self._jump(Node("Set ID", {'Geometry': self, 'Selection': self._sel, 'ID': id})._out)
 
     def set_position(self, position=None, offset=None):
         """ > Node <&Node Set Position>
+
+        [&JUMP]
 
         Arguments
         ---------
@@ -466,12 +476,14 @@ class Geometry(Socket, GeoBase):
 
         Returns
         -------
-        - Geometry
+        - Geometry : self
         """
-        return Node("Set Position", {'Geometry': self, 'Selection': self._sel, 'Position': position, 'Offset': offset})._out
+        return self._jump(Node("Set Position", {'Geometry': self, 'Selection': self._sel, 'Position': position, 'Offset': offset})._out)
 
     def set_material(self, material=None):
         """ > Node <&Node Set Material>
+
+        [&JUMP]
 
         Arguments
         ---------
@@ -479,12 +491,14 @@ class Geometry(Socket, GeoBase):
 
         Returns
         -------
-        - Geometry
+        - Geometry = self
         """
-        return Node("Set Material", {'Geometry': self, 'Selection': self._sel, 'Material': material})._out
+        return self._jump(Node("Set Material", {'Geometry': self, 'Selection': self._sel, 'Material': material})._out)
 
     def set_shade_smooth(self, shade_smooth=True, edge=False):
         """ > Node <&Node Set Shade Smooth>
+
+        [&JUMP]
 
         Arguments
         ---------
@@ -492,14 +506,16 @@ class Geometry(Socket, GeoBase):
 
         Returns
         -------
-        - Geometry
+        - Geometry : self
         """
-        return Node("Set Shade Smooth", {'Geometry': self, 'Selection': self._sel, 'Shade Smooth': shade_smooth}, domain='EDGE' if edge else 'FACE')._out
+        return self._jump(Node("Set Shade Smooth", {'Geometry': self, 'Selection': self._sel, 'Shade Smooth': shade_smooth}, domain='EDGE' if edge else 'FACE')._out)
 
     # ----- Remove named attribute
 
     def remove_named_attribute(self, name, exact=True):
         """ > Node <&Node Remove Named Attribute>
+
+        [&JUMP]
 
         Arguments
         ---------
@@ -508,10 +524,8 @@ class Geometry(Socket, GeoBase):
 
         Returns
         -------
-        - Geometry
+        - Geometry : self
         """
-        #node = Node('Remove Named Attribute', {'Geometry': self, 'Name': name}, pattern_mode = 'EXACT' if exact else 'WILDCARD')
-        #self._jump(node._out)
         return self._jump(Node('Remove Named Attribute', {'Geometry': self, 'Name': name}, pattern_mode = 'EXACT' if exact else 'WILDCARD')._out)
 
     # ====================================================================================================
@@ -566,11 +580,11 @@ class Geometry(Socket, GeoBase):
     def bake(self, **kwargs):
         """ Node <&Node Bake>
 
-        [&RETURN_NODE]
+        [&JUMP]
 
         Returns
         -------
-        - Node : 'Bake' node
+        - Geometry : self
         """
 
         node = Node('Bake', {'Geometry': self})
@@ -579,9 +593,7 @@ class Geometry(Socket, GeoBase):
         for name, value in kwargs.items():
             items.new(utils.get_input_type(value), name)
 
-        self._jump(node._out)
-
-        return node
+        return self._jump(node._out)
 
     @property
     def bounding_box(self):
@@ -592,7 +604,7 @@ class Geometry(Socket, GeoBase):
 
         Returns
         -------
-        - Mesh [min_, max_]
+        - Mesh
         """
         return Mesh(Node('Bounding Box', {'Geometry': self})._out)
 
@@ -612,6 +624,8 @@ class Geometry(Socket, GeoBase):
     def merge_by_distance(self, distance=None, mode='ALL'):
         """ > Node <&Node Merge by Distance>
 
+        [&JUMP]
+
         Arguments
         ---------
         - distance (Float) : socket 'Distance' (Distance)
@@ -619,12 +633,14 @@ class Geometry(Socket, GeoBase):
 
         Returns
         -------
-        - Geometry
+        - Geometry : self
         """
         return self._geo_type(self._node('Merge by Distance', {'Distance': distance}, mode=mode)._out)
 
     def transform(self, translation=None, rotation=None, scale=None, matrix=None):
         """ > Node <&Node Transform Geometry>
+
+        [&JUMP]
 
         > [!NOTE]
         > - If **matrix** argument is None, the mode 'COMPONENTS' is set.
@@ -639,12 +655,12 @@ class Geometry(Socket, GeoBase):
 
         Returns
         -------
-        - Geometry
+        - Geometry = self
         """
         if matrix is None:
-            return self._geo_type(Node('Transform Geometry', {'Geometry': self, 'Translation': translation, 'Rotation': rotation, 'Scale': scale}, mode='COMPONENTS')._out)
+            return self._jump(Node('Transform Geometry', {'Geometry': self, 'Translation': translation, 'Rotation': rotation, 'Scale': scale}, mode='COMPONENTS')._out)
         else:
-            return self._geo_type(Node('Transform Geometry', {'Geometry': self, 'Transform': matrix}, mode='MATRIX')._out)
+            return self._jump(Node('Transform Geometry', {'Geometry': self, 'Transform': matrix}, mode='MATRIX')._out)
 
     @property
     def separate_components(self):
@@ -708,26 +724,20 @@ class Geometry(Socket, GeoBase):
         """
         return Instances(self.separate_components.instances)
 
-    def join(self, *geometries):
-        """ > Node <&Node Join Geometry>
+    @classmethod
+    def Join(cls, *geometries):
+        """ > Constructor node <&Node Join Geometry>
 
-        Operator + can be used : ``` geo + other_geo ``` is equivalent to ``` geo.join(other) ```
-        If all the geometries are of the same type, the returned geometry uses this type.
+        Create a new geometry by joining the arguments geometry:
 
         ``` python
-        cube = Mesh.Cube()
-        cone = Mesh.Cone()
-        circle = Curve.Circle()
-
-        # Returns Mesh
-        mesh = cube.join(cone)
-        assert(isinstance(mesh, Mesh))
-
-        # Returns Geometry
-        geo = mesh + circle
-        assert(isinstance(geo, Geometry))
+        geo = Geometry.Join(Mesh.Cube(), Curve.Circle())
         ```
 
+        > See also <#join> method
+
+        Arguments
+        ---------
         Arguments
         ---------
         - *geometry (Geometry) : socket 'Geometry' (Geometry)
@@ -736,24 +746,78 @@ class Geometry(Socket, GeoBase):
         -------
         - Geometry
         """
+        if len(geometries) == 0:
+            return cls(Node('Join Geometry')._out)
 
-        node = Node('Join Geometry', {'Geometry': [self] + list(geometries)})
+        ttype = cls
+        if cls.__name__ == 'Geometry':
+            ttype = type(geometries[0])
+            for g in geometries[1:]:
+                if not isinstance(g, ttype):
+                    ttype = cls
+                    break
 
-        geo = node._out
-        classes = set()
-        classes.add(type(self))
-        for g in geometries:
-            classes.add(type(g))
-        if len(classes) == 1:
-            return list(classes)[0](geo)
+        return ttype(Node('Join Geometry', {'Geometry': list(geometries)})._out)
+
+    def join(self, *geometries):
+        """ > Node <&Node Join Geometry>
+
+        [&JUMP]
+
+        > [!IMPORTANT]
+        > 3 possibilities exist to join geometries
+        > - Constructur <#Jump> : create an new geometry from the input geometries
+        > - Operator '+' : create a new geometry from the operands
+        > - Method 'join' : join the input geometry to the calling geometry
+
+        ``` python
+        a = Mesh.Cube()
+        b = Mesh.UVSphere()
+
+        # Constructor Join
+        c = Mesh.Join(a, b)
+
+        # Equivalent to
+        c = a + b
+
+        # Method join
+        # After the call, a is not anymore the cube but the result of the join operation
+        a.join(b)
+
+        # Equivalent to
+        a += b
+        ```
+
+        Arguments
+        ---------
+        - *geometry (Geometry) : socket 'Geometry' (Geometry)
+
+        Returns
+        -------
+        - Geometry : self
+        """
+        if len(geometries) == 0:
+            return self
+        return self._jump(Node('Join Geometry', {'Geometry': [self] + list(geometries)})._out)
+
+    def __add__(self, other):
+        if isinstance(other, tuple):
+            return type(self).Join(self, *other)
+
+        elif isinstance(other, type(self)):
+            return type(self).Join(self, other)
+
         else:
-            return geo
+            return Geometry.Join(self, other)
+
 
     # ====================================================================================================
     # Operations
 
     def to_instance(self, *geometries):
         """ > Node <&Node Geometry to Instance>
+
+        [&NO_JUMP]
 
         Arguments
         ---------
@@ -765,14 +829,6 @@ class Geometry(Socket, GeoBase):
         """
         return Instances.FromGeometry([self] + list(geometries))
 
-    # ====================================================================================================
-    # Python Operations
-
-    def __add__(self, other):
-        if hasattr(other, '__len__'):
-            return self.join(*other)
-        else:
-            return self.join(other)
 
 # =============================================================================================================================
 # =============================================================================================================================
@@ -799,6 +855,8 @@ class Domain(GeoBase, NodeCache):
 
         > [!IMPORTANT]
         > Domains are never instantiated directly but created by geometries.
+
+        > See: <!Vertex>, <!Face>, <!Edge>, <!Corner>, <!SplinePoint>, <!Spline>, <!CloudPoint>, <!Instance>
 
         Properties:
         - _geo (Geometry) : the geometry the domain belongs to
@@ -898,6 +956,8 @@ class Domain(GeoBase, NodeCache):
     def attribute_statistic(self, attribute=None):
         """ > Node <&Node Attribute Statistic>
 
+        [&RETURN_NODE]
+
         Arguments
         ---------
         - attribute (Socket = None) : attribute to compute statistic
@@ -912,72 +972,119 @@ class Domain(GeoBase, NodeCache):
 
     # ----- Capture attribute
 
-    def capture_attribute(self, attribute=None, **others):
+    def capture_attribute(self, **attributes):
         """ > Node <&Node Capture Attribute>
 
+        [&JUMP]
         [&RETURN_NODE]
 
-        This method return the capture of 'attribute' argument if no keyword arguments are provided,
-        otherwise returns the node.
+        > You can use two short names:
+        > <#capture> : to capture only one attribute
+        > <#capture> : same as **capture_attribute** to capture several named attributes
 
         ``` python
         with GeoNodes("Capture Attribute"):
-            mesh = Mesh()
+            # Capture attributes
+            node = mesh.points.capture_attribute(attr1 = attr1, attr2=attr2)
+            captured_attr1 = node.attr1
+            captured_attr2 = node.attr2
 
-            # A single anonymous attribute
-            p = mesh.points.capture_attribute(nd.position)
-            assert(isinstance(p, Vector))
-
-            # Only named attributes
-            node = mesh.faces.capture_attribute(pos=nd.position, idx=nd.material_index)
-            assert(isinstance(node, Node))
-            assert(isinstance(node.pos, Vector))
-            assert(isinstance(node.idx, Integer))
-
-            # Anonymous attribute plus named attributes
-            node = mesh.faces.capture_attribute(nd.position, idx=nd.material_index)
-            assert(isinstance(node, Node))
-            assert(isinstance(node.attribute, Vector))
-            assert(isinstance(node.idx, Integer))
+            # Capture one attribute
+            captured_attr3 = mesh.points.capture(attr3)
         ```
 
         Arguments
         ---------
-        - attribute (Socket) : attribute to capture
-        - **others (Sockets): named attributes to capture
+        - **attributes (Sockets): named attributes to capture
 
         Returns
         -------
-        - Socket (no keyword arguments) or Node (when keyword arguments)
+        - Node
         """
+        if len(attributes) == 0:
+            return self
 
         node = self._node('Capture Attribute')
-        sockets = others if attribute is None else {'attribute': attribute, **others}
-        if len(sockets) == 0:
-            raise NodeError("'Capture Attribute' error: need at least one attribute")
-        node._set_items(sockets)
-
+        node._set_items(**attributes)
         self._jump(node._out)
+        return node
 
-        if len(others) == 0:
-            return node.attribute
-        else:
-            return node
-
-    def capture(self, attribute=None, **others):
+    def captures(self, **attributes):
         """ > Node <&Node Capture Attribute>
 
-        > see <#capture_attribute>
+        [&JUMP]
+        [&RETURN_NODE]
+
+        > Short name for <#capture_attribute>
+
+        ``` python
+        with GeoNodes("Capture Attribute"):
+            # Capture attributes
+            node = mesh.points.captures(attr1 = attr1, attr2=attr2)
+            captured_attr1 = node.attr1
+            captured_attr2 = node.attr2
+
+            # Capture one attribute
+            captured_attr3 = mesh.points.capture(attr3)
+        ```
+
+        Arguments
+        ---------
+        - **attributes (Sockets): named attributes to capture
+
+        Returns
+        -------
+        - Node
         """
-        return self.capture_attribute(attribute=attribute, **others)
+        return self.capture_attribute(**attributes)
+
+    def capture(self, attribute):
+        """ > Node <&Node Capture Attribute>
+
+        [&JUMP]
+
+        > Short name for <#capture_attribute>
+
+        ``` python
+        with GeoNodes("Capture Attribute"):
+            captured_attr = mesh.points.capture(attr)
+
+            # If more than one attribute is to be captured
+            node = mesh.points.captures(attr1 = attr1, attr2=attr2)
+            captured_attr1 = node.attr1
+            captured_attr2 = node.attr2
+        ```
+
+        Arguments
+        ---------
+        - attribute (Socket): the single attribute to capture
+
+        Returns
+        -------
+        - Socket
+        """
+        return self.capture_attribute(attribute=attribute).attribute
 
     # ----- Store named attribute
 
     def store_named_attribute(self, name, value=None):
         """ > Node <&Node Store Named Attribute>
 
+        [&JUMP]
+
+        > You can use short name <#store>
+
         - data_type (str): Node.data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BYTE_COLOR', 'BOOLEAN', 'FLOAT2', 'INT8', 'QUATERNION', 'FLOAT4X4')
         - domain (str): Node.domain in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+
+        > [!NOTE]
+        > Use constructor method <!Socket#NamedAttribute> to read stored attributes
+
+        ``` python
+        mesh = Mesh.Cube()
+        mesh.points.store_named_attribute("An Integer", 123)
+        i = Integer.NamedAttribute("An Integer")
+        ```
 
         Arguments
         ---------
@@ -996,9 +1103,35 @@ class Domain(GeoBase, NodeCache):
     def store(self, name, value=None):
         """ > Node <&Node Store Named Attribute>
 
-        > See <#store_named_attribute>
+        [&JUMP]
+
+        > Short name of <#store_named_attribute>
+
+        - data_type (str): Node.data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BYTE_COLOR', 'BOOLEAN', 'FLOAT2', 'INT8', 'QUATERNION', 'FLOAT4X4')
+        - domain (str): Node.domain in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+
+        > [!NOTE]
+        > Use constructor method <!Socket#Named> to read stored attributes
+
+        ``` python
+        mesh = Mesh.Cube()
+        mesh.points.store("An Integer", 123)
+        i = Integer.Named("An Integer")
+        ```
+
+        Arguments
+        ---------
+        - name (String) : socket 'Name' (Name)
+        - value (Float) : socket 'Value' (Value)
+
+        Returns
+        -------
+        - Geometry
         """
-        return self.store_named_attribute(name, value=value)
+        data_type   = utils.get_data_type(value)
+        node = self._node('Store Named Attribute', {'Name': name, 'Value': value}, data_type=data_type)
+
+        return self._jump(node._out)
 
     # ====================================================================================================
     # Sample nodes with domain
@@ -1034,7 +1167,7 @@ class Domain(GeoBase, NodeCache):
 
         Returns
         -------
-        - Socket
+        - Vector
         """
 
         return self._node('Sample Index', {'Value': value, 'Index': index}, clamp=clamp, data_type=utils.get_data_type(value))._out
@@ -1060,6 +1193,10 @@ class Domain(GeoBase, NodeCache):
     def delete_geometry(self, mode='ALL'):
         """ > Node <&Node Delete Geometry>
 
+        [&JUMP]
+
+        > You can use short name <#delete>
+
         - domain (str): Node.domain in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
 
         Arguments
@@ -1068,51 +1205,71 @@ class Domain(GeoBase, NodeCache):
 
         Returns
         -------
-        - Geometry
+        - Geometry : self
         """
         self.exclude_corner('delete_geometry')
-        return self._geo_type(self._node('Delete Geometry', mode=mode)._out)
+        return self._jump(self._node('Delete Geometry', mode=mode)._out)
 
     def delete(self, mode='ALL'):
         """ > Node <&Node Delete Geometry>
 
-        > See <#delete_geometry>
-        """
+        [&JUMP]
 
+        > Short name for <#delete_geometry>
+
+        - domain (str): Node.domain in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
+
+        Arguments
+        ---------
+        - mode (str): Node.mode in ('ALL', 'EDGE_FACE', 'ONLY_FACE')
+
+        Returns
+        -------
+        - Geometry : self
+        """
         return self.delete_geometry(mode=mode)
 
     def delete_all(self):
-        """ > Node <&Node Delete Geometry>
+        """ > Node <&Node Delete Geometry>, mode = 'ALL'
 
-        Shortcut for :
-        ``` python
-        domain.delete_geometry(mode='ALL')
-        ```
+        [&JUMP]
+
+        Arguments
+        ---------
+        - mode (str): Node.mode in ('ALL', 'EDGE_FACE', 'ONLY_FACE')
+
+        Returns
+        -------
+        - Geometry : self
         """
         return self.delete_geometry(mode='ALL')
 
     def delete_faces(self):
-        """ > Node <&Node Delete Geometry>
+        """ > Node <&Node Delete Geometry>, mode = 'ONLY_FACE'
 
-        Shortcut for :
-        ``` python
-        domain.delete_geometry(mode='ONLY_FACE')
-        ```
+        [&JUMP]
+
+        Returns
+        -------
+        - Geometry : self
         """
         return self.delete_geometry(mode='ONLY_FACE')
 
     def delete_edges_and_faces(self):
-        """ > Node <&Node Delete Geometry>
+        """ > Node <&Node Delete Geometry>, mode = 'EDGE_FACE'
 
-        Shortcut for :
-        ``` python
-        domain.delete_geometry(mode='EDGE_FACE')
-        ```
+        [&JUMP]
+
+        Returns
+        -------
+        - Geometry : self
         """
         return self.delete_geometry(mode='EDGE_FACE')
 
     def duplicate_elements(self, amount=1):
         """ > Node <&Node Duplicate Elements>
+
+        [&JUMP]
 
         - domain (str): Node.domain in ('POINT', 'EDGE', 'FACE', 'SPLINE', 'INSTANCE')
 
@@ -1122,15 +1279,17 @@ class Domain(GeoBase, NodeCache):
 
         Returns
         -------
-        - Geometry
+        - Geometry : self
         """
 
         self.exclude_corner('duplicate_elements')
         domain = self.domain_name(rename={'CURVE': 'SPLINE'})
-        return self._geo_type(Node('Duplicate Elements', {'Geometry': self._geo, 'Selection': self._sel, 'Amount': amount}, domain=domain)._out)
+        return self._jump(Node('Duplicate Elements', {'Geometry': self._geo, 'Selection': self._sel, 'Amount': amount}, domain=domain)._out)
 
     def sort_elements(self, group_id=None, sort_weight=None):
         """ > Node <&Node Sort Elements>
+
+        [&JUMP]
 
         - domain (str): Node.domain in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
 
@@ -1141,17 +1300,24 @@ class Domain(GeoBase, NodeCache):
 
         Returns
         -------
-        - Geometry
+        - Geometry = self
         """
         self.exclude_corner('sort_elements')
-        return self._geo_type(self._node('Sort Elements', {'Group ID': group_id, 'Sort Weight': sort_weight})._out)
+        return self._jump(self._node('Sort Elements', {'Group ID': group_id, 'Sort Weight': sort_weight})._out)
 
     def separate(self):
         """ > Node <&Node Separate Geometry>
 
-        - domain (str): Node.domain in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
+        [&NO_JUMP]
 
-        [&RETURN_NODE]
+        > [!NOTE]
+        > Use **peer socket** convention to get the inverted socket
+
+        ``` python
+        mesh = Mesh.Cube()
+        selected = mesh.points.separate()
+        inverted = selected.inverted_
+        ```
 
         Returns
         -------
@@ -1159,10 +1325,12 @@ class Domain(GeoBase, NodeCache):
         """
 
         self.exclude_corner('separate')
-        return self._geo_type(self._node('Separate Geometry'))
+        return self._geo_type(self._node('Separate Geometry')._out)
 
     def split_to_instances(self, group_id=None):
         """ > Node <&Node Split to Instances>
+
+        [&NO_JUMP]
 
         - domain (str): Node.domain in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
 
@@ -1172,7 +1340,7 @@ class Domain(GeoBase, NodeCache):
 
         Returns
         -------
-        - instances
+        - Instances
         """
 
         self.exclude_corner('split_to_instances')
@@ -1183,6 +1351,8 @@ class Domain(GeoBase, NodeCache):
     def to_points(self, position=None, radius=None):
         """ > Node <&Node Mesh to Points>
 
+        [&NO_JUMP]
+
         - mode (str): Node.mode in ('VERTICES', 'EDGES', 'FACES', 'CORNERS')
 
         Arguments
@@ -1192,7 +1362,7 @@ class Domain(GeoBase, NodeCache):
 
         Returns
         -------
-        - Geometry
+        - Cloud
         """
 
         mode = self.plural_domain(['POINT', 'EDGE', 'FACE', 'CORNER'], 'Mesh to Point')
@@ -1203,19 +1373,24 @@ class Domain(GeoBase, NodeCache):
     def extrude(self, offset=None, offset_scale=None, individual=None):
         """ > Node <&Node Extrude Mesh>
 
+        [&JUMP]
+
         - mode (str): Node.mode in ('VERTICES', 'EDGES', 'FACES')
 
         ``` python
         with GeoNodes("Extrusion"):
             cube = Mesh.Cube()
 
-            cube = cube.faces.extrude(nd.normal, .5)
-            cube = cube.faces[cube.top_].extrude(offset_scale=0)
+            cube.faces.extrude(nd.normal, .5)
+            cube.faces[cube.top_].extrude(offset_scale=0)
+
+            # Next cube extrusion will change top_
             top = cube.top_
-            cube = cube.faces[top].scale(scale=.8, uniform=False)
-            cube = cube.faces[top].scale(scale=.6, uniform=True)
-            cube = cube.faces[top].extrude(offset_scale=.5)
-            cube = cube.faces[cube.top_].flip()
+
+            cube.faces[top].scale(scale=.8, uniform=False)
+            cube.faces[top].scale(scale=.6, uniform=True)
+            cube.faces[top].extrude(offset_scale=.5)
+            cube.faces[cube.top_].flip()
 
             cube.out()
         ```
@@ -1228,18 +1403,19 @@ class Domain(GeoBase, NodeCache):
 
         Returns
         -------
-        - Geometry [top_, side_]
+        - Geometry : self
         """
 
         mode = self.plural_domain(['POINT', 'EDGE', 'FACE'], 'Extrude Mesh')
         node = Node('Extrude Mesh', {'Mesh': self._geo, 'Selection': self._sel, 'Offset': offset, 'Offset Scale': offset_scale, 'Individual': individual}, mode = mode)
-
-        return Mesh(node.mesh)
+        return self._jump(node._out)
 
     # ----- Field
 
     def accumulate_field(self, value=None, group_id=None, ):
         """ > Node <&Node Accumulate Field>
+
+        [&RETURN_NODE]
 
         - data_type (str): Node.data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'TRANSFORM')
         - domain (str): Node.domain in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
@@ -1316,6 +1492,8 @@ class Point(Domain):
     def instance_on(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
         """ > Node <&Node Instance on Points>
 
+        [&NO_JUMP]
+
         Arguments
         ---------
         - instance (Geometry) : socket 'Instance' (Instance)
@@ -1326,7 +1504,7 @@ class Point(Domain):
 
         Returns
         -------
-        - instances (Geometry)
+        - Instances
         """
 
         return Instances(Node('Instance on Points', {'Points': self._geo, 'Selection': self._sel,
@@ -1391,6 +1569,8 @@ class Vertex(Point):
 
     def edge_paths_to_curves(self, next_vertex_index=None):
         """ > Node <&Node Edge Paths to Curves>
+
+        [&NO_JUMP]
 
         Arguments
         ---------
@@ -1467,6 +1647,8 @@ class SplinePoint(Point):
     def set_handle_positions(self, position=None, offset=None, mode=None):
         """ > Node <&Node Set Handle Positions>
 
+        [&JUMP]
+
         ``` python
         with GeoNodes("Curve handles"):
             curve = Curve.Line(0, (20, 0, 0)).resample(20)
@@ -1526,9 +1708,9 @@ class SplinePoint(Point):
 
         Returns
         -------
-        - Curve
+        - Curve : self
         """
-        return Curve(Node('Set Handle Positions', {'Curve': self._geo, 'Selection': self._sel, 'Position': position, 'Offset': offset}, mode=mode)._out)
+        return self._jump(Node('Set Handle Positions', {'Curve': self._geo, 'Selection': self._sel, 'Position': position, 'Offset': offset}, mode=mode)._out)
 
     # -----------------------------------------------------------------------------------------------------------------------------
     # Handle position properties
@@ -1548,7 +1730,7 @@ class SplinePoint(Point):
 
     @left_handle_position.setter
     def left_handle_position(self, value):
-        self._jump(self.set_handle_positions(position=value, mode='LEFT'))
+        self.set_handle_positions(position=value, mode='LEFT')
 
     @property
     def right_handle_position(self):
@@ -1565,7 +1747,7 @@ class SplinePoint(Point):
 
     @right_handle_position.setter
     def right_handle_position(self, value):
-        self._jump(self.set_handle_positions(position=value, mode='RIGHT'))
+        self.set_handle_positions(position=value, mode='RIGHT')
 
     # Offset
 
@@ -1584,7 +1766,7 @@ class SplinePoint(Point):
 
     @left_handle_offset.setter
     def left_handle_offset(self, value):
-        self._jump(self.set_handle_positions(offset=value, mode='LEFT'))
+        self.set_handle_positions(offset=value, mode='LEFT')
 
     @property
     def right_handle_offset(self):
@@ -1601,7 +1783,7 @@ class SplinePoint(Point):
 
     @right_handle_offset.setter
     def right_handle_offset(self, value):
-        self._jump(self.set_handle_positions(offset=value, mode='RIGHT'))
+        self.set_handle_positions(offset=value, mode='RIGHT')
 
     # ----- Handle type
 
@@ -1629,6 +1811,8 @@ class SplinePoint(Point):
 
     def set_handle_type(self, left=True, right=True, handle_type='AUTO'):
         """ > Node <&Node Set Handle Type>
+
+        [&JUMP]
 
         ``` python
         with GeoNodes("Curve handles"):
@@ -1689,7 +1873,7 @@ class SplinePoint(Point):
 
         Returns
         -------
-        - Curve
+        - Curve : self
         """
 
         mode = set()
@@ -1697,7 +1881,7 @@ class SplinePoint(Point):
             mode.add('LEFT')
         if right:
             mode.add('RIGHT')
-        return Curve(Node('Set Handle Type', {'Curve': self._geo, 'Selection': self._sel}, mode=mode, handle_type=handle_type)._out)
+        return self._jump(Node('Set Handle Type', {'Curve': self._geo, 'Selection': self._sel}, mode=mode, handle_type=handle_type)._out)
 
     # -----------------------------------------------------------------------------------------------------------------------------
     # Handle types as enum in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
@@ -1725,7 +1909,7 @@ class SplinePoint(Point):
 
     @handle_type.setter
     def handle_type(self, value):
-        self._jump(self.set_handle_type(left=True, right=True, handle_type=value))
+        self.set_handle_type(left=True, right=True, handle_type=value)
 
     # ----- Left only
 
@@ -1746,7 +1930,7 @@ class SplinePoint(Point):
 
     @left_handle_type.setter
     def left_handle_type(self, value):
-        self._jump(self.set_handle_type(left=True, right=False, handle_type=value))
+        self.set_handle_type(left=True, right=False, handle_type=value)
 
     # ----- Right only
 
@@ -1767,7 +1951,7 @@ class SplinePoint(Point):
 
     @right_handle_type.setter
     def right_handle_type(self, value):
-        self._jump(self.set_handle_type(left=False, right=True, handle_type=value))
+        self.set_handle_type(left=False, right=True, handle_type=value)
 
     # -----------------------------------------------------------------------------------------------------------------------------
     # Left and Right Handle types as boolean properties
@@ -1787,7 +1971,7 @@ class SplinePoint(Point):
 
     @handle_auto.setter
     def handle_auto(self, value):
-        self._jump(self.set_handle_type(left=True, right=True, handle_type='AUTO'))
+        self.set_handle_type(left=True, right=True, handle_type='AUTO')
 
     @property
     def handle_free(self):
@@ -1804,7 +1988,7 @@ class SplinePoint(Point):
 
     @handle_free.setter
     def handle_free(self, value):
-        self._jump(self.set_handle_type(left=True, right=True, handle_type='FREE'))
+        self.set_handle_type(left=True, right=True, handle_type='FREE')
 
     @property
     def handle_vector(self):
@@ -1821,7 +2005,7 @@ class SplinePoint(Point):
 
     @handle_vector.setter
     def handle_vector(self, value):
-        self._jump(self.set_handle_type(left=True, right=True, handle_type='VECTOR'))
+        self.set_handle_type(left=True, right=True, handle_type='VECTOR')
 
     @property
     def handle_align(self):
@@ -1838,7 +2022,7 @@ class SplinePoint(Point):
 
     @handle_align.setter
     def handle_align(self, value):
-        self._jump(self.set_handle_type(left=True, right=True, handle_type='ALIGN'))
+        self.set_handle_type(left=True, right=True, handle_type='ALIGN')
 
     # -----------------------------------------------------------------------------------------------------------------------------
     # Left Handle types as boolean properties
@@ -1858,7 +2042,7 @@ class SplinePoint(Point):
 
     @left_handle_auto.setter
     def left_handle_auto(self, value):
-        self._jump(self.set_handle_type(left=True, right=False, handle_type='AUTO'))
+        self.set_handle_type(left=True, right=False, handle_type='AUTO')
 
     @property
     def left_handle_free(self):
@@ -1875,7 +2059,7 @@ class SplinePoint(Point):
 
     @left_handle_free.setter
     def left_handle_free(self, value):
-        self._jump(self.set_handle_type(left=True, right=False, handle_type='FREE'))
+        self.set_handle_type(left=True, right=False, handle_type='FREE')
 
     @property
     def left_handle_vector(self):
@@ -1892,7 +2076,7 @@ class SplinePoint(Point):
 
     @left_handle_vector.setter
     def left_handle_vector(self, value):
-        self._jump(self.set_handle_type(left=True, right=False, handle_type='VECTOR'))
+        self.set_handle_type(left=True, right=False, handle_type='VECTOR')
 
     @property
     def left_handle_align(self):
@@ -1909,7 +2093,7 @@ class SplinePoint(Point):
 
     @left_handle_align.setter
     def left_handle_align(self, value):
-        self._jump(self.set_handle_type(left=True, right=False, handle_type='ALIGN'))
+        self.set_handle_type(left=True, right=False, handle_type='ALIGN')
 
     # -----------------------------------------------------------------------------------------------------------------------------
     # Right Handle types as boolean properties
@@ -1929,7 +2113,7 @@ class SplinePoint(Point):
 
     @right_handle_auto.setter
     def right_handle_auto(self, value):
-        self._jump(self.set_handle_type(left=False, right=True, handle_type='AUTO'))
+        self.set_handle_type(left=False, right=True, handle_type='AUTO')
 
     @property
     def right_handle_free(self):
@@ -1946,7 +2130,7 @@ class SplinePoint(Point):
 
     @right_handle_free.setter
     def right_handle_free(self, value):
-        self._jump(self.set_handle_type(left=False, right=True, handle_type='FREE'))
+        self.set_handle_type(left=False, right=True, handle_type='FREE')
 
     @property
     def right_handle_vector(self):
@@ -1963,7 +2147,7 @@ class SplinePoint(Point):
 
     @right_handle_vector.setter
     def right_handle_vector(self, value):
-        self._jump(self.set_handle_type(left=False, right=True, handle_type='VECTOR'))
+        self.set_handle_type(left=False, right=True, handle_type='VECTOR')
 
     @property
     def right_handle_align(self):
@@ -1980,7 +2164,7 @@ class SplinePoint(Point):
 
     @right_handle_align.setter
     def right_handle_align(self, value):
-        self._jump(self.set_handle_type(left=False, right=True, handle_type='ALIGN'))
+        self.set_handle_type(left=False, right=True, handle_type='ALIGN')
 
     # ----- Topology
 
@@ -2171,16 +2355,20 @@ class Face(Domain):
     def flip(self):
         """ > Node <&Node Flip Faces>
 
+        [&JUMP]
+
         Returns
         -------
-        - Mesh
+        - Mesh : self
         """
-        return Node('Flip Faces', {'Mesh': self._geo, 'Selection': self._sel})._out
+        return self._jump(Node('Flip Faces', {'Mesh': self._geo, 'Selection': self._sel})._out)
 
     # ----- Scale
 
     def scale(self, scale=None, center=None, uniform=True):
         """ > Node <&Node Scale Elements>
+
+        [&JUMP]
 
         - domain (str): Node.domain in ('FACE', 'EDGE')
         - scale_mode (str): Node.scale_mode in ('UNIFORM', 'SINGLE_AXIS')
@@ -2193,9 +2381,9 @@ class Face(Domain):
 
         Returns
         -------
-        - Mesh
+        - Mesh : self
         """
-        return self._geo_type(Node('Scale Elements', {'Geometry': self._geo, 'Selection': self._sel, 'Scale': scale, 'Center': center},
+        return self._jump(Node('Scale Elements', {'Geometry': self._geo, 'Selection': self._sel, 'Scale': scale, 'Center': center},
             domain='FACE', scale_mode = 'UNIFORM' if uniform else 'SINGLE_AXIS')._out)
 
     # ----- Topology
@@ -2221,6 +2409,8 @@ class Face(Domain):
     def distribute_points(self, density=None, distance_min=None, density_max=None, density_factor=None, seed=None):
         """ > Node <&Node Distribute Points on Faces>
 
+        [&NO_JUMP]
+
         if 'density' argument is not None, 'RANDOM' method is applied, 'POISSON' otherwise
 
         - distribute_method (str): Node.distribute_method in ('RANDOM', 'POISSON')
@@ -2236,11 +2426,10 @@ class Face(Domain):
 
         Returns
         -------
-        - Points
+        - Cloud
         """
         return self._geo[self._sel].distribute_points_on_faces(density=density, distance_min=distance_min, density_max=density_max,
-            density_factor=density_factor, seed=seed)._out
-
+            density_factor=density_factor, seed=seed)
 
 
 
@@ -2325,6 +2514,8 @@ class Edge(Domain):
     @property
     def vertices(self):
         """ > Node <&Node Edge Vertices>
+
+        [&RETURN_NODE]
 
         Returns
         -------
@@ -2425,16 +2616,20 @@ class Edge(Domain):
     def split(self):
         """ > Node <&Node Split Edges>
 
+        [&JUMP]
+
         Returns
         -------
-        - Mesh
+        - Mesh : self
         """
-        return Node('Split Edges', {'Mesh': self._geo, 'Selection': self._sel})._out
+        return self._jump(Node('Split Edges', {'Mesh': self._geo, 'Selection': self._sel})._out)
 
     # ----- Scale
 
     def scale(self, scale=None, center=None, uniform=True):
         """ > Node <&Node Scale Elements>
+
+        [&JUMP]
 
         - domain (str): Node.domain in ('FACE', 'EDGE')
         - scale_mode (str): Node.scale_mode in ('UNIFORM', 'SINGLE_AXIS')
@@ -2447,11 +2642,11 @@ class Edge(Domain):
 
         Returns
         -------
-        - Mesh
+        - Mesh : self
         """
         node = Node('Scale Elements', {'Geometry': self._geo, 'Selection': self._sel, 'Scale': scale, 'Center': center},
             domain='EDGE', scale_mode = 'UNIFORM' if uniform else 'SINGLE_AXIS')
-        return self._geo_type(node._out)
+        return self._jump(node._out)
 
     # ----- Topology
 
@@ -2475,6 +2670,8 @@ class Edge(Domain):
 
     def paths_to_curves(self, start_vertices=None, next_vertex_index=None):
         """ > Node <&Node Edge Paths to Curves>
+
+        [&NO_JUMP]
 
         Arguments
         ---------
@@ -2775,6 +2972,8 @@ class Instance(Domain):
     def translate(self, translation=None, local_space=None):
         """ > Node <&Node Translate Instances>
 
+        [&JUMP]
+
         Arguments
         ---------
         - translation (Vector) : socket 'Translation' (Translation)
@@ -2782,9 +2981,9 @@ class Instance(Domain):
 
         Returns
         -------
-        - Instances
+        - Instances : self
         """
-        return Instances(Node('Translate Instances', {'Instances': self._geo, 'Selection': self._sel, 'Translation': translation, 'Local Space': local_space})._out)
+        return self._jump(Node('Translate Instances', {'Instances': self._geo, 'Selection': self._sel, 'Translation': translation, 'Local Space': local_space})._out)
 
     # ----- Scale
 
@@ -2959,11 +3158,7 @@ class Mesh(Geometry):
     def island(self):
         """ > Node <&Node Mesh Island>
 
-        ``` python
-        mesh = Mesh.Cube()
-        index = mesh.island.index
-        count = mesh.island.count
-        ```
+        [&RETURN_NODE]
 
         Returns
         -------
@@ -2972,8 +3167,30 @@ class Mesh(Geometry):
         return self._cache('Mesh Island')
 
     @property
+    def island_index(self):
+        """ > Socket 'Island Index' fo node <&Node Mesh Island>
+
+        Returns
+        -------
+        - Integer
+        """
+        return self.island.island_index
+
+    @property
+    def island_count(self):
+        """ > Socket 'Island Count' fo node <&Node Mesh Island>
+
+        Returns
+        -------
+        - Integer
+        """
+        return self.island.island_count
+
+    @property
     def domain_size(self):
         """ > Node <&Domain Size>, component = 'MESH'
+
+        [&RETURN_NODE]
 
         Returns
         -------
@@ -2996,7 +3213,7 @@ class Mesh(Geometry):
         -------
         - Mesh
         """
-        node = Mesh(Node('Cube', {'Size': size, 'Vertices X': vertices_x, 'Vertices Y': vertices_y, 'Vertices Z': vertices_z})._out)
+        return Mesh(Node('Cube', {'Size': size, 'Vertices X': vertices_x, 'Vertices Y': vertices_y, 'Vertices Z': vertices_z})._out)
 
     @classmethod
     def Line(cls, count=None, start_location=None, offset=None, end_location=None, resolution=None):
@@ -3221,7 +3438,7 @@ class Mesh(Geometry):
 
         Returns
         -------
-        - Float
+        - Socket
         """
         data_type = utils.get_data_type(value)
         return Node('Sample Nearest Surface', {'Mesh': self, 'Value': value, 'Group ID': group_id, 'Sample Position': sample_position, 'Sample Group ID': sample_group_id}, data_type=data_type)._out
@@ -3238,7 +3455,7 @@ class Mesh(Geometry):
 
         Returns
         -------
-        - Float
+        - Socket
         """
         data_type = utils.get_data_type(value)
         return Node('Sample UV Surface', {'Mesh': self, 'Value': value, 'UV Map': uv_map, 'Sample UV': sample_uv}, data_type=data_type)._out
@@ -3249,6 +3466,8 @@ class Mesh(Geometry):
     def to_curve(self):
         """ > Node <&Node Mesh to Curve>
 
+        [&NO_JUMP]
+
         Returns
         -------
         - Curve
@@ -3257,6 +3476,8 @@ class Mesh(Geometry):
 
     def to_volume(self, density=None, voxel_amount=None, interior_band_width=None, voxel_size=None, amount=True):
         """ > Node <&Node Mesh to Volume>
+
+        [&NO_JUMP]
 
         - resolution_mode (str): Node.resolution_mode in ('VOXEL_AMOUNT', 'VOXEL_SIZE')
 
@@ -3283,18 +3504,22 @@ class Mesh(Geometry):
     def dual(self, keep_boundaries=None):
         """ > Node <&Node Dual Mesh>
 
+        [&JUMP]
+
         Arguments
         ---------
         - keep_boundaries (Boolean) : socket 'Keep Boundaries' (Keep Boundaries)
 
         Returns
         -------
-        - Mesh
+        - Mesh : self
         """
-        return Mesh(Node('Dual Mesh', {'Mesh': self, 'Keep Boundaries': keep_boundaries})._out)
+        return self._jump(Node('Dual Mesh', {'Mesh': self, 'Keep Boundaries': keep_boundaries})._out)
 
     def subdivide(self, level=None):
         """ > Node <&Node Subdivide Mesh>
+
+        [&JUMP]
 
         Arguments
         ---------
@@ -3302,12 +3527,14 @@ class Mesh(Geometry):
 
         Returns
         -------
-        - Mesh
+        - Mesh : self
         """
-        return Mesh(Node('Subdivide Mesh', {'Mesh': self, 'Level': level})._out)
+        return self._jump(Node('Subdivide Mesh', {'Mesh': self, 'Level': level})._out)
 
     def triangulate(self, minimum_vertices=None, quad_method='SHORTEST_DIAGONAL', ngon_method='BEAUTY'):
         """ > Node <&Node Triangulate>
+
+        [&JUMP]
 
         Arguments
         ---------
@@ -3317,13 +3544,15 @@ class Mesh(Geometry):
 
         Returns
         -------
-        - Mesh
+        - Mesh : self
         """
-        return Mesh(Node('Triangulate', {'Mesh': self, 'Selection': self._sel, 'Minimum Vertices': minimum_vertices},
+        return self._jump(Node('Triangulate', {'Mesh': self, 'Selection': self._sel, 'Minimum Vertices': minimum_vertices},
             quad_method=quad_method, ngon_method=ngon_method)._out)
 
     def subdivision_surface(self, level=None, edge_crease=None, vertex_crease=None, uv_smooth='PRESERVE_BOUNDARIES', boundary_smooth='ALL'):
         """ > Node <&Node Subdivision Surface>
+
+        [&JUMP]
 
         Arguments
         ---------
@@ -3335,15 +3564,16 @@ class Mesh(Geometry):
 
         Returns
         -------
-        - Mesh
+        - Mesh : self
         """
-        return Mesh(Node('Subdivision Surface', {'Mesh': self, 'Level': level, 'Edge Crease': edge_crease, 'Vertex Crease': vertex_crease},
+        return self._jump(Node('Subdivision Surface', {'Mesh': self, 'Level': level, 'Edge Crease': edge_crease, 'Vertex Crease': vertex_crease},
             uv_smooth=uv_smooth, boundary_smooth=boundary_smooth)._out)
 
     # ----- Mesh Boolean
 
-    def boolean(self, *meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT', operation='DIFFERENCE'):
-        """ > Node <&Node Mesh Boolean>
+    @classmethod
+    def Boolean(cls, *meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT', operation='DIFFERENCE'):
+        """ > Constructor node <&Node Mesh Boolean>
 
         Arguments
         ---------
@@ -3357,15 +3587,105 @@ class Mesh(Geometry):
         -------
         - Mesh
         """
+        if len(meshes)==0:
+            return None
+        elif len(meshes) == 1:
+            return meshes[0]
+
+        if operation == 'DIFFERENCE':
+            sockets = {'Mesh 1': meshes[0], 'Mesh 2': list(meshes[1:])}
+        else:
+            sockets = {'Mesh 2': list(meshes)}
+        sockets = {**sockets, 'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}
+
+        return cls(Node('Mesh Boolean', sockets, solver=solver, operation=operation)._out)
+
+    @classmethod
+    def Difference(cls, mesh, *meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT'):
+        """ > Constructor node <&Node Mesh Boolean>, operation = 'DIFFERENCE'
+
+        Arguments
+        ---------
+        - *meshes (Mesh) : socket 'Mesh 2' (Mesh 2)
+        - self_intersection (Boolean) : socket 'Self Intersection' (Self Intersection)
+        - hole_tolerant (Boolean) : socket 'Hole Tolerant' (Hole Tolerant)
+        - solver (str): Node.solver in ('EXACT', 'FLOAT')
+
+        Returns
+        -------
+        - Mesh
+        """
+        if len(meshes)==0:
+            return mesh
+
+        return cls.Boolean(*([mesh] + list(meshes)), self_intersection=self_intersection,
+            hole_tolerant=hole_tolerant, solver=solver, operation='DIFFERENCE')
+
+    @classmethod
+    def Intersect(cls, mesh, *meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT'):
+        """ > Constructor node <&Node Mesh Boolean>, operation = 'INTERSECT'
+
+        Arguments
+        ---------
+        - *meshes (Mesh) : socket 'Mesh 2' (Mesh 2)
+        - self_intersection (Boolean) : socket 'Self Intersection' (Self Intersection)
+        - hole_tolerant (Boolean) : socket 'Hole Tolerant' (Hole Tolerant)
+        - solver (str): Node.solver in ('EXACT', 'FLOAT')
+
+        Returns
+        -------
+        - Mesh
+        """
+        return cls.Boolean(*meshes, self_intersection=self_intersection,
+            hole_tolerant=hole_tolerant, solver=solver, operation='INTERSECT')
+
+    @classmethod
+    def Union(cls, mesh, *meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT'):
+        """ > Constructor node <&Node Mesh Boolean>, operation = 'UNION'
+
+        Arguments
+        ---------
+        - *meshes (Mesh) : socket 'Mesh 2' (Mesh 2)
+        - self_intersection (Boolean) : socket 'Self Intersection' (Self Intersection)
+        - hole_tolerant (Boolean) : socket 'Hole Tolerant' (Hole Tolerant)
+        - solver (str): Node.solver in ('EXACT', 'FLOAT')
+
+        Returns
+        -------
+        - Mesh
+        """
+        return cls.Boolean(*meshes, self_intersection=self_intersection,
+            hole_tolerant=hole_tolerant, solver=solver, operation='UNION')
+
+
+    def boolean(self, *meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT', operation='DIFFERENCE'):
+        """ > Node <&Node Mesh Boolean>
+
+        [&JUMP]
+
+        Arguments
+        ---------
+        - *meshes (Mesh) : socket 'Mesh 2' (Mesh 2)
+        - self_intersection (Boolean) : socket 'Self Intersection' (Self Intersection)
+        - hole_tolerant (Boolean) : socket 'Hole Tolerant' (Hole Tolerant)
+        - operation (str): Node.operation in ('INTERSECT', 'UNION', 'DIFFERENCE')
+        - solver (str): Node.solver in ('EXACT', 'FLOAT')
+
+        Returns
+        -------
+        - Mesh : self
+        """
         if operation == 'DIFFERENCE':
             sockets = {'Mesh 1': self, 'Mesh 2': list(meshes)}
         else:
             sockets = {'Mesh 2': [self] + list(meshes)}
         sockets = {**sockets, 'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}
-        return Mesh(Node('Mesh Boolean', sockets, solver=solver, operation=operation)._out)
+        return self._jump(Node('Mesh Boolean', sockets, solver=solver, operation=operation)._out)
 
     def difference(self, *meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT'):
-        """ > Node <&Node Mesh Boolean>
+        """ > Node <&Node Mesh Boolean>, operation = 'DIFFERENCE'
+
+        [&JUMP]
 
         Arguments
         ---------
@@ -3376,12 +3696,15 @@ class Mesh(Geometry):
 
         Returns
         -------
-        - Mesh
+        - Mesh : self
         """
-        return self.boolean(*meshes, self_intersection=self_intersection, hole_tolerant=hole_tolerant, solver=solver, operation='DIFFERENCE')
+        return self.boolean(*meshes, self_intersection=self_intersection, hole_tolerant=hole_tolerant,
+            solver=solver, operation='DIFFERENCE')
 
     def intersect(self, *meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT'):
-        """ > Node <&Node Mesh Boolean>
+        """ > Node <&Node Mesh Boolean>, operation = 'INTERSECT'
+
+        [&JUMP]
 
         Arguments
         ---------
@@ -3392,12 +3715,14 @@ class Mesh(Geometry):
 
         Returns
         -------
-        - Mesh
+        - Mesh : self
         """
         return self.boolean(*meshes, self_intersection=self_intersection, hole_tolerant=hole_tolerant, solver=solver, operation='INTERSECT')
 
     def union(self, *meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT'):
-        """ > Node <&Node Mesh Boolean>
+        """ > Node <&Node Mesh Boolean>, operation = 'UNION'
+
+        [&JUMP]
 
         Arguments
         ---------
@@ -3408,9 +3733,28 @@ class Mesh(Geometry):
 
         Returns
         -------
-        - Mesh
+        - Mesh : self
         """
         return self.boolean(*meshes, self_intersection=self_intersection, hole_tolerant=hole_tolerant, solver=solver, operation='UNION')
+
+    def __sub__(self, other):
+        if isinstance(other, tuple):
+            return Mesh.Difference(self, *other)
+        else:
+            return Mesh.Difference(self, other)
+
+    def __truediv__(self, other):
+        if isinstance(other, tuple):
+            return Mesh.Intersect(self, *other)
+        else:
+            return Mesh.Intersect(self, other)
+
+    def __mul__(self, other):
+        if isinstance(other, tuple):
+            return Mesh.Union(self, *other)
+        else:
+            return Mesh.Union(self, other)
+
 
     # ----- UV
 
@@ -3449,6 +3793,8 @@ class Mesh(Geometry):
 
     def distribute_points_on_faces(self, density=None, distance_min=None, density_max=None, density_factor=None, seed=None):#, poisson=False):
         """ > Node <&Node Distribute Points on Faces>
+
+        [&NO_JUMP]
 
         if 'density' argument is not None, 'RANDOM' method is applied, 'POISSON' otherwise
 
@@ -3959,13 +4305,23 @@ class Curve(Geometry):
 
         Returns
         -------
-        - Node : 'Curve of Point' node
+        - Integer
         """
-        return Node('Curve of Point', {'Point Index': point_index})
+        return Node('Curve of Point', {'Point Index': point_index})._out
 
     @classmethod
     def offset_point_in_curve(cls, point_index=None, offset=None):
         """ > Node <&Node Offset Point in Curve>
+
+        > [!CAUTION]
+        > This method doesn't return the top output socket which is the Boolean 'Is Valid Offset' but
+        > the second one, the Integer 'Point Index'
+
+        ``` python
+        curve = Curve.Spiral()
+        index = curve.offset_point(0, 3)
+        is_valid = index.is_valid_offset_
+        ```
 
         Arguments
         ---------
@@ -3974,9 +4330,9 @@ class Curve(Geometry):
 
         Returns
         -------
-        - Node : 'Offset Point in Curve' node
+        - Integer
         """
-        return Node('Offset Point in Curve', {'Point Index': point_index, 'Offset': offset})
+        return Node('Offset Point in Curve', {'Point Index': point_index, 'Offset': offset}).point_index
 
     @classmethod
     def points_of_curve(cls, curve_index=None, weights=None, sort_index=None):
@@ -3990,9 +4346,9 @@ class Curve(Geometry):
 
         Returns
         -------
-        - Node : 'Points of Curve' node
+        - Integer
         """
-        return Node('Points of Curve', {'Curve Index': curve_index, 'Weights': weights, 'Sort Index': sort_index})
+        return Node('Points of Curve', {'Curve Index': curve_index, 'Weights': weights, 'Sort Index': sort_index})._out
 
     # =============================================================================================================================
     # Methods
@@ -4000,31 +4356,37 @@ class Curve(Geometry):
     def set_normal(self, mode='MINIMUM_TWIST'):
         """ > Node <&Node Set Curve Normal>
 
+        [&JUMP]
+
         Arguments
         ---------
         - mode (str): Node.mode in ('MINIMUM_TWIST', 'Z_UP', 'FREE')
 
         Returns
         -------
-        - Curve
+        - Curve : self
         """
-        return Curve(Node('Set Curve Normal', {'Curve': self, 'Selection': self._sel}, mode=mode)._out)
+        return self._jump(Node('Set Curve Normal', {'Curve': self, 'Selection': self._sel}, mode=mode)._out)
 
     def set_normal_z_up(self):
         """ > Node <&Node Set Curve Normal>
 
+        [&JUMP]
+
         Returns
         -------
-        - Curve
+        - Curve : self
         """
         return self.set_normal(mode='Z_UP')
 
     def set_normal_free(self):
         """ > Node <&Node Set Curve Normal>
 
+        [&JUMP]
+
         Returns
         -------
-        - Curve
+        - Curve : self
         """
         return self.set_normal(mode='FREE')
 
@@ -4035,6 +4397,20 @@ class Curve(Geometry):
 
         - data_type (str): Node.data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4')
         - mode (str): Node.mode in ('FACTOR', 'LENGTH')
+
+        > [!NOTE]
+        > The method returns the value which is sampled.
+        > To get other sockets, use the **peer sockets** naming convention:
+
+        ``` python
+        curve = Curve.Line()
+
+        a = curve.sample()
+
+        position = a.position_
+        tangent = a.tangent_
+        normal = a.normal_
+        ```
 
         Arguments
         ---------
@@ -4065,6 +4441,8 @@ class Curve(Geometry):
     def to_mesh(self, profile_curve=None, fill_caps=None):
         """ > Node <&Node Curve to Mesh>
 
+        [&NO_JUMP]
+
         Arguments
         ---------
         - profile_curve (Geometry) : socket 'Profile Curve' (Profile Curve)
@@ -4079,6 +4457,8 @@ class Curve(Geometry):
     def to_points(self, count=None, length=None, mode='EVALUATED'):
         """ > Node <&Node Curve to Points>
 
+        [&NO_JUMP]
+
         Arguments
         ---------
         - curve (Geometry) : socket 'Curve' (Curve)
@@ -4087,23 +4467,27 @@ class Curve(Geometry):
 
         Returns
         -------
-        - Cloud [tangent_, normal_, rotation_]
+        - Cloud
         """
         return Cloud.FromCurve(curve=self, count=count, length=length, mode='EVALUATED')
 
     def deform_on_surface(self):
         """ > Node <&Node Deform Curves on Surface>
 
+        [&JUMP]
+
         Returns
         -------
-        - Curve
+        - Curve : self
         """
-        return Curve(Node('Deform Curves on Surface', {'Curves': self})._out)
+        return self._jump(Node('Deform Curves on Surface', {'Curves': self})._out)
 
     # ----- Fill curve
 
     def fill(self, group_id=None, mode='TRIANGLES'):
         """ > Node <&Node Fill Curve>
+
+        [&NO_JUMP]
 
         Arguments
         ---------
@@ -4121,6 +4505,8 @@ class Curve(Geometry):
     def fillet(self, radius=None, limit_radius=None, count=None, mode='BEZIER'):
         """ > Node <&Node Fillet Curve>
 
+        [&JUMP]
+
         Arguments
         ---------
         - radius (Float) : socket 'Radius' (Radius)
@@ -4130,14 +4516,16 @@ class Curve(Geometry):
 
         Returns
         -------
-        - Curve
+        - Curve : self
         """
-        return Curve(Node('Fillet Curve', {'Curve': self, 'Count': count, 'Radius': radius, 'Limit Radius': limit_radius}, mode=mode)._out)
+        return self._jump(Node('Fillet Curve', {'Curve': self, 'Count': count, 'Radius': radius, 'Limit Radius': limit_radius}, mode=mode)._out)
 
     # ----- Interpolate curves
 
     def interpolate(self, guide_up=None, guide_group_id=None, points=None, point_up=None, point_group_id=None, max_neighbors=None):
         """ > Node <&Node Interpolate Curves>
+
+        [&JUMP]
 
         Arguments
         ---------
@@ -4150,15 +4538,17 @@ class Curve(Geometry):
 
         Returns
         -------
-        - Curve
+        - Curve : self
         """
-        return Curve(Node('Interpolate Curves', {'Guide Curves': self, 'Guide Up': guide_up, 'Guide Group ID': guide_group_id,
+        return self._jump(Node('Interpolate Curves', {'Guide Curves': self, 'Guide Up': guide_up, 'Guide Group ID': guide_group_id,
             'Points': points, 'Point Up': point_up, 'Point Group ID': point_group_id, 'Max Neighbors': max_neighbors})._out)
 
     # ----- Resample
 
     def resample(self, count=None, length=None):
         """ > Node <&Node Resample Curve>
+
+        [&JUMP]
 
         Parameter 'mode'
         ---------------
@@ -4173,7 +4563,7 @@ class Curve(Geometry):
 
         Returns
         -------
-        - Curve
+        - Curve : self
         """
         sockets = {'Curve': self, 'Selection': self._sel}
         if count is not None:
@@ -4185,12 +4575,14 @@ class Curve(Geometry):
         else:
             mode = 'EVALUATED'
 
-        return Curve(Node('Resample Curve', sockets, mode=mode)._out)
+        return self._jump(Node('Resample Curve', sockets, mode=mode)._out)
 
     # ----- Trim
 
     def trim(self, start=None, end=None, mode='FACTOR'):
         """ > Node <&Node Trim Curve>
+
+        [&JUMP]
 
         Arguments
         ---------
@@ -4200,12 +4592,14 @@ class Curve(Geometry):
 
         Returns
         -------
-        - Curve
+        - Curve : self
         """
-        return Curve(Node('Trim Curve', {'Curve': self, 'Selection': self._sel, 'Start': start, 'End': end}, mode=mode)._out)
+        return self._jump(Node('Trim Curve', {'Curve': self, 'Selection': self._sel, 'Start': start, 'End': end}, mode=mode)._out)
 
     def trim_factor(self, start=None, end=None):
-        """ > Node <&Node Trim Curve>
+        """ > Node <&Node Trim Curve>, mode = 'FACTOR'
+
+        [&JUMP]
 
         Arguments
         ---------
@@ -4214,12 +4608,14 @@ class Curve(Geometry):
 
         Returns
         -------
-        - Curve
+        - Curve : self
         """
         return self.trim(start=start, end=end, mode='FACTOR')
 
     def trim_length(self, start=None, end=None):
-        """ > Node <&Node Trim Curve>
+        """ > Node <&Node Trim Curve>, mode = 'LENGTH'
+
+        [&JUMP]
 
         Arguments
         ---------
@@ -4228,7 +4624,7 @@ class Curve(Geometry):
 
         Returns
         -------
-        - Curve
+        - Curve : self
         """
         return self.trim(start=start, end=end, mode='LENGTH')
 
@@ -4237,14 +4633,18 @@ class Curve(Geometry):
     def reverse(self):
         """ > Node <&Node Reverse Curve>
 
+        [&JUMP]
+
         Returns
         -------
-        - Curve
+        - Curve : self
         """
-        return Curve(Node('Reverse Curve', {'Curve': self, 'Selection': self._sel})._out)
+        return self._jump(Node('Reverse Curve', {'Curve': self, 'Selection': self._sel})._out)
 
     def subdivide(self, cuts=None):
         """ > Node <&Node Subdivide Curve>
+
+        [&JUMP]
 
         Arguments
         ---------
@@ -4252,9 +4652,9 @@ class Curve(Geometry):
 
         Returns
         -------
-        - Curve
+        - Curve : self
         """
-        return Curve(Node('Subdivide Curve', {'Curve': self, 'Cuts': cuts})._out)
+        return self._jump(Node('Subdivide Curve', {'Curve': self, 'Cuts': cuts})._out)
 
 
 # =============================================================================================================================
@@ -4458,6 +4858,8 @@ class Cloud(Geometry):
     def to_curves(self, curve_group_id=None, weight=None):
         """ > Node <&Node Points to Curves>
 
+        [&NO_JUMP]
+
         Arguments
         ---------
         - curve_group_id (Integer) : socket 'Curve Group ID' (Curve Group ID)
@@ -4474,6 +4876,8 @@ class Cloud(Geometry):
     def to_vertices(self):
         """ > Node <&Node Points to Vertices>
 
+        [&NO_JUMP]
+
         Returns
         -------
         - Mesh
@@ -4484,6 +4888,8 @@ class Cloud(Geometry):
 
     def to_volume(self, density=None, voxel_size=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_AMOUNT'):
         """ > Node <&Node Points to Volume>
+
+        [&NO_JUMP]
 
         Arguments
         ---------
@@ -4576,7 +4982,7 @@ class Instances(Geometry):
         return cls(Node('String to Curves', {'String': string, 'Size': size, 'Character Spacing': character_spacing,
             'Word Spacing': word_spacing, 'Line Spacing': line_spacing,
             'Text Box Width': text_box_width, 'Text Box Height': text_box_height},
-            overflow=overflow, align_x=align_x, align_y=align_y, pivot_mode=pivot_mode)._ut)
+            overflow=overflow, align_x=align_x, align_y=align_y, pivot_mode=pivot_mode)._out)
 
     # =============================================================================================================================
     # Properties
@@ -4597,6 +5003,8 @@ class Instances(Geometry):
     def realize(self, realize_all=None, depth=None):
         """ > Node <&Node Realize Instances>
 
+        [&NO_JUMP]
+
         Arguments
         ---------
         - realize_all (Boolean) : socket 'Realize All' (Realize All)
@@ -4610,6 +5018,8 @@ class Instances(Geometry):
 
     def to_points(self, position=None, radius=None):
         """ > Node <&Node Instances to Points>
+
+        [&NO_JUMP]
 
         Arguments
         ---------
@@ -4625,9 +5035,11 @@ class Instances(Geometry):
     def on_points(self, points, pick_instance=None, instance_index=None, rotation=None, scale=None):
         """ > Node <&Node Instance on Points>
 
+        [&JUMP]
+
         Arguments
         ---------
-        - instance (Geometry) : socket 'Instance' (Instance)
+        - points (Geometry) : socket 'Points' (Instance)
         - pick_instance (Boolean) : socket 'Pick Instance' (Pick Instance)
         - instance_index (Integer) : socket 'Instance Index' (Instance Index)
         - rotation (Rotation) : socket 'Rotation' (Rotation)
@@ -4635,17 +5047,19 @@ class Instances(Geometry):
 
         Returns
         -------
-        - Instances
+        - Instances : self
         """
         if isinstance(points, Domain):
             points = Cloud(points._geo).points[points._sel]
         else:
             points = Cloud(points).points[points._sel]
 
-        return points.instance_on(instance=self, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale)
+        return self._jump(points.instance_on(instance=self, pick_instance=pick_instance, instance_index=instance_index, rotation=rotation, scale=scale))
 
     def translate(self, translation=None, local_space=None):
         """ > Node <&Node Translate Instances>
+
+        [&JUMP]
 
         Arguments
         ---------
@@ -4654,12 +5068,14 @@ class Instances(Geometry):
 
         Returns
         -------
-        - Instances
+        - Instances : self
         """
-        return Instances(Node('Translate Instances', {'Instances': self, 'Selection': self._sel, 'Translation': translation, 'Local Space': local_space})._out)
+        return self._jump(Node('Translate Instances', {'Instances': self, 'Selection': self._sel, 'Translation': translation, 'Local Space': local_space})._out)
 
     def scale(self, scale=None, center=None, local_space=None):
         """ > Node <&Node Scale Instances>
+
+        [&JUMP]
 
         Arguments
         ---------
@@ -4669,12 +5085,14 @@ class Instances(Geometry):
 
         Returns
         -------
-        - Instances
+        - Instances : self
         """
-        return Instances(Node('Scale Instances', {'Instances': self, 'Selection': self._sel, 'Scale': scale, 'Center': center, 'Local Space': local_space})._out)
+        return self._jump(Node('Scale Instances', {'Instances': self, 'Selection': self._sel, 'Scale': scale, 'Center': center, 'Local Space': local_space})._out)
 
     def rotate(self, rotation=None, pivot_point=None, local_space=None):
         """ > Node <&Node Rotate Instances>
+
+        [&JUMP]
 
         Arguments
         ---------
@@ -4684,9 +5102,9 @@ class Instances(Geometry):
 
         Returns
         -------
-        - Instances
+        - Instances : self
         """
-        return Instances(Node('Rotate Instances', {'Instances': self, 'Selection': self._sel, 'Rotation': rotation, 'Pivot Point': pivot_point, 'Local Space': local_space})._out)
+        return self._jump(Node('Rotate Instances', {'Instances': self, 'Selection': self._sel, 'Rotation': rotation, 'Pivot Point': pivot_point, 'Local Space': local_space})._out)
 
 # =============================================================================================================================
 # =============================================================================================================================

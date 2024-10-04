@@ -804,7 +804,7 @@ class Color(VectorLike):
                 name = 'Color'
             self._tree.aov_output(name=name, color=self)
         else:
-            super().to_output(name=name)
+            super().out(name=name)
 
     # ----- Input
 

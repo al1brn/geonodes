@@ -95,11 +95,11 @@ def demo():
 
     with GeoNodes("Frame Change", is_group=True):
 
-        event    = Vector(0, "Event")
-        origin   = Vector(0, "Origin")
-        x_axis   = Vector((1, 0, 0), "X Axis")
-        pos_dir  = Vector((0, 0, 0), "Positive Direction")
-        reverse  = Boolean(False, "Reverse")
+        event   = Vector(0, "Event")
+        origin  = Vector(0, "Origin")
+        x_axis  = Vector((1, 0, 0), "X Axis")
+        pos_dir = Vector((0, 0, 0), "Positive Direction")
+        reverse = Boolean(False, "Reverse")
 
         # ----- Rotation to have the x axis
 
@@ -529,7 +529,7 @@ def demo():
         with Layout("Transformation into the Red Line accelerated frame"):
             red_line1 = Curve(red_line0)
             red_line1.points.position = (0, 0, Float.Named("Proper Time"))
-            red_line1 = red_line1.resample(resolution)
+            red_line1.resample(resolution)
 
             blue_line1 = Curve(red_line1)
             blue_line1.points.position = Vector.Named("Blue Local")
@@ -543,13 +543,15 @@ def demo():
             red_line  = Curve(red_line0)
 
             blue_line.points.position = nd.position.mix(factor, blue_line1.points.sample_index(nd.position, index=nd.index))
-            red_line.points.position = nd.position.mix(factor, red_line1.points.sample_index(nd.position, index=nd.index))
+            red_line.points.position  = nd.position.mix(factor, red_line1.points.sample_index(nd.position, index=nd.index))
 
         with Layout("Trim"):
             blue_line = GroupF().vertical_cut(curve=blue_line, cut=end).curve
             red_line  = GroupF().vertical_cut(curve=red_line, cut=end).curve
 
         # Done
+
+        (blue_line + red_line).out("Both")
 
         blue_line.out("Blue Line")
         red_line.out("Red Line")
@@ -574,47 +576,44 @@ def demo():
         end         = Float.Factor(  1, "End",    0, 1,                    tip="Trim end")
         time_scale  = Float.Factor(  1, "Time Scale", 0, 1,                tip="Scale to apply on z axis" )
 
-        twins = GroupF().twins(end=Float(1))
-        twins.plug_node_into()
+        with Layout("Twins in one space dimension"):
 
-        blue_line0 = Curve(twins.blue_line_0)
-        red_line0  = Curve(twins.red_line_0)
-        blue_line1 = Curve(twins.blue_line_1)
-        red_line1  = Curve(twins.red_line_1)
+            twins = GroupF().twins(end=Float(1))
+            twins.plug_node_into()
+
+            blue_line0 = Curve(twins.blue_line_0)
+            red_line0  = Curve(twins.red_line_0)
+            blue_line1 = Curve(twins.blue_line_1)
+            red_line1  = Curve(twins.red_line_1)
 
         resolution = red_line0.points.count
 
         with Layout("Transformation in moving frame along Y"):
             blue_line0.points.position = GroupF().transformation(event=nd.position, speed=(0, -beta_y, 1), lorentz=use_lorentz).event
-            red_line0.points.position = GroupF().transformation(event=nd.position, speed=(0, -beta_y, 1), lorentz=use_lorentz).event
+            red_line0.points.position  = GroupF().transformation(event=nd.position, speed=(0, -beta_y, 1), lorentz=use_lorentz).event
 
             blue_line0.points.store("Distance", nd.spline_parameter.factor*beta_y*duration)
 
-        if True:
-            red_line0.points[rep.index].store("Distance", 0.)
-            with Layout("Proper distance"):
-                start_event = red_line0.points.sample_index(nd.position, index=0)
-                with Repeat(red_line0=red_line0, event=start_event, s=0., index=1, iterations=resolution - 1) as rep:
-                    loc = red_line0.points.sample_index(nd.position, rep.index)
-                    tan = red_line0.points.sample_index(nd.curve_tangent, rep.index)
+        red_line0.points[rep.index].store("Distance", 0.)
+        with Layout("Proper distance"):
+            start_event = red_line0.points.sample_index(nd.position, index=0)
+            with Repeat(red_line0=red_line0, event=start_event, s=0., index=1, iterations=resolution - 1) as rep:
+                loc = red_line0.points.sample_index(nd.position, rep.index)
+                tan = red_line0.points.sample_index(nd.curve_tangent, rep.index)
 
-                    speed, beta = normalize_speed(tan, use_lorentz)
-                    alpha = Float.Switch(use_lorentz, 1, gnmath.sqrt(1- beta**2))
-                    ds = (Vector((loc.x, loc.y, 0)) - (rep.event.x, rep.event.y, 0)).length
-                    s = rep.s + ds*alpha
+                speed, beta = normalize_speed(tan, use_lorentz)
+                alpha = Float.Switch(use_lorentz, 1, gnmath.sqrt(1- beta**2))
+                ds = (Vector((loc.x, loc.y, 0)) - (rep.event.x, rep.event.y, 0)).length
+                s = rep.s + ds*alpha
 
-                    rep.red_line0.points[rep.index].store("Distance", s)
-                    rep.event = loc
-                    rep.s = s
-                    rep.index += 1
+                rep.red_line0.points[rep.index].store("Distance", s)
+                rep.event = loc
+                rep.s = s
+                rep.index += 1
 
-                red_line0 = rep.red_line0
+            red_line0 = rep.red_line0
 
-        else:
-            flat = red_line0.transform(scale=(1, 1, 0))
-            red_line0.points.store("Distance", flat.points.sample_index(nd.spline_parameter.length, index=nd.index))
-
-        red_line0_rot  = red_line0.transform(rotation=(0, 0, -halfpi))
+        red_line0_rot  = Curve(red_line0).transform(rotation=(0, 0, -halfpi))
 
         blue_line1 = GroupF().accelerated_transformation(accelerated=red_line0_rot, uniform_speed=(beta_y, 0, 1), x_along_speed=True, resolution=resolution, lorentz=use_lorentz).curve
         x = blue_line1.points.sample_index(Float.Named("Distance"), index=nd.index)
@@ -625,8 +624,8 @@ def demo():
 
         blue_line1.points.offset = (x, 0, 0)
 
-        blue_line1 = blue_line1.transform(rotation=(0, 0, halfpi))
-        red_line1  = red_line1.transform(rotation=(0, 0, halfpi))
+        blue_line1.transform(rotation=(0, 0, halfpi))
+        red_line1.transform(rotation=(0, 0, halfpi))
 
         # -----------------------------------------------------------------------------------------------------------------------------
         # Finalization
@@ -636,16 +635,18 @@ def demo():
             red_line  = Curve(red_line0)
 
             blue_line.points.position = nd.position.mix(factor, blue_line1.points.sample_index(nd.position, index=nd.index))
-            red_line.points.position = nd.position.mix(factor, red_line1.points.sample_index(nd.position, index=nd.index))
+            red_line.points.position  = nd.position.mix(factor, red_line1.points.sample_index(nd.position, index=nd.index))
 
         with Layout("Trim and time scale"):
             blue_line = GroupF().vertical_cut(curve=blue_line, cut=end).curve
             red_line  = GroupF().vertical_cut(curve=red_line, cut=end).curve
 
-            blue_line = blue_line.transform(scale=(1, 1, time_scale))
-            red_line  = red_line.transform(scale=(1, 1, time_scale))
+            blue_line.transform(scale=(1, 1, time_scale))
+            red_line.transform(scale=(1, 1, time_scale))
 
         # Done
+
+        (blue_line + red_line).out("Both")
 
         blue_line.out("Blue Line")
         red_line.out("Red Line")
@@ -654,6 +655,7 @@ def demo():
         red_line0.out("Red Line 0")
         blue_line1.out("Blue Line 1")
         red_line1.out("Red Line 1")
+
 
     # =============================================================================================================================
     # Done

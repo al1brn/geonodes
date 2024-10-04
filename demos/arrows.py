@@ -29,7 +29,8 @@ Geometry Nodes
 updates
 -------
 - creation : 2024/08/02
-- update   : 20242/09/04
+- update   : 2024/09/04
+- update.  : 2024/10/02
 """
 
 from geonodes import *
@@ -73,7 +74,6 @@ def demo():
         section    = Float(   .02,  "Section", 0., 1., tip = "Arrows shaft radius")
         use_sphere = Boolean(False, "Sphere", tip="Use a sphere for the head rather than a cone")
         color      = Color((0., 0., 1., 1.), "Color",  tip="Color to pass as 'Color' named attribute for shader")
-        #transp     = Float.Factor(0, "Transparency", 0, 1, tip="Transparency factor to pass as 'Transparency' named attribute for shader")
         negative   = Float.Factor(0, "Negative",     0, 1, tip="Negative factor to pass as 'Negative', named attribute for shader")
         shaft_mat  = Material("Arrow", "Shaft", tip="Material for the shaft")
         head_mat   = Material("Arrow", "Head", tip="Material for the head")
@@ -138,14 +138,13 @@ def demo():
 
     with GeoNodes("Arrow"):
 
-        location   = Vector(0, "Location", tip="Vector location")
-        vector     = Vector((1, 0, 0), "Vector", tip="Vector components")
+        location = Vector(0, "Location", tip="Vector location")
+        vector   = Vector((1, 0, 0), "Vector", tip="Vector components")
 
         # ----- Create the points at the given location with Vectors attribute
 
         with Layout("One point with Vectors attribute"):
             points = Cloud.Points(count=1, position=location)
-            #points.points.store("Vectors", vector)
 
         # ----- Call the group with the same parameters
 
@@ -159,17 +158,16 @@ def demo():
 
     with GeoNodes("Polar Arrow"):
 
-        location   = Vector(0, "Location", tip="Vector location")
-        length     = Float(1, "Length", 0, tip="Vector length")
-        angle      = Float.Angle(0, "Angle", tip="Polar angle in plane XY")
-        z          = Float(0, "z", tip="z component")
+        location = Vector(0, "Location", tip="Vector location")
+        length   = Float(1, "Length", 0, tip="Vector length")
+        angle    = Float.Angle(0, "Angle", tip="Polar angle in plane XY")
+        z        = Float(0, "z", tip="z component")
 
         # ----- Create the points at the given location with Vectors attribute
 
         with Layout("One point with Vectors attribute"):
             vector = Vector((length*gnmath.cos(angle), length*gnmath.sin(angle), z))
             points = Cloud.Points(count=1, position=location)
-            #points.points.store("Vectors", vector)
 
         # ----- Call the group with the same parameters
 
@@ -183,10 +181,10 @@ def demo():
 
     with GeoNodes("Spherical Arrow"):
 
-        location   = Vector(0,      "Location",  tip="Vector location")
-        length     = Float(1,       "Length",    0, tip="Vector length")
-        theta      = Float.Angle(0, "Longitude", tip="Longitude : angle in XY plane")
-        phi        = Float.Angle(0, "Latitude",  tip="Latitude : angle from XY plane to Z axis")
+        location = Vector(0,      "Location",  tip="Vector location")
+        length   = Float(1,       "Length",    0, tip="Vector length")
+        theta    = Float.Angle(0, "Longitude", tip="Longitude : angle in XY plane")
+        phi      = Float.Angle(0, "Latitude",  tip="Latitude : angle from XY plane to Z axis")
 
         # ----- Create the points at the given location with Vectors attribute
 
@@ -195,7 +193,6 @@ def demo():
             vector = length*Vector((cos_phi*gnmath.cos(theta), cos_phi*gnmath.sin(theta), gnmath.sin(phi)))
 
             points = Cloud.Points(count=1, position=location)
-            #points.points.store("Vectors", vector)
 
         # ----- Call the group with the same parameters
 

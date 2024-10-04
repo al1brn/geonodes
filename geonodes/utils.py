@@ -293,10 +293,11 @@ def value_to_array(value, shape):
 # Some utilities
 
 def is_vector_like(value):
-    return get_input_type(value) in ['FLOAT_VECTOR', 'ROTATION', 'FLOAT_COLOR']
+
+    return get_input_type(value) in ['RGBA', 'VECTOR', 'ROTATION']
 
 def is_color_like(value):
-    return get_input_type(value) in ['FLOAT_COLOR', 'FLOAT_VECTOR']
+    return get_input_type(value) in ['RGBA', 'VECTOR']
 
 def is_matrix_like(value):
     return get_input_type(value) in ['MATRIX']
