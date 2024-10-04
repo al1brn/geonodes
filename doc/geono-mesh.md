@@ -27,22 +27,22 @@ Nodes requiring a domain parameter, are implemented in one of the four domains o
 
 ### Inherited
 
-[\_\_add__](geono-geometry.md#__add__) :black_small_square: [bake](geono-geometry.md#bake) :black_small_square: [blur](geono-socket.md#blur) :black_small_square: [bounding_box](geono-geometry.md#bounding_box) :black_small_square: [\_cache](geono-nodecache.md#_cache) :black_small_square: [\_cache_reset](geono-nodecache.md#_cache_reset) :black_small_square: [check_in_list](geono-socket.md#check_in_list) :black_small_square: [convex_hull](geono-geometry.md#convex_hull) :black_small_square: [curve](geono-geometry.md#curve) :black_small_square: [data_type](geono-socket.md#data_type) :black_small_square: [\_geo](geono-geometry.md#_geo) :black_small_square: [\_geometry_class](geono-socket.md#_geometry_class) :black_small_square: [\_geo_type](geono-geobase.md#_geo_type) :black_small_square: [\_\_getattr__](geono-socket.md#__getattr__) :black_small_square: [\_\_getitem__](geono-geobase.md#__getitem__) :black_small_square: [get_socket_class](geono-socket.md#get_socket_class) :black_small_square: [id](geono-geobase.md#id) :black_small_square: [index_of_nearest](geono-geometry.md#index_of_nearest) :black_small_square: [IndexSwitch](geono-socket.md#indexswitch) :black_small_square: [index_switch](geono-socket.md#index_switch) :black_small_square: [input_type](geono-socket.md#input_type) :black_small_square: [instances](geono-geometry.md#instances) :black_small_square: [join](geono-geometry.md#join) :black_small_square: [\_jump](geono-socket.md#_jump) :black_small_square: [\_lc](geono-socket.md#_lc) :black_small_square: [\_lcop](geono-socket.md#_lcop) :black_small_square: [material](geono-geobase.md#material) :black_small_square: [material_index](geono-geobase.md#material_index) :black_small_square: [material_selection](geono-geobase.md#material_selection) :black_small_square: [MenuSwitch](geono-socket.md#menuswitch) :black_small_square: [menu_switch](geono-socket.md#menu_switch) :black_small_square: [merge_by_distance](geono-geometry.md#merge_by_distance) :black_small_square: [mesh](geono-geometry.md#mesh) :black_small_square: [\_node](geono-geometry.md#_node) :black_small_square: [node](geono-socket.md#node) :black_small_square: [node_color](geono-socket.md#node_color) :black_small_square: [node_label](geono-socket.md#node_label) :black_small_square: [offset](geono-geobase.md#offset) :black_small_square: [out](geono-socket.md#out) :black_small_square: [point_cloud](geono-geometry.md#point_cloud) :black_small_square: [position](geono-geobase.md#position) :black_small_square: [\_raw_sel](geono-geobase.md#_raw_sel) :black_small_square: [raycast](geono-geometry.md#raycast) :black_small_square: [remove_named_attribute](geono-geometry.md#remove_named_attribute) :black_small_square: [replace_material](geono-geobase.md#replace_material) :black_small_square: [\_sel](geono-geobase.md#_sel) :black_small_square: [separate_components](geono-geometry.md#separate_components) :black_small_square: [set_id](geono-geometry.md#set_id) :black_small_square: [set_material](geono-geometry.md#set_material) :black_small_square: [set_position](geono-geometry.md#set_position) :black_small_square: [set_shade_smooth](geono-geometry.md#set_shade_smooth) :black_small_square: [socket_type](geono-socket.md#socket_type) :black_small_square: [\_\_str__](geono-socket.md#__str__) :black_small_square: [Switch](geono-socket.md#switch) :black_small_square: [switch](geono-socket.md#switch) :black_small_square: [to_instance](geono-geometry.md#to_instance) :black_small_square: [out](geono-socket.md#out) :black_small_square: [transform](geono-geometry.md#transform) :black_small_square: [viewer](geono-geometry.md#viewer) :black_small_square: [volume](geono-geometry.md#volume) :black_small_square:
+[\_\_add__](geono-geometry.md#__add__) :black_small_square: [bake](geono-geometry.md#bake) :black_small_square: [blur](geono-socket.md#blur) :black_small_square: [bounding_box](geono-geometry.md#bounding_box) :black_small_square: [\_cache](geono-nodecache.md#_cache) :black_small_square: [\_cache_reset](geono-nodecache.md#_cache_reset) :black_small_square: [check_in_list](geono-socket.md#check_in_list) :black_small_square: [convex_hull](geono-geometry.md#convex_hull) :black_small_square: [curve](geono-geometry.md#curve) :black_small_square: [data_type](geono-socket.md#data_type) :black_small_square: [\_geo](geono-geometry.md#_geo) :black_small_square: [\_geometry_class](geono-socket.md#_geometry_class) :black_small_square: [\_geo_type](geono-geobase.md#_geo_type) :black_small_square: [\_\_getattr__](geono-socket.md#__getattr__) :black_small_square: [\_\_getitem__](geono-geobase.md#__getitem__) :black_small_square: [get_socket_class](geono-socket.md#get_socket_class) :black_small_square: [id](geono-geobase.md#id) :black_small_square: [index_of_nearest](geono-geometry.md#index_of_nearest) :black_small_square: [IndexSwitch](geono-socket.md#indexswitch) :black_small_square: [index_switch](geono-socket.md#index_switch) :black_small_square: [input_type](geono-socket.md#input_type) :black_small_square: [instances](geono-geometry.md#instances) :black_small_square: [Join](geono-geometry.md#join) :black_small_square: [join](geono-geometry.md#join) :black_small_square: [\_jump](geono-socket.md#_jump) :black_small_square: [\_lc](geono-socket.md#_lc) :black_small_square: [\_lcop](geono-socket.md#_lcop) :black_small_square: [material](geono-geobase.md#material) :black_small_square: [material_index](geono-geobase.md#material_index) :black_small_square: [material_selection](geono-geobase.md#material_selection) :black_small_square: [MenuSwitch](geono-socket.md#menuswitch) :black_small_square: [menu_switch](geono-socket.md#menu_switch) :black_small_square: [merge_by_distance](geono-geometry.md#merge_by_distance) :black_small_square: [mesh](geono-geometry.md#mesh) :black_small_square: [\_node](geono-geometry.md#_node) :black_small_square: [node](geono-socket.md#node) :black_small_square: [node_color](geono-socket.md#node_color) :black_small_square: [node_label](geono-socket.md#node_label) :black_small_square: [offset](geono-geobase.md#offset) :black_small_square: [out](geono-socket.md#out) :black_small_square: [point_cloud](geono-geometry.md#point_cloud) :black_small_square: [position](geono-geobase.md#position) :black_small_square: [\_raw_sel](geono-geobase.md#_raw_sel) :black_small_square: [raycast](geono-geometry.md#raycast) :black_small_square: [remove_named_attribute](geono-geometry.md#remove_named_attribute) :black_small_square: [replace_material](geono-geobase.md#replace_material) :black_small_square: [\_sel](geono-geobase.md#_sel) :black_small_square: [separate_components](geono-geometry.md#separate_components) :black_small_square: [set_id](geono-geometry.md#set_id) :black_small_square: [set_material](geono-geometry.md#set_material) :black_small_square: [set_position](geono-geometry.md#set_position) :black_small_square: [set_shade_smooth](geono-geometry.md#set_shade_smooth) :black_small_square: [socket_type](geono-socket.md#socket_type) :black_small_square: [\_\_str__](geono-socket.md#__str__) :black_small_square: [Switch](geono-socket.md#switch) :black_small_square: [switch](geono-socket.md#switch) :black_small_square: [to_instance](geono-geometry.md#to_instance) :black_small_square: [transform](geono-geometry.md#transform) :black_small_square: [viewer](geono-geometry.md#viewer) :black_small_square: [volume](geono-geometry.md#volume) :black_small_square:
 
 ## Content
 
-- **B** : [boolean](geono-mesh.md#boolean)
+- **B** : [Boolean](geono-mesh.md#boolean) :black_small_square: [boolean](geono-mesh.md#boolean)
 - **C** : [Circle](geono-mesh.md#circle) :black_small_square: [Cone](geono-mesh.md#cone) :black_small_square: [corners](geono-mesh.md#corners) :black_small_square: [Cube](geono-mesh.md#cube) :black_small_square: [Cylinder](geono-mesh.md#cylinder)
-- **D** : [difference](geono-mesh.md#difference) :black_small_square: [Disk](geono-mesh.md#disk) :black_small_square: [distribute_points_on_faces](geono-mesh.md#distribute_points_on_faces) :black_small_square: [domain_size](geono-mesh.md#domain_size) :black_small_square: [dual](geono-mesh.md#dual)
+- **D** : [Difference](geono-mesh.md#difference) :black_small_square: [difference](geono-mesh.md#difference) :black_small_square: [Disk](geono-mesh.md#disk) :black_small_square: [distribute_points_on_faces](geono-mesh.md#distribute_points_on_faces) :black_small_square: [domain_size](geono-mesh.md#domain_size) :black_small_square: [dual](geono-mesh.md#dual)
 - **E** : [edges](geono-mesh.md#edges)
 - **F** : [faces](geono-mesh.md#faces) :black_small_square: [FromCurve](geono-mesh.md#fromcurve) :black_small_square: [FromPoints](geono-mesh.md#frompoints) :black_small_square: [FromVolume](geono-mesh.md#fromvolume)
 - **G** : [Grid](geono-mesh.md#grid)
-- **I** : [IcoSphere](geono-mesh.md#icosphere) :black_small_square: [intersect](geono-mesh.md#intersect) :black_small_square: [island](geono-mesh.md#island)
+- **I** : [IcoSphere](geono-mesh.md#icosphere) :black_small_square: [Intersect](geono-mesh.md#intersect) :black_small_square: [intersect](geono-mesh.md#intersect) :black_small_square: [island](geono-mesh.md#island) :black_small_square: [island_count](geono-mesh.md#island_count) :black_small_square: [island_index](geono-mesh.md#island_index)
 - **L** : [Line](geono-mesh.md#line) :black_small_square: [LineOffset](geono-mesh.md#lineoffset) :black_small_square: [LineTo](geono-mesh.md#lineto)
 - **P** : [pack_uv_islands](geono-mesh.md#pack_uv_islands) :black_small_square: [Plane](geono-mesh.md#plane) :black_small_square: [points](geono-mesh.md#points)
 - **S** : [sample_nearest_surface](geono-mesh.md#sample_nearest_surface) :black_small_square: [sample_uv_surface](geono-mesh.md#sample_uv_surface) :black_small_square: [subdivide](geono-mesh.md#subdivide) :black_small_square: [subdivision_surface](geono-mesh.md#subdivision_surface)
 - **T** : [to_curve](geono-mesh.md#to_curve) :black_small_square: [to_volume](geono-mesh.md#to_volume) :black_small_square: [triangulate](geono-mesh.md#triangulate)
-- **U** : [union](geono-mesh.md#union) :black_small_square: [UVSphere](geono-mesh.md#uvsphere) :black_small_square: [uv_unwrap](geono-mesh.md#uv_unwrap)
+- **U** : [Union](geono-mesh.md#union) :black_small_square: [union](geono-mesh.md#union) :black_small_square: [UVSphere](geono-mesh.md#uvsphere) :black_small_square: [uv_unwrap](geono-mesh.md#uv_unwrap)
 
 ## Properties
 
@@ -63,6 +63,8 @@ CORNER domain
 >
 
 > Node ERROR: Node 'Size' not found, component = 'MESH'
+
+:warning: returns the **node**, not a socket
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-mesh.md#mesh) :black_small_square: [Content](geono-mesh.md#content) :black_small_square: [Properties](geono-mesh.md#properties)</sub>
 
@@ -91,11 +93,25 @@ FACE domain
 
 > Node [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/mesh_island.html)
 
-``` python
-mesh = Mesh.Cube()
-index = mesh.island.index
-count = mesh.island.count
-```
+:warning: returns the **node**, not a socket
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-mesh.md#mesh) :black_small_square: [Content](geono-mesh.md#content) :black_small_square: [Properties](geono-mesh.md#properties)</sub>
+
+### island_count
+
+> _type_: **Integer**
+>
+
+> Socket 'Island Count' fo node [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/mesh_island.html)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-mesh.md#mesh) :black_small_square: [Content](geono-mesh.md#content) :black_small_square: [Properties](geono-mesh.md#properties)</sub>
+
+### island_index
+
+> _type_: **Integer**
+>
+
+> Socket 'Island Index' fo node [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/mesh_island.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-mesh.md#mesh) :black_small_square: [Content](geono-mesh.md#content) :black_small_square: [Properties](geono-mesh.md#properties)</sub>
 
@@ -113,15 +129,15 @@ POINT domain
 
 
 ----------
-### boolean()
+### Boolean()
 
-> method
+> classmethod
 
 ``` python
-boolean(*meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT', operation='DIFFERENCE')
+Boolean(*meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT', operation='DIFFERENCE')
 ```
 
-> Node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html)
+> Constructor node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html)
 
 #### Arguments:
 - **meshes** (_Mesh_) : socket 'Mesh 2' (Mesh 2)
@@ -134,6 +150,33 @@ boolean(*meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT', ope
 
 #### Returns:
 - **Mesh** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-mesh.md#mesh) :black_small_square: [Content](geono-mesh.md#content) :black_small_square: [Methods](geono-mesh.md#methods)</sub>
+
+----------
+### boolean()
+
+> method
+
+``` python
+boolean(*meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT', operation='DIFFERENCE')
+```
+
+> Node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html)
+
+
+
+#### Arguments:
+- **meshes** (_Mesh_) : socket 'Mesh 2' (Mesh 2)
+- **self_intersection** (_Boolean_ = None) : socket 'Self Intersection' (Self Intersection)
+- **hole_tolerant** (_Boolean_ = None) : socket 'Hole Tolerant' (Hole Tolerant)
+- **solver** (_str_ = FLOAT) : Node.solver in ('EXACT', 'FLOAT')
+- **operation** (_str_ = DIFFERENCE) : Node.operation in ('INTERSECT', 'UNION', 'DIFFERENCE')
+
+
+
+#### Returns:
+- **Mesh** : self
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-mesh.md#mesh) :black_small_square: [Content](geono-mesh.md#content) :black_small_square: [Methods](geono-mesh.md#methods)</sub>
 
@@ -238,6 +281,31 @@ Cylinder(vertices=32, side_segments=1, fill_segments=1, radius=1.0, depth=2.0, f
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-mesh.md#mesh) :black_small_square: [Content](geono-mesh.md#content) :black_small_square: [Methods](geono-mesh.md#methods)</sub>
 
 ----------
+### Difference()
+
+> classmethod
+
+``` python
+Difference(mesh, *meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT')
+```
+
+> Constructor node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html), operation = 'DIFFERENCE'
+
+#### Arguments:
+- **mesh**
+- **meshes** (_Mesh_) : socket 'Mesh 2' (Mesh 2)
+- **self_intersection** (_Boolean_ = None) : socket 'Self Intersection' (Self Intersection)
+- **hole_tolerant** (_Boolean_ = None) : socket 'Hole Tolerant' (Hole Tolerant)
+- **solver** (_str_ = FLOAT) : Node.solver in ('EXACT', 'FLOAT')
+
+
+
+#### Returns:
+- **Mesh** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-mesh.md#mesh) :black_small_square: [Content](geono-mesh.md#content) :black_small_square: [Methods](geono-mesh.md#methods)</sub>
+
+----------
 ### difference()
 
 > method
@@ -246,7 +314,9 @@ Cylinder(vertices=32, side_segments=1, fill_segments=1, radius=1.0, depth=2.0, f
 difference(*meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT')
 ```
 
-> Node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html)
+> Node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html), operation = 'DIFFERENCE'
+
+
 
 #### Arguments:
 - **meshes** (_Mesh_) : socket 'Mesh 2' (Mesh 2)
@@ -257,7 +327,7 @@ difference(*meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT')
 
 
 #### Returns:
-- **Mesh** :
+- **Mesh** : self
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-mesh.md#mesh) :black_small_square: [Content](geono-mesh.md#content) :black_small_square: [Methods](geono-mesh.md#methods)</sub>
 
@@ -295,6 +365,8 @@ distribute_points_on_faces(density=None, distance_min=None, density_max=None, de
 
 > Node ERROR: Node 'Distribute Points on Faces' not found
 
+
+
 if 'density' argument is not None, 'RANDOM' method is applied, 'POISSON' otherwise
 
 - distribute_method (str): Node.distribute_method in ('RANDOM', 'POISSON')
@@ -325,13 +397,15 @@ dual(keep_boundaries=None)
 
 > Node [Dual Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/dual_mesh.html)
 
+
+
 #### Arguments:
 - **keep_boundaries** (_Boolean_ = None) : socket 'Keep Boundaries' (Keep Boundaries)
 
 
 
 #### Returns:
-- **Mesh** :
+- **Mesh** : self
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-mesh.md#mesh) :black_small_square: [Content](geono-mesh.md#content) :black_small_square: [Methods](geono-mesh.md#methods)</sub>
 
@@ -452,6 +526,31 @@ IcoSphere(radius=1.0, subdivisions=1)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-mesh.md#mesh) :black_small_square: [Content](geono-mesh.md#content) :black_small_square: [Methods](geono-mesh.md#methods)</sub>
 
 ----------
+### Intersect()
+
+> classmethod
+
+``` python
+Intersect(mesh, *meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT')
+```
+
+> Constructor node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html), operation = 'INTERSECT'
+
+#### Arguments:
+- **mesh**
+- **meshes** (_Mesh_) : socket 'Mesh 2' (Mesh 2)
+- **self_intersection** (_Boolean_ = None) : socket 'Self Intersection' (Self Intersection)
+- **hole_tolerant** (_Boolean_ = None) : socket 'Hole Tolerant' (Hole Tolerant)
+- **solver** (_str_ = FLOAT) : Node.solver in ('EXACT', 'FLOAT')
+
+
+
+#### Returns:
+- **Mesh** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-mesh.md#mesh) :black_small_square: [Content](geono-mesh.md#content) :black_small_square: [Methods](geono-mesh.md#methods)</sub>
+
+----------
 ### intersect()
 
 > method
@@ -460,7 +559,9 @@ IcoSphere(radius=1.0, subdivisions=1)
 intersect(*meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT')
 ```
 
-> Node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html)
+> Node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html), operation = 'INTERSECT'
+
+
 
 #### Arguments:
 - **meshes** (_Mesh_) : socket 'Mesh 2' (Mesh 2)
@@ -471,7 +572,7 @@ intersect(*meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT')
 
 
 #### Returns:
-- **Mesh** :
+- **Mesh** : self
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-mesh.md#mesh) :black_small_square: [Content](geono-mesh.md#content) :black_small_square: [Methods](geono-mesh.md#methods)</sub>
 
@@ -625,7 +726,7 @@ sample_nearest_surface(value=None, group_id=None, sample_position=None, sample_g
 
 
 #### Returns:
-- **Float** :
+- **Socket** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-mesh.md#mesh) :black_small_square: [Content](geono-mesh.md#content) :black_small_square: [Methods](geono-mesh.md#methods)</sub>
 
@@ -648,7 +749,7 @@ sample_uv_surface(value=None, uv_map=None, sample_uv=None)
 
 
 #### Returns:
-- **Float** :
+- **Socket** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-mesh.md#mesh) :black_small_square: [Content](geono-mesh.md#content) :black_small_square: [Methods](geono-mesh.md#methods)</sub>
 
@@ -663,13 +764,15 @@ subdivide(level=None)
 
 > Node [Subdivide Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/subdivide_mesh.html)
 
+
+
 #### Arguments:
 - **level** (_Integer_ = None) : socket 'Level' (Level)
 
 
 
 #### Returns:
-- **Mesh** :
+- **Mesh** : self
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-mesh.md#mesh) :black_small_square: [Content](geono-mesh.md#content) :black_small_square: [Methods](geono-mesh.md#methods)</sub>
 
@@ -684,6 +787,8 @@ subdivision_surface(level=None, edge_crease=None, vertex_crease=None, uv_smooth=
 
 > Node [Subdivision Surface](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/subdivision_surface.html)
 
+
+
 #### Arguments:
 - **level** (_Integer_ = None) : socket 'Level' (Level)
 - **edge_crease** (_Float_ = None) : socket 'Edge Crease' (Edge Crease)
@@ -694,7 +799,7 @@ subdivision_surface(level=None, edge_crease=None, vertex_crease=None, uv_smooth=
 
 
 #### Returns:
-- **Mesh** :
+- **Mesh** : self
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-mesh.md#mesh) :black_small_square: [Content](geono-mesh.md#content) :black_small_square: [Methods](geono-mesh.md#methods)</sub>
 
@@ -708,6 +813,8 @@ to_curve()
 ```
 
 > Node [Mesh to Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_curve.html)
+
+
 
 #### Returns:
 - **Curve** :
@@ -724,6 +831,8 @@ to_volume(density=None, voxel_amount=None, interior_band_width=None, voxel_size=
 ```
 
 > Node [Mesh to Volume](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_volume.html)
+
+
 
 - resolution_mode (str): Node.resolution_mode in ('VOXEL_AMOUNT', 'VOXEL_SIZE')
 
@@ -752,10 +861,37 @@ triangulate(minimum_vertices=None, quad_method='SHORTEST_DIAGONAL', ngon_method=
 
 > Node [Triangulate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/triangulate.html)
 
+
+
 #### Arguments:
 - **minimum_vertices** (_Integer_ = None) : socket 'Minimum Vertices' (Minimum Vertices)
 - **quad_method** (_str_ = SHORTEST_DIAGONAL) : Node.quad_method in ('BEAUTY', 'FIXED', 'FIXED_ALTERNATE', 'SHORTEST_DIAGONAL', 'LONGEST_DIAGONAL')
 - **ngon_method** (_str_ = BEAUTY) : Node.ngon_method in ('BEAUTY', 'CLIP')
+
+
+
+#### Returns:
+- **Mesh** : self
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-mesh.md#mesh) :black_small_square: [Content](geono-mesh.md#content) :black_small_square: [Methods](geono-mesh.md#methods)</sub>
+
+----------
+### Union()
+
+> classmethod
+
+``` python
+Union(mesh, *meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT')
+```
+
+> Constructor node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html), operation = 'UNION'
+
+#### Arguments:
+- **mesh**
+- **meshes** (_Mesh_) : socket 'Mesh 2' (Mesh 2)
+- **self_intersection** (_Boolean_ = None) : socket 'Self Intersection' (Self Intersection)
+- **hole_tolerant** (_Boolean_ = None) : socket 'Hole Tolerant' (Hole Tolerant)
+- **solver** (_str_ = FLOAT) : Node.solver in ('EXACT', 'FLOAT')
 
 
 
@@ -773,7 +909,9 @@ triangulate(minimum_vertices=None, quad_method='SHORTEST_DIAGONAL', ngon_method=
 union(*meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT')
 ```
 
-> Node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html)
+> Node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html), operation = 'UNION'
+
+
 
 #### Arguments:
 - **meshes** (_Mesh_) : socket 'Mesh 2' (Mesh 2)
@@ -784,7 +922,7 @@ union(*meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT')
 
 
 #### Returns:
-- **Mesh** :
+- **Mesh** : self
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](geono-mesh.md#mesh) :black_small_square: [Content](geono-mesh.md#content) :black_small_square: [Methods](geono-mesh.md#methods)</sub>
 

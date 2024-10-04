@@ -27,7 +27,7 @@ Nodes requiring a domain parameter, are implemented in one of the two domains of
 
 ### Inherited
 
-[\_\_add__](geono-geometry.md#__add__) :black_small_square: [bake](geono-geometry.md#bake) :black_small_square: [blur](geono-socket.md#blur) :black_small_square: [bounding_box](geono-geometry.md#bounding_box) :black_small_square: [\_cache](geono-nodecache.md#_cache) :black_small_square: [\_cache_reset](geono-nodecache.md#_cache_reset) :black_small_square: [check_in_list](geono-socket.md#check_in_list) :black_small_square: [convex_hull](geono-geometry.md#convex_hull) :black_small_square: [curve](geono-geometry.md#curve) :black_small_square: [data_type](geono-socket.md#data_type) :black_small_square: [\_geo](geono-geometry.md#_geo) :black_small_square: [\_geometry_class](geono-socket.md#_geometry_class) :black_small_square: [\_geo_type](geono-geobase.md#_geo_type) :black_small_square: [\_\_getattr__](geono-socket.md#__getattr__) :black_small_square: [\_\_getitem__](geono-geobase.md#__getitem__) :black_small_square: [get_socket_class](geono-socket.md#get_socket_class) :black_small_square: [id](geono-geobase.md#id) :black_small_square: [index_of_nearest](geono-geometry.md#index_of_nearest) :black_small_square: [IndexSwitch](geono-socket.md#indexswitch) :black_small_square: [index_switch](geono-socket.md#index_switch) :black_small_square: [input_type](geono-socket.md#input_type) :black_small_square: [instances](geono-geometry.md#instances) :black_small_square: [join](geono-geometry.md#join) :black_small_square: [\_jump](geono-socket.md#_jump) :black_small_square: [\_lc](geono-socket.md#_lc) :black_small_square: [\_lcop](geono-socket.md#_lcop) :black_small_square: [material](geono-geobase.md#material) :black_small_square: [material_index](geono-geobase.md#material_index) :black_small_square: [material_selection](geono-geobase.md#material_selection) :black_small_square: [MenuSwitch](geono-socket.md#menuswitch) :black_small_square: [menu_switch](geono-socket.md#menu_switch) :black_small_square: [merge_by_distance](geono-geometry.md#merge_by_distance) :black_small_square: [mesh](geono-geometry.md#mesh) :black_small_square: [\_node](geono-geometry.md#_node) :black_small_square: [node](geono-socket.md#node) :black_small_square: [node_color](geono-socket.md#node_color) :black_small_square: [node_label](geono-socket.md#node_label) :black_small_square: [offset](geono-geobase.md#offset) :black_small_square: [out](geono-socket.md#out) :black_small_square: [point_cloud](geono-geometry.md#point_cloud) :black_small_square: [position](geono-geobase.md#position) :black_small_square: [\_raw_sel](geono-geobase.md#_raw_sel) :black_small_square: [raycast](geono-geometry.md#raycast) :black_small_square: [remove_named_attribute](geono-geometry.md#remove_named_attribute) :black_small_square: [replace_material](geono-geobase.md#replace_material) :black_small_square: [\_sel](geono-geobase.md#_sel) :black_small_square: [separate_components](geono-geometry.md#separate_components) :black_small_square: [set_id](geono-geometry.md#set_id) :black_small_square: [set_material](geono-geometry.md#set_material) :black_small_square: [set_position](geono-geometry.md#set_position) :black_small_square: [set_shade_smooth](geono-geometry.md#set_shade_smooth) :black_small_square: [socket_type](geono-socket.md#socket_type) :black_small_square: [\_\_str__](geono-socket.md#__str__) :black_small_square: [Switch](geono-socket.md#switch) :black_small_square: [switch](geono-socket.md#switch) :black_small_square: [to_instance](geono-geometry.md#to_instance) :black_small_square: [out](geono-socket.md#out) :black_small_square: [transform](geono-geometry.md#transform) :black_small_square: [viewer](geono-geometry.md#viewer) :black_small_square: [volume](geono-geometry.md#volume) :black_small_square:
+[\_\_add__](geono-geometry.md#__add__) :black_small_square: [bake](geono-geometry.md#bake) :black_small_square: [blur](geono-socket.md#blur) :black_small_square: [bounding_box](geono-geometry.md#bounding_box) :black_small_square: [\_cache](geono-nodecache.md#_cache) :black_small_square: [\_cache_reset](geono-nodecache.md#_cache_reset) :black_small_square: [check_in_list](geono-socket.md#check_in_list) :black_small_square: [convex_hull](geono-geometry.md#convex_hull) :black_small_square: [curve](geono-geometry.md#curve) :black_small_square: [data_type](geono-socket.md#data_type) :black_small_square: [\_geo](geono-geometry.md#_geo) :black_small_square: [\_geometry_class](geono-socket.md#_geometry_class) :black_small_square: [\_geo_type](geono-geobase.md#_geo_type) :black_small_square: [\_\_getattr__](geono-socket.md#__getattr__) :black_small_square: [\_\_getitem__](geono-geobase.md#__getitem__) :black_small_square: [get_socket_class](geono-socket.md#get_socket_class) :black_small_square: [id](geono-geobase.md#id) :black_small_square: [index_of_nearest](geono-geometry.md#index_of_nearest) :black_small_square: [IndexSwitch](geono-socket.md#indexswitch) :black_small_square: [index_switch](geono-socket.md#index_switch) :black_small_square: [input_type](geono-socket.md#input_type) :black_small_square: [instances](geono-geometry.md#instances) :black_small_square: [Join](geono-geometry.md#join) :black_small_square: [join](geono-geometry.md#join) :black_small_square: [\_jump](geono-socket.md#_jump) :black_small_square: [\_lc](geono-socket.md#_lc) :black_small_square: [\_lcop](geono-socket.md#_lcop) :black_small_square: [material](geono-geobase.md#material) :black_small_square: [material_index](geono-geobase.md#material_index) :black_small_square: [material_selection](geono-geobase.md#material_selection) :black_small_square: [MenuSwitch](geono-socket.md#menuswitch) :black_small_square: [menu_switch](geono-socket.md#menu_switch) :black_small_square: [merge_by_distance](geono-geometry.md#merge_by_distance) :black_small_square: [mesh](geono-geometry.md#mesh) :black_small_square: [\_node](geono-geometry.md#_node) :black_small_square: [node](geono-socket.md#node) :black_small_square: [node_color](geono-socket.md#node_color) :black_small_square: [node_label](geono-socket.md#node_label) :black_small_square: [offset](geono-geobase.md#offset) :black_small_square: [out](geono-socket.md#out) :black_small_square: [point_cloud](geono-geometry.md#point_cloud) :black_small_square: [position](geono-geobase.md#position) :black_small_square: [\_raw_sel](geono-geobase.md#_raw_sel) :black_small_square: [raycast](geono-geometry.md#raycast) :black_small_square: [remove_named_attribute](geono-geometry.md#remove_named_attribute) :black_small_square: [replace_material](geono-geobase.md#replace_material) :black_small_square: [\_sel](geono-geobase.md#_sel) :black_small_square: [separate_components](geono-geometry.md#separate_components) :black_small_square: [set_id](geono-geometry.md#set_id) :black_small_square: [set_material](geono-geometry.md#set_material) :black_small_square: [set_position](geono-geometry.md#set_position) :black_small_square: [set_shade_smooth](geono-geometry.md#set_shade_smooth) :black_small_square: [socket_type](geono-socket.md#socket_type) :black_small_square: [\_\_str__](geono-socket.md#__str__) :black_small_square: [Switch](geono-socket.md#switch) :black_small_square: [switch](geono-socket.md#switch) :black_small_square: [to_instance](geono-geometry.md#to_instance) :black_small_square: [transform](geono-geometry.md#transform) :black_small_square: [viewer](geono-geometry.md#viewer) :black_small_square: [volume](geono-geometry.md#volume) :black_small_square:
 
 ## Content
 
@@ -255,7 +255,7 @@ curve_of_point(point_index=None)
 
 
 #### Returns:
-- **Node** : 'Curve of Point' node
+- **Integer** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](macro-geono-curve.md#curve) :black_small_square: [Content](macro-geono-curve.md#content) :black_small_square: [Methods](macro-geono-curve.md#methods)</sub>
 
@@ -270,8 +270,10 @@ deform_on_surface()
 
 > Node [Deform Curves on Surface](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/deform_curves_on_surface.html)
 
+
+
 #### Returns:
-- **Curve** :
+- **Curve** : self
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](macro-geono-curve.md#curve) :black_small_square: [Content](macro-geono-curve.md#content) :black_small_square: [Methods](macro-geono-curve.md#methods)</sub>
 
@@ -308,6 +310,8 @@ fill(group_id=None, mode='TRIANGLES')
 
 > Node [Fill Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/fill_curve.html)
 
+
+
 #### Arguments:
 - **group_id** (_Integer_ = None) : socket 'Group ID' (Group ID)
 - **mode** (_str_ = TRIANGLES) : Node.mode in ('TRIANGLES', 'NGONS')
@@ -330,6 +334,8 @@ fillet(radius=None, limit_radius=None, count=None, mode='BEZIER')
 
 > Node [Fillet Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/fillet_curve.html)
 
+
+
 #### Arguments:
 - **radius** (_Float_ = None) : socket 'Radius' (Radius)
 - **limit_radius** (_Boolean_ = None) : socket 'Limit Radius' (Limit Radius)
@@ -339,7 +345,7 @@ fillet(radius=None, limit_radius=None, count=None, mode='BEZIER')
 
 
 #### Returns:
-- **Curve** :
+- **Curve** : self
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](macro-geono-curve.md#curve) :black_small_square: [Content](macro-geono-curve.md#content) :black_small_square: [Methods](macro-geono-curve.md#methods)</sub>
 
@@ -420,6 +426,8 @@ interpolate(guide_up=None, guide_group_id=None, points=None, point_up=None, poin
 
 > Node [Interpolate Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/interpolate_curves.html)
 
+
+
 #### Arguments:
 - **guide_up** (_Vector_ = None) : socket 'Guide Up' (Guide Up)
 - **guide_group_id** (_Integer_ = None) : socket 'Guide Group ID' (Guide Group ID)
@@ -431,7 +439,7 @@ interpolate(guide_up=None, guide_group_id=None, points=None, point_up=None, poin
 
 
 #### Returns:
-- **Curve** :
+- **Curve** : self
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](macro-geono-curve.md#curve) :black_small_square: [Content](macro-geono-curve.md#content) :black_small_square: [Methods](macro-geono-curve.md#methods)</sub>
 
@@ -497,6 +505,16 @@ offset_point_in_curve(point_index=None, offset=None)
 
 > Node [Offset Point in Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/topology/offset_point_in_curve.html)
 
+> [!CAUTION]
+> This method doesn't return the top output socket which is the Boolean 'Is Valid Offset' but
+> the second one, the Integer 'Point Index'
+
+``` python
+curve = Curve.Spiral()
+index = curve.offset_point(0, 3)
+is_valid = index.is_valid_offset_
+```
+
 #### Arguments:
 - **point_index** (_Integer_ = None) : socket 'Point Index' (Point Index)
 - **offset** (_Integer_ = None) : socket 'Offset' (Offset)
@@ -504,7 +522,7 @@ offset_point_in_curve(point_index=None, offset=None)
 
 
 #### Returns:
-- **Node** : 'Offset Point in Curve' node
+- **Integer** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](macro-geono-curve.md#curve) :black_small_square: [Content](macro-geono-curve.md#content) :black_small_square: [Methods](macro-geono-curve.md#methods)</sub>
 
@@ -574,7 +592,7 @@ points_of_curve(curve_index=None, weights=None, sort_index=None)
 
 
 #### Returns:
-- **Node** : 'Points of Curve' node
+- **Integer** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](macro-geono-curve.md#curve) :black_small_square: [Content](macro-geono-curve.md#content) :black_small_square: [Methods](macro-geono-curve.md#methods)</sub>
 
@@ -657,6 +675,8 @@ resample(count=None, length=None)
 
 > Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/resample_curve.html)
 
+
+
 Parameter 'mode'
 ---------------
 - mode (str): Node.mode in ('EVALUATED', 'COUNT', 'LENGTH')
@@ -671,7 +691,7 @@ Parameter 'mode'
 
 
 #### Returns:
-- **Curve** :
+- **Curve** : self
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](macro-geono-curve.md#curve) :black_small_square: [Content](macro-geono-curve.md#content) :black_small_square: [Methods](macro-geono-curve.md#methods)</sub>
 
@@ -686,8 +706,10 @@ reverse()
 
 > Node [Reverse Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/reverse_curve.html)
 
+
+
 #### Returns:
-- **Curve** :
+- **Curve** : self
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](macro-geono-curve.md#curve) :black_small_square: [Content](macro-geono-curve.md#content) :black_small_square: [Methods](macro-geono-curve.md#methods)</sub>
 
@@ -706,6 +728,20 @@ sample(value=None, factor=None, length=None, curve_index=None, all_curves=False)
 
 - data_type (str): Node.data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4')
 - mode (str): Node.mode in ('FACTOR', 'LENGTH')
+
+> [!NOTE]
+> The method returns the value which is sampled.
+> To get other sockets, use the **peer sockets** naming convention:
+
+``` python
+curve = Curve.Line()
+
+a = curve.sample()
+
+position = a.position_
+tangent = a.tangent_
+normal = a.normal_
+```
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (Value)
@@ -732,13 +768,15 @@ set_normal(mode='MINIMUM_TWIST')
 
 > Node [Set Curve Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_curve_normal.html)
 
+
+
 #### Arguments:
 - **mode** (_str_ = MINIMUM_TWIST) : Node.mode in ('MINIMUM_TWIST', 'Z_UP', 'FREE')
 
 
 
 #### Returns:
-- **Curve** :
+- **Curve** : self
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](macro-geono-curve.md#curve) :black_small_square: [Content](macro-geono-curve.md#content) :black_small_square: [Methods](macro-geono-curve.md#methods)</sub>
 
@@ -753,8 +791,10 @@ set_normal_free()
 
 > Node [Set Curve Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_curve_normal.html)
 
+
+
 #### Returns:
-- **Curve** :
+- **Curve** : self
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](macro-geono-curve.md#curve) :black_small_square: [Content](macro-geono-curve.md#content) :black_small_square: [Methods](macro-geono-curve.md#methods)</sub>
 
@@ -769,8 +809,10 @@ set_normal_z_up()
 
 > Node [Set Curve Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_curve_normal.html)
 
+
+
 #### Returns:
-- **Curve** :
+- **Curve** : self
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](macro-geono-curve.md#curve) :black_small_square: [Content](macro-geono-curve.md#content) :black_small_square: [Methods](macro-geono-curve.md#methods)</sub>
 
@@ -835,13 +877,15 @@ subdivide(cuts=None)
 
 > Node [Subdivide Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/subdivide_curve.html)
 
+
+
 #### Arguments:
 - **cuts** (_Integer_ = None) : socket 'Cuts' (Cuts)
 
 
 
 #### Returns:
-- **Curve** :
+- **Curve** : self
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](macro-geono-curve.md#curve) :black_small_square: [Content](macro-geono-curve.md#content) :black_small_square: [Methods](macro-geono-curve.md#methods)</sub>
 
@@ -855,6 +899,8 @@ to_mesh(profile_curve=None, fill_caps=None)
 ```
 
 > Node [Curve to Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curve_to_mesh.html)
+
+
 
 #### Arguments:
 - **profile_curve** (_Geometry_ = None) : socket 'Profile Curve' (Profile Curve)
@@ -877,6 +923,8 @@ to_points(count=None, length=None, mode='EVALUATED')
 ```
 
 > Node [Curve to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curve_to_points.html)
+
+
 
 #### Arguments:
 - **count** (_Integer_ = None) : socket 'Count' (Count)
@@ -925,6 +973,8 @@ trim(start=None, end=None, mode='FACTOR')
 
 > Node [Trim Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/trim_curve.html)
 
+
+
 #### Arguments:
 - **start** (_Float_ = None) : socket 'Start' (Start)
 - **end** (_Float_ = None) : socket 'End' (End)
@@ -933,7 +983,7 @@ trim(start=None, end=None, mode='FACTOR')
 
 
 #### Returns:
-- **Curve** :
+- **Curve** : self
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](macro-geono-curve.md#curve) :black_small_square: [Content](macro-geono-curve.md#content) :black_small_square: [Methods](macro-geono-curve.md#methods)</sub>
 
@@ -946,7 +996,9 @@ trim(start=None, end=None, mode='FACTOR')
 trim_factor(start=None, end=None)
 ```
 
-> Node [Trim Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/trim_curve.html)
+> Node [Trim Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/trim_curve.html), mode = 'FACTOR'
+
+
 
 #### Arguments:
 - **start** (_Float_ = None) : socket 'Start' (Start)
@@ -955,7 +1007,7 @@ trim_factor(start=None, end=None)
 
 
 #### Returns:
-- **Curve** :
+- **Curve** : self
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](macro-geono-curve.md#curve) :black_small_square: [Content](macro-geono-curve.md#content) :black_small_square: [Methods](macro-geono-curve.md#methods)</sub>
 
@@ -968,7 +1020,9 @@ trim_factor(start=None, end=None)
 trim_length(start=None, end=None)
 ```
 
-> Node [Trim Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/trim_curve.html)
+> Node [Trim Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/trim_curve.html), mode = 'LENGTH'
+
+
 
 #### Arguments:
 - **start** (_Float_ = None) : socket 'Start' (Start)
@@ -977,6 +1031,6 @@ trim_length(start=None, end=None)
 
 
 #### Returns:
-- **Curve** :
+- **Curve** : self
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](macro-geono-curve.md#curve) :black_small_square: [Content](macro-geono-curve.md#content) :black_small_square: [Methods](macro-geono-curve.md#methods)</sub>

@@ -20,7 +20,7 @@ classes
 -------
 - NodeCache     : Interface for Socket and Domain which can cache created nodes
 - Socket        : Wraps the output socket of node and exposes nodes creation as methods or properties
-- ValueSocket   : Socket subtype for sockets representing a value (i.e. attributes)
+- Attribute   : Socket subtype for sockets representing a value (i.e. attributes)
 - String        : Socket of type 'STRING'
 - Material      : Socket of type 'MATERIAL'
 - Image         : Socket of type 'IMAGE'
@@ -719,9 +719,18 @@ class Socket(NodeCache):
 # =============================================================================================================================
 # =============================================================================================================================
 
-class ValueSocket(Socket):
-    """
-    $ DOC hidden
+class Attribute(Socket):
+    """ Attribute Socket
+
+    Attribute socket is class root for sockets which can be used in nodes managing attributes
+    such as <*Store Named Attribute> :
+    - <!Boolean>
+    - <!Integer>
+    - <!Float>
+    - <!Vector>
+    - <!Color>
+    - <!Matrix>
+    - <!Rotation>
     """
 
     # =============================================================================================================================

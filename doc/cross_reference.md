@@ -133,6 +133,7 @@ You will find here how nodes are implemented
 
 - [Domain](geono-domain.md#domain) :white_small_square: [capture](geono-domain.md#capture)
 - [Domain](geono-domain.md#domain) :white_small_square: [capture_attribute](geono-domain.md#capture_attribute)
+- [Domain](geono-domain.md#domain) :white_small_square: [captures](geono-domain.md#captures)
 - [nd](geono-nd.md#nd) :white_small_square: [capture_attribute](geono-nd.md#capture_attribute)
 
 #### Checker Texture
@@ -650,6 +651,7 @@ You will find here how nodes are implemented
 
 #### Join Geometry
 
+- [Geometry](geono-geometry.md#geometry) :white_small_square: [Join](geono-geometry.md#join)
 - [Geometry](geono-geometry.md#geometry) :white_small_square: [join](geono-geometry.md#join)
 - [nd](geono-nd.md#nd) :white_small_square: [join_geometry](geono-nd.md#join_geometry)
 
@@ -774,6 +776,10 @@ You will find here how nodes are implemented
 
 #### Mesh Boolean
 
+- [Mesh](geono-mesh.md#mesh) :white_small_square: [Boolean](geono-mesh.md#boolean)
+- [Mesh](geono-mesh.md#mesh) :white_small_square: [Difference](geono-mesh.md#difference)
+- [Mesh](geono-mesh.md#mesh) :white_small_square: [Intersect](geono-mesh.md#intersect)
+- [Mesh](geono-mesh.md#mesh) :white_small_square: [Union](geono-mesh.md#union)
 - [Mesh](geono-mesh.md#mesh) :white_small_square: [boolean](geono-mesh.md#boolean)
 - [Mesh](geono-mesh.md#mesh) :white_small_square: [difference](geono-mesh.md#difference)
 - [Mesh](geono-mesh.md#mesh) :white_small_square: [intersect](geono-mesh.md#intersect)
@@ -789,6 +795,8 @@ You will find here how nodes are implemented
 #### Mesh Island
 
 - [Mesh](geono-mesh.md#mesh) :white_small_square: [island](geono-mesh.md#island)
+- [Mesh](geono-mesh.md#mesh) :white_small_square: [island_count](geono-mesh.md#island_count)
+- [Mesh](geono-mesh.md#mesh) :white_small_square: [island_index](geono-mesh.md#island_index)
 
 #### Mesh Line
 
@@ -870,6 +878,8 @@ You will find here how nodes are implemented
 - [Float](geono-float.md#float) :white_small_square: [NamedAttribute](geono-float.md#namedattribute)
 - [Integer](geono-integer.md#integer) :white_small_square: [Named](geono-integer.md#named)
 - [Integer](geono-integer.md#integer) :white_small_square: [NamedAttribute](geono-integer.md#namedattribute)
+- [Attribute](geono-attribute.md#attribute) :white_small_square: [Named](geono-attribute.md#named)
+- [Attribute](geono-attribute.md#attribute) :white_small_square: [NamedAttribute](geono-attribute.md#namedattribute)
 - [nd](geono-nd.md#nd) :white_small_square: [named_attribute](geono-nd.md#named_attribute)
 - [Matrix](geono-matrix.md#matrix) :white_small_square: [Named](geono-matrix.md#named)
 - [Matrix](geono-matrix.md#matrix) :white_small_square: [NamedAttribute](geono-matrix.md#namedattribute)

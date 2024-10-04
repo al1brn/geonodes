@@ -1,9 +1,9 @@
-# ValueSocket
+# Attribute
 
 > Bases classes: [Socket](geono-socket.md#socket)
 
 ``` python
-ValueSocket(socket)
+Attribute(socket)
 ```
 
 > The output socket of a [Node](geono-node.md#node)
@@ -49,8 +49,8 @@ uv_map = cuve.uv_map_
 
 ## Content
 
-- [Named](geono-valuesocket.md#named)
-- [NamedAttribute](geono-valuesocket.md#namedattribute)
+- [Named](geono-Attribute.md#named)
+- [NamedAttribute](geono-Attribute.md#namedattribute)
 
 ## Methods
 
@@ -94,7 +94,7 @@ with GeoNodes("Named Attributes"):
 #### Returns:
 - **Socket** :
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [ValueSocket](geono-valuesocket.md#valuesocket) :black_small_square: [Content](geono-valuesocket.md#content) :black_small_square: [Methods](geono-valuesocket.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Attribute](geono-Attribute.md#Attribute) :black_small_square: [Content](geono-Attribute.md#content) :black_small_square: [Methods](geono-Attribute.md#methods)</sub>
 
 ----------
 ### NamedAttribute()
@@ -134,4 +134,4 @@ with GeoNodes("Named Attributes"):
 #### Returns:
 - **Socket** :
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [ValueSocket](geono-valuesocket.md#valuesocket) :black_small_square: [Content](geono-valuesocket.md#content) :black_small_square: [Methods](geono-valuesocket.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Attribute](geono-Attribute.md#Attribute) :black_small_square: [Content](geono-Attribute.md#content) :black_small_square: [Methods](geono-Attribute.md#methods)</sub>

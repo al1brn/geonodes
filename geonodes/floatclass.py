@@ -36,7 +36,7 @@ import numpy as np
 import bpy
 from . import utils
 from .treeclass import Tree, Node
-from .socketclass import ValueSocket
+from .socketclass import Attribute
 
 # magic methods
 # __add__ __radd__ __iadd__ __sub__  __mul__ __matmul__ __truediv____floordiv__ __mod__ __divmod__ __pow__
@@ -49,7 +49,7 @@ from .socketclass import ValueSocket
 # Root for Integer and Float
 # =============================================================================================================================
 
-class IntFloat(ValueSocket):
+class IntFloat(Attribute):
 
     # ====================================================================================================
     # Methods

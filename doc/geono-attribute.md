@@ -1,20 +1,25 @@
-# Boolean
+# Attribute
 
 > Bases classes: [Socket](geono-socket.md#socket)
 
 ``` python
-Boolean(value=False, name=None, tip=None, subtype='NONE')
+Attribute(socket)
 ```
 
-Socket of type BOOLEAN
+Attribute Socket
 
-> Node [Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/constant/boolean.html)
+Attribute socket is class root for sockets which can be used in nodes managing attributes
+such as [Named Attribute](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../modeling/geometry_nodes/geometry/read/named_attribute.html) :
+- [Boolean](geono-boolean.md#boolean)
+- [Integer](geono-integer.md#integer)
+- [Float](geono-float.md#float)
+- [Vector](geono-vector.md#vector)
+- [Color](geono-color.md#color)
+- [Matrix](geono-matrix.md#matrix)
+- [Rotation](geono-rotation.md#rotation)
 
 #### Arguments:
-- **value** (_bool or Socket_ = False) : initial value
-- **name** (_str_ = None) : Create an Group Input socket with the provided str if not None
-- **tip** (_str_ = None) : User tip (for Group Input sockets)
-- **subtype** (_str_ = NONE) : socket subtype
+- **socket** (_NodeSocket_) : the output socket to wrap
 
 ### Inherited
 
@@ -22,9 +27,8 @@ Socket of type BOOLEAN
 
 ## Content
 
-- [Named](geono-boolean.md#named)
-- [NamedAttribute](geono-boolean.md#namedattribute)
-- [Random](geono-boolean.md#random)
+- [Named](geono-attribute.md#named)
+- [NamedAttribute](geono-attribute.md#namedattribute)
 
 ## Methods
 
@@ -68,7 +72,7 @@ with GeoNodes("Named Attributes"):
 #### Returns:
 - **Socket** :
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Boolean](geono-boolean.md#boolean) :black_small_square: [Content](geono-boolean.md#content) :black_small_square: [Methods](geono-boolean.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Attribute](geono-attribute.md#attribute) :black_small_square: [Content](geono-attribute.md#content) :black_small_square: [Methods](geono-attribute.md#methods)</sub>
 
 ----------
 ### NamedAttribute()
@@ -108,29 +112,4 @@ with GeoNodes("Named Attributes"):
 #### Returns:
 - **Socket** :
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Boolean](geono-boolean.md#boolean) :black_small_square: [Content](geono-boolean.md#content) :black_small_square: [Methods](geono-boolean.md#methods)</sub>
-
-----------
-### Random()
-
-> classmethod
-
-``` python
-Random(probability=None, id=None, seed=None)
-```
-
-Constructor : random Boolean.
-
-> Node [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html)
-
-#### Arguments:
-- **probability** (_Float_ = None)
-- **id** (_Integer_ = None)
-- **seed** (_Integer_ = None)
-
-
-
-#### Returns:
-- **Boolean** :
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Boolean](geono-boolean.md#boolean) :black_small_square: [Content](geono-boolean.md#content) :black_small_square: [Methods](geono-boolean.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Attribute](geono-attribute.md#attribute) :black_small_square: [Content](geono-attribute.md#content) :black_small_square: [Methods](geono-attribute.md#methods)</sub>

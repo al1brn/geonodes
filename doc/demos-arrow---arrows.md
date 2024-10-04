@@ -28,4 +28,5 @@ Geometry Nodes
 updates
 -------
 - creation : 2024/08/02
-- update   : 20242/09/04
+- update   : 2024/09/04
+- update.  : 2024/10/02

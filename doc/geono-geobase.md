@@ -102,6 +102,8 @@ replace_material(old=None, new=None)
 
 > Node [Replace Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/replace_material.html)
 
+
+
 #### Arguments:
 - **old** (_Material_ = None) : socket 'Old' (Old)
 - **new** (_Material_ = None) : socket 'New' (New)
@@ -109,7 +111,7 @@ replace_material(old=None, new=None)
 
 
 #### Returns:
-- **Geometry** :
+- **Geometry** : self
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [GeoBase](geono-geobase.md#geobase) :black_small_square: [Content](geono-geobase.md#content) :black_small_square: [Methods](geono-geobase.md#methods)</sub>
 
@@ -123,6 +125,8 @@ set_id(id=None)
 ```
 
 > Node [Set ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/write/set_id.html)
+
+
 
 #### Arguments:
 - **id** (_Integer_ = None) : socket 'ID' (ID)
@@ -145,6 +149,8 @@ set_position(position=None, offset=None)
 
 > Node [Set Position](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/write/set_position.html)
 
+
+
 #### Arguments:
 - **position** (_Vector_ = None) : socket 'Position' (Position)
 - **offset** (_Vector_ = None) : socket 'Offset' (Offset)
@@ -152,6 +158,6 @@ set_position(position=None, offset=None)
 
 
 #### Returns:
-- **Geometry** :
+- **Geometry** : self
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [GeoBase](geono-geobase.md#geobase) :black_small_square: [Content](geono-geobase.md#content) :black_small_square: [Methods](geono-geobase.md#methods)</sub>

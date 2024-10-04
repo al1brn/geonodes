@@ -766,7 +766,7 @@ class Geometry(Socket, GeoBase):
 
         > [!IMPORTANT]
         > 3 possibilities exist to join geometries
-        > - Constructur <#Jump> : create an new geometry from the input geometries
+        > - Constructur <#Join> : create an new geometry from the input geometries
         > - Operator '+' : create a new geometry from the operands
         > - Method 'join' : join the input geometry to the calling geometry
 
@@ -1078,7 +1078,7 @@ class Domain(GeoBase, NodeCache):
         - domain (str): Node.domain in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 
         > [!NOTE]
-        > Use constructor method <!Socket#NamedAttribute> to read stored attributes
+        > Use constructor method <!Attribute#NamedAttribute> to read stored attributes
 
         ``` python
         mesh = Mesh.Cube()
@@ -1111,7 +1111,7 @@ class Domain(GeoBase, NodeCache):
         - domain (str): Node.domain in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 
         > [!NOTE]
-        > Use constructor method <!Socket#Named> to read stored attributes
+        > Use constructor method <!Attribute#Named> to read stored attributes
 
         ``` python
         mesh = Mesh.Cube()

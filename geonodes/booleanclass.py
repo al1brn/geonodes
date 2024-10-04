@@ -34,12 +34,12 @@ import numpy as np
 import bpy
 from . import utils
 from .treeclass import Tree, Node
-from .socketclass import ValueSocket
+from .socketclass import Attribute
 
 # =============================================================================================================================
 # Boolean
 
-class Boolean(ValueSocket):
+class Boolean(Attribute):
     SOCKET_TYPE = 'BOOLEAN'
 
     def __init__(self, value=False, name=None, tip=None, subtype='NONE'):

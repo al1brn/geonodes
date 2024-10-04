@@ -21,6 +21,8 @@ cube.faces.store_named_attribute() # doamin = 'FACE'
 > [!IMPORTANT]
 > Domains are never instantiated directly but created by geometries.
 
+> See: [Vertex](geono-vertex.md#vertex), [Face](geono-face.md#face), [Edge](geono-edge.md#edge), [Corner](geono-corner.md#corner), [SplinePoint](geono-splinepoint.md#splinepoint), [Spline](geono-spline.md#spline), [CloudPoint](geono-cloudpoint.md#cloudpoint), [Instance](geono-instance.md#instance)
+
 Properties:
 - _geo (Geometry) : the geometry the domain belongs to
 
@@ -34,7 +36,7 @@ Properties:
 ## Content
 
 - **A** : [accumulate_field](macro-geono-domain.md#accumulate_field) :black_small_square: [attribute_statistic](macro-geono-domain.md#attribute_statistic)
-- **C** : [capture](macro-geono-domain.md#capture) :black_small_square: [capture_attribute](macro-geono-domain.md#capture_attribute)
+- **C** : [capture](macro-geono-domain.md#capture) :black_small_square: [capture_attribute](macro-geono-domain.md#capture_attribute) :black_small_square: [captures](macro-geono-domain.md#captures)
 - **D** : [delete](macro-geono-domain.md#delete) :black_small_square: [delete_all](macro-geono-domain.md#delete_all) :black_small_square: [delete_edges_and_faces](macro-geono-domain.md#delete_edges_and_faces) :black_small_square: [delete_faces](macro-geono-domain.md#delete_faces) :black_small_square: [delete_geometry](macro-geono-domain.md#delete_geometry) :black_small_square: [duplicate_elements](macro-geono-domain.md#duplicate_elements)
 - **E** : [evaluate_at_index](macro-geono-domain.md#evaluate_at_index) :black_small_square: [evaluate_on_domain](macro-geono-domain.md#evaluate_on_domain) :black_small_square: [extrude](macro-geono-domain.md#extrude)
 - **P** : [proximity](macro-geono-domain.md#proximity)
@@ -56,6 +58,8 @@ accumulate_field(value=None, group_id=None)
 ```
 
 > Node [Accumulate Field](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/accumulate_field.html)
+
+:warning: returns the **node**, not a socket
 
 - data_type (str): Node.data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'TRANSFORM')
 - domain (str): Node.domain in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
@@ -82,6 +86,8 @@ attribute_statistic(attribute=None)
 
 > Node [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html)
 
+:warning: returns the **node**, not a socket
+
 #### Arguments:
 - **attribute** (_Socket_ = None) : attribute to compute statistic
 
@@ -98,16 +104,32 @@ attribute_statistic(attribute=None)
 > method
 
 ``` python
-capture(attribute=None, **others)
+capture(attribute)
 ```
 
 > Node [Capture Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/capture_attribute.html)
 
-> see [capture_attribute](macro-geono-domain.md#capture_attribute)
+
+
+> Short name for [capture_attribute](macro-geono-domain.md#capture_attribute)
+
+``` python
+with GeoNodes("Capture Attribute"):
+    captured_attr = mesh.points.capture(attr)
+
+    # If more than one attribute is to be captured
+    node = mesh.points.captures(attr1 = attr1, attr2=attr2)
+    captured_attr1 = node.attr1
+    captured_attr2 = node.attr2
+```
 
 #### Arguments:
-- **attribute** ( = None)
-- **others**
+- **attribute** (_Socket_) : the single attribute to capture
+
+
+
+#### Returns:
+- **Socket** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Domain](macro-geono-domain.md#domain) :black_small_square: [Content](macro-geono-domain.md#content) :black_small_square: [Methods](macro-geono-domain.md#methods)</sub>
 
@@ -117,45 +139,73 @@ capture(attribute=None, **others)
 > method
 
 ``` python
-capture_attribute(attribute=None, **others)
+capture_attribute(**attributes)
 ```
 
 > Node [Capture Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/capture_attribute.html)
 
+
 :warning: returns the **node**, not a socket
 
-This method return the capture of 'attribute' argument if no keyword arguments are provided,
-otherwise returns the node.
+> You can use two short names:
+> [capture](macro-geono-domain.md#capture) : to capture only one attribute
+> [capture](macro-geono-domain.md#capture) : same as **capture_attribute** to capture several named attributes
 
 ``` python
 with GeoNodes("Capture Attribute"):
-    mesh = Mesh()
+    # Capture attributes
+    node = mesh.points.capture_attribute(attr1 = attr1, attr2=attr2)
+    captured_attr1 = node.attr1
+    captured_attr2 = node.attr2
 
-    # A single anonymous attribute
-    p = mesh.points.capture_attribute(nd.position)
-    assert(isinstance(p, Vector))
-
-    # Only named attributes
-    node = mesh.faces.capture_attribute(pos=nd.position, idx=nd.material_index)
-    assert(isinstance(node, Node))
-    assert(isinstance(node.pos, Vector))
-    assert(isinstance(node.idx, Integer))
-
-    # Anonymous attribute plus named attributes
-    node = mesh.faces.capture_attribute(nd.position, idx=nd.material_index)
-    assert(isinstance(node, Node))
-    assert(isinstance(node.attribute, Vector))
-    assert(isinstance(node.idx, Integer))
+    # Capture one attribute
+    captured_attr3 = mesh.points.capture(attr3)
 ```
 
 #### Arguments:
-- **attribute** (_Socket_ = None) : attribute to capture
-- **others** (_Sockets_) : named attributes to capture
+- **attributes** (_Sockets_) : named attributes to capture
 
 
 
 #### Returns:
-- **Socket** (_no keyword arguments_)
+- **Node** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Domain](macro-geono-domain.md#domain) :black_small_square: [Content](macro-geono-domain.md#content) :black_small_square: [Methods](macro-geono-domain.md#methods)</sub>
+
+----------
+### captures()
+
+> method
+
+``` python
+captures(**attributes)
+```
+
+> Node [Capture Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/capture_attribute.html)
+
+
+:warning: returns the **node**, not a socket
+
+> Short name for [capture_attribute](macro-geono-domain.md#capture_attribute)
+
+``` python
+with GeoNodes("Capture Attribute"):
+    # Capture attributes
+    node = mesh.points.captures(attr1 = attr1, attr2=attr2)
+    captured_attr1 = node.attr1
+    captured_attr2 = node.attr2
+
+    # Capture one attribute
+    captured_attr3 = mesh.points.capture(attr3)
+```
+
+#### Arguments:
+- **attributes** (_Sockets_) : named attributes to capture
+
+
+
+#### Returns:
+- **Node** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Domain](macro-geono-domain.md#domain) :black_small_square: [Content](macro-geono-domain.md#content) :black_small_square: [Methods](macro-geono-domain.md#methods)</sub>
 
@@ -170,10 +220,19 @@ delete(mode='ALL')
 
 > Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/delete_geometry.html)
 
-> See [delete_geometry](macro-geono-domain.md#delete_geometry)
+
+
+> Short name for [delete_geometry](macro-geono-domain.md#delete_geometry)
+
+- domain (str): Node.domain in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
 
 #### Arguments:
-- **mode** ( = ALL)
+- **mode** (_str_ = ALL) : Node.mode in ('ALL', 'EDGE_FACE', 'ONLY_FACE')
+
+
+
+#### Returns:
+- **Geometry** : self
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Domain](macro-geono-domain.md#domain) :black_small_square: [Content](macro-geono-domain.md#content) :black_small_square: [Methods](macro-geono-domain.md#methods)</sub>
 
@@ -186,12 +245,12 @@ delete(mode='ALL')
 delete_all()
 ```
 
-> Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/delete_geometry.html)
+> Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/delete_geometry.html), mode = 'ALL'
 
-Shortcut for :
-``` python
-domain.delete_geometry(mode='ALL')
-```
+
+
+#### Returns:
+- **Geometry** : self
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Domain](macro-geono-domain.md#domain) :black_small_square: [Content](macro-geono-domain.md#content) :black_small_square: [Methods](macro-geono-domain.md#methods)</sub>
 
@@ -204,12 +263,12 @@ domain.delete_geometry(mode='ALL')
 delete_edges_and_faces()
 ```
 
-> Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/delete_geometry.html)
+> Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/delete_geometry.html), mode = 'EDGE_FACE'
 
-Shortcut for :
-``` python
-domain.delete_geometry(mode='EDGE_FACE')
-```
+
+
+#### Returns:
+- **Geometry** : self
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Domain](macro-geono-domain.md#domain) :black_small_square: [Content](macro-geono-domain.md#content) :black_small_square: [Methods](macro-geono-domain.md#methods)</sub>
 
@@ -222,12 +281,12 @@ domain.delete_geometry(mode='EDGE_FACE')
 delete_faces()
 ```
 
-> Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/delete_geometry.html)
+> Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/delete_geometry.html), mode = 'ONLY_FACE'
 
-Shortcut for :
-``` python
-domain.delete_geometry(mode='ONLY_FACE')
-```
+
+
+#### Returns:
+- **Geometry** : self
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Domain](macro-geono-domain.md#domain) :black_small_square: [Content](macro-geono-domain.md#content) :black_small_square: [Methods](macro-geono-domain.md#methods)</sub>
 
@@ -242,6 +301,10 @@ delete_geometry(mode='ALL')
 
 > Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/delete_geometry.html)
 
+
+
+> You can use short name [delete](macro-geono-domain.md#delete)
+
 - domain (str): Node.domain in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
 
 #### Arguments:
@@ -250,7 +313,7 @@ delete_geometry(mode='ALL')
 
 
 #### Returns:
-- **Geometry** :
+- **Geometry** : self
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Domain](macro-geono-domain.md#domain) :black_small_square: [Content](macro-geono-domain.md#content) :black_small_square: [Methods](macro-geono-domain.md#methods)</sub>
 
@@ -265,6 +328,8 @@ duplicate_elements(amount=1)
 
 > Node [Duplicate Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/duplicate_elements.html)
 
+
+
 - domain (str): Node.domain in ('POINT', 'EDGE', 'FACE', 'SPLINE', 'INSTANCE')
 
 #### Arguments:
@@ -273,7 +338,7 @@ duplicate_elements(amount=1)
 
 
 #### Returns:
-- **Geometry** :
+- **Geometry** : self
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Domain](macro-geono-domain.md#domain) :black_small_square: [Content](macro-geono-domain.md#content) :black_small_square: [Methods](macro-geono-domain.md#methods)</sub>
 
@@ -337,19 +402,24 @@ extrude(offset=None, offset_scale=None, individual=None)
 
 > Node [Extrude Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/extrude_mesh.html)
 
+
+
 - mode (str): Node.mode in ('VERTICES', 'EDGES', 'FACES')
 
 ``` python
 with GeoNodes("Extrusion"):
     cube = Mesh.Cube()
 
-    cube = cube.faces.extrude(nd.normal, .5)
-    cube = cube.faces[cube.top_].extrude(offset_scale=0)
+    cube.faces.extrude(nd.normal, .5)
+    cube.faces[cube.top_].extrude(offset_scale=0)
+
+    # Next cube extrusion will change top_
     top = cube.top_
-    cube = cube.faces[top].scale(scale=.8, uniform=False)
-    cube = cube.faces[top].scale(scale=.6, uniform=True)
-    cube = cube.faces[top].extrude(offset_scale=.5)
-    cube = cube.faces[cube.top_].flip()
+
+    cube.faces[top].scale(scale=.8, uniform=False)
+    cube.faces[top].scale(scale=.6, uniform=True)
+    cube.faces[top].extrude(offset_scale=.5)
+    cube.faces[cube.top_].flip()
 
     cube.out()
 ```
@@ -362,7 +432,7 @@ with GeoNodes("Extrusion"):
 
 
 #### Returns:
-- **Geometry** :
+- **Geometry** : self
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Domain](macro-geono-domain.md#domain) :black_small_square: [Content](macro-geono-domain.md#content) :black_small_square: [Methods](macro-geono-domain.md#methods)</sub>
 
@@ -411,7 +481,7 @@ sample_index(value=None, index=0, clamp=False)
 
 
 #### Returns:
-- **Socket** :
+- **Vector** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Domain](macro-geono-domain.md#domain) :black_small_square: [Content](macro-geono-domain.md#content) :black_small_square: [Methods](macro-geono-domain.md#methods)</sub>
 
@@ -449,9 +519,16 @@ separate()
 
 > Node [Separate Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/separate_geometry.html)
 
-- domain (str): Node.domain in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
 
-:warning: returns the **node**, not a socket
+
+> [!NOTE]
+> Use **peer socket** convention to get the inverted socket
+
+``` python
+mesh = Mesh.Cube()
+selected = mesh.points.separate()
+inverted = selected.inverted_
+```
 
 #### Returns:
 - **Geometry** :
@@ -468,6 +545,8 @@ sort_elements(group_id=None, sort_weight=None)
 ```
 
 > Node [Sort Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/sort_elements.html)
+
+
 
 - domain (str): Node.domain in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
 
@@ -493,6 +572,8 @@ split_to_instances(group_id=None)
 
 > Node [Split to Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/split_to_instances.html)
 
+
+
 - domain (str): Node.domain in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
 
 #### Arguments:
@@ -501,7 +582,7 @@ split_to_instances(group_id=None)
 
 
 #### Returns:
-- **instances** :
+- **Instances** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Domain](macro-geono-domain.md#domain) :black_small_square: [Content](macro-geono-domain.md#content) :black_small_square: [Methods](macro-geono-domain.md#methods)</sub>
 
@@ -516,11 +597,30 @@ store(name, value=None)
 
 > Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html)
 
-> See [store_named_attribute](macro-geono-domain.md#store_named_attribute)
+
+
+> Short name of [store_named_attribute](macro-geono-domain.md#store_named_attribute)
+
+- data_type (str): Node.data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BYTE_COLOR', 'BOOLEAN', 'FLOAT2', 'INT8', 'QUATERNION', 'FLOAT4X4')
+- domain (str): Node.domain in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+
+> [!NOTE]
+> Use constructor method [Named](geono-attribute.md#named) to read stored attributes
+
+``` python
+mesh = Mesh.Cube()
+mesh.points.store("An Integer", 123)
+i = Integer.Named("An Integer")
+```
 
 #### Arguments:
-- **name**
-- **value** ( = None)
+- **name** (_String_) : socket 'Name' (Name)
+- **value** (_Float_ = None) : socket 'Value' (Value)
+
+
+
+#### Returns:
+- **Geometry** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Domain](macro-geono-domain.md#domain) :black_small_square: [Content](macro-geono-domain.md#content) :black_small_square: [Methods](macro-geono-domain.md#methods)</sub>
 
@@ -535,8 +635,21 @@ store_named_attribute(name, value=None)
 
 > Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html)
 
+
+
+> You can use short name [store](macro-geono-domain.md#store)
+
 - data_type (str): Node.data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BYTE_COLOR', 'BOOLEAN', 'FLOAT2', 'INT8', 'QUATERNION', 'FLOAT4X4')
 - domain (str): Node.domain in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
+
+> [!NOTE]
+> Use constructor method [NamedAttribute](geono-attribute.md#namedattribute) to read stored attributes
+
+``` python
+mesh = Mesh.Cube()
+mesh.points.store_named_attribute("An Integer", 123)
+i = Integer.NamedAttribute("An Integer")
+```
 
 #### Arguments:
 - **name** (_String_) : socket 'Name' (Name)
@@ -560,6 +673,8 @@ to_points(position=None, radius=None)
 
 > Node [Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_points.html)
 
+
+
 - mode (str): Node.mode in ('VERTICES', 'EDGES', 'FACES', 'CORNERS')
 
 #### Arguments:
@@ -569,7 +684,7 @@ to_points(position=None, radius=None)
 
 
 #### Returns:
-- **Geometry** :
+- **Cloud** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Domain](macro-geono-domain.md#domain) :black_small_square: [Content](macro-geono-domain.md#content) :black_small_square: [Methods](macro-geono-domain.md#methods)</sub>
 

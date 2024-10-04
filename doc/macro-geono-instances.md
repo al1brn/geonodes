@@ -28,7 +28,7 @@ Nodes requiring a domain parameter, are implemented in the domain [insts](macro-
 
 ### Inherited
 
-[\_\_add__](geono-geometry.md#__add__) :black_small_square: [bake](geono-geometry.md#bake) :black_small_square: [blur](geono-socket.md#blur) :black_small_square: [bounding_box](geono-geometry.md#bounding_box) :black_small_square: [\_cache](geono-nodecache.md#_cache) :black_small_square: [\_cache_reset](geono-nodecache.md#_cache_reset) :black_small_square: [check_in_list](geono-socket.md#check_in_list) :black_small_square: [convex_hull](geono-geometry.md#convex_hull) :black_small_square: [curve](geono-geometry.md#curve) :black_small_square: [data_type](geono-socket.md#data_type) :black_small_square: [\_geo](geono-geometry.md#_geo) :black_small_square: [\_geometry_class](geono-socket.md#_geometry_class) :black_small_square: [\_geo_type](geono-geobase.md#_geo_type) :black_small_square: [\_\_getattr__](geono-socket.md#__getattr__) :black_small_square: [\_\_getitem__](geono-geobase.md#__getitem__) :black_small_square: [get_socket_class](geono-socket.md#get_socket_class) :black_small_square: [id](geono-geobase.md#id) :black_small_square: [index_of_nearest](geono-geometry.md#index_of_nearest) :black_small_square: [IndexSwitch](geono-socket.md#indexswitch) :black_small_square: [index_switch](geono-socket.md#index_switch) :black_small_square: [input_type](geono-socket.md#input_type) :black_small_square: [instances](geono-geometry.md#instances) :black_small_square: [join](geono-geometry.md#join) :black_small_square: [\_jump](geono-socket.md#_jump) :black_small_square: [\_lc](geono-socket.md#_lc) :black_small_square: [\_lcop](geono-socket.md#_lcop) :black_small_square: [material](geono-geobase.md#material) :black_small_square: [material_index](geono-geobase.md#material_index) :black_small_square: [material_selection](geono-geobase.md#material_selection) :black_small_square: [MenuSwitch](geono-socket.md#menuswitch) :black_small_square: [menu_switch](geono-socket.md#menu_switch) :black_small_square: [merge_by_distance](geono-geometry.md#merge_by_distance) :black_small_square: [mesh](geono-geometry.md#mesh) :black_small_square: [\_node](geono-geometry.md#_node) :black_small_square: [node](geono-socket.md#node) :black_small_square: [node_color](geono-socket.md#node_color) :black_small_square: [node_label](geono-socket.md#node_label) :black_small_square: [offset](geono-geobase.md#offset) :black_small_square: [out](geono-socket.md#out) :black_small_square: [point_cloud](geono-geometry.md#point_cloud) :black_small_square: [position](geono-geobase.md#position) :black_small_square: [\_raw_sel](geono-geobase.md#_raw_sel) :black_small_square: [raycast](geono-geometry.md#raycast) :black_small_square: [remove_named_attribute](geono-geometry.md#remove_named_attribute) :black_small_square: [replace_material](geono-geobase.md#replace_material) :black_small_square: [\_sel](geono-geobase.md#_sel) :black_small_square: [separate_components](geono-geometry.md#separate_components) :black_small_square: [set_id](geono-geometry.md#set_id) :black_small_square: [set_material](geono-geometry.md#set_material) :black_small_square: [set_position](geono-geometry.md#set_position) :black_small_square: [set_shade_smooth](geono-geometry.md#set_shade_smooth) :black_small_square: [socket_type](geono-socket.md#socket_type) :black_small_square: [\_\_str__](geono-socket.md#__str__) :black_small_square: [Switch](geono-socket.md#switch) :black_small_square: [switch](geono-socket.md#switch) :black_small_square: [to_instance](geono-geometry.md#to_instance) :black_small_square: [out](geono-socket.md#out) :black_small_square: [transform](geono-geometry.md#transform) :black_small_square: [viewer](geono-geometry.md#viewer) :black_small_square: [volume](geono-geometry.md#volume) :black_small_square:
+[\_\_add__](geono-geometry.md#__add__) :black_small_square: [bake](geono-geometry.md#bake) :black_small_square: [blur](geono-socket.md#blur) :black_small_square: [bounding_box](geono-geometry.md#bounding_box) :black_small_square: [\_cache](geono-nodecache.md#_cache) :black_small_square: [\_cache_reset](geono-nodecache.md#_cache_reset) :black_small_square: [check_in_list](geono-socket.md#check_in_list) :black_small_square: [convex_hull](geono-geometry.md#convex_hull) :black_small_square: [curve](geono-geometry.md#curve) :black_small_square: [data_type](geono-socket.md#data_type) :black_small_square: [\_geo](geono-geometry.md#_geo) :black_small_square: [\_geometry_class](geono-socket.md#_geometry_class) :black_small_square: [\_geo_type](geono-geobase.md#_geo_type) :black_small_square: [\_\_getattr__](geono-socket.md#__getattr__) :black_small_square: [\_\_getitem__](geono-geobase.md#__getitem__) :black_small_square: [get_socket_class](geono-socket.md#get_socket_class) :black_small_square: [id](geono-geobase.md#id) :black_small_square: [index_of_nearest](geono-geometry.md#index_of_nearest) :black_small_square: [IndexSwitch](geono-socket.md#indexswitch) :black_small_square: [index_switch](geono-socket.md#index_switch) :black_small_square: [input_type](geono-socket.md#input_type) :black_small_square: [instances](geono-geometry.md#instances) :black_small_square: [Join](geono-geometry.md#join) :black_small_square: [join](geono-geometry.md#join) :black_small_square: [\_jump](geono-socket.md#_jump) :black_small_square: [\_lc](geono-socket.md#_lc) :black_small_square: [\_lcop](geono-socket.md#_lcop) :black_small_square: [material](geono-geobase.md#material) :black_small_square: [material_index](geono-geobase.md#material_index) :black_small_square: [material_selection](geono-geobase.md#material_selection) :black_small_square: [MenuSwitch](geono-socket.md#menuswitch) :black_small_square: [menu_switch](geono-socket.md#menu_switch) :black_small_square: [merge_by_distance](geono-geometry.md#merge_by_distance) :black_small_square: [mesh](geono-geometry.md#mesh) :black_small_square: [\_node](geono-geometry.md#_node) :black_small_square: [node](geono-socket.md#node) :black_small_square: [node_color](geono-socket.md#node_color) :black_small_square: [node_label](geono-socket.md#node_label) :black_small_square: [offset](geono-geobase.md#offset) :black_small_square: [out](geono-socket.md#out) :black_small_square: [point_cloud](geono-geometry.md#point_cloud) :black_small_square: [position](geono-geobase.md#position) :black_small_square: [\_raw_sel](geono-geobase.md#_raw_sel) :black_small_square: [raycast](geono-geometry.md#raycast) :black_small_square: [remove_named_attribute](geono-geometry.md#remove_named_attribute) :black_small_square: [replace_material](geono-geobase.md#replace_material) :black_small_square: [\_sel](geono-geobase.md#_sel) :black_small_square: [separate_components](geono-geometry.md#separate_components) :black_small_square: [set_id](geono-geometry.md#set_id) :black_small_square: [set_material](geono-geometry.md#set_material) :black_small_square: [set_position](geono-geometry.md#set_position) :black_small_square: [set_shade_smooth](geono-geometry.md#set_shade_smooth) :black_small_square: [socket_type](geono-socket.md#socket_type) :black_small_square: [\_\_str__](geono-socket.md#__str__) :black_small_square: [Switch](geono-socket.md#switch) :black_small_square: [switch](geono-socket.md#switch) :black_small_square: [to_instance](geono-geometry.md#to_instance) :black_small_square: [transform](geono-geometry.md#transform) :black_small_square: [viewer](geono-geometry.md#viewer) :black_small_square: [volume](geono-geometry.md#volume) :black_small_square:
 
 ## Content
 
@@ -132,8 +132,10 @@ on_points(points, pick_instance=None, instance_index=None, rotation=None, scale=
 
 > Node [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html)
 
+
+
 #### Arguments:
-- **points**
+- **points** (_Geometry_) : socket 'Points' (Instance)
 - **pick_instance** (_Boolean_ = None) : socket 'Pick Instance' (Pick Instance)
 - **instance_index** (_Integer_ = None) : socket 'Instance Index' (Instance Index)
 - **rotation** (_Rotation_ = None) : socket 'Rotation' (Rotation)
@@ -142,7 +144,7 @@ on_points(points, pick_instance=None, instance_index=None, rotation=None, scale=
 
 
 #### Returns:
-- **Instances** :
+- **Instances** : self
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Instances](macro-geono-instances.md#instances) :black_small_square: [Content](macro-geono-instances.md#content) :black_small_square: [Methods](macro-geono-instances.md#methods)</sub>
 
@@ -156,6 +158,8 @@ realize(realize_all=None, depth=None)
 ```
 
 > Node [Realize Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/realize_instances.html)
+
+
 
 #### Arguments:
 - **realize_all** (_Boolean_ = None) : socket 'Realize All' (Realize All)
@@ -179,6 +183,8 @@ rotate(rotation=None, pivot_point=None, local_space=None)
 
 > Node [Rotate Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/rotate_instances.html)
 
+
+
 #### Arguments:
 - **rotation** (_Rotation_ = None) : socket 'Rotation' (Rotation)
 - **pivot_point** (_Vector_ = None) : socket 'Pivot Point' (Pivot Point)
@@ -187,7 +193,7 @@ rotate(rotation=None, pivot_point=None, local_space=None)
 
 
 #### Returns:
-- **Instances** :
+- **Instances** : self
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Instances](macro-geono-instances.md#instances) :black_small_square: [Content](macro-geono-instances.md#content) :black_small_square: [Methods](macro-geono-instances.md#methods)</sub>
 
@@ -202,6 +208,8 @@ scale(scale=None, center=None, local_space=None)
 
 > Node [Scale Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/scale_instances.html)
 
+
+
 #### Arguments:
 - **scale** (_Vector_ = None) : socket 'Scale' (Scale)
 - **center** (_Vector_ = None) : socket 'Center' (Center)
@@ -210,7 +218,7 @@ scale(scale=None, center=None, local_space=None)
 
 
 #### Returns:
-- **Instances** :
+- **Instances** : self
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Instances](macro-geono-instances.md#instances) :black_small_square: [Content](macro-geono-instances.md#content) :black_small_square: [Methods](macro-geono-instances.md#methods)</sub>
 
@@ -224,6 +232,8 @@ to_points(position=None, radius=None)
 ```
 
 > Node [Instances to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instances_to_points.html)
+
+
 
 #### Arguments:
 - **position** (_Vector_ = None) : socket 'Position' (Position)
@@ -247,6 +257,8 @@ translate(translation=None, local_space=None)
 
 > Node [Translate Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/translate_instances.html)
 
+
+
 #### Arguments:
 - **translation** (_Vector_ = None) : socket 'Translation' (Translation)
 - **local_space** (_Boolean_ = None) : socket 'Local Space' (Local Space)
@@ -254,6 +266,6 @@ translate(translation=None, local_space=None)
 
 
 #### Returns:
-- **Instances** :
+- **Instances** : self
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Instances](macro-geono-instances.md#instances) :black_small_square: [Content](macro-geono-instances.md#content) :black_small_square: [Methods](macro-geono-instances.md#methods)</sub>

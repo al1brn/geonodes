@@ -31,12 +31,12 @@ import numpy as np
 import bpy
 from ..geonodes import utils
 from ..geonodes.treeclass import Tree, Node
-from ..geonodes.socketclass import ValueSocket
+from ..geonodes.socketclass import Attribute
 
 # =============================================================================================================================
 # Shader Root
 
-class ShaderRoot(ValueSocket):
+class ShaderRoot(Attribute):
 
     def surface_out(self, target='ALL'):
         self._tree.set_surface(self, target=target)
