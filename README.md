@@ -809,8 +809,11 @@ with GeoNodes("Call a Group"):
     # using its snake_case name
 
     val = GroupF().a_function(value_1=val1, value_2=val2).sum
-
-    val.out()
+    
+    # Done
+    
+    Geometry().out()
+    val.out()    
 ```
 
 # Shaders
