@@ -296,7 +296,7 @@ geo += Mesh.Cube(), Curve.Spiral() # Join with two other geometries
 
 # Mesh boolean
 cube = Mesh.Cube()
-ico  = Mesh.IcoSphere()
+ico  = Mesh.IcoSphere(radius=.8)
 
 mesh = cube - ico # Difference
 mesh = cube * ico # Union
@@ -370,9 +370,9 @@ with GeoNodes("Method names"):
     # Nodes 'Subdivision Surface', 'Triangulate', 'Set Position' are implemented as method
     # of their geometry using the snake_case version for their name
 
-    cube = cube.subdivision_surface()
-    cube = cube.triangulate()
-    curve = curve_line.set_position()
+    cube.subdivision_surface()
+    cube.triangulate()
+    curve_line.set_position()
 
     # ----------------------------------------------------------------------------------------------------
     # RULE 1 : Nodes name in snake_case
@@ -382,8 +382,8 @@ with GeoNodes("Method names"):
     # 'Subdivide Mesh' the name of the geometry is omitted
 
     mesh = Curve.Circle().fill()
-    curves = curve_line.deform_on_surface()
-    cube = cube.subdivide()
+    curve_line.deform_on_surface()
+    cube.subdivide()
 
     # ----------------------------------------------------------------------------------------------------
     # RULE 4 : setters and getters are properties
@@ -393,7 +393,6 @@ with GeoNodes("Method names"):
     mesh.position += (1, 2, 3)
     mesh.offset = (1, 2, 3)
     cloud.radius = 1.
-
 
     # Make sure to have an output geometry
     Geometry().out()
@@ -415,7 +414,7 @@ Nodes needing a _Domain_ parameter are implemented on **Domain**, not **Geometry
 
 ### Node sockets and parameters
 
-To be fully configured, a node needs values for its sockets and parameters.
+To be fully configured, a node also needs values for its parameters.
 The method arguments provides the required initial values.
 
 The following conventions are used:
@@ -426,7 +425,7 @@ The following conventions are used:
   - _Instance Index_ socket : **instance_index**
 2. **RULE B** : sockets are given first, following their order in the node, and parameters are placed after:
   - `float.map_range(0, 1, 10, 20)`  is equivalent to `float.map_range(from_min=0, from_max=1, ...)`
-2. **RULE C** : _Selection_ socket is omitted and is passed as item index of the **Geometry**
+2. **RULE C** : _Selection_ socket is omitted and is passed as item index of **Geometry**
   - Don't write `mesh.set_id(selection=sel, ...)` but write instead `mesh[sel].set_id(...)`
 3. **RULE D** : arguments for parameters use the python parameter name:
   - Node _Volume to Mesh_ has the parameter _resolution_mode_ : `mesh = vol.to_mesh(..., resolution_mode='GRID')`
@@ -450,34 +449,36 @@ with GeoNodes("Argument names"):
     # RULE A : socket arguments in snake_case
 
     sphere = Mesh.UVSphere(segments=16, rings=12, radius=1.)
-    sphere = sphere.merge_by_distance(distance=.1)
+    sphere.merge_by_distance(distance=.1)
 
     # ----------------------------------------------------------------------------------------------------
     # RULE B : sockets ordered as in the node, parameters are placed after
 
-    sphere = sphere.merge_by_distance(.1, 'ALL')
+    sphere.merge_by_distance(.1, 'ALL')
 
     # ----------------------------------------------------------------------------------------------------
     # RULE C : Selection socket is set by item index
     #
     # Don't write:
-    # sphere = sphere.set_position(selection=nd.index < 5, position=(1, 2, 3))
+    # sphere.set_position(selection=nd.index < 5, position=(1, 2, 3))
 
-    sphere = sphere[nd.index < 5].set_position(position=(1, 2, 3))
+    sphere[nd.index < 5].set_position(position=(1, 2, 3))
 
     # ----------------------------------------------------------------------------------------------------
     # RULE D : parameter arguments take the parameter name
     #
     # Node 'Merge by Distance' owns a parameter named 'mode'
 
-    sphere = sphere = sphere.merge_by_distance(mode='ALL')
+    sphere.merge_by_distance(mode='ALL')
 
     # ----------------------------------------------------------------------------------------------------
     # RULE E : domain parameter is taken from the calling domain
     #
     # Don't write:
-    # sphere = sphere.set_shade_smooth(shade_smooth=True, domain='FACE')
+    # sphere.set_shade_smooth(shade_smooth=True, domain='FACE')
 
+    sphere.set_shade_smooth(shade_smooth=True)
+    # or
     sphere.faces.shade_smooth = True
 
     # ----------------------------------------------------------------------------------------------------
@@ -498,10 +499,12 @@ with GeoNodes("Argument names"):
 
 The general rule is that the methods return the first output socket of the node.
 
-When the node has other output sockets, they are returned as properties of the returned variable.
-
-> [!IMPORTANT]
-> To avoid collision with existing properties, the additional output socket names are **suffixed by _**.
+When the node has other output sockets, they can be accessed in two ways:
+- using the **node** property of the returned socket: ``` a = socket.node.xxx ```
+- or using the **peer sockets naming convention** which exposes peer output sockets
+  as properties of the socket itself. In that case, the peer socket name is the
+  _snake_case_ name of the socket followed by char `_` to avoid name collision:
+  ``` a = socket.xx_ `.
 
 The example below illustrates how to access output sockets:
 
@@ -519,6 +522,8 @@ with GeoNodes("Returned Values"):
     # The returned value has a property named uv_map_
 
     cube = Mesh.Cube()
+    cube.corners.store("UV Map", cube.node.uv_map)
+    # or
     cube.corners.store("UV Map", cube.uv_map_)
 
     # ----------------------------------------------------------------------------------------------------
@@ -532,24 +537,25 @@ with GeoNodes("Returned Values"):
     ico = Mesh.IcoSphere()
 
     # Extrude 30% of the faces
-    ico = ico.faces[Boolean.Random(probability=.3)].extrude(offset_scale=.4)
+    ico.faces[Boolean.Random(probability=.3)].extrude(offset_scale=.4)
 
     # Duplicate extruded faces with a 0 scale extrusion
-    ico = ico.faces[ico.top_].extrude(offset_scale=0)
+    ico.faces[ico.top_].extrude(offset_scale=0)
 
     # --- ico.top_ is needed twice, let's use an intermediary variable
 
-    # Scale the extrude faces
-    ico_scaled = ico.faces[ico.top_].scale(scale=.5)
+    top = ico.top_
+    ico.faces[top].scale(scale=.5)
 
     # Another extrusion
-    ico = ico_scaled.faces[ico.top_].extrude(offset_scale=1)
+    ico.faces[top].extrude(offset_scale=1)
 
     # --- Let's now dig the sides
 
-    ico = ico.faces[ico.side_].extrude(offset_scale=0)
-    ico_scaled = ico.faces[ico.top_].scale(.8)
-    ico = ico_scaled.faces[ico.top_].extrude(offset_scale=-.01)
+    ico.faces[ico.side_].extrude(offset_scale=0)
+    top = ico.top_
+    ico.faces[top].scale(.8)
+    ico.faces[top].extrude(offset_scale=-.01)
 
     # Output
     (ico + cube.set_position(offset=(5, 0, 0))).out()
