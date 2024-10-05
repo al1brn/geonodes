@@ -825,6 +825,9 @@ Creating _Shader Nodes_ is the same as creating _Geometry Nodes_, with the follo
 - Use **snd** (for _Shader Nodes_) rather than **nd**
 - **out** method takes the class type to select the proper socket between _Surface_, _Volume_, _Displacement_ and _Thickness_
 
+> [!CAUTION]
+> When instantianting a shader, the existing shader is deleted. You can loose a shader created directly in Blender.
+
 ``` python
 from geonodes import *
 
