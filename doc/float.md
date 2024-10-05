@@ -1,6 +1,6 @@
 # Float
 
-> Bases classes: [Socket](socket.md#socket)
+> Bases classes: [Attribute](attribute.md#attribute)
 
 ``` python
 Float(value=0.0, name=None, min=None, max=None, tip=None, subtype='NONE')
@@ -34,7 +34,7 @@ float = Float(3.14, name="User input", subtype='ANGLE') # Create a new Float gro
 
 ### Inherited
 
-[blur](socket.md#blur) :black_small_square: [\_cache](nodecache.md#_cache) :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](socket.md#check_in_list) :black_small_square: [data_type](socket.md#data_type) :black_small_square: [\_geometry_class](socket.md#_geometry_class) :black_small_square: [\_\_getattr__](socket.md#__getattr__) :black_small_square: [get_socket_class](socket.md#get_socket_class) :black_small_square: [IndexSwitch](socket.md#indexswitch) :black_small_square: [index_switch](socket.md#index_switch) :black_small_square: [input_type](socket.md#input_type) :black_small_square: [\_jump](socket.md#_jump) :black_small_square: [\_lc](socket.md#_lc) :black_small_square: [\_lcop](socket.md#_lcop) :black_small_square: [MenuSwitch](socket.md#menuswitch) :black_small_square: [menu_switch](socket.md#menu_switch) :black_small_square: [node](socket.md#node) :black_small_square: [node_color](socket.md#node_color) :black_small_square: [node_label](socket.md#node_label) :black_small_square: [\_reset](socket.md#_reset) :black_small_square: [socket_type](socket.md#socket_type) :black_small_square: [\_\_str__](socket.md#__str__) :black_small_square: [Switch](socket.md#switch) :black_small_square: [switch](socket.md#switch) :black_small_square:
+[blur](socket.md#blur) :black_small_square: [\_cache](nodecache.md#_cache) :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](socket.md#check_in_list) :black_small_square: [data_type](socket.md#data_type) :black_small_square: [\_geometry_class](socket.md#_geometry_class) :black_small_square: [\_\_getattr__](socket.md#__getattr__) :black_small_square: [get_socket_class](socket.md#get_socket_class) :black_small_square: [IndexSwitch](socket.md#indexswitch) :black_small_square: [index_switch](socket.md#index_switch) :black_small_square: [input_type](socket.md#input_type) :black_small_square: [\_jump](socket.md#_jump) :black_small_square: [\_lc](socket.md#_lc) :black_small_square: [\_lcop](socket.md#_lcop) :black_small_square: [MenuSwitch](socket.md#menuswitch) :black_small_square: [menu_switch](socket.md#menu_switch) :black_small_square: [Named](attribute.md#named) :black_small_square: [NamedAttribute](attribute.md#namedattribute) :black_small_square: [node](socket.md#node) :black_small_square: [node_color](socket.md#node_color) :black_small_square: [node_label](socket.md#node_label) :black_small_square: [\_reset](socket.md#_reset) :black_small_square: [socket_type](socket.md#socket_type) :black_small_square: [\_\_str__](socket.md#__str__) :black_small_square: [Switch](socket.md#switch) :black_small_square: [switch](socket.md#switch) :black_small_square:
 
 ## Content
 
@@ -47,7 +47,7 @@ float = Float(3.14, name="User input", subtype='ANGLE') # Create a new Float gro
 - **I** : [\_\_init__](float.md#__init__)
 - **L** : [less_equal](float.md#less_equal) :black_small_square: [less_than](float.md#less_than)
 - **M** : [map_range](float.md#map_range) :black_small_square: [map_range_linear](float.md#map_range_linear) :black_small_square: [map_range_smooth](float.md#map_range_smooth) :black_small_square: [map_range_smoother](float.md#map_range_smoother) :black_small_square: [map_range_stepped](float.md#map_range_stepped) :black_small_square: [mix](float.md#mix)
-- **N** : [Named](float.md#named) :black_small_square: [NamedAttribute](float.md#namedattribute) :black_small_square: [not_equal](float.md#not_equal)
+- **N** : [not_equal](float.md#not_equal)
 - **O** : [out](float.md#out)
 - **P** : [Percentage](float.md#percentage)
 - **R** : [Random](float.md#random) :black_small_square: [round](float.md#round)
@@ -557,86 +557,6 @@ mix(factor=None, other=None, clamp_factor=None)
 - **factor** (_Float_ = None) : socket 'Factor' (Factor_Float)
 - **other** (_Socket_ = None) : socket 'B' (B_Float)
 - **clamp_factor** (_bool_ = None) : Node.clamp_factor
-
-
-
-#### Returns:
-- **Socket** :
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
-
-----------
-### Named()
-
-> classmethod
-
-``` python
-Named(name)
-```
-
-> Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
-
-'Named' is a synonym of 'NamedAttribute'
-
-``` python
-with GeoNodes("Named Attributes"):
-
-    cube = Mesh.Cube()
-
-    # Create a named attribute
-    cube.points.store("Some Value", Float.Random(0, 1, seed=0))
-
-    # Read the random value to offset along z
-    cube.points.offset = (0, 0, Float.Named("Some Value"))
-
-    # Remove the named attribute
-    cube.remove_named_attribute("Some*", exact=False)
-
-    cube.out()
-```
-
-#### Arguments:
-- **name** (_String_) : socket 'Name' (Name)
-
-
-
-#### Returns:
-- **Socket** :
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
-
-----------
-### NamedAttribute()
-
-> classmethod
-
-``` python
-NamedAttribute(name)
-```
-
-> Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
-
-'Named' is a synonym of 'NamedAttribute'
-
-``` python
-with GeoNodes("Named Attributes"):
-
-    cube = Mesh.Cube()
-
-    # Create a named attribute
-    cube.points.store("Some Value", Float.Random(0, 1, seed=0))
-
-    # Read the random value to offset along z
-    cube.points.offset = (0, 0, Float.NamedAttribute("Some Value"))
-
-    # Remove the named attribute
-    cube.remove_named_attribute("Some*", exact=False)
-
-    cube.out()
-```
-
-#### Arguments:
-- **name** (_String_) : socket 'Name' (Name)
 
 
 

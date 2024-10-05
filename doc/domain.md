@@ -772,7 +772,7 @@ store(name, value=None)
 - domain (str): Node.domain in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 
 > [!NOTE]
-> Use constructor method [Impossible to find the section 'Named' in page 'Attribute'](color.md#attribute) to read stored attributes
+> Use constructor method [Named](attribute.md#named) to read stored attributes
 
 ``` python
 mesh = Mesh.Cube()
@@ -810,7 +810,7 @@ store_named_attribute(name, value=None)
 - domain (str): Node.domain in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE')
 
 > [!NOTE]
-> Use constructor method [Impossible to find the section 'NamedAttribute' in page 'Attribute'](color.md#attribute) to read stored attributes
+> Use constructor method [NamedAttribute](attribute.md#namedattribute) to read stored attributes
 
 ``` python
 mesh = Mesh.Cube()

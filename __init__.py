@@ -28,13 +28,14 @@ $ DOC toc_max_depth = 1
 Rather than using <!Node> class, scripting nodes is done by using <!Socket> classes:
 
 - Data sockets:
-  - <!Boolean>
-  - <!Integer>
-  - <!Float>
-  - <!Color>
-  - <!Vector>
-  - <!Rotation>
-  - <!Matrix>
+  - <!Attribute"Attributes>:
+    - <!Boolean>
+    - <!Integer>
+    - <!Float>
+    - <!Color>
+    - <!Vector>
+    - <!Rotation>
+    - <!Matrix>
   - <!String>
   - <!Menu>
 - Blender resources:
@@ -97,7 +98,7 @@ from .geonodes.geonodes import GeoNodes
 from .geonodes.staticclass import nd
 from .geonodes import gnmath
 
-from .geonodes.socketclass import Socket, String, Material, Image, Object, Collection, Menu
+from .geonodes.socketclass import Socket, Attribute, String, Material, Image, Object, Collection, Menu
 
 from .geonodes.booleanclass import Boolean
 from .geonodes.colorclass import Color

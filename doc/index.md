@@ -5,7 +5,7 @@
 
 ### Initialize a tree
 
-- [GeoNodes](geono-geono-geonodes.md#geonodes) and [ShaderNodes](shade1-shade1-shadernodes.md#shadernodes) : scripting nodes starts by instantianting a [Tree](tree.md#tree)
+- [GeoNodes](geono-geono-geonodes.md#geonodes) and [ShaderNodes](shade-shade1-shadernodes.md#shadernodes) : scripting nodes starts by instantianting a [Tree](tree.md#tree)
 - [Break](break.md#break) : exiting from a tree context can be done by raising this exception
 
 ### Create nodes
@@ -29,13 +29,14 @@
 Rather than using [Node](node.md#node) class, scripting nodes is done by using [Socket](socket.md#socket) classes:
 
 - Data sockets:
-  - [Boolean](boolean.md#boolean)
-  - [Integer](integer.md#integer)
-  - [Float](float.md#float)
-  - [Color](color.md#color)
-  - [Vector](vector.md#vector)
-  - [Rotation](rotation.md#rotation)
-  - [Matrix](matrix.md#matrix)
+  - [Attributes](attribute.md#attribute):
+    - [Boolean](boolean.md#boolean)
+    - [Integer](integer.md#integer)
+    - [Float](float.md#float)
+    - [Color](color.md#color)
+    - [Vector](vector.md#vector)
+    - [Rotation](rotation.md#rotation)
+    - [Matrix](matrix.md#matrix)
   - [String](string.md#string)
   - [Menu](menu.md#menu)
 - Blender resources:
@@ -78,23 +79,12 @@ Geometries have specific [Domain](domain.md#domain):
 ## Content
 
 - [Cross Reference](cross_reference.md#cross-reference)
-- [demos](demos.md#demos)
-  - [arrows](arrows.md#arrows)
-  - [counters](counters.md#counters)
-  - [curly](curly.md#curly)
-  - [explosion](explosion.md#explosion)
-  - [fields](fields.md#fields)
-  - [fourd](fourd.md#fourd)
-  - [gravity](gravity.md#gravity)
-  - [helloworld](helloworld.md#helloworld)
-  - [rain](rain.md#rain)
-  - [relativity](relativity.md#relativity)
-  - [shaders](shaders.md#shaders)
 - [generation](generation.md#generation)
   - [gendoc](gendoc.md#gendoc)
 - [geonodes](geono---geonodes.md#geonodes)
   - [geonodes](geono-geono---geonodes.md#geonodes)
   - [gnmath](gnmath.md#gnmath)
+  - [Attribute](attribute.md#attribute)
   - [Boolean](boolean.md#boolean)
   - [Break](break.md#break)
   - [Cloud](cloud.md#cloud)
@@ -135,26 +125,19 @@ Geometries have specific [Domain](domain.md#domain):
   - [Vertex](vertex.md#vertex)
   - [Volume](volume.md#volume)
   - [Zone](zone.md#zone)
-- [macros](macros.md#macros)
-  - [double_integrals](macros.md#double_integrals)
-  - [impulsion](macros.md#impulsion)
-  - [integrals](macros.md#integrals)
-  - [solidify](macros.md#solidify)
 - [Shader Cross Reference](shader_cross_reference.md#shader-cross-reference)
-- [shadernodes](shade1---shadernodes.md#shadernodes)
+- [shadernodes](shade---shadernodes.md#shadernodes)
   - [shaderclass](shaderclass.md#shaderclass)
-  - [shadernodes](shade1-shade1---shadernodes.md#shadernodes)
+  - [shadernodes](shade-shade1---shadernodes.md#shadernodes)
   - [staticclass](staticclass.md#staticclass)
 
 ## Modules
 
 
 
-- [demos](demos.md#demos)
 - [generation](generation.md#generation)
 - [geonodes](geono---geonodes.md#geonodes)
-- [macros](macros.md#macros)
-- [shadernodes](shade1---shadernodes.md#shadernodes)
+- [shadernodes](shade---shadernodes.md#shadernodes)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [geonodes](index.md#geonodes) :black_small_square: [Content](index.md#content) :black_small_square: [geonodes](index.md#geonodes)</sub>
 

@@ -870,15 +870,9 @@ You will find here how nodes are implemented
 
 #### Named Attribute
 
-- [Boolean](boolean.md#boolean) :white_small_square: [Named](boolean.md#named)
-- [Boolean](boolean.md#boolean) :white_small_square: [NamedAttribute](boolean.md#namedattribute)
-- [Float](float.md#float) :white_small_square: [Named](float.md#named)
-- [Float](float.md#float) :white_small_square: [NamedAttribute](float.md#namedattribute)
-- [Integer](integer.md#integer) :white_small_square: [Named](integer.md#named)
-- [Integer](integer.md#integer) :white_small_square: [NamedAttribute](integer.md#namedattribute)
+- [Attribute](attribute.md#attribute) :white_small_square: [Named](attribute.md#named)
+- [Attribute](attribute.md#attribute) :white_small_square: [NamedAttribute](attribute.md#namedattribute)
 - [nd](nd.md#nd) :white_small_square: [named_attribute](nd.md#named_attribute)
-- [Matrix](matrix.md#matrix) :white_small_square: [Named](matrix.md#named)
-- [Matrix](matrix.md#matrix) :white_small_square: [NamedAttribute](matrix.md#namedattribute)
 
 #### Named Layer Selection
 
