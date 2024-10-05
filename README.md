@@ -16,14 +16,8 @@ You keep the full power of Blender _Geometry Nodes_ but with the elegance of Pyt
 
 - [Better a demo than long words](#better-a-demo-than-long-words)
 - [Installation](#installation)
-- [Documentation](#documentation)
-- [Getting started](docs/getting_started.md)
-- [API reference](docs/index.md)
-- Tutorials by examples:
-  - [Extrusion](docs/ex_extrusion.md)
-  - [Simulation](docs/ex_simulation.md)
-  - [Repeat](docs/ex_repeat.md)
-  - [Building an arrow](docs/arrow.md)
+- [API reference](doc/index.md)
+- [Tutorial](#tutorial)
 
 ## Better a demo than long words
 
@@ -87,16 +81,6 @@ To make the module available in your script, use `import` in your script:
 from geonodes import *
 ```
 
-or
-
-``` python
-from geonodes import GeoNodes, ShaderNodes, Geometry, Mesh, Vector...
-```
-
-## Documentation
-
-Uses [index](docs/index.md) to gain access to the list of availables classes.
-
 ## Scripting nodes overview
 
 All nodes belong to a tree. Two tree types are available:
@@ -111,13 +95,13 @@ To get the maximum benefit of **GeoNodes**, you must be familiar with both **pyt
 
 ## How it works
 
-Each _Geometry Nodes_ output socket is wrapped by a **GeoNodes** class:
+Each _Geometry Nodes_ output socket is wrapped by a class:
 - A **Float** instance keeps a reference to an output socket of type _VALUE_
 - A **Geometry** instance keeps a reference to an output socket of type _GEOMETRY_
 
 _Geometry Nodes_ are methods, functions or operators working on the **GeoNodes** classes.
-The arguments of a method call are connected to the _input sockets_ of the node.
-The method returns a class refering to its output socket.
+The arguments of a method are connected to the _input sockets_ of the node.
+The method returns a class refering to one of its output socket, or, rarely, to the node itself.
 
 ``` python
 from geonodes import *
@@ -135,14 +119,14 @@ with GeoNodes("Demo"):
     vector = Vector((1, 2, 3))
 
     # Method set_position creates a node 'Set Position'
-    # - output socket kept by geometry is plugged to the input socket 'Geometry'
-    # - offset argument is plugged to the input socket 'Offset'
-    # The method returns an new instance of Geometry pointing on the node output socket
+    # - 'geometry' is is plugged to the input socket 'Geometry'
+    # - 'offset' argument is plugged to the input socket 'Offset'
 
-    geometry = geometry.set_position(offset=vector)
+    geometry.set_position(offset=vector)
+
+    # 'geometry' is now the output socket 'Geometry' of the node 'Set Position'
 
     # Plug the output socket to the group output
-
     geometry.out()
 ```
 
@@ -218,34 +202,37 @@ c = gnmath.band(b, False)
 
 ### 'nd' Class
 
-**nd** (shortcut for **nodes**) exposes all the nodes as class methods.
+**nd** class (shortcut for **nodes**) exposes all the nodes as class methods.
 This class is particuliarly usefull for input nodes such as _Position_ or _Radius_:
 
 ``` python
 cube = Mesh.Cube() # or nd.cube()
 new_pos = nd.position + (1, 2, 3)
-cube = cube.set_position(new_pos)
+cube.set_position(new_pos)
 ```
 
 ### Data Classes
 
 Each **Geometry Nodes** socket type is wrapped in a dedicated class. The available classes are the following:
 
-- **Basic types**
-  - Boolean, Integer, Float, Vector, Color, Rotation, Matrix, String
+- **Basic sockets**
+  - Attributes : Boolean, Integer, Float, Vector, Color, Rotation, Matrix,
+  - String
 - **Blender Resources**
   - Material, Object, Texture, Collection, Image
 - **Geometry**
   - Geometry
   - Geometry subclasses : Mesh, Curve, Cloud, Instances, Volume
+- **Special**
+  - Menu
 
-  Blender **Nodes** are implemented as methods, properties and operators working on these classes.
-  For instance, if `a` and `b` are two **Floats**, the script `a + b` will generate a **Math** node with
-  operation _ADD_. The result of this operation is the **Output Socket** of the node.
+Blender **Nodes** are implemented as methods, properties and operators working on these classes.
+For instance, if `a` and `b` are two **Floats**, the script `a + b` will generate a **Math** node with
+operation _ADD_. The result of this operation is the **Output Socket** of the node.
 
 ### Domains
 
-Geometry classes have one or several _Domain_ attributes according  **Blender** data structure.
+Geometry classes have one or several _Domain_ attributes following **Blender** data structure.
 The domains are the following:
 - **Mesh**
   - points
@@ -261,7 +248,7 @@ The domains are the following:
   - insts
 - **Volume**
 
-The _Domain_ attribute is used in the nodes needing a _Domain_ parameter. In the following example,
+The _Domain_ attribute is used in nodes having a _Domain_ parameter. In the following example,
 the node '_Store Named Attribute_' is setup with the domain calling the method:
 
 ``` python
@@ -287,7 +274,7 @@ Python operators can be used to operate on data, for instance:
 a = Float(10)
 c = a*pi # Math node, operation 'MULTIPLY'
 c += 1 # Math node, operation 'ADD'
-ok = a <=c # Compare node, operation 'LESS_EQUAL'
+ok = a <= c # Compare node, operation 'LESS_EQUAL'
 
 # Vector operators
 u = Vector((1, 2, 3))
@@ -306,6 +293,14 @@ s += String(" ") * ("This", "is", "a", String("sentence."))
 # Join Geometry
 geo = Geometry() # Input geometry
 geo += Mesh.Cube(), Curve.Spiral() # Join with two other geometries
+
+# Mesh boolean
+cube = Mesh.Cube()
+ico  = Mesh.IcoSphere()
+
+mesh = cube - ico # Difference
+mesh = cube * ico # Union
+mesh = cube / ico # Intersect
 ```
 
 > [!NOTE]
