@@ -209,7 +209,7 @@ def geonodes_documentation(write_files=True):
     # Add the cross reference page
 
     print("Cross references...")
-
+    
     cross_page = doc.top_section.new_page("Cross Reference",
             in_toc=True, parent_toc_depth=0,
             toc=True, sort_sections=True, toc_flat=True, toc_sort=True)
@@ -235,7 +235,6 @@ def geonodes_documentation(write_files=True):
     for node_name, refs in s_nodes.items():
         node_section = cross_page.new(node_name.replace('/', ' '), in_toc=True, depth_shift=2)
         for class_, member_ in refs:
-            
             if class_ is None:
                 node_section.write(f"- <!{member_.title}>\n")
             else:
