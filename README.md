@@ -16,14 +16,8 @@ You keep the full power of Blender _Geometry Nodes_ but with the elegance of Pyt
 
 - [Better a demo than long words](#better-a-demo-than-long-words)
 - [Installation](#installation)
-- [Documentation](#documentation)
-- [Getting started](docs/getting_started.md)
-- [API reference](docs/index.md)
-- Tutorials by examples:
-  - [Extrusion](docs/ex_extrusion.md)
-  - [Simulation](docs/ex_simulation.md)
-  - [Repeat](docs/ex_repeat.md)
-  - [Building an arrow](docs/arrow.md)
+- [API reference](doc/index.md)
+- [Tutorial](#tutorial)
 
 ## Better a demo than long words
 
@@ -87,16 +81,6 @@ To make the module available in your script, use `import` in your script:
 from geonodes import *
 ```
 
-or
-
-``` python
-from geonodes import GeoNodes, ShaderNodes, Geometry, Mesh, Vector...
-```
-
-## Documentation
-
-Uses [index](docs/index.md) to gain access to the list of availables classes.
-
 ## Scripting nodes overview
 
 All nodes belong to a tree. Two tree types are available:
@@ -105,19 +89,25 @@ All nodes belong to a tree. Two tree types are available:
 
 # Tutorial
 
+> [!IMPORTANT]
+> Geometry Nodes modifiers and groups scripted by **geonodes** don't overwrite existing **modifier** or **groups**.
+
+> [!CAUTION]
+> But shaders scripted by **geonodes** can overwrite an existing material.
+
 ## Prerequisites
 
 To get the maximum benefit of **GeoNodes**, you must be familiar with both **python** and Blender **Geometry Nodes**.
 
 ## How it works
 
-Each _Geometry Nodes_ output socket is wrapped by a **GeoNodes** class:
+Each _Geometry Nodes_ output socket is wrapped by a class:
 - A **Float** instance keeps a reference to an output socket of type _VALUE_
 - A **Geometry** instance keeps a reference to an output socket of type _GEOMETRY_
 
 _Geometry Nodes_ are methods, functions or operators working on the **GeoNodes** classes.
-The arguments of a method call are connected to the _input sockets_ of the node.
-The method returns a class refering to its output socket.
+The arguments of a method are connected to the _input sockets_ of the node.
+The method returns a class refering to one of its output socket, or, rarely, to the node itself.
 
 ``` python
 from geonodes import *
@@ -135,14 +125,14 @@ with GeoNodes("Demo"):
     vector = Vector((1, 2, 3))
 
     # Method set_position creates a node 'Set Position'
-    # - output socket kept by geometry is plugged to the input socket 'Geometry'
-    # - offset argument is plugged to the input socket 'Offset'
-    # The method returns an new instance of Geometry pointing on the node output socket
+    # - 'geometry' is is plugged to the input socket 'Geometry'
+    # - 'offset' argument is plugged to the input socket 'Offset'
 
-    geometry = geometry.set_position(offset=vector)
+    geometry.set_position(offset=vector)
+
+    # 'geometry' is now the output socket 'Geometry' of the node 'Set Position'
 
     # Plug the output socket to the group output
-
     geometry.out()
 ```
 
@@ -218,34 +208,37 @@ c = gnmath.band(b, False)
 
 ### 'nd' Class
 
-**nd** (shortcut for **nodes**) exposes all the nodes as class methods.
+**nd** class (shortcut for **nodes**) exposes all the nodes as class methods.
 This class is particuliarly usefull for input nodes such as _Position_ or _Radius_:
 
 ``` python
 cube = Mesh.Cube() # or nd.cube()
 new_pos = nd.position + (1, 2, 3)
-cube = cube.set_position(new_pos)
+cube.set_position(new_pos)
 ```
 
 ### Data Classes
 
 Each **Geometry Nodes** socket type is wrapped in a dedicated class. The available classes are the following:
 
-- **Basic types**
-  - Boolean, Integer, Float, Vector, Color, Rotation, Matrix, String
+- **Basic sockets**
+  - Attributes : Boolean, Integer, Float, Vector, Color, Rotation, Matrix,
+  - String
 - **Blender Resources**
   - Material, Object, Texture, Collection, Image
 - **Geometry**
   - Geometry
   - Geometry subclasses : Mesh, Curve, Cloud, Instances, Volume
+- **Special**
+  - Menu
 
-  Blender **Nodes** are implemented as methods, properties and operators working on these classes.
-  For instance, if `a` and `b` are two **Floats**, the script `a + b` will generate a **Math** node with
-  operation _ADD_. The result of this operation is the **Output Socket** of the node.
+Blender **Nodes** are implemented as methods, properties and operators working on these classes.
+For instance, if `a` and `b` are two **Floats**, the script `a + b` will generate a **Math** node with
+operation _ADD_. The result of this operation is the **Output Socket** of the node.
 
 ### Domains
 
-Geometry classes have one or several _Domain_ attributes according  **Blender** data structure.
+Geometry classes have one or several _Domain_ attributes following **Blender** data structure.
 The domains are the following:
 - **Mesh**
   - points
@@ -261,7 +254,7 @@ The domains are the following:
   - insts
 - **Volume**
 
-The _Domain_ attribute is used in the nodes needing a _Domain_ parameter. In the following example,
+The _Domain_ attribute is used in nodes having a _Domain_ parameter. In the following example,
 the node '_Store Named Attribute_' is setup with the domain calling the method:
 
 ``` python
@@ -287,7 +280,7 @@ Python operators can be used to operate on data, for instance:
 a = Float(10)
 c = a*pi # Math node, operation 'MULTIPLY'
 c += 1 # Math node, operation 'ADD'
-ok = a <=c # Compare node, operation 'LESS_EQUAL'
+ok = a <= c # Compare node, operation 'LESS_EQUAL'
 
 # Vector operators
 u = Vector((1, 2, 3))
@@ -306,6 +299,14 @@ s += String(" ") * ("This", "is", "a", String("sentence."))
 # Join Geometry
 geo = Geometry() # Input geometry
 geo += Mesh.Cube(), Curve.Spiral() # Join with two other geometries
+
+# Mesh boolean
+cube = Mesh.Cube()
+ico  = Mesh.IcoSphere(radius=.8)
+
+mesh = cube - ico # Difference
+mesh = cube * ico # Union
+mesh = cube / ico # Intersect
 ```
 
 > [!NOTE]
@@ -375,9 +376,9 @@ with GeoNodes("Method names"):
     # Nodes 'Subdivision Surface', 'Triangulate', 'Set Position' are implemented as method
     # of their geometry using the snake_case version for their name
 
-    cube = cube.subdivision_surface()
-    cube = cube.triangulate()
-    curve = curve_line.set_position()
+    cube.subdivision_surface()
+    cube.triangulate()
+    curve_line.set_position()
 
     # ----------------------------------------------------------------------------------------------------
     # RULE 1 : Nodes name in snake_case
@@ -387,8 +388,8 @@ with GeoNodes("Method names"):
     # 'Subdivide Mesh' the name of the geometry is omitted
 
     mesh = Curve.Circle().fill()
-    curves = curve_line.deform_on_surface()
-    cube = cube.subdivide()
+    curve_line.deform_on_surface()
+    cube.subdivide()
 
     # ----------------------------------------------------------------------------------------------------
     # RULE 4 : setters and getters are properties
@@ -398,7 +399,6 @@ with GeoNodes("Method names"):
     mesh.position += (1, 2, 3)
     mesh.offset = (1, 2, 3)
     cloud.radius = 1.
-
 
     # Make sure to have an output geometry
     Geometry().out()
@@ -420,7 +420,7 @@ Nodes needing a _Domain_ parameter are implemented on **Domain**, not **Geometry
 
 ### Node sockets and parameters
 
-To be fully configured, a node needs values for its sockets and parameters.
+To be fully configured, a node also needs values for its parameters.
 The method arguments provides the required initial values.
 
 The following conventions are used:
@@ -431,7 +431,7 @@ The following conventions are used:
   - _Instance Index_ socket : **instance_index**
 2. **RULE B** : sockets are given first, following their order in the node, and parameters are placed after:
   - `float.map_range(0, 1, 10, 20)`  is equivalent to `float.map_range(from_min=0, from_max=1, ...)`
-2. **RULE C** : _Selection_ socket is omitted and is passed as item index of the **Geometry**
+2. **RULE C** : _Selection_ socket is omitted and is passed as item index of **Geometry**
   - Don't write `mesh.set_id(selection=sel, ...)` but write instead `mesh[sel].set_id(...)`
 3. **RULE D** : arguments for parameters use the python parameter name:
   - Node _Volume to Mesh_ has the parameter _resolution_mode_ : `mesh = vol.to_mesh(..., resolution_mode='GRID')`
@@ -455,34 +455,36 @@ with GeoNodes("Argument names"):
     # RULE A : socket arguments in snake_case
 
     sphere = Mesh.UVSphere(segments=16, rings=12, radius=1.)
-    sphere = sphere.merge_by_distance(distance=.1)
+    sphere.merge_by_distance(distance=.1)
 
     # ----------------------------------------------------------------------------------------------------
     # RULE B : sockets ordered as in the node, parameters are placed after
 
-    sphere = sphere.merge_by_distance(.1, 'ALL')
+    sphere.merge_by_distance(.1, 'ALL')
 
     # ----------------------------------------------------------------------------------------------------
     # RULE C : Selection socket is set by item index
     #
     # Don't write:
-    # sphere = sphere.set_position(selection=nd.index < 5, position=(1, 2, 3))
+    # sphere.set_position(selection=nd.index < 5, position=(1, 2, 3))
 
-    sphere = sphere[nd.index < 5].set_position(position=(1, 2, 3))
+    sphere[nd.index < 5].set_position(position=(1, 2, 3))
 
     # ----------------------------------------------------------------------------------------------------
     # RULE D : parameter arguments take the parameter name
     #
     # Node 'Merge by Distance' owns a parameter named 'mode'
 
-    sphere = sphere = sphere.merge_by_distance(mode='ALL')
+    sphere.merge_by_distance(mode='ALL')
 
     # ----------------------------------------------------------------------------------------------------
     # RULE E : domain parameter is taken from the calling domain
     #
     # Don't write:
-    # sphere = sphere.set_shade_smooth(shade_smooth=True, domain='FACE')
+    # sphere.set_shade_smooth(shade_smooth=True, domain='FACE')
 
+    sphere.set_shade_smooth(shade_smooth=True)
+    # or
     sphere.faces.shade_smooth = True
 
     # ----------------------------------------------------------------------------------------------------
@@ -503,10 +505,12 @@ with GeoNodes("Argument names"):
 
 The general rule is that the methods return the first output socket of the node.
 
-When the node has other output sockets, they are returned as properties of the returned variable.
-
-> [!IMPORTANT]
-> To avoid collision with existing properties, the additional output socket names are **suffixed by _**.
+When the node has other output sockets, they can be accessed in two ways:
+- using the **node** property of the returned socket: ``` a = socket.node.xxx ```
+- or using the **peer sockets naming convention** which exposes peer output sockets
+  as properties of the socket itself. In that case, the peer socket name is the
+  _snake_case_ name of the socket followed by char `_` to avoid name collision:
+  ``` a = socket.xx_ `.
 
 The example below illustrates how to access output sockets:
 
@@ -524,7 +528,9 @@ with GeoNodes("Returned Values"):
     # The returned value has a property named uv_map_
 
     cube = Mesh.Cube()
-    cube.corners.store("UV Map", cube.uv_map_)
+    cube.corners.store("UV Map", cube.node.uv_map)
+    # equivalent to:
+    # cube.corners.store("UV Map", cube.uv_map_)
 
     # ----------------------------------------------------------------------------------------------------
     # Advanced example
@@ -534,50 +540,32 @@ with GeoNodes("Returned Values"):
     # - Top
     # - Side
 
-    ico = Mesh.IcoSphere()
+    ico = Mesh.IcoSphere(subdivisions=2)
 
     # Extrude 30% of the faces
-    ico = ico.faces[Boolean.Random(probability=.3)].extrude(offset_scale=.4)
+    ico.faces[Boolean.Random(probability=.3)].extrude(offset_scale=.4)
 
     # Duplicate extruded faces with a 0 scale extrusion
-    ico = ico.faces[ico.top_].extrude(offset_scale=0)
+    ico.faces[ico.top_].extrude(offset_scale=0)
 
     # --- ico.top_ is needed twice, let's use an intermediary variable
 
-    # Scale the extrude faces
-    ico_scaled = ico.faces[ico.top_].scale(scale=.5)
+    top = ico.top_
+    ico.faces[top].scale(scale=.5)
 
     # Another extrusion
-    ico = ico_scaled.faces[ico.top_].extrude(offset_scale=1)
+    ico.faces[top].extrude(offset_scale=1)
 
     # --- Let's now dig the sides
 
-    ico = ico.faces[ico.side_].extrude(offset_scale=0)
-    ico_scaled = ico.faces[ico.top_].scale(.8)
-    ico = ico_scaled.faces[ico.top_].extrude(offset_scale=-.01)
+    ico.faces[ico.side_].extrude(offset_scale=0)
+    top = ico.top_
+    ico.faces[top].scale(.8)
+    ico.faces[top].extrude(offset_scale=-.01)
 
     # Output
-    (ico + cube.set_position(offset=(5, 0, 0))).out()
+    (ico + cube.set_position(offset=(5, 0, 0))).out()        
 ```
-
-> [!NOTE]
-> When calling a method, make sure to put the result in a variable in order to
-> be able to use the resulting socket in another node.
-> Typically write `other_mesh = mesh.set_position()` to have a pointer on the displaced geometry.
-
-> [!IMPORTANT]
-> After setting a property, the geometry variable points to the result. Just compare the two syntaxes below:
-> ``` python
-> cube = Mesh.Cube()
->
-> # Method set_position doesn't change the cube variable
-> # The resulting geometry must be set into a variable
-> displaced_cube = cube.set_position(offset=(1, 2, 3))
->
-> # Setting the offset property changes the output socket
-> # the cube variable refers to
-> cube.offset = (1, 2, 3)
-> ```
 
 ## Class instantiation and Group Inputs
 
@@ -632,7 +620,7 @@ bl_cube = bpy.data.objects.get("Cube")
 cube_obj = Object(bl_cube, name="Your object")
 
 # The following line is equivalent
-cube_obj = Object("Cuve", name="Your object")
+cube_obj = Object("Cube", name="Your object")
 ```
 ### Geometries
 
@@ -653,12 +641,37 @@ mesh = Mesh()
 curve = Curve(name="Curve")
 ```
 
-> [!NOTE]
-> For modifiers, only one input geometry is created. More than one geometry can be created only in _Groups_.
+### Menu
+
+By exception, **Menu** special socket can't be instantiated directly.
+To create a menu, use the constructor **MenuSwitch** on the desired class as shown below:
+
+``` python
+from geonodes import *
+
+with GeoNodes("Menu Demo"):
+    
+    # Integer menu for subdivision
+    
+    sub = Integer.MenuSwitch(items={'Low':1, 'Medium':3, 'High':6}, menu='Medium', name="Subdivision")
+    
+    # The possible geometries
+    
+    cube  = Mesh.Cube().subdivide(sub)
+    ico   = Mesh.IcoSphere(subdivisions=sub)
+    cyl   = Mesh.Cylinder().subdivide(sub)
+    
+    # Select the one to display
+    
+    geo = Geometry.MenuSwitch(items={'Cube': cube, 'Ico Sphere': ico, 'Cylinder': cyl}, name='Geometry', menu='Cube')
+    
+    # Output
+    geo.out()
+```
 
 ## Group Outputs
 
-To plug a variable to the Group Output, simply use the method **out** with the name argument as shown below:
+To plug a variable to the Group Output, simply call the method **out** with the name argument as shown below:
 
 ``` python
 with GeoNodes("Group outputs"):
@@ -690,7 +703,7 @@ with Repeat(geometry=Geometry(), curve=None, position=Vector(), index=1, iterati
 ### Acces to the zones sockets
 
 The zone sockets are initialized as properties of the **Repeat** or **Simulation**.
-The can be get and set using the standard python syntax, for instance `rep.index` refers to
+They can be get and set using the standard python syntax, for instance `rep.index` refers to
 the socket named **index** in the example above.
 
 Since a zone is composed of two nodes, each one replicating the same sockets as inputs and outputs,
@@ -707,41 +720,41 @@ socket names are replicated 4 times. Accessing the zone properties depends upon 
   Despite it is not that easy to describe, this produces an very natural way to create and work with zones.
   The example below explodes a sphere:
 
-  ``` python
-  from geonodes import *
+``` python
+from geonodes import *
 
-  with GeoNodes("Explosion"):
+with GeoNodes("Explosion"):
 
-      mesh = Mesh.IcoSphere(subdivisions=3)
-      cloud = mesh.faces.distribute_points(density=10)
-      speed = 5*cloud.normal_ + Vector.Random(-.2, .2, seed=0)
+    mesh = Mesh.IcoSphere(subdivisions=3)
+    cloud = mesh.faces.distribute_points(density=10)
+    speed = 5*cloud.normal_ + Vector.Random(-.2, .2, seed=0)
 
-      # Create a Simulation zone with two variables
-      # - cloud : Cloud
-      # - speed : Vector
+    # Create a Simulation zone with two variables
+    # - cloud : Cloud
+    # - speed : Vector
 
-      with Simulation(cloud=cloud, speed=speed) as sim:
+    with Simulation(cloud=cloud, speed=speed) as sim:
 
-          # INSIDE the simulation : getting is reading the first node
+        # INSIDE the simulation : getting is reading the first node
 
-          speed = sim.speed
+        speed = sim.speed
 
-          speed = sim.cloud.points.capture(speed)
-          sim.cloud.points.offset = speed*sim.delta_time
+        speed = sim.cloud.points.capture(speed)
+        sim.cloud.points.offset = speed*sim.delta_time
 
-          # INSIDE the simulation : setting is writting the second node
+        # INSIDE the simulation : setting is writting the second node
 
-          sim.speed = speed + (0, 0, -10*sim.delta_time)
+        sim.speed = speed + (0, 0, -10*sim.delta_time)
 
-      # OUTSIDE the simulation : getting is reading the second node
+    # OUTSIDE the simulation : getting is reading the second node
 
-      cloud = Cloud(sim.cloud)
+    cloud = sim.cloud
 
-      # Done
+    # Done
 
-      balls = cloud.points.instance_on(instance=Mesh.IcoSphere(radius=.1))
+    balls = cloud.points.instance_on(instance=Mesh.IcoSphere(radius=.1))
 
-      balls.out()
+    balls.out()
 ```
 
 <img src="doc/images/sim_zone_doc.png" class="center">
@@ -750,8 +763,8 @@ socket names are replicated 4 times. Accessing the zone properties depends upon 
 
 ### Creating a Group
 
-When creating a new tree, the argument **is_group** is used to specify to create a group of nodes rather
-than a modifier:
+When creating a new tree, the argument **is_group** is used to specify to create a **group of nodes** rather
+than a **modifier**:
 
 ``` python
 with GeoNodes("A Function", is_group=True):
@@ -772,10 +785,10 @@ Calling a group is made by instantiating a **Group** class.
 The first parameter of the **Group** instantiation is the name of the _Group_ to call.
 The sockets to plug th the input sockets of the group can be passed in two ways:
 - as a dict
-- as keyword arguments using their snake_case name
+- as keyword arguments using their _snake_case_ name
 
 The output sockets of the group are read as properties of the **Group** instance,
-using their snake_case name.
+using their _snake_case_ name.
 
 
 ``` python
@@ -802,8 +815,11 @@ with GeoNodes("Call a Group"):
     # using its snake_case name
 
     val = GroupF().a_function(value_1=val1, value_2=val2).sum
-
-    val.out()
+    
+    # Done
+    
+    Geometry().out()
+    val.out()    
 ```
 
 # Shaders
@@ -814,6 +830,9 @@ Creating _Shader Nodes_ is the same as creating _Geometry Nodes_, with the follo
 - Use **ShaderNodes** rather that **GeoNodes**
 - Use **snd** (for _Shader Nodes_) rather than **nd**
 - **out** method takes the class type to select the proper socket between _Surface_, _Volume_, _Displacement_ and _Thickness_
+
+> [!CAUTION]
+> When instantianting a shader, the existing shader is deleted. You can loose a shader created directly in Blender.
 
 ``` python
 from geonodes import *
