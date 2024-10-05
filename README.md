@@ -523,8 +523,8 @@ with GeoNodes("Returned Values"):
 
     cube = Mesh.Cube()
     cube.corners.store("UV Map", cube.node.uv_map)
-    # or
-    cube.corners.store("UV Map", cube.uv_map_)
+    # equivalent to:
+    # cube.corners.store("UV Map", cube.uv_map_)
 
     # ----------------------------------------------------------------------------------------------------
     # Advanced example
@@ -534,7 +534,7 @@ with GeoNodes("Returned Values"):
     # - Top
     # - Side
 
-    ico = Mesh.IcoSphere()
+    ico = Mesh.IcoSphere(subdivisions=2)
 
     # Extrude 30% of the faces
     ico.faces[Boolean.Random(probability=.3)].extrude(offset_scale=.4)
@@ -558,27 +558,8 @@ with GeoNodes("Returned Values"):
     ico.faces[top].extrude(offset_scale=-.01)
 
     # Output
-    (ico + cube.set_position(offset=(5, 0, 0))).out()
+    (ico + cube.set_position(offset=(5, 0, 0))).out()        
 ```
-
-> [!NOTE]
-> When calling a method, make sure to put the result in a variable in order to
-> be able to use the resulting socket in another node.
-> Typically write `other_mesh = mesh.set_position()` to have a pointer on the displaced geometry.
-
-> [!IMPORTANT]
-> After setting a property, the geometry variable points to the result. Just compare the two syntaxes below:
-> ``` python
-> cube = Mesh.Cube()
->
-> # Method set_position doesn't change the cube variable
-> # The resulting geometry must be set into a variable
-> displaced_cube = cube.set_position(offset=(1, 2, 3))
->
-> # Setting the offset property changes the output socket
-> # the cube variable refers to
-> cube.offset = (1, 2, 3)
-> ```
 
 ## Class instantiation and Group Inputs
 
@@ -633,7 +614,7 @@ bl_cube = bpy.data.objects.get("Cube")
 cube_obj = Object(bl_cube, name="Your object")
 
 # The following line is equivalent
-cube_obj = Object("Cuve", name="Your object")
+cube_obj = Object("Cube", name="Your object")
 ```
 ### Geometries
 
@@ -654,12 +635,38 @@ mesh = Mesh()
 curve = Curve(name="Curve")
 ```
 
-> [!NOTE]
-> For modifiers, only one input geometry is created. More than one geometry can be created only in _Groups_.
+### Menu
+
+By exception, **Menu** special socket can't be instantiated directly.
+To create a menu, use the constructor **MenuSwitch** on the desired class as shown below:
+
+``` python
+from geonodes import *
+
+
+with GeoNodes("Menu Demo"):
+    
+    # Integer menu for subdivision
+    
+    sub = Integer.MenuSwitch(items={'Low':1, 'Medium':3, 'High':6}, menu='Medium', name="Subdivision")
+    
+    # The possible geometries
+    
+    cube  = Mesh.Cube().subdivide(sub)
+    ico   = Mesh.IcoSphere(subdivisions=sub)
+    cyl   = Mesh.Cylinder().subdivide(sub)
+    
+    # Select the one to display
+    
+    geo = Geometry.MenuSwitch(items={'Cube': cube, 'Ico Sphere': ico, 'Cylinder': cyl}, name='Geometry', menu='Cube')
+    
+    # Output
+    geo.out()
+```
 
 ## Group Outputs
 
-To plug a variable to the Group Output, simply use the method **out** with the name argument as shown below:
+To plug a variable to the Group Output, simply call the method **out** with the name argument as shown below:
 
 ``` python
 with GeoNodes("Group outputs"):
@@ -691,7 +698,7 @@ with Repeat(geometry=Geometry(), curve=None, position=Vector(), index=1, iterati
 ### Acces to the zones sockets
 
 The zone sockets are initialized as properties of the **Repeat** or **Simulation**.
-The can be get and set using the standard python syntax, for instance `rep.index` refers to
+They can be get and set using the standard python syntax, for instance `rep.index` refers to
 the socket named **index** in the example above.
 
 Since a zone is composed of two nodes, each one replicating the same sockets as inputs and outputs,
@@ -710,38 +717,36 @@ socket names are replicated 4 times. Accessing the zone properties depends upon 
 
   ``` python
   from geonodes import *
-
+    
   with GeoNodes("Explosion"):
-
+    
       mesh = Mesh.IcoSphere(subdivisions=3)
       cloud = mesh.faces.distribute_points(density=10)
       speed = 5*cloud.normal_ + Vector.Random(-.2, .2, seed=0)
-
+    
       # Create a Simulation zone with two variables
       # - cloud : Cloud
       # - speed : Vector
-
+    
       with Simulation(cloud=cloud, speed=speed) as sim:
-
+    
           # INSIDE the simulation : getting is reading the first node
-
+    
           speed = sim.speed
-
+    
           speed = sim.cloud.points.capture(speed)
           sim.cloud.points.offset = speed*sim.delta_time
-
+    
           # INSIDE the simulation : setting is writting the second node
-
+    
           sim.speed = speed + (0, 0, -10*sim.delta_time)
-
+    
       # OUTSIDE the simulation : getting is reading the second node
-
-      cloud = Cloud(sim.cloud)
-
+    
+      cloud = sim.cloud
+    
       # Done
-
       balls = cloud.points.instance_on(instance=Mesh.IcoSphere(radius=.1))
-
       balls.out()
 ```
 
