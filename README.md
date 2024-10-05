@@ -89,6 +89,12 @@ All nodes belong to a tree. Two tree types are available:
 
 # Tutorial
 
+> [!IMPORTANT]
+> Geometry Nodes modifiers and groups scripted by **geonodes** don't overwrite existing **modifier** or **groups**.
+
+> [!CAUTION]
+> But Shaders scripted by **geonodes** can overwrite an existing material.
+
 ## Prerequisites
 
 To get the maximum benefit of **GeoNodes**, you must be familiar with both **python** and Blender **Geometry Nodes**.
