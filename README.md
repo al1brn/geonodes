@@ -643,7 +643,6 @@ To create a menu, use the constructor **MenuSwitch** on the desired class as sho
 ``` python
 from geonodes import *
 
-
 with GeoNodes("Menu Demo"):
     
     # Integer menu for subdivision
@@ -715,39 +714,8 @@ socket names are replicated 4 times. Accessing the zone properties depends upon 
   Despite it is not that easy to describe, this produces an very natural way to create and work with zones.
   The example below explodes a sphere:
 
-  ``` python
-  from geonodes import *
-    
-  with GeoNodes("Explosion"):
-    
-      mesh = Mesh.IcoSphere(subdivisions=3)
-      cloud = mesh.faces.distribute_points(density=10)
-      speed = 5*cloud.normal_ + Vector.Random(-.2, .2, seed=0)
-    
-      # Create a Simulation zone with two variables
-      # - cloud : Cloud
-      # - speed : Vector
-    
-      with Simulation(cloud=cloud, speed=speed) as sim:
-    
-          # INSIDE the simulation : getting is reading the first node
-    
-          speed = sim.speed
-    
-          speed = sim.cloud.points.capture(speed)
-          sim.cloud.points.offset = speed*sim.delta_time
-    
-          # INSIDE the simulation : setting is writting the second node
-    
-          sim.speed = speed + (0, 0, -10*sim.delta_time)
-    
-      # OUTSIDE the simulation : getting is reading the second node
-    
-      cloud = sim.cloud
-    
-      # Done
-      balls = cloud.points.instance_on(instance=Mesh.IcoSphere(radius=.1))
-      balls.out()
+``` python
+
 ```
 
 <img src="doc/images/sim_zone_doc.png" class="center">
