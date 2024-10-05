@@ -949,7 +949,7 @@ class Node:
                 if tt == tree_type:
                     continue
                 if lower_name in constants.NODE_NAMES[tt]:
-                    raise NodeError(f"Node '{node_name}' is a node of tree '{tt}', it doesn't exit for tree '{tree_type}'")
+                    raise NodeError(f"Node '{node_name}' is a node of tree '{tt}', it doesn't exist for tree '{tree_type}'")
 
             bl_idname = node_name
 

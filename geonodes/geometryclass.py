@@ -3606,6 +3606,7 @@ class Mesh(Geometry):
 
         Arguments
         ---------
+        - mesh (Mesh) : socket 'Mesh 1' (Mesh 1)
         - *meshes (Mesh) : socket 'Mesh 2' (Mesh 2)
         - self_intersection (Boolean) : socket 'Self Intersection' (Self Intersection)
         - hole_tolerant (Boolean) : socket 'Hole Tolerant' (Hole Tolerant)
@@ -3622,7 +3623,7 @@ class Mesh(Geometry):
             hole_tolerant=hole_tolerant, solver=solver, operation='DIFFERENCE')
 
     @classmethod
-    def Intersect(cls, mesh, *meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT'):
+    def Intersect(cls, *meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT'):
         """ > Constructor node <&Node Mesh Boolean>, operation = 'INTERSECT'
 
         Arguments
@@ -3640,7 +3641,7 @@ class Mesh(Geometry):
             hole_tolerant=hole_tolerant, solver=solver, operation='INTERSECT')
 
     @classmethod
-    def Union(cls, mesh, *meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT'):
+    def Union(cls, *meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT'):
         """ > Constructor node <&Node Mesh Boolean>, operation = 'UNION'
 
         Arguments

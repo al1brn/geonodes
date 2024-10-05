@@ -1375,7 +1375,7 @@ class Rotation(VectRot):
         -------
         - Rotation
         """
-        return Rotation(Node('Mix', {'Factor': factor, 'A': self, 'B': other}, clamp_factor=clamp_factor, data_type='ROTATION'))
+        return Rotation(Node('Mix', {'Factor': factor, 'A': self, 'B': other}, clamp_factor=clamp_factor, data_type='ROTATION')._out)
 
     # ----- Rotate vector
 

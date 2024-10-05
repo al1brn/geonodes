@@ -713,6 +713,118 @@ class Socket(NodeCache):
         data_type = self.data_type(['FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR'])
         return Node('Blur Attribute', {'Value': self, 'Iterations': iterations, 'Weight': weight}, data_type=data_type)._out
 
+    # ====================================================================================================
+    # Run tests
+
+    @classmethod
+    def _run_tests(cls):
+
+        from geonodes import GeoNodes
+
+        import inspect
+        import re
+        from geonodes.geonodes import constants
+
+        tree = None
+
+        # ----------------------------------------------------------------------------------------------------
+        # Test Function
+
+        def test_func(f_name, f):
+            expr = r"<&Node *(?P<name>[^>]*)>"
+
+            if f.__doc__ is None:
+                return "No doc"
+
+            m = re.search(expr, f.__doc__, flags=re.MULTILINE)
+            if m is None:
+                return "No node"
+
+            node_name = m.group('name')
+            if node_name.lower() not in constants.NODE_NAMES[tree._btree.bl_idname]:
+                return f"Not in {tree._btree.bl_idname}"
+            node = Node(node_name)
+
+            argspec = inspect.getfullargspec(f)
+            call = []
+            used_args = []
+            i_offset = len(argspec.args) if argspec.defaults is None else len(argspec.args) - len(argspec.defaults)
+            for i, arg_name in enumerate(argspec.args):
+
+                if arg_name in ('self', 'cls'):
+                    continue
+
+                i_def = i - i_offset
+                if i_def < 0:
+                    return "*args"
+                    call.append("Boolean()")
+                    used_args.append(arg_name)
+                    continue
+
+                if node.in_socket(arg_name, halt=False) is None:
+                    continue
+
+                if argspec.defaults[i_def] is None:
+                    call.append(f"{arg_name}=Integer(123)")
+                    used_args.append(arg_name)
+
+            # ----- Test
+
+            code = f"from geonodes import *\n{cls.__name__}(Float(10)).{f_name}({', '.join(call)})"
+            try:
+                exec(code, globals(), None)
+            except Exception as e:
+                print()
+                print("ERROR in")
+                print('-'*100)
+                print(code)
+                print('-'*100)
+                return e
+
+            return "Ok : (" + ", ".join(used_args) + ')'
+
+        # ----------------------------------------------------------------------------------------------------
+        # Loop
+
+        tree = GeoNodes("TEST")
+
+        print(f"Testing {cls.__name__}...")
+
+        for name in dir(cls):
+            m = getattr(cls, name)
+            f = None
+            if inspect.isfunction(m):
+                f = m
+
+            elif inspect.ismethod(m):
+                f = m.__func__
+
+            elif isinstance(m, property):
+                continue
+                if m.fget is not None:
+                    print(f"{cls.__name__ + '.' + name:25s} - GETTER")
+                    print(m.fget)
+                    print("  ", inspect.getfullargspec(m.fget))
+                if m.fset is not None:
+                    print(f"{cls.__name__ + '.' + name:25s} - SETTER")
+                    print(m.fset)
+                    print("  ", inspect.getfullargspec(m.fset))
+
+                continue
+
+            else:
+                continue
+
+            print(f".  - {name:25s}", end = "")
+            e = test_func(name, f)
+            if isinstance(e, Exception):
+                print("ERROR")
+                raise (e)
+            print(e)
+
+        tree.pop()
+
+
 # =============================================================================================================================
 # =============================================================================================================================
 # Root for value sockets : BOOLEAN, INT MATRIX RGBA ROTATION VALUE VECTOR
@@ -851,7 +963,6 @@ class String(Socket):
         -------
         - String
         """
-
         return value.to_string(decimals=decimals)
 
     @classmethod
