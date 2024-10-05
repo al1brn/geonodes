@@ -93,7 +93,7 @@ All nodes belong to a tree. Two tree types are available:
 > Geometry Nodes modifiers and groups scripted by **geonodes** don't overwrite existing **modifier** or **groups**.
 
 > [!CAUTION]
-> But Shaders scripted by **geonodes** can overwrite an existing material.
+> But shaders scripted by **geonodes** can overwrite an existing material.
 
 ## Prerequisites
 
