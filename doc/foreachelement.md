@@ -17,6 +17,31 @@ This loops has 3 items lists with their corresponding index:
 
 The zone initialization creates properties on the input_items.
 
+The output node of the zone has two subsets of sockets:
+- ***Main*** sockets
+- ***Generated*** sockets
+
+Sockets can be created in each subset by setting a property. They can be read once
+the block in closed:
+
+``` python
+with ForEachElement() as feel:
+    # Creating a socket in the main subset
+    feel.main.vector = Vector()
+
+    # Join the geometry
+    feel.generated.geometry = Mesh.Cube()
+
+> [!NOTE]
+> It is recommended to use the `for_each` method of a domain rather than instantiate
+> the class
+
+``` python
+cube = Mesh.Cube()
+with cube.faces.for_each(position=nd.position) as feel:
+    pass
+```
+
 #### Arguments:
 - **geometry** (_Geometry_ = None) : geometry to loop on
 - **selection** (_Boolean_ = None) : element selection
@@ -30,7 +55,51 @@ The zone initialization creates properties on the input_items.
 
 ## Content
 
+- [element](foreachelement.md#element)
+- [generated](foreachelement.md#generated)
+- [index](foreachelement.md#index)
 - [\_\_init__](foreachelement.md#__init__)
+- [main](foreachelement.md#main)
+
+## Properties
+
+
+
+### element
+
+> _type_: **Geometry**
+>
+
+Element socket
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [ForEachElement](foreachelement.md#foreachelement) :black_small_square: [Content](foreachelement.md#content) :black_small_square: [Properties](foreachelement.md#properties)</sub>
+
+### generated
+
+> _type_: **Node like**
+>
+
+contains the sockets in the ***Generated*** part of the output node
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [ForEachElement](foreachelement.md#foreachelement) :black_small_square: [Content](foreachelement.md#content) :black_small_square: [Properties](foreachelement.md#properties)</sub>
+
+### index
+
+> _type_: **Integer**
+>
+
+Index socket
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [ForEachElement](foreachelement.md#foreachelement) :black_small_square: [Content](foreachelement.md#content) :black_small_square: [Properties](foreachelement.md#properties)</sub>
+
+### main
+
+> _type_: **Node like**
+>
+
+contains the sockets in the ***Main*** part of the output node
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [ForEachElement](foreachelement.md#foreachelement) :black_small_square: [Content](foreachelement.md#content) :black_small_square: [Properties](foreachelement.md#properties)</sub>
 
 ## Methods
 
@@ -55,6 +124,31 @@ This loops has 3 items lists with their corresponding index:
 - generation_items, active_generation_index
 
 The zone initialization creates properties on the input_items.
+
+The output node of the zone has two subsets of sockets:
+- ***Main*** sockets
+- ***Generated*** sockets
+
+Sockets can be created in each subset by setting a property. They can be read once
+the block in closed:
+
+``` python
+with ForEachElement() as feel:
+    # Creating a socket in the main subset
+    feel.main.vector = Vector()
+
+    # Join the geometry
+    feel.generated.geometry = Mesh.Cube()
+
+> [!NOTE]
+> It is recommended to use the `for_each` method of a domain rather than instantiate
+> the class
+
+``` python
+cube = Mesh.Cube()
+with cube.faces.for_each(position=nd.position) as feel:
+    pass
+```
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : geometry to loop on

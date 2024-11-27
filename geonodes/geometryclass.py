@@ -992,6 +992,30 @@ class Domain(GeoBase, NodeCache):
     # ForEachElement loop
 
     def for_each(self, sockets={}, **kwargs):
+        """ > Create a <!ForEachElement> zone on this domain
+
+        The <!ForEachElement> zone is initialized with the domain, its geometry and
+        the selection:
+
+        ``` python
+        ico = Mesh.IcoSphere(subdivisions=2)
+        with ico.faces[(nd.index % 2).equal(0)].for_each(position=nd.position) as feel:
+            face = Mesh(feel.element)
+            face.points.offset = feel.position*1.1
+            feel.generated.geometry = face
+
+        feel.generated.geometry.out()
+        ```
+
+        Arguments
+        ---------
+        - sockets (dict) : input sockets
+        - kwargs : input sockets
+
+        Returns
+        -------
+        - ForEachElement zone
+        """
 
         from geonodes import ForEachElement
 

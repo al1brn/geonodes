@@ -33,6 +33,7 @@ Properties:
 - **C** : [capture](domain.md#capture) :black_small_square: [capture_attribute](domain.md#capture_attribute) :black_small_square: [captures](domain.md#captures)
 - **D** : [delete](domain.md#delete) :black_small_square: [delete_all](domain.md#delete_all) :black_small_square: [delete_edges_and_faces](domain.md#delete_edges_and_faces) :black_small_square: [delete_faces](domain.md#delete_faces) :black_small_square: [delete_geometry](domain.md#delete_geometry) :black_small_square: [duplicate_elements](domain.md#duplicate_elements)
 - **E** : [evaluate_at_index](domain.md#evaluate_at_index) :black_small_square: [evaluate_on_domain](domain.md#evaluate_on_domain) :black_small_square: [extrude](domain.md#extrude)
+- **F** : [for_each](domain.md#for_each)
 - **I** : [id](domain.md#id) :black_small_square: [\_\_init__](domain.md#__init__)
 - **M** : [material](domain.md#material) :black_small_square: [material_index](domain.md#material_index)
 - **O** : [offset](domain.md#offset)
@@ -495,6 +496,41 @@ with GeoNodes("Extrusion"):
 
 #### Returns:
 - **Geometry** : self
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Domain](domain.md#domain) :black_small_square: [Content](domain.md#content) :black_small_square: [Methods](domain.md#methods)</sub>
+
+----------
+### for_each()
+
+> method
+
+``` python
+for_each(sockets={}, **kwargs)
+```
+
+> Create a [ForEachElement](foreachelement.md#foreachelement) zone on this domain
+
+The [ForEachElement](foreachelement.md#foreachelement) zone is initialized with the domain, its geometry and
+the selection:
+
+``` python
+ico = Mesh.IcoSphere(subdivisions=2)
+with ico.faces[(nd.index % 2).equal(0)].for_each(position=nd.position) as feel:
+    face = Mesh(feel.element)
+    face.points.offset = feel.position*1.1
+    feel.generated.geometry = face
+
+feel.generated.geometry.out()
+```
+
+#### Arguments:
+- **sockets** (_dict_ = {}) : input sockets
+- **kwargs** : input sockets
+
+
+
+#### Returns:
+- **ForEachElement** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Domain](domain.md#domain) :black_small_square: [Content](domain.md#content) :black_small_square: [Methods](domain.md#methods)</sub>
 

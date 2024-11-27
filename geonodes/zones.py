@@ -423,6 +423,39 @@ class ForEachElement(Zone):
 
         The zone initialization creates properties on the input_items.
 
+        The output node of the zone has two subsets of sockets:
+        - ***Main*** sockets
+        - ***Generated*** sockets
+
+        Sockets can be created in each subset by setting a property. They can be read once
+        the block in closed:
+
+        ``` python
+        with ForEachElement() as feel:
+            # Creating a socket in the main subset
+            feel.main.vector = Vector()
+
+            # Join the geometry
+            feel.generated.geometry = Mesh.Cube()
+
+        > [!NOTE]
+        > It is recommended to use the `for_each` method of a domain rather than instantiate
+        > the class
+
+        ``` python
+        cube = Mesh.Cube()
+        with cube.faces.for_each(position=nd.position) as feel:
+            pass
+        ```
+
+        Properties
+        ----------
+        - index (Integer) : Index socket
+        - element (Geometry) : Element socket
+        - main (Node like) : contains the sockets in the ***Main*** part of the output node
+        - generated (Node like) : contains the sockets in the ***Generated*** part of the output node
+
+
         Arguments
         ---------
         - geometry (Geometry) : geometry to loop on
