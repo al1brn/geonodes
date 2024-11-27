@@ -349,6 +349,7 @@ You will find here how nodes are implemented
 - [Edge](edge.md#edge) :white_small_square: [count](edge.md#count)
 - [Face](face.md#face) :white_small_square: [count](face.md#count)
 - [Instance](instance.md#instance) :white_small_square: [count](instance.md#count)
+- [Layer](layer.md#layer) :white_small_square: [count](layer.md#count)
 - [Spline](spline.md#spline) :white_small_square: [count](spline.md#count)
 - [SplinePoint](splinepoint.md#splinepoint) :white_small_square: [count](splinepoint.md#count)
 - [Vertex](vertex.md#vertex) :white_small_square: [count](vertex.md#count)

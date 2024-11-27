@@ -21,6 +21,7 @@ GreasePencil(value=None, name=None, tip=None)
 
 - [domain_size](greasepencil.md#domain_size)
 - [FromCurve](greasepencil.md#fromcurve)
+- [layers](greasepencil.md#layers)
 - [merge_layers](greasepencil.md#merge_layers)
 - [merge_layers_by_group_id](greasepencil.md#merge_layers_by_group_id)
 - [merge_layers_by_name](greasepencil.md#merge_layers_by_name)
@@ -38,6 +39,15 @@ GreasePencil(value=None, name=None, tip=None)
 > Node ERROR: Node 'Size' not found, component = 'GREASEPENCIL'
 
 :warning: returns the **node**, not a socket
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [GreasePencil](greasepencil.md#greasepencil) :black_small_square: [Content](greasepencil.md#content) :black_small_square: [Properties](greasepencil.md#properties)</sub>
+
+### layers
+
+> _type_: **Layer**
+>
+
+LAYER domain
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [GreasePencil](greasepencil.md#greasepencil) :black_small_square: [Content](greasepencil.md#content) :black_small_square: [Properties](greasepencil.md#properties)</sub>
 

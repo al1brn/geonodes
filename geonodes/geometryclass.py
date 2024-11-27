@@ -2271,11 +2271,6 @@ class SplinePoint(Point):
         return Node('Offset Point in Curve', {'Point Index': point_index, 'Offset': offset}).point_index
 
 
-
-
-
-
-
 class CloudPoint(Point):
     """ > Point domain of a <!Cloud>
     """
@@ -5490,6 +5485,10 @@ class Volume(Geometry):
 
 class GreasePencil(Geometry):
     """ > Grease Pencil Geometry
+
+    Properties
+    ----------
+    - layers (Layer) : LAYER domain
 
     """
 

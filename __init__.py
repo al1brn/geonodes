@@ -13,7 +13,7 @@ $ DOC toc_max_depth = 1
 - <!Group> : create a <*Node Group> node
 - <!GroupF> : a different way to create a <*Node Group> node
 - <!Layout> : to place nodes in a frame
-- <!Repeat> and <!Simulation> : create a <!Zone>
+- <!Repeat>, <!Simulation> and <!ForEachElement>: create a <!Zone>
 
 ### Libraries
 
@@ -47,6 +47,7 @@ Rather than using <!Node> class, scripting nodes is done by using <!Socket> clas
 - <!Geometry> socket:
   - <!Mesh>
   - <!Curve>
+  - <!GreasePencil>
   - <!Cloud>
   - <!Instances>
   - <!Volume>
@@ -65,6 +66,8 @@ Geometries have specific <!Domain>:
 - <!Curve> :
   - <!SplinePoint> : property <!Curve#points>
   - <!Spline> : property <!Curve#splines>
+  - <!GreasePencil> :
+    - <!Layer> : property <!GreasePencil#layers>
 - <!Cloud> :
   - <!CloudPoint> : property <!Cloud#points>
 - <!Instances> :
@@ -108,8 +111,7 @@ from .geonodes.floatclass import Integer, Float
 from .geonodes.textures import Texture
 from .geonodes.vectorclass import Vector, Rotation, Matrix
 from .geonodes.geometryclass import Geometry, Mesh, Curve, Cloud, Instances, Volume, GreasePencil
-from .geonodes.geometryclass import Domain, Vertex, Edge, Face, Corner, SplinePoint, Spline, CloudPoint, Instance
-
+from .geonodes.geometryclass import Domain, Vertex, Edge, Face, Corner, SplinePoint, Spline, CloudPoint, Instance, Layer
 
 # ----------------------------------------------------------------------------------------------------
 # Shader

@@ -14,7 +14,7 @@
 - [Group](group.md#group) : create a <*Node Group> node
 - [GroupF](groupf.md#groupf) : a different way to create a <*Node Group> node
 - [Layout](layout.md#layout) : to place nodes in a frame
-- [Repeat](repeat.md#repeat) and [Simulation](simulation.md#simulation) : create a [Zone](zone.md#zone)
+- [Repeat](repeat.md#repeat), [Simulation](simulation.md#simulation) and [ForEachElement](foreachelement.md#foreachelement): create a [Zone](zone.md#zone)
 
 ### Libraries
 
@@ -48,6 +48,7 @@ Rather than using [Node](node.md#node) class, scripting nodes is done by using [
 - [Geometry](geometry.md#geometry) socket:
   - [Mesh](mesh.md#mesh)
   - [Curve](curve.md#curve)
+  - [GreasePencil](greasepencil.md#greasepencil)
   - [Cloud](cloud.md#cloud)
   - [Instances](instances.md#instances)
   - [Volume](volume.md#volume)
@@ -66,6 +67,8 @@ Geometries have specific [Domain](domain.md#domain):
 - [Curve](curve.md#curve) :
   - [SplinePoint](splinepoint.md#splinepoint) : property [points](curve.md#points)
   - [Spline](spline.md#spline) : property [splines](curve.md#splines)
+  - [GreasePencil](greasepencil.md#greasepencil) :
+    - [Layer](layer.md#layer) : property [layers](greasepencil.md#layers)
 - [Cloud](cloud.md#cloud) :
   - [CloudPoint](cloudpoint.md#cloudpoint) : property [points](cloud.md#points)
 - [Instances](instances.md#instances) :
@@ -107,6 +110,7 @@ Geometries have specific [Domain](domain.md#domain):
   - [Instance](instance.md#instance)
   - [Instances](instances.md#instances)
   - [Integer](integer.md#integer)
+  - [Layer](layer.md#layer)
   - [Layout](layout.md#layout)
   - [Material](material.md#material)
   - [Matrix](matrix.md#matrix)
