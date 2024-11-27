@@ -121,7 +121,7 @@ class Zone:
     def init_zone(self, sockets={}, **snake_case_sockets):
         """ > Two nodes zone
 
-        **Zone** is the root class for <!Simulation> and <!Repeat> zones.
+        **Zone** is the root class for <!Simulation>, <!Repeat> and <!ForEachElement> zones.
 
         #### With block
 

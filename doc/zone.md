@@ -29,7 +29,7 @@ init_zone(sockets={}, **snake_case_sockets)
 
 > Two nodes zone
 
-**Zone** is the root class for [Simulation](simulation.md#simulation) and [Repeat](repeat.md#repeat) zones.
+**Zone** is the root class for [Simulation](simulation.md#simulation), [Repeat](repeat.md#repeat) and [ForEachElement](foreachelement.md#foreachelement) zones.
 
 #### With block
 
