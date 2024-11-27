@@ -31,6 +31,7 @@ with ForEachElement() as feel:
 
     # Join the geometry
     feel.generated.geometry = Mesh.Cube()
+```
 
 > [!NOTE]
 > It is recommended to use the `for_each` method of a domain rather than instantiate
@@ -139,6 +140,7 @@ with ForEachElement() as feel:
 
     # Join the geometry
     feel.generated.geometry = Mesh.Cube()
+```
 
 > [!NOTE]
 > It is recommended to use the `for_each` method of a domain rather than instantiate
