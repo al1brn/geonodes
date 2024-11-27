@@ -34,18 +34,18 @@ float = Float(3.14, name="User input", subtype='ANGLE') # Create a new Float gro
 
 ### Inherited
 
-[blur](socket.md#blur) :black_small_square: [\_cache](nodecache.md#_cache) :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](socket.md#check_in_list) :black_small_square: [data_type](socket.md#data_type) :black_small_square: [\_geometry_class](socket.md#_geometry_class) :black_small_square: [\_\_getattr__](socket.md#__getattr__) :black_small_square: [get_socket_class](socket.md#get_socket_class) :black_small_square: [IndexSwitch](socket.md#indexswitch) :black_small_square: [index_switch](socket.md#index_switch) :black_small_square: [input_type](socket.md#input_type) :black_small_square: [\_jump](socket.md#_jump) :black_small_square: [\_lc](socket.md#_lc) :black_small_square: [\_lcop](socket.md#_lcop) :black_small_square: [MenuSwitch](socket.md#menuswitch) :black_small_square: [menu_switch](socket.md#menu_switch) :black_small_square: [Named](attribute.md#named) :black_small_square: [NamedAttribute](attribute.md#namedattribute) :black_small_square: [node](socket.md#node) :black_small_square: [node_color](socket.md#node_color) :black_small_square: [node_label](socket.md#node_label) :black_small_square: [\_reset](socket.md#_reset) :black_small_square: [\_run_tests](socket.md#_run_tests) :black_small_square: [socket_type](socket.md#socket_type) :black_small_square: [\_\_str__](socket.md#__str__) :black_small_square: [Switch](socket.md#switch) :black_small_square: [switch](socket.md#switch) :black_small_square:
+[blur](socket.md#blur) :black_small_square: [\_cache](nodecache.md#_cache) :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](socket.md#check_in_list) :black_small_square: [data_type](socket.md#data_type) :black_small_square: [\_geometry_class](socket.md#_geometry_class) :black_small_square: [\_\_getattr__](socket.md#__getattr__) :black_small_square: [get_socket_class](socket.md#get_socket_class) :black_small_square: [hash_value](socket.md#hash_value) :black_small_square: [IndexSwitch](socket.md#indexswitch) :black_small_square: [index_switch](socket.md#index_switch) :black_small_square: [input_type](socket.md#input_type) :black_small_square: [\_jump](socket.md#_jump) :black_small_square: [\_lc](socket.md#_lc) :black_small_square: [\_lcop](socket.md#_lcop) :black_small_square: [MenuSwitch](socket.md#menuswitch) :black_small_square: [menu_switch](socket.md#menu_switch) :black_small_square: [Named](attribute.md#named) :black_small_square: [NamedAttribute](attribute.md#namedattribute) :black_small_square: [node](socket.md#node) :black_small_square: [node_color](socket.md#node_color) :black_small_square: [node_label](socket.md#node_label) :black_small_square: [pin_gizmo](socket.md#pin_gizmo) :black_small_square: [\_reset](socket.md#_reset) :black_small_square: [\_run_tests](socket.md#_run_tests) :black_small_square: [socket_type](socket.md#socket_type) :black_small_square: [\_\_str__](socket.md#__str__) :black_small_square: [Switch](socket.md#switch) :black_small_square: [switch](socket.md#switch) :black_small_square:
 
 ## Content
 
 - **A** : [Angle](float.md#angle)
 - **C** : [ceiling](float.md#ceiling) :black_small_square: [clamp](float.md#clamp) :black_small_square: [color_ramp](float.md#color_ramp) :black_small_square: [curve](float.md#curve)
-- **D** : [Distance](float.md#distance)
+- **D** : [dial_gizmo](float.md#dial_gizmo) :black_small_square: [Distance](float.md#distance)
 - **E** : [equal](float.md#equal)
 - **F** : [Factor](float.md#factor) :black_small_square: [floor](float.md#floor)
 - **G** : [greater_equal](float.md#greater_equal) :black_small_square: [greater_than](float.md#greater_than)
 - **I** : [\_\_init__](float.md#__init__)
-- **L** : [less_equal](float.md#less_equal) :black_small_square: [less_than](float.md#less_than)
+- **L** : [less_equal](float.md#less_equal) :black_small_square: [less_than](float.md#less_than) :black_small_square: [linear_gizmo](float.md#linear_gizmo)
 - **M** : [map_range](float.md#map_range) :black_small_square: [map_range_linear](float.md#map_range_linear) :black_small_square: [map_range_smooth](float.md#map_range_smooth) :black_small_square: [map_range_smoother](float.md#map_range_smoother) :black_small_square: [map_range_stepped](float.md#map_range_stepped) :black_small_square: [mix](float.md#mix)
 - **N** : [not_equal](float.md#not_equal)
 - **O** : [out](float.md#out)
@@ -170,6 +170,31 @@ curve(factor=None, keep=None)
 
 #### Returns:
 - **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### dial_gizmo()
+
+> method
+
+``` python
+dial_gizmo(position=None, up=None, screen_space=None, radius=None, color_id='PRIMARY')
+```
+
+> Node ERROR: Node 'Dial Gizmo' not found
+
+#### Arguments:
+- **position** (_Vector_ = None) : socket 'Position' (Position)
+- **up** (_Vector_ = None) : socket 'Up' (Up)
+- **screen_space** (_Boolean_ = None) : socket 'Screen Space' (Screen Space)
+- **radius** (_Float_ = None) : socket 'Radius' (Radius)
+- **color_id** (_str_ = PRIMARY) : Node.color_id in ('PRIMARY', 'SECONDARY', 'X', 'Y', 'Z')
+
+
+
+#### Returns:
+- **Gizmo** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
 
@@ -401,6 +426,30 @@ less_than(other)
 
 #### Returns:
 - **Boolean** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### linear_gizmo()
+
+> method
+
+``` python
+linear_gizmo(position=None, direction=None, color_id='PRIMARY', draw_style='ARROW')
+```
+
+> Node ERROR: Node 'Linear Gizmo' not found
+
+#### Arguments:
+- **position** (_Vector_ = None) : socket 'Position' (Position)
+- **direction** (_Vector_ = None) : socket 'Direction' (Direction)
+- **color_id** (_str_ = PRIMARY) : Node.color_id in ('PRIMARY', 'SECONDARY', 'X', 'Y', 'Z')
+- **draw_style** (_str_ = ARROW) : Node.draw_style in ('ARROW', 'CROSS', 'BOX')
+
+
+
+#### Returns:
+- **Gizmo** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
 

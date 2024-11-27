@@ -810,3 +810,173 @@ def demo():
         # ----- To surface output
 
         ped.out()
+
+    # ====================================================================================================
+    # Blender 4.3
+
+    with GeoNodes("Blender 4.3"):
+
+        # ----------------------------------------------------------------------------------------------------
+        # Grease Pencil
+
+        with Layout("Grease Pencil"):
+            curve = Curve.Spiral()
+            gp = curve.to_grease_pencil()
+            gp = GreasePencil.FromCurve(curve.to_instance())
+
+            gp = Geometry().grease_pencil.layers.separate()
+
+            n = gp.layers.count
+
+            gp.merge_layers()
+            gp.merge_layers_by_name()
+            gp.merge_layers_by_group_id()
+
+            curve = gp.to_curves()
+
+        # ----------------------------------------------------------------------------------------------------
+        # Messages
+
+        with Layout("Warning"):
+            b = Boolean(True)
+            b.info("This is info")
+            b.warning("This is warning")
+            b.error("This is error")
+
+        # ----------------------------------------------------------------------------------------------------
+        # Hash
+
+        with Layout("Hash"):
+            s = String("Test")
+            a = s.hash_value(0)
+            b = Integer(100).hash_value(1)
+            int_value = a + b
+
+        # Raises an error
+        #curve.hash_value(100)
+
+        # ----------------------------------------------------------------------------------------------------
+        # Gabor Texture
+
+        with Layout("Gabor Texture"):
+            tex = Texture.Gabor()
+            float_value = tex.value
+
+        # ----------------------------------------------------------------------------------------------------
+        # Matrix determinant
+
+        with Layout("Matrix determinant"):
+            float_value += Matrix().determinant
+
+        # ----------------------------------------------------------------------------------------------------
+        # Imports
+
+        with Layout("Import"):
+            imp_geo = Mesh.ImportOBJ("Path")
+            imp_geo += Mesh.ImportSTL("Path")
+            imp_geo += Instances.ImportPLY("Ply")
+            imp_geo.name = "Imported Geometries"
+
+        # ----------------------------------------------------------------------------------------------------
+        # Integer Math
+
+        with Layout("Integer Math"):
+            a = Integer(123)
+            a = a + a
+            a = a + 10
+            a = 10 + a
+            a += 10
+
+            b = Integer(345)
+            b = b - a
+            b = 10 - b
+            b = b - 10
+            b += 34
+
+            c = Integer(456)
+            c = c * b
+            c = c * 10
+            c = 10 * c
+            c *= 10
+
+            d = Integer(567)
+            d = d // c
+            d = d // 10
+            d = 10 // d
+            d //= 10
+
+            a = a.multiply_add(2, 3)
+
+            a = abs(a)
+            a = -a
+            a = a.sign()
+            s
+            c = a**b
+
+            a = d.min(a).max(c)
+
+            a = d.divide_round(a)
+            b = d.divide_floor(b)
+            c = d.divide_ceiling(c)
+
+            a = a.floored_modulo(b)
+            b = b.modulo(c)
+
+            c = a.GCD(b)
+            a = a.LCM(c)
+
+            int_value += a
+
+        # ----------------------------------------------------------------------------------------------------
+        # Gizmo
+
+        with Layout("Gizmo"):
+
+            val = Float(3.14)
+            #gizmo = val.linear_gizmo()
+
+            lg = nd.linear_gizmo(val)
+            lg.value = 1
+            lg.value = 2
+            lg.value = 3
+            lg.pin_gizmo = True
+
+            dg = val.dial_gizmo()
+            val.pin_gizmo = True
+
+            tg = Matrix().transform_gizmo()
+            print(dir(tg))
+            tg.pin_gizmo = True
+
+        # ----------------------------------------------------------------------------------------------------
+        # Geometry name
+
+        with Layout("Geometry name"):
+            spiral = Curve.Spiral()
+            spiral.name = "Spiral (Curve)"
+            circle = Mesh.Circle()
+            circle.name = "Circle (Mesh)"
+
+            named_geo = spiral.to_instance() + circle.to_instance()
+
+        # ----------------------------------------------------------------------------------------------------
+        # For each element
+
+        with Layout("For Each Element"):
+
+            cube = Mesh.Cube()
+            with cube.faces.for_each(position=nd.position) as feel:
+                elem = feel.element
+                elem.offset = (feel.index, 0, 0)
+                feel.generated.geometry = elem
+
+
+        # Done
+
+        geo = imp_geo.to_instance()
+        geo += named_geo
+        geo += feel.generated.geometry
+        geo.out()
+
+        val = int_value + float_value
+        val.out("Value")

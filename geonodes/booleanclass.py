@@ -130,3 +130,46 @@ class Boolean(Attribute):
         - Boolean
         """
         return Node('Random Value', {'Probability': probability, 'ID': id, 'Seed': seed}, data_type='BOOLEAN')._out
+
+
+    # ----------------------------------------------------------------------------------------------------
+    # Messages
+
+    def warning(self, message=None):
+        """ > Node <&Node Warning>
+
+        Arguments
+        ---------
+        - message (String) : socket 'Message' (Message)
+
+        Returns
+        -------
+        - Boolean
+        """
+        return self._jump(Node('Warning', {'Show': self, 'Message': message}, warning_type='WARNING')._out)
+
+    def info(self, message=None):
+        """ > Node <&Node Warning>
+
+        Arguments
+        ---------
+        - message (String) : socket 'Message' (Message)
+
+        Returns
+        -------
+        - Boolean
+        """
+        return self._jump(Node('Warning', {'Show': self, 'Message': message}, warning_type='INFO')._out)
+
+    def error(self, message=None):
+        """ > Node <&Node Warning>
+
+        Arguments
+        ---------
+        - message (String) : socket 'Message' (Message)
+
+        Returns
+        -------
+        - Boolean
+        """
+        return self._jump(Node('Warning', {'Show': self, 'Message': message}, warning_type='ERROR')._out)

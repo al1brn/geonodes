@@ -91,12 +91,14 @@ d360   = tau
 e      = np.e
 
 from .geonodes.treeclass import Layout, Break, Tree, Node, Group, GroupF
-from .geonodes.zones import Zone, Repeat, Simulation
+from .geonodes.zones import Zone, Repeat, Simulation, ForEachElement
 
 from .geonodes.geonodes import GeoNodes
 
 from .geonodes.staticclass import nd
 from .geonodes import gnmath
+
+from .geonodes.gizmoclass import Gizmo
 
 from .geonodes.socketclass import Socket, Attribute, String, Material, Image, Object, Collection, Menu
 
@@ -105,7 +107,7 @@ from .geonodes.colorclass import Color
 from .geonodes.floatclass import Integer, Float
 from .geonodes.textures import Texture
 from .geonodes.vectorclass import Vector, Rotation, Matrix
-from .geonodes.geometryclass import Geometry, Mesh, Curve, Cloud, Instances, Volume
+from .geonodes.geometryclass import Geometry, Mesh, Curve, Cloud, Instances, Volume, GreasePencil
 from .geonodes.geometryclass import Domain, Vertex, Edge, Face, Corner, SplinePoint, Spline, CloudPoint, Instance
 
 

@@ -24,7 +24,7 @@ Initialize self.  See help(type(self)) for accurate signature.
 > method
 
 ``` python
-init_zone(sockets={}, create_geometry=True, **snake_case_sockets)
+init_zone(sockets={}, **snake_case_sockets)
 ```
 
 > Two nodes zone
@@ -105,7 +105,6 @@ geo = repeat_zone.geometry
 
 #### Arguments:
 - **sockets** (_dict_ = {}) : sockets to create, string names
-- **create_geometry** (_bool_ = True) : ensure the 'Geometry' socket is created
 - **snake_case_sockets** : sockets to create, snake_case names
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Zone](zone.md#zone) :black_small_square: [Content](zone.md#content) :black_small_square: [Methods](zone.md#methods)</sub>

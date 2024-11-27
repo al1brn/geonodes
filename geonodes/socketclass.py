@@ -314,6 +314,17 @@ class Socket(NodeCache):
         return self._lc(label=label, color='OPERATION')
 
     # =============================================================================================================================
+    # New in 4.3 : pin gizmo
+
+    @property
+    def pin_gizmo(self):
+        return self._bsocket.pin_gizmo
+
+    @pin_gizmo.setter
+    def pin_gizmo(self, value):
+        self._bsocket.pin_gizmo = value
+
+    # =============================================================================================================================
     # Access to other output sockets of the owning node
 
     def __getattr__(self, name):
@@ -451,44 +462,6 @@ class Socket(NodeCache):
         Tree.current_tree.set_input_socket_default(menu_socket, menu)
 
         # Done
-
-        return cls(node._out)
-
-
-
-        #return Menu(None, name=name, menu=menu, items=items, tip=tip, input_type=cls.input_type())
-
-        cls.input_type()
-
-        # ----- Create the node
-
-        node = Node('Menu Switch', data_type=cls.input_type())
-
-        # ----- Create the items
-
-        node._set_items(items, clear=True)
-
-        # ----- Plug the menu
-
-        menu_index = None
-        if isinstance(menu, int):
-            menu_index = menu
-
-        if menu_index is None:
-            menu_index = 0
-
-        menu_socket = utils.get_bsocket(menu)
-        set_menu_index = False
-        if menu_socket is None:
-            #menu_socket = Tree.new_input('NodeSocketMenu', name=name, value=menu_index, description=tip)
-            menu_socket = Tree.new_input('NodeSocketMenu', name=name, value=None, description=tip)
-            set_menu_index = True
-
-        node.plug_value_into_socket(menu_socket, node.in_socket('Menu'))
-        if set_menu_index:
-            Tree.current_tree.set_input_socket_default(menu_socket, list(items.keys())[menu_index])
-
-        # ----- Done
 
         return cls(node._out)
 
@@ -712,6 +685,24 @@ class Socket(NodeCache):
 
         data_type = self.data_type(['FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR'])
         return Node('Blur Attribute', {'Value': self, 'Iterations': iterations, 'Weight': weight}, data_type=data_type)._out
+
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Hasch value
+
+    def hash_value(self, seed=None):
+        """ > Node <&Node Hash Value>
+
+        Arguments
+        ---------
+        - seed (Integer) : socket 'Seed' (Seed)
+        - data_type (str): Node.data_type in ('FLOAT', 'INT', 'VECTOR', 'ROTATION', 'MATRIX', 'STRING', 'RGBA')
+
+        Returns
+        -------
+        - Integer
+        """
+        data_type = utils.get_input_type(self, restrict_to=['FLOAT', 'INT', 'VECTOR', 'ROTATION', 'MATRIX', 'STRING', 'RGBA'], default=None)
+        return Node('Hash Value', {'Value': self, 'Seed': seed}, data_type=data_type)._out
 
     # ====================================================================================================
     # Run tests

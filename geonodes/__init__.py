@@ -19,11 +19,11 @@ from .staticclass import nd
 from . import gnmath
 
 from .socketclass import Socket, String, Material, Image, Object, Collection, Menu
-from .zones import Repeat, Simulation
+from .zones import Repeat, Simulation, ForEachElement
 
 from .booleanclass import Boolean
 from .colorclass import Color
 from .floatclass import Integer, Float
 from .textures import Texture
 from .vectorclass import Vector, Rotation, Matrix
-from .geometryclass import Geometry, Mesh, Curve, Cloud, Instances, Volume
+from .geometryclass import Geometry, Mesh, Curve, Cloud, Instances, Volume, GreasePencil

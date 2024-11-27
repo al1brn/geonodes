@@ -40,6 +40,8 @@ The domain specific to geometries are the followings:
     - Curve:
         - points
         - splines
+    - GreasePencil:
+        - layers
     - Instances
         - insts
     - Cloud
@@ -431,6 +433,48 @@ class Geometry(Socket, GeoBase):
         return node
 
     # ====================================================================================================
+    # Properties
+
+    @property
+    def name(self):
+        """ > Name write only property
+
+        Set the geometry name
+
+        ``` python
+        geometry.name = 'geo name'
+        ```
+
+        - getter : None, write only Property
+        - setter : node <&Node Set Geometry Name>
+
+        Returns
+        -------
+        - Error
+        """
+        raise NodeError(f"Property 'name' is write only")
+
+    @name.setter
+    def name(self, name=None):
+        return self.set_name(name)
+
+    def set_name(self, name=None):
+        """ > Node <&Node Set Geometry Name>
+
+        [&JUMP]
+
+        Arguments
+        ---------
+        - name (String) : socket 'Name' (Name)
+
+        Returns
+        -------
+        - Geometry
+        """
+        return self._jump(Node('Set Geometry Name', {'Geometry': self, 'Name': name})._out)
+
+
+    # ====================================================================================================
     # Methods
 
     # ----- Viewer
@@ -695,6 +739,16 @@ class Geometry(Socket, GeoBase):
         return Curve(self.separate_components.curve)
 
     @property
+    def grease_pencil(self):
+        """ > Socket 'Grease Pencil' of node <&Node Separate Components>
+
+        Returns
+        -------
+        - GreasePencil
+        """
+        return GreasePencil(self.separate_components.grease_pencil)
+
+    @property
     def point_cloud(self):
         """ > Socket 'Point Cloud' of node <&Node Separate Components>
 
@@ -919,10 +973,10 @@ class Domain(GeoBase, NodeCache):
         raise NodeError(f"{title} restricted to domains {domains}, not '{self.DOMAIN_NAME}'")
 
     def exclude_corner(self, title):
-        return self.restrict_domain(['POINT', 'FACE', 'EDGE', 'CURVE', 'INSTANCE'])
+        return self.restrict_domain(['POINT', 'FACE', 'EDGE', 'CURVE', 'INSTANCE', 'LAYER'])
 
     def plural_domain(self, domains=None, title=""):
-        PLURAL = {'POINT': 'VERTICES', 'EDGE': 'EDGES', 'FACE': 'FACES', 'CORNER': 'CORNERS', 'SPLINE': 'SPLINES', 'CURVE': 'SPLINES'}
+        PLURAL = {'POINT': 'VERTICES', 'EDGE': 'EDGES', 'FACE': 'FACES', 'CORNER': 'CORNERS', 'SPLINE': 'SPLINES', 'CURVE': 'SPLINES', 'LAYER': 'LAYERS'}
         if domains is not None:
             self.restrict_domain(domains=domains, title=title)
         return PLURAL[self.DOMAIN_NAME]
@@ -933,6 +987,15 @@ class Domain(GeoBase, NodeCache):
             return rename[self.DOMAIN_NAME]
         else:
             return self.DOMAIN_NAME
+
+    # ====================================================================================================
+    # ForEachElement loop
+
+    def for_each(self, sockets={}, **kwargs):
+
+        from geonodes import ForEachElement
+
+        return ForEachElement(geometry=self._geo, selection=self._sel, domain=self.DOMAIN_NAME, sockets=sockets, **kwargs)
 
     # ====================================================================================================
     # Properties
@@ -2924,10 +2987,10 @@ class Spline(Domain):
 # =============================================================================================================================
 
 class Instance(Domain):
-    """ > Instant domain of <!Instances>
+    """ > Instance domain of <!Instances>
 
     > [!NOTE]
-    > The geometry has only one domain sharing the same:
+    > The geometry has only one domain sharing the same name:
     > - <!Instances> : name of geometry class
     > - **Instance** : name of domain class
     > - <!Instances#insts> : name of the domain property of class <!Instances>
@@ -3063,6 +3126,30 @@ class Instance(Domain):
 
 # =============================================================================================================================
 # =============================================================================================================================
+# Layer Domain
+# =============================================================================================================================
+# =============================================================================================================================
+
+class Layer(Domain):
+    """ > Layer domain of <!GreasePencil>
+
+    """
+
+    DOMAIN_NAME = 'LAYER'
+
+    @property
+    def count(self):
+        """ > Socket 'Instance Count' of node <&Node Domain Size>
+
+        Returns
+        -------
+        - Integer
+        """
+        return self._geo.domain_size.layer_count
+
+
+# =============================================================================================================================
+# =============================================================================================================================
 # Mesh
 # =============================================================================================================================
 # =============================================================================================================================
@@ -3150,6 +3237,39 @@ class Mesh(Geometry):
         - Mesh
         """
         return Volume(volume).to_mesh(voxel_size=voxel_size, voxel_amount=voxel_amount, threshold=threshold, adaptivity=adaptivity, resolution_mode=resolution_mode)
+
+    # =============================================================================================================================
+    # Load
+
+    @classmethod
+    def ImportOBJ(cls, path=None):
+        """ > Node <&Node Import OBJ>
+
+        Arguments
+        ---------
+        - path (String) : socket 'Path' (Path)
+
+        Returns
+        -------
+        - Mesh
+        """
+        node = Node('Import OBJ', {'Path': path})
+        return cls(node._out)
+
+    @classmethod
+    def ImportSTL(cls, path=None):
+        """ > Node <&Node Import STL>
+
+        Arguments
+        ---------
+        - path (String) : socket 'Path' (Path)
+
+        Returns
+        -------
+        - Mesh
+        """
+        node = Node('Import STL', {'Path': path})
+        return cls(node._out)
 
     # =============================================================================================================================
     # Properties
@@ -4472,6 +4592,24 @@ class Curve(Geometry):
         """
         return Cloud.FromCurve(curve=self, count=count, length=length, mode='EVALUATED')
 
+    def to_grease_pencil(self, instances_as_layers=None):
+        """ Node 'Curves to Grease Pencil' (GeometryNodeCurvesToGreasePencil)
+
+        <&NODE Curves to Grease Pencil>
+
+        Arguments
+        ---------
+        - instances_as_layers (Boolean) : socket 'Instances as Layers' (Instances as Layers)
+
+        Returns
+        -------
+        - grease_pencil (GreasePencil)
+        """
+        from geonodes import GreasePencil
+
+        node = Node('Curves to Grease Pencil', {'Curves': self.to_instance(), 'Selection': self._sel, 'Instances as Layers': instances_as_layers})
+        return GreasePencil(node._out)
+
     def deform_on_surface(self):
         """ > Node <&Node Deform Curves on Surface>
 
@@ -4985,6 +5123,21 @@ class Instances(Geometry):
             'Text Box Width': text_box_width, 'Text Box Height': text_box_height},
             overflow=overflow, align_x=align_x, align_y=align_y, pivot_mode=pivot_mode)._out)
 
+    @classmethod
+    def ImportPLY(cls, path=None):
+        """ > Node <&Node Import PLY>
+
+        Arguments
+        ---------
+        - path (String) : socket 'Path' (Path)
+
+        Returns
+        -------
+        - Instances
+        """
+        node = Node('Import PLY', {'Path': path})
+        return cls(node._out)
+
     # =============================================================================================================================
     # Properties
 
@@ -5106,6 +5259,24 @@ class Instances(Geometry):
         - Instances : self
         """
         return self._jump(Node('Rotate Instances', {'Instances': self, 'Selection': self._sel, 'Rotation': rotation, 'Pivot Point': pivot_point, 'Local Space': local_space})._out)
+
+    def to_grease_pencil(self, instances_as_layers=None):
+        """ Node 'Curves to Grease Pencil' (GeometryNodeCurvesToGreasePencil)
+
+        <&NODE Curves to Grease Pencil>
+
+        Arguments
+        ---------
+        - instances_as_layers (Boolean) : socket 'Instances as Layers' (Instances as Layers)
+
+        Returns
+        -------
+        - grease_pencil (Geometry)
+        """
+
+        node = Node('Curves to Grease Pencil', {'Curves': self, 'Selection': self._sel, 'Instances as Layers': instances_as_layers})
+        return node._out
+
 
 # =============================================================================================================================
 # =============================================================================================================================
@@ -5308,3 +5479,117 @@ class Volume(Geometry):
         - Mesh
         """
         return self.to_mesh(voxel_size=voxel_size, threshold=threshold, adaptivity=adaptivity, resolution_mode='VOXEL_SIZE')
+
+
+
+# =============================================================================================================================
+# =============================================================================================================================
+# Grease Pencil
+# =============================================================================================================================
+# =============================================================================================================================
+
+class GreasePencil(Geometry):
+    """ > Grease Pencil Geometry
+
+    """
+
+    def _reset(self):
+
+        super()._reset()
+
+        self.layers  = Layer(self)
+
+    # =============================================================================================================================
+    # Properties
+
+    @property
+    def domain_size(self):
+        """ > Node <&Domain Size>, component = 'GREASEPENCIL'
+
+        [&RETURN_NODE]
+
+        Returns
+        -------
+        - Node : 'Domain Size" node
+        """
+        return self._cache('Domain Size', {'Geometry': self}, component='GREASEPENCIL')
+
+    # =============================================================================================================================
+    # Constructors
+
+    @classmethod
+    def FromCurve(cls, curves=None, selection=None, instances_as_layers=True):
+        """ > Constructor node <&Node Curves to Grease Pencil>
+
+        Arguments
+        ---------
+        - curves (Geometry) : socket 'Curves' (Curves)
+        - selection (Boolean) : socket 'Selection' (Selection)
+        - instances_as_layers (Boolean = True) : socket 'Instances as Layers' (Instances as Layers)
+
+        Returns
+        -------
+        - GreasePencil
+        """
+        return cls(Node('Curves to Grease Pencil', {'Curves': curves, 'selectin': selection, 'Instances as Layers': instances_as_layers})._out)
+
+    # =============================================================================================================================
+    # to Curves
+
+    def to_curves(self, layers_as_instances=None):
+        """ Node 'Grease Pencil to Curves' (GeometryNodeGreasePencilToCurves)
+
+        <&NODE Grease Pencil to Curves>
+
+        Arguments
+        ---------
+        - grease_pencil (Geometry) : socket 'Grease Pencil' (Grease Pencil)
+        - layers_as_instances (Boolean) : socket 'Layers as Instances' (Layers as Instances)
+
+        Returns
+        -------
+        - curves (Curve)
+        """
+
+        node = Node('Grease Pencil to Curves', {'Grease Pencil': self._geo, 'Selection': self._sel, 'Layers as Instances': layers_as_instances})
+        return node._out
+
+    # =============================================================================================================================
+    # Methods
+
+    def merge_layers(self, mode='MERGE_BY_NAME'):
+        """ > Node <&Node Merge Layers>
+
+        [&JUMP]
+
+        Arguments
+        ---------
+        - mode (str): Node.mode in ('MERGE_BY_NAME', 'MERGE_BY_ID')
+
+        Returns
+        -------
+        - Grease Pencil
+        """
+        return self._jump(Node('Merge Layers', {'Grease Pencil': self, 'Selection': self._sel}, mode=mode)._out)
+
+    def merge_layers_by_name(self):
+        """ > Node <&Node Merge Layers>
+
+        [&JUMP]
+
+        Returns
+        -------
+        - Geometry
+        """
+        return self.merge_layers(mode='MERGE_BY_NAME')
+
+    def merge_layers_by_group_id(self):
+        """ > Node <&Node Merge Layers>
+
+        [&JUMP]
+
+        Returns
+        -------
+        - Grease Pencil
+        """
+        return self.merge_layers(mode='MERGE_BY_ID')

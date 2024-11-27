@@ -1,6 +1,7 @@
 from geonodes import Tree
 from .gentestmodifiers import demo
 from geonodes.demos import arrows, counters, curly, explosion, fields, fourd, gravity, helloworld, rain, relativity, shaders
+from geonodes.demos import forest, gizmo
 
 from geonodes import *
 
@@ -69,6 +70,8 @@ def receipt(demos = True):
         rain.demo()
         relativity.demo()
         shaders.demo()
+        forest.demo()
+        gizmo.demo()
 
     print()
     print("Receipt done")

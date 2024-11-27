@@ -126,7 +126,7 @@ class NodeInfo:
 
     # -----------------------------------------------------------------------------------------------------------------------------
     # Some properties
-    #
+
     @property
     def python_name(self):
         return utils.socket_name(self.bnode.name)
@@ -340,20 +340,14 @@ class NodeInfo:
 
     def yield_comment(self):
 
-        NEW_FORMAT = True
-
         _tab = " "*4
         c3 = '"""'
 
         sockets = self.get_sockets()
         params  = self.get_parameters()
 
-        if NEW_FORMAT:
-            snode = "ShaderNode" if self.is_shader else "Node"
-            yield f"\n\n{_tab*2}{c3} > Node <&{snode} {self.bnode.name}>"
-        else:
-            yield f"{_tab*2}{c3} Node '{self.bnode.name}' ({self.bnode.bl_idname})"
-            yield f"\n\n{_tab*2}<&NODE {self.bnode.name}>"
+        snode = "ShaderNode" if self.is_shader else "Node"
+        yield f"\n\n{_tab*2}{c3} > Node <&{snode} {self.bnode.name}>"
 
         if self.is_shader:
             yield f"\n\n{_tab*2}[&SHADER]"
@@ -377,24 +371,7 @@ class NodeInfo:
 
             bsocket = self.bnode.outputs[0]
             if bsocket.type != 'CUSTOM':
-
-                if NEW_FORMAT:
-                    out_socket = constants.CLASS_NAMES[self.bnode.outputs[0].type]
-
-                else:
-                    out_socket = self.out_socket_str(self.bnode.outputs[0])
-
-                    sepa = ' ['
-                    for i in range(1, len(self.bnode.outputs)):
-                        bsocket = self.bnode.outputs[i]
-                        if bsocket.type == 'CUSTOM':
-                            continue
-                        out_socket += sepa + self.out_socket_str(bsocket, '_')
-                        sepa = ', '
-
-                    if sepa != ' [':
-                        out_socket += ']'
-
+                out_socket = constants.CLASS_NAMES[self.bnode.outputs[0].type]
                 yield f"\n{_tab*2}- {out_socket}"
             else:
                 yield f"\n{_tab*2}- None"
@@ -526,31 +503,36 @@ class NodeInfo:
         sockets = self.get_sockets()
         params  = self.get_parameters()
 
-        c3 = '"""'
+        if True:
+            for line in self.yield_comment():
+                yield line
 
-        yield f"{_tab*2}{c3} Node '{self.bnode.name}' ({self.bnode.bl_idname})"
+        else:
+            c3 = '"""'
 
-        yield f"\n\n{_tab*2}<&NODE {self.bnode.name}>"
+            yield f"{_tab*2}{c3} Node '{self.bnode.name}' ({self.bnode.bl_idname})"
 
-        if sockets['has_items'] or params['has_items']:
-            yield f"\n\n{_tab*2}Arguments"
-            yield f"\n{_tab*2}---------"
-            for line in sockets['arg_help']:
-                yield f"\n{_tab*2}- {line}"
-            for line in params['arg_help']:
-                yield f"\n{_tab*2}- {line}"
+            yield f"\n\n{_tab*2}<&NODE {self.bnode.name}>"
 
-        if len(self.bnode.outputs):
-            yield f"\n\n{_tab*2}Returns"
-            yield f"\n{_tab*2}-------"
+            if sockets['has_items'] or params['has_items']:
+                yield f"\n\n{_tab*2}Arguments"
+                yield f"\n{_tab*2}---------"
+                for line in sockets['arg_help']:
+                    yield f"\n{_tab*2}- {line}"
+                for line in params['arg_help']:
+                    yield f"\n{_tab*2}- {line}"
 
-            out_sockets = [f"{utils.socket_name(bsocket.name)} ({constants.CLASS_NAMES[bsocket.type]})" for bsocket in self.bnode.outputs if bsocket.type != 'CUSTOM']
-            if return_node:
-                yield f"\n{_tab*2}- Node: [{', '.join(out_sockets)}]"
-            elif len(out_sockets):
-                yield f"\n{_tab*2}- {out_sockets[0]}"
+            if len(self.bnode.outputs):
+                yield f"\n\n{_tab*2}Returns"
+                yield f"\n{_tab*2}-------"
 
-        yield f"\n{_tab*2}{c3}\n\n"
+                out_sockets = [f"{utils.socket_name(bsocket.name)} ({constants.CLASS_NAMES[bsocket.type]})" for bsocket in self.bnode.outputs if bsocket.type != 'CUSTOM']
+                if return_node:
+                    yield f"\n{_tab*2}- Node: [{', '.join(out_sockets)}]"
+                elif len(out_sockets):
+                    yield f"\n{_tab*2}- {out_sockets[0]}"
+
+            yield f"\n{_tab*2}{c3}\n\n"
 
         # ----------------------------------------------------------------------------------------------------
         # Node call
@@ -567,23 +549,26 @@ class NodeInfo:
         if return_node:
             yield f"{_tab*2}return node\n\n"
         else:
-            count = 0
-            out_name = None
-            for bsocket in self.bnode.outputs:
-                if bsocket.enabled:
-                    if count == 0:
-                        count = 1
-                        out_name = utils.socket_name(bsocket.name)
-                    else:
-                        if count == 1:
-                            yield f"{_tab*2}{out_name} = node._out\n"
-                        attr_name = utils.socket_name(bsocket.name)
-                        yield f"{_tab*2}{out_name}.{attr_name}_ = node.{attr_name}\n"
-
-            if count == 1:
+            if True:
                 yield f"{_tab*2}return node._out\n\n"
             else:
-                yield f"{_tab*2}return {out_name}\n\n"
+                count = 0
+                out_name = None
+                for bsocket in self.bnode.outputs:
+                    if bsocket.enabled:
+                        if count == 0:
+                            count = 1
+                            out_name = utils.socket_name(bsocket.name)
+                        else:
+                            if count == 1:
+                                yield f"{_tab*2}{out_name} = node._out\n"
+                            attr_name = utils.socket_name(bsocket.name)
+                            yield f"{_tab*2}{out_name}.{attr_name}_ = node.{attr_name}\n"
+
+                if count == 1:
+                    yield f"{_tab*2}return node._out\n\n"
+                else:
+                    yield f"{_tab*2}return {out_name}\n\n"
 
     # ====================================================================================================
     # Sort the nodes
@@ -731,26 +716,6 @@ def gen_global_functions(tree_type='GeometryNodeTree', folder=''):
         f.write("\n\n")
 
     print(f"Global functions written ({count} methods or properties) in: '{path.absolute()}'")
-
-
-# =============================================================================================================================
-# Gen static functions
-
-def gen_static_class_OLD(tree_type='GeometryNodeTree', folder=''):
-
-    def gen_node(node_info, f):
-        for chars in node_info.yield_static_source():
-            f.write(chars)
-        f.write("\n")
-
-    path = Path(folder) / Path('AUTO static_classes.py')
-    path.resolve()
-    with open(path, 'w') as f:
-        f.write("class StaticNodes:\n\n")
-        count = loop_on_nodes(gen_node, f, tree_type=tree_type)
-        f.write("\n\n")
-
-    print(f"StaticNodes class written ({count} methods or properties) in: '{path.absolute()}'")
 
 # =============================================================================================================================
 # Gen node

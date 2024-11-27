@@ -24,7 +24,6 @@ updates
 """
 
 from geonodes import *
-from geonodes import macros
 
 # ====================================================================================================
 # A Wave produced by a dip
@@ -106,7 +105,7 @@ def demo():
         age_max        = Float.Time(2, "Dip life", .1)
         length         = Float.Distance(2, "Length", tip="Interval length of non null waves")
         omega          = Float(10, "Omega")
-        height         = Float.Distance(.1, "Height")
+        height         = Float.Distance(1, "Height")
         c              = Float(2, "Celerity")
         falloff        = Float(5, "Falloff", 0)
         proj_speed     = Float(1, "Projection speed", 0)
@@ -181,14 +180,13 @@ def demo():
         pts = sim.dips
 
         # ----------------------------------------------------------------------------------------------------
-        # Loop on each dip to compute one wvae per dip
+        # Loop on each dip to compute one wave per dip
 
-        with Repeat(z=0., index=0, iterations=pts.points.count) as rep:
+        with Repeat(z=0., iterations=pts.points.count) as rep:
 
             with Layout("Dip location and age"):
-                center = pts.points.sample_index(dips.position, index=rep.index)
-                age    = pts.points.sample_index(Float.Named("Age"), index=rep.index)
-                rep.index += 1
+                center = pts.points.sample_index(dips.position, index=rep.iteration)
+                age    = pts.points.sample_index(Float.Named("Age"), index=rep.iteration)
 
             with Layout("Wave height"):
                 h = dip_wave(center, t=age, c=c, falloff=falloff, omega=omega, height=height)

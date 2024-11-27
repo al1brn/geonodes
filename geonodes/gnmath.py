@@ -1051,6 +1051,284 @@ def degrees(value, use_clamp=None):
     return Node("Math", {0: value}, use_clamp=use_clamp, operation='DEGREES')._out
 
 # =============================================================================================================================
+# Integer Math
+# 'ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD',
+# 'ABSOLUTE', 'NEGATE', 'POWER',
+# 'MINIMUM', 'MAXIMUM', 'SIGN',
+# 'DIVIDE_ROUND', 'DIVIDE_FLOOR', 'DIVIDE_CEIL',
+# 'FLOORED_MODULO', 'MODULO',
+# 'GCD', 'LCM'
+
+def iadd(value, other):
+    """ Integer ADD.
+
+    > Node <&Node Integer Math>
+
+    Arguments
+    ---------
+    - value (Integer) : first value
+    - other (Integer) : second value
+
+    Returns
+    - Integer
+    """
+    return Node("Integer Math", [value, other], operation='ADD')._out
+
+def isubtract(value, other):
+    """ Integer SUBTRACT.
+
+    > Node <&Node Integer Math>
+
+    Arguments
+    ---------
+    - value (Integer) : first value
+    - other (Integer) : second value
+
+    Returns
+    - Integer
+    """
+    return Node("Integer Math", [value, other], operation='SUBTRACT')._out
+
+def imultiply(value, other):
+    """ Integer Math MULTIPLY.
+
+    > Node <&Node Integer Math>
+
+    Arguments
+    ---------
+    - value (Integer) : first value
+    - other (Integer) : second value
+
+    Returns
+    - Integer
+    """
+    return Node("Integer Math", [value, other], operation='MULTIPLY')._out
+
+def idivide(value, other):
+    """ Integer Math DIVIDE.
+
+    > Node <&Node Integer Math>
+
+    Arguments
+    ---------
+    - value (Integer) : first value
+    - other (Integer) : second value
+
+    Returns
+    - Integer
+    """
+    return Node("Integer Math", [value, other], operation='DIVIDE')._out
+
+def imultiply_add(value, multiplier, addend):
+    """ Integer Math MULTIPLY ADD.
+
+    > Node <&Node Integer Math>
+
+    Arguments
+    ---------
+    - value (Integer) : value
+    - multiplier (Integer) : multiplier value
+    - addend(Integer) : add end value
+
+    Returns
+    - Integer
+    """
+    return Node("Integer Math", [value, multiplier, addend], operation='MULTIPLY_ADD')._out
+
+def iabs(value):
+    """ Integer Math ABSOLUTE.
+
+    > Node <&Node Integer Math>
+
+    Arguments
+    ---------
+    - value (Integer) : value
+
+    Returns
+    - Integer
+    """
+    return Node("Integer Math", [value], operation='ABSOLUTE')._out
+
+def inegate(value):
+    """ Integer Math NEGATE.
+
+    > Node <&Node Integer Math>
+
+    Arguments
+    ---------
+    - value (Integer) : value
+
+    Returns
+    - Integer
+    """
+    return Node("Integer Math", [value], operation='NEGATE')._out
+
+def ipower(base, exponent):
+    """ Integer Math POWER.
+
+    > Node <&Node Integer Math>
+
+    Arguments
+    ---------
+    - base (Integer) : value
+    - exponent (Integer) : value
+
+    Returns
+    - Integer
+    """
+    return Node("Integer Math", [base, exponent], operation='POWER')._out
+
+def imin(value, other):
+    """ Integer Math MINIMUM.
+
+    > Node <&Node Integer Math>
+
+    Arguments
+    ---------
+    - value (Integer) : first value
+    - other (Integer) : second value
+
+    Returns
+    - Integer
+    """
+    return Node("Integer Math", [value, other], operation='MINIMUM')._out
+
+def imax(value, other):
+    """ Integer Math MAXIMUM.
+
+    > Node <&Node Integer Math>
+
+    Arguments
+    ---------
+    - value (Integer) : first value
+    - other (Integer) : second value
+
+    Returns
+    - Integer
+    """
+    return Node("Integer Math", [value, other], operation='MAXIMUM')._out
+
+def isign(value):
+    """ Integer Math SIGN.
+
+    > Node <&Node Integer Math>
+
+    Arguments
+    ---------
+    - value (Integer) : value
+
+    Returns
+    - Integer
+    """
+    return Node("Integer Math", [value], operation='SIGN')._out
+
+def idivide_round(value, other):
+    """ Integer Math DIVIDE_ROUND.
+
+    > Node <&Node Integer Math>
+
+    Arguments
+    ---------
+    - value (Integer) : first value
+    - other (Integer) : second value
+
+    Returns
+    - Integer
+    """
+    return Node("Integer Math", [value, other], operation='DIVIDE_ROUND')._out
+
+def idivide_floor(value, other):
+    """ Integer Math DIVIDE_FLOOR.
+
+    > Node <&Node Integer Math>
+
+    Arguments
+    ---------
+    - value (Integer) : first value
+    - other (Integer) : second value
+
+    Returns
+    - Integer
+    """
+    return Node("Integer Math", [value, other], operation='DIVIDE_FLOOR')._out
+
+def idivide_ceiling(value, other):
+    """ Integer Math DIVIDE_CEIL.
+
+    > Node <&Node Integer Math>
+
+    Arguments
+    ---------
+    - value (Integer) : first value
+    - other (Integer) : second value
+
+    Returns
+    - Integer
+    """
+    return Node("Integer Math", [value, other], operation='DIVIDE_CEIL')._out
+
+def ifloored_modulo(value, other):
+    """ Integer Math FLOORED_MODULO.
+
+    > Node <&Node Integer Math>
+
+    Arguments
+    ---------
+    - value (Integer) : first value
+    - other (Integer) : second value
+
+    Returns
+    - Integer
+    """
+    return Node("Integer Math", [value, other], operation='FLOORED_MODULO')._out
+
+
+def imodulo(value, other):
+    """ Integer Math MODULO.
+
+    > Node <&Node Integer Math>
+
+    Arguments
+    ---------
+    - value (Integer) : first value
+    - other (Integer) : second value
+
+    Returns
+    - Integer
+    """
+    return Node("Integer Math", [value, other], operation='MODULO')._out
+
+def GCD(value, other):
+    """ Integer Math GCD.
+
+    > Node <&Node Integer Math>
+
+    Arguments
+    ---------
+    - value (Integer) : first value
+    - other (Integer) : second value
+
+    Returns
+    - Integer
+    """
+    return Node("Integer Math", [value, other], operation='GCD')._out
+
+def LCM(value, other):
+    """ Integer Math LCM.
+
+    > Node <&Node Integer Math>
+
+    Arguments
+    ---------
+    - value (Integer) : first value
+    - other (Integer) : second value
+
+    Returns
+    - Integer
+    """
+    return Node("Integer Math", [value, other], operation='LCM')._out
+
+# =============================================================================================================================
 # Vector Math
 
 def vadd(value, other):

@@ -31,7 +31,7 @@ rot = Rotation(name="User input").  # Create a new Rotation group input
 
 ### Inherited
 
-[blur](socket.md#blur) :black_small_square: [\_cache](nodecache.md#_cache) :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](socket.md#check_in_list) :black_small_square: [data_type](socket.md#data_type) :black_small_square: [\_geometry_class](socket.md#_geometry_class) :black_small_square: [\_\_getattr__](socket.md#__getattr__) :black_small_square: [get_socket_class](socket.md#get_socket_class) :black_small_square: [IndexSwitch](socket.md#indexswitch) :black_small_square: [index_switch](socket.md#index_switch) :black_small_square: [input_type](socket.md#input_type) :black_small_square: [\_jump](socket.md#_jump) :black_small_square: [\_lc](socket.md#_lc) :black_small_square: [\_lcop](socket.md#_lcop) :black_small_square: [MenuSwitch](socket.md#menuswitch) :black_small_square: [menu_switch](socket.md#menu_switch) :black_small_square: [Named](attribute.md#named) :black_small_square: [NamedAttribute](attribute.md#namedattribute) :black_small_square: [node](socket.md#node) :black_small_square: [node_color](socket.md#node_color) :black_small_square: [node_label](socket.md#node_label) :black_small_square: [out](socket.md#out) :black_small_square: [\_run_tests](socket.md#_run_tests) :black_small_square: [socket_type](socket.md#socket_type) :black_small_square: [\_\_str__](socket.md#__str__) :black_small_square: [Switch](socket.md#switch) :black_small_square: [switch](socket.md#switch) :black_small_square:
+[blur](socket.md#blur) :black_small_square: [\_cache](nodecache.md#_cache) :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](socket.md#check_in_list) :black_small_square: [data_type](socket.md#data_type) :black_small_square: [\_geometry_class](socket.md#_geometry_class) :black_small_square: [\_\_getattr__](socket.md#__getattr__) :black_small_square: [get_socket_class](socket.md#get_socket_class) :black_small_square: [hash_value](socket.md#hash_value) :black_small_square: [IndexSwitch](socket.md#indexswitch) :black_small_square: [index_switch](socket.md#index_switch) :black_small_square: [input_type](socket.md#input_type) :black_small_square: [\_jump](socket.md#_jump) :black_small_square: [\_lc](socket.md#_lc) :black_small_square: [\_lcop](socket.md#_lcop) :black_small_square: [MenuSwitch](socket.md#menuswitch) :black_small_square: [menu_switch](socket.md#menu_switch) :black_small_square: [Named](attribute.md#named) :black_small_square: [NamedAttribute](attribute.md#namedattribute) :black_small_square: [node](socket.md#node) :black_small_square: [node_color](socket.md#node_color) :black_small_square: [node_label](socket.md#node_label) :black_small_square: [out](socket.md#out) :black_small_square: [pin_gizmo](socket.md#pin_gizmo) :black_small_square: [\_run_tests](socket.md#_run_tests) :black_small_square: [socket_type](socket.md#socket_type) :black_small_square: [\_\_str__](socket.md#__str__) :black_small_square: [Switch](socket.md#switch) :black_small_square: [switch](socket.md#switch) :black_small_square:
 
 ## Content
 
@@ -308,14 +308,14 @@ align_z_to_vector(vector=None, factor=None, pivot_axis=None)
 AxesToRotation(primary_axis=None, secondary_axis=None, primary_align='Z', secondary_align='X')
 ```
 
-> Constructor node ERROR: Node 'Axes to Rotation' not found
+> Constructor node [Axes to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/axes_to_rotation.html)
 
 > [!NOTE]
 > This constructor is homonym of [FromAxes](rotation.md#fromaxes) constructor
 > See also [FromXYAxes](rotation.md#fromxyaxes), [FromYXAxes](rotation.md#fromyxaxes), [FromXZAxes](rotation.md#fromxzaxes), [FromZXAxes](rotation.md#fromzxaxes), [FromYZAxes](rotation.md#fromyzaxes), [FromZYAxes](rotation.md#fromzyaxes),
 
 > [!NOTE]
-> In the node ERROR: Node 'Axes to Rotation' not found, the parameter names is the **snake_case** version
+> In the node [Axes to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/axes_to_rotation.html), the parameter names is the **snake_case** version
 > of the sockets (primary_target and 'Primary Target').
 > It is why, the corresponding arguments are renamed into **primary_align** and **secondary_align**.
 
@@ -413,14 +413,14 @@ EulerToRotation(euler=(0, 0, 0))
 FromAxes(primary_axis=None, secondary_axis=None, primary_align='Z', secondary_align='X')
 ```
 
-> Constructor node ERROR: Node 'Axes to Rotation' not found
+> Constructor node [Axes to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/axes_to_rotation.html)
 
 > [!NOTE]
 > This constructor is synonym of [AxesToRotation](rotation.md#axestorotation) constructor
 > See also [FromXYAxes](rotation.md#fromxyaxes), [FromYXAxes](rotation.md#fromyxaxes), [FromXZAxes](rotation.md#fromxzaxes), [FromZXAxes](rotation.md#fromzxaxes), [FromYZAxes](rotation.md#fromyzaxes), [FromZYAxes](rotation.md#fromzyaxes),
 
 > [!NOTE]
-> In the node ERROR: Node 'Axes to Rotation' not found, the parameter names is the **snake_case** version
+> In the node [Axes to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/axes_to_rotation.html), the parameter names is the **snake_case** version
 > of the sockets (primary_target and 'Primary Target').
 > It is why, the corresponding arguments are renamed into **primary_align** and **secondary_align**.
 
@@ -522,7 +522,7 @@ FromQuaternion(w=0, x=0, y=0, z=0)
 FromXYAxes(primary_axis=None, secondary_axis=None)
 ```
 
-> Constructor node ERROR: Node 'Axes to Rotation' not found, with XY alignment
+> Constructor node [Axes to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/axes_to_rotation.html), with XY alignment
 
 #### Arguments:
 - **primary_axis** (_Vector_ = None) : axis aligned with X
@@ -544,7 +544,7 @@ FromXYAxes(primary_axis=None, secondary_axis=None)
 FromXZAxes(primary_axis=None, secondary_axis=None)
 ```
 
-> Constructor node ERROR: Node 'Axes to Rotation' not found, with XZ alignment
+> Constructor node [Axes to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/axes_to_rotation.html), with XZ alignment
 
 #### Arguments:
 - **primary_axis** (_Vector_ = None) : axis aligned with X
@@ -566,7 +566,7 @@ FromXZAxes(primary_axis=None, secondary_axis=None)
 FromYXAxes(primary_axis=None, secondary_axis=None)
 ```
 
-> Constructor node ERROR: Node 'Axes to Rotation' not found, with YX alignment
+> Constructor node [Axes to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/axes_to_rotation.html), with YX alignment
 
 #### Arguments:
 - **primary_axis** (_Vector_ = None) : axis aligned with Y
@@ -588,7 +588,7 @@ FromYXAxes(primary_axis=None, secondary_axis=None)
 FromYZAxes(primary_axis=None, secondary_axis=None)
 ```
 
-> Constructor node ERROR: Node 'Axes to Rotation' not found, with YZ alignment
+> Constructor node [Axes to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/axes_to_rotation.html), with YZ alignment
 
 #### Arguments:
 - **primary_axis** (_Vector_ = None) : axis aligned with Y
@@ -610,7 +610,7 @@ FromYZAxes(primary_axis=None, secondary_axis=None)
 FromZXAxes(primary_axis=None, secondary_axis=None)
 ```
 
-> Constructor node ERROR: Node 'Axes to Rotation' not found, with ZX alignment
+> Constructor node [Axes to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/axes_to_rotation.html), with ZX alignment
 
 #### Arguments:
 - **primary_axis** (_Vector_ = None) : axis aligned with Z
@@ -632,7 +632,7 @@ FromZXAxes(primary_axis=None, secondary_axis=None)
 FromZYAxes(primary_axis=None, secondary_axis=None)
 ```
 
-> Constructor node ERROR: Node 'Axes to Rotation' not found, with ZY alignment
+> Constructor node [Axes to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/axes_to_rotation.html), with ZY alignment
 
 #### Arguments:
 - **primary_axis** (_Vector_ = None) : axis aligned with Z

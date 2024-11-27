@@ -26,19 +26,20 @@ matrix = Matrix([[0, 1, 0, 0], [1, 0, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]]) # Node
 
 ### Inherited
 
-[blur](socket.md#blur) :black_small_square: [\_cache](nodecache.md#_cache) :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](socket.md#check_in_list) :black_small_square: [data_type](socket.md#data_type) :black_small_square: [\_geometry_class](socket.md#_geometry_class) :black_small_square: [\_\_getattr__](socket.md#__getattr__) :black_small_square: [get_socket_class](socket.md#get_socket_class) :black_small_square: [IndexSwitch](socket.md#indexswitch) :black_small_square: [index_switch](socket.md#index_switch) :black_small_square: [input_type](socket.md#input_type) :black_small_square: [\_jump](socket.md#_jump) :black_small_square: [\_lc](socket.md#_lc) :black_small_square: [\_lcop](socket.md#_lcop) :black_small_square: [MenuSwitch](socket.md#menuswitch) :black_small_square: [menu_switch](socket.md#menu_switch) :black_small_square: [Named](attribute.md#named) :black_small_square: [NamedAttribute](attribute.md#namedattribute) :black_small_square: [node](socket.md#node) :black_small_square: [node_color](socket.md#node_color) :black_small_square: [node_label](socket.md#node_label) :black_small_square: [out](socket.md#out) :black_small_square: [\_reset](socket.md#_reset) :black_small_square: [\_run_tests](socket.md#_run_tests) :black_small_square: [socket_type](socket.md#socket_type) :black_small_square: [\_\_str__](socket.md#__str__) :black_small_square: [Switch](socket.md#switch) :black_small_square: [switch](socket.md#switch) :black_small_square:
+[blur](socket.md#blur) :black_small_square: [\_cache](nodecache.md#_cache) :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](socket.md#check_in_list) :black_small_square: [data_type](socket.md#data_type) :black_small_square: [\_geometry_class](socket.md#_geometry_class) :black_small_square: [\_\_getattr__](socket.md#__getattr__) :black_small_square: [get_socket_class](socket.md#get_socket_class) :black_small_square: [hash_value](socket.md#hash_value) :black_small_square: [IndexSwitch](socket.md#indexswitch) :black_small_square: [index_switch](socket.md#index_switch) :black_small_square: [input_type](socket.md#input_type) :black_small_square: [\_jump](socket.md#_jump) :black_small_square: [\_lc](socket.md#_lc) :black_small_square: [\_lcop](socket.md#_lcop) :black_small_square: [MenuSwitch](socket.md#menuswitch) :black_small_square: [menu_switch](socket.md#menu_switch) :black_small_square: [Named](attribute.md#named) :black_small_square: [NamedAttribute](attribute.md#namedattribute) :black_small_square: [node](socket.md#node) :black_small_square: [node_color](socket.md#node_color) :black_small_square: [node_label](socket.md#node_label) :black_small_square: [out](socket.md#out) :black_small_square: [pin_gizmo](socket.md#pin_gizmo) :black_small_square: [\_reset](socket.md#_reset) :black_small_square: [\_run_tests](socket.md#_run_tests) :black_small_square: [socket_type](socket.md#socket_type) :black_small_square: [\_\_str__](socket.md#__str__) :black_small_square: [Switch](socket.md#switch) :black_small_square: [switch](socket.md#switch) :black_small_square:
 
 ## Content
 
 - **A** : [array](matrix.md#array)
 - **C** : [c1r1](matrix.md#c1r1) :black_small_square: [c1r2](matrix.md#c1r2) :black_small_square: [c1r3](matrix.md#c1r3) :black_small_square: [c1r4](matrix.md#c1r4) :black_small_square: [c2r1](matrix.md#c2r1) :black_small_square: [c2r2](matrix.md#c2r2) :black_small_square: [c2r3](matrix.md#c2r3) :black_small_square: [c2r4](matrix.md#c2r4) :black_small_square: [c3r1](matrix.md#c3r1) :black_small_square: [c3r2](matrix.md#c3r2) :black_small_square: [c3r3](matrix.md#c3r3) :black_small_square: [c3r4](matrix.md#c3r4) :black_small_square: [c4r1](matrix.md#c4r1) :black_small_square: [c4r2](matrix.md#c4r2) :black_small_square: [c4r3](matrix.md#c4r3) :black_small_square: [c4r4](matrix.md#c4r4) :black_small_square: [Combine](matrix.md#combine)
+- **D** : [determinant](matrix.md#determinant)
 - **F** : [FromArray](matrix.md#fromarray)
 - **I** : [\_\_init__](matrix.md#__init__) :black_small_square: [invert](matrix.md#invert)
 - **M** : [multiply](matrix.md#multiply)
 - **P** : [project_point](matrix.md#project_point)
 - **R** : [rotation](matrix.md#rotation)
 - **S** : [scale](matrix.md#scale) :black_small_square: [separate_matrix](matrix.md#separate_matrix) :black_small_square: [separate_transform](matrix.md#separate_transform)
-- **T** : [Transform](matrix.md#transform) :black_small_square: [transform_direction](matrix.md#transform_direction) :black_small_square: [transform_point](matrix.md#transform_point) :black_small_square: [translation](matrix.md#translation) :black_small_square: [transpose](matrix.md#transpose)
+- **T** : [Transform](matrix.md#transform) :black_small_square: [transform_direction](matrix.md#transform_direction) :black_small_square: [transform_gizmo](matrix.md#transform_gizmo) :black_small_square: [transform_point](matrix.md#transform_point) :black_small_square: [translation](matrix.md#translation) :black_small_square: [transpose](matrix.md#transpose)
 
 ## Properties
 
@@ -194,6 +195,15 @@ matrix = Matrix([[0, 1, 0, 0], [1, 0, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]]) # Node
 >
 
 > Node [Separate Matrix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/separate_matrix.html), column 4 row 4
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Matrix](matrix.md#matrix) :black_small_square: [Content](matrix.md#content) :black_small_square: [Properties](matrix.md#properties)</sub>
+
+### determinant
+
+> _type_: **Float**
+>
+
+> Node [Matrix Determinant](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/matrix_determinant.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Matrix](matrix.md#matrix) :black_small_square: [Content](matrix.md#content) :black_small_square: [Properties](matrix.md#properties)</sub>
 
@@ -448,6 +458,37 @@ transform_direction(vector)
 
 #### Returns:
 - **Vector** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Matrix](matrix.md#matrix) :black_small_square: [Content](matrix.md#content) :black_small_square: [Methods](matrix.md#methods)</sub>
+
+----------
+### transform_gizmo()
+
+> method
+
+``` python
+transform_gizmo(position=None, rotation=None, use_rotation_x=True, use_rotation_y=True, use_rotation_z=True, use_scale_x=True, use_scale_y=True, use_scale_z=True, use_translation_x=True, use_translation_y=True, use_translation_z=True)
+```
+
+> Node ERROR: Node 'Transform Gizmo' not found
+
+#### Arguments:
+- **position** (_Vector_ = None) : socket 'Position' (Position)
+- **rotation** (_Rotation_ = None) : socket 'Rotation' (Rotation)
+- **use_rotation_x** (_bool_ = True) : Node.use_rotation_x
+- **use_rotation_y** (_bool_ = True) : Node.use_rotation_y
+- **use_rotation_z** (_bool_ = True) : Node.use_rotation_z
+- **use_scale_x** (_bool_ = True) : Node.use_scale_x
+- **use_scale_y** (_bool_ = True) : Node.use_scale_y
+- **use_scale_z** (_bool_ = True) : Node.use_scale_z
+- **use_translation_x** (_bool_ = True) : Node.use_translation_x
+- **use_translation_y** (_bool_ = True) : Node.use_translation_y
+- **use_translation_z** (_bool_ = True) : Node.use_translation_z
+
+
+
+#### Returns:
+- **Gizmo** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Matrix](matrix.md#matrix) :black_small_square: [Content](matrix.md#content) :black_small_square: [Methods](matrix.md#methods)</sub>
 

@@ -305,6 +305,9 @@ def is_matrix_like(value):
 def is_value_like(value):
     return get_input_type(value) in ['FLOAT', 'INT', 'BOOLEAN']
 
+def is_int_like(value):
+    return get_input_type(value) in ['INT', 'BOOLEAN']
+
 def has_bsocket(value):
     if get_bsocket(value) is not None:
         return True

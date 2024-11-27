@@ -37,30 +37,88 @@ with Repeat(geometry=None, offset=(1, 2, 3), index=0, iteration=10) as repeat_bl
 repeat_block.geometry.out()
 ```
 
-classes
--------
-- IntFloat      : Base class for Integer and Float
-- Integer       : Socket of type 'INT'
-- Float         : Socket of type 'FLOAT'
-
-functions
----------
-
 updates
 -------
 - creation : 2024/07/23
+- updated  : 2024/11/22
 """
-
 
 from .scripterror import NodeError
 from . import utils
 from .treeclass import Tree, Node
 
+# =============================================================================================================================
+# Node Items
+
+class NodeItems:
+
+    def __init__(self, node, name, sockets={}, **snake_case_sockets):
+        """ > Node items property
+
+        Some nodes have xxx_items collection for dynamic sockets. This class manages theis behavior,
+        especially for zones (Simulation, Repeat, ForEachElement)
+        """
+
+        self._node  = node
+        self._name  = name
+        self._items = getattr(node._bnode, name + '_items')
+
+        # ----- Create the simulation state items in the output node
+
+        self._node._set_items(_items=sockets, items_name=name + '_items', plug_items=True, **snake_case_sockets)
+
+    def get_inout(self, index, input=True):
+        if isinstance(index, int):
+            socket_name = self._items[index].name
+        else:
+            socket_name = index
+
+        sockets = self._node._bnode.inputs if input else self._node._bnode.outputs
+
+        for i, bsocket in enumerate(sockets):
+
+            if not bsocket.identifier.lower().startswith(self._name):
+                continue
+
+            if socket_name in [bsocket.name, bsocket.identifier, utils.socket_name(bsocket.name)]:
+                if input:
+                    return bsocket
+                else:
+                    return self._node.data_socket(bsocket)
+
+        return None
+
+    def __getitem__(self, index):
+        item = self.get_inout(index, input=False)
+        if item is None:
+            raise NodeError(f"Socket '{index}' not found in items {self._name} of the node '{self._node.name}'")
+        return item
+
+    def __setattr__(self, name, value):
+        if name.startswith('_'):
+            super().__setattr__(name, value)
+
+        else:
+            current = self.get_inout(name, input=True)
+            if current is None:
+                input_type = 'GEOMETRY' if value is None else utils.get_input_type(value)
+                self._items.new(input_type, name)
+                current = self.get_inout(name, input=True)
+
+            self._node.plug_value_into_socket(value, current)
+
+    def __getattr__(self, name):
+        return self[name]
+
 # ====================================================================================================
 # A zone
 
 class Zone:
-    def init_zone(self, sockets={}, create_geometry=True, **snake_case_sockets):
+
+    ITEMS_NAME   = None # Name of node 'xxx_items' property (dynamic if None)
+    PLUG_ON_EXIT = True # Plug loop variables to output node when exiting (False for ForEachElement)
+
+    def init_zone(self, sockets={}, **snake_case_sockets):
         """ > Two nodes zone
 
         **Zone** is the root class for <!Simulation> and <!Repeat> zones.
@@ -137,35 +195,36 @@ class Zone:
         geo = repeat_zone.geometry
         ```
 
+        Properties
+        ----------
+        - _closed (bool) : in or out the zone
+        - _locals (list) : list of zone properties
+
         Arguments
         ---------
+        - defaults (dict = {}) : default sockets
         - sockets (dict = {}) : sockets to create, string names
-        - create_geometry (bool=True) : ensure the 'Geometry' socket is created
         - snake_case_sockets : sockets to create, snake_case names
         """
 
-        all_sockets = {**sockets, **snake_case_sockets}
+        # ----- Existing output sockets
 
-        # ---- Add initial Geometry socket if necessary
+        #self._fixed = {utils.socket_name(bsock.name): self._input.out_socket(bsock.name) for bsock in self._input._bnode.outputs if bsock.type != 'CUSTOM'}
 
-        if create_geometry:
-            if len(all_sockets) == 0:
-                all_sockets = {'Geometry': None}
-            else:
-                first_val = all_sockets[list(all_sockets.keys())[0]]
-                if first_val is not None and utils.get_input_type(first_val) != 'GEOMETRY':
-                    all_sockets = {'Geometry': None, **all_sockets}
+        # ----- Create the simulation state items in the output node
 
-        # ----- Create the simulation state items
+        self._output._set_items(_items=sockets, items_name = self.ITEMS_NAME, plug_items=False, **snake_case_sockets)
 
-        self._output._set_items(_items=all_sockets, clear=True)
+        # ----- Plug the sockets in the input node
+
+        all_sockets = {utils.socket_name(name): value for name, value in {**sockets, **snake_case_sockets}.items()}
         for name, value in all_sockets.items():
             self._input.plug_value_into_socket(value, name)
 
         # ----- Variables used within the with statement
 
-        all_sockets = {utils.socket_name(name): value for name, value in all_sockets.items()}
         self._locals = {pname: self._input.out_socket(pname) for pname in all_sockets.keys()}
+        #self._locals = {utils.socket_name(bsock.name): self._input.out_socket(bsock.name) for bsock in self._input._bnode.outputs if bsock.type != 'CUSTOM'}
 
         # ----- Ensure the proper sub class of geometries
 
@@ -190,8 +249,9 @@ class Zone:
     def __exit__(self, exception_type, exception_value, traceback):
         self._closed = True
 
-        for name, value in self._locals.items():
-            self._output.plug_value_into_socket(value, self._output.in_socket(name))
+        if self.PLUG_ON_EXIT:
+            for name, value in self._locals.items():
+                self._output.plug_value_into_socket(value, self._output.in_socket(name))
 
     # ====================================================================================================
     # Dynamic attributes
@@ -285,7 +345,7 @@ class Repeat(Zone):
         self._output = Node('GeometryNodeRepeatOutput')
         self._input._bnode.pair_with_output(self._output._bnode)
 
-        self.init_zone(sockets, create_geometry=True, **snake_case_sockets)
+        self.init_zone(sockets, **snake_case_sockets)
         self._input.iterations = iterations
 
 # ====================================================================================================
@@ -340,4 +400,52 @@ class Simulation(Zone):
         self._output = Node('GeometryNodeSimulationOutput')
         self._input._bnode.pair_with_output(self._output._bnode)
 
-        self.init_zone(sockets, create_geometry=True, **snake_case_sockets)
+        self.init_zone(sockets, **snake_case_sockets)
+
+
+# ====================================================================================================
+# Reapet zone
+
+class ForEachElement(Zone):
+
+    ITEMS_NAME   = 'input_items'
+    PLUG_ON_EXIT = False
+
+    def __init__(self, geometry=None, selection=None, domain=None, sockets={}, **snake_case_sockets):
+        """ > For Each Element zone
+
+        > See <!Zone>
+
+        This loops has 3 items lists with their corresponding index:
+        - input_items, active_input_index
+        - main_items, active_main_index
+        - generation_items, active_generation_index
+
+        The zone initialization creates properties on the input_items.
+
+        Arguments
+        ---------
+        - geometry (Geometry) : geometry to loop on
+        - selection (Boolean) : element selection
+        - domain (str) : domain name
+        - sockets (dict = {}) : sockets to create
+        - snake_case_sockets : sockets to create
+        """
+
+        tree = Tree.current_tree
+
+        # ----- Create an link the input and output simulation nodes
+
+        self._input  = Node('GeometryNodeForeachGeometryElementInput')
+        self._output = Node('GeometryNodeForeachGeometryElementOutput')
+        self._input._bnode.pair_with_output(self._output._bnode)
+
+        if domain is not None:
+            self._output._bnode.domain = domain
+        self._input.geometry = geometry
+        self._input.selection = selection
+
+        self.main      = NodeItems(self._output, 'main')
+        self.generated = NodeItems(self._output, 'generation')
+
+        self.init_zone(sockets, **snake_case_sockets)

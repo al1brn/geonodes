@@ -238,3 +238,23 @@ class Texture(TextureRoot):
         - Node
         """
         return Node('White Noise Texture', {'Vector': vector, 'W': w}, noise_dimensions=dim)
+
+    @staticmethod
+    def Gabor(vector=None, scale=None, frequency=None, anisotropy=None, orientation=None, gabor_type='2D'):
+        """ Node <&Node Gabor Texture>
+
+        Arguments
+        ---------
+        - vector (Vector) : socket 'Vector' (Vector)
+        - scale (Float) : socket 'Scale' (Scale)
+        - frequency (Float) : socket 'Frequency' (Frequency)
+        - anisotropy (Float) : socket 'Anisotropy' (Anisotropy)
+        - orientation (Float) : socket 'Orientation' (Orientation 2D)
+        - gabor_type (str): Node.gabor_type in ('2D', '3D')
+
+        Returns
+        -------
+        - Node
+        """
+
+        return Node('Gabor Texture', {'Vector': vector, 'Scale': scale, 'Frequency': frequency, 'Anisotropy': anisotropy, 'Orientation': orientation}, gabor_type=gabor_type)

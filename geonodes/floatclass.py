@@ -373,6 +373,48 @@ class IntFloat(Attribute):
     def __ne__(self, other):
         return self.not_equal(other)
 
+    # =============================================================================================================================
+    # Gizmo
+
+    def dial_gizmo(self, position=None, up=None, screen_space=None, radius=None, color_id='PRIMARY'):
+        """ > Node <&Node Dial Gizmo>
+
+        Arguments
+        ---------
+        - value (Float) : socket 'Value' (Value)
+        - position (Vector) : socket 'Position' (Position)
+        - up (Vector) : socket 'Up' (Up)
+        - screen_space (Boolean) : socket 'Screen Space' (Screen Space)
+        - radius (Float) : socket 'Radius' (Radius)
+        - color_id (str): Node.color_id in ('PRIMARY', 'SECONDARY', 'X', 'Y', 'Z')
+
+        Returns
+        -------
+        - Gizmo Node
+        """
+        from geonodes import Gizmo
+
+        return Gizmo.Dial(self, position=position, up=up, screen_space=screen_space, color_id=color_id)
+
+    def linear_gizmo(self, position=None, direction=None, color_id='PRIMARY', draw_style='ARROW'):
+        """ > Node <&Node Linear Gizmo>
+
+        Arguments
+        ---------
+        - value (Float) : socket 'Value' (Value)
+        - position (Vector) : socket 'Position' (Position)
+        - direction (Vector) : socket 'Direction' (Direction)
+        - color_id (str): Node.color_id in ('PRIMARY', 'SECONDARY', 'X', 'Y', 'Z')
+        - draw_style (str): Node.draw_style in ('ARROW', 'CROSS', 'BOX')
+
+        Returns
+        -------
+        - Gizmo Node
+        """
+        from geonodes import Gizmo
+
+        return Gizmo.Linear(self, position=position, direction=direction, color_id=color_id, draw_style=draw_style)
+
 # =============================================================================================================================
 # Float
 # =============================================================================================================================
@@ -856,3 +898,151 @@ class Integer(IntFloat):
         - Boolean
         """
         return Node("Compare", {'A': self, 'B': other}, operation='NOT_EQUAL', data_type='INT')._out
+
+    # =============================================================================================================================
+    # Integer maths
+
+    def multiply_add(self, multiplier, addend):
+        return self.math.imultiply_add(self, multiplier, addend)
+
+    def min(self, other):
+        return self.math.imin(self, other)
+
+    def max(self, other):
+        return self.math.imax(self, other)
+
+    def sign(self):
+        return self.math.isign(self)
+
+    def divide_round(self, other):
+        return self.math.idivide_round(self, other)
+
+    def divide_floor(self, other):
+        return self.math.idivide_floor(self, other)
+
+    def divide_ceiling(self, other):
+        return self.math.idivide_ceiling(self, other)
+
+    def floored_modulo(self, other):
+        return self.math.ifloored_modulo(self, other)
+
+    def modulo(self, other):
+        return self.math.imodulo(self, other)
+
+    def GCD(self, other):
+        return self.math.GCD(self, other)
+
+    def LCM(self, other):
+        return self.math.LCM(self, other)
+
+    # ----- Neg
+
+    def __neg__(self):
+        return self.math.inegate(self)
+
+    # ----- Abs
+
+    def __abs__(self):
+        return self.math.iabs(self)
+
+    # ----- Addition
+
+    def __add__(self, other):
+        if utils.is_vector_like(other):
+            return self.math.vadd(self, other)
+        elif utils.is_int_like(other):
+            return self.math.iadd(self, other)
+        else:
+            return self.math.add(self, other)
+
+    def __radd__(self, other):
+        if utils.is_vector_like(other):
+            return self.math.vadd(other, self)
+        elif utils.is_int_like(other):
+            return self.math.iadd(self, other)
+        else:
+            return self.math.add(other, self)
+
+    def __iadd__(self, other):
+        return self._jump(self.math.iadd(self, other))
+
+    # ----- Subtraction
+
+    def __sub__(self, other):
+        if utils.is_vector_like(other):
+            return self.math.vsubtract(self, other)
+        elif utils.is_int_like(other):
+            return self.math.isubtract(self, other)
+        else:
+            return self.math.subtract(self, other)
+
+    def __rsub__(self, other):
+        if utils.is_vector_like(other):
+            return self.math.vsubtract(other, self)
+        elif utils.is_int_like(other):
+            return self.math.isubtract(other, self)
+        else:
+            return self.math.subtract(other, self)
+
+    def __isub__(self, other):
+        return self._jump(self.math.isubtract(self, other))
+
+    # ----- Multiplication
+
+    def __mul__(self, other):
+        if utils.is_vector_like(other):
+            return self.math.scale(other, self)
+        elif utils.is_int_like(other):
+            return self.math.imultiply(other, self)
+        else:
+            return self.math.multiply(self, other)
+
+    def __rmul__(self, other):
+        if utils.is_vector_like(other):
+            return self.math.scale(other, self)
+        elif utils.is_int_like(other):
+            return self.math.imultiply(other, self)
+        else:
+            return self.math.multiply(other, self)
+
+    def __imul__(self, other):
+        return self._jump(self.math.imultiply(self, other))
+
+    # ----- Division
+
+    def __floordiv__(self, other):
+        return self.math.idivide(self, other)
+
+    def __rfloordiv__(self, other):
+        return self.math.idivide(other, self)
+
+    def __ifloordiv__(self, other):
+        return self._jump(self.math.idivide(self, other))
+
+    # ----- Modulo
+
+    def __mod__(self, other):
+        return self.math.imodulo(self, other)
+
+    def __rmod__(self, other):
+        return self.math.imodulo(other, self)
+
+    def __imod__(self, other):
+        return self._jump(self.math.imodulo(self, other))
+
+    # ----- Power
+
+    def __pow__(self, other):
+        if utils.is_int_like(other):
+            return self.math.ipower(self, other)
+        else:
+            return self.math.power(self, other)
+
+    def __rpow__(self, other):
+        if utils.is_int_like(other):
+            return self.math.ipower(other, self)
+        else:
+            return self.math.power(other, self)
+
+    def __ipow__(self, other):
+        return self._jump(self.math.ipower(self, other))

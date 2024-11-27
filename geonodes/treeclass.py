@@ -324,6 +324,14 @@ class Tree:
         return cls.STACK[-1]
 
     # ====================================================================================================
+    # Check if the blender node is valid in the context
+    #
+    # Nodes specific to tools can't be inserted in modifiers
+
+    def check_node_validity(self, bnode):
+        pass
+
+    # ====================================================================================================
     # Some methods
 
     def __str__(self):
@@ -835,7 +843,6 @@ class Tree:
             print(f"Node('{node.name}', " + "{" + sockets + "}")
             print()
 
-
 # =============================================================================================================================
 # Node
 
@@ -970,6 +977,10 @@ class Node:
         else:
             self._bnode = keeped_node
 
+        # ----- Check the context
+
+        self._tree.check_node_validity(self._bnode)
+
         # ----- Let's keep it for next time
 
         if _keep is not None:
@@ -1010,7 +1021,9 @@ class Node:
         return s
 
     # ----------------------------------------------------------------------------------------------------
-    # Dynamic nodes have a property xxx_items and a property active_item
+    # Create dynamic sockets with collection xxx_items
+    #
+    # xxx_items can have default values which can be renamed
 
     @property
     def _has_items(self):
@@ -1026,23 +1039,84 @@ class Node:
         else:
             return None
 
-    def _set_items(self, _items={}, clear=True, **kwargs):
-        if len(_items) == 0 and len(kwargs) == 0:
-            return
+    def _set_items(self, _items={}, clear=False, plug_items=True, items_name=None, **kwargs):
 
-        if not self._has_items:
-            raise NodeError(f"Error when initializing node '{self._bnode.name}: this node has no items. Impossible to create the sockets.",
-                _items=_items)
+        # _items : sockets to create
+        # plug_items : plug the sockets with the values or not
+        # items_name : name of xxx_items to use (auto otherwise)
+        # kwargs : sockets to create
+
+        # ---------------------------------------------------------------------------
+        # Merge the dicts
 
         all_items = {**_items, **kwargs}
+        if not len(all_items):
+            return
 
-        node_items = self._items
+        # ---------------------------------------------------------------------------
+        # Node items property
+
+        if items_name is None:
+            if not self._has_items:
+                raise NodeError(f"Error when initializing node '{self._bnode.name}: this node has no items. Impossible to create the sockets.",
+                    _items=_items)
+
+            node_items = self._items
+        else:
+            node_items = getattr(self._bnode, items_name)
+
+        # ---------------------------------------------------------------------------
+        # Clear if required
+
         if clear:
             node_items.clear()
 
-        for socket_name, socket_value in all_items.items():
+        # ---------------------------------------------------------------------------
+        # Plug / rename the existing sockets
 
-            # ----- Create
+        for item in node_items:
+
+            key = None
+
+            # names match
+
+            if item.name in all_items.keys():
+                key = item.name
+
+            # No exact match : look for python name match or type match in the worst case
+
+            else:
+                match_type = None
+                sock_name = utils.socket_name(item.name)
+                for k, v in all_items.items():
+                    if utils.socket_name(k) == sock_name:
+                        key = k
+                        break
+
+                    if utils.get_socket_type(v, default='GEOMETRY') == item.socket_type:
+                        match_type = k
+                if key is None and match_type is not None:
+                    key = match_type
+
+            # We have a matching key
+
+            if key is not None:
+
+                #print(" - MATCHING KEY", key, "for", item.name, '|', [s.name for s in self._bnode.inputs])
+
+                if plug_items:
+                    self.plug_value_into_socket(all_items[key], self.in_socket(item.name))
+
+                if key != item.name:
+                    self._bnode.inputs[item.name].name = key
+                    item.name = key
+
+                del all_items[key]
+
+        # ---------------------------------------------------------------------------
+        # Loop on the sockets to create
+
+        for socket_name, socket_value in all_items.items():
 
             # 'new' method takes only one argument
             if self._bnode.bl_idname in ['GeometryNodeMenuSwitch']:
@@ -1055,7 +1129,8 @@ class Node:
 
             # ----- Plug
 
-            self.plug_value_into_socket(socket_value, self.in_socket(sck.name))
+            if plug_items:
+                self.plug_value_into_socket(socket_value, self.in_socket(sck.name))
 
     # ----------------------------------------------------------------------------------------------------
     # Create a Socket from an output Blender NodeSocket
@@ -1066,10 +1141,8 @@ class Node:
         socket_type = bsocket.type
 
         if Tree.is_geonodes:
-            #from .geonodes import Boolean, Integer, Float, Vector, Rotation, Matrix, Color, Geometry, Material, Image, Object, Collection, Texture, String, Menu
-            #from .geonodes import Mesh, Curve, Cloud, Volume, Instances
             from . import Boolean, Integer, Float, Vector, Rotation, Matrix, Color, Geometry, Material, Image, Object, Collection, Texture, String, Menu
-            from . import Mesh, Curve, Cloud, Volume, Instances
+            from . import Mesh, Curve, GreasePencil, Cloud, Volume, Instances
 
             socket_class = {'BOOLEAN': Boolean, 'INT': Integer, 'VALUE': Float, 'VECTOR': Vector, 'ROTATION': Rotation, 'MATRIX': Matrix, 'RGBA': Color,
                 'STRING': String, 'MENU': Menu,
@@ -1083,6 +1156,8 @@ class Node:
                     return Mesh(bsocket)
                 elif socket_name in ['curve', 'curves']:
                     return Curve(bsocket)
+                elif socket_name in ['grease pencil', 'grease pencils']:
+                    return GreasePencil(bsocket)
                 elif socket_name in ['instance', 'instances']:
                     return Instances(bsocket)
                 elif socket_name in ['points', 'point cloud']:
@@ -1227,7 +1302,7 @@ class Node:
 
     def __setattr__(self, name, value):
 
-        if name in ['_tree', '_bnode', '_label', '_color']:
+        if name in ['_tree', '_bnode', '_label', '_color', 'pin_gizmo']:
             super().__setattr__(name, value)
             return
 
@@ -1277,16 +1352,17 @@ class Node:
 
         # ----- Simple types
 
-        if isinstance(value, int):
+        # bool : before int because isinstance(True, int) == True
+        if isinstance(value, bool):
+            return Node('Boolean', boolean=value)._out
+
+        elif isinstance(value, int):
             return Node('Integer', integer=value)._out
 
         elif isinstance(value, float):
             socket = Node('Value')._out
             socket._bsocket.default_value = value
             return socket
-
-        elif isinstance(value, bool):
-            return Node('Boolean', boolean=value)._out
 
         elif isinstance(value, str):
             return Node('String', string=value)._out
@@ -1361,9 +1437,7 @@ class Node:
         # - the value is an array containing sockets : vector((0, a, 1))
 
         socket_type = in_socket.type
-
         if in_socket.hide_value:
-            #self._tree.link(Tree.value_to_socket(value), in_socket)
             self._tree.link(Node.InputNodeSocket(value)._bsocket, in_socket)
             return
 
@@ -1652,6 +1726,18 @@ class Node:
         if value is None:
             return
         self._bnode.label = value
+
+    # =============================================================================================================================
+    # Pin gizmo
+    # The first input socket
+
+    @property
+    def pin_gizmo(self):
+        return self._bnode.inputs[0].pin_gizmo
+
+    @pin_gizmo.setter
+    def pin_gizmo(self, value):
+        self._bnode.inputs[0].pin_gizmo = value
 
 # =============================================================================================================================
 # Group

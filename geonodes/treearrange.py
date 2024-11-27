@@ -596,8 +596,6 @@ for blid in ['GeometryNodeSimulationInput', 'GeometryNodeSimulationOutput']:
     dim[1] += 300
     NODE_DIMS[blid]['dimensions'] = list(dim)
 
-
-
 # ====================================================================================================
 # Build the node dimensions by trying all the parameter configurations
 #
@@ -856,6 +854,29 @@ def group_dim_DEPRECATED(node):
     nd[1] = h
 
     return [nd[0]/2, nd[1]/2]
+
+# ====================================================================================================
+# Dump the nodes in frame
+
+def dump_frames(tree, frame=None, depth=1):
+
+    if frame is None:
+        print("-"*10, "Dump frames")
+        for node in tree.nodes:
+            if node.bl_idname == 'NodeFrame' and node.parent is None:
+                dump_frames(tree, node)
+
+        print()
+        return
+
+    print("   "*depth, f"Frame '{frame.label}'")
+    for node in tree.nodes:
+        if node.parent != frame:
+            continue
+
+        print("   "*depth, f"> node {node.name} ({node.label})")
+        if node.bl_idname == 'NodeFrame':
+            dump_frames(tree, node, depth + 1)
 
 
 # ====================================================================================================
@@ -1216,6 +1237,8 @@ def frame_inputs(tree):
 
 def frame_outputs(tree):
 
+    NEW_ALGO = True
+
     for frame in tree.nodes:
 
         if frame.bl_idname != 'NodeFrame':
@@ -1241,7 +1264,10 @@ def frame_outputs(tree):
                 to_sockets = []
                 reroutes[from_socket] = to_sockets
 
-            to_sockets.append(link.to_socket)
+            if NEW_ALGO:
+                to_sockets.append((link.to_socket.node, link.to_socket.identifier))
+            else:
+                to_sockets.append(link.to_socket)
 
         # ----- Delete the links
 
@@ -1271,8 +1297,12 @@ def frame_outputs(tree):
 
             tree.links.new(from_socket, node.inputs[0])
 
-            for to_socket in to_sockets:
-                tree.links.new(node.outputs[0], to_socket)
+            if NEW_ALGO:
+                for node_to, sock_id in to_sockets:
+                    tree.links.new(node.outputs[0], node_to.inputs[sock_id])
+            else:
+                for to_socket in to_sockets:
+                    tree.links.new(node.outputs[0], to_socket)
 
             node.location = (x, y)
             y -= y_sepa
@@ -2256,6 +2286,7 @@ def arrange(tree, reroutes=True, delete_single=False, layout_inputs=True):
         delete_single_nodes(tree)
 
     top = Frame.Tree(tree, reroutes=reroutes, layout_inputs=layout_inputs)
+
     if top is None:
         return
 

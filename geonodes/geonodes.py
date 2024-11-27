@@ -56,14 +56,88 @@ from .staticclass_gn import nd
 """
 
 from .treeclass import Tree
-
+from geonodes.geonodes import constants
+from geonodes.geonodes.scripterror import NodeError
 
 class GeoNodes(Tree):
     def __init__(self, tree_name, clear=True, fake_user=False, is_group=False, prefix=None):
+        """ > Geometry Nodes
+
+        Arguments
+        ---------
+        - tree_name (str) : Geometry Nodes namde
+        - clear (bool = True) : clear the tree content
+        - fake_user (bool = False) : set fake_user flag
+        - is_group (bool = False) : tree is a group
+        - prefix (str = None) : name prefix
+        """
 
         super().__init__(tree_name, tree_type='GeometryNodeTree', clear=clear, fake_user=fake_user, is_group=is_group, prefix=prefix)
 
         self._btree.is_modifier = not is_group
+
+    # =============================================================================================================================
+    # Tool
+
+    @classmethod
+    def Tool(cls, tree_name, clear=True, fake_user=False, object_mode=True, edit_mode=False, sculpt_mode=False,
+        mesh=True, curve=False, cloud=False, wait_for_click=False):
+        """ > Tool Geometry Nodes
+
+        Arguments
+        ---------
+        - tree_name (str) : Geometry Nodes namde
+        - clear (bool = True) : clear the tree content
+        - fake_user (bool = False) : set fake_user flag
+        - object_mode (bool = True) : tool available in object mode
+        - edit_mode (bool = False) : tool available in edit mode
+        - sculpt_mode (bool = False) : tool available in sculpt mode
+        - mesh (bool = True) : mesh tool
+        - curve (bool = False) : curve tool
+        - cloud (bool = False) : cloud tool
+        - wait_for_click (bool = False) : wait for click flag
+
+        Returns
+        -------
+        - GeoNodes
+        """
+
+        geonodes = cls(tree_name, clear=clear, fake_user=fake_user)
+
+        geonodes._btree.is_tool = True
+
+        geonodes._btree.is_mode_object = object_mode
+        geonodes._btree.is_mode_edit   = edit_mode
+        geonodes._btree.is_mode_sculpt = sculpt_mode
+
+        geonodes._btree.is_type_mesh        = mesh
+        geonodes._btree.is_type_curve       = curve
+        geonodes._btree.is_type_point_cloud = cloud
+
+        geonodes._btree.use_wait_for_click = wait_for_click
+
+        return geonodes
+
+    @property
+    def is_tool(self):
+        """ > Is a tool
+
+        Returns
+        -------
+        - bool : True if tree is a tool
+        """
+        return self._btree.is_tool
+
+    def check_node_validity(self, bnode):
+
+        super().check_node_validity(bnode)
+
+        if self.is_tool:
+            if bnode.name in constants.MODIFIER_ONLY:
+                raise NodeError(f"Node '{bnode.name}' is specific to Modifiers, if can't be used in the Tool tree '{self._btree.name}'.")
+        else:
+            if bnode.name in constants.TOOL_ONLY:
+                raise NodeError(f"Node '{bnode.name}' is specific to Tools, it can't be used in the Modifier tree '{self._btree.name}'.")
 
     # =============================================================================================================================
     # Geometry I/O

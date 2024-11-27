@@ -22,9 +22,9 @@ with some changes according the following rules:
 - **D** : [degrees](gnmath.md#degrees) :black_small_square: [distance](gnmath.md#distance) :black_small_square: [divide](gnmath.md#divide) :black_small_square: [dot_product](gnmath.md#dot_product)
 - **E** : [equal](gnmath.md#equal) :black_small_square: [exp](gnmath.md#exp) :black_small_square: [exponent](gnmath.md#exponent)
 - **F** : [faceforward](gnmath.md#faceforward) :black_small_square: [floor](gnmath.md#floor) :black_small_square: [floored_modulo](gnmath.md#floored_modulo) :black_small_square: [fract](gnmath.md#fract)
-- **G** : [greater_than](gnmath.md#greater_than)
-- **I** : [imply](gnmath.md#imply) :black_small_square: [inverse_sqrt](gnmath.md#inverse_sqrt)
-- **L** : [length](gnmath.md#length) :black_small_square: [less_than](gnmath.md#less_than) :black_small_square: [ln](gnmath.md#ln) :black_small_square: [log](gnmath.md#log)
+- **G** : [GCD](gnmath.md#gcd) :black_small_square: [greater_than](gnmath.md#greater_than)
+- **I** : [iabs](gnmath.md#iabs) :black_small_square: [iadd](gnmath.md#iadd) :black_small_square: [idivide](gnmath.md#idivide) :black_small_square: [idivide_ceiling](gnmath.md#idivide_ceiling) :black_small_square: [idivide_floor](gnmath.md#idivide_floor) :black_small_square: [idivide_round](gnmath.md#idivide_round) :black_small_square: [ifloored_modulo](gnmath.md#ifloored_modulo) :black_small_square: [imax](gnmath.md#imax) :black_small_square: [imin](gnmath.md#imin) :black_small_square: [imodulo](gnmath.md#imodulo) :black_small_square: [imply](gnmath.md#imply) :black_small_square: [imultiply](gnmath.md#imultiply) :black_small_square: [imultiply_add](gnmath.md#imultiply_add) :black_small_square: [inegate](gnmath.md#inegate) :black_small_square: [inverse_sqrt](gnmath.md#inverse_sqrt) :black_small_square: [ipower](gnmath.md#ipower) :black_small_square: [isign](gnmath.md#isign) :black_small_square: [isubtract](gnmath.md#isubtract)
+- **L** : [LCM](gnmath.md#lcm) :black_small_square: [length](gnmath.md#length) :black_small_square: [less_than](gnmath.md#less_than) :black_small_square: [ln](gnmath.md#ln) :black_small_square: [log](gnmath.md#log)
 - **M** : [math_ceil](gnmath.md#math_ceil) :black_small_square: [math_floor](gnmath.md#math_floor) :black_small_square: [math_round](gnmath.md#math_round) :black_small_square: [math_trunc](gnmath.md#math_trunc) :black_small_square: [max](gnmath.md#max) :black_small_square: [min](gnmath.md#min) :black_small_square: [modulo](gnmath.md#modulo) :black_small_square: [multiply](gnmath.md#multiply) :black_small_square: [multiply_add](gnmath.md#multiply_add)
 - **N** : [nand](gnmath.md#nand) :black_small_square: [nimply](gnmath.md#nimply) :black_small_square: [nor](gnmath.md#nor) :black_small_square: [normalize](gnmath.md#normalize) :black_small_square: [not_equal](gnmath.md#not_equal)
 - **P** : [ping_pong](gnmath.md#ping_pong) :black_small_square: [pingpong](gnmath.md#pingpong) :black_small_square: [power](gnmath.md#power) :black_small_square: [project](gnmath.md#project)
@@ -652,6 +652,29 @@ Returns
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
 ----------
+### GCD()
+
+> function
+
+``` python
+GCD(value, other)
+```
+
+Integer Math GCD.
+
+> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+
+
+Returns
+- Integer
+
+#### Arguments:
+- **value** (_Integer_) : first value
+- **other** (_Integer_) : second value
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
+
+----------
 ### greater_than()
 
 > function
@@ -672,6 +695,235 @@ Returns
 - **value** (_Float_) : first value
 - **threshold** (_Float_) : second value
 - **use_clamp** (_bool_ = None) : use_clamp flag
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
+
+----------
+### iabs()
+
+> function
+
+``` python
+iabs(value)
+```
+
+Integer Math ABSOLUTE.
+
+> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+
+
+Returns
+- Integer
+
+#### Arguments:
+- **value** (_Integer_) : value
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
+
+----------
+### iadd()
+
+> function
+
+``` python
+iadd(value, other)
+```
+
+Integer ADD.
+
+> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+
+
+Returns
+- Integer
+
+#### Arguments:
+- **value** (_Integer_) : first value
+- **other** (_Integer_) : second value
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
+
+----------
+### idivide()
+
+> function
+
+``` python
+idivide(value, other)
+```
+
+Integer Math DIVIDE.
+
+> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+
+
+Returns
+- Integer
+
+#### Arguments:
+- **value** (_Integer_) : first value
+- **other** (_Integer_) : second value
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
+
+----------
+### idivide_ceiling()
+
+> function
+
+``` python
+idivide_ceiling(value, other)
+```
+
+Integer Math DIVIDE_CEIL.
+
+> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+
+
+Returns
+- Integer
+
+#### Arguments:
+- **value** (_Integer_) : first value
+- **other** (_Integer_) : second value
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
+
+----------
+### idivide_floor()
+
+> function
+
+``` python
+idivide_floor(value, other)
+```
+
+Integer Math DIVIDE_FLOOR.
+
+> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+
+
+Returns
+- Integer
+
+#### Arguments:
+- **value** (_Integer_) : first value
+- **other** (_Integer_) : second value
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
+
+----------
+### idivide_round()
+
+> function
+
+``` python
+idivide_round(value, other)
+```
+
+Integer Math DIVIDE_ROUND.
+
+> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+
+
+Returns
+- Integer
+
+#### Arguments:
+- **value** (_Integer_) : first value
+- **other** (_Integer_) : second value
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
+
+----------
+### ifloored_modulo()
+
+> function
+
+``` python
+ifloored_modulo(value, other)
+```
+
+Integer Math FLOORED_MODULO.
+
+> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+
+
+Returns
+- Integer
+
+#### Arguments:
+- **value** (_Integer_) : first value
+- **other** (_Integer_) : second value
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
+
+----------
+### imax()
+
+> function
+
+``` python
+imax(value, other)
+```
+
+Integer Math MAXIMUM.
+
+> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+
+
+Returns
+- Integer
+
+#### Arguments:
+- **value** (_Integer_) : first value
+- **other** (_Integer_) : second value
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
+
+----------
+### imin()
+
+> function
+
+``` python
+imin(value, other)
+```
+
+Integer Math MINIMUM.
+
+> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+
+
+Returns
+- Integer
+
+#### Arguments:
+- **value** (_Integer_) : first value
+- **other** (_Integer_) : second value
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
+
+----------
+### imodulo()
+
+> function
+
+``` python
+imodulo(value, other)
+```
+
+Integer Math MODULO.
+
+> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+
+
+Returns
+- Integer
+
+#### Arguments:
+- **value** (_Integer_) : first value
+- **other** (_Integer_) : second value
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -699,6 +951,75 @@ Returns
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
 ----------
+### imultiply()
+
+> function
+
+``` python
+imultiply(value, other)
+```
+
+Integer Math MULTIPLY.
+
+> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+
+
+Returns
+- Integer
+
+#### Arguments:
+- **value** (_Integer_) : first value
+- **other** (_Integer_) : second value
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
+
+----------
+### imultiply_add()
+
+> function
+
+``` python
+imultiply_add(value, multiplier, addend)
+```
+
+Integer Math MULTIPLY ADD.
+
+> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+
+
+Returns
+- Integer
+
+#### Arguments:
+- **value** (_Integer_) : value
+- **multiplier** (_Integer_) : multiplier value
+- **addend** (_Integer_) : add end value
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
+
+----------
+### inegate()
+
+> function
+
+``` python
+inegate(value)
+```
+
+Integer Math NEGATE.
+
+> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+
+
+Returns
+- Integer
+
+#### Arguments:
+- **value** (_Integer_) : value
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
+
+----------
 ### inverse_sqrt()
 
 > function
@@ -718,6 +1039,97 @@ Returns
 #### Arguments:
 - **value** (_Float_) : value
 - **use_clamp** (_bool_ = None) : use_clamp flag
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
+
+----------
+### ipower()
+
+> function
+
+``` python
+ipower(base, exponent)
+```
+
+Integer Math POWER.
+
+> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+
+
+Returns
+- Integer
+
+#### Arguments:
+- **base** (_Integer_) : value
+- **exponent** (_Integer_) : value
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
+
+----------
+### isign()
+
+> function
+
+``` python
+isign(value)
+```
+
+Integer Math SIGN.
+
+> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+
+
+Returns
+- Integer
+
+#### Arguments:
+- **value** (_Integer_) : value
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
+
+----------
+### isubtract()
+
+> function
+
+``` python
+isubtract(value, other)
+```
+
+Integer SUBTRACT.
+
+> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+
+
+Returns
+- Integer
+
+#### Arguments:
+- **value** (_Integer_) : first value
+- **other** (_Integer_) : second value
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
+
+----------
+### LCM()
+
+> function
+
+``` python
+LCM(value, other)
+```
+
+Integer Math LCM.
+
+> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+
+
+Returns
+- Integer
+
+#### Arguments:
+- **value** (_Integer_) : first value
+- **other** (_Integer_) : second value
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 

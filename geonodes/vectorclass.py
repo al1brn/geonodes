@@ -1898,6 +1898,48 @@ class Matrix(Attribute):
         """
         return self.separate_transform.scale
 
+    @property
+    def determinant(self):
+        """ > Node <&Node Matrix Determinant>
+
+        Arguments
+        ---------
+        - matrix (Matrix) : socket 'Matrix' (Matrix)
+
+        Returns
+        -------
+        - Float
+        """
+        return Node('Matrix Determinant', {'Matrix': self})._out
+
+    def transform_gizmo(self, position=None, rotation=None, use_rotation_x=True, use_rotation_y=True, use_rotation_z=True, use_scale_x=True, use_scale_y=True, use_scale_z=True, use_translation_x=True, use_translation_y=True, use_translation_z=True):
+        """ > Node <&Node Transform Gizmo>
+
+        Arguments
+        ---------
+        - position (Vector) : socket 'Position' (Position)
+        - rotation (Rotation) : socket 'Rotation' (Rotation)
+        - use_rotation_x (bool): Node.use_rotation_x
+        - use_rotation_y (bool): Node.use_rotation_y
+        - use_rotation_z (bool): Node.use_rotation_z
+        - use_scale_x (bool): Node.use_scale_x
+        - use_scale_y (bool): Node.use_scale_y
+        - use_scale_z (bool): Node.use_scale_z
+        - use_translation_x (bool): Node.use_translation_x
+        - use_translation_y (bool): Node.use_translation_y
+        - use_translation_z (bool): Node.use_translation_z
+
+        Returns
+        -------
+        - Gizmo Node
+        """
+        from geonodes import Gizmo
+
+        return Gizmo.Transform(self, position=position, rotation=rotation,
+            use_rotation_x   =use_rotation_x,    use_rotation_y   =use_rotation_y,    use_rotation_z   =use_rotation_z,
+            use_scale_x      =use_scale_x,       use_scale_y      =use_scale_y,       use_scale_z      =use_scale_z,
+            use_translation_x=use_translation_x, use_translation_y=use_translation_y, use_translation_z=use_translation_z)
+
     # ====================================================================================================
     # Methods
 
