@@ -132,12 +132,13 @@ curve(factor=None, keep=None)
 > method
 
 ``` python
-dial_gizmo(position=None, up=None, screen_space=None, radius=None, color_id='PRIMARY')
+dial_gizmo(*value, position=None, up=None, screen_space=None, radius=None, color_id='PRIMARY')
 ```
 
 > Node ERROR: Node 'Dial Gizmo' not found
 
 #### Arguments:
+- **value** (_Float_) : socket 'Value' (Value)
 - **position** (_Vector_ = None) : socket 'Position' (Position)
 - **up** (_Vector_ = None) : socket 'Up' (Up)
 - **screen_space** (_Boolean_ = None) : socket 'Screen Space' (Screen Space)
@@ -147,7 +148,7 @@ dial_gizmo(position=None, up=None, screen_space=None, radius=None, color_id='PRI
 
 
 #### Returns:
-- **Gizmo** :
+- **Geometry** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](integer.md#integer) :black_small_square: [Content](integer.md#content) :black_small_square: [Methods](integer.md#methods)</sub>
 
@@ -329,12 +330,13 @@ Node 'Compare' (FunctionNodeCompare)
 > method
 
 ``` python
-linear_gizmo(position=None, direction=None, color_id='PRIMARY', draw_style='ARROW')
+linear_gizmo(*value, position=None, direction=None, color_id='PRIMARY', draw_style='ARROW')
 ```
 
 > Node ERROR: Node 'Linear Gizmo' not found
 
 #### Arguments:
+- **value** (_Float_) : socket 'Value' (Value)
 - **position** (_Vector_ = None) : socket 'Position' (Position)
 - **direction** (_Vector_ = None) : socket 'Direction' (Direction)
 - **color_id** (_str_ = PRIMARY) : Node.color_id in ('PRIMARY', 'SECONDARY', 'X', 'Y', 'Z')
@@ -343,7 +345,7 @@ linear_gizmo(position=None, direction=None, color_id='PRIMARY', draw_style='ARRO
 
 
 #### Returns:
-- **Gizmo** :
+- **Geometry** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](integer.md#integer) :black_small_square: [Content](integer.md#content) :black_small_square: [Methods](integer.md#methods)</sub>
 

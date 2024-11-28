@@ -38,7 +38,7 @@ from .treeclass import Tree, Node
 class Gizmo(Node):
 
     @classmethod
-    def Dial(cls, *value, position=None, up=None, screen_space=None, radius=None, color_id='PRIMARY'):
+    def dial(cls, *value, position=None, up=None, screen_space=None, radius=None, color_id='PRIMARY'):
         """ > Node <&Node Dial Gizmo>
 
         Arguments
@@ -55,10 +55,10 @@ class Gizmo(Node):
         - Geometry
         """
         values = list(value) if len(value) else None
-        return cls('Dial Gizmo', {'Value': values, 'Position': position, 'Up': up, 'Screen Space': screen_space, 'Radius': radius}, color_id=color_id)
+        return cls('Dial Gizmo', {'Value': values, 'Position': position, 'Up': up, 'Screen Space': screen_space, 'Radius': radius}, color_id=color_id)._out
 
     @classmethod
-    def Linear(cls, *value, position=None, direction=None, color_id='PRIMARY', draw_style='ARROW'):
+    def linear(cls, *value, position=None, direction=None, color_id='PRIMARY', draw_style='ARROW'):
         """ > Node <&Node Linear Gizmo>
 
         Arguments
@@ -74,10 +74,10 @@ class Gizmo(Node):
         - Geometry
         """
         values = list(value) if len(value) else None
-        return cls('Linear Gizmo', {'Value': values, 'Position': position, 'Direction': direction}, color_id=color_id, draw_style=draw_style)
+        return cls('Linear Gizmo', {'Value': values, 'Position': position, 'Direction': direction}, color_id=color_id, draw_style=draw_style)._out
 
     @classmethod
-    def Transform(cls, *value, position=None, rotation=None, use_rotation_x=True, use_rotation_y=True, use_rotation_z=True, use_scale_x=True, use_scale_y=True, use_scale_z=True, use_translation_x=True, use_translation_y=True, use_translation_z=True):
+    def transform(cls, *value, position=None, rotation=None, use_rotation=True, use_scale=True, use_translation=True):
         """ > Node <&Node Transform Gizmo>
 
         Arguments
@@ -85,23 +85,21 @@ class Gizmo(Node):
         - value (Matrix) : socket 'Value' (Value)
         - position (Vector) : socket 'Position' (Position)
         - rotation (Rotation) : socket 'Rotation' (Rotation)
-        - use_rotation_x (bool): Node.use_rotation_x
-        - use_rotation_y (bool): Node.use_rotation_y
-        - use_rotation_z (bool): Node.use_rotation_z
-        - use_scale_x (bool): Node.use_scale_x
-        - use_scale_y (bool): Node.use_scale_y
-        - use_scale_z (bool): Node.use_scale_z
-        - use_translation_x (bool): Node.use_translation_x
-        - use_translation_y (bool): Node.use_translation_y
-        - use_translation_z (bool): Node.use_translation_z
+        - use_rotation (bool or triplet of bools): use_rotation_x, use_rotation_y, use_rotation_z
+        - use_scale (bool or triplet of bools): use_scale_x, use_scale_y, use_scale_z
+        - use_translation (bool or triplet of bools): use_translation_x, translation_y, use_translation_z
 
         Returns
         -------
         - Geometry
         """
         values = list(value) if len(value) else None
-        return cls('Transform Gizmo', {'Value': values, 'Position': position, 'Rotation': rotation}, use_rotation_x=use_rotation_x, use_rotation_y=use_rotation_y, use_rotation_z=use_rotation_z, use_scale_x=use_scale_x, use_scale_y=use_scale_y, use_scale_z=use_scale_z, use_translation_x=use_translation_x, use_translation_y=use_translation_y, use_translation_z=use_translation_z)
 
+        rx, ry, rz = np.resize(use_rotation,    3).astype(bool)
+        sx, sy, sz = np.resize(use_scale,       3).astype(bool)
+        tx, ty, tz = np.resize(use_translation, 3).astype(bool)
 
-    def add_value(self, *values):
-        self.value = values
+        return cls('Transform Gizmo', {'Value': values, 'Position': position, 'Rotation': rotation},
+            use_rotation_x   =rx, use_rotation_y   =ry, use_rotation_z   =rz,
+            use_scale_x      =sx, use_scale_y      =sy, use_scale_z      =sz,
+            use_translation_x=tx, use_translation_y=ty, use_translation_z=tz)._out

@@ -1912,33 +1912,25 @@ class Matrix(Attribute):
         """
         return Node('Matrix Determinant', {'Matrix': self})._out
 
-    def transform_gizmo(self, position=None, rotation=None, use_rotation_x=True, use_rotation_y=True, use_rotation_z=True, use_scale_x=True, use_scale_y=True, use_scale_z=True, use_translation_x=True, use_translation_y=True, use_translation_z=True):
+    def transform_gizmo(self, *value, position=None, rotation=None, use_rotation=True, use_scale=True, use_translation=True):
         """ > Node <&Node Transform Gizmo>
 
         Arguments
         ---------
         - position (Vector) : socket 'Position' (Position)
         - rotation (Rotation) : socket 'Rotation' (Rotation)
-        - use_rotation_x (bool): Node.use_rotation_x
-        - use_rotation_y (bool): Node.use_rotation_y
-        - use_rotation_z (bool): Node.use_rotation_z
-        - use_scale_x (bool): Node.use_scale_x
-        - use_scale_y (bool): Node.use_scale_y
-        - use_scale_z (bool): Node.use_scale_z
-        - use_translation_x (bool): Node.use_translation_x
-        - use_translation_y (bool): Node.use_translation_y
-        - use_translation_z (bool): Node.use_translation_z
+        - use_rotation (bool or triplet of bools): use_rotation_x, use_rotation_y, use_rotation_z
+        - use_scale (bool or triplet of bools): use_scale_x, use_scale_y, use_scale_z
+        - use_translation (bool or triplet of bools): use_translation_x, translation_y, use_translation_z
 
         Returns
         -------
-        - Gizmo Node
+        - Geometry
         """
-        from geonodes import Gizmo
+        from geonodes import nd
 
-        return Gizmo.Transform(self, position=position, rotation=rotation,
-            use_rotation_x   =use_rotation_x,    use_rotation_y   =use_rotation_y,    use_rotation_z   =use_rotation_z,
-            use_scale_x      =use_scale_x,       use_scale_y      =use_scale_y,       use_scale_z      =use_scale_z,
-            use_translation_x=use_translation_x, use_translation_y=use_translation_y, use_translation_z=use_translation_z)
+        return nd.transform_gizmo(self, position=position, rotation=rotation,
+            use_rotation = use_rotation, use_scale=use_scale, use_translation=use_translation)
 
     # ====================================================================================================
     # Methods

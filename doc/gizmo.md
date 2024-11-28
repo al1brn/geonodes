@@ -111,21 +111,21 @@ Node wrapper.
 
 ## Content
 
-- [Dial](gizmo.md#dial)
-- [Linear](gizmo.md#linear)
-- [Transform](gizmo.md#transform)
+- [dial](gizmo.md#dial)
+- [linear](gizmo.md#linear)
+- [transform](gizmo.md#transform)
 
 ## Methods
 
 
 
 ----------
-### Dial()
+### dial()
 
 > classmethod
 
 ``` python
-Dial(*value, position=None, up=None, screen_space=None, radius=None, color_id='PRIMARY')
+dial(*value, position=None, up=None, screen_space=None, radius=None, color_id='PRIMARY')
 ```
 
 > Node ERROR: Node 'Dial Gizmo' not found
@@ -146,12 +146,12 @@ Dial(*value, position=None, up=None, screen_space=None, radius=None, color_id='P
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Gizmo](gizmo.md#gizmo) :black_small_square: [Content](gizmo.md#content) :black_small_square: [Methods](gizmo.md#methods)</sub>
 
 ----------
-### Linear()
+### linear()
 
 > classmethod
 
 ``` python
-Linear(*value, position=None, direction=None, color_id='PRIMARY', draw_style='ARROW')
+linear(*value, position=None, direction=None, color_id='PRIMARY', draw_style='ARROW')
 ```
 
 > Node ERROR: Node 'Linear Gizmo' not found
@@ -171,12 +171,12 @@ Linear(*value, position=None, direction=None, color_id='PRIMARY', draw_style='AR
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Gizmo](gizmo.md#gizmo) :black_small_square: [Content](gizmo.md#content) :black_small_square: [Methods](gizmo.md#methods)</sub>
 
 ----------
-### Transform()
+### transform()
 
 > classmethod
 
 ``` python
-Transform(*value, position=None, rotation=None, use_rotation_x=True, use_rotation_y=True, use_rotation_z=True, use_scale_x=True, use_scale_y=True, use_scale_z=True, use_translation_x=True, use_translation_y=True, use_translation_z=True)
+transform(*value, position=None, rotation=None, use_rotation=True, use_scale=True, use_translation=True)
 ```
 
 > Node ERROR: Node 'Transform Gizmo' not found
@@ -185,15 +185,9 @@ Transform(*value, position=None, rotation=None, use_rotation_x=True, use_rotatio
 - **value** (_Matrix_) : socket 'Value' (Value)
 - **position** (_Vector_ = None) : socket 'Position' (Position)
 - **rotation** (_Rotation_ = None) : socket 'Rotation' (Rotation)
-- **use_rotation_x** (_bool_ = True) : Node.use_rotation_x
-- **use_rotation_y** (_bool_ = True) : Node.use_rotation_y
-- **use_rotation_z** (_bool_ = True) : Node.use_rotation_z
-- **use_scale_x** (_bool_ = True) : Node.use_scale_x
-- **use_scale_y** (_bool_ = True) : Node.use_scale_y
-- **use_scale_z** (_bool_ = True) : Node.use_scale_z
-- **use_translation_x** (_bool_ = True) : Node.use_translation_x
-- **use_translation_y** (_bool_ = True) : Node.use_translation_y
-- **use_translation_z** (_bool_ = True) : Node.use_translation_z
+- **use_rotation** (_bool or triplet of bools_ = True) : use_rotation_x, use_rotation_y, use_rotation_z
+- **use_scale** (_bool or triplet of bools_ = True) : use_scale_x, use_scale_y, use_scale_z
+- **use_translation** (_bool or triplet of bools_ = True) : use_translation_x, translation_y, use_translation_z
 
 
 

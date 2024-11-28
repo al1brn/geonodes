@@ -4093,7 +4093,7 @@ class nd:
 
 
     @classmethod
-    def transform_geometry(cls, geometry=None, translation=None, rotation=None, scale=None, mode='COMPONENTS'):
+    def transform_geometry(cls, geometry=None, translation=None, rotation=None, scale=None, transform=None):
         """ > Node <&Node Transform Geometry>
 
         Arguments
@@ -4102,14 +4102,18 @@ class nd:
         - translation (Vector) : socket 'Translation' (Translation)
         - rotation (Rotation) : socket 'Rotation' (Rotation)
         - scale (Vector) : socket 'Scale' (Scale)
+        - transform (Matrix) : socket 'Transform' (Scale)
         - mode (str): Node.mode in ('COMPONENTS', 'MATRIX')
 
         Returns
         -------
         - Geometry
         """
+        if transform is None:
+            node = Node('Transform Geometry', {'Geometry': geometry, 'Translation': translation, 'Rotation': rotation, 'Scale': scale}, mode='COMPONENTS')
+        else:
+            node = Node('Transform Geometry', {'Geometry': geometry, 'Transform': transform}, mode='MATRIX')
 
-        node = Node('Transform Geometry', {'Geometry': geometry, 'Translation': translation, 'Rotation': rotation, 'Scale': scale}, mode=mode)
         return node._out
 
 
@@ -4911,8 +4915,6 @@ class nd:
     def dial_gizmo(cls, *value, position=None, up=None, screen_space=None, radius=None, color_id='PRIMARY'):
         """ > Node <&Node Dial Gizmo>
 
-        [&RETURN_NODE]
-
         Arguments
         ---------
         - value (Float) : socket 'Value' (Value)
@@ -4928,13 +4930,11 @@ class nd:
         """
         values = list(value) if len(value) else None
         node = Node('Dial Gizmo', {'Value': values, 'Position': position, 'Up': up, 'Screen Space': screen_space, 'Radius': radius}, color_id=color_id)
-        return node
+        return node._out
 
     @classmethod
     def linear_gizmo(cls, *value, position=None, direction=None, color_id='PRIMARY', draw_style='ARROW'):
         """ > Node <&Node Linear Gizmo>
-
-        [&RETURN_NODE]
 
         Arguments
         ---------
@@ -4950,36 +4950,36 @@ class nd:
         """
         values = list(value) if len(value) else None
         node = Node('Linear Gizmo', {'Value': values, 'Position': position, 'Direction': direction}, color_id=color_id, draw_style=draw_style)
-        return node
+        return node._out
 
     @classmethod
-    def transform_gizmo(cls, *value, position=None, rotation=None, use_rotation_x=True, use_rotation_y=True, use_rotation_z=True, use_scale_x=True, use_scale_y=True, use_scale_z=True, use_translation_x=True, use_translation_y=True, use_translation_z=True):
+    def transform_gizmo(cls, *value, position=None, rotation=None, use_rotation=True, use_scale=True, use_translation=True):
         """ > Node <&Node Transform Gizmo>
-
-        [&RETURN_NODE]
 
         Arguments
         ---------
         - value (Matrix) : socket 'Value' (Value)
         - position (Vector) : socket 'Position' (Position)
         - rotation (Rotation) : socket 'Rotation' (Rotation)
-        - use_rotation_x (bool): Node.use_rotation_x
-        - use_rotation_y (bool): Node.use_rotation_y
-        - use_rotation_z (bool): Node.use_rotation_z
-        - use_scale_x (bool): Node.use_scale_x
-        - use_scale_y (bool): Node.use_scale_y
-        - use_scale_z (bool): Node.use_scale_z
-        - use_translation_x (bool): Node.use_translation_x
-        - use_translation_y (bool): Node.use_translation_y
-        - use_translation_z (bool): Node.use_translation_z
+        - use_rotation (bool or triplet of bools): use_rotation_x, use_rotation_y, use_rotation_z
+        - use_scale (bool or triplet of bools): use_scale_x, use_scale_y, use_scale_z
+        - use_translation (bool or triplet of bools): use_translation_x, translation_y, use_translation_z
 
         Returns
         -------
         - Geometry
         """
         values = list(value) if len(value) else None
-        node = Node('Transform Gizmo', {'Value': values, 'Position': position, 'Rotation': rotation}, use_rotation_x=use_rotation_x, use_rotation_y=use_rotation_y, use_rotation_z=use_rotation_z, use_scale_x=use_scale_x, use_scale_y=use_scale_y, use_scale_z=use_scale_z, use_translation_x=use_translation_x, use_translation_y=use_translation_y, use_translation_z=use_translation_z)
-        return node
+
+        rx, ry, rz = np.resize(use_rotation,    3).astype(bool)
+        sx, sy, sz = np.resize(use_scale,       3).astype(bool)
+        tx, ty, tz = np.resize(use_translation, 3).astype(bool)
+
+        node = Node('Transform Gizmo', {'Value': values, 'Position': position, 'Rotation': rotation},
+            use_rotation_x   =rx, use_rotation_y   =ry, use_rotation_z   =rz,
+            use_scale_x      =sx, use_scale_y      =sy, use_scale_z      =sz,
+            use_translation_x=tx, use_translation_y=ty, use_translation_z=tz)
+        return node._out
 
     @classmethod
     def grease_pencil_to_curves(cls, grease_pencil=None, layers_as_instances=None):

@@ -681,30 +681,30 @@ class Geometry(Socket, GeoBase):
         """
         return self._geo_type(self._node('Merge by Distance', {'Distance': distance}, mode=mode)._out)
 
-    def transform(self, translation=None, rotation=None, scale=None, matrix=None):
+    def transform(self, translation=None, rotation=None, scale=None, transform=None):
         """ > Node <&Node Transform Geometry>
 
         [&JUMP]
 
         > [!NOTE]
-        > - If **matrix** argument is None, the mode 'COMPONENTS' is set.
-        > - If **matrix** argument is not NOne, the mode 'MATRIX' is set and the other arguments are ignored.
+        > - If **transform** argument is None, the mode 'COMPONENTS' is set.
+        > - If **transform** argument is not None, the mode 'MATRIX' is set and the other arguments are ignored.
 
         Arguments
         ---------
         - translation (Vector) : socket 'Translation' (Translation)
         - rotation (Rotation) : socket 'Rotation' (Rotation)
         - scale (Vector) : socket 'Scale' (Scale)
-        - matrix (Matrix) : socket 'Transform' (Transform)
+        - transform (Matrix) : socket 'Transform' (Transform)
 
         Returns
         -------
         - Geometry = self
         """
-        if matrix is None:
+        if transform is None:
             return self._jump(Node('Transform Geometry', {'Geometry': self, 'Translation': translation, 'Rotation': rotation, 'Scale': scale}, mode='COMPONENTS')._out)
         else:
-            return self._jump(Node('Transform Geometry', {'Geometry': self, 'Transform': matrix}, mode='MATRIX')._out)
+            return self._jump(Node('Transform Geometry', {'Geometry': self, 'Transform': transform}, mode='MATRIX')._out)
 
     @property
     def separate_components(self):

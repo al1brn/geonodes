@@ -467,28 +467,23 @@ transform_direction(vector)
 > method
 
 ``` python
-transform_gizmo(position=None, rotation=None, use_rotation_x=True, use_rotation_y=True, use_rotation_z=True, use_scale_x=True, use_scale_y=True, use_scale_z=True, use_translation_x=True, use_translation_y=True, use_translation_z=True)
+transform_gizmo(*value, position=None, rotation=None, use_rotation=True, use_scale=True, use_translation=True)
 ```
 
 > Node ERROR: Node 'Transform Gizmo' not found
 
 #### Arguments:
+- **value**
 - **position** (_Vector_ = None) : socket 'Position' (Position)
 - **rotation** (_Rotation_ = None) : socket 'Rotation' (Rotation)
-- **use_rotation_x** (_bool_ = True) : Node.use_rotation_x
-- **use_rotation_y** (_bool_ = True) : Node.use_rotation_y
-- **use_rotation_z** (_bool_ = True) : Node.use_rotation_z
-- **use_scale_x** (_bool_ = True) : Node.use_scale_x
-- **use_scale_y** (_bool_ = True) : Node.use_scale_y
-- **use_scale_z** (_bool_ = True) : Node.use_scale_z
-- **use_translation_x** (_bool_ = True) : Node.use_translation_x
-- **use_translation_y** (_bool_ = True) : Node.use_translation_y
-- **use_translation_z** (_bool_ = True) : Node.use_translation_z
+- **use_rotation** (_bool or triplet of bools_ = True) : use_rotation_x, use_rotation_y, use_rotation_z
+- **use_scale** (_bool or triplet of bools_ = True) : use_scale_x, use_scale_y, use_scale_z
+- **use_translation** (_bool or triplet of bools_ = True) : use_translation_x, translation_y, use_translation_z
 
 
 
 #### Returns:
-- **Gizmo** :
+- **Geometry** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Matrix](matrix.md#matrix) :black_small_square: [Content](matrix.md#content) :black_small_square: [Methods](matrix.md#methods)</sub>
 

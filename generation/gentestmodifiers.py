@@ -939,14 +939,12 @@ def demo():
             lg.value = 1
             lg.value = 2
             lg.value = 3
-            lg.pin_gizmo = True
 
             dg = val.dial_gizmo()
             val.pin_gizmo = True
 
             tg = Matrix().transform_gizmo()
-            print(dir(tg))
-            tg.pin_gizmo = True
+            tg.node.pin_gizmo = True
 
         # ----------------------------------------------------------------------------------------------------
         # Geometry name

@@ -608,7 +608,7 @@ to_instance(*geometries)
 > method
 
 ``` python
-transform(translation=None, rotation=None, scale=None, matrix=None)
+transform(translation=None, rotation=None, scale=None, transform=None)
 ```
 
 > Node [Transform Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/transform_geometry.html)
@@ -616,14 +616,14 @@ transform(translation=None, rotation=None, scale=None, matrix=None)
 
 
 > [!NOTE]
-> - If **matrix** argument is None, the mode 'COMPONENTS' is set.
-> - If **matrix** argument is not NOne, the mode 'MATRIX' is set and the other arguments are ignored.
+> - If **transform** argument is None, the mode 'COMPONENTS' is set.
+> - If **transform** argument is not None, the mode 'MATRIX' is set and the other arguments are ignored.
 
 #### Arguments:
 - **translation** (_Vector_ = None) : socket 'Translation' (Translation)
 - **rotation** (_Rotation_ = None) : socket 'Rotation' (Rotation)
 - **scale** (_Vector_ = None) : socket 'Scale' (Scale)
-- **matrix** (_Matrix_ = None) : socket 'Transform' (Transform)
+- **transform** (_Matrix_ = None) : socket 'Transform' (Transform)
 
 
 

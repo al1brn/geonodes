@@ -376,7 +376,7 @@ class IntFloat(Attribute):
     # =============================================================================================================================
     # Gizmo
 
-    def dial_gizmo(self, position=None, up=None, screen_space=None, radius=None, color_id='PRIMARY'):
+    def dial_gizmo(self, *value, position=None, up=None, screen_space=None, radius=None, color_id='PRIMARY'):
         """ > Node <&Node Dial Gizmo>
 
         Arguments
@@ -390,13 +390,13 @@ class IntFloat(Attribute):
 
         Returns
         -------
-        - Gizmo Node
+        - Geometry
         """
-        from geonodes import Gizmo
+        from geonodes import nd
 
-        return Gizmo.Dial(self, position=position, up=up, screen_space=screen_space, color_id=color_id)
+        return nd.dial_gizmo(self, *value, position=position, up=up, screen_space=screen_space, color_id=color_id)
 
-    def linear_gizmo(self, position=None, direction=None, color_id='PRIMARY', draw_style='ARROW'):
+    def linear_gizmo(self, *value, position=None, direction=None, color_id='PRIMARY', draw_style='ARROW'):
         """ > Node <&Node Linear Gizmo>
 
         Arguments
@@ -409,11 +409,11 @@ class IntFloat(Attribute):
 
         Returns
         -------
-        - Gizmo Node
+        - Geometry
         """
-        from geonodes import Gizmo
+        from geonodes import nd
 
-        return Gizmo.Linear(self, position=position, direction=direction, color_id=color_id, draw_style=draw_style)
+        return nd.linear_gizmo(self, *value, position=position, direction=direction, color_id=color_id, draw_style=draw_style)
 
 # =============================================================================================================================
 # Float

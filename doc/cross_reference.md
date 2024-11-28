@@ -322,7 +322,7 @@ You will find here how nodes are implemented
 
 - [Float](float.md#float) :white_small_square: [dial_gizmo](float.md#dial_gizmo)
 - [Integer](integer.md#integer) :white_small_square: [dial_gizmo](integer.md#dial_gizmo)
-- [Gizmo](gizmo.md#gizmo) :white_small_square: [Dial](gizmo.md#dial)
+- [Gizmo](gizmo.md#gizmo) :white_small_square: [dial](gizmo.md#dial)
 - [nd](nd.md#nd) :white_small_square: [dial_gizmo](nd.md#dial_gizmo)
 
 #### Distribute Points in Grid
@@ -736,7 +736,7 @@ You will find here how nodes are implemented
 
 - [Float](float.md#float) :white_small_square: [linear_gizmo](float.md#linear_gizmo)
 - [Integer](integer.md#integer) :white_small_square: [linear_gizmo](integer.md#linear_gizmo)
-- [Gizmo](gizmo.md#gizmo) :white_small_square: [Linear](gizmo.md#linear)
+- [Gizmo](gizmo.md#gizmo) :white_small_square: [linear](gizmo.md#linear)
 - [nd](nd.md#nd) :white_small_square: [linear_gizmo](nd.md#linear_gizmo)
 
 #### Magic Texture
@@ -1515,7 +1515,7 @@ You will find here how nodes are implemented
 
 #### Transform Gizmo
 
-- [Gizmo](gizmo.md#gizmo) :white_small_square: [Transform](gizmo.md#transform)
+- [Gizmo](gizmo.md#gizmo) :white_small_square: [transform](gizmo.md#transform)
 - [nd](nd.md#nd) :white_small_square: [transform_gizmo](nd.md#transform_gizmo)
 - [Matrix](matrix.md#matrix) :white_small_square: [transform_gizmo](matrix.md#transform_gizmo)
 
