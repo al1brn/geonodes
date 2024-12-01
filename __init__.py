@@ -118,3 +118,9 @@ from .geonodes.geometryclass import Domain, Vertex, Edge, Face, Corner, SplinePo
 
 from .shadernodes.shadernodes import ShaderNodes, snd
 from .shadernodes.shaderclass import Shader, VolumeShader
+
+# ----------------------------------------------------------------------------------------------------
+# Register
+
+from .geonodes import treearrange
+treearrange.register()

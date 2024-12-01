@@ -25,2269 +25,1265 @@ updates
 - update   : 2024/06/17
 - update   : 2024/07/23
 - update   : 2024/09/04
+- update.  : 2024/11/30
 """
 
-from pprint import pprint
-
-from mathutils import Vector, Color
 import bpy
 
-from .scripterror import NodeError
+X_SEPA = 60
+Y_SEPA = 40
+ZONE_INPUTS  = ['GeometryNodeRepeatInput', 'GeometryNodeSimulationInput', 'GeometryNodeForeachGeometryElementInput']
+ZONE_OUTPUTS = ['GeometryNodeRepeatOutput', 'GeometryNodeSimulationOutput', 'GeometryNodeForeachGeometryElementOutput']
+
+# =============================================================================================================================
+# A link
+
+class Link:
+    def __init__(self, tree, blink):
+        """ > Link wrapper
+
+        Properties
+        ----------
+        - tree (Tree) : tree wrapper
+        - blink (bpy.types.Link) : wrapped link
+        - node0 (Node) : starting node
+        - node1 (Node) : ending node
+        - index0 (int) : starting socket index
+        - index1 (int) : ending socket index
+        """
+        self.tree  = tree
+
+        self.blink  = blink
+        self.node0  = tree[blink.from_node]
+        self.node1  = tree[blink.to_node]
+        self.index0 = list(blink.from_node.outputs).index(blink.from_socket)
+        self.index1 = list(blink.to_node.inputs).index(blink.to_socket)
+
+        assert(self.socket0 == self.blink.from_socket)
+        assert(self.socket1 == self.blink.to_socket)
+
+    def __str__(self):
+        return f"<Link [{self.node0.bnode.name}]({self.index0}) -> [{self.node1.bnode.name}]({self.index1})>"
+
+    @property
+    def socket0(self):
+        """ Starting socket
+
+        > [!IMPORTANT]
+        > The socket is not directly read from the link but from <#node0> using <#index0>.
+
+        Returns
+        -------
+        - bpy.types.NodeSocket : from socket
+        """
+        return self.node0.bnode.outputs[self.index0]
+
+    @property
+    def socket1(self):
+        """ Starting socket
+
+        > [!IMPORTANT]
+        > The socket is not directly read from the link but from <#node1> using <#index1>.
+
+        Returns
+        -------
+        - bpy.types.NodeSocket : to socket
+        """
+        return self.node1.bnode.inputs[self.index1]
+
+    def replace_to(self, node1, index1=None):
+        """ Replace node 1
+
+        The link is deleted and replaced by a link from <#node0> to the new <#node1>
+
+        Arguments
+        ---------
+        - node1 (Node) : new 'node to'
+        - index1 (int = None) : new index1, keep current if None
+        """
+        self.tree.btree.links.remove(self.blink)
+        self.node1 = node1
+        if index1 is not None:
+            self.index1 = index1
+        self.blink = self.tree.btree.links.new(self.socket0, self.socket1)
+
+    def replace_from(self, node0, index0=None):
+        """ Replace node 0
+
+        The link is deleted and replaced by a link from new <#node0> to <#node1>
+
+        Arguments
+        ---------
+        - node0 (Node) : new 'from node'
+        - index0 (int = None) : new index0, keep current if None
+        """
+        self.tree.btree.links.remove(self.blink)
+        self.node0 = node0
+        if index0 is not None:
+            self.index0 = index0
+        self.blink = self.tree.btree.links.new(self.socket0, self.socket1)
+
+    def insert_reroute(self, frame):
+        """ Insert a reroute node
+
+        Arguments
+        ---------
+        - parent (Frame) : parent frame
+
+        Returns
+        -------
+        - Node : reroute node
+        """
+
+        # ----- Create the reroute node
+        reroute = self.tree.new_reroute(frame)
+
+        # ----- Label
+        node_lab = self.node0.bnode.label
+        if node_lab is None or node_lab == '':
+            reroute.bnode.label = self.blink.from_socket.name
+        else:
+            reroute.bnode.label = node_lab
+
+        # ----- From source node to reroute
+        self.tree.new_link(self.node0, self.index0, reroute, 0)
+
+        # ----- From reroute to target node
+        self.replace_from(reroute, index0 = 0)
+
+        return reroute
 
 
-# ====================================================================================================
-# Node dimensions
-# Node dimensions are baked with gen_node_dims
-#
-# DEPRECATED : node dimensions are dynamically computed
+# =============================================================================================================================
+# Node
 
+class Node:
 
-NODE_DIMS = {
-   'FunctionNodeAlignEulerToVector'          : {'dimensions': (280, 468), 'param_count': 0,},
-   'FunctionNodeBooleanMath'                 : {'dimensions': (280, 254), 'param_count': 1,
-           'name'    : 'operation',
-           'changes' : {
-                'NOT'                : (280, 214),},},
-   'FunctionNodeCombineColor'                : {'dimensions': (280, 342), 'param_count': 0,},
-   'FunctionNodeCompare'                     : {'dimensions': (280, 308), 'param_count': 2,
-           'names'   : ['data_type', 'operation'],
-           'changes' : {
-                ('FLOAT',  'LESS_THAN',     ) : (280, 308),
-                ('FLOAT',  'LESS_EQUAL',    ) : (280, 308),
-                ('FLOAT',  'GREATER_THAN',  ) : (280, 308),
-                ('FLOAT',  'GREATER_EQUAL', ) : (280, 308),
-                ('FLOAT',  'EQUAL',         ) : (280, 348),
-                ('FLOAT',  'NOT_EQUAL',     ) : (280, 348),
-                ('INT',    'LESS_THAN',     ) : (280, 308),
-                ('INT',    'LESS_EQUAL',    ) : (280, 308),
-                ('INT',    'GREATER_THAN',  ) : (280, 308),
-                ('INT',    'GREATER_EQUAL', ) : (280, 308),
-                ('INT',    'EQUAL',         ) : (280, 308),
-                ('INT',    'NOT_EQUAL',     ) : (280, 308),
-                ('VECTOR', 'LESS_THAN',     ) : (280, 642),
-                ('VECTOR', 'LESS_EQUAL',    ) : (280, 642),
-                ('VECTOR', 'GREATER_THAN',  ) : (280, 642),
-                ('VECTOR', 'GREATER_EQUAL', ) : (280, 642),
-                ('VECTOR', 'EQUAL',         ) : (280, 682),
-                ('VECTOR', 'NOT_EQUAL',     ) : (280, 682),
-                ('STRING', 'EQUAL',         ) : (280, 308),
-                ('STRING', 'NOT_EQUAL',     ) : (280, 308),
-                ('RGBA',   'EQUAL',         ) : (280, 348),
-                ('RGBA',   'NOT_EQUAL',     ) : (280, 348),
-                ('RGBA',   'BRIGHTER',      ) : (280, 308),
-                ('RGBA',   'DARKER',        ) : (280, 308),
-                ('FLOAT',  'BRIGHTER',      ) : (280, 348),
-                ('INT',    'BRIGHTER',      ) : (280, 308),
-                ('VECTOR', 'BRIGHTER',      ) : (280, 682),
-                ('STRING', 'BRIGHTER',      ) : (280, 308),
-                ('FLOAT',  'DARKER',        ) : (280, 348),
-                ('INT',    'DARKER',        ) : (280, 308),
-                ('VECTOR', 'DARKER',        ) : (280, 682),
-                ('STRING', 'DARKER',        ) : (280, 308),},},
-   'FunctionNodeFloatToInt'                  : {'dimensions': (280, 210), 'param_count': 0,},
-   'FunctionNodeInputBool'                   : {'dimensions': (280, 160), 'param_count': 0,},
-   'FunctionNodeInputColor'                  : {'dimensions': (280, 370), 'param_count': 0,},
-   'FunctionNodeInputInt'                    : {'dimensions': (280, 160), 'param_count': 0,},
-   'FunctionNodeInputSpecialCharacters'      : {'dimensions': (280, 144), 'param_count': 0,},
-   'FunctionNodeInputString'                 : {'dimensions': (280, 160), 'param_count': 0,},
-   'FunctionNodeInputVector'                 : {'dimensions': (280, 240), 'param_count': 0,},
-   'FunctionNodeRandomValue'                 : {'dimensions': (280, 346), 'param_count': 1,
-           'name'    : 'data_type',
-           'changes' : {
-                'FLOAT_VECTOR'       : (280, 586),
-                'BOOLEAN'            : (280, 298),},},
-   'FunctionNodeReplaceString'               : {'dimensions': (280, 238), 'param_count': 0,},
-   'FunctionNodeRotateEuler'                 : {'dimensions': (280, 428), 'param_count': 0,},
-   'FunctionNodeSeparateColor'               : {'dimensions': (280, 342), 'param_count': 0,},
-   'FunctionNodeSliceString'                 : {'dimensions': (280, 238), 'param_count': 0,},
-   'FunctionNodeStringLength'                : {'dimensions': (280, 150), 'param_count': 0,},
-   'FunctionNodeValueToString'               : {'dimensions': (280, 194), 'param_count': 0,},
-   'GeometryNodeAccumulateField'             : {'dimensions': (280, 396), 'param_count': 1,
-           'name'    : 'data_type',
-           'changes' : {
-                'INT'                : (280, 392),
-                'FLOAT_VECTOR'       : (280, 516),},},
-   'GeometryNodeAttributeDomainSize'         : {'dimensions': (280, 346), 'param_count': 1,
-           'name'    : 'component',
-           'changes' : {
-                'POINTCLOUD'         : (280, 214),
-                'CURVE'              : (280, 258),
-                'INSTANCES'          : (280, 210),},},
-   'GeometryNodeAttributeStatistic'          : {'dimensions': (280, 664), 'param_count': 1,
-           'name'    : 'data_type',
-           'changes' : {
-                'FLOAT_VECTOR'       : (280, 656),},},
-   'GeometryNodeBlurAttribute'               : {'dimensions': (280, 302), 'param_count': 1,
-           'name'    : 'data_type',
-           'changes' : {
-                'FLOAT_COLOR'        : (280, 298),},},
-   'GeometryNodeBoundBox'                    : {'dimensions': (280, 238), 'param_count': 0,},
-   'GeometryNodeCaptureAttribute'            : {'dimensions': (280, 356), 'param_count': 1,
-           'name'    : 'data_type',
-           'changes' : {
-                'INT'                : (280, 348),
-                'FLOAT_VECTOR'       : (280, 476),},},
-   'GeometryNodeCollectionInfo'              : {'dimensions': (280, 298), 'param_count': 0,},
-   'GeometryNodeConvexHull'                  : {'dimensions': (280, 150), 'param_count': 0,},
-   'GeometryNodeCornersOfFace'               : {'dimensions': (280, 282), 'param_count': 0,},
-   'GeometryNodeCornersOfVertex'             : {'dimensions': (280, 282), 'param_count': 0,},
-   'GeometryNodeCurveArc'                    : {'dimensions': (280, 434), 'param_count': 1,
-           'name'    : 'mode',
-           'changes' : {
-                'POINTS'             : (280, 966),},},
-   'GeometryNodeCurveEndpointSelection'      : {'dimensions': (280, 194), 'param_count': 0,},
-   'GeometryNodeCurveHandleTypeSelection'    : {'dimensions': (280, 210), 'param_count': 0,},
-   'GeometryNodeCurveLength'                 : {'dimensions': (280, 150), 'param_count': 0,},
-   'GeometryNodeCurveOfPoint'                : {'dimensions': (280, 194), 'param_count': 0,},
-   'GeometryNodeCurvePrimitiveBezierSegment' : {'dimensions': (280, 866), 'param_count': 0,},
-   'GeometryNodeCurvePrimitiveCircle'        : {'dimensions': (280, 258), 'param_count': 1,
-           'name'    : 'mode',
-           'changes' : {
-                'POINTS'             : (280, 750),},},
-   'GeometryNodeCurvePrimitiveLine'          : {'dimensions': (280, 498), 'param_count': 1,
-           'name'    : 'mode',
-           'changes' : {
-                'DIRECTION'          : (280, 538),},},
-   'GeometryNodeCurvePrimitiveQuadrilateral' : {'dimensions': (280, 258), 'param_count': 1,
-           'name'    : 'mode',
-           'changes' : {
-                'PARALLELOGRAM'      : (280, 302),
-                'TRAPEZOID'          : (280, 346),
-                'KITE'               : (280, 302),
-                'POINTS'             : (280, 822),},},
-   'GeometryNodeCurveQuadraticBezier'        : {'dimensions': (280, 642), 'param_count': 0,},
-   'GeometryNodeCurveSetHandles'             : {'dimensions': (280, 304), 'param_count': 0,},
-   'GeometryNodeCurveSpiral'                 : {'dimensions': (280, 370), 'param_count': 0,},
-   'GeometryNodeCurveSplineType'             : {'dimensions': (280, 254), 'param_count': 0,},
-   'GeometryNodeCurveStar'                   : {'dimensions': (280, 326), 'param_count': 0,},
-   'GeometryNodeCurveToMesh'                 : {'dimensions': (280, 238), 'param_count': 0,},
-   'GeometryNodeCurveToPoints'               : {'dimensions': (280, 390), 'param_count': 1,
-           'name'    : 'mode',
-           'changes' : {
-                'EVALUATED'          : (280, 346),
-                'LENGTH'             : (280, 386),},},
-   'GeometryNodeDeformCurvesOnSurface'       : {'dimensions': (340, 150), 'param_count': 0,},
-   'GeometryNodeDeleteGeometry'              : {'dimensions': (280, 304), 'param_count': 1,
-           'name'    : 'domain',
-           'changes' : {
-                'CURVE'              : (280, 254),
-                'INSTANCE'           : (280, 254),},},
-   'GeometryNodeDistributePointsInVolume'    : {'dimensions': (340, 302), 'param_count': 1,
-           'name'    : 'mode',
-           'changes' : {
-                'DENSITY_GRID'       : (340, 418),},},
-   'GeometryNodeDistributePointsOnFaces'     : {'dimensions': (340, 430), 'param_count': 1,
-           'name'    : 'distribute_method',
-           'changes' : {
-                'POISSON'            : (340, 518),},},
-   'GeometryNodeDualMesh'                    : {'dimensions': (280, 194), 'param_count': 0,},
-   'GeometryNodeDuplicateElements'           : {'dimensions': (280, 342), 'param_count': 0,},
-   'GeometryNodeEdgePathsToCurves'           : {'dimensions': (280, 238), 'param_count': 0,},
-   'GeometryNodeEdgePathsToSelection'        : {'dimensions': (300, 194), 'param_count': 0,},
-   'GeometryNodeEdgesOfCorner'               : {'dimensions': (280, 194), 'param_count': 0,},
-   'GeometryNodeEdgesOfVertex'               : {'dimensions': (280, 282), 'param_count': 0,},
-   'GeometryNodeEdgesToFaceGroups'           : {'dimensions': (280, 150), 'param_count': 0,},
-   'GeometryNodeExtrudeMesh'                 : {'dimensions': (280, 474), 'param_count': 1,
-           'name'    : 'mode',
-           'changes' : {
-                'VERTICES'           : (280, 434),
-                'EDGES'              : (280, 434),},},
-   'GeometryNodeFaceOfCorner'                : {'dimensions': (280, 194), 'param_count': 0,},
-   'GeometryNodeFieldAtIndex'                : {'dimensions': (280, 312), 'param_count': 1,
-           'name'    : 'data_type',
-           'changes' : {
-                'BOOLEAN'            : (280, 304),},},
-   'GeometryNodeFieldOnDomain'               : {'dimensions': (280, 268), 'param_count': 1,
-           'name'    : 'data_type',
-           'changes' : {
-                'FLOAT_VECTOR'       : (280, 388),
-                'BOOLEAN'            : (280, 260),},},
-   'GeometryNodeFillCurve'                   : {'dimensions': (280, 210), 'param_count': 0,},
-   'GeometryNodeFilletCurve'                 : {'dimensions': (280, 298), 'param_count': 1,
-           'name'    : 'mode',
-           'changes' : {
-                'POLY'               : (280, 342),},},
-   'GeometryNodeFlipFaces'                   : {'dimensions': (280, 194), 'param_count': 0,},
-   'GeometryNodeGeometryToInstance'          : {'dimensions': (320, 150), 'param_count': 0,},
-   'GeometryNodeGroup'                       : {'dimensions': (280, 100), 'param_count': 0,},
-   'GeometryNodeImageInfo'                   : {'dimensions': (480, 370), 'param_count': 0,},
-   'GeometryNodeImageTexture'                : {'dimensions': (480, 392), 'param_count': 0,},
-   'GeometryNodeIndexOfNearest'              : {'dimensions': (280, 238), 'param_count': 0,},
-   'GeometryNodeInputCurveHandlePositions'   : {'dimensions': (300, 194), 'param_count': 0,},
-   'GeometryNodeInputCurveTilt'              : {'dimensions': (280, 100), 'param_count': 0,},
-   'GeometryNodeInputID'                     : {'dimensions': (280, 100), 'param_count': 0,},
-   'GeometryNodeInputImage'                  : {'dimensions': (480, 160), 'param_count': 0,},
-   'GeometryNodeInputIndex'                  : {'dimensions': (280, 100), 'param_count': 0,},
-   'GeometryNodeInputInstanceRotation'       : {'dimensions': (280, 100), 'param_count': 0,},
-   'GeometryNodeInputInstanceScale'          : {'dimensions': (280, 100), 'param_count': 0,},
-   'GeometryNodeInputMaterial'               : {'dimensions': (280, 160), 'param_count': 0,},
-   'GeometryNodeInputMaterialIndex'          : {'dimensions': (280, 100), 'param_count': 0,},
-   'GeometryNodeInputMeshEdgeAngle'          : {'dimensions': (280, 144), 'param_count': 0,},
-   'GeometryNodeInputMeshEdgeNeighbors'      : {'dimensions': (280, 100), 'param_count': 0,},
-   'GeometryNodeInputMeshEdgeVertices'       : {'dimensions': (280, 232), 'param_count': 0,},
-   'GeometryNodeInputMeshFaceArea'           : {'dimensions': (280, 100), 'param_count': 0,},
-   'GeometryNodeInputMeshFaceIsPlanar'       : {'dimensions': (280, 150), 'param_count': 0,},
-   'GeometryNodeInputMeshFaceNeighbors'      : {'dimensions': (300, 144), 'param_count': 0,},
-   'GeometryNodeInputMeshIsland'             : {'dimensions': (280, 144), 'param_count': 0,},
-   'GeometryNodeInputMeshVertexNeighbors'    : {'dimensions': (280, 144), 'param_count': 0,},
-   'GeometryNodeInputNamedAttribute'         : {'dimensions': (280, 254), 'param_count': 0,},
-   'GeometryNodeInputNormal'                 : {'dimensions': (280, 100), 'param_count': 0,},
-   'GeometryNodeInputPosition'               : {'dimensions': (280, 100), 'param_count': 0,},
-   'GeometryNodeInputRadius'                 : {'dimensions': (280, 100), 'param_count': 0,},
-   'GeometryNodeInputSceneTime'              : {'dimensions': (280, 144), 'param_count': 0,},
-   'GeometryNodeInputShadeSmooth'            : {'dimensions': (280, 100), 'param_count': 0,},
-   'GeometryNodeInputShortestEdgePaths'      : {'dimensions': (280, 238), 'param_count': 0,},
-   'GeometryNodeInputSignedDistance'         : {'dimensions': (280, 100), 'param_count': 0,},
-   'GeometryNodeInputSplineCyclic'           : {'dimensions': (280, 100), 'param_count': 0,},
-   'GeometryNodeInputSplineResolution'       : {'dimensions': (280, 100), 'param_count': 0,},
-   'GeometryNodeInputTangent'                : {'dimensions': (280, 100), 'param_count': 0,},
-   'GeometryNodeInstanceOnPoints'            : {'dimensions': (280, 654), 'param_count': 0,},
-   'GeometryNodeInstancesToPoints'           : {'dimensions': (280, 282), 'param_count': 0,},
-   'GeometryNodeInterpolateCurves'           : {'dimensions': (280, 502), 'param_count': 0,},
-   'GeometryNodeIsViewport'                  : {'dimensions': (280, 100), 'param_count': 0,},
-   'GeometryNodeJoinGeometry'                : {'dimensions': (280, 150), 'param_count': 0,},
-   'GeometryNodeMaterialSelection'           : {'dimensions': (280, 150), 'param_count': 0,},
-   'GeometryNodeMeanFilterSDFVolume'         : {'dimensions': (320, 238), 'param_count': 0,},
-   'GeometryNodeMergeByDistance'             : {'dimensions': (280, 298), 'param_count': 0,},
-   'GeometryNodeMeshBoolean'                 : {'dimensions': (280, 386), 'param_count': 1,
-           'name'    : 'operation',
-           'changes' : {
-                'INTERSECT'          : (280, 342),
-                'UNION'              : (280, 342),},},
-   'GeometryNodeMeshCircle'                  : {'dimensions': (280, 254), 'param_count': 0,},
-   'GeometryNodeMeshCone'                    : {'dimensions': (280, 606), 'param_count': 1,
-           'name'    : 'fill_type',
-           'changes' : {
-                'NONE'               : (280, 562),},},
-   'GeometryNodeMeshCube'                    : {'dimensions': (280, 446), 'param_count': 0,},
-   'GeometryNodeMeshCylinder'                : {'dimensions': (280, 562), 'param_count': 1,
-           'name'    : 'fill_type',
-           'changes' : {
-                'NONE'               : (280, 518),},},
-   'GeometryNodeMeshFaceSetBoundaries'       : {'dimensions': (300, 150), 'param_count': 0,},
-   'GeometryNodeMeshGrid'                    : {'dimensions': (280, 326), 'param_count': 0,},
-   'GeometryNodeMeshIcoSphere'               : {'dimensions': (280, 238), 'param_count': 0,},
-   'GeometryNodeMeshLine'                    : {'dimensions': (280, 538), 'param_count': 1,
-           'name'    : 'mode',
-           'changes' : {
-                'END_POINTS'         : (280, 588),},},
-   'GeometryNodeMeshToCurve'                 : {'dimensions': (280, 194), 'param_count': 0,},
-   'GeometryNodeMeshToPoints'                : {'dimensions': (280, 342), 'param_count': 0,},
-   'GeometryNodeMeshToSDFVolume'             : {'dimensions': (360, 298), 'param_count': 0,},
-   'GeometryNodeMeshToVolume'                : {'dimensions': (400, 430), 'param_count': 0,},
-   'GeometryNodeMeshUVSphere'                : {'dimensions': (280, 282), 'param_count': 0,},
-   'GeometryNodeObjectInfo'                  : {'dimensions': (280, 386), 'param_count': 0,},
-   'GeometryNodeOffsetCornerInFace'          : {'dimensions': (280, 194), 'param_count': 0,},
-   'GeometryNodeOffsetPointInCurve'          : {'dimensions': (280, 238), 'param_count': 0,},
-   'GeometryNodeOffsetSDFVolume'             : {'dimensions': (280, 194), 'param_count': 0,},
-   'GeometryNodePoints'                      : {'dimensions': (280, 358), 'param_count': 0,},
-   'GeometryNodePointsOfCurve'               : {'dimensions': (280, 282), 'param_count': 0,},
-   'GeometryNodePointsToSDFVolume'           : {'dimensions': (340, 298), 'param_count': 0,},
-   'GeometryNodePointsToVertices'            : {'dimensions': (280, 194), 'param_count': 0,},
-   'GeometryNodePointsToVolume'              : {'dimensions': (340, 342), 'param_count': 0,},
-   'GeometryNodeProximity'                   : {'dimensions': (280, 298), 'param_count': 0,},
-   'GeometryNodeRaycast'                     : {'dimensions': (300, 736), 'param_count': 1,
-           'name'    : 'data_type',
-           'changes' : {
-                'INT'                : (300, 732),},},
-   'GeometryNodeRealizeInstances'            : {'dimensions': (280, 150), 'param_count': 0,},
-   'GeometryNodeRemoveAttribute'             : {'dimensions': (340, 194), 'param_count': 0,},
-   'GeometryNodeReplaceMaterial'             : {'dimensions': (280, 238), 'param_count': 0,},
-   'GeometryNodeResampleCurve'               : {'dimensions': (280, 302), 'param_count': 1,
-           'name'    : 'mode',
-           'changes' : {
-                'EVALUATED'          : (280, 258),
-                'LENGTH'             : (280, 298),},},
-   'GeometryNodeReverseCurve'                : {'dimensions': (280, 194), 'param_count': 0,},
-   'GeometryNodeRotateInstances'             : {'dimensions': (280, 566), 'param_count': 0,},
-   'GeometryNodeSDFVolumeSphere'             : {'dimensions': (360, 238), 'param_count': 0,},
-   'GeometryNodeSampleCurve'                 : {'dimensions': (280, 574), 'param_count': 0,},
-   'GeometryNodeSampleIndex'                 : {'dimensions': (280, 402), 'param_count': 1,
-           'name'    : 'data_type',
-           'changes' : {
-                'BOOLEAN'            : (280, 398),},},
-   'GeometryNodeSampleNearest'               : {'dimensions': (280, 254), 'param_count': 0,},
-   'GeometryNodeSampleNearestSurface'        : {'dimensions': (300, 302), 'param_count': 1,
-           'name'    : 'data_type',
-           'changes' : {
-                'BOOLEAN'            : (300, 298),},},
-   'GeometryNodeSampleUVSurface'             : {'dimensions': (280, 506), 'param_count': 0,},
-   'GeometryNodeSampleVolume'                : {'dimensions': (280, 352), 'param_count': 1,
-           'name'    : 'grid_type',
-           'changes' : {
-                'INT'                : (280, 348),},},
-   'GeometryNodeScaleElements'               : {'dimensions': (280, 396), 'param_count': 1,
-           'name'    : 'scale_mode',
-           'changes' : {
-                'SINGLE_AXIS'        : (280, 556),},},
-   'GeometryNodeScaleInstances'              : {'dimensions': (280, 566), 'param_count': 0,},
-   'GeometryNodeSelfObject'                  : {'dimensions': (280, 100), 'param_count': 0,},
-   'GeometryNodeSeparateComponents'          : {'dimensions': (280, 326), 'param_count': 0,},
-   'GeometryNodeSeparateGeometry'            : {'dimensions': (280, 298), 'param_count': 0,},
-   'GeometryNodeSetCurveHandlePositions'     : {'dimensions': (280, 462), 'param_count': 0,},
-   'GeometryNodeSetCurveNormal'              : {'dimensions': (280, 254), 'param_count': 0,},
-   'GeometryNodeSetCurveRadius'              : {'dimensions': (280, 238), 'param_count': 0,},
-   'GeometryNodeSetCurveTilt'                : {'dimensions': (280, 238), 'param_count': 0,},
-   'GeometryNodeSetID'                       : {'dimensions': (280, 238), 'param_count': 0,},
-   'GeometryNodeSetMaterial'                 : {'dimensions': (280, 238), 'param_count': 0,},
-   'GeometryNodeSetMaterialIndex'            : {'dimensions': (280, 238), 'param_count': 0,},
-   'GeometryNodeSetPointRadius'              : {'dimensions': (280, 238), 'param_count': 0,},
-   'GeometryNodeSetPosition'                 : {'dimensions': (280, 402), 'param_count': 0,},
-   'GeometryNodeSetShadeSmooth'              : {'dimensions': (280, 238), 'param_count': 0,},
-   'GeometryNodeSetSplineCyclic'             : {'dimensions': (280, 238), 'param_count': 0,},
-   'GeometryNodeSetSplineResolution'         : {'dimensions': (280, 238), 'param_count': 0,},
-   'GeometryNodeSimulationInput'             : {'dimensions': (280,  80), 'param_count': 0,},
-   'GeometryNodeSimulationOutput'            : {'dimensions': (280, 238), 'param_count': 0,},
-   'GeometryNodeSplineLength'                : {'dimensions': (280, 144), 'param_count': 0,},
-   'GeometryNodeSplineParameter'             : {'dimensions': (280, 188), 'param_count': 0,},
-   'GeometryNodeSplitEdges'                  : {'dimensions': (280, 194), 'param_count': 0,},
-   'GeometryNodeStoreNamedAttribute'         : {'dimensions': (280, 396), 'param_count': 1,
-           'name'    : 'data_type',
-           'changes' : {
-                'INT'                : (280, 392),
-                'FLOAT_VECTOR'       : (280, 516),
-                'FLOAT2'             : (280, 516),},},
-   'GeometryNodeStringJoin'                  : {'dimensions': (280, 194), 'param_count': 0,},
-   'GeometryNodeStringToCurves'              : {'dimensions': (380, 722), 'param_count': 1,
-           'name'    : 'overflow',
-           'changes' : {
-                'SCALE_TO_FIT'       : (380, 762),
-                'TRUNCATE'           : (380, 806),},},
-   'GeometryNodeSubdivideCurve'              : {'dimensions': (280, 194), 'param_count': 0,},
-   'GeometryNodeSubdivideMesh'               : {'dimensions': (280, 194), 'param_count': 0,},
-   'GeometryNodeSubdivisionSurface'          : {'dimensions': (300, 392), 'param_count': 0,},
-   'GeometryNodeSwitch'                      : {'dimensions': (280, 306), 'param_count': 1,
-           'name'    : 'input_type',
-           'changes' : {
-                'VECTOR'             : (280, 546),
-                'IMAGE'              : (280, 298),},},
-   'GeometryNodeTransform'                   : {'dimensions': (280, 642), 'param_count': 0,},
-   'GeometryNodeTranslateInstances'          : {'dimensions': (280, 402), 'param_count': 0,},
-   'GeometryNodeTriangulate'                 : {'dimensions': (280, 348), 'param_count': 0,},
-   'GeometryNodeTrimCurve'                   : {'dimensions': (280, 346), 'param_count': 1,
-           'name'    : 'mode',
-           'changes' : {
-                'LENGTH'             : (280, 342),},},
-   'GeometryNodeUVPackIslands'               : {'dimensions': (280, 282), 'param_count': 0,},
-   'GeometryNodeUVUnwrap'                    : {'dimensions': (280, 342), 'param_count': 0,},
-   'GeometryNodeVertexOfCorner'              : {'dimensions': (280, 150), 'param_count': 0,},
-   'GeometryNodeViewer'                      : {'dimensions': (280, 198), 'param_count': 1,
-           'name'    : 'data_type',
-           'changes' : {
-                'BOOLEAN'            : (280, 194),},},
-   'GeometryNodeVolumeCube'                  : {'dimensions': (280, 654), 'param_count': 0,},
-   'GeometryNodeVolumeToMesh'                : {'dimensions': (340, 298), 'param_count': 1,
-           'name'    : 'resolution_mode',
-           'changes' : {
-                'VOXEL_AMOUNT'       : (340, 342),
-                'VOXEL_SIZE'         : (340, 342),},},
-   'NodeFrame'                               : {'dimensions': (300, 200), 'param_count': 0,},
-   'NodeGroupInput'                          : {'dimensions': (280, 672), 'param_count': 0,},
-   'NodeGroupOutput'                         : {'dimensions': (280, 144), 'param_count': 0,},
-   'NodeReroute'                             : {'dimensions': ( 16,  16), 'param_count': 0,},
-   'ShaderNodeClamp'                         : {'dimensions': (280, 298), 'param_count': 0,},
-   'ShaderNodeCombineRGB'                    : {'dimensions': (280, 238), 'param_count': 0,},
-   'ShaderNodeCombineXYZ'                    : {'dimensions': (280, 238), 'param_count': 0,},
-   'ShaderNodeFloatCurve'                    : {'dimensions': (480, 584), 'param_count': 0,},
-   'ShaderNodeMapRange'                      : {'dimensions': (280, 494), 'param_count': 2,
-           'names'   : ['data_type', 'interpolation_type'],
-           'changes' : {
-                ('FLOAT',        'LINEAR',       ) : (280, 494),
-                ('FLOAT',        'STEPPED',      ) : (280, 538),
-                ('FLOAT',        'SMOOTHSTEP',   ) : (280, 444),
-                ('FLOAT',        'SMOOTHERSTEP', ) : (280, 444),
-                ('FLOAT_VECTOR', 'LINEAR',       ) : (280, 970),
-                ('FLOAT_VECTOR', 'STEPPED',      ) : (280, 1130),
-                ('FLOAT_VECTOR', 'SMOOTHSTEP',   ) : (280, 920),
-                ('FLOAT_VECTOR', 'SMOOTHERSTEP', ) : (280, 920),},},
-   'ShaderNodeMath'                          : {'dimensions': (280, 308), 'param_count': 1,
-           'name'    : 'operation',
-           'changes' : {
-                'MULTIPLY_ADD'       : (280, 348),
-                'SQRT'               : (280, 264),
-                'INVERSE_SQRT'       : (280, 264),
-                'ABSOLUTE'           : (280, 264),
-                'EXPONENT'           : (280, 264),
-                'SIGN'               : (280, 264),
-                'COMPARE'            : (280, 348),
-                'SMOOTH_MIN'         : (280, 348),
-                'SMOOTH_MAX'         : (280, 348),
-                'ROUND'              : (280, 264),
-                'FLOOR'              : (280, 264),
-                'CEIL'               : (280, 264),
-                'TRUNC'              : (280, 264),
-                'FRACT'              : (280, 264),
-                'WRAP'               : (280, 348),
-                'SINE'               : (280, 264),
-                'COSINE'             : (280, 264),
-                'TANGENT'            : (280, 264),
-                'ARCSINE'            : (280, 264),
-                'ARCCOSINE'          : (280, 264),
-                'ARCTANGENT'         : (280, 264),
-                'SINH'               : (280, 264),
-                'COSH'               : (280, 264),
-                'TANH'               : (280, 264),
-                'RADIANS'            : (280, 264),
-                'DEGREES'            : (280, 264),},},
-   'ShaderNodeMix'                           : {'dimensions': (280, 356), 'param_count': 1,
-           'name'    : 'data_type',
-           'changes' : {
-                'VECTOR'             : (280, 646),
-                'RGBA'               : (280, 448),},},
-   'ShaderNodeMixRGB'                        : {'dimensions': (280, 342), 'param_count': 0,},
-   'ShaderNodeRGBCurve'                      : {'dimensions': (480, 584), 'param_count': 0,},
-   'ShaderNodeSeparateRGB'                   : {'dimensions': (280, 238), 'param_count': 0,},
-   'ShaderNodeSeparateXYZ'                   : {'dimensions': (280, 358), 'param_count': 0,},
-   'ShaderNodeTexBrick'                      : {'dimensions': (300, 780), 'param_count': 0,},
-   'ShaderNodeTexChecker'                    : {'dimensions': (280, 326), 'param_count': 0,},
-   'ShaderNodeTexGradient'                   : {'dimensions': (280, 254), 'param_count': 0,},
-   'ShaderNodeTexMagic'                      : {'dimensions': (280, 342), 'param_count': 0,},
-   'ShaderNodeTexMusgrave'                   : {'dimensions': (300, 440), 'param_count': 2,
-           'names'   : ['musgrave_dimensions', 'musgrave_type'],
-           'changes' : {
-                ('1D', 'MULTIFRACTAL',        ) : (300, 440),
-                ('1D', 'RIDGED_MULTIFRACTAL', ) : (300, 524),
-                ('1D', 'HYBRID_MULTIFRACTAL', ) : (300, 524),
-                ('1D', 'FBM',                 ) : (300, 440),
-                ('1D', 'HETERO_TERRAIN',      ) : (300, 484),
-                ('2D', 'MULTIFRACTAL',        ) : (300, 440),
-                ('2D', 'RIDGED_MULTIFRACTAL', ) : (300, 524),
-                ('2D', 'HYBRID_MULTIFRACTAL', ) : (300, 524),
-                ('2D', 'FBM',                 ) : (300, 440),
-                ('2D', 'HETERO_TERRAIN',      ) : (300, 484),
-                ('3D', 'MULTIFRACTAL',        ) : (300, 440),
-                ('3D', 'RIDGED_MULTIFRACTAL', ) : (300, 524),
-                ('3D', 'HYBRID_MULTIFRACTAL', ) : (300, 524),
-                ('3D', 'FBM',                 ) : (300, 440),
-                ('3D', 'HETERO_TERRAIN',      ) : (300, 484),
-                ('4D', 'MULTIFRACTAL',        ) : (300, 484),
-                ('4D', 'RIDGED_MULTIFRACTAL', ) : (300, 568),
-                ('4D', 'HYBRID_MULTIFRACTAL', ) : (300, 568),
-                ('4D', 'FBM',                 ) : (300, 484),
-                ('4D', 'HETERO_TERRAIN',      ) : (300, 528),},},
-   'ShaderNodeTexNoise'                      : {'dimensions': (280, 430), 'param_count': 1,
-           'name'    : 'noise_dimensions',
-           'changes' : {
-                '4D'                 : (280, 474),},},
-   'ShaderNodeTexVoronoi'                    : {'dimensions': (280, 490), 'param_count': 3,
-           'names'   : ['distance', 'feature', 'voronoi_dimensions'],
-           'changes' : {
-                ('EUCLIDEAN', 'F1',               '1D', ) : (280, 440),
-                ('EUCLIDEAN', 'F1',               '2D', ) : (280, 490),
-                ('EUCLIDEAN', 'F1',               '3D', ) : (280, 490),
-                ('EUCLIDEAN', 'F1',               '4D', ) : (280, 578),
-                ('EUCLIDEAN', 'F2',               '1D', ) : (280, 440),
-                ('EUCLIDEAN', 'F2',               '2D', ) : (280, 490),
-                ('EUCLIDEAN', 'F2',               '3D', ) : (280, 490),
-                ('EUCLIDEAN', 'F2',               '4D', ) : (280, 578),
-                ('EUCLIDEAN', 'SMOOTH_F1',        '1D', ) : (280, 484),
-                ('EUCLIDEAN', 'SMOOTH_F1',        '2D', ) : (280, 534),
-                ('EUCLIDEAN', 'SMOOTH_F1',        '3D', ) : (280, 534),
-                ('EUCLIDEAN', 'SMOOTH_F1',        '4D', ) : (280, 622),
-                ('EUCLIDEAN', 'DISTANCE_TO_EDGE', '1D', ) : (280, 352),
-                ('EUCLIDEAN', 'DISTANCE_TO_EDGE', '2D', ) : (280, 352),
-                ('EUCLIDEAN', 'DISTANCE_TO_EDGE', '3D', ) : (280, 352),
-                ('EUCLIDEAN', 'DISTANCE_TO_EDGE', '4D', ) : (280, 396),
-                ('EUCLIDEAN', 'N_SPHERE_RADIUS',  '1D', ) : (280, 348),
-                ('EUCLIDEAN', 'N_SPHERE_RADIUS',  '2D', ) : (280, 348),
-                ('EUCLIDEAN', 'N_SPHERE_RADIUS',  '3D', ) : (280, 348),
-                ('EUCLIDEAN', 'N_SPHERE_RADIUS',  '4D', ) : (280, 392),
-                ('MANHATTAN', 'F1',               '1D', ) : (280, 440),
-                ('MANHATTAN', 'F1',               '2D', ) : (280, 490),
-                ('MANHATTAN', 'F1',               '3D', ) : (280, 490),
-                ('MANHATTAN', 'F1',               '4D', ) : (280, 578),
-                ('MANHATTAN', 'F2',               '1D', ) : (280, 440),
-                ('MANHATTAN', 'F2',               '2D', ) : (280, 490),
-                ('MANHATTAN', 'F2',               '3D', ) : (280, 490),
-                ('MANHATTAN', 'F2',               '4D', ) : (280, 578),
-                ('MANHATTAN', 'SMOOTH_F1',        '1D', ) : (280, 484),
-                ('MANHATTAN', 'SMOOTH_F1',        '2D', ) : (280, 534),
-                ('MANHATTAN', 'SMOOTH_F1',        '3D', ) : (280, 534),
-                ('MANHATTAN', 'SMOOTH_F1',        '4D', ) : (280, 622),
-                ('MANHATTAN', 'DISTANCE_TO_EDGE', '1D', ) : (280, 352),
-                ('MANHATTAN', 'DISTANCE_TO_EDGE', '2D', ) : (280, 352),
-                ('MANHATTAN', 'DISTANCE_TO_EDGE', '3D', ) : (280, 352),
-                ('MANHATTAN', 'DISTANCE_TO_EDGE', '4D', ) : (280, 396),
-                ('MANHATTAN', 'N_SPHERE_RADIUS',  '1D', ) : (280, 348),
-                ('MANHATTAN', 'N_SPHERE_RADIUS',  '2D', ) : (280, 348),
-                ('MANHATTAN', 'N_SPHERE_RADIUS',  '3D', ) : (280, 348),
-                ('MANHATTAN', 'N_SPHERE_RADIUS',  '4D', ) : (280, 392),
-                ('CHEBYCHEV', 'F1',               '1D', ) : (280, 440),
-                ('CHEBYCHEV', 'F1',               '2D', ) : (280, 490),
-                ('CHEBYCHEV', 'F1',               '3D', ) : (280, 490),
-                ('CHEBYCHEV', 'F1',               '4D', ) : (280, 578),
-                ('CHEBYCHEV', 'F2',               '1D', ) : (280, 440),
-                ('CHEBYCHEV', 'F2',               '2D', ) : (280, 490),
-                ('CHEBYCHEV', 'F2',               '3D', ) : (280, 490),
-                ('CHEBYCHEV', 'F2',               '4D', ) : (280, 578),
-                ('CHEBYCHEV', 'SMOOTH_F1',        '1D', ) : (280, 484),
-                ('CHEBYCHEV', 'SMOOTH_F1',        '2D', ) : (280, 534),
-                ('CHEBYCHEV', 'SMOOTH_F1',        '3D', ) : (280, 534),
-                ('CHEBYCHEV', 'SMOOTH_F1',        '4D', ) : (280, 622),
-                ('CHEBYCHEV', 'DISTANCE_TO_EDGE', '1D', ) : (280, 352),
-                ('CHEBYCHEV', 'DISTANCE_TO_EDGE', '2D', ) : (280, 352),
-                ('CHEBYCHEV', 'DISTANCE_TO_EDGE', '3D', ) : (280, 352),
-                ('CHEBYCHEV', 'DISTANCE_TO_EDGE', '4D', ) : (280, 396),
-                ('CHEBYCHEV', 'N_SPHERE_RADIUS',  '1D', ) : (280, 348),
-                ('CHEBYCHEV', 'N_SPHERE_RADIUS',  '2D', ) : (280, 348),
-                ('CHEBYCHEV', 'N_SPHERE_RADIUS',  '3D', ) : (280, 348),
-                ('CHEBYCHEV', 'N_SPHERE_RADIUS',  '4D', ) : (280, 392),
-                ('MINKOWSKI', 'F1',               '1D', ) : (280, 440),
-                ('MINKOWSKI', 'F1',               '2D', ) : (280, 534),
-                ('MINKOWSKI', 'F1',               '3D', ) : (280, 534),
-                ('MINKOWSKI', 'F1',               '4D', ) : (280, 622),
-                ('MINKOWSKI', 'F2',               '1D', ) : (280, 440),
-                ('MINKOWSKI', 'F2',               '2D', ) : (280, 534),
-                ('MINKOWSKI', 'F2',               '3D', ) : (280, 534),
-                ('MINKOWSKI', 'F2',               '4D', ) : (280, 622),
-                ('MINKOWSKI', 'SMOOTH_F1',        '1D', ) : (280, 484),
-                ('MINKOWSKI', 'SMOOTH_F1',        '2D', ) : (280, 578),
-                ('MINKOWSKI', 'SMOOTH_F1',        '3D', ) : (280, 578),
-                ('MINKOWSKI', 'SMOOTH_F1',        '4D', ) : (280, 666),
-                ('MINKOWSKI', 'DISTANCE_TO_EDGE', '1D', ) : (280, 352),
-                ('MINKOWSKI', 'DISTANCE_TO_EDGE', '2D', ) : (280, 352),
-                ('MINKOWSKI', 'DISTANCE_TO_EDGE', '3D', ) : (280, 352),
-                ('MINKOWSKI', 'DISTANCE_TO_EDGE', '4D', ) : (280, 396),
-                ('MINKOWSKI', 'N_SPHERE_RADIUS',  '1D', ) : (280, 348),
-                ('MINKOWSKI', 'N_SPHERE_RADIUS',  '2D', ) : (280, 348),
-                ('MINKOWSKI', 'N_SPHERE_RADIUS',  '3D', ) : (280, 348),
-                ('MINKOWSKI', 'N_SPHERE_RADIUS',  '4D', ) : (280, 392),},},
-   'ShaderNodeTexWave'                       : {'dimensions': (300, 618), 'param_count': 0,},
-   'ShaderNodeTexWhiteNoise'                 : {'dimensions': (280, 258), 'param_count': 1,
-           'name'    : 'noise_dimensions',
-           'changes' : {
-                '1D'                 : (280, 254),
-                '4D'                 : (280, 298),},},
-   'ShaderNodeValToRGB'                      : {'dimensions': (480, 424), 'param_count': 0,},
-   'ShaderNodeValue'                         : {'dimensions': (280, 160), 'param_count': 0,},
-   'ShaderNodeVectorCurve'                   : {'dimensions': (480, 704), 'param_count': 0,},
-   'ShaderNodeVectorMath'                    : {'dimensions': (280, 502), 'param_count': 1,
-           'name'    : 'operation',
-           'changes' : {
-                'MULTIPLY_ADD'       : (280, 666),
-                'REFRACT'            : (280, 542),
-                'FACEFORWARD'        : (280, 666),
-                'DOT_PRODUCT'        : (280, 498),
-                'DISTANCE'           : (280, 498),
-                'LENGTH'             : (280, 334),
-                'SCALE'              : (280, 378),
-                'NORMALIZE'          : (280, 338),
-                'ABSOLUTE'           : (280, 338),
-                'FLOOR'              : (280, 338),
-                'CEIL'               : (280, 338),
-                'FRACTION'           : (280, 338),
-                'WRAP'               : (280, 666),
-                'SINE'               : (280, 338),
-                'COSINE'             : (280, 338),
-                'TANGENT'            : (280, 338),},},
-   'ShaderNodeVectorRotate'                  : {'dimensions': (280, 636), 'param_count': 1,
-           'name'    : 'rotation_type',
-           'changes' : {
-                'X_AXIS'             : (280, 472),
-                'Y_AXIS'             : (280, 472),
-                'Z_AXIS'             : (280, 472),
-                'EULER_XYZ'          : (280, 588),},},
-}
+    def __init__(self, tree, bnode):
+        """ > Node wrapper
 
+        Properties
+        ----------
+        - tree (Tree) : tree wrapper
+        - bnode (bpy.types.Node) : wrapped node
+        - parent (Node) : parent node if any
 
-for blid in ['GeometryNodeSimulationInput', 'GeometryNodeSimulationOutput']:
-    dim = list(NODE_DIMS[blid]['dimensions'])
-    dim[0] += 50
-    dim[1] += 300
-    NODE_DIMS[blid]['dimensions'] = list(dim)
+        Arguments
+        ---------
+        - tree (Tree) : the tree to arrange
+        - bnode (bpy.types.Node) : the wrapped node
+        """
+        self.tree  = tree
+        self.bnode = bnode
 
-# ====================================================================================================
-# Build the node dimensions by trying all the parameter configurations
-#
-# Must be run with an open "Geometry Nodes Editor"
-#
-# DEPRECATED : Useless with dynamic height computatin
+    def __str__(self):
+        sname = self.bnode.name if self.bnode.label == "" else self.bnode.label
+        return f"<Node '{sname}'>"
 
-def gen_node_dims():
+    def __repr__(self):
+        return str(self)
 
-    print('-'*80)
-    print("Nodes dimensions dictionary builder.")
-    print()
-    print("The dictionary is used by the arrange algorithm to have the true nodes dimensions.")
-    print("This function calls a UI redraw and requires that a 'Geometry Nodes Editor' be open")
-    print("with the default 'Geometry Nodes' geometry.")
-    print()
+    def dump(self, depth=0):
+        print("   "*depth, '-', str(self))
 
-    STD_ATTRS = [
-       '__doc__', '__module__', '__slots__', 'bl_description', 'bl_height_default', 'bl_height_max',
-       'bl_height_min', 'bl_icon', 'bl_idname', 'bl_label', 'bl_rna', 'bl_static_type',
-       'bl_width_default', 'bl_width_max', 'bl_width_min', 'color', 'dimensions', 'draw_buttons',
-       'draw_buttons_ext', 'height', 'hide', 'input_template', 'inputs', 'internal_links',
-       'is_registered_node_type', 'label', 'location', 'mute', 'name', 'output_template', 'outputs',
-       'parent', 'poll', 'poll_instance', 'rna_type', 'select', 'show_options', 'show_preview',
-       'show_texture', 'socket_value_update', 'type', 'update', 'use_clamp', 'use_custom_color',
-       'width', 'width_hidden']
+    @property
+    def is_frame(self):
+        return self.bnode.bl_idname == 'NodeFrame'
 
-    tree_name = "Geometry Nodes"
-    tree = bpy.data.node_groups[tree_name]
-    tree.nodes.clear()
+    @property
+    def is_reroute(self):
+        return self.bnode.bl_idname == 'NodeReroute'
 
-    # ----------------------------------------------------------------------------------------------------
-    # Get all the possible values of an enum param
+    @property
+    def is_layout(self):
+        return self.bnode.bl_idname in ['NodeReroute', 'NodeFrame']
 
-    def get_node_enums(node, param_name):
+    @property
+    def parent(self):
+        bparent = self.bnode.parent
+        if bparent is None:
+            return self.tree
+        else:
+            return self.tree[bparent]
 
-        value  = getattr(node, param_name)
-        values = None
-        if isinstance(value, str):
-            try:
-                setattr(node, param_name, "TOTO")
-            except TypeError as e:
-                values = eval(str(e)[54:])
+    # ====================================================================================================
+    # Dimensions
 
-        return values
+    @classmethod
+    @property
+    def has_node_editor(cls):
+        #return False
 
-    # ----------------------------------------------------------------------------------------------------
-    # Set all the possible values of a node parameter et check if the dimensions change
-    # Return the values for which the dimensions differ from default
+        for area in bpy.context.screen.areas:
+            if area.type == 'NODE_EDITOR':
+                return True
+        return False
 
-    def get_changed_dims(node, param_name, values):
-
-        default  = getattr(node, param_name)
-        def_dims = tuple(node.dimensions)
-
-        changes = {}
-
-        for value in values:
-
-            setattr(node, param_name, value)
+    @classmethod
+    def wait(cls):
+        if cls.has_node_editor:
             bpy.ops.wm.redraw_timer(type='DRAW_WIN_SWAP', iterations=1)
 
-            dims = tuple(node.dimensions)
-            if dims != def_dims:
-                changes[value] = dims
+    @property
+    def dimensions(self):
+        """ Node dimensions
 
-        setattr(node, param_name, value)
-        bpy.ops.wm.redraw_timer(type='DRAW_WIN_SWAP', iterations=1)
+        Node dimensions are read from bnode if it is available in 'NODE_EDITOR' area.
+        Otherwise, dimensions are approximated
 
-        return changes
+        Returns
+        -------
+        - couple of floats : node dimensions
+        """
 
-    # ----------------------------------------------------------------------------------------------------
-    # Get all the combinations
+        BASE_WIDTH           = 400
+        BASE_HEIGHT          = 56*4
+        SOCKET_HEIGHT        = 44
+        PARAM_HEIGHT         = 53
+        VECTOR_SOCKET_HEIGHT = 164
 
-    def get_combination_dims(node, param_names):
+        if self.has_node_editor:
+            return self.bnode.dimensions
 
-        inds = {name: index for index, name in enumerate(param_names)}
+        height = BASE_HEIGHT*2
 
-        combs = {}
-        for param_name in param_names:
+        # ----- Input sockets
 
-            default = getattr(node, param_name)
-            values  = get_node_enums(node, param_name)
-
-            rems   = [pname for pname in param_names if pname != param_name]
-            worder = [param_name]
-            worder.extend(rems)
-
-            for value in values:
-                setattr(node, param_name, value)
-
-                if rems:
-                    sub = get_combination_dims(node, rems)
-                    for k, v in sub.items():
-
-                        ukey = (value,) + k
-                        okey = [None] * len(param_names)
-                        for pname, pv in zip(worder, ukey):
-                            okey[inds[pname]] = pv
-
-                        key = tuple(okey)
-                        if not key in combs:
-                            combs[key] = v
-
-                        #combs[(value,) + k] = v
-
-                else:
-                    bpy.ops.wm.redraw_timer(type='DRAW_WIN_SWAP', iterations=1)
-                    combs[(value,)] = tuple(node.dimensions)
-
-            setattr(node, param_name, default)
-
-        return combs
-
-    # ----------------------------------------------------------------------------------------------------
-    # Get the attributes and default dimensions
-    #
-    # nodes is a dict indexed by bl_idname
-    # the values are a dict with a list two entries:
-    # 'dimensions' (w, h) : the default dimensions of the node
-    # 'changes'    dict (key: attr_name, value: (w, h))
-
-    nodes = {}
-    count = 0
-
-    for tp in dir(bpy.types):
-
-        try:
-            node = tree.nodes.new(type=tp)
-        except:
-            continue
-
-        bpy.ops.wm.redraw_timer(type='DRAW_WIN_SWAP', iterations=1)
-        nodes[node.bl_idname] = {'dimensions': tuple(node.dimensions)}
-
-        params = {}
-        for attr in dir(node):
-
-            if attr in STD_ATTRS:
+        count = 0
+        for bsock in self.bnode.inputs:
+            if not bsock.enabled:
                 continue
 
-            value  = getattr(node, attr)
-            values = None
-            if isinstance(value, str):
-                try:
-                    setattr(node, attr, "TOTO")
-                except TypeError as e:
-                    values = eval(str(e)[54:])
-
-            # ----- Store the dimensions if changed
-
-            if values is not None:
-                ch_dims = get_changed_dims(node, attr, values)
-                if ch_dims:
-                    params[attr] = ch_dims
-
-        nodes[node.bl_idname]['param_count'] = len(params)
-
-        if len(params) == 1:
-            name = list(params.keys())[0]
-            nodes[node.bl_idname]['name']    = name
-            nodes[node.bl_idname]['changes'] = params[name]
-
-        elif len(params) > 1:
-            param_names = list(params.keys())
-            combs = get_combination_dims(node, param_names)
-
-            nodes[node.bl_idname]['names']   = param_names
-            nodes[node.bl_idname]['changes'] = combs
-
-        tree.nodes.remove(node)
-
-    # ----------------------------------------------------------------------------------------------------
-    # Customized pretty print
-
-    for blid, ndims in nodes.items():
-
-        def sdim(d):
-            try:
-                return f"({int(d[0]):3d}, {int(d[1]):3d})"
-            except:
-                return "???" + str(d) + "???"
-
-        sblid  = f"'{blid}'"
-        pcount = ndims['param_count']
-        s = f"   {sblid:42s}: " + "{" + f"'dimensions': {sdim(ndims['dimensions'])}, 'param_count': {pcount},"
-
-        if pcount == 1:
-            name    = ndims['name']
-            changes = ndims['changes']
-
-            s += f"\n{' ':10s} 'name'    : '{name}',"
-            s += f"\n{' ':10s} 'changes' : " + "{"
-            for k, v in changes.items():
-                sk = f"'{k}'"
-                s += f"\n{' ':15s} {sk:20s} : {sdim(v)},"
-            s += "},"
-
-        elif pcount > 1:
-            names   = ndims['names']
-            changes = ndims['changes']
-
-            s += f"\n{' ':10s} 'names'   : {names},"
-            s += f"\n{' ':10s} 'changes' : " + "{"
-
-            lname = [0] * len(names)
-            for k in changes:
-                for i, name in enumerate(k):
-                    lname[i] = max(lname[i], len(name))
-            sks = []
-            for k in changes:
-                sk = "("
-                for i, name in enumerate(k):
-                    sk += f"'{name}',{' '*(lname[i]-len(name)+1)}"
-                sks.append(sk + ")")
-
-            for sk, v in zip(sks, changes.values()):
-                #s += f"\n{' ':15s} {str(k):50s} : {sdim(v)},"
-                s += f"\n{' ':15s} {sk} : {sdim(v)},"
-            s += "},"
-
-        s += "},"
-
-        print(s)
-
-# ====================================================================================================
-# Custom group dimensions
-
-def group_dim_DEPRECATED(node):
-
-    dims = NODE_DIMS.get(node.bl_idname)
-    if dims is None:
-        #print(f"WARNING geonodes arrange: the node '{node.bl_idname}' is not referenced in NODE_DIMS")
-        return [200, 200]
-
-    nd = list(dims['dimensions'])
-
-    # ----- Output sockets
-
-    h = 116 + 44*len(node.outputs) if node.outputs else 100
-
-    # Input sockets
-
-    if node.inputs:
-
-        h += 6
-
-        for sock in node.inputs:
-            h += 44
-            if sock.bl_idname[:16] == 'NodeSocketVector' and not bool(sock.links):
-                h += 120
-
-    if node.bl_idname == 'GeometryNodeGroup':
-        nd[0] = 474
-
-    nd[1] = h
-
-    return [nd[0]/2, nd[1]/2]
-
-# ====================================================================================================
-# Dump the nodes in frame
-
-def dump_frames(tree, frame=None, depth=1):
-
-    if frame is None:
-        print("-"*10, "Dump frames")
-        for node in tree.nodes:
-            if node.bl_idname == 'NodeFrame' and node.parent is None:
-                dump_frames(tree, node)
-
-        print()
-        return
-
-    print("   "*depth, f"Frame '{frame.label}'")
-    for node in tree.nodes:
-        if node.parent != frame:
-            continue
-
-        print("   "*depth, f"> node {node.name} ({node.label})")
-        if node.bl_idname == 'NodeFrame':
-            dump_frames(tree, node, depth + 1)
-
-
-# ====================================================================================================
-# Frame dimensions
-
-def frame_dim(tree, frame):
-
-    first_node = True
-    for node in tree.nodes:
-        if node.parent != frame:
-            continue
-
-        ndim = node_dim(node)
-
-        w0 = 2*node.location[0]
-        w1 = 2*node.location[0] + ndim[0]
-        h0 = 2*node.location[1] - ndim[1]
-        h1 = 2*node.location[1]
-
-        if first_node:
-            W0, W1, H0, H1 = w0, w1, h0, h1
-            first_node = False
-
-        else:
-            W0 = min(W0, w0)
-            W1 = max(W1, w1)
-            H0 = min(H0, h0)
-            H1 = max(H1, h1)
-
-    return ((W1 - W0) + 120, (H1 - H0) + 120)
-
-# ====================================================================================================
-# Node dimensions
-
-def node_dim(node, tree=None):
-
-    STANDARD_NODE_ATTRS = [
-        '__doc__', '__module__', '__slots__', 'bl_description', 'bl_height_default', 'bl_height_max',
-        'bl_height_min', 'bl_icon', 'bl_idname', 'bl_label', 'bl_rna', 'bl_static_type',
-        'bl_width_default', 'bl_width_max', 'bl_width_min', 'color', 'dimensions', 'draw_buttons',
-        'draw_buttons_ext', 'height', 'hide', 'input_template', 'inputs', 'internal_links',
-        'is_registered_node_type', 'label', 'location', 'mute', 'name', 'output_template', 'outputs',
-        'parent', 'poll', 'poll_instance', 'rna_type', 'select', 'show_options', 'show_preview',
-        'show_texture', 'socket_value_update', 'type', 'update', 'use_custom_color',
-        'width', 'width_hidden',
-        'index_switch_items', 'enum_definition', 'bake_items', 'active_index', 'active_item',
-        'is_active_output']
-
-    BASE_HEIGHT          = 56
-    SOCKET_HEIGHT        = 44
-    PARAM_HEIGHT         = 53
-    VECTOR_SOCKET_HEIGHT = 164
-
-    # ----- It's a frame
-
-    if node.bl_idname == 'NodeFrame':
-        return frame_dim(tree, node)
-
-    # ----- Params
-
-    params = [name for name in dir(node) if name not in STANDARD_NODE_ATTRS]
-
-    height = BASE_HEIGHT + len(params)*PARAM_HEIGHT
-
-    if node.bl_idname == 'GeometryNodeGroup':
-        height += PARAM_HEIGHT
-
-    # ----- Input sockets
-
-    count = 0
-    for bsock in node.inputs:
-        if not bsock.enabled:
-            continue
-
-        if bsock.type == 'VECTOR' and not bsock.is_linked:
-            height += VECTOR_SOCKET_HEIGHT
-        else:
-            height += SOCKET_HEIGHT
-
-        count += 1
-
-    # ----- Output sockets
-
-    for bsock in node.outputs:
-        if not bsock.enabled:
-            continue
-
-        height += SOCKET_HEIGHT
-
-        count += 1
-
-    return (180., height/2)
-
-
-
-def node_dim_DEPRECATED(node, tree=None):
-
-    if node.bl_idname in ['GeometryNodeGroup', 'NodeGroupInput', 'NodeGroupOutput']:
-        return group_dim(node)
-
-    if node.bl_idname == 'FRAME':
-        return frame_dim(tree, frame)
-
-    # ----- General case
-
-    ddims = NODE_DIMS.get(node.bl_idname)
-    if ddims is None:
-        #print(f"WARNING geonodes arrange: the node '{node.bl_idname}' is not referenced in NODE_DIMS")
-        return [200, 200]
-
-    nd    = list(ddims['dimensions'])
-
-    pcount = ddims['param_count']
-
-    # ----- One changing attribute
-
-    if pcount == 1:
-        name = ddims['name']
-        value = getattr(node, name)
-        ch_nd = ddims['changes'].get(value)
-        if ch_nd is not None:
-            nd = list(ch_nd)
-
-    # -----More than one changing attribute
-
-    elif pcount > 1:
-
-        names = ddims['names']
-        key = ()
-        for name in ddims['names']:
-            key += (getattr(node, name),)
-
-        if key not in ddims['changes']:
-            pprint(ddims)
-            raise NodeError(f"node_dim Error: node '{node.name}', key {key} not found.")
-
-        nd = list(ddims['changes'][key])
-
-    # ----- Plugged vectors lower the height
-
-    if not node.bl_idname in ['NodeReroute']:
-        for sock in node.inputs:
-            if sock.enabled and (not sock.hide_value) and bool(sock.links) and sock.bl_idname[:16] == 'NodeSocketVector':
-                nd[1] -= 120
-
-    if node.bl_idname == 'NodeFrame':
-        return [nd[0]*2, nd[1]*2]
-    else:
-        return [nd[0]/2, nd[1]/2]
-
-# ====================================================================================================
-# Delete the frames
-
-def delete_frames(tree):
-    nodes = list(tree.nodes)
-    for node in nodes:
-        if node.bl_idname == 'NodeFrame':
-            tree.nodes.remove(node)
-
-# ====================================================================================================
-# Delete the reroute
-
-def delete_reroute(tree):
-
-    # ----- A reroute node is one to many
-    # One reroute gives a list of to_sockets
-    # The from_socket and the to_sockets can also be reroute nodes
-    # Recursive call will allow to manage that
-
-    def get_from_socket(reroute):
-
-        if not reroute.inputs[0].links:
-            return None
-
-        link = reroute.inputs[0].links[0]
-        from_node = link.from_node
-        if from_node.bl_idname == 'NodeReroute':
-            return get_from_socket(from_node)
-        else:
-            return link.from_socket
-
-    def get_to_sockets(reroute):
-
-        to_sockets = []
-        if not reroute.outputs[0].links:
-            return to_sockets
-
-        for link in reroute.outputs[0].links:
-            if link.to_node.bl_idname == 'NodeReroute':
-                to_sockets.extend(get_to_sockets(link.to_node))
+            if bsock.type == 'VECTOR' and not bsock.is_linked:
+                height += VECTOR_SOCKET_HEIGHT
             else:
-                to_sockets.append(link.to_socket)
-
-        return to_sockets
-
-    links = []
-    dels  = []
-    count = 0
-
-    reroutes = [node for node in tree.nodes if node.bl_idname == 'NodeReroute']
-
-    for node in tree.nodes:
-        if node.bl_idname == 'NodeReroute':
-            dels.append(node)
-
-            from_socket = get_from_socket(node)
-            if from_socket is None:
-                continue
-
-            for to_socket in get_to_sockets(node):
-                links.append((from_socket, to_socket))
+                height += SOCKET_HEIGHT
 
             count += 1
 
-    for node in dels:
-        tree.nodes.remove(node)
+        # ----- Output sockets
 
-    for from_socket, to_socket in links:
-        tree.links.new(from_socket, to_socket)
-
-    print(f"Removed: {count} reroute nodes.")
-
-# ====================================================================================================
-# Frame utilities
-
-# ----------------------------------------------------------------------------------------------------
-# Test if a node is in frame or a sub frame
-
-def is_in_frame(node, frame):
-    nd = node
-    for _ in range(20):
-        if nd.parent is None:
-            return False
-
-        if nd.parent == frame:
-            return True
-
-        nd = nd.parent
-
-    return False # Should never append
-
-# ----------------------------------------------------------------------------------------------------
-# Create a group input node within each frame
-
-def group_input_in_frames(tree):
-
-    for frame in tree.nodes:
-
-        if frame.bl_idname != 'NodeFrame':
-            continue
-
-        # ----- All the nodes within the frames
-
-        nodes = [node for node in tree.nodes if is_in_frame(node, frame)]
-        if not nodes:
-            continue
-
-        # ----- All the links coming from group input to a node in the frame
-
-        links = []
-        for link in tree.links:
-            if link.from_node.bl_idname != 'NodeGroupInput':
+        for bsock in self.bnode.outputs:
+            if not bsock.enabled:
                 continue
-            if not is_in_frame(link.from_node, frame) and is_in_frame(link.to_node, frame):
-                links.append(link)
 
-        if not links:
-            continue
+            height += SOCKET_HEIGHT
 
-        # ----- Group input node
+            count += 1
 
-        group_input =  None
+        return (BASE_WIDTH, height/2)
+
+    @property
+    def width(self):
+        """ Node width
+
+        Returns
+        -------
+        - float : node width
+        """
+        return self.dimensions[0]
+
+    @property
+    def height(self):
+        """ Node height
+
+        Returns
+        -------
+        - float : node height
+        """
+        return self.dimensions[1]
+
+    # ====================================================================================================
+    # Input / output nodes
+
+    @property
+    def in_nodes(self):
+        """ List of input nodes
+
+        Returns
+        -------
+        - list of Nodes : nodes linked to one input socket of the node
+        """
+        in_nodes = []
+        for link in self.tree.links:
+            if link.node1 == self:
+                in_nodes.append(link.node0)
+        return in_nodes
+
+    @property
+    def out_nodes(self):
+        """ List of output nodes
+
+        Returns
+        -------
+        - list of Nodes : nodes linked to one output socket of the node
+        """
+        out_nodes = []
+        for link in self.tree.links:
+            if link.node0 == self:
+                out_nodes.append(link.node1)
+            else:
+                assert(link.node0.bnode.name != self.bnode.name)
+        return out_nodes
+
+    # =============================================================================================================================
+    # Hierarchy
+
+    def is_child_of(self, frame):
+        """ Belongs to the frame
+
+        Returns
+        -------
+        - bool : True if the frame belongs to the parents hierarchy
+        """
+        if self.parent is None:
+            return False
+        elif self.parent == frame:
+            return True
+        else:
+            return self.parent.is_child_of(frame)
+
+    # =============================================================================================================================
+    # Peer / outside
+
+    def split_peers(self, nodes):
+        """ Separate peer nodes from the other
+
+        Nodes are peer when they share the same parent.
+
+        This method splits the list of nodes in two list:
+        - nodes inside the parent of self
+        - nodes outside the parent of self
+
+        The first list returns the ancestor of the node sharing the parent of self, not
+        the node passed in the list.
+
+        Arguments
+        ---------
+        - nodes (list of Nodes) : the list to split
+
+        Returns
+        -------
+        - tuple of lists : peer nodes and not peer nodes
+        """
+        peers     = []
+        not_peers = []
         for node in nodes:
-            if node.bl_idname == 'NodeGroupInput':
-                group_input = node
+            n = node
+            while True:
+                if n.parent is None:
+                    not_peers.append(node)
+                    break
+
+                if n.parent == self.parent:
+                    peers.append(n)
+                    break
+
+                n = n.parent
+
+        return list(set(peers)), list(set(not_peers))
+
+    # =============================================================================================================================
+    # Forward / backward iterators
+
+    def forwards(self):
+        """ Iterate forwards
+
+        Iterates on the right nodes
+
+        Returns
+        -------
+        - Node
+        """
+        for link in self.tree.links:
+            if link.node0 == self:
+                yield link.node1
+                for node in link.node1.forwards():
+                    yield node
+
+    def backwards(self):
+        """ Iterate backwards
+
+        Iterates on the left nodes
+
+        Returns
+        -------
+        - Node
+        """
+        for link in self.tree.links:
+            if link.node1 == self:
+                yield link.node0
+                for node in link.node0.backwards():
+                    yield node
+
+    # =============================================================================================================================
+    # Is in zone
+
+    def in_zone(self, input_node, output_node):
+        """ The node belongs to a zone
+
+        A node belongs to the zone if the zone input is linked to the node inputs
+        and if the zone output is linked to the node outputs.
+
+        Returns
+        -------
+        - bool : True if the node is in the zone
+        """
+        ok = False
+        for node in self.forwards():
+            if node == output_node:
+                ok = True
                 break
 
-        if group_input is None:
-            group_input = tree.nodes.new(type='NodeGroupInput')
-            group_input.parent = frame
+        if not ok:
+            return False
 
-        # ----- Reroute the links
+        for node in self.backwards():
+            if node == input_node:
+                return True
 
-        for link in links:
-            from_socket_id = link.from_socket.identifier
-            to_socket      = link.to_socket
-
-            tree.links.remove(link)
-            tree.links.new(group_input.outputs[from_socket_id], to_socket)
+        return False
 
 
-# ----------------------------------------------------------------------------------------------------
-# Build frame inputs as reroute nodes
 
-def frame_inputs(tree):
+# =============================================================================================================================
+# Frame
 
-    for frame in tree.nodes:
+class Frame(Node):
 
-        if frame.bl_idname != 'NodeFrame':
-            continue
+    def __init__(self, tree, bnode):
+        """ Frame node
 
-        # ----- All the nodes within the frames
+        Properties
+        ----------
+        - input_node (Node)
+        - output_node (Node)
 
-        nodes = [node for node in tree.nodes if is_in_frame(node, frame)]
-        if not nodes:
-            continue
+        Arguments
+        ---------
+        - tree (Tree) : tree wrapper
+        - bnode (bpy.types.Node) : the node of type 'NodeFrame'
+        """
 
-        # ----- All the links in the frame
+        assert(bnode is None or bnode.bl_idname == 'NodeFrame')
 
-        links = [link for link in tree.links if not is_in_frame(link.from_node, frame) and is_in_frame(link.to_node, frame)]
+        super().__init__(tree, bnode)
+        self.input_node  = None
+        self.output_node = None
 
-        # ----- Reroute the links
+    def __str__(self):
+        sname = "No name" if self.bnode.label == "" else self.bnode.label
+        return f"<Frame '{sname}', {len(self.children)} nodes>"
 
-        reroutes = {}
-        for link in links:
-            from_socket = link.from_socket
-            to_sockets = reroutes.get(from_socket)
-            if to_sockets is None:
-                to_sockets = []
-                reroutes[from_socket] = to_sockets
+    def dump(self, depth=0):
+        super().dump(depth)
+        print("   "*depth, "  In nodes: ", [node.bnode.name for node in self.in_nodes])
+        print("   "*depth, "  Out nodes:", [node.bnode.name for node in self.out_nodes])
+        for child in self.children:
+            child.dump(depth + 1)
 
-            to_sockets.append(link.to_socket)
+    # =============================================================================================================================
+    # Children
 
-        # ----- Delete the links
+    @property
+    def children(self):
+        """ Child nodes
 
-        for link in links:
-            tree.links.remove(link)
+        Returns
+        -------
+        - list of Nodes : the nodes directly parented to the frame
+        """
+        return [node for node in self.tree.nodes.values() if node.bnode.parent == self.bnode]
 
-        # ----- Create the reroutes
+    # =============================================================================================================================
+    # Frame dimension
+
+    @property
+    def dimensions(self):
+
+        if Node.has_node_editor:
+            return self.bnode.dimensions
+
+        for inode, node in enumerate(self.children):
+
+            ndim = node.dimensions
+
+            w0 = 2*node.bnode.location[0]
+            w1 = 2*node.bnode.location[0] + ndim[0]
+            h0 = 2*node.bnode.location[1] - ndim[1]
+            h1 = 2*node.bnode.location[1]
+
+            if inode == 0:
+                W0, W1, H0, H1 = w0, w1, h0, h1
+
+            else:
+                W0 = min(W0, w0)
+                W1 = max(W1, w1)
+                H0 = min(H0, h0)
+                H1 = max(H1, h1)
+
+        return ((W1 - W0) + 120, (H1 - H0) + 120)
+
+    # ====================================================================================================
+    # Input / output nodes
+
+    @property
+    def in_nodes(self):
+        """ List of input nodes
+
+        An input node of a frame is an input node of a node belonging to the frame
+        but which is not in the frame.
+
+        Returns
+        -------
+        - list of Nodes : the frame input nodes
+        """
+        in_nodes = []
+        for child in self.children:
+            for node in child.in_nodes:
+                if node in in_nodes:
+                    continue
+
+                if not node.is_child_of(self):
+                    in_nodes.append(node)
+        return in_nodes
+
+    @property
+    def out_nodes(self):
+        """ List of output nodes
+
+        An output node of a frame is an output node of a node belonging to the frame
+        but which is not in the frame.
+
+        Returns
+        -------
+        - list of Nodes : the frame output nodes
+        """
+        out_nodes = []
+        for child in self.children:
+            for node in child.out_nodes:
+                if node in out_nodes:
+                    continue
+
+                if not node.is_child_of(self):
+                    out_nodes.append(node)
+        return out_nodes
+
+    # =============================================================================================================================
+    # Frame "input / output"
+
+    # ----------------------------------------------------------------------------------------------------
+    # Build frame inputs as reroute nodes
+
+    def frame_reroutes(self):
+
+        # ----- All the links between a node inseide the frame and a node outside the frame
+
+        in_links = []
+        out_links = []
+        for link in self.tree.links:
+            if link.node0.is_child_of(self):
+                if not link.node1.is_child_of(self):
+                    out_links.append(link)
+            else:
+                if link.node1.is_child_of(self):
+                    in_links.append(link)
+
+        # ----- Create input reroutes
 
         x_sepa  = 30
         y_sepa  = 50
 
-        x = -frame.dimensions[0]/2 - x_sepa
-        y = -frame.dimensions[1]/2 + y_sepa
+        x = -self.width/2  - x_sepa
+        y = -self.height/2 + y_sepa
 
+        source_nodes = {}
+        for link in in_links:
+            node_name = link.node0.bnode.name
+            reroute = source_nodes.get(node_name)
+            if reroute is None:
+                reroute = link.insert_reroute(self)
+                reroute.bnode.location = (x + 200, y)
+                y += y_sepa
 
-        for from_socket, to_sockets in reroutes.items():
+                source_nodes[node_name] = reroute
 
-            node = tree.nodes.new(type='NodeReroute')
-            node.parent = frame
-            node_lab = from_socket.node.label
-            if node_lab is None or node_lab == '':
-                node.label = from_socket.name
             else:
-                node.label = node_lab
+                link.replace_from(reroute, index0=0)
 
-            tree.links.new(from_socket, node.inputs[0])
-
-            for to_socket in to_sockets:
-                tree.links.new(node.outputs[0], to_socket)
-
-            node.location = (x, y)
-            y += y_sepa
-
-# ----------------------------------------------------------------------------------------------------
-# Build frame outputs as reroute nodes
-
-def frame_outputs(tree):
-
-    NEW_ALGO = True
-
-    for frame in tree.nodes:
-
-        if frame.bl_idname != 'NodeFrame':
-            continue
-
-        # ----- All the nodes within the frames
-
-        nodes = [node for node in tree.nodes if is_in_frame(node, frame)]
-        if not nodes:
-            continue
-
-        # ----- All the links in the frame
-
-        links = [link for link in tree.links if is_in_frame(link.from_node, frame) and not is_in_frame(link.to_node, frame)]
-
-        # ----- Reroute the links
-
-        reroutes = {}
-        for link in links:
-            from_socket = link.from_socket
-            to_sockets = reroutes.get(from_socket)
-            if to_sockets is None:
-                to_sockets = []
-                reroutes[from_socket] = to_sockets
-
-            if NEW_ALGO:
-                to_sockets.append((link.to_socket.node, link.to_socket.identifier))
-            else:
-                to_sockets.append(link.to_socket)
-
-        # ----- Delete the links
-
-        for link in links:
-            tree.links.remove(link)
-
-        # ----- Create the reroutes
-
-        x_sepa  = 30
-        y_sepa  = 50
+        # ----- Create the output reroutes
 
         x = 2*x_sepa
         y = y_sepa
 
-        for from_socket, to_sockets in reroutes.items():
+        source_nodes = {}
+        for link in out_links:
+            node_name = link.node0.bnode.name
+            reroute = source_nodes.get(node_name)
+            if reroute is None:
+                reroute = link.insert_reroute(self)
+                reroute.bnode.location = (x + 100, y)
+                y += y_sepa
 
-            node = tree.nodes.new(type='NodeReroute')
-            node.parent = frame
+                source_nodes[node_name] = reroute
+
+            else:
+                link.replace_from(reroute, index0=0)
+
+    # ====================================================================================================
+    # Arrange
+
+    def arrange(self, reroutes=True):
+        """ Arrange the content of the frame
+
+        The algorithm is the following:
+        - get the peer output nodes of each node
+        - the node column is the colum plus one of the left most peer output node
+        - particular case: when a node without input has only one output node, it is placed
+          in the same column
+
+        Once the columns are build, the are sorted vertically
+
+        Then, the nodes can be placed using the location property of <!Node#bnode>.
+        """
+
+        # ----------------------------------------------------------------------------------------------------
+        # No child
+
+        if len(self.children) == 0:
+            return
+
+        # ----------------------------------------------------------------------------------------------------
+        # Group input in the frame
+
+        for node in self.children:
+            if self.input_node is None:
+                if node.bnode.bl_idname in ['NodeGroupInput'] + ZONE_INPUTS:
+                    self.input_node = node
+
+            if self.output_node is None:
+                if node.bnode.bl_idname in ZONE_OUTPUTS:
+                    self.output_node = node
+
+        # ----------------------------------------------------------------------------------------------------
+        # Arrange sub frames
+        # Prepare nodes for numbering
+
+        for node in self.children:
+            if node.is_frame:
+                node.arrange(reroutes)
+
+            node.col = None
+            node.row = None
+
+            node.in_peers, _  = node.split_peers(node.in_nodes)
+            node.out_peers, _ = node.split_peers(node.out_nodes)
+
+            if False and node.is_frame:
+                print(">>>", self, "sub frame", node.bnode.label + "/" + node.bnode.name)
+                print("- PEERS IN ", [n.bnode.label + "/" + n.bnode.name for n in node.in_peers])
+                print("- PEERS OUT", [n.bnode.label + "/" + n.bnode.name for n in node.out_peers])
+
             if True:
-                node_lab = from_socket.node.label
-                if node_lab is None or node_lab == '':
-                    node.label = from_socket.name
+                print(f"  -> OUT {node}: {node.out_peers}")
+                print(f"     {node.out_nodes}")
+
+        # ----------------------------------------------------------------------------------------------------
+        # Column number computed recursively
+
+        def place_in_col(node):
+
+            node.col = -1 # To avoid infinite recursion
+            node.follower = None
+            node.below    = False
+
+            # ----- No node after: right most node
+
+            if len(node.out_peers) == 0 or node == self.output_node:
+                node.col = 0
+                return
+
+            # ----- Get the left most following node
+
+            left_most = None
+            for follower in node.out_peers:
+                if follower.col is None:
+                    place_in_col(follower)
+
+                if left_most is None or left_most.col < follower.col:
+                    left_most = follower
+
+            print(f"{node} follows {left_most} ({left_most.col})")
+
+            node.follower = left_most
+            node.col      = left_most.col + 1
+
+            # ----- Place the node below its follower
+
+            # Not a frame and without input sockets
+            below = (not node.is_layout) and len(node.bnode.inputs) == 0
+
+            # Not the group input
+            below = below and node != self.input_node
+
+            # Feed only one output node which is not frame or reroute
+            below = below and (len(node.out_nodes) == 1) and (not left_most.is_layout)
+
+            # Not for output node
+            below = below and (left_most != self.output_node)
+
+            if below:
+                node.col -= 1
+                node.below = True
+
+            # ----- Intricated frames are placed in the same column
+
+            if node.is_frame and left_most.is_frame:
+                if left_most in node.in_peers:
+                    node.col -= 1
+                    node.follower = left_most.follower
+
+
+        # ----------------------------------------------------------------------------------------------------
+        # Let's compute the column numbers
+
+        # ----- Number of columns
+
+        max_col = 0
+        for node in self.children:
+            if node.col is None:
+                place_in_col(node)
+            max_col = max(max_col, node.col)
+
+        # ----- Columns : a list of list of nodes
+
+        columns = [[] for _ in range(max_col + 1)]
+        for node in self.children:
+            columns[node.col].append(node)
+
+        # ----- Input node : single left most node
+
+        if self.input_node is not None:
+            icol = self.input_node.col
+
+            # if icol is null: input node has not output links
+            if icol > 0:
+                in_col = columns[icol]
+                if len(in_col) == 1:
+                    if self.input_node.col != max_col:
+                        del columns[icol]
+                        columns.append(in_col)
                 else:
-                    node.label = node_lab
+                    in_col.remove(self.input_node)
+                    columns.append([self.input_node])
+
+        # ----- Output node is single right most
+
+        if self.output_node is not None:
+            col = columns[0]
+            if len(col) > 1:
+                col.remove(self.output_node)
+                columns.insert(0, [self.output_node])
+
+        # Renum to be sure
+
+        for icol, col in enumerate(columns):
+            for node in col:
+                node.col = icol
+
+        # DEBUG
+        if True:
+            print(f">>> {str(self)} Columns:")
+            for i, col in enumerate(columns):
+                print("   ", i, [str(node) for node in col])
+
+        # ----------------------------------------------------------------------------------------------------
+        # Let's sort the columns
+
+        for icol in range(len(columns)):
+            col = columns[icol]
+            if len(col) == 1:
+                col[0].row = 0
+                continue
+
+            # Extract below nodes
+            belows = [node for node in col if node.below]
+            for node in belows:
+                del col[col.index(node)]
+
+            # Sort the nodes
+
+            # sort by number of inputs
+            if icol == 0:
+                new_col = sorted(col, key=lambda nd : -len(nd.in_peers))
+
+            # sort by row of follower
             else:
-                node.label = f"[{from_socket.node.label}].{from_socket.name}"
+                def key_func(nd):
+                    if nd.follower is None:
+                        return 1000 - len(nd.in_peers)
+                    else:
+                        row = nd.follower.row
+                        if row is None:
+                            return 0
+                        else:
+                            return row
 
-            tree.links.new(from_socket, node.inputs[0])
+                new_col = sorted(col, key=key_func)
 
-            if NEW_ALGO:
-                for node_to, sock_id in to_sockets:
-                    tree.links.new(node.outputs[0], node_to.inputs[sock_id])
+            # Replace the below nodes
+            for node in belows:
+                new_col.insert(new_col.index(node.follower) + 1, node)
+
+            # Row numbers
+            for i, node in enumerate(new_col):
+                node.row = i
+
+            columns[icol] = new_col
+
+        # ----------------------------------------------------------------------------------------------------
+        # We locate the children
+
+        x = 0
+        for icol, col in enumerate(columns):
+
+            y, col_width = 0, 0
+
+            for node in col:
+
+                col_width = max(col_width, node.width)
+
+                if node.below:
+                    y += Y_SEPA/2
+                if node.is_frame:
+                    y -= Y_SEPA
+
+                node.bnode.location = (x, y)
+                y -= node.height/2 + Y_SEPA
+
+            x -= col_width/2 + X_SEPA
+
+        self.wait()
+
+        # ----------------------------------------------------------------------------------------------------
+        # reroutes
+
+        if reroutes and self.bnode is not None and not self.bnode.label.startswith("$TEMP"):
+            self.frame_reroutes()
+
+# =============================================================================================================================
+# A Tree
+
+class Tree(Frame):
+    def __init__(self, btree):
+        """ > Tree wrapper
+
+        Properties
+        -----------
+        - btree (bpy.types.Tree)
+
+        Arguments
+        ---------
+        - btree (bpy.types.Tree) : the tree to wrap
+        """
+        super().__init__(self, None)
+        if isinstance(btree, str):
+            btree = bpy.data.node_groups[btree]
+        self.btree = btree
+
+        # ----- Nodes
+
+        self.nodes = {}
+        for bnode in self.btree.nodes:
+            if bnode.bl_idname == 'NodeFrame':
+                new_node = Frame(self, bnode)
             else:
-                for to_socket in to_sockets:
-                    tree.links.new(node.outputs[0], to_socket)
+                new_node = Node(self, bnode)
+                if bnode.bl_idname == 'NodeGroupOutput':
+                    self.output_node = new_node
+                if bnode.bl_idname == 'NodeGroupInput' and bnode.parent is None:
+                    self.input_node = new_node
 
-            node.location = (x, y)
-            y -= y_sepa
-
-# ====================================================================================================
-# Delete single nodes
-
-def delete_single_nodes(tree):
-
-    nodes = []
-    for node in tree.nodes:
-
-        if node.bl_idname in ['NodeFrame']:
-            continue
-
-        single = True
-
-        for socket in node.inputs:
-            if len(socket.links):
-                single = False
-                break
-
-        for socket in node.outputs:
-            if len(socket.links):
-                single = False
-                break
-
-        if single:
-            nodes.append(node)
-
-    for node in nodes:
-        if node.bl_idname in ['NodeGroupInput']:
-            tree.nodes.remove(node)
-        #node.use_custom_color = True
-        #node.color = Color((1, 0, 0))
-
-
-    return len(nodes)
-
-# ====================================================================================================
-# Hierachical boxes
-
-class Box:
-
-    BOXES = []
-
-    def __init__(self, tree, node):
-
-        super().__init__()
-
-        self.index = len(Box.BOXES)
-        Box.BOXES.append(self)
-
-        self.tree     = tree
-        self.node     = node
-        self.frame    = None
-
-        self.is_tree  = False
-        self.is_frame = False
-
-        # ----- Dimensions
-
-        self._dims   = [0, 0]
-        self._margin = [0, 0]
-
-        self.single_left = None
-
-        if self.node is not None:
-
-            if self.node.bl_idname == 'NodeFrame':
-                pass
-
-            elif self.node.bl_idname == 'NodeReroute':
-                self._dims   = [ 0, -30]
-                self._margin = [ 0, -15]
-
-            else:
-                self._dims = node_dim(node, self.tree)
-
-            # ----- Single left
-
-            self.single_left = True
-            for socket in node.inputs:
-                if len(socket.links):
-                    self.single_left = False
-                    break
-
-            if self.single_left:
-                count = 0
-                for socket in node.outputs:
-                    if len(socket.links):
-                        count += len(socket.links)
-                        fed_node = socket.links[0].to_node
-
-            self.single_left = self.single_left and (count == 1)
-            if node.bl_idname in ['NodeGroupInput', 'GeometryNodeSimulationInput']:
-                self.single_left = False
-
-            # ----- Ensure single left is in the same frame
-
-            if self.single_left:
-                self.node.parent = fed_node.parent
+            self.nodes[bnode.name] = new_node
 
         # ----- Links
 
-        self.in_siblings = {}
-
-        # ----- Location
-
-        self.located = False
-
-        self.row = 0
-        self.col = 0
-        self.infinite_loop = False
-
-    # ---------------------------------------------------------------------------
-    # str
-
-    @property
-    def name(self):
-        return f"{self.index} " + self.node.name
-
-        return f"{self.index} " + (self.tree.name if self.node is None else self.node.name)
-
-    @property
-    def slinks(self):
-        return f"\n   ins:  {[Box.BOXES[b].name for b in self.in_siblings]}"
+        self.links = [Link(self, blink) for blink in self.btree.links]
 
     def __str__(self):
-        return f"<Box '{self.name}'>"
+        return f"<Tree '{self.btree.name}', {len(self.nodes)} nodes, {len(self.links)} links, {len(self.children)} children>"
 
-    def __repr__(self):
-        return f"<Box {self.name}" + self.slinks + "\n>"
+    def __getitem__(self, index):
+        if isinstance(index, str):
+            return self.nodes[index]
 
+        elif isinstance(index, bpy.types.NodeInternal):
+            return self.nodes[index.name]
 
-    # ---------------------------------------------------------------------------
-    # Access to the box of a node
+        raise AttributeError(f"Node index not valid: {index}")
 
-    def node_box(self, node):
-        for i, nd in enumerate(self.tree.nodes):
-            if nd == node:
-                return Box.BOXES[i]
-        raise NodeError(f"Algo error: node '{node}' strangely boxed.")
+    @property
+    def parent(self):
+        return None
 
-    # ---------------------------------------------------------------------------
-    # Boxes from indices
+    # ====================================================================================================
+    # Nodes management
 
-    @staticmethod
-    def from_index(index):
-        if isinstance(index, int):
-            return Box.BOXES[index]
+    def new_node(self, bl_idname, frame=None):
+        bnode = self.btree.nodes.new(bl_idname)
+        if bl_idname == 'NodeFrame':
+            node = Frame(self, bnode)
         else:
-            return [Box.from_index(i) for i in index]
-
-    # ---------------------------------------------------------------------------
-    # Top frame
-
-    @property
-    def top(self):
-        return self.frame.top
-
-    # ---------------------------------------------------------------------------
-    # Hierarchical depth
-
-    @property
-    def depth(self):
-        return self.frame.depth + 1
-
-    # ---------------------------------------------------------------------------
-    # Location
-    #
-    # Margin mechanism is used by frames
-
-    @property
-    def margin(self):
-        return Vector(self._margin)
-
-    @property
-    def location(self):
-        return list(self.node.location + self.margin)
-
-    @location.setter
-    def location(self, value):
-        self.node.location = Vector(value) - self.margin
-
-    @property
-    def x(self):
-        return self.location[0]
-
-    @x.setter
-    def x(self, value):
-        self.location = (value, self.y)
-
-    @property
-    def y(self):
-        return self.location[1]
-
-    @y.setter
-    def y(self, value):
-        self.location = (self.x, value)
-
-    # ---------------------------------------------------------------------------
-    # Width and height
-
-    @property
-    def dims(self):
-        return self._dims
-
-    @property
-    def w(self):
-        return self.dims[0]
-
-    @property
-    def h(self):
-        return self.dims[1]
-
-    # ---------------------------------------------------------------------------
-    # Sort the in_siblings links
-    # Used by frames
-
-    def sorted_in_siblings(self):
-        return list(self.in_siblings.values())
-
-    # ---------------------------------------------------------------------------
-    # Sibling test
-
-    def is_sibling(self, other):
-
-        if self.node is None or other.node is None:
-            return False
-
-        if self.node.parent is None:
-            return other.node.parent is None
-
-        elif other.node.parent is None:
-            return False
-
-        else:
-            return self.node.parent == other.node.parent
-
-    # ---------------------------------------------------------------------------
-    # Sibling ancestor
-    # Return self or one ancestor so that the parent is the one passed in param
-
-    def common_ancestor(self, other):
-
-        if self == other:
-            raise NodeError("common_ancestor: This is a stupid request!")
-
-        box0 = self
-        box1 = other
-
-        depth0 = box0.depth
-        depth1 = box1.depth
-        depth  = depth0
-
-        if depth0 > depth1:
-            for _ in range(depth0 - depth1):
-                box0 = box0.frame
-            depth = depth1
-
-        elif depth1 > depth0:
-            for _ in range(depth1 - depth0):
-                box1 = box1.frame
-            depth = depth0
-
-        # ----- Same depth now
-
-        if box0 == box1:
-            raise NodeError("common_ancestor: No common ancestor when one is the ancestor of the other")
-
-        for _ in range(depth):
-
-            if box0.frame is None or box1.frame is None:
-                raise NodeError("common_ancestor: I can't believe this could happen!")
-
-            if box0.is_sibling(box1):
-                return box0.frame, box0, box1
-
-            box0 = box0.frame
-            box1 = box1.frame
-
-        raise NodeError("common_ancestor: Normally tjhs should never happen")
-
-    # ---------------------------------------------------------------------------
-    # Compute the columns
-
-    def update_column(self, col):
-
-        if self.infinite_loop:
-            return
-
-        if self.col is None or col > self.col:
-
-            self.col = col
-
-            self.infinite_loop = True
-
-            for box in Box.from_index(list(self.in_siblings.keys())):
-                box.update_column(self.col + 1)
-
-            self.infinite_loop = False
-
-        # ----- Put the feeding single left nodes in the same column
-
-        for b in self.in_siblings:
-            box = Box.BOXES[b]
-            if box.single_left:
-                box.col = self.col
-
-
-
-    # ---------------------------------------------------------------------------
-    # Is a reroute node
-
-    @property
-    def is_reroute(self):
-        return False if self.node is None else self.node.bl_idname == 'NodeReroute'
-
-    @property
-    def is_input_reroute(self):
-
-        if self.frame is None:
-            return False
-
-        if self.node.bl_idname != 'NodeReroute':
-            return False
-
-        return len(self.in_siblings) == 0
-
-    @property
-    def is_output_reroute(self):
-
-        if self.frame is None:
-            return False
-
-        if self.node.bl_idname != 'NodeReroute':
-            return False
-
-        return len(self.in_siblings) != 0
-
-
-# ====================================================================================================
-# A link between two boxes
-
-class BoxLink(list):
-    def __init__(self, top, link, nodes=None):
-
-        super().__init__()
-
-        self.append(link)
-
-        self.top = top
-
-        if nodes is None:
-            nodes = list(top.tree.nodes)
-
-        self.key = (nodes.index(link.from_node), nodes.index(link.to_node))
-
-        self.box_from = Box.BOXES[self.key[0]]
-        self.box_to   = Box.BOXES[self.key[1]]
-
-        self.frame, self.sib_from, self.sib_to = self.box_from.common_ancestor(self.box_to)
-
-        # ----- orders
-
-        for i, sock in enumerate(link.to_node.inputs):
-            if sock == link.to_socket:
-                self.box_to_socket_index = i
-                break
-
-        for i, sock in enumerate(link.from_node.outputs):
-            if sock == link.from_socket:
-                self.box_from_socket_index = i
-                break
-
-    def __str__(self):
-        return f"<BoxLink {self.key}, {len(self)} link(s), siblings=({self.sib_from.index}, {self.sib_to.index})"
-
-
-
-# ====================================================================================================
-# A frame
-
-class Frame(Box):
-
-    def __init__(self, tree, node):
-
-        super().__init__(tree, node)
-        self.sized  = False
-
-        self.boxes = []
-
-        self.is_tree  = node is None
-        self.is_frame = True
-
-        self.cols = None
-
-    # ===========================================================================
-    # Some debug utilities
-
-    def track_box(self, x0, y0, x1, y1, parent=True):
-
-        rr0 = self.tree.nodes.new("NodeReroute")
-        if parent:
-            rr0.parent = self.node
-        rr0.location = (x0, y0)
-
-        rr1 = self.tree.nodes.new("NodeReroute")
-        if parent:
-            rr1.parent = self.node
-        rr1.location = (x1, y1)
-
-        self.tree.links.new(rr0.outputs[0], rr1.inputs[0])
-
-    def track_boxes(self):
-
-        for box in self.boxes:
-
-            if box.node.bl_idname == 'NodeReroute':
-                continue
-
-            self.track_box(box.x, box.y, box.x + box.w, box.y - box.h)
-
-    def track_inner_frame(self):
-
-        x0, y0, x1, y1 = self.inner_box
-        self.track_box(x0, y0, x1, y1)
-
-        rr = self.tree.nodes.new("NodeReroute")
-        rr.parent = self.node
-        rr.location = (0, 0)
-
-    def track_frame(self):
-
-        self.track_box(self.x, self.y, self.x + self.w, self.y - self.h, parent=False)
-
-    # ===========================================================================
-    # str
-
-    @property
-    def name(self):
-        return self.tree.name if self.node is None else self.node.label
-
-    def __str__(self):
-        return f"<Tree {self.name}>" if self.node is None else f"<Frame {self.name}>"
-
-    def __repr__(self):
-
-        s = str(self) + self.slinks + "\n"
-        for child in self.boxes:
-            sc = repr(child).split("\n")
-            s += "\n   " + "\n   ".join(sc)
-
-        return s
-
-    # ---------------------------------------------------------------------------
-    # Sort the in_siblings links
-
-    def sorted_in_siblings(self):
-        links = sorted(self.in_siblings.values(), key = lambda bl: -bl.box_to.y)
-        return links
-
-    # ---------------------------------------------------------------------------
-    # The frame is drawn as a rectangle around its boxes (plus a certain margin)
-    # The frame origin can be outside the drawn rectangle
-    # In the algorithm, we need to locate a frame in the same way we locate a node:
-    # - location at the top left corner
-    #
-    # The inner_box return the coordinates of the box including
-    # exactly the child boxes: x0, y0, x1, y1
-    #
-    # The inner box is used to compute:
-    # - the frame dimensions : (x1 - x0, y1 - y0)
-    # - the offset location  : (x0, y0) (plus the margin)
-
-    @property
-    def inner_box(self):
-
-        if self.boxes:
-
-            x0 = None
-            for box in self.boxes:
-
-                if x0 is None:
-                    x0 = box.x
-                    y0 = box.y
-                    x1 = box.x + box.w
-                    y1 = box.y + box.h
-                else:
-                    x0 = min(x0, box.x)
-                    y0 = max(y0, box.y)
-                    x1 = max(x1, box.x + box.w)
-                    y1 = min(y1, box.y - box.h)
-
-            return x0, y0, x1, y1
-
-        else:
-            return 0, 0, 0, 0
-
-    # ---------------------------------------------------------------------------
-    # Frame margin
-
-    @property
-    def margin(self):
-        if self.sized:
-            return self._margin
-
-        x0, y0, _, _ = self.inner_box
-
-        return Vector((x0 - 30, -y0 + 30))
-
-    # ---------------------------------------------------------------------------
-    # Frame dimensions
-
-    @property
-    def dims(self):
-
-        if self.sized:
-            return self._dims
-
-        x0, y0, x1, y1 = self.inner_box
-
-        return (x1 - x0 + 60, y0 - y1 + 60)
-
-
-        if self.boxes:
-
-            first_node = True
-            for box in self.boxes:
-
-                w0 = 2*box.x
-                w1 = 2*box.x + box.w
-                h0 = 2*box.y - box.h
-                h1 = 2*box.y
-
-                if first_node:
-                    W0, W1, H0, H1 = w0, w1, h0, h1
-                    first_node = False
-
-                else:
-                    W0 = min(W0, w0)
-                    W1 = max(W1, w1)
-                    H0 = min(H0, h0)
-                    H1 = max(H1, h1)
-
-            return [(W1 - W0)/2 + 120, (H1 - H0)/2 + 120]
-
-        else:
-
-            return [120, 120]
-
-    # ---------------------------------------------------------------------------
-    # Top frame
-
-    @property
-    def top(self):
-        return self if self.node is None else self.frame.top
-
-    # ---------------------------------------------------------------------------
-    # Hierarchical depth
-
-    @property
-    def depth(self):
-        return 0 if self.node is None else self.frame.depth + 1
-
-    # ---------------------------------------------------------------------------
-    # All children
-    # Return children ids
-
-    @property
-    def all_children(self):
-        children = []
-        for child in self.boxes:
-            children.append(child.index)
-            if child.is_frame:
-                children += child.all_children
-
-        return children
-
-    # ---------------------------------------------------------------------------
-    # Build the frame
-
-    def build(self):
-
-        for box in Box.BOXES:
-
-            # ----- Get the nodes belonging to the frame
-
-            if box == self or box.node is None:
-                continue
-
-            if (self.node is None and box.node.parent is None) or (self.node is not None and box.node.parent == self.node):
-                box.frame = self
-                self.boxes.append(box)
-
-    # ---------------------------------------------------------------------------
-    # The full tree
-
-    @classmethod
-    def Tree(cls, tree, reroutes=False, layout_inputs=True):
-
-        Box.BOXES = []
-
-        # ---- Group inputs in frames
-
-        if layout_inputs:
-            group_input_in_frames(tree)
-
-        # ---- Insert reroutes
-
-        if reroutes:
-            frame_inputs(tree)
-            frame_outputs(tree)
-
-        # ---- Build the boxes such as their index is the same as teir nodes index
-
-        frames = []
-        for node in tree.nodes:
-            if node.bl_idname == 'NodeFrame':
-                frames.append(Frame(tree, node))
-            else:
-                Box(tree, node)
-
-        top = Frame(tree, None)
-        frames.append(top)
-
-        # ----- Build the frames
-
-        for frame in frames:
-            frame.build()
-
-        # ----- Transform the tree links in links between boxes
-
-        top.blinks = {}
-        nodes = list(tree.nodes)
-
-        for link in tree.links:
-            blink = BoxLink(top, link, nodes=nodes)
-
-            if blink.key in top.blinks:
-                top.blinks[blink.key].append(link)
+            node = Node(self, bnode)
+        self.nodes[bnode.name] = node
+
+        if frame is not None:
+            bnode.parent = frame.bnode
+
+        return node
+
+    def new_frame(self, frame=None):
+        return self.new_node('NodeFrame', frame=frame)
+
+    def new_reroute(self, frame=None):
+        return self.new_node('NodeReroute', frame=frame)
+
+    def del_node(self, node):
+        for link in self.links:
+            if link.node0 == node or link.node1 == node:
+                raise Exception(f"Impossible to delete  node {node}, links still exist")
+
+        del self.nodes[node.bnode.name]
+        self.btree.nodes.remove(node.bnode)
+
+    def del_link(self, link):
+        self.btree.links.remove(link.blink)
+        self.links.remove(link)
+
+    def new_link(self, node0, index0, node1, index1):
+        blink = self.btree.links.new(node0.bnode.outputs[index0], node1.bnode.inputs[index1])
+        link = Link(self, blink)
+        self.links.append(link)
+        return link
+
+    # ====================================================================================================
+    # Delete the reroute nodes
+
+    def del_reroutes(self):
+        """ > Delete reroute nodes
+        """
+        reroutes = [node for node in self.nodes.values() if node.is_reroute]
+        for reroute in reroutes:
+            in_links  = []
+            out_links = []
+            for link in self.links:
+                if link.node0 == reroute:
+                    out_links.append(link)
+                if link.node1 == reroute:
+                    in_links.append(link)
+
+            if len(in_links) == 0:
+                for link in out_links:
+                    self.del_link(link)
 
             else:
-                top.blinks[blink.key] = blink
+                assert(len(in_links) == 1)
 
-                blink.sib_to.in_siblings[blink.sib_from.index] = blink
+                for link in out_links:
+                    link.replace_from(in_links[0].node0, in_links[0].index0)
 
-        return top
+                self.del_link(in_links[0])
 
-    # ---------------------------------------------------------------------------
-    # Compute the columns
+            self.del_node(reroute)
 
-    def compute_columns(self):
+    # =============================================================================================================================
+    # Group input management
 
-        debug = False
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Group input nodes
 
-        # ---------------------------------------------------------------------------
-        # Compute sub frames and reset col property
+    @property
+    def group_inputs(self):
+        """ > List of Group Input nodes
 
-        for child in self.boxes:
-            if child.is_frame:
-                child.compute_columns()
+        Returns
+        -------
+        - list of nodes : nodes with bl_idname equal to 'NodeGroupInput'
+        """
+        return [node for node in self.nodes.values() if node.bnode.bl_idname == 'NodeGroupInput']
 
-            child.col = None
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Keep one single gorup output
 
-        # ---------------------------------------------------------------------------
-        # 1) Compute the column index of the children
-        # 2) Capture the list of in an out reroute nodes
+    def single_group_input(self):
+        """ > Keep only one Group Input node
 
-        in_rrs  = []
-        out_rrs = []
+        Remove all the ***Goup Input*** node but one.
+        The remaining one is placed out of any frame
+        """
 
-        for child in self.boxes:
-
-            child.update_column(0)
-
-            if child.is_input_reroute:
-                in_rrs.append(child)
-
-            elif child.is_output_reroute:
-                out_rrs.append(child)
-
-        if not self.boxes:
+        inputs = self.group_inputs
+        if len(inputs) <= 1:
             return
 
-        # ---------------------------------------------------------------------------
-        # How many columns do we have ?
-        # We put the input reroutes as first column
+        group_input = inputs[0]
+        for link in self.links:
+            if link.node0 not in inputs[1:]:
+                continue
 
-        max_col = max([box.col for box in self.boxes])
+            link.replace_from(group_input)
 
-        # Put the input reroutes as the leftmost column
+        for node in inputs[1:]:
+            self.del_node(node)
 
-        for rr in in_rrs:
-            rr.col = max_col
+        group_input.bnode.parent = None
 
-        # ---------------------------------------------------------------------------
-        # Create the columns
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Create one group input per frame
 
-        ncols = max_col + 1
-        self.cols = [Column(index) for index in range(ncols)]
-        for i in range(ncols-1):
-            self.cols[i].prev_col = self.cols[i+1]
-
-        for box in self.boxes:
-            self.cols[box.col].append(box)
-
-        # ----- Make sure the single left boxes are just below the node they feed
-
-        """
-        for col in self.cols:
-            fed_nodes = []
-            sl_nodes  = []
-            for box in col:
-                if box.single_left:
-                    sl_nodes.append(box)
-                else:
-                    fed_nodes.append(box)
-
-            index = 0
-            for box in fed_nodes:
-                col[index] = box
-                index += 1
-
-                for b in box.in_siblings:
-                    f_box = Box.BOXES[b]
-                    if f_box.single_left:
-                        col[index] = f_box
-                        index += 1
-
-            if index != len(col):
-                print('-'*30)
-                print("COL")
-                print(col)
-                print('-'*30)
-                print("FED NODES")
-                print(fed_nodes)
-                print('-'*30)
-                print("SL NODES")
-                print(sl_nodes)
-                print('-')
-
-                raise NodeError(f"Algo error: {index} != {len(col)}")
+    def group_input_per_frame(self):
+        """ Create one group input node per frame linked to the group input
         """
 
-        # ----- Columns x location
+        # ----- One single group input
 
-        x = 0
-        for col in reversed(self.cols):
-            col.x = x
-            x += Column.X_SEPA + col.width
+        self.single_group_input()
+        inputs = self.group_inputs
+        if len(inputs) == 0:
+            return
 
-        # Reset the y setup position of the boxes
-        # x location is initialized since it won't change for not frames
+        assert(len(inputs) == 1)
+        group_input = inputs[0]
 
-        for box in self.boxes:
-            box.located = False
-            box.x = self.cols[box.col].x
+        # ----------------------------------------------------------------------------------------------------
+        # Loop on the output links
 
-        # ---------------------------------------------------------------------------
-        # The boxes are vertically ordered by following the links from right to left
-        # for all the boxes in right most column
+        frames = {}
+        for link in self.links:
+            if link.node0 != group_input:
+                continue
 
-        # ----- Order the boxes by growing col
+            bframe = link.node1.bnode.parent
+            if bframe is None:
+                continue
 
-        new_feedings = self.cols[0]
+            frame = self[bframe]
+            frame_input = frames.get(bframe.name)
+            if frame_input is None:
+                frame_input = self.new_node('NodeGroupInput', frame)
+                frames[bframe.name] = frame_input
 
-        # ---- Loop while there is boxes to locate
+            link.replace_from(frame_input)
 
-        bug = True
-        for wd in range(1000): # No break exit will raise an error
+        # ----- Remain if not output
 
-            if not new_feedings:
-                bug = False
+        keep = False
+        for link in self.btree.links:
+            if link.from_node == group_input.bnode:
+                keep = True
                 break
+        if not keep:
+            self.del_node(group_input)
 
-            feedings = new_feedings
-            new_feedings = []
+    # =============================================================================================================================
+    # Zones in frames
 
-            # ----- Loop on the boxes
+    def zones_in_frame(self):
+        """ Create a temporary frame around zones
+        """
 
-            for i_box, box in enumerate(feedings):
+        # ----------------------------------------------------------------------------------------------------
+        # Get the existing zones
 
-                # ----- Already located
+        zones = []
 
-                if box.located:
-                    continue
+        for node in self.nodes.values():
+            if node.bnode.bl_idname not in ZONE_INPUTS:
+                continue
 
-                # ----- Columns before the box's one are not yet initialized
-                # We'll do this box later
+            zone_input  = node
+            zone_output = self[node.bnode.paired_output]
 
-                if sum([c.no_located_box for c in self.cols[:box.col]]) != 0:
-                    new_feedings.append(box)
-                    continue
+            zone = [zone_input, zone_output] + [node for node in self.nodes.values() if node.in_zone(zone_input, zone_output)]
 
-                # ----- The owning column
+            zones.append(zone)
 
-                col = self.cols[box.col]
+        if len(zones) == 0:
+            return
 
-                # ----- y is min of left columns
+        # ----------------------------------------------------------------------------------------------------
+        # Zones imbrication
 
-                y = min([col.next_y for col in self.cols[col.col_index:]])
+        imbrication = [None] * len(zones)
+        if len(zones) > 1:
+            for izone, zone in enumerate(zones):
+                for iz, z in enumerate(zones):
+                    if iz == izone:
+                        continue
 
-                # ----- Locate the box in the column
-
-                col.locate_box(box, y)
-
-                # ----- The feeding nodes
-
-                box_links = box.sorted_in_siblings()
-                for box_link in box_links:
-                    fb = box_link.sib_from
-                    if not fb.located and fb not in new_feedings:
-
-                        # ------ If single left feeder, put it right below
-
-                        if fb.single_left:
-                            col.locate_box(fb, box.y - box.h - Column.Y_SEPA/4)
-
-                        # ----- else put it in the new feedings list
-
+                    # Zone imbricated in z
+                    if zone[0].in_zone(z[0], z[1]):
+                        icur = imbrication[izone]
+                        if icur is None:
+                            imbrication[izone] = iz
                         else:
-                            new_feedings.append(fb)
+                            cur = zones[icur]
+                            if z[0].in_zone(cur[0], cur[1]):
+                                imbrication[izone] = iz
 
+        # ----------------------------------------------------------------------------------------------------
+        # Create the temporary frames
+        #
+        # Start by the most imbricated zone
 
-        if bug:
-            raise NodeError("Algorithm error")
+        n = len(zones)
+        frames = [None]*n
+        for _ in range(n):
+            for izone, zone in enumerate(zones):
 
-        # ---------------------------------------------------------------------------
-        # Relocate the in/out reroutes
+                if zone is None:
+                    continue
 
-        self.cols[-1].relocate_reroutes()
-        self.cols[0].relocate_reroutes()
+                # ----- Has the zone imbricated zones
 
+                KO = False
+                for z in zones:
+                    if z is None or z == zone:
+                        continue
+                    if z[0].in_zone(zone[0], zone[1]):
+                        # z is imbricated in zone, it must be treated before
+                        KO = True
+                        break
 
-# ====================================================================================================
-# A Column of boxes
+                if KO:
+                    continue
 
-class Column(list):
+                # ----- Creates a frame only if not already in a frame
 
-    X_SEPA = 60
-    Y_SEPA = 60
+                if zone[0].parent == self and zone[1].parent == self:
+                    frame = self.new_frame()
+                    frame.bnode.label = "$TEMP_ZONE"
+                    frames[izone] = frame
+                    for node in zone:
+                        if node.bnode.parent is None:
+                            node.bnode.parent = frame.bnode
 
-    def __init__(self, index, x=0, y=0):
-        super().__init__()
-
-        self.col_index = index
-        self.x = x
-        self.y = y
-
-        self.prev_col = None
-
-    @property
-    def width(self):
-        if self:
-            return max([box.w for box in self])
-        else:
-            return 10
-
-    @property
-    def height(self):
-        return Column.Y_SEPA * (len(self) - 1) + sum([box.h for box in self])
-
-    # ----------------------------------------------------------------------------------------------------
-    # Return index and box from either index or box
-
-    def index_box(self, box):
-
-        if isinstance(box, Box):
-            try:
-                i_box = self.index(box)
-
-            except ValueError as e:
-                return None, None
-
-        else:
-            i_box = box
-            box   = self[i_box]
-
-        return i_box, box
-
-    # ----------------------------------------------------------------------------------------------------
-    # Move a box in the list
-
-    def move(self, box, index):
-
-        i_box, box = self.index_box(box)
-
-        if i_box == index:
-            return
-
-        dy = box.h + Column.Y_SEPA
-        for b in self[i_box:]:
-            b.y += dy
-        del self[i_box]
-
-        box.y = self[index].y
-
-        dy = box.h + Column.Y_SEPA
-        for b in self[index:]:
-            b.y -= dy
-        self.insert(index, box)
-
-    # ----------------------------------------------------------------------------------------------------
-    # Height with only located boxes
-
-    @property
-    def next_y(self):
-        y = 0
-        for box in self:
-            if box.located:
-                y = box.y - box.h - Column.Y_SEPA
-            else:
+                zones[izone] = None
                 break
 
-        return y
+        # ---- Parent of created frames
 
-    # ----------------------------------------------------------------------------------------------------
-    # Located boxes count
+        for i, frame in enumerate(frames):
+            if frame is None:
+                continue
+            iparent = imbrication[i]
+            if iparent is not None:
+                frame.bnode.parent = frames[iparent].bnode
 
-    @property
-    def located_count(self):
-        n = 0
-        for box in self:
-            if box.located:
-                n += 1
-            else:
-                return n
+        self.wait()
 
-    # ----------------------------------------------------------------------------------------------------
-    # return 1 if no located boxes
+    # =============================================================================================================================
+    # Delete temporary frames
 
-    @property
-    def no_located_box(self):
-        return 1 if self.located_count == 0 else 0
+    def del_temp_frames(self):
+        """ Delete temporary frames
 
-    # ----------------------------------------------------------------------------------------------------
-    # Locate a box
-
-    def locate_box(self, box, y):
-
-        i_box, box = self.index_box(box)
-
-        self.move(i_box, self.located_count)
-
-        box.y = y
-        box.located = True
-
-    # ----------------------------------------------------------------------------------------------------
-    # Relocate input reroutes
-
-    def relocate_reroutes(self):
-
-        # ----- Get all the reroute nodes in the list
-
-        irrs = []
-        for i, box in enumerate(self):
-            if box.is_reroute:
-                irrs.append(i)
-
-        if not irrs:
-            return
-
-        # ----- Move them as first nodes of the column
-
-        for i, index in enumerate(irrs):
-            self.move(index, i)
+        Temporary frames have a label starting by '$TEMP'
+        """
+        to_delete = [frame for frame in self.nodes.values() if frame.bnode.label.startswith("$TEMP")]
+        for frame in to_delete:
+            self.tree.del_node(frame)
 
 # ====================================================================================================
 # Arrange a tree
 
-def arrange(tree, reroutes=True, delete_single=False, layout_inputs=True):
+def arrange(btree, reroutes=True, input_in_frames=True):
 
-    if isinstance(tree, str):
-        tree = bpy.data.node_groups[name]
+    # Try to update node dimensions !
+    Node.wait()
 
-    # Some cleaning
+    tree = Tree(btree)
 
-    if delete_single:
-        delete_single_nodes(tree)
+    if reroutes:
+        tree.del_reroutes()
 
-    top = Frame.Tree(tree, reroutes=reroutes, layout_inputs=layout_inputs)
+    if input_in_frames:
+        tree.group_input_per_frame()
 
-    if top is None:
-        return
+    tree.zones_in_frame()
+    tree.arrange(reroutes=reroutes)
+    tree.del_temp_frames()
 
-    top.compute_columns()
+# ====================================================================================================
+# UI
+
+# bl_region_type in
+# ('WINDOW', 'HEADER', 'CHANNELS', 'TEMPORARY', 'UI', 'TOOLS', 'TOOL_PROPS', 'ASSET_SHELF',
+# 'ASSET_SHELF_HEADER', 'PREVIEW', 'HUD', 'NAVIGATION_BAR', 'EXECUTE', 'FOOTER', 'TOOL_HEADER', 'XR')
+
+class RemoveReroutesOperator(bpy.types.Operator):
+    """Remove the 'reroute' nodes"""
+    bl_idname = "node.remove_reroutes"
+    bl_label  = "Remove Reroutes"
+
+    @classmethod
+    def poll(cls, context):
+        space = context.space_data
+        return space.type == 'NODE_EDITOR' and space.node_tree is not None
+
+    def execute(self, context):
+        space = context.space_data
+        tree = Tree(space.node_tree)
+        tree.del_reroutes()
+        arrange(space.node_tree, reroutes=False)
+        return {'FINISHED'}
+
+class ArrangeNodesOperator(bpy.types.Operator):
+    """Auto arrange nodes"""
+    bl_idname = "node.arrange_nodes"
+    bl_label  = "Arrange nodes"
+
+    @classmethod
+    def poll(cls, context):
+        space = context.space_data
+        return space.type == 'NODE_EDITOR' and space.node_tree is not None
+
+    def execute(self, context):
+        space = context.space_data
+        arrange(space.node_tree)
+        return {'FINISHED'}
+
+class LayoutArrangePanel(bpy.types.Panel):
+    """Creates a Panel in the node editor context of the properties editor"""
+    bl_label       = "Geonodes arrange"
+    bl_idname      = "NODE_EDITOR_PT_arrange"
+    bl_space_type  = 'NODE_EDITOR'
+    bl_region_type = 'UI'
+    bl_context     = "scene"
+    bl_category    = "Tool"
+
+    def draw(self, context):
+        layout = self.layout
+
+        scene = context.scene
+
+        # Arrange
+        row = layout.row()
+        row.scale_y = 2.0
+        row.operator("node.arrange_nodes")
+
+        # Remove reroutes
+        row = layout.row()
+        row.operator("node.remove_reroutes")
+
+def register():
+    bpy.utils.register_class(RemoveReroutesOperator)
+    bpy.utils.register_class(ArrangeNodesOperator)
+
+    bpy.utils.register_class(LayoutArrangePanel)
+
+def unregister():
+    bpy.utils.unregister_class(RemoveReroutesOperator)
+    bpy.utils.unregister_class(ArrangeNodesOperator)
+
+    bpy.utils.unregister_class(LayoutArrangePanel)

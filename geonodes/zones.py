@@ -118,6 +118,11 @@ class Zone:
     ITEMS_NAME   = None # Name of node 'xxx_items' property (dynamic if None)
     PLUG_ON_EXIT = True # Plug loop variables to output node when exiting (False for ForEachElement)
 
+    def init_layout(self):
+        from geonodes import Layout
+        #self._layout = Layout("$TEMP_ZONE")
+        self._layout = None
+
     def init_zone(self, sockets={}, **snake_case_sockets):
         """ > Two nodes zone
 
@@ -253,6 +258,9 @@ class Zone:
             for name, value in self._locals.items():
                 self._output.plug_value_into_socket(value, self._output.in_socket(name))
 
+        if self._layout is not None:
+            self._layout.pop()
+
     # ====================================================================================================
     # Dynamic attributes
 
@@ -341,6 +349,8 @@ class Repeat(Zone):
 
         # ----- Create an link the input and output simulation nodes
 
+        self.init_layout()
+
         self._input  = Node('GeometryNodeRepeatInput')
         self._output = Node('GeometryNodeRepeatOutput')
         self._input._bnode.pair_with_output(self._output._bnode)
@@ -395,6 +405,8 @@ class Simulation(Zone):
         """
 
         # ----- Create an link the input and output simulation nodes
+
+        self.init_layout()
 
         self._input  = Node('GeometryNodeSimulationInput')
         self._output = Node('GeometryNodeSimulationOutput')
@@ -469,6 +481,8 @@ class ForEachElement(Zone):
         tree = Tree.current_tree
 
         # ----- Create an link the input and output simulation nodes
+
+        self.init_layout()
 
         self._input  = Node('GeometryNodeForeachGeometryElementInput')
         self._output = Node('GeometryNodeForeachGeometryElementOutput')
