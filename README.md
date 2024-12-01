@@ -125,7 +125,7 @@ with GeoNodes("Demo"):
     vector = Vector((1, 2, 3))
 
     # Method set_position creates a node 'Set Position'
-    # - 'geometry' is is plugged to the input socket 'Geometry'
+    # - 'geometry' is plugged to the input socket 'Geometry'
     # - 'offset' argument is plugged to the input socket 'Offset'
 
     geometry.set_position(offset=vector)
@@ -206,6 +206,16 @@ b = gnmath.xor(a, False)
 c = gnmath.band(b, False)
 ```
 
+Blender 4.3 introduces the *Math Integer** node. All operations exposed by this node are prefixed
+by letter ***'i'***:
+
+``` python
+# Math operation
+x = gnmath.modulo(17.4, 2.1)
+# Integer math operation
+i = gnmath.imodulo(17, 3)
+```
+
 ### 'nd' Class
 
 **nd** class (shortcut for **nodes**) exposes all the nodes as class methods.
@@ -228,7 +238,7 @@ Each **Geometry Nodes** socket type is wrapped in a dedicated class. The availab
   - Material, Object, Texture, Collection, Image
 - **Geometry**
   - Geometry
-  - Geometry subclasses : Mesh, Curve, Cloud, Instances, Volume
+  - Geometry subclasses : Mesh, Curve, GreasePencil, Cloud, Instances, Volume
 - **Special**
   - Menu
 
@@ -248,6 +258,8 @@ The domains are the following:
 - **Curve**
   - points
   - splines
+- **GreasePencil**
+  - layers 
 - **Cloud**
   - points
 - **Instances**
@@ -281,6 +293,12 @@ a = Float(10)
 c = a*pi # Math node, operation 'MULTIPLY'
 c += 1 # Math node, operation 'ADD'
 ok = a <= c # Compare node, operation 'LESS_EQUAL'
+
+# Integer operators
+a = Integer(10)
+c = a*42 # Operation between two Integers : Integer Math node is used
+c += 1 # Integer Math node, operation 'ADD'
+d = -c # Integer Math node, operation 'NEGATE'
 
 # Vector operators
 u = Vector((1, 2, 3))
@@ -407,7 +425,7 @@ with GeoNodes("Method names"):
 ### Geometry or Domains methods
 
 Blender _Geometry Nodes_ exposes one single _Geometry_ type. On the other hand, **GeoNodes** provides
-one class per geometry type : **Mesh**, **Curve**, **Cloud**, **Instances**, **Volume** which are
+one class per geometry type : **Mesh**, **Curve**, **GreasePencil**, **Cloud**, **Instances**, **Volume** which are
 subclasses of the generic **Geometry** class.
 
 Nodes are implemented on their geometry classes:
@@ -417,6 +435,7 @@ Nodes are implemented on their geometry classes:
 Nodes needing a _Domain_ parameter are implemented on **Domain**, not **Geometry** :
 - _Store Named Attribute_ : implemented on all domains
 - _Extrude Mesh_ : implemented on **Mesh.points**, **Mesh.edges** and **Mesh.faces**
+- _For Each Element_ : implemented on all domains
 
 ### Node sockets and parameters
 
@@ -683,13 +702,23 @@ with GeoNodes("Group outputs"):
     Integer(10).out(name="The 10 int")
 ```
 
-## Simulation and Repeat Zones
+## Simulation, Repeat and ForEachElement Zones
 
 ### Creation
 
-Simulation zones are created with the classes **Simulation** and **Repeat**.
-The zone variables are created with `**kwargs` arguments. The sockets types are
-deduced from the python variable types. If the passed value is `None`, its is
+Zones are made of two linked nodes: one input node and one output node.
+In Blender 4.3, three zones exist:
+- Simulation zone: class **Simulation**
+- Repeat zone : class **Repeat**
+- For Each Element zone : class **ForEachElement** or domain method **for_each**
+
+They are all subclasses of **Zone** class.
+
+Zones are initialized with dynamincally creating sockets. Sockets can be created:
+- either with a dict
+- or with keyword arguments
+
+The sockets types are deduced from the python variable types. If the passed value is `None`, its is
 considered as a null **Geometry**.
 
 The example below creates a _Repeat_ zone with 4 variables of types **Geometry**, **Geometry**,
@@ -700,9 +729,15 @@ with Repeat(geometry=Geometry(), curve=None, position=Vector(), index=1, iterati
     pass
 ```
 
-### Acces to the zones sockets
+Or alternatively with `sockets` dict argument:
+``` python
+with Repeat(sockets={'Geometry': Geometry(), 'Curve': None, 'Position': Vector(), 'index': 1}, iterations=10) as rep:
+    pass
+```
 
-The zone sockets are initialized as properties of the **Repeat** or **Simulation**.
+### Access to the zones sockets
+
+The zone sockets are initialized as properties of the **Zone** class.
 They can be get and set using the standard python syntax, for instance `rep.index` refers to
 the socket named **index** in the example above.
 
@@ -717,8 +752,13 @@ socket names are replicated 4 times. Accessing the zone properties depends upon 
   - **getting** the property : read the ouput socket of the second node
   - **setting** the property : raises an error (sockets are set at zone instantiation time)
 
-  Despite it is not that easy to describe, this produces an very natural way to create and work with zones.
-  The example below explodes a sphere:
+Despite it is not that easy to describe, this produces an very natural way to create and work with zones.
+
+> [&IMPORTANT]
+> **ForEachElement** zone behaves diferrently : input sockets of the input node are not replicated in th
+> output socket. On the other hand, the output nodes has two subset of sockets named **main** and **generated**.
+
+The example below explodes a sphere:
 
 ``` python
 from geonodes import *
