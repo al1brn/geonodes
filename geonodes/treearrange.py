@@ -684,7 +684,7 @@ class Frame(Node):
                 print("- PEERS IN ", [n.bnode.label + "/" + n.bnode.name for n in node.in_peers])
                 print("- PEERS OUT", [n.bnode.label + "/" + n.bnode.name for n in node.out_peers])
 
-            if True:
+            if False:
                 print(f"  -> OUT {node}: {node.out_peers}")
                 print(f"     {node.out_nodes}")
 
@@ -712,8 +712,6 @@ class Frame(Node):
 
                 if left_most is None or left_most.col < follower.col:
                     left_most = follower
-
-            print(f"{node} follows {left_most} ({left_most.col})")
 
             node.follower = left_most
             node.col      = left_most.col + 1
@@ -792,7 +790,7 @@ class Frame(Node):
                 node.col = icol
 
         # DEBUG
-        if True:
+        if False:
             print(f">>> {str(self)} Columns:")
             for i, col in enumerate(columns):
                 print("   ", i, [str(node) for node in col])
@@ -1277,13 +1275,19 @@ class LayoutArrangePanel(bpy.types.Panel):
         row.operator("node.remove_reroutes")
 
 def register():
-    bpy.utils.register_class(RemoveReroutesOperator)
-    bpy.utils.register_class(ArrangeNodesOperator)
+    try:
+        bpy.utils.register_class(RemoveReroutesOperator)
+        bpy.utils.register_class(ArrangeNodesOperator)
 
-    bpy.utils.register_class(LayoutArrangePanel)
+        bpy.utils.register_class(LayoutArrangePanel)
+    except:
+        pass
 
 def unregister():
-    bpy.utils.unregister_class(RemoveReroutesOperator)
-    bpy.utils.unregister_class(ArrangeNodesOperator)
+    try:
+        bpy.utils.unregister_class(RemoveReroutesOperator)
+        bpy.utils.unregister_class(ArrangeNodesOperator)
 
-    bpy.utils.unregister_class(LayoutArrangePanel)
+        bpy.utils.unregister_class(LayoutArrangePanel)
+    except:
+        pass

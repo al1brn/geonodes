@@ -52,7 +52,7 @@ with cube.faces.for_each(position=nd.position) as feel:
 
 ### Inherited
 
-[\_\_enter__](zone.md#__enter__) :black_small_square: [\_\_exit__](zone.md#__exit__) :black_small_square: [\_\_getattr__](zone.md#__getattr__) :black_small_square: [init_zone](zone.md#init_zone) :black_small_square: [\_\_setattr__](zone.md#__setattr__) :black_small_square: [\_\_str__](zone.md#__str__) :black_small_square:
+[\_\_enter__](zone.md#__enter__) :black_small_square: [\_\_exit__](zone.md#__exit__) :black_small_square: [\_\_getattr__](zone.md#__getattr__) :black_small_square: [init_layout](zone.md#init_layout) :black_small_square: [init_zone](zone.md#init_zone) :black_small_square: [\_\_setattr__](zone.md#__setattr__) :black_small_square: [\_\_str__](zone.md#__str__) :black_small_square:
 
 ## Content
 

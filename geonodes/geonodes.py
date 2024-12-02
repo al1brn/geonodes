@@ -65,7 +65,7 @@ class GeoNodes(Tree):
 
         Arguments
         ---------
-        - tree_name (str) : Geometry Nodes namde
+        - tree_name (str) : Geometry Nodes name
         - clear (bool = True) : clear the tree content
         - fake_user (bool = False) : set fake_user flag
         - is_group (bool = False) : tree is a group

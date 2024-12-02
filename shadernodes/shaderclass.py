@@ -73,7 +73,6 @@ class ShaderRoot(Attribute):
     def __radd__(self, other):
         return self.add(other)
 
-
 # =============================================================================================================================
 # Surface Shader
 
@@ -182,7 +181,6 @@ class Shader(ShaderRoot):
         node = Node('Transparent BSDF', {'Color': color})
         return node._out
 
-
 # =============================================================================================================================
 # Volume Shader
 
@@ -217,3 +215,4 @@ class VolumeShader(ShaderRoot):
 
         node = Node('Volume Scatter', {'Color': color, 'Density': density, 'Anisotropy': anisotropy})
         return cls(node._out)
+

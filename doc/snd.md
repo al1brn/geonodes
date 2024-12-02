@@ -1224,14 +1224,14 @@ ShaderNode 'Point Density' (ShaderNodeTexPointDensity)
 > classmethod
 
 ``` python
-position(attribute_type='GEOMETRY')
+position(attribute_type: str = 'GEOMETRY') -> geonodes.geonodes.treeclass.Node
 ```
 
 Node 'Attribute' (ShaderNodeAttribute)
 - attribute_type in ('GEOMETRY', 'OBJECT', 'INSTANCER', 'VIEW_LAYER')
 
 #### Arguments:
-- **attribute_type** ( = GEOMETRY)
+- **attribute_type** (_<class 'str'>_ = GEOMETRY)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [snd](snd.md#snd) :black_small_square: [Content](snd.md#content) :black_small_square: [Methods](snd.md#methods)</sub>
 
@@ -1551,14 +1551,14 @@ ShaderNode 'Shader to RGB' (ShaderNodeShaderToRGB)
 > classmethod
 
 ``` python
-sharp_face(attribute_type='GEOMETRY')
+sharp_face(attribute_type: str = 'GEOMETRY') -> geonodes.geonodes.treeclass.Node
 ```
 
 Node 'Attribute' (ShaderNodeAttribute)
 - attribute_type in ('GEOMETRY', 'OBJECT', 'INSTANCER', 'VIEW_LAYER')
 
 #### Arguments:
-- **attribute_type** ( = GEOMETRY)
+- **attribute_type** (_<class 'str'>_ = GEOMETRY)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [snd](snd.md#snd) :black_small_square: [Content](snd.md#content) :black_small_square: [Methods](snd.md#methods)</sub>
 
@@ -1818,14 +1818,14 @@ ShaderNode 'UV Along Stroke' (ShaderNodeUVAlongStroke)
 > classmethod
 
 ``` python
-uvmap(attribute_type='GEOMETRY')
+uvmap(attribute_type: str = 'GEOMETRY') -> geonodes.geonodes.treeclass.Node
 ```
 
 Node 'Attribute' (ShaderNodeAttribute)
 - attribute_type in ('GEOMETRY', 'OBJECT', 'INSTANCER', 'VIEW_LAYER')
 
 #### Arguments:
-- **attribute_type** ( = GEOMETRY)
+- **attribute_type** (_<class 'str'>_ = GEOMETRY)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [snd](snd.md#snd) :black_small_square: [Content](snd.md#content) :black_small_square: [Methods](snd.md#methods)</sub>
 
