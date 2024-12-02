@@ -5,7 +5,7 @@
 
 ### Initialize a tree
 
-- [GeoNodes](geono-geono-geonodes.md#geonodes) and [ShaderNodes](shade-shade1-shadernodes.md#shadernodes) : scripting nodes starts by instantianting a [Tree](tree.md#tree)
+- [GeoNodes](core-geono-geonodes.md#geonodes) and [ShaderNodes](shade-shade1-shadernodes.md#shadernodes) : scripting nodes starts by instantianting a [Tree](tree.md#tree)
 - [Break](break.md#break) : exiting from a tree context can be done by raising this exception
 
 ### Create nodes
@@ -81,11 +81,8 @@ Geometries have specific [Domain](domain.md#domain):
 
 ## Content
 
-- [Cross Reference](cross_reference.md#cross-reference)
-- [generation](generation.md#generation)
-  - [gendoc](gendoc.md#gendoc)
-- [geonodes](geono---geonodes.md#geonodes)
-  - [geonodes](geono-geono---geonodes.md#geonodes)
+- [core](core.md#core)
+  - [geonodes](core-geono---geonodes.md#geonodes)
   - [gnmath](gnmath.md#gnmath)
   - [Attribute](attribute.md#attribute)
   - [Boolean](boolean.md#boolean)
@@ -132,6 +129,9 @@ Geometries have specific [Domain](domain.md#domain):
   - [Vertex](vertex.md#vertex)
   - [Volume](volume.md#volume)
   - [Zone](zone.md#zone)
+- [Cross Reference](cross_reference.md#cross-reference)
+- [generation](generation.md#generation)
+  - [gendoc](gendoc.md#gendoc)
 - [Shader Cross Reference](shader_cross_reference.md#shader-cross-reference)
 - [shadernodes](shade---shadernodes.md#shadernodes)
   - [shaderclass](shaderclass.md#shaderclass)
@@ -142,8 +142,8 @@ Geometries have specific [Domain](domain.md#domain):
 
 
 
+- [core](core.md#core)
 - [generation](generation.md#generation)
-- [geonodes](geono---geonodes.md#geonodes)
 - [shadernodes](shade---shadernodes.md#shadernodes)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [geonodes](index.md#geonodes) :black_small_square: [Content](index.md#content) :black_small_square: [geonodes](index.md#geonodes)</sub>

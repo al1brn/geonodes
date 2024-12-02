@@ -10,11 +10,11 @@ from importlib import reload
 import requests
 import re
 
-from docgen import pydoc, documentation
+from docgen import packagedoc, documentation
 import docgen
 
 reload(documentation)
-reload(pydoc)
+reload(packagedoc)
 reload(docgen)
 
 from docgen import PackageDoc
@@ -52,7 +52,7 @@ def get_node_link(tree, name):
     else:
         ref  = shader_ref
         base = shader_url
-        
+
     m = re.search(ref_search.replace('NODE_NAME', name), ref, flags=re.MULTILINE | re.IGNORECASE)
     if m is None:
         return f"ERROR: Node '{name}' not found"
@@ -65,21 +65,21 @@ g_nodes = {}
 s_nodes = {}
 
 def cross_ref(tree, name, section):
-    
+
     nodes = g_nodes if tree == 'NODE' else s_nodes
-    
+
     class_ = section
     while class_ is not None and class_.tag != 'Classes':
         class_ = class_.parent
-        
+
     if class_ is not None and class_.hidden:
         return
-        
+
     cref = nodes.get(name)
     if cref is None:
         cref = []
         nodes[name] = cref
-        
+
     if class_ is None:
         for a, b in cref:
             if a is None and b.title == section.title:
@@ -90,9 +90,9 @@ def cross_ref(tree, name, section):
                 continue
             if a.title == class_.title and b.title == section.title:
                 return
-        
+
     cref.append((class_, section))
-    
+
 
 # =============================================================================================================================
 # Regular expressions
@@ -111,22 +111,22 @@ ctag     = re.compile(tag_expr,  flags = re.MULTILINE)
 def tag_replace(m, section):
 
     tag = m.group('tag').strip().upper()
-    
+
     if tag == 'SHADER':
         return ":sunrise: **ShaderNodes** only\n"
-    
+
     elif tag == 'MIX':
         return ":hotsprings: Behaves differently in **GeoNodes** and **ShaderNodes**\n"
-    
+
     elif tag == 'RETURN_NODE':
         return ":warning: returns the **node**, not a socket"
-    
+
     elif tag == 'JUMP':
         return ""
-    
+
     elif tag == 'NO_JUMP':
         return ""
-    
+
     else:
         print(f"UNKNOWN Method tag: '{tag}' in '{m.group(0)}'")
         return m.group(0)
@@ -142,60 +142,60 @@ bnode_expr = r"<(?P<cross>(&|\*))(?P<tree>\w*) *(?P<name>[^>]*)>"
 cbnode = re.compile(bnode_expr, flags = re.MULTILINE)
 
 def bnode_replace(m, section):
-    
+
     cross = m.group('cross')
     tree  = m.group('tree').upper()
     name  = m.group('name').strip()
-    
+
     if cross == '&':
         cross_ref(tree, name, section)
-    
+
     return get_node_link(tree, name)
-    
+
 
 # =============================================================================================================================
 # geonodes module documentation
 
 def geonodes_documentation(write_files=True):
-    
+
     from importlib import reload
     from pathlib import Path
-    
+
     print('-'*100)
     print("Generate documentation of geonodes")
     print()
-    
+
     import geonodes
     reload(geonodes)
-    
+
     folder = Path(geonodes.__file__).parents[0] / 'doc'
     if not write_files:
         folder = None
-    
+
     # -----------------------------------------------------------------------------------------------------------------------------
     # Load the package
-    
-    print("Load package...")   
+
+    print("Load package...")
     doc = PackageDoc(geonodes)
-    
+
     # -----------------------------------------------------------------------------------------------------------------------------
     # Hooks to replace references to nodes and build cross references
-    
+
     print("Replacements...")
     if True:
         child_iter = doc.top_section.all_values()
         for section in child_iter:
-            
+
             if section.is_hidden:
                 child_iter.no_child()
                 continue
-            
+
             if section.is_transparent:
                 continue
-            
+
             if section.comment is None:
                 continue
-            
+
             section.comment = ctag.sub(  lambda m: tag_replace(  m, section), section.comment)
             section.comment = cbnode.sub(lambda m: bnode_replace(m, section), section.comment)
     else:
@@ -204,17 +204,17 @@ def geonodes_documentation(write_files=True):
 
         doc.cook()
 
-        
+
     # -----------------------------------------------------------------------------------------------------------------------------
     # Add the cross reference page
 
     print("Cross references...")
-    
+
     cross_page = doc.top_section.new_page("Cross Reference",
             in_toc=True, parent_toc_depth=0,
             toc=True, sort_sections=True, toc_flat=True, toc_sort=True)
     cross_page.write("You will find here how nodes are implemented")
-    
+
     for node_name, refs in g_nodes.items():
         node_section = cross_page.new(node_name.replace('/', ' '), in_toc=True, depth_shift=2)
         for class_, member_ in refs:
@@ -223,15 +223,15 @@ def geonodes_documentation(write_files=True):
             else:
                 if class_.hidden:
                     continue
-                
+
                 node_section.write(f"- <!{class_.title}> :white_small_square: <!{class_.title}#{member_.title}>\n")
 
     cross_page = doc.top_section.new_page("Shader Cross Reference",
             in_toc=True, parent_toc_depth=0,
             toc=True, sort_sections=True, toc_flat=True, toc_sort=True)
     cross_page.write("You will find here how nodes are implemented")
-    
-    
+
+
     for node_name, refs in s_nodes.items():
         node_section = cross_page.new(node_name.replace('/', ' '), in_toc=True, depth_shift=2)
         for class_, member_ in refs:
@@ -240,22 +240,13 @@ def geonodes_documentation(write_files=True):
             else:
                 if class_.hidden:
                     continue
-                
+
                 node_section.write(f"- <!{class_.title}> :white_small_square: <!{class_.title}#{member_.title}>\n")
 
     # -----------------------------------------------------------------------------------------------------------------------------
     # Finally create documentation
-    
+
     print("Create documentation files...")
     doc.create_documentation(folder)
-    
+
     print("Done")
-    
-
-
-
-
-
-    
-    
-

@@ -97,7 +97,7 @@ You will find here how nodes are implemented
 #### Boolean
 
 - [Boolean](cross_reference.md#boolean) :white_small_square: [Boolean](cross_reference.md#boolean)
-- [Boolean](cross_reference.md#boolean) :white_small_square: [\_\_init__](geono-geono-geonodes.md#__init__)
+- [Boolean](cross_reference.md#boolean) :white_small_square: [\_\_init__](core-geono-geonodes.md#__init__)
 - [nd](nd.md#nd) :white_small_square: [boolean](nd.md#boolean)
 
 #### Boolean Math
@@ -158,7 +158,7 @@ You will find here how nodes are implemented
 #### Color
 
 - [Color](cross_reference.md#color) :white_small_square: [Color](cross_reference.md#color)
-- [Color](cross_reference.md#color) :white_small_square: [\_\_init__](geono-geono-geonodes.md#__init__)
+- [Color](cross_reference.md#color) :white_small_square: [\_\_init__](core-geono-geonodes.md#__init__)
 - [nd](nd.md#nd) :white_small_square: [color](nd.md#color)
 
 #### Color Ramp
@@ -537,7 +537,7 @@ You will find here how nodes are implemented
 - [nd](nd.md#nd) :white_small_square: [group](nd.md#group)
 - [Group](cross_reference.md#group) :white_small_square: [Group](cross_reference.md#group)
 - [Group](cross_reference.md#group) :white_small_square: [Prefix](group.md#prefix)
-- [Group](cross_reference.md#group) :white_small_square: [\_\_init__](geono-geono-geonodes.md#__init__)
+- [Group](cross_reference.md#group) :white_small_square: [\_\_init__](core-geono-geonodes.md#__init__)
 
 #### Group Input
 
@@ -590,7 +590,7 @@ You will find here how nodes are implemented
 #### Image
 
 - [Image](cross_reference.md#image) :white_small_square: [Image](cross_reference.md#image)
-- [Image](cross_reference.md#image) :white_small_square: [\_\_init__](geono-geono-geonodes.md#__init__)
+- [Image](cross_reference.md#image) :white_small_square: [\_\_init__](core-geono-geonodes.md#__init__)
 - [nd](nd.md#nd) :white_small_square: [image](nd.md#image)
 
 #### Image Info
@@ -761,7 +761,7 @@ You will find here how nodes are implemented
 #### Material
 
 - [Material](cross_reference.md#material) :white_small_square: [Material](cross_reference.md#material)
-- [Material](cross_reference.md#material) :white_small_square: [\_\_init__](geono-geono-geonodes.md#__init__)
+- [Material](cross_reference.md#material) :white_small_square: [\_\_init__](core-geono-geonodes.md#__init__)
 - [nd](nd.md#nd) :white_small_square: [material](nd.md#material)
 
 #### Material Index
@@ -1150,7 +1150,7 @@ You will find here how nodes are implemented
 
 - [nd](nd.md#nd) :white_small_square: [rotation](nd.md#rotation)
 - [Rotation](cross_reference.md#rotation) :white_small_square: [Rotation](cross_reference.md#rotation)
-- [Rotation](cross_reference.md#rotation) :white_small_square: [\_\_init__](geono-geono-geonodes.md#__init__)
+- [Rotation](cross_reference.md#rotation) :white_small_square: [\_\_init__](core-geono-geonodes.md#__init__)
 
 #### Rotation to Axis Angle
 
@@ -1468,7 +1468,7 @@ You will find here how nodes are implemented
 #### String
 
 - [String](cross_reference.md#string) :white_small_square: [String](cross_reference.md#string)
-- [String](cross_reference.md#string) :white_small_square: [\_\_init__](geono-geono-geonodes.md#__init__)
+- [String](cross_reference.md#string) :white_small_square: [\_\_init__](core-geono-geonodes.md#__init__)
 - [nd](nd.md#nd) :white_small_square: [string](nd.md#string)
 
 #### String Length
@@ -1575,7 +1575,7 @@ You will find here how nodes are implemented
 
 - [nd](nd.md#nd) :white_small_square: [vector](nd.md#vector)
 - [Vector](cross_reference.md#vector) :white_small_square: [Vector](cross_reference.md#vector)
-- [Vector](cross_reference.md#vector) :white_small_square: [\_\_init__](geono-geono-geonodes.md#__init__)
+- [Vector](cross_reference.md#vector) :white_small_square: [\_\_init__](core-geono-geonodes.md#__init__)
 
 #### Vector Curves
 

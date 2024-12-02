@@ -4,7 +4,7 @@
 Tree(tree_name, tree_type='GeometryNodeTree', clear=True, fake_user=False, is_group=False, prefix=None)
 ```
 
-Root class for [GeoNodes](geono-geono-geonodes.md#geonodes) and [ShaderNodes](shade-shade1-shadernodes.md#shadernodes) trees.
+Root class for [GeoNodes](core-geono-geonodes.md#geonodes) and [ShaderNodes](shade-shade1-shadernodes.md#shadernodes) trees.
 
 The system manages a stack of Trees. When a Tree is created, it is placed at the top of the stack
 and becomes the current tree.
@@ -129,7 +129,7 @@ Remove all the nodes in the Tree.
 __init__(tree_name, tree_type='GeometryNodeTree', clear=True, fake_user=False, is_group=False, prefix=None)
 ```
 
-Root class for [GeoNodes](geono-geono-geonodes.md#geonodes) and [ShaderNodes](shade-shade1-shadernodes.md#shadernodes) trees.
+Root class for [GeoNodes](core-geono-geonodes.md#geonodes) and [ShaderNodes](shade-shade1-shadernodes.md#shadernodes) trees.
 
 The system manages a stack of Trees. When a Tree is created, it is placed at the top of the stack
 and becomes the current tree.
