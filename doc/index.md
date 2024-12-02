@@ -15,6 +15,7 @@
 - [GroupF](groupf.md#groupf) : a different way to create a <*Node Group> node
 - [Layout](layout.md#layout) : to place nodes in a frame
 - [Repeat](repeat.md#repeat), [Simulation](simulation.md#simulation) and [ForEachElement](foreachelement.md#foreachelement): create a [Zone](zone.md#zone)
+- Specific node : [ColorRamp](color.md#colorramp)
 
 ### Libraries
 
@@ -91,6 +92,7 @@ Geometries have specific [Domain](domain.md#domain):
   - [CloudPoint](cloudpoint.md#cloudpoint)
   - [Collection](collection.md#collection)
   - [Color](color.md#color)
+  - [ColorRamp](colorramp.md#colorramp)
   - [Corner](corner.md#corner)
   - [Curve](curve.md#curve)
   - [Domain](domain.md#domain)

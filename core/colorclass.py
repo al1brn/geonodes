@@ -32,7 +32,7 @@ import numpy as np
 
 import bpy
 from . import utils
-from .treeclass import Tree, Node
+from .treeclass import Tree, Node, ColorRamp
 from .vectorclass import VectorLike
 
 # =============================================================================================================================
@@ -184,7 +184,7 @@ class Color(VectorLike):
         return Node('Blackbody', {'Temperature': temperature})._out
 
     @classmethod
-    def ColorRamp(cls, fac=None, keep=None):
+    def ColorRamp(cls, fac=None, stops=None):
         """ Constructor : Color Ramp
 
         > Node <&Node Color Ramp>
@@ -192,12 +192,13 @@ class Color(VectorLike):
         Arguments
         ---------
         - fac (Float)
+        - stops (list of tuple(float, tuple)) : stops made of (float, color as tuple of floats)
 
         Returns
         -------
-        - Color [alpha_]
+        - Color
         """
-        return Node('Color Ramp', {'Fac': fac}, _keep=keep)._out
+        return ColorRamp(fac=fac, stops=stops)._out
 
     # ====================================================================================================
     # Properties

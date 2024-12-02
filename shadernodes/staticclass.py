@@ -1710,24 +1710,19 @@ class StaticClass:
 
 
     @classmethod
-    def color_ramp(cls, fac=None, color_ramp=None, stops=None):
+    def color_ramp(cls, fac=None, stops=None):
         """ ShaderNode 'Color Ramp' (ShaderNodeValToRGB)
 
         Arguments
         ---------
         - fac (Float) : socket 'Fac' (Fac)
-        - color_ramp (ColorRamp): Node.color_ramp
         - stops (list of tuple(float, tuple)) : stops made of (float, color as tuple of floats)
 
         Returns
         -------
-        - Node: [color (Color), alpha (Float)]
+        - Node
         """
-
-        node = ColorRamp('Color Ramp', {'Fac': fac}, color_ramp=color_ramp)
-        if stops is not None:
-            node.set_stops(*stops)
-        return node
+        return ColorRamp(fac=fac, stops=stops)
 
 
     @classmethod

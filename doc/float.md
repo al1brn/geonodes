@@ -132,7 +132,7 @@ clamp(min=None, max=None, clamp_type='MINMAX')
 > method
 
 ``` python
-color_ramp(keep=None)
+color_ramp(stops=None)
 ```
 
 > Color Ramp
@@ -140,12 +140,12 @@ color_ramp(keep=None)
 > Node [Color Ramp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/color_ramp.html)
 
 #### Arguments:
-- **keep** ( = None)
+- **stops** (_list of tuple(float, tuple)_ = None) : stops made of (float, color as tuple of floats)
 
 
 
 #### Returns:
-- **Color** : [alpha_]
+- **Color** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
 

@@ -167,6 +167,8 @@ You will find here how nodes are implemented
 - [Float](float.md#float) :white_small_square: [color_ramp](float.md#color_ramp)
 - [Integer](integer.md#integer) :white_small_square: [color_ramp](integer.md#color_ramp)
 - [nd](nd.md#nd) :white_small_square: [color_ramp](nd.md#color_ramp)
+- [ColorRamp](color.md#colorramp) :white_small_square: [ColorRamp](color.md#colorramp)
+- [ColorRamp](color.md#colorramp) :white_small_square: [Impossible to find the section '__init__' in page 'ColorRamp'](color.md#colorramp)
 
 #### Combine Color
 

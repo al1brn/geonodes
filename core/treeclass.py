@@ -1951,10 +1951,26 @@ class GroupF:
 # Specific nodes
 
 class ColorRamp(Node):
-    """ Color ramp node
+    def __init__(self, fac=None, stops=None):
+        """ Color ramp node
 
-    Exposes utilities to manage the color ramp
-    """
+        > Node <&Node Color Ramp>
+
+        Exposes utilities to manage the color ramp
+
+        ``` python
+        ramp1 = Float(.5).color_ramp(stops=[.1, .9])
+        ramp2 = ColorRamp(.5, stops=[(.1, (1, 0, 0)), (.5, 1), (.9, (0, 0, 1))])
+        ```
+
+        Arguments
+        ---------
+        - fac (Float = None)
+        - stops (list of tuple(float, tuple)) : stops made of (float, color as tuple of floats)
+        """
+        super().__init__('Color Ramp', {'Fac': fac})
+        if stops is not None:
+            self.set_stops(*stops)
 
     @property
     def color_ramp(self):
@@ -1968,6 +1984,9 @@ class ColorRamp(Node):
 
     def set_stops(self, *stops):
         """ Set the color ramp stops
+
+        ``` python
+        ramp =
 
         Arguments
         ---------

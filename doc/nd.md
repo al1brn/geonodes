@@ -597,14 +597,14 @@ color(value=None)
 > classmethod
 
 ``` python
-color_ramp(fac=None, color_ramp=None)
+color_ramp(fac=None, stops=None)
 ```
 
 > Node [Color Ramp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/color_ramp.html)
 
 #### Arguments:
 - **fac** (_Float_ = None) : socket 'Fac' (Fac)
-- **color_ramp** (_ColorRamp_ = None) : Node.color_ramp
+- **stops** (_list of tuple(float, tuple)_ = None) : stops made of (float, color as tuple of floats)
 
 
 

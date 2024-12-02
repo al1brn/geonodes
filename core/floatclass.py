@@ -35,7 +35,7 @@ import numpy as np
 
 import bpy
 from . import utils
-from .treeclass import Tree, Node
+from .treeclass import Tree, Node, ColorRamp
 from .socketclass import Attribute
 
 # magic methods
@@ -192,16 +192,21 @@ class IntFloat(Attribute):
         """
         return self.map_range(from_min, from_max, to_min, to_max, clamp=clamp, interpolation_type='SMOOTHERSTEP')
 
-    def color_ramp(self, keep=None):
+    def color_ramp(self, stops=None):
         """ > Color Ramp
 
         > Node <&Node Color Ramp>
 
+        Arguments
+        ---------
+        - stops (list of tuple(float, tuple)) : stops made of (float, color as tuple of floats)
+
+
         Returns
         -------
-        - Color : [alpha_]
+        - Color
         """
-        return Node('Color Ramp', {'Fac': self}, _keep=keep)._out
+        return ColorRamp(fac=self, stops=stops)._out
 
     def to_string(self, decimals=None):
         """ > To String

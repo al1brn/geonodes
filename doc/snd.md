@@ -351,20 +351,19 @@ ShaderNode 'Color Attribute' (ShaderNodeVertexColor)
 > classmethod
 
 ``` python
-color_ramp(fac=None, color_ramp=None, stops=None)
+color_ramp(fac=None, stops=None)
 ```
 
 ShaderNode 'Color Ramp' (ShaderNodeValToRGB)
 
 #### Arguments:
 - **fac** (_Float_ = None) : socket 'Fac' (Fac)
-- **color_ramp** (_ColorRamp_ = None) : Node.color_ramp
 - **stops** (_list of tuple(float, tuple)_ = None) : stops made of (float, color as tuple of floats)
 
 
 
 #### Returns:
-- **Node** : [color (Color), alpha (Float)]
+- **Node** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [snd](snd.md#snd) :black_small_square: [Content](snd.md#content) :black_small_square: [Methods](snd.md#methods)</sub>
 

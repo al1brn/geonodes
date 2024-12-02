@@ -44,7 +44,7 @@ updates
 import numpy as np
 
 import bpy
-from .treeclass import Node
+from .treeclass import Node, ColorRamp
 
 # =============================================================================================================================
 # Static class
@@ -4746,21 +4746,19 @@ class nd:
 
 
     @classmethod
-    def color_ramp(cls, fac=None, color_ramp=None):
+    def color_ramp(cls, fac=None, stops=None):
         """ > Node <&Node Color Ramp>
 
         Arguments
         ---------
         - fac (Float) : socket 'Fac' (Fac)
-        - color_ramp (ColorRamp): Node.color_ramp
+        - stops (list of tuple(float, tuple)) : stops made of (float, color as tuple of floats)
 
         Returns
         -------
         - Node
         """
-
-        node = Node('Color Ramp', {'Fac': fac}, color_ramp=color_ramp)
-        return node
+        return ColorRamp(fac=fac, stops=stops)
 
 
     @classmethod

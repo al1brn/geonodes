@@ -14,6 +14,7 @@ $ DOC toc_max_depth = 1
 - <!GroupF> : a different way to create a <*Node Group> node
 - <!Layout> : to place nodes in a frame
 - <!Repeat>, <!Simulation> and <!ForEachElement>: create a <!Zone>
+- Specific node : <!ColorRamp>
 
 ### Libraries
 
@@ -93,7 +94,7 @@ d270   = np.pi*1.5
 d360   = tau
 e      = np.e
 
-from .core.treeclass import Layout, Break, Tree, Node, Group, GroupF
+from .core.treeclass import Layout, Break, Tree, Node, Group, GroupF, ColorRamp
 from .core.zones import Zone, Repeat, Simulation, ForEachElement
 
 from .core.geonodes import GeoNodes

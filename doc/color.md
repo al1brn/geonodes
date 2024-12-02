@@ -368,7 +368,7 @@ Mix with another color : BURN
 > classmethod
 
 ``` python
-ColorRamp(fac=None, keep=None)
+ColorRamp(fac=None, stops=None)
 ```
 
 Constructor : Color Ramp
@@ -377,7 +377,7 @@ Constructor : Color Ramp
 
 #### Arguments:
 - **fac** (_Float_ = None)
-- **keep** ( = None)
+- **stops** (_list of tuple(float, tuple)_ = None) : stops made of (float, color as tuple of floats)
 
 
 
