@@ -22,6 +22,8 @@
     - [Principled](volumeshader.md#principled)
     - [Scatter](volumeshader.md#scatter)
 - [shadernodes](shade-shade1---shadernodes.md#shadernodes)
+  - [ShaderNodes](shade-shade1-shadernodes.md#shadernodes)
+    - [\_\_init__](shade-shade1-shadernodes.md#__init__)
   - [snd](snd.md#snd)
     - [add_shader](snd.md#add_shader)
     - [ambient_occlusion](snd.md#ambient_occlusion)

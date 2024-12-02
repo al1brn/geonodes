@@ -57,6 +57,8 @@ class snd(StaticClass):
 
 class ShaderNodes(Tree):
     def __init__(self, tree_name: str, clear: bool = True, fake_user: bool = False, is_group: bool = False, prefix: Optional[str] = None):
+        """ > ShaderNodes
+        """
 
         s = """ > Shader Nodes
 
