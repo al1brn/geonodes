@@ -4507,7 +4507,7 @@ class nd:
         - Node
         """
 
-        node = Node('Mix', {'Factor_Float': factor, 'A_Float': a, 'B_Float': b}, blend_type=blend_type, clamp_factor=clamp_factor, clamp_result=clamp_result, data_type=data_type, factor_mode=factor_mode)
+        node = Node('Mix', {'Factor_Float': factor, 'A': a, 'B': b}, blend_type=blend_type, clamp_factor=clamp_factor, clamp_result=clamp_result, data_type=data_type, factor_mode=factor_mode)
         return node
 
 

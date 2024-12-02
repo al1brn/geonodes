@@ -701,7 +701,7 @@ class Socket(NodeCache):
         -------
         - Integer
         """
-        data_type = utils.get_input_type(self, restrict_to=['FLOAT', 'INT', 'VECTOR', 'ROTATION', 'MATRIX', 'STRING', 'RGBA'], default=None)
+        data_type = utils.get_input_type(self, restrict_to=['FLOAT', 'INT', 'VECTOR', 'ROTATION', 'MATRIX', 'STRING', 'RGBA'], default='INT')
         return Node('Hash Value', {'Value': self, 'Seed': seed}, data_type=data_type)._out
 
     # ====================================================================================================
@@ -714,7 +714,7 @@ class Socket(NodeCache):
 
         import inspect
         import re
-        from geonodes.geonodes import constants
+        from geonodes.core import constants
 
         tree = None
 

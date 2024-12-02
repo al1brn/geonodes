@@ -1224,7 +1224,7 @@ ShaderNode 'Point Density' (ShaderNodeTexPointDensity)
 > classmethod
 
 ``` python
-position(attribute_type: str = 'GEOMETRY') -> geonodes.geonodes.treeclass.Node
+position(attribute_type: str = 'GEOMETRY') -> geonodes.core.treeclass.Node
 ```
 
 Node 'Attribute' (ShaderNodeAttribute)
@@ -1551,7 +1551,7 @@ ShaderNode 'Shader to RGB' (ShaderNodeShaderToRGB)
 > classmethod
 
 ``` python
-sharp_face(attribute_type: str = 'GEOMETRY') -> geonodes.geonodes.treeclass.Node
+sharp_face(attribute_type: str = 'GEOMETRY') -> geonodes.core.treeclass.Node
 ```
 
 Node 'Attribute' (ShaderNodeAttribute)
@@ -1818,7 +1818,7 @@ ShaderNode 'UV Along Stroke' (ShaderNodeUVAlongStroke)
 > classmethod
 
 ``` python
-uvmap(attribute_type: str = 'GEOMETRY') -> geonodes.geonodes.treeclass.Node
+uvmap(attribute_type: str = 'GEOMETRY') -> geonodes.core.treeclass.Node
 ```
 
 Node 'Attribute' (ShaderNodeAttribute)

@@ -29,9 +29,9 @@ updates
 import numpy as np
 
 import bpy
-from ..geonodes import utils
-from ..geonodes.treeclass import Tree, Node
-from ..geonodes.socketclass import Attribute
+from ..core import utils
+from ..core.treeclass import Tree, Node
+from ..core.socketclass import Attribute
 
 # =============================================================================================================================
 # Shader Root
@@ -215,4 +215,3 @@ class VolumeShader(ShaderRoot):
 
         node = Node('Volume Scatter', {'Color': color, 'Density': density, 'Anisotropy': anisotropy})
         return cls(node._out)
-

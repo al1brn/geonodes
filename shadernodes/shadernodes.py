@@ -28,8 +28,8 @@ updates
 from typing import Callable, Any, Iterable, List, Optional
 
 from .staticclass import StaticClass
-from ..geonodes.treeclass import Tree, Node
-from ..geonodes.scripterror import NodeError
+from ..core.treeclass import Tree, Node
+from ..core.scripterror import NodeError
 
 class snd(StaticClass):
 
@@ -166,4 +166,3 @@ class ShaderNodes(Tree):
 
     def aov_output(self, name: Optional[str] =None, color: Optional[Any] =None, value: Optional[Any] =None) -> None:
         node = Node('AOV Output', {'Color': color, 'Value': value}, aov_name=name)
-

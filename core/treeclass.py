@@ -798,7 +798,7 @@ class Tree:
     @staticmethod
     def get_data_socket_class(socket_type):
 
-        from geonodes.geonodes import Boolean, Integer, Float, Vector, Rotation, Matrix, Color, Geometry, Material, Image, Object, Collection, String, Menu
+        from geonodes.core import Boolean, Integer, Float, Vector, Rotation, Matrix, Color, Geometry, Material, Image, Object, Collection, String, Menu
 
         socket_class = {'BOOLEAN': Boolean, 'INT': Integer, 'VALUE': Float, 'VECTOR': Vector, 'ROTATION': Rotation, 'MATRIX': Matrix, 'RGBA': Color,
             'STRING': String, 'MENU': Menu,
@@ -1215,21 +1215,40 @@ class Node:
 
     def inout_socket(self, name, bsockets, halt):
 
+        INT_ENABLED = True
+
+        counter = 0
+        ok_counter = False
+
         if isinstance(name, int):
-            return bsockets[name]
+            if INT_ENABLED:
+                ok_counter = True
+                counter = name
+            else:
+                return bsockets[name]
 
         disabled_bsocket = None
         bsocket = None
         for bsock in bsockets:
-            if name in [bsock.name, bsock.identifier, utils.socket_name(bsock.name)]:
+            match = False
+            if ok_counter:
+                match = counter == 0
+            else:
+                match = name in [bsock.name, bsock.identifier, utils.socket_name(bsock.name)]
+
+            if match:
                 if bsock.enabled:
                     bsocket = bsock
                     break
                 else:
                     disabled_bsocket = bsock
 
+            if bsock.enabled:
+                counter -= 1
+
         if bsocket is None:
-            bsocket = disabled_bsocket
+            if not ok_counter:
+                bsocket = disabled_bsocket
 
         if halt and bsocket is None:
             valids = [f"{'x' if sock.enabled else 'o'} {sock.name}" for sock in bsockets]
@@ -1926,3 +1945,66 @@ class GroupF:
                 return f
 
         raise AttributeError(f"Impossible to find the group named '{name}'")
+
+
+# =============================================================================================================================
+# Specific nodes
+
+class ColorRamp(Node):
+    """ Color ramp node
+
+    Exposes utilities to manage the color ramp
+    """
+
+    @property
+    def color_ramp(self):
+        """ Returns the node color_ramp structure
+
+        Returns
+        -------
+        - bpy.types.ColorRamp
+        """
+        return self._bnode.color_ramp
+
+    def set_stops(self, *stops):
+        """ Set the color ramp stops
+
+        Arguments
+        ---------
+        - stops : list of tuple (position, color)
+        """
+
+        if len(stops) == 0:
+            return
+
+        elements = self.color_ramp.elements
+        for i, stop in enumerate(stops):
+            position : float
+            color    : tuple = None
+            if isinstance(stop, (tuple, list)):
+                if len(stop) == 2:
+                    position = stop[0]
+                    color    = stop[1]
+                else:
+                    raise NodeError(f"ColorRamp set_stops error: stops must be tuple(position, color) or single position, not {stop}")
+
+            else:
+                position = stop
+
+            if color is not None:
+                if hasattr(color, '__len__'):
+                    if len(color) == 3:
+                        color = color + (1,)
+                else:
+                    color = tuple(np.resize(color, 3)) + (1,)
+
+            if i < len(elements):
+                elements[i].position = position
+            else:
+                elements.new(position)
+
+            if color is not None:
+                elements[i].color = color
+
+        for i in range(len(stops), len(elements)):
+            elements.remove(elements[-1])

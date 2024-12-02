@@ -56,8 +56,8 @@ from .staticclass_gn import nd
 """
 
 from .treeclass import Tree
-from geonodes.geonodes import constants
-from geonodes.geonodes.scripterror import NodeError
+from geonodes.core import constants
+from geonodes.core.scripterror import NodeError
 
 class GeoNodes(Tree):
     def __init__(self, tree_name, clear=True, fake_user=False, is_group=False, prefix=None):

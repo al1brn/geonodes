@@ -28,7 +28,7 @@ updates
 import bpy
 
 from geonodes import *
-from geonodes.geonodes import utils
+from geonodes.core import utils
 
 # ----- Prefixes
 

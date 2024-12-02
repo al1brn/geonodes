@@ -52,7 +52,7 @@ updates
 import numpy as np
 
 import bpy
-from ..geonodes.treeclass import Node
+from ..core.treeclass import Node, ColorRamp
 
 def get_object(obj):
     if obj is None:
@@ -964,7 +964,7 @@ class StaticClass:
         - Node: [result (Float), result (Vector), result (Color), result (Rotation)]
         """
 
-        node = Node('Mix', {'Factor_Float': factor, 'A_Float': a, 'B_Float': b}, blend_type=blend_type, clamp_factor=clamp_factor, clamp_result=clamp_result, data_type=data_type, factor_mode=factor_mode)
+        node = Node('Mix', {'Factor_Float': factor, 'A': a, 'B': b}, blend_type=blend_type, clamp_factor=clamp_factor, clamp_result=clamp_result, data_type=data_type, factor_mode=factor_mode)
         return node
 
 
@@ -1710,20 +1710,23 @@ class StaticClass:
 
 
     @classmethod
-    def color_ramp(cls, fac=None, color_ramp=None):
+    def color_ramp(cls, fac=None, color_ramp=None, stops=None):
         """ ShaderNode 'Color Ramp' (ShaderNodeValToRGB)
 
         Arguments
         ---------
         - fac (Float) : socket 'Fac' (Fac)
         - color_ramp (ColorRamp): Node.color_ramp
+        - stops (list of tuple(float, tuple)) : stops made of (float, color as tuple of floats)
 
         Returns
         -------
         - Node: [color (Color), alpha (Float)]
         """
 
-        node = Node('Color Ramp', {'Fac': fac}, color_ramp=color_ramp)
+        node = ColorRamp('Color Ramp', {'Fac': fac}, color_ramp=color_ramp)
+        if stops is not None:
+            node.set_stops(*stops)
         return node
 
 
