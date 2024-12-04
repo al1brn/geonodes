@@ -425,9 +425,31 @@ class NodeInfo:
             if not sock_name in self.input_sockets:
                 raise Exception(f"Socket '{sock_name}' doesn't exist in node '{self.bnode.name}': {list(self.input_sockets.keys())}")
 
+        # ----- Multi input
+
+        multi_input_socket = None
+        for bsock in self.bnode.inputs:
+            if bsock.is_multi_input:
+                multi_input_socket = bsock.name
+
+                arg_name = utils.socket_name(bsock.name)
+                if self_socket == bsock.name:
+                    in_sockets[bsock.name] = f"[self] + list({arg_name})"
+                else:
+                    in_sockets[bsock.name] = f"list({arg_name})"
+                arg_help.append(f"{arg_name} ({constants.CLASS_NAMES[bsock.type]}) : multi input socket '{bsock.name}'")
+
+                header.append(f"*{arg_name}")
+
+                break
+
         # ----- Loop on the sockets
 
         for (sock_name, sock_num), sock_id in self.input_sockets.items():
+
+            # Already done
+            if sock_name == multi_input_socket:
+                continue
 
             bsocket = self.get_input_socket(sock_name, sock_num)
             arg_name = utils.socket_name(sock_name)
@@ -470,100 +492,12 @@ class NodeInfo:
             'has_items'  : len(in_sockets) > 0,
             'in_sockets' : in_sockets,
             'header'     : header,
-            'header_str' : ", ".join([f"{pyname}=None" for pyname in header]),
+            'header_str' : ", ".join([pyname if pyname.startswith('*') else f"{pyname}=None" for pyname in header]),
             'call_str'   : "{" + ", ".join([f"'{socket_name}': {pyname}" for socket_name, pyname in in_sockets.items()]) + "}",
             'arg_help'   : arg_help,
             'info_help'  : info_help,
         }
 
-
-    def get_sockets_OLD(self, self_socket=None, expose_selection=True, ignore_sockets=[]):
-
-        in_sockets = {}
-        counter    = {}
-        header     = []
-        ok_self    = True
-        arg_help   = []
-        info_help  = []
-
-        # ----- Check consistency
-
-        for sock_name in ignore_sockets:
-            if not sock_name in self.bnode.inputs.keys():
-                raise Exception(f"Socket '{sock_name}' doesn't exist in node '{self.bnode.name}': {list(self.bnode.inputs.keys())}")
-
-        # ----- Only enabled sockets
-
-        enableds = [bsocket for bsocket in self.bnode.inputs if bsocket.enabled and bsocket.type != 'CUSTOM']
-
-        # ----- We use identifier if we have homonyms
-
-        use_identifier = False
-        for i, bsock in enumerate(enableds):
-            for bs in enableds[i+1:]:
-                if bsock.name == bs.name:
-                    use_identifier = True
-                    break
-
-        # ----- Loop on the sockets
-
-
-        for bsocket in enableds:
-
-            sock_id = bsocket.identifier if use_identifier else bsocket.name
-
-            if bsocket.name == self_socket and ok_self:
-                if bsocket.type == 'GEOMETRY':
-                    in_sockets[sock_id] = 'self._geo'
-                else:
-                    in_sockets[sock_id] = 'self'
-                ok_self = False
-
-                #arg_help.append(f"self : socket {bsocket.name} ({bsocket.identifier})")
-                info_help.append(f"Socket '{bsocket.name}' : self")
-
-            elif bsocket.name == 'Selection' and not expose_selection:
-                in_sockets[sock_id] = 'self._sel'
-                #arg_help.append(f"[...] : socket 'Selection' ({bsocket.identifier})")
-                info_help.append("Socket 'Selection' : self[selection]")
-
-            elif bsocket.name in ignore_sockets:
-                info_help.append(f"Socket '{bsocket.name}' : ignored")
-
-            else:
-                pyname = utils.socket_name(bsocket.name)
-                if pyname in counter:
-                    counter[pyname] += 1
-                    pyname += f"_{counter[pyname]}"
-
-                elif pyname in self.params.keys():
-                    if pyname in counter:
-                        counter[pyname] += 1
-                    else:
-                        counter[pyname] = 1
-                    pyname += f"_{counter[pyname]}"
-
-                else:
-                    counter[pyname] = 0
-
-                in_sockets[sock_id] = pyname
-                header.append(pyname)
-
-                # Comment
-                socket_type = constants.CLASS_NAMES[bsocket.type]
-                #arg_help.append(f"{pyname} ({socket_type}) : socket '{bsocket.name}' ({bsocket.identifier})")
-                sid = f" (id: '{bsocket.identifier}')" if use_identifier else ""
-                arg_help.append(f"{pyname} ({socket_type}) : socket '{bsocket.name}'{sid}")
-
-        return {
-            'has_items'  : len(in_sockets) > 0,
-            'in_sockets' : in_sockets,
-            'header'     : header,
-            'header_str' : ", ".join([f"{pyname}=None" for pyname in header]),
-            'call_str'   : "{" + ", ".join([f"'{socket_name}': {pyname}" for socket_name, pyname in in_sockets.items()]) + "}",
-            'arg_help'   : arg_help,
-            'info_help'  : info_help,
-        }
 
     # -----------------------------------------------------------------------------------------------------------------------------
     # Parameters
@@ -650,10 +584,13 @@ class NodeInfo:
         items = []
         if method_type in ['METHOD', 'PROPERTY_SET', 'PROPERTY_GET']:
             items.append("self")
+
         elif method_type in ['CLASS', 'CLASS_PROPERTY']:
             items.append("cls")
+
         elif method_type == 'STATIC':
             pass
+
         else:
             raise Exception(f"Unknown method_type '{method_type}'")
 
@@ -922,6 +859,72 @@ class NodeInfo:
             return source_code, test
         else:
             return source_code
+
+    # ====================================================================================================
+    # Default implementation
+
+    def default_implementation(self):
+
+        has_data_type = 'data_type' in self.params
+        has_domain    = 'domain' in self.params
+        has_selection = 'Selection' in [bsock.name for bsock in self.bnode.inputs]
+        func_name     = utils.socket_name(self.bnode.name)
+
+        # ----- Input class
+
+        input_class = None
+        for bsock in self.bnode.inputs:
+            if bsock.type == 'CUSTOM':
+                continue
+            input_class = constants.CLASS_NAMES[bsock.type]
+            break
+
+        # ----- Output class
+
+        output_class = None
+        for bsock in self.bnode.outputs:
+            if bsock.type == 'CUSTOM':
+                continue
+            output_class = constants.CLASS_NAMES[bsock.type]
+            break
+
+        # ----- Number of "free" sockets or parameters
+
+        free_params = []
+        for bsock in self.bnode.inputs:
+            if bsock.name == input_class or bsock.name == 'Selection':
+                continue
+            free_params.append(bsock.name)
+
+        for param in self.params:
+            if param in ['data_type', 'domain']:
+                continue
+            free_params.append(param)
+
+        print("Implementation of:", self.bnode.name)
+        print("   Default implementation name:", func_name)
+
+        # ----- No input : constructor
+
+        if input_class is None:
+            print("   Constructor or", output_class)
+
+        else:
+            jump = False
+            if input_class == 'Geometry' and output_class == 'Geometry' and not self.has_multi_input:
+                jump = True
+
+            if jump:
+                if len(free_params) == 1:
+                    name = func_name[4:] if func_name.startswith('set_') else func_name
+                    print(f"   {name}: SET property of", input_class, ':', free_params[0])
+                else:
+                    print("   Jump method of", input_class)
+            else:
+                print("   Method of", input_class)
+
+            if has_domain:
+                print("   Domain method: ", self.enum_params['domain'])
 
     # ====================================================================================================
     # Utilities

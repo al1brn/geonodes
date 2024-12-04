@@ -3913,18 +3913,18 @@ class nd(CommonStatic):
 
 
     @classmethod
-    def geometry_to_instance(cls, geometry=None):
+    def geometry_to_instance(cls, *geometry):
         """ > Node <&Node Geometry to Instance>
 
         Arguments
         ---------
-        - geometry (Geometry) : socket 'Geometry'
+        - geometry (Geometry) : multi input socket 'Geometry'
 
         Returns
         -------
         - Geometry
         """
-        node = Node('Geometry to Instance', {'Geometry': geometry})
+        node = Node('Geometry to Instance', {'Geometry': list(geometry)})
         return node._out
 
 
@@ -3948,12 +3948,12 @@ class nd(CommonStatic):
 
 
     @classmethod
-    def dial_gizmo(cls, value=None, position=None, up=None, screen_space=None, radius=None, color_id='PRIMARY'):
+    def dial_gizmo(cls, *value, position=None, up=None, screen_space=None, radius=None, color_id='PRIMARY'):
         """ > Node <&Node Dial Gizmo>
 
         Arguments
         ---------
-        - value (Float) : socket 'Value'
+        - value (Float) : multi input socket 'Value'
         - position (Vector) : socket 'Position'
         - up (Vector) : socket 'Up'
         - screen_space (Boolean) : socket 'Screen Space'
@@ -3964,17 +3964,17 @@ class nd(CommonStatic):
         -------
         - Geometry
         """
-        node = Node('Dial Gizmo', {'Value': value, 'Position': position, 'Up': up, 'Screen Space': screen_space, 'Radius': radius}, color_id=color_id)
+        node = Node('Dial Gizmo', {'Value': list(value), 'Position': position, 'Up': up, 'Screen Space': screen_space, 'Radius': radius}, color_id=color_id)
         return node._out
 
 
     @classmethod
-    def linear_gizmo(cls, value=None, position=None, direction=None, color_id='PRIMARY', draw_style='ARROW'):
+    def linear_gizmo(cls, *value, position=None, direction=None, color_id='PRIMARY', draw_style='ARROW'):
         """ > Node <&Node Linear Gizmo>
 
         Arguments
         ---------
-        - value (Float) : socket 'Value'
+        - value (Float) : multi input socket 'Value'
         - position (Vector) : socket 'Position'
         - direction (Vector) : socket 'Direction'
         - color_id (str): parameter 'color_id' in ('PRIMARY', 'SECONDARY', 'X', 'Y', 'Z')
@@ -3984,17 +3984,17 @@ class nd(CommonStatic):
         -------
         - Geometry
         """
-        node = Node('Linear Gizmo', {'Value': value, 'Position': position, 'Direction': direction}, color_id=color_id, draw_style=draw_style)
+        node = Node('Linear Gizmo', {'Value': list(value), 'Position': position, 'Direction': direction}, color_id=color_id, draw_style=draw_style)
         return node._out
 
 
     @classmethod
-    def transform_gizmo(cls, value=None, position=None, rotation=None, use_rotation_x=True, use_rotation_y=True, use_rotation_z=True, use_scale_x=True, use_scale_y=True, use_scale_z=True, use_translation_x=True, use_translation_y=True, use_translation_z=True):
+    def transform_gizmo(cls, *value, position=None, rotation=None, use_rotation_x=True, use_rotation_y=True, use_rotation_z=True, use_scale_x=True, use_scale_y=True, use_scale_z=True, use_translation_x=True, use_translation_y=True, use_translation_z=True):
         """ > Node <&Node Transform Gizmo>
 
         Arguments
         ---------
-        - value (Matrix) : socket 'Value'
+        - value (Matrix) : multi input socket 'Value'
         - position (Vector) : socket 'Position'
         - rotation (Rotation) : socket 'Rotation'
         - use_rotation_x (bool): parameter 'use_rotation_x'
@@ -4011,7 +4011,7 @@ class nd(CommonStatic):
         -------
         - Geometry
         """
-        node = Node('Transform Gizmo', {'Value': value, 'Position': position, 'Rotation': rotation}, use_rotation_x=use_rotation_x, use_rotation_y=use_rotation_y, use_rotation_z=use_rotation_z, use_scale_x=use_scale_x, use_scale_y=use_scale_y, use_scale_z=use_scale_z, use_translation_x=use_translation_x, use_translation_y=use_translation_y, use_translation_z=use_translation_z)
+        node = Node('Transform Gizmo', {'Value': list(value), 'Position': position, 'Rotation': rotation}, use_rotation_x=use_rotation_x, use_rotation_y=use_rotation_y, use_rotation_z=use_rotation_z, use_scale_x=use_scale_x, use_scale_y=use_scale_y, use_scale_z=use_scale_z, use_translation_x=use_translation_x, use_translation_y=use_translation_y, use_translation_z=use_translation_z)
         return node._out
 
 
@@ -4691,18 +4691,18 @@ class nd(CommonStatic):
 
 
     @classmethod
-    def join_geometry(cls, geometry=None):
+    def join_geometry(cls, *geometry):
         """ > Node <&Node Join Geometry>
 
         Arguments
         ---------
-        - geometry (Geometry) : socket 'Geometry'
+        - geometry (Geometry) : multi input socket 'Geometry'
 
         Returns
         -------
         - Geometry
         """
-        node = Node('Join Geometry', {'Geometry': geometry})
+        node = Node('Join Geometry', {'Geometry': list(geometry)})
         return node._out
 
 
@@ -4782,13 +4782,13 @@ class nd(CommonStatic):
 
 
     @classmethod
-    def mesh_boolean(cls, mesh_1=None, mesh_2=None, self_intersection=None, hole_tolerant=None, operation='DIFFERENCE', solver='FLOAT'):
+    def mesh_boolean(cls, *mesh_2, mesh_1=None, self_intersection=None, hole_tolerant=None, operation='DIFFERENCE', solver='FLOAT'):
         """ > Node <&Node Mesh Boolean>
 
         Arguments
         ---------
+        - mesh_2 (Geometry) : multi input socket 'Mesh 2'
         - mesh_1 (Geometry) : socket 'Mesh 1'
-        - mesh_2 (Geometry) : socket 'Mesh 2'
         - self_intersection (Boolean) : socket 'Self Intersection'
         - hole_tolerant (Boolean) : socket 'Hole Tolerant'
         - operation (str): parameter 'operation' in ('INTERSECT', 'UNION', 'DIFFERENCE')
@@ -4798,7 +4798,7 @@ class nd(CommonStatic):
         -------
         - Node : 'Mesh Boolean'
         """
-        node = Node('Mesh Boolean', {'Mesh 1': mesh_1, 'Mesh 2': mesh_2, 'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, operation=operation, solver=solver)
+        node = Node('Mesh Boolean', {'Mesh 2': list(mesh_2), 'Mesh 1': mesh_1, 'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, operation=operation, solver=solver)
         return node
 
 
@@ -5421,20 +5421,20 @@ class nd(CommonStatic):
 
 
     @classmethod
-    def sdf_grid_boolean(cls, grid_1=None, grid_2=None, operation='DIFFERENCE'):
+    def sdf_grid_boolean(cls, *grid_2, grid_1=None, operation='DIFFERENCE'):
         """ > Node <&Node SDF Grid Boolean>
 
         Arguments
         ---------
+        - grid_2 (Float) : multi input socket 'Grid 2'
         - grid_1 (Float) : socket 'Grid 1'
-        - grid_2 (Float) : socket 'Grid 2'
         - operation (str): parameter 'operation' in ('INTERSECT', 'UNION', 'DIFFERENCE')
 
         Returns
         -------
         - Float
         """
-        node = Node('SDF Grid Boolean', {'Grid 1': grid_1, 'Grid 2': grid_2}, operation=operation)
+        node = Node('SDF Grid Boolean', {'Grid 2': list(grid_2), 'Grid 1': grid_1}, operation=operation)
         return node._out
 
 
@@ -6083,19 +6083,19 @@ class nd(CommonStatic):
 
 
     @classmethod
-    def join_strings(cls, delimiter=None, strings=None):
+    def join_strings(cls, *strings, delimiter=None):
         """ > Node <&Node Join Strings>
 
         Arguments
         ---------
+        - strings (String) : multi input socket 'Strings'
         - delimiter (String) : socket 'Delimiter'
-        - strings (String) : socket 'Strings'
 
         Returns
         -------
         - String
         """
-        node = Node('Join Strings', {'Delimiter': delimiter, 'Strings': strings})
+        node = Node('Join Strings', {'Strings': list(strings), 'Delimiter': delimiter})
         return node._out
 
 

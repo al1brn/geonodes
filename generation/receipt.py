@@ -67,6 +67,8 @@ def receipt(demos = True):
     print('='*100)
     print()
 
+    test_statics()
+
     print("Base receipt...")
     Tree._reset_counters()
     print("All nodes receipts")

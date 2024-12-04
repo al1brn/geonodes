@@ -17,7 +17,7 @@ def demo():
         with Layout("Size gizmos"):
 
             val1, val2, val3 = Float(1), Float(2), Float(3)
-            gizmo = Gizmo.Linear(val1, val1, val3)
+            gizmo = Gizmo.linear(val1, val1, val3)
 
             xg = x.linear_gizmo(position=(x/2*scale, 0, 0), direction=(1, 0, 0), color_id='X')
             x.pin_gizmo = True
@@ -41,6 +41,6 @@ def demo():
             matrix.transform_gizmo(use_translation_x=False, use_translation_y=False, use_translation_z=False, use_scale_x=False, use_scale_y=False, use_scale_z=False)
             matrix.pin_gizmo = True
 
-            cube.transform(matrix=matrix)
+            cube.transform(transform=matrix)
 
         cube.out()
