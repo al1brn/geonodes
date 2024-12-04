@@ -15,7 +15,8 @@ e      = np.e
 from .treeclass import Layout, Break, Tree, Node, Group, GroupF, ColorRamp
 from .geonodes import GeoNodes
 
-from .staticclass import nd
+from .allnodes import nd
+#from .staticclass import nd
 from . import gnmath
 
 from .socketclass import Socket, String, Material, Image, Object, Collection, Menu

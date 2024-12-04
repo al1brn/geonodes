@@ -554,5 +554,8 @@ NODE_NAMES = {
     'volume scatter'          : 'ShaderNodeVolumeScatter',
     'wavelength'              : 'ShaderNodeWavelength',
     'wireframe'               : 'ShaderNodeWireframe',
+    # Blender 4.3
+    'metallic bsdf'           : 'ShaderNodeBsdfMetallic',
+    'gabor texture'           : 'ShaderNodeTexGabor',
     },
 }

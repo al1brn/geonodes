@@ -98,7 +98,7 @@ from .treeclass import Tree, Node, Layout
 from .socketclass import NodeCache, Socket
 from .booleanclass import Boolean
 from .floatclass import Float
-from .staticclass import nd
+from .allnodes import nd
 
 # =============================================================================================================================
 # =============================================================================================================================

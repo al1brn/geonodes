@@ -99,7 +99,8 @@ from .core.zones import Zone, Repeat, Simulation, ForEachElement
 
 from .core.geonodes import GeoNodes
 
-from .core.staticclass import nd
+#from .core.staticclass import nd
+from .core.allnodes import nd
 from .core import gnmath
 
 from .core.gizmoclass import Gizmo
@@ -117,7 +118,8 @@ from .core.geometryclass import Domain, Vertex, Edge, Face, Corner, SplinePoint,
 # ----------------------------------------------------------------------------------------------------
 # Shader
 
-from .shadernodes.shadernodes import ShaderNodes, snd
+from .core.allnodes import snd
+from .shadernodes.shadernodes import ShaderNodes #, snd
 from .shadernodes.shaderclass import Shader, VolumeShader
 
 # ----------------------------------------------------------------------------------------------------

@@ -342,6 +342,9 @@ def get_blender_resource(socket_type, value):
     else:
         return spec['coll'].get(value)
 
+def get_object(value):
+    return get_blender_resource('OBJECT', value)
+
 # =============================================================================================================================
 # Get a python value compatible with socket default_value
 

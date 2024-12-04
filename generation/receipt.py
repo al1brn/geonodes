@@ -1,9 +1,30 @@
+import inspect
+
 from geonodes import Tree
 from .gentestmodifiers import demo
 from geonodes.demos import arrows, counters, curly, explosion, fields, fourd, gravity, helloworld, rain, relativity, shaders
 from geonodes.demos import forest, gizmo
 
 from geonodes import *
+
+# =============================================================================================================================
+# Test the static nodes
+
+def test_statics():
+    print('-'*60)
+    print("Test static classes")
+    print()
+
+    print("Shader...")
+    snd._receipt_shader()
+    print("Modifier...")
+    nd._receipt_modifier()
+    print("Tool...")
+    nd._receipt_tool()
+
+    print("Done")
+    print()
+
 
 def run_tests():
 

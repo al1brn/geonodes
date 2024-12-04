@@ -504,6 +504,8 @@ class Frame(Node):
         if Node.has_node_editor:
             return self.bnode.dimensions
 
+        W0, W1, H0, H1 = 0, 400, 0, 400
+
         for inode, node in enumerate(self.children):
 
             ndim = node.dimensions
@@ -951,6 +953,11 @@ class Tree(Frame):
             if link.node0 == node or link.node1 == node:
                 raise Exception(f"Impossible to delete  node {node}, links still exist")
 
+        if self.input_node == node:
+            self.input_node = None
+        if self.output_node == node:
+            self.output_node = None
+
         del self.nodes[node.bnode.name]
         self.btree.nodes.remove(node.bnode)
 
@@ -1033,6 +1040,7 @@ class Tree(Frame):
 
         for node in inputs[1:]:
             self.del_node(node)
+            self.input_node = None
 
         group_input.bnode.parent = None
 
@@ -1097,6 +1105,9 @@ class Tree(Frame):
 
         for node in self.nodes.values():
             if node.bnode.bl_idname not in ZONE_INPUTS:
+                continue
+
+            if node.bnode.paired_output is None:
                 continue
 
             zone_input  = node

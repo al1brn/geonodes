@@ -1,6 +1,6 @@
 from pprint import pprint
 
-from ..geonodes import utils
+from ..core import utils
 
 class Mapping:
 

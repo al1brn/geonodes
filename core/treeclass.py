@@ -1302,7 +1302,7 @@ class Node:
         """
 
         for bsock in self._bnode.outputs:
-            if bsock.enabled:
+            if bsock.enabled and bsock.type != 'CUSTOM':
                 return self.data_socket(bsock)
         return None
 
