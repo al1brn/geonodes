@@ -1,5 +1,181 @@
-
+from random import Random
 from geonodes import *
+
+# =============================================================================================================================
+# Split segments
+
+def split_segments():
+
+    with GeoNodes("Split Segments"):
+
+        sides       = Integer(3, "Sides", min=3, max=10)
+        iterations  = Integer(5, "Iterations", min=0, max=10)
+        external    = Boolean(True, "External")
+        noise_scale = Float(0, "Noise Scale")
+        seed        = Integer(0, "Seed")
+
+        triangle = Mesh.Circle(vertices=sides)
+        angle = Float(pi/3).switch(external, -pi/3)
+
+        with Repeat(triangle=triangle, seed=seed, iterations=iterations) as rep:
+
+            rep.seed = rep.seed.hash_value(rep.iteration)
+
+            node = nd.edge_vertices
+            with rep.triangle.edges.for_each(p1=node.position_1, p2=node.position_2) as feel:
+
+                new_edges = Mesh.Line(start_location=feel.p1, end_location=feel.p2, count=5)
+                v = (feel.p2 - feel.p1)/3
+
+                ns = noise_scale * v.length
+                noise_vector = Vector((ns, ns, 0))
+
+                new_edges.points[1].position = feel.p1 + v + Float.Random(-noise_vector, noise_vector, rep.seed)
+                new_edges.points[3].position = feel.p2 - v  + Float.Random(-noise_vector, noise_vector, rep.seed + 1)
+
+                w = Rotation((0, 0, angle)) @ v
+                new_edges.points[2].position = feel.p1 + v + w  + Float.Random(-noise_vector, noise_vector, rep.seed + 2)
+
+                feel.generated.geometry = new_edges
+
+            rep.triangle = feel.generated.geometry
+
+        rep.triangle.out()
+
+# =============================================================================================================================
+# Sierpinski triangle
+
+def sierpinski():
+
+    with GeoNodes("Sierpinski"):
+
+        iterations  = Integer(5, "Iterations", min=0, max=10)
+        rotation    = Float.Factor(0, "Rotation", min=-1, max=1)
+        noise_scale = Float(0, "Noise Scale")
+        seed        = Integer(0, "Seed")
+
+        triangle = Mesh.Circle(vertices=3, fill_type='NGON')
+
+        with Repeat(triangle=triangle, seed=seed, iterations=iterations) as rep:
+
+            rep.seed = rep.seed.hash_value(rep.iteration)
+
+            i0 = nd.offset_corner_in_face(nd.corners_of_face().corner_index, offset=0)
+            i1 = nd.offset_corner_in_face(nd.corners_of_face().corner_index, offset=1)
+            i2 = nd.offset_corner_in_face(nd.corners_of_face().corner_index, offset=2)
+
+            p0 = rep.triangle.points.sample_index(nd.position, nd.vertex_of_corner(i0))
+            p1 = rep.triangle.points.sample_index(nd.position, nd.vertex_of_corner(i1))
+            p2 = rep.triangle.points.sample_index(nd.position, nd.vertex_of_corner(i2))
+
+            with rep.triangle.faces.for_each(p0=p0, p1=p1, p2=p2, seed=rep.seed) as feel:
+
+                sn = (p1 - p0).length*noise_scale
+                nv1 = Vector((sn, sn, 0))
+                nv0 = -nv1
+
+                #p0 = feel.p0 + Vector.Random(nv0, nv1, feel.seed)
+                #p1 = feel.p1 + Vector.Random(nv0, nv1, feel.seed + 1)
+                #p2 = feel.p2 + Vector.Random(nv0, nv1, feel.seed + 2)
+
+                p0, p1, p2 = feel.p0, feel.p1, feel.p2
+
+                f = .5 + rotation/2
+                f_ = 1 - f
+
+                q0 = (f*p0 + f_*p1)._lc("q0")
+                q1 = (f*p1 + f_*p2)._lc("q1")
+                q2 = (f*p2 + f_*p0)._lc("q2")
+
+                q0 += Vector.Random(nv0, nv1, feel.seed)
+                q1 += Vector.Random(nv0, nv1, feel.seed + 1)
+                q2 += Vector.Random(nv0, nv1, feel.seed + 2)
+
+                tri0 = Mesh.Circle(vertices=3, fill_type='NGON')
+                tri0.points[0].position = p0
+                tri0.points[1].position = q0
+                tri0.points[2].position = q2
+
+                tri1 = Mesh(tri0)
+                tri1.points[0].position = q0
+                tri1.points[1].position = p1
+                tri1.points[2].position = q1
+
+                tri2 = Mesh(tri0)
+                tri2.points[0].position = q1
+                tri2.points[1].position = p2
+                tri2.points[2].position = q2
+
+
+                feel.generated.geometry = tri0.join(tri1, tri2)
+
+
+            rep.triangle = feel.generated.geometry
+
+
+        rep.triangle.out()
+
+# =============================================================================================================================
+# Fern
+
+def fern():
+
+    with GeoNodes("Fern"):
+
+        iterations   = Integer(5, "Iterations", min=0, max=10)
+        angle        = Float.Angle(pi/20, "Grow Angle")
+        grow_factor  = Float.Factor(.9, "Grow Factor", min=.01, max=.99)
+        sub_angle    = Float.Angle(pi/5, "Sub Angle")
+        sub_factor   = Float.Factor(.3, "Sub Factor", min=.01, max=.99)
+        angle_noise  = Float(0, "Angle Noise")
+        factor_noise = Float(0, "Factor Noise")
+        seed         = Integer(0, "Seed")
+
+        leaf = Mesh.Line(start_location=0, end_location=(1, 0, 0), count=2)
+        leaf.edges.store("Use", True)
+
+        with Repeat(leaf=leaf, seed=seed, iterations=iterations) as rep:
+
+            rep.seed = rep.seed.hash_value(rep.iteration)
+
+            node = nd.edge_vertices
+            with rep.leaf.edges.for_each(p1=node.position_1, p2=node.position_2, seed=rep.seed) as feel:
+
+                hv = rep.seed.hash_value(feel.index)
+
+                v = feel.p2 - feel.p1
+                l = v.length
+
+                edge = Mesh(feel.element)
+                extrude = edge.edges.sample_index(Boolean.Named("Use"), 0)
+
+                loop_angle  = angle       + Float.Random(-angle*angle_noise, angle*angle_noise, hv)
+                loop_ag     = sub_angle   + Float.Random(-sub_angle*angle_noise, sub_angle*angle_noise, hv + 1)
+                loop_factor = grow_factor + Float.Random(-factor_noise, factor_noise, hv + 2)
+                loop_fac    = sub_factor  + Float.Random(-factor_noise, factor_noise, hv + 3)
+
+                edge.points[1].extrude(Rotation((0, 0, loop_angle)) @ (v*loop_factor))
+                edge.points[1].extrude(Rotation((0, 0, -loop_angle - loop_ag)) @ (v*loop_fac))
+                edge.points[1].extrude(Rotation((0, 0,  loop_angle + loop_ag)) @ (v*loop_fac))
+
+                edge.edges.store("Use", True)
+                edge.edges[0].store("Use", False)
+                feel.generated.geometry  = feel.element.switch(extrude, edge)
+
+            leaf = feel.generated.geometry #.merge_by_distance()
+            rep.leaf = leaf
+
+        rep.leaf.out()
+
+
+
+
+
+
+
+
+
+
 
 def demo():
 

@@ -4177,7 +4177,7 @@ class Curve(Geometry):
     # ----- Quadrilateral
 
     @classmethod
-    def Quadrilateral(cls, width=None, height=None):
+    def Quadrilateral(cls, width=None, height=None, mode='RECTANGLE'):
         """ > Constructor node <&Node Quadrilateral>
 
         Arguments
@@ -4190,7 +4190,7 @@ class Curve(Geometry):
         -------
         - Curve
         """
-        return cls(Node('Quadrilateral', {'Width': width, 'Height': height}, mode='RECTANGLE')._out)
+        return cls(Node('Quadrilateral', {'Width': width, 'Height': height}, mode=mode)._out)
 
     @classmethod
     def Rectangle(cls, width=None, height=None):

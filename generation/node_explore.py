@@ -865,6 +865,9 @@ class NodeInfo:
 
     def default_implementation(self):
 
+        tags = ['METHOD', 'SET', 'GET', 'CONSTRUCTOR']
+
+
         has_data_type = 'data_type' in self.params
         has_domain    = 'domain' in self.params
         has_selection = 'Selection' in [bsock.name for bsock in self.bnode.inputs]
@@ -974,6 +977,86 @@ class NodeInfo:
 
     # ====================================================================================================
     # Auto generation
+
+    # ----------------------------------------------------------------------------------------------------
+    # Get the dictionnaries
+
+    @classmethod
+    def get_node_dicts(cls):
+        s_nodes = cls.get_nodes('ShaderNodeTree')
+        g_nodes = cls.get_nodes('GeometryNodeTree')
+        common_nodes   = {blid: name for blid, name in s_nodes.items() if blid in g_nodes}
+
+        return {
+            'Common'          : common_nodes,
+            'ShaderNodeTree'  : {blid: name for blid, name in s_nodes.items() if blid not in common_nodes},
+            'GeometryNodeTree': {blid: name for blid, name in g_nodes.items() if blid not in common_nodes},
+        }
+
+    # ----------------------------------------------------------------------------------------------------
+    # Implementation
+
+    @classmethod
+    def name_interpretation(cls):
+        dicts = cls.get_node_dicts()
+
+        setters    = []
+        getters    = []
+        converters = []
+        others     = []
+
+        for d in dicts.values():
+            for blid, name in d.items():
+                if name.startswith("Set "):
+                    setters.append(name)
+                elif name.find(" to ") >= 0:
+                    converters.append(name)
+                else:
+                    others.append(name)
+
+        for name in others:
+            if f"Set {name}" in setters:
+                getters.append(name)
+
+        for name in getters:
+            others.remove(name)
+
+        print('-'*60)
+        print("Others")
+        print('-'*60)
+        pprint(others)
+        print()
+
+        print('-'*60)
+        print("Setters")
+        print('-'*60)
+        pprint(setters)
+        print()
+
+        print('-'*60)
+        print("Getters")
+        print('-'*60)
+        pprint(getters)
+        print()
+
+        print('-'*60)
+        print("Converters")
+        print('-'*60)
+        pprint(converters)
+        print()
+
+        print('-'*60)
+        print("Others")
+        print('-'*60)
+        pprint(len(others))
+        print()
+
+
+
+
+
+
+
 
     # ----------------------------------------------------------------------------------------------------
     # Static class

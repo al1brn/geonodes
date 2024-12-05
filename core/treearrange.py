@@ -616,7 +616,8 @@ class Frame(Node):
         # ----- Create the output reroutes
 
         x = 2*x_sepa
-        y = y_sepa
+        #y = y_sepa
+        y = 0
 
         source_nodes = {}
         for link in out_links:
