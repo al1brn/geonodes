@@ -1332,7 +1332,7 @@ class Node:
 
             bnode = self.__dict__['_bnode']
             sbnode = bnode.name
-            if hasattr(bnode, name):
+            if name not in ['width', 'height', 'dimensions'] and hasattr(bnode, name):
                 setattr(bnode, name, value)
                 return
 

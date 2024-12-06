@@ -1,6 +1,42 @@
 from random import Random
 from geonodes import *
 
+
+# =============================================================================================================================
+# Random normal
+
+def random_normal():
+
+    with GeoNodes("Random Normal Value", is_group=True):
+
+        value = Float(0,   "Value")
+        scale = Float(1,   "Scale")
+        seed  = Integer(0, "Seed")
+
+        x1 = Float.Random(0, 1, seed=seed)
+        x2 = Float.Random(0, 1, seed=seed.hash_value(seed))
+
+        y1 = gnmath.sqrt(-2*gnmath.log(x1))*gnmath.cos(2*np.pi*x2)
+        #y2 = gnmath.sqrt(-2*gnmath.log(x1))*gnmath.cos(2*np.pi*x2)
+
+        y = value + scale*y1
+
+        y.out("Value")
+
+    with GeoNodes("Random Normal Vector", is_group=True):
+
+        vector = Vector(0,   "Vector")
+        scale  = Vector(1,   "Scale")
+        seed   = Integer(0,  "Seed")
+
+        v = Vector((
+            Group("Random Normal Value", value=vector.x, scale=scale.x, seed=seed).value,
+            Group("Random Normal Value", value=vector.y, scale=scale.y, seed=seed + 1).value,
+            Group("Random Normal Value", value=vector.z, scale=scale.z, seed=seed + 2).value,
+        ))
+
+        v.out("Vector")
+
 # =============================================================================================================================
 # Split segments
 
@@ -167,11 +203,308 @@ def fern():
 
         rep.leaf.out()
 
+def points_fractal():
+
+    with GeoNodes("Points Fractal"):
+
+        iterations   = Integer(1,  "Iterations", min=0, max=10)
+        radius       = Float(  1,  "Radius", min=.1)
+        ratio        = Float(  3,  "Height Ratio", min=.2)
+        peak         = Float(  3,  "Peak", min=.5)
+        turns        = Float(  5,  "Turns")
+        count        = Integer(10,  "Children Count", min=2)
+        scale        = Float( .8,  "Scale")
+        twist        = Float.Angle(0, "Twist")
+        input_model  = Object(None, "Points to Iterate")
+
+        # ----- Model to iterate
+
+        num_model = 3
+
+        if num_model == 0:
+            model = Curve.Circle(count, radius=radius)
+            model.points.store("Direction", nd.position.normalize())
+            model.points.store("Scale",     1/count)
+            model = model.to_points()
+
+        elif num_model == 1:
+            model = Mesh.UVSphere(segments=3, rings=2, radius=1)
+            model.points[nd.position.z < -.1].delete()
+            model.points.store("Direction", nd.position.normalize())
+            model.points.store("Scale",     1)
+            model = model.points.to_points()
+
+        elif num_model == 2:
+            model = Cloud(input_model.info().geometry)
+
+        elif num_model == 3:
+            model = Cloud(Geometry())
+
+        # ----- Start from one single point
+
+        fractal = Cloud.Points(1)
+        fractal.points.store("Radius", radius)
+        fractal.points.store("Direction", (0, 0, 1))
+        fractal.points.store("Scale", 1)
+        fractal.points.store("Twist", twist)
+
+        # ----- Fractal iteration loop
+
+        with Repeat(fractal=fractal, iterations=iterations) as rep:
+
+            # ----- Loop on the current points
+
+            with rep.fractal.points.for_each(
+                    position  = nd.position,
+                    scale     = Float.Named("Scale"),
+                    direction = Vector.Named("Direction"),
+                    twist     = Float.Named("Twist")) as feel:
+
+                rotation = Rotation.AlignToVector(feel.direction)
+                rotation = Rotation((0, 0, feel.twist)) @ rotation
+
+                replace = Cloud(model).transform(translation=feel.position, scale=feel.scale, rotation=rotation)
+
+                replace.points.store("Direction", rotation @ Vector.Named("Direction"))
+                replace.points.store("Scale", feel.scale * Float.Named("Scale"))
+                replace.points.store("Twist", feel.twist + twist)
+
+                feel.generated.geometry = replace
+
+            rep.fractal = feel.generated.geometry
+
+        # ----- Get the generated fractal
+
+        fractal = Cloud(rep.fractal)
+
+        # ----- Geometry on each point
+
+        #rotation = Rotation.AlignToVector(Vector.Named("Direction"))
+        #fractal = fractal.points.instance_on(instance=leaf_object.info().geometry, rotation=rotation, scale=Float.Named("Scale"))
+
+        fractal.out()
 
 
+def romanesco1():
+
+    with GeoNodes("Romanesco1"):
+
+        iterations   = Integer(1,        "Iterations", min=0, max=4)
+        npoints      = Integer(100,      "Number of points", min=10, max=500)
+        base_radius  = Float(  1,        "Base Radius", min=.1)
+        sub_radius_f = Float.Factor(.2,  "Sub Radius Factor", min=.01, max=.9)
+
+        size_factor  = Float.Factor(.99, "Size Factor", min=.9, max=.999)
+        up_factor    = Float.Factor(.1,  "Up Factor", min=0, max=1)
+        rho_factor   = Float.Factor(.1,  "Radius Factor", min=0, max=1)
+        angle_factor = Float.Factor(1,   "Angle Factor", min=.1, max=10)
+
+        # ----- We build the base model by turning around a cone
+
+        pyramid = Cloud.Points(npoints)
+
+        with Repeat(pyramid=pyramid, rho=base_radius, theta=0., z=0., size=base_radius*sub_radius_f, iterations=npoints) as rep:
+
+            pos = Vector((rep.rho*gnmath.cos(rep.theta), rep.rho*gnmath.sin(rep.theta), rep.z))
+
+            cur_point = nd.index.equal(rep.iteration)
+
+            rep.pyramid.points[cur_point].position = pos
+            rep.pyramid.points[cur_point].store("Size",  rep.size)
+            rep.pyramid.points[cur_point].store("Scale", rep.size)
+
+            dz     = up_factor*rep.size
+            drho   = rho_factor*rep.size
+            dtheta = angle_factor*rep.size/rep.rho
+
+            normal = Rotation((0, 0, rep.theta)) @ Vector((dz, 0, drho))
+            rep.pyramid.points[cur_point].store("Direction", normal.normalize())
+
+            rep.size *= size_factor
+
+            rep.rho -= drho
+            rep.theta += dtheta
+            rep.z += dz
+
+        rep.pyramid.out()
+
+# =============================================================================================================================
+# Logarithmic spiral
+
+def log_spiral():
+
+    with GeoNodes("Logarithmic Spiral"):
+
+        count      = Integer(500, "Count")
+        radius     = Float(1,     "Radius")
+        omega      = Float(.8,    "Omega")
+        rotations  = Float(3,     "Rotations")
+        height     = Float(0,     "Height")
+
+        # ----- Profile curve
+
+        if False:
+            profile_obj = Object(None, "Profile Curve", tip="Curve in (x, z): x -> z")
+
+            def_profile = Curve.Line(start=(0, 0, height), end=(radius, 0, 0))
+            profile = profile_obj.info().geometry.curve
+            profile = profile.switch(profile.points.count < 2, def_profile)
+
+        # ----- Logarithmic spiral
+
+        slope = height/radius
+
+        curve = Curve.Line().resample(count)
+
+        theta =  tau*rotations/count*nd.index
+        rho = radius*gnmath.abs(omega)**theta
+        theta *= gnmath.sign(omega)
+
+        curve.points.position = (rho*gnmath.cos(theta), rho*gnmath.sin(theta), height - rho*slope)
+
+        # ----- Normal to the cone
+
+        normal = curve.points.position*(1, 1, 0)
+        normal = Rotation((0, 0, theta)) @ Vector((height, 0, radius))
+        curve.points.store("Normal", normal.normalize())
+
+        curve.out()
+
+# =============================================================================================================================
+# Romanesco cabbage
+
+def romanesco():
+
+    with GeoNodes("Romanesco Cabbage"):
+
+        iterations   = Integer(1,        "Iterations", min=0, max=3)
+        nspirals     = Integer(6,        "Number of spirals", min=3, max=12)
+        radius       = Float(1,          "Radius", min=.1)
+        height       = Float(2,          "Height", min=.1)
+        omega        = Float(.7,         "Omega")
+        rotations    = Float(4,          "Rotations")
+        upwards      = Float(4,          "Upwards factor")
+
+        npoints      = Integer(30,       "Number of points", min=3, max=200)
+        q            = Float.Factor(.9,  "Shrink Factor", min=.01, max=.99)
+
+        sub_radius_f = Float.Factor(.2,  "Sub Radius Factor", min=.1, max=3)
+        f            = Float.Factor(.9,  "Shrink Factor", min=.01, max=.99)
+        twist        = Float.Angle(   0, "Twist")
+
+        iterations = iterations.switch(nd.is_viewport, iterations - 1)
+
+        # ::::: Base Spiral
+
+        with Layout("Base Spiral"):
+
+            spiral = Curve(Group("Logarithmic Spiral", radius=radius, height=height, omega=omega, rotations=rotations).geometry)
+
+            # ::::: Extract points following a geometric series
+
+            # Geometric series:
+            # length = size*(1 - q^n)/(1 - q) => size = length*(1 - q)/(1 - q^n)
+
+            length = spiral.length
+            size = length*(1 - q)/(1 - q**npoints)
+
+            curve = Curve.Line().resample(npoints)
+            l = size*(1 - q**nd.index)/(1 - q)
+
+            curve.points.position = spiral.sample(nd.position, length=l)
+            curve.points.store("Scale",  size*q**nd.index)
+
+            # Orient progressively the normal to z
+            f = (nd.index/(npoints - 1))**upwards
 
 
+            normal = spiral.sample(Vector.Named("Normal"), length=l)
+            normal = normal.mix(f, (0, 0, 1))
+            curve.points.store("Normal", normal)
 
+        #curve.points.store("Normal", spiral.sample(Vector.Named("Normal"), length=l))
+
+        if False:
+            curve = curve.points.instance_on(instance=Curve.Line().transform(scale=.3), rotation=Rotation.AlignToVector(Vector.Named("Normal")))
+            curve.out()
+            return
+
+        # ::::: Duplicate nspirals times
+
+        with Layout("Duplicates"):
+            cloud = Cloud.Points(nspirals, position=0)
+            cloud.points.store("rot", Rotation((0, 0, tau/nspirals*nd.index)))
+
+            spirals = Curve(cloud.points.instance_on(instance=curve, rotation=Rotation.Named("rot")).realize())
+            spirals.points.store("Normal", Rotation.Named("rot") @ Vector.Named("Normal"))
+            spirals.remove_named_attribute("rot")
+
+            spirals = spirals.to_points()
+
+        if False:
+            spirals = spirals.points.instance_on(instance=Curve.Line().transform(scale=.3), rotation=Rotation.AlignToVector(Vector.Named("Normal")))
+            spirals.out()
+            return
+
+        # ::::: Iterations
+
+        with Layout("Initial Point"):
+            cabbage = Cloud.Points(1)
+            cabbage.points.store("Normal", (0, 0, 1))
+            cabbage.points.store("Scale", 1.)
+
+        with Repeat(cabbage=cabbage, iterations=iterations) as rep:
+
+            cab = rep.cabbage
+
+            rot = Rotation.AlignToVector(Vector.Named("Normal"))
+            cab.points.store("rot", rot)
+            cab.remove_named_attribute("Normal")
+
+            cab.points.store("old_scale", Float.Named("Scale"))
+            cab.remove_named_attribute("Scale")
+
+            with Layout("Instantiate"):
+                new_cabbage = Cloud(cab.points.instance_on(instance=spirals,
+                    scale     = Float.Named("old_scale"),
+                    rotation  = Rotation.Named("rot")
+                    ).realize())
+
+            with Layout("Update Scale and Normal attributes"):
+                new_cabbage.points.store("Scale",  Float.Named("old_scale")*Float.Named("Scale"))
+                new_cabbage.points.store("Normal", Rotation.Named("rot") @ Vector.Named("Normal"))
+
+            rep.cabbage = new_cabbage
+
+        # ::::: Finalisation
+
+        cabbage = rep.cabbage
+
+        if False:
+            spirals = cabbage.points.instance_on(instance=Curve.Line().transform(scale=.3), rotation=Rotation.AlignToVector(Vector.Named("Normal")))
+            spirals.out()
+            return
+
+        cabbage.points.radius = Float.Named("Scale")
+
+        # ::::: Cone
+
+        with Layout("Complete with cones"):
+            cone = Mesh.Cone(radius_bottom=radius, depth=height)
+            cone.corners.store("UV Map", cone.uv_map_)
+            cone.corners.store("Z", nd.position.z/height)
+            cone.faces.material = "Romanesco"
+
+            if False:
+                cone.out()
+                return
+
+            rot = Rotation.AlignToVector(Vector.Named("Normal"))
+            cabbage = Mesh(cabbage.points.instance_on(instance=cone, scale=nd.radius*1, rotation=rot).realize())
+
+            cabbage.faces.smooth = True
+
+        cabbage.out()
 
 
 

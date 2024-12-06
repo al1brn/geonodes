@@ -59,9 +59,6 @@ class Link:
         self.index0 = list(blink.from_node.outputs).index(blink.from_socket)
         self.index1 = list(blink.to_node.inputs).index(blink.to_socket)
 
-        assert(self.socket0 == self.blink.from_socket)
-        assert(self.socket1 == self.blink.to_socket)
-
     def __str__(self):
         return f"<Link [{self.node0.bnode.name}]({self.index0}) -> [{self.node1.bnode.name}]({self.index1})>"
 
@@ -209,14 +206,15 @@ class Node:
     # ====================================================================================================
     # Dimensions
 
-    @classmethod
     @property
-    def has_node_editor(cls):
-        #return False
+    def has_node_editor(self):
 
         for area in bpy.context.screen.areas:
             if area.type == 'NODE_EDITOR':
-                return True
+                for space in area.spaces:
+                    if space.type == 'NODE_EDITOR' and space.node_tree == self.tree.btree:
+                        return True
+
         return False
 
     @classmethod
@@ -322,8 +320,7 @@ class Node:
         for link in self.tree.links:
             if link.node0 == self:
                 out_nodes.append(link.node1)
-            else:
-                assert(link.node0.bnode.name != self.bnode.name)
+
         return out_nodes
 
     # =============================================================================================================================
@@ -429,6 +426,49 @@ class Node:
         -------
         - bool : True if the node is in the zone
         """
+
+        # ----- Frame algo
+        # - Must feed output_zone and not another zone output
+        # - Must not be fed by another zone input ???
+
+        if self.is_frame:
+
+            if self.bnode.parent is not None:
+                return False
+
+            ok = False
+            for node in self.forwards():
+
+                # NO : Feed an zone input
+
+                if node.bnode.bl_idname in ZONE_INPUTS:
+                    return False
+
+                # A zone output : must be the zone we test
+
+                if node.bnode.bl_idname in ZONE_OUTPUTS:
+                    if node != output_node:
+                        return False
+                    else:
+                        ok = True
+                        break
+
+            if not ok:
+                return False
+
+            # Not fed by the zone input
+
+            for node in self.backwards():
+                if node.bnode.bl_idname in ZONE_INPUTS:
+                    if node != input_node:
+                        return False
+                    else:
+                        return True
+
+            return False
+
+        # ----- Node algo
+
         ok = False
         for node in self.forwards():
             if node == output_node:
@@ -443,8 +483,6 @@ class Node:
                 return True
 
         return False
-
-
 
 # =============================================================================================================================
 # Frame
@@ -494,6 +532,55 @@ class Frame(Node):
         - list of Nodes : the nodes directly parented to the frame
         """
         return [node for node in self.tree.nodes.values() if node.bnode.parent == self.bnode]
+
+    @property
+    def all_children(self):
+        """ All child nodes
+
+        Returns
+        -------
+        - list of Nodes : the nodes parented, directly or not, to the frame
+        """
+        return [node for node in self.tree.nodes.values() if node.is_child_of(self)]
+
+    # =============================================================================================================================
+    # Forward / backward iterators
+
+    def forwards(self):
+        """ Iterate forwards
+
+        Iterates on the right nodes
+
+        Returns
+        -------
+        - Node
+        """
+        for link in self.tree.links:
+            if link.node0.is_child_of(self):
+                if link.node1.is_child_of(self):
+                    continue
+                yield link.node1
+                for node in link.node1.forwards():
+                    if not node.is_child_of(self):
+                        yield node
+
+    def backwards(self):
+        """ Iterate backwards
+
+        Iterates on the left nodes
+
+        Returns
+        -------
+        - Node
+        """
+        for link in self.tree.links:
+            if link.node1.is_child_of(self):
+                if link.node0.is_child_of(self):
+                    continue
+                yield link.node0
+                for node in link.node0.backwards():
+                    if not node.is_child_of(self):
+                        yield node
 
     # =============================================================================================================================
     # Frame dimension
@@ -721,8 +808,12 @@ class Frame(Node):
 
             # ----- Place the node below its follower
 
-            # Not a frame and without input sockets
-            below = (not node.is_layout) and len(node.bnode.inputs) == 0
+            # Not a frame or reroute
+            below = not node.is_layout
+
+            # No input sockets or specif
+            if len(node.bnode.inputs) > 0:
+                below = below and node.bnode.bl_idname.startswith('GeometryNodeInput')
 
             # Not the group input
             below = below and node != self.input_node
@@ -743,7 +834,6 @@ class Frame(Node):
                 if left_most in node.in_peers:
                     node.col -= 1
                     node.follower = left_most.follower
-
 
         # ----------------------------------------------------------------------------------------------------
         # Let's compute the column numbers
@@ -777,6 +867,9 @@ class Frame(Node):
                 else:
                     in_col.remove(self.input_node)
                     columns.append([self.input_node])
+
+        if self.output_node is not None:
+            assert(self.output_node in columns[0])
 
         # ----- Output node is single right most
 
@@ -900,8 +993,9 @@ class Tree(Frame):
                 new_node = Frame(self, bnode)
             else:
                 new_node = Node(self, bnode)
-                if bnode.bl_idname == 'NodeGroupOutput':
+                if bnode.bl_idname == 'NodeGroupOutput' and bnode.parent is None:
                     self.output_node = new_node
+
                 if bnode.bl_idname == 'NodeGroupInput' and bnode.parent is None:
                     self.input_node = new_node
 
@@ -1114,7 +1208,17 @@ class Tree(Frame):
             zone_input  = node
             zone_output = self[node.bnode.paired_output]
 
-            zone = [zone_input, zone_output] + [node for node in self.nodes.values() if node.in_zone(zone_input, zone_output)]
+            if False:
+                zone = [zone_input, zone_output] + [node for node in self.nodes.values() if node.in_zone(zone_input, zone_output)]
+            else:
+                zone = [zone_input, zone_output]
+                for node in self.nodes.values():
+                    ok = node.in_zone(zone_input, zone_output)
+                    if node.is_frame:
+                        print(f"Frame '{node.bnode.label}' in zone: {ok}")
+                    if ok:
+                        zone.append(node)
+
 
             zones.append(zone)
 
