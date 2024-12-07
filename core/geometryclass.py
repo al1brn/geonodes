@@ -237,7 +237,7 @@ class GeoBase:
         -------
         - Geometry : self
         """
-        node = Node('Set Position', {'Geometry': self._geo, 'Selection': self._sel, 'Position': position, 'Offset': offset})._out
+        node = Node('Set Position', {'Geometry': self._geo, 'Selection': self._sel, 'Position': position, 'Offset': offset})
         return self._jump(node._out)
 
     def set_id(self, id=None):

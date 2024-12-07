@@ -329,6 +329,11 @@ class Socket(NodeCache):
 
     def __getattr__(self, name):
         if not (len(name) > 1 and name[-2] != '_' and name[-1] == '_'):
+            if name == '_out':
+                msg = "Node / Socket confusion: you tried to access to the default output socket of a node, "
+                msg += f"but class {type(self).__name__} is a socket"
+                raise NodeError(msg)
+
             raise AttributeError(f"Class {type(self).__name__} as no property named '{name}'")
 
         return getattr(self.node, name[:-1])

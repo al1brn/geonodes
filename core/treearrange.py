@@ -813,7 +813,8 @@ class Frame(Node):
 
             # No input sockets or specif
             if len(node.bnode.inputs) > 0:
-                below = below and node.bnode.bl_idname.startswith('GeometryNodeInput')
+                below = False
+                #below = below and node.bnode.bl_idname.startswith('GeometryNodeInput')
 
             # Not the group input
             below = below and node != self.input_node

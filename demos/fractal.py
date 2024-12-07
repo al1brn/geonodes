@@ -1,8 +1,16 @@
-from random import Random
-from geonodes import *
+import numpy as np
 
+#from random import Random
+
+from .. import nd, snd, gnmath, GeoNodes, ShaderNodes, Group
+from .. import Geometry, Mesh, Curve, Cloud
+from .. import Repeat, Simulation
+from .. import Boolean, Integer, Float, Vector, Rotation, Matrix, Color
 
 # =============================================================================================================================
+# Utilities and macros
+
+# -----------------------------------------------------------------------------------------------------------------------------
 # Random normal
 
 def random_normal():
@@ -36,6 +44,124 @@ def random_normal():
         ))
 
         v.out("Vector")
+
+# ----------------------------------------------------------------------------------------------------
+# Macros for readibility
+
+def val_noise(value, scale, seed):
+    return Group("Random Normal Value", value=value, scale=scale, seed=seed).value
+
+def vect_noise(vector, scale, seed):
+    return Group("Random Normal Vector", vector=vector, scale=scale, seed=seed).vector
+
+# =============================================================================================================================
+# Camera Culling
+
+def camera_culling():
+
+    with GeoNodes("Camera Culling", is_group=False):
+
+        position      = Vector(0,         "Vector")
+        aspect_ratio  = Float(16/9,       "Aspect Ratio", tip="Camera aspect ratio, 16/9 for instance")
+        focal_length  = Float.Distance(1, "Focal Length", min=0.01)
+
+        with Layout("Camera reproduction"):
+            plane = Mesh.Grid(size_x=aspect_ratio, size_y=1, vertices_x=2, vertices_y=2).transform(translation=(0, 0, -focal_length))
+            cam_info = nd.active_camera.info()
+
+            plane.transform(translation=cam_info.location, rotation=cam_info.rotation)
+
+        with Layout("Raycast"):
+
+            raycast = nd.raycast(target_geometry=plane, source_position=position, ray_direction=cam_info.location - position)
+
+            keep   = raycast.is_hit
+            ignore = -keep
+
+        ignore.out("Ignore")
+        keep.out("Keep")
+
+def culled_position(position, aspect_ratio, focal_length):
+    return Group("Camera Culling", vector=position, aspect_ratio=aspect_ratio, focal_length=focal_length).ignore
+
+
+# =============================================================================================================================
+# Sierpinski triangle
+
+def sierpinski():
+
+    """ Take the input surface as the fractal iterator
+    """
+
+    with GeoNodes("Faces Iterator"):
+
+        iterator      = Mesh()
+        iterations    = Integer(5, "Iterations", min=0, max=10)
+        scale         = Float(.5, "Scale Factor")
+
+        cam_culling   = Boolean(True,     "Camera Culling")
+        aspect_ratio  = Float(16/9,       "Aspect Ratio", tip="Camera aspect ratio, 16/9 for instance")
+        focal_length  = Float.Distance(1, "Focal Length", min=0.01)
+
+
+        iterations = (iterations + 1).switch(nd.is_viewport, iterations)
+
+        # ::::: The mesh to iterate
+
+        iterator.faces.store("Scale", scale)
+
+        fractal = Mesh.Grid(size_x=1, size_y=1, vertices_x=2, vertices_y=2)
+        fractal.faces.store("Scale", 1)
+
+        with Repeat(fractal=fractal, iterations=iterations) as rep:
+
+            fractal = rep.fractal
+            fractal.faces.store("Pos", nd.position)
+            fractal.faces.store("rot", Rotation.AlignToVector(nd.normal))
+
+            cloud = Cloud.Points(rep.fractal.faces.count)
+            cloud.points.position = fractal.faces.sample_index(Vector.Named("Pos"), nd.index)
+            cloud.points.store("rot", fractal.faces.sample_index(Rotation.Named("rot"), nd.index))
+            cloud.points.store("old_scale", fractal.faces.sample_index(Float.Named("Scale"), nd.index))
+
+            step = Mesh(cloud.points.instance_on(instance=iterator, scale=Float.Named("old_scale"), rotation=Rotation.Named("rot")).realize())
+
+            step.faces.store("Scale", Float.Named("old_scale") * Float.Named("Scale"))
+
+            # Camera culling
+
+            culled = Mesh(step).points.store("invisible", Float(culled_position(nd.position, aspect_ratio, focal_length)))
+            culled.faces.store("delete", Float.Named("invisible"))
+            culled.faces[Float.Named("delete").equal(1)].delete_all()
+            step = step.switch(cam_culling, culled)
+
+            rep.fractal = step
+
+        fractal = rep.fractal
+
+        fractal.out()
+
+    with GeoNodes("Sierpinski"):
+
+        iterations  = Integer(5, "Iterations", min=0, max=10)
+
+        cam_culling   = Boolean(True,     "Camera Culling")
+        aspect_ratio  = Float(16/9,       "Aspect Ratio", tip="Camera aspect ratio, 16/9 for instance")
+        focal_length  = Float.Distance(1, "Focal Length", min=0.01)
+
+        # ::::: The mesh to iterate
+
+        triangle = Mesh.Circle(vertices=3, fill_type='NGON').transform(rotation=(0, 0, pi/2))
+
+        iterator = Mesh(triangle.points.instance_on(instance=triangle).realize())
+        iterator = iterator.merge_by_distance().transform(scale=2/3)
+
+        fractal = Group("Faces Iterator", mesh=iterator, iterations=iterations, scale_factor=.5, camera_culling=cam_culling, aspect_ratio=aspect_ratio, focal_length=focal_length).geometry
+
+        fractal.out()
+
+
+
 
 # =============================================================================================================================
 # Split segments
@@ -81,9 +207,9 @@ def split_segments():
 # =============================================================================================================================
 # Sierpinski triangle
 
-def sierpinski():
+def sierpinski_OLD():
 
-    with GeoNodes("Sierpinski"):
+    with GeoNodes("Sierpinski OLD"):
 
         iterations  = Integer(5, "Iterations", min=0, max=10)
         rotation    = Float.Factor(0, "Rotation", min=-1, max=1)
@@ -390,7 +516,9 @@ def romanesco():
 
         sub_radius_f = Float.Factor(.2,  "Sub Radius Factor", min=.1, max=3)
         f            = Float.Factor(.9,  "Shrink Factor", min=.01, max=.99)
-        twist        = Float.Angle(   0, "Twist")
+        noise_scale  = Float(0,          "Noise scale")
+        seed         = Integer(0,        "Seed")
+
 
         iterations = iterations.switch(nd.is_viewport, iterations - 1)
 
@@ -455,6 +583,8 @@ def romanesco():
 
         with Repeat(cabbage=cabbage, iterations=iterations) as rep:
 
+            rep_seed = seed.hash_value(rep.iteration)
+
             cab = rep.cabbage
 
             rot = Rotation.AlignToVector(Vector.Named("Normal"))
@@ -471,8 +601,13 @@ def romanesco():
                     ).realize())
 
             with Layout("Update Scale and Normal attributes"):
-                new_cabbage.points.store("Scale",  Float.Named("old_scale")*Float.Named("Scale"))
-                new_cabbage.points.store("Normal", Rotation.Named("rot") @ Vector.Named("Normal"))
+                scale = Float.Named("old_scale")*Float.Named("Scale")
+                scale *= val_noise(1, noise_scale/5, rep_seed)
+                new_cabbage.points.store("Scale",  scale)
+
+                normal = Rotation.Named("rot") @ Vector.Named("Normal")
+                normal += vect_noise(0, noise_scale, seed=rep_seed + 1)
+                new_cabbage.points.store("Normal", normal.normalize())
 
             rep.cabbage = new_cabbage
 
