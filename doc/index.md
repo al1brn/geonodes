@@ -5,7 +5,7 @@
 
 ### Initialize a tree
 
-- [GeoNodes](core-geono-geonodes.md#geonodes) and [ShaderNodes](shade1-shade1-shadernodes.md#shadernodes) : scripting nodes starts by instantianting a [Tree](tree.md#tree)
+- [GeoNodes](core-geono-geonodes.md#geonodes) and [ShaderNodes](shade-shade1-shadernodes.md#shadernodes) : scripting nodes starts by instantianting a [Tree](tree.md#tree)
 - [Break](break.md#break) : exiting from a tree context can be done by raising this exception
 
 ### Create nodes
@@ -101,6 +101,7 @@ Geometries have specific [Domain](domain.md#domain):
   - [Face](face.md#face)
   - [Float](float.md#float)
   - [ForEachElement](foreachelement.md#foreachelement)
+  - [G](g.md#g)
   - [Geometry](geometry.md#geometry)
   - [Gizmo](gizmo.md#gizmo)
   - [GreasePencil](greasepencil.md#greasepencil)
@@ -132,32 +133,12 @@ Geometries have specific [Domain](domain.md#domain):
   - [Volume](volume.md#volume)
   - [Zone](zone.md#zone)
 - [Cross Reference](cross_reference.md#cross-reference)
-- [demos](demos.md#demos)
-  - [arrows](arrows.md#arrows)
-  - [counters](counters.md#counters)
-  - [curly](curly.md#curly)
-  - [explosion](explosion.md#explosion)
-  - [fields](fields.md#fields)
-  - [fourd](fourd.md#fourd)
-  - [gravity](gravity.md#gravity)
-  - [helloworld](helloworld.md#helloworld)
-  - [rain](rain.md#rain)
-  - [relativity](relativity.md#relativity)
-  - [shaders](shaders.md#shaders)
 - [generation](generation.md#generation)
-  - [blendertree](blendertree.md#blendertree)
   - [gendoc](gendoc.md#gendoc)
-  - [new_version](new_version.md#new_version)
-  - [node_explore](node_explore.md#node_explore)
-- [macros](macros.md#macros)
-  - [double_integrals](macros.md#double_integrals)
-  - [impulsion](macros.md#impulsion)
-  - [integrals](macros.md#integrals)
-  - [solidify](macros.md#solidify)
 - [Shader Cross Reference](shader_cross_reference.md#shader-cross-reference)
-- [shadernodes](shade1---shadernodes.md#shadernodes)
+- [shadernodes](shade---shadernodes.md#shadernodes)
   - [shaderclass](shaderclass.md#shaderclass)
-  - [shadernodes](shade1-shade1---shadernodes.md#shadernodes)
+  - [shadernodes](shade-shade1---shadernodes.md#shadernodes)
   - [staticclass](staticclass.md#staticclass)
 
 ## Modules
@@ -165,10 +146,8 @@ Geometries have specific [Domain](domain.md#domain):
 
 
 - [core](core.md#core)
-- [demos](demos.md#demos)
 - [generation](generation.md#generation)
-- [macros](macros.md#macros)
-- [shadernodes](shade1---shadernodes.md#shadernodes)
+- [shadernodes](shade---shadernodes.md#shadernodes)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [geonodes](index.md#geonodes) :black_small_square: [Content](index.md#content) :black_small_square: [geonodes](index.md#geonodes)</sub>
 

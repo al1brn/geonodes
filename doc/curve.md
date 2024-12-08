@@ -626,7 +626,7 @@ QuadraticBezier(resolution=None, start=None, middle=None, end=None)
 > classmethod
 
 ``` python
-Quadrilateral(width=None, height=None)
+Quadrilateral(width=None, height=None, mode='RECTANGLE')
 ```
 
 > Constructor node [Quadrilateral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/quadrilateral.html)
@@ -634,6 +634,7 @@ Quadrilateral(width=None, height=None)
 #### Arguments:
 - **width** (_Float_ = None) : socket 'Width' (Width)
 - **height** (_Float_ = None) : socket 'Height' (Height)
+- **mode** (_str_ = RECTANGLE) : Node.mode in ('RECTANGLE', 'PARALLELOGRAM', 'TRAPEZOID', 'KITE', 'POINTS')
 
 
 

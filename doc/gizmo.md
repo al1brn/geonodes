@@ -3,7 +3,7 @@
 > Bases classes: [Node](core-treea-node.md#node)
 
 ``` python
-Gizmo(node_name, sockets={}, _items={}, _keep=None, **parameters)
+Gizmo(node_name, sockets={}, _items={}, link_from=None, _keep=None, **parameters)
 ```
 
 Node wrapper.
@@ -96,18 +96,20 @@ Node wrapper.
  - node_name (str) : Node name
  - sockets (dict or list) : initialization values for the node input sockets
  - _items (dict = {}) : dynamic sockets to create
+ - link_with (node | dict = None) : node to link into this tree (see [link_input_from](node.md#link_input_from))
  - **kwargs : node parameters initialization
 
 #### Arguments:
 - **node_name**
 - **sockets** ( = {})
 - **_items** ( = {})
+- **link_from** ( = None)
 - **_keep** ( = None)
 - **parameters**
 
 ### Inherited
 
-[backwards](core-treea-node.md#backwards) :black_small_square: [bnode](core-treea-node.md#bnode) :black_small_square: [\_color](node.md#_color) :black_small_square: [data_socket](node.md#data_socket) :black_small_square: [dimensions](core-treea-node.md#dimensions) :black_small_square: [dump](core-treea-node.md#dump) :black_small_square: [forwards](core-treea-node.md#forwards) :black_small_square: [\_\_getattr__](groupf.md#__getattr__) :black_small_square: [\_\_getitem__](domain.md#__getitem__) :black_small_square: [\_has_items](node.md#_has_items) :black_small_square: [has_node_editor](core-treea-node.md#has_node_editor) :black_small_square: [height](core-treea-node.md#height) :black_small_square: [\_\_init__](core-treea-node.md#__init__) :black_small_square: [in_nodes](core-treea-node.md#in_nodes) :black_small_square: [inout_socket](node.md#inout_socket) :black_small_square: [InputNodeSocket](node.md#inputnodesocket) :black_small_square: [in_socket](node.md#in_socket) :black_small_square: [in_zone](core-treea-node.md#in_zone) :black_small_square: [is_child_of](core-treea-node.md#is_child_of) :black_small_square: [is_frame](core-treea-node.md#is_frame) :black_small_square: [is_layout](core-treea-node.md#is_layout) :black_small_square: [is_reroute](core-treea-node.md#is_reroute) :black_small_square: [\_items](node.md#_items) :black_small_square: [\_label](node.md#_label) :black_small_square: [\_out](node.md#_out) :black_small_square: [out_nodes](core-treea-node.md#out_nodes) :black_small_square: [out_socket](node.md#out_socket) :black_small_square: [parent](core-treea-node.md#parent) :black_small_square: [pin_gizmo](node.md#pin_gizmo) :black_small_square: [plug_node_into](node.md#plug_node_into) :black_small_square: [plug_selection](node.md#plug_selection) :black_small_square: [plug_value_into_socket](node.md#plug_value_into_socket) :black_small_square: [\_\_repr__](core-treea-node.md#__repr__) :black_small_square: [\_\_setattr__](node.md#__setattr__) :black_small_square: [set_input_sockets](node.md#set_input_sockets) :black_small_square: [\_\_setitem__](node.md#__setitem__) :black_small_square: [\_set_items](node.md#_set_items) :black_small_square: [set_parameters](node.md#set_parameters) :black_small_square: [socket_keys_to_identifiers](node.md#socket_keys_to_identifiers) :black_small_square: [split_peers](core-treea-node.md#split_peers) :black_small_square: [\_\_str__](core-treea-node.md#__str__) :black_small_square: [tree](core-treea-node.md#tree) :black_small_square: [wait](core-treea-node.md#wait) :black_small_square: [width](core-treea-node.md#width) :black_small_square:
+[backwards](core-treea-node.md#backwards) :black_small_square: [bnode](core-treea-node.md#bnode) :black_small_square: [\_color](node.md#_color) :black_small_square: [data_socket](node.md#data_socket) :black_small_square: [dimensions](core-treea-node.md#dimensions) :black_small_square: [dump](core-treea-node.md#dump) :black_small_square: [forwards](core-treea-node.md#forwards) :black_small_square: [\_\_getattr__](groupf.md#__getattr__) :black_small_square: [\_\_getitem__](domain.md#__getitem__) :black_small_square: [\_has_items](node.md#_has_items) :black_small_square: [has_node_editor](core-treea-node.md#has_node_editor) :black_small_square: [height](core-treea-node.md#height) :black_small_square: [\_\_init__](core-treea-node.md#__init__) :black_small_square: [in_nodes](core-treea-node.md#in_nodes) :black_small_square: [inout_socket](node.md#inout_socket) :black_small_square: [InputNodeSocket](node.md#inputnodesocket) :black_small_square: [in_socket](node.md#in_socket) :black_small_square: [in_zone](core-treea-node.md#in_zone) :black_small_square: [is_child_of](core-treea-node.md#is_child_of) :black_small_square: [is_frame](core-treea-node.md#is_frame) :black_small_square: [is_layout](core-treea-node.md#is_layout) :black_small_square: [is_reroute](core-treea-node.md#is_reroute) :black_small_square: [\_items](node.md#_items) :black_small_square: [\_label](node.md#_label) :black_small_square: [link_input_from](node.md#link_input_from) :black_small_square: [\_out](node.md#_out) :black_small_square: [out_nodes](core-treea-node.md#out_nodes) :black_small_square: [out_socket](node.md#out_socket) :black_small_square: [parent](core-treea-node.md#parent) :black_small_square: [pin_gizmo](node.md#pin_gizmo) :black_small_square: [plug_selection](node.md#plug_selection) :black_small_square: [plug_value_into_socket](node.md#plug_value_into_socket) :black_small_square: [\_\_repr__](core-treea-node.md#__repr__) :black_small_square: [\_\_setattr__](node.md#__setattr__) :black_small_square: [set_input_sockets](node.md#set_input_sockets) :black_small_square: [\_\_setitem__](node.md#__setitem__) :black_small_square: [\_set_items](node.md#_set_items) :black_small_square: [set_parameters](node.md#set_parameters) :black_small_square: [socket_keys_to_identifiers](node.md#socket_keys_to_identifiers) :black_small_square: [split_peers](core-treea-node.md#split_peers) :black_small_square: [\_\_str__](core-treea-node.md#__str__) :black_small_square: [tree](core-treea-node.md#tree) :black_small_square: [wait](core-treea-node.md#wait) :black_small_square: [width](core-treea-node.md#width) :black_small_square:
 
 ## Content
 

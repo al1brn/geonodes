@@ -1980,14 +1980,14 @@ group_output(is_active_output=True)
 > classmethod
 
 ``` python
-handle_type_selection(handle_type='AUTO', mode={'LEFT', 'RIGHT'})
+handle_type_selection(handle_type='AUTO', mode={'RIGHT', 'LEFT'})
 ```
 
 > Node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
 
 #### Arguments:
 - **handle_type** (_str_ = AUTO) : parameter 'handle_type' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-- **mode** (_set_ = {'LEFT', 'RIGHT'}) : parameter 'mode'
+- **mode** (_set_ = {'RIGHT', 'LEFT'}) : parameter 'mode'
 
 
 
@@ -4335,7 +4335,7 @@ set_handle_positions(curve=None, selection=None, position=None, offset=None, mod
 > classmethod
 
 ``` python
-set_handle_type(curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'})
+set_handle_type(curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'})
 ```
 
 > Node [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html)
@@ -4344,7 +4344,7 @@ set_handle_type(curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'R
 - **curve** (_Geometry_ = None) : socket 'Curve'
 - **selection** (_Boolean_ = None) : socket 'Selection'
 - **handle_type** (_str_ = AUTO) : parameter 'handle_type' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-- **mode** (_set_ = {'LEFT', 'RIGHT'}) : parameter 'mode'
+- **mode** (_set_ = {'RIGHT', 'LEFT'}) : parameter 'mode'
 
 
 
