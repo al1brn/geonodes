@@ -149,7 +149,7 @@ def demo():
         # ----- Call the group with the same parameters
 
         group_node = Group("Arrows", {'Geometry': points, 'Vectors': vector})
-        group_node.plug_node_into(create=True)
+        group_node.link_input_from(create=True)
 
         group_node.geometry.out()
 
@@ -172,7 +172,7 @@ def demo():
         # ----- Call the group with the same parameters
 
         group_node = Group("Arrows", {'Geometry': points, 'Vectors': vector})
-        group_node.plug_node_into(create=True)
+        group_node.link_input_from(create=True)
 
         group_node.geometry.out()
 
@@ -197,9 +197,6 @@ def demo():
         # ----- Call the group with the same parameters
 
         group_node = Group("Arrows", {'Geometry': points, 'Vectors': vector})
-        group_node.plug_node_into(create=True)
+        group_node.link_input_from(create=True)
 
         group_node.geometry.out()
-
-
-

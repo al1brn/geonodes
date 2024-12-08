@@ -94,7 +94,7 @@ d270   = np.pi*1.5
 d360   = tau
 e      = np.e
 
-from .core.treeclass import Layout, Break, Tree, Node, Group, GroupF, ColorRamp
+from .core.treeclass import Layout, Break, Tree, Node, Group, GroupF, G, ColorRamp
 from .core.zones import Zone, Repeat, Simulation, ForEachElement
 
 from .core.geonodes import GeoNodes

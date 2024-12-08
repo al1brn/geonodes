@@ -209,6 +209,8 @@ class Node:
     @property
     def has_node_editor(self):
 
+        return False
+
         for area in bpy.context.screen.areas:
             if area.type == 'NODE_EDITOR':
                 for space in area.spaces:

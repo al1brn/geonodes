@@ -649,7 +649,7 @@ def build_base():
                     'End w'   : [0, 0, 0, pos][i],
                 })
 
-            node.plug_node_into()
+            node.link_input_from()
             arrow = Mesh(node._out)
 
             arrow.faces.store("Axis Color", [(1, 0, 0), (0, 1, 0), (0, 0, 1), (0, 0, 0)][i])
@@ -806,7 +806,7 @@ def build_vectors():
         #node = maths_.normalize_3_basis()
         #tree.input_node.plug_to(node)
         node = Group.Prefix(maths_, "Normalize 3-Basis")
-        node.plug_node_into()
+        node.link_input_from()
 
         u0 = V4.FromNode(node, "I")
         u1 = V4.FromNode(node, "J")
@@ -1083,7 +1083,7 @@ def build_transformations():
             #node = maths_.rotation_4d(**V4.Position(geo).kwargs())
             #tree.input_node.plug_to(node)
             node = Group.Prefix(maths_, "Rotation 4D", V4.Position(geo).sockets())
-            node.plug_node_into()
+            node.link_input_from()
 
             geo = V4.FromNode(node).set_position(geo)
 
@@ -1100,7 +1100,7 @@ def build_transformations():
                 #V4.NodeOutput(node).set_normal(mesh, s)
 
                 node = Group.Prefix(maths_, "Rotation 4D", V4.Normal(mesh, s).sockets())
-                node.plug_node_into()
+                node.link_input_from()
                 V4.FromNode(node).set_normal(mesh, s)
 
         # ----- Curve
@@ -1910,7 +1910,7 @@ def build_curves():
         # ----- Profile on the curve
 
         tubes_node = Group.Prefix(curves_, "Curves Profile", {'Geometry': curved})
-        tubes_node.plug_node_into()
+        tubes_node.link_input_from()
 
         curved = curved.switch(use_profile, tubes_node._out)
 
@@ -2215,7 +2215,7 @@ def build_surfaces():
             #shade_smooth = Boolean(    "Shade smooth", True),
             )
 
-        node.plug_node_into(exclude=['Factor XY', 'Factor ZW', 'Twists'])
+        node.link_input_from(exclude=['Factor XY', 'Factor ZW', 'Twists'])
 
         node._out.out()
 
@@ -2236,7 +2236,7 @@ def build_surfaces():
             #shade_smooth = Boolean(    "Shade smooth", True),
             )
 
-        node.plug_node_into(exclude=['Factor XY', 'Factor ZW', 'Twists'])
+        node.link_input_from(exclude=['Factor XY', 'Factor ZW', 'Twists'])
 
         node._out.out()
 

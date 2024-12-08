@@ -610,7 +610,7 @@ def demo():
             show_arrows = Boolean(True, "Show arrows")
 
             arrows_group = Group("Arrows", {'Geometry': cloud, 'Vectors': field})
-            arrows_group.plug_node_into(include=['Scale', 'Logarithm'], rename={'Color': 'Arrow Color'})
+            arrows_group.link_input_from(include=['Scale', 'Logarithm'], rename={'Color': 'Arrow Color'})
             arrows_mat = Material("Arrow", "Arrows Material")
             arrows_group.shaft = arrows_mat
             arrows_group.head  = arrows_mat
@@ -642,7 +642,7 @@ def demo():
             lar_vectors = lar_origins.tangent.scale(Float.Named("Intensity")*lar_scale)
 
             lar_group = Group("Arrows", {'Geometry': lar_origins, 'Vectors': lar_vectors})
-            lar_group.plug_node_into(include=[], rename={'Logarithm': 'Lines Arrows Log', 'Color': 'Lines Arrows Color'})
+            lar_group.link_input_from(include=[], rename={'Logarithm': 'Lines Arrows Log', 'Color': 'Lines Arrows Color'})
 
             lar_arrows = lar_group._out
 
@@ -665,7 +665,7 @@ def demo():
         geo = Geometry()
 
         source_node = Group.Prefix(util_prefix, "Source Points")
-        source_node.plug_node_into(include=['Geometry', 'Size', 'Density', 'Seed', 'Shape'])
+        source_node.link_input_from(include=['Geometry', 'Size', 'Density', 'Seed', 'Shape'])
         cloud = source_node._out
 
         use_magnetic = Boolean(False, "Magnetic Field", tip="Magnetic field if True, electric field otherwise")
@@ -702,7 +702,7 @@ def demo():
             'Field': field,
         })
 
-        show_node.plug_node_into()
+        show_node.link_input_from()
         geo = show_node._out
 
         geo.out()

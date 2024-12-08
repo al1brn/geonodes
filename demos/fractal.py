@@ -2,10 +2,12 @@ import numpy as np
 
 #from random import Random
 
-from .. import nd, snd, gnmath, GeoNodes, ShaderNodes, Group
+from .. import nd, snd, gnmath, GeoNodes, ShaderNodes, Group, G
 from .. import Geometry, Mesh, Curve, Cloud
-from .. import Repeat, Simulation
+from .. import Repeat, Simulation, Layout
 from .. import Boolean, Integer, Float, Vector, Rotation, Matrix, Color
+from .. import pi, tau
+
 
 # =============================================================================================================================
 # Utilities and macros
@@ -37,49 +39,228 @@ def random_normal():
         scale  = Vector(1,   "Scale")
         seed   = Integer(0,  "Seed")
 
-        v = Vector((
-            Group("Random Normal Value", value=vector.x, scale=scale.x, seed=seed).value,
-            Group("Random Normal Value", value=vector.y, scale=scale.y, seed=seed + 1).value,
-            Group("Random Normal Value", value=vector.z, scale=scale.z, seed=seed + 2).value,
-        ))
+        if True:
+            v = Vector((
+                G.random_normal_value(vector.x, scale.x, seed),
+                G.random_normal_value(vector.y, scale.y, seed + 1),
+                G.random_normal_value(vector.z, scale.z, seed + 2),
+            ))
+        else:
+            v = Vector((
+                Group("Random Normal Value", value=vector.x, scale=scale.x, seed=seed).value,
+                Group("Random Normal Value", value=vector.y, scale=scale.y, seed=seed + 1).value,
+                Group("Random Normal Value", value=vector.z, scale=scale.z, seed=seed + 2).value,
+            ))
 
         v.out("Vector")
-
-# ----------------------------------------------------------------------------------------------------
-# Macros for readibility
-
-def val_noise(value, scale, seed):
-    return Group("Random Normal Value", value=value, scale=scale, seed=seed).value
-
-def vect_noise(vector, scale, seed):
-    return Group("Random Normal Vector", vector=vector, scale=scale, seed=seed).vector
 
 # =============================================================================================================================
 # Camera Culling
 
 def camera_culling():
+    """ Camera culling
 
-    with GeoNodes("Camera Culling", is_group=False):
+    Removes geometry which is not visible from the camera.
 
-        position      = Vector(0,         "Vector")
-        aspect_ratio  = Float(16/9,       "Aspect Ratio", tip="Camera aspect ratio, 16/9 for instance")
-        focal_length  = Float.Distance(1, "Focal Length", min=0.01)
+    The camera is defined by the following arguments
+    - Aspect Ratio (Float) : width / height
+    - Focal Length (Float) : expressed in mm
+    - Margin (Float) : margin extended the visibility area
+
+    Position Culling
+    ================
+
+    > Group
+    
+    Returns the positions wich are not visible
+
+    Arguments
+    ---------
+    - Aspect Ratio (Float = 16/9) : camera aspect ratio
+    - Focal Length (Float = 50) : camera focal
+    - Margin (Float = .1) : culling margin
+
+    Returns
+    -------
+    - Ignore (Boolean) : position is not visible
+    - Keep (Boolean)  position is visible
+
+    Face Culling
+    =============
+
+    > Mesh Modifier
+
+    Delete the faces which are not visible.
+
+    Points are distributed on the faces. If none of them is visible (calling "Position Culling"), the face is not visible.
+    if "Use Normal" socket is True, the faces normal are compared with the camera direction to delete
+    backward faces.
+
+    Arguments
+    ---------
+    - Mesh (Mesh) : Input geometry
+    - Density (Float = 20) : point distribution density
+    - Use Normal (Boolean = True) : delete backward faces
+    - Aspect Ratio (Float = 16/9) : camera aspect ratio
+    - Focal Length (Float = 50) : camera focal
+    - Margin (Float = .1) : culling margin
+
+    Returns
+    -------
+    - Geometry
+
+
+    Edge Culling
+    =============
+
+    > Mesh Modifier
+
+    Delete the edges which are not visible.
+
+    > [!NODE]
+    > This particular modifier is relevant only for meshes made only of edges
+
+    Arguments
+    ---------
+    - Mesh (Mesh) : Input geometry
+    - Aspect Ratio (Float = 16/9) : camera aspect ratio
+    - Focal Length (Float = 50) : camera focal
+    - Margin (Float = .1) : culling margin
+
+    Returns
+    -------
+    - Geometry
+    """
+
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Position Culling
+
+    with GeoNodes("Position Culling", is_group=True):
+
+        aspect_ratio  = Float(16/9, "Aspect Ratio", tip="Camera aspect ratio, 16/9 for instance")
+        focal_length  = Float(50,   "Focal Length", min=1, tip="Focal length in mm")
+        margin        = Float.Factor(.1,  "Margin", min=0, max=.99, tip="Margin factor")
+
+        focal_length *= 2.54/50 # True focal
+        focal_length *= (1 - margin)
+
+        # Size 
+        size = .1
+        aspect_ratio *= size
+        focal_length *= size
 
         with Layout("Camera reproduction"):
-            plane = Mesh.Grid(size_x=aspect_ratio, size_y=1, vertices_x=2, vertices_y=2).transform(translation=(0, 0, -focal_length))
+            plane = Mesh.Grid(size_x=aspect_ratio, size_y=size, vertices_x=2, vertices_y=2).transform(translation=(0, 0, -focal_length))
             cam_info = nd.active_camera.info()
 
             plane.transform(translation=cam_info.location, rotation=cam_info.rotation)
 
         with Layout("Raycast"):
 
-            raycast = nd.raycast(target_geometry=plane, source_position=position, ray_direction=cam_info.location - position)
+            raycast = nd.raycast(target_geometry=plane, source_position=nd.position, ray_direction=cam_info.location - nd.position)
 
             keep   = raycast.is_hit
             ignore = -keep
 
         ignore.out("Ignore")
         keep.out("Keep")
+
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Position Culling
+
+    with GeoNodes("Face Culling"):
+
+        mesh = Mesh()
+
+        density       = Float(20, "Density", tip="Density of test points on the faces")
+        use_normal    = Boolean(True, "Use Normal", tip="Delete faces facing outwards the camera direction") 
+
+        aspect_ratio  = Float(16/9, "Aspect Ratio", tip="Camera aspect ratio, 16/9 for instance")
+        focal_length  = Float(50,   "Focal Length", min=1, tip="Focal length in mm")
+        margin        = Float.Factor(.1,  "Margin", min=0, max=.99, tip="Margin factor")
+
+        with Layout("Cull points on faces"):
+            mesh.faces.store("face index",    nd.index)
+            cloud = mesh.faces.distribute_points(density_max=density)
+
+            cloud.points[G.position_culling(link_from='TREE')].delete_all()
+
+        # Loop on the faces
+
+        with Repeat(mesh=mesh, iterations=mesh.faces.count) as rep:
+
+            remaining = Cloud(cloud).points[Integer.Named("face index").not_equal(rep.iteration)].delete_all()
+            ignore = remaining.points.count.equal(0)
+
+            normal = rep.mesh.faces.sample_index(nd.normal, rep.iteration)
+            cam_loc = nd.active_camera.info().location
+            dot_prod = normal.dot((nd.position - cam_loc).normalize())
+            dot = remaining.points.attribute_statistic(dot_prod).min
+
+            ignore = ignore.switch(use_normal, ignore | dot.less_than(0))
+
+            rep.mesh.faces[rep.iteration].store("ignore", ignore)
+
+        mesh = rep.mesh
+
+        mesh.faces[Boolean.Named("ignore")].delete()
+
+        mesh.remove_named_attribute("face index")
+        mesh.remove_named_attribute("ignore")
+
+        # DEBUG
+        if False:
+            mesh += cloud
+
+        mesh.out()
+
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Edge Culling
+
+    with GeoNodes("Edge Culling") as tree:
+
+        mesh = Mesh()
+
+        density       = Float(20, "Density", tip="Density of test points on the faces")
+        use_normal    = Boolean(True, "Use Normal", tip="Delete faces facing outwards the camera direction") 
+
+        aspect_ratio  = Float(16/9, "Aspect Ratio", tip="Camera aspect ratio, 16/9 for instance")
+        focal_length  = Float(50,   "Focal Length", min=1, tip="Focal length in mm")
+        margin        = Float.Factor(.1,  "Margin", min=0, max=.99, tip="Margin factor")
+
+        with Repeat(mesh=mesh, iterations=mesh.edges.count) as rep:
+
+            vertices = nd.edge_vertices
+
+            v0 = rep.mesh.edges.sample_index(vertices.position_1, rep.iteration)
+            v1 = rep.mesh.edges.sample_index(vertices.position_2, rep.iteration)
+
+            line = Mesh.Line(start_location=v0, end_location=v1, count=20)
+            line.points[G.position_culling(link_from='TREE')].delete()
+
+            rep.mesh.edges[rep.iteration].store("Ignore", line.points.count.equal(0))
+
+        mesh = rep.mesh
+
+        mesh.edges[Boolean.Named("Ignore")].delete_edges_and_faces()
+
+        mesh.out()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 def culled_position(position, aspect_ratio, focal_length):
     return Group("Camera Culling", vector=position, aspect_ratio=aspect_ratio, focal_length=focal_length).ignore

@@ -242,7 +242,7 @@ Node wrapper.
 > method
 
 ``` python
-plug_node_into(node=None, include=None, exclude=[], rename={}, create=True)
+link_input_from(node=None, include=None, exclude=[], rename={}, create=True)
 ```
 
 Plug the output sockets of a node into the input sockets of the node.
@@ -261,19 +261,19 @@ with GeoNodes("Connect several sockets"):
     # Create Group inputs to feed the node
     # 'Size X' and 'Size Y' are created in the group input not
     # 'Vertices X' and 'Vertices Y' are connected to the same 'Vertices' which is created
-    a.plug_node_into(rename={'Vertices X': 'Vertices', 'Vertices Y': 'Vertices'})
+    a.link_input_from(rename={'Vertices X': 'Vertices', 'Vertices Y': 'Vertices'})
 
     a = Node("Math")
 
     # Connect the 'Value' output socket to the 'Value' input socket
     # The third socket is exclude by its index
     # Input values are renamed 'First' and 'Second'
-    a.plug_node_into(exclude=2, rename={'Value': 'First', 'Value_001': 'Second'})
+    a.link_input_from(exclude=2, rename={'Value': 'First', 'Value_001': 'Second'})
 
     b = Node("Math", operation='SQRT')
 
     # Plug the previous math node on a single socket
-    b.plug_node_into(a, include='Value')
+    b.link_input_from(a, include='Value')
 ```
 
 #### Arguments:

@@ -579,7 +579,7 @@ def demo():
         with Layout("Twins in one space dimension"):
 
             twins = GroupF().twins(end=Float(1))
-            twins.plug_node_into()
+            twins.link_input_from()
 
             blue_line0 = Curve(twins.blue_line_0)
             red_line0  = Curve(twins.red_line_0)

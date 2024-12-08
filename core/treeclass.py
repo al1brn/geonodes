@@ -193,7 +193,8 @@ class Tree:
         if prefix is not None:
             tree_name = f"{prefix} {tree_name}"
 
-        self._btree = None
+        self._btree  = None
+        self._prefix = prefix
 
         # ----------------------------------------------------------------------------------------------------
         # Shader Node tree is a property of the Material
@@ -439,6 +440,9 @@ class Tree:
             pass
         ```
         """
+
+        # ----- Remove and arrange
+
         tree = Tree.STACK.pop()
         if tree != self:
             raise NodeError(f"Error in tree stack management")
@@ -454,6 +458,10 @@ class Tree:
         Tree._total_nodes += len(self._btree.nodes)
         Tree._total_links += len(self._btree.links)
         Tree._total_time  += duration
+
+        # ----- Create a function
+
+        G.build_from_tree(self._btree, prefix=self._prefix)
 
     def __enter__(self):
         return self
@@ -847,7 +855,7 @@ class Tree:
 # Node
 
 class Node:
-    def __init__(self, node_name, sockets={}, _items={}, _keep=None, **parameters):
+    def __init__(self, node_name, sockets={}, _items={}, link_from=None, _keep=None, **parameters):
         """ Node wrapper.
 
         The node wrapper exposes input and output sockets and the node parameters.
@@ -938,6 +946,7 @@ class Node:
         - node_name (str) : Node name
         - sockets (dict or list) : initialization values for the node input sockets
         - _items (dict = {}) : dynamic sockets to create
+        - link_with (node | dict = None) : node to link into this tree (see <#link_input_from>)
         - **kwargs : node parameters initialization
         """
 
@@ -1006,6 +1015,15 @@ class Node:
         # Register the node
 
         self._tree.register_node(self)
+
+        # ----------------------------------------------------------------------------------------------------
+        # Plug input node
+
+        if link_from is not None:
+            if isinstance(link_from, dict):
+                self.link_input_from(**link_from)
+            else:
+                self.link_input_from(link_from)
 
     def __str__(self):
         return f"<Node '{self._bnode.name}' {self._bnode.bl_idname}>"
@@ -1263,7 +1281,11 @@ class Node:
         return self.inout_socket(name, self._bnode.inputs, halt=halt)
 
     def out_socket(self, name, halt=True):
-        return self.data_socket(self.inout_socket(name, self._bnode.outputs, halt=halt))
+        sock = self.inout_socket(name, self._bnode.outputs, halt=halt)
+        if sock is None:
+            return None
+        else:
+            return self.data_socket(sock)
 
     # ----------------------------------------------------------------------------------------------------
     # Set the node sockets
@@ -1310,11 +1332,31 @@ class Node:
     # Read a node attribute : it is an output socket
 
     def __getattr__(self, name):
+
         if '_bnode' in self.__dict__:
-            out_socket = self.out_socket(name)
+            # The name can refer to an output socket
+            out_socket = self.out_socket(name, halt=False)
+
+            # Try with '_' suffix syntax
+            if out_socket is None and len(name) > 1 and name[-1] == '_' and name[-2] != '_':
+                out_socket = self.out_socket(name[:-1], halt=False)
+
             if out_socket is None:
-                raise AttributeError(f"Node parameter '{name}' not found in '{self.__dict__['_bnode'].name}'.")
+
+                node_name = self.__dict__['_bnode'].name
+
+                # Nope : this is not an output socket
+                # Perhaps a confusion with the default output socket
+                def_out = self._out
+                if def_out is not None and name in dir(def_out):
+                    print(f"CAUTION: the node '{node_name}' has no attribute '{name}', use socket '{utils.socket_name(def_out._bsocket.name)}' or '_out' instead")
+                    return getattr(def_out, name)
+
+                # No more hope: let's raise the error
+                _ = self.out_socket(name)
+
             else:
+                # OK : it is an output socket
                 return out_socket
 
         raise AttributeError(f"Node parameter '{name}' not found.")
@@ -1563,13 +1605,18 @@ class Node:
     # If the other node is None, the Tree input node is taken
     # Create is only valid in this case
 
-    def plug_node_into(self, node=None, include=None, exclude=[], rename={}, create=True):
+    def link_input_from(self, node='TREE', include=None, exclude=[], rename={}, create=True):
         """ Plug the output sockets of a node into the input sockets of the node.
 
         This method is used to connect several sockets in a compact syntax.
 
         If the node argument is None, the sockets are created in the Group Input node.
         Use 'include', 'exclude' and 'rename' arguments to control the connexions.
+
+        > [!NOTE]
+        > This function is called when initializing a node if the `link_with` argument is not None.
+        > In that case, `link_argument` value is either the `node` argument or a dictionnary
+        > of the `link_input_from` method arguments:
 
         ``` python
         with GeoNodes("Connect several sockets"):
@@ -1580,27 +1627,43 @@ class Node:
             # Create Group inputs to feed the node
             # 'Size X' and 'Size Y' are created in the group input not
             # 'Vertices X' and 'Vertices Y' are connected to the same 'Vertices' which is created
-            a.plug_node_into(rename={'Vertices X': 'Vertices', 'Vertices Y': 'Vertices'})
+            a.link_input_from(rename={'Vertices X': 'Vertices', 'Vertices Y': 'Vertices'})
 
             a = Node("Math")
 
             # Connect the 'Value' output socket to the 'Value' input socket
             # The third socket is exclude by its index
             # Input values are renamed 'First' and 'Second'
-            a.plug_node_into(exclude=2, rename={'Value': 'First', 'Value_001': 'Second'})
+            a.link_input_from(exclude=2, rename={'Value': 'First', 'Value_001': 'Second'})
 
             b = Node("Math", operation='SQRT')
 
             # Plug the previous math node on a single socket
-            b.plug_node_into(a, include='Value')
+            b.link_input_from(a, include='Value')
+
+        # Call this method when creating a group
+        # Note: the previous Group is called using functional syntax with G class
+
+        with GeoNodes("Create default"):
+
+            # Create the sockets in the input and connect them to Group input
+
+            a = G.connect_several_sockets(link_from='TREE')
+
+        with GeoNodes("Create selection"):
+
+            # Create the sockets in the input and connect them to Group input
+
+            a = G.connect_several_sockets(link_from={'exclude': ["Size X", "Size Y"], 'rename': {"Vertices": "Count"}})
         ```
 
         Arguments
         ---------
-        - node (Node = None) : the node to get the outputs from. Use Group Input node if None
+        - node (Node | current tree = None) : the node to get the outputs from. Use Group Input node if None
         - include (list of strs = None) : connects only the sockets in the list
         - exclude (list of strs = []) : exclude sockets in this list
         - rename (dict = {}) : rename the sockets to the given names
+        - create (bool = True) : create the output sockets in node if it is a 'Group Input Node'
 
         Returns
         -------
@@ -1613,6 +1676,9 @@ class Node:
         # Node with output sockets to plug
 
         if node is None:
+            return self
+
+        if node == tree or str(node).upper() == 'TREE' :
             node = tree.input_node
         else:
             create = False
@@ -1717,6 +1783,7 @@ class Node:
 
         return self
 
+
     # =============================================================================================================================
     # Color and label
 
@@ -1763,7 +1830,7 @@ class Node:
 
 class Group(Node):
 
-    def __init__(self, group_name, sockets={}, **kwargs):
+    def __init__(self, group_name, sockets={}, link_from=None, **kwargs):
         """ Node Group
 
         > Node <&Node Group>
@@ -1816,7 +1883,7 @@ class Group(Node):
 
         # ----- Create the node group
 
-        super().__init__('Group', sockets=sockets, node_tree=group_tree)
+        super().__init__('Group', sockets=sockets, link_from=link_from, node_tree=group_tree)
 
         for k, v in kwargs.items():
             setattr(self, k, v)
@@ -1871,6 +1938,114 @@ class Group(Node):
         - Node Group
         """
         return cls(f"{prefix} {group_name}", sockets=sockets, **kwargs)
+
+class G:
+    """ Group funcitonal call
+
+    This weird class is empty but two static methods aimed at building dynamic static functions.
+
+    For each built Tree, a function is created in class G (for Groups).
+    To call the created group, the function syntax can be used rather than instantiating the Group Node.
+
+    Let's suppose we have the following group.
+
+    ``` python
+    with GeoNodes("Translate Geometry"):
+        v = Vector(0, "Translation")
+        factor = Float.Factor(1, "Factor")
+
+        Geometry().transform(translation=v*factor).out()
+    ```
+
+    The created group can be called in another tree following the two possible syntax:
+
+    ```
+    with GeoNodes("Calling a Group"):
+
+        geo = Geometry()
+
+        # ----- Instantiate a node Group by its name
+
+        geo = Group("Translate Geometry", geometry=geo).geometry
+
+        # Or with parameters
+
+        geo = Group("Translate Geometry", geometry=geo, translation=(1, 0, 0), factor=.5).geometry
+
+
+        # ----- Function call
+
+        geo = G.translate_geometry(geo)
+
+        # Or with parameters
+        # be sure of the sockets order if you don't use keyword argument syntax
+
+        geo = G.translate_geometry(geo, (1, 0, 0), .5)
+    ```
+
+    """
+
+    @staticmethod
+    def build_from_tree(btree, prefix=""):
+
+        # ----- Target
+
+        if prefix is None:
+            prefix = ""
+
+        if prefix == "":
+            func_name = utils.socket_name(btree.name)
+            target = "G"
+        else:
+            assert(len(btree.name) > len(prefix) + 1)
+            prefix = prefix.lower()
+            target = f"G.{prefix}"
+            if not hasattr(G, prefix):
+                setattr(G, prefix, object())
+
+            func_name = utils.socket_name(btree.name[len(prefix) + 1])
+            prefix += "_"
+
+        # ----- Input node
+
+        sock_names = []
+        for bnode in btree.nodes:
+            if bnode.bl_idname == 'NodeGroupInput':
+                sock_names = [utils.socket_name(bsock.name) for bsock in bnode.outputs if bsock.type != 'CUSTOM']
+                break
+        sock_names.append('link_from')
+
+        # ----- Create the function
+
+        header = [f"{arg}=None"  for arg in sock_names]
+        call   = [f"{arg}={arg}" for arg in sock_names]
+
+        s = f"def F_{prefix}{func_name}(" + ", ".join(header) + "):\n"
+        s += f"\treturn Group('{btree.name}', " + ", ".join(call) + ")._out\n\n"
+        s += f"setattr({target}, '{func_name}', F_{prefix}{func_name})\n"
+
+        # DEBUG
+        if False:
+            print('-'*100)
+            print(s)
+            print('-'*100)
+
+        exec(s)
+
+
+    @staticmethod
+    def build_functions(prefixes = []):
+        for btree in bpy.data.node_groups:
+            name = btree.name
+            prefix = None
+            for p in prefixes:
+                if name.startswith(p + " "):
+                    prefix = p
+                    break
+
+            G.build_from_tree(btree, prefix=prefix)
+
+
 
 class GroupF:
     """ Utility class exposing Groups as python functions.
@@ -1929,8 +2104,8 @@ class GroupF:
             self._prefix = prefix.lower() + '_'
 
     @staticmethod
-    def call(group_name, sockets={}, **kwargs):
-        return Group(group_name, sockets, **kwargs)
+    def call(group_name, sockets={}, link_from=None, **kwargs):
+        return Group(group_name, sockets, link_from=link_from, **kwargs)
 
     def __getattr__(self, name):
         name = self._prefix + name
