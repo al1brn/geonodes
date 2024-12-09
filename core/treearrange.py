@@ -63,6 +63,14 @@ class Link:
         return f"<Link [{self.node0.bnode.name}]({self.index0}) -> [{self.node1.bnode.name}]({self.index1})>"
 
     @property
+    def node0_key(self):
+        return f"{self.node0.bnode.name}_{self.index0}"
+
+    @property
+    def node1_key(self):
+        return f"{self.node1.bnode.name}_{self.index1}"
+
+    @property
     def socket0(self):
         """ Starting socket
 
@@ -690,14 +698,13 @@ class Frame(Node):
 
         source_nodes = {}
         for link in in_links:
-            node_name = link.node0.bnode.name
-            reroute = source_nodes.get(node_name)
+            reroute = source_nodes.get(link.node0_key)
             if reroute is None:
                 reroute = link.insert_reroute(self)
                 reroute.bnode.location = (x + 200, y)
                 y += y_sepa
 
-                source_nodes[node_name] = reroute
+                source_nodes[link.node0_key] = reroute
 
             else:
                 link.replace_from(reroute, index0=0)
@@ -710,14 +717,13 @@ class Frame(Node):
 
         source_nodes = {}
         for link in out_links:
-            node_name = link.node0.bnode.name
-            reroute = source_nodes.get(node_name)
+            reroute = source_nodes.get(link.node0_key)
             if reroute is None:
                 reroute = link.insert_reroute(self)
                 reroute.bnode.location = (x + 100, y)
                 y += y_sepa
 
-                source_nodes[node_name] = reroute
+                source_nodes[link.node0_key] = reroute
 
             else:
                 link.replace_from(reroute, index0=0)
@@ -1217,8 +1223,6 @@ class Tree(Frame):
                 zone = [zone_input, zone_output]
                 for node in self.nodes.values():
                     ok = node.in_zone(zone_input, zone_output)
-                    if node.is_frame:
-                        print(f"Frame '{node.bnode.label}' in zone: {ok}")
                     if ok:
                         zone.append(node)
 
@@ -1346,13 +1350,14 @@ class RemoveReroutesOperator(bpy.types.Operator):
     @classmethod
     def poll(cls, context):
         space = context.space_data
-        return space.type == 'NODE_EDITOR' and space.node_tree is not None
+        return space.type == 'NODE_EDITOR' and space.edit_tree is not None
+        #return space.type == 'NODE_EDITOR' and space.node_tree is not None
 
     def execute(self, context):
         space = context.space_data
-        tree = Tree(space.node_tree)
+        tree = Tree(space.edit_tree)
         tree.del_reroutes()
-        arrange(space.node_tree, reroutes=False)
+        arrange(space.edit_tree, reroutes=False)
         return {'FINISHED'}
 
 class ArrangeNodesOperator(bpy.types.Operator):
@@ -1363,11 +1368,11 @@ class ArrangeNodesOperator(bpy.types.Operator):
     @classmethod
     def poll(cls, context):
         space = context.space_data
-        return space.type == 'NODE_EDITOR' and space.node_tree is not None
+        return space.type == 'NODE_EDITOR' and space.edit_tree is not None
 
     def execute(self, context):
         space = context.space_data
-        arrange(space.node_tree)
+        arrange(space.edit_tree)
         return {'FINISHED'}
 
 class LayoutArrangePanel(bpy.types.Panel):

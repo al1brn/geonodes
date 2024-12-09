@@ -622,7 +622,8 @@ class Tree:
         try:
             bsocket.default_value = value
         except:
-            return
+            #return
+            pass
 
         io_socket = self.io_socket_exists(bsocket.bl_idname, in_out='INPUT', name=bsocket.identifier)
         if io_socket is None:
@@ -1680,10 +1681,18 @@ class Node:
 
         if node == tree or str(node).upper() == 'TREE' :
             node = tree.input_node
-        else:
-            create = False
+
+        create = create and node._bnode.bl_idname == 'NodeGroupInput'
 
         is_node_group = self._bnode.bl_idname == 'GeometryNodeGroup'
+
+        if False:
+            print("LINK INPUT FROM", tree)
+            print(" - node   ", node)
+            print(" - include", include)
+            print(" - exclude", exclude)
+            print(" - rename ", rename)
+            print(" - create ", create)
 
         # ----------------------------------------------------------------------------------------------------
         # Make sure we have the sockets identifiers
@@ -1710,9 +1719,11 @@ class Node:
             if in_socket.is_linked:
                 continue
 
+            print("CREATE FOR", in_socket, in_socket.is_linked)
+
             # ----- Socket name can be renamed
 
-            identifier  = in_socket.identifier
+            identifier = in_socket.identifier
             if identifier in rename.keys():
                 out_name = rename[identifier]
             else:
@@ -1762,7 +1773,10 @@ class Node:
                     # ----- Min and Max from embedded tree interface
 
                     item = self._bnode.node_tree.interface.items_tree[in_socket.name]
-                    tree.set_input_socket_default(tree.input_node[io_socket.identifier], item.default_value)
+
+                    if hasattr(item, 'default_value') and hasattr(io_socket, 'default_value'):
+                        io_socket.default_value = item.default_value
+                        #tree.input_node[io_socket.identifier].default_value = item.default_value
 
                     io_socket.description = item.description
                     if hasattr(io_socket, 'min_value'):
@@ -1883,10 +1897,19 @@ class Group(Node):
 
         # ----- Create the node group
 
-        super().__init__('Group', sockets=sockets, link_from=link_from, node_tree=group_tree)
+        super().__init__('Group', sockets=sockets, node_tree=group_tree)
 
         for k, v in kwargs.items():
             setattr(self, k, v)
+
+        # ----------------------------------------------------------------------------------------------------
+        # Plug input node
+
+        if link_from is not None:
+            if isinstance(link_from, dict):
+                self.link_input_from(**link_from)
+            else:
+                self.link_input_from(link_from)
 
     @classmethod
     def Prefix(cls, prefix, group_name, sockets={}, **kwargs):
@@ -1940,7 +1963,7 @@ class Group(Node):
         return cls(f"{prefix} {group_name}", sockets=sockets, **kwargs)
 
 class G:
-    """ Group funcitonal call
+    """ Group functional call
 
     This weird class is empty but two static methods aimed at building dynamic static functions.
 
@@ -1959,7 +1982,7 @@ class G:
 
     The created group can be called in another tree following the two possible syntax:
 
-    ```
+    ``` python
     with GeoNodes("Calling a Group"):
 
         geo = Geometry()
@@ -1987,7 +2010,19 @@ class G:
 
     @staticmethod
     def build_from_tree(btree, prefix=""):
+        """ Dynamically create a function to call the tree as Group
 
+        The name of the function is the snake case version of the tree name.
+
+        Arguments
+        ---------
+        - btree (Blender GeometryNodeTree | ShaderNodeTree) : the tree
+        - prefix (str = "") : function prefix
+
+        Returns
+        -------
+        - None
+        """
         # ----- Target
 
         if prefix is None:
@@ -1998,12 +2033,16 @@ class G:
             target = "G"
         else:
             assert(len(btree.name) > len(prefix) + 1)
+            assert(btree.name.startswith(prefix))
+
             prefix = prefix.lower()
             target = f"G.{prefix}"
             if not hasattr(G, prefix):
-                setattr(G, prefix, object())
+                s = f"class PREFIX_{prefix}:\n\tpass\n"
+                s += f"G.{prefix} = PREFIX_{prefix}"
+                exec(s)
 
-            func_name = utils.socket_name(btree.name[len(prefix) + 1])
+            func_name = utils.socket_name(btree.name[len(prefix) + 1:])
             prefix += "_"
 
         # ----- Input node
@@ -2020,9 +2059,10 @@ class G:
         header = [f"{arg}=None"  for arg in sock_names]
         call   = [f"{arg}={arg}" for arg in sock_names]
 
-        s = f"def F_{prefix}{func_name}(" + ", ".join(header) + "):\n"
+        s = f"def G_{prefix}{func_name}(" + ", ".join(header) + "):\n"
         s += f"\treturn Group('{btree.name}', " + ", ".join(call) + ")._out\n\n"
-        s += f"setattr({target}, '{func_name}', F_{prefix}{func_name})\n"
+        #s += f"setattr({target}, '{func_name}', G_{prefix}{func_name})\n"
+        s += f"{target}.{func_name} = G_{prefix}{func_name}\n"
 
         # DEBUG
         if False:
@@ -2035,6 +2075,17 @@ class G:
 
     @staticmethod
     def build_functions(prefixes = []):
+        """ Dynamically create a function for each node group
+
+        Arguments
+        ---------
+        - prefixes (list of strs = []) : function prefixes
+
+        Returns
+        -------
+        - None
+        """
+
         for btree in bpy.data.node_groups:
             name = btree.name
             prefix = None
@@ -2103,8 +2154,11 @@ class GroupF:
         else:
             self._prefix = prefix.lower() + '_'
 
+        print("GroupF is deprecated. Use G insted")
+
     @staticmethod
     def call(group_name, sockets={}, link_from=None, **kwargs):
+        print("GroupF is deprecated. Use G insted")
         return Group(group_name, sockets, link_from=link_from, **kwargs)
 
     def __getattr__(self, name):

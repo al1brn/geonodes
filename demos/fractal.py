@@ -3,11 +3,12 @@ import numpy as np
 #from random import Random
 
 from .. import nd, snd, gnmath, GeoNodes, ShaderNodes, Group, G
-from .. import Geometry, Mesh, Curve, Cloud
+from .. import Geometry, Mesh, Curve, Cloud, Material
 from .. import Repeat, Simulation, Layout
 from .. import Boolean, Integer, Float, Vector, Rotation, Matrix, Color
 from .. import pi, tau
 
+SENSOR_SIZE = .1
 
 # =============================================================================================================================
 # Utilities and macros
@@ -27,7 +28,6 @@ def random_normal():
         x2 = Float.Random(0, 1, seed=seed.hash_value(seed))
 
         y1 = gnmath.sqrt(-2*gnmath.log(x1))*gnmath.cos(2*np.pi*x2)
-        #y2 = gnmath.sqrt(-2*gnmath.log(x1))*gnmath.cos(2*np.pi*x2)
 
         y = value + scale*y1
 
@@ -39,18 +39,11 @@ def random_normal():
         scale  = Vector(1,   "Scale")
         seed   = Integer(0,  "Seed")
 
-        if True:
-            v = Vector((
-                G.random_normal_value(vector.x, scale.x, seed),
-                G.random_normal_value(vector.y, scale.y, seed + 1),
-                G.random_normal_value(vector.z, scale.z, seed + 2),
-            ))
-        else:
-            v = Vector((
-                Group("Random Normal Value", value=vector.x, scale=scale.x, seed=seed).value,
-                Group("Random Normal Value", value=vector.y, scale=scale.y, seed=seed + 1).value,
-                Group("Random Normal Value", value=vector.z, scale=scale.z, seed=seed + 2).value,
-            ))
+        v = Vector((
+            G.random_normal_value(vector.x, scale.x, seed),
+            G.random_normal_value(vector.y, scale.y, seed + 1),
+            G.random_normal_value(vector.z, scale.z, seed + 2),
+        ))
 
         v.out("Vector")
 
@@ -67,23 +60,43 @@ def camera_culling():
     - Focal Length (Float) : expressed in mm
     - Margin (Float) : margin extended the visibility area
 
-    Position Culling
-    ================
+    Relative
+    ========
 
     > Group
-    
-    Returns the positions wich are not visible
+
+    Transform position in space relative to camera and project the points on the sensor
 
     Arguments
     ---------
-    - Aspect Ratio (Float = 16/9) : camera aspect ratio
     - Focal Length (Float = 50) : camera focal
+
+    Returns
+    -------
+    - Position (Vector) : points position in the camera space
+    - Projection (Vector) : projection on the sensr
+    - Ratio (Float) : distance divided by focal length
+    - Behind (Vector) : the points are behind the sensor
+
+    Point Culling
+    =============
+
+    > Mesh, Cloud or Curve Modifier
+
+    Delete the points which are not visible.
+
+    Delete all the points which are not visible (calling "Position Culling").
+
+    Arguments
+    ---------
+    - Geometry (Geometry with point domain) : Input geometry
+    - Focal Length (Float = 50) : camera focal
+    - Aspect Ratio (Float = 16/9) : camera aspect ratio
     - Margin (Float = .1) : culling margin
 
     Returns
     -------
-    - Ignore (Boolean) : position is not visible
-    - Keep (Boolean)  position is visible
+    - Geometry
 
     Face Culling
     =============
@@ -92,14 +105,11 @@ def camera_culling():
 
     Delete the faces which are not visible.
 
-    Points are distributed on the faces. If none of them is visible (calling "Position Culling"), the face is not visible.
-    if "Use Normal" socket is True, the faces normal are compared with the camera direction to delete
-    backward faces.
+    To determine if a face is visible, it is subdivided and if all the points are not visible, the face is not visible
 
     Arguments
     ---------
     - Mesh (Mesh) : Input geometry
-    - Density (Float = 20) : point distribution density
     - Use Normal (Boolean = True) : delete backward faces
     - Aspect Ratio (Float = 16/9) : camera aspect ratio
     - Focal Length (Float = 50) : camera focal
@@ -108,7 +118,6 @@ def camera_culling():
     Returns
     -------
     - Geometry
-
 
     Edge Culling
     =============
@@ -132,146 +141,233 @@ def camera_culling():
     - Geometry
     """
 
+    DEBUG_GEO = False
+
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Camera relative
+
+    with GeoNodes("Relative", prefix="Camera", is_group=True):
+
+        focal_length  = Float(50, "Focal Length", min=1, tip="Focal length in mm")
+        aspect_ratio = Float(16/9, "Aspect Ratio", tip="Camera aspect ratio, 16/9 for instance")
+
+        focal_length *= 2.54/50*SENSOR_SIZE
+
+        cam_info = nd.active_camera.info(transform_space='RELATIVE')
+
+        rot = cam_info.rotation.invert()
+        pos = rot @ (nd.position - cam_info.location)
+
+        behind = pos.z > - focal_length
+
+        t = -focal_length/pos.z
+
+        proj = Vector((pos.x*t, pos.y*t, 0))
+
+        pos.out("Position")
+        proj.out("Projection")
+        t.out("Ratio")
+        behind.out("Behind")
+
+        # Sensor Size
+        height = SENSOR_SIZE
+        width  = aspect_ratio*height
+
+        width.out("Sensor Width")
+        Float(height).out("Sensor Height")
+
     # -----------------------------------------------------------------------------------------------------------------------------
     # Position Culling
 
-    with GeoNodes("Position Culling", is_group=True):
+    with GeoNodes("Point Culling", prefix="Camera"):
 
-        aspect_ratio  = Float(16/9, "Aspect Ratio", tip="Camera aspect ratio, 16/9 for instance")
-        focal_length  = Float(50,   "Focal Length", min=1, tip="Focal length in mm")
-        margin        = Float.Factor(.1,  "Margin", min=0, max=.99, tip="Margin factor")
+        cloud = Cloud(Geometry())
 
-        focal_length *= 2.54/50 # True focal
-        focal_length *= (1 - margin)
+        node = G.camera.relative(link_from='TREE').node
 
-        # Size 
-        size = .1
-        aspect_ratio *= size
-        focal_length *= size
+        radius = Float(0, "Radius", min=0, tip="Point radius")
 
-        with Layout("Camera reproduction"):
-            plane = Mesh.Grid(size_x=aspect_ratio, size_y=size, vertices_x=2, vertices_y=2).transform(translation=(0, 0, -focal_length))
-            cam_info = nd.active_camera.info()
+        # Sensor Size
+        half_width  = node.sensor_width/2
+        half_height = node.sensor_height/2
 
-            plane.transform(translation=cam_info.location, rotation=cam_info.rotation)
+        # Out of the sensor
+        ignore = node.behind
+        proj   = node.projection
 
-        with Layout("Raycast"):
+        size = radius * node.ratio
 
-            raycast = nd.raycast(target_geometry=plane, source_position=nd.position, ray_direction=cam_info.location - nd.position)
+        ignore |= proj.x < -half_width - size
+        ignore |= proj.x > half_width + size
+        ignore |= proj.y < -half_height - size
+        ignore |= proj.y > half_height + size
 
-            keep   = raycast.is_hit
-            ignore = -keep
+        cloud.points[ignore].delete().out()
 
         ignore.out("Ignore")
-        keep.out("Keep")
-
-    # -----------------------------------------------------------------------------------------------------------------------------
-    # Position Culling
-
-    with GeoNodes("Face Culling"):
-
-        mesh = Mesh()
-
-        density       = Float(20, "Density", tip="Density of test points on the faces")
-        use_normal    = Boolean(True, "Use Normal", tip="Delete faces facing outwards the camera direction") 
-
-        aspect_ratio  = Float(16/9, "Aspect Ratio", tip="Camera aspect ratio, 16/9 for instance")
-        focal_length  = Float(50,   "Focal Length", min=1, tip="Focal length in mm")
-        margin        = Float.Factor(.1,  "Margin", min=0, max=.99, tip="Margin factor")
-
-        with Layout("Cull points on faces"):
-            mesh.faces.store("face index",    nd.index)
-            cloud = mesh.faces.distribute_points(density_max=density)
-
-            cloud.points[G.position_culling(link_from='TREE')].delete_all()
-
-        # Loop on the faces
-
-        with Repeat(mesh=mesh, iterations=mesh.faces.count) as rep:
-
-            remaining = Cloud(cloud).points[Integer.Named("face index").not_equal(rep.iteration)].delete_all()
-            ignore = remaining.points.count.equal(0)
-
-            normal = rep.mesh.faces.sample_index(nd.normal, rep.iteration)
-            cam_loc = nd.active_camera.info().location
-            dot_prod = normal.dot((nd.position - cam_loc).normalize())
-            dot = remaining.points.attribute_statistic(dot_prod).min
-
-            ignore = ignore.switch(use_normal, ignore | dot.less_than(0))
-
-            rep.mesh.faces[rep.iteration].store("ignore", ignore)
-
-        mesh = rep.mesh
-
-        mesh.faces[Boolean.Named("ignore")].delete()
-
-        mesh.remove_named_attribute("face index")
-        mesh.remove_named_attribute("ignore")
-
-        # DEBUG
-        if False:
-            mesh += cloud
-
-        mesh.out()
+        (-ignore).out("Keep")
 
     # -----------------------------------------------------------------------------------------------------------------------------
     # Edge Culling
 
-    with GeoNodes("Edge Culling") as tree:
+    with GeoNodes("Edge Culling", prefix="Camera") as tree:
 
         mesh = Mesh()
 
-        density       = Float(20, "Density", tip="Density of test points on the faces")
-        use_normal    = Boolean(True, "Use Normal", tip="Delete faces facing outwards the camera direction") 
+        node = G.camera.relative(link_from='TREE').node
 
-        aspect_ratio  = Float(16/9, "Aspect Ratio", tip="Camera aspect ratio, 16/9 for instance")
-        focal_length  = Float(50,   "Focal Length", min=1, tip="Focal length in mm")
-        margin        = Float.Factor(.1,  "Margin", min=0, max=.99, tip="Margin factor")
+        # Both indices are behind
+        i1 = nd.edge_vertices.vertex_index_1
+        i2 = nd.edge_vertices.vertex_index_2
+        ignore = mesh.points.sample_index(node.behind, i1) & mesh.points.sample_index(node.behind, i2)
 
-        with Repeat(mesh=mesh, iterations=mesh.edges.count) as rep:
+        # Edges positions
+        A = mesh.points.sample_index(node.projection, i1)
+        B = mesh.points.sample_index(node.projection, i2)
 
-            vertices = nd.edge_vertices
+        # Closest point C is the projection of origin on AB line: AO.AB
 
-            v0 = rep.mesh.edges.sample_index(vertices.position_1, rep.iteration)
-            v1 = rep.mesh.edges.sample_index(vertices.position_2, rep.iteration)
+        AB = B - A
+        t = -(A.dot(AB))
 
-            line = Mesh.Line(start_location=v0, end_location=v1, count=20)
-            line.points[G.position_culling(link_from='TREE')].delete()
+        l = AB.length
+        C = A.switch(t > 0, B.switch(t < l, A + AB*(t/l)))
 
-            rep.mesh.edges[rep.iteration].store("Ignore", line.points.count.equal(0))
+        diag2 = node.sensor_width**2 + node.sensor_height**2
+        ignore |= C.dot(C) > diag2
+
+
+        mesh.edges[ignore].delete().out()
+
+        ignore.out("Ignore")
+        (-ignore).out("Keep")
+
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Face Culling
+
+    with GeoNodes("Face Culling", prefix="Camera") as tree:
+
+        mesh = Mesh()
+
+        use_normal = Boolean(True, "Use Normal", tip="Delete faces facing outwards the camera direction")
+
+        # ----- Normal
+
+        with Layout("Normal"):
+
+            cam_info = nd.active_camera.info(transform_space='RELATIVE')
+
+            normal = mesh.faces.sample_index(nd.normal, nd.index)
+            pos = nd.position - cam_info.location
+
+            mesh.faces.store("Ignore", pos.dot(normal).greater_than(0.1).switch(-use_normal))
+
+        # ----- Points on the surface
+
+        node = G.camera.relative().node
+        flat = Mesh(mesh)
+        flat.points.store("Behind Count", Integer(node.behind))
+        flat.points.position = node.projection
+
+        # Sensor Size
+        half_width  = node.sensor_width/2
+        half_height = node.sensor_height/2
+
+        with Repeat(mesh=mesh, iterations=mesh.faces.count) as rep:
+
+            flat_face = Mesh(flat).faces[nd.index.not_equal(rep.iteration)].delete()
+
+            delete = flat_face.points.attribute_statistic(Integer.Named("Behind Count")).sum.equal(flat_face.points.count)
+
+            area = flat_face.faces.sample_index(nd.face_area, 0)
+            subdiv = 7 #gnmath.max(5, gnmath.log(area, 2)/SENSOR_SIZE)
+
+            cloud = flat_face.subdivide(subdiv).points.to_points()
+
+            x, y = nd.position.x, nd.position.y
+            delete |= x < -half_width
+            delete |= x >  half_width
+            delete |= y < -half_height
+            delete |= y >  half_height
+
+            cloud.points[delete].delete_all()
+
+            rep.mesh.faces[rep.iteration].store("Ignore", Boolean.Named("Ignore") | cloud.points.count.equal(0))
 
         mesh = rep.mesh
 
-        mesh.edges[Boolean.Named("Ignore")].delete_edges_and_faces()
+        mesh.faces[Boolean.Named("Ignore")].delete()
 
         mesh.out()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-def culled_position(position, aspect_ratio, focal_length):
-    return Group("Camera Culling", vector=position, aspect_ratio=aspect_ratio, focal_length=focal_length).ignore
-
 
 # =============================================================================================================================
 # Sierpinski triangle
 
 def sierpinski():
 
-    """ Take the input surface as the fractal iterator
+    with GeoNodes("Sierpinski Triangle"):
+
+        print("="*10, "Sierpinski")
+
+        size        = Float(1, "Size", min=1)
+        iterations  = Integer(5, "Iterations", min=0, max=20)
+        material    = Material(None, "Material")
+
+        iterations += gnmath.log(size, 2).to_integer()
+
+        cloud = Cloud.Points(1, position=0)
+        cloud.points.radius = size
+
+        with Repeat(cloud=cloud, iterations=iterations) as rep:
+
+            node = G.camera.relative().node
+
+            total = rep.cloud.points.count
+
+            with rep.cloud.points.for_each(position=nd.position, radius=nd.radius, ratio=node.ratio) as feel:
+
+                new_points = Mesh.Circle(3, radius=feel.radius).points.to_points()
+                new_points.transform(translation=feel.position)
+                new_points.points.radius = feel.radius/2
+
+                feel.generated.geometry = new_points.switch( (feel.ratio*feel.radius < .01*SENSOR_SIZE) | (total > 1000000), feel.element)
+
+            cloud = Cloud(feel.generated.geometry)
+
+            rep.cloud = G.camera.point_culling(geometry=cloud, radius=nd.radius*2, link_from='TREE')
+
+            #rep.cloud = feel.generated.geometry
+
+        # ----- Finalization
+
+        cloud = Cloud(rep.cloud)
+
+        fractal = Mesh(cloud.points.instance_on(instance=Mesh.Circle(3, fill_type='NGON'), scale=nd.radius*2).realize())
+
+        fractal.set_material(material)
+
+        fractal.out()
+
+        return
+
+
+
+
+        # ::::: The mesh to iterate
+
+        triangle = Mesh.Circle(vertices=3, fill_type='NGON').transform(rotation=(0, 0, pi/2))
+
+        iterator = Mesh(triangle.points.instance_on(instance=triangle).realize())
+        iterator = iterator.merge_by_distance().transform(scale=2/3)
+
+        fractal = Group("Faces Iterator", mesh=iterator, iterations=iterations, scale_factor=.5, camera_culling=cam_culling, aspect_ratio=aspect_ratio, focal_length=focal_length).geometry
+
+        fractal.out()
+
+
+
+def face_fractals():
+    """ Fractals built by replacing a face by several ones
     """
 
     with GeoNodes("Faces Iterator"):
@@ -319,25 +415,6 @@ def sierpinski():
             rep.fractal = step
 
         fractal = rep.fractal
-
-        fractal.out()
-
-    with GeoNodes("Sierpinski"):
-
-        iterations  = Integer(5, "Iterations", min=0, max=10)
-
-        cam_culling   = Boolean(True,     "Camera Culling")
-        aspect_ratio  = Float(16/9,       "Aspect Ratio", tip="Camera aspect ratio, 16/9 for instance")
-        focal_length  = Float.Distance(1, "Focal Length", min=0.01)
-
-        # ::::: The mesh to iterate
-
-        triangle = Mesh.Circle(vertices=3, fill_type='NGON').transform(rotation=(0, 0, pi/2))
-
-        iterator = Mesh(triangle.points.instance_on(instance=triangle).realize())
-        iterator = iterator.merge_by_distance().transform(scale=2/3)
-
-        fractal = Group("Faces Iterator", mesh=iterator, iterations=iterations, scale_factor=.5, camera_culling=cam_culling, aspect_ratio=aspect_ratio, focal_length=focal_length).geometry
 
         fractal.out()
 

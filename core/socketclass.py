@@ -1427,35 +1427,35 @@ class Object(Socket):
     # Methods
 
     @classmethod
-    def Info(cls, object=None, as_instance=None, original=True):
+    def Info(cls, object=None, as_instance=None, transform_space='ORIGINAL'):
         """ > Node <&Node Object Info>
 
         Arguments
         ---------
         - object (Object) : 'Object' socket
         - as_instance (Boolean) : 'As Instance': socket
-        - original (Boolean = True) : transform_space parameter
+        - transform_space (str): parameter 'transform_space' in ('ORIGINAL', 'RELATIVE')
 
         Returns
         -------
         - Node : 'Object Info' node
         """
-        return Node("Object Info", {"Object": object, "As Instance": as_instance}, transform_space = 'ORIGINAL' if original else 'RELATIVE')
+        return Node("Object Info", {"Object": object, "As Instance": as_instance}, transform_space = transform_space)
 
-    def info(self, as_instance=None, original=True):
+    def info(self, as_instance=None, transform_space='ORIGINAL'):
         """ > Node <&Node Object Info>
 
         Arguments
         ---------
         - as_instance (Boolean) : socket 'As Instance' (As Instance)
-        - original (bool) : Node.transform_space in = 'ORIGINAL' if True else 'RELATIVE'
+        - transform_space (str): parameter 'transform_space' in ('ORIGINAL', 'RELATIVE')
 
         Returns
         -------
         - Node : 'Object Info' node
         """
 
-        return self._cache("Object Info", {"Object": self, "As Instance": as_instance}, transform_space = 'ORIGINAL' if original else 'RELATIVE')
+        return self._cache("Object Info", {"Object": self, "As Instance": as_instance}, transform_space = transform_space)
 
 # =============================================================================================================================
 # =============================================================================================================================
@@ -1493,7 +1493,7 @@ class Collection(Socket):
     # Methods
 
     @classmethod
-    def Info(cls, collection=None, separate_children=None, reset_children=None, original=True):
+    def Info(cls, collection=None, separate_children=None, reset_children=None, transform_space='ORIGINAL'):
         """ > Node <&Node Collection Info>
 
         Arguments
@@ -1501,28 +1501,28 @@ class Collection(Socket):
         - collection (Collection) : socket 'Collection' (Collection)
         - separate_children (Boolean) : socket 'Separate Children' (Separate Children)
         - reset_children (Boolean) : socket 'Reset Children' (Reset Children)
-        - original (bool) : Node.transform_space = 'ORIGINAL' if True else 'RELATIVE'
+        - transform_space (str): parameter 'transform_space' in ('ORIGINAL', 'RELATIVE')
 
         Returns
         -------
         - Instances
         """
-        return Node("Collection Info", {"Collection": collection, "Separate Children": separate_children, "Reset Children": reset_children}, transform_space = 'ORIGINAL' if original else 'RELATIVE')._out
+        return Node("Collection Info", {"Collection": collection, "Separate Children": separate_children, "Reset Children": reset_children}, transform_space = transform_space)._out
 
-    def info(self, separate_children=None, reset_children=None, original=True):
+    def info(self, separate_children=None, reset_children=None, transform_space='ORIGINAL'):
         """ > Node <&Node Collection Info>
 
         Arguments
         ---------
         - separate_children (Boolean) : socket 'Separate Children' (Separate Children)
         - reset_children (Boolean) : socket 'Reset Children' (Reset Children)
-        - original (bool) : Node.transform_space = 'ORIGINAL' if True else 'RELATIVE'
+        - transform_space (str): parameter 'transform_space' in ('ORIGINAL', 'RELATIVE')
 
         Returns
         -------
         - Instances
         """
-        return self._cache("Collection Info", {"Collection": self, "Separate Children": separate_children, "Reset Children": reset_children}, transform_space = 'ORIGINAL' if original else 'RELATIVE')
+        return self._cache("Collection Info", {"Collection": self, "Separate Children": separate_children, "Reset Children": reset_children}, transform_space = transform_space)
 
 
 # =============================================================================================================================
