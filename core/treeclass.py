@@ -275,6 +275,10 @@ class Tree:
         for group in bpy.data.node_groups:
             if group.bl_idname not in tree_types:
                 continue
+
+            if not group.description.startswith('GEONODES'):
+                continue
+
             if prefix is not None and group.name[:len(prefix_)] != prefix_:
                 continue
 

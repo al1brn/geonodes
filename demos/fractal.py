@@ -8,8 +8,6 @@ from .. import Repeat, Simulation, Layout
 from .. import Boolean, Integer, Float, Vector, Rotation, Matrix, Color
 from .. import pi, tau
 
-SENSOR_SIZE = .1
-
 # =============================================================================================================================
 # Utilities and macros
 
@@ -18,14 +16,33 @@ SENSOR_SIZE = .1
 
 def random_normal():
 
-    with GeoNodes("Random Normal Value", is_group=True):
+    # Macro
+    def expand_seed(ID, seed, n):
+
+        MAX_INT = 1 << 31 - 1
+
+        with Layout(f"Expand Seed {n} Times"):
+
+            cloud = Cloud.Points(n)
+            values = cloud.points.capture(Integer.Random(0, MAX_INT, id=ID, seed=seed))
+
+            seeds = ()
+            for i in range(n):
+                seeds = seeds + (cloud.points.sample_index(values, i),)
+
+        return seeds
+
+    with GeoNodes("Normal Value", prefix="Random", is_group=True):
 
         value = Float(0,   "Value")
         scale = Float(1,   "Scale")
+        ID    = Integer(0, "ID")
         seed  = Integer(0, "Seed")
 
-        x1 = Float.Random(0, 1, seed=seed)
-        x2 = Float.Random(0, 1, seed=seed.hash_value(seed))
+        seed0, seed1 = expand_seed(ID, seed, 2)
+
+        x1 = Float.Random(0, 1, id=ID, seed=seed0)
+        x2 = Float.Random(0, 1, id=ID, seed=seed1)
 
         y1 = gnmath.sqrt(-2*gnmath.log(x1))*gnmath.cos(2*np.pi*x2)
 
@@ -33,19 +50,56 @@ def random_normal():
 
         y.out("Value")
 
-    with GeoNodes("Random Normal Vector", is_group=True):
+    with GeoNodes("Normal Vector", prefix="Random", is_group=True):
 
-        vector = Vector(0,   "Vector")
-        scale  = Vector(1,   "Scale")
-        seed   = Integer(0,  "Seed")
+        length = Float(1,       "Length",   tip="Vector average length")
+        scale  = Float(0,       "Scale",    tip="Length scale")
+        two_d  = Boolean(False, "2D", tip="2D Vectors (Z = 0)")
 
-        v = Vector((
-            G.random_normal_value(vector.x, scale.x, seed),
-            G.random_normal_value(vector.y, scale.y, seed + 1),
-            G.random_normal_value(vector.z, scale.z, seed + 2),
-        ))
+        ID     = Integer(0, "ID")
+        seed   = Integer(0, "Seed")
 
-        v.out("Vector")
+        # ===== 2D normalized vectors
+
+        seed0, seed1, seed2 = expand_seed(ID, seed, 3)
+
+        theta    = Float.Random(0, 2*pi, seed=seed0)
+        normal2D = Vector((gnmath.cos(theta), gnmath.sin(theta), 0))
+
+        # ===== 3D normalized vectors
+
+        phi = Float.Random(-pi/2, pi/2, seed=seed1)
+        cphi = gnmath.cos(phi)
+        normal3D = Vector((cphi*gnmath.cos(theta), cphi*gnmath.sin(theta), gnmath.sin(phi)))
+
+        # ===== Length
+
+        l = G.random.normal_value(length, scale, id=ID, seed=seed2)
+
+        normal = normal3D.switch(two_d, normal2D)
+        (normal * l).out("Vector")
+        normal.out("Direction")
+
+    with GeoNodes("Shaked Z", prefix="Random", is_group=True):
+
+        c_scale  = Float(0, "Cap Scale",       tip="Cap scale")
+        length   = Float(1, "Length",          tip="Vector average length")
+        l_scale  = Float(0, "Length Scale",    tip="Length scale")
+        ID       = Integer(0, "ID")
+        seed     = Integer(0, "Seed")
+
+        seed0, seed1, seed2 = expand_seed(ID, seed, 3)
+
+        theta  = Float.Random(0, 2*pi, seed=seed0)
+        phi    = G.random.normal_value(pi/2, c_scale, id=ID, seed=seed1)
+
+        cphi   = gnmath.cos(phi)
+        normal = Vector((cphi*gnmath.cos(theta), cphi*gnmath.sin(theta), gnmath.sin(phi)))
+
+        l = G.random.normal_value(length, l_scale, id=ID, seed=seed2)
+
+        (normal * l).out("Vector")
+        normal.out("Direction")
 
 # =============================================================================================================================
 # Camera Culling
@@ -151,30 +205,29 @@ def camera_culling():
         focal_length  = Float(50, "Focal Length", min=1, tip="Focal length in mm")
         aspect_ratio = Float(16/9, "Aspect Ratio", tip="Camera aspect ratio, 16/9 for instance")
 
-        focal_length *= 2.54/50*SENSOR_SIZE
+        focal_length *= 2.54/50
 
         cam_info = nd.active_camera.info(transform_space='RELATIVE')
 
         rot = cam_info.rotation.invert()
         pos = rot @ (nd.position - cam_info.location)
 
-        behind = pos.z > - focal_length
+        behind = pos.z > 0
 
-        t = -focal_length/pos.z
+        #ratio = focal_length/(focal_length - pos.z)
+        ratio = focal_length/(focal_length + pos.length)
 
-        proj = Vector((pos.x*t, pos.y*t, 0))
+
+        proj = Vector((pos.x*ratio, pos.y*ratio, 0))
 
         pos.out("Position")
         proj.out("Projection")
-        t.out("Ratio")
+        ratio.out("Ratio")
         behind.out("Behind")
 
         # Sensor Size
-        height = SENSOR_SIZE
-        width  = aspect_ratio*height
-
-        width.out("Sensor Width")
-        Float(height).out("Sensor Height")
+        aspect_ratio.out("Sensor Width")
+        Float(1.).out("Sensor Height")
 
     # -----------------------------------------------------------------------------------------------------------------------------
     # Position Culling
@@ -192,7 +245,7 @@ def camera_culling():
         half_height = node.sensor_height/2
 
         # Out of the sensor
-        ignore = node.behind
+        ignore = node.position.z > radius
         proj   = node.projection
 
         size = radius * node.ratio
@@ -206,6 +259,10 @@ def camera_culling():
 
         ignore.out("Ignore")
         (-ignore).out("Keep")
+        node.position.out("Position")
+        node.projection.out("Projection")
+        node.ratio.out("Ratio")
+        size.out("Apparent Size")
 
     # -----------------------------------------------------------------------------------------------------------------------------
     # Edge Culling
@@ -280,7 +337,7 @@ def camera_culling():
             delete = flat_face.points.attribute_statistic(Integer.Named("Behind Count")).sum.equal(flat_face.points.count)
 
             area = flat_face.faces.sample_index(nd.face_area, 0)
-            subdiv = 7 #gnmath.max(5, gnmath.log(area, 2)/SENSOR_SIZE)
+            subdiv = 7
 
             cloud = flat_face.subdivide(subdiv).points.to_points()
 
@@ -311,12 +368,20 @@ def sierpinski():
 
         size        = Float(1, "Size", min=1)
         iterations  = Integer(5, "Iterations", min=0, max=20)
+        precision   = Integer(2, "Precision", min=1, max=7)
         material    = Material(None, "Material")
 
         iterations += gnmath.log(size, 2).to_integer()
 
+        iterations += Integer(1).switch(nd.is_viewport)
+        total_max = Integer(10000000).switch(nd.is_viewport, 1000000)
+
+        prec = Float(.1)**precision
+        prec *= Float(.1).switch(nd.is_viewport, 1)
+
         cloud = Cloud.Points(1, position=0)
         cloud.points.radius = size
+
 
         with Repeat(cloud=cloud, iterations=iterations) as rep:
 
@@ -330,7 +395,7 @@ def sierpinski():
                 new_points.transform(translation=feel.position)
                 new_points.points.radius = feel.radius/2
 
-                feel.generated.geometry = new_points.switch( (feel.ratio*feel.radius < .01*SENSOR_SIZE) | (total > 1000000), feel.element)
+                feel.generated.geometry = new_points.switch( (feel.ratio*feel.radius < prec) | (total > total_max), feel.element)
 
             cloud = Cloud(feel.generated.geometry)
 
@@ -348,21 +413,347 @@ def sierpinski():
 
         fractal.out()
 
-        return
+# =============================================================================================================================
+# Multi res grid
+
+def multires_grid():
+
+    with GeoNodes("Multires Grid"):
+
+        size_x = Float(10, "Size X", min=1)
+        size_y = Float(10, "Size Y", min=1)
+        size_z = Float(1,  "Size Z", min=0)
+        prec   = Float(10, "Precision", min=0, tip="Precision in 1000th")/1000 * Integer(1).switch(nd.is_viewport, 10)
+
+        size = gnmath.sqrt(size_x**2 + size_y**2)
+
+        cloud = Cloud.Points(1)
+        cloud.points.store("Size", (size_x, size_y, size_z))
+        cloud.points.store("Stop", False)
+
+        max_points = 10000000 * Integer(10).switch(nd.is_viewport, 1)
+
+        with Repeat(cloud=cloud, iterations=15, iter_scale=1.) as rep:
+
+            count = rep.cloud.points.count
+
+            keep   = Cloud(rep.cloud).points[Boolean.Named("Stop")].separate()
+            divide = Cloud(keep.inverted_)
+
+            divide.points.store("Size", rep.iter_scale)
+
+            rep.iter_scale /= 2
+
+            # Hidden points
+            radius = size*rep.iter_scale
+            node = G.camera.point_culling(divide, radius=radius, link_from='TREE').node
+
+            divide.points.store("Stop", node.ignore)
+
+            # Small apparent size
+            remote_size = radius*node.ratio
+            divide.points.store("Stop", Boolean.Named("Stop") | (count > max_points) | (remote_size < prec))
+
+            keep_ = divide.points[Boolean.Named("Stop")].separate()
+            keep += keep_
+
+            divide = Cloud(keep_.inverted_)
+
+            # Now, we can divide
+            square = Mesh.Grid(size_x=size_x, size_y=size_y, vertices_x=2, vertices_y=2).points.to_points()
+
+            new_squares = Cloud(divide.points.instance_on(instance=square, scale=rep.iter_scale).realize())
+
+            rep.cloud = keep + new_squares
+
+        cloud = rep.cloud
+
+        square = Mesh.Grid(size_x=size_x, size_y=size_y, vertices_x=2, vertices_y=2)
+
+        surface = Mesh(cloud.points.instance_on(instance=square, scale=Float.Named("Size")).realize())
+        surface = surface.merge_by_distance()
 
 
+        surface.out()
 
+# =============================================================================================================================
+# Fractals
 
-        # ::::: The mesh to iterate
+def romanesco():
+    """ Some fractals such as Romanesco Cabbage
 
-        triangle = Mesh.Circle(vertices=3, fill_type='NGON').transform(rotation=(0, 0, pi/2))
+    These 3D fractals replace a single point by other points.
+    Each point has a radius allowing to cull points outside the camera and to
+    limit the fractal depth.
 
-        iterator = Mesh(triangle.points.instance_on(instance=triangle).realize())
-        iterator = iterator.merge_by_distance().transform(scale=2/3)
+    A point has the following attributes:
+    - radius (Float) : size
+    - Up (Vector) : upwards direction
 
-        fractal = Group("Faces Iterator", mesh=iterator, iterations=iterations, scale_factor=.5, camera_culling=cam_culling, aspect_ratio=aspect_ratio, focal_length=focal_length).geometry
+    A fractal iteration replaces each point by other points applying the fractal specific shrink factor.
+
+    Deform Shape
+    ============
+
+    Deforms the point to be less annoying
+
+    Arguments
+    ---------
+    - Geometry : Geometry with points
+    - Twist (Angle) : twist angle per meter
+    - Bend (Angle) : ben angle per meter
+    """
+
+    with GeoNodes("Deform Shape", prefix="Fractal"):
+
+        cloud = Cloud(Geometry())
+
+        twist          = Float.Angle(0, "Twist")
+        bend           = Float.Angle(0, "Bend")
+        bend_direction = Float.Angle(0, "Bend Direction")
+        scale          = Float(1,       "Scale")
+
+        x, y, z = nd.position.xyz
+
+        twist_rot = Rotation((0, 0, twist*z))
+
+        bend_rot  = Rotation((bend*z, 0, 0)) @ Rotation((0, 0, bend_direction))
+
+        rot = twist_rot @ bend_rot
+
+        transform = Matrix.Transform(rotation=rot, scale=scale)
+
+        cloud.points.position = transform @ nd.position
+        cloud.points.store("Up", transform @ Vector.Named("Up"))
+
+        cloud.out()
+
+    # ====================================================================================================
+    # Points Iterator
+    #
+    # Replace points by a set of points
+
+    with GeoNodes("Points Iterator", prefix="Fractal", is_group=True):
+
+        model      = Cloud(None,    "Model", tip="Cloud of points with 'Up' Vector attribute")
+        mesh       = Mesh(None,     "Final Mesh")
+        keep_iter  = Boolean(False, "Keep Iterated")
+        use_normal = Boolean(False, "Use Normal")
+        prec       = Float(10,      "Precision", min=0, tip="Precision in 1000th")/1000 * Integer(1).switch(nd.is_viewport, 10)
+        rot_scale  = Float(0,       "Rotation Scale")
+        disp_scale = Float(0,       "Displacement Scale", min=0)
+        iterations = Integer(5,     "Iterations", min=0, max=20, tip="Number of iterations (CAUTION !)")
+        seed       = Integer(0,     "Seed")
+
+        twist      = Float.Angle(0, "Twist")
+        bend       = Float.Angle(0, "Bend")
+
+        # ===== Model size
+
+        bbox = model.bounding_box
+
+        p0, p1 = bbox.min_, bbox.max_
+        size = (p1 - p0).length
+
+        z0, z1 = p0.z, p1.z
+        height = z1 - z0
+
+        # ===== Control random seed for each point
+
+        model.points.store("Seed",     seed.hash_value(nd.index))
+        model.points.store("Normal",   Vector((0, 0, 1)).switch(use_normal, Vector.Named("Normal")))
+        model.points.store("Rotation", Rotation().switch(use_normal, Rotation.AlignToVector(Vector.Named("Normal"))))
+
+        # ===== Twist and bending
+
+        x, y, z = nd.position.xyz
+
+        twist_rot = Rotation((0, 0, twist*z))
+        bend_rot  = Rotation((bend*z, 0, 0)) @ Rotation((0, 0, bend_direction))
+        rot = twist_rot @ bend_rot
+
+        model.points.store("Deform", rot)
+
+        # ===== Base point
+
+        cloud = Cloud.Points(1)
+
+        cloud.points.radius = 1.
+        cloud.points.store("Iterate",  True)
+        cloud.points.store("Seed",     seed)
+        cloud.points.store("Normal",   (0, 0, 1))
+        cloud.points.store("Rotation", Rotation())
+
+        # ===== Maximum points
+
+        max_points = 10000000 * Integer(10).switch(nd.is_viewport, 1)
+
+        # ===== Iteration loop
+
+        with Repeat(cloud = cloud, iterations=iterations, iteration_max=0) as rep:
+
+            cloud = rep.cloud
+
+            # ===== We continue only if the max number of points is not reached
+
+            npoints = cloud.points.count
+            still_ok = npoints < max_points
+
+            # ===== Visible points to iterate
+
+            with Layout("Visible points to iterate"):
+                node = G.camera.point_culling(cloud, radius=nd.radius*size, link_from='TREE').node
+                cloud.points[Boolean.Named("Iterate")].store("Iterate", still_ok & node.keep & (node.apparent_size > prec))
+
+            # ===== Keep track when iterations finishes
+
+            with Layout("Where iteration terminates"):
+                rep.iteration_max = rep.iteration.switch(cloud.points.attribute_statistic(Boolean.Named("Iterate")).sum.equal(0), rep.iteration_max)
+
+            # ===== Fractal iteration
+
+            with Layout("Iterate: replace points by the model"):
+
+                with Layout("Copy attributes"):
+                    cloud.points.store("Main Seed",     Integer.Named("Seed"))
+                    cloud.points.store("Main Radius",   nd.radius)
+                    cloud.points.store("Main Normal",   Rotation.Named("Deform"))
+                    cloud.points.store("Main Rotation", (Rotation((0, 0, twist)) @ Rotation((bend, 0, 0))) @ Rotation.Named("Rotation"))
+
+                with Layout("Replacement"):
+                    new_cloud = Cloud(cloud.points[Boolean.Named("Iterate")].instance_on(instance=model, rotation=Rotation.Named("Main Rotation"), scale=nd.radius).realize())
+
+                with Layout("Attributes of next iteration"):
+                    new_cloud.points.store("Seed", Integer.Named("Main Seed").hash_value(Integer.Named("Seed")))
+                    new_cloud.points.radius = nd.radius * Float.Named("Main Radius")
+
+                    new_cloud.points.store("Normal",   Rotation.Named("Main Rotation") @ Vector.Named("Normal"))
+                    new_cloud.points.store("Rotation", Rotation.Named("Rotation") @ Rotation.Named("Main Rotation"))
+
+                with Layout("Displacement Noise"):
+                    new_cloud.points.position += G.random.normal_vector(0, disp_scale*nd.radius, id=Integer.Named("Seed"), seed=Integer.Named("Seed"))
+
+                # Done
+
+                del_points  = Cloud(cloud).points[Boolean.Named("Iterate")].delete()
+                keep_points = Cloud(cloud).points.store("Iterate", False)
+
+                rep.cloud = del_points.switch(keep_iter, keep_points) + new_cloud
+
+        cloud = rep.cloud
+
+        Boolean(True).info("Points: " + cloud.points.count.to_string() + " after " + rep.iteration_max.to_string() + " iterations.")
+
+        # ===== Set a mesh to each remaining point
+
+        with Layout("Remove attributes"):
+            cloud.remove_named_attribute("Iterate")
+            cloud.remove_named_attribute("Main Seed")
+            cloud.remove_named_attribute("Main Radius")
+            cloud.remove_named_attribute("Main Deform")
+            cloud.remove_named_attribute("Main Rotation")
+
+        cloud.points.store("Random", Float.Random(0, 1, Float.Named("Seed")))
+
+        fractal = Mesh(cloud.points.instance_on(instance=mesh, rotation=Rotation.Named("Rotation"), scale=nd.radius).realize())
+
+        with Layout("Remove attributes"):
+            fractal.remove_named_attribute("Deform")
+            fractal.remove_named_attribute("Rotation")
+
+        cloud.out("Points")
+        fractal.out("Mesh")
+
+    # ====================================================================================================
+    # Mesh iterator
+
+    with GeoNodes("Mesh Iterator", prefix="Fractal"):
+
+        mesh         = Mesh()
+        size         = Float(100, "Size")
+        model_shrink = Float.Factor(1, "Model Shrink", min=0, max=10)
+        shrink       = Float.Factor(.5, "Shrink Factor", min=.001, max=.999)
+        use_faces    = Boolean(True, "Use Faces", tip="Use faces rather than points")
+        add_central  = Boolean(False, "Add Central Points")
+        material     = Material(None, "Material")
+        smooth       = Boolean(False, "Shade Smooth")
+
+        # ===== Build the model from the input mesh
+
+        with Layout("Build the model from the input mesh"):
+
+            mesh.transform(scale=size)
+
+            point_model = mesh.points.to_points()
+            point_model.points.store("Normal", mesh.points.sample_index(nd.normal, nd.index))
+
+            face_model = mesh.faces.to_points()
+            face_model.points.store("Normal", mesh.faces.sample_index(nd.normal, nd.index))
+
+            model = point_model.switch(use_faces, face_model)
+
+            central_point = Cloud.Points(1)
+            central_point.points.store("Normal", (0, 0, 1))
+
+            model = model.switch(add_central, model + central_point)
+            model.points.radius = shrink
+
+            model.transform(scale=model_shrink)
+
+        if False:
+            test = model.points.instance_on(Mesh.Line(), rotation=Rotation.AlignToVector(Vector.Named("Normal")))
+            test.out()
+
+        # ===== Iterates
+
+        node = G.fractal.points_iterator(model=model, final_mesh=mesh, link_from='TREE').node
+
+        fractal = node.mesh
+        fractal.faces.smooth = smooth
+        fractal.faces.material = material
 
         fractal.out()
+
+
+    # ====================================================================================================
+    # Mesh iterator
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -459,79 +850,6 @@ def split_segments():
                 feel.generated.geometry = new_edges
 
             rep.triangle = feel.generated.geometry
-
-        rep.triangle.out()
-
-# =============================================================================================================================
-# Sierpinski triangle
-
-def sierpinski_OLD():
-
-    with GeoNodes("Sierpinski OLD"):
-
-        iterations  = Integer(5, "Iterations", min=0, max=10)
-        rotation    = Float.Factor(0, "Rotation", min=-1, max=1)
-        noise_scale = Float(0, "Noise Scale")
-        seed        = Integer(0, "Seed")
-
-        triangle = Mesh.Circle(vertices=3, fill_type='NGON')
-
-        with Repeat(triangle=triangle, seed=seed, iterations=iterations) as rep:
-
-            rep.seed = rep.seed.hash_value(rep.iteration)
-
-            i0 = nd.offset_corner_in_face(nd.corners_of_face().corner_index, offset=0)
-            i1 = nd.offset_corner_in_face(nd.corners_of_face().corner_index, offset=1)
-            i2 = nd.offset_corner_in_face(nd.corners_of_face().corner_index, offset=2)
-
-            p0 = rep.triangle.points.sample_index(nd.position, nd.vertex_of_corner(i0))
-            p1 = rep.triangle.points.sample_index(nd.position, nd.vertex_of_corner(i1))
-            p2 = rep.triangle.points.sample_index(nd.position, nd.vertex_of_corner(i2))
-
-            with rep.triangle.faces.for_each(p0=p0, p1=p1, p2=p2, seed=rep.seed) as feel:
-
-                sn = (p1 - p0).length*noise_scale
-                nv1 = Vector((sn, sn, 0))
-                nv0 = -nv1
-
-                #p0 = feel.p0 + Vector.Random(nv0, nv1, feel.seed)
-                #p1 = feel.p1 + Vector.Random(nv0, nv1, feel.seed + 1)
-                #p2 = feel.p2 + Vector.Random(nv0, nv1, feel.seed + 2)
-
-                p0, p1, p2 = feel.p0, feel.p1, feel.p2
-
-                f = .5 + rotation/2
-                f_ = 1 - f
-
-                q0 = (f*p0 + f_*p1)._lc("q0")
-                q1 = (f*p1 + f_*p2)._lc("q1")
-                q2 = (f*p2 + f_*p0)._lc("q2")
-
-                q0 += Vector.Random(nv0, nv1, feel.seed)
-                q1 += Vector.Random(nv0, nv1, feel.seed + 1)
-                q2 += Vector.Random(nv0, nv1, feel.seed + 2)
-
-                tri0 = Mesh.Circle(vertices=3, fill_type='NGON')
-                tri0.points[0].position = p0
-                tri0.points[1].position = q0
-                tri0.points[2].position = q2
-
-                tri1 = Mesh(tri0)
-                tri1.points[0].position = q0
-                tri1.points[1].position = p1
-                tri1.points[2].position = q1
-
-                tri2 = Mesh(tri0)
-                tri2.points[0].position = q1
-                tri2.points[1].position = p2
-                tri2.points[2].position = q2
-
-
-                feel.generated.geometry = tri0.join(tri1, tri2)
-
-
-            rep.triangle = feel.generated.geometry
-
 
         rep.triangle.out()
 
@@ -757,7 +1075,7 @@ def log_spiral():
 # =============================================================================================================================
 # Romanesco cabbage
 
-def romanesco():
+def romanesco2():
 
     with GeoNodes("Romanesco Cabbage"):
 

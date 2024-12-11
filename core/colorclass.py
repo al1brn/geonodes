@@ -355,6 +355,44 @@ class Color(VectorLike):
         """
         return self.HSL.blue
 
+    @property
+    def rgb(self):
+        """ Triplet of RGB components
+
+        > Node <&Node Separate Color>
+
+        Returns
+        -------
+        - Triplet of Floats
+        """
+        return self.RGB.red, self.RGB.greeen, self.RGB.blue
+
+    @property
+    def hsl(self):
+        """ Triplet of RGB components
+
+        > Node <&Node Separate Color>
+
+        Returns
+        -------
+        - Triplet of Floats
+        """
+        return self.HSL.red, self.HSL.greeen, self.HSL.blue
+
+    @property
+    def hsv(self):
+        """ Triplet of RGB components
+
+        > Node <&Node Separate Color>
+
+        Returns
+        -------
+        - Triplet of Floats
+        """
+        return self.HSV.red, self.HSV.greeen, self.HSV.blue
+
+
+
     # ====================================================================================================
     # Methods
 

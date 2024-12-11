@@ -179,7 +179,7 @@ class VectRot(VectorLike):
 
     @property
     def separate_xyz(self):
-        """ > Node <&Separate XYZ"
+        """ > Node <&Separate XYZ>"
 
         Returns
         -------
@@ -188,6 +188,16 @@ class VectRot(VectorLike):
         if self._separate_xyz is None:
             self._separate_xyz = Node("Separate XYZ", {'Vector': self})
         return self._separate_xyz
+
+    @property
+    def xyz(self):
+        """ > Node <&Separate XYZ>"
+
+        Returns
+        -------
+        - triplet (Float, Float, Float)
+        """
+        return self.separate_xyz.x, self.separate_xyz.y, self.separate_xyz.z
 
     @property
     def x(self):

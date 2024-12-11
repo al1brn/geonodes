@@ -389,7 +389,7 @@ class Geometry(Socket, GeoBase):
 
             if name is None:
                 name = type(self).__name__
-                if tree._is_group:
+                if True or tree._is_group:
                     bsock = tree.new_input('NodeSocketGeometry', name, description=tip)
                 else:
                     bsock = tree.get_input_geometry(name, description=tip)
@@ -399,7 +399,7 @@ class Geometry(Socket, GeoBase):
             # - Modifier : we create the input geometry with this name
 
             else:
-                if tree._is_group:
+                if True or tree._is_group:
                     bsock = tree.new_input('NodeSocketGeometry', name, description=tip)
                 else:
                     bsock = tree.get_input_geometry(name, description=tip)

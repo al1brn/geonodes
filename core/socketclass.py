@@ -335,6 +335,7 @@ class Socket(NodeCache):
                 raise NodeError(msg)
 
             raise AttributeError(f"Class {type(self).__name__} as no property named '{name}'")
+            #raise NodeError(f"Class {type(self).__name__} as no property named '{name}'")
 
         return getattr(self.node, name[:-1])
 
