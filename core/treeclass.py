@@ -1028,7 +1028,7 @@ class Node:
             if isinstance(link_from, dict):
                 self.link_input_from(**link_from)
             else:
-                self.link_input_from(link_from)
+                self.link_input_from(link_from, arguments={**sockets, **_items})
 
     def __str__(self):
         return f"<Node '{self._bnode.name}' {self._bnode.bl_idname}>"
@@ -1610,7 +1610,7 @@ class Node:
     # If the other node is None, the Tree input node is taken
     # Create is only valid in this case
 
-    def link_input_from(self, node='TREE', include=None, exclude=[], rename={}, create=True):
+    def link_input_from(self, node='TREE', include=None, exclude=[], rename={}, arguments={}, create=True):
         """ Plug the output sockets of a node into the input sockets of the node.
 
         This method is used to connect several sockets in a compact syntax.
@@ -1668,6 +1668,7 @@ class Node:
         - include (list of strs = None) : connects only the sockets in the list
         - exclude (list of strs = []) : exclude sockets in this list
         - rename (dict = {}) : rename the sockets to the given names
+        - arguments (dict = {}) : arguments used at initialization time. Arguments which are defined in the liste are ignored
         - create (bool = True) : create the output sockets in node if it is a 'Group Input Node'
 
         Returns
@@ -1696,6 +1697,7 @@ class Node:
             print(" - include", include)
             print(" - exclude", exclude)
             print(" - rename ", rename)
+            print(" - args   ", arguments)
             print(" - create ", create)
 
         # ----------------------------------------------------------------------------------------------------
@@ -1723,7 +1725,24 @@ class Node:
             if in_socket.is_linked:
                 continue
 
-            print("CREATE FOR", in_socket, in_socket.is_linked)
+            # ----- In the arguments list
+
+            if False:
+                if in_socket.name in arguments.keys():
+                    continue
+                if  utils.socket_name(in_socket.name) in arguments:
+                    continue
+
+            else:
+                val = None
+                socket_name = in_socket.name
+                pyname = utils.socket_name(socket_name)
+                if socket_name in arguments.keys():
+                    val = arguments[socket_name]
+                elif pyname in arguments:
+                    val = arguments[pyname]
+                if val is not None:
+                    continue
 
             # ----- Socket name can be renamed
 
@@ -1913,7 +1932,7 @@ class Group(Node):
             if isinstance(link_from, dict):
                 self.link_input_from(**link_from)
             else:
-                self.link_input_from(link_from)
+                self.link_input_from(link_from, arguments={**sockets, **kwargs})
 
     @classmethod
     def Prefix(cls, prefix, group_name, sockets={}, **kwargs):
