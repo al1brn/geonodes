@@ -3,10 +3,13 @@ import numpy as np
 #from random import Random
 
 from .. import nd, snd, gnmath, GeoNodes, ShaderNodes, Group, G
-from .. import Geometry, Mesh, Curve, Cloud, Material, String, Texture
+from .. import Geometry, Mesh, Curve, Cloud, Material, String, Texture, Shader
 from .. import Repeat, Simulation, Layout
 from .. import Boolean, Integer, Float, Vector, Rotation, Matrix, Color
 from .. import pi, tau
+
+
+FOCAL_FACTOR = .04939
 
 # =============================================================================================================================
 # Utilities and macros
@@ -202,6 +205,8 @@ def camera_culling():
 
     with GeoNodes("Projection", prefix="Camera", is_group=True):
 
+        FOCAL_FACTOR = .04939
+
         # ===== Arguments
 
         position     = Vector(0,   "Position", tip="Point position")
@@ -210,7 +215,7 @@ def camera_culling():
         focal_length = Float(50,   "Focal Length", min=1, tip="Focal length in mm")
         aspect_ratio = Float(16/9, "Aspect Ratio", tip="Camera aspect ratio, 16/9 for instance")
 
-        focal_length *= 2.54/50
+        focal_length *= FOCAL_FACTOR
 
         # ===== In the camera frame
 
@@ -222,24 +227,28 @@ def camera_culling():
             pos      = rot @ vect
             distance = pos.length
 
-        # ===== Position above XY plane are behind the camera
+        # ===== Position above sensor are behind the camera
+        # Taking into account the radius
 
-        with Layout("Behind the Sensort"):
-            behind = pos.z > radius
-
-        # ===== Projection ratio
-
-        with Layout("Projection"):
-            ratio = focal_length/(focal_length + distance)
-            app_radius = ratio*radius
-
-            proj = Vector((pos.x*ratio, pos.y*ratio, 0))
+        with Layout("Behind the Sensor"):
+            z_pos = pos.z._lc("Z Position")
+            behind = z_pos - radius > 0
 
         # ===== Projection of the normal along the observation direction
         # Negative values are for escaping normals
 
         with Layout("Normal direction relatively to position"):
             outwards = normal.dot(vect.normalize())
+
+        # ===== Projection ratio
+
+        with Layout("Radius ratio"):
+            ratio = focal_length/gnmath.max(.0001, distance - radius)
+            app_radius = ratio*radius
+
+        with Layout("Projection"):
+            rz   = -focal_length/pos.z
+            proj = Vector((pos.x*rz, pos.y*rz, 0))
 
         # ===== Outside the sensor
         # sensor dims : (aspect_ratio, 1)
@@ -272,16 +281,11 @@ def camera_culling():
 
         cloud = Cloud(Geometry())
 
-        # ===== Arguments
-
-        normal_attr = String("Normal", "Normal", tip="Normal attribute")
-        back_faces  = Float.Factor(1, "Back Faces Culling", min=-1, max=1, tip="Ignore points whose 'Normal' vector points outwards the camera position (1: keep all).")
-
         # ===== Projection into the camera space
 
-        node = G.camera.projection(position=nd.position, radius=nd.radius, normal=Vector.Named(normal_attr), link_from='TREE').node
+        node = G.camera.projection(position=nd.position, radius=nd.radius, link_from={'exclude': 'Normal'}).node
 
-        cloud.points[node.behind | node.outside | (node.outwards > back_faces)].delete()
+        cloud.points[node.behind | node.outside].delete()
 
         cloud.out()
 
@@ -335,33 +339,37 @@ def camera_culling():
 
         mesh = Mesh()
 
-        back_faces = Float.Factor(1, "Back Faces Culling", min=-1, max=1, tip="Ignore points whose 'Normal' vector points outwards the camera position (1: keep all).")
+        back_faces = Float.Factor(1, "Back Faces Culling", min=0, max=1, tip="Ignore points whose 'Normal' vector points outwards the camera position (1: keep all).")
 
-        # ===== Vertices Projection
+        # ===== Faces facing outwards
 
-        node = G.camera.projection(position=nd.position, link_from={'exclude': ['Radius', 'Normal']}).node
+        dual = Mesh(mesh).dual()
+        dual.points.store("Normal", mesh.faces.sample_index(nd.normal, nd.index))
+        node = G.camera.projection(position=nd.position, radius=None, normal=Vector.Named("Normal")).node
+
+        mesh.faces[dual.points.sample_index(node.outwards, nd.index) > back_faces].delete()
 
         # ===== All the corners behind
+
+        # Points projection
+        node = G.camera.projection(position=nd.position, link_from={'exclude': ['Radius', 'Normal']}).node
 
         with Layout("Faces with all vertices behind the sensor"):
             mesh.points.store("TEMP Vertex Behind", Float(node.behind))
             mesh.faces.store("TEMP Face Behind", Float.Named("TEMP Vertex Behind"))
 
             ignore = Float.Named("TEMP Face Behind") > 1 - 1/nd.corners_of_face(face_index=nd.index).total
-            mesh.faces.store("TEMP Outside", ignore)
+            mesh.faces[ignore].delete()
 
-            if False:
-                mesh.faces[ignore].delete_faces()
-                mesh.out()
-                return
-
-        # ===== Projected faces
+        # ===== Faces outside the sensor
 
         projected = Mesh(mesh)
         projected.points.position = node.projection
 
         half_width  = Float(None, "Aspect Ratio")/2
         half_height = .5
+
+        inside = -Boolean.Named("TEMP Outside")
 
         with projected.faces.for_each() as feel:
             bbox = feel.element.bounding_box
@@ -371,31 +379,78 @@ def camera_culling():
             outside |= bbox.max_.y < -half_height
             outside |= bbox.min_.y >  half_height
 
-            face_elem = Mesh(feel.element)
+            feel.generated.geometry = feel.element
+            feel.generated.outside = outside
 
-            face_elem.faces.store("Outside", outside)
-            feel.generated.geometry = face_elem
-
-        mesh.faces.store("TEMP Outside", Boolean.Named("TEMP Outside") | Mesh(feel.generated.geometry).faces.sample_index(Boolean.Named("Outside"), nd.index))
-
-        if False:
-            mesh.faces[Boolean.Named("TEMP Outside")].delete_faces()
-            mesh.out()
-            return
-
-        # ===== Back faces
-
-        dual = mesh.dual()
-        dual.points.store("Normal", mesh.faces.sample_index(nd.normal, nd.index))
-        node = G.camera.projection(position=nd.position, radius=None, normal=Vector.Named("Normal")).node
-
-        mesh.faces.store("TEMP Outside", Boolean.Named("TEMP Outside") | dual.points.sample_index(node.outwards, nd.index) > back_faces)
+        mesh.faces[Mesh(feel.generated.geometry).faces.sample_index(feel.generated.outside, nd.index)].delete()
 
         # ===== Done
 
-        mesh.faces[Boolean.Named("TEMP Outside")].delete_faces()
-        mesh.remove_named_attribute("TEMP*", exact=False)
         mesh.out()
+
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Camera debug
+
+    with ShaderNodes("DBG Face"):
+
+        col = snd.attribute(attribute_name="RGB")
+        ped = Shader.Principled(base_color=col)
+        ped.out()
+
+    with GeoNodes("Debug", prefix="Camera"):
+
+        mesh = Mesh(Geometry())
+        mesh.faces.material = "DBG Face"
+        prec = Float(10,     "Precision", min=0, tip="Precision in 1000th (use with care)")/1000 * Integer(1).switch(nd.is_viewport, 10)
+        show_grid     = Boolean(False, "Grid")
+        show_original = Boolean(True, "Show Mesh")
+
+        node = G.camera.projection(position=nd.position, radius=None, normal=None, link_from='TREE').node
+
+        # ===== Sensor
+
+        sensor = Mesh.Grid(size_x=Float(None, "Aspect Ratio"), size_y=1, vertices_x=2, vertices_y=2)
+        sensor.faces.delete_faces()
+
+        grid = Mesh.Grid(size_x=10*prec, size_y=10*prec, vertices_x=11, vertices_y=11)
+        grid.faces.delete_faces()
+
+        sensor += grid.switch(-show_grid)
+
+        # ===== Projected Mesh
+
+        proj = Mesh(mesh)
+        proj.points.position = node.projection
+        proj.faces.delete_faces()
+
+        # ==== Points
+
+        hidden = Boolean.MenuSwitch({'Behind': node.behind, 'Outside': node.outside, 'All': (node.behind | node.outside)}, name='Hidden Points')
+
+        mesh.points.store("RGB", Color((0, 1, 0)).switch(hidden, (1, 0, 0)))
+        pts = Mesh(mesh.points.instance_on(instance=Mesh.UVSphere(radius=.02)).realize())
+        pts.faces.material = "DBG Face"
+
+        geo = sensor + proj
+        cam_info = nd.active_camera.info()
+
+        geo.transform(translation=(0, 0, Float(None, "Focal Length")*(-FOCAL_FACTOR)))
+        geo.transform(translation=cam_info.location, rotation=cam_info.rotation)
+
+        # ===== Faces
+
+        node = G.camera.projection(position=nd.position, radius=gnmath.sqrt(nd.face_area), normal=nd.normal).node
+
+        face_behind = node.behind
+        face_outside = node.outside
+        face_back = node.outwards > 0
+        face_size = node.radius < prec
+        face_all = face_behind | face_outside | face_size | face_back
+
+        hidden = Boolean.MenuSwitch({'All': face_all, 'Behind': face_behind, 'Outside': face_outside, 'Backwards': face_back, 'Radius': face_size}, name='Hidden Surfaces')
+        mesh.faces.store("RGB", Color((0, 1, 0)).switch(hidden,  (1, 0, 0)))
+
+        mesh.switch(-show_original).join(geo, pts).out()
 
 
 # =============================================================================================================================
@@ -405,54 +460,63 @@ def sierpinski():
 
     with GeoNodes("Sierpinski Triangle"):
 
-        print("="*10, "Sierpinski")
+        # ===== Macro : build a triangle from points
 
-        size        = Float(1, "Size", min=1)
-        iterations  = Integer(5, "Iterations", min=0, max=20)
-        precision   = Integer(2, "Precision", min=1, max=7)
-        material    = Material(None, "Material")
+        def new_triangle(p0, p1, p2):
+            with Layout("Triangle From Points"):
+                triangle = Mesh.Circle(3, fill_type='NGON')
+                triangle.points[0].position = p0
+                triangle.points[1].position = p1
+                triangle.points[2].position = p2
+                return triangle
 
-        iterations += gnmath.log(size, 2).to_integer()
+        # ===== Triangulate the input Mesh
 
-        iterations += Integer(1).switch(nd.is_viewport)
-        total_max = Integer(10000000).switch(nd.is_viewport, 1000000)
+        triangles  = Mesh(None,    "Geometry").triangulate()
+        iterations = Integer(3,    "Iterations", min=0, max=20, tip="Maximum number of iterations (use with care)")
+        prec       = Float(10,     "Precision", min=0, tip="Precision in 1000th (use with care)")/1000 * Integer(1).switch(nd.is_viewport, 10)
 
-        prec = Float(.1)**precision
-        prec *= Float(.1).switch(nd.is_viewport, 1)
+        # ===== Size of the faces
 
-        cloud = Cloud.Points(1, position=0)
-        cloud.points.radius = size
+        triangles.faces.store("Size", gnmath.sqrt(nd.face_area))
+        triangles.faces.store("Iterate", True)
 
+        with Repeat(triangles=triangles, max_iteration=0, iterations=iterations) as rep:
 
-        with Repeat(cloud=cloud, iterations=iterations) as rep:
+            # ===== The coordinates of the triangle corners
 
-            node = G.camera.relative().node
+            with Layout("The 3 triangle corners"):
+                pts = [rep.triangles.points.sample_index(nd.position, nd.vertex_of_corner(nd.offset_corner_in_face(nd.corners_of_face(), i))) for i in range(3)]
 
-            total = rep.cloud.points.count
+            node = G.camera.projection(position=nd.position, radius=Float.Named("Size"), link_from={'exclude': 'Normal'}).node
+            rep.triangles.faces["Iterate"].store("Iterate", -(node.behind | node.outside | (node.radius < prec)))
+            rep.triangles.faces.store("Size", Float.Named("Size")/2)
 
-            with rep.cloud.points.for_each(position=nd.position, radius=nd.radius, ratio=node.ratio) as feel:
+            with rep.triangles.faces.for_each(iterate=Boolean.Named("Iterate"), p0=pts[0], p1=pts[1], p2=pts[2]) as feel:
 
-                new_points = Mesh.Circle(3, radius=feel.radius).points.to_points()
-                new_points.transform(translation=feel.position)
-                new_points.points.radius = feel.radius/2
+                p0, p1, p2 = feel.p0, feel.p1, feel.p2
 
-                feel.generated.geometry = new_points.switch( (feel.ratio*feel.radius < prec) | (total > total_max), feel.element)
+                q0, q1, q2 = (p0 + p1).scale(.5), (p1 + p2).scale(.5), (p2 + p0).scale(.5)
 
-            cloud = Cloud(feel.generated.geometry)
+                feel.generated.geometry = feel.element.switch(feel.iterate, new_triangle(q0, p1, q1) + new_triangle(q1, p2, q2) + new_triangle(q2, p0, q0))
 
-            rep.cloud = G.camera.point_culling(geometry=cloud, radius=nd.radius*2, link_from='TREE')
+            rep.triangles = feel.generated.geometry
 
-            #rep.cloud = feel.generated.geometry
+        triangles = Mesh(rep.triangles)
 
-        # ----- Finalization
+        triangles.faces.material = Material(None, "Material")
+        triangles.out()
 
-        cloud = Cloud(rep.cloud)
+    with GeoNodes("DEMO Sierpinski"):
 
-        fractal = Mesh(cloud.points.instance_on(instance=Mesh.Circle(3, fill_type='NGON'), scale=nd.radius*2).realize())
+        ico = Mesh.IcoSphere(subdivisions=2, radius=10)
 
-        fractal.set_material(material)
+        fractal = Mesh(G.sierpinski_triangle(ico, link_from='TREE'))
+
+        fractal.points.position = fractal.points.position.normalize().scale(10)
 
         fractal.out()
+
 
 # =============================================================================================================================
 # Multi resolution surface
@@ -475,7 +539,7 @@ def multires_surface():
         position   = Vector(None,  "Position")
         init_split = Integer(3,    "Initial UV Subdivisions", min=0, max=5)
         prec       = Float(10,     "Precision", min=0, tip="Precision in 1000th (use with care)")/1000 * Integer(1).switch(nd.is_viewport, 10)
-        back_faces = Float.Factor(.1, "Back Faces Culling", min=-1, max=1, tip="Don't iterate initial backward faces (-1: iterate all).")
+        back_faces = Float.Factor(.1, "Back Faces Culling", min=0, max=1, tip="Don't iterate initial backward faces (-1: iterate all).")
         iterations = Integer(5,    "Iterations", min=0, max=20, tip="Maximum number of iterations (use with care)")
 
         # ===== Surface clouds
@@ -557,6 +621,61 @@ def multires_surface():
         surface.out()
 
         Boolean(True).info("Faces: " + surface.faces.count.to_string() + ", Iterations: " + rep.max_iteration.to_string())
+
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Multires plane
+
+    with GeoNodes("Multires Faces"):
+
+        mesh = Mesh()
+
+        prec       = Float(10,        "Precision",          min=0, tip="Precision in 1000th (use with care)")/1000 * Integer(1).switch(nd.is_viewport, 10)
+        back_faces = Float.Factor(.1, "Back Faces Culling", min=0, max=1, tip="Don't iterate initial backward faces (-1: iterate all).")
+        iterations = Integer(1,       "Iterations",         min=0, max=20, tip="Maximum number of iterations (use with care)")
+
+        # ===== Prepare the mesh
+
+        mesh.faces.store("Iterate", True)
+
+        max_points = 1000000 * Integer(10).switch(nd.is_viewport, 1)
+
+        # ===== Subdivision loop
+
+        with Repeat(mesh=mesh, iterations=iterations) as rep:
+
+            iterate = Boolean.Named("Iterate")
+
+            # ----- Max number of points is reached
+
+            npoints = rep.mesh.points.count
+            iterate = iterate & npoints < max_points
+
+            # ----- Face projection
+
+            radius = 4*gnmath.sqrt(nd.face_area)
+            #radius = nd.face_area
+            node = G.camera.projection(position=nd.position, radius=radius, normal=nd.normal).node
+
+            iterate = iterate & -(node.behind | node.outside | (node.radius < prec) | (node.outwards > back_faces))
+            #iterate = iterate & -(node.radius < prec)
+
+            rep.mesh.faces[Boolean.Named("Iterate")].store("Iterate", iterate)
+
+            subdiv = rep.mesh.faces[Boolean.Named("Iterate")].separate()
+            keep   = subdiv.inverted_
+
+            subdiv.subdivide(1)
+
+            rep.mesh = keep + subdiv
+
+
+
+        mesh = rep.mesh
+
+        mesh.remove_named_attribute("Iterate")
+
+        mesh.out()
+
 
     # -----------------------------------------------------------------------------------------------------------------------------
     # Demo on how to use the Multires Surface group

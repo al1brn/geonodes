@@ -52,16 +52,17 @@ from .treeclass import Tree, Node
 
 class NodeItems:
 
-    def __init__(self, node, name, sockets={}, **snake_case_sockets):
+    def __init__(self, node, name, sockets={}, capture=[], **snake_case_sockets):
         """ > Node items property
 
         Some nodes have xxx_items collection for dynamic sockets. This class manages theis behavior,
         especially for zones (Simulation, Repeat, ForEachElement)
         """
 
-        self._node  = node
-        self._name  = name
-        self._items = getattr(node._bnode, name + '_items')
+        self._node     = node
+        self._name     = name
+        self._capture  = [s.lower() for s in capture]
+        self._items    = getattr(node._bnode, name + '_items')
 
         # ----- Create the simulation state items in the output node
 
@@ -77,6 +78,9 @@ class NodeItems:
 
         for i, bsocket in enumerate(sockets):
 
+            if not input and (bsocket.identifier.lower() in self._capture):
+                return self._node.data_socket(bsocket)
+
             if not bsocket.identifier.lower().startswith(self._name):
                 continue
 
@@ -91,7 +95,16 @@ class NodeItems:
     def __getitem__(self, index):
         item = self.get_inout(index, input=False)
         if item is None:
-            raise NodeError(f"Socket '{index}' not found in items {self._name} of the node '{self._node.name}'")
+            bnode = self._node._bnode
+
+            for bsock in bnode.outputs:
+                print("SOCKET", bsock.name)
+                for k in dir(bsock):
+                    print(f"- {k:15s} : {str(getattr(bsock, k)):25s}")
+                print()
+
+            raise NodeError(f"Socket '{index}' not found in items {self._name} of the node '{bnode.name}'",
+                valids=[item for item in self._items])
         return item
 
     def __setattr__(self, name, value):
@@ -493,7 +506,7 @@ class ForEachElement(Zone):
         self._input.geometry = geometry
         self._input.selection = selection
 
-        self.main      = NodeItems(self._output, 'main')
+        self.main      = NodeItems(self._output, 'main', capture=['Geometry'])
         self.generated = NodeItems(self._output, 'generation')
 
         self.init_zone(sockets, **snake_case_sockets)
