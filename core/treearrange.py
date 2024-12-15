@@ -598,7 +598,7 @@ class Frame(Node):
     @property
     def dimensions(self):
 
-        if Node.has_node_editor:
+        if self.has_node_editor:
             return self.bnode.dimensions
 
         W0, W1, H0, H1 = 0, 400, 0, 400
@@ -676,7 +676,7 @@ class Frame(Node):
 
     def frame_reroutes(self):
 
-        # ----- All the links between a node inseide the frame and a node outside the frame
+        # ----- All the links between a node inside the frame and a node outside the frame
 
         in_links = []
         out_links = []
@@ -717,13 +717,14 @@ class Frame(Node):
 
         source_nodes = {}
         for link in out_links:
-            reroute = source_nodes.get(link.node0_key)
+            source_key = link.node0_key
+            reroute = source_nodes.get(source_key)
             if reroute is None:
                 reroute = link.insert_reroute(self)
                 reroute.bnode.location = (x + 100, y)
                 y += y_sepa
 
-                source_nodes[link.node0_key] = reroute
+                source_nodes[source_key] = reroute
 
             else:
                 link.replace_from(reroute, index0=0)
