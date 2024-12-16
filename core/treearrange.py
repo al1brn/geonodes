@@ -603,14 +603,9 @@ class Frame(Node):
 
         W0, W1, H0, H1 = 0, 400, 0, 400
 
-        print("Frame", self.bnode.label)
-
         for inode, node in enumerate(self.children):
 
             ndim = node.dimensions
-
-            if True or node.is_frame:
-                print("   SUB ::::", ndim, " @ ", node.bnode.location)
 
             if True:
                 w1 = 2*node.bnode.location[0]
@@ -631,9 +626,6 @@ class Frame(Node):
                 W1 = max(W1, w1)
                 H0 = min(H0, h0)
                 H1 = max(H1, h1)
-
-        print("RETURN", ((W1 - W0) + 120, (H1 - H0) + 120))
-        print()
 
         return ((W1 - W0) + 120, (H1 - H0) + 120)
 
