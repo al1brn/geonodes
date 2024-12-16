@@ -790,10 +790,11 @@ def romanesco():
 
     with GeoNodes("Cloud Iterator", prefix="Fractal"):
 
-        model        = Geometry(None,       "Model",   tip="Cloud of points to iterate")
+        model        = Geometry(None,       "Geometry", tip="Geometry with points")
         scale        = Float(.5,            "Scale", min=.01, max=.999, tip="Iteration scale")
         normal       = Vector((0, 0, 1),    "Normal",  tip="Normal to the points")
         trans        = Float.Factor(0,      "Translate", min=-1, max=1, tip="Translation factor along the normal")
+        size_scale   = Float.Factor(0,      "Size Scale", min=0, max=1, tip="Size Scale")
         twist        = Float.Angle(0,       "Twist", tip="Rotation around the normal the normal")
         twist_scale  = Float.Angle(0,       "Twist Scale", tip="Twist noise at each iteration")
         bend         = Float.Angle(0,       "Bend",  tip="Bending angle")
@@ -905,9 +906,12 @@ def romanesco():
                     cloud.points._Main_Position = nd.position
 
                 with Layout("Replacement"):
+                    inst_scale = Float("Main Scale")
+                    seed = Integer("Seed")
+                    inst_scale = G.random.normal_value(inst_scale, inst_scale*size_scale, id=seed, seed=seed + 1000)
                     instances = cloud.points[Boolean("Iterate")].instance_on(instance=model,
-                        #rotation = Rotation.Named("Main Rotation"),
-                        scale    = Float("Main Scale"))
+                        #scale    = Float("Main Scale"))
+                        scale    = inst_scale)
 
                     # Set the instance @ origin to perform deformations
                     instances.insts.position = 0
@@ -992,57 +996,108 @@ def romanesco():
 
         cloud.out("Points")
 
-    return
-
     # ====================================================================================================
     # Mesh iterator
 
     with GeoNodes("Mesh Iterator", prefix="Fractal"):
 
         mesh         = Mesh()
-        size         = Float(100, "Size")
-        model_shrink = Float.Factor(1, "Model Shrink", min=0, max=10)
         shrink       = Float.Factor(.5, "Shrink Factor", min=.001, max=.999)
         use_faces    = Boolean(True, "Use Faces", tip="Use faces rather than points")
-        add_central  = Boolean(False, "Add Central Points")
-        material     = Material(None, "Material")
-        smooth       = Boolean(False, "Shade Smooth")
 
         # ===== Build the model from the input mesh
 
-        with Layout("Build the model from the input mesh"):
-
-            mesh.transform(scale=size)
-
+        with Layout("Model from points"):
             point_model = mesh.points.to_points()
-            point_model.points.store("Normal", mesh.points.sample_index(nd.normal, nd.index))
+            point_model.points._Normal = mesh.points.sample_index(nd.normal, nd.index)
 
+        with Layout("Model from Faces"):
             face_model = mesh.faces.to_points()
-            face_model.points.store("Normal", mesh.faces.sample_index(nd.normal, nd.index))
+            face_model.points._Normal = mesh.faces.sample_index(nd.normal, nd.index)
 
-            model = point_model.switch(use_faces, face_model)
+        model = point_model.switch(use_faces, face_model)
 
-            central_point = Cloud.Points(1)
-            central_point.points.store("Normal", (0, 0, 1))
+        with Layout("Fractal"):
 
-            model = model.switch(add_central, model + central_point)
-            model.points.radius = shrink
+            cloud = G.fractal.cloud_iterator(geometry=model, scale=shrink, normal=Vector("Normal"), link_from='TREE')
 
-            model.transform(scale=model_shrink)
+        mesh = Mesh(cloud.points.instance_on(instance=mesh, scale=nd.radius, rotation=Rotation("Rotation")).realize())
 
-        if False:
-            test = model.points.instance_on(Mesh.Line(), rotation=Rotation.AlignToVector(Vector.Named("Normal")))
-            test.out()
+        mesh.out()
 
-        # ===== Iterates
+    with GeoNodes("Romanesco Cabbage", prefix="Fractal"):
 
-        node = G.fractal.points_iterator(model=model, final_mesh=mesh, link_from='TREE').node
+        sides   = Integer(3,  "Sides", min=3, max=20, tip="Number of sides")
+        n       = Integer(5,  "Instances per side", min=3, max=50, tip="Number of instances per side")
+        height  = Float(2,   "Height", min=.1, max=10, tip="Cabbage heigth")
+        #shrink  = Float.Factor(.5, "Shrink Factor", min=.001, max=.999)
 
-        fractal = node.mesh
-        fractal.faces.smooth = smooth
-        fractal.faces.material = material
 
-        fractal.out()
+        # ===== Cone Side
+
+        with Layout("Cone Side"):
+
+            width = 1.
+            line = Cloud.Points(count=n)
+            line.points._Normal = Vector((height, 0, width)).normalize()
+
+            # index 0 at bottom
+
+            # q**n = eps ==> q = eps**(1/n)
+            eps = .01
+            q = eps**(1/n)
+
+            # 1 = shrink*(1 - q**n)/(1 - q) => shrink = (1 - q)/(1 - eps)
+            shrink = 2*(1 - q)/(1 -eps) # Diameter
+
+            # ratio from 1 to q**n
+            # CAUTION : missing the top node because index == n doesn't exist
+            ratio = q**nd.index
+            ratio0, ratio1 = 1, q**n
+            ratio = (ratio - ratio0)/(ratio1 - ratio0)
+
+            line.points.position = (-width*ratio, 0, ratio*height)
+            line.points.radius   = shrink*q**nd.index
+
+        # ===== Duplicate
+
+        with Layout("Duplicate to form a cone"):
+
+            circle = Mesh.Circle(radius=width, vertices=sides)
+            rot = Rotation((0, 0, (2*np.pi)*nd.index/sides))
+            model = circle.points.instance_on(instance=line, rotation=rot)
+
+            model = Cloud(model.realize())
+
+            rot = Rotation((0, 0, (2*np.pi)*(nd.index// n)/sides))
+            model.points._Normal = rot @ Vector("Normal")
+
+        # ===== Point at the top
+
+        with Layout("Summit"):
+            summit = Cloud.Points(1, position=(0, 0, height))
+            summit.points._Normal = (0, 0, 1)
+            summit.points.radius = shrink*q**n
+
+            model += summit
+
+        # ===== Let's iterate
+
+        cloud = G.fractal.cloud_iterator(geometry=model, scale=nd.radius, normal=Vector("Normal"), link_from='TREE')
+
+        # ===== Finalize
+
+        cone = Mesh.Cone(radius_bottom=width, depth=height)
+        mesh = Mesh(cloud.points.instance_on(instance=cone, scale=nd.radius, rotation=Rotation("Rotation")).realize())
+
+        mesh.faces.smooth = True
+        mesh.faces.material = Material(None, "Material")
+
+        mesh.out()
+
+
+    return
+
 
     # ====================================================================================================
     # Logarithmic Spiral
