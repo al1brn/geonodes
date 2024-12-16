@@ -356,7 +356,7 @@ class Geometry(Socket, GeoBase):
 
     SOCKET_TYPE = 'GEOMETRY'
 
-    def __init__(self, value=None, name=None, tip=None):
+    def __init__(self, value: Socket | None = None, name: str | None = None, tip: str | None = None):
         """ Socket of type 'GEOMETRY'.
 
         If value is None, a Group Input socket of type Geometry is created.
@@ -556,7 +556,7 @@ class Geometry(Socket, GeoBase):
 
     # ----- Remove named attribute
 
-    def remove_named_attribute(self, name, exact=True):
+    def remove_named_attribute(self, name, pattern_mode=None, exact=True):
         """ > Node <&Node Remove Named Attribute>
 
         [&JUMP]
@@ -570,7 +570,28 @@ class Geometry(Socket, GeoBase):
         -------
         - Geometry : self
         """
-        return self._jump(Node('Remove Named Attribute', {'Geometry': self, 'Name': name}, pattern_mode = 'EXACT' if exact else 'WILDCARD')._out)
+        if pattern_mode is None:
+            pattern_mode = 'EXACT' if exact else 'WILDCARD'
+        return self._jump(Node('Remove Named Attribute', {'Geometry': self, 'Name': name}, pattern_mode = pattern_mode)._out)
+
+    def remove_names(self, *names, exact=True):
+        """ > Node <&Node Remove Named Attribute>
+
+        [&JUMP]
+
+        Arguments
+        ---------
+        - name (String) : socket
+        - exact (Boolean) : pattern_mode = 'EXACT' if True else 'WILDCARD'
+
+        Returns
+        -------
+        - Geometry : self
+        """
+        with Layout("Remove Names", color='AUTO_GEN'):
+            for name in names:
+                self.remove_named_attribute(name, exact=exact)
+        return self
 
     # ====================================================================================================
     # Sample nodes without domain
@@ -894,7 +915,7 @@ class Domain(GeoBase, NodeCache):
 
     DOMAIN_NAME = None
 
-    def __init__(self, geometry):
+    def __init__(self, geometry: Geometry):
         """ > Base class for geometry domains
 
         A domain stores the default value to be set in node needing a **domain** parameter

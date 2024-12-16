@@ -40,7 +40,7 @@ import numpy as np
 import bpy
 from . import utils
 from .treeclass import Tree, Node
-from .socketclass import Attribute
+from .socketclass import Socket, Attribute
 
 # =============================================================================================================================
 # =============================================================================================================================
@@ -408,7 +408,7 @@ class Vector(VectRot):
 
     SOCKET_TYPE = 'VECTOR'
 
-    def __init__(self, value=(0, 0, 0), name=None, tip=None, subtype='NONE'):
+    def __init__(self, value: tuple | Socket | str | None = (0, 0, 0), name: str | None = None, tip: str | None = None, subtype: str = 'NONE'):
         """ > Socket of type VECTOR
 
         If **value** argument is None:
@@ -930,7 +930,7 @@ class Rotation(VectRot):
 
     SOCKET_TYPE = 'ROTATION'
 
-    def __init__(self, value=(0., 0., 0.), name=None, tip=None):
+    def __init__(self, value: tuple | Socket | str | None = (0., 0., 0.), name: str | None = None, tip: str | None = None):
         """ > Socket of type ROTATION
 
         If **value** argument is None:
@@ -1572,7 +1572,7 @@ class Matrix(Attribute):
 
     SOCKET_TYPE = 'MATRIX'
 
-    def __init__(self, value=None, name=None, tip=None):
+    def __init__(self, value: tuple | list | Socket | str | None = None, name: str | None = None, tip: str | None = None):
         """ Matrix data socket ('MATRIX')
 
         A Matrix socket can be initialized with an array of size 16 (the shape is ignored)

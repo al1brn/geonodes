@@ -383,7 +383,6 @@ class Socket(NodeCache):
 
         return super().__setattr__(name, value)
 
-
     # =============================================================================================================================
     # Test a value in a list
 
@@ -966,7 +965,7 @@ class String(Socket):
 
     SOCKET_TYPE = 'STRING'
 
-    def __init__(self, value="", name=None, tip=None):
+    def __init__(self, value: str | Socket | None = "", name: str | None = None, tip: str | None = None):
         """ Socket of type String
 
         Node <&Node String>
@@ -1227,7 +1226,7 @@ class Material(Socket):
 
     SOCKET_TYPE = 'MATERIAL'
 
-    def __init__(self, value=None, name=None, tip=None):
+    def __init__(self, value: bpy.types.Material | Socket | str | None = None, name: str | None = None, tip: str | None = None):
         """ Class Material data socket
 
         Node <&Node Material>
@@ -1262,7 +1261,7 @@ class Image(Socket):
 
     SOCKET_TYPE = 'IMAGE'
 
-    def __init__(self, value=None, name=None, tip=None):
+    def __init__(self, value: bpy.types.Image | str | Socket | None = None, name: str | None = None, tip: str | None = None):
         """ Class Image data socket
 
         Node <&Node Image>
@@ -1384,12 +1383,12 @@ class TextureRoot(Socket):
 
     SOCKET_TYPE = 'TEXTURE'
 
-    def __init__(self, value=None, name=None, tip=None):
+    def __init__(self, value: bpy.types.Texture | str | Socket | None = None, name: str | None = None, tip: str | None = None):
         """ Socket of type Texture
 
         Arguments
         ---------
-        - value (bpy.types.Image or str = None) : image or image name in bpy.data.images
+        - value (bpy.types.Texture or str = None) : image or image name in bpy.data.images
         - name (str = None) : create a group input socket of type Image if not None
         - tip (str = None) : user tip for group input socket
         """
@@ -1424,7 +1423,7 @@ class Object(Socket):
 
     SOCKET_TYPE = 'OBJECT'
 
-    def __init__(self, value=None, name=None, tip=None):
+    def __init__(self, value: bpy.types.Object | str | Socket | None = None, name: str | None = None, tip: str | None = None):
         """ Class Object data socket
 
         Arguments
@@ -1513,7 +1512,7 @@ class Collection(Socket):
 
     SOCKET_TYPE = 'COLLECTION'
 
-    def __init__(self, value=None, name=None, tip=None):
+    def __init__(self, value: bpy.types.Collection | Socket | str | None = None, name: str | None = None, tip: str | None = None):
         """ Class Collection data socket
 
         Arguments

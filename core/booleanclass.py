@@ -34,7 +34,7 @@ import numpy as np
 import bpy
 from . import utils
 from .treeclass import Tree, Node
-from .socketclass import Attribute
+from .socketclass import Socket, Attribute
 
 # =============================================================================================================================
 # Boolean
@@ -42,7 +42,7 @@ from .socketclass import Attribute
 class Boolean(Attribute):
     SOCKET_TYPE = 'BOOLEAN'
 
-    def __init__(self, value=False, name=None, tip=None, subtype='NONE'):
+    def __init__(self, value: bool | str | Socket | None = False, name : str | None =None, tip : str | None =None, subtype : str ='NONE'):
         """ Socket of type BOOLEAN
 
         > Node <&Node Boolean>

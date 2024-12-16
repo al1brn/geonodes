@@ -33,6 +33,7 @@ import numpy as np
 import bpy
 from . import utils
 from .treeclass import Tree, Node, ColorRamp
+from .socketclass import Socket
 from .vectorclass import VectorLike
 
 # =============================================================================================================================
@@ -45,7 +46,7 @@ class Color(VectorLike):
 
     SOCKET_TYPE = 'RGBA'
 
-    def __init__(self, value=(0., 0., 0., 1.), name=None, tip=None):
+    def __init__(self, value: tuple | float | Socket | str | None =(0., 0., 0., 1.), name: str = None, tip: str = None):
         """ Socket of type COLOR (RGBA)
 
         > Nodes <&Node RGB> <&Node Combine Color> <&Node Color>

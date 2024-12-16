@@ -36,7 +36,7 @@ import numpy as np
 import bpy
 from . import utils
 from .treeclass import Tree, Node, ColorRamp
-from .socketclass import Attribute
+from .socketclass import Socket, Attribute
 
 # magic methods
 # __add__ __radd__ __iadd__ __sub__  __mul__ __matmul__ __truediv____floordiv__ __mod__ __divmod__ __pow__
@@ -428,7 +428,7 @@ class Float(IntFloat):
 
     SOCKET_TYPE = 'VALUE'
 
-    def __init__(self, value=0., name=None, min=None, max=None, tip=None, subtype='NONE'):
+    def __init__(self, value: float | str | Socket | None = 0., name: str = None, min: float = None, max: float = None, tip: str | None = None, subtype: str | None ='NONE'):
         """ > Socket of type VALUE
 
         > Node <&Node Value>
@@ -449,7 +449,7 @@ class Float(IntFloat):
 
         Arguments
         ---------
-        - value (float or Socket = 0.) : initial value
+        - value (float | str | Socket = 0.) : initial value
         - name (str = None) : Create an Group Input socket with the provided str if not None
         - min (float = None) : minimum value
         - max (float = None) : maximum value
@@ -754,7 +754,7 @@ class Integer(IntFloat):
 
     SOCKET_TYPE = 'INT'
 
-    def __init__(self, value=0, name=None, min=None, max=None, tip=None, subtype='NONE'):
+    def __init__(self, value: int | Socket | str | None = 0, name: str | None = None, min: int | None =None, max: int | None = None, tip: str | None = None, subtype: str ='NONE'):
         """ > Socket of type INTEGER
 
         > Node <&Node Value>
