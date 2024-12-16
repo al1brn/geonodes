@@ -227,6 +227,12 @@ class Tree:
         self._keeps   = {}
         self._layouts = []
 
+        # ----- Named attributes
+
+        self._named_attrs = {}
+
+        # ----- Clear the tree
+
         if clear:
             self.clear()
 
@@ -478,6 +484,36 @@ class Tree:
             return True
 
     # =============================================================================================================================
+    # Named attributes
+
+    def register_named_attribute(self, data_type, attr_name=None, prop_name=None):
+
+        if prop_name is None:
+            prop_name = utils.get_prop_name(attr_name)
+
+        from . import  Boolean, Integer, Float, Vector, Color, Matrix, Rotation
+        classes = {'FLOAT': Float, 'INT': Integer, 'FLOAT_VECTOR': Vector, 'BOOLEAN': Boolean, 'FLOAT4X4': Matrix, 'QUATERNION': Rotation, 'FLOAT_COLOR': Color}
+
+        self._named_attrs[prop_name] = classes[data_type]
+
+    def get_named_attribute(self, attr_name=None, prop_name=None):
+
+        from geonodes import Float
+
+        if prop_name is None:
+            prop_name = utils.get_prop_name(attr_name)
+        else:
+            attr_name = utils.get_attr_name(prop_name)
+
+        attr_class = self._named_attrs.get(prop_name, None)
+        if attr_class is None:
+            print(f"WARNING: named attribute '{attr_name}' ({prop_name}) is unknwon. Use Float.Named('{attr_name}') or Float('{attr_name}')to suppress this warning.")
+            return Float.Named(attr_name)._lc("Warning", self._get_color('WARNING'))
+
+        return attr_class.Named(attr_name)
+
+
+    # =============================================================================================================================
     # Arranges nodes
 
     def arrange(self):
@@ -511,6 +547,8 @@ class Tree:
                 return (.261, .963, .409)
             elif name == 'AUTO_GEN':
                 return (.583, .229, .963)
+            elif name == 'WARNING':
+                return (.949, .574, .119)
             else:
                 raise Exception(f"Non referenced color", name)
         else:

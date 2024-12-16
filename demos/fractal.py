@@ -20,18 +20,18 @@ FOCAL_FACTOR = .04939
 def random_normal():
 
     # Macro
-    def expand_seed(ID, seed, n):
+    def expand_seed(seed, n):
 
         MAX_INT = 1 << 31 - 1
 
         with Layout(f"Expand Seed {n} Times"):
 
             cloud = Cloud.Points(n)
-            values = cloud.points.capture(Integer.Random(0, MAX_INT, id=ID, seed=seed))
+            values = Integer.Random(0, MAX_INT, seed=seed)
 
             seeds = ()
             for i in range(n):
-                seeds = seeds + (cloud.points.sample_index(values, i),)
+                seeds = seeds + (cloud.points.sample_index(values, i)._lc(f"Seed {i}"),)
 
         return seeds
 
@@ -39,10 +39,10 @@ def random_normal():
 
         value = Float(0,   "Value")
         scale = Float(1,   "Scale")
+        ID    = Integer(0, "ID")
         seed  = Integer(0, "Seed")
-        ID    = Integer(0, "ID").switch(Boolean(True, "Use seed as ID"), seed)
 
-        seed0, seed1 = expand_seed(ID, seed, 2)
+        seed0, seed1 = expand_seed(seed, 2)
 
         x1 = Float.Random(0, 1, id=ID, seed=seed0)
         x2 = Float.Random(0, 1, id=ID, seed=seed1)
@@ -58,51 +58,65 @@ def random_normal():
         length = Float(1,       "Length",   tip="Vector average length")
         scale  = Float(0,       "Scale",    tip="Length scale")
         two_d  = Boolean(False, "2D", tip="2D Vectors (Z = 0)")
+        ID     = Integer(0,      "ID")
+        seed   = Integer(0,      "Seed")
 
-        seed  = Integer(0, "Seed")
-        ID    = Integer(0, "ID").switch(Boolean(True, "Use seed as ID"), seed)
+        # ===== We need 3 different seeds
+
+        seed0, seed1, seed2 = expand_seed(seed, 3)
 
         # ===== 2D normalized vectors
 
-        seed0, seed1, seed2 = expand_seed(ID, seed, 3)
-
-        theta    = Float.Random(0, 2*pi, seed=seed0)
-        normal2D = Vector((gnmath.cos(theta), gnmath.sin(theta), 0))
+        with Layout("Unit 2D vector"):
+            theta    = Float.Random(0, 2*pi, seed=seed0)
+            normal2D = Vector((gnmath.cos(theta), gnmath.sin(theta), 0))
 
         # ===== 3D normalized vectors
 
-        phi = Float.Random(-pi/2, pi/2, seed=seed1)
-        cphi = gnmath.cos(phi)
-        normal3D = Vector((cphi*gnmath.cos(theta), cphi*gnmath.sin(theta), gnmath.sin(phi)))
+        with Layout("Unit 3D vector"):
+            phi = Float.Random(-pi/2, pi/2, seed=seed1)
+            cphi = gnmath.cos(phi)
+            normal3D = Vector((cphi*gnmath.cos(theta), cphi*gnmath.sin(theta), gnmath.sin(phi)))
 
         # ===== Length
 
-        l = G.random.normal_value(length, scale, id=ID, seed=seed2)
+        with Layout("Random length"):
+            l = G.random.normal_value(length, scale, id=ID, seed=seed2)
 
         normal = normal3D.switch(two_d, normal2D)
         (normal * l).out("Vector")
         normal.out("Direction")
 
-    with GeoNodes("Shaked Z", prefix="Random", is_group=True):
+    with GeoNodes("Shake Vectors", prefix="Random", is_group=True):
 
-        c_scale  = Float(0, "Cap Scale",       tip="Cap scale")
-        length   = Float(1, "Length",          tip="Vector average length")
-        l_scale  = Float(0, "Length Scale",    tip="Length scale")
-        seed  = Integer(0, "Seed")
-        ID    = Integer(0, "ID").switch(Boolean(True, "Use seed as ID"), seed)
+        vector   = Vector(None,   "Vector")
+        c_scale  = Float.Angle(0, "Angle Scale",  tip="Angle scale")
+        l_scale  = Float(0,       "Length Scale", tip="Length scale")
+        seed  = Integer(0,        "Seed")
 
-        seed0, seed1, seed2 = expand_seed(ID, seed, 3)
+        # ===== We need 3 seeds from in the input seed
 
-        theta  = Float.Random(0, 2*pi, seed=seed0)
-        phi    = G.random.normal_value(pi/2, c_scale, id=ID, seed=seed1)
+        seed0, seed1, seed2 = expand_seed(seed, 3)
 
-        cphi   = gnmath.cos(phi)
-        normal = Vector((cphi*gnmath.cos(theta), cphi*gnmath.sin(theta), gnmath.sin(phi)))
+        # ===== Change the angle
 
-        l = G.random.normal_value(length, l_scale, id=ID, seed=seed2)
+        with Layout("Change the orientation"):
+            theta = Float.Random(0, 2*pi, seed=seed0)
+            phi   = G.random.normal_value(0, c_scale, id=nd.id, seed=seed1)
 
-        (normal * l).out("Vector")
-        normal.out("Direction")
+            rot = Rotation.AlignToVector(vector=vector)
+            shake = Rotation((phi, 0, theta))
+            vector = ((rot.invert() @ shake) @ rot) @ vector
+
+        # ===== Change the length
+
+        with Layout("Change the length"):
+            vector = vector.scale(G.random.normal_value(1, l_scale, id=nd.id, seed=seed2))
+
+        # ===== Done
+
+        vector.out()
+
 
 # =============================================================================================================================
 # Camera Culling
@@ -668,14 +682,11 @@ def multires_surface():
 
             rep.mesh = keep + subdiv
 
-
-
         mesh = rep.mesh
 
         mesh.remove_named_attribute("Iterate")
 
         mesh.out()
-
 
     # -----------------------------------------------------------------------------------------------------------------------------
     # Demo on how to use the Multires Surface group
@@ -777,85 +788,113 @@ def romanesco():
     #
     # Replace points by a set of points
 
-    with GeoNodes("Points Iterator", prefix="Fractal", is_group=True):
+    with GeoNodes("Cloud Iterator", prefix="Fractal"):
 
-        model      = Cloud(None,    "Model", tip="Cloud of points with 'Normal' Vector attribute")
-        mesh       = Mesh(None,     "Final Mesh")
-        keep_iter  = Boolean(False, "Keep Iterated")
-        use_normal = Boolean(False, "Use Normal")
-        back_limit = Float.Factor(1,"Back Faces Culling", min=0, max=1)
-        prec       = Float(10,      "Precision", min=0, tip="Precision in 1000th")/1000 * Integer(1).switch(nd.is_viewport, 10)
-        iterations = Integer(5,     "Iterations", min=0, max=20, tip="Number of iterations (CAUTION !)")
-        seed       = Integer(0,     "Seed")
-
-        twist      = Float.Angle(0, "Twist")
-        bend       = Float.Angle(0, "Bend")
+        model        = Geometry(None, "Model",   tip="Cloud of points to iterate")
+        scale        = Float(.5,      "Scale", min=.01, max=.999, tip="Iteration scale")
+        normal       = Vector((0, 0, 1), "Normal",  tip="Normal to the points")
+        trans        = Float.Factor(0, "Translate", min=-1, max=1, tip="Translation factor along the normal")
+        twist        = Float.Angle(0, "Twist", tip="Rotation around the normal the normal")
+        twist_scale  = Float.Angle(0, "Twist Scale", tip="Twist noise at each iteration")
+        bend         = Float.Angle(0, "Bend",  tip="Bending angle")
+        bend_scale   = Float.Angle(0, "Bend Scale",  tip="Bending noise at each iteration")
+        thread_scale = Float.Factor(.1, "Thread Scale", min=0, max=1, tip="Thread scale along divisions")
+        thread_ratio = Float.Factor(1, "Thread Ratio", min=0, max=1, tip="Ratio applied to therad scale at each iteration")
+        keep_iter    = Boolean(False, "Keep Iterated", tip="Keep the points once iterated or delete them")
+        back_faces   = Float.Factor(1,"Back Faces Culling", min=0, max=1, tip="Tolerance for points pointing outwards the camera")
+        prec         = Float(10,      "Precision", min=0, tip="Precision in 1000th")/1000 * Integer(1).switch(nd.is_viewport, 10)
+        iterations   = Integer(5,     "Iterations", min=0, max=20, tip="Number of iterations (Change witch care !)")
+        seed         = Integer(0,     "Seed")
 
         # ===== Model size
 
-        bbox = model.bounding_box
+        with Layout("Model size"):
 
-        p0, p1 = bbox.min_, bbox.max_
-        size = (p1 - p0).length
+            model = model.mesh.points.to_points() + model.curve.points.to_points() + model.point_cloud
 
-        z0, z1 = p0.z, p1.z
-        height = z1 - z0
+            bbox = model.bounding_box
+
+            p0, p1 = bbox.min_, bbox.max_
+            size = (p1 - p0).length._lc("Model Size")
+
+            z0, z1 = p0.z, p1.z
+            height = (z1 - z0)._lc("Model Height")
 
         # ===== Control random seed for each point
 
-        model.points.store("Seed",     seed.hash_value(nd.index))
-        model.points.store("Normal",   Vector((0, 0, 1)).switch(use_normal, Vector.Named("Normal")))
-        model.points.store("Rotation", Rotation().switch(use_normal, Rotation.AlignToVector(Vector.Named("Normal"))))
+        with Layout("Setup the model"):
+            model.points.store("Seed",     seed.hash_value(nd.index))
+            model.points.store("Scale",    scale)
+            model.points.store("Normal",   normal)
+            model.points.store("Rotation", Rotation.AlignToVector(normal))
+            model.points.store("Z",        nd.position.z - z0)
 
-        # Transfer radius to Scale attribute because radius is not transferred
-        # when instantiating model
-        model.points.store("Scale",    nd.radius)
+            Z = Float.Named("Z")
 
-        # ===== Twist and bending
+            # Base twisting around Z axis
+            with Layout("Twisting around Z"):
+                twist_angle = G.random.normal_value(twist, twist_scale, id=seed, seed=seed)
+                twist_rot = Rotation((0, 0, twist_angle*Z))
+                no_twist  = twist_scale.equal(0, epsilon=.001)
 
-        x, y, z = nd.position.xyz
+            # Base bending
+            with Layout("Bending"):
+                no_bend    = bend.equal(0, epsilon=0) & bend_scale.equal(0, epsilon=0)
 
-        twist_rot = Rotation((0, 0, twist*z))
-        bend_rot  = Rotation((bend*z, 0, 0)) @ Rotation((0, 0, bend_direction))
-        rot = twist_rot @ bend_rot
+            # Knowing if twisting or bending is not required will avoid
+            # some matrices multiplications
+            no_deform = no_twist & no_bend
 
-        model.points.store("Deform", rot)
+            # Apply to the model
+            rot = twist_rot
+            model.points.position = rot @ model.points.position
+            model.points.store("Normal",   rot @ Vector.Named("Normal"))
+            model.points.store("Rotation", Rotation.Named("Rotation") @ rot)
 
         # ===== Base point
 
-        cloud = Cloud.Points(1)
+        with Layout("Initial point"):
+            cloud = Cloud.Points(1)
 
-        cloud.points.store("Iterate",  True)
-        cloud.points.store("Seed",     seed)
-        cloud.points.store("Scale",    1.)
-        cloud.points.store("Normal",   (0, 0, 1))
-        cloud.points.store("Rotation", Rotation())
+            cloud.points.store("Iterate",  True)
+            cloud.points.store("Seed",     seed)
+            cloud.points.store("Scale",    1.)
+            cloud.points.store("Normal",   (0, 0, 1))
+            cloud.points.store("Rotation", Rotation())
+
+            cloud.points.store("Depth",    0)
+            cloud.points.store("Thread",   1.)
+
 
         # ===== Maximum points
 
-        max_points = 10000000 * Integer(10).switch(nd.is_viewport, 1)
+        with Layout("Maximum number of points"):
+            max_points = 10000000 * Integer(10).switch(nd.is_viewport, 1)
 
         # ===== Iteration loop
 
-        with Repeat(cloud = cloud, iterations=iterations, iteration_max=0) as rep:
+        with Repeat(cloud = cloud, iterations=iterations, thread_scale=thread_scale, iteration_max=0) as rep:
 
             cloud = rep.cloud
 
-            # ===== We continue only if the max number of points is not reached
+            # ===== We continue only if the max number of points is not
 
-            npoints = cloud.points.count
-            still_ok = npoints < max_points
+            with Layout("Stop iteration when maximum number of points is reached"):
+                npoints = cloud.points.count
+                still_ok = npoints < max_points
+                rep.iteration_max = rep.iteration_max.switch(still_ok, rep.iteration_max + 1)
 
             # ===== Visible points to iterate
 
-            with Layout("Visible points to iterate"):
-                node = G.camera.point_culling(cloud, radius=nd.radius*size, link_from='TREE').node
-                cloud.points[Boolean.Named("Iterate")].store("Iterate", still_ok & node.keep & (node.apparent_size > prec))
+            with Layout("Projection"):
+                node = G.camera.projection(position=nd.position, radius=Float.Named("Scale")*size, normal=Vector.Named("Normal"), link_from='TREE').node
 
-            # ===== Keep track when iterations finishes
+                iterate = Boolean.Named("Iterate") & still_ok
+                iterate &= -(node.behind | node.outside | (node.radius < prec) | (node.outwards > back_faces))
 
-            with Layout("Where iteration terminates"):
-                rep.iteration_max = rep.iteration.switch(cloud.points.attribute_statistic(Boolean.Named("Iterate")).sum.equal(0), rep.iteration_max)
+                cloud.points[Boolean.Named("Iterate")].store("Iterate", iterate)
+
+                #cloud.points[Boolean.Named("Iterate")].store("Iterate", still_ok & -(node.behind | node.node.keep & (node.apparent_size > prec))
 
             # ===== Fractal iteration
 
@@ -864,18 +903,70 @@ def romanesco():
                 with Layout("Copy attributes"):
                     cloud.points.store("Main Seed",     Integer.Named("Seed"))
                     cloud.points.store("Main Scale",    Float.Named("Scale"))
-                    cloud.points.store("Main Normal",   Vector.Named("Nprmal"))
-                    cloud.points.store("Main Rotation", (Rotation((0, 0, twist)) @ Rotation((bend, 0, 0))) @ Rotation.Named("Rotation"))
+                    cloud.points.store("Main Normal",   Vector.Named("Normal"))
+                    cloud.points.store("Main Rotation", Rotation.Named("Rotation"))
+                    cloud.points.store("Main Position", nd.position)
 
                 with Layout("Replacement"):
-                    new_cloud = Cloud(cloud.points[Boolean.Named("Iterate")].instance_on(instance=model,
-                        rotation=Rotation.Named("Main Rotation"), scale=Float.Named("Main Scale")).realize())
+                    instances = cloud.points[Boolean.Named("Iterate")].instance_on(instance=model,
+                        #rotation = Rotation.Named("Main Rotation"),
+                        scale    = Float.Named("Main Scale"))
+
+                    # Set the instance @ origin to perform deformations
+                    instances.insts.position = 0
+
+                    # Now we realize
+                    new_cloud = Cloud(instances.realize())
 
                 with Layout("Attributes of next iteration"):
                     new_cloud.points.store("Seed",     Integer.Named("Main Seed").hash_value(Integer.Named("Seed")))
                     new_cloud.points.store("Scale",    Float.Named("Main Scale") * Float.Named("Scale"))
-                    new_cloud.points.store("Normal",   Rotation.Named("Main Rotation") @ Vector.Named("Normal"))
-                    new_cloud.points.store("Rotation", Rotation.Named("Rotation") @ Rotation.Named("Main Rotation"))
+                    new_cloud.points.store("Depth",    Integer.Named("Depth") + 1)
+
+                    seed = Integer.Named("Seed")
+                    new_cloud.points.store("Thread",   Float.Named("Thread")*G.random.normal_value(1, rep.thread_scale, id=seed, seed=seed+100))
+                    rep.thread_scale *= thread_ratio
+
+
+                with Layout("Deformation"):
+
+                    seed = Integer.Named("Main Seed")
+                    Z = Float.Named("Z")
+
+                    # Instance origin
+                    O = Vector.Named("Main Position")
+
+                    # Twisting around Z axis
+                    with Layout("Twist"):
+                        twist_rot = Rotation((0, 0, G.random.normal_value(0, twist_scale, id=seed, seed=seed)*Z)).switch(no_twist)
+
+                    # Bending
+                    with Layout("Bend"):
+                        bend_angle = G.random.normal_value(bend, bend_scale, id=seed, seed=seed + 1)
+                        bend_dir   = Float.Random(0, 2*np.pi, id=seed, seed=seed + 2)
+                        bend_rot   = Rotation((bend_angle*Z, 0, 0)) @ Rotation((0, 0, bend_dir)).switch(no_bend)
+
+                    # Apply to vertices
+                    with Layout("Apply"):
+                        rot = ((twist_rot @ bend_rot) @ Rotation.Named("Main Rotation")).switch(no_deform, Rotation.Named("Main Rotation"))
+                        new_cloud.points.position = O + rot @ new_cloud.position
+                        new_cloud.points.store("Normal",   rot @ Vector.Named("Normal"))
+                        new_cloud.points.store("Rotation", Rotation.Named("Rotation") @ rot)
+
+                    if False:
+                        rot = Rotation.Named("Main Rotation")
+                        pos = nd.position - O
+
+                        pos = rot.invert() @ pos
+                        nrm = rot.invert() @ Float.Named("Normal")
+
+                        z = Float.Named("Z")
+                        deform = Rotation((0, 0, twist*z)) @ (Rotation((bend*z, 0, 0)) @ Rotation((0, 0, 0)))
+
+                        new_cloud.points.position  = O + (rot @ deform) @ pos
+                        new_cloud.points.store("Normal", (rot @ deform) @ nrm)
+
+                    new_cloud.points.offset = Vector.Named("Normal").scale(trans*height*Float.Named("Scale"))
 
                 # Done
 
@@ -884,31 +975,34 @@ def romanesco():
 
                 rep.cloud = del_points.switch(keep_iter, keep_points) + new_cloud
 
-        cloud = rep.cloud
-
-        # Scale back to radius which is more natural
-        cloud.points.radius = Float.Named("Scale")
+        cloud = Cloud(rep.cloud)
 
         Boolean(True).info("Points: " + cloud.points.count.to_string() + " after " + rep.iteration_max.to_string() + " iterations.")
 
-        # ===== Set a mesh to each remaining point
+        with Layout("Scale to radius and seed to id"):
+            cloud.points.radius = Float.Named("Scale")
+            cloud.points.id     = Float.Named("Seed")
 
-        with Layout("Remove attributes"):
-            cloud.remove_named_attribute("Iterate")
+        # ===== Remove
+
+        with Layout("Remove attributes but Normal and Rotation"):
             cloud.remove_named_attribute("Main Seed")
             cloud.remove_named_attribute("Main Scale")
-            cloud.remove_named_attribute("Scale")
+            cloud.remove_named_attribute("Main Normal")
             cloud.remove_named_attribute("Main Rotation")
+            cloud.remove_named_attribute("Main Position")
+            cloud.remove_named_attribute("Iterate")
+            cloud.remove_named_attribute("Scale")
+            cloud.remove_named_attribute("Seed")
 
-        cloud.points.store("Random", Float.Random(0, 1, Float.Named("Seed")))
+        with Layout("Add a random number"):
+            cloud.points.store("Random", Float.Random(0, 1, id=nd.index, seed=nd.id))
 
-        fractal = Mesh(cloud.points.instance_on(instance=mesh, rotation=Rotation.Named("Rotation"), scale=nd.radius).realize())
-
-        with Layout("Remove attributes"):
-            fractal.remove_named_attribute("Rotation")
+        #fractal = Mesh(cloud.points.instance_on(instance=mesh, rotation=Rotation.Named("Rotation"), scale=nd.radius).realize())
 
         cloud.out("Points")
-        fractal.out("Mesh")
+
+    return
 
     # ====================================================================================================
     # Mesh iterator
@@ -1339,6 +1433,8 @@ def fern():
         rep.leaf.out()
 
 def points_fractal():
+
+    return
 
     with GeoNodes("Points Fractal"):
 

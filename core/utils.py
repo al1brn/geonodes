@@ -382,3 +382,22 @@ def python_value_for_socket(value, socket_type):
 
     else:
         raise NodeError(f"python_value_for_socket error: impossible to build a value from [{value}] for socket '{socket_type}'")
+
+# =============================================================================================================================
+# Named attribute utilities
+
+def is_named_attr(prop_name):
+    return len(prop_name) > 2 and (prop_name[0] == '_') and (prop_name[1].upper() == prop_name[1])
+
+def get_attr_name(prop_name):
+    if len(prop_name) < 2:
+        return None
+    if prop_name[0] != "_":
+        return None
+    if prop_name[1].upper() != prop_name[1]:
+        return None
+
+    return prop_name[1:].replace('_', ' ')
+
+def get_prop_name(attr_name):
+    return "_" + attr_name.replace(' ', '_')

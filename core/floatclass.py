@@ -457,6 +457,9 @@ class Float(IntFloat):
         - subtype (str = None) : sub type for group input
         """
 
+        if isinstance(value, str):
+            value = type(self).Named(value)
+
         bsock = utils.get_bsocket(value)
         if bsock is None:
             if name is None:
@@ -779,6 +782,10 @@ class Integer(IntFloat):
         - tip (str = None) : User tip (for Group Input sockets)
         - subtype (str = None) : sub type for group input
         """
+
+        if isinstance(value, str):
+            value = type(self).Named(value)
+
         bsock = utils.get_bsocket(value)
         if bsock is None:
             if name is None:

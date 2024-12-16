@@ -989,6 +989,24 @@ class Domain(GeoBase, NodeCache):
             return self.DOMAIN_NAME
 
     # ====================================================================================================
+    # Named attributes
+
+    def __getattr__(self, name):
+
+        attr_name = utils.get_attr_name(name)
+        if attr_name is None:
+            raise AttributeError(f"Domain '{type(self).__name__}' doesn't have attribute named '{name}'")
+
+        return self._geo._tree.get_named_attribute(prop_name=name)
+
+    def __setattr__(self, name, value):
+        attr_name = utils.get_attr_name(name)
+        if attr_name is None:
+            return super().__setattr__(name, value)
+
+        self.store_named_attribute(attr_name, value)
+
+    # ====================================================================================================
     # ForEachElement loop
 
     def for_each(self, sockets={}, **kwargs):
@@ -1185,6 +1203,8 @@ class Domain(GeoBase, NodeCache):
         data_type   = utils.get_data_type(value)
         node = self._node('Store Named Attribute', {'Name': name, 'Value': value}, data_type=data_type)
 
+        self._geo._tree.register_named_attribute(data_type, attr_name=name)
+
         return self._jump(node._out)
 
     def store(self, name, value=None):
@@ -1215,10 +1235,13 @@ class Domain(GeoBase, NodeCache):
         -------
         - Geometry
         """
-        data_type   = utils.get_data_type(value)
-        node = self._node('Store Named Attribute', {'Name': name, 'Value': value}, data_type=data_type)
+        return self.store_named_attribute(name, value=value)
 
-        return self._jump(node._out)
+        if False:
+            data_type   = utils.get_data_type(value)
+            node = self._node('Store Named Attribute', {'Name': name, 'Value': value}, data_type=data_type)
+
+            return self._jump(node._out)
 
     # ====================================================================================================
     # Sample nodes with domain

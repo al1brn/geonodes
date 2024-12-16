@@ -57,6 +57,9 @@ class Color(VectorLike):
         - tip (str = None) : User tip (for Group Input sockets)
         """
 
+        if isinstance(value, str):
+            value = type(self).Named(value)
+
         bsock = utils.get_bsocket(value)
         if bsock is None:
             if name is None:

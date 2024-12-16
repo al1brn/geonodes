@@ -136,6 +136,8 @@ CLASS_NAMES = {
     'SHADER'        : 'Shader',
 }
 
+ATTRIBUTE_CLASSES = ['Boolean', 'Integer', 'Float', 'Vector', 'Color', 'Matrix', 'Rotation']
+
 # =============================================================================================================================
 # Valid types
 

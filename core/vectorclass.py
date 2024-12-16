@@ -434,6 +434,9 @@ class Vector(VectRot):
         - tip (str = None) : User tip (for Group Input sockets)
         - subtype (str = None) : sub type for group input
         """
+        if isinstance(value, str):
+            value = type(self).Named(value)
+
         bsock = utils.get_bsocket(value)
         if bsock is None:
             if name is None:
@@ -952,6 +955,8 @@ class Rotation(VectRot):
         - name (str = None) : Create an Group Input socket with the provided str if not None
         - tip (str = None) : User tip (for Group Input sockets)
         """
+        if isinstance(value, str):
+            value = type(self).Named(value)
 
         bsock = utils.get_bsocket(value)
         if bsock is None:
@@ -1587,6 +1592,8 @@ class Matrix(Attribute):
         - name (str = None) : Create group input socket with this name if not None
         - type (str = None) : Input socket user tip if an input socket is created
         """
+        if isinstance(value, str):
+            value = type(self).Named(value)
 
         bsock = utils.get_bsocket(value)
         if bsock is None:

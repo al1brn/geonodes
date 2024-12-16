@@ -152,11 +152,19 @@ class Socket(NodeCache):
         """
         self._tree = Tree.current_tree
 
+        # ----- Socket is the name of an attribute
+
+        if isinstance(socket, str):
+            raise NodeError(f"Socket '{self._class_name}' is not an attribute. Impossible to create a named attribute '{socket}'")
+
+        # ----- Socket is a socket :-)
+
         bsocket = utils.get_bsocket(socket)
         if bsocket is None:
             raise NodeError(f"Impossible to initialize Socket with a non socket argument: {socket}", socket_type=self.SOCKET_TYPE)
         else:
             self._bsocket = bsocket
+
         self._reset()
 
     def _reset(self):
@@ -176,6 +184,11 @@ class Socket(NodeCache):
     @property
     def _class_name(cls):
         return cls.__name__.split('.')[-1]
+
+    @classmethod
+    @property
+    def _is_attribute(cls):
+        return self.class_name in constants.ATTRIBUTE_CLASSES
 
     def __str__(self):
         return f"<{self._class_name} {self.SOCKET_TYPE} [{self.node._bnode.name}].'{self._bsocket.name}'>"
@@ -325,19 +338,51 @@ class Socket(NodeCache):
         self._bsocket.pin_gizmo = value
 
     # =============================================================================================================================
-    # Access to other output sockets of the owning node
+    # Dynamic attributes
+    # Syntax:
+    # - Terminated by _ (value_) : peer socket
+    # - Starting by _ and a Capital : Named Attribute
 
     def __getattr__(self, name):
+
+        # ----- Named attribute
+
+        attr_name = utils.get_attr_name(name)
+        if attr_name is not None:
+            if self.SOCKET_TYPE == 'GEOMETRY':
+                return self._tree.get_named_attribute(prop_name=name)
+            else:
+                raise AttributeError(f"Class '{self._class_name}' doesn't support Named Attributes: impossible to get named attribute '{attr_name}' ({name}).")
+
+        # ----- Not terminated by _
+
         if not (len(name) > 1 and name[-2] != '_' and name[-1] == '_'):
+
+            # ----- Specific message for socket._out which is a dynamic attribute of Node
+
             if name == '_out':
                 msg = "Node / Socket confusion: you tried to access to the default output socket of a node, "
                 msg += f"but class {type(self).__name__} is a socket"
                 raise NodeError(msg)
 
+            # ----- Error
+
             raise AttributeError(f"Class {type(self).__name__} as no property named '{name}'")
-            #raise NodeError(f"Class {type(self).__name__} as no property named '{name}'")
+
+        # ----- Peer socket
 
         return getattr(self.node, name[:-1])
+
+    def __setattr__(self, name, value):
+        attr_name = utils.get_attr_name(name)
+        if attr_name is not None:
+            if self.SOCKET_TYPE == 'GEOMETRY':
+                raise AttributeError(f"Named attributes can't be store directly in geometry, use a domain: impossible to store named attribute '{attr_name}' ({name}) in class '{type(self).__name__}'.")
+            else:
+                raise AttributeError(f"Only domains support Named Attributes: impossible to store named attribute '{attr_name}' ({name}) in class '{type(self).__name__}'.")
+
+        return super().__setattr__(name, value)
+
 
     # =============================================================================================================================
     # Test a value in a list

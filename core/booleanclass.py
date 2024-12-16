@@ -54,6 +54,8 @@ class Boolean(Attribute):
         - tip (str = None) : User tip (for Group Input sockets)
         - subtype (str='NONE') : socket subtype
         """
+        if isinstance(value, str):
+            value = type(self).Named(value)
 
         bsock = utils.get_bsocket(value)
         if bsock is None:
