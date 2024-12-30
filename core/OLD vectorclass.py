@@ -40,7 +40,7 @@ import numpy as np
 import bpy
 from . import utils
 from .treeclass import Tree, Node
-from .socketclass import Socket, Attribute
+from .socket_class import Socket, Attribute
 
 # =============================================================================================================================
 # =============================================================================================================================

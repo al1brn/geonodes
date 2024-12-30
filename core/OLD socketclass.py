@@ -11,7 +11,7 @@ $ DOC transparent
 Scripting Geometry Nodes
 -----------------------------------------------------
 
-module : socketclass
+module : socket_class
 --------------------
 - Provides the base class for data socket Socket which wraps an output socket of a Node
 - Implement simple Data Sockets:
@@ -43,12 +43,10 @@ import numpy as np
 import bpy
 import mathutils
 
-#from geonodes.geometryclass import Geometry
-
 from .scripterror import NodeError
+from .treeclass import Tree, Node
 from . import constants
 from . import utils
-from .treeclass import Tree, Node
 
 # =============================================================================================================================
 # =============================================================================================================================
@@ -87,16 +85,6 @@ class NodeCache:
         self._cached_nodes[cache_name] = node
 
         return node
-
-    """
-    def _cache_node(self, node, name=None):
-        # Cache a node without building it
-        if name is None:
-            name = node.name
-        self._cached_nodes[name] = node
-
-        return node
-    """
 
 # =============================================================================================================================
 # =============================================================================================================================
@@ -185,20 +173,18 @@ class Socket(NodeCache):
     def _class_name(cls):
         return cls.__name__.split('.')[-1]
 
-    @classmethod
-    @property
-    def _is_attribute(cls):
-        return self.class_name in constants.ATTRIBUTE_CLASSES
+    #@classmethod
+    #@property
+    #def _is_attribute(cls):
+    #    return self.class_name in constants.ATTRIBUTE_CLASSES
 
     def __str__(self):
         return f"<{self._class_name} {self.SOCKET_TYPE} [{self.node._bnode.name}].'{self._bsocket.name}'>"
 
-    #def __str__(self):
-    #    return f"<Socket {self.SOCKET_TYPE} [{self.node._bnode.name}].'{self._bsocket.name}'>"
-
     # ====================================================================================================
     # Socket type to data type conversion, depending on the nodes
 
+    """
     @classmethod
     def socket_type(cls, restrict_to=None, default=None):
         return utils.get_socket_type(cls, restrict_to=restrict_to, default=default)
@@ -210,44 +196,17 @@ class Socket(NodeCache):
     @classmethod
     def input_type(cls, restrict_to=None, default='FLOAT'):
         return utils.get_input_type(cls, restrict_to=restrict_to, default=default)
-
-    @classmethod
-    def get_socket_class(cls, value):
-
-        socket_type = utils.get_socket_type(value)
-
-        if Tree.is_geonodes:
-            from . import Boolean, Integer, Float, Vector, Rotation, Matrix, Color, String, Menu, Geometry
-            from . import Material, Image, Object, Collection, Texture
-            from . import Mesh, Curve, Cloud, Volume, Instances
-            socket_class = {
-                'BOOLEAN': Boolean, 'INT': Integer, 'VALUE': Float,
-                'VECTOR': Vector, 'ROTATION': Rotation, 'MATRIX': Matrix, 'RGBA': Color,
-                'STRING': String, 'MENU': Menu,
-                'GEOMETRY': Geometry,
-                'MATERIAL': Material, 'IMAGE': Image, 'OBJECT': Object,
-                'COLLECTION': Collection, 'TEXTURE': Texture,
-                }
-            return socket_class[socket_type]
-
-        elif Tree.is_shader:
-            from geonodes import Float, Vector, Color, String, Shader
-
-            socket_class = {
-                'VALUE': Float, 'VECTOR': Vector, 'RGBA': Color,
-                'STRING': String, 'SHADER': Shader,
-                }
-            return socket_class[socket_type]
-        else:
-            assert(False)
+    """
 
     # ----- Math modul
 
+    """
     @classmethod
     @property
     def math(cls):
         from . import gnmath
         return gnmath
+    """
 
     # ====================================================================================================
     # Owning node
@@ -386,11 +345,35 @@ class Socket(NodeCache):
     # =============================================================================================================================
     # Test a value in a list
 
+    """
     @staticmethod
     def check_in_list(value, valids, context=""):
         if value in valids:
             return True
         raise NodeError(f"{context} value error: '{value}' is not valid.", valids=valids)
+    """
+
+    # =============================================================================================================================
+    # Node data type value
+
+    """
+    def get_node_data_type(self, node_name, value='SELF', default=None):
+
+        return utils.get_node_data_type(node_name, self._tree._btree.bl_idname, self if value=='SELF' else value, default=default)
+
+        # OLD
+
+        blid = utils.get_node_bl_idname(node_name, self._tree._btree.bl_idname)
+        valids = list(constants.NODE_DATA_TYPES[blid].values())[0]
+
+        if self.SOCKET_TYPE in valids.keys():
+            return valids[self.SOCKET_TYPE]
+
+        if default is None:
+            raise NodeError(f"Node '{node_name}' doesn't accept '{self.SOCKET_TYPE}' data type, only {list(valids)}")
+
+        return default
+    """
 
     # =============================================================================================================================
     # To output
@@ -691,16 +674,21 @@ class Socket(NodeCache):
         ``` python
         with GeoNodes("Switch demo"):
 
+            choice = Boolean(True, "Use Sphere")
+
             # Two possible geometries
             cube   = Mesh.Cube()
             sphere = Mesh.IcoSphere()
 
             # Select
-            geo = cube.switch(Boolean(True, "Use Sphere"), sphere)
+            geo = cube.switch(choice, sphere)
 
             # To group output
             geo.out()
         ```
+
+        > [!NOTE]
+        > This method let self socket unchanged. To set self socket to the result
 
         Arguments
         ---------
@@ -714,45 +702,6 @@ class Socket(NodeCache):
         """
         return self.Switch(condition=condition, false=self, true=true)
 
-    # ====================================================================================================
-    # Methods
-
-    def blur(self, iterations=None, weight=None):
-        """ > Node <&Node Blur Attribute>
-
-        [&NO_JUMP]
-
-        Arguments
-        ---------
-        - self : socket 'Value'
-        - iterations (Integer) : socket 'Iterations' (Iterations)
-        - weight (Float) : socket 'Weight' (Weight)
-
-        Returns
-        -------
-        - Socket
-        """
-
-        data_type = self.data_type(['FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR'])
-        return Node('Blur Attribute', {'Value': self, 'Iterations': iterations, 'Weight': weight}, data_type=data_type)._out
-
-    # -----------------------------------------------------------------------------------------------------------------------------
-    # Hasch value
-
-    def hash_value(self, seed=None):
-        """ > Node <&Node Hash Value>
-
-        Arguments
-        ---------
-        - seed (Integer) : socket 'Seed' (Seed)
-        - data_type (str): Node.data_type in ('FLOAT', 'INT', 'VECTOR', 'ROTATION', 'MATRIX', 'STRING', 'RGBA')
-
-        Returns
-        -------
-        - Integer
-        """
-        data_type = utils.get_input_type(self, restrict_to=['FLOAT', 'INT', 'VECTOR', 'ROTATION', 'MATRIX', 'STRING', 'RGBA'], default='INT')
-        return Node('Hash Value', {'Value': self, 'Seed': seed}, data_type=data_type)._out
 
     # ====================================================================================================
     # Run tests

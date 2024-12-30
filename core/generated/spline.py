@@ -1,0 +1,492 @@
+from .. socket_class import Socket
+from .. treeclass import Node
+from .. treeclass import utils
+from .. scripterror import NodeError
+
+class Spline(Socket):
+
+    @classmethod
+    def accumulate_field(cls, value=None, group_id=None):
+        """ > Class Method <&Node Accumulate Field>
+
+        Information
+        -----------
+        - Parameter 'data_type' : depending on 'value' type
+        - Parameter 'domain' : 'CURVE'
+
+        Arguments
+        ---------
+        - value (Float) : socket 'Value' (id: Value)
+        - group_id (Integer) : socket 'Group ID' (id: Group Index)
+
+        Returns
+        -------
+        - Float [trailing_ (Float), total_ (Float)]
+        """
+        data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'MATRIX': 'TRANSFORM'}, 'Spline.accumulate_field', 'value')
+        node = Node('Accumulate Field', sockets={'Value': value, 'Group Index': group_id}, data_type=data_type, domain='CURVE')
+        return node._out
+
+    def attribute_statistic(self, attribute=None):
+        """ > Method <&Node Attribute Statistic>
+
+        Information
+        -----------
+        - Socket 'Geometry' : self
+        - Socket 'Selection' : self[selection]
+        - Parameter 'data_type' : depending on 'attribute' type
+        - Parameter 'domain' : 'CURVE'
+
+        Arguments
+        ---------
+        - attribute (Float) : socket 'Attribute' (id: Attribute)
+
+        Returns
+        -------
+        - Float [median_ (Float), sum_ (Float), min_ (Float), max_ (Float), range_ (Float), standard_deviation_ (Float), variance_ (Float)]
+        """
+        data_type = utils.get_argument_data_type(attribute, {'VALUE': 'FLOAT', 'VECTOR': 'FLOAT_VECTOR'}, 'Spline.attribute_statistic', 'attribute')
+        node = Node('Attribute Statistic', sockets={'Geometry': self, 'Selection': self._sel, 'Attribute': attribute}, data_type=data_type, domain='CURVE')
+        return node._out
+
+    def delete_all(self):
+        """ > Jump Method <&Node Delete Geometry>
+
+        Information
+        -----------
+        - Socket 'Geometry' : self
+        - Socket 'Selection' : self[selection]
+        - Parameter 'domain' : 'CURVE'
+        - Parameter 'mode' : 'ALL'
+
+        Returns
+        -------
+        - Geometry
+        """
+        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='CURVE', mode='ALL')
+        self._jump(node._out)
+        return self
+
+    def delete_edge_face(self):
+        """ > Jump Method <&Node Delete Geometry>
+
+        Information
+        -----------
+        - Socket 'Geometry' : self
+        - Socket 'Selection' : self[selection]
+        - Parameter 'domain' : 'CURVE'
+        - Parameter 'mode' : 'EDGE_FACE'
+
+        Returns
+        -------
+        - Geometry
+        """
+        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='CURVE', mode='EDGE_FACE')
+        self._jump(node._out)
+        return self
+
+    def delete_only_face(self):
+        """ > Jump Method <&Node Delete Geometry>
+
+        Information
+        -----------
+        - Socket 'Geometry' : self
+        - Socket 'Selection' : self[selection]
+        - Parameter 'domain' : 'CURVE'
+        - Parameter 'mode' : 'ONLY_FACE'
+
+        Returns
+        -------
+        - Geometry
+        """
+        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='CURVE', mode='ONLY_FACE')
+        self._jump(node._out)
+        return self
+
+    def delete(self, mode='ALL'):
+        """ > Jump Method <&Node Delete Geometry>
+
+        Information
+        -----------
+        - Socket 'Geometry' : self
+        - Socket 'Selection' : self[selection]
+        - Parameter 'domain' : 'CURVE'
+
+        Arguments
+        ---------
+        - mode (str): parameter 'mode' in ('ALL', 'EDGE_FACE', 'ONLY_FACE')
+
+        Returns
+        -------
+        - Geometry
+        """
+        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='CURVE', mode=mode)
+        self._jump(node._out)
+        return self
+
+    def duplicate(self, amount=None):
+        """ > Jump Method <&Node Duplicate Elements>
+
+        Information
+        -----------
+        - Socket 'Geometry' : self
+        - Socket 'Selection' : self[selection]
+        - Parameter 'domain' : 'SPLINE'
+
+        Arguments
+        ---------
+        - amount (Integer) : socket 'Amount' (id: Amount)
+
+        Returns
+        -------
+        - Geometry [duplicate_index_ (Integer)]
+        """
+        node = Node('Duplicate Elements', sockets={'Geometry': self, 'Selection': self._sel, 'Amount': amount}, domain='SPLINE')
+        self._jump(node._out)
+        return self
+
+    @classmethod
+    def evaluate_at_index(cls, index=None, value=None):
+        """ > Class Method <&Node Evaluate at Index>
+
+        Information
+        -----------
+        - Parameter 'data_type' : depending on 'value' type
+        - Parameter 'domain' : 'CURVE'
+
+        Arguments
+        ---------
+        - index (Integer) : socket 'Index' (id: Index)
+        - value (Float) : socket 'Value' (id: Value)
+
+        Returns
+        -------
+        - Float
+        """
+        data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Spline.evaluate_at_index', 'value')
+        node = Node('Evaluate at Index', sockets={'Index': index, 'Value': value}, data_type=data_type, domain='CURVE')
+        return node._out
+
+    @classmethod
+    def evaluate_on_domain(cls, value=None):
+        """ > Class Method <&Node Evaluate on Domain>
+
+        Information
+        -----------
+        - Parameter 'data_type' : depending on 'value' type
+        - Parameter 'domain' : 'CURVE'
+
+        Arguments
+        ---------
+        - value (Float) : socket 'Value' (id: Value)
+
+        Returns
+        -------
+        - Float
+        """
+        data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Spline.evaluate_on_domain', 'value')
+        node = Node('Evaluate on Domain', sockets={'Value': value}, data_type=data_type, domain='CURVE')
+        return node._out
+
+    def sample_index(self, value=None, index=None, clamp=False):
+        """ > Method <&Node Sample Index>
+
+        Information
+        -----------
+        - Socket 'Geometry' : self
+        - Parameter 'data_type' : depending on 'value' type
+        - Parameter 'domain' : 'CURVE'
+
+        Arguments
+        ---------
+        - value (Float) : socket 'Value' (id: Value)
+        - index (Integer) : socket 'Index' (id: Index)
+        - clamp (bool): parameter 'clamp'
+
+        Returns
+        -------
+        - Float
+        """
+        data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Spline.sample_index', 'value')
+        node = Node('Sample Index', sockets={'Geometry': self, 'Value': value, 'Index': index}, clamp=clamp, data_type=data_type, domain='CURVE')
+        return node._out
+
+    def separate(self):
+        """ > Jump Method <&Node Separate Geometry>
+
+        Information
+        -----------
+        - Socket 'Geometry' : self
+        - Socket 'Selection' : self[selection]
+        - Parameter 'domain' : 'CURVE'
+
+        Returns
+        -------
+        - Geometry [inverted_ (Geometry)]
+        """
+        node = Node('Separate Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='CURVE')
+        self._jump(node._out)
+        return self
+
+    def sort(self, group_id=None, sort_weight=None):
+        """ > Jump Method <&Node Sort Elements>
+
+        Information
+        -----------
+        - Socket 'Geometry' : self
+        - Socket 'Selection' : self[selection]
+        - Parameter 'domain' : 'CURVE'
+
+        Arguments
+        ---------
+        - group_id (Integer) : socket 'Group ID' (id: Group ID)
+        - sort_weight (Float) : socket 'Sort Weight' (id: Sort Weight)
+
+        Returns
+        -------
+        - Geometry
+        """
+        node = Node('Sort Elements', sockets={'Geometry': self, 'Selection': self._sel, 'Group ID': group_id, 'Sort Weight': sort_weight}, domain='CURVE')
+        self._jump(node._out)
+        return self
+
+    def split_to_instances(self, group_id=None):
+        """ > Method <&Node Split to Instances>
+
+        Information
+        -----------
+        - Socket 'Geometry' : self
+        - Socket 'Selection' : self[selection]
+        - Parameter 'domain' : 'CURVE'
+
+        Arguments
+        ---------
+        - group_id (Integer) : socket 'Group ID' (id: Group ID)
+
+        Returns
+        -------
+        - Instances [group_id_ (Integer)]
+        """
+        node = Node('Split to Instances', sockets={'Geometry': self, 'Selection': self._sel, 'Group ID': group_id}, domain='CURVE')
+        return node._out
+
+    def store_named_attribute(self, name=None, value=None):
+        """ > Jump Method <&Node Store Named Attribute>
+
+        Information
+        -----------
+        - Socket 'Geometry' : self
+        - Socket 'Selection' : self[selection]
+        - Parameter 'data_type' : depending on 'value' type
+        - Parameter 'domain' : 'CURVE'
+
+        Arguments
+        ---------
+        - name (String) : socket 'Name' (id: Name)
+        - value (Float) : socket 'Value' (id: Value)
+
+        Returns
+        -------
+        - Geometry
+        """
+        data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Spline.store_named_attribute', 'value')
+        node = Node('Store Named Attribute', sockets={'Geometry': self, 'Selection': self._sel, 'Name': name, 'Value': value}, data_type=data_type, domain='CURVE')
+        self._jump(node._out)
+        return self
+
+    def store(self, name=None, value=None):
+        """ > Jump Method <&Node Store Named Attribute>
+
+        Information
+        -----------
+        - Socket 'Geometry' : self
+        - Socket 'Selection' : self[selection]
+        - Parameter 'data_type' : depending on 'value' type
+        - Parameter 'domain' : 'CURVE'
+
+        Arguments
+        ---------
+        - name (String) : socket 'Name' (id: Name)
+        - value (Float) : socket 'Value' (id: Value)
+
+        Returns
+        -------
+        - Geometry
+        """
+        data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Spline.store', 'value')
+        node = Node('Store Named Attribute', sockets={'Geometry': self, 'Selection': self._sel, 'Name': name, 'Value': value}, data_type=data_type, domain='CURVE')
+        self._jump(node._out)
+        return self
+
+    def set_selection(self):
+        """ > Jump Method <&Node Set Selection>
+
+        Information
+        -----------
+        - Socket 'Geometry' : self
+        - Socket 'Selection' : self[selection]
+        - Parameter 'domain' : 'CURVE'
+        - Parameter 'selection_type' : depending on 'selection' type
+
+        Returns
+        -------
+        - Geometry
+        """
+        selection_type = utils.get_argument_data_type(selection, {'BOOLEAN': 'BOOLEAN', 'VALUE': 'FLOAT'}, 'Spline.set_selection', 'selection')
+        node = Node('Set Selection', sockets={'Geometry': self, 'Selection': self._sel}, domain='CURVE', selection_type=selection_type)
+        self._jump(node._out)
+        return self
+
+    def viewer(self, value=None):
+        """ > Method <&Node Viewer>
+
+        Information
+        -----------
+        - Socket 'Geometry' : self
+        - Parameter 'data_type' : depending on 'value' type
+        - Parameter 'domain' : 'CURVE'
+
+        Arguments
+        ---------
+        - value (Float) : socket 'Value' (id: Value)
+
+        """
+        data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Spline.viewer', 'value')
+        node = Node('Viewer', sockets={'Geometry': self, 'Value': value}, data_type=data_type, domain='CURVE')
+        return
+
+    @property
+    def tilt(self):
+        """ Property get node <Node Set Curve Tilt>
+        """
+        return Node('Curve Tilt', sockets={})._out
+
+    @tilt.setter
+    def tilt(self, tilt=None):
+        """ > Jump Method <&Node Set Curve Tilt>
+
+        Information
+        -----------
+        - Socket 'Curve' : self
+        - Socket 'Selection' : self[selection]
+
+        Arguments
+        ---------
+        - tilt (Float) : socket 'Tilt' (id: Tilt)
+
+        Returns
+        -------
+        - Curve
+        """
+        node = Node('Set Curve Tilt', sockets={'Curve': self, 'Selection': self._sel, 'Tilt': tilt})
+        self._jump(node._out)
+        return self
+
+    @property
+    def normal(self):
+        """ Write only property for node <Node Set Curve Normal>
+        """
+        raise NodeError('Property Spline.normal is write only.')
+
+    @normal.setter
+    def normal(self, mode='MINIMUM_TWIST'):
+        """ > Jump Method <&Node Set Curve Normal>
+
+        Information
+        -----------
+        - Socket 'Curve' : self
+        - Socket 'Selection' : self[selection]
+
+        Arguments
+        ---------
+        - mode (str): parameter 'mode' in ('MINIMUM_TWIST', 'Z_UP', 'FREE')
+
+        Returns
+        -------
+        - Curve
+        """
+        node = Node('Set Curve Normal', sockets={'Curve': self, 'Selection': self._sel}, mode=mode)
+        self._jump(node._out)
+        return self
+
+    @property
+    def is_cyclic(self):
+        """ Property get node <Node Set Spline Cyclic>
+        """
+        return Node('Is Spline Cyclic', sockets={})._out
+
+    @is_cyclic.setter
+    def is_cyclic(self, cyclic=None):
+        """ > Jump Method <&Node Set Spline Cyclic>
+
+        Information
+        -----------
+        - Socket 'Geometry' : self
+        - Socket 'Selection' : self[selection]
+
+        Arguments
+        ---------
+        - cyclic (Boolean) : socket 'Cyclic' (id: Cyclic)
+
+        Returns
+        -------
+        - Geometry
+        """
+        node = Node('Set Spline Cyclic', sockets={'Geometry': self, 'Selection': self._sel, 'Cyclic': cyclic})
+        self._jump(node._out)
+        return self
+
+    @property
+    def resolution(self):
+        """ Property get node <Node Set Spline Resolution>
+        """
+        return Node('Spline Resolution', sockets={})._out
+
+    @resolution.setter
+    def resolution(self, resolution=None):
+        """ > Jump Method <&Node Set Spline Resolution>
+
+        Information
+        -----------
+        - Socket 'Geometry' : self
+        - Socket 'Selection' : self[selection]
+
+        Arguments
+        ---------
+        - resolution (Integer) : socket 'Resolution' (id: Resolution)
+
+        Returns
+        -------
+        - Geometry
+        """
+        node = Node('Set Spline Resolution', sockets={'Geometry': self, 'Selection': self._sel, 'Resolution': resolution})
+        self._jump(node._out)
+        return self
+
+    @property
+    def type(self):
+        """ Write only property for node <Node Set Spline Type>
+        """
+        raise NodeError('Property Spline.type is write only.')
+
+    @type.setter
+    def type(self, spline_type='POLY'):
+        """ > Jump Method <&Node Set Spline Type>
+
+        Information
+        -----------
+        - Socket 'Curve' : self
+        - Socket 'Selection' : self[selection]
+
+        Arguments
+        ---------
+        - spline_type (str): parameter 'spline_type' in ('CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS')
+
+        Returns
+        -------
+        - Curve
+        """
+        node = Node('Set Spline Type', sockets={'Curve': self, 'Selection': self._sel}, spline_type=spline_type)
+        self._jump(node._out)
+        return self
+

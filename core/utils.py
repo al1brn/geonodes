@@ -155,6 +155,46 @@ def socket_name(name):
     else:
         return prefix_figure(remove_accents(clean(name, '_').lower()))
 
+def CamelCase(name):
+    if name == "":
+        return None
+
+    return remove_accents(name.replace(' ', ''))
+
+# =============================================================================================================================
+# Get a node bl_idname from a name
+
+def get_node_bl_idname(node_name, tree_type, halt=True):
+
+    bl_idname = ""
+
+    # Node name is good
+    if node_name in constants.NODE_NAMES[tree_type]:
+        return constants.NODE_NAMES[tree_type][node_name]
+
+    # Could be the bl_idname
+    if node_name in constants.NODE_NAMES[tree_type].values():
+        return node_name
+
+    # Perhaps lower / upper case problem
+    for nn, blid in constants.NODE_NAMES[tree_type].items():
+        if nn.lower() == node_name.lower():
+            print(f"CAUTION: node name '{node_name}' doesn't match any node name. Lower case matching is taken: {nn}")
+            return blid
+
+    # Error :(
+    if not halt:
+        return None
+
+    for tt in constants.NODE_NAMES.keys():
+        if tt == tree_type:
+            continue
+        if node_name in constants.NODE_NAMES[tt]:
+            raise NodeError(f"Node '{node_name}' is a node of tree '{tt}', it doesn't exist for tree '{tree_type}'")
+
+    raise NodeError(f"Node '{node_name}' doesn't exist")
+
+
 # =============================================================================================================================
 # Get a blender socket from either a Blender NodeSocket or a Socket
 
@@ -229,6 +269,21 @@ def get_socket_type(value, restrict_to=None, default=None):
     else:
         return socket_type
 
+def get_node_data_type(node_name, tree_type, value, default=None):
+
+    blid = get_node_bl_idname(node_name, tree_type)
+    valids = list(constants.NODE_DATA_TYPES[blid].values())[0]
+
+    socket_type = get_socket_type(value)
+    if socket_type in valids.keys():
+        return valids[socket_type]
+
+    if default is None:
+        raise NodeError(f"Node '{node_name}' doesn't accept '{socket_type}' data type, only {list(valids)}")
+
+    return default
+
+
 def get_data_type(value, restrict_to=None, default='FLOAT'):
 
     if value is None:
@@ -273,6 +328,23 @@ def get_input_type(value, restrict_to=None, default='FLOAT'):
         raise NodeError(f"Socket type '{socket_type}' has not a valid input type for the node", valid_types=restrict_to)
     else:
         return input_type
+
+# =============================================================================================================================
+# Select the proper data type in the provided dict
+# Used in generated source code
+
+def get_argument_data_type(argument, type_to_value, node_name=None, arg_name=None):
+    if argument is None:
+        return list(type_to_value.values())[0]
+
+    socket_type = get_socket_type(argument)
+    if socket_type in type_to_value:
+        return type_to_value[socket_type]
+
+    if node_name is not None and arg_name is not None:
+        print(f"CAUTION node '{node_name}': argument '{arg_name}' type ('{socket_type}') is not in {list(type_to_value).keys()}.")
+
+    return list(type_to_value.values())[0]
 
 # =============================================================================================================================
 # Create a numpy array of the correct shape
@@ -340,6 +412,7 @@ def get_blender_resource(socket_type, value):
     if isinstance(value, spec['type']):
         return value
     else:
+        print("????", spec)
         return spec['coll'].get(value)
 
 def get_object(value):

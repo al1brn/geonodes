@@ -34,7 +34,7 @@ import numpy as np
 import bpy
 from . import utils
 from .treeclass import Tree, Node
-from .socketclass import Socket, Attribute
+from .socket_class import Socket, Attribute
 
 # =============================================================================================================================
 # Boolean
@@ -111,6 +111,11 @@ class Boolean(Attribute):
 
     def __rxor__(self, other):
         return self.math.xor(other, self)
+
+    # To avoid user errors
+
+    def __bool__(self):
+        raise NodeError(f"Boolean Socket is not a python bool. Use 'switch' method or operators & | ")
 
     # ----------------------------------------------------------------------------------------------------
     # Random

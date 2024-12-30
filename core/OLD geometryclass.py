@@ -95,7 +95,7 @@ from .scripterror import NodeError
 from . import constants
 from . import utils
 from .treeclass import Tree, Node, Layout
-from .socketclass import NodeCache, Socket
+from .socket_class import NodeCache, Socket
 from .booleanclass import Boolean
 from .floatclass import Float
 from .allnodes import nd
@@ -490,7 +490,8 @@ class Geometry(Socket, GeoBase):
         -------
         - Node
         """
-        return Node('Viewer', {'Geometry': self, 'Value': value}, data_type=utils.get_data_type(value))
+        data_type = self.get_node_data_type('Viewer', default='FLOAT')
+        return Node('Viewer', {'Geometry': self, 'Value': value}, data_type=data_type) #utils.get_data_type(value))
 
     # ----- Operations
 
@@ -634,9 +635,11 @@ class Geometry(Socket, GeoBase):
         - Node: 'RayCast' node
         """
 
-        data_type = utils.get_data_type(attribute, restrict_to=['FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4'])
+        #data_type = utils.get_data_type(attribute, restrict_to=['FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4'])
+        data_type = self.get_node_data_type('Raycast', value=attribute, default='FLOAT')
+
         node = Node('Raycast', {'Target Geometry': self, 'Attribute': attribute, 'Source Position': source_position, 'Ray Direction': ray_direction, 'Ray Length': ray_length},
-            data_type=utils.get_data_type(attribute), mapping='INTERPOLATED' if interpolated else 'NEAREST')
+            data_type=data_type, mapping='INTERPOLATED' if interpolated else 'NEAREST')
         return node
 
     # ====================================================================================================
@@ -1028,6 +1031,16 @@ class Domain(GeoBase, NodeCache):
         self.store_named_attribute(attr_name, value)
 
     # ====================================================================================================
+    # Sample index
+
+    def __call__(self, value, index=None):
+
+        if index is None:
+            index = nd.index
+
+        return self.sample_index(value, index=index)
+
+    # ====================================================================================================
     # ForEachElement loop
 
     def for_each(self, sockets={}, **kwargs):
@@ -1075,7 +1088,8 @@ class Domain(GeoBase, NodeCache):
         ---------
         - value (Socket = None) : value to view
         """
-        return self._node('Viewer', {'Value': value}, data_type=utils.get_data_type(value))
+        data_type = self._geo.get_node_data_type('Viewer', value, default='FLOAT')
+        return self._node('Viewer', {'Value': value}, data_type=data_type) #utils.get_data_type(value))
 
     # ----- Attribute statistic
 
@@ -1092,8 +1106,8 @@ class Domain(GeoBase, NodeCache):
         -------
         - Node : 'Attribute Statistic Node'
         """
-        data_type = utils.get_data_type(attribute, ['FLOAT_VECTOR', 'VECTOR', 'ROTATION', 'COLOR'], 'FLOAT')
-
+        #data_type = utils.get_data_type(attribute, ['FLOAT_VECTOR', 'VECTOR', 'ROTATION', 'COLOR'], 'FLOAT')
+        data_type = self._geo.get_node_data_type('Attribute Statistic', attribute, default='FLOAT')
         return self._node('Attribute Statistic', {'Attribute': attribute}, data_type=data_type, use_cache=False)
 
     # ----- Capture attribute
@@ -1193,7 +1207,7 @@ class Domain(GeoBase, NodeCache):
 
     # ----- Store named attribute
 
-    def store_named_attribute(self, name, value=None):
+    def store_named_attribute(self, name, value=None, data_type=None):
         """ > Node <&Node Store Named Attribute>
 
         [&JUMP]
@@ -1221,7 +1235,7 @@ class Domain(GeoBase, NodeCache):
         -------
         - Geometry
         """
-        data_type   = utils.get_data_type(value)
+        data_type = self._geo.get_node_data_type('Store Named Attribute', value)
         node = self._node('Store Named Attribute', {'Name': name, 'Value': value}, data_type=data_type)
 
         self._geo._tree.register_named_attribute(data_type, attr_name=name)
@@ -1258,11 +1272,30 @@ class Domain(GeoBase, NodeCache):
         """
         return self.store_named_attribute(name, value=value)
 
-        if False:
-            data_type   = utils.get_data_type(value)
-            node = self._node('Store Named Attribute', {'Name': name, 'Value': value}, data_type=data_type)
+    def store_uv(self, name, vector=None):
+        """ > Node <&Node Store Named Attribute>
 
-            return self._jump(node._out)
+        [&JUMP]
+
+        > store a vector as 2-Vector : data_type = 'FLOAT2'
+
+        ``` python
+        mesh = Mesh.Cube()
+        mesh.corners.store_uv("UV Map", mesh._uv_map)
+        ```
+
+        Arguments
+        ---------
+        - name (String) : socket 'Name' (Name)
+        - vector (Vector) : socket 'Value' (Vector)
+
+        Returns
+        -------
+        - Geometry
+        """
+        node = self._node('Store Named Attribute', {'Name': name, 'Value': vector}, data_type='FLOAT2')
+        self._geo._tree.register_named_attribute('FLOAT_VECTOR', attr_name=name)
+        return self._jump(node._out)
 
     # ====================================================================================================
     # Sample nodes with domain
@@ -1300,8 +1333,8 @@ class Domain(GeoBase, NodeCache):
         -------
         - Vector
         """
-
-        return self._node('Sample Index', {'Value': value, 'Index': index}, clamp=clamp, data_type=utils.get_data_type(value))._out
+        data_type = self._geo.get_node_data_type('Sample Index', value, default='FLOAT')
+        return self._node('Sample Index', {'Value': value, 'Index': index}, clamp=clamp, data_type=data_type)._out
 
     def sample_nearest(self, sample_position=None):
         """ > Node <&Node Sample Nearest>
@@ -1536,7 +1569,6 @@ class Domain(GeoBase, NodeCache):
         -------
         - Geometry : self
         """
-
         mode = self.plural_domain(['POINT', 'EDGE', 'FACE'], 'Extrude Mesh')
         node = Node('Extrude Mesh', {'Mesh': self._geo, 'Selection': self._sel, 'Offset': offset, 'Offset Scale': offset_scale, 'Individual': individual}, mode = mode)
         return self._jump(node._out)
@@ -1560,7 +1592,9 @@ class Domain(GeoBase, NodeCache):
         -------
         - Node : 'Accumulate Field'
         """
-        data_type = utils.get_data_type(value, ('FLOAT', 'INT', 'FLOAT_VECTOR', 'TRANSFORM'))
+        #data_type = utils.get_data_type(value, ('FLOAT', 'INT', 'FLOAT_VECTOR', 'TRANSFORM'))
+        data_type = self._geo.get_node_data_type('Accumulate Field', value, default='FLOAT')
+
         return Node('Accumulate Field', {'Value': value, 'Group ID': group_id}, data_type=data_type, domain=self.DOMAIN_NAME)
 
     def evaluate_at_index(self, index=None, value=None):
@@ -1578,7 +1612,8 @@ class Domain(GeoBase, NodeCache):
         -------
         - Socket
         """
-        data_type = utils.get_data_type(value)
+        #data_type = utils.get_data_type(value)
+        data_type = self.get_data_type('Evaluate at Index', value, default='FLOAT')
         return Node('Evaluate at Index', {'Index': index, 'Value': value}, data_type=data_type, domain=self.DOMAIN_NAME)._out
 
     def evaluate_on_domain(self, value=None):
@@ -1595,7 +1630,8 @@ class Domain(GeoBase, NodeCache):
         -------
         - Socket
         """
-        data_type = utils.get_data_type(value)
+        #data_type = utils.get_data_type(value)
+        data_type = self._geo.get_node_data_type('Evaluate on Domain', value, default='FLOAT')
         return Node('Evaluate on Domain', {'Value': value}, data_type=data_type, domain=self.DOMAIN_NAME)._out
 
 
@@ -3623,7 +3659,8 @@ class Mesh(Geometry):
         -------
         - Socket
         """
-        data_type = utils.get_data_type(value)
+        #data_type = utils.get_data_type(value)
+        data_type = self._geo.get_node_data_type('Sample Nearest Surface', value, default='FLOAT')
         return Node('Sample Nearest Surface', {'Mesh': self, 'Value': value, 'Group ID': group_id, 'Sample Position': sample_position, 'Sample Group ID': sample_group_id}, data_type=data_type)._out
 
     def sample_uv_surface(self, value=None, uv_map=None, sample_uv=None):
@@ -3640,7 +3677,8 @@ class Mesh(Geometry):
         -------
         - Socket
         """
-        data_type = utils.get_data_type(value)
+        #data_type = utils.get_data_type(value)
+        data_type = self._geo.get_node_data_type('Sample UV Surface', value, default='FLOAT')
         return Node('Sample UV Surface', {'Mesh': self, 'Value': value, 'UV Map': uv_map, 'Sample UV': sample_uv}, data_type=data_type)._out
 
     # =============================================================================================================================
@@ -4617,7 +4655,9 @@ class Curve(Geometry):
             mode = 'LENGTH'
             sockets['Length'] = length
 
-        return Node('Sample Curve', sockets, data_type=utils.get_data_type(value), mode=mode, use_all_curves=all_curves)._out
+        data_type = self._geo.get_node_data_type('Sample Curve', value, default='FLOAT')
+
+        return Node('Sample Curve', sockets, data_type=data_type, mode=mode, use_all_curves=all_curves)._out
 
     # =============================================================================================================================
     # Operations

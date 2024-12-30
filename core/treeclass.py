@@ -147,7 +147,7 @@ class Tree:
     _total_links = 0
     _total_time  = 0.
 
-    def __init__(self, tree_name, tree_type='GeometryNodeTree', clear=True, fake_user=False, is_group=False, prefix=None):
+    def __init__(self, tree_name: str, tree_type: str='GeometryNodeTree', clear: bool=True, fake_user: bool=False, is_group: bool=False, prefix: str | None=None):
         """ Root class for <!GeoNodes> and <!ShaderNodes> trees.
 
         The system manages a stack of Trees. When a Tree is created, it is placed at the top of the stack
@@ -180,14 +180,16 @@ class Tree:
         > This doesn't work with materials embedded shaders. So, make sure not to override
         > a existing shader when instantiating a new <!ShaderNodes>.
 
+        The 'panel' argument is the default name to use when the tree is called from another tree using method <#link_from>.
+
         Arguments
         ---------
-        - tree_name (str) : tree name
-        - tree_type (str = 'GeometryNodeTree') : tree type in ('GeometryNodeTree', 'ShaderNodeTree')
-        - clear (bool = True) : clear the current tree
-        - fake_user (bool = False) : fake user flag
-        - is_group (bool = False) : Group or not
-        - prefix (str=None) : str prefix to add at the beging of the tree name
+        - tree_name : tree name
+        - tree_type : tree type in ('GeometryNodeTree', 'ShaderNodeTree')
+        - clear : clear the current tree
+        - fake_user : fake user flag
+        - is_group : Group or not
+        - prefix : str prefix to add at the beging of the tree name
         """
 
         if prefix is not None:
@@ -591,7 +593,6 @@ class Tree:
         -------
         - Node
         """
-
         for node in self._nodes:
             if node._bnode.bl_idname ==  'NodeGroupInput':
                 return node
@@ -607,7 +608,6 @@ class Tree:
         -------
         - Node
         """
-
         for node in self._nodes:
             if node._bnode.bl_idname ==  'NodeGroupOutput':
                 return node
@@ -616,6 +616,7 @@ class Tree:
     # ----------------------------------------------------------------------------------------------------
     # Check if an interface socket exists
 
+    #"""
     def io_socket_exists(self, bl_idname, in_out='INPUT', name=None):
 
         for item in self._btree.interface.items_tree:
@@ -625,10 +626,12 @@ class Tree:
                 return item
 
         return None
+    #"""
 
     # ----------------------------------------------------------------------------------------------------
     # First socket type
 
+    """
     def first_io_socket_is_geometry(self, in_out='INPUT'):
 
         for item in self._btree.interface.items_tree:
@@ -637,23 +640,35 @@ class Tree:
             return item.socket_type == 'NodeSocketGeometry'
 
         return False
+    """
 
     # ----------------------------------------------------------------------------------------------------
     # Create an new interface socket
 
+    """
     def new_io_socket(self, bl_idname, in_out, name):
         return self._btree.interface.new_socket(name=name, in_out=in_out, socket_type=bl_idname)
+    """
 
     # --------------------------------------------------------------------------------
     # Clear interface
 
+    """
     def clear_io_sockets(self):
         self._btree.interface.clear()
+    """
 
     # --------------------------------------------------------------------------------
     # Set the default value of an input socket
 
     def set_input_socket_default(self, socket, value=None):
+
+        self._interface.set_default_value(socket.identifier, value=value, update_socket=True)
+        return
+
+        # OLD
+
+
         if value is None:
             return
 
@@ -683,20 +698,20 @@ class Tree:
     # Create a new input socket
 
     @classmethod
-    def new_input(cls, bl_idname, name, subtype='NONE',
-                  value = None, min_value = None, max_value = None, description = ""):
+    def new_input(cls, bl_idname: str, name: str, subtype: str='NONE',
+                  value: 'Any' = None, min_value: float | int | None = None, max_value: float | int | None = None, description: str = ""):
         """ Create a new input socket.
 
         This is an **input socket** of the Tree, hence an **output socket** of the <&Group Input> node.
 
         Arguments
         ---------
-            - bl_idname (str) : socket bl_idname
-            - name (str) : Socket name
-            - value (any = None) : Default value
-            - min_value (any = None) : Minimum value
-            - max_value (any = None) : Maxium value
-            - description (str = None) : user tip
+            - bl_idname : socket bl_idname
+            - name : Socket name
+            - value : Default value
+            - min_value : Minimum value
+            - max_value : Maxium value
+            - description : user tip
 
         Returns
         -------
@@ -989,7 +1004,7 @@ class Node:
         - node_name (str) : Node name
         - sockets (dict or list) : initialization values for the node input sockets
         - _items (dict = {}) : dynamic sockets to create
-        - link_with (node | dict = None) : node to link into this tree (see <#link_input_from>)
+        - link_with (node | dict = None) : node to link into this tree (see <#link_from>)
         - **kwargs : node parameters initialization
         """
 
@@ -1000,17 +1015,32 @@ class Node:
         btree = self._tree._btree
         tree_type = btree.bl_idname
 
-        lower_name = node_name.lower()
-        if lower_name in constants.NODE_NAMES[tree_type]:
-            bl_idname = constants.NODE_NAMES[tree_type][lower_name]
-        else:
-            for tt in constants.NODE_NAMES.keys():
-                if tt == tree_type:
-                    continue
-                if lower_name in constants.NODE_NAMES[tt]:
-                    raise NodeError(f"Node '{node_name}' is a node of tree '{tt}', it doesn't exist for tree '{tree_type}'")
+        bl_idname = utils.get_node_bl_idname(node_name, tree_type)
 
-            bl_idname = node_name
+        if False:
+            bl_idname = ""
+            if node_name in constants.NODE_NAMES[tree_type]:
+                bl_idname = constants.NODE_NAMES[tree_type][node_name]
+
+            elif node_name in constants.NODE_NAMES[tree_type].values():
+                bl_idname = node_name
+
+            else:
+                for nn, blid in constants.NODE_NAMES[tree_type].items():
+                    if nn.lower() == node_name.lower():
+                        print(f"CAUTION: node name '{node_name}' doesn't match any node name. Lower case matching is takend: {nn}")
+                        bl_idname = blid
+                    break
+
+            if bl_idname == "":
+
+                for tt in constants.NODE_NAMES.keys():
+                    if tt == tree_type:
+                        continue
+                    if node_name in constants.NODE_NAMES[tt]:
+                        raise NodeError(f"Node '{node_name}' is a node of tree '{tt}', it doesn't exist for tree '{tree_type}'")
+
+                bl_idname = node_name
 
         # ----------------------------------------------------------------------------------------------------
         # Node keeping
@@ -1064,9 +1094,9 @@ class Node:
 
         if link_from is not None:
             if isinstance(link_from, dict):
-                self.link_input_from(**link_from)
+                self.link_from(**link_from)
             else:
-                self.link_input_from(link_from, arguments={**sockets, **_items})
+                self.link_from(link_from, arguments={**sockets, **_items})
 
     def __str__(self):
         return f"<Node '{self._bnode.name}' {self._bnode.bl_idname}>"
@@ -1201,14 +1231,58 @@ class Node:
 
         socket_type = bsocket.type
 
+        # ====================================================================================================
+        # Geometry
+
+        class_name = None
+
+        if socket_type == 'GEOMETRY':
+            socket_name = bsocket.name.lower()
+            if socket_name == 'mesh':
+                class_name = 'Mesh'
+            elif socket_name in ['curve', 'curves']:
+                class_name = 'Curve'
+            elif socket_name in ['grease pencil', 'grease pencils']:
+                class_name = 'GreasePencil'
+            elif socket_name in ['instance', 'instances']:
+                class_name = 'Instances'
+            elif socket_name in ['points', 'point cloud']:
+                class_name = 'Cloud'
+            elif socket_name == 'volume':
+                class_name = 'Volume'
+            else:
+                class_name = 'Geometry'
+        else:
+            class_name = constants.CLASS_NAMES[socket_type]
+
+        exec(f"from geonodes import {class_name}", locals(), globals())
+        return eval(f"{class_name}(bsocket)", locals(), globals())
+
+
+
+
+
+
+
+
+
+
         if Tree.is_geonodes:
             from . import Boolean, Integer, Float, Vector, Rotation, Matrix, Color, Geometry, Material, Image, Object, Collection, Texture, String, Menu
             from . import Mesh, Curve, GreasePencil, Cloud, Volume, Instances
 
-            socket_class = {'BOOLEAN': Boolean, 'INT': Integer, 'VALUE': Float, 'VECTOR': Vector, 'ROTATION': Rotation, 'MATRIX': Matrix, 'RGBA': Color,
-                'STRING': String, 'MENU': Menu,
-                    'GEOMETRY': Geometry,
-                    'MATERIAL': Material, 'IMAGE': Image, 'OBJECT': Object, 'COLLECTION': Collection, 'TEXTURE': Texture,
+            socket_class = {
+                'BOOLEAN': Boolean,
+                'INT': Integer,
+                'VALUE': Float,
+                'VECTOR': Vector,
+                'ROTATION': Rotation,
+                'MATRIX': Matrix,
+                'RGBA': Color,
+                'STRING': String,
+                'MENU': Menu,
+                'GEOMETRY': Geometry,
+                'MATERIAL': Material, 'IMAGE': Image, 'OBJECT': Object, 'COLLECTION': Collection, 'TEXTURE': Texture,
                 }[socket_type]
 
             if socket_type == 'GEOMETRY':
@@ -1296,6 +1370,8 @@ class Node:
                 match = counter == 0
             else:
                 match = name in [bsock.name, bsock.identifier, utils.socket_name(bsock.name)]
+                if not match and bsock.label is not None:
+                    match = name == utils.socket_name(bsock.label)
 
             if match:
                 if bsock.enabled:
@@ -1528,6 +1604,12 @@ class Node:
             value = value._out
 
         # ----------------------------------------------------------------------------------------------------
+        # If the value is a domain, we take its geometry
+
+        if hasattr(value, '_geo'):
+            value = value._geo
+
+        # ----------------------------------------------------------------------------------------------------
         # We directly have a socket
 
         out_socket = utils.get_bsocket(value)
@@ -1648,7 +1730,14 @@ class Node:
     # If the other node is None, the Tree input node is taken
     # Create is only valid in this case
 
-    def link_input_from(self, node='TREE', include=None, exclude=[], rename={}, arguments={}, create=True):
+    def link_from(self,
+            node:      'Node | Tree | None | str' = 'TREE',
+            include:   list[str] | str | None = None,
+            exclude:   list[str] | str = [],
+            rename:    dict[str: str] = {},
+            arguments: dict['name': 'value'] = {},
+            create:    bool =True,
+            panel:     str | None = None):
         """ Plug the output sockets of a node into the input sockets of the node.
 
         This method is used to connect several sockets in a compact syntax.
@@ -1659,7 +1748,7 @@ class Node:
         > [!NOTE]
         > This function is called when initializing a node if the `link_with` argument is not None.
         > In that case, `link_argument` value is either the `node` argument or a dictionnary
-        > of the `link_input_from` method arguments:
+        > of the `link_from` method arguments:
 
         ``` python
         with GeoNodes("Connect several sockets"):
@@ -1670,19 +1759,19 @@ class Node:
             # Create Group inputs to feed the node
             # 'Size X' and 'Size Y' are created in the group input not
             # 'Vertices X' and 'Vertices Y' are connected to the same 'Vertices' which is created
-            a.link_input_from(rename={'Vertices X': 'Vertices', 'Vertices Y': 'Vertices'})
+            a.link_from(rename={'Vertices X': 'Vertices', 'Vertices Y': 'Vertices'})
 
             a = Node("Math")
 
             # Connect the 'Value' output socket to the 'Value' input socket
             # The third socket is exclude by its index
             # Input values are renamed 'First' and 'Second'
-            a.link_input_from(exclude=2, rename={'Value': 'First', 'Value_001': 'Second'})
+            a.link_from(exclude=2, rename={'Value': 'First', 'Value_001': 'Second'})
 
             b = Node("Math", operation='SQRT')
 
             # Plug the previous math node on a single socket
-            b.link_input_from(a, include='Value')
+            b.link_from(a, include='Value')
 
         # Call this method when creating a group
         # Note: the previous Group is called using functional syntax with G class
@@ -1702,12 +1791,13 @@ class Node:
 
         Arguments
         ---------
-        - node (Node | current tree = None) : the node to get the outputs from. Use Group Input node if None
-        - include (list of strs = None) : connects only the sockets in the list
-        - exclude (list of strs = []) : exclude sockets in this list
-        - rename (dict = {}) : rename the sockets to the given names
-        - arguments (dict = {}) : arguments used at initialization time. Arguments which are defined in the liste are ignored
-        - create (bool = True) : create the output sockets in node if it is a 'Group Input Node'
+        - node : the node to get the outputs from. Use Group Input node if None
+        - include : connects only the sockets in the list
+        - exclude : exclude sockets in this list
+        - rename : rename the sockets to the given names
+        - arguments : arguments used at initialization time. Arguments which are defined in the liste are ignored
+        - create : create the output sockets in node if it is a 'Group Input Node'
+        - panel : panel name to create, use tree default name if None
 
         Returns
         -------
@@ -1968,9 +2058,9 @@ class Group(Node):
 
         if link_from is not None:
             if isinstance(link_from, dict):
-                self.link_input_from(**link_from)
+                self.link_from(**link_from)
             else:
-                self.link_input_from(link_from, arguments={**sockets, **kwargs})
+                self.link_from(link_from, arguments={**sockets, **kwargs})
 
     @classmethod
     def Prefix(cls, prefix, group_name, sockets={}, **kwargs):

@@ -36,7 +36,7 @@ import numpy as np
 import bpy
 from . import utils
 from .treeclass import Tree, Node, ColorRamp
-from .socketclass import Socket, Attribute
+from .socket_class import Socket, Attribute
 
 # magic methods
 # __add__ __radd__ __iadd__ __sub__  __mul__ __matmul__ __truediv____floordiv__ __mod__ __divmod__ __pow__

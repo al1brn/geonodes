@@ -11,6 +11,20 @@ from .. import pi, tau
 
 FOCAL_FACTOR = .04939
 
+def test():
+
+    from geonodes.core.socket_class import Switch
+
+    with GeoNodes("Test"):
+
+        geo = Geometry()
+        cone = Mesh.Cone()
+        cond = Boolean(True, "Cone")
+
+        res = Switch(cone) if cond else geo
+
+        res.out()
+
 # =============================================================================================================================
 # Utilities and macros
 
@@ -268,13 +282,15 @@ def camera_culling():
         # sensor dims : (aspect_ratio, 1)
 
         with Layout("Projected outside the sensor borders"):
-            half_width = aspect_ratio/2 + app_radius
+            half_width  = aspect_ratio/2 + app_radius
             half_height = .5 + app_radius
 
-            outside  = proj.x < -half_width
-            outside |= proj.x >  half_width
-            outside |= proj.y < -half_height
-            outside |= proj.y >  half_height
+            outside_left  = proj.x < -half_width
+            outside_right = proj.x >  half_width
+            outside_bot   = proj.y < -half_height
+            outside_top   = proj.y >  half_height
+
+            outside = outside_left | outside_right | outside_bot | outside_top
 
         # ===== Returns
 
@@ -285,6 +301,10 @@ def camera_culling():
         app_radius.out(   "Radius")
         distance.out(     "Distance")
         ratio.out(        "Ratio")
+        outside_left.out( "Outside Left")
+        outside_right.out("Outside Right")
+        outside_bot.out(  "Outside Bot")
+        outside_top.out(  "Outside Top")
 
         pos.out(          "Position")
 
@@ -312,39 +332,66 @@ def camera_culling():
 
         # ===== Projection
 
-        node = G.camera.projection(position=nd.position, link_from={'exclude': ['Radius', 'Normal']}).node
+        node = G.camera.projection(position=nd.position, link_from={'exclude': 'Normal'}).node
+
+        # Radius was created when calling camera projection
+        radius = tree.input_node.radius
+        aspect_ratio = tree.input_node.aspect_ratio
 
         # ===== Both indices are behind
+
+        with Layout("Sensor halt sizes and diagonal"):
+            half_width = (aspect_ratio/2)._lc("Width/2")
+            half_height = Float(.5)._lc("Height/2")
+            diag = (half_height*gnmath.sqrt(1 + aspect_ratio**2))._lc("Diagonal/2")
 
         with Layout("Edge's vertex indices"):
             i1 = nd.edge_vertices.vertex_index_1
             i2 = nd.edge_vertices.vertex_index_2
 
-        with Layout("Both vertices are behind"):
-            ignore = mesh.points.sample_index(node.behind, i1) & mesh.points.sample_index(node.behind, i2)
-
-        with Layout("Edge's vertex positions"):
-            A = mesh.points.sample_index(node.projection, i1)
-            B = mesh.points.sample_index(node.projection, i2)
+        with Layout("A, B: Edge's vertex projected positions"):
+            A  = mesh.points(node.projection, i1)._lc("A")
+            rA = mesh.points(node.radius,     i1)._lc("A Radius")
+            B  = mesh.points(node.projection, i2)._lc("B")
+            rB = mesh.points(node.radius,     i2)._lc("B Radius")
 
         with Layout("Projection the origin on the edge line"):
+            # Line equation is: OM = OA + tAB
+            # Projection H is such as: OH.AB = 0 ==> (A + tAB).AB = 0 <=> t = -A.AB/AB**2
             AB = B - A
-            t = -(A.dot(AB))
+            l2 = AB.x**2 + AB.y**2
+            t = -(A.dot(AB))/l2
 
-        with Layout("Take the projection or an edge vertex depending on the projection locatoin"):
-            l = AB.length
-            C = A.switch(t > 0, B.switch(t < l, A + AB*(t/l)))
+            C  =  A.switch(t > 0,  B.switch(t < 1,  A + AB*t))._lc("C")
+            rC = rA.switch(t > 0, rB.switch(t < 1, rA + (rB - rA)*t))._lc("C Radius")
 
-        with Layout("Is the projected point in the sensor"):
-            half_width = Float(16/9, "Aspect Ratio")/2
-            half_height = .5
+        # DEBUG
+        if False:
+            debugA = Mesh(mesh).edges.to_points(position=A).points.instance_on(instance=Mesh.Cube(size=.1))
+            #debugA = None
+            debugB = Mesh(mesh).edges.to_points(position=B).points.instance_on(instance=Mesh.Cone(radius_bottom=.1, depth=.3))
+            debugB = None
+            debugC = Mesh(mesh).edges.to_points(position=C).points.instance_on(instance=Mesh.UVSphere(radius=.05))
+            #debugC = None
+            mesh.points.position = node.projection
+            mesh.join(debugA, debugB, debugC).out()
+            return
 
-            ignore |= C.x < -half_width
-            ignore |= C.x >  half_width
-            ignore |= C.y < -half_height
-            ignore |= C.y >  half_height
+        with Layout("Both vertices are behind"):
+            ignore = mesh.points(node.behind, i1) & mesh.points(node.behind, i2)
 
-        mesh.edges[ignore].delete().out()
+        with Layout("Both vertices are outside but on the same side"):
+            ignore |= mesh.points(node.outside_left,  i1) & mesh.points(node.outside_left,  i2)
+            ignore |= mesh.points(node.outside_right, i1) & mesh.points(node.outside_right, i2)
+            ignore |= mesh.points(node.outside_bot,   i1) & mesh.points(node.outside_bot,   i2)
+            ignore |= mesh.points(node.outside_top,   i1) & mesh.points(node.outside_top,   i2)
+
+        with Layout("Nearest point farer than diagonal"):
+            ignore |= C.length > diag + rC
+            pass
+
+        mesh.edges[ignore].delete()
+        mesh.out()
 
     # -----------------------------------------------------------------------------------------------------------------------------
     # Face Culling
@@ -1025,13 +1072,11 @@ def romanesco():
 
         mesh.out()
 
-    with GeoNodes("Romanesco Cabbage", prefix="Fractal"):
+    with GeoNodes("Cone Iterator", prefix="Fractal"):
 
         sides   = Integer(3,  "Sides", min=3, max=20, tip="Number of sides")
         n       = Integer(5,  "Instances per side", min=3, max=50, tip="Number of instances per side")
         height  = Float(2,   "Height", min=.1, max=10, tip="Cabbage heigth")
-        #shrink  = Float.Factor(.5, "Shrink Factor", min=.001, max=.999)
-
 
         # ===== Cone Side
 
@@ -1095,10 +1140,6 @@ def romanesco():
 
         mesh.out()
 
-
-    return
-
-
     # ====================================================================================================
     # Logarithmic Spiral
 
@@ -1121,21 +1162,23 @@ def romanesco():
 
         # ----- Logarithmic spiral
 
-        slope = height/radius
+        with Layout("Base Logarihmic Spiral"):
+            curve = Curve.Line().resample(count)
 
-        curve = Curve.Line().resample(count)
+            theta =  tau*rotations/count*nd.index
+            rho = radius*gnmath.abs(omega)**theta
+            theta *= gnmath.sign(omega)
 
-        theta =  tau*rotations/count*nd.index
-        rho = radius*gnmath.abs(omega)**theta
-        theta *= gnmath.sign(omega)
+            slope = height/count
 
-        curve.points.position = (rho*gnmath.cos(theta), rho*gnmath.sin(theta), height - rho*slope)
+            curve.points.position = (rho*gnmath.cos(theta), rho*gnmath.sin(theta), slope*nd.index)
 
         # ----- Normal to the cone
 
-        normal = curve.points.position*(1, 1, 0)
-        normal = Rotation((0, 0, theta)) @ Vector((height, 0, radius))
-        curve.points.store("Normal", normal.normalize())
+        with Layout("Normal"):
+            normal = curve.points.position*(1, 1, 0)
+            normal = Rotation((0, 0, theta)) @ Vector((height, 0, radius))
+            curve.points._Normal = normal.normalize()
 
         curve.out()
 
@@ -1144,11 +1187,11 @@ def romanesco():
 
     with GeoNodes("Romanesco Cabbage", prefix="Fractal"):
 
-        iterations    = Integer(2,           "Iterations", min=0, max=3)
+        #iterations    = Integer(2,           "Iterations", min=0, max=3)
         nspirals      = Integer(6,           "Number of spirals", min=3, max=12)
 
         radius        = Float(10,            "Size", min=1)
-        height_factor = Float(1.5,           "Height Factor")
+        height_factor = Float(1.5,           "Height Factor", min=0)
         omega         = Float(.8,            "Omega")
         rotations     = Float(3,             "Rotations")
         upwards       = Float(4,             "Upwards factor")
@@ -1164,7 +1207,8 @@ def romanesco():
 
             height = radius*height_factor
 
-            spiral = Curve(Group("Logarithmic Spiral", count=500, radius=radius, height=height, link_from='TREE').geometry)
+            #spiral = Curve(Group("Logarithmic Spiral", count=500, radius=radius, height=height, link_from='TREE').geometry)
+            spiral = Curve(G.logarithmic_spiral(count=500, radius=radius, height=height, link_from='TREE'))
 
             # ::::: Extract points following a geometric series
 
@@ -1180,20 +1224,19 @@ def romanesco():
             curve.points.position = spiral.sample(nd.position, length=l)
 
             with Layout("Radius"):
-                #size = gnmath.min(.9, size*size_factor)
-                #curve.points.store("Radius",  size*q**nd.index)
-                curve.points.store("Radius",  size_factor*q**nd.index)
+                curve.points._Radius = size_factor*q**nd.index
 
             # Orient progressively the normal to z
             f = (nd.index/(npoints - 1))**upwards
 
-            normal = spiral.sample(Vector.Named("Normal"), length=l)
+            normal = spiral.sample(Vector("Normal"), length=l)
             normal = normal.mix(f, (0, 0, 1))
-            curve.points.store("Normal", normal)
+            curve.points._Normal = normal.normalize()
 
+        # DEBUG
         if False:
-            curve = curve.points.instance_on(instance=Curve.Line().transform(scale=.3), rotation=Rotation.AlignToVector(Vector.Named("Normal")))
-            curve.out()
+            normals = curve.points.instance_on(instance=Curve.Line(), rotation=Rotation.AlignToVector(Vector("Normal")))
+            (curve + normals).out()
             return
 
         # ===== Duplicate nspirals times
@@ -1209,16 +1252,23 @@ def romanesco():
             spirals = spirals.to_points()
             spirals.points.radius = Float.Named("Radius")
 
+        # DEBUG
         if False:
-            spirals = spirals.points.instance_on(instance=Curve.Line().transform(scale=.3), rotation=Rotation.AlignToVector(Vector.Named("Normal")))
-            spirals.out()
+            normals = spirals.points.instance_on(instance=Curve.Line(), rotation=Rotation.AlignToVector(Vector("Normal")))
+            (spirals + normals).out()
             return
 
         # ===== Iterates
 
         cone = Mesh.Cone(radius_bottom=radius, vertices=7, depth=height)
 
-        node = G.fractal.points_iterator(model=spirals, final_mesh=cone, link_from='TREE').node
+        #node = G.fractal.points_iterator(model=spirals, final_mesh=cone, link_from='TREE').node
+        cloud = G.fractal.cloud_iterator(geometry=spiral, link_from='TREE')
+
+        if True:
+            cloud.out()
+            return
+
 
         fractal = node.mesh
         fractal.faces.smooth = smooth

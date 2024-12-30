@@ -46,7 +46,7 @@ updates
 """
 
 from .treeclass import Node
-from .socketclass import TextureRoot
+from .socket_class import TextureRoot
 
 class Texture(TextureRoot):
 

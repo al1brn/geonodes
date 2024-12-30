@@ -29,19 +29,19 @@ def demo():
         # Create Group inputs to feed the node
         # 'Size X' and 'Size Y' are created in the group input not
         # 'Vertices X' and 'Vertices Y' are connected to the same 'Vertices' which is created
-        a.link_input_from(rename={'Vertices X': 'Vertices', 'Vertices Y': 'Vertices'})
+        a.link_from(rename={'Vertices X': 'Vertices', 'Vertices Y': 'Vertices'})
 
         a = Node("Math")
 
         # Connect the 'Value' output socket to the 'Value' input socket
         # The third socket is exclude by its index
         # Input values are renamed 'First' and 'Second'
-        a.link_input_from(exclude=2, rename={'Value': 'First', 'Value_001': 'Second'})
+        a.link_from(exclude=2, rename={'Value': 'First', 'Value_001': 'Second'})
 
         b = Node("Math", operation='SQRT')
 
         # Plug the previous math node on a single socket
-        b.link_input_from(node=a, include='Value')
+        b.link_from(node=a, include='Value')
 
     # =============================================================================================================================
     # Float Math

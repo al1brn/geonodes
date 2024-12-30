@@ -31,7 +31,7 @@ import numpy as np
 import bpy
 from ..core import utils
 from ..core.treeclass import Tree, Node
-from ..core.socketclass import Attribute
+from ..core.socket_class import Attribute
 
 # =============================================================================================================================
 # Shader Root

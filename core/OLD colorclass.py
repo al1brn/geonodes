@@ -33,7 +33,7 @@ import numpy as np
 import bpy
 from . import utils
 from .treeclass import Tree, Node, ColorRamp
-from .socketclass import Socket
+from .socket_class import Socket
 from .vectorclass import VectorLike
 
 # =============================================================================================================================

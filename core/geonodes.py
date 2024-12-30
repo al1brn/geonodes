@@ -43,7 +43,7 @@ e      = np.e
 
 from .treeclass import Break, Layout, Node, Group, GroupF, Tree
 from .floatclass import Float, Integer
-from .socketclass import Material, Image, Object, Collection, String, Menu
+from .socket_class import Material, Image, Object, Collection, String, Menu
 from .booleanclass import Boolean
 from .vectorclass import Vector, Rotation, Matrix
 from .colorclass import Color
@@ -58,9 +58,10 @@ from .staticclass_gn import nd
 from .treeclass import Tree
 from geonodes.core import constants
 from geonodes.core.scripterror import NodeError
+from .treeinterface import TreeInterface
 
 class GeoNodes(Tree):
-    def __init__(self, tree_name, clear=True, fake_user=False, is_group=False, prefix=None):
+    def __init__(self, tree_name: str, clear: bool=True, fake_user: bool=False, is_group: bool=False, prefix: str | None=None):
         """ > Geometry Nodes
 
         Arguments
@@ -75,6 +76,7 @@ class GeoNodes(Tree):
         super().__init__(tree_name, tree_type='GeometryNodeTree', clear=clear, fake_user=fake_user, is_group=is_group, prefix=prefix)
 
         self._btree.is_modifier = not is_group
+        self._interface = TreeInterface(self._btree)
 
     # =============================================================================================================================
     # Tool
@@ -140,18 +142,36 @@ class GeoNodes(Tree):
                 raise NodeError(f"Node '{bnode.name}' is specific to Tools, it can't be used in the Modifier tree '{self._btree.name}'.")
 
     # =============================================================================================================================
+    # End of construction
+
+    def pop(self):
+
+        if self._btree.is_modifier:
+            self._interface.set_in_geometry(create = False)
+            self._interface.set_out_geometry()
+
+        super().pop()
+
+
+    # =============================================================================================================================
     # Geometry I/O
     # Geometry is the first socket which must be GEOMETRY
 
-    @property
-    def has_input_geometry(self):
-        return self.first_io_socket_is_geometry('INPUT')
+    #@property
+    #def has_input_geometry(self):
+    #    return self.first_io_socket_is_geometry('INPUT')
 
-    @property
-    def has_output_geometry(self):
-        return self.first_io_socket_is_geometry('OUTPUT')
+    #@property
+    #def has_output_geometry(self):
+    #    return self.first_io_socket_is_geometry('OUTPUT')
 
     def get_input_geometry(self, name=None, description=None):
+
+        self._interface.set_in_geometry(name=name, create=True)
+        return self.input_node[0]
+
+
+        # OLD
 
         io_socket = self.io_socket_exists('NodeSocketGeometry', 'INPUT')
         if io_socket is None:
@@ -168,6 +188,14 @@ class GeoNodes(Tree):
         return self.input_node[0]
 
     def set_output_geometry(self, value, name=None):
+
+        self._interface.set_out_geometry(name=name)
+        if value is not None:
+            self.link(value, self.output_node._bnode.inputs[0])
+
+        return
+
+        # OLD
 
         if self.has_output_geometry:
             io_socket = self.io_socket_exists('NodeSocketGeometry', 'INPUT')
