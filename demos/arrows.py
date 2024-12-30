@@ -39,6 +39,8 @@ def demo():
 
     print("\nCreate Arrows nodes...")
 
+    """
+
     with ShaderNodes("Arrow"):
 
         pos_color = Color(snd.attribute(attribute_type='GEOMETRY', attribute_name="Color").vector)
@@ -56,6 +58,7 @@ def demo():
         shader = ped.mix(transp, Shader.Transparent())
 
         shader.out()
+    """
 
 
     # ====================================================================================================
@@ -66,18 +69,18 @@ def demo():
     with GeoNodes("Arrows"):
 
         cloud      = Cloud(name='Geometry')
-        vectors    = Vector(0, "Vectors", tip="Vectors at each point")
+        vectors    = Vector(     0,           "Vectors",            tip="Vectors at each point")
 
-        scale      = Float(     1,  "Scale", 0, tip = "Vectors multiplicator")
-        use_log    = Boolean(False, "Logarithm", tip="Use a logarithm of vector lengths")
-        resol      = Integer(  12,  "Resolution",  3, 64, tip = "Arrows shaft resolution")
-        section    = Float(   .02,  "Section", 0., 1., tip = "Arrows shaft radius")
-        use_sphere = Boolean(False, "Sphere", tip="Use a sphere for the head rather than a cone")
-        color      = Color((0., 0., 1., 1.), "Color",  tip="Color to pass as 'Color' named attribute for shader")
-        negative   = Float.Factor(0, "Negative",     0, 1, tip="Negative factor to pass as 'Negative', named attribute for shader")
-        shaft_mat  = Material("Arrow", "Shaft", tip="Material for the shaft")
-        head_mat   = Material("Arrow", "Head", tip="Material for the head")
-        show_arrow = Boolean(True, "Show", tip="Show / hide flag")
+        scale      = Float(     1,           "Scale", 0,            tip="Vectors multiplicator")
+        use_log    = Boolean(False,          "Logarithm",           tip="Use a logarithm of vector lengths")
+        resol      = Integer(  12,           "Resolution",  3, 64,  tip="Arrows shaft resolution")
+        section    = Float(   .02,           "Section", 0., 1.,     tip="Arrows shaft radius")
+        use_sphere = Boolean(False,          "Sphere",              tip="Use a sphere for the head rather than a cone")
+        color      = Color((0., 0., 1., 1.), "Color",               tip="Color to pass as 'Color' named attribute for shader")
+        negative   = Float.Factor(0,         "Negative",     0, 1,  tip="Negative factor to pass as 'Negative', named attribute for shader")
+        shaft_mat  = Material("Arrow",       "Shaft",               tip="Material for the shaft")
+        head_mat   = Material("Arrow",       "Head",                tip="Material for the head")
+        show_arrow = Boolean(True,           "Show",                tip="Show / hide flag")
 
         with Layout("Vectors"):
             vectors = cloud.points.capture(vectors)
@@ -85,51 +88,52 @@ def demo():
         with Layout("Length and rotation"):
             vect_len = vectors.length._lc("Vector length")
             length   = (vect_len*scale).switch(use_log, gnmath.log(1 + vect_len, base=(1.001 + scale)))
-            rot      = Rotation.AlignZToVector(vectors)
+            rot      = Rotation.AlignZToVector(vector=vectors)
 
         with Layout("Arrow Heads"):
 
             with Layout("Cone"):
                 cone_height = section*7
                 cone = Mesh.Cone(vertices=2*resol, radius_bottom=section*3., depth=cone_height)
-                cone.corners.store("UV Map", cone.uv_map_)
+                cone.corners.store_uv("UV Map", cone.uv_map_)
 
             with Layout("Sphere"):
                 radius = section*4
                 sphere_height = radius
                 sphere = Mesh.UVSphere(segments=2*resol, rings=resol, radius=radius)
-                sphere.corners.store("UV Map", sphere.uv_map_)
+                sphere.corners.store_uv("UV Map", sphere.uv_map_)
 
             head = cone.switch(use_sphere, sphere)
             head_height = cone_height.switch(use_sphere, sphere_height)
             ratio = length/(length + head_height)
-            head.faces.material = head_mat
+
+            head.material = head_mat
 
             with Layout("Instanciate heads"):
-                heads = cloud.points.instance_on(instance=head, scale=(1, 1, ratio))
+                heads = cloud.instance_on(instance=head, scale=(1, 1, ratio))
                 heads.insts.rotation = rot
-                heads.insts.translate(translation=vectors.scale((length*ratio)/vect_len), local_space=False)
+                heads.translate(translation=vectors * ((length*ratio)/vect_len), local_space=False)
 
         with Layout("Arrow shafts"):
             shaft = Mesh.Cylinder(vertices=resol, radius=section, depth=1.)
-            shaft.corners.store("UV Map", shaft.uv_map_)
+            shaft.corners.store_uv("UV Map", shaft.uv_map_)
 
             shaft = shaft.transform(translation=(0, 0, .5))
-            shaft.faces.material = shaft_mat
-            shafts = cloud.points.instance_on(instance=shaft, scale=(1, 1, length*ratio))
+            shaft.material = shaft_mat
+            shafts = cloud.instance_on(instance=shaft, scale=(1, 1, length*ratio))
             shafts.insts.rotation = rot
 
         with Layout("Finalize"):
 
             shafts = shafts.insts[length.equal(0)].delete_geometry()
-            heads = heads.insts[length.equal(0)].delete_geometry()
+            heads  = heads.insts[length.equal(0)].delete_geometry()
 
             arrows = Mesh((shafts + heads).realize())
             arrows.faces.smooth = True
 
-            arrows.points.store("Color",        (color.red, color.green, color.blue))
-            arrows.points.store("Transparency", 1 - color.alpha)
-            arrows.points.store("Negative",     negative)
+            arrows.points._Color        = (color.red, color.green, color.blue)
+            arrows.points._Transparency = 1 - color.alpha
+            arrows.points._Negative     = negative
 
         arrows.switch((-show_arrow) | color.alpha.equal(0)).out()
 

@@ -156,7 +156,7 @@ class Corner(Socket):
         data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Corner.store_named_attribute', 'value')
         node = Node('Store Named Attribute', sockets={'Geometry': self, 'Selection': self._sel, 'Name': name, 'Value': value}, data_type=data_type, domain='CORNER')
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def store(self, name=None, value=None):
         """ > Jump Method <&Node Store Named Attribute>
@@ -180,7 +180,7 @@ class Corner(Socket):
         data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Corner.store', 'value')
         node = Node('Store Named Attribute', sockets={'Geometry': self, 'Selection': self._sel, 'Name': name, 'Value': value}, data_type=data_type, domain='CORNER')
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def store_uv(self, name=None, value=None):
         """ > Jump Method <&Node Store Named Attribute>
@@ -203,7 +203,7 @@ class Corner(Socket):
         """
         node = Node('Store Named Attribute', sockets={'Geometry': self, 'Selection': self._sel, 'Name': name, 'Value': value}, data_type='FLOAT2', domain='CORNER')
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     @classmethod
     def pack_uv_islands(cls, uv=None, margin=None, rotate=None):

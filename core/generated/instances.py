@@ -91,7 +91,7 @@ class Instances(Socket):
         """
         node = Node('Rotate Instances', sockets={'Instances': self, 'Selection': self._sel, 'Rotation': rotation, 'Pivot Point': pivot_point, 'Local Space': local_space})
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def scale(self, scale=None, center=None, local_space=None):
         """ > Jump Method <&Node Scale Instances>
@@ -113,7 +113,7 @@ class Instances(Socket):
         """
         node = Node('Scale Instances', sockets={'Instances': self, 'Selection': self._sel, 'Scale': scale, 'Center': center, 'Local Space': local_space})
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def set_transform(self, transform=None):
         """ > Jump Method <&Node Set Instance Transform>
@@ -133,7 +133,7 @@ class Instances(Socket):
         """
         node = Node('Set Instance Transform', sockets={'Instances': self, 'Selection': self._sel, 'Transform': transform})
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def translate(self, translation=None, local_space=None):
         """ > Jump Method <&Node Translate Instances>
@@ -154,7 +154,7 @@ class Instances(Socket):
         """
         node = Node('Translate Instances', sockets={'Instances': self, 'Selection': self._sel, 'Translation': translation, 'Local Space': local_space})
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     @property
     def transform(self):
@@ -181,5 +181,5 @@ class Instances(Socket):
         """
         node = Node('Set Instance Transform', sockets={'Instances': self, 'Selection': self._sel, 'Transform': transform})
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 

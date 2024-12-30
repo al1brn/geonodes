@@ -451,7 +451,7 @@ class Curve(Socket):
         """
         node = Node('Set Handle Type', sockets={'Curve': self, 'Selection': self._sel}, handle_type=handle_type, mode=mode)
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def set_left_handle_type(self, handle_type='AUTO'):
         """ > Jump Method <&Node Set Handle Type>
@@ -472,7 +472,7 @@ class Curve(Socket):
         """
         node = Node('Set Handle Type', sockets={'Curve': self, 'Selection': self._sel}, handle_type=handle_type, mode={'LEFT'})
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def set_right_handle_type(self, handle_type='AUTO'):
         """ > Jump Method <&Node Set Handle Type>
@@ -493,7 +493,7 @@ class Curve(Socket):
         """
         node = Node('Set Handle Type', sockets={'Curve': self, 'Selection': self._sel}, handle_type=handle_type, mode={'RIGHT'})
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def set_both_handle_type(self, handle_type='AUTO'):
         """ > Jump Method <&Node Set Handle Type>
@@ -514,7 +514,7 @@ class Curve(Socket):
         """
         node = Node('Set Handle Type', sockets={'Curve': self, 'Selection': self._sel}, handle_type=handle_type, mode={'RIGHT', 'LEFT'})
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     @classmethod
     def Spiral(cls, resolution=None, rotations=None, start_radius=None, end_radius=None, height=None, reverse=None):
@@ -554,7 +554,7 @@ class Curve(Socket):
         """
         node = Node('Set Spline Type', sockets={'Curve': self, 'Selection': self._sel}, spline_type=spline_type)
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     @classmethod
     def Star(cls, points=None, inner_radius=None, outer_radius=None, twist=None):
@@ -697,7 +697,7 @@ class Curve(Socket):
         """
         node = Node('Deform Curves on Surface', sockets={'Curves': self})
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def fill_triangles(self, group_id=None):
         """ > Method <&Node Fill Curve>
@@ -775,7 +775,7 @@ class Curve(Socket):
         """
         node = Node('Fillet Curve', sockets={'Curve': self, 'Radius': radius, 'Limit Radius': limit_radius}, mode='BEZIER')
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def fillet_poly(self, count=None, radius=None, limit_radius=None):
         """ > Jump Method <&Node Fillet Curve>
@@ -797,7 +797,7 @@ class Curve(Socket):
         """
         node = Node('Fillet Curve', sockets={'Curve': self, 'Count': count, 'Radius': radius, 'Limit Radius': limit_radius}, mode='POLY')
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def fillet(self, radius=None, limit_radius=None, mode='BEZIER'):
         """ > Jump Method <&Node Fillet Curve>
@@ -818,7 +818,7 @@ class Curve(Socket):
         """
         node = Node('Fillet Curve', sockets={'Curve': self, 'Radius': radius, 'Limit Radius': limit_radius}, mode=mode)
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     @classmethod
     def Interpolate(cls, guide_curves=None, guide_up=None, guide_group_id=None, points=None, point_up=None, point_group_id=None, max_neighbors=None):
@@ -863,7 +863,7 @@ class Curve(Socket):
         """
         node = Node('Interpolate Curves', sockets={'Guide Curves': self, 'Guide Up': guide_up, 'Guide Group ID': guide_group_id, 'Points': points, 'Point Up': point_up, 'Point Group ID': point_group_id, 'Max Neighbors': max_neighbors})
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def resample_evaluated(self):
         """ > Jump Method <&Node Resample Curve>
@@ -880,7 +880,7 @@ class Curve(Socket):
         """
         node = Node('Resample Curve', sockets={'Curve': self, 'Selection': self._sel}, mode='EVALUATED')
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def resample_count(self, count=None):
         """ > Jump Method <&Node Resample Curve>
@@ -901,7 +901,7 @@ class Curve(Socket):
         """
         node = Node('Resample Curve', sockets={'Curve': self, 'Selection': self._sel, 'Count': count}, mode='COUNT')
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def resample_length(self, length=None):
         """ > Jump Method <&Node Resample Curve>
@@ -922,7 +922,7 @@ class Curve(Socket):
         """
         node = Node('Resample Curve', sockets={'Curve': self, 'Selection': self._sel, 'Length': length}, mode='LENGTH')
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def resample(self, count=None, mode='COUNT'):
         """ > Jump Method <&Node Resample Curve>
@@ -943,7 +943,7 @@ class Curve(Socket):
         """
         node = Node('Resample Curve', sockets={'Curve': self, 'Selection': self._sel, 'Count': count}, mode=mode)
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def reverse(self):
         """ > Jump Method <&Node Reverse Curve>
@@ -959,7 +959,7 @@ class Curve(Socket):
         """
         node = Node('Reverse Curve', sockets={'Curve': self, 'Selection': self._sel})
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def sample_factor(self, value=None, curve_index=None, factor=None, use_all_curves=False):
         """ > Method <&Node Sample Curve>
@@ -1053,7 +1053,7 @@ class Curve(Socket):
         """
         node = Node('Set Handle Positions', sockets={'Curve': self, 'Selection': self._sel, 'Position': position, 'Offset': offset}, mode=mode)
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def set_left_handle_positions(self, position=None, offset=None):
         """ > Jump Method <&Node Set Handle Positions>
@@ -1075,7 +1075,7 @@ class Curve(Socket):
         """
         node = Node('Set Handle Positions', sockets={'Curve': self, 'Selection': self._sel, 'Position': position, 'Offset': offset}, mode='LEFT')
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def set_right_handle_positions(self, position=None, offset=None):
         """ > Jump Method <&Node Set Handle Positions>
@@ -1097,7 +1097,7 @@ class Curve(Socket):
         """
         node = Node('Set Handle Positions', sockets={'Curve': self, 'Selection': self._sel, 'Position': position, 'Offset': offset}, mode='RIGHT')
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def set_normal_minimum_twist(self):
         """ > Jump Method <&Node Set Curve Normal>
@@ -1114,7 +1114,7 @@ class Curve(Socket):
         """
         node = Node('Set Curve Normal', sockets={'Curve': self, 'Selection': self._sel}, mode='MINIMUM_TWIST')
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def set_normal_z_up(self):
         """ > Jump Method <&Node Set Curve Normal>
@@ -1131,7 +1131,7 @@ class Curve(Socket):
         """
         node = Node('Set Curve Normal', sockets={'Curve': self, 'Selection': self._sel}, mode='Z_UP')
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def set_normal_free(self, normal=None):
         """ > Jump Method <&Node Set Curve Normal>
@@ -1152,7 +1152,7 @@ class Curve(Socket):
         """
         node = Node('Set Curve Normal', sockets={'Curve': self, 'Selection': self._sel, 'Normal': normal}, mode='FREE')
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def set_normal(self, mode='MINIMUM_TWIST'):
         """ > Jump Method <&Node Set Curve Normal>
@@ -1172,7 +1172,7 @@ class Curve(Socket):
         """
         node = Node('Set Curve Normal', sockets={'Curve': self, 'Selection': self._sel}, mode=mode)
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def set_radius(self, radius=None):
         """ > Jump Method <&Node Set Curve Radius>
@@ -1192,7 +1192,7 @@ class Curve(Socket):
         """
         node = Node('Set Curve Radius', sockets={'Curve': self, 'Selection': self._sel, 'Radius': radius})
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def set_tilt(self, tilt=None):
         """ > Jump Method <&Node Set Curve Tilt>
@@ -1212,7 +1212,7 @@ class Curve(Socket):
         """
         node = Node('Set Curve Tilt', sockets={'Curve': self, 'Selection': self._sel, 'Tilt': tilt})
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def subdivide(self, cuts=None):
         """ > Jump Method <&Node Subdivide Curve>
@@ -1231,7 +1231,7 @@ class Curve(Socket):
         """
         node = Node('Subdivide Curve', sockets={'Curve': self, 'Cuts': cuts})
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def trim_factor(self, start=None, end=None):
         """ > Jump Method <&Node Trim Curve>
@@ -1253,7 +1253,7 @@ class Curve(Socket):
         """
         node = Node('Trim Curve', sockets={'Curve': self, 'Selection': self._sel, 'Start': start, 'End': end}, mode='FACTOR')
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def trim_length(self, start=None, end=None):
         """ > Jump Method <&Node Trim Curve>
@@ -1275,7 +1275,7 @@ class Curve(Socket):
         """
         node = Node('Trim Curve', sockets={'Curve': self, 'Selection': self._sel, 'Start_001': start, 'End_001': end}, mode='LENGTH')
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def trim(self, start=None, end=None, mode='FACTOR'):
         """ > Jump Method <&Node Trim Curve>
@@ -1297,7 +1297,7 @@ class Curve(Socket):
         """
         node = Node('Trim Curve', sockets={'Curve': self, 'Selection': self._sel, 'Start': start, 'End': end}, mode=mode)
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     @property
     def radius(self):
@@ -1324,7 +1324,7 @@ class Curve(Socket):
         """
         node = Node('Set Curve Radius', sockets={'Curve': self, 'Selection': self._sel, 'Radius': radius})
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     @property
     def left_handle_position(self):
@@ -1352,7 +1352,7 @@ class Curve(Socket):
         """
         node = Node('Set Handle Positions', sockets={'Curve': self, 'Selection': self._sel, 'Position': position}, mode='LEFT')
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     @property
     def right_handle_position(self):
@@ -1380,7 +1380,7 @@ class Curve(Socket):
         """
         node = Node('Set Handle Positions', sockets={'Curve': self, 'Selection': self._sel, 'Position': position}, mode='RIGHT')
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     @property
     def left_handle_offset(self):
@@ -1408,7 +1408,7 @@ class Curve(Socket):
         """
         node = Node('Set Handle Positions', sockets={'Curve': self, 'Selection': self._sel, 'Offset': offset}, mode='LEFT')
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     @property
     def right_handle_offset(self):
@@ -1436,7 +1436,7 @@ class Curve(Socket):
         """
         node = Node('Set Handle Positions', sockets={'Curve': self, 'Selection': self._sel, 'Offset': offset}, mode='RIGHT')
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     @property
     def handle_type(self):
@@ -1464,7 +1464,7 @@ class Curve(Socket):
         """
         node = Node('Set Handle Type', sockets={'Curve': self, 'Selection': self._sel}, handle_type=handle_type, mode={'RIGHT', 'LEFT'})
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     @property
     def left_handle_type(self):
@@ -1492,7 +1492,7 @@ class Curve(Socket):
         """
         node = Node('Set Handle Type', sockets={'Curve': self, 'Selection': self._sel}, handle_type=handle_type, mode={'LEFT'})
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     @property
     def right_handle_type(self):
@@ -1520,7 +1520,7 @@ class Curve(Socket):
         """
         node = Node('Set Handle Type', sockets={'Curve': self, 'Selection': self._sel}, handle_type=handle_type, mode={'RIGHT'})
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     @property
     def tilt(self):
@@ -1547,7 +1547,7 @@ class Curve(Socket):
         """
         node = Node('Set Curve Tilt', sockets={'Curve': self, 'Selection': self._sel, 'Tilt': tilt})
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     @property
     def normal(self):
@@ -1574,7 +1574,7 @@ class Curve(Socket):
         """
         node = Node('Set Curve Normal', sockets={'Curve': self, 'Selection': self._sel}, mode=mode)
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     @property
     def is_cyclic(self):
@@ -1601,7 +1601,7 @@ class Curve(Socket):
         """
         node = Node('Set Spline Cyclic', sockets={'Geometry': self, 'Selection': self._sel, 'Cyclic': cyclic})
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     @property
     def resolution(self):
@@ -1628,7 +1628,7 @@ class Curve(Socket):
         """
         node = Node('Set Spline Resolution', sockets={'Geometry': self, 'Selection': self._sel, 'Resolution': resolution})
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     @property
     def type(self):
@@ -1655,5 +1655,5 @@ class Curve(Socket):
         """
         node = Node('Set Spline Type', sockets={'Curve': self, 'Selection': self._sel}, spline_type=spline_type)
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 

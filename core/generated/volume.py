@@ -84,7 +84,7 @@ class Volume(Socket):
         """
         node = Node('Get Named Grid', sockets={'Volume': self, 'Name': name, 'Remove': remove}, data_type=data_type)
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def named_float_grid(self, name=None, remove=None):
         """ > Jump Method <&Node Get Named Grid>
@@ -105,7 +105,7 @@ class Volume(Socket):
         """
         node = Node('Get Named Grid', sockets={'Volume': self, 'Name': name, 'Remove': remove}, data_type='FLOAT')
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def named_vector_grid(self, name=None, remove=None):
         """ > Jump Method <&Node Get Named Grid>
@@ -126,7 +126,7 @@ class Volume(Socket):
         """
         node = Node('Get Named Grid', sockets={'Volume': self, 'Name': name, 'Remove': remove}, data_type='VECTOR')
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def store_named_grid(self, name=None, grid=None):
         """ > Jump Method <&Node Store Named Grid>
@@ -148,7 +148,7 @@ class Volume(Socket):
         data_type = utils.get_argument_data_type(grid, {'VALUE': 'FLOAT', 'VECTOR': 'FLOAT_VECTOR'}, 'Volume.store_named_grid', 'grid')
         node = Node('Store Named Grid', sockets={'Volume': self, 'Name': name, 'Grid': grid}, data_type=data_type)
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     @classmethod
     def Cube(cls, density=None, background=None, min=None, max=None, resolution_x=None, resolution_y=None, resolution_z=None):

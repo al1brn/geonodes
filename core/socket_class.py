@@ -47,6 +47,7 @@ from .scripterror import NodeError
 from . import constants
 from . import utils
 from .treeclass import Tree, Node
+from .proplocker import PropLocker
 
 
 # =============================================================================================================================
@@ -103,7 +104,7 @@ class NodeCache:
 # =============================================================================================================================
 # =============================================================================================================================
 
-class Socket(NodeCache):
+class Socket(NodeCache, PropLocker):
 
     SOCKET_TYPE = None
 
@@ -166,6 +167,8 @@ class Socket(NodeCache):
 
         self._reset()
 
+        self._lock()
+
     def _reset(self):
         self._cache_reset()
 
@@ -177,6 +180,11 @@ class Socket(NodeCache):
         self._bsocket = bsocket
         if reset:
             self._reset()
+        return self
+
+    # ----- Used when we need the geometry of a domain
+    @property
+    def _domain_to_geometry(self):
         return self
 
     @classmethod

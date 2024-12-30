@@ -55,7 +55,7 @@ class GreasePencil(Socket):
         """
         node = Node('Merge Layers', sockets={'Grease Pencil': self, 'Selection': self._sel}, mode='MERGE_BY_NAME')
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def merge_layers_by_id(self, group_id=None):
         """ > Jump Method <&Node Merge Layers>
@@ -76,7 +76,7 @@ class GreasePencil(Socket):
         """
         node = Node('Merge Layers', sockets={'Grease Pencil': self, 'Selection': self._sel, 'Group ID': group_id}, mode='MERGE_BY_ID')
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def merge_layers(self, mode='MERGE_BY_NAME'):
         """ > Jump Method <&Node Merge Layers>
@@ -96,5 +96,5 @@ class GreasePencil(Socket):
         """
         node = Node('Merge Layers', sockets={'Grease Pencil': self, 'Selection': self._sel}, mode=mode)
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 

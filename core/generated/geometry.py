@@ -62,7 +62,7 @@ class Geometry(Socket):
         """
         node = Node('Join Geometry', sockets={'Geometry': [self] + list(geometry)})
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     @classmethod
     def Join(cls, *geometry):
@@ -98,7 +98,7 @@ class Geometry(Socket):
         """
         node = Node('Merge by Distance', sockets={'Geometry': self, 'Selection': self._sel, 'Distance': distance}, mode=mode)
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def merge_all(self, distance=None):
         """ > Jump Method <&Node Merge by Distance>
@@ -119,7 +119,7 @@ class Geometry(Socket):
         """
         node = Node('Merge by Distance', sockets={'Geometry': self, 'Selection': self._sel, 'Distance': distance}, mode='ALL')
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def merge_connected(self, distance=None):
         """ > Jump Method <&Node Merge by Distance>
@@ -140,7 +140,7 @@ class Geometry(Socket):
         """
         node = Node('Merge by Distance', sockets={'Geometry': self, 'Selection': self._sel, 'Distance': distance}, mode='CONNECTED')
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def merge(self, distance=None, mode='ALL'):
         """ > Jump Method <&Node Merge by Distance>
@@ -161,7 +161,7 @@ class Geometry(Socket):
         """
         node = Node('Merge by Distance', sockets={'Geometry': self, 'Selection': self._sel, 'Distance': distance}, mode=mode)
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def proximity(self, group_id=None, sample_position=None, sample_group_id=None, target_element='FACES'):
         """ > Method <&Node Geometry Proximity>
@@ -338,7 +338,7 @@ class Geometry(Socket):
         """
         node = Node('Realize Instances', sockets={'Geometry': self, 'Selection': self._sel, 'Realize All': realize_all, 'Depth': depth})
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def remove_named_attribute(self, name=None, pattern_mode='EXACT'):
         """ > Jump Method <&Node Remove Named Attribute>
@@ -358,7 +358,7 @@ class Geometry(Socket):
         """
         node = Node('Remove Named Attribute', sockets={'Geometry': self, 'Name': name}, pattern_mode=pattern_mode)
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def remove_names(self, name=None):
         """ > Jump Method <&Node Remove Named Attribute>
@@ -378,7 +378,7 @@ class Geometry(Socket):
         """
         node = Node('Remove Named Attribute', sockets={'Geometry': self, 'Name': name}, pattern_mode='WILDCARD')
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def replace_material(self, old=None, new=None):
         """ > Jump Method <&Node Replace Material>
@@ -398,7 +398,7 @@ class Geometry(Socket):
         """
         node = Node('Replace Material', sockets={'Geometry': self, 'Old': old, 'New': new})
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     @property
     def separate_components(self):
@@ -522,7 +522,7 @@ class Geometry(Socket):
         """
         node = Node('Set Geometry Name', sockets={'Geometry': self, 'Name': name})
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def set_id(self, id=None):
         """ > Jump Method <&Node Set ID>
@@ -542,7 +542,7 @@ class Geometry(Socket):
         """
         node = Node('Set ID', sockets={'Geometry': self, 'Selection': self._sel, 'ID': id})
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def set_material(self, material=None):
         """ > Jump Method <&Node Set Material>
@@ -562,7 +562,7 @@ class Geometry(Socket):
         """
         node = Node('Set Material', sockets={'Geometry': self, 'Selection': self._sel, 'Material': material})
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def set_material_index(self, material_index=None):
         """ > Jump Method <&Node Set Material Index>
@@ -582,7 +582,7 @@ class Geometry(Socket):
         """
         node = Node('Set Material Index', sockets={'Geometry': self, 'Selection': self._sel, 'Material Index': material_index})
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def set_position(self, position=None, offset=None):
         """ > Jump Method <&Node Set Position>
@@ -603,7 +603,7 @@ class Geometry(Socket):
         """
         node = Node('Set Position', sockets={'Geometry': self, 'Selection': self._sel, 'Position': position, 'Offset': offset})
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def set_spline_cyclic(self, cyclic=None):
         """ > Jump Method <&Node Set Spline Cyclic>
@@ -623,7 +623,7 @@ class Geometry(Socket):
         """
         node = Node('Set Spline Cyclic', sockets={'Geometry': self, 'Selection': self._sel, 'Cyclic': cyclic})
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def set_spline_resolution(self, resolution=None):
         """ > Jump Method <&Node Set Spline Resolution>
@@ -643,7 +643,7 @@ class Geometry(Socket):
         """
         node = Node('Set Spline Resolution', sockets={'Geometry': self, 'Selection': self._sel, 'Resolution': resolution})
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def transform_geometry(self, translation=None, rotation=None, scale=None, transform=None, mode='COMPONENTS'):
         """ > Jump Method <&Node Transform Geometry>
@@ -666,7 +666,7 @@ class Geometry(Socket):
         """
         node = Node('Transform Geometry', sockets={'Geometry': self, 'Translation': translation, 'Rotation': rotation, 'Scale': scale, 'Transform': transform}, mode=mode)
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def transform(self, transform=None):
         """ > Jump Method <&Node Transform Geometry>
@@ -686,7 +686,7 @@ class Geometry(Socket):
         """
         node = Node('Transform Geometry', sockets={'Geometry': self, 'Transform': transform}, mode='MATRIX')
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def viewer(self, value=None):
         """ > Method <&Node Viewer>
@@ -731,7 +731,7 @@ class Geometry(Socket):
         """
         node = Node('Set Position', sockets={'Geometry': self, 'Selection': self._sel, 'Position': position})
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     @property
     def offset(self):
@@ -758,7 +758,7 @@ class Geometry(Socket):
         """
         node = Node('Set Position', sockets={'Geometry': self, 'Selection': self._sel, 'Offset': offset})
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     @property
     def id(self):
@@ -785,7 +785,7 @@ class Geometry(Socket):
         """
         node = Node('Set ID', sockets={'Geometry': self, 'Selection': self._sel, 'ID': id})
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     @property
     def material(self):
@@ -810,9 +810,12 @@ class Geometry(Socket):
         -------
         - Geometry
         """
+
+        print(">>>>> set material I'm here")
+
         node = Node('Set Material', sockets={'Geometry': self, 'Selection': self._sel, 'Material': material})
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     @property
     def name(self):
@@ -838,7 +841,7 @@ class Geometry(Socket):
         """
         node = Node('Set Geometry Name', sockets={'Geometry': self, 'Name': name})
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     @property
     def material_index(self):
@@ -865,5 +868,4 @@ class Geometry(Socket):
         """
         node = Node('Set Material Index', sockets={'Geometry': self, 'Selection': self._sel, 'Material Index': material_index})
         self._jump(node._out)
-        return self
-
+        return self._domain_to_geometry

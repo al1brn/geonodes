@@ -96,6 +96,11 @@ class Domain(GeoBase, NodeCache):
     def _jump(self, socket, reset=True):
         return self._geo._jump(socket, reset=reset)
 
+    @property
+    def _domain_to_geometry(self):
+        return self._geo
+
+
     # ----- Overrides selection
     # Selection can be done either on the geometry or on the domain (or both but strange !)
 

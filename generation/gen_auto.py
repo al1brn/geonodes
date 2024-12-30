@@ -178,7 +178,7 @@ GEONODES = {
 'Curve to Points'    :          [{name: 'to_points'}],
 'Curves to Grease Pencil' :     [{name: 'to_grease_pencil'}],
 'Deform Curves on Surface' :    [{name: 'deform_on_surface'}],
-'Delete Geometry'    :          [{name: 'delete'}],
+'Delete Geometry'    :          [{}, {name: 'delete'}],
 'Distribute Points in Grid' :   [{f: 'C', name: 'DistributeInGrid'}],
 'Distribute Points in Volume' : [{name: 'distribute_points'}],
 'Distribute Points on Faces' :  [{},

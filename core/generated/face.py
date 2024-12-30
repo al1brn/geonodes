@@ -49,6 +49,81 @@ class Face(Socket):
         node = Node('Attribute Statistic', sockets={'Geometry': self, 'Selection': self._sel, 'Attribute': attribute}, data_type=data_type, domain='FACE')
         return node._out
 
+    def delete_geometry_all(self):
+        """ > Jump Method <&Node Delete Geometry>
+
+        Information
+        -----------
+        - Socket 'Geometry' : self
+        - Socket 'Selection' : self[selection]
+        - Parameter 'domain' : 'FACE'
+        - Parameter 'mode' : 'ALL'
+
+        Returns
+        -------
+        - Geometry
+        """
+        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='FACE', mode='ALL')
+        self._jump(node._out)
+        return self._domain_to_geometry
+
+    def delete_geometry_edge_face(self):
+        """ > Jump Method <&Node Delete Geometry>
+
+        Information
+        -----------
+        - Socket 'Geometry' : self
+        - Socket 'Selection' : self[selection]
+        - Parameter 'domain' : 'FACE'
+        - Parameter 'mode' : 'EDGE_FACE'
+
+        Returns
+        -------
+        - Geometry
+        """
+        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='FACE', mode='EDGE_FACE')
+        self._jump(node._out)
+        return self._domain_to_geometry
+
+    def delete_geometry_only_face(self):
+        """ > Jump Method <&Node Delete Geometry>
+
+        Information
+        -----------
+        - Socket 'Geometry' : self
+        - Socket 'Selection' : self[selection]
+        - Parameter 'domain' : 'FACE'
+        - Parameter 'mode' : 'ONLY_FACE'
+
+        Returns
+        -------
+        - Geometry
+        """
+        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='FACE', mode='ONLY_FACE')
+        self._jump(node._out)
+        return self._domain_to_geometry
+
+    def delete_geometry(self, mode='ALL'):
+        """ > Jump Method <&Node Delete Geometry>
+
+        Information
+        -----------
+        - Socket 'Geometry' : self
+        - Socket 'Selection' : self[selection]
+        - Parameter 'domain' : 'FACE'
+
+        Arguments
+        ---------
+        - mode (str): parameter 'mode' in ('ALL', 'EDGE_FACE', 'ONLY_FACE')
+
+        Returns
+        -------
+        - Geometry
+        """
+        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='FACE', mode=mode)
+        self._jump(node._out)
+        return self._domain_to_geometry
+
     def delete_all(self):
         """ > Jump Method <&Node Delete Geometry>
 
@@ -65,7 +140,7 @@ class Face(Socket):
         """
         node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='FACE', mode='ALL')
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def delete_edge_face(self):
         """ > Jump Method <&Node Delete Geometry>
@@ -83,7 +158,7 @@ class Face(Socket):
         """
         node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='FACE', mode='EDGE_FACE')
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def delete_only_face(self):
         """ > Jump Method <&Node Delete Geometry>
@@ -101,7 +176,7 @@ class Face(Socket):
         """
         node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='FACE', mode='ONLY_FACE')
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def delete(self, mode='ALL'):
         """ > Jump Method <&Node Delete Geometry>
@@ -122,7 +197,7 @@ class Face(Socket):
         """
         node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='FACE', mode=mode)
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def distribute_points(self, density=None, seed=None, distribute_method='RANDOM', use_legacy_normal=False):
         """ > Method <&Node Distribute Points on Faces>
@@ -211,7 +286,7 @@ class Face(Socket):
         """
         node = Node('Duplicate Elements', sockets={'Geometry': self, 'Selection': self._sel, 'Amount': amount}, domain='FACE')
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     @classmethod
     def evaluate_at_index(cls, index=None, value=None):
@@ -319,7 +394,7 @@ class Face(Socket):
         """
         node = Node('Scale Elements', sockets={'Geometry': self, 'Selection': self._sel, 'Scale': scale, 'Center': center}, domain='FACE', scale_mode=scale_mode)
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def scale_uniform(self, scale=None, center=None):
         """ > Jump Method <&Node Scale Elements>
@@ -342,7 +417,7 @@ class Face(Socket):
         """
         node = Node('Scale Elements', sockets={'Geometry': self, 'Selection': self._sel, 'Scale': scale, 'Center': center}, domain='FACE', scale_mode='UNIFORM')
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def scale_single_axis(self, scale=None, center=None, axis=None):
         """ > Jump Method <&Node Scale Elements>
@@ -366,7 +441,7 @@ class Face(Socket):
         """
         node = Node('Scale Elements', sockets={'Geometry': self, 'Selection': self._sel, 'Scale': scale, 'Center': center, 'Axis': axis}, domain='FACE', scale_mode='SINGLE_AXIS')
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def separate(self):
         """ > Jump Method <&Node Separate Geometry>
@@ -383,7 +458,7 @@ class Face(Socket):
         """
         node = Node('Separate Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='FACE')
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def set_shade_smooth(self, shade_smooth=None):
         """ > Jump Method <&Node Set Shade Smooth>
@@ -404,7 +479,7 @@ class Face(Socket):
         """
         node = Node('Set Shade Smooth', sockets={'Geometry': self, 'Selection': self._sel, 'Shade Smooth': shade_smooth}, domain='FACE')
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def sort(self, group_id=None, sort_weight=None):
         """ > Jump Method <&Node Sort Elements>
@@ -426,7 +501,7 @@ class Face(Socket):
         """
         node = Node('Sort Elements', sockets={'Geometry': self, 'Selection': self._sel, 'Group ID': group_id, 'Sort Weight': sort_weight}, domain='FACE')
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def split_to_instances(self, group_id=None):
         """ > Method <&Node Split to Instances>
@@ -470,7 +545,7 @@ class Face(Socket):
         data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Face.store_named_attribute', 'value')
         node = Node('Store Named Attribute', sockets={'Geometry': self, 'Selection': self._sel, 'Name': name, 'Value': value}, data_type=data_type, domain='FACE')
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def store(self, name=None, value=None):
         """ > Jump Method <&Node Store Named Attribute>
@@ -494,7 +569,7 @@ class Face(Socket):
         data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Face.store', 'value')
         node = Node('Store Named Attribute', sockets={'Geometry': self, 'Selection': self._sel, 'Name': name, 'Value': value}, data_type=data_type, domain='FACE')
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     @classmethod
     def active_element(cls):
@@ -528,7 +603,7 @@ class Face(Socket):
         selection_type = utils.get_argument_data_type(selection, {'BOOLEAN': 'BOOLEAN', 'VALUE': 'FLOAT'}, 'Face.set_selection', 'selection')
         node = Node('Set Selection', sockets={'Geometry': self, 'Selection': self._sel}, domain='FACE', selection_type=selection_type)
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def viewer(self, value=None):
         """ > Method <&Node Viewer>
@@ -574,7 +649,7 @@ class Face(Socket):
         """
         node = Node('Set Shade Smooth', sockets={'Geometry': self, 'Selection': self._sel, 'Shade Smooth': shade_smooth}, domain='FACE')
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     @property
     def smooth(self):
@@ -602,5 +677,5 @@ class Face(Socket):
         """
         node = Node('Set Shade Smooth', sockets={'Geometry': self, 'Selection': self._sel, 'Shade Smooth': shade_smooth}, domain='FACE')
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 

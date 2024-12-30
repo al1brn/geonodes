@@ -106,7 +106,7 @@ class Mesh(Socket):
         """
         node = Node('Dual Mesh', sockets={'Mesh': self, 'Keep Boundaries': keep_boundaries})
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def edge_paths_to_curves(self, start_vertices=None, next_vertex_index=None):
         """ > Method <&Node Edge Paths to Curves>
@@ -147,7 +147,7 @@ class Mesh(Socket):
         """
         node = Node('Extrude Mesh', sockets={'Mesh': self, 'Selection': self._sel, 'Offset': offset, 'Offset Scale': offset_scale}, mode='VERTICES')
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def extrude_edges(self, offset=None, offset_scale=None):
         """ > Jump Method <&Node Extrude Mesh>
@@ -169,7 +169,7 @@ class Mesh(Socket):
         """
         node = Node('Extrude Mesh', sockets={'Mesh': self, 'Selection': self._sel, 'Offset': offset, 'Offset Scale': offset_scale}, mode='EDGES')
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def extrude_faces(self, offset=None, offset_scale=None, individual=None):
         """ > Jump Method <&Node Extrude Mesh>
@@ -192,7 +192,7 @@ class Mesh(Socket):
         """
         node = Node('Extrude Mesh', sockets={'Mesh': self, 'Selection': self._sel, 'Offset': offset, 'Offset Scale': offset_scale, 'Individual': individual}, mode='FACES')
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def extrude(self, offset=None, offset_scale=None, individual=None, mode='FACES'):
         """ > Jump Method <&Node Extrude Mesh>
@@ -215,7 +215,7 @@ class Mesh(Socket):
         """
         node = Node('Extrude Mesh', sockets={'Mesh': self, 'Selection': self._sel, 'Offset': offset, 'Offset Scale': offset_scale, 'Individual': individual}, mode=mode)
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def flip_faces(self):
         """ > Jump Method <&Node Flip Faces>
@@ -231,7 +231,7 @@ class Mesh(Socket):
         """
         node = Node('Flip Faces', sockets={'Mesh': self, 'Selection': self._sel})
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     @classmethod
     def ImportPLY(cls, path=None):
@@ -284,7 +284,7 @@ class Mesh(Socket):
         """
         node = Node('Mesh Boolean', sockets={'Mesh 1': self, 'Mesh 2': list(mesh_2), 'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, operation=operation, solver=solver)
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     @classmethod
     def Boolean(cls, *mesh_2, mesh_1=None, self_intersection=None, hole_tolerant=None, operation='DIFFERENCE', solver='FLOAT'):
@@ -326,7 +326,7 @@ class Mesh(Socket):
         """
         node = Node('Mesh Boolean', sockets={'Mesh 2': [self] + list(mesh), 'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, operation='INTERSECT', solver=solver)
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def union(self, *mesh, self_intersection=None, hole_tolerant=None, solver='FLOAT'):
         """ > Jump Method <&Node Mesh Boolean>
@@ -348,7 +348,7 @@ class Mesh(Socket):
         """
         node = Node('Mesh Boolean', sockets={'Mesh 2': [self] + list(mesh), 'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, operation='UNION', solver=solver)
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def difference(self, *mesh_2, self_intersection=None, hole_tolerant=None, solver='FLOAT'):
         """ > Jump Method <&Node Mesh Boolean>
@@ -371,7 +371,7 @@ class Mesh(Socket):
         """
         node = Node('Mesh Boolean', sockets={'Mesh 1': self, 'Mesh 2': list(mesh_2), 'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, operation='DIFFERENCE', solver=solver)
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     @classmethod
     def INTERSECT(cls, *mesh, self_intersection=None, hole_tolerant=None, solver='FLOAT'):
@@ -869,7 +869,7 @@ class Mesh(Socket):
         """
         node = Node('Split Edges', sockets={'Mesh': self, 'Selection': self._sel})
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def subdivide(self, level=None):
         """ > Jump Method <&Node Subdivide Mesh>
@@ -888,7 +888,7 @@ class Mesh(Socket):
         """
         node = Node('Subdivide Mesh', sockets={'Mesh': self, 'Level': level})
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def subdivision_surface(self, level=None, edge_crease=None, vertex_crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES'):
         """ > Jump Method <&Node Subdivision Surface>
@@ -911,7 +911,7 @@ class Mesh(Socket):
         """
         node = Node('Subdivision Surface', sockets={'Mesh': self, 'Level': level, 'Edge Crease': edge_crease, 'Vertex Crease': vertex_crease}, boundary_smooth=boundary_smooth, uv_smooth=uv_smooth)
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def set_face_set(self, face_set=None):
         """ > Jump Method <&Node Set Face Set>
@@ -931,7 +931,7 @@ class Mesh(Socket):
         """
         node = Node('Set Face Set', sockets={'Mesh': self, 'Selection': self._sel, 'Face Set': face_set})
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def triangulate(self, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL'):
         """ > Jump Method <&Node Triangulate>
@@ -953,5 +953,5 @@ class Mesh(Socket):
         """
         node = Node('Triangulate', sockets={'Mesh': self, 'Selection': self._sel, 'Minimum Vertices': minimum_vertices}, ngon_method=ngon_method, quad_method=quad_method)
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 

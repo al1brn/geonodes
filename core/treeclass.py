@@ -727,10 +727,12 @@ class Tree:
         # ----------------------------------------------------------------------------------------------------
         # Get or create
 
-        io_socket = tree.io_socket_exists(bl_idname, 'INPUT', name)
+        #io_socket = tree.io_socket_exists(bl_idname, 'INPUT', name)
+        io_socket = tree._interface.get_in_socket(name, halt = False)
 
         if io_socket is None:
-            io_socket = tree.new_io_socket(bl_idname, 'INPUT', name)
+            #io_socket = tree.new_io_socket(bl_idname, 'INPUT', name)
+            io_socket = tree._interface.create_in_socket(name, socket_type=bl_idname)
             set_value = True
         else:
             set_value = False
@@ -1913,7 +1915,9 @@ class Node:
                     bsocket = utils.get_bsocket(in_socket)
                     bl_idname, subtype = constants.SOCKET_SUBTYPES[bsocket.bl_idname]
 
-                    io_socket = tree.new_io_socket(bl_idname, 'INPUT', out_name)
+                    #io_socket = tree.new_io_socket(bl_idname, 'INPUT', out_name)
+                    io_socket = tree._interface.create_in_socket(out_name, socket_type=bl_idname)
+
                     if hasattr(io_socket, 'subtype'):
                         io_socket.subtype = subtype
 

@@ -49,6 +49,81 @@ class Instance(Socket):
         node = Node('Attribute Statistic', sockets={'Geometry': self, 'Selection': self._sel, 'Attribute': attribute}, data_type=data_type, domain='INSTANCE')
         return node._out
 
+    def delete_geometry_all(self):
+        """ > Jump Method <&Node Delete Geometry>
+
+        Information
+        -----------
+        - Socket 'Geometry' : self
+        - Socket 'Selection' : self[selection]
+        - Parameter 'domain' : 'INSTANCE'
+        - Parameter 'mode' : 'ALL'
+
+        Returns
+        -------
+        - Geometry
+        """
+        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='INSTANCE', mode='ALL')
+        self._jump(node._out)
+        return self._domain_to_geometry
+
+    def delete_geometry_edge_face(self):
+        """ > Jump Method <&Node Delete Geometry>
+
+        Information
+        -----------
+        - Socket 'Geometry' : self
+        - Socket 'Selection' : self[selection]
+        - Parameter 'domain' : 'INSTANCE'
+        - Parameter 'mode' : 'EDGE_FACE'
+
+        Returns
+        -------
+        - Geometry
+        """
+        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='INSTANCE', mode='EDGE_FACE')
+        self._jump(node._out)
+        return self._domain_to_geometry
+
+    def delete_geometry_only_face(self):
+        """ > Jump Method <&Node Delete Geometry>
+
+        Information
+        -----------
+        - Socket 'Geometry' : self
+        - Socket 'Selection' : self[selection]
+        - Parameter 'domain' : 'INSTANCE'
+        - Parameter 'mode' : 'ONLY_FACE'
+
+        Returns
+        -------
+        - Geometry
+        """
+        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='INSTANCE', mode='ONLY_FACE')
+        self._jump(node._out)
+        return self._domain_to_geometry
+
+    def delete_geometry(self, mode='ALL'):
+        """ > Jump Method <&Node Delete Geometry>
+
+        Information
+        -----------
+        - Socket 'Geometry' : self
+        - Socket 'Selection' : self[selection]
+        - Parameter 'domain' : 'INSTANCE'
+
+        Arguments
+        ---------
+        - mode (str): parameter 'mode' in ('ALL', 'EDGE_FACE', 'ONLY_FACE')
+
+        Returns
+        -------
+        - Geometry
+        """
+        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='INSTANCE', mode=mode)
+        self._jump(node._out)
+        return self._domain_to_geometry
+
     def delete_all(self):
         """ > Jump Method <&Node Delete Geometry>
 
@@ -65,7 +140,7 @@ class Instance(Socket):
         """
         node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='INSTANCE', mode='ALL')
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def delete_edge_face(self):
         """ > Jump Method <&Node Delete Geometry>
@@ -83,7 +158,7 @@ class Instance(Socket):
         """
         node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='INSTANCE', mode='EDGE_FACE')
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def delete_only_face(self):
         """ > Jump Method <&Node Delete Geometry>
@@ -101,7 +176,7 @@ class Instance(Socket):
         """
         node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='INSTANCE', mode='ONLY_FACE')
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def delete(self, mode='ALL'):
         """ > Jump Method <&Node Delete Geometry>
@@ -122,7 +197,7 @@ class Instance(Socket):
         """
         node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='INSTANCE', mode=mode)
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def duplicate(self, amount=None):
         """ > Jump Method <&Node Duplicate Elements>
@@ -143,7 +218,7 @@ class Instance(Socket):
         """
         node = Node('Duplicate Elements', sockets={'Geometry': self, 'Selection': self._sel, 'Amount': amount}, domain='INSTANCE')
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     @classmethod
     def evaluate_at_index(cls, index=None, value=None):
@@ -226,7 +301,7 @@ class Instance(Socket):
         """
         node = Node('Separate Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='INSTANCE')
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def sort(self, group_id=None, sort_weight=None):
         """ > Jump Method <&Node Sort Elements>
@@ -248,7 +323,7 @@ class Instance(Socket):
         """
         node = Node('Sort Elements', sockets={'Geometry': self, 'Selection': self._sel, 'Group ID': group_id, 'Sort Weight': sort_weight}, domain='INSTANCE')
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def split_to_instances(self, group_id=None):
         """ > Method <&Node Split to Instances>
@@ -292,7 +367,7 @@ class Instance(Socket):
         data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Instance.store_named_attribute', 'value')
         node = Node('Store Named Attribute', sockets={'Geometry': self, 'Selection': self._sel, 'Name': name, 'Value': value}, data_type=data_type, domain='INSTANCE')
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def store(self, name=None, value=None):
         """ > Jump Method <&Node Store Named Attribute>
@@ -316,7 +391,7 @@ class Instance(Socket):
         data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Instance.store', 'value')
         node = Node('Store Named Attribute', sockets={'Geometry': self, 'Selection': self._sel, 'Name': name, 'Value': value}, data_type=data_type, domain='INSTANCE')
         self._jump(node._out)
-        return self
+        return self._domain_to_geometry
 
     def viewer(self, value=None):
         """ > Method <&Node Viewer>

@@ -305,11 +305,11 @@ class TreeInterface:
             if socket.name == name:
                 return socket
 
-        if panel_name is None:
-            raise Exception(f"Input socket '{name}' not found in {list(sockets.keys())}")
-
         if halt:
-            raise Exception(f"Input socket '{name}' not found in panel '{panel_name}' sockets {list(sockets.keys())}")
+            if panel_name is None:
+                raise Exception(f"Input socket '{name}' not found in {list(sockets.keys())}")
+            else:
+                raise Exception(f"Input socket '{name}' not found in panel '{panel_name}' sockets {list(sockets.keys())}")
 
         return None
 

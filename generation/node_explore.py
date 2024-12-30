@@ -1474,10 +1474,7 @@ class NodeInfo:
 
         elif ret == 'OUT':
             if is_jump:
-                if False and len(out) > 1:
-                    s += f"{_2}return node.{list(out.keys())[1]}\n"
-                else:
-                    s += f"{_2}return self\n"
+                s += f"{_2}return self._domain_to_geometry\n"
             else:
                 s += f"{_2}return node._out\n"
 
