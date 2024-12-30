@@ -32,6 +32,9 @@ from geonodes import *
 # Create the Geometry Nodes named "Hello World"
 
 with GeoNodes("Hello World"):
+    
+    height = 3
+    omega = 2
 
     # The surface is basically a grid 20 x 20 with a resolution 200 x 200
     grid = Mesh.Grid(vertices_x=200, vertices_y=200, size_x=20, size_y=20)
@@ -44,8 +47,8 @@ with GeoNodes("Hello World"):
 
     # Let's change the z coordinate of our vertices
     with Layout("Point offset and smoothness"):
-        grid.points.offset = (0, 0, z)
-        grid.faces.smooth = True
+        grid.offset = (0, 0, z)
+        grid.smooth = True
 
     # We are done: plugging the deformed grid as the modified geometry
     grid.out()
