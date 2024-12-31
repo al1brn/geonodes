@@ -5,132 +5,132 @@ from .. scripterror import NodeError
 
 class Vector(Socket):
 
-    def less_than(self, b=None, mode='ELEMENT'):
+    def less_than(self, b=None):
         """ > Method <&Node Compare>
 
         Information
         -----------
         - Socket 'A' : self
         - Parameter 'data_type' : 'VECTOR'
+        - Parameter 'mode' : 'ELEMENT'
         - Parameter 'operation' : 'LESS_THAN'
 
         Arguments
         ---------
         - b (Vector) : socket 'B' (id: B_VEC3)
-        - mode (str): parameter 'mode' in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
 
         Returns
         -------
         - Boolean
         """
-        node = Node('Compare', sockets={'A_VEC3': self, 'B_VEC3': b}, data_type='VECTOR', mode=mode, operation='LESS_THAN')
+        node = Node('Compare', sockets={'A_VEC3': self, 'B_VEC3': b}, data_type='VECTOR', mode='ELEMENT', operation='LESS_THAN')
         return node._out
 
-    def less_equal(self, b=None, mode='ELEMENT'):
+    def less_equal(self, b=None):
         """ > Method <&Node Compare>
 
         Information
         -----------
         - Socket 'A' : self
         - Parameter 'data_type' : 'VECTOR'
+        - Parameter 'mode' : 'ELEMENT'
         - Parameter 'operation' : 'LESS_EQUAL'
 
         Arguments
         ---------
         - b (Vector) : socket 'B' (id: B_VEC3)
-        - mode (str): parameter 'mode' in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
 
         Returns
         -------
         - Boolean
         """
-        node = Node('Compare', sockets={'A_VEC3': self, 'B_VEC3': b}, data_type='VECTOR', mode=mode, operation='LESS_EQUAL')
+        node = Node('Compare', sockets={'A_VEC3': self, 'B_VEC3': b}, data_type='VECTOR', mode='ELEMENT', operation='LESS_EQUAL')
         return node._out
 
-    def greater_than(self, b=None, mode='ELEMENT'):
+    def greater_than(self, b=None):
         """ > Method <&Node Compare>
 
         Information
         -----------
         - Socket 'A' : self
         - Parameter 'data_type' : 'VECTOR'
+        - Parameter 'mode' : 'ELEMENT'
         - Parameter 'operation' : 'GREATER_THAN'
 
         Arguments
         ---------
         - b (Vector) : socket 'B' (id: B_VEC3)
-        - mode (str): parameter 'mode' in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
 
         Returns
         -------
         - Boolean
         """
-        node = Node('Compare', sockets={'A_VEC3': self, 'B_VEC3': b}, data_type='VECTOR', mode=mode, operation='GREATER_THAN')
+        node = Node('Compare', sockets={'A_VEC3': self, 'B_VEC3': b}, data_type='VECTOR', mode='ELEMENT', operation='GREATER_THAN')
         return node._out
 
-    def greater_equal(self, b=None, mode='ELEMENT'):
+    def greater_equal(self, b=None):
         """ > Method <&Node Compare>
 
         Information
         -----------
         - Socket 'A' : self
         - Parameter 'data_type' : 'VECTOR'
+        - Parameter 'mode' : 'ELEMENT'
         - Parameter 'operation' : 'GREATER_EQUAL'
 
         Arguments
         ---------
         - b (Vector) : socket 'B' (id: B_VEC3)
-        - mode (str): parameter 'mode' in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
 
         Returns
         -------
         - Boolean
         """
-        node = Node('Compare', sockets={'A_VEC3': self, 'B_VEC3': b}, data_type='VECTOR', mode=mode, operation='GREATER_EQUAL')
+        node = Node('Compare', sockets={'A_VEC3': self, 'B_VEC3': b}, data_type='VECTOR', mode='ELEMENT', operation='GREATER_EQUAL')
         return node._out
 
-    def equal(self, b=None, epsilon=None, mode='ELEMENT'):
+    def equal(self, b=None, epsilon=None):
         """ > Method <&Node Compare>
 
         Information
         -----------
         - Socket 'A' : self
         - Parameter 'data_type' : 'VECTOR'
+        - Parameter 'mode' : 'ELEMENT'
         - Parameter 'operation' : 'EQUAL'
 
         Arguments
         ---------
         - b (Vector) : socket 'B' (id: B_VEC3)
         - epsilon (Float) : socket 'Epsilon' (id: Epsilon)
-        - mode (str): parameter 'mode' in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
 
         Returns
         -------
         - Boolean
         """
-        node = Node('Compare', sockets={'A_VEC3': self, 'B_VEC3': b, 'Epsilon': epsilon}, data_type='VECTOR', mode=mode, operation='EQUAL')
+        node = Node('Compare', sockets={'A_VEC3': self, 'B_VEC3': b, 'Epsilon': epsilon}, data_type='VECTOR', mode='ELEMENT', operation='EQUAL')
         return node._out
 
-    def not_equal(self, b=None, epsilon=None, mode='ELEMENT'):
+    def not_equal(self, b=None, epsilon=None):
         """ > Method <&Node Compare>
 
         Information
         -----------
         - Socket 'A' : self
         - Parameter 'data_type' : 'VECTOR'
+        - Parameter 'mode' : 'ELEMENT'
         - Parameter 'operation' : 'NOT_EQUAL'
 
         Arguments
         ---------
         - b (Vector) : socket 'B' (id: B_VEC3)
         - epsilon (Float) : socket 'Epsilon' (id: Epsilon)
-        - mode (str): parameter 'mode' in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
 
         Returns
         -------
         - Boolean
         """
-        node = Node('Compare', sockets={'A_VEC3': self, 'B_VEC3': b, 'Epsilon': epsilon}, data_type='VECTOR', mode=mode, operation='NOT_EQUAL')
+        node = Node('Compare', sockets={'A_VEC3': self, 'B_VEC3': b, 'Epsilon': epsilon}, data_type='VECTOR', mode='ELEMENT', operation='NOT_EQUAL')
         return node._out
 
     @property

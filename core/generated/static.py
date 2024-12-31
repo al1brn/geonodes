@@ -274,6 +274,7 @@ class nd:
         return node._out
 
     @classmethod
+    @property
     def special_characters(cls):
         """ > Node <&Node Special Characters>
 
@@ -282,7 +283,7 @@ class nd:
         - String [tab_ (String)]
         """
         node = Node('Special Characters', sockets={})
-        return node._out
+        return node
 
     @classmethod
     def string(cls, string=''):
@@ -1972,6 +1973,7 @@ class nd:
         return node._out
 
     @classmethod
+    @property
     def edge_angle(cls):
         """ > Node <&Node Edge Angle>
 
@@ -1980,7 +1982,7 @@ class nd:
         - Float [signed_angle_ (Float)]
         """
         node = Node('Edge Angle', sockets={})
-        return node._out
+        return node
 
     @classmethod
     @property
@@ -1995,6 +1997,7 @@ class nd:
         return node._out
 
     @classmethod
+    @property
     def edge_vertices(cls):
         """ > Node <&Node Edge Vertices>
 
@@ -2003,7 +2006,7 @@ class nd:
         - Integer [vertex_index_2_ (Integer), position_1_ (Vector), position_2_ (Vector)]
         """
         node = Node('Edge Vertices', sockets={})
-        return node._out
+        return node
 
     @classmethod
     @property
@@ -2033,6 +2036,7 @@ class nd:
         return node._out
 
     @classmethod
+    @property
     def face_neighbors(cls):
         """ > Node <&Node Face Neighbors>
 
@@ -2041,9 +2045,10 @@ class nd:
         - Integer [face_count_ (Integer)]
         """
         node = Node('Face Neighbors', sockets={})
-        return node._out
+        return node
 
     @classmethod
+    @property
     def mesh_island(cls):
         """ > Node <&Node Mesh Island>
 
@@ -2052,9 +2057,10 @@ class nd:
         - Integer [island_count_ (Integer)]
         """
         node = Node('Mesh Island', sockets={})
-        return node._out
+        return node
 
     @classmethod
+    @property
     def vertex_neighbors(cls):
         """ > Node <&Node Vertex Neighbors>
 
@@ -2063,7 +2069,7 @@ class nd:
         - Integer [face_count_ (Integer)]
         """
         node = Node('Vertex Neighbors', sockets={})
-        return node._out
+        return node
 
     @classmethod
     def named_attribute(cls, name=None, data_type='FLOAT'):
@@ -2133,6 +2139,7 @@ class nd:
         return node._out
 
     @classmethod
+    @property
     def scene_time(cls):
         """ > Node <&Node Scene Time>
 
@@ -2141,7 +2148,7 @@ class nd:
         - Float [frame_ (Float)]
         """
         node = Node('Scene Time', sockets={})
-        return node._out
+        return node
 
     @classmethod
     @property
@@ -3503,6 +3510,7 @@ class nd:
         return node._out
 
     @classmethod
+    @property
     def spline_length(cls):
         """ > Node <&Node Spline Length>
 
@@ -3511,9 +3519,10 @@ class nd:
         - Float [point_count_ (Integer)]
         """
         node = Node('Spline Length', sockets={})
-        return node._out
+        return node
 
     @classmethod
+    @property
     def spline_parameter(cls):
         """ > Node <&Node Spline Parameter>
 
@@ -3522,7 +3531,7 @@ class nd:
         - Float [length_ (Float), index_ (Integer)]
         """
         node = Node('Spline Parameter', sockets={})
-        return node._out
+        return node
 
     @classmethod
     def split_edges(cls, mesh=None, selection=None):
@@ -3708,6 +3717,7 @@ class nd:
         return node._out
 
     @classmethod
+    @property
     def _3d_cursor(cls):
         """ > Node <&Node 3D Cursor>
 
@@ -3716,7 +3726,7 @@ class nd:
         - Vector [rotation_ (Rotation)]
         """
         node = Node('3D Cursor', sockets={})
-        return node._out
+        return node
 
     @classmethod
     def active_element(cls, domain='POINT'):
@@ -3734,6 +3744,7 @@ class nd:
         return node._out
 
     @classmethod
+    @property
     def face_set(cls):
         """ > Node <&Node Face Set>
 
@@ -3742,9 +3753,10 @@ class nd:
         - Integer [exists_ (Boolean)]
         """
         node = Node('Face Set', sockets={})
-        return node._out
+        return node
 
     @classmethod
+    @property
     def mouse_position(cls):
         """ > Node <&Node Mouse Position>
 
@@ -3753,9 +3765,10 @@ class nd:
         - Integer [mouse_y_ (Integer), region_width_ (Integer), region_height_ (Integer)]
         """
         node = Node('Mouse Position', sockets={})
-        return node._out
+        return node
 
     @classmethod
+    @property
     def selection(cls):
         """ > Node <&Node Selection>
 
@@ -3764,7 +3777,7 @@ class nd:
         - Boolean [float_ (Float)]
         """
         node = Node('Selection', sockets={})
-        return node._out
+        return node
 
     @classmethod
     def set_face_set(cls, mesh=None, selection=None, face_set=None):
@@ -3950,6 +3963,7 @@ class nd:
         return node._out
 
     @classmethod
+    @property
     def viewport_transform(cls):
         """ > Node <&Node Viewport Transform>
 
@@ -3958,7 +3972,7 @@ class nd:
         - Matrix [view_ (Matrix), is_orthographic_ (Boolean)]
         """
         node = Node('Viewport Transform', sockets={})
-        return node._out
+        return node
 
     @classmethod
     def volume_cube(cls, density=None, background=None, min=None, max=None, resolution_x=None, resolution_y=None, resolution_z=None):
@@ -4036,6 +4050,7 @@ class nd:
         return node._out
 
     @classmethod
+    @property
     def group_input(cls):
         """ > Node <&Node Group Input>
 

@@ -5,20 +5,24 @@ from .. scripterror import NodeError
 
 class Curve(Socket):
 
+    @classmethod
     @property
-    def domain_size(self):
+    def domain_size(cls, geometry=None):
         """ > Property Get <&Node Domain Size>
 
         Information
         -----------
-        - Socket 'Geometry' : self
         - Parameter 'component' : 'CURVE'
+
+        Arguments
+        ---------
+        - geometry (Geometry) : socket 'Geometry' (id: Geometry)
 
         Returns
         -------
         - node [point_count (Integer), spline_count (Integer)]
         """
-        node = self._cache('Domain Size', sockets={'Geometry': self}, component='CURVE')
+        node = Node('Domain Size', sockets={'Geometry': geometry}, component='CURVE')
         return node
 
     @classmethod
@@ -91,6 +95,38 @@ class Curve(Socket):
         node = Node('Arc', sockets={'Resolution': resolution, 'Radius': radius, 'Start Angle': start_angle, 'Sweep Angle': sweep_angle, 'Connect Center': connect_center, 'Invert Arc': invert_arc}, mode=mode)
         return cls(node._out)
 
+    @classmethod
+    def endpoint_selection(cls, start_size=None, end_size=None):
+        """ > Class Method <&Node Endpoint Selection>
+
+        Arguments
+        ---------
+        - start_size (Integer) : socket 'Start Size' (id: Start Size)
+        - end_size (Integer) : socket 'End Size' (id: End Size)
+
+        Returns
+        -------
+        - Boolean
+        """
+        node = Node('Endpoint Selection', sockets={'Start Size': start_size, 'End Size': end_size})
+        return node._out
+
+    @classmethod
+    def handle_type_selection(cls, handle_type='AUTO', mode={'LEFT', 'RIGHT'}):
+        """ > Class Method <&Node Handle Type Selection>
+
+        Arguments
+        ---------
+        - handle_type (str): parameter 'handle_type' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
+        - mode (set): parameter 'mode'
+
+        Returns
+        -------
+        - Boolean
+        """
+        node = Node('Handle Type Selection', sockets={}, handle_type=handle_type, mode=mode)
+        return node._out
+
     @property
     def length(self):
         """ > Property Get <&Node Curve Length>
@@ -104,6 +140,21 @@ class Curve(Socket):
         - Float
         """
         node = Node('Curve Length', sockets={'Curve': self})
+        return node._out
+
+    @classmethod
+    def curve_of_point(cls, point_index=None):
+        """ > Class Method <&Node Curve of Point>
+
+        Arguments
+        ---------
+        - point_index (Integer) : socket 'Point Index' (id: Point Index)
+
+        Returns
+        -------
+        - Integer [index_in_curve_ (Integer)]
+        """
+        node = Node('Curve of Point', sockets={'Point Index': point_index})
         return node._out
 
     @classmethod
@@ -821,6 +872,33 @@ class Curve(Socket):
         return self._domain_to_geometry
 
     @classmethod
+    def handle_positions(cls, relative=None):
+        """ > Class Method <&Node Curve Handle Positions>
+
+        Arguments
+        ---------
+        - relative (Boolean) : socket 'Relative' (id: Relative)
+
+        Returns
+        -------
+        - Vector [right_ (Vector)]
+        """
+        node = Node('Curve Handle Positions', sockets={'Relative': relative})
+        return node._out
+
+    @classmethod
+    @property
+    def tangent(cls):
+        """ > Property Get <&Node Curve Tangent>
+
+        Returns
+        -------
+        - Vector
+        """
+        node = Node('Curve Tangent', sockets={})
+        return node._out
+
+    @classmethod
     def Interpolate(cls, guide_curves=None, guide_up=None, guide_group_id=None, points=None, point_up=None, point_group_id=None, max_neighbors=None):
         """ > Constructor <&Node Interpolate Curves>
 
@@ -864,6 +942,54 @@ class Curve(Socket):
         node = Node('Interpolate Curves', sockets={'Guide Curves': self, 'Guide Up': guide_up, 'Guide Group ID': guide_group_id, 'Points': points, 'Point Up': point_up, 'Point Group ID': point_group_id, 'Max Neighbors': max_neighbors})
         self._jump(node._out)
         return self._domain_to_geometry
+
+    @classmethod
+    def material_selection(cls, material=None):
+        """ > Class Method <&Node Material Selection>
+
+        Arguments
+        ---------
+        - material (Material) : socket 'Material' (id: Material)
+
+        Returns
+        -------
+        - Boolean
+        """
+        node = Node('Material Selection', sockets={'Material': material})
+        return node._out
+
+    @classmethod
+    def offset_point_in_curve(cls, point_index=None, offset=None):
+        """ > Class Method <&Node Offset Point in Curve>
+
+        Arguments
+        ---------
+        - point_index (Integer) : socket 'Point Index' (id: Point Index)
+        - offset (Integer) : socket 'Offset' (id: Offset)
+
+        Returns
+        -------
+        - Boolean [point_index_ (Integer)]
+        """
+        node = Node('Offset Point in Curve', sockets={'Point Index': point_index, 'Offset': offset})
+        return node._out
+
+    @classmethod
+    def points_of_curve(cls, curve_index=None, weights=None, sort_index=None):
+        """ > Class Method <&Node Points of Curve>
+
+        Arguments
+        ---------
+        - curve_index (Integer) : socket 'Curve Index' (id: Curve Index)
+        - weights (Float) : socket 'Weights' (id: Weights)
+        - sort_index (Integer) : socket 'Sort Index' (id: Sort Index)
+
+        Returns
+        -------
+        - Integer [total_ (Integer)]
+        """
+        node = Node('Points of Curve', sockets={'Curve Index': curve_index, 'Weights': weights, 'Sort Index': sort_index})
+        return node._out
 
     def resample_evaluated(self):
         """ > Jump Method <&Node Resample Curve>
@@ -1213,6 +1339,28 @@ class Curve(Socket):
         node = Node('Set Curve Tilt', sockets={'Curve': self, 'Selection': self._sel, 'Tilt': tilt})
         self._jump(node._out)
         return self._domain_to_geometry
+
+    @classmethod
+    def spline_length(cls):
+        """ > Class Method <&Node Spline Length>
+
+        Returns
+        -------
+        - Float [point_count_ (Integer)]
+        """
+        node = Node('Spline Length', sockets={})
+        return node._out
+
+    @classmethod
+    def spline_parameter(cls):
+        """ > Class Method <&Node Spline Parameter>
+
+        Returns
+        -------
+        - Float [length_ (Float), index_ (Integer)]
+        """
+        node = Node('Spline Parameter', sockets={})
+        return node._out
 
     def subdivide(self, cuts=None):
         """ > Jump Method <&Node Subdivide Curve>

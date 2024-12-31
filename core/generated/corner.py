@@ -50,6 +50,102 @@ class Corner(Socket):
         return node._out
 
     @classmethod
+    @property
+    def edges(cls, corner_index=None):
+        """ > Property Get <&Node Edges of Corner>
+
+        Arguments
+        ---------
+        - corner_index (Integer) : socket 'Corner Index' (id: Corner Index)
+
+        Returns
+        -------
+        - node [next_edge_index (Integer), previous_edge_index (Integer)]
+        """
+        node = Node('Edges of Corner', sockets={'Corner Index': corner_index})
+        return node
+
+    @classmethod
+    @property
+    def next_edge_index(cls, corner_index=None):
+        """ > Property Get <&Node Edges of Corner>
+
+        Arguments
+        ---------
+        - corner_index (Integer) : socket 'Corner Index' (id: Corner Index)
+
+        Returns
+        -------
+        - next_edge_index
+        """
+        node = Node('Edges of Corner', sockets={'Corner Index': corner_index})
+        return node.next_edge_index
+
+    @classmethod
+    @property
+    def previous_edge_index(cls, corner_index=None):
+        """ > Property Get <&Node Edges of Corner>
+
+        Arguments
+        ---------
+        - corner_index (Integer) : socket 'Corner Index' (id: Corner Index)
+
+        Returns
+        -------
+        - previous_edge_index
+        """
+        node = Node('Edges of Corner', sockets={'Corner Index': corner_index})
+        return node.previous_edge_index
+
+    @classmethod
+    @property
+    def face(cls, corner_index=None):
+        """ > Property Get <&Node Face of Corner>
+
+        Arguments
+        ---------
+        - corner_index (Integer) : socket 'Corner Index' (id: Corner Index)
+
+        Returns
+        -------
+        - node [face_index (Integer), index_in_face (Integer)]
+        """
+        node = Node('Face of Corner', sockets={'Corner Index': corner_index})
+        return node
+
+    @classmethod
+    @property
+    def face_index(cls, corner_index=None):
+        """ > Property Get <&Node Face of Corner>
+
+        Arguments
+        ---------
+        - corner_index (Integer) : socket 'Corner Index' (id: Corner Index)
+
+        Returns
+        -------
+        - face_index
+        """
+        node = Node('Face of Corner', sockets={'Corner Index': corner_index})
+        return node.face_index
+
+    @classmethod
+    @property
+    def index_in_face(cls, corner_index=None):
+        """ > Property Get <&Node Face of Corner>
+
+        Arguments
+        ---------
+        - corner_index (Integer) : socket 'Corner Index' (id: Corner Index)
+
+        Returns
+        -------
+        - index_in_face
+        """
+        node = Node('Face of Corner', sockets={'Corner Index': corner_index})
+        return node.index_in_face
+
+    @classmethod
     def evaluate_at_index(cls, index=None, value=None):
         """ > Class Method <&Node Evaluate at Index>
 
@@ -90,6 +186,22 @@ class Corner(Socket):
         """
         data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Corner.evaluate_on_domain', 'value')
         node = Node('Evaluate on Domain', sockets={'Value': value}, data_type=data_type, domain='CORNER')
+        return node._out
+
+    @classmethod
+    def offset_in_face(cls, corner_index=None, offset=None):
+        """ > Class Method <&Node Offset Corner in Face>
+
+        Arguments
+        ---------
+        - corner_index (Integer) : socket 'Corner Index' (id: Corner Index)
+        - offset (Integer) : socket 'Offset' (id: Offset)
+
+        Returns
+        -------
+        - Integer
+        """
+        node = Node('Offset Corner in Face', sockets={'Corner Index': corner_index, 'Offset': offset})
         return node._out
 
     def sample_index(self, value=None, index=None, clamp=False):
@@ -246,6 +358,21 @@ class Corner(Socket):
         - Vector
         """
         node = Node('UV Unwrap', sockets={'Selection': self._sel, 'Seam': seam, 'Margin': margin, 'Fill Holes': fill_holes}, method=method)
+        return node._out
+
+    @classmethod
+    def vertex(cls, corner_index=None):
+        """ > Class Method <&Node Vertex of Corner>
+
+        Arguments
+        ---------
+        - corner_index (Integer) : socket 'Corner Index' (id: Corner Index)
+
+        Returns
+        -------
+        - Integer
+        """
+        node = Node('Vertex of Corner', sockets={'Corner Index': corner_index})
         return node._out
 
     def viewer(self, value=None):

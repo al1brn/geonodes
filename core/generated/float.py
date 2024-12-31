@@ -5,24 +5,25 @@ from .. scripterror import NodeError
 
 class Float(Socket):
 
-    def less_than(self, threshold=None, use_clamp=False):
-        """ > Method <&Node Math>
+    def less_than(self, b=None):
+        """ > Method <&Node Compare>
 
         Information
         -----------
-        - Socket 'Value' : self
+        - Socket 'A' : self
+        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'mode' : 'ELEMENT'
         - Parameter 'operation' : 'LESS_THAN'
 
         Arguments
         ---------
-        - threshold (Float) : socket 'Threshold' (id: Value_001)
-        - use_clamp (bool): parameter 'use_clamp'
+        - b (Float) : socket 'B' (id: B)
 
         Returns
         -------
-        - Float
+        - Boolean
         """
-        node = Node('Math', sockets={'Value': self, 'Value_001': threshold}, operation='LESS_THAN', use_clamp=use_clamp)
+        node = Node('Compare', sockets={'A': self, 'B': b}, data_type='FLOAT', mode='ELEMENT', operation='LESS_THAN')
         return node._out
 
     def less_equal(self, b=None):
@@ -46,24 +47,25 @@ class Float(Socket):
         node = Node('Compare', sockets={'A': self, 'B': b}, data_type='FLOAT', mode='ELEMENT', operation='LESS_EQUAL')
         return node._out
 
-    def greater_than(self, threshold=None, use_clamp=False):
-        """ > Method <&Node Math>
+    def greater_than(self, b=None):
+        """ > Method <&Node Compare>
 
         Information
         -----------
-        - Socket 'Value' : self
+        - Socket 'A' : self
+        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'mode' : 'ELEMENT'
         - Parameter 'operation' : 'GREATER_THAN'
 
         Arguments
         ---------
-        - threshold (Float) : socket 'Threshold' (id: Value_001)
-        - use_clamp (bool): parameter 'use_clamp'
+        - b (Float) : socket 'B' (id: B)
 
         Returns
         -------
-        - Float
+        - Boolean
         """
-        node = Node('Math', sockets={'Value': self, 'Value_001': threshold}, operation='GREATER_THAN', use_clamp=use_clamp)
+        node = Node('Compare', sockets={'A': self, 'B': b}, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN')
         return node._out
 
     def greater_equal(self, b=None):
@@ -935,6 +937,46 @@ class Float(Socket):
         - Float
         """
         node = Node('Math', sockets={'Value': self, 'Value_001': value}, operation='MAXIMUM', use_clamp=use_clamp)
+        return node._out
+
+    def mless_than(self, threshold=None, use_clamp=False):
+        """ > Method <&Node Math>
+
+        Information
+        -----------
+        - Socket 'Value' : self
+        - Parameter 'operation' : 'LESS_THAN'
+
+        Arguments
+        ---------
+        - threshold (Float) : socket 'Threshold' (id: Value_001)
+        - use_clamp (bool): parameter 'use_clamp'
+
+        Returns
+        -------
+        - Float
+        """
+        node = Node('Math', sockets={'Value': self, 'Value_001': threshold}, operation='LESS_THAN', use_clamp=use_clamp)
+        return node._out
+
+    def mgreater_than(self, threshold=None, use_clamp=False):
+        """ > Method <&Node Math>
+
+        Information
+        -----------
+        - Socket 'Value' : self
+        - Parameter 'operation' : 'GREATER_THAN'
+
+        Arguments
+        ---------
+        - threshold (Float) : socket 'Threshold' (id: Value_001)
+        - use_clamp (bool): parameter 'use_clamp'
+
+        Returns
+        -------
+        - Float
+        """
+        node = Node('Math', sockets={'Value': self, 'Value_001': threshold}, operation='GREATER_THAN', use_clamp=use_clamp)
         return node._out
 
     def sign(self, use_clamp=False):

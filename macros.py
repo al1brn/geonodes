@@ -48,7 +48,7 @@ def solidify(mesh, thickness=.01, individual=False, merge_distance=.001):
     with Layout("Macro - Solidify", color='MACRO'):
 
         mesh = Mesh(mesh)
-        solidified = mesh.faces.flip() + mesh.faces.extrude(offset_scale=thickness, individual=individual)
+        solidified = mesh.faces.flip() + mesh.extrude_faces(offset_scale=thickness, individual=individual)
         solidified = solidified.switch(Float(merge_distance).greater_than(0), solidified.merge_by_distance(distance=merge_distance))
 
         return solidified.switch(Float(thickness).less_than(0), solidified.faces.flip())

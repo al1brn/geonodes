@@ -49,6 +49,60 @@ class Face(Socket):
         node = Node('Attribute Statistic', sockets={'Geometry': self, 'Selection': self._sel, 'Attribute': attribute}, data_type=data_type, domain='FACE')
         return node._out
 
+    @classmethod
+    @property
+    def corners(cls, face_index=None, weights=None, sort_index=None):
+        """ > Property Get <&Node Corners of Face>
+
+        Arguments
+        ---------
+        - face_index (Integer) : socket 'Face Index' (id: Face Index)
+        - weights (Float) : socket 'Weights' (id: Weights)
+        - sort_index (Integer) : socket 'Sort Index' (id: Sort Index)
+
+        Returns
+        -------
+        - node [corner_index (Integer), total (Integer)]
+        """
+        node = Node('Corners of Face', sockets={'Face Index': face_index, 'Weights': weights, 'Sort Index': sort_index})
+        return node
+
+    @classmethod
+    @property
+    def corner_index(cls, face_index=None, weights=None, sort_index=None):
+        """ > Property Get <&Node Corners of Face>
+
+        Arguments
+        ---------
+        - face_index (Integer) : socket 'Face Index' (id: Face Index)
+        - weights (Float) : socket 'Weights' (id: Weights)
+        - sort_index (Integer) : socket 'Sort Index' (id: Sort Index)
+
+        Returns
+        -------
+        - corner_index
+        """
+        node = Node('Corners of Face', sockets={'Face Index': face_index, 'Weights': weights, 'Sort Index': sort_index})
+        return node.corner_index
+
+    @classmethod
+    @property
+    def corners_total(cls, face_index=None, weights=None, sort_index=None):
+        """ > Property Get <&Node Corners of Face>
+
+        Arguments
+        ---------
+        - face_index (Integer) : socket 'Face Index' (id: Face Index)
+        - weights (Float) : socket 'Weights' (id: Weights)
+        - sort_index (Integer) : socket 'Sort Index' (id: Sort Index)
+
+        Returns
+        -------
+        - total
+        """
+        node = Node('Corners of Face', sockets={'Face Index': face_index, 'Weights': weights, 'Sort Index': sort_index})
+        return node.total
+
     def delete_geometry_all(self):
         """ > Jump Method <&Node Delete Geometry>
 
@@ -199,16 +253,17 @@ class Face(Socket):
         self._jump(node._out)
         return self._domain_to_geometry
 
-    def distribute_points(self, density=None, seed=None, distribute_method='RANDOM', use_legacy_normal=False):
-        """ > Method <&Node Distribute Points on Faces>
+    @classmethod
+    def distribute_points(cls, mesh=None, density=None, seed=None, distribute_method='RANDOM', use_legacy_normal=False):
+        """ > Class Method <&Node Distribute Points on Faces>
 
         Information
         -----------
-        - Socket 'Mesh' : self
         - Socket 'Selection' : self[selection]
 
         Arguments
         ---------
+        - mesh (Geometry) : socket 'Mesh' (id: Mesh)
         - density (Float) : socket 'Density' (id: Density)
         - seed (Integer) : socket 'Seed' (id: Seed)
         - distribute_method (str): parameter 'distribute_method' in ('RANDOM', 'POISSON')
@@ -218,7 +273,7 @@ class Face(Socket):
         -------
         - Cloud [normal_ (Vector), rotation_ (Rotation)]
         """
-        node = Node('Distribute Points on Faces', sockets={'Mesh': self, 'Selection': self._sel, 'Density': density, 'Seed': seed}, distribute_method=distribute_method, use_legacy_normal=use_legacy_normal)
+        node = Node('Distribute Points on Faces', sockets={'Mesh': mesh, 'Selection': self._sel, 'Density': density, 'Seed': seed}, distribute_method=distribute_method, use_legacy_normal=use_legacy_normal)
         return node._out
 
     def distribute_points_random(self, density=None, seed=None, use_legacy_normal=False):
@@ -331,21 +386,99 @@ class Face(Socket):
         node = Node('Evaluate on Domain', sockets={'Value': value}, data_type=data_type, domain='FACE')
         return node._out
 
-    def flip(self):
-        """ > Jump Method <&Node Flip Faces>
+    @classmethod
+    def flip(cls, mesh=None):
+        """ > Class Method <&Node Flip Faces>
 
         Information
         -----------
-        - Socket 'Mesh' : self
         - Socket 'Selection' : self[selection]
+
+        Arguments
+        ---------
+        - mesh (Geometry) : socket 'Mesh' (id: Mesh)
 
         Returns
         -------
         - Mesh
         """
-        node = Node('Flip Faces', sockets={'Mesh': self, 'Selection': self._sel})
-        self._jump(node._out)
-        return self._domain_to_geometry
+        node = Node('Flip Faces', sockets={'Mesh': mesh, 'Selection': self._sel})
+        return node._out
+
+    @classmethod
+    @property
+    def area(cls):
+        """ > Property Get <&Node Face Area>
+
+        Returns
+        -------
+        - Float
+        """
+        node = Node('Face Area', sockets={})
+        return node._out
+
+    @classmethod
+    def is_planar(cls, threshold=None):
+        """ > Class Method <&Node Is Face Planar>
+
+        Arguments
+        ---------
+        - threshold (Float) : socket 'Threshold' (id: Threshold)
+
+        Returns
+        -------
+        - Boolean
+        """
+        node = Node('Is Face Planar', sockets={'Threshold': threshold})
+        return node._out
+
+    @classmethod
+    @property
+    def neighbors(cls):
+        """ > Property Get <&Node Face Neighbors>
+
+        Returns
+        -------
+        - node [vertex_count (Integer), face_count (Integer)]
+        """
+        node = Node('Face Neighbors', sockets={})
+        return node
+
+    @classmethod
+    @property
+    def neighbors_vertex_count(cls):
+        """ > Property Get <&Node Face Neighbors>
+
+        Returns
+        -------
+        - vertex_count
+        """
+        node = Node('Face Neighbors', sockets={})
+        return node.vertex_count
+
+    @classmethod
+    @property
+    def neighbors_face_count(cls):
+        """ > Property Get <&Node Face Neighbors>
+
+        Returns
+        -------
+        - face_count
+        """
+        node = Node('Face Neighbors', sockets={})
+        return node.face_count
+
+    @classmethod
+    @property
+    def normal(cls):
+        """ > Property Get <&Node Normal>
+
+        Returns
+        -------
+        - Vector
+        """
+        node = Node('Normal', sockets={})
+        return node._out
 
     def sample_index(self, value=None, index=None, clamp=False):
         """ > Method <&Node Sample Index>

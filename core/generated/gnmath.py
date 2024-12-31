@@ -305,8 +305,8 @@ def negate(value=None):
     node = Node('Integer Math', sockets={'Value': value}, operation='NEGATE')
     return node._out
 
-def power(base=None, exponent=None, use_clamp=False):
-    """ > Function <&Node Math>
+def ipower(base=None, exponent=None):
+    """ > Function <&Node Integer Math>
 
     Information
     -----------
@@ -314,15 +314,14 @@ def power(base=None, exponent=None, use_clamp=False):
 
     Arguments
     ---------
-    - base (Float) : socket 'Base' (id: Value)
-    - exponent (Float) : socket 'Exponent' (id: Value_001)
-    - use_clamp (bool): parameter 'use_clamp'
+    - base (Integer) : socket 'Base' (id: Value)
+    - exponent (Integer) : socket 'Exponent' (id: Value_001)
 
     Returns
     -------
-    - Float
+    - Integer
     """
-    node = Node('Math', sockets={'Value': base, 'Value_001': exponent}, operation='POWER', use_clamp=use_clamp)
+    node = Node('Integer Math', sockets={'Value': base, 'Value_001': exponent}, operation='POWER')
     return node._out
 
 def imin(value=None, value_1=None):
@@ -363,8 +362,8 @@ def imax(value=None, value_1=None):
     node = Node('Integer Math', sockets={'Value': value, 'Value_001': value_1}, operation='MAXIMUM')
     return node._out
 
-def sign(value=None, use_clamp=False):
-    """ > Function <&Node Math>
+def isign(value=None):
+    """ > Function <&Node Integer Math>
 
     Information
     -----------
@@ -372,14 +371,13 @@ def sign(value=None, use_clamp=False):
 
     Arguments
     ---------
-    - value (Float) : socket 'Value' (id: Value)
-    - use_clamp (bool): parameter 'use_clamp'
+    - value (Integer) : socket 'Value' (id: Value)
 
     Returns
     -------
-    - Float
+    - Integer
     """
-    node = Node('Math', sockets={'Value': value}, operation='SIGN', use_clamp=use_clamp)
+    node = Node('Integer Math', sockets={'Value': value}, operation='SIGN')
     return node._out
 
 def divide_round(value=None, value_1=None):
@@ -439,8 +437,8 @@ def divide_ceil(value=None, value_1=None):
     node = Node('Integer Math', sockets={'Value': value, 'Value_001': value_1}, operation='DIVIDE_CEIL')
     return node._out
 
-def floored_modulo(value=None, value_1=None, use_clamp=False):
-    """ > Function <&Node Math>
+def ifloored_modulo(value=None, value_1=None):
+    """ > Function <&Node Integer Math>
 
     Information
     -----------
@@ -448,19 +446,18 @@ def floored_modulo(value=None, value_1=None, use_clamp=False):
 
     Arguments
     ---------
-    - value (Float) : socket 'Value' (id: Value)
-    - value_1 (Float) : socket 'Value' (id: Value_001)
-    - use_clamp (bool): parameter 'use_clamp'
+    - value (Integer) : socket 'Value' (id: Value)
+    - value_1 (Integer) : socket 'Value' (id: Value_001)
 
     Returns
     -------
-    - Float
+    - Integer
     """
-    node = Node('Math', sockets={'Value': value, 'Value_001': value_1}, operation='FLOORED_MODULO', use_clamp=use_clamp)
+    node = Node('Integer Math', sockets={'Value': value, 'Value_001': value_1}, operation='FLOORED_MODULO')
     return node._out
 
-def modulo(vector=None, vector_1=None):
-    """ > Function <&Node Vector Math>
+def imodulo(value=None, value_1=None):
+    """ > Function <&Node Integer Math>
 
     Information
     -----------
@@ -468,14 +465,14 @@ def modulo(vector=None, vector_1=None):
 
     Arguments
     ---------
-    - vector (Vector) : socket 'Vector' (id: Vector)
-    - vector_1 (Vector) : socket 'Vector' (id: Vector_001)
+    - value (Integer) : socket 'Value' (id: Value)
+    - value_1 (Integer) : socket 'Value' (id: Value_001)
 
     Returns
     -------
-    - Vector
+    - Integer
     """
-    node = Node('Vector Math', sockets={'Vector': vector, 'Vector_001': vector_1}, operation='MODULO')
+    node = Node('Integer Math', sockets={'Value': value, 'Value_001': value_1}, operation='MODULO')
     return node._out
 
 def gcd(value=None, value_1=None):
@@ -617,6 +614,26 @@ def multiply_add(value=None, multiplier=None, addend=None, use_clamp=False):
     node = Node('Math', sockets={'Value': value, 'Value_001': multiplier, 'Value_002': addend}, operation='MULTIPLY_ADD', use_clamp=use_clamp)
     return node._out
 
+def power(base=None, exponent=None, use_clamp=False):
+    """ > Function <&Node Math>
+
+    Information
+    -----------
+    - Parameter 'operation' : 'POWER'
+
+    Arguments
+    ---------
+    - base (Float) : socket 'Base' (id: Value)
+    - exponent (Float) : socket 'Exponent' (id: Value_001)
+    - use_clamp (bool): parameter 'use_clamp'
+
+    Returns
+    -------
+    - Float
+    """
+    node = Node('Math', sockets={'Value': base, 'Value_001': exponent}, operation='POWER', use_clamp=use_clamp)
+    return node._out
+
 def log(value=None, base=None, use_clamp=False):
     """ > Function <&Node Math>
 
@@ -753,7 +770,7 @@ def max(value=None, value_1=None, use_clamp=False):
     node = Node('Math', sockets={'Value': value, 'Value_001': value_1}, operation='MAXIMUM', use_clamp=use_clamp)
     return node._out
 
-def less_than(value=None, threshold=None, use_clamp=False):
+def mless_than(value=None, threshold=None, use_clamp=False):
     """ > Function <&Node Math>
 
     Information
@@ -773,7 +790,7 @@ def less_than(value=None, threshold=None, use_clamp=False):
     node = Node('Math', sockets={'Value': value, 'Value_001': threshold}, operation='LESS_THAN', use_clamp=use_clamp)
     return node._out
 
-def greater_than(value=None, threshold=None, use_clamp=False):
+def mgreater_than(value=None, threshold=None, use_clamp=False):
     """ > Function <&Node Math>
 
     Information
@@ -791,6 +808,25 @@ def greater_than(value=None, threshold=None, use_clamp=False):
     - Float
     """
     node = Node('Math', sockets={'Value': value, 'Value_001': threshold}, operation='GREATER_THAN', use_clamp=use_clamp)
+    return node._out
+
+def sign(value=None, use_clamp=False):
+    """ > Function <&Node Math>
+
+    Information
+    -----------
+    - Parameter 'operation' : 'SIGN'
+
+    Arguments
+    ---------
+    - value (Float) : socket 'Value' (id: Value)
+    - use_clamp (bool): parameter 'use_clamp'
+
+    Returns
+    -------
+    - Float
+    """
+    node = Node('Math', sockets={'Value': value}, operation='SIGN', use_clamp=use_clamp)
     return node._out
 
 def compare(value=None, value_1=None, epsilon=None, use_clamp=False):
@@ -949,6 +985,46 @@ def fract(value=None, use_clamp=False):
     - Float
     """
     node = Node('Math', sockets={'Value': value}, operation='FRACT', use_clamp=use_clamp)
+    return node._out
+
+def modulo(value=None, value_1=None, use_clamp=False):
+    """ > Function <&Node Math>
+
+    Information
+    -----------
+    - Parameter 'operation' : 'MODULO'
+
+    Arguments
+    ---------
+    - value (Float) : socket 'Value' (id: Value)
+    - value_1 (Float) : socket 'Value' (id: Value_001)
+    - use_clamp (bool): parameter 'use_clamp'
+
+    Returns
+    -------
+    - Float
+    """
+    node = Node('Math', sockets={'Value': value, 'Value_001': value_1}, operation='MODULO', use_clamp=use_clamp)
+    return node._out
+
+def floored_modulo(value=None, value_1=None, use_clamp=False):
+    """ > Function <&Node Math>
+
+    Information
+    -----------
+    - Parameter 'operation' : 'FLOORED_MODULO'
+
+    Arguments
+    ---------
+    - value (Float) : socket 'Value' (id: Value)
+    - value_1 (Float) : socket 'Value' (id: Value_001)
+    - use_clamp (bool): parameter 'use_clamp'
+
+    Returns
+    -------
+    - Float
+    """
+    node = Node('Math', sockets={'Value': value, 'Value_001': value_1}, operation='FLOORED_MODULO', use_clamp=use_clamp)
     return node._out
 
 def wrap(value=None, max=None, min=None, use_clamp=False):
@@ -1635,6 +1711,25 @@ def vfraction(vector=None):
     - Vector
     """
     node = Node('Vector Math', sockets={'Vector': vector}, operation='FRACTION')
+    return node._out
+
+def vmodulo(vector=None, vector_1=None):
+    """ > Function <&Node Vector Math>
+
+    Information
+    -----------
+    - Parameter 'operation' : 'MODULO'
+
+    Arguments
+    ---------
+    - vector (Vector) : socket 'Vector' (id: Vector)
+    - vector_1 (Vector) : socket 'Vector' (id: Vector_001)
+
+    Returns
+    -------
+    - Vector
+    """
+    node = Node('Vector Math', sockets={'Vector': vector, 'Vector_001': vector_1}, operation='MODULO')
     return node._out
 
 def vwrap(vector=None, max=None, min=None):

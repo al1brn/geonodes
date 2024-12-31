@@ -47,10 +47,10 @@ class Point(Domain, generated.Point):
         """
         return self._geo.domain_size.point_count
 
-class Vertex(Point):
+class Vertex(Point, generated.Vertex):
     pass
 
-class SplinePoint(Point):
+class SplinePoint(Point, generated.SplinePoint):
     pass
 
 class CloudPoint(Point):

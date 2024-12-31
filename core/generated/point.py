@@ -263,16 +263,17 @@ class Point(Socket):
         node = Node('Evaluate on Domain', sockets={'Value': value}, data_type=data_type, domain='POINT')
         return node._out
 
-    def instance_on(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
-        """ > Method <&Node Instance on Points>
+    @classmethod
+    def instance_on(cls, points=None, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
+        """ > Class Method <&Node Instance on Points>
 
         Information
         -----------
-        - Socket 'Points' : self
         - Socket 'Selection' : self[selection]
 
         Arguments
         ---------
+        - points (Geometry) : socket 'Points' (id: Points)
         - instance (Geometry) : socket 'Instance' (id: Instance)
         - pick_instance (Boolean) : socket 'Pick Instance' (id: Pick Instance)
         - instance_index (Integer) : socket 'Instance Index' (id: Instance Index)
@@ -283,7 +284,7 @@ class Point(Socket):
         -------
         - Instances
         """
-        node = Node('Instance on Points', sockets={'Points': self, 'Selection': self._sel, 'Instance': instance, 'Pick Instance': pick_instance, 'Instance Index': instance_index, 'Rotation': rotation, 'Scale': scale})
+        node = Node('Instance on Points', sockets={'Points': points, 'Selection': self._sel, 'Instance': instance, 'Pick Instance': pick_instance, 'Instance Index': instance_index, 'Rotation': rotation, 'Scale': scale})
         return node._out
 
     def sample_index(self, value=None, index=None, clamp=False):

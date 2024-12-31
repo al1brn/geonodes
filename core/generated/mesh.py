@@ -5,21 +5,76 @@ from .. scripterror import NodeError
 
 class Mesh(Socket):
 
+    @classmethod
     @property
-    def domain_size(self):
+    def domain_size(cls, geometry=None):
         """ > Property Get <&Node Domain Size>
 
         Information
         -----------
-        - Socket 'Geometry' : self
         - Parameter 'component' : 'MESH'
+
+        Arguments
+        ---------
+        - geometry (Geometry) : socket 'Geometry' (id: Geometry)
 
         Returns
         -------
         - node [point_count (Integer), edge_count (Integer), face_count (Integer), face_corner_count (Integer)]
         """
-        node = self._cache('Domain Size', sockets={'Geometry': self}, component='MESH')
+        node = Node('Domain Size', sockets={'Geometry': geometry}, component='MESH')
         return node
+
+    @classmethod
+    def corners_of_edge(cls, edge_index=None, weights=None, sort_index=None):
+        """ > Class Method <&Node Corners of Edge>
+
+        Arguments
+        ---------
+        - edge_index (Integer) : socket 'Edge Index' (id: Edge Index)
+        - weights (Float) : socket 'Weights' (id: Weights)
+        - sort_index (Integer) : socket 'Sort Index' (id: Sort Index)
+
+        Returns
+        -------
+        - Integer [total_ (Integer)]
+        """
+        node = Node('Corners of Edge', sockets={'Edge Index': edge_index, 'Weights': weights, 'Sort Index': sort_index})
+        return node._out
+
+    @classmethod
+    def corners_of_face(cls, face_index=None, weights=None, sort_index=None):
+        """ > Class Method <&Node Corners of Face>
+
+        Arguments
+        ---------
+        - face_index (Integer) : socket 'Face Index' (id: Face Index)
+        - weights (Float) : socket 'Weights' (id: Weights)
+        - sort_index (Integer) : socket 'Sort Index' (id: Sort Index)
+
+        Returns
+        -------
+        - Integer [total_ (Integer)]
+        """
+        node = Node('Corners of Face', sockets={'Face Index': face_index, 'Weights': weights, 'Sort Index': sort_index})
+        return node._out
+
+    @classmethod
+    def corners_of_vertex(cls, vertex_index=None, weights=None, sort_index=None):
+        """ > Class Method <&Node Corners of Vertex>
+
+        Arguments
+        ---------
+        - vertex_index (Integer) : socket 'Vertex Index' (id: Vertex Index)
+        - weights (Float) : socket 'Weights' (id: Weights)
+        - sort_index (Integer) : socket 'Sort Index' (id: Sort Index)
+
+        Returns
+        -------
+        - Integer [total_ (Integer)]
+        """
+        node = Node('Corners of Vertex', sockets={'Vertex Index': vertex_index, 'Weights': weights, 'Sort Index': sort_index})
+        return node._out
 
     def distribute_points_on_faces(self, density=None, seed=None, distribute_method='RANDOM', use_legacy_normal=False):
         """ > Method <&Node Distribute Points on Faces>
@@ -127,6 +182,69 @@ class Mesh(Socket):
         node = Node('Edge Paths to Curves', sockets={'Mesh': self, 'Start Vertices': start_vertices, 'Next Vertex Index': next_vertex_index})
         return node._out
 
+    @classmethod
+    def edge_paths_to_selection(cls, start_vertices=None, next_vertex_index=None):
+        """ > Class Method <&Node Edge Paths to Selection>
+
+        Arguments
+        ---------
+        - start_vertices (Boolean) : socket 'Start Vertices' (id: Start Vertices)
+        - next_vertex_index (Integer) : socket 'Next Vertex Index' (id: Next Vertex Index)
+
+        Returns
+        -------
+        - Boolean
+        """
+        node = Node('Edge Paths to Selection', sockets={'Start Vertices': start_vertices, 'Next Vertex Index': next_vertex_index})
+        return node._out
+
+    @classmethod
+    def edges_of_corner(cls, corner_index=None):
+        """ > Class Method <&Node Edges of Corner>
+
+        Arguments
+        ---------
+        - corner_index (Integer) : socket 'Corner Index' (id: Corner Index)
+
+        Returns
+        -------
+        - Integer [previous_edge_index_ (Integer)]
+        """
+        node = Node('Edges of Corner', sockets={'Corner Index': corner_index})
+        return node._out
+
+    @classmethod
+    def edges_of_vertex(cls, vertex_index=None, weights=None, sort_index=None):
+        """ > Class Method <&Node Edges of Vertex>
+
+        Arguments
+        ---------
+        - vertex_index (Integer) : socket 'Vertex Index' (id: Vertex Index)
+        - weights (Float) : socket 'Weights' (id: Weights)
+        - sort_index (Integer) : socket 'Sort Index' (id: Sort Index)
+
+        Returns
+        -------
+        - Integer [total_ (Integer)]
+        """
+        node = Node('Edges of Vertex', sockets={'Vertex Index': vertex_index, 'Weights': weights, 'Sort Index': sort_index})
+        return node._out
+
+    @classmethod
+    def edges_to_face_groups(cls, boundary_edges=None):
+        """ > Class Method <&Node Edges to Face Groups>
+
+        Arguments
+        ---------
+        - boundary_edges (Boolean) : socket 'Boundary Edges' (id: Boundary Edges)
+
+        Returns
+        -------
+        - Integer
+        """
+        node = Node('Edges to Face Groups', sockets={'Boundary Edges': boundary_edges})
+        return node._out
+
     def extrude_vertices(self, offset=None, offset_scale=None):
         """ > Jump Method <&Node Extrude Mesh>
 
@@ -217,6 +335,21 @@ class Mesh(Socket):
         self._jump(node._out)
         return self._domain_to_geometry
 
+    @classmethod
+    def face_of_corner(cls, corner_index=None):
+        """ > Class Method <&Node Face of Corner>
+
+        Arguments
+        ---------
+        - corner_index (Integer) : socket 'Corner Index' (id: Corner Index)
+
+        Returns
+        -------
+        - Integer [index_in_face_ (Integer)]
+        """
+        node = Node('Face of Corner', sockets={'Corner Index': corner_index})
+        return node._out
+
     def flip_faces(self):
         """ > Jump Method <&Node Flip Faces>
 
@@ -262,6 +395,196 @@ class Mesh(Socket):
         """
         node = Node('Import STL', sockets={'Path': path})
         return cls(node._out)
+
+    @classmethod
+    @property
+    def edge_angle(cls):
+        """ > Property Get <&Node Edge Angle>
+
+        Returns
+        -------
+        - node [unsigned_angle (Float), signed_angle (Float)]
+        """
+        node = Node('Edge Angle', sockets={})
+        return node
+
+    @classmethod
+    @property
+    def unsigned_edge_angle(cls):
+        """ > Property Get <&Node Edge Angle>
+
+        Returns
+        -------
+        - unsigned_angle
+        """
+        node = Node('Edge Angle', sockets={})
+        return node.unsigned_angle
+
+    @classmethod
+    @property
+    def signed_edge_angle(cls):
+        """ > Property Get <&Node Edge Angle>
+
+        Returns
+        -------
+        - signed_angle
+        """
+        node = Node('Edge Angle', sockets={})
+        return node.signed_angle
+
+    @classmethod
+    @property
+    def edge_neighbors(cls):
+        """ > Property Get <&Node Edge Neighbors>
+
+        Returns
+        -------
+        - Integer
+        """
+        node = Node('Edge Neighbors', sockets={})
+        return node._out
+
+    @classmethod
+    @property
+    def edge_vertices(cls):
+        """ > Property Get <&Node Edge Vertices>
+
+        Returns
+        -------
+        - node [vertex_index_1 (Integer), vertex_index_2 (Integer), position_1 (Vector), position_2 (Vector)]
+        """
+        node = Node('Edge Vertices', sockets={})
+        return node
+
+    @classmethod
+    @property
+    def face_area(cls):
+        """ > Property Get <&Node Face Area>
+
+        Returns
+        -------
+        - Float
+        """
+        node = Node('Face Area', sockets={})
+        return node._out
+
+    @classmethod
+    def is_face_planar(cls, threshold=None):
+        """ > Class Method <&Node Is Face Planar>
+
+        Arguments
+        ---------
+        - threshold (Float) : socket 'Threshold' (id: Threshold)
+
+        Returns
+        -------
+        - Boolean
+        """
+        node = Node('Is Face Planar', sockets={'Threshold': threshold})
+        return node._out
+
+    @classmethod
+    @property
+    def face_neighbors(cls):
+        """ > Property Get <&Node Face Neighbors>
+
+        Returns
+        -------
+        - node [vertex_count (Integer), face_count (Integer)]
+        """
+        node = Node('Face Neighbors', sockets={})
+        return node
+
+    @classmethod
+    @property
+    def mesh_island(cls):
+        """ > Property Get <&Node Mesh Island>
+
+        Returns
+        -------
+        - node [island_index (Integer), island_count (Integer)]
+        """
+        node = Node('Mesh Island', sockets={})
+        return node
+
+    @classmethod
+    @property
+    def island_index(cls):
+        """ > Property Get <&Node Mesh Island>
+
+        Returns
+        -------
+        - island_index
+        """
+        node = Node('Mesh Island', sockets={})
+        return node.island_index
+
+    @classmethod
+    @property
+    def island_count(cls):
+        """ > Property Get <&Node Mesh Island>
+
+        Returns
+        -------
+        - island_count
+        """
+        node = Node('Mesh Island', sockets={})
+        return node.island_count
+
+    @classmethod
+    @property
+    def vertex_neighbors(cls):
+        """ > Property Get <&Node Vertex Neighbors>
+
+        Returns
+        -------
+        - node [vertex_count (Integer), face_count (Integer)]
+        """
+        node = Node('Vertex Neighbors', sockets={})
+        return node
+
+    @classmethod
+    @property
+    def normal(cls):
+        """ > Property Get <&Node Normal>
+
+        Returns
+        -------
+        - Vector
+        """
+        node = Node('Normal', sockets={})
+        return node._out
+
+    @classmethod
+    def shortest_edge_paths(cls, end_vertex=None, edge_cost=None):
+        """ > Class Method <&Node Shortest Edge Paths>
+
+        Arguments
+        ---------
+        - end_vertex (Boolean) : socket 'End Vertex' (id: End Vertex)
+        - edge_cost (Float) : socket 'Edge Cost' (id: Edge Cost)
+
+        Returns
+        -------
+        - Integer [total_cost_ (Float)]
+        """
+        node = Node('Shortest Edge Paths', sockets={'End Vertex': end_vertex, 'Edge Cost': edge_cost})
+        return node._out
+
+    @classmethod
+    def material_selection(cls, material=None):
+        """ > Class Method <&Node Material Selection>
+
+        Arguments
+        ---------
+        - material (Material) : socket 'Material' (id: Material)
+
+        Returns
+        -------
+        - Boolean
+        """
+        node = Node('Material Selection', sockets={'Material': material})
+        return node._out
 
     def boolean(self, *mesh_2, self_intersection=None, hole_tolerant=None, operation='DIFFERENCE', solver='FLOAT'):
         """ > Jump Method <&Node Mesh Boolean>
@@ -515,6 +838,21 @@ class Mesh(Socket):
         """
         node = Node('Cylinder', sockets={'Vertices': vertices, 'Side Segments': side_segments, 'Fill Segments': fill_segments, 'Radius': radius, 'Depth': depth}, fill_type=fill_type)
         return cls(node._out)
+
+    @classmethod
+    def face_group_boundaries(cls, face_group_id=None):
+        """ > Class Method <&Node Face Group Boundaries>
+
+        Arguments
+        ---------
+        - face_group_id (Integer) : socket 'Face Group ID' (id: Face Set)
+
+        Returns
+        -------
+        - Boolean
+        """
+        node = Node('Face Group Boundaries', sockets={'Face Set': face_group_id})
+        return node._out
 
     @classmethod
     def Grid(cls, size_x=None, size_y=None, vertices_x=None, vertices_y=None):
@@ -810,6 +1148,22 @@ class Mesh(Socket):
         node = Node('UV Sphere', sockets={'Segments': segments, 'Rings': rings, 'Radius': radius})
         return cls(node._out)
 
+    @classmethod
+    def offset_corner_in_face(cls, corner_index=None, offset=None):
+        """ > Class Method <&Node Offset Corner in Face>
+
+        Arguments
+        ---------
+        - corner_index (Integer) : socket 'Corner Index' (id: Corner Index)
+        - offset (Integer) : socket 'Offset' (id: Offset)
+
+        Returns
+        -------
+        - Integer
+        """
+        node = Node('Offset Corner in Face', sockets={'Corner Index': corner_index, 'Offset': offset})
+        return node._out
+
     def sample_nearest_surface(self, value=None, group_id=None, sample_position=None, sample_group_id=None):
         """ > Method <&Node Sample Nearest Surface>
 
@@ -954,4 +1308,19 @@ class Mesh(Socket):
         node = Node('Triangulate', sockets={'Mesh': self, 'Selection': self._sel, 'Minimum Vertices': minimum_vertices}, ngon_method=ngon_method, quad_method=quad_method)
         self._jump(node._out)
         return self._domain_to_geometry
+
+    @classmethod
+    def vertex_of_corner(cls, corner_index=None):
+        """ > Class Method <&Node Vertex of Corner>
+
+        Arguments
+        ---------
+        - corner_index (Integer) : socket 'Corner Index' (id: Corner Index)
+
+        Returns
+        -------
+        - Integer
+        """
+        node = Node('Vertex of Corner', sockets={'Corner Index': corner_index})
+        return node._out
 

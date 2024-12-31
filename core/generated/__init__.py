@@ -21,6 +21,8 @@ from .instances import Instances
 from .greasepencil import GreasePencil
 from .geometry import Geometry
 from .collection import Collection
+from .vertex import Vertex
+from .splinepoint import SplinePoint
 from .volume import Volume
 from .image import Image
 from .object import Object

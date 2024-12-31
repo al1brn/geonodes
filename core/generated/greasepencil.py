@@ -5,20 +5,24 @@ from .. scripterror import NodeError
 
 class GreasePencil(Socket):
 
+    @classmethod
     @property
-    def domain_size(self):
+    def domain_size(cls, geometry=None):
         """ > Property Get <&Node Domain Size>
 
         Information
         -----------
-        - Socket 'Geometry' : self
         - Parameter 'component' : 'GREASEPENCIL'
+
+        Arguments
+        ---------
+        - geometry (Geometry) : socket 'Geometry' (id: Geometry)
 
         Returns
         -------
         - node [layer_count (Integer)]
         """
-        node = self._cache('Domain Size', sockets={'Geometry': self}, component='GREASEPENCIL')
+        node = Node('Domain Size', sockets={'Geometry': geometry}, component='GREASEPENCIL')
         return node
 
     def to_curves(self, layers_as_instances=None):
@@ -38,6 +42,21 @@ class GreasePencil(Socket):
         - Curve
         """
         node = Node('Grease Pencil to Curves', sockets={'Grease Pencil': self, 'Selection': self._sel, 'Layers as Instances': layers_as_instances})
+        return node._out
+
+    @classmethod
+    def named_layer_selection(cls, name=None):
+        """ > Class Method <&Node Named Layer Selection>
+
+        Arguments
+        ---------
+        - name (String) : socket 'Name' (id: Name)
+
+        Returns
+        -------
+        - Boolean
+        """
+        node = Node('Named Layer Selection', sockets={'Name': name})
         return node._out
 
     def merge_layers_by_name(self):

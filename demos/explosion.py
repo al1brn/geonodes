@@ -72,13 +72,13 @@ def demo():
                     speed_norm = old_speed.length
                     force = vis_fac*speed_norm**vis_exp
                     force = gnmath.min(force, speed_norm/dt)
-                    viscosity = old_speed.normalize().scale(-force*dt)
+                    viscosity = old_speed.normalize.scale(-force*dt)
 
                 acc = (gravity + viscosity._lc("Viscostiy"))._lc("Acceleration")
 
                 new_speed = old_speed + acc*dt
 
-                sim.cloud.points.offset = (old_speed + new_speed)*dt
+                sim.cloud.offset = (old_speed + new_speed)*dt
 
             sim.speed = new_speed
 
@@ -148,7 +148,7 @@ def demo():
                         rand_parts += polys
 
             mesh_parts = Mesh(rand_parts.realize())
-            mesh_parts.points.offset = Vector.Random((-1, -1, 0), (1, 1, 0), seed=1000+seed)*(part_size/1)
+            mesh_parts.offset = Vector.Random((-1, -1, 0), (1, 1, 0), seed=1000+seed)*(part_size/1)
             mesh_parts = macros.solidify(mesh_parts, thickness=part_size/10, individual=True, merge_distance=0)
 
             rand_parts = mesh_parts.points.split_to_instances(group_id=mesh_parts.island_index)

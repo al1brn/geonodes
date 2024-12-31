@@ -263,6 +263,60 @@ class Spline(Socket):
         node = Node('Evaluate on Domain', sockets={'Value': value}, data_type=data_type, domain='CURVE')
         return node._out
 
+    @classmethod
+    @property
+    def points_of_curve(cls, curve_index=None, weights=None, sort_index=None):
+        """ > Property Get <&Node Points of Curve>
+
+        Arguments
+        ---------
+        - curve_index (Integer) : socket 'Curve Index' (id: Curve Index)
+        - weights (Float) : socket 'Weights' (id: Weights)
+        - sort_index (Integer) : socket 'Sort Index' (id: Sort Index)
+
+        Returns
+        -------
+        - node [point_index (Integer), total (Integer)]
+        """
+        node = Node('Points of Curve', sockets={'Curve Index': curve_index, 'Weights': weights, 'Sort Index': sort_index})
+        return node
+
+    @classmethod
+    @property
+    def point_index(cls, curve_index=None, weights=None, sort_index=None):
+        """ > Property Get <&Node Points of Curve>
+
+        Arguments
+        ---------
+        - curve_index (Integer) : socket 'Curve Index' (id: Curve Index)
+        - weights (Float) : socket 'Weights' (id: Weights)
+        - sort_index (Integer) : socket 'Sort Index' (id: Sort Index)
+
+        Returns
+        -------
+        - point_index
+        """
+        node = Node('Points of Curve', sockets={'Curve Index': curve_index, 'Weights': weights, 'Sort Index': sort_index})
+        return node.point_index
+
+    @classmethod
+    @property
+    def points_total(cls, curve_index=None, weights=None, sort_index=None):
+        """ > Property Get <&Node Points of Curve>
+
+        Arguments
+        ---------
+        - curve_index (Integer) : socket 'Curve Index' (id: Curve Index)
+        - weights (Float) : socket 'Weights' (id: Weights)
+        - sort_index (Integer) : socket 'Sort Index' (id: Sort Index)
+
+        Returns
+        -------
+        - total
+        """
+        node = Node('Points of Curve', sockets={'Curve Index': curve_index, 'Weights': weights, 'Sort Index': sort_index})
+        return node.total
+
     def sample_index(self, value=None, index=None, clamp=False):
         """ > Method <&Node Sample Index>
 
@@ -324,6 +378,90 @@ class Spline(Socket):
         node = Node('Sort Elements', sockets={'Geometry': self, 'Selection': self._sel, 'Group ID': group_id, 'Sort Weight': sort_weight}, domain='CURVE')
         self._jump(node._out)
         return self._domain_to_geometry
+
+    @classmethod
+    @property
+    def spline_length(cls):
+        """ > Property Get <&Node Spline Length>
+
+        Returns
+        -------
+        - node [length (Float), point_count (Integer)]
+        """
+        node = Node('Spline Length', sockets={})
+        return node
+
+    @classmethod
+    @property
+    def length(cls):
+        """ > Property Get <&Node Spline Length>
+
+        Returns
+        -------
+        - length
+        """
+        node = Node('Spline Length', sockets={})
+        return node.length
+
+    @classmethod
+    @property
+    def point_count(cls):
+        """ > Property Get <&Node Spline Length>
+
+        Returns
+        -------
+        - point_count
+        """
+        node = Node('Spline Length', sockets={})
+        return node.point_count
+
+    @classmethod
+    @property
+    def parameter(cls):
+        """ > Property Get <&Node Spline Parameter>
+
+        Returns
+        -------
+        - node [factor (Float), length (Float), index (Integer)]
+        """
+        node = Node('Spline Parameter', sockets={})
+        return node
+
+    @classmethod
+    @property
+    def parameter_factor(cls):
+        """ > Property Get <&Node Spline Parameter>
+
+        Returns
+        -------
+        - factor
+        """
+        node = Node('Spline Parameter', sockets={})
+        return node.factor
+
+    @classmethod
+    @property
+    def parameter_length(cls):
+        """ > Property Get <&Node Spline Parameter>
+
+        Returns
+        -------
+        - length
+        """
+        node = Node('Spline Parameter', sockets={})
+        return node.length
+
+    @classmethod
+    @property
+    def parameter_index(cls):
+        """ > Property Get <&Node Spline Parameter>
+
+        Returns
+        -------
+        - index
+        """
+        node = Node('Spline Parameter', sockets={})
+        return node.index
 
     def split_to_instances(self, group_id=None):
         """ > Method <&Node Split to Instances>

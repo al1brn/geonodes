@@ -5,20 +5,24 @@ from .. scripterror import NodeError
 
 class Cloud(Socket):
 
+    @classmethod
     @property
-    def domain_size(self):
+    def domain_size(cls, geometry=None):
         """ > Property Get <&Node Domain Size>
 
         Information
         -----------
-        - Socket 'Geometry' : self
         - Parameter 'component' : 'POINTCLOUD'
+
+        Arguments
+        ---------
+        - geometry (Geometry) : socket 'Geometry' (id: Geometry)
 
         Returns
         -------
         - node [point_count (Integer)]
         """
-        node = self._cache('Domain Size', sockets={'Geometry': self}, component='POINTCLOUD')
+        node = Node('Domain Size', sockets={'Geometry': geometry}, component='POINTCLOUD')
         return node
 
     @classmethod

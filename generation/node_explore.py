@@ -45,9 +45,33 @@ DEPRECATED_NODES = [
 _1, _2, _3, _4 = " "*4, " "*8, " "*12, " "*16
 
 
+# ====================================================================================================
+# Add an entry to auto gen dict
+
+def add_func(gen, class_name, func_name, code, halt=True):
+    if class_name not in gen:
+        gen[class_name] = {}
+    if func_name in gen[class_name] and halt:
+        print('-'*100)
+        print("Class name:", class_name)
+        print("Function name:", func_name)
+        print()
+        print(">>>>> Existing code:")
+        print(gen[class_name][func_name])
+
+        print()
+        print(">>>>> New code:")
+        print(code)
+        print('-'*100)
+
+        raise Exception(f"Function name '{func_name}' already exists in class '{class_name}'")
+
+    gen[class_name][func_name] = code
+
+    return gen
 
 # ====================================================================================================
-# Analyze a node
+# Node wrapper
 
 class NodeInfo:
 
@@ -1055,8 +1079,9 @@ class NodeInfo:
                 is_prop = False
                 break
 
+        ret_node = False
         if is_prop:
-            is_prop = len(self.node_output()) == 1
+            ret_node = len(self.node_output()) > 1
 
         # ----------------------------------------------------------------------------------------------------
         # Source code
@@ -1067,17 +1092,15 @@ class NodeInfo:
         s += f"{_1}def {name}{self.signature('CLASS', args)}:\n"
         s += self.documentation('STATIC', args, returns='OUT')
         s += f"{_2}node = Node{self.node_call(args)}\n"
-        s += f"{_2}return node._out\n"
+        if ret_node:
+            s += f"{_2}return node\n"
+        else:
+            s += f"{_2}return node._out\n"
 
         # ----------------------------------------------------------------------------------------------------
         # Done
 
-        if 'static' not in gen:
-            gen['static'] = {}
-
-        gen['static'][name] = s
-
-        return gen
+        return add_func(gen, 'static', name, s)
 
     # =============================================================================================================================
     # Implement all static methods
@@ -1172,10 +1195,7 @@ class NodeInfo:
         s += f"{_2}node = Node{self.node_call(args)}\n"
         s += f"{_2}return cls(node._out)\n"
 
-        if class_name not in gen:
-            gen[class_name] = {}
-
-        gen[class_name][name] = s
+        add_func(gen, class_name, name, s)
 
         # ----------------------------------------------------------------------------------------------------
         # Done
@@ -1188,9 +1208,11 @@ class NodeInfo:
     # =============================================================================================================================
     # Method implementation
 
-    def method_code(self, gen, func: str = 'method', name: str | None = None, class_name: str | None = None, self_: str | None = None,
-        only_enabled: bool = True, domain_loop: bool = True, domain_param: str | None = None, domain_value : str | None = None,
+    def method_code(self, gen, func: str = 'method', name: str | None = None,
+        class_name: str | None = None, self_: str | None = None, is_class_method: bool = False,only_enabled: bool = True,
+        domain_loop: bool = True, domain_param: str | None = None, domain_value : str | None = None,
         data_type_loop: bool = True, set_in_socket: str | None = None, ret: str | None = 'OUT', cache: bool = False,
+        check_existing: bool = True,
         **parameters):
         """ Method code
 
@@ -1201,6 +1223,8 @@ class NodeInfo:
         - name : function name, from node name if None
         - class_name : class name, deduced from output socket type if None
         - self_ : name of the socket to use as self value
+        - is_class_method : implement as class method
+        - only_enabled : use only enabled input sockets
         - domain_loop : loop on domain values
         - domain_param : name of domain node parameter if any
         - domain_value : implement the method on the specifid domain
@@ -1208,6 +1232,7 @@ class NodeInfo:
         - set_in_socket : name of the input socket to use for set
         - ret : type of return
         - cache : use cache when creating the node
+        - check_existing : raises en error if the method already exists
         - parameters : node parameters
         """
         # ----------------------------------------------------------------------------------------------------
@@ -1238,8 +1263,11 @@ class NodeInfo:
             if (domain_param is not None) and (domain_param not in parameters):
 
                 for domain_value in self.enum_params[domain_param]:
-                    self.method_code(gen, func=func, name=name, class_name=class_name, only_enabled=only_enabled, domain_value=domain_value,
-                        data_type_loop=data_type_loop, domain_param=domain_value, ret=ret, cache=cache, **{domain_param: domain_value}, **parameters)
+                    self.method_code(gen, func=func, name=name,
+                        class_name=class_name, self_=self_, is_class_method=is_class_method, only_enabled=only_enabled,
+                        domain_value=domain_value,
+                        data_type_loop=data_type_loop, domain_param=domain_value, ret=ret, cache=cache,
+                        **{domain_param: domain_value}, check_existing=check_existing, **parameters)
 
                 self.set_user_parameters(**mem_params)
 
@@ -1278,7 +1306,6 @@ class NodeInfo:
         # If the node as no enabled input socket, self socket is undefined,
         # the caller must specify the class name with 'class' key.
 
-        is_class_method = func == 'cm'
         if (not is_class_method) and (self_ is None):
             self_ = self.default_self_socket
             is_class_method = self_ is None
@@ -1291,8 +1318,9 @@ class NodeInfo:
 
         if data_type_loop and (data_type is not None) and (self_ in data_type_sockets['in_sockets']):
             for value in self.enum_params[data_type]:
-                self.method_code(gen, func=func, name=name, class_name=class_name, only_enabled=only_enabled, self_=self_,
-                    domain_loop=False, domain_value=domain_value, ret=ret, cache=cache, **{data_type: value}, **parameters)
+                self.method_code(gen, func=func, name=name,
+                    class_name=class_name, self_=self_, is_class_method=is_class_method, only_enabled=only_enabled,
+                    domain_loop=False, domain_value=domain_value, ret=ret, cache=cache, **{data_type: value}, check_existing=check_existing, **parameters)
 
             self.set_user_parameters(**mem_params)
 
@@ -1326,6 +1354,16 @@ class NodeInfo:
 
                 # Let's get the class name
                 class_name = self.get_domain_class(domain_value)
+
+        else:
+            # ----- Class name is specified
+            # If it doesn't correspond to the class of the self socket
+            # it is a class method and there is not self socket
+            if self_ is not None:
+                self_class_name = self.get_socket_class_name(self.bnode.inputs[self_])
+                if self_class_name != class_name:
+                    is_class_method = True
+                    self_ = None
 
         # ----------------------------------------------------------------------------------------------------
         # Output nodes
@@ -1459,6 +1497,9 @@ class NodeInfo:
 
         # ----- Node call
 
+        if is_class_method:
+            cache = False
+
         snode = 'self._cache' if cache else 'Node'
         s += f"{_2}node = {snode}{self.node_call(args)}\n"
 
@@ -1488,9 +1529,7 @@ class NodeInfo:
         else:
             s += f"{_2}return node.{ret}\n"
 
-        if class_name not in gen:
-            gen[class_name] = {}
-        gen[class_name][name] = s
+        add_func(gen, class_name, name, s, halt=check_existing)
 
         # ----------------------------------------------------------------------------------------------------
         # Done
@@ -1569,10 +1608,7 @@ class NodeInfo:
             a = [f"node.{socket_name}" for socket_name in out.keys()]
             s += f"{_1}return ({', '.join(a)})\n"
 
-        if module not in gen:
-            gen[module] = {}
-
-        gen[module][name] = s
+        add_func(gen, module, name, s)
 
         # ----------------------------------------------------------------------------------------------------
         # Done
@@ -1684,7 +1720,8 @@ class NodeInfo:
 
             for socket_name in self.node_output():
                 ret = utils.socket_name(socket_name)
-                fname = prefix + ret + suffix
+                fname = rename.get(ret, ret)
+                fname = prefix + fname + suffix
                 self.method_code(gen, func='get', name=fname, cache=True, ret=ret, **kwargs, **parameters)
 
             self.set_user_parameters(**mem_params)
@@ -1696,7 +1733,7 @@ class NodeInfo:
 
         # ----- Method
 
-        elif func in ('m', 'method', 'Method', 'jump', 'get', 'cm'):
+        elif func in ('m', 'method', 'Method', 'get'):
             self.method_code(gen, func=func, name=func_name, **kwargs, **parameters)
 
         # ----- Operation
@@ -1797,9 +1834,7 @@ class NodeInfo:
 
             # ----- Merge the two methods in the dict
 
-            if klass not in gen:
-                gen[klass] = {}
-            gen[klass][func_name] = get_code + set_code
+            add_func(gen, klass, func_name, get_code + set_code)
 
         return gen
 

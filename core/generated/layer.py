@@ -263,6 +263,21 @@ class Layer(Socket):
         node = Node('Evaluate on Domain', sockets={'Value': value}, data_type=data_type, domain='LAYER')
         return node._out
 
+    @classmethod
+    def named_selection(cls, name=None):
+        """ > Class Method <&Node Named Layer Selection>
+
+        Arguments
+        ---------
+        - name (String) : socket 'Name' (id: Name)
+
+        Returns
+        -------
+        - Boolean
+        """
+        node = Node('Named Layer Selection', sockets={'Name': name})
+        return node._out
+
     def sample_index(self, value=None, index=None, clamp=False):
         """ > Method <&Node Sample Index>
 

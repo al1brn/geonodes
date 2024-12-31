@@ -5,20 +5,24 @@ from .. scripterror import NodeError
 
 class Instances(Socket):
 
+    @classmethod
     @property
-    def domain_size(self):
+    def domain_size(cls, geometry=None):
         """ > Property Get <&Node Domain Size>
 
         Information
         -----------
-        - Socket 'Geometry' : self
         - Parameter 'component' : 'INSTANCES'
+
+        Arguments
+        ---------
+        - geometry (Geometry) : socket 'Geometry' (id: Geometry)
 
         Returns
         -------
         - node [instance_count (Integer)]
         """
-        node = self._cache('Domain Size', sockets={'Geometry': self}, component='INSTANCES')
+        node = Node('Domain Size', sockets={'Geometry': geometry}, component='INSTANCES')
         return node
 
     @classmethod
@@ -50,6 +54,30 @@ class Instances(Socket):
         """
         node = Node('Import OBJ', sockets={'Path': path})
         return cls(node._out)
+
+    @classmethod
+    @property
+    def rotation(cls):
+        """ > Property Get <&Node Instance Rotation>
+
+        Returns
+        -------
+        - Rotation
+        """
+        node = Node('Instance Rotation', sockets={})
+        return node._out
+
+    @classmethod
+    @property
+    def instance_scale(cls):
+        """ > Property Get <&Node Instance Scale>
+
+        Returns
+        -------
+        - Vector
+        """
+        node = Node('Instance Scale', sockets={})
+        return node._out
 
     def to_points(self, position=None, radius=None):
         """ > Method <&Node Instances to Points>

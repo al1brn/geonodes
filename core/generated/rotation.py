@@ -256,6 +256,27 @@ class Rotation(Socket):
         return cls(node._out)
 
     @classmethod
+    def FromZXAxes(cls, primary_axis=None, secondary_axis=None):
+        """ > Constructor <&Node Axes to Rotation>
+
+        Information
+        -----------
+        - Parameter 'primary_axis' : 'Z'
+        - Parameter 'secondary_axis' : 'X'
+
+        Arguments
+        ---------
+        - primary_axis (Vector) : socket 'Primary Axis' (id: Primary Axis)
+        - secondary_axis (Vector) : socket 'Secondary Axis' (id: Secondary Axis)
+
+        Returns
+        -------
+        - Rotation
+        """
+        node = Node('Axes to Rotation', sockets={'Primary Axis': primary_axis, 'Secondary Axis': secondary_axis}, primary_axis='Z', secondary_axis='X')
+        return cls(node._out)
+
+    @classmethod
     def FromYZAxes(cls, primary_axis=None, secondary_axis=None):
         """ > Constructor <&Node Axes to Rotation>
 

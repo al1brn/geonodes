@@ -49,6 +49,35 @@ class Geometry(Socket):
         node = Node('Geometry to Instance', sockets={'Geometry': [self] + list(geometry)})
         return node._out
 
+    @classmethod
+    @property
+    def index_of_nearest(cls, position=None, group_id=None):
+        """ > Property Get <&Node Index of Nearest>
+
+        Arguments
+        ---------
+        - position (Vector) : socket 'Position' (id: Position)
+        - group_id (Integer) : socket 'Group ID' (id: Group ID)
+
+        Returns
+        -------
+        - Integer [has_neighbor_ (Boolean)]
+        """
+        node = Node('Index of Nearest', sockets={'Position': position, 'Group ID': group_id})
+        return node._out
+
+    @classmethod
+    @property
+    def index(cls):
+        """ > Property Get <&Node Index>
+
+        Returns
+        -------
+        - Integer
+        """
+        node = Node('Index', sockets={})
+        return node._out
+
     def join(self, *geometry):
         """ > Jump Method <&Node Join Geometry>
 
@@ -668,7 +697,29 @@ class Geometry(Socket):
         self._jump(node._out)
         return self._domain_to_geometry
 
-    def transform(self, transform=None):
+    def transform_components(self, translation=None, rotation=None, scale=None):
+        """ > Jump Method <&Node Transform Geometry>
+
+        Information
+        -----------
+        - Socket 'Geometry' : self
+        - Parameter 'mode' : 'COMPONENTS'
+
+        Arguments
+        ---------
+        - translation (Vector) : socket 'Translation' (id: Translation)
+        - rotation (Rotation) : socket 'Rotation' (id: Rotation)
+        - scale (Vector) : socket 'Scale' (id: Scale)
+
+        Returns
+        -------
+        - Geometry
+        """
+        node = Node('Transform Geometry', sockets={'Geometry': self, 'Translation': translation, 'Rotation': rotation, 'Scale': scale}, mode='COMPONENTS')
+        self._jump(node._out)
+        return self._domain_to_geometry
+
+    def transform_matrix(self, transform=None):
         """ > Jump Method <&Node Transform Geometry>
 
         Information
@@ -685,6 +736,28 @@ class Geometry(Socket):
         - Geometry
         """
         node = Node('Transform Geometry', sockets={'Geometry': self, 'Transform': transform}, mode='MATRIX')
+        self._jump(node._out)
+        return self._domain_to_geometry
+
+    def transform(self, translation=None, rotation=None, scale=None, mode='COMPONENTS'):
+        """ > Jump Method <&Node Transform Geometry>
+
+        Information
+        -----------
+        - Socket 'Geometry' : self
+
+        Arguments
+        ---------
+        - translation (Vector) : socket 'Translation' (id: Translation)
+        - rotation (Rotation) : socket 'Rotation' (id: Rotation)
+        - scale (Vector) : socket 'Scale' (id: Scale)
+        - mode (str): parameter 'mode' in ('COMPONENTS', 'MATRIX')
+
+        Returns
+        -------
+        - Geometry
+        """
+        node = Node('Transform Geometry', sockets={'Geometry': self, 'Translation': translation, 'Rotation': rotation, 'Scale': scale}, mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
 
