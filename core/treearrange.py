@@ -704,13 +704,14 @@ class Frame(Node):
 
         source_nodes = {}
         for link in in_links:
-            reroute = source_nodes.get(link.node0_key)
+            source_key = link.node0_key
+            reroute = source_nodes.get(source_key)
             if reroute is None:
                 reroute = link.insert_reroute(self)
                 reroute.bnode.location = (x + 200, y)
                 y += y_sepa
 
-                source_nodes[link.node0_key] = reroute
+                source_nodes[source_key] = reroute
 
             else:
                 link.replace_from(reroute, index0=0)
@@ -718,7 +719,6 @@ class Frame(Node):
         # ----- Create the output reroutes
 
         x = 2*x_sepa
-        #y = y_sepa
         y = 0
 
         source_nodes = {}

@@ -37,7 +37,7 @@ from .domain_class import Domain
 from .domains import Point, Vertex, CloudPoint, SplinePoint, Spline, Instance, Layer
 from .geometries import Mesh, Curve, Cloud, Instances, GreasePencil, Volume
 
-from .treeclass import Layout, Break, Tree, Node, Group, GroupF, ColorRamp, G
+from .treeclass import Layout, Panel, Break, Tree, Node, Group, GroupF, ColorRamp, G
 from .zones import Zone, Repeat, Simulation, ForEachElement
 
 from .geonodes import GeoNodes

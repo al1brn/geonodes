@@ -331,6 +331,22 @@ class Face(Socket):
         node = Node('Evaluate on Domain', sockets={'Value': value}, data_type=data_type, domain='FACE')
         return node._out
 
+    def flip(self):
+        """ > Jump Method <&Node Flip Faces>
+
+        Information
+        -----------
+        - Socket 'Mesh' : self
+        - Socket 'Selection' : self[selection]
+
+        Returns
+        -------
+        - Mesh
+        """
+        node = Node('Flip Faces', sockets={'Mesh': self, 'Selection': self._sel})
+        self._jump(node._out)
+        return self._domain_to_geometry
+
     def sample_index(self, value=None, index=None, clamp=False):
         """ > Method <&Node Sample Index>
 

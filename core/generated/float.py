@@ -630,7 +630,7 @@ class Float(Socket):
         node = Node('Map Range', sockets={'Value': self, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max, 'Steps': steps}, clamp=clamp, data_type=data_type, interpolation_type='STEPPED')
         return node._out
 
-    def map_range_smoothstep(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
+    def map_range_smooth_step(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
         """ > Method <&Node Map Range>
 
         Information
@@ -651,11 +651,11 @@ class Float(Socket):
         -------
         - Float
         """
-        data_type = utils.get_argument_data_type(from_min, {'VALUE': 'FLOAT', 'VECTOR': 'FLOAT_VECTOR'}, 'Float.map_range_smoothstep', 'from_min')
+        data_type = utils.get_argument_data_type(from_min, {'VALUE': 'FLOAT', 'VECTOR': 'FLOAT_VECTOR'}, 'Float.map_range_smooth_step', 'from_min')
         node = Node('Map Range', sockets={'Value': self, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}, clamp=clamp, data_type=data_type, interpolation_type='SMOOTHSTEP')
         return node._out
 
-    def map_range_smootherstep(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
+    def map_range_smoother_step(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
         """ > Method <&Node Map Range>
 
         Information
@@ -676,7 +676,7 @@ class Float(Socket):
         -------
         - Float
         """
-        data_type = utils.get_argument_data_type(from_min, {'VALUE': 'FLOAT', 'VECTOR': 'FLOAT_VECTOR'}, 'Float.map_range_smootherstep', 'from_min')
+        data_type = utils.get_argument_data_type(from_min, {'VALUE': 'FLOAT', 'VECTOR': 'FLOAT_VECTOR'}, 'Float.map_range_smoother_step', 'from_min')
         node = Node('Map Range', sockets={'Value': self, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}, clamp=clamp, data_type=data_type, interpolation_type='SMOOTHERSTEP')
         return node._out
 

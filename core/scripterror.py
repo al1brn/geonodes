@@ -21,16 +21,16 @@ updates
 - update : 2024/09/04
 """
 
+from pprint import pprint
 import inspect
 from pathlib import Path
 import bpy
 
-EXCLUDE_GEONODES = False
 FULL_PATH = False
 
 class NodeError(Exception):
 
-    def __init__(self, *messages, **kwargs):
+    def __init__(self, *messages, keyword=None, **kwargs):
         self.message = "Geometry nodes error\n"
 
         if messages:
@@ -53,7 +53,19 @@ class NodeError(Exception):
 
         self.message += '-'*100 + "\n"
 
-        self.message += "\n" + "\n".join(self.stack_lines())
+        self.message += "\n"
+
+        item = self.find_keyword(keyword)
+
+        if item is None:
+            stack_lines = self.stack_lines()
+
+        else:
+            file_name = item['file_name']
+            lineno = item['lineno']
+            stack_lines = [f"File '{file_name}', line {lineno}", item['code']]
+
+        self.message += "\n".join(stack_lines)
 
     def __str__(self):
         return self.message
@@ -62,11 +74,16 @@ class NodeError(Exception):
     # Loop on the stack
 
     @staticmethod
-    def stack_lines():
+    def get_stack():
 
-        stack = ["Traceback (most recent call last):\n"]
+        # List of dict:
+        # - file_name
+        # - lineno
+        # - code
 
-        for i_frame, frame_info in enumerate(inspect.stack()[2:]):
+        stack = []
+
+        for i_frame, frame_info in enumerate(inspect.stack()):
 
             # ----- Generated source code
 
@@ -74,12 +91,6 @@ class NodeError(Exception):
                 continue
 
             path = Path(frame_info.filename)
-
-            # ----- Exclude track from module
-
-            if not EXCLUDE_GEONODES:
-                if path.stem in ['utils', 'custom', 'sockets', 'treestack', 'tree']:
-                    continue
 
             # ----- Python embedded in a blend file
             # "file.blend/text_name" or "/text_name"" if the file is not saved
@@ -100,7 +111,6 @@ class NodeError(Exception):
             code_lines = []
             if blend_text:
                 lines = bpy.data.texts[text_key].lines
-                #code_lines = [f"{i}> {lines[i].body}" for i in range(code_line0, code_line1)]
                 code_lines = []
                 for i in range(code_line0, code_line1):
                     try:
@@ -121,10 +131,47 @@ class NodeError(Exception):
             # ----- Track
 
             if FULL_PATH:
-                stack.append(f"File '{path}', line {frame_info.lineno}")
+                file_name = str(path)
             else:
-                stack.append(f"File '{path.name}', line {frame_info.lineno}")
-            stack.extend(code_lines)
+                file_name = str(path.name)
+
+            stack.append({
+                'file_name': file_name,
+                'lineno'    : frame_info.lineno,
+                'code'      : "\n".join(code_lines)
+
+            })
+
+        return stack
+
+    # ----------------------------------------------------------------------------------------------------
+    # Loop on the stack
+
+    @staticmethod
+    def stack_lines():
+
+        stack = ["Traceback (most recent call last):\n"]
+
+        for item in NodeError.get_stack()[2:]:
+            file_name = item['file_name']
+            lineno = item['lineno']
+            stack.append(f"File '{file_name}', line {lineno}")
+            stack.append(item['code'])
             stack.append("")
 
         return stack
+
+    # ----------------------------------------------------------------------------------------------------
+    # Search a keyword in the stack
+
+    @staticmethod
+    def find_keyword(keyword):
+
+        if keyword is None:
+            return None
+
+        for item in NodeError.get_stack()[2:]:
+            if item['code'].find(keyword) >= 0:
+                return item
+
+        return None

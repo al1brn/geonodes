@@ -53,6 +53,8 @@ from inspect import Arguments
 import bpy
 from bpy.types import Property, PythonConstraint, SmoothModifier
 
+from .proplocker import PropLocker
+
 from .scripterror import NodeError
 from . import constants
 from . import utils
@@ -60,7 +62,7 @@ from .treeclass import Tree, Node, Layout
 from .socket_class import NodeCache, Socket
 from .geometry_class import GeoBase, Geometry
 
-class Domain(GeoBase, NodeCache):
+class Domain(GeoBase, NodeCache, PropLocker):
 
     DOMAIN_NAME = None
 
@@ -87,6 +89,8 @@ class Domain(GeoBase, NodeCache):
         """
         self._geo  = geometry
         self._cache_reset()
+
+        self._lock()
 
     def __str__(self):
         return f"<Domain {self.DOMAIN_NAME} of {self._geo}>"
@@ -170,6 +174,7 @@ class Domain(GeoBase, NodeCache):
 
         attr_name = utils.get_attr_name(name)
         if attr_name is None:
+            raise NodeError(f"Domain '{type(self).__name__}' doesn't have attribute named '{name}'", keyword=name)
             raise AttributeError(f"Domain '{type(self).__name__}' doesn't have attribute named '{name}'")
 
         return self._geo._tree.get_named_attribute(prop_name=name)

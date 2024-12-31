@@ -67,6 +67,8 @@ from .scripterror import NodeError
 from . import treearrange
 from . import constants
 from . import utils
+from .treeinterface import TreeInterface
+
 
 # =============================================================================================================================
 # Break to exit with blocks
@@ -134,6 +136,52 @@ class Layout:
 
         if isinstance(exc_value, Break):
             return True
+
+# =============================================================================================================================
+# Layout
+
+class Panel:
+    def __init__(self, name: str):
+        """ Socket panel
+
+        All group input and output sockets will be created within the current panel
+
+        ``` python
+        with GeoNodes("Layout Demo"):
+
+            # Socket outside a panel
+            g = Geometry()
+
+            with Panel("First Panel"):
+                a = Float(10, "Float Socket")
+                b = Float(20, "Another Float Socket")
+
+            with Panel("Second Panel"):
+                i = Integer(1, "Integer Socket")
+                j = Integer(20 "Another Integer Socket")
+        ```
+
+        Arguments
+        ---------
+        - name : Panel title
+        """
+
+        self.tree = Tree.current_tree
+        self.name = name
+
+        self.push()
+
+    def push(self):
+        self.tree._panels.append(self.name)
+
+    def pop(self):
+        self.tree._panels.pop()
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, type, exc_value, traceback):
+        self.pop()
 
 
 # =============================================================================================================================
@@ -228,6 +276,7 @@ class Tree:
         self._nodes   = []
         self._keeps   = {}
         self._layouts = []
+        self._panels  = []
 
         # ----- Named attributes
 
@@ -659,6 +708,16 @@ class Tree:
     """
 
     # --------------------------------------------------------------------------------
+    # Get the current panel
+
+    @property
+    def current_panel(self):
+        if len(self._panels):
+            return self._panels[-1]
+        else:
+            return ""
+
+    # --------------------------------------------------------------------------------
     # Set the default value of an input socket
 
     def set_input_socket_default(self, socket, value=None):
@@ -727,12 +786,10 @@ class Tree:
         # ----------------------------------------------------------------------------------------------------
         # Get or create
 
-        #io_socket = tree.io_socket_exists(bl_idname, 'INPUT', name)
-        io_socket = tree._interface.get_in_socket(name, halt = False)
+        io_socket = tree._interface.get_in_socket(name, halt = False, panel_name=tree.current_panel)
 
         if io_socket is None:
-            #io_socket = tree.new_io_socket(bl_idname, 'INPUT', name)
-            io_socket = tree._interface.create_in_socket(name, socket_type=bl_idname)
+            io_socket = tree._interface.create_in_socket(name, socket_type=bl_idname, panel=tree.current_panel)
             set_value = True
         else:
             set_value = False
@@ -1602,7 +1659,7 @@ class Node:
         # ----------------------------------------------------------------------------------------------------
         # If the value is a Node, we take its default output socket
 
-        if hasattr(value, '_bnode'):
+        if '_bnode' in dir(value):
             value = value._out
 
         # ----------------------------------------------------------------------------------------------------
@@ -1748,7 +1805,7 @@ class Node:
         Use 'include', 'exclude' and 'rename' arguments to control the connexions.
 
         > [!NOTE]
-        > This function is called when initializing a node if the `link_with` argument is not None.
+        > This function is called when initializing a node if the `link_from` argument is not None.
         > In that case, `link_argument` value is either the `node` argument or a dictionnary
         > of the `link_from` method arguments:
 
@@ -1814,12 +1871,17 @@ class Node:
         if node is None:
             return self
 
-        if node == tree or str(node).upper() == 'TREE' :
+        if (node == tree) or (str(node).upper() == 'TREE'):
             node = tree.input_node
 
         create = create and node._bnode.bl_idname == 'NodeGroupInput'
 
         is_node_group = self._bnode.bl_idname == 'GeometryNodeGroup'
+
+        # Tree interface of self as Group
+        group_interface = None
+        if is_node_group:
+            group_interface = TreeInterface(self._bnode.node_tree)
 
         if False:
             print("LINK INPUT FROM", tree)
@@ -1857,22 +1919,15 @@ class Node:
 
             # ----- In the arguments list
 
-            if False:
-                if in_socket.name in arguments.keys():
-                    continue
-                if  utils.socket_name(in_socket.name) in arguments:
-                    continue
-
-            else:
-                val = None
-                socket_name = in_socket.name
-                pyname = utils.socket_name(socket_name)
-                if socket_name in arguments.keys():
-                    val = arguments[socket_name]
-                elif pyname in arguments:
-                    val = arguments[pyname]
-                if val is not None:
-                    continue
+            val = None
+            socket_name = in_socket.name
+            pyname = utils.socket_name(socket_name)
+            if socket_name in arguments.keys():
+                val = arguments[socket_name]
+            elif pyname in arguments:
+                val = arguments[pyname]
+            if val is not None:
+                continue
 
             # ----- Socket name can be renamed
 
@@ -1915,8 +1970,13 @@ class Node:
                     bsocket = utils.get_bsocket(in_socket)
                     bl_idname, subtype = constants.SOCKET_SUBTYPES[bsocket.bl_idname]
 
-                    #io_socket = tree.new_io_socket(bl_idname, 'INPUT', out_name)
-                    io_socket = tree._interface.create_in_socket(out_name, socket_type=bl_idname)
+                    parent = group_interface.by_identifier(bsocket.identifier).parent
+                    if parent is None:
+                        panel = ""
+                    else:
+                        panel = parent.name
+
+                    io_socket = tree._interface.create_in_socket(out_name, socket_type=bl_idname, panel=panel)
 
                     if hasattr(io_socket, 'subtype'):
                         io_socket.subtype = subtype
@@ -1951,7 +2011,6 @@ class Node:
                 tree.link(out_socket, in_socket)
 
         return self
-
 
     # =============================================================================================================================
     # Color and label
@@ -2162,7 +2221,6 @@ class G:
     ```
 
     """
-
     @staticmethod
     def build_from_tree(btree, prefix=""):
         """ Dynamically create a function to call the tree as Group
@@ -2207,6 +2265,7 @@ class G:
             if bnode.bl_idname == 'NodeGroupInput':
                 sock_names = [utils.socket_name(bsock.name) for bsock in bnode.outputs if bsock.type != 'CUSTOM']
                 break
+        sock_names = TreeInterface.ensure_uniques(sock_names, single_digit=True)
         sock_names.append('link_from')
 
         # ----- Create the function

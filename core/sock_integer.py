@@ -225,7 +225,7 @@ class Integer(generated.Integer):
     # ----- Modulo
 
     def __mod__(self, other):
-        return self.modulo(self, other)
+        return self.modulo(other)
 
     def __rmod__(self, other):
         return Integer(other).modulo(self)

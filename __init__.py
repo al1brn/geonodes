@@ -116,7 +116,7 @@ from .core import Geometry, Domain
 from .core import Point, Vertex, CloudPoint, SplinePoint, Spline, Instance, Layer
 from .core import Mesh, Curve, Cloud, Instances, GreasePencil, Volume
 
-from .core import Layout, Break, Tree, Node, Group, GroupF, G, ColorRamp
+from .core import Layout, Panel, Break, Tree, Node, Group, GroupF, G, ColorRamp
 from .core import Zone, Repeat, Simulation, ForEachElement
 
 from .core import GeoNodes

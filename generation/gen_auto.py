@@ -199,7 +199,7 @@ GEONODES = {
 'Evaluate on Domain' :          [{'data_type_loop': False}],
 'Fill Curve'         :          [{name: 'fill'}],
 'Fillet Curve'       :          [{name: 'fillet'}],
-'Flip Faces'         :          [{}],
+'Flip Faces'         :          [{}, {name: 'flip', klass: 'Face'}],
 'For Each Geometry Element Input'  : [{f: 'MANUAL'}],
 'For Each Geometry Element Output' : [{f: 'MANUAL'}],
 'Geometry to Instance' :        [{name: 'to_instance'},
@@ -381,7 +381,7 @@ GEONODES = {
 'Combine XYZ'        :          [{f: 'C', name: 'CombineXYZ'}],
 'Float Curve'        :          [{}],
 'Map Range'          :          [{},
-                                 {param_loop: 'interpolation_type', prefix: 'map_range_'},
+                                 {param_loop: 'interpolation_type', prefix: 'map_range_', rename: {'smoothstep': 'smooth_step', 'smootherstep': 'smoother_step'}},
                                 ],
 'Math'               :          [{f: 'op', rename: {
                                         'minimum'      : 'min',

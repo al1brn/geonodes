@@ -29,7 +29,7 @@ def demo():
 
     # ====================================================================================================
     # Shaders for digits
-
+    """
     with ShaderNodes("LCD On"):
         ped = Shader.Principled(
             base_color = Color.CombineHSV(0, 0, 0),
@@ -86,20 +86,24 @@ def demo():
         )
 
         ped.out()
-
+    """
     # ====================================================================================================
     # A digital digit : each light item is a face
 
     with GeoNodes("Digit"):
 
-        value      = Integer(8, "Value", 0, 9, tip="Digit value")
-        on_mat     = Material("LCD On", "On")
-        off_mat    = Material("LCD Off", "Off")
-        size       = Float(1, "Size", 0)
-        shear      = Float.Factor(.4, "Shear", 0, 1)
-        ok_0       = Boolean(True, "Display 0")
-        minus      = Boolean(False, "Minus Sign", tip="Only minus sign")
-        positive   = Boolean(False, "Positive", tip="Sign is off (True) or on (False)")
+        value = Integer(8, "Value", 0, 9, tip="Digit value")
+        size  = Float(1, "Size", 0)
+
+        with Panel("Appearance"):
+            on_mat     = Material("LCD On", "On")
+            off_mat    = Material("LCD Off", "Off")
+            shear      = Float.Factor(.4, "Shear", 0, 1)
+
+        with Panel("Options"):
+            ok_0       = Boolean(True, "Display 0")
+            minus      = Boolean(False, "Minus Sign", tip="Only minus sign")
+            positive   = Boolean(False, "Positive", tip="Sign is off (True) or on (False)")
 
         # ----- Dimensions
 
@@ -116,37 +120,37 @@ def demo():
 
         with Layout("Item 0"):
             item0 = Mesh.Circle(vertices=4, fill_type='NGON')
-            item0.points[0].position = (x0 + e, 0, z0)
-            item0.points[1].position = (x1 - e, 0, z0)
-            item0.points[2].position = (x1 - d - e, 0, z0 + d)
-            item0.points[3].position = (x0 + d + e, 0, z0 + d)
+            item0[0].position = (x0 + e, 0, z0)
+            item0[1].position = (x1 - e, 0, z0)
+            item0[2].position = (x1 - d - e, 0, z0 + d)
+            item0[3].position = (x0 + d + e, 0, z0 + d)
 
             digit = item0
 
         with Layout("Item 1"):
             item = Mesh.Circle(vertices=6, fill_type='NGON')
-            item.points[0].position = (x0, 0, 0)
-            item.points[1].position = (x0 + d, 0, -d2)
-            item.points[2].position = (x1 - d, 0, -d2)
-            item.points[3].position = (x1, 0, 0)
-            item.points[4].position = (x1 - d, 0, d2)
-            item.points[5].position = (x0 + d, 0, d2)
+            item[0].position = (x0, 0, 0)
+            item[1].position = (x0 + d, 0, -d2)
+            item[2].position = (x1 - d, 0, -d2)
+            item[3].position = (x1, 0, 0)
+            item[4].position = (x1 - d, 0, d2)
+            item[5].position = (x0 + d, 0, d2)
 
             digit += item
 
             with Layout("Minus sign"):
                 minus_mesh = Mesh(item)
-                minus_mesh.faces.material = on_mat.switch(positive, off_mat)
+                minus_mesh.material = on_mat.switch(positive, off_mat)
 
         with Layout("Item 2"):
             digit += item0.transform(rotation=Rotation.FromEuler((0, pi, 0)))
 
         with Layout("Item 3"):
             item3 = Mesh.Circle(vertices=4, fill_type='NGON')
-            item3.points[0].position = (x0, 0, z0 + e)
-            item3.points[1].position = (x0 + d, 0, z0 + d + e)
-            item3.points[2].position = (x0 + d, 0, -d2 - e)
-            item3.points[3].position = (x0, 0, -e)
+            item3[0].position = (x0, 0, z0 + e)
+            item3[1].position = (x0 + d, 0, z0 + d + e)
+            item3[2].position = (x0 + d, 0, -d2 - e)
+            item3[3].position = (x0, 0, -e)
 
             digit += item3
 
@@ -163,33 +167,33 @@ def demo():
             digit += item3.transform(rotation=Rotation.FromEuler((0, pi, 0)))
 
         with Layout("Shear"):
-            digit.points.offset = (nd.position.z*.4*shear, 0, 0)
+            digit.offset = (nd.position.z*.4*shear, 0, 0)
 
         with Layout("On / Off"):
 
-            digit.faces.material = off_mat
+            digit.material = off_mat
             zero_off = Mesh(digit)
 
             with Layout("Horizontal Bottom"):
-                digit.faces[0].material = on_mat.switch(value.equal(1) | value.equal(4) | value.equal(7), off_mat)
+                digit[0].material = on_mat.switch(value.equal(1) | value.equal(4) | value.equal(7), off_mat)
 
             with Layout("Horizontal Middle"):
-                digit.faces[1].material = on_mat.switch(value.equal(0) | value.equal(1) | value.equal(7), off_mat)
+                digit[1].material = on_mat.switch(value.equal(0) | value.equal(1) | value.equal(7), off_mat)
 
             with Layout("Horizontal Top"):
-                digit.faces[2].material = on_mat.switch(value.equal(1) | value.equal(4), off_mat)
+                digit[2].material = on_mat.switch(value.equal(1) | value.equal(4), off_mat)
 
             with Layout("Vertical Left Bottom"):
-                digit.faces[3].material = off_mat.switch(value.equal(0) | value.equal(2) | value.equal(6) | value.equal(8), on_mat)
+                digit[3].material = off_mat.switch(value.equal(0) | value.equal(2) | value.equal(6) | value.equal(8), on_mat)
 
             with Layout("Vertical Left Top"):
-                digit.faces[4].material = off_mat.switch(value.equal(0) | value.equal(4) | value.equal(5) | value.equal(6) | (value >= 8), on_mat)
+                digit[4].material = off_mat.switch(value.equal(0) | value.equal(4) | value.equal(5) | value.equal(6) | (value >= 8), on_mat)
 
             with Layout("Vertical Right Bottom"):
-                digit.faces[5].material = on_mat.switch(value.equal(2), off_mat)
+                digit[5].material = on_mat.switch(value.equal(2), off_mat)
 
             with Layout("Vertical Right Top"):
-                digit.faces[6].material = on_mat.switch(value.equal(5) | value.equal(6), off_mat)
+                digit[6].material = on_mat.switch(value.equal(5) | value.equal(6), off_mat)
 
         with Layout("Display 0"):
             digit = zero_off.switch(ok_0 | value.not_equal(0), digit)
@@ -201,17 +205,18 @@ def demo():
 
     with GeoNodes("Digital Counter"):
 
-        value      = Integer(12, "Value", tip="Value to display")
-        digits     = Integer(3, "Digits", 1, 10, tip="Number of digits")
-        leading_0  = Boolean(False, "Leading 0", tip="Display leading zero value")
-        minus      = Boolean(True, "Minus Sign")
-        size       = Float(1, "Size", 0)
-        shear      = Float.Factor(.4, "Shear", 0, 1)
-        on_mat     = Material("LCD On", "On")
-        off_mat    = Material("LCD Off", "Off")
-        color      = Color((1, 0, 0), "Color")
-        merge      = Boolean(True, "Merge with Input")
-        y_offset   = Float(-.01, "Y Offset")
+        value    = Integer(12, "Value", tip="Value to display")
+        digits   = Integer(3, "Digits", 1, 10, tip="Number of digits")
+        size     = Float(1, "Size", 0)
+        y_offset = Float(-.01, "Y Offset")
+
+        with Panel("Appearance"):
+            color = Color((1, 0, 0), "Color")
+
+        with Panel("Options"):
+            merge      = Boolean(True, "Merge with Input")
+            leading_0  = Boolean(False, "Leading 0", tip="Display leading zero value")
+            minus      = Boolean(True, "Minus Sign")
 
         sign = gnmath.sign(value)
 
@@ -220,18 +225,16 @@ def demo():
         with Repeat(mesh=None, value=value, index = 0, iterations=digits) as rep:
 
             rep.mesh.transform(translation=(size_factor*size, 0, 0))
-            digit_value = round(rep.value % 10)
+            digit_value = rep.value % 10
             res_value = (rep.value - digit_value)/10
             rep.value = res_value
 
             digit_node = Group("Digit", {
                 "Value" : digit_value,
-                "On"    : on_mat,
-                "Off"   : off_mat,
                 "Size"  : size,
-                "Shear" : shear,
                 "Display 0" : leading_0 | rep.index.equal(0) | res_value.not_equal(0),
-            })
+                "Minus Sign" : False,
+            }, link_from='TREE')
 
             rep.index += 1
             rep.mesh += digit_node.geometry
@@ -242,13 +245,10 @@ def demo():
             signed_mesh = Mesh(mesh).transform(translation=(size_factor*size, 0, 0))
 
             signed_mesh = signed_mesh + Group("Digit", {
-                "On"         : on_mat,
-                "Off"        : off_mat,
                 "Size"       : size,
-                "Shear"      : shear,
                 "Minus Sign" : True,
                 "Positive"   : sign > 0,
-            }).geometry
+            }, link_from='TREE').geometry
 
         mesh = Mesh(mesh).switch(minus, signed_mesh)
         mesh.transform(translation=(0, y_offset, 0))
@@ -262,32 +262,24 @@ def demo():
 
     with GeoNodes("Digital Clock"):
 
-        minutes    = Integer(132, "Minutes", tip="Time in minutes")
-        size       = Float(1, "Size", 0)
-        shear      = Float.Factor(.4, "Shear", 0, 1)
-        on_mat     = Material("LCD On", "On")
-        off_mat    = Material("LCD Off", "Off")
-        color      = Color((1, 0, 0), "Color")
-        dots_on    = Boolean(True, "Dots are On")
-        merge      = Boolean(True, "Merge with Input")
-        y_offset   = Float(-.01, "Y Offset")
+        minutes = Integer(132, "Minutes", tip="Time in minutes")
+        size    = Float(1, "Size", 0)
+
+        with Panel("Options"):
+            merge      = Boolean(True, "Merge with Input")
+            dots_on    = Boolean(True, "Dots are On")
 
         mins  = minutes % 60
-        hours = round(minutes - mins)/60
+        hours = (minutes - mins)/60
 
         m_mesh = Group("Digital Counter", {
             "Value"            : mins,
             "Digits"           : 2,
             "Leading 0"        : True,
             "Minus Sign"       : False,
-            "Size"             : size,
-            "Shear"            : shear,
-            "On"               : on_mat,
-            "Off"              : off_mat,
-            "Color"            : color,
             "Merge with Input" : False,
             "Y Offset"         : 0,
-        }).geometry
+        }, link_from='TREE').geometry
 
         m_mesh = m_mesh.transform(translation=(.8*size, 0, 0))
 
@@ -296,18 +288,16 @@ def demo():
             "Digits"           : 2,
             "Leading 0"        : False,
             "Minus Sign"       : False,
-            "Size"             : size,
-            "Shear"            : shear,
-            "On"               : on_mat,
-            "Off"              : off_mat,
-            "Color"            : color,
             "Merge with Input" : False,
             "Y Offset"         : 0,
-        }).geometry
+        }, link_from='TREE').geometry
 
         h_mesh = h_mesh.transform(translation=(-2.2*size, 0, 0))
 
         with Layout("Dots"):
+
+            size = Float.Input("Size")
+            shear = Float.Input("Shear")
 
             side = size*.15
             z    = size*.25
@@ -315,10 +305,14 @@ def demo():
             square0 = Mesh(square).transform(translation=(0, 0, -z))
             square1 = square.transform(translation=(0, 0, z))
             squares = square0 + square1
-            squares.points.offset = (nd.position.z*.4*shear, 0, 0)
+            squares.offset = (nd.position.z*.4*shear, 0, 0)
 
-            squares.faces.material = off_mat.switch(dots_on, on_mat)
-            squares.faces.store("Color", color)
+            squares.material = off_mat.switch(dots_on, on_mat)
+            squares.faces._Color = color
+
+        #h_mesh._lc("h_mesh", (1, 0, 0))
+        #squares._lc("squares", (1, 0, 0))
+        #m_mesh._lc("m_mesh", (1, 0, 0))
 
         clock = h_mesh + squares + m_mesh
         clock = clock.transform(translation=(0, y_offset, 0))
@@ -351,19 +345,19 @@ def demo():
             figure = Curve((curve0 + curve1).realize()).fill()
 
         with Layout("Intermediary factor"):
-            fac = frac.map_range_smooth(.5, 1, 0, 1).switch(continuous, frac)
+            fac = frac.map_range_smooth_step(.5, 1, 0, 1).switch(continuous, frac)
 
         with Layout("Move the figures"):
             figure = figure.transform(translation=(0, size*fac, 0))
 
-        figure.faces.material = fig_mat
+        figure.material = fig_mat
 
         with Layout("Cut"):
             cut = Mesh.Cube((size, size*1.3, 1))
             figure = figure.intersect(cut)
 
         back = Mesh.Grid(size_x=size, size_y=1.4*size, vertices_x=2, vertices_y=2)
-        back.faces.material = back_mat
+        back.material = back_mat
         back = back.transform(translation=(0, 0, size*(-.05)))
 
         figure = back + figure
@@ -431,7 +425,7 @@ def demo():
 
             box = ext_box.difference(int_box)
             #box = ext_box + int_box
-            box.faces.material = box_mat
+            box.material = box_mat
             box.faces.store("Box Color", box_color)
 
             if False:
@@ -441,7 +435,7 @@ def demo():
                 cut = box.transform(scale=(.9, .65, 1), translation=(0, 0, .1))
                 box = box.difference(cut)
                 box = box.transform(rotation=(halfpi, 0, 0), translation=(size*(count-1)/2, size*.6, size*.1))
-                box.faces.material = box_mat
+                box.material = box_mat
 
         wheels += Geometry.Switch(with_box, None, box)
         wheels += Geometry.Switch(merge, None, Geometry())

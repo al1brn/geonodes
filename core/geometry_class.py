@@ -121,7 +121,7 @@ class GeoBase:
 
     @property
     def _raw_sel(self):
-        if hasattr(self, '_selection'):
+        if '_selection' in self.__dict__:
             sel = self._selection
             self._selection = sel
             return sel
@@ -130,6 +130,8 @@ class GeoBase:
 
     @property
     def _sel(self):
+
+        from geonodes import nd
 
         selection = self._raw_sel
 
@@ -166,6 +168,8 @@ class GeoBase:
                 with Layout(f"selection = []", color='AUTO_GEN'):
                     selection = nd.index.equal(selection)
 
+        self._selection = None
+
         return selection
 
     # ----- Set the selection
@@ -181,7 +185,9 @@ class GeoBase:
         # If an Integer, a slice or a tuple, it is transformed into a boolean through _sel function
         # The _raw_sel function returns the passed value without transformation
 
+        self._unlock()
         self._selection = selection
+        self._lock()
         return self
 
 # =============================================================================================================================

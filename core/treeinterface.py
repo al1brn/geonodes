@@ -30,7 +30,7 @@ class TreeInterface:
     # Utilities
 
     @staticmethod
-    def ensure_uniques(names: list[str]):
+    def ensure_uniques(names: list[str], single_digit: bool = False):
         """ Build a list of unique names from a list
 
         Doublons are suffixed by an index:
@@ -39,6 +39,7 @@ class TreeInterface:
         Arguments
         ---------
         - names : list of names with possible doublons
+        - single_digit : 'key_1' rather that 'key_001'
 
         Returns
         -------
@@ -52,7 +53,10 @@ class TreeInterface:
                 uniques.append(name)
                 homos[name] = 1
             else:
-                uniques.append(f"{name}_{count:03d}")
+                if single_digit:
+                    uniques.append(f"{name}_{count:d}")
+                else:
+                    uniques.append(f"{name}_{count:03d}")
                 homos[name] = count + 1
         return uniques
 
@@ -94,7 +98,6 @@ class TreeInterface:
         """
         items = []
         for item in self.btree.interface.items_tree:
-
 
             if item.item_type != item_type:
                 continue
@@ -264,17 +267,16 @@ class TreeInterface:
     def get_in_socket(self, name, panel_name: str | None = None, halt: bool = True):
         """ Get an input socket by its name
 
-        The name of the panel can be specified either with the 'panel_argument' or using dot syntax.
+        The name of the panel can be specified either with the 'panel_name' argument or using dot syntax.
         In the following example, the two lines return the same socket:
 
         ``` python
-        interface_socket = interface.get_in_socket('socket_name', 'panel_name')
-        interface_socket = interface.get_in_socket('panel_name.socket_name', None)
+        interface_socket = interface.get_in_socket('Socket Name', 'My Panel')
+        interface_socket = interface.get_in_socket('My Panel.Socket Name')
         ```
 
         If 'panel_name' is an empty string, the socket is searched in the sockets which are not
         in a panel.
-
 
         Arguments
         ---------
@@ -290,11 +292,11 @@ class TreeInterface:
         -------
         - dict : socket unique python name: bpy.types.NodeTreeInterfaceItem with in_out = 'INPUT'
         """
-        panel_name = None
-        composed = name.split('.')
-        if len(composed) == 2:
-            panel_name = composed[0]
-            name  = composed[1]
+        if panel_name is None:
+            composed = name.split('.')
+            if len(composed) == 2:
+                panel_name = composed[0]
+                name = composed[1]
 
         sockets = self.get_in_sockets(panel_name=panel_name)
         socket = sockets.get(name)
@@ -343,7 +345,7 @@ class TreeInterface:
     # ----------------------------------------------------------------------------------------------------
     # Create an output socket
 
-    def create_out_socket(self, name: str, socket_type: str, tip: str=""):
+    def create_out_socket(self, name: str, socket_type: str, tip: str="", panel: str = ""):
         """ Create an output socket
 
         > [!NOTE]
@@ -354,16 +356,17 @@ class TreeInterface:
         - name : socket name
         - socket_type: socket type
         - tip : description
+        - panel : panel name
 
         Returns
         -------
         - Socket
         """
-        #socket = self.get_out_socket(name, halt=False)
-        #if socket is not None:
-        #    return socket
+        parent = None
+        if panel != "":
+            parent = self.create_panel(panel)
 
-        return self.btree.interface.new_socket(name, description=tip, in_out='OUTPUT', socket_type=socket_type, parent=None)
+        return self.btree.interface.new_socket(name, description=tip, in_out='OUTPUT', socket_type=socket_type, parent=parent)
 
     # ----------------------------------------------------------------------------------------------------
     # Create an input socket

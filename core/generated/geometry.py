@@ -810,9 +810,6 @@ class Geometry(Socket):
         -------
         - Geometry
         """
-
-        print(">>>>> set material I'm here")
-
         node = Node('Set Material', sockets={'Geometry': self, 'Selection': self._sel, 'Material': material})
         self._jump(node._out)
         return self._domain_to_geometry
@@ -869,3 +866,4 @@ class Geometry(Socket):
         node = Node('Set Material Index', sockets={'Geometry': self, 'Selection': self._sel, 'Material Index': material_index})
         self._jump(node._out)
         return self._domain_to_geometry
+

@@ -928,7 +928,7 @@ class nd:
         return node._out
 
     @classmethod
-    def handle_type_selection(cls, handle_type='AUTO', mode={'RIGHT', 'LEFT'}):
+    def handle_type_selection(cls, handle_type='AUTO', mode={'LEFT', 'RIGHT'}):
         """ > Node <&Node Handle Type Selection>
 
         Arguments
@@ -1077,7 +1077,7 @@ class nd:
         return node._out
 
     @classmethod
-    def set_handle_type(cls, curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}):
+    def set_handle_type(cls, curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}):
         """ > Node <&Node Set Handle Type>
 
         Arguments

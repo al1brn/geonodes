@@ -197,11 +197,66 @@ class Socket(NodeCache, PropLocker):
     def _is_attribute(cls):
         return self.class_name in constants.ATTRIBUTE_CLASSES
 
+    @property
+    def _panel_name(self):
+        """ Return the name of the panel
+
+        Returns
+        -------
+        - str : default is ""
+        """
+        if not self.node._bnode.bl_idname in ['NodeGroupInput', 'NodeGroupOutput']:
+            return ""
+        panel = self.node._tree._interface.by_identifier(self._bsocket.identifier).parent
+        if panel is None:
+            return ""
+        else:
+            return panel.name
+
+    @classmethod
+    def Input(cls, name: str, panel: str | None = None):
+        """ Get an group input from its name and panel
+
+        This constructor is used to get an tree input socket which has been previously created.
+
+        This is typically used after connecting a group node to the tree inputs:
+
+        ``` python
+        with GeoNodes("Geometry Nodes"):
+            # Create an input socket
+
+            param = Float(1., "My Parameter")
+
+            # Call a group, the 'link_from' argument creates the necessary inputs in "Geometry Nodes"
+
+            node = Group("Function Group", link_from='TREE')
+
+            # Let's suppose that the 'Function Group' has created an Integer socket named "Int Parameter"
+            # If we need it, we can get it with
+
+            int_parameter =  Integer.Input("Int Parameter")
+        ```
+
+        Raises
+        ------
+        - NodeError if socket is not found
+
+        Arguments
+        ---------
+        - name : socket name
+        - panel : panel name
+
+        Returns
+        -------
+        - Socket
+        """
+        tree = Tree.current_tree
+        item = tree._interface.get_in_socket(name, panel, halt=True)
+        return cls(tree.input_node[item.identifier])
+
+
     def __str__(self):
         return f"<{self._class_name} {self.SOCKET_TYPE} [{self.node._bnode.name}].'{self._bsocket.name}'>"
-
-    #def __str__(self):
-    #    return f"<Socket {self.SOCKET_TYPE} [{self.node._bnode.name}].'{self._bsocket.name}'>"
 
     # ====================================================================================================
     # Socket type to data type conversion, depending on the nodes
@@ -248,13 +303,13 @@ class Socket(NodeCache, PropLocker):
         else:
             assert(False)
 
-    # ----- Math modul
+    # ----- Math module
 
-    @classmethod
-    @property
-    def math(cls):
-        from . import gnmath
-        return gnmath
+    #@classmethod
+    #@property
+    #def math(cls):
+    #    from . import gnmath
+    #    return gnmath
 
     # ====================================================================================================
     # Owning node
