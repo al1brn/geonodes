@@ -156,7 +156,7 @@ def demo():
 
         with Layout("Item 4"):
             item4 = Mesh(item3).transform(scale=(1, 1, -1))
-            item4.faces.flip()
+            item4.flip_faces()
 
             digit += item4
 

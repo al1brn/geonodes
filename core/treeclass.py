@@ -1994,7 +1994,7 @@ class Node:
                         #tree.input_node[io_socket.identifier].default_value = item.default_value
 
                     io_socket.description = item.description
-                    if hasattr(io_socket, 'min_value'):
+                    if hasattr(io_socket, 'min_value') and hasattr(item, 'min_value'):
                         io_socket.min_value = item.min_value
                         io_socket.max_value = item.max_value
 

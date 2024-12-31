@@ -253,29 +253,6 @@ class Face(Socket):
         self._jump(node._out)
         return self._domain_to_geometry
 
-    @classmethod
-    def distribute_points(cls, mesh=None, density=None, seed=None, distribute_method='RANDOM', use_legacy_normal=False):
-        """ > Class Method <&Node Distribute Points on Faces>
-
-        Information
-        -----------
-        - Socket 'Selection' : self[selection]
-
-        Arguments
-        ---------
-        - mesh (Geometry) : socket 'Mesh' (id: Mesh)
-        - density (Float) : socket 'Density' (id: Density)
-        - seed (Integer) : socket 'Seed' (id: Seed)
-        - distribute_method (str): parameter 'distribute_method' in ('RANDOM', 'POISSON')
-        - use_legacy_normal (bool): parameter 'use_legacy_normal'
-
-        Returns
-        -------
-        - Cloud [normal_ (Vector), rotation_ (Rotation)]
-        """
-        node = Node('Distribute Points on Faces', sockets={'Mesh': mesh, 'Selection': self._sel, 'Density': density, 'Seed': seed}, distribute_method=distribute_method, use_legacy_normal=use_legacy_normal)
-        return node._out
-
     def distribute_points_random(self, density=None, seed=None, use_legacy_normal=False):
         """ > Method <&Node Distribute Points on Faces>
 
@@ -384,25 +361,6 @@ class Face(Socket):
         """
         data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Face.evaluate_on_domain', 'value')
         node = Node('Evaluate on Domain', sockets={'Value': value}, data_type=data_type, domain='FACE')
-        return node._out
-
-    @classmethod
-    def flip(cls, mesh=None):
-        """ > Class Method <&Node Flip Faces>
-
-        Information
-        -----------
-        - Socket 'Selection' : self[selection]
-
-        Arguments
-        ---------
-        - mesh (Geometry) : socket 'Mesh' (id: Mesh)
-
-        Returns
-        -------
-        - Mesh
-        """
-        node = Node('Flip Faces', sockets={'Mesh': mesh, 'Selection': self._sel})
         return node._out
 
     @classmethod

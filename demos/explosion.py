@@ -35,12 +35,15 @@ def demo():
 
         # ----- Input sockets
 
-        frame0    = Integer(1, "Start Frame")
-        gravity   = Vector.Acceleration((0, 0, -9.86), "Gravity", tip="Gravity vector")
-        vis_fac   = Float(0, "Viscosity factor")
-        vis_exp   = Float(2, "Viscosity exponent")
-        speed_max = Float(2, "Maximum Speed", tip="Used to generate random speed is named attribute 'Speed' is not defined")
-        seed      = Integer(name="Seed")
+        with Panel("Gravity"):
+            #gravity   = Vector.Acceleration((0, 0, -9.86), "Gravity", tip="Gravity vector")
+            gravity   = Vector((0, 0, -9.86), "Gravity", tip="Gravity vector")
+            vis_fac   = Float(0, "Viscosity Factor")
+            vis_exp   = Float(2, "Viscosity Exponent")
+            speed_max = Float(2, "Maximum Speed", tip="Used to generate random speed is named attribute 'Speed' is not defined")
+
+        frame0 = Integer(1, "Start Frame")
+        seed   = Integer(name="Seed")
 
         # ----- Input geometry is supposed to be points
 
@@ -94,21 +97,25 @@ def demo():
 
     with GeoNodes("Explosion"):
 
-        frame0    = Integer(1, "Start frame")
-        gravity   = Vector.Acceleration((0, 0, -9.86), "Gravity", tip="Gravity vector")
-        vis_fac   = Float(0, "Viscosity factor")
-        vis_exp   = Float(2, "Viscosity exponent")
-        density   = Float(50, "Particles density", 0, 100)
-        max_speed = Float(5, "Maximum speed", 0)
-        use_coll  = Boolean(False, "Use collection for particles")
-        particles = Collection(None, "Particles collection")
-        part_size = Float(.1, "Particles size")
-        only_up   = Boolean(False, "Only up faces", tip="Put particles on faces with tangent in the upward direction")
-        seed      = Integer(0, "Seed")
+        #frame0    = Integer(1, "Start frame")
+        #gravity   = Vector.Acceleration((0, 0, -9.86), "Gravity", tip="Gravity vector")
+        #vis_fac   = Float(0, "Viscosity factor")
+        #vis_exp   = Float(2, "Viscosity exponent")
+
+        with Panel("Particles"):
+            density   = Float(50, "Particles density", 0, 100)
+            use_coll  = Boolean(False, "Use collection for particles")
+            particles = Collection(None, "Particles collection")
+            part_size = Float(.1, "Particles size")
+            only_up   = Boolean(False, "Only up faces", tip="Put particles on faces with tangent in the upward direction")
+            seed      = Integer(0, "Seed")
+
+        with Panel("Gravity"):
+            max_speed = Float(5, "Maximum Speed", 0)
 
         with Layout("Generate the points on the input mesh"):
             selection = (nd.normal @ (0, 0, 1)).greater_than(0).switch(-only_up, True)
-            cloud = Mesh().faces[selection].distribute_points(density=density, seed=seed)
+            cloud = Mesh()[selection].distribute_points_on_faces(density=density, seed=seed)
             normal = cloud.normal_
 
         with Layout("Random speeds, aligned with normal plus some noise"):
@@ -122,11 +129,13 @@ def demo():
         with Layout("Gravity loop"):
             simul = Group("Gravity",
                     {'Points': cloud,
-                     'Start Frame': frame0,
-                     'Gravity': gravity,
-                     'Viscosity factor': vis_fac,
-                     'Viscosity exponent': vis_exp,
-                    })
+                     #'Start Frame': frame0,
+                     #'Gravity': gravity,
+                     #'Viscosity factor': vis_fac,
+                     #'Viscosity exponent': vis_exp,
+                     #"Maximum Speed" : max_speed,
+                     'Seed' : seed.hash_value(119),
+                    }, link_from='TREE')
             cloud = Cloud(simul.geometry)
 
         with Layout("Instances coming from collection"):
@@ -139,7 +148,7 @@ def demo():
                 with Layout(f"{count} polys of {verts} vertices"):
 
                     poly  = Mesh.Circle(radius=part_size, vertices=verts, fill_type='NGON')
-                    polys = Cloud.Points(count=count).points.instance_on(poly)
+                    polys = Cloud.Points(count=count).instance_on(poly)
                     polys.insts.scale = Vector.Random(.5, 1.5, seed=200+i)
 
                     if i == 0:
@@ -156,7 +165,8 @@ def demo():
         parts = rand_parts.switch(use_coll, coll_parts)
 
         with Layout("Put particles on the points and rotate with Rotation attribute"):
-            insts = parts.on_points(cloud, pick_instance=True)
+            #insts = parts.on_points(cloud, pick_instance=True)
+            insts = cloud.instance_on(instance=parts, pick_instance=True)
             insts.insts.rotation = cloud.points.sample_index(Vector.Named("Rotation"), nd.index)
 
         with Layout("Final geometry"):
