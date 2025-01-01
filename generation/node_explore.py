@@ -802,9 +802,20 @@ class NodeInfo:
 
         for socket in in_sockets:
 
+            if socket.type == 'CUSTOM':
+                continue
+
             socket_name = socket.name if socket.label == ""  else socket.label
 
-            if (socket_name in ignore_sockets) or (socket.name in ignore_sockets) or socket.type == 'CUSTOM':
+            if (socket_name in ignore_sockets) or (socket.name in ignore_sockets):
+                args.append({
+                    'is_socket'   : True,
+                    'is_argument' : False,
+                    'is_self'     : False,
+                    'identifier'  : socket.identifier,
+                    'node_value'  : None,
+                    'info'        : f"Socket '{socket_name}' : ignored",
+                })
                 continue
 
             is_self     = False
@@ -1046,11 +1057,12 @@ class NodeInfo:
     # =============================================================================================================================
     # Static implementation
 
-    def static_code(self, gen: dict, name: str | None = None):
+    def static_code(self, gen: dict, module: str, name: str | None = None):
         """
         Arguments
         ---------
         - gen : key = class name -> : dict of function name -> source code
+        - module : module name
         - name : function name
         """
 
@@ -1100,18 +1112,20 @@ class NodeInfo:
         # ----------------------------------------------------------------------------------------------------
         # Done
 
-        return add_func(gen, 'static', name, s)
+        return add_func(gen, module, name, s)
 
     # =============================================================================================================================
     # Implement all static methods
 
     @classmethod
-    def gen_static_nodes(cls, gen, tree_type='GeometryNodes', verbose=False):
+    def gen_static_nodes(cls, gen, tree_type='GeometryNodeTree', verbose=False):
+
+        module = 'nd' if tree_type == 'GeometryNodeTree' else 'snd'
 
         def f(node_info, gen):
             if verbose:
                 print("gen_static_nodes:", node_info.bnode.name)
-            node_info.static_code(gen)
+            node_info.static_code(gen, module)
 
         cls.loop(f, gen, tree_type=tree_type)
 
@@ -1130,14 +1144,15 @@ class NodeInfo:
     # =============================================================================================================================
     # Constructor implementation
 
-    def constructor_code(self, gen: dict, name: str | None = None, class_name: str | None = None, **parameters):
+    def constructor_code(self, gen: dict, func_name: str | None = None, class_name: str | None = None, ignore_sockets: dict = {}, **parameters):
         """ Class constructor code
 
         Arguments
         ---------
         - gen : dict [class name -> dict[method name -> source code]]
-        - name : function name, from node name if None
+        - func_name : function name, from node name if None
         - class_name : class name, deduced from output socket type if None
+        - ignore_sockets : sockets to ignore
         - parameters : node parameters
         """
         # ----------------------------------------------------------------------------------------------------
@@ -1158,7 +1173,7 @@ class NodeInfo:
 
         if data_type_param is not None:
             for data_type_value in data_type_sockets['type_to_value'].values():
-                self.constructor_code(gen, name=name, **{data_type_param: data_type_value}, **parameters)
+                self.constructor_code(gen, func_name=func_name, **{data_type_param: data_type_value}, **parameters)
 
             return gen
 
@@ -1168,13 +1183,13 @@ class NodeInfo:
         if class_name is None:
             class_name = list(self.node_output().values())[0]
 
-        if name is None:
-            name = utils.CamelCase(self.bnode.name)
+        if func_name is None:
+            func_name = utils.CamelCase(self.bnode.name)
 
         # ----------------------------------------------------------------------------------------------------
         # Arguments
 
-        args = self.get_arguments(self_socket=None, expose_selection=True, only_enabled=True, **parameters)
+        args = self.get_arguments(self_socket=None, expose_selection=True, only_enabled=True, ignore_sockets=ignore_sockets, **parameters)
 
         is_prop = True
         for arg in args:
@@ -1190,12 +1205,12 @@ class NodeInfo:
         if is_prop:
             s += f"{_1}@property\n"
 
-        s += f"{_1}def {name}{self.signature('CLASS', args)}:\n"
+        s += f"{_1}def {func_name}{self.signature('CLASS', args)}:\n"
         s += self.documentation('CONSTRUCTOR', args, returns=class_name)
         s += f"{_2}node = Node{self.node_call(args)}\n"
         s += f"{_2}return cls(node._out)\n"
 
-        add_func(gen, class_name, name, s)
+        add_func(gen, class_name, func_name, s)
 
         # ----------------------------------------------------------------------------------------------------
         # Done
@@ -1208,7 +1223,7 @@ class NodeInfo:
     # =============================================================================================================================
     # Method implementation
 
-    def method_code(self, gen, func: str = 'method', name: str | None = None,
+    def method_code(self, gen, func: str = 'method', func_name: str | None = None,
         class_name: str | None = None, self_: str | None = None, is_class_method: bool = False,only_enabled: bool = True,
         domain_loop: bool = True, domain_param: str | None = None, domain_value : str | None = None,
         data_type_loop: bool = True, set_in_socket: str | None = None, ret: str | None = 'OUT', cache: bool = False,
@@ -1220,7 +1235,7 @@ class NodeInfo:
         ---------
         - gen : dict [class name -> dict[method name -> source code]]
         - func : type of implementation
-        - name : function name, from node name if None
+        - func_name : function name, from node name if None
         - class_name : class name, deduced from output socket type if None
         - self_ : name of the socket to use as self value
         - is_class_method : implement as class method
@@ -1239,6 +1254,20 @@ class NodeInfo:
         # Set user parameters
 
         mem_params = self.set_user_parameters(**parameters)
+
+        # ----------------------------------------------------------------------------------------------------
+        # Shader Node
+        #
+        # The name ends with BSDF : this is a Constructor
+
+        if self.btree.bl_idname == 'ShaderNodeTree':
+            if self.bnode.name.endswith('BSDF'):
+                DEBUG = True
+                func = 'C'
+                if class_name is None:
+                    class_name = 'Shader'
+                if func_name is None:
+                    func_name = utils.CamelCase(self.bnode.name[:-5])
 
         # ----------------------------------------------------------------------------------------------------
         # Has a domain parameter
@@ -1263,7 +1292,7 @@ class NodeInfo:
             if (domain_param is not None) and (domain_param not in parameters):
 
                 for domain_value in self.enum_params[domain_param]:
-                    self.method_code(gen, func=func, name=name,
+                    self.method_code(gen, func=func, func_name=func_name,
                         class_name=class_name, self_=self_, is_class_method=is_class_method, only_enabled=only_enabled,
                         domain_value=domain_value,
                         data_type_loop=data_type_loop, domain_param=domain_value, ret=ret, cache=cache,
@@ -1318,7 +1347,7 @@ class NodeInfo:
 
         if data_type_loop and (data_type is not None) and (self_ in data_type_sockets['in_sockets']):
             for value in self.enum_params[data_type]:
-                self.method_code(gen, func=func, name=name,
+                self.method_code(gen, func=func, func_name=func_name,
                     class_name=class_name, self_=self_, is_class_method=is_class_method, only_enabled=only_enabled,
                     domain_loop=False, domain_value=domain_value, ret=ret, cache=cache, **{data_type: value}, check_existing=check_existing, **parameters)
 
@@ -1361,8 +1390,18 @@ class NodeInfo:
             # it is a class method and there is not self socket
             if self_ is not None:
                 self_class_name = self.get_socket_class_name(self.bnode.inputs[self_])
-                if self_class_name != class_name:
-                    is_class_method = True
+
+                # ----- Geometry
+                if self.bnode.inputs[self_].type == 'GEOMETRY':
+                    if (self_class_name not in constants.GEOMETRY_CLASSES) and (self_class_name not in constants.GEOMETRY_CLASSES):
+                        is_class_method = True
+
+                # ----- Other than geometry
+                else:
+                    if self_class_name != class_name:
+                        is_class_method = True
+
+                if is_class_method:
                     self_ = None
 
         # ----------------------------------------------------------------------------------------------------
@@ -1435,10 +1474,10 @@ class NodeInfo:
         # - Jump if the geometries are the same
         # - Get if it returns a specific output socket and no free input arguments
         # Else
-        # - get if one single output
+        # - get if one single output and no argument other than self
 
         is_jump = False
-        is_get  = func == 'get'
+        is_get  = (func == 'get') and (free_args_count == 0)
         if is_geometry:
             if len(self.bnode.outputs):
                 if self.bnode.outputs[0].type == 'GEOMETRY':
@@ -1460,8 +1499,8 @@ class NodeInfo:
         # ----------------------------------------------------------------------------------------------------
         # Function name
 
-        if name is None:
-            name = utils.socket_name(self.bnode.name)
+        if func_name is None:
+            func_name = utils.socket_name(self.bnode.name)
 
         # ----------------------------------------------------------------------------------------------------
         # Let's generated the source code
@@ -1472,7 +1511,7 @@ class NodeInfo:
         if is_get:
             s += f"{_1}@property\n"
         if func == 'set':
-            s += f"{_1}@{name}.setter\n"
+            s += f"{_1}@{func_name}.setter\n"
 
         # ----- header
 
@@ -1480,7 +1519,7 @@ class NodeInfo:
         if is_class_method:
             method = 'CLASS'
 
-        s += f"{_1}def {name}{self.signature(method, args)}:\n"
+        s += f"{_1}def {func_name}{self.signature(method, args)}:\n"
 
         # ----- Documentation
 
@@ -1493,7 +1532,7 @@ class NodeInfo:
 
         if data_type is not None:
             driving_arg_name = utils.socket_name(data_type_sockets['in_sockets'][0])
-            s += f"{_2}{data_type} = utils.get_argument_data_type({driving_arg_name}, {data_type_sockets['type_to_value']}, '{class_name}.{name}', '{driving_arg_name}')\n"
+            s += f"{_2}{data_type} = utils.get_argument_data_type({driving_arg_name}, {data_type_sockets['type_to_value']}, '{class_name}.{func_name}', '{driving_arg_name}')\n"
 
         # ----- Node call
 
@@ -1529,7 +1568,7 @@ class NodeInfo:
         else:
             s += f"{_2}return node.{ret}\n"
 
-        add_func(gen, class_name, name, s, halt=check_existing)
+        add_func(gen, class_name, func_name, s, halt=check_existing)
 
         # ----------------------------------------------------------------------------------------------------
         # Done
@@ -1541,13 +1580,13 @@ class NodeInfo:
     # =============================================================================================================================
     # Method implementation
 
-    def global_code(self, gen, module: str, name: str | None = None, ret: str = 'OUT', **parameters):
+    def global_code(self, gen, module: str, func_name: str | None = None, ret: str = 'OUT', **parameters):
         """ Method code
 
         Arguments
         ---------
         - gen : dict [class name -> dict[method name -> source code]]
-        - name : function name, from node name if None
+        - func_name : function name, from node name if None
         - module : module name
         - ret : type of return
         - parameters : node parameters
@@ -1560,8 +1599,8 @@ class NodeInfo:
         # ----------------------------------------------------------------------------------------------------
         # Function name
 
-        if name is None:
-            name = utils.socket_name(self.bnode.name)
+        if func_name is None:
+            func_name = utils.socket_name(self.bnode.name)
 
         # ----------------------------------------------------------------------------------------------------
         # Output nodes
@@ -1583,7 +1622,7 @@ class NodeInfo:
 
         # ----- Method header
 
-        s = f"def {name}{self.signature('FUNCTION', args)}:\n"
+        s = f"def {func_name}{self.signature('FUNCTION', args)}:\n"
 
         # ----- Documentation
 
@@ -1608,7 +1647,7 @@ class NodeInfo:
             a = [f"node.{socket_name}" for socket_name in out.keys()]
             s += f"{_1}return ({', '.join(a)})\n"
 
-        add_func(gen, module, name, s)
+        add_func(gen, module, func_name, s)
 
         # ----------------------------------------------------------------------------------------------------
         # Done
@@ -1714,7 +1753,8 @@ class NodeInfo:
 
         if func == 'get_out_loop':
 
-            self.method_code(gen, func='get', name=func_name, cache=True, ret='NODE', **kwargs, **parameters)
+            # Return the node
+            self.method_code(gen, func='get', func_name=func_name, cache=True, ret='NODE', **kwargs, **parameters)
 
             mem_params = self.set_user_parameters(**parameters)
 
@@ -1722,19 +1762,19 @@ class NodeInfo:
                 ret = utils.socket_name(socket_name)
                 fname = rename.get(ret, ret)
                 fname = prefix + fname + suffix
-                self.method_code(gen, func='get', name=fname, cache=True, ret=ret, **kwargs, **parameters)
+                self.method_code(gen, func='get', func_name=fname, cache=True, ret=ret, **kwargs, **parameters)
 
             self.set_user_parameters(**mem_params)
 
         # ----- Constructor
 
         elif func in ('C', 'Constructor'):
-            self.constructor_code(gen, name=func_name, **kwargs, **parameters)
+            self.constructor_code(gen, func_name=func_name, **kwargs, **parameters)
 
         # ----- Method
 
         elif func in ('m', 'method', 'Method', 'get'):
-            self.method_code(gen, func=func, name=func_name, **kwargs, **parameters)
+            self.method_code(gen, func=func, func_name=func_name, **kwargs, **parameters)
 
         # ----- Operation
 
@@ -1747,7 +1787,7 @@ class NodeInfo:
                 if fname in rename:
                     fname = rename[fname]
 
-                self.method_code(gen, func='m', name=fname, **kwargs, **{operation_param: op_value}, **parameters)
+                self.method_code(gen, func='m', func_name=fname, **kwargs, **{operation_param: op_value}, **parameters)
 
             self.set_user_parameters(**mem_params)
 
@@ -1760,7 +1800,7 @@ class NodeInfo:
                 if fname in rename:
                     fname = rename[fname]
 
-                self.global_code(gen, 'gnmath', name=fname, **kwargs, **{operation_param: op_value}, **parameters)
+                self.global_code(gen, 'gnmath', func_name=fname, **kwargs, **{operation_param: op_value}, **parameters)
 
         return gen
 
@@ -1786,7 +1826,7 @@ class NodeInfo:
         # Setter
 
         set_node = cls(tree, setter)
-        g = set_node.method_code({}, func='set', name=func_name, set_in_socket=in_socket, **setter_params)
+        g = set_node.method_code({}, func='set', func_name=func_name, set_in_socket=in_socket, **setter_params)
 
         # ----------------------------------------------------------------------------------------------------
         # Merge for all the class names
@@ -2059,6 +2099,10 @@ def build_data_types_dict():
 # Build the dictionnary of node name -> bl_idname
 
 def build_node_names_dict(tree_type='GeometryNodeTree'):
+    """ Build the NODE_NAMES dictionary: tree type -> node name -> bl_idname
+
+    To be copied in constants
+    """
 
     def f(node_info, nodes):
         nodes[node_info.bnode.name] = node_info.bnode.bl_idname

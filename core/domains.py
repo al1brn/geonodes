@@ -53,7 +53,7 @@ class Vertex(Point, generated.Vertex):
 class SplinePoint(Point, generated.SplinePoint):
     pass
 
-class CloudPoint(Point):
+class CloudPoint(Point, generated.CloudPoint):
     pass
 
 # ====================================================================================================

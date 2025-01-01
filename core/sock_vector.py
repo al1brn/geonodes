@@ -169,7 +169,7 @@ class Vector(generated.Vector):
     # ----- Neg
 
     def __neg__(self):
-        return self.scale(self, -1)
+        return self.scale(-1)
 
     def __abs__(self):
         return self.abs
@@ -206,7 +206,7 @@ class Vector(generated.Vector):
     def __rmul__(self, other):
         if utils.is_value_like(other):
             return self.scale(other)
-        return self.multiply(self)
+        return self.multiply(other)
 
     def __imul__(self, other):
         if utils.is_value_like(other):

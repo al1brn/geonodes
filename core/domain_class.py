@@ -175,7 +175,7 @@ class Domain(GeoBase, NodeCache, PropLocker):
         attr_name = utils.get_attr_name(name)
         if attr_name is None:
             raise NodeError(f"Domain '{type(self).__name__}' doesn't have attribute named '{name}'", keyword=name)
-            raise AttributeError(f"Domain '{type(self).__name__}' doesn't have attribute named '{name}'")
+            #raise AttributeError(f"Domain '{type(self).__name__}' doesn't have attribute named '{name}'")
 
         return self._geo._tree.get_named_attribute(prop_name=name)
 
@@ -190,6 +190,8 @@ class Domain(GeoBase, NodeCache, PropLocker):
     # Sample index
 
     def __call__(self, value, index=None):
+
+        from geonodes import nd
 
         if index is None:
             index = nd.index

@@ -43,11 +43,11 @@ class Layer(Socket):
 
         Returns
         -------
-        - Float [median_ (Float), sum_ (Float), min_ (Float), max_ (Float), range_ (Float), standard_deviation_ (Float), variance_ (Float)]
+        - node [mean (Float), median (Float), sum (Float), min (Float), max (Float), range (Float), standard_deviation (Float), variance (Float)]
         """
         data_type = utils.get_argument_data_type(attribute, {'VALUE': 'FLOAT', 'VECTOR': 'FLOAT_VECTOR'}, 'Layer.attribute_statistic', 'attribute')
         node = Node('Attribute Statistic', sockets={'Geometry': self, 'Selection': self._sel, 'Attribute': attribute}, data_type=data_type, domain='LAYER')
-        return node._out
+        return node
 
     def delete_geometry_all(self):
         """ > Jump Method <&Node Delete Geometry>

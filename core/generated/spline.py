@@ -43,11 +43,11 @@ class Spline(Socket):
 
         Returns
         -------
-        - Float [median_ (Float), sum_ (Float), min_ (Float), max_ (Float), range_ (Float), standard_deviation_ (Float), variance_ (Float)]
+        - node [mean (Float), median (Float), sum (Float), min (Float), max (Float), range (Float), standard_deviation (Float), variance (Float)]
         """
         data_type = utils.get_argument_data_type(attribute, {'VALUE': 'FLOAT', 'VECTOR': 'FLOAT_VECTOR'}, 'Spline.attribute_statistic', 'attribute')
         node = Node('Attribute Statistic', sockets={'Geometry': self, 'Selection': self._sel, 'Attribute': attribute}, data_type=data_type, domain='CURVE')
-        return node._out
+        return node
 
     def delete_geometry_all(self):
         """ > Jump Method <&Node Delete Geometry>
@@ -264,9 +264,8 @@ class Spline(Socket):
         return node._out
 
     @classmethod
-    @property
     def points_of_curve(cls, curve_index=None, weights=None, sort_index=None):
-        """ > Property Get <&Node Points of Curve>
+        """ > Class Method <&Node Points of Curve>
 
         Arguments
         ---------
@@ -282,9 +281,8 @@ class Spline(Socket):
         return node
 
     @classmethod
-    @property
     def point_index(cls, curve_index=None, weights=None, sort_index=None):
-        """ > Property Get <&Node Points of Curve>
+        """ > Class Method <&Node Points of Curve>
 
         Arguments
         ---------
@@ -300,9 +298,8 @@ class Spline(Socket):
         return node.point_index
 
     @classmethod
-    @property
     def points_total(cls, curve_index=None, weights=None, sort_index=None):
-        """ > Property Get <&Node Points of Curve>
+        """ > Class Method <&Node Points of Curve>
 
         Arguments
         ---------
@@ -567,6 +564,33 @@ class Spline(Socket):
         data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Spline.viewer', 'value')
         node = Node('Viewer', sockets={'Geometry': self, 'Value': value}, data_type=data_type, domain='CURVE')
         return
+
+    @property
+    def material_index(self):
+        """ Property get node <Node Set Material Index>
+        """
+        return Node('Material Index', sockets={})._out
+
+    @material_index.setter
+    def material_index(self, material_index=None):
+        """ > Jump Method <&Node Set Material Index>
+
+        Information
+        -----------
+        - Socket 'Geometry' : self
+        - Socket 'Selection' : self[selection]
+
+        Arguments
+        ---------
+        - material_index (Integer) : socket 'Material Index' (id: Material Index)
+
+        Returns
+        -------
+        - Geometry
+        """
+        node = Node('Set Material Index', sockets={'Geometry': self, 'Selection': self._sel, 'Material Index': material_index})
+        self._jump(node._out)
+        return self._domain_to_geometry
 
     @property
     def tilt(self):

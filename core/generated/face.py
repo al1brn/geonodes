@@ -43,16 +43,15 @@ class Face(Socket):
 
         Returns
         -------
-        - Float [median_ (Float), sum_ (Float), min_ (Float), max_ (Float), range_ (Float), standard_deviation_ (Float), variance_ (Float)]
+        - node [mean (Float), median (Float), sum (Float), min (Float), max (Float), range (Float), standard_deviation (Float), variance (Float)]
         """
         data_type = utils.get_argument_data_type(attribute, {'VALUE': 'FLOAT', 'VECTOR': 'FLOAT_VECTOR'}, 'Face.attribute_statistic', 'attribute')
         node = Node('Attribute Statistic', sockets={'Geometry': self, 'Selection': self._sel, 'Attribute': attribute}, data_type=data_type, domain='FACE')
-        return node._out
+        return node
 
     @classmethod
-    @property
     def corners(cls, face_index=None, weights=None, sort_index=None):
-        """ > Property Get <&Node Corners of Face>
+        """ > Class Method <&Node Corners of Face>
 
         Arguments
         ---------
@@ -68,9 +67,8 @@ class Face(Socket):
         return node
 
     @classmethod
-    @property
     def corner_index(cls, face_index=None, weights=None, sort_index=None):
-        """ > Property Get <&Node Corners of Face>
+        """ > Class Method <&Node Corners of Face>
 
         Arguments
         ---------
@@ -86,9 +84,8 @@ class Face(Socket):
         return node.corner_index
 
     @classmethod
-    @property
     def corners_total(cls, face_index=None, weights=None, sort_index=None):
-        """ > Property Get <&Node Corners of Face>
+        """ > Class Method <&Node Corners of Face>
 
         Arguments
         ---------
@@ -438,6 +435,27 @@ class Face(Socket):
         node = Node('Normal', sockets={})
         return node._out
 
+    def to_points(self, position=None, radius=None):
+        """ > Method <&Node Mesh to Points>
+
+        Information
+        -----------
+        - Socket 'Mesh' : self
+        - Socket 'Selection' : self[selection]
+        - Parameter 'mode' : 'FACES'
+
+        Arguments
+        ---------
+        - position (Vector) : socket 'Position' (id: Position)
+        - radius (Float) : socket 'Radius' (id: Radius)
+
+        Returns
+        -------
+        - Cloud
+        """
+        node = Node('Mesh to Points', sockets={'Mesh': self, 'Selection': self._sel, 'Position': position, 'Radius': radius}, mode='FACES')
+        return node._out
+
     def sample_index(self, value=None, index=None, clamp=False):
         """ > Method <&Node Sample Index>
 
@@ -729,6 +747,60 @@ class Face(Socket):
         data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Face.viewer', 'value')
         node = Node('Viewer', sockets={'Geometry': self, 'Value': value}, data_type=data_type, domain='FACE')
         return
+
+    @property
+    def material(self):
+        """ Write only property for node <Node Set Material>
+        """
+        raise NodeError('Property Face.material is write only.')
+
+    @material.setter
+    def material(self, material=None):
+        """ > Jump Method <&Node Set Material>
+
+        Information
+        -----------
+        - Socket 'Geometry' : self
+        - Socket 'Selection' : self[selection]
+
+        Arguments
+        ---------
+        - material (Material) : socket 'Material' (id: Material)
+
+        Returns
+        -------
+        - Geometry
+        """
+        node = Node('Set Material', sockets={'Geometry': self, 'Selection': self._sel, 'Material': material})
+        self._jump(node._out)
+        return self._domain_to_geometry
+
+    @property
+    def material_index(self):
+        """ Property get node <Node Set Material Index>
+        """
+        return Node('Material Index', sockets={})._out
+
+    @material_index.setter
+    def material_index(self, material_index=None):
+        """ > Jump Method <&Node Set Material Index>
+
+        Information
+        -----------
+        - Socket 'Geometry' : self
+        - Socket 'Selection' : self[selection]
+
+        Arguments
+        ---------
+        - material_index (Integer) : socket 'Material Index' (id: Material Index)
+
+        Returns
+        -------
+        - Geometry
+        """
+        node = Node('Set Material Index', sockets={'Geometry': self, 'Selection': self._sel, 'Material Index': material_index})
+        self._jump(node._out)
+        return self._domain_to_geometry
 
     @property
     def shade_smooth(self):

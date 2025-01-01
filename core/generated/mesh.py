@@ -5,24 +5,20 @@ from .. scripterror import NodeError
 
 class Mesh(Socket):
 
-    @classmethod
     @property
-    def domain_size(cls, geometry=None):
+    def domain_size(self):
         """ > Property Get <&Node Domain Size>
 
         Information
         -----------
+        - Socket 'Geometry' : self
         - Parameter 'component' : 'MESH'
-
-        Arguments
-        ---------
-        - geometry (Geometry) : socket 'Geometry' (id: Geometry)
 
         Returns
         -------
         - node [point_count (Integer), edge_count (Integer), face_count (Integer), face_corner_count (Integer)]
         """
-        node = Node('Domain Size', sockets={'Geometry': geometry}, component='MESH')
+        node = self._cache('Domain Size', sockets={'Geometry': self}, component='MESH')
         return node
 
     @classmethod
@@ -697,7 +693,7 @@ class Mesh(Socket):
         return self._domain_to_geometry
 
     @classmethod
-    def INTERSECT(cls, *mesh, self_intersection=None, hole_tolerant=None, solver='FLOAT'):
+    def Intersect(cls, *mesh, self_intersection=None, hole_tolerant=None, solver='FLOAT'):
         """ > Constructor <&Node Mesh Boolean>
 
         Information
@@ -719,7 +715,7 @@ class Mesh(Socket):
         return cls(node._out)
 
     @classmethod
-    def UNION(cls, *mesh, self_intersection=None, hole_tolerant=None, solver='FLOAT'):
+    def Union(cls, *mesh, self_intersection=None, hole_tolerant=None, solver='FLOAT'):
         """ > Constructor <&Node Mesh Boolean>
 
         Information
@@ -741,7 +737,7 @@ class Mesh(Socket):
         return cls(node._out)
 
     @classmethod
-    def DIFFERENCE(cls, *mesh_2, mesh_1=None, self_intersection=None, hole_tolerant=None, solver='FLOAT'):
+    def Difference(cls, *mesh_2, mesh_1=None, self_intersection=None, hole_tolerant=None, solver='FLOAT'):
         """ > Constructor <&Node Mesh Boolean>
 
         Information
@@ -889,7 +885,7 @@ class Mesh(Socket):
         return cls(node._out)
 
     @classmethod
-    def LineOFFSET(cls, count=None, start_location=None, offset=None, count_mode='TOTAL'):
+    def LineOffset(cls, count=None, start_location=None, offset=None, count_mode='TOTAL'):
         """ > Constructor <&Node Mesh Line>
 
         Information
@@ -911,7 +907,7 @@ class Mesh(Socket):
         return cls(node._out)
 
     @classmethod
-    def LineEND_POINTS(cls, count=None, start_location=None, end_location=None, count_mode='TOTAL'):
+    def LineEndPoints(cls, count=None, start_location=None, end_location=None, count_mode='TOTAL'):
         """ > Constructor <&Node Mesh Line>
 
         Information

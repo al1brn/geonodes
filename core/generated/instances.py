@@ -5,24 +5,20 @@ from .. scripterror import NodeError
 
 class Instances(Socket):
 
-    @classmethod
     @property
-    def domain_size(cls, geometry=None):
+    def domain_size(self):
         """ > Property Get <&Node Domain Size>
 
         Information
         -----------
+        - Socket 'Geometry' : self
         - Parameter 'component' : 'INSTANCES'
-
-        Arguments
-        ---------
-        - geometry (Geometry) : socket 'Geometry' (id: Geometry)
 
         Returns
         -------
         - node [instance_count (Integer)]
         """
-        node = Node('Domain Size', sockets={'Geometry': geometry}, component='INSTANCES')
+        node = self._cache('Domain Size', sockets={'Geometry': self}, component='INSTANCES')
         return node
 
     @classmethod

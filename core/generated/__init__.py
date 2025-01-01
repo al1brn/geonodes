@@ -27,3 +27,7 @@ from .volume import Volume
 from .image import Image
 from .object import Object
 from .texture import Texture
+from .cloudpoint import CloudPoint
+from .static_nd import nd
+from .shader import Shader
+from .static_snd import snd

@@ -43,11 +43,11 @@ class Point(Socket):
 
         Returns
         -------
-        - Float [median_ (Float), sum_ (Float), min_ (Float), max_ (Float), range_ (Float), standard_deviation_ (Float), variance_ (Float)]
+        - node [mean (Float), median (Float), sum (Float), min (Float), max (Float), range (Float), standard_deviation (Float), variance (Float)]
         """
         data_type = utils.get_argument_data_type(attribute, {'VALUE': 'FLOAT', 'VECTOR': 'FLOAT_VECTOR'}, 'Point.attribute_statistic', 'attribute')
         node = Node('Attribute Statistic', sockets={'Geometry': self, 'Selection': self._sel, 'Attribute': attribute}, data_type=data_type, domain='POINT')
-        return node._out
+        return node
 
     def delete_geometry_all(self):
         """ > Jump Method <&Node Delete Geometry>
@@ -483,4 +483,60 @@ class Point(Socket):
         data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Point.viewer', 'value')
         node = Node('Viewer', sockets={'Geometry': self, 'Value': value}, data_type=data_type, domain='POINT')
         return
+
+    @property
+    def position(self):
+        """ Property get node <Node Set Position>
+        """
+        return Node('Position', sockets={})._out
+
+    @position.setter
+    def position(self, position=None):
+        """ > Jump Method <&Node Set Position>
+
+        Information
+        -----------
+        - Socket 'Geometry' : self
+        - Socket 'Selection' : self[selection]
+        - Socket 'Offset' : ignored
+
+        Arguments
+        ---------
+        - position (Vector) : socket 'Position' (id: Position)
+
+        Returns
+        -------
+        - Geometry
+        """
+        node = Node('Set Position', sockets={'Geometry': self, 'Selection': self._sel, 'Position': position, 'Offset': None})
+        self._jump(node._out)
+        return self._domain_to_geometry
+
+    @property
+    def offset(self):
+        """ Write only property for node <Node Set Position>
+        """
+        raise NodeError('Property Point.offset is write only.')
+
+    @offset.setter
+    def offset(self, offset=None):
+        """ > Jump Method <&Node Set Position>
+
+        Information
+        -----------
+        - Socket 'Geometry' : self
+        - Socket 'Selection' : self[selection]
+        - Socket 'Position' : ignored
+
+        Arguments
+        ---------
+        - offset (Vector) : socket 'Offset' (id: Offset)
+
+        Returns
+        -------
+        - Geometry
+        """
+        node = Node('Set Position', sockets={'Geometry': self, 'Selection': self._sel, 'Position': None, 'Offset': offset})
+        self._jump(node._out)
+        return self._domain_to_geometry
 

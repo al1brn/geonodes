@@ -1593,3 +1593,272 @@ class Float(Socket):
         node = Node('White Noise Texture', sockets={'Vector': vector}, noise_dimensions=noise_dimensions)
         return cls(node._out)
 
+    def bevel(self, normal=None, samples=4):
+        """ > Method <&ShaderNode Bevel>
+
+        Information
+        -----------
+        - Socket 'Radius' : self
+
+        Arguments
+        ---------
+        - normal (Vector) : socket 'Normal' (id: Normal)
+        - samples (int): parameter 'samples'
+
+        Returns
+        -------
+        - Vector
+        """
+        node = Node('Bevel', sockets={'Radius': self, 'Normal': normal}, samples=samples)
+        return node._out
+
+    def bump(self, distance=None, height=None, normal=None, invert=False):
+        """ > Method <&ShaderNode Bump>
+
+        Information
+        -----------
+        - Socket 'Strength' : self
+
+        Arguments
+        ---------
+        - distance (Float) : socket 'Distance' (id: Distance)
+        - height (Float) : socket 'Height' (id: Height)
+        - normal (Vector) : socket 'Normal' (id: Normal)
+        - invert (bool): parameter 'invert'
+
+        Returns
+        -------
+        - Vector
+        """
+        node = Node('Bump', sockets={'Strength': self, 'Distance': distance, 'Height': height, 'Normal': normal}, invert=invert)
+        return node._out
+
+    def combine_color_RGB(self, green=None, blue=None):
+        """ > Method <&ShaderNode Combine Color>
+
+        Information
+        -----------
+        - Socket 'Red' : self
+        - Parameter 'mode' : 'RGB'
+
+        Arguments
+        ---------
+        - green (Float) : socket 'Green' (id: Green)
+        - blue (Float) : socket 'Blue' (id: Blue)
+
+        Returns
+        -------
+        - Color
+        """
+        node = Node('Combine Color', sockets={'Red': self, 'Green': green, 'Blue': blue}, mode='RGB')
+        return node._out
+
+    def combine_color_HSV(self, saturation=None, value=None):
+        """ > Method <&ShaderNode Combine Color>
+
+        Information
+        -----------
+        - Socket 'Hue' : self
+        - Parameter 'mode' : 'HSV'
+
+        Arguments
+        ---------
+        - saturation (Float) : socket 'Saturation' (id: Green)
+        - value (Float) : socket 'Value' (id: Blue)
+
+        Returns
+        -------
+        - Color
+        """
+        node = Node('Combine Color', sockets={'Red': self, 'Green': saturation, 'Blue': value}, mode='HSV')
+        return node._out
+
+    def combine_color_HSL(self, saturation=None, lightness=None):
+        """ > Method <&ShaderNode Combine Color>
+
+        Information
+        -----------
+        - Socket 'Hue' : self
+        - Parameter 'mode' : 'HSL'
+
+        Arguments
+        ---------
+        - saturation (Float) : socket 'Saturation' (id: Green)
+        - lightness (Float) : socket 'Lightness' (id: Blue)
+
+        Returns
+        -------
+        - Color
+        """
+        node = Node('Combine Color', sockets={'Red': self, 'Green': saturation, 'Blue': lightness}, mode='HSL')
+        return node._out
+
+    def combine_color(self, green=None, blue=None, mode='RGB'):
+        """ > Method <&ShaderNode Combine Color>
+
+        Information
+        -----------
+        - Socket 'Red' : self
+
+        Arguments
+        ---------
+        - green (Float) : socket 'Green' (id: Green)
+        - blue (Float) : socket 'Blue' (id: Blue)
+        - mode (str): parameter 'mode' in ('RGB', 'HSV', 'HSL')
+
+        Returns
+        -------
+        - Color
+        """
+        node = Node('Combine Color', sockets={'Red': self, 'Green': green, 'Blue': blue}, mode=mode)
+        return node._out
+
+    def displacement(self, midlevel=None, scale=None, normal=None, space='OBJECT'):
+        """ > Method <&ShaderNode Displacement>
+
+        Information
+        -----------
+        - Socket 'Height' : self
+
+        Arguments
+        ---------
+        - midlevel (Float) : socket 'Midlevel' (id: Midlevel)
+        - scale (Float) : socket 'Scale' (id: Scale)
+        - normal (Vector) : socket 'Normal' (id: Normal)
+        - space (str): parameter 'space' in ('OBJECT', 'WORLD')
+
+        Returns
+        -------
+        - Vector
+        """
+        node = Node('Displacement', sockets={'Height': self, 'Midlevel': midlevel, 'Scale': scale, 'Normal': normal}, space=space)
+        return node._out
+
+    def fresnel(self, normal=None):
+        """ > Method <&ShaderNode Fresnel>
+
+        Information
+        -----------
+        - Socket 'IOR' : self
+
+        Arguments
+        ---------
+        - normal (Vector) : socket 'Normal' (id: Normal)
+
+        Returns
+        -------
+        - Float
+        """
+        node = Node('Fresnel', sockets={'IOR': self, 'Normal': normal})
+        return node._out
+
+    def hue_saturation_value(self, saturation=None, value=None, color=None, fac=None):
+        """ > Method <&ShaderNode Hue/Saturation/Value>
+
+        Information
+        -----------
+        - Socket 'Hue' : self
+
+        Arguments
+        ---------
+        - saturation (Float) : socket 'Saturation' (id: Saturation)
+        - value (Float) : socket 'Value' (id: Value)
+        - color (Color) : socket 'Color' (id: Color)
+        - fac (Float) : socket 'Fac' (id: Fac)
+
+        Returns
+        -------
+        - Color
+        """
+        node = Node('Hue/Saturation/Value', sockets={'Hue': self, 'Saturation': saturation, 'Value': value, 'Color': color, 'Fac': fac})
+        return node._out
+
+    def layer_weight(self, normal=None):
+        """ > Method <&ShaderNode Layer Weight>
+
+        Information
+        -----------
+        - Socket 'Blend' : self
+
+        Arguments
+        ---------
+        - normal (Vector) : socket 'Normal' (id: Normal)
+
+        Returns
+        -------
+        - Float [facing_ (Float)]
+        """
+        node = Node('Layer Weight', sockets={'Blend': self, 'Normal': normal})
+        return node._out
+
+    def light_falloff(self, smooth=None):
+        """ > Method <&ShaderNode Light Falloff>
+
+        Information
+        -----------
+        - Socket 'Strength' : self
+
+        Arguments
+        ---------
+        - smooth (Float) : socket 'Smooth' (id: Smooth)
+
+        Returns
+        -------
+        - Float [linear_ (Float), constant_ (Float)]
+        """
+        node = Node('Light Falloff', sockets={'Strength': self, 'Smooth': smooth})
+        return node._out
+
+    def normal_map(self, color=None, space='TANGENT', uv_map=''):
+        """ > Method <&ShaderNode Normal Map>
+
+        Information
+        -----------
+        - Socket 'Strength' : self
+
+        Arguments
+        ---------
+        - color (Color) : socket 'Color' (id: Color)
+        - space (str): parameter 'space' in ('TANGENT', 'OBJECT', 'WORLD', 'BLENDER_OBJECT', 'BLENDER_WORLD')
+        - uv_map (str): parameter 'uv_map'
+
+        Returns
+        -------
+        - Vector
+        """
+        node = Node('Normal Map', sockets={'Strength': self, 'Color': color}, space=space, uv_map=uv_map)
+        return node._out
+
+    @property
+    def wavelength(self):
+        """ > Property Get <&ShaderNode Wavelength>
+
+        Information
+        -----------
+        - Socket 'Wavelength' : self
+
+        Returns
+        -------
+        - Color
+        """
+        node = Node('Wavelength', sockets={'Wavelength': self})
+        return node._out
+
+    def wireframe(self, use_pixel_size=False):
+        """ > Method <&ShaderNode Wireframe>
+
+        Information
+        -----------
+        - Socket 'Size' : self
+
+        Arguments
+        ---------
+        - use_pixel_size (bool): parameter 'use_pixel_size'
+
+        Returns
+        -------
+        - Float
+        """
+        node = Node('Wireframe', sockets={'Size': self}, use_pixel_size=use_pixel_size)
+        return node._out
+

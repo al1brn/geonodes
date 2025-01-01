@@ -1084,3 +1084,223 @@ class Vector(Socket):
         node = Node('Vector Rotate', sockets={'Vector': self, 'Center': center, 'Rotation': rotation}, invert=invert, rotation_type='EULER_XYZ')
         return node._out
 
+    def mapping(self, location=None, rotation=None, scale=None, vector_type='POINT'):
+        """ > Method <&ShaderNode Mapping>
+
+        Information
+        -----------
+        - Socket 'Vector' : self
+
+        Arguments
+        ---------
+        - location (Vector) : socket 'Location' (id: Location)
+        - rotation (Vector) : socket 'Rotation' (id: Rotation)
+        - scale (Vector) : socket 'Scale' (id: Scale)
+        - vector_type (str): parameter 'vector_type' in ('POINT', 'TEXTURE', 'VECTOR', 'NORMAL')
+
+        Returns
+        -------
+        - Vector
+        """
+        node = Node('Mapping', sockets={'Vector': self, 'Location': location, 'Rotation': rotation, 'Scale': scale}, vector_type=vector_type)
+        return node._out
+
+    def normal(self):
+        """ > Method <&ShaderNode Normal>
+
+        Information
+        -----------
+        - Socket 'Normal' : self
+
+        Returns
+        -------
+        - Vector [dot_ (Float)]
+        """
+        node = Node('Normal', sockets={'Normal': self})
+        return node._out
+
+    @classmethod
+    def Tangent(cls, axis='Z', direction_type='RADIAL', uv_map=''):
+        """ > Constructor <&ShaderNode Tangent>
+
+        Arguments
+        ---------
+        - axis (str): parameter 'axis' in ('X', 'Y', 'Z')
+        - direction_type (str): parameter 'direction_type' in ('RADIAL', 'UV_MAP')
+        - uv_map (str): parameter 'uv_map'
+
+        Returns
+        -------
+        - Vector
+        """
+        node = Node('Tangent', sockets={}, axis=axis, direction_type=direction_type, uv_map=uv_map)
+        return cls(node._out)
+
+    def environment_texture(self, image=None, interpolation='Linear', projection='EQUIRECTANGULAR'):
+        """ > Method <&ShaderNode Environment Texture>
+
+        Information
+        -----------
+        - Socket 'Vector' : self
+
+        Arguments
+        ---------
+        - image (NoneType): parameter 'image'
+        - interpolation (str): parameter 'interpolation' in ('Linear', 'Closest', 'Cubic', 'Smart')
+        - projection (str): parameter 'projection' in ('EQUIRECTANGULAR', 'MIRROR_BALL')
+
+        Returns
+        -------
+        - Color
+        """
+        node = Node('Environment Texture', sockets={'Vector': self}, image=image, interpolation=interpolation, projection=projection)
+        return node._out
+
+    def ies_texture_internal(self, strength=None, filepath='', ies=None):
+        """ > Method <&ShaderNode IES Texture>
+
+        Information
+        -----------
+        - Socket 'Vector' : self
+        - Parameter 'mode' : 'INTERNAL'
+
+        Arguments
+        ---------
+        - strength (Float) : socket 'Strength' (id: Strength)
+        - filepath (str): parameter 'filepath'
+        - ies (NoneType): parameter 'ies'
+
+        Returns
+        -------
+        - Float
+        """
+        node = Node('IES Texture', sockets={'Vector': self, 'Strength': strength}, filepath=filepath, ies=ies, mode='INTERNAL')
+        return node._out
+
+    def ies_texture_external(self, strength=None, filepath='', ies=None):
+        """ > Method <&ShaderNode IES Texture>
+
+        Information
+        -----------
+        - Socket 'Vector' : self
+        - Parameter 'mode' : 'EXTERNAL'
+
+        Arguments
+        ---------
+        - strength (Float) : socket 'Strength' (id: Strength)
+        - filepath (str): parameter 'filepath'
+        - ies (NoneType): parameter 'ies'
+
+        Returns
+        -------
+        - Float
+        """
+        node = Node('IES Texture', sockets={'Vector': self, 'Strength': strength}, filepath=filepath, ies=ies, mode='EXTERNAL')
+        return node._out
+
+    def ies_texture(self, strength=None, filepath='', ies=None, mode='INTERNAL'):
+        """ > Method <&ShaderNode IES Texture>
+
+        Information
+        -----------
+        - Socket 'Vector' : self
+
+        Arguments
+        ---------
+        - strength (Float) : socket 'Strength' (id: Strength)
+        - filepath (str): parameter 'filepath'
+        - ies (NoneType): parameter 'ies'
+        - mode (str): parameter 'mode' in ('INTERNAL', 'EXTERNAL')
+
+        Returns
+        -------
+        - Float
+        """
+        node = Node('IES Texture', sockets={'Vector': self, 'Strength': strength}, filepath=filepath, ies=ies, mode=mode)
+        return node._out
+
+    def image_texture(self, extension='REPEAT', image=None, interpolation='Linear', projection='FLAT', projection_blend=0.0):
+        """ > Method <&ShaderNode Image Texture>
+
+        Information
+        -----------
+        - Socket 'Vector' : self
+
+        Arguments
+        ---------
+        - extension (str): parameter 'extension' in ('REPEAT', 'EXTEND', 'CLIP', 'MIRROR')
+        - image (NoneType): parameter 'image'
+        - interpolation (str): parameter 'interpolation' in ('Linear', 'Closest', 'Cubic', 'Smart')
+        - projection (str): parameter 'projection' in ('FLAT', 'BOX', 'SPHERE', 'TUBE')
+        - projection_blend (float): parameter 'projection_blend'
+
+        Returns
+        -------
+        - Color [alpha_ (Float)]
+        """
+        node = Node('Image Texture', sockets={'Vector': self}, extension=extension, image=image, interpolation=interpolation, projection=projection, projection_blend=projection_blend)
+        return node._out
+
+    def point_density(self, interpolation='Linear', object=None, particle_color_source='PARTICLE_AGE', particle_system=None, point_source='PARTICLE_SYSTEM', radius=0.30000001192092896, resolution=100, space='OBJECT', vertex_attribute_name='', vertex_color_source='VERTEX_COLOR'):
+        """ > Method <&ShaderNode Point Density>
+
+        Information
+        -----------
+        - Socket 'Vector' : self
+
+        Arguments
+        ---------
+        - interpolation (str): parameter 'interpolation' in ('Closest', 'Linear', 'Cubic')
+        - object (NoneType): parameter 'object'
+        - particle_color_source (str): parameter 'particle_color_source' in ('PARTICLE_AGE', 'PARTICLE_SPEED', 'PARTICLE_VELOCITY')
+        - particle_system (NoneType): parameter 'particle_system'
+        - point_source (str): parameter 'point_source' in ('PARTICLE_SYSTEM', 'OBJECT')
+        - radius (float): parameter 'radius'
+        - resolution (int): parameter 'resolution'
+        - space (str): parameter 'space' in ('OBJECT', 'WORLD')
+        - vertex_attribute_name (str): parameter 'vertex_attribute_name'
+        - vertex_color_source (str): parameter 'vertex_color_source' in ('VERTEX_COLOR', 'VERTEX_WEIGHT', 'VERTEX_NORMAL')
+
+        Returns
+        -------
+        - Color [density_ (Float)]
+        """
+        node = Node('Point Density', sockets={'Vector': self}, interpolation=interpolation, object=object, particle_color_source=particle_color_source, particle_system=particle_system, point_source=point_source, radius=radius, resolution=resolution, space=space, vertex_attribute_name=vertex_attribute_name, vertex_color_source=vertex_color_source)
+        return node._out
+
+    @classmethod
+    def UvMap(cls, from_instancer=False, uv_map=''):
+        """ > Constructor <&ShaderNode UV Map>
+
+        Arguments
+        ---------
+        - from_instancer (bool): parameter 'from_instancer'
+        - uv_map (str): parameter 'uv_map'
+
+        Returns
+        -------
+        - Vector
+        """
+        node = Node('UV Map', sockets={}, from_instancer=from_instancer, uv_map=uv_map)
+        return cls(node._out)
+
+    def vector_transform(self, convert_from='WORLD', convert_to='OBJECT', vector_type='VECTOR'):
+        """ > Method <&ShaderNode Vector Transform>
+
+        Information
+        -----------
+        - Socket 'Vector' : self
+
+        Arguments
+        ---------
+        - convert_from (str): parameter 'convert_from' in ('WORLD', 'OBJECT', 'CAMERA')
+        - convert_to (str): parameter 'convert_to' in ('WORLD', 'OBJECT', 'CAMERA')
+        - vector_type (str): parameter 'vector_type' in ('POINT', 'VECTOR', 'NORMAL')
+
+        Returns
+        -------
+        - Vector
+        """
+        node = Node('Vector Transform', sockets={'Vector': self}, convert_from=convert_from, convert_to=convert_to, vector_type=vector_type)
+        return node._out
+

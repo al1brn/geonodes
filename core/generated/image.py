@@ -5,9 +5,8 @@ from .. scripterror import NodeError
 
 class Image(Socket):
 
-    @property
     def info(self, frame=None):
-        """ > Property Get <&Node Image Info>
+        """ > Method <&Node Image Info>
 
         Information
         -----------
@@ -24,9 +23,8 @@ class Image(Socket):
         node = self._cache('Image Info', sockets={'Image': self, 'Frame': frame})
         return node
 
-    @property
     def width(self, frame=None):
-        """ > Property Get <&Node Image Info>
+        """ > Method <&Node Image Info>
 
         Information
         -----------
@@ -43,9 +41,8 @@ class Image(Socket):
         node = self._cache('Image Info', sockets={'Image': self, 'Frame': frame})
         return node.width
 
-    @property
     def height(self, frame=None):
-        """ > Property Get <&Node Image Info>
+        """ > Method <&Node Image Info>
 
         Information
         -----------
@@ -62,9 +59,8 @@ class Image(Socket):
         node = self._cache('Image Info', sockets={'Image': self, 'Frame': frame})
         return node.height
 
-    @property
     def has_alpha(self, frame=None):
-        """ > Property Get <&Node Image Info>
+        """ > Method <&Node Image Info>
 
         Information
         -----------
@@ -81,9 +77,8 @@ class Image(Socket):
         node = self._cache('Image Info', sockets={'Image': self, 'Frame': frame})
         return node.has_alpha
 
-    @property
     def frame_count(self, frame=None):
-        """ > Property Get <&Node Image Info>
+        """ > Method <&Node Image Info>
 
         Information
         -----------
@@ -100,9 +95,8 @@ class Image(Socket):
         node = self._cache('Image Info', sockets={'Image': self, 'Frame': frame})
         return node.frame_count
 
-    @property
     def fps(self, frame=None):
-        """ > Property Get <&Node Image Info>
+        """ > Method <&Node Image Info>
 
         Information
         -----------

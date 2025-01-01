@@ -159,7 +159,7 @@ def CamelCase(name):
     if name == "":
         return None
 
-    return remove_accents(name.replace(' ', ''))
+    return remove_accents(name).title().replace(' ', '').replace('_', '')
 
 # =============================================================================================================================
 # Get a node bl_idname from a name

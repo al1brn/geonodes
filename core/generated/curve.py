@@ -5,28 +5,24 @@ from .. scripterror import NodeError
 
 class Curve(Socket):
 
-    @classmethod
     @property
-    def domain_size(cls, geometry=None):
+    def domain_size(self):
         """ > Property Get <&Node Domain Size>
 
         Information
         -----------
+        - Socket 'Geometry' : self
         - Parameter 'component' : 'CURVE'
-
-        Arguments
-        ---------
-        - geometry (Geometry) : socket 'Geometry' (id: Geometry)
 
         Returns
         -------
         - node [point_count (Integer), spline_count (Integer)]
         """
-        node = Node('Domain Size', sockets={'Geometry': geometry}, component='CURVE')
+        node = self._cache('Domain Size', sockets={'Geometry': self}, component='CURVE')
         return node
 
     @classmethod
-    def ArcPOINTS(cls, resolution=None, start=None, middle=None, end=None, offset_angle=None, connect_center=None, invert_arc=None):
+    def ArcPoints(cls, resolution=None, start=None, middle=None, end=None, offset_angle=None, connect_center=None, invert_arc=None):
         """ > Constructor <&Node Arc>
 
         Information
@@ -51,7 +47,7 @@ class Curve(Socket):
         return cls(node._out)
 
     @classmethod
-    def ArcRADIUS(cls, resolution=None, radius=None, start_angle=None, sweep_angle=None, connect_center=None, invert_arc=None):
+    def ArcRadius(cls, resolution=None, radius=None, start_angle=None, sweep_angle=None, connect_center=None, invert_arc=None):
         """ > Constructor <&Node Arc>
 
         Information
@@ -112,7 +108,7 @@ class Curve(Socket):
         return node._out
 
     @classmethod
-    def handle_type_selection(cls, handle_type='AUTO', mode={'RIGHT', 'LEFT'}):
+    def handle_type_selection(cls, handle_type='AUTO', mode={'LEFT', 'RIGHT'}):
         """ > Class Method <&Node Handle Type Selection>
 
         Arguments
@@ -158,7 +154,7 @@ class Curve(Socket):
         return node._out
 
     @classmethod
-    def BeziersegmentPOSITION(cls, resolution=None, start=None, start_handle=None, end_handle=None, end=None):
+    def BeziersegmentPosition(cls, resolution=None, start=None, start_handle=None, end_handle=None, end=None):
         """ > Constructor <&Node Bézier Segment>
 
         Information
@@ -181,7 +177,7 @@ class Curve(Socket):
         return cls(node._out)
 
     @classmethod
-    def BeziersegmentOFFSET(cls, resolution=None, start=None, start_handle=None, end_handle=None, end=None):
+    def BeziersegmentOffset(cls, resolution=None, start=None, start_handle=None, end_handle=None, end=None):
         """ > Constructor <&Node Bézier Segment>
 
         Information
@@ -224,7 +220,7 @@ class Curve(Socket):
         return cls(node._out)
 
     @classmethod
-    def CirclePOINTS(cls, resolution=None, point_1=None, point_2=None, point_3=None):
+    def CirclePoints(cls, resolution=None, point_1=None, point_2=None, point_3=None):
         """ > Constructor <&Node Curve Circle>
 
         Information
@@ -246,7 +242,7 @@ class Curve(Socket):
         return cls(node._out)
 
     @classmethod
-    def CircleRADIUS(cls, resolution=None, radius=None):
+    def CircleRadius(cls, resolution=None, radius=None):
         """ > Constructor <&Node Curve Circle>
 
         Information
@@ -283,7 +279,7 @@ class Curve(Socket):
         return cls(node._out)
 
     @classmethod
-    def LinePOINTS(cls, start=None, end=None):
+    def LinePoints(cls, start=None, end=None):
         """ > Constructor <&Node Curve Line>
 
         Information
@@ -303,7 +299,7 @@ class Curve(Socket):
         return cls(node._out)
 
     @classmethod
-    def LineDIRECTION(cls, start=None, direction=None, length=None):
+    def LineDirection(cls, start=None, direction=None, length=None):
         """ > Constructor <&Node Curve Line>
 
         Information
@@ -341,7 +337,7 @@ class Curve(Socket):
         return cls(node._out)
 
     @classmethod
-    def QuadrilateralRECTANGLE(cls, width=None, height=None):
+    def QuadrilateralRectangle(cls, width=None, height=None):
         """ > Constructor <&Node Quadrilateral>
 
         Information
@@ -361,7 +357,7 @@ class Curve(Socket):
         return cls(node._out)
 
     @classmethod
-    def QuadrilateralPARALLELOGRAM(cls, width=None, height=None, offset=None):
+    def QuadrilateralParallelogram(cls, width=None, height=None, offset=None):
         """ > Constructor <&Node Quadrilateral>
 
         Information
@@ -382,7 +378,7 @@ class Curve(Socket):
         return cls(node._out)
 
     @classmethod
-    def QuadrilateralTRAPEZOID(cls, width=None, height=None, bottom_width=None, top_width=None, offset=None):
+    def QuadrilateralTrapezoid(cls, width=None, height=None, bottom_width=None, top_width=None, offset=None):
         """ > Constructor <&Node Quadrilateral>
 
         Information
@@ -405,7 +401,7 @@ class Curve(Socket):
         return cls(node._out)
 
     @classmethod
-    def QuadrilateralKITE(cls, width=None, bottom_height=None, top_height=None):
+    def QuadrilateralKite(cls, width=None, bottom_height=None, top_height=None):
         """ > Constructor <&Node Quadrilateral>
 
         Information
@@ -426,7 +422,7 @@ class Curve(Socket):
         return cls(node._out)
 
     @classmethod
-    def QuadrilateralPOINTS(cls, width=None, point_1=None, point_2=None, point_3=None, point_4=None):
+    def QuadrilateralPoints(cls, width=None, point_1=None, point_2=None, point_3=None, point_4=None):
         """ > Constructor <&Node Quadrilateral>
 
         Information
@@ -483,7 +479,7 @@ class Curve(Socket):
         node = Node('Quadratic Bézier', sockets={'Resolution': resolution, 'Start': start, 'Middle': middle, 'End': end})
         return cls(node._out)
 
-    def set_handle_type(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}):
+    def set_handle_type(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}):
         """ > Jump Method <&Node Set Handle Type>
 
         Information
@@ -553,7 +549,7 @@ class Curve(Socket):
         -----------
         - Socket 'Curve' : self
         - Socket 'Selection' : self[selection]
-        - Parameter 'mode' : {'RIGHT', 'LEFT'}
+        - Parameter 'mode' : {'LEFT', 'RIGHT'}
 
         Arguments
         ---------
@@ -563,7 +559,7 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Set Handle Type', sockets={'Curve': self, 'Selection': self._sel}, handle_type=handle_type, mode={'RIGHT', 'LEFT'})
+        node = Node('Set Handle Type', sockets={'Curve': self, 'Selection': self._sel}, handle_type=handle_type, mode={'LEFT', 'RIGHT'})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -1488,6 +1484,7 @@ class Curve(Socket):
         -----------
         - Socket 'Curve' : self
         - Socket 'Selection' : self[selection]
+        - Socket 'Offset' : ignored
         - Parameter 'mode' : 'LEFT'
 
         Arguments
@@ -1498,7 +1495,7 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Set Handle Positions', sockets={'Curve': self, 'Selection': self._sel, 'Position': position}, mode='LEFT')
+        node = Node('Set Handle Positions', sockets={'Curve': self, 'Selection': self._sel, 'Position': position, 'Offset': None}, mode='LEFT')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -1516,6 +1513,7 @@ class Curve(Socket):
         -----------
         - Socket 'Curve' : self
         - Socket 'Selection' : self[selection]
+        - Socket 'Offset' : ignored
         - Parameter 'mode' : 'RIGHT'
 
         Arguments
@@ -1526,7 +1524,7 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Set Handle Positions', sockets={'Curve': self, 'Selection': self._sel, 'Position': position}, mode='RIGHT')
+        node = Node('Set Handle Positions', sockets={'Curve': self, 'Selection': self._sel, 'Position': position, 'Offset': None}, mode='RIGHT')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -1544,6 +1542,7 @@ class Curve(Socket):
         -----------
         - Socket 'Curve' : self
         - Socket 'Selection' : self[selection]
+        - Socket 'Position' : ignored
         - Parameter 'mode' : 'LEFT'
 
         Arguments
@@ -1554,7 +1553,7 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Set Handle Positions', sockets={'Curve': self, 'Selection': self._sel, 'Offset': offset}, mode='LEFT')
+        node = Node('Set Handle Positions', sockets={'Curve': self, 'Selection': self._sel, 'Position': None, 'Offset': offset}, mode='LEFT')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -1572,6 +1571,7 @@ class Curve(Socket):
         -----------
         - Socket 'Curve' : self
         - Socket 'Selection' : self[selection]
+        - Socket 'Position' : ignored
         - Parameter 'mode' : 'RIGHT'
 
         Arguments
@@ -1582,7 +1582,7 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Set Handle Positions', sockets={'Curve': self, 'Selection': self._sel, 'Offset': offset}, mode='RIGHT')
+        node = Node('Set Handle Positions', sockets={'Curve': self, 'Selection': self._sel, 'Position': None, 'Offset': offset}, mode='RIGHT')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -1600,7 +1600,7 @@ class Curve(Socket):
         -----------
         - Socket 'Curve' : self
         - Socket 'Selection' : self[selection]
-        - Parameter 'mode' : {'RIGHT', 'LEFT'}
+        - Parameter 'mode' : {'LEFT', 'RIGHT'}
 
         Arguments
         ---------
@@ -1610,7 +1610,7 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Set Handle Type', sockets={'Curve': self, 'Selection': self._sel}, handle_type=handle_type, mode={'RIGHT', 'LEFT'})
+        node = Node('Set Handle Type', sockets={'Curve': self, 'Selection': self._sel}, handle_type=handle_type, mode={'LEFT', 'RIGHT'})
         self._jump(node._out)
         return self._domain_to_geometry
 

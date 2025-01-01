@@ -50,9 +50,8 @@ class Geometry(Socket):
         return node._out
 
     @classmethod
-    @property
     def index_of_nearest(cls, position=None, group_id=None):
-        """ > Property Get <&Node Index of Nearest>
+        """ > Class Method <&Node Index of Nearest>
 
         Arguments
         ---------
@@ -793,6 +792,7 @@ class Geometry(Socket):
         -----------
         - Socket 'Geometry' : self
         - Socket 'Selection' : self[selection]
+        - Socket 'Offset' : ignored
 
         Arguments
         ---------
@@ -802,7 +802,7 @@ class Geometry(Socket):
         -------
         - Geometry
         """
-        node = Node('Set Position', sockets={'Geometry': self, 'Selection': self._sel, 'Position': position})
+        node = Node('Set Position', sockets={'Geometry': self, 'Selection': self._sel, 'Position': position, 'Offset': None})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -820,6 +820,7 @@ class Geometry(Socket):
         -----------
         - Socket 'Geometry' : self
         - Socket 'Selection' : self[selection]
+        - Socket 'Position' : ignored
 
         Arguments
         ---------
@@ -829,7 +830,7 @@ class Geometry(Socket):
         -------
         - Geometry
         """
-        node = Node('Set Position', sockets={'Geometry': self, 'Selection': self._sel, 'Offset': offset})
+        node = Node('Set Position', sockets={'Geometry': self, 'Selection': self._sel, 'Position': None, 'Offset': offset})
         self._jump(node._out)
         return self._domain_to_geometry
 

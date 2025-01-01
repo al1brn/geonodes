@@ -17,7 +17,7 @@ def demo():
         with Layout("Size gizmos"):
 
             val1, val2, val3 = Float(1), Float(2), Float(3)
-            gizmo = Gizmo.linear(val1, val1, val3)
+            gizmo = val1.linear_gizmo(val2, val3)
 
             xg = x.linear_gizmo(position=(x/2*scale, 0, 0), direction=(1, 0, 0), color_id='X')
             x.pin_gizmo = True

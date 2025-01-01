@@ -6,9 +6,8 @@ from .. scripterror import NodeError
 class Vertex(Socket):
 
     @classmethod
-    @property
     def corners(cls, vertex_index=None, weights=None, sort_index=None):
-        """ > Property Get <&Node Corners of Vertex>
+        """ > Class Method <&Node Corners of Vertex>
 
         Arguments
         ---------
@@ -24,9 +23,8 @@ class Vertex(Socket):
         return node
 
     @classmethod
-    @property
     def corner_index(cls, vertex_index=None, weights=None, sort_index=None):
-        """ > Property Get <&Node Corners of Vertex>
+        """ > Class Method <&Node Corners of Vertex>
 
         Arguments
         ---------
@@ -42,9 +40,8 @@ class Vertex(Socket):
         return node.corner_index
 
     @classmethod
-    @property
     def corners_total(cls, vertex_index=None, weights=None, sort_index=None):
-        """ > Property Get <&Node Corners of Vertex>
+        """ > Class Method <&Node Corners of Vertex>
 
         Arguments
         ---------
@@ -60,9 +57,8 @@ class Vertex(Socket):
         return node.total
 
     @classmethod
-    @property
     def edges(cls, vertex_index=None, weights=None, sort_index=None):
-        """ > Property Get <&Node Edges of Vertex>
+        """ > Class Method <&Node Edges of Vertex>
 
         Arguments
         ---------
@@ -78,9 +74,8 @@ class Vertex(Socket):
         return node
 
     @classmethod
-    @property
     def edge_index(cls, vertex_index=None, weights=None, sort_index=None):
-        """ > Property Get <&Node Edges of Vertex>
+        """ > Class Method <&Node Edges of Vertex>
 
         Arguments
         ---------
@@ -96,9 +91,8 @@ class Vertex(Socket):
         return node.edge_index
 
     @classmethod
-    @property
     def edges_total(cls, vertex_index=None, weights=None, sort_index=None):
-        """ > Property Get <&Node Edges of Vertex>
+        """ > Class Method <&Node Edges of Vertex>
 
         Arguments
         ---------
@@ -148,4 +142,25 @@ class Vertex(Socket):
         """
         node = Node('Vertex Neighbors', sockets={})
         return node.face_count
+
+    def to_points(self, position=None, radius=None):
+        """ > Method <&Node Mesh to Points>
+
+        Information
+        -----------
+        - Socket 'Mesh' : self
+        - Socket 'Selection' : self[selection]
+        - Parameter 'mode' : 'VERTICES'
+
+        Arguments
+        ---------
+        - position (Vector) : socket 'Position' (id: Position)
+        - radius (Float) : socket 'Radius' (id: Radius)
+
+        Returns
+        -------
+        - Cloud
+        """
+        node = Node('Mesh to Points', sockets={'Mesh': self, 'Selection': self._sel, 'Position': position, 'Radius': radius}, mode='VERTICES')
+        return node._out
 

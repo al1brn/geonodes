@@ -6,12 +6,15 @@ from .. scripterror import NodeError
 class Rotation(Socket):
 
     @classmethod
-    def AlignToVector(cls, rotation=None, vector=None, factor=None, axis='Z', pivot_axis='AUTO'):
+    def AlignToVector(cls, vector=None, factor=None, axis='Z', pivot_axis='AUTO'):
         """ > Constructor <&Node Align Rotation to Vector>
+
+        Information
+        -----------
+        - Socket 'Rotation' : ignored
 
         Arguments
         ---------
-        - rotation (Rotation) : socket 'Rotation' (id: Rotation)
         - vector (Vector) : socket 'Vector' (id: Vector)
         - factor (Float) : socket 'Factor' (id: Factor)
         - axis (str): parameter 'axis' in ('X', 'Y', 'Z')
@@ -21,20 +24,20 @@ class Rotation(Socket):
         -------
         - Rotation
         """
-        node = Node('Align Rotation to Vector', sockets={'Rotation': rotation, 'Vector': vector, 'Factor': factor}, axis=axis, pivot_axis=pivot_axis)
+        node = Node('Align Rotation to Vector', sockets={'Rotation': None, 'Vector': vector, 'Factor': factor}, axis=axis, pivot_axis=pivot_axis)
         return cls(node._out)
 
     @classmethod
-    def AlignXToVector(cls, rotation=None, vector=None, factor=None, pivot_axis='AUTO'):
+    def AlignXToVector(cls, vector=None, factor=None, pivot_axis='AUTO'):
         """ > Constructor <&Node Align Rotation to Vector>
 
         Information
         -----------
+        - Socket 'Rotation' : ignored
         - Parameter 'axis' : 'X'
 
         Arguments
         ---------
-        - rotation (Rotation) : socket 'Rotation' (id: Rotation)
         - vector (Vector) : socket 'Vector' (id: Vector)
         - factor (Float) : socket 'Factor' (id: Factor)
         - pivot_axis (str): parameter 'pivot_axis' in ('AUTO', 'X', 'Y', 'Z')
@@ -43,20 +46,20 @@ class Rotation(Socket):
         -------
         - Rotation
         """
-        node = Node('Align Rotation to Vector', sockets={'Rotation': rotation, 'Vector': vector, 'Factor': factor}, axis='X', pivot_axis=pivot_axis)
+        node = Node('Align Rotation to Vector', sockets={'Rotation': None, 'Vector': vector, 'Factor': factor}, axis='X', pivot_axis=pivot_axis)
         return cls(node._out)
 
     @classmethod
-    def AlignYToVector(cls, rotation=None, vector=None, factor=None, pivot_axis='AUTO'):
+    def AlignYToVector(cls, vector=None, factor=None, pivot_axis='AUTO'):
         """ > Constructor <&Node Align Rotation to Vector>
 
         Information
         -----------
+        - Socket 'Rotation' : ignored
         - Parameter 'axis' : 'Y'
 
         Arguments
         ---------
-        - rotation (Rotation) : socket 'Rotation' (id: Rotation)
         - vector (Vector) : socket 'Vector' (id: Vector)
         - factor (Float) : socket 'Factor' (id: Factor)
         - pivot_axis (str): parameter 'pivot_axis' in ('AUTO', 'X', 'Y', 'Z')
@@ -65,20 +68,20 @@ class Rotation(Socket):
         -------
         - Rotation
         """
-        node = Node('Align Rotation to Vector', sockets={'Rotation': rotation, 'Vector': vector, 'Factor': factor}, axis='Y', pivot_axis=pivot_axis)
+        node = Node('Align Rotation to Vector', sockets={'Rotation': None, 'Vector': vector, 'Factor': factor}, axis='Y', pivot_axis=pivot_axis)
         return cls(node._out)
 
     @classmethod
-    def AlignZToVector(cls, rotation=None, vector=None, factor=None, pivot_axis='AUTO'):
+    def AlignZToVector(cls, vector=None, factor=None, pivot_axis='AUTO'):
         """ > Constructor <&Node Align Rotation to Vector>
 
         Information
         -----------
+        - Socket 'Rotation' : ignored
         - Parameter 'axis' : 'Z'
 
         Arguments
         ---------
-        - rotation (Rotation) : socket 'Rotation' (id: Rotation)
         - vector (Vector) : socket 'Vector' (id: Vector)
         - factor (Float) : socket 'Factor' (id: Factor)
         - pivot_axis (str): parameter 'pivot_axis' in ('AUTO', 'X', 'Y', 'Z')
@@ -87,7 +90,7 @@ class Rotation(Socket):
         -------
         - Rotation
         """
-        node = Node('Align Rotation to Vector', sockets={'Rotation': rotation, 'Vector': vector, 'Factor': factor}, axis='Z', pivot_axis=pivot_axis)
+        node = Node('Align Rotation to Vector', sockets={'Rotation': None, 'Vector': vector, 'Factor': factor}, axis='Z', pivot_axis=pivot_axis)
         return cls(node._out)
 
     def align_toVector(self, vector=None, factor=None, axis='Z', pivot_axis='AUTO'):

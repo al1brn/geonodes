@@ -43,16 +43,15 @@ class Corner(Socket):
 
         Returns
         -------
-        - Float [median_ (Float), sum_ (Float), min_ (Float), max_ (Float), range_ (Float), standard_deviation_ (Float), variance_ (Float)]
+        - node [mean (Float), median (Float), sum (Float), min (Float), max (Float), range (Float), standard_deviation (Float), variance (Float)]
         """
         data_type = utils.get_argument_data_type(attribute, {'VALUE': 'FLOAT', 'VECTOR': 'FLOAT_VECTOR'}, 'Corner.attribute_statistic', 'attribute')
         node = Node('Attribute Statistic', sockets={'Geometry': self, 'Selection': self._sel, 'Attribute': attribute}, data_type=data_type, domain='CORNER')
-        return node._out
+        return node
 
     @classmethod
-    @property
     def edges(cls, corner_index=None):
-        """ > Property Get <&Node Edges of Corner>
+        """ > Class Method <&Node Edges of Corner>
 
         Arguments
         ---------
@@ -66,9 +65,8 @@ class Corner(Socket):
         return node
 
     @classmethod
-    @property
     def next_edge_index(cls, corner_index=None):
-        """ > Property Get <&Node Edges of Corner>
+        """ > Class Method <&Node Edges of Corner>
 
         Arguments
         ---------
@@ -82,9 +80,8 @@ class Corner(Socket):
         return node.next_edge_index
 
     @classmethod
-    @property
     def previous_edge_index(cls, corner_index=None):
-        """ > Property Get <&Node Edges of Corner>
+        """ > Class Method <&Node Edges of Corner>
 
         Arguments
         ---------
@@ -98,9 +95,8 @@ class Corner(Socket):
         return node.previous_edge_index
 
     @classmethod
-    @property
     def face(cls, corner_index=None):
-        """ > Property Get <&Node Face of Corner>
+        """ > Class Method <&Node Face of Corner>
 
         Arguments
         ---------
@@ -114,9 +110,8 @@ class Corner(Socket):
         return node
 
     @classmethod
-    @property
     def face_index(cls, corner_index=None):
-        """ > Property Get <&Node Face of Corner>
+        """ > Class Method <&Node Face of Corner>
 
         Arguments
         ---------
@@ -130,9 +125,8 @@ class Corner(Socket):
         return node.face_index
 
     @classmethod
-    @property
     def index_in_face(cls, corner_index=None):
-        """ > Property Get <&Node Face of Corner>
+        """ > Class Method <&Node Face of Corner>
 
         Arguments
         ---------
@@ -186,6 +180,27 @@ class Corner(Socket):
         """
         data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Corner.evaluate_on_domain', 'value')
         node = Node('Evaluate on Domain', sockets={'Value': value}, data_type=data_type, domain='CORNER')
+        return node._out
+
+    def to_points(self, position=None, radius=None):
+        """ > Method <&Node Mesh to Points>
+
+        Information
+        -----------
+        - Socket 'Mesh' : self
+        - Socket 'Selection' : self[selection]
+        - Parameter 'mode' : 'CORNERS'
+
+        Arguments
+        ---------
+        - position (Vector) : socket 'Position' (id: Position)
+        - radius (Float) : socket 'Radius' (id: Radius)
+
+        Returns
+        -------
+        - Cloud
+        """
+        node = Node('Mesh to Points', sockets={'Mesh': self, 'Selection': self._sel, 'Position': position, 'Radius': radius}, mode='CORNERS')
         return node._out
 
     @classmethod
@@ -361,7 +376,7 @@ class Corner(Socket):
         return node._out
 
     @classmethod
-    def vertex(cls, corner_index=None):
+    def vertex_index(cls, corner_index=None):
         """ > Class Method <&Node Vertex of Corner>
 
         Arguments

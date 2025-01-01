@@ -17,9 +17,8 @@ class Object(Socket):
         node = Node('Active Camera', sockets={})
         return cls(node._out)
 
-    @property
     def info(self, as_instance=None, transform_space='ORIGINAL'):
-        """ > Property Get <&Node Object Info>
+        """ > Method <&Node Object Info>
 
         Information
         -----------

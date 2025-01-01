@@ -5,28 +5,24 @@ from .. scripterror import NodeError
 
 class Cloud(Socket):
 
-    @classmethod
     @property
-    def domain_size(cls, geometry=None):
+    def domain_size(self):
         """ > Property Get <&Node Domain Size>
 
         Information
         -----------
+        - Socket 'Geometry' : self
         - Parameter 'component' : 'POINTCLOUD'
-
-        Arguments
-        ---------
-        - geometry (Geometry) : socket 'Geometry' (id: Geometry)
 
         Returns
         -------
         - node [point_count (Integer)]
         """
-        node = Node('Domain Size', sockets={'Geometry': geometry}, component='POINTCLOUD')
+        node = self._cache('Domain Size', sockets={'Geometry': self}, component='POINTCLOUD')
         return node
 
     @classmethod
-    def DistributeingridDENSITY_RANDOM(cls, grid=None, density=None, seed=None):
+    def DistributeingridDensityRandom(cls, grid=None, density=None, seed=None):
         """ > Constructor <&Node Distribute Points in Grid>
 
         Information
@@ -47,7 +43,7 @@ class Cloud(Socket):
         return cls(node._out)
 
     @classmethod
-    def DistributeingridDENSITY_GRID(cls, grid=None, spacing=None, threshold=None):
+    def DistributeingridDensityGrid(cls, grid=None, spacing=None, threshold=None):
         """ > Constructor <&Node Distribute Points in Grid>
 
         Information

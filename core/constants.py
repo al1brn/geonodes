@@ -52,6 +52,7 @@ CLASS_NAMES = {
 ATTRIBUTE_CLASSES = ['Boolean', 'Integer', 'Float', 'Vector', 'Color', 'Matrix', 'Rotation']
 
 GEOMETRY_CLASSES = ['Geometry', 'Mesh', 'Curve', 'Cloud', 'Instances', 'Volume', 'GrasePencil']
+DOMAIN_CLASSES   = ['Domain', 'Point', 'Vertex', 'CloudPoint', 'SplinePoint', 'Face', 'Edge', 'Corner', 'Spline', 'Layer', 'Instance']
 
 
 # =============================================================================================================================
@@ -186,7 +187,7 @@ SOCKETS_DICT = {'BOOLEAN': {'GeometryNodeTree': True,
 # 'GeometryNodeStoreNamedGrid', 'GeometryNodeSwitch', 'GeometryNodeToolSetSelection', 'GeometryNodeViewer', 'ShaderNodeMapRange',
 # 'ShaderNodeMix']
 
-NODE_DATA_TYPES = {
+NODE_DATA_TYPES_OLD = {
 	'FunctionNodeCompare' : {
 		'data_type' : {
 			'VALUE'      : 'FLOAT',

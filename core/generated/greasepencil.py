@@ -5,24 +5,20 @@ from .. scripterror import NodeError
 
 class GreasePencil(Socket):
 
-    @classmethod
     @property
-    def domain_size(cls, geometry=None):
+    def domain_size(self):
         """ > Property Get <&Node Domain Size>
 
         Information
         -----------
+        - Socket 'Geometry' : self
         - Parameter 'component' : 'GREASEPENCIL'
-
-        Arguments
-        ---------
-        - geometry (Geometry) : socket 'Geometry' (id: Geometry)
 
         Returns
         -------
         - node [layer_count (Integer)]
         """
-        node = Node('Domain Size', sockets={'Geometry': geometry}, component='GREASEPENCIL')
+        node = self._cache('Domain Size', sockets={'Geometry': self}, component='GREASEPENCIL')
         return node
 
     def to_curves(self, layers_as_instances=None):

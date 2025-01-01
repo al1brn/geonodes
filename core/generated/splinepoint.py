@@ -6,9 +6,8 @@ from .. scripterror import NodeError
 class SplinePoint(Socket):
 
     @classmethod
-    @property
     def curve_of_point(cls, point_index=None):
-        """ > Property Get <&Node Curve of Point>
+        """ > Class Method <&Node Curve of Point>
 
         Arguments
         ---------
@@ -22,9 +21,8 @@ class SplinePoint(Socket):
         return node
 
     @classmethod
-    @property
     def curve_index(cls, point_index=None):
-        """ > Property Get <&Node Curve of Point>
+        """ > Class Method <&Node Curve of Point>
 
         Arguments
         ---------
@@ -38,9 +36,8 @@ class SplinePoint(Socket):
         return node.curve_index
 
     @classmethod
-    @property
     def index_in_curve(cls, point_index=None):
-        """ > Property Get <&Node Curve of Point>
+        """ > Class Method <&Node Curve of Point>
 
         Arguments
         ---------
@@ -52,6 +49,78 @@ class SplinePoint(Socket):
         """
         node = Node('Curve of Point', sockets={'Point Index': point_index})
         return node.index_in_curve
+
+    def to_points_evaluated(self):
+        """ > Method <&Node Curve to Points>
+
+        Information
+        -----------
+        - Socket 'Curve' : self
+        - Parameter 'mode' : 'EVALUATED'
+
+        Returns
+        -------
+        - Cloud [tangent_ (Vector), normal_ (Vector), rotation_ (Rotation)]
+        """
+        node = Node('Curve to Points', sockets={'Curve': self}, mode='EVALUATED')
+        return node._out
+
+    def to_points_count(self, count=None):
+        """ > Method <&Node Curve to Points>
+
+        Information
+        -----------
+        - Socket 'Curve' : self
+        - Parameter 'mode' : 'COUNT'
+
+        Arguments
+        ---------
+        - count (Integer) : socket 'Count' (id: Count)
+
+        Returns
+        -------
+        - Cloud [tangent_ (Vector), normal_ (Vector), rotation_ (Rotation)]
+        """
+        node = Node('Curve to Points', sockets={'Curve': self, 'Count': count}, mode='COUNT')
+        return node._out
+
+    def to_points_length(self, length=None):
+        """ > Method <&Node Curve to Points>
+
+        Information
+        -----------
+        - Socket 'Curve' : self
+        - Parameter 'mode' : 'LENGTH'
+
+        Arguments
+        ---------
+        - length (Float) : socket 'Length' (id: Length)
+
+        Returns
+        -------
+        - Cloud [tangent_ (Vector), normal_ (Vector), rotation_ (Rotation)]
+        """
+        node = Node('Curve to Points', sockets={'Curve': self, 'Length': length}, mode='LENGTH')
+        return node._out
+
+    def to_points(self, count=None, mode='COUNT'):
+        """ > Method <&Node Curve to Points>
+
+        Information
+        -----------
+        - Socket 'Curve' : self
+
+        Arguments
+        ---------
+        - count (Integer) : socket 'Count' (id: Count)
+        - mode (str): parameter 'mode' in ('EVALUATED', 'COUNT', 'LENGTH')
+
+        Returns
+        -------
+        - Cloud [tangent_ (Vector), normal_ (Vector), rotation_ (Rotation)]
+        """
+        node = Node('Curve to Points', sockets={'Curve': self, 'Count': count}, mode=mode)
+        return node._out
 
     @classmethod
     def offset_in_curve(cls, point_index=None, offset=None):
@@ -68,4 +137,31 @@ class SplinePoint(Socket):
         """
         node = Node('Offset Point in Curve', sockets={'Point Index': point_index, 'Offset': offset})
         return node._out
+
+    @property
+    def radius(self):
+        """ Property get node <Node Set Curve Radius>
+        """
+        return Node('Radius', sockets={})._out
+
+    @radius.setter
+    def radius(self, radius=None):
+        """ > Jump Method <&Node Set Curve Radius>
+
+        Information
+        -----------
+        - Socket 'Curve' : self
+        - Socket 'Selection' : self[selection]
+
+        Arguments
+        ---------
+        - radius (Float) : socket 'Radius' (id: Radius)
+
+        Returns
+        -------
+        - Curve
+        """
+        node = Node('Set Curve Radius', sockets={'Curve': self, 'Selection': self._sel, 'Radius': radius})
+        self._jump(node._out)
+        return self._domain_to_geometry
 

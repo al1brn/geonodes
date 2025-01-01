@@ -542,6 +542,9 @@ class Tree:
         if prop_name is None:
             prop_name = utils.get_prop_name(attr_name)
 
+        self._named_attrs[prop_name] = data_type
+        return prop_name
+
         from . import  Boolean, Integer, Float, Vector, Color, Matrix, Rotation
         classes = {'FLOAT': Float, 'INT': Integer, 'FLOAT_VECTOR': Vector, 'BOOLEAN': Boolean, 'FLOAT4X4': Matrix, 'QUATERNION': Rotation, 'FLOAT_COLOR': Color}
 
@@ -549,20 +552,20 @@ class Tree:
 
     def get_named_attribute(self, attr_name=None, prop_name=None):
 
-        from geonodes import Float
+        #from geonodes import Float
 
         if prop_name is None:
             prop_name = utils.get_prop_name(attr_name)
         else:
             attr_name = utils.get_attr_name(prop_name)
 
-        attr_class = self._named_attrs.get(prop_name, None)
-        if attr_class is None:
+        data_type = self._named_attrs.get(prop_name, None)
+        if data_type is None:
             print(f"WARNING: named attribute '{attr_name}' ({prop_name}) is unknwon. Use Float.Named('{attr_name}') or Float('{attr_name}')to suppress this warning.")
-            return Float.Named(attr_name)._lc("Warning", self._get_color('WARNING'))
+            data_type = 'FLOAT'
 
-        return attr_class.Named(attr_name)
-
+        node = Node("Named Attribute", sockets={'Name': attr_name}, data_type=data_type)
+        return node._out
 
     # =============================================================================================================================
     # Arranges nodes
@@ -722,11 +725,8 @@ class Tree:
 
     def set_input_socket_default(self, socket, value=None):
 
-        self._interface.set_default_value(socket.identifier, value=value, update_socket=True)
-        return
-
-        # OLD
-
+        #self._interface.set_default_value(socket.identifier, value=value, update_socket=True)
+        #return
 
         if value is None:
             return
@@ -741,7 +741,9 @@ class Tree:
             #return
             pass
 
-        io_socket = self.io_socket_exists(bsocket.bl_idname, in_out='INPUT', name=bsocket.identifier)
+        #io_socket = self.io_socket_exists(bsocket.bl_idname, in_out='INPUT', name=bsocket.identifier)
+
+        io_socket = self._interface.get_in_socket(bsocket.name, halt=False)
         if io_socket is None:
             return
 
@@ -1076,31 +1078,6 @@ class Node:
 
         bl_idname = utils.get_node_bl_idname(node_name, tree_type)
 
-        if False:
-            bl_idname = ""
-            if node_name in constants.NODE_NAMES[tree_type]:
-                bl_idname = constants.NODE_NAMES[tree_type][node_name]
-
-            elif node_name in constants.NODE_NAMES[tree_type].values():
-                bl_idname = node_name
-
-            else:
-                for nn, blid in constants.NODE_NAMES[tree_type].items():
-                    if nn.lower() == node_name.lower():
-                        print(f"CAUTION: node name '{node_name}' doesn't match any node name. Lower case matching is takend: {nn}")
-                        bl_idname = blid
-                    break
-
-            if bl_idname == "":
-
-                for tt in constants.NODE_NAMES.keys():
-                    if tt == tree_type:
-                        continue
-                    if node_name in constants.NODE_NAMES[tt]:
-                        raise NodeError(f"Node '{node_name}' is a node of tree '{tt}', it doesn't exist for tree '{tree_type}'")
-
-                bl_idname = node_name
-
         # ----------------------------------------------------------------------------------------------------
         # Node keeping
 
@@ -1156,6 +1133,14 @@ class Node:
                 self.link_from(**link_from)
             else:
                 self.link_from(link_from, arguments={**sockets, **_items})
+
+        # ----------------------------------------------------------------------------------------------------
+        # Particular cases
+
+        if node_name == 'Store Named Attribute':
+            if 'Name' in sockets and 'data_type' in parameters:
+                if isinstance(sockets['Name'], str):
+                    self._tree.register_named_attribute(data_type=parameters['data_type'], attr_name=sockets['Name'])
 
     def __str__(self):
         return f"<Node '{self._bnode.name}' {self._bnode.bl_idname}>"
@@ -1275,7 +1260,10 @@ class Node:
             # 'new' method takes two arguments
             else:
                 input_type = 'GEOMETRY' if socket_value is None else utils.get_input_type(socket_value)
-                sck = node_items.new(input_type, socket_name)
+                try:
+                    sck = node_items.new(input_type, socket_name)
+                except Exception as e:
+                    raise NodeError(f"Node {self}, input_type: '{input_type}', socket name: {socket_name}", error=str(e))
 
             # ----- Plug
 
@@ -1449,9 +1437,9 @@ class Node:
         if halt and bsocket is None:
             valids = [f"{'x' if sock.enabled else 'o'} {sock.name}" for sock in bsockets]
             if disabled_bsocket is None:
-                raise NodeError(f"Socket name '{name}' not found in node '{self._bnode.name}' ({self._bnode.bl_idname})", valids=valids)
+                raise NodeError(f"Socket name '{name}' not found in node '{self._bnode.name}' ({self._bnode.bl_idname})", keyword=name, valids=valids)
             else:
-                raise NodeError(f"Socket name '{name}' is disabled in node '{self._bnode.name}' ({self._bnode.bl_idname})", valids=valids)
+                raise NodeError(f"Socket name '{name}' is disabled in node '{self._bnode.name}' ({self._bnode.bl_idname})", keyword=name, valids=valids)
 
         return bsocket
 
@@ -1500,7 +1488,6 @@ class Node:
         -------
         - Socket : first enabled output socket
         """
-
         for bsock in self._bnode.outputs:
             if bsock.enabled and bsock.type != 'CUSTOM':
                 return self.data_socket(bsock)
@@ -1511,7 +1498,12 @@ class Node:
 
     def __getattr__(self, name):
 
+        sbnode = type(self)
+
         if '_bnode' in self.__dict__:
+
+            sbnode = f"'{self._bnode.name}'"
+
             # The name can refer to an output socket
             out_socket = self.out_socket(name, halt=False)
 
@@ -1537,7 +1529,8 @@ class Node:
                 # OK : it is an output socket
                 return out_socket
 
-        raise AttributeError(f"Node parameter '{name}' not found.")
+        #raise AttributeError(f"Node parameter '{name}' not found.")
+        raise NodeError(f"Attribute '{name}' of node '{sbnode}' is not found.", keyword=name)
 
     def __setattr__(self, name, value):
 
@@ -1563,7 +1556,8 @@ class Node:
                 self.plug_value_into_socket(value, in_socket)
                 return
 
-        raise AttributeError(f"Node parameter '{name}' not found in '{sbnode}'.")
+        #raise AttributeError(f"Node parameter '{name}' not found in '{sbnode}'.")
+        raise NodeError(f"Node parameter '{name}' not found in '{sbnode}'.", keyword=name)
 
     # =============================================================================================================================
     # Create a node from a value with an output socket matching the target

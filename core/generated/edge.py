@@ -43,16 +43,15 @@ class Edge(Socket):
 
         Returns
         -------
-        - Float [median_ (Float), sum_ (Float), min_ (Float), max_ (Float), range_ (Float), standard_deviation_ (Float), variance_ (Float)]
+        - node [mean (Float), median (Float), sum (Float), min (Float), max (Float), range (Float), standard_deviation (Float), variance (Float)]
         """
         data_type = utils.get_argument_data_type(attribute, {'VALUE': 'FLOAT', 'VECTOR': 'FLOAT_VECTOR'}, 'Edge.attribute_statistic', 'attribute')
         node = Node('Attribute Statistic', sockets={'Geometry': self, 'Selection': self._sel, 'Attribute': attribute}, data_type=data_type, domain='EDGE')
-        return node._out
+        return node
 
     @classmethod
-    @property
     def corners(cls, edge_index=None, weights=None, sort_index=None):
-        """ > Property Get <&Node Corners of Edge>
+        """ > Class Method <&Node Corners of Edge>
 
         Arguments
         ---------
@@ -68,9 +67,8 @@ class Edge(Socket):
         return node
 
     @classmethod
-    @property
     def corner_index(cls, edge_index=None, weights=None, sort_index=None):
-        """ > Property Get <&Node Corners of Edge>
+        """ > Class Method <&Node Corners of Edge>
 
         Arguments
         ---------
@@ -86,9 +84,8 @@ class Edge(Socket):
         return node.corner_index
 
     @classmethod
-    @property
     def corners_total(cls, edge_index=None, weights=None, sort_index=None):
-        """ > Property Get <&Node Corners of Edge>
+        """ > Class Method <&Node Corners of Edge>
 
         Arguments
         ---------
@@ -274,13 +271,15 @@ class Edge(Socket):
         self._jump(node._out)
         return self._domain_to_geometry
 
-    @classmethod
-    def paths_to_curves(cls, mesh=None, start_vertices=None, next_vertex_index=None):
-        """ > Class Method <&Node Edge Paths to Curves>
+    def paths_to_curves(self, start_vertices=None, next_vertex_index=None):
+        """ > Method <&Node Edge Paths to Curves>
+
+        Information
+        -----------
+        - Socket 'Mesh' : self
 
         Arguments
         ---------
-        - mesh (Geometry) : socket 'Mesh' (id: Mesh)
         - start_vertices (Boolean) : socket 'Start Vertices' (id: Start Vertices)
         - next_vertex_index (Integer) : socket 'Next Vertex Index' (id: Next Vertex Index)
 
@@ -288,7 +287,7 @@ class Edge(Socket):
         -------
         - Curve
         """
-        node = Node('Edge Paths to Curves', sockets={'Mesh': mesh, 'Start Vertices': start_vertices, 'Next Vertex Index': next_vertex_index})
+        node = Node('Edge Paths to Curves', sockets={'Mesh': self, 'Start Vertices': start_vertices, 'Next Vertex Index': next_vertex_index})
         return node._out
 
     @classmethod
@@ -489,6 +488,27 @@ class Edge(Socket):
         node = Node('Shortest Edge Paths', sockets={'End Vertex': end_vertex, 'Edge Cost': edge_cost})
         return node._out
 
+    def to_points(self, position=None, radius=None):
+        """ > Method <&Node Mesh to Points>
+
+        Information
+        -----------
+        - Socket 'Mesh' : self
+        - Socket 'Selection' : self[selection]
+        - Parameter 'mode' : 'EDGES'
+
+        Arguments
+        ---------
+        - position (Vector) : socket 'Position' (id: Position)
+        - radius (Float) : socket 'Radius' (id: Radius)
+
+        Returns
+        -------
+        - Cloud
+        """
+        node = Node('Mesh to Points', sockets={'Mesh': self, 'Selection': self._sel, 'Position': position, 'Radius': radius}, mode='EDGES')
+        return node._out
+
     def sample_index(self, value=None, index=None, clamp=False):
         """ > Method <&Node Sample Index>
 
@@ -661,24 +681,21 @@ class Edge(Socket):
         self._jump(node._out)
         return self._domain_to_geometry
 
-    @classmethod
-    def split(cls, mesh=None):
-        """ > Class Method <&Node Split Edges>
+    def split(self):
+        """ > Jump Method <&Node Split Edges>
 
         Information
         -----------
+        - Socket 'Mesh' : self
         - Socket 'Selection' : self[selection]
-
-        Arguments
-        ---------
-        - mesh (Geometry) : socket 'Mesh' (id: Mesh)
 
         Returns
         -------
         - Mesh
         """
-        node = Node('Split Edges', sockets={'Mesh': mesh, 'Selection': self._sel})
-        return node._out
+        node = Node('Split Edges', sockets={'Mesh': self, 'Selection': self._sel})
+        self._jump(node._out)
+        return self._domain_to_geometry
 
     def split_to_instances(self, group_id=None):
         """ > Method <&Node Split to Instances>
@@ -799,6 +816,33 @@ class Edge(Socket):
         data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Edge.viewer', 'value')
         node = Node('Viewer', sockets={'Geometry': self, 'Value': value}, data_type=data_type, domain='EDGE')
         return
+
+    @property
+    def material(self):
+        """ Write only property for node <Node Set Material>
+        """
+        raise NodeError('Property Edge.material is write only.')
+
+    @material.setter
+    def material(self, material=None):
+        """ > Jump Method <&Node Set Material>
+
+        Information
+        -----------
+        - Socket 'Geometry' : self
+        - Socket 'Selection' : self[selection]
+
+        Arguments
+        ---------
+        - material (Material) : socket 'Material' (id: Material)
+
+        Returns
+        -------
+        - Geometry
+        """
+        node = Node('Set Material', sockets={'Geometry': self, 'Selection': self._sel, 'Material': material})
+        self._jump(node._out)
+        return self._domain_to_geometry
 
     @property
     def shade_smooth(self):

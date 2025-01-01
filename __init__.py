@@ -94,55 +94,32 @@ d270   = np.pi*1.5
 d360   = tau
 e      = np.e
 
-"""
-from .core.treeclass import Layout, Break, Tree, Node, Group, GroupF, G, ColorRamp
-from .core.zones import Zone, Repeat, Simulation, ForEachElement
-"""
 
-"""
-#from .core.staticclass import nd
-from .core.allnodes import nd
-from .core import gnmath
+if True:
+    from .core import Boolean, Float, Integer, Vector, Rotation, Matrix, Color, String
+    from .core import Texture, Collection, Object, Image, Material
+    from .core import Menu
+    from .core import Geometry, Domain
+    from .core import Point, Vertex, CloudPoint, SplinePoint, Spline, Instance, Layer
+    from .core import Mesh, Curve, Cloud, Instances, GreasePencil, Volume
 
-from .core.gizmoclass import Gizmo
+    from .core import Layout, Panel, Break, Tree, Node, Group, GroupF, G, ColorRamp
+    from .core import Zone, Repeat, Simulation, ForEachElement
 
-from .core.socket_class import Socket, Attribute, String, Material, Image, Object, Collection, Menu
-"""
+    from .core import GeoNodes
 
-from .core import Boolean, Float, Integer, Vector, Rotation, Matrix, Color, String
-from .core import Texture, Collection, Object, Image, Material
-from .core import Menu
-from .core import Geometry, Domain
-from .core import Point, Vertex, CloudPoint, SplinePoint, Spline, Instance, Layer
-from .core import Mesh, Curve, Cloud, Instances, GreasePencil, Volume
+    from .core import gnmath, nd
 
-from .core import Layout, Panel, Break, Tree, Node, Group, GroupF, G, ColorRamp
-from .core import Zone, Repeat, Simulation, ForEachElement
-
-from .core import GeoNodes
-
-from .core import gnmath, nd
-
-
-
-"""
-from .core.colorclass import Color
-from .core.floatclass import Integer, Float
-from .core.textures import Texture
-from .core.vectorclass import Vector, Rotation, Matrix
-from .core.geometryclass import Geometry, Mesh, Curve, Cloud, Instances, Volume, GreasePencil
-from .core.geometryclass import Domain, Vertex, Edge, Face, Corner, SplinePoint, Spline, CloudPoint, Instance, Layer
 
 # ----------------------------------------------------------------------------------------------------
 # Shader
 
-from .core.allnodes import snd
-from .shadernodes.shadernodes import ShaderNodes #, snd
-from .shadernodes.shaderclass import Shader, VolumeShader
+if True:
+    from .core import snd, Shader #, VolumeShader
 
 # ----------------------------------------------------------------------------------------------------
 # Register
 
-from .core import treearrange
-treearrange.register()
-"""
+if True:
+    from .core import treearrange
+    treearrange.register()

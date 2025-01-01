@@ -97,11 +97,6 @@ def demo():
 
     with GeoNodes("Explosion"):
 
-        #frame0    = Integer(1, "Start frame")
-        #gravity   = Vector.Acceleration((0, 0, -9.86), "Gravity", tip="Gravity vector")
-        #vis_fac   = Float(0, "Viscosity factor")
-        #vis_exp   = Float(2, "Viscosity exponent")
-
         with Panel("Particles"):
             density   = Float(50, "Particles density", 0, 100)
             use_coll  = Boolean(False, "Use collection for particles")
@@ -120,20 +115,14 @@ def demo():
 
         with Layout("Random speeds, aligned with normal plus some noise"):
             speed = normal * (max_speed * Float.Random(0, 1, seed=seed + 1))
-            cloud.points.store("Speed", speed)
+            cloud.points._Speed = speed
 
         with Layout("Rotation aligned with normals"):
-            rotation = Rotation.AlignToVector(normal)
-            cloud = cloud.points.store("Rotation", rotation)
+            cloud.points._Rotation = Rotation.AlignToVector(normal)
 
         with Layout("Gravity loop"):
             simul = Group("Gravity",
                     {'Points': cloud,
-                     #'Start Frame': frame0,
-                     #'Gravity': gravity,
-                     #'Viscosity factor': vis_fac,
-                     #'Viscosity exponent': vis_exp,
-                     #"Maximum Speed" : max_speed,
                      'Seed' : seed.hash_value(119),
                     }, link_from='TREE')
             cloud = Cloud(simul.geometry)
@@ -149,7 +138,7 @@ def demo():
 
                     poly  = Mesh.Circle(radius=part_size, vertices=verts, fill_type='NGON')
                     polys = Cloud.Points(count=count).instance_on(poly)
-                    polys.insts.scale = Vector.Random(.5, 1.5, seed=200+i)
+                    polys.insts.scale = Vector.Random(.5, 1.5, seed=200 + i)
 
                     if i == 0:
                         rand_parts = polys
@@ -165,9 +154,8 @@ def demo():
         parts = rand_parts.switch(use_coll, coll_parts)
 
         with Layout("Put particles on the points and rotate with Rotation attribute"):
-            #insts = parts.on_points(cloud, pick_instance=True)
             insts = cloud.instance_on(instance=parts, pick_instance=True)
-            insts.insts.rotation = cloud.points.sample_index(Vector.Named("Rotation"), nd.index)
+            insts.insts.rotation = cloud.points.sample_index(Vector("Rotation"), nd.index)
 
         with Layout("Final geometry"):
             insts.switch(nd.scene_time.frame.less_than(frame0), Mesh()).out('Geometry')
