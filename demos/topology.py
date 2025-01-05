@@ -4,6 +4,28 @@ import numpy as np
 def demo():
 
     # ====================================================================================================
+    # Shader
+
+    with ShaderNodes("Topology"):
+
+        ped = Shader.Principled(
+            base_color = snd.attribute("Color").color,
+            roughness  = .8,
+            metallic   = .3,
+        )
+        ped.out()
+
+    with ShaderNodes("Label"):
+
+        ped = Shader.Principled(
+            base_color = snd.attribute("Color").color,
+            roughness  = 1,
+            metallic   = 0,
+        )
+        ped.out()
+
+
+    # ====================================================================================================
     # Show the labels
 
     with GeoNodes("Show Labels"):
@@ -14,6 +36,7 @@ def demo():
             show      = Boolean(True, "Show")
             direction = Vector((0, 0, 1), "Direction")
             dist      = Float(.3, "Distance")
+            color     = Color((.1, .1, .8), "Label Color")
 
         with Panel("Options"):
             font_size = Float(.3, "Font Size")
@@ -31,10 +54,19 @@ def demo():
             feel.generated.geometry = label
 
         curves = feel.generated.geometry
+        curves = Mesh(Instances(curves).realize())
+
+        curves.faces._Color = color
+        curves.material = "Label"
 
         with Layout("Lines"):
             line = Curve.Line()
             lines = cloud[show].instance_on(instance=line, scale=dist, rotation=Rotation.AlignZToVector(direction))
+            lines = Curve(lines.realize())
+            lines = lines.to_mesh(profile_curve=Curve.Circle(resolution=12, radius=.01))
+
+            lines.faces._Color = color
+            lines.material = "Label"
 
         (curves + lines).out()
 
@@ -48,7 +80,7 @@ def demo():
         with Panel("Options"):
             merge = Boolean(True, "Merge input Geometry")
 
-        mesh = geo.mesh
+        mesh  = geo.mesh
         curve = geo.curve
         cloud = geo.point_cloud
 
@@ -60,18 +92,22 @@ def demo():
             pt_cloud = mesh.points.to_points()
             pt_cloud.points._Normal = mesh.points.sample_index(nd.normal, nd.index)
             pt_cloud.points._Value  = mesh.points.sample_index(nd.index,  nd.index)
+            pt_cloud.points._Color  = (.9, 0, 0)
 
             face_cloud = mesh.faces.to_points()
             face_cloud.points._Normal = mesh.faces.sample_index(nd.normal, nd.index)
             face_cloud.points._Value  = mesh.faces.sample_index(nd.index,  nd.index)
+            face_cloud.points._Color  = (0, .9, 0)
 
             edge_cloud = mesh.edges.to_points()
             edge_cloud.points._Normal = mesh.edges.sample_index(nd.normal, nd.index)
             edge_cloud.points._Value  = mesh.edges.sample_index(nd.index,  nd.index)
+            edge_cloud.points._Color  = (0, 0, .9)
 
             crn_cloud = mesh.corners.to_points()
             crn_cloud.points._Normal = mesh.corners.sample_index(nd.normal, nd.index)
             crn_cloud.points._Value  = mesh.corners.sample_index(nd.index,  nd.index)
+            crn_cloud.points._Color  = (.1, .9, .9)
 
         with Layout("Curve domains"):
 
@@ -80,10 +116,12 @@ def demo():
             spt_cloud.points._Normal = curve.points.sample_index(curve.tangent, nd.index).cross((0, 0, 1)).normalize
 
             spt_cloud.points._Value = curve.points.sample_index(nd.index, nd.index)
+            spt_cloud.points._Color  = (.9, 0, 0)
 
             spline_cloud = Cloud(spt_cloud)
             spline_cloud.points._Value  = curve.points.sample_index(curve.points.curve_index(nd.index), nd.index)
             delete = curve.points.sample_index(curve.points.index_in_curve(nd.index), nd.index).not_equal(0)
+            spline_cloud.points._Color  = (0, .9, 0)
             spline_cloud.points[delete].delete()
 
         with Layout("Cloud"):
@@ -91,6 +129,7 @@ def demo():
             cl_cloud = Cloud(cloud)
             cl_cloud.points._Normal = (1, 0, 0)
             cl_cloud.points._Value = nd.index
+            cl_cloud.points._Color  = (1, 0, 0)
 
         with Panel("Domain"):
             cloud = Cloud.MenuSwitch(items={
@@ -108,7 +147,7 @@ def demo():
             selected = Boolean("Selected")
             show = show.switch(selected.exists_, selected & show)
 
-        labels = G.show_labels(cloud=cloud, label_value=cloud._Value, show=show, direction=cloud._Normal, link_from='TREE')
+        labels = G.show_labels(cloud=cloud, label_value=cloud._Value, show=show, direction=cloud._Normal, label_color=cloud._Color, link_from='TREE')
 
         labels.switch(merge, geo + labels).out()
 
@@ -118,6 +157,8 @@ def demo():
     with GeoNodes("Mesh Topology"):
 
         in_mesh = Mesh()
+        in_mesh.material = "Topology"
+        in_mesh.faces._Color = (.8, .8, .8, 1)
 
         index = Integer(0, "Domain Index")
 
@@ -145,6 +186,7 @@ def demo():
                     rep.mesh.faces._Selected |= nd.index.equal(rep.mesh.corners.face_index(corner_index))
 
                 mesh = rep.mesh
+                in_mesh.faces[mesh.faces.sample_index(mesh._Selected, nd.index)]._Color = (0, .5, 0, 1)
 
                 vrt_vis += G.topology_indices(geometry=mesh, merge_input_geometry=False, domain='Faces', first_index=0, last_index=1000, link_from='TREE')
 
@@ -168,5 +210,5 @@ def demo():
                 edge_vis += G.topology_indices(geometry=mesh, merge_input_geometry=False, domain='Faces', first_index=0, last_index=1000, link_from='TREE')
 
 
-        (edge_vis + in_mesh).out()
-        #(vrt_vis + in_mesh).out()
+        #(edge_vis + in_mesh).out()
+        (vrt_vis + in_mesh).out()

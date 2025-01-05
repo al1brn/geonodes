@@ -30,37 +30,6 @@ class TreeInterface:
     # Utilities
 
     @staticmethod
-    def ensure_uniques(names: list[str], single_digit: bool = False):
-        """ Build a list of unique names from a list
-
-        Doublons are suffixed by an index:
-        - ['key', 'key', 'other'] -> ['key', 'key_001', 'other']
-
-        Arguments
-        ---------
-        - names : list of names with possible doublons
-        - single_digit : 'key_1' rather that 'key_001'
-
-        Returns
-        -------
-        - list of str : doublons are suffixed by an index
-        """
-        homos  = {}
-        uniques = []
-        for name in names:
-            count = homos.get(name)
-            if count is None:
-                uniques.append(name)
-                homos[name] = 1
-            else:
-                if single_digit:
-                    uniques.append(f"{name}_{count:d}")
-                else:
-                    uniques.append(f"{name}_{count:03d}")
-                homos[name] = count + 1
-        return uniques
-
-    @staticmethod
     def get_socket_bl_idname(socket):
         if socket.bl_subtype_label is None or socket.bl_subtype_label == 'None':
             return socket.bl_idname
@@ -75,7 +44,7 @@ class TreeInterface:
         elif isinstance(names, str):
             names = [names]
 
-        return (socket.name in names) or (socket.identifier in names) or (utils.socket_name(socket.name) in names)
+        return (socket.name in names) or (socket.identifier in names) or (utils.snake_case(socket.name) in names)
 
     # ====================================================================================================
     # Get list of items
@@ -110,7 +79,7 @@ class TreeInterface:
                 pass
 
             elif isinstance(panel, str):
-                if item.parent.name != panel and utils.socket_name(item.parent.name) != panel:
+                if item.parent.name != panel and utils.snake_case(item.parent.name) != panel:
                     continue
 
             else:
@@ -119,7 +88,7 @@ class TreeInterface:
 
             items.append(item)
 
-        keys = self.ensure_uniques([utils.socket_name(item.name) for item in items])
+        keys = utils.ensure_uniques([utils.snake_case(item.name) for item in items])
 
         return {key:item for key, item in zip(keys, items)}
 
@@ -148,7 +117,7 @@ class TreeInterface:
         return self._get_items('PANEL')
 
     # ----------------------------------------------------------------------------------------------------
-    # Get the output interface sockets
+    # Get the input interface sockets
 
     def get_in_sockets(self, panel_name: str | None=None):
         """ Get the output interface sockets
@@ -186,14 +155,59 @@ class TreeInterface:
 
         return self._get_items('SOCKET', 'INPUT', panel=panel)
 
+    # ----------------------------------------------------------------------------------------------------
+    # Get the possible input socket name
+
+    def get_in_socket_names(self):
+
+        socket_names = {}
+        for index, (key, socket) in enumerate(self.get_in_sockets().items()):
+            socket_names[socket.identifier] = [key, socket.identifier, socket.name, utils.snake_case(socket.name), socket.parent.name + "." + socket.name, utils.snake_case(socket.parent.name + '_' + socket.name)]
+
+        return socket_names
+
+    # ----------------------------------------------------------------------------------------------------
+    # Get the socket argument names
+
+    def get_arg_names(self):
+
+        # ----- We start with sockets which are not in a panel
+        top_keys = [utils.snake_case(sock.name) for sock in self.get_in_sockets(panel_name="").values()]
+
+        # ----- The keys of each panel
+        panels = list(self.get_panels().keys())
+        panel_keys = {}
+        for panel in panels:
+            panel_keys[utils.snake_case(panel)] = [utils.snake_case(sock.name) for sock in self.get_in_sockets(panel_name=panel).values()]
+
+        # ----- Let's build a full list
+
+        args = list(top_keys)
+        for panel, keys in panel_keys.items():
+            for key in keys:
+                with_panel = False
+                if key in top_keys:
+                    with_panel = True
+                else:
+                    for p in panels:
+                        if p == panel:
+                            continue
+                        if key in panel_keys[p]:
+                            with_panel = True
+                            break
+                if with_panel:
+                    args.append(panel + '_' + key)
+                else:
+                    args.append(key)
+
+        # ----- We ensure uniques
+
+        return utils.ensure_uniques(args, single_digit=True)
+
+
+
     # ====================================================================================================
     # Get individual items
-
-    def by_identifier(self, identifier):
-        for item in self.btree.interface.items_tree:
-            if item.item_type == 'SOCKET' and item.identifier == identifier:
-                return item
-        return None
 
     # ----------------------------------------------------------------------------------------------------
     # Get a panel by its name
@@ -203,7 +217,7 @@ class TreeInterface:
 
         Arguments
         ---------
-        - name : socket name
+        - name : panel name, can be true name or the snake case version
         - halt : raise an exception if not found
 
         Raises
@@ -224,8 +238,17 @@ class TreeInterface:
                 return panel
 
         if halt:
-            raise AttributeError(f"Panelt '{name}' not found in {list(panels.keys())}")
+            raise AttributeError(f"Panel '{name}' not found in {list(panels.keys())}")
 
+        return None
+
+    # ----------------------------------------------------------------------------------------------------
+    # Get a socket by its identifier
+
+    def by_identifier(self, identifier):
+        for item in self.btree.interface.items_tree:
+            if item.item_type == 'SOCKET' and item.identifier == identifier:
+                return item
         return None
 
     # ----------------------------------------------------------------------------------------------------
@@ -267,12 +290,15 @@ class TreeInterface:
     def get_in_socket(self, name, panel_name: str | None = None, halt: bool = True):
         """ Get an input socket by its name
 
-        The name of the panel can be specified either with the 'panel_name' argument or using dot syntax.
-        In the following example, the two lines return the same socket:
+        The name of the panel can be specified either with the 'panel_name' argument or by concatenation
+        In the following example, the lines return the same socket:
 
         ``` python
         interface_socket = interface.get_in_socket('Socket Name', 'My Panel')
-        interface_socket = interface.get_in_socket('My Panel.Socket Name')
+        interface_socket = interface.get_in_socket('My Panel Socket Name')
+        interface_socket = interface.get_in_socket('my_panel Socket Name')
+        interface_socket = interface.get_in_socket('my_panel_socket_name')
+        interface_socket = interface.get_in_socket('My Panel socket_name')
         ```
 
         If 'panel_name' is an empty string, the socket is searched in the sockets which are not
@@ -292,20 +318,31 @@ class TreeInterface:
         -------
         - dict : socket unique python name: bpy.types.NodeTreeInterfaceItem with in_out = 'INPUT'
         """
+
+        # ----- Particular case : name is the index
+
+        if isinstance(name, int):
+            sockets = self.get_in_sockets()
+            key = list(sockets.keys())[name]
+            return sockets[key]
+
+        # ----- Name is a string
+        # Let's build the full path including the panel name
+
         if panel_name is None:
-            composed = name.split('.')
-            if len(composed) == 2:
-                panel_name = composed[0]
-                name = composed[1]
+            full_name = name
+        else:
+            full_name = utils.snake_case(panel_name + '_' + name)
 
-        sockets = self.get_in_sockets(panel_name=panel_name)
-        socket = sockets.get(name)
-        if socket is not None:
-            return socket
+        # ----- get_in_socket_names returns all the possible names
 
-        for socket in sockets.values():
-            if socket.name == name:
-                return socket
+        socket_names = self.get_in_socket_names()
+
+        # ---- Loop on the candidates, return the first matching socket
+
+        for identifier, names in socket_names.items():
+            if full_name in names:
+                return self.by_identifier(identifier)
 
         if halt:
             if panel_name is None:

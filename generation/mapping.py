@@ -19,7 +19,7 @@ class Mapping:
             impls[target] = tgt
 
         if fname is None:
-            fname = utils.socket_name(node_name)
+            fname = utils.snake_case(node_name)
 
         tgt.append({'impl': impl, 'fname': fname, 'is_static': is_static, 'is_class': is_class})
 

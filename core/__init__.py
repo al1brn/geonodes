@@ -36,7 +36,7 @@ if True:
 
     from .geometry_class import Geometry
     from .domain_class import Domain
-    from .domains import Point, Vertex, CloudPoint, SplinePoint, Spline, Instance, Layer
+    from .domains import Point, Vertex, Face, Edge, Corner, SplinePoint, Spline, CloudPoint, Instance, Layer
     from .geometries import Mesh, Curve, Cloud, Instances, GreasePencil, Volume
 
     from .treeclass import Layout, Panel, Break, Tree, Node, Group, GroupF, ColorRamp, G
@@ -44,4 +44,7 @@ if True:
 
     from .geonodes import GeoNodes
 
-    from .generated import Shader
+    # ===== Shader
+
+    from .sock_shader import Shader, VolumeShader
+    from .shadernodes import ShaderNodes

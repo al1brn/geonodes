@@ -3741,7 +3741,7 @@ class nd(Socket):
         - Integer [exists_ (Boolean)]
         """
         node = Node('Active Element', sockets={}, domain=domain)
-        return node._out
+        return node
 
     @classmethod
     @property

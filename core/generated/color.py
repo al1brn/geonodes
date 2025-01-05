@@ -985,6 +985,30 @@ class Color(Socket):
         node = Node('Mix', sockets={'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='VALUE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM')
         return node._out
 
+    def mix(self, b=None, factor=None, clamp_factor=True, clamp_result=False):
+        """ > Method <&Node Mix>
+
+        Information
+        -----------
+        - Socket 'A' : self
+        - Parameter 'blend_type' : 'MIX'
+        - Parameter 'data_type' : 'RGBA'
+        - Parameter 'factor_mode' : 'UNIFORM'
+
+        Arguments
+        ---------
+        - b (Color) : socket 'B' (id: B_Color)
+        - factor (Float) : socket 'Factor' (id: Factor_Float)
+        - clamp_factor (bool): parameter 'clamp_factor'
+        - clamp_result (bool): parameter 'clamp_result'
+
+        Returns
+        -------
+        - Color
+        """
+        node = Node('Mix', sockets={'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM')
+        return node._out
+
     def rgb_curves(self, fac=None):
         """ > Method <&Node RGB Curves>
 
@@ -1167,24 +1191,6 @@ class Color(Socket):
         node = Node('Brightness/Contrast', sockets={'Color': self, 'Bright': bright, 'Contrast': contrast})
         return node._out
 
-    def emission(self, strength=None):
-        """ > Method <&ShaderNode Emission>
-
-        Information
-        -----------
-        - Socket 'Color' : self
-
-        Arguments
-        ---------
-        - strength (Float) : socket 'Strength' (id: Strength)
-
-        Returns
-        -------
-        - Shader
-        """
-        node = Node('Emission', sockets={'Color': self, 'Strength': strength})
-        return node._out
-
     def gamma(self, gamma=None):
         """ > Method <&ShaderNode Gamma>
 
@@ -1267,7 +1273,7 @@ class Color(Socket):
 
     @classmethod
     @property
-    def Rgb(cls):
+    def RGB(cls):
         """ > Constructor <&ShaderNode RGB>
 
         Returns
@@ -1355,30 +1361,6 @@ class Color(Socket):
         node = Node('Separate Color', sockets={'Color': self}, mode=mode)
         return node._out
 
-    def subsurface_scattering(self, scale=None, radius=None, ior=None, roughness=None, anisotropy=None, normal=None, falloff='RANDOM_WALK'):
-        """ > Method <&ShaderNode Subsurface Scattering>
-
-        Information
-        -----------
-        - Socket 'Color' : self
-
-        Arguments
-        ---------
-        - scale (Float) : socket 'Scale' (id: Scale)
-        - radius (Vector) : socket 'Radius' (id: Radius)
-        - ior (Float) : socket 'IOR' (id: IOR)
-        - roughness (Float) : socket 'Roughness' (id: Roughness)
-        - anisotropy (Float) : socket 'Anisotropy' (id: Anisotropy)
-        - normal (Vector) : socket 'Normal' (id: Normal)
-        - falloff (str): parameter 'falloff' in ('BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN')
-
-        Returns
-        -------
-        - Shader
-        """
-        node = Node('Subsurface Scattering', sockets={'Color': self, 'Scale': scale, 'Radius': radius, 'IOR': ior, 'Roughness': roughness, 'Anisotropy': anisotropy, 'Normal': normal}, falloff=falloff)
-        return node._out
-
     @classmethod
     def SkyTexture(cls, air_density=1.0, altitude=0.0, dust_density=1.0, ground_albedo=0.30000001192092896, ozone_density=1.0, sky_type='NISHITA', sun_disc=True, sun_elevation=0.2617993950843811, sun_intensity=1.0, sun_rotation=0.0, sun_size=0.009512044489383698, turbidity=2.200000047683716):
         """ > Constructor <&ShaderNode Sky Texture>
@@ -1439,70 +1421,4 @@ class Color(Socket):
         """
         node = Node('Color Attribute', sockets={}, layer_name=layer_name)
         return cls(node._out)
-
-    def volume_absorption(self, density=None):
-        """ > Method <&ShaderNode Volume Absorption>
-
-        Information
-        -----------
-        - Socket 'Color' : self
-
-        Arguments
-        ---------
-        - density (Float) : socket 'Density' (id: Density)
-
-        Returns
-        -------
-        - Shader
-        """
-        node = Node('Volume Absorption', sockets={'Color': self, 'Density': density})
-        return node._out
-
-    def principled_volume(self, color_attribute=None, density=None, density_attribute=None, anisotropy=None, absorption_color=None, emission_strength=None, emission_color=None, blackbody_intensity=None, blackbody_tint=None, temperature=None, temperature_attribute=None):
-        """ > Method <&ShaderNode Principled Volume>
-
-        Information
-        -----------
-        - Socket 'Color' : self
-
-        Arguments
-        ---------
-        - color_attribute (String) : socket 'Color Attribute' (id: Color Attribute)
-        - density (Float) : socket 'Density' (id: Density)
-        - density_attribute (String) : socket 'Density Attribute' (id: Density Attribute)
-        - anisotropy (Float) : socket 'Anisotropy' (id: Anisotropy)
-        - absorption_color (Color) : socket 'Absorption Color' (id: Absorption Color)
-        - emission_strength (Float) : socket 'Emission Strength' (id: Emission Strength)
-        - emission_color (Color) : socket 'Emission Color' (id: Emission Color)
-        - blackbody_intensity (Float) : socket 'Blackbody Intensity' (id: Blackbody Intensity)
-        - blackbody_tint (Color) : socket 'Blackbody Tint' (id: Blackbody Tint)
-        - temperature (Float) : socket 'Temperature' (id: Temperature)
-        - temperature_attribute (String) : socket 'Temperature Attribute' (id: Temperature Attribute)
-
-        Returns
-        -------
-        - Shader
-        """
-        node = Node('Principled Volume', sockets={'Color': self, 'Color Attribute': color_attribute, 'Density': density, 'Density Attribute': density_attribute, 'Anisotropy': anisotropy, 'Absorption Color': absorption_color, 'Emission Strength': emission_strength, 'Emission Color': emission_color, 'Blackbody Intensity': blackbody_intensity, 'Blackbody Tint': blackbody_tint, 'Temperature': temperature, 'Temperature Attribute': temperature_attribute})
-        return node._out
-
-    def volume_scatter(self, density=None, anisotropy=None, phase='HENYEY_GREENSTEIN'):
-        """ > Method <&ShaderNode Volume Scatter>
-
-        Information
-        -----------
-        - Socket 'Color' : self
-
-        Arguments
-        ---------
-        - density (Float) : socket 'Density' (id: Density)
-        - anisotropy (Float) : socket 'Anisotropy' (id: Anisotropy)
-        - phase (str): parameter 'phase' in ('HENYEY_GREENSTEIN', 'FOURNIER_FORAND', 'DRAINE', 'RAYLEIGH', 'MIE')
-
-        Returns
-        -------
-        - Shader
-        """
-        node = Node('Volume Scatter', sockets={'Color': self, 'Density': density, 'Anisotropy': anisotropy}, phase=phase)
-        return node._out
 

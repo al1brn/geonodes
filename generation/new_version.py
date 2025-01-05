@@ -145,7 +145,7 @@ def node_changes():
         sockets = node_info.get_sockets()
         params  = node_info.get_parameters()
 
-        meth_name = utils.socket_name(node_info.bnode.name)
+        meth_name = utils.snake_case(node_info.bnode.name)
         print(node_info.bnode.name, meth_name)
         return
 

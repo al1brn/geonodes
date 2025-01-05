@@ -13,17 +13,15 @@ module : demos/fourd
 --------------------
 Generates the fourd engine modifiers
 
-The 4-position of a vertex is store in the first column of a Matrix (column with python index = 0, column 1 in editor).
-The other columns are used to store normals:
-- Surface : columns 1 and 2 store the two normals
-- Curve : columns 1, 2, 3 store the three normals
+Geometry Nodes
+--------------
+    -
 
 updates
 -------
 - creation : 2024/03/04
 - update   : 2024/08/07
 - update   : 2024/08/03
-- update   : 2024/01/03
 """
 
 
@@ -34,17 +32,14 @@ from geonodes.core import utils
 
 # ----- Prefixes
 
-math_  = "Math"
-mods_  = "4D"
-curve_ = "Curve"
-surf_  = "Surf"
-op_ = "Op"
+maths_  = "Math"
+mods_   = "Four"
+curves_ = "Curve"
+surfs_  = "Surf"
 
 ZERO = 0.0001
 
 V4_COL = (.3, .1, .1)
-
-PARAMETERS_OBJECT = "4D Parameters"
 
 # =============================================================================================================================
 # Build the 4D engine
@@ -87,7 +82,7 @@ def build_shaders():
 
     with ShaderNodes("4 Axis"):
 
-        col = snd.attribute(attribute_name="Color").color_
+        col = snd.attribute(attribute_name="Axis Color").color_
 
         ped = Shader.Principled(base_color=col, roughness=.1, metallic=.3)
 
@@ -111,6 +106,7 @@ def build_shaders():
 
         ped.out()
 
+
     # ----------------------------------------------------------------------------------------------------
     # Edge default
 
@@ -124,712 +120,790 @@ def build_shaders():
         ped.out()
 
 # =============================================================================================================================
-# DEBUG
-
-def build_debug():
-
-    # ----------------------------------------------------------------------------------------------------
-    # DEBUG - Dump the four components of a Vector
-
-    with GeoNodes("Dump Vector", is_group=True, prefix="DEBUG"):
-
-        V = [0]*4
-        V[0] = Float(0, "x")
-        V[1] = Float(0, "y")
-        V[2] = Float(0, "z")
-        V[3] = Float(0, "w")
-
-        decimals = Integer(3, "Decimals")
-        size = Float(3, "Size")
-        offset = Vector(0, "Offset")
-
-        cloud = Mesh.LineEndPoints(start_location = (0, size*(-.5), 0), end_location=(0, size/2, 0), count=4).points.to_points()
-
-        for i in range(4):
-            cloud.points[i]._Value = V[3 - i]
-
-        with cloud.points.for_each(position=nd.position, value=Float("Value")) as feel:
-
-            label = feel.value.to_string(decimals=decimals).to_curves(size=.3, align_x='CENTER')
-            label.transform(translation=feel.position)
-
-            feel.generated.geometry = Curve(label.realize()).fill()
-
-        geo = feel.generated.geometry
-        geo.transform(translation=offset)
-        geo.out()
-
-        cloud.out(name="Cloud")
-
-    # ----------------------------------------------------------------------------------------------------
-    # DEBUG - Dump the content of a matrix
-
-    with GeoNodes("Dump Matrix", is_group=True, prefix="DEBUG"):
-
-        M = Matrix(None, name="M")
-        decimals = Integer(3, "Decimals")
-        size = Float(3, "Size")
-        offset = Vector(0, "Offset")
-
-        cloud = Mesh.Grid(size_x=size, size_y=size, vertices_x=4, vertices_y=4).points.to_points()
-
-        a = M.separate
-        for i, v in enumerate(a):
-            j = (i//4)*4 + 3 - i%4
-            cloud.points[j]._Value = v
-
-        with cloud.points.for_each(position=nd.position, value=Float("Value")) as feel:
-
-            label = feel.value.to_string(decimals=decimals).to_curves(size=.3, align_x='CENTER')
-            label.transform(translation=feel.position)
-
-            feel.generated.geometry = Curve(label.realize()).fill()
-
-        geo = feel.generated.geometry
-        geo.transform(translation=offset)
-        geo.out()
-
-        cloud.out(name="Cloud")
-
-    # ----------------------------------------------------------------------------------------------------
-    # DEBUG - Dump operation
-
-    with GeoNodes("Dump Matrix Operation", is_group=True, prefix="DEBUG"):
-
-        A = Matrix(None, name="A")
-        B = Matrix(None, name="B")
-        C = Matrix(None, name="C")
-
-        vis_A = G.debug.dump_matrix(A, offset = (-5, 0, 0), link_from='TREE')
-        vis_B = G.debug.dump_matrix(B, offset = (0, 5, 0), link_from='TREE')
-        vis_C = G.debug.dump_matrix(C, offset = 0, link_from='TREE')
-
-        vis_A.transform(translation=(-5, 0, 0))
-        vis_B.transform(translation=(0, 5, 0))
-
-        Geometry.Join(vis_A, vis_B, vis_C).out()
-
+# A 4-vector is a couple (V: Vector, w: float)
 # =============================================================================================================================
-# V4 coordinates class
 
 class V4:
-    """ This class provides help to handle the four V4 components names x, y, z, w
-    """
-    def __init__(self, *values, panel=None):
-
-        if len(values) == 0:
-            a = [0]*4
-
-        elif len(values) == 1:
-            value = values[0]
-            if isinstance(value, V4):
-                a = value.a
-            elif isinstance(value, (list, tuple)):
-                assert(len(value) == 4)
-                a = value
+    def __init__(self, V=None, w=None, name=None, tip=None):
+        if V is None and w is None or name is not None:
+            if name is None or name == '':
+                self.V = Vector(V, "V", tip=tip)
+                self.w = Float(w, "w", tip=tip)
             else:
-                a = [value, value, value, value]
-
-        elif len(values) == 4:
-            a = values
-
+                self.V = Vector(V, f"{name} V", tip=tip)
+                self.w = Float(w, f"{name} w", tip=tip)
         else:
-            assert(False)
+            self.V = Vector(V)
+            self.w = Float(w)
 
-        if panel is None:
-            self.x, self.y, self.z, self.w = a
-            for i in range(4):
-                v = self[i]
-                if hasattr(v, 'node') and 'x' not in [sock.name for sock in v.node._bnode.outputs]:
-                    v._lc("xyzw"[i])
-        else:
-            with Panel(panel):
-                self.x, self.y, self.z, self.w = [Float(a[i], "xyzw"[i]) for i in range(4)]
+    # ----------------------------------------------------------------------------------------------------
+    # X, y, z, w
 
     @classmethod
-    def FromNode(cls, node):
-        return cls(node.x, node.y, node.z, node.w)
-
-    def out(self):
-        for v, label in zip(self, "xyzw"):
-            v.out(label)
-
-    def args(self, panel=None):
-        if panel is None:
-            name = ""
-        else:
-            name = utils.snake_case(panel) + '_'
-        return {name + "xyzw"[i]: self[i] for i in range(4)}
-
-    def __str__(self):
-        return f"<V4 {[str(self[i]) for i in range(4)]}>"
-
-    def dump(sef, offset=(0, 0, 0)):
-        return G.debug.dump_vector(*self, offset=offset)
-
-    # ====================================================================================================
-    # Interface
+    def Xyzw(cls, x, y, z, w):
+        return cls(Vector((x, y, z)), w)
 
     @property
-    def a(self):
-        return [self.x, self.y, self.z, self.w]
+    def x(self):
+        return self.V.x
 
-    @a.setter
-    def a(self, value):
-        self.x, self.y, self.z, self.w = value
+    @property
+    def y(self):
+        return self.V.y
 
-    def __len__(self):
-        return 4
+    @property
+    def z(self):
+        return self.V.z
 
-    def __getitem__(self, index):
-        return self.a[index]
+    # ----------------------------------------------------------------------------------------------------
+    # Tree input / output
 
-    def __setitem__(self, index, value):
-        if index == 0:
-            self.x = value
-        elif index == 1:
-            self.y = value
-        elif index == 2:
-            self.z = value
-        elif index == 3:
-            self.w = value
-        else:
-            assert(False)
+    def out(self, name=None):
+        name = "" if name is None or name == "" else name + " "
+        self.V.out(name + "V")
+        self.w.out(name + "w")
 
-    def __iter__(self):
-        self._iter_index = 0
-        return self
+    # ----------------------------------------------------------------------------------------------------
+    # Node input / output
 
-    def __next__(self):
-        if self._iter_index == 4:
-            raise StopIteration
+    @classmethod
+    def FromNode(cls, node, name=None):
+        name = "" if name is None or name == "" else utils.snake_case(name) + "_"
+        return cls(getattr(node, name + "v"), getattr(node, name + "w"))
 
-        else:
-            v = self.a[self._iter_index]
-            self._iter_index += 1
-            return v
+    def sockets(self, name=None):
+        name = "" if name is None or name == "" else name + " "
+        return {name + "V": self.V, name + "w": self.w}
 
-    # ====================================================================================================
-    # Implement the operations node groups
+    @property
+    def args(self):
+        return (self.V, self.w)
 
-    @staticmethod
-    def build_operations():
+    def kwargs(self, name=None):
+        name = "" if name is None or name == "" else utils.snake_case(name) + "_"
+        return {name + "v": self.V, name + "w": self.w}
 
-        # ----------------------------------------------------------------------------------------------------
-        # Swith two 4-vector
+    # ----------------------------------------------------------------------------------------------------
+    # From / to position
 
-        with GeoNodes("Switch", is_group=True, prefix=op_):
-            switch = Boolean(False, "Switch")
-            false  = V4(panel="False")
-            true   = V4(panel="True")
-            V4([false[i].switch(switch, true[i]) for i in range(4)]).out()
+    @classmethod
+    def Position(cls, geo, sample_index=None):
+        with Layout("Get Position V4", V4_COL):
+            if sample_index is None:
+                return cls(nd.position, Float.Named("w"))
+            else:
+                return cls(
+                    geo.points.sample_index(nd.position,      index=sample_index),
+                    geo.points.sample_index( Float.Named("w"), index=sample_index))
 
-        # ----------------------------------------------------------------------------------------------------
-        # Dot product
+    def set_position(self, geo):
+        # Need to sample w before setting the position because w can be computed
+        # from the position (for instance after a rotation)
+        # Changing the position would change w before it is written
 
-        with GeoNodes("Dot", is_group=True, prefix=op_):
-            v0 = V4(panel="First")
-            v1 = V4(panel="Second")
+        geo = Mesh(geo)
 
-            (v0.x*v1.x + v0.y*v1.y + v0.z*v1.z + v0.w*v1.w).out("Dot")
+        with Layout("Set Position V4", V4_COL):
+            w = geo.points.sample_index(self.w, index=nd.index)
+            geo.points.position = self.V
+            return geo.points.store("w", w)
 
-        # ----------------------------------------------------------------------------------------------------
-        # Scale
+    def set_offset(self, geo):
+        with Layout("Set Offset V4", V4_COL):
+            w = geo.points.sample_index(self.w, index=nd.index)
+            geo = geo.set_position(offset=self.V)
+            return Mesh(geo).points.store("w", w + Float.Named("w"))
 
-        with GeoNodes("Scale", is_group=True, prefix=op_):
-            scale = Float(1, "Scale")
-            v = V4(panel="Vector")
+    # ----------------------------------------------------------------------------------------------------
+    # From / to face normal
 
-            V4([scale*v[i] for i in range(4)]).out()
+    @classmethod
+    def Normal(cls, geo, suffix, sample_index=None):
+        with Layout("Get Normal", V4_COL):
+            if sample_index is None:
+                return cls(Vector.Named(f"N{suffix}V"), Float.Named(f"N{suffix}w"))
+            else:
+                return cls(
+                    geo.faces.sample_index(Vector.Named(f"N{suffix}V"), index=sample_index),
+                    geo.faces.sample_index(Float.Named( f"N{suffix}w"), index=sample_index))
 
-        # ----------------------------------------------------------------------------------------------------
-        # Math
+    def set_normal(self, geo, suffix):
+        with Layout("Set Normal", V4_COL):
+            w = geo.faces.sample_index(self.w, index=nd.index)
+            geo.faces.store(f"N{suffix}V", self.V)
+            return geo.faces.store(f"N{suffix}w", w)
 
-        with GeoNodes("Math", is_group=True, prefix=op_):
-            v0 = V4(panel="First")
-            v1 = V4(panel="Second")
+    # ----------------------------------------------------------------------------------------------------
+    # From / to curve tangent
 
-            with Layout("Add"):
-                add = V4([v0[i] + v1[i] for i in range(4)])
+    @classmethod
+    def Tangent(cls, geo, sample_index=None):
 
-            with Layout("Subtract"):
-                sub = V4([v0[i] - v1[i] for i in range(4)])
+        # ----- Does the tangent exist ?
 
-            with Layout("Multiply"):
-                mul = V4([v0[i] * v1[i] for i in range(4)])
+        with Layout("Get Tangent", V4_COL):
+            if sample_index is None:
+                return cls(Vector.Named("TV"), Float.Named("Tw"))
+            else:
+                return cls(
+                    geo.points.sample_index(Vector.Named("TV"), index=sample_index),
+                    geo.points.sample_index(Float.Named( "Tw"), index=sample_index))
 
-            with Layout("Divide"):
-                dvd = V4([v0[i] / v1[i] for i in range(4)])
+    def set_tangent(self, geo):
+        with Layout("Set Tangent", V4_COL):
+            w = geo.points.sample_index(self.w, index=nd.index)
+            geo.points.store("TV", self.V)
+            return geo.points.store( "Tw", w)
 
-            index = Integer.MenuSwitch({"Add": 0, "Subtract": 1, "Multiply": 2, "Divide": 3}, menu=0, name="Operation")
-
-            V4([Float.IndexSwitch(add[i], sub[i], mul[i], dvd[i], index=index)for i in range(4)]).out()
-
-        # ----------------------------------------------------------------------------------------------------
-        # Square Length of a 4-vector
-
-        with GeoNodes("Square Length", is_group=True, prefix=op_):
-            v = V4(panel="Vector")
-            length2 = G.op.dot(*v, *v)
-
-            length2.out("Square Length")
-            (length2 < ZERO).out("Null")
-
-        # ----------------------------------------------------------------------------------------------------
-        # Length of a 4-vector
-
-        with GeoNodes("Length", is_group=True, prefix=op_):
-            v = V4(panel="Vector")
-
-            length2 = G.op.square_length(*v)
-
-            gnmath.sqrt(length2).out("Length")
-            length2.null_.out("Null")
-
-        # ----------------------------------------------------------------------------------------------------
-        # Normalize of a 4-vector
-
-        with GeoNodes("Normalize", is_group=True, prefix=op_):
-
-            normalize = Boolean(True, "Normalize")
-
-            v       = V4(panel="Vector")
-            default = V4(panel="Default")
-
-            length2 = G.op.square_length(*v)
-            null = length2.null_
-
-            normalized = V4.FromNode(G.op.switch(null,
-                *V4.FromNode(G.op.scale(gnmath.inverse_sqrt(length2), *v).node),
-                *default).node)
-
-            G.op.switch(normalize, *v, *normalized).node.out()
-            null.out()
-
-        # ----------------------------------------------------------------------------------------------------
-        # Matrix dot vector
-
-        with GeoNodes("Matrix @ Vector", is_group=True, prefix=op_):
-            M = Matrix(None, "M")
-            x, y, z, w = V4(panel="Vector").a
-
-            a = M.separate
-            for i in range(4):
-                (a[i]*x + a[i + 4]*y + a[i + 8]*z + a[i + 12]*w).out("xyzw"[i])
-
-        # ----------------------------------------------------------------------------------------------------
-        # Component of a Vector perpendicular to an axis
-
-        with GeoNodes("Perpendicular to Axis", is_group=True, prefix=op_):
-
-            v    = V4(panel="Vector")
-            axis = V4(panel="Axis")
-
-            with Panel("Options"):
-                normalize_axis = Boolean(False, "Normalize Axis")
-                normalize_out  = Boolean(True,  "Normalize Result")
-
-            axis = axis.normalize(normalize_axis)
-
-            dot = v.dot(axis)
-
-            (v - axis.scale(dot)).normalize(normalize_out).out()
-
-    # ====================================================================================================
+    # ----------------------------------------------------------------------------------------------------
     # Operations
 
-    def switch(self, switch, true):
-        return V4.FromNode(G.op.switch(switch, *self, *true).node)
+    def __neg__(self):
+        with Layout("-V4", V4_COL):
+            return cls(-self.V, -self.w)
 
-    @property
-    def square_length(self):
-        return G.op.square_length(self)
+    def __add__(self, other):
+        with Layout("V4 Add", V4_COL):
+            return V4(self.V + other.V, self.w + other.w)
+
+    def __iadd__(self, other):
+        with Layout("V4 Add", V4_COL):
+            self.V += other.V
+            self.w += other.w
+            return self
+
+    def __sub__(self, other):
+        with Layout("V4 Sub", V4_COL):
+            return V4(self.V - other.V, self.w - other.w)
+
+    def __isub__(self, other):
+        with Layout("V4 Sub", V4_COL):
+            self.V -= other.V
+            self.w -= other.w
+            return self
+
+    def __mul__(self, other):
+        with Layout("V4 Mul", V4_COL):
+            if isinstance(other, V4):
+                return V4(self.V*other.V, self.w*other.w)
+            else:
+                return V4(self.V*other, self.w*other)
+
+    def __imul__(self, other):
+        with Layout("V4 Mul", V4_COL):
+            if isinstance(other, V4):
+                self.V *= other.V
+                self.w *= other.w
+            else:
+                self.V *= other
+                self.w *= other
+            return self
+
+    def __truediv__(self, other):
+        with Layout("V4 Div", V4_COL):
+            if isinstance(other, V4):
+                return V4(self.V/other.V, self.w/other.w)
+            else:
+                return V4(self.V/other, self.w/other)
+
+    def __itruediv__(self, other):
+        with Layout("V4 Div", V4_COL):
+            if isinstance(other, V4):
+                self.V /= other.V
+                self.w /= other.w
+            else:
+                self.V /= other
+                self.w /= other
+            return self
+
+    def dot(self, other):
+        with Layout("Dot 4", V4_COL):
+            return self.V.dot(other.V) + self.w*other.w
 
     @property
     def length(self):
-        return G.op.length(self)
+        with Layout("V4 Length", V4_COL):
+            return gnmath.sqrt(self.V.dot(self.V) + self.w*self.w)
 
-    def dot(self, other):
-        return G.op.dot(*self, *other)
+    def normalized(self, return_error=False):
+        with Layout("V4 Normalized", V4_COL):
+            n = self.length
+            err = n.less_than(ZERO)
+            v4 = V4((self.V/n).switch(err, self.V), (self.w/n).switch(err, self.w))
+            if return_error:
+                return v4, err
+            else:
+                return v4
 
-    def scale(self, factor):
-        return V4.FromNode(G.op.scale(factor, *self).node)
+    def mat_dot(self, M):
+        with Layout("Mat (4x4) @ V4", V4_COL):
 
-    def normalize(self, normalize, default=(1, 0, 0, 0)):
-        return V4.FromNode(G.op.normalize(normalize, *self, *default).node)
+            v0 = V4.FromNode(M, "R 0")
+            v1 = V4.FromNode(M, "R 1")
+            v2 = V4.FromNode(M, "R 2")
+            v3 = V4.FromNode(M, "R 3")
 
-    def matmul(self, M):
-        return V4.FromNode(G.op.matrix_vector(M, *self).node)
+            return V4.Xyzw(
+                v0.x*self.x + v0.y*self.y + v0.z*self.z + v0.w*self.w,
+                v1.x*self.x + v1.y*self.y + v1.z*self.z + v1.w*self.w,
+                v2.x*self.x + v2.y*self.y + v2.z*self.z + v2.w*self.w,
+                v3.x*self.x + v3.y*self.y + v3.z*self.z + v3.w*self.w)
 
-    def perpendicular_to(self, axis, normalize_axis=False, normalize_result=True):
-        return V4.FromNode(G.op.perpendicular_to_axis(*self, *axis, normalize_axis=normalize_axis, normalize_result=normalize_result).node)
+    def switch(self, b, other):
+        with Layout("Switch V4", V4_COL):
+            return V4(self.V.switch(b, other.V), self.w.switch(b, other.w))
 
-    def __neg__(self):
-        with Layout("- 4-Vector"):
-            return V4(-self.x, -self.y, -self.z, -self.w)
+    def angle_with(self, other):
+        with Layout("V4 Angle", V4_COL):
+            a = self.normalized()
+            b = other.normalized()
 
-    def __add__(self, other):
-        return V4.FromNode(G.op.math('Add', *self, *other).node)
-
-    def __sub__(self, other):
-        return V4.FromNode(G.op.math('Subtract', *self, *other).node)
-
-    def __mult__(self, other):
-        return V4.FromNode(G.op.math('Multiply', *self, *other).node)
-
-    def __truediv__(self, other):
-        return V4.FromNode(G.op.math('Divide', *self, *other).node)
-
-# =============================================================================================================================
-# Basic operations
-#
-# Basic operations are put in groups rather than macros to make trees more compact
-
-def build_operations():
-
-    # ----------------------------------------------------------------------------------------------------
-    # 4-Vector Operations
-
-    V4.build_operations()
-
-    # ----------------------------------------------------------------------------------------------------
-    # Cross product between 3 4-Vectors
-
-    with GeoNodes("4 Cross Product", is_group=True, prefix=op_):
-
-        # https://www.researchgate.net/publication/318543243_Vector_Cross_Product_in_4D_Euclidean_Space_A_Maple_worksheet
-
-        M = Matrix(None, "Vectors", tip="Col 1 is unknown, cols 2 to 4 are the 3 axis")
-
-        normalize = Boolean(True, "Normalize")
-
-        a = list(M.separate)
-        ux, uy, uz, uw = tuple(a[ 4: 8])
-        vx, vy, vz, vw = tuple(a[ 8:12])
-        t = tuple(a[12:16])
-
-        b = [       0      ,  uw*vz - uz*vw, -uw*vy + uy*vw, -uy*vz + uz*vy,
-                -uw*vz + uz*vw,         0     ,  uw*vx + ux*vw,  ux*vz - uz*vx,
-                uw*vy - uy*vw, -uw*vx + ux*vw,         0     , -ux*vy + uy*vx,
-                uy*vz - uz*vy, -ux*vz + uz*vx,  ux*vy - uy*vx,        0       ]
-        S = Matrix(b)
-
-        V = V4(t).matmul(S) #V4.FromNode(G.op.matrix_vector(S, *t).node)
-
-        print("???", V)
-        print("???", V.normalize)
-        V.normalize(normalize).out()
+            return gnmath.acos(a.dot(b))
 
 # =============================================================================================================================
 # Matrices groups
-# - Math Rotation Matrix
-# - Math Arrow
-# - 4D Parameters
-# - Math Projection Matrix
-# - Plunge into 4D
-# - 4D Projection
+# Groups:
+# - Mat Mult
+# - XW Rotation
+# - YW Rotation
+# - ZW Rotation
+# - Projection Matrix
+# - Projection
 
 def build_matrices():
 
     # ----------------------------------------------------------------------------------------------------
-    # GROUP - Rotation Matrix
-    #
-    # A "2-rotation" is composed of two rotations in two perpendicular planes
-    # A rotation matrix is the combination of the 3 possible 2-rotations made with the axes
+    # GROUP - Ensure Projection and Projection2 objects exist
 
-    with GeoNodes("Rotation Matrix", is_group=True, prefix=math_):
+    def get_empty(name):
+        obj = bpy.data.objects.get(name)
+        if obj is not None:
+            return obj
 
-        panel_name = "Rotation 4D"
+        empty = bpy.data.objects.new(name=name, object_data=None)
+        bpy.context.collection.objects.link(empty)
 
-        with Panel(panel_name):
-            w_euler = Vector.Euler(0, "W Euler", tip="Rotation XW, YW, ZW")
-            euler   = Vector.Euler(0, "3D Euler", tip="Rotation YZ, ZX, XY")
+        return empty
 
-        xw, yw, zw = w_euler.xyz
-        yz, zx, xy = euler.xyz
-
-        with Layout("Rotation XW / YZ"):
-            ca, sa = gnmath.cos(xw), gnmath.sin(xw)
-            c2, s2 = gnmath.cos(yz), gnmath.sin(yz)
-
-            X = Matrix((
-                ca,  0,   0, -sa,
-                 0, c2, -s2,   0,
-                 0, s2,  c2,   0,
-                sa,  0,   0,  ca,
-            ))
-
-        with Layout("Rotation YW / ZX"):
-            ca, sa = gnmath.cos(yw), gnmath.sin(yw)
-            c2, s2 = gnmath.cos(zx), gnmath.sin(zx)
-
-            Y = Matrix((
-                c2,  0, s2,   0,
-                0, ca,  0,  sa,
-                -s2,  0, c2,   0,
-                0,-sa,  0,  ca,
-            ))
-
-        with Layout("Rotation ZW / XY"):
-            ca, sa = gnmath.cos(zw), gnmath.sin(zw)
-            c2, s2 = gnmath.cos(xy), gnmath.sin(xy)
-
-            Z = Matrix((
-                c2, -s2,  0,   0,
-                s2,  c2,  0,   0,
-                0,   0, ca, -sa,
-                0,   0, sa,  ca,
-            ))
-
-        with Layout("Order XYZ"):
-            XYZ = X @ (Y @ Z)
-
-        with Layout("Order XZY"):
-            XZY = X @ (Z @ Y)
-
-        with Layout("Order YXZ"):
-            YXZ = Y @ (X @ Z)
-
-        with Layout("Order YZX"):
-            YZX = Y @ (Z @ X)
-
-        with Layout("Order ZXY"):
-            ZXY = Z @ (X @ Y)
-
-        with Layout("Order ZYX"):
-            ZYX = Z @ (Y @ X)
-
-        with Panel(panel_name):
-            Matrix.MenuSwitch({'XYZ': XYZ, 'XZY': XZY, 'YXZ': YXZ, 'YZX': YZX, 'ZXY': ZXY, 'ZYX': ZYX, }, menu='XYZ', name='Order').out()
+    get_empty("Projection")
+    get_empty("Projection2")
 
     # ----------------------------------------------------------------------------------------------------
-    # MODIFIER - Arrow
-    #
-    # An array along a 4D vector
-    # The array is defined by a matrix:
-    # - row 1 : Location
-    # - row 2 : Direction
-    #
-    # Note : this group needs to get the projection Matrix because it is used by the "4D Parameters" Groupe
+    # Matrices multiplication
 
-    with GeoNodes("Arrow", is_group=True, prefix=math_):
+    with GeoNodes("Mat Mult", is_group=True, fake_user=False, prefix=maths_):
 
-        cloud = Cloud(Geometry())
+        with Panel("Matrix A"):
+            A = [V4(None, None, f"A {i}") for i in range(4)]
+        with Panel("Matrix B"):
+            B = [V4(None, None, f"B {i}") for i in range(4)]
 
-        with Panel("Shape"):
-            length = Float(          1, "Length", tip= "Arrow length")
-            radius = Float(        .05, "Radius", 0.01)
-            resol  = Integer(        8, "Resolution", 3, 32)
-            mat    = Material("4 Axis", "Material")
-
-        M_proj = Matrix(None, "Projection Matrix")
-
-        with Layout("Project the extremities"):
-
-            M = Matrix("M4")
-
-            a = list(M.separate)
-            a[4], a[5], a[6], a[7] = a[4]*length, a[5]*length, a[6]*length, a[7]*length
-            M = Matrix(a)
-
-            #M_proj = G.math.projection_matrix()
-
-            m3 = M_proj @ M
-            a = m3.separate
-
-            cloud.position = a[:3]
-
-            arrow = Vector(a[4:7])
-            ar_length = arrow.length
-
-            rot = Rotation.AlignZToVector(arrow)
-
-        with Layout("Arrow Shaft"):
-            line = Curve.LineDirection()
-            lines = cloud.instance_on(instance=line, scale=ar_length, rotation=rot)
-            lines = Curve(lines.realize())
-
-            arrows = lines.to_mesh(profile_curve=Curve.Circle(radius=radius, resolution=resol))
-
-        with Layout("Arrow Head"):
-            cone_height = 9*radius
-
-            cone = Mesh.Cone(radius_bottom=3.5*radius, depth=9*radius, vertices=resol)
-            cone.corners.store_uv = cone.uv_map_
-
-            cones = cloud.instance_on(instance=cone)
-            cones.translate(arrow)
-            cones.rotate(rot)
-
-            arrows += Mesh(cones.realize())
-
-        arrows.material = mat
-        arrows.faces.shade_smooth = True
-
-        arrows.out()
-
-    # ====================================================================================================
-    # The 4D parameters
-    # The projection matrix is defined once on the object named Projection
-    # on which the modifier "4D Parameters is applied"
-
-    # ----------------------------------------------------------------------------------------------------
-    # The modifier to apply to one object named "4D Parameters"
-
-    with GeoNodes("4D Parameters"):
-
-        M = G.math.rotation_matrix(link_from='TREE')
-
-        with Panel("Show Axes"):
-            show_axis = Boolean(True, "Show Axes", tip="Show the 4 axes")
-            neg       = Float(-1, "Negative", max=0)
-            pos       = Float(3,  "Positive", 0)
-
-        cloud = Cloud.Points(count=4)
+        C = [V4.Xyzw(B[0].x, B[1].x, B[2].x, B[3].x),
+             V4.Xyzw(B[0].y, B[1].y, B[2].y, B[3].y),
+             V4.Xyzw(B[0].z, B[1].z, B[2].z, B[3].z),
+             V4.Xyzw(B[0].w, B[1].w, B[2].w, B[3].w)]
 
         for i in range(4):
-            with Layout(f"Axis {i}"):
-                a = [[0., 0., 0., 0.] for j in range(4)]
-                a[0][i] = neg
-                a[1][i] = 1
-
-                cloud.points[i]._M4 = Matrix(a)
-
-                col = [0, 0, 0]
-                if i < 3:
-                    col[i] = 1
-                cloud.points[i]._Color = Color(col)
-
-        geo = G.math.arrow(cloud, projection_matrix=M, length=pos - neg, link_from='TREE')
-
-        cloud = Cloud.Points(1)
-        cloud.points._Projection = M
-
-        cloud.switch(show_axis, cloud + geo).out()
+            with Layout(f"Line {i}"):
+                V4.Xyzw(A[i].dot(C[0]), A[i].dot(C[1]), A[i].dot(C[2]), A[i].dot(C[3])).out(f"R {i}")
 
     # ----------------------------------------------------------------------------------------------------
-    # Create the object "4D Parameters"
+    # GROUP - XW / YZ rotations
 
-    def set_4D_parameters():
-        obj = bpy.data.objects.get(PARAMETERS_OBJECT)
-        if obj is None:
-            print(f"Create '{PARAMETERS_OBJECT}' object")
-            mesh = bpy.data.meshes.new(PARAMETERS_OBJECT)
-            obj = bpy.data.objects.new(PARAMETERS_OBJECT, mesh)
-            bpy.context.scene.collection.objects.link(obj)
+    with GeoNodes("XW Rotation", is_group=True, fake_user=False, prefix=maths_):
+
+        ag = Float.Angle(0, "Angle")
+        ca = gnmath.cos(ag)
+        sa = gnmath.sin(ag)
+
+        a2 = Float(0, "Second")
+        c2 = gnmath.cos(a2)
+        s2 = gnmath.sin(a2)
+
+        V4.Xyzw(ca,  0,   0, -sa).out("R 0")
+        V4.Xyzw( 0, c2, -s2,   0).out("R 1")
+        V4.Xyzw( 0, s2,  c2,   0).out("R 2")
+        V4.Xyzw(sa,  0,   0,  ca).out("R 3")
+
+    # ----------------------------------------------------------------------------------------------------
+    # GROUP - YW / ZX rotations
+
+    with GeoNodes("YW Rotation", is_group=True, fake_user=False, prefix=maths_):
+
+        ag = Float.Angle(0, "Angle")
+        ca = gnmath.cos(ag)
+        sa = gnmath.sin(ag)
+
+        a2 = Float.Angle(0, "Second")
+        c2 = gnmath.cos(a2)
+        s2 = gnmath.sin(a2)
+
+        V4.Xyzw(  c2,  0, s2,   0).out("R 0")
+        V4.Xyzw(   0, ca,  0,  sa).out("R 1")
+        V4.Xyzw( -s2,  0, c2,   0).out("R 2")
+        V4.Xyzw(   0,-sa,  0,  ca).out("R 3")
+
+    # ----------------------------------------------------------------------------------------------------
+    # GROUP - ZW / XY rotations
+
+    with GeoNodes("ZW Rotation", is_group=True, fake_user=False, prefix=maths_):
+
+        ag = Float.Angle(0, "Angle")
+        ca = gnmath.cos(ag)
+        sa = gnmath.sin(ag)
+
+        a2 = Float.Angle(0, "Second")
+        c2 = gnmath.cos(a2)
+        s2 = gnmath.sin(a2)
+
+        V4.Xyzw( c2, -s2,  0,   0).out("R 0")
+        V4.Xyzw( s2,  c2,  0,   0).out("R 1")
+        V4.Xyzw(  0,   0, ca, -sa).out("R 2")
+        V4.Xyzw(  0,   0, sa,  ca).out("R 3")
+
+    # ----------------------------------------------------------------------------------------------------
+    # GROUP - Projection matrix
+
+    with GeoNodes("Projection Matrix", is_group=True, fake_user=False, prefix=maths_):
+
+        abc = Object("Projection").info().rotation
+        a, b, c = abc.to_euler.xyz
+        #a = abc.x
+        #b = abc.y
+        #c = abc.z
+
+        second = Object("Projection2").info().rotation
+        a2, b2, c2 = second.to_euler.xyz
+        #a2 = second.x
+        #b2 = second.y
+        #c2 = second.z
+
+        if True:
+            M0 = G.math.xw_rotation(angle=a, second=a2).node
+            M1 = G.math.yw_rotation(angle=b, second=b2).node
+            M2 = G.math.zw_rotation(angle=c, second=c2).node
+
+
+            #M0 = gmaths.xw_rotation(angle=a, second=a2)
+            #M1 = gmaths.yw_rotation(angle=b, second=b2)
+            #M2 = gmaths.zw_rotation(angle=c, second=c2)
         else:
-            print(f"Object '{obj.name}' exists")
+            M0 = Group.Prefix(maths_, "XW Rotation", {'Angle': a, 'Second': a2})
+            M1 = Group.Prefix(maths_, "YW Rotation", {'Angle': b, 'Second': b2})
+            M2 = Group.Prefix(maths_, "ZW Rotation", {'Angle': c, 'Second': c2})
 
-        if not len(obj.modifiers):
-            modifier = obj.modifiers.new("Geometry Nodes", type='NODES')
-            modifier.node_group = bpy.data.node_groups["4D Parameters"]
 
-    # ----------------------------------------------------------------------------------------------------
-    # Create the Parameter Object
+        if True:
+            M_ = G.math.mat_mult(
+                M0.r_0_v, M0.r_0_w, M0.r_1_v, M0.r_1_w, M0.r_2_v, M0.r_2_w, M0.r_3_v, M0.r_3_w,
+                M1.r_0_v, M1.r_0_w, M1.r_1_v, M1.r_1_w, M1.r_2_v, M1.r_2_w, M1.r_3_v, M1.r_3_w,
+                ).node
 
-    set_4D_parameters()
+            M_ = G.math.mat_mult(
+                M_.r_0_v, M_.r_0_w, M_.r_1_v, M_.r_1_w, M_.r_2_v, M_.r_2_w, M_.r_3_v, M_.r_3_w,
+                M2.r_0_v, M2.r_0_w, M2.r_1_v, M2.r_1_w, M2.r_2_v, M2.r_2_w, M2.r_3_v, M2.r_3_w,
+                ).node
 
-    # ----------------------------------------------------------------------------------------------------
-    # Projection Matrix
+        else:
+            #M_ = Group.Prefix(maths_, "Mat Mult", [
+            M_ = G.math.math_mult([
+                M0.r_0_v, M0.r_0_w, M0.r_1_v, M0.r_1_w, M0.r_2_v, M0.r_2_w, M0.r_3_v, M0.r_3_w,
+                M1.r_0_v, M1.r_0_w, M1.r_1_v, M1.r_1_w, M1.r_2_v, M1.r_2_w, M1.r_3_v, M1.r_3_w,
+                ]).node
 
-    with GeoNodes("Projection Matrix", is_group=True, prefix=math_):
+            #M_ = Group.Prefix(maths_, "Mat Mult", [
+            M_ = G.math.math_mult([
+                M_.r_0_v, M_.r_0_w, M_.r_1_v, M_.r_1_w, M_.r_2_v, M_.r_2_w, M_.r_3_v, M_.r_3_w,
+                M2.r_0_v, M2.r_0_w, M2.r_1_v, M2.r_1_w, M2.r_2_v, M2.r_2_w, M2.r_3_v, M2.r_3_w,
+                ]).node
 
-        cloud = Object.info(PARAMETERS_OBJECT).geometry.point_cloud
-        M_proj = cloud.points.sample_index(Matrix("Projection"), 0)
-        M_proj.out()
-
-    # ----------------------------------------------------------------------------------------------------
-    # Plunge into 3D
-
-    with GeoNodes("Plunge into 4D", prefix=mods_):
-
-        geo       = Geometry()
-        w         = Float(0, "w", tip="Fourth dimension value")
-        curve_res = Integer(0, "Curve Resample", min=0, tip="Resample curve (0 or 1 for no resample)")
-
-        mesh  = geo.mesh
-        curve = geo.curve
-        cloud = geo.point_cloud
-
-        x, y, z = nd.position.xyz
-        a = [0]*16
-        a[0], a[1], a[2], a[3] = x, y, z, w
-
-        with Layout("Mesh"):
-            a[4:7] = nd.normal.xyz  # 4:8  = (nx, ny, nz, 0) first normal
-            a[15]   = 1             # 12:16 = (0, 0, 0, 1) second normal
-
-            mesh.points._M4 = a
-
-        with Layout("Curve"):
-            curve = curve.switch(curve_res > 1, Curve(curve).resample(curve_res))
-            n1 = nd.normal
-            n2 = Curve.tangent.cross(n1)
-            a[ 4: 7] = n1.xyz  # 4:8   = first normal
-            a[ 8:11] = n2.xyz  # 8:12  = second normal
-            a[15]    = 1       # 12:16 = (0, 0, 0, 1) last normal
-
-            curve.points._M4 = a
-
-        with Layout("Cloud"):
-            cloud.points._M4 = a
-
-        geo = Cloud.Join(mesh, curve, cloud)
-
-        geo.out()
+        V4.FromNode(M_, "R 0").out("R 0")
+        V4.FromNode(M_, "R 1").out("R 1")
+        V4.FromNode(M_, "R 2").out("R 2")
+        V4.FromNode(M_, "R 3").out("R 3")
 
     # ----------------------------------------------------------------------------------------------------
     # GROUP - Perform a projection
 
-    with GeoNodes("4D Projection"):
+    with GeoNodes("Projection", is_group=True, fake_user=False, prefix=maths_):
+
+        v = V4()
+
+        if True:
+            #v.mat_dot(gmaths.projection_matrix()).out()
+            v.mat_dot(G.math.projection_matrix().node).out()
+        else:
+            v.mat_dot(Group.Prefix(maths_, "Projection Matrix")).out()
+
+# ====================================================================================================
+# Base modifiers
+# Modifiers:
+# - Plunge 3D Geometry
+# - Arrow
+# - Axis viewer
+# - Projection
+
+def build_base():
+
+    # ----------------------------------------------------------------------------------------------------
+    # MODIFIER - Add the 4D attributes
+
+    with GeoNodes("Plunge 3D Geometry", fake_user=False, prefix=mods_):
 
         geo = Geometry()
+        w   = Float(0, "w")
 
-        with Panel("Options"):
-            show_normals  = Boolean(False, "Show Normals",  tip="Show mesh normals")
-            show_tangents = Boolean(False, "Show Tangents", tip="Show curve tangents")
-            vect_length   = Float(1, "Vectors length", tip="Length of normals / tangents")
+        # ----- The fourth dimention
 
-        M = Matrix("M4")
-        M_proj = G.math.projection_matrix()
+        geo = Mesh(geo).points.store("w", w)
 
-        m = M_proj @ M
+        # ----- Normals and tangent
 
-        a = m.separate
-        geo.position = a[:3]
+        mesh, curve, cloud, inst = geo.mesh, geo.curve, geo.point_cloud, geo.instances
 
-        mesh  = geo.mesh
-        curve = geo.curve
-        cloud = geo.point_cloud
+        # ---- Mesh normals
 
-        line = Curve.LineDirection(length=vect_length)
+        V4(nd.normal,  0.).set_normal(mesh, "A")
+        V4(0, 1.).set_normal(mesh, "B")
 
-        with Layout("Mesh"):
-            mesh.points._Normal_A = a[4:7]
-            mesh.points._Normal_B = a[8:11]
+        # ---- Curve tangents
 
-            vis  = mesh.points.instance_on(instance=line, rotation=Rotation.AlignZToVector(a[4:7]))
-            vis += mesh.points.instance_on(instance=line, rotation=Rotation.AlignZToVector(a[8:11]))
+        curve = V4(curve.tangent,  0.).set_tangent(curve)
 
-            mesh = mesh.switch(show_normals, mesh + vis)
+        # ---- Result
 
-        with Layout("Curve"):
-            curve.points._Tangent = a[4:7]
+        mesh.join(curve, cloud, inst).out()
 
-            vis  = curve.points.instance_on(instance=line, rotation=Rotation.AlignZToVector(a[ 4:7]))
-            vis += curve.points.instance_on(instance=line, rotation=Rotation.AlignZToVector(a[ 8:11]))
-            vis += curve.points.instance_on(instance=line, rotation=Rotation.AlignZToVector(a[12:15]))
+    # ----------------------------------------------------------------------------------------------------
+    # MODIFIER - Arrow
 
-            curve = curve.switch(show_normals, curve + vis)
+    with GeoNodes("Arrow", fake_user=False, prefix=mods_):
 
-            tg = V4.FromNode(G.op._4_cross_product(M).node)
-            tg = tg.matmul(M_proj)
+        v0     = V4(0, 0, "Start")
+        v1     = V4(0, 0, "End")
 
-            vis  = curve.points.instance_on(instance=line, rotation=Rotation.AlignZToVector(tg[:3]))
+        radius = Float(   .05, "Radius", 0.01)
+        resol  = Integer( 8, "Resolution", 3, 32)
+        mat    = Material("4 Axis", "Material")
 
-            curve = curve.switch(show_tangents, curve + vis)
+        with Layout("Dimensions"):
+            vec4 = (v1 - v0)
+            length = gnmath.sqrt(vec4.dot(vec4))
+            cone_height = 9*radius
 
-        Geometry.Join(mesh, curve, cloud).out()
+            scale = length/(length + cone_height)
+
+            length *= scale
+            cone_height *= scale
+
+            v1 = V4(v0.V + vec4.V.scale(scale), v0.w + vec4.w*scale)
+
+        with Layout("Arrow shaft"):
+
+            # ----- Start and end point
+
+            if True:
+                p0 = gmaths.projection(v0.sockets())._out
+                p1 = gmaths.projection(v1.sockets())._out
+            else:
+                p0 = Group.Prefix(maths_, "Projection", v0.sockets())._out
+                p1 = Group.Prefix(maths_, "Projection", v1.sockets())._out
+
+            # ----- Arrow shaft
+
+            line = Curve.Line(start=p0, end=p1)
+
+            mesh = line.to_mesh(profile_curve=Curve.Circle(radius=radius, resolution=resol), fill_caps=True)
+
+        with Layout("Arrow head"):
+
+            cone = Mesh.Cone(vertices=resol, depth=cone_height, radius_bottom=3.5*radius)
+
+            rot = Rotation.AlignZToVector(p1 - p0)
+            cone = cone.transform(translation=p1, rotation=rot)
+
+            mesh += cone
+
+        mesh.faces.material = mat
+        mesh.faces.smooth = True
+
+        mesh.out()
+
+    # ----------------------------------------------------------------------------------------------------
+    # MODIFIER - The four Axis
+
+    with GeoNodes("Axis Viewer", fake_user=False, prefix=mods_):
+
+        neg    = Float(-1, "Negative", max=0)
+        pos    = Float(3,  "Positive", 0)
+        radius = Float(0.05, "Radius")
+        resol  = Integer(12, "Resolution", 3, 32)
+
+        # ----- Loop on the axis
+
+        for i in range(4):
+
+            if True:
+                node = gmods.arrow({
+                    'Start V' : [(neg, 0, 0), (0, neg, 0), (0, 0, neg), (0, 0, 0)][i],
+                    'Start w' : [0, 0, 0, neg][i],
+                    'End V'   : [(pos, 0, 0), (0, pos, 0), (0, 0, pos), (0, 0, 0)][i],
+                    'End w'   : [0, 0, 0, pos][i],
+                })
+            else:
+                node = Group.Prefix(mods_, "Arrow", {
+                    'Start V' : [(neg, 0, 0), (0, neg, 0), (0, 0, neg), (0, 0, 0)][i],
+                    'Start w' : [0, 0, 0, neg][i],
+                    'End V'   : [(pos, 0, 0), (0, pos, 0), (0, 0, pos), (0, 0, 0)][i],
+                    'End w'   : [0, 0, 0, pos][i],
+                })
+
+            node.link_from()
+            arrow = Mesh(node._out)
+
+            arrow.faces.store("Axis Color", [(1, 0, 0), (0, 1, 0), (0, 0, 1), (0, 0, 0)][i])
+
+            if i == 0:
+                axis = arrow
+            else:
+                axis += arrow
+
+        axis.faces.material = "4 Axis"
+
+        axis.out()
+
+    # ----------------------------------------------------------------------------------------------------
+    # MODIFIER - Perform a projection
+
+    with GeoNodes("Projection", fake_user=False, prefix=mods_):
+
+        geo          = Geometry()
+        shade_smooth = Boolean(True, "Shade smooth")
+
+        # ===== Points projection
+
+        with Layout("All points projection"):
+            v = V4.Position(geo)
+            #v = maths_.projection(*v.args).v
+            if True:
+                v = gmaths.projection(v.sockets())._out
+            else:
+                v = Group.Prefix(maths_, "Projection", v.sockets())._out
+            geo.position = v
+
+        # ===== Components
+
+        mesh, curve, cloud, inst = geo.mesh, geo.curve, geo.point_cloud, geo.instances
+
+        # ----- Back face computation
+
+        with Layout("Mesh projection"):
+
+            if True:
+                m_proj = gmaths.projection_matrix()
+            else:
+                m_proj = Group.Prefix(maths_, "Projection Matrix")
+            v_proj = V4.FromNode(m_proj, "R 3")
+
+            back = Boolean(True)
+            for sn in ["A", "B"]:
+                n = V4.Normal(mesh, sn)
+                dot = v_proj.dot(n)
+                #back *= dot.less_than(0)
+                back &= dot.less_than(0)
+
+            # NOTE : Storing the back flag on POINT smoothes the transition
+            mesh.points.store("Back", back)
+
+            mesh.faces.smooth = shade_smooth
+
+        mesh.join(curve, cloud, inst).out()
+
+
+# =============================================================================================================================
+# Vectors groups
+# - Normalize 2-basis
+# - Normalize 3-basis
+# - Cross product between 3 vectors
+# - Hyperplane
+# - Two equations solver
+
+def build_vectors():
+
+    # ----------------------------------------------------------------------------------------------------
+    # GROUP - Normalize two vectors forming a plane
+
+    with GeoNodes("Normalize 2-Basis", is_group=True, fake_user=False, prefix=maths_):
+
+        u0 = V4(0, 0, "I")
+        u1 = V4(0, 0, "J")
+
+        # We suppress from u1 the u0 component
+
+        u1 -= u0*u1.dot(u0)
+
+        # Normalized
+
+        u0.normalized(False).out("I")
+        u1.normalized(False).out("J")
+
+
+    # ----------------------------------------------------------------------------------------------------
+    # GROUP - Normal basis
+    # 3 vectors forming a normal basis to a 3D hyperplane defined by three independant vectors
+
+    with GeoNodes("Normalize 3-Basis", is_group=True, fake_user=False, prefix=maths_):
+
+        u0 = V4((1, 0, 0), 0, "I")
+        u1 = V4((0, 1, 0), 0, "J")
+        u2 = V4((0, 0, 1), 0, "K")
+
+        # ----- Let's normalize the first vector
+
+        e0, err = u0.normalized(True)
+
+        # Let's suppress this dimension in the second one
+
+        with Layout("Make the second vector perp to the first"):
+
+            # u1 minus e0 part
+
+            d = e0.dot(u1)
+            u1 -= e0*d
+
+            # Let's normalize
+
+            e1, er = u1.normalized(True)
+            err |= er
+
+        with Layout("Make the third vector perp to the two other ones"):
+
+            # u2 minus e0 and e1 part
+
+            d = e0.dot(u2)
+            u2 -= e0*d
+
+            d = e1.dot(u2)
+            u2 -= e1*d
+
+            # Let's normalize
+
+            e2, er = u2.normalized(True)
+            err |= er
+
+        # ----- We are done :-)
+
+        e0.out("I")
+        e1.out("J")
+        e2.out("K")
+
+        err.out("Error")
+
+
+    # ----------------------------------------------------------------------------------------------------
+    # GROUP - Cross
+    # A vector peprpendicular to three independant vectors
+
+    with GeoNodes("Cross", is_group=True, fake_user=False, prefix=maths_):
+
+        u0 = V4((1, 0, 0), 0, "I")
+        u1 = V4((0, 1, 0), 0, "J")
+        u2 = V4((0, 0, 1), 0, "K")
+
+        # ----- Convert the three input vectors in a normal basis
+
+        #node = maths_.normalize_3_basis()
+        #tree.input_node.plug_to(node)
+        node = Group.Prefix(maths_, "Normalize 3-Basis")
+        node.link_from()
+
+        u0 = V4.FromNode(node, "I")
+        u1 = V4.FromNode(node, "J")
+        u2 = V4.FromNode(node, "K")
+
+        error = node.error
+
+        n3 = Float()
+        u3 = V4(0, 0)
+        for i in range(4):
+            with Layout(f"Axis {i}"):
+
+                v4 = [0] * 4
+                v4[i] = 1
+
+                u = V4.Xyzw(*v4)
+
+                d0 = u0.dot(u)
+                d1 = u1.dot(u)
+                d2 = u2.dot(u)
+                u -= u0*d0
+                u -= u1*d1
+                u -= u2*d2
+
+                # Resulting norm
+
+                n = u.length
+
+                #greater = n.greater_than(n3)
+                greater = n > n3
+                u3 = u3.switch(greater, u)
+                n3 = n3.switch(greater, n)
+
+        # ----- Let's normalize the result
+
+        u3 = u3.normalized()
+
+        u3.out()
+        error.out("Error")
+
+
+    # ----------------------------------------------------------------------------------------------------
+    # GROUP - Compute three vectors perpendicular to a vector
+
+    with GeoNodes("Hyperplane", is_group=True, fake_user=False, prefix=maths_):
+
+        v = V4(0, 0, "")
+
+        # ----- Normalize the entry
+
+        v = v.normalized()
+
+        # ----- Try to build a 3D-base with v and plane (k, l)
+
+        #node = maths_.normalize_3_basis(*v.args, (0., 0., 1.), 0., (0., 0., 0.), 1.)
+        node = Group.Prefix(maths_, "Normalize 3-Basis", [v.V, v.w, (0., 0., 1.), 0., (0., 0., 0.), 1.])
+
+        u0 = V4.FromNode(node, "J")
+        u1 = V4.FromNode(node, "K")
+
+        error = node.error
+
+        # ---------------------------------------------------------------------------
+        # If error, it does mean that v is in plane (k, l), hence (i, j) is perp to v
+
+        #node = maths_.cross(*v.args, (1., 0., 0.), 0., (0., 1., 0.), 0.)
+        node = Group.Prefix(maths_, "Cross", [v.V, v.w, (1., 0., 0.), 0., (0., 1., 0.), 0.])
+
+        e_u2 = V4.FromNode(node)
+
+        # ---------------------------------------------------------------------------
+        # If no error, we have (u0, u1) perp to input vector
+        # The third basis vector is perpendicular to these 3 vectors
+
+        #node = maths_.cross(*v.args, *u0.args, *u1.args)
+        node = Group.Prefix(maths_, "Cross", [v.V, v.w, u0.V, u0.w, u1.V, u1.w])
+        u2 = V4.FromNode(node)
+
+        u0 = u0.switch(error, V4((1., 0., 0.), 0.))
+        u1 = u1.switch(error, V4((0., 1., 0.), 0.))
+        u2 = u2.switch(error, e_u2)
+
+        # ----- Done
+
+        u0.out("I")
+        u1.out("J")
+        u2.out("K")
+        v.out("L")
 
     # ----------------------------------------------------------------------------------------------------
     # Resolution system de deux équations à deux inconnues
@@ -840,7 +914,7 @@ def build_matrices():
     # x = (b1c0 - b0c1)/D
     # y = (a0c1 - a1c0)/D
 
-    with GeoNodes("Two equations solver", is_group=True, prefix=math_):
+    with GeoNodes("Two equations solver", is_group=True, prefix=maths_):
 
         a0 = Float(0, "a0")
         b0 = Float(0, "b0")
@@ -851,7 +925,7 @@ def build_matrices():
         c1 = Float(0, "c1")
 
         with Layout("Discriminant"):
-            D = a0*b1 - a1*b0
+         D = a0*b1 - a1*b0
 
         with Layout("x"):
             x = (b1*c0 - b0*c1)/D
@@ -861,6 +935,7 @@ def build_matrices():
             y = (a0*c1 - b1*c0)/D
             y.out("y")
 
+        #tree.abs(D).less_than(0.001).out("Error")
         (abs(D) < 0.001).out("Error")
         Vector((x, y, 0)).length.out("Length")
 
@@ -879,14 +954,13 @@ def build_transformations():
 
     with GeoNodes("Translation", fake_user=False, prefix=mods_):
 
-        geo = Cloud(Geometry())
-        trans = V4(panel="Translation")
+        geo = Geometry()
 
-        a = list(Matrix("M4").separate)
-        for i in range(4):
-            a[i] += trans[i]
+        v = V4(0, 0, "")
 
-        geo.points._M4 = a
+        geo = Mesh(geo.transform(translation=v.V))
+        geo.points.store("w", Float.Named("w") + v.w)
+
         geo.out()
 
     # ----------------------------------------------------------------------------------------------------
@@ -894,55 +968,257 @@ def build_transformations():
 
     with GeoNodes("Scale", fake_user=False, prefix=mods_):
 
-        geo = Cloud(Geometry())
+        geo = Geometry()
 
-        scale = V4(1, 1, 1, 1, panel="Scale")
-        pivot = V4(panel="Pivot")
+        scale = V4((1., 1., 1.), 1., "Scale")
 
-        a = list(Matrix("M4").separate)
-        for i in range(4):
-            a[i] = pivot[i] + scale[i]*(a[i] - pivot[i])
+        geo = Mesh(geo.transform(scale=scale.V))
+        geo.points.store("w", Float.Named("w")*scale.w)
 
-        geo.points._M4 = a
-        geo.out()
+        # ===== Normals and tangents
+
+        mesh, curve, cloud, inst = geo.mesh, geo.curve, geo.point_cloud, geo.instances
+
+        # ----- Mesh
+
+        with Layout("Mesh"):
+
+            n = V4.Normal(mesh, "A")*scale
+            n.normalized().set_normal(mesh, "A")
+
+            n = V4.Normal(mesh, "B")*scale
+            n.normalized().set_normal(mesh, "B")
+
+        # ----- Curve
+
+        """
+        with Layout("Curve"):
+
+            t = V4.Tangent(curve)*scale
+            t.normalized().set_tangent(curve)
+        """
+
+        mesh.join(curve, cloud, inst).out()
 
     # ----------------------------------------------------------------------------------------------------
-    # MODIFIER - Rotation
+    # GROUP - Rotation 4D
 
-    with GeoNodes("Rotation", fake_user=False, prefix=mods_):
+    with GeoNodes("Rotation 4D", is_group=True, fake_user=False, prefix=maths_):
+
+        v = V4(0, 0, "")
+
+        xy = Float.Angle(0, "XY", tip="Rotation (XY,ZW) : X -> Y")
+        zw = Float.Angle(0, "ZW", tip="Rotation (XY,ZW) : Z -> W")
+
+        yz = Float.Angle(0, "YZ", tip="Rotation (YZ,ZW) : Y -> Z")
+        xw = Float.Angle(0, "XW", tip="Rotation (YZ,ZW) : X -> W")
+
+        zx = Float.Angle(0, "ZX", tip="Rotation (ZX,YW) : Z -> X")
+        yw = Float.Angle(0, "YW", tip="Rotation (ZX,YW) : Y -> W")
+
+        # ----- Rotation xy / zw
+
+        with Layout("Angles XY ZW"):
+            ca, sa = gnmath.cos(xy), gnmath.sin(xy)
+            cb, sb = gnmath.cos(zw), gnmath.sin(zw)
+            A0 = V4.Xyzw( ca, -sa,  0.,  0.)
+            A1 = V4.Xyzw( sa,  ca,  0.,  0.)
+            A2 = V4.Xyzw( 0.,  0.,  cb, -sb)
+            A3 = V4.Xyzw( 0.,  0.,  sb,  cb)
+
+        # ----- Rotation xz / yw
+
+        with Layout("Angles ZX YW"):
+            ca, sa = gnmath.cos(zx), gnmath.sin(zx)
+            cb, sb = gnmath.cos(yw), gnmath.sin(yw)
+            B0 = V4.Xyzw( ca,  0.,  sa,  0.)
+            B1 = V4.Xyzw( 0.,  cb,  0., -sb)
+            B2 = V4.Xyzw(-sa,  0.,  ca,  0.)
+            B3 = V4.Xyzw( 0.,  sb,  0.,  cb)
+
+        # ----- Rotation xw / yz
+
+        with Layout("Angles XW YZ"):
+            ca, sa = gnmath.cos(xw), gnmath.sin(xw)
+            cb, sb = gnmath.cos(yz), gnmath.sin(yz)
+            C0 = V4.Xyzw( ca,  0.,   0., -sa)
+            C1 = V4.Xyzw( 0.,  cb, -sb,  0.)
+            C2 = V4.Xyzw( 0.,  sb,  cb,  0.)
+            C3 = V4.Xyzw( sa,  0.,   0.,  ca)
+
+        # ----- Multiply the matrices
+
+        #node = maths_.mat_mult(*A0.args, *A1.args, *A2.args, *A3.args, *B0.args, *B1.args, *B2.args, *B3.args)
+        node = Group.Prefix(maths_, "Mat Mult", [
+            A0.V, A0.w, A1.V, A1.w, A2.V, A2.w, A3.V, A3.w,
+            B0.V, B0.w, B1.V, B1.w, B2.V, B2.w, B3.V, B3.w,
+        ])
+
+        M0 = V4.FromNode(node, "R 0")
+        M1 = V4.FromNode(node, "R 1")
+        M2 = V4.FromNode(node, "R 2")
+        M3 = V4.FromNode(node, "R 3")
+
+        #node = maths_.mat_mult(*M0.args, *M1.args, *M2.args, *M3.args, *C0.args, *C1.args, *C2.args, *C3.args)
+        node = Group.Prefix(maths_, "Mat Mult", [
+            M0.V, M0.w, M1.V, M1.w, M2.V, M2.w, M3.V, M3.w,
+            C0.V, C0.w, C1.V, C1.w, C2.V, C2.w, C3.V, C3.w,
+        ])
+
+        # ----- Rotate the vector
+
+        v.mat_dot(node).out()
+
+    # ----------------------------------------------------------------------------------------------------
+    # Modifier - Rotation 4D
+
+    with GeoNodes("Rotation 4D", fake_user=False, prefix=mods_):
 
         geo = Geometry()
 
-        pivot = V4(panel="Pivot")
+        xy = Float.Angle(0, "XY", tip="Rotation (XY,ZW) : X -> Y")
+        zw = Float.Angle(0, "ZW", tip="Rotation (XY,ZW) : Z -> W")
 
-        M = G.math.rotation_matrix(link_from='TREE')
+        yz = Float.Angle(0, "YZ", tip="Rotation (YZ,ZW) : Y -> Z")
+        xw = Float.Angle(0, "XW", tip="Rotation (YZ,ZW) : X -> W")
 
-        geo = Cloud(G._4d.translation(geo, *(-pivot)))
+        zx = Float.Angle(0, "ZX", tip="Rotation (ZX,YW) : Z -> X")
+        yw = Float.Angle(0, "YW", tip="Rotation (ZX,YW) : Y -> W")
 
-        M4 = Matrix("M4")
+        # ===== Geometry position
 
-        R = M @ M4
+        with Layout("All points rotation"):
 
-        geo.points._M4 = R
+            #node = maths_.rotation_4d(**V4.Position(geo).kwargs())
+            #tree.input_node.plug_to(node)
+            node = Group.Prefix(maths_, "Rotation 4D", V4.Position(geo).sockets())
+            node.link_from()
 
-        G._4d.translation(geo, *pivot).out()
+            geo = V4.FromNode(node).set_position(geo)
+
+        # ===== Normals and tangents
+
+        mesh, curve, cloud, inst = geo.mesh, geo.curve, geo.point_cloud, geo.instances
+
+        # ----- Mesh
+
+        for s in ["A","B"]:
+            with Layout(f"Normal {s}"):
+                #node = maths_.rotation_4d(**V4.Normal(mesh, s).kwargs())
+                #tree.input_node.plug_to(node)
+                #V4.NodeOutput(node).set_normal(mesh, s)
+
+                node = Group.Prefix(maths_, "Rotation 4D", V4.Normal(mesh, s).sockets())
+                node.link_from()
+                V4.FromNode(node).set_normal(mesh, s)
+
+        # ----- Curve
+        """
+
+        with Layout("Curve"):
+
+            node = maths_.rotation_4d(**V4.Tangent(curve).kwargs())
+            tree.input_node.plug_to(node)
+            V4.NodeOutput(node).set_tangent(curve)
+        """
+
+        mesh.join(curve, cloud, inst).out()
 
     # ----------------------------------------------------------------------------------------------------
-    # Curve to Mesh
+    # GROUP - Rotation in a plane defined by two 4D vectors
 
-    with GeoNodes("Curve to Surface", is_group=True, prefix=op_):
+    with GeoNodes("Rotation 2D", is_group=True, fake_user=False, prefix=maths_):
 
-        curve   = Geometry().curve
-        profile = Object(None, "3D Profile Curve")
+        v  = V4(0, 0, "")
 
-    return
+        I  = V4((1, 0, 0), 0, "I")
+        J  = V4((0, 1, 0), 0, "J")
+        ag = Float.Angle(0, "Angle", tip="Rotation angle in plane (I, J)")
+
+        # ---------------------------------------------------------------------------
+        # Decompose the vector along I, J and remainder
+
+        with Layout("Decompose I, J, Remainder"):
+            x  = I.dot(v)
+            y  = J.dot(v)
+            v_ = v - I*x - J*y
+
+        # ---------------------------------------------------------------------------
+        # Rotate x, y
+
+        with Layout("Rotation 2D"):
+
+            ca, sa = gnmath.cos(ag), gnmath.sin(ag)
+            x_ = x*ca - y*sa
+            y_ = x*sa + y*ca
+
+        # ---------------------------------------------------------------------------
+        # Recompose the vector
+
+        with Layout("Recompose"):
+
+            r = v_ + I*x_ + J*y_
+
+        r.out()
+
+    # ----------------------------------------------------------------------------------------------------
+    # MODIFIER - Rotation in a plane defined by two 4D vectors
+
+    with GeoNodes("Rotation 2D", fake_user=False, prefix=mods_):
+
+        geo = Geometry
+
+        v0  = V4((1, 0, 0), 0, "I")
+        v1  = V4((0, 1, 0), 0, "J")
+        ag = Float.Angle(0, "Angle", tip="Rotation angle in plane (I, J)")
+
+        # ===== Normal 2-Basis
+
+        with Layout("Normal 2-Basis"):
+            #node = maths_.normalize_2_basis(*I.args, *J.args)
+            node = Group.Prefix(maths_, "Normalize 2-Basis",[I.V, I.w, J.V, J.w])
+            I = V4.FromNode(node, "I")
+            J = V4.FromNode(node, "J")
+
+        # ===== Geometry position
+
+        with Layout("All points rotation"):
+            #node = maths_.rotation_2d(*V4.Position(geo).args, *I.args, *J.args, angle=ag)
+            pos = V4.Position(geo)
+            node = Group.Prefix(maths_, "Rotation 2D",[pos.V, pos.w, I.V, I.w, J.V, J.w, ag])
+            geo = V4.FromNode(node).set_position(geo)
+
+        # ===== Normals and tangents
+
+        mesh, curve, cloud, inst = geo.mesh, geo.curve, geo.point_cloud, geo.instances
+
+        # ----- Mesh
+
+        with Layout("Mesh"):
+            for s in ["A", "B"]:
+                #node = maths_.rotation_2d(*V4.Normal(mesh, s).args, *I.args, *J.args, angle=ag)
+                nrm = V4.Normal(mesh, s)
+                node = Group.Prefix(maths_, "Rotation 2D", [nrm.V, nrm.w, I.V, I.w, J.V, J.w, ag])
+
+                V4.FromNode(node).set_normal(mesh, s)
+
+        # ----- Curve
+
+        """
+
+        with Layout("Curve"):
+            node = maths_.rotation_2d(*V4.Tangent(curve).args, *I.args, *J.args, angle=ag)
+            V4.NodeOutput(node).set_tangent(curve)
+        """
+
+        mesh.join(curve, cloud, inst).out()
 
     # ----------------------------------------------------------------------------------------------------
     # GROUP - Follow a vector
     #
     # Rotate a vector such as the vector A rotates to vector B
 
-    with GeoNodes("Align Vector", is_group=True, fake_user=False, prefix=math_):
+    with GeoNodes("Align Vector", is_group=True, fake_user=False, prefix=maths_):
 
         v = V4(0, 0, "")
 
@@ -952,8 +1228,8 @@ def build_transformations():
         # ----- Normal 2-Basis
 
         with Layout("Normal 2-Basis"):
-            #node = math_.normalize_2_basis(*va.args, *vb.args)
-            node = Group.Prefix(math_, "Normalize 2-Basis", [va.V, va.w, vb.V, vb.w])
+            #node = maths_.normalize_2_basis(*va.args, *vb.args)
+            node = Group.Prefix(maths_, "Normalize 2-Basis", [va.V, va.w, vb.V, vb.w])
             I = V4.FromNode(node, "I")
             J = V4.FromNode(node, "J")
 
@@ -963,8 +1239,8 @@ def build_transformations():
 
         # ----- Rotate in the plane I, J
 
-        #node = math_.rotation_2D(*v.args, *I.args, *J.args, angle=ag)
-        node = Group.Prefix(math_, "Rotation 2D", [v.V, v.w, I.V, I.w, J.V, J.w, ag])
+        #node = maths_.rotation_2D(*v.args, *I.args, *J.args, angle=ag)
+        node = Group.Prefix(maths_, "Rotation 2D", [v.V, v.w, I.V, I.w, J.V, J.w, ag])
 
         V4.FromNode(node).out()
 
@@ -984,9 +1260,9 @@ def build_transformations():
         # ===== Geometry position
 
         with Layout("All points rotation"):
-            #node = math_.align_vector(*V4.Position(geo).args, *va.args, *vb.args)
+            #node = maths_.align_vector(*V4.Position(geo).args, *va.args, *vb.args)
             pos = V4.Position(geo)
-            node = Group.Prefix(math_, "Align Vector", [pos.V, pos.w, va.V, va.w, vb.V, vb.w])
+            node = Group.Prefix(maths_, "Align Vector", [pos.V, pos.w, va.V, va.w, vb.V, vb.w])
             geo = V4.FromNode(node).set_position(geo)
 
         # ===== Normals and tangents
@@ -997,139 +1273,27 @@ def build_transformations():
 
         with Layout("Mesh"):
             for s in ["A", "B"]:
-                #node = math_.align_vector(*V4.Normal(mesh, s).args, *va.args, *vb.args)
+                #node = maths_.align_vector(*V4.Normal(mesh, s).args, *va.args, *vb.args)
                 nrm = V4.Normal(mesh, s)
-                node = Group.Prefix(math_, "Align Vector", [nrm.V, nrm.w, va.V, va.w, vb.V, vb.w])
+                node = Group.Prefix(maths_, "Align Vector", [nrm.V, nrm.w, va.V, va.w, vb.V, vb.w])
                 V4.FromNode(node).set_normal(mesh, s)
 
         # ----- Curve
 
         """
         with Layout("Curve"):
-            node = math_.align_vector(*V4.Tangent(curve).args, *va.args, *vb.args)
+            node = maths_.align_vector(*V4.Tangent(curve).args, *va.args, *vb.args)
             V4.NodeOutput(node).set_tangent(curve)
         """
 
         mesh.join(curve, cloud, inst).out()
-
-# =============================================================================================================================
-# Primitives
-
-def build_primitives():
-
-    with GeoNodes("Circle", prefix=curve_):
-
-        with Panel("Circle"):
-            radius    = Float(1, "Radius")
-            segments  = Integer(32, "Segments", 3)
-            angle     = Float.Angle(0, "Angle", -2*pi, 2*pi)
-            offset    = Float.Factor(0, "Center Circle")
-
-        with Layout("Dimensions"):
-            closed = (angle.abs() - 2*pi).abs() < ZERO
-            flat = angle.abs() < ZERO
-            circ = (2*pi)*radius
-            ag = -angle/2 + Spline.parameter*angle
-            cag, sag = gnmath.cos(ag), gnmath.sin(ag)
-            y_offset = -angle.sign()*radius*offset
-
-        a = [0]*16
-        a[ 8:12] = (0, 0, 1, 0)
-        a[12:16] = (0, 0, 0, 1)
-
-        with Layout("Circle"):
-            circle = Curve.Circle(radius=radius, resolution=segments)
-            circle.position = (radius*sag, y_offset + angle.sign()*radius*(1 - cag), 0)
-
-            a[0], a[1] = nd.position.x, nd.position.y
-            a[4], a[5] = sag*angle.sign(), -cag
-            circle.points._M4 = a
-
-        with Layout("Line"):
-            line = Curve.LinePoints(start=(-circ/2, y_offset, 0), end=(circ/2, y_offset, 0)).resample(segments + 1)
-
-            a[0], a[1] = nd.position.x, nd.position.y
-            a[4], a[5] = 0, 1
-            line.points._M4 = a
-
-        with Layout("Curved Line"):
-            curved = Curve(line)
-            R = circ/angle
-            ag = -angle/2 + Spline.parameter*angle
-            curved.position = (R*sag, y_offset + R*(1 - cag), 0)
-
-            a[0], a[1] = nd.position.x, nd.position.y
-            a[4], a[5] = sag, -cag
-            curved.points._M4 = a
-
-        curve = curved.switch(flat, line).switch(closed, circle)
-
-        xy_curve = Curve(curve)
-        a = Matrix("M4").separate
-
-        with Layout("XZ Curve"):
-            b = list(a)
-            for i in range(4):
-                b[1 + 4*i] = a[2 + 4*i]
-                b[2 + 4*i] = a[1 + 4*i]
-            xz_curve = Curve(curve)
-            xz_curve.points._M4 = b
-
-        with Layout("XW Curve"):
-            b = list(a)
-            for i in range(4):
-                b[1 + 4*i] = a[3 + 4*i]
-                b[3 + 4*i] = a[1 + 4*i]
-            xw_curve = Curve(curve)
-            xw_curve.points._M4 = b
-
-        with Layout("YZ Curve"):
-            b = list(a)
-            for i in range(4):
-                b[0 + 4*i] = a[2 + 4*i]
-                b[2 + 4*i] = a[0 + 4*i]
-            yz_curve = Curve(curve)
-            yz_curve.points._M4 = b
-
-        with Layout("YW Curve"):
-            b = list(a)
-            for i in range(4):
-                b[0 + 4*i] = a[3 + 4*i]
-                b[3 + 4*i] = a[0 + 4*i]
-            yw_curve = Curve(curve)
-            yw_curve.points._M4 = b
-
-        with Layout("ZW Curve"):
-            b = list(a)
-            for i in range(4):
-                b[0 + 4*i] = a[2 + 4*i]
-                b[1 + 4*i] = a[3 + 4*i]
-                b[2 + 4*i] = a[0 + 4*i]
-                b[3 + 4*i] = a[1 + 4*i]
-            zw_curve = Curve(curve)
-            zw_curve.points._M4 = b
-
-
-        with Panel("Circle"):
-            curve = Curve.MenuSwitch({"XY": xy_curve, "XZ": xz_curve, "XW": xw_curve, "YZ": yz_curve, "YW": yw_curve, "ZW": zw_curve}, menu="XY", name="Plane")
-
-        a = Matrix("M4").separate
-        curve.position = a[:3]
-
-        curve.out()
-
-        return
-
-
-
-
 
 def build_extrusions():
 
     # ----------------------------------------------------------------------------------------------------
     # GROUP - Compute curve tangent
 
-    with GeoNodes("Compute Tangents", is_group=True, fake_user=False, prefix=math_):
+    with GeoNodes("Compute Tangents", is_group=True, fake_user=False, prefix=maths_):
 
         curve = Curve()
 
@@ -1177,7 +1341,7 @@ def build_extrusions():
     # Count is the number of instances
     # The indices and edges are supposed to be ordered instance after instance
 
-    with GeoNodes("Link Slices", is_group=True, fake_user=False, prefix=math_):
+    with GeoNodes("Link Slices", is_group=True, fake_user=False, prefix=maths_):
 
         mesh       = Mesh()
         count      = Integer( 1,        "Count", 1, tip="Number of items to link")
@@ -1254,7 +1418,7 @@ def build_extrusions():
     # ----------------------------------------------------------------------------------------------------
     # GROUP - Mesh along a curve
 
-    with GeoNodes("Mesh Instances on Curve", is_group=True, fake_user=False, prefix=math_):
+    with GeoNodes("Mesh Instances on Curve", is_group=True, fake_user=False, prefix=maths_):
 
         curve       = Curve(name = "Curve")
         mesh        = Mesh( name = "Mesh")
@@ -1272,7 +1436,7 @@ def build_extrusions():
         # ---------------------------------------------------------------------------
         # Compute the tangents
 
-        curve = Group.Prefix(math_, "Compute Tangents", {'Curve': curve})._out
+        curve = Group.Prefix(maths_, "Compute Tangents", {'Curve': curve})._out
 
         # ---------------------------------------------------------------------------
         # Instantiate the mesh on the curve
@@ -1302,8 +1466,8 @@ def build_extrusions():
 
         #centers  = V4.Position(curve, sample_index=mesh_index)
 
-        #curve = math_.compute_tangents(curve).curve
-        #curve = Group.Prefix(math_, "Compute Tangents", {'Curve': curve})._out
+        #curve = maths_.compute_tangents(curve).curve
+        #curve = Group.Prefix(maths_, "Compute Tangents", {'Curve': curve})._out
 
         tangents = V4.Tangent(curve, sample_index=mesh_index)
 
@@ -1353,8 +1517,8 @@ def build_lights():
         sphere.faces.smooth   = True
         sphere.faces.material = mat
 
-        #sphere = sphere.transform(translation=math_.projection(*v.args).v)
-        sphere = sphere.transform(translation=Group.Prefix(math_, "Projection", v.sockets()).v)
+        #sphere = sphere.transform(translation=maths_.projection(*v.args).v)
+        sphere = sphere.transform(translation=Group.Prefix(maths_, "Projection", v.sockets()).v)
 
         # ----- To output
 
@@ -1388,7 +1552,7 @@ def build_lights():
     # ----------------------------------------------------------------------------------------------------
     # GROUP - Reflect on a surface given the two normals
 
-    with GeoNodes("Surface Reflection", is_group=True, prefix=math_):
+    with GeoNodes("Surface Reflection", is_group=True, prefix=maths_):
 
         v  = V4(0, 0, "")
         Na = V4(0, 0, "Normal A")
@@ -1455,15 +1619,15 @@ def build_lights():
         # ----------------------------------------------------------------------------------------------------
         # Reflected vector
 
-        #ref_node  = math_.surface_reflection(*incident.args, *Na.args, *Nb.args)
-        ref_node  = Group.Prefix(math_, "Surface Reflection", [incident.V, incident.w, Na.V, Na.w, Nb.V, Nb.w])
+        #ref_node  = maths_.surface_reflection(*incident.args, *Na.args, *Nb.args)
+        ref_node  = Group.Prefix(maths_, "Surface Reflection", [incident.V, incident.w, Na.V, Na.w, Nb.V, Nb.w])
         reflected = V4.FromNode(ref_node)
 
         # ----------------------------------------------------------------------------------------------------
         # Intensity
 
-        #proj = V4.NodeOutput(math_.projection_matrix(), "R 3")
-        proj = V4.FromNode(Group.Prefix(math_, "Projection Matrix"), "R 3")
+        #proj = V4.NodeOutput(maths_.projection_matrix(), "R 3")
+        proj = V4.FromNode(Group.Prefix(maths_, "Projection Matrix"), "R 3")
 
         with Layout("Light intensity"):
 
@@ -1623,7 +1787,7 @@ def build_curves():
         # ----- Instantiate
 
 
-        mesh = Mesh(Group.Prefix(math_, "Mesh Instances on Curve",
+        mesh = Mesh(Group.Prefix(maths_, "Mesh Instances on Curve",
             curve         = curve,
             mesh          = mesh,
             scale         = scale,
@@ -1634,7 +1798,7 @@ def build_curves():
 
         # ----- Link the slices
 
-        mesh = mesh.switch(link_slices, Group.Prefix(math_, "Link Slices",
+        mesh = mesh.switch(link_slices, Group.Prefix(maths_, "Link Slices",
             mesh           = mesh,
             count          = curve.points.count,
             with_faces     = with_faces,
@@ -1673,7 +1837,7 @@ def build_curves():
 
         # ----- Instantiate
 
-        mesh = Mesh(Group.Prefix(math_, "Mesh Instances on Curve",
+        mesh = Mesh(Group.Prefix(maths_, "Mesh Instances on Curve",
             curve         = curve,
             mesh          = sphere,
             scale         = size,
@@ -1684,7 +1848,7 @@ def build_curves():
 
         # ----- Link the slices
 
-        mesh = mesh.switch(link_slices, Group.Prefix(math_, "Link Slices",
+        mesh = mesh.switch(link_slices, Group.Prefix(maths_, "Link Slices",
             mesh           = mesh,
             count          = curve.points.count,
             with_faces     = with_faces,

@@ -100,7 +100,7 @@ if True:
     from .core import Texture, Collection, Object, Image, Material
     from .core import Menu
     from .core import Geometry, Domain
-    from .core import Point, Vertex, CloudPoint, SplinePoint, Spline, Instance, Layer
+    from .core import Point, Vertex, Face, Edge, Corner, SplinePoint, Spline, CloudPoint, Instance, Layer
     from .core import Mesh, Curve, Cloud, Instances, GreasePencil, Volume
 
     from .core import Layout, Panel, Break, Tree, Node, Group, GroupF, G, ColorRamp
@@ -115,7 +115,7 @@ if True:
 # Shader
 
 if True:
-    from .core import snd, Shader #, VolumeShader
+    from .core import snd, Shader, VolumeShader, ShaderNodes
 
 # ----------------------------------------------------------------------------------------------------
 # Register

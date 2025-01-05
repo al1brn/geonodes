@@ -26,7 +26,6 @@ from .scripterror import NodeError
 from . import constants
 from . import utils
 from .treeclass import Node
-from .geometry_class import GeoBase, Geometry
 from .domain_class import Domain
 from . import generated
 

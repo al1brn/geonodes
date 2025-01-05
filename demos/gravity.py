@@ -20,7 +20,6 @@ updates
 - update   : 2024/08/03
 """
 
-
 from geonodes import *
 
 # ====================================================================================================
@@ -28,11 +27,22 @@ from geonodes import *
 
 def demo():
 
+    with ShaderNodes("Planet"):
+
+        ped = Shader.Principled(
+            base_color = Color.CombineHSV(snd.attribute("Hue", attribute_type='INSTANCER').fac, .8, .9),
+            roughness  = .3,
+            metallic   = .2,
+        )
+
+        ped.out()
+
+
     with GeoNodes("Gravity"):
 
         with Panel("Planets"):
             planets_count = Integer(500, "Planets count", 1)
-            material      = Material(None, "Planets material")
+            material      = Material("Planet", "Planets material")
             seed          = Integer(0, "Seed")
 
         with Panel("Dimensions"):
@@ -67,7 +77,7 @@ def demo():
             planets.points._Collision = collision
             planets.points._Speed     = speed
             planets.points.radius     = radius
-            planets.points._Hue       = Float.Random(0, 1, seed=seed+3)
+            planets.points._Hue       = Float.Random(0, 1, seed=seed + 3)
             planets.points._Sun       = nd.index.equal(0)
 
             with Layout("Sun"):

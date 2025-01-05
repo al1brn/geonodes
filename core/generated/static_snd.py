@@ -115,7 +115,7 @@ class snd(Socket):
         - Color [vector_ (Vector), fac_ (Float), alpha_ (Float)]
         """
         node = Node('Attribute', sockets={}, attribute_name=attribute_name, attribute_type=attribute_type)
-        return node._out
+        return node
 
     @classmethod
     def background(cls, color=None, strength=None, weight=None):
@@ -1291,7 +1291,7 @@ class snd(Socket):
         - Vector [normal_ (Vector), uv_ (Vector), object_ (Vector), camera_ (Vector), window_ (Vector), reflection_ (Vector)]
         """
         node = Node('Texture Coordinate', sockets={}, from_instancer=from_instancer, object=object)
-        return node._out
+        return node
 
     @classmethod
     def environment_texture(cls, vector=None, image=None, interpolation='Linear', projection='EQUIRECTANGULAR'):
@@ -1715,7 +1715,7 @@ class snd(Socket):
         - Color [alpha_ (Float)]
         """
         node = Node('Color Attribute', sockets={}, layer_name=layer_name)
-        return node._out
+        return node
 
     @classmethod
     def volume_absorption(cls, color=None, density=None, weight=None):
@@ -1729,7 +1729,7 @@ class snd(Socket):
 
         Returns
         -------
-        - Shader
+        - VolumeShader
         """
         node = Node('Volume Absorption', sockets={'Color': color, 'Density': density, 'Weight': weight})
         return node._out
@@ -1768,7 +1768,7 @@ class snd(Socket):
 
         Returns
         -------
-        - Shader
+        - VolumeShader
         """
         node = Node('Principled Volume', sockets={'Color': color, 'Color Attribute': color_attribute, 'Density': density, 'Density Attribute': density_attribute, 'Anisotropy': anisotropy, 'Absorption Color': absorption_color, 'Emission Strength': emission_strength, 'Emission Color': emission_color, 'Blackbody Intensity': blackbody_intensity, 'Blackbody Tint': blackbody_tint, 'Temperature': temperature, 'Temperature Attribute': temperature_attribute, 'Weight': weight})
         return node._out
@@ -1791,7 +1791,7 @@ class snd(Socket):
 
         Returns
         -------
-        - Shader
+        - VolumeShader
         """
         node = Node('Volume Scatter', sockets={'Color': color, 'Density': density, 'Anisotropy': anisotropy, 'IOR': ior, 'Backscatter': backscatter, 'Alpha': alpha, 'Diameter': diameter, 'Weight': weight}, phase=phase)
         return node._out

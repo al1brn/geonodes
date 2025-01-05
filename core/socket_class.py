@@ -195,7 +195,7 @@ class Socket(NodeCache, PropLocker):
     @classmethod
     @property
     def _is_attribute(cls):
-        return self.class_name in constants.ATTRIBUTE_CLASSES
+        return cls.class_name in constants.ATTRIBUTE_CLASSES
 
     @property
     def _panel_name(self):

@@ -100,8 +100,6 @@ def generate(folder):
 
     print("Done")
 
-    print(code)
-
 # =============================================================================================================================
 # Build the dictionnary of node name -> bl_idname
 

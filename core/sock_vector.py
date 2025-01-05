@@ -164,6 +164,38 @@ class Vector(generated.Vector):
         return Rotation(rotation).to_euler()
 
     # ====================================================================================================
+    # Mix
+
+    def mix(self, b=None, factor=None, clamp_factor=True):
+        """ > Method <&Node Mix>
+
+        > [NOTE]
+        > Call mix_uniform or mix_non_uniform depending on the factor type
+
+        Information
+        -----------
+        - Socket 'A' : self
+        - Parameter 'blend_type' : 'MIX'
+        - Parameter 'clamp_result' : False
+        - Parameter 'data_type' : 'VECTOR'
+        - Parameter 'factor_mode' : 'UNIFORM' or 'NON_UNIFORM' depending on factor argument
+
+        Arguments
+        ---------
+        - b (Vector) : socket 'B' (id: B_Vector)
+        - factor (Float or Vector) : socket 'Factor'
+        - clamp_factor (bool): parameter 'clamp_factor'
+
+        Returns
+        -------
+        - Vector
+        """
+        if utils.is_vector_like(factor):
+            return self.mix_non_uniform(b, factor=factor, clamp_factor=clamp_factor)
+        else:
+            return self.mix_uniform(b, factor=factor, clamp_factor=clamp_factor)
+
+    # ====================================================================================================
     # Operations
 
     # ----- Neg

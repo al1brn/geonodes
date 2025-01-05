@@ -39,8 +39,6 @@ def demo():
 
     print("\nCreate Arrows nodes...")
 
-    """
-
     with ShaderNodes("Arrow"):
 
         pos_color = Color(snd.attribute(attribute_type='GEOMETRY', attribute_name="Color").vector)
@@ -55,11 +53,9 @@ def demo():
             roughness  = negative.map_range(to_min=.1, to_max=.9),
         )
 
-        shader = ped.mix(transp, Shader.Transparent())
+        shader = ped.mix(Shader.Transparent(), fac=transp)
 
         shader.out()
-    """
-
 
     # ====================================================================================================
     # Arrows field

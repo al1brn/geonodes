@@ -31,32 +31,61 @@ from .treeclass import Tree, Node
 from .socket_class import Socket
 from .  import generated
 
-class Shader(generated.Shader):
+# =============================================================================================================================
+# Shader Root for Shader and VolumeShader
 
-    SOCKET_TYPE = 'SHADER'
+class ShaderRoot:
 
-    def __init__(self, value: Socket | None = None, name: str | None = None, tip: str | None = None):
-        """ Socket of type String
-
-        Node <&Node String>
-
-        A group input socket of type String is created if the name is not None.
+    def surface_out(self, target='ALL'):
+        """ Connect the shader to the Surface socket of Material Output
 
         Arguments
         ---------
-        - value (str or Socket) : initial value
-        - name (str = None) : group input socket name if not None
-        - tip (str = None) : user type for group input socket
+        - target (str = 'ALL') : parameter ' target' in ('ALL', 'EEVEE', 'CYCLES')
         """
+        self._tree.set_surface(self, target=target)
 
-        bsock = utils.get_bsocket(value)
-        if bsock is None:
-            if name is None:
-                assert(False)
-            else:
-                bsock = Tree.new_input('NodeSocketShader', name, value=value, description=tip)
+    def volume_out(self, target='ALL'):
+        """ Connect the shader to the Volume socket of Material Output
 
-        super().__init__(bsock)
+        Arguments
+        ---------
+        - target (str = 'ALL') : parameter ' target' in ('ALL', 'EEVEE', 'CYCLES')
+        """
+        self._tree.set_volume(self, target=target)
 
-    # ====================================================================================================
-    # Operators
+    # =============================================================================================================================
+    # Operations
+
+    def __add__(self, other):
+        return self.add(other)
+
+    def __mul__ (self, other):
+        if isinstance(other, tuple) and len(other) == 2:
+            return self.mix(other[0], fac=other[1])
+        else:
+            return self.mix(other)
+
+# =============================================================================================================================
+# Surface Shader
+
+class Shader(ShaderRoot, generated.Shader):
+
+    SOCKET_TYPE = 'SHADER'
+
+    def out(self, name=None):
+        if self._tree._is_group:
+            super().out(name=name)
+        else:
+            self._tree.surface = self
+
+# =============================================================================================================================
+# Volume Shader
+
+class VolumeShader(ShaderRoot, generated.VolumeShader):
+
+    def out(self, name=None):
+        if self._tree._is_group:
+            super().out(name=name)
+        else:
+            self._tree.volume = self

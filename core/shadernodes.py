@@ -27,11 +27,14 @@ updates
 
 from typing import Callable, Any, Iterable, List, Optional
 
-from .staticclass import StaticClass
-from ..core.treeclass import Tree, Node
-from ..core.scripterror import NodeError
+from . import constants
 
-class snd(StaticClass):
+from .treeclass import Tree, Node
+from .scripterror import NodeError
+from .treeinterface import TreeInterface
+
+
+class snd_OLD:
 
     @classmethod
     def sharp_face(cls, attribute_type: str ='GEOMETRY') -> Node:

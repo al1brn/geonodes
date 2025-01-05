@@ -152,7 +152,7 @@ class NodeInfo:
 
     @property
     def python_name(self):
-        return utils.socket_name(self.bnode.name)
+        return utils.snake_case(self.bnode.name)
 
     @property
     def in_sockets_count(self):
@@ -174,7 +174,7 @@ class NodeInfo:
         return self.in_sockets_count == 0 and len(self.params) == 0
 
     def out_socket_str(self, bsocket, suffix=''):
-        return f"{utils.socket_name(bsocket.name)}{suffix} ({constants.CLASS_NAMES[bsocket.type]})"
+        return f"{utils.snake_case(bsocket.name)}{suffix} ({constants.CLASS_NAMES[bsocket.type]})"
 
     @property
     def has_items(self):
@@ -324,7 +324,7 @@ class NodeInfo:
                 info_help.append(f"Socket '{bsocket.name}' : ignored")
 
             else:
-                pyname = utils.socket_name(bsocket.name)
+                pyname = utils.snake_case(bsocket.name)
                 if pyname in counter:
                     counter[pyname] += 1
                     pyname += f"_{counter[pyname]}"
@@ -578,7 +578,7 @@ class NodeInfo:
             self_socket = self.default_self_socket
 
         if func_name is None:
-            func_name = utils.socket_name(self.bnode.name)
+            func_name = utils.snake_case(self.bnode.name)
 
         # ----- Main items
 
@@ -840,7 +840,7 @@ class NodeInfo:
                 elif bsocket.name == 'Selection':
                     insockets['Selection'] = 'self._sel'
                 else:
-                    pyname = utils.socket_name(bsocket.name)
+                    pyname = utils.snake_case(bsocket.name)
                     insockets[bsocket.name] = pyname
                     yield f", {pyname}=None"
 
@@ -881,7 +881,7 @@ class NodeInfo:
                 yield f"\n\n{_tab*2}Returns"
                 yield f"\n{_tab*2}-------"
 
-                out_sockets = [f"{utils.socket_name(bsocket.name)} ({constants.CLASS_NAMES[bsocket.type]})" for bsocket in self.bnode.outputs if bsocket.type != 'CUSTOM']
+                out_sockets = [f"{utils.snake_case(bsocket.name)} ({constants.CLASS_NAMES[bsocket.type]})" for bsocket in self.bnode.outputs if bsocket.type != 'CUSTOM']
                 if return_node:
                     yield f"\n{_tab*2}- Node: [{', '.join(out_sockets)}]"
                 elif len(out_sockets):
@@ -913,11 +913,11 @@ class NodeInfo:
                     if bsocket.enabled:
                         if count == 0:
                             count = 1
-                            out_name = utils.socket_name(bsocket.name)
+                            out_name = utils.snake_case(bsocket.name)
                         else:
                             if count == 1:
                                 yield f"{_tab*2}{out_name} = node._out\n"
-                            attr_name = utils.socket_name(bsocket.name)
+                            attr_name = utils.snake_case(bsocket.name)
                             yield f"{_tab*2}{out_name}.{attr_name}_ = node.{attr_name}\n"
 
                 if count == 1:
@@ -1148,7 +1148,7 @@ class OLD:
             if bsock.is_multi_input:
                 self.has_multi_input = True
                 self.mi_bsocket = bsock
-                self.mi_pyname = utils.socket_name(bsock.name)
+                self.mi_pyname = utils.snake_case(bsock.name)
                 break
 
         # ----------------------------------------------------------------------------------------------------

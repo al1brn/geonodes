@@ -311,6 +311,11 @@ class NodeInfo:
         class_name = constants.CLASS_NAMES[socket.type]
         if class_name == 'Geometry':
             class_name = cls.geometry_class(socket.name)
+        elif class_name == 'Shader':
+            if socket.name in ['Volume']:
+                return 'VolumeShader'
+            else:
+                return 'Shader'
         return class_name
 
     def get_domain_class(self, domain):
@@ -509,7 +514,7 @@ class NodeInfo:
         return len(self.bnode.inputs) == 0 and len(self.params) == 0
 
     def out_socket_str(self, bsocket, suffix=''):
-        return f"{utils.socket_name(bsocket.name)}{suffix} ({constants.CLASS_NAMES[bsocket.type]})"
+        return f"{utils.snake_case(bsocket.name)}{suffix} ({constants.CLASS_NAMES[bsocket.type]})"
 
     @property
     def has_items(self):
@@ -720,7 +725,7 @@ class NodeInfo:
         for param, param_value in self.params.items():
 
             if param == data_type:
-                driving_arg_name = utils.socket_name(self.data_type_sockets['in_sockets'][0])
+                driving_arg_name = utils.snake_case(self.data_type_sockets['in_sockets'][0])
 
                 args.append({
                     'is_socket'    : False,
@@ -819,7 +824,7 @@ class NodeInfo:
                 continue
 
             is_self     = False
-            arg_name    = utils.socket_name(socket_name)
+            arg_name    = utils.snake_case(socket_name)
             node_value  = None
             is_multi    = socket.is_multi_input
             is_argument = True
@@ -942,7 +947,7 @@ class NodeInfo:
                 name = socket.label
             else:
                 name = socket_name
-            out[utils.socket_name(name)] = self.get_socket_class_name(socket)
+            out[utils.snake_case(name)] = self.get_socket_class_name(socket)
         return out
 
     # -----------------------------------------------------------------------------------------------------------------------------
@@ -1073,7 +1078,7 @@ class NodeInfo:
         # Function name
 
         if name is None:
-            name = utils.socket_name(node_name)
+            name = utils.snake_case(node_name)
 
         # ----------------------------------------------------------------------------------------------------
         # Get the arguments
@@ -1086,14 +1091,14 @@ class NodeInfo:
         # - only one output sockets
 
         is_prop = True
+        socks_count = 0
         for arg in args:
             if arg['is_argument']:
                 is_prop = False
-                break
+                if arg['is_socket']:
+                    socks_count += 1
 
-        ret_node = False
-        if is_prop:
-            ret_node = len(self.node_output()) > 1
+        ret_node = (socks_count == 0) and len(self.node_output()) > 1
 
         # ----------------------------------------------------------------------------------------------------
         # Source code
@@ -1224,7 +1229,7 @@ class NodeInfo:
     # Method implementation
 
     def method_code(self, gen, func: str = 'method', func_name: str | None = None,
-        class_name: str | None = None, self_: str | None = None, is_class_method: bool = False,only_enabled: bool = True,
+        class_name: str | None = None, self_: str | None = None, is_class_method: bool = False, only_enabled: bool = True,
         domain_loop: bool = True, domain_param: str | None = None, domain_value : str | None = None,
         data_type_loop: bool = True, set_in_socket: str | None = None, ret: str | None = 'OUT', cache: bool = False,
         check_existing: bool = True,
@@ -1262,12 +1267,12 @@ class NodeInfo:
 
         if self.btree.bl_idname == 'ShaderNodeTree':
             if self.bnode.name.endswith('BSDF'):
-                DEBUG = True
-                func = 'C'
                 if class_name is None:
                     class_name = 'Shader'
                 if func_name is None:
                     func_name = utils.CamelCase(self.bnode.name[:-5])
+
+                return self.constructor_code(gen=gen, func_name=None, class_name=class_name, **parameters)
 
         # ----------------------------------------------------------------------------------------------------
         # Has a domain parameter
@@ -1500,7 +1505,7 @@ class NodeInfo:
         # Function name
 
         if func_name is None:
-            func_name = utils.socket_name(self.bnode.name)
+            func_name = utils.snake_case(self.bnode.name)
 
         # ----------------------------------------------------------------------------------------------------
         # Let's generated the source code
@@ -1531,7 +1536,7 @@ class NodeInfo:
         # ----- Data type dynamic computation
 
         if data_type is not None:
-            driving_arg_name = utils.socket_name(data_type_sockets['in_sockets'][0])
+            driving_arg_name = utils.snake_case(data_type_sockets['in_sockets'][0])
             s += f"{_2}{data_type} = utils.get_argument_data_type({driving_arg_name}, {data_type_sockets['type_to_value']}, '{class_name}.{func_name}', '{driving_arg_name}')\n"
 
         # ----- Node call
@@ -1600,7 +1605,7 @@ class NodeInfo:
         # Function name
 
         if func_name is None:
-            func_name = utils.socket_name(self.bnode.name)
+            func_name = utils.snake_case(self.bnode.name)
 
         # ----------------------------------------------------------------------------------------------------
         # Output nodes
@@ -1713,12 +1718,12 @@ class NodeInfo:
                     if func == 'C':
                         prefix = utils.CamelCase(self.bnode.name)
                     else:
-                        prefix = utils.socket_name(self.bnode.name) + '_'
+                        prefix = utils.snake_case(self.bnode.name) + '_'
                 else:
                     if func == 'C':
                         prefix = func_name.title().replace('_', '')
                     else:
-                        prefix = utils.socket_name(func_name) + '_'
+                        prefix = utils.snake_case(func_name) + '_'
 
             func_name = None
 
@@ -1733,7 +1738,7 @@ class NodeInfo:
                         if func in ['C', 'Constructor']:
                             fname = utils.CamelCase(value)
                         else:
-                            fname = utils.socket_name(value)
+                            fname = utils.snake_case(value)
 
                 if fname in rename:
                     fname = rename[fname]
@@ -1759,7 +1764,7 @@ class NodeInfo:
             mem_params = self.set_user_parameters(**parameters)
 
             for socket_name in self.node_output():
-                ret = utils.socket_name(socket_name)
+                ret = utils.snake_case(socket_name)
                 fname = rename.get(ret, ret)
                 fname = prefix + fname + suffix
                 self.method_code(gen, func='get', func_name=fname, cache=True, ret=ret, **kwargs, **parameters)

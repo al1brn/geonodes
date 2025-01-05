@@ -84,7 +84,7 @@ class NodeItems:
             if not bsocket.identifier.lower().startswith(self._name):
                 continue
 
-            if socket_name in [bsocket.name, bsocket.identifier, utils.socket_name(bsocket.name)]:
+            if socket_name in [bsocket.name, bsocket.identifier, utils.snake_case(bsocket.name)]:
                 if input:
                     return bsocket
                 else:
@@ -227,7 +227,7 @@ class Zone:
 
         # ----- Existing output sockets
 
-        #self._fixed = {utils.socket_name(bsock.name): self._input.out_socket(bsock.name) for bsock in self._input._bnode.outputs if bsock.type != 'CUSTOM'}
+        #self._fixed = {utils.snake_case(bsock.name): self._input.out_socket(bsock.name) for bsock in self._input._bnode.outputs if bsock.type != 'CUSTOM'}
 
         # ----- Create the simulation state items in the output node
 
@@ -235,14 +235,14 @@ class Zone:
 
         # ----- Plug the sockets in the input node
 
-        all_sockets = {utils.socket_name(name): value for name, value in {**sockets, **snake_case_sockets}.items()}
+        all_sockets = {utils.snake_case(name): value for name, value in {**sockets, **snake_case_sockets}.items()}
         for name, value in all_sockets.items():
             self._input.plug_value_into_socket(value, name)
 
         # ----- Variables used within the with statement
 
         self._locals = {pname: self._input.out_socket(pname) for pname in all_sockets.keys()}
-        #self._locals = {utils.socket_name(bsock.name): self._input.out_socket(bsock.name) for bsock in self._input._bnode.outputs if bsock.type != 'CUSTOM'}
+        #self._locals = {utils.snake_case(bsock.name): self._input.out_socket(bsock.name) for bsock in self._input._bnode.outputs if bsock.type != 'CUSTOM'}
 
         # ----- Ensure the proper sub class of geometries
 

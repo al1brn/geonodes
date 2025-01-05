@@ -29,10 +29,10 @@ def demo():
 
     # ====================================================================================================
     # Shaders for digits
-    """
+
     with ShaderNodes("LCD On"):
         ped = Shader.Principled(
-            base_color = Color.CombineHSV(0, 0, 0),
+            base_color = snd.attribute("Color").color,
             roughness  = .3,
             metallic   = .2,
         )
@@ -57,7 +57,8 @@ def demo():
         black = Color.Combine(.05, .05, .05)
         red   = Color.Combine(.95, .05, .05)
 
-        col = black.mix(wheel_index.equal(0), red)
+        #col = black.mix(red, fac=wheel_index.equal(0))
+        col = black.mix(red, factor=wheel_index.compare(0))
 
         ped = Shader.Principled(
             base_color = col,
@@ -86,7 +87,7 @@ def demo():
         )
 
         ped.out()
-    """
+
     # ====================================================================================================
     # A digital digit : each light item is a face
 

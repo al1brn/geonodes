@@ -24,7 +24,6 @@ functions
 - remove_accents    : remove accents from a string
 - clean             : clean a string
 - prefix_figure     : prefix a string by '_' if it is a number, e.g. : '3D Cursor' -> _3d_cursor
-- socket_name       : transform a user name in snake case python name, e.g. : "Color Ramp" -> 'color_ramp'
 - get_bsocket       : get a blender socket from a value which can be a Socket or a blender.types.NodeSocket
 - get_socket_type   : get a socket type in SOCKET_TYPES.keys() from either a socket or a value
 - get_data_type     : get a data type in DATA_TYPES from either a socket or a value
@@ -119,47 +118,115 @@ def del_tree(btree):
 # Litteral to python name
 
 # ----------------------------------------------------------------------------------------------------
-# Remove accents
+# Replace accents and replace non kw chars by '_'
 
-def remove_accents(input_str):
-    nfkd_form = unicodedata.normalize('NFKD', input_str)
-    only_ascii = nfkd_form.encode('ASCII', 'ignore')
-    return only_ascii.decode('utf-8')
+def only_kw_chars(s):
+
+    accents = {'à': 'a', 'â': 'a', 'À': 'A', 'Â': 'A',
+               'é': 'e', 'è': 'e', 'ê':'e', 'ë': 'e', 'È': 'E', 'É': 'E', 'Ê': 'E', 'Ë': 'E',
+               'î': 'i', 'Î': 'I',
+               'ô': 'o', 'Ô': 'O',
+               'û': 'u', 'ü': 'u', 'ù': 'u', 'Ù': 'U', 'Û': 'U', 'Ü': 'U'}
+
+    valids = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_"
+
+    cleaned = ""
+    last = ""
+    for c in s:
+        # Remove accents
+        ch = accents.get(c, c)
+
+        # Append if valid
+        if ch in valids:
+            cleaned += ch
+            last = ch
+
+        # Otherwise add a _ char, avoiding doing it twice
+        elif last != '_':
+            cleaned += '_'
+            last = '_'
+
+    # Remove '__' sequences
+
+    for i in range(10):
+        p = cleaned.find('__')
+        if p < 0:
+            break
+        cleaned = cleaned.replace('__', '_')
+
+    return cleaned
 
 # ----------------------------------------------------------------------------------------------------
-# Clean
+# Camel version of a string
 
-def clean(s, rep=' '):
-    for c in ['/', ':', '-', '.',' ']:
-        s = s.replace(c, rep)
-    return s
+def CamelCase(s):
+
+    if s == "":
+        return None
+
+    title = ""
+    for w in s.split(' '):
+        if w in ['RGB', 'HSL', 'HSV', 'BSDF']:
+            title += w
+        else:
+            title += w.title()
+
+
+    cc = only_kw_chars(title)
+
+    cc = cc.replace('_', '')
+    if cc[0] in "0123456789":
+        cc = "_" + cc
+
+    return cc
 
 # ----------------------------------------------------------------------------------------------------
-# Add a _ prefix is name starts with a figure
+# Snake case version of a string
 
-def prefix_figure(name):
-    if name[0].isnumeric():
-        return "_" + name
-    else:
-        return name
+def snake_case(s):
 
-def socket_name(name):
-
-    if name == "":
+    if s == "":
         return None
 
-    return prefix_figure(remove_accents(clean(name, '_').lower()))
+    sc = only_kw_chars(s.lower())
 
-    if name == 'ID':
-        return 'ID'
-    else:
-        return prefix_figure(remove_accents(clean(name, '_').lower()))
+    if sc[0] in "0123456789":
+        sc = '_' + sc
 
-def CamelCase(name):
-    if name == "":
-        return None
+    return sc
 
-    return remove_accents(name).title().replace(' ', '').replace('_', '')
+# ----------------------------------------------------------------------------------------------------
+# Ensure socket name unicity
+
+def ensure_uniques(names: list[str], single_digit: bool = False):
+    """ Build a list of unique names from a list
+
+    Doublons are suffixed by an index:
+    - ['key', 'key', 'other'] -> ['key', 'key_001', 'other']
+
+    Arguments
+    ---------
+    - names : list of names with possible doublons
+    - single_digit : 'key_1' rather that 'key_001'
+
+    Returns
+    -------
+    - list of str : doublons are suffixed by an index
+    """
+    homos  = {}
+    uniques = []
+    for name in names:
+        count = homos.get(name)
+        if count is None:
+            uniques.append(name)
+            homos[name] = 1
+        else:
+            if single_digit:
+                uniques.append(f"{name}_{count:d}")
+            else:
+                uniques.append(f"{name}_{count:03d}")
+            homos[name] = count + 1
+    return uniques
 
 # =============================================================================================================================
 # Get a node bl_idname from a name
@@ -356,6 +423,14 @@ def value_to_array(value, shape):
     if np.shape(a) in [(), (1,)]:
         return np.resize(a, shape)
 
+    if np.size(a) == np.prod(shape).astype(int):
+        return np.reshape(a, shape)
+    else:
+        raise Exception(f"The value {value} with shape {np.shape(a)} (size: {np.size(a)}) can't be reshaped into {shape} (size: {np.prod(shape).astype(int)})")
+
+
+
+
     try:
         return np.reshape(a, shape)
     except:
@@ -412,7 +487,6 @@ def get_blender_resource(socket_type, value):
     if isinstance(value, spec['type']):
         return value
     else:
-        print("????", spec)
         return spec['coll'].get(value)
 
 def get_object(value):

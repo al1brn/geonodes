@@ -73,6 +73,8 @@ class Rotation(generated.Rotation):
         - name (str = None) : Create an Group Input socket with the provided str if not None
         - tip (str = None) : User tip (for Group Input sockets)
         """
+        from geonodes import Vector
+
         if isinstance(value, str):
             value = type(self).Named(value)
 
@@ -81,7 +83,7 @@ class Rotation(generated.Rotation):
             if name is None:
                 a = utils.value_to_array(value, (3,))
                 if utils.has_bsocket(a):
-                    bsock = Vector(value).to_rotation()
+                    bsock = Vector(value).to_rotation
                     #bsock = Node('Combine XYZ', {0: a[0], 1: a[1], 2:a[2]})._out
                 else:
                     bsock = Node('Rotation', rotation_euler=value)._out

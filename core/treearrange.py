@@ -709,7 +709,11 @@ class Frame(Node):
             if reroute is None:
                 reroute = link.insert_reroute(self)
                 reroute.bnode.location = (x + 200, y)
-                y += y_sepa
+                # Order bottom down
+                if True:
+                    y -= y_sepa
+                else:
+                    y += y_sepa
 
                 source_nodes[source_key] = reroute
 
@@ -728,8 +732,7 @@ class Frame(Node):
             if reroute is None:
                 reroute = link.insert_reroute(self)
                 reroute.bnode.location = (x + 100, y)
-                y += y_sepa
-
+                y -= y_sepa
                 source_nodes[source_key] = reroute
 
             else:
