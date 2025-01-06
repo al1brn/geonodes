@@ -241,6 +241,13 @@ class Tree:
         """
 
         if prefix is not None:
+            if isinstance(prefix, str):
+                pass
+            elif hasattr(prefix, 'name'):
+                prefix = prefix.name
+            else:
+                prefix = str(prefix)
+
             tree_name = f"{prefix} {tree_name}"
 
         self._btree  = None
@@ -2343,6 +2350,17 @@ class G:
     ```
 
     """
+
+    @staticmethod
+    def create_prefix(name):
+        f_prefix = utils.snake_case(name)
+        name = name.replace("'", r"\'")
+        if not hasattr(G, f_prefix):
+            s = f"class PREFIX_{f_prefix}:\n\tname='{name}'\n\t_name='{f_prefix}'\n"
+            s += f"G.{f_prefix} = PREFIX_{f_prefix}"
+            exec(s)
+        return getattr(G, f_prefix)
+
     @staticmethod
     def build_from_tree(btree, prefix=""):
         """ Dynamically create a function to call the tree as Group
@@ -2373,28 +2391,23 @@ class G:
             assert(len(btree.name) > len(prefix) + 1)
             assert(btree.name.startswith(prefix))
 
+            pref = G.create_prefix(prefix)
+            f_prefix = pref._name
+            target = f"G.{f_prefix}"
+            """
             f_prefix = utils.snake_case(prefix)
             target = f"G.{f_prefix}"
             if not hasattr(G, f_prefix):
                 s = f"class PREFIX_{f_prefix}:\n\tpass\n"
                 s += f"G.{f_prefix} = PREFIX_{f_prefix}"
                 exec(s)
-
+            """
             func_name = utils.snake_case(btree.name[len(prefix) + 1:])
             f_prefix += "_"
 
         # ----- Input node
 
-        if True:
-            sock_names = TreeInterface(btree).get_arg_names()
-        else:
-            sock_names = []
-            for bnode in btree.nodes:
-                if bnode.bl_idname == 'NodeGroupInput':
-                    sock_names = [utils.snake_case(bsock.name) for bsock in bnode.outputs if bsock.type != 'CUSTOM']
-                    break
-            sock_names = utils.ensure_uniques(sock_names, single_digit=True)
-
+        sock_names = TreeInterface(btree).get_arg_names()
         sock_names.append('link_from')
 
         # ----- Create the function
@@ -2404,7 +2417,6 @@ class G:
 
         s = f"def G_{f_prefix}{func_name}(" + ", ".join(header) + "):\n"
         s += f"\treturn Group('{btree.name}', " + ", ".join(call) + ")._out\n\n"
-        #s += f"setattr({target}, '{func_name}', G_{prefix}{func_name})\n"
         s += f"{target}.{func_name} = G_{f_prefix}{func_name}\n"
 
         # DEBUG
