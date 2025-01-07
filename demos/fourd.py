@@ -34,12 +34,12 @@ from geonodes.core import utils
 
 # ----- Prefixes
 
-math_   = G.create_prefix("Math")
-matrix_ = G.create_prefix("Matrix")
+math_   = G.create_prefix("4-Math")
+matrix_ = G.create_prefix("4-Matrix")
 vector_ = G.create_prefix("4-Vector")
 mod_    = G.create_prefix("4D")
-curve_  = G.create_prefix("Curve")
-surf_   = G.create_prefix("Surf")
+curve_  = G.create_prefix("4-Curve")
+surf_   = G.create_prefix("4_Surf")
 debug_  = G.create_prefix("DEBUG")
 
 ZERO = 0.0001
@@ -199,17 +199,18 @@ def build_debug():
     with GeoNodes("Dump Matrix at Index", prefix=debug_):
         geo = Cloud(Geometry())
         index = Integer(0, "Index")
+        use_M4 = Boolean(True, "Use M4")
+        M = Matrix(None, "Matrix")
 
-        M4 = geo.points.sample_index(Matrix("M4"), index=index)
+        M = M.switch(use_M4, Matrix("M4"))
+
+        M4 = geo.points.sample_index(M, index=index)
         vis_mat = debug_.dump_matrix(matrix=M4, link_from='TREE')
 
         sph = Mesh.UVSphere(radius=.1)
         sph.offset = geo.points.sample_index(nd.position, index=index)
 
         Geometry.Join(geo, sph, vis_mat).out()
-
-
-
 
 
     # ----------------------------------------------------------------------------------------------------
@@ -514,6 +515,24 @@ def build_operations():
     V4.build_operations()
 
     # ----------------------------------------------------------------------------------------------------
+    # Rotate a M4 Matrix
+    # Equivalent to rot @ M4
+
+    with GeoNodes("Rotate M4", is_group=True, prefix=matrix_):
+
+        rot = Matrix(None, "Rotation")
+        M4  = Matrix(None, "M4")
+
+        m = M4.separate
+        a = []
+        for i in range(4):
+            U = V4(m[4*i:4*(i+1)])
+            node = matrix_.dot_vector(rot, *U).node
+            a.extend([node.x, node.y, node.z, node.w])
+
+        Matrix(a).out()
+
+    # ----------------------------------------------------------------------------------------------------
     # Roll a matrix
 
     with GeoNodes("Roll", is_group=True, prefix=matrix_):
@@ -577,40 +596,11 @@ def build_operations():
         M     = Matrix(None, "Matrix")
         R     = Rotation(None, "Rotation")
         index = Integer.MenuSwitch({'X': 0, 'Y': 1, 'Z': 2, 'W': 3}, menu='W', name="Axis")
-        #index = Integer(3, "Axis Index")
 
         M_rot = Matrix.CombineTransform(rotation=R)
         M_rot = matrix_.roll(M_rot, count=(1+index)%4)
         M = M @ M_rot
         M.out()
-
-        """
-        a = Matrix.CombineTransform(rotation=R).separate
-
-
-        Ms = []
-        for axis_index in range(4):
-            with Layout(f"Rotation around axis {'XYZW'[axis_index]}"):
-                b = list(a)
-                for i in range(4):
-                    j = (i + 1 + axis_index)%4
-                    b[4*j:4*(j+1)] = a[4*i:4*(i+1)]
-
-                c = list(b)
-                for i in range(4):
-                    j = (i + 1 + axis_index)%4
-                    c[4*i + (0 + j)%4] = b[4*i + (0 + i)%4]
-                    c[4*i + (1 + j)%4] = b[4*i + (1 + i)%4]
-                    c[4*i + (2 + j)%4] = b[4*i + (2 + i)%4]
-                    c[4*i + (3 + j)%4] = b[4*i + (3 + i)%4]
-
-                Ms.append(Matrix(c))
-
-        M_rot = Matrix.IndexSwitch(*Ms, index=index)
-
-        M = M @ M_rot
-        M.out()
-        """
 
     # ----------------------------------------------------------------------------------------------------
     # Cross product between 3 4-Vectors
@@ -624,6 +614,7 @@ def build_operations():
         normalize = Boolean(True, "Normalize")
 
         a = list(M.separate)
+
         ux, uy, uz, uw = tuple(a[ 4: 8])
         vx, vy, vz, vw = tuple(a[ 8:12])
         t = tuple(a[12:16])
@@ -636,7 +627,15 @@ def build_operations():
 
         V = V4(t).matmul(S)
 
-        V.normalize(normalize).out()
+        V = V.normalize(normalize)
+        V.out()
+
+        a[:4] = V.a
+        Matrix(a).out()
+
+
+
+
 
     # ----------------------------------------------------------------------------------------------------
     # Align a 4-rotation to a vector
@@ -928,6 +927,7 @@ def build_matrices():
         w         = Float(0, "w", tip="Fourth dimension value")
         curve_res = Integer(0, "Curve Resample", min=0, tip="Resample curve (0 or 1 for no resample)")
 
+
         mesh  = geo.mesh
         curve = geo.curve
         cloud = geo.point_cloud
@@ -955,9 +955,12 @@ def build_matrices():
         with Layout("Cloud"):
             cloud.points._M4 = a
 
-        geo = Cloud.Join(mesh, curve, cloud)
+        plunged = Cloud.Join(mesh, curve, cloud)
 
-        geo.out()
+        with Layout("Already Plunged"):
+            exists = Cloud(geo).points.sample_index(Matrix("M4").exists_, 0)
+
+            plunged.switch(exists, geo).out()
 
     # ----------------------------------------------------------------------------------------------------
     # GROUP - Perform a projection
@@ -966,18 +969,34 @@ def build_matrices():
 
         geo = Geometry()
 
-        with Panel("Options"):
+        with Panel("Faces"):
+            del_faces   = Boolean(False,        "Delete Faces")
+            face_smooth = Boolean(True,         "Face Smooth")
+            face_mat    = Material("4 Face",    "Face Material")
+
+        with Panel("Edges"):
+            edge_radius = Float(0,              "Edge Radius", 0)
+            edge_resol  = Integer(12,           "Edge Resolution", 3, 16)
+            edge_mat    = Material("4 Edge",    "Edge Material")
+
+        with Panel("Points"):
+            point_radius = Float(0,             "Point Radius", 0)
+            point_mat    = Material("4 Edge",   "Point Material")
+
+        with Panel("Debug"):
             show_normals  = Boolean(False, "Show Normals",  tip="Show mesh normals")
             show_tangents = Boolean(False, "Show Tangents", tip="Show curve tangents")
             vect_length   = Float(1, "Vectors length", tip="Length of normals / tangents")
 
-        M = Matrix("M4")
-        M_proj = matrix_.projection_matrix()
+        with Layout("Projection into 3D Space"):
 
-        m = M_proj @ M
+            M = Matrix("M4")
+            M_proj = matrix_.projection_matrix()
 
-        a = m.separate
-        geo.position = a[:3]
+            m = M_proj @ M
+
+            a = m.separate
+            geo.position = a[:3]
 
         mesh  = geo.mesh
         curve = geo.curve
@@ -985,31 +1004,56 @@ def build_matrices():
 
         line = Curve.LineDirection(length=vect_length)
 
-        with Layout("Mesh"):
-            mesh.points._Normal_A = a[4:7]
-            mesh.points._Normal_B = a[8:11]
-
+        with Layout("Mesh Normals"):
             vis  = mesh.points.instance_on(instance=line, rotation=Rotation.AlignZToVector(a[4:7]))
             vis += mesh.points.instance_on(instance=line, rotation=Rotation.AlignZToVector(a[8:11]))
 
-            mesh = mesh.switch(show_normals, mesh + vis)
+            visualization = vis.switch(-show_normals)
 
-        with Layout("Curve"):
+        with Layout("Curve Normals & Tangents"):
             curve.points._Tangent = a[4:7]
 
-            vis_n  = curve.points.instance_on(instance=line, rotation=Rotation.AlignZToVector(a[ 4:7]))
-            vis_n += curve.points.instance_on(instance=line, rotation=Rotation.AlignZToVector(a[ 8:11]))
-            vis_n += curve.points.instance_on(instance=line, rotation=Rotation.AlignZToVector(a[12:15]))
+            vis  = curve.points.instance_on(instance=line, rotation=Rotation.AlignZToVector(a[ 4:7]))
+            vis += curve.points.instance_on(instance=line, rotation=Rotation.AlignZToVector(a[ 8:11]))
+            vis += curve.points.instance_on(instance=line, rotation=Rotation.AlignZToVector(a[12:15]))
+
+            visualization = visualization.switch(show_normals, visualization + vis)
 
             tg = V4.FromNode(matrix_.cross_product(M).node)
             tg = tg.matmul(M_proj)
 
-            vis_t  = curve.points.instance_on(instance=line, rotation=Rotation.AlignZToVector(tg[:3]))
+            vis = curve.points.instance_on(instance=line, rotation=Rotation.AlignZToVector(tg[:3]))
 
-            curve = curve.switch(show_normals, curve + vis_n)
-            curve = curve.switch(show_tangents, curve + vis_t)
+            visualization = visualization.switch(show_tangents, visualization + vis)
 
-        Geometry.Join(mesh, curve, cloud).out()
+        with Layout("Points"):
+            spheres = Cloud(geo).points.instance_on(instance=Mesh.UVSphere(radius=point_radius))
+            spheres = Mesh(spheres.realize())
+            spheres.faces.smooth = True
+            spheres.faces.material = point_mat
+
+            visualization = visualization.switch(point_radius > ZERO, visualization + spheres)
+
+        with Layout("Edges"):
+            edges = mesh.to_curve().to_mesh(profile_curve=Curve.Circle(radius=edge_radius))
+            edges.faces.smooth = True
+            edges.faces.material = edge_mat
+
+            visualization = visualization.switch(edge_radius > ZERO, visualization + edges)
+
+        with Layout("No Faces"):
+
+            no_faces = Mesh(mesh).faces.delete_only_face()
+
+        with Layout("With Faces"):
+
+            with_faces = Mesh(mesh)
+            with_faces.faces.smooth = face_smooth
+            with_faces.faces.material = face_mat
+
+        mesh = with_faces.switch(del_faces, no_faces)
+
+        Geometry.Join(mesh, curve, cloud, visualization).out()
 
     # ----------------------------------------------------------------------------------------------------
     # Resolution system de deux équations à deux inconnues
@@ -1179,83 +1223,86 @@ def build_transformations():
 
         geo.out()
 
+    # ----------------------------------------------------------------------------------------------------
+    # DEBUG - Visualize a 4-D Matrix rotation
+
+    with GeoNodes("Matrix", is_group=True, prefix=debug_):
+
+        M = Matrix(None, "Matrix")
+        pos = V4(panel="Location")
+        length = Float(1, "Length")
+        is_rot = Boolean(True, "Rotation / M4")
+
+        m = M.separate
+        v_pos = V4(m[:4])
+
+        pos = v_pos.switch(is_rot, pos)
+        M = M.switch(-is_rot, matrix_.cross_product(M).matrix_)
+
+        MProj = matrix_.projection_matrix()
+        node = matrix_.dot_vector(MProj, *pos).node
+
+        O = Vector((node.x, node.y, node.z))
+        vis = Mesh.UVSphere(radius=.05*length)
+        vis.transform(translation=O)
+
+        m = M.separate
+
+        for i in range(4):
+            with Layout("Rotation"):
+                a = [0]*4
+                a[i] = 1
+                U = V4(a)
+                P_rot = V4.FromNode(matrix_.dot_vector(M, *U).node)
+
+            with Layout("Vector selection"):
+                P_m4 = V4(m[4*i:4*(i+1)])
+                P = V4.FromNode(vector_.switch(is_rot, *P_m4, *P_rot).node)
+
+            with Layout("Projection"):
+                node = matrix_.dot_vector(MProj, *P).node
+                p = Vector((node.x, node.y, node.z)).scale(length)
+                vis_lab = Curve.Line(O, O + p)
+
+            with Layout("Label"):
+                label = String("XYZW"[i]).to_curves(align_x='CENTER', size=.3*length)
+                label.transform(rotation=(pi/2, 0, 0))
+                label.position = O + p
+                vis_lab += label
+
+            if i== 0:
+                vis += vis_lab.switch(-is_rot, None)
+            else:
+                vis += vis_lab
 
 
-    return
+        vis.out()
 
     # ----------------------------------------------------------------------------------------------------
-    # GROUP - Follow a vector
-    #
-    # Rotate a vector such as the vector A rotates to vector B
+    # DEBUG - Dump a geometry
 
-    with GeoNodes("Align Vector", is_group=True, fake_user=False, prefix=math_):
+    with GeoNodes("Matrices", is_group=False, prefix=debug_):
 
-        v = V4(0, 0, "")
+        cloud = Cloud(Geometry)
+        M = Matrix(None, "Matrix")
+        use_m4 = Boolean(True, "Use M4")
+        is_rot = Boolean(True, "Rotation / M4")
 
-        va = V4(0, 0, "From")
-        vb = V4(0, 0, "To")
 
-        # ----- Normal 2-Basis
+        M = M.switch(use_m4, Matrix("M4"))
+        is_rot = is_rot.switch(use_m4, False)
 
-        with Layout("Normal 2-Basis"):
-            #node = math_.normalize_2_basis(*va.args, *vb.args)
-            node = Group.Prefix(math_, "Normalize 2-Basis", [va.V, va.w, vb.V, vb.w])
-            I = V4.FromNode(node, "I")
-            J = V4.FromNode(node, "J")
+        with cloud.points.for_each(m=M, m4=Matrix("M4")) as feel:
 
-        # ----- Angle between the two vectors
+            m = feel.m4.separate
+            pos = V4(m[:4])
 
-        ag = va.angle_with(vb)
+            vis = debug_.matrix(feel.m, **pos.args(), rotation_m4=is_rot, link_from='TREE')
+            feel.generated.geometry = vis
 
-        # ----- Rotate in the plane I, J
+        feel.generated.geometry.out()
 
-        #node = math_.rotation_2D(*v.args, *I.args, *J.args, angle=ag)
-        node = Group.Prefix(math_, "Rotation 2D", [v.V, v.w, I.V, I.w, J.V, J.w, ag])
 
-        V4.FromNode(node).out()
-
-    # ----------------------------------------------------------------------------------------------------
-    # MODIFIER - Follow a vector
-    #
-    # Rotate a vector such as the vector A rotates to vector B
-
-    with GeoNodes("Align Vector", fake_user=False, prefix=mod_):
-
-        geo = Geometry
-
-        va = V4(0, 0, "From")
-        vb = V4(0, 0, "To")
-
-        # ===== Geometry position
-
-        with Layout("All points rotation"):
-            #node = math_.align_vector(*V4.Position(geo).args, *va.args, *vb.args)
-            pos = V4.Position(geo)
-            node = Group.Prefix(math_, "Align Vector", [pos.V, pos.w, va.V, va.w, vb.V, vb.w])
-            geo = V4.FromNode(node).set_position(geo)
-
-        # ===== Normals and tangents
-
-        mesh, curve, cloud, inst = geo.mesh, geo.curve, geo.point_cloud, geo.instances
-
-        # ----- Mesh
-
-        with Layout("Mesh"):
-            for s in ["A", "B"]:
-                #node = math_.align_vector(*V4.Normal(mesh, s).args, *va.args, *vb.args)
-                nrm = V4.Normal(mesh, s)
-                node = Group.Prefix(math_, "Align Vector", [nrm.V, nrm.w, va.V, va.w, vb.V, vb.w])
-                V4.FromNode(node).set_normal(mesh, s)
-
-        # ----- Curve
-
-        """
-        with Layout("Curve"):
-            node = math_.align_vector(*V4.Tangent(curve).args, *va.args, *vb.args)
-            V4.NodeOutput(node).set_tangent(curve)
-        """
-
-        mesh.join(curve, cloud, inst).out()
 
 # =============================================================================================================================
 # Primitives
@@ -1263,38 +1310,56 @@ def build_transformations():
 def build_primitives():
 
     # ----------------------------------------------------------------------------------------------------
+    # Mesh finalization
+
+    with GeoNodes("Finalization", prefix=mod_):
+
+        geo = Mesh(Geometry())
+        with Panel("Finalization"):
+            smooth = Boolean(True, "Smooth")
+            mat    = Material("4 Face", "Material")
+
+        geo.faces.smooth = smooth
+        geo.faces.material = mat
+        geo.out()
+
+    # ----------------------------------------------------------------------------------------------------
     # Line
 
     with GeoNodes("Line", prefix=curve_):
 
-        with Panel("Line"):
-            start = V4(panel="Start")
-            end   = V4(panel="End")
-            count = Integer(16, "Count", 2, 1024)
+        start = V4(panel="Start")
+        end   = V4(0, 0, 0, 1, panel="End")
+        count = Integer(16, "Count", 2, 1024)
 
         direction = end - start
         length = direction.length
 
-        line = Curve.LinePoints(end=(length, 0, 0))
+        # ----- Starts with a line along x
+
+        line = Curve.LinePoints(end=(length, 0, 0)).resample(count)
+
+        # ----- Normals are Y, Z, W
 
         a = [0]*16
         a[5], a[10], a[15]  = 1, 1, 1
 
-        line.points._M4 = Matrix(a)
-        a[0] = length
-        line.points[1]._M4 = Matrix(a)
+        # ----- x position
 
-        line = line.resample(count)
-        M4 = Matrix("M4")
-        a[:3] = nd.position.xyz
-        line.points._M4 = M4
+        a[0] = length*Spline.parameter
+
+        # ----- Now we orient X towards the direction
 
         R = matrix_.align_axis_to_vector(axis='X', **direction.args())
+        M4 = R @ Matrix(a)
 
-        M4 = R @ M4
+        # ----- Let's translate with the starting point
+
         a = list(M4.separate)
         for i in range(4):
             a[i] += start[i]
+
+        # ----- We can now store the M4 matrix
 
         line.points._M4 = Matrix(a)
         line.position = a[:3]
@@ -1309,7 +1374,7 @@ def build_primitives():
         with Panel("Circle"):
             radius    = Float(1, "Radius")
             segments  = Integer(32, "Segments", 3)
-            angle     = Float.Angle(0, "Angle", -2*pi, 2*pi)
+            angle     = Float.Factor(1, "Closed", 0, 1)*(2*pi) #Float.Angle(0, "Angle", -2*pi, 2*pi)
             offset    = Float.Factor(0, "Center Circle")
 
         with Layout("Dimensions"):
@@ -1356,7 +1421,240 @@ def build_primitives():
 
         curve.out()
 
-        return
+    # ----------------------------------------------------------------------------------------------------
+    # Duplicate a profile along a curve
+    #
+    # The extrusion can be made in two modes:
+    # - Surface (curve profile) : a surface is produced between each instance
+    # - Slices (mesh profile) : one separate instance at each point
+    # - Edges (mesh profile) : faces are deleted and edges between each instance
+
+    with GeoNodes("Slices", is_group=True, prefix=curve_):
+
+        backbone = Curve(None, name="Curve")
+        slice    = Mesh(None, "Slice")
+        scale    = Float(1,   "Scale")
+        mode     = Integer.MenuSwitch({"Slices": 0, "Surface": 1, "Edges": 2}, menu="Slices", name="Mode")
+
+        # ----- Make sure both the geometries are in 4D
+
+        with Layout("Plunge into 4D"):
+            backbone = Curve(mod_.plunge_into_4d(backbone))
+            slice    = Mesh(mod_.plunge_into_4d(slice))
+            rot = matrix_.rotation_matrix(link_from='TREE')
+            slice.points._M4 = rot @ Matrix("M4")
+
+        # ----- Store Scale in the backbone and rename M4 to BB M4
+
+        with Layout("Backbone attributes"):
+
+            backbone.points._BB_Scale = scale
+
+            backbone.points._BB_M4 = Matrix("M4")
+            backbone.remove_names("M4")
+
+        # ----- Slices = we instantiate the profiles a many times as required at position 0
+
+        with Layout("Slices : instantiate and delete when scale is null"):
+            insts = backbone.points.instance_on(slice)
+
+            insts.insts[Float("BB Scale") < ZERO].delete()
+            slices = Mesh(insts.realize())
+
+        # ----- Surface: let's extrude to have the right topology
+
+        with Layout("Surface : Extrusion"):
+            grid = backbone.to_mesh(profile_curve=slice)
+
+        # ----- Edges: we extrude points on a mesh without faces
+
+        with Layout("Edges : vertices extrusion loop"):
+
+            with Layout("Mesh size along x"):
+                mesh_slice = slice.mesh
+                max = mesh_slice.points.attribute_statistic(nd.position).max
+                size = 3*(max - max.min_)
+                ext_offset = Vector((size, 0, 0))
+
+            with Layout("Create one slice per curve point"):
+
+                count = backbone.points.count
+                is_cyclic = backbone.splines.sample_index(nd.is_spline_cyclic, 0)
+                iterations = (count - 1).switch(is_cyclic, count)
+                backbone.position = (nd.index*size, 0, 0)
+                # The first one will also be create be created in Repeat loop
+                insts = backbone.points.instance_on(instance=mesh_slice)
+                mesh_insts = Mesh(insts.realize())
+
+                edges = mesh_insts
+
+            with Layout("Extrude slice edges"):
+                with Repeat(edges=mesh_slice, top=True, iterations=iterations) as rep:
+                    offset = ext_offset.switch( (rep.iteration==iterations - 1) & is_cyclic, (-(count-1)*size, 0, 0))
+                    edges = rep.edges[rep.top].extrude_edges(offset=offset)
+                    top = edges.top_
+                    rep.top = top
+
+            with Layout("Merge extrusion with instances"):
+                edges = rep.edges
+                edges.points._BB_M4 = backbone.points.sample_index(Matrix("BB M4"), index=(nd.index // mesh_slice.points.count)%count)
+                edges.points._BB_Scale = backbone.points.sample_index(Float("BB Scale"), index=(nd.index // mesh_slice.points.count)%count)
+
+                edges += mesh_insts
+                # MERGE DOESN'T WORK
+                #edges.merge_by_distance()
+
+        mesh = Mesh.IndexSwitch(slices, grid, edges, index=mode)
+
+        # ----- Transform backbone M4 into rotation [tangent normal1 normal2 normal3]
+        # Slices = roll into [normal1 normal2 normal3 tangent]
+
+        with Layout("Backbone rotation"):
+            B4 = Matrix("BB M4")
+            rot = matrix_.cross_product(B4).matrix_
+            #rot = Matrix.IndexSwitch(rot, rot, matrix_.roll(rot, 3), index=mode)
+
+        with Layout("Slices rotation"):
+            M4 = Matrix("M4")
+            M4 = rot @ M4
+
+        with Layout("4D scale and translation"):
+            m = list(M4.separate)
+            b = B4.separate
+            scale = Float("BB Scale")
+
+            for i in range(4):
+                m[i] = m[i]*scale + b[i]
+
+            mesh.points._M4 = Matrix(m)
+
+        # ----- We have our result
+
+        with Layout("3D position and remove named attrs"):
+            mesh.position = m[:3]
+            mesh.remove_names("BB*")
+
+        mesh.out()
+
+    # ----------------------------------------------------------------------------------------------------
+    # Sphere slices
+
+    with GeoNodes("Sphere Slices", is_group=True, prefix=curve_):
+
+        backbone = Curve(None, name="Curve")
+        scale    = Float(1,   "Scale")
+
+        with Panel("Sphere"):
+            use_uv_sphere = Boolean(True, "UV Sphere")
+            rings    = Integer(16, "Rings", 3, 64)
+            subdiv = Integer(2, "Subdivisions")
+
+        with Layout("UV Sphere"):
+            segments = rings*2
+            uv_sphere  = Mesh.UVSphere(radius=radius, segments=segments, rings=rings)
+
+        with Layout("Ico Sphere"):
+            ico_sphere = Mesh.IcoSphere(radius = radius, subdivisions=subdiv)
+
+        sphere = ico_sphere.switch(use_uv_sphere, uv_sphere)
+
+        hyper_slices  = curve_.slices(curve=backbone, slice=sphere, scale=scale, mode='Slices', w_euler=(pi/2, 0, 0), _3d_euler=(0, 0, 0), link_from='TREE')
+        hyper_edges   = curve_.slices(curve=backbone, slice=sphere, scale=scale, mode='Edges',  w_euler=(pi/2, 0, 0), _3d_euler=(0, 0, 0), link_from='TREE')
+
+        hyper = Geometry.MenuSwitch({'Slices': hyper_slices, 'Edges': hyper_edges}, menu='Slices', name="Mode")
+
+        hyper.out()
+
+    # ----------------------------------------------------------------------------------------------------
+    # Hyper Sphere
+
+    with GeoNodes("Hyper Sphere", prefix=mod_):
+
+        radius   = Float(1,   "Radius", 0.1)
+        slices   = Integer(7, "Slices", 1, 17)
+
+        slices += 2
+
+        scale = gnmath.sqrt(1 - Spline.parameter.multiply_add(2, -1)**2)
+        line   = curve_.line(slices, 0, 0, 0, -radius, 0, 0, 0, radius)
+
+        geo = curve_.sphere_slices(curve=line, scale=scale, link_from='TREE')
+        geo.out()
+
+
+    # ----------------------------------------------------------------------------------------------------
+    # Hyper Cone
+
+    with GeoNodes("Hyper Cone", prefix=mod_):
+
+        radius0   = Float(1,   "Bottom Radius", 0)
+        radius1   = Float(0,   "Top Radius", 0)
+        depth     = Float(2,   "Depth", 0.1)
+        slices    = Integer(7, "Slices", 1, 17)
+
+        slices   = slices.switch( (radius0 < ZERO) | (radius1 < ZERO), slices + 1)
+
+        scale = radius0 + Spline.parameter*(radius1 - radius0)
+        line   = curve_.line(slices, 0, 0, 0, 0, 0, 0, 0, depth)
+
+        geo = curve_.sphere_slices(curve=line, scale=scale, link_from='TREE')
+        geo.out()
+
+    # ----------------------------------------------------------------------------------------------------
+    # Torus
+
+    with GeoNodes("Torus", prefix=mod_):
+
+        with Panel("First"):
+            radius0   = Float(2,    "Radius", 0)
+            segments0 = Integer(16, "Segments", 3, 64)
+            closed0   = Float.Factor(1, "Closed", 0, 1)
+        with Panel("Second"):
+            radius1   = Float(2,    "Radius", 0)
+            segments1 = Integer(16, "Segments", 3, 64)
+            closed1   = Float.Factor(1, "Closed", 0, 1)
+
+        circle0 = curve_.circle(radius=radius0, segments=segments0, closed=closed0)
+        circle1 = Curve(curve_.circle(radius=radius1, segments=segments1, closed=closed1))
+        circle1.points._M4 = matrix_.rotation_matrix(w_euler=(pi/2, 0, 0)) @ Matrix("M4")
+
+        torus = curve_.slices(curve=circle0, slice=circle1, scale=1, mode='Surface')
+
+        torus.out()
+
+
+
+
+
+        """
+
+        slices   = slices.switch( (radius0 < ZERO) | (radius1 < ZERO), slices + 1)
+        segments = rings*2
+
+        scale = radius0 + Spline.parameter*(radius1 - radius0)
+
+        sphere = Mesh.UVSphere(radius=radius, segments=segments, rings=rings)
+        line   = curve_.line(slices, 0, 0, 0, 0, 0, 0, 0, depth)
+        hyper  = curve_.slices(curve=line, mesh=sphere, scale=scale)
+
+        mod_.finalization(hyper, link_from='TREE').out()
+        """
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
