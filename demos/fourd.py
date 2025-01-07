@@ -1616,7 +1616,7 @@ def build_primitives():
 
         circle0 = curve_.circle(radius=radius0, segments=segments0, closed=closed0)
         circle1 = Curve(curve_.circle(radius=radius1, segments=segments1, closed=closed1))
-        circle1.points._M4 = matrix_.rotation_matrix(w_euler=(pi/2, 0, 0)) @ Matrix("M4")
+        circle1.points._M4 = matrix_.rotation_matrix(w_euler=(pi/2, 0, 0), _3d_euler=(pi/2, 0, 0)) @ Matrix("M4")
 
         torus = curve_.slices(curve=circle0, slice=circle1, scale=1, mode='Surface')
 
