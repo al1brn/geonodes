@@ -790,12 +790,11 @@ class Tree:
         except:
             return
 
-    # --------------------------------------------------------------------------------
+    # =============================================================================================================================
     # Create a new input socket
 
     @classmethod
-    def new_input(cls, bl_idname: str, name: str, subtype: str='NONE',
-                  value: 'Any' = None, min_value: float | int | None = None, max_value: float | int | None = None, description: str = ""):
+    def new_input(cls, bl_idname: str, name: str, value: 'Any' = None, panel: str | None = None, **props):
         """ Create a new input socket.
 
         This is an **input socket** of the Tree, hence an **output socket** of the <&Group Input> node.
@@ -805,9 +804,7 @@ class Tree:
             - bl_idname : socket bl_idname
             - name : Socket name
             - value : Default value
-            - min_value : Minimum value
-            - max_value : Maxium value
-            - description : user tip
+            - props : properties specific to interface socket
 
         Returns
         -------
@@ -821,87 +818,71 @@ class Tree:
         input_node = tree.input_node
 
         # ----------------------------------------------------------------------------------------------------
-        # Get or create
+        # Get or create the socket
 
-        full_name = utils.snake_case(tree.current_panel + '_' + name)
+        if panel is None:
+            panel = tree.current_panel
+
+        full_name = utils.snake_case(panel + '_' + name)
         currents = tree.get_socket_names(input_node._bnode.outputs, bl_idname)
 
         if full_name in currents:
             out_socket = currents[full_name]
-            io_socket = tree._interface.by_identifier(out_socket.identifier)
+            i_socket = tree._interface.by_identifier(out_socket.identifier)
             set_value = False
 
         else:
-            io_socket = tree._interface.create_in_socket(name, socket_type=bl_idname, panel=tree.current_panel)
-            out_socket = input_node[io_socket.identifier]
+            i_socket = tree._interface.create_in_socket(name, socket_type=bl_idname, panel=panel)
+            out_socket = input_node[i_socket.identifier]
             set_value = True
 
-            """
-            io_socket = tree._interface.get_in_socket(name, halt = False, panel_name=tree.current_panel)
-            print(f"NEW INPUT: {tree.current_panel=}, {name=}, {io_socket=}")
-            print("CUR  ", tree._interface.get_in_sockets())
-            print("PANEL", tree._interface.get_in_sockets(tree.current_panel))
+        # ----------------------------------------------------------------------------------------------------
+        # Properties
 
-            if io_socket is None:
-                io_socket = tree._interface.create_in_socket(name, socket_type=bl_idname, panel=tree.current_panel)
-                set_value = True
-            else:
-                set_value = False
-            """
+        for prop_name, prop_value in props.items():
+            if prop_value is None:
+                continue
+            try:
+                setattr(i_socket, prop_name, prop_value)
 
-        if hasattr(io_socket, 'subtype'):
-            io_socket.subtype = subtype
-
-        out_socket = tree.input_node[io_socket.identifier]
+            except Exception as e:
+                raise NodeError(f"Socket '{name}' creation error: impossible to set the socket property '{prop_name}' with value '{prop_value}'",
+                    socket_type= bl_idname,
+                    error_message = str(e),
+                    **props)
 
         # ----------------------------------------------------------------------------------------------------
-        # Attributes
-
-        if description is not None:
-            io_socket.description = description
-
-        if min_value is not None and hasattr(io_socket, 'min_value'):
-            io_socket.min_value = min_value
-
-        if max_value is not None and hasattr(io_socket, 'max_value'):
-            io_socket.max_value = max_value
-
-        # ----------------------------------------------------------------------------------------------------
-        # Let's set the value if the socket is created
+        # Let's set the default value if the socket is created
         # Note: if the socket already exists, we don't override its value
 
-        def_value = utils.python_value_for_socket(value, utils.get_socket_type(out_socket))
-        if (def_value is not None):
+        if value is not None:
+            def_value = utils.python_value_for_socket(value, utils.get_socket_type(out_socket))
+            if (def_value is not None):
+                if hasattr(i_socket, 'default_value'):
+                    try:
+                        i_socket.default_value = def_value
+                    except Exception as e:
+                        raise NodeError(f"Impossible to set the default value {value} <{def_value}> to socket of type '{bl_idname}'", error_message=str(e))
 
-            try:
-                io_socket.default_value = def_value
-            except Exception as e:
-                raise NodeError(f"Impossible to set the default value {value} <{def_value}> to io_socket of type '{bl_idname}'", error_message=str(e))
+                    # ----------------------------------------------------------------------------------------------------
+                    # TO BE CHECKED
 
-            try:
-                out_socket._bsocket.default_value = def_value
-            except Exception as e:
-                raise NodeError(f"Impossible to set the default value {value} <{def_value}> to socket of type '{out_socket.SOCKET_TYPE}'", error_message=str(e))
-
-            # ---------------------------------------------------------------------------
-            # Set the default value to all modifiers using it
-
-            if set_value:
-                for obj in bpy.data.objects:
-                    for mod in obj.modifiers:
-                        if isinstance(mod, bpy.types.NodesModifier):
-                            if mod.node_group == tree._btree:
-                                try:
-                                    mod[io_socket.identifier] = def_value
-                                except:
-                                    raise NodeError(f"Impossible to set the default value {value} <{def_value}> to existing modifier socket '{io_socket.identifier}', socket type: '{out_socket.SOCKET_TYPE}'", error_message=str(e))
+                    if False:
+                        for obj in bpy.data.objects:
+                            for mod in obj.modifiers:
+                                if isinstance(mod, bpy.types.NodesModifier):
+                                    if mod.node_group == tree._btree:
+                                        try:
+                                            mod[io_socket.identifier] = def_value
+                                        except:
+                                            raise NodeError(f"Impossible to set the default value {value} <{def_value}> to existing modifier socket '{io_socket.identifier}', socket type: '{out_socket.SOCKET_TYPE}'", error_message=str(e))
 
         return out_socket
 
     # --------------------------------------------------------------------------------
     # Create a new output socket
 
-    def new_output(self, bl_idname, name):
+    def new_output(self, bl_idname, name, panel=None, **props):
         """ Create a new output socket.
 
         This is an **output socket** of the Tree, hence an input socket of the <&Group Output> node.
@@ -923,7 +904,10 @@ class Tree:
         # ----------------------------------------------------------------------------------------------------
         # Get or create
 
-        full_name = utils.snake_case(self.current_panel + '_' + name)
+        if panel is None:
+            panel = self.current_panel
+
+        full_name = utils.snake_case(panel + '_' + name)
         currents = self.get_socket_names(output_node._bnode.inputs, bl_idname)
 
         if full_name in currents:
@@ -931,37 +915,39 @@ class Tree:
             io_socket = self._interface.by_identifier(in_socket.identifier)
 
         else:
-            io_socket = self._interface.create_out_socket(name, socket_type=bl_idname, panel=self.current_panel)
+            socket_type, subtype = constants.SOCKET_SUBTYPES[bl_idname]
+            io_socket = self._interface.create_out_socket(name, socket_type=socket_type, panel=panel)
+            if subtype is not None and 'subtype' not in props:
+                io_socket.subtype = subtype
+
+        # ----- Set the socket interface properties
+
+        conv = constants.INTERFACE_SOCKET_PROPERTIES
+        for prop_name, prop_value in props.items():
+            if prop_name not in conv.values():
+               raise NodeError(f"Invalid interface socket property: '{prop_name}' when creating socket '{name}' ({bl_idname}", keyword=prop_name)
+
+            itf_name = list(conv.keys())[list(conv.values()).index(prop_name)]
+            if not hasattr(io_socket, itf_name):
+                raise NodeError(f"The socket '{name}' ('{bl_idname}' has not property '{itf_name}' ('{prop_name}')", keyword=prop_name)
+
+            setattr(io_socket, itf_name, prop_value)
 
         return output_node._bnode.inputs[io_socket.identifier]
 
-        # OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD
-
-        # ----------------------------------------------------------------------------------------------------
-        # Get or create
-
-        interface = TreeInterface(self._btree)
-
-        io_socket = interface.get_out_socket(name, halt=False)
-        #io_socket = self.io_socket_exists(bl_idname, 'OUTPUT', name)
-
-        if io_socket is None:
-            #io_socket = self.new_io_socket(bl_idname, 'OUTPUT', name)
-            io_socket = interface.create_out_socket(name, socket_type=bl_idname)
-
-        return output_node._bnode.inputs[io_socket.identifier]
 
     # --------------------------------------------------------------------------------
     # Create a new input socket from an existing node input socket
 
     @classmethod
-    def new_input_from_input_socket(cls, input_socket, name=None):
+    def new_input_from_input_socket(cls, input_socket, name=None, panel=None):
         """ Create a new group input socket from an existing input socket.
 
         Arguments
         ---------
         - input_socket (socket) : a node input _insocket
         - name (str = None) : name of the group input socket to create
+        - panel (str = None) : name of the panel
 
         Returns
         -------
@@ -970,28 +956,52 @@ class Tree:
 
         tree = Tree.current_tree
 
+        # ----------------------------------------------------------------------------------------------------
+        # Get the socket type and subtype
+
         bsocket = utils.get_bsocket(input_socket)
         if name is None:
             name = bsocket.name
 
         bl_idname, subtype = constants.SOCKET_SUBTYPES[bsocket.bl_idname]
 
-        io_socket = tree.new_io_socket(bl_idname, 'INPUT', name)
-        if hasattr(io_socket, 'subtype'):
-            io_socket.subtype = subtype
+        # ----------------------------------------------------------------------------------------------------
+        # Get the socket interface if exists
 
-        io_socket.default_value = bsocket.default_value
-        io_socket.description   = bsocket.description
+        i_source = None
+        if hasattr(bsocket.node, 'node_tree'):
+            interf = TreeInterface(bsocket.node.node_tree)
+            i_source = interf.by_identifier(bsocket.identifier)
+            if panel is None:
+                panel = i_source.parent.name
 
-        # ----- Min and Max values are attributes of default property
+        if bl_idname == 'NodeSocketMenu':
+            print("D"*100)
+            print("DEBUG", bl_idname, i_source)
+            for k in dir(i_source):
+                print(k, getattr(i_source, k))
+            print()
+            print("E"*100)
 
-        if 'default_value' in bsocket.bl_rna.properties:
-            default_prop = bsocket.bl_rna.properties['default_value']
-            if hasattr(io_socket, 'min_value'):
-                io_socket.min_value = default_prop.hard_min
-                io_socket.max_value = default_prop.hard_max
+        # ----------------------------------------------------------------------------------------------------
+        # Create the new socket and link it
 
-        return tree.input_node[io_socket.identifier]
+        socket = tree.new_input(bl_idname, name, panel=panel)
+        tree.link(socket, input_socket)
+
+        i_target = socket._interface_socket
+
+        # ----------------------------------------------------------------------------------------------------
+        # Copy the properties
+
+        if i_source is not None:
+            for prop_name in constants.INTERFACE_SOCKET_PROPERTIES:
+                prop_value = getattr(i_source, prop_name, None)
+                print("DEBUG INPUT FROM INPUT", prop_name, '=', prop_value)
+                if prop_value is not None:
+                    setattr(i_target, prop_name, prop_value)
+
+        return socket
 
     # =============================================================================================================================
     # Create a node which contains a python value
@@ -2091,51 +2101,12 @@ class Node:
                 continue
 
             # ----------------------------------------------------------------------------------------------------
-            # If the out_socket doesn't exist we create it
+            # If the out_socket doesn't exist we create it (link is done i)
+            # Otherwise we simply link
 
             if out_socket is None:
-
-                # ----- Group : we create from the interface
-
-                if is_node_group:
-
-                    bsocket = utils.get_bsocket(in_socket)
-                    bl_idname, subtype = constants.SOCKET_SUBTYPES[bsocket.bl_idname]
-
-                    parent = group_interface.by_identifier(bsocket.identifier).parent
-                    panel = parent.name
-
-                    io_socket = tree._interface.create_in_socket(out_name, socket_type=bl_idname, panel=panel)
-
-                    if hasattr(io_socket, 'subtype'):
-                        io_socket.subtype = subtype
-
-                    # ----- Linking before setting the parameters is necessary for menu sockets
-
-                    tree.link(tree.input_node[io_socket.identifier], in_socket)
-
-                    # ----- Min and Max from embedded tree interface
-
-                    item = self._bnode.node_tree.interface.items_tree[in_socket.name]
-
-                    if hasattr(item, 'default_value') and hasattr(io_socket, 'default_value'):
-                        io_socket.default_value = item.default_value
-                        #tree.input_node[io_socket.identifier].default_value = item.default_value
-
-                    io_socket.description = item.description
-                    if hasattr(io_socket, 'min_value') and hasattr(item, 'min_value'):
-                        io_socket.min_value = item.min_value
-                        io_socket.max_value = item.max_value
-
-                # ----- Not a Group : we create from the socket
-
-                else:
-                    out_socket = Tree.new_input_from_input_socket(in_socket, name=out_name)
-                    tree.link(out_socket, in_socket)
-
-            # ----------------------------------------------------------------------------------------------------
-            # The out_socket exists : we can plug it
-
+                # Note that link is done in new_input_from_input_socket
+                out_socket = Tree.new_input_from_input_socket(in_socket, name=out_name)
             else:
                 tree.link(out_socket, in_socket)
 

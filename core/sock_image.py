@@ -33,7 +33,8 @@ class Image(generated.Image):
 
     SOCKET_TYPE = 'IMAGE'
 
-    def __init__(self, value: bpy.types.Image | str | Socket | None = None, name: str | None = None, tip: str | None = None):
+    def __init__(self, value=None, name=None, tip=None, panel=None,
+        hide_value=False, hide_in_modifier=False):
         """ Class Image data socket
 
         Node <&Node Image>
@@ -43,6 +44,9 @@ class Image(generated.Image):
         - value (bpy.types.Image or str = None) : image or image name in bpy.data.images
         - name (str = None) : create a group input socket of type Image if not None
         - tip (str = None) : user tip for group input socket
+        - panel (str = None) : panel name (overrides tree panel if exists)
+        - hide_value (bool = False) : Hide Value option
+        - hide_in_modifier (bool = False) : Hide in Modifier option
         """
         bsock = utils.get_bsocket(value)
         if bsock is None:
@@ -50,6 +54,10 @@ class Image(generated.Image):
             if name is None:
                 bsock = Node('Image', image=image)._out
             else:
-                bsock = Tree.new_input('NodeSocketImage', name=name, value=image, description=tip)
+                bsock = Tree.new_input('NodeSocketImage', name=name, value=image, panel=panel,
+                    description             = tip,
+                    hide_value              = hide_value,
+                    hide_in_modifier        = hide_in_modifier,
+                )
 
         super().__init__(bsock)

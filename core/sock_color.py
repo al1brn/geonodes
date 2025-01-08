@@ -47,7 +47,8 @@ class Color(generated.Color):
 
     SOCKET_TYPE = 'RGBA'
 
-    def __init__(self, value: tuple | float | Socket | str | None =(0., 0., 0., 1.), name: str = None, tip: str = None):
+    def __init__(self, value=(0., 0., 0., 1.), name=None, tip=None, panel=None,
+        default_attribute="", hide_value=False, hide_in_modifier=False, single_value=False):
         """ Socket of type COLOR (RGBA)
 
         > Nodes <&Node RGB> <&Node Combine Color> <&Node Color>
@@ -57,6 +58,11 @@ class Color(generated.Color):
         - value (tuple or Socket = (0, 0, 0, 1)) : initial value
         - name (str = None) : Create an Group Input socket with the provided str if not None
         - tip (str = None) : User tip (for Group Input sockets)
+        - panel (str = None) : panel name (overrides tree panel if exists)
+        - default_attribute (str = "") : default attribute name
+        - hide_value (bool = False) : Hide Value option
+        - hide_in_modifier (bool = False) : Hide in Modifier option
+        - single_value (bool = False) : Single Value option
         """
 
         if isinstance(value, str):
@@ -83,7 +89,13 @@ class Color(generated.Color):
                     bsock = Node('RGB')._out
                     bsock._bsocket.default_value = a
             else:
-                bsock = Tree.new_input('NodeSocketColor', name, value=value, description=tip)
+                bsock = Tree.new_input('NodeSocketColor', name, value=value, panel=panel,
+                    description             = tip,
+                    default_attribute_name  = default_attribute,
+                    hide_value              = hide_value,
+                    hide_in_modifier        = hide_in_modifier,
+                    force_non_field         = single_value,
+                )
 
         super().__init__(bsock)
 

@@ -197,7 +197,8 @@ class Geometry(generated.Geometry, GeoBase):
 
     SOCKET_TYPE = 'GEOMETRY'
 
-    def __init__(self, value: Socket | None = None, name: str | None = None, tip: str | None = None):
+    def __init__(self, value=None, name=None, tip=None, panel=None,
+        hide_value=False, hide_in_modifier=False):
         """ Socket of type 'GEOMETRY'.
 
         If value is None, a Group Input socket of type Geometry is created.
@@ -213,6 +214,9 @@ class Geometry(generated.Geometry, GeoBase):
         - value (Socket = None) : initial value
         - name (str = None) : Create an Group Input socket with the provided str
         - tip (str = None) : User tip (for Group Input sockets)
+        - panel (str = None) : panel name (overrides tree panel if exists)
+        - hide_value (bool = False) : Hide Value option
+        - hide_in_modifier (bool = False) : Hide in Modifier option
         """
 
         bsock = utils.get_bsocket(value)
@@ -230,20 +234,12 @@ class Geometry(generated.Geometry, GeoBase):
 
             if name is None:
                 name = type(self).__name__
-                if True or tree._is_group:
-                    bsock = tree.new_input('NodeSocketGeometry', name, description=tip)
-                else:
-                    bsock = tree.get_input_geometry(name, description=tip)
 
-            # ----- Name is not None
-            # - group : we want this name
-            # - Modifier : we create the input geometry with this name
-
-            else:
-                if True or tree._is_group:
-                    bsock = tree.new_input('NodeSocketGeometry', name, description=tip)
-                else:
-                    bsock = tree.get_input_geometry(name, description=tip)
+            bsock = Tree.new_input('NodeSocketGeometry', name, panel=panel,
+                description             = tip,
+                hide_value              = hide_value,
+                hide_in_modifier        = hide_in_modifier,
+            )
 
         super().__init__(bsock)
 

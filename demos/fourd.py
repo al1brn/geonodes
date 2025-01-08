@@ -237,7 +237,7 @@ def build_debug():
 class V4:
     """ This class provides help to handle the four V4 components names x, y, z, w
     """
-    def __init__(self, *values, panel=None):
+    def __init__(self, *values, panel=None, single_value=False):
 
         if len(values) == 0:
             a = [0]*4
@@ -266,15 +266,15 @@ class V4:
                     v._lc("xyzw"[i])
         else:
             with Panel(panel):
-                self.x, self.y, self.z, self.w = [Float(a[i], "xyzw"[i]) for i in range(4)]
+                self.x, self.y, self.z, self.w = [Float(a[i], "xyzw"[i], single_value=single_value) for i in range(4)]
 
     @classmethod
     def FromNode(cls, node):
         return cls(node.x, node.y, node.z, node.w)
 
-    def out(self):
+    def out(self, **props):
         for v, label in zip(self, "xyzw"):
-            v.out(label)
+            v.out(label, **props)
 
     def args(self, panel=None):
         if panel is None:
@@ -538,7 +538,7 @@ def build_operations():
     with GeoNodes("Roll", is_group=True, prefix=matrix_):
 
         M = Matrix(None, "Matrix")
-        count = Integer(0, "Count", 0, 3) % 4
+        count = Integer(0, "Count", 0, 3, single_value=True) % 4
 
         a = M.separate
 
@@ -595,7 +595,7 @@ def build_operations():
 
         M     = Matrix(None, "Matrix")
         R     = Rotation(None, "Rotation")
-        index = Integer.MenuSwitch({'X': 0, 'Y': 1, 'Z': 2, 'W': 3}, menu='W', name="Axis")
+        index = Integer.MenuSwitch({'X': 0, 'Y': 1, 'Z': 2, 'W': 3}, menu='W', name="Axis", single_value=True)
 
         M_rot = Matrix.CombineTransform(rotation=R)
         M_rot = matrix_.roll(M_rot, count=(1+index)%4)
@@ -633,16 +633,11 @@ def build_operations():
         a[:4] = V.a
         Matrix(a).out()
 
-
-
-
-
     # ----------------------------------------------------------------------------------------------------
     # Align a 4-rotation to a vector
 
     with GeoNodes("Align Axis to Vector", is_group=True, prefix=matrix_):
 
-        #axis     = Integer.MenuSwitch({'X': 0, 'Y': 1, 'Z': 2, 'W': 3}, menu='Z', name='Axis')
         vector   = V4(panel="Vector")
 
         # Initial basis is [i j k l]. We want basis [t u v w]
@@ -801,7 +796,7 @@ def build_matrices():
         with Panel("Shape"):
             length = Float(          1, "Length", tip= "Arrow length")
             radius = Float(        .05, "Radius", 0.01)
-            resol  = Integer(        8, "Resolution", 3, 32)
+            resol  = Integer(        8, "Resolution", 3, 32, single_value=True)
             mat    = Material("4 Axis", "Material")
 
         M_proj = Matrix(None, "Projection Matrix")
@@ -861,9 +856,9 @@ def build_matrices():
         M = matrix_.rotation_matrix(link_from='TREE')
 
         with Panel("Show Axes"):
-            show_axis = Boolean(True, "Show Axes", tip="Show the 4 axes")
-            neg       = Float(-1, "Negative", max=0)
-            pos       = Float(3,  "Positive", 0)
+            show_axis = Boolean(True, "Show Axes", tip="Show the 4 axes", single_value=True)
+            neg       = Float(-1, "Negative", max=0, single_value=True)
+            pos       = Float(3,  "Positive", 0, single_value=True)
 
         cloud = Cloud.Points(count=4)
 
@@ -925,8 +920,7 @@ def build_matrices():
 
         geo       = Geometry()
         w         = Float(0, "w", tip="Fourth dimension value")
-        curve_res = Integer(0, "Curve Resample", min=0, tip="Resample curve (0 or 1 for no resample)")
-
+        curve_res = Integer(0, "Curve Resample", min=0, tip="Resample curve (0 or 1 for no resample)", single_value=True)
 
         mesh  = geo.mesh
         curve = geo.curve
@@ -970,25 +964,25 @@ def build_matrices():
         geo = Geometry()
 
         with Panel("Faces"):
-            del_faces   = Boolean(False,        "Delete Faces")
-            face_smooth = Boolean(True,         "Face Smooth")
-            set_mat     = Boolean(True,         "Set Material")
+            del_faces   = Boolean(False,        "Delete Faces", single_value=True)
+            face_smooth = Boolean(True,         "Face Smooth", single_value=True)
+            set_mat     = Boolean(True,         "Set Material", single_value=True)
             face_mat    = Material("4 Face",    "Face Material")
 
         with Panel("Edges"):
-            edge_radius = Float(0,              "Edge Radius", 0)
-            edge_resol  = Integer(12,           "Edge Resolution", 3, 16)
+            edge_radius = Float(0,              "Edge Radius", 0, single_value=True)
+            edge_resol  = Integer(12,           "Edge Resolution", 3, 16, single_value=True)
             edge_mat    = Material("4 Edge",    "Edge Material")
 
         with Panel("Points"):
-            merge        = Boolean(False,       "Merge")
-            point_radius = Float(0,             "Point Radius", 0)
+            merge        = Boolean(False,       "Merge", single_value=True)
+            point_radius = Float(0,             "Point Radius", 0, single_value=True)
             point_mat    = Material("4 Edge",   "Point Material")
 
         with Panel("Debug"):
-            show_normals  = Boolean(False, "Show Normals",  tip="Show mesh normals")
-            show_tangents = Boolean(False, "Show Tangents", tip="Show curve tangents")
-            vect_length   = Float(1, "Vectors length", tip="Length of normals / tangents")
+            show_normals  = Boolean(False, "Show Normals",  tip="Show mesh normals", single_value=True)
+            show_tangents = Boolean(False, "Show Tangents", tip="Show curve tangents", single_value=True)
+            vect_length   = Float(1, "Vectors length", tip="Length of normals / tangents", single_value=True)
 
         with Layout("Projection into 3D Space"):
 
@@ -1222,8 +1216,8 @@ def build_transformations():
     with GeoNodes("Roll Axes", prefix=mod_):
 
         geo = Cloud(Geometry())
-        count = Integer(1, "Count", 0, 3)
-        roll = Boolean(True, "Roll Axes")
+        count = Integer(1, "Count", 0, 3, single_value=True)
+        roll = Boolean(True, "Roll Axes", single_value=True)
 
         M4 = Matrix("M4")
         a = M4.separate
@@ -1324,27 +1318,13 @@ def build_transformations():
 def build_primitives():
 
     # ----------------------------------------------------------------------------------------------------
-    # Mesh finalization
-
-    with GeoNodes("Finalization", prefix=mod_):
-
-        geo = Mesh(Geometry())
-        with Panel("Finalization"):
-            smooth = Boolean(True, "Smooth")
-            mat    = Material("4 Face", "Material")
-
-        geo.faces.smooth = smooth
-        geo.faces.material = mat
-        geo.out()
-
-    # ----------------------------------------------------------------------------------------------------
     # Line
 
     with GeoNodes("Line", prefix=curve_):
 
         start = V4(panel="Start")
         end   = V4(0, 0, 0, 1, panel="End")
-        count = Integer(16, "Count", 2, 1024)
+        count = Integer(16, "Count", 2, 1024, single_value=True)
 
         direction = end - start
         length = direction.length
@@ -1386,11 +1366,11 @@ def build_primitives():
     with GeoNodes("Circle", prefix=curve_):
 
         with Panel("Circle"):
-            radius    = Float(1,            "Radius")
-            segments  = Integer(32,         "Segments", 3)
-            offset    = Float.Factor(0,     "Center")
-            close_fac = Float.Factor(1,     "Closed", 0, 1)
-            cyclic    = Boolean(True,       "Cyclic", tip="Create a cyclic curve when closed")
+            radius    = Float(1,            "Radius", single_value=True)
+            segments  = Integer(32,         "Segments", 3, single_value=True)
+            offset    = Float.Factor(0,     "Center", single_value=True)
+            close_fac = Float.Factor(1,     "Closed", 0, 1, single_value=True)
+            cyclic    = Boolean(True,       "Cyclic", tip="Create a cyclic curve when closed", single_value=True)
 
         rot = matrix_.rotation_matrix(link_from='TREE')
 
@@ -1593,8 +1573,8 @@ def build_primitives():
 
     with GeoNodes("Hyper Sphere", prefix=mod_):
 
-        radius   = Float(1,   "Radius", 0.1)
-        slices   = Integer(7, "Slices", 1, 17)
+        radius   = Float(1,   "Radius", 0.1, single_value=True)
+        slices   = Integer(7, "Slices", 1, 17, single_value=True)
 
         slices += 2
 
@@ -1610,10 +1590,10 @@ def build_primitives():
 
     with GeoNodes("Hyper Cone", prefix=mod_):
 
-        radius0   = Float(1,   "Bottom Radius", 0)
-        radius1   = Float(0,   "Top Radius", 0)
-        depth     = Float(2,   "Depth", 0.1)
-        slices    = Integer(7, "Slices", 1, 17)
+        radius0   = Float(1,   "Bottom Radius", 0, single_value=True)
+        radius1   = Float(0,   "Top Radius", 0, single_value=True)
+        depth     = Float(2,   "Depth", 0.1, single_value=True)
+        slices    = Integer(7, "Slices", 1, 17, single_value=True)
 
         slices   = slices.switch( (radius0 < ZERO) | (radius1 < ZERO), slices + 1)
 
@@ -1629,17 +1609,15 @@ def build_primitives():
     with GeoNodes("Torus", prefix=mod_):
 
         with Panel("First"):
-            radius0    = Float(2,    "Radius", 0)
-            segments0  = Integer(16, "Segments", 3, 64)
-            closed0    = Float.Factor(1, "Closed", 0, 1)
-            #cyclic0    = Boolean(True, "Cyclic")
+            radius0    = Float(2,    "Radius", 0, single_value=True)
+            segments0  = Integer(16, "Segments", 3, 64, single_value=True)
+            closed0    = Float.Factor(1, "Closed", 0, 1, single_value=True)
+
         with Panel("Second"):
-            radius1    = Float(2,    "Radius", 0)
-            segments1  = Integer(16, "Segments", 3, 64)
-            closed1    = Float.Factor(1, "Closed", 0, 1)
-            #cyclic1    = Boolean(True, "Cyclic")
-            #half_turns = Integer(0,     "Half Turns")
-            twist      = Float.Angle(0, "Twist")
+            radius1    = Float(2,    "Radius", 0, single_value=True)
+            segments1  = Integer(16, "Segments", 3, 64, single_value=True)
+            closed1    = Float.Factor(1, "Closed", 0, 1, single_value=True)
+            twist      = Float.Angle(0, "Twist", single_value=True)
 
         cyclic0 = twist.abs() < ZERO
         circle0 = curve_.circle(radius=radius0, segments=segments0, center=1, closed=closed0, cyclic=cyclic0)
@@ -1661,8 +1639,8 @@ def build_primitives():
 
     with GeoNodes("Hyper Cube", prefix=mod_):
 
-        size   = V4((1, 1, 1, 1), panel="Size")
-        slices = Integer(2, "Slices", 2)
+        size   = V4((1, 1, 1, 1), panel="Size", single_value=True)
+        slices = Integer(2, "Slices", 2, single_value=True)
 
         line   = curve_.line(slices, 0, 0, 0, -size.w/2, 0, 0, 0, size.w/2)
         cube   = Mesh.Cube(size=size[:3])
@@ -1679,7 +1657,7 @@ def build_primitives():
 
     with GeoNodes("5 Cell Polytope", fake_user=False, prefix=mod_):
 
-        size = Float(1, "Size")
+        size = Float(1, "Size", single_value=True)
 
         from math import sqrt
 

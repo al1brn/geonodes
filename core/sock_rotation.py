@@ -48,7 +48,8 @@ class Rotation(generated.Rotation):
 
     SOCKET_TYPE = 'ROTATION'
 
-    def __init__(self, value: tuple | Socket | str | None = (0., 0., 0.), name: str | None = None, tip: str | None = None):
+    def __init__(self, value=(0., 0., 0.), name=None, tip=None, panel=None,
+        hide_value=False, hide_in_modifier=False, single_value=False):
         """ > Socket of type ROTATION
 
         If **value** argument is None:
@@ -72,6 +73,10 @@ class Rotation(generated.Rotation):
         - value (tuple of floats or Sockets) : initial value
         - name (str = None) : Create an Group Input socket with the provided str if not None
         - tip (str = None) : User tip (for Group Input sockets)
+        - panel (str = None) : panel name (overrides tree panel if exists)
+        - hide_value (bool = False) : Hide Value option
+        - hide_in_modifier (bool = False) : Hide in Modifier option
+        - single_value (bool = False) : Single Value option
         """
         from geonodes import Vector
 
@@ -88,7 +93,12 @@ class Rotation(generated.Rotation):
                 else:
                     bsock = Node('Rotation', rotation_euler=value)._out
             else:
-                bsock = Tree.new_input('NodeSocketRotation', name, value=value, description=tip)
+                bsock = Tree.new_input('NodeSocketRotation', name, value=value, panel=panel,
+                    description             = tip,
+                    hide_value              = hide_value,
+                    hide_in_modifier        = hide_in_modifier,
+                    force_non_field         = single_value,
+                )
 
         super().__init__(bsock)
 

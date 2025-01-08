@@ -41,7 +41,8 @@ class String(generated.String):
 
     SOCKET_TYPE = 'STRING'
 
-    def __init__(self, value: str | Socket | None = "", name: str | None = None, tip: str | None = None):
+    def __init__(self, value="", name=None, tip=None, panel=None, subtype='NONE',
+        hide_value=False, hide_in_modifier=False):
         """ Socket of type String
 
         Node <&Node String>
@@ -53,6 +54,10 @@ class String(generated.String):
         - value (str or Socket) : initial value
         - name (str = None) : group input socket name if not None
         - tip (str = None) : user type for group input socket
+        - panel (str = None) : panel name (overrides tree pane if exists)
+        - subtype (str in ('NONE', 'FILE_PATH') = 'NONE') : sub type for group input
+        - hide_value (bool = False) : Hide Value option
+        - hide_in_modifier (bool = False) : Hide in Modifier option
         """
 
         bsock = utils.get_bsocket(value)
@@ -60,9 +65,24 @@ class String(generated.String):
             if name is None:
                 bsock = Node('String', string=str(value))._out
             else:
-                bsock = Tree.new_input('NodeSocketString', name, value=value, description=tip)
-
+                bsock = Tree.new_input('NodeSocketString', name, value=value, panel=panel,
+                    subtype             = subtype,
+                    description         = tip,
+                    hide_value          = hide_value,
+                    hide_in_modifier    = hide_in_modifier,
+                )
         super().__init__(bsock)
+
+    # ====================================================================================================
+    # Constructors
+
+    @classmethod
+    def FilePath(cls, value="", name="File Path", tip=None, panel=None,
+        hide_value=False, hide_in_modifier=False):
+        """ File path String
+        """
+        return cls(value=value, name=name, tip=tip, panel=panel, subtype='FILE_PATH',
+            hide_value=hide_value, hide_in_modifier=hide_in_modifier)
 
     # ====================================================================================================
     # Operators

@@ -47,7 +47,8 @@ class Matrix(generated.Matrix):
 
     SOCKET_TYPE = 'MATRIX'
 
-    def __init__(self, value: tuple | list | Socket | str | None = None, name: str | None = None, tip: str | None = None):
+    def __init__(self, value=None, name=None, tip=None, panel=None,
+        default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False):
         """ Matrix data socket ('MATRIX')
 
         A Matrix socket can be initialized with an array of size 16 (the shape is ignored)
@@ -65,7 +66,12 @@ class Matrix(generated.Matrix):
         ---------
         - value (array of 16 Floats = None) : initialization values
         - name (str = None) : Create group input socket with this name if not None
-        - type (str = None) : Input socket user tip if an input socket is created
+        - tup (str = None) : Input socket user tip if an input socket is created
+        - panel (str = None) : panel name (overrides tree panel if exists)
+        - default_input (str in ('VALUE', 'INSTANCE_TRANSFORM') = 'VALUE') :
+        - hide_value (bool = False) : Hide Value option
+        - hide_in_modifier (bool = False) : Hide in Modifier option
+        - single_value (bool = False) : Single Value option
         """
         if isinstance(value, str):
             value = type(self).Named(value)
@@ -80,7 +86,13 @@ class Matrix(generated.Matrix):
                     sockets = {}
                 bsock = Node('Combine Matrix', sockets)._out
             else:
-                bsock = Tree.new_input('NodeSocketMatrix', name, value=value, description=tip)
+                bsock = Tree.new_input('NodeSocketMatrix', name, value=value, panel=panel,
+                    description             = tip,
+                    default_input           = default_input,
+                    hide_value              = hide_value,
+                    hide_in_modifier        = hide_in_modifier,
+                    force_non_field         = single_value,
+                )
 
         super().__init__(bsock)
 

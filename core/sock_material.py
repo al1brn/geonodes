@@ -33,7 +33,7 @@ class Material(Socket):
 
     SOCKET_TYPE = 'MATERIAL'
 
-    def __init__(self, value: bpy.types.Material | Socket | str | None = None, name: str | None = None, tip: str | None = None):
+    def __init__(self, value=None, name=None, tip=None, panel=None, hide_value=False, hide_in_modifier=False):
         """ Class Material data socket
 
         Node <&Node Material>
@@ -43,6 +43,9 @@ class Material(Socket):
         - value (bpy.types.Material or str = None) : material or material name in bpy.data.materials
         - name (str = None) : create a group input socket of type Material if not None
         - tip (str = None) : user tip for group input socket
+        - panel (str = None) : panel name (overrides tree panel if exists)
+        - hide_value (bool = False) : Hide Value option
+        - hide_in_modifier (bool = False) : Hide in Modifier option
         """
 
         bsock = utils.get_bsocket(value)
@@ -51,6 +54,10 @@ class Material(Socket):
             if name is None:
                 bsock = Node('Material', material=material)._out
             else:
-                bsock = Tree.new_input('NodeSocketMaterial', name=name, value=material, description=tip)
+                bsock = Tree.new_input('NodeSocketMaterial', name=name, value=material, panel=panel,
+                    description             = tip,
+                    hide_value              = hide_value,
+                    hide_in_modifier        = hide_in_modifier,
+                )
 
         super().__init__(bsock)

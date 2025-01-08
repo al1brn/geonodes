@@ -120,54 +120,6 @@ class Domain(GeoBase, NodeCache, PropLocker):
             return sel & geo_sel
 
     # ====================================================================================================
-    # Domain nodes are created with
-    # {'Geometry': self._geo, 'Selection': self._sel}, domain=self.DOMAIN_NAME
-
-    def _node_OLD(self, node_name, sockets={}, geometry='Geometry', selection='Selection', domain='domain', use_cache=False, **parameters):
-
-        all_sockets = {**sockets}
-        if geometry is not None:
-            all_sockets[geometry] = self._geo
-
-        all_parameters = {**parameters}
-        if domain is not None:
-            all_parameters[domain] = self.DOMAIN_NAME
-
-        if use_cache:
-            node = self._cache(node_name, sockets=all_sockets, **all_parameters)
-        else:
-            node = Node(node_name, sockets=all_sockets, **all_parameters)
-
-        if selection is not None:
-            node.plug_selection(self._sel)
-
-        return node
-
-    # ====================================================================================================
-    # Test domain in a restricted set
-
-    def restrict_domain_OLD(self, domains=(), title=""):
-        if self.DOMAIN_NAME in domains:
-            return True
-        raise NodeError(f"{title} restricted to domains {domains}, not '{self.DOMAIN_NAME}'")
-
-    def exclude_corner_OLD(self, title):
-        return self.restrict_domain(['POINT', 'FACE', 'EDGE', 'CURVE', 'INSTANCE', 'LAYER'])
-
-    def plural_domain_OLD(self, domains=None, title=""):
-        PLURAL = {'POINT': 'VERTICES', 'EDGE': 'EDGES', 'FACE': 'FACES', 'CORNER': 'CORNERS', 'SPLINE': 'SPLINES', 'CURVE': 'SPLINES', 'LAYER': 'LAYERS'}
-        if domains is not None:
-            self.restrict_domain(domains=domains, title=title)
-        return PLURAL[self.DOMAIN_NAME]
-
-    # Rename domain name
-    def domain_name_OLD(self, rename={}):
-        if self.DOMAIN_NAME in rename:
-            return rename[self.DOMAIN_NAME]
-        else:
-            return self.DOMAIN_NAME
-
-    # ====================================================================================================
     # Named attributes
 
     def __getattr__(self, name):

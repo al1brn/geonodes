@@ -33,20 +33,18 @@ class Menu(Socket):
 
     SOCKET_TYPE = 'MENU'
 
-    def __init__(self, socket=None, name="Menu", menu=0, items={'A': None, 'B': None}, tip=None, input_type=None):
+    def __init__(self, socket): #, name="Menu", menu=0, items={'A': None, 'B': None}, tip=None, input_type=None):
         """ > Menu socket, node <&Node Menu Switch>
+
+        > [!IMPORTANT]
+        > A Menu socket can't be instantiated directly. It must be created with
+        > `Socket.MenuSwitch` method
 
         Arguments
         ---------
-        - socket (NodeSocket = None) :
-        - name (str = 'Menu') : name of the group input socket
-        - menu (int or str) : index or name of the default value
-        - items (dict) : menu names and values
-        - tip (str = None) : user tip
+        - socket (socket) : menu socket, can't be None
         """
         if socket is None:
             raise Exception("Menu Socket can't be instantiated directly, use 'Socket.MenuSwitch' instead")
-
         else:
             super().__init__(socket)
-            return

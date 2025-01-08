@@ -46,7 +46,7 @@ import mathutils
 from .scripterror import NodeError
 from . import constants
 from . import utils
-from .treeclass import Tree, Node
+from .treeclass import TreeInterface, Tree, Node
 from .proplocker import PropLocker
 
 
@@ -87,16 +87,6 @@ class NodeCache:
         self._cached_nodes[cache_name] = node
 
         return node
-
-    """
-    def _cache_node(self, node, name=None):
-        # Cache a node without building it
-        if name is None:
-            name = node.name
-        self._cached_nodes[name] = node
-
-        return node
-    """
 
 # =============================================================================================================================
 # =============================================================================================================================
@@ -197,6 +187,56 @@ class Socket(NodeCache, PropLocker):
     def _is_attribute(cls):
         return cls.class_name in constants.ATTRIBUTE_CLASSES
 
+    # ====================================================================================================
+    # Interface socket
+    #
+    # Interface socket exists only for group input and output sockets, either in the
+
+    # ----------------------------------------------------------------------------------------------------
+    # Is a group input or output socket
+
+    @property
+    def _is_group_input(self):
+        return self.node._bnode.bl_idname == 'NodeGroupInput'
+
+    @property
+    def _is_group_output(self):
+        return self.node._bnode.bl_idname == 'NodeGroupOutput'
+
+    @property
+    def _is_group_socket(self):
+        return self._is_group_input or self._is_group_output
+
+    # ----------------------------------------------------------------------------------------------------
+    # Get the interface socket
+
+    @property
+    def _interface_socket(self):
+        """ Return the interface socket if exists
+
+        An interface socket exists when the socket a tree input or output socket or
+        when it is the socket of a group
+
+        Returns
+        -------
+        - Interface Socket
+        """
+        node_blid = self.node._bnode.bl_idname
+
+        # ----------------------------------------------------------------------------------------------------
+        # Socket is a tree socket
+        if node_blid in ['NodeGroupInput', 'NodeGroupOutput']:
+            return self.node._tree._interface.by_identifier(self._bsocket.identifier)
+
+        elif node_blid in ['GeometryNodeGroup', 'ShaderNodeGroup']:
+            return TreeInterface(self.node._bnode.node_tree).by_identifier(self._bsocket.identifier)
+
+        else:
+            return None
+
+    # ----------------------------------------------------------------------------------------------------
+    # Get the panel name
+
     @property
     def _panel_name(self):
         """ Return the name of the panel
@@ -205,13 +245,30 @@ class Socket(NodeCache, PropLocker):
         -------
         - str : default is ""
         """
-        if not self.node._bnode.bl_idname in ['NodeGroupInput', 'NodeGroupOutput']:
-            return ""
-        panel = self.node._tree._interface.by_identifier(self._bsocket.identifier).parent
-        if panel is None:
+        i_socket = self._interface_socket
+        if i_socket is None:
             return ""
         else:
-            return panel.name
+            return i_socket.parent.name
+
+    # ----------------------------------------------------------------------------------------------------
+    # Interface socket properties
+
+    def _set_interface_property(self, **props):
+        """ Set the interface socket properties values
+
+        Interface sockets include min, max, hide_value,...
+        """
+
+        if not self._is_group_input:
+            raise NodeError(f"The socket {self} is not a group input socket. Impossible to set properties", **props)
+
+        i_socket = self._interface_socket
+        for name, value in props.items():
+            setattr(i_socket, name, value)
+
+    # ====================================================================================================
+    # Get a group input from its name and panel
 
     @classmethod
     def Input(cls, name: str, panel: str | None = None):
@@ -407,7 +464,9 @@ class Socket(NodeCache, PropLocker):
 
     def __getattr__(self, name):
 
-        # ----- Named attribute
+        # ----------------------------------------------------------------------------------------------------
+        # It is a named attribute
+        # Named attribute is _ followed by a Captital: _Attribute
 
         attr_name = utils.get_attr_name(name)
         if attr_name is not None:
@@ -416,24 +475,26 @@ class Socket(NodeCache, PropLocker):
             else:
                 raise AttributeError(f"Class '{self._class_name}' doesn't support Named Attributes: impossible to get named attribute '{attr_name}' ({name}).")
 
-        # ----- Not terminated by _
+        # ----------------------------------------------------------------------------------------------------
+        # It is a peer socket
+        # Peer socket end with '_'
 
-        if not (len(name) > 1 and name[-2] != '_' and name[-1] == '_'):
+        if len(name) > 1 and name[-2] != '_' and name[-1] == '_':
+            return getattr(self.node, name[:-1])
 
-            # ----- Specific message for socket._out which is a dynamic attribute of Node
+        # ----------------------------------------------------------------------------------------------------
+        # Specific message for _out
 
-            if name == '_out':
-                msg = "Node / Socket confusion: you tried to access to the default output socket of a node, "
-                msg += f"but class {type(self).__name__} is a socket"
-                raise NodeError(msg)
+        if name == '_out':
+            msg = "Node / Socket confusion: you tried to access to the default output socket of a node, "
+            msg += f"but class {type(self).__name__} is a socket"
+            raise NodeError(msg)
 
-            # ----- Error
+        # ----------------------------------------------------------------------------------------------------
+        # Attribute not found
 
-            raise AttributeError(f"Class {type(self).__name__} as no property named '{name}'")
+        raise AttributeError(f"Class {type(self).__name__} as no property named '{name}'")
 
-        # ----- Peer socket
-
-        return getattr(self.node, name[:-1])
 
     def __setattr__(self, name, value):
         attr_name = utils.get_attr_name(name)
@@ -477,7 +538,7 @@ class Socket(NodeCache, PropLocker):
     # =============================================================================================================================
     # To output
 
-    def out(self, name=None):
+    def out(self, name=None, **props):
         """ Plug the value to the Group Output Node.
 
         ``` python
@@ -517,7 +578,7 @@ class Socket(NodeCache, PropLocker):
         # ----------------------------------------------------------------------------------------------------
         # New output socket
 
-        bsocket = tree.new_output(bl_idname, name)
+        bsocket = tree.new_output(bl_idname, name, **props)
         tree.link(self, bsocket)
 
     # =============================================================================================================================
@@ -542,7 +603,8 @@ class Socket(NodeCache, PropLocker):
         return geo_class
 
     @classmethod
-    def MenuSwitch(cls, items={'A': None, 'B': None}, menu=0, name="Menu", tip=None):
+    def MenuSwitch(cls, items={'A': None, 'B': None}, menu=0, name="Menu", tip=None, panel=None,
+        hide_value=False, hide_in_modifier=False, single_value=False):
         """ > Node <&Node Menu Switch>
 
         The items of the Menu Switch node are provided in the 'items' dict.
@@ -570,6 +632,10 @@ class Socket(NodeCache, PropLocker):
         - menu (int or str) : index or name of the default value
         - name (str = 'Menu') : name of the group input socket
         - tip (str = None) : user tip
+        - panel (str = None) : panel name (overrides tree panel if exists)
+        - hide_value (bool = False) : Hide Value option
+        - hide_in_modifier (bool = False) : Hide in Modifier option
+        - single_value (bool = False) : Single Value option
 
         Returns
         -------
@@ -589,7 +655,12 @@ class Socket(NodeCache, PropLocker):
         if isinstance(menu, int):
             menu = list(items.keys())[menu]
 
-        menu_socket = Tree.new_input('NodeSocketMenu', name=name, value=None, description=tip)
+        menu_socket = Tree.new_input('NodeSocketMenu', name=name, value=None,
+            description             = tip,
+            hide_value              = hide_value,
+            hide_in_modifier        = hide_in_modifier,
+            force_non_field         = single_value)
+
         node.plug_value_into_socket(menu_socket, node.in_socket('Menu'))
         Tree.current_tree.set_input_socket_default(menu_socket, menu)
 

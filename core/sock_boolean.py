@@ -44,8 +44,11 @@ class Boolean(generated.Boolean):
 
     SOCKET_TYPE = 'BOOLEAN'
 
-    def __init__(self, value: bool | str | Socket | None = False, name : str | None =None, tip : str | None =None, subtype : str ='NONE'):
+    def __init__(self, value=False, name =None, tip=None, panel=None,
+        default_attribute="", hide_value=False, layer_selection=False, hide_in_modifier=False, single_value=False):
         """ Socket of type BOOLEAN
+
+        layer_selection_field
 
         > Node <&Node Boolean>
 
@@ -54,7 +57,12 @@ class Boolean(generated.Boolean):
         - value (bool or Socket = False) : initial value
         - name (str = None) : Create an Group Input socket with the provided str if not None
         - tip (str = None) : User tip (for Group Input sockets)
-        - subtype (str='NONE') : socket subtype
+        - panel (str = None) : panel name (overrides tree pane if exists)
+        - default_attribute (str = "") : default attribute name
+        - hide_value (bool = False) : Hide Value option
+        - layer_selection (bool = False) : Layer selection field
+        - hide_in_modifier (bool = False) : Hide in Modifier option
+        - single_value (bool = False) : Single Value option
         """
         if isinstance(value, str):
             value = type(self).Named(value)
@@ -64,7 +72,14 @@ class Boolean(generated.Boolean):
             if name is None:
                 bsock = Node('Boolean', boolean=int(value))._out
             else:
-                bsock = Tree.new_input('NodeSocketBool', name, value=value, description=tip)
+                bsock = Tree.new_input('NodeSocketBool', name, value=value, panel=panel,
+                    description             = tip,
+                    default_attribute_name  = default_attribute,
+                    hide_value              = hide_value,
+                    layer_selection_field   = layer_selection,
+                    hide_in_modifier        = hide_in_modifier,
+                    force_non_field         = single_value,
+                )
 
         super().__init__(bsock)
 

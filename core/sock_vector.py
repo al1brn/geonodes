@@ -48,7 +48,8 @@ class Vector(generated.Vector):
 
     SOCKET_TYPE = 'VECTOR'
 
-    def __init__(self, value: tuple | Socket | str | None = (0, 0, 0), name: str | None = None, tip: str | None = None, subtype: str = 'NONE'):
+    def __init__(self, value = (0, 0, 0), name = None, tip = None, panel=None, subtype = 'NONE',
+        default_attribute="", default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False):
         """ > Socket of type VECTOR
 
         If **value** argument is None:
@@ -72,7 +73,15 @@ class Vector(generated.Vector):
         - value (tuple of floats or Sockets) : initial value
         - name (str = None) : Create an Group Input socket with the provided str if not None
         - tip (str = None) : User tip (for Group Input sockets)
-        - subtype (str = None) : sub type for group input
+        - panel (str = None) : panel name (overrides tree pane if exists)
+        - subtype (str in ('NONE', 'TRANSLATION', 'DIRECTION', 'VELOCITY',
+          'ACCELERATION', 'EULER', 'XYZ') = 'NONE') : sub type for group input
+        - default_attribute (str = "") : default attribute name
+        - default_input (str in ('VALUE', 'NORMAL', 'POSITION') = 'VALUE') : default input
+        - hide_value (bool = False) : Hide Value option
+        - hide_in_modifier (bool = False) : Hide in Modifier option
+        - single_value (bool = False) : Single Value option
+
         """
         if isinstance(value, str):
             value = type(self).Named(value)
@@ -86,72 +95,94 @@ class Vector(generated.Vector):
                 else:
                     bsock = Node('Vector', vector=tuple(a))._out
             else:
-                bsock = Tree.new_input('NodeSocketVector', name, value=value, subtype=subtype, description=tip)
+                bsock = Tree.new_input('NodeSocketVector', name, value=value, panel=panel,
+                    subtype                 = subtype,
+                    default_attribute_name  = default_attribute,
+                    description             = tip,
+                    default_input           = default_input,
+                    hide_value              = hide_value,
+                    hide_in_modifier        = hide_in_modifier,
+                    force_non_field         = single_value,
+                )
 
         super().__init__(bsock)
 
     # ====================================================================================================
     # Constructors
+    # ('NONE', 'TRANSLATION', 'DIRECTION', 'VELOCITY', 'ACCELERATION', 'EULER', 'XYZ')
 
     @classmethod
-    def Translation(cls, value=(0., 0., 0.), name='Translation', tip=None):
+    def Translation(cls, value=(0., 0., 0.), name='Translation', tip=None, panel=None,
+        default_attribute="", default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False):
         """ > Translation group input
 
         Returns
         -------
         - Vector
         """
-        return cls(value=value, name=name, tip=tip, subtype='TRANSLATION')
+        return cls(value=value, name=name, tip=tip, panel=panel, subtype='TRANSLATION',
+            default_attribute=default_attribute, default_input=default_input, hide_value=hide_value, hide_in_modifier=hide_in_modifier, single_value=single_value)
+
 
     @classmethod
-    def Direction(cls, value=(0., 0., 0.), name='Direction', tip=None):
+    def Direction(cls, value=(0., 0., 0.), name='Direction', tip=None, panel=None,
+        default_attribute="", default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False):
         """ > Direction group input
 
         Returns
         -------
         - Vector
         """
-        return cls(value=value, name=name, tip=tip, subtype='DIRECTION')
+        return cls(value=value, name=name, tip=tip, panel=panel, subtype='DIRECTION',
+            default_attribute=default_attribute, default_input=default_input, hide_value=hide_value, hide_in_modifier=hide_in_modifier, single_value=single_value)
 
     @classmethod
-    def Velocity(cls, value=(0., 0., 0.), name='Velocity', tip=None):
+    def Velocity(cls, value=(0., 0., 0.), name='Velocity', tip=None, panel=None,
+        default_attribute="", default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False):
         """ > Velocity group input
 
         Returns
         -------
         - Vector
         """
-        return cls(value=value, name=name, tip=tip, subtype='VELOCITY')
+        return cls(value=value, name=name, tip=tip, panel=panel, subtype='VELOCITY',
+            default_attribute=default_attribute, default_input=default_input, hide_value=hide_value, hide_in_modifier=hide_in_modifier, single_value=single_value)
 
     @classmethod
-    def Acceleration(cls, value=(0., 0., 0.), name='Acceleration', tip=None):
+    def Acceleration(cls, value=(0., 0., 0.), name='Acceleration', tip=None, panel=None,
+        default_attribute="", default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False):
         """ > Acceleration group input
 
         Returns
         -------
         - Vector
         """
-        return cls(value=value, name=name, tip=tip, subtype='ACCELERATION')
+        return cls(value=value, name=name, tip=tip, panel=panel, subtype='ACCELERATION',
+            default_attribute=default_attribute, default_input=default_input, hide_value=hide_value, hide_in_modifier=hide_in_modifier, single_value=single_value)
 
     @classmethod
-    def Euler(cls, value=(0., 0., 0.), name='Euler', tip=None):
+    def Euler(cls, value=(0., 0., 0.), name='Euler', tip=None, panel=None,
+        default_attribute="", default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False):
         """ > Euler group input
 
         Returns
         -------
         - Vector
         """
-        return cls(value=value, name=name, tip=tip, subtype='EULER')
+        return cls(value=value, name=name, tip=tip, panel=panel, subtype='EULER',
+            default_attribute=default_attribute, default_input=default_input, hide_value=hide_value, hide_in_modifier=hide_in_modifier, single_value=single_value)
 
     @classmethod
-    def XYZ(cls, value=(0., 0., 0.), name='XYZ', tip=None):
+    def XYZ(cls, value=(0., 0., 0.), name='XYZ', tip=None, panel=None,
+        default_attribute="", default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False):
         """ > XYZ group input
 
         Returns
         -------
         - Vector
         """
-        return cls(value=value, name=name, tip=tip, subtype='XYZ')
+        return cls(value=value, name=name, tip=tip, panel=panel, subtype='XYZ',
+            default_attribute=default_attribute, default_input=default_input, hide_value=hide_value, hide_in_modifier=hide_in_modifier, single_value=single_value)
 
     @classmethod
     def FromRotation(cls, rotation=None):
@@ -294,7 +325,7 @@ class Vector(generated.Vector):
     # ====================================================================================================
     # Shader
 
-    def out(self, name=None):
+    def out(self, name=None, **props):
         """ > Plug the Vector to the group output
 
         [!MIX]
@@ -312,7 +343,7 @@ class Vector(generated.Vector):
             else:
                 self._tree.aov_output(name=name, color=self)
         else:
-            super().out(name=name)
+            super().out(name=name, **props)
 
     def displacement_out(self, target='ALL'):
         """ > Plug the value to 'Displacement' socket of <&ShaderNode Material Output> node
