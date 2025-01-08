@@ -237,29 +237,38 @@ class Domain(GeoBase, NodeCache, PropLocker):
     # ----------------------------------------------------------------------------------------------------
     # Capture attribute
 
-    def capture_attribute(self, **attributes):
+    def capture_attribute(self, attribute=None, **attributes):
         """ > Node <&Node Capture Attribute>
 
         [&JUMP]
-        [&RETURN_NODE]
 
-        > You can use two short names:
-        > <#capture> : to capture only one attribute
-        > <#capture> : same as **capture_attribute** to capture several named attributes
+        > [!NOTE]
+        > Use <#capture> to capture one single attribute
+
+        > [!CAUTION]
+        > When there is only one attribute, the function returns the captured attribute,
+        > otherwise returns the node.
 
         ``` python
         with GeoNodes("Capture Attribute"):
-            # Capture attributes
+            # Capture several attributes
             node = mesh.points.capture_attribute(attr1 = attr1, attr2=attr2)
             captured_attr1 = node.attr1
             captured_attr2 = node.attr2
 
-            # Capture one attribute
+            # Capture one single attribute
+            captured_attr = mesh.points.capture_attribute(my_attr=attr1)
+
+            # Capture one attribute without key
+            captured_attr3 = mesh.points.capture_attribute(attr3)
+
+            # Equivalent to
             captured_attr3 = mesh.points.capture(attr3)
         ```
 
         Arguments
         ---------
+        - attribute (Socket) : first attribute to capture
         - **attributes (Sockets): named attributes to capture
 
         Returns
@@ -267,12 +276,20 @@ class Domain(GeoBase, NodeCache, PropLocker):
         - Node
         """
         if len(attributes) == 0:
-            return self
+            attrs = {'attribute': attribute}
+        else:
+            if attribute is None:
+                attrs = attributes
+            else:
+                attrs = {'attribute': attribute, **attributes}
 
         node = Node('Capture Attribute', sockets={'Geometry': self})
-        node._set_items(**attributes)
+        node._set_items(**attrs)
         self._jump(node._out)
-        return node
+        if len(attrs) == 1:
+            return node[1]
+        else:
+            return node
 
     # ----------------------------------------------------------------------------------------------------
     # Capture a single attribute
