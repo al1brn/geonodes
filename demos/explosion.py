@@ -37,13 +37,13 @@ def demo():
 
         with Panel("Gravity"):
             #gravity   = Vector.Acceleration((0, 0, -9.86), "Gravity", tip="Gravity vector")
-            gravity   = Vector((0, 0, -9.86), "Gravity", tip="Gravity vector")
-            vis_fac   = Float(0, "Viscosity Factor")
-            vis_exp   = Float(2, "Viscosity Exponent")
-            speed_max = Float(2, "Maximum Speed", tip="Used to generate random speed is named attribute 'Speed' is not defined")
+            gravity   = Vector.Acceleration((0, 0, -9.86), "Gravity", tip="Gravity vector", single_value=True)
+            vis_fac   = Float(0, "Viscosity Factor", single_value=True)
+            vis_exp   = Float(2, "Viscosity Exponent", single_value=True)
+            speed_max = Float(10, "Maximum Speed", tip="Used to generate random speed is named attribute 'Speed' is not defined", single_value=True)
 
-        frame0 = Integer(1, "Start Frame")
-        seed   = Integer(name="Seed")
+        frame0 = Integer(1, "Start Frame", single_value=True)
+        seed   = Integer(name="Seed", single_value=True)
 
         # ----- Input geometry is supposed to be points
 
@@ -98,15 +98,15 @@ def demo():
     with GeoNodes("Explosion"):
 
         with Panel("Particles"):
-            density   = Float(50, "Particles density", 0, 100)
-            use_coll  = Boolean(False, "Use collection for particles")
+            density   = Float(50, "Particles density", 0, 100, single_value=True)
+            use_coll  = Boolean(False, "Use collection for particles", single_value=True)
             particles = Collection(None, "Particles collection")
             part_size = Float(.1, "Particles size")
-            only_up   = Boolean(False, "Only up faces", tip="Put particles on faces with tangent in the upward direction")
-            seed      = Integer(0, "Seed")
+            only_up   = Boolean(False, "Only up faces", tip="Put particles on faces with tangent in the upward direction", single_value=True)
+            seed      = Integer(0, "Seed", single_value=True)
 
         with Panel("Gravity"):
-            max_speed = Float(5, "Maximum Speed", 0)
+            max_speed = Float(5, "Maximum Speed", 0, single_value=True)
 
         with Layout("Generate the points on the input mesh"):
             selection = (nd.normal @ (0, 0, 1)).greater_than(0).switch(-only_up, True)

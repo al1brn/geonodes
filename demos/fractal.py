@@ -121,7 +121,7 @@ def random_normal():
 
             rot = Rotation.AlignToVector(vector=vector)
             shake = Rotation((phi, 0, theta))
-            vector = ((rot.invert @ shake) @ rot) @ vector
+            vector = ((rot.invert() @ shake) @ rot) @ vector
 
         # ===== Change the length
 
@@ -260,9 +260,9 @@ def camera_culling():
 
         with Layout("Projection in Camera Space"):
             vect     = position - cam_info.location
-            rot      = cam_info.rotation.invert
+            rot      = cam_info.rotation.invert()
             pos      = rot @ vect
-            distance = pos.length
+            distance = pos.length()
 
         # ===== Position above sensor are behind the camera
         # Taking into account the radius
@@ -275,7 +275,7 @@ def camera_culling():
         # Negative values are for escaping normals
 
         with Layout("Normal direction relatively to position"):
-            outwards = normal.dot(vect.normalize)
+            outwards = normal.dot(vect.normalize())
 
         # ===== Projection ratio
 
@@ -355,8 +355,8 @@ def camera_culling():
             diag = (half_height*gnmath.sqrt(1 + aspect_ratio**2))._lc("Diagonal/2")
 
         with Layout("Edge's vertex indices"):
-            i1 = nd.edge_vertices.vertex_index_1
-            i2 = nd.edge_vertices.vertex_index_2
+            i1 = nd.edge_vertices().vertex_index_1
+            i2 = nd.edge_vertices().vertex_index_2
 
         with Layout("A, B: Edge's vertex projected positions"):
             A  = mesh.points(node.projection, i1)._lc("A")
@@ -396,7 +396,7 @@ def camera_culling():
             ignore |= mesh.points(node.outside_top,   i1) & mesh.points(node.outside_top,   i2)
 
         with Layout("Nearest point farer than diagonal"):
-            ignore |= C.length > diag + rC
+            ignore |= C.length() > diag + rC
             pass
 
         mesh.edges[ignore].delete()
@@ -443,7 +443,7 @@ def camera_culling():
         inside = -Boolean.Named("TEMP Outside")
 
         with projected.faces.for_each() as feel:
-            bbox = feel.element.bounding_box
+            bbox = feel.element.bounding_box()
 
             outside =  bbox.max_.x < -half_width
             outside |= bbox.min_.x >  half_width
@@ -585,7 +585,7 @@ def sierpinski():
 
         fractal = Mesh(G.sierpinski_triangle(ico, link_from='TREE'))
 
-        fractal.points.position = fractal.points.position.normalize.scale(10)
+        fractal.points.position = fractal.points.position.normalize().scale(10)
 
         fractal.out()
 
@@ -695,7 +695,7 @@ def multires_surface():
 
         surface.out()
 
-        Boolean(True).info("Faces: " + surface.faces.count.to_string + ", Iterations: " + rep.max_iteration.to_string)
+        Boolean(True).info("Faces: " + surface.faces.count.to_string() + ", Iterations: " + rep.max_iteration.to_string())
 
     # -----------------------------------------------------------------------------------------------------------------------------
     # Multires plane
@@ -882,10 +882,10 @@ def romanesco():
 
             model = model.mesh.points.to_points() + model.curve.points.to_points() + model.point_cloud
 
-            bbox = model.bounding_box
+            bbox = model.bounding_box()
 
             p0, p1 = bbox.min_, bbox.max_
-            size = (p1 - p0).length._lc("Model Size")
+            size = (p1 - p0).length()._lc("Model Size")
 
             z0, z1 = p0.z, p1.z
             height = (z1 - z0)._lc("Model Height")
@@ -1026,8 +1026,8 @@ def romanesco():
                         rot = Rotation.Named("Main Rotation")
                         pos = nd.position - O
 
-                        pos = rot.invert @ pos
-                        nrm = rot.invert @ Float.Named("Normal")
+                        pos = rot.invert() @ pos
+                        nrm = rot.invert() @ Float.Named("Normal")
 
                         z = Float.Named("Z")
                         deform = Rotation((0, 0, twist*z)) @ (Rotation((bend*z, 0, 0)) @ Rotation((0, 0, 0)))
@@ -1047,7 +1047,7 @@ def romanesco():
 
         cloud = Cloud(rep.cloud)
 
-        Boolean(True).info("Points: " + cloud.points.count.to_string + " after " + rep.iteration_max.to_string + " iterations.")
+        Boolean(True).info("Points: " + cloud.points.count.to_string() + " after " + rep.iteration_max.to_string() + " iterations.")
 
         with Layout("Scale to radius and seed to id"):
             cloud.points.radius = Float("Scale")
@@ -1108,7 +1108,7 @@ def romanesco():
 
             width = 1.
             line = Cloud.Points(count=n)
-            line.points._Normal = Vector((height, 0, width)).normalize
+            line.points._Normal = Vector((height, 0, width)).normalize()
 
             # index 0 at bottom
 
@@ -1203,7 +1203,7 @@ def romanesco():
         with Layout("Normal"):
             normal = curve.points.position*(1, 1, 0)
             normal = Rotation((0, 0, theta)) @ Vector((height, 0, radius))
-            curve.points._Normal = normal.normalize
+            curve.points._Normal = normal.normalize()
 
         curve.out()
 
@@ -1239,7 +1239,7 @@ def romanesco():
             # Geometric series:
             # length = size*(1 - q^n)/(1 - q) => size = length*(1 - q)/(1 - q^n)
 
-            length = spiral.length
+            length = spiral.length()
             size = length*(1 - q)/(1 - q**npoints)
 
             curve = Curve.Line().resample(npoints)
@@ -1255,7 +1255,7 @@ def romanesco():
 
             normal = spiral.sample_length(Vector("Normal"), length=l)
             normal = normal.mix(f, (0, 0, 1))
-            curve.points._Normal = normal.normalize
+            curve.points._Normal = normal.normalize()
 
         # DEBUG
         if False:
@@ -1294,7 +1294,7 @@ def romanesco():
             return
 
 
-        cabbage = Mesh(cloud.instance_on(instance=cone, scale=nd.radius, rotation=Rotation("Rotation")))
+        cabbage = Mesh(Cloud(cloud).instance_on(instance=cone, scale=nd.radius, rotation=Rotation("Rotation")))
         cabbage.out()
 
         return
@@ -1333,7 +1333,7 @@ def romanesco():
 
                 normal = Rotation.Named("rot") @ Vector.Named("Normal")
                 normal += vect_noise(0, noise_scale, seed=rep_seed + 1)
-                new_cabbage.points.store("Normal", normal.normalize)
+                new_cabbage.points.store("Normal", normal.normalize())
 
             rep.cabbage = new_cabbage
 
@@ -1483,13 +1483,13 @@ def split_segments():
 
             rep.seed = rep.seed.hash_value(rep.iteration)
 
-            node = nd.edge_vertices
+            node = nd.edge_vertices()
             with rep.triangle.edges.for_each(p1=node.position_1, p2=node.position_2) as feel:
 
                 new_edges = Mesh.Line(start_location=feel.p1, end_location=feel.p2, count=5)
                 v = (feel.p2 - feel.p1)/3
 
-                ns = noise_scale * v.length
+                ns = noise_scale * v.length()
                 noise_vector = Vector((ns, ns, 0))
 
                 new_edges.points[1].position = feel.p1 + v + Float.Random(-noise_vector, noise_vector, rep.seed)
@@ -1527,13 +1527,13 @@ def fern():
 
             rep.seed = rep.seed.hash_value(rep.iteration)
 
-            node = nd.edge_vertices
+            node = nd.edge_vertices()
             with rep.leaf.edges.for_each(p1=node.position_1, p2=node.position_2, seed=rep.seed) as feel:
 
                 hv = rep.seed.hash_value(feel.index)
 
                 v = feel.p2 - feel.p1
-                l = v.length
+                l = v.length()
 
                 edge = Mesh(feel.element)
                 extrude = edge.edges.sample_index(Boolean.Named("Use"), 0)
@@ -1581,14 +1581,14 @@ def points_fractal():
 
         if num_model == 0:
             model = Curve.Circle(count, radius=radius)
-            model.points.store("Direction", nd.position.normalize)
+            model.points.store("Direction", nd.position.normalize())
             model.points.store("Scale",     1/count)
             model = model.to_points()
 
         elif num_model == 1:
             model = Mesh.UVSphere(segments=3, rings=2, radius=1)
             model.points[nd.position.z < -.1].delete()
-            model.points.store("Direction", nd.position.normalize)
+            model.points.store("Direction", nd.position.normalize())
             model.points.store("Scale",     1)
             model = model.points.to_points()
 
@@ -1676,7 +1676,7 @@ def romanesco1():
             dtheta = angle_factor*rep.size/rep.rho
 
             normal = Rotation((0, 0, rep.theta)) @ Vector((dz, 0, drho))
-            rep.pyramid.points[cur_point].store("Direction", normal.normalize)
+            rep.pyramid.points[cur_point].store("Direction", normal.normalize())
 
             rep.size *= size_factor
 
@@ -1724,7 +1724,7 @@ def log_spiral():
 
         normal = curve.points.position*(1, 1, 0)
         normal = Rotation((0, 0, theta)) @ Vector((height, 0, radius))
-        curve.points.store("Normal", normal.normalize)
+        curve.points.store("Normal", normal.normalize())
 
         curve.out()
 
@@ -1765,7 +1765,7 @@ def romanesco2():
             # Geometric series:
             # length = size*(1 - q^n)/(1 - q) => size = length*(1 - q)/(1 - q^n)
 
-            length = spiral.length
+            length = spiral.length()
             size = length*(1 - q)/(1 - q**npoints)
 
             curve = Curve.Line().resample(npoints)
@@ -1839,7 +1839,7 @@ def romanesco2():
 
                 normal = Rotation.Named("rot") @ Vector.Named("Normal")
                 normal += vect_noise(0, noise_scale, seed=rep_seed + 1)
-                new_cabbage.points.store("Normal", normal.normalize)
+                new_cabbage.points.store("Normal", normal.normalize())
 
             rep.cabbage = new_cabbage
 
@@ -1903,8 +1903,8 @@ def demo():
                     p0 = edge.points.sample_index(nd.position, index=0)._lc("P0")
                     p1 = edge.points.sample_index(nd.position, index=1)._lc("P1")
                     direction = (p1 - p0)._lc("Direction")
-                    length = direction.length._lc("Length")
-                    direction = direction.normalize
+                    length = direction.length()._lc("Length")
+                    direction = direction.normalize()
 
                 with Repeat(edge=edge, iterations=branches) as br_rep:
 
@@ -1945,7 +1945,7 @@ def demo():
                     p0 = edge.points.sample_index(nd.position, index=0)._lc("P0")
                     p1 = edge.points.sample_index(nd.position, index=1)._lc("P1")
                     direction = (p1 - p0)._lc("Direction")
-                    length = direction.length._lc("Length")
+                    length = direction.length()._lc("Length")
 
                 with Layout("First edge: from start to point located around trunk factor"):
                     c  = (p0 + p1)*trunk_fac
@@ -1963,8 +1963,8 @@ def demo():
                     direction += Vector.Random(-.4*length, .4*length, id=feel.index, seed=rep_seed + 1)
                     length *= (1 - trunk_fac)*Float.Random(.8, 1.2, id=feel.index, seed=rep_seed + 2)
 
-                    #new_edges.points[1].extrude(direction.normalize*length)
-                    new_edges[1].extrude_vertices(direction.normalize*length)
+                    #new_edges.points[1].extrude(direction.normalize()*length)
+                    new_edges[1].extrude_vertices(direction.normalize()*length)
                     new_edges.edges[2].store_named_attribute("Split", True)
 
                 with Layout("Keep element if not split"):
@@ -1999,12 +1999,12 @@ def demo():
                 segment.points[1].offset = Vector.Random(-.1, .1, id=feel.index, seed=rep_seed)
 
                 direction = p1 - p0
-                length = direction.length
+                length = direction.length()
 
                 direction += Vector.Random(-.3, .3, id=feel.index, seed=rep_seed + 1)
                 length *= Float.Random(.8, 1.2, id=feel.index, seed=rep_seed + 2)
 
-                new_segment = Curve.LineDirection(start=segment.points.sample_index(nd.position, index=1), direction=direction.normalize, length=length)
+                new_segment = Curve.LineDirection(start=segment.points.sample_index(nd.position, index=1), direction=direction.normalize(), length=length)
 
                 feel.generated.geometry = segment + new_segment
 

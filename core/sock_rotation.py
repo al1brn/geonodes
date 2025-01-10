@@ -88,7 +88,7 @@ class Rotation(generated.Rotation):
             if name is None:
                 a = utils.value_to_array(value, (3,))
                 if utils.has_bsocket(a):
-                    bsock = Vector(value).to_rotation
+                    bsock = Vector(value).to_rotation()
                     #bsock = Node('Combine XYZ', {0: a[0], 1: a[1], 2:a[2]})._out
                 else:
                     bsock = Node('Rotation', rotation_euler=value)._out
@@ -113,4 +113,4 @@ class Rotation(generated.Rotation):
             return self.rotate_vector(other)
 
     def __invert__(self):
-        return self.invert
+        return self.invert()

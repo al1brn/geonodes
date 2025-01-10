@@ -200,7 +200,10 @@ class TreeInterface:
                 if panel_name == "":
                     names[unique] = socket
                     if as_argument:
-                        homonyms[snake_case(sepa + unique)] = socket
+                        homo = snake_case(sepa + unique)
+                        # Could be equal when socket starts with a figure
+                        if homo != unique:
+                            homonyms[homo] = socket
 
                 else:
                     # Short version ?
@@ -214,7 +217,10 @@ class TreeInterface:
 
                     if single:
                         names[unique] = socket
-                        homonyms[snake_case(panel_name + sepa + unique)] = socket
+                        # Could be equal if unique starts with a figure
+                        homo = snake_case(panel_name + sepa + unique)
+                        if homo not in names:
+                            homonyms[homo] = socket
                     else:
                         names[snake_case(panel_name + sepa + unique)] = socket
 
@@ -754,7 +760,7 @@ class TreeInterface:
             return False
         return sockets[0].socket_type == 'NodeSocketGeometry'
 
-    def set_out_geometry(self, name="Geometry"):
+    def set_out_geometry(self, name=None):
         """ Make sure the tree has an output geometry and that it is the first one
 
         If the tree has no output Geometry socket, one is created
@@ -763,6 +769,12 @@ class TreeInterface:
         ---------
         - name : socket name, 'Geometry' if None
         """
+        for nm, s in self.get_unique_names('OUTPUT', as_argument=False, include_homonyms='NO').items():
+            if s.socket_type == 'NodeSocketGeometry':
+                if name is None or nm == name:
+                    self.move_socket_to(s, 0)
+                    return
+
         if name is None:
             name = "Geometry"
 

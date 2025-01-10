@@ -215,7 +215,7 @@ def demo():
             color = Color((1, 0, 0), "Color")
 
         with Panel("Options"):
-            merge      = Boolean(True, "Merge with Input")
+            merge      = Boolean(False, "Merge with Input")
             leading_0  = Boolean(False, "Leading 0", tip="Display leading zero value")
             minus      = Boolean(True, "Minus Sign")
 
@@ -267,7 +267,7 @@ def demo():
         size    = Float(1, "Size", 0)
 
         with Panel("Options"):
-            merge      = Boolean(True, "Merge with Input")
+            merge      = Boolean(False, "Merge with Input")
             dots_on    = Boolean(True, "Dots are On")
 
         mins  = minutes % 60

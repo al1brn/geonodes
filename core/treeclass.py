@@ -1993,7 +1993,11 @@ class Node:
         if (node == tree) or (str(node).upper() == 'TREE'):
             node = tree.input_node
 
-        exclude = []
+        if isinstance(exclude, str):
+            exclude = [exclude]
+        else:
+            exclude = list(exclude)
+
         for arg, value in arguments.items():
             if value is not None:
                 exclude.append(arg)
