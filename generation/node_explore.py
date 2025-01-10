@@ -1097,8 +1097,9 @@ class NodeInfo:
                 is_prop = False
                 if arg['is_socket']:
                     socks_count += 1
-
         ret_node = (socks_count == 0) and len(self.node_output()) > 1
+        if ret_node:
+            is_prop = False
 
         # ----------------------------------------------------------------------------------------------------
         # Source code
@@ -1202,6 +1203,11 @@ class NodeInfo:
                 is_prop = False
         if is_prop:
             is_prop = len(self.node_output()) == 1
+
+        # ===========================================================================
+        # NO Property constructor
+        is_prop = False
+        # ===========================================================================
 
         # ----------------------------------------------------------------------------------------------------
         # Source code
@@ -1500,6 +1506,12 @@ class NodeInfo:
         else:
             if (free_args_count == 0) and (ret is not None) and (len(out) == 1):
                 is_get = True
+
+        # ----- Adjust is_get
+
+        if is_get:
+            is_get = (is_class_method and ret != 'NODE') or (ret not in ['NODE', 'OUT'])
+            #print("METHOD", "GET " if new_get else "METH", "CLASS" if is_class_method else "     ", func_name, '->', ret)
 
         # ----------------------------------------------------------------------------------------------------
         # Function name

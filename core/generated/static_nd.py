@@ -274,7 +274,6 @@ class nd(Socket):
         return node._out
 
     @classmethod
-    @property
     def special_characters(cls):
         """ > Node <&Node Special Characters>
 
@@ -1973,7 +1972,6 @@ class nd(Socket):
         return node._out
 
     @classmethod
-    @property
     def edge_angle(cls):
         """ > Node <&Node Edge Angle>
 
@@ -1997,7 +1995,6 @@ class nd(Socket):
         return node._out
 
     @classmethod
-    @property
     def edge_vertices(cls):
         """ > Node <&Node Edge Vertices>
 
@@ -2036,7 +2033,6 @@ class nd(Socket):
         return node._out
 
     @classmethod
-    @property
     def face_neighbors(cls):
         """ > Node <&Node Face Neighbors>
 
@@ -2048,7 +2044,6 @@ class nd(Socket):
         return node
 
     @classmethod
-    @property
     def mesh_island(cls):
         """ > Node <&Node Mesh Island>
 
@@ -2060,7 +2055,6 @@ class nd(Socket):
         return node
 
     @classmethod
-    @property
     def vertex_neighbors(cls):
         """ > Node <&Node Vertex Neighbors>
 
@@ -2139,7 +2133,6 @@ class nd(Socket):
         return node._out
 
     @classmethod
-    @property
     def scene_time(cls):
         """ > Node <&Node Scene Time>
 
@@ -3510,7 +3503,6 @@ class nd(Socket):
         return node._out
 
     @classmethod
-    @property
     def spline_length(cls):
         """ > Node <&Node Spline Length>
 
@@ -3522,7 +3514,6 @@ class nd(Socket):
         return node
 
     @classmethod
-    @property
     def spline_parameter(cls):
         """ > Node <&Node Spline Parameter>
 
@@ -3717,7 +3708,6 @@ class nd(Socket):
         return node._out
 
     @classmethod
-    @property
     def _3d_cursor(cls):
         """ > Node <&Node 3D Cursor>
 
@@ -3744,7 +3734,6 @@ class nd(Socket):
         return node
 
     @classmethod
-    @property
     def face_set(cls):
         """ > Node <&Node Face Set>
 
@@ -3756,7 +3745,6 @@ class nd(Socket):
         return node
 
     @classmethod
-    @property
     def mouse_position(cls):
         """ > Node <&Node Mouse Position>
 
@@ -3768,7 +3756,6 @@ class nd(Socket):
         return node
 
     @classmethod
-    @property
     def selection(cls):
         """ > Node <&Node Selection>
 
@@ -3963,7 +3950,6 @@ class nd(Socket):
         return node._out
 
     @classmethod
-    @property
     def viewport_transform(cls):
         """ > Node <&Node Viewport Transform>
 

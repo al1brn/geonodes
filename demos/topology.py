@@ -44,10 +44,10 @@ def demo():
 
         with cloud.points[show].for_each(value=value, position=nd.position + dist*direction) as feel:
 
-            cam_vec = Object.ActiveCamera.info().location - feel.position
+            cam_vec = Object.ActiveCamera().info().location - feel.position
             rot = Rotation((np.pi/2, 0, 0)).align_z_to_vector(cam_vec, factor=face_cam, pivot_axis='Y')
 
-            label = Curve(feel.value.to_string.to_curves(size=font_size, align_x='CENTER'))
+            label = Curve(feel.value.to_string().to_curves(size=font_size, align_x='CENTER'))
             label.transform(translation=feel.position, rotation=rot)
             label = label.fill()
 
@@ -85,8 +85,8 @@ def demo():
         cloud = geo.point_cloud
 
         with Panel("Domain"):
-            ind0 = Integer(0,    "First Index")
-            ind1 = Integer(1000, "Last Index")
+            ind0 = Integer(0,    "First Index", 0, single_value=True)
+            ind1 = Integer(1000, "Last Index", 0, single_value=True)
 
         with Layout("Mesh domains"):
             pt_cloud = mesh.points.to_points()
@@ -113,7 +113,7 @@ def demo():
 
             spt_cloud = Cloud.Points(count=curve.points.count)
             spt_cloud.position = curve.points.sample_index(nd.position, nd.index)
-            spt_cloud.points._Normal = curve.points.sample_index(curve.tangent, nd.index).cross((0, 0, 1)).normalize
+            spt_cloud.points._Normal = curve.points.sample_index(curve.tangent, nd.index).cross((0, 0, 1)).normalize()
 
             spt_cloud.points._Value = curve.points.sample_index(nd.index, nd.index)
             spt_cloud.points._Color  = (.9, 0, 0)

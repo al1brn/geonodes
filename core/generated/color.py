@@ -195,9 +195,8 @@ class Color(Socket):
         node = Node('Hash Value', sockets={'Value': self, 'Seed': seed}, data_type='RGBA')
         return node._out
 
-    @property
     def separate_RGB(self):
-        """ > Property Get <&Node Separate Color>
+        """ > Method <&Node Separate Color>
 
         Information
         -----------
@@ -211,9 +210,8 @@ class Color(Socket):
         node = self._cache('Separate Color', sockets={'Color': self}, mode='RGB')
         return node._out
 
-    @property
     def separate_HSV(self):
-        """ > Property Get <&Node Separate Color>
+        """ > Method <&Node Separate Color>
 
         Information
         -----------
@@ -227,9 +225,8 @@ class Color(Socket):
         node = self._cache('Separate Color', sockets={'Color': self}, mode='HSV')
         return node._out
 
-    @property
     def separate_HSL(self):
-        """ > Property Get <&Node Separate Color>
+        """ > Method <&Node Separate Color>
 
         Information
         -----------
@@ -293,9 +290,8 @@ class Color(Socket):
         node = self._cache('Separate Color', sockets={'Color': self}, mode='HSL')
         return (node.hue, node.saturation, node.lightness, node.alpha)
 
-    @property
     def separate_color(self):
-        """ > Property Get <&Node Separate Color>
+        """ > Method <&Node Separate Color>
 
         Information
         -----------
@@ -1272,7 +1268,6 @@ class Color(Socket):
         return node._out
 
     @classmethod
-    @property
     def RGB(cls):
         """ > Constructor <&ShaderNode RGB>
 
@@ -1283,9 +1278,8 @@ class Color(Socket):
         node = Node('RGB', sockets={})
         return cls(node._out)
 
-    @property
     def rgb_to_bw(self):
-        """ > Property Get <&ShaderNode RGB to BW>
+        """ > Method <&ShaderNode RGB to BW>
 
         Information
         -----------

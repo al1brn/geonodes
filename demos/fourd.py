@@ -111,7 +111,13 @@ def build_shaders():
             normal     = bump,
             )
 
-        ped.out()
+        transp_fac = snd.attribute(attribute_name="Transparency").fac
+
+        transp = Shader.Transparent()
+
+        shader = snd.mix_shader(ped, transp, fac=transp_fac)
+
+        shader.out()
 
     # ----------------------------------------------------------------------------------------------------
     # Edge default
@@ -373,6 +379,8 @@ class V4:
 
             with Layout("Add"):
                 add = V4([v0[i] + v1[i] for i in range(4)])
+
+                print("ADD", add)
 
             with Layout("Subtract"):
                 sub = V4([v0[i] - v1[i] for i in range(4)])
@@ -636,7 +644,7 @@ def build_operations():
     # ----------------------------------------------------------------------------------------------------
     # Align a 4-rotation to a vector
 
-    with GeoNodes("Align Axis to Vector", is_group=True, prefix=matrix_):
+    with GeoNodes("Align X Axis to Vector", is_group=True, prefix=matrix_):
 
         vector   = V4(panel="Vector")
 
@@ -780,6 +788,20 @@ def build_matrices():
             Matrix.MenuSwitch({'XYZ': XYZ, 'XZY': XZY, 'YXZ': YXZ, 'YZX': YZX, 'ZXY': ZXY, 'ZYX': ZYX, }, menu='XYZ', name='Order').out()
 
     # ----------------------------------------------------------------------------------------------------
+    # GROUP - A Single Rotation Matrix
+
+    with GeoNodes("Single Rotation Matrix", is_group=True, prefix=matrix_):
+
+        panel_name = "Rotation 4D"
+
+        with Panel(panel_name):
+            w_euler = Vector.Euler(0, "W Euler", tip="Rotation XW, YW, ZW", single_value=True)
+            euler   = Vector.Euler(0, "3D Euler", tip="Rotation YZ, ZX, XY", single_value=True)
+
+        matrix_.rotation_matrix(link_from='TREE').out()
+
+
+    # ----------------------------------------------------------------------------------------------------
     # MODIFIER - Arrow
     #
     # An array along a 4D vector
@@ -815,7 +837,7 @@ def build_matrices():
             cloud.position = a[:3]
 
             arrow = Vector(a[4:7])
-            ar_length = arrow.length
+            ar_length = arrow.length()
 
             rot = Rotation.AlignZToVector(arrow)
 
@@ -853,7 +875,7 @@ def build_matrices():
 
     with GeoNodes("4D Parameters"):
 
-        M = matrix_.rotation_matrix(link_from='TREE')
+        M = matrix_.single_rotation_matrix(link_from='TREE')
 
         with Panel("Show Axes"):
             show_axis = Boolean(True, "Show Axes", tip="Show the 4 axes", single_value=True)
@@ -965,6 +987,7 @@ def build_matrices():
 
         with Panel("Faces"):
             del_faces   = Boolean(False,        "Delete Faces", single_value=True)
+            transp      = Float.Factor(0,       "Transparency", 0, 1, single_value=True)
             face_smooth = Boolean(True,         "Face Smooth", single_value=True)
             set_mat     = Boolean(True,         "Set Material", single_value=True)
             face_mat    = Material("4 Face",    "Face Material")
@@ -1048,6 +1071,7 @@ def build_matrices():
         with Layout("With Faces"):
 
             with_faces = Mesh(mesh)
+            with_faces.faces._Transparency = transp
 
             # ----- Smooth or unchanged
             smoothed = Mesh(with_faces)
@@ -1094,7 +1118,7 @@ def build_matrices():
             y.out("y")
 
         (abs(D) < 0.001).out("Error")
-        Vector((x, y, 0)).length.out("Length")
+        Vector((x, y, 0)).length().out("Length")
 
 # =============================================================================================================================
 # Transformations
@@ -1340,11 +1364,11 @@ def build_primitives():
 
         # ----- x position
 
-        a[0] = length*Spline.parameter
+        a[0] = length*Spline.parameter_factor
 
         # ----- Now we orient X towards the direction
 
-        R = matrix_.align_axis_to_vector(axis='X', **direction.args())
+        R = matrix_.align_x_axis_to_vector(**direction.args())
         M4 = R @ Matrix(a)
 
         # ----- Let's translate with the starting point
@@ -1372,14 +1396,14 @@ def build_primitives():
             close_fac = Float.Factor(1,     "Closed", 0, 1, single_value=True)
             cyclic    = Boolean(True,       "Cyclic", tip="Create a cyclic curve when closed", single_value=True)
 
-        rot = matrix_.rotation_matrix(link_from='TREE')
+        rot = matrix_.single_rotation_matrix(link_from='TREE')
 
         with Layout("Dimensions"):
             angle    = close_fac*(2*pi)
             closed   = (1 - close_fac).abs() < ZERO
             flat     = close_fac < ZERO
             circ     = (2*pi)*radius
-            ag       = -angle/2 + Spline.parameter*angle
+            ag       = -angle/2 + Spline.parameter_factor*angle
             cag, sag = gnmath.cos(ag), gnmath.sin(ag)
             y_offset = -angle.sign()*radius*offset
 
@@ -1405,7 +1429,7 @@ def build_primitives():
         with Layout("Curved Line"):
             curved = Curve(line)
             R = circ/angle
-            ag = -angle/2 + Spline.parameter*angle
+            ag = -angle/2 + Spline.parameter_factor*angle
             curved.position = (R*sag, y_offset + R*(1 - cag), 0)
 
             a[0], a[1] = nd.position.x, nd.position.y
@@ -1558,6 +1582,7 @@ def build_primitives():
             ico_sphere = Mesh.IcoSphere(radius = radius, subdivisions=subdiv)
 
         sphere = ico_sphere.switch(use_uv_sphere, uv_sphere)
+        sphere = Mesh(mod_.plunge_into_4d(sphere))
         rot = matrix_.rotation_matrix(w_euler=(pi/2, 0, 0))
         sphere.points._M4 = rot @ Matrix("M4")
 
@@ -1578,7 +1603,7 @@ def build_primitives():
 
         slices += 2
 
-        scale = gnmath.sqrt(1 - Spline.parameter.multiply_add(2, -1)**2)
+        scale = gnmath.sqrt(1 - Spline.parameter_factor.multiply_add(2, -1)**2)
         line   = curve_.line(slices, 0, 0, 0, -radius, 0, 0, 0, radius)
 
         geo = curve_.sphere_slices(curve=line, scale=scale, link_from='TREE')
@@ -1597,7 +1622,7 @@ def build_primitives():
 
         slices   = slices.switch( (radius0 < ZERO) | (radius1 < ZERO), slices + 1)
 
-        scale = radius0 + Spline.parameter*(radius1 - radius0)
+        scale = radius0 + Spline.parameter_factor*(radius1 - radius0)
         line   = curve_.line(slices, 0, 0, 0, 0, 0, 0, 0, depth)
 
         geo = curve_.sphere_slices(curve=line, scale=scale, link_from='TREE')

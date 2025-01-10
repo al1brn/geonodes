@@ -365,9 +365,8 @@ class Edge(Socket):
         return node._out
 
     @classmethod
-    @property
     def edge_angle(cls):
-        """ > Property Get <&Node Edge Angle>
+        """ > Class Method <&Node Edge Angle>
 
         Returns
         -------
@@ -413,9 +412,8 @@ class Edge(Socket):
         return node._out
 
     @classmethod
-    @property
     def edge_vertices(cls):
-        """ > Property Get <&Node Edge Vertices>
+        """ > Class Method <&Node Edge Vertices>
 
         Returns
         -------

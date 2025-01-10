@@ -6,7 +6,6 @@ from .. scripterror import NodeError
 class Object(Socket):
 
     @classmethod
-    @property
     def ActiveCamera(cls):
         """ > Constructor <&Node Active Camera>
 
@@ -37,7 +36,6 @@ class Object(Socket):
         return node
 
     @classmethod
-    @property
     def Self(cls):
         """ > Constructor <&Node Self Object>
 

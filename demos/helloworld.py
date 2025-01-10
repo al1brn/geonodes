@@ -32,8 +32,8 @@ def demo(material="Material"):
 
         count    = Integer(100, "Resolution", 10, 500, "Figure resolution, dont't be too greedy")
         size     = Float.Distance(20, "Map size", .1, 100, "Map size in meters")
-        omega    = Float(2., "Omega")
-        height   = Float(2., "Height")
+        omega    = Float(2., "Omega", single_value=True)
+        height   = Float(2., "Height",single_value=True)
         material = Material(None, "Material")
 
         # The base (x, y) grid
@@ -42,7 +42,7 @@ def demo(material="Material"):
         # We compute z
         with Layout("Computing the wave"):
 
-            distance = (nd.position * (1, 1, 0)).length
+            distance = (nd.position * (1, 1, 0)).length()
             z = height * gnmath.sin(distance*omega)/distance
 
         # Let's change the z coordinate of our vertices

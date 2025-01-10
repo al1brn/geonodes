@@ -271,4 +271,4 @@ class Domain(GeoBase, NodeCache, PropLocker):
         -------
         - Socket
         """
-        return self.capture_attribute(attribute=attribute).attribute
+        return self.capture_attribute(attribute)

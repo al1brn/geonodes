@@ -326,9 +326,8 @@ class Float(Socket):
         return cls(node._out)
 
     @classmethod
-    @property
     def scene_time(cls):
-        """ > Property Get <&Node Scene Time>
+        """ > Class Method <&Node Scene Time>
 
         Returns
         -------
@@ -380,9 +379,8 @@ class Float(Socket):
         node = Node('SDF Grid Boolean', sockets={'Grid 1': self, 'Grid 2': list(grid_2)}, operation=operation)
         return node._out
 
-    @property
     def sdf_intersect(self, *grid):
-        """ > Property Get <&Node SDF Grid Boolean>
+        """ > Method <&Node SDF Grid Boolean>
 
         Information
         -----------
@@ -399,9 +397,8 @@ class Float(Socket):
         node = Node('SDF Grid Boolean', sockets={'Grid 2': [self] + list(grid)}, operation='INTERSECT')
         return node._out
 
-    @property
     def sdf_union(self, *grid):
-        """ > Property Get <&Node SDF Grid Boolean>
+        """ > Method <&Node SDF Grid Boolean>
 
         Information
         -----------
@@ -1829,9 +1826,8 @@ class Float(Socket):
         node = Node('Normal Map', sockets={'Strength': self, 'Color': color}, space=space, uv_map=uv_map)
         return node._out
 
-    @property
     def wavelength(self):
-        """ > Property Get <&ShaderNode Wavelength>
+        """ > Method <&ShaderNode Wavelength>
 
         Information
         -----------

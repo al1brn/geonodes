@@ -82,7 +82,7 @@ def demo():
             vectors = cloud.points.capture(vectors)
 
         with Layout("Length and rotation"):
-            vect_len = vectors.length._lc("Vector length")
+            vect_len = vectors.length()._lc("Vector length")
             length   = (vect_len*scale).switch(use_log, gnmath.log(1 + vect_len, base=(1.001 + scale)))
             rot      = Rotation.AlignZToVector(vector=vectors)
 

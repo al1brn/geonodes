@@ -158,12 +158,12 @@ class Integer(generated.Integer):
     # ----- Neg
 
     def __neg__(self):
-        return self.negate
+        return self.negate()
 
     # ----- Abs
 
     def __abs__(self):
-        return self.abs
+        return self.abs()
 
     # ----- Addition
 

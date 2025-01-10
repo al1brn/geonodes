@@ -44,7 +44,7 @@ class Point(Domain, generated.Point):
         -------
         - Integer
         """
-        return self._geo.domain_size.point_count
+        return self._geo.domain_size().point_count
 
 class Vertex(Point, generated.Vertex):
     pass
@@ -72,7 +72,7 @@ class Face(Domain, generated.Face):
         -------
         - Integer
         """
-        return self._geo.domain_size.face_count
+        return self._geo.domain_size().face_count
 
 # ====================================================================================================
 # Edge Domain
@@ -91,7 +91,7 @@ class Edge(Domain, generated.Edge):
         -------
         - Integer
         """
-        return self._geo.domain_size.edge_count
+        return self._geo.domain_size().edge_count
 
     # ----- To face groups
 
@@ -122,7 +122,7 @@ class Corner(Domain, generated.Corner):
         -------
         - Integer
         """
-        return self._geo.domain_size.face_corner_count
+        return self._geo.domain_size().face_corner_count
 
 # ====================================================================================================
 # Spline Domain
@@ -145,7 +145,7 @@ class Spline(Domain, generated.Spline):
         -------
         - Integer
         """
-        return self._geo.domain_size.spline_count
+        return self._geo.domain_size().spline_count
 
 # ====================================================================================================
 # Layer Domain
@@ -165,7 +165,7 @@ class Layer(Domain, generated.Layer):
         -------
         - Integer
         """
-        return self._geo.domain_size.layer_count
+        return self._geo.domain_size().layer_count
 
 # ====================================================================================================
 # Instance Domain
@@ -190,7 +190,7 @@ class Instance(Domain, generated.Instance):
         -------
         - Integer
         """
-        return self._geo.domain_size.instance_count
+        return self._geo.domain_size().instance_count
 
     # ====================================================================================================
     # Properties

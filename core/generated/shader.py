@@ -336,7 +336,6 @@ class Shader(Socket):
         return cls(node._out)
 
     @classmethod
-    @property
     def Holdout(cls):
         """ > Constructor <&ShaderNode Holdout>
 

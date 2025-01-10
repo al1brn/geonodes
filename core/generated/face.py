@@ -388,9 +388,8 @@ class Face(Socket):
         return node._out
 
     @classmethod
-    @property
     def neighbors(cls):
-        """ > Property Get <&Node Face Neighbors>
+        """ > Class Method <&Node Face Neighbors>
 
         Returns
         -------

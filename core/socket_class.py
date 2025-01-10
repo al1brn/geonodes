@@ -308,7 +308,12 @@ class Socket(NodeCache, PropLocker):
         - Socket
         """
         tree = Tree.current_tree
-        item = tree._interface.get_in_socket(name, panel, halt=True)
+        #item = tree._interface.get_in_socket(name, panel, halt=True)
+        if panel is None:
+            item = tree._interface.by_name('INPUT', name, as_argument=False, halt=True)
+        else:
+            item = tree._interface.by_name('INPUT', panel + ' > ' + name, as_argument = False, halt=True)
+
         return cls(tree.input_node[item.identifier])
 
 
@@ -569,11 +574,11 @@ class Socket(NodeCache, PropLocker):
         # - It doesn't already exist
         # - The tree is not a group
 
-        if self.SOCKET_TYPE == 'GEOMETRY':
-            tree = Tree.current_tree
-            if not(tree._interface.has_out_geometry or tree._is_group):
-                tree.set_output_geometry(self, name)
-                return
+        #if self.SOCKET_TYPE == 'GEOMETRY':
+        #    tree = Tree.current_tree
+        #    if not(tree._interface.has_out_geometry or tree._is_group):
+        #        tree.set_output_geometry(self, name)
+        #        return
 
         # ----------------------------------------------------------------------------------------------------
         # New output socket
@@ -661,7 +666,8 @@ class Socket(NodeCache, PropLocker):
             hide_in_modifier        = hide_in_modifier,
             force_non_field         = single_value)
 
-        node.plug_value_into_socket(menu_socket, node.in_socket('Menu'))
+        #node.plug_value_into_socket(menu_socket, node.in_socket('Menu'))
+        node["Menu"] = menu_socket
         Tree.current_tree.set_input_socket_default(menu_socket, menu)
 
         # Done
@@ -717,11 +723,14 @@ class Socket(NodeCache, PropLocker):
 
             # ----- Plug the value
 
-            node.plug_value_into_socket(item, node.in_socket(1 + i))
+            #node.plug_value_into_socket(item, node.in_socket(1 + i))
+            print("INDEX SWITCH", 1+i, '<-', item)
+            node[1 + i] = item
 
         # ----- Plug the index
 
-        node.plug_value_into_socket(index, node.in_socket('Index'))
+        #node.plug_value_into_socket(index, node.in_socket('Index'))
+        node["Index"] = index
 
         # ----- Done
 

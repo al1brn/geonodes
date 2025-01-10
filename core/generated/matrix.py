@@ -85,9 +85,8 @@ class Matrix(Socket):
         node = Node('Invert Matrix', sockets={'Matrix': self})
         return node._out
 
-    @property
     def determinant(self):
-        """ > Property Get <&Node Matrix Determinant>
+        """ > Method <&Node Matrix Determinant>
 
         Information
         -----------
@@ -151,9 +150,8 @@ class Matrix(Socket):
         node = self._cache('Separate Matrix', sockets={'Matrix': self})
         return (node.column_1_row_1, node.column_1_row_2, node.column_1_row_3, node.column_1_row_4, node.column_2_row_1, node.column_2_row_2, node.column_2_row_3, node.column_2_row_4, node.column_3_row_1, node.column_3_row_2, node.column_3_row_3, node.column_3_row_4, node.column_4_row_1, node.column_4_row_2, node.column_4_row_3, node.column_4_row_4)
 
-    @property
     def separate_matrix(self):
-        """ > Property Get <&Node Separate Matrix>
+        """ > Method <&Node Separate Matrix>
 
         Information
         -----------
@@ -421,9 +419,8 @@ class Matrix(Socket):
         node = Node('Separate Transform', sockets={'Transform': self})
         return (node.translation, node.rotation, node.scale)
 
-    @property
     def separate_transform(self):
-        """ > Property Get <&Node Separate Transform>
+        """ > Method <&Node Separate Transform>
 
         Information
         -----------
@@ -517,9 +514,8 @@ class Matrix(Socket):
         node = Node('Transform Point', sockets={'Vector': vector, 'Transform': self})
         return node._out
 
-    @property
     def transpose(self):
-        """ > Property Get <&Node Transpose Matrix>
+        """ > Method <&Node Transpose Matrix>
 
         Information
         -----------

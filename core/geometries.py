@@ -30,7 +30,7 @@ from . import utils
 from .treeclass import Tree, Node, Layout
 from .socket_class import NodeCache, Socket
 from .geometry_class import Geometry
-from .domains import Vertex, Edge, Face, Corner, SplinePoint, Spline, CloudPoint, Instance
+from .domains import Vertex, Edge, Face, Corner, SplinePoint, Spline, CloudPoint, Instance, Layer
 
 from . import generated
 

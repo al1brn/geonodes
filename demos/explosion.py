@@ -64,7 +64,7 @@ def demo():
 
         with Simulation(cloud=cloud, speed=speed) as sim:
 
-            sim.skip = nd.scene_time.frame.less_than(frame0)
+            sim.skip = nd.scene_time().frame.less_than(frame0)
 
             dt = sim.delta_time
 
@@ -72,10 +72,10 @@ def demo():
                 old_speed = sim.cloud.points.capture(sim.speed)
 
                 with Layout("Viscosity"):
-                    speed_norm = old_speed.length
+                    speed_norm = old_speed.length()
                     force = vis_fac*speed_norm**vis_exp
                     force = gnmath.min(force, speed_norm/dt)
-                    viscosity = old_speed.normalize.scale(-force*dt)
+                    viscosity = old_speed.normalize().scale(-force*dt)
 
                 acc = (gravity + viscosity._lc("Viscostiy"))._lc("Acceleration")
 
@@ -158,4 +158,4 @@ def demo():
             insts.insts.rotation = cloud.points.sample_index(Vector("Rotation"), nd.index)
 
         with Layout("Final geometry"):
-            insts.switch(nd.scene_time.frame.less_than(frame0), Mesh()).out('Geometry')
+            insts.switch(nd.scene_time().frame.less_than(frame0), Mesh()).out('Geometry')

@@ -413,11 +413,11 @@ def demo():
 
         with Layout("Box"):
 
-            bbox = wheels.bounding_box
+            bbox = wheels.bounding_box()
             center = (bbox.min_ + bbox.max_).scale(-.5)
             wheels = wheels.transform(translation=center)
 
-            bbox = wheels.bounding_box
+            bbox = wheels.bounding_box()
             ext_box = Mesh.Cube(size=bbox.max_.scale(2) + (.1, .5, .11))
             ext_box = ext_box.transform(translation=(0, .2, 0))
 

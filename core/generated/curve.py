@@ -5,9 +5,8 @@ from .. scripterror import NodeError
 
 class Curve(Socket):
 
-    @property
     def domain_size(self):
-        """ > Property Get <&Node Domain Size>
+        """ > Method <&Node Domain Size>
 
         Information
         -----------
@@ -123,9 +122,8 @@ class Curve(Socket):
         node = Node('Handle Type Selection', sockets={}, handle_type=handle_type, mode=mode)
         return node._out
 
-    @property
     def length(self):
-        """ > Property Get <&Node Curve Length>
+        """ > Method <&Node Curve Length>
 
         Information
         -----------

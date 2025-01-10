@@ -501,7 +501,6 @@ class snd(Socket):
         return node._out
 
     @classmethod
-    @property
     def camera_data(cls):
         """ > Node <&ShaderNode Camera Data>
 
@@ -689,7 +688,6 @@ class snd(Socket):
         return node._out
 
     @classmethod
-    @property
     def curves_info(cls):
         """ > Node <&ShaderNode Curves Info>
 
@@ -783,7 +781,6 @@ class snd(Socket):
         return node._out
 
     @classmethod
-    @property
     def light_path(cls):
         """ > Node <&ShaderNode Light Path>
 
@@ -907,7 +904,6 @@ class snd(Socket):
         return node._out
 
     @classmethod
-    @property
     def geometry(cls):
         """ > Node <&ShaderNode Geometry>
 
@@ -952,7 +948,6 @@ class snd(Socket):
         return node._out
 
     @classmethod
-    @property
     def object_info(cls):
         """ > Node <&ShaderNode Object Info>
 
@@ -1059,7 +1054,6 @@ class snd(Socket):
         return node._out
 
     @classmethod
-    @property
     def particle_info(cls):
         """ > Node <&ShaderNode Particle Info>
 
@@ -1071,7 +1065,6 @@ class snd(Socket):
         return node
 
     @classmethod
-    @property
     def point_info(cls):
         """ > Node <&ShaderNode Point Info>
 
@@ -1735,7 +1728,6 @@ class snd(Socket):
         return node._out
 
     @classmethod
-    @property
     def volume_info(cls):
         """ > Node <&ShaderNode Volume Info>
 

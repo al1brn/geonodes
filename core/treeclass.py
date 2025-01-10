@@ -172,7 +172,6 @@ class Panel:
 
     def push(self):
         self.tree._panels.append(self.name)
-        self.tree._interface.create_panel(self.name)
 
     def pop(self):
         self.tree._panels.pop()
@@ -280,10 +279,9 @@ class Tree:
 
         # ----- Management lists
 
-        self._nodes   = []
-        self._keeps   = {}
-        self._layouts = []
-        self._panels  = []
+        self._nodes     = [] # List of nodes
+        self._layouts   = [] # Stack of layouts
+        self._panels    = [] # Stack of panels
 
         # ----- Named attributes
 
@@ -293,6 +291,13 @@ class Tree:
 
         if clear:
             self.clear()
+
+        # ----- Interface
+
+        self._interface = None
+        if self._is_group or tree_type == 'GeometryNodeTree':
+            self._interface = TreeInterface(self._btree)
+            self._interface.set_tip_delete()
 
         # ----- Random generator for random colors
 
@@ -456,17 +461,9 @@ class Tree:
         """
 
         to_clear = []
-        self._keeps.clear()
         self._nodes.clear()
-        for bnode in self._btree.nodes:
-            if bnode.label is not None and bnode.label[:4] == 'KEEP':
-                self._keeps[bnode.bl_idname + '-' + bnode.label[5:]] = bnode
-            else:
-                to_clear.append(bnode)
-
         self._btree.links.clear()
-        for bnode in to_clear:
-            self._btree.nodes.remove(bnode)
+        self._btree.nodes.clear()
 
     def register_node(self, node):
         self._nodes.append(node)
@@ -491,7 +488,7 @@ class Tree:
         Tree.STACK.append(self)
         self._start_time = time()
 
-    def pop(self):
+    def pop(self, clean=True):
         """ > Remove this tree from the stack
 
         > [!IMPORTANT]
@@ -509,11 +506,18 @@ class Tree:
         ```
         """
 
-        # ----- Remove and arrange
+        # ----- Remove from stack
 
         tree = Tree.STACK.pop()
         if tree != self:
             raise NodeError(f"Error in tree stack management")
+
+        # ----- Clean the interface
+
+        if clean and tree._interface is not None:
+            tree._interface.clear(False)
+
+        # ----- Arrange
 
         self.arrange()
 
@@ -536,7 +540,12 @@ class Tree:
 
     def __exit__(self, type, exc_value, traceback):
 
-        self.pop()
+        # In case of error, the sockets are not cleaned
+
+        is_break = isinstance(exc_value, Break)
+        clean = is_break or (exc_value is None)
+
+        self.pop(clean=clean)
 
         if isinstance(exc_value, Break):
             return True
@@ -602,8 +611,6 @@ class Tree:
         elif isinstance(name, str):
             if name in ['OP', 'OPERATION']:
                 return (.406, .541, .608)
-            elif name == 'KEEP':
-                return (.324, .147, .159)
             elif name == 'MACRO':
                 return (.261, .963, .409)
             elif name == 'AUTO_GEN':
@@ -709,59 +716,10 @@ class Tree:
 
         return {key: bsocket for key, bsocket in zip(utils.ensure_uniques(keys, single_digit=True), socks)}
 
-
-    # ----------------------------------------------------------------------------------------------------
-    # Check if an interface socket exists
-
-    """
-    def io_socket_exists(self, bl_idname, in_out='INPUT', name=None):
-
-        for item in self._btree.interface.items_tree:
-            if item.item_type != 'SOCKET' or item.in_out != in_out or item.socket_type != bl_idname:
-                continue
-            if name is None or (item.name == name) or (item.identifier == name):
-                return item
-
-        return None
-    """
-
-    # ----------------------------------------------------------------------------------------------------
-    # First socket type
-
-    """
-    def first_io_socket_is_geometry(self, in_out='INPUT'):
-
-        for item in self._btree.interface.items_tree:
-            if item.item_type != 'SOCKET' or item.in_out != in_out:
-                continue
-            return item.socket_type == 'NodeSocketGeometry'
-
-        return False
-    """
-
-    # ----------------------------------------------------------------------------------------------------
-    # Create an new interface socket
-
-    """
-    def new_io_socket(self, bl_idname, in_out, name):
-        return self._btree.interface.new_socket(name=name, in_out=in_out, socket_type=bl_idname)
-    """
-
-    # --------------------------------------------------------------------------------
-    # Clear interface
-
-    """
-    def clear_io_sockets(self):
-        self._btree.interface.clear()
-    """
-
     # --------------------------------------------------------------------------------
     # Set the default value of an input socket
 
     def set_input_socket_default(self, socket, value=None):
-
-        #self._interface.set_default_value(socket.identifier, value=value, update_socket=True)
-        #return
 
         if value is None:
             return
@@ -773,12 +731,9 @@ class Tree:
         try:
             bsocket.default_value = value
         except:
-            #return
             pass
 
-        #io_socket = self.io_socket_exists(bsocket.bl_idname, in_out='INPUT', name=bsocket.identifier)
-
-        io_socket = self._interface.get_in_socket(bsocket.name, halt=False)
+        io_socket = self._interface.by_identifier(bsocket.identifier)
         if io_socket is None:
             return
 
@@ -823,25 +778,19 @@ class Tree:
         if panel is None:
             panel = tree.current_panel
 
-        full_name = utils.snake_case(panel + '_' + name)
-        currents = tree.get_socket_names(input_node._bnode.outputs, bl_idname)
-
-        if full_name in currents:
-            out_socket = currents[full_name]
-            i_socket = tree._interface.by_identifier(out_socket.identifier)
-            set_value = False
-
-        else:
-            i_socket = tree._interface.create_in_socket(name, socket_type=bl_idname, panel=panel)
-            out_socket = input_node[i_socket.identifier]
-            set_value = True
+        i_socket, set_value = tree._interface.get_create_socket('INPUT', name, bl_idname, panel)
+        out_socket = input_node[i_socket.identifier]
 
         # ----------------------------------------------------------------------------------------------------
         # Properties
 
         for prop_name, prop_value in props.items():
             if prop_value is None:
-                continue
+                if prop_name == 'description':
+                    prop_value = ""
+                else:
+                    continue
+
             try:
                 setattr(i_socket, prop_name, prop_value)
 
@@ -907,18 +856,10 @@ class Tree:
         if panel is None:
             panel = self.current_panel
 
-        full_name = utils.snake_case(panel + '_' + name)
-        currents = self.get_socket_names(output_node._bnode.inputs, bl_idname)
-
-        if full_name in currents:
-            in_socket = currents[full_name]
-            io_socket = self._interface.by_identifier(in_socket.identifier)
-
-        else:
-            socket_type, subtype = constants.SOCKET_SUBTYPES[bl_idname]
-            io_socket = self._interface.create_out_socket(name, socket_type=socket_type, panel=panel)
-            if subtype is not None and 'subtype' not in props:
-                io_socket.subtype = subtype
+        socket_type, subtype = constants.SOCKET_SUBTYPES[bl_idname]
+        io_socket, created = self._interface.get_create_socket('OUTPUT', name, socket_type, panel=panel)
+        if subtype is not None and 'subtype' not in props:
+            io_socket.subtype = subtype
 
         # ----- Set the socket interface properties
 
@@ -975,14 +916,6 @@ class Tree:
             if panel is None:
                 panel = i_source.parent.name
 
-        if bl_idname == 'NodeSocketMenu':
-            print("D"*100)
-            print("DEBUG", bl_idname, i_source)
-            for k in dir(i_source):
-                print(k, getattr(i_source, k))
-            print()
-            print("E"*100)
-
         # ----------------------------------------------------------------------------------------------------
         # Create the new socket and link it
 
@@ -997,11 +930,124 @@ class Tree:
         if i_source is not None:
             for prop_name in constants.INTERFACE_SOCKET_PROPERTIES:
                 prop_value = getattr(i_source, prop_name, None)
-                print("DEBUG INPUT FROM INPUT", prop_name, '=', prop_value)
                 if prop_value is not None:
                     setattr(i_target, prop_name, prop_value)
 
         return socket
+
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Plug another node into self
+    # If the other node is None, the Tree input node is taken
+    # Create is only valid in this case
+
+    def link_nodes(self, from_node, to_node, include=None, exclude=[], create=True, panel=None):
+        """ Link two nodes
+
+        If from_node is a Group Input node, the necessary sockets can be created if 'create' argument is True.
+
+        Arguments
+        ---------
+        - from_node : the node to get the outputs from
+        - to_node : the node to plug into
+        - include (list = None) : connect only the sockets in the list
+        - exclude (list = []) : exclude sockets in this list
+        - create : create the output sockets in from_node if it is a 'Group Input Node'
+        - panel : panel name to create, use tree default name if None
+        """
+
+        # ----------------------------------------------------------------------------------------------------
+        # From Node
+
+        create = create and from_node._bnode.bl_idname == 'NodeGroupInput'
+        from_interface = None
+        if create:
+            from_interface = from_node._tree._interface
+
+        # ----------------------------------------------------------------------------------------------------
+        # Sockets to plug by their name and arg name
+
+        arg_sockets   = to_node.get_socket_names('INPUT', only_enabled=True, as_argument=True)
+        named_sockets = to_node.get_socket_names('INPUT', only_enabled=True, as_argument=False)
+
+        # ----------------------------------------------------------------------------------------------------
+        # Normalize arguments
+
+        if isinstance(include, (str, int)):
+            include = [include]
+        if isinstance(exclude, (str, int)):
+            exclude = [exclude]
+
+        include_ids = None
+        if include is not None:
+            include_ids = []
+            for name in include:
+                socket = to_node.by_name('INPUT', name, as_argument=True, halt=False)
+                if socket is None:
+                    socket = to_node.by_name('INPUT', name, as_argument=False, halt=False)
+                if socket is None:
+                    raise NodeError(f"Tree.link_nodes: '{name}' is not an input socket of <to node> '{to_node._bnode.name}'", valids=to_node.valids('INPUT', as_argument=False))
+                include_ids.append(socket.identifier)
+
+        exclude_ids = []
+        for name in exclude:
+            socket = to_node.by_name('INPUT', name, as_argument=True, halt=False)
+            if socket is None:
+                socket = to_node.by_name('INPUT', name, as_argument=False, halt=False)
+            if socket is None:
+                raise NodeError(f"Tree.link_nodes: '{name}' is not an input socket of <to node> '{to_node._bnode.name}'", valids=to_node.valids('INPUT', as_argument=False))
+            exclude_ids.append(socket.identifier)
+
+        # ----------------------------------------------------------------------------------------------------
+        # Loop on the input sockets of to_node
+        #
+        # The sockets can be identified by their name, identifier or arg name
+
+        for full_name, in_socket in named_sockets.items():
+
+            # ----------------------------------------------------------------------------------------------------
+            # Already linked
+
+            if in_socket.type == 'CUSTOM' or in_socket.is_linked:
+                continue
+
+            # ----------------------------------------------------------------------------------------------------
+            # Exclusions
+
+            if include_ids is not None and (in_socket.identifier not in include_ids):
+                continue
+
+            if in_socket.identifier in exclude_ids:
+                continue
+
+            # ----------------------------------------------------------------------------------------------------
+            # Panel name and socket name
+
+            parts = full_name.split('>')
+            if len(parts) == 2:
+                panel_name = parts[0].strip()
+                socket_name = parts[1].strip()
+            else:
+                panel_name = ""
+                socket_name = full_name
+
+            # ----------------------------------------------------------------------------------------------------
+            # Look for an output socket of from node with the same full name
+
+            # No tree interface, we just use the socket name
+            if from_interface is None:
+                out_socket = from_node.by_name('INPUT', socket_name, as_argument=False, halt=False)
+
+            # Tree interface : we use the full name
+            else:
+                out_socket = from_node.by_name('INPUT', full_name, as_argument=False, halt=False)
+
+            # If it doesn't exist, we can create it
+            if out_socket is None and create:
+                out_socket = self.new_input_from_input_socket(in_socket, panel=panel)
+
+            # We link
+            if out_socket is not None:
+                self.link(out_socket, in_socket)
 
     # =============================================================================================================================
     # Create a node which contains a python value
@@ -1058,7 +1104,7 @@ class Tree:
 # Node
 
 class Node:
-    def __init__(self, node_name, sockets={}, _items={}, link_from=None, _keep=None, **parameters):
+    def __init__(self, node_name, sockets={}, _items={}, link_from=None, **parameters):
         """ Node wrapper.
 
         The node wrapper exposes input and output sockets and the node parameters.
@@ -1162,32 +1208,11 @@ class Node:
 
         bl_idname = utils.get_node_bl_idname(node_name, tree_type)
 
-        # ----------------------------------------------------------------------------------------------------
-        # Node keeping
+        # ----- Node Creation
 
-        keeped_node = None
-        if _keep is not None:
-            keep_key = bl_idname + '-' + _keep
-            keeped_node = self._tree._keeps.get(keep_key)
-            self._tree._keeps[keep_key] = None
-
-        # ----- We create it or reuse it
-
-        if keeped_node is None:
-            self._bnode = btree.nodes.new(type=bl_idname)
-            self._bnode.select = False
-        else:
-            self._bnode = keeped_node
-
-        # ----- Check the context
-
+        self._bnode = btree.nodes.new(type=bl_idname)
+        self._bnode.select = False
         self._tree.check_node_validity(self._bnode)
-
-        # ----- Let's keep it for next time
-
-        if _keep is not None:
-            self._label = "KEEP " + _keep
-            self._color = Tree._get_color('KEEP')
 
         # ----------------------------------------------------------------------------------------------------
         # Node setup
@@ -1238,6 +1263,10 @@ class Node:
         s += "\n"
 
         return s
+
+    @property
+    def _is_group_node(self):
+        return self._bnode.bl_idname in ['GeometryNodeGroup', 'ShaderNodeGroup']
 
     # ----------------------------------------------------------------------------------------------------
     # Create dynamic sockets with collection xxx_items
@@ -1352,7 +1381,8 @@ class Node:
             # ----- Plug
 
             if plug_items:
-                self.plug_value_into_socket(socket_value, self.in_socket(sck.name))
+                self[sck.name] = socket_value
+                #self.plug_value_into_socket(socket_value, self.in_socket(sck.name))
 
     # ----------------------------------------------------------------------------------------------------
     # Create a Socket from an output Blender NodeSocket
@@ -1424,12 +1454,32 @@ class Node:
                     raise type_e
 
     # ====================================================================================================
-    # Accessing the sockets by their name
+    # Accessing the sockets by their name / identifier
+
+    # ----------------------------------------------------------------------------------------------------
+    # By identifier
+
+    def by_identifier(self, in_out, identifier, halt=True):
+        if in_out == 'INPUT':
+            for bsock in self._bnode.inputs:
+                if bsock.identifier == identifier:
+                    return bsock
+
+        elif in_out == 'OUTPUT':
+            for bsock in self._bnode.outputs:
+                if bsock.identifier == identifier:
+                    return self.data_socket(bsock)
+
+        if halt:
+            raise NodeError(f"{in_out} socket with identifier '{identifier}' not found in node '{self._bnode.name}'")
+
+        return None
+
 
     # ----------------------------------------------------------------------------------------------------
     # List of socket possible names
 
-    def get_socket_names(self, bsockets: list, only_enabled: bool = True):
+    def get_socket_names(self, in_out, only_enabled=True, as_argument=True):
         """ Build the dictionary giving the possible name of each socket
 
         The possible names are:
@@ -1444,7 +1494,7 @@ class Node:
 
         Arguments
         ---------
-        - bsockets : collection of sockets
+        - in_out : str in ('INPUT', 'OUTPUT')
         - only_enabled : use only enabled sockets
 
         Returns
@@ -1452,193 +1502,90 @@ class Node:
         - dict : socket identifier -> list of possible names
         """
 
-        keys    = []
-        names   = []
-        panels  = []
+        assert(in_out in ('INPUT', 'OUTPUT'))
 
-        interf = None
-        if self._bnode.bl_idname == 'GeometryNodeGroup': #in ['NodeGroupInput', 'NodeGroupOutput']:
-            interf = TreeInterface(self._bnode.node_tree)
+        # ----- Via TreeInterface if group node to take panels into account
 
-        for bsocket in bsockets:
-            if only_enabled and not bsocket.enabled:
+        if self._is_group_node:
+            interface = TreeInterface(self._bnode.node_tree)
+            i_sockets = interface.get_unique_names(in_out, as_argument=as_argument)
+            return {name: self.by_identifier(in_out, i_socket.identifier) for name, i_socket in i_sockets.items()}
+
+        # ---- Not a group
+
+        names    = []
+        bsockets = []
+
+        bsocks = self._bnode.inputs if in_out == 'INPUT' else self._bnode.outputs
+        for bsock in bsocks:
+            if bsock.type == 'CUSTOM':
+               continue
+
+            if only_enabled and not bsock.enabled:
                 continue
 
-            keys.append(bsocket.identifier)
-            names.append(bsocket.name)
+            names.append(utils.snake_case(bsock.name) if as_argument else bsock.name)
+            bsockets.append(bsock)
 
-            if interf is None:
-                panels.append('dummy')
+        names = utils.ensure_uniques(names, single_digit=True)
 
-            else:
-                i_sock = interf.by_identifier(bsocket.identifier)
-                panels.append(i_sock.parent.name + '.' + bsocket.name)
+        if in_out == 'INPUT':
+            return {name: bsocket for name, bsocket in zip(names, bsockets)}
+        else:
+            return {name: self.data_socket(bsocket) for name, bsocket in zip(names, bsockets)}
 
-        names  = utils.ensure_uniques(names, single_digit=True)
-        panels = utils.ensure_uniques(panels,single_digit=True)
+    # ----------------------------------------------------------------------------------------------------
+    # Valid names
 
-        socket_names = {}
-        for key, name, panel in zip(keys, names, panels):
-            names = [key, name, utils.snake_case(name)]
-            if interf is not None:
-                names.extend([panel, utils.snake_case(panel)])
-            socket_names[key] = names
-
-        return socket_names
+    def valid_names(self, in_out, only_enabled=True, as_argument=True):
+        return list(self.get_socket_names(in_out, only_enabled=only_enabled, as_argument=as_argument).keys())
 
     # ----------------------------------------------------------------------------------------------------
     # Get a socket by its index, identifier or name
 
-    def inout_socket(self, name: str | int, bsockets: list, halt: bool):
+    def by_name(self, in_out, name, only_enabled=True, as_argument=True, halt=True):
 
-        # ----- The name can be the index of the socket
+        sockets = self.get_socket_names(in_out, only_enabled=only_enabled, as_argument=as_argument)
 
-        counter = 0
-        ok_counter = False
-        if isinstance(name, int):
-            ok_counter = True
-            counter = name
+        socket = sockets.get(name)
 
-        # ----------------------------------------------------------------------------------------------------
-        # Let's try with the enabled sockets
+        # ----- Trying with identifier
+        if socket is None and not as_argument:
+            socket = self.by_identifier(in_out, name, halt=False)
 
-        enabled_sockets = self.get_socket_names(bsockets, only_enabled=True)
-        count = counter
-        found = None
-        for identifier, names in enabled_sockets.items():
-            if (ok_counter and count == 0) or (name in names):
-                found = identifier
-                break
-            count -= 1
+        # ----- Trying with disabled
+        if socket is None:
+            all_sockets = self.get_socket_names(in_out, only_enabled=False, as_argument=as_argument)
+            socket = all_sockets.get(name)
 
-        if found is not None:
-            for bsock in bsockets:
-                if bsock.identifier == found:
-                    return bsock
+        # ----- Error message
+        if socket is None and halt:
+            raise NodeError(f"{in_out} socket '{name}' not found in node '{self._bnode.name}'.", valids=list(sockets.keys()))
 
-        # ----------------------------------------------------------------------------------------------------
-        # Let's try with all the sockets
-
-        all_sockets = self.get_socket_names(bsockets, only_enabled=False)
-        count = counter
-        found = None
-        for identifier, names in all_sockets.items():
-            if (ok_counter and count == 0) or (name in names):
-                found = identifier
-                break
-            count -= 1
-
-        if found is None:
-            valids = [f"{sock.name}" for sock in bsockets]
-
-            if halt:
-                raise NodeError(f"Socket '{name}' not found in node '{self._bnode.name}'", keyword=name, valids=valids)
-            else:
-                return None
-
-        else:
-            print(f"CAUTION: socket '{name}' of node '{self._bnode.name}' is disabled")
-            for bsock in bsockets:
-                if bsock.identifier == found:
-                    return bsock
-
-        assert(False)
-
-
-        # OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD
-
-        disabled_bsocket = None
-        bsocket = None
-        for bsock in bsockets:
-            match = False
-            if ok_counter:
-                match = counter == 0
-            else:
-                match = name in [bsock.name, bsock.identifier, utils.snake_case(bsock.name)]
-                if not match and bsock.label is not None:
-                    match = name == utils.snake_case(bsock.label)
-
-            if match:
-                if bsock.enabled:
-                    bsocket = bsock
-                    break
-                else:
-                    disabled_bsocket = bsock
-
-            if bsock.enabled:
-                counter -= 1
-
-        if bsocket is None:
-            if not ok_counter:
-                bsocket = disabled_bsocket
-
-        if halt and bsocket is None:
-            valids = [f"{sock.name}" for sock in bsockets]
-            if disabled_bsocket is None:
-                raise NodeError(f"Socket name '{name}' not found in node '{self._bnode.name}' ({self._bnode.bl_idname})", keyword=name, valids=valids)
-            else:
-                raise NodeError(f"Socket name '{name}' is disabled in node '{self._bnode.name}' ({self._bnode.bl_idname})", keyword=name, valids=valids)
-
-        return bsocket
-
-    def in_socket(self, name, halt=True):
-        return self.inout_socket(name, self._bnode.inputs, halt=halt)
-
-    def out_socket(self, name, halt=True):
-        sock = self.inout_socket(name, self._bnode.outputs, halt=halt)
-        if sock is None:
-            return None
-        else:
-            return self.data_socket(sock)
-
-    # ----------------------------------------------------------------------------------------------------
-    # Set the node sockets
-
-    def set_input_sockets(self, sockets={}):
-
-        # ----- Sockets is a list --> let's transform into a dict
-
-        if isinstance(sockets, list):
-            sockets = {i: value for i, value in enumerate(sockets)}
-
-        for socket_name, socket_value in sockets.items():
-
-            if socket_value is None:
-                continue
-
-            in_socket = self.in_socket(socket_name)
-            self.plug_value_into_socket(socket_value, in_socket)
-
-    # ----------------------------------------------------------------------------------------------------
-    # Set an input socket and Get an output socket
-
-    def __getitem__(self, name):
-        return self.out_socket(name)
-
-    def __setitem__(self, name, value):
-        self.plug_value_into_socket(value, self.in_socket(name))
-
-    @property
-    def _out(self):
-        """ Returns the first enabled output socket.
-
-        Returns
-        -------
-        - Socket : first enabled output socket
-        """
-        for bsock in self._bnode.outputs:
-            if bsock.enabled and bsock.type != 'CUSTOM':
-                return self.data_socket(bsock)
-        return None
+        # ----- What we have
+        return socket
 
     # ====================================================================================================
-    # Plug the output nodes
+    # Set an input socket and get an output socket
 
-    def out(self):
-        for bsock in self._bnode.outputs:
-            if bsock.enabled and bsock.type != 'CUSTOM':
-                self.data_socket(bsock).out(bsock.name)
-        return None
+    def __getitem__(self, name):
+        if isinstance(name, int):
+            sockets = self.get_socket_names('OUTPUT')
+            key = list(sockets.keys())[name]
+            return sockets[key]
+        else:
+            return self.by_name('OUTPUT', name, as_argument=False)
+        #return self.out_socket(name)
+
+    def __setitem__(self, name, value):
+        if isinstance(name, int):
+            sockets = self.get_socket_names('INPUT')
+            key = list(sockets.keys())[name]
+            self.plug_value_into_socket(value, sockets[key])
+        else:
+            bsocket = self.by_name('INPUT', name, as_argument=False)
+            self.plug_value_into_socket(value, bsocket)
+            #self.plug_value_into_socket(value, self.in_socket(name))
 
     # ====================================================================================================
     # Read a node attribute : it is an output socket
@@ -1651,30 +1598,36 @@ class Node:
 
             sbnode = f"'{self._bnode.name}'"
 
-            # The name can refer to an output socket
-            out_socket = self.out_socket(name, halt=False)
+            # ----------------------------------------------------------------------------------------------------
+            # The name of an output socket
 
-            # Try with '_' suffix syntax
-            if out_socket is None and len(name) > 1 and name[-1] == '_' and name[-2] != '_':
-                out_socket = self.out_socket(name[:-1], halt=False)
-
-            if out_socket is None:
-
-                node_name = self.__dict__['_bnode'].name
-
-                # Nope : this is not an output socket
-                # Perhaps a confusion with the default output socket
-                def_out = self._out
-                if def_out is not None and name in dir(def_out):
-                    print(f"CAUTION: the node '{node_name}' has no attribute '{name}', use socket '{utils.snake_case(def_out._bsocket.name)}' or '_out' instead")
-                    return getattr(def_out, name)
-
-                # No more hope: let's raise the error
-                _ = self.out_socket(name)
-
-            else:
-                # OK : it is an output socket
+            out_socket = self.by_name('OUTPUT', name, as_argument=True, halt=False)
+            if out_socket is not None:
                 return out_socket
+
+            # ----------------------------------------------------------------------------------------------------
+            # Peer socket
+
+            if len(name) > 1 and name[-1] == '_' and name[-2] != '_':
+                out_socket = self.by_name('OUTPUT', name[:-1], as_argument=True, halt=False)
+                #out_socket = self.out_socket(name[:-1], halt=False)
+                if out_socket is not None:
+                    return out_socket
+
+            # ----------------------------------------------------------------------------------------------------
+            # Perhaps a confusion with default output socket
+
+            def_out = self._out
+            if def_out is not None and name in dir(def_out):
+                node_name = self.__dict__['_bnode'].name
+                print(f"CAUTION: the node '{node_name}' has no attribute '{name}', use socket '{utils.snake_case(def_out._bsocket.name)}' or '_out' instead")
+                return getattr(def_out, name)
+
+            # ----------------------------------------------------------------------------------------------------
+            # No more hope: let's raise the error
+
+            _ = self.by_name('OUTPUT', name, as_argument=True, halt=True)
+
 
         #raise AttributeError(f"Node parameter '{name}' not found.")
         raise NodeError(f"Attribute '{name}' of node '{sbnode}' is not found.", keyword=name)
@@ -1698,13 +1651,71 @@ class Node:
 
             # ---- Link input node
 
-            in_socket = self.in_socket(name)
-            if in_socket is not None:
-                self.plug_value_into_socket(value, in_socket)
+            #in_socket = self.in_socket(name)
+            bsocket = self.by_name('INPUT', name, only_enabled=True, as_argument=True, halt=False)
+            if bsocket is not None:
+                self.plug_value_into_socket(value, bsocket)
                 return
 
         #raise AttributeError(f"Node parameter '{name}' not found in '{sbnode}'.")
-        raise NodeError(f"Node parameter '{name}' not found in '{sbnode}'.", keyword=name)
+        raise NodeError(f"Node parameter or input socket '{name}' not found in '{sbnode}'.", keyword=name)
+
+    def in_socket_OLD(self, name, halt=True):
+        return self.inout_socket(name, self._bnode.inputs, halt=halt)
+
+    def out_socket_OLD(self, name, halt=True):
+        sock = self.inout_socket(name, self._bnode.outputs, halt=halt)
+        if sock is None:
+            return None
+        else:
+            return self.data_socket(sock)
+
+    # ----------------------------------------------------------------------------------------------------
+    # Set the node sockets
+
+    def set_input_sockets(self, sockets={}):
+
+        # ----- Sockets is a list : very simple
+
+        if isinstance(sockets, list):
+            for index, value in enumerate(sockets):
+                self.plug_value_into_socket(value, self._bnode.inputs[index])
+            return
+
+        # ----- Sockets is a dict
+
+        for socket_name, socket_value in sockets.items():
+
+            if socket_value is None:
+                continue
+
+            self[socket_name] = socket_value
+
+    # =============================================================================================================================
+    # Returns the first enabled output socket
+
+    @property
+    def _out(self):
+        """ Returns the first enabled output socket.
+
+        Returns
+        -------
+        - Socket : first enabled output socket
+        """
+        for bsock in self._bnode.outputs:
+            if bsock.enabled and bsock.type != 'CUSTOM':
+                return self.data_socket(bsock)
+        return None
+
+    # ====================================================================================================
+    # Plug the output nodes
+
+    def out(self):
+        for bsock in self._bnode.outputs:
+            if bsock.enabled and bsock.type != 'CUSTOM':
+                self.data_socket(bsock).out(bsock.name)
+        return None
+
 
     # =============================================================================================================================
     # Create a node from a value with an output socket matching the target
@@ -1787,7 +1798,7 @@ class Node:
         # in_socket is defined by its name or index
 
         if isinstance(in_socket, (str, int)):
-            in_socket = self.in_socket(in_socket)
+            in_socket = self.by_name('INPUT', in_socket)
 
         # ----------------------------------------------------------------------------------------------------
         # In socket is multi input and value is a list
@@ -1893,40 +1904,6 @@ class Node:
                 return
 
     # -----------------------------------------------------------------------------------------------------------------------------
-    # Transform a list of socket keys (name or index or identifier) in a list of identifier
-
-    def socket_keys_to_identifiers(self, names, use_inputs=True):
-
-        if names is None:
-            return None
-
-        if len(names) == 0:
-            return names
-
-        bsockets = self._bnode.inputs if use_inputs else self._bnode.outputs
-        transcode = {}
-        remain = [key for key in names]
-
-        for i, bsocket in enumerate(bsockets):
-            ok = False
-            for k in (i, bsocket.identifier, bsocket.name):
-                if k in remain:
-                    transcode[k] = bsocket.identifier
-                    del remain[remain.index(k)]
-                    ok = True
-                if ok:
-                    break
-
-        if len(remain):
-            raise NodeError(f"Socket name or identifier error: no socket named {remain} in node '{self._bnode.name}'",
-                valids=[bsock.identifier for bsock in bsockets])
-
-        if isinstance(names, list):
-            return list(transcode.values())
-        else:
-            return {transcode[key]: value for key, value in names.items()}
-
-    # -----------------------------------------------------------------------------------------------------------------------------
     # Plug another node into self
     # If the other node is None, the Tree input node is taken
     # Create is only valid in this case
@@ -1937,7 +1914,7 @@ class Node:
             exclude:   list[str] | str = [],
             rename:    dict[str: str] = {},
             arguments: dict['name': 'value'] = {},
-            create:    bool =True,
+            create:    bool = True,
             panel:     str | None = None):
         """ Plug the output sockets of a node into the input sockets of the node.
 
@@ -1996,7 +1973,7 @@ class Node:
         - include : connects only the sockets in the list
         - exclude : exclude sockets in this list
         - rename : rename the sockets to the given names
-        - arguments : arguments used at initialization time. Arguments which are defined in the liste are ignored
+        - arguments : arguments used at initialization time. Arguments which are defined in the list are ignored
         - create : create the output sockets in node if it is a 'Group Input Node'
         - panel : panel name to create, use tree default name if None
 
@@ -2016,101 +1993,15 @@ class Node:
         if (node == tree) or (str(node).upper() == 'TREE'):
             node = tree.input_node
 
-        create = create and node._bnode.bl_idname == 'NodeGroupInput'
+        exclude = []
+        for arg, value in arguments.items():
+            if value is not None:
+                exclude.append(arg)
 
-        is_node_group = self._bnode.bl_idname == 'GeometryNodeGroup'
-
-        # Tree interface of self as Group
-        group_interface = None
-        if is_node_group:
-            group_interface = TreeInterface(self._bnode.node_tree)
-
-        if False:
-            print("LINK INPUT FROM", tree)
-            print(" - node   ", node)
-            print(" - include", include)
-            print(" - exclude", exclude)
-            print(" - rename ", rename)
-            print(" - args   ", arguments)
-            print(" - create ", create)
-
-        # ----------------------------------------------------------------------------------------------------
-        # Make sure we have the sockets identifiers
-
-        if isinstance(include, (str, int)):
-            include = [include]
-        if isinstance(exclude, (str, int)):
-            exclude = [exclude]
-
-        include = self.socket_keys_to_identifiers(include)
-        exclude = self.socket_keys_to_identifiers(exclude)
-        rename  = self.socket_keys_to_identifiers(rename)
-
-        # ----------------------------------------------------------------------------------------------------
-        # Loop on the input sockets of self
-
-        for in_socket in self._bnode.inputs:
-
-            if in_socket.type == 'CUSTOM':
-                continue
-
-            # ----- Already linked
-
-            if in_socket.is_linked:
-                continue
-
-            # ----- In the arguments list
-
-            val = None
-            socket_name = in_socket.name
-            pyname = utils.snake_case(socket_name)
-            if socket_name in arguments.keys():
-                val = arguments[socket_name]
-            elif pyname in arguments:
-                val = arguments[pyname]
-            if val is not None:
-                continue
-
-            # ----- Socket name can be renamed
-
-            identifier = in_socket.identifier
-            if identifier in rename.keys():
-                out_name = rename[identifier]
-            else:
-                out_name = in_socket.name
-
-            # ----- Look for an output socket of same name and type
-
-            out_socket = None
-            for out_sock in node._bnode.outputs:
-                if out_sock.name == out_name and out_sock.type == in_socket.type:
-                    out_socket = out_sock
-                    break
-            if out_socket is None and not create:
-                continue
-
-            # ----- Must be in the sockets to include
-
-            if include is not None and identifier not in include:
-                if identifier not in rename.keys():
-                    continue
-
-            # ----- Must not be in the sockets to exclude
-
-            if identifier in exclude:
-                continue
-
-            # ----------------------------------------------------------------------------------------------------
-            # If the out_socket doesn't exist we create it (link is done i)
-            # Otherwise we simply link
-
-            if out_socket is None:
-                # Note that link is done in new_input_from_input_socket
-                out_socket = Tree.new_input_from_input_socket(in_socket, name=out_name)
-            else:
-                tree.link(out_socket, in_socket)
+        tree.link_nodes(from_node=node, to_node=self, include=include, exclude=exclude, create=create, panel=panel)
 
         return self
+
 
     # =============================================================================================================================
     # Color and label
@@ -2225,6 +2116,41 @@ class Group(Node):
             else:
                 self.link_from(link_from, arguments={**sockets, **kwargs})
 
+    # ====================================================================================================
+    # Sockets by their name
+
+    def in_socket_OLD(self, name, halt=True):
+
+        interf = TreeInterface(self._bnode.node_tree)
+
+        i_socket = interf.by_name('INPUT', name, as_argument=False, halt=False)
+        if i_socket is None:
+            i_socket = interf.by_name('INPUT', name, as_argument=True, halt=halt)
+
+        if i_socket is None:
+            return None
+
+        for bsock in self._bnode.inputs:
+            if bsock.identifier == i_socket.identifier:
+                return bsock
+
+        assert(False)
+
+    def out_socket_OLD(self, name, halt=True):
+
+        interf = TreeInterface(self._bnode.node_tree)
+
+        i_socket = interf.by_name('OUTPUT', name, as_argument=False, halt=False)
+        if i_socket is None:
+            i_socket = interf.by_name('OUTPUT', name, as_argument=True, halt=halt)
+
+        if i_socket is None:
+            return None
+
+        for bsock in self._bnode.outputs:
+            if bsock.identifier == i_socket.identifier:
+                return self.data_socket(bsock)
+
     @classmethod
     def Prefix(cls, prefix, group_name, sockets={}, **kwargs):
         """ Call a Group with a prefixed named.
@@ -2319,8 +2245,8 @@ class G:
 
         geo = G.translate_geometry(geo, (1, 0, 0), .5)
     ```
-
     """
+    VERBOSE = True
 
     @staticmethod
     def create_prefix(name):
@@ -2330,6 +2256,10 @@ class G:
             s = f"class PREFIX_{f_prefix}:\n\tname='{name}'\n\t_name='{f_prefix}'\n"
             s += f"G.{f_prefix} = PREFIX_{f_prefix}"
             exec(s)
+
+        if G.VERBOSE:
+            print(f"Prefix created: G.{f_prefix} ('{name}')")
+
         return getattr(G, f_prefix)
 
     @staticmethod
@@ -2352,7 +2282,6 @@ class G:
         if prefix is None:
             prefix = ""
 
-
         if prefix == "":
             func_name = utils.snake_case(btree.name)
             target = "G"
@@ -2365,20 +2294,15 @@ class G:
             pref = G.create_prefix(prefix)
             f_prefix = pref._name
             target = f"G.{f_prefix}"
-            """
-            f_prefix = utils.snake_case(prefix)
-            target = f"G.{f_prefix}"
-            if not hasattr(G, f_prefix):
-                s = f"class PREFIX_{f_prefix}:\n\tpass\n"
-                s += f"G.{f_prefix} = PREFIX_{f_prefix}"
-                exec(s)
-            """
             func_name = utils.snake_case(btree.name[len(prefix) + 1:])
             f_prefix += "_"
 
         # ----- Input node
 
-        sock_names = TreeInterface(btree).get_arg_names()
+        socks, homos = TreeInterface(btree).get_unique_names('INPUT', as_argument=True, include_homonyms='SEPARATE')
+
+        sock_names = list(socks.keys())
+        sock_names.extend(list(homos.keys()))
         sock_names.append('link_from')
 
         # ----- Create the function
@@ -2391,12 +2315,15 @@ class G:
         s += f"{target}.{func_name} = G_{f_prefix}{func_name}\n"
 
         # DEBUG
-        if False:
+        if True:
             print('-'*100)
             print(s)
             print('-'*100)
 
         exec(s)
+
+        if G.VERBOSE:
+            print(f"Prefix method created: {target}.{func_name}(" + ", ".join([sname for sname in sock_names if sname != 'link_from']) + ")")
 
 
     @staticmethod

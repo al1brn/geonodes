@@ -241,8 +241,11 @@ class Zone:
 
         # ----- Variables used within the with statement
 
-        self._locals = {pname: self._input.out_socket(pname) for pname in all_sockets.keys()}
-        #self._locals = {utils.snake_case(bsock.name): self._input.out_socket(bsock.name) for bsock in self._input._bnode.outputs if bsock.type != 'CUSTOM'}
+        if True:
+            sockets = self._input.get_socket_names('OUTPUT', as_argument=True)
+            self._locals = {pname: sockets[pname] for pname in all_sockets.keys()}
+        else:
+            self._locals = {pname: self._input.out_socket(pname) for pname in all_sockets.keys()}
 
         # ----- Ensure the proper sub class of geometries
 
@@ -268,8 +271,12 @@ class Zone:
         self._closed = True
 
         if self.PLUG_ON_EXIT:
-            for name, value in self._locals.items():
-                self._output.plug_value_into_socket(value, self._output.in_socket(name))
+            if True:
+                for name, value in self._locals.items():
+                    setattr(self._output, name, value)
+            else:
+                for name, value in self._locals.items():
+                    self._output.plug_value_into_socket(value, self._output.in_socket(name))
 
         if self._layout is not None:
             self._layout.pop()
@@ -281,22 +288,40 @@ class Zone:
 
         closed = self.__dict__.get('_closed')
         if closed is not None:
+
+            # ----------------------------------------------------------------------------------------------------
+            # After the zone
+
             if closed:
-                val = self._output.out_socket(name)
+
+                if True:
+                    val = getattr(self._output, name)
+                else:
+                    val = self._output.out_socket(name)
+
                 # Ensure proper geometry type
                 loc_val = self._locals.get(name)
                 if loc_val is not None and loc_val.SOCKET_TYPE == 'GEOMETRY':
                     val = type(loc_val)(val)
+
+            # ----------------------------------------------------------------------------------------------------
+            # In the zone
+
             else:
                 val = self._locals.get(name)
                 # Trying to access fixed sockets (such as 'Delta Time')
                 if val is None:
-                    val = self._input.out_socket(name)
+                    if True:
+                        print("ZONZ", name, '>>>', list(self._input.get_socket_names('OUTPUT').keys()))
+                        val = getattr(self._input, name)
+                    else:
+                        val = self._input.out_socket(name)
 
             if val is not None:
                 return val
 
-        raise NodeError(f"{self} doesn't have input socket named '{name}'.")
+        #raise NodeError(f"{self} doesn't have input socket named '{name}'.")
+        raise NodeError(f"{type(self).__name__} doesn't have input socket named '{name}'.")
 
     def __setattr__(self, name, value):
 
@@ -315,7 +340,10 @@ class Zone:
         if name in self._locals:
             self._locals[name] = value
         else:
-            self._output.plug_value_into_socket(value, name)
+            if True:
+                setattr(self._output, name, value)
+            else:
+                self._output.plug_value_into_socket(value, name)
 
 
 # ====================================================================================================

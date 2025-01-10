@@ -76,7 +76,6 @@ class GeoNodes(Tree):
         super().__init__(tree_name, tree_type='GeometryNodeTree', clear=clear, fake_user=fake_user, is_group=is_group, prefix=prefix)
 
         self._btree.is_modifier = not is_group
-        self._interface = TreeInterface(self._btree)
 
     # =============================================================================================================================
     # Tool
@@ -144,13 +143,14 @@ class GeoNodes(Tree):
     # =============================================================================================================================
     # End of construction
 
-    def pop(self):
+    def pop(self, clean=True):
 
         if self._btree.is_modifier:
             self._interface.set_in_geometry(create = False)
             self._interface.set_out_geometry()
+            _ = self.output_node
 
-        super().pop()
+        super().pop(clean=clean)
 
 
     # =============================================================================================================================

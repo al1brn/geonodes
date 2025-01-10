@@ -183,10 +183,9 @@ def CamelCase(s):
 # ----------------------------------------------------------------------------------------------------
 # Snake case version of a string
 
-def snake_case(s):
-
+def snake_case(s) -> str:
     if s == "":
-        return None
+        return ""
 
     sc = only_kw_chars(s.lower())
 
@@ -332,7 +331,16 @@ def get_socket_type(value, restrict_to=None, default=None):
             socket_type = default
 
     if socket_type is None:
-        raise NodeError(f"Socket type of value [{value}] is not valid for operation", valids=restrict_to)
+        if type(value).__name__ == 'method':
+            try:
+                fname = value.__name__
+                prop = f": '{fname}()'"
+            except:
+                fname = str(value)
+                prop = ""
+            raise NodeError(f"Socket error: trying to use method '{fname}' as value. You certainly forgot parenthesis{prop}.", keyword=fname, valids=restrict_to)
+        else:
+            raise NodeError(f"Socket error: type of value [{value}] ({type(value).__name__}) is not valid.", valids=restrict_to)
     else:
         return socket_type
 

@@ -377,9 +377,8 @@ class Spline(Socket):
         return self._domain_to_geometry
 
     @classmethod
-    @property
     def spline_length(cls):
-        """ > Property Get <&Node Spline Length>
+        """ > Class Method <&Node Spline Length>
 
         Returns
         -------
@@ -413,9 +412,8 @@ class Spline(Socket):
         return node.point_count
 
     @classmethod
-    @property
     def parameter(cls):
-        """ > Property Get <&Node Spline Parameter>
+        """ > Class Method <&Node Spline Parameter>
 
         Returns
         -------

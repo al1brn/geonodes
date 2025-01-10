@@ -108,9 +108,8 @@ class Vertex(Socket):
         return node.total
 
     @classmethod
-    @property
     def neighbors(cls):
-        """ > Property Get <&Node Vertex Neighbors>
+        """ > Class Method <&Node Vertex Neighbors>
 
         Returns
         -------

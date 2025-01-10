@@ -5,9 +5,8 @@ from .. scripterror import NodeError
 
 class Geometry(Socket):
 
-    @property
     def bounding_box(self):
-        """ > Property Get <&Node Bounding Box>
+        """ > Method <&Node Bounding Box>
 
         Information
         -----------
@@ -20,9 +19,8 @@ class Geometry(Socket):
         node = Node('Bounding Box', sockets={'Geometry': self})
         return node._out
 
-    @property
     def convex_hull(self):
-        """ > Property Get <&Node Convex Hull>
+        """ > Method <&Node Convex Hull>
 
         Information
         -----------
@@ -451,9 +449,8 @@ class Geometry(Socket):
         self._jump(node._out)
         return self._domain_to_geometry
 
-    @property
     def separate_components(self):
-        """ > Property Get <&Node Separate Components>
+        """ > Method <&Node Separate Components>
 
         Information
         -----------

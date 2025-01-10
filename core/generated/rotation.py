@@ -371,9 +371,8 @@ class Rotation(Socket):
         node = Node('Hash Value', sockets={'Value': self, 'Seed': seed}, data_type='ROTATION')
         return node._out
 
-    @property
     def invert(self):
-        """ > Property Get <&Node Invert Rotation>
+        """ > Method <&Node Invert Rotation>
 
         Information
         -----------
@@ -508,9 +507,8 @@ class Rotation(Socket):
         node = Node('Rotation to Axis Angle', sockets={'Rotation': self})
         return (node.axis, node.angle)
 
-    @property
     def to_euler(self):
-        """ > Property Get <&Node Rotation to Euler>
+        """ > Method <&Node Rotation to Euler>
 
         Information
         -----------

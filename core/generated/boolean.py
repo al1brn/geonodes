@@ -43,9 +43,8 @@ class Boolean(Socket):
         node = Node('Boolean Math', sockets={'Boolean': self, 'Boolean_001': boolean}, operation='OR')
         return node._out
 
-    @property
     def bnot(self):
-        """ > Property Get <&Node Boolean Math>
+        """ > Method <&Node Boolean Math>
 
         Information
         -----------

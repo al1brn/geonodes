@@ -7,6 +7,10 @@ from . import utils
 
 import numpy as np
 
+from . scripterror import NodeError
+
+DELETION = '__deletion marker__'
+
 # =============================================================================================================================
 # Tree Interface
 
@@ -23,21 +27,73 @@ class TreeInterface:
         """
         self.btree  = btree
 
-    def clear(self):
-        self.btree.interface.clear()
+    def __str__(self):
+        in_count = len([item for item in self.btree.interface.items_tree if item.item_type == 'SOCKET' and item.in_out == 'INPUT'])
+        out_count = len([item for item in self.btree.interface.items_tree if item.item_type == 'SOCKET' and item.in_out == 'OUTPUT'])
+        panel_count = len([item for item in self.btree.interface.items_tree if item.item_type == 'PANEL'])
+        return f"<TreeInterface of '{self.btree.name}': {panel_count} panel(s), {in_count} input socket(s), {out_count} output socket(s)>"
+
+    def __repr__(self):
+        s = f"{str(self)}\n- "
+
+        names = self.get_unique_names('INPUT', False)
+        s += "\n- ".join(names)
+
+        #s += "\n\nArguments:\n- "
+        #names = self.get_unique_names('INPUT', True)
+        #s += "\n- ".join(names)
+        return s + "\n"
+
+    # ====================================================================================================
+    # Clearing
+
+    def clear(self, all=True):
+        """ Clear all sockets
+        """
+        if all:
+            self.btree.interface.clear()
+        else:
+            to_delete = []
+            for item in self.btree.interface.items_tree:
+                if item.description == DELETION:
+                    to_delete.append(item)
+            for item in to_delete:
+                self.btree.interface.remove(item)
+
+    def set_tip_delete(self):
+        """ Mark all sockets to be deleted
+        """
+        for item in self.btree.interface.items_tree:
+            item.description = DELETION
 
     # ====================================================================================================
     # Utilities
 
-    @staticmethod
-    def get_socket_bl_idname(socket):
-        if socket.bl_subtype_label is None or socket.bl_subtype_label == 'None':
-            return socket.bl_idname
-        else:
-            return socket.bl_idname[:-len(socket.bl_subtype_label)]
+    def move_socket_to(self, socket, index):
+        """ NodeTreeInterface move and move_to_parent are apparently bugged
+        """
+
+        parent = socket.parent
+        panel = parent.name
+        sockets = self.get_items('SOCKET', socket.in_out, panel=panel)
+
+        cur_index = sockets.index(socket)
+        if cur_index == index:
+            return socket
+
+        del sockets[cur_index]
+        sockets.insert(index, socket)
+
+        for sock in reversed(sockets):
+            if parent is None:
+                self.btree.interface.move(sock, 0)
+            else:
+                self.btree.interface.move_to_parent(sock, parent, 0)
+
+        return socket
 
     @staticmethod
-    def socket_in_list(socket, names):
+    def socket_in_list_OLD(socket, names):
         if names is None:
             return False
 
@@ -47,23 +103,287 @@ class TreeInterface:
         return (socket.name in names) or (socket.identifier in names) or (utils.snake_case(socket.name) in names)
 
     # ====================================================================================================
+    # Unique names
+
+    def get_unique_names(self, in_out, as_argument=True, include_homonyms='MERGE'):
+        """ Get the unique names of the sockets
+
+        Sockets and panels can share the same names. To avoid homonyms, the names are suffixed
+        by an index when necessary.
+        Sockets can be prefixed by the name of their panel.
+
+        Panel prefix is not mandatory if there is no homonym at top level.
+
+        Imagine we have the following structure:
+        - Integer : integer (or _integer)
+        - Float : float (or _float)
+        - Integer : integer_1 (or _integer_1)
+        - Panel : panel
+          - String : string (the only socket named String, panel_string is also valid)
+          - Integer : panel_integer
+          - Float : panel_float
+          - Boolean : panel_boolean (because Boolean exists in another panel)
+        - Panel : panel_1
+          - Integer : panel_1_integer
+          - Integer : panel_1_integer_1
+          - Boolean : panel_1_boolean
+
+        > [!NOTE]
+        > geonodes doesn't create panels sharing the same name. But a Group can be created where
+        > it is the case.
+
+        Arguments
+        ---------
+        - in_out (str in ('INPUT', 'OUTPUT')) : input or output sockets
+        - as_argument (bool = True) : return snake_case rather than keeping caps
+        """
+
+        assert(in_out in ('INPUT', 'OUTPUT'))
+
+        # ----------------------------------------------------------------------------------------------------
+        # snake_case or not
+
+        def snake_case(name):
+            if as_argument:
+                return utils.snake_case(name)
+            else:
+                return name
+
+        sepa = '_' if as_argument else ' > '
+
+        # ----------------------------------------------------------------------------------------------------
+        # Let's start by naming the panels
+
+        names  = [""]
+        panels = [None]
+        for item in self.btree.interface.items_tree:
+
+            if item.item_type != 'PANEL':
+                continue
+
+            names.append(snake_case(item.name))
+            panels.append(item)
+
+        panel_names = {k: v for k, v in zip(utils.ensure_uniques(names, single_digit=True), panels)}
+
+        # ----------------------------------------------------------------------------------------------------
+        # List of the sockets in each panel
+
+        panels = {}
+        for panel_name, panel in panel_names.items():
+
+            socket_names = []
+            sockets      = []
+            for item in self.btree.interface.items_tree:
+                if item.item_type != 'SOCKET' or item.in_out != in_out:
+                    continue
+                if (panel_name == "" and item.parent.name != ""):
+                    continue
+                if panel_name != "" and item.parent != panel:
+                    continue
+
+                socket_names.append(snake_case(item.name))
+                sockets.append(item)
+
+            panels[panel_name] = {'raw_sc': socket_names, 'uniques': utils.ensure_uniques(socket_names, single_digit=True), 'sockets': sockets}
+
+        # ----------------------------------------------------------------------------------------------------
+        # Final dictionary with two entries per socket
+        # - The short version without panel prefix (when possible)
+        # - The long version with panel prefix
+
+        names = {}
+        homonyms = {}
+        for panel_name, dicts in panels.items():
+            for raw_sc, unique, socket in zip(dicts['raw_sc'], dicts['uniques'], dicts['sockets']):
+
+                if panel_name == "":
+                    names[unique] = socket
+                    if as_argument:
+                        homonyms[snake_case(sepa + unique)] = socket
+
+                else:
+                    # Short version ?
+                    single = True
+                    for p_name, p_dicts in panels.items():
+                        if p_name == panel_name:
+                            continue
+                        if unique in p_dicts['uniques']:
+                            single = False
+                            break
+
+                    if single:
+                        names[unique] = socket
+                        homonyms[snake_case(panel_name + sepa + unique)] = socket
+                    else:
+                        names[snake_case(panel_name + sepa + unique)] = socket
+
+        if include_homonyms == 'MERGE':
+            return {**names, **homonyms}
+        elif include_homonyms == 'NO':
+            return names
+        elif include_homonyms == 'SEPARATE':
+            return names, homonyms
+        else:
+            raise TypeError(f"include_homonyms must be in ('MERGE', 'NO', 'SEPARATE')")
+
+    # ====================================================================================================
+    # Get individual items
+
+    # ----------------------------------------------------------------------------------------------------
+    # Get a panel by its name
+
+    def get_panel(self, name: str, halt: bool = True):
+        """ Get a panel by its name
+
+        Arguments
+        ---------
+        - name : panel name, can be true name or the snake case version
+        - halt : raise an exception if not found
+
+        Raises
+        ------
+        - AttributeError : if panel not found
+
+        Returns
+        -------
+        - panel
+        """
+        if name == "" or name is None:
+            return None
+
+        panels = []
+        for item in self.btree.interface.items_tree:
+            if item.item_type == 'PANEL':
+                if item.name == name:
+                    return item
+                panels.append(item.name)
+
+        if halt:
+            raise AttributeError(f"Panel '{name}' not found in {panels}")
+
+        return None
+
+    # ----------------------------------------------------------------------------------------------------
+    # Get a socket by its identifier
+
+    def by_identifier(self, identifier):
+        for item in self.btree.interface.items_tree:
+            if item.item_type == 'SOCKET' and item.identifier == identifier:
+                return item
+
+        raise NodeError(f"TreeInterface socket with identifier '{identifier}' not found in tree '{self.btree.name}'.")
+
+    # ----------------------------------------------------------------------------------------------------
+    # Get a socket by its socket name
+
+    def by_name(self, in_out, name, as_argument=True, halt=True):
+
+        assert(in_out in ('INPUT', 'OUTPUT'))
+
+        if as_argument:
+            socket_name = name
+        else:
+            parts = name.split('>')
+            if len(parts) == 2:
+                socket_name = parts[0].strip() + ' > ' + parts[1].strip()
+            else:
+                socket_name = name
+
+        names = self.get_unique_names(in_out=in_out, as_argument=as_argument)
+        socket = names.get(socket_name, None)
+
+        if socket is None and halt:
+            raise NodeError(f"{in_out} socket '{name}' not found in '{self.btree.name}'.", valids=list(names.keys()))
+
+        return socket
+
+    # ====================================================================================================
+    # Get or create a socket
+
+    def get_create_socket(self, in_out, name, socket_type, panel=""):
+        """ Get a socket or create it if if doesn't exist
+
+        Returns
+        - couple socket, created : Socket and True if created
+        """
+        assert(in_out in ('INPUT', 'OUTPUT'))
+
+        if panel is None:
+            panel = ""
+
+        # ----------------------------------------------------------------------------------------------------
+        # Ensure the panel exists
+
+        parent = self.create_panel(panel)
+        if parent is not None:
+            parent.description = ""
+
+        # ----------------------------------------------------------------------------------------------------
+        # Search the name in the list of sockets
+
+        insertion_index = 0
+        socket_index = None
+        socket = None
+
+        index = 0
+        for item in self.btree.interface.items_tree:
+            if item.item_type == 'PANEL' or item.in_out != in_out:
+                continue
+            if item.parent.name != panel:
+                continue
+
+            # ----- Found
+            if item.name == name and item.socket_type == socket_type:
+                socket_index = index
+                socket = item
+                if insertion_index is None:
+                    insertion_index = socket_index
+                break
+
+            # ---- First unused entry
+            if item.description != DELETION:
+                insertion_index += 1
+
+        # ----------------------------------------------------------------------------------------------------
+        # Not found : we create it
+
+        if socket is None:
+            socket = self.btree.interface.new_socket(name, in_out=in_out, socket_type=socket_type, parent=parent)
+            created = True
+        else:
+            # Suppress the deletion marker
+            socket.description = ""
+            created = False
+
+        # ----------------------------------------------------------------------------------------------------
+        # Let's locate the socket at the right position
+
+        self.move_socket_to(socket, insertion_index)
+
+        # ----------------------------------------------------------------------------------------------------
+        # Done
+
+        return socket, created
+
+    # ====================================================================================================
     # Get list of items
 
     # ----------------------------------------------------------------------------------------------------
     # Get items of a certain category
 
-    def _get_items(self, item_type: str ='PANEL', in_out: str ='INPUT', panel: 'Parent Panel | str | None' = None):
+    def get_items(self, item_type, in_out, panel = None):
         """ Get items matching the criteria passed in arguments
 
         Arguments
         ---------
-        - item_type (str = 'PANEL') : str in ('PANELS', 'SOCKET')
-        - in_out (str = 'INPUT') : str in ('INPUT', 'OUTPUT')
-        - panel (bpy.types.NodeTreeInterfacePanel = None) : the panel the items must belong to
+        - item_type (str in ('PANELS', 'SOCKET')) : item type
+        - in_out (str in ('INPUT', 'OUTPUT') : Input or output for sockets
+        - panel (panel name) : the panel the items belong to
 
         Returns
         -------
-        - dict : socket unique python name: bpy.types.NodeTreeInterfaceItem
+        - list : list of items
         """
         items = []
         for item in self.btree.interface.items_tree:
@@ -75,27 +395,21 @@ class TreeInterface:
                 if item.in_out != in_out:
                     continue
 
-            if panel is None:
-                pass
-
-            elif isinstance(panel, str):
-                if item.parent.name != panel and utils.snake_case(item.parent.name) != panel:
-                    continue
-
-            else:
-                if item.parent != panel:
-                    continue
+                if panel is not None:
+                    if isinstance(panel, str):
+                        if item.parent.name != panel:
+                            continue
+                    elif item.parent != panel:
+                        continue
 
             items.append(item)
 
-        keys = utils.ensure_uniques([utils.snake_case(item.name) for item in items])
-
-        return {key:item for key, item in zip(keys, items)}
+        return items
 
     # ----------------------------------------------------------------------------------------------------
     # Get the output interface sockets
 
-    def get_out_sockets(self):
+    def get_out_sockets_OLD(self):
         """ Get the output interface sockets
 
         Returns
@@ -107,7 +421,7 @@ class TreeInterface:
     # ----------------------------------------------------------------------------------------------------
     # Get the panels
 
-    def get_panels(self):
+    def get_panels_OLD(self):
         """ Get the panels
 
         Returns
@@ -119,7 +433,7 @@ class TreeInterface:
     # ----------------------------------------------------------------------------------------------------
     # Get the input interface sockets
 
-    def get_in_sockets(self, panel_name: str | None=None):
+    def get_in_sockets_OLD(self, panel_name: str | None=None):
         """ Get the output interface sockets
 
         Argument 'panel_name' is the name of the panel the required sockets belong to.
@@ -158,7 +472,7 @@ class TreeInterface:
     # ----------------------------------------------------------------------------------------------------
     # Get the possible input socket name
 
-    def get_in_socket_names(self):
+    def get_in_socket_names_OLD(self):
 
         socket_names = {}
         for index, (key, socket) in enumerate(self.get_in_sockets().items()):
@@ -169,7 +483,7 @@ class TreeInterface:
     # ----------------------------------------------------------------------------------------------------
     # Get the socket argument names
 
-    def get_arg_names(self):
+    def get_arg_names_OLD(self):
 
         # ----- We start with sockets which are not in a panel
         top_keys = [utils.snake_case(sock.name) for sock in self.get_in_sockets(panel_name="").values()]
@@ -204,57 +518,10 @@ class TreeInterface:
 
         return utils.ensure_uniques(args, single_digit=True)
 
-
-
     # ====================================================================================================
-    # Get individual items
-
-    # ----------------------------------------------------------------------------------------------------
-    # Get a panel by its name
-
-    def get_panel(self, name: str, halt: bool = True):
-        """ Get a panel by its name
-
-        Arguments
-        ---------
-        - name : panel name, can be true name or the snake case version
-        - halt : raise an exception if not found
-
-        Raises
-        ------
-        - AttributeError : if panel not found
-
-        Returns
-        -------
-        - panel
-        """
-        panels = self.get_panels()
-        panel = panels.get(name)
-        if panel is not None:
-            return panel
-
-        for panel in panels.values():
-            if panel.name == name:
-                return panel
-
-        if halt:
-            raise AttributeError(f"Panel '{name}' not found in {list(panels.keys())}")
-
-        return None
-
-    # ----------------------------------------------------------------------------------------------------
-    # Get a socket by its identifier
-
-    def by_identifier(self, identifier):
-        for item in self.btree.interface.items_tree:
-            if item.item_type == 'SOCKET' and item.identifier == identifier:
-                return item
-        return None
-
-    # ----------------------------------------------------------------------------------------------------
     # Get an output socket by its name
 
-    def get_out_socket(self, name: str, halt: bool = True):
+    def get_out_socket_OLD(self, name: str, halt: bool = True):
         """ Get an output socket by its name
 
         Arguments
@@ -287,7 +554,7 @@ class TreeInterface:
     # ----------------------------------------------------------------------------------------------------
     # Get an input socket by its name
 
-    def get_in_socket(self, name, panel_name: str | None = None, halt: bool = True):
+    def get_in_socket_OLD(self, name, panel_name: str | None = None, halt: bool = True):
         """ Get an input socket by its name
 
         The name of the panel can be specified either with the 'panel_name' argument or by concatenation
@@ -373,6 +640,9 @@ class TreeInterface:
         -------
         - Panel
         """
+        if name is None or name == "":
+            return None
+
         panel = self.get_panel(name, halt=False)
         if panel is not None:
             return panel
@@ -382,7 +652,7 @@ class TreeInterface:
     # ----------------------------------------------------------------------------------------------------
     # Create an output socket
 
-    def create_out_socket(self, name: str, socket_type: str, tip: str="", panel: str = ""):
+    def create_out_socket_OLD(self, name: str, socket_type: str, tip: str="", panel: str = ""):
         """ Create an output socket
 
         > [!NOTE]
@@ -408,7 +678,7 @@ class TreeInterface:
     # ----------------------------------------------------------------------------------------------------
     # Create an input socket
 
-    def create_in_socket(self, name: str, socket_type: str, tip: str="", panel: str = ""):
+    def create_in_socket_OLD(self, name: str, socket_type: str, tip: str="", panel: str = ""):
         """ Create an output socket
 
         > [!NOTE]
@@ -447,7 +717,7 @@ class TreeInterface:
     # ----------------------------------------------------------------------------------------------------
     # Ensure geometry in
 
-    def set_in_geometry(self, name: str | None = None, create: bool =False):
+    def set_in_geometry(self, name: str | None = None, create: bool = False):
         """ Ensure that the Geometry input socket is the first
 
         Arguments
@@ -455,11 +725,13 @@ class TreeInterface:
         - name : socket name, 'Geometry' if None
         - create : create the socket if it doesn't exist
         """
+
         if name is None:
             name = "Geometry"
-        sockets = self.get_in_sockets(panel_name="")
+
+        sockets = self.get_items('SOCKET', 'INPUT', panel="")
         geo = None
-        for socket in sockets.values():
+        for socket in sockets:
             if socket.socket_type == 'NodeSocketGeometry':
                 geo = socket
                 break
@@ -467,20 +739,20 @@ class TreeInterface:
         if geo is None:
             if not create:
                 return None
-            geo = self.create_in_socket(name, socket_type = 'NodeSocketGeometry')
+            geo, _ = self.get_create_socket('INPUT', name, 'NodeSocketGeometry', panel="")
 
-        self.btree.interface.move(geo, 0)
+        self.btree.interface.move_to_parent(geo, None, 0)
         return geo
 
     # ----------------------------------------------------------------------------------------------------
     # Ensure geometry out
 
     @property
-    def has_out_geometry(self):
-        sockets = self.get_out_sockets()
+    def has_out_geometry_OLD(self):
+        sockets = self.get_items('SOCKET', 'OUTPUT')
         if not len(sockets):
             return False
-        return sockets[list(sockets.keys())[0]].socket_type == 'NodeSocketGeometry'
+        return sockets[0].socket_type == 'NodeSocketGeometry'
 
     def set_out_geometry(self, name="Geometry"):
         """ Make sure the tree has an output geometry and that it is the first one
@@ -493,23 +765,15 @@ class TreeInterface:
         """
         if name is None:
             name = "Geometry"
-        sockets = self.get_out_sockets()
-        geo = None
-        for socket in sockets.values():
-            if socket.socket_type == 'NodeSocketGeometry':
-                geo = socket
-                break
 
-        if geo is None:
-            geo = self.create_out_socket(name, socket_type = 'NodeSocketGeometry')
-
-        self.btree.interface.move(geo, 0)
+        geo, _ = self.get_create_socket('OUTPUT', name, 'NodeSocketGeometry', panel="")
+        self.btree.interface.move_to_parent(geo, None, 0)
         return geo
 
     # ====================================================================================================
     # Set the default value
 
-    def set_default_value(self, identifier: str, value: 'Any' = None, update_socket: bool =True):
+    def set_default_value_OLD(self, identifier: str, value: 'Any' = None, update_socket: bool =True):
         """ Set the default value of an input socket
 
         Arguments
@@ -620,214 +884,9 @@ class TreeInterface:
         return item.default_value
 
     # ====================================================================================================
-    # Link two nodes
-
-    def link_nodes(self, from_node: 'Blender Node | None', to_node: 'Blender Node | None', include: list[str] | str | None =None, exclude: list[str] | str = [], panel: str = ""):
-        """ Link two nodes
-
-        The nodes are linked between sockets having the same name and the same type (and sub type)
-
-        If one of the two nodes is None, the links are made with tree interface:
-
-        ``` python
-        math1 = Node('Math')
-        math2 = Node('Math')
-
-        # Link output socket of math1 to first input socket of math2
-        inteface.link_nodes(math1, math2)
-
-        # Create to group input sockets
-        inteface.link_nodes(None, math2)
-
-        # Create one group output socket linked to math1 output socket
-        interface.link_nodes(math1, None)
-        ```
-
-        > [!NOTE]
-        > If the tree doesn't have a Group Input or Output node, it is created in order to create the links
-
-        When one of the node is a tree interface, the sockets are created.
-
-
-        Arguments
-        ---------
-        - from_node : the node to link output sockets from
-        - to_node : the node to link input sockets to
-        - include : limit the links to this list
-        - exclude : exlude sockets in the list
-        - panel : panel name for sockets not in a panel
-
-        Returns
-        -------
-        - list of created output sockets
-        """
-
-        # ----------------------------------------------------------------------------------------------------
-        # Nodes can be groups or tree input / outputs
-
-        create_group_inputs  = False
-        create_group_outputs = False
-
-        # ===== Input node interface if any
-
-        if from_node is None:
-            for node in self.btree.nodes:
-                if node.bl_idname == 'NodeGroupInput':
-                    from_node = node
-                    break
-
-        from_interface = None
-        if from_node.bl_idname == 'NodeGroupInput':
-            from_interface = self
-            create_group_inputs = True
-
-        elif from_node.bl_idname == 'GeometryNodeGroup':
-            from_interface = TreeInterface(from_node.node_tree)
-
-        # ===== Output node interface if any
-
-        if to_node is None:
-            for node in self.btree.nodes:
-                if node.bl_idname == 'NodeGroupOutput':
-                    to_node = node
-                    break
-
-        to_interface = None
-        if to_node.bl_idname == 'NodeGroupOutput':
-            to_interface = self
-            create_group_outputs = True
-
-        elif to_node.bl_idname == 'GeometryNodeGroup':
-            to_interface = TreeInterface(to_node.node_tree)
-
-        # ===== Sockets cant' be created on both sides
-
-        if create_group_inputs and create_group_outputs:
-            create_group_inputs, create_group_outputs = False, False
-
-        # ----------------------------------------------------------------------------------------------------
-        # Which list of sockets to loop on
-
-        if create_group_outputs:
-            target_sockets = from_node.outputs
-            source_sockets = to_node.inputs
-            source_is_from = False
-        else:
-            target_sockets = to_node.inputs
-            source_sockets = from_node.outputs
-            source_is_from = True
-
-        create = create_group_outputs or create_group_inputs
-
-
-        # ----------------------------------------------------------------------------------------------------
-        # Let's loop
-
-        sockets = []
-
-        for target_socket in target_sockets:
-
-            # ----- Nothing to do condtions
-
-            # No virtual sockets
-
-            if target_socket.type == 'CUSTOM':
-                continue
-
-            # Not already linked
-
-            if target_socket.is_linked:
-                continue
-
-            # Must be in the include list
-            if include is not None and not self.socket_in_list(target_socket, include):
-                continue
-
-            # Must not be in the exclude list
-            if self.socket_in_list(target_socket, exclude):
-                continue
-
-            # ----- Do we have an acceptable candidate as source
-
-            source_socket = None
-            for sock in source_sockets:
-                # Alredy used
-                if sock in sockets:
-                    continue
-
-                if sock.name == target_socket.name and sock.bl_idname == target_socket.bl_idname:
-                    source_socket = sock
-                    break
-
-            # ----- Not found : let's try to create it
-
-            if source_socket is None:
-                if not create:
-                    continue
-
-                # Creation parameters
-
-                bl_idname = self.get_socket_bl_idname(target_socket)
-                descr = target_socket.description
-
-                source_panel = panel
-
-                itf_item = None if to_interface is None else to_interface.by_identifier(target_socket.identifier)
-                if itf_item is not None:
-                    if descr == "":
-                        descr = itf_item.description
-                    if itf_item.parent.name != "":
-                        source_panel = itf_item.parent.name
-
-                # Let's create
-
-                if create_group_outputs:
-                    source_item = self.btree.interface.new_socket(target_socket.name, in_out='OUTPUT', socket_type=bl_idname, description=descr)
-                    source_item.from_socket(from_node, target_socket)
-
-                    for sock in to_node.inputs:
-                        if sock.identifier == source_item.identifier:
-                            source_socket = sock
-                            break
-
-                    assert(source_socket is not None)
-
-                else:
-                    source_item = self.btree.interface.new_socket(target_socket.name, in_out='INPUT', socket_type=bl_idname, description=descr)
-                    source_item.from_socket(to_node, target_socket)
-
-                    print("CREATE", source_item, "FROM", target_socket)
-
-                    # We put it in the proper panel
-                    if source_panel != "":
-                        panel_item = self.create_panel(source_panel)
-                        n = len(self.get_in_sockets(panel_name=source_panel))
-                        self.btree.interface.move_to_parent(source_item, panel_item, n)
-
-                    for sock in from_node.outputs:
-                        if sock.identifier == source_item.identifier:
-                            source_socket = sock
-                            break
-
-                    assert(source_socket is not None)
-
-            # ----- Put the socket in the result
-
-            sockets.append(source_socket)
-
-            # ----- And we link at last !!!
-
-            if source_is_from:
-                self.btree.links.new(source_socket, target_socket)
-            else:
-                self.btree.links.new(target_socket, source_socket)
-
-        return sockets
-
-    # ====================================================================================================
     # Order the sockets
 
-    def set_order(self, inputs: list[str] = [], panel: str = "", outputs: list[str] = []):
+    def set_order_OLD(self, inputs: list[str] = [], panel: str = "", outputs: list[str] = []):
         """ Order the sockets
 
         Raises

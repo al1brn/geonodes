@@ -67,9 +67,8 @@ class String(Socket):
         return node._out
 
     @classmethod
-    @property
     def special_characters(cls):
-        """ > Property Get <&Node Special Characters>
+        """ > Class Method <&Node Special Characters>
 
         Returns
         -------
@@ -140,9 +139,8 @@ class String(Socket):
         node = Node('Slice String', sockets={'String': self, 'Position': position, 'Length': length})
         return node._out
 
-    @property
     def length(self):
-        """ > Property Get <&Node String Length>
+        """ > Method <&Node String Length>
 
         Information
         -----------

@@ -5,9 +5,8 @@ from .. scripterror import NodeError
 
 class Mesh(Socket):
 
-    @property
     def domain_size(self):
-        """ > Property Get <&Node Domain Size>
+        """ > Method <&Node Domain Size>
 
         Information
         -----------
@@ -393,9 +392,8 @@ class Mesh(Socket):
         return cls(node._out)
 
     @classmethod
-    @property
     def edge_angle(cls):
-        """ > Property Get <&Node Edge Angle>
+        """ > Class Method <&Node Edge Angle>
 
         Returns
         -------
@@ -441,9 +439,8 @@ class Mesh(Socket):
         return node._out
 
     @classmethod
-    @property
     def edge_vertices(cls):
-        """ > Property Get <&Node Edge Vertices>
+        """ > Class Method <&Node Edge Vertices>
 
         Returns
         -------
@@ -480,9 +477,8 @@ class Mesh(Socket):
         return node._out
 
     @classmethod
-    @property
     def face_neighbors(cls):
-        """ > Property Get <&Node Face Neighbors>
+        """ > Class Method <&Node Face Neighbors>
 
         Returns
         -------
@@ -492,9 +488,8 @@ class Mesh(Socket):
         return node
 
     @classmethod
-    @property
     def mesh_island(cls):
-        """ > Property Get <&Node Mesh Island>
+        """ > Class Method <&Node Mesh Island>
 
         Returns
         -------
@@ -528,9 +523,8 @@ class Mesh(Socket):
         return node.island_count
 
     @classmethod
-    @property
     def vertex_neighbors(cls):
-        """ > Property Get <&Node Vertex Neighbors>
+        """ > Class Method <&Node Vertex Neighbors>
 
         Returns
         -------

@@ -95,7 +95,7 @@ class Boolean(generated.Boolean):
     # Operations
 
     def __neg__(self):
-        return self.bnot
+        return self.bnot()
 
     def __or__(self, other):
         return self.bor(other)

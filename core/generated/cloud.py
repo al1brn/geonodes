@@ -5,9 +5,8 @@ from .. scripterror import NodeError
 
 class Cloud(Socket):
 
-    @property
     def domain_size(self):
-        """ > Property Get <&Node Domain Size>
+        """ > Method <&Node Domain Size>
 
         Information
         -----------

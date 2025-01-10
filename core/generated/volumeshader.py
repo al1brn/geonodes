@@ -22,9 +22,8 @@ class VolumeShader(Socket):
         return cls(node._out)
 
     @classmethod
-    @property
     def info(cls):
-        """ > Property Get <&ShaderNode Volume Info>
+        """ > Class Method <&ShaderNode Volume Info>
 
         Returns
         -------

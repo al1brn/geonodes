@@ -246,9 +246,8 @@ class Integer(Socket):
         node = Node('Integer Math', sockets={'Value': self, 'Value_001': multiplier, 'Value_002': addend}, operation='MULTIPLY_ADD')
         return node._out
 
-    @property
     def abs(self):
-        """ > Property Get <&Node Integer Math>
+        """ > Method <&Node Integer Math>
 
         Information
         -----------
@@ -262,9 +261,8 @@ class Integer(Socket):
         node = Node('Integer Math', sockets={'Value': self}, operation='ABSOLUTE')
         return node._out
 
-    @property
     def negate(self):
-        """ > Property Get <&Node Integer Math>
+        """ > Method <&Node Integer Math>
 
         Information
         -----------
@@ -335,9 +333,8 @@ class Integer(Socket):
         node = Node('Integer Math', sockets={'Value': self, 'Value_001': value}, operation='MAXIMUM')
         return node._out
 
-    @property
     def sign(self):
-        """ > Property Get <&Node Integer Math>
+        """ > Method <&Node Integer Math>
 
         Information
         -----------
@@ -506,9 +503,8 @@ class Integer(Socket):
         node = Node('Random Value', sockets={'Min_002': min, 'Max_002': max, 'ID': id, 'Seed': seed}, data_type='INT')
         return cls(node._out)
 
-    @property
     def to_string(self):
-        """ > Property Get <&Node Value to String>
+        """ > Method <&Node Value to String>
 
         Information
         -----------

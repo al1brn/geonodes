@@ -133,9 +133,8 @@ class Vector(Socket):
         node = Node('Compare', sockets={'A_VEC3': self, 'B_VEC3': b, 'Epsilon': epsilon}, data_type='VECTOR', mode='ELEMENT', operation='NOT_EQUAL')
         return node._out
 
-    @property
     def to_rotation(self):
-        """ > Property Get <&Node Euler to Rotation>
+        """ > Method <&Node Euler to Rotation>
 
         Information
         -----------
@@ -388,9 +387,8 @@ class Vector(Socket):
         node = self._cache('Separate XYZ', sockets={'Vector': self})
         return (node.x, node.y, node.z)
 
-    @property
     def separate_xyz(self):
-        """ > Property Get <&Node Separate XYZ>
+        """ > Method <&Node Separate XYZ>
 
         Information
         -----------
@@ -697,9 +695,8 @@ class Vector(Socket):
         node = Node('Vector Math', sockets={'Vector': self, 'Vector_001': vector}, operation='DISTANCE')
         return node._out
 
-    @property
     def length(self):
-        """ > Property Get <&Node Vector Math>
+        """ > Method <&Node Vector Math>
 
         Information
         -----------
@@ -732,9 +729,8 @@ class Vector(Socket):
         node = Node('Vector Math', sockets={'Vector': self, 'Scale': scale}, operation='SCALE')
         return node._out
 
-    @property
     def normalize(self):
-        """ > Property Get <&Node Vector Math>
+        """ > Method <&Node Vector Math>
 
         Information
         -----------
@@ -748,9 +744,8 @@ class Vector(Socket):
         node = Node('Vector Math', sockets={'Vector': self}, operation='NORMALIZE')
         return node._out
 
-    @property
     def abs(self):
-        """ > Property Get <&Node Vector Math>
+        """ > Method <&Node Vector Math>
 
         Information
         -----------
@@ -802,9 +797,8 @@ class Vector(Socket):
         node = Node('Vector Math', sockets={'Vector': self, 'Vector_001': vector}, operation='MAXIMUM')
         return node._out
 
-    @property
     def floor(self):
-        """ > Property Get <&Node Vector Math>
+        """ > Method <&Node Vector Math>
 
         Information
         -----------
@@ -818,9 +812,8 @@ class Vector(Socket):
         node = Node('Vector Math', sockets={'Vector': self}, operation='FLOOR')
         return node._out
 
-    @property
     def ceil(self):
-        """ > Property Get <&Node Vector Math>
+        """ > Method <&Node Vector Math>
 
         Information
         -----------
@@ -834,9 +827,8 @@ class Vector(Socket):
         node = Node('Vector Math', sockets={'Vector': self}, operation='CEIL')
         return node._out
 
-    @property
     def fraction(self):
-        """ > Property Get <&Node Vector Math>
+        """ > Method <&Node Vector Math>
 
         Information
         -----------
@@ -908,9 +900,8 @@ class Vector(Socket):
         node = Node('Vector Math', sockets={'Vector': self, 'Vector_001': increment}, operation='SNAP')
         return node._out
 
-    @property
     def sin(self):
-        """ > Property Get <&Node Vector Math>
+        """ > Method <&Node Vector Math>
 
         Information
         -----------
@@ -924,9 +915,8 @@ class Vector(Socket):
         node = Node('Vector Math', sockets={'Vector': self}, operation='SINE')
         return node._out
 
-    @property
     def cos(self):
-        """ > Property Get <&Node Vector Math>
+        """ > Method <&Node Vector Math>
 
         Information
         -----------
@@ -940,9 +930,8 @@ class Vector(Socket):
         node = Node('Vector Math', sockets={'Vector': self}, operation='COSINE')
         return node._out
 
-    @property
     def tan(self):
-        """ > Property Get <&Node Vector Math>
+        """ > Method <&Node Vector Math>
 
         Information
         -----------
