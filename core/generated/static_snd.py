@@ -4,6 +4,14 @@ from .. treeclass import utils
 from .. scripterror import NodeError
 
 class snd:
+    """" Static class
+
+    Exposes all nodes as static methods:
+
+    ``` python
+    a = snd.math(1, 2, operation='ADD')
+    ```
+    """
 
     @classmethod
     def frame(cls, label_size=20, shrink=True, text=None):

@@ -4,7 +4,13 @@
 snd(/, *args, **kwargs)
 ```
 
-Initialize self.  See help(type(self)) for accurate signature.
+" Static class
+
+Exposes all nodes as static methods:
+
+``` python
+a = snd.math(1, 2, operation='ADD')
+```
 
 #### Arguments:
 - **args**

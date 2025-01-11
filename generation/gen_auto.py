@@ -85,7 +85,14 @@ def generate(folder):
                 imports.append(f"from . import gnmath")
 
             elif class_name in ['nd', 'snd']:
-                file.write(f"class {class_name}:\n\n")
+                file.write(f"class {class_name}:\n")
+                file.write( '    """" Static class\n\n')
+                file.write( "    Exposes all nodes as static methods:\n\n")
+                file.write( "    ``` python\n")
+                file.write(f"    a = {class_name}.math(1, 2, operation='ADD')\n")
+                file.write( "    ```\n")
+                file.write( '    """\n\n')
+
 
                 imports.append(f"from .{module} import {class_name}")
 

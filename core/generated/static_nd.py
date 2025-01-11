@@ -4,6 +4,14 @@ from .. treeclass import utils
 from .. scripterror import NodeError
 
 class nd:
+    """" Static class
+
+    Exposes all nodes as static methods:
+
+    ``` python
+    a = nd.math(1, 2, operation='ADD')
+    ```
+    """
 
     @classmethod
     def align_rotation_to_vector(cls, rotation=None, vector=None, factor=None, axis='Z', pivot_axis='AUTO'):
@@ -928,7 +936,7 @@ class nd:
         return node._out
 
     @classmethod
-    def handle_type_selection(cls, handle_type='AUTO', mode={'RIGHT', 'LEFT'}):
+    def handle_type_selection(cls, handle_type='AUTO', mode={'LEFT', 'RIGHT'}):
         """ > Node <&Node Handle Type Selection>
 
         Arguments
@@ -1077,7 +1085,7 @@ class nd:
         return node._out
 
     @classmethod
-    def set_handle_type(cls, curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}):
+    def set_handle_type(cls, curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}):
         """ > Node <&Node Set Handle Type>
 
         Arguments

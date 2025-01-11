@@ -109,7 +109,7 @@ class Curve(Socket):
         return node._out
 
     @classmethod
-    def handle_type_selection(cls, handle_type='AUTO', mode={'RIGHT', 'LEFT'}):
+    def handle_type_selection(cls, handle_type='AUTO', mode={'LEFT', 'RIGHT'}):
         """ > Class Method <&Node Handle Type Selection>
 
         Arguments
@@ -479,7 +479,7 @@ class Curve(Socket):
         node = Node('Quadratic Bézier', sockets={'Resolution': resolution, 'Start': start, 'Middle': middle, 'End': end})
         return cls(node._out)
 
-    def set_handle_type(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}):
+    def set_handle_type(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}):
         """ > Jump Method <&Node Set Handle Type>
 
         Information
@@ -549,7 +549,7 @@ class Curve(Socket):
         -----------
         - Socket 'Curve' : self
         - Socket 'Selection' : self[selection]
-        - Parameter 'mode' : {'RIGHT', 'LEFT'}
+        - Parameter 'mode' : {'LEFT', 'RIGHT'}
 
         Arguments
         ---------
@@ -559,7 +559,7 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Set Handle Type', sockets={'Curve': self, 'Selection': self._sel}, handle_type=handle_type, mode={'RIGHT', 'LEFT'})
+        node = Node('Set Handle Type', sockets={'Curve': self, 'Selection': self._sel}, handle_type=handle_type, mode={'LEFT', 'RIGHT'})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -1600,7 +1600,7 @@ class Curve(Socket):
         -----------
         - Socket 'Curve' : self
         - Socket 'Selection' : self[selection]
-        - Parameter 'mode' : {'RIGHT', 'LEFT'}
+        - Parameter 'mode' : {'LEFT', 'RIGHT'}
 
         Arguments
         ---------
@@ -1610,7 +1610,7 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Set Handle Type', sockets={'Curve': self, 'Selection': self._sel}, handle_type=handle_type, mode={'RIGHT', 'LEFT'})
+        node = Node('Set Handle Type', sockets={'Curve': self, 'Selection': self._sel}, handle_type=handle_type, mode={'LEFT', 'RIGHT'})
         self._jump(node._out)
         return self._domain_to_geometry
 
