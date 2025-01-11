@@ -211,11 +211,12 @@ to_points(position=None, radius=None)
 
 > Method [Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_points.html)
 
-Information
------------
-- Socket 'Mesh' : self
-- Socket 'Selection' : self[selection]
-- Parameter 'mode' : 'VERTICES'
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+- **Parameter** : 'VERTICES'
+
+
 
 #### Arguments:
 - **position** (_Vector_ = None) : socket 'Position' (id: Position)

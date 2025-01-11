@@ -76,9 +76,10 @@ add(shader=None)
 
 > Method ERROR: Node 'Add Shader' not found
 
-Information
------------
-- Socket 'Shader' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Arguments:
 - **shader** (_Shader_ = None) : socket 'Shader' (id: Shader_001)
@@ -240,9 +241,10 @@ light_output(is_active_output=True, target='ALL')
 
 > Method [Light Output](https://docs.blender.org/manual/en/latest/render/shader_nodes/output/light.html)
 
-Information
------------
-- Socket 'Surface' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Arguments:
 - **is_active_output** (_bool_ = True) : parameter 'is_active_output'
@@ -266,9 +268,10 @@ material_output(volume=None, displacement=None, thickness=None, is_active_output
 
 > Method [Material Output](https://docs.blender.org/manual/en/latest/render/shader_nodes/output/material.html)
 
-Information
------------
-- Socket 'Surface' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Arguments:
 - **volume** (_Shader_ = None) : socket 'Volume' (id: Volume)
@@ -324,9 +327,10 @@ mix(shader=None, fac=None)
 
 > Method ERROR: Node 'Mix Shader' not found
 
-Information
------------
-- Socket 'Shader' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Arguments:
 - **shader** (_Shader_ = None) : socket 'Shader' (id: Shader_001)
@@ -585,9 +589,10 @@ to_rgb()
 
 > Method ERROR: Node 'Shader to RGB' not found
 
-Information
------------
-- Socket 'Shader' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Returns:
 - **Color** (_Float_)
@@ -648,9 +653,10 @@ world_output(volume=None, is_active_output=True, target='ALL')
 
 > Method [World Output](https://docs.blender.org/manual/en/latest/render/shader_nodes/output/world.html)
 
-Information
------------
-- Socket 'Surface' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Arguments:
 - **volume** (_Shader_ = None) : socket 'Volume' (id: Volume)

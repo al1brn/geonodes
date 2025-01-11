@@ -89,10 +89,11 @@ accumulate_field(value=None, group_id=None)
 
 > Class Method [Accumulate Field](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/accumulate_field.html)
 
-Information
------------
-- Parameter 'data_type' : depending on 'value' type
-- Parameter 'domain' : 'EDGE'
+#### Information:
+- **Parameter** : depending on 'value' type
+- **Parameter** : 'EDGE'
+
+
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
@@ -116,9 +117,10 @@ active_element()
 
 > Class Method [Active Element](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/active_element.html)
 
-Information
------------
-- Parameter 'domain' : 'EDGE'
+#### Information:
+- **Parameter** : 'EDGE'
+
+
 
 #### Returns:
 - **Integer** (_Boolean_)
@@ -136,12 +138,13 @@ attribute_statistic(attribute=None)
 
 > Method [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html)
 
-Information
------------
-- Socket 'Geometry' : self
-- Socket 'Selection' : self[selection]
-- Parameter 'data_type' : depending on 'attribute' type
-- Parameter 'domain' : 'EDGE'
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+- **Parameter** : depending on 'attribute' type
+- **Parameter** : 'EDGE'
+
+
 
 #### Arguments:
 - **attribute** (_Float_ = None) : socket 'Attribute' (id: Attribute)
@@ -233,11 +236,12 @@ delete(mode='ALL')
 
 > Jump Method [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/delete_geometry.html)
 
-Information
------------
-- Socket 'Geometry' : self
-- Socket 'Selection' : self[selection]
-- Parameter 'domain' : 'EDGE'
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+- **Parameter** : 'EDGE'
+
+
 
 #### Arguments:
 - **mode** (_str_ = ALL) : parameter 'mode' in ('ALL', 'EDGE_FACE', 'ONLY_FACE')
@@ -260,12 +264,13 @@ delete_all()
 
 > Jump Method [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/delete_geometry.html)
 
-Information
------------
-- Socket 'Geometry' : self
-- Socket 'Selection' : self[selection]
-- Parameter 'domain' : 'EDGE'
-- Parameter 'mode' : 'ALL'
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+- **Parameter** : 'EDGE'
+- **Parameter** : 'ALL'
+
+
 
 #### Returns:
 - **Geometry** :
@@ -283,12 +288,13 @@ delete_edge_face()
 
 > Jump Method [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/delete_geometry.html)
 
-Information
------------
-- Socket 'Geometry' : self
-- Socket 'Selection' : self[selection]
-- Parameter 'domain' : 'EDGE'
-- Parameter 'mode' : 'EDGE_FACE'
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+- **Parameter** : 'EDGE'
+- **Parameter** : 'EDGE_FACE'
+
+
 
 #### Returns:
 - **Geometry** :
@@ -306,11 +312,12 @@ delete_geometry(mode='ALL')
 
 > Jump Method [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/delete_geometry.html)
 
-Information
------------
-- Socket 'Geometry' : self
-- Socket 'Selection' : self[selection]
-- Parameter 'domain' : 'EDGE'
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+- **Parameter** : 'EDGE'
+
+
 
 #### Arguments:
 - **mode** (_str_ = ALL) : parameter 'mode' in ('ALL', 'EDGE_FACE', 'ONLY_FACE')
@@ -333,12 +340,13 @@ delete_geometry_all()
 
 > Jump Method [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/delete_geometry.html)
 
-Information
------------
-- Socket 'Geometry' : self
-- Socket 'Selection' : self[selection]
-- Parameter 'domain' : 'EDGE'
-- Parameter 'mode' : 'ALL'
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+- **Parameter** : 'EDGE'
+- **Parameter** : 'ALL'
+
+
 
 #### Returns:
 - **Geometry** :
@@ -356,12 +364,13 @@ delete_geometry_edge_face()
 
 > Jump Method [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/delete_geometry.html)
 
-Information
------------
-- Socket 'Geometry' : self
-- Socket 'Selection' : self[selection]
-- Parameter 'domain' : 'EDGE'
-- Parameter 'mode' : 'EDGE_FACE'
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+- **Parameter** : 'EDGE'
+- **Parameter** : 'EDGE_FACE'
+
+
 
 #### Returns:
 - **Geometry** :
@@ -379,12 +388,13 @@ delete_geometry_only_face()
 
 > Jump Method [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/delete_geometry.html)
 
-Information
------------
-- Socket 'Geometry' : self
-- Socket 'Selection' : self[selection]
-- Parameter 'domain' : 'EDGE'
-- Parameter 'mode' : 'ONLY_FACE'
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+- **Parameter** : 'EDGE'
+- **Parameter** : 'ONLY_FACE'
+
+
 
 #### Returns:
 - **Geometry** :
@@ -402,12 +412,13 @@ delete_only_face()
 
 > Jump Method [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/delete_geometry.html)
 
-Information
------------
-- Socket 'Geometry' : self
-- Socket 'Selection' : self[selection]
-- Parameter 'domain' : 'EDGE'
-- Parameter 'mode' : 'ONLY_FACE'
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+- **Parameter** : 'EDGE'
+- **Parameter** : 'ONLY_FACE'
+
+
 
 #### Returns:
 - **Geometry** :
@@ -425,11 +436,12 @@ duplicate(amount=None)
 
 > Jump Method [Duplicate Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/duplicate_elements.html)
 
-Information
------------
-- Socket 'Geometry' : self
-- Socket 'Selection' : self[selection]
-- Parameter 'domain' : 'EDGE'
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+- **Parameter** : 'EDGE'
+
+
 
 #### Arguments:
 - **amount** (_Integer_ = None) : socket 'Amount' (id: Amount)
@@ -484,10 +496,11 @@ evaluate_at_index(index=None, value=None)
 
 > Class Method [Evaluate at Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/evaluate_at_index.html)
 
-Information
------------
-- Parameter 'data_type' : depending on 'value' type
-- Parameter 'domain' : 'EDGE'
+#### Information:
+- **Parameter** : depending on 'value' type
+- **Parameter** : 'EDGE'
+
+
 
 #### Arguments:
 - **index** (_Integer_ = None) : socket 'Index' (id: Index)
@@ -511,10 +524,11 @@ evaluate_on_domain(value=None)
 
 > Class Method [Evaluate on Domain](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/evaluate_on_domain.html)
 
-Information
------------
-- Parameter 'data_type' : depending on 'value' type
-- Parameter 'domain' : 'EDGE'
+#### Information:
+- **Parameter** : depending on 'value' type
+- **Parameter** : 'EDGE'
+
+
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
@@ -537,9 +551,10 @@ paths_to_curves(start_vertices=None, next_vertex_index=None)
 
 > Method [Edge Paths to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/edge_paths_to_curves.html)
 
-Information
------------
-- Socket 'Mesh' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Arguments:
 - **start_vertices** (_Boolean_ = None) : socket 'Start Vertices' (id: Start Vertices)
@@ -585,11 +600,12 @@ sample_index(value=None, index=None, clamp=False)
 
 > Method [Sample Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/sample_index.html)
 
-Information
------------
-- Socket 'Geometry' : self
-- Parameter 'data_type' : depending on 'value' type
-- Parameter 'domain' : 'EDGE'
+#### Information:
+- **Socket** : self
+- **Parameter** : depending on 'value' type
+- **Parameter** : 'EDGE'
+
+
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
@@ -614,10 +630,11 @@ sample_nearest(sample_position=None)
 
 > Method [Sample Nearest](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/sample_nearest.html)
 
-Information
------------
-- Socket 'Geometry' : self
-- Parameter 'domain' : 'EDGE'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'EDGE'
+
+
 
 #### Arguments:
 - **sample_position** (_Vector_ = None) : socket 'Sample Position' (id: Sample Position)
@@ -640,11 +657,12 @@ scale(scale=None, center=None, scale_mode='UNIFORM')
 
 > Jump Method [Scale Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/scale_elements.html)
 
-Information
------------
-- Socket 'Geometry' : self
-- Socket 'Selection' : self[selection]
-- Parameter 'domain' : 'EDGE'
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+- **Parameter** : 'EDGE'
+
+
 
 #### Arguments:
 - **scale** (_Float_ = None) : socket 'Scale' (id: Scale)
@@ -669,12 +687,13 @@ scale_single_axis(scale=None, center=None, axis=None)
 
 > Jump Method [Scale Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/scale_elements.html)
 
-Information
------------
-- Socket 'Geometry' : self
-- Socket 'Selection' : self[selection]
-- Parameter 'domain' : 'EDGE'
-- Parameter 'scale_mode' : 'SINGLE_AXIS'
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+- **Parameter** : 'EDGE'
+- **Parameter** : 'SINGLE_AXIS'
+
+
 
 #### Arguments:
 - **scale** (_Float_ = None) : socket 'Scale' (id: Scale)
@@ -699,12 +718,13 @@ scale_uniform(scale=None, center=None)
 
 > Jump Method [Scale Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/scale_elements.html)
 
-Information
------------
-- Socket 'Geometry' : self
-- Socket 'Selection' : self[selection]
-- Parameter 'domain' : 'EDGE'
-- Parameter 'scale_mode' : 'UNIFORM'
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+- **Parameter** : 'EDGE'
+- **Parameter** : 'UNIFORM'
+
+
 
 #### Arguments:
 - **scale** (_Float_ = None) : socket 'Scale' (id: Scale)
@@ -728,11 +748,12 @@ separate()
 
 > Jump Method [Separate Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/separate_geometry.html)
 
-Information
------------
-- Socket 'Geometry' : self
-- Socket 'Selection' : self[selection]
-- Parameter 'domain' : 'EDGE'
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+- **Parameter** : 'EDGE'
+
+
 
 #### Returns:
 - **Geometry** (_Geometry_)
@@ -750,12 +771,13 @@ set_selection()
 
 > Jump Method [Set Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/write/set_selection.html)
 
-Information
------------
-- Socket 'Geometry' : self
-- Socket 'Selection' : self[selection]
-- Parameter 'domain' : 'EDGE'
-- Parameter 'selection_type' : depending on 'selection' type
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+- **Parameter** : 'EDGE'
+- **Parameter** : depending on 'selection' type
+
+
 
 #### Returns:
 - **Geometry** :
@@ -773,11 +795,12 @@ set_shade_smooth(shade_smooth=None)
 
 > Jump Method [Set Shade Smooth](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/write/set_shade_smooth.html)
 
-Information
------------
-- Socket 'Geometry' : self
-- Socket 'Selection' : self[selection]
-- Parameter 'domain' : 'EDGE'
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+- **Parameter** : 'EDGE'
+
+
 
 #### Arguments:
 - **shade_smooth** (_Boolean_ = None) : socket 'Shade Smooth' (id: Shade Smooth)
@@ -822,11 +845,12 @@ sort(group_id=None, sort_weight=None)
 
 > Jump Method [Sort Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/sort_elements.html)
 
-Information
------------
-- Socket 'Geometry' : self
-- Socket 'Selection' : self[selection]
-- Parameter 'domain' : 'EDGE'
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+- **Parameter** : 'EDGE'
+
+
 
 #### Arguments:
 - **group_id** (_Integer_ = None) : socket 'Group ID' (id: Group ID)
@@ -850,10 +874,11 @@ split()
 
 > Jump Method [Split Edges](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/split_edges.html)
 
-Information
------------
-- Socket 'Mesh' : self
-- Socket 'Selection' : self[selection]
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+
+
 
 #### Returns:
 - **Mesh** :
@@ -871,11 +896,12 @@ split_to_instances(group_id=None)
 
 > Method [Split to Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/split_to_instances.html)
 
-Information
------------
-- Socket 'Geometry' : self
-- Socket 'Selection' : self[selection]
-- Parameter 'domain' : 'EDGE'
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+- **Parameter** : 'EDGE'
+
+
 
 #### Arguments:
 - **group_id** (_Integer_ = None) : socket 'Group ID' (id: Group ID)
@@ -898,12 +924,13 @@ store(name=None, value=None)
 
 > Jump Method [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html)
 
-Information
------------
-- Socket 'Geometry' : self
-- Socket 'Selection' : self[selection]
-- Parameter 'data_type' : depending on 'value' type
-- Parameter 'domain' : 'EDGE'
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+- **Parameter** : depending on 'value' type
+- **Parameter** : 'EDGE'
+
+
 
 #### Arguments:
 - **name** (_String_ = None) : socket 'Name' (id: Name)
@@ -927,12 +954,13 @@ store_named_attribute(name=None, value=None)
 
 > Jump Method [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html)
 
-Information
------------
-- Socket 'Geometry' : self
-- Socket 'Selection' : self[selection]
-- Parameter 'data_type' : depending on 'value' type
-- Parameter 'domain' : 'EDGE'
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+- **Parameter** : depending on 'value' type
+- **Parameter** : 'EDGE'
+
+
 
 #### Arguments:
 - **name** (_String_ = None) : socket 'Name' (id: Name)
@@ -956,11 +984,12 @@ to_points(position=None, radius=None)
 
 > Method [Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_points.html)
 
-Information
------------
-- Socket 'Mesh' : self
-- Socket 'Selection' : self[selection]
-- Parameter 'mode' : 'EDGES'
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+- **Parameter** : 'EDGES'
+
+
 
 #### Arguments:
 - **position** (_Vector_ = None) : socket 'Position' (id: Position)
@@ -984,11 +1013,12 @@ viewer(value=None)
 
 > Method [Viewer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/output/viewer.html)
 
-Information
------------
-- Socket 'Geometry' : self
-- Parameter 'data_type' : depending on 'value' type
-- Parameter 'domain' : 'EDGE'
+#### Information:
+- **Socket** : self
+- **Parameter** : depending on 'value' type
+- **Parameter** : 'EDGE'
+
+
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)

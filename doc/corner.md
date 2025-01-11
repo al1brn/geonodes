@@ -56,10 +56,11 @@ accumulate_field(value=None, group_id=None)
 
 > Class Method [Accumulate Field](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/accumulate_field.html)
 
-Information
------------
-- Parameter 'data_type' : depending on 'value' type
-- Parameter 'domain' : 'CORNER'
+#### Information:
+- **Parameter** : depending on 'value' type
+- **Parameter** : 'CORNER'
+
+
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
@@ -83,12 +84,13 @@ attribute_statistic(attribute=None)
 
 > Method [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html)
 
-Information
------------
-- Socket 'Geometry' : self
-- Socket 'Selection' : self[selection]
-- Parameter 'data_type' : depending on 'attribute' type
-- Parameter 'domain' : 'CORNER'
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+- **Parameter** : depending on 'attribute' type
+- **Parameter** : 'CORNER'
+
+
 
 #### Arguments:
 - **attribute** (_Float_ = None) : socket 'Attribute' (id: Attribute)
@@ -132,10 +134,11 @@ evaluate_at_index(index=None, value=None)
 
 > Class Method [Evaluate at Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/evaluate_at_index.html)
 
-Information
------------
-- Parameter 'data_type' : depending on 'value' type
-- Parameter 'domain' : 'CORNER'
+#### Information:
+- **Parameter** : depending on 'value' type
+- **Parameter** : 'CORNER'
+
+
 
 #### Arguments:
 - **index** (_Integer_ = None) : socket 'Index' (id: Index)
@@ -159,10 +162,11 @@ evaluate_on_domain(value=None)
 
 > Class Method [Evaluate on Domain](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/evaluate_on_domain.html)
 
-Information
------------
-- Parameter 'data_type' : depending on 'value' type
-- Parameter 'domain' : 'CORNER'
+#### Information:
+- **Parameter** : depending on 'value' type
+- **Parameter** : 'CORNER'
+
+
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
@@ -291,9 +295,10 @@ pack_uv_islands(uv=None, margin=None, rotate=None)
 
 > Class Method [Pack UV Islands](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/uv/pack_uv_islands.html)
 
-Information
------------
-- Socket 'Selection' : self[selection]
+#### Information:
+- **Socket** : self[selection]
+
+
 
 #### Arguments:
 - **uv** (_Vector_ = None) : socket 'UV' (id: UV)
@@ -339,11 +344,12 @@ sample_index(value=None, index=None, clamp=False)
 
 > Method [Sample Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/sample_index.html)
 
-Information
------------
-- Socket 'Geometry' : self
-- Parameter 'data_type' : depending on 'value' type
-- Parameter 'domain' : 'CORNER'
+#### Information:
+- **Socket** : self
+- **Parameter** : depending on 'value' type
+- **Parameter** : 'CORNER'
+
+
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
@@ -368,10 +374,11 @@ sample_nearest(sample_position=None)
 
 > Method [Sample Nearest](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/sample_nearest.html)
 
-Information
------------
-- Socket 'Geometry' : self
-- Parameter 'domain' : 'CORNER'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'CORNER'
+
+
 
 #### Arguments:
 - **sample_position** (_Vector_ = None) : socket 'Sample Position' (id: Sample Position)
@@ -394,12 +401,13 @@ store(name=None, value=None)
 
 > Jump Method [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html)
 
-Information
------------
-- Socket 'Geometry' : self
-- Socket 'Selection' : self[selection]
-- Parameter 'data_type' : depending on 'value' type
-- Parameter 'domain' : 'CORNER'
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+- **Parameter** : depending on 'value' type
+- **Parameter** : 'CORNER'
+
+
 
 #### Arguments:
 - **name** (_String_ = None) : socket 'Name' (id: Name)
@@ -423,12 +431,13 @@ store_named_attribute(name=None, value=None)
 
 > Jump Method [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html)
 
-Information
------------
-- Socket 'Geometry' : self
-- Socket 'Selection' : self[selection]
-- Parameter 'data_type' : depending on 'value' type
-- Parameter 'domain' : 'CORNER'
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+- **Parameter** : depending on 'value' type
+- **Parameter** : 'CORNER'
+
+
 
 #### Arguments:
 - **name** (_String_ = None) : socket 'Name' (id: Name)
@@ -452,12 +461,13 @@ store_uv(name=None, value=None)
 
 > Jump Method [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html)
 
-Information
------------
-- Socket 'Geometry' : self
-- Socket 'Selection' : self[selection]
-- Parameter 'data_type' : 'FLOAT2'
-- Parameter 'domain' : 'CORNER'
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+- **Parameter** : 'FLOAT2'
+- **Parameter** : 'CORNER'
+
+
 
 #### Arguments:
 - **name** (_String_ = None) : socket 'Name' (id: Name)
@@ -481,11 +491,12 @@ to_points(position=None, radius=None)
 
 > Method [Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_points.html)
 
-Information
------------
-- Socket 'Mesh' : self
-- Socket 'Selection' : self[selection]
-- Parameter 'mode' : 'CORNERS'
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+- **Parameter** : 'CORNERS'
+
+
 
 #### Arguments:
 - **position** (_Vector_ = None) : socket 'Position' (id: Position)
@@ -509,9 +520,10 @@ uv_unwrap(seam=None, margin=None, fill_holes=None, method='ANGLE_BASED')
 
 > Class Method [UV Unwrap](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/uv/uv_unwrap.html)
 
-Information
------------
-- Socket 'Selection' : self[selection]
+#### Information:
+- **Socket** : self[selection]
+
+
 
 #### Arguments:
 - **seam** (_Boolean_ = None) : socket 'Seam' (id: Seam)
@@ -558,11 +570,12 @@ viewer(value=None)
 
 > Method [Viewer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/output/viewer.html)
 
-Information
------------
-- Socket 'Geometry' : self
-- Parameter 'data_type' : depending on 'value' type
-- Parameter 'domain' : 'CORNER'
+#### Information:
+- **Socket** : self
+- **Parameter** : depending on 'value' type
+- **Parameter** : 'CORNER'
+
+
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)

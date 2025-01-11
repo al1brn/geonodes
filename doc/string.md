@@ -51,12 +51,13 @@ equal(b=None)
 
 > Method [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
-Information
------------
-- Socket 'A' : self
-- Parameter 'data_type' : 'STRING'
-- Parameter 'mode' : 'ELEMENT'
-- Parameter 'operation' : 'EQUAL'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'STRING'
+- **Parameter** : 'ELEMENT'
+- **Parameter** : 'EQUAL'
+
+
 
 #### Arguments:
 - **b** (_String_ = None) : socket 'B' (id: B_STR)
@@ -100,10 +101,11 @@ hash_value(seed=None)
 
 > Method [Hash Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/hash_value.html)
 
-Information
------------
-- Socket 'Value' : self
-- Parameter 'data_type' : 'STRING'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'STRING'
+
+
 
 #### Arguments:
 - **seed** (_Integer_ = None) : socket 'Seed' (id: Seed)
@@ -174,9 +176,10 @@ join(*strings)
 
 > Method [Join Strings](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/join_strings.html)
 
-Information
------------
-- Socket 'Delimiter' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Arguments:
 - **strings** (_String_) : socket 'Strings' (id: Strings)
@@ -199,9 +202,10 @@ length()
 
 > Method [String Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/string_length.html)
 
-Information
------------
-- Socket 'String' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Returns:
 - **Integer** :
@@ -219,12 +223,13 @@ not_equal(b=None)
 
 > Method [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
-Information
------------
-- Socket 'A' : self
-- Parameter 'data_type' : 'STRING'
-- Parameter 'mode' : 'ELEMENT'
-- Parameter 'operation' : 'NOT_EQUAL'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'STRING'
+- **Parameter** : 'ELEMENT'
+- **Parameter** : 'NOT_EQUAL'
+
+
 
 #### Arguments:
 - **b** (_String_ = None) : socket 'B' (id: B_STR)
@@ -247,9 +252,10 @@ replace(find=None, replace=None)
 
 > Method [Replace String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/replace_string.html)
 
-Information
------------
-- Socket 'String' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Arguments:
 - **find** (_String_ = None) : socket 'Find' (id: Find)
@@ -273,9 +279,10 @@ slice(position=None, length=None)
 
 > Method [Slice String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/slice_string.html)
 
-Information
------------
-- Socket 'String' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Arguments:
 - **position** (_Integer_ = None) : socket 'Position' (id: Position)
@@ -315,9 +322,10 @@ to_curves(size=None, character_spacing=None, word_spacing=None, line_spacing=Non
 
 > Method [String to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/string_to_curves.html)
 
-Information
------------
-- Socket 'String' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Arguments:
 - **size** (_Float_ = None) : socket 'Size' (id: Size)

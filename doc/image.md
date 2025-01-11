@@ -45,9 +45,10 @@ fps(frame=None)
 
 > Method [Image Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene/image_info.html)
 
-Information
------------
-- Socket 'Image' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Arguments:
 - **frame** (_Integer_ = None) : socket 'Frame' (id: Frame)
@@ -70,9 +71,10 @@ frame_count(frame=None)
 
 > Method [Image Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene/image_info.html)
 
-Information
------------
-- Socket 'Image' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Arguments:
 - **frame** (_Integer_ = None) : socket 'Frame' (id: Frame)
@@ -95,9 +97,10 @@ has_alpha(frame=None)
 
 > Method [Image Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene/image_info.html)
 
-Information
------------
-- Socket 'Image' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Arguments:
 - **frame** (_Integer_ = None) : socket 'Frame' (id: Frame)
@@ -120,9 +123,10 @@ height(frame=None)
 
 > Method [Image Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene/image_info.html)
 
-Information
------------
-- Socket 'Image' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Arguments:
 - **frame** (_Integer_ = None) : socket 'Frame' (id: Frame)
@@ -145,9 +149,10 @@ info(frame=None)
 
 > Method [Image Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene/image_info.html)
 
-Information
------------
-- Socket 'Image' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Arguments:
 - **frame** (_Integer_ = None) : socket 'Frame' (id: Frame)
@@ -193,9 +198,10 @@ width(frame=None)
 
 > Method [Image Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene/image_info.html)
 
-Information
------------
-- Socket 'Image' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Arguments:
 - **frame** (_Integer_ = None) : socket 'Frame' (id: Frame)

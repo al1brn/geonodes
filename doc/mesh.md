@@ -129,9 +129,10 @@ boolean(*mesh_2, self_intersection=None, hole_tolerant=None, operation='DIFFEREN
 
 > Jump Method [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html)
 
-Information
------------
-- Socket 'Mesh 1' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Arguments:
 - **mesh_2** (_Geometry_) : socket 'Mesh 2' (id: Mesh 2)
@@ -277,11 +278,12 @@ corners_to_points(position=None, radius=None)
 
 > Method [Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_points.html)
 
-Information
------------
-- Socket 'Mesh' : self
-- Socket 'Selection' : self[selection]
-- Parameter 'mode' : 'CORNERS'
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+- **Parameter** : 'CORNERS'
+
+
 
 #### Arguments:
 - **position** (_Vector_ = None) : socket 'Position' (id: Position)
@@ -355,9 +357,10 @@ Difference(*mesh_2, mesh_1=None, self_intersection=None, hole_tolerant=None, sol
 
 > Constructor [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html)
 
-Information
------------
-- Parameter 'operation' : 'DIFFERENCE'
+#### Information:
+- **Parameter** : 'DIFFERENCE'
+
+
 
 #### Arguments:
 - **mesh_2** (_Geometry_) : socket 'Mesh 2' (id: Mesh 2)
@@ -384,10 +387,11 @@ difference(*mesh_2, self_intersection=None, hole_tolerant=None, solver='FLOAT')
 
 > Jump Method [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html)
 
-Information
------------
-- Socket 'Mesh 1' : self
-- Parameter 'operation' : 'DIFFERENCE'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'DIFFERENCE'
+
+
 
 #### Arguments:
 - **mesh_2** (_Geometry_) : socket 'Mesh 2' (id: Mesh 2)
@@ -413,10 +417,11 @@ distribute_points_on_faces(density=None, seed=None, distribute_method='RANDOM', 
 
 > Method ERROR: Node 'Distribute Points on Faces' not found
 
-Information
------------
-- Socket 'Mesh' : self
-- Socket 'Selection' : self[selection]
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+
+
 
 #### Arguments:
 - **density** (_Float_ = None) : socket 'Density' (id: Density)
@@ -442,11 +447,12 @@ distribute_points_on_faces_poisson(distance_min=None, density_max=None, density_
 
 > Method ERROR: Node 'Distribute Points on Faces' not found
 
-Information
------------
-- Socket 'Mesh' : self
-- Socket 'Selection' : self[selection]
-- Parameter 'distribute_method' : 'POISSON'
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+- **Parameter** : 'POISSON'
+
+
 
 #### Arguments:
 - **distance_min** (_Float_ = None) : socket 'Distance Min' (id: Distance Min)
@@ -473,11 +479,12 @@ distribute_points_on_faces_random(density=None, seed=None, use_legacy_normal=Fal
 
 > Method ERROR: Node 'Distribute Points on Faces' not found
 
-Information
------------
-- Socket 'Mesh' : self
-- Socket 'Selection' : self[selection]
-- Parameter 'distribute_method' : 'RANDOM'
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+- **Parameter** : 'RANDOM'
+
+
 
 #### Arguments:
 - **density** (_Float_ = None) : socket 'Density' (id: Density)
@@ -502,10 +509,11 @@ domain_size()
 
 > Method [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
 
-Information
------------
-- Socket 'Geometry' : self
-- Parameter 'component' : 'MESH'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'MESH'
+
+
 
 #### Returns:
 - **node** (_Integer_)
@@ -523,9 +531,10 @@ dual(keep_boundaries=None)
 
 > Jump Method [Dual Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/dual_mesh.html)
 
-Information
------------
-- Socket 'Mesh' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Arguments:
 - **keep_boundaries** (_Boolean_ = None) : socket 'Keep Boundaries' (id: Keep Boundaries)
@@ -564,9 +573,10 @@ edge_paths_to_curves(start_vertices=None, next_vertex_index=None)
 
 > Method [Edge Paths to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/edge_paths_to_curves.html)
 
-Information
------------
-- Socket 'Mesh' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Arguments:
 - **start_vertices** (_Boolean_ = None) : socket 'Start Vertices' (id: Start Vertices)
@@ -677,11 +687,12 @@ edges_to_points(position=None, radius=None)
 
 > Method [Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_points.html)
 
-Information
------------
-- Socket 'Mesh' : self
-- Socket 'Selection' : self[selection]
-- Parameter 'mode' : 'EDGES'
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+- **Parameter** : 'EDGES'
+
+
 
 #### Arguments:
 - **position** (_Vector_ = None) : socket 'Position' (id: Position)
@@ -721,10 +732,11 @@ extrude(offset=None, offset_scale=None, individual=None, mode='FACES')
 
 > Jump Method [Extrude Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/extrude_mesh.html)
 
-Information
------------
-- Socket 'Mesh' : self
-- Socket 'Selection' : self[selection]
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+
+
 
 #### Arguments:
 - **offset** (_Vector_ = None) : socket 'Offset' (id: Offset)
@@ -750,11 +762,12 @@ extrude_edges(offset=None, offset_scale=None)
 
 > Jump Method [Extrude Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/extrude_mesh.html)
 
-Information
------------
-- Socket 'Mesh' : self
-- Socket 'Selection' : self[selection]
-- Parameter 'mode' : 'EDGES'
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+- **Parameter** : 'EDGES'
+
+
 
 #### Arguments:
 - **offset** (_Vector_ = None) : socket 'Offset' (id: Offset)
@@ -778,11 +791,12 @@ extrude_faces(offset=None, offset_scale=None, individual=None)
 
 > Jump Method [Extrude Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/extrude_mesh.html)
 
-Information
------------
-- Socket 'Mesh' : self
-- Socket 'Selection' : self[selection]
-- Parameter 'mode' : 'FACES'
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+- **Parameter** : 'FACES'
+
+
 
 #### Arguments:
 - **offset** (_Vector_ = None) : socket 'Offset' (id: Offset)
@@ -807,11 +821,12 @@ extrude_vertices(offset=None, offset_scale=None)
 
 > Jump Method [Extrude Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/extrude_mesh.html)
 
-Information
------------
-- Socket 'Mesh' : self
-- Socket 'Selection' : self[selection]
-- Parameter 'mode' : 'VERTICES'
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+- **Parameter** : 'VERTICES'
+
+
 
 #### Arguments:
 - **offset** (_Vector_ = None) : socket 'Offset' (id: Offset)
@@ -893,11 +908,12 @@ faces_to_points(position=None, radius=None)
 
 > Method [Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_points.html)
 
-Information
------------
-- Socket 'Mesh' : self
-- Socket 'Selection' : self[selection]
-- Parameter 'mode' : 'FACES'
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+- **Parameter** : 'FACES'
+
+
 
 #### Arguments:
 - **position** (_Vector_ = None) : socket 'Position' (id: Position)
@@ -921,10 +937,11 @@ flip_faces()
 
 > Jump Method [Flip Faces](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/flip_faces.html)
 
-Information
------------
-- Socket 'Mesh' : self
-- Socket 'Selection' : self[selection]
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+
+
 
 #### Returns:
 - **Mesh** :
@@ -1030,9 +1047,10 @@ Intersect(*mesh, self_intersection=None, hole_tolerant=None, solver='FLOAT')
 
 > Constructor [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html)
 
-Information
------------
-- Parameter 'operation' : 'INTERSECT'
+#### Information:
+- **Parameter** : 'INTERSECT'
+
+
 
 #### Arguments:
 - **mesh** (_Geometry_) : socket 'Mesh' (id: Mesh 2)
@@ -1058,9 +1076,10 @@ intersect(*mesh, self_intersection=None, hole_tolerant=None, solver='FLOAT')
 
 > Jump Method [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html)
 
-Information
------------
-- Parameter 'operation' : 'INTERSECT'
+#### Information:
+- **Parameter** : 'INTERSECT'
+
+
 
 #### Arguments:
 - **mesh** (_Geometry_) : socket 'Mesh' (id: Mesh 2)
@@ -1132,9 +1151,10 @@ LineEndPoints(count=None, start_location=None, end_location=None, count_mode='TO
 
 > Constructor [Mesh Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/mesh_line.html)
 
-Information
------------
-- Parameter 'mode' : 'END_POINTS'
+#### Information:
+- **Parameter** : 'END_POINTS'
+
+
 
 #### Arguments:
 - **count** (_Integer_ = None) : socket 'Count' (id: Count)
@@ -1160,9 +1180,10 @@ LineOffset(count=None, start_location=None, offset=None, count_mode='TOTAL')
 
 > Constructor [Mesh Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/mesh_line.html)
 
-Information
------------
-- Parameter 'mode' : 'OFFSET'
+#### Information:
+- **Parameter** : 'OFFSET'
+
+
 
 #### Arguments:
 - **count** (_Integer_ = None) : socket 'Count' (id: Count)
@@ -1247,10 +1268,11 @@ sample_nearest_surface(value=None, group_id=None, sample_position=None, sample_g
 
 > Method [Sample Nearest Surface](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/sample/sample_nearest_surface.html)
 
-Information
------------
-- Socket 'Mesh' : self
-- Parameter 'data_type' : depending on 'value' type
+#### Information:
+- **Socket** : self
+- **Parameter** : depending on 'value' type
+
+
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
@@ -1276,10 +1298,11 @@ sample_uv_surface(value=None, uv_map=None, sample_uv=None)
 
 > Method [Sample UV Surface](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/sample/sample_uv_surface.html)
 
-Information
------------
-- Socket 'Mesh' : self
-- Parameter 'data_type' : depending on 'value' type
+#### Information:
+- **Socket** : self
+- **Parameter** : depending on 'value' type
+
+
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
@@ -1304,10 +1327,11 @@ set_face_set(face_set=None)
 
 > Jump Method [Set Face Set](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/write/set_face_set.html)
 
-Information
------------
-- Socket 'Mesh' : self
-- Socket 'Selection' : self[selection]
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+
+
 
 #### Arguments:
 - **face_set** (_Integer_ = None) : socket 'Face Set' (id: Face Set)
@@ -1352,10 +1376,11 @@ split_edges()
 
 > Jump Method [Split Edges](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/split_edges.html)
 
-Information
------------
-- Socket 'Mesh' : self
-- Socket 'Selection' : self[selection]
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+
+
 
 #### Returns:
 - **Mesh** :
@@ -1373,9 +1398,10 @@ subdivide(level=None)
 
 > Jump Method [Subdivide Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/subdivide_mesh.html)
 
-Information
------------
-- Socket 'Mesh' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Arguments:
 - **level** (_Integer_ = None) : socket 'Level' (id: Level)
@@ -1398,9 +1424,10 @@ subdivision_surface(level=None, edge_crease=None, vertex_crease=None, boundary_s
 
 > Jump Method [Subdivision Surface](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/subdivision_surface.html)
 
-Information
------------
-- Socket 'Mesh' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Arguments:
 - **level** (_Integer_ = None) : socket 'Level' (id: Level)
@@ -1427,10 +1454,11 @@ to_curve()
 
 > Method [Mesh to Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_curve.html)
 
-Information
------------
-- Socket 'Mesh' : self
-- Socket 'Selection' : self[selection]
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+
+
 
 #### Returns:
 - **Curve** :
@@ -1448,9 +1476,10 @@ to_density_grid(density=None, voxel_size=None, gradient_width=None)
 
 > Method ERROR: Node 'Mesh to Density Grid' not found
 
-Information
------------
-- Socket 'Mesh' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Arguments:
 - **density** (_Float_ = None) : socket 'Density' (id: Density)
@@ -1475,10 +1504,11 @@ to_points(position=None, radius=None, mode='VERTICES')
 
 > Method [Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_points.html)
 
-Information
------------
-- Socket 'Mesh' : self
-- Socket 'Selection' : self[selection]
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+
+
 
 #### Arguments:
 - **position** (_Vector_ = None) : socket 'Position' (id: Position)
@@ -1503,9 +1533,10 @@ to_sdf_grid(voxel_size=None, band_width=None)
 
 > Method ERROR: Node 'Mesh to SDF Grid' not found
 
-Information
------------
-- Socket 'Mesh' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Arguments:
 - **voxel_size** (_Float_ = None) : socket 'Voxel Size' (id: Voxel Size)
@@ -1529,9 +1560,10 @@ to_volume(density=None, voxel_amount=None, interior_band_width=None, resolution_
 
 > Method [Mesh to Volume](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_volume.html)
 
-Information
------------
-- Socket 'Mesh' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Arguments:
 - **density** (_Float_ = None) : socket 'Density' (id: Density)
@@ -1557,10 +1589,11 @@ triangulate(minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_D
 
 > Jump Method [Triangulate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/triangulate.html)
 
-Information
------------
-- Socket 'Mesh' : self
-- Socket 'Selection' : self[selection]
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+
+
 
 #### Arguments:
 - **minimum_vertices** (_Integer_ = None) : socket 'Minimum Vertices' (id: Minimum Vertices)
@@ -1585,9 +1618,10 @@ Union(*mesh, self_intersection=None, hole_tolerant=None, solver='FLOAT')
 
 > Constructor [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html)
 
-Information
------------
-- Parameter 'operation' : 'UNION'
+#### Information:
+- **Parameter** : 'UNION'
+
+
 
 #### Arguments:
 - **mesh** (_Geometry_) : socket 'Mesh' (id: Mesh 2)
@@ -1613,9 +1647,10 @@ union(*mesh, self_intersection=None, hole_tolerant=None, solver='FLOAT')
 
 > Jump Method [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html)
 
-Information
------------
-- Parameter 'operation' : 'UNION'
+#### Information:
+- **Parameter** : 'UNION'
+
+
 
 #### Arguments:
 - **mesh** (_Geometry_) : socket 'Mesh' (id: Mesh 2)
@@ -1701,11 +1736,12 @@ vertices_to_points(position=None, radius=None)
 
 > Method [Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_points.html)
 
-Information
------------
-- Socket 'Mesh' : self
-- Socket 'Selection' : self[selection]
-- Parameter 'mode' : 'VERTICES'
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+- **Parameter** : 'VERTICES'
+
+
 
 #### Arguments:
 - **position** (_Vector_ = None) : socket 'Position' (id: Position)

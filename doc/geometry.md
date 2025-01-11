@@ -53,10 +53,6 @@ geometry = Geometry(name="Mesh") # Input group geometry
 
 > Property Get [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/separate_components.html)
 
-Information
------------
-- Socket 'Geometry' : self
-
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geometry.md#geometry) :black_small_square: [Content](geometry.md#content) :black_small_square: [Properties](geometry.md#properties)</sub>
 
 ### grease_pencil
@@ -65,10 +61,6 @@ Information
 >
 
 > Property Get [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/separate_components.html)
-
-Information
------------
-- Socket 'Geometry' : self
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geometry.md#geometry) :black_small_square: [Content](geometry.md#content) :black_small_square: [Properties](geometry.md#properties)</sub>
 
@@ -87,10 +79,6 @@ Property get node <Node Set ID>
 >
 
 > Property Get [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/separate_components.html)
-
-Information
------------
-- Socket 'Geometry' : self
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geometry.md#geometry) :black_small_square: [Content](geometry.md#content) :black_small_square: [Properties](geometry.md#properties)</sub>
 
@@ -119,10 +107,6 @@ Property get node <Node Set Material Index>
 
 > Property Get [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/separate_components.html)
 
-Information
------------
-- Socket 'Geometry' : self
-
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geometry.md#geometry) :black_small_square: [Content](geometry.md#content) :black_small_square: [Properties](geometry.md#properties)</sub>
 
 ### name
@@ -150,10 +134,6 @@ Write only property for node <Node Set Position>
 
 > Property Get [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/separate_components.html)
 
-Information
------------
-- Socket 'Geometry' : self
-
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geometry.md#geometry) :black_small_square: [Content](geometry.md#content) :black_small_square: [Properties](geometry.md#properties)</sub>
 
 ### position
@@ -171,10 +151,6 @@ Property get node <Node Set Position>
 >
 
 > Property Get [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/separate_components.html)
-
-Information
------------
-- Socket 'Geometry' : self
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geometry.md#geometry) :black_small_square: [Content](geometry.md#content) :black_small_square: [Properties](geometry.md#properties)</sub>
 
@@ -216,9 +192,10 @@ bounding_box()
 
 > Method [Bounding Box](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/bounding_box.html)
 
-Information
------------
-- Socket 'Geometry' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Returns:
 - **Mesh** (_Vector_)
@@ -236,9 +213,10 @@ convex_hull()
 
 > Method [Convex Hull](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/convex_hull.html)
 
-Information
------------
-- Socket 'Geometry' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Returns:
 - **Mesh** :
@@ -307,10 +285,11 @@ instance_on_points(instance=None, pick_instance=None, instance_index=None, rotat
 
 > Method [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html)
 
-Information
------------
-- Socket 'Points' : self
-- Socket 'Selection' : self[selection]
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+
+
 
 #### Arguments:
 - **instance** (_Geometry_ = None) : socket 'Instance' (id: Instance)
@@ -379,10 +358,11 @@ merge(distance=None, mode='ALL')
 
 > Jump Method [Merge by Distance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/merge_by_distance.html)
 
-Information
------------
-- Socket 'Geometry' : self
-- Socket 'Selection' : self[selection]
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+
+
 
 #### Arguments:
 - **distance** (_Float_ = None) : socket 'Distance' (id: Distance)
@@ -406,11 +386,12 @@ merge_all(distance=None)
 
 > Jump Method [Merge by Distance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/merge_by_distance.html)
 
-Information
------------
-- Socket 'Geometry' : self
-- Socket 'Selection' : self[selection]
-- Parameter 'mode' : 'ALL'
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+- **Parameter** : 'ALL'
+
+
 
 #### Arguments:
 - **distance** (_Float_ = None) : socket 'Distance' (id: Distance)
@@ -433,10 +414,11 @@ merge_by_distance(distance=None, mode='ALL')
 
 > Jump Method [Merge by Distance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/merge_by_distance.html)
 
-Information
------------
-- Socket 'Geometry' : self
-- Socket 'Selection' : self[selection]
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+
+
 
 #### Arguments:
 - **distance** (_Float_ = None) : socket 'Distance' (id: Distance)
@@ -460,11 +442,12 @@ merge_connected(distance=None)
 
 > Jump Method [Merge by Distance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/merge_by_distance.html)
 
-Information
------------
-- Socket 'Geometry' : self
-- Socket 'Selection' : self[selection]
-- Parameter 'mode' : 'CONNECTED'
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+- **Parameter** : 'CONNECTED'
+
+
 
 #### Arguments:
 - **distance** (_Float_ = None) : socket 'Distance' (id: Distance)
@@ -487,9 +470,10 @@ proximity(group_id=None, sample_position=None, sample_group_id=None, target_elem
 
 > Method [Geometry Proximity](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/geometry_proximity.html)
 
-Information
------------
-- Socket 'Geometry' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Arguments:
 - **group_id** (_Integer_ = None) : socket 'Group ID' (id: Group ID)
@@ -515,10 +499,11 @@ proximity_edges(group_id=None, sample_position=None, sample_group_id=None)
 
 > Method [Geometry Proximity](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/geometry_proximity.html)
 
-Information
------------
-- Socket 'Geometry' : self
-- Parameter 'target_element' : 'EDGES'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'EDGES'
+
+
 
 #### Arguments:
 - **group_id** (_Integer_ = None) : socket 'Group ID' (id: Group ID)
@@ -543,10 +528,11 @@ proximity_faces(group_id=None, sample_position=None, sample_group_id=None)
 
 > Method [Geometry Proximity](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/geometry_proximity.html)
 
-Information
------------
-- Socket 'Geometry' : self
-- Parameter 'target_element' : 'FACES'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'FACES'
+
+
 
 #### Arguments:
 - **group_id** (_Integer_ = None) : socket 'Group ID' (id: Group ID)
@@ -571,10 +557,11 @@ proximity_points(group_id=None, sample_position=None, sample_group_id=None)
 
 > Method [Geometry Proximity](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/geometry_proximity.html)
 
-Information
------------
-- Socket 'Geometry' : self
-- Parameter 'target_element' : 'POINTS'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'POINTS'
+
+
 
 #### Arguments:
 - **group_id** (_Integer_ = None) : socket 'Group ID' (id: Group ID)
@@ -599,10 +586,11 @@ raycast(attribute=None, source_position=None, ray_direction=None, ray_length=Non
 
 > Method [Raycast](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/raycast.html)
 
-Information
------------
-- Socket 'Target Geometry' : self
-- Parameter 'data_type' : depending on 'attribute' type
+#### Information:
+- **Socket** : self
+- **Parameter** : depending on 'attribute' type
+
+
 
 #### Arguments:
 - **attribute** (_Float_ = None) : socket 'Attribute' (id: Attribute)
@@ -629,11 +617,12 @@ raycast_interpolated(attribute=None, source_position=None, ray_direction=None, r
 
 > Method [Raycast](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/raycast.html)
 
-Information
------------
-- Socket 'Target Geometry' : self
-- Parameter 'data_type' : depending on 'attribute' type
-- Parameter 'mapping' : 'INTERPOLATED'
+#### Information:
+- **Socket** : self
+- **Parameter** : depending on 'attribute' type
+- **Parameter** : 'INTERPOLATED'
+
+
 
 #### Arguments:
 - **attribute** (_Float_ = None) : socket 'Attribute' (id: Attribute)
@@ -659,11 +648,12 @@ raycast_nearest(attribute=None, source_position=None, ray_direction=None, ray_le
 
 > Method [Raycast](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/raycast.html)
 
-Information
------------
-- Socket 'Target Geometry' : self
-- Parameter 'data_type' : depending on 'attribute' type
-- Parameter 'mapping' : 'NEAREST'
+#### Information:
+- **Socket** : self
+- **Parameter** : depending on 'attribute' type
+- **Parameter** : 'NEAREST'
+
+
 
 #### Arguments:
 - **attribute** (_Float_ = None) : socket 'Attribute' (id: Attribute)
@@ -689,10 +679,11 @@ realize(realize_all=None, depth=None)
 
 > Jump Method [Realize Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/realize_instances.html)
 
-Information
------------
-- Socket 'Geometry' : self
-- Socket 'Selection' : self[selection]
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+
+
 
 #### Arguments:
 - **realize_all** (_Boolean_ = None) : socket 'Realize All' (id: Realize All)
@@ -716,9 +707,10 @@ remove_named_attribute(name=None, pattern_mode='EXACT')
 
 > Jump Method [Remove Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/remove_named_attribute.html)
 
-Information
------------
-- Socket 'Geometry' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Arguments:
 - **name** (_String_ = None) : socket 'Name' (id: Name)
@@ -742,10 +734,11 @@ remove_names(name=None)
 
 > Jump Method [Remove Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/remove_named_attribute.html)
 
-Information
------------
-- Socket 'Geometry' : self
-- Parameter 'pattern_mode' : 'WILDCARD'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'WILDCARD'
+
+
 
 #### Arguments:
 - **name** (_String_ = None) : socket 'Name' (id: Name)
@@ -768,9 +761,10 @@ replace_material(old=None, new=None)
 
 > Jump Method [Replace Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/replace_material.html)
 
-Information
------------
-- Socket 'Geometry' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Arguments:
 - **old** (_Material_ = None) : socket 'Old' (id: Old)
@@ -794,9 +788,10 @@ separate_components()
 
 > Method [Separate Components](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/separate_components.html)
 
-Information
------------
-- Socket 'Geometry' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Returns:
 - **node** (_Mesh_)
@@ -814,10 +809,11 @@ set_id(id=None)
 
 > Jump Method [Set ID](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/write/set_id.html)
 
-Information
------------
-- Socket 'Geometry' : self
-- Socket 'Selection' : self[selection]
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+
+
 
 #### Arguments:
 - **id** (_Integer_ = None) : socket 'ID' (id: ID)
@@ -840,10 +836,11 @@ set_material(material=None)
 
 > Jump Method [Set Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material.html)
 
-Information
------------
-- Socket 'Geometry' : self
-- Socket 'Selection' : self[selection]
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+
+
 
 #### Arguments:
 - **material** (_Material_ = None) : socket 'Material' (id: Material)
@@ -866,10 +863,11 @@ set_material_index(material_index=None)
 
 > Jump Method [Set Material Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/set_material_index.html)
 
-Information
------------
-- Socket 'Geometry' : self
-- Socket 'Selection' : self[selection]
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+
+
 
 #### Arguments:
 - **material_index** (_Integer_ = None) : socket 'Material Index' (id: Material Index)
@@ -892,9 +890,10 @@ set_name(name=None)
 
 > Jump Method [Set Geometry Name](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/write/set_geometry_name.html)
 
-Information
------------
-- Socket 'Geometry' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Arguments:
 - **name** (_String_ = None) : socket 'Name' (id: Name)
@@ -917,10 +916,11 @@ set_position(position=None, offset=None)
 
 > Jump Method [Set Position](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/write/set_position.html)
 
-Information
------------
-- Socket 'Geometry' : self
-- Socket 'Selection' : self[selection]
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+
+
 
 #### Arguments:
 - **position** (_Vector_ = None) : socket 'Position' (id: Position)
@@ -944,10 +944,11 @@ set_spline_cyclic(cyclic=None)
 
 > Jump Method [Set Spline Cyclic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_spline_cyclic.html)
 
-Information
------------
-- Socket 'Geometry' : self
-- Socket 'Selection' : self[selection]
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+
+
 
 #### Arguments:
 - **cyclic** (_Boolean_ = None) : socket 'Cyclic' (id: Cyclic)
@@ -970,10 +971,11 @@ set_spline_resolution(resolution=None)
 
 > Jump Method [Set Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_spline_resolution.html)
 
-Information
------------
-- Socket 'Geometry' : self
-- Socket 'Selection' : self[selection]
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+
+
 
 #### Arguments:
 - **resolution** (_Integer_ = None) : socket 'Resolution' (id: Resolution)
@@ -1017,9 +1019,10 @@ transform(translation=None, rotation=None, scale=None, transform=None)
 
 > Jump Method [Transform Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/transform_geometry.html)
 
-Information
------------
-- Socket 'Geometry' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Arguments:
 - **translation** (_Vector_ = None) : socket 'Translation' (id: Translation)
@@ -1045,10 +1048,11 @@ transform_components(translation=None, rotation=None, scale=None)
 
 > Jump Method [Transform Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/transform_geometry.html)
 
-Information
------------
-- Socket 'Geometry' : self
-- Parameter 'mode' : 'COMPONENTS'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'COMPONENTS'
+
+
 
 #### Arguments:
 - **translation** (_Vector_ = None) : socket 'Translation' (id: Translation)
@@ -1073,9 +1077,10 @@ transform_geometry(translation=None, rotation=None, scale=None, transform=None, 
 
 > Jump Method [Transform Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/transform_geometry.html)
 
-Information
------------
-- Socket 'Geometry' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Arguments:
 - **translation** (_Vector_ = None) : socket 'Translation' (id: Translation)
@@ -1102,10 +1107,11 @@ transform_matrix(transform=None)
 
 > Jump Method [Transform Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/transform_geometry.html)
 
-Information
------------
-- Socket 'Geometry' : self
-- Parameter 'mode' : 'MATRIX'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'MATRIX'
+
+
 
 #### Arguments:
 - **transform** (_Matrix_ = None) : socket 'Transform' (id: Transform)
@@ -1128,11 +1134,12 @@ viewer(value=None)
 
 > Method [Viewer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/output/viewer.html)
 
-Information
------------
-- Socket 'Geometry' : self
-- Parameter 'data_type' : depending on 'value' type
-- Parameter 'domain' : 'AUTO'
+#### Information:
+- **Socket** : self
+- **Parameter** : depending on 'value' type
+- **Parameter** : 'AUTO'
+
+
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)

@@ -56,9 +56,10 @@ info(as_instance=None, transform_space='ORIGINAL')
 
 > Method [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene/object_info.html)
 
-Information
------------
-- Socket 'Object' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Arguments:
 - **as_instance** (_Boolean_ = None) : socket 'As Instance' (id: As Instance)

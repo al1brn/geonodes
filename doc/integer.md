@@ -72,10 +72,11 @@ abs()
 
 > Method [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
-Information
------------
-- Socket 'Value' : self
-- Parameter 'operation' : 'ABSOLUTE'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'ABSOLUTE'
+
+
 
 #### Returns:
 - **Integer** :
@@ -93,10 +94,11 @@ add(value=None)
 
 > Method [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
-Information
------------
-- Socket 'Value' : self
-- Parameter 'operation' : 'ADD'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'ADD'
+
+
 
 #### Arguments:
 - **value** (_Integer_ = None) : socket 'Value' (id: Value_001)
@@ -119,10 +121,11 @@ blur(iterations=None, weight=None)
 
 > Method [Blur Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/blur_attribute.html)
 
-Information
------------
-- Socket 'Value' : self
-- Parameter 'data_type' : 'INT'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'INT'
+
+
 
 #### Arguments:
 - **iterations** (_Integer_ = None) : socket 'Iterations' (id: Iterations)
@@ -146,10 +149,11 @@ divide(value=None)
 
 > Method [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
-Information
------------
-- Socket 'Value' : self
-- Parameter 'operation' : 'DIVIDE'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'DIVIDE'
+
+
 
 #### Arguments:
 - **value** (_Integer_ = None) : socket 'Value' (id: Value_001)
@@ -172,10 +176,11 @@ divide_ceil(value=None)
 
 > Method [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
-Information
------------
-- Socket 'Value' : self
-- Parameter 'operation' : 'DIVIDE_CEIL'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'DIVIDE_CEIL'
+
+
 
 #### Arguments:
 - **value** (_Integer_ = None) : socket 'Value' (id: Value_001)
@@ -198,10 +203,11 @@ divide_floor(value=None)
 
 > Method [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
-Information
------------
-- Socket 'Value' : self
-- Parameter 'operation' : 'DIVIDE_FLOOR'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'DIVIDE_FLOOR'
+
+
 
 #### Arguments:
 - **value** (_Integer_ = None) : socket 'Value' (id: Value_001)
@@ -224,10 +230,11 @@ divide_round(value=None)
 
 > Method [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
-Information
------------
-- Socket 'Value' : self
-- Parameter 'operation' : 'DIVIDE_ROUND'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'DIVIDE_ROUND'
+
+
 
 #### Arguments:
 - **value** (_Integer_ = None) : socket 'Value' (id: Value_001)
@@ -250,12 +257,13 @@ equal(b=None)
 
 > Method [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
-Information
------------
-- Socket 'A' : self
-- Parameter 'data_type' : 'INT'
-- Parameter 'mode' : 'ELEMENT'
-- Parameter 'operation' : 'EQUAL'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'INT'
+- **Parameter** : 'ELEMENT'
+- **Parameter** : 'EQUAL'
+
+
 
 #### Arguments:
 - **b** (_Integer_ = None) : socket 'B' (id: B_INT)
@@ -304,10 +312,11 @@ floored_modulo(value=None)
 
 > Method [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
-Information
------------
-- Socket 'Value' : self
-- Parameter 'operation' : 'FLOORED_MODULO'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'FLOORED_MODULO'
+
+
 
 #### Arguments:
 - **value** (_Integer_ = None) : socket 'Value' (id: Value_001)
@@ -330,10 +339,11 @@ gcd(value=None)
 
 > Method [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
-Information
------------
-- Socket 'Value' : self
-- Parameter 'operation' : 'GCD'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'GCD'
+
+
 
 #### Arguments:
 - **value** (_Integer_ = None) : socket 'Value' (id: Value_001)
@@ -356,12 +366,13 @@ greater_equal(b=None)
 
 > Method [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
-Information
------------
-- Socket 'A' : self
-- Parameter 'data_type' : 'INT'
-- Parameter 'mode' : 'ELEMENT'
-- Parameter 'operation' : 'GREATER_EQUAL'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'INT'
+- **Parameter** : 'ELEMENT'
+- **Parameter** : 'GREATER_EQUAL'
+
+
 
 #### Arguments:
 - **b** (_Integer_ = None) : socket 'B' (id: B_INT)
@@ -384,12 +395,13 @@ greater_than(b=None)
 
 > Method [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
-Information
------------
-- Socket 'A' : self
-- Parameter 'data_type' : 'INT'
-- Parameter 'mode' : 'ELEMENT'
-- Parameter 'operation' : 'GREATER_THAN'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'INT'
+- **Parameter** : 'ELEMENT'
+- **Parameter** : 'GREATER_THAN'
+
+
 
 #### Arguments:
 - **b** (_Integer_ = None) : socket 'B' (id: B_INT)
@@ -412,10 +424,11 @@ hash_value(seed=None)
 
 > Method [Hash Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/hash_value.html)
 
-Information
------------
-- Socket 'Value' : self
-- Parameter 'data_type' : 'INT'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'INT'
+
+
 
 #### Arguments:
 - **seed** (_Integer_ = None) : socket 'Seed' (id: Seed)
@@ -481,10 +494,11 @@ lcm(value=None)
 
 > Method [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
-Information
------------
-- Socket 'Value' : self
-- Parameter 'operation' : 'LCM'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'LCM'
+
+
 
 #### Arguments:
 - **value** (_Integer_ = None) : socket 'Value' (id: Value_001)
@@ -507,12 +521,13 @@ less_equal(b=None)
 
 > Method [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
-Information
------------
-- Socket 'A' : self
-- Parameter 'data_type' : 'INT'
-- Parameter 'mode' : 'ELEMENT'
-- Parameter 'operation' : 'LESS_EQUAL'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'INT'
+- **Parameter** : 'ELEMENT'
+- **Parameter** : 'LESS_EQUAL'
+
+
 
 #### Arguments:
 - **b** (_Integer_ = None) : socket 'B' (id: B_INT)
@@ -535,12 +550,13 @@ less_than(b=None)
 
 > Method [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
-Information
------------
-- Socket 'A' : self
-- Parameter 'data_type' : 'INT'
-- Parameter 'mode' : 'ELEMENT'
-- Parameter 'operation' : 'LESS_THAN'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'INT'
+- **Parameter** : 'ELEMENT'
+- **Parameter** : 'LESS_THAN'
+
+
 
 #### Arguments:
 - **b** (_Integer_ = None) : socket 'B' (id: B_INT)
@@ -563,10 +579,11 @@ max(value=None)
 
 > Method [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
-Information
------------
-- Socket 'Value' : self
-- Parameter 'operation' : 'MAXIMUM'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'MAXIMUM'
+
+
 
 #### Arguments:
 - **value** (_Integer_ = None) : socket 'Value' (id: Value_001)
@@ -589,10 +606,11 @@ min(value=None)
 
 > Method [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
-Information
------------
-- Socket 'Value' : self
-- Parameter 'operation' : 'MINIMUM'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'MINIMUM'
+
+
 
 #### Arguments:
 - **value** (_Integer_ = None) : socket 'Value' (id: Value_001)
@@ -640,10 +658,11 @@ modulo(value=None)
 
 > Method [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
-Information
------------
-- Socket 'Value' : self
-- Parameter 'operation' : 'MODULO'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'MODULO'
+
+
 
 #### Arguments:
 - **value** (_Integer_ = None) : socket 'Value' (id: Value_001)
@@ -666,10 +685,11 @@ multiply(value=None)
 
 > Method [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
-Information
------------
-- Socket 'Value' : self
-- Parameter 'operation' : 'MULTIPLY'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'MULTIPLY'
+
+
 
 #### Arguments:
 - **value** (_Integer_ = None) : socket 'Value' (id: Value_001)
@@ -692,10 +712,11 @@ multiply_add(multiplier=None, addend=None)
 
 > Method [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
-Information
------------
-- Socket 'Value' : self
-- Parameter 'operation' : 'MULTIPLY_ADD'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'MULTIPLY_ADD'
+
+
 
 #### Arguments:
 - **multiplier** (_Integer_ = None) : socket 'Multiplier' (id: Value_001)
@@ -719,9 +740,10 @@ Named(name=None)
 
 > Constructor [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
-Information
------------
-- Parameter 'data_type' : 'INT'
+#### Information:
+- **Parameter** : 'INT'
+
+
 
 #### Arguments:
 - **name** (_String_ = None) : socket 'Name' (id: Name)
@@ -744,9 +766,10 @@ NamedAttribute(name=None)
 
 > Constructor [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
-Information
------------
-- Parameter 'data_type' : 'INT'
+#### Information:
+- **Parameter** : 'INT'
+
+
 
 #### Arguments:
 - **name** (_String_ = None) : socket 'Name' (id: Name)
@@ -769,10 +792,11 @@ negate()
 
 > Method [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
-Information
------------
-- Socket 'Value' : self
-- Parameter 'operation' : 'NEGATE'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'NEGATE'
+
+
 
 #### Returns:
 - **Integer** :
@@ -790,12 +814,13 @@ not_equal(b=None)
 
 > Method [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
-Information
------------
-- Socket 'A' : self
-- Parameter 'data_type' : 'INT'
-- Parameter 'mode' : 'ELEMENT'
-- Parameter 'operation' : 'NOT_EQUAL'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'INT'
+- **Parameter** : 'ELEMENT'
+- **Parameter** : 'NOT_EQUAL'
+
+
 
 #### Arguments:
 - **b** (_Integer_ = None) : socket 'B' (id: B_INT)
@@ -844,10 +869,11 @@ power(exponent=None)
 
 > Method [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
-Information
------------
-- Socket 'Base' : self
-- Parameter 'operation' : 'POWER'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'POWER'
+
+
 
 #### Arguments:
 - **exponent** (_Integer_ = None) : socket 'Exponent' (id: Value_001)
@@ -870,10 +896,11 @@ sample_grid(position=None, interpolation_mode='TRILINEAR')
 
 > Method ERROR: Node 'Sample Grid' not found
 
-Information
------------
-- Socket 'Grid' : self
-- Parameter 'data_type' : 'INT'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'INT'
+
+
 
 #### Arguments:
 - **position** (_Vector_ = None) : socket 'Position' (id: Position)
@@ -897,10 +924,11 @@ sample_grid_index(x=None, y=None, z=None)
 
 > Method ERROR: Node 'Sample Grid Index' not found
 
-Information
------------
-- Socket 'Grid' : self
-- Parameter 'data_type' : 'INT'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'INT'
+
+
 
 #### Arguments:
 - **x** (_Integer_ = None) : socket 'X' (id: X)
@@ -925,10 +953,11 @@ sign()
 
 > Method [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
-Information
------------
-- Socket 'Value' : self
-- Parameter 'operation' : 'SIGN'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'SIGN'
+
+
 
 #### Returns:
 - **Integer** :
@@ -946,10 +975,11 @@ subtract(value=None)
 
 > Method [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
-Information
------------
-- Socket 'Value' : self
-- Parameter 'operation' : 'SUBTRACT'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'SUBTRACT'
+
+
 
 #### Arguments:
 - **value** (_Integer_ = None) : socket 'Value' (id: Value_001)
@@ -972,10 +1002,11 @@ to_string()
 
 > Method [Value to String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/value_to_string.html)
 
-Information
------------
-- Socket 'Value' : self
-- Parameter 'data_type' : 'INT'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'INT'
+
+
 
 #### Returns:
 - **String** :

@@ -156,9 +156,10 @@ to_points(count=None, mode='COUNT')
 
 > Method [Curve to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curve_to_points.html)
 
-Information
------------
-- Socket 'Curve' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Arguments:
 - **count** (_Integer_ = None) : socket 'Count' (id: Count)
@@ -182,10 +183,11 @@ to_points_count(count=None)
 
 > Method [Curve to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curve_to_points.html)
 
-Information
------------
-- Socket 'Curve' : self
-- Parameter 'mode' : 'COUNT'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'COUNT'
+
+
 
 #### Arguments:
 - **count** (_Integer_ = None) : socket 'Count' (id: Count)
@@ -208,10 +210,11 @@ to_points_evaluated()
 
 > Method [Curve to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curve_to_points.html)
 
-Information
------------
-- Socket 'Curve' : self
-- Parameter 'mode' : 'EVALUATED'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'EVALUATED'
+
+
 
 #### Returns:
 - **Cloud** (_Vector_)
@@ -229,10 +232,11 @@ to_points_length(length=None)
 
 > Method [Curve to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curve_to_points.html)
 
-Information
------------
-- Socket 'Curve' : self
-- Parameter 'mode' : 'LENGTH'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'LENGTH'
+
+
 
 #### Arguments:
 - **length** (_Float_ = None) : socket 'Length' (id: Length)

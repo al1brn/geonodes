@@ -56,10 +56,11 @@ domain_size()
 
 > Method [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
 
-Information
------------
-- Socket 'Geometry' : self
-- Parameter 'component' : 'GREASEPENCIL'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'GREASEPENCIL'
+
+
 
 #### Returns:
 - **node** (_Integer_)
@@ -77,10 +78,11 @@ merge_layers(mode='MERGE_BY_NAME')
 
 > Jump Method [Merge Layers](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/merge_layers.html)
 
-Information
------------
-- Socket 'Grease Pencil' : self
-- Socket 'Selection' : self[selection]
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+
+
 
 #### Arguments:
 - **mode** (_str_ = MERGE_BY_NAME) : parameter 'mode' in ('MERGE_BY_NAME', 'MERGE_BY_ID')
@@ -103,11 +105,12 @@ merge_layers_by_id(group_id=None)
 
 > Jump Method [Merge Layers](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/merge_layers.html)
 
-Information
------------
-- Socket 'Grease Pencil' : self
-- Socket 'Selection' : self[selection]
-- Parameter 'mode' : 'MERGE_BY_ID'
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+- **Parameter** : 'MERGE_BY_ID'
+
+
 
 #### Arguments:
 - **group_id** (_Integer_ = None) : socket 'Group ID' (id: Group ID)
@@ -130,11 +133,12 @@ merge_layers_by_name()
 
 > Jump Method [Merge Layers](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/merge_layers.html)
 
-Information
------------
-- Socket 'Grease Pencil' : self
-- Socket 'Selection' : self[selection]
-- Parameter 'mode' : 'MERGE_BY_NAME'
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+- **Parameter** : 'MERGE_BY_NAME'
+
+
 
 #### Returns:
 - **GreasePencil** :
@@ -173,10 +177,11 @@ to_curves(layers_as_instances=None)
 
 > Method [Grease Pencil to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/grease_pencil_to_curves.html)
 
-Information
------------
-- Socket 'Grease Pencil' : self
-- Socket 'Selection' : self[selection]
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+
+
 
 #### Arguments:
 - **layers_as_instances** (_Boolean_ = None) : socket 'Layers as Instances' (id: Layers as Instances)

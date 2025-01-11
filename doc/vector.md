@@ -75,10 +75,6 @@ vect = Vector(name="User input").  # Create a new Vector group input
 
 > Property Get [Separate XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/separate_xyz.html)
 
-Information
------------
-- Socket 'Vector' : self
-
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Vector](vector.md#vector) :black_small_square: [Content](vector.md#content) :black_small_square: [Properties](vector.md#properties)</sub>
 
 ### xyz
@@ -87,10 +83,6 @@ Information
 >
 
 > Property Get [Separate XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/separate_xyz.html)
-
-Information
------------
-- Socket 'Vector' : self
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Vector](vector.md#vector) :black_small_square: [Content](vector.md#content) :black_small_square: [Properties](vector.md#properties)</sub>
 
@@ -101,10 +93,6 @@ Information
 
 > Property Get [Separate XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/separate_xyz.html)
 
-Information
------------
-- Socket 'Vector' : self
-
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Vector](vector.md#vector) :black_small_square: [Content](vector.md#content) :black_small_square: [Properties](vector.md#properties)</sub>
 
 ### z
@@ -113,10 +101,6 @@ Information
 >
 
 > Property Get [Separate XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/separate_xyz.html)
-
-Information
------------
-- Socket 'Vector' : self
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Vector](vector.md#vector) :black_small_square: [Content](vector.md#content) :black_small_square: [Properties](vector.md#properties)</sub>
 
@@ -135,10 +119,11 @@ abs()
 
 > Method [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-Information
------------
-- Socket 'Vector' : self
-- Parameter 'operation' : 'ABSOLUTE'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'ABSOLUTE'
+
+
 
 #### Returns:
 - **Vector** :
@@ -185,10 +170,11 @@ add(vector=None)
 
 > Method [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-Information
------------
-- Socket 'Vector' : self
-- Parameter 'operation' : 'ADD'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'ADD'
+
+
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector_001)
@@ -211,10 +197,11 @@ blur(iterations=None, weight=None)
 
 > Method [Blur Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/blur_attribute.html)
 
-Information
------------
-- Socket 'Value' : self
-- Parameter 'data_type' : 'FLOAT_VECTOR'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'FLOAT_VECTOR'
+
+
 
 #### Arguments:
 - **iterations** (_Integer_ = None) : socket 'Iterations' (id: Iterations)
@@ -267,10 +254,11 @@ ceil()
 
 > Method [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-Information
------------
-- Socket 'Vector' : self
-- Parameter 'operation' : 'CEIL'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'CEIL'
+
+
 
 #### Returns:
 - **Vector** :
@@ -311,10 +299,11 @@ cos()
 
 > Method [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-Information
------------
-- Socket 'Vector' : self
-- Parameter 'operation' : 'COSINE'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'COSINE'
+
+
 
 #### Returns:
 - **Vector** :
@@ -332,10 +321,11 @@ cross(vector=None)
 
 > Method [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-Information
------------
-- Socket 'Vector' : self
-- Parameter 'operation' : 'CROSS_PRODUCT'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'CROSS_PRODUCT'
+
+
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector_001)
@@ -434,10 +424,11 @@ distance(vector=None)
 
 > Method [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-Information
------------
-- Socket 'Vector' : self
-- Parameter 'operation' : 'DISTANCE'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'DISTANCE'
+
+
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector_001)
@@ -460,10 +451,11 @@ divide(vector=None)
 
 > Method [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-Information
------------
-- Socket 'Vector' : self
-- Parameter 'operation' : 'DIVIDE'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'DIVIDE'
+
+
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector_001)
@@ -486,10 +478,11 @@ dot(vector=None)
 
 > Method [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-Information
------------
-- Socket 'Vector' : self
-- Parameter 'operation' : 'DOT_PRODUCT'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'DOT_PRODUCT'
+
+
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector_001)
@@ -512,9 +505,10 @@ environment_texture(image=None, interpolation='Linear', projection='EQUIRECTANGU
 
 > Method [Environment Texture](https://docs.blender.org/manual/en/latest/render/shader_nodes/textures/environment.html)
 
-Information
------------
-- Socket 'Vector' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Arguments:
 - **image** (_NoneType_ = None) : parameter 'image'
@@ -539,12 +533,13 @@ equal(b=None, epsilon=None)
 
 > Method [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
-Information
------------
-- Socket 'A' : self
-- Parameter 'data_type' : 'VECTOR'
-- Parameter 'mode' : 'ELEMENT'
-- Parameter 'operation' : 'EQUAL'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'VECTOR'
+- **Parameter** : 'ELEMENT'
+- **Parameter** : 'EQUAL'
+
+
 
 #### Arguments:
 - **b** (_Vector_ = None) : socket 'B' (id: B_VEC3)
@@ -597,10 +592,11 @@ faceforward(incident=None, reference=None)
 
 > Method [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-Information
------------
-- Socket 'Vector' : self
-- Parameter 'operation' : 'FACEFORWARD'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'FACEFORWARD'
+
+
 
 #### Arguments:
 - **incident** (_Vector_ = None) : socket 'Incident' (id: Vector_001)
@@ -624,10 +620,11 @@ floor()
 
 > Method [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-Information
------------
-- Socket 'Vector' : self
-- Parameter 'operation' : 'FLOOR'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'FLOOR'
+
+
 
 #### Returns:
 - **Vector** :
@@ -645,10 +642,11 @@ fraction()
 
 > Method [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-Information
------------
-- Socket 'Vector' : self
-- Parameter 'operation' : 'FRACTION'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'FRACTION'
+
+
 
 #### Returns:
 - **Vector** :
@@ -687,12 +685,13 @@ greater_equal(b=None)
 
 > Method [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
-Information
------------
-- Socket 'A' : self
-- Parameter 'data_type' : 'VECTOR'
-- Parameter 'mode' : 'ELEMENT'
-- Parameter 'operation' : 'GREATER_EQUAL'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'VECTOR'
+- **Parameter** : 'ELEMENT'
+- **Parameter** : 'GREATER_EQUAL'
+
+
 
 #### Arguments:
 - **b** (_Vector_ = None) : socket 'B' (id: B_VEC3)
@@ -715,12 +714,13 @@ greater_than(b=None)
 
 > Method [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
-Information
------------
-- Socket 'A' : self
-- Parameter 'data_type' : 'VECTOR'
-- Parameter 'mode' : 'ELEMENT'
-- Parameter 'operation' : 'GREATER_THAN'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'VECTOR'
+- **Parameter** : 'ELEMENT'
+- **Parameter** : 'GREATER_THAN'
+
+
 
 #### Arguments:
 - **b** (_Vector_ = None) : socket 'B' (id: B_VEC3)
@@ -743,10 +743,11 @@ hash_value(seed=None)
 
 > Method [Hash Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/hash_value.html)
 
-Information
------------
-- Socket 'Value' : self
-- Parameter 'data_type' : 'VECTOR'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'VECTOR'
+
+
 
 #### Arguments:
 - **seed** (_Integer_ = None) : socket 'Seed' (id: Seed)
@@ -769,9 +770,10 @@ ies_texture(strength=None, filepath='', ies=None, mode='INTERNAL')
 
 > Method [IES Texture](https://docs.blender.org/manual/en/latest/render/shader_nodes/textures/ies.html)
 
-Information
------------
-- Socket 'Vector' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Arguments:
 - **strength** (_Float_ = None) : socket 'Strength' (id: Strength)
@@ -797,10 +799,11 @@ ies_texture_external(strength=None, filepath='', ies=None)
 
 > Method [IES Texture](https://docs.blender.org/manual/en/latest/render/shader_nodes/textures/ies.html)
 
-Information
------------
-- Socket 'Vector' : self
-- Parameter 'mode' : 'EXTERNAL'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'EXTERNAL'
+
+
 
 #### Arguments:
 - **strength** (_Float_ = None) : socket 'Strength' (id: Strength)
@@ -825,10 +828,11 @@ ies_texture_internal(strength=None, filepath='', ies=None)
 
 > Method [IES Texture](https://docs.blender.org/manual/en/latest/render/shader_nodes/textures/ies.html)
 
-Information
------------
-- Socket 'Vector' : self
-- Parameter 'mode' : 'INTERNAL'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'INTERNAL'
+
+
 
 #### Arguments:
 - **strength** (_Float_ = None) : socket 'Strength' (id: Strength)
@@ -853,9 +857,10 @@ image_texture(extension='REPEAT', image=None, interpolation='Linear', projection
 
 > Method [Image Texture](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../modeling/geometry_nodes/texture/image.html)
 
-Information
------------
-- Socket 'Vector' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Arguments:
 - **extension** (_str_ = REPEAT) : parameter 'extension' in ('REPEAT', 'EXTEND', 'CLIP', 'MIRROR')
@@ -923,10 +928,11 @@ length()
 
 > Method [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-Information
------------
-- Socket 'Vector' : self
-- Parameter 'operation' : 'LENGTH'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'LENGTH'
+
+
 
 #### Returns:
 - **Float** :
@@ -944,12 +950,13 @@ less_equal(b=None)
 
 > Method [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
-Information
------------
-- Socket 'A' : self
-- Parameter 'data_type' : 'VECTOR'
-- Parameter 'mode' : 'ELEMENT'
-- Parameter 'operation' : 'LESS_EQUAL'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'VECTOR'
+- **Parameter** : 'ELEMENT'
+- **Parameter** : 'LESS_EQUAL'
+
+
 
 #### Arguments:
 - **b** (_Vector_ = None) : socket 'B' (id: B_VEC3)
@@ -972,12 +979,13 @@ less_than(b=None)
 
 > Method [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
-Information
------------
-- Socket 'A' : self
-- Parameter 'data_type' : 'VECTOR'
-- Parameter 'mode' : 'ELEMENT'
-- Parameter 'operation' : 'LESS_THAN'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'VECTOR'
+- **Parameter** : 'ELEMENT'
+- **Parameter** : 'LESS_THAN'
+
+
 
 #### Arguments:
 - **b** (_Vector_ = None) : socket 'B' (id: B_VEC3)
@@ -1026,10 +1034,11 @@ max(vector=None)
 
 > Method [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-Information
------------
-- Socket 'Vector' : self
-- Parameter 'operation' : 'MAXIMUM'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'MAXIMUM'
+
+
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector_001)
@@ -1052,10 +1061,11 @@ min(vector=None)
 
 > Method [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-Information
------------
-- Socket 'Vector' : self
-- Parameter 'operation' : 'MINIMUM'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'MINIMUM'
+
+
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector_001)
@@ -1081,13 +1091,14 @@ mix(b=None, factor=None, clamp_factor=True)
 > [NOTE]
 > Call mix_uniform or mix_non_uniform depending on the factor type
 
-Information
------------
-- Socket 'A' : self
-- Parameter 'blend_type' : 'MIX'
-- Parameter 'clamp_result' : False
-- Parameter 'data_type' : 'VECTOR'
-- Parameter 'factor_mode' : 'UNIFORM' or 'NON_UNIFORM' depending on factor argument
+#### Information:
+- **Socket** : self
+- **Parameter** : 'MIX'
+- **Parameter** : False
+- **Parameter** : 'VECTOR'
+- **Parameter** : 'UNIFORM' or 'NON_UNIFORM' depending on factor argument
+
+
 
 #### Arguments:
 - **b** (_Vector_ = None) : socket 'B' (id: B_Vector)
@@ -1112,13 +1123,14 @@ mix_non_uniform(b=None, factor=None, clamp_factor=True)
 
 > Method [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
-Information
------------
-- Socket 'A' : self
-- Parameter 'blend_type' : 'MIX'
-- Parameter 'clamp_result' : False
-- Parameter 'data_type' : 'VECTOR'
-- Parameter 'factor_mode' : 'NON_UNIFORM'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'MIX'
+- **Parameter** : False
+- **Parameter** : 'VECTOR'
+- **Parameter** : 'NON_UNIFORM'
+
+
 
 #### Arguments:
 - **b** (_Vector_ = None) : socket 'B' (id: B_Vector)
@@ -1143,13 +1155,14 @@ mix_uniform(b=None, factor=None, clamp_factor=True)
 
 > Method [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
-Information
------------
-- Socket 'A' : self
-- Parameter 'blend_type' : 'MIX'
-- Parameter 'clamp_result' : False
-- Parameter 'data_type' : 'VECTOR'
-- Parameter 'factor_mode' : 'UNIFORM'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'MIX'
+- **Parameter** : False
+- **Parameter** : 'VECTOR'
+- **Parameter** : 'UNIFORM'
+
+
 
 #### Arguments:
 - **b** (_Vector_ = None) : socket 'B' (id: B_Vector)
@@ -1174,10 +1187,11 @@ modulo(vector=None)
 
 > Method [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-Information
------------
-- Socket 'Vector' : self
-- Parameter 'operation' : 'MODULO'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'MODULO'
+
+
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector_001)
@@ -1200,10 +1214,11 @@ multiply(vector=None)
 
 > Method [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-Information
------------
-- Socket 'Vector' : self
-- Parameter 'operation' : 'MULTIPLY'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'MULTIPLY'
+
+
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector_001)
@@ -1226,10 +1241,11 @@ multiply_add(multiplier=None, addend=None)
 
 > Method [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-Information
------------
-- Socket 'Vector' : self
-- Parameter 'operation' : 'MULTIPLY_ADD'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'MULTIPLY_ADD'
+
+
 
 #### Arguments:
 - **multiplier** (_Vector_ = None) : socket 'Multiplier' (id: Vector_001)
@@ -1253,9 +1269,10 @@ Named(name=None)
 
 > Constructor [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
-Information
------------
-- Parameter 'data_type' : 'FLOAT_VECTOR'
+#### Information:
+- **Parameter** : 'FLOAT_VECTOR'
+
+
 
 #### Arguments:
 - **name** (_String_ = None) : socket 'Name' (id: Name)
@@ -1278,9 +1295,10 @@ NamedAttribute(name=None)
 
 > Constructor [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
-Information
------------
-- Parameter 'data_type' : 'FLOAT_VECTOR'
+#### Information:
+- **Parameter** : 'FLOAT_VECTOR'
+
+
 
 #### Arguments:
 - **name** (_String_ = None) : socket 'Name' (id: Name)
@@ -1321,10 +1339,11 @@ normalize()
 
 > Method [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-Information
------------
-- Socket 'Vector' : self
-- Parameter 'operation' : 'NORMALIZE'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'NORMALIZE'
+
+
 
 #### Returns:
 - **Vector** :
@@ -1368,12 +1387,13 @@ not_equal(b=None, epsilon=None)
 
 > Method [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
-Information
------------
-- Socket 'A' : self
-- Parameter 'data_type' : 'VECTOR'
-- Parameter 'mode' : 'ELEMENT'
-- Parameter 'operation' : 'NOT_EQUAL'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'VECTOR'
+- **Parameter** : 'ELEMENT'
+- **Parameter** : 'NOT_EQUAL'
+
+
 
 #### Arguments:
 - **b** (_Vector_ = None) : socket 'B' (id: B_VEC3)
@@ -1422,10 +1442,11 @@ pack_uv_islands(margin=None, rotate=None)
 
 > Method [Pack UV Islands](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/uv/pack_uv_islands.html)
 
-Information
------------
-- Socket 'UV' : self
-- Socket 'Selection' : self[selection]
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+
+
 
 #### Arguments:
 - **margin** (_Float_ = None) : socket 'Margin' (id: Margin)
@@ -1449,9 +1470,10 @@ point_density(interpolation='Linear', object=None, particle_color_source='PARTIC
 
 > Method [Point Density](https://docs.blender.org/manual/en/latest/render/shader_nodes/textures/point_density.html)
 
-Information
------------
-- Socket 'Vector' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Arguments:
 - **interpolation** (_str_ = Linear) : parameter 'interpolation' in ('Closest', 'Linear', 'Cubic')
@@ -1483,10 +1505,11 @@ project(vector=None)
 
 > Method [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-Information
------------
-- Socket 'Vector' : self
-- Parameter 'operation' : 'PROJECT'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'PROJECT'
+
+
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector_001)
@@ -1509,9 +1532,10 @@ Random(min=None, max=None, id=None, seed=None)
 
 > Constructor [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html)
 
-Information
------------
-- Parameter 'data_type' : 'FLOAT_VECTOR'
+#### Information:
+- **Parameter** : 'FLOAT_VECTOR'
+
+
 
 #### Arguments:
 - **min** (_Vector_ = None) : socket 'Min' (id: Min)
@@ -1537,10 +1561,11 @@ reflect(vector=None)
 
 > Method [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-Information
------------
-- Socket 'Vector' : self
-- Parameter 'operation' : 'REFLECT'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'REFLECT'
+
+
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector_001)
@@ -1563,10 +1588,11 @@ refract(vector=None, ior=None)
 
 > Method [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-Information
------------
-- Socket 'Vector' : self
-- Parameter 'operation' : 'REFRACT'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'REFRACT'
+
+
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector_001)
@@ -1590,9 +1616,10 @@ rotate(center=None, axis=None, angle=None, invert=False, rotation_type='AXIS_ANG
 
 > Method [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_rotate.html)
 
-Information
------------
-- Socket 'Vector' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Arguments:
 - **center** (_Vector_ = None) : socket 'Center' (id: Center)
@@ -1619,10 +1646,11 @@ rotate_axis_angle(center=None, axis=None, angle=None, invert=False)
 
 > Method [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_rotate.html)
 
-Information
------------
-- Socket 'Vector' : self
-- Parameter 'rotation_type' : 'AXIS_ANGLE'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'AXIS_ANGLE'
+
+
 
 #### Arguments:
 - **center** (_Vector_ = None) : socket 'Center' (id: Center)
@@ -1648,10 +1676,11 @@ rotate_euler_xyz(center=None, rotation=None, invert=False)
 
 > Method [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_rotate.html)
 
-Information
------------
-- Socket 'Vector' : self
-- Parameter 'rotation_type' : 'EULER_XYZ'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'EULER_XYZ'
+
+
 
 #### Arguments:
 - **center** (_Vector_ = None) : socket 'Center' (id: Center)
@@ -1676,10 +1705,11 @@ rotate_x_axis(center=None, angle=None, invert=False)
 
 > Method [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_rotate.html)
 
-Information
------------
-- Socket 'Vector' : self
-- Parameter 'rotation_type' : 'X_AXIS'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'X_AXIS'
+
+
 
 #### Arguments:
 - **center** (_Vector_ = None) : socket 'Center' (id: Center)
@@ -1704,10 +1734,11 @@ rotate_y_axis(center=None, angle=None, invert=False)
 
 > Method [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_rotate.html)
 
-Information
------------
-- Socket 'Vector' : self
-- Parameter 'rotation_type' : 'Y_AXIS'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'Y_AXIS'
+
+
 
 #### Arguments:
 - **center** (_Vector_ = None) : socket 'Center' (id: Center)
@@ -1732,10 +1763,11 @@ rotate_z_axis(center=None, angle=None, invert=False)
 
 > Method [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_rotate.html)
 
-Information
------------
-- Socket 'Vector' : self
-- Parameter 'rotation_type' : 'Z_AXIS'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'Z_AXIS'
+
+
 
 #### Arguments:
 - **center** (_Vector_ = None) : socket 'Center' (id: Center)
@@ -1760,10 +1792,11 @@ sample_grid(position=None, interpolation_mode='TRILINEAR')
 
 > Method ERROR: Node 'Sample Grid' not found
 
-Information
------------
-- Socket 'Grid' : self
-- Parameter 'data_type' : 'VECTOR'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'VECTOR'
+
+
 
 #### Arguments:
 - **position** (_Vector_ = None) : socket 'Position' (id: Position)
@@ -1787,10 +1820,11 @@ sample_grid_index(x=None, y=None, z=None)
 
 > Method ERROR: Node 'Sample Grid Index' not found
 
-Information
------------
-- Socket 'Grid' : self
-- Parameter 'data_type' : 'VECTOR'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'VECTOR'
+
+
 
 #### Arguments:
 - **x** (_Integer_ = None) : socket 'X' (id: X)
@@ -1815,10 +1849,11 @@ scale(scale=None)
 
 > Method [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-Information
------------
-- Socket 'Vector' : self
-- Parameter 'operation' : 'SCALE'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'SCALE'
+
+
 
 #### Arguments:
 - **scale** (_Float_ = None) : socket 'Scale' (id: Scale)
@@ -1841,9 +1876,10 @@ separate_xyz()
 
 > Method [Separate XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/separate_xyz.html)
 
-Information
------------
-- Socket 'Vector' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Returns:
 - **node** (_Float_)
@@ -1861,10 +1897,11 @@ sin()
 
 > Method [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-Information
------------
-- Socket 'Vector' : self
-- Parameter 'operation' : 'SINE'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'SINE'
+
+
 
 #### Returns:
 - **Vector** :
@@ -1882,10 +1919,11 @@ snap(increment=None)
 
 > Method [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-Information
------------
-- Socket 'Vector' : self
-- Parameter 'operation' : 'SNAP'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'SNAP'
+
+
 
 #### Arguments:
 - **increment** (_Vector_ = None) : socket 'Increment' (id: Vector_001)
@@ -1908,10 +1946,11 @@ subtract(vector=None)
 
 > Method [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-Information
------------
-- Socket 'Vector' : self
-- Parameter 'operation' : 'SUBTRACT'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'SUBTRACT'
+
+
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector_001)
@@ -1934,10 +1973,11 @@ tan()
 
 > Method [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-Information
------------
-- Socket 'Vector' : self
-- Parameter 'operation' : 'TANGENT'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'TANGENT'
+
+
 
 #### Returns:
 - **Vector** :
@@ -1980,9 +2020,10 @@ to_rotation()
 
 > Method [Euler to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/euler_to_rotation.html)
 
-Information
------------
-- Socket 'Euler' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Returns:
 - **Rotation** :
@@ -2100,9 +2141,10 @@ vector_curves(fac=None)
 
 > Method [Vector Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_curves.html)
 
-Information
------------
-- Socket 'Vector' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Arguments:
 - **fac** (_Float_ = None) : socket 'Fac' (id: Fac)
@@ -2150,9 +2192,10 @@ vector_transform(convert_from='WORLD', convert_to='OBJECT', vector_type='VECTOR'
 
 > Method [Vector Transform](https://docs.blender.org/manual/en/latest/render/shader_nodes/vector/transform.html)
 
-Information
------------
-- Socket 'Vector' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Arguments:
 - **convert_from** (_str_ = WORLD) : parameter 'convert_from' in ('WORLD', 'OBJECT', 'CAMERA')
@@ -2206,10 +2249,11 @@ wrap(max=None, min=None)
 
 > Method [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-Information
------------
-- Socket 'Vector' : self
-- Parameter 'operation' : 'WRAP'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'WRAP'
+
+
 
 #### Arguments:
 - **max** (_Vector_ = None) : socket 'Max' (id: Vector_001)

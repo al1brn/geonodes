@@ -77,9 +77,10 @@ distribute_points(density=None, seed=None, mode='DENSITY_RANDOM')
 
 > Method ERROR: Node 'Distribute Points in Volume' not found
 
-Information
------------
-- Socket 'Volume' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Arguments:
 - **density** (_Float_ = None) : socket 'Density' (id: Density)
@@ -104,10 +105,11 @@ distribute_points_density_grid(spacing=None, threshold=None)
 
 > Method ERROR: Node 'Distribute Points in Volume' not found
 
-Information
------------
-- Socket 'Volume' : self
-- Parameter 'mode' : 'DENSITY_GRID'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'DENSITY_GRID'
+
+
 
 #### Arguments:
 - **spacing** (_Vector_ = None) : socket 'Spacing' (id: Spacing)
@@ -131,10 +133,11 @@ distribute_points_density_random(density=None, seed=None)
 
 > Method ERROR: Node 'Distribute Points in Volume' not found
 
-Information
------------
-- Socket 'Volume' : self
-- Parameter 'mode' : 'DENSITY_RANDOM'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'DENSITY_RANDOM'
+
+
 
 #### Arguments:
 - **density** (_Float_ = None) : socket 'Density' (id: Density)
@@ -158,9 +161,10 @@ get_named_grid(name=None, remove=None, data_type='FLOAT')
 
 > Jump Method ERROR: Node 'Get Named Grid' not found
 
-Information
------------
-- Socket 'Volume' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Arguments:
 - **name** (_String_ = None) : socket 'Name' (id: Name)
@@ -185,10 +189,11 @@ named_float_grid(name=None, remove=None)
 
 > Jump Method ERROR: Node 'Get Named Grid' not found
 
-Information
------------
-- Socket 'Volume' : self
-- Parameter 'data_type' : 'FLOAT'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'FLOAT'
+
+
 
 #### Arguments:
 - **name** (_String_ = None) : socket 'Name' (id: Name)
@@ -212,10 +217,11 @@ named_vector_grid(name=None, remove=None)
 
 > Jump Method ERROR: Node 'Get Named Grid' not found
 
-Information
------------
-- Socket 'Volume' : self
-- Parameter 'data_type' : 'VECTOR'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'VECTOR'
+
+
 
 #### Arguments:
 - **name** (_String_ = None) : socket 'Name' (id: Name)
@@ -239,10 +245,11 @@ store_named_grid(name=None, grid=None)
 
 > Jump Method ERROR: Node 'Store Named Grid' not found
 
-Information
------------
-- Socket 'Volume' : self
-- Parameter 'data_type' : depending on 'grid' type
+#### Information:
+- **Socket** : self
+- **Parameter** : depending on 'grid' type
+
+
 
 #### Arguments:
 - **name** (_String_ = None) : socket 'Name' (id: Name)
@@ -266,9 +273,10 @@ to_mesh(threshold=None, adaptivity=None, resolution_mode='GRID')
 
 > Method [Volume to Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/operations/volume_to_mesh.html)
 
-Information
------------
-- Socket 'Volume' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Arguments:
 - **threshold** (_Float_ = None) : socket 'Threshold' (id: Threshold)
@@ -293,10 +301,11 @@ to_mesh_grid(threshold=None, adaptivity=None)
 
 > Method [Volume to Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/operations/volume_to_mesh.html)
 
-Information
------------
-- Socket 'Volume' : self
-- Parameter 'resolution_mode' : 'GRID'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'GRID'
+
+
 
 #### Arguments:
 - **threshold** (_Float_ = None) : socket 'Threshold' (id: Threshold)
@@ -320,10 +329,11 @@ to_mesh_voxel_amount(voxel_amount=None, threshold=None, adaptivity=None)
 
 > Method [Volume to Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/operations/volume_to_mesh.html)
 
-Information
------------
-- Socket 'Volume' : self
-- Parameter 'resolution_mode' : 'VOXEL_AMOUNT'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'VOXEL_AMOUNT'
+
+
 
 #### Arguments:
 - **voxel_amount** (_Float_ = None) : socket 'Voxel Amount' (id: Voxel Amount)
@@ -348,10 +358,11 @@ to_mesh_voxel_size(voxel_size=None, threshold=None, adaptivity=None)
 
 > Method [Volume to Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/operations/volume_to_mesh.html)
 
-Information
------------
-- Socket 'Volume' : self
-- Parameter 'resolution_mode' : 'VOXEL_SIZE'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'VOXEL_SIZE'
+
+
 
 #### Arguments:
 - **voxel_size** (_Float_ = None) : socket 'Voxel Size' (id: Voxel Size)

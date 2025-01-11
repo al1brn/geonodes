@@ -38,9 +38,10 @@ info(separate_children=None, reset_children=None, transform_space='ORIGINAL')
 
 > Method [Collection Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene/collection_info.html)
 
-Information
------------
-- Socket 'Collection' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Arguments:
 - **separate_children** (_Boolean_ = None) : socket 'Separate Children' (id: Separate Children)

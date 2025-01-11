@@ -71,10 +71,11 @@ domain_size()
 
 > Method [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
 
-Information
------------
-- Socket 'Geometry' : self
-- Parameter 'component' : 'INSTANCES'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'INSTANCES'
+
+
 
 #### Returns:
 - **node** (_Integer_)
@@ -134,10 +135,11 @@ rotate(rotation=None, pivot_point=None, local_space=None)
 
 > Jump Method [Rotate Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/rotate_instances.html)
 
-Information
------------
-- Socket 'Instances' : self
-- Socket 'Selection' : self[selection]
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+
+
 
 #### Arguments:
 - **rotation** (_Rotation_ = None) : socket 'Rotation' (id: Rotation)
@@ -162,10 +164,11 @@ scale(scale=None, center=None, local_space=None)
 
 > Jump Method [Scale Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/scale_instances.html)
 
-Information
------------
-- Socket 'Instances' : self
-- Socket 'Selection' : self[selection]
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+
+
 
 #### Arguments:
 - **scale** (_Vector_ = None) : socket 'Scale' (id: Scale)
@@ -190,10 +193,11 @@ set_transform(transform=None)
 
 > Jump Method [Set Instance Transform](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/set_instance_transform.html)
 
-Information
------------
-- Socket 'Instances' : self
-- Socket 'Selection' : self[selection]
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+
+
 
 #### Arguments:
 - **transform** (_Matrix_ = None) : socket 'Transform' (id: Transform)
@@ -216,10 +220,11 @@ to_points(position=None, radius=None)
 
 > Method [Instances to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instances_to_points.html)
 
-Information
------------
-- Socket 'Instances' : self
-- Socket 'Selection' : self[selection]
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+
+
 
 #### Arguments:
 - **position** (_Vector_ = None) : socket 'Position' (id: Position)
@@ -243,10 +248,11 @@ translate(translation=None, local_space=None)
 
 > Jump Method [Translate Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/translate_instances.html)
 
-Information
------------
-- Socket 'Instances' : self
-- Socket 'Selection' : self[selection]
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+
+
 
 #### Arguments:
 - **translation** (_Vector_ = None) : socket 'Translation' (id: Translation)

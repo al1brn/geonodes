@@ -101,9 +101,10 @@ DistributeingridDensityGrid(grid=None, spacing=None, threshold=None)
 
 > Constructor ERROR: Node 'Distribute Points in Grid' not found
 
-Information
------------
-- Parameter 'mode' : 'DENSITY_GRID'
+#### Information:
+- **Parameter** : 'DENSITY_GRID'
+
+
 
 #### Arguments:
 - **grid** (_Float_ = None) : socket 'Grid' (id: Grid)
@@ -128,9 +129,10 @@ DistributeingridDensityRandom(grid=None, density=None, seed=None)
 
 > Constructor ERROR: Node 'Distribute Points in Grid' not found
 
-Information
------------
-- Parameter 'mode' : 'DENSITY_RANDOM'
+#### Information:
+- **Parameter** : 'DENSITY_RANDOM'
+
+
 
 #### Arguments:
 - **grid** (_Float_ = None) : socket 'Grid' (id: Grid)
@@ -155,10 +157,11 @@ domain_size()
 
 > Method [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
 
-Information
------------
-- Socket 'Geometry' : self
-- Parameter 'component' : 'POINTCLOUD'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'POINTCLOUD'
+
+
 
 #### Returns:
 - **node** (_Integer_)
@@ -176,10 +179,11 @@ instance_on(instance=None, pick_instance=None, instance_index=None, rotation=Non
 
 > Method [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html)
 
-Information
------------
-- Socket 'Points' : self
-- Socket 'Selection' : self[selection]
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+
+
 
 #### Arguments:
 - **instance** (_Geometry_ = None) : socket 'Instance' (id: Instance)
@@ -206,9 +210,10 @@ interpolate_curves(guide_curves=None, guide_up=None, guide_group_id=None, point_
 
 > Method [Interpolate Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/interpolate_curves.html)
 
-Information
------------
-- Socket 'Points' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Arguments:
 - **guide_curves** (_Geometry_ = None) : socket 'Guide Curves' (id: Guide Curves)
@@ -259,9 +264,10 @@ to_curves(curve_group_id=None, weight=None)
 
 > Method [Points to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points_to_curves.html)
 
-Information
------------
-- Socket 'Points' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Arguments:
 - **curve_group_id** (_Integer_ = None) : socket 'Curve Group ID' (id: Curve Group ID)
@@ -285,9 +291,10 @@ to_sdf_grid(radius=None, voxel_size=None)
 
 > Method ERROR: Node 'Points to SDF Grid' not found
 
-Information
------------
-- Socket 'Points' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Arguments:
 - **radius** (_Float_ = None) : socket 'Radius' (id: Radius)
@@ -311,10 +318,11 @@ to_vertices()
 
 > Method [Points to Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points_to_vertices.html)
 
-Information
------------
-- Socket 'Points' : self
-- Socket 'Selection' : self[selection]
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+
+
 
 #### Returns:
 - **Mesh** :
@@ -332,9 +340,10 @@ to_volume(density=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_A
 
 > Method [Points to Volume](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points_to_volume.html)
 
-Information
------------
-- Socket 'Points' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Arguments:
 - **density** (_Float_ = None) : socket 'Density' (id: Density)

@@ -38,9 +38,10 @@ abs(value=None, use_clamp=False)
 
 > Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-Information
------------
-- Parameter 'operation' : 'ABSOLUTE'
+#### Information:
+- **Parameter** : 'ABSOLUTE'
+
+
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
@@ -64,9 +65,10 @@ add(value=None, value_1=None, use_clamp=False)
 
 > Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-Information
------------
-- Parameter 'operation' : 'ADD'
+#### Information:
+- **Parameter** : 'ADD'
+
+
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
@@ -91,9 +93,10 @@ arccosine(value=None, use_clamp=False)
 
 > Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-Information
------------
-- Parameter 'operation' : 'ARCCOSINE'
+#### Information:
+- **Parameter** : 'ARCCOSINE'
+
+
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
@@ -117,9 +120,10 @@ arcsine(value=None, use_clamp=False)
 
 > Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-Information
------------
-- Parameter 'operation' : 'ARCSINE'
+#### Information:
+- **Parameter** : 'ARCSINE'
+
+
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
@@ -143,9 +147,10 @@ arctan2(value=None, value_1=None, use_clamp=False)
 
 > Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-Information
------------
-- Parameter 'operation' : 'ARCTAN2'
+#### Information:
+- **Parameter** : 'ARCTAN2'
+
+
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
@@ -170,9 +175,10 @@ arctangent(value=None, use_clamp=False)
 
 > Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-Information
------------
-- Parameter 'operation' : 'ARCTANGENT'
+#### Information:
+- **Parameter** : 'ARCTANGENT'
+
+
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
@@ -196,9 +202,10 @@ band(boolean=None, boolean_1=None)
 
 > Function [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
 
-Information
------------
-- Parameter 'operation' : 'AND'
+#### Information:
+- **Parameter** : 'AND'
+
+
 
 #### Arguments:
 - **boolean** (_Boolean_ = None) : socket 'Boolean' (id: Boolean)
@@ -222,9 +229,10 @@ bnot(boolean=None)
 
 > Function [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
 
-Information
------------
-- Parameter 'operation' : 'NOT'
+#### Information:
+- **Parameter** : 'NOT'
+
+
 
 #### Arguments:
 - **boolean** (_Boolean_ = None) : socket 'Boolean' (id: Boolean)
@@ -247,9 +255,10 @@ bor(boolean=None, boolean_1=None)
 
 > Function [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
 
-Information
------------
-- Parameter 'operation' : 'OR'
+#### Information:
+- **Parameter** : 'OR'
+
+
 
 #### Arguments:
 - **boolean** (_Boolean_ = None) : socket 'Boolean' (id: Boolean)
@@ -273,9 +282,10 @@ ceil(value=None, use_clamp=False)
 
 > Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-Information
------------
-- Parameter 'operation' : 'CEIL'
+#### Information:
+- **Parameter** : 'CEIL'
+
+
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
@@ -299,9 +309,10 @@ compare(value=None, value_1=None, epsilon=None, use_clamp=False)
 
 > Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-Information
------------
-- Parameter 'operation' : 'COMPARE'
+#### Information:
+- **Parameter** : 'COMPARE'
+
+
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
@@ -327,9 +338,10 @@ cos(value=None, use_clamp=False)
 
 > Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-Information
------------
-- Parameter 'operation' : 'COSINE'
+#### Information:
+- **Parameter** : 'COSINE'
+
+
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
@@ -353,9 +365,10 @@ cosh(value=None, use_clamp=False)
 
 > Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-Information
------------
-- Parameter 'operation' : 'COSH'
+#### Information:
+- **Parameter** : 'COSH'
+
+
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
@@ -379,9 +392,10 @@ cross(vector=None, vector_1=None)
 
 > Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-Information
------------
-- Parameter 'operation' : 'CROSS_PRODUCT'
+#### Information:
+- **Parameter** : 'CROSS_PRODUCT'
+
+
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
@@ -405,9 +419,10 @@ degrees(radians=None, use_clamp=False)
 
 > Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-Information
------------
-- Parameter 'operation' : 'DEGREES'
+#### Information:
+- **Parameter** : 'DEGREES'
+
+
 
 #### Arguments:
 - **radians** (_Float_ = None) : socket 'Radians' (id: Value)
@@ -431,9 +446,10 @@ distance(vector=None, vector_1=None)
 
 > Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-Information
------------
-- Parameter 'operation' : 'DISTANCE'
+#### Information:
+- **Parameter** : 'DISTANCE'
+
+
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
@@ -457,9 +473,10 @@ divide(value=None, value_1=None, use_clamp=False)
 
 > Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-Information
------------
-- Parameter 'operation' : 'DIVIDE'
+#### Information:
+- **Parameter** : 'DIVIDE'
+
+
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
@@ -484,9 +501,10 @@ divide_ceil(value=None, value_1=None)
 
 > Function [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
-Information
------------
-- Parameter 'operation' : 'DIVIDE_CEIL'
+#### Information:
+- **Parameter** : 'DIVIDE_CEIL'
+
+
 
 #### Arguments:
 - **value** (_Integer_ = None) : socket 'Value' (id: Value)
@@ -510,9 +528,10 @@ divide_floor(value=None, value_1=None)
 
 > Function [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
-Information
------------
-- Parameter 'operation' : 'DIVIDE_FLOOR'
+#### Information:
+- **Parameter** : 'DIVIDE_FLOOR'
+
+
 
 #### Arguments:
 - **value** (_Integer_ = None) : socket 'Value' (id: Value)
@@ -536,9 +555,10 @@ divide_round(value=None, value_1=None)
 
 > Function [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
-Information
------------
-- Parameter 'operation' : 'DIVIDE_ROUND'
+#### Information:
+- **Parameter** : 'DIVIDE_ROUND'
+
+
 
 #### Arguments:
 - **value** (_Integer_ = None) : socket 'Value' (id: Value)
@@ -562,9 +582,10 @@ dot(vector=None, vector_1=None)
 
 > Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-Information
------------
-- Parameter 'operation' : 'DOT_PRODUCT'
+#### Information:
+- **Parameter** : 'DOT_PRODUCT'
+
+
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
@@ -588,9 +609,10 @@ exp(value=None, use_clamp=False)
 
 > Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-Information
------------
-- Parameter 'operation' : 'EXPONENT'
+#### Information:
+- **Parameter** : 'EXPONENT'
+
+
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
@@ -614,9 +636,10 @@ faceforward(vector=None, incident=None, reference=None)
 
 > Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-Information
------------
-- Parameter 'operation' : 'FACEFORWARD'
+#### Information:
+- **Parameter** : 'FACEFORWARD'
+
+
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
@@ -641,9 +664,10 @@ floor(value=None, use_clamp=False)
 
 > Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-Information
------------
-- Parameter 'operation' : 'FLOOR'
+#### Information:
+- **Parameter** : 'FLOOR'
+
+
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
@@ -667,9 +691,10 @@ floored_modulo(value=None, value_1=None, use_clamp=False)
 
 > Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-Information
------------
-- Parameter 'operation' : 'FLOORED_MODULO'
+#### Information:
+- **Parameter** : 'FLOORED_MODULO'
+
+
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
@@ -694,9 +719,10 @@ fract(value=None, use_clamp=False)
 
 > Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-Information
------------
-- Parameter 'operation' : 'FRACT'
+#### Information:
+- **Parameter** : 'FRACT'
+
+
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
@@ -720,9 +746,10 @@ gcd(value=None, value_1=None)
 
 > Function [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
-Information
------------
-- Parameter 'operation' : 'GCD'
+#### Information:
+- **Parameter** : 'GCD'
+
+
 
 #### Arguments:
 - **value** (_Integer_ = None) : socket 'Value' (id: Value)
@@ -746,9 +773,10 @@ iabs(value=None)
 
 > Function [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
-Information
------------
-- Parameter 'operation' : 'ABSOLUTE'
+#### Information:
+- **Parameter** : 'ABSOLUTE'
+
+
 
 #### Arguments:
 - **value** (_Integer_ = None) : socket 'Value' (id: Value)
@@ -771,9 +799,10 @@ iadd(value=None, value_1=None)
 
 > Function [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
-Information
------------
-- Parameter 'operation' : 'ADD'
+#### Information:
+- **Parameter** : 'ADD'
+
+
 
 #### Arguments:
 - **value** (_Integer_ = None) : socket 'Value' (id: Value)
@@ -797,9 +826,10 @@ idivide(value=None, value_1=None)
 
 > Function [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
-Information
------------
-- Parameter 'operation' : 'DIVIDE'
+#### Information:
+- **Parameter** : 'DIVIDE'
+
+
 
 #### Arguments:
 - **value** (_Integer_ = None) : socket 'Value' (id: Value)
@@ -823,9 +853,10 @@ ifloored_modulo(value=None, value_1=None)
 
 > Function [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
-Information
------------
-- Parameter 'operation' : 'FLOORED_MODULO'
+#### Information:
+- **Parameter** : 'FLOORED_MODULO'
+
+
 
 #### Arguments:
 - **value** (_Integer_ = None) : socket 'Value' (id: Value)
@@ -849,9 +880,10 @@ imax(value=None, value_1=None)
 
 > Function [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
-Information
------------
-- Parameter 'operation' : 'MAXIMUM'
+#### Information:
+- **Parameter** : 'MAXIMUM'
+
+
 
 #### Arguments:
 - **value** (_Integer_ = None) : socket 'Value' (id: Value)
@@ -875,9 +907,10 @@ imin(value=None, value_1=None)
 
 > Function [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
-Information
------------
-- Parameter 'operation' : 'MINIMUM'
+#### Information:
+- **Parameter** : 'MINIMUM'
+
+
 
 #### Arguments:
 - **value** (_Integer_ = None) : socket 'Value' (id: Value)
@@ -901,9 +934,10 @@ imodulo(value=None, value_1=None)
 
 > Function [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
-Information
------------
-- Parameter 'operation' : 'MODULO'
+#### Information:
+- **Parameter** : 'MODULO'
+
+
 
 #### Arguments:
 - **value** (_Integer_ = None) : socket 'Value' (id: Value)
@@ -927,9 +961,10 @@ imply(boolean=None, boolean_1=None)
 
 > Function [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
 
-Information
------------
-- Parameter 'operation' : 'IMPLY'
+#### Information:
+- **Parameter** : 'IMPLY'
+
+
 
 #### Arguments:
 - **boolean** (_Boolean_ = None) : socket 'Boolean' (id: Boolean)
@@ -953,9 +988,10 @@ imultiply(value=None, value_1=None)
 
 > Function [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
-Information
------------
-- Parameter 'operation' : 'MULTIPLY'
+#### Information:
+- **Parameter** : 'MULTIPLY'
+
+
 
 #### Arguments:
 - **value** (_Integer_ = None) : socket 'Value' (id: Value)
@@ -979,9 +1015,10 @@ imultiply_add(value=None, multiplier=None, addend=None)
 
 > Function [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
-Information
------------
-- Parameter 'operation' : 'MULTIPLY_ADD'
+#### Information:
+- **Parameter** : 'MULTIPLY_ADD'
+
+
 
 #### Arguments:
 - **value** (_Integer_ = None) : socket 'Value' (id: Value)
@@ -1006,9 +1043,10 @@ inverse_sqrt(value=None, use_clamp=False)
 
 > Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-Information
------------
-- Parameter 'operation' : 'INVERSE_SQRT'
+#### Information:
+- **Parameter** : 'INVERSE_SQRT'
+
+
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
@@ -1032,9 +1070,10 @@ ipower(base=None, exponent=None)
 
 > Function [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
-Information
------------
-- Parameter 'operation' : 'POWER'
+#### Information:
+- **Parameter** : 'POWER'
+
+
 
 #### Arguments:
 - **base** (_Integer_ = None) : socket 'Base' (id: Value)
@@ -1058,9 +1097,10 @@ isign(value=None)
 
 > Function [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
-Information
------------
-- Parameter 'operation' : 'SIGN'
+#### Information:
+- **Parameter** : 'SIGN'
+
+
 
 #### Arguments:
 - **value** (_Integer_ = None) : socket 'Value' (id: Value)
@@ -1083,9 +1123,10 @@ isubtract(value=None, value_1=None)
 
 > Function [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
-Information
------------
-- Parameter 'operation' : 'SUBTRACT'
+#### Information:
+- **Parameter** : 'SUBTRACT'
+
+
 
 #### Arguments:
 - **value** (_Integer_ = None) : socket 'Value' (id: Value)
@@ -1109,9 +1150,10 @@ lcm(value=None, value_1=None)
 
 > Function [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
-Information
------------
-- Parameter 'operation' : 'LCM'
+#### Information:
+- **Parameter** : 'LCM'
+
+
 
 #### Arguments:
 - **value** (_Integer_ = None) : socket 'Value' (id: Value)
@@ -1135,9 +1177,10 @@ length(vector=None)
 
 > Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-Information
------------
-- Parameter 'operation' : 'LENGTH'
+#### Information:
+- **Parameter** : 'LENGTH'
+
+
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
@@ -1160,9 +1203,10 @@ log(value=None, base=None, use_clamp=False)
 
 > Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-Information
------------
-- Parameter 'operation' : 'LOGARITHM'
+#### Information:
+- **Parameter** : 'LOGARITHM'
+
+
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
@@ -1187,9 +1231,10 @@ max(value=None, value_1=None, use_clamp=False)
 
 > Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-Information
------------
-- Parameter 'operation' : 'MAXIMUM'
+#### Information:
+- **Parameter** : 'MAXIMUM'
+
+
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
@@ -1214,9 +1259,10 @@ mgreater_than(value=None, threshold=None, use_clamp=False)
 
 > Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-Information
------------
-- Parameter 'operation' : 'GREATER_THAN'
+#### Information:
+- **Parameter** : 'GREATER_THAN'
+
+
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
@@ -1241,9 +1287,10 @@ min(value=None, value_1=None, use_clamp=False)
 
 > Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-Information
------------
-- Parameter 'operation' : 'MINIMUM'
+#### Information:
+- **Parameter** : 'MINIMUM'
+
+
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
@@ -1268,9 +1315,10 @@ mless_than(value=None, threshold=None, use_clamp=False)
 
 > Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-Information
------------
-- Parameter 'operation' : 'LESS_THAN'
+#### Information:
+- **Parameter** : 'LESS_THAN'
+
+
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
@@ -1295,9 +1343,10 @@ modulo(value=None, value_1=None, use_clamp=False)
 
 > Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-Information
------------
-- Parameter 'operation' : 'MODULO'
+#### Information:
+- **Parameter** : 'MODULO'
+
+
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
@@ -1322,9 +1371,10 @@ multiply(value=None, value_1=None, use_clamp=False)
 
 > Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-Information
------------
-- Parameter 'operation' : 'MULTIPLY'
+#### Information:
+- **Parameter** : 'MULTIPLY'
+
+
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
@@ -1349,9 +1399,10 @@ multiply_add(value=None, multiplier=None, addend=None, use_clamp=False)
 
 > Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-Information
------------
-- Parameter 'operation' : 'MULTIPLY_ADD'
+#### Information:
+- **Parameter** : 'MULTIPLY_ADD'
+
+
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
@@ -1377,9 +1428,10 @@ negate(value=None)
 
 > Function [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
-Information
------------
-- Parameter 'operation' : 'NEGATE'
+#### Information:
+- **Parameter** : 'NEGATE'
+
+
 
 #### Arguments:
 - **value** (_Integer_ = None) : socket 'Value' (id: Value)
@@ -1402,9 +1454,10 @@ nimply(boolean=None, boolean_1=None)
 
 > Function [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
 
-Information
------------
-- Parameter 'operation' : 'NIMPLY'
+#### Information:
+- **Parameter** : 'NIMPLY'
+
+
 
 #### Arguments:
 - **boolean** (_Boolean_ = None) : socket 'Boolean' (id: Boolean)
@@ -1428,9 +1481,10 @@ nor(boolean=None, boolean_1=None)
 
 > Function [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
 
-Information
------------
-- Parameter 'operation' : 'NOR'
+#### Information:
+- **Parameter** : 'NOR'
+
+
 
 #### Arguments:
 - **boolean** (_Boolean_ = None) : socket 'Boolean' (id: Boolean)
@@ -1454,9 +1508,10 @@ normalize(vector=None)
 
 > Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-Information
------------
-- Parameter 'operation' : 'NORMALIZE'
+#### Information:
+- **Parameter** : 'NORMALIZE'
+
+
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
@@ -1479,9 +1534,10 @@ not_and(boolean=None, boolean_1=None)
 
 > Function [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
 
-Information
------------
-- Parameter 'operation' : 'NAND'
+#### Information:
+- **Parameter** : 'NAND'
+
+
 
 #### Arguments:
 - **boolean** (_Boolean_ = None) : socket 'Boolean' (id: Boolean)
@@ -1505,9 +1561,10 @@ pingpong(value=None, scale=None, use_clamp=False)
 
 > Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-Information
------------
-- Parameter 'operation' : 'PINGPONG'
+#### Information:
+- **Parameter** : 'PINGPONG'
+
+
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
@@ -1532,9 +1589,10 @@ power(base=None, exponent=None, use_clamp=False)
 
 > Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-Information
------------
-- Parameter 'operation' : 'POWER'
+#### Information:
+- **Parameter** : 'POWER'
+
+
 
 #### Arguments:
 - **base** (_Float_ = None) : socket 'Base' (id: Value)
@@ -1559,9 +1617,10 @@ project(vector=None, vector_1=None)
 
 > Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-Information
------------
-- Parameter 'operation' : 'PROJECT'
+#### Information:
+- **Parameter** : 'PROJECT'
+
+
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
@@ -1585,9 +1644,10 @@ radians(degrees=None, use_clamp=False)
 
 > Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-Information
------------
-- Parameter 'operation' : 'RADIANS'
+#### Information:
+- **Parameter** : 'RADIANS'
+
+
 
 #### Arguments:
 - **degrees** (_Float_ = None) : socket 'Degrees' (id: Value)
@@ -1611,9 +1671,10 @@ reflect(vector=None, vector_1=None)
 
 > Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-Information
------------
-- Parameter 'operation' : 'REFLECT'
+#### Information:
+- **Parameter** : 'REFLECT'
+
+
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
@@ -1637,9 +1698,10 @@ refract(vector=None, vector_1=None, ior=None)
 
 > Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-Information
------------
-- Parameter 'operation' : 'REFRACT'
+#### Information:
+- **Parameter** : 'REFRACT'
+
+
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
@@ -1664,9 +1726,10 @@ round(value=None, use_clamp=False)
 
 > Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-Information
------------
-- Parameter 'operation' : 'ROUND'
+#### Information:
+- **Parameter** : 'ROUND'
+
+
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
@@ -1690,9 +1753,10 @@ scale(vector=None, scale=None)
 
 > Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-Information
------------
-- Parameter 'operation' : 'SCALE'
+#### Information:
+- **Parameter** : 'SCALE'
+
+
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
@@ -1716,9 +1780,10 @@ sign(value=None, use_clamp=False)
 
 > Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-Information
------------
-- Parameter 'operation' : 'SIGN'
+#### Information:
+- **Parameter** : 'SIGN'
+
+
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
@@ -1742,9 +1807,10 @@ sin(value=None, use_clamp=False)
 
 > Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-Information
------------
-- Parameter 'operation' : 'SINE'
+#### Information:
+- **Parameter** : 'SINE'
+
+
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
@@ -1768,9 +1834,10 @@ sinh(value=None, use_clamp=False)
 
 > Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-Information
------------
-- Parameter 'operation' : 'SINH'
+#### Information:
+- **Parameter** : 'SINH'
+
+
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
@@ -1794,9 +1861,10 @@ smooth_max(value=None, value_1=None, distance=None, use_clamp=False)
 
 > Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-Information
------------
-- Parameter 'operation' : 'SMOOTH_MAX'
+#### Information:
+- **Parameter** : 'SMOOTH_MAX'
+
+
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
@@ -1822,9 +1890,10 @@ smooth_min(value=None, value_1=None, distance=None, use_clamp=False)
 
 > Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-Information
------------
-- Parameter 'operation' : 'SMOOTH_MIN'
+#### Information:
+- **Parameter** : 'SMOOTH_MIN'
+
+
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
@@ -1850,9 +1919,10 @@ snap(value=None, increment=None, use_clamp=False)
 
 > Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-Information
------------
-- Parameter 'operation' : 'SNAP'
+#### Information:
+- **Parameter** : 'SNAP'
+
+
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
@@ -1877,9 +1947,10 @@ sqrt(value=None, use_clamp=False)
 
 > Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-Information
------------
-- Parameter 'operation' : 'SQRT'
+#### Information:
+- **Parameter** : 'SQRT'
+
+
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
@@ -1903,9 +1974,10 @@ subtract(value=None, value_1=None, use_clamp=False)
 
 > Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-Information
------------
-- Parameter 'operation' : 'SUBTRACT'
+#### Information:
+- **Parameter** : 'SUBTRACT'
+
+
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
@@ -1930,9 +2002,10 @@ tan(value=None, use_clamp=False)
 
 > Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-Information
------------
-- Parameter 'operation' : 'TANGENT'
+#### Information:
+- **Parameter** : 'TANGENT'
+
+
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
@@ -1956,9 +2029,10 @@ tanh(value=None, use_clamp=False)
 
 > Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-Information
------------
-- Parameter 'operation' : 'TANH'
+#### Information:
+- **Parameter** : 'TANH'
+
+
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
@@ -1982,9 +2056,10 @@ trunc(value=None, use_clamp=False)
 
 > Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-Information
------------
-- Parameter 'operation' : 'TRUNC'
+#### Information:
+- **Parameter** : 'TRUNC'
+
+
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
@@ -2008,9 +2083,10 @@ vabs(vector=None)
 
 > Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-Information
------------
-- Parameter 'operation' : 'ABSOLUTE'
+#### Information:
+- **Parameter** : 'ABSOLUTE'
+
+
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
@@ -2033,9 +2109,10 @@ vadd(vector=None, vector_1=None)
 
 > Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-Information
------------
-- Parameter 'operation' : 'ADD'
+#### Information:
+- **Parameter** : 'ADD'
+
+
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
@@ -2059,9 +2136,10 @@ vceil(vector=None)
 
 > Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-Information
------------
-- Parameter 'operation' : 'CEIL'
+#### Information:
+- **Parameter** : 'CEIL'
+
+
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
@@ -2084,9 +2162,10 @@ vcos(vector=None)
 
 > Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-Information
------------
-- Parameter 'operation' : 'COSINE'
+#### Information:
+- **Parameter** : 'COSINE'
+
+
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
@@ -2109,9 +2188,10 @@ vdivide(vector=None, vector_1=None)
 
 > Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-Information
------------
-- Parameter 'operation' : 'DIVIDE'
+#### Information:
+- **Parameter** : 'DIVIDE'
+
+
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
@@ -2135,9 +2215,10 @@ vfloor(vector=None)
 
 > Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-Information
------------
-- Parameter 'operation' : 'FLOOR'
+#### Information:
+- **Parameter** : 'FLOOR'
+
+
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
@@ -2160,9 +2241,10 @@ vfraction(vector=None)
 
 > Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-Information
------------
-- Parameter 'operation' : 'FRACTION'
+#### Information:
+- **Parameter** : 'FRACTION'
+
+
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
@@ -2185,9 +2267,10 @@ vmax(vector=None, vector_1=None)
 
 > Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-Information
------------
-- Parameter 'operation' : 'MAXIMUM'
+#### Information:
+- **Parameter** : 'MAXIMUM'
+
+
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
@@ -2211,9 +2294,10 @@ vmin(vector=None, vector_1=None)
 
 > Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-Information
------------
-- Parameter 'operation' : 'MINIMUM'
+#### Information:
+- **Parameter** : 'MINIMUM'
+
+
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
@@ -2237,9 +2321,10 @@ vmodulo(vector=None, vector_1=None)
 
 > Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-Information
------------
-- Parameter 'operation' : 'MODULO'
+#### Information:
+- **Parameter** : 'MODULO'
+
+
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
@@ -2263,9 +2348,10 @@ vmultiply(vector=None, vector_1=None)
 
 > Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-Information
------------
-- Parameter 'operation' : 'MULTIPLY'
+#### Information:
+- **Parameter** : 'MULTIPLY'
+
+
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
@@ -2289,9 +2375,10 @@ vmultiply_add(vector=None, multiplier=None, addend=None)
 
 > Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-Information
------------
-- Parameter 'operation' : 'MULTIPLY_ADD'
+#### Information:
+- **Parameter** : 'MULTIPLY_ADD'
+
+
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
@@ -2316,9 +2403,10 @@ vsin(vector=None)
 
 > Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-Information
------------
-- Parameter 'operation' : 'SINE'
+#### Information:
+- **Parameter** : 'SINE'
+
+
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
@@ -2341,9 +2429,10 @@ vsnap(vector=None, increment=None)
 
 > Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-Information
------------
-- Parameter 'operation' : 'SNAP'
+#### Information:
+- **Parameter** : 'SNAP'
+
+
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
@@ -2367,9 +2456,10 @@ vsubtract(vector=None, vector_1=None)
 
 > Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-Information
------------
-- Parameter 'operation' : 'SUBTRACT'
+#### Information:
+- **Parameter** : 'SUBTRACT'
+
+
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
@@ -2393,9 +2483,10 @@ vtan(vector=None)
 
 > Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-Information
------------
-- Parameter 'operation' : 'TANGENT'
+#### Information:
+- **Parameter** : 'TANGENT'
+
+
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
@@ -2418,9 +2509,10 @@ vwrap(vector=None, max=None, min=None)
 
 > Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-Information
------------
-- Parameter 'operation' : 'WRAP'
+#### Information:
+- **Parameter** : 'WRAP'
+
+
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
@@ -2445,9 +2537,10 @@ wrap(value=None, max=None, min=None, use_clamp=False)
 
 > Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-Information
------------
-- Parameter 'operation' : 'WRAP'
+#### Information:
+- **Parameter** : 'WRAP'
+
+
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
@@ -2473,9 +2566,10 @@ xnor(boolean=None, boolean_1=None)
 
 > Function [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
 
-Information
------------
-- Parameter 'operation' : 'XNOR'
+#### Information:
+- **Parameter** : 'XNOR'
+
+
 
 #### Arguments:
 - **boolean** (_Boolean_ = None) : socket 'Boolean' (id: Boolean)
@@ -2499,9 +2593,10 @@ xor(boolean=None, boolean_1=None)
 
 > Function [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
 
-Information
------------
-- Parameter 'operation' : 'XOR'
+#### Information:
+- **Parameter** : 'XOR'
+
+
 
 #### Arguments:
 - **boolean** (_Boolean_ = None) : socket 'Boolean' (id: Boolean)

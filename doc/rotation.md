@@ -58,10 +58,6 @@ rot = Rotation(name="User input").  # Create a new Rotation group input
 
 > Property Get ERROR: Node 'Rotation to Axis Angle' not found
 
-Information
------------
-- Socket 'Rotation' : self
-
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Rotation](rotation.md#rotation) :black_small_square: [Content](rotation.md#content) :black_small_square: [Properties](rotation.md#properties)</sub>
 
 ### wxyz
@@ -70,10 +66,6 @@ Information
 >
 
 > Property Get [Rotation to Quaternion](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/rotation_to_quaternion.html)
-
-Information
------------
-- Socket 'Rotation' : self
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Rotation](rotation.md#rotation) :black_small_square: [Content](rotation.md#content) :black_small_square: [Properties](rotation.md#properties)</sub>
 
@@ -92,9 +84,10 @@ AlignToVector(vector=None, factor=None, axis='Z', pivot_axis='AUTO')
 
 > Constructor [Align Rotation to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/align_rotation_to_vector.html)
 
-Information
------------
-- Socket 'Rotation' : ignored
+#### Information:
+- **Socket** : ignored
+
+
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
@@ -120,9 +113,10 @@ align_toVector(vector=None, factor=None, axis='Z', pivot_axis='AUTO')
 
 > Method [Align Rotation to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/align_rotation_to_vector.html)
 
-Information
------------
-- Socket 'Rotation' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
@@ -148,10 +142,11 @@ AlignXToVector(vector=None, factor=None, pivot_axis='AUTO')
 
 > Constructor [Align Rotation to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/align_rotation_to_vector.html)
 
-Information
------------
-- Socket 'Rotation' : ignored
-- Parameter 'axis' : 'X'
+#### Information:
+- **Socket** : ignored
+- **Parameter** : 'X'
+
+
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
@@ -176,10 +171,11 @@ align_x_to_vector(vector=None, factor=None, pivot_axis='AUTO')
 
 > Method [Align Rotation to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/align_rotation_to_vector.html)
 
-Information
------------
-- Socket 'Rotation' : self
-- Parameter 'axis' : 'X'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'X'
+
+
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
@@ -204,10 +200,11 @@ AlignYToVector(vector=None, factor=None, pivot_axis='AUTO')
 
 > Constructor [Align Rotation to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/align_rotation_to_vector.html)
 
-Information
------------
-- Socket 'Rotation' : ignored
-- Parameter 'axis' : 'Y'
+#### Information:
+- **Socket** : ignored
+- **Parameter** : 'Y'
+
+
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
@@ -232,10 +229,11 @@ align_y_to_vector(vector=None, factor=None, pivot_axis='AUTO')
 
 > Method [Align Rotation to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/align_rotation_to_vector.html)
 
-Information
------------
-- Socket 'Rotation' : self
-- Parameter 'axis' : 'Y'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'Y'
+
+
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
@@ -260,10 +258,11 @@ AlignZToVector(vector=None, factor=None, pivot_axis='AUTO')
 
 > Constructor [Align Rotation to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/align_rotation_to_vector.html)
 
-Information
------------
-- Socket 'Rotation' : ignored
-- Parameter 'axis' : 'Z'
+#### Information:
+- **Socket** : ignored
+- **Parameter** : 'Z'
+
+
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
@@ -288,10 +287,11 @@ align_z_to_vector(vector=None, factor=None, pivot_axis='AUTO')
 
 > Method [Align Rotation to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/align_rotation_to_vector.html)
 
-Information
------------
-- Socket 'Rotation' : self
-- Parameter 'axis' : 'Z'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'Z'
+
+
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
@@ -407,10 +407,11 @@ FromXYAxes(primary_axis=None, secondary_axis=None)
 
 > Constructor [Axes to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/axes_to_rotation.html)
 
-Information
------------
-- Parameter 'primary_axis' : 'X'
-- Parameter 'secondary_axis' : 'Y'
+#### Information:
+- **Parameter** : 'X'
+- **Parameter** : 'Y'
+
+
 
 #### Arguments:
 - **primary_axis** (_Vector_ = None) : socket 'Primary Axis' (id: Primary Axis)
@@ -434,10 +435,11 @@ FromXZAxes(primary_axis=None, secondary_axis=None)
 
 > Constructor [Axes to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/axes_to_rotation.html)
 
-Information
------------
-- Parameter 'primary_axis' : 'X'
-- Parameter 'secondary_axis' : 'Z'
+#### Information:
+- **Parameter** : 'X'
+- **Parameter** : 'Z'
+
+
 
 #### Arguments:
 - **primary_axis** (_Vector_ = None) : socket 'Primary Axis' (id: Primary Axis)
@@ -461,10 +463,11 @@ FromYXAxes(primary_axis=None, secondary_axis=None)
 
 > Constructor [Axes to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/axes_to_rotation.html)
 
-Information
------------
-- Parameter 'primary_axis' : 'Y'
-- Parameter 'secondary_axis' : 'X'
+#### Information:
+- **Parameter** : 'Y'
+- **Parameter** : 'X'
+
+
 
 #### Arguments:
 - **primary_axis** (_Vector_ = None) : socket 'Primary Axis' (id: Primary Axis)
@@ -488,10 +491,11 @@ FromYZAxes(primary_axis=None, secondary_axis=None)
 
 > Constructor [Axes to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/axes_to_rotation.html)
 
-Information
------------
-- Parameter 'primary_axis' : 'Y'
-- Parameter 'secondary_axis' : 'Z'
+#### Information:
+- **Parameter** : 'Y'
+- **Parameter** : 'Z'
+
+
 
 #### Arguments:
 - **primary_axis** (_Vector_ = None) : socket 'Primary Axis' (id: Primary Axis)
@@ -515,10 +519,11 @@ FromZXAxes(primary_axis=None, secondary_axis=None)
 
 > Constructor [Axes to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/axes_to_rotation.html)
 
-Information
------------
-- Parameter 'primary_axis' : 'Z'
-- Parameter 'secondary_axis' : 'X'
+#### Information:
+- **Parameter** : 'Z'
+- **Parameter** : 'X'
+
+
 
 #### Arguments:
 - **primary_axis** (_Vector_ = None) : socket 'Primary Axis' (id: Primary Axis)
@@ -542,10 +547,11 @@ FromZYAxes(primary_axis=None, secondary_axis=None)
 
 > Constructor [Axes to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/axes_to_rotation.html)
 
-Information
------------
-- Parameter 'primary_axis' : 'Z'
-- Parameter 'secondary_axis' : 'Y'
+#### Information:
+- **Parameter** : 'Z'
+- **Parameter** : 'Y'
+
+
 
 #### Arguments:
 - **primary_axis** (_Vector_ = None) : socket 'Primary Axis' (id: Primary Axis)
@@ -569,10 +575,11 @@ hash_value(seed=None)
 
 > Method [Hash Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/hash_value.html)
 
-Information
------------
-- Socket 'Value' : self
-- Parameter 'data_type' : 'ROTATION'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'ROTATION'
+
+
 
 #### Arguments:
 - **seed** (_Integer_ = None) : socket 'Seed' (id: Seed)
@@ -633,9 +640,10 @@ invert()
 
 > Method [Invert Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/invert_rotation.html)
 
-Information
------------
-- Socket 'Rotation' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Returns:
 - **Rotation** :
@@ -653,13 +661,14 @@ mix(b=None, factor=None, clamp_factor=True)
 
 > Method [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
-Information
------------
-- Socket 'A' : self
-- Parameter 'blend_type' : 'MIX'
-- Parameter 'clamp_result' : False
-- Parameter 'data_type' : 'ROTATION'
-- Parameter 'factor_mode' : 'UNIFORM'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'MIX'
+- **Parameter** : False
+- **Parameter** : 'ROTATION'
+- **Parameter** : 'UNIFORM'
+
+
 
 #### Arguments:
 - **b** (_Rotation_ = None) : socket 'B' (id: B_Rotation)
@@ -684,9 +693,10 @@ Named(name=None)
 
 > Constructor [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
-Information
------------
-- Parameter 'data_type' : 'QUATERNION'
+#### Information:
+- **Parameter** : 'QUATERNION'
+
+
 
 #### Arguments:
 - **name** (_String_ = None) : socket 'Name' (id: Name)
@@ -709,9 +719,10 @@ NamedAttribute(name=None)
 
 > Constructor [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
-Information
------------
-- Parameter 'data_type' : 'QUATERNION'
+#### Information:
+- **Parameter** : 'QUATERNION'
+
+
 
 #### Arguments:
 - **name** (_String_ = None) : socket 'Name' (id: Name)
@@ -734,9 +745,10 @@ rotate(rotate_by=None, rotation_space='GLOBAL')
 
 > Method [Rotate Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/rotate_rotation.html)
 
-Information
------------
-- Socket 'Rotation' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Arguments:
 - **rotate_by** (_Rotation_ = None) : socket 'Rotate By' (id: Rotate By)
@@ -760,10 +772,11 @@ rotate_global(rotate_by=None)
 
 > Method [Rotate Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/rotate_rotation.html)
 
-Information
------------
-- Socket 'Rotation' : self
-- Parameter 'rotation_space' : 'GLOBAL'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'GLOBAL'
+
+
 
 #### Arguments:
 - **rotate_by** (_Rotation_ = None) : socket 'Rotate By' (id: Rotate By)
@@ -786,10 +799,11 @@ rotate_local(rotate_by=None)
 
 > Method [Rotate Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/rotate_rotation.html)
 
-Information
------------
-- Socket 'Rotation' : self
-- Parameter 'rotation_space' : 'LOCAL'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'LOCAL'
+
+
 
 #### Arguments:
 - **rotate_by** (_Rotation_ = None) : socket 'Rotate By' (id: Rotate By)
@@ -812,9 +826,10 @@ rotate_vector(vector=None)
 
 > Method [Rotate Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/rotate_vector.html)
 
-Information
------------
-- Socket 'Rotation' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
@@ -837,9 +852,10 @@ to_axis_angle()
 
 > Method ERROR: Node 'Rotation to Axis Angle' not found
 
-Information
------------
-- Socket 'Rotation' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Returns:
 - **Vector** (_Float_)
@@ -857,9 +873,10 @@ to_euler()
 
 > Method [Rotation to Euler](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/rotation_to_euler.html)
 
-Information
------------
-- Socket 'Rotation' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Returns:
 - **Vector** :
@@ -877,9 +894,10 @@ to_quaternion()
 
 > Method [Rotation to Quaternion](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/rotation_to_quaternion.html)
 
-Information
------------
-- Socket 'Rotation' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Returns:
 - **Float** (_Float_)

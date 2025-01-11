@@ -52,10 +52,11 @@ band(boolean=None)
 
 > Method [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
 
-Information
------------
-- Socket 'Boolean' : self
-- Parameter 'operation' : 'AND'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'AND'
+
+
 
 #### Arguments:
 - **boolean** (_Boolean_ = None) : socket 'Boolean' (id: Boolean_001)
@@ -78,10 +79,11 @@ bnot()
 
 > Method [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
 
-Information
------------
-- Socket 'Boolean' : self
-- Parameter 'operation' : 'NOT'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'NOT'
+
+
 
 #### Returns:
 - **Boolean** :
@@ -99,10 +101,11 @@ bor(boolean=None)
 
 > Method [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
 
-Information
------------
-- Socket 'Boolean' : self
-- Parameter 'operation' : 'OR'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'OR'
+
+
 
 #### Arguments:
 - **boolean** (_Boolean_ = None) : socket 'Boolean' (id: Boolean_001)
@@ -125,10 +128,11 @@ error(message=None)
 
 > Method [Warning](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/output/warning.html)
 
-Information
------------
-- Socket 'Show' : self
-- Parameter 'warning_type' : 'ERROR'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'ERROR'
+
+
 
 #### Arguments:
 - **message** (_String_ = None) : socket 'Message' (id: Message)
@@ -151,10 +155,11 @@ imply(boolean=None)
 
 > Method [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
 
-Information
------------
-- Socket 'Boolean' : self
-- Parameter 'operation' : 'IMPLY'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'IMPLY'
+
+
 
 #### Arguments:
 - **boolean** (_Boolean_ = None) : socket 'Boolean' (id: Boolean_001)
@@ -177,10 +182,11 @@ info(message=None)
 
 > Method [Warning](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/output/warning.html)
 
-Information
------------
-- Socket 'Show' : self
-- Parameter 'warning_type' : 'INFO'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'INFO'
+
+
 
 #### Arguments:
 - **message** (_String_ = None) : socket 'Message' (id: Message)
@@ -231,9 +237,10 @@ Named(name=None)
 
 > Constructor [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
-Information
------------
-- Parameter 'data_type' : 'BOOLEAN'
+#### Information:
+- **Parameter** : 'BOOLEAN'
+
+
 
 #### Arguments:
 - **name** (_String_ = None) : socket 'Name' (id: Name)
@@ -256,9 +263,10 @@ NamedAttribute(name=None)
 
 > Constructor [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
-Information
------------
-- Parameter 'data_type' : 'BOOLEAN'
+#### Information:
+- **Parameter** : 'BOOLEAN'
+
+
 
 #### Arguments:
 - **name** (_String_ = None) : socket 'Name' (id: Name)
@@ -281,10 +289,11 @@ nimply(boolean=None)
 
 > Method [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
 
-Information
------------
-- Socket 'Boolean' : self
-- Parameter 'operation' : 'NIMPLY'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'NIMPLY'
+
+
 
 #### Arguments:
 - **boolean** (_Boolean_ = None) : socket 'Boolean' (id: Boolean_001)
@@ -307,10 +316,11 @@ nor(boolean=None)
 
 > Method [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
 
-Information
------------
-- Socket 'Boolean' : self
-- Parameter 'operation' : 'NOR'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'NOR'
+
+
 
 #### Arguments:
 - **boolean** (_Boolean_ = None) : socket 'Boolean' (id: Boolean_001)
@@ -333,10 +343,11 @@ not_and(boolean=None)
 
 > Method [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
 
-Information
------------
-- Socket 'Boolean' : self
-- Parameter 'operation' : 'NAND'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'NAND'
+
+
 
 #### Arguments:
 - **boolean** (_Boolean_ = None) : socket 'Boolean' (id: Boolean_001)
@@ -359,9 +370,10 @@ Random(probability=None, id=None, seed=None)
 
 > Constructor [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html)
 
-Information
------------
-- Parameter 'data_type' : 'BOOLEAN'
+#### Information:
+- **Parameter** : 'BOOLEAN'
+
+
 
 #### Arguments:
 - **probability** (_Float_ = None) : socket 'Probability' (id: Probability)
@@ -386,10 +398,11 @@ sample_grid(position=None, interpolation_mode='TRILINEAR')
 
 > Method ERROR: Node 'Sample Grid' not found
 
-Information
------------
-- Socket 'Grid' : self
-- Parameter 'data_type' : 'BOOLEAN'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'BOOLEAN'
+
+
 
 #### Arguments:
 - **position** (_Vector_ = None) : socket 'Position' (id: Position)
@@ -413,10 +426,11 @@ sample_grid_index(x=None, y=None, z=None)
 
 > Method ERROR: Node 'Sample Grid Index' not found
 
-Information
------------
-- Socket 'Grid' : self
-- Parameter 'data_type' : 'BOOLEAN'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'BOOLEAN'
+
+
 
 #### Arguments:
 - **x** (_Integer_ = None) : socket 'X' (id: X)
@@ -441,9 +455,10 @@ uv_unwrap(seam=None, margin=None, fill_holes=None, method='ANGLE_BASED')
 
 > Method [UV Unwrap](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/uv/uv_unwrap.html)
 
-Information
------------
-- Socket 'Selection' : self
+#### Information:
+- **Socket** : self
+
+
 
 #### Arguments:
 - **seam** (_Boolean_ = None) : socket 'Seam' (id: Seam)
@@ -469,10 +484,11 @@ warning(message=None)
 
 > Method [Warning](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/output/warning.html)
 
-Information
------------
-- Socket 'Show' : self
-- Parameter 'warning_type' : 'WARNING'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'WARNING'
+
+
 
 #### Arguments:
 - **message** (_String_ = None) : socket 'Message' (id: Message)
@@ -495,10 +511,11 @@ xnor(boolean=None)
 
 > Method [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
 
-Information
------------
-- Socket 'Boolean' : self
-- Parameter 'operation' : 'XNOR'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'XNOR'
+
+
 
 #### Arguments:
 - **boolean** (_Boolean_ = None) : socket 'Boolean' (id: Boolean_001)
@@ -521,10 +538,11 @@ xor(boolean=None)
 
 > Method [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
 
-Information
------------
-- Socket 'Boolean' : self
-- Parameter 'operation' : 'XOR'
+#### Information:
+- **Socket** : self
+- **Parameter** : 'XOR'
+
+
 
 #### Arguments:
 - **boolean** (_Boolean_ = None) : socket 'Boolean' (id: Boolean_001)
