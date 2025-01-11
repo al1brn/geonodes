@@ -37,6 +37,7 @@ uv_map = cube.node.uv_map
 
 # Or using the 'peer socket' naming convention
 uv_map = cuve.uv_map_
+```
 
 #### Arguments:
 - **socket** (_NodeSocket_) : the output socket to wrap

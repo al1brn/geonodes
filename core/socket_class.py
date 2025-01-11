@@ -135,6 +135,7 @@ class Socket(NodeCache, PropLocker):
 
         # Or using the 'peer socket' naming convention
         uv_map = cuve.uv_map_
+        ```
 
         Arguments
         ---------
