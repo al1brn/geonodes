@@ -8,7 +8,7 @@ class GreasePencil(Socket):
     $DOC SET hidden
     """
     def domain_size(self):
-        """ > Method <&Node Domain Size>
+        """ > Node <&Node Domain Size>
 
         Information
         -----------
@@ -23,7 +23,7 @@ class GreasePencil(Socket):
         return node
 
     def to_curves(self, layers_as_instances=None):
-        """ > Method <&Node Grease Pencil to Curves>
+        """ > Node <&Node Grease Pencil to Curves>
 
         Information
         -----------
@@ -43,7 +43,7 @@ class GreasePencil(Socket):
 
     @classmethod
     def named_layer_selection(cls, name=None):
-        """ > Class Method <&Node Named Layer Selection>
+        """ > Node <&Node Named Layer Selection>
 
         Arguments
         ---------
@@ -57,7 +57,9 @@ class GreasePencil(Socket):
         return node._out
 
     def merge_layers_by_name(self):
-        """ > Jump Method <&Node Merge Layers>
+        """ > Node <&Node Merge Layers>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -74,7 +76,9 @@ class GreasePencil(Socket):
         return self._domain_to_geometry
 
     def merge_layers_by_id(self, group_id=None):
-        """ > Jump Method <&Node Merge Layers>
+        """ > Node <&Node Merge Layers>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -95,7 +99,9 @@ class GreasePencil(Socket):
         return self._domain_to_geometry
 
     def merge_layers(self, mode='MERGE_BY_NAME'):
-        """ > Jump Method <&Node Merge Layers>
+        """ > Node <&Node Merge Layers>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -110,6 +116,7 @@ class GreasePencil(Socket):
         -------
         - GreasePencil
         """
+        utils.check_enum_arg('mode', mode, 'merge_layers', ('MERGE_BY_NAME', 'MERGE_BY_ID'))
         node = Node('Merge Layers', sockets={'Grease Pencil': self, 'Selection': self._sel}, mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry

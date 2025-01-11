@@ -8,7 +8,7 @@ class Shader(Socket):
     $DOC SET hidden
     """
     def add(self, shader=None):
-        """ > Method <&ShaderNode Add Shader>
+        """ > Node <&ShaderNode Add Shader>
 
         Information
         -----------
@@ -27,7 +27,7 @@ class Shader(Socket):
 
     @classmethod
     def Glossy(cls, color=None, roughness=None, anisotropy=None, rotation=None, normal=None, tangent=None, distribution='MULTI_GGX'):
-        """ > Constructor <&ShaderNode Glossy BSDF>
+        """ > Node <&ShaderNode Glossy BSDF>
 
         Arguments
         ---------
@@ -43,12 +43,13 @@ class Shader(Socket):
         -------
         - Shader
         """
+        utils.check_enum_arg('distribution', distribution, 'Glossy', ('BECKMANN', 'GGX', 'ASHIKHMIN_SHIRLEY', 'MULTI_GGX'))
         node = Node('Glossy BSDF', sockets={'Color': color, 'Roughness': roughness, 'Anisotropy': anisotropy, 'Rotation': rotation, 'Normal': normal, 'Tangent': tangent}, distribution=distribution)
         return cls(node._out)
 
     @classmethod
     def Diffuse(cls, color=None, roughness=None, normal=None):
-        """ > Constructor <&ShaderNode Diffuse BSDF>
+        """ > Node <&ShaderNode Diffuse BSDF>
 
         Arguments
         ---------
@@ -65,7 +66,7 @@ class Shader(Socket):
 
     @classmethod
     def Glass(cls, color=None, roughness=None, ior=None, normal=None, distribution='MULTI_GGX'):
-        """ > Constructor <&ShaderNode Glass BSDF>
+        """ > Node <&ShaderNode Glass BSDF>
 
         Arguments
         ---------
@@ -79,12 +80,13 @@ class Shader(Socket):
         -------
         - Shader
         """
+        utils.check_enum_arg('distribution', distribution, 'Glass', ('BECKMANN', 'GGX', 'MULTI_GGX'))
         node = Node('Glass BSDF', sockets={'Color': color, 'Roughness': roughness, 'IOR': ior, 'Normal': normal}, distribution=distribution)
         return cls(node._out)
 
     @classmethod
     def Hair(cls, color=None, offset=None, roughnessu=None, roughnessv=None, tangent=None, component='Reflection'):
-        """ > Constructor <&ShaderNode Hair BSDF>
+        """ > Node <&ShaderNode Hair BSDF>
 
         Arguments
         ---------
@@ -99,12 +101,13 @@ class Shader(Socket):
         -------
         - Shader
         """
+        utils.check_enum_arg('component', component, 'Hair', ('Reflection', 'Transmission'))
         node = Node('Hair BSDF', sockets={'Color': color, 'Offset': offset, 'RoughnessU': roughnessu, 'RoughnessV': roughnessv, 'Tangent': tangent}, component=component)
         return cls(node._out)
 
     @classmethod
     def PrincipledHair(cls, color=None, roughness=None, radial_roughness=None, coat=None, ior=None, offset=None, random_roughness=None, random=None, model='CHIANG', parametrization='COLOR'):
-        """ > Constructor <&ShaderNode Principled Hair BSDF>
+        """ > Node <&ShaderNode Principled Hair BSDF>
 
         Arguments
         ---------
@@ -123,12 +126,14 @@ class Shader(Socket):
         -------
         - Shader
         """
+        utils.check_enum_arg('model', model, 'PrincipledHair', ('CHIANG', 'HUANG'))
+        utils.check_enum_arg('parametrization', parametrization, 'PrincipledHair', ('ABSORPTION', 'MELANIN', 'COLOR'))
         node = Node('Principled Hair BSDF', sockets={'Color': color, 'Roughness': roughness, 'Radial Roughness': radial_roughness, 'Coat': coat, 'IOR': ior, 'Offset': offset, 'Random Roughness': random_roughness, 'Random': random}, model=model, parametrization=parametrization)
         return cls(node._out)
 
     @classmethod
     def Metallic(cls, base_color=None, edge_tint=None, roughness=None, anisotropy=None, rotation=None, normal=None, tangent=None, distribution='MULTI_GGX', fresnel_type='F82'):
-        """ > Constructor <&ShaderNode Metallic BSDF>
+        """ > Node <&ShaderNode Metallic BSDF>
 
         Arguments
         ---------
@@ -146,12 +151,14 @@ class Shader(Socket):
         -------
         - Shader
         """
+        utils.check_enum_arg('distribution', distribution, 'Metallic', ('BECKMANN', 'GGX', 'MULTI_GGX'))
+        utils.check_enum_arg('fresnel_type', fresnel_type, 'Metallic', ('PHYSICAL_CONDUCTOR', 'F82'))
         node = Node('Metallic BSDF', sockets={'Base Color': base_color, 'Edge Tint': edge_tint, 'Roughness': roughness, 'Anisotropy': anisotropy, 'Rotation': rotation, 'Normal': normal, 'Tangent': tangent}, distribution=distribution, fresnel_type=fresnel_type)
         return cls(node._out)
 
     @classmethod
     def Principled(cls, base_color=None, metallic=None, roughness=None, ior=None, alpha=None, normal=None, diffuse_roughness=None, subsurface_weight=None, subsurface_radius=None, subsurface_scale=None, subsurface_anisotropy=None, specular_ior_level=None, specular_tint=None, anisotropic=None, anisotropic_rotation=None, tangent=None, transmission_weight=None, coat_weight=None, coat_roughness=None, coat_ior=None, coat_tint=None, coat_normal=None, sheen_weight=None, sheen_roughness=None, sheen_tint=None, emission_color=None, emission_strength=None, thin_film_thickness=None, thin_film_ior=None, distribution='MULTI_GGX', subsurface_method='RANDOM_WALK'):
-        """ > Constructor <&ShaderNode Principled BSDF>
+        """ > Node <&ShaderNode Principled BSDF>
 
         Arguments
         ---------
@@ -191,12 +198,14 @@ class Shader(Socket):
         -------
         - Shader
         """
+        utils.check_enum_arg('distribution', distribution, 'Principled', ('GGX', 'MULTI_GGX'))
+        utils.check_enum_arg('subsurface_method', subsurface_method, 'Principled', ('BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN'))
         node = Node('Principled BSDF', sockets={'Base Color': base_color, 'Metallic': metallic, 'Roughness': roughness, 'IOR': ior, 'Alpha': alpha, 'Normal': normal, 'Diffuse Roughness': diffuse_roughness, 'Subsurface Weight': subsurface_weight, 'Subsurface Radius': subsurface_radius, 'Subsurface Scale': subsurface_scale, 'Subsurface Anisotropy': subsurface_anisotropy, 'Specular IOR Level': specular_ior_level, 'Specular Tint': specular_tint, 'Anisotropic': anisotropic, 'Anisotropic Rotation': anisotropic_rotation, 'Tangent': tangent, 'Transmission Weight': transmission_weight, 'Coat Weight': coat_weight, 'Coat Roughness': coat_roughness, 'Coat IOR': coat_ior, 'Coat Tint': coat_tint, 'Coat Normal': coat_normal, 'Sheen Weight': sheen_weight, 'Sheen Roughness': sheen_roughness, 'Sheen Tint': sheen_tint, 'Emission Color': emission_color, 'Emission Strength': emission_strength, 'Thin Film Thickness': thin_film_thickness, 'Thin Film IOR': thin_film_ior}, distribution=distribution, subsurface_method=subsurface_method)
         return cls(node._out)
 
     @classmethod
     def RayPortal(cls, color=None, position=None, direction=None):
-        """ > Constructor <&ShaderNode Ray Portal BSDF>
+        """ > Node <&ShaderNode Ray Portal BSDF>
 
         Arguments
         ---------
@@ -213,7 +222,7 @@ class Shader(Socket):
 
     @classmethod
     def Refraction(cls, color=None, roughness=None, ior=None, normal=None, distribution='BECKMANN'):
-        """ > Constructor <&ShaderNode Refraction BSDF>
+        """ > Node <&ShaderNode Refraction BSDF>
 
         Arguments
         ---------
@@ -227,12 +236,13 @@ class Shader(Socket):
         -------
         - Shader
         """
+        utils.check_enum_arg('distribution', distribution, 'Refraction', ('BECKMANN', 'GGX'))
         node = Node('Refraction BSDF', sockets={'Color': color, 'Roughness': roughness, 'IOR': ior, 'Normal': normal}, distribution=distribution)
         return cls(node._out)
 
     @classmethod
     def Sheen(cls, color=None, roughness=None, normal=None, distribution='MICROFIBER'):
-        """ > Constructor <&ShaderNode Sheen BSDF>
+        """ > Node <&ShaderNode Sheen BSDF>
 
         Arguments
         ---------
@@ -245,12 +255,13 @@ class Shader(Socket):
         -------
         - Shader
         """
+        utils.check_enum_arg('distribution', distribution, 'Sheen', ('ASHIKHMIN', 'MICROFIBER'))
         node = Node('Sheen BSDF', sockets={'Color': color, 'Roughness': roughness, 'Normal': normal}, distribution=distribution)
         return cls(node._out)
 
     @classmethod
     def Toon(cls, color=None, size=None, smooth=None, normal=None, component='DIFFUSE'):
-        """ > Constructor <&ShaderNode Toon BSDF>
+        """ > Node <&ShaderNode Toon BSDF>
 
         Arguments
         ---------
@@ -264,12 +275,13 @@ class Shader(Socket):
         -------
         - Shader
         """
+        utils.check_enum_arg('component', component, 'Toon', ('DIFFUSE', 'GLOSSY'))
         node = Node('Toon BSDF', sockets={'Color': color, 'Size': size, 'Smooth': smooth, 'Normal': normal}, component=component)
         return cls(node._out)
 
     @classmethod
     def Translucent(cls, color=None, normal=None):
-        """ > Constructor <&ShaderNode Translucent BSDF>
+        """ > Node <&ShaderNode Translucent BSDF>
 
         Arguments
         ---------
@@ -285,7 +297,7 @@ class Shader(Socket):
 
     @classmethod
     def Transparent(cls, color=None):
-        """ > Constructor <&ShaderNode Transparent BSDF>
+        """ > Node <&ShaderNode Transparent BSDF>
 
         Arguments
         ---------
@@ -300,7 +312,7 @@ class Shader(Socket):
 
     @classmethod
     def Specular(cls, base_color=None, specular=None, roughness=None, emissive_color=None, transparency=None, normal=None, clear_coat=None, clear_coat_roughness=None, clear_coat_normal=None):
-        """ > Constructor <&ShaderNode Specular BSDF>
+        """ > Node <&ShaderNode Specular BSDF>
 
         Arguments
         ---------
@@ -323,7 +335,7 @@ class Shader(Socket):
 
     @classmethod
     def Emission(cls, color=None, strength=None):
-        """ > Constructor <&ShaderNode Emission>
+        """ > Node <&ShaderNode Emission>
 
         Arguments
         ---------
@@ -339,7 +351,7 @@ class Shader(Socket):
 
     @classmethod
     def Holdout(cls):
-        """ > Constructor <&ShaderNode Holdout>
+        """ > Node <&ShaderNode Holdout>
 
         Returns
         -------
@@ -349,7 +361,7 @@ class Shader(Socket):
         return cls(node._out)
 
     def mix(self, shader=None, fac=None):
-        """ > Method <&ShaderNode Mix Shader>
+        """ > Node <&ShaderNode Mix Shader>
 
         Information
         -----------
@@ -368,7 +380,7 @@ class Shader(Socket):
         return node._out
 
     def light_output(self, is_active_output=True, target='ALL'):
-        """ > Method <&ShaderNode Light Output>
+        """ > Node <&ShaderNode Light Output>
 
         Information
         -----------
@@ -383,11 +395,12 @@ class Shader(Socket):
         -------
         - None
         """
+        utils.check_enum_arg('target', target, 'light_output', ('ALL', 'EEVEE', 'CYCLES'))
         node = Node('Light Output', sockets={'Surface': self}, is_active_output=is_active_output, target=target)
         return node._out
 
     def material_output(self, volume=None, displacement=None, thickness=None, is_active_output=True, target='ALL'):
-        """ > Method <&ShaderNode Material Output>
+        """ > Node <&ShaderNode Material Output>
 
         Information
         -----------
@@ -405,11 +418,12 @@ class Shader(Socket):
         -------
         - None
         """
+        utils.check_enum_arg('target', target, 'material_output', ('ALL', 'EEVEE', 'CYCLES'))
         node = Node('Material Output', sockets={'Surface': self, 'Volume': volume, 'Displacement': displacement, 'Thickness': thickness}, is_active_output=is_active_output, target=target)
         return node._out
 
     def world_output(self, volume=None, is_active_output=True, target='ALL'):
-        """ > Method <&ShaderNode World Output>
+        """ > Node <&ShaderNode World Output>
 
         Information
         -----------
@@ -425,11 +439,12 @@ class Shader(Socket):
         -------
         - None
         """
+        utils.check_enum_arg('target', target, 'world_output', ('ALL', 'EEVEE', 'CYCLES'))
         node = Node('World Output', sockets={'Surface': self, 'Volume': volume}, is_active_output=is_active_output, target=target)
         return node._out
 
     def to_rgb(self):
-        """ > Method <&ShaderNode Shader to RGB>
+        """ > Node <&ShaderNode Shader to RGB>
 
         Information
         -----------
@@ -444,7 +459,7 @@ class Shader(Socket):
 
     @classmethod
     def SubsurfaceScattering(cls, color=None, scale=None, radius=None, ior=None, roughness=None, anisotropy=None, normal=None, falloff='RANDOM_WALK'):
-        """ > Constructor <&ShaderNode Subsurface Scattering>
+        """ > Node <&ShaderNode Subsurface Scattering>
 
         Arguments
         ---------
@@ -461,6 +476,7 @@ class Shader(Socket):
         -------
         - Shader
         """
+        utils.check_enum_arg('falloff', falloff, 'SubsurfaceScattering', ('BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN'))
         node = Node('Subsurface Scattering', sockets={'Color': color, 'Scale': scale, 'Radius': radius, 'IOR': ior, 'Roughness': roughness, 'Anisotropy': anisotropy, 'Normal': normal}, falloff=falloff)
         return cls(node._out)
 

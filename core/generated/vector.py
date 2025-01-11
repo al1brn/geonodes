@@ -8,7 +8,7 @@ class Vector(Socket):
     $DOC SET hidden
     """
     def less_than(self, b=None):
-        """ > Method <&Node Compare>
+        """ > Node <&Node Compare>
 
         Information
         -----------
@@ -29,7 +29,7 @@ class Vector(Socket):
         return node._out
 
     def less_equal(self, b=None):
-        """ > Method <&Node Compare>
+        """ > Node <&Node Compare>
 
         Information
         -----------
@@ -50,7 +50,7 @@ class Vector(Socket):
         return node._out
 
     def greater_than(self, b=None):
-        """ > Method <&Node Compare>
+        """ > Node <&Node Compare>
 
         Information
         -----------
@@ -71,7 +71,7 @@ class Vector(Socket):
         return node._out
 
     def greater_equal(self, b=None):
-        """ > Method <&Node Compare>
+        """ > Node <&Node Compare>
 
         Information
         -----------
@@ -92,7 +92,7 @@ class Vector(Socket):
         return node._out
 
     def equal(self, b=None, epsilon=None):
-        """ > Method <&Node Compare>
+        """ > Node <&Node Compare>
 
         Information
         -----------
@@ -114,7 +114,7 @@ class Vector(Socket):
         return node._out
 
     def not_equal(self, b=None, epsilon=None):
-        """ > Method <&Node Compare>
+        """ > Node <&Node Compare>
 
         Information
         -----------
@@ -136,7 +136,7 @@ class Vector(Socket):
         return node._out
 
     def to_rotation(self):
-        """ > Method <&Node Euler to Rotation>
+        """ > Node <&Node Euler to Rotation>
 
         Information
         -----------
@@ -150,7 +150,7 @@ class Vector(Socket):
         return node._out
 
     def hash_value(self, seed=None):
-        """ > Method <&Node Hash Value>
+        """ > Node <&Node Hash Value>
 
         Information
         -----------
@@ -170,7 +170,7 @@ class Vector(Socket):
 
     @classmethod
     def Random(cls, min=None, max=None, id=None, seed=None):
-        """ > Constructor <&Node Random Value>
+        """ > Node <&Node Random Value>
 
         Information
         -----------
@@ -191,7 +191,7 @@ class Vector(Socket):
         return cls(node._out)
 
     def blur(self, iterations=None, weight=None):
-        """ > Method <&Node Blur Attribute>
+        """ > Node <&Node Blur Attribute>
 
         Information
         -----------
@@ -212,7 +212,7 @@ class Vector(Socket):
 
     @classmethod
     def Named(cls, name=None):
-        """ > Constructor <&Node Named Attribute>
+        """ > Node <&Node Named Attribute>
 
         Information
         -----------
@@ -231,7 +231,7 @@ class Vector(Socket):
 
     @classmethod
     def NamedAttribute(cls, name=None):
-        """ > Constructor <&Node Named Attribute>
+        """ > Node <&Node Named Attribute>
 
         Information
         -----------
@@ -249,7 +249,7 @@ class Vector(Socket):
         return cls(node._out)
 
     def sample_grid(self, position=None, interpolation_mode='TRILINEAR'):
-        """ > Method <&Node Sample Grid>
+        """ > Node <&Node Sample Grid>
 
         Information
         -----------
@@ -265,11 +265,12 @@ class Vector(Socket):
         -------
         - Vector
         """
+        utils.check_enum_arg('interpolation_mode', interpolation_mode, 'sample_grid', ('NEAREST', 'TRILINEAR', 'TRIQUADRATIC'))
         node = Node('Sample Grid', sockets={'Grid': self, 'Position': position}, data_type='VECTOR', interpolation_mode=interpolation_mode)
         return node._out
 
     def sample_grid_index(self, x=None, y=None, z=None):
-        """ > Method <&Node Sample Grid Index>
+        """ > Node <&Node Sample Grid Index>
 
         Information
         -----------
@@ -290,7 +291,7 @@ class Vector(Socket):
         return node._out
 
     def pack_uv_islands(self, margin=None, rotate=None):
-        """ > Method <&Node Pack UV Islands>
+        """ > Node <&Node Pack UV Islands>
 
         Information
         -----------
@@ -311,7 +312,7 @@ class Vector(Socket):
 
     @classmethod
     def CombineXYZ(cls, x=None, y=None, z=None):
-        """ > Constructor <&Node Combine XYZ>
+        """ > Node <&Node Combine XYZ>
 
         Arguments
         ---------
@@ -327,7 +328,7 @@ class Vector(Socket):
         return cls(node._out)
 
     def mix_uniform(self, b=None, factor=None, clamp_factor=True):
-        """ > Method <&Node Mix>
+        """ > Node <&Node Mix>
 
         Information
         -----------
@@ -351,7 +352,7 @@ class Vector(Socket):
         return node._out
 
     def mix_non_uniform(self, b=None, factor=None, clamp_factor=True):
-        """ > Method <&Node Mix>
+        """ > Node <&Node Mix>
 
         Information
         -----------
@@ -376,7 +377,7 @@ class Vector(Socket):
 
     @property
     def xyz(self):
-        """ > Property Get <&Node Separate XYZ>
+        """ > Node <&Node Separate XYZ>
 
         Information
         -----------
@@ -390,7 +391,7 @@ class Vector(Socket):
         return (node.x, node.y, node.z)
 
     def separate_xyz(self):
-        """ > Method <&Node Separate XYZ>
+        """ > Node <&Node Separate XYZ>
 
         Information
         -----------
@@ -405,7 +406,7 @@ class Vector(Socket):
 
     @property
     def x(self):
-        """ > Property Get <&Node Separate XYZ>
+        """ > Node <&Node Separate XYZ>
 
         Information
         -----------
@@ -420,7 +421,7 @@ class Vector(Socket):
 
     @property
     def y(self):
-        """ > Property Get <&Node Separate XYZ>
+        """ > Node <&Node Separate XYZ>
 
         Information
         -----------
@@ -435,7 +436,7 @@ class Vector(Socket):
 
     @property
     def z(self):
-        """ > Property Get <&Node Separate XYZ>
+        """ > Node <&Node Separate XYZ>
 
         Information
         -----------
@@ -449,7 +450,7 @@ class Vector(Socket):
         return node.z
 
     def vector_curves(self, fac=None):
-        """ > Method <&Node Vector Curves>
+        """ > Node <&Node Vector Curves>
 
         Information
         -----------
@@ -467,7 +468,7 @@ class Vector(Socket):
         return node._out
 
     def add(self, vector=None):
-        """ > Method <&Node Vector Math>
+        """ > Node <&Node Vector Math>
 
         Information
         -----------
@@ -486,7 +487,7 @@ class Vector(Socket):
         return node._out
 
     def subtract(self, vector=None):
-        """ > Method <&Node Vector Math>
+        """ > Node <&Node Vector Math>
 
         Information
         -----------
@@ -505,7 +506,7 @@ class Vector(Socket):
         return node._out
 
     def multiply(self, vector=None):
-        """ > Method <&Node Vector Math>
+        """ > Node <&Node Vector Math>
 
         Information
         -----------
@@ -524,7 +525,7 @@ class Vector(Socket):
         return node._out
 
     def divide(self, vector=None):
-        """ > Method <&Node Vector Math>
+        """ > Node <&Node Vector Math>
 
         Information
         -----------
@@ -543,7 +544,7 @@ class Vector(Socket):
         return node._out
 
     def multiply_add(self, multiplier=None, addend=None):
-        """ > Method <&Node Vector Math>
+        """ > Node <&Node Vector Math>
 
         Information
         -----------
@@ -563,7 +564,7 @@ class Vector(Socket):
         return node._out
 
     def cross(self, vector=None):
-        """ > Method <&Node Vector Math>
+        """ > Node <&Node Vector Math>
 
         Information
         -----------
@@ -582,7 +583,7 @@ class Vector(Socket):
         return node._out
 
     def project(self, vector=None):
-        """ > Method <&Node Vector Math>
+        """ > Node <&Node Vector Math>
 
         Information
         -----------
@@ -601,7 +602,7 @@ class Vector(Socket):
         return node._out
 
     def reflect(self, vector=None):
-        """ > Method <&Node Vector Math>
+        """ > Node <&Node Vector Math>
 
         Information
         -----------
@@ -620,7 +621,7 @@ class Vector(Socket):
         return node._out
 
     def refract(self, vector=None, ior=None):
-        """ > Method <&Node Vector Math>
+        """ > Node <&Node Vector Math>
 
         Information
         -----------
@@ -640,7 +641,7 @@ class Vector(Socket):
         return node._out
 
     def faceforward(self, incident=None, reference=None):
-        """ > Method <&Node Vector Math>
+        """ > Node <&Node Vector Math>
 
         Information
         -----------
@@ -660,7 +661,7 @@ class Vector(Socket):
         return node._out
 
     def dot(self, vector=None):
-        """ > Method <&Node Vector Math>
+        """ > Node <&Node Vector Math>
 
         Information
         -----------
@@ -679,7 +680,7 @@ class Vector(Socket):
         return node._out
 
     def distance(self, vector=None):
-        """ > Method <&Node Vector Math>
+        """ > Node <&Node Vector Math>
 
         Information
         -----------
@@ -698,7 +699,7 @@ class Vector(Socket):
         return node._out
 
     def length(self):
-        """ > Method <&Node Vector Math>
+        """ > Node <&Node Vector Math>
 
         Information
         -----------
@@ -713,7 +714,7 @@ class Vector(Socket):
         return node._out
 
     def scale(self, scale=None):
-        """ > Method <&Node Vector Math>
+        """ > Node <&Node Vector Math>
 
         Information
         -----------
@@ -732,7 +733,7 @@ class Vector(Socket):
         return node._out
 
     def normalize(self):
-        """ > Method <&Node Vector Math>
+        """ > Node <&Node Vector Math>
 
         Information
         -----------
@@ -747,7 +748,7 @@ class Vector(Socket):
         return node._out
 
     def abs(self):
-        """ > Method <&Node Vector Math>
+        """ > Node <&Node Vector Math>
 
         Information
         -----------
@@ -762,7 +763,7 @@ class Vector(Socket):
         return node._out
 
     def min(self, vector=None):
-        """ > Method <&Node Vector Math>
+        """ > Node <&Node Vector Math>
 
         Information
         -----------
@@ -781,7 +782,7 @@ class Vector(Socket):
         return node._out
 
     def max(self, vector=None):
-        """ > Method <&Node Vector Math>
+        """ > Node <&Node Vector Math>
 
         Information
         -----------
@@ -800,7 +801,7 @@ class Vector(Socket):
         return node._out
 
     def floor(self):
-        """ > Method <&Node Vector Math>
+        """ > Node <&Node Vector Math>
 
         Information
         -----------
@@ -815,7 +816,7 @@ class Vector(Socket):
         return node._out
 
     def ceil(self):
-        """ > Method <&Node Vector Math>
+        """ > Node <&Node Vector Math>
 
         Information
         -----------
@@ -830,7 +831,7 @@ class Vector(Socket):
         return node._out
 
     def fraction(self):
-        """ > Method <&Node Vector Math>
+        """ > Node <&Node Vector Math>
 
         Information
         -----------
@@ -845,7 +846,7 @@ class Vector(Socket):
         return node._out
 
     def modulo(self, vector=None):
-        """ > Method <&Node Vector Math>
+        """ > Node <&Node Vector Math>
 
         Information
         -----------
@@ -864,7 +865,7 @@ class Vector(Socket):
         return node._out
 
     def wrap(self, max=None, min=None):
-        """ > Method <&Node Vector Math>
+        """ > Node <&Node Vector Math>
 
         Information
         -----------
@@ -884,7 +885,7 @@ class Vector(Socket):
         return node._out
 
     def snap(self, increment=None):
-        """ > Method <&Node Vector Math>
+        """ > Node <&Node Vector Math>
 
         Information
         -----------
@@ -903,7 +904,7 @@ class Vector(Socket):
         return node._out
 
     def sin(self):
-        """ > Method <&Node Vector Math>
+        """ > Node <&Node Vector Math>
 
         Information
         -----------
@@ -918,7 +919,7 @@ class Vector(Socket):
         return node._out
 
     def cos(self):
-        """ > Method <&Node Vector Math>
+        """ > Node <&Node Vector Math>
 
         Information
         -----------
@@ -933,7 +934,7 @@ class Vector(Socket):
         return node._out
 
     def tan(self):
-        """ > Method <&Node Vector Math>
+        """ > Node <&Node Vector Math>
 
         Information
         -----------
@@ -948,7 +949,7 @@ class Vector(Socket):
         return node._out
 
     def rotate(self, center=None, axis=None, angle=None, invert=False, rotation_type='AXIS_ANGLE'):
-        """ > Method <&Node Vector Rotate>
+        """ > Node <&Node Vector Rotate>
 
         Information
         -----------
@@ -966,11 +967,12 @@ class Vector(Socket):
         -------
         - Vector
         """
+        utils.check_enum_arg('rotation_type', rotation_type, 'rotate', ('AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ'))
         node = Node('Vector Rotate', sockets={'Vector': self, 'Center': center, 'Axis': axis, 'Angle': angle}, invert=invert, rotation_type=rotation_type)
         return node._out
 
     def rotate_axis_angle(self, center=None, axis=None, angle=None, invert=False):
-        """ > Method <&Node Vector Rotate>
+        """ > Node <&Node Vector Rotate>
 
         Information
         -----------
@@ -992,7 +994,7 @@ class Vector(Socket):
         return node._out
 
     def rotate_x_axis(self, center=None, angle=None, invert=False):
-        """ > Method <&Node Vector Rotate>
+        """ > Node <&Node Vector Rotate>
 
         Information
         -----------
@@ -1013,7 +1015,7 @@ class Vector(Socket):
         return node._out
 
     def rotate_y_axis(self, center=None, angle=None, invert=False):
-        """ > Method <&Node Vector Rotate>
+        """ > Node <&Node Vector Rotate>
 
         Information
         -----------
@@ -1034,7 +1036,7 @@ class Vector(Socket):
         return node._out
 
     def rotate_z_axis(self, center=None, angle=None, invert=False):
-        """ > Method <&Node Vector Rotate>
+        """ > Node <&Node Vector Rotate>
 
         Information
         -----------
@@ -1055,7 +1057,7 @@ class Vector(Socket):
         return node._out
 
     def rotate_euler_xyz(self, center=None, rotation=None, invert=False):
-        """ > Method <&Node Vector Rotate>
+        """ > Node <&Node Vector Rotate>
 
         Information
         -----------
@@ -1076,7 +1078,7 @@ class Vector(Socket):
         return node._out
 
     def mapping(self, location=None, rotation=None, scale=None, vector_type='POINT'):
-        """ > Method <&ShaderNode Mapping>
+        """ > Node <&ShaderNode Mapping>
 
         Information
         -----------
@@ -1093,11 +1095,12 @@ class Vector(Socket):
         -------
         - Vector
         """
+        utils.check_enum_arg('vector_type', vector_type, 'mapping', ('POINT', 'TEXTURE', 'VECTOR', 'NORMAL'))
         node = Node('Mapping', sockets={'Vector': self, 'Location': location, 'Rotation': rotation, 'Scale': scale}, vector_type=vector_type)
         return node._out
 
     def normal(self):
-        """ > Method <&ShaderNode Normal>
+        """ > Node <&ShaderNode Normal>
 
         Information
         -----------
@@ -1112,7 +1115,7 @@ class Vector(Socket):
 
     @classmethod
     def Tangent(cls, axis='Z', direction_type='RADIAL', uv_map=''):
-        """ > Constructor <&ShaderNode Tangent>
+        """ > Node <&ShaderNode Tangent>
 
         Arguments
         ---------
@@ -1124,11 +1127,13 @@ class Vector(Socket):
         -------
         - Vector
         """
+        utils.check_enum_arg('axis', axis, 'Tangent', ('X', 'Y', 'Z'))
+        utils.check_enum_arg('direction_type', direction_type, 'Tangent', ('RADIAL', 'UV_MAP'))
         node = Node('Tangent', sockets={}, axis=axis, direction_type=direction_type, uv_map=uv_map)
         return cls(node._out)
 
     def environment_texture(self, image=None, interpolation='Linear', projection='EQUIRECTANGULAR'):
-        """ > Method <&ShaderNode Environment Texture>
+        """ > Node <&ShaderNode Environment Texture>
 
         Information
         -----------
@@ -1144,11 +1149,13 @@ class Vector(Socket):
         -------
         - Color
         """
+        utils.check_enum_arg('interpolation', interpolation, 'environment_texture', ('Linear', 'Closest', 'Cubic', 'Smart'))
+        utils.check_enum_arg('projection', projection, 'environment_texture', ('EQUIRECTANGULAR', 'MIRROR_BALL'))
         node = Node('Environment Texture', sockets={'Vector': self}, image=image, interpolation=interpolation, projection=projection)
         return node._out
 
     def ies_texture_internal(self, strength=None, filepath='', ies=None):
-        """ > Method <&ShaderNode IES Texture>
+        """ > Node <&ShaderNode IES Texture>
 
         Information
         -----------
@@ -1169,7 +1176,7 @@ class Vector(Socket):
         return node._out
 
     def ies_texture_external(self, strength=None, filepath='', ies=None):
-        """ > Method <&ShaderNode IES Texture>
+        """ > Node <&ShaderNode IES Texture>
 
         Information
         -----------
@@ -1190,7 +1197,7 @@ class Vector(Socket):
         return node._out
 
     def ies_texture(self, strength=None, filepath='', ies=None, mode='INTERNAL'):
-        """ > Method <&ShaderNode IES Texture>
+        """ > Node <&ShaderNode IES Texture>
 
         Information
         -----------
@@ -1207,11 +1214,12 @@ class Vector(Socket):
         -------
         - Float
         """
+        utils.check_enum_arg('mode', mode, 'ies_texture', ('INTERNAL', 'EXTERNAL'))
         node = Node('IES Texture', sockets={'Vector': self, 'Strength': strength}, filepath=filepath, ies=ies, mode=mode)
         return node._out
 
     def image_texture(self, extension='REPEAT', image=None, interpolation='Linear', projection='FLAT', projection_blend=0.0):
-        """ > Method <&ShaderNode Image Texture>
+        """ > Node <&ShaderNode Image Texture>
 
         Information
         -----------
@@ -1229,11 +1237,14 @@ class Vector(Socket):
         -------
         - Color [alpha_ (Float)]
         """
+        utils.check_enum_arg('extension', extension, 'image_texture', ('REPEAT', 'EXTEND', 'CLIP', 'MIRROR'))
+        utils.check_enum_arg('interpolation', interpolation, 'image_texture', ('Linear', 'Closest', 'Cubic', 'Smart'))
+        utils.check_enum_arg('projection', projection, 'image_texture', ('FLAT', 'BOX', 'SPHERE', 'TUBE'))
         node = Node('Image Texture', sockets={'Vector': self}, extension=extension, image=image, interpolation=interpolation, projection=projection, projection_blend=projection_blend)
         return node._out
 
     def point_density(self, interpolation='Linear', object=None, particle_color_source='PARTICLE_AGE', particle_system=None, point_source='PARTICLE_SYSTEM', radius=0.30000001192092896, resolution=100, space='OBJECT', vertex_attribute_name='', vertex_color_source='VERTEX_COLOR'):
-        """ > Method <&ShaderNode Point Density>
+        """ > Node <&ShaderNode Point Density>
 
         Information
         -----------
@@ -1256,12 +1267,17 @@ class Vector(Socket):
         -------
         - Color [density_ (Float)]
         """
+        utils.check_enum_arg('interpolation', interpolation, 'point_density', ('Closest', 'Linear', 'Cubic'))
+        utils.check_enum_arg('particle_color_source', particle_color_source, 'point_density', ('PARTICLE_AGE', 'PARTICLE_SPEED', 'PARTICLE_VELOCITY'))
+        utils.check_enum_arg('point_source', point_source, 'point_density', ('PARTICLE_SYSTEM', 'OBJECT'))
+        utils.check_enum_arg('space', space, 'point_density', ('OBJECT', 'WORLD'))
+        utils.check_enum_arg('vertex_color_source', vertex_color_source, 'point_density', ('VERTEX_COLOR', 'VERTEX_WEIGHT', 'VERTEX_NORMAL'))
         node = Node('Point Density', sockets={'Vector': self}, interpolation=interpolation, object=object, particle_color_source=particle_color_source, particle_system=particle_system, point_source=point_source, radius=radius, resolution=resolution, space=space, vertex_attribute_name=vertex_attribute_name, vertex_color_source=vertex_color_source)
         return node._out
 
     @classmethod
     def UvMap(cls, from_instancer=False, uv_map=''):
-        """ > Constructor <&ShaderNode UV Map>
+        """ > Node <&ShaderNode UV Map>
 
         Arguments
         ---------
@@ -1276,7 +1292,7 @@ class Vector(Socket):
         return cls(node._out)
 
     def vector_transform(self, convert_from='WORLD', convert_to='OBJECT', vector_type='VECTOR'):
-        """ > Method <&ShaderNode Vector Transform>
+        """ > Node <&ShaderNode Vector Transform>
 
         Information
         -----------
@@ -1292,6 +1308,9 @@ class Vector(Socket):
         -------
         - Vector
         """
+        utils.check_enum_arg('convert_from', convert_from, 'vector_transform', ('WORLD', 'OBJECT', 'CAMERA'))
+        utils.check_enum_arg('convert_to', convert_to, 'vector_transform', ('WORLD', 'OBJECT', 'CAMERA'))
+        utils.check_enum_arg('vector_type', vector_type, 'vector_transform', ('POINT', 'VECTOR', 'NORMAL'))
         node = Node('Vector Transform', sockets={'Vector': self}, convert_from=convert_from, convert_to=convert_to, vector_type=vector_type)
         return node._out
 

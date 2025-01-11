@@ -202,7 +202,7 @@ Write only property for node <Node Set Spline Type>
 Arc(resolution=None, radius=None, start_angle=None, sweep_angle=None, connect_center=None, invert_arc=None, mode='RADIUS')
 ```
 
-> Constructor [Arc](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/arc.html)
+> Node [Arc](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/arc.html)
 
 #### Arguments:
 - **resolution** (_Integer_ = None) : socket 'Resolution' (id: Resolution)
@@ -229,7 +229,7 @@ Arc(resolution=None, radius=None, start_angle=None, sweep_angle=None, connect_ce
 ArcPoints(resolution=None, start=None, middle=None, end=None, offset_angle=None, connect_center=None, invert_arc=None)
 ```
 
-> Constructor [Arc](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/arc.html)
+> Node [Arc](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/arc.html)
 
 #### Information:
 - **Parameter** : 'POINTS'
@@ -261,7 +261,7 @@ ArcPoints(resolution=None, start=None, middle=None, end=None, offset_angle=None,
 ArcRadius(resolution=None, radius=None, start_angle=None, sweep_angle=None, connect_center=None, invert_arc=None)
 ```
 
-> Constructor [Arc](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/arc.html)
+> Node [Arc](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/arc.html)
 
 #### Information:
 - **Parameter** : 'RADIUS'
@@ -292,7 +292,7 @@ ArcRadius(resolution=None, radius=None, start_angle=None, sweep_angle=None, conn
 BezierSegment(resolution=None, start=None, start_handle=None, end_handle=None, end=None, mode='POSITION')
 ```
 
-> Constructor ERROR: Node 'Bézier Segment' not found
+> Node ERROR: Node 'Bézier Segment' not found
 
 #### Arguments:
 - **resolution** (_Integer_ = None) : socket 'Resolution' (id: Resolution)
@@ -318,7 +318,7 @@ BezierSegment(resolution=None, start=None, start_handle=None, end_handle=None, e
 BeziersegmentOffset(resolution=None, start=None, start_handle=None, end_handle=None, end=None)
 ```
 
-> Constructor ERROR: Node 'Bézier Segment' not found
+> Node ERROR: Node 'Bézier Segment' not found
 
 #### Information:
 - **Parameter** : 'OFFSET'
@@ -348,7 +348,7 @@ BeziersegmentOffset(resolution=None, start=None, start_handle=None, end_handle=N
 BeziersegmentPosition(resolution=None, start=None, start_handle=None, end_handle=None, end=None)
 ```
 
-> Constructor ERROR: Node 'Bézier Segment' not found
+> Node ERROR: Node 'Bézier Segment' not found
 
 #### Information:
 - **Parameter** : 'POSITION'
@@ -378,7 +378,7 @@ BeziersegmentPosition(resolution=None, start=None, start_handle=None, end_handle
 Circle(resolution=None, radius=None, mode='RADIUS')
 ```
 
-> Constructor [Curve Circle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/curve_circle.html)
+> Node [Curve Circle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/curve_circle.html)
 
 #### Arguments:
 - **resolution** (_Integer_ = None) : socket 'Resolution' (id: Resolution)
@@ -401,7 +401,7 @@ Circle(resolution=None, radius=None, mode='RADIUS')
 CirclePoints(resolution=None, point_1=None, point_2=None, point_3=None)
 ```
 
-> Constructor [Curve Circle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/curve_circle.html)
+> Node [Curve Circle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/curve_circle.html)
 
 #### Information:
 - **Parameter** : 'POINTS'
@@ -430,7 +430,7 @@ CirclePoints(resolution=None, point_1=None, point_2=None, point_3=None)
 CircleRadius(resolution=None, radius=None)
 ```
 
-> Constructor [Curve Circle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/curve_circle.html)
+> Node [Curve Circle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/curve_circle.html)
 
 #### Information:
 - **Parameter** : 'RADIUS'
@@ -457,7 +457,7 @@ CircleRadius(resolution=None, radius=None)
 curve_of_point(point_index=None)
 ```
 
-> Class Method [Curve of Point](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/topology/curve_of_point.html)
+> Node [Curve of Point](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/topology/curve_of_point.html)
 
 #### Arguments:
 - **point_index** (_Integer_ = None) : socket 'Point Index' (id: Point Index)
@@ -478,7 +478,9 @@ curve_of_point(point_index=None)
 deform_on_surface()
 ```
 
-> Jump Method [Deform Curves on Surface](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/deform_curves_on_surface.html)
+> Node [Deform Curves on Surface](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/deform_curves_on_surface.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
@@ -499,7 +501,7 @@ deform_on_surface()
 domain_size()
 ```
 
-> Method [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
+> Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
 
 #### Information:
 - **Socket** : self
@@ -521,7 +523,7 @@ domain_size()
 endpoint_selection(start_size=None, end_size=None)
 ```
 
-> Class Method [Endpoint Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/endpoint_selection.html)
+> Node [Endpoint Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/endpoint_selection.html)
 
 #### Arguments:
 - **start_size** (_Integer_ = None) : socket 'Start Size' (id: Start Size)
@@ -543,7 +545,7 @@ endpoint_selection(start_size=None, end_size=None)
 fill(group_id=None, mode='TRIANGLES')
 ```
 
-> Method [Fill Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/fill_curve.html)
+> Node [Fill Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/fill_curve.html)
 
 #### Information:
 - **Socket** : self
@@ -570,7 +572,9 @@ fill(group_id=None, mode='TRIANGLES')
 fillet(radius=None, limit_radius=None, mode='BEZIER')
 ```
 
-> Jump Method [Fillet Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/fillet_curve.html)
+> Node [Fillet Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/fillet_curve.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
@@ -598,7 +602,9 @@ fillet(radius=None, limit_radius=None, mode='BEZIER')
 fillet_bezier(radius=None, limit_radius=None)
 ```
 
-> Jump Method [Fillet Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/fillet_curve.html)
+> Node [Fillet Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/fillet_curve.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
@@ -626,7 +632,9 @@ fillet_bezier(radius=None, limit_radius=None)
 fillet_poly(count=None, radius=None, limit_radius=None)
 ```
 
-> Jump Method [Fillet Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/fillet_curve.html)
+> Node [Fillet Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/fillet_curve.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
@@ -655,7 +663,7 @@ fillet_poly(count=None, radius=None, limit_radius=None)
 fill_ngons(group_id=None)
 ```
 
-> Method [Fill Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/fill_curve.html)
+> Node [Fill Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/fill_curve.html)
 
 #### Information:
 - **Socket** : self
@@ -682,7 +690,7 @@ fill_ngons(group_id=None)
 fill_triangles(group_id=None)
 ```
 
-> Method [Fill Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/fill_curve.html)
+> Node [Fill Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/fill_curve.html)
 
 #### Information:
 - **Socket** : self
@@ -709,7 +717,7 @@ fill_triangles(group_id=None)
 handle_positions(relative=None)
 ```
 
-> Class Method [Curve Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/curve_handle_positions.html)
+> Node [Curve Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/curve_handle_positions.html)
 
 #### Arguments:
 - **relative** (_Boolean_ = None) : socket 'Relative' (id: Relative)
@@ -730,7 +738,7 @@ handle_positions(relative=None)
 handle_type_selection(handle_type='AUTO', mode={'LEFT', 'RIGHT'})
 ```
 
-> Class Method [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
+> Node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
 
 #### Arguments:
 - **handle_type** (_str_ = AUTO) : parameter 'handle_type' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
@@ -752,7 +760,7 @@ handle_type_selection(handle_type='AUTO', mode={'LEFT', 'RIGHT'})
 Interpolate(guide_curves=None, guide_up=None, guide_group_id=None, points=None, point_up=None, point_group_id=None, max_neighbors=None)
 ```
 
-> Constructor [Interpolate Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/interpolate_curves.html)
+> Node [Interpolate Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/interpolate_curves.html)
 
 #### Arguments:
 - **guide_curves** (_Geometry_ = None) : socket 'Guide Curves' (id: Guide Curves)
@@ -779,7 +787,9 @@ Interpolate(guide_curves=None, guide_up=None, guide_group_id=None, points=None, 
 interpolate(guide_up=None, guide_group_id=None, points=None, point_up=None, point_group_id=None, max_neighbors=None)
 ```
 
-> Jump Method [Interpolate Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/interpolate_curves.html)
+> Node [Interpolate Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/interpolate_curves.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
@@ -810,7 +820,7 @@ interpolate(guide_up=None, guide_group_id=None, points=None, point_up=None, poin
 length()
 ```
 
-> Method [Curve Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/curve_length.html)
+> Node [Curve Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/curve_length.html)
 
 #### Information:
 - **Socket** : self
@@ -831,7 +841,7 @@ length()
 Line(start=None, end=None, mode='POINTS')
 ```
 
-> Constructor [Curve Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/curve_line.html)
+> Node [Curve Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/curve_line.html)
 
 #### Arguments:
 - **start** (_Vector_ = None) : socket 'Start' (id: Start)
@@ -854,7 +864,7 @@ Line(start=None, end=None, mode='POINTS')
 LineDirection(start=None, direction=None, length=None)
 ```
 
-> Constructor [Curve Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/curve_line.html)
+> Node [Curve Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/curve_line.html)
 
 #### Information:
 - **Parameter** : 'DIRECTION'
@@ -882,7 +892,7 @@ LineDirection(start=None, direction=None, length=None)
 LinePoints(start=None, end=None)
 ```
 
-> Constructor [Curve Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/curve_line.html)
+> Node [Curve Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/curve_line.html)
 
 #### Information:
 - **Parameter** : 'POINTS'
@@ -909,7 +919,7 @@ LinePoints(start=None, end=None)
 material_selection(material=None)
 ```
 
-> Class Method [Material Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_selection.html)
+> Node [Material Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_selection.html)
 
 #### Arguments:
 - **material** (_Material_ = None) : socket 'Material' (id: Material)
@@ -930,7 +940,7 @@ material_selection(material=None)
 offset_point_in_curve(point_index=None, offset=None)
 ```
 
-> Class Method [Offset Point in Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/topology/offset_point_in_curve.html)
+> Node [Offset Point in Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/topology/offset_point_in_curve.html)
 
 #### Arguments:
 - **point_index** (_Integer_ = None) : socket 'Point Index' (id: Point Index)
@@ -952,7 +962,7 @@ offset_point_in_curve(point_index=None, offset=None)
 points_of_curve(curve_index=None, weights=None, sort_index=None)
 ```
 
-> Class Method [Points of Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/topology/points_of_curve.html)
+> Node [Points of Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/topology/points_of_curve.html)
 
 #### Arguments:
 - **curve_index** (_Integer_ = None) : socket 'Curve Index' (id: Curve Index)
@@ -975,7 +985,7 @@ points_of_curve(curve_index=None, weights=None, sort_index=None)
 QuadraticBezier(resolution=None, start=None, middle=None, end=None)
 ```
 
-> Constructor ERROR: Node 'Quadratic Bézier' not found
+> Node ERROR: Node 'Quadratic Bézier' not found
 
 #### Arguments:
 - **resolution** (_Integer_ = None) : socket 'Resolution' (id: Resolution)
@@ -999,7 +1009,7 @@ QuadraticBezier(resolution=None, start=None, middle=None, end=None)
 Quadrilateral(width=None, height=None, mode='RECTANGLE')
 ```
 
-> Constructor [Quadrilateral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/quadrilateral.html)
+> Node [Quadrilateral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/quadrilateral.html)
 
 #### Arguments:
 - **width** (_Float_ = None) : socket 'Width' (id: Width)
@@ -1022,7 +1032,7 @@ Quadrilateral(width=None, height=None, mode='RECTANGLE')
 QuadrilateralKite(width=None, bottom_height=None, top_height=None)
 ```
 
-> Constructor [Quadrilateral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/quadrilateral.html)
+> Node [Quadrilateral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/quadrilateral.html)
 
 #### Information:
 - **Parameter** : 'KITE'
@@ -1050,7 +1060,7 @@ QuadrilateralKite(width=None, bottom_height=None, top_height=None)
 QuadrilateralParallelogram(width=None, height=None, offset=None)
 ```
 
-> Constructor [Quadrilateral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/quadrilateral.html)
+> Node [Quadrilateral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/quadrilateral.html)
 
 #### Information:
 - **Parameter** : 'PARALLELOGRAM'
@@ -1078,7 +1088,7 @@ QuadrilateralParallelogram(width=None, height=None, offset=None)
 QuadrilateralPoints(width=None, point_1=None, point_2=None, point_3=None, point_4=None)
 ```
 
-> Constructor [Quadrilateral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/quadrilateral.html)
+> Node [Quadrilateral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/quadrilateral.html)
 
 #### Information:
 - **Parameter** : 'POINTS'
@@ -1108,7 +1118,7 @@ QuadrilateralPoints(width=None, point_1=None, point_2=None, point_3=None, point_
 QuadrilateralRectangle(width=None, height=None)
 ```
 
-> Constructor [Quadrilateral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/quadrilateral.html)
+> Node [Quadrilateral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/quadrilateral.html)
 
 #### Information:
 - **Parameter** : 'RECTANGLE'
@@ -1135,7 +1145,7 @@ QuadrilateralRectangle(width=None, height=None)
 QuadrilateralTrapezoid(width=None, height=None, bottom_width=None, top_width=None, offset=None)
 ```
 
-> Constructor [Quadrilateral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/quadrilateral.html)
+> Node [Quadrilateral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/quadrilateral.html)
 
 #### Information:
 - **Parameter** : 'TRAPEZOID'
@@ -1165,7 +1175,9 @@ QuadrilateralTrapezoid(width=None, height=None, bottom_width=None, top_width=Non
 resample(count=None, mode='COUNT')
 ```
 
-> Jump Method [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/resample_curve.html)
+> Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/resample_curve.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
@@ -1193,7 +1205,9 @@ resample(count=None, mode='COUNT')
 resample_count(count=None)
 ```
 
-> Jump Method [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/resample_curve.html)
+> Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/resample_curve.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
@@ -1221,7 +1235,9 @@ resample_count(count=None)
 resample_evaluated()
 ```
 
-> Jump Method [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/resample_curve.html)
+> Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/resample_curve.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
@@ -1244,7 +1260,9 @@ resample_evaluated()
 resample_length(length=None)
 ```
 
-> Jump Method [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/resample_curve.html)
+> Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/resample_curve.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
@@ -1272,7 +1290,9 @@ resample_length(length=None)
 reverse()
 ```
 
-> Jump Method [Reverse Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/reverse_curve.html)
+> Node [Reverse Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/reverse_curve.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
@@ -1294,7 +1314,7 @@ reverse()
 sample(value=None, curve_index=None, factor=None, mode='FACTOR', use_all_curves=False)
 ```
 
-> Method [Sample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/sample/sample_curve.html)
+> Node [Sample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/sample/sample_curve.html)
 
 #### Information:
 - **Socket** : self
@@ -1325,7 +1345,7 @@ sample(value=None, curve_index=None, factor=None, mode='FACTOR', use_all_curves=
 sample_factor(value=None, curve_index=None, factor=None, use_all_curves=False)
 ```
 
-> Method [Sample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/sample/sample_curve.html)
+> Node [Sample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/sample/sample_curve.html)
 
 #### Information:
 - **Socket** : self
@@ -1356,7 +1376,7 @@ sample_factor(value=None, curve_index=None, factor=None, use_all_curves=False)
 sample_length(value=None, length=None, curve_index=None, use_all_curves=False)
 ```
 
-> Method [Sample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/sample/sample_curve.html)
+> Node [Sample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/sample/sample_curve.html)
 
 #### Information:
 - **Socket** : self
@@ -1387,12 +1407,14 @@ sample_length(value=None, length=None, curve_index=None, use_all_curves=False)
 set_both_handle_type(handle_type='AUTO')
 ```
 
-> Jump Method [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html)
+> Node [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
 - **Socket** : self[selection]
-- **Parameter** : {'LEFT', 'RIGHT'}
+- **Parameter** : {'RIGHT', 'LEFT'}
 
 
 
@@ -1415,7 +1437,9 @@ set_both_handle_type(handle_type='AUTO')
 set_handle_positions(position=None, offset=None, mode='LEFT')
 ```
 
-> Jump Method [Set Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_positions.html)
+> Node [Set Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_positions.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
@@ -1444,7 +1468,9 @@ set_handle_positions(position=None, offset=None, mode='LEFT')
 set_handle_type(handle_type='AUTO', mode={'LEFT', 'RIGHT'})
 ```
 
-> Jump Method [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html)
+> Node [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
@@ -1472,7 +1498,9 @@ set_handle_type(handle_type='AUTO', mode={'LEFT', 'RIGHT'})
 set_left_handle_positions(position=None, offset=None)
 ```
 
-> Jump Method [Set Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_positions.html)
+> Node [Set Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_positions.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
@@ -1501,7 +1529,9 @@ set_left_handle_positions(position=None, offset=None)
 set_left_handle_type(handle_type='AUTO')
 ```
 
-> Jump Method [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html)
+> Node [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
@@ -1529,7 +1559,9 @@ set_left_handle_type(handle_type='AUTO')
 set_normal(mode='MINIMUM_TWIST')
 ```
 
-> Jump Method [Set Curve Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_curve_normal.html)
+> Node [Set Curve Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_curve_normal.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
@@ -1556,7 +1588,9 @@ set_normal(mode='MINIMUM_TWIST')
 set_normal_free(normal=None)
 ```
 
-> Jump Method [Set Curve Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_curve_normal.html)
+> Node [Set Curve Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_curve_normal.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
@@ -1584,7 +1618,9 @@ set_normal_free(normal=None)
 set_normal_minimum_twist()
 ```
 
-> Jump Method [Set Curve Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_curve_normal.html)
+> Node [Set Curve Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_curve_normal.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
@@ -1607,7 +1643,9 @@ set_normal_minimum_twist()
 set_normal_z_up()
 ```
 
-> Jump Method [Set Curve Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_curve_normal.html)
+> Node [Set Curve Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_curve_normal.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
@@ -1630,7 +1668,9 @@ set_normal_z_up()
 set_radius(radius=None)
 ```
 
-> Jump Method [Set Curve Radius](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_curve_radius.html)
+> Node [Set Curve Radius](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_curve_radius.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
@@ -1657,7 +1697,9 @@ set_radius(radius=None)
 set_right_handle_positions(position=None, offset=None)
 ```
 
-> Jump Method [Set Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_positions.html)
+> Node [Set Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_positions.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
@@ -1686,7 +1728,9 @@ set_right_handle_positions(position=None, offset=None)
 set_right_handle_type(handle_type='AUTO')
 ```
 
-> Jump Method [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html)
+> Node [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
@@ -1714,7 +1758,9 @@ set_right_handle_type(handle_type='AUTO')
 set_spline_type(spline_type='POLY')
 ```
 
-> Jump Method [Set Spline Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_spline_type.html)
+> Node [Set Spline Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_spline_type.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
@@ -1741,7 +1787,9 @@ set_spline_type(spline_type='POLY')
 set_tilt(tilt=None)
 ```
 
-> Jump Method [Set Curve Tilt](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_curve_tilt.html)
+> Node [Set Curve Tilt](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_curve_tilt.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
@@ -1768,7 +1816,7 @@ set_tilt(tilt=None)
 Spiral(resolution=None, rotations=None, start_radius=None, end_radius=None, height=None, reverse=None)
 ```
 
-> Constructor ERROR: Node 'Spiral' not found
+> Node ERROR: Node 'Spiral' not found
 
 #### Arguments:
 - **resolution** (_Integer_ = None) : socket 'Resolution' (id: Resolution)
@@ -1794,7 +1842,7 @@ Spiral(resolution=None, rotations=None, start_radius=None, end_radius=None, heig
 spline_length()
 ```
 
-> Class Method [Spline Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/spline_length.html)
+> Node [Spline Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/spline_length.html)
 
 #### Returns:
 - **Float** (_Integer_)
@@ -1810,7 +1858,7 @@ spline_length()
 spline_parameter()
 ```
 
-> Class Method [Spline Parameter](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/spline_parameter.html)
+> Node [Spline Parameter](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/spline_parameter.html)
 
 #### Returns:
 - **Float** (_Float_)
@@ -1826,7 +1874,7 @@ spline_parameter()
 Star(points=None, inner_radius=None, outer_radius=None, twist=None)
 ```
 
-> Constructor [Star](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/star.html)
+> Node [Star](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/star.html)
 
 #### Arguments:
 - **points** (_Integer_ = None) : socket 'Points' (id: Points)
@@ -1850,7 +1898,9 @@ Star(points=None, inner_radius=None, outer_radius=None, twist=None)
 subdivide(cuts=None)
 ```
 
-> Jump Method [Subdivide Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/subdivide_curve.html)
+> Node [Subdivide Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/subdivide_curve.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
@@ -1876,7 +1926,7 @@ subdivide(cuts=None)
 to_grease_pencil(instances_as_layers=None)
 ```
 
-> Method [Curves to Grease Pencil](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curves_to_grease_pencil.html)
+> Node [Curves to Grease Pencil](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curves_to_grease_pencil.html)
 
 #### Information:
 - **Socket** : self
@@ -1903,7 +1953,7 @@ to_grease_pencil(instances_as_layers=None)
 to_mesh(profile_curve=None, fill_caps=None)
 ```
 
-> Method [Curve to Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curve_to_mesh.html)
+> Node [Curve to Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curve_to_mesh.html)
 
 #### Information:
 - **Socket** : self
@@ -1930,7 +1980,7 @@ to_mesh(profile_curve=None, fill_caps=None)
 to_points(count=None, mode='COUNT')
 ```
 
-> Method [Curve to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curve_to_points.html)
+> Node [Curve to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curve_to_points.html)
 
 #### Information:
 - **Socket** : self
@@ -1957,7 +2007,7 @@ to_points(count=None, mode='COUNT')
 to_points_count(count=None)
 ```
 
-> Method [Curve to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curve_to_points.html)
+> Node [Curve to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curve_to_points.html)
 
 #### Information:
 - **Socket** : self
@@ -1984,7 +2034,7 @@ to_points_count(count=None)
 to_points_evaluated()
 ```
 
-> Method [Curve to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curve_to_points.html)
+> Node [Curve to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curve_to_points.html)
 
 #### Information:
 - **Socket** : self
@@ -2006,7 +2056,7 @@ to_points_evaluated()
 to_points_length(length=None)
 ```
 
-> Method [Curve to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curve_to_points.html)
+> Node [Curve to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curve_to_points.html)
 
 #### Information:
 - **Socket** : self
@@ -2033,7 +2083,9 @@ to_points_length(length=None)
 trim(start=None, end=None, mode='FACTOR')
 ```
 
-> Jump Method [Trim Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/trim_curve.html)
+> Node [Trim Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/trim_curve.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
@@ -2062,7 +2114,9 @@ trim(start=None, end=None, mode='FACTOR')
 trim_factor(start=None, end=None)
 ```
 
-> Jump Method [Trim Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/trim_curve.html)
+> Node [Trim Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/trim_curve.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
@@ -2091,7 +2145,9 @@ trim_factor(start=None, end=None)
 trim_length(start=None, end=None)
 ```
 
-> Jump Method [Trim Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/trim_curve.html)
+> Node [Trim Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/trim_curve.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self

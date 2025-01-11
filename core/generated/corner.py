@@ -9,7 +9,7 @@ class Corner(Socket):
     """
     @classmethod
     def accumulate_field(cls, value=None, group_id=None):
-        """ > Class Method <&Node Accumulate Field>
+        """ > Node <&Node Accumulate Field>
 
         Information
         -----------
@@ -30,7 +30,7 @@ class Corner(Socket):
         return node._out
 
     def attribute_statistic(self, attribute=None):
-        """ > Method <&Node Attribute Statistic>
+        """ > Node <&Node Attribute Statistic>
 
         Information
         -----------
@@ -53,7 +53,7 @@ class Corner(Socket):
 
     @classmethod
     def edges(cls, corner_index=None):
-        """ > Class Method <&Node Edges of Corner>
+        """ > Node <&Node Edges of Corner>
 
         Arguments
         ---------
@@ -68,7 +68,7 @@ class Corner(Socket):
 
     @classmethod
     def next_edge_index(cls, corner_index=None):
-        """ > Class Method <&Node Edges of Corner>
+        """ > Node <&Node Edges of Corner>
 
         Arguments
         ---------
@@ -83,7 +83,7 @@ class Corner(Socket):
 
     @classmethod
     def previous_edge_index(cls, corner_index=None):
-        """ > Class Method <&Node Edges of Corner>
+        """ > Node <&Node Edges of Corner>
 
         Arguments
         ---------
@@ -98,7 +98,7 @@ class Corner(Socket):
 
     @classmethod
     def face(cls, corner_index=None):
-        """ > Class Method <&Node Face of Corner>
+        """ > Node <&Node Face of Corner>
 
         Arguments
         ---------
@@ -113,7 +113,7 @@ class Corner(Socket):
 
     @classmethod
     def face_index(cls, corner_index=None):
-        """ > Class Method <&Node Face of Corner>
+        """ > Node <&Node Face of Corner>
 
         Arguments
         ---------
@@ -128,7 +128,7 @@ class Corner(Socket):
 
     @classmethod
     def index_in_face(cls, corner_index=None):
-        """ > Class Method <&Node Face of Corner>
+        """ > Node <&Node Face of Corner>
 
         Arguments
         ---------
@@ -143,7 +143,7 @@ class Corner(Socket):
 
     @classmethod
     def evaluate_at_index(cls, index=None, value=None):
-        """ > Class Method <&Node Evaluate at Index>
+        """ > Node <&Node Evaluate at Index>
 
         Information
         -----------
@@ -165,7 +165,7 @@ class Corner(Socket):
 
     @classmethod
     def evaluate_on_domain(cls, value=None):
-        """ > Class Method <&Node Evaluate on Domain>
+        """ > Node <&Node Evaluate on Domain>
 
         Information
         -----------
@@ -185,7 +185,7 @@ class Corner(Socket):
         return node._out
 
     def to_points(self, position=None, radius=None):
-        """ > Method <&Node Mesh to Points>
+        """ > Node <&Node Mesh to Points>
 
         Information
         -----------
@@ -207,7 +207,7 @@ class Corner(Socket):
 
     @classmethod
     def offset_in_face(cls, corner_index=None, offset=None):
-        """ > Class Method <&Node Offset Corner in Face>
+        """ > Node <&Node Offset Corner in Face>
 
         Arguments
         ---------
@@ -222,7 +222,7 @@ class Corner(Socket):
         return node._out
 
     def sample_index(self, value=None, index=None, clamp=False):
-        """ > Method <&Node Sample Index>
+        """ > Node <&Node Sample Index>
 
         Information
         -----------
@@ -245,7 +245,7 @@ class Corner(Socket):
         return node._out
 
     def sample_nearest(self, sample_position=None):
-        """ > Method <&Node Sample Nearest>
+        """ > Node <&Node Sample Nearest>
 
         Information
         -----------
@@ -264,7 +264,9 @@ class Corner(Socket):
         return node._out
 
     def store_named_attribute(self, name=None, value=None):
-        """ > Jump Method <&Node Store Named Attribute>
+        """ > Node <&Node Store Named Attribute>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -288,7 +290,9 @@ class Corner(Socket):
         return self._domain_to_geometry
 
     def store(self, name=None, value=None):
-        """ > Jump Method <&Node Store Named Attribute>
+        """ > Node <&Node Store Named Attribute>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -312,7 +316,9 @@ class Corner(Socket):
         return self._domain_to_geometry
 
     def store_uv(self, name=None, value=None):
-        """ > Jump Method <&Node Store Named Attribute>
+        """ > Node <&Node Store Named Attribute>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -336,7 +342,7 @@ class Corner(Socket):
 
     @classmethod
     def pack_uv_islands(cls, uv=None, margin=None, rotate=None):
-        """ > Class Method <&Node Pack UV Islands>
+        """ > Node <&Node Pack UV Islands>
 
         Information
         -----------
@@ -357,7 +363,7 @@ class Corner(Socket):
 
     @classmethod
     def uv_unwrap(cls, seam=None, margin=None, fill_holes=None, method='ANGLE_BASED'):
-        """ > Class Method <&Node UV Unwrap>
+        """ > Node <&Node UV Unwrap>
 
         Information
         -----------
@@ -374,12 +380,13 @@ class Corner(Socket):
         -------
         - Vector
         """
+        utils.check_enum_arg('method', method, 'uv_unwrap', ('ANGLE_BASED', 'CONFORMAL'))
         node = Node('UV Unwrap', sockets={'Selection': self._sel, 'Seam': seam, 'Margin': margin, 'Fill Holes': fill_holes}, method=method)
         return node._out
 
     @classmethod
     def vertex_index(cls, corner_index=None):
-        """ > Class Method <&Node Vertex of Corner>
+        """ > Node <&Node Vertex of Corner>
 
         Arguments
         ---------
@@ -393,7 +400,7 @@ class Corner(Socket):
         return node._out
 
     def viewer(self, value=None):
-        """ > Method <&Node Viewer>
+        """ > Node <&Node Viewer>
 
         Information
         -----------

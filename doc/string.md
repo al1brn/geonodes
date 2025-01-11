@@ -49,7 +49,7 @@ A group input socket of type String is created if the name is not None.
 equal(b=None)
 ```
 
-> Method [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+> Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
 #### Information:
 - **Socket** : self
@@ -99,7 +99,7 @@ File path String
 hash_value(seed=None)
 ```
 
-> Method [Hash Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/hash_value.html)
+> Node [Hash Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/hash_value.html)
 
 #### Information:
 - **Socket** : self
@@ -152,7 +152,7 @@ A group input socket of type String is created if the name is not None.
 Join(*strings, delimiter=None)
 ```
 
-> Constructor [Join Strings](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/join_strings.html)
+> Node [Join Strings](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/join_strings.html)
 
 #### Arguments:
 - **strings** (_String_) : socket 'Strings' (id: Strings)
@@ -174,7 +174,7 @@ Join(*strings, delimiter=None)
 join(*strings)
 ```
 
-> Method [Join Strings](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/join_strings.html)
+> Node [Join Strings](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/join_strings.html)
 
 #### Information:
 - **Socket** : self
@@ -200,7 +200,7 @@ join(*strings)
 length()
 ```
 
-> Method [String Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/string_length.html)
+> Node [String Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/string_length.html)
 
 #### Information:
 - **Socket** : self
@@ -221,7 +221,7 @@ length()
 not_equal(b=None)
 ```
 
-> Method [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+> Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
 #### Information:
 - **Socket** : self
@@ -250,7 +250,7 @@ not_equal(b=None)
 replace(find=None, replace=None)
 ```
 
-> Method [Replace String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/replace_string.html)
+> Node [Replace String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/replace_string.html)
 
 #### Information:
 - **Socket** : self
@@ -277,7 +277,7 @@ replace(find=None, replace=None)
 slice(position=None, length=None)
 ```
 
-> Method [Slice String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/slice_string.html)
+> Node [Slice String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/slice_string.html)
 
 #### Information:
 - **Socket** : self
@@ -304,7 +304,7 @@ slice(position=None, length=None)
 special_characters()
 ```
 
-> Class Method [Special Characters](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/special_characters.html)
+> Node [Special Characters](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/special_characters.html)
 
 #### Returns:
 - **node** (_String_)
@@ -320,7 +320,7 @@ special_characters()
 to_curves(size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, align_x='LEFT', align_y='TOP_BASELINE', overflow='OVERFLOW', pivot_mode='BOTTOM_LEFT')
 ```
 
-> Method [String to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/string_to_curves.html)
+> Node [String to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/string_to_curves.html)
 
 #### Information:
 - **Socket** : self

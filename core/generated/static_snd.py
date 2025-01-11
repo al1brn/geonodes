@@ -122,6 +122,7 @@ class snd:
         -------
         - Color [vector_ (Vector), fac_ (Float), alpha_ (Float)]
         """
+        utils.check_enum_arg('attribute_type', attribute_type, 'attribute', ('GEOMETRY', 'OBJECT', 'INSTANCER', 'VIEW_LAYER'))
         node = Node('Attribute', sockets={}, attribute_name=attribute_name, attribute_type=attribute_type)
         return node
 
@@ -210,6 +211,7 @@ class snd:
         -------
         - Shader
         """
+        utils.check_enum_arg('distribution', distribution, 'glossy_bsdf', ('BECKMANN', 'GGX', 'ASHIKHMIN_SHIRLEY', 'MULTI_GGX'))
         node = Node('Glossy BSDF', sockets={'Color': color, 'Roughness': roughness, 'Anisotropy': anisotropy, 'Rotation': rotation, 'Normal': normal, 'Tangent': tangent, 'Weight': weight}, distribution=distribution)
         return node._out
 
@@ -248,6 +250,7 @@ class snd:
         -------
         - Shader
         """
+        utils.check_enum_arg('distribution', distribution, 'glass_bsdf', ('BECKMANN', 'GGX', 'MULTI_GGX'))
         node = Node('Glass BSDF', sockets={'Color': color, 'Roughness': roughness, 'IOR': ior, 'Normal': normal, 'Weight': weight}, distribution=distribution)
         return node._out
 
@@ -269,6 +272,7 @@ class snd:
         -------
         - Shader
         """
+        utils.check_enum_arg('component', component, 'hair_bsdf', ('Reflection', 'Transmission'))
         node = Node('Hair BSDF', sockets={'Color': color, 'Offset': offset, 'RoughnessU': roughnessu, 'RoughnessV': roughnessv, 'Tangent': tangent, 'Weight': weight}, component=component)
         return node._out
 
@@ -303,6 +307,8 @@ class snd:
         -------
         - Shader
         """
+        utils.check_enum_arg('model', model, 'principled_hair_bsdf', ('CHIANG', 'HUANG'))
+        utils.check_enum_arg('parametrization', parametrization, 'principled_hair_bsdf', ('ABSORPTION', 'MELANIN', 'COLOR'))
         node = Node('Principled Hair BSDF', sockets={'Color': color, 'Melanin': melanin, 'Melanin Redness': melanin_redness, 'Tint': tint, 'Absorption Coefficient': absorption_coefficient, 'Aspect Ratio': aspect_ratio, 'Roughness': roughness, 'Radial Roughness': radial_roughness, 'Coat': coat, 'IOR': ior, 'Offset': offset, 'Random Color': random_color, 'Random Roughness': random_roughness, 'Random': random, 'Weight': weight, 'R lobe': reflection, 'TT lobe': transmission, 'TRT lobe': secondary_reflection}, model=model, parametrization=parametrization)
         return node._out
 
@@ -329,6 +335,8 @@ class snd:
         -------
         - Shader
         """
+        utils.check_enum_arg('distribution', distribution, 'metallic_bsdf', ('BECKMANN', 'GGX', 'MULTI_GGX'))
+        utils.check_enum_arg('fresnel_type', fresnel_type, 'metallic_bsdf', ('PHYSICAL_CONDUCTOR', 'F82'))
         node = Node('Metallic BSDF', sockets={'Base Color': base_color, 'Edge Tint': edge_tint, 'IOR': ior, 'Extinction': extinction, 'Roughness': roughness, 'Anisotropy': anisotropy, 'Rotation': rotation, 'Normal': normal, 'Tangent': tangent, 'Weight': weight}, distribution=distribution, fresnel_type=fresnel_type)
         return node._out
 
@@ -376,6 +384,8 @@ class snd:
         -------
         - Shader
         """
+        utils.check_enum_arg('distribution', distribution, 'principled_bsdf', ('GGX', 'MULTI_GGX'))
+        utils.check_enum_arg('subsurface_method', subsurface_method, 'principled_bsdf', ('BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN'))
         node = Node('Principled BSDF', sockets={'Base Color': base_color, 'Metallic': metallic, 'Roughness': roughness, 'IOR': ior, 'Alpha': alpha, 'Normal': normal, 'Weight': weight, 'Diffuse Roughness': diffuse_roughness, 'Subsurface Weight': subsurface_weight, 'Subsurface Radius': subsurface_radius, 'Subsurface Scale': subsurface_scale, 'Subsurface IOR': subsurface_ior, 'Subsurface Anisotropy': subsurface_anisotropy, 'Specular IOR Level': specular_ior_level, 'Specular Tint': specular_tint, 'Anisotropic': anisotropic, 'Anisotropic Rotation': anisotropic_rotation, 'Tangent': tangent, 'Transmission Weight': transmission_weight, 'Coat Weight': coat_weight, 'Coat Roughness': coat_roughness, 'Coat IOR': coat_ior, 'Coat Tint': coat_tint, 'Coat Normal': coat_normal, 'Sheen Weight': sheen_weight, 'Sheen Roughness': sheen_roughness, 'Sheen Tint': sheen_tint, 'Emission Color': emission_color, 'Emission Strength': emission_strength, 'Thin Film Thickness': thin_film_thickness, 'Thin Film IOR': thin_film_ior}, distribution=distribution, subsurface_method=subsurface_method)
         return node._out
 
@@ -414,6 +424,7 @@ class snd:
         -------
         - Shader
         """
+        utils.check_enum_arg('distribution', distribution, 'refraction_bsdf', ('BECKMANN', 'GGX'))
         node = Node('Refraction BSDF', sockets={'Color': color, 'Roughness': roughness, 'IOR': ior, 'Normal': normal, 'Weight': weight}, distribution=distribution)
         return node._out
 
@@ -433,6 +444,7 @@ class snd:
         -------
         - Shader
         """
+        utils.check_enum_arg('distribution', distribution, 'sheen_bsdf', ('ASHIKHMIN', 'MICROFIBER'))
         node = Node('Sheen BSDF', sockets={'Color': color, 'Roughness': roughness, 'Normal': normal, 'Weight': weight}, distribution=distribution)
         return node._out
 
@@ -453,6 +465,7 @@ class snd:
         -------
         - Shader
         """
+        utils.check_enum_arg('component', component, 'toon_bsdf', ('DIFFUSE', 'GLOSSY'))
         node = Node('Toon BSDF', sockets={'Color': color, 'Size': size, 'Smooth': smooth, 'Normal': normal, 'Weight': weight}, component=component)
         return node._out
 
@@ -534,6 +547,7 @@ class snd:
         -------
         - Float
         """
+        utils.check_enum_arg('clamp_type', clamp_type, 'clamp', ('MINMAX', 'RANGE'))
         node = Node('Clamp', sockets={'Value': value, 'Min': min, 'Max': max}, clamp_type=clamp_type)
         return node._out
 
@@ -552,6 +566,7 @@ class snd:
         -------
         - Color
         """
+        utils.check_enum_arg('mode', mode, 'combine_color', ('RGB', 'HSV', 'HSL'))
         node = Node('Combine Color', sockets={'Red': red, 'Green': green, 'Blue': blue}, mode=mode)
         return node._out
 
@@ -588,6 +603,7 @@ class snd:
         -------
         - Vector
         """
+        utils.check_enum_arg('space', space, 'displacement', ('OBJECT', 'WORLD'))
         node = Node('Displacement', sockets={'Height': height, 'Midlevel': midlevel, 'Scale': scale, 'Normal': normal}, space=space)
         return node._out
 
@@ -825,6 +841,8 @@ class snd:
         -------
         - Float
         """
+        utils.check_enum_arg('data_type', data_type, 'map_range', ('FLOAT', 'FLOAT_VECTOR'))
+        utils.check_enum_arg('interpolation_type', interpolation_type, 'map_range', ('LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP'))
         node = Node('Map Range', sockets={'Value': value, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max, 'Steps': steps, 'Vector': vector, 'From_Min_FLOAT3': from_min_1, 'From_Max_FLOAT3': from_max_1, 'To_Min_FLOAT3': to_min_1, 'To_Max_FLOAT3': to_max_1, 'Steps_FLOAT3': steps_1}, clamp=clamp, data_type=data_type, interpolation_type=interpolation_type)
         return node._out
 
@@ -844,6 +862,7 @@ class snd:
         -------
         - Vector
         """
+        utils.check_enum_arg('vector_type', vector_type, 'mapping', ('POINT', 'TEXTURE', 'VECTOR', 'NORMAL'))
         node = Node('Mapping', sockets={'Vector': vector, 'Location': location, 'Rotation': rotation, 'Scale': scale}, vector_type=vector_type)
         return node._out
 
@@ -863,6 +882,7 @@ class snd:
         -------
         - Float
         """
+        utils.check_enum_arg('operation', operation, 'math', ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'POWER', 'LOGARITHM', 'SQRT', 'INVERSE_SQRT', 'ABSOLUTE', 'EXPONENT', 'MINIMUM', 'MAXIMUM', 'LESS_THAN', 'GREATER_THAN', 'SIGN', 'COMPARE', 'SMOOTH_MIN', 'SMOOTH_MAX', 'ROUND', 'FLOOR', 'CEIL', 'TRUNC', 'FRACT', 'MODULO', 'FLOORED_MODULO', 'WRAP', 'SNAP', 'PINGPONG', 'SINE', 'COSINE', 'TANGENT', 'ARCSINE', 'ARCCOSINE', 'ARCTANGENT', 'ARCTAN2', 'SINH', 'COSH', 'TANH', 'RADIANS', 'DEGREES'))
         node = Node('Math', sockets={'Value': value, 'Value_001': value_1, 'Value_002': value_2}, operation=operation, use_clamp=use_clamp)
         return node._out
 
@@ -891,6 +911,9 @@ class snd:
         -------
         - Float
         """
+        utils.check_enum_arg('blend_type', blend_type, 'mix', ('MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE'))
+        utils.check_enum_arg('data_type', data_type, 'mix', ('FLOAT', 'VECTOR', 'RGBA'))
+        utils.check_enum_arg('factor_mode', factor_mode, 'mix', ('UNIFORM', 'NON_UNIFORM'))
         node = Node('Mix', sockets={'A_Float': a, 'B_Float': b, 'A_Vector': a_1, 'B_Vector': b_1, 'A_Color': a_2, 'B_Color': b_2, 'A_Rotation': a_3, 'B_Rotation': b_3, 'Factor_Vector': factor}, blend_type=blend_type, clamp_factor=clamp_factor, clamp_result=clamp_result, data_type=data_type, factor_mode=factor_mode)
         return node._out
 
@@ -952,6 +975,7 @@ class snd:
         -------
         - Vector
         """
+        utils.check_enum_arg('space', space, 'normal_map', ('TANGENT', 'OBJECT', 'WORLD', 'BLENDER_OBJECT', 'BLENDER_WORLD'))
         node = Node('Normal Map', sockets={'Strength': strength, 'Color': color}, space=space, uv_map=uv_map)
         return node._out
 
@@ -997,6 +1021,7 @@ class snd:
         -------
         - None
         """
+        utils.check_enum_arg('target', target, 'light_output', ('ALL', 'EEVEE', 'CYCLES'))
         node = Node('Light Output', sockets={'Surface': surface}, is_active_output=is_active_output, target=target)
         return node._out
 
@@ -1020,6 +1045,8 @@ class snd:
         -------
         - None
         """
+        utils.check_enum_arg('blend_type', blend_type, 'line_style_output', ('MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE'))
+        utils.check_enum_arg('target', target, 'line_style_output', ('ALL', 'EEVEE', 'CYCLES'))
         node = Node('Line Style Output', sockets={'Color': color, 'Color Fac': color_fac, 'Alpha': alpha, 'Alpha Fac': alpha_fac}, blend_type=blend_type, is_active_output=is_active_output, target=target, use_alpha=use_alpha, use_clamp=use_clamp)
         return node._out
 
@@ -1040,6 +1067,7 @@ class snd:
         -------
         - None
         """
+        utils.check_enum_arg('target', target, 'material_output', ('ALL', 'EEVEE', 'CYCLES'))
         node = Node('Material Output', sockets={'Surface': surface, 'Volume': volume, 'Displacement': displacement, 'Thickness': thickness}, is_active_output=is_active_output, target=target)
         return node._out
 
@@ -1058,6 +1086,7 @@ class snd:
         -------
         - None
         """
+        utils.check_enum_arg('target', target, 'world_output', ('ALL', 'EEVEE', 'CYCLES'))
         node = Node('World Output', sockets={'Surface': surface, 'Volume': volume}, is_active_output=is_active_output, target=target)
         return node._out
 
@@ -1143,6 +1172,7 @@ class snd:
         -------
         - None
         """
+        utils.check_enum_arg('mode', mode, 'script', ('INTERNAL', 'EXTERNAL'))
         node = Node('Script', sockets={}, bytecode=bytecode, bytecode_hash=bytecode_hash, filepath=filepath, mode=mode, script=script, use_auto_update=use_auto_update)
         return node._out
 
@@ -1159,6 +1189,7 @@ class snd:
         -------
         - Float [green_ (Float), blue_ (Float)]
         """
+        utils.check_enum_arg('mode', mode, 'separate_color', ('RGB', 'HSV', 'HSL'))
         node = Node('Separate Color', sockets={'Color': color}, mode=mode)
         return node._out
 
@@ -1212,6 +1243,7 @@ class snd:
         -------
         - Shader
         """
+        utils.check_enum_arg('falloff', falloff, 'subsurface_scattering', ('BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN'))
         node = Node('Subsurface Scattering', sockets={'Color': color, 'Scale': scale, 'Radius': radius, 'IOR': ior, 'Roughness': roughness, 'Anisotropy': anisotropy, 'Normal': normal, 'Weight': weight}, falloff=falloff)
         return node._out
 
@@ -1229,6 +1261,8 @@ class snd:
         -------
         - Vector
         """
+        utils.check_enum_arg('axis', axis, 'tangent', ('X', 'Y', 'Z'))
+        utils.check_enum_arg('direction_type', direction_type, 'tangent', ('RADIAL', 'UV_MAP'))
         node = Node('Tangent', sockets={}, axis=axis, direction_type=direction_type, uv_map=uv_map)
         return node._out
 
@@ -1309,6 +1343,8 @@ class snd:
         -------
         - Color
         """
+        utils.check_enum_arg('interpolation', interpolation, 'environment_texture', ('Linear', 'Closest', 'Cubic', 'Smart'))
+        utils.check_enum_arg('projection', projection, 'environment_texture', ('EQUIRECTANGULAR', 'MIRROR_BALL'))
         node = Node('Environment Texture', sockets={'Vector': vector}, image=image, interpolation=interpolation, projection=projection)
         return node._out
 
@@ -1330,6 +1366,7 @@ class snd:
         -------
         - Float [phase_ (Float), intensity_ (Float)]
         """
+        utils.check_enum_arg('gabor_type', gabor_type, 'gabor_texture', ('2D', '3D'))
         node = Node('Gabor Texture', sockets={'Vector': vector, 'Scale': scale, 'Frequency': frequency, 'Anisotropy': anisotropy, 'Orientation 2D': orientation, 'Orientation 3D': orientation_1}, gabor_type=gabor_type)
         return node._out
 
@@ -1346,6 +1383,7 @@ class snd:
         -------
         - Color [fac_ (Float)]
         """
+        utils.check_enum_arg('gradient_type', gradient_type, 'gradient_texture', ('LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL'))
         node = Node('Gradient Texture', sockets={'Vector': vector}, gradient_type=gradient_type)
         return node._out
 
@@ -1365,6 +1403,7 @@ class snd:
         -------
         - Float
         """
+        utils.check_enum_arg('mode', mode, 'ies_texture', ('INTERNAL', 'EXTERNAL'))
         node = Node('IES Texture', sockets={'Vector': vector, 'Strength': strength}, filepath=filepath, ies=ies, mode=mode)
         return node._out
 
@@ -1385,6 +1424,9 @@ class snd:
         -------
         - Color [alpha_ (Float)]
         """
+        utils.check_enum_arg('extension', extension, 'image_texture', ('REPEAT', 'EXTEND', 'CLIP', 'MIRROR'))
+        utils.check_enum_arg('interpolation', interpolation, 'image_texture', ('Linear', 'Closest', 'Cubic', 'Smart'))
+        utils.check_enum_arg('projection', projection, 'image_texture', ('FLAT', 'BOX', 'SPHERE', 'TUBE'))
         node = Node('Image Texture', sockets={'Vector': vector}, extension=extension, image=image, interpolation=interpolation, projection=projection, projection_blend=projection_blend)
         return node._out
 
@@ -1429,6 +1471,8 @@ class snd:
         -------
         - Float [color_ (Color)]
         """
+        utils.check_enum_arg('noise_dimensions', noise_dimensions, 'noise_texture', ('1D', '2D', '3D', '4D'))
+        utils.check_enum_arg('noise_type', noise_type, 'noise_texture', ('MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN'))
         node = Node('Noise Texture', sockets={'Vector': vector, 'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Offset': offset, 'Gain': gain, 'Distortion': distortion}, noise_dimensions=noise_dimensions, noise_type=noise_type, normalize=normalize)
         return node._out
 
@@ -1454,6 +1498,11 @@ class snd:
         -------
         - Color [density_ (Float)]
         """
+        utils.check_enum_arg('interpolation', interpolation, 'point_density', ('Closest', 'Linear', 'Cubic'))
+        utils.check_enum_arg('particle_color_source', particle_color_source, 'point_density', ('PARTICLE_AGE', 'PARTICLE_SPEED', 'PARTICLE_VELOCITY'))
+        utils.check_enum_arg('point_source', point_source, 'point_density', ('PARTICLE_SYSTEM', 'OBJECT'))
+        utils.check_enum_arg('space', space, 'point_density', ('OBJECT', 'WORLD'))
+        utils.check_enum_arg('vertex_color_source', vertex_color_source, 'point_density', ('VERTEX_COLOR', 'VERTEX_WEIGHT', 'VERTEX_NORMAL'))
         node = Node('Point Density', sockets={'Vector': vector}, interpolation=interpolation, object=object, particle_color_source=particle_color_source, particle_system=particle_system, point_source=point_source, radius=radius, resolution=resolution, space=space, vertex_attribute_name=vertex_attribute_name, vertex_color_source=vertex_color_source)
         return node._out
 
@@ -1481,6 +1530,7 @@ class snd:
         -------
         - Color
         """
+        utils.check_enum_arg('sky_type', sky_type, 'sky_texture', ('PREETHAM', 'HOSEK_WILKIE', 'NISHITA'))
         node = Node('Sky Texture', sockets={'Vector': vector}, air_density=air_density, altitude=altitude, dust_density=dust_density, ground_albedo=ground_albedo, ozone_density=ozone_density, sky_type=sky_type, sun_disc=sun_disc, sun_elevation=sun_elevation, sun_intensity=sun_intensity, sun_rotation=sun_rotation, sun_size=sun_size, turbidity=turbidity)
         return node._out
 
@@ -1508,6 +1558,9 @@ class snd:
         -------
         - Float [color_ (Color), position_ (Vector)]
         """
+        utils.check_enum_arg('distance', distance, 'voronoi_texture', ('EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI'))
+        utils.check_enum_arg('feature', feature, 'voronoi_texture', ('F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS'))
+        utils.check_enum_arg('voronoi_dimensions', voronoi_dimensions, 'voronoi_texture', ('1D', '2D', '3D', '4D'))
         node = Node('Voronoi Texture', sockets={'Vector': vector, 'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Smoothness': smoothness, 'Exponent': exponent, 'Randomness': randomness}, distance=distance, feature=feature, normalize=normalize, voronoi_dimensions=voronoi_dimensions)
         return node._out
 
@@ -1533,6 +1586,10 @@ class snd:
         -------
         - Color [fac_ (Float)]
         """
+        utils.check_enum_arg('bands_direction', bands_direction, 'wave_texture', ('X', 'Y', 'Z', 'DIAGONAL'))
+        utils.check_enum_arg('rings_direction', rings_direction, 'wave_texture', ('X', 'Y', 'Z', 'SPHERICAL'))
+        utils.check_enum_arg('wave_profile', wave_profile, 'wave_texture', ('SIN', 'SAW', 'TRI'))
+        utils.check_enum_arg('wave_type', wave_type, 'wave_texture', ('BANDS', 'RINGS'))
         node = Node('Wave Texture', sockets={'Vector': vector, 'Scale': scale, 'Distortion': distortion, 'Detail': detail, 'Detail Scale': detail_scale, 'Detail Roughness': detail_roughness, 'Phase Offset': phase_offset}, bands_direction=bands_direction, rings_direction=rings_direction, wave_profile=wave_profile, wave_type=wave_type)
         return node._out
 
@@ -1550,6 +1607,7 @@ class snd:
         -------
         - Float [color_ (Color)]
         """
+        utils.check_enum_arg('noise_dimensions', noise_dimensions, 'white_noise_texture', ('1D', '2D', '3D', '4D'))
         node = Node('White Noise Texture', sockets={'Vector': vector, 'W': w}, noise_dimensions=noise_dimensions)
         return node._out
 
@@ -1642,6 +1700,7 @@ class snd:
         -------
         - Vector
         """
+        utils.check_enum_arg('space', space, 'vector_displacement', ('TANGENT', 'OBJECT', 'WORLD'))
         node = Node('Vector Displacement', sockets={'Vector': vector, 'Midlevel': midlevel, 'Scale': scale}, space=space)
         return node._out
 
@@ -1661,6 +1720,7 @@ class snd:
         -------
         - Vector
         """
+        utils.check_enum_arg('operation', operation, 'vector_math', ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'CROSS_PRODUCT', 'PROJECT', 'REFLECT', 'REFRACT', 'FACEFORWARD', 'DOT_PRODUCT', 'DISTANCE', 'LENGTH', 'SCALE', 'NORMALIZE', 'ABSOLUTE', 'MINIMUM', 'MAXIMUM', 'FLOOR', 'CEIL', 'FRACTION', 'MODULO', 'WRAP', 'SNAP', 'SINE', 'COSINE', 'TANGENT'))
         node = Node('Vector Math', sockets={'Vector': vector, 'Vector_001': vector_1, 'Vector_002': vector_2, 'Scale': scale}, operation=operation)
         return node._out
 
@@ -1682,6 +1742,7 @@ class snd:
         -------
         - Vector
         """
+        utils.check_enum_arg('rotation_type', rotation_type, 'vector_rotate', ('AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ'))
         node = Node('Vector Rotate', sockets={'Vector': vector, 'Center': center, 'Axis': axis, 'Angle': angle, 'Rotation': rotation}, invert=invert, rotation_type=rotation_type)
         return node._out
 
@@ -1700,6 +1761,9 @@ class snd:
         -------
         - Vector
         """
+        utils.check_enum_arg('convert_from', convert_from, 'vector_transform', ('WORLD', 'OBJECT', 'CAMERA'))
+        utils.check_enum_arg('convert_to', convert_to, 'vector_transform', ('WORLD', 'OBJECT', 'CAMERA'))
+        utils.check_enum_arg('vector_type', vector_type, 'vector_transform', ('POINT', 'VECTOR', 'NORMAL'))
         node = Node('Vector Transform', sockets={'Vector': vector}, convert_from=convert_from, convert_to=convert_to, vector_type=vector_type)
         return node._out
 
@@ -1793,6 +1857,7 @@ class snd:
         -------
         - VolumeShader
         """
+        utils.check_enum_arg('phase', phase, 'volume_scatter', ('HENYEY_GREENSTEIN', 'FOURNIER_FORAND', 'DRAINE', 'RAYLEIGH', 'MIE'))
         node = Node('Volume Scatter', sockets={'Color': color, 'Density': density, 'Anisotropy': anisotropy, 'IOR': ior, 'Backscatter': backscatter, 'Alpha': alpha, 'Diameter': diameter, 'Weight': weight}, phase=phase)
         return node._out
 

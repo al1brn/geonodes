@@ -36,7 +36,7 @@
 abs(value=None, use_clamp=False)
 ```
 
-> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Parameter** : 'ABSOLUTE'
@@ -63,7 +63,7 @@ abs(value=None, use_clamp=False)
 add(value=None, value_1=None, use_clamp=False)
 ```
 
-> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Parameter** : 'ADD'
@@ -91,7 +91,7 @@ add(value=None, value_1=None, use_clamp=False)
 arccosine(value=None, use_clamp=False)
 ```
 
-> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Parameter** : 'ARCCOSINE'
@@ -118,7 +118,7 @@ arccosine(value=None, use_clamp=False)
 arcsine(value=None, use_clamp=False)
 ```
 
-> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Parameter** : 'ARCSINE'
@@ -145,7 +145,7 @@ arcsine(value=None, use_clamp=False)
 arctan2(value=None, value_1=None, use_clamp=False)
 ```
 
-> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Parameter** : 'ARCTAN2'
@@ -173,7 +173,7 @@ arctan2(value=None, value_1=None, use_clamp=False)
 arctangent(value=None, use_clamp=False)
 ```
 
-> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Parameter** : 'ARCTANGENT'
@@ -200,7 +200,7 @@ arctangent(value=None, use_clamp=False)
 band(boolean=None, boolean_1=None)
 ```
 
-> Function [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
+> Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
 
 #### Information:
 - **Parameter** : 'AND'
@@ -227,7 +227,7 @@ band(boolean=None, boolean_1=None)
 bnot(boolean=None)
 ```
 
-> Function [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
+> Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
 
 #### Information:
 - **Parameter** : 'NOT'
@@ -253,7 +253,7 @@ bnot(boolean=None)
 bor(boolean=None, boolean_1=None)
 ```
 
-> Function [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
+> Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
 
 #### Information:
 - **Parameter** : 'OR'
@@ -280,7 +280,7 @@ bor(boolean=None, boolean_1=None)
 ceil(value=None, use_clamp=False)
 ```
 
-> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Parameter** : 'CEIL'
@@ -307,7 +307,7 @@ ceil(value=None, use_clamp=False)
 compare(value=None, value_1=None, epsilon=None, use_clamp=False)
 ```
 
-> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Parameter** : 'COMPARE'
@@ -336,7 +336,7 @@ compare(value=None, value_1=None, epsilon=None, use_clamp=False)
 cos(value=None, use_clamp=False)
 ```
 
-> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Parameter** : 'COSINE'
@@ -363,7 +363,7 @@ cos(value=None, use_clamp=False)
 cosh(value=None, use_clamp=False)
 ```
 
-> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Parameter** : 'COSH'
@@ -390,7 +390,7 @@ cosh(value=None, use_clamp=False)
 cross(vector=None, vector_1=None)
 ```
 
-> Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Information:
 - **Parameter** : 'CROSS_PRODUCT'
@@ -417,7 +417,7 @@ cross(vector=None, vector_1=None)
 degrees(radians=None, use_clamp=False)
 ```
 
-> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Parameter** : 'DEGREES'
@@ -444,7 +444,7 @@ degrees(radians=None, use_clamp=False)
 distance(vector=None, vector_1=None)
 ```
 
-> Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Information:
 - **Parameter** : 'DISTANCE'
@@ -471,7 +471,7 @@ distance(vector=None, vector_1=None)
 divide(value=None, value_1=None, use_clamp=False)
 ```
 
-> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Parameter** : 'DIVIDE'
@@ -499,7 +499,7 @@ divide(value=None, value_1=None, use_clamp=False)
 divide_ceil(value=None, value_1=None)
 ```
 
-> Function [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
 #### Information:
 - **Parameter** : 'DIVIDE_CEIL'
@@ -526,7 +526,7 @@ divide_ceil(value=None, value_1=None)
 divide_floor(value=None, value_1=None)
 ```
 
-> Function [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
 #### Information:
 - **Parameter** : 'DIVIDE_FLOOR'
@@ -553,7 +553,7 @@ divide_floor(value=None, value_1=None)
 divide_round(value=None, value_1=None)
 ```
 
-> Function [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
 #### Information:
 - **Parameter** : 'DIVIDE_ROUND'
@@ -580,7 +580,7 @@ divide_round(value=None, value_1=None)
 dot(vector=None, vector_1=None)
 ```
 
-> Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Information:
 - **Parameter** : 'DOT_PRODUCT'
@@ -607,7 +607,7 @@ dot(vector=None, vector_1=None)
 exp(value=None, use_clamp=False)
 ```
 
-> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Parameter** : 'EXPONENT'
@@ -634,7 +634,7 @@ exp(value=None, use_clamp=False)
 faceforward(vector=None, incident=None, reference=None)
 ```
 
-> Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Information:
 - **Parameter** : 'FACEFORWARD'
@@ -662,7 +662,7 @@ faceforward(vector=None, incident=None, reference=None)
 floor(value=None, use_clamp=False)
 ```
 
-> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Parameter** : 'FLOOR'
@@ -689,7 +689,7 @@ floor(value=None, use_clamp=False)
 floored_modulo(value=None, value_1=None, use_clamp=False)
 ```
 
-> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Parameter** : 'FLOORED_MODULO'
@@ -717,7 +717,7 @@ floored_modulo(value=None, value_1=None, use_clamp=False)
 fract(value=None, use_clamp=False)
 ```
 
-> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Parameter** : 'FRACT'
@@ -744,7 +744,7 @@ fract(value=None, use_clamp=False)
 gcd(value=None, value_1=None)
 ```
 
-> Function [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
 #### Information:
 - **Parameter** : 'GCD'
@@ -771,7 +771,7 @@ gcd(value=None, value_1=None)
 iabs(value=None)
 ```
 
-> Function [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
 #### Information:
 - **Parameter** : 'ABSOLUTE'
@@ -797,7 +797,7 @@ iabs(value=None)
 iadd(value=None, value_1=None)
 ```
 
-> Function [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
 #### Information:
 - **Parameter** : 'ADD'
@@ -824,7 +824,7 @@ iadd(value=None, value_1=None)
 idivide(value=None, value_1=None)
 ```
 
-> Function [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
 #### Information:
 - **Parameter** : 'DIVIDE'
@@ -851,7 +851,7 @@ idivide(value=None, value_1=None)
 ifloored_modulo(value=None, value_1=None)
 ```
 
-> Function [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
 #### Information:
 - **Parameter** : 'FLOORED_MODULO'
@@ -878,7 +878,7 @@ ifloored_modulo(value=None, value_1=None)
 imax(value=None, value_1=None)
 ```
 
-> Function [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
 #### Information:
 - **Parameter** : 'MAXIMUM'
@@ -905,7 +905,7 @@ imax(value=None, value_1=None)
 imin(value=None, value_1=None)
 ```
 
-> Function [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
 #### Information:
 - **Parameter** : 'MINIMUM'
@@ -932,7 +932,7 @@ imin(value=None, value_1=None)
 imodulo(value=None, value_1=None)
 ```
 
-> Function [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
 #### Information:
 - **Parameter** : 'MODULO'
@@ -959,7 +959,7 @@ imodulo(value=None, value_1=None)
 imply(boolean=None, boolean_1=None)
 ```
 
-> Function [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
+> Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
 
 #### Information:
 - **Parameter** : 'IMPLY'
@@ -986,7 +986,7 @@ imply(boolean=None, boolean_1=None)
 imultiply(value=None, value_1=None)
 ```
 
-> Function [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
 #### Information:
 - **Parameter** : 'MULTIPLY'
@@ -1013,7 +1013,7 @@ imultiply(value=None, value_1=None)
 imultiply_add(value=None, multiplier=None, addend=None)
 ```
 
-> Function [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
 #### Information:
 - **Parameter** : 'MULTIPLY_ADD'
@@ -1041,7 +1041,7 @@ imultiply_add(value=None, multiplier=None, addend=None)
 inverse_sqrt(value=None, use_clamp=False)
 ```
 
-> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Parameter** : 'INVERSE_SQRT'
@@ -1068,7 +1068,7 @@ inverse_sqrt(value=None, use_clamp=False)
 ipower(base=None, exponent=None)
 ```
 
-> Function [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
 #### Information:
 - **Parameter** : 'POWER'
@@ -1095,7 +1095,7 @@ ipower(base=None, exponent=None)
 isign(value=None)
 ```
 
-> Function [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
 #### Information:
 - **Parameter** : 'SIGN'
@@ -1121,7 +1121,7 @@ isign(value=None)
 isubtract(value=None, value_1=None)
 ```
 
-> Function [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
 #### Information:
 - **Parameter** : 'SUBTRACT'
@@ -1148,7 +1148,7 @@ isubtract(value=None, value_1=None)
 lcm(value=None, value_1=None)
 ```
 
-> Function [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
 #### Information:
 - **Parameter** : 'LCM'
@@ -1175,7 +1175,7 @@ lcm(value=None, value_1=None)
 length(vector=None)
 ```
 
-> Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Information:
 - **Parameter** : 'LENGTH'
@@ -1201,7 +1201,7 @@ length(vector=None)
 log(value=None, base=None, use_clamp=False)
 ```
 
-> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Parameter** : 'LOGARITHM'
@@ -1229,7 +1229,7 @@ log(value=None, base=None, use_clamp=False)
 max(value=None, value_1=None, use_clamp=False)
 ```
 
-> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Parameter** : 'MAXIMUM'
@@ -1257,7 +1257,7 @@ max(value=None, value_1=None, use_clamp=False)
 mgreater_than(value=None, threshold=None, use_clamp=False)
 ```
 
-> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Parameter** : 'GREATER_THAN'
@@ -1285,7 +1285,7 @@ mgreater_than(value=None, threshold=None, use_clamp=False)
 min(value=None, value_1=None, use_clamp=False)
 ```
 
-> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Parameter** : 'MINIMUM'
@@ -1313,7 +1313,7 @@ min(value=None, value_1=None, use_clamp=False)
 mless_than(value=None, threshold=None, use_clamp=False)
 ```
 
-> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Parameter** : 'LESS_THAN'
@@ -1341,7 +1341,7 @@ mless_than(value=None, threshold=None, use_clamp=False)
 modulo(value=None, value_1=None, use_clamp=False)
 ```
 
-> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Parameter** : 'MODULO'
@@ -1369,7 +1369,7 @@ modulo(value=None, value_1=None, use_clamp=False)
 multiply(value=None, value_1=None, use_clamp=False)
 ```
 
-> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Parameter** : 'MULTIPLY'
@@ -1397,7 +1397,7 @@ multiply(value=None, value_1=None, use_clamp=False)
 multiply_add(value=None, multiplier=None, addend=None, use_clamp=False)
 ```
 
-> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Parameter** : 'MULTIPLY_ADD'
@@ -1426,7 +1426,7 @@ multiply_add(value=None, multiplier=None, addend=None, use_clamp=False)
 negate(value=None)
 ```
 
-> Function [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
 #### Information:
 - **Parameter** : 'NEGATE'
@@ -1452,7 +1452,7 @@ negate(value=None)
 nimply(boolean=None, boolean_1=None)
 ```
 
-> Function [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
+> Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
 
 #### Information:
 - **Parameter** : 'NIMPLY'
@@ -1479,7 +1479,7 @@ nimply(boolean=None, boolean_1=None)
 nor(boolean=None, boolean_1=None)
 ```
 
-> Function [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
+> Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
 
 #### Information:
 - **Parameter** : 'NOR'
@@ -1506,7 +1506,7 @@ nor(boolean=None, boolean_1=None)
 normalize(vector=None)
 ```
 
-> Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Information:
 - **Parameter** : 'NORMALIZE'
@@ -1532,7 +1532,7 @@ normalize(vector=None)
 not_and(boolean=None, boolean_1=None)
 ```
 
-> Function [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
+> Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
 
 #### Information:
 - **Parameter** : 'NAND'
@@ -1559,7 +1559,7 @@ not_and(boolean=None, boolean_1=None)
 pingpong(value=None, scale=None, use_clamp=False)
 ```
 
-> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Parameter** : 'PINGPONG'
@@ -1587,7 +1587,7 @@ pingpong(value=None, scale=None, use_clamp=False)
 power(base=None, exponent=None, use_clamp=False)
 ```
 
-> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Parameter** : 'POWER'
@@ -1615,7 +1615,7 @@ power(base=None, exponent=None, use_clamp=False)
 project(vector=None, vector_1=None)
 ```
 
-> Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Information:
 - **Parameter** : 'PROJECT'
@@ -1642,7 +1642,7 @@ project(vector=None, vector_1=None)
 radians(degrees=None, use_clamp=False)
 ```
 
-> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Parameter** : 'RADIANS'
@@ -1669,7 +1669,7 @@ radians(degrees=None, use_clamp=False)
 reflect(vector=None, vector_1=None)
 ```
 
-> Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Information:
 - **Parameter** : 'REFLECT'
@@ -1696,7 +1696,7 @@ reflect(vector=None, vector_1=None)
 refract(vector=None, vector_1=None, ior=None)
 ```
 
-> Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Information:
 - **Parameter** : 'REFRACT'
@@ -1724,7 +1724,7 @@ refract(vector=None, vector_1=None, ior=None)
 round(value=None, use_clamp=False)
 ```
 
-> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Parameter** : 'ROUND'
@@ -1751,7 +1751,7 @@ round(value=None, use_clamp=False)
 scale(vector=None, scale=None)
 ```
 
-> Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Information:
 - **Parameter** : 'SCALE'
@@ -1778,7 +1778,7 @@ scale(vector=None, scale=None)
 sign(value=None, use_clamp=False)
 ```
 
-> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Parameter** : 'SIGN'
@@ -1805,7 +1805,7 @@ sign(value=None, use_clamp=False)
 sin(value=None, use_clamp=False)
 ```
 
-> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Parameter** : 'SINE'
@@ -1832,7 +1832,7 @@ sin(value=None, use_clamp=False)
 sinh(value=None, use_clamp=False)
 ```
 
-> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Parameter** : 'SINH'
@@ -1859,7 +1859,7 @@ sinh(value=None, use_clamp=False)
 smooth_max(value=None, value_1=None, distance=None, use_clamp=False)
 ```
 
-> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Parameter** : 'SMOOTH_MAX'
@@ -1888,7 +1888,7 @@ smooth_max(value=None, value_1=None, distance=None, use_clamp=False)
 smooth_min(value=None, value_1=None, distance=None, use_clamp=False)
 ```
 
-> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Parameter** : 'SMOOTH_MIN'
@@ -1917,7 +1917,7 @@ smooth_min(value=None, value_1=None, distance=None, use_clamp=False)
 snap(value=None, increment=None, use_clamp=False)
 ```
 
-> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Parameter** : 'SNAP'
@@ -1945,7 +1945,7 @@ snap(value=None, increment=None, use_clamp=False)
 sqrt(value=None, use_clamp=False)
 ```
 
-> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Parameter** : 'SQRT'
@@ -1972,7 +1972,7 @@ sqrt(value=None, use_clamp=False)
 subtract(value=None, value_1=None, use_clamp=False)
 ```
 
-> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Parameter** : 'SUBTRACT'
@@ -2000,7 +2000,7 @@ subtract(value=None, value_1=None, use_clamp=False)
 tan(value=None, use_clamp=False)
 ```
 
-> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Parameter** : 'TANGENT'
@@ -2027,7 +2027,7 @@ tan(value=None, use_clamp=False)
 tanh(value=None, use_clamp=False)
 ```
 
-> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Parameter** : 'TANH'
@@ -2054,7 +2054,7 @@ tanh(value=None, use_clamp=False)
 trunc(value=None, use_clamp=False)
 ```
 
-> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Parameter** : 'TRUNC'
@@ -2081,7 +2081,7 @@ trunc(value=None, use_clamp=False)
 vabs(vector=None)
 ```
 
-> Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Information:
 - **Parameter** : 'ABSOLUTE'
@@ -2107,7 +2107,7 @@ vabs(vector=None)
 vadd(vector=None, vector_1=None)
 ```
 
-> Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Information:
 - **Parameter** : 'ADD'
@@ -2134,7 +2134,7 @@ vadd(vector=None, vector_1=None)
 vceil(vector=None)
 ```
 
-> Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Information:
 - **Parameter** : 'CEIL'
@@ -2160,7 +2160,7 @@ vceil(vector=None)
 vcos(vector=None)
 ```
 
-> Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Information:
 - **Parameter** : 'COSINE'
@@ -2186,7 +2186,7 @@ vcos(vector=None)
 vdivide(vector=None, vector_1=None)
 ```
 
-> Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Information:
 - **Parameter** : 'DIVIDE'
@@ -2213,7 +2213,7 @@ vdivide(vector=None, vector_1=None)
 vfloor(vector=None)
 ```
 
-> Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Information:
 - **Parameter** : 'FLOOR'
@@ -2239,7 +2239,7 @@ vfloor(vector=None)
 vfraction(vector=None)
 ```
 
-> Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Information:
 - **Parameter** : 'FRACTION'
@@ -2265,7 +2265,7 @@ vfraction(vector=None)
 vmax(vector=None, vector_1=None)
 ```
 
-> Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Information:
 - **Parameter** : 'MAXIMUM'
@@ -2292,7 +2292,7 @@ vmax(vector=None, vector_1=None)
 vmin(vector=None, vector_1=None)
 ```
 
-> Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Information:
 - **Parameter** : 'MINIMUM'
@@ -2319,7 +2319,7 @@ vmin(vector=None, vector_1=None)
 vmodulo(vector=None, vector_1=None)
 ```
 
-> Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Information:
 - **Parameter** : 'MODULO'
@@ -2346,7 +2346,7 @@ vmodulo(vector=None, vector_1=None)
 vmultiply(vector=None, vector_1=None)
 ```
 
-> Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Information:
 - **Parameter** : 'MULTIPLY'
@@ -2373,7 +2373,7 @@ vmultiply(vector=None, vector_1=None)
 vmultiply_add(vector=None, multiplier=None, addend=None)
 ```
 
-> Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Information:
 - **Parameter** : 'MULTIPLY_ADD'
@@ -2401,7 +2401,7 @@ vmultiply_add(vector=None, multiplier=None, addend=None)
 vsin(vector=None)
 ```
 
-> Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Information:
 - **Parameter** : 'SINE'
@@ -2427,7 +2427,7 @@ vsin(vector=None)
 vsnap(vector=None, increment=None)
 ```
 
-> Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Information:
 - **Parameter** : 'SNAP'
@@ -2454,7 +2454,7 @@ vsnap(vector=None, increment=None)
 vsubtract(vector=None, vector_1=None)
 ```
 
-> Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Information:
 - **Parameter** : 'SUBTRACT'
@@ -2481,7 +2481,7 @@ vsubtract(vector=None, vector_1=None)
 vtan(vector=None)
 ```
 
-> Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Information:
 - **Parameter** : 'TANGENT'
@@ -2507,7 +2507,7 @@ vtan(vector=None)
 vwrap(vector=None, max=None, min=None)
 ```
 
-> Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Information:
 - **Parameter** : 'WRAP'
@@ -2535,7 +2535,7 @@ vwrap(vector=None, max=None, min=None)
 wrap(value=None, max=None, min=None, use_clamp=False)
 ```
 
-> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Parameter** : 'WRAP'
@@ -2564,7 +2564,7 @@ wrap(value=None, max=None, min=None, use_clamp=False)
 xnor(boolean=None, boolean_1=None)
 ```
 
-> Function [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
+> Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
 
 #### Information:
 - **Parameter** : 'XNOR'
@@ -2591,7 +2591,7 @@ xnor(boolean=None, boolean_1=None)
 xor(boolean=None, boolean_1=None)
 ```
 
-> Function [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
+> Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
 
 #### Information:
 - **Parameter** : 'XOR'

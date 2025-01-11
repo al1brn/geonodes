@@ -74,7 +74,7 @@ uv_map = cuve.uv_map_
 add(shader=None)
 ```
 
-> Method ERROR: Node 'Add Shader' not found
+> Node ERROR: Node 'Add Shader' not found
 
 #### Information:
 - **Socket** : self
@@ -100,7 +100,7 @@ add(shader=None)
 Diffuse(color=None, roughness=None, normal=None)
 ```
 
-> Constructor ERROR: Node 'Diffuse BSDF' not found
+> Node ERROR: Node 'Diffuse BSDF' not found
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (id: Color)
@@ -123,7 +123,7 @@ Diffuse(color=None, roughness=None, normal=None)
 Emission(color=None, strength=None)
 ```
 
-> Constructor ERROR: Node 'Emission' not found
+> Node ERROR: Node 'Emission' not found
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (id: Color)
@@ -145,7 +145,7 @@ Emission(color=None, strength=None)
 Glass(color=None, roughness=None, ior=None, normal=None, distribution='MULTI_GGX')
 ```
 
-> Constructor ERROR: Node 'Glass BSDF' not found
+> Node ERROR: Node 'Glass BSDF' not found
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (id: Color)
@@ -170,7 +170,7 @@ Glass(color=None, roughness=None, ior=None, normal=None, distribution='MULTI_GGX
 Glossy(color=None, roughness=None, anisotropy=None, rotation=None, normal=None, tangent=None, distribution='MULTI_GGX')
 ```
 
-> Constructor ERROR: Node 'Glossy BSDF' not found
+> Node ERROR: Node 'Glossy BSDF' not found
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (id: Color)
@@ -197,7 +197,7 @@ Glossy(color=None, roughness=None, anisotropy=None, rotation=None, normal=None, 
 Hair(color=None, offset=None, roughnessu=None, roughnessv=None, tangent=None, component='Reflection')
 ```
 
-> Constructor ERROR: Node 'Hair BSDF' not found
+> Node ERROR: Node 'Hair BSDF' not found
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (id: Color)
@@ -223,7 +223,7 @@ Hair(color=None, offset=None, roughnessu=None, roughnessv=None, tangent=None, co
 Holdout()
 ```
 
-> Constructor ERROR: Node 'Holdout' not found
+> Node ERROR: Node 'Holdout' not found
 
 #### Returns:
 - **Shader** :
@@ -239,7 +239,7 @@ Holdout()
 light_output(is_active_output=True, target='ALL')
 ```
 
-> Method [Light Output](https://docs.blender.org/manual/en/latest/render/shader_nodes/output/light.html)
+> Node [Light Output](https://docs.blender.org/manual/en/latest/render/shader_nodes/output/light.html)
 
 #### Information:
 - **Socket** : self
@@ -266,7 +266,7 @@ light_output(is_active_output=True, target='ALL')
 material_output(volume=None, displacement=None, thickness=None, is_active_output=True, target='ALL')
 ```
 
-> Method [Material Output](https://docs.blender.org/manual/en/latest/render/shader_nodes/output/material.html)
+> Node [Material Output](https://docs.blender.org/manual/en/latest/render/shader_nodes/output/material.html)
 
 #### Information:
 - **Socket** : self
@@ -296,7 +296,7 @@ material_output(volume=None, displacement=None, thickness=None, is_active_output
 Metallic(base_color=None, edge_tint=None, roughness=None, anisotropy=None, rotation=None, normal=None, tangent=None, distribution='MULTI_GGX', fresnel_type='F82')
 ```
 
-> Constructor ERROR: Node 'Metallic BSDF' not found
+> Node ERROR: Node 'Metallic BSDF' not found
 
 #### Arguments:
 - **base_color** (_Color_ = None) : socket 'Base Color' (id: Base Color)
@@ -325,7 +325,7 @@ Metallic(base_color=None, edge_tint=None, roughness=None, anisotropy=None, rotat
 mix(shader=None, fac=None)
 ```
 
-> Method ERROR: Node 'Mix Shader' not found
+> Node ERROR: Node 'Mix Shader' not found
 
 #### Information:
 - **Socket** : self
@@ -352,7 +352,7 @@ mix(shader=None, fac=None)
 Principled(base_color=None, metallic=None, roughness=None, ior=None, alpha=None, normal=None, diffuse_roughness=None, subsurface_weight=None, subsurface_radius=None, subsurface_scale=None, subsurface_anisotropy=None, specular_ior_level=None, specular_tint=None, anisotropic=None, anisotropic_rotation=None, tangent=None, transmission_weight=None, coat_weight=None, coat_roughness=None, coat_ior=None, coat_tint=None, coat_normal=None, sheen_weight=None, sheen_roughness=None, sheen_tint=None, emission_color=None, emission_strength=None, thin_film_thickness=None, thin_film_ior=None, distribution='MULTI_GGX', subsurface_method='RANDOM_WALK')
 ```
 
-> Constructor ERROR: Node 'Principled BSDF' not found
+> Node ERROR: Node 'Principled BSDF' not found
 
 #### Arguments:
 - **base_color** (_Color_ = None) : socket 'Base Color' (id: Base Color)
@@ -403,7 +403,7 @@ Principled(base_color=None, metallic=None, roughness=None, ior=None, alpha=None,
 PrincipledHair(color=None, roughness=None, radial_roughness=None, coat=None, ior=None, offset=None, random_roughness=None, random=None, model='CHIANG', parametrization='COLOR')
 ```
 
-> Constructor ERROR: Node 'Principled Hair BSDF' not found
+> Node ERROR: Node 'Principled Hair BSDF' not found
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (id: Color)
@@ -433,7 +433,7 @@ PrincipledHair(color=None, roughness=None, radial_roughness=None, coat=None, ior
 RayPortal(color=None, position=None, direction=None)
 ```
 
-> Constructor ERROR: Node 'Ray Portal BSDF' not found
+> Node ERROR: Node 'Ray Portal BSDF' not found
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (id: Color)
@@ -456,7 +456,7 @@ RayPortal(color=None, position=None, direction=None)
 Refraction(color=None, roughness=None, ior=None, normal=None, distribution='BECKMANN')
 ```
 
-> Constructor ERROR: Node 'Refraction BSDF' not found
+> Node ERROR: Node 'Refraction BSDF' not found
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (id: Color)
@@ -481,7 +481,7 @@ Refraction(color=None, roughness=None, ior=None, normal=None, distribution='BECK
 Sheen(color=None, roughness=None, normal=None, distribution='MICROFIBER')
 ```
 
-> Constructor ERROR: Node 'Sheen BSDF' not found
+> Node ERROR: Node 'Sheen BSDF' not found
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (id: Color)
@@ -505,7 +505,7 @@ Sheen(color=None, roughness=None, normal=None, distribution='MICROFIBER')
 Specular(base_color=None, specular=None, roughness=None, emissive_color=None, transparency=None, normal=None, clear_coat=None, clear_coat_roughness=None, clear_coat_normal=None)
 ```
 
-> Constructor ERROR: Node 'Specular BSDF' not found
+> Node ERROR: Node 'Specular BSDF' not found
 
 #### Arguments:
 - **base_color** (_Color_ = None) : socket 'Base Color' (id: Base Color)
@@ -534,7 +534,7 @@ Specular(base_color=None, specular=None, roughness=None, emissive_color=None, tr
 SubsurfaceScattering(color=None, scale=None, radius=None, ior=None, roughness=None, anisotropy=None, normal=None, falloff='RANDOM_WALK')
 ```
 
-> Constructor ERROR: Node 'Subsurface Scattering' not found
+> Node ERROR: Node 'Subsurface Scattering' not found
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (id: Color)
@@ -562,7 +562,7 @@ SubsurfaceScattering(color=None, scale=None, radius=None, ior=None, roughness=No
 Toon(color=None, size=None, smooth=None, normal=None, component='DIFFUSE')
 ```
 
-> Constructor ERROR: Node 'Toon BSDF' not found
+> Node ERROR: Node 'Toon BSDF' not found
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (id: Color)
@@ -587,7 +587,7 @@ Toon(color=None, size=None, smooth=None, normal=None, component='DIFFUSE')
 to_rgb()
 ```
 
-> Method ERROR: Node 'Shader to RGB' not found
+> Node ERROR: Node 'Shader to RGB' not found
 
 #### Information:
 - **Socket** : self
@@ -608,7 +608,7 @@ to_rgb()
 Translucent(color=None, normal=None)
 ```
 
-> Constructor ERROR: Node 'Translucent BSDF' not found
+> Node ERROR: Node 'Translucent BSDF' not found
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (id: Color)
@@ -630,7 +630,7 @@ Translucent(color=None, normal=None)
 Transparent(color=None)
 ```
 
-> Constructor ERROR: Node 'Transparent BSDF' not found
+> Node ERROR: Node 'Transparent BSDF' not found
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (id: Color)
@@ -651,7 +651,7 @@ Transparent(color=None)
 world_output(volume=None, is_active_output=True, target='ALL')
 ```
 
-> Method [World Output](https://docs.blender.org/manual/en/latest/render/shader_nodes/output/world.html)
+> Node [World Output](https://docs.blender.org/manual/en/latest/render/shader_nodes/output/world.html)
 
 #### Information:
 - **Socket** : self

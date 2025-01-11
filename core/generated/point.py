@@ -9,7 +9,7 @@ class Point(Socket):
     """
     @classmethod
     def accumulate_field(cls, value=None, group_id=None):
-        """ > Class Method <&Node Accumulate Field>
+        """ > Node <&Node Accumulate Field>
 
         Information
         -----------
@@ -30,7 +30,7 @@ class Point(Socket):
         return node._out
 
     def attribute_statistic(self, attribute=None):
-        """ > Method <&Node Attribute Statistic>
+        """ > Node <&Node Attribute Statistic>
 
         Information
         -----------
@@ -52,7 +52,9 @@ class Point(Socket):
         return node
 
     def delete_geometry_all(self):
-        """ > Jump Method <&Node Delete Geometry>
+        """ > Node <&Node Delete Geometry>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -70,7 +72,9 @@ class Point(Socket):
         return self._domain_to_geometry
 
     def delete_geometry_edge_face(self):
-        """ > Jump Method <&Node Delete Geometry>
+        """ > Node <&Node Delete Geometry>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -88,7 +92,9 @@ class Point(Socket):
         return self._domain_to_geometry
 
     def delete_geometry_only_face(self):
-        """ > Jump Method <&Node Delete Geometry>
+        """ > Node <&Node Delete Geometry>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -106,7 +112,9 @@ class Point(Socket):
         return self._domain_to_geometry
 
     def delete_geometry(self, mode='ALL'):
-        """ > Jump Method <&Node Delete Geometry>
+        """ > Node <&Node Delete Geometry>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -122,12 +130,15 @@ class Point(Socket):
         -------
         - Geometry
         """
+        utils.check_enum_arg('mode', mode, 'delete_geometry', ('ALL', 'EDGE_FACE', 'ONLY_FACE'))
         node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='POINT', mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
 
     def delete_all(self):
-        """ > Jump Method <&Node Delete Geometry>
+        """ > Node <&Node Delete Geometry>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -145,7 +156,9 @@ class Point(Socket):
         return self._domain_to_geometry
 
     def delete_edge_face(self):
-        """ > Jump Method <&Node Delete Geometry>
+        """ > Node <&Node Delete Geometry>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -163,7 +176,9 @@ class Point(Socket):
         return self._domain_to_geometry
 
     def delete_only_face(self):
-        """ > Jump Method <&Node Delete Geometry>
+        """ > Node <&Node Delete Geometry>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -181,7 +196,9 @@ class Point(Socket):
         return self._domain_to_geometry
 
     def delete(self, mode='ALL'):
-        """ > Jump Method <&Node Delete Geometry>
+        """ > Node <&Node Delete Geometry>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -197,12 +214,15 @@ class Point(Socket):
         -------
         - Geometry
         """
+        utils.check_enum_arg('mode', mode, 'delete', ('ALL', 'EDGE_FACE', 'ONLY_FACE'))
         node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='POINT', mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
 
     def duplicate(self, amount=None):
-        """ > Jump Method <&Node Duplicate Elements>
+        """ > Node <&Node Duplicate Elements>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -224,7 +244,7 @@ class Point(Socket):
 
     @classmethod
     def evaluate_at_index(cls, index=None, value=None):
-        """ > Class Method <&Node Evaluate at Index>
+        """ > Node <&Node Evaluate at Index>
 
         Information
         -----------
@@ -246,7 +266,7 @@ class Point(Socket):
 
     @classmethod
     def evaluate_on_domain(cls, value=None):
-        """ > Class Method <&Node Evaluate on Domain>
+        """ > Node <&Node Evaluate on Domain>
 
         Information
         -----------
@@ -266,7 +286,7 @@ class Point(Socket):
         return node._out
 
     def instance_on(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
-        """ > Method <&Node Instance on Points>
+        """ > Node <&Node Instance on Points>
 
         Information
         -----------
@@ -289,7 +309,7 @@ class Point(Socket):
         return node._out
 
     def sample_index(self, value=None, index=None, clamp=False):
-        """ > Method <&Node Sample Index>
+        """ > Node <&Node Sample Index>
 
         Information
         -----------
@@ -312,7 +332,7 @@ class Point(Socket):
         return node._out
 
     def sample_nearest(self, sample_position=None):
-        """ > Method <&Node Sample Nearest>
+        """ > Node <&Node Sample Nearest>
 
         Information
         -----------
@@ -331,7 +351,9 @@ class Point(Socket):
         return node._out
 
     def separate(self):
-        """ > Jump Method <&Node Separate Geometry>
+        """ > Node <&Node Separate Geometry>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -348,7 +370,9 @@ class Point(Socket):
         return self._domain_to_geometry
 
     def set_radius(self, radius=None):
-        """ > Jump Method <&Node Set Point Radius>
+        """ > Node <&Node Set Point Radius>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -368,7 +392,9 @@ class Point(Socket):
         return self._domain_to_geometry
 
     def sort(self, group_id=None, sort_weight=None):
-        """ > Jump Method <&Node Sort Elements>
+        """ > Node <&Node Sort Elements>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -390,7 +416,7 @@ class Point(Socket):
         return self._domain_to_geometry
 
     def split_to_instances(self, group_id=None):
-        """ > Method <&Node Split to Instances>
+        """ > Node <&Node Split to Instances>
 
         Information
         -----------
@@ -410,7 +436,9 @@ class Point(Socket):
         return node._out
 
     def store_named_attribute(self, name=None, value=None):
-        """ > Jump Method <&Node Store Named Attribute>
+        """ > Node <&Node Store Named Attribute>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -434,7 +462,9 @@ class Point(Socket):
         return self._domain_to_geometry
 
     def store(self, name=None, value=None):
-        """ > Jump Method <&Node Store Named Attribute>
+        """ > Node <&Node Store Named Attribute>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -459,7 +489,7 @@ class Point(Socket):
 
     @classmethod
     def active_element(cls):
-        """ > Class Method <&Node Active Element>
+        """ > Node <&Node Active Element>
 
         Information
         -----------
@@ -473,7 +503,9 @@ class Point(Socket):
         return node._out
 
     def set_selection(self):
-        """ > Jump Method <&Node Set Selection>
+        """ > Node <&Node Set Selection>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -492,7 +524,7 @@ class Point(Socket):
         return self._domain_to_geometry
 
     def viewer(self, value=None):
-        """ > Method <&Node Viewer>
+        """ > Node <&Node Viewer>
 
         Information
         -----------
@@ -517,7 +549,9 @@ class Point(Socket):
 
     @position.setter
     def position(self, position=None):
-        """ > Jump Method <&Node Set Position>
+        """ > Node <&Node Set Position>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -545,7 +579,9 @@ class Point(Socket):
 
     @offset.setter
     def offset(self, offset=None):
-        """ > Jump Method <&Node Set Position>
+        """ > Node <&Node Set Position>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------

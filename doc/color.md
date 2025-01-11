@@ -52,7 +52,7 @@ Socket of type COLOR (RGBA)
 > _type_: **alpha**
 >
 
-> Property Get [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
+> Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Properties](color.md#properties)</sub>
 
@@ -61,7 +61,7 @@ Socket of type COLOR (RGBA)
 > _type_: **blue**
 >
 
-> Property Get [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
+> Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Properties](color.md#properties)</sub>
 
@@ -70,7 +70,7 @@ Socket of type COLOR (RGBA)
 > _type_: **green**
 >
 
-> Property Get [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
+> Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Properties](color.md#properties)</sub>
 
@@ -79,7 +79,7 @@ Socket of type COLOR (RGBA)
 > _type_: **tuple**
 >
 
-> Property Get [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
+> Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Properties](color.md#properties)</sub>
 
@@ -88,7 +88,7 @@ Socket of type COLOR (RGBA)
 > _type_: **hue**
 >
 
-> Property Get [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
+> Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Properties](color.md#properties)</sub>
 
@@ -97,7 +97,7 @@ Socket of type COLOR (RGBA)
 > _type_: **lightness**
 >
 
-> Property Get [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
+> Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Properties](color.md#properties)</sub>
 
@@ -106,7 +106,7 @@ Socket of type COLOR (RGBA)
 > _type_: **red**
 >
 
-> Property Get [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
+> Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Properties](color.md#properties)</sub>
 
@@ -115,7 +115,7 @@ Socket of type COLOR (RGBA)
 > _type_: **tuple**
 >
 
-> Property Get [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
+> Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Properties](color.md#properties)</sub>
 
@@ -124,7 +124,7 @@ Socket of type COLOR (RGBA)
 > _type_: **saturation**
 >
 
-> Property Get [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
+> Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Properties](color.md#properties)</sub>
 
@@ -146,7 +146,7 @@ Conversion to black and white.
 > _type_: **value**
 >
 
-> Property Get [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
+> Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Properties](color.md#properties)</sub>
 
@@ -192,7 +192,7 @@ Shader node Ambient Occlusion.
 aov_output(value=None, aov_name='')
 ```
 
-> Method [AOV Output](https://docs.blender.org/manual/en/latest/render/shader_nodes/output/aov.html)
+> Node [AOV Output](https://docs.blender.org/manual/en/latest/render/shader_nodes/output/aov.html)
 
 #### Information:
 - **Socket** : self
@@ -244,7 +244,7 @@ Shader node Color Attribute.
 background(strength=None)
 ```
 
-> Method ERROR: Node 'Background' not found
+> Node ERROR: Node 'Background' not found
 
 #### Information:
 - **Socket** : self
@@ -295,7 +295,7 @@ Constructor : Black body.
 blur(iterations=None, weight=None)
 ```
 
-> Method [Blur Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/blur_attribute.html)
+> Node [Blur Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/blur_attribute.html)
 
 #### Information:
 - **Socket** : self
@@ -323,7 +323,7 @@ blur(iterations=None, weight=None)
 Brick(vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2)
 ```
 
-> Constructor [Brick Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/brick.html)
+> Node [Brick Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/brick.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
@@ -357,7 +357,7 @@ Brick(vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_siz
 brighter(b=None)
 ```
 
-> Method [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+> Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
 #### Information:
 - **Socket** : self
@@ -412,7 +412,7 @@ Brightness and contrast.
 Checker(vector=None, color1=None, color2=None, scale=None)
 ```
 
-> Constructor [Checker Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/checker.html)
+> Node [Checker Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/checker.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
@@ -436,7 +436,7 @@ Checker(vector=None, color1=None, color2=None, scale=None)
 ColorAttribute(layer_name='')
 ```
 
-> Constructor [Color Attribute](https://docs.blender.org/manual/en/latest/render/shader_nodes/input/vertex_color.html)
+> Node [Color Attribute](https://docs.blender.org/manual/en/latest/render/shader_nodes/input/vertex_color.html)
 
 #### Arguments:
 - **layer_name** (_str_ = ) : parameter 'layer_name'
@@ -481,7 +481,7 @@ Constructor : Color Ramp
 Combine(red=None, green=None, blue=None, alpha=None, mode='RGB')
 ```
 
-> Constructor [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/combine_color.html)
+> Node [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/combine_color.html)
 
 #### Arguments:
 - **red** (_Float_ = None) : socket 'Red' (id: Red)
@@ -506,7 +506,7 @@ Combine(red=None, green=None, blue=None, alpha=None, mode='RGB')
 CombineHSL(hue=None, saturation=None, lightness=None, alpha=None)
 ```
 
-> Constructor [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/combine_color.html)
+> Node [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/combine_color.html)
 
 #### Information:
 - **Parameter** : 'HSL'
@@ -535,7 +535,7 @@ CombineHSL(hue=None, saturation=None, lightness=None, alpha=None)
 CombineHSV(hue=None, saturation=None, value=None, alpha=None)
 ```
 
-> Constructor [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/combine_color.html)
+> Node [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/combine_color.html)
 
 #### Information:
 - **Parameter** : 'HSV'
@@ -564,7 +564,7 @@ CombineHSV(hue=None, saturation=None, value=None, alpha=None)
 CombineRGB(red=None, green=None, blue=None, alpha=None)
 ```
 
-> Constructor [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/combine_color.html)
+> Node [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/combine_color.html)
 
 #### Information:
 - **Parameter** : 'RGB'
@@ -593,7 +593,7 @@ CombineRGB(red=None, green=None, blue=None, alpha=None)
 darker(b=None)
 ```
 
-> Method [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+> Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
 #### Information:
 - **Socket** : self
@@ -622,7 +622,7 @@ darker(b=None)
 equal(b=None, epsilon=None)
 ```
 
-> Method [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+> Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
 #### Information:
 - **Socket** : self
@@ -702,7 +702,7 @@ Gamma.
 Gradient(vector=None, gradient_type='LINEAR')
 ```
 
-> Constructor [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html)
+> Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
@@ -724,7 +724,7 @@ Gradient(vector=None, gradient_type='LINEAR')
 hash_value(seed=None)
 ```
 
-> Method [Hash Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/hash_value.html)
+> Node [Hash Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/hash_value.html)
 
 #### Information:
 - **Socket** : self
@@ -779,7 +779,7 @@ Hue / saturation / value.
 ImageTexture(image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear')
 ```
 
-> Constructor [Image Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/image.html)
+> Node [Image Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/image.html)
 
 #### Arguments:
 - **image** (_Image_ = None) : socket 'Image' (id: Image)
@@ -854,7 +854,7 @@ Invert.
 invert_color(fac=None)
 ```
 
-> Method [Invert Color](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/color/invert_color.html)
+> Node [Invert Color](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/color/invert_color.html)
 
 #### Information:
 - **Socket** : self
@@ -880,7 +880,7 @@ invert_color(fac=None)
 line_style_output(color_fac=None, alpha=None, alpha_fac=None, blend_type='MIX', is_active_output=True, target='ALL', use_alpha=False, use_clamp=False)
 ```
 
-> Method ERROR: Node 'Line Style Output' not found
+> Node ERROR: Node 'Line Style Output' not found
 
 #### Information:
 - **Socket** : self
@@ -913,7 +913,7 @@ line_style_output(color_fac=None, alpha=None, alpha_fac=None, blend_type='MIX', 
 Magic(vector=None, scale=None, distortion=None, turbulence_depth=2)
 ```
 
-> Constructor [Magic Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/magic.html)
+> Node [Magic Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/magic.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
@@ -937,7 +937,7 @@ Magic(vector=None, scale=None, distortion=None, turbulence_depth=2)
 mix(b=None, factor=None, clamp_factor=True, clamp_result=False)
 ```
 
-> Method [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+> Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
 #### Information:
 - **Socket** : self
@@ -969,7 +969,7 @@ mix(b=None, factor=None, clamp_factor=True, clamp_result=False)
 mix_add(b=None, factor=None, clamp_factor=True, clamp_result=False)
 ```
 
-> Method [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+> Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
 #### Information:
 - **Socket** : self
@@ -1001,7 +1001,7 @@ mix_add(b=None, factor=None, clamp_factor=True, clamp_result=False)
 mix_burn(b=None, factor=None, clamp_factor=True, clamp_result=False)
 ```
 
-> Method [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+> Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
 #### Information:
 - **Socket** : self
@@ -1033,7 +1033,7 @@ mix_burn(b=None, factor=None, clamp_factor=True, clamp_result=False)
 mix_color(b=None, factor=None, clamp_factor=True, clamp_result=False)
 ```
 
-> Method [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+> Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
 #### Information:
 - **Socket** : self
@@ -1065,7 +1065,7 @@ mix_color(b=None, factor=None, clamp_factor=True, clamp_result=False)
 mix_darken(b=None, factor=None, clamp_factor=True, clamp_result=False)
 ```
 
-> Method [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+> Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
 #### Information:
 - **Socket** : self
@@ -1097,7 +1097,7 @@ mix_darken(b=None, factor=None, clamp_factor=True, clamp_result=False)
 mix_difference(b=None, factor=None, clamp_factor=True, clamp_result=False)
 ```
 
-> Method [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+> Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
 #### Information:
 - **Socket** : self
@@ -1129,7 +1129,7 @@ mix_difference(b=None, factor=None, clamp_factor=True, clamp_result=False)
 mix_divide(b=None, factor=None, clamp_factor=True, clamp_result=False)
 ```
 
-> Method [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+> Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
 #### Information:
 - **Socket** : self
@@ -1161,7 +1161,7 @@ mix_divide(b=None, factor=None, clamp_factor=True, clamp_result=False)
 mix_dodge(b=None, factor=None, clamp_factor=True, clamp_result=False)
 ```
 
-> Method [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+> Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
 #### Information:
 - **Socket** : self
@@ -1193,7 +1193,7 @@ mix_dodge(b=None, factor=None, clamp_factor=True, clamp_result=False)
 mix_exclusion(b=None, factor=None, clamp_factor=True, clamp_result=False)
 ```
 
-> Method [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+> Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
 #### Information:
 - **Socket** : self
@@ -1225,7 +1225,7 @@ mix_exclusion(b=None, factor=None, clamp_factor=True, clamp_result=False)
 mix_hue(b=None, factor=None, clamp_factor=True, clamp_result=False)
 ```
 
-> Method [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+> Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
 #### Information:
 - **Socket** : self
@@ -1257,7 +1257,7 @@ mix_hue(b=None, factor=None, clamp_factor=True, clamp_result=False)
 mix_lighten(b=None, factor=None, clamp_factor=True, clamp_result=False)
 ```
 
-> Method [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+> Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
 #### Information:
 - **Socket** : self
@@ -1289,7 +1289,7 @@ mix_lighten(b=None, factor=None, clamp_factor=True, clamp_result=False)
 mix_linear_light(b=None, factor=None, clamp_factor=True, clamp_result=False)
 ```
 
-> Method [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+> Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
 #### Information:
 - **Socket** : self
@@ -1321,7 +1321,7 @@ mix_linear_light(b=None, factor=None, clamp_factor=True, clamp_result=False)
 mix_mix(b=None, factor=None, clamp_factor=True, clamp_result=False)
 ```
 
-> Method [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+> Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
 #### Information:
 - **Socket** : self
@@ -1353,7 +1353,7 @@ mix_mix(b=None, factor=None, clamp_factor=True, clamp_result=False)
 mix_multiply(b=None, factor=None, clamp_factor=True, clamp_result=False)
 ```
 
-> Method [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+> Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
 #### Information:
 - **Socket** : self
@@ -1385,7 +1385,7 @@ mix_multiply(b=None, factor=None, clamp_factor=True, clamp_result=False)
 mix_overlay(b=None, factor=None, clamp_factor=True, clamp_result=False)
 ```
 
-> Method [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+> Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
 #### Information:
 - **Socket** : self
@@ -1417,7 +1417,7 @@ mix_overlay(b=None, factor=None, clamp_factor=True, clamp_result=False)
 mix_saturation(b=None, factor=None, clamp_factor=True, clamp_result=False)
 ```
 
-> Method [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+> Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
 #### Information:
 - **Socket** : self
@@ -1449,7 +1449,7 @@ mix_saturation(b=None, factor=None, clamp_factor=True, clamp_result=False)
 mix_screen(b=None, factor=None, clamp_factor=True, clamp_result=False)
 ```
 
-> Method [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+> Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
 #### Information:
 - **Socket** : self
@@ -1481,7 +1481,7 @@ mix_screen(b=None, factor=None, clamp_factor=True, clamp_result=False)
 mix_soft_light(b=None, factor=None, clamp_factor=True, clamp_result=False)
 ```
 
-> Method [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+> Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
 #### Information:
 - **Socket** : self
@@ -1513,7 +1513,7 @@ mix_soft_light(b=None, factor=None, clamp_factor=True, clamp_result=False)
 mix_subtract(b=None, factor=None, clamp_factor=True, clamp_result=False)
 ```
 
-> Method [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+> Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
 #### Information:
 - **Socket** : self
@@ -1545,7 +1545,7 @@ mix_subtract(b=None, factor=None, clamp_factor=True, clamp_result=False)
 mix_value(b=None, factor=None, clamp_factor=True, clamp_result=False)
 ```
 
-> Method [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+> Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
 #### Information:
 - **Socket** : self
@@ -1577,7 +1577,7 @@ mix_value(b=None, factor=None, clamp_factor=True, clamp_result=False)
 Named(name=None)
 ```
 
-> Constructor [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
+> Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
 #### Information:
 - **Parameter** : 'FLOAT_COLOR'
@@ -1603,7 +1603,7 @@ Named(name=None)
 NamedAttribute(name=None)
 ```
 
-> Constructor [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
+> Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
 #### Information:
 - **Parameter** : 'FLOAT_COLOR'
@@ -1656,7 +1656,7 @@ Normal map.
 not_equal(b=None, epsilon=None)
 ```
 
-> Method [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+> Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
 #### Information:
 - **Socket** : self
@@ -1709,7 +1709,7 @@ out(name=None)
 RGB()
 ```
 
-> Constructor [RGB](https://docs.blender.org/manual/en/latest/render/shader_nodes/input/rgb.html)
+> Node [RGB](https://docs.blender.org/manual/en/latest/render/shader_nodes/input/rgb.html)
 
 #### Returns:
 - **Color** :
@@ -1725,7 +1725,7 @@ RGB()
 rgb_curves(fac=None)
 ```
 
-> Method [RGB Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/rgb_curves.html)
+> Node [RGB Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/rgb_curves.html)
 
 #### Information:
 - **Socket** : self
@@ -1751,7 +1751,7 @@ rgb_curves(fac=None)
 rgb_to_bw()
 ```
 
-> Method [RGB to BW](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/converter/rgb_to_bw.html)
+> Node [RGB to BW](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/converter/rgb_to_bw.html)
 
 #### Information:
 - **Socket** : self
@@ -1772,7 +1772,7 @@ rgb_to_bw()
 separate(mode='RGB')
 ```
 
-> Method [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
+> Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
 
 #### Information:
 - **Socket** : self
@@ -1798,7 +1798,7 @@ separate(mode='RGB')
 separate_col(mode='RGB')
 ```
 
-> Method [Separate Color](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/color/separate_color.html)
+> Node [Separate Color](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/color/separate_color.html)
 
 #### Information:
 - **Socket** : self
@@ -1824,7 +1824,7 @@ separate_col(mode='RGB')
 separate_col_HSL()
 ```
 
-> Method [Separate Color](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/color/separate_color.html)
+> Node [Separate Color](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/color/separate_color.html)
 
 #### Information:
 - **Socket** : self
@@ -1846,7 +1846,7 @@ separate_col_HSL()
 separate_col_HSV()
 ```
 
-> Method [Separate Color](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/color/separate_color.html)
+> Node [Separate Color](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/color/separate_color.html)
 
 #### Information:
 - **Socket** : self
@@ -1868,7 +1868,7 @@ separate_col_HSV()
 separate_color()
 ```
 
-> Method [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
+> Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
 
 #### Information:
 - **Socket** : self
@@ -1890,7 +1890,7 @@ separate_color()
 separate_col_RGB()
 ```
 
-> Method [Separate Color](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/color/separate_color.html)
+> Node [Separate Color](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/color/separate_color.html)
 
 #### Information:
 - **Socket** : self
@@ -1912,7 +1912,7 @@ separate_col_RGB()
 separate_HSL()
 ```
 
-> Method [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
+> Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
 
 #### Information:
 - **Socket** : self
@@ -1934,7 +1934,7 @@ separate_HSL()
 separate_HSV()
 ```
 
-> Method [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
+> Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
 
 #### Information:
 - **Socket** : self
@@ -1956,7 +1956,7 @@ separate_HSV()
 separate_RGB()
 ```
 
-> Method [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
+> Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
 
 #### Information:
 - **Socket** : self
@@ -1978,7 +1978,7 @@ separate_RGB()
 SkyTexture(air_density=1.0, altitude=0.0, dust_density=1.0, ground_albedo=0.30000001192092896, ozone_density=1.0, sky_type='NISHITA', sun_disc=True, sun_elevation=0.2617993950843811, sun_intensity=1.0, sun_rotation=0.0, sun_size=0.009512044489383698, turbidity=2.200000047683716)
 ```
 
-> Constructor [Sky Texture](https://docs.blender.org/manual/en/latest/render/shader_nodes/textures/sky.html)
+> Node [Sky Texture](https://docs.blender.org/manual/en/latest/render/shader_nodes/textures/sky.html)
 
 #### Arguments:
 - **air_density** (_float_ = 1.0) : parameter 'air_density'
@@ -2037,7 +2037,7 @@ Vector displacement
 Wave(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', rings_direction='X', wave_profile='SIN', wave_type='BANDS')
 ```
 
-> Constructor [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html)
+> Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)

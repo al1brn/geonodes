@@ -422,6 +422,33 @@ def get_argument_data_type(argument, type_to_value, node_name=None, arg_name=Non
     return list(type_to_value.values())[0]
 
 # =============================================================================================================================
+# Check the validity of an enum arg
+
+def check_enum_arg(arg_name: str, arg_value: str, meth_name: str, valids: tuple) -> bool:
+    """ Check the value of an enum param
+
+    Raises
+    ------
+    - NodeError : if arg_value is not in valids
+
+    Arguments
+    ---------
+    - arg_name : argument name
+    - arg_value : argument value
+    - meth_name : method name
+    - valids : tuple of valid values
+
+    Returns
+    -------
+    - bool : True
+    """
+    if arg_value in valids:
+        return True
+
+    raise NodeError(f"Parameter error: '{arg_value}' is not a valid value for argument '{arg_name}' in method '{meth_name}'.",
+        keyword=arg_value, valids=valids)
+
+# =============================================================================================================================
 # Create a numpy array of the correct shape
 
 def value_to_array(value, shape):

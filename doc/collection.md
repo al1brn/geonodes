@@ -36,7 +36,7 @@ Class Collection data socket
 info(separate_children=None, reset_children=None, transform_space='ORIGINAL')
 ```
 
-> Method [Collection Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene/collection_info.html)
+> Node [Collection Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene/collection_info.html)
 
 #### Information:
 - **Socket** : self

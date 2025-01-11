@@ -8,7 +8,7 @@ class Boolean(Socket):
     $DOC SET hidden
     """
     def band(self, boolean=None):
-        """ > Method <&Node Boolean Math>
+        """ > Node <&Node Boolean Math>
 
         Information
         -----------
@@ -27,7 +27,7 @@ class Boolean(Socket):
         return node._out
 
     def bor(self, boolean=None):
-        """ > Method <&Node Boolean Math>
+        """ > Node <&Node Boolean Math>
 
         Information
         -----------
@@ -46,7 +46,7 @@ class Boolean(Socket):
         return node._out
 
     def bnot(self):
-        """ > Method <&Node Boolean Math>
+        """ > Node <&Node Boolean Math>
 
         Information
         -----------
@@ -61,7 +61,7 @@ class Boolean(Socket):
         return node._out
 
     def not_and(self, boolean=None):
-        """ > Method <&Node Boolean Math>
+        """ > Node <&Node Boolean Math>
 
         Information
         -----------
@@ -80,7 +80,7 @@ class Boolean(Socket):
         return node._out
 
     def nor(self, boolean=None):
-        """ > Method <&Node Boolean Math>
+        """ > Node <&Node Boolean Math>
 
         Information
         -----------
@@ -99,7 +99,7 @@ class Boolean(Socket):
         return node._out
 
     def xnor(self, boolean=None):
-        """ > Method <&Node Boolean Math>
+        """ > Node <&Node Boolean Math>
 
         Information
         -----------
@@ -118,7 +118,7 @@ class Boolean(Socket):
         return node._out
 
     def xor(self, boolean=None):
-        """ > Method <&Node Boolean Math>
+        """ > Node <&Node Boolean Math>
 
         Information
         -----------
@@ -137,7 +137,7 @@ class Boolean(Socket):
         return node._out
 
     def imply(self, boolean=None):
-        """ > Method <&Node Boolean Math>
+        """ > Node <&Node Boolean Math>
 
         Information
         -----------
@@ -156,7 +156,7 @@ class Boolean(Socket):
         return node._out
 
     def nimply(self, boolean=None):
-        """ > Method <&Node Boolean Math>
+        """ > Node <&Node Boolean Math>
 
         Information
         -----------
@@ -176,7 +176,7 @@ class Boolean(Socket):
 
     @classmethod
     def Random(cls, probability=None, id=None, seed=None):
-        """ > Constructor <&Node Random Value>
+        """ > Node <&Node Random Value>
 
         Information
         -----------
@@ -197,7 +197,7 @@ class Boolean(Socket):
 
     @classmethod
     def Named(cls, name=None):
-        """ > Constructor <&Node Named Attribute>
+        """ > Node <&Node Named Attribute>
 
         Information
         -----------
@@ -216,7 +216,7 @@ class Boolean(Socket):
 
     @classmethod
     def NamedAttribute(cls, name=None):
-        """ > Constructor <&Node Named Attribute>
+        """ > Node <&Node Named Attribute>
 
         Information
         -----------
@@ -236,7 +236,7 @@ class Boolean(Socket):
     @classmethod
     @property
     def is_viewport(cls):
-        """ > Property Get <&Node Is Viewport>
+        """ > Node <&Node Is Viewport>
 
         Returns
         -------
@@ -246,7 +246,7 @@ class Boolean(Socket):
         return node._out
 
     def sample_grid(self, position=None, interpolation_mode='TRILINEAR'):
-        """ > Method <&Node Sample Grid>
+        """ > Node <&Node Sample Grid>
 
         Information
         -----------
@@ -262,11 +262,12 @@ class Boolean(Socket):
         -------
         - Boolean
         """
+        utils.check_enum_arg('interpolation_mode', interpolation_mode, 'sample_grid', ('NEAREST', 'TRILINEAR', 'TRIQUADRATIC'))
         node = Node('Sample Grid', sockets={'Grid': self, 'Position': position}, data_type='BOOLEAN', interpolation_mode=interpolation_mode)
         return node._out
 
     def sample_grid_index(self, x=None, y=None, z=None):
-        """ > Method <&Node Sample Grid Index>
+        """ > Node <&Node Sample Grid Index>
 
         Information
         -----------
@@ -287,7 +288,7 @@ class Boolean(Socket):
         return node._out
 
     def uv_unwrap(self, seam=None, margin=None, fill_holes=None, method='ANGLE_BASED'):
-        """ > Method <&Node UV Unwrap>
+        """ > Node <&Node UV Unwrap>
 
         Information
         -----------
@@ -304,11 +305,12 @@ class Boolean(Socket):
         -------
         - Vector
         """
+        utils.check_enum_arg('method', method, 'uv_unwrap', ('ANGLE_BASED', 'CONFORMAL'))
         node = Node('UV Unwrap', sockets={'Selection': self, 'Seam': seam, 'Margin': margin, 'Fill Holes': fill_holes}, method=method)
         return node._out
 
     def error(self, message=None):
-        """ > Method <&Node Warning>
+        """ > Node <&Node Warning>
 
         Information
         -----------
@@ -327,7 +329,7 @@ class Boolean(Socket):
         return node._out
 
     def warning(self, message=None):
-        """ > Method <&Node Warning>
+        """ > Node <&Node Warning>
 
         Information
         -----------
@@ -346,7 +348,7 @@ class Boolean(Socket):
         return node._out
 
     def info(self, message=None):
-        """ > Method <&Node Warning>
+        """ > Node <&Node Warning>
 
         Information
         -----------

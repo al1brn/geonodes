@@ -8,7 +8,7 @@ class Mesh(Socket):
     $DOC SET hidden
     """
     def domain_size(self):
-        """ > Method <&Node Domain Size>
+        """ > Node <&Node Domain Size>
 
         Information
         -----------
@@ -24,7 +24,7 @@ class Mesh(Socket):
 
     @classmethod
     def corners_of_edge(cls, edge_index=None, weights=None, sort_index=None):
-        """ > Class Method <&Node Corners of Edge>
+        """ > Node <&Node Corners of Edge>
 
         Arguments
         ---------
@@ -41,7 +41,7 @@ class Mesh(Socket):
 
     @classmethod
     def corners_of_face(cls, face_index=None, weights=None, sort_index=None):
-        """ > Class Method <&Node Corners of Face>
+        """ > Node <&Node Corners of Face>
 
         Arguments
         ---------
@@ -58,7 +58,7 @@ class Mesh(Socket):
 
     @classmethod
     def corners_of_vertex(cls, vertex_index=None, weights=None, sort_index=None):
-        """ > Class Method <&Node Corners of Vertex>
+        """ > Node <&Node Corners of Vertex>
 
         Arguments
         ---------
@@ -74,7 +74,7 @@ class Mesh(Socket):
         return node._out
 
     def distribute_points_on_faces(self, density=None, seed=None, distribute_method='RANDOM', use_legacy_normal=False):
-        """ > Method <&Node Distribute Points on Faces>
+        """ > Node <&Node Distribute Points on Faces>
 
         Information
         -----------
@@ -92,11 +92,12 @@ class Mesh(Socket):
         -------
         - Cloud [normal_ (Vector), rotation_ (Rotation)]
         """
+        utils.check_enum_arg('distribute_method', distribute_method, 'distribute_points_on_faces', ('RANDOM', 'POISSON'))
         node = Node('Distribute Points on Faces', sockets={'Mesh': self, 'Selection': self._sel, 'Density': density, 'Seed': seed}, distribute_method=distribute_method, use_legacy_normal=use_legacy_normal)
         return node._out
 
     def distribute_points_on_faces_random(self, density=None, seed=None, use_legacy_normal=False):
-        """ > Method <&Node Distribute Points on Faces>
+        """ > Node <&Node Distribute Points on Faces>
 
         Information
         -----------
@@ -118,7 +119,7 @@ class Mesh(Socket):
         return node._out
 
     def distribute_points_on_faces_poisson(self, distance_min=None, density_max=None, density_factor=None, seed=None, use_legacy_normal=False):
-        """ > Method <&Node Distribute Points on Faces>
+        """ > Node <&Node Distribute Points on Faces>
 
         Information
         -----------
@@ -142,7 +143,9 @@ class Mesh(Socket):
         return node._out
 
     def dual(self, keep_boundaries=None):
-        """ > Jump Method <&Node Dual Mesh>
+        """ > Node <&Node Dual Mesh>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -161,7 +164,7 @@ class Mesh(Socket):
         return self._domain_to_geometry
 
     def edge_paths_to_curves(self, start_vertices=None, next_vertex_index=None):
-        """ > Method <&Node Edge Paths to Curves>
+        """ > Node <&Node Edge Paths to Curves>
 
         Information
         -----------
@@ -181,7 +184,7 @@ class Mesh(Socket):
 
     @classmethod
     def edge_paths_to_selection(cls, start_vertices=None, next_vertex_index=None):
-        """ > Class Method <&Node Edge Paths to Selection>
+        """ > Node <&Node Edge Paths to Selection>
 
         Arguments
         ---------
@@ -197,7 +200,7 @@ class Mesh(Socket):
 
     @classmethod
     def edges_of_corner(cls, corner_index=None):
-        """ > Class Method <&Node Edges of Corner>
+        """ > Node <&Node Edges of Corner>
 
         Arguments
         ---------
@@ -212,7 +215,7 @@ class Mesh(Socket):
 
     @classmethod
     def edges_of_vertex(cls, vertex_index=None, weights=None, sort_index=None):
-        """ > Class Method <&Node Edges of Vertex>
+        """ > Node <&Node Edges of Vertex>
 
         Arguments
         ---------
@@ -229,7 +232,7 @@ class Mesh(Socket):
 
     @classmethod
     def edges_to_face_groups(cls, boundary_edges=None):
-        """ > Class Method <&Node Edges to Face Groups>
+        """ > Node <&Node Edges to Face Groups>
 
         Arguments
         ---------
@@ -243,7 +246,9 @@ class Mesh(Socket):
         return node._out
 
     def extrude_vertices(self, offset=None, offset_scale=None):
-        """ > Jump Method <&Node Extrude Mesh>
+        """ > Node <&Node Extrude Mesh>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -265,7 +270,9 @@ class Mesh(Socket):
         return self._domain_to_geometry
 
     def extrude_edges(self, offset=None, offset_scale=None):
-        """ > Jump Method <&Node Extrude Mesh>
+        """ > Node <&Node Extrude Mesh>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -287,7 +294,9 @@ class Mesh(Socket):
         return self._domain_to_geometry
 
     def extrude_faces(self, offset=None, offset_scale=None, individual=None):
-        """ > Jump Method <&Node Extrude Mesh>
+        """ > Node <&Node Extrude Mesh>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -310,7 +319,9 @@ class Mesh(Socket):
         return self._domain_to_geometry
 
     def extrude(self, offset=None, offset_scale=None, individual=None, mode='FACES'):
-        """ > Jump Method <&Node Extrude Mesh>
+        """ > Node <&Node Extrude Mesh>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -328,13 +339,14 @@ class Mesh(Socket):
         -------
         - Mesh [top_ (Boolean), side_ (Boolean)]
         """
+        utils.check_enum_arg('mode', mode, 'extrude', ('VERTICES', 'EDGES', 'FACES'))
         node = Node('Extrude Mesh', sockets={'Mesh': self, 'Selection': self._sel, 'Offset': offset, 'Offset Scale': offset_scale, 'Individual': individual}, mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
 
     @classmethod
     def face_of_corner(cls, corner_index=None):
-        """ > Class Method <&Node Face of Corner>
+        """ > Node <&Node Face of Corner>
 
         Arguments
         ---------
@@ -348,7 +360,9 @@ class Mesh(Socket):
         return node._out
 
     def flip_faces(self):
-        """ > Jump Method <&Node Flip Faces>
+        """ > Node <&Node Flip Faces>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -365,7 +379,7 @@ class Mesh(Socket):
 
     @classmethod
     def ImportPLY(cls, path=None):
-        """ > Constructor <&Node Import PLY>
+        """ > Node <&Node Import PLY>
 
         Arguments
         ---------
@@ -380,7 +394,7 @@ class Mesh(Socket):
 
     @classmethod
     def ImportSTL(cls, path=None):
-        """ > Constructor <&Node Import STL>
+        """ > Node <&Node Import STL>
 
         Arguments
         ---------
@@ -395,7 +409,7 @@ class Mesh(Socket):
 
     @classmethod
     def edge_angle(cls):
-        """ > Class Method <&Node Edge Angle>
+        """ > Node <&Node Edge Angle>
 
         Returns
         -------
@@ -407,7 +421,7 @@ class Mesh(Socket):
     @classmethod
     @property
     def unsigned_edge_angle(cls):
-        """ > Property Get <&Node Edge Angle>
+        """ > Node <&Node Edge Angle>
 
         Returns
         -------
@@ -419,7 +433,7 @@ class Mesh(Socket):
     @classmethod
     @property
     def signed_edge_angle(cls):
-        """ > Property Get <&Node Edge Angle>
+        """ > Node <&Node Edge Angle>
 
         Returns
         -------
@@ -431,7 +445,7 @@ class Mesh(Socket):
     @classmethod
     @property
     def edge_neighbors(cls):
-        """ > Property Get <&Node Edge Neighbors>
+        """ > Node <&Node Edge Neighbors>
 
         Returns
         -------
@@ -442,7 +456,7 @@ class Mesh(Socket):
 
     @classmethod
     def edge_vertices(cls):
-        """ > Class Method <&Node Edge Vertices>
+        """ > Node <&Node Edge Vertices>
 
         Returns
         -------
@@ -454,7 +468,7 @@ class Mesh(Socket):
     @classmethod
     @property
     def face_area(cls):
-        """ > Property Get <&Node Face Area>
+        """ > Node <&Node Face Area>
 
         Returns
         -------
@@ -465,7 +479,7 @@ class Mesh(Socket):
 
     @classmethod
     def is_face_planar(cls, threshold=None):
-        """ > Class Method <&Node Is Face Planar>
+        """ > Node <&Node Is Face Planar>
 
         Arguments
         ---------
@@ -480,7 +494,7 @@ class Mesh(Socket):
 
     @classmethod
     def face_neighbors(cls):
-        """ > Class Method <&Node Face Neighbors>
+        """ > Node <&Node Face Neighbors>
 
         Returns
         -------
@@ -491,7 +505,7 @@ class Mesh(Socket):
 
     @classmethod
     def mesh_island(cls):
-        """ > Class Method <&Node Mesh Island>
+        """ > Node <&Node Mesh Island>
 
         Returns
         -------
@@ -503,7 +517,7 @@ class Mesh(Socket):
     @classmethod
     @property
     def island_index(cls):
-        """ > Property Get <&Node Mesh Island>
+        """ > Node <&Node Mesh Island>
 
         Returns
         -------
@@ -515,7 +529,7 @@ class Mesh(Socket):
     @classmethod
     @property
     def island_count(cls):
-        """ > Property Get <&Node Mesh Island>
+        """ > Node <&Node Mesh Island>
 
         Returns
         -------
@@ -526,7 +540,7 @@ class Mesh(Socket):
 
     @classmethod
     def vertex_neighbors(cls):
-        """ > Class Method <&Node Vertex Neighbors>
+        """ > Node <&Node Vertex Neighbors>
 
         Returns
         -------
@@ -538,7 +552,7 @@ class Mesh(Socket):
     @classmethod
     @property
     def normal(cls):
-        """ > Property Get <&Node Normal>
+        """ > Node <&Node Normal>
 
         Returns
         -------
@@ -549,7 +563,7 @@ class Mesh(Socket):
 
     @classmethod
     def shortest_edge_paths(cls, end_vertex=None, edge_cost=None):
-        """ > Class Method <&Node Shortest Edge Paths>
+        """ > Node <&Node Shortest Edge Paths>
 
         Arguments
         ---------
@@ -565,7 +579,7 @@ class Mesh(Socket):
 
     @classmethod
     def material_selection(cls, material=None):
-        """ > Class Method <&Node Material Selection>
+        """ > Node <&Node Material Selection>
 
         Arguments
         ---------
@@ -579,7 +593,9 @@ class Mesh(Socket):
         return node._out
 
     def boolean(self, *mesh_2, self_intersection=None, hole_tolerant=None, operation='DIFFERENCE', solver='FLOAT'):
-        """ > Jump Method <&Node Mesh Boolean>
+        """ > Node <&Node Mesh Boolean>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -597,13 +613,15 @@ class Mesh(Socket):
         -------
         - Mesh
         """
+        utils.check_enum_arg('operation', operation, 'boolean', ('INTERSECT', 'UNION', 'DIFFERENCE'))
+        utils.check_enum_arg('solver', solver, 'boolean', ('EXACT', 'FLOAT'))
         node = Node('Mesh Boolean', sockets={'Mesh 1': self, 'Mesh 2': list(mesh_2), 'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, operation=operation, solver=solver)
         self._jump(node._out)
         return self._domain_to_geometry
 
     @classmethod
     def Boolean(cls, *mesh_2, mesh_1=None, self_intersection=None, hole_tolerant=None, operation='DIFFERENCE', solver='FLOAT'):
-        """ > Constructor <&Node Mesh Boolean>
+        """ > Node <&Node Mesh Boolean>
 
         Arguments
         ---------
@@ -618,11 +636,15 @@ class Mesh(Socket):
         -------
         - Mesh
         """
+        utils.check_enum_arg('operation', operation, 'Boolean', ('INTERSECT', 'UNION', 'DIFFERENCE'))
+        utils.check_enum_arg('solver', solver, 'Boolean', ('EXACT', 'FLOAT'))
         node = Node('Mesh Boolean', sockets={'Mesh 1': mesh_1, 'Mesh 2': list(mesh_2), 'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, operation=operation, solver=solver)
         return cls(node._out)
 
     def intersect(self, *mesh, self_intersection=None, hole_tolerant=None, solver='FLOAT'):
-        """ > Jump Method <&Node Mesh Boolean>
+        """ > Node <&Node Mesh Boolean>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -639,12 +661,15 @@ class Mesh(Socket):
         -------
         - Mesh
         """
+        utils.check_enum_arg('solver', solver, 'intersect', ('EXACT', 'FLOAT'))
         node = Node('Mesh Boolean', sockets={'Mesh 2': [self] + list(mesh), 'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, operation='INTERSECT', solver=solver)
         self._jump(node._out)
         return self._domain_to_geometry
 
     def union(self, *mesh, self_intersection=None, hole_tolerant=None, solver='FLOAT'):
-        """ > Jump Method <&Node Mesh Boolean>
+        """ > Node <&Node Mesh Boolean>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -661,12 +686,15 @@ class Mesh(Socket):
         -------
         - Mesh
         """
+        utils.check_enum_arg('solver', solver, 'union', ('EXACT', 'FLOAT'))
         node = Node('Mesh Boolean', sockets={'Mesh 2': [self] + list(mesh), 'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, operation='UNION', solver=solver)
         self._jump(node._out)
         return self._domain_to_geometry
 
     def difference(self, *mesh_2, self_intersection=None, hole_tolerant=None, solver='FLOAT'):
-        """ > Jump Method <&Node Mesh Boolean>
+        """ > Node <&Node Mesh Boolean>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -684,13 +712,14 @@ class Mesh(Socket):
         -------
         - Mesh
         """
+        utils.check_enum_arg('solver', solver, 'difference', ('EXACT', 'FLOAT'))
         node = Node('Mesh Boolean', sockets={'Mesh 1': self, 'Mesh 2': list(mesh_2), 'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, operation='DIFFERENCE', solver=solver)
         self._jump(node._out)
         return self._domain_to_geometry
 
     @classmethod
     def Intersect(cls, *mesh, self_intersection=None, hole_tolerant=None, solver='FLOAT'):
-        """ > Constructor <&Node Mesh Boolean>
+        """ > Node <&Node Mesh Boolean>
 
         Information
         -----------
@@ -707,12 +736,13 @@ class Mesh(Socket):
         -------
         - Mesh
         """
+        utils.check_enum_arg('solver', solver, 'Intersect', ('EXACT', 'FLOAT'))
         node = Node('Mesh Boolean', sockets={'Mesh 2': list(mesh), 'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, operation='INTERSECT', solver=solver)
         return cls(node._out)
 
     @classmethod
     def Union(cls, *mesh, self_intersection=None, hole_tolerant=None, solver='FLOAT'):
-        """ > Constructor <&Node Mesh Boolean>
+        """ > Node <&Node Mesh Boolean>
 
         Information
         -----------
@@ -729,12 +759,13 @@ class Mesh(Socket):
         -------
         - Mesh
         """
+        utils.check_enum_arg('solver', solver, 'Union', ('EXACT', 'FLOAT'))
         node = Node('Mesh Boolean', sockets={'Mesh 2': list(mesh), 'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, operation='UNION', solver=solver)
         return cls(node._out)
 
     @classmethod
     def Difference(cls, *mesh_2, mesh_1=None, self_intersection=None, hole_tolerant=None, solver='FLOAT'):
-        """ > Constructor <&Node Mesh Boolean>
+        """ > Node <&Node Mesh Boolean>
 
         Information
         -----------
@@ -752,12 +783,13 @@ class Mesh(Socket):
         -------
         - Mesh
         """
+        utils.check_enum_arg('solver', solver, 'Difference', ('EXACT', 'FLOAT'))
         node = Node('Mesh Boolean', sockets={'Mesh 1': mesh_1, 'Mesh 2': list(mesh_2), 'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, operation='DIFFERENCE', solver=solver)
         return cls(node._out)
 
     @classmethod
     def Circle(cls, vertices=None, radius=None, fill_type='NONE'):
-        """ > Constructor <&Node Mesh Circle>
+        """ > Node <&Node Mesh Circle>
 
         Arguments
         ---------
@@ -769,12 +801,13 @@ class Mesh(Socket):
         -------
         - Mesh
         """
+        utils.check_enum_arg('fill_type', fill_type, 'Circle', ('NONE', 'NGON', 'TRIANGLE_FAN'))
         node = Node('Mesh Circle', sockets={'Vertices': vertices, 'Radius': radius}, fill_type=fill_type)
         return cls(node._out)
 
     @classmethod
     def Cone(cls, vertices=None, side_segments=None, fill_segments=None, radius_top=None, radius_bottom=None, depth=None, fill_type='NGON'):
-        """ > Constructor <&Node Cone>
+        """ > Node <&Node Cone>
 
         Arguments
         ---------
@@ -790,12 +823,13 @@ class Mesh(Socket):
         -------
         - Mesh
         """
+        utils.check_enum_arg('fill_type', fill_type, 'Cone', ('NONE', 'NGON', 'TRIANGLE_FAN'))
         node = Node('Cone', sockets={'Vertices': vertices, 'Side Segments': side_segments, 'Fill Segments': fill_segments, 'Radius Top': radius_top, 'Radius Bottom': radius_bottom, 'Depth': depth}, fill_type=fill_type)
         return cls(node._out)
 
     @classmethod
     def Cube(cls, size=None, vertices_x=None, vertices_y=None, vertices_z=None):
-        """ > Constructor <&Node Cube>
+        """ > Node <&Node Cube>
 
         Arguments
         ---------
@@ -813,7 +847,7 @@ class Mesh(Socket):
 
     @classmethod
     def Cylinder(cls, vertices=None, side_segments=None, fill_segments=None, radius=None, depth=None, fill_type='NGON'):
-        """ > Constructor <&Node Cylinder>
+        """ > Node <&Node Cylinder>
 
         Arguments
         ---------
@@ -828,12 +862,13 @@ class Mesh(Socket):
         -------
         - Mesh
         """
+        utils.check_enum_arg('fill_type', fill_type, 'Cylinder', ('NONE', 'NGON', 'TRIANGLE_FAN'))
         node = Node('Cylinder', sockets={'Vertices': vertices, 'Side Segments': side_segments, 'Fill Segments': fill_segments, 'Radius': radius, 'Depth': depth}, fill_type=fill_type)
         return cls(node._out)
 
     @classmethod
     def face_group_boundaries(cls, face_group_id=None):
-        """ > Class Method <&Node Face Group Boundaries>
+        """ > Node <&Node Face Group Boundaries>
 
         Arguments
         ---------
@@ -848,7 +883,7 @@ class Mesh(Socket):
 
     @classmethod
     def Grid(cls, size_x=None, size_y=None, vertices_x=None, vertices_y=None):
-        """ > Constructor <&Node Grid>
+        """ > Node <&Node Grid>
 
         Arguments
         ---------
@@ -866,7 +901,7 @@ class Mesh(Socket):
 
     @classmethod
     def IcoSphere(cls, radius=None, subdivisions=None):
-        """ > Constructor <&Node Ico Sphere>
+        """ > Node <&Node Ico Sphere>
 
         Arguments
         ---------
@@ -882,7 +917,7 @@ class Mesh(Socket):
 
     @classmethod
     def LineOffset(cls, count=None, start_location=None, offset=None, count_mode='TOTAL'):
-        """ > Constructor <&Node Mesh Line>
+        """ > Node <&Node Mesh Line>
 
         Information
         -----------
@@ -899,12 +934,13 @@ class Mesh(Socket):
         -------
         - Mesh
         """
+        utils.check_enum_arg('count_mode', count_mode, 'LineOffset', ('TOTAL', 'RESOLUTION'))
         node = Node('Mesh Line', sockets={'Count': count, 'Start Location': start_location, 'Offset': offset}, count_mode=count_mode, mode='OFFSET')
         return cls(node._out)
 
     @classmethod
     def LineEndPoints(cls, count=None, start_location=None, end_location=None, count_mode='TOTAL'):
-        """ > Constructor <&Node Mesh Line>
+        """ > Node <&Node Mesh Line>
 
         Information
         -----------
@@ -921,12 +957,13 @@ class Mesh(Socket):
         -------
         - Mesh
         """
+        utils.check_enum_arg('count_mode', count_mode, 'LineEndPoints', ('TOTAL', 'RESOLUTION'))
         node = Node('Mesh Line', sockets={'Count': count, 'Start Location': start_location, 'Offset': end_location}, count_mode=count_mode, mode='END_POINTS')
         return cls(node._out)
 
     @classmethod
     def Line(cls, count=None, start_location=None, offset=None, count_mode='TOTAL', mode='OFFSET'):
-        """ > Constructor <&Node Mesh Line>
+        """ > Node <&Node Mesh Line>
 
         Arguments
         ---------
@@ -940,11 +977,13 @@ class Mesh(Socket):
         -------
         - Mesh
         """
+        utils.check_enum_arg('count_mode', count_mode, 'Line', ('TOTAL', 'RESOLUTION'))
+        utils.check_enum_arg('mode', mode, 'Line', ('OFFSET', 'END_POINTS'))
         node = Node('Mesh Line', sockets={'Count': count, 'Start Location': start_location, 'Offset': offset}, count_mode=count_mode, mode=mode)
         return cls(node._out)
 
     def to_curve(self):
-        """ > Method <&Node Mesh to Curve>
+        """ > Node <&Node Mesh to Curve>
 
         Information
         -----------
@@ -959,7 +998,7 @@ class Mesh(Socket):
         return node._out
 
     def to_density_grid(self, density=None, voxel_size=None, gradient_width=None):
-        """ > Method <&Node Mesh to Density Grid>
+        """ > Node <&Node Mesh to Density Grid>
 
         Information
         -----------
@@ -979,7 +1018,7 @@ class Mesh(Socket):
         return node._out
 
     def to_points(self, position=None, radius=None, mode='VERTICES'):
-        """ > Method <&Node Mesh to Points>
+        """ > Node <&Node Mesh to Points>
 
         Information
         -----------
@@ -996,11 +1035,12 @@ class Mesh(Socket):
         -------
         - Cloud
         """
+        utils.check_enum_arg('mode', mode, 'to_points', ('VERTICES', 'EDGES', 'FACES', 'CORNERS'))
         node = Node('Mesh to Points', sockets={'Mesh': self, 'Selection': self._sel, 'Position': position, 'Radius': radius}, mode=mode)
         return node._out
 
     def vertices_to_points(self, position=None, radius=None):
-        """ > Method <&Node Mesh to Points>
+        """ > Node <&Node Mesh to Points>
 
         Information
         -----------
@@ -1021,7 +1061,7 @@ class Mesh(Socket):
         return node._out
 
     def edges_to_points(self, position=None, radius=None):
-        """ > Method <&Node Mesh to Points>
+        """ > Node <&Node Mesh to Points>
 
         Information
         -----------
@@ -1042,7 +1082,7 @@ class Mesh(Socket):
         return node._out
 
     def faces_to_points(self, position=None, radius=None):
-        """ > Method <&Node Mesh to Points>
+        """ > Node <&Node Mesh to Points>
 
         Information
         -----------
@@ -1063,7 +1103,7 @@ class Mesh(Socket):
         return node._out
 
     def corners_to_points(self, position=None, radius=None):
-        """ > Method <&Node Mesh to Points>
+        """ > Node <&Node Mesh to Points>
 
         Information
         -----------
@@ -1084,7 +1124,7 @@ class Mesh(Socket):
         return node._out
 
     def to_sdf_grid(self, voxel_size=None, band_width=None):
-        """ > Method <&Node Mesh to SDF Grid>
+        """ > Node <&Node Mesh to SDF Grid>
 
         Information
         -----------
@@ -1103,7 +1143,7 @@ class Mesh(Socket):
         return node._out
 
     def to_volume(self, density=None, voxel_amount=None, interior_band_width=None, resolution_mode='VOXEL_AMOUNT'):
-        """ > Method <&Node Mesh to Volume>
+        """ > Node <&Node Mesh to Volume>
 
         Information
         -----------
@@ -1120,12 +1160,13 @@ class Mesh(Socket):
         -------
         - Volume
         """
+        utils.check_enum_arg('resolution_mode', resolution_mode, 'to_volume', ('VOXEL_AMOUNT', 'VOXEL_SIZE'))
         node = Node('Mesh to Volume', sockets={'Mesh': self, 'Density': density, 'Voxel Amount': voxel_amount, 'Interior Band Width': interior_band_width}, resolution_mode=resolution_mode)
         return node._out
 
     @classmethod
     def UVSphere(cls, segments=None, rings=None, radius=None):
-        """ > Constructor <&Node UV Sphere>
+        """ > Node <&Node UV Sphere>
 
         Arguments
         ---------
@@ -1142,7 +1183,7 @@ class Mesh(Socket):
 
     @classmethod
     def offset_corner_in_face(cls, corner_index=None, offset=None):
-        """ > Class Method <&Node Offset Corner in Face>
+        """ > Node <&Node Offset Corner in Face>
 
         Arguments
         ---------
@@ -1157,7 +1198,7 @@ class Mesh(Socket):
         return node._out
 
     def sample_nearest_surface(self, value=None, group_id=None, sample_position=None, sample_group_id=None):
-        """ > Method <&Node Sample Nearest Surface>
+        """ > Node <&Node Sample Nearest Surface>
 
         Information
         -----------
@@ -1180,7 +1221,7 @@ class Mesh(Socket):
         return node._out
 
     def sample_uv_surface(self, value=None, uv_map=None, sample_uv=None):
-        """ > Method <&Node Sample UV Surface>
+        """ > Node <&Node Sample UV Surface>
 
         Information
         -----------
@@ -1202,7 +1243,9 @@ class Mesh(Socket):
         return node._out
 
     def split_edges(self):
-        """ > Jump Method <&Node Split Edges>
+        """ > Node <&Node Split Edges>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -1218,7 +1261,9 @@ class Mesh(Socket):
         return self._domain_to_geometry
 
     def subdivide(self, level=None):
-        """ > Jump Method <&Node Subdivide Mesh>
+        """ > Node <&Node Subdivide Mesh>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -1237,7 +1282,9 @@ class Mesh(Socket):
         return self._domain_to_geometry
 
     def subdivision_surface(self, level=None, edge_crease=None, vertex_crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES'):
-        """ > Jump Method <&Node Subdivision Surface>
+        """ > Node <&Node Subdivision Surface>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -1255,12 +1302,16 @@ class Mesh(Socket):
         -------
         - Mesh
         """
+        utils.check_enum_arg('boundary_smooth', boundary_smooth, 'subdivision_surface', ('PRESERVE_CORNERS', 'ALL'))
+        utils.check_enum_arg('uv_smooth', uv_smooth, 'subdivision_surface', ('NONE', 'PRESERVE_CORNERS', 'PRESERVE_CORNERS_AND_JUNCTIONS', 'PRESERVE_CORNERS_JUNCTIONS_AND_CONCAVE', 'PRESERVE_BOUNDARIES', 'SMOOTH_ALL'))
         node = Node('Subdivision Surface', sockets={'Mesh': self, 'Level': level, 'Edge Crease': edge_crease, 'Vertex Crease': vertex_crease}, boundary_smooth=boundary_smooth, uv_smooth=uv_smooth)
         self._jump(node._out)
         return self._domain_to_geometry
 
     def set_face_set(self, face_set=None):
-        """ > Jump Method <&Node Set Face Set>
+        """ > Node <&Node Set Face Set>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -1280,7 +1331,9 @@ class Mesh(Socket):
         return self._domain_to_geometry
 
     def triangulate(self, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL'):
-        """ > Jump Method <&Node Triangulate>
+        """ > Node <&Node Triangulate>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -1297,13 +1350,15 @@ class Mesh(Socket):
         -------
         - Mesh
         """
+        utils.check_enum_arg('ngon_method', ngon_method, 'triangulate', ('BEAUTY', 'CLIP'))
+        utils.check_enum_arg('quad_method', quad_method, 'triangulate', ('BEAUTY', 'FIXED', 'FIXED_ALTERNATE', 'SHORTEST_DIAGONAL', 'LONGEST_DIAGONAL'))
         node = Node('Triangulate', sockets={'Mesh': self, 'Selection': self._sel, 'Minimum Vertices': minimum_vertices}, ngon_method=ngon_method, quad_method=quad_method)
         self._jump(node._out)
         return self._domain_to_geometry
 
     @classmethod
     def vertex_of_corner(cls, corner_index=None):
-        """ > Class Method <&Node Vertex of Corner>
+        """ > Node <&Node Vertex of Corner>
 
         Arguments
         ---------

@@ -9,7 +9,7 @@ class Edge(Socket):
     """
     @classmethod
     def accumulate_field(cls, value=None, group_id=None):
-        """ > Class Method <&Node Accumulate Field>
+        """ > Node <&Node Accumulate Field>
 
         Information
         -----------
@@ -30,7 +30,7 @@ class Edge(Socket):
         return node._out
 
     def attribute_statistic(self, attribute=None):
-        """ > Method <&Node Attribute Statistic>
+        """ > Node <&Node Attribute Statistic>
 
         Information
         -----------
@@ -53,7 +53,7 @@ class Edge(Socket):
 
     @classmethod
     def corners(cls, edge_index=None, weights=None, sort_index=None):
-        """ > Class Method <&Node Corners of Edge>
+        """ > Node <&Node Corners of Edge>
 
         Arguments
         ---------
@@ -70,7 +70,7 @@ class Edge(Socket):
 
     @classmethod
     def corner_index(cls, edge_index=None, weights=None, sort_index=None):
-        """ > Class Method <&Node Corners of Edge>
+        """ > Node <&Node Corners of Edge>
 
         Arguments
         ---------
@@ -87,7 +87,7 @@ class Edge(Socket):
 
     @classmethod
     def corners_total(cls, edge_index=None, weights=None, sort_index=None):
-        """ > Class Method <&Node Corners of Edge>
+        """ > Node <&Node Corners of Edge>
 
         Arguments
         ---------
@@ -103,7 +103,9 @@ class Edge(Socket):
         return node.total
 
     def delete_geometry_all(self):
-        """ > Jump Method <&Node Delete Geometry>
+        """ > Node <&Node Delete Geometry>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -121,7 +123,9 @@ class Edge(Socket):
         return self._domain_to_geometry
 
     def delete_geometry_edge_face(self):
-        """ > Jump Method <&Node Delete Geometry>
+        """ > Node <&Node Delete Geometry>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -139,7 +143,9 @@ class Edge(Socket):
         return self._domain_to_geometry
 
     def delete_geometry_only_face(self):
-        """ > Jump Method <&Node Delete Geometry>
+        """ > Node <&Node Delete Geometry>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -157,7 +163,9 @@ class Edge(Socket):
         return self._domain_to_geometry
 
     def delete_geometry(self, mode='ALL'):
-        """ > Jump Method <&Node Delete Geometry>
+        """ > Node <&Node Delete Geometry>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -173,12 +181,15 @@ class Edge(Socket):
         -------
         - Geometry
         """
+        utils.check_enum_arg('mode', mode, 'delete_geometry', ('ALL', 'EDGE_FACE', 'ONLY_FACE'))
         node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='EDGE', mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
 
     def delete_all(self):
-        """ > Jump Method <&Node Delete Geometry>
+        """ > Node <&Node Delete Geometry>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -196,7 +207,9 @@ class Edge(Socket):
         return self._domain_to_geometry
 
     def delete_edge_face(self):
-        """ > Jump Method <&Node Delete Geometry>
+        """ > Node <&Node Delete Geometry>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -214,7 +227,9 @@ class Edge(Socket):
         return self._domain_to_geometry
 
     def delete_only_face(self):
-        """ > Jump Method <&Node Delete Geometry>
+        """ > Node <&Node Delete Geometry>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -232,7 +247,9 @@ class Edge(Socket):
         return self._domain_to_geometry
 
     def delete(self, mode='ALL'):
-        """ > Jump Method <&Node Delete Geometry>
+        """ > Node <&Node Delete Geometry>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -248,12 +265,15 @@ class Edge(Socket):
         -------
         - Geometry
         """
+        utils.check_enum_arg('mode', mode, 'delete', ('ALL', 'EDGE_FACE', 'ONLY_FACE'))
         node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='EDGE', mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
 
     def duplicate(self, amount=None):
-        """ > Jump Method <&Node Duplicate Elements>
+        """ > Node <&Node Duplicate Elements>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -274,7 +294,7 @@ class Edge(Socket):
         return self._domain_to_geometry
 
     def paths_to_curves(self, start_vertices=None, next_vertex_index=None):
-        """ > Method <&Node Edge Paths to Curves>
+        """ > Node <&Node Edge Paths to Curves>
 
         Information
         -----------
@@ -294,7 +314,7 @@ class Edge(Socket):
 
     @classmethod
     def paths_to_selection(cls, start_vertices=None, next_vertex_index=None):
-        """ > Class Method <&Node Edge Paths to Selection>
+        """ > Node <&Node Edge Paths to Selection>
 
         Arguments
         ---------
@@ -310,7 +330,7 @@ class Edge(Socket):
 
     @classmethod
     def to_face_groups(cls, boundary_edges=None):
-        """ > Class Method <&Node Edges to Face Groups>
+        """ > Node <&Node Edges to Face Groups>
 
         Arguments
         ---------
@@ -325,7 +345,7 @@ class Edge(Socket):
 
     @classmethod
     def evaluate_at_index(cls, index=None, value=None):
-        """ > Class Method <&Node Evaluate at Index>
+        """ > Node <&Node Evaluate at Index>
 
         Information
         -----------
@@ -347,7 +367,7 @@ class Edge(Socket):
 
     @classmethod
     def evaluate_on_domain(cls, value=None):
-        """ > Class Method <&Node Evaluate on Domain>
+        """ > Node <&Node Evaluate on Domain>
 
         Information
         -----------
@@ -368,7 +388,7 @@ class Edge(Socket):
 
     @classmethod
     def edge_angle(cls):
-        """ > Class Method <&Node Edge Angle>
+        """ > Node <&Node Edge Angle>
 
         Returns
         -------
@@ -380,7 +400,7 @@ class Edge(Socket):
     @classmethod
     @property
     def unsigned_angle(cls):
-        """ > Property Get <&Node Edge Angle>
+        """ > Node <&Node Edge Angle>
 
         Returns
         -------
@@ -392,7 +412,7 @@ class Edge(Socket):
     @classmethod
     @property
     def signed_angle(cls):
-        """ > Property Get <&Node Edge Angle>
+        """ > Node <&Node Edge Angle>
 
         Returns
         -------
@@ -404,7 +424,7 @@ class Edge(Socket):
     @classmethod
     @property
     def face_count(cls):
-        """ > Property Get <&Node Edge Neighbors>
+        """ > Node <&Node Edge Neighbors>
 
         Returns
         -------
@@ -415,7 +435,7 @@ class Edge(Socket):
 
     @classmethod
     def edge_vertices(cls):
-        """ > Class Method <&Node Edge Vertices>
+        """ > Node <&Node Edge Vertices>
 
         Returns
         -------
@@ -427,7 +447,7 @@ class Edge(Socket):
     @classmethod
     @property
     def vertex_index_1(cls):
-        """ > Property Get <&Node Edge Vertices>
+        """ > Node <&Node Edge Vertices>
 
         Returns
         -------
@@ -439,7 +459,7 @@ class Edge(Socket):
     @classmethod
     @property
     def vertex_index_2(cls):
-        """ > Property Get <&Node Edge Vertices>
+        """ > Node <&Node Edge Vertices>
 
         Returns
         -------
@@ -451,7 +471,7 @@ class Edge(Socket):
     @classmethod
     @property
     def position_1(cls):
-        """ > Property Get <&Node Edge Vertices>
+        """ > Node <&Node Edge Vertices>
 
         Returns
         -------
@@ -463,7 +483,7 @@ class Edge(Socket):
     @classmethod
     @property
     def position_2(cls):
-        """ > Property Get <&Node Edge Vertices>
+        """ > Node <&Node Edge Vertices>
 
         Returns
         -------
@@ -474,7 +494,7 @@ class Edge(Socket):
 
     @classmethod
     def shortest_paths(cls, end_vertex=None, edge_cost=None):
-        """ > Class Method <&Node Shortest Edge Paths>
+        """ > Node <&Node Shortest Edge Paths>
 
         Arguments
         ---------
@@ -489,7 +509,7 @@ class Edge(Socket):
         return node._out
 
     def to_points(self, position=None, radius=None):
-        """ > Method <&Node Mesh to Points>
+        """ > Node <&Node Mesh to Points>
 
         Information
         -----------
@@ -510,7 +530,7 @@ class Edge(Socket):
         return node._out
 
     def sample_index(self, value=None, index=None, clamp=False):
-        """ > Method <&Node Sample Index>
+        """ > Node <&Node Sample Index>
 
         Information
         -----------
@@ -533,7 +553,7 @@ class Edge(Socket):
         return node._out
 
     def sample_nearest(self, sample_position=None):
-        """ > Method <&Node Sample Nearest>
+        """ > Node <&Node Sample Nearest>
 
         Information
         -----------
@@ -552,7 +572,9 @@ class Edge(Socket):
         return node._out
 
     def scale(self, scale=None, center=None, scale_mode='UNIFORM'):
-        """ > Jump Method <&Node Scale Elements>
+        """ > Node <&Node Scale Elements>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -570,12 +592,15 @@ class Edge(Socket):
         -------
         - Geometry
         """
+        utils.check_enum_arg('scale_mode', scale_mode, 'scale', ('UNIFORM', 'SINGLE_AXIS'))
         node = Node('Scale Elements', sockets={'Geometry': self, 'Selection': self._sel, 'Scale': scale, 'Center': center}, domain='EDGE', scale_mode=scale_mode)
         self._jump(node._out)
         return self._domain_to_geometry
 
     def scale_uniform(self, scale=None, center=None):
-        """ > Jump Method <&Node Scale Elements>
+        """ > Node <&Node Scale Elements>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -598,7 +623,9 @@ class Edge(Socket):
         return self._domain_to_geometry
 
     def scale_single_axis(self, scale=None, center=None, axis=None):
-        """ > Jump Method <&Node Scale Elements>
+        """ > Node <&Node Scale Elements>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -622,7 +649,9 @@ class Edge(Socket):
         return self._domain_to_geometry
 
     def separate(self):
-        """ > Jump Method <&Node Separate Geometry>
+        """ > Node <&Node Separate Geometry>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -639,7 +668,9 @@ class Edge(Socket):
         return self._domain_to_geometry
 
     def set_shade_smooth(self, shade_smooth=None):
-        """ > Jump Method <&Node Set Shade Smooth>
+        """ > Node <&Node Set Shade Smooth>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -660,7 +691,9 @@ class Edge(Socket):
         return self._domain_to_geometry
 
     def sort(self, group_id=None, sort_weight=None):
-        """ > Jump Method <&Node Sort Elements>
+        """ > Node <&Node Sort Elements>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -682,7 +715,9 @@ class Edge(Socket):
         return self._domain_to_geometry
 
     def split(self):
-        """ > Jump Method <&Node Split Edges>
+        """ > Node <&Node Split Edges>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -698,7 +733,7 @@ class Edge(Socket):
         return self._domain_to_geometry
 
     def split_to_instances(self, group_id=None):
-        """ > Method <&Node Split to Instances>
+        """ > Node <&Node Split to Instances>
 
         Information
         -----------
@@ -718,7 +753,9 @@ class Edge(Socket):
         return node._out
 
     def store_named_attribute(self, name=None, value=None):
-        """ > Jump Method <&Node Store Named Attribute>
+        """ > Node <&Node Store Named Attribute>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -742,7 +779,9 @@ class Edge(Socket):
         return self._domain_to_geometry
 
     def store(self, name=None, value=None):
-        """ > Jump Method <&Node Store Named Attribute>
+        """ > Node <&Node Store Named Attribute>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -767,7 +806,7 @@ class Edge(Socket):
 
     @classmethod
     def active_element(cls):
-        """ > Class Method <&Node Active Element>
+        """ > Node <&Node Active Element>
 
         Information
         -----------
@@ -781,7 +820,9 @@ class Edge(Socket):
         return node._out
 
     def set_selection(self):
-        """ > Jump Method <&Node Set Selection>
+        """ > Node <&Node Set Selection>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -800,7 +841,7 @@ class Edge(Socket):
         return self._domain_to_geometry
 
     def viewer(self, value=None):
-        """ > Method <&Node Viewer>
+        """ > Node <&Node Viewer>
 
         Information
         -----------
@@ -825,7 +866,9 @@ class Edge(Socket):
 
     @material.setter
     def material(self, material=None):
-        """ > Jump Method <&Node Set Material>
+        """ > Node <&Node Set Material>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -852,7 +895,9 @@ class Edge(Socket):
 
     @shade_smooth.setter
     def shade_smooth(self, shade_smooth=None):
-        """ > Jump Method <&Node Set Shade Smooth>
+        """ > Node <&Node Set Shade Smooth>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -880,7 +925,9 @@ class Edge(Socket):
 
     @smooth.setter
     def smooth(self, shade_smooth=None):
-        """ > Jump Method <&Node Set Shade Smooth>
+        """ > Node <&Node Set Shade Smooth>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------

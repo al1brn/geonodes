@@ -9,7 +9,7 @@ class Texture(Socket):
     """
     @classmethod
     def Brick(cls, vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2):
-        """ > Class Method <&Node Brick Texture>
+        """ > Node <&Node Brick Texture>
 
         Arguments
         ---------
@@ -37,7 +37,7 @@ class Texture(Socket):
 
     @classmethod
     def Checked(cls, vector=None, color1=None, color2=None, scale=None):
-        """ > Class Method <&Node Checker Texture>
+        """ > Node <&Node Checker Texture>
 
         Arguments
         ---------
@@ -55,7 +55,7 @@ class Texture(Socket):
 
     @classmethod
     def Gabor(cls, vector=None, scale=None, frequency=None, anisotropy=None, orientation=None, gabor_type='2D'):
-        """ > Class Method <&Node Gabor Texture>
+        """ > Node <&Node Gabor Texture>
 
         Arguments
         ---------
@@ -70,12 +70,13 @@ class Texture(Socket):
         -------
         - Float [phase_ (Float), intensity_ (Float)]
         """
+        utils.check_enum_arg('gabor_type', gabor_type, 'Gabor', ('2D', '3D'))
         node = Node('Gabor Texture', sockets={'Vector': vector, 'Scale': scale, 'Frequency': frequency, 'Anisotropy': anisotropy, 'Orientation 2D': orientation}, gabor_type=gabor_type)
         return node._out
 
     @classmethod
     def Gradient(cls, vector=None, gradient_type='LINEAR'):
-        """ > Class Method <&Node Gradient Texture>
+        """ > Node <&Node Gradient Texture>
 
         Arguments
         ---------
@@ -86,12 +87,13 @@ class Texture(Socket):
         -------
         - Color [fac_ (Float)]
         """
+        utils.check_enum_arg('gradient_type', gradient_type, 'Gradient', ('LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL'))
         node = Node('Gradient Texture', sockets={'Vector': vector}, gradient_type=gradient_type)
         return node._out
 
     @classmethod
     def Magic(cls, vector=None, scale=None, distortion=None, turbulence_depth=2):
-        """ > Class Method <&Node Magic Texture>
+        """ > Node <&Node Magic Texture>
 
         Arguments
         ---------
@@ -109,7 +111,7 @@ class Texture(Socket):
 
     @classmethod
     def Noise(cls, vector=None, scale=None, detail=None, roughness=None, lacunarity=None, distortion=None, noise_dimensions='3D', noise_type='FBM', normalize=True):
-        """ > Class Method <&Node Noise Texture>
+        """ > Node <&Node Noise Texture>
 
         Arguments
         ---------
@@ -127,12 +129,14 @@ class Texture(Socket):
         -------
         - Float [color_ (Color)]
         """
+        utils.check_enum_arg('noise_dimensions', noise_dimensions, 'Noise', ('1D', '2D', '3D', '4D'))
+        utils.check_enum_arg('noise_type', noise_type, 'Noise', ('MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN'))
         node = Node('Noise Texture', sockets={'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Distortion': distortion}, noise_dimensions=noise_dimensions, noise_type=noise_type, normalize=normalize)
         return node._out
 
     @classmethod
     def Voronoi(cls, vector=None, scale=None, detail=None, roughness=None, lacunarity=None, randomness=None, distance='EUCLIDEAN', feature='F1', normalize=False, voronoi_dimensions='3D'):
-        """ > Class Method <&Node Voronoi Texture>
+        """ > Node <&Node Voronoi Texture>
 
         Arguments
         ---------
@@ -151,12 +155,15 @@ class Texture(Socket):
         -------
         - Float [color_ (Color), position_ (Vector)]
         """
+        utils.check_enum_arg('distance', distance, 'Voronoi', ('EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI'))
+        utils.check_enum_arg('feature', feature, 'Voronoi', ('F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS'))
+        utils.check_enum_arg('voronoi_dimensions', voronoi_dimensions, 'Voronoi', ('1D', '2D', '3D', '4D'))
         node = Node('Voronoi Texture', sockets={'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, distance=distance, feature=feature, normalize=normalize, voronoi_dimensions=voronoi_dimensions)
         return node._out
 
     @classmethod
     def Wave(cls, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', rings_direction='X', wave_profile='SIN', wave_type='BANDS'):
-        """ > Class Method <&Node Wave Texture>
+        """ > Node <&Node Wave Texture>
 
         Arguments
         ---------
@@ -176,12 +183,16 @@ class Texture(Socket):
         -------
         - Color [fac_ (Float)]
         """
+        utils.check_enum_arg('bands_direction', bands_direction, 'Wave', ('X', 'Y', 'Z', 'DIAGONAL'))
+        utils.check_enum_arg('rings_direction', rings_direction, 'Wave', ('X', 'Y', 'Z', 'SPHERICAL'))
+        utils.check_enum_arg('wave_profile', wave_profile, 'Wave', ('SIN', 'SAW', 'TRI'))
+        utils.check_enum_arg('wave_type', wave_type, 'Wave', ('BANDS', 'RINGS'))
         node = Node('Wave Texture', sockets={'Vector': vector, 'Scale': scale, 'Distortion': distortion, 'Detail': detail, 'Detail Scale': detail_scale, 'Detail Roughness': detail_roughness, 'Phase Offset': phase_offset}, bands_direction=bands_direction, rings_direction=rings_direction, wave_profile=wave_profile, wave_type=wave_type)
         return node._out
 
     @classmethod
     def WhiteNoise(cls, vector=None, noise_dimensions='3D'):
-        """ > Class Method <&Node White Noise Texture>
+        """ > Node <&Node White Noise Texture>
 
         Arguments
         ---------
@@ -192,6 +203,7 @@ class Texture(Socket):
         -------
         - Float [color_ (Color)]
         """
+        utils.check_enum_arg('noise_dimensions', noise_dimensions, 'WhiteNoise', ('1D', '2D', '3D', '4D'))
         node = Node('White Noise Texture', sockets={'Vector': vector}, noise_dimensions=noise_dimensions)
         return node._out
 

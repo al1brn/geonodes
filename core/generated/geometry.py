@@ -8,7 +8,7 @@ class Geometry(Socket):
     $DOC SET hidden
     """
     def bounding_box(self):
-        """ > Method <&Node Bounding Box>
+        """ > Node <&Node Bounding Box>
 
         Information
         -----------
@@ -22,7 +22,7 @@ class Geometry(Socket):
         return node._out
 
     def convex_hull(self):
-        """ > Method <&Node Convex Hull>
+        """ > Node <&Node Convex Hull>
 
         Information
         -----------
@@ -36,7 +36,7 @@ class Geometry(Socket):
         return node._out
 
     def to_instance(self, *geometry):
-        """ > Method <&Node Geometry to Instance>
+        """ > Node <&Node Geometry to Instance>
 
         Arguments
         ---------
@@ -51,7 +51,7 @@ class Geometry(Socket):
 
     @classmethod
     def index_of_nearest(cls, position=None, group_id=None):
-        """ > Class Method <&Node Index of Nearest>
+        """ > Node <&Node Index of Nearest>
 
         Arguments
         ---------
@@ -68,7 +68,7 @@ class Geometry(Socket):
     @classmethod
     @property
     def index(cls):
-        """ > Property Get <&Node Index>
+        """ > Node <&Node Index>
 
         Returns
         -------
@@ -78,7 +78,7 @@ class Geometry(Socket):
         return node._out
 
     def instance_on_points(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
-        """ > Method <&Node Instance on Points>
+        """ > Node <&Node Instance on Points>
 
         Information
         -----------
@@ -101,7 +101,9 @@ class Geometry(Socket):
         return node._out
 
     def join(self, *geometry):
-        """ > Jump Method <&Node Join Geometry>
+        """ > Node <&Node Join Geometry>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Arguments
         ---------
@@ -117,7 +119,7 @@ class Geometry(Socket):
 
     @classmethod
     def Join(cls, *geometry):
-        """ > Constructor <&Node Join Geometry>
+        """ > Node <&Node Join Geometry>
 
         Arguments
         ---------
@@ -131,7 +133,9 @@ class Geometry(Socket):
         return cls(node._out)
 
     def merge_by_distance(self, distance=None, mode='ALL'):
-        """ > Jump Method <&Node Merge by Distance>
+        """ > Node <&Node Merge by Distance>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -147,12 +151,15 @@ class Geometry(Socket):
         -------
         - Geometry
         """
+        utils.check_enum_arg('mode', mode, 'merge_by_distance', ('ALL', 'CONNECTED'))
         node = Node('Merge by Distance', sockets={'Geometry': self, 'Selection': self._sel, 'Distance': distance}, mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
 
     def merge_all(self, distance=None):
-        """ > Jump Method <&Node Merge by Distance>
+        """ > Node <&Node Merge by Distance>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -173,7 +180,9 @@ class Geometry(Socket):
         return self._domain_to_geometry
 
     def merge_connected(self, distance=None):
-        """ > Jump Method <&Node Merge by Distance>
+        """ > Node <&Node Merge by Distance>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -194,7 +203,9 @@ class Geometry(Socket):
         return self._domain_to_geometry
 
     def merge(self, distance=None, mode='ALL'):
-        """ > Jump Method <&Node Merge by Distance>
+        """ > Node <&Node Merge by Distance>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -210,12 +221,13 @@ class Geometry(Socket):
         -------
         - Geometry
         """
+        utils.check_enum_arg('mode', mode, 'merge', ('ALL', 'CONNECTED'))
         node = Node('Merge by Distance', sockets={'Geometry': self, 'Selection': self._sel, 'Distance': distance}, mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
 
     def proximity(self, group_id=None, sample_position=None, sample_group_id=None, target_element='FACES'):
-        """ > Method <&Node Geometry Proximity>
+        """ > Node <&Node Geometry Proximity>
 
         Information
         -----------
@@ -232,11 +244,12 @@ class Geometry(Socket):
         -------
         - Vector [distance_ (Float), is_valid_ (Boolean)]
         """
+        utils.check_enum_arg('target_element', target_element, 'proximity', ('POINTS', 'EDGES', 'FACES'))
         node = Node('Geometry Proximity', sockets={'Target': self, 'Group ID': group_id, 'Source Position': sample_position, 'Sample Group ID': sample_group_id}, target_element=target_element)
         return node._out
 
     def proximity_points(self, group_id=None, sample_position=None, sample_group_id=None):
-        """ > Method <&Node Geometry Proximity>
+        """ > Node <&Node Geometry Proximity>
 
         Information
         -----------
@@ -257,7 +270,7 @@ class Geometry(Socket):
         return node._out
 
     def proximity_edges(self, group_id=None, sample_position=None, sample_group_id=None):
-        """ > Method <&Node Geometry Proximity>
+        """ > Node <&Node Geometry Proximity>
 
         Information
         -----------
@@ -278,7 +291,7 @@ class Geometry(Socket):
         return node._out
 
     def proximity_faces(self, group_id=None, sample_position=None, sample_group_id=None):
-        """ > Method <&Node Geometry Proximity>
+        """ > Node <&Node Geometry Proximity>
 
         Information
         -----------
@@ -299,7 +312,7 @@ class Geometry(Socket):
         return node._out
 
     def raycast(self, attribute=None, source_position=None, ray_direction=None, ray_length=None, mapping='INTERPOLATED'):
-        """ > Method <&Node Raycast>
+        """ > Node <&Node Raycast>
 
         Information
         -----------
@@ -318,12 +331,13 @@ class Geometry(Socket):
         -------
         - node [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Float)]
         """
+        utils.check_enum_arg('mapping', mapping, 'raycast', ('INTERPOLATED', 'NEAREST'))
         data_type = utils.get_argument_data_type(attribute, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Geometry.raycast', 'attribute')
         node = Node('Raycast', sockets={'Target Geometry': self, 'Attribute': attribute, 'Source Position': source_position, 'Ray Direction': ray_direction, 'Ray Length': ray_length}, data_type=data_type, mapping=mapping)
         return node
 
     def raycast_interpolated(self, attribute=None, source_position=None, ray_direction=None, ray_length=None):
-        """ > Method <&Node Raycast>
+        """ > Node <&Node Raycast>
 
         Information
         -----------
@@ -347,7 +361,7 @@ class Geometry(Socket):
         return node
 
     def raycast_nearest(self, attribute=None, source_position=None, ray_direction=None, ray_length=None):
-        """ > Method <&Node Raycast>
+        """ > Node <&Node Raycast>
 
         Information
         -----------
@@ -371,7 +385,9 @@ class Geometry(Socket):
         return node
 
     def realize(self, realize_all=None, depth=None):
-        """ > Jump Method <&Node Realize Instances>
+        """ > Node <&Node Realize Instances>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -392,7 +408,9 @@ class Geometry(Socket):
         return self._domain_to_geometry
 
     def remove_named_attribute(self, name=None, pattern_mode='EXACT'):
-        """ > Jump Method <&Node Remove Named Attribute>
+        """ > Node <&Node Remove Named Attribute>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -407,12 +425,15 @@ class Geometry(Socket):
         -------
         - Geometry
         """
+        utils.check_enum_arg('pattern_mode', pattern_mode, 'remove_named_attribute', ('EXACT', 'WILDCARD'))
         node = Node('Remove Named Attribute', sockets={'Geometry': self, 'Name': name}, pattern_mode=pattern_mode)
         self._jump(node._out)
         return self._domain_to_geometry
 
     def remove_names(self, name=None):
-        """ > Jump Method <&Node Remove Named Attribute>
+        """ > Node <&Node Remove Named Attribute>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -432,7 +453,9 @@ class Geometry(Socket):
         return self._domain_to_geometry
 
     def replace_material(self, old=None, new=None):
-        """ > Jump Method <&Node Replace Material>
+        """ > Node <&Node Replace Material>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -452,7 +475,7 @@ class Geometry(Socket):
         return self._domain_to_geometry
 
     def separate_components(self):
-        """ > Method <&Node Separate Components>
+        """ > Node <&Node Separate Components>
 
         Information
         -----------
@@ -467,7 +490,7 @@ class Geometry(Socket):
 
     @property
     def mesh(self):
-        """ > Property Get <&Node Separate Components>
+        """ > Node <&Node Separate Components>
 
         Information
         -----------
@@ -482,7 +505,7 @@ class Geometry(Socket):
 
     @property
     def curve(self):
-        """ > Property Get <&Node Separate Components>
+        """ > Node <&Node Separate Components>
 
         Information
         -----------
@@ -497,7 +520,7 @@ class Geometry(Socket):
 
     @property
     def grease_pencil(self):
-        """ > Property Get <&Node Separate Components>
+        """ > Node <&Node Separate Components>
 
         Information
         -----------
@@ -512,7 +535,7 @@ class Geometry(Socket):
 
     @property
     def point_cloud(self):
-        """ > Property Get <&Node Separate Components>
+        """ > Node <&Node Separate Components>
 
         Information
         -----------
@@ -527,7 +550,7 @@ class Geometry(Socket):
 
     @property
     def volume(self):
-        """ > Property Get <&Node Separate Components>
+        """ > Node <&Node Separate Components>
 
         Information
         -----------
@@ -542,7 +565,7 @@ class Geometry(Socket):
 
     @property
     def instances(self):
-        """ > Property Get <&Node Separate Components>
+        """ > Node <&Node Separate Components>
 
         Information
         -----------
@@ -556,7 +579,9 @@ class Geometry(Socket):
         return node.instances
 
     def set_name(self, name=None):
-        """ > Jump Method <&Node Set Geometry Name>
+        """ > Node <&Node Set Geometry Name>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -575,7 +600,9 @@ class Geometry(Socket):
         return self._domain_to_geometry
 
     def set_id(self, id=None):
-        """ > Jump Method <&Node Set ID>
+        """ > Node <&Node Set ID>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -595,7 +622,9 @@ class Geometry(Socket):
         return self._domain_to_geometry
 
     def set_material(self, material=None):
-        """ > Jump Method <&Node Set Material>
+        """ > Node <&Node Set Material>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -615,7 +644,9 @@ class Geometry(Socket):
         return self._domain_to_geometry
 
     def set_material_index(self, material_index=None):
-        """ > Jump Method <&Node Set Material Index>
+        """ > Node <&Node Set Material Index>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -635,7 +666,9 @@ class Geometry(Socket):
         return self._domain_to_geometry
 
     def set_position(self, position=None, offset=None):
-        """ > Jump Method <&Node Set Position>
+        """ > Node <&Node Set Position>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -656,7 +689,9 @@ class Geometry(Socket):
         return self._domain_to_geometry
 
     def set_spline_cyclic(self, cyclic=None):
-        """ > Jump Method <&Node Set Spline Cyclic>
+        """ > Node <&Node Set Spline Cyclic>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -676,7 +711,9 @@ class Geometry(Socket):
         return self._domain_to_geometry
 
     def set_spline_resolution(self, resolution=None):
-        """ > Jump Method <&Node Set Spline Resolution>
+        """ > Node <&Node Set Spline Resolution>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -696,7 +733,9 @@ class Geometry(Socket):
         return self._domain_to_geometry
 
     def transform_geometry(self, translation=None, rotation=None, scale=None, transform=None, mode='COMPONENTS'):
-        """ > Jump Method <&Node Transform Geometry>
+        """ > Node <&Node Transform Geometry>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -714,12 +753,15 @@ class Geometry(Socket):
         -------
         - Geometry
         """
+        utils.check_enum_arg('mode', mode, 'transform_geometry', ('COMPONENTS', 'MATRIX'))
         node = Node('Transform Geometry', sockets={'Geometry': self, 'Translation': translation, 'Rotation': rotation, 'Scale': scale, 'Transform': transform}, mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
 
     def transform_components(self, translation=None, rotation=None, scale=None):
-        """ > Jump Method <&Node Transform Geometry>
+        """ > Node <&Node Transform Geometry>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -741,7 +783,9 @@ class Geometry(Socket):
         return self._domain_to_geometry
 
     def transform_matrix(self, transform=None):
-        """ > Jump Method <&Node Transform Geometry>
+        """ > Node <&Node Transform Geometry>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -761,7 +805,9 @@ class Geometry(Socket):
         return self._domain_to_geometry
 
     def transform(self, translation=None, rotation=None, scale=None, mode='COMPONENTS'):
-        """ > Jump Method <&Node Transform Geometry>
+        """ > Node <&Node Transform Geometry>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -778,12 +824,13 @@ class Geometry(Socket):
         -------
         - Geometry
         """
+        utils.check_enum_arg('mode', mode, 'transform', ('COMPONENTS', 'MATRIX'))
         node = Node('Transform Geometry', sockets={'Geometry': self, 'Translation': translation, 'Rotation': rotation, 'Scale': scale}, mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
 
     def viewer(self, value=None):
-        """ > Method <&Node Viewer>
+        """ > Node <&Node Viewer>
 
         Information
         -----------
@@ -808,7 +855,9 @@ class Geometry(Socket):
 
     @position.setter
     def position(self, position=None):
-        """ > Jump Method <&Node Set Position>
+        """ > Node <&Node Set Position>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -836,7 +885,9 @@ class Geometry(Socket):
 
     @offset.setter
     def offset(self, offset=None):
-        """ > Jump Method <&Node Set Position>
+        """ > Node <&Node Set Position>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -864,7 +915,9 @@ class Geometry(Socket):
 
     @id.setter
     def id(self, id=None):
-        """ > Jump Method <&Node Set ID>
+        """ > Node <&Node Set ID>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -891,7 +944,9 @@ class Geometry(Socket):
 
     @material.setter
     def material(self, material=None):
-        """ > Jump Method <&Node Set Material>
+        """ > Node <&Node Set Material>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -918,7 +973,9 @@ class Geometry(Socket):
 
     @name.setter
     def name(self, name=None):
-        """ > Jump Method <&Node Set Geometry Name>
+        """ > Node <&Node Set Geometry Name>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -944,7 +1001,9 @@ class Geometry(Socket):
 
     @material_index.setter
     def material_index(self, material_index=None):
-        """ > Jump Method <&Node Set Material Index>
+        """ > Node <&Node Set Material Index>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------

@@ -43,7 +43,7 @@ Node [Image](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/.
 fps(frame=None)
 ```
 
-> Method [Image Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene/image_info.html)
+> Node [Image Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene/image_info.html)
 
 #### Information:
 - **Socket** : self
@@ -69,7 +69,7 @@ fps(frame=None)
 frame_count(frame=None)
 ```
 
-> Method [Image Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene/image_info.html)
+> Node [Image Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene/image_info.html)
 
 #### Information:
 - **Socket** : self
@@ -95,7 +95,7 @@ frame_count(frame=None)
 has_alpha(frame=None)
 ```
 
-> Method [Image Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene/image_info.html)
+> Node [Image Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene/image_info.html)
 
 #### Information:
 - **Socket** : self
@@ -121,7 +121,7 @@ has_alpha(frame=None)
 height(frame=None)
 ```
 
-> Method [Image Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene/image_info.html)
+> Node [Image Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene/image_info.html)
 
 #### Information:
 - **Socket** : self
@@ -147,7 +147,7 @@ height(frame=None)
 info(frame=None)
 ```
 
-> Method [Image Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene/image_info.html)
+> Node [Image Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene/image_info.html)
 
 #### Information:
 - **Socket** : self
@@ -196,7 +196,7 @@ Node [Image](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/.
 width(frame=None)
 ```
 
-> Method [Image Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene/image_info.html)
+> Node [Image Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene/image_info.html)
 
 #### Information:
 - **Socket** : self

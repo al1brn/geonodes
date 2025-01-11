@@ -55,7 +55,7 @@ Properties:
 corner_index(vertex_index=None, weights=None, sort_index=None)
 ```
 
-> Class Method [Corners of Vertex](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/corners_of_vertex.html)
+> Node [Corners of Vertex](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/corners_of_vertex.html)
 
 #### Arguments:
 - **vertex_index** (_Integer_ = None) : socket 'Vertex Index' (id: Vertex Index)
@@ -78,7 +78,7 @@ corner_index(vertex_index=None, weights=None, sort_index=None)
 corners(vertex_index=None, weights=None, sort_index=None)
 ```
 
-> Class Method [Corners of Vertex](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/corners_of_vertex.html)
+> Node [Corners of Vertex](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/corners_of_vertex.html)
 
 #### Arguments:
 - **vertex_index** (_Integer_ = None) : socket 'Vertex Index' (id: Vertex Index)
@@ -101,7 +101,7 @@ corners(vertex_index=None, weights=None, sort_index=None)
 corners_total(vertex_index=None, weights=None, sort_index=None)
 ```
 
-> Class Method [Corners of Vertex](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/corners_of_vertex.html)
+> Node [Corners of Vertex](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/corners_of_vertex.html)
 
 #### Arguments:
 - **vertex_index** (_Integer_ = None) : socket 'Vertex Index' (id: Vertex Index)
@@ -124,7 +124,7 @@ corners_total(vertex_index=None, weights=None, sort_index=None)
 edge_index(vertex_index=None, weights=None, sort_index=None)
 ```
 
-> Class Method [Edges of Vertex](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/edges_of_vertex.html)
+> Node [Edges of Vertex](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/edges_of_vertex.html)
 
 #### Arguments:
 - **vertex_index** (_Integer_ = None) : socket 'Vertex Index' (id: Vertex Index)
@@ -147,7 +147,7 @@ edge_index(vertex_index=None, weights=None, sort_index=None)
 edges(vertex_index=None, weights=None, sort_index=None)
 ```
 
-> Class Method [Edges of Vertex](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/edges_of_vertex.html)
+> Node [Edges of Vertex](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/edges_of_vertex.html)
 
 #### Arguments:
 - **vertex_index** (_Integer_ = None) : socket 'Vertex Index' (id: Vertex Index)
@@ -170,7 +170,7 @@ edges(vertex_index=None, weights=None, sort_index=None)
 edges_total(vertex_index=None, weights=None, sort_index=None)
 ```
 
-> Class Method [Edges of Vertex](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/edges_of_vertex.html)
+> Node [Edges of Vertex](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/edges_of_vertex.html)
 
 #### Arguments:
 - **vertex_index** (_Integer_ = None) : socket 'Vertex Index' (id: Vertex Index)
@@ -193,7 +193,7 @@ edges_total(vertex_index=None, weights=None, sort_index=None)
 neighbors()
 ```
 
-> Class Method [Vertex Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/vertex_neighbors.html)
+> Node [Vertex Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/vertex_neighbors.html)
 
 #### Returns:
 - **node** (_Integer_)
@@ -209,7 +209,7 @@ neighbors()
 to_points(position=None, radius=None)
 ```
 
-> Method [Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_points.html)
+> Node [Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_points.html)
 
 #### Information:
 - **Socket** : self

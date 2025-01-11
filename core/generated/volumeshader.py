@@ -9,7 +9,7 @@ class VolumeShader(Socket):
     """
     @classmethod
     def Absorption(cls, color=None, density=None):
-        """ > Constructor <&ShaderNode Volume Absorption>
+        """ > Node <&ShaderNode Volume Absorption>
 
         Arguments
         ---------
@@ -25,7 +25,7 @@ class VolumeShader(Socket):
 
     @classmethod
     def info(cls):
-        """ > Class Method <&ShaderNode Volume Info>
+        """ > Node <&ShaderNode Volume Info>
 
         Returns
         -------
@@ -36,7 +36,7 @@ class VolumeShader(Socket):
 
     @classmethod
     def Principled(cls, color=None, color_attribute=None, density=None, density_attribute=None, anisotropy=None, absorption_color=None, emission_strength=None, emission_color=None, blackbody_intensity=None, blackbody_tint=None, temperature=None, temperature_attribute=None):
-        """ > Constructor <&ShaderNode Principled Volume>
+        """ > Node <&ShaderNode Principled Volume>
 
         Arguments
         ---------
@@ -62,7 +62,7 @@ class VolumeShader(Socket):
 
     @classmethod
     def Scatter(cls, color=None, density=None, anisotropy=None, phase='HENYEY_GREENSTEIN'):
-        """ > Constructor <&ShaderNode Volume Scatter>
+        """ > Node <&ShaderNode Volume Scatter>
 
         Arguments
         ---------
@@ -75,6 +75,7 @@ class VolumeShader(Socket):
         -------
         - VolumeShader
         """
+        utils.check_enum_arg('phase', phase, 'Scatter', ('HENYEY_GREENSTEIN', 'FOURNIER_FORAND', 'DRAINE', 'RAYLEIGH', 'MIE'))
         node = Node('Volume Scatter', sockets={'Color': color, 'Density': density, 'Anisotropy': anisotropy}, phase=phase)
         return cls(node._out)
 

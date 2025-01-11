@@ -9,7 +9,7 @@ class Spline(Socket):
     """
     @classmethod
     def accumulate_field(cls, value=None, group_id=None):
-        """ > Class Method <&Node Accumulate Field>
+        """ > Node <&Node Accumulate Field>
 
         Information
         -----------
@@ -30,7 +30,7 @@ class Spline(Socket):
         return node._out
 
     def attribute_statistic(self, attribute=None):
-        """ > Method <&Node Attribute Statistic>
+        """ > Node <&Node Attribute Statistic>
 
         Information
         -----------
@@ -52,7 +52,9 @@ class Spline(Socket):
         return node
 
     def delete_geometry_all(self):
-        """ > Jump Method <&Node Delete Geometry>
+        """ > Node <&Node Delete Geometry>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -70,7 +72,9 @@ class Spline(Socket):
         return self._domain_to_geometry
 
     def delete_geometry_edge_face(self):
-        """ > Jump Method <&Node Delete Geometry>
+        """ > Node <&Node Delete Geometry>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -88,7 +92,9 @@ class Spline(Socket):
         return self._domain_to_geometry
 
     def delete_geometry_only_face(self):
-        """ > Jump Method <&Node Delete Geometry>
+        """ > Node <&Node Delete Geometry>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -106,7 +112,9 @@ class Spline(Socket):
         return self._domain_to_geometry
 
     def delete_geometry(self, mode='ALL'):
-        """ > Jump Method <&Node Delete Geometry>
+        """ > Node <&Node Delete Geometry>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -122,12 +130,15 @@ class Spline(Socket):
         -------
         - Geometry
         """
+        utils.check_enum_arg('mode', mode, 'delete_geometry', ('ALL', 'EDGE_FACE', 'ONLY_FACE'))
         node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='CURVE', mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
 
     def delete_all(self):
-        """ > Jump Method <&Node Delete Geometry>
+        """ > Node <&Node Delete Geometry>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -145,7 +156,9 @@ class Spline(Socket):
         return self._domain_to_geometry
 
     def delete_edge_face(self):
-        """ > Jump Method <&Node Delete Geometry>
+        """ > Node <&Node Delete Geometry>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -163,7 +176,9 @@ class Spline(Socket):
         return self._domain_to_geometry
 
     def delete_only_face(self):
-        """ > Jump Method <&Node Delete Geometry>
+        """ > Node <&Node Delete Geometry>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -181,7 +196,9 @@ class Spline(Socket):
         return self._domain_to_geometry
 
     def delete(self, mode='ALL'):
-        """ > Jump Method <&Node Delete Geometry>
+        """ > Node <&Node Delete Geometry>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -197,12 +214,15 @@ class Spline(Socket):
         -------
         - Geometry
         """
+        utils.check_enum_arg('mode', mode, 'delete', ('ALL', 'EDGE_FACE', 'ONLY_FACE'))
         node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='CURVE', mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
 
     def duplicate(self, amount=None):
-        """ > Jump Method <&Node Duplicate Elements>
+        """ > Node <&Node Duplicate Elements>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -224,7 +244,7 @@ class Spline(Socket):
 
     @classmethod
     def evaluate_at_index(cls, index=None, value=None):
-        """ > Class Method <&Node Evaluate at Index>
+        """ > Node <&Node Evaluate at Index>
 
         Information
         -----------
@@ -246,7 +266,7 @@ class Spline(Socket):
 
     @classmethod
     def evaluate_on_domain(cls, value=None):
-        """ > Class Method <&Node Evaluate on Domain>
+        """ > Node <&Node Evaluate on Domain>
 
         Information
         -----------
@@ -267,7 +287,7 @@ class Spline(Socket):
 
     @classmethod
     def points_of_curve(cls, curve_index=None, weights=None, sort_index=None):
-        """ > Class Method <&Node Points of Curve>
+        """ > Node <&Node Points of Curve>
 
         Arguments
         ---------
@@ -284,7 +304,7 @@ class Spline(Socket):
 
     @classmethod
     def point_index(cls, curve_index=None, weights=None, sort_index=None):
-        """ > Class Method <&Node Points of Curve>
+        """ > Node <&Node Points of Curve>
 
         Arguments
         ---------
@@ -301,7 +321,7 @@ class Spline(Socket):
 
     @classmethod
     def points_total(cls, curve_index=None, weights=None, sort_index=None):
-        """ > Class Method <&Node Points of Curve>
+        """ > Node <&Node Points of Curve>
 
         Arguments
         ---------
@@ -317,7 +337,7 @@ class Spline(Socket):
         return node.total
 
     def sample_index(self, value=None, index=None, clamp=False):
-        """ > Method <&Node Sample Index>
+        """ > Node <&Node Sample Index>
 
         Information
         -----------
@@ -340,7 +360,9 @@ class Spline(Socket):
         return node._out
 
     def separate(self):
-        """ > Jump Method <&Node Separate Geometry>
+        """ > Node <&Node Separate Geometry>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -357,7 +379,9 @@ class Spline(Socket):
         return self._domain_to_geometry
 
     def sort(self, group_id=None, sort_weight=None):
-        """ > Jump Method <&Node Sort Elements>
+        """ > Node <&Node Sort Elements>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -380,7 +404,7 @@ class Spline(Socket):
 
     @classmethod
     def spline_length(cls):
-        """ > Class Method <&Node Spline Length>
+        """ > Node <&Node Spline Length>
 
         Returns
         -------
@@ -392,7 +416,7 @@ class Spline(Socket):
     @classmethod
     @property
     def length(cls):
-        """ > Property Get <&Node Spline Length>
+        """ > Node <&Node Spline Length>
 
         Returns
         -------
@@ -404,7 +428,7 @@ class Spline(Socket):
     @classmethod
     @property
     def point_count(cls):
-        """ > Property Get <&Node Spline Length>
+        """ > Node <&Node Spline Length>
 
         Returns
         -------
@@ -415,7 +439,7 @@ class Spline(Socket):
 
     @classmethod
     def parameter(cls):
-        """ > Class Method <&Node Spline Parameter>
+        """ > Node <&Node Spline Parameter>
 
         Returns
         -------
@@ -427,7 +451,7 @@ class Spline(Socket):
     @classmethod
     @property
     def parameter_factor(cls):
-        """ > Property Get <&Node Spline Parameter>
+        """ > Node <&Node Spline Parameter>
 
         Returns
         -------
@@ -439,7 +463,7 @@ class Spline(Socket):
     @classmethod
     @property
     def parameter_length(cls):
-        """ > Property Get <&Node Spline Parameter>
+        """ > Node <&Node Spline Parameter>
 
         Returns
         -------
@@ -451,7 +475,7 @@ class Spline(Socket):
     @classmethod
     @property
     def parameter_index(cls):
-        """ > Property Get <&Node Spline Parameter>
+        """ > Node <&Node Spline Parameter>
 
         Returns
         -------
@@ -461,7 +485,7 @@ class Spline(Socket):
         return node.index
 
     def split_to_instances(self, group_id=None):
-        """ > Method <&Node Split to Instances>
+        """ > Node <&Node Split to Instances>
 
         Information
         -----------
@@ -481,7 +505,9 @@ class Spline(Socket):
         return node._out
 
     def store_named_attribute(self, name=None, value=None):
-        """ > Jump Method <&Node Store Named Attribute>
+        """ > Node <&Node Store Named Attribute>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -505,7 +531,9 @@ class Spline(Socket):
         return self._domain_to_geometry
 
     def store(self, name=None, value=None):
-        """ > Jump Method <&Node Store Named Attribute>
+        """ > Node <&Node Store Named Attribute>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -529,7 +557,9 @@ class Spline(Socket):
         return self._domain_to_geometry
 
     def set_selection(self):
-        """ > Jump Method <&Node Set Selection>
+        """ > Node <&Node Set Selection>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -548,7 +578,7 @@ class Spline(Socket):
         return self._domain_to_geometry
 
     def viewer(self, value=None):
-        """ > Method <&Node Viewer>
+        """ > Node <&Node Viewer>
 
         Information
         -----------
@@ -573,7 +603,9 @@ class Spline(Socket):
 
     @material_index.setter
     def material_index(self, material_index=None):
-        """ > Jump Method <&Node Set Material Index>
+        """ > Node <&Node Set Material Index>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -600,7 +632,9 @@ class Spline(Socket):
 
     @tilt.setter
     def tilt(self, tilt=None):
-        """ > Jump Method <&Node Set Curve Tilt>
+        """ > Node <&Node Set Curve Tilt>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -627,7 +661,9 @@ class Spline(Socket):
 
     @normal.setter
     def normal(self, mode='MINIMUM_TWIST'):
-        """ > Jump Method <&Node Set Curve Normal>
+        """ > Node <&Node Set Curve Normal>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -642,6 +678,7 @@ class Spline(Socket):
         -------
         - Curve
         """
+        utils.check_enum_arg('mode', mode, 'normal', ('MINIMUM_TWIST', 'Z_UP', 'FREE'))
         node = Node('Set Curve Normal', sockets={'Curve': self, 'Selection': self._sel}, mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
@@ -654,7 +691,9 @@ class Spline(Socket):
 
     @is_cyclic.setter
     def is_cyclic(self, cyclic=None):
-        """ > Jump Method <&Node Set Spline Cyclic>
+        """ > Node <&Node Set Spline Cyclic>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -681,7 +720,9 @@ class Spline(Socket):
 
     @resolution.setter
     def resolution(self, resolution=None):
-        """ > Jump Method <&Node Set Spline Resolution>
+        """ > Node <&Node Set Spline Resolution>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -708,7 +749,9 @@ class Spline(Socket):
 
     @type.setter
     def type(self, spline_type='POLY'):
-        """ > Jump Method <&Node Set Spline Type>
+        """ > Node <&Node Set Spline Type>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -723,6 +766,7 @@ class Spline(Socket):
         -------
         - Curve
         """
+        utils.check_enum_arg('spline_type', spline_type, 'type', ('CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS'))
         node = Node('Set Spline Type', sockets={'Curve': self, 'Selection': self._sel}, spline_type=spline_type)
         self._jump(node._out)
         return self._domain_to_geometry

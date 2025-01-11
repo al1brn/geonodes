@@ -9,7 +9,7 @@ class Matrix(Socket):
     """
     @classmethod
     def Combine(cls, column_1_row_1=None, column_1_row_2=None, column_1_row_3=None, column_1_row_4=None, column_2_row_1=None, column_2_row_2=None, column_2_row_3=None, column_2_row_4=None, column_3_row_1=None, column_3_row_2=None, column_3_row_3=None, column_3_row_4=None, column_4_row_1=None, column_4_row_2=None, column_4_row_3=None, column_4_row_4=None):
-        """ > Constructor <&Node Combine Matrix>
+        """ > Node <&Node Combine Matrix>
 
         Arguments
         ---------
@@ -39,7 +39,7 @@ class Matrix(Socket):
 
     @classmethod
     def CombineTransform(cls, translation=None, rotation=None, scale=None):
-        """ > Constructor <&Node Combine Transform>
+        """ > Node <&Node Combine Transform>
 
         Arguments
         ---------
@@ -55,7 +55,7 @@ class Matrix(Socket):
         return cls(node._out)
 
     def hash_value(self, seed=None):
-        """ > Method <&Node Hash Value>
+        """ > Node <&Node Hash Value>
 
         Information
         -----------
@@ -74,7 +74,7 @@ class Matrix(Socket):
         return node._out
 
     def invert(self):
-        """ > Method <&Node Invert Matrix>
+        """ > Node <&Node Invert Matrix>
 
         Information
         -----------
@@ -88,7 +88,7 @@ class Matrix(Socket):
         return node._out
 
     def determinant(self):
-        """ > Method <&Node Matrix Determinant>
+        """ > Node <&Node Matrix Determinant>
 
         Information
         -----------
@@ -102,7 +102,7 @@ class Matrix(Socket):
         return node._out
 
     def multiply(self, matrix=None):
-        """ > Method <&Node Multiply Matrices>
+        """ > Node <&Node Multiply Matrices>
 
         Information
         -----------
@@ -120,7 +120,7 @@ class Matrix(Socket):
         return node._out
 
     def project_point(self, vector=None):
-        """ > Method <&Node Project Point>
+        """ > Node <&Node Project Point>
 
         Information
         -----------
@@ -139,7 +139,7 @@ class Matrix(Socket):
 
     @property
     def separate(self):
-        """ > Property Get <&Node Separate Matrix>
+        """ > Node <&Node Separate Matrix>
 
         Information
         -----------
@@ -153,7 +153,7 @@ class Matrix(Socket):
         return (node.column_1_row_1, node.column_1_row_2, node.column_1_row_3, node.column_1_row_4, node.column_2_row_1, node.column_2_row_2, node.column_2_row_3, node.column_2_row_4, node.column_3_row_1, node.column_3_row_2, node.column_3_row_3, node.column_3_row_4, node.column_4_row_1, node.column_4_row_2, node.column_4_row_3, node.column_4_row_4)
 
     def separate_matrix(self):
-        """ > Method <&Node Separate Matrix>
+        """ > Node <&Node Separate Matrix>
 
         Information
         -----------
@@ -168,7 +168,7 @@ class Matrix(Socket):
 
     @property
     def column_1_row_1(self):
-        """ > Property Get <&Node Separate Matrix>
+        """ > Node <&Node Separate Matrix>
 
         Information
         -----------
@@ -183,7 +183,7 @@ class Matrix(Socket):
 
     @property
     def column_1_row_2(self):
-        """ > Property Get <&Node Separate Matrix>
+        """ > Node <&Node Separate Matrix>
 
         Information
         -----------
@@ -198,7 +198,7 @@ class Matrix(Socket):
 
     @property
     def column_1_row_3(self):
-        """ > Property Get <&Node Separate Matrix>
+        """ > Node <&Node Separate Matrix>
 
         Information
         -----------
@@ -213,7 +213,7 @@ class Matrix(Socket):
 
     @property
     def column_1_row_4(self):
-        """ > Property Get <&Node Separate Matrix>
+        """ > Node <&Node Separate Matrix>
 
         Information
         -----------
@@ -228,7 +228,7 @@ class Matrix(Socket):
 
     @property
     def column_2_row_1(self):
-        """ > Property Get <&Node Separate Matrix>
+        """ > Node <&Node Separate Matrix>
 
         Information
         -----------
@@ -243,7 +243,7 @@ class Matrix(Socket):
 
     @property
     def column_2_row_2(self):
-        """ > Property Get <&Node Separate Matrix>
+        """ > Node <&Node Separate Matrix>
 
         Information
         -----------
@@ -258,7 +258,7 @@ class Matrix(Socket):
 
     @property
     def column_2_row_3(self):
-        """ > Property Get <&Node Separate Matrix>
+        """ > Node <&Node Separate Matrix>
 
         Information
         -----------
@@ -273,7 +273,7 @@ class Matrix(Socket):
 
     @property
     def column_2_row_4(self):
-        """ > Property Get <&Node Separate Matrix>
+        """ > Node <&Node Separate Matrix>
 
         Information
         -----------
@@ -288,7 +288,7 @@ class Matrix(Socket):
 
     @property
     def column_3_row_1(self):
-        """ > Property Get <&Node Separate Matrix>
+        """ > Node <&Node Separate Matrix>
 
         Information
         -----------
@@ -303,7 +303,7 @@ class Matrix(Socket):
 
     @property
     def column_3_row_2(self):
-        """ > Property Get <&Node Separate Matrix>
+        """ > Node <&Node Separate Matrix>
 
         Information
         -----------
@@ -318,7 +318,7 @@ class Matrix(Socket):
 
     @property
     def column_3_row_3(self):
-        """ > Property Get <&Node Separate Matrix>
+        """ > Node <&Node Separate Matrix>
 
         Information
         -----------
@@ -333,7 +333,7 @@ class Matrix(Socket):
 
     @property
     def column_3_row_4(self):
-        """ > Property Get <&Node Separate Matrix>
+        """ > Node <&Node Separate Matrix>
 
         Information
         -----------
@@ -348,7 +348,7 @@ class Matrix(Socket):
 
     @property
     def column_4_row_1(self):
-        """ > Property Get <&Node Separate Matrix>
+        """ > Node <&Node Separate Matrix>
 
         Information
         -----------
@@ -363,7 +363,7 @@ class Matrix(Socket):
 
     @property
     def column_4_row_2(self):
-        """ > Property Get <&Node Separate Matrix>
+        """ > Node <&Node Separate Matrix>
 
         Information
         -----------
@@ -378,7 +378,7 @@ class Matrix(Socket):
 
     @property
     def column_4_row_3(self):
-        """ > Property Get <&Node Separate Matrix>
+        """ > Node <&Node Separate Matrix>
 
         Information
         -----------
@@ -393,7 +393,7 @@ class Matrix(Socket):
 
     @property
     def column_4_row_4(self):
-        """ > Property Get <&Node Separate Matrix>
+        """ > Node <&Node Separate Matrix>
 
         Information
         -----------
@@ -408,7 +408,7 @@ class Matrix(Socket):
 
     @property
     def trs(self):
-        """ > Property Get <&Node Separate Transform>
+        """ > Node <&Node Separate Transform>
 
         Information
         -----------
@@ -422,7 +422,7 @@ class Matrix(Socket):
         return (node.translation, node.rotation, node.scale)
 
     def separate_transform(self):
-        """ > Method <&Node Separate Transform>
+        """ > Node <&Node Separate Transform>
 
         Information
         -----------
@@ -437,7 +437,7 @@ class Matrix(Socket):
 
     @property
     def translation(self):
-        """ > Property Get <&Node Separate Transform>
+        """ > Node <&Node Separate Transform>
 
         Information
         -----------
@@ -452,7 +452,7 @@ class Matrix(Socket):
 
     @property
     def rotation(self):
-        """ > Property Get <&Node Separate Transform>
+        """ > Node <&Node Separate Transform>
 
         Information
         -----------
@@ -467,7 +467,7 @@ class Matrix(Socket):
 
     @property
     def scale(self):
-        """ > Property Get <&Node Separate Transform>
+        """ > Node <&Node Separate Transform>
 
         Information
         -----------
@@ -481,7 +481,7 @@ class Matrix(Socket):
         return node.scale
 
     def transform_direction(self, direction=None):
-        """ > Method <&Node Transform Direction>
+        """ > Node <&Node Transform Direction>
 
         Information
         -----------
@@ -499,7 +499,7 @@ class Matrix(Socket):
         return node._out
 
     def transform_point(self, vector=None):
-        """ > Method <&Node Transform Point>
+        """ > Node <&Node Transform Point>
 
         Information
         -----------
@@ -517,7 +517,7 @@ class Matrix(Socket):
         return node._out
 
     def transpose(self):
-        """ > Method <&Node Transpose Matrix>
+        """ > Node <&Node Transpose Matrix>
 
         Information
         -----------
@@ -531,7 +531,7 @@ class Matrix(Socket):
         return node._out
 
     def transform_gizmo(self, *value, position=None, rotation=None, use_rotation_x=True, use_rotation_y=True, use_rotation_z=True, use_scale_x=True, use_scale_y=True, use_scale_z=True, use_translation_x=True, use_translation_y=True, use_translation_z=True):
-        """ > Method <&Node Transform Gizmo>
+        """ > Node <&Node Transform Gizmo>
 
         Arguments
         ---------
@@ -557,7 +557,7 @@ class Matrix(Socket):
 
     @classmethod
     def Named(cls, name=None):
-        """ > Constructor <&Node Named Attribute>
+        """ > Node <&Node Named Attribute>
 
         Information
         -----------
@@ -576,7 +576,7 @@ class Matrix(Socket):
 
     @classmethod
     def NamedAttribute(cls, name=None):
-        """ > Constructor <&Node Named Attribute>
+        """ > Node <&Node Named Attribute>
 
         Information
         -----------

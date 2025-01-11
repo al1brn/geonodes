@@ -8,7 +8,7 @@ class Instances(Socket):
     $DOC SET hidden
     """
     def domain_size(self):
-        """ > Method <&Node Domain Size>
+        """ > Node <&Node Domain Size>
 
         Information
         -----------
@@ -24,7 +24,7 @@ class Instances(Socket):
 
     @classmethod
     def FromGeometry(cls, *geometry):
-        """ > Constructor <&Node Geometry to Instance>
+        """ > Node <&Node Geometry to Instance>
 
         Arguments
         ---------
@@ -39,7 +39,7 @@ class Instances(Socket):
 
     @classmethod
     def ImportOBJ(cls, path=None):
-        """ > Constructor <&Node Import OBJ>
+        """ > Node <&Node Import OBJ>
 
         Arguments
         ---------
@@ -55,7 +55,7 @@ class Instances(Socket):
     @classmethod
     @property
     def rotation(cls):
-        """ > Property Get <&Node Instance Rotation>
+        """ > Node <&Node Instance Rotation>
 
         Returns
         -------
@@ -67,7 +67,7 @@ class Instances(Socket):
     @classmethod
     @property
     def instance_scale(cls):
-        """ > Property Get <&Node Instance Scale>
+        """ > Node <&Node Instance Scale>
 
         Returns
         -------
@@ -77,7 +77,7 @@ class Instances(Socket):
         return node._out
 
     def to_points(self, position=None, radius=None):
-        """ > Method <&Node Instances to Points>
+        """ > Node <&Node Instances to Points>
 
         Information
         -----------
@@ -97,7 +97,9 @@ class Instances(Socket):
         return node._out
 
     def rotate(self, rotation=None, pivot_point=None, local_space=None):
-        """ > Jump Method <&Node Rotate Instances>
+        """ > Node <&Node Rotate Instances>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -119,7 +121,9 @@ class Instances(Socket):
         return self._domain_to_geometry
 
     def scale(self, scale=None, center=None, local_space=None):
-        """ > Jump Method <&Node Scale Instances>
+        """ > Node <&Node Scale Instances>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -141,7 +145,9 @@ class Instances(Socket):
         return self._domain_to_geometry
 
     def set_transform(self, transform=None):
-        """ > Jump Method <&Node Set Instance Transform>
+        """ > Node <&Node Set Instance Transform>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -161,7 +167,9 @@ class Instances(Socket):
         return self._domain_to_geometry
 
     def translate(self, translation=None, local_space=None):
-        """ > Jump Method <&Node Translate Instances>
+        """ > Node <&Node Translate Instances>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -189,7 +197,9 @@ class Instances(Socket):
 
     @transform.setter
     def transform(self, transform=None):
-        """ > Jump Method <&Node Set Instance Transform>
+        """ > Node <&Node Set Instance Transform>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------

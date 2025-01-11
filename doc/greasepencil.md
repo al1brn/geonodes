@@ -54,7 +54,7 @@ LAYER domain
 domain_size()
 ```
 
-> Method [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
+> Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
 
 #### Information:
 - **Socket** : self
@@ -76,7 +76,9 @@ domain_size()
 merge_layers(mode='MERGE_BY_NAME')
 ```
 
-> Jump Method [Merge Layers](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/merge_layers.html)
+> Node [Merge Layers](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/merge_layers.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
@@ -103,7 +105,9 @@ merge_layers(mode='MERGE_BY_NAME')
 merge_layers_by_id(group_id=None)
 ```
 
-> Jump Method [Merge Layers](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/merge_layers.html)
+> Node [Merge Layers](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/merge_layers.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
@@ -131,7 +135,9 @@ merge_layers_by_id(group_id=None)
 merge_layers_by_name()
 ```
 
-> Jump Method [Merge Layers](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/merge_layers.html)
+> Node [Merge Layers](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/merge_layers.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
@@ -154,7 +160,7 @@ merge_layers_by_name()
 named_layer_selection(name=None)
 ```
 
-> Class Method ERROR: Node 'Named Layer Selection' not found
+> Node ERROR: Node 'Named Layer Selection' not found
 
 #### Arguments:
 - **name** (_String_ = None) : socket 'Name' (id: Name)
@@ -175,7 +181,7 @@ named_layer_selection(name=None)
 to_curves(layers_as_instances=None)
 ```
 
-> Method [Grease Pencil to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/grease_pencil_to_curves.html)
+> Node [Grease Pencil to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/grease_pencil_to_curves.html)
 
 #### Information:
 - **Socket** : self

@@ -54,7 +54,7 @@ matrix = Matrix([[0, 1, 0, 0], [1, 0, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]]) # Node
 > _type_: **column_1_row_1**
 >
 
-> Property Get [Separate Matrix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/separate_matrix.html)
+> Node [Separate Matrix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/separate_matrix.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Matrix](matrix.md#matrix) :black_small_square: [Content](matrix.md#content) :black_small_square: [Properties](matrix.md#properties)</sub>
 
@@ -63,7 +63,7 @@ matrix = Matrix([[0, 1, 0, 0], [1, 0, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]]) # Node
 > _type_: **column_1_row_2**
 >
 
-> Property Get [Separate Matrix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/separate_matrix.html)
+> Node [Separate Matrix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/separate_matrix.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Matrix](matrix.md#matrix) :black_small_square: [Content](matrix.md#content) :black_small_square: [Properties](matrix.md#properties)</sub>
 
@@ -72,7 +72,7 @@ matrix = Matrix([[0, 1, 0, 0], [1, 0, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]]) # Node
 > _type_: **column_1_row_3**
 >
 
-> Property Get [Separate Matrix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/separate_matrix.html)
+> Node [Separate Matrix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/separate_matrix.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Matrix](matrix.md#matrix) :black_small_square: [Content](matrix.md#content) :black_small_square: [Properties](matrix.md#properties)</sub>
 
@@ -81,7 +81,7 @@ matrix = Matrix([[0, 1, 0, 0], [1, 0, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]]) # Node
 > _type_: **column_1_row_4**
 >
 
-> Property Get [Separate Matrix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/separate_matrix.html)
+> Node [Separate Matrix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/separate_matrix.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Matrix](matrix.md#matrix) :black_small_square: [Content](matrix.md#content) :black_small_square: [Properties](matrix.md#properties)</sub>
 
@@ -90,7 +90,7 @@ matrix = Matrix([[0, 1, 0, 0], [1, 0, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]]) # Node
 > _type_: **column_2_row_1**
 >
 
-> Property Get [Separate Matrix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/separate_matrix.html)
+> Node [Separate Matrix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/separate_matrix.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Matrix](matrix.md#matrix) :black_small_square: [Content](matrix.md#content) :black_small_square: [Properties](matrix.md#properties)</sub>
 
@@ -99,7 +99,7 @@ matrix = Matrix([[0, 1, 0, 0], [1, 0, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]]) # Node
 > _type_: **column_2_row_2**
 >
 
-> Property Get [Separate Matrix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/separate_matrix.html)
+> Node [Separate Matrix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/separate_matrix.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Matrix](matrix.md#matrix) :black_small_square: [Content](matrix.md#content) :black_small_square: [Properties](matrix.md#properties)</sub>
 
@@ -108,7 +108,7 @@ matrix = Matrix([[0, 1, 0, 0], [1, 0, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]]) # Node
 > _type_: **column_2_row_3**
 >
 
-> Property Get [Separate Matrix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/separate_matrix.html)
+> Node [Separate Matrix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/separate_matrix.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Matrix](matrix.md#matrix) :black_small_square: [Content](matrix.md#content) :black_small_square: [Properties](matrix.md#properties)</sub>
 
@@ -117,7 +117,7 @@ matrix = Matrix([[0, 1, 0, 0], [1, 0, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]]) # Node
 > _type_: **column_2_row_4**
 >
 
-> Property Get [Separate Matrix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/separate_matrix.html)
+> Node [Separate Matrix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/separate_matrix.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Matrix](matrix.md#matrix) :black_small_square: [Content](matrix.md#content) :black_small_square: [Properties](matrix.md#properties)</sub>
 
@@ -126,7 +126,7 @@ matrix = Matrix([[0, 1, 0, 0], [1, 0, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]]) # Node
 > _type_: **column_3_row_1**
 >
 
-> Property Get [Separate Matrix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/separate_matrix.html)
+> Node [Separate Matrix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/separate_matrix.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Matrix](matrix.md#matrix) :black_small_square: [Content](matrix.md#content) :black_small_square: [Properties](matrix.md#properties)</sub>
 
@@ -135,7 +135,7 @@ matrix = Matrix([[0, 1, 0, 0], [1, 0, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]]) # Node
 > _type_: **column_3_row_2**
 >
 
-> Property Get [Separate Matrix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/separate_matrix.html)
+> Node [Separate Matrix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/separate_matrix.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Matrix](matrix.md#matrix) :black_small_square: [Content](matrix.md#content) :black_small_square: [Properties](matrix.md#properties)</sub>
 
@@ -144,7 +144,7 @@ matrix = Matrix([[0, 1, 0, 0], [1, 0, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]]) # Node
 > _type_: **column_3_row_3**
 >
 
-> Property Get [Separate Matrix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/separate_matrix.html)
+> Node [Separate Matrix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/separate_matrix.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Matrix](matrix.md#matrix) :black_small_square: [Content](matrix.md#content) :black_small_square: [Properties](matrix.md#properties)</sub>
 
@@ -153,7 +153,7 @@ matrix = Matrix([[0, 1, 0, 0], [1, 0, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]]) # Node
 > _type_: **column_3_row_4**
 >
 
-> Property Get [Separate Matrix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/separate_matrix.html)
+> Node [Separate Matrix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/separate_matrix.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Matrix](matrix.md#matrix) :black_small_square: [Content](matrix.md#content) :black_small_square: [Properties](matrix.md#properties)</sub>
 
@@ -162,7 +162,7 @@ matrix = Matrix([[0, 1, 0, 0], [1, 0, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]]) # Node
 > _type_: **column_4_row_1**
 >
 
-> Property Get [Separate Matrix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/separate_matrix.html)
+> Node [Separate Matrix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/separate_matrix.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Matrix](matrix.md#matrix) :black_small_square: [Content](matrix.md#content) :black_small_square: [Properties](matrix.md#properties)</sub>
 
@@ -171,7 +171,7 @@ matrix = Matrix([[0, 1, 0, 0], [1, 0, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]]) # Node
 > _type_: **column_4_row_2**
 >
 
-> Property Get [Separate Matrix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/separate_matrix.html)
+> Node [Separate Matrix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/separate_matrix.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Matrix](matrix.md#matrix) :black_small_square: [Content](matrix.md#content) :black_small_square: [Properties](matrix.md#properties)</sub>
 
@@ -180,7 +180,7 @@ matrix = Matrix([[0, 1, 0, 0], [1, 0, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]]) # Node
 > _type_: **column_4_row_3**
 >
 
-> Property Get [Separate Matrix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/separate_matrix.html)
+> Node [Separate Matrix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/separate_matrix.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Matrix](matrix.md#matrix) :black_small_square: [Content](matrix.md#content) :black_small_square: [Properties](matrix.md#properties)</sub>
 
@@ -189,7 +189,7 @@ matrix = Matrix([[0, 1, 0, 0], [1, 0, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]]) # Node
 > _type_: **column_4_row_4**
 >
 
-> Property Get [Separate Matrix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/separate_matrix.html)
+> Node [Separate Matrix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/separate_matrix.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Matrix](matrix.md#matrix) :black_small_square: [Content](matrix.md#content) :black_small_square: [Properties](matrix.md#properties)</sub>
 
@@ -198,7 +198,7 @@ matrix = Matrix([[0, 1, 0, 0], [1, 0, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]]) # Node
 > _type_: **rotation**
 >
 
-> Property Get [Separate Transform](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/separate_transform.html)
+> Node [Separate Transform](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/separate_transform.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Matrix](matrix.md#matrix) :black_small_square: [Content](matrix.md#content) :black_small_square: [Properties](matrix.md#properties)</sub>
 
@@ -207,7 +207,7 @@ matrix = Matrix([[0, 1, 0, 0], [1, 0, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]]) # Node
 > _type_: **scale**
 >
 
-> Property Get [Separate Transform](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/separate_transform.html)
+> Node [Separate Transform](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/separate_transform.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Matrix](matrix.md#matrix) :black_small_square: [Content](matrix.md#content) :black_small_square: [Properties](matrix.md#properties)</sub>
 
@@ -216,7 +216,7 @@ matrix = Matrix([[0, 1, 0, 0], [1, 0, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]]) # Node
 > _type_: **tuple**
 >
 
-> Property Get [Separate Matrix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/separate_matrix.html)
+> Node [Separate Matrix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/separate_matrix.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Matrix](matrix.md#matrix) :black_small_square: [Content](matrix.md#content) :black_small_square: [Properties](matrix.md#properties)</sub>
 
@@ -225,7 +225,7 @@ matrix = Matrix([[0, 1, 0, 0], [1, 0, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]]) # Node
 > _type_: **translation**
 >
 
-> Property Get [Separate Transform](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/separate_transform.html)
+> Node [Separate Transform](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/separate_transform.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Matrix](matrix.md#matrix) :black_small_square: [Content](matrix.md#content) :black_small_square: [Properties](matrix.md#properties)</sub>
 
@@ -234,7 +234,7 @@ matrix = Matrix([[0, 1, 0, 0], [1, 0, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]]) # Node
 > _type_: **tuple**
 >
 
-> Property Get [Separate Transform](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/separate_transform.html)
+> Node [Separate Transform](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/separate_transform.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Matrix](matrix.md#matrix) :black_small_square: [Content](matrix.md#content) :black_small_square: [Properties](matrix.md#properties)</sub>
 
@@ -251,7 +251,7 @@ matrix = Matrix([[0, 1, 0, 0], [1, 0, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]]) # Node
 Combine(column_1_row_1=None, column_1_row_2=None, column_1_row_3=None, column_1_row_4=None, column_2_row_1=None, column_2_row_2=None, column_2_row_3=None, column_2_row_4=None, column_3_row_1=None, column_3_row_2=None, column_3_row_3=None, column_3_row_4=None, column_4_row_1=None, column_4_row_2=None, column_4_row_3=None, column_4_row_4=None)
 ```
 
-> Constructor [Combine Matrix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/combine_matrix.html)
+> Node [Combine Matrix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/combine_matrix.html)
 
 #### Arguments:
 - **column_1_row_1** (_Float_ = None) : socket 'Column 1 Row 1' (id: Column 1 Row 1)
@@ -287,7 +287,7 @@ Combine(column_1_row_1=None, column_1_row_2=None, column_1_row_3=None, column_1_
 CombineTransform(translation=None, rotation=None, scale=None)
 ```
 
-> Constructor [Combine Transform](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/combine_transform.html)
+> Node [Combine Transform](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/combine_transform.html)
 
 #### Arguments:
 - **translation** (_Vector_ = None) : socket 'Translation' (id: Translation)
@@ -310,7 +310,7 @@ CombineTransform(translation=None, rotation=None, scale=None)
 determinant()
 ```
 
-> Method [Matrix Determinant](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/matrix_determinant.html)
+> Node [Matrix Determinant](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/matrix_determinant.html)
 
 #### Information:
 - **Socket** : self
@@ -352,7 +352,7 @@ FromArray(array)
 hash_value(seed=None)
 ```
 
-> Method [Hash Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/hash_value.html)
+> Node [Hash Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/hash_value.html)
 
 #### Information:
 - **Socket** : self
@@ -413,7 +413,7 @@ matrix = Matrix([[0, 1, 0, 0], [1, 0, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]]) # Node
 invert()
 ```
 
-> Method [Invert Matrix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/invert_matrix.html)
+> Node [Invert Matrix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/invert_matrix.html)
 
 #### Information:
 - **Socket** : self
@@ -434,7 +434,7 @@ invert()
 multiply(matrix=None)
 ```
 
-> Method [Multiply Matrices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/multiply_matrices.html)
+> Node [Multiply Matrices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/multiply_matrices.html)
 
 #### Information:
 - **Socket** : self
@@ -460,7 +460,7 @@ multiply(matrix=None)
 Named(name=None)
 ```
 
-> Constructor [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
+> Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
 #### Information:
 - **Parameter** : 'FLOAT4X4'
@@ -486,7 +486,7 @@ Named(name=None)
 NamedAttribute(name=None)
 ```
 
-> Constructor [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
+> Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
 #### Information:
 - **Parameter** : 'FLOAT4X4'
@@ -512,7 +512,7 @@ NamedAttribute(name=None)
 project_point(vector=None)
 ```
 
-> Method [Project Point](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/project_point.html)
+> Node [Project Point](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/project_point.html)
 
 #### Information:
 - **Socket** : self
@@ -538,7 +538,7 @@ project_point(vector=None)
 separate_matrix()
 ```
 
-> Method [Separate Matrix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/separate_matrix.html)
+> Node [Separate Matrix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/separate_matrix.html)
 
 #### Information:
 - **Socket** : self
@@ -559,7 +559,7 @@ separate_matrix()
 separate_transform()
 ```
 
-> Method [Separate Transform](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/separate_transform.html)
+> Node [Separate Transform](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/separate_transform.html)
 
 #### Information:
 - **Socket** : self
@@ -580,7 +580,7 @@ separate_transform()
 transform_direction(direction=None)
 ```
 
-> Method [Transform Direction](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/transform_direction.html)
+> Node [Transform Direction](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/transform_direction.html)
 
 #### Information:
 - **Socket** : self
@@ -606,7 +606,7 @@ transform_direction(direction=None)
 transform_gizmo(*value, position=None, rotation=None, use_rotation_x=True, use_rotation_y=True, use_rotation_z=True, use_scale_x=True, use_scale_y=True, use_scale_z=True, use_translation_x=True, use_translation_y=True, use_translation_z=True)
 ```
 
-> Method ERROR: Node 'Transform Gizmo' not found
+> Node ERROR: Node 'Transform Gizmo' not found
 
 #### Arguments:
 - **value** (_Matrix_) : socket 'Value' (id: Value)
@@ -638,7 +638,7 @@ transform_gizmo(*value, position=None, rotation=None, use_rotation_x=True, use_r
 transform_point(vector=None)
 ```
 
-> Method [Transform Point](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/transform_point.html)
+> Node [Transform Point](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/transform_point.html)
 
 #### Information:
 - **Socket** : self
@@ -664,7 +664,7 @@ transform_point(vector=None)
 transpose()
 ```
 
-> Method [Transpose Matrix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/transpose_matrix.html)
+> Node [Transpose Matrix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/transpose_matrix.html)
 
 #### Information:
 - **Socket** : self

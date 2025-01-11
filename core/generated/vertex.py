@@ -9,7 +9,7 @@ class Vertex(Socket):
     """
     @classmethod
     def corners(cls, vertex_index=None, weights=None, sort_index=None):
-        """ > Class Method <&Node Corners of Vertex>
+        """ > Node <&Node Corners of Vertex>
 
         Arguments
         ---------
@@ -26,7 +26,7 @@ class Vertex(Socket):
 
     @classmethod
     def corner_index(cls, vertex_index=None, weights=None, sort_index=None):
-        """ > Class Method <&Node Corners of Vertex>
+        """ > Node <&Node Corners of Vertex>
 
         Arguments
         ---------
@@ -43,7 +43,7 @@ class Vertex(Socket):
 
     @classmethod
     def corners_total(cls, vertex_index=None, weights=None, sort_index=None):
-        """ > Class Method <&Node Corners of Vertex>
+        """ > Node <&Node Corners of Vertex>
 
         Arguments
         ---------
@@ -60,7 +60,7 @@ class Vertex(Socket):
 
     @classmethod
     def edges(cls, vertex_index=None, weights=None, sort_index=None):
-        """ > Class Method <&Node Edges of Vertex>
+        """ > Node <&Node Edges of Vertex>
 
         Arguments
         ---------
@@ -77,7 +77,7 @@ class Vertex(Socket):
 
     @classmethod
     def edge_index(cls, vertex_index=None, weights=None, sort_index=None):
-        """ > Class Method <&Node Edges of Vertex>
+        """ > Node <&Node Edges of Vertex>
 
         Arguments
         ---------
@@ -94,7 +94,7 @@ class Vertex(Socket):
 
     @classmethod
     def edges_total(cls, vertex_index=None, weights=None, sort_index=None):
-        """ > Class Method <&Node Edges of Vertex>
+        """ > Node <&Node Edges of Vertex>
 
         Arguments
         ---------
@@ -111,7 +111,7 @@ class Vertex(Socket):
 
     @classmethod
     def neighbors(cls):
-        """ > Class Method <&Node Vertex Neighbors>
+        """ > Node <&Node Vertex Neighbors>
 
         Returns
         -------
@@ -123,7 +123,7 @@ class Vertex(Socket):
     @classmethod
     @property
     def neighbors_vertex_count(cls):
-        """ > Property Get <&Node Vertex Neighbors>
+        """ > Node <&Node Vertex Neighbors>
 
         Returns
         -------
@@ -135,7 +135,7 @@ class Vertex(Socket):
     @classmethod
     @property
     def neighbors_face_count(cls):
-        """ > Property Get <&Node Vertex Neighbors>
+        """ > Node <&Node Vertex Neighbors>
 
         Returns
         -------
@@ -145,7 +145,7 @@ class Vertex(Socket):
         return node.face_count
 
     def to_points(self, position=None, radius=None):
-        """ > Method <&Node Mesh to Points>
+        """ > Node <&Node Mesh to Points>
 
         Information
         -----------

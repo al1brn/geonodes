@@ -74,7 +74,7 @@ float = Float(3.14, name="User input", subtype='ANGLE') # Create a new Float gro
 abs(use_clamp=False)
 ```
 
-> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Socket** : self
@@ -101,7 +101,7 @@ abs(use_clamp=False)
 add(value=None, use_clamp=False)
 ```
 
-> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Socket** : self
@@ -154,7 +154,7 @@ Angle(value=0.0, name='Angle', min=None, max=None, tip=None, panel=None, default
 arccosine(use_clamp=False)
 ```
 
-> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Socket** : self
@@ -181,7 +181,7 @@ arccosine(use_clamp=False)
 arcsine(use_clamp=False)
 ```
 
-> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Socket** : self
@@ -208,7 +208,7 @@ arcsine(use_clamp=False)
 arctan2(value=None, use_clamp=False)
 ```
 
-> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Socket** : self
@@ -236,7 +236,7 @@ arctan2(value=None, use_clamp=False)
 arctangent(use_clamp=False)
 ```
 
-> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Socket** : self
@@ -263,7 +263,7 @@ arctangent(use_clamp=False)
 bevel(normal=None, samples=4)
 ```
 
-> Method [Bevel](https://docs.blender.org/manual/en/latest/render/shader_nodes/input/bevel.html)
+> Node [Bevel](https://docs.blender.org/manual/en/latest/render/shader_nodes/input/bevel.html)
 
 #### Information:
 - **Socket** : self
@@ -290,7 +290,7 @@ bevel(normal=None, samples=4)
 blur(iterations=None, weight=None)
 ```
 
-> Method [Blur Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/blur_attribute.html)
+> Node [Blur Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/blur_attribute.html)
 
 #### Information:
 - **Socket** : self
@@ -318,7 +318,7 @@ blur(iterations=None, weight=None)
 bump(distance=None, height=None, normal=None, invert=False)
 ```
 
-> Method [Bump](https://docs.blender.org/manual/en/latest/render/shader_nodes/vector/bump.html)
+> Node [Bump](https://docs.blender.org/manual/en/latest/render/shader_nodes/vector/bump.html)
 
 #### Information:
 - **Socket** : self
@@ -347,7 +347,7 @@ bump(distance=None, height=None, normal=None, invert=False)
 ceil(use_clamp=False)
 ```
 
-> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Socket** : self
@@ -374,7 +374,7 @@ ceil(use_clamp=False)
 clamp(min=None, max=None, clamp_type='MINMAX')
 ```
 
-> Method [Clamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/clamp.html)
+> Node [Clamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/clamp.html)
 
 #### Information:
 - **Socket** : self
@@ -402,7 +402,7 @@ clamp(min=None, max=None, clamp_type='MINMAX')
 clamp_minmax(min=None, max=None)
 ```
 
-> Method [Clamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/clamp.html)
+> Node [Clamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/clamp.html)
 
 #### Information:
 - **Socket** : self
@@ -430,7 +430,7 @@ clamp_minmax(min=None, max=None)
 clamp_range(min=None, max=None)
 ```
 
-> Method [Clamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/clamp.html)
+> Node [Clamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/clamp.html)
 
 #### Information:
 - **Socket** : self
@@ -506,7 +506,7 @@ ColorTemperature(value=0.0, name='Color Temperature', min=None, max=None, tip=No
 combine_color(green=None, blue=None, mode='RGB')
 ```
 
-> Method [Combine Color](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/color/combine_color.html)
+> Node [Combine Color](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/color/combine_color.html)
 
 #### Information:
 - **Socket** : self
@@ -534,7 +534,7 @@ combine_color(green=None, blue=None, mode='RGB')
 combine_color_HSL(saturation=None, lightness=None)
 ```
 
-> Method [Combine Color](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/color/combine_color.html)
+> Node [Combine Color](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/color/combine_color.html)
 
 #### Information:
 - **Socket** : self
@@ -562,7 +562,7 @@ combine_color_HSL(saturation=None, lightness=None)
 combine_color_HSV(saturation=None, value=None)
 ```
 
-> Method [Combine Color](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/color/combine_color.html)
+> Node [Combine Color](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/color/combine_color.html)
 
 #### Information:
 - **Socket** : self
@@ -590,7 +590,7 @@ combine_color_HSV(saturation=None, value=None)
 combine_color_RGB(green=None, blue=None)
 ```
 
-> Method [Combine Color](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/color/combine_color.html)
+> Node [Combine Color](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/color/combine_color.html)
 
 #### Information:
 - **Socket** : self
@@ -618,7 +618,7 @@ combine_color_RGB(green=None, blue=None)
 compare(value=None, epsilon=None, use_clamp=False)
 ```
 
-> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Socket** : self
@@ -647,7 +647,7 @@ compare(value=None, epsilon=None, use_clamp=False)
 cos(use_clamp=False)
 ```
 
-> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Socket** : self
@@ -674,7 +674,7 @@ cos(use_clamp=False)
 cosh(use_clamp=False)
 ```
 
-> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Socket** : self
@@ -701,7 +701,7 @@ cosh(use_clamp=False)
 degrees(use_clamp=False)
 ```
 
-> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Socket** : self
@@ -728,7 +728,7 @@ degrees(use_clamp=False)
 dial_gizmo(*value, position=None, up=None, screen_space=None, radius=None, color_id='PRIMARY')
 ```
 
-> Method ERROR: Node 'Dial Gizmo' not found
+> Node ERROR: Node 'Dial Gizmo' not found
 
 #### Arguments:
 - **value** (_Float_) : socket 'Value' (id: Value)
@@ -754,7 +754,7 @@ dial_gizmo(*value, position=None, up=None, screen_space=None, radius=None, color
 displacement(midlevel=None, scale=None, normal=None, space='OBJECT')
 ```
 
-> Method [Displacement](https://docs.blender.org/manual/en/latest/render/shader_nodes/vector/displacement.html)
+> Node [Displacement](https://docs.blender.org/manual/en/latest/render/shader_nodes/vector/displacement.html)
 
 #### Information:
 - **Socket** : self
@@ -808,7 +808,7 @@ Distance(value=0.0, name='Distance', min=None, max=None, tip=None, panel=None, d
 divide(value=None, use_clamp=False)
 ```
 
-> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Socket** : self
@@ -836,7 +836,7 @@ divide(value=None, use_clamp=False)
 equal(b=None, epsilon=None)
 ```
 
-> Method [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+> Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
 #### Information:
 - **Socket** : self
@@ -866,7 +866,7 @@ equal(b=None, epsilon=None)
 exp(use_clamp=False)
 ```
 
-> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Socket** : self
@@ -918,7 +918,7 @@ Factor(value=0.0, name='Factor', min=0, max=1, tip=None, panel=None, default_att
 float_curve(factor=None)
 ```
 
-> Method ERROR: Node 'Float Curve' not found
+> Node ERROR: Node 'Float Curve' not found
 
 #### Information:
 - **Socket** : self
@@ -944,7 +944,7 @@ float_curve(factor=None)
 floor(use_clamp=False)
 ```
 
-> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Socket** : self
@@ -971,7 +971,7 @@ floor(use_clamp=False)
 floored_modulo(value=None, use_clamp=False)
 ```
 
-> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Socket** : self
@@ -999,7 +999,7 @@ floored_modulo(value=None, use_clamp=False)
 fract(use_clamp=False)
 ```
 
-> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Socket** : self
@@ -1051,7 +1051,7 @@ Frequency(value=0.0, name='Frequency', min=None, max=None, tip=None, panel=None,
 fresnel(normal=None)
 ```
 
-> Method [Fresnel](https://docs.blender.org/manual/en/latest/render/shader_nodes/input/fresnel.html)
+> Node [Fresnel](https://docs.blender.org/manual/en/latest/render/shader_nodes/input/fresnel.html)
 
 #### Information:
 - **Socket** : self
@@ -1077,7 +1077,7 @@ fresnel(normal=None)
 Gabor(vector=None, scale=None, frequency=None, anisotropy=None, orientation=None, gabor_type='2D')
 ```
 
-> Constructor [Gabor Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gabor.html)
+> Node [Gabor Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gabor.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
@@ -1103,7 +1103,7 @@ Gabor(vector=None, scale=None, frequency=None, anisotropy=None, orientation=None
 greater_equal(b=None)
 ```
 
-> Method [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+> Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
 #### Information:
 - **Socket** : self
@@ -1132,7 +1132,7 @@ greater_equal(b=None)
 greater_than(b=None)
 ```
 
-> Method [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+> Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
 #### Information:
 - **Socket** : self
@@ -1161,7 +1161,7 @@ greater_than(b=None)
 grid_boolean(*grid_2, operation='DIFFERENCE')
 ```
 
-> Method ERROR: Node 'SDF Grid Boolean' not found
+> Node ERROR: Node 'SDF Grid Boolean' not found
 
 #### Information:
 - **Socket** : self
@@ -1188,7 +1188,7 @@ grid_boolean(*grid_2, operation='DIFFERENCE')
 hash_value(seed=None)
 ```
 
-> Method [Hash Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/hash_value.html)
+> Node [Hash Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/hash_value.html)
 
 #### Information:
 - **Socket** : self
@@ -1215,7 +1215,7 @@ hash_value(seed=None)
 hue_saturation_value(saturation=None, value=None, color=None, fac=None)
 ```
 
-> Method [Hue/Saturation/Value](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/color/hue_saturation.html)
+> Node [Hue/Saturation/Value](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/color/hue_saturation.html)
 
 #### Information:
 - **Socket** : self
@@ -1286,7 +1286,7 @@ float = Float(3.14, name="User input", subtype='ANGLE') # Create a new Float gro
 inverse_sqrt(use_clamp=False)
 ```
 
-> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Socket** : self
@@ -1313,7 +1313,7 @@ inverse_sqrt(use_clamp=False)
 layer_weight(normal=None)
 ```
 
-> Method [Layer Weight](https://docs.blender.org/manual/en/latest/render/shader_nodes/input/layer_weight.html)
+> Node [Layer Weight](https://docs.blender.org/manual/en/latest/render/shader_nodes/input/layer_weight.html)
 
 #### Information:
 - **Socket** : self
@@ -1339,7 +1339,7 @@ layer_weight(normal=None)
 less_equal(b=None)
 ```
 
-> Method [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+> Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
 #### Information:
 - **Socket** : self
@@ -1368,7 +1368,7 @@ less_equal(b=None)
 less_than(b=None)
 ```
 
-> Method [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+> Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
 #### Information:
 - **Socket** : self
@@ -1397,7 +1397,7 @@ less_than(b=None)
 light_falloff(smooth=None)
 ```
 
-> Method [Light Falloff](https://docs.blender.org/manual/en/latest/render/shader_nodes/color/light_falloff.html)
+> Node [Light Falloff](https://docs.blender.org/manual/en/latest/render/shader_nodes/color/light_falloff.html)
 
 #### Information:
 - **Socket** : self
@@ -1423,7 +1423,7 @@ light_falloff(smooth=None)
 linear_gizmo(*value, position=None, direction=None, color_id='PRIMARY', draw_style='ARROW')
 ```
 
-> Method ERROR: Node 'Linear Gizmo' not found
+> Node ERROR: Node 'Linear Gizmo' not found
 
 #### Arguments:
 - **value** (_Float_) : socket 'Value' (id: Value)
@@ -1448,7 +1448,7 @@ linear_gizmo(*value, position=None, direction=None, color_id='PRIMARY', draw_sty
 log(base=None, use_clamp=False)
 ```
 
-> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Socket** : self
@@ -1476,7 +1476,7 @@ log(base=None, use_clamp=False)
 map_range(from_min=None, from_max=None, to_min=None, to_max=None, clamp=True, interpolation_type='LINEAR')
 ```
 
-> Method [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
+> Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
 
 #### Information:
 - **Socket** : self
@@ -1508,7 +1508,7 @@ map_range(from_min=None, from_max=None, to_min=None, to_max=None, clamp=True, in
 map_range_linear(from_min=None, from_max=None, to_min=None, to_max=None, clamp=True)
 ```
 
-> Method [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
+> Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
 
 #### Information:
 - **Socket** : self
@@ -1540,7 +1540,7 @@ map_range_linear(from_min=None, from_max=None, to_min=None, to_max=None, clamp=T
 map_range_smoother_step(from_min=None, from_max=None, to_min=None, to_max=None, clamp=True)
 ```
 
-> Method [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
+> Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
 
 #### Information:
 - **Socket** : self
@@ -1572,7 +1572,7 @@ map_range_smoother_step(from_min=None, from_max=None, to_min=None, to_max=None, 
 map_range_smooth_step(from_min=None, from_max=None, to_min=None, to_max=None, clamp=True)
 ```
 
-> Method [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
+> Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
 
 #### Information:
 - **Socket** : self
@@ -1604,7 +1604,7 @@ map_range_smooth_step(from_min=None, from_max=None, to_min=None, to_max=None, cl
 map_range_stepped(from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True)
 ```
 
-> Method [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
+> Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
 
 #### Information:
 - **Socket** : self
@@ -1637,7 +1637,7 @@ map_range_stepped(from_min=None, from_max=None, to_min=None, to_max=None, steps=
 max(value=None, use_clamp=False)
 ```
 
-> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Socket** : self
@@ -1665,7 +1665,7 @@ max(value=None, use_clamp=False)
 mgreater_than(threshold=None, use_clamp=False)
 ```
 
-> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Socket** : self
@@ -1693,7 +1693,7 @@ mgreater_than(threshold=None, use_clamp=False)
 min(value=None, use_clamp=False)
 ```
 
-> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Socket** : self
@@ -1746,7 +1746,7 @@ mix(factor=None, other=None, clamp_factor=None)
 mless_than(threshold=None, use_clamp=False)
 ```
 
-> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Socket** : self
@@ -1774,7 +1774,7 @@ mless_than(threshold=None, use_clamp=False)
 modulo(value=None, use_clamp=False)
 ```
 
-> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Socket** : self
@@ -1802,7 +1802,7 @@ modulo(value=None, use_clamp=False)
 multiply(value=None, use_clamp=False)
 ```
 
-> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Socket** : self
@@ -1830,7 +1830,7 @@ multiply(value=None, use_clamp=False)
 multiply_add(multiplier=None, addend=None, use_clamp=False)
 ```
 
-> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Socket** : self
@@ -1859,7 +1859,7 @@ multiply_add(multiplier=None, addend=None, use_clamp=False)
 Named(name=None)
 ```
 
-> Constructor [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
+> Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
 #### Information:
 - **Parameter** : 'FLOAT'
@@ -1885,7 +1885,7 @@ Named(name=None)
 NamedAttribute(name=None)
 ```
 
-> Constructor [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
+> Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
 #### Information:
 - **Parameter** : 'FLOAT'
@@ -1911,7 +1911,7 @@ NamedAttribute(name=None)
 Noise(vector=None, scale=None, detail=None, roughness=None, lacunarity=None, distortion=None, noise_dimensions='3D', noise_type='FBM', normalize=True)
 ```
 
-> Constructor [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html)
+> Node [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
@@ -1940,7 +1940,7 @@ Noise(vector=None, scale=None, detail=None, roughness=None, lacunarity=None, dis
 normal_map(color=None, space='TANGENT', uv_map='')
 ```
 
-> Method [Normal Map](https://docs.blender.org/manual/en/latest/render/shader_nodes/vector/normal_map.html)
+> Node [Normal Map](https://docs.blender.org/manual/en/latest/render/shader_nodes/vector/normal_map.html)
 
 #### Information:
 - **Socket** : self
@@ -1968,7 +1968,7 @@ normal_map(color=None, space='TANGENT', uv_map='')
 not_equal(b=None, epsilon=None)
 ```
 
-> Method [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+> Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
 #### Information:
 - **Socket** : self
@@ -2047,7 +2047,7 @@ Percentage(value=0.0, name='Percentage', min=0, max=100, tip=None, panel=None, d
 pingpong(scale=None, use_clamp=False)
 ```
 
-> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Socket** : self
@@ -2075,7 +2075,7 @@ pingpong(scale=None, use_clamp=False)
 power(exponent=None, use_clamp=False)
 ```
 
-> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Socket** : self
@@ -2103,7 +2103,7 @@ power(exponent=None, use_clamp=False)
 radians(use_clamp=False)
 ```
 
-> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Socket** : self
@@ -2151,7 +2151,7 @@ Random(min=None, max=None, id=None, seed=None)
 round(use_clamp=False)
 ```
 
-> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Socket** : self
@@ -2178,7 +2178,7 @@ round(use_clamp=False)
 sample_grid(position=None, interpolation_mode='TRILINEAR')
 ```
 
-> Method ERROR: Node 'Sample Grid' not found
+> Node ERROR: Node 'Sample Grid' not found
 
 #### Information:
 - **Socket** : self
@@ -2206,7 +2206,7 @@ sample_grid(position=None, interpolation_mode='TRILINEAR')
 sample_grid_index(x=None, y=None, z=None)
 ```
 
-> Method ERROR: Node 'Sample Grid Index' not found
+> Node ERROR: Node 'Sample Grid Index' not found
 
 #### Information:
 - **Socket** : self
@@ -2235,7 +2235,7 @@ sample_grid_index(x=None, y=None, z=None)
 scene_time()
 ```
 
-> Class Method [Scene Time](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene/scene_time.html)
+> Node [Scene Time](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene/scene_time.html)
 
 #### Returns:
 - **node** (_Float_)
@@ -2251,7 +2251,7 @@ scene_time()
 sdf_difference(*grid_2)
 ```
 
-> Method ERROR: Node 'SDF Grid Boolean' not found
+> Node ERROR: Node 'SDF Grid Boolean' not found
 
 #### Information:
 - **Socket** : self
@@ -2278,7 +2278,7 @@ sdf_difference(*grid_2)
 sdf_intersect(*grid)
 ```
 
-> Method ERROR: Node 'SDF Grid Boolean' not found
+> Node ERROR: Node 'SDF Grid Boolean' not found
 
 #### Information:
 - **Parameter** : 'INTERSECT'
@@ -2304,7 +2304,7 @@ sdf_intersect(*grid)
 sdf_union(*grid)
 ```
 
-> Method ERROR: Node 'SDF Grid Boolean' not found
+> Node ERROR: Node 'SDF Grid Boolean' not found
 
 #### Information:
 - **Parameter** : 'UNION'
@@ -2330,7 +2330,7 @@ sdf_union(*grid)
 sign(use_clamp=False)
 ```
 
-> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Socket** : self
@@ -2357,7 +2357,7 @@ sign(use_clamp=False)
 sin(use_clamp=False)
 ```
 
-> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Socket** : self
@@ -2384,7 +2384,7 @@ sin(use_clamp=False)
 sinh(use_clamp=False)
 ```
 
-> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Socket** : self
@@ -2411,7 +2411,7 @@ sinh(use_clamp=False)
 smooth_max(value=None, distance=None, use_clamp=False)
 ```
 
-> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Socket** : self
@@ -2440,7 +2440,7 @@ smooth_max(value=None, distance=None, use_clamp=False)
 smooth_min(value=None, distance=None, use_clamp=False)
 ```
 
-> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Socket** : self
@@ -2469,7 +2469,7 @@ smooth_min(value=None, distance=None, use_clamp=False)
 snap(increment=None, use_clamp=False)
 ```
 
-> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Socket** : self
@@ -2497,7 +2497,7 @@ snap(increment=None, use_clamp=False)
 sqrt(use_clamp=False)
 ```
 
-> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Socket** : self
@@ -2524,7 +2524,7 @@ sqrt(use_clamp=False)
 subtract(value=None, use_clamp=False)
 ```
 
-> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Socket** : self
@@ -2552,7 +2552,7 @@ subtract(value=None, use_clamp=False)
 tan(use_clamp=False)
 ```
 
-> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Socket** : self
@@ -2579,7 +2579,7 @@ tan(use_clamp=False)
 tanh(use_clamp=False)
 ```
 
-> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Socket** : self
@@ -2656,7 +2656,7 @@ TimeAbsolute(value=0.0, name='Time Absolute', min=None, max=None, tip=None, pane
 to_integer(rounding_mode='ROUND')
 ```
 
-> Method [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/float_to_integer.html)
+> Node [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/float_to_integer.html)
 
 #### Information:
 - **Socket** : self
@@ -2682,7 +2682,7 @@ to_integer(rounding_mode='ROUND')
 to_mesh(threshold=None, adaptivity=None)
 ```
 
-> Method ERROR: Node 'Grid to Mesh' not found
+> Node ERROR: Node 'Grid to Mesh' not found
 
 #### Information:
 - **Socket** : self
@@ -2709,7 +2709,7 @@ to_mesh(threshold=None, adaptivity=None)
 to_string(decimals=None)
 ```
 
-> Method [Value to String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/value_to_string.html)
+> Node [Value to String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/value_to_string.html)
 
 #### Information:
 - **Socket** : self
@@ -2736,7 +2736,7 @@ to_string(decimals=None)
 trunc(use_clamp=False)
 ```
 
-> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Socket** : self
@@ -2763,7 +2763,7 @@ trunc(use_clamp=False)
 Voronoi(vector=None, scale=None, detail=None, roughness=None, lacunarity=None, randomness=None, distance='EUCLIDEAN', feature='F1', normalize=False, voronoi_dimensions='3D')
 ```
 
-> Constructor [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html)
+> Node [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
@@ -2818,7 +2818,7 @@ WaveLength(value=0.0, name='Wave Length', min=None, max=None, tip=None, panel=No
 wavelength()
 ```
 
-> Method [Wavelength](https://docs.blender.org/manual/en/latest/render/shader_nodes/converter/wavelength.html)
+> Node [Wavelength](https://docs.blender.org/manual/en/latest/render/shader_nodes/converter/wavelength.html)
 
 #### Information:
 - **Socket** : self
@@ -2839,7 +2839,7 @@ wavelength()
 WhiteNoise(vector=None, noise_dimensions='3D')
 ```
 
-> Constructor [White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html)
+> Node [White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
@@ -2861,7 +2861,7 @@ WhiteNoise(vector=None, noise_dimensions='3D')
 wireframe(use_pixel_size=False)
 ```
 
-> Method [Wireframe](https://docs.blender.org/manual/en/latest/render/shader_nodes/input/wireframe.html)
+> Node [Wireframe](https://docs.blender.org/manual/en/latest/render/shader_nodes/input/wireframe.html)
 
 #### Information:
 - **Socket** : self
@@ -2887,7 +2887,7 @@ wireframe(use_pixel_size=False)
 wrap(max=None, min=None, use_clamp=False)
 ```
 
-> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
 #### Information:
 - **Socket** : self

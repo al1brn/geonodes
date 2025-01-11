@@ -66,7 +66,7 @@ uv_map = cuve.uv_map_
 Absorption(color=None, density=None)
 ```
 
-> Constructor ERROR: Node 'Volume Absorption' not found
+> Node ERROR: Node 'Volume Absorption' not found
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (id: Color)
@@ -88,7 +88,7 @@ Absorption(color=None, density=None)
 info()
 ```
 
-> Class Method [Volume Info](https://docs.blender.org/manual/en/latest/render/shader_nodes/input/volume_info.html)
+> Node [Volume Info](https://docs.blender.org/manual/en/latest/render/shader_nodes/input/volume_info.html)
 
 #### Returns:
 - **node** (_Color_)
@@ -104,7 +104,7 @@ info()
 Principled(color=None, color_attribute=None, density=None, density_attribute=None, anisotropy=None, absorption_color=None, emission_strength=None, emission_color=None, blackbody_intensity=None, blackbody_tint=None, temperature=None, temperature_attribute=None)
 ```
 
-> Constructor ERROR: Node 'Principled Volume' not found
+> Node ERROR: Node 'Principled Volume' not found
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (id: Color)
@@ -136,7 +136,7 @@ Principled(color=None, color_attribute=None, density=None, density_attribute=Non
 Scatter(color=None, density=None, anisotropy=None, phase='HENYEY_GREENSTEIN')
 ```
 
-> Constructor ERROR: Node 'Volume Scatter' not found
+> Node ERROR: Node 'Volume Scatter' not found
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (id: Color)

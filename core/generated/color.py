@@ -9,7 +9,7 @@ class Color(Socket):
     """
     @classmethod
     def CombineRGB(cls, red=None, green=None, blue=None, alpha=None):
-        """ > Constructor <&Node Combine Color>
+        """ > Node <&Node Combine Color>
 
         Information
         -----------
@@ -31,7 +31,7 @@ class Color(Socket):
 
     @classmethod
     def CombineHSV(cls, hue=None, saturation=None, value=None, alpha=None):
-        """ > Constructor <&Node Combine Color>
+        """ > Node <&Node Combine Color>
 
         Information
         -----------
@@ -53,7 +53,7 @@ class Color(Socket):
 
     @classmethod
     def CombineHSL(cls, hue=None, saturation=None, lightness=None, alpha=None):
-        """ > Constructor <&Node Combine Color>
+        """ > Node <&Node Combine Color>
 
         Information
         -----------
@@ -75,7 +75,7 @@ class Color(Socket):
 
     @classmethod
     def Combine(cls, red=None, green=None, blue=None, alpha=None, mode='RGB'):
-        """ > Constructor <&Node Combine Color>
+        """ > Node <&Node Combine Color>
 
         Arguments
         ---------
@@ -89,11 +89,12 @@ class Color(Socket):
         -------
         - Color
         """
+        utils.check_enum_arg('mode', mode, 'Combine', ('RGB', 'HSV', 'HSL'))
         node = Node('Combine Color', sockets={'Red': red, 'Green': green, 'Blue': blue, 'Alpha': alpha}, mode=mode)
         return cls(node._out)
 
     def equal(self, b=None, epsilon=None):
-        """ > Method <&Node Compare>
+        """ > Node <&Node Compare>
 
         Information
         -----------
@@ -115,7 +116,7 @@ class Color(Socket):
         return node._out
 
     def not_equal(self, b=None, epsilon=None):
-        """ > Method <&Node Compare>
+        """ > Node <&Node Compare>
 
         Information
         -----------
@@ -137,7 +138,7 @@ class Color(Socket):
         return node._out
 
     def brighter(self, b=None):
-        """ > Method <&Node Compare>
+        """ > Node <&Node Compare>
 
         Information
         -----------
@@ -158,7 +159,7 @@ class Color(Socket):
         return node._out
 
     def darker(self, b=None):
-        """ > Method <&Node Compare>
+        """ > Node <&Node Compare>
 
         Information
         -----------
@@ -179,7 +180,7 @@ class Color(Socket):
         return node._out
 
     def hash_value(self, seed=None):
-        """ > Method <&Node Hash Value>
+        """ > Node <&Node Hash Value>
 
         Information
         -----------
@@ -198,7 +199,7 @@ class Color(Socket):
         return node._out
 
     def separate_RGB(self):
-        """ > Method <&Node Separate Color>
+        """ > Node <&Node Separate Color>
 
         Information
         -----------
@@ -213,7 +214,7 @@ class Color(Socket):
         return node._out
 
     def separate_HSV(self):
-        """ > Method <&Node Separate Color>
+        """ > Node <&Node Separate Color>
 
         Information
         -----------
@@ -228,7 +229,7 @@ class Color(Socket):
         return node._out
 
     def separate_HSL(self):
-        """ > Method <&Node Separate Color>
+        """ > Node <&Node Separate Color>
 
         Information
         -----------
@@ -243,7 +244,7 @@ class Color(Socket):
         return node._out
 
     def separate(self, mode='RGB'):
-        """ > Method <&Node Separate Color>
+        """ > Node <&Node Separate Color>
 
         Information
         -----------
@@ -257,12 +258,13 @@ class Color(Socket):
         -------
         - Float [green_ (Float), blue_ (Float), alpha_ (Float)]
         """
+        utils.check_enum_arg('mode', mode, 'separate', ('RGB', 'HSV', 'HSL'))
         node = self._cache('Separate Color', sockets={'Color': self}, mode=mode)
         return node._out
 
     @property
     def rgb(self):
-        """ > Property Get <&Node Separate Color>
+        """ > Node <&Node Separate Color>
 
         Information
         -----------
@@ -278,7 +280,7 @@ class Color(Socket):
 
     @property
     def hsv(self):
-        """ > Property Get <&Node Separate Color>
+        """ > Node <&Node Separate Color>
 
         Information
         -----------
@@ -293,7 +295,7 @@ class Color(Socket):
         return (node.hue, node.saturation, node.lightness, node.alpha)
 
     def separate_color(self):
-        """ > Method <&Node Separate Color>
+        """ > Node <&Node Separate Color>
 
         Information
         -----------
@@ -309,7 +311,7 @@ class Color(Socket):
 
     @property
     def hue(self):
-        """ > Property Get <&Node Separate Color>
+        """ > Node <&Node Separate Color>
 
         Information
         -----------
@@ -325,7 +327,7 @@ class Color(Socket):
 
     @property
     def saturation(self):
-        """ > Property Get <&Node Separate Color>
+        """ > Node <&Node Separate Color>
 
         Information
         -----------
@@ -341,7 +343,7 @@ class Color(Socket):
 
     @property
     def lightness(self):
-        """ > Property Get <&Node Separate Color>
+        """ > Node <&Node Separate Color>
 
         Information
         -----------
@@ -357,7 +359,7 @@ class Color(Socket):
 
     @property
     def alpha(self):
-        """ > Property Get <&Node Separate Color>
+        """ > Node <&Node Separate Color>
 
         Information
         -----------
@@ -373,7 +375,7 @@ class Color(Socket):
 
     @property
     def value(self):
-        """ > Property Get <&Node Separate Color>
+        """ > Node <&Node Separate Color>
 
         Information
         -----------
@@ -389,7 +391,7 @@ class Color(Socket):
 
     @property
     def red(self):
-        """ > Property Get <&Node Separate Color>
+        """ > Node <&Node Separate Color>
 
         Information
         -----------
@@ -405,7 +407,7 @@ class Color(Socket):
 
     @property
     def green(self):
-        """ > Property Get <&Node Separate Color>
+        """ > Node <&Node Separate Color>
 
         Information
         -----------
@@ -421,7 +423,7 @@ class Color(Socket):
 
     @property
     def blue(self):
-        """ > Property Get <&Node Separate Color>
+        """ > Node <&Node Separate Color>
 
         Information
         -----------
@@ -436,7 +438,7 @@ class Color(Socket):
         return node.blue
 
     def blur(self, iterations=None, weight=None):
-        """ > Method <&Node Blur Attribute>
+        """ > Node <&Node Blur Attribute>
 
         Information
         -----------
@@ -457,7 +459,7 @@ class Color(Socket):
 
     @classmethod
     def ImageTexture(cls, image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear'):
-        """ > Constructor <&Node Image Texture>
+        """ > Node <&Node Image Texture>
 
         Arguments
         ---------
@@ -471,12 +473,14 @@ class Color(Socket):
         -------
         - Color
         """
+        utils.check_enum_arg('extension', extension, 'ImageTexture', ('REPEAT', 'EXTEND', 'CLIP', 'MIRROR'))
+        utils.check_enum_arg('interpolation', interpolation, 'ImageTexture', ('Linear', 'Closest', 'Cubic'))
         node = Node('Image Texture', sockets={'Image': image, 'Vector': vector, 'Frame': frame}, extension=extension, interpolation=interpolation)
         return cls(node._out)
 
     @classmethod
     def Named(cls, name=None):
-        """ > Constructor <&Node Named Attribute>
+        """ > Node <&Node Named Attribute>
 
         Information
         -----------
@@ -495,7 +499,7 @@ class Color(Socket):
 
     @classmethod
     def NamedAttribute(cls, name=None):
-        """ > Constructor <&Node Named Attribute>
+        """ > Node <&Node Named Attribute>
 
         Information
         -----------
@@ -514,7 +518,7 @@ class Color(Socket):
 
     @classmethod
     def Blackbody(cls, temperature=None):
-        """ > Constructor <&Node Blackbody>
+        """ > Node <&Node Blackbody>
 
         Arguments
         ---------
@@ -528,7 +532,7 @@ class Color(Socket):
         return cls(node._out)
 
     def mix_mix(self, b=None, factor=None, clamp_factor=True, clamp_result=False):
-        """ > Method <&Node Mix>
+        """ > Node <&Node Mix>
 
         Information
         -----------
@@ -552,7 +556,7 @@ class Color(Socket):
         return node._out
 
     def mix_darken(self, b=None, factor=None, clamp_factor=True, clamp_result=False):
-        """ > Method <&Node Mix>
+        """ > Node <&Node Mix>
 
         Information
         -----------
@@ -576,7 +580,7 @@ class Color(Socket):
         return node._out
 
     def mix_multiply(self, b=None, factor=None, clamp_factor=True, clamp_result=False):
-        """ > Method <&Node Mix>
+        """ > Node <&Node Mix>
 
         Information
         -----------
@@ -600,7 +604,7 @@ class Color(Socket):
         return node._out
 
     def mix_burn(self, b=None, factor=None, clamp_factor=True, clamp_result=False):
-        """ > Method <&Node Mix>
+        """ > Node <&Node Mix>
 
         Information
         -----------
@@ -624,7 +628,7 @@ class Color(Socket):
         return node._out
 
     def mix_lighten(self, b=None, factor=None, clamp_factor=True, clamp_result=False):
-        """ > Method <&Node Mix>
+        """ > Node <&Node Mix>
 
         Information
         -----------
@@ -648,7 +652,7 @@ class Color(Socket):
         return node._out
 
     def mix_screen(self, b=None, factor=None, clamp_factor=True, clamp_result=False):
-        """ > Method <&Node Mix>
+        """ > Node <&Node Mix>
 
         Information
         -----------
@@ -672,7 +676,7 @@ class Color(Socket):
         return node._out
 
     def mix_dodge(self, b=None, factor=None, clamp_factor=True, clamp_result=False):
-        """ > Method <&Node Mix>
+        """ > Node <&Node Mix>
 
         Information
         -----------
@@ -696,7 +700,7 @@ class Color(Socket):
         return node._out
 
     def mix_add(self, b=None, factor=None, clamp_factor=True, clamp_result=False):
-        """ > Method <&Node Mix>
+        """ > Node <&Node Mix>
 
         Information
         -----------
@@ -720,7 +724,7 @@ class Color(Socket):
         return node._out
 
     def mix_overlay(self, b=None, factor=None, clamp_factor=True, clamp_result=False):
-        """ > Method <&Node Mix>
+        """ > Node <&Node Mix>
 
         Information
         -----------
@@ -744,7 +748,7 @@ class Color(Socket):
         return node._out
 
     def mix_soft_light(self, b=None, factor=None, clamp_factor=True, clamp_result=False):
-        """ > Method <&Node Mix>
+        """ > Node <&Node Mix>
 
         Information
         -----------
@@ -768,7 +772,7 @@ class Color(Socket):
         return node._out
 
     def mix_linear_light(self, b=None, factor=None, clamp_factor=True, clamp_result=False):
-        """ > Method <&Node Mix>
+        """ > Node <&Node Mix>
 
         Information
         -----------
@@ -792,7 +796,7 @@ class Color(Socket):
         return node._out
 
     def mix_difference(self, b=None, factor=None, clamp_factor=True, clamp_result=False):
-        """ > Method <&Node Mix>
+        """ > Node <&Node Mix>
 
         Information
         -----------
@@ -816,7 +820,7 @@ class Color(Socket):
         return node._out
 
     def mix_exclusion(self, b=None, factor=None, clamp_factor=True, clamp_result=False):
-        """ > Method <&Node Mix>
+        """ > Node <&Node Mix>
 
         Information
         -----------
@@ -840,7 +844,7 @@ class Color(Socket):
         return node._out
 
     def mix_subtract(self, b=None, factor=None, clamp_factor=True, clamp_result=False):
-        """ > Method <&Node Mix>
+        """ > Node <&Node Mix>
 
         Information
         -----------
@@ -864,7 +868,7 @@ class Color(Socket):
         return node._out
 
     def mix_divide(self, b=None, factor=None, clamp_factor=True, clamp_result=False):
-        """ > Method <&Node Mix>
+        """ > Node <&Node Mix>
 
         Information
         -----------
@@ -888,7 +892,7 @@ class Color(Socket):
         return node._out
 
     def mix_hue(self, b=None, factor=None, clamp_factor=True, clamp_result=False):
-        """ > Method <&Node Mix>
+        """ > Node <&Node Mix>
 
         Information
         -----------
@@ -912,7 +916,7 @@ class Color(Socket):
         return node._out
 
     def mix_saturation(self, b=None, factor=None, clamp_factor=True, clamp_result=False):
-        """ > Method <&Node Mix>
+        """ > Node <&Node Mix>
 
         Information
         -----------
@@ -936,7 +940,7 @@ class Color(Socket):
         return node._out
 
     def mix_color(self, b=None, factor=None, clamp_factor=True, clamp_result=False):
-        """ > Method <&Node Mix>
+        """ > Node <&Node Mix>
 
         Information
         -----------
@@ -960,7 +964,7 @@ class Color(Socket):
         return node._out
 
     def mix_value(self, b=None, factor=None, clamp_factor=True, clamp_result=False):
-        """ > Method <&Node Mix>
+        """ > Node <&Node Mix>
 
         Information
         -----------
@@ -984,7 +988,7 @@ class Color(Socket):
         return node._out
 
     def mix(self, b=None, factor=None, clamp_factor=True, clamp_result=False):
-        """ > Method <&Node Mix>
+        """ > Node <&Node Mix>
 
         Information
         -----------
@@ -1008,7 +1012,7 @@ class Color(Socket):
         return node._out
 
     def rgb_curves(self, fac=None):
-        """ > Method <&Node RGB Curves>
+        """ > Node <&Node RGB Curves>
 
         Information
         -----------
@@ -1027,7 +1031,7 @@ class Color(Socket):
 
     @classmethod
     def Brick(cls, vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2):
-        """ > Constructor <&Node Brick Texture>
+        """ > Node <&Node Brick Texture>
 
         Arguments
         ---------
@@ -1055,7 +1059,7 @@ class Color(Socket):
 
     @classmethod
     def Checker(cls, vector=None, color1=None, color2=None, scale=None):
-        """ > Constructor <&Node Checker Texture>
+        """ > Node <&Node Checker Texture>
 
         Arguments
         ---------
@@ -1073,7 +1077,7 @@ class Color(Socket):
 
     @classmethod
     def Gradient(cls, vector=None, gradient_type='LINEAR'):
-        """ > Constructor <&Node Gradient Texture>
+        """ > Node <&Node Gradient Texture>
 
         Arguments
         ---------
@@ -1084,12 +1088,13 @@ class Color(Socket):
         -------
         - Color
         """
+        utils.check_enum_arg('gradient_type', gradient_type, 'Gradient', ('LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL'))
         node = Node('Gradient Texture', sockets={'Vector': vector}, gradient_type=gradient_type)
         return cls(node._out)
 
     @classmethod
     def Magic(cls, vector=None, scale=None, distortion=None, turbulence_depth=2):
-        """ > Constructor <&Node Magic Texture>
+        """ > Node <&Node Magic Texture>
 
         Arguments
         ---------
@@ -1107,7 +1112,7 @@ class Color(Socket):
 
     @classmethod
     def Wave(cls, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', rings_direction='X', wave_profile='SIN', wave_type='BANDS'):
-        """ > Constructor <&Node Wave Texture>
+        """ > Node <&Node Wave Texture>
 
         Arguments
         ---------
@@ -1127,11 +1132,15 @@ class Color(Socket):
         -------
         - Color
         """
+        utils.check_enum_arg('bands_direction', bands_direction, 'Wave', ('X', 'Y', 'Z', 'DIAGONAL'))
+        utils.check_enum_arg('rings_direction', rings_direction, 'Wave', ('X', 'Y', 'Z', 'SPHERICAL'))
+        utils.check_enum_arg('wave_profile', wave_profile, 'Wave', ('SIN', 'SAW', 'TRI'))
+        utils.check_enum_arg('wave_type', wave_type, 'Wave', ('BANDS', 'RINGS'))
         node = Node('Wave Texture', sockets={'Vector': vector, 'Scale': scale, 'Distortion': distortion, 'Detail': detail, 'Detail Scale': detail_scale, 'Detail Roughness': detail_roughness, 'Phase Offset': phase_offset}, bands_direction=bands_direction, rings_direction=rings_direction, wave_profile=wave_profile, wave_type=wave_type)
         return cls(node._out)
 
     def ambient_occlusion(self, distance=None, normal=None, inside=False, only_local=False, samples=16):
-        """ > Method <&ShaderNode Ambient Occlusion>
+        """ > Node <&ShaderNode Ambient Occlusion>
 
         Information
         -----------
@@ -1153,7 +1162,7 @@ class Color(Socket):
         return node._out
 
     def background(self, strength=None):
-        """ > Method <&ShaderNode Background>
+        """ > Node <&ShaderNode Background>
 
         Information
         -----------
@@ -1171,7 +1180,7 @@ class Color(Socket):
         return node._out
 
     def brightness_contrast(self, bright=None, contrast=None):
-        """ > Method <&ShaderNode Brightness/Contrast>
+        """ > Node <&ShaderNode Brightness/Contrast>
 
         Information
         -----------
@@ -1190,7 +1199,7 @@ class Color(Socket):
         return node._out
 
     def gamma(self, gamma=None):
-        """ > Method <&ShaderNode Gamma>
+        """ > Node <&ShaderNode Gamma>
 
         Information
         -----------
@@ -1208,7 +1217,7 @@ class Color(Socket):
         return node._out
 
     def invert_color(self, fac=None):
-        """ > Method <&ShaderNode Invert Color>
+        """ > Node <&ShaderNode Invert Color>
 
         Information
         -----------
@@ -1226,7 +1235,7 @@ class Color(Socket):
         return node._out
 
     def aov_output(self, value=None, aov_name=''):
-        """ > Method <&ShaderNode AOV Output>
+        """ > Node <&ShaderNode AOV Output>
 
         Information
         -----------
@@ -1245,7 +1254,7 @@ class Color(Socket):
         return node._out
 
     def line_style_output(self, color_fac=None, alpha=None, alpha_fac=None, blend_type='MIX', is_active_output=True, target='ALL', use_alpha=False, use_clamp=False):
-        """ > Method <&ShaderNode Line Style Output>
+        """ > Node <&ShaderNode Line Style Output>
 
         Information
         -----------
@@ -1266,12 +1275,14 @@ class Color(Socket):
         -------
         - None
         """
+        utils.check_enum_arg('blend_type', blend_type, 'line_style_output', ('MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE'))
+        utils.check_enum_arg('target', target, 'line_style_output', ('ALL', 'EEVEE', 'CYCLES'))
         node = Node('Line Style Output', sockets={'Color': self, 'Color Fac': color_fac, 'Alpha': alpha, 'Alpha Fac': alpha_fac}, blend_type=blend_type, is_active_output=is_active_output, target=target, use_alpha=use_alpha, use_clamp=use_clamp)
         return node._out
 
     @classmethod
     def RGB(cls):
-        """ > Constructor <&ShaderNode RGB>
+        """ > Node <&ShaderNode RGB>
 
         Returns
         -------
@@ -1281,7 +1292,7 @@ class Color(Socket):
         return cls(node._out)
 
     def rgb_to_bw(self):
-        """ > Method <&ShaderNode RGB to BW>
+        """ > Node <&ShaderNode RGB to BW>
 
         Information
         -----------
@@ -1295,7 +1306,7 @@ class Color(Socket):
         return node._out
 
     def separate_col_RGB(self):
-        """ > Method <&ShaderNode Separate Color>
+        """ > Node <&ShaderNode Separate Color>
 
         Information
         -----------
@@ -1310,7 +1321,7 @@ class Color(Socket):
         return node._out
 
     def separate_col_HSV(self):
-        """ > Method <&ShaderNode Separate Color>
+        """ > Node <&ShaderNode Separate Color>
 
         Information
         -----------
@@ -1325,7 +1336,7 @@ class Color(Socket):
         return node._out
 
     def separate_col_HSL(self):
-        """ > Method <&ShaderNode Separate Color>
+        """ > Node <&ShaderNode Separate Color>
 
         Information
         -----------
@@ -1340,7 +1351,7 @@ class Color(Socket):
         return node._out
 
     def separate_col(self, mode='RGB'):
-        """ > Method <&ShaderNode Separate Color>
+        """ > Node <&ShaderNode Separate Color>
 
         Information
         -----------
@@ -1354,12 +1365,13 @@ class Color(Socket):
         -------
         - Float [green_ (Float), blue_ (Float)]
         """
+        utils.check_enum_arg('mode', mode, 'separate_col', ('RGB', 'HSV', 'HSL'))
         node = Node('Separate Color', sockets={'Color': self}, mode=mode)
         return node._out
 
     @classmethod
     def SkyTexture(cls, air_density=1.0, altitude=0.0, dust_density=1.0, ground_albedo=0.30000001192092896, ozone_density=1.0, sky_type='NISHITA', sun_disc=True, sun_elevation=0.2617993950843811, sun_intensity=1.0, sun_rotation=0.0, sun_size=0.009512044489383698, turbidity=2.200000047683716):
-        """ > Constructor <&ShaderNode Sky Texture>
+        """ > Node <&ShaderNode Sky Texture>
 
         Arguments
         ---------
@@ -1380,11 +1392,12 @@ class Color(Socket):
         -------
         - Color
         """
+        utils.check_enum_arg('sky_type', sky_type, 'SkyTexture', ('PREETHAM', 'HOSEK_WILKIE', 'NISHITA'))
         node = Node('Sky Texture', sockets={}, air_density=air_density, altitude=altitude, dust_density=dust_density, ground_albedo=ground_albedo, ozone_density=ozone_density, sky_type=sky_type, sun_disc=sun_disc, sun_elevation=sun_elevation, sun_intensity=sun_intensity, sun_rotation=sun_rotation, sun_size=sun_size, turbidity=turbidity)
         return cls(node._out)
 
     def vector_displacement(self, midlevel=None, scale=None, space='TANGENT'):
-        """ > Method <&ShaderNode Vector Displacement>
+        """ > Node <&ShaderNode Vector Displacement>
 
         Information
         -----------
@@ -1400,12 +1413,13 @@ class Color(Socket):
         -------
         - Vector
         """
+        utils.check_enum_arg('space', space, 'vector_displacement', ('TANGENT', 'OBJECT', 'WORLD'))
         node = Node('Vector Displacement', sockets={'Vector': self, 'Midlevel': midlevel, 'Scale': scale}, space=space)
         return node._out
 
     @classmethod
     def ColorAttribute(cls, layer_name=''):
-        """ > Constructor <&ShaderNode Color Attribute>
+        """ > Node <&ShaderNode Color Attribute>
 
         Arguments
         ---------

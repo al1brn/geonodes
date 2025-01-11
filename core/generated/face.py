@@ -9,7 +9,7 @@ class Face(Socket):
     """
     @classmethod
     def accumulate_field(cls, value=None, group_id=None):
-        """ > Class Method <&Node Accumulate Field>
+        """ > Node <&Node Accumulate Field>
 
         Information
         -----------
@@ -30,7 +30,7 @@ class Face(Socket):
         return node._out
 
     def attribute_statistic(self, attribute=None):
-        """ > Method <&Node Attribute Statistic>
+        """ > Node <&Node Attribute Statistic>
 
         Information
         -----------
@@ -53,7 +53,7 @@ class Face(Socket):
 
     @classmethod
     def corners(cls, face_index=None, weights=None, sort_index=None):
-        """ > Class Method <&Node Corners of Face>
+        """ > Node <&Node Corners of Face>
 
         Arguments
         ---------
@@ -70,7 +70,7 @@ class Face(Socket):
 
     @classmethod
     def corner_index(cls, face_index=None, weights=None, sort_index=None):
-        """ > Class Method <&Node Corners of Face>
+        """ > Node <&Node Corners of Face>
 
         Arguments
         ---------
@@ -87,7 +87,7 @@ class Face(Socket):
 
     @classmethod
     def corners_total(cls, face_index=None, weights=None, sort_index=None):
-        """ > Class Method <&Node Corners of Face>
+        """ > Node <&Node Corners of Face>
 
         Arguments
         ---------
@@ -103,7 +103,9 @@ class Face(Socket):
         return node.total
 
     def delete_geometry_all(self):
-        """ > Jump Method <&Node Delete Geometry>
+        """ > Node <&Node Delete Geometry>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -121,7 +123,9 @@ class Face(Socket):
         return self._domain_to_geometry
 
     def delete_geometry_edge_face(self):
-        """ > Jump Method <&Node Delete Geometry>
+        """ > Node <&Node Delete Geometry>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -139,7 +143,9 @@ class Face(Socket):
         return self._domain_to_geometry
 
     def delete_geometry_only_face(self):
-        """ > Jump Method <&Node Delete Geometry>
+        """ > Node <&Node Delete Geometry>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -157,7 +163,9 @@ class Face(Socket):
         return self._domain_to_geometry
 
     def delete_geometry(self, mode='ALL'):
-        """ > Jump Method <&Node Delete Geometry>
+        """ > Node <&Node Delete Geometry>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -173,12 +181,15 @@ class Face(Socket):
         -------
         - Geometry
         """
+        utils.check_enum_arg('mode', mode, 'delete_geometry', ('ALL', 'EDGE_FACE', 'ONLY_FACE'))
         node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='FACE', mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
 
     def delete_all(self):
-        """ > Jump Method <&Node Delete Geometry>
+        """ > Node <&Node Delete Geometry>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -196,7 +207,9 @@ class Face(Socket):
         return self._domain_to_geometry
 
     def delete_edge_face(self):
-        """ > Jump Method <&Node Delete Geometry>
+        """ > Node <&Node Delete Geometry>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -214,7 +227,9 @@ class Face(Socket):
         return self._domain_to_geometry
 
     def delete_only_face(self):
-        """ > Jump Method <&Node Delete Geometry>
+        """ > Node <&Node Delete Geometry>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -232,7 +247,9 @@ class Face(Socket):
         return self._domain_to_geometry
 
     def delete(self, mode='ALL'):
-        """ > Jump Method <&Node Delete Geometry>
+        """ > Node <&Node Delete Geometry>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -248,12 +265,13 @@ class Face(Socket):
         -------
         - Geometry
         """
+        utils.check_enum_arg('mode', mode, 'delete', ('ALL', 'EDGE_FACE', 'ONLY_FACE'))
         node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='FACE', mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
 
     def distribute_points_random(self, density=None, seed=None, use_legacy_normal=False):
-        """ > Method <&Node Distribute Points on Faces>
+        """ > Node <&Node Distribute Points on Faces>
 
         Information
         -----------
@@ -275,7 +293,7 @@ class Face(Socket):
         return node._out
 
     def distribute_points_poisson(self, distance_min=None, density_max=None, density_factor=None, seed=None, use_legacy_normal=False):
-        """ > Method <&Node Distribute Points on Faces>
+        """ > Node <&Node Distribute Points on Faces>
 
         Information
         -----------
@@ -299,7 +317,9 @@ class Face(Socket):
         return node._out
 
     def duplicate(self, amount=None):
-        """ > Jump Method <&Node Duplicate Elements>
+        """ > Node <&Node Duplicate Elements>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -321,7 +341,7 @@ class Face(Socket):
 
     @classmethod
     def evaluate_at_index(cls, index=None, value=None):
-        """ > Class Method <&Node Evaluate at Index>
+        """ > Node <&Node Evaluate at Index>
 
         Information
         -----------
@@ -343,7 +363,7 @@ class Face(Socket):
 
     @classmethod
     def evaluate_on_domain(cls, value=None):
-        """ > Class Method <&Node Evaluate on Domain>
+        """ > Node <&Node Evaluate on Domain>
 
         Information
         -----------
@@ -365,7 +385,7 @@ class Face(Socket):
     @classmethod
     @property
     def area(cls):
-        """ > Property Get <&Node Face Area>
+        """ > Node <&Node Face Area>
 
         Returns
         -------
@@ -376,7 +396,7 @@ class Face(Socket):
 
     @classmethod
     def is_planar(cls, threshold=None):
-        """ > Class Method <&Node Is Face Planar>
+        """ > Node <&Node Is Face Planar>
 
         Arguments
         ---------
@@ -391,7 +411,7 @@ class Face(Socket):
 
     @classmethod
     def neighbors(cls):
-        """ > Class Method <&Node Face Neighbors>
+        """ > Node <&Node Face Neighbors>
 
         Returns
         -------
@@ -403,7 +423,7 @@ class Face(Socket):
     @classmethod
     @property
     def neighbors_vertex_count(cls):
-        """ > Property Get <&Node Face Neighbors>
+        """ > Node <&Node Face Neighbors>
 
         Returns
         -------
@@ -415,7 +435,7 @@ class Face(Socket):
     @classmethod
     @property
     def neighbors_face_count(cls):
-        """ > Property Get <&Node Face Neighbors>
+        """ > Node <&Node Face Neighbors>
 
         Returns
         -------
@@ -427,7 +447,7 @@ class Face(Socket):
     @classmethod
     @property
     def normal(cls):
-        """ > Property Get <&Node Normal>
+        """ > Node <&Node Normal>
 
         Returns
         -------
@@ -437,7 +457,7 @@ class Face(Socket):
         return node._out
 
     def to_points(self, position=None, radius=None):
-        """ > Method <&Node Mesh to Points>
+        """ > Node <&Node Mesh to Points>
 
         Information
         -----------
@@ -458,7 +478,7 @@ class Face(Socket):
         return node._out
 
     def sample_index(self, value=None, index=None, clamp=False):
-        """ > Method <&Node Sample Index>
+        """ > Node <&Node Sample Index>
 
         Information
         -----------
@@ -481,7 +501,7 @@ class Face(Socket):
         return node._out
 
     def sample_nearest(self, sample_position=None):
-        """ > Method <&Node Sample Nearest>
+        """ > Node <&Node Sample Nearest>
 
         Information
         -----------
@@ -500,7 +520,9 @@ class Face(Socket):
         return node._out
 
     def scale(self, scale=None, center=None, scale_mode='UNIFORM'):
-        """ > Jump Method <&Node Scale Elements>
+        """ > Node <&Node Scale Elements>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -518,12 +540,15 @@ class Face(Socket):
         -------
         - Geometry
         """
+        utils.check_enum_arg('scale_mode', scale_mode, 'scale', ('UNIFORM', 'SINGLE_AXIS'))
         node = Node('Scale Elements', sockets={'Geometry': self, 'Selection': self._sel, 'Scale': scale, 'Center': center}, domain='FACE', scale_mode=scale_mode)
         self._jump(node._out)
         return self._domain_to_geometry
 
     def scale_uniform(self, scale=None, center=None):
-        """ > Jump Method <&Node Scale Elements>
+        """ > Node <&Node Scale Elements>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -546,7 +571,9 @@ class Face(Socket):
         return self._domain_to_geometry
 
     def scale_single_axis(self, scale=None, center=None, axis=None):
-        """ > Jump Method <&Node Scale Elements>
+        """ > Node <&Node Scale Elements>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -570,7 +597,9 @@ class Face(Socket):
         return self._domain_to_geometry
 
     def separate(self):
-        """ > Jump Method <&Node Separate Geometry>
+        """ > Node <&Node Separate Geometry>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -587,7 +616,9 @@ class Face(Socket):
         return self._domain_to_geometry
 
     def set_shade_smooth(self, shade_smooth=None):
-        """ > Jump Method <&Node Set Shade Smooth>
+        """ > Node <&Node Set Shade Smooth>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -608,7 +639,9 @@ class Face(Socket):
         return self._domain_to_geometry
 
     def sort(self, group_id=None, sort_weight=None):
-        """ > Jump Method <&Node Sort Elements>
+        """ > Node <&Node Sort Elements>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -630,7 +663,7 @@ class Face(Socket):
         return self._domain_to_geometry
 
     def split_to_instances(self, group_id=None):
-        """ > Method <&Node Split to Instances>
+        """ > Node <&Node Split to Instances>
 
         Information
         -----------
@@ -650,7 +683,9 @@ class Face(Socket):
         return node._out
 
     def store_named_attribute(self, name=None, value=None):
-        """ > Jump Method <&Node Store Named Attribute>
+        """ > Node <&Node Store Named Attribute>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -674,7 +709,9 @@ class Face(Socket):
         return self._domain_to_geometry
 
     def store(self, name=None, value=None):
-        """ > Jump Method <&Node Store Named Attribute>
+        """ > Node <&Node Store Named Attribute>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -699,7 +736,7 @@ class Face(Socket):
 
     @classmethod
     def active_element(cls):
-        """ > Class Method <&Node Active Element>
+        """ > Node <&Node Active Element>
 
         Information
         -----------
@@ -713,7 +750,9 @@ class Face(Socket):
         return node._out
 
     def set_selection(self):
-        """ > Jump Method <&Node Set Selection>
+        """ > Node <&Node Set Selection>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -732,7 +771,7 @@ class Face(Socket):
         return self._domain_to_geometry
 
     def viewer(self, value=None):
-        """ > Method <&Node Viewer>
+        """ > Node <&Node Viewer>
 
         Information
         -----------
@@ -757,7 +796,9 @@ class Face(Socket):
 
     @material.setter
     def material(self, material=None):
-        """ > Jump Method <&Node Set Material>
+        """ > Node <&Node Set Material>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -784,7 +825,9 @@ class Face(Socket):
 
     @material_index.setter
     def material_index(self, material_index=None):
-        """ > Jump Method <&Node Set Material Index>
+        """ > Node <&Node Set Material Index>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -811,7 +854,9 @@ class Face(Socket):
 
     @shade_smooth.setter
     def shade_smooth(self, shade_smooth=None):
-        """ > Jump Method <&Node Set Shade Smooth>
+        """ > Node <&Node Set Shade Smooth>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -839,7 +884,9 @@ class Face(Socket):
 
     @smooth.setter
     def smooth(self, shade_smooth=None):
-        """ > Jump Method <&Node Set Shade Smooth>
+        """ > Node <&Node Set Shade Smooth>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------

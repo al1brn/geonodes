@@ -69,7 +69,7 @@ Property get node <Node Set Curve Radius>
 curve_index(point_index=None)
 ```
 
-> Class Method [Curve of Point](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/topology/curve_of_point.html)
+> Node [Curve of Point](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/topology/curve_of_point.html)
 
 #### Arguments:
 - **point_index** (_Integer_ = None) : socket 'Point Index' (id: Point Index)
@@ -90,7 +90,7 @@ curve_index(point_index=None)
 curve_of_point(point_index=None)
 ```
 
-> Class Method [Curve of Point](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/topology/curve_of_point.html)
+> Node [Curve of Point](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/topology/curve_of_point.html)
 
 #### Arguments:
 - **point_index** (_Integer_ = None) : socket 'Point Index' (id: Point Index)
@@ -111,7 +111,7 @@ curve_of_point(point_index=None)
 index_in_curve(point_index=None)
 ```
 
-> Class Method [Curve of Point](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/topology/curve_of_point.html)
+> Node [Curve of Point](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/topology/curve_of_point.html)
 
 #### Arguments:
 - **point_index** (_Integer_ = None) : socket 'Point Index' (id: Point Index)
@@ -132,7 +132,7 @@ index_in_curve(point_index=None)
 offset_in_curve(point_index=None, offset=None)
 ```
 
-> Class Method [Offset Point in Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/topology/offset_point_in_curve.html)
+> Node [Offset Point in Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/topology/offset_point_in_curve.html)
 
 #### Arguments:
 - **point_index** (_Integer_ = None) : socket 'Point Index' (id: Point Index)
@@ -154,7 +154,7 @@ offset_in_curve(point_index=None, offset=None)
 to_points(count=None, mode='COUNT')
 ```
 
-> Method [Curve to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curve_to_points.html)
+> Node [Curve to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curve_to_points.html)
 
 #### Information:
 - **Socket** : self
@@ -181,7 +181,7 @@ to_points(count=None, mode='COUNT')
 to_points_count(count=None)
 ```
 
-> Method [Curve to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curve_to_points.html)
+> Node [Curve to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curve_to_points.html)
 
 #### Information:
 - **Socket** : self
@@ -208,7 +208,7 @@ to_points_count(count=None)
 to_points_evaluated()
 ```
 
-> Method [Curve to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curve_to_points.html)
+> Node [Curve to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curve_to_points.html)
 
 #### Information:
 - **Socket** : self
@@ -230,7 +230,7 @@ to_points_evaluated()
 to_points_length(length=None)
 ```
 
-> Method [Curve to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curve_to_points.html)
+> Node [Curve to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curve_to_points.html)
 
 #### Information:
 - **Socket** : self

@@ -8,7 +8,7 @@ class Collection(Socket):
     $DOC SET hidden
     """
     def info(self, separate_children=None, reset_children=None, transform_space='ORIGINAL'):
-        """ > Method <&Node Collection Info>
+        """ > Node <&Node Collection Info>
 
         Information
         -----------
@@ -24,6 +24,7 @@ class Collection(Socket):
         -------
         - Instances
         """
+        utils.check_enum_arg('transform_space', transform_space, 'info', ('ORIGINAL', 'RELATIVE'))
         node = self._cache('Collection Info', sockets={'Collection': self, 'Separate Children': separate_children, 'Reset Children': reset_children}, transform_space=transform_space)
         return node._out
 

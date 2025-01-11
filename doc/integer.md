@@ -70,7 +70,7 @@ i = Integer(123, name="User input", subtype='PERCENTAGE') # Create a new integer
 abs()
 ```
 
-> Method [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
 #### Information:
 - **Socket** : self
@@ -92,7 +92,7 @@ abs()
 add(value=None)
 ```
 
-> Method [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
 #### Information:
 - **Socket** : self
@@ -119,7 +119,7 @@ add(value=None)
 blur(iterations=None, weight=None)
 ```
 
-> Method [Blur Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/blur_attribute.html)
+> Node [Blur Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/blur_attribute.html)
 
 #### Information:
 - **Socket** : self
@@ -147,7 +147,7 @@ blur(iterations=None, weight=None)
 divide(value=None)
 ```
 
-> Method [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
 #### Information:
 - **Socket** : self
@@ -174,7 +174,7 @@ divide(value=None)
 divide_ceil(value=None)
 ```
 
-> Method [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
 #### Information:
 - **Socket** : self
@@ -201,7 +201,7 @@ divide_ceil(value=None)
 divide_floor(value=None)
 ```
 
-> Method [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
 #### Information:
 - **Socket** : self
@@ -228,7 +228,7 @@ divide_floor(value=None)
 divide_round(value=None)
 ```
 
-> Method [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
 #### Information:
 - **Socket** : self
@@ -255,7 +255,7 @@ divide_round(value=None)
 equal(b=None)
 ```
 
-> Method [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+> Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
 #### Information:
 - **Socket** : self
@@ -310,7 +310,7 @@ Factor(value=0, name='Factor', min=0, max=100, tip=None, panel=None, default_att
 floored_modulo(value=None)
 ```
 
-> Method [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
 #### Information:
 - **Socket** : self
@@ -337,7 +337,7 @@ floored_modulo(value=None)
 gcd(value=None)
 ```
 
-> Method [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
 #### Information:
 - **Socket** : self
@@ -364,7 +364,7 @@ gcd(value=None)
 greater_equal(b=None)
 ```
 
-> Method [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+> Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
 #### Information:
 - **Socket** : self
@@ -393,7 +393,7 @@ greater_equal(b=None)
 greater_than(b=None)
 ```
 
-> Method [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+> Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
 #### Information:
 - **Socket** : self
@@ -422,7 +422,7 @@ greater_than(b=None)
 hash_value(seed=None)
 ```
 
-> Method [Hash Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/hash_value.html)
+> Node [Hash Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/hash_value.html)
 
 #### Information:
 - **Socket** : self
@@ -492,7 +492,7 @@ i = Integer(123, name="User input", subtype='PERCENTAGE') # Create a new integer
 lcm(value=None)
 ```
 
-> Method [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
 #### Information:
 - **Socket** : self
@@ -519,7 +519,7 @@ lcm(value=None)
 less_equal(b=None)
 ```
 
-> Method [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+> Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
 #### Information:
 - **Socket** : self
@@ -548,7 +548,7 @@ less_equal(b=None)
 less_than(b=None)
 ```
 
-> Method [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+> Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
 #### Information:
 - **Socket** : self
@@ -577,7 +577,7 @@ less_than(b=None)
 max(value=None)
 ```
 
-> Method [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
 #### Information:
 - **Socket** : self
@@ -604,7 +604,7 @@ max(value=None)
 min(value=None)
 ```
 
-> Method [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
 #### Information:
 - **Socket** : self
@@ -656,7 +656,7 @@ mix(factor=None, other=None, clamp_factor=None)
 modulo(value=None)
 ```
 
-> Method [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
 #### Information:
 - **Socket** : self
@@ -683,7 +683,7 @@ modulo(value=None)
 multiply(value=None)
 ```
 
-> Method [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
 #### Information:
 - **Socket** : self
@@ -710,7 +710,7 @@ multiply(value=None)
 multiply_add(multiplier=None, addend=None)
 ```
 
-> Method [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
 #### Information:
 - **Socket** : self
@@ -738,7 +738,7 @@ multiply_add(multiplier=None, addend=None)
 Named(name=None)
 ```
 
-> Constructor [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
+> Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
 #### Information:
 - **Parameter** : 'INT'
@@ -764,7 +764,7 @@ Named(name=None)
 NamedAttribute(name=None)
 ```
 
-> Constructor [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
+> Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
 #### Information:
 - **Parameter** : 'INT'
@@ -790,7 +790,7 @@ NamedAttribute(name=None)
 negate()
 ```
 
-> Method [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
 #### Information:
 - **Socket** : self
@@ -812,7 +812,7 @@ negate()
 not_equal(b=None)
 ```
 
-> Method [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+> Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
 #### Information:
 - **Socket** : self
@@ -867,7 +867,7 @@ Percentage(value=0, name='Percentage', min=0, max=100, tip=None, panel=None, def
 power(exponent=None)
 ```
 
-> Method [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
 #### Information:
 - **Socket** : self
@@ -894,7 +894,7 @@ power(exponent=None)
 sample_grid(position=None, interpolation_mode='TRILINEAR')
 ```
 
-> Method ERROR: Node 'Sample Grid' not found
+> Node ERROR: Node 'Sample Grid' not found
 
 #### Information:
 - **Socket** : self
@@ -922,7 +922,7 @@ sample_grid(position=None, interpolation_mode='TRILINEAR')
 sample_grid_index(x=None, y=None, z=None)
 ```
 
-> Method ERROR: Node 'Sample Grid Index' not found
+> Node ERROR: Node 'Sample Grid Index' not found
 
 #### Information:
 - **Socket** : self
@@ -951,7 +951,7 @@ sample_grid_index(x=None, y=None, z=None)
 sign()
 ```
 
-> Method [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
 #### Information:
 - **Socket** : self
@@ -973,7 +973,7 @@ sign()
 subtract(value=None)
 ```
 
-> Method [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
 #### Information:
 - **Socket** : self
@@ -1000,7 +1000,7 @@ subtract(value=None)
 to_string()
 ```
 
-> Method [Value to String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/value_to_string.html)
+> Node [Value to String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/value_to_string.html)
 
 #### Information:
 - **Socket** : self

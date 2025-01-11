@@ -9,7 +9,7 @@ class SplinePoint(Socket):
     """
     @classmethod
     def curve_of_point(cls, point_index=None):
-        """ > Class Method <&Node Curve of Point>
+        """ > Node <&Node Curve of Point>
 
         Arguments
         ---------
@@ -24,7 +24,7 @@ class SplinePoint(Socket):
 
     @classmethod
     def curve_index(cls, point_index=None):
-        """ > Class Method <&Node Curve of Point>
+        """ > Node <&Node Curve of Point>
 
         Arguments
         ---------
@@ -39,7 +39,7 @@ class SplinePoint(Socket):
 
     @classmethod
     def index_in_curve(cls, point_index=None):
-        """ > Class Method <&Node Curve of Point>
+        """ > Node <&Node Curve of Point>
 
         Arguments
         ---------
@@ -53,7 +53,7 @@ class SplinePoint(Socket):
         return node.index_in_curve
 
     def to_points_evaluated(self):
-        """ > Method <&Node Curve to Points>
+        """ > Node <&Node Curve to Points>
 
         Information
         -----------
@@ -68,7 +68,7 @@ class SplinePoint(Socket):
         return node._out
 
     def to_points_count(self, count=None):
-        """ > Method <&Node Curve to Points>
+        """ > Node <&Node Curve to Points>
 
         Information
         -----------
@@ -87,7 +87,7 @@ class SplinePoint(Socket):
         return node._out
 
     def to_points_length(self, length=None):
-        """ > Method <&Node Curve to Points>
+        """ > Node <&Node Curve to Points>
 
         Information
         -----------
@@ -106,7 +106,7 @@ class SplinePoint(Socket):
         return node._out
 
     def to_points(self, count=None, mode='COUNT'):
-        """ > Method <&Node Curve to Points>
+        """ > Node <&Node Curve to Points>
 
         Information
         -----------
@@ -121,12 +121,13 @@ class SplinePoint(Socket):
         -------
         - Cloud [tangent_ (Vector), normal_ (Vector), rotation_ (Rotation)]
         """
+        utils.check_enum_arg('mode', mode, 'to_points', ('EVALUATED', 'COUNT', 'LENGTH'))
         node = Node('Curve to Points', sockets={'Curve': self, 'Count': count}, mode=mode)
         return node._out
 
     @classmethod
     def offset_in_curve(cls, point_index=None, offset=None):
-        """ > Class Method <&Node Offset Point in Curve>
+        """ > Node <&Node Offset Point in Curve>
 
         Arguments
         ---------
@@ -148,7 +149,9 @@ class SplinePoint(Socket):
 
     @radius.setter
     def radius(self, radius=None):
-        """ > Jump Method <&Node Set Curve Radius>
+        """ > Node <&Node Set Curve Radius>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------

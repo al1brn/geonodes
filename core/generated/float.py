@@ -8,7 +8,7 @@ class Float(Socket):
     $DOC SET hidden
     """
     def less_than(self, b=None):
-        """ > Method <&Node Compare>
+        """ > Node <&Node Compare>
 
         Information
         -----------
@@ -29,7 +29,7 @@ class Float(Socket):
         return node._out
 
     def less_equal(self, b=None):
-        """ > Method <&Node Compare>
+        """ > Node <&Node Compare>
 
         Information
         -----------
@@ -50,7 +50,7 @@ class Float(Socket):
         return node._out
 
     def greater_than(self, b=None):
-        """ > Method <&Node Compare>
+        """ > Node <&Node Compare>
 
         Information
         -----------
@@ -71,7 +71,7 @@ class Float(Socket):
         return node._out
 
     def greater_equal(self, b=None):
-        """ > Method <&Node Compare>
+        """ > Node <&Node Compare>
 
         Information
         -----------
@@ -92,7 +92,7 @@ class Float(Socket):
         return node._out
 
     def equal(self, b=None, epsilon=None):
-        """ > Method <&Node Compare>
+        """ > Node <&Node Compare>
 
         Information
         -----------
@@ -114,7 +114,7 @@ class Float(Socket):
         return node._out
 
     def not_equal(self, b=None, epsilon=None):
-        """ > Method <&Node Compare>
+        """ > Node <&Node Compare>
 
         Information
         -----------
@@ -136,7 +136,7 @@ class Float(Socket):
         return node._out
 
     def to_integer(self, rounding_mode='ROUND'):
-        """ > Method <&Node Float to Integer>
+        """ > Node <&Node Float to Integer>
 
         Information
         -----------
@@ -150,11 +150,12 @@ class Float(Socket):
         -------
         - Integer
         """
+        utils.check_enum_arg('rounding_mode', rounding_mode, 'to_integer', ('ROUND', 'FLOOR', 'CEILING', 'TRUNCATE'))
         node = Node('Float to Integer', sockets={'Float': self}, rounding_mode=rounding_mode)
         return node._out
 
     def hash_value(self, seed=None):
-        """ > Method <&Node Hash Value>
+        """ > Node <&Node Hash Value>
 
         Information
         -----------
@@ -174,7 +175,7 @@ class Float(Socket):
 
     @classmethod
     def Random(cls, min=None, max=None, id=None, seed=None):
-        """ > Constructor <&Node Random Value>
+        """ > Node <&Node Random Value>
 
         Information
         -----------
@@ -195,7 +196,7 @@ class Float(Socket):
         return cls(node._out)
 
     def to_string(self, decimals=None):
-        """ > Method <&Node Value to String>
+        """ > Node <&Node Value to String>
 
         Information
         -----------
@@ -214,7 +215,7 @@ class Float(Socket):
         return node._out
 
     def blur(self, iterations=None, weight=None):
-        """ > Method <&Node Blur Attribute>
+        """ > Node <&Node Blur Attribute>
 
         Information
         -----------
@@ -234,7 +235,7 @@ class Float(Socket):
         return node._out
 
     def dial_gizmo(self, *value, position=None, up=None, screen_space=None, radius=None, color_id='PRIMARY'):
-        """ > Method <&Node Dial Gizmo>
+        """ > Node <&Node Dial Gizmo>
 
         Arguments
         ---------
@@ -249,11 +250,12 @@ class Float(Socket):
         -------
         - Geometry
         """
+        utils.check_enum_arg('color_id', color_id, 'dial_gizmo', ('PRIMARY', 'SECONDARY', 'X', 'Y', 'Z'))
         node = Node('Dial Gizmo', sockets={'Value': [self] + list(value), 'Position': position, 'Up': up, 'Screen Space': screen_space, 'Radius': radius}, color_id=color_id)
         return node._out
 
     def linear_gizmo(self, *value, position=None, direction=None, color_id='PRIMARY', draw_style='ARROW'):
-        """ > Method <&Node Linear Gizmo>
+        """ > Node <&Node Linear Gizmo>
 
         Arguments
         ---------
@@ -267,11 +269,13 @@ class Float(Socket):
         -------
         - Geometry
         """
+        utils.check_enum_arg('color_id', color_id, 'linear_gizmo', ('PRIMARY', 'SECONDARY', 'X', 'Y', 'Z'))
+        utils.check_enum_arg('draw_style', draw_style, 'linear_gizmo', ('ARROW', 'CROSS', 'BOX'))
         node = Node('Linear Gizmo', sockets={'Value': [self] + list(value), 'Position': position, 'Direction': direction}, color_id=color_id, draw_style=draw_style)
         return node._out
 
     def to_mesh(self, threshold=None, adaptivity=None):
-        """ > Method <&Node Grid to Mesh>
+        """ > Node <&Node Grid to Mesh>
 
         Information
         -----------
@@ -291,7 +295,7 @@ class Float(Socket):
 
     @classmethod
     def Named(cls, name=None):
-        """ > Constructor <&Node Named Attribute>
+        """ > Node <&Node Named Attribute>
 
         Information
         -----------
@@ -310,7 +314,7 @@ class Float(Socket):
 
     @classmethod
     def NamedAttribute(cls, name=None):
-        """ > Constructor <&Node Named Attribute>
+        """ > Node <&Node Named Attribute>
 
         Information
         -----------
@@ -329,7 +333,7 @@ class Float(Socket):
 
     @classmethod
     def scene_time(cls):
-        """ > Class Method <&Node Scene Time>
+        """ > Node <&Node Scene Time>
 
         Returns
         -------
@@ -341,7 +345,7 @@ class Float(Socket):
     @classmethod
     @property
     def seconds(cls):
-        """ > Property Get <&Node Scene Time>
+        """ > Node <&Node Scene Time>
 
         Returns
         -------
@@ -353,7 +357,7 @@ class Float(Socket):
     @classmethod
     @property
     def frame(cls):
-        """ > Property Get <&Node Scene Time>
+        """ > Node <&Node Scene Time>
 
         Returns
         -------
@@ -363,7 +367,7 @@ class Float(Socket):
         return node.frame
 
     def grid_boolean(self, *grid_2, operation='DIFFERENCE'):
-        """ > Method <&Node SDF Grid Boolean>
+        """ > Node <&Node SDF Grid Boolean>
 
         Information
         -----------
@@ -378,11 +382,12 @@ class Float(Socket):
         -------
         - Float
         """
+        utils.check_enum_arg('operation', operation, 'grid_boolean', ('INTERSECT', 'UNION', 'DIFFERENCE'))
         node = Node('SDF Grid Boolean', sockets={'Grid 1': self, 'Grid 2': list(grid_2)}, operation=operation)
         return node._out
 
     def sdf_intersect(self, *grid):
-        """ > Method <&Node SDF Grid Boolean>
+        """ > Node <&Node SDF Grid Boolean>
 
         Information
         -----------
@@ -400,7 +405,7 @@ class Float(Socket):
         return node._out
 
     def sdf_union(self, *grid):
-        """ > Method <&Node SDF Grid Boolean>
+        """ > Node <&Node SDF Grid Boolean>
 
         Information
         -----------
@@ -418,7 +423,7 @@ class Float(Socket):
         return node._out
 
     def sdf_difference(self, *grid_2):
-        """ > Method <&Node SDF Grid Boolean>
+        """ > Node <&Node SDF Grid Boolean>
 
         Information
         -----------
@@ -437,7 +442,7 @@ class Float(Socket):
         return node._out
 
     def sample_grid(self, position=None, interpolation_mode='TRILINEAR'):
-        """ > Method <&Node Sample Grid>
+        """ > Node <&Node Sample Grid>
 
         Information
         -----------
@@ -453,11 +458,12 @@ class Float(Socket):
         -------
         - Float
         """
+        utils.check_enum_arg('interpolation_mode', interpolation_mode, 'sample_grid', ('NEAREST', 'TRILINEAR', 'TRIQUADRATIC'))
         node = Node('Sample Grid', sockets={'Grid': self, 'Position': position}, data_type='FLOAT', interpolation_mode=interpolation_mode)
         return node._out
 
     def sample_grid_index(self, x=None, y=None, z=None):
-        """ > Method <&Node Sample Grid Index>
+        """ > Node <&Node Sample Grid Index>
 
         Information
         -----------
@@ -478,7 +484,7 @@ class Float(Socket):
         return node._out
 
     def clamp(self, min=None, max=None, clamp_type='MINMAX'):
-        """ > Method <&Node Clamp>
+        """ > Node <&Node Clamp>
 
         Information
         -----------
@@ -494,11 +500,12 @@ class Float(Socket):
         -------
         - Float
         """
+        utils.check_enum_arg('clamp_type', clamp_type, 'clamp', ('MINMAX', 'RANGE'))
         node = Node('Clamp', sockets={'Value': self, 'Min': min, 'Max': max}, clamp_type=clamp_type)
         return node._out
 
     def clamp_minmax(self, min=None, max=None):
-        """ > Method <&Node Clamp>
+        """ > Node <&Node Clamp>
 
         Information
         -----------
@@ -518,7 +525,7 @@ class Float(Socket):
         return node._out
 
     def clamp_range(self, min=None, max=None):
-        """ > Method <&Node Clamp>
+        """ > Node <&Node Clamp>
 
         Information
         -----------
@@ -538,7 +545,7 @@ class Float(Socket):
         return node._out
 
     def float_curve(self, factor=None):
-        """ > Method <&Node Float Curve>
+        """ > Node <&Node Float Curve>
 
         Information
         -----------
@@ -556,7 +563,7 @@ class Float(Socket):
         return node._out
 
     def map_range(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True, interpolation_type='LINEAR'):
-        """ > Method <&Node Map Range>
+        """ > Node <&Node Map Range>
 
         Information
         -----------
@@ -576,12 +583,13 @@ class Float(Socket):
         -------
         - Float
         """
+        utils.check_enum_arg('interpolation_type', interpolation_type, 'map_range', ('LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP'))
         data_type = utils.get_argument_data_type(from_min, {'VALUE': 'FLOAT', 'VECTOR': 'FLOAT_VECTOR'}, 'Float.map_range', 'from_min')
         node = Node('Map Range', sockets={'Value': self, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}, clamp=clamp, data_type=data_type, interpolation_type=interpolation_type)
         return node._out
 
     def map_range_linear(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
-        """ > Method <&Node Map Range>
+        """ > Node <&Node Map Range>
 
         Information
         -----------
@@ -606,7 +614,7 @@ class Float(Socket):
         return node._out
 
     def map_range_stepped(self, from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True):
-        """ > Method <&Node Map Range>
+        """ > Node <&Node Map Range>
 
         Information
         -----------
@@ -632,7 +640,7 @@ class Float(Socket):
         return node._out
 
     def map_range_smooth_step(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
-        """ > Method <&Node Map Range>
+        """ > Node <&Node Map Range>
 
         Information
         -----------
@@ -657,7 +665,7 @@ class Float(Socket):
         return node._out
 
     def map_range_smoother_step(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
-        """ > Method <&Node Map Range>
+        """ > Node <&Node Map Range>
 
         Information
         -----------
@@ -682,7 +690,7 @@ class Float(Socket):
         return node._out
 
     def add(self, value=None, use_clamp=False):
-        """ > Method <&Node Math>
+        """ > Node <&Node Math>
 
         Information
         -----------
@@ -702,7 +710,7 @@ class Float(Socket):
         return node._out
 
     def subtract(self, value=None, use_clamp=False):
-        """ > Method <&Node Math>
+        """ > Node <&Node Math>
 
         Information
         -----------
@@ -722,7 +730,7 @@ class Float(Socket):
         return node._out
 
     def multiply(self, value=None, use_clamp=False):
-        """ > Method <&Node Math>
+        """ > Node <&Node Math>
 
         Information
         -----------
@@ -742,7 +750,7 @@ class Float(Socket):
         return node._out
 
     def divide(self, value=None, use_clamp=False):
-        """ > Method <&Node Math>
+        """ > Node <&Node Math>
 
         Information
         -----------
@@ -762,7 +770,7 @@ class Float(Socket):
         return node._out
 
     def multiply_add(self, multiplier=None, addend=None, use_clamp=False):
-        """ > Method <&Node Math>
+        """ > Node <&Node Math>
 
         Information
         -----------
@@ -783,7 +791,7 @@ class Float(Socket):
         return node._out
 
     def power(self, exponent=None, use_clamp=False):
-        """ > Method <&Node Math>
+        """ > Node <&Node Math>
 
         Information
         -----------
@@ -803,7 +811,7 @@ class Float(Socket):
         return node._out
 
     def log(self, base=None, use_clamp=False):
-        """ > Method <&Node Math>
+        """ > Node <&Node Math>
 
         Information
         -----------
@@ -823,7 +831,7 @@ class Float(Socket):
         return node._out
 
     def sqrt(self, use_clamp=False):
-        """ > Method <&Node Math>
+        """ > Node <&Node Math>
 
         Information
         -----------
@@ -842,7 +850,7 @@ class Float(Socket):
         return node._out
 
     def inverse_sqrt(self, use_clamp=False):
-        """ > Method <&Node Math>
+        """ > Node <&Node Math>
 
         Information
         -----------
@@ -861,7 +869,7 @@ class Float(Socket):
         return node._out
 
     def abs(self, use_clamp=False):
-        """ > Method <&Node Math>
+        """ > Node <&Node Math>
 
         Information
         -----------
@@ -880,7 +888,7 @@ class Float(Socket):
         return node._out
 
     def exp(self, use_clamp=False):
-        """ > Method <&Node Math>
+        """ > Node <&Node Math>
 
         Information
         -----------
@@ -899,7 +907,7 @@ class Float(Socket):
         return node._out
 
     def min(self, value=None, use_clamp=False):
-        """ > Method <&Node Math>
+        """ > Node <&Node Math>
 
         Information
         -----------
@@ -919,7 +927,7 @@ class Float(Socket):
         return node._out
 
     def max(self, value=None, use_clamp=False):
-        """ > Method <&Node Math>
+        """ > Node <&Node Math>
 
         Information
         -----------
@@ -939,7 +947,7 @@ class Float(Socket):
         return node._out
 
     def mless_than(self, threshold=None, use_clamp=False):
-        """ > Method <&Node Math>
+        """ > Node <&Node Math>
 
         Information
         -----------
@@ -959,7 +967,7 @@ class Float(Socket):
         return node._out
 
     def mgreater_than(self, threshold=None, use_clamp=False):
-        """ > Method <&Node Math>
+        """ > Node <&Node Math>
 
         Information
         -----------
@@ -979,7 +987,7 @@ class Float(Socket):
         return node._out
 
     def sign(self, use_clamp=False):
-        """ > Method <&Node Math>
+        """ > Node <&Node Math>
 
         Information
         -----------
@@ -998,7 +1006,7 @@ class Float(Socket):
         return node._out
 
     def compare(self, value=None, epsilon=None, use_clamp=False):
-        """ > Method <&Node Math>
+        """ > Node <&Node Math>
 
         Information
         -----------
@@ -1019,7 +1027,7 @@ class Float(Socket):
         return node._out
 
     def smooth_min(self, value=None, distance=None, use_clamp=False):
-        """ > Method <&Node Math>
+        """ > Node <&Node Math>
 
         Information
         -----------
@@ -1040,7 +1048,7 @@ class Float(Socket):
         return node._out
 
     def smooth_max(self, value=None, distance=None, use_clamp=False):
-        """ > Method <&Node Math>
+        """ > Node <&Node Math>
 
         Information
         -----------
@@ -1061,7 +1069,7 @@ class Float(Socket):
         return node._out
 
     def round(self, use_clamp=False):
-        """ > Method <&Node Math>
+        """ > Node <&Node Math>
 
         Information
         -----------
@@ -1080,7 +1088,7 @@ class Float(Socket):
         return node._out
 
     def floor(self, use_clamp=False):
-        """ > Method <&Node Math>
+        """ > Node <&Node Math>
 
         Information
         -----------
@@ -1099,7 +1107,7 @@ class Float(Socket):
         return node._out
 
     def ceil(self, use_clamp=False):
-        """ > Method <&Node Math>
+        """ > Node <&Node Math>
 
         Information
         -----------
@@ -1118,7 +1126,7 @@ class Float(Socket):
         return node._out
 
     def trunc(self, use_clamp=False):
-        """ > Method <&Node Math>
+        """ > Node <&Node Math>
 
         Information
         -----------
@@ -1137,7 +1145,7 @@ class Float(Socket):
         return node._out
 
     def fract(self, use_clamp=False):
-        """ > Method <&Node Math>
+        """ > Node <&Node Math>
 
         Information
         -----------
@@ -1156,7 +1164,7 @@ class Float(Socket):
         return node._out
 
     def modulo(self, value=None, use_clamp=False):
-        """ > Method <&Node Math>
+        """ > Node <&Node Math>
 
         Information
         -----------
@@ -1176,7 +1184,7 @@ class Float(Socket):
         return node._out
 
     def floored_modulo(self, value=None, use_clamp=False):
-        """ > Method <&Node Math>
+        """ > Node <&Node Math>
 
         Information
         -----------
@@ -1196,7 +1204,7 @@ class Float(Socket):
         return node._out
 
     def wrap(self, max=None, min=None, use_clamp=False):
-        """ > Method <&Node Math>
+        """ > Node <&Node Math>
 
         Information
         -----------
@@ -1217,7 +1225,7 @@ class Float(Socket):
         return node._out
 
     def snap(self, increment=None, use_clamp=False):
-        """ > Method <&Node Math>
+        """ > Node <&Node Math>
 
         Information
         -----------
@@ -1237,7 +1245,7 @@ class Float(Socket):
         return node._out
 
     def pingpong(self, scale=None, use_clamp=False):
-        """ > Method <&Node Math>
+        """ > Node <&Node Math>
 
         Information
         -----------
@@ -1257,7 +1265,7 @@ class Float(Socket):
         return node._out
 
     def sin(self, use_clamp=False):
-        """ > Method <&Node Math>
+        """ > Node <&Node Math>
 
         Information
         -----------
@@ -1276,7 +1284,7 @@ class Float(Socket):
         return node._out
 
     def cos(self, use_clamp=False):
-        """ > Method <&Node Math>
+        """ > Node <&Node Math>
 
         Information
         -----------
@@ -1295,7 +1303,7 @@ class Float(Socket):
         return node._out
 
     def tan(self, use_clamp=False):
-        """ > Method <&Node Math>
+        """ > Node <&Node Math>
 
         Information
         -----------
@@ -1314,7 +1322,7 @@ class Float(Socket):
         return node._out
 
     def arcsine(self, use_clamp=False):
-        """ > Method <&Node Math>
+        """ > Node <&Node Math>
 
         Information
         -----------
@@ -1333,7 +1341,7 @@ class Float(Socket):
         return node._out
 
     def arccosine(self, use_clamp=False):
-        """ > Method <&Node Math>
+        """ > Node <&Node Math>
 
         Information
         -----------
@@ -1352,7 +1360,7 @@ class Float(Socket):
         return node._out
 
     def arctangent(self, use_clamp=False):
-        """ > Method <&Node Math>
+        """ > Node <&Node Math>
 
         Information
         -----------
@@ -1371,7 +1379,7 @@ class Float(Socket):
         return node._out
 
     def arctan2(self, value=None, use_clamp=False):
-        """ > Method <&Node Math>
+        """ > Node <&Node Math>
 
         Information
         -----------
@@ -1391,7 +1399,7 @@ class Float(Socket):
         return node._out
 
     def sinh(self, use_clamp=False):
-        """ > Method <&Node Math>
+        """ > Node <&Node Math>
 
         Information
         -----------
@@ -1410,7 +1418,7 @@ class Float(Socket):
         return node._out
 
     def cosh(self, use_clamp=False):
-        """ > Method <&Node Math>
+        """ > Node <&Node Math>
 
         Information
         -----------
@@ -1429,7 +1437,7 @@ class Float(Socket):
         return node._out
 
     def tanh(self, use_clamp=False):
-        """ > Method <&Node Math>
+        """ > Node <&Node Math>
 
         Information
         -----------
@@ -1448,7 +1456,7 @@ class Float(Socket):
         return node._out
 
     def radians(self, use_clamp=False):
-        """ > Method <&Node Math>
+        """ > Node <&Node Math>
 
         Information
         -----------
@@ -1467,7 +1475,7 @@ class Float(Socket):
         return node._out
 
     def degrees(self, use_clamp=False):
-        """ > Method <&Node Math>
+        """ > Node <&Node Math>
 
         Information
         -----------
@@ -1486,7 +1494,7 @@ class Float(Socket):
         return node._out
 
     def mix(self, b=None, factor=None, clamp_factor=True):
-        """ > Method <&Node Mix>
+        """ > Node <&Node Mix>
 
         Information
         -----------
@@ -1511,7 +1519,7 @@ class Float(Socket):
 
     @classmethod
     def Gabor(cls, vector=None, scale=None, frequency=None, anisotropy=None, orientation=None, gabor_type='2D'):
-        """ > Constructor <&Node Gabor Texture>
+        """ > Node <&Node Gabor Texture>
 
         Arguments
         ---------
@@ -1526,12 +1534,13 @@ class Float(Socket):
         -------
         - Float
         """
+        utils.check_enum_arg('gabor_type', gabor_type, 'Gabor', ('2D', '3D'))
         node = Node('Gabor Texture', sockets={'Vector': vector, 'Scale': scale, 'Frequency': frequency, 'Anisotropy': anisotropy, 'Orientation 2D': orientation}, gabor_type=gabor_type)
         return cls(node._out)
 
     @classmethod
     def Noise(cls, vector=None, scale=None, detail=None, roughness=None, lacunarity=None, distortion=None, noise_dimensions='3D', noise_type='FBM', normalize=True):
-        """ > Constructor <&Node Noise Texture>
+        """ > Node <&Node Noise Texture>
 
         Arguments
         ---------
@@ -1549,12 +1558,14 @@ class Float(Socket):
         -------
         - Float
         """
+        utils.check_enum_arg('noise_dimensions', noise_dimensions, 'Noise', ('1D', '2D', '3D', '4D'))
+        utils.check_enum_arg('noise_type', noise_type, 'Noise', ('MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN'))
         node = Node('Noise Texture', sockets={'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Distortion': distortion}, noise_dimensions=noise_dimensions, noise_type=noise_type, normalize=normalize)
         return cls(node._out)
 
     @classmethod
     def Voronoi(cls, vector=None, scale=None, detail=None, roughness=None, lacunarity=None, randomness=None, distance='EUCLIDEAN', feature='F1', normalize=False, voronoi_dimensions='3D'):
-        """ > Constructor <&Node Voronoi Texture>
+        """ > Node <&Node Voronoi Texture>
 
         Arguments
         ---------
@@ -1573,12 +1584,15 @@ class Float(Socket):
         -------
         - Float
         """
+        utils.check_enum_arg('distance', distance, 'Voronoi', ('EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI'))
+        utils.check_enum_arg('feature', feature, 'Voronoi', ('F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS'))
+        utils.check_enum_arg('voronoi_dimensions', voronoi_dimensions, 'Voronoi', ('1D', '2D', '3D', '4D'))
         node = Node('Voronoi Texture', sockets={'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, distance=distance, feature=feature, normalize=normalize, voronoi_dimensions=voronoi_dimensions)
         return cls(node._out)
 
     @classmethod
     def WhiteNoise(cls, vector=None, noise_dimensions='3D'):
-        """ > Constructor <&Node White Noise Texture>
+        """ > Node <&Node White Noise Texture>
 
         Arguments
         ---------
@@ -1589,11 +1603,12 @@ class Float(Socket):
         -------
         - Float
         """
+        utils.check_enum_arg('noise_dimensions', noise_dimensions, 'WhiteNoise', ('1D', '2D', '3D', '4D'))
         node = Node('White Noise Texture', sockets={'Vector': vector}, noise_dimensions=noise_dimensions)
         return cls(node._out)
 
     def bevel(self, normal=None, samples=4):
-        """ > Method <&ShaderNode Bevel>
+        """ > Node <&ShaderNode Bevel>
 
         Information
         -----------
@@ -1612,7 +1627,7 @@ class Float(Socket):
         return node._out
 
     def bump(self, distance=None, height=None, normal=None, invert=False):
-        """ > Method <&ShaderNode Bump>
+        """ > Node <&ShaderNode Bump>
 
         Information
         -----------
@@ -1633,7 +1648,7 @@ class Float(Socket):
         return node._out
 
     def combine_color_RGB(self, green=None, blue=None):
-        """ > Method <&ShaderNode Combine Color>
+        """ > Node <&ShaderNode Combine Color>
 
         Information
         -----------
@@ -1653,7 +1668,7 @@ class Float(Socket):
         return node._out
 
     def combine_color_HSV(self, saturation=None, value=None):
-        """ > Method <&ShaderNode Combine Color>
+        """ > Node <&ShaderNode Combine Color>
 
         Information
         -----------
@@ -1673,7 +1688,7 @@ class Float(Socket):
         return node._out
 
     def combine_color_HSL(self, saturation=None, lightness=None):
-        """ > Method <&ShaderNode Combine Color>
+        """ > Node <&ShaderNode Combine Color>
 
         Information
         -----------
@@ -1693,7 +1708,7 @@ class Float(Socket):
         return node._out
 
     def combine_color(self, green=None, blue=None, mode='RGB'):
-        """ > Method <&ShaderNode Combine Color>
+        """ > Node <&ShaderNode Combine Color>
 
         Information
         -----------
@@ -1709,11 +1724,12 @@ class Float(Socket):
         -------
         - Color
         """
+        utils.check_enum_arg('mode', mode, 'combine_color', ('RGB', 'HSV', 'HSL'))
         node = Node('Combine Color', sockets={'Red': self, 'Green': green, 'Blue': blue}, mode=mode)
         return node._out
 
     def displacement(self, midlevel=None, scale=None, normal=None, space='OBJECT'):
-        """ > Method <&ShaderNode Displacement>
+        """ > Node <&ShaderNode Displacement>
 
         Information
         -----------
@@ -1730,11 +1746,12 @@ class Float(Socket):
         -------
         - Vector
         """
+        utils.check_enum_arg('space', space, 'displacement', ('OBJECT', 'WORLD'))
         node = Node('Displacement', sockets={'Height': self, 'Midlevel': midlevel, 'Scale': scale, 'Normal': normal}, space=space)
         return node._out
 
     def fresnel(self, normal=None):
-        """ > Method <&ShaderNode Fresnel>
+        """ > Node <&ShaderNode Fresnel>
 
         Information
         -----------
@@ -1752,7 +1769,7 @@ class Float(Socket):
         return node._out
 
     def hue_saturation_value(self, saturation=None, value=None, color=None, fac=None):
-        """ > Method <&ShaderNode Hue/Saturation/Value>
+        """ > Node <&ShaderNode Hue/Saturation/Value>
 
         Information
         -----------
@@ -1773,7 +1790,7 @@ class Float(Socket):
         return node._out
 
     def layer_weight(self, normal=None):
-        """ > Method <&ShaderNode Layer Weight>
+        """ > Node <&ShaderNode Layer Weight>
 
         Information
         -----------
@@ -1791,7 +1808,7 @@ class Float(Socket):
         return node._out
 
     def light_falloff(self, smooth=None):
-        """ > Method <&ShaderNode Light Falloff>
+        """ > Node <&ShaderNode Light Falloff>
 
         Information
         -----------
@@ -1809,7 +1826,7 @@ class Float(Socket):
         return node._out
 
     def normal_map(self, color=None, space='TANGENT', uv_map=''):
-        """ > Method <&ShaderNode Normal Map>
+        """ > Node <&ShaderNode Normal Map>
 
         Information
         -----------
@@ -1825,11 +1842,12 @@ class Float(Socket):
         -------
         - Vector
         """
+        utils.check_enum_arg('space', space, 'normal_map', ('TANGENT', 'OBJECT', 'WORLD', 'BLENDER_OBJECT', 'BLENDER_WORLD'))
         node = Node('Normal Map', sockets={'Strength': self, 'Color': color}, space=space, uv_map=uv_map)
         return node._out
 
     def wavelength(self):
-        """ > Method <&ShaderNode Wavelength>
+        """ > Node <&ShaderNode Wavelength>
 
         Information
         -----------
@@ -1843,7 +1861,7 @@ class Float(Socket):
         return node._out
 
     def wireframe(self, use_pixel_size=False):
-        """ > Method <&ShaderNode Wireframe>
+        """ > Node <&ShaderNode Wireframe>
 
         Information
         -----------

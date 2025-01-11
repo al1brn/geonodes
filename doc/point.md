@@ -87,7 +87,7 @@ Property get node <Node Set Position>
 accumulate_field(value=None, group_id=None)
 ```
 
-> Class Method [Accumulate Field](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/accumulate_field.html)
+> Node [Accumulate Field](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/accumulate_field.html)
 
 #### Information:
 - **Parameter** : depending on 'value' type
@@ -115,7 +115,7 @@ accumulate_field(value=None, group_id=None)
 active_element()
 ```
 
-> Class Method [Active Element](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/active_element.html)
+> Node [Active Element](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/active_element.html)
 
 #### Information:
 - **Parameter** : 'POINT'
@@ -136,7 +136,7 @@ active_element()
 attribute_statistic(attribute=None)
 ```
 
-> Method [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html)
+> Node [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html)
 
 #### Information:
 - **Socket** : self
@@ -165,7 +165,9 @@ attribute_statistic(attribute=None)
 delete(mode='ALL')
 ```
 
-> Jump Method [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/delete_geometry.html)
+> Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/delete_geometry.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
@@ -193,7 +195,9 @@ delete(mode='ALL')
 delete_all()
 ```
 
-> Jump Method [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/delete_geometry.html)
+> Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/delete_geometry.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
@@ -217,7 +221,9 @@ delete_all()
 delete_edge_face()
 ```
 
-> Jump Method [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/delete_geometry.html)
+> Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/delete_geometry.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
@@ -241,7 +247,9 @@ delete_edge_face()
 delete_geometry(mode='ALL')
 ```
 
-> Jump Method [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/delete_geometry.html)
+> Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/delete_geometry.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
@@ -269,7 +277,9 @@ delete_geometry(mode='ALL')
 delete_geometry_all()
 ```
 
-> Jump Method [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/delete_geometry.html)
+> Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/delete_geometry.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
@@ -293,7 +303,9 @@ delete_geometry_all()
 delete_geometry_edge_face()
 ```
 
-> Jump Method [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/delete_geometry.html)
+> Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/delete_geometry.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
@@ -317,7 +329,9 @@ delete_geometry_edge_face()
 delete_geometry_only_face()
 ```
 
-> Jump Method [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/delete_geometry.html)
+> Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/delete_geometry.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
@@ -341,7 +355,9 @@ delete_geometry_only_face()
 delete_only_face()
 ```
 
-> Jump Method [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/delete_geometry.html)
+> Node [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/delete_geometry.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
@@ -365,7 +381,9 @@ delete_only_face()
 duplicate(amount=None)
 ```
 
-> Jump Method [Duplicate Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/duplicate_elements.html)
+> Node [Duplicate Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/duplicate_elements.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
@@ -393,7 +411,7 @@ duplicate(amount=None)
 evaluate_at_index(index=None, value=None)
 ```
 
-> Class Method [Evaluate at Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/evaluate_at_index.html)
+> Node [Evaluate at Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/evaluate_at_index.html)
 
 #### Information:
 - **Parameter** : depending on 'value' type
@@ -421,7 +439,7 @@ evaluate_at_index(index=None, value=None)
 evaluate_on_domain(value=None)
 ```
 
-> Class Method [Evaluate on Domain](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/evaluate_on_domain.html)
+> Node [Evaluate on Domain](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/evaluate_on_domain.html)
 
 #### Information:
 - **Parameter** : depending on 'value' type
@@ -448,7 +466,7 @@ evaluate_on_domain(value=None)
 instance_on(instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None)
 ```
 
-> Method [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html)
+> Node [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html)
 
 #### Information:
 - **Socket** : self
@@ -479,7 +497,7 @@ instance_on(instance=None, pick_instance=None, instance_index=None, rotation=Non
 sample_index(value=None, index=None, clamp=False)
 ```
 
-> Method [Sample Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/sample_index.html)
+> Node [Sample Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/sample_index.html)
 
 #### Information:
 - **Socket** : self
@@ -509,7 +527,7 @@ sample_index(value=None, index=None, clamp=False)
 sample_nearest(sample_position=None)
 ```
 
-> Method [Sample Nearest](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/sample_nearest.html)
+> Node [Sample Nearest](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/sample_nearest.html)
 
 #### Information:
 - **Socket** : self
@@ -536,7 +554,9 @@ sample_nearest(sample_position=None)
 separate()
 ```
 
-> Jump Method [Separate Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/separate_geometry.html)
+> Node [Separate Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/separate_geometry.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
@@ -559,7 +579,9 @@ separate()
 set_radius(radius=None)
 ```
 
-> Jump Method [Set Point Radius](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/set_point_radius.html)
+> Node [Set Point Radius](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/set_point_radius.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
@@ -586,7 +608,9 @@ set_radius(radius=None)
 set_selection()
 ```
 
-> Jump Method [Set Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/write/set_selection.html)
+> Node [Set Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/write/set_selection.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
@@ -610,7 +634,9 @@ set_selection()
 sort(group_id=None, sort_weight=None)
 ```
 
-> Jump Method [Sort Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/sort_elements.html)
+> Node [Sort Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/sort_elements.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
@@ -639,7 +665,7 @@ sort(group_id=None, sort_weight=None)
 split_to_instances(group_id=None)
 ```
 
-> Method [Split to Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/split_to_instances.html)
+> Node [Split to Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/split_to_instances.html)
 
 #### Information:
 - **Socket** : self
@@ -667,7 +693,9 @@ split_to_instances(group_id=None)
 store(name=None, value=None)
 ```
 
-> Jump Method [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html)
+> Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
@@ -697,7 +725,9 @@ store(name=None, value=None)
 store_named_attribute(name=None, value=None)
 ```
 
-> Jump Method [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html)
+> Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
@@ -727,7 +757,7 @@ store_named_attribute(name=None, value=None)
 viewer(value=None)
 ```
 
-> Method [Viewer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/output/viewer.html)
+> Node [Viewer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/output/viewer.html)
 
 #### Information:
 - **Socket** : self

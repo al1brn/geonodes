@@ -8,7 +8,7 @@ class Cloud(Socket):
     $DOC SET hidden
     """
     def domain_size(self):
-        """ > Method <&Node Domain Size>
+        """ > Node <&Node Domain Size>
 
         Information
         -----------
@@ -24,7 +24,7 @@ class Cloud(Socket):
 
     @classmethod
     def DistributeingridDensityRandom(cls, grid=None, density=None, seed=None):
-        """ > Constructor <&Node Distribute Points in Grid>
+        """ > Node <&Node Distribute Points in Grid>
 
         Information
         -----------
@@ -45,7 +45,7 @@ class Cloud(Socket):
 
     @classmethod
     def DistributeingridDensityGrid(cls, grid=None, spacing=None, threshold=None):
-        """ > Constructor <&Node Distribute Points in Grid>
+        """ > Node <&Node Distribute Points in Grid>
 
         Information
         -----------
@@ -66,7 +66,7 @@ class Cloud(Socket):
 
     @classmethod
     def DistributeInGrid(cls, grid=None, density=None, seed=None, mode='DENSITY_RANDOM'):
-        """ > Constructor <&Node Distribute Points in Grid>
+        """ > Node <&Node Distribute Points in Grid>
 
         Arguments
         ---------
@@ -79,11 +79,12 @@ class Cloud(Socket):
         -------
         - Cloud
         """
+        utils.check_enum_arg('mode', mode, 'DistributeInGrid', ('DENSITY_RANDOM', 'DENSITY_GRID'))
         node = Node('Distribute Points in Grid', sockets={'Grid': grid, 'Density': density, 'Seed': seed}, mode=mode)
         return cls(node._out)
 
     def instance_on(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
-        """ > Method <&Node Instance on Points>
+        """ > Node <&Node Instance on Points>
 
         Information
         -----------
@@ -106,7 +107,7 @@ class Cloud(Socket):
         return node._out
 
     def interpolate_curves(self, guide_curves=None, guide_up=None, guide_group_id=None, point_up=None, point_group_id=None, max_neighbors=None):
-        """ > Method <&Node Interpolate Curves>
+        """ > Node <&Node Interpolate Curves>
 
         Information
         -----------
@@ -130,7 +131,7 @@ class Cloud(Socket):
 
     @classmethod
     def Points(cls, count=None, position=None, radius=None):
-        """ > Constructor <&Node Points>
+        """ > Node <&Node Points>
 
         Arguments
         ---------
@@ -146,7 +147,7 @@ class Cloud(Socket):
         return cls(node._out)
 
     def to_curves(self, curve_group_id=None, weight=None):
-        """ > Method <&Node Points to Curves>
+        """ > Node <&Node Points to Curves>
 
         Information
         -----------
@@ -165,7 +166,7 @@ class Cloud(Socket):
         return node._out
 
     def to_sdf_grid(self, radius=None, voxel_size=None):
-        """ > Method <&Node Points to SDF Grid>
+        """ > Node <&Node Points to SDF Grid>
 
         Information
         -----------
@@ -184,7 +185,7 @@ class Cloud(Socket):
         return node._out
 
     def to_vertices(self):
-        """ > Method <&Node Points to Vertices>
+        """ > Node <&Node Points to Vertices>
 
         Information
         -----------
@@ -199,7 +200,7 @@ class Cloud(Socket):
         return node._out
 
     def to_volume(self, density=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_AMOUNT'):
-        """ > Method <&Node Points to Volume>
+        """ > Node <&Node Points to Volume>
 
         Information
         -----------
@@ -216,6 +217,7 @@ class Cloud(Socket):
         -------
         - Volume
         """
+        utils.check_enum_arg('resolution_mode', resolution_mode, 'to_volume', ('VOXEL_AMOUNT', 'VOXEL_SIZE'))
         node = Node('Points to Volume', sockets={'Points': self, 'Density': density, 'Voxel Amount': voxel_amount, 'Radius': radius}, resolution_mode=resolution_mode)
         return node._out
 
@@ -227,7 +229,9 @@ class Cloud(Socket):
 
     @radius.setter
     def radius(self, radius=None):
-        """ > Jump Method <&Node Set Point Radius>
+        """ > Node <&Node Set Point Radius>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------

@@ -4,7 +4,7 @@ from .. treeclass import utils
 from .. scripterror import NodeError
 
 def band(boolean=None, boolean_1=None):
-    """ > Function <&Node Boolean Math>
+    """ > Node <&Node Boolean Math>
 
     Information
     -----------
@@ -23,7 +23,7 @@ def band(boolean=None, boolean_1=None):
     return node._out
 
 def bor(boolean=None, boolean_1=None):
-    """ > Function <&Node Boolean Math>
+    """ > Node <&Node Boolean Math>
 
     Information
     -----------
@@ -42,7 +42,7 @@ def bor(boolean=None, boolean_1=None):
     return node._out
 
 def bnot(boolean=None):
-    """ > Function <&Node Boolean Math>
+    """ > Node <&Node Boolean Math>
 
     Information
     -----------
@@ -60,7 +60,7 @@ def bnot(boolean=None):
     return node._out
 
 def not_and(boolean=None, boolean_1=None):
-    """ > Function <&Node Boolean Math>
+    """ > Node <&Node Boolean Math>
 
     Information
     -----------
@@ -79,7 +79,7 @@ def not_and(boolean=None, boolean_1=None):
     return node._out
 
 def nor(boolean=None, boolean_1=None):
-    """ > Function <&Node Boolean Math>
+    """ > Node <&Node Boolean Math>
 
     Information
     -----------
@@ -98,7 +98,7 @@ def nor(boolean=None, boolean_1=None):
     return node._out
 
 def xnor(boolean=None, boolean_1=None):
-    """ > Function <&Node Boolean Math>
+    """ > Node <&Node Boolean Math>
 
     Information
     -----------
@@ -117,7 +117,7 @@ def xnor(boolean=None, boolean_1=None):
     return node._out
 
 def xor(boolean=None, boolean_1=None):
-    """ > Function <&Node Boolean Math>
+    """ > Node <&Node Boolean Math>
 
     Information
     -----------
@@ -136,7 +136,7 @@ def xor(boolean=None, boolean_1=None):
     return node._out
 
 def imply(boolean=None, boolean_1=None):
-    """ > Function <&Node Boolean Math>
+    """ > Node <&Node Boolean Math>
 
     Information
     -----------
@@ -155,7 +155,7 @@ def imply(boolean=None, boolean_1=None):
     return node._out
 
 def nimply(boolean=None, boolean_1=None):
-    """ > Function <&Node Boolean Math>
+    """ > Node <&Node Boolean Math>
 
     Information
     -----------
@@ -174,7 +174,7 @@ def nimply(boolean=None, boolean_1=None):
     return node._out
 
 def iadd(value=None, value_1=None):
-    """ > Function <&Node Integer Math>
+    """ > Node <&Node Integer Math>
 
     Information
     -----------
@@ -193,7 +193,7 @@ def iadd(value=None, value_1=None):
     return node._out
 
 def isubtract(value=None, value_1=None):
-    """ > Function <&Node Integer Math>
+    """ > Node <&Node Integer Math>
 
     Information
     -----------
@@ -212,7 +212,7 @@ def isubtract(value=None, value_1=None):
     return node._out
 
 def imultiply(value=None, value_1=None):
-    """ > Function <&Node Integer Math>
+    """ > Node <&Node Integer Math>
 
     Information
     -----------
@@ -231,7 +231,7 @@ def imultiply(value=None, value_1=None):
     return node._out
 
 def idivide(value=None, value_1=None):
-    """ > Function <&Node Integer Math>
+    """ > Node <&Node Integer Math>
 
     Information
     -----------
@@ -250,7 +250,7 @@ def idivide(value=None, value_1=None):
     return node._out
 
 def imultiply_add(value=None, multiplier=None, addend=None):
-    """ > Function <&Node Integer Math>
+    """ > Node <&Node Integer Math>
 
     Information
     -----------
@@ -270,7 +270,7 @@ def imultiply_add(value=None, multiplier=None, addend=None):
     return node._out
 
 def iabs(value=None):
-    """ > Function <&Node Integer Math>
+    """ > Node <&Node Integer Math>
 
     Information
     -----------
@@ -288,7 +288,7 @@ def iabs(value=None):
     return node._out
 
 def negate(value=None):
-    """ > Function <&Node Integer Math>
+    """ > Node <&Node Integer Math>
 
     Information
     -----------
@@ -306,7 +306,7 @@ def negate(value=None):
     return node._out
 
 def ipower(base=None, exponent=None):
-    """ > Function <&Node Integer Math>
+    """ > Node <&Node Integer Math>
 
     Information
     -----------
@@ -325,7 +325,7 @@ def ipower(base=None, exponent=None):
     return node._out
 
 def imin(value=None, value_1=None):
-    """ > Function <&Node Integer Math>
+    """ > Node <&Node Integer Math>
 
     Information
     -----------
@@ -344,7 +344,7 @@ def imin(value=None, value_1=None):
     return node._out
 
 def imax(value=None, value_1=None):
-    """ > Function <&Node Integer Math>
+    """ > Node <&Node Integer Math>
 
     Information
     -----------
@@ -363,7 +363,7 @@ def imax(value=None, value_1=None):
     return node._out
 
 def isign(value=None):
-    """ > Function <&Node Integer Math>
+    """ > Node <&Node Integer Math>
 
     Information
     -----------
@@ -381,7 +381,7 @@ def isign(value=None):
     return node._out
 
 def divide_round(value=None, value_1=None):
-    """ > Function <&Node Integer Math>
+    """ > Node <&Node Integer Math>
 
     Information
     -----------
@@ -400,7 +400,7 @@ def divide_round(value=None, value_1=None):
     return node._out
 
 def divide_floor(value=None, value_1=None):
-    """ > Function <&Node Integer Math>
+    """ > Node <&Node Integer Math>
 
     Information
     -----------
@@ -419,7 +419,7 @@ def divide_floor(value=None, value_1=None):
     return node._out
 
 def divide_ceil(value=None, value_1=None):
-    """ > Function <&Node Integer Math>
+    """ > Node <&Node Integer Math>
 
     Information
     -----------
@@ -438,7 +438,7 @@ def divide_ceil(value=None, value_1=None):
     return node._out
 
 def ifloored_modulo(value=None, value_1=None):
-    """ > Function <&Node Integer Math>
+    """ > Node <&Node Integer Math>
 
     Information
     -----------
@@ -457,7 +457,7 @@ def ifloored_modulo(value=None, value_1=None):
     return node._out
 
 def imodulo(value=None, value_1=None):
-    """ > Function <&Node Integer Math>
+    """ > Node <&Node Integer Math>
 
     Information
     -----------
@@ -476,7 +476,7 @@ def imodulo(value=None, value_1=None):
     return node._out
 
 def gcd(value=None, value_1=None):
-    """ > Function <&Node Integer Math>
+    """ > Node <&Node Integer Math>
 
     Information
     -----------
@@ -495,7 +495,7 @@ def gcd(value=None, value_1=None):
     return node._out
 
 def lcm(value=None, value_1=None):
-    """ > Function <&Node Integer Math>
+    """ > Node <&Node Integer Math>
 
     Information
     -----------
@@ -514,7 +514,7 @@ def lcm(value=None, value_1=None):
     return node._out
 
 def add(value=None, value_1=None, use_clamp=False):
-    """ > Function <&Node Math>
+    """ > Node <&Node Math>
 
     Information
     -----------
@@ -534,7 +534,7 @@ def add(value=None, value_1=None, use_clamp=False):
     return node._out
 
 def subtract(value=None, value_1=None, use_clamp=False):
-    """ > Function <&Node Math>
+    """ > Node <&Node Math>
 
     Information
     -----------
@@ -554,7 +554,7 @@ def subtract(value=None, value_1=None, use_clamp=False):
     return node._out
 
 def multiply(value=None, value_1=None, use_clamp=False):
-    """ > Function <&Node Math>
+    """ > Node <&Node Math>
 
     Information
     -----------
@@ -574,7 +574,7 @@ def multiply(value=None, value_1=None, use_clamp=False):
     return node._out
 
 def divide(value=None, value_1=None, use_clamp=False):
-    """ > Function <&Node Math>
+    """ > Node <&Node Math>
 
     Information
     -----------
@@ -594,7 +594,7 @@ def divide(value=None, value_1=None, use_clamp=False):
     return node._out
 
 def multiply_add(value=None, multiplier=None, addend=None, use_clamp=False):
-    """ > Function <&Node Math>
+    """ > Node <&Node Math>
 
     Information
     -----------
@@ -615,7 +615,7 @@ def multiply_add(value=None, multiplier=None, addend=None, use_clamp=False):
     return node._out
 
 def power(base=None, exponent=None, use_clamp=False):
-    """ > Function <&Node Math>
+    """ > Node <&Node Math>
 
     Information
     -----------
@@ -635,7 +635,7 @@ def power(base=None, exponent=None, use_clamp=False):
     return node._out
 
 def log(value=None, base=None, use_clamp=False):
-    """ > Function <&Node Math>
+    """ > Node <&Node Math>
 
     Information
     -----------
@@ -655,7 +655,7 @@ def log(value=None, base=None, use_clamp=False):
     return node._out
 
 def sqrt(value=None, use_clamp=False):
-    """ > Function <&Node Math>
+    """ > Node <&Node Math>
 
     Information
     -----------
@@ -674,7 +674,7 @@ def sqrt(value=None, use_clamp=False):
     return node._out
 
 def inverse_sqrt(value=None, use_clamp=False):
-    """ > Function <&Node Math>
+    """ > Node <&Node Math>
 
     Information
     -----------
@@ -693,7 +693,7 @@ def inverse_sqrt(value=None, use_clamp=False):
     return node._out
 
 def abs(value=None, use_clamp=False):
-    """ > Function <&Node Math>
+    """ > Node <&Node Math>
 
     Information
     -----------
@@ -712,7 +712,7 @@ def abs(value=None, use_clamp=False):
     return node._out
 
 def exp(value=None, use_clamp=False):
-    """ > Function <&Node Math>
+    """ > Node <&Node Math>
 
     Information
     -----------
@@ -731,7 +731,7 @@ def exp(value=None, use_clamp=False):
     return node._out
 
 def min(value=None, value_1=None, use_clamp=False):
-    """ > Function <&Node Math>
+    """ > Node <&Node Math>
 
     Information
     -----------
@@ -751,7 +751,7 @@ def min(value=None, value_1=None, use_clamp=False):
     return node._out
 
 def max(value=None, value_1=None, use_clamp=False):
-    """ > Function <&Node Math>
+    """ > Node <&Node Math>
 
     Information
     -----------
@@ -771,7 +771,7 @@ def max(value=None, value_1=None, use_clamp=False):
     return node._out
 
 def mless_than(value=None, threshold=None, use_clamp=False):
-    """ > Function <&Node Math>
+    """ > Node <&Node Math>
 
     Information
     -----------
@@ -791,7 +791,7 @@ def mless_than(value=None, threshold=None, use_clamp=False):
     return node._out
 
 def mgreater_than(value=None, threshold=None, use_clamp=False):
-    """ > Function <&Node Math>
+    """ > Node <&Node Math>
 
     Information
     -----------
@@ -811,7 +811,7 @@ def mgreater_than(value=None, threshold=None, use_clamp=False):
     return node._out
 
 def sign(value=None, use_clamp=False):
-    """ > Function <&Node Math>
+    """ > Node <&Node Math>
 
     Information
     -----------
@@ -830,7 +830,7 @@ def sign(value=None, use_clamp=False):
     return node._out
 
 def compare(value=None, value_1=None, epsilon=None, use_clamp=False):
-    """ > Function <&Node Math>
+    """ > Node <&Node Math>
 
     Information
     -----------
@@ -851,7 +851,7 @@ def compare(value=None, value_1=None, epsilon=None, use_clamp=False):
     return node._out
 
 def smooth_min(value=None, value_1=None, distance=None, use_clamp=False):
-    """ > Function <&Node Math>
+    """ > Node <&Node Math>
 
     Information
     -----------
@@ -872,7 +872,7 @@ def smooth_min(value=None, value_1=None, distance=None, use_clamp=False):
     return node._out
 
 def smooth_max(value=None, value_1=None, distance=None, use_clamp=False):
-    """ > Function <&Node Math>
+    """ > Node <&Node Math>
 
     Information
     -----------
@@ -893,7 +893,7 @@ def smooth_max(value=None, value_1=None, distance=None, use_clamp=False):
     return node._out
 
 def round(value=None, use_clamp=False):
-    """ > Function <&Node Math>
+    """ > Node <&Node Math>
 
     Information
     -----------
@@ -912,7 +912,7 @@ def round(value=None, use_clamp=False):
     return node._out
 
 def floor(value=None, use_clamp=False):
-    """ > Function <&Node Math>
+    """ > Node <&Node Math>
 
     Information
     -----------
@@ -931,7 +931,7 @@ def floor(value=None, use_clamp=False):
     return node._out
 
 def ceil(value=None, use_clamp=False):
-    """ > Function <&Node Math>
+    """ > Node <&Node Math>
 
     Information
     -----------
@@ -950,7 +950,7 @@ def ceil(value=None, use_clamp=False):
     return node._out
 
 def trunc(value=None, use_clamp=False):
-    """ > Function <&Node Math>
+    """ > Node <&Node Math>
 
     Information
     -----------
@@ -969,7 +969,7 @@ def trunc(value=None, use_clamp=False):
     return node._out
 
 def fract(value=None, use_clamp=False):
-    """ > Function <&Node Math>
+    """ > Node <&Node Math>
 
     Information
     -----------
@@ -988,7 +988,7 @@ def fract(value=None, use_clamp=False):
     return node._out
 
 def modulo(value=None, value_1=None, use_clamp=False):
-    """ > Function <&Node Math>
+    """ > Node <&Node Math>
 
     Information
     -----------
@@ -1008,7 +1008,7 @@ def modulo(value=None, value_1=None, use_clamp=False):
     return node._out
 
 def floored_modulo(value=None, value_1=None, use_clamp=False):
-    """ > Function <&Node Math>
+    """ > Node <&Node Math>
 
     Information
     -----------
@@ -1028,7 +1028,7 @@ def floored_modulo(value=None, value_1=None, use_clamp=False):
     return node._out
 
 def wrap(value=None, max=None, min=None, use_clamp=False):
-    """ > Function <&Node Math>
+    """ > Node <&Node Math>
 
     Information
     -----------
@@ -1049,7 +1049,7 @@ def wrap(value=None, max=None, min=None, use_clamp=False):
     return node._out
 
 def snap(value=None, increment=None, use_clamp=False):
-    """ > Function <&Node Math>
+    """ > Node <&Node Math>
 
     Information
     -----------
@@ -1069,7 +1069,7 @@ def snap(value=None, increment=None, use_clamp=False):
     return node._out
 
 def pingpong(value=None, scale=None, use_clamp=False):
-    """ > Function <&Node Math>
+    """ > Node <&Node Math>
 
     Information
     -----------
@@ -1089,7 +1089,7 @@ def pingpong(value=None, scale=None, use_clamp=False):
     return node._out
 
 def sin(value=None, use_clamp=False):
-    """ > Function <&Node Math>
+    """ > Node <&Node Math>
 
     Information
     -----------
@@ -1108,7 +1108,7 @@ def sin(value=None, use_clamp=False):
     return node._out
 
 def cos(value=None, use_clamp=False):
-    """ > Function <&Node Math>
+    """ > Node <&Node Math>
 
     Information
     -----------
@@ -1127,7 +1127,7 @@ def cos(value=None, use_clamp=False):
     return node._out
 
 def tan(value=None, use_clamp=False):
-    """ > Function <&Node Math>
+    """ > Node <&Node Math>
 
     Information
     -----------
@@ -1146,7 +1146,7 @@ def tan(value=None, use_clamp=False):
     return node._out
 
 def arcsine(value=None, use_clamp=False):
-    """ > Function <&Node Math>
+    """ > Node <&Node Math>
 
     Information
     -----------
@@ -1165,7 +1165,7 @@ def arcsine(value=None, use_clamp=False):
     return node._out
 
 def arccosine(value=None, use_clamp=False):
-    """ > Function <&Node Math>
+    """ > Node <&Node Math>
 
     Information
     -----------
@@ -1184,7 +1184,7 @@ def arccosine(value=None, use_clamp=False):
     return node._out
 
 def arctangent(value=None, use_clamp=False):
-    """ > Function <&Node Math>
+    """ > Node <&Node Math>
 
     Information
     -----------
@@ -1203,7 +1203,7 @@ def arctangent(value=None, use_clamp=False):
     return node._out
 
 def arctan2(value=None, value_1=None, use_clamp=False):
-    """ > Function <&Node Math>
+    """ > Node <&Node Math>
 
     Information
     -----------
@@ -1223,7 +1223,7 @@ def arctan2(value=None, value_1=None, use_clamp=False):
     return node._out
 
 def sinh(value=None, use_clamp=False):
-    """ > Function <&Node Math>
+    """ > Node <&Node Math>
 
     Information
     -----------
@@ -1242,7 +1242,7 @@ def sinh(value=None, use_clamp=False):
     return node._out
 
 def cosh(value=None, use_clamp=False):
-    """ > Function <&Node Math>
+    """ > Node <&Node Math>
 
     Information
     -----------
@@ -1261,7 +1261,7 @@ def cosh(value=None, use_clamp=False):
     return node._out
 
 def tanh(value=None, use_clamp=False):
-    """ > Function <&Node Math>
+    """ > Node <&Node Math>
 
     Information
     -----------
@@ -1280,7 +1280,7 @@ def tanh(value=None, use_clamp=False):
     return node._out
 
 def radians(degrees=None, use_clamp=False):
-    """ > Function <&Node Math>
+    """ > Node <&Node Math>
 
     Information
     -----------
@@ -1299,7 +1299,7 @@ def radians(degrees=None, use_clamp=False):
     return node._out
 
 def degrees(radians=None, use_clamp=False):
-    """ > Function <&Node Math>
+    """ > Node <&Node Math>
 
     Information
     -----------
@@ -1318,7 +1318,7 @@ def degrees(radians=None, use_clamp=False):
     return node._out
 
 def vadd(vector=None, vector_1=None):
-    """ > Function <&Node Vector Math>
+    """ > Node <&Node Vector Math>
 
     Information
     -----------
@@ -1337,7 +1337,7 @@ def vadd(vector=None, vector_1=None):
     return node._out
 
 def vsubtract(vector=None, vector_1=None):
-    """ > Function <&Node Vector Math>
+    """ > Node <&Node Vector Math>
 
     Information
     -----------
@@ -1356,7 +1356,7 @@ def vsubtract(vector=None, vector_1=None):
     return node._out
 
 def vmultiply(vector=None, vector_1=None):
-    """ > Function <&Node Vector Math>
+    """ > Node <&Node Vector Math>
 
     Information
     -----------
@@ -1375,7 +1375,7 @@ def vmultiply(vector=None, vector_1=None):
     return node._out
 
 def vdivide(vector=None, vector_1=None):
-    """ > Function <&Node Vector Math>
+    """ > Node <&Node Vector Math>
 
     Information
     -----------
@@ -1394,7 +1394,7 @@ def vdivide(vector=None, vector_1=None):
     return node._out
 
 def vmultiply_add(vector=None, multiplier=None, addend=None):
-    """ > Function <&Node Vector Math>
+    """ > Node <&Node Vector Math>
 
     Information
     -----------
@@ -1414,7 +1414,7 @@ def vmultiply_add(vector=None, multiplier=None, addend=None):
     return node._out
 
 def cross(vector=None, vector_1=None):
-    """ > Function <&Node Vector Math>
+    """ > Node <&Node Vector Math>
 
     Information
     -----------
@@ -1433,7 +1433,7 @@ def cross(vector=None, vector_1=None):
     return node._out
 
 def project(vector=None, vector_1=None):
-    """ > Function <&Node Vector Math>
+    """ > Node <&Node Vector Math>
 
     Information
     -----------
@@ -1452,7 +1452,7 @@ def project(vector=None, vector_1=None):
     return node._out
 
 def reflect(vector=None, vector_1=None):
-    """ > Function <&Node Vector Math>
+    """ > Node <&Node Vector Math>
 
     Information
     -----------
@@ -1471,7 +1471,7 @@ def reflect(vector=None, vector_1=None):
     return node._out
 
 def refract(vector=None, vector_1=None, ior=None):
-    """ > Function <&Node Vector Math>
+    """ > Node <&Node Vector Math>
 
     Information
     -----------
@@ -1491,7 +1491,7 @@ def refract(vector=None, vector_1=None, ior=None):
     return node._out
 
 def faceforward(vector=None, incident=None, reference=None):
-    """ > Function <&Node Vector Math>
+    """ > Node <&Node Vector Math>
 
     Information
     -----------
@@ -1511,7 +1511,7 @@ def faceforward(vector=None, incident=None, reference=None):
     return node._out
 
 def dot(vector=None, vector_1=None):
-    """ > Function <&Node Vector Math>
+    """ > Node <&Node Vector Math>
 
     Information
     -----------
@@ -1530,7 +1530,7 @@ def dot(vector=None, vector_1=None):
     return node._out
 
 def distance(vector=None, vector_1=None):
-    """ > Function <&Node Vector Math>
+    """ > Node <&Node Vector Math>
 
     Information
     -----------
@@ -1549,7 +1549,7 @@ def distance(vector=None, vector_1=None):
     return node._out
 
 def length(vector=None):
-    """ > Function <&Node Vector Math>
+    """ > Node <&Node Vector Math>
 
     Information
     -----------
@@ -1567,7 +1567,7 @@ def length(vector=None):
     return node._out
 
 def scale(vector=None, scale=None):
-    """ > Function <&Node Vector Math>
+    """ > Node <&Node Vector Math>
 
     Information
     -----------
@@ -1586,7 +1586,7 @@ def scale(vector=None, scale=None):
     return node._out
 
 def normalize(vector=None):
-    """ > Function <&Node Vector Math>
+    """ > Node <&Node Vector Math>
 
     Information
     -----------
@@ -1604,7 +1604,7 @@ def normalize(vector=None):
     return node._out
 
 def vabs(vector=None):
-    """ > Function <&Node Vector Math>
+    """ > Node <&Node Vector Math>
 
     Information
     -----------
@@ -1622,7 +1622,7 @@ def vabs(vector=None):
     return node._out
 
 def vmin(vector=None, vector_1=None):
-    """ > Function <&Node Vector Math>
+    """ > Node <&Node Vector Math>
 
     Information
     -----------
@@ -1641,7 +1641,7 @@ def vmin(vector=None, vector_1=None):
     return node._out
 
 def vmax(vector=None, vector_1=None):
-    """ > Function <&Node Vector Math>
+    """ > Node <&Node Vector Math>
 
     Information
     -----------
@@ -1660,7 +1660,7 @@ def vmax(vector=None, vector_1=None):
     return node._out
 
 def vfloor(vector=None):
-    """ > Function <&Node Vector Math>
+    """ > Node <&Node Vector Math>
 
     Information
     -----------
@@ -1678,7 +1678,7 @@ def vfloor(vector=None):
     return node._out
 
 def vceil(vector=None):
-    """ > Function <&Node Vector Math>
+    """ > Node <&Node Vector Math>
 
     Information
     -----------
@@ -1696,7 +1696,7 @@ def vceil(vector=None):
     return node._out
 
 def vfraction(vector=None):
-    """ > Function <&Node Vector Math>
+    """ > Node <&Node Vector Math>
 
     Information
     -----------
@@ -1714,7 +1714,7 @@ def vfraction(vector=None):
     return node._out
 
 def vmodulo(vector=None, vector_1=None):
-    """ > Function <&Node Vector Math>
+    """ > Node <&Node Vector Math>
 
     Information
     -----------
@@ -1733,7 +1733,7 @@ def vmodulo(vector=None, vector_1=None):
     return node._out
 
 def vwrap(vector=None, max=None, min=None):
-    """ > Function <&Node Vector Math>
+    """ > Node <&Node Vector Math>
 
     Information
     -----------
@@ -1753,7 +1753,7 @@ def vwrap(vector=None, max=None, min=None):
     return node._out
 
 def vsnap(vector=None, increment=None):
-    """ > Function <&Node Vector Math>
+    """ > Node <&Node Vector Math>
 
     Information
     -----------
@@ -1772,7 +1772,7 @@ def vsnap(vector=None, increment=None):
     return node._out
 
 def vsin(vector=None):
-    """ > Function <&Node Vector Math>
+    """ > Node <&Node Vector Math>
 
     Information
     -----------
@@ -1790,7 +1790,7 @@ def vsin(vector=None):
     return node._out
 
 def vcos(vector=None):
-    """ > Function <&Node Vector Math>
+    """ > Node <&Node Vector Math>
 
     Information
     -----------
@@ -1808,7 +1808,7 @@ def vcos(vector=None):
     return node._out
 
 def vtan(vector=None):
-    """ > Function <&Node Vector Math>
+    """ > Node <&Node Vector Math>
 
     Information
     -----------

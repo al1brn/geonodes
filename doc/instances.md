@@ -69,7 +69,7 @@ INSTANCES domain
 domain_size()
 ```
 
-> Method [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
+> Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
 
 #### Information:
 - **Socket** : self
@@ -91,7 +91,7 @@ domain_size()
 FromGeometry(*geometry)
 ```
 
-> Constructor [Geometry to Instance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_to_instance.html)
+> Node [Geometry to Instance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/geometry_to_instance.html)
 
 #### Arguments:
 - **geometry** (_Geometry_) : socket 'Geometry' (id: Geometry)
@@ -112,7 +112,7 @@ FromGeometry(*geometry)
 ImportOBJ(path=None)
 ```
 
-> Constructor ERROR: Node 'Import OBJ' not found
+> Node ERROR: Node 'Import OBJ' not found
 
 #### Arguments:
 - **path** (_String_ = None) : socket 'Path' (id: Path)
@@ -133,7 +133,9 @@ ImportOBJ(path=None)
 rotate(rotation=None, pivot_point=None, local_space=None)
 ```
 
-> Jump Method [Rotate Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/rotate_instances.html)
+> Node [Rotate Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/rotate_instances.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
@@ -162,7 +164,9 @@ rotate(rotation=None, pivot_point=None, local_space=None)
 scale(scale=None, center=None, local_space=None)
 ```
 
-> Jump Method [Scale Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/scale_instances.html)
+> Node [Scale Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/scale_instances.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
@@ -191,7 +195,9 @@ scale(scale=None, center=None, local_space=None)
 set_transform(transform=None)
 ```
 
-> Jump Method [Set Instance Transform](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/set_instance_transform.html)
+> Node [Set Instance Transform](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/set_instance_transform.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
@@ -218,7 +224,7 @@ set_transform(transform=None)
 to_points(position=None, radius=None)
 ```
 
-> Method [Instances to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instances_to_points.html)
+> Node [Instances to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instances_to_points.html)
 
 #### Information:
 - **Socket** : self
@@ -246,7 +252,9 @@ to_points(position=None, radius=None)
 translate(translation=None, local_space=None)
 ```
 
-> Jump Method [Translate Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/translate_instances.html)
+> Node [Translate Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/translate_instances.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self

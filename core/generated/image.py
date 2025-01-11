@@ -8,7 +8,7 @@ class Image(Socket):
     $DOC SET hidden
     """
     def info(self, frame=None):
-        """ > Method <&Node Image Info>
+        """ > Node <&Node Image Info>
 
         Information
         -----------
@@ -26,7 +26,7 @@ class Image(Socket):
         return node
 
     def width(self, frame=None):
-        """ > Method <&Node Image Info>
+        """ > Node <&Node Image Info>
 
         Information
         -----------
@@ -44,7 +44,7 @@ class Image(Socket):
         return node.width
 
     def height(self, frame=None):
-        """ > Method <&Node Image Info>
+        """ > Node <&Node Image Info>
 
         Information
         -----------
@@ -62,7 +62,7 @@ class Image(Socket):
         return node.height
 
     def has_alpha(self, frame=None):
-        """ > Method <&Node Image Info>
+        """ > Node <&Node Image Info>
 
         Information
         -----------
@@ -80,7 +80,7 @@ class Image(Socket):
         return node.has_alpha
 
     def frame_count(self, frame=None):
-        """ > Method <&Node Image Info>
+        """ > Node <&Node Image Info>
 
         Information
         -----------
@@ -98,7 +98,7 @@ class Image(Socket):
         return node.frame_count
 
     def fps(self, frame=None):
-        """ > Method <&Node Image Info>
+        """ > Node <&Node Image Info>
 
         Information
         -----------

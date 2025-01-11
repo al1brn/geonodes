@@ -75,7 +75,7 @@ Property get node <Node Set Point Radius>
 DistributeInGrid(grid=None, density=None, seed=None, mode='DENSITY_RANDOM')
 ```
 
-> Constructor ERROR: Node 'Distribute Points in Grid' not found
+> Node ERROR: Node 'Distribute Points in Grid' not found
 
 #### Arguments:
 - **grid** (_Float_ = None) : socket 'Grid' (id: Grid)
@@ -99,7 +99,7 @@ DistributeInGrid(grid=None, density=None, seed=None, mode='DENSITY_RANDOM')
 DistributeingridDensityGrid(grid=None, spacing=None, threshold=None)
 ```
 
-> Constructor ERROR: Node 'Distribute Points in Grid' not found
+> Node ERROR: Node 'Distribute Points in Grid' not found
 
 #### Information:
 - **Parameter** : 'DENSITY_GRID'
@@ -127,7 +127,7 @@ DistributeingridDensityGrid(grid=None, spacing=None, threshold=None)
 DistributeingridDensityRandom(grid=None, density=None, seed=None)
 ```
 
-> Constructor ERROR: Node 'Distribute Points in Grid' not found
+> Node ERROR: Node 'Distribute Points in Grid' not found
 
 #### Information:
 - **Parameter** : 'DENSITY_RANDOM'
@@ -155,7 +155,7 @@ DistributeingridDensityRandom(grid=None, density=None, seed=None)
 domain_size()
 ```
 
-> Method [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
+> Node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
 
 #### Information:
 - **Socket** : self
@@ -177,7 +177,7 @@ domain_size()
 instance_on(instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None)
 ```
 
-> Method [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html)
+> Node [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html)
 
 #### Information:
 - **Socket** : self
@@ -208,7 +208,7 @@ instance_on(instance=None, pick_instance=None, instance_index=None, rotation=Non
 interpolate_curves(guide_curves=None, guide_up=None, guide_group_id=None, point_up=None, point_group_id=None, max_neighbors=None)
 ```
 
-> Method [Interpolate Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/interpolate_curves.html)
+> Node [Interpolate Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/interpolate_curves.html)
 
 #### Information:
 - **Socket** : self
@@ -239,7 +239,7 @@ interpolate_curves(guide_curves=None, guide_up=None, guide_group_id=None, point_
 Points(count=None, position=None, radius=None)
 ```
 
-> Constructor [Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points.html)
+> Node [Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points.html)
 
 #### Arguments:
 - **count** (_Integer_ = None) : socket 'Count' (id: Count)
@@ -262,7 +262,7 @@ Points(count=None, position=None, radius=None)
 to_curves(curve_group_id=None, weight=None)
 ```
 
-> Method [Points to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points_to_curves.html)
+> Node [Points to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points_to_curves.html)
 
 #### Information:
 - **Socket** : self
@@ -289,7 +289,7 @@ to_curves(curve_group_id=None, weight=None)
 to_sdf_grid(radius=None, voxel_size=None)
 ```
 
-> Method ERROR: Node 'Points to SDF Grid' not found
+> Node ERROR: Node 'Points to SDF Grid' not found
 
 #### Information:
 - **Socket** : self
@@ -316,7 +316,7 @@ to_sdf_grid(radius=None, voxel_size=None)
 to_vertices()
 ```
 
-> Method [Points to Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points_to_vertices.html)
+> Node [Points to Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points_to_vertices.html)
 
 #### Information:
 - **Socket** : self
@@ -338,7 +338,7 @@ to_vertices()
 to_volume(density=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_AMOUNT')
 ```
 
-> Method [Points to Volume](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points_to_volume.html)
+> Node [Points to Volume](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points_to_volume.html)
 
 #### Information:
 - **Socket** : self

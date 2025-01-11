@@ -773,6 +773,7 @@ class NodeInfo:
 
                 if param in self.enum_params:
                     d['comment'] = f"{param} (str): parameter '{param}' in {self.get_enum_list(param)}"
+                    d['check'] = f"utils.check_enum_arg('{param}', {param}, 'METH_NAME', {self.get_enum_list(param)})"
                 else:
                     d['comment'] = f"{param} ({type(value).__name__}): parameter '{param}'"
 
@@ -973,8 +974,12 @@ class NodeInfo:
 
         snode = "ShaderNode" if self.is_shader else "Node"
 
-        doc = _2 + '""" > '
-        doc += f"{'Jump ' if is_jump else ''}{IMPLEMENTATIONS[implementation]} <&{snode} {self.bnode.name}>\n\n"
+        if True:
+            doc = _2 + '""" > ' + f"Node <&{snode} {self.bnode.name}>\n\n"
+            if is_jump:
+                doc += f"{_2}> ***Jump*** : Socket refers to node output socket after the call\n\n"
+        else:
+            doc += f"{'Jump ' if is_jump else ''}{IMPLEMENTATIONS[implementation]} <&{snode} {self.bnode.name}>\n\n"
 
         # Arguments
 
@@ -1039,6 +1044,20 @@ class NodeInfo:
         doc += _2 + '"""\n'
 
         return doc
+
+    # ====================================================================================================
+    # Enum argument checks
+
+    def gen_arg_check(self, tab, args, meth_name):
+
+        s = ""
+        for arg in args:
+            check = arg.get('check')
+            if check is not None:
+                check = check.replace('METH_NAME', meth_name)
+                s += f"{tab}{check}\n"
+
+        return s
 
     # ====================================================================================================
     # Auto generation
@@ -1109,6 +1128,10 @@ class NodeInfo:
             s += f"{_1}@property\n"
         s += f"{_1}def {name}{self.signature('CLASS', args)}:\n"
         s += self.documentation('STATIC', args, returns='OUT')
+
+        # Argument check
+        s += self.gen_arg_check(_2, args, name)
+
         s += f"{_2}node = Node{self.node_call(args)}\n"
         if ret_node:
             s += f"{_2}return node\n"
@@ -1141,7 +1164,6 @@ class NodeInfo:
     # Set user parameters
 
     def set_user_parameters(self, **parameters):
-        #print("SET USER", self.bnode.name, parameters)
         mem_params = {param_name: getattr(self.bnode, param_name) for param_name in parameters}
         for param_name, param_value in parameters.items():
             setattr(self.bnode, param_name, param_value)
@@ -1218,6 +1240,10 @@ class NodeInfo:
 
         s += f"{_1}def {func_name}{self.signature('CLASS', args)}:\n"
         s += self.documentation('CONSTRUCTOR', args, returns=class_name)
+
+        # Argument check
+        s += self.gen_arg_check(_2, args, func_name)
+
         s += f"{_2}node = Node{self.node_call(args)}\n"
         s += f"{_2}return cls(node._out)\n"
 
@@ -1545,6 +1571,10 @@ class NodeInfo:
 
         s += self.documentation(method, args, is_jump=is_jump, returns=ret)
 
+        # ----- Argument check
+
+        s += self.gen_arg_check(_2, args, func_name)
+
         # ----- Data type dynamic computation
 
         if data_type is not None:
@@ -1644,6 +1674,10 @@ class NodeInfo:
         # ----- Documentation
 
         s += self.documentation('FUNCTION', args, returns=ret)
+
+        # ----- Argument check
+
+        s += self.gen_arg_check(_1, args, func_name)
 
         # ----- Node call
 

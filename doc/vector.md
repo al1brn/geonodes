@@ -73,7 +73,7 @@ vect = Vector(name="User input").  # Create a new Vector group input
 > _type_: **x**
 >
 
-> Property Get [Separate XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/separate_xyz.html)
+> Node [Separate XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/separate_xyz.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Vector](vector.md#vector) :black_small_square: [Content](vector.md#content) :black_small_square: [Properties](vector.md#properties)</sub>
 
@@ -82,7 +82,7 @@ vect = Vector(name="User input").  # Create a new Vector group input
 > _type_: **tuple**
 >
 
-> Property Get [Separate XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/separate_xyz.html)
+> Node [Separate XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/separate_xyz.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Vector](vector.md#vector) :black_small_square: [Content](vector.md#content) :black_small_square: [Properties](vector.md#properties)</sub>
 
@@ -91,7 +91,7 @@ vect = Vector(name="User input").  # Create a new Vector group input
 > _type_: **y**
 >
 
-> Property Get [Separate XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/separate_xyz.html)
+> Node [Separate XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/separate_xyz.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Vector](vector.md#vector) :black_small_square: [Content](vector.md#content) :black_small_square: [Properties](vector.md#properties)</sub>
 
@@ -100,7 +100,7 @@ vect = Vector(name="User input").  # Create a new Vector group input
 > _type_: **z**
 >
 
-> Property Get [Separate XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/separate_xyz.html)
+> Node [Separate XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/separate_xyz.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Vector](vector.md#vector) :black_small_square: [Content](vector.md#content) :black_small_square: [Properties](vector.md#properties)</sub>
 
@@ -117,7 +117,7 @@ vect = Vector(name="User input").  # Create a new Vector group input
 abs()
 ```
 
-> Method [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Information:
 - **Socket** : self
@@ -168,7 +168,7 @@ Acceleration(value=(0.0, 0.0, 0.0), name='Acceleration', tip=None, panel=None, d
 add(vector=None)
 ```
 
-> Method [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Information:
 - **Socket** : self
@@ -195,7 +195,7 @@ add(vector=None)
 blur(iterations=None, weight=None)
 ```
 
-> Method [Blur Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/blur_attribute.html)
+> Node [Blur Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/blur_attribute.html)
 
 #### Information:
 - **Socket** : self
@@ -252,7 +252,7 @@ bump(strength=None, distance=None, height=None, invert=False)
 ceil()
 ```
 
-> Method [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Information:
 - **Socket** : self
@@ -274,7 +274,7 @@ ceil()
 CombineXYZ(x=None, y=None, z=None)
 ```
 
-> Constructor [Combine XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/combine_xyz.html)
+> Node [Combine XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/combine_xyz.html)
 
 #### Arguments:
 - **x** (_Float_ = None) : socket 'X' (id: X)
@@ -297,7 +297,7 @@ CombineXYZ(x=None, y=None, z=None)
 cos()
 ```
 
-> Method [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Information:
 - **Socket** : self
@@ -319,7 +319,7 @@ cos()
 cross(vector=None)
 ```
 
-> Method [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Information:
 - **Socket** : self
@@ -422,7 +422,7 @@ displacement_out(target='ALL')
 distance(vector=None)
 ```
 
-> Method [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Information:
 - **Socket** : self
@@ -449,7 +449,7 @@ distance(vector=None)
 divide(vector=None)
 ```
 
-> Method [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Information:
 - **Socket** : self
@@ -476,7 +476,7 @@ divide(vector=None)
 dot(vector=None)
 ```
 
-> Method [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Information:
 - **Socket** : self
@@ -503,7 +503,7 @@ dot(vector=None)
 environment_texture(image=None, interpolation='Linear', projection='EQUIRECTANGULAR')
 ```
 
-> Method [Environment Texture](https://docs.blender.org/manual/en/latest/render/shader_nodes/textures/environment.html)
+> Node [Environment Texture](https://docs.blender.org/manual/en/latest/render/shader_nodes/textures/environment.html)
 
 #### Information:
 - **Socket** : self
@@ -531,7 +531,7 @@ environment_texture(image=None, interpolation='Linear', projection='EQUIRECTANGU
 equal(b=None, epsilon=None)
 ```
 
-> Method [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+> Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
 #### Information:
 - **Socket** : self
@@ -590,7 +590,7 @@ Euler(value=(0.0, 0.0, 0.0), name='Euler', tip=None, panel=None, default_attribu
 faceforward(incident=None, reference=None)
 ```
 
-> Method [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Information:
 - **Socket** : self
@@ -618,7 +618,7 @@ faceforward(incident=None, reference=None)
 floor()
 ```
 
-> Method [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Information:
 - **Socket** : self
@@ -640,7 +640,7 @@ floor()
 fraction()
 ```
 
-> Method [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Information:
 - **Socket** : self
@@ -683,7 +683,7 @@ FromRotation(rotation=None)
 greater_equal(b=None)
 ```
 
-> Method [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+> Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
 #### Information:
 - **Socket** : self
@@ -712,7 +712,7 @@ greater_equal(b=None)
 greater_than(b=None)
 ```
 
-> Method [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+> Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
 #### Information:
 - **Socket** : self
@@ -741,7 +741,7 @@ greater_than(b=None)
 hash_value(seed=None)
 ```
 
-> Method [Hash Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/hash_value.html)
+> Node [Hash Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/hash_value.html)
 
 #### Information:
 - **Socket** : self
@@ -768,7 +768,7 @@ hash_value(seed=None)
 ies_texture(strength=None, filepath='', ies=None, mode='INTERNAL')
 ```
 
-> Method [IES Texture](https://docs.blender.org/manual/en/latest/render/shader_nodes/textures/ies.html)
+> Node [IES Texture](https://docs.blender.org/manual/en/latest/render/shader_nodes/textures/ies.html)
 
 #### Information:
 - **Socket** : self
@@ -797,7 +797,7 @@ ies_texture(strength=None, filepath='', ies=None, mode='INTERNAL')
 ies_texture_external(strength=None, filepath='', ies=None)
 ```
 
-> Method [IES Texture](https://docs.blender.org/manual/en/latest/render/shader_nodes/textures/ies.html)
+> Node [IES Texture](https://docs.blender.org/manual/en/latest/render/shader_nodes/textures/ies.html)
 
 #### Information:
 - **Socket** : self
@@ -826,7 +826,7 @@ ies_texture_external(strength=None, filepath='', ies=None)
 ies_texture_internal(strength=None, filepath='', ies=None)
 ```
 
-> Method [IES Texture](https://docs.blender.org/manual/en/latest/render/shader_nodes/textures/ies.html)
+> Node [IES Texture](https://docs.blender.org/manual/en/latest/render/shader_nodes/textures/ies.html)
 
 #### Information:
 - **Socket** : self
@@ -855,7 +855,7 @@ ies_texture_internal(strength=None, filepath='', ies=None)
 image_texture(extension='REPEAT', image=None, interpolation='Linear', projection='FLAT', projection_blend=0.0)
 ```
 
-> Method [Image Texture](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../modeling/geometry_nodes/texture/image.html)
+> Node [Image Texture](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../modeling/geometry_nodes/texture/image.html)
 
 #### Information:
 - **Socket** : self
@@ -926,7 +926,7 @@ vect = Vector(name="User input").  # Create a new Vector group input
 length()
 ```
 
-> Method [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Information:
 - **Socket** : self
@@ -948,7 +948,7 @@ length()
 less_equal(b=None)
 ```
 
-> Method [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+> Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
 #### Information:
 - **Socket** : self
@@ -977,7 +977,7 @@ less_equal(b=None)
 less_than(b=None)
 ```
 
-> Method [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+> Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
 #### Information:
 - **Socket** : self
@@ -1032,7 +1032,7 @@ mapping(location=None, rotation=None, scale=None, vector_type='POINT')
 max(vector=None)
 ```
 
-> Method [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Information:
 - **Socket** : self
@@ -1059,7 +1059,7 @@ max(vector=None)
 min(vector=None)
 ```
 
-> Method [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Information:
 - **Socket** : self
@@ -1121,7 +1121,7 @@ mix(b=None, factor=None, clamp_factor=True)
 mix_non_uniform(b=None, factor=None, clamp_factor=True)
 ```
 
-> Method [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+> Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
 #### Information:
 - **Socket** : self
@@ -1153,7 +1153,7 @@ mix_non_uniform(b=None, factor=None, clamp_factor=True)
 mix_uniform(b=None, factor=None, clamp_factor=True)
 ```
 
-> Method [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+> Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
 #### Information:
 - **Socket** : self
@@ -1185,7 +1185,7 @@ mix_uniform(b=None, factor=None, clamp_factor=True)
 modulo(vector=None)
 ```
 
-> Method [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Information:
 - **Socket** : self
@@ -1212,7 +1212,7 @@ modulo(vector=None)
 multiply(vector=None)
 ```
 
-> Method [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Information:
 - **Socket** : self
@@ -1239,7 +1239,7 @@ multiply(vector=None)
 multiply_add(multiplier=None, addend=None)
 ```
 
-> Method [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Information:
 - **Socket** : self
@@ -1267,7 +1267,7 @@ multiply_add(multiplier=None, addend=None)
 Named(name=None)
 ```
 
-> Constructor [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
+> Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
 #### Information:
 - **Parameter** : 'FLOAT_VECTOR'
@@ -1293,7 +1293,7 @@ Named(name=None)
 NamedAttribute(name=None)
 ```
 
-> Constructor [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
+> Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
 #### Information:
 - **Parameter** : 'FLOAT_VECTOR'
@@ -1337,7 +1337,7 @@ normal()
 normalize()
 ```
 
-> Method [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Information:
 - **Socket** : self
@@ -1385,7 +1385,7 @@ NormalMap(strength=None, color=None, space='TANGENT', uv_map='')
 not_equal(b=None, epsilon=None)
 ```
 
-> Method [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+> Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
 #### Information:
 - **Socket** : self
@@ -1440,7 +1440,7 @@ out(name=None, **props)
 pack_uv_islands(margin=None, rotate=None)
 ```
 
-> Method [Pack UV Islands](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/uv/pack_uv_islands.html)
+> Node [Pack UV Islands](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/uv/pack_uv_islands.html)
 
 #### Information:
 - **Socket** : self
@@ -1468,7 +1468,7 @@ pack_uv_islands(margin=None, rotate=None)
 point_density(interpolation='Linear', object=None, particle_color_source='PARTICLE_AGE', particle_system=None, point_source='PARTICLE_SYSTEM', radius=0.30000001192092896, resolution=100, space='OBJECT', vertex_attribute_name='', vertex_color_source='VERTEX_COLOR')
 ```
 
-> Method [Point Density](https://docs.blender.org/manual/en/latest/render/shader_nodes/textures/point_density.html)
+> Node [Point Density](https://docs.blender.org/manual/en/latest/render/shader_nodes/textures/point_density.html)
 
 #### Information:
 - **Socket** : self
@@ -1503,7 +1503,7 @@ point_density(interpolation='Linear', object=None, particle_color_source='PARTIC
 project(vector=None)
 ```
 
-> Method [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Information:
 - **Socket** : self
@@ -1530,7 +1530,7 @@ project(vector=None)
 Random(min=None, max=None, id=None, seed=None)
 ```
 
-> Constructor [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html)
+> Node [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html)
 
 #### Information:
 - **Parameter** : 'FLOAT_VECTOR'
@@ -1559,7 +1559,7 @@ Random(min=None, max=None, id=None, seed=None)
 reflect(vector=None)
 ```
 
-> Method [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Information:
 - **Socket** : self
@@ -1586,7 +1586,7 @@ reflect(vector=None)
 refract(vector=None, ior=None)
 ```
 
-> Method [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Information:
 - **Socket** : self
@@ -1614,7 +1614,7 @@ refract(vector=None, ior=None)
 rotate(center=None, axis=None, angle=None, invert=False, rotation_type='AXIS_ANGLE')
 ```
 
-> Method [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_rotate.html)
+> Node [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_rotate.html)
 
 #### Information:
 - **Socket** : self
@@ -1644,7 +1644,7 @@ rotate(center=None, axis=None, angle=None, invert=False, rotation_type='AXIS_ANG
 rotate_axis_angle(center=None, axis=None, angle=None, invert=False)
 ```
 
-> Method [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_rotate.html)
+> Node [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_rotate.html)
 
 #### Information:
 - **Socket** : self
@@ -1674,7 +1674,7 @@ rotate_axis_angle(center=None, axis=None, angle=None, invert=False)
 rotate_euler_xyz(center=None, rotation=None, invert=False)
 ```
 
-> Method [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_rotate.html)
+> Node [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_rotate.html)
 
 #### Information:
 - **Socket** : self
@@ -1703,7 +1703,7 @@ rotate_euler_xyz(center=None, rotation=None, invert=False)
 rotate_x_axis(center=None, angle=None, invert=False)
 ```
 
-> Method [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_rotate.html)
+> Node [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_rotate.html)
 
 #### Information:
 - **Socket** : self
@@ -1732,7 +1732,7 @@ rotate_x_axis(center=None, angle=None, invert=False)
 rotate_y_axis(center=None, angle=None, invert=False)
 ```
 
-> Method [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_rotate.html)
+> Node [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_rotate.html)
 
 #### Information:
 - **Socket** : self
@@ -1761,7 +1761,7 @@ rotate_y_axis(center=None, angle=None, invert=False)
 rotate_z_axis(center=None, angle=None, invert=False)
 ```
 
-> Method [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_rotate.html)
+> Node [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_rotate.html)
 
 #### Information:
 - **Socket** : self
@@ -1790,7 +1790,7 @@ rotate_z_axis(center=None, angle=None, invert=False)
 sample_grid(position=None, interpolation_mode='TRILINEAR')
 ```
 
-> Method ERROR: Node 'Sample Grid' not found
+> Node ERROR: Node 'Sample Grid' not found
 
 #### Information:
 - **Socket** : self
@@ -1818,7 +1818,7 @@ sample_grid(position=None, interpolation_mode='TRILINEAR')
 sample_grid_index(x=None, y=None, z=None)
 ```
 
-> Method ERROR: Node 'Sample Grid Index' not found
+> Node ERROR: Node 'Sample Grid Index' not found
 
 #### Information:
 - **Socket** : self
@@ -1847,7 +1847,7 @@ sample_grid_index(x=None, y=None, z=None)
 scale(scale=None)
 ```
 
-> Method [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Information:
 - **Socket** : self
@@ -1874,7 +1874,7 @@ scale(scale=None)
 separate_xyz()
 ```
 
-> Method [Separate XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/separate_xyz.html)
+> Node [Separate XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/separate_xyz.html)
 
 #### Information:
 - **Socket** : self
@@ -1895,7 +1895,7 @@ separate_xyz()
 sin()
 ```
 
-> Method [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Information:
 - **Socket** : self
@@ -1917,7 +1917,7 @@ sin()
 snap(increment=None)
 ```
 
-> Method [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Information:
 - **Socket** : self
@@ -1944,7 +1944,7 @@ snap(increment=None)
 subtract(vector=None)
 ```
 
-> Method [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Information:
 - **Socket** : self
@@ -1971,7 +1971,7 @@ subtract(vector=None)
 tan()
 ```
 
-> Method [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Information:
 - **Socket** : self
@@ -2018,7 +2018,7 @@ Tangent(axis='Z', direction_type='RADIAL', uv_map='')
 to_rotation()
 ```
 
-> Method [Euler to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/euler_to_rotation.html)
+> Node [Euler to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/euler_to_rotation.html)
 
 #### Information:
 - **Socket** : self
@@ -2117,7 +2117,7 @@ UVMap(uv_map='', from_instancer=False)
 UvMap(from_instancer=False, uv_map='')
 ```
 
-> Constructor [UV Map](https://docs.blender.org/manual/en/latest/render/shader_nodes/input/uv_map.html)
+> Node [UV Map](https://docs.blender.org/manual/en/latest/render/shader_nodes/input/uv_map.html)
 
 #### Arguments:
 - **from_instancer** (_bool_ = False) : parameter 'from_instancer'
@@ -2139,7 +2139,7 @@ UvMap(from_instancer=False, uv_map='')
 vector_curves(fac=None)
 ```
 
-> Method [Vector Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_curves.html)
+> Node [Vector Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_curves.html)
 
 #### Information:
 - **Socket** : self
@@ -2190,7 +2190,7 @@ vector_displacement(midlevel=None, scale=None, space='TANGENT')
 vector_transform(convert_from='WORLD', convert_to='OBJECT', vector_type='VECTOR')
 ```
 
-> Method [Vector Transform](https://docs.blender.org/manual/en/latest/render/shader_nodes/vector/transform.html)
+> Node [Vector Transform](https://docs.blender.org/manual/en/latest/render/shader_nodes/vector/transform.html)
 
 #### Information:
 - **Socket** : self
@@ -2247,7 +2247,7 @@ Velocity(value=(0.0, 0.0, 0.0), name='Velocity', tip=None, panel=None, default_a
 wrap(max=None, min=None)
 ```
 
-> Method [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
 #### Information:
 - **Socket** : self

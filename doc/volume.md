@@ -48,7 +48,7 @@ cube = Volume.Cube() # Node 'Volume Cube'
 Cube(density=None, background=None, min=None, max=None, resolution_x=None, resolution_y=None, resolution_z=None)
 ```
 
-> Constructor [Volume Cube](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/primitives/volume_cube.html)
+> Node [Volume Cube](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/primitives/volume_cube.html)
 
 #### Arguments:
 - **density** (_Float_ = None) : socket 'Density' (id: Density)
@@ -75,7 +75,7 @@ Cube(density=None, background=None, min=None, max=None, resolution_x=None, resol
 distribute_points(density=None, seed=None, mode='DENSITY_RANDOM')
 ```
 
-> Method ERROR: Node 'Distribute Points in Volume' not found
+> Node ERROR: Node 'Distribute Points in Volume' not found
 
 #### Information:
 - **Socket** : self
@@ -103,7 +103,7 @@ distribute_points(density=None, seed=None, mode='DENSITY_RANDOM')
 distribute_points_density_grid(spacing=None, threshold=None)
 ```
 
-> Method ERROR: Node 'Distribute Points in Volume' not found
+> Node ERROR: Node 'Distribute Points in Volume' not found
 
 #### Information:
 - **Socket** : self
@@ -131,7 +131,7 @@ distribute_points_density_grid(spacing=None, threshold=None)
 distribute_points_density_random(density=None, seed=None)
 ```
 
-> Method ERROR: Node 'Distribute Points in Volume' not found
+> Node ERROR: Node 'Distribute Points in Volume' not found
 
 #### Information:
 - **Socket** : self
@@ -159,7 +159,9 @@ distribute_points_density_random(density=None, seed=None)
 get_named_grid(name=None, remove=None, data_type='FLOAT')
 ```
 
-> Jump Method ERROR: Node 'Get Named Grid' not found
+> Node ERROR: Node 'Get Named Grid' not found
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
@@ -187,7 +189,9 @@ get_named_grid(name=None, remove=None, data_type='FLOAT')
 named_float_grid(name=None, remove=None)
 ```
 
-> Jump Method ERROR: Node 'Get Named Grid' not found
+> Node ERROR: Node 'Get Named Grid' not found
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
@@ -215,7 +219,9 @@ named_float_grid(name=None, remove=None)
 named_vector_grid(name=None, remove=None)
 ```
 
-> Jump Method ERROR: Node 'Get Named Grid' not found
+> Node ERROR: Node 'Get Named Grid' not found
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
@@ -243,7 +249,9 @@ named_vector_grid(name=None, remove=None)
 store_named_grid(name=None, grid=None)
 ```
 
-> Jump Method ERROR: Node 'Store Named Grid' not found
+> Node ERROR: Node 'Store Named Grid' not found
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
@@ -271,7 +279,7 @@ store_named_grid(name=None, grid=None)
 to_mesh(threshold=None, adaptivity=None, resolution_mode='GRID')
 ```
 
-> Method [Volume to Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/operations/volume_to_mesh.html)
+> Node [Volume to Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/operations/volume_to_mesh.html)
 
 #### Information:
 - **Socket** : self
@@ -299,7 +307,7 @@ to_mesh(threshold=None, adaptivity=None, resolution_mode='GRID')
 to_mesh_grid(threshold=None, adaptivity=None)
 ```
 
-> Method [Volume to Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/operations/volume_to_mesh.html)
+> Node [Volume to Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/operations/volume_to_mesh.html)
 
 #### Information:
 - **Socket** : self
@@ -327,7 +335,7 @@ to_mesh_grid(threshold=None, adaptivity=None)
 to_mesh_voxel_amount(voxel_amount=None, threshold=None, adaptivity=None)
 ```
 
-> Method [Volume to Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/operations/volume_to_mesh.html)
+> Node [Volume to Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/operations/volume_to_mesh.html)
 
 #### Information:
 - **Socket** : self
@@ -356,7 +364,7 @@ to_mesh_voxel_amount(voxel_amount=None, threshold=None, adaptivity=None)
 to_mesh_voxel_size(voxel_size=None, threshold=None, adaptivity=None)
 ```
 
-> Method [Volume to Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/operations/volume_to_mesh.html)
+> Node [Volume to Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/operations/volume_to_mesh.html)
 
 #### Information:
 - **Socket** : self

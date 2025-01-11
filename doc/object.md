@@ -38,7 +38,7 @@ Class Object data socket
 ActiveCamera()
 ```
 
-> Constructor [Active Camera](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene/active_camera.html)
+> Node [Active Camera](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene/active_camera.html)
 
 #### Returns:
 - **Object** :
@@ -54,7 +54,7 @@ ActiveCamera()
 info(as_instance=None, transform_space='ORIGINAL')
 ```
 
-> Method [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene/object_info.html)
+> Node [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene/object_info.html)
 
 #### Information:
 - **Socket** : self
@@ -102,7 +102,7 @@ Class Object data socket
 Self()
 ```
 
-> Constructor [Self Object](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene/self_object.html)
+> Node [Self Object](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene/self_object.html)
 
 #### Returns:
 - **Object** :

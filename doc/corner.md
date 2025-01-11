@@ -54,7 +54,7 @@ Corner(geometry: geonodes.core.geometry_class.Geometry)
 accumulate_field(value=None, group_id=None)
 ```
 
-> Class Method [Accumulate Field](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/accumulate_field.html)
+> Node [Accumulate Field](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/accumulate_field.html)
 
 #### Information:
 - **Parameter** : depending on 'value' type
@@ -82,7 +82,7 @@ accumulate_field(value=None, group_id=None)
 attribute_statistic(attribute=None)
 ```
 
-> Method [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html)
+> Node [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html)
 
 #### Information:
 - **Socket** : self
@@ -111,7 +111,7 @@ attribute_statistic(attribute=None)
 edges(corner_index=None)
 ```
 
-> Class Method [Edges of Corner](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/edges_of_corner.html)
+> Node [Edges of Corner](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/edges_of_corner.html)
 
 #### Arguments:
 - **corner_index** (_Integer_ = None) : socket 'Corner Index' (id: Corner Index)
@@ -132,7 +132,7 @@ edges(corner_index=None)
 evaluate_at_index(index=None, value=None)
 ```
 
-> Class Method [Evaluate at Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/evaluate_at_index.html)
+> Node [Evaluate at Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/evaluate_at_index.html)
 
 #### Information:
 - **Parameter** : depending on 'value' type
@@ -160,7 +160,7 @@ evaluate_at_index(index=None, value=None)
 evaluate_on_domain(value=None)
 ```
 
-> Class Method [Evaluate on Domain](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/evaluate_on_domain.html)
+> Node [Evaluate on Domain](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/evaluate_on_domain.html)
 
 #### Information:
 - **Parameter** : depending on 'value' type
@@ -187,7 +187,7 @@ evaluate_on_domain(value=None)
 face(corner_index=None)
 ```
 
-> Class Method [Face of Corner](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/face_of_corner.html)
+> Node [Face of Corner](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/face_of_corner.html)
 
 #### Arguments:
 - **corner_index** (_Integer_ = None) : socket 'Corner Index' (id: Corner Index)
@@ -208,7 +208,7 @@ face(corner_index=None)
 face_index(corner_index=None)
 ```
 
-> Class Method [Face of Corner](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/face_of_corner.html)
+> Node [Face of Corner](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/face_of_corner.html)
 
 #### Arguments:
 - **corner_index** (_Integer_ = None) : socket 'Corner Index' (id: Corner Index)
@@ -229,7 +229,7 @@ face_index(corner_index=None)
 index_in_face(corner_index=None)
 ```
 
-> Class Method [Face of Corner](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/face_of_corner.html)
+> Node [Face of Corner](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/face_of_corner.html)
 
 #### Arguments:
 - **corner_index** (_Integer_ = None) : socket 'Corner Index' (id: Corner Index)
@@ -250,7 +250,7 @@ index_in_face(corner_index=None)
 next_edge_index(corner_index=None)
 ```
 
-> Class Method [Edges of Corner](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/edges_of_corner.html)
+> Node [Edges of Corner](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/edges_of_corner.html)
 
 #### Arguments:
 - **corner_index** (_Integer_ = None) : socket 'Corner Index' (id: Corner Index)
@@ -271,7 +271,7 @@ next_edge_index(corner_index=None)
 offset_in_face(corner_index=None, offset=None)
 ```
 
-> Class Method [Offset Corner in Face](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/offset_corner_in_face.html)
+> Node [Offset Corner in Face](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/offset_corner_in_face.html)
 
 #### Arguments:
 - **corner_index** (_Integer_ = None) : socket 'Corner Index' (id: Corner Index)
@@ -293,7 +293,7 @@ offset_in_face(corner_index=None, offset=None)
 pack_uv_islands(uv=None, margin=None, rotate=None)
 ```
 
-> Class Method [Pack UV Islands](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/uv/pack_uv_islands.html)
+> Node [Pack UV Islands](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/uv/pack_uv_islands.html)
 
 #### Information:
 - **Socket** : self[selection]
@@ -321,7 +321,7 @@ pack_uv_islands(uv=None, margin=None, rotate=None)
 previous_edge_index(corner_index=None)
 ```
 
-> Class Method [Edges of Corner](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/edges_of_corner.html)
+> Node [Edges of Corner](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/edges_of_corner.html)
 
 #### Arguments:
 - **corner_index** (_Integer_ = None) : socket 'Corner Index' (id: Corner Index)
@@ -342,7 +342,7 @@ previous_edge_index(corner_index=None)
 sample_index(value=None, index=None, clamp=False)
 ```
 
-> Method [Sample Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/sample_index.html)
+> Node [Sample Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/sample_index.html)
 
 #### Information:
 - **Socket** : self
@@ -372,7 +372,7 @@ sample_index(value=None, index=None, clamp=False)
 sample_nearest(sample_position=None)
 ```
 
-> Method [Sample Nearest](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/sample_nearest.html)
+> Node [Sample Nearest](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/sample_nearest.html)
 
 #### Information:
 - **Socket** : self
@@ -399,7 +399,9 @@ sample_nearest(sample_position=None)
 store(name=None, value=None)
 ```
 
-> Jump Method [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html)
+> Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
@@ -429,7 +431,9 @@ store(name=None, value=None)
 store_named_attribute(name=None, value=None)
 ```
 
-> Jump Method [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html)
+> Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
@@ -459,7 +463,9 @@ store_named_attribute(name=None, value=None)
 store_uv(name=None, value=None)
 ```
 
-> Jump Method [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html)
+> Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
 
 #### Information:
 - **Socket** : self
@@ -489,7 +495,7 @@ store_uv(name=None, value=None)
 to_points(position=None, radius=None)
 ```
 
-> Method [Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_points.html)
+> Node [Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_points.html)
 
 #### Information:
 - **Socket** : self
@@ -518,7 +524,7 @@ to_points(position=None, radius=None)
 uv_unwrap(seam=None, margin=None, fill_holes=None, method='ANGLE_BASED')
 ```
 
-> Class Method [UV Unwrap](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/uv/uv_unwrap.html)
+> Node [UV Unwrap](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/uv/uv_unwrap.html)
 
 #### Information:
 - **Socket** : self[selection]
@@ -547,7 +553,7 @@ uv_unwrap(seam=None, margin=None, fill_holes=None, method='ANGLE_BASED')
 vertex_index(corner_index=None)
 ```
 
-> Class Method [Vertex of Corner](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/vertex_of_corner.html)
+> Node [Vertex of Corner](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/vertex_of_corner.html)
 
 #### Arguments:
 - **corner_index** (_Integer_ = None) : socket 'Corner Index' (id: Corner Index)
@@ -568,7 +574,7 @@ vertex_index(corner_index=None)
 viewer(value=None)
 ```
 
-> Method [Viewer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/output/viewer.html)
+> Node [Viewer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/output/viewer.html)
 
 #### Information:
 - **Socket** : self

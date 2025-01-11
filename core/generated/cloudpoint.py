@@ -15,7 +15,9 @@ class CloudPoint(Socket):
 
     @radius.setter
     def radius(self, radius=None):
-        """ > Jump Method <&Node Set Point Radius>
+        """ > Node <&Node Set Point Radius>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------

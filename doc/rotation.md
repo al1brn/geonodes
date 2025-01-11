@@ -56,7 +56,7 @@ rot = Rotation(name="User input").  # Create a new Rotation group input
 > _type_: **tuple**
 >
 
-> Property Get ERROR: Node 'Rotation to Axis Angle' not found
+> Node ERROR: Node 'Rotation to Axis Angle' not found
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Rotation](rotation.md#rotation) :black_small_square: [Content](rotation.md#content) :black_small_square: [Properties](rotation.md#properties)</sub>
 
@@ -65,7 +65,7 @@ rot = Rotation(name="User input").  # Create a new Rotation group input
 > _type_: **tuple**
 >
 
-> Property Get [Rotation to Quaternion](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/rotation_to_quaternion.html)
+> Node [Rotation to Quaternion](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/rotation_to_quaternion.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Rotation](rotation.md#rotation) :black_small_square: [Content](rotation.md#content) :black_small_square: [Properties](rotation.md#properties)</sub>
 
@@ -82,7 +82,7 @@ rot = Rotation(name="User input").  # Create a new Rotation group input
 AlignToVector(vector=None, factor=None, axis='Z', pivot_axis='AUTO')
 ```
 
-> Constructor [Align Rotation to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/align_rotation_to_vector.html)
+> Node [Align Rotation to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/align_rotation_to_vector.html)
 
 #### Information:
 - **Socket** : ignored
@@ -111,7 +111,7 @@ AlignToVector(vector=None, factor=None, axis='Z', pivot_axis='AUTO')
 align_toVector(vector=None, factor=None, axis='Z', pivot_axis='AUTO')
 ```
 
-> Method [Align Rotation to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/align_rotation_to_vector.html)
+> Node [Align Rotation to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/align_rotation_to_vector.html)
 
 #### Information:
 - **Socket** : self
@@ -140,7 +140,7 @@ align_toVector(vector=None, factor=None, axis='Z', pivot_axis='AUTO')
 AlignXToVector(vector=None, factor=None, pivot_axis='AUTO')
 ```
 
-> Constructor [Align Rotation to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/align_rotation_to_vector.html)
+> Node [Align Rotation to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/align_rotation_to_vector.html)
 
 #### Information:
 - **Socket** : ignored
@@ -169,7 +169,7 @@ AlignXToVector(vector=None, factor=None, pivot_axis='AUTO')
 align_x_to_vector(vector=None, factor=None, pivot_axis='AUTO')
 ```
 
-> Method [Align Rotation to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/align_rotation_to_vector.html)
+> Node [Align Rotation to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/align_rotation_to_vector.html)
 
 #### Information:
 - **Socket** : self
@@ -198,7 +198,7 @@ align_x_to_vector(vector=None, factor=None, pivot_axis='AUTO')
 AlignYToVector(vector=None, factor=None, pivot_axis='AUTO')
 ```
 
-> Constructor [Align Rotation to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/align_rotation_to_vector.html)
+> Node [Align Rotation to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/align_rotation_to_vector.html)
 
 #### Information:
 - **Socket** : ignored
@@ -227,7 +227,7 @@ AlignYToVector(vector=None, factor=None, pivot_axis='AUTO')
 align_y_to_vector(vector=None, factor=None, pivot_axis='AUTO')
 ```
 
-> Method [Align Rotation to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/align_rotation_to_vector.html)
+> Node [Align Rotation to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/align_rotation_to_vector.html)
 
 #### Information:
 - **Socket** : self
@@ -256,7 +256,7 @@ align_y_to_vector(vector=None, factor=None, pivot_axis='AUTO')
 AlignZToVector(vector=None, factor=None, pivot_axis='AUTO')
 ```
 
-> Constructor [Align Rotation to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/align_rotation_to_vector.html)
+> Node [Align Rotation to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/align_rotation_to_vector.html)
 
 #### Information:
 - **Socket** : ignored
@@ -285,7 +285,7 @@ AlignZToVector(vector=None, factor=None, pivot_axis='AUTO')
 align_z_to_vector(vector=None, factor=None, pivot_axis='AUTO')
 ```
 
-> Method [Align Rotation to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/align_rotation_to_vector.html)
+> Node [Align Rotation to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/align_rotation_to_vector.html)
 
 #### Information:
 - **Socket** : self
@@ -314,7 +314,7 @@ align_z_to_vector(vector=None, factor=None, pivot_axis='AUTO')
 FromAxes(primary_axis_1=None, secondary_axis_1=None, primary_axis='Z', secondary_axis='X')
 ```
 
-> Constructor [Axes to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/axes_to_rotation.html)
+> Node [Axes to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/axes_to_rotation.html)
 
 #### Arguments:
 - **primary_axis_1** (_Vector_ = None) : socket 'Primary Axis' (id: Primary Axis)
@@ -338,7 +338,7 @@ FromAxes(primary_axis_1=None, secondary_axis_1=None, primary_axis='Z', secondary
 FromAxisAngle(axis=None, angle=None)
 ```
 
-> Constructor [Axis Angle to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/axis_angle_to_rotation.html)
+> Node [Axis Angle to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/axis_angle_to_rotation.html)
 
 #### Arguments:
 - **axis** (_Vector_ = None) : socket 'Axis' (id: Axis)
@@ -360,7 +360,7 @@ FromAxisAngle(axis=None, angle=None)
 FromEuler(euler=None)
 ```
 
-> Constructor [Euler to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/euler_to_rotation.html)
+> Node [Euler to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/euler_to_rotation.html)
 
 #### Arguments:
 - **euler** (_Vector_ = None) : socket 'Euler' (id: Euler)
@@ -381,7 +381,7 @@ FromEuler(euler=None)
 FromQuaternion(w=None, x=None, y=None, z=None)
 ```
 
-> Constructor [Quaternion to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/quaternion_to_rotation.html)
+> Node [Quaternion to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/quaternion_to_rotation.html)
 
 #### Arguments:
 - **w** (_Float_ = None) : socket 'W' (id: W)
@@ -405,7 +405,7 @@ FromQuaternion(w=None, x=None, y=None, z=None)
 FromXYAxes(primary_axis=None, secondary_axis=None)
 ```
 
-> Constructor [Axes to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/axes_to_rotation.html)
+> Node [Axes to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/axes_to_rotation.html)
 
 #### Information:
 - **Parameter** : 'X'
@@ -433,7 +433,7 @@ FromXYAxes(primary_axis=None, secondary_axis=None)
 FromXZAxes(primary_axis=None, secondary_axis=None)
 ```
 
-> Constructor [Axes to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/axes_to_rotation.html)
+> Node [Axes to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/axes_to_rotation.html)
 
 #### Information:
 - **Parameter** : 'X'
@@ -461,7 +461,7 @@ FromXZAxes(primary_axis=None, secondary_axis=None)
 FromYXAxes(primary_axis=None, secondary_axis=None)
 ```
 
-> Constructor [Axes to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/axes_to_rotation.html)
+> Node [Axes to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/axes_to_rotation.html)
 
 #### Information:
 - **Parameter** : 'Y'
@@ -489,7 +489,7 @@ FromYXAxes(primary_axis=None, secondary_axis=None)
 FromYZAxes(primary_axis=None, secondary_axis=None)
 ```
 
-> Constructor [Axes to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/axes_to_rotation.html)
+> Node [Axes to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/axes_to_rotation.html)
 
 #### Information:
 - **Parameter** : 'Y'
@@ -517,7 +517,7 @@ FromYZAxes(primary_axis=None, secondary_axis=None)
 FromZXAxes(primary_axis=None, secondary_axis=None)
 ```
 
-> Constructor [Axes to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/axes_to_rotation.html)
+> Node [Axes to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/axes_to_rotation.html)
 
 #### Information:
 - **Parameter** : 'Z'
@@ -545,7 +545,7 @@ FromZXAxes(primary_axis=None, secondary_axis=None)
 FromZYAxes(primary_axis=None, secondary_axis=None)
 ```
 
-> Constructor [Axes to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/axes_to_rotation.html)
+> Node [Axes to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/axes_to_rotation.html)
 
 #### Information:
 - **Parameter** : 'Z'
@@ -573,7 +573,7 @@ FromZYAxes(primary_axis=None, secondary_axis=None)
 hash_value(seed=None)
 ```
 
-> Method [Hash Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/hash_value.html)
+> Node [Hash Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/hash_value.html)
 
 #### Information:
 - **Socket** : self
@@ -638,7 +638,7 @@ rot = Rotation(name="User input").  # Create a new Rotation group input
 invert()
 ```
 
-> Method [Invert Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/invert_rotation.html)
+> Node [Invert Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/invert_rotation.html)
 
 #### Information:
 - **Socket** : self
@@ -659,7 +659,7 @@ invert()
 mix(b=None, factor=None, clamp_factor=True)
 ```
 
-> Method [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+> Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
 #### Information:
 - **Socket** : self
@@ -691,7 +691,7 @@ mix(b=None, factor=None, clamp_factor=True)
 Named(name=None)
 ```
 
-> Constructor [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
+> Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
 #### Information:
 - **Parameter** : 'QUATERNION'
@@ -717,7 +717,7 @@ Named(name=None)
 NamedAttribute(name=None)
 ```
 
-> Constructor [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
+> Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
 #### Information:
 - **Parameter** : 'QUATERNION'
@@ -743,7 +743,7 @@ NamedAttribute(name=None)
 rotate(rotate_by=None, rotation_space='GLOBAL')
 ```
 
-> Method [Rotate Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/rotate_rotation.html)
+> Node [Rotate Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/rotate_rotation.html)
 
 #### Information:
 - **Socket** : self
@@ -770,7 +770,7 @@ rotate(rotate_by=None, rotation_space='GLOBAL')
 rotate_global(rotate_by=None)
 ```
 
-> Method [Rotate Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/rotate_rotation.html)
+> Node [Rotate Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/rotate_rotation.html)
 
 #### Information:
 - **Socket** : self
@@ -797,7 +797,7 @@ rotate_global(rotate_by=None)
 rotate_local(rotate_by=None)
 ```
 
-> Method [Rotate Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/rotate_rotation.html)
+> Node [Rotate Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/rotate_rotation.html)
 
 #### Information:
 - **Socket** : self
@@ -824,7 +824,7 @@ rotate_local(rotate_by=None)
 rotate_vector(vector=None)
 ```
 
-> Method [Rotate Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/rotate_vector.html)
+> Node [Rotate Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/rotate_vector.html)
 
 #### Information:
 - **Socket** : self
@@ -850,7 +850,7 @@ rotate_vector(vector=None)
 to_axis_angle()
 ```
 
-> Method ERROR: Node 'Rotation to Axis Angle' not found
+> Node ERROR: Node 'Rotation to Axis Angle' not found
 
 #### Information:
 - **Socket** : self
@@ -871,7 +871,7 @@ to_axis_angle()
 to_euler()
 ```
 
-> Method [Rotation to Euler](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/rotation_to_euler.html)
+> Node [Rotation to Euler](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/rotation_to_euler.html)
 
 #### Information:
 - **Socket** : self
@@ -892,7 +892,7 @@ to_euler()
 to_quaternion()
 ```
 
-> Method [Rotation to Quaternion](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/rotation_to_quaternion.html)
+> Node [Rotation to Quaternion](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/rotation_to_quaternion.html)
 
 #### Information:
 - **Socket** : self

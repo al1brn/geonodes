@@ -41,7 +41,7 @@ Socket of type Texture
 Brick(vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2)
 ```
 
-> Class Method [Brick Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/brick.html)
+> Node [Brick Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/brick.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
@@ -75,7 +75,7 @@ Brick(vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_siz
 Checked(vector=None, color1=None, color2=None, scale=None)
 ```
 
-> Class Method [Checker Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/checker.html)
+> Node [Checker Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/checker.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
@@ -99,7 +99,7 @@ Checked(vector=None, color1=None, color2=None, scale=None)
 Gabor(vector=None, scale=None, frequency=None, anisotropy=None, orientation=None, gabor_type='2D')
 ```
 
-> Class Method [Gabor Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gabor.html)
+> Node [Gabor Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gabor.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
@@ -125,7 +125,7 @@ Gabor(vector=None, scale=None, frequency=None, anisotropy=None, orientation=None
 Gradient(vector=None, gradient_type='LINEAR')
 ```
 
-> Class Method [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html)
+> Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
@@ -165,7 +165,7 @@ Socket of type Texture
 Magic(vector=None, scale=None, distortion=None, turbulence_depth=2)
 ```
 
-> Class Method [Magic Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/magic.html)
+> Node [Magic Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/magic.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
@@ -189,7 +189,7 @@ Magic(vector=None, scale=None, distortion=None, turbulence_depth=2)
 Noise(vector=None, scale=None, detail=None, roughness=None, lacunarity=None, distortion=None, noise_dimensions='3D', noise_type='FBM', normalize=True)
 ```
 
-> Class Method [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html)
+> Node [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
@@ -218,7 +218,7 @@ Noise(vector=None, scale=None, detail=None, roughness=None, lacunarity=None, dis
 Voronoi(vector=None, scale=None, detail=None, roughness=None, lacunarity=None, randomness=None, distance='EUCLIDEAN', feature='F1', normalize=False, voronoi_dimensions='3D')
 ```
 
-> Class Method [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html)
+> Node [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
@@ -248,7 +248,7 @@ Voronoi(vector=None, scale=None, detail=None, roughness=None, lacunarity=None, r
 Wave(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', rings_direction='X', wave_profile='SIN', wave_type='BANDS')
 ```
 
-> Class Method [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html)
+> Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
@@ -279,7 +279,7 @@ Wave(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, d
 WhiteNoise(vector=None, noise_dimensions='3D')
 ```
 
-> Class Method [White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html)
+> Node [White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)

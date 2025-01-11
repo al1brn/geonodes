@@ -9,7 +9,7 @@ class Rotation(Socket):
     """
     @classmethod
     def AlignToVector(cls, vector=None, factor=None, axis='Z', pivot_axis='AUTO'):
-        """ > Constructor <&Node Align Rotation to Vector>
+        """ > Node <&Node Align Rotation to Vector>
 
         Information
         -----------
@@ -26,12 +26,14 @@ class Rotation(Socket):
         -------
         - Rotation
         """
+        utils.check_enum_arg('axis', axis, 'AlignToVector', ('X', 'Y', 'Z'))
+        utils.check_enum_arg('pivot_axis', pivot_axis, 'AlignToVector', ('AUTO', 'X', 'Y', 'Z'))
         node = Node('Align Rotation to Vector', sockets={'Rotation': None, 'Vector': vector, 'Factor': factor}, axis=axis, pivot_axis=pivot_axis)
         return cls(node._out)
 
     @classmethod
     def AlignXToVector(cls, vector=None, factor=None, pivot_axis='AUTO'):
-        """ > Constructor <&Node Align Rotation to Vector>
+        """ > Node <&Node Align Rotation to Vector>
 
         Information
         -----------
@@ -48,12 +50,13 @@ class Rotation(Socket):
         -------
         - Rotation
         """
+        utils.check_enum_arg('pivot_axis', pivot_axis, 'AlignXToVector', ('AUTO', 'X', 'Y', 'Z'))
         node = Node('Align Rotation to Vector', sockets={'Rotation': None, 'Vector': vector, 'Factor': factor}, axis='X', pivot_axis=pivot_axis)
         return cls(node._out)
 
     @classmethod
     def AlignYToVector(cls, vector=None, factor=None, pivot_axis='AUTO'):
-        """ > Constructor <&Node Align Rotation to Vector>
+        """ > Node <&Node Align Rotation to Vector>
 
         Information
         -----------
@@ -70,12 +73,13 @@ class Rotation(Socket):
         -------
         - Rotation
         """
+        utils.check_enum_arg('pivot_axis', pivot_axis, 'AlignYToVector', ('AUTO', 'X', 'Y', 'Z'))
         node = Node('Align Rotation to Vector', sockets={'Rotation': None, 'Vector': vector, 'Factor': factor}, axis='Y', pivot_axis=pivot_axis)
         return cls(node._out)
 
     @classmethod
     def AlignZToVector(cls, vector=None, factor=None, pivot_axis='AUTO'):
-        """ > Constructor <&Node Align Rotation to Vector>
+        """ > Node <&Node Align Rotation to Vector>
 
         Information
         -----------
@@ -92,11 +96,12 @@ class Rotation(Socket):
         -------
         - Rotation
         """
+        utils.check_enum_arg('pivot_axis', pivot_axis, 'AlignZToVector', ('AUTO', 'X', 'Y', 'Z'))
         node = Node('Align Rotation to Vector', sockets={'Rotation': None, 'Vector': vector, 'Factor': factor}, axis='Z', pivot_axis=pivot_axis)
         return cls(node._out)
 
     def align_toVector(self, vector=None, factor=None, axis='Z', pivot_axis='AUTO'):
-        """ > Method <&Node Align Rotation to Vector>
+        """ > Node <&Node Align Rotation to Vector>
 
         Information
         -----------
@@ -113,11 +118,13 @@ class Rotation(Socket):
         -------
         - Rotation
         """
+        utils.check_enum_arg('axis', axis, 'align_toVector', ('X', 'Y', 'Z'))
+        utils.check_enum_arg('pivot_axis', pivot_axis, 'align_toVector', ('AUTO', 'X', 'Y', 'Z'))
         node = Node('Align Rotation to Vector', sockets={'Rotation': self, 'Vector': vector, 'Factor': factor}, axis=axis, pivot_axis=pivot_axis)
         return node._out
 
     def align_x_to_vector(self, vector=None, factor=None, pivot_axis='AUTO'):
-        """ > Method <&Node Align Rotation to Vector>
+        """ > Node <&Node Align Rotation to Vector>
 
         Information
         -----------
@@ -134,11 +141,12 @@ class Rotation(Socket):
         -------
         - Rotation
         """
+        utils.check_enum_arg('pivot_axis', pivot_axis, 'align_x_to_vector', ('AUTO', 'X', 'Y', 'Z'))
         node = Node('Align Rotation to Vector', sockets={'Rotation': self, 'Vector': vector, 'Factor': factor}, axis='X', pivot_axis=pivot_axis)
         return node._out
 
     def align_y_to_vector(self, vector=None, factor=None, pivot_axis='AUTO'):
-        """ > Method <&Node Align Rotation to Vector>
+        """ > Node <&Node Align Rotation to Vector>
 
         Information
         -----------
@@ -155,11 +163,12 @@ class Rotation(Socket):
         -------
         - Rotation
         """
+        utils.check_enum_arg('pivot_axis', pivot_axis, 'align_y_to_vector', ('AUTO', 'X', 'Y', 'Z'))
         node = Node('Align Rotation to Vector', sockets={'Rotation': self, 'Vector': vector, 'Factor': factor}, axis='Y', pivot_axis=pivot_axis)
         return node._out
 
     def align_z_to_vector(self, vector=None, factor=None, pivot_axis='AUTO'):
-        """ > Method <&Node Align Rotation to Vector>
+        """ > Node <&Node Align Rotation to Vector>
 
         Information
         -----------
@@ -176,12 +185,13 @@ class Rotation(Socket):
         -------
         - Rotation
         """
+        utils.check_enum_arg('pivot_axis', pivot_axis, 'align_z_to_vector', ('AUTO', 'X', 'Y', 'Z'))
         node = Node('Align Rotation to Vector', sockets={'Rotation': self, 'Vector': vector, 'Factor': factor}, axis='Z', pivot_axis=pivot_axis)
         return node._out
 
     @classmethod
     def FromAxes(cls, primary_axis_1=None, secondary_axis_1=None, primary_axis='Z', secondary_axis='X'):
-        """ > Constructor <&Node Axes to Rotation>
+        """ > Node <&Node Axes to Rotation>
 
         Arguments
         ---------
@@ -194,12 +204,14 @@ class Rotation(Socket):
         -------
         - Rotation
         """
+        utils.check_enum_arg('primary_axis', primary_axis, 'FromAxes', ('X', 'Y', 'Z'))
+        utils.check_enum_arg('secondary_axis', secondary_axis, 'FromAxes', ('X', 'Y', 'Z'))
         node = Node('Axes to Rotation', sockets={'Primary Axis': primary_axis_1, 'Secondary Axis': secondary_axis_1}, primary_axis=primary_axis, secondary_axis=secondary_axis)
         return cls(node._out)
 
     @classmethod
     def FromXYAxes(cls, primary_axis=None, secondary_axis=None):
-        """ > Constructor <&Node Axes to Rotation>
+        """ > Node <&Node Axes to Rotation>
 
         Information
         -----------
@@ -220,7 +232,7 @@ class Rotation(Socket):
 
     @classmethod
     def FromYXAxes(cls, primary_axis=None, secondary_axis=None):
-        """ > Constructor <&Node Axes to Rotation>
+        """ > Node <&Node Axes to Rotation>
 
         Information
         -----------
@@ -241,7 +253,7 @@ class Rotation(Socket):
 
     @classmethod
     def FromXZAxes(cls, primary_axis=None, secondary_axis=None):
-        """ > Constructor <&Node Axes to Rotation>
+        """ > Node <&Node Axes to Rotation>
 
         Information
         -----------
@@ -262,7 +274,7 @@ class Rotation(Socket):
 
     @classmethod
     def FromZXAxes(cls, primary_axis=None, secondary_axis=None):
-        """ > Constructor <&Node Axes to Rotation>
+        """ > Node <&Node Axes to Rotation>
 
         Information
         -----------
@@ -283,7 +295,7 @@ class Rotation(Socket):
 
     @classmethod
     def FromYZAxes(cls, primary_axis=None, secondary_axis=None):
-        """ > Constructor <&Node Axes to Rotation>
+        """ > Node <&Node Axes to Rotation>
 
         Information
         -----------
@@ -304,7 +316,7 @@ class Rotation(Socket):
 
     @classmethod
     def FromZYAxes(cls, primary_axis=None, secondary_axis=None):
-        """ > Constructor <&Node Axes to Rotation>
+        """ > Node <&Node Axes to Rotation>
 
         Information
         -----------
@@ -325,7 +337,7 @@ class Rotation(Socket):
 
     @classmethod
     def FromAxisAngle(cls, axis=None, angle=None):
-        """ > Constructor <&Node Axis Angle to Rotation>
+        """ > Node <&Node Axis Angle to Rotation>
 
         Arguments
         ---------
@@ -341,7 +353,7 @@ class Rotation(Socket):
 
     @classmethod
     def FromEuler(cls, euler=None):
-        """ > Constructor <&Node Euler to Rotation>
+        """ > Node <&Node Euler to Rotation>
 
         Arguments
         ---------
@@ -355,7 +367,7 @@ class Rotation(Socket):
         return cls(node._out)
 
     def hash_value(self, seed=None):
-        """ > Method <&Node Hash Value>
+        """ > Node <&Node Hash Value>
 
         Information
         -----------
@@ -374,7 +386,7 @@ class Rotation(Socket):
         return node._out
 
     def invert(self):
-        """ > Method <&Node Invert Rotation>
+        """ > Node <&Node Invert Rotation>
 
         Information
         -----------
@@ -389,7 +401,7 @@ class Rotation(Socket):
 
     @classmethod
     def FromQuaternion(cls, w=None, x=None, y=None, z=None):
-        """ > Constructor <&Node Quaternion to Rotation>
+        """ > Node <&Node Quaternion to Rotation>
 
         Arguments
         ---------
@@ -406,7 +418,7 @@ class Rotation(Socket):
         return cls(node._out)
 
     def rotate(self, rotate_by=None, rotation_space='GLOBAL'):
-        """ > Method <&Node Rotate Rotation>
+        """ > Node <&Node Rotate Rotation>
 
         Information
         -----------
@@ -421,11 +433,12 @@ class Rotation(Socket):
         -------
         - Rotation
         """
+        utils.check_enum_arg('rotation_space', rotation_space, 'rotate', ('GLOBAL', 'LOCAL'))
         node = Node('Rotate Rotation', sockets={'Rotation': self, 'Rotate By': rotate_by}, rotation_space=rotation_space)
         return node._out
 
     def rotate_global(self, rotate_by=None):
-        """ > Method <&Node Rotate Rotation>
+        """ > Node <&Node Rotate Rotation>
 
         Information
         -----------
@@ -444,7 +457,7 @@ class Rotation(Socket):
         return node._out
 
     def rotate_local(self, rotate_by=None):
-        """ > Method <&Node Rotate Rotation>
+        """ > Node <&Node Rotate Rotation>
 
         Information
         -----------
@@ -463,7 +476,7 @@ class Rotation(Socket):
         return node._out
 
     def rotate_vector(self, vector=None):
-        """ > Method <&Node Rotate Vector>
+        """ > Node <&Node Rotate Vector>
 
         Information
         -----------
@@ -481,7 +494,7 @@ class Rotation(Socket):
         return node._out
 
     def to_axis_angle(self):
-        """ > Method <&Node Rotation to Axis Angle>
+        """ > Node <&Node Rotation to Axis Angle>
 
         Information
         -----------
@@ -496,7 +509,7 @@ class Rotation(Socket):
 
     @property
     def axis_angle(self):
-        """ > Property Get <&Node Rotation to Axis Angle>
+        """ > Node <&Node Rotation to Axis Angle>
 
         Information
         -----------
@@ -510,7 +523,7 @@ class Rotation(Socket):
         return (node.axis, node.angle)
 
     def to_euler(self):
-        """ > Method <&Node Rotation to Euler>
+        """ > Node <&Node Rotation to Euler>
 
         Information
         -----------
@@ -524,7 +537,7 @@ class Rotation(Socket):
         return node._out
 
     def to_quaternion(self):
-        """ > Method <&Node Rotation to Quaternion>
+        """ > Node <&Node Rotation to Quaternion>
 
         Information
         -----------
@@ -539,7 +552,7 @@ class Rotation(Socket):
 
     @property
     def wxyz(self):
-        """ > Property Get <&Node Rotation to Quaternion>
+        """ > Node <&Node Rotation to Quaternion>
 
         Information
         -----------
@@ -554,7 +567,7 @@ class Rotation(Socket):
 
     @classmethod
     def Named(cls, name=None):
-        """ > Constructor <&Node Named Attribute>
+        """ > Node <&Node Named Attribute>
 
         Information
         -----------
@@ -573,7 +586,7 @@ class Rotation(Socket):
 
     @classmethod
     def NamedAttribute(cls, name=None):
-        """ > Constructor <&Node Named Attribute>
+        """ > Node <&Node Named Attribute>
 
         Information
         -----------
@@ -591,7 +604,7 @@ class Rotation(Socket):
         return cls(node._out)
 
     def mix(self, b=None, factor=None, clamp_factor=True):
-        """ > Method <&Node Mix>
+        """ > Node <&Node Mix>
 
         Information
         -----------

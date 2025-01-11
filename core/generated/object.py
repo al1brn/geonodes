@@ -9,7 +9,7 @@ class Object(Socket):
     """
     @classmethod
     def ActiveCamera(cls):
-        """ > Constructor <&Node Active Camera>
+        """ > Node <&Node Active Camera>
 
         Returns
         -------
@@ -19,7 +19,7 @@ class Object(Socket):
         return cls(node._out)
 
     def info(self, as_instance=None, transform_space='ORIGINAL'):
-        """ > Method <&Node Object Info>
+        """ > Node <&Node Object Info>
 
         Information
         -----------
@@ -34,12 +34,13 @@ class Object(Socket):
         -------
         - node [transform (Matrix), location (Vector), rotation (Rotation), scale (Vector), geometry (Geometry)]
         """
+        utils.check_enum_arg('transform_space', transform_space, 'info', ('ORIGINAL', 'RELATIVE'))
         node = Node('Object Info', sockets={'Object': self, 'As Instance': as_instance}, transform_space=transform_space)
         return node
 
     @classmethod
     def Self(cls):
-        """ > Constructor <&Node Self Object>
+        """ > Node <&Node Self Object>
 
         Returns
         -------

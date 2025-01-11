@@ -50,7 +50,7 @@ layer_selection_field
 band(boolean=None)
 ```
 
-> Method [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
+> Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
 
 #### Information:
 - **Socket** : self
@@ -77,7 +77,7 @@ band(boolean=None)
 bnot()
 ```
 
-> Method [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
+> Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
 
 #### Information:
 - **Socket** : self
@@ -99,7 +99,7 @@ bnot()
 bor(boolean=None)
 ```
 
-> Method [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
+> Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
 
 #### Information:
 - **Socket** : self
@@ -126,7 +126,7 @@ bor(boolean=None)
 error(message=None)
 ```
 
-> Method [Warning](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/output/warning.html)
+> Node [Warning](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/output/warning.html)
 
 #### Information:
 - **Socket** : self
@@ -153,7 +153,7 @@ error(message=None)
 imply(boolean=None)
 ```
 
-> Method [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
+> Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
 
 #### Information:
 - **Socket** : self
@@ -180,7 +180,7 @@ imply(boolean=None)
 info(message=None)
 ```
 
-> Method [Warning](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/output/warning.html)
+> Node [Warning](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/output/warning.html)
 
 #### Information:
 - **Socket** : self
@@ -235,7 +235,7 @@ layer_selection_field
 Named(name=None)
 ```
 
-> Constructor [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
+> Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
 #### Information:
 - **Parameter** : 'BOOLEAN'
@@ -261,7 +261,7 @@ Named(name=None)
 NamedAttribute(name=None)
 ```
 
-> Constructor [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
+> Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
 #### Information:
 - **Parameter** : 'BOOLEAN'
@@ -287,7 +287,7 @@ NamedAttribute(name=None)
 nimply(boolean=None)
 ```
 
-> Method [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
+> Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
 
 #### Information:
 - **Socket** : self
@@ -314,7 +314,7 @@ nimply(boolean=None)
 nor(boolean=None)
 ```
 
-> Method [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
+> Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
 
 #### Information:
 - **Socket** : self
@@ -341,7 +341,7 @@ nor(boolean=None)
 not_and(boolean=None)
 ```
 
-> Method [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
+> Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
 
 #### Information:
 - **Socket** : self
@@ -368,7 +368,7 @@ not_and(boolean=None)
 Random(probability=None, id=None, seed=None)
 ```
 
-> Constructor [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html)
+> Node [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html)
 
 #### Information:
 - **Parameter** : 'BOOLEAN'
@@ -396,7 +396,7 @@ Random(probability=None, id=None, seed=None)
 sample_grid(position=None, interpolation_mode='TRILINEAR')
 ```
 
-> Method ERROR: Node 'Sample Grid' not found
+> Node ERROR: Node 'Sample Grid' not found
 
 #### Information:
 - **Socket** : self
@@ -424,7 +424,7 @@ sample_grid(position=None, interpolation_mode='TRILINEAR')
 sample_grid_index(x=None, y=None, z=None)
 ```
 
-> Method ERROR: Node 'Sample Grid Index' not found
+> Node ERROR: Node 'Sample Grid Index' not found
 
 #### Information:
 - **Socket** : self
@@ -453,7 +453,7 @@ sample_grid_index(x=None, y=None, z=None)
 uv_unwrap(seam=None, margin=None, fill_holes=None, method='ANGLE_BASED')
 ```
 
-> Method [UV Unwrap](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/uv/uv_unwrap.html)
+> Node [UV Unwrap](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/uv/uv_unwrap.html)
 
 #### Information:
 - **Socket** : self
@@ -482,7 +482,7 @@ uv_unwrap(seam=None, margin=None, fill_holes=None, method='ANGLE_BASED')
 warning(message=None)
 ```
 
-> Method [Warning](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/output/warning.html)
+> Node [Warning](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/output/warning.html)
 
 #### Information:
 - **Socket** : self
@@ -509,7 +509,7 @@ warning(message=None)
 xnor(boolean=None)
 ```
 
-> Method [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
+> Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
 
 #### Information:
 - **Socket** : self
@@ -536,7 +536,7 @@ xnor(boolean=None)
 xor(boolean=None)
 ```
 
-> Method [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
+> Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
 
 #### Information:
 - **Socket** : self

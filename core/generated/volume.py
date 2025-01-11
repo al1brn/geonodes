@@ -8,7 +8,7 @@ class Volume(Socket):
     $DOC SET hidden
     """
     def distribute_points_density_random(self, density=None, seed=None):
-        """ > Method <&Node Distribute Points in Volume>
+        """ > Node <&Node Distribute Points in Volume>
 
         Information
         -----------
@@ -28,7 +28,7 @@ class Volume(Socket):
         return node._out
 
     def distribute_points_density_grid(self, spacing=None, threshold=None):
-        """ > Method <&Node Distribute Points in Volume>
+        """ > Node <&Node Distribute Points in Volume>
 
         Information
         -----------
@@ -48,7 +48,7 @@ class Volume(Socket):
         return node._out
 
     def distribute_points(self, density=None, seed=None, mode='DENSITY_RANDOM'):
-        """ > Method <&Node Distribute Points in Volume>
+        """ > Node <&Node Distribute Points in Volume>
 
         Information
         -----------
@@ -64,11 +64,14 @@ class Volume(Socket):
         -------
         - Cloud
         """
+        utils.check_enum_arg('mode', mode, 'distribute_points', ('DENSITY_RANDOM', 'DENSITY_GRID'))
         node = Node('Distribute Points in Volume', sockets={'Volume': self, 'Density': density, 'Seed': seed}, mode=mode)
         return node._out
 
     def get_named_grid(self, name=None, remove=None, data_type='FLOAT'):
-        """ > Jump Method <&Node Get Named Grid>
+        """ > Node <&Node Get Named Grid>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -84,12 +87,15 @@ class Volume(Socket):
         -------
         - Volume [grid_ (Float)]
         """
+        utils.check_enum_arg('data_type', data_type, 'get_named_grid', ('FLOAT', 'VECTOR'))
         node = Node('Get Named Grid', sockets={'Volume': self, 'Name': name, 'Remove': remove}, data_type=data_type)
         self._jump(node._out)
         return self._domain_to_geometry
 
     def named_float_grid(self, name=None, remove=None):
-        """ > Jump Method <&Node Get Named Grid>
+        """ > Node <&Node Get Named Grid>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -110,7 +116,9 @@ class Volume(Socket):
         return self._domain_to_geometry
 
     def named_vector_grid(self, name=None, remove=None):
-        """ > Jump Method <&Node Get Named Grid>
+        """ > Node <&Node Get Named Grid>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -131,7 +139,9 @@ class Volume(Socket):
         return self._domain_to_geometry
 
     def store_named_grid(self, name=None, grid=None):
-        """ > Jump Method <&Node Store Named Grid>
+        """ > Node <&Node Store Named Grid>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
@@ -154,7 +164,7 @@ class Volume(Socket):
 
     @classmethod
     def Cube(cls, density=None, background=None, min=None, max=None, resolution_x=None, resolution_y=None, resolution_z=None):
-        """ > Constructor <&Node Volume Cube>
+        """ > Node <&Node Volume Cube>
 
         Arguments
         ---------
@@ -174,7 +184,7 @@ class Volume(Socket):
         return cls(node._out)
 
     def to_mesh(self, threshold=None, adaptivity=None, resolution_mode='GRID'):
-        """ > Method <&Node Volume to Mesh>
+        """ > Node <&Node Volume to Mesh>
 
         Information
         -----------
@@ -190,11 +200,12 @@ class Volume(Socket):
         -------
         - Mesh
         """
+        utils.check_enum_arg('resolution_mode', resolution_mode, 'to_mesh', ('GRID', 'VOXEL_AMOUNT', 'VOXEL_SIZE'))
         node = Node('Volume to Mesh', sockets={'Volume': self, 'Threshold': threshold, 'Adaptivity': adaptivity}, resolution_mode=resolution_mode)
         return node._out
 
     def to_mesh_grid(self, threshold=None, adaptivity=None):
-        """ > Method <&Node Volume to Mesh>
+        """ > Node <&Node Volume to Mesh>
 
         Information
         -----------
@@ -214,7 +225,7 @@ class Volume(Socket):
         return node._out
 
     def to_mesh_voxel_amount(self, voxel_amount=None, threshold=None, adaptivity=None):
-        """ > Method <&Node Volume to Mesh>
+        """ > Node <&Node Volume to Mesh>
 
         Information
         -----------
@@ -235,7 +246,7 @@ class Volume(Socket):
         return node._out
 
     def to_mesh_voxel_size(self, voxel_size=None, threshold=None, adaptivity=None):
-        """ > Method <&Node Volume to Mesh>
+        """ > Node <&Node Volume to Mesh>
 
         Information
         -----------

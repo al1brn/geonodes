@@ -8,7 +8,7 @@ class Integer(Socket):
     $DOC SET hidden
     """
     def less_than(self, b=None):
-        """ > Method <&Node Compare>
+        """ > Node <&Node Compare>
 
         Information
         -----------
@@ -29,7 +29,7 @@ class Integer(Socket):
         return node._out
 
     def less_equal(self, b=None):
-        """ > Method <&Node Compare>
+        """ > Node <&Node Compare>
 
         Information
         -----------
@@ -50,7 +50,7 @@ class Integer(Socket):
         return node._out
 
     def greater_than(self, b=None):
-        """ > Method <&Node Compare>
+        """ > Node <&Node Compare>
 
         Information
         -----------
@@ -71,7 +71,7 @@ class Integer(Socket):
         return node._out
 
     def greater_equal(self, b=None):
-        """ > Method <&Node Compare>
+        """ > Node <&Node Compare>
 
         Information
         -----------
@@ -92,7 +92,7 @@ class Integer(Socket):
         return node._out
 
     def equal(self, b=None):
-        """ > Method <&Node Compare>
+        """ > Node <&Node Compare>
 
         Information
         -----------
@@ -113,7 +113,7 @@ class Integer(Socket):
         return node._out
 
     def not_equal(self, b=None):
-        """ > Method <&Node Compare>
+        """ > Node <&Node Compare>
 
         Information
         -----------
@@ -134,7 +134,7 @@ class Integer(Socket):
         return node._out
 
     def hash_value(self, seed=None):
-        """ > Method <&Node Hash Value>
+        """ > Node <&Node Hash Value>
 
         Information
         -----------
@@ -153,7 +153,7 @@ class Integer(Socket):
         return node._out
 
     def add(self, value=None):
-        """ > Method <&Node Integer Math>
+        """ > Node <&Node Integer Math>
 
         Information
         -----------
@@ -172,7 +172,7 @@ class Integer(Socket):
         return node._out
 
     def subtract(self, value=None):
-        """ > Method <&Node Integer Math>
+        """ > Node <&Node Integer Math>
 
         Information
         -----------
@@ -191,7 +191,7 @@ class Integer(Socket):
         return node._out
 
     def multiply(self, value=None):
-        """ > Method <&Node Integer Math>
+        """ > Node <&Node Integer Math>
 
         Information
         -----------
@@ -210,7 +210,7 @@ class Integer(Socket):
         return node._out
 
     def divide(self, value=None):
-        """ > Method <&Node Integer Math>
+        """ > Node <&Node Integer Math>
 
         Information
         -----------
@@ -229,7 +229,7 @@ class Integer(Socket):
         return node._out
 
     def multiply_add(self, multiplier=None, addend=None):
-        """ > Method <&Node Integer Math>
+        """ > Node <&Node Integer Math>
 
         Information
         -----------
@@ -249,7 +249,7 @@ class Integer(Socket):
         return node._out
 
     def abs(self):
-        """ > Method <&Node Integer Math>
+        """ > Node <&Node Integer Math>
 
         Information
         -----------
@@ -264,7 +264,7 @@ class Integer(Socket):
         return node._out
 
     def negate(self):
-        """ > Method <&Node Integer Math>
+        """ > Node <&Node Integer Math>
 
         Information
         -----------
@@ -279,7 +279,7 @@ class Integer(Socket):
         return node._out
 
     def power(self, exponent=None):
-        """ > Method <&Node Integer Math>
+        """ > Node <&Node Integer Math>
 
         Information
         -----------
@@ -298,7 +298,7 @@ class Integer(Socket):
         return node._out
 
     def min(self, value=None):
-        """ > Method <&Node Integer Math>
+        """ > Node <&Node Integer Math>
 
         Information
         -----------
@@ -317,7 +317,7 @@ class Integer(Socket):
         return node._out
 
     def max(self, value=None):
-        """ > Method <&Node Integer Math>
+        """ > Node <&Node Integer Math>
 
         Information
         -----------
@@ -336,7 +336,7 @@ class Integer(Socket):
         return node._out
 
     def sign(self):
-        """ > Method <&Node Integer Math>
+        """ > Node <&Node Integer Math>
 
         Information
         -----------
@@ -351,7 +351,7 @@ class Integer(Socket):
         return node._out
 
     def divide_round(self, value=None):
-        """ > Method <&Node Integer Math>
+        """ > Node <&Node Integer Math>
 
         Information
         -----------
@@ -370,7 +370,7 @@ class Integer(Socket):
         return node._out
 
     def divide_floor(self, value=None):
-        """ > Method <&Node Integer Math>
+        """ > Node <&Node Integer Math>
 
         Information
         -----------
@@ -389,7 +389,7 @@ class Integer(Socket):
         return node._out
 
     def divide_ceil(self, value=None):
-        """ > Method <&Node Integer Math>
+        """ > Node <&Node Integer Math>
 
         Information
         -----------
@@ -408,7 +408,7 @@ class Integer(Socket):
         return node._out
 
     def floored_modulo(self, value=None):
-        """ > Method <&Node Integer Math>
+        """ > Node <&Node Integer Math>
 
         Information
         -----------
@@ -427,7 +427,7 @@ class Integer(Socket):
         return node._out
 
     def modulo(self, value=None):
-        """ > Method <&Node Integer Math>
+        """ > Node <&Node Integer Math>
 
         Information
         -----------
@@ -446,7 +446,7 @@ class Integer(Socket):
         return node._out
 
     def gcd(self, value=None):
-        """ > Method <&Node Integer Math>
+        """ > Node <&Node Integer Math>
 
         Information
         -----------
@@ -465,7 +465,7 @@ class Integer(Socket):
         return node._out
 
     def lcm(self, value=None):
-        """ > Method <&Node Integer Math>
+        """ > Node <&Node Integer Math>
 
         Information
         -----------
@@ -485,7 +485,7 @@ class Integer(Socket):
 
     @classmethod
     def Random(cls, min=None, max=None, id=None, seed=None):
-        """ > Constructor <&Node Random Value>
+        """ > Node <&Node Random Value>
 
         Information
         -----------
@@ -506,7 +506,7 @@ class Integer(Socket):
         return cls(node._out)
 
     def to_string(self):
-        """ > Method <&Node Value to String>
+        """ > Node <&Node Value to String>
 
         Information
         -----------
@@ -521,7 +521,7 @@ class Integer(Socket):
         return node._out
 
     def blur(self, iterations=None, weight=None):
-        """ > Method <&Node Blur Attribute>
+        """ > Node <&Node Blur Attribute>
 
         Information
         -----------
@@ -542,7 +542,7 @@ class Integer(Socket):
 
     @classmethod
     def Named(cls, name=None):
-        """ > Constructor <&Node Named Attribute>
+        """ > Node <&Node Named Attribute>
 
         Information
         -----------
@@ -561,7 +561,7 @@ class Integer(Socket):
 
     @classmethod
     def NamedAttribute(cls, name=None):
-        """ > Constructor <&Node Named Attribute>
+        """ > Node <&Node Named Attribute>
 
         Information
         -----------
@@ -579,7 +579,7 @@ class Integer(Socket):
         return cls(node._out)
 
     def sample_grid(self, position=None, interpolation_mode='TRILINEAR'):
-        """ > Method <&Node Sample Grid>
+        """ > Node <&Node Sample Grid>
 
         Information
         -----------
@@ -595,11 +595,12 @@ class Integer(Socket):
         -------
         - Integer
         """
+        utils.check_enum_arg('interpolation_mode', interpolation_mode, 'sample_grid', ('NEAREST', 'TRILINEAR', 'TRIQUADRATIC'))
         node = Node('Sample Grid', sockets={'Grid': self, 'Position': position}, data_type='INT', interpolation_mode=interpolation_mode)
         return node._out
 
     def sample_grid_index(self, x=None, y=None, z=None):
-        """ > Method <&Node Sample Grid Index>
+        """ > Node <&Node Sample Grid Index>
 
         Information
         -----------

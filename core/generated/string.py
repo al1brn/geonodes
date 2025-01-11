@@ -8,7 +8,7 @@ class String(Socket):
     $DOC SET hidden
     """
     def equal(self, b=None):
-        """ > Method <&Node Compare>
+        """ > Node <&Node Compare>
 
         Information
         -----------
@@ -29,7 +29,7 @@ class String(Socket):
         return node._out
 
     def not_equal(self, b=None):
-        """ > Method <&Node Compare>
+        """ > Node <&Node Compare>
 
         Information
         -----------
@@ -50,7 +50,7 @@ class String(Socket):
         return node._out
 
     def hash_value(self, seed=None):
-        """ > Method <&Node Hash Value>
+        """ > Node <&Node Hash Value>
 
         Information
         -----------
@@ -70,7 +70,7 @@ class String(Socket):
 
     @classmethod
     def special_characters(cls):
-        """ > Class Method <&Node Special Characters>
+        """ > Node <&Node Special Characters>
 
         Returns
         -------
@@ -82,7 +82,7 @@ class String(Socket):
     @classmethod
     @property
     def line_break(cls):
-        """ > Property Get <&Node Special Characters>
+        """ > Node <&Node Special Characters>
 
         Returns
         -------
@@ -94,7 +94,7 @@ class String(Socket):
     @classmethod
     @property
     def tab(cls):
-        """ > Property Get <&Node Special Characters>
+        """ > Node <&Node Special Characters>
 
         Returns
         -------
@@ -104,7 +104,7 @@ class String(Socket):
         return node.tab
 
     def replace(self, find=None, replace=None):
-        """ > Method <&Node Replace String>
+        """ > Node <&Node Replace String>
 
         Information
         -----------
@@ -123,7 +123,7 @@ class String(Socket):
         return node._out
 
     def slice(self, position=None, length=None):
-        """ > Method <&Node Slice String>
+        """ > Node <&Node Slice String>
 
         Information
         -----------
@@ -142,7 +142,7 @@ class String(Socket):
         return node._out
 
     def length(self):
-        """ > Method <&Node String Length>
+        """ > Node <&Node String Length>
 
         Information
         -----------
@@ -156,7 +156,7 @@ class String(Socket):
         return node._out
 
     def join(self, *strings):
-        """ > Method <&Node Join Strings>
+        """ > Node <&Node Join Strings>
 
         Information
         -----------
@@ -175,7 +175,7 @@ class String(Socket):
 
     @classmethod
     def Join(cls, *strings, delimiter=None):
-        """ > Constructor <&Node Join Strings>
+        """ > Node <&Node Join Strings>
 
         Arguments
         ---------
@@ -190,7 +190,7 @@ class String(Socket):
         return cls(node._out)
 
     def to_curves(self, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, align_x='LEFT', align_y='TOP_BASELINE', overflow='OVERFLOW', pivot_mode='BOTTOM_LEFT'):
-        """ > Method <&Node String to Curves>
+        """ > Node <&Node String to Curves>
 
         Information
         -----------
@@ -212,6 +212,10 @@ class String(Socket):
         -------
         - Instances [line_ (Integer), pivot_point_ (Vector)]
         """
+        utils.check_enum_arg('align_x', align_x, 'to_curves', ('LEFT', 'CENTER', 'RIGHT', 'JUSTIFY', 'FLUSH'))
+        utils.check_enum_arg('align_y', align_y, 'to_curves', ('TOP', 'TOP_BASELINE', 'MIDDLE', 'BOTTOM_BASELINE', 'BOTTOM'))
+        utils.check_enum_arg('overflow', overflow, 'to_curves', ('OVERFLOW', 'SCALE_TO_FIT', 'TRUNCATE'))
+        utils.check_enum_arg('pivot_mode', pivot_mode, 'to_curves', ('MIDPOINT', 'TOP_LEFT', 'TOP_CENTER', 'TOP_RIGHT', 'BOTTOM_LEFT', 'BOTTOM_CENTER', 'BOTTOM_RIGHT'))
         node = Node('String to Curves', sockets={'String': self, 'Size': size, 'Character Spacing': character_spacing, 'Word Spacing': word_spacing, 'Line Spacing': line_spacing, 'Text Box Width': text_box_width}, align_x=align_x, align_y=align_y, overflow=overflow, pivot_mode=pivot_mode)
         return node._out
 
