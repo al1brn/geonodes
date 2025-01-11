@@ -7,7 +7,6 @@ class CloudPoint(Socket):
     """"
     $DOC SET hidden
     """
-
     @property
     def radius(self):
         """ Property get node <Node Set Point Radius>

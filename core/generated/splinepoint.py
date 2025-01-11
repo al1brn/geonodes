@@ -7,7 +7,6 @@ class SplinePoint(Socket):
     """"
     $DOC SET hidden
     """
-
     @classmethod
     def curve_of_point(cls, point_index=None):
         """ > Class Method <&Node Curve of Point>

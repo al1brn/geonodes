@@ -7,7 +7,6 @@ class Geometry(Socket):
     """"
     $DOC SET hidden
     """
-
     def bounding_box(self):
         """ > Method <&Node Bounding Box>
 

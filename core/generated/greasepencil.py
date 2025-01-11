@@ -7,7 +7,6 @@ class GreasePencil(Socket):
     """"
     $DOC SET hidden
     """
-
     def domain_size(self):
         """ > Method <&Node Domain Size>
 

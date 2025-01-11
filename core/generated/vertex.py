@@ -7,7 +7,6 @@ class Vertex(Socket):
     """"
     $DOC SET hidden
     """
-
     @classmethod
     def corners(cls, vertex_index=None, weights=None, sort_index=None):
         """ > Class Method <&Node Corners of Vertex>

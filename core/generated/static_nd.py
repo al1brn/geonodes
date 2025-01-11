@@ -3,7 +3,7 @@ from .. treeclass import Node
 from .. treeclass import utils
 from .. scripterror import NodeError
 
-class nd(Socket):
+class nd:
 
     @classmethod
     def align_rotation_to_vector(cls, rotation=None, vector=None, factor=None, axis='Z', pivot_axis='AUTO'):
@@ -928,7 +928,7 @@ class nd(Socket):
         return node._out
 
     @classmethod
-    def handle_type_selection(cls, handle_type='AUTO', mode={'LEFT', 'RIGHT'}):
+    def handle_type_selection(cls, handle_type='AUTO', mode={'RIGHT', 'LEFT'}):
         """ > Node <&Node Handle Type Selection>
 
         Arguments
@@ -1077,7 +1077,7 @@ class nd(Socket):
         return node._out
 
     @classmethod
-    def set_handle_type(cls, curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}):
+    def set_handle_type(cls, curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}):
         """ > Node <&Node Set Handle Type>
 
         Arguments

@@ -3,7 +3,7 @@ from .. treeclass import Node
 from .. treeclass import utils
 from .. scripterror import NodeError
 
-class snd(Socket):
+class snd:
 
     @classmethod
     def frame(cls, label_size=20, shrink=True, text=None):

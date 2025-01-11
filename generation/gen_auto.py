@@ -84,14 +84,14 @@ def generate(folder):
             if class_name == 'gnmath':
                 imports.append(f"from . import gnmath")
 
-            elif class_name == 'static':
-                file.write(f"class {static_nodes}:\n\n")
+            elif class_name in ['nd', 'snd']:
+                file.write(f"class {class_name}:\n\n")
+
+                imports.append(f"from .{module} import {class_name}")
 
             else:
                 file.write(f"class {class_name}(Socket):\n")
-                if class_name not in ['nd', 'snd']:
-                    file.write('    """"\n    $DOC SET hidden\n    """\n')
-                file.write("\n")
+                file.write('    """"\n    $DOC SET hidden\n    """\n')
 
                 imports.append(f"from .{module} import {class_name}")
 

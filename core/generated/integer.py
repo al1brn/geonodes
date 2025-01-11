@@ -7,7 +7,6 @@ class Integer(Socket):
     """"
     $DOC SET hidden
     """
-
     def less_than(self, b=None):
         """ > Method <&Node Compare>
 

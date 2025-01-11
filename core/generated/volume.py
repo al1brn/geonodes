@@ -7,7 +7,6 @@ class Volume(Socket):
     """"
     $DOC SET hidden
     """
-
     def distribute_points_density_random(self, density=None, seed=None):
         """ > Method <&Node Distribute Points in Volume>
 

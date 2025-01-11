@@ -7,7 +7,6 @@ class Matrix(Socket):
     """"
     $DOC SET hidden
     """
-
     @classmethod
     def Combine(cls, column_1_row_1=None, column_1_row_2=None, column_1_row_3=None, column_1_row_4=None, column_2_row_1=None, column_2_row_2=None, column_2_row_3=None, column_2_row_4=None, column_3_row_1=None, column_3_row_2=None, column_3_row_3=None, column_3_row_4=None, column_4_row_1=None, column_4_row_2=None, column_4_row_3=None, column_4_row_4=None):
         """ > Constructor <&Node Combine Matrix>

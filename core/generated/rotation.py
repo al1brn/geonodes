@@ -7,7 +7,6 @@ class Rotation(Socket):
     """"
     $DOC SET hidden
     """
-
     @classmethod
     def AlignToVector(cls, vector=None, factor=None, axis='Z', pivot_axis='AUTO'):
         """ > Constructor <&Node Align Rotation to Vector>

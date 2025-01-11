@@ -7,7 +7,6 @@ class Face(Socket):
     """"
     $DOC SET hidden
     """
-
     @classmethod
     def accumulate_field(cls, value=None, group_id=None):
         """ > Class Method <&Node Accumulate Field>

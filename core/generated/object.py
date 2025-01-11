@@ -7,7 +7,6 @@ class Object(Socket):
     """"
     $DOC SET hidden
     """
-
     @classmethod
     def ActiveCamera(cls):
         """ > Constructor <&Node Active Camera>

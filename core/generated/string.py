@@ -7,7 +7,6 @@ class String(Socket):
     """"
     $DOC SET hidden
     """
-
     def equal(self, b=None):
         """ > Method <&Node Compare>
 

@@ -7,7 +7,6 @@ class Image(Socket):
     """"
     $DOC SET hidden
     """
-
     def info(self, frame=None):
         """ > Method <&Node Image Info>
 

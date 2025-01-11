@@ -7,7 +7,6 @@ class Shader(Socket):
     """"
     $DOC SET hidden
     """
-
     def add(self, shader=None):
         """ > Method <&ShaderNode Add Shader>
 

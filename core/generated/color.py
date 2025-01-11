@@ -7,7 +7,6 @@ class Color(Socket):
     """"
     $DOC SET hidden
     """
-
     @classmethod
     def CombineRGB(cls, red=None, green=None, blue=None, alpha=None):
         """ > Constructor <&Node Combine Color>

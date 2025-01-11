@@ -7,7 +7,6 @@ class VolumeShader(Socket):
     """"
     $DOC SET hidden
     """
-
     @classmethod
     def Absorption(cls, color=None, density=None):
         """ > Constructor <&ShaderNode Volume Absorption>
