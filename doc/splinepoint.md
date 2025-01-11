@@ -1,283 +1,58 @@
 # SplinePoint
 
-> Bases classes: [Domain](domain.md#domain)
-
 ``` python
-SplinePoint(geometry)
+SplinePoint(geometry: geonodes.core.geometry_class.Geometry)
 ```
 
-> Point domain of a [Curve](curve.md#curve)
+> Base class for geometry domains
 
-Methods of **SplinePoint** class are nodes which accept 'POINT' domain.
+A domain stores the default value to be set in node needing a **domain** parameter
+such as 'Store Named Attibute.
 
-In addition, the nodes [Curve of Point](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/topology/curve_of_point.html) and ERROR: Node 'Point in Curve' not found are implemented
-in methods [curve_index](splinepoint.md#curve_index), [index_in_curve](splinepoint.md#index_in_curve) and [offset_in_curve](splinepoint.md#offset_in_curve).
+All nodes requiring a domain parameter are implemented as domain method
+
+``` python
+cube = Mesh.Cube()
+cube.faces.store_named_attribute() # doamin = 'FACE'
+```
+
+> [!IMPORTANT]
+> Domains are never instantiated directly but created by geometries.
+
+> See: [Vertex](vertex.md#vertex), [Face](face.md#face), [Edge](edge.md#edge), [Corner](corner.md#corner), [SplinePoint](splinepoint.md#splinepoint), [Spline](spline.md#spline), [CloudPoint](cloudpoint.md#cloudpoint), [Instance](instance.md#instance)
+
+Properties:
+- _geo (Geometry) : the geometry the domain belongs to
 
 #### Arguments:
-- **geometry**
+- **geometry** (_Geometry_)
 
 ### Inherited
 
-[accumulate_field](domain.md#accumulate_field) :black_small_square: [attribute_statistic](domain.md#attribute_statistic) :black_small_square: [\_cache](nodecache.md#_cache) :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [capture](domain.md#capture) :black_small_square: [capture_attribute](domain.md#capture_attribute) :black_small_square: [captures](domain.md#captures) :black_small_square: [delete](domain.md#delete) :black_small_square: [delete_all](domain.md#delete_all) :black_small_square: [delete_edges_and_faces](domain.md#delete_edges_and_faces) :black_small_square: [delete_faces](domain.md#delete_faces) :black_small_square: [delete_geometry](domain.md#delete_geometry) :black_small_square: [domain_name](domain.md#domain_name) :black_small_square: [duplicate_elements](domain.md#duplicate_elements) :black_small_square: [evaluate_at_index](domain.md#evaluate_at_index) :black_small_square: [evaluate_on_domain](domain.md#evaluate_on_domain) :black_small_square: [exclude_corner](domain.md#exclude_corner) :black_small_square: [extrude](domain.md#extrude) :black_small_square: [for_each](domain.md#for_each) :black_small_square: [\_geo_type](geobase.md#_geo_type) :black_small_square: [\_\_getitem__](geobase.md#__getitem__) :black_small_square: [id](geobase.md#id) :black_small_square: [\_\_init__](domain.md#__init__) :black_small_square: [\_jump](domain.md#_jump) :black_small_square: [material](geobase.md#material) :black_small_square: [material_index](geobase.md#material_index) :black_small_square: [material_selection](geobase.md#material_selection) :black_small_square: [\_node](domain.md#_node) :black_small_square: [offset](geobase.md#offset) :black_small_square: [plural_domain](domain.md#plural_domain) :black_small_square: [position](geobase.md#position) :black_small_square: [proximity](domain.md#proximity) :black_small_square: [\_raw_sel](geobase.md#_raw_sel) :black_small_square: [replace_material](geobase.md#replace_material) :black_small_square: [restrict_domain](domain.md#restrict_domain) :black_small_square: [sample_index](domain.md#sample_index) :black_small_square: [sample_nearest](domain.md#sample_nearest) :black_small_square: [\_sel](domain.md#_sel) :black_small_square: [separate](domain.md#separate) :black_small_square: [set_id](geobase.md#set_id) :black_small_square: [set_position](geobase.md#set_position) :black_small_square: [sort_elements](domain.md#sort_elements) :black_small_square: [split_to_instances](domain.md#split_to_instances) :black_small_square: [store](domain.md#store) :black_small_square: [store_named_attribute](domain.md#store_named_attribute) :black_small_square: [\_\_str__](domain.md#__str__) :black_small_square: [to_points](domain.md#to_points) :black_small_square: [viewer](domain.md#viewer) :black_small_square:
+[accumulate_field](core-gener-point-point.md#accumulate_field) :black_small_square: [active_element](core-gener-point-point.md#active_element) :black_small_square: [attribute_statistic](core-gener-point-point.md#attribute_statistic) :black_small_square: [\_cache](nodecache.md#_cache) :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [\_\_call__](domain.md#__call__) :black_small_square: [capture](domain.md#capture) :black_small_square: [capture_attribute](domain.md#capture_attribute) :black_small_square: [check_in_list](socket.md#check_in_list) :black_small_square: [count](corner.md#count) :black_small_square: [data_type](socket.md#data_type) :black_small_square: [delete](core-gener-point-point.md#delete) :black_small_square: [delete_all](core-gener-point-point.md#delete_all) :black_small_square: [delete_edge_face](core-gener-point-point.md#delete_edge_face) :black_small_square: [delete_geometry](core-gener-point-point.md#delete_geometry) :black_small_square: [delete_geometry_all](core-gener-point-point.md#delete_geometry_all) :black_small_square: [delete_geometry_edge_face](core-gener-point-point.md#delete_geometry_edge_face) :black_small_square: [delete_geometry_only_face](core-gener-point-point.md#delete_geometry_only_face) :black_small_square: [delete_only_face](core-gener-point-point.md#delete_only_face) :black_small_square: [\_domain_to_geometry](domain.md#_domain_to_geometry) :black_small_square: [duplicate](core-gener-point-point.md#duplicate) :black_small_square: [evaluate_at_index](core-gener-point-point.md#evaluate_at_index) :black_small_square: [evaluate_on_domain](core-gener-point-point.md#evaluate_on_domain) :black_small_square: [for_each](domain.md#for_each) :black_small_square: [\_geometry_class](socket.md#_geometry_class) :black_small_square: [\_geo_type](geobase.md#_geo_type) :black_small_square: [\_\_getattr__](domain.md#__getattr__) :black_small_square: [\_\_getitem__](geobase.md#__getitem__) :black_small_square: [get_node_data_type](socket.md#get_node_data_type) :black_small_square: [get_socket_class](socket.md#get_socket_class) :black_small_square: [IndexSwitch](socket.md#indexswitch) :black_small_square: [index_switch](socket.md#index_switch) :black_small_square: [\_\_init__](domain.md#__init__) :black_small_square: [Input](socket.md#input) :black_small_square: [input_type](socket.md#input_type) :black_small_square: [instance_on](core-gener-point-point.md#instance_on) :black_small_square: [\_interface_socket](socket.md#_interface_socket) :black_small_square: [\_is_group_input](socket.md#_is_group_input) :black_small_square: [\_is_group_output](socket.md#_is_group_output) :black_small_square: [\_is_group_socket](socket.md#_is_group_socket) :black_small_square: [\_jump](domain.md#_jump) :black_small_square: [\_lc](socket.md#_lc) :black_small_square: [\_lcop](socket.md#_lcop) :black_small_square: [\_lock](proplocker.md#_lock) :black_small_square: [MenuSwitch](socket.md#menuswitch) :black_small_square: [menu_switch](socket.md#menu_switch) :black_small_square: [node](socket.md#node) :black_small_square: [node_color](socket.md#node_color) :black_small_square: [node_label](socket.md#node_label) :black_small_square: [offset](core-gener-point-point.md#offset) :black_small_square: [out](socket.md#out) :black_small_square: [\_panel_name](socket.md#_panel_name) :black_small_square: [pin_gizmo](socket.md#pin_gizmo) :black_small_square: [position](core-gener-point-point.md#position) :black_small_square: [\_raw_sel](geobase.md#_raw_sel) :black_small_square: [\_reset](socket.md#_reset) :black_small_square: [\_run_tests](socket.md#_run_tests) :black_small_square: [sample_index](core-gener-point-point.md#sample_index) :black_small_square: [sample_nearest](core-gener-point-point.md#sample_nearest) :black_small_square: [\_sel](domain.md#_sel) :black_small_square: [separate](core-gener-point-point.md#separate) :black_small_square: [\_\_setattr__](domain.md#__setattr__) :black_small_square: [\_set_interface_property](socket.md#_set_interface_property) :black_small_square: [set_radius](core-gener-point-point.md#set_radius) :black_small_square: [set_selection](core-gener-point-point.md#set_selection) :black_small_square: [socket_type](socket.md#socket_type) :black_small_square: [sort](core-gener-point-point.md#sort) :black_small_square: [split_to_instances](core-gener-point-point.md#split_to_instances) :black_small_square: [store](core-gener-point-point.md#store) :black_small_square: [store_named_attribute](core-gener-point-point.md#store_named_attribute) :black_small_square: [\_\_str__](domain.md#__str__) :black_small_square: [Switch](socket.md#switch) :black_small_square: [switch](socket.md#switch) :black_small_square: [\_unlock](proplocker.md#_unlock) :black_small_square: [viewer](core-gener-point-point.md#viewer) :black_small_square:
 
 ## Content
 
-- **C** : [count](splinepoint.md#count) :black_small_square: [curve_index](splinepoint.md#curve_index)
-- **H** : [handle_align](splinepoint.md#handle_align) :black_small_square: [handle_auto](splinepoint.md#handle_auto) :black_small_square: [handle_free](splinepoint.md#handle_free) :black_small_square: [handle_positions](splinepoint.md#handle_positions) :black_small_square: [handle_type](splinepoint.md#handle_type) :black_small_square: [handle_type_selection](splinepoint.md#handle_type_selection) :black_small_square: [handle_vector](splinepoint.md#handle_vector)
-- **I** : [index_in_curve](splinepoint.md#index_in_curve) :black_small_square: [instance_on](splinepoint.md#instance_on)
-- **L** : [left_handle_align](splinepoint.md#left_handle_align) :black_small_square: [left_handle_auto](splinepoint.md#left_handle_auto) :black_small_square: [left_handle_free](splinepoint.md#left_handle_free) :black_small_square: [left_handle_offset](splinepoint.md#left_handle_offset) :black_small_square: [left_handle_position](splinepoint.md#left_handle_position) :black_small_square: [left_handle_type](splinepoint.md#left_handle_type) :black_small_square: [left_handle_vector](splinepoint.md#left_handle_vector)
-- **O** : [offset_in_curve](splinepoint.md#offset_in_curve)
-- **R** : [right_handle_align](splinepoint.md#right_handle_align) :black_small_square: [right_handle_auto](splinepoint.md#right_handle_auto) :black_small_square: [right_handle_free](splinepoint.md#right_handle_free) :black_small_square: [right_handle_offset](splinepoint.md#right_handle_offset) :black_small_square: [right_handle_position](splinepoint.md#right_handle_position) :black_small_square: [right_handle_type](splinepoint.md#right_handle_type) :black_small_square: [right_handle_vector](splinepoint.md#right_handle_vector)
-- **S** : [set_handle_positions](splinepoint.md#set_handle_positions) :black_small_square: [set_handle_type](splinepoint.md#set_handle_type)
+- [curve_index](splinepoint.md#curve_index)
+- [curve_of_point](splinepoint.md#curve_of_point)
+- [index_in_curve](splinepoint.md#index_in_curve)
+- [offset_in_curve](splinepoint.md#offset_in_curve)
+- [radius](splinepoint.md#radius)
+- [to_points](splinepoint.md#to_points)
+- [to_points_count](splinepoint.md#to_points_count)
+- [to_points_evaluated](splinepoint.md#to_points_evaluated)
+- [to_points_length](splinepoint.md#to_points_length)
 
 ## Properties
 
 
 
-### count
+### radius
 
-> _type_: **Integer**
+> _type_: **?**
 >
 
-> Socket 'Point Count' of node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](splinepoint.md#splinepoint) :black_small_square: [Content](splinepoint.md#content) :black_small_square: [Properties](splinepoint.md#properties)</sub>
-
-### handle_align
-
-> _type_: **Boolean**
->
-
-> Handle align property
-
-- getter : node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
-- setter : node [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html), **handle_type** = 'ALIGN'
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](splinepoint.md#splinepoint) :black_small_square: [Content](splinepoint.md#content) :black_small_square: [Properties](splinepoint.md#properties)</sub>
-
-### handle_auto
-
-> _type_: **Boolean**
->
-
-> Handle auto property
-
-- getter : node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
-- setter : node [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html), **handle_type** = 'AUTO'
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](splinepoint.md#splinepoint) :black_small_square: [Content](splinepoint.md#content) :black_small_square: [Properties](splinepoint.md#properties)</sub>
-
-### handle_free
-
-> _type_: **Boolean**
->
-
-> Handle free property
-
-- getter : node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
-- setter : node [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html), **handle_type** = 'FREE'
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](splinepoint.md#splinepoint) :black_small_square: [Content](splinepoint.md#content) :black_small_square: [Properties](splinepoint.md#properties)</sub>
-
-### handle_type
-
-> _type_: **Error**
->
-
-> Handle type write only property
-
-Set the curve handle type
-
-``` python
-curve.handle_type = 'FREE'
-```
-
-- getter : None, write only Property
-- setter : node [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html)
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](splinepoint.md#splinepoint) :black_small_square: [Content](splinepoint.md#content) :black_small_square: [Properties](splinepoint.md#properties)</sub>
-
-### handle_vector
-
-> _type_: **Boolean**
->
-
-> Handle vector property
-
-- getter : node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
-- setter : node [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html), **handle_type** = 'VECTOR'
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](splinepoint.md#splinepoint) :black_small_square: [Content](splinepoint.md#content) :black_small_square: [Properties](splinepoint.md#properties)</sub>
-
-### left_handle_align
-
-> _type_: **Boolean**
->
-
-> Left handle auto property
-
-- getter : node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
-- setter : node [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html), **handle_type** = 'ALIGN'
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](splinepoint.md#splinepoint) :black_small_square: [Content](splinepoint.md#content) :black_small_square: [Properties](splinepoint.md#properties)</sub>
-
-### left_handle_auto
-
-> _type_: **Boolean**
->
-
-> Left handle auto property
-
-- getter : node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
-- setter : node [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html), **handle_type** = 'AUTO'
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](splinepoint.md#splinepoint) :black_small_square: [Content](splinepoint.md#content) :black_small_square: [Properties](splinepoint.md#properties)</sub>
-
-### left_handle_free
-
-> _type_: **Boolean**
->
-
-> Left handle free property
-
-- getter : node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
-- setter : node [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html), **handle_type** = 'FREE'
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](splinepoint.md#splinepoint) :black_small_square: [Content](splinepoint.md#content) :black_small_square: [Properties](splinepoint.md#properties)</sub>
-
-### left_handle_offset
-
-> _type_: **Vector**
->
-
-> Left handle offset property
-
-- getter : socket 'Left' of node ERROR: Node 'Handle Positions' not found, relative
-- setter : node [Set Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_positions.html)
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](splinepoint.md#splinepoint) :black_small_square: [Content](splinepoint.md#content) :black_small_square: [Properties](splinepoint.md#properties)</sub>
-
-### left_handle_position
-
-> _type_: **Vector**
->
-
-> Left handle property
-
-- getter : socket 'Left' of node ERROR: Node 'Handle Positions' not found
-- setter : node [Set Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_positions.html)
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](splinepoint.md#splinepoint) :black_small_square: [Content](splinepoint.md#content) :black_small_square: [Properties](splinepoint.md#properties)</sub>
-
-### left_handle_type
-
-> _type_: **Error**
->
-
-> Left handle type write only property
-
-Set the curve handle type
-
-- getter : None, write only Property
-- setter : node [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html)
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](splinepoint.md#splinepoint) :black_small_square: [Content](splinepoint.md#content) :black_small_square: [Properties](splinepoint.md#properties)</sub>
-
-### left_handle_vector
-
-> _type_: **Boolean**
->
-
-> Left handle vector property
-
-- getter : node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
-- setter : node [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html), **handle_type** = 'VECTOR'
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](splinepoint.md#splinepoint) :black_small_square: [Content](splinepoint.md#content) :black_small_square: [Properties](splinepoint.md#properties)</sub>
-
-### right_handle_align
-
-> _type_: **Boolean**
->
-
-> Right handle align property
-
-- getter : node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
-- setter : node [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html), **handle_type** = 'ALIGN'
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](splinepoint.md#splinepoint) :black_small_square: [Content](splinepoint.md#content) :black_small_square: [Properties](splinepoint.md#properties)</sub>
-
-### right_handle_auto
-
-> _type_: **Boolean**
->
-
-> Right handle auto property
-
-- getter : node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
-- setter : node [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html), **handle_type** = 'AUTO'
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](splinepoint.md#splinepoint) :black_small_square: [Content](splinepoint.md#content) :black_small_square: [Properties](splinepoint.md#properties)</sub>
-
-### right_handle_free
-
-> _type_: **Boolean**
->
-
-> Right handle free property
-
-- getter : node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
-- setter : node [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html), **handle_type** = 'FREE'
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](splinepoint.md#splinepoint) :black_small_square: [Content](splinepoint.md#content) :black_small_square: [Properties](splinepoint.md#properties)</sub>
-
-### right_handle_offset
-
-> _type_: **Vector**
->
-
-> Right handle offset property
-
-- getter : socket 'Right' of node ERROR: Node 'Handle Positions' not found, relative
-- setter : node [Set Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_positions.html)
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](splinepoint.md#splinepoint) :black_small_square: [Content](splinepoint.md#content) :black_small_square: [Properties](splinepoint.md#properties)</sub>
-
-### right_handle_position
-
-> _type_: **Vector**
->
-
-> Right handle position property
-
-- getter : socket 'Right' of node ERROR: Node 'Handle Positions' not found
-- setter : node [Set Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_positions.html)
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](splinepoint.md#splinepoint) :black_small_square: [Content](splinepoint.md#content) :black_small_square: [Properties](splinepoint.md#properties)</sub>
-
-### right_handle_type
-
-> _type_: **Error**
->
-
-> Right handle type write only property
-
-Set the curve handle type
-
-- getter : None, write only Property
-- setter : node [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html)
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](splinepoint.md#splinepoint) :black_small_square: [Content](splinepoint.md#content) :black_small_square: [Properties](splinepoint.md#properties)</sub>
-
-### right_handle_vector
-
-> _type_: **Boolean**
->
-
-> Right handle vector property
-
-- getter : node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
-- setter : node [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html), **handle_type** = 'VECTOR'
+Property get node <Node Set Curve Radius>
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](splinepoint.md#splinepoint) :black_small_square: [Content](splinepoint.md#content) :black_small_square: [Properties](splinepoint.md#properties)</sub>
 
@@ -288,286 +63,183 @@ Set the curve handle type
 ----------
 ### curve_index()
 
-> method
+> classmethod
 
 ``` python
 curve_index(point_index=None)
 ```
 
-> Socket 'Curve Index' of node ERROR: Node 'of Point' not found
+> Class Method [Curve of Point](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/topology/curve_of_point.html)
 
 #### Arguments:
-- **point_index** (_Integer_ = None) : point index
+- **point_index** (_Integer_ = None) : socket 'Point Index' (id: Point Index)
 
 
 
 #### Returns:
-- **Integer** :
+- **curve_index** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](splinepoint.md#splinepoint) :black_small_square: [Content](splinepoint.md#content) :black_small_square: [Methods](splinepoint.md#methods)</sub>
 
 ----------
-### handle_positions()
+### curve_of_point()
 
 > classmethod
 
 ``` python
-handle_positions(relative=None)
+curve_of_point(point_index=None)
 ```
 
-> Node [Curve Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/curve_handle_positions.html)
+> Class Method [Curve of Point](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/topology/curve_of_point.html)
 
 #### Arguments:
-- **relative** (_Boolean_ = None) : socket 'Relative' (Relative)
+- **point_index** (_Integer_ = None) : socket 'Point Index' (id: Point Index)
 
 
 
 #### Returns:
-- **Node** : 'Curve Handle Positions' node
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](splinepoint.md#splinepoint) :black_small_square: [Content](splinepoint.md#content) :black_small_square: [Methods](splinepoint.md#methods)</sub>
-
-----------
-### handle_type_selection()
-
-> classmethod
-
-``` python
-handle_type_selection(left=True, right=True, handle_type='AUTO')
-```
-
-> Node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
-
-#### Arguments:
-- **left** (_bool_ = True) : left handle
-- **right** (_bool_ = True) : right handle
-- **handle_type** (_str_ = AUTO) : Node.handle_type in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-
-
-
-#### Returns:
-- **Boolean** :
+- **node** (_Integer_)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](splinepoint.md#splinepoint) :black_small_square: [Content](splinepoint.md#content) :black_small_square: [Methods](splinepoint.md#methods)</sub>
 
 ----------
 ### index_in_curve()
 
-> method
+> classmethod
 
 ``` python
 index_in_curve(point_index=None)
 ```
 
-> Socket 'Index in Curve' of node ERROR: Node 'of Point' not found
+> Class Method [Curve of Point](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/topology/curve_of_point.html)
 
 #### Arguments:
-- **point_index** (_Integer_ = None) : point index
+- **point_index** (_Integer_ = None) : socket 'Point Index' (id: Point Index)
 
 
 
 #### Returns:
-- **Integer** :
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](splinepoint.md#splinepoint) :black_small_square: [Content](splinepoint.md#content) :black_small_square: [Methods](splinepoint.md#methods)</sub>
-
-----------
-### instance_on()
-
-> method
-
-``` python
-instance_on(instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None)
-```
-
-> Node [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html)
-
-
-
-#### Arguments:
-- **instance** (_Geometry_ = None) : socket 'Instance' (Instance)
-- **pick_instance** (_Boolean_ = None) : socket 'Pick Instance' (Pick Instance)
-- **instance_index** (_Integer_ = None) : socket 'Instance Index' (Instance Index)
-- **rotation** (_Rotation_ = None) : socket 'Rotation' (Rotation)
-- **scale** (_Vector_ = None) : socket 'Scale' (Scale)
-
-
-
-#### Returns:
-- **Instances** :
+- **index_in_curve** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](splinepoint.md#splinepoint) :black_small_square: [Content](splinepoint.md#content) :black_small_square: [Methods](splinepoint.md#methods)</sub>
 
 ----------
 ### offset_in_curve()
 
-> method
+> classmethod
 
 ``` python
 offset_in_curve(point_index=None, offset=None)
 ```
 
-> Socket 'Point Index' of node ERROR: Node 'Point in Curve' not found
+> Class Method [Offset Point in Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/topology/offset_point_in_curve.html)
 
 #### Arguments:
-- **point_index** ( = None)
-- **offset** ( = None)
+- **point_index** (_Integer_ = None) : socket 'Point Index' (id: Point Index)
+- **offset** (_Integer_ = None) : socket 'Offset' (id: Offset)
 
 
 
 #### Returns:
-- **Integer** : spline index
+- **Boolean** (_Integer_)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](splinepoint.md#splinepoint) :black_small_square: [Content](splinepoint.md#content) :black_small_square: [Methods](splinepoint.md#methods)</sub>
 
 ----------
-### set_handle_positions()
+### to_points()
 
 > method
 
 ``` python
-set_handle_positions(position=None, offset=None, mode=None)
+to_points(count=None, mode='COUNT')
 ```
 
-> Node [Set Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_positions.html)
+> Method [Curve to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curve_to_points.html)
 
-
-
-``` python
-with GeoNodes("Curve handles"):
-    curve = Curve.Line(0, (20, 0, 0)).resample(20)
-
-    curve.splines.type = 'BEZIER'
-
-    with Layout("Set by str"):
-        curve.points.left_handle_type = 'AUTO'
-        curve.points.right_handle_type = 'AUTO'
-        curve.points[(nd.index % 2).equal(0)].handle_type = 'ALIGN'
-
-        curve.points[curve.points.handle_align].offset = (0, 0, 2)
-
-    with Layout("Both set boolean"):
-        curve.points[1].handle_auto = True
-        curve.points[3].handle_free = True
-        curve.points[5].handle_vector = True
-        curve.points[7].handle_align = True
-
-    with Layout("Left / right set boolean"):
-        curve.points[9].left_handle_auto = True
-        curve.points[9].right_handle_free = True
-        curve.points[11].left_handle_free = True
-        curve.points[11].right_handle_vector = True
-        curve.points[13].left_handle_vector = True
-        curve.points[13].right_handle_align = True
-        curve.points[15].left_handle_align = True
-        curve.points[15].right_handle_auto = True
-
-    with Layout("Left selection"):
-        curve.points[curve.points.left_handle_auto].offset = (0, 0.5, 0)
-        curve.points[curve.points.left_handle_free].offset = (0, 1.0, 0)
-        curve.points[curve.points.left_handle_vector].offset = (0, 1.5, 0)
-        curve.points[curve.points.left_handle_align].offset = (0, 2.0, 0)
-
-    with Layout("Right selection"):
-        curve.points[curve.points.right_handle_auto].offset = (0, 0, 0.5)
-        curve.points[curve.points.right_handle_free].offset = (0, 0, 1.0)
-        curve.points[curve.points.right_handle_vector].offset = (0, 0, 1.5)
-        curve.points[curve.points.right_handle_align].offset = (0, 0, 2.0)
-
-    with Layout("Moving handles"):
-        curve.points[curve.points.left_handle_free].left_handle_position = (5, 0, 0)
-        curve.points[curve.points.right_handle_free].right_handle_position = (-5, 0, 0)
-
-        curve.points[curve.points.left_handle_vector].left_handle_offset = (0, 5, 0)
-        curve.points[curve.points.right_handle_vector].right_handle_offset = (0, -5, 0)
-
-    curve.out()
-```
+Information
+-----------
+- Socket 'Curve' : self
 
 #### Arguments:
-- **position** (_Vector_ = None) : socket 'Position' (Position)
-- **offset** (_Vector_ = None) : socket 'Offset' (Offset)
-- **mode** (_str_ = None) : Node.mode in ('LEFT', 'RIGHT')
+- **count** (_Integer_ = None) : socket 'Count' (id: Count)
+- **mode** (_str_ = COUNT) : parameter 'mode' in ('EVALUATED', 'COUNT', 'LENGTH')
 
 
 
 #### Returns:
-- **Curve** : self
+- **Cloud** (_Vector_)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](splinepoint.md#splinepoint) :black_small_square: [Content](splinepoint.md#content) :black_small_square: [Methods](splinepoint.md#methods)</sub>
 
 ----------
-### set_handle_type()
+### to_points_count()
 
 > method
 
 ``` python
-set_handle_type(left=True, right=True, handle_type='AUTO')
+to_points_count(count=None)
 ```
 
-> Node [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html)
+> Method [Curve to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curve_to_points.html)
 
-
-
-``` python
-with GeoNodes("Curve handles"):
-    curve = Curve.Line(0, (20, 0, 0)).resample(20)
-
-    curve.splines.type = 'BEZIER'
-
-    with Layout("Set by str"):
-        curve.points.left_handle_type = 'AUTO'
-        curve.points.right_handle_type = 'AUTO'
-        curve.points[(nd.index % 2).equal(0)].handle_type = 'ALIGN'
-
-        curve.points[curve.points.handle_align].offset = (0, 0, 2)
-
-    with Layout("Both set boolean"):
-        curve.points[1].handle_auto = True
-        curve.points[3].handle_free = True
-        curve.points[5].handle_vector = True
-        curve.points[7].handle_align = True
-
-    with Layout("Left / right set boolean"):
-        curve.points[9].left_handle_auto = True
-        curve.points[9].right_handle_free = True
-        curve.points[11].left_handle_free = True
-        curve.points[11].right_handle_vector = True
-        curve.points[13].left_handle_vector = True
-        curve.points[13].right_handle_align = True
-        curve.points[15].left_handle_align = True
-        curve.points[15].right_handle_auto = True
-
-    with Layout("Left selection"):
-        curve.points[curve.points.left_handle_auto].offset = (0, 0.5, 0)
-        curve.points[curve.points.left_handle_free].offset = (0, 1.0, 0)
-        curve.points[curve.points.left_handle_vector].offset = (0, 1.5, 0)
-        curve.points[curve.points.left_handle_align].offset = (0, 2.0, 0)
-
-    with Layout("Right selection"):
-        curve.points[curve.points.right_handle_auto].offset = (0, 0, 0.5)
-        curve.points[curve.points.right_handle_free].offset = (0, 0, 1.0)
-        curve.points[curve.points.right_handle_vector].offset = (0, 0, 1.5)
-        curve.points[curve.points.right_handle_align].offset = (0, 0, 2.0)
-
-    with Layout("Moving handles"):
-        curve.points[curve.points.left_handle_free].left_handle_position = (5, 0, 0)
-        curve.points[curve.points.right_handle_free].right_handle_position = (-5, 0, 0)
-
-        curve.points[curve.points.left_handle_vector].left_handle_offset = (0, 5, 0)
-        curve.points[curve.points.right_handle_vector].right_handle_offset = (0, -5, 0)
-
-    curve.out()
-```
+Information
+-----------
+- Socket 'Curve' : self
+- Parameter 'mode' : 'COUNT'
 
 #### Arguments:
-- **left** (_bool_ = True) : left handle
-- **right** (_bool_ = True) : right handle
-- **handle_type** (_str_ = AUTO) : Node.handle_type in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
+- **count** (_Integer_ = None) : socket 'Count' (id: Count)
 
 
 
 #### Returns:
-- **Curve** : self
+- **Cloud** (_Vector_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](splinepoint.md#splinepoint) :black_small_square: [Content](splinepoint.md#content) :black_small_square: [Methods](splinepoint.md#methods)</sub>
+
+----------
+### to_points_evaluated()
+
+> method
+
+``` python
+to_points_evaluated()
+```
+
+> Method [Curve to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curve_to_points.html)
+
+Information
+-----------
+- Socket 'Curve' : self
+- Parameter 'mode' : 'EVALUATED'
+
+#### Returns:
+- **Cloud** (_Vector_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](splinepoint.md#splinepoint) :black_small_square: [Content](splinepoint.md#content) :black_small_square: [Methods](splinepoint.md#methods)</sub>
+
+----------
+### to_points_length()
+
+> method
+
+``` python
+to_points_length(length=None)
+```
+
+> Method [Curve to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curve_to_points.html)
+
+Information
+-----------
+- Socket 'Curve' : self
+- Parameter 'mode' : 'LENGTH'
+
+#### Arguments:
+- **length** (_Float_ = None) : socket 'Length' (id: Length)
+
+
+
+#### Returns:
+- **Cloud** (_Vector_)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [SplinePoint](splinepoint.md#splinepoint) :black_small_square: [Content](splinepoint.md#content) :black_small_square: [Methods](splinepoint.md#methods)</sub>

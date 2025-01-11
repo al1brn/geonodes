@@ -4,6 +4,9 @@ from .. treeclass import utils
 from .. scripterror import NodeError
 
 class Object(Socket):
+    """"
+    $DOC SET hidden
+    """
 
     @classmethod
     def ActiveCamera(cls):

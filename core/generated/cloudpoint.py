@@ -4,6 +4,9 @@ from .. treeclass import utils
 from .. scripterror import NodeError
 
 class CloudPoint(Socket):
+    """"
+    $DOC SET hidden
+    """
 
     @property
     def radius(self):

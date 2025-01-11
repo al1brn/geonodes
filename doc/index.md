@@ -5,7 +5,7 @@
 
 ### Initialize a tree
 
-- [GeoNodes](core-geono-geonodes.md#geonodes) and [ShaderNodes](shade-shade1-shadernodes.md#shadernodes) : scripting nodes starts by instantianting a [Tree](tree.md#tree)
+- [GeoNodes](core-geono-geonodes.md#geonodes) and [ShaderNodes](core-shade1-shadernodes.md#shadernodes) : scripting nodes starts by instantianting a [Tree](tree.md#tree)
 - [Break](break.md#break) : exiting from a tree context can be done by raising this exception
 
 ### Create nodes
@@ -23,14 +23,14 @@
   <*Node Math>, <*Node Vector Math> and <*Node Boolean Math>
 - [nd](nd.md#nd) (for _nodes_) : this special class exposes one method or property per node,
   especially useful for input nodes such as <*Node Index> or <*Node Position>
-- [snd](core-allno-snd.md#snd) (for _shader nodes_) : same as [nd](nd.md#nd) for shader node
+- [snd](snd.md#snd) (for _shader nodes_) : same as [nd](nd.md#nd) for shader node
 
 ### Sockets
 
 Rather than using [Node](node.md#node) class, scripting nodes is done by using [Socket](socket.md#socket) classes:
 
 - Data sockets:
-  - [Attributes](attribute.md#attribute):
+  - [Attributes](color.md#attribute):
     - [Boolean](boolean.md#boolean)
     - [Integer](integer.md#integer)
     - [Float](float.md#float)
@@ -83,10 +83,10 @@ Geometries have specific [Domain](domain.md#domain):
 ## Content
 
 - [core](core.md#core)
-  - [allnodes](allnodes.md#allnodes)
+  - [generated](generated.md#generated)
   - [geonodes](core-geono---geonodes.md#geonodes)
-  - [gnmath](gnmath.md#gnmath)
-  - [Attribute](attribute.md#attribute)
+  - [shadernodes](core-shade1---shadernodes.md#shadernodes)
+  - [treeinterface](treeinterface.md#treeinterface)
   - [Boolean](boolean.md#boolean)
   - [Break](break.md#break)
   - [Cloud](cloud.md#cloud)
@@ -103,7 +103,6 @@ Geometries have specific [Domain](domain.md#domain):
   - [ForEachElement](foreachelement.md#foreachelement)
   - [G](g.md#g)
   - [Geometry](geometry.md#geometry)
-  - [Gizmo](gizmo.md#gizmo)
   - [GreasePencil](greasepencil.md#greasepencil)
   - [Group](group.md#group)
   - [GroupF](groupf.md#groupf)
@@ -119,8 +118,11 @@ Geometries have specific [Domain](domain.md#domain):
   - [Mesh](mesh.md#mesh)
   - [Node](node.md#node)
   - [Object](object.md#object)
+  - [Panel](panel.md#panel)
+  - [Point](point.md#point)
   - [Repeat](repeat.md#repeat)
   - [Rotation](rotation.md#rotation)
+  - [Shader](shader.md#shader)
   - [Simulation](simulation.md#simulation)
   - [Socket](socket.md#socket)
   - [Spline](spline.md#spline)
@@ -131,15 +133,12 @@ Geometries have specific [Domain](domain.md#domain):
   - [Vector](vector.md#vector)
   - [Vertex](vertex.md#vertex)
   - [Volume](volume.md#volume)
+  - [VolumeShader](volumeshader.md#volumeshader)
   - [Zone](zone.md#zone)
 - [Cross Reference](cross_reference.md#cross-reference)
 - [generation](generation.md#generation)
   - [gendoc](gendoc.md#gendoc)
 - [Shader Cross Reference](shader_cross_reference.md#shader-cross-reference)
-- [shadernodes](shade---shadernodes.md#shadernodes)
-  - [shaderclass](shaderclass.md#shaderclass)
-  - [shadernodes](shade-shade1---shadernodes.md#shadernodes)
-  - [staticclass](staticclass.md#staticclass)
 
 ## Modules
 
@@ -147,7 +146,6 @@ Geometries have specific [Domain](domain.md#domain):
 
 - [core](core.md#core)
 - [generation](generation.md#generation)
-- [shadernodes](shade---shadernodes.md#shadernodes)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [geonodes](index.md#geonodes) :black_small_square: [Content](index.md#content) :black_small_square: [geonodes](index.md#geonodes)</sub>
 

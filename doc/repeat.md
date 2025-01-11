@@ -1,7 +1,5 @@
 # Repeat
 
-> Bases classes: [Zone](zone.md#zone)
-
 ``` python
 Repeat(sockets={}, iterations=1, **snake_case_sockets)
 ```

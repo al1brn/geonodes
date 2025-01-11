@@ -13,8 +13,8 @@ d360   = tau
 e      = np.e
 
 if True:
-    from .generated.static_nd import nd
-    from .generated.static_snd import snd
+    from .generated import nd
+    from .generated import snd
     from .generated import gnmath
 
     from .sock_boolean import Boolean

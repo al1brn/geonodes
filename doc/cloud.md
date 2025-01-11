@@ -1,9 +1,7 @@
 # Cloud
 
-> Bases classes: [Geometry](geometry.md#geometry)
-
 ``` python
-Cloud(value=None, name=None, tip=None)
+Cloud(value=None, name=None, tip=None, panel=None, hide_value=False, hide_in_modifier=False)
 ```
 
 > Cloud of Points Geometry
@@ -26,30 +24,25 @@ Nodes requiring a domain parameter, are implemented in the domain [points](cloud
 - **value** (_Socket_ = None) : initial value
 - **name** (_str_ = None) : Create an Group Input socket with the provided str
 - **tip** (_str_ = None) : User tip (for Group Input sockets)
+- **panel** (_str_ = None) : panel name (overrides tree panel if exists)
+- **hide_value** (_bool_ = False) : Hide Value option
+- **hide_in_modifier** (_bool_ = False) : Hide in Modifier option
 
 ### Inherited
 
-[\_\_add__](geometry.md#__add__) :black_small_square: [bake](geometry.md#bake) :black_small_square: [blur](socket.md#blur) :black_small_square: [bounding_box](geometry.md#bounding_box) :black_small_square: [\_cache](nodecache.md#_cache) :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](socket.md#check_in_list) :black_small_square: [convex_hull](geometry.md#convex_hull) :black_small_square: [curve](geometry.md#curve) :black_small_square: [data_type](socket.md#data_type) :black_small_square: [\_geo](geometry.md#_geo) :black_small_square: [\_geometry_class](socket.md#_geometry_class) :black_small_square: [\_geo_type](geobase.md#_geo_type) :black_small_square: [\_\_getattr__](socket.md#__getattr__) :black_small_square: [\_\_getitem__](geobase.md#__getitem__) :black_small_square: [get_socket_class](socket.md#get_socket_class) :black_small_square: [grease_pencil](geometry.md#grease_pencil) :black_small_square: [hash_value](socket.md#hash_value) :black_small_square: [id](geobase.md#id) :black_small_square: [index_of_nearest](geometry.md#index_of_nearest) :black_small_square: [IndexSwitch](socket.md#indexswitch) :black_small_square: [index_switch](socket.md#index_switch) :black_small_square: [\_\_init__](geometry.md#__init__) :black_small_square: [input_type](socket.md#input_type) :black_small_square: [instances](geometry.md#instances) :black_small_square: [Join](geometry.md#join) :black_small_square: [join](geometry.md#join) :black_small_square: [\_jump](socket.md#_jump) :black_small_square: [\_lc](socket.md#_lc) :black_small_square: [\_lcop](socket.md#_lcop) :black_small_square: [material](geobase.md#material) :black_small_square: [material_index](geobase.md#material_index) :black_small_square: [material_selection](geobase.md#material_selection) :black_small_square: [MenuSwitch](socket.md#menuswitch) :black_small_square: [menu_switch](socket.md#menu_switch) :black_small_square: [merge_by_distance](geometry.md#merge_by_distance) :black_small_square: [mesh](geometry.md#mesh) :black_small_square: [name](geometry.md#name) :black_small_square: [\_node](geometry.md#_node) :black_small_square: [node](socket.md#node) :black_small_square: [node_color](socket.md#node_color) :black_small_square: [node_label](socket.md#node_label) :black_small_square: [offset](geobase.md#offset) :black_small_square: [out](socket.md#out) :black_small_square: [pin_gizmo](socket.md#pin_gizmo) :black_small_square: [point_cloud](geometry.md#point_cloud) :black_small_square: [position](geobase.md#position) :black_small_square: [\_raw_sel](geobase.md#_raw_sel) :black_small_square: [raycast](geometry.md#raycast) :black_small_square: [remove_named_attribute](geometry.md#remove_named_attribute) :black_small_square: [replace_material](geobase.md#replace_material) :black_small_square: [\_run_tests](socket.md#_run_tests) :black_small_square: [\_sel](geobase.md#_sel) :black_small_square: [separate_components](geometry.md#separate_components) :black_small_square: [set_id](geometry.md#set_id) :black_small_square: [set_material](geometry.md#set_material) :black_small_square: [set_name](geometry.md#set_name) :black_small_square: [set_position](geometry.md#set_position) :black_small_square: [set_shade_smooth](geometry.md#set_shade_smooth) :black_small_square: [socket_type](socket.md#socket_type) :black_small_square: [\_\_str__](socket.md#__str__) :black_small_square: [Switch](socket.md#switch) :black_small_square: [switch](socket.md#switch) :black_small_square: [to_instance](geometry.md#to_instance) :black_small_square: [transform](geometry.md#transform) :black_small_square: [viewer](geometry.md#viewer) :black_small_square: [volume](geometry.md#volume) :black_small_square:
+[\_\_add__](boolean.md#__add__) :black_small_square: [bake](nd.md#bake) :black_small_square: [bounding_box](core-gener-geome-geometry.md#bounding_box) :black_small_square: [\_cache](nodecache.md#_cache) :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](socket.md#check_in_list) :black_small_square: [convex_hull](core-gener-geome-geometry.md#convex_hull) :black_small_square: [curve](core-gener-geome-geometry.md#curve) :black_small_square: [data_type](socket.md#data_type) :black_small_square: [\_domain_to_geometry](socket.md#_domain_to_geometry) :black_small_square: [\_geo](geometry.md#_geo) :black_small_square: [\_geometry_class](socket.md#_geometry_class) :black_small_square: [\_geo_type](geobase.md#_geo_type) :black_small_square: [\_\_getattr__](socket.md#__getattr__) :black_small_square: [\_\_getitem__](geobase.md#__getitem__) :black_small_square: [get_node_data_type](socket.md#get_node_data_type) :black_small_square: [get_socket_class](socket.md#get_socket_class) :black_small_square: [grease_pencil](core-gener-geome-geometry.md#grease_pencil) :black_small_square: [id](core-gener-geome-geometry.md#id) :black_small_square: [index_of_nearest](core-gener-geome-geometry.md#index_of_nearest) :black_small_square: [IndexSwitch](socket.md#indexswitch) :black_small_square: [index_switch](socket.md#index_switch) :black_small_square: [\_\_init__](core-geono-geonodes.md#__init__) :black_small_square: [Input](socket.md#input) :black_small_square: [input_type](socket.md#input_type) :black_small_square: [instance_on_points](core-gener-geome-geometry.md#instance_on_points) :black_small_square: [instances](core-gener-geome-geometry.md#instances) :black_small_square: [\_interface_socket](socket.md#_interface_socket) :black_small_square: [\_is_group_input](socket.md#_is_group_input) :black_small_square: [\_is_group_output](socket.md#_is_group_output) :black_small_square: [\_is_group_socket](socket.md#_is_group_socket) :black_small_square: [Join](core-gener-geome-geometry.md#join) :black_small_square: [join](core-gener-geome-geometry.md#join) :black_small_square: [\_jump](socket.md#_jump) :black_small_square: [\_lc](socket.md#_lc) :black_small_square: [\_lcop](socket.md#_lcop) :black_small_square: [\_lock](proplocker.md#_lock) :black_small_square: [material](core-gener-geome-geometry.md#material) :black_small_square: [material_index](core-gener-geome-geometry.md#material_index) :black_small_square: [MenuSwitch](socket.md#menuswitch) :black_small_square: [menu_switch](socket.md#menu_switch) :black_small_square: [merge](core-gener-geome-geometry.md#merge) :black_small_square: [merge_all](core-gener-geome-geometry.md#merge_all) :black_small_square: [merge_by_distance](core-gener-geome-geometry.md#merge_by_distance) :black_small_square: [merge_connected](core-gener-geome-geometry.md#merge_connected) :black_small_square: [mesh](core-gener-geome-geometry.md#mesh) :black_small_square: [name](core-gener-geome-geometry.md#name) :black_small_square: [node](socket.md#node) :black_small_square: [node_color](socket.md#node_color) :black_small_square: [node_label](socket.md#node_label) :black_small_square: [\_node_OLD](geometry.md#_node_old) :black_small_square: [offset](core-gener-geome-geometry.md#offset) :black_small_square: [out](socket.md#out) :black_small_square: [\_panel_name](socket.md#_panel_name) :black_small_square: [pin_gizmo](socket.md#pin_gizmo) :black_small_square: [point_cloud](core-gener-geome-geometry.md#point_cloud) :black_small_square: [position](core-gener-geome-geometry.md#position) :black_small_square: [proximity](core-gener-geome-geometry.md#proximity) :black_small_square: [proximity_edges](core-gener-geome-geometry.md#proximity_edges) :black_small_square: [proximity_faces](core-gener-geome-geometry.md#proximity_faces) :black_small_square: [proximity_points](core-gener-geome-geometry.md#proximity_points) :black_small_square: [\_raw_sel](geobase.md#_raw_sel) :black_small_square: [raycast](core-gener-geome-geometry.md#raycast) :black_small_square: [raycast_interpolated](core-gener-geome-geometry.md#raycast_interpolated) :black_small_square: [raycast_nearest](core-gener-geome-geometry.md#raycast_nearest) :black_small_square: [realize](core-gener-geome-geometry.md#realize) :black_small_square: [remove_named_attribute](core-gener-geome-geometry.md#remove_named_attribute) :black_small_square: [remove_names](core-gener-geome-geometry.md#remove_names) :black_small_square: [replace_material](core-gener-geome-geometry.md#replace_material) :black_small_square: [\_run_tests](socket.md#_run_tests) :black_small_square: [\_sel](geobase.md#_sel) :black_small_square: [separate_components](core-gener-geome-geometry.md#separate_components) :black_small_square: [\_\_setattr__](socket.md#__setattr__) :black_small_square: [set_id](core-gener-geome-geometry.md#set_id) :black_small_square: [\_set_interface_property](socket.md#_set_interface_property) :black_small_square: [set_material](core-gener-geome-geometry.md#set_material) :black_small_square: [set_material_index](core-gener-geome-geometry.md#set_material_index) :black_small_square: [set_name](core-gener-geome-geometry.md#set_name) :black_small_square: [set_position](core-gener-geome-geometry.md#set_position) :black_small_square: [set_spline_cyclic](core-gener-geome-geometry.md#set_spline_cyclic) :black_small_square: [set_spline_resolution](core-gener-geome-geometry.md#set_spline_resolution) :black_small_square: [socket_type](socket.md#socket_type) :black_small_square: [\_\_str__](socket.md#__str__) :black_small_square: [Switch](socket.md#switch) :black_small_square: [switch](socket.md#switch) :black_small_square: [to_instance](core-gener-geome-geometry.md#to_instance) :black_small_square: [transform](core-gener-geome-geometry.md#transform) :black_small_square: [transform_components](core-gener-geome-geometry.md#transform_components) :black_small_square: [transform_geometry](core-gener-geome-geometry.md#transform_geometry) :black_small_square: [transform_matrix](core-gener-geome-geometry.md#transform_matrix) :black_small_square: [\_unlock](proplocker.md#_unlock) :black_small_square: [viewer](core-gener-geome-geometry.md#viewer) :black_small_square: [volume](core-gener-geome-geometry.md#volume) :black_small_square:
 
 ## Content
 
-- **D** : [domain_size](cloud.md#domain_size)
-- **F** : [FromCorners](cloud.md#fromcorners) :black_small_square: [FromCurve](cloud.md#fromcurve) :black_small_square: [FromEdges](cloud.md#fromedges) :black_small_square: [FromFaces](cloud.md#fromfaces) :black_small_square: [FromInstances](cloud.md#frominstances) :black_small_square: [FromMesh](cloud.md#frommesh) :black_small_square: [FromVertices](cloud.md#fromvertices)
+- **D** : [DistributeInGrid](cloud.md#distributeingrid) :black_small_square: [DistributeingridDensityGrid](cloud.md#distributeingriddensitygrid) :black_small_square: [DistributeingridDensityRandom](cloud.md#distributeingriddensityrandom) :black_small_square: [domain_size](cloud.md#domain_size)
+- **I** : [instance_on](cloud.md#instance_on) :black_small_square: [interpolate_curves](cloud.md#interpolate_curves)
 - **P** : [points](cloud.md#points) :black_small_square: [Points](cloud.md#points)
-- **T** : [to_curves](cloud.md#to_curves) :black_small_square: [to_vertices](cloud.md#to_vertices) :black_small_square: [to_volume](cloud.md#to_volume)
+- **R** : [radius](cloud.md#radius)
+- **T** : [to_curves](cloud.md#to_curves) :black_small_square: [to_sdf_grid](cloud.md#to_sdf_grid) :black_small_square: [to_vertices](cloud.md#to_vertices) :black_small_square: [to_volume](cloud.md#to_volume)
 
 ## Properties
 
 
-
-### domain_size
-
-> _type_: **Node**
->
-
-> Node ERROR: Node 'Size' not found, component = 'POINTCLOUD'
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Cloud](cloud.md#cloud) :black_small_square: [Content](cloud.md#content) :black_small_square: [Properties](cloud.md#properties)</sub>
 
 ### points
 
@@ -60,25 +53,35 @@ POINT domain
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Cloud](cloud.md#cloud) :black_small_square: [Content](cloud.md#content) :black_small_square: [Properties](cloud.md#properties)</sub>
 
+### radius
+
+> _type_: **?**
+>
+
+Property get node <Node Set Point Radius>
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Cloud](cloud.md#cloud) :black_small_square: [Content](cloud.md#content) :black_small_square: [Properties](cloud.md#properties)</sub>
+
 ## Methods
 
 
 
 ----------
-### FromCorners()
+### DistributeInGrid()
 
 > classmethod
 
 ``` python
-FromCorners(mesh, position=None, radius=None)
+DistributeInGrid(grid=None, density=None, seed=None, mode='DENSITY_RANDOM')
 ```
 
-> Constructor node [Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_points.html), mode CORNERS
+> Constructor ERROR: Node 'Distribute Points in Grid' not found
 
 #### Arguments:
-- **mesh** (_Mesh_) : socket 'Mesh' (Mesh)
-- **position** (_Vector_ = None) : socket 'Position' (Position)
-- **radius** (_Float_ = None) : socket 'Radius' (Radius)
+- **grid** (_Float_ = None) : socket 'Grid' (id: Grid)
+- **density** (_Float_ = None) : socket 'Density' (id: Density)
+- **seed** (_Integer_ = None) : socket 'Seed' (id: Seed)
+- **mode** (_str_ = DENSITY_RANDOM) : parameter 'mode' in ('DENSITY_RANDOM', 'DENSITY_GRID')
 
 
 
@@ -88,21 +91,24 @@ FromCorners(mesh, position=None, radius=None)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Cloud](cloud.md#cloud) :black_small_square: [Content](cloud.md#content) :black_small_square: [Methods](cloud.md#methods)</sub>
 
 ----------
-### FromCurve()
+### DistributeingridDensityGrid()
 
 > classmethod
 
 ``` python
-FromCurve(curve, count=None, length=None, mode='COUNT')
+DistributeingridDensityGrid(grid=None, spacing=None, threshold=None)
 ```
 
-> Constructor node [Curve to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curve_to_points.html)
+> Constructor ERROR: Node 'Distribute Points in Grid' not found
+
+Information
+-----------
+- Parameter 'mode' : 'DENSITY_GRID'
 
 #### Arguments:
-- **curve** (_Geometry_) : socket 'Curve' (Curve)
-- **count** (_Integer_ = None) : socket 'Count' (Count)
-- **length** ( = None)
-- **mode** (_str_ = COUNT) : Node.mode in ('EVALUATED', 'COUNT', 'LENGTH')
+- **grid** (_Float_ = None) : socket 'Grid' (id: Grid)
+- **spacing** (_Vector_ = None) : socket 'Spacing' (id: Spacing)
+- **threshold** (_Float_ = None) : socket 'Threshold' (id: Threshold)
 
 
 
@@ -112,20 +118,24 @@ FromCurve(curve, count=None, length=None, mode='COUNT')
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Cloud](cloud.md#cloud) :black_small_square: [Content](cloud.md#content) :black_small_square: [Methods](cloud.md#methods)</sub>
 
 ----------
-### FromEdges()
+### DistributeingridDensityRandom()
 
 > classmethod
 
 ``` python
-FromEdges(mesh, position=None, radius=None)
+DistributeingridDensityRandom(grid=None, density=None, seed=None)
 ```
 
-> Constructor node [Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_points.html), mode EDGES
+> Constructor ERROR: Node 'Distribute Points in Grid' not found
+
+Information
+-----------
+- Parameter 'mode' : 'DENSITY_RANDOM'
 
 #### Arguments:
-- **mesh** (_Mesh_) : socket 'Mesh' (Mesh)
-- **position** (_Vector_ = None) : socket 'Position' (Position)
-- **radius** (_Float_ = None) : socket 'Radius' (Radius)
+- **grid** (_Float_ = None) : socket 'Grid' (id: Grid)
+- **density** (_Float_ = None) : socket 'Density' (id: Density)
+- **seed** (_Integer_ = None) : socket 'Seed' (id: Seed)
 
 
 
@@ -135,95 +145,83 @@ FromEdges(mesh, position=None, radius=None)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Cloud](cloud.md#cloud) :black_small_square: [Content](cloud.md#content) :black_small_square: [Methods](cloud.md#methods)</sub>
 
 ----------
-### FromFaces()
+### domain_size()
 
-> classmethod
+> method
 
 ``` python
-FromFaces(mesh, position=None, radius=None)
+domain_size()
 ```
 
-> Constructor node [Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_points.html), mode FACES
+> Method [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
 
-#### Arguments:
-- **mesh** (_Mesh_) : socket 'Mesh' (Mesh)
-- **position** (_Vector_ = None) : socket 'Position' (Position)
-- **radius** (_Float_ = None) : socket 'Radius' (Radius)
-
-
+Information
+-----------
+- Socket 'Geometry' : self
+- Parameter 'component' : 'POINTCLOUD'
 
 #### Returns:
-- **Cloud** :
+- **node** (_Integer_)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Cloud](cloud.md#cloud) :black_small_square: [Content](cloud.md#content) :black_small_square: [Methods](cloud.md#methods)</sub>
 
 ----------
-### FromInstances()
+### instance_on()
 
-> classmethod
+> method
 
 ``` python
-FromInstances(instances, position=None, radius=None)
+instance_on(instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None)
 ```
 
-> Constructor node [Instances to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instances_to_points.html)
+> Method [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html)
+
+Information
+-----------
+- Socket 'Points' : self
+- Socket 'Selection' : self[selection]
 
 #### Arguments:
-- **instances** (_Geometry_) : socket 'Instances' (Instances)
-- **position** (_Vector_ = None) : socket 'Position' (Position)
-- **radius** (_Float_ = None) : socket 'Radius' (Radius)
+- **instance** (_Geometry_ = None) : socket 'Instance' (id: Instance)
+- **pick_instance** (_Boolean_ = None) : socket 'Pick Instance' (id: Pick Instance)
+- **instance_index** (_Integer_ = None) : socket 'Instance Index' (id: Instance Index)
+- **rotation** (_Rotation_ = None) : socket 'Rotation' (id: Rotation)
+- **scale** (_Vector_ = None) : socket 'Scale' (id: Scale)
 
 
 
 #### Returns:
-- **Cloud** :
+- **Instances** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Cloud](cloud.md#cloud) :black_small_square: [Content](cloud.md#content) :black_small_square: [Methods](cloud.md#methods)</sub>
 
 ----------
-### FromMesh()
+### interpolate_curves()
 
-> classmethod
+> method
 
 ``` python
-FromMesh(mesh, position=None, radius=None, mode='POINTS')
+interpolate_curves(guide_curves=None, guide_up=None, guide_group_id=None, point_up=None, point_group_id=None, max_neighbors=None)
 ```
 
-> Constructor node [Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_points.html)
+> Method [Interpolate Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/interpolate_curves.html)
+
+Information
+-----------
+- Socket 'Points' : self
 
 #### Arguments:
-- **mesh** (_Mesh_) : socket 'Mesh' (Mesh)
-- **position** (_Vector_ = None) : socket 'Position' (Position)
-- **radius** (_Float_ = None) : socket 'Radius' (Radius)
-- **mode** (_str_ = POINTS) : Node.mode in ('VERTICES', 'EDGES', 'FACES', 'CORNERS')
+- **guide_curves** (_Geometry_ = None) : socket 'Guide Curves' (id: Guide Curves)
+- **guide_up** (_Vector_ = None) : socket 'Guide Up' (id: Guide Up)
+- **guide_group_id** (_Integer_ = None) : socket 'Guide Group ID' (id: Guide Group ID)
+- **point_up** (_Vector_ = None) : socket 'Point Up' (id: Point Up)
+- **point_group_id** (_Integer_ = None) : socket 'Point Group ID' (id: Point Group ID)
+- **max_neighbors** (_Integer_ = None) : socket 'Max Neighbors' (id: Max Neighbors)
 
 
 
 #### Returns:
-- **Cloud** :
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Cloud](cloud.md#cloud) :black_small_square: [Content](cloud.md#content) :black_small_square: [Methods](cloud.md#methods)</sub>
-
-----------
-### FromVertices()
-
-> classmethod
-
-``` python
-FromVertices(mesh, position=None, radius=None)
-```
-
-> Constructor node [Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_points.html), mode VERTICES
-
-#### Arguments:
-- **mesh** (_Mesh_) : socket 'Mesh' (Mesh)
-- **position** (_Vector_ = None) : socket 'Position' (Position)
-- **radius** (_Float_ = None) : socket 'Radius' (Radius)
-
-
-
-#### Returns:
-- **Cloud** :
+- **Curve** (_Integer_)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Cloud](cloud.md#cloud) :black_small_square: [Content](cloud.md#content) :black_small_square: [Methods](cloud.md#methods)</sub>
 
@@ -233,15 +231,15 @@ FromVertices(mesh, position=None, radius=None)
 > classmethod
 
 ``` python
-Points(count=1, position=None, radius=None)
+Points(count=None, position=None, radius=None)
 ```
 
-> Constructor node [Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points.html)
+> Constructor [Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points.html)
 
 #### Arguments:
-- **count** (_Integer_ = 1) : socket 'Count' (Count)
-- **position** (_Vector_ = None) : socket 'Position' (Position)
-- **radius** (_Float_ = None) : socket 'Radius' (Radius)
+- **count** (_Integer_ = None) : socket 'Count' (id: Count)
+- **position** (_Vector_ = None) : socket 'Position' (id: Position)
+- **radius** (_Float_ = None) : socket 'Radius' (id: Radius)
 
 
 
@@ -259,18 +257,46 @@ Points(count=1, position=None, radius=None)
 to_curves(curve_group_id=None, weight=None)
 ```
 
-> Node [Points to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points_to_curves.html)
+> Method [Points to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points_to_curves.html)
 
-
+Information
+-----------
+- Socket 'Points' : self
 
 #### Arguments:
-- **curve_group_id** (_Integer_ = None) : socket 'Curve Group ID' (Curve Group ID)
-- **weight** (_Float_ = None) : socket 'Weight' (Weight)
+- **curve_group_id** (_Integer_ = None) : socket 'Curve Group ID' (id: Curve Group ID)
+- **weight** (_Float_ = None) : socket 'Weight' (id: Weight)
 
 
 
 #### Returns:
 - **Curve** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Cloud](cloud.md#cloud) :black_small_square: [Content](cloud.md#content) :black_small_square: [Methods](cloud.md#methods)</sub>
+
+----------
+### to_sdf_grid()
+
+> method
+
+``` python
+to_sdf_grid(radius=None, voxel_size=None)
+```
+
+> Method ERROR: Node 'Points to SDF Grid' not found
+
+Information
+-----------
+- Socket 'Points' : self
+
+#### Arguments:
+- **radius** (_Float_ = None) : socket 'Radius' (id: Radius)
+- **voxel_size** (_Float_ = None) : socket 'Voxel Size' (id: Voxel Size)
+
+
+
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Cloud](cloud.md#cloud) :black_small_square: [Content](cloud.md#content) :black_small_square: [Methods](cloud.md#methods)</sub>
 
@@ -283,9 +309,12 @@ to_curves(curve_group_id=None, weight=None)
 to_vertices()
 ```
 
-> Node [Points to Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points_to_vertices.html)
+> Method [Points to Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points_to_vertices.html)
 
-
+Information
+-----------
+- Socket 'Points' : self
+- Socket 'Selection' : self[selection]
 
 #### Returns:
 - **Mesh** :
@@ -298,19 +327,20 @@ to_vertices()
 > method
 
 ``` python
-to_volume(density=None, voxel_size=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_AMOUNT')
+to_volume(density=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_AMOUNT')
 ```
 
-> Node [Points to Volume](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points_to_volume.html)
+> Method [Points to Volume](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points_to_volume.html)
 
-
+Information
+-----------
+- Socket 'Points' : self
 
 #### Arguments:
-- **density** (_Float_ = None) : socket 'Density' (Density)
-- **voxel_size** ( = None)
-- **voxel_amount** (_Float_ = None) : socket 'Voxel Amount' (Voxel Amount)
-- **radius** (_Float_ = None) : socket 'Radius' (Radius)
-- **resolution_mode** (_str_ = VOXEL_AMOUNT) : Node.resolution_mode in ('VOXEL_AMOUNT', 'VOXEL_SIZE')
+- **density** (_Float_ = None) : socket 'Density' (id: Density)
+- **voxel_amount** (_Float_ = None) : socket 'Voxel Amount' (id: Voxel Amount)
+- **radius** (_Float_ = None) : socket 'Radius' (id: Radius)
+- **resolution_mode** (_str_ = VOXEL_AMOUNT) : parameter 'resolution_mode' in ('VOXEL_AMOUNT', 'VOXEL_SIZE')
 
 
 

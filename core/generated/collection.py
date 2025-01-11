@@ -4,6 +4,9 @@ from .. treeclass import utils
 from .. scripterror import NodeError
 
 class Collection(Socket):
+    """"
+    $DOC SET hidden
+    """
 
     def info(self, separate_children=None, reset_children=None, transform_space='ORIGINAL'):
         """ > Method <&Node Collection Info>

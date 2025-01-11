@@ -1,7 +1,5 @@
 # ForEachElement
 
-> Bases classes: [Zone](zone.md#zone)
-
 ``` python
 ForEachElement(geometry=None, selection=None, domain=None, sockets={}, **snake_case_sockets)
 ```

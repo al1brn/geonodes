@@ -41,20 +41,35 @@ uv_map = cuve.uv_map_
 #### Arguments:
 - **socket** (_NodeSocket_) : the output socket to wrap
 
+### Inherited
+
+[\_cache](nodecache.md#_cache) :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [\_lock](proplocker.md#_lock) :black_small_square: [\_unlock](proplocker.md#_unlock) :black_small_square:
+
 ## Content
 
-- **B** : [blur](socket.md#blur)
-- **H** : [hash_value](socket.md#hash_value)
-- **I** : [IndexSwitch](socket.md#indexswitch) :black_small_square: [index_switch](socket.md#index_switch) :black_small_square: [\_\_init__](socket.md#__init__)
+- **I** : [IndexSwitch](socket.md#indexswitch) :black_small_square: [index_switch](socket.md#index_switch) :black_small_square: [\_\_init__](socket.md#__init__) :black_small_square: [Input](socket.md#input) :black_small_square: [\_interface_socket](socket.md#_interface_socket)
 - **L** : [\_lc](socket.md#_lc)
 - **M** : [MenuSwitch](socket.md#menuswitch) :black_small_square: [menu_switch](socket.md#menu_switch)
 - **N** : [node](socket.md#node) :black_small_square: [node_color](socket.md#node_color) :black_small_square: [node_label](socket.md#node_label)
 - **O** : [out](socket.md#out)
-- **S** : [Switch](socket.md#switch) :black_small_square: [switch](socket.md#switch)
+- **P** : [\_panel_name](socket.md#_panel_name)
+- **S** : [\_set_interface_property](socket.md#_set_interface_property) :black_small_square: [Switch](socket.md#switch) :black_small_square: [switch](socket.md#switch)
 
 ## Properties
 
 
+
+### \_interface_socket
+
+> _type_: **Interface**
+>
+
+Return the interface socket if exists
+
+An interface socket exists when the socket a tree input or output socket or
+when it is the socket of a group
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Socket](socket.md#socket) :black_small_square: [Content](socket.md#content) :black_small_square: [Properties](socket.md#properties)</sub>
 
 ### node
 
@@ -83,54 +98,18 @@ Node Label
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Socket](socket.md#socket) :black_small_square: [Content](socket.md#content) :black_small_square: [Properties](socket.md#properties)</sub>
 
+### \_panel_name
+
+> _type_: **str**
+>
+
+Return the name of the panel
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Socket](socket.md#socket) :black_small_square: [Content](socket.md#content) :black_small_square: [Properties](socket.md#properties)</sub>
+
 ## Methods
 
 
-
-----------
-### blur()
-
-> method
-
-``` python
-blur(iterations=None, weight=None)
-```
-
-> Node [Blur Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/blur_attribute.html)
-
-
-
-#### Arguments:
-- **iterations** (_Integer_ = None) : socket 'Iterations' (Iterations)
-- **weight** (_Float_ = None) : socket 'Weight' (Weight)
-
-
-
-#### Returns:
-- **Socket** :
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Socket](socket.md#socket) :black_small_square: [Content](socket.md#content) :black_small_square: [Methods](socket.md#methods)</sub>
-
-----------
-### hash_value()
-
-> method
-
-``` python
-hash_value(seed=None)
-```
-
-> Node [Hash Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/hash_value.html)
-
-#### Arguments:
-- **seed** (_Integer_ = None) : socket 'Seed' (Seed)
-
-
-
-#### Returns:
-- **Integer** :
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Socket](socket.md#socket) :black_small_square: [Content](socket.md#content) :black_small_square: [Methods](socket.md#methods)</sub>
 
 ----------
 ### IndexSwitch()
@@ -261,6 +240,53 @@ uv_map = cuve.uv_map_
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Socket](socket.md#socket) :black_small_square: [Content](socket.md#content) :black_small_square: [Methods](socket.md#methods)</sub>
 
 ----------
+### Input()
+
+> classmethod
+
+``` python
+Input(name: str, panel: str | None = None)
+```
+
+Get an group input from its name and panel
+
+This constructor is used to get an tree input socket which has been previously created.
+
+This is typically used after connecting a group node to the tree inputs:
+
+``` python
+with GeoNodes("Geometry Nodes"):
+    # Create an input socket
+
+    param = Float(1., "My Parameter")
+
+    # Call a group, the 'link_from' argument creates the necessary inputs in "Geometry Nodes"
+
+    node = Group("Function Group", link_from='TREE')
+
+    # Let's suppose that the 'Function Group' has created an Integer socket named "Int Parameter"
+    # If we need it, we can get it with
+
+    int_parameter =  Integer.Input("Int Parameter")
+```
+
+#### Raises:
+- **NodeError** : 
+
+
+
+#### Arguments:
+- **name** (_str_) : socket name
+- **panel** (_str | None_ = None) : panel name
+
+
+
+#### Returns:
+- **Socket** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Socket](socket.md#socket) :black_small_square: [Content](socket.md#content) :black_small_square: [Methods](socket.md#methods)</sub>
+
+----------
 ### \_lc()
 
 > method
@@ -299,7 +325,7 @@ with GeoNodes("Node label and color"):
 > classmethod
 
 ``` python
-MenuSwitch(items={'A': None, 'B': None}, menu=0, name='Menu', tip=None)
+MenuSwitch(items={'A': None, 'B': None}, menu=0, name='Menu', tip=None, panel=None, hide_value=False, hide_in_modifier=False, single_value=False)
 ```
 
 > Node [Menu Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/menu_switch.html)
@@ -328,6 +354,10 @@ with GeoNodes("Menu Switch demo"):
 - **menu** (_int or str_ = 0) : index or name of the default value
 - **name** (_str_ = Menu) : name of the group input socket
 - **tip** (_str_ = None) : user tip
+- **panel** (_str_ = None) : panel name (overrides tree panel if exists)
+- **hide_value** (_bool_ = False) : Hide Value option
+- **hide_in_modifier** (_bool_ = False) : Hide in Modifier option
+- **single_value** (_bool_ = False) : Single Value option
 
 
 
@@ -387,7 +417,7 @@ with GeoNodes("Menu Switch demo"):
 > method
 
 ``` python
-out(name=None)
+out(name=None, **props)
 ```
 
 Plug the value to the Group Output Node.
@@ -404,11 +434,30 @@ The "Do nothing" modifier is simply ``` Geometry().out() ```
 
 #### Arguments:
 - **name** (_str_ = None) : socket name
+- **props**
 
 
 
 #### Returns:
 - **None** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Socket](socket.md#socket) :black_small_square: [Content](socket.md#content) :black_small_square: [Methods](socket.md#methods)</sub>
+
+----------
+### \_set_interface_property()
+
+> method
+
+``` python
+_set_interface_property(**props)
+```
+
+Set the interface socket properties values
+
+Interface sockets include min, max, hide_value,...
+
+#### Arguments:
+- **props**
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Socket](socket.md#socket) :black_small_square: [Content](socket.md#content) :black_small_square: [Methods](socket.md#methods)</sub>
 
@@ -467,16 +516,21 @@ Self is connected to 'false' socket.
 ``` python
 with GeoNodes("Switch demo"):
 
+    choice = Boolean(True, "Use Sphere")
+
     # Two possible geometries
     cube   = Mesh.Cube()
     sphere = Mesh.IcoSphere()
 
     # Select
-    geo = cube.switch(Boolean(True, "Use Sphere"), sphere)
+    geo = cube.switch(choice, sphere)
 
     # To group output
     geo.out()
 ```
+
+> [!NOTE]
+> This method let self socket unchanged. To set self socket to the result
 
 #### Arguments:
 - **condition** (_Boolean_ = None) : socket 'Switch' (Switch)

@@ -1,9 +1,7 @@
 # Color
 
-> Bases classes: [Attribute](attribute.md#attribute)
-
 ``` python
-Color(value=(0.0, 0.0, 0.0, 1.0), name=None, tip=None)
+Color(value=(0.0, 0.0, 0.0, 1.0), name=None, tip=None, panel=None, default_attribute='', hide_value=False, hide_in_modifier=False, single_value=False)
 ```
 
 Socket of type COLOR (RGBA)
@@ -14,31 +12,36 @@ Socket of type COLOR (RGBA)
 - **value** (_tuple or Socket_ = (0.0, 0.0, 0.0, 1.0)) : initial value
 - **name** (_str_ = None) : Create an Group Input socket with the provided str if not None
 - **tip** (_str_ = None) : User tip (for Group Input sockets)
+- **panel** (_str_ = None) : panel name (overrides tree panel if exists)
+- **default_attribute** (_str_ = ) : default attribute name
+- **hide_value** (_bool_ = False) : Hide Value option
+- **hide_in_modifier** (_bool_ = False) : Hide in Modifier option
+- **single_value** (_bool_ = False) : Single Value option
 
 ### Inherited
 
-[blur](socket.md#blur) :black_small_square: [\_cache](nodecache.md#_cache) :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](socket.md#check_in_list) :black_small_square: [data_type](socket.md#data_type) :black_small_square: [\_geometry_class](socket.md#_geometry_class) :black_small_square: [\_\_getattr__](socket.md#__getattr__) :black_small_square: [get_socket_class](socket.md#get_socket_class) :black_small_square: [hash_value](socket.md#hash_value) :black_small_square: [IndexSwitch](socket.md#indexswitch) :black_small_square: [index_switch](socket.md#index_switch) :black_small_square: [input_type](socket.md#input_type) :black_small_square: [\_jump](socket.md#_jump) :black_small_square: [\_lc](socket.md#_lc) :black_small_square: [\_lcop](socket.md#_lcop) :black_small_square: [MenuSwitch](socket.md#menuswitch) :black_small_square: [menu_switch](socket.md#menu_switch) :black_small_square: [Named](attribute.md#named) :black_small_square: [NamedAttribute](attribute.md#namedattribute) :black_small_square: [node](socket.md#node) :black_small_square: [node_color](socket.md#node_color) :black_small_square: [node_label](socket.md#node_label) :black_small_square: [pin_gizmo](socket.md#pin_gizmo) :black_small_square: [\_reset](socket.md#_reset) :black_small_square: [\_run_tests](socket.md#_run_tests) :black_small_square: [socket_type](socket.md#socket_type) :black_small_square: [\_\_str__](socket.md#__str__) :black_small_square: [Switch](socket.md#switch) :black_small_square: [switch](socket.md#switch) :black_small_square:
+[\_cache](nodecache.md#_cache) :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](socket.md#check_in_list) :black_small_square: [data_type](socket.md#data_type) :black_small_square: [\_domain_to_geometry](socket.md#_domain_to_geometry) :black_small_square: [\_geometry_class](socket.md#_geometry_class) :black_small_square: [\_\_getattr__](socket.md#__getattr__) :black_small_square: [get_node_data_type](socket.md#get_node_data_type) :black_small_square: [get_socket_class](socket.md#get_socket_class) :black_small_square: [IndexSwitch](socket.md#indexswitch) :black_small_square: [index_switch](socket.md#index_switch) :black_small_square: [Input](socket.md#input) :black_small_square: [input_type](socket.md#input_type) :black_small_square: [\_interface_socket](socket.md#_interface_socket) :black_small_square: [\_is_group_input](socket.md#_is_group_input) :black_small_square: [\_is_group_output](socket.md#_is_group_output) :black_small_square: [\_is_group_socket](socket.md#_is_group_socket) :black_small_square: [\_jump](socket.md#_jump) :black_small_square: [\_lc](socket.md#_lc) :black_small_square: [\_lcop](socket.md#_lcop) :black_small_square: [\_lock](proplocker.md#_lock) :black_small_square: [MenuSwitch](socket.md#menuswitch) :black_small_square: [menu_switch](socket.md#menu_switch) :black_small_square: [node](socket.md#node) :black_small_square: [node_color](socket.md#node_color) :black_small_square: [node_label](socket.md#node_label) :black_small_square: [\_panel_name](socket.md#_panel_name) :black_small_square: [pin_gizmo](socket.md#pin_gizmo) :black_small_square: [\_reset](socket.md#_reset) :black_small_square: [\_run_tests](socket.md#_run_tests) :black_small_square: [\_\_setattr__](socket.md#__setattr__) :black_small_square: [\_set_interface_property](socket.md#_set_interface_property) :black_small_square: [socket_type](socket.md#socket_type) :black_small_square: [\_\_str__](socket.md#__str__) :black_small_square: [Switch](socket.md#switch) :black_small_square: [switch](socket.md#switch) :black_small_square: [\_unlock](proplocker.md#_unlock) :black_small_square:
 
 ## Content
 
-- **A** : [add](color.md#add) :black_small_square: [alpha](color.md#alpha) :black_small_square: [ambient_occlusion](color.md#ambient_occlusion) :black_small_square: [Attribute](color.md#attribute)
-- **B** : [Blackbody](color.md#blackbody) :black_small_square: [blue](color.md#blue) :black_small_square: [brighter](color.md#brighter) :black_small_square: [brightness_contrast](color.md#brightness_contrast) :black_small_square: [burn](color.md#burn)
-- **C** : [ColorRamp](color.md#colorramp) :black_small_square: [Combine](color.md#combine) :black_small_square: [CombineHSL](color.md#combinehsl) :black_small_square: [CombineHSV](color.md#combinehsv) :black_small_square: [CombineRGB](color.md#combinergb) :black_small_square: [curves](color.md#curves)
-- **D** : [darken](color.md#darken) :black_small_square: [darker](color.md#darker) :black_small_square: [difference](color.md#difference) :black_small_square: [divide](color.md#divide) :black_small_square: [dodge](color.md#dodge)
-- **E** : [equal](color.md#equal) :black_small_square: [exclusion](color.md#exclusion)
+- **A** : [alpha](color.md#alpha) :black_small_square: [ambient_occlusion](color.md#ambient_occlusion) :black_small_square: [aov_output](color.md#aov_output) :black_small_square: [Attribute](color.md#attribute)
+- **B** : [background](color.md#background) :black_small_square: [Blackbody](color.md#blackbody) :black_small_square: [blue](color.md#blue) :black_small_square: [blur](color.md#blur) :black_small_square: [Brick](color.md#brick) :black_small_square: [brighter](color.md#brighter) :black_small_square: [brightness_contrast](color.md#brightness_contrast)
+- **C** : [Checker](color.md#checker) :black_small_square: [ColorAttribute](color.md#colorattribute) :black_small_square: [ColorRamp](color.md#colorramp) :black_small_square: [Combine](color.md#combine) :black_small_square: [CombineHSL](color.md#combinehsl) :black_small_square: [CombineHSV](color.md#combinehsv) :black_small_square: [CombineRGB](color.md#combinergb)
+- **D** : [darker](color.md#darker)
+- **E** : [equal](color.md#equal)
 - **F** : [FromShader](color.md#fromshader)
-- **G** : [gamma](color.md#gamma) :black_small_square: [green](color.md#green)
-- **H** : [HSL](color.md#hsl) :black_small_square: [HSV](color.md#hsv) :black_small_square: [hue](color.md#hue) :black_small_square: [hue_saturation_value](color.md#hue_saturation_value)
-- **I** : [\_\_init__](color.md#__init__) :black_small_square: [invert](color.md#invert)
-- **L** : [lighten](color.md#lighten) :black_small_square: [lightness](color.md#lightness) :black_small_square: [linear_light](color.md#linear_light)
-- **M** : [mix](color.md#mix) :black_small_square: [mix_color](color.md#mix_color) :black_small_square: [mix_hue](color.md#mix_hue) :black_small_square: [mix_saturation](color.md#mix_saturation) :black_small_square: [mix_value](color.md#mix_value) :black_small_square: [multiply](color.md#multiply)
-- **N** : [normal_map](color.md#normal_map) :black_small_square: [not_equal](color.md#not_equal)
-- **O** : [out](color.md#out) :black_small_square: [overlay](color.md#overlay)
-- **R** : [red](color.md#red) :black_small_square: [RGB](color.md#rgb)
-- **S** : [saturation](color.md#saturation) :black_small_square: [screen](color.md#screen) :black_small_square: [soft_light](color.md#soft_light) :black_small_square: [subtract](color.md#subtract)
+- **G** : [gamma](color.md#gamma) :black_small_square: [Gradient](color.md#gradient) :black_small_square: [green](color.md#green)
+- **H** : [hash_value](color.md#hash_value) :black_small_square: [hsv](color.md#hsv) :black_small_square: [hue](color.md#hue) :black_small_square: [hue_saturation_value](color.md#hue_saturation_value)
+- **I** : [ImageTexture](color.md#imagetexture) :black_small_square: [\_\_init__](color.md#__init__) :black_small_square: [invert](color.md#invert) :black_small_square: [invert_color](color.md#invert_color)
+- **L** : [lightness](color.md#lightness) :black_small_square: [line_style_output](color.md#line_style_output)
+- **M** : [Magic](color.md#magic) :black_small_square: [mix](color.md#mix) :black_small_square: [mix_add](color.md#mix_add) :black_small_square: [mix_burn](color.md#mix_burn) :black_small_square: [mix_color](color.md#mix_color) :black_small_square: [mix_darken](color.md#mix_darken) :black_small_square: [mix_difference](color.md#mix_difference) :black_small_square: [mix_divide](color.md#mix_divide) :black_small_square: [mix_dodge](color.md#mix_dodge) :black_small_square: [mix_exclusion](color.md#mix_exclusion) :black_small_square: [mix_hue](color.md#mix_hue) :black_small_square: [mix_lighten](color.md#mix_lighten) :black_small_square: [mix_linear_light](color.md#mix_linear_light) :black_small_square: [mix_mix](color.md#mix_mix) :black_small_square: [mix_multiply](color.md#mix_multiply) :black_small_square: [mix_overlay](color.md#mix_overlay) :black_small_square: [mix_saturation](color.md#mix_saturation) :black_small_square: [mix_screen](color.md#mix_screen) :black_small_square: [mix_soft_light](color.md#mix_soft_light) :black_small_square: [mix_subtract](color.md#mix_subtract) :black_small_square: [mix_value](color.md#mix_value)
+- **N** : [Named](color.md#named) :black_small_square: [NamedAttribute](color.md#namedattribute) :black_small_square: [normal_map](color.md#normal_map) :black_small_square: [not_equal](color.md#not_equal)
+- **O** : [out](color.md#out)
+- **R** : [red](color.md#red) :black_small_square: [rgb](color.md#rgb) :black_small_square: [RGB](color.md#rgb) :black_small_square: [rgb_curves](color.md#rgb_curves) :black_small_square: [rgb_to_bw](color.md#rgb_to_bw)
+- **S** : [saturation](color.md#saturation) :black_small_square: [separate](color.md#separate) :black_small_square: [separate_col](color.md#separate_col) :black_small_square: [separate_col_HSL](color.md#separate_col_hsl) :black_small_square: [separate_col_HSV](color.md#separate_col_hsv) :black_small_square: [separate_color](color.md#separate_color) :black_small_square: [separate_col_RGB](color.md#separate_col_rgb) :black_small_square: [separate_HSL](color.md#separate_hsl) :black_small_square: [separate_HSV](color.md#separate_hsv) :black_small_square: [separate_RGB](color.md#separate_rgb) :black_small_square: [SkyTexture](color.md#skytexture)
 - **T** : [to_bw](color.md#to_bw)
 - **V** : [value](color.md#value) :black_small_square: [vector_displacement](color.md#vector_displacement)
-- **W** : [Wavelength](color.md#wavelength)
+- **W** : [Wave](color.md#wave) :black_small_square: [Wavelength](color.md#wavelength)
 
 ## Properties
 
@@ -46,111 +49,127 @@ Socket of type COLOR (RGBA)
 
 ### alpha
 
-> _type_: **Float**
+> _type_: **alpha**
 >
 
-Alpha component
+> Property Get [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
 
-> Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
+Information
+-----------
+- Socket 'Color' : self
+- Parameter 'mode' : 'RGB'
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Properties](color.md#properties)</sub>
 
 ### blue
 
-> _type_: **Float**
+> _type_: **blue**
 >
 
-Blue component
+> Property Get [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
 
-> Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
+Information
+-----------
+- Socket 'Color' : self
+- Parameter 'mode' : 'RGB'
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Properties](color.md#properties)</sub>
 
 ### green
 
-> _type_: **Float**
+> _type_: **green**
 >
 
-Green component
+> Property Get [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
 
-> Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
+Information
+-----------
+- Socket 'Color' : self
+- Parameter 'mode' : 'RGB'
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Properties](color.md#properties)</sub>
 
-### HSL
+### hsv
 
-> _type_: **Node**
+> _type_: **tuple**
 >
 
-Separate HSL Node
+> Property Get [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
 
-> Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Properties](color.md#properties)</sub>
-
-### HSV
-
-> _type_: **Node**
->
-
-Separate HSV Node
-
-> Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
+Information
+-----------
+- Socket 'Color' : self
+- Parameter 'mode' : 'HSL'
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Properties](color.md#properties)</sub>
 
 ### hue
 
-> _type_: **Float**
+> _type_: **hue**
 >
 
-Hue component
+> Property Get [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
 
-> Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
+Information
+-----------
+- Socket 'Color' : self
+- Parameter 'mode' : 'HSV'
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Properties](color.md#properties)</sub>
 
 ### lightness
 
-> _type_: **Float**
+> _type_: **lightness**
 >
 
-Lightness component
+> Property Get [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
 
-> Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
+Information
+-----------
+- Socket 'Color' : self
+- Parameter 'mode' : 'HSL'
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Properties](color.md#properties)</sub>
 
 ### red
 
-> _type_: **Float**
+> _type_: **red**
 >
 
-Red component
+> Property Get [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
 
-> Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
+Information
+-----------
+- Socket 'Color' : self
+- Parameter 'mode' : 'RGB'
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Properties](color.md#properties)</sub>
 
-### RGB
+### rgb
 
-> _type_: **Node**
+> _type_: **tuple**
 >
 
-Separate RGB Node
+> Property Get [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
 
-> Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
+Information
+-----------
+- Socket 'Color' : self
+- Parameter 'mode' : 'RGB'
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Properties](color.md#properties)</sub>
 
 ### saturation
 
-> _type_: **Float**
+> _type_: **saturation**
 >
 
-Saturation component
+> Property Get [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
 
-> Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
+Information
+-----------
+- Socket 'Color' : self
+- Parameter 'mode' : 'HSV'
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Properties](color.md#properties)</sub>
 
@@ -169,44 +188,21 @@ Conversion to black and white.
 
 ### value
 
-> _type_: **Float**
+> _type_: **value**
 >
 
-Value component
+> Property Get [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
 
-> Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
+Information
+-----------
+- Socket 'Color' : self
+- Parameter 'mode' : 'HSV'
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Properties](color.md#properties)</sub>
 
 ## Methods
 
 
-
-----------
-### add()
-
-> method
-
-``` python
-add(factor=None, other=None, clamp_result=False, clamp_factor=True)
-```
-
-Mix with another color : ADD
-
-> Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
-
-#### Arguments:
-- **factor** (_Float_ = None) : socket
-- **other** (_Color_ = None) : socket
-- **clamp_result** (_bool_ = False) : clamp result flag
-- **clamp_factor** (_bool_ = True) : clamp factor flag
-
-
-
-#### Returns:
-- **Color** : 'Result' socket
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
 
 ----------
 ### ambient_occlusion()
@@ -238,6 +234,32 @@ Shader node Ambient Occlusion.
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
 
 ----------
+### aov_output()
+
+> method
+
+``` python
+aov_output(value=None, aov_name='')
+```
+
+> Method [AOV Output](https://docs.blender.org/manual/en/latest/render/shader_nodes/output/aov.html)
+
+Information
+-----------
+- Socket 'Color' : self
+
+#### Arguments:
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **aov_name** (_str_ = ) : parameter 'aov_name'
+
+
+
+#### Returns:
+- **None** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
+
+----------
 ### Attribute()
 
 > classmethod
@@ -259,6 +281,31 @@ Shader node Color Attribute.
 
 #### Returns:
 - **Color** : 'Color' socket, [alpha_]
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
+
+----------
+### background()
+
+> method
+
+``` python
+background(strength=None)
+```
+
+> Method ERROR: Node 'Background' not found
+
+Information
+-----------
+- Socket 'Color' : self
+
+#### Arguments:
+- **strength** (_Float_ = None) : socket 'Strength' (id: Strength)
+
+
+
+#### Returns:
+- **Shader** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
 
@@ -288,25 +335,91 @@ Constructor : Black body.
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
 
 ----------
+### blur()
+
+> method
+
+``` python
+blur(iterations=None, weight=None)
+```
+
+> Method [Blur Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/blur_attribute.html)
+
+Information
+-----------
+- Socket 'Value' : self
+- Parameter 'data_type' : 'FLOAT_COLOR'
+
+#### Arguments:
+- **iterations** (_Integer_ = None) : socket 'Iterations' (id: Iterations)
+- **weight** (_Float_ = None) : socket 'Weight' (id: Weight)
+
+
+
+#### Returns:
+- **Color** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
+
+----------
+### Brick()
+
+> classmethod
+
+``` python
+Brick(vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2)
+```
+
+> Constructor [Brick Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/brick.html)
+
+#### Arguments:
+- **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
+- **color1** (_Color_ = None) : socket 'Color1' (id: Color1)
+- **color2** (_Color_ = None) : socket 'Color2' (id: Color2)
+- **mortar** (_Color_ = None) : socket 'Mortar' (id: Mortar)
+- **scale** (_Float_ = None) : socket 'Scale' (id: Scale)
+- **mortar_size** (_Float_ = None) : socket 'Mortar Size' (id: Mortar Size)
+- **mortar_smooth** (_Float_ = None) : socket 'Mortar Smooth' (id: Mortar Smooth)
+- **bias** (_Float_ = None) : socket 'Bias' (id: Bias)
+- **brick_width** (_Float_ = None) : socket 'Brick Width' (id: Brick Width)
+- **row_height** (_Float_ = None) : socket 'Row Height' (id: Row Height)
+- **offset** (_float_ = 0.5) : parameter 'offset'
+- **offset_frequency** (_int_ = 2) : parameter 'offset_frequency'
+- **squash** (_float_ = 1.0) : parameter 'squash'
+- **squash_frequency** (_int_ = 2) : parameter 'squash_frequency'
+
+
+
+#### Returns:
+- **Color** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
+
+----------
 ### brighter()
 
 > method
 
 ``` python
-brighter(other)
+brighter(b=None)
 ```
 
-Compare with another Color : BRIGHTER
+> Method [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
-> Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+Information
+-----------
+- Socket 'A' : self
+- Parameter 'data_type' : 'RGBA'
+- Parameter 'mode' : 'ELEMENT'
+- Parameter 'operation' : 'BRIGHTER'
 
 #### Arguments:
-- **other** (_Color_) : socket
+- **b** (_Color_ = None) : socket 'B' (id: B_COL)
 
 
 
 #### Returns:
-- **Boolean** : 'Result' socket
+- **Boolean** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
 
@@ -337,28 +450,47 @@ Brightness and contrast.
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
 
 ----------
-### burn()
+### Checker()
 
-> method
+> classmethod
 
 ``` python
-burn(factor=None, other=None, clamp_result=False, clamp_factor=True)
+Checker(vector=None, color1=None, color2=None, scale=None)
 ```
 
-Mix with another color : BURN
-
-> Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+> Constructor [Checker Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/checker.html)
 
 #### Arguments:
-- **factor** (_Float_ = None) : socket
-- **other** (_Color_ = None) : socket
-- **clamp_result** (_bool_ = False) : clamp result flag
-- **clamp_factor** (_bool_ = True) : clamp factor flag
+- **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
+- **color1** (_Color_ = None) : socket 'Color1' (id: Color1)
+- **color2** (_Color_ = None) : socket 'Color2' (id: Color2)
+- **scale** (_Float_ = None) : socket 'Scale' (id: Scale)
 
 
 
 #### Returns:
-- **Color** : 'Result' socket
+- **Color** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
+
+----------
+### ColorAttribute()
+
+> classmethod
+
+``` python
+ColorAttribute(layer_name='')
+```
+
+> Constructor [Color Attribute](https://docs.blender.org/manual/en/latest/render/shader_nodes/input/vertex_color.html)
+
+#### Arguments:
+- **layer_name** (_str_ = ) : parameter 'layer_name'
+
+
+
+#### Returns:
+- **Color** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
 
@@ -392,19 +524,17 @@ Constructor : Color Ramp
 > classmethod
 
 ``` python
-Combine(a=0, b=0, c=0, alpha=1, mode='RGB')
+Combine(red=None, green=None, blue=None, alpha=None, mode='RGB')
 ```
 
-Constructor : Combine Color
-
-> Node [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/combine_color.html)
+> Constructor [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/combine_color.html)
 
 #### Arguments:
-- **a** (_Float_ = 0) : depending on mode
-- **b** (_Float_ = 0) : depending on mode
-- **c** (_Float_ = 0) : depending on mode
-- **alpha** (_Float_ = 1) : alpha component
-- **mode** (_str_ = RGB)
+- **red** (_Float_ = None) : socket 'Red' (id: Red)
+- **green** (_Float_ = None) : socket 'Green' (id: Green)
+- **blue** (_Float_ = None) : socket 'Blue' (id: Blue)
+- **alpha** (_Float_ = None) : socket 'Alpha' (id: Alpha)
+- **mode** (_str_ = RGB) : parameter 'mode' in ('RGB', 'HSV', 'HSL')
 
 
 
@@ -419,18 +549,20 @@ Constructor : Combine Color
 > classmethod
 
 ``` python
-CombineHSL(hue=0, saturation=0, lightness=0, alpha=1)
+CombineHSL(hue=None, saturation=None, lightness=None, alpha=None)
 ```
 
-Constructor : Combine Color from HSL
+> Constructor [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/combine_color.html)
 
-> Node [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/combine_color.html)
+Information
+-----------
+- Parameter 'mode' : 'HSL'
 
 #### Arguments:
-- **hue** (_Float_ = 0)
-- **saturation** (_Float_ = 0)
-- **lightness** (_Float_ = 0)
-- **alpha** (_Float_ = 1)
+- **hue** (_Float_ = None) : socket 'Hue' (id: Red)
+- **saturation** (_Float_ = None) : socket 'Saturation' (id: Green)
+- **lightness** (_Float_ = None) : socket 'Lightness' (id: Blue)
+- **alpha** (_Float_ = None) : socket 'Alpha' (id: Alpha)
 
 
 
@@ -445,18 +577,20 @@ Constructor : Combine Color from HSL
 > classmethod
 
 ``` python
-CombineHSV(hue=0, saturation=0, value=0, alpha=1)
+CombineHSV(hue=None, saturation=None, value=None, alpha=None)
 ```
 
-Constructor : Combine Color from HSV
+> Constructor [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/combine_color.html)
 
-> Node [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/combine_color.html)
+Information
+-----------
+- Parameter 'mode' : 'HSV'
 
 #### Arguments:
-- **hue** (_Float_ = 0)
-- **saturation** (_Float_ = 0)
-- **value** (_Float_ = 0)
-- **alpha** (_Float_ = 1)
+- **hue** (_Float_ = None) : socket 'Hue' (id: Red)
+- **saturation** (_Float_ = None) : socket 'Saturation' (id: Green)
+- **value** (_Float_ = None) : socket 'Value' (id: Blue)
+- **alpha** (_Float_ = None) : socket 'Alpha' (id: Alpha)
 
 
 
@@ -471,18 +605,20 @@ Constructor : Combine Color from HSV
 > classmethod
 
 ``` python
-CombineRGB(red=0, green=0, blue=0, alpha=1)
+CombineRGB(red=None, green=None, blue=None, alpha=None)
 ```
 
-Constructor : Combine Color from RGB
+> Constructor [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/combine_color.html)
 
-> Node [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/combine_color.html)
+Information
+-----------
+- Parameter 'mode' : 'RGB'
 
 #### Arguments:
-- **red** (_Float_ = 0)
-- **green** (_Float_ = 0)
-- **blue** (_Float_ = 0)
-- **alpha** (_Float_ = 1)
+- **red** (_Float_ = None) : socket 'Red' (id: Red)
+- **green** (_Float_ = None) : socket 'Green' (id: Green)
+- **blue** (_Float_ = None) : socket 'Blue' (id: Blue)
+- **alpha** (_Float_ = None) : socket 'Alpha' (id: Alpha)
 
 
 
@@ -492,153 +628,30 @@ Constructor : Combine Color from RGB
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
 
 ----------
-### curves()
-
-> method
-
-``` python
-curves(fac=None, keep=None)
-```
-
-Color curves.
-
-> Node [RGB Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/rgb_curves.html)
-
-#### Arguments:
-- **fac** (_Float_ = None) : socket
-- **keep** ( = None)
-
-
-
-#### Returns:
-- **Color** : 'Color' socket
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
-
-----------
-### darken()
-
-> method
-
-``` python
-darken(factor=None, other=None, clamp_result=False, clamp_factor=True)
-```
-
-Mix with another color : DARKEN
-
-> Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
-
-#### Arguments:
-- **factor** (_Float_ = None) : socket
-- **other** (_Color_ = None) : socket
-- **clamp_result** (_bool_ = False) : clamp result flag
-- **clamp_factor** (_bool_ = True) : clamp factor flag
-
-
-
-#### Returns:
-- **Color** : 'Result' socket
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
-
-----------
 ### darker()
 
 > method
 
 ``` python
-darker(other)
+darker(b=None)
 ```
 
-Compare with another Color : DARKER
+> Method [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
-> Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+Information
+-----------
+- Socket 'A' : self
+- Parameter 'data_type' : 'RGBA'
+- Parameter 'mode' : 'ELEMENT'
+- Parameter 'operation' : 'DARKER'
 
 #### Arguments:
-- **other** (_Color_) : socket
+- **b** (_Color_ = None) : socket 'B' (id: B_COL)
 
 
 
 #### Returns:
-- **Boolean** : 'Result' socket
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
-
-----------
-### difference()
-
-> method
-
-``` python
-difference(factor=None, other=None, clamp_result=False, clamp_factor=True)
-```
-
-Mix with another color : DIFFERENCE
-
-> Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
-
-#### Arguments:
-- **factor** (_Float_ = None) : socket
-- **other** (_Color_ = None) : socket
-- **clamp_result** (_bool_ = False) : clamp result flag
-- **clamp_factor** (_bool_ = True) : clamp factor flag
-
-
-
-#### Returns:
-- **Color** : 'Result' socket
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
-
-----------
-### divide()
-
-> method
-
-``` python
-divide(factor=None, other=None, clamp_result=False, clamp_factor=True)
-```
-
-Mix with another color : DIVIDE
-
-> Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
-
-#### Arguments:
-- **factor** (_Float_ = None) : socket
-- **other** (_Color_ = None) : socket
-- **clamp_result** (_bool_ = False) : clamp result flag
-- **clamp_factor** (_bool_ = True) : clamp factor flag
-
-
-
-#### Returns:
-- **Color** : 'Result' socket
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
-
-----------
-### dodge()
-
-> method
-
-``` python
-dodge(factor=None, other=None, clamp_result=False, clamp_factor=True)
-```
-
-Mix with another color : DODGE
-
-> Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
-
-#### Arguments:
-- **factor** (_Float_ = None) : socket
-- **other** (_Color_ = None) : socket
-- **clamp_result** (_bool_ = False) : clamp result flag
-- **clamp_factor** (_bool_ = True) : clamp factor flag
-
-
-
-#### Returns:
-- **Color** : 'Result' socket
+- **Boolean** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
 
@@ -648,47 +661,26 @@ Mix with another color : DODGE
 > method
 
 ``` python
-equal(other, epsilon=None)
+equal(b=None, epsilon=None)
 ```
 
-Compare with another Color : EQUAL
+> Method [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
-> Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+Information
+-----------
+- Socket 'A' : self
+- Parameter 'data_type' : 'RGBA'
+- Parameter 'mode' : 'ELEMENT'
+- Parameter 'operation' : 'EQUAL'
 
 #### Arguments:
-- **other** (_Color_) : socket
-- **epsilon** (_Float_ = None) : socket
+- **b** (_Color_ = None) : socket 'B' (id: B_COL)
+- **epsilon** (_Float_ = None) : socket 'Epsilon' (id: Epsilon)
 
 
 
 #### Returns:
-- **Boolean** : 'Result' socket
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
-
-----------
-### exclusion()
-
-> method
-
-``` python
-exclusion(factor=None, other=None, clamp_result=False, clamp_factor=True)
-```
-
-Mix with another color : EXCLUSION
-
-> Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
-
-#### Arguments:
-- **factor** (_Float_ = None) : socket
-- **other** (_Color_ = None) : socket
-- **clamp_result** (_bool_ = False) : clamp result flag
-- **clamp_factor** (_bool_ = True) : clamp factor flag
-
-
-
-#### Returns:
-- **Color** : 'Result' socket
+- **Boolean** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
 
@@ -743,6 +735,54 @@ Gamma.
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
 
 ----------
+### Gradient()
+
+> classmethod
+
+``` python
+Gradient(vector=None, gradient_type='LINEAR')
+```
+
+> Constructor [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html)
+
+#### Arguments:
+- **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
+- **gradient_type** (_str_ = LINEAR) : parameter 'gradient_type' in ('LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL')
+
+
+
+#### Returns:
+- **Color** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
+
+----------
+### hash_value()
+
+> method
+
+``` python
+hash_value(seed=None)
+```
+
+> Method [Hash Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/hash_value.html)
+
+Information
+-----------
+- Socket 'Value' : self
+- Parameter 'data_type' : 'RGBA'
+
+#### Arguments:
+- **seed** (_Integer_ = None) : socket 'Seed' (id: Seed)
+
+
+
+#### Returns:
+- **Integer** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
+
+----------
 ### hue_saturation_value()
 
 > method
@@ -771,12 +811,37 @@ Hue / saturation / value.
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
 
 ----------
+### ImageTexture()
+
+> classmethod
+
+``` python
+ImageTexture(image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear')
+```
+
+> Constructor [Image Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/image.html)
+
+#### Arguments:
+- **image** (_Image_ = None) : socket 'Image' (id: Image)
+- **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
+- **frame** (_Integer_ = None) : socket 'Frame' (id: Frame)
+- **extension** (_str_ = REPEAT) : parameter 'extension' in ('REPEAT', 'EXTEND', 'CLIP', 'MIRROR')
+- **interpolation** (_str_ = Linear) : parameter 'interpolation' in ('Linear', 'Closest', 'Cubic')
+
+
+
+#### Returns:
+- **Color** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
+
+----------
 ### \_\_init__()
 
 > method
 
 ``` python
-__init__(value=(0.0, 0.0, 0.0, 1.0), name=None, tip=None)
+__init__(value=(0.0, 0.0, 0.0, 1.0), name=None, tip=None, panel=None, default_attribute='', hide_value=False, hide_in_modifier=False, single_value=False)
 ```
 
 Socket of type COLOR (RGBA)
@@ -787,6 +852,11 @@ Socket of type COLOR (RGBA)
 - **value** (_tuple or Socket_ = (0.0, 0.0, 0.0, 1.0)) : initial value
 - **name** (_str_ = None) : Create an Group Input socket with the provided str if not None
 - **tip** (_str_ = None) : User tip (for Group Input sockets)
+- **panel** (_str_ = None) : panel name (overrides tree panel if exists)
+- **default_attribute** (_str_ = ) : default attribute name
+- **hide_value** (_bool_ = False) : Hide Value option
+- **hide_in_modifier** (_bool_ = False) : Hide in Modifier option
+- **single_value** (_bool_ = False) : Single Value option
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
 
@@ -816,54 +886,83 @@ Invert.
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
 
 ----------
-### lighten()
+### invert_color()
 
 > method
 
 ``` python
-lighten(factor=None, other=None, clamp_result=False, clamp_factor=True)
+invert_color(fac=None)
 ```
 
-Mix with another color : LIGHTEN
+> Method [Invert Color](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/color/invert_color.html)
 
-> Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+Information
+-----------
+- Socket 'Color' : self
 
 #### Arguments:
-- **factor** (_Float_ = None) : socket
-- **other** (_Color_ = None) : socket
-- **clamp_result** (_bool_ = False) : clamp result flag
-- **clamp_factor** (_bool_ = True) : clamp factor flag
+- **fac** (_Float_ = None) : socket 'Fac' (id: Fac)
 
 
 
 #### Returns:
-- **Color** : 'Result' socket
+- **Color** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
 
 ----------
-### linear_light()
+### line_style_output()
 
 > method
 
 ``` python
-linear_light(factor=None, other=None, clamp_result=False, clamp_factor=True)
+line_style_output(color_fac=None, alpha=None, alpha_fac=None, blend_type='MIX', is_active_output=True, target='ALL', use_alpha=False, use_clamp=False)
 ```
 
-Mix with another color : LINEAR LIGHT
+> Method ERROR: Node 'Line Style Output' not found
 
-> Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+Information
+-----------
+- Socket 'Color' : self
 
 #### Arguments:
-- **factor** (_Float_ = None) : socket
-- **other** (_Color_ = None) : socket
-- **clamp_result** (_bool_ = False) : clamp result flag
-- **clamp_factor** (_bool_ = True) : clamp factor flag
+- **color_fac** (_Float_ = None) : socket 'Color Fac' (id: Color Fac)
+- **alpha** (_Float_ = None) : socket 'Alpha' (id: Alpha)
+- **alpha_fac** (_Float_ = None) : socket 'Alpha Fac' (id: Alpha Fac)
+- **blend_type** (_str_ = MIX) : parameter 'blend_type' in ('MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE')
+- **is_active_output** (_bool_ = True) : parameter 'is_active_output'
+- **target** (_str_ = ALL) : parameter 'target' in ('ALL', 'EEVEE', 'CYCLES')
+- **use_alpha** (_bool_ = False) : parameter 'use_alpha'
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
 
 
 
 #### Returns:
-- **Color** : 'Result' socket
+- **None** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
+
+----------
+### Magic()
+
+> classmethod
+
+``` python
+Magic(vector=None, scale=None, distortion=None, turbulence_depth=2)
+```
+
+> Constructor [Magic Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/magic.html)
+
+#### Arguments:
+- **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
+- **scale** (_Float_ = None) : socket 'Scale' (id: Scale)
+- **distortion** (_Float_ = None) : socket 'Distortion' (id: Distortion)
+- **turbulence_depth** (_int_ = 2) : parameter 'turbulence_depth'
+
+
+
+#### Returns:
+- **Color** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
 
@@ -873,24 +972,90 @@ Mix with another color : LINEAR LIGHT
 > method
 
 ``` python
-mix(factor=None, other=None, clamp_result=False, clamp_factor=True, blend_type='MIX')
+mix(b=None, factor=None, clamp_factor=True, clamp_result=False)
 ```
 
-Mix with another color
+> Method [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
-> Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+Information
+-----------
+- Socket 'A' : self
+- Parameter 'blend_type' : 'MIX'
+- Parameter 'data_type' : 'RGBA'
+- Parameter 'factor_mode' : 'UNIFORM'
 
 #### Arguments:
-- **factor** (_Float_ = None) : socket
-- **other** (_Color_ = None) : socket
-- **clamp_result** (_bool_ = False) : clamp result flag
-- **clamp_factor** (_bool_ = True) : clamp factor flag
-- **blend_type** (_str_ = MIX)
+- **b** (_Color_ = None) : socket 'B' (id: B_Color)
+- **factor** (_Float_ = None) : socket 'Factor' (id: Factor_Float)
+- **clamp_factor** (_bool_ = True) : parameter 'clamp_factor'
+- **clamp_result** (_bool_ = False) : parameter 'clamp_result'
 
 
 
 #### Returns:
-- **Color** : 'Result' socket
+- **Color** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
+
+----------
+### mix_add()
+
+> method
+
+``` python
+mix_add(b=None, factor=None, clamp_factor=True, clamp_result=False)
+```
+
+> Method [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+
+Information
+-----------
+- Socket 'A' : self
+- Parameter 'blend_type' : 'ADD'
+- Parameter 'data_type' : 'RGBA'
+- Parameter 'factor_mode' : 'UNIFORM'
+
+#### Arguments:
+- **b** (_Color_ = None) : socket 'B' (id: B_Color)
+- **factor** (_Float_ = None) : socket 'Factor' (id: Factor_Float)
+- **clamp_factor** (_bool_ = True) : parameter 'clamp_factor'
+- **clamp_result** (_bool_ = False) : parameter 'clamp_result'
+
+
+
+#### Returns:
+- **Color** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
+
+----------
+### mix_burn()
+
+> method
+
+``` python
+mix_burn(b=None, factor=None, clamp_factor=True, clamp_result=False)
+```
+
+> Method [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+
+Information
+-----------
+- Socket 'A' : self
+- Parameter 'blend_type' : 'BURN'
+- Parameter 'data_type' : 'RGBA'
+- Parameter 'factor_mode' : 'UNIFORM'
+
+#### Arguments:
+- **b** (_Color_ = None) : socket 'B' (id: B_Color)
+- **factor** (_Float_ = None) : socket 'Factor' (id: Factor_Float)
+- **clamp_factor** (_bool_ = True) : parameter 'clamp_factor'
+- **clamp_result** (_bool_ = False) : parameter 'clamp_result'
+
+
+
+#### Returns:
+- **Color** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
 
@@ -900,23 +1065,183 @@ Mix with another color
 > method
 
 ``` python
-mix_color(factor=None, other=None, clamp_result=False, clamp_factor=True)
+mix_color(b=None, factor=None, clamp_factor=True, clamp_result=False)
 ```
 
-Mix with another color : COLOR
+> Method [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
-> Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+Information
+-----------
+- Socket 'A' : self
+- Parameter 'blend_type' : 'COLOR'
+- Parameter 'data_type' : 'RGBA'
+- Parameter 'factor_mode' : 'UNIFORM'
 
 #### Arguments:
-- **factor** (_Float_ = None) : socket
-- **other** (_Color_ = None) : socket
-- **clamp_result** (_bool_ = False) : clamp result flag
-- **clamp_factor** (_bool_ = True) : clamp factor flag
+- **b** (_Color_ = None) : socket 'B' (id: B_Color)
+- **factor** (_Float_ = None) : socket 'Factor' (id: Factor_Float)
+- **clamp_factor** (_bool_ = True) : parameter 'clamp_factor'
+- **clamp_result** (_bool_ = False) : parameter 'clamp_result'
 
 
 
 #### Returns:
-- **Color** : 'Result' socket
+- **Color** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
+
+----------
+### mix_darken()
+
+> method
+
+``` python
+mix_darken(b=None, factor=None, clamp_factor=True, clamp_result=False)
+```
+
+> Method [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+
+Information
+-----------
+- Socket 'A' : self
+- Parameter 'blend_type' : 'DARKEN'
+- Parameter 'data_type' : 'RGBA'
+- Parameter 'factor_mode' : 'UNIFORM'
+
+#### Arguments:
+- **b** (_Color_ = None) : socket 'B' (id: B_Color)
+- **factor** (_Float_ = None) : socket 'Factor' (id: Factor_Float)
+- **clamp_factor** (_bool_ = True) : parameter 'clamp_factor'
+- **clamp_result** (_bool_ = False) : parameter 'clamp_result'
+
+
+
+#### Returns:
+- **Color** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
+
+----------
+### mix_difference()
+
+> method
+
+``` python
+mix_difference(b=None, factor=None, clamp_factor=True, clamp_result=False)
+```
+
+> Method [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+
+Information
+-----------
+- Socket 'A' : self
+- Parameter 'blend_type' : 'DIFFERENCE'
+- Parameter 'data_type' : 'RGBA'
+- Parameter 'factor_mode' : 'UNIFORM'
+
+#### Arguments:
+- **b** (_Color_ = None) : socket 'B' (id: B_Color)
+- **factor** (_Float_ = None) : socket 'Factor' (id: Factor_Float)
+- **clamp_factor** (_bool_ = True) : parameter 'clamp_factor'
+- **clamp_result** (_bool_ = False) : parameter 'clamp_result'
+
+
+
+#### Returns:
+- **Color** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
+
+----------
+### mix_divide()
+
+> method
+
+``` python
+mix_divide(b=None, factor=None, clamp_factor=True, clamp_result=False)
+```
+
+> Method [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+
+Information
+-----------
+- Socket 'A' : self
+- Parameter 'blend_type' : 'DIVIDE'
+- Parameter 'data_type' : 'RGBA'
+- Parameter 'factor_mode' : 'UNIFORM'
+
+#### Arguments:
+- **b** (_Color_ = None) : socket 'B' (id: B_Color)
+- **factor** (_Float_ = None) : socket 'Factor' (id: Factor_Float)
+- **clamp_factor** (_bool_ = True) : parameter 'clamp_factor'
+- **clamp_result** (_bool_ = False) : parameter 'clamp_result'
+
+
+
+#### Returns:
+- **Color** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
+
+----------
+### mix_dodge()
+
+> method
+
+``` python
+mix_dodge(b=None, factor=None, clamp_factor=True, clamp_result=False)
+```
+
+> Method [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+
+Information
+-----------
+- Socket 'A' : self
+- Parameter 'blend_type' : 'DODGE'
+- Parameter 'data_type' : 'RGBA'
+- Parameter 'factor_mode' : 'UNIFORM'
+
+#### Arguments:
+- **b** (_Color_ = None) : socket 'B' (id: B_Color)
+- **factor** (_Float_ = None) : socket 'Factor' (id: Factor_Float)
+- **clamp_factor** (_bool_ = True) : parameter 'clamp_factor'
+- **clamp_result** (_bool_ = False) : parameter 'clamp_result'
+
+
+
+#### Returns:
+- **Color** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
+
+----------
+### mix_exclusion()
+
+> method
+
+``` python
+mix_exclusion(b=None, factor=None, clamp_factor=True, clamp_result=False)
+```
+
+> Method [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+
+Information
+-----------
+- Socket 'A' : self
+- Parameter 'blend_type' : 'EXCLUSION'
+- Parameter 'data_type' : 'RGBA'
+- Parameter 'factor_mode' : 'UNIFORM'
+
+#### Arguments:
+- **b** (_Color_ = None) : socket 'B' (id: B_Color)
+- **factor** (_Float_ = None) : socket 'Factor' (id: Factor_Float)
+- **clamp_factor** (_bool_ = True) : parameter 'clamp_factor'
+- **clamp_result** (_bool_ = False) : parameter 'clamp_result'
+
+
+
+#### Returns:
+- **Color** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
 
@@ -926,23 +1251,183 @@ Mix with another color : COLOR
 > method
 
 ``` python
-mix_hue(factor=None, other=None, clamp_result=False, clamp_factor=True)
+mix_hue(b=None, factor=None, clamp_factor=True, clamp_result=False)
 ```
 
-Mix with another color : HUE
+> Method [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
-> Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+Information
+-----------
+- Socket 'A' : self
+- Parameter 'blend_type' : 'HUE'
+- Parameter 'data_type' : 'RGBA'
+- Parameter 'factor_mode' : 'UNIFORM'
 
 #### Arguments:
-- **factor** (_Float_ = None) : socket
-- **other** (_Color_ = None) : socket
-- **clamp_result** (_bool_ = False) : clamp result flag
-- **clamp_factor** (_bool_ = True) : clamp factor flag
+- **b** (_Color_ = None) : socket 'B' (id: B_Color)
+- **factor** (_Float_ = None) : socket 'Factor' (id: Factor_Float)
+- **clamp_factor** (_bool_ = True) : parameter 'clamp_factor'
+- **clamp_result** (_bool_ = False) : parameter 'clamp_result'
 
 
 
 #### Returns:
-- **Color** : 'Result' socket
+- **Color** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
+
+----------
+### mix_lighten()
+
+> method
+
+``` python
+mix_lighten(b=None, factor=None, clamp_factor=True, clamp_result=False)
+```
+
+> Method [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+
+Information
+-----------
+- Socket 'A' : self
+- Parameter 'blend_type' : 'LIGHTEN'
+- Parameter 'data_type' : 'RGBA'
+- Parameter 'factor_mode' : 'UNIFORM'
+
+#### Arguments:
+- **b** (_Color_ = None) : socket 'B' (id: B_Color)
+- **factor** (_Float_ = None) : socket 'Factor' (id: Factor_Float)
+- **clamp_factor** (_bool_ = True) : parameter 'clamp_factor'
+- **clamp_result** (_bool_ = False) : parameter 'clamp_result'
+
+
+
+#### Returns:
+- **Color** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
+
+----------
+### mix_linear_light()
+
+> method
+
+``` python
+mix_linear_light(b=None, factor=None, clamp_factor=True, clamp_result=False)
+```
+
+> Method [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+
+Information
+-----------
+- Socket 'A' : self
+- Parameter 'blend_type' : 'LINEAR_LIGHT'
+- Parameter 'data_type' : 'RGBA'
+- Parameter 'factor_mode' : 'UNIFORM'
+
+#### Arguments:
+- **b** (_Color_ = None) : socket 'B' (id: B_Color)
+- **factor** (_Float_ = None) : socket 'Factor' (id: Factor_Float)
+- **clamp_factor** (_bool_ = True) : parameter 'clamp_factor'
+- **clamp_result** (_bool_ = False) : parameter 'clamp_result'
+
+
+
+#### Returns:
+- **Color** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
+
+----------
+### mix_mix()
+
+> method
+
+``` python
+mix_mix(b=None, factor=None, clamp_factor=True, clamp_result=False)
+```
+
+> Method [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+
+Information
+-----------
+- Socket 'A' : self
+- Parameter 'blend_type' : 'MIX'
+- Parameter 'data_type' : 'RGBA'
+- Parameter 'factor_mode' : 'UNIFORM'
+
+#### Arguments:
+- **b** (_Color_ = None) : socket 'B' (id: B_Color)
+- **factor** (_Float_ = None) : socket 'Factor' (id: Factor_Float)
+- **clamp_factor** (_bool_ = True) : parameter 'clamp_factor'
+- **clamp_result** (_bool_ = False) : parameter 'clamp_result'
+
+
+
+#### Returns:
+- **Color** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
+
+----------
+### mix_multiply()
+
+> method
+
+``` python
+mix_multiply(b=None, factor=None, clamp_factor=True, clamp_result=False)
+```
+
+> Method [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+
+Information
+-----------
+- Socket 'A' : self
+- Parameter 'blend_type' : 'MULTIPLY'
+- Parameter 'data_type' : 'RGBA'
+- Parameter 'factor_mode' : 'UNIFORM'
+
+#### Arguments:
+- **b** (_Color_ = None) : socket 'B' (id: B_Color)
+- **factor** (_Float_ = None) : socket 'Factor' (id: Factor_Float)
+- **clamp_factor** (_bool_ = True) : parameter 'clamp_factor'
+- **clamp_result** (_bool_ = False) : parameter 'clamp_result'
+
+
+
+#### Returns:
+- **Color** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
+
+----------
+### mix_overlay()
+
+> method
+
+``` python
+mix_overlay(b=None, factor=None, clamp_factor=True, clamp_result=False)
+```
+
+> Method [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+
+Information
+-----------
+- Socket 'A' : self
+- Parameter 'blend_type' : 'OVERLAY'
+- Parameter 'data_type' : 'RGBA'
+- Parameter 'factor_mode' : 'UNIFORM'
+
+#### Arguments:
+- **b** (_Color_ = None) : socket 'B' (id: B_Color)
+- **factor** (_Float_ = None) : socket 'Factor' (id: Factor_Float)
+- **clamp_factor** (_bool_ = True) : parameter 'clamp_factor'
+- **clamp_result** (_bool_ = False) : parameter 'clamp_result'
+
+
+
+#### Returns:
+- **Color** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
 
@@ -952,23 +1437,121 @@ Mix with another color : HUE
 > method
 
 ``` python
-mix_saturation(factor=None, other=None, clamp_result=False, clamp_factor=True)
+mix_saturation(b=None, factor=None, clamp_factor=True, clamp_result=False)
 ```
 
-Mix with another color : SATURATION
+> Method [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
-> Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+Information
+-----------
+- Socket 'A' : self
+- Parameter 'blend_type' : 'SATURATION'
+- Parameter 'data_type' : 'RGBA'
+- Parameter 'factor_mode' : 'UNIFORM'
 
 #### Arguments:
-- **factor** (_Float_ = None) : socket
-- **other** (_Color_ = None) : socket
-- **clamp_result** (_bool_ = False) : clamp result flag
-- **clamp_factor** (_bool_ = True) : clamp factor flag
+- **b** (_Color_ = None) : socket 'B' (id: B_Color)
+- **factor** (_Float_ = None) : socket 'Factor' (id: Factor_Float)
+- **clamp_factor** (_bool_ = True) : parameter 'clamp_factor'
+- **clamp_result** (_bool_ = False) : parameter 'clamp_result'
 
 
 
 #### Returns:
-- **Color** : 'Result' socket
+- **Color** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
+
+----------
+### mix_screen()
+
+> method
+
+``` python
+mix_screen(b=None, factor=None, clamp_factor=True, clamp_result=False)
+```
+
+> Method [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+
+Information
+-----------
+- Socket 'A' : self
+- Parameter 'blend_type' : 'SCREEN'
+- Parameter 'data_type' : 'RGBA'
+- Parameter 'factor_mode' : 'UNIFORM'
+
+#### Arguments:
+- **b** (_Color_ = None) : socket 'B' (id: B_Color)
+- **factor** (_Float_ = None) : socket 'Factor' (id: Factor_Float)
+- **clamp_factor** (_bool_ = True) : parameter 'clamp_factor'
+- **clamp_result** (_bool_ = False) : parameter 'clamp_result'
+
+
+
+#### Returns:
+- **Color** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
+
+----------
+### mix_soft_light()
+
+> method
+
+``` python
+mix_soft_light(b=None, factor=None, clamp_factor=True, clamp_result=False)
+```
+
+> Method [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+
+Information
+-----------
+- Socket 'A' : self
+- Parameter 'blend_type' : 'SOFT_LIGHT'
+- Parameter 'data_type' : 'RGBA'
+- Parameter 'factor_mode' : 'UNIFORM'
+
+#### Arguments:
+- **b** (_Color_ = None) : socket 'B' (id: B_Color)
+- **factor** (_Float_ = None) : socket 'Factor' (id: Factor_Float)
+- **clamp_factor** (_bool_ = True) : parameter 'clamp_factor'
+- **clamp_result** (_bool_ = False) : parameter 'clamp_result'
+
+
+
+#### Returns:
+- **Color** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
+
+----------
+### mix_subtract()
+
+> method
+
+``` python
+mix_subtract(b=None, factor=None, clamp_factor=True, clamp_result=False)
+```
+
+> Method [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+
+Information
+-----------
+- Socket 'A' : self
+- Parameter 'blend_type' : 'SUBTRACT'
+- Parameter 'data_type' : 'RGBA'
+- Parameter 'factor_mode' : 'UNIFORM'
+
+#### Arguments:
+- **b** (_Color_ = None) : socket 'B' (id: B_Color)
+- **factor** (_Float_ = None) : socket 'Factor' (id: Factor_Float)
+- **clamp_factor** (_bool_ = True) : parameter 'clamp_factor'
+- **clamp_result** (_bool_ = False) : parameter 'clamp_result'
+
+
+
+#### Returns:
+- **Color** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
 
@@ -978,49 +1561,78 @@ Mix with another color : SATURATION
 > method
 
 ``` python
-mix_value(factor=None, other=None, clamp_result=False, clamp_factor=True)
+mix_value(b=None, factor=None, clamp_factor=True, clamp_result=False)
 ```
 
-Mix with another color : VALUE
+> Method [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
 
-> Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+Information
+-----------
+- Socket 'A' : self
+- Parameter 'blend_type' : 'VALUE'
+- Parameter 'data_type' : 'RGBA'
+- Parameter 'factor_mode' : 'UNIFORM'
 
 #### Arguments:
-- **factor** (_Float_ = None) : socket
-- **other** (_Color_ = None) : socket
-- **clamp_result** (_bool_ = False) : clamp result flag
-- **clamp_factor** (_bool_ = True) : clamp factor flag
+- **b** (_Color_ = None) : socket 'B' (id: B_Color)
+- **factor** (_Float_ = None) : socket 'Factor' (id: Factor_Float)
+- **clamp_factor** (_bool_ = True) : parameter 'clamp_factor'
+- **clamp_result** (_bool_ = False) : parameter 'clamp_result'
 
 
 
 #### Returns:
-- **Color** : 'Result' socket
+- **Color** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
 
 ----------
-### multiply()
+### Named()
 
-> method
+> classmethod
 
 ``` python
-multiply(factor=None, other=None, clamp_result=False, clamp_factor=True)
+Named(name=None)
 ```
 
-Mix with another color : MULTIPLY
+> Constructor [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
 
-> Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+Information
+-----------
+- Parameter 'data_type' : 'FLOAT_COLOR'
 
 #### Arguments:
-- **factor** (_Float_ = None) : socket
-- **other** (_Color_ = None) : socket
-- **clamp_result** (_bool_ = False) : clamp result flag
-- **clamp_factor** (_bool_ = True) : clamp factor flag
+- **name** (_String_ = None) : socket 'Name' (id: Name)
 
 
 
 #### Returns:
-- **Color** : 'Result' socket
+- **Color** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
+
+----------
+### NamedAttribute()
+
+> classmethod
+
+``` python
+NamedAttribute(name=None)
+```
+
+> Constructor [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
+
+Information
+-----------
+- Parameter 'data_type' : 'FLOAT_COLOR'
+
+#### Arguments:
+- **name** (_String_ = None) : socket 'Name' (id: Name)
+
+
+
+#### Returns:
+- **Color** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
 
@@ -1057,21 +1669,26 @@ Normal map.
 > method
 
 ``` python
-not_equal(other, epsilon=None)
+not_equal(b=None, epsilon=None)
 ```
 
-Compare with another Color : NOT EQUAL
+> Method [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
-> Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+Information
+-----------
+- Socket 'A' : self
+- Parameter 'data_type' : 'RGBA'
+- Parameter 'mode' : 'ELEMENT'
+- Parameter 'operation' : 'NOT_EQUAL'
 
 #### Arguments:
-- **other** (_Color_) : socket
-- **epsilon** (_Float_ = None) : socket
+- **b** (_Color_ = None) : socket 'B' (id: B_COL)
+- **epsilon** (_Float_ = None) : socket 'Epsilon' (id: Epsilon)
 
 
 
 #### Returns:
-- **Boolean** : 'Result' socket
+- **Boolean** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
 
@@ -1099,106 +1716,292 @@ out(name=None)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
 
 ----------
-### overlay()
+### RGB()
 
-> method
+> classmethod
 
 ``` python
-overlay(factor=None, other=None, clamp_result=False, clamp_factor=True)
+RGB()
 ```
 
-Mix with another color : OVERLAY
-
-> Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
-
-#### Arguments:
-- **factor** (_Float_ = None) : socket
-- **other** (_Color_ = None) : socket
-- **clamp_result** (_bool_ = False) : clamp result flag
-- **clamp_factor** (_bool_ = True) : clamp factor flag
-
-
+> Constructor [RGB](https://docs.blender.org/manual/en/latest/render/shader_nodes/input/rgb.html)
 
 #### Returns:
-- **Color** : 'Result' socket
+- **Color** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
 
 ----------
-### screen()
+### rgb_curves()
 
 > method
 
 ``` python
-screen(factor=None, other=None, clamp_result=False, clamp_factor=True)
+rgb_curves(fac=None)
 ```
 
-Mix with another color : SCREEN
+> Method [RGB Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/rgb_curves.html)
 
-> Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+Information
+-----------
+- Socket 'Color' : self
 
 #### Arguments:
-- **factor** (_Float_ = None) : socket
-- **other** (_Color_ = None) : socket
-- **clamp_result** (_bool_ = False) : clamp result flag
-- **clamp_factor** (_bool_ = True) : clamp factor flag
+- **fac** (_Float_ = None) : socket 'Fac' (id: Fac)
 
 
 
 #### Returns:
-- **Color** : 'Result' socket
+- **Color** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
 
 ----------
-### soft_light()
+### rgb_to_bw()
 
 > method
 
 ``` python
-soft_light(factor=None, other=None, clamp_result=False, clamp_factor=True)
+rgb_to_bw()
 ```
 
-Mix with another color : SOFT LIGHT
+> Method [RGB to BW](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/converter/rgb_to_bw.html)
 
-> Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
-
-#### Arguments:
-- **factor** (_Float_ = None) : socket
-- **other** (_Color_ = None) : socket
-- **clamp_result** (_bool_ = False) : clamp result flag
-- **clamp_factor** (_bool_ = True) : clamp factor flag
-
-
+Information
+-----------
+- Socket 'Color' : self
 
 #### Returns:
-- **Color** : 'Result' socket
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
 
 ----------
-### subtract()
+### separate()
 
 > method
 
 ``` python
-subtract(factor=None, other=None, clamp_result=False, clamp_factor=True)
+separate(mode='RGB')
 ```
 
-Mix with another color : SUBTRACT
+> Method [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
 
-> Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+Information
+-----------
+- Socket 'Color' : self
 
 #### Arguments:
-- **factor** (_Float_ = None) : socket
-- **other** (_Color_ = None) : socket
-- **clamp_result** (_bool_ = False) : clamp result flag
-- **clamp_factor** (_bool_ = True) : clamp factor flag
+- **mode** (_str_ = RGB) : parameter 'mode' in ('RGB', 'HSV', 'HSL')
 
 
 
 #### Returns:
-- **Color** : 'Result' socket
+- **Float** (_Float_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
+
+----------
+### separate_col()
+
+> method
+
+``` python
+separate_col(mode='RGB')
+```
+
+> Method [Separate Color](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/color/separate_color.html)
+
+Information
+-----------
+- Socket 'Color' : self
+
+#### Arguments:
+- **mode** (_str_ = RGB) : parameter 'mode' in ('RGB', 'HSV', 'HSL')
+
+
+
+#### Returns:
+- **Float** (_Float_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
+
+----------
+### separate_col_HSL()
+
+> method
+
+``` python
+separate_col_HSL()
+```
+
+> Method [Separate Color](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/color/separate_color.html)
+
+Information
+-----------
+- Socket 'Color' : self
+- Parameter 'mode' : 'HSL'
+
+#### Returns:
+- **Float** (_Float_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
+
+----------
+### separate_col_HSV()
+
+> method
+
+``` python
+separate_col_HSV()
+```
+
+> Method [Separate Color](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/color/separate_color.html)
+
+Information
+-----------
+- Socket 'Color' : self
+- Parameter 'mode' : 'HSV'
+
+#### Returns:
+- **Float** (_Float_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
+
+----------
+### separate_color()
+
+> method
+
+``` python
+separate_color()
+```
+
+> Method [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
+
+Information
+-----------
+- Socket 'Color' : self
+- Parameter 'mode' : 'RGB'
+
+#### Returns:
+- **node** (_Float_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
+
+----------
+### separate_col_RGB()
+
+> method
+
+``` python
+separate_col_RGB()
+```
+
+> Method [Separate Color](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/color/separate_color.html)
+
+Information
+-----------
+- Socket 'Color' : self
+- Parameter 'mode' : 'RGB'
+
+#### Returns:
+- **Float** (_Float_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
+
+----------
+### separate_HSL()
+
+> method
+
+``` python
+separate_HSL()
+```
+
+> Method [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
+
+Information
+-----------
+- Socket 'Color' : self
+- Parameter 'mode' : 'HSL'
+
+#### Returns:
+- **Float** (_Float_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
+
+----------
+### separate_HSV()
+
+> method
+
+``` python
+separate_HSV()
+```
+
+> Method [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
+
+Information
+-----------
+- Socket 'Color' : self
+- Parameter 'mode' : 'HSV'
+
+#### Returns:
+- **Float** (_Float_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
+
+----------
+### separate_RGB()
+
+> method
+
+``` python
+separate_RGB()
+```
+
+> Method [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
+
+Information
+-----------
+- Socket 'Color' : self
+- Parameter 'mode' : 'RGB'
+
+#### Returns:
+- **Float** (_Float_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
+
+----------
+### SkyTexture()
+
+> classmethod
+
+``` python
+SkyTexture(air_density=1.0, altitude=0.0, dust_density=1.0, ground_albedo=0.30000001192092896, ozone_density=1.0, sky_type='NISHITA', sun_disc=True, sun_elevation=0.2617993950843811, sun_intensity=1.0, sun_rotation=0.0, sun_size=0.009512044489383698, turbidity=2.200000047683716)
+```
+
+> Constructor [Sky Texture](https://docs.blender.org/manual/en/latest/render/shader_nodes/textures/sky.html)
+
+#### Arguments:
+- **air_density** (_float_ = 1.0) : parameter 'air_density'
+- **altitude** (_float_ = 0.0) : parameter 'altitude'
+- **dust_density** (_float_ = 1.0) : parameter 'dust_density'
+- **ground_albedo** (_float_ = 0.30000001192092896) : parameter 'ground_albedo'
+- **ozone_density** (_float_ = 1.0) : parameter 'ozone_density'
+- **sky_type** (_str_ = NISHITA) : parameter 'sky_type' in ('PREETHAM', 'HOSEK_WILKIE', 'NISHITA')
+- **sun_disc** (_bool_ = True) : parameter 'sun_disc'
+- **sun_elevation** (_float_ = 0.2617993950843811) : parameter 'sun_elevation'
+- **sun_intensity** (_float_ = 1.0) : parameter 'sun_intensity'
+- **sun_rotation** (_float_ = 0.0) : parameter 'sun_rotation'
+- **sun_size** (_float_ = 0.009512044489383698) : parameter 'sun_size'
+- **turbidity** (_float_ = 2.200000047683716) : parameter 'turbidity'
+
+
+
+#### Returns:
+- **Color** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
 
@@ -1226,6 +2029,37 @@ Vector displacement
 
 #### Returns:
 - **Vector** : 'Displacement' socket
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
+
+----------
+### Wave()
+
+> classmethod
+
+``` python
+Wave(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', rings_direction='X', wave_profile='SIN', wave_type='BANDS')
+```
+
+> Constructor [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html)
+
+#### Arguments:
+- **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
+- **scale** (_Float_ = None) : socket 'Scale' (id: Scale)
+- **distortion** (_Float_ = None) : socket 'Distortion' (id: Distortion)
+- **detail** (_Float_ = None) : socket 'Detail' (id: Detail)
+- **detail_scale** (_Float_ = None) : socket 'Detail Scale' (id: Detail Scale)
+- **detail_roughness** (_Float_ = None) : socket 'Detail Roughness' (id: Detail Roughness)
+- **phase_offset** (_Float_ = None) : socket 'Phase Offset' (id: Phase Offset)
+- **bands_direction** (_str_ = X) : parameter 'bands_direction' in ('X', 'Y', 'Z', 'DIAGONAL')
+- **rings_direction** (_str_ = X) : parameter 'rings_direction' in ('X', 'Y', 'Z', 'SPHERICAL')
+- **wave_profile** (_str_ = SIN) : parameter 'wave_profile' in ('SIN', 'SAW', 'TRI')
+- **wave_type** (_str_ = BANDS) : parameter 'wave_type' in ('BANDS', 'RINGS')
+
+
+
+#### Returns:
+- **Color** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
 

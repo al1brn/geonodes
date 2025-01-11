@@ -88,7 +88,11 @@ def generate(folder):
                 file.write(f"class {static_nodes}:\n\n")
 
             else:
-                file.write(f"class {class_name}(Socket):\n\n")
+                file.write(f"class {class_name}(Socket):\n")
+                if class_name not in ['nd', 'snd']:
+                    file.write('    """"\n    $DOC SET hidden\n    """\n')
+                file.write("\n")
+
                 imports.append(f"from .{module} import {class_name}")
 
             for name, code in funcs.items():

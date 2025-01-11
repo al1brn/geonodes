@@ -4,6 +4,9 @@ from .. treeclass import utils
 from .. scripterror import NodeError
 
 class Color(Socket):
+    """"
+    $DOC SET hidden
+    """
 
     @classmethod
     def CombineRGB(cls, red=None, green=None, blue=None, alpha=None):

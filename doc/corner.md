@@ -1,27 +1,32 @@
 # Corner
 
-> Bases classes: [Domain](domain.md#domain)
-
 ``` python
-Corner(geometry)
+Corner(geometry: geonodes.core.geometry_class.Geometry)
 ```
 
 > Corner domain of a [Mesh](mesh.md#mesh)
 
 #### Arguments:
-- **geometry**
+- **geometry** (_Geometry_)
 
 ### Inherited
 
-[accumulate_field](domain.md#accumulate_field) :black_small_square: [attribute_statistic](domain.md#attribute_statistic) :black_small_square: [\_cache](nodecache.md#_cache) :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [capture](domain.md#capture) :black_small_square: [capture_attribute](domain.md#capture_attribute) :black_small_square: [captures](domain.md#captures) :black_small_square: [delete](domain.md#delete) :black_small_square: [delete_all](domain.md#delete_all) :black_small_square: [delete_edges_and_faces](domain.md#delete_edges_and_faces) :black_small_square: [delete_faces](domain.md#delete_faces) :black_small_square: [delete_geometry](domain.md#delete_geometry) :black_small_square: [domain_name](domain.md#domain_name) :black_small_square: [duplicate_elements](domain.md#duplicate_elements) :black_small_square: [evaluate_at_index](domain.md#evaluate_at_index) :black_small_square: [evaluate_on_domain](domain.md#evaluate_on_domain) :black_small_square: [exclude_corner](domain.md#exclude_corner) :black_small_square: [extrude](domain.md#extrude) :black_small_square: [for_each](domain.md#for_each) :black_small_square: [\_geo_type](geobase.md#_geo_type) :black_small_square: [\_\_getitem__](geobase.md#__getitem__) :black_small_square: [id](geobase.md#id) :black_small_square: [\_\_init__](domain.md#__init__) :black_small_square: [\_jump](domain.md#_jump) :black_small_square: [material](geobase.md#material) :black_small_square: [material_index](geobase.md#material_index) :black_small_square: [material_selection](geobase.md#material_selection) :black_small_square: [\_node](domain.md#_node) :black_small_square: [offset](geobase.md#offset) :black_small_square: [plural_domain](domain.md#plural_domain) :black_small_square: [position](geobase.md#position) :black_small_square: [proximity](domain.md#proximity) :black_small_square: [\_raw_sel](geobase.md#_raw_sel) :black_small_square: [replace_material](geobase.md#replace_material) :black_small_square: [restrict_domain](domain.md#restrict_domain) :black_small_square: [sample_index](domain.md#sample_index) :black_small_square: [sample_nearest](domain.md#sample_nearest) :black_small_square: [\_sel](domain.md#_sel) :black_small_square: [separate](domain.md#separate) :black_small_square: [set_id](geobase.md#set_id) :black_small_square: [set_position](geobase.md#set_position) :black_small_square: [sort_elements](domain.md#sort_elements) :black_small_square: [split_to_instances](domain.md#split_to_instances) :black_small_square: [store](domain.md#store) :black_small_square: [store_named_attribute](domain.md#store_named_attribute) :black_small_square: [\_\_str__](domain.md#__str__) :black_small_square: [to_points](domain.md#to_points) :black_small_square: [viewer](domain.md#viewer) :black_small_square:
+[\_cache](nodecache.md#_cache) :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [\_\_call__](domain.md#__call__) :black_small_square: [capture](domain.md#capture) :black_small_square: [capture_attribute](domain.md#capture_attribute) :black_small_square: [check_in_list](socket.md#check_in_list) :black_small_square: [data_type](socket.md#data_type) :black_small_square: [\_domain_to_geometry](domain.md#_domain_to_geometry) :black_small_square: [for_each](domain.md#for_each) :black_small_square: [\_geometry_class](socket.md#_geometry_class) :black_small_square: [\_geo_type](geobase.md#_geo_type) :black_small_square: [\_\_getattr__](domain.md#__getattr__) :black_small_square: [\_\_getitem__](geobase.md#__getitem__) :black_small_square: [get_node_data_type](socket.md#get_node_data_type) :black_small_square: [get_socket_class](socket.md#get_socket_class) :black_small_square: [IndexSwitch](socket.md#indexswitch) :black_small_square: [index_switch](socket.md#index_switch) :black_small_square: [\_\_init__](domain.md#__init__) :black_small_square: [Input](socket.md#input) :black_small_square: [input_type](socket.md#input_type) :black_small_square: [\_interface_socket](socket.md#_interface_socket) :black_small_square: [\_is_group_input](socket.md#_is_group_input) :black_small_square: [\_is_group_output](socket.md#_is_group_output) :black_small_square: [\_is_group_socket](socket.md#_is_group_socket) :black_small_square: [\_jump](domain.md#_jump) :black_small_square: [\_lc](socket.md#_lc) :black_small_square: [\_lcop](socket.md#_lcop) :black_small_square: [\_lock](proplocker.md#_lock) :black_small_square: [MenuSwitch](socket.md#menuswitch) :black_small_square: [menu_switch](socket.md#menu_switch) :black_small_square: [node](socket.md#node) :black_small_square: [node_color](socket.md#node_color) :black_small_square: [node_label](socket.md#node_label) :black_small_square: [out](socket.md#out) :black_small_square: [\_panel_name](socket.md#_panel_name) :black_small_square: [pin_gizmo](socket.md#pin_gizmo) :black_small_square: [\_raw_sel](geobase.md#_raw_sel) :black_small_square: [\_reset](socket.md#_reset) :black_small_square: [\_run_tests](socket.md#_run_tests) :black_small_square: [\_sel](domain.md#_sel) :black_small_square: [\_\_setattr__](domain.md#__setattr__) :black_small_square: [\_set_interface_property](socket.md#_set_interface_property) :black_small_square: [socket_type](socket.md#socket_type) :black_small_square: [\_\_str__](domain.md#__str__) :black_small_square: [Switch](socket.md#switch) :black_small_square: [switch](socket.md#switch) :black_small_square: [\_unlock](proplocker.md#_unlock) :black_small_square:
 
 ## Content
 
-- [count](corner.md#count)
-- [face_index](corner.md#face_index)
-- [next_edge_index](corner.md#next_edge_index)
-- [offset_in_face](corner.md#offset_in_face)
-- [vertex_index](corner.md#vertex_index)
+- **A** : [accumulate_field](corner.md#accumulate_field) :black_small_square: [attribute_statistic](corner.md#attribute_statistic)
+- **C** : [count](corner.md#count)
+- **E** : [edges](corner.md#edges) :black_small_square: [evaluate_at_index](corner.md#evaluate_at_index) :black_small_square: [evaluate_on_domain](corner.md#evaluate_on_domain)
+- **F** : [face](corner.md#face) :black_small_square: [face_index](corner.md#face_index)
+- **I** : [index_in_face](corner.md#index_in_face)
+- **N** : [next_edge_index](corner.md#next_edge_index)
+- **O** : [offset_in_face](corner.md#offset_in_face)
+- **P** : [pack_uv_islands](corner.md#pack_uv_islands) :black_small_square: [previous_edge_index](corner.md#previous_edge_index)
+- **S** : [sample_index](corner.md#sample_index) :black_small_square: [sample_nearest](corner.md#sample_nearest) :black_small_square: [store](corner.md#store) :black_small_square: [store_named_attribute](corner.md#store_named_attribute) :black_small_square: [store_uv](corner.md#store_uv)
+- **T** : [to_points](corner.md#to_points)
+- **U** : [uv_unwrap](corner.md#uv_unwrap)
+- **V** : [vertex_index](corner.md#vertex_index) :black_small_square: [viewer](corner.md#viewer)
 
 ## Properties
 
@@ -41,6 +46,156 @@ Corner(geometry)
 
 
 ----------
+### accumulate_field()
+
+> classmethod
+
+``` python
+accumulate_field(value=None, group_id=None)
+```
+
+> Class Method [Accumulate Field](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/accumulate_field.html)
+
+Information
+-----------
+- Parameter 'data_type' : depending on 'value' type
+- Parameter 'domain' : 'CORNER'
+
+#### Arguments:
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **group_id** (_Integer_ = None) : socket 'Group ID' (id: Group Index)
+
+
+
+#### Returns:
+- **Float** (_Float_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Corner](corner.md#corner) :black_small_square: [Content](corner.md#content) :black_small_square: [Methods](corner.md#methods)</sub>
+
+----------
+### attribute_statistic()
+
+> method
+
+``` python
+attribute_statistic(attribute=None)
+```
+
+> Method [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html)
+
+Information
+-----------
+- Socket 'Geometry' : self
+- Socket 'Selection' : self[selection]
+- Parameter 'data_type' : depending on 'attribute' type
+- Parameter 'domain' : 'CORNER'
+
+#### Arguments:
+- **attribute** (_Float_ = None) : socket 'Attribute' (id: Attribute)
+
+
+
+#### Returns:
+- **node** (_Float_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Corner](corner.md#corner) :black_small_square: [Content](corner.md#content) :black_small_square: [Methods](corner.md#methods)</sub>
+
+----------
+### edges()
+
+> classmethod
+
+``` python
+edges(corner_index=None)
+```
+
+> Class Method [Edges of Corner](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/edges_of_corner.html)
+
+#### Arguments:
+- **corner_index** (_Integer_ = None) : socket 'Corner Index' (id: Corner Index)
+
+
+
+#### Returns:
+- **node** (_Integer_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Corner](corner.md#corner) :black_small_square: [Content](corner.md#content) :black_small_square: [Methods](corner.md#methods)</sub>
+
+----------
+### evaluate_at_index()
+
+> classmethod
+
+``` python
+evaluate_at_index(index=None, value=None)
+```
+
+> Class Method [Evaluate at Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/evaluate_at_index.html)
+
+Information
+-----------
+- Parameter 'data_type' : depending on 'value' type
+- Parameter 'domain' : 'CORNER'
+
+#### Arguments:
+- **index** (_Integer_ = None) : socket 'Index' (id: Index)
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Corner](corner.md#corner) :black_small_square: [Content](corner.md#content) :black_small_square: [Methods](corner.md#methods)</sub>
+
+----------
+### evaluate_on_domain()
+
+> classmethod
+
+``` python
+evaluate_on_domain(value=None)
+```
+
+> Class Method [Evaluate on Domain](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/evaluate_on_domain.html)
+
+Information
+-----------
+- Parameter 'data_type' : depending on 'value' type
+- Parameter 'domain' : 'CORNER'
+
+#### Arguments:
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Corner](corner.md#corner) :black_small_square: [Content](corner.md#content) :black_small_square: [Methods](corner.md#methods)</sub>
+
+----------
+### face()
+
+> classmethod
+
+``` python
+face(corner_index=None)
+```
+
+> Class Method [Face of Corner](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/face_of_corner.html)
+
+#### Arguments:
+- **corner_index** (_Integer_ = None) : socket 'Corner Index' (id: Corner Index)
+
+
+
+#### Returns:
+- **node** (_Integer_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Corner](corner.md#corner) :black_small_square: [Content](corner.md#content) :black_small_square: [Methods](corner.md#methods)</sub>
+
+----------
 ### face_index()
 
 > classmethod
@@ -49,15 +204,36 @@ Corner(geometry)
 face_index(corner_index=None)
 ```
 
-> Node [Face of Corner](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/face_of_corner.html)
+> Class Method [Face of Corner](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/face_of_corner.html)
 
 #### Arguments:
-- **corner_index** (_Integer_ = None) : socket 'Corner Index' (Corner Index)
+- **corner_index** (_Integer_ = None) : socket 'Corner Index' (id: Corner Index)
 
 
 
 #### Returns:
-- **Integer** :
+- **face_index** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Corner](corner.md#corner) :black_small_square: [Content](corner.md#content) :black_small_square: [Methods](corner.md#methods)</sub>
+
+----------
+### index_in_face()
+
+> classmethod
+
+``` python
+index_in_face(corner_index=None)
+```
+
+> Class Method [Face of Corner](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/face_of_corner.html)
+
+#### Arguments:
+- **corner_index** (_Integer_ = None) : socket 'Corner Index' (id: Corner Index)
+
+
+
+#### Returns:
+- **index_in_face** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Corner](corner.md#corner) :black_small_square: [Content](corner.md#content) :black_small_square: [Methods](corner.md#methods)</sub>
 
@@ -70,15 +246,15 @@ face_index(corner_index=None)
 next_edge_index(corner_index=None)
 ```
 
-> Node [Edges of Corner](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/edges_of_corner.html)
+> Class Method [Edges of Corner](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/edges_of_corner.html)
 
 #### Arguments:
-- **corner_index** (_Integer_ = None) : socket 'Corner Index' (Corner Index)
+- **corner_index** (_Integer_ = None) : socket 'Corner Index' (id: Corner Index)
 
 
 
 #### Returns:
-- **Integer** :
+- **next_edge_index** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Corner](corner.md#corner) :black_small_square: [Content](corner.md#content) :black_small_square: [Methods](corner.md#methods)</sub>
 
@@ -91,16 +267,262 @@ next_edge_index(corner_index=None)
 offset_in_face(corner_index=None, offset=None)
 ```
 
-> Node [Offset Corner in Face](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/offset_corner_in_face.html)
+> Class Method [Offset Corner in Face](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/offset_corner_in_face.html)
 
 #### Arguments:
-- **corner_index** (_Integer_ = None) : socket 'Corner Index' (Corner Index)
-- **offset** (_Integer_ = None) : socket 'Offset' (Offset)
+- **corner_index** (_Integer_ = None) : socket 'Corner Index' (id: Corner Index)
+- **offset** (_Integer_ = None) : socket 'Offset' (id: Offset)
 
 
 
 #### Returns:
 - **Integer** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Corner](corner.md#corner) :black_small_square: [Content](corner.md#content) :black_small_square: [Methods](corner.md#methods)</sub>
+
+----------
+### pack_uv_islands()
+
+> classmethod
+
+``` python
+pack_uv_islands(uv=None, margin=None, rotate=None)
+```
+
+> Class Method [Pack UV Islands](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/uv/pack_uv_islands.html)
+
+Information
+-----------
+- Socket 'Selection' : self[selection]
+
+#### Arguments:
+- **uv** (_Vector_ = None) : socket 'UV' (id: UV)
+- **margin** (_Float_ = None) : socket 'Margin' (id: Margin)
+- **rotate** (_Boolean_ = None) : socket 'Rotate' (id: Rotate)
+
+
+
+#### Returns:
+- **Vector** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Corner](corner.md#corner) :black_small_square: [Content](corner.md#content) :black_small_square: [Methods](corner.md#methods)</sub>
+
+----------
+### previous_edge_index()
+
+> classmethod
+
+``` python
+previous_edge_index(corner_index=None)
+```
+
+> Class Method [Edges of Corner](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/edges_of_corner.html)
+
+#### Arguments:
+- **corner_index** (_Integer_ = None) : socket 'Corner Index' (id: Corner Index)
+
+
+
+#### Returns:
+- **previous_edge_index** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Corner](corner.md#corner) :black_small_square: [Content](corner.md#content) :black_small_square: [Methods](corner.md#methods)</sub>
+
+----------
+### sample_index()
+
+> method
+
+``` python
+sample_index(value=None, index=None, clamp=False)
+```
+
+> Method [Sample Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/sample_index.html)
+
+Information
+-----------
+- Socket 'Geometry' : self
+- Parameter 'data_type' : depending on 'value' type
+- Parameter 'domain' : 'CORNER'
+
+#### Arguments:
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **index** (_Integer_ = None) : socket 'Index' (id: Index)
+- **clamp** (_bool_ = False) : parameter 'clamp'
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Corner](corner.md#corner) :black_small_square: [Content](corner.md#content) :black_small_square: [Methods](corner.md#methods)</sub>
+
+----------
+### sample_nearest()
+
+> method
+
+``` python
+sample_nearest(sample_position=None)
+```
+
+> Method [Sample Nearest](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/sample_nearest.html)
+
+Information
+-----------
+- Socket 'Geometry' : self
+- Parameter 'domain' : 'CORNER'
+
+#### Arguments:
+- **sample_position** (_Vector_ = None) : socket 'Sample Position' (id: Sample Position)
+
+
+
+#### Returns:
+- **Integer** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Corner](corner.md#corner) :black_small_square: [Content](corner.md#content) :black_small_square: [Methods](corner.md#methods)</sub>
+
+----------
+### store()
+
+> method
+
+``` python
+store(name=None, value=None)
+```
+
+> Jump Method [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html)
+
+Information
+-----------
+- Socket 'Geometry' : self
+- Socket 'Selection' : self[selection]
+- Parameter 'data_type' : depending on 'value' type
+- Parameter 'domain' : 'CORNER'
+
+#### Arguments:
+- **name** (_String_ = None) : socket 'Name' (id: Name)
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+
+
+
+#### Returns:
+- **Geometry** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Corner](corner.md#corner) :black_small_square: [Content](corner.md#content) :black_small_square: [Methods](corner.md#methods)</sub>
+
+----------
+### store_named_attribute()
+
+> method
+
+``` python
+store_named_attribute(name=None, value=None)
+```
+
+> Jump Method [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html)
+
+Information
+-----------
+- Socket 'Geometry' : self
+- Socket 'Selection' : self[selection]
+- Parameter 'data_type' : depending on 'value' type
+- Parameter 'domain' : 'CORNER'
+
+#### Arguments:
+- **name** (_String_ = None) : socket 'Name' (id: Name)
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+
+
+
+#### Returns:
+- **Geometry** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Corner](corner.md#corner) :black_small_square: [Content](corner.md#content) :black_small_square: [Methods](corner.md#methods)</sub>
+
+----------
+### store_uv()
+
+> method
+
+``` python
+store_uv(name=None, value=None)
+```
+
+> Jump Method [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html)
+
+Information
+-----------
+- Socket 'Geometry' : self
+- Socket 'Selection' : self[selection]
+- Parameter 'data_type' : 'FLOAT2'
+- Parameter 'domain' : 'CORNER'
+
+#### Arguments:
+- **name** (_String_ = None) : socket 'Name' (id: Name)
+- **value** (_Vector_ = None) : socket 'Value' (id: Value)
+
+
+
+#### Returns:
+- **Geometry** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Corner](corner.md#corner) :black_small_square: [Content](corner.md#content) :black_small_square: [Methods](corner.md#methods)</sub>
+
+----------
+### to_points()
+
+> method
+
+``` python
+to_points(position=None, radius=None)
+```
+
+> Method [Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_points.html)
+
+Information
+-----------
+- Socket 'Mesh' : self
+- Socket 'Selection' : self[selection]
+- Parameter 'mode' : 'CORNERS'
+
+#### Arguments:
+- **position** (_Vector_ = None) : socket 'Position' (id: Position)
+- **radius** (_Float_ = None) : socket 'Radius' (id: Radius)
+
+
+
+#### Returns:
+- **Cloud** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Corner](corner.md#corner) :black_small_square: [Content](corner.md#content) :black_small_square: [Methods](corner.md#methods)</sub>
+
+----------
+### uv_unwrap()
+
+> classmethod
+
+``` python
+uv_unwrap(seam=None, margin=None, fill_holes=None, method='ANGLE_BASED')
+```
+
+> Class Method [UV Unwrap](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/uv/uv_unwrap.html)
+
+Information
+-----------
+- Socket 'Selection' : self[selection]
+
+#### Arguments:
+- **seam** (_Boolean_ = None) : socket 'Seam' (id: Seam)
+- **margin** (_Float_ = None) : socket 'Margin' (id: Margin)
+- **fill_holes** (_Boolean_ = None) : socket 'Fill Holes' (id: Fill Holes)
+- **method** (_str_ = ANGLE_BASED) : parameter 'method' in ('ANGLE_BASED', 'CONFORMAL')
+
+
+
+#### Returns:
+- **Vector** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Corner](corner.md#corner) :black_small_square: [Content](corner.md#content) :black_small_square: [Methods](corner.md#methods)</sub>
 
@@ -113,14 +535,36 @@ offset_in_face(corner_index=None, offset=None)
 vertex_index(corner_index=None)
 ```
 
-> Node [Vertex of Corner](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/vertex_of_corner.html)
+> Class Method [Vertex of Corner](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/vertex_of_corner.html)
 
 #### Arguments:
-- **corner_index** (_Integer_ = None) : socket 'Corner Index' (Corner Index)
+- **corner_index** (_Integer_ = None) : socket 'Corner Index' (id: Corner Index)
 
 
 
 #### Returns:
 - **Integer** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Corner](corner.md#corner) :black_small_square: [Content](corner.md#content) :black_small_square: [Methods](corner.md#methods)</sub>
+
+----------
+### viewer()
+
+> method
+
+``` python
+viewer(value=None)
+```
+
+> Method [Viewer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/output/viewer.html)
+
+Information
+-----------
+- Socket 'Geometry' : self
+- Parameter 'data_type' : depending on 'value' type
+- Parameter 'domain' : 'CORNER'
+
+#### Arguments:
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Corner](corner.md#corner) :black_small_square: [Content](corner.md#content) :black_small_square: [Methods](corner.md#methods)</sub>

@@ -1,7 +1,5 @@
 # Simulation
 
-> Bases classes: [Zone](zone.md#zone)
-
 ``` python
 Simulation(sockets={}, **snake_case_sockets)
 ```

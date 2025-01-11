@@ -4,6 +4,9 @@ from .. treeclass import utils
 from .. scripterror import NodeError
 
 class Vertex(Socket):
+    """"
+    $DOC SET hidden
+    """
 
     @classmethod
     def corners(cls, vertex_index=None, weights=None, sort_index=None):

@@ -1,7 +1,7 @@
 # Node
 
 ``` python
-Node(node_name, sockets={}, _items={}, link_from=None, _keep=None, **parameters)
+Node(node_name, sockets={}, _items={}, link_from=None, **parameters)
 ```
 
 Node wrapper.
@@ -94,7 +94,7 @@ Node wrapper.
  - node_name (str) : Node name
  - sockets (dict or list) : initialization values for the node input sockets
  - _items (dict = {}) : dynamic sockets to create
- - link_with (node | dict = None) : node to link into this tree (see [link_input_from](node.md#link_input_from))
+ - link_with (node | dict = None) : node to link into this tree (see [link_from](node.md#link_from))
  - **kwargs : node parameters initialization
 
 #### Arguments:
@@ -102,13 +102,13 @@ Node wrapper.
 - **sockets** ( = {})
 - **_items** ( = {})
 - **link_from** ( = None)
-- **_keep** ( = None)
 - **parameters**
 
 ## Content
 
+- [get_socket_names](node.md#get_socket_names)
 - [\_\_init__](node.md#__init__)
-- [link_input_from](node.md#link_input_from)
+- [link_from](node.md#link_from)
 - [\_out](node.md#_out)
 
 ## Properties
@@ -129,12 +129,45 @@ Returns the first enabled output socket.
 
 
 ----------
+### get_socket_names()
+
+> method
+
+``` python
+get_socket_names(in_out, only_enabled=True, as_argument=True)
+```
+
+Build the dictionary giving the possible name of each socket
+
+The possible names are:
+- socket name
+- snake case version of the name
+
+These names are combined with the panel name:
+- panel name.socket name
+- snake case version of this path
+
+Once built, the homonyms are made unique by suffixing its order
+
+#### Arguments:
+- **in_out** : str in ('INPUT', 'OUTPUT')
+- **only_enabled** ( = True) : use only enabled sockets
+- **as_argument** ( = True)
+
+
+
+#### Returns:
+- **dict** : socket identifier -> list of possible names
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Node](node.md#node) :black_small_square: [Content](node.md#content) :black_small_square: [Methods](node.md#methods)</sub>
+
+----------
 ### \_\_init__()
 
 > method
 
 ``` python
-__init__(node_name, sockets={}, _items={}, link_from=None, _keep=None, **parameters)
+__init__(node_name, sockets={}, _items={}, link_from=None, **parameters)
 ```
 
 Node wrapper.
@@ -227,7 +260,7 @@ Node wrapper.
  - node_name (str) : Node name
  - sockets (dict or list) : initialization values for the node input sockets
  - _items (dict = {}) : dynamic sockets to create
- - link_with (node | dict = None) : node to link into this tree (see [link_input_from](node.md#link_input_from))
+ - link_with (node | dict = None) : node to link into this tree (see [link_from](node.md#link_from))
  - **kwargs : node parameters initialization
 
 #### Arguments:
@@ -235,18 +268,17 @@ Node wrapper.
 - **sockets** ( = {})
 - **_items** ( = {})
 - **link_from** ( = None)
-- **_keep** ( = None)
 - **parameters**
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Node](node.md#node) :black_small_square: [Content](node.md#content) :black_small_square: [Methods](node.md#methods)</sub>
 
 ----------
-### link_input_from()
+### link_from()
 
 > method
 
 ``` python
-link_input_from(node='TREE', include=None, exclude=[], rename={}, create=True)
+link_from(node: 'Node | Tree | None | str' = 'TREE', include: list[str] | str | None = None, exclude: list[str] | str = [], rename: dict[slice(<class 'str'>, <class 'str'>, None)] = {}, arguments: dict[slice('name', 'value', None)] = {}, create: bool = True, panel: str | None = None)
 ```
 
 Plug the output sockets of a node into the input sockets of the node.
@@ -257,9 +289,9 @@ If the node argument is None, the sockets are created in the Group Input node.
 Use 'include', 'exclude' and 'rename' arguments to control the connexions.
 
 > [!NOTE]
-> This function is called when initializing a node if the `link_with` argument is not None.
+> This function is called when initializing a node if the `link_from` argument is not None.
 > In that case, `link_argument` value is either the `node` argument or a dictionnary
-> of the `link_input_from` method arguments:
+> of the `link_from` method arguments:
 
 ``` python
 with GeoNodes("Connect several sockets"):
@@ -270,19 +302,19 @@ with GeoNodes("Connect several sockets"):
     # Create Group inputs to feed the node
     # 'Size X' and 'Size Y' are created in the group input not
     # 'Vertices X' and 'Vertices Y' are connected to the same 'Vertices' which is created
-    a.link_input_from(rename={'Vertices X': 'Vertices', 'Vertices Y': 'Vertices'})
+    a.link_from(rename={'Vertices X': 'Vertices', 'Vertices Y': 'Vertices'})
 
     a = Node("Math")
 
     # Connect the 'Value' output socket to the 'Value' input socket
     # The third socket is exclude by its index
     # Input values are renamed 'First' and 'Second'
-    a.link_input_from(exclude=2, rename={'Value': 'First', 'Value_001': 'Second'})
+    a.link_from(exclude=2, rename={'Value': 'First', 'Value_001': 'Second'})
 
     b = Node("Math", operation='SQRT')
 
     # Plug the previous math node on a single socket
-    b.link_input_from(a, include='Value')
+    b.link_from(a, include='Value')
 
 # Call this method when creating a group
 # Note: the previous Group is called using functional syntax with G class
@@ -301,11 +333,13 @@ with GeoNodes("Create selection"):
 ```
 
 #### Arguments:
-- **node** (_Node | current tree_ = TREE) : the node to get the outputs from. Use Group Input node if None
-- **include** (_list of strs_ = None) : connects only the sockets in the list
-- **exclude** (_list of strs_ = []) : exclude sockets in this list
+- **node** (_Node | Tree | None | str_ = TREE) : the node to get the outputs from. Use Group Input node if None
+- **include** (_list[str] | str | None_ = None) : connects only the sockets in the list
+- **exclude** (_list[str] | str_ = []) : exclude sockets in this list
 - **rename** (_dict_ = {}) : rename the sockets to the given names
+- **arguments** (_dict_ = {}) : arguments used at initialization time. Arguments which are defined in the list are ignored
 - **create** (_bool_ = True) : create the output sockets in node if it is a 'Group Input Node'
+- **panel** (_str | None_ = None) : panel name to create, use tree default name if None
 
 
 

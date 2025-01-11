@@ -1,37 +1,25 @@
 # gnmath
 
-> math library
 
-**gnmath** libray contains the math functions for data [Booleans>, <!Float"Floats](boolean.md#boolean) and
-[Vectors](vector.md#vector) using the following nodes:
-- **'Boolean Math'**
-- **'Math'**
-- **'Vector Math'**
-
-The name of the functions is the name of the 'operation' parameter of the node,
-with some changes according the following rules:
-- use python math library when it exists: [sin](gnmath.md#sin) and [cos](gnmath.md#cos) rather than 'sine' and 'cosine' for instance
-- prefix with char ***'v'*** for [Vector](vector.md#vector) functions when it collides with a [Float](float.md#float) function : [vsin](gnmath.md#vsin) and [vcos](gnmath.md#vcos) for instance
-- prefix with char ***'b'*** boolean reserved keywords : [band](gnmath.md#band), [bor](gnmath.md#bor) and [bnot](gnmath.md#bnot)
 
 ## Content
 
-- **A** : [abs](gnmath.md#abs) :black_small_square: [acos](gnmath.md#acos) :black_small_square: [add](gnmath.md#add) :black_small_square: [asin](gnmath.md#asin) :black_small_square: [atan](gnmath.md#atan) :black_small_square: [atan2](gnmath.md#atan2)
-- **B** : [band](gnmath.md#band) :black_small_square: [bnot](gnmath.md#bnot) :black_small_square: [bor](gnmath.md#bor) :black_small_square: [bsubtract](gnmath.md#bsubtract)
-- **C** : [ceil](gnmath.md#ceil) :black_small_square: [compare](gnmath.md#compare) :black_small_square: [cos](gnmath.md#cos) :black_small_square: [cosh](gnmath.md#cosh) :black_small_square: [cross_product](gnmath.md#cross_product)
-- **D** : [degrees](gnmath.md#degrees) :black_small_square: [distance](gnmath.md#distance) :black_small_square: [divide](gnmath.md#divide) :black_small_square: [dot_product](gnmath.md#dot_product)
-- **E** : [equal](gnmath.md#equal) :black_small_square: [exp](gnmath.md#exp) :black_small_square: [exponent](gnmath.md#exponent)
+- **A** : [abs](gnmath.md#abs) :black_small_square: [add](gnmath.md#add) :black_small_square: [arccosine](gnmath.md#arccosine) :black_small_square: [arcsine](gnmath.md#arcsine) :black_small_square: [arctan2](gnmath.md#arctan2) :black_small_square: [arctangent](gnmath.md#arctangent)
+- **B** : [band](gnmath.md#band) :black_small_square: [bnot](gnmath.md#bnot) :black_small_square: [bor](gnmath.md#bor)
+- **C** : [ceil](gnmath.md#ceil) :black_small_square: [compare](gnmath.md#compare) :black_small_square: [cos](gnmath.md#cos) :black_small_square: [cosh](gnmath.md#cosh) :black_small_square: [cross](gnmath.md#cross)
+- **D** : [degrees](gnmath.md#degrees) :black_small_square: [distance](gnmath.md#distance) :black_small_square: [divide](gnmath.md#divide) :black_small_square: [divide_ceil](gnmath.md#divide_ceil) :black_small_square: [divide_floor](gnmath.md#divide_floor) :black_small_square: [divide_round](gnmath.md#divide_round) :black_small_square: [dot](gnmath.md#dot)
+- **E** : [exp](gnmath.md#exp)
 - **F** : [faceforward](gnmath.md#faceforward) :black_small_square: [floor](gnmath.md#floor) :black_small_square: [floored_modulo](gnmath.md#floored_modulo) :black_small_square: [fract](gnmath.md#fract)
-- **G** : [GCD](gnmath.md#gcd) :black_small_square: [greater_than](gnmath.md#greater_than)
-- **I** : [iabs](gnmath.md#iabs) :black_small_square: [iadd](gnmath.md#iadd) :black_small_square: [idivide](gnmath.md#idivide) :black_small_square: [idivide_ceiling](gnmath.md#idivide_ceiling) :black_small_square: [idivide_floor](gnmath.md#idivide_floor) :black_small_square: [idivide_round](gnmath.md#idivide_round) :black_small_square: [ifloored_modulo](gnmath.md#ifloored_modulo) :black_small_square: [imax](gnmath.md#imax) :black_small_square: [imin](gnmath.md#imin) :black_small_square: [imodulo](gnmath.md#imodulo) :black_small_square: [imply](gnmath.md#imply) :black_small_square: [imultiply](gnmath.md#imultiply) :black_small_square: [imultiply_add](gnmath.md#imultiply_add) :black_small_square: [inegate](gnmath.md#inegate) :black_small_square: [inverse_sqrt](gnmath.md#inverse_sqrt) :black_small_square: [ipower](gnmath.md#ipower) :black_small_square: [isign](gnmath.md#isign) :black_small_square: [isubtract](gnmath.md#isubtract)
-- **L** : [LCM](gnmath.md#lcm) :black_small_square: [length](gnmath.md#length) :black_small_square: [less_than](gnmath.md#less_than) :black_small_square: [ln](gnmath.md#ln) :black_small_square: [log](gnmath.md#log)
-- **M** : [math_ceil](gnmath.md#math_ceil) :black_small_square: [math_floor](gnmath.md#math_floor) :black_small_square: [math_round](gnmath.md#math_round) :black_small_square: [math_trunc](gnmath.md#math_trunc) :black_small_square: [max](gnmath.md#max) :black_small_square: [min](gnmath.md#min) :black_small_square: [modulo](gnmath.md#modulo) :black_small_square: [multiply](gnmath.md#multiply) :black_small_square: [multiply_add](gnmath.md#multiply_add)
-- **N** : [nand](gnmath.md#nand) :black_small_square: [nimply](gnmath.md#nimply) :black_small_square: [nor](gnmath.md#nor) :black_small_square: [normalize](gnmath.md#normalize) :black_small_square: [not_equal](gnmath.md#not_equal)
-- **P** : [ping_pong](gnmath.md#ping_pong) :black_small_square: [pingpong](gnmath.md#pingpong) :black_small_square: [power](gnmath.md#power) :black_small_square: [project](gnmath.md#project)
+- **G** : [gcd](gnmath.md#gcd)
+- **I** : [iabs](gnmath.md#iabs) :black_small_square: [iadd](gnmath.md#iadd) :black_small_square: [idivide](gnmath.md#idivide) :black_small_square: [ifloored_modulo](gnmath.md#ifloored_modulo) :black_small_square: [imax](gnmath.md#imax) :black_small_square: [imin](gnmath.md#imin) :black_small_square: [imodulo](gnmath.md#imodulo) :black_small_square: [imply](gnmath.md#imply) :black_small_square: [imultiply](gnmath.md#imultiply) :black_small_square: [imultiply_add](gnmath.md#imultiply_add) :black_small_square: [inverse_sqrt](gnmath.md#inverse_sqrt) :black_small_square: [ipower](gnmath.md#ipower) :black_small_square: [isign](gnmath.md#isign) :black_small_square: [isubtract](gnmath.md#isubtract)
+- **L** : [lcm](gnmath.md#lcm) :black_small_square: [length](gnmath.md#length) :black_small_square: [log](gnmath.md#log)
+- **M** : [max](gnmath.md#max) :black_small_square: [mgreater_than](gnmath.md#mgreater_than) :black_small_square: [min](gnmath.md#min) :black_small_square: [mless_than](gnmath.md#mless_than) :black_small_square: [modulo](gnmath.md#modulo) :black_small_square: [multiply](gnmath.md#multiply) :black_small_square: [multiply_add](gnmath.md#multiply_add)
+- **N** : [negate](gnmath.md#negate) :black_small_square: [nimply](gnmath.md#nimply) :black_small_square: [nor](gnmath.md#nor) :black_small_square: [normalize](gnmath.md#normalize) :black_small_square: [not_and](gnmath.md#not_and)
+- **P** : [pingpong](gnmath.md#pingpong) :black_small_square: [power](gnmath.md#power) :black_small_square: [project](gnmath.md#project)
 - **R** : [radians](gnmath.md#radians) :black_small_square: [reflect](gnmath.md#reflect) :black_small_square: [refract](gnmath.md#refract) :black_small_square: [round](gnmath.md#round)
 - **S** : [scale](gnmath.md#scale) :black_small_square: [sign](gnmath.md#sign) :black_small_square: [sin](gnmath.md#sin) :black_small_square: [sinh](gnmath.md#sinh) :black_small_square: [smooth_max](gnmath.md#smooth_max) :black_small_square: [smooth_min](gnmath.md#smooth_min) :black_small_square: [snap](gnmath.md#snap) :black_small_square: [sqrt](gnmath.md#sqrt) :black_small_square: [subtract](gnmath.md#subtract)
 - **T** : [tan](gnmath.md#tan) :black_small_square: [tanh](gnmath.md#tanh) :black_small_square: [trunc](gnmath.md#trunc)
-- **V** : [vabs](gnmath.md#vabs) :black_small_square: [vadd](gnmath.md#vadd) :black_small_square: [vceil](gnmath.md#vceil) :black_small_square: [vcos](gnmath.md#vcos) :black_small_square: [vdivide](gnmath.md#vdivide) :black_small_square: [vfloor](gnmath.md#vfloor) :black_small_square: [vfract](gnmath.md#vfract) :black_small_square: [vmax](gnmath.md#vmax) :black_small_square: [vmin](gnmath.md#vmin) :black_small_square: [vmodulo](gnmath.md#vmodulo) :black_small_square: [vmultiply](gnmath.md#vmultiply) :black_small_square: [vmultiply_add](gnmath.md#vmultiply_add) :black_small_square: [vsin](gnmath.md#vsin) :black_small_square: [vsnap](gnmath.md#vsnap) :black_small_square: [vsubtract](gnmath.md#vsubtract) :black_small_square: [vtan](gnmath.md#vtan) :black_small_square: [vwrap](gnmath.md#vwrap)
+- **V** : [vabs](gnmath.md#vabs) :black_small_square: [vadd](gnmath.md#vadd) :black_small_square: [vceil](gnmath.md#vceil) :black_small_square: [vcos](gnmath.md#vcos) :black_small_square: [vdivide](gnmath.md#vdivide) :black_small_square: [vfloor](gnmath.md#vfloor) :black_small_square: [vfraction](gnmath.md#vfraction) :black_small_square: [vmax](gnmath.md#vmax) :black_small_square: [vmin](gnmath.md#vmin) :black_small_square: [vmodulo](gnmath.md#vmodulo) :black_small_square: [vmultiply](gnmath.md#vmultiply) :black_small_square: [vmultiply_add](gnmath.md#vmultiply_add) :black_small_square: [vsin](gnmath.md#vsin) :black_small_square: [vsnap](gnmath.md#vsnap) :black_small_square: [vsubtract](gnmath.md#vsubtract) :black_small_square: [vtan](gnmath.md#vtan) :black_small_square: [vwrap](gnmath.md#vwrap)
 - **W** : [wrap](gnmath.md#wrap)
 - **X** : [xnor](gnmath.md#xnor) :black_small_square: [xor](gnmath.md#xor)
 
@@ -45,43 +33,23 @@ with some changes according the following rules:
 > function
 
 ``` python
-abs(value, use_clamp=None)
+abs(value=None, use_clamp=False)
 ```
 
-Math ABSOLUTE.
+> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
-
-
-Returns
-- Float
+Information
+-----------
+- Parameter 'operation' : 'ABSOLUTE'
 
 #### Arguments:
-- **value** (_Float_) : value
-- **use_clamp** (_bool_ = None) : use_clamp flag
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
-
-----------
-### acos()
-
-> function
-
-``` python
-acos(value, use_clamp=None)
-```
-
-Math ACOS.
-
-> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
 
 
-Returns
-- Float
 
-#### Arguments:
-- **value** (_Float_) : value
-- **use_clamp** (_bool_ = None) : use_clamp flag
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -91,91 +59,129 @@ Returns
 > function
 
 ``` python
-add(value, other, use_clamp=None)
+add(value=None, value_1=None, use_clamp=False)
 ```
 
-Math ADD.
+> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
-
-
-Returns
-- Float
+Information
+-----------
+- Parameter 'operation' : 'ADD'
 
 #### Arguments:
-- **value** (_Float_) : first value
-- **other** (_Float_) : second value
-- **use_clamp** (_bool_ = None) : use_clamp flag
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **value_1** (_Float_ = None) : socket 'Value' (id: Value_001)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
 ----------
-### asin()
+### arccosine()
 
 > function
 
 ``` python
-asin(value, use_clamp=None)
+arccosine(value=None, use_clamp=False)
 ```
 
-Math ASIN.
+> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
-
-
-Returns
-- Float
+Information
+-----------
+- Parameter 'operation' : 'ARCCOSINE'
 
 #### Arguments:
-- **value** (_Float_) : value
-- **use_clamp** (_bool_ = None) : use_clamp flag
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
 ----------
-### atan()
+### arcsine()
 
 > function
 
 ``` python
-atan(value, use_clamp=None)
+arcsine(value=None, use_clamp=False)
 ```
 
-Math ATAN.
+> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
-
-
-Returns
-- Float
+Information
+-----------
+- Parameter 'operation' : 'ARCSINE'
 
 #### Arguments:
-- **value** (_Float_) : value
-- **use_clamp** (_bool_ = None) : use_clamp flag
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
 ----------
-### atan2()
+### arctan2()
 
 > function
 
 ``` python
-atan2(value, other, use_clamp=None)
+arctan2(value=None, value_1=None, use_clamp=False)
 ```
 
-Math ATAN2.
+> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
-
-
-Returns
-- Float
+Information
+-----------
+- Parameter 'operation' : 'ARCTAN2'
 
 #### Arguments:
-- **value** (_Float_) : value
-- **other** (_Float_) : other value
-- **use_clamp** (_bool_ = None) : use_clamp flag
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **value_1** (_Float_ = None) : socket 'Value' (id: Value_001)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
+
+----------
+### arctangent()
+
+> function
+
+``` python
+arctangent(value=None, use_clamp=False)
+```
+
+> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+
+Information
+-----------
+- Parameter 'operation' : 'ARCTANGENT'
+
+#### Arguments:
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -185,20 +191,23 @@ Returns
 > function
 
 ``` python
-band(value, other)
+band(boolean=None, boolean_1=None)
 ```
 
-Boolean AND.
+> Function [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
 
-> Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
-
-
-Returns
-- Boolean
+Information
+-----------
+- Parameter 'operation' : 'AND'
 
 #### Arguments:
-- **value** (_Boolean_) : first value
-- **other** (_Boolean_) : second value
+- **boolean** (_Boolean_ = None) : socket 'Boolean' (id: Boolean)
+- **boolean_1** (_Boolean_ = None) : socket 'Boolean' (id: Boolean_001)
+
+
+
+#### Returns:
+- **Boolean** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -208,19 +217,22 @@ Returns
 > function
 
 ``` python
-bnot(value)
+bnot(boolean=None)
 ```
 
-Boolean NOT.
+> Function [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
 
-> Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
-
-
-Returns
-- Boolean
+Information
+-----------
+- Parameter 'operation' : 'NOT'
 
 #### Arguments:
-- **value** (_Boolean_) : value
+- **boolean** (_Boolean_ = None) : socket 'Boolean' (id: Boolean)
+
+
+
+#### Returns:
+- **Boolean** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -230,43 +242,23 @@ Returns
 > function
 
 ``` python
-bor(value, other)
+bor(boolean=None, boolean_1=None)
 ```
 
-Boolean OR.
+> Function [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
 
-> Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
-
-
-Returns
-- Boolean
+Information
+-----------
+- Parameter 'operation' : 'OR'
 
 #### Arguments:
-- **value** (_Boolean_) : first value
-- **other** (_Boolean_) : second value
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
-
-----------
-### bsubtract()
-
-> function
-
-``` python
-bsubtract(value, other)
-```
-
-Boolean NIMPLY.
-
-> Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
+- **boolean** (_Boolean_ = None) : socket 'Boolean' (id: Boolean)
+- **boolean_1** (_Boolean_ = None) : socket 'Boolean' (id: Boolean_001)
 
 
-Returns
-- Boolean
 
-#### Arguments:
-- **value** (_Boolean_) : first value
-- **other** (_Boolean_) : second value
+#### Returns:
+- **Boolean** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -276,24 +268,23 @@ Returns
 > function
 
 ``` python
-ceil(value, use_clamp=None)
+ceil(value=None, use_clamp=False)
 ```
 
-Ceiling.
+> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-> Node ERROR: Node 'Math, Float to Integer' not found
-
-Implements 'Math' node in ShaderNodes and 'Float to Integer' for GeoNodes.
-
-rounding_mode in ('ROUND', 'FLOOR', 'CEILING', 'TRUNCATE')
-
-
-Returns
-- Float (ShaderNodes) or Integer (GeoNodes)
+Information
+-----------
+- Parameter 'operation' : 'CEIL'
 
 #### Arguments:
-- **value** (_Float_) : value
-- **use_clamp** (_bool_ = None) : use_clamp flag
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -303,22 +294,25 @@ Returns
 > function
 
 ``` python
-compare(value, other, epsilon=None, use_clamp=None)
+compare(value=None, value_1=None, epsilon=None, use_clamp=False)
 ```
 
-Math COMPARE.
+> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
-
-
-Returns
-- Float
+Information
+-----------
+- Parameter 'operation' : 'COMPARE'
 
 #### Arguments:
-- **value** (_Float_) : first value
-- **other** (_Float_) : second value
-- **epsilon** (_Float_ = None) : epsilon
-- **use_clamp** (_bool_ = None) : use_clamp flag
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **value_1** (_Float_ = None) : socket 'Value' (id: Value_001)
+- **epsilon** (_Float_ = None) : socket 'Epsilon' (id: Value_002)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -328,20 +322,23 @@ Returns
 > function
 
 ``` python
-cos(value, use_clamp=None)
+cos(value=None, use_clamp=False)
 ```
 
-Math COS.
+> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
-
-
-Returns
-- Float
+Information
+-----------
+- Parameter 'operation' : 'COSINE'
 
 #### Arguments:
-- **value** (_Float_) : value
-- **use_clamp** (_bool_ = None) : use_clamp flag
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -351,43 +348,49 @@ Returns
 > function
 
 ``` python
-cosh(value, use_clamp=None)
+cosh(value=None, use_clamp=False)
 ```
 
-Math COSH.
+> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
-
-
-Returns
-- Float
+Information
+-----------
+- Parameter 'operation' : 'COSH'
 
 #### Arguments:
-- **value** (_Float_) : value
-- **use_clamp** (_bool_ = None) : use_clamp flag
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
 ----------
-### cross_product()
+### cross()
 
 > function
 
 ``` python
-cross_product(value, other)
+cross(vector=None, vector_1=None)
 ```
 
-Vector Math CROSS PRODUCT.
+> Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
-
-
-Returns
-- Vector
+Information
+-----------
+- Parameter 'operation' : 'CROSS_PRODUCT'
 
 #### Arguments:
-- **value** (_Vector_) : vector
-- **other** (_Vector_) : other vector
+- **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
+- **vector_1** (_Vector_ = None) : socket 'Vector' (id: Vector_001)
+
+
+
+#### Returns:
+- **Vector** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -397,20 +400,23 @@ Returns
 > function
 
 ``` python
-degrees(value, use_clamp=None)
+degrees(radians=None, use_clamp=False)
 ```
 
-Math DEGREES.
+> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
-
-
-Returns
-- Float
+Information
+-----------
+- Parameter 'operation' : 'DEGREES'
 
 #### Arguments:
-- **value** (_Float_) : value
-- **use_clamp** (_bool_ = None) : use_clamp flag
+- **radians** (_Float_ = None) : socket 'Radians' (id: Value)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -420,20 +426,23 @@ Returns
 > function
 
 ``` python
-distance(value, other)
+distance(vector=None, vector_1=None)
 ```
 
-Vector Math DISTANCE.
+> Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
-
-
-Returns
-- Float
+Information
+-----------
+- Parameter 'operation' : 'DISTANCE'
 
 #### Arguments:
-- **value** (_Vector_) : vector
-- **other** (_Vector_) : other vector
+- **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
+- **vector_1** (_Vector_ = None) : socket 'Vector' (id: Vector_001)
+
+
+
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -443,67 +452,128 @@ Returns
 > function
 
 ``` python
-divide(value, other, use_clamp=None)
+divide(value=None, value_1=None, use_clamp=False)
 ```
 
-Math DIVIDE.
+> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
-
-
-Returns
-- Float
+Information
+-----------
+- Parameter 'operation' : 'DIVIDE'
 
 #### Arguments:
-- **value** (_Float_) : first value
-- **other** (_Float_) : second value
-- **use_clamp** (_bool_ = None) : use_clamp flag
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **value_1** (_Float_ = None) : socket 'Value' (id: Value_001)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
 ----------
-### dot_product()
+### divide_ceil()
 
 > function
 
 ``` python
-dot_product(value, other)
+divide_ceil(value=None, value_1=None)
 ```
 
-Vector Math DOT PRODUCT.
+> Function [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
-> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
-
-
-Returns
-- Float
+Information
+-----------
+- Parameter 'operation' : 'DIVIDE_CEIL'
 
 #### Arguments:
-- **value** (_Vector_) : vector
-- **other** (_Vector_) : other vector
+- **value** (_Integer_ = None) : socket 'Value' (id: Value)
+- **value_1** (_Integer_ = None) : socket 'Value' (id: Value_001)
+
+
+
+#### Returns:
+- **Integer** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
 ----------
-### equal()
+### divide_floor()
 
 > function
 
 ``` python
-equal(value, other)
+divide_floor(value=None, value_1=None)
 ```
 
-Boolean XNOR.
+> Function [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
-> Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
-
-
-Returns
-- Boolean
+Information
+-----------
+- Parameter 'operation' : 'DIVIDE_FLOOR'
 
 #### Arguments:
-- **value** (_Boolean_) : first value
-- **other** (_Boolean_) : second value
+- **value** (_Integer_ = None) : socket 'Value' (id: Value)
+- **value_1** (_Integer_ = None) : socket 'Value' (id: Value_001)
+
+
+
+#### Returns:
+- **Integer** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
+
+----------
+### divide_round()
+
+> function
+
+``` python
+divide_round(value=None, value_1=None)
+```
+
+> Function [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+
+Information
+-----------
+- Parameter 'operation' : 'DIVIDE_ROUND'
+
+#### Arguments:
+- **value** (_Integer_ = None) : socket 'Value' (id: Value)
+- **value_1** (_Integer_ = None) : socket 'Value' (id: Value_001)
+
+
+
+#### Returns:
+- **Integer** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
+
+----------
+### dot()
+
+> function
+
+``` python
+dot(vector=None, vector_1=None)
+```
+
+> Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+
+Information
+-----------
+- Parameter 'operation' : 'DOT_PRODUCT'
+
+#### Arguments:
+- **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
+- **vector_1** (_Vector_ = None) : socket 'Vector' (id: Vector_001)
+
+
+
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -513,43 +583,23 @@ Returns
 > function
 
 ``` python
-exp(value, use_clamp=None)
+exp(value=None, use_clamp=False)
 ```
 
-Math EXPONENT.
+> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
-
-
-Returns
-- Float
+Information
+-----------
+- Parameter 'operation' : 'EXPONENT'
 
 #### Arguments:
-- **value** (_Float_) : value
-- **use_clamp** (_bool_ = None) : use_clamp flag
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
-
-----------
-### exponent()
-
-> function
-
-``` python
-exponent(value, use_clamp=None)
-```
-
-Math EXPONENT.
-
-> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
 
 
-Returns
-- Float
 
-#### Arguments:
-- **value** (_Float_) : value
-- **use_clamp** (_bool_ = None) : use_clamp flag
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -559,21 +609,24 @@ Returns
 > function
 
 ``` python
-faceforward(value, incident=None, reference=None)
+faceforward(vector=None, incident=None, reference=None)
 ```
 
-Vector Math FACE FORWARD.
+> Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
-
-
-Returns
-- Vector
+Information
+-----------
+- Parameter 'operation' : 'FACEFORWARD'
 
 #### Arguments:
-- **value** (_Vector_) : vector
-- **incident** (_Vector_ = None) : incident vector
-- **reference** (_Vector_ = None) : reference vector
+- **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
+- **incident** (_Vector_ = None) : socket 'Incident' (id: Vector_001)
+- **reference** (_Vector_ = None) : socket 'Reference' (id: Vector_002)
+
+
+
+#### Returns:
+- **Vector** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -583,24 +636,23 @@ Returns
 > function
 
 ``` python
-floor(value, use_clamp=None)
+floor(value=None, use_clamp=False)
 ```
 
-Floor.
+> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-> Node ERROR: Node 'Math, Float to Integer' not found
-
-Implements 'Math' node in ShaderNodes and 'Float to Integer' for GeoNodes.
-
-rounding_mode in ('ROUND', 'FLOOR', 'CEILING', 'TRUNCATE')
-
-
-Returns
-- Float (ShaderNodes) or Integer (GeoNodes)
+Information
+-----------
+- Parameter 'operation' : 'FLOOR'
 
 #### Arguments:
-- **value** (_Float_) : value
-- **use_clamp** (_bool_ = None) : use_clamp flag
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -610,21 +662,24 @@ Returns
 > function
 
 ``` python
-floored_modulo(value, other, use_clamp=None)
+floored_modulo(value=None, value_1=None, use_clamp=False)
 ```
 
-Math FLOORED MODULO.
+> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
-
-
-Returns
-- Float
+Information
+-----------
+- Parameter 'operation' : 'FLOORED_MODULO'
 
 #### Arguments:
-- **value** (_Float_) : value
-- **other** (_Float_) : other value
-- **use_clamp** (_bool_ = None) : use_clamp flag
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **value_1** (_Float_ = None) : socket 'Value' (id: Value_001)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -634,67 +689,49 @@ Returns
 > function
 
 ``` python
-fract(value, use_clamp=None)
+fract(value=None, use_clamp=False)
 ```
 
-Math FRACT.
+> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
-
-
-Returns
-- Float
+Information
+-----------
+- Parameter 'operation' : 'FRACT'
 
 #### Arguments:
-- **value** (_Float_) : value
-- **use_clamp** (_bool_ = None) : use_clamp flag
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
 ----------
-### GCD()
+### gcd()
 
 > function
 
 ``` python
-GCD(value, other)
+gcd(value=None, value_1=None)
 ```
 
-Integer Math GCD.
+> Function [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
-> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
-
-
-Returns
-- Integer
+Information
+-----------
+- Parameter 'operation' : 'GCD'
 
 #### Arguments:
-- **value** (_Integer_) : first value
-- **other** (_Integer_) : second value
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
-
-----------
-### greater_than()
-
-> function
-
-``` python
-greater_than(value, threshold, use_clamp=None)
-```
-
-Math GREATER THAN.
-
-> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+- **value** (_Integer_ = None) : socket 'Value' (id: Value)
+- **value_1** (_Integer_ = None) : socket 'Value' (id: Value_001)
 
 
-Returns
-- Float
 
-#### Arguments:
-- **value** (_Float_) : first value
-- **threshold** (_Float_) : second value
-- **use_clamp** (_bool_ = None) : use_clamp flag
+#### Returns:
+- **Integer** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -704,19 +741,22 @@ Returns
 > function
 
 ``` python
-iabs(value)
+iabs(value=None)
 ```
 
-Integer Math ABSOLUTE.
+> Function [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
-> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
-
-
-Returns
-- Integer
+Information
+-----------
+- Parameter 'operation' : 'ABSOLUTE'
 
 #### Arguments:
-- **value** (_Integer_) : value
+- **value** (_Integer_ = None) : socket 'Value' (id: Value)
+
+
+
+#### Returns:
+- **Integer** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -726,20 +766,23 @@ Returns
 > function
 
 ``` python
-iadd(value, other)
+iadd(value=None, value_1=None)
 ```
 
-Integer ADD.
+> Function [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
-> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
-
-
-Returns
-- Integer
+Information
+-----------
+- Parameter 'operation' : 'ADD'
 
 #### Arguments:
-- **value** (_Integer_) : first value
-- **other** (_Integer_) : second value
+- **value** (_Integer_ = None) : socket 'Value' (id: Value)
+- **value_1** (_Integer_ = None) : socket 'Value' (id: Value_001)
+
+
+
+#### Returns:
+- **Integer** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -749,89 +792,23 @@ Returns
 > function
 
 ``` python
-idivide(value, other)
+idivide(value=None, value_1=None)
 ```
 
-Integer Math DIVIDE.
+> Function [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
-> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
-
-
-Returns
-- Integer
+Information
+-----------
+- Parameter 'operation' : 'DIVIDE'
 
 #### Arguments:
-- **value** (_Integer_) : first value
-- **other** (_Integer_) : second value
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
-
-----------
-### idivide_ceiling()
-
-> function
-
-``` python
-idivide_ceiling(value, other)
-```
-
-Integer Math DIVIDE_CEIL.
-
-> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+- **value** (_Integer_ = None) : socket 'Value' (id: Value)
+- **value_1** (_Integer_ = None) : socket 'Value' (id: Value_001)
 
 
-Returns
-- Integer
 
-#### Arguments:
-- **value** (_Integer_) : first value
-- **other** (_Integer_) : second value
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
-
-----------
-### idivide_floor()
-
-> function
-
-``` python
-idivide_floor(value, other)
-```
-
-Integer Math DIVIDE_FLOOR.
-
-> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
-
-
-Returns
-- Integer
-
-#### Arguments:
-- **value** (_Integer_) : first value
-- **other** (_Integer_) : second value
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
-
-----------
-### idivide_round()
-
-> function
-
-``` python
-idivide_round(value, other)
-```
-
-Integer Math DIVIDE_ROUND.
-
-> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
-
-
-Returns
-- Integer
-
-#### Arguments:
-- **value** (_Integer_) : first value
-- **other** (_Integer_) : second value
+#### Returns:
+- **Integer** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -841,20 +818,23 @@ Returns
 > function
 
 ``` python
-ifloored_modulo(value, other)
+ifloored_modulo(value=None, value_1=None)
 ```
 
-Integer Math FLOORED_MODULO.
+> Function [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
-> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
-
-
-Returns
-- Integer
+Information
+-----------
+- Parameter 'operation' : 'FLOORED_MODULO'
 
 #### Arguments:
-- **value** (_Integer_) : first value
-- **other** (_Integer_) : second value
+- **value** (_Integer_ = None) : socket 'Value' (id: Value)
+- **value_1** (_Integer_ = None) : socket 'Value' (id: Value_001)
+
+
+
+#### Returns:
+- **Integer** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -864,20 +844,23 @@ Returns
 > function
 
 ``` python
-imax(value, other)
+imax(value=None, value_1=None)
 ```
 
-Integer Math MAXIMUM.
+> Function [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
-> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
-
-
-Returns
-- Integer
+Information
+-----------
+- Parameter 'operation' : 'MAXIMUM'
 
 #### Arguments:
-- **value** (_Integer_) : first value
-- **other** (_Integer_) : second value
+- **value** (_Integer_ = None) : socket 'Value' (id: Value)
+- **value_1** (_Integer_ = None) : socket 'Value' (id: Value_001)
+
+
+
+#### Returns:
+- **Integer** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -887,20 +870,23 @@ Returns
 > function
 
 ``` python
-imin(value, other)
+imin(value=None, value_1=None)
 ```
 
-Integer Math MINIMUM.
+> Function [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
-> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
-
-
-Returns
-- Integer
+Information
+-----------
+- Parameter 'operation' : 'MINIMUM'
 
 #### Arguments:
-- **value** (_Integer_) : first value
-- **other** (_Integer_) : second value
+- **value** (_Integer_ = None) : socket 'Value' (id: Value)
+- **value_1** (_Integer_ = None) : socket 'Value' (id: Value_001)
+
+
+
+#### Returns:
+- **Integer** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -910,20 +896,23 @@ Returns
 > function
 
 ``` python
-imodulo(value, other)
+imodulo(value=None, value_1=None)
 ```
 
-Integer Math MODULO.
+> Function [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
-> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
-
-
-Returns
-- Integer
+Information
+-----------
+- Parameter 'operation' : 'MODULO'
 
 #### Arguments:
-- **value** (_Integer_) : first value
-- **other** (_Integer_) : second value
+- **value** (_Integer_ = None) : socket 'Value' (id: Value)
+- **value_1** (_Integer_ = None) : socket 'Value' (id: Value_001)
+
+
+
+#### Returns:
+- **Integer** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -933,20 +922,23 @@ Returns
 > function
 
 ``` python
-imply(value, other)
+imply(boolean=None, boolean_1=None)
 ```
 
-Boolean IMPLY.
+> Function [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
 
-> Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
-
-
-Returns
-- Boolean
+Information
+-----------
+- Parameter 'operation' : 'IMPLY'
 
 #### Arguments:
-- **value** (_Boolean_) : first value
-- **other** (_Boolean_) : second value
+- **boolean** (_Boolean_ = None) : socket 'Boolean' (id: Boolean)
+- **boolean_1** (_Boolean_ = None) : socket 'Boolean' (id: Boolean_001)
+
+
+
+#### Returns:
+- **Boolean** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -956,20 +948,23 @@ Returns
 > function
 
 ``` python
-imultiply(value, other)
+imultiply(value=None, value_1=None)
 ```
 
-Integer Math MULTIPLY.
+> Function [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
-> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
-
-
-Returns
-- Integer
+Information
+-----------
+- Parameter 'operation' : 'MULTIPLY'
 
 #### Arguments:
-- **value** (_Integer_) : first value
-- **other** (_Integer_) : second value
+- **value** (_Integer_ = None) : socket 'Value' (id: Value)
+- **value_1** (_Integer_ = None) : socket 'Value' (id: Value_001)
+
+
+
+#### Returns:
+- **Integer** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -979,43 +974,24 @@ Returns
 > function
 
 ``` python
-imultiply_add(value, multiplier, addend)
+imultiply_add(value=None, multiplier=None, addend=None)
 ```
 
-Integer Math MULTIPLY ADD.
+> Function [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
-> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
-
-
-Returns
-- Integer
+Information
+-----------
+- Parameter 'operation' : 'MULTIPLY_ADD'
 
 #### Arguments:
-- **value** (_Integer_) : value
-- **multiplier** (_Integer_) : multiplier value
-- **addend** (_Integer_) : add end value
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
-
-----------
-### inegate()
-
-> function
-
-``` python
-inegate(value)
-```
-
-Integer Math NEGATE.
-
-> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
+- **value** (_Integer_ = None) : socket 'Value' (id: Value)
+- **multiplier** (_Integer_ = None) : socket 'Multiplier' (id: Value_001)
+- **addend** (_Integer_ = None) : socket 'Addend' (id: Value_002)
 
 
-Returns
-- Integer
 
-#### Arguments:
-- **value** (_Integer_) : value
+#### Returns:
+- **Integer** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -1025,20 +1001,23 @@ Returns
 > function
 
 ``` python
-inverse_sqrt(value, use_clamp=None)
+inverse_sqrt(value=None, use_clamp=False)
 ```
 
-Math INVERSE SQRT.
+> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
-
-
-Returns
-- Float
+Information
+-----------
+- Parameter 'operation' : 'INVERSE_SQRT'
 
 #### Arguments:
-- **value** (_Float_) : value
-- **use_clamp** (_bool_ = None) : use_clamp flag
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -1048,20 +1027,23 @@ Returns
 > function
 
 ``` python
-ipower(base, exponent)
+ipower(base=None, exponent=None)
 ```
 
-Integer Math POWER.
+> Function [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
-> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
-
-
-Returns
-- Integer
+Information
+-----------
+- Parameter 'operation' : 'POWER'
 
 #### Arguments:
-- **base** (_Integer_) : value
-- **exponent** (_Integer_) : value
+- **base** (_Integer_ = None) : socket 'Base' (id: Value)
+- **exponent** (_Integer_ = None) : socket 'Exponent' (id: Value_001)
+
+
+
+#### Returns:
+- **Integer** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -1071,19 +1053,22 @@ Returns
 > function
 
 ``` python
-isign(value)
+isign(value=None)
 ```
 
-Integer Math SIGN.
+> Function [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
-> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
-
-
-Returns
-- Integer
+Information
+-----------
+- Parameter 'operation' : 'SIGN'
 
 #### Arguments:
-- **value** (_Integer_) : value
+- **value** (_Integer_ = None) : socket 'Value' (id: Value)
+
+
+
+#### Returns:
+- **Integer** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -1093,43 +1078,49 @@ Returns
 > function
 
 ``` python
-isubtract(value, other)
+isubtract(value=None, value_1=None)
 ```
 
-Integer SUBTRACT.
+> Function [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
-> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
-
-
-Returns
-- Integer
+Information
+-----------
+- Parameter 'operation' : 'SUBTRACT'
 
 #### Arguments:
-- **value** (_Integer_) : first value
-- **other** (_Integer_) : second value
+- **value** (_Integer_ = None) : socket 'Value' (id: Value)
+- **value_1** (_Integer_ = None) : socket 'Value' (id: Value_001)
+
+
+
+#### Returns:
+- **Integer** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
 ----------
-### LCM()
+### lcm()
 
 > function
 
 ``` python
-LCM(value, other)
+lcm(value=None, value_1=None)
 ```
 
-Integer Math LCM.
+> Function [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
-> Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
-
-
-Returns
-- Integer
+Information
+-----------
+- Parameter 'operation' : 'LCM'
 
 #### Arguments:
-- **value** (_Integer_) : first value
-- **other** (_Integer_) : second value
+- **value** (_Integer_ = None) : socket 'Value' (id: Value)
+- **value_1** (_Integer_ = None) : socket 'Value' (id: Value_001)
+
+
+
+#### Returns:
+- **Integer** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -1139,66 +1130,22 @@ Returns
 > function
 
 ``` python
-length(value)
+length(vector=None)
 ```
 
-Vector Math LENGTH.
+> Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
-
-
-Returns
-- Float
+Information
+-----------
+- Parameter 'operation' : 'LENGTH'
 
 #### Arguments:
-- **value** (_Vector_) : vector
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
-
-----------
-### less_than()
-
-> function
-
-``` python
-less_than(value, threshold, use_clamp=None)
-```
-
-Math LESS_THAN.
-
-> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+- **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
 
 
-Returns
-- Float
 
-#### Arguments:
-- **value** (_Float_) : value
-- **threshold** (_Float_) : second value
-- **use_clamp** (_bool_ = None) : use_clamp flag
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
-
-----------
-### ln()
-
-> function
-
-``` python
-ln(value, use_clamp=None)
-```
-
-Math neperian LOGARITHM (using base = e).
-
-> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
-
-
-Returns
-- Float
-
-#### Arguments:
-- **value** (_Float_) : value
-- **use_clamp** (_bool_ = None) : use_clamp flag
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -1208,113 +1155,24 @@ Returns
 > function
 
 ``` python
-log(value, base=10, use_clamp=None)
+log(value=None, base=None, use_clamp=False)
 ```
 
-Math LOGARITHM.
+> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
-
-
-Returns
-- Float
+Information
+-----------
+- Parameter 'operation' : 'LOGARITHM'
 
 #### Arguments:
-- **value** (_Float_) : value
-- **base** (_Float_ = 10) : second value
-- **use_clamp** (_bool_ = None) : use_clamp flag
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
-
-----------
-### math_ceil()
-
-> function
-
-``` python
-math_ceil(value, use_clamp=None)
-```
-
-Math CEIL.
-
-> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **base** (_Float_ = None) : socket 'Base' (id: Value_001)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
 
 
-Returns
-- Float
 
-#### Arguments:
-- **value** (_Float_) : value
-- **use_clamp** (_bool_ = None) : use_clamp flag
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
-
-----------
-### math_floor()
-
-> function
-
-``` python
-math_floor(value, use_clamp=None)
-```
-
-Math FLOOR.
-
-> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
-
-
-Returns
-- Float
-
-#### Arguments:
-- **value** (_Float_) : value
-- **use_clamp** (_bool_ = None) : use_clamp flag
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
-
-----------
-### math_round()
-
-> function
-
-``` python
-math_round(value, use_clamp=None)
-```
-
-Math ROUND.
-
-> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
-
-
-Returns
-- Float
-
-#### Arguments:
-- **value** (_Float_) : value
-- **use_clamp** (_bool_ = None) : use_clamp flag
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
-
-----------
-### math_trunc()
-
-> function
-
-``` python
-math_trunc(value, use_clamp=None)
-```
-
-Math TRUNC.
-
-> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
-
-
-Returns
-- Float
-
-#### Arguments:
-- **value** (_Float_) : value
-- **use_clamp** (_bool_ = None) : use_clamp flag
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -1324,21 +1182,51 @@ Returns
 > function
 
 ``` python
-max(value, other, use_clamp=None)
+max(value=None, value_1=None, use_clamp=False)
 ```
 
-Math MAXIMUM.
+> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
-
-
-Returns
-- Float
+Information
+-----------
+- Parameter 'operation' : 'MAXIMUM'
 
 #### Arguments:
-- **value** (_Float_) : first value
-- **other** (_Float_) : second value
-- **use_clamp** (_bool_ = None) : use_clamp flag
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **value_1** (_Float_ = None) : socket 'Value' (id: Value_001)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
+
+----------
+### mgreater_than()
+
+> function
+
+``` python
+mgreater_than(value=None, threshold=None, use_clamp=False)
+```
+
+> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+
+Information
+-----------
+- Parameter 'operation' : 'GREATER_THAN'
+
+#### Arguments:
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **threshold** (_Float_ = None) : socket 'Threshold' (id: Value_001)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -1348,21 +1236,51 @@ Returns
 > function
 
 ``` python
-min(value, other, use_clamp=None)
+min(value=None, value_1=None, use_clamp=False)
 ```
 
-Math MINIMUM.
+> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
-
-
-Returns
-- Float
+Information
+-----------
+- Parameter 'operation' : 'MINIMUM'
 
 #### Arguments:
-- **value** (_Float_) : first value
-- **other** (_Float_) : second value
-- **use_clamp** (_bool_ = None) : use_clamp flag
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **value_1** (_Float_ = None) : socket 'Value' (id: Value_001)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
+
+----------
+### mless_than()
+
+> function
+
+``` python
+mless_than(value=None, threshold=None, use_clamp=False)
+```
+
+> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+
+Information
+-----------
+- Parameter 'operation' : 'LESS_THAN'
+
+#### Arguments:
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **threshold** (_Float_ = None) : socket 'Threshold' (id: Value_001)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -1372,21 +1290,24 @@ Returns
 > function
 
 ``` python
-modulo(value, other, use_clamp=None)
+modulo(value=None, value_1=None, use_clamp=False)
 ```
 
-Math MODULO.
+> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
-
-
-Returns
-- Float
+Information
+-----------
+- Parameter 'operation' : 'MODULO'
 
 #### Arguments:
-- **value** (_Float_) : value
-- **other** (_Float_) : other value
-- **use_clamp** (_bool_ = None) : use_clamp flag
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **value_1** (_Float_ = None) : socket 'Value' (id: Value_001)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -1396,21 +1317,24 @@ Returns
 > function
 
 ``` python
-multiply(value, other, use_clamp=None)
+multiply(value=None, value_1=None, use_clamp=False)
 ```
 
-Math MULTIPLY.
+> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
-
-
-Returns
-- Float
+Information
+-----------
+- Parameter 'operation' : 'MULTIPLY'
 
 #### Arguments:
-- **value** (_Float_) : first value
-- **other** (_Float_) : second value
-- **use_clamp** (_bool_ = None) : use_clamp flag
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **value_1** (_Float_ = None) : socket 'Value' (id: Value_001)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -1420,45 +1344,50 @@ Returns
 > function
 
 ``` python
-multiply_add(value, multiplier, addend, use_clamp=None)
+multiply_add(value=None, multiplier=None, addend=None, use_clamp=False)
 ```
 
-Math MULTIPLY ADD.
+> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
-
-
-Returns
-- Float
+Information
+-----------
+- Parameter 'operation' : 'MULTIPLY_ADD'
 
 #### Arguments:
-- **value** (_Float_) : value
-- **multiplier** (_Float_) : multiplier value
-- **addend** (_Float_) : add end value
-- **use_clamp** (_bool_ = None) : use_clamp flag
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **multiplier** (_Float_ = None) : socket 'Multiplier' (id: Value_001)
+- **addend** (_Float_ = None) : socket 'Addend' (id: Value_002)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
 ----------
-### nand()
+### negate()
 
 > function
 
 ``` python
-nand(value, other)
+negate(value=None)
 ```
 
-Boolean NAND.
+> Function [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
 
-> Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
-
-
-Returns
-- Boolean
+Information
+-----------
+- Parameter 'operation' : 'NEGATE'
 
 #### Arguments:
-- **value** (_Boolean_) : first value
-- **other** (_Boolean_) : second value
+- **value** (_Integer_ = None) : socket 'Value' (id: Value)
+
+
+
+#### Returns:
+- **Integer** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -1468,20 +1397,23 @@ Returns
 > function
 
 ``` python
-nimply(value, other)
+nimply(boolean=None, boolean_1=None)
 ```
 
-Boolean NIMPLY.
+> Function [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
 
-> Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
-
-
-Returns
-- Boolean
+Information
+-----------
+- Parameter 'operation' : 'NIMPLY'
 
 #### Arguments:
-- **value** (_Boolean_) : first value
-- **other** (_Boolean_) : second value
+- **boolean** (_Boolean_ = None) : socket 'Boolean' (id: Boolean)
+- **boolean_1** (_Boolean_ = None) : socket 'Boolean' (id: Boolean_001)
+
+
+
+#### Returns:
+- **Boolean** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -1491,20 +1423,23 @@ Returns
 > function
 
 ``` python
-nor(value, other)
+nor(boolean=None, boolean_1=None)
 ```
 
-Boolean NOR.
+> Function [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
 
-> Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
-
-
-Returns
-- Boolean
+Information
+-----------
+- Parameter 'operation' : 'NOR'
 
 #### Arguments:
-- **value** (_Boolean_) : first value
-- **other** (_Boolean_) : second value
+- **boolean** (_Boolean_ = None) : socket 'Boolean' (id: Boolean)
+- **boolean_1** (_Boolean_ = None) : socket 'Boolean' (id: Boolean_001)
+
+
+
+#### Returns:
+- **Boolean** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -1514,66 +1449,48 @@ Returns
 > function
 
 ``` python
-normalize(value)
+normalize(vector=None)
 ```
 
-Vector Math NORMALIZE.
+> Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
-
-
-Returns
-- Vector
+Information
+-----------
+- Parameter 'operation' : 'NORMALIZE'
 
 #### Arguments:
-- **value** (_Vector_) : vector
+- **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
+
+
+
+#### Returns:
+- **Vector** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
 ----------
-### not_equal()
+### not_and()
 
 > function
 
 ``` python
-not_equal(value, other)
+not_and(boolean=None, boolean_1=None)
 ```
 
-Boolean XOR.
+> Function [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
 
-> Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
-
-
-Returns
-- Boolean
+Information
+-----------
+- Parameter 'operation' : 'NAND'
 
 #### Arguments:
-- **value** (_Boolean_) : first value
-- **other** (_Boolean_) : second value
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
-
-----------
-### ping_pong()
-
-> function
-
-``` python
-ping_pong(value, scale=None, use_clamp=None)
-```
-
-Math PINGPONG.
-
-> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+- **boolean** (_Boolean_ = None) : socket 'Boolean' (id: Boolean)
+- **boolean_1** (_Boolean_ = None) : socket 'Boolean' (id: Boolean_001)
 
 
-Returns
-- Float
 
-#### Arguments:
-- **value** (_Float_) : value
-- **scale** (_Float_ = None) : other value
-- **use_clamp** (_bool_ = None) : use_clamp flag
+#### Returns:
+- **Boolean** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -1583,21 +1500,24 @@ Returns
 > function
 
 ``` python
-pingpong(value, scale=None, use_clamp=None)
+pingpong(value=None, scale=None, use_clamp=False)
 ```
 
-Math PINGPONG.
+> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
-
-
-Returns
-- Float
+Information
+-----------
+- Parameter 'operation' : 'PINGPONG'
 
 #### Arguments:
-- **value** (_Float_) : value
-- **scale** (_Float_ = None) : other value
-- **use_clamp** (_bool_ = None) : use_clamp flag
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **scale** (_Float_ = None) : socket 'Scale' (id: Value_001)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -1607,21 +1527,24 @@ Returns
 > function
 
 ``` python
-power(base, exponent, use_clamp=None)
+power(base=None, exponent=None, use_clamp=False)
 ```
 
-Math POWER.
+> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
-
-
-Returns
-- Float
+Information
+-----------
+- Parameter 'operation' : 'POWER'
 
 #### Arguments:
-- **base** (_Float_) : base value
-- **exponent** (_Float_) : exponent value
-- **use_clamp** (_bool_ = None) : use_clamp flag
+- **base** (_Float_ = None) : socket 'Base' (id: Value)
+- **exponent** (_Float_ = None) : socket 'Exponent' (id: Value_001)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -1631,20 +1554,23 @@ Returns
 > function
 
 ``` python
-project(value, other)
+project(vector=None, vector_1=None)
 ```
 
-Vector Math PROJECT.
+> Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
-
-
-Returns
-- Vector
+Information
+-----------
+- Parameter 'operation' : 'PROJECT'
 
 #### Arguments:
-- **value** (_Vector_) : vector
-- **other** (_Vector_) : other vector
+- **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
+- **vector_1** (_Vector_ = None) : socket 'Vector' (id: Vector_001)
+
+
+
+#### Returns:
+- **Vector** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -1654,20 +1580,23 @@ Returns
 > function
 
 ``` python
-radians(value, use_clamp=None)
+radians(degrees=None, use_clamp=False)
 ```
 
-Math RADIANS.
+> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
-
-
-Returns
-- Float
+Information
+-----------
+- Parameter 'operation' : 'RADIANS'
 
 #### Arguments:
-- **value** (_Float_) : value
-- **use_clamp** (_bool_ = None) : use_clamp flag
+- **degrees** (_Float_ = None) : socket 'Degrees' (id: Value)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -1677,20 +1606,23 @@ Returns
 > function
 
 ``` python
-reflect(value, other)
+reflect(vector=None, vector_1=None)
 ```
 
-Vector Math REFLECT.
+> Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
-
-
-Returns
-- Vector
+Information
+-----------
+- Parameter 'operation' : 'REFLECT'
 
 #### Arguments:
-- **value** (_Vector_) : vector
-- **other** (_Vector_) : other vector
+- **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
+- **vector_1** (_Vector_ = None) : socket 'Vector' (id: Vector_001)
+
+
+
+#### Returns:
+- **Vector** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -1700,21 +1632,24 @@ Returns
 > function
 
 ``` python
-refract(value, other, ior=None)
+refract(vector=None, vector_1=None, ior=None)
 ```
 
-Vector Math REFRACT.
+> Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
-
-
-Returns
-- Vector
+Information
+-----------
+- Parameter 'operation' : 'REFRACT'
 
 #### Arguments:
-- **value** (_Vector_) : vector
-- **other** (_Vector_) : other vector
-- **ior** (_Float_ = None) : IOR
+- **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
+- **vector_1** (_Vector_ = None) : socket 'Vector' (id: Vector_001)
+- **ior** (_Float_ = None) : socket 'IOR' (id: Scale)
+
+
+
+#### Returns:
+- **Vector** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -1724,24 +1659,23 @@ Returns
 > function
 
 ``` python
-round(value, use_clamp=None)
+round(value=None, use_clamp=False)
 ```
 
-Round.
+> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-> Node ERROR: Node 'Math, Float to Integer' not found
-
-Implements 'Math' node in ShaderNodes and 'Float to Integer' for GeoNodes.
-
-rounding_mode in ('ROUND', 'FLOOR', 'CEILING', 'TRUNCATE')
-
-
-Returns
-- Float (ShaderNodes) or Integer (GeoNodes)
+Information
+-----------
+- Parameter 'operation' : 'ROUND'
 
 #### Arguments:
-- **value** (_Float_) : value
-- **use_clamp** (_bool_ = None) : use_clamp flag
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -1751,20 +1685,23 @@ Returns
 > function
 
 ``` python
-scale(value, scale)
+scale(vector=None, scale=None)
 ```
 
-Vector Math SCALE.
+> Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
-
-
-Returns
-- Vector
+Information
+-----------
+- Parameter 'operation' : 'SCALE'
 
 #### Arguments:
-- **value** (_Vector_) : vector
-- **scale** (_Float_) : scale factor
+- **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
+- **scale** (_Float_ = None) : socket 'Scale' (id: Scale)
+
+
+
+#### Returns:
+- **Vector** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -1774,19 +1711,23 @@ Returns
 > function
 
 ``` python
-sign(value)
+sign(value=None, use_clamp=False)
 ```
 
-Math SIGN.
+> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
-
-
-Returns
-- Float
+Information
+-----------
+- Parameter 'operation' : 'SIGN'
 
 #### Arguments:
-- **value** (_Float_) : value
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -1796,20 +1737,23 @@ Returns
 > function
 
 ``` python
-sin(value, use_clamp=None)
+sin(value=None, use_clamp=False)
 ```
 
-Math SIN.
+> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
-
-
-Returns
-- Float
+Information
+-----------
+- Parameter 'operation' : 'SINE'
 
 #### Arguments:
-- **value** (_Float_) : value
-- **use_clamp** (_bool_ = None) : use_clamp flag
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -1819,20 +1763,23 @@ Returns
 > function
 
 ``` python
-sinh(value, use_clamp=None)
+sinh(value=None, use_clamp=False)
 ```
 
-Math SINH.
+> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
-
-
-Returns
-- Float
+Information
+-----------
+- Parameter 'operation' : 'SINH'
 
 #### Arguments:
-- **value** (_Float_) : value
-- **use_clamp** (_bool_ = None) : use_clamp flag
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -1842,22 +1789,25 @@ Returns
 > function
 
 ``` python
-smooth_max(value, other, distance=None, use_clamp=None)
+smooth_max(value=None, value_1=None, distance=None, use_clamp=False)
 ```
 
-Math SMOOTH MAX.
+> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
-
-
-Returns
-- Float
+Information
+-----------
+- Parameter 'operation' : 'SMOOTH_MAX'
 
 #### Arguments:
-- **value** (_Float_) : first value
-- **other** (_Float_) : second value
-- **distance** (_Float_ = None) : distance
-- **use_clamp** (_bool_ = None) : use_clamp flag
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **value_1** (_Float_ = None) : socket 'Value' (id: Value_001)
+- **distance** (_Float_ = None) : socket 'Distance' (id: Value_002)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -1867,22 +1817,25 @@ Returns
 > function
 
 ``` python
-smooth_min(value, other, distance=None, use_clamp=None)
+smooth_min(value=None, value_1=None, distance=None, use_clamp=False)
 ```
 
-Math SMOOTH_MIN.
+> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
-
-
-Returns
-- Float
+Information
+-----------
+- Parameter 'operation' : 'SMOOTH_MIN'
 
 #### Arguments:
-- **value** (_Float_) : first value
-- **other** (_Float_) : second value
-- **distance** (_Float_ = None) : distance
-- **use_clamp** (_bool_ = None) : use_clamp flag
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **value_1** (_Float_ = None) : socket 'Value' (id: Value_001)
+- **distance** (_Float_ = None) : socket 'Distance' (id: Value_002)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -1892,21 +1845,24 @@ Returns
 > function
 
 ``` python
-snap(value, increment=None, use_clamp=None)
+snap(value=None, increment=None, use_clamp=False)
 ```
 
-Math SNAP.
+> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
-
-
-Returns
-- Float
+Information
+-----------
+- Parameter 'operation' : 'SNAP'
 
 #### Arguments:
-- **value** (_Float_) : value
-- **increment** (_Float_ = None) : other value
-- **use_clamp** (_bool_ = None) : use_clamp flag
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **increment** (_Float_ = None) : socket 'Increment' (id: Value_001)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -1916,20 +1872,23 @@ Returns
 > function
 
 ``` python
-sqrt(value, use_clamp=None)
+sqrt(value=None, use_clamp=False)
 ```
 
-Math SQRT.
+> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
-
-
-Returns
-- Float
+Information
+-----------
+- Parameter 'operation' : 'SQRT'
 
 #### Arguments:
-- **value** (_Float_) : value
-- **use_clamp** (_bool_ = None) : use_clamp flag
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -1939,21 +1898,24 @@ Returns
 > function
 
 ``` python
-subtract(value, other, use_clamp=None)
+subtract(value=None, value_1=None, use_clamp=False)
 ```
 
-Math SUBTRACT.
+> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
-
-
-Returns
-- Float
+Information
+-----------
+- Parameter 'operation' : 'SUBTRACT'
 
 #### Arguments:
-- **value** (_Float_) : first value
-- **other** (_Float_) : second value
-- **use_clamp** (_bool_ = None) : use_clamp flag
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **value_1** (_Float_ = None) : socket 'Value' (id: Value_001)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -1963,20 +1925,23 @@ Returns
 > function
 
 ``` python
-tan(value, use_clamp=None)
+tan(value=None, use_clamp=False)
 ```
 
-Math TAN.
+> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
-
-
-Returns
-- Float
+Information
+-----------
+- Parameter 'operation' : 'TANGENT'
 
 #### Arguments:
-- **value** (_Float_) : value
-- **use_clamp** (_bool_ = None) : use_clamp flag
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -1986,20 +1951,23 @@ Returns
 > function
 
 ``` python
-tanh(value, use_clamp=None)
+tanh(value=None, use_clamp=False)
 ```
 
-Math TANH.
+> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
-
-
-Returns
-- Float
+Information
+-----------
+- Parameter 'operation' : 'TANH'
 
 #### Arguments:
-- **value** (_Float_) : value
-- **use_clamp** (_bool_ = None) : use_clamp flag
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -2009,24 +1977,23 @@ Returns
 > function
 
 ``` python
-trunc(value, use_clamp=None)
+trunc(value=None, use_clamp=False)
 ```
 
-Truncate.
+> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-> Node ERROR: Node 'Math, Float to Integer' not found
-
-Implements 'Math' node in ShaderNodes and 'Float to Integer' for GeoNodes.
-
-rounding_mode in ('ROUND', 'FLOOR', 'CEILING', 'TRUNCATE')
-
-
-Returns
-- Float (ShaderNodes) or Integer (GeoNodes)
+Information
+-----------
+- Parameter 'operation' : 'TRUNC'
 
 #### Arguments:
-- **value** (_Float_) : value
-- **use_clamp** (_bool_ = None) : use_clamp flag
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -2036,19 +2003,22 @@ Returns
 > function
 
 ``` python
-vabs(value)
+vabs(vector=None)
 ```
 
-Vector Math ABS.
+> Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
-
-
-Returns
-- Vector
+Information
+-----------
+- Parameter 'operation' : 'ABSOLUTE'
 
 #### Arguments:
-- **value** (_Vector_) : vector
+- **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
+
+
+
+#### Returns:
+- **Vector** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -2058,20 +2028,23 @@ Returns
 > function
 
 ``` python
-vadd(value, other)
+vadd(vector=None, vector_1=None)
 ```
 
-Vector Math ADD.
+> Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
-
-
-Returns
-- Vector
+Information
+-----------
+- Parameter 'operation' : 'ADD'
 
 #### Arguments:
-- **value** (_Vector_) : vector
-- **other** (_Vector_) : other vector
+- **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
+- **vector_1** (_Vector_ = None) : socket 'Vector' (id: Vector_001)
+
+
+
+#### Returns:
+- **Vector** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -2081,19 +2054,22 @@ Returns
 > function
 
 ``` python
-vceil(value)
+vceil(vector=None)
 ```
 
-Vector Math CEIL.
+> Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
-
-
-Returns
-- Vector
+Information
+-----------
+- Parameter 'operation' : 'CEIL'
 
 #### Arguments:
-- **value** (_Vector_) : vector
+- **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
+
+
+
+#### Returns:
+- **Vector** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -2103,19 +2079,22 @@ Returns
 > function
 
 ``` python
-vcos(value)
+vcos(vector=None)
 ```
 
-Vector Math COS.
+> Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
-
-
-Returns
-- Vector
+Information
+-----------
+- Parameter 'operation' : 'COSINE'
 
 #### Arguments:
-- **value** (_Vector_) : vector
+- **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
+
+
+
+#### Returns:
+- **Vector** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -2125,20 +2104,23 @@ Returns
 > function
 
 ``` python
-vdivide(value, other)
+vdivide(vector=None, vector_1=None)
 ```
 
-Vector Math DIVIDE.
+> Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
-
-
-Returns
-- Vector
+Information
+-----------
+- Parameter 'operation' : 'DIVIDE'
 
 #### Arguments:
-- **value** (_Vector_) : vector
-- **other** (_Vector_) : other vector
+- **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
+- **vector_1** (_Vector_ = None) : socket 'Vector' (id: Vector_001)
+
+
+
+#### Returns:
+- **Vector** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -2148,41 +2130,47 @@ Returns
 > function
 
 ``` python
-vfloor(value)
+vfloor(vector=None)
 ```
 
-Vector Math FLOOR.
+> Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
-
-
-Returns
-- Vector
+Information
+-----------
+- Parameter 'operation' : 'FLOOR'
 
 #### Arguments:
-- **value** (_Vector_) : vector
+- **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
+
+
+
+#### Returns:
+- **Vector** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
 ----------
-### vfract()
+### vfraction()
 
 > function
 
 ``` python
-vfract(value)
+vfraction(vector=None)
 ```
 
-Vector Math FRACT.
+> Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
-
-
-Returns
-- Vector
+Information
+-----------
+- Parameter 'operation' : 'FRACTION'
 
 #### Arguments:
-- **value** (_Vector_) : vector
+- **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
+
+
+
+#### Returns:
+- **Vector** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -2192,20 +2180,23 @@ Returns
 > function
 
 ``` python
-vmax(value, other)
+vmax(vector=None, vector_1=None)
 ```
 
-Vector Math MAXIMUM.
+> Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
-
-
-Returns
-- Vector
+Information
+-----------
+- Parameter 'operation' : 'MAXIMUM'
 
 #### Arguments:
-- **value** (_Vector_) : vector
-- **other** (_Vector_) : other vector
+- **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
+- **vector_1** (_Vector_ = None) : socket 'Vector' (id: Vector_001)
+
+
+
+#### Returns:
+- **Vector** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -2215,20 +2206,23 @@ Returns
 > function
 
 ``` python
-vmin(value, other)
+vmin(vector=None, vector_1=None)
 ```
 
-Vector Math MINIMUM.
+> Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
-
-
-Returns
-- Vector
+Information
+-----------
+- Parameter 'operation' : 'MINIMUM'
 
 #### Arguments:
-- **value** (_Vector_) : vector
-- **other** (_Vector_) : other vector
+- **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
+- **vector_1** (_Vector_ = None) : socket 'Vector' (id: Vector_001)
+
+
+
+#### Returns:
+- **Vector** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -2238,20 +2232,23 @@ Returns
 > function
 
 ``` python
-vmodulo(value, other)
+vmodulo(vector=None, vector_1=None)
 ```
 
-Vector Math MODULO.
+> Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
-
-
-Returns
-- Vector
+Information
+-----------
+- Parameter 'operation' : 'MODULO'
 
 #### Arguments:
-- **value** (_Vector_) : vector
-- **other**
+- **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
+- **vector_1** (_Vector_ = None) : socket 'Vector' (id: Vector_001)
+
+
+
+#### Returns:
+- **Vector** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -2261,20 +2258,23 @@ Returns
 > function
 
 ``` python
-vmultiply(value, other)
+vmultiply(vector=None, vector_1=None)
 ```
 
-Vector Math MULTIPLY.
+> Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
-
-
-Returns
-- Vector
+Information
+-----------
+- Parameter 'operation' : 'MULTIPLY'
 
 #### Arguments:
-- **value** (_Vector_) : vector
-- **other** (_Vector_) : other vector
+- **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
+- **vector_1** (_Vector_ = None) : socket 'Vector' (id: Vector_001)
+
+
+
+#### Returns:
+- **Vector** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -2284,21 +2284,24 @@ Returns
 > function
 
 ``` python
-vmultiply_add(value, multiplier, addend)
+vmultiply_add(vector=None, multiplier=None, addend=None)
 ```
 
-Vector Math MULTIPLY ADD.
+> Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
-
-
-Returns
-- Vector
+Information
+-----------
+- Parameter 'operation' : 'MULTIPLY_ADD'
 
 #### Arguments:
-- **value** (_Vector_) : vector
-- **multiplier** (_Vector_) : other vector
-- **addend** (_Vector_) : add end vector
+- **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
+- **multiplier** (_Vector_ = None) : socket 'Multiplier' (id: Vector_001)
+- **addend** (_Vector_ = None) : socket 'Addend' (id: Vector_002)
+
+
+
+#### Returns:
+- **Vector** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -2308,19 +2311,22 @@ Returns
 > function
 
 ``` python
-vsin(value)
+vsin(vector=None)
 ```
 
-Vector Math SIN.
+> Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
-
-
-Returns
-- Vector
+Information
+-----------
+- Parameter 'operation' : 'SINE'
 
 #### Arguments:
-- **value** (_Vector_) : vector
+- **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
+
+
+
+#### Returns:
+- **Vector** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -2330,20 +2336,23 @@ Returns
 > function
 
 ``` python
-vsnap(value, increment)
+vsnap(vector=None, increment=None)
 ```
 
-Vector Math SNAP.
+> Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
-
-
-Returns
-- Vector
+Information
+-----------
+- Parameter 'operation' : 'SNAP'
 
 #### Arguments:
-- **value** (_Vector_) : vector
-- **increment** (_Vector_) : increment vector
+- **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
+- **increment** (_Vector_ = None) : socket 'Increment' (id: Vector_001)
+
+
+
+#### Returns:
+- **Vector** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -2353,20 +2362,23 @@ Returns
 > function
 
 ``` python
-vsubtract(value, other)
+vsubtract(vector=None, vector_1=None)
 ```
 
-Vector Math SUBTRACT.
+> Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
-
-
-Returns
-- Vector
+Information
+-----------
+- Parameter 'operation' : 'SUBTRACT'
 
 #### Arguments:
-- **value** (_Vector_) : vector
-- **other** (_Vector_) : other vector
+- **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
+- **vector_1** (_Vector_ = None) : socket 'Vector' (id: Vector_001)
+
+
+
+#### Returns:
+- **Vector** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -2376,19 +2388,22 @@ Returns
 > function
 
 ``` python
-vtan(value)
+vtan(vector=None)
 ```
 
-Vector Math TAN.
+> Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
-
-
-Returns
-- Vector
+Information
+-----------
+- Parameter 'operation' : 'TANGENT'
 
 #### Arguments:
-- **value** (_Vector_) : vector
+- **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
+
+
+
+#### Returns:
+- **Vector** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -2398,21 +2413,24 @@ Returns
 > function
 
 ``` python
-vwrap(value, max=None, min=None)
+vwrap(vector=None, max=None, min=None)
 ```
 
-Vector Math WRAP.
+> Function [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
 
-> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
-
-
-Returns
-- Vector
+Information
+-----------
+- Parameter 'operation' : 'WRAP'
 
 #### Arguments:
-- **value** (_Vector_) : vector
-- **max** (_Vector_ = None) : max vector
-- **min** (_Vector_ = None) : min vector
+- **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
+- **max** (_Vector_ = None) : socket 'Max' (id: Vector_001)
+- **min** (_Vector_ = None) : socket 'Min' (id: Vector_002)
+
+
+
+#### Returns:
+- **Vector** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -2422,22 +2440,25 @@ Returns
 > function
 
 ``` python
-wrap(value, max=None, min=None, use_clamp=None)
+wrap(value=None, max=None, min=None, use_clamp=False)
 ```
 
-Math WRAP.
+> Function [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
-
-
-Returns
-- Float
+Information
+-----------
+- Parameter 'operation' : 'WRAP'
 
 #### Arguments:
-- **value** (_Float_) : value
-- **max** (_Float_ = None) : max value
-- **min** (_Float_ = None) : min value
-- **use_clamp** (_bool_ = None) : use_clamp flag
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **max** (_Float_ = None) : socket 'Max' (id: Value_001)
+- **min** (_Float_ = None) : socket 'Min' (id: Value_002)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -2447,20 +2468,23 @@ Returns
 > function
 
 ``` python
-xnor(value, other)
+xnor(boolean=None, boolean_1=None)
 ```
 
-Boolean XNOR.
+> Function [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
 
-> Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
-
-
-Returns
-- Boolean
+Information
+-----------
+- Parameter 'operation' : 'XNOR'
 
 #### Arguments:
-- **value** (_Boolean_) : first value
-- **other** (_Boolean_) : second value
+- **boolean** (_Boolean_ = None) : socket 'Boolean' (id: Boolean)
+- **boolean_1** (_Boolean_ = None) : socket 'Boolean' (id: Boolean_001)
+
+
+
+#### Returns:
+- **Boolean** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
@@ -2470,20 +2494,23 @@ Returns
 > function
 
 ``` python
-xor(value, other)
+xor(boolean=None, boolean_1=None)
 ```
 
-Boolean XOR.
+> Function [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
 
-> Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
-
-
-Returns
-- Boolean
+Information
+-----------
+- Parameter 'operation' : 'XOR'
 
 #### Arguments:
-- **value** (_Boolean_) : first value
-- **other** (_Boolean_) : second value
+- **boolean** (_Boolean_ = None) : socket 'Boolean' (id: Boolean)
+- **boolean_1** (_Boolean_ = None) : socket 'Boolean' (id: Boolean_001)
+
+
+
+#### Returns:
+- **Boolean** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 

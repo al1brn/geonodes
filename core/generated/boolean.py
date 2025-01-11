@@ -4,6 +4,9 @@ from .. treeclass import utils
 from .. scripterror import NodeError
 
 class Boolean(Socket):
+    """"
+    $DOC SET hidden
+    """
 
     def band(self, boolean=None):
         """ > Method <&Node Boolean Math>

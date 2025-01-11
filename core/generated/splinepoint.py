@@ -4,6 +4,9 @@ from .. treeclass import utils
 from .. scripterror import NodeError
 
 class SplinePoint(Socket):
+    """"
+    $DOC SET hidden
+    """
 
     @classmethod
     def curve_of_point(cls, point_index=None):

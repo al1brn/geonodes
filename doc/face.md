@@ -1,46 +1,34 @@
 # Face
 
-> Bases classes: [Domain](domain.md#domain)
-
 ``` python
-Face(geometry)
+Face(geometry: geonodes.core.geometry_class.Geometry)
 ```
 
 > Face domain of a [Mesh](mesh.md#mesh)
 
 #### Arguments:
-- **geometry**
+- **geometry** (_Geometry_)
 
 ### Inherited
 
-[accumulate_field](domain.md#accumulate_field) :black_small_square: [attribute_statistic](domain.md#attribute_statistic) :black_small_square: [\_cache](nodecache.md#_cache) :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [capture](domain.md#capture) :black_small_square: [capture_attribute](domain.md#capture_attribute) :black_small_square: [captures](domain.md#captures) :black_small_square: [delete](domain.md#delete) :black_small_square: [delete_all](domain.md#delete_all) :black_small_square: [delete_edges_and_faces](domain.md#delete_edges_and_faces) :black_small_square: [delete_faces](domain.md#delete_faces) :black_small_square: [delete_geometry](domain.md#delete_geometry) :black_small_square: [domain_name](domain.md#domain_name) :black_small_square: [duplicate_elements](domain.md#duplicate_elements) :black_small_square: [evaluate_at_index](domain.md#evaluate_at_index) :black_small_square: [evaluate_on_domain](domain.md#evaluate_on_domain) :black_small_square: [exclude_corner](domain.md#exclude_corner) :black_small_square: [extrude](domain.md#extrude) :black_small_square: [for_each](domain.md#for_each) :black_small_square: [\_geo_type](geobase.md#_geo_type) :black_small_square: [\_\_getitem__](geobase.md#__getitem__) :black_small_square: [id](geobase.md#id) :black_small_square: [\_\_init__](domain.md#__init__) :black_small_square: [\_jump](domain.md#_jump) :black_small_square: [material](geobase.md#material) :black_small_square: [material_index](geobase.md#material_index) :black_small_square: [material_selection](geobase.md#material_selection) :black_small_square: [\_node](domain.md#_node) :black_small_square: [offset](geobase.md#offset) :black_small_square: [plural_domain](domain.md#plural_domain) :black_small_square: [position](geobase.md#position) :black_small_square: [proximity](domain.md#proximity) :black_small_square: [\_raw_sel](geobase.md#_raw_sel) :black_small_square: [replace_material](geobase.md#replace_material) :black_small_square: [restrict_domain](domain.md#restrict_domain) :black_small_square: [sample_index](domain.md#sample_index) :black_small_square: [sample_nearest](domain.md#sample_nearest) :black_small_square: [\_sel](domain.md#_sel) :black_small_square: [separate](domain.md#separate) :black_small_square: [set_id](geobase.md#set_id) :black_small_square: [set_position](geobase.md#set_position) :black_small_square: [sort_elements](domain.md#sort_elements) :black_small_square: [split_to_instances](domain.md#split_to_instances) :black_small_square: [store](domain.md#store) :black_small_square: [store_named_attribute](domain.md#store_named_attribute) :black_small_square: [\_\_str__](domain.md#__str__) :black_small_square: [to_points](domain.md#to_points) :black_small_square: [viewer](domain.md#viewer) :black_small_square:
+[\_cache](nodecache.md#_cache) :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [\_\_call__](domain.md#__call__) :black_small_square: [capture](domain.md#capture) :black_small_square: [capture_attribute](domain.md#capture_attribute) :black_small_square: [check_in_list](socket.md#check_in_list) :black_small_square: [data_type](socket.md#data_type) :black_small_square: [\_domain_to_geometry](domain.md#_domain_to_geometry) :black_small_square: [for_each](domain.md#for_each) :black_small_square: [\_geometry_class](socket.md#_geometry_class) :black_small_square: [\_geo_type](geobase.md#_geo_type) :black_small_square: [\_\_getattr__](domain.md#__getattr__) :black_small_square: [\_\_getitem__](geobase.md#__getitem__) :black_small_square: [get_node_data_type](socket.md#get_node_data_type) :black_small_square: [get_socket_class](socket.md#get_socket_class) :black_small_square: [IndexSwitch](socket.md#indexswitch) :black_small_square: [index_switch](socket.md#index_switch) :black_small_square: [\_\_init__](domain.md#__init__) :black_small_square: [Input](socket.md#input) :black_small_square: [input_type](socket.md#input_type) :black_small_square: [\_interface_socket](socket.md#_interface_socket) :black_small_square: [\_is_group_input](socket.md#_is_group_input) :black_small_square: [\_is_group_output](socket.md#_is_group_output) :black_small_square: [\_is_group_socket](socket.md#_is_group_socket) :black_small_square: [\_jump](domain.md#_jump) :black_small_square: [\_lc](socket.md#_lc) :black_small_square: [\_lcop](socket.md#_lcop) :black_small_square: [\_lock](proplocker.md#_lock) :black_small_square: [MenuSwitch](socket.md#menuswitch) :black_small_square: [menu_switch](socket.md#menu_switch) :black_small_square: [node](socket.md#node) :black_small_square: [node_color](socket.md#node_color) :black_small_square: [node_label](socket.md#node_label) :black_small_square: [out](socket.md#out) :black_small_square: [\_panel_name](socket.md#_panel_name) :black_small_square: [pin_gizmo](socket.md#pin_gizmo) :black_small_square: [\_raw_sel](geobase.md#_raw_sel) :black_small_square: [\_reset](socket.md#_reset) :black_small_square: [\_run_tests](socket.md#_run_tests) :black_small_square: [\_sel](domain.md#_sel) :black_small_square: [\_\_setattr__](domain.md#__setattr__) :black_small_square: [\_set_interface_property](socket.md#_set_interface_property) :black_small_square: [socket_type](socket.md#socket_type) :black_small_square: [\_\_str__](domain.md#__str__) :black_small_square: [Switch](socket.md#switch) :black_small_square: [switch](socket.md#switch) :black_small_square: [\_unlock](proplocker.md#_unlock) :black_small_square:
 
 ## Content
 
-- **A** : [area](face.md#area)
-- **C** : [corner_index](face.md#corner_index) :black_small_square: [count](face.md#count)
-- **D** : [distribute_points](face.md#distribute_points)
-- **F** : [flip](face.md#flip)
-- **G** : [group_boundaries](face.md#group_boundaries)
+- **A** : [accumulate_field](face.md#accumulate_field) :black_small_square: [active_element](face.md#active_element) :black_small_square: [attribute_statistic](face.md#attribute_statistic)
+- **C** : [corner_index](face.md#corner_index) :black_small_square: [corners](face.md#corners) :black_small_square: [corners_total](face.md#corners_total) :black_small_square: [count](face.md#count)
+- **D** : [delete](face.md#delete) :black_small_square: [delete_all](face.md#delete_all) :black_small_square: [delete_edge_face](face.md#delete_edge_face) :black_small_square: [delete_geometry](face.md#delete_geometry) :black_small_square: [delete_geometry_all](face.md#delete_geometry_all) :black_small_square: [delete_geometry_edge_face](face.md#delete_geometry_edge_face) :black_small_square: [delete_geometry_only_face](face.md#delete_geometry_only_face) :black_small_square: [delete_only_face](face.md#delete_only_face) :black_small_square: [distribute_points_poisson](face.md#distribute_points_poisson) :black_small_square: [distribute_points_random](face.md#distribute_points_random) :black_small_square: [duplicate](face.md#duplicate)
+- **E** : [evaluate_at_index](face.md#evaluate_at_index) :black_small_square: [evaluate_on_domain](face.md#evaluate_on_domain)
 - **I** : [is_planar](face.md#is_planar)
-- **N** : [neighbors](face.md#neighbors) :black_small_square: [neighbors_face_count](face.md#neighbors_face_count) :black_small_square: [neighbors_vertex_count](face.md#neighbors_vertex_count)
-- **S** : [scale](face.md#scale) :black_small_square: [smooth](face.md#smooth)
+- **M** : [material](face.md#material) :black_small_square: [material_index](face.md#material_index)
+- **N** : [neighbors](face.md#neighbors)
+- **S** : [sample_index](face.md#sample_index) :black_small_square: [sample_nearest](face.md#sample_nearest) :black_small_square: [scale](face.md#scale) :black_small_square: [scale_single_axis](face.md#scale_single_axis) :black_small_square: [scale_uniform](face.md#scale_uniform) :black_small_square: [separate](face.md#separate) :black_small_square: [set_selection](face.md#set_selection) :black_small_square: [set_shade_smooth](face.md#set_shade_smooth) :black_small_square: [shade_smooth](face.md#shade_smooth) :black_small_square: [smooth](face.md#smooth) :black_small_square: [sort](face.md#sort) :black_small_square: [split_to_instances](face.md#split_to_instances) :black_small_square: [store](face.md#store) :black_small_square: [store_named_attribute](face.md#store_named_attribute)
+- **T** : [to_points](face.md#to_points)
+- **V** : [viewer](face.md#viewer)
 
 ## Properties
 
 
-
-### area
-
-> _type_: **Float**
->
-
-> Area read only property
-
-- getter : [Face Area](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/face_area.html)
-- setter : None
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](face.md#face) :black_small_square: [Content](face.md#content) :black_small_square: [Properties](face.md#properties)</sub>
 
 ### count
 
@@ -51,48 +39,120 @@ Face(geometry)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](face.md#face) :black_small_square: [Content](face.md#content) :black_small_square: [Properties](face.md#properties)</sub>
 
-### neighbors
+### material
 
-> _type_: **Node**
+> _type_: **?**
 >
 
-> Node [Face Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/face_neighbors.html)
+Write only property for node <Node Set Material>
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](face.md#face) :black_small_square: [Content](face.md#content) :black_small_square: [Properties](face.md#properties)</sub>
 
-### neighbors_face_count
+### material_index
 
-> _type_: **Integer**
+> _type_: **?**
 >
 
-> Socket 'Face Count' of node [Face Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/face_neighbors.html)
+Property get node <Node Set Material Index>
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](face.md#face) :black_small_square: [Content](face.md#content) :black_small_square: [Properties](face.md#properties)</sub>
 
-### neighbors_vertex_count
+### shade_smooth
 
-> _type_: **Integer**
+> _type_: **?**
 >
 
-> Socket 'Vertex Count' of node [Face Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/face_neighbors.html)
+Property get node <Node Set Shade Smooth>
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](face.md#face) :black_small_square: [Content](face.md#content) :black_small_square: [Properties](face.md#properties)</sub>
 
 ### smooth
 
-> _type_: **Boolean**
+> _type_: **?**
 >
 
-> Smooth property
-
-- getter : node [Is Face Smooth](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/is_face_smooth.html)
-- setter : node [Set Shade Smooth](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/write/set_shade_smooth.html)
+Property get node <Node Set Shade Smooth>
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](face.md#face) :black_small_square: [Content](face.md#content) :black_small_square: [Properties](face.md#properties)</sub>
 
 ## Methods
 
 
+
+----------
+### accumulate_field()
+
+> classmethod
+
+``` python
+accumulate_field(value=None, group_id=None)
+```
+
+> Class Method [Accumulate Field](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/accumulate_field.html)
+
+Information
+-----------
+- Parameter 'data_type' : depending on 'value' type
+- Parameter 'domain' : 'FACE'
+
+#### Arguments:
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **group_id** (_Integer_ = None) : socket 'Group ID' (id: Group Index)
+
+
+
+#### Returns:
+- **Float** (_Float_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](face.md#face) :black_small_square: [Content](face.md#content) :black_small_square: [Methods](face.md#methods)</sub>
+
+----------
+### active_element()
+
+> classmethod
+
+``` python
+active_element()
+```
+
+> Class Method [Active Element](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/active_element.html)
+
+Information
+-----------
+- Parameter 'domain' : 'FACE'
+
+#### Returns:
+- **Integer** (_Boolean_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](face.md#face) :black_small_square: [Content](face.md#content) :black_small_square: [Methods](face.md#methods)</sub>
+
+----------
+### attribute_statistic()
+
+> method
+
+``` python
+attribute_statistic(attribute=None)
+```
+
+> Method [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html)
+
+Information
+-----------
+- Socket 'Geometry' : self
+- Socket 'Selection' : self[selection]
+- Parameter 'data_type' : depending on 'attribute' type
+- Parameter 'domain' : 'FACE'
+
+#### Arguments:
+- **attribute** (_Float_ = None) : socket 'Attribute' (id: Attribute)
+
+
+
+#### Returns:
+- **node** (_Float_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](face.md#face) :black_small_square: [Content](face.md#content) :black_small_square: [Methods](face.md#methods)</sub>
 
 ----------
 ### corner_index()
@@ -103,12 +163,482 @@ Face(geometry)
 corner_index(face_index=None, weights=None, sort_index=None)
 ```
 
-> Node [Corners of Face](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/corners_of_face.html)
+> Class Method [Corners of Face](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/corners_of_face.html)
 
 #### Arguments:
-- **face_index** (_Integer_ = None) : socket 'Face Index' (Face Index)
-- **weights** (_Float_ = None) : socket 'Weights' (Weights)
-- **sort_index** (_Integer_ = None) : socket 'Sort Index' (Sort Index)
+- **face_index** (_Integer_ = None) : socket 'Face Index' (id: Face Index)
+- **weights** (_Float_ = None) : socket 'Weights' (id: Weights)
+- **sort_index** (_Integer_ = None) : socket 'Sort Index' (id: Sort Index)
+
+
+
+#### Returns:
+- **corner_index** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](face.md#face) :black_small_square: [Content](face.md#content) :black_small_square: [Methods](face.md#methods)</sub>
+
+----------
+### corners()
+
+> classmethod
+
+``` python
+corners(face_index=None, weights=None, sort_index=None)
+```
+
+> Class Method [Corners of Face](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/corners_of_face.html)
+
+#### Arguments:
+- **face_index** (_Integer_ = None) : socket 'Face Index' (id: Face Index)
+- **weights** (_Float_ = None) : socket 'Weights' (id: Weights)
+- **sort_index** (_Integer_ = None) : socket 'Sort Index' (id: Sort Index)
+
+
+
+#### Returns:
+- **node** (_Integer_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](face.md#face) :black_small_square: [Content](face.md#content) :black_small_square: [Methods](face.md#methods)</sub>
+
+----------
+### corners_total()
+
+> classmethod
+
+``` python
+corners_total(face_index=None, weights=None, sort_index=None)
+```
+
+> Class Method [Corners of Face](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/corners_of_face.html)
+
+#### Arguments:
+- **face_index** (_Integer_ = None) : socket 'Face Index' (id: Face Index)
+- **weights** (_Float_ = None) : socket 'Weights' (id: Weights)
+- **sort_index** (_Integer_ = None) : socket 'Sort Index' (id: Sort Index)
+
+
+
+#### Returns:
+- **total** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](face.md#face) :black_small_square: [Content](face.md#content) :black_small_square: [Methods](face.md#methods)</sub>
+
+----------
+### delete()
+
+> method
+
+``` python
+delete(mode='ALL')
+```
+
+> Jump Method [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/delete_geometry.html)
+
+Information
+-----------
+- Socket 'Geometry' : self
+- Socket 'Selection' : self[selection]
+- Parameter 'domain' : 'FACE'
+
+#### Arguments:
+- **mode** (_str_ = ALL) : parameter 'mode' in ('ALL', 'EDGE_FACE', 'ONLY_FACE')
+
+
+
+#### Returns:
+- **Geometry** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](face.md#face) :black_small_square: [Content](face.md#content) :black_small_square: [Methods](face.md#methods)</sub>
+
+----------
+### delete_all()
+
+> method
+
+``` python
+delete_all()
+```
+
+> Jump Method [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/delete_geometry.html)
+
+Information
+-----------
+- Socket 'Geometry' : self
+- Socket 'Selection' : self[selection]
+- Parameter 'domain' : 'FACE'
+- Parameter 'mode' : 'ALL'
+
+#### Returns:
+- **Geometry** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](face.md#face) :black_small_square: [Content](face.md#content) :black_small_square: [Methods](face.md#methods)</sub>
+
+----------
+### delete_edge_face()
+
+> method
+
+``` python
+delete_edge_face()
+```
+
+> Jump Method [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/delete_geometry.html)
+
+Information
+-----------
+- Socket 'Geometry' : self
+- Socket 'Selection' : self[selection]
+- Parameter 'domain' : 'FACE'
+- Parameter 'mode' : 'EDGE_FACE'
+
+#### Returns:
+- **Geometry** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](face.md#face) :black_small_square: [Content](face.md#content) :black_small_square: [Methods](face.md#methods)</sub>
+
+----------
+### delete_geometry()
+
+> method
+
+``` python
+delete_geometry(mode='ALL')
+```
+
+> Jump Method [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/delete_geometry.html)
+
+Information
+-----------
+- Socket 'Geometry' : self
+- Socket 'Selection' : self[selection]
+- Parameter 'domain' : 'FACE'
+
+#### Arguments:
+- **mode** (_str_ = ALL) : parameter 'mode' in ('ALL', 'EDGE_FACE', 'ONLY_FACE')
+
+
+
+#### Returns:
+- **Geometry** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](face.md#face) :black_small_square: [Content](face.md#content) :black_small_square: [Methods](face.md#methods)</sub>
+
+----------
+### delete_geometry_all()
+
+> method
+
+``` python
+delete_geometry_all()
+```
+
+> Jump Method [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/delete_geometry.html)
+
+Information
+-----------
+- Socket 'Geometry' : self
+- Socket 'Selection' : self[selection]
+- Parameter 'domain' : 'FACE'
+- Parameter 'mode' : 'ALL'
+
+#### Returns:
+- **Geometry** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](face.md#face) :black_small_square: [Content](face.md#content) :black_small_square: [Methods](face.md#methods)</sub>
+
+----------
+### delete_geometry_edge_face()
+
+> method
+
+``` python
+delete_geometry_edge_face()
+```
+
+> Jump Method [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/delete_geometry.html)
+
+Information
+-----------
+- Socket 'Geometry' : self
+- Socket 'Selection' : self[selection]
+- Parameter 'domain' : 'FACE'
+- Parameter 'mode' : 'EDGE_FACE'
+
+#### Returns:
+- **Geometry** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](face.md#face) :black_small_square: [Content](face.md#content) :black_small_square: [Methods](face.md#methods)</sub>
+
+----------
+### delete_geometry_only_face()
+
+> method
+
+``` python
+delete_geometry_only_face()
+```
+
+> Jump Method [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/delete_geometry.html)
+
+Information
+-----------
+- Socket 'Geometry' : self
+- Socket 'Selection' : self[selection]
+- Parameter 'domain' : 'FACE'
+- Parameter 'mode' : 'ONLY_FACE'
+
+#### Returns:
+- **Geometry** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](face.md#face) :black_small_square: [Content](face.md#content) :black_small_square: [Methods](face.md#methods)</sub>
+
+----------
+### delete_only_face()
+
+> method
+
+``` python
+delete_only_face()
+```
+
+> Jump Method [Delete Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/delete_geometry.html)
+
+Information
+-----------
+- Socket 'Geometry' : self
+- Socket 'Selection' : self[selection]
+- Parameter 'domain' : 'FACE'
+- Parameter 'mode' : 'ONLY_FACE'
+
+#### Returns:
+- **Geometry** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](face.md#face) :black_small_square: [Content](face.md#content) :black_small_square: [Methods](face.md#methods)</sub>
+
+----------
+### distribute_points_poisson()
+
+> method
+
+``` python
+distribute_points_poisson(distance_min=None, density_max=None, density_factor=None, seed=None, use_legacy_normal=False)
+```
+
+> Method ERROR: Node 'Distribute Points on Faces' not found
+
+Information
+-----------
+- Socket 'Mesh' : self
+- Socket 'Selection' : self[selection]
+- Parameter 'distribute_method' : 'POISSON'
+
+#### Arguments:
+- **distance_min** (_Float_ = None) : socket 'Distance Min' (id: Distance Min)
+- **density_max** (_Float_ = None) : socket 'Density Max' (id: Density Max)
+- **density_factor** (_Float_ = None) : socket 'Density Factor' (id: Density Factor)
+- **seed** (_Integer_ = None) : socket 'Seed' (id: Seed)
+- **use_legacy_normal** (_bool_ = False) : parameter 'use_legacy_normal'
+
+
+
+#### Returns:
+- **Cloud** (_Vector_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](face.md#face) :black_small_square: [Content](face.md#content) :black_small_square: [Methods](face.md#methods)</sub>
+
+----------
+### distribute_points_random()
+
+> method
+
+``` python
+distribute_points_random(density=None, seed=None, use_legacy_normal=False)
+```
+
+> Method ERROR: Node 'Distribute Points on Faces' not found
+
+Information
+-----------
+- Socket 'Mesh' : self
+- Socket 'Selection' : self[selection]
+- Parameter 'distribute_method' : 'RANDOM'
+
+#### Arguments:
+- **density** (_Float_ = None) : socket 'Density' (id: Density)
+- **seed** (_Integer_ = None) : socket 'Seed' (id: Seed)
+- **use_legacy_normal** (_bool_ = False) : parameter 'use_legacy_normal'
+
+
+
+#### Returns:
+- **Cloud** (_Vector_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](face.md#face) :black_small_square: [Content](face.md#content) :black_small_square: [Methods](face.md#methods)</sub>
+
+----------
+### duplicate()
+
+> method
+
+``` python
+duplicate(amount=None)
+```
+
+> Jump Method [Duplicate Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/duplicate_elements.html)
+
+Information
+-----------
+- Socket 'Geometry' : self
+- Socket 'Selection' : self[selection]
+- Parameter 'domain' : 'FACE'
+
+#### Arguments:
+- **amount** (_Integer_ = None) : socket 'Amount' (id: Amount)
+
+
+
+#### Returns:
+- **Geometry** (_Integer_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](face.md#face) :black_small_square: [Content](face.md#content) :black_small_square: [Methods](face.md#methods)</sub>
+
+----------
+### evaluate_at_index()
+
+> classmethod
+
+``` python
+evaluate_at_index(index=None, value=None)
+```
+
+> Class Method [Evaluate at Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/evaluate_at_index.html)
+
+Information
+-----------
+- Parameter 'data_type' : depending on 'value' type
+- Parameter 'domain' : 'FACE'
+
+#### Arguments:
+- **index** (_Integer_ = None) : socket 'Index' (id: Index)
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](face.md#face) :black_small_square: [Content](face.md#content) :black_small_square: [Methods](face.md#methods)</sub>
+
+----------
+### evaluate_on_domain()
+
+> classmethod
+
+``` python
+evaluate_on_domain(value=None)
+```
+
+> Class Method [Evaluate on Domain](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/evaluate_on_domain.html)
+
+Information
+-----------
+- Parameter 'data_type' : depending on 'value' type
+- Parameter 'domain' : 'FACE'
+
+#### Arguments:
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](face.md#face) :black_small_square: [Content](face.md#content) :black_small_square: [Methods](face.md#methods)</sub>
+
+----------
+### is_planar()
+
+> classmethod
+
+``` python
+is_planar(threshold=None)
+```
+
+> Class Method [Is Face Planar](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/face_is_planar.html)
+
+#### Arguments:
+- **threshold** (_Float_ = None) : socket 'Threshold' (id: Threshold)
+
+
+
+#### Returns:
+- **Boolean** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](face.md#face) :black_small_square: [Content](face.md#content) :black_small_square: [Methods](face.md#methods)</sub>
+
+----------
+### neighbors()
+
+> classmethod
+
+``` python
+neighbors()
+```
+
+> Class Method [Face Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/face_neighbors.html)
+
+#### Returns:
+- **node** (_Integer_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](face.md#face) :black_small_square: [Content](face.md#content) :black_small_square: [Methods](face.md#methods)</sub>
+
+----------
+### sample_index()
+
+> method
+
+``` python
+sample_index(value=None, index=None, clamp=False)
+```
+
+> Method [Sample Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/sample_index.html)
+
+Information
+-----------
+- Socket 'Geometry' : self
+- Parameter 'data_type' : depending on 'value' type
+- Parameter 'domain' : 'FACE'
+
+#### Arguments:
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **index** (_Integer_ = None) : socket 'Index' (id: Index)
+- **clamp** (_bool_ = False) : parameter 'clamp'
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](face.md#face) :black_small_square: [Content](face.md#content) :black_small_square: [Methods](face.md#methods)</sub>
+
+----------
+### sample_nearest()
+
+> method
+
+``` python
+sample_nearest(sample_position=None)
+```
+
+> Method [Sample Nearest](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/sample_nearest.html)
+
+Information
+-----------
+- Socket 'Geometry' : self
+- Parameter 'domain' : 'FACE'
+
+#### Arguments:
+- **sample_position** (_Vector_ = None) : socket 'Sample Position' (id: Sample Position)
 
 
 
@@ -118,29 +648,298 @@ corner_index(face_index=None, weights=None, sort_index=None)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](face.md#face) :black_small_square: [Content](face.md#content) :black_small_square: [Methods](face.md#methods)</sub>
 
 ----------
-### distribute_points()
+### scale()
 
 > method
 
 ``` python
-distribute_points(density=None, distance_min=None, density_max=None, density_factor=None, seed=None)
+scale(scale=None, center=None, scale_mode='UNIFORM')
 ```
 
-> Node ERROR: Node 'Distribute Points on Faces' not found
+> Jump Method [Scale Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/scale_elements.html)
 
-
-
-if 'density' argument is not None, 'RANDOM' method is applied, 'POISSON' otherwise
-
-- distribute_method (str): Node.distribute_method in ('RANDOM', 'POISSON')
-- use_legacy_normal (bool): Node.use_legacy_normal
+Information
+-----------
+- Socket 'Geometry' : self
+- Socket 'Selection' : self[selection]
+- Parameter 'domain' : 'FACE'
 
 #### Arguments:
-- **density** (_Float_ = None) : socket 'Density' (Density)n 'RANDOM' method if not None 'POISSON' otherwise
-- **distance_min** (_Float_ = None) : socket 'Distance Min'
-- **density_max** (_Float_ = None) : socket 'Density Max'
-- **density_factor** (_Float_ = None) : socket 'Density Factor'
-- **seed** (_Integer_ = None) : socket 'Seed' (Seed)
+- **scale** (_Float_ = None) : socket 'Scale' (id: Scale)
+- **center** (_Vector_ = None) : socket 'Center' (id: Center)
+- **scale_mode** (_str_ = UNIFORM) : parameter 'scale_mode' in ('UNIFORM', 'SINGLE_AXIS')
+
+
+
+#### Returns:
+- **Geometry** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](face.md#face) :black_small_square: [Content](face.md#content) :black_small_square: [Methods](face.md#methods)</sub>
+
+----------
+### scale_single_axis()
+
+> method
+
+``` python
+scale_single_axis(scale=None, center=None, axis=None)
+```
+
+> Jump Method [Scale Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/scale_elements.html)
+
+Information
+-----------
+- Socket 'Geometry' : self
+- Socket 'Selection' : self[selection]
+- Parameter 'domain' : 'FACE'
+- Parameter 'scale_mode' : 'SINGLE_AXIS'
+
+#### Arguments:
+- **scale** (_Float_ = None) : socket 'Scale' (id: Scale)
+- **center** (_Vector_ = None) : socket 'Center' (id: Center)
+- **axis** (_Vector_ = None) : socket 'Axis' (id: Axis)
+
+
+
+#### Returns:
+- **Geometry** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](face.md#face) :black_small_square: [Content](face.md#content) :black_small_square: [Methods](face.md#methods)</sub>
+
+----------
+### scale_uniform()
+
+> method
+
+``` python
+scale_uniform(scale=None, center=None)
+```
+
+> Jump Method [Scale Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/scale_elements.html)
+
+Information
+-----------
+- Socket 'Geometry' : self
+- Socket 'Selection' : self[selection]
+- Parameter 'domain' : 'FACE'
+- Parameter 'scale_mode' : 'UNIFORM'
+
+#### Arguments:
+- **scale** (_Float_ = None) : socket 'Scale' (id: Scale)
+- **center** (_Vector_ = None) : socket 'Center' (id: Center)
+
+
+
+#### Returns:
+- **Geometry** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](face.md#face) :black_small_square: [Content](face.md#content) :black_small_square: [Methods](face.md#methods)</sub>
+
+----------
+### separate()
+
+> method
+
+``` python
+separate()
+```
+
+> Jump Method [Separate Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/separate_geometry.html)
+
+Information
+-----------
+- Socket 'Geometry' : self
+- Socket 'Selection' : self[selection]
+- Parameter 'domain' : 'FACE'
+
+#### Returns:
+- **Geometry** (_Geometry_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](face.md#face) :black_small_square: [Content](face.md#content) :black_small_square: [Methods](face.md#methods)</sub>
+
+----------
+### set_selection()
+
+> method
+
+``` python
+set_selection()
+```
+
+> Jump Method [Set Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/write/set_selection.html)
+
+Information
+-----------
+- Socket 'Geometry' : self
+- Socket 'Selection' : self[selection]
+- Parameter 'domain' : 'FACE'
+- Parameter 'selection_type' : depending on 'selection' type
+
+#### Returns:
+- **Geometry** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](face.md#face) :black_small_square: [Content](face.md#content) :black_small_square: [Methods](face.md#methods)</sub>
+
+----------
+### set_shade_smooth()
+
+> method
+
+``` python
+set_shade_smooth(shade_smooth=None)
+```
+
+> Jump Method [Set Shade Smooth](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/write/set_shade_smooth.html)
+
+Information
+-----------
+- Socket 'Geometry' : self
+- Socket 'Selection' : self[selection]
+- Parameter 'domain' : 'FACE'
+
+#### Arguments:
+- **shade_smooth** (_Boolean_ = None) : socket 'Shade Smooth' (id: Shade Smooth)
+
+
+
+#### Returns:
+- **Geometry** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](face.md#face) :black_small_square: [Content](face.md#content) :black_small_square: [Methods](face.md#methods)</sub>
+
+----------
+### sort()
+
+> method
+
+``` python
+sort(group_id=None, sort_weight=None)
+```
+
+> Jump Method [Sort Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/sort_elements.html)
+
+Information
+-----------
+- Socket 'Geometry' : self
+- Socket 'Selection' : self[selection]
+- Parameter 'domain' : 'FACE'
+
+#### Arguments:
+- **group_id** (_Integer_ = None) : socket 'Group ID' (id: Group ID)
+- **sort_weight** (_Float_ = None) : socket 'Sort Weight' (id: Sort Weight)
+
+
+
+#### Returns:
+- **Geometry** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](face.md#face) :black_small_square: [Content](face.md#content) :black_small_square: [Methods](face.md#methods)</sub>
+
+----------
+### split_to_instances()
+
+> method
+
+``` python
+split_to_instances(group_id=None)
+```
+
+> Method [Split to Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/split_to_instances.html)
+
+Information
+-----------
+- Socket 'Geometry' : self
+- Socket 'Selection' : self[selection]
+- Parameter 'domain' : 'FACE'
+
+#### Arguments:
+- **group_id** (_Integer_ = None) : socket 'Group ID' (id: Group ID)
+
+
+
+#### Returns:
+- **Instances** (_Integer_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](face.md#face) :black_small_square: [Content](face.md#content) :black_small_square: [Methods](face.md#methods)</sub>
+
+----------
+### store()
+
+> method
+
+``` python
+store(name=None, value=None)
+```
+
+> Jump Method [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html)
+
+Information
+-----------
+- Socket 'Geometry' : self
+- Socket 'Selection' : self[selection]
+- Parameter 'data_type' : depending on 'value' type
+- Parameter 'domain' : 'FACE'
+
+#### Arguments:
+- **name** (_String_ = None) : socket 'Name' (id: Name)
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+
+
+
+#### Returns:
+- **Geometry** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](face.md#face) :black_small_square: [Content](face.md#content) :black_small_square: [Methods](face.md#methods)</sub>
+
+----------
+### store_named_attribute()
+
+> method
+
+``` python
+store_named_attribute(name=None, value=None)
+```
+
+> Jump Method [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html)
+
+Information
+-----------
+- Socket 'Geometry' : self
+- Socket 'Selection' : self[selection]
+- Parameter 'data_type' : depending on 'value' type
+- Parameter 'domain' : 'FACE'
+
+#### Arguments:
+- **name** (_String_ = None) : socket 'Name' (id: Name)
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+
+
+
+#### Returns:
+- **Geometry** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](face.md#face) :black_small_square: [Content](face.md#content) :black_small_square: [Methods](face.md#methods)</sub>
+
+----------
+### to_points()
+
+> method
+
+``` python
+to_points(position=None, radius=None)
+```
+
+> Method [Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_points.html)
+
+Information
+-----------
+- Socket 'Mesh' : self
+- Socket 'Selection' : self[selection]
+- Parameter 'mode' : 'FACES'
+
+#### Arguments:
+- **position** (_Vector_ = None) : socket 'Position' (id: Position)
+- **radius** (_Float_ = None) : socket 'Radius' (id: Radius)
 
 
 
@@ -150,89 +949,23 @@ if 'density' argument is not None, 'RANDOM' method is applied, 'POISSON' otherwi
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](face.md#face) :black_small_square: [Content](face.md#content) :black_small_square: [Methods](face.md#methods)</sub>
 
 ----------
-### flip()
+### viewer()
 
 > method
 
 ``` python
-flip()
+viewer(value=None)
 ```
 
-> Node [Flip Faces](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/flip_faces.html)
+> Method [Viewer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/output/viewer.html)
 
-
-
-#### Returns:
-- **Mesh** : self
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](face.md#face) :black_small_square: [Content](face.md#content) :black_small_square: [Methods](face.md#methods)</sub>
-
-----------
-### group_boundaries()
-
-> method
-
-``` python
-group_boundaries(face_group_id=None)
-```
-
-> Node [Face Group Boundaries](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/face_group_boundaries.html)
+Information
+-----------
+- Socket 'Geometry' : self
+- Parameter 'data_type' : depending on 'value' type
+- Parameter 'domain' : 'FACE'
 
 #### Arguments:
-- **face_group_id** (_Integer_ = None) : socket 'Face Group ID' (Face Set)
-
-
-
-#### Returns:
-- **Boolean** :
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](face.md#face) :black_small_square: [Content](face.md#content) :black_small_square: [Methods](face.md#methods)</sub>
-
-----------
-### is_planar()
-
-> method
-
-``` python
-is_planar(threshold=None)
-```
-
-> Node [Is Face Planar](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/face_is_planar.html)
-
-#### Arguments:
-- **threshold** (_Float_ = None) : socket 'Threshold' (Threshold)
-
-
-
-#### Returns:
-- **Boolean** :
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](face.md#face) :black_small_square: [Content](face.md#content) :black_small_square: [Methods](face.md#methods)</sub>
-
-----------
-### scale()
-
-> method
-
-``` python
-scale(scale=None, center=None, uniform=True)
-```
-
-> Node [Scale Elements](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/scale_elements.html)
-
-
-
-- domain (str): Node.domain in ('FACE', 'EDGE')
-- scale_mode (str): Node.scale_mode in ('UNIFORM', 'SINGLE_AXIS')
-
-#### Arguments:
-- **scale** (_Float_ = None) : socket 'Scale' (Scale)
-- **center** (_Vector_ = None) : socket 'Center' (Center)
-- **uniform** ( = True)
-
-
-
-#### Returns:
-- **Mesh** : self
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](face.md#face) :black_small_square: [Content](face.md#content) :black_small_square: [Methods](face.md#methods)</sub>

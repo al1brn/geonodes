@@ -4,6 +4,9 @@ from .. treeclass import utils
 from .. scripterror import NodeError
 
 class VolumeShader(Socket):
+    """"
+    $DOC SET hidden
+    """
 
     @classmethod
     def Absorption(cls, color=None, density=None):

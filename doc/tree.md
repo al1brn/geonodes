@@ -1,10 +1,10 @@
 # Tree
 
 ``` python
-Tree(tree_name, tree_type='GeometryNodeTree', clear=True, fake_user=False, is_group=False, prefix=None)
+Tree(tree_name: str, tree_type: str = 'GeometryNodeTree', clear: bool = True, fake_user: bool = False, is_group: bool = False, prefix: str | None = None)
 ```
 
-Root class for [GeoNodes](core-geono-geonodes.md#geonodes) and [ShaderNodes](shade-shade1-shadernodes.md#shadernodes) trees.
+Root class for [GeoNodes](core-geono-geonodes.md#geonodes) and [ShaderNodes](core-shade1-shadernodes.md#shadernodes) trees.
 
 The system manages a stack of Trees. When a Tree is created, it is placed at the top of the stack
 and becomes the current tree.
@@ -34,7 +34,9 @@ tree = Tree.current_tree
 
 > [!CAUTION]
 > This doesn't work with materials embedded shaders. So, make sure not to override
-> a existing shader when instantiating a new [ShaderNodes](shade-shade1-shadernodes.md#shadernodes).
+> a existing shader when instantiating a new [ShaderNodes](core-shade1-shadernodes.md#shadernodes).
+
+The 'panel' argument is the default name to use when the tree is called from another tree using method [link_from](node.md#link_from).
 
 #### Arguments:
 - **tree_name** (_str_) : tree name
@@ -42,14 +44,14 @@ tree = Tree.current_tree
 - **clear** (_bool_ = True) : clear the current tree
 - **fake_user** (_bool_ = False) : fake user flag
 - **is_group** (_bool_ = False) : Group or not
-- **prefix** (_str_ = None) : str prefix to add at the beging of the tree name
+- **prefix** (_str | None_ = None) : str prefix to add at the beging of the tree name
 
 ## Content
 
 - **A** : [arrange](tree.md#arrange)
 - **C** : [clear](tree.md#clear)
 - **I** : [\_\_init__](tree.md#__init__) :black_small_square: [input_node](tree.md#input_node)
-- **L** : [link](tree.md#link)
+- **L** : [link](tree.md#link) :black_small_square: [link_nodes](tree.md#link_nodes)
 - **N** : [new_input](tree.md#new_input) :black_small_square: [new_input_from_input_socket](tree.md#new_input_from_input_socket) :black_small_square: [new_output](tree.md#new_output)
 - **O** : [output_node](tree.md#output_node)
 - **P** : [pop](tree.md#pop) :black_small_square: [push](tree.md#push)
@@ -126,10 +128,10 @@ Remove all the nodes in the Tree.
 > method
 
 ``` python
-__init__(tree_name, tree_type='GeometryNodeTree', clear=True, fake_user=False, is_group=False, prefix=None)
+__init__(tree_name: str, tree_type: str = 'GeometryNodeTree', clear: bool = True, fake_user: bool = False, is_group: bool = False, prefix: str | None = None)
 ```
 
-Root class for [GeoNodes](core-geono-geonodes.md#geonodes) and [ShaderNodes](shade-shade1-shadernodes.md#shadernodes) trees.
+Root class for [GeoNodes](core-geono-geonodes.md#geonodes) and [ShaderNodes](core-shade1-shadernodes.md#shadernodes) trees.
 
 The system manages a stack of Trees. When a Tree is created, it is placed at the top of the stack
 and becomes the current tree.
@@ -159,7 +161,9 @@ tree = Tree.current_tree
 
 > [!CAUTION]
 > This doesn't work with materials embedded shaders. So, make sure not to override
-> a existing shader when instantiating a new [ShaderNodes](shade-shade1-shadernodes.md#shadernodes).
+> a existing shader when instantiating a new [ShaderNodes](core-shade1-shadernodes.md#shadernodes).
+
+The 'panel' argument is the default name to use when the tree is called from another tree using method [link_from](node.md#link_from).
 
 #### Arguments:
 - **tree_name** (_str_) : tree name
@@ -167,7 +171,7 @@ tree = Tree.current_tree
 - **clear** (_bool_ = True) : clear the current tree
 - **fake_user** (_bool_ = False) : fake user flag
 - **is_group** (_bool_ = False) : Group or not
-- **prefix** (_str_ = None) : str prefix to add at the beging of the tree name
+- **prefix** (_str | None_ = None) : str prefix to add at the beging of the tree name
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Tree](tree.md#tree) :black_small_square: [Content](tree.md#content) :black_small_square: [Methods](tree.md#methods)</sub>
 
@@ -194,12 +198,35 @@ link(out_socket, in_socket)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Tree](tree.md#tree) :black_small_square: [Content](tree.md#content) :black_small_square: [Methods](tree.md#methods)</sub>
 
 ----------
+### link_nodes()
+
+> method
+
+``` python
+link_nodes(from_node, to_node, include=None, exclude=[], create=True, panel=None)
+```
+
+Link two nodes
+
+If from_node is a Group Input node, the necessary sockets can be created if 'create' argument is True.
+
+#### Arguments:
+- **from_node** : the node to get the outputs from
+- **to_node** : the node to plug into
+- **include** (_list_ = None) : connect only the sockets in the list
+- **exclude** (_list_ = []) : exclude sockets in this list
+- **create** ( = True) : create the output sockets in from_node if it is a 'Group Input Node'
+- **panel** ( = None) : panel name to create, use tree default name if None
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Tree](tree.md#tree) :black_small_square: [Content](tree.md#content) :black_small_square: [Methods](tree.md#methods)</sub>
+
+----------
 ### new_input()
 
 > classmethod
 
 ``` python
-new_input(bl_idname, name, subtype='NONE', value=None, min_value=None, max_value=None, description='')
+new_input(bl_idname: str, name: str, value: 'Any' = None, panel: str | None = None, **props)
 ```
 
 Create a new input socket.
@@ -207,13 +234,11 @@ Create a new input socket.
 This is an **input socket** of the Tree, hence an **output socket** of the ERROR: Node 'Input' not found node.
 
 #### Arguments:
-- **bl_idname** (_str_) : socket bl_idname - name (str) : Socket name - value (any = None) : Default value - min_value (any = None) : Minimum value - max_value (any = None) : Maxium value - description (str = None) : user tip
-- **name**
-- **subtype** ( = NONE)
-- **value** ( = None)
-- **min_value** ( = None)
-- **max_value** ( = None)
-- **description** ( = )
+- **bl_idname** (_str_) : socket bl_idname - name : Socket name - value : Default value - props : properties specific to interface socket
+- **name** (_str_)
+- **value** (_Any_ = None)
+- **panel** (_str | None_ = None)
+- **props**
 
 
 
@@ -228,7 +253,7 @@ This is an **input socket** of the Tree, hence an **output socket** of the ERROR
 > classmethod
 
 ``` python
-new_input_from_input_socket(input_socket, name=None)
+new_input_from_input_socket(input_socket, name=None, panel=None)
 ```
 
 Create a new group input socket from an existing input socket.
@@ -236,6 +261,7 @@ Create a new group input socket from an existing input socket.
 #### Arguments:
 - **input_socket** (_socket_) : a node input _insocket
 - **name** (_str_ = None) : name of the group input socket to create
+- **panel** (_str_ = None) : name of the panel
 
 
 
@@ -250,7 +276,7 @@ Create a new group input socket from an existing input socket.
 > method
 
 ``` python
-new_output(bl_idname, name)
+new_output(bl_idname, name, panel=None, **props)
 ```
 
 Create a new output socket.
@@ -260,6 +286,8 @@ This is an **output socket** of the Tree, hence an input socket of the [Output](
 #### Arguments:
 - **bl_idname** (_str_) : socket bl_idname - name (str) : Socket name
 - **name**
+- **panel** ( = None)
+- **props**
 
 
 
@@ -274,7 +302,7 @@ This is an **output socket** of the Tree, hence an input socket of the [Output](
 > method
 
 ``` python
-pop()
+pop(clean=True)
 ```
 
 > Remove this tree from the stack
@@ -292,6 +320,11 @@ with Tree("My Name"):
 
 #### Raises:
 - **NodeError** : if this tree is not the current one
+
+
+
+#### Arguments:
+- **clean** ( = True)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Tree](tree.md#tree) :black_small_square: [Content](tree.md#content) :black_small_square: [Methods](tree.md#methods)</sub>
 

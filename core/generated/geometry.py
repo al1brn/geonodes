@@ -4,6 +4,9 @@ from .. treeclass import utils
 from .. scripterror import NodeError
 
 class Geometry(Socket):
+    """"
+    $DOC SET hidden
+    """
 
     def bounding_box(self):
         """ > Method <&Node Bounding Box>

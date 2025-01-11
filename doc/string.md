@@ -1,9 +1,7 @@
 # String
 
-> Bases classes: [Socket](socket.md#socket)
-
 ``` python
-String(value='', name=None, tip=None)
+String(value='', name=None, tip=None, panel=None, subtype='NONE', hide_value=False, hide_in_modifier=False)
 ```
 
 Socket of type String
@@ -16,36 +14,27 @@ A group input socket of type String is created if the name is not None.
 - **value** (_str or Socket_ = ) : initial value
 - **name** (_str_ = None) : group input socket name if not None
 - **tip** (_str_ = None) : user type for group input socket
+- **panel** (_str_ = None) : panel name (overrides tree pane if exists)
+- **subtype** (_str in ('NONE', 'FILE_PATH')_ = NONE) : sub type for group input
+- **hide_value** (_bool_ = False) : Hide Value option
+- **hide_in_modifier** (_bool_ = False) : Hide in Modifier option
 
 ### Inherited
 
-[blur](socket.md#blur) :black_small_square: [\_cache](nodecache.md#_cache) :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](socket.md#check_in_list) :black_small_square: [data_type](socket.md#data_type) :black_small_square: [\_geometry_class](socket.md#_geometry_class) :black_small_square: [\_\_getattr__](socket.md#__getattr__) :black_small_square: [get_socket_class](socket.md#get_socket_class) :black_small_square: [hash_value](socket.md#hash_value) :black_small_square: [IndexSwitch](socket.md#indexswitch) :black_small_square: [index_switch](socket.md#index_switch) :black_small_square: [input_type](socket.md#input_type) :black_small_square: [\_jump](socket.md#_jump) :black_small_square: [\_lc](socket.md#_lc) :black_small_square: [\_lcop](socket.md#_lcop) :black_small_square: [MenuSwitch](socket.md#menuswitch) :black_small_square: [menu_switch](socket.md#menu_switch) :black_small_square: [node](socket.md#node) :black_small_square: [node_color](socket.md#node_color) :black_small_square: [node_label](socket.md#node_label) :black_small_square: [out](socket.md#out) :black_small_square: [pin_gizmo](socket.md#pin_gizmo) :black_small_square: [\_reset](socket.md#_reset) :black_small_square: [\_run_tests](socket.md#_run_tests) :black_small_square: [socket_type](socket.md#socket_type) :black_small_square: [\_\_str__](socket.md#__str__) :black_small_square: [Switch](socket.md#switch) :black_small_square: [switch](socket.md#switch) :black_small_square:
+[\_cache](nodecache.md#_cache) :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](socket.md#check_in_list) :black_small_square: [data_type](socket.md#data_type) :black_small_square: [\_domain_to_geometry](socket.md#_domain_to_geometry) :black_small_square: [\_geometry_class](socket.md#_geometry_class) :black_small_square: [\_\_getattr__](socket.md#__getattr__) :black_small_square: [get_node_data_type](socket.md#get_node_data_type) :black_small_square: [get_socket_class](socket.md#get_socket_class) :black_small_square: [IndexSwitch](socket.md#indexswitch) :black_small_square: [index_switch](socket.md#index_switch) :black_small_square: [Input](socket.md#input) :black_small_square: [input_type](socket.md#input_type) :black_small_square: [\_interface_socket](socket.md#_interface_socket) :black_small_square: [\_is_group_input](socket.md#_is_group_input) :black_small_square: [\_is_group_output](socket.md#_is_group_output) :black_small_square: [\_is_group_socket](socket.md#_is_group_socket) :black_small_square: [\_jump](socket.md#_jump) :black_small_square: [\_lc](socket.md#_lc) :black_small_square: [\_lcop](socket.md#_lcop) :black_small_square: [\_lock](proplocker.md#_lock) :black_small_square: [MenuSwitch](socket.md#menuswitch) :black_small_square: [menu_switch](socket.md#menu_switch) :black_small_square: [node](socket.md#node) :black_small_square: [node_color](socket.md#node_color) :black_small_square: [node_label](socket.md#node_label) :black_small_square: [out](socket.md#out) :black_small_square: [\_panel_name](socket.md#_panel_name) :black_small_square: [pin_gizmo](socket.md#pin_gizmo) :black_small_square: [\_reset](socket.md#_reset) :black_small_square: [\_run_tests](socket.md#_run_tests) :black_small_square: [\_\_setattr__](socket.md#__setattr__) :black_small_square: [\_set_interface_property](socket.md#_set_interface_property) :black_small_square: [socket_type](socket.md#socket_type) :black_small_square: [\_\_str__](socket.md#__str__) :black_small_square: [Switch](socket.md#switch) :black_small_square: [switch](socket.md#switch) :black_small_square: [\_unlock](proplocker.md#_unlock) :black_small_square:
 
 ## Content
 
-- [equal](string.md#equal)
-- [FromValue](string.md#fromvalue)
-- [\_\_init__](string.md#__init__)
-- [Join](string.md#join)
-- [join](string.md#join)
-- [length](string.md#length)
-- [not_equal](string.md#not_equal)
-- [replace](string.md#replace)
-- [slice](string.md#slice)
-- [to_curves](string.md#to_curves)
-
-## Properties
-
-
-
-### length
-
-> _type_: **Integer**
->
-
-> Node [String Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/string_length.html)
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [String](string.md#string) :black_small_square: [Content](string.md#content) :black_small_square: [Properties](string.md#properties)</sub>
+- **E** : [equal](string.md#equal)
+- **F** : [FilePath](string.md#filepath)
+- **H** : [hash_value](string.md#hash_value)
+- **I** : [\_\_init__](string.md#__init__)
+- **J** : [Join](string.md#join) :black_small_square: [join](string.md#join)
+- **L** : [length](string.md#length)
+- **N** : [not_equal](string.md#not_equal)
+- **R** : [replace](string.md#replace)
+- **S** : [slice](string.md#slice) :black_small_square: [special_characters](string.md#special_characters)
+- **T** : [to_curves](string.md#to_curves)
 
 ## Methods
 
@@ -57,15 +46,20 @@ A group input socket of type String is created if the name is not None.
 > method
 
 ``` python
-equal(other)
+equal(b=None)
 ```
 
-> Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+> Method [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
-Node compare with data_type = 'STRING' and operation = 'EQUAL'
+Information
+-----------
+- Socket 'A' : self
+- Parameter 'data_type' : 'STRING'
+- Parameter 'mode' : 'ELEMENT'
+- Parameter 'operation' : 'EQUAL'
 
 #### Arguments:
-- **other** (_string_) : socket 'B' (B)
+- **b** (_String_ = None) : socket 'B' (id: B_STR)
 
 
 
@@ -75,24 +69,49 @@ Node compare with data_type = 'STRING' and operation = 'EQUAL'
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [String](string.md#string) :black_small_square: [Content](string.md#content) :black_small_square: [Methods](string.md#methods)</sub>
 
 ----------
-### FromValue()
+### FilePath()
 
 > classmethod
 
 ``` python
-FromValue(value, decimals=0)
+FilePath(value='', name='File Path', tip=None, panel=None, hide_value=False, hide_in_modifier=False)
 ```
 
-> Node [Value to String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/value_to_string.html)
+File path String
 
 #### Arguments:
-- **value** (_Float_) : socket 'Value' (Value)
-- **decimals** (_Int_ = 0) : socket 'Decimals' (Decimals)
+- **value** ( = )
+- **name** ( = File Path)
+- **tip** ( = None)
+- **panel** ( = None)
+- **hide_value** ( = False)
+- **hide_in_modifier** ( = False)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [String](string.md#string) :black_small_square: [Content](string.md#content) :black_small_square: [Methods](string.md#methods)</sub>
+
+----------
+### hash_value()
+
+> method
+
+``` python
+hash_value(seed=None)
+```
+
+> Method [Hash Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/hash_value.html)
+
+Information
+-----------
+- Socket 'Value' : self
+- Parameter 'data_type' : 'STRING'
+
+#### Arguments:
+- **seed** (_Integer_ = None) : socket 'Seed' (id: Seed)
 
 
 
 #### Returns:
-- **String** :
+- **Integer** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [String](string.md#string) :black_small_square: [Content](string.md#content) :black_small_square: [Methods](string.md#methods)</sub>
 
@@ -102,7 +121,7 @@ FromValue(value, decimals=0)
 > method
 
 ``` python
-__init__(value='', name=None, tip=None)
+__init__(value='', name=None, tip=None, panel=None, subtype='NONE', hide_value=False, hide_in_modifier=False)
 ```
 
 Socket of type String
@@ -115,6 +134,10 @@ A group input socket of type String is created if the name is not None.
 - **value** (_str or Socket_ = ) : initial value
 - **name** (_str_ = None) : group input socket name if not None
 - **tip** (_str_ = None) : user type for group input socket
+- **panel** (_str_ = None) : panel name (overrides tree pane if exists)
+- **subtype** (_str in ('NONE', 'FILE_PATH')_ = NONE) : sub type for group input
+- **hide_value** (_bool_ = False) : Hide Value option
+- **hide_in_modifier** (_bool_ = False) : Hide in Modifier option
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [String](string.md#string) :black_small_square: [Content](string.md#content) :black_small_square: [Methods](string.md#methods)</sub>
 
@@ -127,11 +150,11 @@ A group input socket of type String is created if the name is not None.
 Join(*strings, delimiter=None)
 ```
 
-> Node [Join Strings](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/join_strings.html)
+> Constructor [Join Strings](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/join_strings.html)
 
 #### Arguments:
-- **strings** (_String_) : socket 'Strings' (Strings)
-- **delimiter** (_String_ = None) : socket 'Delimiter' (Delimiter)
+- **strings** (_String_) : socket 'Strings' (id: Strings)
+- **delimiter** (_String_ = None) : socket 'Delimiter' (id: Delimiter)
 
 
 
@@ -149,12 +172,14 @@ Join(*strings, delimiter=None)
 join(*strings)
 ```
 
-> Node [Join Strings](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/join_strings.html)
+> Method [Join Strings](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/join_strings.html)
 
-
+Information
+-----------
+- Socket 'Delimiter' : self
 
 #### Arguments:
-- **strings** (_String_) : socket 'Strings' (Strings)
+- **strings** (_String_) : socket 'Strings' (id: Strings)
 
 
 
@@ -164,20 +189,45 @@ join(*strings)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [String](string.md#string) :black_small_square: [Content](string.md#content) :black_small_square: [Methods](string.md#methods)</sub>
 
 ----------
+### length()
+
+> method
+
+``` python
+length()
+```
+
+> Method [String Length](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/string_length.html)
+
+Information
+-----------
+- Socket 'String' : self
+
+#### Returns:
+- **Integer** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [String](string.md#string) :black_small_square: [Content](string.md#content) :black_small_square: [Methods](string.md#methods)</sub>
+
+----------
 ### not_equal()
 
 > method
 
 ``` python
-not_equal(other)
+not_equal(b=None)
 ```
 
-> Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+> Method [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
-Node compare with data_type = 'STRING' and operation = 'NOT_EQUAL'
+Information
+-----------
+- Socket 'A' : self
+- Parameter 'data_type' : 'STRING'
+- Parameter 'mode' : 'ELEMENT'
+- Parameter 'operation' : 'NOT_EQUAL'
 
 #### Arguments:
-- **other** (_string_) : socket 'B' (B)
+- **b** (_String_ = None) : socket 'B' (id: B_STR)
 
 
 
@@ -195,13 +245,15 @@ Node compare with data_type = 'STRING' and operation = 'NOT_EQUAL'
 replace(find=None, replace=None)
 ```
 
-> Node [Replace String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/replace_string.html)
+> Method [Replace String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/replace_string.html)
 
-
+Information
+-----------
+- Socket 'String' : self
 
 #### Arguments:
-- **find** (_String_ = None) : socket 'Find' (Find)
-- **replace** (_String_ = None) : socket 'Replace' (Replace)
+- **find** (_String_ = None) : socket 'Find' (id: Find)
+- **replace** (_String_ = None) : socket 'Replace' (id: Replace)
 
 
 
@@ -216,16 +268,18 @@ replace(find=None, replace=None)
 > method
 
 ``` python
-slice(position=0, length=10)
+slice(position=None, length=None)
 ```
 
-> Node [Slice String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/slice_string.html)
+> Method [Slice String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/slice_string.html)
 
-
+Information
+-----------
+- Socket 'String' : self
 
 #### Arguments:
-- **position** (_Integer_ = 0) : socket 'Position' (Position)
-- **length** (_Integer_ = 10) : socket 'Length' (Length)
+- **position** (_Integer_ = None) : socket 'Position' (id: Position)
+- **length** (_Integer_ = None) : socket 'Length' (id: Length)
 
 
 
@@ -235,32 +289,50 @@ slice(position=0, length=10)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [String](string.md#string) :black_small_square: [Content](string.md#content) :black_small_square: [Methods](string.md#methods)</sub>
 
 ----------
+### special_characters()
+
+> classmethod
+
+``` python
+special_characters()
+```
+
+> Class Method [Special Characters](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/special_characters.html)
+
+#### Returns:
+- **node** (_String_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [String](string.md#string) :black_small_square: [Content](string.md#content) :black_small_square: [Methods](string.md#methods)</sub>
+
+----------
 ### to_curves()
 
 > method
 
 ``` python
-to_curves(size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, text_box_height=None, overflow='OVERFLOW', align_x='LEFT', align_y='TOP_BASELINE', pivot_mode='BOTTOM_LEFT', font=None)
+to_curves(size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, align_x='LEFT', align_y='TOP_BASELINE', overflow='OVERFLOW', pivot_mode='BOTTOM_LEFT')
 ```
 
-> Node [String to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/string_to_curves.html)
+> Method [String to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/string_to_curves.html)
+
+Information
+-----------
+- Socket 'String' : self
 
 #### Arguments:
-- **size** (_Float_ = None) : socket 'Size' (Size)
-- **character_spacing** (_Float_ = None) : socket 'Character Spacing' (Character Spacing)
-- **word_spacing** (_Float_ = None) : socket 'Word Spacing' (Word Spacing)
-- **line_spacing** (_Float_ = None) : socket 'Line Spacing' (Line Spacing)
-- **text_box_width** (_Float_ = None) : socket 'Text Box Width' (Text Box Width)
-- **text_box_height** (_Float_ = None) : socket 'Text Box Height' (Text Box Height)
-- **overflow** (_str_ = OVERFLOW) : Node.overflow in ('OVERFLOW', 'SCALE_TO_FIT', 'TRUNCATE')
-- **align_x** (_str_ = LEFT) : Node.align_x in ('LEFT', 'CENTER', 'RIGHT', 'JUSTIFY', 'FLUSH')
-- **align_y** (_str_ = TOP_BASELINE) : Node.align_y in ('TOP', 'TOP_BASELINE', 'MIDDLE', 'BOTTOM_BASELINE', 'BOTTOM')
-- **pivot_mode** (_str_ = BOTTOM_LEFT) : Node.pivot_mode in ('MIDPOINT', 'TOP_LEFT', 'TOP_CENTER', 'TOP_RIGHT', 'BOTTOM_LEFT', 'BOTTOM_CENTER', 'BOTTOM_RIGHT')
-- **font** (_VectorFont_ = None) : Node.font
+- **size** (_Float_ = None) : socket 'Size' (id: Size)
+- **character_spacing** (_Float_ = None) : socket 'Character Spacing' (id: Character Spacing)
+- **word_spacing** (_Float_ = None) : socket 'Word Spacing' (id: Word Spacing)
+- **line_spacing** (_Float_ = None) : socket 'Line Spacing' (id: Line Spacing)
+- **text_box_width** (_Float_ = None) : socket 'Text Box Width' (id: Text Box Width)
+- **align_x** (_str_ = LEFT) : parameter 'align_x' in ('LEFT', 'CENTER', 'RIGHT', 'JUSTIFY', 'FLUSH')
+- **align_y** (_str_ = TOP_BASELINE) : parameter 'align_y' in ('TOP', 'TOP_BASELINE', 'MIDDLE', 'BOTTOM_BASELINE', 'BOTTOM')
+- **overflow** (_str_ = OVERFLOW) : parameter 'overflow' in ('OVERFLOW', 'SCALE_TO_FIT', 'TRUNCATE')
+- **pivot_mode** (_str_ = BOTTOM_LEFT) : parameter 'pivot_mode' in ('MIDPOINT', 'TOP_LEFT', 'TOP_CENTER', 'TOP_RIGHT', 'BOTTOM_LEFT', 'BOTTOM_CENTER', 'BOTTOM_RIGHT')
 
 
 
 #### Returns:
-- **Curve** :
+- **Instances** (_Integer_)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [String](string.md#string) :black_small_square: [Content](string.md#content) :black_small_square: [Methods](string.md#methods)</sub>

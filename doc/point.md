@@ -1,16 +1,28 @@
-# Instance
+# Point
 
 ``` python
-Instance(geometry: geonodes.core.geometry_class.Geometry)
+Point(geometry: geonodes.core.geometry_class.Geometry)
 ```
 
-> Instance domain of [Instances](instances.md#instances)
+> Base class for geometry domains
 
-> [!NOTE]
-> The geometry has only one domain sharing the same name:
-> - [Instances](instances.md#instances) : name of geometry class
-> - **Instance** : name of domain class
-> - [insts](instances.md#insts) : name of the domain property of class [Instances](instances.md#instances)
+A domain stores the default value to be set in node needing a **domain** parameter
+such as 'Store Named Attibute.
+
+All nodes requiring a domain parameter are implemented as domain method
+
+``` python
+cube = Mesh.Cube()
+cube.faces.store_named_attribute() # doamin = 'FACE'
+```
+
+> [!IMPORTANT]
+> Domains are never instantiated directly but created by geometries.
+
+> See: [Vertex](vertex.md#vertex), [Face](face.md#face), [Edge](edge.md#edge), [Corner](corner.md#corner), [SplinePoint](splinepoint.md#splinepoint), [Spline](spline.md#spline), [CloudPoint](cloudpoint.md#cloudpoint), [Instance](instance.md#instance)
+
+Properties:
+- _geo (Geometry) : the geometry the domain belongs to
 
 #### Arguments:
 - **geometry** (_Geometry_)
@@ -21,13 +33,15 @@ Instance(geometry: geonodes.core.geometry_class.Geometry)
 
 ## Content
 
-- **A** : [accumulate_field](instance.md#accumulate_field) :black_small_square: [attribute_statistic](instance.md#attribute_statistic)
-- **C** : [count](instance.md#count)
-- **D** : [delete](instance.md#delete) :black_small_square: [delete_all](instance.md#delete_all) :black_small_square: [delete_edge_face](instance.md#delete_edge_face) :black_small_square: [delete_geometry](instance.md#delete_geometry) :black_small_square: [delete_geometry_all](instance.md#delete_geometry_all) :black_small_square: [delete_geometry_edge_face](instance.md#delete_geometry_edge_face) :black_small_square: [delete_geometry_only_face](instance.md#delete_geometry_only_face) :black_small_square: [delete_only_face](instance.md#delete_only_face) :black_small_square: [duplicate](instance.md#duplicate)
-- **E** : [evaluate_at_index](instance.md#evaluate_at_index) :black_small_square: [evaluate_on_domain](instance.md#evaluate_on_domain)
-- **R** : [rotation](instance.md#rotation)
-- **S** : [sample_index](instance.md#sample_index) :black_small_square: [scale](instance.md#scale) :black_small_square: [separate](instance.md#separate) :black_small_square: [sort](instance.md#sort) :black_small_square: [split_to_instances](instance.md#split_to_instances) :black_small_square: [store](instance.md#store) :black_small_square: [store_named_attribute](instance.md#store_named_attribute)
-- **V** : [viewer](instance.md#viewer)
+- **A** : [accumulate_field](point.md#accumulate_field) :black_small_square: [active_element](point.md#active_element) :black_small_square: [attribute_statistic](point.md#attribute_statistic)
+- **C** : [count](point.md#count)
+- **D** : [delete](point.md#delete) :black_small_square: [delete_all](point.md#delete_all) :black_small_square: [delete_edge_face](point.md#delete_edge_face) :black_small_square: [delete_geometry](point.md#delete_geometry) :black_small_square: [delete_geometry_all](point.md#delete_geometry_all) :black_small_square: [delete_geometry_edge_face](point.md#delete_geometry_edge_face) :black_small_square: [delete_geometry_only_face](point.md#delete_geometry_only_face) :black_small_square: [delete_only_face](point.md#delete_only_face) :black_small_square: [duplicate](point.md#duplicate)
+- **E** : [evaluate_at_index](point.md#evaluate_at_index) :black_small_square: [evaluate_on_domain](point.md#evaluate_on_domain)
+- **I** : [instance_on](point.md#instance_on)
+- **O** : [offset](point.md#offset)
+- **P** : [position](point.md#position)
+- **S** : [sample_index](point.md#sample_index) :black_small_square: [sample_nearest](point.md#sample_nearest) :black_small_square: [separate](point.md#separate) :black_small_square: [set_radius](point.md#set_radius) :black_small_square: [set_selection](point.md#set_selection) :black_small_square: [sort](point.md#sort) :black_small_square: [split_to_instances](point.md#split_to_instances) :black_small_square: [store](point.md#store) :black_small_square: [store_named_attribute](point.md#store_named_attribute)
+- **V** : [viewer](point.md#viewer)
 
 ## Properties
 
@@ -38,55 +52,27 @@ Instance(geometry: geonodes.core.geometry_class.Geometry)
 > _type_: **Integer**
 >
 
-> Socket 'Instance Count' of node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
+> Socket 'Point Count' of node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Instance](instance.md#instance) :black_small_square: [Content](instance.md#content) :black_small_square: [Properties](instance.md#properties)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Point](point.md#point) :black_small_square: [Content](point.md#content) :black_small_square: [Properties](point.md#properties)</sub>
 
-### rotation
+### offset
 
 > _type_: **?**
 >
 
-> Rotation property
+Write only property for node <Node Set Position>
 
-- getter : [Instance Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_rotation.html)
-- setter : [Rotate Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/rotate_instances.html)
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Point](point.md#point) :black_small_square: [Content](point.md#content) :black_small_square: [Properties](point.md#properties)</sub>
 
- Rotation can be set either by a [Rotation](rotation.md#rotation) argument or by a dict with keys
- in ('Rotation', 'Pivot Point', 'Local Space')
+### position
 
- ``` python
- instances = Instances()
- instances.insts.rotation = (1, 2, 3)
- instances.insts.rotation = {'Rotation': (1, 2, 3), 'Pivot Point': (10, 11, 12), 'Local Space': True}
- ```
-
- Returns
- -------
- - Rotation
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Instance](instance.md#instance) :black_small_square: [Content](instance.md#content) :black_small_square: [Properties](instance.md#properties)</sub>
-
-### scale
-
-> _type_: **Vector**
+> _type_: **?**
 >
 
-> Scale property
+Property get node <Node Set Position>
 
-- getter : [Instance Scale](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_scale.html)
-- setter : [Scale Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/scale_instances.html)
-
-Scale can be set either by a [Vector](vector.md#vector) argument or by a dict with keys
-in ('Scale', 'Center', 'Local Space')
-
-``` python
-instances = Instances()
-instances.insts.scale = (1, 2, 3)
-instances.insts.scale = {'Scale': (1, 2, 3), 'Center': (10, 11, 12), 'Local Space': True}
-```
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Instance](instance.md#instance) :black_small_square: [Content](instance.md#content) :black_small_square: [Properties](instance.md#properties)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Point](point.md#point) :black_small_square: [Content](point.md#content) :black_small_square: [Properties](point.md#properties)</sub>
 
 ## Methods
 
@@ -106,7 +92,7 @@ accumulate_field(value=None, group_id=None)
 Information
 -----------
 - Parameter 'data_type' : depending on 'value' type
-- Parameter 'domain' : 'INSTANCE'
+- Parameter 'domain' : 'POINT'
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
@@ -117,7 +103,27 @@ Information
 #### Returns:
 - **Float** (_Float_)
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Instance](instance.md#instance) :black_small_square: [Content](instance.md#content) :black_small_square: [Methods](instance.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Point](point.md#point) :black_small_square: [Content](point.md#content) :black_small_square: [Methods](point.md#methods)</sub>
+
+----------
+### active_element()
+
+> classmethod
+
+``` python
+active_element()
+```
+
+> Class Method [Active Element](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/active_element.html)
+
+Information
+-----------
+- Parameter 'domain' : 'POINT'
+
+#### Returns:
+- **Integer** (_Boolean_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Point](point.md#point) :black_small_square: [Content](point.md#content) :black_small_square: [Methods](point.md#methods)</sub>
 
 ----------
 ### attribute_statistic()
@@ -135,7 +141,7 @@ Information
 - Socket 'Geometry' : self
 - Socket 'Selection' : self[selection]
 - Parameter 'data_type' : depending on 'attribute' type
-- Parameter 'domain' : 'INSTANCE'
+- Parameter 'domain' : 'POINT'
 
 #### Arguments:
 - **attribute** (_Float_ = None) : socket 'Attribute' (id: Attribute)
@@ -145,7 +151,7 @@ Information
 #### Returns:
 - **node** (_Float_)
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Instance](instance.md#instance) :black_small_square: [Content](instance.md#content) :black_small_square: [Methods](instance.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Point](point.md#point) :black_small_square: [Content](point.md#content) :black_small_square: [Methods](point.md#methods)</sub>
 
 ----------
 ### delete()
@@ -162,7 +168,7 @@ Information
 -----------
 - Socket 'Geometry' : self
 - Socket 'Selection' : self[selection]
-- Parameter 'domain' : 'INSTANCE'
+- Parameter 'domain' : 'POINT'
 
 #### Arguments:
 - **mode** (_str_ = ALL) : parameter 'mode' in ('ALL', 'EDGE_FACE', 'ONLY_FACE')
@@ -172,7 +178,7 @@ Information
 #### Returns:
 - **Geometry** :
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Instance](instance.md#instance) :black_small_square: [Content](instance.md#content) :black_small_square: [Methods](instance.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Point](point.md#point) :black_small_square: [Content](point.md#content) :black_small_square: [Methods](point.md#methods)</sub>
 
 ----------
 ### delete_all()
@@ -189,13 +195,13 @@ Information
 -----------
 - Socket 'Geometry' : self
 - Socket 'Selection' : self[selection]
-- Parameter 'domain' : 'INSTANCE'
+- Parameter 'domain' : 'POINT'
 - Parameter 'mode' : 'ALL'
 
 #### Returns:
 - **Geometry** :
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Instance](instance.md#instance) :black_small_square: [Content](instance.md#content) :black_small_square: [Methods](instance.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Point](point.md#point) :black_small_square: [Content](point.md#content) :black_small_square: [Methods](point.md#methods)</sub>
 
 ----------
 ### delete_edge_face()
@@ -212,13 +218,13 @@ Information
 -----------
 - Socket 'Geometry' : self
 - Socket 'Selection' : self[selection]
-- Parameter 'domain' : 'INSTANCE'
+- Parameter 'domain' : 'POINT'
 - Parameter 'mode' : 'EDGE_FACE'
 
 #### Returns:
 - **Geometry** :
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Instance](instance.md#instance) :black_small_square: [Content](instance.md#content) :black_small_square: [Methods](instance.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Point](point.md#point) :black_small_square: [Content](point.md#content) :black_small_square: [Methods](point.md#methods)</sub>
 
 ----------
 ### delete_geometry()
@@ -235,7 +241,7 @@ Information
 -----------
 - Socket 'Geometry' : self
 - Socket 'Selection' : self[selection]
-- Parameter 'domain' : 'INSTANCE'
+- Parameter 'domain' : 'POINT'
 
 #### Arguments:
 - **mode** (_str_ = ALL) : parameter 'mode' in ('ALL', 'EDGE_FACE', 'ONLY_FACE')
@@ -245,7 +251,7 @@ Information
 #### Returns:
 - **Geometry** :
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Instance](instance.md#instance) :black_small_square: [Content](instance.md#content) :black_small_square: [Methods](instance.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Point](point.md#point) :black_small_square: [Content](point.md#content) :black_small_square: [Methods](point.md#methods)</sub>
 
 ----------
 ### delete_geometry_all()
@@ -262,13 +268,13 @@ Information
 -----------
 - Socket 'Geometry' : self
 - Socket 'Selection' : self[selection]
-- Parameter 'domain' : 'INSTANCE'
+- Parameter 'domain' : 'POINT'
 - Parameter 'mode' : 'ALL'
 
 #### Returns:
 - **Geometry** :
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Instance](instance.md#instance) :black_small_square: [Content](instance.md#content) :black_small_square: [Methods](instance.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Point](point.md#point) :black_small_square: [Content](point.md#content) :black_small_square: [Methods](point.md#methods)</sub>
 
 ----------
 ### delete_geometry_edge_face()
@@ -285,13 +291,13 @@ Information
 -----------
 - Socket 'Geometry' : self
 - Socket 'Selection' : self[selection]
-- Parameter 'domain' : 'INSTANCE'
+- Parameter 'domain' : 'POINT'
 - Parameter 'mode' : 'EDGE_FACE'
 
 #### Returns:
 - **Geometry** :
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Instance](instance.md#instance) :black_small_square: [Content](instance.md#content) :black_small_square: [Methods](instance.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Point](point.md#point) :black_small_square: [Content](point.md#content) :black_small_square: [Methods](point.md#methods)</sub>
 
 ----------
 ### delete_geometry_only_face()
@@ -308,13 +314,13 @@ Information
 -----------
 - Socket 'Geometry' : self
 - Socket 'Selection' : self[selection]
-- Parameter 'domain' : 'INSTANCE'
+- Parameter 'domain' : 'POINT'
 - Parameter 'mode' : 'ONLY_FACE'
 
 #### Returns:
 - **Geometry** :
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Instance](instance.md#instance) :black_small_square: [Content](instance.md#content) :black_small_square: [Methods](instance.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Point](point.md#point) :black_small_square: [Content](point.md#content) :black_small_square: [Methods](point.md#methods)</sub>
 
 ----------
 ### delete_only_face()
@@ -331,13 +337,13 @@ Information
 -----------
 - Socket 'Geometry' : self
 - Socket 'Selection' : self[selection]
-- Parameter 'domain' : 'INSTANCE'
+- Parameter 'domain' : 'POINT'
 - Parameter 'mode' : 'ONLY_FACE'
 
 #### Returns:
 - **Geometry** :
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Instance](instance.md#instance) :black_small_square: [Content](instance.md#content) :black_small_square: [Methods](instance.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Point](point.md#point) :black_small_square: [Content](point.md#content) :black_small_square: [Methods](point.md#methods)</sub>
 
 ----------
 ### duplicate()
@@ -354,7 +360,7 @@ Information
 -----------
 - Socket 'Geometry' : self
 - Socket 'Selection' : self[selection]
-- Parameter 'domain' : 'INSTANCE'
+- Parameter 'domain' : 'POINT'
 
 #### Arguments:
 - **amount** (_Integer_ = None) : socket 'Amount' (id: Amount)
@@ -364,7 +370,7 @@ Information
 #### Returns:
 - **Geometry** (_Integer_)
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Instance](instance.md#instance) :black_small_square: [Content](instance.md#content) :black_small_square: [Methods](instance.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Point](point.md#point) :black_small_square: [Content](point.md#content) :black_small_square: [Methods](point.md#methods)</sub>
 
 ----------
 ### evaluate_at_index()
@@ -380,7 +386,7 @@ evaluate_at_index(index=None, value=None)
 Information
 -----------
 - Parameter 'data_type' : depending on 'value' type
-- Parameter 'domain' : 'INSTANCE'
+- Parameter 'domain' : 'POINT'
 
 #### Arguments:
 - **index** (_Integer_ = None) : socket 'Index' (id: Index)
@@ -391,7 +397,7 @@ Information
 #### Returns:
 - **Float** :
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Instance](instance.md#instance) :black_small_square: [Content](instance.md#content) :black_small_square: [Methods](instance.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Point](point.md#point) :black_small_square: [Content](point.md#content) :black_small_square: [Methods](point.md#methods)</sub>
 
 ----------
 ### evaluate_on_domain()
@@ -407,7 +413,7 @@ evaluate_on_domain(value=None)
 Information
 -----------
 - Parameter 'data_type' : depending on 'value' type
-- Parameter 'domain' : 'INSTANCE'
+- Parameter 'domain' : 'POINT'
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
@@ -417,7 +423,37 @@ Information
 #### Returns:
 - **Float** :
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Instance](instance.md#instance) :black_small_square: [Content](instance.md#content) :black_small_square: [Methods](instance.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Point](point.md#point) :black_small_square: [Content](point.md#content) :black_small_square: [Methods](point.md#methods)</sub>
+
+----------
+### instance_on()
+
+> method
+
+``` python
+instance_on(instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None)
+```
+
+> Method [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html)
+
+Information
+-----------
+- Socket 'Points' : self
+- Socket 'Selection' : self[selection]
+
+#### Arguments:
+- **instance** (_Geometry_ = None) : socket 'Instance' (id: Instance)
+- **pick_instance** (_Boolean_ = None) : socket 'Pick Instance' (id: Pick Instance)
+- **instance_index** (_Integer_ = None) : socket 'Instance Index' (id: Instance Index)
+- **rotation** (_Rotation_ = None) : socket 'Rotation' (id: Rotation)
+- **scale** (_Vector_ = None) : socket 'Scale' (id: Scale)
+
+
+
+#### Returns:
+- **Instances** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Point](point.md#point) :black_small_square: [Content](point.md#content) :black_small_square: [Methods](point.md#methods)</sub>
 
 ----------
 ### sample_index()
@@ -434,7 +470,7 @@ Information
 -----------
 - Socket 'Geometry' : self
 - Parameter 'data_type' : depending on 'value' type
-- Parameter 'domain' : 'INSTANCE'
+- Parameter 'domain' : 'POINT'
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
@@ -446,7 +482,33 @@ Information
 #### Returns:
 - **Float** :
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Instance](instance.md#instance) :black_small_square: [Content](instance.md#content) :black_small_square: [Methods](instance.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Point](point.md#point) :black_small_square: [Content](point.md#content) :black_small_square: [Methods](point.md#methods)</sub>
+
+----------
+### sample_nearest()
+
+> method
+
+``` python
+sample_nearest(sample_position=None)
+```
+
+> Method [Sample Nearest](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/sample_nearest.html)
+
+Information
+-----------
+- Socket 'Geometry' : self
+- Parameter 'domain' : 'POINT'
+
+#### Arguments:
+- **sample_position** (_Vector_ = None) : socket 'Sample Position' (id: Sample Position)
+
+
+
+#### Returns:
+- **Integer** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Point](point.md#point) :black_small_square: [Content](point.md#content) :black_small_square: [Methods](point.md#methods)</sub>
 
 ----------
 ### separate()
@@ -463,12 +525,61 @@ Information
 -----------
 - Socket 'Geometry' : self
 - Socket 'Selection' : self[selection]
-- Parameter 'domain' : 'INSTANCE'
+- Parameter 'domain' : 'POINT'
 
 #### Returns:
 - **Geometry** (_Geometry_)
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Instance](instance.md#instance) :black_small_square: [Content](instance.md#content) :black_small_square: [Methods](instance.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Point](point.md#point) :black_small_square: [Content](point.md#content) :black_small_square: [Methods](point.md#methods)</sub>
+
+----------
+### set_radius()
+
+> method
+
+``` python
+set_radius(radius=None)
+```
+
+> Jump Method [Set Point Radius](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/set_point_radius.html)
+
+Information
+-----------
+- Socket 'Points' : self
+- Socket 'Selection' : self[selection]
+
+#### Arguments:
+- **radius** (_Float_ = None) : socket 'Radius' (id: Radius)
+
+
+
+#### Returns:
+- **Cloud** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Point](point.md#point) :black_small_square: [Content](point.md#content) :black_small_square: [Methods](point.md#methods)</sub>
+
+----------
+### set_selection()
+
+> method
+
+``` python
+set_selection()
+```
+
+> Jump Method [Set Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/write/set_selection.html)
+
+Information
+-----------
+- Socket 'Geometry' : self
+- Socket 'Selection' : self[selection]
+- Parameter 'domain' : 'POINT'
+- Parameter 'selection_type' : depending on 'selection' type
+
+#### Returns:
+- **Geometry** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Point](point.md#point) :black_small_square: [Content](point.md#content) :black_small_square: [Methods](point.md#methods)</sub>
 
 ----------
 ### sort()
@@ -485,7 +596,7 @@ Information
 -----------
 - Socket 'Geometry' : self
 - Socket 'Selection' : self[selection]
-- Parameter 'domain' : 'INSTANCE'
+- Parameter 'domain' : 'POINT'
 
 #### Arguments:
 - **group_id** (_Integer_ = None) : socket 'Group ID' (id: Group ID)
@@ -496,7 +607,7 @@ Information
 #### Returns:
 - **Geometry** :
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Instance](instance.md#instance) :black_small_square: [Content](instance.md#content) :black_small_square: [Methods](instance.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Point](point.md#point) :black_small_square: [Content](point.md#content) :black_small_square: [Methods](point.md#methods)</sub>
 
 ----------
 ### split_to_instances()
@@ -513,7 +624,7 @@ Information
 -----------
 - Socket 'Geometry' : self
 - Socket 'Selection' : self[selection]
-- Parameter 'domain' : 'INSTANCE'
+- Parameter 'domain' : 'POINT'
 
 #### Arguments:
 - **group_id** (_Integer_ = None) : socket 'Group ID' (id: Group ID)
@@ -523,7 +634,7 @@ Information
 #### Returns:
 - **Instances** (_Integer_)
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Instance](instance.md#instance) :black_small_square: [Content](instance.md#content) :black_small_square: [Methods](instance.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Point](point.md#point) :black_small_square: [Content](point.md#content) :black_small_square: [Methods](point.md#methods)</sub>
 
 ----------
 ### store()
@@ -541,7 +652,7 @@ Information
 - Socket 'Geometry' : self
 - Socket 'Selection' : self[selection]
 - Parameter 'data_type' : depending on 'value' type
-- Parameter 'domain' : 'INSTANCE'
+- Parameter 'domain' : 'POINT'
 
 #### Arguments:
 - **name** (_String_ = None) : socket 'Name' (id: Name)
@@ -552,7 +663,7 @@ Information
 #### Returns:
 - **Geometry** :
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Instance](instance.md#instance) :black_small_square: [Content](instance.md#content) :black_small_square: [Methods](instance.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Point](point.md#point) :black_small_square: [Content](point.md#content) :black_small_square: [Methods](point.md#methods)</sub>
 
 ----------
 ### store_named_attribute()
@@ -570,7 +681,7 @@ Information
 - Socket 'Geometry' : self
 - Socket 'Selection' : self[selection]
 - Parameter 'data_type' : depending on 'value' type
-- Parameter 'domain' : 'INSTANCE'
+- Parameter 'domain' : 'POINT'
 
 #### Arguments:
 - **name** (_String_ = None) : socket 'Name' (id: Name)
@@ -581,7 +692,7 @@ Information
 #### Returns:
 - **Geometry** :
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Instance](instance.md#instance) :black_small_square: [Content](instance.md#content) :black_small_square: [Methods](instance.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Point](point.md#point) :black_small_square: [Content](point.md#content) :black_small_square: [Methods](point.md#methods)</sub>
 
 ----------
 ### viewer()
@@ -598,9 +709,9 @@ Information
 -----------
 - Socket 'Geometry' : self
 - Parameter 'data_type' : depending on 'value' type
-- Parameter 'domain' : 'INSTANCE'
+- Parameter 'domain' : 'POINT'
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Instance](instance.md#instance) :black_small_square: [Content](instance.md#content) :black_small_square: [Methods](instance.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Point](point.md#point) :black_small_square: [Content](point.md#content) :black_small_square: [Methods](point.md#methods)</sub>

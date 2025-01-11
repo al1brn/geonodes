@@ -4,6 +4,9 @@ from .. treeclass import utils
 from .. scripterror import NodeError
 
 class Curve(Socket):
+    """"
+    $DOC SET hidden
+    """
 
     def domain_size(self):
         """ > Method <&Node Domain Size>

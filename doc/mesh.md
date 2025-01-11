@@ -1,9 +1,7 @@
 # Mesh
 
-> Bases classes: [Geometry](geometry.md#geometry)
-
 ``` python
-Mesh(value=None, name=None, tip=None)
+Mesh(value=None, name=None, tip=None, panel=None, hide_value=False, hide_in_modifier=False)
 ```
 
 > Mesh Geometry
@@ -24,25 +22,31 @@ Nodes requiring a domain parameter, are implemented in one of the four domains o
 - **value** (_Socket_ = None) : initial value
 - **name** (_str_ = None) : Create an Group Input socket with the provided str
 - **tip** (_str_ = None) : User tip (for Group Input sockets)
+- **panel** (_str_ = None) : panel name (overrides tree panel if exists)
+- **hide_value** (_bool_ = False) : Hide Value option
+- **hide_in_modifier** (_bool_ = False) : Hide in Modifier option
 
 ### Inherited
 
-[\_\_add__](geometry.md#__add__) :black_small_square: [bake](geometry.md#bake) :black_small_square: [blur](socket.md#blur) :black_small_square: [bounding_box](geometry.md#bounding_box) :black_small_square: [\_cache](nodecache.md#_cache) :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](socket.md#check_in_list) :black_small_square: [convex_hull](geometry.md#convex_hull) :black_small_square: [curve](geometry.md#curve) :black_small_square: [data_type](socket.md#data_type) :black_small_square: [\_geo](geometry.md#_geo) :black_small_square: [\_geometry_class](socket.md#_geometry_class) :black_small_square: [\_geo_type](geobase.md#_geo_type) :black_small_square: [\_\_getattr__](socket.md#__getattr__) :black_small_square: [\_\_getitem__](geobase.md#__getitem__) :black_small_square: [get_socket_class](socket.md#get_socket_class) :black_small_square: [grease_pencil](geometry.md#grease_pencil) :black_small_square: [hash_value](socket.md#hash_value) :black_small_square: [id](geobase.md#id) :black_small_square: [index_of_nearest](geometry.md#index_of_nearest) :black_small_square: [IndexSwitch](socket.md#indexswitch) :black_small_square: [index_switch](socket.md#index_switch) :black_small_square: [\_\_init__](geometry.md#__init__) :black_small_square: [input_type](socket.md#input_type) :black_small_square: [instances](geometry.md#instances) :black_small_square: [Join](geometry.md#join) :black_small_square: [join](geometry.md#join) :black_small_square: [\_jump](socket.md#_jump) :black_small_square: [\_lc](socket.md#_lc) :black_small_square: [\_lcop](socket.md#_lcop) :black_small_square: [material](geobase.md#material) :black_small_square: [material_index](geobase.md#material_index) :black_small_square: [material_selection](geobase.md#material_selection) :black_small_square: [MenuSwitch](socket.md#menuswitch) :black_small_square: [menu_switch](socket.md#menu_switch) :black_small_square: [merge_by_distance](geometry.md#merge_by_distance) :black_small_square: [mesh](geometry.md#mesh) :black_small_square: [name](geometry.md#name) :black_small_square: [\_node](geometry.md#_node) :black_small_square: [node](socket.md#node) :black_small_square: [node_color](socket.md#node_color) :black_small_square: [node_label](socket.md#node_label) :black_small_square: [offset](geobase.md#offset) :black_small_square: [out](socket.md#out) :black_small_square: [pin_gizmo](socket.md#pin_gizmo) :black_small_square: [point_cloud](geometry.md#point_cloud) :black_small_square: [position](geobase.md#position) :black_small_square: [\_raw_sel](geobase.md#_raw_sel) :black_small_square: [raycast](geometry.md#raycast) :black_small_square: [remove_named_attribute](geometry.md#remove_named_attribute) :black_small_square: [replace_material](geobase.md#replace_material) :black_small_square: [\_run_tests](socket.md#_run_tests) :black_small_square: [\_sel](geobase.md#_sel) :black_small_square: [separate_components](geometry.md#separate_components) :black_small_square: [set_id](geometry.md#set_id) :black_small_square: [set_material](geometry.md#set_material) :black_small_square: [set_name](geometry.md#set_name) :black_small_square: [set_position](geometry.md#set_position) :black_small_square: [set_shade_smooth](geometry.md#set_shade_smooth) :black_small_square: [socket_type](socket.md#socket_type) :black_small_square: [\_\_str__](socket.md#__str__) :black_small_square: [Switch](socket.md#switch) :black_small_square: [switch](socket.md#switch) :black_small_square: [to_instance](geometry.md#to_instance) :black_small_square: [transform](geometry.md#transform) :black_small_square: [viewer](geometry.md#viewer) :black_small_square: [volume](geometry.md#volume) :black_small_square:
+[\_\_add__](boolean.md#__add__) :black_small_square: [bake](nd.md#bake) :black_small_square: [bounding_box](core-gener-geome-geometry.md#bounding_box) :black_small_square: [\_cache](nodecache.md#_cache) :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](socket.md#check_in_list) :black_small_square: [convex_hull](core-gener-geome-geometry.md#convex_hull) :black_small_square: [curve](core-gener-geome-geometry.md#curve) :black_small_square: [data_type](socket.md#data_type) :black_small_square: [\_domain_to_geometry](socket.md#_domain_to_geometry) :black_small_square: [\_geo](geometry.md#_geo) :black_small_square: [\_geometry_class](socket.md#_geometry_class) :black_small_square: [\_geo_type](geobase.md#_geo_type) :black_small_square: [\_\_getattr__](socket.md#__getattr__) :black_small_square: [\_\_getitem__](geobase.md#__getitem__) :black_small_square: [get_node_data_type](socket.md#get_node_data_type) :black_small_square: [get_socket_class](socket.md#get_socket_class) :black_small_square: [grease_pencil](core-gener-geome-geometry.md#grease_pencil) :black_small_square: [id](core-gener-geome-geometry.md#id) :black_small_square: [index_of_nearest](core-gener-geome-geometry.md#index_of_nearest) :black_small_square: [IndexSwitch](socket.md#indexswitch) :black_small_square: [index_switch](socket.md#index_switch) :black_small_square: [\_\_init__](core-geono-geonodes.md#__init__) :black_small_square: [Input](socket.md#input) :black_small_square: [input_type](socket.md#input_type) :black_small_square: [instance_on_points](core-gener-geome-geometry.md#instance_on_points) :black_small_square: [instances](core-gener-geome-geometry.md#instances) :black_small_square: [\_interface_socket](socket.md#_interface_socket) :black_small_square: [\_is_group_input](socket.md#_is_group_input) :black_small_square: [\_is_group_output](socket.md#_is_group_output) :black_small_square: [\_is_group_socket](socket.md#_is_group_socket) :black_small_square: [Join](core-gener-geome-geometry.md#join) :black_small_square: [join](core-gener-geome-geometry.md#join) :black_small_square: [\_jump](socket.md#_jump) :black_small_square: [\_lc](socket.md#_lc) :black_small_square: [\_lcop](socket.md#_lcop) :black_small_square: [\_lock](proplocker.md#_lock) :black_small_square: [material](core-gener-geome-geometry.md#material) :black_small_square: [material_index](core-gener-geome-geometry.md#material_index) :black_small_square: [MenuSwitch](socket.md#menuswitch) :black_small_square: [menu_switch](socket.md#menu_switch) :black_small_square: [merge](core-gener-geome-geometry.md#merge) :black_small_square: [merge_all](core-gener-geome-geometry.md#merge_all) :black_small_square: [merge_by_distance](core-gener-geome-geometry.md#merge_by_distance) :black_small_square: [merge_connected](core-gener-geome-geometry.md#merge_connected) :black_small_square: [mesh](core-gener-geome-geometry.md#mesh) :black_small_square: [name](core-gener-geome-geometry.md#name) :black_small_square: [node](socket.md#node) :black_small_square: [node_color](socket.md#node_color) :black_small_square: [node_label](socket.md#node_label) :black_small_square: [\_node_OLD](geometry.md#_node_old) :black_small_square: [offset](core-gener-geome-geometry.md#offset) :black_small_square: [out](socket.md#out) :black_small_square: [\_panel_name](socket.md#_panel_name) :black_small_square: [pin_gizmo](socket.md#pin_gizmo) :black_small_square: [point_cloud](core-gener-geome-geometry.md#point_cloud) :black_small_square: [position](core-gener-geome-geometry.md#position) :black_small_square: [proximity](core-gener-geome-geometry.md#proximity) :black_small_square: [proximity_edges](core-gener-geome-geometry.md#proximity_edges) :black_small_square: [proximity_faces](core-gener-geome-geometry.md#proximity_faces) :black_small_square: [proximity_points](core-gener-geome-geometry.md#proximity_points) :black_small_square: [\_raw_sel](geobase.md#_raw_sel) :black_small_square: [raycast](core-gener-geome-geometry.md#raycast) :black_small_square: [raycast_interpolated](core-gener-geome-geometry.md#raycast_interpolated) :black_small_square: [raycast_nearest](core-gener-geome-geometry.md#raycast_nearest) :black_small_square: [realize](core-gener-geome-geometry.md#realize) :black_small_square: [remove_named_attribute](core-gener-geome-geometry.md#remove_named_attribute) :black_small_square: [remove_names](core-gener-geome-geometry.md#remove_names) :black_small_square: [replace_material](core-gener-geome-geometry.md#replace_material) :black_small_square: [\_run_tests](socket.md#_run_tests) :black_small_square: [\_sel](geobase.md#_sel) :black_small_square: [separate_components](core-gener-geome-geometry.md#separate_components) :black_small_square: [\_\_setattr__](socket.md#__setattr__) :black_small_square: [set_id](core-gener-geome-geometry.md#set_id) :black_small_square: [\_set_interface_property](socket.md#_set_interface_property) :black_small_square: [set_material](core-gener-geome-geometry.md#set_material) :black_small_square: [set_material_index](core-gener-geome-geometry.md#set_material_index) :black_small_square: [set_name](core-gener-geome-geometry.md#set_name) :black_small_square: [set_position](core-gener-geome-geometry.md#set_position) :black_small_square: [set_spline_cyclic](core-gener-geome-geometry.md#set_spline_cyclic) :black_small_square: [set_spline_resolution](core-gener-geome-geometry.md#set_spline_resolution) :black_small_square: [socket_type](socket.md#socket_type) :black_small_square: [\_\_str__](socket.md#__str__) :black_small_square: [Switch](socket.md#switch) :black_small_square: [switch](socket.md#switch) :black_small_square: [to_instance](core-gener-geome-geometry.md#to_instance) :black_small_square: [transform](core-gener-geome-geometry.md#transform) :black_small_square: [transform_components](core-gener-geome-geometry.md#transform_components) :black_small_square: [transform_geometry](core-gener-geome-geometry.md#transform_geometry) :black_small_square: [transform_matrix](core-gener-geome-geometry.md#transform_matrix) :black_small_square: [\_unlock](proplocker.md#_unlock) :black_small_square: [viewer](core-gener-geome-geometry.md#viewer) :black_small_square: [volume](core-gener-geome-geometry.md#volume) :black_small_square:
 
 ## Content
 
 - **B** : [Boolean](mesh.md#boolean) :black_small_square: [boolean](mesh.md#boolean)
-- **C** : [Circle](mesh.md#circle) :black_small_square: [Cone](mesh.md#cone) :black_small_square: [corners](mesh.md#corners) :black_small_square: [Cube](mesh.md#cube) :black_small_square: [Cylinder](mesh.md#cylinder)
-- **D** : [Difference](mesh.md#difference) :black_small_square: [difference](mesh.md#difference) :black_small_square: [Disk](mesh.md#disk) :black_small_square: [distribute_points_on_faces](mesh.md#distribute_points_on_faces) :black_small_square: [domain_size](mesh.md#domain_size) :black_small_square: [dual](mesh.md#dual)
-- **E** : [edges](mesh.md#edges)
-- **F** : [faces](mesh.md#faces) :black_small_square: [FromCurve](mesh.md#fromcurve) :black_small_square: [FromPoints](mesh.md#frompoints) :black_small_square: [FromVolume](mesh.md#fromvolume)
+- **C** : [Circle](mesh.md#circle) :black_small_square: [Cone](mesh.md#cone) :black_small_square: [corners](mesh.md#corners) :black_small_square: [corners_of_edge](mesh.md#corners_of_edge) :black_small_square: [corners_of_face](mesh.md#corners_of_face) :black_small_square: [corners_of_vertex](mesh.md#corners_of_vertex) :black_small_square: [corners_to_points](mesh.md#corners_to_points) :black_small_square: [Cube](mesh.md#cube) :black_small_square: [Cylinder](mesh.md#cylinder)
+- **D** : [Difference](mesh.md#difference) :black_small_square: [difference](mesh.md#difference) :black_small_square: [distribute_points_on_faces](mesh.md#distribute_points_on_faces) :black_small_square: [distribute_points_on_faces_poisson](mesh.md#distribute_points_on_faces_poisson) :black_small_square: [distribute_points_on_faces_random](mesh.md#distribute_points_on_faces_random) :black_small_square: [domain_size](mesh.md#domain_size) :black_small_square: [dual](mesh.md#dual)
+- **E** : [edge_angle](mesh.md#edge_angle) :black_small_square: [edge_paths_to_curves](mesh.md#edge_paths_to_curves) :black_small_square: [edge_paths_to_selection](mesh.md#edge_paths_to_selection) :black_small_square: [edges](mesh.md#edges) :black_small_square: [edges_of_corner](mesh.md#edges_of_corner) :black_small_square: [edges_of_vertex](mesh.md#edges_of_vertex) :black_small_square: [edges_to_face_groups](mesh.md#edges_to_face_groups) :black_small_square: [edges_to_points](mesh.md#edges_to_points) :black_small_square: [edge_vertices](mesh.md#edge_vertices) :black_small_square: [extrude](mesh.md#extrude) :black_small_square: [extrude_edges](mesh.md#extrude_edges) :black_small_square: [extrude_faces](mesh.md#extrude_faces) :black_small_square: [extrude_vertices](mesh.md#extrude_vertices)
+- **F** : [face_group_boundaries](mesh.md#face_group_boundaries) :black_small_square: [face_neighbors](mesh.md#face_neighbors) :black_small_square: [face_of_corner](mesh.md#face_of_corner) :black_small_square: [faces](mesh.md#faces) :black_small_square: [faces_to_points](mesh.md#faces_to_points) :black_small_square: [flip_faces](mesh.md#flip_faces)
 - **G** : [Grid](mesh.md#grid)
-- **I** : [IcoSphere](mesh.md#icosphere) :black_small_square: [ImportOBJ](mesh.md#importobj) :black_small_square: [ImportSTL](mesh.md#importstl) :black_small_square: [Intersect](mesh.md#intersect) :black_small_square: [intersect](mesh.md#intersect) :black_small_square: [island](mesh.md#island) :black_small_square: [island_count](mesh.md#island_count) :black_small_square: [island_index](mesh.md#island_index)
-- **L** : [Line](mesh.md#line) :black_small_square: [LineOffset](mesh.md#lineoffset) :black_small_square: [LineTo](mesh.md#lineto)
-- **P** : [pack_uv_islands](mesh.md#pack_uv_islands) :black_small_square: [Plane](mesh.md#plane) :black_small_square: [points](mesh.md#points)
-- **S** : [sample_nearest_surface](mesh.md#sample_nearest_surface) :black_small_square: [sample_uv_surface](mesh.md#sample_uv_surface) :black_small_square: [subdivide](mesh.md#subdivide) :black_small_square: [subdivision_surface](mesh.md#subdivision_surface)
-- **T** : [to_curve](mesh.md#to_curve) :black_small_square: [to_volume](mesh.md#to_volume) :black_small_square: [triangulate](mesh.md#triangulate)
-- **U** : [Union](mesh.md#union) :black_small_square: [union](mesh.md#union) :black_small_square: [UVSphere](mesh.md#uvsphere) :black_small_square: [uv_unwrap](mesh.md#uv_unwrap)
+- **I** : [IcoSphere](mesh.md#icosphere) :black_small_square: [ImportPLY](mesh.md#importply) :black_small_square: [ImportSTL](mesh.md#importstl) :black_small_square: [Intersect](mesh.md#intersect) :black_small_square: [intersect](mesh.md#intersect) :black_small_square: [is_face_planar](mesh.md#is_face_planar)
+- **L** : [Line](mesh.md#line) :black_small_square: [LineEndPoints](mesh.md#lineendpoints) :black_small_square: [LineOffset](mesh.md#lineoffset)
+- **M** : [material_selection](mesh.md#material_selection) :black_small_square: [mesh_island](mesh.md#mesh_island)
+- **O** : [offset_corner_in_face](mesh.md#offset_corner_in_face)
+- **P** : [points](mesh.md#points)
+- **S** : [sample_nearest_surface](mesh.md#sample_nearest_surface) :black_small_square: [sample_uv_surface](mesh.md#sample_uv_surface) :black_small_square: [set_face_set](mesh.md#set_face_set) :black_small_square: [shortest_edge_paths](mesh.md#shortest_edge_paths) :black_small_square: [split_edges](mesh.md#split_edges) :black_small_square: [subdivide](mesh.md#subdivide) :black_small_square: [subdivision_surface](mesh.md#subdivision_surface)
+- **T** : [to_curve](mesh.md#to_curve) :black_small_square: [to_density_grid](mesh.md#to_density_grid) :black_small_square: [to_points](mesh.md#to_points) :black_small_square: [to_sdf_grid](mesh.md#to_sdf_grid) :black_small_square: [to_volume](mesh.md#to_volume) :black_small_square: [triangulate](mesh.md#triangulate)
+- **U** : [Union](mesh.md#union) :black_small_square: [union](mesh.md#union) :black_small_square: [UVSphere](mesh.md#uvsphere)
+- **V** : [vertex_neighbors](mesh.md#vertex_neighbors) :black_small_square: [vertex_of_corner](mesh.md#vertex_of_corner) :black_small_square: [vertices_to_points](mesh.md#vertices_to_points)
 
 ## Properties
 
@@ -54,17 +58,6 @@ Nodes requiring a domain parameter, are implemented in one of the four domains o
 >
 
 CORNER domain
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Properties](mesh.md#properties)</sub>
-
-### domain_size
-
-> _type_: **Node**
->
-
-> Node ERROR: Node 'Size' not found, component = 'MESH'
-
-:warning: returns the **node**, not a socket
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Properties](mesh.md#properties)</sub>
 
@@ -83,35 +76,6 @@ EDGE domain
 >
 
 FACE domain
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Properties](mesh.md#properties)</sub>
-
-### island
-
-> _type_: **Node**
->
-
-> Node [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/mesh_island.html)
-
-:warning: returns the **node**, not a socket
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Properties](mesh.md#properties)</sub>
-
-### island_count
-
-> _type_: **Integer**
->
-
-> Socket 'Island Count' fo node [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/mesh_island.html)
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Properties](mesh.md#properties)</sub>
-
-### island_index
-
-> _type_: **Integer**
->
-
-> Socket 'Island Index' fo node [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/mesh_island.html)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Properties](mesh.md#properties)</sub>
 
@@ -134,17 +98,18 @@ POINT domain
 > classmethod
 
 ``` python
-Boolean(*meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT', operation='DIFFERENCE')
+Boolean(*mesh_2, mesh_1=None, self_intersection=None, hole_tolerant=None, operation='DIFFERENCE', solver='FLOAT')
 ```
 
-> Constructor node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html)
+> Constructor [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html)
 
 #### Arguments:
-- **meshes** (_Mesh_) : socket 'Mesh 2' (Mesh 2)
-- **self_intersection** (_Boolean_ = None) : socket 'Self Intersection' (Self Intersection)
-- **hole_tolerant** (_Boolean_ = None) : socket 'Hole Tolerant' (Hole Tolerant)
-- **solver** (_str_ = FLOAT) : Node.solver in ('EXACT', 'FLOAT')
-- **operation** (_str_ = DIFFERENCE) : Node.operation in ('INTERSECT', 'UNION', 'DIFFERENCE')
+- **mesh_2** (_Geometry_) : socket 'Mesh 2' (id: Mesh 2)
+- **mesh_1** (_Geometry_ = None) : socket 'Mesh 1' (id: Mesh 1)
+- **self_intersection** (_Boolean_ = None) : socket 'Self Intersection' (id: Self Intersection)
+- **hole_tolerant** (_Boolean_ = None) : socket 'Hole Tolerant' (id: Hole Tolerant)
+- **operation** (_str_ = DIFFERENCE) : parameter 'operation' in ('INTERSECT', 'UNION', 'DIFFERENCE')
+- **solver** (_str_ = FLOAT) : parameter 'solver' in ('EXACT', 'FLOAT')
 
 
 
@@ -159,24 +124,26 @@ Boolean(*meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT', ope
 > method
 
 ``` python
-boolean(*meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT', operation='DIFFERENCE')
+boolean(*mesh_2, self_intersection=None, hole_tolerant=None, operation='DIFFERENCE', solver='FLOAT')
 ```
 
-> Node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html)
+> Jump Method [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html)
 
-
+Information
+-----------
+- Socket 'Mesh 1' : self
 
 #### Arguments:
-- **meshes** (_Mesh_) : socket 'Mesh 2' (Mesh 2)
-- **self_intersection** (_Boolean_ = None) : socket 'Self Intersection' (Self Intersection)
-- **hole_tolerant** (_Boolean_ = None) : socket 'Hole Tolerant' (Hole Tolerant)
-- **solver** (_str_ = FLOAT) : Node.solver in ('EXACT', 'FLOAT')
-- **operation** (_str_ = DIFFERENCE) : Node.operation in ('INTERSECT', 'UNION', 'DIFFERENCE')
+- **mesh_2** (_Geometry_) : socket 'Mesh 2' (id: Mesh 2)
+- **self_intersection** (_Boolean_ = None) : socket 'Self Intersection' (id: Self Intersection)
+- **hole_tolerant** (_Boolean_ = None) : socket 'Hole Tolerant' (id: Hole Tolerant)
+- **operation** (_str_ = DIFFERENCE) : parameter 'operation' in ('INTERSECT', 'UNION', 'DIFFERENCE')
+- **solver** (_str_ = FLOAT) : parameter 'solver' in ('EXACT', 'FLOAT')
 
 
 
 #### Returns:
-- **Mesh** : self
+- **Mesh** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
 
@@ -186,15 +153,15 @@ boolean(*meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT', ope
 > classmethod
 
 ``` python
-Circle(vertices=32, radius=1.0, fill_type='NONE')
+Circle(vertices=None, radius=None, fill_type='NONE')
 ```
 
-> Constructor node [Mesh Circle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/mesh_circle.html)
+> Constructor [Mesh Circle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/mesh_circle.html)
 
 #### Arguments:
-- **vertices** (_Integer_ = 32) : socket 'Vertices' (Vertices)
-- **radius** (_Float_ = 1.0) : socket 'Radius' (Radius)
-- **fill_type** (_str_ = NONE) : Node.fill_type in ('NONE', 'NGON', 'TRIANGLE_FAN')
+- **vertices** (_Integer_ = None) : socket 'Vertices' (id: Vertices)
+- **radius** (_Float_ = None) : socket 'Radius' (id: Radius)
+- **fill_type** (_str_ = NONE) : parameter 'fill_type' in ('NONE', 'NGON', 'TRIANGLE_FAN')
 
 
 
@@ -209,19 +176,19 @@ Circle(vertices=32, radius=1.0, fill_type='NONE')
 > classmethod
 
 ``` python
-Cone(vertices=32, side_segments=1, fill_segments=1, radius_top=0.0, radius_bottom=1.0, depth=2.0, fill_type='NGON')
+Cone(vertices=None, side_segments=None, fill_segments=None, radius_top=None, radius_bottom=None, depth=None, fill_type='NGON')
 ```
 
-> Constructor node [Cone](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/cone.html)
+> Constructor [Cone](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/cone.html)
 
 #### Arguments:
-- **vertices** (_Integer_ = 32) : socket 'Vertices' (Vertices)
-- **side_segments** (_Integer_ = 1) : socket 'Side Segments' (Side Segments)
-- **fill_segments** (_Integer_ = 1) : socket 'Fill Segments' (Fill Segments)
-- **radius_top** (_Float_ = 0.0) : socket 'Radius Top' (Radius Top)
-- **radius_bottom** (_Float_ = 1.0) : socket 'Radius Bottom' (Radius Bottom)
-- **depth** (_Float_ = 2.0) : socket 'Depth' (Depth)
-- **fill_type** (_str_ = NGON) : Node.fill_type in ('NONE', 'NGON', 'TRIANGLE_FAN')
+- **vertices** (_Integer_ = None) : socket 'Vertices' (id: Vertices)
+- **side_segments** (_Integer_ = None) : socket 'Side Segments' (id: Side Segments)
+- **fill_segments** (_Integer_ = None) : socket 'Fill Segments' (id: Fill Segments)
+- **radius_top** (_Float_ = None) : socket 'Radius Top' (id: Radius Top)
+- **radius_bottom** (_Float_ = None) : socket 'Radius Bottom' (id: Radius Bottom)
+- **depth** (_Float_ = None) : socket 'Depth' (id: Depth)
+- **fill_type** (_str_ = NGON) : parameter 'fill_type' in ('NONE', 'NGON', 'TRIANGLE_FAN')
 
 
 
@@ -231,21 +198,118 @@ Cone(vertices=32, side_segments=1, fill_segments=1, radius_top=0.0, radius_botto
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
 
 ----------
+### corners_of_edge()
+
+> classmethod
+
+``` python
+corners_of_edge(edge_index=None, weights=None, sort_index=None)
+```
+
+> Class Method [Corners of Edge](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/corners_of_edge.html)
+
+#### Arguments:
+- **edge_index** (_Integer_ = None) : socket 'Edge Index' (id: Edge Index)
+- **weights** (_Float_ = None) : socket 'Weights' (id: Weights)
+- **sort_index** (_Integer_ = None) : socket 'Sort Index' (id: Sort Index)
+
+
+
+#### Returns:
+- **Integer** (_Integer_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
+
+----------
+### corners_of_face()
+
+> classmethod
+
+``` python
+corners_of_face(face_index=None, weights=None, sort_index=None)
+```
+
+> Class Method [Corners of Face](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/corners_of_face.html)
+
+#### Arguments:
+- **face_index** (_Integer_ = None) : socket 'Face Index' (id: Face Index)
+- **weights** (_Float_ = None) : socket 'Weights' (id: Weights)
+- **sort_index** (_Integer_ = None) : socket 'Sort Index' (id: Sort Index)
+
+
+
+#### Returns:
+- **Integer** (_Integer_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
+
+----------
+### corners_of_vertex()
+
+> classmethod
+
+``` python
+corners_of_vertex(vertex_index=None, weights=None, sort_index=None)
+```
+
+> Class Method [Corners of Vertex](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/corners_of_vertex.html)
+
+#### Arguments:
+- **vertex_index** (_Integer_ = None) : socket 'Vertex Index' (id: Vertex Index)
+- **weights** (_Float_ = None) : socket 'Weights' (id: Weights)
+- **sort_index** (_Integer_ = None) : socket 'Sort Index' (id: Sort Index)
+
+
+
+#### Returns:
+- **Integer** (_Integer_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
+
+----------
+### corners_to_points()
+
+> method
+
+``` python
+corners_to_points(position=None, radius=None)
+```
+
+> Method [Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_points.html)
+
+Information
+-----------
+- Socket 'Mesh' : self
+- Socket 'Selection' : self[selection]
+- Parameter 'mode' : 'CORNERS'
+
+#### Arguments:
+- **position** (_Vector_ = None) : socket 'Position' (id: Position)
+- **radius** (_Float_ = None) : socket 'Radius' (id: Radius)
+
+
+
+#### Returns:
+- **Cloud** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
+
+----------
 ### Cube()
 
 > classmethod
 
 ``` python
-Cube(size=(1, 1, 1), vertices_x=2, vertices_y=2, vertices_z=2)
+Cube(size=None, vertices_x=None, vertices_y=None, vertices_z=None)
 ```
 
-> Constructor node [Cube](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/cube.html)
+> Constructor [Cube](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/cube.html)
 
 #### Arguments:
-- **size** (_Vector_ = (1, 1, 1)) : socket 'Size' (Size)
-- **vertices_x** (_Integer_ = 2) : socket 'Vertices X' (Vertices X)
-- **vertices_y** (_Integer_ = 2) : socket 'Vertices Y' (Vertices Y)
-- **vertices_z** (_Integer_ = 2) : socket 'Vertices Z' (Vertices Z)
+- **size** (_Vector_ = None) : socket 'Size' (id: Size)
+- **vertices_x** (_Integer_ = None) : socket 'Vertices X' (id: Vertices X)
+- **vertices_y** (_Integer_ = None) : socket 'Vertices Y' (id: Vertices Y)
+- **vertices_z** (_Integer_ = None) : socket 'Vertices Z' (id: Vertices Z)
 
 
 
@@ -260,18 +324,18 @@ Cube(size=(1, 1, 1), vertices_x=2, vertices_y=2, vertices_z=2)
 > classmethod
 
 ``` python
-Cylinder(vertices=32, side_segments=1, fill_segments=1, radius=1.0, depth=2.0, fill_type='NGON')
+Cylinder(vertices=None, side_segments=None, fill_segments=None, radius=None, depth=None, fill_type='NGON')
 ```
 
-> Constructor node [Cylinder](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/cylinder.html)
+> Constructor [Cylinder](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/cylinder.html)
 
 #### Arguments:
-- **vertices** (_Integer_ = 32) : socket 'Vertices' (Vertices)
-- **side_segments** (_Integer_ = 1) : socket 'Side Segments' (Side Segments)
-- **fill_segments** (_Integer_ = 1) : socket 'Fill Segments' (Fill Segments)
-- **radius** (_Float_ = 1.0) : socket 'Radius' (Radius)
-- **depth** (_Float_ = 2.0) : socket 'Depth' (Depth)
-- **fill_type** (_str_ = NGON) : Node.fill_type in ('NONE', 'NGON', 'TRIANGLE_FAN')
+- **vertices** (_Integer_ = None) : socket 'Vertices' (id: Vertices)
+- **side_segments** (_Integer_ = None) : socket 'Side Segments' (id: Side Segments)
+- **fill_segments** (_Integer_ = None) : socket 'Fill Segments' (id: Fill Segments)
+- **radius** (_Float_ = None) : socket 'Radius' (id: Radius)
+- **depth** (_Float_ = None) : socket 'Depth' (id: Depth)
+- **fill_type** (_str_ = NGON) : parameter 'fill_type' in ('NONE', 'NGON', 'TRIANGLE_FAN')
 
 
 
@@ -286,17 +350,21 @@ Cylinder(vertices=32, side_segments=1, fill_segments=1, radius=1.0, depth=2.0, f
 > classmethod
 
 ``` python
-Difference(mesh, *meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT')
+Difference(*mesh_2, mesh_1=None, self_intersection=None, hole_tolerant=None, solver='FLOAT')
 ```
 
-> Constructor node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html), operation = 'DIFFERENCE'
+> Constructor [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html)
+
+Information
+-----------
+- Parameter 'operation' : 'DIFFERENCE'
 
 #### Arguments:
-- **mesh** (_Mesh_) : socket 'Mesh 1' (Mesh 1)
-- **meshes** (_Mesh_) : socket 'Mesh 2' (Mesh 2)
-- **self_intersection** (_Boolean_ = None) : socket 'Self Intersection' (Self Intersection)
-- **hole_tolerant** (_Boolean_ = None) : socket 'Hole Tolerant' (Hole Tolerant)
-- **solver** (_str_ = FLOAT) : Node.solver in ('EXACT', 'FLOAT')
+- **mesh_2** (_Geometry_) : socket 'Mesh 2' (id: Mesh 2)
+- **mesh_1** (_Geometry_ = None) : socket 'Mesh 1' (id: Mesh 1)
+- **self_intersection** (_Boolean_ = None) : socket 'Self Intersection' (id: Self Intersection)
+- **hole_tolerant** (_Boolean_ = None) : socket 'Hole Tolerant' (id: Hole Tolerant)
+- **solver** (_str_ = FLOAT) : parameter 'solver' in ('EXACT', 'FLOAT')
 
 
 
@@ -311,41 +379,21 @@ Difference(mesh, *meshes, self_intersection=None, hole_tolerant=None, solver='FL
 > method
 
 ``` python
-difference(*meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT')
+difference(*mesh_2, self_intersection=None, hole_tolerant=None, solver='FLOAT')
 ```
 
-> Node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html), operation = 'DIFFERENCE'
+> Jump Method [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html)
 
-
-
-#### Arguments:
-- **meshes** (_Mesh_) : socket 'Mesh 2' (Mesh 2)
-- **self_intersection** (_Boolean_ = None) : socket 'Self Intersection' (Self Intersection)
-- **hole_tolerant** (_Boolean_ = None) : socket 'Hole Tolerant' (Hole Tolerant)
-- **solver** (_str_ = FLOAT) : Node.solver in ('EXACT', 'FLOAT')
-
-
-
-#### Returns:
-- **Mesh** : self
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
-
-----------
-### Disk()
-
-> classmethod
-
-``` python
-Disk(vertices=32, radius=1.0, fill_type='NGON')
-```
-
-> Constructor node [Mesh Circle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/mesh_circle.html)
+Information
+-----------
+- Socket 'Mesh 1' : self
+- Parameter 'operation' : 'DIFFERENCE'
 
 #### Arguments:
-- **vertices** (_Integer_ = 32) : socket 'Vertices' (Vertices)
-- **radius** (_Float_ = 1.0) : socket 'Radius' (Radius)
-- **fill_type** (_str_ = NGON) : Node.fill_type in ('NONE', 'NGON', 'TRIANGLE_FAN')
+- **mesh_2** (_Geometry_) : socket 'Mesh 2' (id: Mesh 2)
+- **self_intersection** (_Boolean_ = None) : socket 'Self Intersection' (id: Self Intersection)
+- **hole_tolerant** (_Boolean_ = None) : socket 'Hole Tolerant' (id: Hole Tolerant)
+- **solver** (_str_ = FLOAT) : parameter 'solver' in ('EXACT', 'FLOAT')
 
 
 
@@ -360,29 +408,107 @@ Disk(vertices=32, radius=1.0, fill_type='NGON')
 > method
 
 ``` python
-distribute_points_on_faces(density=None, distance_min=None, density_max=None, density_factor=None, seed=None)
+distribute_points_on_faces(density=None, seed=None, distribute_method='RANDOM', use_legacy_normal=False)
 ```
 
-> Node ERROR: Node 'Distribute Points on Faces' not found
+> Method ERROR: Node 'Distribute Points on Faces' not found
 
-
-
-if 'density' argument is not None, 'RANDOM' method is applied, 'POISSON' otherwise
-
-- distribute_method (str): Node.distribute_method in ('RANDOM', 'POISSON')
-- use_legacy_normal (bool): Node.use_legacy_normal
+Information
+-----------
+- Socket 'Mesh' : self
+- Socket 'Selection' : self[selection]
 
 #### Arguments:
-- **density** (_Float_ = None) : socket 'Density' (Density)n 'RANDOM' method if not None 'POISSON' otherwise
-- **distance_min** (_Float_ = None) : socket 'Distance Min'
-- **density_max** (_Float_ = None) : socket 'Density Max'
-- **density_factor** (_Float_ = None) : socket 'Density Factor'
-- **seed** (_Integer_ = None) : socket 'Seed' (Seed)
+- **density** (_Float_ = None) : socket 'Density' (id: Density)
+- **seed** (_Integer_ = None) : socket 'Seed' (id: Seed)
+- **distribute_method** (_str_ = RANDOM) : parameter 'distribute_method' in ('RANDOM', 'POISSON')
+- **use_legacy_normal** (_bool_ = False) : parameter 'use_legacy_normal'
 
 
 
 #### Returns:
-- **Cloud** :
+- **Cloud** (_Vector_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
+
+----------
+### distribute_points_on_faces_poisson()
+
+> method
+
+``` python
+distribute_points_on_faces_poisson(distance_min=None, density_max=None, density_factor=None, seed=None, use_legacy_normal=False)
+```
+
+> Method ERROR: Node 'Distribute Points on Faces' not found
+
+Information
+-----------
+- Socket 'Mesh' : self
+- Socket 'Selection' : self[selection]
+- Parameter 'distribute_method' : 'POISSON'
+
+#### Arguments:
+- **distance_min** (_Float_ = None) : socket 'Distance Min' (id: Distance Min)
+- **density_max** (_Float_ = None) : socket 'Density Max' (id: Density Max)
+- **density_factor** (_Float_ = None) : socket 'Density Factor' (id: Density Factor)
+- **seed** (_Integer_ = None) : socket 'Seed' (id: Seed)
+- **use_legacy_normal** (_bool_ = False) : parameter 'use_legacy_normal'
+
+
+
+#### Returns:
+- **Cloud** (_Vector_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
+
+----------
+### distribute_points_on_faces_random()
+
+> method
+
+``` python
+distribute_points_on_faces_random(density=None, seed=None, use_legacy_normal=False)
+```
+
+> Method ERROR: Node 'Distribute Points on Faces' not found
+
+Information
+-----------
+- Socket 'Mesh' : self
+- Socket 'Selection' : self[selection]
+- Parameter 'distribute_method' : 'RANDOM'
+
+#### Arguments:
+- **density** (_Float_ = None) : socket 'Density' (id: Density)
+- **seed** (_Integer_ = None) : socket 'Seed' (id: Seed)
+- **use_legacy_normal** (_bool_ = False) : parameter 'use_legacy_normal'
+
+
+
+#### Returns:
+- **Cloud** (_Vector_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
+
+----------
+### domain_size()
+
+> method
+
+``` python
+domain_size()
+```
+
+> Method [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
+
+Information
+-----------
+- Socket 'Geometry' : self
+- Parameter 'component' : 'MESH'
+
+#### Returns:
+- **node** (_Integer_)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
 
@@ -395,35 +521,14 @@ if 'density' argument is not None, 'RANDOM' method is applied, 'POISSON' otherwi
 dual(keep_boundaries=None)
 ```
 
-> Node [Dual Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/dual_mesh.html)
+> Jump Method [Dual Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/dual_mesh.html)
 
-
-
-#### Arguments:
-- **keep_boundaries** (_Boolean_ = None) : socket 'Keep Boundaries' (Keep Boundaries)
-
-
-
-#### Returns:
-- **Mesh** : self
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
-
-----------
-### FromCurve()
-
-> classmethod
-
-``` python
-FromCurve(curve=None, profile_curve=None, fill_caps=None)
-```
-
-> Constructor node [Curve to Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curve_to_mesh.html)
+Information
+-----------
+- Socket 'Mesh' : self
 
 #### Arguments:
-- **curve** (_Geometry_ = None) : socket 'Curve' (Curve)
-- **profile_curve** (_Geometry_ = None) : socket 'Profile Curve' (Profile Curve)
-- **fill_caps** (_Boolean_ = None) : socket 'Fill Caps' (Fill Caps)
+- **keep_boundaries** (_Boolean_ = None) : socket 'Keep Boundaries' (id: Keep Boundaries)
 
 
 
@@ -433,46 +538,393 @@ FromCurve(curve=None, profile_curve=None, fill_caps=None)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
 
 ----------
-### FromPoints()
+### edge_angle()
 
 > classmethod
 
 ``` python
-FromPoints(points)
+edge_angle()
 ```
 
-> Constructor node [Points to Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points_to_vertices.html)
-
-#### Arguments:
-- **points** (_Geometry_) : socket 'Points' (Points)
-
-
+> Class Method [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edge_angle.html)
 
 #### Returns:
-- **Mesh** :
+- **node** (_Float_)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
 
 ----------
-### FromVolume()
+### edge_paths_to_curves()
+
+> method
+
+``` python
+edge_paths_to_curves(start_vertices=None, next_vertex_index=None)
+```
+
+> Method [Edge Paths to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/edge_paths_to_curves.html)
+
+Information
+-----------
+- Socket 'Mesh' : self
+
+#### Arguments:
+- **start_vertices** (_Boolean_ = None) : socket 'Start Vertices' (id: Start Vertices)
+- **next_vertex_index** (_Integer_ = None) : socket 'Next Vertex Index' (id: Next Vertex Index)
+
+
+
+#### Returns:
+- **Curve** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
+
+----------
+### edge_paths_to_selection()
 
 > classmethod
 
 ``` python
-FromVolume(volume, voxel_size=None, voxel_amount=None, threshold=None, adaptivity=None, resolution_mode='GRID')
+edge_paths_to_selection(start_vertices=None, next_vertex_index=None)
 ```
 
-> Constructor node [Volume to Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/operations/volume_to_mesh.html)
+> Class Method [Edge Paths to Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/edge_paths_to_selection.html)
 
 #### Arguments:
-- **volume** (_Geometry_) : socket 'Volume' (Volume)
-- **voxel_size** (_Float_ = None) : socket 'Voxel Size'
-- **voxel_amount** (_Float_ = None) : socket 'Voxel Amount'
-- **threshold** (_Float_ = None) : socket 'Threshold' (Threshold)
-- **adaptivity** (_Float_ = None) : socket 'Adaptivity' (Adaptivity)
-- **resolution_mode** (_str_ = GRID) : Node.resolution_mode in ('GRID', 'VOXEL_AMOUNT', 'VOXEL_SIZE')
+- **start_vertices** (_Boolean_ = None) : socket 'Start Vertices' (id: Start Vertices)
+- **next_vertex_index** (_Integer_ = None) : socket 'Next Vertex Index' (id: Next Vertex Index)
 
 
+
+#### Returns:
+- **Boolean** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
+
+----------
+### edges_of_corner()
+
+> classmethod
+
+``` python
+edges_of_corner(corner_index=None)
+```
+
+> Class Method [Edges of Corner](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/edges_of_corner.html)
+
+#### Arguments:
+- **corner_index** (_Integer_ = None) : socket 'Corner Index' (id: Corner Index)
+
+
+
+#### Returns:
+- **Integer** (_Integer_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
+
+----------
+### edges_of_vertex()
+
+> classmethod
+
+``` python
+edges_of_vertex(vertex_index=None, weights=None, sort_index=None)
+```
+
+> Class Method [Edges of Vertex](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/edges_of_vertex.html)
+
+#### Arguments:
+- **vertex_index** (_Integer_ = None) : socket 'Vertex Index' (id: Vertex Index)
+- **weights** (_Float_ = None) : socket 'Weights' (id: Weights)
+- **sort_index** (_Integer_ = None) : socket 'Sort Index' (id: Sort Index)
+
+
+
+#### Returns:
+- **Integer** (_Integer_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
+
+----------
+### edges_to_face_groups()
+
+> classmethod
+
+``` python
+edges_to_face_groups(boundary_edges=None)
+```
+
+> Class Method [Edges to Face Groups](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edges_to_face_groups.html)
+
+#### Arguments:
+- **boundary_edges** (_Boolean_ = None) : socket 'Boundary Edges' (id: Boundary Edges)
+
+
+
+#### Returns:
+- **Integer** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
+
+----------
+### edges_to_points()
+
+> method
+
+``` python
+edges_to_points(position=None, radius=None)
+```
+
+> Method [Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_points.html)
+
+Information
+-----------
+- Socket 'Mesh' : self
+- Socket 'Selection' : self[selection]
+- Parameter 'mode' : 'EDGES'
+
+#### Arguments:
+- **position** (_Vector_ = None) : socket 'Position' (id: Position)
+- **radius** (_Float_ = None) : socket 'Radius' (id: Radius)
+
+
+
+#### Returns:
+- **Cloud** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
+
+----------
+### edge_vertices()
+
+> classmethod
+
+``` python
+edge_vertices()
+```
+
+> Class Method [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edge_vertices.html)
+
+#### Returns:
+- **node** (_Integer_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
+
+----------
+### extrude()
+
+> method
+
+``` python
+extrude(offset=None, offset_scale=None, individual=None, mode='FACES')
+```
+
+> Jump Method [Extrude Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/extrude_mesh.html)
+
+Information
+-----------
+- Socket 'Mesh' : self
+- Socket 'Selection' : self[selection]
+
+#### Arguments:
+- **offset** (_Vector_ = None) : socket 'Offset' (id: Offset)
+- **offset_scale** (_Float_ = None) : socket 'Offset Scale' (id: Offset Scale)
+- **individual** (_Boolean_ = None) : socket 'Individual' (id: Individual)
+- **mode** (_str_ = FACES) : parameter 'mode' in ('VERTICES', 'EDGES', 'FACES')
+
+
+
+#### Returns:
+- **Mesh** (_Boolean_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
+
+----------
+### extrude_edges()
+
+> method
+
+``` python
+extrude_edges(offset=None, offset_scale=None)
+```
+
+> Jump Method [Extrude Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/extrude_mesh.html)
+
+Information
+-----------
+- Socket 'Mesh' : self
+- Socket 'Selection' : self[selection]
+- Parameter 'mode' : 'EDGES'
+
+#### Arguments:
+- **offset** (_Vector_ = None) : socket 'Offset' (id: Offset)
+- **offset_scale** (_Float_ = None) : socket 'Offset Scale' (id: Offset Scale)
+
+
+
+#### Returns:
+- **Mesh** (_Boolean_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
+
+----------
+### extrude_faces()
+
+> method
+
+``` python
+extrude_faces(offset=None, offset_scale=None, individual=None)
+```
+
+> Jump Method [Extrude Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/extrude_mesh.html)
+
+Information
+-----------
+- Socket 'Mesh' : self
+- Socket 'Selection' : self[selection]
+- Parameter 'mode' : 'FACES'
+
+#### Arguments:
+- **offset** (_Vector_ = None) : socket 'Offset' (id: Offset)
+- **offset_scale** (_Float_ = None) : socket 'Offset Scale' (id: Offset Scale)
+- **individual** (_Boolean_ = None) : socket 'Individual' (id: Individual)
+
+
+
+#### Returns:
+- **Mesh** (_Boolean_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
+
+----------
+### extrude_vertices()
+
+> method
+
+``` python
+extrude_vertices(offset=None, offset_scale=None)
+```
+
+> Jump Method [Extrude Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/extrude_mesh.html)
+
+Information
+-----------
+- Socket 'Mesh' : self
+- Socket 'Selection' : self[selection]
+- Parameter 'mode' : 'VERTICES'
+
+#### Arguments:
+- **offset** (_Vector_ = None) : socket 'Offset' (id: Offset)
+- **offset_scale** (_Float_ = None) : socket 'Offset Scale' (id: Offset Scale)
+
+
+
+#### Returns:
+- **Mesh** (_Boolean_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
+
+----------
+### face_group_boundaries()
+
+> classmethod
+
+``` python
+face_group_boundaries(face_group_id=None)
+```
+
+> Class Method [Face Group Boundaries](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/face_group_boundaries.html)
+
+#### Arguments:
+- **face_group_id** (_Integer_ = None) : socket 'Face Group ID' (id: Face Set)
+
+
+
+#### Returns:
+- **Boolean** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
+
+----------
+### face_neighbors()
+
+> classmethod
+
+``` python
+face_neighbors()
+```
+
+> Class Method [Face Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/face_neighbors.html)
+
+#### Returns:
+- **node** (_Integer_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
+
+----------
+### face_of_corner()
+
+> classmethod
+
+``` python
+face_of_corner(corner_index=None)
+```
+
+> Class Method [Face of Corner](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/face_of_corner.html)
+
+#### Arguments:
+- **corner_index** (_Integer_ = None) : socket 'Corner Index' (id: Corner Index)
+
+
+
+#### Returns:
+- **Integer** (_Integer_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
+
+----------
+### faces_to_points()
+
+> method
+
+``` python
+faces_to_points(position=None, radius=None)
+```
+
+> Method [Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_points.html)
+
+Information
+-----------
+- Socket 'Mesh' : self
+- Socket 'Selection' : self[selection]
+- Parameter 'mode' : 'FACES'
+
+#### Arguments:
+- **position** (_Vector_ = None) : socket 'Position' (id: Position)
+- **radius** (_Float_ = None) : socket 'Radius' (id: Radius)
+
+
+
+#### Returns:
+- **Cloud** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
+
+----------
+### flip_faces()
+
+> method
+
+``` python
+flip_faces()
+```
+
+> Jump Method [Flip Faces](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/flip_faces.html)
+
+Information
+-----------
+- Socket 'Mesh' : self
+- Socket 'Selection' : self[selection]
 
 #### Returns:
 - **Mesh** :
@@ -485,16 +937,16 @@ FromVolume(volume, voxel_size=None, voxel_amount=None, threshold=None, adaptivit
 > classmethod
 
 ``` python
-Grid(size_x=1.0, size_y=1.0, vertices_x=3, vertices_y=3)
+Grid(size_x=None, size_y=None, vertices_x=None, vertices_y=None)
 ```
 
-> Constructor node [Grid](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/grid.html)
+> Constructor [Grid](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/grid.html)
 
 #### Arguments:
-- **size_x** (_Float_ = 1.0) : socket 'Size X' (Size X)
-- **size_y** (_Float_ = 1.0) : socket 'Size Y' (Size Y)
-- **vertices_x** (_Integer_ = 3) : socket 'Vertices X' (Vertices X)
-- **vertices_y** (_Integer_ = 3) : socket 'Vertices Y' (Vertices Y)
+- **size_x** (_Float_ = None) : socket 'Size X' (id: Size X)
+- **size_y** (_Float_ = None) : socket 'Size Y' (id: Size Y)
+- **vertices_x** (_Integer_ = None) : socket 'Vertices X' (id: Vertices X)
+- **vertices_y** (_Integer_ = None) : socket 'Vertices Y' (id: Vertices Y)
 
 
 
@@ -509,14 +961,14 @@ Grid(size_x=1.0, size_y=1.0, vertices_x=3, vertices_y=3)
 > classmethod
 
 ``` python
-IcoSphere(radius=1.0, subdivisions=1)
+IcoSphere(radius=None, subdivisions=None)
 ```
 
-> Constructor node ERROR: Node 'Ico Sphere' not found
+> Constructor ERROR: Node 'Ico Sphere' not found
 
 #### Arguments:
-- **radius** (_Float_ = 1.0) : socket 'Radius' (Radius)
-- **subdivisions** (_Integer_ = 1) : socket 'Subdivisions' (Subdivisions)
+- **radius** (_Float_ = None) : socket 'Radius' (id: Radius)
+- **subdivisions** (_Integer_ = None) : socket 'Subdivisions' (id: Subdivisions)
 
 
 
@@ -526,18 +978,18 @@ IcoSphere(radius=1.0, subdivisions=1)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
 
 ----------
-### ImportOBJ()
+### ImportPLY()
 
 > classmethod
 
 ``` python
-ImportOBJ(path=None)
+ImportPLY(path=None)
 ```
 
-> Node ERROR: Node 'Import OBJ' not found
+> Constructor ERROR: Node 'Import PLY' not found
 
 #### Arguments:
-- **path** (_String_ = None) : socket 'Path' (Path)
+- **path** (_String_ = None) : socket 'Path' (id: Path)
 
 
 
@@ -555,10 +1007,10 @@ ImportOBJ(path=None)
 ImportSTL(path=None)
 ```
 
-> Node ERROR: Node 'Import STL' not found
+> Constructor ERROR: Node 'Import STL' not found
 
 #### Arguments:
-- **path** (_String_ = None) : socket 'Path' (Path)
+- **path** (_String_ = None) : socket 'Path' (id: Path)
 
 
 
@@ -573,16 +1025,20 @@ ImportSTL(path=None)
 > classmethod
 
 ``` python
-Intersect(*meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT')
+Intersect(*mesh, self_intersection=None, hole_tolerant=None, solver='FLOAT')
 ```
 
-> Constructor node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html), operation = 'INTERSECT'
+> Constructor [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html)
+
+Information
+-----------
+- Parameter 'operation' : 'INTERSECT'
 
 #### Arguments:
-- **meshes** (_Mesh_) : socket 'Mesh 2' (Mesh 2)
-- **self_intersection** (_Boolean_ = None) : socket 'Self Intersection' (Self Intersection)
-- **hole_tolerant** (_Boolean_ = None) : socket 'Hole Tolerant' (Hole Tolerant)
-- **solver** (_str_ = FLOAT) : Node.solver in ('EXACT', 'FLOAT')
+- **mesh** (_Geometry_) : socket 'Mesh' (id: Mesh 2)
+- **self_intersection** (_Boolean_ = None) : socket 'Self Intersection' (id: Self Intersection)
+- **hole_tolerant** (_Boolean_ = None) : socket 'Hole Tolerant' (id: Hole Tolerant)
+- **solver** (_str_ = FLOAT) : parameter 'solver' in ('EXACT', 'FLOAT')
 
 
 
@@ -597,23 +1053,46 @@ Intersect(*meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT')
 > method
 
 ``` python
-intersect(*meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT')
+intersect(*mesh, self_intersection=None, hole_tolerant=None, solver='FLOAT')
 ```
 
-> Node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html), operation = 'INTERSECT'
+> Jump Method [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html)
 
-
+Information
+-----------
+- Parameter 'operation' : 'INTERSECT'
 
 #### Arguments:
-- **meshes** (_Mesh_) : socket 'Mesh 2' (Mesh 2)
-- **self_intersection** (_Boolean_ = None) : socket 'Self Intersection' (Self Intersection)
-- **hole_tolerant** (_Boolean_ = None) : socket 'Hole Tolerant' (Hole Tolerant)
-- **solver** (_str_ = FLOAT) : Node.solver in ('EXACT', 'FLOAT')
+- **mesh** (_Geometry_) : socket 'Mesh' (id: Mesh 2)
+- **self_intersection** (_Boolean_ = None) : socket 'Self Intersection' (id: Self Intersection)
+- **hole_tolerant** (_Boolean_ = None) : socket 'Hole Tolerant' (id: Hole Tolerant)
+- **solver** (_str_ = FLOAT) : parameter 'solver' in ('EXACT', 'FLOAT')
 
 
 
 #### Returns:
-- **Mesh** : self
+- **Mesh** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
+
+----------
+### is_face_planar()
+
+> classmethod
+
+``` python
+is_face_planar(threshold=None)
+```
+
+> Class Method [Is Face Planar](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/face_is_planar.html)
+
+#### Arguments:
+- **threshold** (_Float_ = None) : socket 'Threshold' (id: Threshold)
+
+
+
+#### Returns:
+- **Boolean** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
 
@@ -623,24 +1102,45 @@ intersect(*meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT')
 > classmethod
 
 ``` python
-Line(count=None, start_location=None, offset=None, end_location=None, resolution=None)
+Line(count=None, start_location=None, offset=None, count_mode='TOTAL', mode='OFFSET')
 ```
 
-> Constructor node [Mesh Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/mesh_line.html)
-
-- count_mode (str): Node.count_mode in ('TOTAL', 'RESOLUTION')
-- mode (str): Node.mode in ('OFFSET', 'END_POINTS')
-
-If end_location is not None or resolution is not None, mode is set to 'END_POINTS',
-otherwise it iset to 'OFFSET'.
-If resolution is None, count_mode is set to 'TOTAL' else to 'RESOLUTION'
+> Constructor [Mesh Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/mesh_line.html)
 
 #### Arguments:
-- **count** (_Integer_ = None) : socket 'Count' (Count)
-- **start_location** (_Vector_ = None) : socket 'Start Location' (Start Location)
-- **offset** (_Vector_ = None) : socket 'Offset' (Offset)
-- **end_location** (_Vector_ = None) : socket 'End Location' (End Location)
-- **resolution** (_Float_ = None) : socket 'Resolution' (Resolution)
+- **count** (_Integer_ = None) : socket 'Count' (id: Count)
+- **start_location** (_Vector_ = None) : socket 'Start Location' (id: Start Location)
+- **offset** (_Vector_ = None) : socket 'Offset' (id: Offset)
+- **count_mode** (_str_ = TOTAL) : parameter 'count_mode' in ('TOTAL', 'RESOLUTION')
+- **mode** (_str_ = OFFSET) : parameter 'mode' in ('OFFSET', 'END_POINTS')
+
+
+
+#### Returns:
+- **Mesh** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
+
+----------
+### LineEndPoints()
+
+> classmethod
+
+``` python
+LineEndPoints(count=None, start_location=None, end_location=None, count_mode='TOTAL')
+```
+
+> Constructor [Mesh Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/mesh_line.html)
+
+Information
+-----------
+- Parameter 'mode' : 'END_POINTS'
+
+#### Arguments:
+- **count** (_Integer_ = None) : socket 'Count' (id: Count)
+- **start_location** (_Vector_ = None) : socket 'Start Location' (id: Start Location)
+- **end_location** (_Vector_ = None) : socket 'End Location' (id: Offset)
+- **count_mode** (_str_ = TOTAL) : parameter 'count_mode' in ('TOTAL', 'RESOLUTION')
 
 
 
@@ -655,17 +1155,20 @@ If resolution is None, count_mode is set to 'TOTAL' else to 'RESOLUTION'
 > classmethod
 
 ``` python
-LineOffset(start_location=None, offset=None, count=None)
+LineOffset(count=None, start_location=None, offset=None, count_mode='TOTAL')
 ```
 
-> Constructor node [Mesh Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/mesh_line.html)
+> Constructor [Mesh Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/mesh_line.html)
 
-Line from start to end point
+Information
+-----------
+- Parameter 'mode' : 'OFFSET'
 
 #### Arguments:
-- **start_location** (_Vector_ = None) : socket 'Start Location' (Start Location)
-- **offset** (_Vector_ = None) : socket 'Offset' (Offset)
-- **count** (_Integer_ = None) : socket 'Count' (Count)
+- **count** (_Integer_ = None) : socket 'Count' (id: Count)
+- **start_location** (_Vector_ = None) : socket 'Start Location' (id: Start Location)
+- **offset** (_Vector_ = None) : socket 'Offset' (id: Offset)
+- **count_mode** (_str_ = TOTAL) : parameter 'count_mode' in ('TOTAL', 'RESOLUTION')
 
 
 
@@ -675,73 +1178,61 @@ Line from start to end point
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
 
 ----------
-### LineTo()
+### material_selection()
 
 > classmethod
 
 ``` python
-LineTo(start_location=None, end_location=None, count=None, resolution=None)
+material_selection(material=None)
 ```
 
-> Constructor node [Mesh Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/mesh_line.html)
-
-Line from start to end point
+> Class Method [Material Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_selection.html)
 
 #### Arguments:
-- **start_location** (_Vector_ = None) : socket 'Start Location' (Start Location)
-- **end_location** (_Vector_ = None) : socket 'End Location' (End Location)
-- **count** (_Integer_ = None) : socket 'Count' (Count)
-- **resolution** (_Float_ = None) : socket 'Resolution' (Resolution)
+- **material** (_Material_ = None) : socket 'Material' (id: Material)
 
 
 
 #### Returns:
-- **Mesh** :
+- **Boolean** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
 
 ----------
-### pack_uv_islands()
-
-> method
-
-``` python
-pack_uv_islands(uv=None, margin=None, rotate=None)
-```
-
-> Node [Pack UV Islands](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/uv/pack_uv_islands.html)
-
-#### Arguments:
-- **uv** (_Vector_ = None) : socket 'UV' (UV)
-- **margin** (_Float_ = None) : socket 'Margin' (Margin)
-- **rotate** (_Boolean_ = None) : socket 'Rotate' (Rotate)
-
-
-
-#### Returns:
-- **Vector** :
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
-
-----------
-### Plane()
+### mesh_island()
 
 > classmethod
 
 ``` python
-Plane(size_x=1.0, size_y=1.0)
+mesh_island()
 ```
 
-> Constructor node [Grid](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/grid.html)
+> Class Method [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/mesh_island.html)
+
+#### Returns:
+- **node** (_Integer_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
+
+----------
+### offset_corner_in_face()
+
+> classmethod
+
+``` python
+offset_corner_in_face(corner_index=None, offset=None)
+```
+
+> Class Method [Offset Corner in Face](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/offset_corner_in_face.html)
 
 #### Arguments:
-- **size_x** (_Float_ = 1.0) : socket 'Size X' (Size X)
-- **size_y** (_Float_ = 1.0) : socket 'Size Y' (Size Y)
+- **corner_index** (_Integer_ = None) : socket 'Corner Index' (id: Corner Index)
+- **offset** (_Integer_ = None) : socket 'Offset' (id: Offset)
 
 
 
 #### Returns:
-- **Mesh** :
+- **Integer** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
 
@@ -754,20 +1245,23 @@ Plane(size_x=1.0, size_y=1.0)
 sample_nearest_surface(value=None, group_id=None, sample_position=None, sample_group_id=None)
 ```
 
-> Node [Sample Nearest Surface](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/sample/sample_nearest_surface.html)
+> Method [Sample Nearest Surface](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/sample/sample_nearest_surface.html)
 
-- data_type (str): Node.data_type in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4')
+Information
+-----------
+- Socket 'Mesh' : self
+- Parameter 'data_type' : depending on 'value' type
 
 #### Arguments:
-- **value** (_Float_ = None) : socket 'Value' (Value)
-- **group_id** (_Integer_ = None) : socket 'Group ID' (Group ID)
-- **sample_position** (_Vector_ = None) : socket 'Sample Position' (Sample Position)
-- **sample_group_id** (_Integer_ = None) : socket 'Sample Group ID' (Sample Group ID)
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **group_id** (_Integer_ = None) : socket 'Group ID' (id: Group ID)
+- **sample_position** (_Vector_ = None) : socket 'Sample Position' (id: Sample Position)
+- **sample_group_id** (_Integer_ = None) : socket 'Sample Group ID' (id: Sample Group ID)
 
 
 
 #### Returns:
-- **Socket** :
+- **Float** (_Boolean_)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
 
@@ -780,17 +1274,91 @@ sample_nearest_surface(value=None, group_id=None, sample_position=None, sample_g
 sample_uv_surface(value=None, uv_map=None, sample_uv=None)
 ```
 
-> Node [Sample UV Surface](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/sample/sample_uv_surface.html)
+> Method [Sample UV Surface](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/sample/sample_uv_surface.html)
+
+Information
+-----------
+- Socket 'Mesh' : self
+- Parameter 'data_type' : depending on 'value' type
 
 #### Arguments:
-- **value** (_Float_ = None) : socket 'Value' (Value)
-- **uv_map** (_Vector_ = None) : socket 'UV Map' (Source UV Map)
-- **sample_uv** (_Vector_ = None) : socket 'Sample UV' (Sample UV)
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **uv_map** (_Vector_ = None) : socket 'UV Map' (id: Source UV Map)
+- **sample_uv** (_Vector_ = None) : socket 'Sample UV' (id: Sample UV)
 
 
 
 #### Returns:
-- **Socket** :
+- **Float** (_Boolean_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
+
+----------
+### set_face_set()
+
+> method
+
+``` python
+set_face_set(face_set=None)
+```
+
+> Jump Method [Set Face Set](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/write/set_face_set.html)
+
+Information
+-----------
+- Socket 'Mesh' : self
+- Socket 'Selection' : self[selection]
+
+#### Arguments:
+- **face_set** (_Integer_ = None) : socket 'Face Set' (id: Face Set)
+
+
+
+#### Returns:
+- **Mesh** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
+
+----------
+### shortest_edge_paths()
+
+> classmethod
+
+``` python
+shortest_edge_paths(end_vertex=None, edge_cost=None)
+```
+
+> Class Method [Shortest Edge Paths](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/shortest_edge_paths.html)
+
+#### Arguments:
+- **end_vertex** (_Boolean_ = None) : socket 'End Vertex' (id: End Vertex)
+- **edge_cost** (_Float_ = None) : socket 'Edge Cost' (id: Edge Cost)
+
+
+
+#### Returns:
+- **Integer** (_Float_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
+
+----------
+### split_edges()
+
+> method
+
+``` python
+split_edges()
+```
+
+> Jump Method [Split Edges](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/split_edges.html)
+
+Information
+-----------
+- Socket 'Mesh' : self
+- Socket 'Selection' : self[selection]
+
+#### Returns:
+- **Mesh** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
 
@@ -803,17 +1371,19 @@ sample_uv_surface(value=None, uv_map=None, sample_uv=None)
 subdivide(level=None)
 ```
 
-> Node [Subdivide Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/subdivide_mesh.html)
+> Jump Method [Subdivide Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/subdivide_mesh.html)
 
-
+Information
+-----------
+- Socket 'Mesh' : self
 
 #### Arguments:
-- **level** (_Integer_ = None) : socket 'Level' (Level)
+- **level** (_Integer_ = None) : socket 'Level' (id: Level)
 
 
 
 #### Returns:
-- **Mesh** : self
+- **Mesh** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
 
@@ -823,24 +1393,26 @@ subdivide(level=None)
 > method
 
 ``` python
-subdivision_surface(level=None, edge_crease=None, vertex_crease=None, uv_smooth='PRESERVE_BOUNDARIES', boundary_smooth='ALL')
+subdivision_surface(level=None, edge_crease=None, vertex_crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES')
 ```
 
-> Node [Subdivision Surface](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/subdivision_surface.html)
+> Jump Method [Subdivision Surface](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/subdivision_surface.html)
 
-
+Information
+-----------
+- Socket 'Mesh' : self
 
 #### Arguments:
-- **level** (_Integer_ = None) : socket 'Level' (Level)
-- **edge_crease** (_Float_ = None) : socket 'Edge Crease' (Edge Crease)
-- **vertex_crease** (_Float_ = None) : socket 'Vertex Crease' (Vertex Crease)
-- **uv_smooth** (_str_ = PRESERVE_BOUNDARIES) : Node.uv_smooth in ('NONE', 'PRESERVE_CORNERS', 'PRESERVE_CORNERS_AND_JUNCTIONS', 'PRESERVE_CORNERS_JUNCTIONS_AND_CONCAVE', 'PRESERVE_BOUNDARIES', 'SMOOTH_ALL')
-- **boundary_smooth** (_str_ = ALL) : Node.boundary_smooth in ('PRESERVE_CORNERS', 'ALL')
+- **level** (_Integer_ = None) : socket 'Level' (id: Level)
+- **edge_crease** (_Float_ = None) : socket 'Edge Crease' (id: Edge Crease)
+- **vertex_crease** (_Float_ = None) : socket 'Vertex Crease' (id: Vertex Crease)
+- **boundary_smooth** (_str_ = ALL) : parameter 'boundary_smooth' in ('PRESERVE_CORNERS', 'ALL')
+- **uv_smooth** (_str_ = PRESERVE_BOUNDARIES) : parameter 'uv_smooth' in ('NONE', 'PRESERVE_CORNERS', 'PRESERVE_CORNERS_AND_JUNCTIONS', 'PRESERVE_CORNERS_JUNCTIONS_AND_CONCAVE', 'PRESERVE_BOUNDARIES', 'SMOOTH_ALL')
 
 
 
 #### Returns:
-- **Mesh** : self
+- **Mesh** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
 
@@ -853,12 +1425,96 @@ subdivision_surface(level=None, edge_crease=None, vertex_crease=None, uv_smooth=
 to_curve()
 ```
 
-> Node [Mesh to Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_curve.html)
+> Method [Mesh to Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_curve.html)
+
+Information
+-----------
+- Socket 'Mesh' : self
+- Socket 'Selection' : self[selection]
+
+#### Returns:
+- **Curve** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
+
+----------
+### to_density_grid()
+
+> method
+
+``` python
+to_density_grid(density=None, voxel_size=None, gradient_width=None)
+```
+
+> Method ERROR: Node 'Mesh to Density Grid' not found
+
+Information
+-----------
+- Socket 'Mesh' : self
+
+#### Arguments:
+- **density** (_Float_ = None) : socket 'Density' (id: Density)
+- **voxel_size** (_Float_ = None) : socket 'Voxel Size' (id: Voxel Size)
+- **gradient_width** (_Float_ = None) : socket 'Gradient Width' (id: Gradient Width)
 
 
 
 #### Returns:
-- **Curve** :
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
+
+----------
+### to_points()
+
+> method
+
+``` python
+to_points(position=None, radius=None, mode='VERTICES')
+```
+
+> Method [Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_points.html)
+
+Information
+-----------
+- Socket 'Mesh' : self
+- Socket 'Selection' : self[selection]
+
+#### Arguments:
+- **position** (_Vector_ = None) : socket 'Position' (id: Position)
+- **radius** (_Float_ = None) : socket 'Radius' (id: Radius)
+- **mode** (_str_ = VERTICES) : parameter 'mode' in ('VERTICES', 'EDGES', 'FACES', 'CORNERS')
+
+
+
+#### Returns:
+- **Cloud** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
+
+----------
+### to_sdf_grid()
+
+> method
+
+``` python
+to_sdf_grid(voxel_size=None, band_width=None)
+```
+
+> Method ERROR: Node 'Mesh to SDF Grid' not found
+
+Information
+-----------
+- Socket 'Mesh' : self
+
+#### Arguments:
+- **voxel_size** (_Float_ = None) : socket 'Voxel Size' (id: Voxel Size)
+- **band_width** (_Integer_ = None) : socket 'Band Width' (id: Band Width)
+
+
+
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
 
@@ -868,21 +1524,20 @@ to_curve()
 > method
 
 ``` python
-to_volume(density=None, voxel_amount=None, interior_band_width=None, voxel_size=None, amount=True)
+to_volume(density=None, voxel_amount=None, interior_band_width=None, resolution_mode='VOXEL_AMOUNT')
 ```
 
-> Node [Mesh to Volume](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_volume.html)
+> Method [Mesh to Volume](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_volume.html)
 
-
-
-- resolution_mode (str): Node.resolution_mode in ('VOXEL_AMOUNT', 'VOXEL_SIZE')
+Information
+-----------
+- Socket 'Mesh' : self
 
 #### Arguments:
-- **density** (_Float_ = None) : socket 'Density' (Density)
-- **voxel_amount** (_Float_ = None) : socket 'Voxel Amount' (Voxel Amount)
-- **interior_band_width** (_Float_ = None) : socket 'Interior Band Width' (Interior Band Width)
-- **voxel_size** (_Float_ = None) : socket 'Voxel Size'
-- **amount** (_bool_ = True) : resolution_mode is set to 'VOXEL_AMOUNT' (True) or 'VOXEL_SIZE' (False)
+- **density** (_Float_ = None) : socket 'Density' (id: Density)
+- **voxel_amount** (_Float_ = None) : socket 'Voxel Amount' (id: Voxel Amount)
+- **interior_band_width** (_Float_ = None) : socket 'Interior Band Width' (id: Interior Band Width)
+- **resolution_mode** (_str_ = VOXEL_AMOUNT) : parameter 'resolution_mode' in ('VOXEL_AMOUNT', 'VOXEL_SIZE')
 
 
 
@@ -897,22 +1552,25 @@ to_volume(density=None, voxel_amount=None, interior_band_width=None, voxel_size=
 > method
 
 ``` python
-triangulate(minimum_vertices=None, quad_method='SHORTEST_DIAGONAL', ngon_method='BEAUTY')
+triangulate(minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL')
 ```
 
-> Node [Triangulate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/triangulate.html)
+> Jump Method [Triangulate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/triangulate.html)
 
-
+Information
+-----------
+- Socket 'Mesh' : self
+- Socket 'Selection' : self[selection]
 
 #### Arguments:
-- **minimum_vertices** (_Integer_ = None) : socket 'Minimum Vertices' (Minimum Vertices)
-- **quad_method** (_str_ = SHORTEST_DIAGONAL) : Node.quad_method in ('BEAUTY', 'FIXED', 'FIXED_ALTERNATE', 'SHORTEST_DIAGONAL', 'LONGEST_DIAGONAL')
-- **ngon_method** (_str_ = BEAUTY) : Node.ngon_method in ('BEAUTY', 'CLIP')
+- **minimum_vertices** (_Integer_ = None) : socket 'Minimum Vertices' (id: Minimum Vertices)
+- **ngon_method** (_str_ = BEAUTY) : parameter 'ngon_method' in ('BEAUTY', 'CLIP')
+- **quad_method** (_str_ = SHORTEST_DIAGONAL) : parameter 'quad_method' in ('BEAUTY', 'FIXED', 'FIXED_ALTERNATE', 'SHORTEST_DIAGONAL', 'LONGEST_DIAGONAL')
 
 
 
 #### Returns:
-- **Mesh** : self
+- **Mesh** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
 
@@ -922,16 +1580,20 @@ triangulate(minimum_vertices=None, quad_method='SHORTEST_DIAGONAL', ngon_method=
 > classmethod
 
 ``` python
-Union(*meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT')
+Union(*mesh, self_intersection=None, hole_tolerant=None, solver='FLOAT')
 ```
 
-> Constructor node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html), operation = 'UNION'
+> Constructor [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html)
+
+Information
+-----------
+- Parameter 'operation' : 'UNION'
 
 #### Arguments:
-- **meshes** (_Mesh_) : socket 'Mesh 2' (Mesh 2)
-- **self_intersection** (_Boolean_ = None) : socket 'Self Intersection' (Self Intersection)
-- **hole_tolerant** (_Boolean_ = None) : socket 'Hole Tolerant' (Hole Tolerant)
-- **solver** (_str_ = FLOAT) : Node.solver in ('EXACT', 'FLOAT')
+- **mesh** (_Geometry_) : socket 'Mesh' (id: Mesh 2)
+- **self_intersection** (_Boolean_ = None) : socket 'Self Intersection' (id: Self Intersection)
+- **hole_tolerant** (_Boolean_ = None) : socket 'Hole Tolerant' (id: Hole Tolerant)
+- **solver** (_str_ = FLOAT) : parameter 'solver' in ('EXACT', 'FLOAT')
 
 
 
@@ -946,41 +1608,20 @@ Union(*meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT')
 > method
 
 ``` python
-union(*meshes, self_intersection=None, hole_tolerant=None, solver='FLOAT')
+union(*mesh, self_intersection=None, hole_tolerant=None, solver='FLOAT')
 ```
 
-> Node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html), operation = 'UNION'
+> Jump Method [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html)
 
-
-
-#### Arguments:
-- **meshes** (_Mesh_) : socket 'Mesh 2' (Mesh 2)
-- **self_intersection** (_Boolean_ = None) : socket 'Self Intersection' (Self Intersection)
-- **hole_tolerant** (_Boolean_ = None) : socket 'Hole Tolerant' (Hole Tolerant)
-- **solver** (_str_ = FLOAT) : Node.solver in ('EXACT', 'FLOAT')
-
-
-
-#### Returns:
-- **Mesh** : self
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
-
-----------
-### UVSphere()
-
-> classmethod
-
-``` python
-UVSphere(segments=32, rings=16, radius=1.0)
-```
-
-> Constructor node [UV Sphere](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/uv_sphere.html)
+Information
+-----------
+- Parameter 'operation' : 'UNION'
 
 #### Arguments:
-- **segments** (_Integer_ = 32) : socket 'Segments' (Segments)
-- **rings** (_Integer_ = 16) : socket 'Rings' (Rings)
-- **radius** (_Float_ = 1.0) : socket 'Radius' (Radius)
+- **mesh** (_Geometry_) : socket 'Mesh' (id: Mesh 2)
+- **self_intersection** (_Boolean_ = None) : socket 'Self Intersection' (id: Self Intersection)
+- **hole_tolerant** (_Boolean_ = None) : socket 'Hole Tolerant' (id: Hole Tolerant)
+- **solver** (_str_ = FLOAT) : parameter 'solver' in ('EXACT', 'FLOAT')
 
 
 
@@ -990,25 +1631,89 @@ UVSphere(segments=32, rings=16, radius=1.0)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
 
 ----------
-### uv_unwrap()
+### UVSphere()
 
-> method
+> classmethod
 
 ``` python
-uv_unwrap(seam=None, margin=None, fill_holes=False, method='ANGLE_BASED')
+UVSphere(segments=None, rings=None, radius=None)
 ```
 
-> Node [UV Unwrap](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/uv/uv_unwrap.html)
+> Constructor [UV Sphere](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/uv_sphere.html)
 
 #### Arguments:
-- **seam** (_Boolean_ = None) : socket 'Seam' (Seam)
-- **margin** (_Float_ = None) : socket 'Margin' (Margin)
-- **fill_holes** (_Boolean_ = False) : socket 'Fill Holes' (Fill Holes)
-- **method** (_str_ = ANGLE_BASED) : Node.method in ('ANGLE_BASED', 'CONFORMAL')
+- **segments** (_Integer_ = None) : socket 'Segments' (id: Segments)
+- **rings** (_Integer_ = None) : socket 'Rings' (id: Rings)
+- **radius** (_Float_ = None) : socket 'Radius' (id: Radius)
 
 
 
 #### Returns:
-- **Vector** :
+- **Mesh** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
+
+----------
+### vertex_neighbors()
+
+> classmethod
+
+``` python
+vertex_neighbors()
+```
+
+> Class Method [Vertex Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/vertex_neighbors.html)
+
+#### Returns:
+- **node** (_Integer_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
+
+----------
+### vertex_of_corner()
+
+> classmethod
+
+``` python
+vertex_of_corner(corner_index=None)
+```
+
+> Class Method [Vertex of Corner](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/vertex_of_corner.html)
+
+#### Arguments:
+- **corner_index** (_Integer_ = None) : socket 'Corner Index' (id: Corner Index)
+
+
+
+#### Returns:
+- **Integer** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
+
+----------
+### vertices_to_points()
+
+> method
+
+``` python
+vertices_to_points(position=None, radius=None)
+```
+
+> Method [Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_points.html)
+
+Information
+-----------
+- Socket 'Mesh' : self
+- Socket 'Selection' : self[selection]
+- Parameter 'mode' : 'VERTICES'
+
+#### Arguments:
+- **position** (_Vector_ = None) : socket 'Position' (id: Position)
+- **radius** (_Float_ = None) : socket 'Radius' (id: Radius)
+
+
+
+#### Returns:
+- **Cloud** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>

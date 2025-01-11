@@ -1,9 +1,7 @@
 # Float
 
-> Bases classes: [Attribute](attribute.md#attribute)
-
 ``` python
-Float(value=0.0, name=None, min=None, max=None, tip=None, subtype='NONE')
+Float(value=0.0, name=None, min=None, max=None, tip=None, panel=None, subtype='NONE', default_attribute='', hide_value=False, hide_in_modifier=False, single_value=False)
 ```
 
 > Socket of type VALUE
@@ -25,38 +23,100 @@ float = Float(3.14, name="User input", subtype='ANGLE') # Create a new Float gro
 ```
 
 #### Arguments:
-- **value** (_float or Socket_ = 0.0) : initial value
+- **value** (_float | str | Socket_ = 0.0) : initial value
 - **name** (_str_ = None) : Create an Group Input socket with the provided str if not None
 - **min** (_float_ = None) : minimum value
 - **max** (_float_ = None) : maximum value
 - **tip** (_str_ = None) : User tip (for Group Input sockets)
-- **subtype** (_str_ = NONE) : sub type for group input
+- **panel** (_str_ = None) : panel name (overrides tree pane if exists)
+- **subtype** (_str in ('NONE', 'PERCENTAGE', 'FACTOR', 'ANGLE', 'TIME', 'TIME_ABSOLUTE', 'DISTANCE', 'WAVELENGTH', 'COLOR_TEMPERATURE', 'FREQUENCY')_ = NONE) : sub type for group input
+- **default_attribute** (_str_ = ) : default attribute name
+- **hide_value** (_bool_ = False) : Hide Value option
+- **hide_in_modifier** (_bool_ = False) : Hide in Modifier option
+- **single_value** (_bool_ = False) : Single Value option
 
 ### Inherited
 
-[blur](socket.md#blur) :black_small_square: [\_cache](nodecache.md#_cache) :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](socket.md#check_in_list) :black_small_square: [data_type](socket.md#data_type) :black_small_square: [\_geometry_class](socket.md#_geometry_class) :black_small_square: [\_\_getattr__](socket.md#__getattr__) :black_small_square: [get_socket_class](socket.md#get_socket_class) :black_small_square: [hash_value](socket.md#hash_value) :black_small_square: [IndexSwitch](socket.md#indexswitch) :black_small_square: [index_switch](socket.md#index_switch) :black_small_square: [input_type](socket.md#input_type) :black_small_square: [\_jump](socket.md#_jump) :black_small_square: [\_lc](socket.md#_lc) :black_small_square: [\_lcop](socket.md#_lcop) :black_small_square: [MenuSwitch](socket.md#menuswitch) :black_small_square: [menu_switch](socket.md#menu_switch) :black_small_square: [Named](attribute.md#named) :black_small_square: [NamedAttribute](attribute.md#namedattribute) :black_small_square: [node](socket.md#node) :black_small_square: [node_color](socket.md#node_color) :black_small_square: [node_label](socket.md#node_label) :black_small_square: [pin_gizmo](socket.md#pin_gizmo) :black_small_square: [\_reset](socket.md#_reset) :black_small_square: [\_run_tests](socket.md#_run_tests) :black_small_square: [socket_type](socket.md#socket_type) :black_small_square: [\_\_str__](socket.md#__str__) :black_small_square: [Switch](socket.md#switch) :black_small_square: [switch](socket.md#switch) :black_small_square:
+[\_cache](nodecache.md#_cache) :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](socket.md#check_in_list) :black_small_square: [data_type](socket.md#data_type) :black_small_square: [\_domain_to_geometry](socket.md#_domain_to_geometry) :black_small_square: [\_geometry_class](socket.md#_geometry_class) :black_small_square: [\_\_getattr__](socket.md#__getattr__) :black_small_square: [get_node_data_type](socket.md#get_node_data_type) :black_small_square: [get_socket_class](socket.md#get_socket_class) :black_small_square: [IndexSwitch](socket.md#indexswitch) :black_small_square: [index_switch](socket.md#index_switch) :black_small_square: [Input](socket.md#input) :black_small_square: [input_type](socket.md#input_type) :black_small_square: [\_interface_socket](socket.md#_interface_socket) :black_small_square: [\_is_group_input](socket.md#_is_group_input) :black_small_square: [\_is_group_output](socket.md#_is_group_output) :black_small_square: [\_is_group_socket](socket.md#_is_group_socket) :black_small_square: [\_jump](socket.md#_jump) :black_small_square: [\_lc](socket.md#_lc) :black_small_square: [\_lcop](socket.md#_lcop) :black_small_square: [\_lock](proplocker.md#_lock) :black_small_square: [MenuSwitch](socket.md#menuswitch) :black_small_square: [menu_switch](socket.md#menu_switch) :black_small_square: [node](socket.md#node) :black_small_square: [node_color](socket.md#node_color) :black_small_square: [node_label](socket.md#node_label) :black_small_square: [\_panel_name](socket.md#_panel_name) :black_small_square: [pin_gizmo](socket.md#pin_gizmo) :black_small_square: [\_reset](socket.md#_reset) :black_small_square: [\_run_tests](socket.md#_run_tests) :black_small_square: [\_\_setattr__](socket.md#__setattr__) :black_small_square: [\_set_interface_property](socket.md#_set_interface_property) :black_small_square: [socket_type](socket.md#socket_type) :black_small_square: [\_\_str__](socket.md#__str__) :black_small_square: [Switch](socket.md#switch) :black_small_square: [switch](socket.md#switch) :black_small_square: [\_unlock](proplocker.md#_unlock) :black_small_square:
 
 ## Content
 
-- **A** : [Angle](float.md#angle)
-- **C** : [ceiling](float.md#ceiling) :black_small_square: [clamp](float.md#clamp) :black_small_square: [color_ramp](float.md#color_ramp) :black_small_square: [curve](float.md#curve)
-- **D** : [dial_gizmo](float.md#dial_gizmo) :black_small_square: [Distance](float.md#distance)
-- **E** : [equal](float.md#equal)
-- **F** : [Factor](float.md#factor) :black_small_square: [floor](float.md#floor)
-- **G** : [greater_equal](float.md#greater_equal) :black_small_square: [greater_than](float.md#greater_than)
-- **I** : [\_\_init__](float.md#__init__)
-- **L** : [less_equal](float.md#less_equal) :black_small_square: [less_than](float.md#less_than) :black_small_square: [linear_gizmo](float.md#linear_gizmo)
-- **M** : [map_range](float.md#map_range) :black_small_square: [map_range_linear](float.md#map_range_linear) :black_small_square: [map_range_smooth](float.md#map_range_smooth) :black_small_square: [map_range_smoother](float.md#map_range_smoother) :black_small_square: [map_range_stepped](float.md#map_range_stepped) :black_small_square: [mix](float.md#mix)
-- **N** : [not_equal](float.md#not_equal)
+- **A** : [abs](float.md#abs) :black_small_square: [add](float.md#add) :black_small_square: [Angle](float.md#angle) :black_small_square: [arccosine](float.md#arccosine) :black_small_square: [arcsine](float.md#arcsine) :black_small_square: [arctan2](float.md#arctan2) :black_small_square: [arctangent](float.md#arctangent)
+- **B** : [bevel](float.md#bevel) :black_small_square: [blur](float.md#blur) :black_small_square: [bump](float.md#bump)
+- **C** : [ceil](float.md#ceil) :black_small_square: [clamp](float.md#clamp) :black_small_square: [clamp_minmax](float.md#clamp_minmax) :black_small_square: [clamp_range](float.md#clamp_range) :black_small_square: [color_ramp](float.md#color_ramp) :black_small_square: [ColorTemperature](float.md#colortemperature) :black_small_square: [combine_color](float.md#combine_color) :black_small_square: [combine_color_HSL](float.md#combine_color_hsl) :black_small_square: [combine_color_HSV](float.md#combine_color_hsv) :black_small_square: [combine_color_RGB](float.md#combine_color_rgb) :black_small_square: [compare](float.md#compare) :black_small_square: [cos](float.md#cos) :black_small_square: [cosh](float.md#cosh)
+- **D** : [degrees](float.md#degrees) :black_small_square: [dial_gizmo](float.md#dial_gizmo) :black_small_square: [displacement](float.md#displacement) :black_small_square: [Distance](float.md#distance) :black_small_square: [divide](float.md#divide)
+- **E** : [equal](float.md#equal) :black_small_square: [exp](float.md#exp)
+- **F** : [Factor](float.md#factor) :black_small_square: [float_curve](float.md#float_curve) :black_small_square: [floor](float.md#floor) :black_small_square: [floored_modulo](float.md#floored_modulo) :black_small_square: [fract](float.md#fract) :black_small_square: [Frequency](float.md#frequency) :black_small_square: [fresnel](float.md#fresnel)
+- **G** : [Gabor](float.md#gabor) :black_small_square: [greater_equal](float.md#greater_equal) :black_small_square: [greater_than](float.md#greater_than) :black_small_square: [grid_boolean](float.md#grid_boolean)
+- **H** : [hash_value](float.md#hash_value) :black_small_square: [hue_saturation_value](float.md#hue_saturation_value)
+- **I** : [\_\_init__](float.md#__init__) :black_small_square: [inverse_sqrt](float.md#inverse_sqrt)
+- **L** : [layer_weight](float.md#layer_weight) :black_small_square: [less_equal](float.md#less_equal) :black_small_square: [less_than](float.md#less_than) :black_small_square: [light_falloff](float.md#light_falloff) :black_small_square: [linear_gizmo](float.md#linear_gizmo) :black_small_square: [log](float.md#log)
+- **M** : [map_range](float.md#map_range) :black_small_square: [map_range_linear](float.md#map_range_linear) :black_small_square: [map_range_smoother_step](float.md#map_range_smoother_step) :black_small_square: [map_range_smooth_step](float.md#map_range_smooth_step) :black_small_square: [map_range_stepped](float.md#map_range_stepped) :black_small_square: [max](float.md#max) :black_small_square: [mgreater_than](float.md#mgreater_than) :black_small_square: [min](float.md#min) :black_small_square: [mix](float.md#mix) :black_small_square: [mless_than](float.md#mless_than) :black_small_square: [modulo](float.md#modulo) :black_small_square: [multiply](float.md#multiply) :black_small_square: [multiply_add](float.md#multiply_add)
+- **N** : [Named](float.md#named) :black_small_square: [NamedAttribute](float.md#namedattribute) :black_small_square: [Noise](float.md#noise) :black_small_square: [normal_map](float.md#normal_map) :black_small_square: [not_equal](float.md#not_equal)
 - **O** : [out](float.md#out)
-- **P** : [Percentage](float.md#percentage)
-- **R** : [Random](float.md#random) :black_small_square: [round](float.md#round)
-- **T** : [Time](float.md#time) :black_small_square: [TimeAbsolute](float.md#timeabsolute) :black_small_square: [to_integer](float.md#to_integer) :black_small_square: [to_string](float.md#to_string) :black_small_square: [truncate](float.md#truncate)
-- **W** : [WaveLength](float.md#wavelength)
+- **P** : [Percentage](float.md#percentage) :black_small_square: [pingpong](float.md#pingpong) :black_small_square: [power](float.md#power)
+- **R** : [radians](float.md#radians) :black_small_square: [Random](float.md#random) :black_small_square: [round](float.md#round)
+- **S** : [sample_grid](float.md#sample_grid) :black_small_square: [sample_grid_index](float.md#sample_grid_index) :black_small_square: [scene_time](float.md#scene_time) :black_small_square: [sdf_difference](float.md#sdf_difference) :black_small_square: [sdf_intersect](float.md#sdf_intersect) :black_small_square: [sdf_union](float.md#sdf_union) :black_small_square: [sign](float.md#sign) :black_small_square: [sin](float.md#sin) :black_small_square: [sinh](float.md#sinh) :black_small_square: [smooth_max](float.md#smooth_max) :black_small_square: [smooth_min](float.md#smooth_min) :black_small_square: [snap](float.md#snap) :black_small_square: [sqrt](float.md#sqrt) :black_small_square: [subtract](float.md#subtract)
+- **T** : [tan](float.md#tan) :black_small_square: [tanh](float.md#tanh) :black_small_square: [Time](float.md#time) :black_small_square: [TimeAbsolute](float.md#timeabsolute) :black_small_square: [to_integer](float.md#to_integer) :black_small_square: [to_mesh](float.md#to_mesh) :black_small_square: [to_string](float.md#to_string) :black_small_square: [trunc](float.md#trunc)
+- **V** : [Voronoi](float.md#voronoi)
+- **W** : [WaveLength](float.md#wavelength) :black_small_square: [wavelength](float.md#wavelength) :black_small_square: [WhiteNoise](float.md#whitenoise) :black_small_square: [wireframe](float.md#wireframe) :black_small_square: [wrap](float.md#wrap)
 
 ## Methods
 
 
+
+----------
+### abs()
+
+> method
+
+``` python
+abs(use_clamp=False)
+```
+
+> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+
+Information
+-----------
+- Socket 'Value' : self
+- Parameter 'operation' : 'ABSOLUTE'
+
+#### Arguments:
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### add()
+
+> method
+
+``` python
+add(value=None, use_clamp=False)
+```
+
+> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+
+Information
+-----------
+- Socket 'Value' : self
+- Parameter 'operation' : 'ADD'
+
+#### Arguments:
+- **value** (_Float_ = None) : socket 'Value' (id: Value_001)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
 
 ----------
 ### Angle()
@@ -64,7 +124,7 @@ float = Float(3.14, name="User input", subtype='ANGLE') # Create a new Float gro
 > classmethod
 
 ``` python
-Angle(value=0.0, name='Angle', min=None, max=None, tip=None)
+Angle(value=0.0, name='Angle', min=None, max=None, tip=None, panel=None, default_attribute='', hide_value=False, hide_in_modifier=False, single_value=False)
 ```
 
 > Angle group input
@@ -75,26 +135,220 @@ Angle(value=0.0, name='Angle', min=None, max=None, tip=None)
 - **min** ( = None)
 - **max** ( = None)
 - **tip** ( = None)
+- **panel** ( = None)
+- **default_attribute** ( = )
+- **hide_value** ( = False)
+- **hide_in_modifier** ( = False)
+- **single_value** ( = False)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
 
 ----------
-### ceiling()
+### arccosine()
 
 > method
 
 ``` python
-ceiling()
+arccosine(use_clamp=False)
 ```
 
-> Ceiling
+> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-:sunrise: **ShaderNodes** only
+Information
+-----------
+- Socket 'Value' : self
+- Parameter 'operation' : 'ARCCOSINE'
+
+#### Arguments:
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
 
 
-> [!IMPORTANT]
-> - **GeoNodes** : [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/float_to_integer.html)
-> - **ShaderNodes** : [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### arcsine()
+
+> method
+
+``` python
+arcsine(use_clamp=False)
+```
+
+> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+
+Information
+-----------
+- Socket 'Value' : self
+- Parameter 'operation' : 'ARCSINE'
+
+#### Arguments:
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### arctan2()
+
+> method
+
+``` python
+arctan2(value=None, use_clamp=False)
+```
+
+> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+
+Information
+-----------
+- Socket 'Value' : self
+- Parameter 'operation' : 'ARCTAN2'
+
+#### Arguments:
+- **value** (_Float_ = None) : socket 'Value' (id: Value_001)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### arctangent()
+
+> method
+
+``` python
+arctangent(use_clamp=False)
+```
+
+> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+
+Information
+-----------
+- Socket 'Value' : self
+- Parameter 'operation' : 'ARCTANGENT'
+
+#### Arguments:
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### bevel()
+
+> method
+
+``` python
+bevel(normal=None, samples=4)
+```
+
+> Method [Bevel](https://docs.blender.org/manual/en/latest/render/shader_nodes/input/bevel.html)
+
+Information
+-----------
+- Socket 'Radius' : self
+
+#### Arguments:
+- **normal** (_Vector_ = None) : socket 'Normal' (id: Normal)
+- **samples** (_int_ = 4) : parameter 'samples'
+
+
+
+#### Returns:
+- **Vector** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### blur()
+
+> method
+
+``` python
+blur(iterations=None, weight=None)
+```
+
+> Method [Blur Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/blur_attribute.html)
+
+Information
+-----------
+- Socket 'Value' : self
+- Parameter 'data_type' : 'FLOAT'
+
+#### Arguments:
+- **iterations** (_Integer_ = None) : socket 'Iterations' (id: Iterations)
+- **weight** (_Float_ = None) : socket 'Weight' (id: Weight)
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### bump()
+
+> method
+
+``` python
+bump(distance=None, height=None, normal=None, invert=False)
+```
+
+> Method [Bump](https://docs.blender.org/manual/en/latest/render/shader_nodes/vector/bump.html)
+
+Information
+-----------
+- Socket 'Strength' : self
+
+#### Arguments:
+- **distance** (_Float_ = None) : socket 'Distance' (id: Distance)
+- **height** (_Float_ = None) : socket 'Height' (id: Height)
+- **normal** (_Vector_ = None) : socket 'Normal' (id: Normal)
+- **invert** (_bool_ = False) : parameter 'invert'
+
+
+
+#### Returns:
+- **Vector** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### ceil()
+
+> method
+
+``` python
+ceil(use_clamp=False)
+```
+
+> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+
+Information
+-----------
+- Socket 'Value' : self
+- Parameter 'operation' : 'CEIL'
+
+#### Arguments:
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
 
 #### Returns:
 - **Float** :
@@ -110,14 +364,70 @@ ceiling()
 clamp(min=None, max=None, clamp_type='MINMAX')
 ```
 
-> Clamp
+> Method [Clamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/clamp.html)
 
-> Node [Clamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/clamp.html)
+Information
+-----------
+- Socket 'Value' : self
 
 #### Arguments:
-- **min** (_Float_ = None) : socket 'Min' (Min)
-- **max** (_Float_ = None) : socket 'Max' (Max)
-- **clamp_type** (_str_ = MINMAX) : Node.clamp_type in ('MINMAX', 'RANGE')
+- **min** (_Float_ = None) : socket 'Min' (id: Min)
+- **max** (_Float_ = None) : socket 'Max' (id: Max)
+- **clamp_type** (_str_ = MINMAX) : parameter 'clamp_type' in ('MINMAX', 'RANGE')
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### clamp_minmax()
+
+> method
+
+``` python
+clamp_minmax(min=None, max=None)
+```
+
+> Method [Clamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/clamp.html)
+
+Information
+-----------
+- Socket 'Value' : self
+- Parameter 'clamp_type' : 'MINMAX'
+
+#### Arguments:
+- **min** (_Float_ = None) : socket 'Min' (id: Min)
+- **max** (_Float_ = None) : socket 'Max' (id: Max)
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### clamp_range()
+
+> method
+
+``` python
+clamp_range(min=None, max=None)
+```
+
+> Method [Clamp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/clamp.html)
+
+Information
+-----------
+- Socket 'Value' : self
+- Parameter 'clamp_type' : 'RANGE'
+
+#### Arguments:
+- **min** (_Float_ = None) : socket 'Min' (id: Min)
+- **max** (_Float_ = None) : socket 'Max' (id: Max)
 
 
 
@@ -150,21 +460,236 @@ color_ramp(stops=None)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
 
 ----------
-### curve()
+### ColorTemperature()
+
+> classmethod
+
+``` python
+ColorTemperature(value=0.0, name='Color Temperature', min=None, max=None, tip=None, panel=None, default_attribute='', hide_value=False, hide_in_modifier=False, single_value=False)
+```
+
+> Wave Length group input
+
+#### Arguments:
+- **value** ( = 0.0)
+- **name** ( = Color Temperature)
+- **min** ( = None)
+- **max** ( = None)
+- **tip** ( = None)
+- **panel** ( = None)
+- **default_attribute** ( = )
+- **hide_value** ( = False)
+- **hide_in_modifier** ( = False)
+- **single_value** ( = False)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### combine_color()
 
 > method
 
 ``` python
-curve(factor=None, keep=None)
+combine_color(green=None, blue=None, mode='RGB')
 ```
 
-> Float Curve
+> Method [Combine Color](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/color/combine_color.html)
 
-> Node ERROR: Node 'Float Curve' not found
+Information
+-----------
+- Socket 'Red' : self
 
 #### Arguments:
-- **factor** (_Float_ = None) : socket 'Factor' (Factor)
-- **keep** ( = None)
+- **green** (_Float_ = None) : socket 'Green' (id: Green)
+- **blue** (_Float_ = None) : socket 'Blue' (id: Blue)
+- **mode** (_str_ = RGB) : parameter 'mode' in ('RGB', 'HSV', 'HSL')
+
+
+
+#### Returns:
+- **Color** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### combine_color_HSL()
+
+> method
+
+``` python
+combine_color_HSL(saturation=None, lightness=None)
+```
+
+> Method [Combine Color](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/color/combine_color.html)
+
+Information
+-----------
+- Socket 'Hue' : self
+- Parameter 'mode' : 'HSL'
+
+#### Arguments:
+- **saturation** (_Float_ = None) : socket 'Saturation' (id: Green)
+- **lightness** (_Float_ = None) : socket 'Lightness' (id: Blue)
+
+
+
+#### Returns:
+- **Color** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### combine_color_HSV()
+
+> method
+
+``` python
+combine_color_HSV(saturation=None, value=None)
+```
+
+> Method [Combine Color](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/color/combine_color.html)
+
+Information
+-----------
+- Socket 'Hue' : self
+- Parameter 'mode' : 'HSV'
+
+#### Arguments:
+- **saturation** (_Float_ = None) : socket 'Saturation' (id: Green)
+- **value** (_Float_ = None) : socket 'Value' (id: Blue)
+
+
+
+#### Returns:
+- **Color** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### combine_color_RGB()
+
+> method
+
+``` python
+combine_color_RGB(green=None, blue=None)
+```
+
+> Method [Combine Color](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/color/combine_color.html)
+
+Information
+-----------
+- Socket 'Red' : self
+- Parameter 'mode' : 'RGB'
+
+#### Arguments:
+- **green** (_Float_ = None) : socket 'Green' (id: Green)
+- **blue** (_Float_ = None) : socket 'Blue' (id: Blue)
+
+
+
+#### Returns:
+- **Color** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### compare()
+
+> method
+
+``` python
+compare(value=None, epsilon=None, use_clamp=False)
+```
+
+> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+
+Information
+-----------
+- Socket 'Value' : self
+- Parameter 'operation' : 'COMPARE'
+
+#### Arguments:
+- **value** (_Float_ = None) : socket 'Value' (id: Value_001)
+- **epsilon** (_Float_ = None) : socket 'Epsilon' (id: Value_002)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### cos()
+
+> method
+
+``` python
+cos(use_clamp=False)
+```
+
+> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+
+Information
+-----------
+- Socket 'Value' : self
+- Parameter 'operation' : 'COSINE'
+
+#### Arguments:
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### cosh()
+
+> method
+
+``` python
+cosh(use_clamp=False)
+```
+
+> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+
+Information
+-----------
+- Socket 'Value' : self
+- Parameter 'operation' : 'COSH'
+
+#### Arguments:
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### degrees()
+
+> method
+
+``` python
+degrees(use_clamp=False)
+```
+
+> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+
+Information
+-----------
+- Socket 'Radians' : self
+- Parameter 'operation' : 'DEGREES'
+
+#### Arguments:
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
 
 
 
@@ -182,15 +707,15 @@ curve(factor=None, keep=None)
 dial_gizmo(*value, position=None, up=None, screen_space=None, radius=None, color_id='PRIMARY')
 ```
 
-> Node ERROR: Node 'Dial Gizmo' not found
+> Method ERROR: Node 'Dial Gizmo' not found
 
 #### Arguments:
-- **value** (_Float_) : socket 'Value' (Value)
-- **position** (_Vector_ = None) : socket 'Position' (Position)
-- **up** (_Vector_ = None) : socket 'Up' (Up)
-- **screen_space** (_Boolean_ = None) : socket 'Screen Space' (Screen Space)
-- **radius** (_Float_ = None) : socket 'Radius' (Radius)
-- **color_id** (_str_ = PRIMARY) : Node.color_id in ('PRIMARY', 'SECONDARY', 'X', 'Y', 'Z')
+- **value** (_Float_) : socket 'Value' (id: Value)
+- **position** (_Vector_ = None) : socket 'Position' (id: Position)
+- **up** (_Vector_ = None) : socket 'Up' (id: Up)
+- **screen_space** (_Boolean_ = None) : socket 'Screen Space' (id: Screen Space)
+- **radius** (_Float_ = None) : socket 'Radius' (id: Radius)
+- **color_id** (_str_ = PRIMARY) : parameter 'color_id' in ('PRIMARY', 'SECONDARY', 'X', 'Y', 'Z')
 
 
 
@@ -200,12 +725,40 @@ dial_gizmo(*value, position=None, up=None, screen_space=None, radius=None, color
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
 
 ----------
+### displacement()
+
+> method
+
+``` python
+displacement(midlevel=None, scale=None, normal=None, space='OBJECT')
+```
+
+> Method [Displacement](https://docs.blender.org/manual/en/latest/render/shader_nodes/vector/displacement.html)
+
+Information
+-----------
+- Socket 'Height' : self
+
+#### Arguments:
+- **midlevel** (_Float_ = None) : socket 'Midlevel' (id: Midlevel)
+- **scale** (_Float_ = None) : socket 'Scale' (id: Scale)
+- **normal** (_Vector_ = None) : socket 'Normal' (id: Normal)
+- **space** (_str_ = OBJECT) : parameter 'space' in ('OBJECT', 'WORLD')
+
+
+
+#### Returns:
+- **Vector** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
 ### Distance()
 
 > classmethod
 
 ``` python
-Distance(value=0.0, name='Distance', min=None, max=None, tip=None)
+Distance(value=0.0, name='Distance', min=None, max=None, tip=None, panel=None, default_attribute='', hide_value=False, hide_in_modifier=False, single_value=False)
 ```
 
 > Distance group input
@@ -216,6 +769,38 @@ Distance(value=0.0, name='Distance', min=None, max=None, tip=None)
 - **min** ( = None)
 - **max** ( = None)
 - **tip** ( = None)
+- **panel** ( = None)
+- **default_attribute** ( = )
+- **hide_value** ( = False)
+- **hide_in_modifier** ( = False)
+- **single_value** ( = False)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### divide()
+
+> method
+
+``` python
+divide(value=None, use_clamp=False)
+```
+
+> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+
+Information
+-----------
+- Socket 'Value' : self
+- Parameter 'operation' : 'DIVIDE'
+
+#### Arguments:
+- **value** (_Float_ = None) : socket 'Value' (id: Value_001)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
 
@@ -225,21 +810,21 @@ Distance(value=0.0, name='Distance', min=None, max=None, tip=None)
 > method
 
 ``` python
-equal(other, epsilon=None)
+equal(b=None, epsilon=None)
 ```
 
-> Equal to another value
+> Method [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
-:sunrise: **ShaderNodes** only
-
-
-> [!IMPORTANT]
-> - **GeoNodes** : [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
-> - **ShaderNodes** : [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+Information
+-----------
+- Socket 'A' : self
+- Parameter 'data_type' : 'FLOAT'
+- Parameter 'mode' : 'ELEMENT'
+- Parameter 'operation' : 'EQUAL'
 
 #### Arguments:
-- **other** (_Float_) : socket 'B' (B)
-- **epsilon** (_Float_ = None) : socket 'Epsilon' (Epsilon)
+- **b** (_Float_ = None) : socket 'B' (id: B)
+- **epsilon** (_Float_ = None) : socket 'Epsilon' (id: Epsilon)
 
 
 
@@ -249,12 +834,38 @@ equal(other, epsilon=None)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
 
 ----------
+### exp()
+
+> method
+
+``` python
+exp(use_clamp=False)
+```
+
+> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+
+Information
+-----------
+- Socket 'Value' : self
+- Parameter 'operation' : 'EXPONENT'
+
+#### Arguments:
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
 ### Factor()
 
 > classmethod
 
 ``` python
-Factor(value=0.0, name='Factor', min=0, max=1, tip=None)
+Factor(value=0.0, name='Factor', min=0, max=1, tip=None, panel=None, default_attribute='', hide_value=False, hide_in_modifier=False, single_value=False)
 ```
 
 > Factor group input
@@ -265,6 +876,36 @@ Factor(value=0.0, name='Factor', min=0, max=1, tip=None)
 - **min** ( = 0)
 - **max** ( = 1)
 - **tip** ( = None)
+- **panel** ( = None)
+- **default_attribute** ( = )
+- **hide_value** ( = False)
+- **hide_in_modifier** ( = False)
+- **single_value** ( = False)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### float_curve()
+
+> method
+
+``` python
+float_curve(factor=None)
+```
+
+> Method ERROR: Node 'Float Curve' not found
+
+Information
+-----------
+- Socket 'Value' : self
+
+#### Arguments:
+- **factor** (_Float_ = None) : socket 'Factor' (id: Factor)
+
+
+
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
 
@@ -274,17 +915,149 @@ Factor(value=0.0, name='Factor', min=0, max=1, tip=None)
 > method
 
 ``` python
-floor()
+floor(use_clamp=False)
 ```
 
-> Floor
+> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-:sunrise: **ShaderNodes** only
+Information
+-----------
+- Socket 'Value' : self
+- Parameter 'operation' : 'FLOOR'
+
+#### Arguments:
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
 
 
-> [!IMPORTANT]
-> - **GeoNodes** : [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/float_to_integer.html)
-> - **ShaderNodes** : [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### floored_modulo()
+
+> method
+
+``` python
+floored_modulo(value=None, use_clamp=False)
+```
+
+> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+
+Information
+-----------
+- Socket 'Value' : self
+- Parameter 'operation' : 'FLOORED_MODULO'
+
+#### Arguments:
+- **value** (_Float_ = None) : socket 'Value' (id: Value_001)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### fract()
+
+> method
+
+``` python
+fract(use_clamp=False)
+```
+
+> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+
+Information
+-----------
+- Socket 'Value' : self
+- Parameter 'operation' : 'FRACT'
+
+#### Arguments:
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### Frequency()
+
+> classmethod
+
+``` python
+Frequency(value=0.0, name='Frequency', min=None, max=None, tip=None, panel=None, default_attribute='', hide_value=False, hide_in_modifier=False, single_value=False)
+```
+
+> Wave Length group input
+
+#### Arguments:
+- **value** ( = 0.0)
+- **name** ( = Frequency)
+- **min** ( = None)
+- **max** ( = None)
+- **tip** ( = None)
+- **panel** ( = None)
+- **default_attribute** ( = )
+- **hide_value** ( = False)
+- **hide_in_modifier** ( = False)
+- **single_value** ( = False)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### fresnel()
+
+> method
+
+``` python
+fresnel(normal=None)
+```
+
+> Method [Fresnel](https://docs.blender.org/manual/en/latest/render/shader_nodes/input/fresnel.html)
+
+Information
+-----------
+- Socket 'IOR' : self
+
+#### Arguments:
+- **normal** (_Vector_ = None) : socket 'Normal' (id: Normal)
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### Gabor()
+
+> classmethod
+
+``` python
+Gabor(vector=None, scale=None, frequency=None, anisotropy=None, orientation=None, gabor_type='2D')
+```
+
+> Constructor [Gabor Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gabor.html)
+
+#### Arguments:
+- **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
+- **scale** (_Float_ = None) : socket 'Scale' (id: Scale)
+- **frequency** (_Float_ = None) : socket 'Frequency' (id: Frequency)
+- **anisotropy** (_Float_ = None) : socket 'Anisotropy' (id: Anisotropy)
+- **orientation** (_Float_ = None) : socket 'Orientation' (id: Orientation 2D)
+- **gabor_type** (_str_ = 2D) : parameter 'gabor_type' in ('2D', '3D')
+
+
 
 #### Returns:
 - **Float** :
@@ -297,15 +1070,20 @@ floor()
 > method
 
 ``` python
-greater_equal(other)
+greater_equal(b=None)
 ```
 
-> Greater than another value
+> Method [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
-> Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+Information
+-----------
+- Socket 'A' : self
+- Parameter 'data_type' : 'FLOAT'
+- Parameter 'mode' : 'ELEMENT'
+- Parameter 'operation' : 'GREATER_EQUAL'
 
 #### Arguments:
-- **other** (_Float_) : socket 'B' (B)
+- **b** (_Float_ = None) : socket 'B' (id: B)
 
 
 
@@ -320,20 +1098,20 @@ greater_equal(other)
 > method
 
 ``` python
-greater_than(other)
+greater_than(b=None)
 ```
 
-> Greater than another value
+> Method [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
-:sunrise: **ShaderNodes** only
-
-
-> [!IMPORTANT]
-> - **GeoNodes** : [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
-> - **ShaderNodes** : [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+Information
+-----------
+- Socket 'A' : self
+- Parameter 'data_type' : 'FLOAT'
+- Parameter 'mode' : 'ELEMENT'
+- Parameter 'operation' : 'GREATER_THAN'
 
 #### Arguments:
-- **other** (_Float_) : socket 'B' (B)
+- **b** (_Float_ = None) : socket 'B' (id: B)
 
 
 
@@ -343,12 +1121,92 @@ greater_than(other)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
 
 ----------
+### grid_boolean()
+
+> method
+
+``` python
+grid_boolean(*grid_2, operation='DIFFERENCE')
+```
+
+> Method ERROR: Node 'SDF Grid Boolean' not found
+
+Information
+-----------
+- Socket 'Grid 1' : self
+
+#### Arguments:
+- **grid_2** (_Float_) : socket 'Grid 2' (id: Grid 2)
+- **operation** (_str_ = DIFFERENCE) : parameter 'operation' in ('INTERSECT', 'UNION', 'DIFFERENCE')
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### hash_value()
+
+> method
+
+``` python
+hash_value(seed=None)
+```
+
+> Method [Hash Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/hash_value.html)
+
+Information
+-----------
+- Socket 'Value' : self
+- Parameter 'data_type' : 'FLOAT'
+
+#### Arguments:
+- **seed** (_Integer_ = None) : socket 'Seed' (id: Seed)
+
+
+
+#### Returns:
+- **Integer** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### hue_saturation_value()
+
+> method
+
+``` python
+hue_saturation_value(saturation=None, value=None, color=None, fac=None)
+```
+
+> Method [Hue/Saturation/Value](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/color/hue_saturation.html)
+
+Information
+-----------
+- Socket 'Hue' : self
+
+#### Arguments:
+- **saturation** (_Float_ = None) : socket 'Saturation' (id: Saturation)
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **color** (_Color_ = None) : socket 'Color' (id: Color)
+- **fac** (_Float_ = None) : socket 'Fac' (id: Fac)
+
+
+
+#### Returns:
+- **Color** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
 ### \_\_init__()
 
 > method
 
 ``` python
-__init__(value=0.0, name=None, min=None, max=None, tip=None, subtype='NONE')
+__init__(value=0.0, name=None, min=None, max=None, tip=None, panel=None, subtype='NONE', default_attribute='', hide_value=False, hide_in_modifier=False, single_value=False)
 ```
 
 > Socket of type VALUE
@@ -370,12 +1228,68 @@ float = Float(3.14, name="User input", subtype='ANGLE') # Create a new Float gro
 ```
 
 #### Arguments:
-- **value** (_float or Socket_ = 0.0) : initial value
+- **value** (_float | str | Socket_ = 0.0) : initial value
 - **name** (_str_ = None) : Create an Group Input socket with the provided str if not None
 - **min** (_float_ = None) : minimum value
 - **max** (_float_ = None) : maximum value
 - **tip** (_str_ = None) : User tip (for Group Input sockets)
-- **subtype** (_str_ = NONE) : sub type for group input
+- **panel** (_str_ = None) : panel name (overrides tree pane if exists)
+- **subtype** (_str in ('NONE', 'PERCENTAGE', 'FACTOR', 'ANGLE', 'TIME', 'TIME_ABSOLUTE', 'DISTANCE', 'WAVELENGTH', 'COLOR_TEMPERATURE', 'FREQUENCY')_ = NONE) : sub type for group input
+- **default_attribute** (_str_ = ) : default attribute name
+- **hide_value** (_bool_ = False) : Hide Value option
+- **hide_in_modifier** (_bool_ = False) : Hide in Modifier option
+- **single_value** (_bool_ = False) : Single Value option
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### inverse_sqrt()
+
+> method
+
+``` python
+inverse_sqrt(use_clamp=False)
+```
+
+> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+
+Information
+-----------
+- Socket 'Value' : self
+- Parameter 'operation' : 'INVERSE_SQRT'
+
+#### Arguments:
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### layer_weight()
+
+> method
+
+``` python
+layer_weight(normal=None)
+```
+
+> Method [Layer Weight](https://docs.blender.org/manual/en/latest/render/shader_nodes/input/layer_weight.html)
+
+Information
+-----------
+- Socket 'Blend' : self
+
+#### Arguments:
+- **normal** (_Vector_ = None) : socket 'Normal' (id: Normal)
+
+
+
+#### Returns:
+- **Float** (_Float_)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
 
@@ -385,15 +1299,20 @@ float = Float(3.14, name="User input", subtype='ANGLE') # Create a new Float gro
 > method
 
 ``` python
-less_equal(other)
+less_equal(b=None)
 ```
 
-> Less than another value
+> Method [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
-> Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+Information
+-----------
+- Socket 'A' : self
+- Parameter 'data_type' : 'FLOAT'
+- Parameter 'mode' : 'ELEMENT'
+- Parameter 'operation' : 'LESS_EQUAL'
 
 #### Arguments:
-- **other** (_Float_) : socket 'B' (B)
+- **b** (_Float_ = None) : socket 'B' (id: B)
 
 
 
@@ -408,25 +1327,50 @@ less_equal(other)
 > method
 
 ``` python
-less_than(other)
+less_than(b=None)
 ```
 
-> Less than another value
+> Method [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
-:sunrise: **ShaderNodes** only
-
-
-> [!IMPORTANT]
-> - **GeoNodes** : [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
-> - **ShaderNodes** : [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+Information
+-----------
+- Socket 'A' : self
+- Parameter 'data_type' : 'FLOAT'
+- Parameter 'mode' : 'ELEMENT'
+- Parameter 'operation' : 'LESS_THAN'
 
 #### Arguments:
-- **other** (_Float_) : socket 'B' (B)
+- **b** (_Float_ = None) : socket 'B' (id: B)
 
 
 
 #### Returns:
 - **Boolean** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### light_falloff()
+
+> method
+
+``` python
+light_falloff(smooth=None)
+```
+
+> Method [Light Falloff](https://docs.blender.org/manual/en/latest/render/shader_nodes/color/light_falloff.html)
+
+Information
+-----------
+- Socket 'Strength' : self
+
+#### Arguments:
+- **smooth** (_Float_ = None) : socket 'Smooth' (id: Smooth)
+
+
+
+#### Returns:
+- **Float** (_Float_)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
 
@@ -439,14 +1383,14 @@ less_than(other)
 linear_gizmo(*value, position=None, direction=None, color_id='PRIMARY', draw_style='ARROW')
 ```
 
-> Node ERROR: Node 'Linear Gizmo' not found
+> Method ERROR: Node 'Linear Gizmo' not found
 
 #### Arguments:
-- **value** (_Float_) : socket 'Value' (Value)
-- **position** (_Vector_ = None) : socket 'Position' (Position)
-- **direction** (_Vector_ = None) : socket 'Direction' (Direction)
-- **color_id** (_str_ = PRIMARY) : Node.color_id in ('PRIMARY', 'SECONDARY', 'X', 'Y', 'Z')
-- **draw_style** (_str_ = ARROW) : Node.draw_style in ('ARROW', 'CROSS', 'BOX')
+- **value** (_Float_) : socket 'Value' (id: Value)
+- **position** (_Vector_ = None) : socket 'Position' (id: Position)
+- **direction** (_Vector_ = None) : socket 'Direction' (id: Direction)
+- **color_id** (_str_ = PRIMARY) : parameter 'color_id' in ('PRIMARY', 'SECONDARY', 'X', 'Y', 'Z')
+- **draw_style** (_str_ = ARROW) : parameter 'draw_style' in ('ARROW', 'CROSS', 'BOX')
 
 
 
@@ -456,25 +1400,55 @@ linear_gizmo(*value, position=None, direction=None, color_id='PRIMARY', draw_sty
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
 
 ----------
+### log()
+
+> method
+
+``` python
+log(base=None, use_clamp=False)
+```
+
+> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+
+Information
+-----------
+- Socket 'Value' : self
+- Parameter 'operation' : 'LOGARITHM'
+
+#### Arguments:
+- **base** (_Float_ = None) : socket 'Base' (id: Value_001)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
 ### map_range()
 
 > method
 
 ``` python
-map_range(from_min=None, from_max=None, to_min=None, to_max=None, clamp=None, interpolation_type='LINEAR')
+map_range(from_min=None, from_max=None, to_min=None, to_max=None, clamp=True, interpolation_type='LINEAR')
 ```
 
-> Map range
+> Method [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
 
-> Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
+Information
+-----------
+- Socket 'Value' : self
+- Parameter 'data_type' : depending on 'from_min' type
 
 #### Arguments:
-- **from_min** (_Float_ = None) : socket 'From Min' (From Min)
-- **from_max** (_Float_ = None) : socket 'From Max' (From Max)
-- **to_min** (_Float_ = None) : socket 'To Min' (To Min)
-- **to_max** (_Float_ = None) : socket 'To Max' (To Max)
-- **clamp** (_bool_ = None) : Node.clamp
-- **interpolation_type** (_str_ = LINEAR) : Node.interpolation_type in ('LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP')
+- **from_min** (_Float_ = None) : socket 'From Min' (id: From Min)
+- **from_max** (_Float_ = None) : socket 'From Max' (id: From Max)
+- **to_min** (_Float_ = None) : socket 'To Min' (id: To Min)
+- **to_max** (_Float_ = None) : socket 'To Max' (id: To Max)
+- **clamp** (_bool_ = True) : parameter 'clamp'
+- **interpolation_type** (_str_ = LINEAR) : parameter 'interpolation_type' in ('LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP')
 
 
 
@@ -489,19 +1463,23 @@ map_range(from_min=None, from_max=None, to_min=None, to_max=None, clamp=None, in
 > method
 
 ``` python
-map_range_linear(from_min=None, from_max=None, to_min=None, to_max=None, clamp=None)
+map_range_linear(from_min=None, from_max=None, to_min=None, to_max=None, clamp=True)
 ```
 
-> Map Range, LINEAR interpolation
+> Method [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
 
-> Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
+Information
+-----------
+- Socket 'Value' : self
+- Parameter 'data_type' : depending on 'from_min' type
+- Parameter 'interpolation_type' : 'LINEAR'
 
 #### Arguments:
-- **from_min** (_Float_ = None) : socket 'From Min' (From Min)
-- **from_max** (_Float_ = None) : socket 'From Max' (From Max)
-- **to_min** (_Float_ = None) : socket 'To Min' (To Min)
-- **to_max** (_Float_ = None) : socket 'To Max' (To Max)
-- **clamp** (_bool_ = None) : Node.clamp
+- **from_min** (_Float_ = None) : socket 'From Min' (id: From Min)
+- **from_max** (_Float_ = None) : socket 'From Max' (id: From Max)
+- **to_min** (_Float_ = None) : socket 'To Min' (id: To Min)
+- **to_max** (_Float_ = None) : socket 'To Max' (id: To Max)
+- **clamp** (_bool_ = True) : parameter 'clamp'
 
 
 
@@ -511,24 +1489,28 @@ map_range_linear(from_min=None, from_max=None, to_min=None, to_max=None, clamp=N
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
 
 ----------
-### map_range_smooth()
+### map_range_smoother_step()
 
 > method
 
 ``` python
-map_range_smooth(from_min=None, from_max=None, to_min=None, to_max=None, clamp=None)
+map_range_smoother_step(from_min=None, from_max=None, to_min=None, to_max=None, clamp=True)
 ```
 
-> Map Range, SMOOTH interpolation
+> Method [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
 
-> Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
+Information
+-----------
+- Socket 'Value' : self
+- Parameter 'data_type' : depending on 'from_min' type
+- Parameter 'interpolation_type' : 'SMOOTHERSTEP'
 
 #### Arguments:
-- **from_min** (_Float_ = None) : socket 'From Min' (From Min)
-- **from_max** (_Float_ = None) : socket 'From Max' (From Max)
-- **to_min** (_Float_ = None) : socket 'To Min' (To Min)
-- **to_max** (_Float_ = None) : socket 'To Max' (To Max)
-- **clamp** (_bool_ = None) : Node.clamp
+- **from_min** (_Float_ = None) : socket 'From Min' (id: From Min)
+- **from_max** (_Float_ = None) : socket 'From Max' (id: From Max)
+- **to_min** (_Float_ = None) : socket 'To Min' (id: To Min)
+- **to_max** (_Float_ = None) : socket 'To Max' (id: To Max)
+- **clamp** (_bool_ = True) : parameter 'clamp'
 
 
 
@@ -538,24 +1520,28 @@ map_range_smooth(from_min=None, from_max=None, to_min=None, to_max=None, clamp=N
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
 
 ----------
-### map_range_smoother()
+### map_range_smooth_step()
 
 > method
 
 ``` python
-map_range_smoother(from_min=None, from_max=None, to_min=None, to_max=None, clamp=None)
+map_range_smooth_step(from_min=None, from_max=None, to_min=None, to_max=None, clamp=True)
 ```
 
-> Map Range, SMOOTHER interpolation
+> Method [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
 
-> Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
+Information
+-----------
+- Socket 'Value' : self
+- Parameter 'data_type' : depending on 'from_min' type
+- Parameter 'interpolation_type' : 'SMOOTHSTEP'
 
 #### Arguments:
-- **from_min** (_Float_ = None) : socket 'From Min' (From Min)
-- **from_max** (_Float_ = None) : socket 'From Max' (From Max)
-- **to_min** (_Float_ = None) : socket 'To Min' (To Min)
-- **to_max** (_Float_ = None) : socket 'To Max' (To Max)
-- **clamp** (_bool_ = None) : Node.clamp
+- **from_min** (_Float_ = None) : socket 'From Min' (id: From Min)
+- **from_max** (_Float_ = None) : socket 'From Max' (id: From Max)
+- **to_min** (_Float_ = None) : socket 'To Min' (id: To Min)
+- **to_max** (_Float_ = None) : socket 'To Max' (id: To Max)
+- **clamp** (_bool_ = True) : parameter 'clamp'
 
 
 
@@ -570,19 +1556,105 @@ map_range_smoother(from_min=None, from_max=None, to_min=None, to_max=None, clamp
 > method
 
 ``` python
-map_range_stepped(from_min=None, from_max=None, to_min=None, to_max=None, clamp=None)
+map_range_stepped(from_min=None, from_max=None, to_min=None, to_max=None, steps=None, clamp=True)
 ```
 
-> Map Range, STEPPED interpolation
+> Method [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
 
-> Node [Map Range](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/map_range.html)
+Information
+-----------
+- Socket 'Value' : self
+- Parameter 'data_type' : depending on 'from_min' type
+- Parameter 'interpolation_type' : 'STEPPED'
 
 #### Arguments:
-- **from_min** (_Float_ = None) : socket 'From Min' (From Min)
-- **from_max** (_Float_ = None) : socket 'From Max' (From Max)
-- **to_min** (_Float_ = None) : socket 'To Min' (To Min)
-- **to_max** (_Float_ = None) : socket 'To Max' (To Max)
-- **clamp** (_bool_ = None) : Node.clamp
+- **from_min** (_Float_ = None) : socket 'From Min' (id: From Min)
+- **from_max** (_Float_ = None) : socket 'From Max' (id: From Max)
+- **to_min** (_Float_ = None) : socket 'To Min' (id: To Min)
+- **to_max** (_Float_ = None) : socket 'To Max' (id: To Max)
+- **steps** (_Float_ = None) : socket 'Steps' (id: Steps)
+- **clamp** (_bool_ = True) : parameter 'clamp'
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### max()
+
+> method
+
+``` python
+max(value=None, use_clamp=False)
+```
+
+> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+
+Information
+-----------
+- Socket 'Value' : self
+- Parameter 'operation' : 'MAXIMUM'
+
+#### Arguments:
+- **value** (_Float_ = None) : socket 'Value' (id: Value_001)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### mgreater_than()
+
+> method
+
+``` python
+mgreater_than(threshold=None, use_clamp=False)
+```
+
+> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+
+Information
+-----------
+- Socket 'Value' : self
+- Parameter 'operation' : 'GREATER_THAN'
+
+#### Arguments:
+- **threshold** (_Float_ = None) : socket 'Threshold' (id: Value_001)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### min()
+
+> method
+
+``` python
+min(value=None, use_clamp=False)
+```
+
+> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+
+Information
+-----------
+- Socket 'Value' : self
+- Parameter 'operation' : 'MINIMUM'
+
+#### Arguments:
+- **value** (_Float_ = None) : socket 'Value' (id: Value_001)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
 
 
 
@@ -617,21 +1689,241 @@ mix(factor=None, other=None, clamp_factor=None)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
 
 ----------
+### mless_than()
+
+> method
+
+``` python
+mless_than(threshold=None, use_clamp=False)
+```
+
+> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+
+Information
+-----------
+- Socket 'Value' : self
+- Parameter 'operation' : 'LESS_THAN'
+
+#### Arguments:
+- **threshold** (_Float_ = None) : socket 'Threshold' (id: Value_001)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### modulo()
+
+> method
+
+``` python
+modulo(value=None, use_clamp=False)
+```
+
+> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+
+Information
+-----------
+- Socket 'Value' : self
+- Parameter 'operation' : 'MODULO'
+
+#### Arguments:
+- **value** (_Float_ = None) : socket 'Value' (id: Value_001)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### multiply()
+
+> method
+
+``` python
+multiply(value=None, use_clamp=False)
+```
+
+> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+
+Information
+-----------
+- Socket 'Value' : self
+- Parameter 'operation' : 'MULTIPLY'
+
+#### Arguments:
+- **value** (_Float_ = None) : socket 'Value' (id: Value_001)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### multiply_add()
+
+> method
+
+``` python
+multiply_add(multiplier=None, addend=None, use_clamp=False)
+```
+
+> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+
+Information
+-----------
+- Socket 'Value' : self
+- Parameter 'operation' : 'MULTIPLY_ADD'
+
+#### Arguments:
+- **multiplier** (_Float_ = None) : socket 'Multiplier' (id: Value_001)
+- **addend** (_Float_ = None) : socket 'Addend' (id: Value_002)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### Named()
+
+> classmethod
+
+``` python
+Named(name=None)
+```
+
+> Constructor [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
+
+Information
+-----------
+- Parameter 'data_type' : 'FLOAT'
+
+#### Arguments:
+- **name** (_String_ = None) : socket 'Name' (id: Name)
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### NamedAttribute()
+
+> classmethod
+
+``` python
+NamedAttribute(name=None)
+```
+
+> Constructor [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
+
+Information
+-----------
+- Parameter 'data_type' : 'FLOAT'
+
+#### Arguments:
+- **name** (_String_ = None) : socket 'Name' (id: Name)
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### Noise()
+
+> classmethod
+
+``` python
+Noise(vector=None, scale=None, detail=None, roughness=None, lacunarity=None, distortion=None, noise_dimensions='3D', noise_type='FBM', normalize=True)
+```
+
+> Constructor [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html)
+
+#### Arguments:
+- **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
+- **scale** (_Float_ = None) : socket 'Scale' (id: Scale)
+- **detail** (_Float_ = None) : socket 'Detail' (id: Detail)
+- **roughness** (_Float_ = None) : socket 'Roughness' (id: Roughness)
+- **lacunarity** (_Float_ = None) : socket 'Lacunarity' (id: Lacunarity)
+- **distortion** (_Float_ = None) : socket 'Distortion' (id: Distortion)
+- **noise_dimensions** (_str_ = 3D) : parameter 'noise_dimensions' in ('1D', '2D', '3D', '4D')
+- **noise_type** (_str_ = FBM) : parameter 'noise_type' in ('MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN')
+- **normalize** (_bool_ = True) : parameter 'normalize'
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### normal_map()
+
+> method
+
+``` python
+normal_map(color=None, space='TANGENT', uv_map='')
+```
+
+> Method [Normal Map](https://docs.blender.org/manual/en/latest/render/shader_nodes/vector/normal_map.html)
+
+Information
+-----------
+- Socket 'Strength' : self
+
+#### Arguments:
+- **color** (_Color_ = None) : socket 'Color' (id: Color)
+- **space** (_str_ = TANGENT) : parameter 'space' in ('TANGENT', 'OBJECT', 'WORLD', 'BLENDER_OBJECT', 'BLENDER_WORLD')
+- **uv_map** (_str_ = ) : parameter 'uv_map'
+
+
+
+#### Returns:
+- **Vector** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
 ### not_equal()
 
 > method
 
 ``` python
-not_equal(other, epsilon=None)
+not_equal(b=None, epsilon=None)
 ```
 
-> Not equal to another value
+> Method [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
 
-> Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
+Information
+-----------
+- Socket 'A' : self
+- Parameter 'data_type' : 'FLOAT'
+- Parameter 'mode' : 'ELEMENT'
+- Parameter 'operation' : 'NOT_EQUAL'
 
 #### Arguments:
-- **other** (_Float_) : socket 'B' (B)
-- **epsilon** (_Float_ = None) : socket 'Epsilon' (Epsilon)
+- **b** (_Float_ = None) : socket 'B' (id: B)
+- **epsilon** (_Float_ = None) : socket 'Epsilon' (id: Epsilon)
 
 
 
@@ -646,7 +1938,7 @@ not_equal(other, epsilon=None)
 > method
 
 ``` python
-out(name=None)
+out(name=None, **props)
 ```
 
 > Connect to output
@@ -660,6 +1952,7 @@ out(name=None)
 
 #### Arguments:
 - **name** ( = None)
+- **props**
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
 
@@ -669,7 +1962,7 @@ out(name=None)
 > classmethod
 
 ``` python
-Percentage(value=0.0, name='Percentage', min=None, max=None, tip=None)
+Percentage(value=0.0, name='Percentage', min=0, max=100, tip=None, panel=None, default_attribute='', hide_value=False, hide_in_modifier=False, single_value=False)
 ```
 
 > Percentage group input
@@ -677,9 +1970,94 @@ Percentage(value=0.0, name='Percentage', min=None, max=None, tip=None)
 #### Arguments:
 - **value** ( = 0.0)
 - **name** ( = Percentage)
-- **min** ( = None)
-- **max** ( = None)
+- **min** ( = 0)
+- **max** ( = 100)
 - **tip** ( = None)
+- **panel** ( = None)
+- **default_attribute** ( = )
+- **hide_value** ( = False)
+- **hide_in_modifier** ( = False)
+- **single_value** ( = False)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### pingpong()
+
+> method
+
+``` python
+pingpong(scale=None, use_clamp=False)
+```
+
+> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+
+Information
+-----------
+- Socket 'Value' : self
+- Parameter 'operation' : 'PINGPONG'
+
+#### Arguments:
+- **scale** (_Float_ = None) : socket 'Scale' (id: Value_001)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### power()
+
+> method
+
+``` python
+power(exponent=None, use_clamp=False)
+```
+
+> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+
+Information
+-----------
+- Socket 'Base' : self
+- Parameter 'operation' : 'POWER'
+
+#### Arguments:
+- **exponent** (_Float_ = None) : socket 'Exponent' (id: Value_001)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### radians()
+
+> method
+
+``` python
+radians(use_clamp=False)
+```
+
+> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+
+Information
+-----------
+- Socket 'Degrees' : self
+- Parameter 'operation' : 'RADIANS'
+
+#### Arguments:
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
 
@@ -710,17 +2088,433 @@ Random(min=None, max=None, id=None, seed=None)
 > method
 
 ``` python
-round()
+round(use_clamp=False)
 ```
 
-> Rounding
+> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-:sunrise: **ShaderNodes** only
+Information
+-----------
+- Socket 'Value' : self
+- Parameter 'operation' : 'ROUND'
+
+#### Arguments:
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
 
 
-> [!IMPORTANT]
-> - **GeoNodes** : [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/float_to_integer.html)
-> - **ShaderNodes** : [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### sample_grid()
+
+> method
+
+``` python
+sample_grid(position=None, interpolation_mode='TRILINEAR')
+```
+
+> Method ERROR: Node 'Sample Grid' not found
+
+Information
+-----------
+- Socket 'Grid' : self
+- Parameter 'data_type' : 'FLOAT'
+
+#### Arguments:
+- **position** (_Vector_ = None) : socket 'Position' (id: Position)
+- **interpolation_mode** (_str_ = TRILINEAR) : parameter 'interpolation_mode' in ('NEAREST', 'TRILINEAR', 'TRIQUADRATIC')
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### sample_grid_index()
+
+> method
+
+``` python
+sample_grid_index(x=None, y=None, z=None)
+```
+
+> Method ERROR: Node 'Sample Grid Index' not found
+
+Information
+-----------
+- Socket 'Grid' : self
+- Parameter 'data_type' : 'FLOAT'
+
+#### Arguments:
+- **x** (_Integer_ = None) : socket 'X' (id: X)
+- **y** (_Integer_ = None) : socket 'Y' (id: Y)
+- **z** (_Integer_ = None) : socket 'Z' (id: Z)
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### scene_time()
+
+> classmethod
+
+``` python
+scene_time()
+```
+
+> Class Method [Scene Time](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene/scene_time.html)
+
+#### Returns:
+- **node** (_Float_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### sdf_difference()
+
+> method
+
+``` python
+sdf_difference(*grid_2)
+```
+
+> Method ERROR: Node 'SDF Grid Boolean' not found
+
+Information
+-----------
+- Socket 'Grid 1' : self
+- Parameter 'operation' : 'DIFFERENCE'
+
+#### Arguments:
+- **grid_2** (_Float_) : socket 'Grid 2' (id: Grid 2)
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### sdf_intersect()
+
+> method
+
+``` python
+sdf_intersect(*grid)
+```
+
+> Method ERROR: Node 'SDF Grid Boolean' not found
+
+Information
+-----------
+- Parameter 'operation' : 'INTERSECT'
+
+#### Arguments:
+- **grid** (_Float_) : socket 'Grid' (id: Grid 2)
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### sdf_union()
+
+> method
+
+``` python
+sdf_union(*grid)
+```
+
+> Method ERROR: Node 'SDF Grid Boolean' not found
+
+Information
+-----------
+- Parameter 'operation' : 'UNION'
+
+#### Arguments:
+- **grid** (_Float_) : socket 'Grid' (id: Grid 2)
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### sign()
+
+> method
+
+``` python
+sign(use_clamp=False)
+```
+
+> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+
+Information
+-----------
+- Socket 'Value' : self
+- Parameter 'operation' : 'SIGN'
+
+#### Arguments:
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### sin()
+
+> method
+
+``` python
+sin(use_clamp=False)
+```
+
+> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+
+Information
+-----------
+- Socket 'Value' : self
+- Parameter 'operation' : 'SINE'
+
+#### Arguments:
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### sinh()
+
+> method
+
+``` python
+sinh(use_clamp=False)
+```
+
+> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+
+Information
+-----------
+- Socket 'Value' : self
+- Parameter 'operation' : 'SINH'
+
+#### Arguments:
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### smooth_max()
+
+> method
+
+``` python
+smooth_max(value=None, distance=None, use_clamp=False)
+```
+
+> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+
+Information
+-----------
+- Socket 'Value' : self
+- Parameter 'operation' : 'SMOOTH_MAX'
+
+#### Arguments:
+- **value** (_Float_ = None) : socket 'Value' (id: Value_001)
+- **distance** (_Float_ = None) : socket 'Distance' (id: Value_002)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### smooth_min()
+
+> method
+
+``` python
+smooth_min(value=None, distance=None, use_clamp=False)
+```
+
+> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+
+Information
+-----------
+- Socket 'Value' : self
+- Parameter 'operation' : 'SMOOTH_MIN'
+
+#### Arguments:
+- **value** (_Float_ = None) : socket 'Value' (id: Value_001)
+- **distance** (_Float_ = None) : socket 'Distance' (id: Value_002)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### snap()
+
+> method
+
+``` python
+snap(increment=None, use_clamp=False)
+```
+
+> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+
+Information
+-----------
+- Socket 'Value' : self
+- Parameter 'operation' : 'SNAP'
+
+#### Arguments:
+- **increment** (_Float_ = None) : socket 'Increment' (id: Value_001)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### sqrt()
+
+> method
+
+``` python
+sqrt(use_clamp=False)
+```
+
+> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+
+Information
+-----------
+- Socket 'Value' : self
+- Parameter 'operation' : 'SQRT'
+
+#### Arguments:
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### subtract()
+
+> method
+
+``` python
+subtract(value=None, use_clamp=False)
+```
+
+> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+
+Information
+-----------
+- Socket 'Value' : self
+- Parameter 'operation' : 'SUBTRACT'
+
+#### Arguments:
+- **value** (_Float_ = None) : socket 'Value' (id: Value_001)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### tan()
+
+> method
+
+``` python
+tan(use_clamp=False)
+```
+
+> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+
+Information
+-----------
+- Socket 'Value' : self
+- Parameter 'operation' : 'TANGENT'
+
+#### Arguments:
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### tanh()
+
+> method
+
+``` python
+tanh(use_clamp=False)
+```
+
+> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+
+Information
+-----------
+- Socket 'Value' : self
+- Parameter 'operation' : 'TANH'
+
+#### Arguments:
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
 
 #### Returns:
 - **Float** :
@@ -733,7 +2527,7 @@ round()
 > classmethod
 
 ``` python
-Time(value=0.0, name='Time', min=None, max=None, tip=None)
+Time(value=0.0, name='Time', min=None, max=None, tip=None, panel=None, default_attribute='', hide_value=False, hide_in_modifier=False, single_value=False)
 ```
 
 > Time group input
@@ -744,6 +2538,11 @@ Time(value=0.0, name='Time', min=None, max=None, tip=None)
 - **min** ( = None)
 - **max** ( = None)
 - **tip** ( = None)
+- **panel** ( = None)
+- **default_attribute** ( = )
+- **hide_value** ( = False)
+- **hide_in_modifier** ( = False)
+- **single_value** ( = False)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
 
@@ -753,17 +2552,22 @@ Time(value=0.0, name='Time', min=None, max=None, tip=None)
 > classmethod
 
 ``` python
-TimeAbsolute(value=0.0, name='TimeAbsolute', min=None, max=None, tip=None)
+TimeAbsolute(value=0.0, name='Time Absolute', min=None, max=None, tip=None, panel=None, default_attribute='', hide_value=False, hide_in_modifier=False, single_value=False)
 ```
 
 > Time Absolute group input
 
 #### Arguments:
 - **value** ( = 0.0)
-- **name** ( = TimeAbsolute)
+- **name** ( = Time Absolute)
 - **min** ( = None)
 - **max** ( = None)
 - **tip** ( = None)
+- **panel** ( = None)
+- **default_attribute** ( = )
+- **hide_value** ( = False)
+- **hide_in_modifier** ( = False)
+- **single_value** ( = False)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
 
@@ -773,15 +2577,48 @@ TimeAbsolute(value=0.0, name='TimeAbsolute', min=None, max=None, tip=None)
 > method
 
 ``` python
-to_integer(rounding_mode=None)
+to_integer(rounding_mode='ROUND')
 ```
 
-> Conversion to integer
+> Method [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/float_to_integer.html)
 
-> Node [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/float_to_integer.html)
+Information
+-----------
+- Socket 'Float' : self
 
 #### Arguments:
-- **rounding_mode** ( = None)
+- **rounding_mode** (_str_ = ROUND) : parameter 'rounding_mode' in ('ROUND', 'FLOOR', 'CEILING', 'TRUNCATE')
+
+
+
+#### Returns:
+- **Integer** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### to_mesh()
+
+> method
+
+``` python
+to_mesh(threshold=None, adaptivity=None)
+```
+
+> Method ERROR: Node 'Grid to Mesh' not found
+
+Information
+-----------
+- Socket 'Grid' : self
+
+#### Arguments:
+- **threshold** (_Float_ = None) : socket 'Threshold' (id: Threshold)
+- **adaptivity** (_Float_ = None) : socket 'Adaptivity' (id: Adaptivity)
+
+
+
+#### Returns:
+- **Mesh** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
 
@@ -794,12 +2631,15 @@ to_integer(rounding_mode=None)
 to_string(decimals=None)
 ```
 
-> To String
+> Method [Value to String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/value_to_string.html)
 
-> Node [Value to String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/value_to_string.html)
+Information
+-----------
+- Socket 'Value' : self
+- Parameter 'data_type' : 'FLOAT'
 
 #### Arguments:
-- **decimals** (_Integer_ = None) : socket 'Decimals' (Decimals)
+- **decimals** (_Integer_ = None) : socket 'Decimals' (id: Decimals)
 
 
 
@@ -809,22 +2649,55 @@ to_string(decimals=None)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
 
 ----------
-### truncate()
+### trunc()
 
 > method
 
 ``` python
-truncate()
+trunc(use_clamp=False)
 ```
 
-> Truncate
+> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
 
-:sunrise: **ShaderNodes** only
+Information
+-----------
+- Socket 'Value' : self
+- Parameter 'operation' : 'TRUNC'
+
+#### Arguments:
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
 
 
-> [!IMPORTANT]
-> - **GeoNodes** : [Float to Integer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/float_to_integer.html)
-> - **ShaderNodes** : [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### Voronoi()
+
+> classmethod
+
+``` python
+Voronoi(vector=None, scale=None, detail=None, roughness=None, lacunarity=None, randomness=None, distance='EUCLIDEAN', feature='F1', normalize=False, voronoi_dimensions='3D')
+```
+
+> Constructor [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html)
+
+#### Arguments:
+- **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
+- **scale** (_Float_ = None) : socket 'Scale' (id: Scale)
+- **detail** (_Float_ = None) : socket 'Detail' (id: Detail)
+- **roughness** (_Float_ = None) : socket 'Roughness' (id: Roughness)
+- **lacunarity** (_Float_ = None) : socket 'Lacunarity' (id: Lacunarity)
+- **randomness** (_Float_ = None) : socket 'Randomness' (id: Randomness)
+- **distance** (_str_ = EUCLIDEAN) : parameter 'distance' in ('EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI')
+- **feature** (_str_ = F1) : parameter 'feature' in ('F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS')
+- **normalize** (_bool_ = False) : parameter 'normalize'
+- **voronoi_dimensions** (_str_ = 3D) : parameter 'voronoi_dimensions' in ('1D', '2D', '3D', '4D')
+
+
 
 #### Returns:
 - **Float** :
@@ -837,16 +2710,116 @@ truncate()
 > classmethod
 
 ``` python
-WaveLength(value=0.0, name='WaveLength', min=None, max=None, tip=None)
+WaveLength(value=0.0, name='Wave Length', min=None, max=None, tip=None, panel=None, default_attribute='', hide_value=False, hide_in_modifier=False, single_value=False)
 ```
 
 > Wave Length group input
 
 #### Arguments:
 - **value** ( = 0.0)
-- **name** ( = WaveLength)
+- **name** ( = Wave Length)
 - **min** ( = None)
 - **max** ( = None)
 - **tip** ( = None)
+- **panel** ( = None)
+- **default_attribute** ( = )
+- **hide_value** ( = False)
+- **hide_in_modifier** ( = False)
+- **single_value** ( = False)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### wavelength()
+
+> method
+
+``` python
+wavelength()
+```
+
+> Method [Wavelength](https://docs.blender.org/manual/en/latest/render/shader_nodes/converter/wavelength.html)
+
+Information
+-----------
+- Socket 'Wavelength' : self
+
+#### Returns:
+- **Color** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### WhiteNoise()
+
+> classmethod
+
+``` python
+WhiteNoise(vector=None, noise_dimensions='3D')
+```
+
+> Constructor [White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html)
+
+#### Arguments:
+- **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
+- **noise_dimensions** (_str_ = 3D) : parameter 'noise_dimensions' in ('1D', '2D', '3D', '4D')
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### wireframe()
+
+> method
+
+``` python
+wireframe(use_pixel_size=False)
+```
+
+> Method [Wireframe](https://docs.blender.org/manual/en/latest/render/shader_nodes/input/wireframe.html)
+
+Information
+-----------
+- Socket 'Size' : self
+
+#### Arguments:
+- **use_pixel_size** (_bool_ = False) : parameter 'use_pixel_size'
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### wrap()
+
+> method
+
+``` python
+wrap(max=None, min=None, use_clamp=False)
+```
+
+> Method [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+
+Information
+-----------
+- Socket 'Value' : self
+- Parameter 'operation' : 'WRAP'
+
+#### Arguments:
+- **max** (_Float_ = None) : socket 'Max' (id: Value_001)
+- **min** (_Float_ = None) : socket 'Min' (id: Value_002)
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>

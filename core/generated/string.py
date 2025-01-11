@@ -4,6 +4,9 @@ from .. treeclass import utils
 from .. scripterror import NodeError
 
 class String(Socket):
+    """"
+    $DOC SET hidden
+    """
 
     def equal(self, b=None):
         """ > Method <&Node Compare>

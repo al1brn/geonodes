@@ -4,6 +4,9 @@ from .. treeclass import utils
 from .. scripterror import NodeError
 
 class Rotation(Socket):
+    """"
+    $DOC SET hidden
+    """
 
     @classmethod
     def AlignToVector(cls, vector=None, factor=None, axis='Z', pivot_axis='AUTO'):

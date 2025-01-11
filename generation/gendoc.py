@@ -179,6 +179,18 @@ def geonodes_documentation(write_files=True):
     doc = PackageDoc(geonodes)
 
     # -----------------------------------------------------------------------------------------------------------------------------
+    # Socket class is hidden as a sub class of generated classes
+    # Let's hunhide it
+
+    doc.top_section.find("Socket").hidden = False
+
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # DEBUG
+
+    if False:
+        return
+
+    # -----------------------------------------------------------------------------------------------------------------------------
     # Hooks to replace references to nodes and build cross references
 
     print("Replacements...")

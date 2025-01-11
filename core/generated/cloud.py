@@ -4,6 +4,9 @@ from .. treeclass import utils
 from .. scripterror import NodeError
 
 class Cloud(Socket):
+    """"
+    $DOC SET hidden
+    """
 
     def domain_size(self):
         """ > Method <&Node Domain Size>
