@@ -33,31 +33,6 @@ from .treeclass import Tree, Node
 from .scripterror import NodeError
 from .treeinterface import TreeInterface
 
-
-class snd_OLD:
-
-    @classmethod
-    def sharp_face(cls, attribute_type: str ='GEOMETRY') -> Node:
-        """ Node 'Attribute' (ShaderNodeAttribute)
-        - attribute_type in ('GEOMETRY', 'OBJECT', 'INSTANCER', 'VIEW_LAYER')
-        """
-        return cls.attribute(attribute_name='sharp_face', attribute_type=attribute_type)
-
-    @classmethod
-    def uvmap(cls, attribute_type: str ='GEOMETRY') -> Node:
-        """ Node 'Attribute' (ShaderNodeAttribute)
-        - attribute_type in ('GEOMETRY', 'OBJECT', 'INSTANCER', 'VIEW_LAYER')
-        """
-        return cls.attribute(attribute_name='UVMap', attribute_type=attribute_type)
-
-    @classmethod
-    def position(cls, attribute_type: str ='GEOMETRY') -> Node:
-        """ Node 'Attribute' (ShaderNodeAttribute)
-        - attribute_type in ('GEOMETRY', 'OBJECT', 'INSTANCER', 'VIEW_LAYER')
-        """
-        return cls.attribute(attribute_name='position', attribute_type=attribute_type)
-
-
 class ShaderNodes(Tree):
     def __init__(self, tree_name: str, clear: bool = True, fake_user: bool = False, is_group: bool = False, prefix: Optional[str] = None):
         """ > ShaderNodes

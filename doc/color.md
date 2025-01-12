@@ -26,7 +26,7 @@ Socket of type COLOR (RGBA)
 
 - **A** : [alpha](color.md#alpha) :black_small_square: [ambient_occlusion](color.md#ambient_occlusion) :black_small_square: [aov_output](color.md#aov_output) :black_small_square: [Attribute](color.md#attribute)
 - **B** : [background](color.md#background) :black_small_square: [Blackbody](color.md#blackbody) :black_small_square: [blue](color.md#blue) :black_small_square: [blur](color.md#blur) :black_small_square: [Brick](color.md#brick) :black_small_square: [brighter](color.md#brighter) :black_small_square: [brightness_contrast](color.md#brightness_contrast)
-- **C** : [Checker](color.md#checker) :black_small_square: [ColorAttribute](color.md#colorattribute) :black_small_square: [ColorRamp](color.md#colorramp) :black_small_square: [Combine](color.md#combine) :black_small_square: [CombineHSL](color.md#combinehsl) :black_small_square: [CombineHSV](color.md#combinehsv) :black_small_square: [CombineRGB](color.md#combinergb)
+- **C** : [Checker](color.md#checker) :black_small_square: [ColorAttribute](color.md#colorattribute) :black_small_square: [ColorRamp](color.md#colorramp) :black_small_square: [Combine](color.md#combine) :black_small_square: [CombineHSL](color.md#combinehsl) :black_small_square: [CombineHSV](color.md#combinehsv) :black_small_square: [CombineRGB](color.md#combinergb) :black_small_square: [curves](color.md#curves)
 - **D** : [darker](color.md#darker)
 - **E** : [equal](color.md#equal)
 - **F** : [FromShader](color.md#fromshader)
@@ -37,7 +37,7 @@ Socket of type COLOR (RGBA)
 - **M** : [Magic](color.md#magic) :black_small_square: [mix](color.md#mix) :black_small_square: [mix_add](color.md#mix_add) :black_small_square: [mix_burn](color.md#mix_burn) :black_small_square: [mix_color](color.md#mix_color) :black_small_square: [mix_darken](color.md#mix_darken) :black_small_square: [mix_difference](color.md#mix_difference) :black_small_square: [mix_divide](color.md#mix_divide) :black_small_square: [mix_dodge](color.md#mix_dodge) :black_small_square: [mix_exclusion](color.md#mix_exclusion) :black_small_square: [mix_hue](color.md#mix_hue) :black_small_square: [mix_lighten](color.md#mix_lighten) :black_small_square: [mix_linear_light](color.md#mix_linear_light) :black_small_square: [mix_mix](color.md#mix_mix) :black_small_square: [mix_multiply](color.md#mix_multiply) :black_small_square: [mix_overlay](color.md#mix_overlay) :black_small_square: [mix_saturation](color.md#mix_saturation) :black_small_square: [mix_screen](color.md#mix_screen) :black_small_square: [mix_soft_light](color.md#mix_soft_light) :black_small_square: [mix_subtract](color.md#mix_subtract) :black_small_square: [mix_value](color.md#mix_value)
 - **N** : [Named](color.md#named) :black_small_square: [NamedAttribute](color.md#namedattribute) :black_small_square: [normal_map](color.md#normal_map) :black_small_square: [not_equal](color.md#not_equal)
 - **O** : [out](color.md#out)
-- **R** : [red](color.md#red) :black_small_square: [rgb](color.md#rgb) :black_small_square: [RGB](color.md#rgb) :black_small_square: [rgb_curves](color.md#rgb_curves) :black_small_square: [rgb_to_bw](color.md#rgb_to_bw)
+- **R** : [red](color.md#red) :black_small_square: [rgb](color.md#rgb) :black_small_square: [RGB](color.md#rgb) :black_small_square: [rgb_to_bw](color.md#rgb_to_bw)
 - **S** : [saturation](color.md#saturation) :black_small_square: [separate](color.md#separate) :black_small_square: [separate_col](color.md#separate_col) :black_small_square: [separate_col_HSL](color.md#separate_col_hsl) :black_small_square: [separate_col_HSV](color.md#separate_col_hsv) :black_small_square: [separate_color](color.md#separate_color) :black_small_square: [separate_col_RGB](color.md#separate_col_rgb) :black_small_square: [separate_HSL](color.md#separate_hsl) :black_small_square: [separate_HSV](color.md#separate_hsv) :black_small_square: [separate_RGB](color.md#separate_rgb) :black_small_square: [SkyTexture](color.md#skytexture)
 - **T** : [to_bw](color.md#to_bw)
 - **V** : [value](color.md#value) :black_small_square: [vector_displacement](color.md#vector_displacement)
@@ -576,6 +576,41 @@ CombineRGB(red=None, green=None, blue=None, alpha=None)
 - **green** (_Float_ = None) : socket 'Green' (id: Green)
 - **blue** (_Float_ = None) : socket 'Blue' (id: Blue)
 - **alpha** (_Float_ = None) : socket 'Alpha' (id: Alpha)
+
+
+
+#### Returns:
+- **Color** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
+
+----------
+### curves()
+
+> method
+
+``` python
+curves(fac=None, curves=None)
+```
+
+> Node [RGB Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/rgb_curves.html)
+
+A curve is defined by a list of 3-tuples (not list):
+- x (float) : x position
+- y (float) : y position
+- handle_type (str) : handle type in ('AUTO', 'AUTO_CLAMPED', 'VECTOR')
+
+> [!NOTE]
+> handle_type is optional, its default value is 'AUTO'. Valid values are ('AUTO', 'AUTO_CLAMPED', 'VECTOR')
+
+#### Information:
+- **Socket** : self
+
+
+
+#### Arguments:
+- **fac** (_Float_ = None) : socket 'Fac' (id: Fac)
+- **curves** (_list of lists of tuples (float, float, str)_ = None) : curves points
 
 
 
@@ -1710,32 +1745,6 @@ RGB()
 ```
 
 > Node [RGB](https://docs.blender.org/manual/en/latest/render/shader_nodes/input/rgb.html)
-
-#### Returns:
-- **Color** :
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
-
-----------
-### rgb_curves()
-
-> method
-
-``` python
-rgb_curves(fac=None)
-```
-
-> Node [RGB Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/rgb_curves.html)
-
-#### Information:
-- **Socket** : self
-
-
-
-#### Arguments:
-- **fac** (_Float_ = None) : socket 'Fac' (id: Fac)
-
-
 
 #### Returns:
 - **Color** :

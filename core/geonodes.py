@@ -171,45 +171,9 @@ class GeoNodes(Tree):
         return self.input_node[0]
 
 
-        # OLD
-
-        io_socket = self.io_socket_exists('NodeSocketGeometry', 'INPUT')
-        if io_socket is None:
-            if name is None:
-                name = 'Geometry'
-            io_socket = self.new_io_socket('NodeSocketGeometry', 'INPUT', name)
-            if description is not None:
-                io_socket.description = description
-
-        # ----- As the first
-
-        self._btree.interface.move(io_socket, 0)
-
-        return self.input_node[0]
-
     def set_output_geometry(self, value, name=None):
 
         self._interface.set_out_geometry(name=name)
-        if value is not None:
-            self.link(value, self.output_node._bnode.inputs[0])
-
-        return
-
-        # OLD
-
-        if self.has_output_geometry:
-            io_socket = self.io_socket_exists('NodeSocketGeometry', 'INPUT')
-
-        else:
-            if name is None:
-                name = utils.get_socket_type(value).title()
-
-            io_socket = self.new_io_socket('NodeSocketGeometry', 'OUTPUT', name)
-
-            # ----- As the first
-
-            self._btree.interface.move(io_socket, 0)
-
         if value is not None:
             self.link(value, self.output_node._bnode.inputs[0])
 

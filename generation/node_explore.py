@@ -44,32 +44,6 @@ DEPRECATED_NODES = [
 # Tabulation
 _1, _2, _3, _4 = " "*4, " "*8, " "*12, " "*16
 
-
-# ====================================================================================================
-# Add an entry to auto gen dict
-
-def add_func(gen, class_name, func_name, code, halt=True):
-    if class_name not in gen:
-        gen[class_name] = {}
-    if func_name in gen[class_name] and halt:
-        print('-'*100)
-        print("Class name:", class_name)
-        print("Function name:", func_name)
-        print()
-        print(">>>>> Existing code:")
-        print(gen[class_name][func_name])
-
-        print()
-        print(">>>>> New code:")
-        print(code)
-        print('-'*100)
-
-        raise Exception(f"Function name '{func_name}' already exists in class '{class_name}'")
-
-    gen[class_name][func_name] = code
-
-    return gen
-
 # ====================================================================================================
 # Node wrapper
 
@@ -136,102 +110,6 @@ class NodeInfo:
             self.enum_params[param] = enums
 
         self.data_type_sockets = self.get_data_type_sockets()
-
-        """ OLD
-
-        # ----------------------------------------------------------------------------------------------------
-        # Build the input sockets list plus the data driven socket list
-
-        homonyms  = {}
-        enableds  = {}
-        disableds = {}
-        for bsock in self.bnode.inputs:
-            if bsock.type == 'CUSTOM':
-                continue
-
-            if bsock.name in homonyms:
-                homonyms[bsock.name] += 1
-            else:
-                homonyms[bsock.name] = 1
-
-            d = enableds if bsock.enabled else disableds
-            if bsock.name in d:
-                d[bsock.name] += 1
-            else:
-                d[bsock.name] = 1
-
-        self.input_sockets  = {} # key: (socket name, order), value: identifier to use
-        self.driven_sockets = []
-        drived_count = None
-        for name, count in homonyms.items():
-
-            # ----- No homonym: very simple
-            if count == 1:
-                self.input_sockets[(name, 0)] = name
-
-            # ----- Only one enabled -> data driven
-            # NOTE
-            # This algo could not work
-            # Mix node has two driving parameter:
-            # - data_type
-            # - factor_mode for vectors (driving Factor socket)
-            # Since data_type is the default driving parameter, there is not need to hack this algo
-
-            elif name in enableds and enableds[name] == 1:
-                self.input_sockets[(name, None)] = name
-                self.driven_sockets.append(name)
-                if drived_count is None:
-                    drived_count = count
-
-            # ----- We need to use identifier
-            else:
-                num = 0
-                for bsock in self.bnode.inputs:
-                    if bsock.name != name:
-                        continue
-                    self.input_sockets[(name, num)] = bsock.identifier
-                    num += 1
-
-        self.driver_param = None
-        if len(self.driven_sockets):
-            if hasattr(self.bnode, 'data_type'):
-                self.driver_param = 'data_type'
-
-            elif len(self.enum_params) == 1:
-                self.driver_param = list(self.enum_params.keys())[0]
-                assert(drived_count == len(self.enum_params[self.driver_param]))
-
-            else:
-                for name, enum in self.enum_params.items():
-                    if len(enum) == drived_count:
-                        self.driver_param = name
-
-                if self.driver_param is not None:
-                    print(self.bnode.name)
-                    pprint(self.driven_sockets)
-                    print("Homonyms")
-                    pprint(homonyms)
-                    print("Enableds")
-                    pprint(enableds)
-                    print("Disableds")
-                    pprint(disableds)
-                    print("Enum params")
-                    pprint(self.enum_params)
-                    assert(False)
-        """
-
-        # -----------------------------------------------------------------------------------------------------------------------------
-        # Some nodes hacking
-
-        self.node_class = None
-        self._signature = None
-        self._node_call = None
-
-        if False and self.bnode.name == 'Color Ramp':
-            self.params['stops'] = []
-            self.node_class = 'ColorRamp'
-            self._signature = "(cls, fac=None, stops=[])"
-            self._node_call = "ColorRamp(fac=fac, stops=stops)"
 
     # =============================================================================================================================
     # Load a specific node
@@ -338,6 +216,227 @@ class NodeInfo:
             return 'Geometry'
         else:
             raise Exception(f"Unknown domain: '{domain}' in node '{self.bnode.name}'")
+
+    # =============================================================================================================================
+    # Dump
+
+    @classmethod
+    def dump_nodes(cls, btree, nodes, target='CONSOLE'):
+
+        tree_name = "GeoNodes" if btree.bl_idname == 'GeometryNodeTree' else 'ShaderNodes'
+
+        txt = ""
+        for node in nodes:
+            node_info = NodeInfo(btree, node)
+            txt += node_info.dump_node()
+
+        if target == 'CONSOLE':
+            print(txt)
+
+        elif target is not None:
+            bl_text = bpy.data.texts.get(target)
+            if bl_text is None:
+                bl_text = bpy.data.texts.new(target)
+            bl_text.clear()
+
+            bl_text.write("\nfrom geonodes import *\n\n")
+            bl_text.write(f"with {tree_name}('{target}'):\n\n")
+
+            lines = txt.split("\n")
+            txt = "\n   ".join([""] + lines)
+            bl_text.write(txt)
+
+        return txt
+
+    def dump_node(self):
+
+        from geonodes.core.generated.cross_reference import CROSS_REF
+
+        DOMAINS = {
+            'Point': 'Mesh(Geometry()).points',
+            'Vertex': 'Mesh().points',
+            'Face' : 'Mesh().faces',
+            'Edge' : 'Mesh().edges',
+            'Corner' : 'Mesh().corners',
+            'CloudPoint' : 'Cloud().points',
+            'SplinePoint' : 'Curve().points',
+            'Spline' : 'Curve().splines',
+            'Instance' : 'Instances().insts',
+            'Layer' : 'GreasePencil().layers',
+        }
+
+        # ---------------------------------------------------------------------------
+        # An list of values to string
+
+        def a_str(a):
+            return "(" + ", ".join([f"{v:.3f}" for v in a]) + ")"
+
+        # ---------------------------------------------------------------------------
+        # Name and bl_idname
+
+        bnode = self.bnode
+        bl_idname = bnode.bl_idname
+        node_name = bnode.name.split('.')[0] if bnode.label == "" else bnode.label
+
+        # ---------------------------------------------------------------------------
+        # Specific dump for nodes such as "Float Curve" or "Color Ramp"
+
+        content = ""
+        if bl_idname == 'FunctionNodeInputColor':
+            c = bnode.value
+            content = f"color = Color({a_str(c)})"
+        elif bl_idname == 'ShaderNodeFloatCurve':
+            content =  f"value = Float().curve(factor=None, curve={utils.curve_to_list(bnode.mapping.curves[0], as_str=True)})"
+        elif bl_idname == 'ShaderNodeVectorCurve':
+            content = f" vector = Vector().curves(fac=None, curves={utils.curves_to_list(bnode.mapping.curves, as_str=True)})"
+        elif bl_idname == 'ShaderNodeRGBCurve':
+            content = f"col = Color().curves(fac=None, curves={utils.curves_to_list(bnode.mapping.curves, as_str=True)})"
+        elif bl_idname == 'ShaderNodeValToRGB':
+            content = f"col = Float().color_ramp(stops={utils.color_ramp_get_stops(self.bnode, as_str=True)})"
+
+        # ---------------------------------------------------------------------------
+        # Node name and parameters
+
+        txt = f"# " + '-'*80 + f"\n# Node '{node_name}' ({bnode.bl_idname})\n"
+        add_line = False
+        for param in self.params:
+            add_line = True
+            if param in self.enum_params:
+                txt += f"# - {param:15s}: in {self.enum_params[param]}\n"
+            else:
+                txt += f"# - {param:15s}: {type(getattr(bnode, param)).__name__}\n"
+        if add_line:
+            txt += "\n"
+
+        if content != "":
+            txt += "# Content\n"
+            txt += content + "\n"
+
+        # ---------------------------------------------------------------------------
+        # Implementations
+
+        d = CROSS_REF.get(bl_idname, {})
+        nd_impl = ""
+        cl_impl = ""
+        for class_name, impls in d.items():
+
+            is_nd = class_name in ['nd', 'snd']
+            is_module = class_name in ['gnmath']
+
+            if is_nd:
+                line = f"{class_name}:"
+                s_impl = nd_impl
+            elif is_module:
+                line = f"Module {class_name}:"
+                s_impl = cl_impl
+            else:
+                line = f"Class {class_name}:"
+                s_impl = cl_impl
+
+            s_impl += f"\n# {line}\n# {'-'*len(line)}\n"
+
+            for impl in impls:
+                help_str = impl.get('help')
+                if help_str is not None:
+                    s_impl += "\n" + help_str + "\n"
+                    continue
+
+                line = ""
+                sample_class = impl.get('sample_class', None)
+                if sample_class is None:
+                    klass = class_name
+                    comment = "#"
+                else:
+                    klass = sample_class
+                    comment = f"# Sample with {class_name} = {sample_class}\n#"
+
+                if impl.get('is_classmethod', False):
+                    comment += " class"
+                    line += f"{klass}."
+
+                else:
+                    if klass in DOMAINS:
+                        comment += f" domain {klass}"
+                        line = f"{DOMAINS[klass]}."
+
+                    elif is_module:
+                        line = f"{klass}."
+
+                    else:
+                        line = f"{klass}()."
+
+                signature = impl.get('signature', "")
+                signature = signature.replace("self, ", "")
+                signature = signature.replace("cls, ", "")
+
+                line += impl['func_name'] + signature
+
+                returns = impl.get('returns')
+                outs = [utils.snake_case(bsock.name) for bsock in self.bnode.outputs]
+
+                if impl.get('is_jump', False):
+                    comment += " jump method"
+                    if len(outs) > 1:
+                        comment += ", peer sockets: " + str([f"{sout}_" for sout in outs[1:]])
+
+                elif impl.get('is_get', False):
+                    comment += " property"
+                    line = "value = " + line
+
+                elif impl.get('is_set', False):
+                    comment += " property set"
+                    line += " = value"
+
+                else:
+                    if is_module:
+                        comment += ' function'
+                    else:
+                        comment += ' method'
+                    comment += ", returns: "
+                    if returns is None:
+                        comment += "None"
+
+                    elif returns == 'NODE':
+                        line = "node = " + line
+                        comment += f"Node {outs}"
+
+                    elif returns == 'OUT':
+                        if len(outs) == 0:
+                            comment += "None"
+                        elif len(outs) == 1:
+                            line = "value = " + line
+                            comment += f"node.{outs[0]}"
+                        else:
+                            line = "value = " + line
+                            comment += f"node.{outs[0]} " + str([f"{sout}_" for sout in outs[1:]])
+
+                    elif returns == 'TUPLE':
+                        line = "my_tuple = " + line
+                        comment += f"{len(bnode.outputs)}-tuple of output sockets {outs}"
+
+                    else:
+                        line = "value = " + line
+                        comment += returns
+
+                s_impl += "\n" + comment + "\n" + line + "\n"
+                if is_nd:
+                    nd_impl = s_impl
+                else:
+                    cl_impl = s_impl
+
+
+            cl_impl += "\n\n"
+            nd_impl += "\n\n"
+
+        # ---------------------------------------------------------------------------
+        # Concat
+
+        txt = txt + cl_impl + nd_impl
+        for i in range(5):
+            txt = txt.replace('\n\n\n', '\n\n')
+
+        return txt
+
 
 
     # =============================================================================================================================
@@ -1061,6 +1160,67 @@ class NodeInfo:
 
     # ====================================================================================================
     # Auto generation
+    #
+    # ====================================================================================================
+    # Add an entry to auto gen dict
+
+    def add_func(self, gen, class_name, func_name, code, node_name=None, halt=True, **params):
+
+        # ----------------------------------------------------------------------------------------------------
+        # Source code in gen['source']
+
+        if class_name not in gen['source']:
+            gen['source'][class_name] = {}
+
+        if func_name in gen['source'][class_name] and halt:
+            print('-'*100)
+            print("Class name:", class_name)
+            print("Function name:", func_name)
+            print()
+            print(">>>>> Existing code:")
+            print(gen[class_name][func_name])
+
+            print()
+            print(">>>>> New code:")
+            print(code)
+            print('-'*100)
+
+            raise Exception(f"Function name '{func_name}' already exists in class '{class_name}'")
+
+        gen['source'][class_name][func_name] = code
+
+        # ----------------------------------------------------------------------------------------------------
+        # Cross reference in gen['cross']
+
+        # ----- No node_name : it's the wrapped node
+
+        if node_name is None:
+            node_name = self.bnode.name
+
+        # ----- Two nodes : it's property getter and setter
+
+        is_prop = isinstance(node_name, (tuple, list))
+        if not is_prop:
+            node_name = [node_name]
+
+        for i_name, name in enumerate(node_name):
+            if name is None:
+                continue
+
+            bl_idname = constants.NODE_NAMES[self.btree.bl_idname][name]
+
+            if bl_idname not in gen['cross']:
+                gen['cross'][bl_idname] = {}
+            if class_name not in gen['cross'][bl_idname]:
+                gen['cross'][bl_idname][class_name] = []
+
+            prms = {'func_name': func_name, 'node_name': name, **params}
+            if is_prop:
+                prms = {**prms, 'is_get': i_name==0, 'is_set': i_name==1}
+
+            gen['cross'][bl_idname][class_name].append(prms)
+
+        return gen
 
     # =============================================================================================================================
     # Merge generated source code
@@ -1126,7 +1286,8 @@ class NodeInfo:
         s  = f"{_1}@classmethod\n"
         if is_prop:
             s += f"{_1}@property\n"
-        s += f"{_1}def {name}{self.signature('CLASS', args)}:\n"
+        signature = self.signature('CLASS', args)
+        s += f"{_1}def {name}{signature}:\n"
         s += self.documentation('STATIC', args, returns='OUT')
 
         # Argument check
@@ -1141,7 +1302,7 @@ class NodeInfo:
         # ----------------------------------------------------------------------------------------------------
         # Done
 
-        return add_func(gen, module, name, s)
+        return self.add_func(gen, module, name, s, is_classmethod=True, is_get=is_prop, returns='NODE' if ret_node else 'OUT', signature=signature)
 
     # =============================================================================================================================
     # Implement all static methods
@@ -1238,7 +1399,8 @@ class NodeInfo:
         if is_prop:
             s += f"{_1}@property\n"
 
-        s += f"{_1}def {func_name}{self.signature('CLASS', args)}:\n"
+        signature = self.signature('CLASS', args)
+        s += f"{_1}def {func_name}{signature}:\n"
         s += self.documentation('CONSTRUCTOR', args, returns=class_name)
 
         # Argument check
@@ -1247,7 +1409,7 @@ class NodeInfo:
         s += f"{_2}node = Node{self.node_call(args)}\n"
         s += f"{_2}return cls(node._out)\n"
 
-        add_func(gen, class_name, func_name, s)
+        self.add_func(gen, class_name, func_name, s, is_classmethod=True, is_get=is_prop, returns='OUT', signature=signature)
 
         # ----------------------------------------------------------------------------------------------------
         # Done
@@ -1562,7 +1724,8 @@ class NodeInfo:
         if is_class_method:
             method = 'CLASS'
 
-        s += f"{_1}def {func_name}{self.signature(method, args)}:\n"
+        signature = self.signature(method, args)
+        s += f"{_1}def {func_name}{signature}:\n"
 
         # ----- Documentation
 
@@ -1615,7 +1778,7 @@ class NodeInfo:
         else:
             s += f"{_2}return node.{ret}\n"
 
-        add_func(gen, class_name, func_name, s, halt=check_existing)
+        self.add_func(gen, class_name, func_name, s, halt=check_existing, is_classmethod=is_class_method, is_get=is_get, is_set=func=='set', returns=ret, signature=signature, is_jump=is_jump)
 
         # ----------------------------------------------------------------------------------------------------
         # Done
@@ -1669,7 +1832,8 @@ class NodeInfo:
 
         # ----- Method header
 
-        s = f"def {func_name}{self.signature('FUNCTION', args)}:\n"
+        signature = self.signature('FUNCTION', args)
+        s = f"def {func_name}{signature}:\n"
 
         # ----- Documentation
 
@@ -1698,7 +1862,7 @@ class NodeInfo:
             a = [f"node.{socket_name}" for socket_name in out.keys()]
             s += f"{_1}return ({', '.join(a)})\n"
 
-        add_func(gen, module, func_name, s)
+        self.add_func(gen, module, func_name, s, returns=ret, signature=signature)
 
         # ----------------------------------------------------------------------------------------------------
         # Done
@@ -1877,12 +2041,12 @@ class NodeInfo:
         # Setter
 
         set_node = cls(tree, setter)
-        g = set_node.method_code({}, func='set', func_name=func_name, set_in_socket=in_socket, **setter_params)
+        g = set_node.method_code({'source': {}, 'cross': {}}, func='set', func_name=func_name, set_in_socket=in_socket, **setter_params)
 
         # ----------------------------------------------------------------------------------------------------
         # Merge for all the class names
 
-        for cname, code in g.items():
+        for cname, code in g['source'].items():
 
             if class_name is None:
                 klass = cname
@@ -1925,7 +2089,7 @@ class NodeInfo:
 
             # ----- Merge the two methods in the dict
 
-            add_func(gen, klass, func_name, get_code + set_code)
+            set_node.add_func(gen, klass, func_name, get_code + set_code, node_name=(getter_node_name, setter))
 
         return gen
 

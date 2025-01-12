@@ -557,6 +557,9 @@ You will find here how nodes are implemented
 
 #### Extrude Mesh
 
+- [Edge](edge.md#edge) :white_small_square: [extrude](edge.md#extrude)
+- [Face](face.md#face) :white_small_square: [extrude](face.md#extrude)
+- [Vertex](vertex.md#vertex) :white_small_square: [extrude](vertex.md#extrude)
 - [nd](nd.md#nd) :white_small_square: [extrude_mesh](nd.md#extrude_mesh)
 - [Mesh](mesh.md#mesh) :white_small_square: [extrude](mesh.md#extrude)
 - [Mesh](mesh.md#mesh) :white_small_square: [extrude_edges](mesh.md#extrude_edges)
@@ -608,7 +611,7 @@ You will find here how nodes are implemented
 #### Float Curve
 
 - [nd](nd.md#nd) :white_small_square: [float_curve](nd.md#float_curve)
-- [Float](float.md#float) :white_small_square: [float_curve](float.md#float_curve)
+- [Float](float.md#float) :white_small_square: [curve](float.md#curve)
 
 #### Float to Integer
 
@@ -1284,7 +1287,7 @@ You will find here how nodes are implemented
 #### RGB Curves
 
 - [nd](nd.md#nd) :white_small_square: [rgb_curves](nd.md#rgb_curves)
-- [Color](color.md#color) :white_small_square: [rgb_curves](color.md#rgb_curves)
+- [Color](color.md#color) :white_small_square: [curves](color.md#curves)
 
 #### Rotate Instances
 
@@ -1802,7 +1805,7 @@ You will find here how nodes are implemented
 #### Vector Curves
 
 - [nd](nd.md#nd) :white_small_square: [vector_curves](nd.md#vector_curves)
-- [Vector](vector.md#vector) :white_small_square: [vector_curves](vector.md#vector_curves)
+- [Vector](vector.md#vector) :white_small_square: [curves](vector.md#curves)
 
 #### Vector Math
 

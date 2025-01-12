@@ -544,24 +544,6 @@ class Float(Socket):
         node = Node('Clamp', sockets={'Value': self, 'Min': min, 'Max': max}, clamp_type='RANGE')
         return node._out
 
-    def float_curve(self, factor=None):
-        """ > Node <&Node Float Curve>
-
-        Information
-        -----------
-        - Socket 'Value' : self
-
-        Arguments
-        ---------
-        - factor (Float) : socket 'Factor' (id: Factor)
-
-        Returns
-        -------
-        - Float
-        """
-        node = Node('Float Curve', sockets={'Value': self, 'Factor': factor})
-        return node._out
-
     def map_range(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True, interpolation_type='LINEAR'):
         """ > Node <&Node Map Range>
 

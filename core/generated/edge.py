@@ -343,6 +343,30 @@ class Edge(Socket):
         node = Node('Edges to Face Groups', sockets={'Boundary Edges': boundary_edges})
         return node._out
 
+    def extrude(self, offset=None, offset_scale=None):
+        """ > Node <&Node Extrude Mesh>
+
+        > ***Jump*** : Socket refers to node output socket after the call
+
+        Information
+        -----------
+        - Socket 'Mesh' : self
+        - Socket 'Selection' : self[selection]
+        - Parameter 'mode' : 'EDGES'
+
+        Arguments
+        ---------
+        - offset (Vector) : socket 'Offset' (id: Offset)
+        - offset_scale (Float) : socket 'Offset Scale' (id: Offset Scale)
+
+        Returns
+        -------
+        - Mesh [top_ (Boolean), side_ (Boolean)]
+        """
+        node = Node('Extrude Mesh', sockets={'Mesh': self, 'Selection': self._sel, 'Offset': offset, 'Offset Scale': offset_scale}, mode='EDGES')
+        self._jump(node._out)
+        return self._domain_to_geometry
+
     @classmethod
     def evaluate_at_index(cls, index=None, value=None):
         """ > Node <&Node Evaluate at Index>

@@ -1011,24 +1011,6 @@ class Color(Socket):
         node = Node('Mix', sockets={'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM')
         return node._out
 
-    def rgb_curves(self, fac=None):
-        """ > Node <&Node RGB Curves>
-
-        Information
-        -----------
-        - Socket 'Color' : self
-
-        Arguments
-        ---------
-        - fac (Float) : socket 'Fac' (id: Fac)
-
-        Returns
-        -------
-        - Color
-        """
-        node = Node('RGB Curves', sockets={'Color': self, 'Fac': fac})
-        return node._out
-
     @classmethod
     def Brick(cls, vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2):
         """ > Node <&Node Brick Texture>

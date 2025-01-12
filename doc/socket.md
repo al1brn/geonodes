@@ -374,7 +374,7 @@ with GeoNodes("Menu Switch demo"):
 > method
 
 ``` python
-menu_switch(self_name='A', items={'B': None}, menu=0, name='Menu', tip=None)
+menu_switch(self_name='A', items={'B': None}, menu=0, name='Menu', tip=None, panel=None, hide_value=False, hide_in_modifier=False, single_value=False)
 ```
 
 > Node [Menu Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/menu_switch.html)
@@ -405,6 +405,10 @@ with GeoNodes("Menu Switch demo"):
 - **menu** (_int or str_ = 0) : index or name of the default value
 - **name** (_str_ = Menu) : name of the group input socket
 - **tip** (_str_ = None) : user tip
+- **panel** ( = None)
+- **hide_value** ( = False)
+- **hide_in_modifier** ( = False)
+- **single_value** ( = False)
 
 
 

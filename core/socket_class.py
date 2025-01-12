@@ -471,7 +471,7 @@ class Socket(NodeCache, PropLocker):
 
         # ----------------------------------------------------------------------------------------------------
         # It is a named attribute
-        # Named attribute is _ followed by a Captital: _Attribute
+        # Named attribute is _ followed by a Capital: _Attribute
 
         attr_name = utils.get_attr_name(name)
         if attr_name is not None:
@@ -526,19 +526,6 @@ class Socket(NodeCache, PropLocker):
     def get_node_data_type(self, node_name, value='SELF', default=None):
 
         return utils.get_node_data_type(node_name, self._tree._btree.bl_idname, self if value=='SELF' else value, default=default)
-
-        # OLD
-
-        blid = utils.get_node_bl_idname(node_name, self._tree._btree.bl_idname)
-        valids = list(constants.NODE_DATA_TYPES[blid].values())[0]
-
-        if self.SOCKET_TYPE in valids.keys():
-            return valids[self.SOCKET_TYPE]
-
-        if default is None:
-            raise NodeError(f"Node '{node_name}' doesn't accept '{self.SOCKET_TYPE}' data type, only {list(valids)}")
-
-        return default
 
     # =============================================================================================================================
     # To output
@@ -772,7 +759,8 @@ class Socket(NodeCache, PropLocker):
     # -----------------------------------------------------------------------------------------------------------------------------
     # Method versions
 
-    def menu_switch(self, self_name='A', items={'B': None}, menu=0, name="Menu", tip=None):
+    def menu_switch(self, self_name='A', items={'B': None}, menu=0, name="Menu", tip=None, panel=None,
+        hide_value=False, hide_in_modifier=False, single_value=False):
         """ > Node <&Node Menu Switch>
 
         [&NO_JUMP]
@@ -807,7 +795,8 @@ class Socket(NodeCache, PropLocker):
         -------
         - Socket
         """
-        return self.MenuSwitch({self_name: self, **items}, menu=menu, name=name, tip=tip)
+        return self.MenuSwitch({self_name: self, **items}, menu=menu, name=name, tip=tip, panel=panel,
+            hide_value=hide_value, hide_in_modifier=hide_in_modifier, single_value=single_value)
 
     def index_switch(self, *values, index=0):
         """ > Node <&Node Index Switch>

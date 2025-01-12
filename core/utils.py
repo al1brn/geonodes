@@ -583,3 +583,145 @@ def get_attr_name(prop_name):
 
 def get_prop_name(attr_name):
     return "_" + attr_name.replace(' ', '_')
+
+# =============================================================================================================================
+# Node 'Color Ramp' utilities
+
+def color_ramp_get_stops(bnode, as_str=False):
+
+    stops = []
+    elements = bnode.color_ramp.elements
+    for element in elements:
+        c = element.color
+        stops.append((element.position, tuple([v for v in c])))
+
+    if as_str:
+        a = []
+        for x, c in stops:
+            sc = ", ".join([f"{v:.3f}" for v in c])
+            a.append(f"({x:.3f}, ({sc}))")
+        return "[" + ", ".join(a) + "]"
+
+    return stops
+
+def color_ramp_set_stops(bnode, *stops):
+    """ Set the color ramp stops
+
+    Arguments
+    ---------
+    - bnode : color ramp node
+    - stops : list of tuple (position, color)
+    """
+
+    if len(stops) == 0:
+        return
+
+    elements = bnode.color_ramp.elements
+    for i, stop in enumerate(stops):
+        position : float
+        color    : tuple = None
+        if isinstance(stop, (tuple, list)):
+            if len(stop) == 2:
+                position = stop[0]
+                color    = stop[1]
+            else:
+                raise NodeError(f"ColorRamp set_stops error: stops must be tuple(position, color) or single position, not {stop}")
+
+        else:
+            position = stop
+
+        if color is not None:
+            if hasattr(color, '__len__'):
+                if len(color) == 3:
+                    color = color + (1,)
+            else:
+                color = tuple(np.resize(color, 3)) + (1,)
+
+        if i < len(elements):
+            elements[i].position = position
+        else:
+            elements.new(position)
+
+        if color is not None:
+            elements[i].color = color
+
+    for i in range(len(stops), len(elements)):
+        elements.remove(elements[-1])
+
+# =============================================================================================================================
+# Node curves utilities
+
+# -----------------------------------------------------------------------------------------------------------------------------
+# Conversion of a single curve into a list of tuples:
+# - x
+# - y
+# - handle_type in ('AUTO', 'AUTO_CLAMPED', 'VECTOR')
+
+def curve_to_list(curve, as_str=False):
+    points = []
+    for point in curve.points:
+        points.append((point.location[0], point.location[1], point.handle_type))
+
+    if as_str:
+        return "[" + ", ".join([f"({x:.3f}, {y:.3f}, '{ht}')" for (x, y, ht) in points]) + "]"
+
+    return points
+
+# -----------------------------------------------------------------------------------------------------------------------------
+# Conversion of a collection of curves into an list of list of tuples
+
+def curves_to_list(curves, as_str=False):
+    a = []
+    for curve in curves:
+        a.append(curve_to_list(curve, as_str=as_str))
+
+    if as_str:
+        return "[" + ",\n".join(a) + "]"
+
+    return a
+
+# -----------------------------------------------------------------------------------------------------------------------------
+# Set a list to set up curves
+
+def list_to_curves(points_list, curves):
+
+    if len(points_list) == 0:
+        return
+    if isinstance(points_list[0], tuple):
+        points_list = [points_list]
+
+    for i_curve, curve in enumerate(curves):
+        if i_curve >= len(points_list):
+            break
+
+        points = points_list[i_curve]
+
+
+        for i, point in enumerate(points):
+            if i < len(curve.points):
+                x, y = curve.points[i].location
+                ht = curve.points[i].handle_type
+            else:
+                x, y, ht = 0, 0, 'AUTO'
+
+            if len(point) == 3:
+                x, y, ht = point
+            elif len(point) == 2:
+                x, y = point
+            else:
+                raise Exception(f"'{point}' is not valid to set up a point in a curve. Expected is (float, floar, handle_type in ('AUTO', 'AUTO_CLAMPED', 'VECTOR') )")
+
+            if ht not in ('AUTO', 'AUTO_CLAMPED', 'VECTOR'):
+                raise Exception(f"'{ht}' is not a valid handle type to set up a point in a curve. Valid values are ('AUTO', 'AUTO_CLAMPED', 'VECTOR')")
+
+            if i >= len(curve.points):
+                curve.points.new(x, y)
+            else:
+                curve.points[i].location = (x, y)
+
+            curve.points[i].handle_type = ht
+
+        if len(points) >= len(curve.points):
+            to_del = [p for p in curve.points[len(points):]]
+            for p in to_del:
+                curve.points.remove(p)

@@ -449,24 +449,6 @@ class Vector(Socket):
         node = self._cache('Separate XYZ', sockets={'Vector': self})
         return node.z
 
-    def vector_curves(self, fac=None):
-        """ > Node <&Node Vector Curves>
-
-        Information
-        -----------
-        - Socket 'Vector' : self
-
-        Arguments
-        ---------
-        - fac (Float) : socket 'Fac' (id: Fac)
-
-        Returns
-        -------
-        - Vector
-        """
-        node = Node('Vector Curves', sockets={'Vector': self, 'Fac': fac})
-        return node._out
-
     def add(self, vector=None):
         """ > Node <&Node Vector Math>
 

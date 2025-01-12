@@ -48,7 +48,7 @@ Properties:
 > method
 
 ``` python
-capture(attribute)
+capture(attribute=None, **attributes)
 ```
 
 > Node [Capture Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/capture_attribute.html)
@@ -57,23 +57,14 @@ capture(attribute)
 
 > Short name for [capture_attribute](domain.md#capture_attribute)
 
-``` python
-with GeoNodes("Capture Attribute"):
-    captured_attr = mesh.points.capture(attr)
-
-    # If more than one attribute is to be captured
-    node = mesh.points.captures(attr1 = attr1, attr2=attr2)
-    captured_attr1 = node.attr1
-    captured_attr2 = node.attr2
-```
-
 #### Arguments:
-- **attribute** (_Socket_) : the single attribute to capture
+- **attribute** (_Socket_ = None) : first attribute to capture
+- **attributes** (_Sockets_) : named attributes to capture
 
 
 
 #### Returns:
-- **Socket** :
+- **Node** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Domain](domain.md#domain) :black_small_square: [Content](domain.md#content) :black_small_square: [Methods](domain.md#methods)</sub>
 
@@ -89,9 +80,6 @@ capture_attribute(attribute=None, **attributes)
 > Node [Capture Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/capture_attribute.html)
 
 
-
-> [!NOTE]
-> Use [capture](domain.md#capture) to capture one single attribute
 
 > [!CAUTION]
 > When there is only one attribute, the function returns the captured attribute,
@@ -110,8 +98,6 @@ with GeoNodes("Capture Attribute"):
     # Capture one attribute without key
     captured_attr3 = mesh.points.capture_attribute(attr3)
 
-    # Equivalent to
-    captured_attr3 = mesh.points.capture(attr3)
 ```
 
 #### Arguments:

@@ -36,7 +36,7 @@ import numpy as np
 
 import bpy
 from . import utils
-from .treeclass import Tree, Node, ColorRamp
+from .treeclass import Tree, Node, ColorRamp, NodeCurves
 from .socket_class import Socket
 from . import generated
 
@@ -233,6 +233,37 @@ class Float(generated.Float):
         - Color
         """
         return ColorRamp(fac=self, stops=stops)._out
+
+    # ====================================================================================================
+    # Float curve
+
+    def curve(self, factor=None, curve=None):
+        """ > Node <&Node Float Curve>
+
+        A curve is defined by a list of 3-tuples (not list):
+        - x (float) : x position
+        - y (float) : y position
+        - handle_type (str) : handle type in ('AUTO', 'AUTO_CLAMPED', 'VECTOR')
+
+        > [!NOTE]
+        > handle_type is optional, its default value is 'AUTO'. Valid values are ('AUTO', 'AUTO_CLAMPED', 'VECTOR')
+
+        Information
+        -----------
+        - Socket 'Value' : self
+
+        Arguments
+        ---------
+        - factor (Float) : socket 'Factor' (id: Factor)
+        - curve (list of tuples (float, float, str)) : curve points
+
+        Returns
+        -------
+        - Float
+        """
+        node = NodeCurves('Float Curve', sockets={'Value': self, 'Factor': factor})
+        node.set_curves(curve)
+        return node._out
 
     # ====================================================================================================
     # Operations

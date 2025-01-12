@@ -732,33 +732,7 @@ class Geometry(Socket):
         self._jump(node._out)
         return self._domain_to_geometry
 
-    def transform_geometry(self, translation=None, rotation=None, scale=None, transform=None, mode='COMPONENTS'):
-        """ > Node <&Node Transform Geometry>
-
-        > ***Jump*** : Socket refers to node output socket after the call
-
-        Information
-        -----------
-        - Socket 'Geometry' : self
-
-        Arguments
-        ---------
-        - translation (Vector) : socket 'Translation' (id: Translation)
-        - rotation (Rotation) : socket 'Rotation' (id: Rotation)
-        - scale (Vector) : socket 'Scale' (id: Scale)
-        - transform (Matrix) : socket 'Transform' (id: Transform)
-        - mode (str): parameter 'mode' in ('COMPONENTS', 'MATRIX')
-
-        Returns
-        -------
-        - Geometry
-        """
-        utils.check_enum_arg('mode', mode, 'transform_geometry', ('COMPONENTS', 'MATRIX'))
-        node = Node('Transform Geometry', sockets={'Geometry': self, 'Translation': translation, 'Rotation': rotation, 'Scale': scale, 'Transform': transform}, mode=mode)
-        self._jump(node._out)
-        return self._domain_to_geometry
-
-    def transform_components(self, translation=None, rotation=None, scale=None):
+    def transform_components(self, translation=None, rotation=None, scale=None, transform=None):
         """ > Node <&Node Transform Geometry>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -773,16 +747,17 @@ class Geometry(Socket):
         - translation (Vector) : socket 'Translation' (id: Translation)
         - rotation (Rotation) : socket 'Rotation' (id: Rotation)
         - scale (Vector) : socket 'Scale' (id: Scale)
+        - transform (Matrix) : socket 'Transform' (id: Transform)
 
         Returns
         -------
         - Geometry
         """
-        node = Node('Transform Geometry', sockets={'Geometry': self, 'Translation': translation, 'Rotation': rotation, 'Scale': scale}, mode='COMPONENTS')
+        node = Node('Transform Geometry', sockets={'Geometry': self, 'Translation': translation, 'Rotation': rotation, 'Scale': scale, 'Transform': transform}, mode='COMPONENTS')
         self._jump(node._out)
         return self._domain_to_geometry
 
-    def transform_matrix(self, transform=None):
+    def transform_matrix(self, translation=None, rotation=None, scale=None, transform=None):
         """ > Node <&Node Transform Geometry>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -794,17 +769,20 @@ class Geometry(Socket):
 
         Arguments
         ---------
+        - translation (Vector) : socket 'Translation' (id: Translation)
+        - rotation (Rotation) : socket 'Rotation' (id: Rotation)
+        - scale (Vector) : socket 'Scale' (id: Scale)
         - transform (Matrix) : socket 'Transform' (id: Transform)
 
         Returns
         -------
         - Geometry
         """
-        node = Node('Transform Geometry', sockets={'Geometry': self, 'Transform': transform}, mode='MATRIX')
+        node = Node('Transform Geometry', sockets={'Geometry': self, 'Translation': translation, 'Rotation': rotation, 'Scale': scale, 'Transform': transform}, mode='MATRIX')
         self._jump(node._out)
         return self._domain_to_geometry
 
-    def transform(self, translation=None, rotation=None, scale=None, mode='COMPONENTS'):
+    def transform(self, translation=None, rotation=None, scale=None, transform=None, mode='COMPONENTS'):
         """ > Node <&Node Transform Geometry>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -818,6 +796,7 @@ class Geometry(Socket):
         - translation (Vector) : socket 'Translation' (id: Translation)
         - rotation (Rotation) : socket 'Rotation' (id: Rotation)
         - scale (Vector) : socket 'Scale' (id: Scale)
+        - transform (Matrix) : socket 'Transform' (id: Transform)
         - mode (str): parameter 'mode' in ('COMPONENTS', 'MATRIX')
 
         Returns
@@ -825,7 +804,7 @@ class Geometry(Socket):
         - Geometry
         """
         utils.check_enum_arg('mode', mode, 'transform', ('COMPONENTS', 'MATRIX'))
-        node = Node('Transform Geometry', sockets={'Geometry': self, 'Translation': translation, 'Rotation': rotation, 'Scale': scale}, mode=mode)
+        node = Node('Transform Geometry', sockets={'Geometry': self, 'Translation': translation, 'Rotation': rotation, 'Scale': scale, 'Transform': transform}, mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
 

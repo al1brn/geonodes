@@ -1385,9 +1385,44 @@ class ArrangeNodesOperator(bpy.types.Operator):
         arrange(space.edit_tree)
         return {'FINISHED'}
 
+class NodeDumpOperator(bpy.types.Operator):
+    """Node dump"""
+    bl_idname = "node.dump_node"
+    bl_label  = "Node Help"
+
+    @classmethod
+    def poll(cls, context):
+        space = context.space_data
+        if space.type != 'NODE_EDITOR' or space.edit_tree is None:
+            return False
+        nodes = [node for node in space.edit_tree.nodes if node.select]
+        return len(nodes) > 0
+
+    def execute(self, context):
+
+        from geonodes.generation.node_explore import NodeInfo
+
+        space = context.space_data
+        tree = space.edit_tree
+        nodes = [node for node in tree.nodes if node.select]
+
+        txt_name = 'Node Help'
+
+        if len(nodes) == 0:
+            print("Node Help: you must select at least one node.")
+
+        else:
+            NodeInfo.dump_nodes(tree, nodes, target=txt_name)
+            if len(nodes) == 1:
+                print(f"Node Help: help on '{nodes[0].name}' available in '{txt_name}'")
+            else:
+                print(f"Node Help: help on {len(nodes)} nodes available in '{txt_name}'")
+
+        return {'FINISHED'}
+
 class LayoutArrangePanel(bpy.types.Panel):
     """Creates a Panel in the node editor context of the properties editor"""
-    bl_label       = "Geonodes arrange"
+    bl_label       = "Nodes tree arrange"
     bl_idname      = "NODE_EDITOR_PT_arrange"
     bl_space_type  = 'NODE_EDITOR'
     bl_region_type = 'UI'
@@ -1398,6 +1433,11 @@ class LayoutArrangePanel(bpy.types.Panel):
         layout = self.layout
 
         scene = context.scene
+
+        # Node dump
+        row = layout.row()
+        #row.scale_y = 2.0
+        row.operator("node.dump_node")
 
         # Arrange
         row = layout.row()
@@ -1412,6 +1452,7 @@ def register():
     try:
         bpy.utils.register_class(RemoveReroutesOperator)
         bpy.utils.register_class(ArrangeNodesOperator)
+        bpy.utils.register_class(NodeDumpOperator)
 
         bpy.utils.register_class(LayoutArrangePanel)
     except:
@@ -1421,6 +1462,7 @@ def unregister():
     try:
         bpy.utils.unregister_class(RemoveReroutesOperator)
         bpy.utils.unregister_class(ArrangeNodesOperator)
+        bpy.utils.unregister_class(NodeDumpOperator)
 
         bpy.utils.unregister_class(LayoutArrangePanel)
     except:

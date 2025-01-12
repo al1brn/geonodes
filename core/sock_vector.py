@@ -39,7 +39,7 @@ import numpy as np
 
 import bpy
 from . import utils
-from .treeclass import Tree, Node
+from .treeclass import Tree, Node, NodeCurves
 from .socket_class import Socket
 from . import generated
 
@@ -225,6 +225,37 @@ class Vector(generated.Vector):
             return self.mix_non_uniform(b, factor=factor, clamp_factor=clamp_factor)
         else:
             return self.mix_uniform(b, factor=factor, clamp_factor=clamp_factor)
+
+    # ====================================================================================================
+    # Curves
+
+    def curves(self, fac=None, curves=None):
+        """ > Node <&Node Vector Curves>
+
+        A curve is defined by a list of 3-tuples (not list):
+        - x (float) : x position
+        - y (float) : y position
+        - handle_type (str) : handle type in ('AUTO', 'AUTO_CLAMPED', 'VECTOR')
+
+        > [!NOTE]
+        > handle_type is optional, its default value is 'AUTO'. Valid values are ('AUTO', 'AUTO_CLAMPED', 'VECTOR')
+
+        Information
+        -----------
+        - Socket 'Vector' : self
+
+        Arguments
+        ---------
+        - fac (Float) : socket 'Fac' (id: Fac)
+        - curves (list of lists of tuples (float, float, str)) : curves points
+
+        Returns
+        -------
+        - Vector
+        """
+        node = NodeCurves('Vector Curves', sockets={'Vector': self, 'Fac': fac})
+        node.set_curves(curves)
+        return node._out
 
     # ====================================================================================================
     # Operations

@@ -18,7 +18,7 @@ Face(geometry: geonodes.core.geometry_class.Geometry)
 - **A** : [accumulate_field](face.md#accumulate_field) :black_small_square: [active_element](face.md#active_element) :black_small_square: [attribute_statistic](face.md#attribute_statistic)
 - **C** : [corner_index](face.md#corner_index) :black_small_square: [corners](face.md#corners) :black_small_square: [corners_total](face.md#corners_total) :black_small_square: [count](face.md#count)
 - **D** : [delete](face.md#delete) :black_small_square: [delete_all](face.md#delete_all) :black_small_square: [delete_edge_face](face.md#delete_edge_face) :black_small_square: [delete_geometry](face.md#delete_geometry) :black_small_square: [delete_geometry_all](face.md#delete_geometry_all) :black_small_square: [delete_geometry_edge_face](face.md#delete_geometry_edge_face) :black_small_square: [delete_geometry_only_face](face.md#delete_geometry_only_face) :black_small_square: [delete_only_face](face.md#delete_only_face) :black_small_square: [distribute_points_poisson](face.md#distribute_points_poisson) :black_small_square: [distribute_points_random](face.md#distribute_points_random) :black_small_square: [duplicate](face.md#duplicate)
-- **E** : [evaluate_at_index](face.md#evaluate_at_index) :black_small_square: [evaluate_on_domain](face.md#evaluate_on_domain)
+- **E** : [evaluate_at_index](face.md#evaluate_at_index) :black_small_square: [evaluate_on_domain](face.md#evaluate_on_domain) :black_small_square: [extrude](face.md#extrude)
 - **I** : [is_planar](face.md#is_planar)
 - **M** : [material](face.md#material) :black_small_square: [material_index](face.md#material_index)
 - **N** : [neighbors](face.md#neighbors)
@@ -586,6 +586,38 @@ evaluate_on_domain(value=None)
 
 #### Returns:
 - **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](face.md#face) :black_small_square: [Content](face.md#content) :black_small_square: [Methods](face.md#methods)</sub>
+
+----------
+### extrude()
+
+> method
+
+``` python
+extrude(offset=None, offset_scale=None, individual=None)
+```
+
+> Node [Extrude Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/extrude_mesh.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
+
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+- **Parameter** : 'FACES'
+
+
+
+#### Arguments:
+- **offset** (_Vector_ = None) : socket 'Offset' (id: Offset)
+- **offset_scale** (_Float_ = None) : socket 'Offset Scale' (id: Offset Scale)
+- **individual** (_Boolean_ = None) : socket 'Individual' (id: Individual)
+
+
+
+#### Returns:
+- **Mesh** (_Boolean_)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](face.md#face) :black_small_square: [Content](face.md#content) :black_small_square: [Methods](face.md#methods)</sub>
 

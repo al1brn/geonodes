@@ -39,6 +39,7 @@ Properties:
 - [edge_index](vertex.md#edge_index)
 - [edges](vertex.md#edges)
 - [edges_total](vertex.md#edges_total)
+- [extrude](vertex.md#extrude)
 - [neighbors](vertex.md#neighbors)
 - [to_points](vertex.md#to_points)
 
@@ -181,6 +182,37 @@ edges_total(vertex_index=None, weights=None, sort_index=None)
 
 #### Returns:
 - **total** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Vertex](vertex.md#vertex) :black_small_square: [Content](vertex.md#content) :black_small_square: [Methods](vertex.md#methods)</sub>
+
+----------
+### extrude()
+
+> method
+
+``` python
+extrude(offset=None, offset_scale=None)
+```
+
+> Node [Extrude Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/extrude_mesh.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
+
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+- **Parameter** : 'VERTICES'
+
+
+
+#### Arguments:
+- **offset** (_Vector_ = None) : socket 'Offset' (id: Offset)
+- **offset_scale** (_Float_ = None) : socket 'Offset Scale' (id: Offset Scale)
+
+
+
+#### Returns:
+- **Mesh** (_Boolean_)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Vertex](vertex.md#vertex) :black_small_square: [Content](vertex.md#content) :black_small_square: [Methods](vertex.md#methods)</sub>
 

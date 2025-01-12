@@ -43,10 +43,10 @@ float = Float(3.14, name="User input", subtype='ANGLE') # Create a new Float gro
 
 - **A** : [abs](float.md#abs) :black_small_square: [add](float.md#add) :black_small_square: [Angle](float.md#angle) :black_small_square: [arccosine](float.md#arccosine) :black_small_square: [arcsine](float.md#arcsine) :black_small_square: [arctan2](float.md#arctan2) :black_small_square: [arctangent](float.md#arctangent)
 - **B** : [bevel](float.md#bevel) :black_small_square: [blur](float.md#blur) :black_small_square: [bump](float.md#bump)
-- **C** : [ceil](float.md#ceil) :black_small_square: [clamp](float.md#clamp) :black_small_square: [clamp_minmax](float.md#clamp_minmax) :black_small_square: [clamp_range](float.md#clamp_range) :black_small_square: [color_ramp](float.md#color_ramp) :black_small_square: [ColorTemperature](float.md#colortemperature) :black_small_square: [combine_color](float.md#combine_color) :black_small_square: [combine_color_HSL](float.md#combine_color_hsl) :black_small_square: [combine_color_HSV](float.md#combine_color_hsv) :black_small_square: [combine_color_RGB](float.md#combine_color_rgb) :black_small_square: [compare](float.md#compare) :black_small_square: [cos](float.md#cos) :black_small_square: [cosh](float.md#cosh)
+- **C** : [ceil](float.md#ceil) :black_small_square: [clamp](float.md#clamp) :black_small_square: [clamp_minmax](float.md#clamp_minmax) :black_small_square: [clamp_range](float.md#clamp_range) :black_small_square: [color_ramp](float.md#color_ramp) :black_small_square: [ColorTemperature](float.md#colortemperature) :black_small_square: [combine_color](float.md#combine_color) :black_small_square: [combine_color_HSL](float.md#combine_color_hsl) :black_small_square: [combine_color_HSV](float.md#combine_color_hsv) :black_small_square: [combine_color_RGB](float.md#combine_color_rgb) :black_small_square: [compare](float.md#compare) :black_small_square: [cos](float.md#cos) :black_small_square: [cosh](float.md#cosh) :black_small_square: [curve](float.md#curve)
 - **D** : [degrees](float.md#degrees) :black_small_square: [dial_gizmo](float.md#dial_gizmo) :black_small_square: [displacement](float.md#displacement) :black_small_square: [Distance](float.md#distance) :black_small_square: [divide](float.md#divide)
 - **E** : [equal](float.md#equal) :black_small_square: [exp](float.md#exp)
-- **F** : [Factor](float.md#factor) :black_small_square: [float_curve](float.md#float_curve) :black_small_square: [floor](float.md#floor) :black_small_square: [floored_modulo](float.md#floored_modulo) :black_small_square: [fract](float.md#fract) :black_small_square: [Frequency](float.md#frequency) :black_small_square: [fresnel](float.md#fresnel)
+- **F** : [Factor](float.md#factor) :black_small_square: [floor](float.md#floor) :black_small_square: [floored_modulo](float.md#floored_modulo) :black_small_square: [fract](float.md#fract) :black_small_square: [Frequency](float.md#frequency) :black_small_square: [fresnel](float.md#fresnel)
 - **G** : [Gabor](float.md#gabor) :black_small_square: [greater_equal](float.md#greater_equal) :black_small_square: [greater_than](float.md#greater_than) :black_small_square: [grid_boolean](float.md#grid_boolean)
 - **H** : [hash_value](float.md#hash_value) :black_small_square: [hue_saturation_value](float.md#hue_saturation_value)
 - **I** : [\_\_init__](float.md#__init__) :black_small_square: [inverse_sqrt](float.md#inverse_sqrt)
@@ -693,6 +693,41 @@ cosh(use_clamp=False)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
 
 ----------
+### curve()
+
+> method
+
+``` python
+curve(factor=None, curve=None)
+```
+
+> Node ERROR: Node 'Float Curve' not found
+
+A curve is defined by a list of 3-tuples (not list):
+- x (float) : x position
+- y (float) : y position
+- handle_type (str) : handle type in ('AUTO', 'AUTO_CLAMPED', 'VECTOR')
+
+> [!NOTE]
+> handle_type is optional, its default value is 'AUTO'. Valid values are ('AUTO', 'AUTO_CLAMPED', 'VECTOR')
+
+#### Information:
+- **Socket** : self
+
+
+
+#### Arguments:
+- **factor** (_Float_ = None) : socket 'Factor' (id: Factor)
+- **curve** (_list of tuples (float, float, str)_ = None) : curve points
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
 ### degrees()
 
 > method
@@ -906,32 +941,6 @@ Factor(value=0.0, name='Factor', min=0, max=1, tip=None, panel=None, default_att
 - **hide_value** ( = False)
 - **hide_in_modifier** ( = False)
 - **single_value** ( = False)
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
-
-----------
-### float_curve()
-
-> method
-
-``` python
-float_curve(factor=None)
-```
-
-> Node ERROR: Node 'Float Curve' not found
-
-#### Information:
-- **Socket** : self
-
-
-
-#### Arguments:
-- **factor** (_Float_ = None) : socket 'Factor' (id: Factor)
-
-
-
-#### Returns:
-- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
 

@@ -194,9 +194,6 @@ class Domain(GeoBase, NodeCache, PropLocker):
 
         [&JUMP]
 
-        > [!NOTE]
-        > Use <#capture> to capture one single attribute
-
         > [!CAUTION]
         > When there is only one attribute, the function returns the captured attribute,
         > otherwise returns the node.
@@ -214,8 +211,6 @@ class Domain(GeoBase, NodeCache, PropLocker):
             # Capture one attribute without key
             captured_attr3 = mesh.points.capture_attribute(attr3)
 
-            # Equivalent to
-            captured_attr3 = mesh.points.capture(attr3)
         ```
 
         Arguments
@@ -225,7 +220,7 @@ class Domain(GeoBase, NodeCache, PropLocker):
 
         Returns
         -------
-        - Node
+        - Node or Socket
         """
         if len(attributes) == 0:
             attrs = {'attribute': attribute}
@@ -246,29 +241,20 @@ class Domain(GeoBase, NodeCache, PropLocker):
     # ----------------------------------------------------------------------------------------------------
     # Capture a single attribute
 
-    def capture(self, attribute):
+    def capture(self, attribute=None, **attributes):
         """ > Node <&Node Capture Attribute>
 
         [&JUMP]
 
         > Short name for <#capture_attribute>
 
-        ``` python
-        with GeoNodes("Capture Attribute"):
-            captured_attr = mesh.points.capture(attr)
-
-            # If more than one attribute is to be captured
-            node = mesh.points.captures(attr1 = attr1, attr2=attr2)
-            captured_attr1 = node.attr1
-            captured_attr2 = node.attr2
-        ```
-
         Arguments
         ---------
-        - attribute (Socket): the single attribute to capture
+        - attribute (Socket) : first attribute to capture
+        - **attributes (Sockets): named attributes to capture
 
         Returns
         -------
-        - Socket
+        - Node or Socket
         """
-        return self.capture_attribute(attribute)
+        return self.capture_attribute(attribute=attribute, **attributes)

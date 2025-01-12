@@ -18,7 +18,7 @@ Edge(geometry: geonodes.core.geometry_class.Geometry)
 - **A** : [accumulate_field](edge.md#accumulate_field) :black_small_square: [active_element](edge.md#active_element) :black_small_square: [attribute_statistic](edge.md#attribute_statistic)
 - **C** : [corner_index](edge.md#corner_index) :black_small_square: [corners](edge.md#corners) :black_small_square: [corners_total](edge.md#corners_total) :black_small_square: [count](edge.md#count)
 - **D** : [delete](edge.md#delete) :black_small_square: [delete_all](edge.md#delete_all) :black_small_square: [delete_edge_face](edge.md#delete_edge_face) :black_small_square: [delete_geometry](edge.md#delete_geometry) :black_small_square: [delete_geometry_all](edge.md#delete_geometry_all) :black_small_square: [delete_geometry_edge_face](edge.md#delete_geometry_edge_face) :black_small_square: [delete_geometry_only_face](edge.md#delete_geometry_only_face) :black_small_square: [delete_only_face](edge.md#delete_only_face) :black_small_square: [duplicate](edge.md#duplicate)
-- **E** : [edge_angle](edge.md#edge_angle) :black_small_square: [edge_vertices](edge.md#edge_vertices) :black_small_square: [evaluate_at_index](edge.md#evaluate_at_index) :black_small_square: [evaluate_on_domain](edge.md#evaluate_on_domain)
+- **E** : [edge_angle](edge.md#edge_angle) :black_small_square: [edge_vertices](edge.md#edge_vertices) :black_small_square: [evaluate_at_index](edge.md#evaluate_at_index) :black_small_square: [evaluate_on_domain](edge.md#evaluate_on_domain) :black_small_square: [extrude](edge.md#extrude)
 - **M** : [material](edge.md#material)
 - **P** : [paths_to_curves](edge.md#paths_to_curves) :black_small_square: [paths_to_selection](edge.md#paths_to_selection)
 - **S** : [sample_index](edge.md#sample_index) :black_small_square: [sample_nearest](edge.md#sample_nearest) :black_small_square: [scale](edge.md#scale) :black_small_square: [scale_single_axis](edge.md#scale_single_axis) :black_small_square: [scale_uniform](edge.md#scale_uniform) :black_small_square: [separate](edge.md#separate) :black_small_square: [set_selection](edge.md#set_selection) :black_small_square: [set_shade_smooth](edge.md#set_shade_smooth) :black_small_square: [shade_smooth](edge.md#shade_smooth) :black_small_square: [shortest_paths](edge.md#shortest_paths) :black_small_square: [smooth](edge.md#smooth) :black_small_square: [sort](edge.md#sort) :black_small_square: [split](edge.md#split) :black_small_square: [split_to_instances](edge.md#split_to_instances) :black_small_square: [store](edge.md#store) :black_small_square: [store_named_attribute](edge.md#store_named_attribute)
@@ -555,6 +555,37 @@ evaluate_on_domain(value=None)
 
 #### Returns:
 - **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Edge](edge.md#edge) :black_small_square: [Content](edge.md#content) :black_small_square: [Methods](edge.md#methods)</sub>
+
+----------
+### extrude()
+
+> method
+
+``` python
+extrude(offset=None, offset_scale=None)
+```
+
+> Node [Extrude Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/extrude_mesh.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
+
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+- **Parameter** : 'EDGES'
+
+
+
+#### Arguments:
+- **offset** (_Vector_ = None) : socket 'Offset' (id: Offset)
+- **offset_scale** (_Float_ = None) : socket 'Offset Scale' (id: Offset Scale)
+
+
+
+#### Returns:
+- **Mesh** (_Boolean_)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Edge](edge.md#edge) :black_small_square: [Content](edge.md#content) :black_small_square: [Methods](edge.md#methods)</sub>
 

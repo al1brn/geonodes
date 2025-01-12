@@ -42,7 +42,7 @@ vect = Vector(name="User input").  # Create a new Vector group input
 
 - **A** : [abs](vector.md#abs) :black_small_square: [Acceleration](vector.md#acceleration) :black_small_square: [add](vector.md#add)
 - **B** : [blur](vector.md#blur) :black_small_square: [bump](vector.md#bump)
-- **C** : [ceil](vector.md#ceil) :black_small_square: [CombineXYZ](vector.md#combinexyz) :black_small_square: [cos](vector.md#cos) :black_small_square: [cross](vector.md#cross)
+- **C** : [ceil](vector.md#ceil) :black_small_square: [CombineXYZ](vector.md#combinexyz) :black_small_square: [cos](vector.md#cos) :black_small_square: [cross](vector.md#cross) :black_small_square: [curves](vector.md#curves)
 - **D** : [Direction](vector.md#direction) :black_small_square: [displacement](vector.md#displacement) :black_small_square: [displacement_out](vector.md#displacement_out) :black_small_square: [distance](vector.md#distance) :black_small_square: [divide](vector.md#divide) :black_small_square: [dot](vector.md#dot)
 - **E** : [environment_texture](vector.md#environment_texture) :black_small_square: [equal](vector.md#equal) :black_small_square: [Euler](vector.md#euler)
 - **F** : [faceforward](vector.md#faceforward) :black_small_square: [floor](vector.md#floor) :black_small_square: [fraction](vector.md#fraction) :black_small_square: [FromRotation](vector.md#fromrotation)
@@ -58,7 +58,7 @@ vect = Vector(name="User input").  # Create a new Vector group input
 - **S** : [sample_grid](vector.md#sample_grid) :black_small_square: [sample_grid_index](vector.md#sample_grid_index) :black_small_square: [scale](vector.md#scale) :black_small_square: [separate_xyz](vector.md#separate_xyz) :black_small_square: [sin](vector.md#sin) :black_small_square: [snap](vector.md#snap) :black_small_square: [subtract](vector.md#subtract)
 - **T** : [tan](vector.md#tan) :black_small_square: [Tangent](vector.md#tangent) :black_small_square: [to_rotation](vector.md#to_rotation) :black_small_square: [transform](vector.md#transform) :black_small_square: [Translation](vector.md#translation)
 - **U** : [UVMap](vector.md#uvmap) :black_small_square: [UvMap](vector.md#uvmap)
-- **V** : [vector_curves](vector.md#vector_curves) :black_small_square: [vector_displacement](vector.md#vector_displacement) :black_small_square: [vector_transform](vector.md#vector_transform) :black_small_square: [Velocity](vector.md#velocity)
+- **V** : [vector_displacement](vector.md#vector_displacement) :black_small_square: [vector_transform](vector.md#vector_transform) :black_small_square: [Velocity](vector.md#velocity)
 - **W** : [wrap](vector.md#wrap)
 - **X** : [x](vector.md#x) :black_small_square: [xyz](vector.md#xyz) :black_small_square: [XYZ](vector.md#xyz)
 - **Y** : [y](vector.md#y)
@@ -329,6 +329,41 @@ cross(vector=None)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector_001)
+
+
+
+#### Returns:
+- **Vector** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Vector](vector.md#vector) :black_small_square: [Content](vector.md#content) :black_small_square: [Methods](vector.md#methods)</sub>
+
+----------
+### curves()
+
+> method
+
+``` python
+curves(fac=None, curves=None)
+```
+
+> Node [Vector Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_curves.html)
+
+A curve is defined by a list of 3-tuples (not list):
+- x (float) : x position
+- y (float) : y position
+- handle_type (str) : handle type in ('AUTO', 'AUTO_CLAMPED', 'VECTOR')
+
+> [!NOTE]
+> handle_type is optional, its default value is 'AUTO'. Valid values are ('AUTO', 'AUTO_CLAMPED', 'VECTOR')
+
+#### Information:
+- **Socket** : self
+
+
+
+#### Arguments:
+- **fac** (_Float_ = None) : socket 'Fac' (id: Fac)
+- **curves** (_list of lists of tuples (float, float, str)_ = None) : curves points
 
 
 
@@ -2122,32 +2157,6 @@ UvMap(from_instancer=False, uv_map='')
 #### Arguments:
 - **from_instancer** (_bool_ = False) : parameter 'from_instancer'
 - **uv_map** (_str_ = ) : parameter 'uv_map'
-
-
-
-#### Returns:
-- **Vector** :
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Vector](vector.md#vector) :black_small_square: [Content](vector.md#content) :black_small_square: [Methods](vector.md#methods)</sub>
-
-----------
-### vector_curves()
-
-> method
-
-``` python
-vector_curves(fac=None)
-```
-
-> Node [Vector Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_curves.html)
-
-#### Information:
-- **Socket** : self
-
-
-
-#### Arguments:
-- **fac** (_Float_ = None) : socket 'Fac' (id: Fac)
 
 
 

@@ -248,28 +248,6 @@ class Geometry(generated.Geometry, GeoBase):
         return self
 
     # ====================================================================================================
-    # Geometry nodes are created with
-    # {'Geometry': self, 'Selection': self._sel}
-
-    def _node_OLD(self, node_name, sockets={}, geometry='Geometry', selection='Selection', use_cache=False, **parameters):
-
-        all_sockets = {**sockets}
-        if geometry is not None:
-            all_sockets[geometry] = self
-        #if selection is not None:
-        #    all_sockets[selection] = self._sel
-
-        if use_cache:
-            node = self._cache(node_name, sockets=all_sockets, **parameters)
-        else:
-            node = Node(node_name, sockets=all_sockets, **parameters)
-
-        if selection is not None:
-            node.plug_selection(self._sel)
-
-        return node
-
-    # ====================================================================================================
     # Geometry Operations
 
     # ----------------------------------------------------------------------------------------------------
@@ -292,33 +270,6 @@ class Geometry(generated.Geometry, GeoBase):
             items.new(utils.get_input_type(value), name)
 
         return self._jump(node._out)
-
-    # ----------------------------------------------------------------------------------------------------
-    # Transform
-
-    def transform(self, translation=None, rotation=None, scale=None, transform=None):
-        """ > Jump Method <&Node Transform Geometry>
-
-        Information
-        -----------
-        - Socket 'Geometry' : self
-
-        Arguments
-        ---------
-        - translation (Vector) : socket 'Translation' (id: Translation)
-        - rotation (Rotation) : socket 'Rotation' (id: Rotation)
-        - scale (Vector) : socket 'Scale' (id: Scale)
-        - transform (Matrix) : socket 'Transform' (id: Transform)
-        - mode (str): parameter 'mode' in ('COMPONENTS', 'MATRIX')
-
-        Returns
-        -------
-        - self
-        """
-        if transform is None:
-            return self.transform_geometry(translation, rotation, scale, mode='COMPONENTS')
-        else:
-            return self.transform_geometry(transform=transform, mode='MATRIX')
 
     # ====================================================================================================
     # Operations

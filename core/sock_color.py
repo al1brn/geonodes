@@ -33,7 +33,7 @@ import numpy as np
 
 import bpy
 from . import utils
-from .treeclass import Tree, Node, ColorRamp
+from .treeclass import Tree, Node, ColorRamp, NodeCurves
 from .socket_class import Socket
 from .  import generated
 
@@ -354,4 +354,32 @@ class Color(generated.Color):
         - Vector : 'Displacement' socket
         """
         node = Node('Vector Displacement', {'Vector': self, 'Midlevel': midlevel, 'Scale': scale}, space=space)
+        return node._out
+
+    def curves(self, fac=None, curves=None):
+        """ > Node <&Node RGB Curves>
+
+        A curve is defined by a list of 3-tuples (not list):
+        - x (float) : x position
+        - y (float) : y position
+        - handle_type (str) : handle type in ('AUTO', 'AUTO_CLAMPED', 'VECTOR')
+
+        > [!NOTE]
+        > handle_type is optional, its default value is 'AUTO'. Valid values are ('AUTO', 'AUTO_CLAMPED', 'VECTOR')
+
+        Information
+        -----------
+        - Socket 'Color' : self
+
+        Arguments
+        ---------
+        - fac (Float) : socket 'Fac' (id: Fac)
+        - curves (list of lists of tuples (float, float, str)) : curves points
+
+        Returns
+        -------
+        - Color
+        """
+        node = NodeCurves('RGB Curves', sockets={'Color': self, 'Fac': fac})
+        node.set_curves(curves)
         return node._out

@@ -4,6 +4,170 @@ import bpy
 from . node_explore import NodeInfo
 from . import gen_auto_dicts
 from . gen_auto_dicts import GEONODES, GEONODES_PROPS, SHADERNODES
+from .. core import constants
+
+from pprint import pprint, pformat
+
+# =============================================================================================================================
+# Build manual cross references
+
+def build_manual_cross_ref(cross):
+
+    def get_ni(name, tree_type):
+        node_info = NodeInfo.Load(name, tree_type=tree_type)
+        bl_idname = node_info.bnode.bl_idname
+        cross[bl_idname] = {}
+
+        return node_info, cross[bl_idname]
+
+    # ----------------------------------------------------------------------------------------------------
+    # Geometry nodes
+
+    tree_type = 'GeometryNodeTree'
+
+    # ----- Menu Switch
+
+    node_info, node_cross = get_ni("Menu Switch", tree_type)
+    signature = "(items={'A': None, 'B': None}, menu=0, name='Menu', tip=None, panel=None, hide_value=False, hide_in_modifier=False, single_value=False)"
+    node_cross['Socket'] = [
+        {
+        'func_name'         : 'MenuSwitch',
+        'is_classmethod'    : True,
+        'returns'           : 'OUT',
+        'signature'         : signature,
+        'sample_class'      : 'Geometry',
+        }, {
+        'func_name'         : 'menu_switch',
+        'returns'           : 'OUT',
+        'signature'         : signature,
+        'sample_class'      : 'Geometry',
+        }]
+
+    # ----- Index Switch
+
+    node_info, node_cross = get_ni("Index Switch", tree_type)
+    signature = "(*values, index=0)"
+    node_cross['Socket'] = [
+        {
+        'func_name'         : 'IndexSwitch',
+        'is_classmethod'    : True,
+        'returns'           : 'OUT',
+        'signature'         : signature,
+        'sample_class'      : 'Geometry',
+        }, {
+        'func_name'         : 'index_switch',
+        'returns'           : 'OUT',
+        'signature'         : signature,
+        'sample_class'      : 'Geometry',
+        }]
+
+    # ----- Index Switch
+
+    node_info, node_cross = get_ni("Switch", tree_type)
+    node_cross['Socket'] = [
+        {
+        'func_name'         : 'Switch',
+        'is_classmethod'    : True,
+        'returns'           : 'OUT',
+        'signature'         : "(condition=None, false=None, true=None)",
+        'sample_class'      : 'Geometry',
+        }, {
+        'func_name'         : 'switch',
+        'returns'           : 'OUT',
+        'signature'         : "(condition=None, true=None)",
+        'sample_class'      : 'Geometry',
+        }]
+
+    # ----- Capture attribute
+
+    node_info, node_cross = get_ni("Capture Attribute", tree_type)
+    signature = "(attribute=None, **attributes)"
+    returns = "Node (if several arguments) or Socket (if only one argument)"
+    node_cross['Domain'] = [
+        {
+        'func_name'         : 'capture_attribute',
+        'returns'           : returns,
+        'signature'         : signature,
+        }, {
+        'func_name'         : 'capture',
+        'returns'           : returns,
+        'signature'         : signature,
+        }]
+
+    # ----- Zones
+
+    cross['GeometryNodeForeachGeometryElementInput'] = {'Domain': [{
+        'help': "# Used in a 'with' context block, for instance:\n"
+                "with Mesh.Cube().points.for_each(position=nd.position) as feel:\n\n"
+                "    cube = Mesh.Cube(size=.1)\n"
+                "    cube.transform(translation=feel.position)\n"
+                "    feel.generated.geometry = cube\n\n"
+                "feel.generated.geometry.out()\n"
+    }]}
+    cross['GeometryNodeForeachGeometryElementOutput'] = cross['GeometryNodeForeachGeometryElementInput']
+
+    # ----- Repeat
+
+    cross['GeometryNodeRepeatInput'] = {'Repeat': [{
+        'help': "# Used in a 'with' context block, for instance:\n"
+                "with Repeat(mesh=Mesh.Cube(size=2), z=1., size=1., iterations=7) as rep:\n\n"
+                "    # join a smaller cube on top\n"
+                "    small_cube = Mesh.Cube(size=rep.size).transform(translation=(0, 0, rep.z + rep.size/2))\n"
+                "    rep.mesh += small_cube\n"
+                "    # update loop parameters\n"
+                "    rep.z += rep.size\n"
+                "    rep.size /= 2\n\n"
+                "rep.mesh.out()\n"
+    }]}
+    cross['GeometryNodeRepeatOutput'] = cross['GeometryNodeRepeatInput']
+
+    # ----- Simulation
+
+    cross['GeometryNodeSimulationInput'] = {'Simulation': [{
+        'help': "# Used in a 'with' context block, for instance:\n"
+                "with Simulation(mesh=Mesh.Cube(), speed=Vector.Random(-1, 1, seed=0)) as sim:\n\n"
+                "    speed = sim.mesh.points.capture(sim.speed)\n"
+                "    sim.mesh.position += speed*sim.delta_time\n"
+                "    sim.speed = speed * .95\n\n"
+                "sim.mesh.out()"
+    }]}
+    cross['GeometryNodeSimulationOutput'] = cross['GeometryNodeSimulationInput']
+
+    # ----- Frame
+
+    cross['NodeFrame'] = {'Layout': [{
+        'help': "# Frames are created through a 'with' context block, for instance:\n"
+                "with Layout(\"Nodes will be created in the frame\"):\n"
+                "    a = Float(2)\n"
+                "    b = Float(2)\n"
+                "    c = a + b\n"
+    }]}
+
+    # ----- Group
+
+    cross['GeometryNodeGroup'] = {'Group': [{
+        'help': '# The first parameter is the name of an existing group:\n'
+                '# Sockets can be set either by a dict or using keyword attributes\n\n'
+                '# Let\'s create a sample group\n'
+                'with GeoNodes("Sample Function"):\n\n'
+                '    v = Float(0, "A Value")\n'
+                '    i = Integer(1, "An Integer")\n'
+                '    (v + i).out()\n\n'
+                '# Let\'s call the function\n'
+                'with GeoNodes("Calling the Function"):\n\n'
+                '    v = Group("Sample Function", {"A Value": 123}, an_integer=99)\n'
+    }]}
+    cross['ShaderNodeGroup'] = cross['GeometryNodeGroup']
+
+
+
+
+
+
+
+
+
+
 
 # =============================================================================================================================
 # Generate
@@ -11,7 +175,14 @@ from . gen_auto_dicts import GEONODES, GEONODES_PROPS, SHADERNODES
 def generate(folder):
 
     path = Path(folder) / "generated"
-    gen = {}
+
+    # ====================================================================================================
+    # Gen collects generation
+    #
+    # gen['source'] : dict[class_name -> dict[function_name -> source_code]]
+    # gen['cross']  : dict[bl_idname -> dict['class_name', 'func_name', 'signature', 'decorators']]
+
+    gen = {'source': {}, 'cross': {}}
 
     # ====================================================================================================
     # Loop on the tree types
@@ -65,7 +236,7 @@ def generate(folder):
     print('='*100)
 
     imports = []
-    for class_name, funcs in gen.items():
+    for class_name, funcs in gen['source'].items():
 
         print("Create file", class_name)
         if class_name in ['nd', 'snd']:
@@ -105,9 +276,22 @@ def generate(folder):
             for name, code in funcs.items():
                 file.write(code + "\n")
 
-    # init file
+    # Init file
     with open(path / "__init__.py", 'w') as file:
         file.write("\n".join(imports))
+
+    # ----------------------------------------------------------------------------------------------------
+    # Complete auto reference with manual implementation
+
+    cross = gen['cross']
+
+    build_manual_cross_ref(cross)
+
+    # Cross reference
+    with open(path / "cross_reference.py", 'w') as file:
+        file.write("CROSS_REF = ")
+        file.write(pformat(cross))
+
 
     print("Done")
 

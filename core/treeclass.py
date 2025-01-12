@@ -1660,16 +1660,6 @@ class Node:
         #raise AttributeError(f"Node parameter '{name}' not found in '{sbnode}'.")
         raise NodeError(f"Node parameter or input socket '{name}' not found in '{sbnode}'.", keyword=name)
 
-    def in_socket_OLD(self, name, halt=True):
-        return self.inout_socket(name, self._bnode.inputs, halt=halt)
-
-    def out_socket_OLD(self, name, halt=True):
-        sock = self.inout_socket(name, self._bnode.outputs, halt=halt)
-        if sock is None:
-            return None
-        else:
-            return self.data_socket(sock)
-
     # ----------------------------------------------------------------------------------------------------
     # Set the node sockets
 
@@ -2120,41 +2110,6 @@ class Group(Node):
             else:
                 self.link_from(link_from, arguments={**sockets, **kwargs})
 
-    # ====================================================================================================
-    # Sockets by their name
-
-    def in_socket_OLD(self, name, halt=True):
-
-        interf = TreeInterface(self._bnode.node_tree)
-
-        i_socket = interf.by_name('INPUT', name, as_argument=False, halt=False)
-        if i_socket is None:
-            i_socket = interf.by_name('INPUT', name, as_argument=True, halt=halt)
-
-        if i_socket is None:
-            return None
-
-        for bsock in self._bnode.inputs:
-            if bsock.identifier == i_socket.identifier:
-                return bsock
-
-        assert(False)
-
-    def out_socket_OLD(self, name, halt=True):
-
-        interf = TreeInterface(self._bnode.node_tree)
-
-        i_socket = interf.by_name('OUTPUT', name, as_argument=False, halt=False)
-        if i_socket is None:
-            i_socket = interf.by_name('OUTPUT', name, as_argument=True, halt=halt)
-
-        if i_socket is None:
-            return None
-
-        for bsock in self._bnode.outputs:
-            if bsock.identifier == i_socket.identifier:
-                return self.data_socket(bsock)
-
     @classmethod
     def Prefix(cls, prefix, group_name, sockets={}, **kwargs):
         """ Call a Group with a prefixed named.
@@ -2319,7 +2274,7 @@ class G:
         s += f"{target}.{func_name} = G_{f_prefix}{func_name}\n"
 
         # DEBUG
-        if True:
+        if False:
             print('-'*100)
             print(s)
             print('-'*100)
@@ -2513,3 +2468,26 @@ class ColorRamp(Node):
 
         for i in range(len(stops), len(elements)):
             elements.remove(elements[-1])
+
+class NodeCurves(Node):
+
+    # =============================================================================================================================
+    # Set / Get the curves
+
+    def set_curves(self, curves):
+        """ Set the curves points position
+
+        > [!NOTE]
+        > handle_type is optional, its default value is 'AUTO'. Valid values are ('AUTO', 'AUTO_CLAMPED', 'VECTOR')
+
+        Arguments
+        ---------
+        - curves : list of 3-tuples (x, y, handle_type) or list of such lists
+        """
+        if curves is None:
+            return
+
+        utils.list_to_curves(curves, self.node._bnode.mapping.curves)
+
+    def get_curves(self):
+        return utils.curves_to_list(self.node._bnode.mapping.curves)
