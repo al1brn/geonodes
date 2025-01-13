@@ -48,7 +48,7 @@ with GeoNodes("Hello World"):
     # Let's change the z coordinate of our vertices
     with Layout("Point offset and smoothness"):
         grid.offset = (0, 0, z)
-        grid.smooth = True
+        grid.faces.smooth = True
 
     # We are done: plugging the deformed grid as the modified geometry
     grid.out()
