@@ -366,9 +366,9 @@ mesh = cube / ico # Intersect
 
 ## Naming Conventions
 
-When using ***geonodes***, a question rapidly arises: ***What is the name of the method which implements the Node I want ?***.
+When using ***geonodes***, a question rapidly arises: ***What is the name of the method which implements the Node I want ?***
 
-Naming conventions are used to easily reply to this question.
+Naming conventions are used to easily answer to this question.
 
 > [!IMPORTANT]
 > In addition to the rules below, you can use the button ***[Node Help]*** in the right _Tool_ panel in the ***Geometry Nodes***
@@ -396,8 +396,8 @@ Naming conventions are such that method names can be easily deduced from the nod
   - _Mesh Line_ : **Mesh.Line** constructor
   - _Curve Line_ : **Curve.Line** constructor
 4. **RULE 4** : _Set xxx_ are implemented as properties when possible:
-  - _Set Position_ : **position** and **offset** properties of domain :
-    ``` mesh.points.position = v ``` and ``` mesh.points.offset = v ```
+  - _Set Position_ : **position** and **offset** properties of geometry :
+    ``` mesh.position = v ``` and ``` mesh.offset = v ```
   - _Set Radius_ : **radius** property of **Cloud.points** and **Curve.points** :
     ``` cloud.points.radius = v ``` and ``` curve.points.radius = v ```
   - _Set Tilt_ : **tilt** property of **Curve.points** : ``` curve.points.tilt = v ```
@@ -449,7 +449,7 @@ with GeoNodes("Method names"):
     # 'Subdivide Mesh' the name of the geometry is omitted
 
     mesh = Curve.Circle().fill()
-    curve_line.deform_on_surface()
+    curve_line.resample(17)
     cube.subdivide()
 
     # ----------------------------------------------------------------------------------------------------
@@ -461,8 +461,8 @@ with GeoNodes("Method names"):
     mesh.offset = (1, 2, 3)
     cloud.radius = 1.
 
-    # Make sure to have an output geometry
-    Geometry().out()
+    # Join the geometries and to output
+    Geometry.Join(cube, cloud, bezier, mesh_line, curve_line, mesh).out()
 ```
 
 ### Geometry or Domains methods
