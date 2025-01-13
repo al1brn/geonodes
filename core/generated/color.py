@@ -987,7 +987,7 @@ class Color(Socket):
         node = Node('Mix', sockets={'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='VALUE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM')
         return node._out
 
-    def mix(self, b=None, factor=None, clamp_factor=True, clamp_result=False):
+    def mix(self, b=None, factor=None, clamp_factor=True, clamp_result=False, factor_mode='UNIFORM'):
         """ > Node <&Node Mix>
 
         Information
@@ -995,7 +995,6 @@ class Color(Socket):
         - Socket 'A' : self
         - Parameter 'blend_type' : 'MIX'
         - Parameter 'data_type' : 'RGBA'
-        - Parameter 'factor_mode' : 'UNIFORM'
 
         Arguments
         ---------
@@ -1003,12 +1002,14 @@ class Color(Socket):
         - factor (Float) : socket 'Factor' (id: Factor_Float)
         - clamp_factor (bool): parameter 'clamp_factor'
         - clamp_result (bool): parameter 'clamp_result'
+        - factor_mode (str): parameter 'factor_mode' in ('UNIFORM', 'NON_UNIFORM')
 
         Returns
         -------
         - Color
         """
-        node = Node('Mix', sockets={'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM')
+        utils.check_enum_arg('factor_mode', factor_mode, 'mix', ('UNIFORM', 'NON_UNIFORM'))
+        node = Node('Mix', sockets={'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode=factor_mode)
         return node._out
 
     @classmethod

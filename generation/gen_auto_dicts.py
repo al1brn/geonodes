@@ -434,7 +434,7 @@ GEONODES = {
                                  {parameters: {'data_type': 'ROTATION', 'blend_type': 'MIX', 'factor_mode': 'UNIFORM', 'clamp_result': False}},
                                  {param_loop: 'factor_mode', prefix: 'mix_', parameters: {'data_type': 'VECTOR', 'blend_type': 'MIX', 'clamp_result': False}},
                                  {param_loop: 'blend_type',  prefix: 'mix_', parameters: {'data_type': 'RGBA', 'factor_mode': 'UNIFORM'}},
-                                 {name: 'mix', parameters: {'data_type': 'RGBA', 'blend_type': 'MIX', 'factor_mode': 'UNIFORM'}},
+                                 {name: 'mix', parameters: {'data_type': 'RGBA', 'blend_type': 'MIX'}}, #, 'factor_mode': 'UNIFORM'}},
                                 ],
 'RGB Curves'         :          [{f: 'MANUAL'}],
 'Separate XYZ'       :          [{f: 'get', name: 'xyz', cache: True, ret: 'TUPLE'}, {f: 'get_out_loop'}],
