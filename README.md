@@ -685,7 +685,7 @@ string = String("A String", name="String Parameter")
 
 Additional parameters can be passed depending on the type of input:
 - ***tip*** for description
-- ***default_attribute**
+- ***default_attribute***
 - ***subtype***
 - ***min*** and ***max***
 - ***hide_value***
@@ -694,7 +694,7 @@ Additional parameters can be passed depending on the type of input:
 
 <img src="doc/images/input_parameters.png" width="600" class="center">
 
-Rather than giving the subtype as a parameters, you can use the dedicated constructors
+Rather than giving the subtype as a parameter, you can use the dedicated constructors
 as shown below:
 b types can be defined by using dedicated constructor as shown below:
 
@@ -704,6 +704,28 @@ resolution = Integer(2, "Resolution", min=2, max=10, tip="Mesh resolution", sing
 
 # A float factor between 0 and 1
 factor = Float.Factor(.5, "Factor", 0, 1, "Modification factor")
+```
+
+#### Panels
+
+Inputs can be placed into a panel in two ways:
+- Using the ***Panel*** class in a _with_ context block
+- Using the panel argument when initializing the input
+
+``` python
+from geonodes import *
+
+with GeoNodes("Returned Values"):
+    
+    # Create two options in a panel named Options
+
+    with Panel("Options"):
+        shade_smooth = Boolean(True, "Shade Smooth")
+        subdiv = Integer(1, "Subdivision", 0, 5)
+        
+    # Create a third value in this panel using the argument syntax
+    
+    change_mat = Boolean(True, "Change Material", panel="Options")
 ```
 
 ### Blender resources
@@ -724,18 +746,24 @@ cube_obj = Object("Cube", name="Your object")
 **Geometry** and its subclasses are instancied through their constuctors (`Mesh.Cube` or `Curve.Spiral` for instance).
 When instancied directly, a new Group Input socket is created.
 If the name is not passed as key word argument, the default name is used.
-When no name is passed,
 
 ``` python
-# Node 'Cube'
-mesh = Mesh.Cube()
+import bpy
+from geonodes import *
 
-# Geometry group input node is used if it exists,
-# otherwise a group input node named 'Mesh' is created
-mesh = Mesh()
+with GeoNodes("Returned Values"):
+    
+    # Node 'Cube'
+    cube = Mesh.Cube()
 
-# Other geometries can be created
-curve = Curve(name="Curve")
+    # Geometry group input node is used if it exists,
+    # otherwise a group input node named 'Mesh' is created
+    mesh = Mesh()
+
+    # Other geometries can be created
+    curve = Curve(name="Curve")
+    
+    (cube + mesh + curve).out()
 ```
 
 ### Menu
@@ -792,7 +820,7 @@ In Blender 4.3, three zones exist:
 
 They are all subclasses of **Zone** class.
 
-Zones are initialized with dynamincally creating sockets. Sockets can be created:
+Zones are initialized by dynamically creating sockets. Sockets can be created:
 - either with a dict
 - or with keyword arguments
 
@@ -816,8 +844,8 @@ with Repeat(sockets={'Geometry': Geometry(), 'Curve': None, 'Position': Vector()
 ### Access to the zones sockets
 
 The zone sockets are initialized as properties of the **Zone** class.
-They can be get and set using the standard python syntax, for instance `rep.index` refers to
-the socket named **index** in the example above.
+They can be get and set using the standard python syntax, for instance `rep.position` refers to
+the socket named **position** in the example above.
 
 Since a zone is composed of two nodes, each one replicating the same sockets as inputs and outputs,
 socket names are replicated 4 times. Accessing the zone properties depends upon the access is made
@@ -833,8 +861,8 @@ socket names are replicated 4 times. Accessing the zone properties depends upon 
 Despite it is not that easy to describe, this produces an very natural way to create and work with zones.
 
 > [&IMPORTANT]
-> **ForEachElement** zone behaves diferrently : input sockets of the input node are not replicated in th
-> output socket. On the other hand, the output nodes has two subset of sockets named **main** and **generated**.
+> **ForEachElement** zone behaves diferrently : input sockets of the input node are not replicated in the
+> output socket. On the other hand, the output nodes has two panels of sockets named **main** and **generated**.
 
 The example below explodes a sphere:
 
@@ -910,10 +938,14 @@ using their _snake_case_ name.
 
 
 ``` python
+from geonodes import *
+
+with GeoNodes("A Function", is_group=True):
+    (Float(0, "Value 1") + Float(0, "Value 2")).out("Sum")
+
 with GeoNodes("Call a Group"):
 
-    a = gnmath.cos(1)
-    b = a**2
+    a, b = 1, 2
 
     # ---------------------------------------------------------------------------
     # Standard method
@@ -929,15 +961,14 @@ with GeoNodes("Call a Group"):
     # ---------------------------------------------------------------------------
     # Alternative method
     #
-    # GroupF (for Group Functions) allows to call a group as a method
-    # using its snake_case name
+    # For big projects, one can prefer the python syntax
+    # Class G makes it possible
 
-    val = GroupF().a_function(value_1=val1, value_2=val2).sum
+    val3 = G.a_function(val1, val2)
     
-    # Done
-    
-    Geometry().out()
-    val.out()    
+    geo = Geometry()
+    geo.offset = (val1, val2, val3)
+    geo.out()    
 ```
 
 # Shaders
