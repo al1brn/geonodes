@@ -183,7 +183,7 @@ with GeoNodes("Tutorial"):
 ### 'gnmath' module
 
 **gnmath** provides the mathematical functions, basically the operations performed by
-_Math_, _Vector Math_ and _Boolean Math_ nodes.
+_Math_, _Integer Math_, _Vector Math_ and _Boolean Math_ nodes.
 
 Math functions are named after their standard name in python **math** module.
 
