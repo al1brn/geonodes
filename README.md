@@ -48,7 +48,7 @@ with GeoNodes("Hello World"):
     # Let's change the z coordinate of our vertices
     with Layout("Point offset and smoothness"):
         grid.offset = (0, 0, z)
-        grid.smooth = True
+        grid.faces.smooth = True
 
     # We are done: plugging the deformed grid as the modified geometry
     grid.out()
@@ -183,40 +183,70 @@ with GeoNodes("Tutorial"):
 ### 'gnmath' module
 
 **gnmath** provides the mathematical functions, basically the operations performed by
-_Math_, _Vector Math_ and _Boolean Math_ nodes.
+_Math_, _Integer Math_, _Vector Math_ and _Boolean Math_ nodes.
 
 Math functions are named after their standard name in python **math** module.
 
 > [!NOTE]
 > **Vector** functions having the same name as their **Float** equivalent are prefixed with the letter *v*
+> **Integer** functions having the samen name as their **Float** equivalent are prefixed with the letter *i*
 
 ``` python
-a = Float(1)
-b = gnmath.sin(a)
-c = gnmath.multiply_add(10, b)
+    a = Float(1)
+    b = gnmath.sin(a)
+    
+    # Add between two Floats
+    c = gnmath.add(b, 7.5)
 
-u = Vector((1, 2, 3))
-v = gnmath.cross_product(u, (7, 8, 9))
-a = gnmath.vsin(v)
+    i = Integer(123)
+    # Greater Common Divisor exists only for Integers
+    j = gnmath.gcd(i, 17) 
+    
+    # Add exists also for Floats
+    k = gnmath.iadd(j, 7)
+    
+    u = Vector((1, 2, 3))
+    # Cross product exists only for vectors
+    v = gnmath.cross(u, (7, 8, 9))
+    # Add axists also for Floats
+    w = gnmath.vadd(v, (5, 6,7))
 ```
 
 > [!NOTE]
 > Similarly **Boolean** functions _and_, _or_ and _not_ are prefixed by the letter *b*
 
 ``` python
-a = Boolean(True)
-b = gnmath.xor(a, False)
-c = gnmath.band(b, False)
+    a = Boolean(True)
+    b = gnmath.xor(a, False)
+    c = gnmath.band(b, False)
+    d = gnmath.band(b, False)
 ```
 
-Blender 4.3 introduces the *Math Integer** node. All operations exposed by this node are prefixed
-by letter ***'i'***:
+> [!NOTE]
+> Math functions are also available as methods and some of them as operators.
+
+The following example gives the same result as the two previous ones:
 
 ``` python
-# Math operation
-x = gnmath.modulo(17.4, 2.1)
-# Integer math operation
-i = gnmath.imodulo(17, 3)
+    a = Float(1)
+    b = a.sin()
+    c = b + 7.5
+
+    i = Integer(123)
+    j = i.gcd(17) 
+    k = j + 7
+    
+    u = Vector((1, 2, 3))
+    v = u.cross((7, 8, 9))
+    w = v + (5, 6,7)
+    
+    
+    a = Boolean(True)
+    b = a.xor(False)
+    # and operator is implemented with & 
+    c = b & False
+    # or operator is implemented with |
+    d = b | False
 ```
 
 ### 'nd' Class
@@ -335,6 +365,15 @@ mesh = cube / ico # Intersect
 > equivalent instead : |, & and -.
 
 ## Naming Conventions
+
+When using ***geonodes***, a question rapidly arises: ***What is the name of the method which implements the Node I want ?***.
+
+Naming conventions are used to easily reply to this question.
+
+> [!IMPORTANT]
+> In addition to the rules below, you can use the button ***[Node Help]*** in the right _Tool_ panel in the ***Geometry Nodes***
+> editor. This button generates the implementations of the selected nodes into a script named 'Node Help'.
+
 
 ### Node names
 
