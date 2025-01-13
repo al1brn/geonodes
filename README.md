@@ -366,6 +366,15 @@ mesh = cube / ico # Intersect
 
 ## Naming Conventions
 
+When using ***geonodes***, a question rapidly arises: ***What is the name of the method which implements the Node I want ?***.
+
+Naming conventions are used to easily reply to this question.
+
+> [!IMPORTANT]
+> In addition to the rules below, you can use the button ***[Node Help]*** in the right _Tool_ panel in the ***Geometry Nodes***
+> editor. This button generates the implementations of the selected nodes into a script named 'Node Help'.
+
+
 ### Node names
 
 Naming conventions are such that method names can be easily deduced from the node name.
