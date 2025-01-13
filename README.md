@@ -1016,7 +1016,7 @@ with GeoNodes("Named Attributes"):
     # or even shorter, using a string as constructor value
     weight = Float("Weight")
     
-    # ----- When a named attribute has be created, the named attribute property syntax
+    # ----- When a named attribute has been created, the named attribute property syntax
     # can be used to read the attribute
 
     w = Float("Weight")
