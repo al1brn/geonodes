@@ -585,7 +585,7 @@ When the node has other output sockets, they can be accessed in two ways:
 - or using the **peer sockets naming convention** which exposes peer output sockets
   as properties of the socket itself. In that case, the peer socket name is the
   _snake_case_ name of the socket followed by char `_` to avoid name collision:
-  ``` a = socket.xx_ `.
+  ` a = socket.xx_ `.
 
 The example below illustrates how to access output sockets:
 
