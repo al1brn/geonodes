@@ -1,5 +1,5 @@
 from .. socket_class import Socket
-from .. treeclass import Node
+from .. treeclass import Node, ColorRamp, NodeCurves
 from .. treeclass import utils
 from .. scripterror import NodeError
 
@@ -24,7 +24,7 @@ class Volume(Socket):
         -------
         - Cloud
         """
-        node = Node('Distribute Points in Volume', sockets={'Volume': self, 'Density': density, 'Seed': seed}, mode='DENSITY_RANDOM')
+        node = {'Node'}('Distribute Points in Volume', sockets={'Volume': self, 'Density': density, 'Seed': seed}, mode='DENSITY_RANDOM')
         return node._out
 
     def distribute_points_density_grid(self, spacing=None, threshold=None):
@@ -44,7 +44,7 @@ class Volume(Socket):
         -------
         - Cloud
         """
-        node = Node('Distribute Points in Volume', sockets={'Volume': self, 'Spacing': spacing, 'Threshold': threshold}, mode='DENSITY_GRID')
+        node = {'Node'}('Distribute Points in Volume', sockets={'Volume': self, 'Spacing': spacing, 'Threshold': threshold}, mode='DENSITY_GRID')
         return node._out
 
     def distribute_points(self, density=None, seed=None, mode='DENSITY_RANDOM'):
@@ -65,7 +65,7 @@ class Volume(Socket):
         - Cloud
         """
         utils.check_enum_arg('mode', mode, 'distribute_points', ('DENSITY_RANDOM', 'DENSITY_GRID'))
-        node = Node('Distribute Points in Volume', sockets={'Volume': self, 'Density': density, 'Seed': seed}, mode=mode)
+        node = {'Node'}('Distribute Points in Volume', sockets={'Volume': self, 'Density': density, 'Seed': seed}, mode=mode)
         return node._out
 
     def get_named_grid(self, name=None, remove=None, data_type='FLOAT'):
@@ -88,7 +88,7 @@ class Volume(Socket):
         - Volume [grid_ (Float)]
         """
         utils.check_enum_arg('data_type', data_type, 'get_named_grid', ('FLOAT', 'VECTOR'))
-        node = Node('Get Named Grid', sockets={'Volume': self, 'Name': name, 'Remove': remove}, data_type=data_type)
+        node = {'Node'}('Get Named Grid', sockets={'Volume': self, 'Name': name, 'Remove': remove}, data_type=data_type)
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -111,7 +111,7 @@ class Volume(Socket):
         -------
         - Volume [grid_ (Float)]
         """
-        node = Node('Get Named Grid', sockets={'Volume': self, 'Name': name, 'Remove': remove}, data_type='FLOAT')
+        node = {'Node'}('Get Named Grid', sockets={'Volume': self, 'Name': name, 'Remove': remove}, data_type='FLOAT')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -134,7 +134,7 @@ class Volume(Socket):
         -------
         - Volume [grid_ (Vector)]
         """
-        node = Node('Get Named Grid', sockets={'Volume': self, 'Name': name, 'Remove': remove}, data_type='VECTOR')
+        node = {'Node'}('Get Named Grid', sockets={'Volume': self, 'Name': name, 'Remove': remove}, data_type='VECTOR')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -158,7 +158,7 @@ class Volume(Socket):
         - Volume
         """
         data_type = utils.get_argument_data_type(grid, {'VALUE': 'FLOAT', 'VECTOR': 'FLOAT_VECTOR'}, 'Volume.store_named_grid', 'grid')
-        node = Node('Store Named Grid', sockets={'Volume': self, 'Name': name, 'Grid': grid}, data_type=data_type)
+        node = {'Node'}('Store Named Grid', sockets={'Volume': self, 'Name': name, 'Grid': grid}, data_type=data_type)
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -201,7 +201,7 @@ class Volume(Socket):
         - Mesh
         """
         utils.check_enum_arg('resolution_mode', resolution_mode, 'to_mesh', ('GRID', 'VOXEL_AMOUNT', 'VOXEL_SIZE'))
-        node = Node('Volume to Mesh', sockets={'Volume': self, 'Threshold': threshold, 'Adaptivity': adaptivity}, resolution_mode=resolution_mode)
+        node = {'Node'}('Volume to Mesh', sockets={'Volume': self, 'Threshold': threshold, 'Adaptivity': adaptivity}, resolution_mode=resolution_mode)
         return node._out
 
     def to_mesh_grid(self, threshold=None, adaptivity=None):
@@ -221,7 +221,7 @@ class Volume(Socket):
         -------
         - Mesh
         """
-        node = Node('Volume to Mesh', sockets={'Volume': self, 'Threshold': threshold, 'Adaptivity': adaptivity}, resolution_mode='GRID')
+        node = {'Node'}('Volume to Mesh', sockets={'Volume': self, 'Threshold': threshold, 'Adaptivity': adaptivity}, resolution_mode='GRID')
         return node._out
 
     def to_mesh_voxel_amount(self, voxel_amount=None, threshold=None, adaptivity=None):
@@ -242,7 +242,7 @@ class Volume(Socket):
         -------
         - Mesh
         """
-        node = Node('Volume to Mesh', sockets={'Volume': self, 'Voxel Amount': voxel_amount, 'Threshold': threshold, 'Adaptivity': adaptivity}, resolution_mode='VOXEL_AMOUNT')
+        node = {'Node'}('Volume to Mesh', sockets={'Volume': self, 'Voxel Amount': voxel_amount, 'Threshold': threshold, 'Adaptivity': adaptivity}, resolution_mode='VOXEL_AMOUNT')
         return node._out
 
     def to_mesh_voxel_size(self, voxel_size=None, threshold=None, adaptivity=None):
@@ -263,6 +263,6 @@ class Volume(Socket):
         -------
         - Mesh
         """
-        node = Node('Volume to Mesh', sockets={'Volume': self, 'Voxel Size': voxel_size, 'Threshold': threshold, 'Adaptivity': adaptivity}, resolution_mode='VOXEL_SIZE')
+        node = {'Node'}('Volume to Mesh', sockets={'Volume': self, 'Voxel Size': voxel_size, 'Threshold': threshold, 'Adaptivity': adaptivity}, resolution_mode='VOXEL_SIZE')
         return node._out
 

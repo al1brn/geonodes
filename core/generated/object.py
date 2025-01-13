@@ -1,5 +1,5 @@
 from .. socket_class import Socket
-from .. treeclass import Node
+from .. treeclass import Node, ColorRamp, NodeCurves
 from .. treeclass import utils
 from .. scripterror import NodeError
 
@@ -35,7 +35,7 @@ class Object(Socket):
         - node [transform (Matrix), location (Vector), rotation (Rotation), scale (Vector), geometry (Geometry)]
         """
         utils.check_enum_arg('transform_space', transform_space, 'info', ('ORIGINAL', 'RELATIVE'))
-        node = Node('Object Info', sockets={'Object': self, 'As Instance': as_instance}, transform_space=transform_space)
+        node = {'Node'}('Object Info', sockets={'Object': self, 'As Instance': as_instance}, transform_space=transform_space)
         return node
 
     @classmethod

@@ -223,13 +223,14 @@ class Node:
             if area.type == 'NODE_EDITOR':
                 for space in area.spaces:
                     if space.type == 'NODE_EDITOR' and space.node_tree == self.tree.btree:
+                        space.tag_redraw()
                         return True
 
         return False
 
     @classmethod
     def wait(cls):
-        if cls.has_node_editor:
+        if False and cls.has_node_editor:
             bpy.ops.wm.redraw_timer(type='DRAW_WIN_SWAP', iterations=1)
 
     @property

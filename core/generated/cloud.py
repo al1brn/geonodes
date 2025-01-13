@@ -1,5 +1,5 @@
 from .. socket_class import Socket
-from .. treeclass import Node
+from .. treeclass import Node, ColorRamp, NodeCurves
 from .. treeclass import utils
 from .. scripterror import NodeError
 
@@ -103,7 +103,7 @@ class Cloud(Socket):
         -------
         - Instances
         """
-        node = Node('Instance on Points', sockets={'Points': self, 'Selection': self._sel, 'Instance': instance, 'Pick Instance': pick_instance, 'Instance Index': instance_index, 'Rotation': rotation, 'Scale': scale})
+        node = {'Node'}('Instance on Points', sockets={'Points': self, 'Selection': self._sel, 'Instance': instance, 'Pick Instance': pick_instance, 'Instance Index': instance_index, 'Rotation': rotation, 'Scale': scale})
         return node._out
 
     def interpolate_curves(self, guide_curves=None, guide_up=None, guide_group_id=None, point_up=None, point_group_id=None, max_neighbors=None):
@@ -126,7 +126,7 @@ class Cloud(Socket):
         -------
         - Curve [closest_index_ (Integer), closest_weight_ (Float)]
         """
-        node = Node('Interpolate Curves', sockets={'Guide Curves': guide_curves, 'Guide Up': guide_up, 'Guide Group ID': guide_group_id, 'Points': self, 'Point Up': point_up, 'Point Group ID': point_group_id, 'Max Neighbors': max_neighbors})
+        node = {'Node'}('Interpolate Curves', sockets={'Guide Curves': guide_curves, 'Guide Up': guide_up, 'Guide Group ID': guide_group_id, 'Points': self, 'Point Up': point_up, 'Point Group ID': point_group_id, 'Max Neighbors': max_neighbors})
         return node._out
 
     @classmethod
@@ -162,7 +162,7 @@ class Cloud(Socket):
         -------
         - Curve
         """
-        node = Node('Points to Curves', sockets={'Points': self, 'Curve Group ID': curve_group_id, 'Weight': weight})
+        node = {'Node'}('Points to Curves', sockets={'Points': self, 'Curve Group ID': curve_group_id, 'Weight': weight})
         return node._out
 
     def to_sdf_grid(self, radius=None, voxel_size=None):
@@ -181,7 +181,7 @@ class Cloud(Socket):
         -------
         - Float
         """
-        node = Node('Points to SDF Grid', sockets={'Points': self, 'Radius': radius, 'Voxel Size': voxel_size})
+        node = {'Node'}('Points to SDF Grid', sockets={'Points': self, 'Radius': radius, 'Voxel Size': voxel_size})
         return node._out
 
     def to_vertices(self):
@@ -196,7 +196,7 @@ class Cloud(Socket):
         -------
         - Mesh
         """
-        node = Node('Points to Vertices', sockets={'Points': self, 'Selection': self._sel})
+        node = {'Node'}('Points to Vertices', sockets={'Points': self, 'Selection': self._sel})
         return node._out
 
     def to_volume(self, density=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_AMOUNT'):
@@ -218,7 +218,7 @@ class Cloud(Socket):
         - Volume
         """
         utils.check_enum_arg('resolution_mode', resolution_mode, 'to_volume', ('VOXEL_AMOUNT', 'VOXEL_SIZE'))
-        node = Node('Points to Volume', sockets={'Points': self, 'Density': density, 'Voxel Amount': voxel_amount, 'Radius': radius}, resolution_mode=resolution_mode)
+        node = {'Node'}('Points to Volume', sockets={'Points': self, 'Density': density, 'Voxel Amount': voxel_amount, 'Radius': radius}, resolution_mode=resolution_mode)
         return node._out
 
     @property
@@ -246,7 +246,7 @@ class Cloud(Socket):
         -------
         - Cloud
         """
-        node = Node('Set Point Radius', sockets={'Points': self, 'Selection': self._sel, 'Radius': radius})
+        node = {'Node'}('Set Point Radius', sockets={'Points': self, 'Selection': self._sel, 'Radius': radius})
         self._jump(node._out)
         return self._domain_to_geometry
 

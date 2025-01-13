@@ -1634,7 +1634,7 @@ class Node:
 
     def __setattr__(self, name, value):
 
-        if name in ['_tree', '_bnode', '_label', '_color', 'pin_gizmo']:
+        if name in ['_tree', '_bnode', '_label', '_color', 'pin_gizmo'] or name in dir(self):
             super().__setattr__(name, value)
             return
 
@@ -1651,7 +1651,6 @@ class Node:
 
             # ---- Link input node
 
-            #in_socket = self.in_socket(name)
             bsocket = self.by_name('INPUT', name, only_enabled=True, as_argument=True, halt=False)
             if bsocket is not None:
                 self.plug_value_into_socket(value, bsocket)
@@ -2392,10 +2391,8 @@ class GroupF:
 # Specific nodes
 
 class ColorRamp(Node):
-    def __init__(self, fac=None, stops=None):
-        """ Color ramp node
-
-        > Node <&Node Color Ramp>
+    def __init__(self, fac=None, stops=None, interpolation='LINEAR'):
+        """ Node <&Node Color Ramp>
 
         Exposes utilities to manage the color ramp
 
@@ -2408,10 +2405,12 @@ class ColorRamp(Node):
         ---------
         - fac (Float = None)
         - stops (list of tuple(float, tuple)) : stops made of (float, color as tuple of floats)
+        - interpolation in ('EASE', 'CARDINAL', 'LINEAR', 'B_SPLINE', 'CONSTANT')
         """
         super().__init__('Color Ramp', {'Fac': fac})
-        if stops is not None:
-            self.set_stops(*stops)
+        self.color_ramp.interpolation = interpolation
+        self.interpolation = interpolation
+        self.stops = stops
 
     @property
     def color_ramp(self):
@@ -2421,9 +2420,37 @@ class ColorRamp(Node):
         -------
         - bpy.types.ColorRamp
         """
+        print("DEBUG", self._bnode, self._bnode.color_ramp)
         return self._bnode.color_ramp
 
-    def set_stops(self, *stops):
+    @property
+    def interpolation(self):
+        """ Node color_ramp interpolation
+
+        Returns
+        -------
+        - str
+        """
+        return self.color_ramp.interpolation
+
+    @interpolation.setter
+    def interpolation(self, interpolation):
+        utils.check_enum_arg(arg_name='interpolation', arg_value=interpolation, meth_name='interpolation',
+            valids=('EASE', 'CARDINAL', 'LINEAR', 'B_SPLINE', 'CONSTANT'))
+        self.color_ramp.interpolation = interpolation
+
+    @property
+    def stops(self):
+        """ Get the list of stops
+
+        Returns
+        -------
+        - list of tuples : (float, color)
+        """
+        return utils.color_ramp_get_stops(self.node._bnode, as_str=False)
+
+    @stops.setter
+    def stops(self, stops):
         """ Set the color ramp stops
 
         ``` python
@@ -2433,12 +2460,16 @@ class ColorRamp(Node):
         ---------
         - stops : list of tuple (position, color)
         """
+        if stops is not None:
+            self.set_stops(*stops)
 
+    def set_stops(self, *stops):
         if len(stops) == 0:
             return
 
         elements = self.color_ramp.elements
         for i, stop in enumerate(stops):
+
             position : float
             color    : tuple = None
             if isinstance(stop, (tuple, list)):
@@ -2469,10 +2500,62 @@ class ColorRamp(Node):
         for i in range(len(stops), len(elements)):
             elements.remove(elements[-1])
 
+
 class NodeCurves(Node):
 
     # =============================================================================================================================
     # Set / Get the curves
+
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # curve 0 (for Float Curve)
+
+    def get_curve(self):
+        """ Get the Float Curve as a list of tuples
+
+        Each tuple is a triplet
+        - x (float) : x position
+        - y (float) : y position
+        - handle_type (str) : handle type in ('AUTO', 'AUTO_CLAMPED', 'VECTOR')
+
+        Returns
+        -------
+        - list of 3-tuples : float, float, str in ('AUTO', 'AUTO_CLAMPED', 'VECTOR')
+        """
+        return self.get_curves()[0]
+
+    def set_curve(self, curve):
+        """ Set the Float Curve as a list of tuples
+
+        > [!NOTE]
+        > handle_type is optional, its default value is 'AUTO'. Valid values are ('AUTO', 'AUTO_CLAMPED', 'VECTOR')
+
+        Arguments
+        ---------
+        - curves : list of 3-tuples (x, y, handle_type in ('AUTO', 'AUTO_CLAMPED', 'VECTOR'))
+
+        Returns
+        -------
+        - self
+        """
+        self.set_curves([curve])
+        return self
+
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # All curves (for Color Curves and Vector Curves)
+
+    def get_curves(self):
+        """ Get the curves as a list of list of tuples
+
+        Each tuple is a triplet
+        - x (float) : x position
+        - y (float) : y position
+        - handle_type (str) : handle type in ('AUTO', 'AUTO_CLAMPED', 'VECTOR')
+
+        Returns
+        -------
+        - list of lists of triplets
+        """
+        return utils.curves_to_list(self.node._bnode.mapping.curves)
 
     def set_curves(self, curves):
         """ Set the curves points position
@@ -2483,11 +2566,11 @@ class NodeCurves(Node):
         Arguments
         ---------
         - curves : list of 3-tuples (x, y, handle_type) or list of such lists
+
+        Returns
+        -------
+        - self
         """
-        if curves is None:
-            return
-
-        utils.list_to_curves(curves, self.node._bnode.mapping.curves)
-
-    def get_curves(self):
-        return utils.curves_to_list(self.node._bnode.mapping.curves)
+        if curves is not None:
+            utils.list_to_curves(curves, self.node._bnode.mapping.curves)
+        return self

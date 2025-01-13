@@ -1,5 +1,5 @@
 from .. socket_class import Socket
-from .. treeclass import Node
+from .. treeclass import Node, ColorRamp, NodeCurves
 from .. treeclass import utils
 from .. scripterror import NodeError
 
@@ -31,7 +31,7 @@ class VolumeShader(Socket):
         -------
         - node [color (Color), density (Float), flame (Float), temperature (Float)]
         """
-        node = Node('Volume Info', sockets={})
+        node = {'Node'}('Volume Info', sockets={})
         return node
 
     @classmethod

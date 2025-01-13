@@ -1,5 +1,5 @@
 from .. socket_class import Socket
-from .. treeclass import Node
+from .. treeclass import Node, ColorRamp, NodeCurves
 from .. treeclass import utils
 from .. scripterror import NodeError
 
@@ -36,7 +36,7 @@ class Mesh(Socket):
         -------
         - Integer [total_ (Integer)]
         """
-        node = Node('Corners of Edge', sockets={'Edge Index': edge_index, 'Weights': weights, 'Sort Index': sort_index})
+        node = {'Node'}('Corners of Edge', sockets={'Edge Index': edge_index, 'Weights': weights, 'Sort Index': sort_index})
         return node._out
 
     @classmethod
@@ -53,7 +53,7 @@ class Mesh(Socket):
         -------
         - Integer [total_ (Integer)]
         """
-        node = Node('Corners of Face', sockets={'Face Index': face_index, 'Weights': weights, 'Sort Index': sort_index})
+        node = {'Node'}('Corners of Face', sockets={'Face Index': face_index, 'Weights': weights, 'Sort Index': sort_index})
         return node._out
 
     @classmethod
@@ -70,7 +70,7 @@ class Mesh(Socket):
         -------
         - Integer [total_ (Integer)]
         """
-        node = Node('Corners of Vertex', sockets={'Vertex Index': vertex_index, 'Weights': weights, 'Sort Index': sort_index})
+        node = {'Node'}('Corners of Vertex', sockets={'Vertex Index': vertex_index, 'Weights': weights, 'Sort Index': sort_index})
         return node._out
 
     def distribute_points_on_faces(self, density=None, seed=None, distribute_method='RANDOM', use_legacy_normal=False):
@@ -93,7 +93,7 @@ class Mesh(Socket):
         - Cloud [normal_ (Vector), rotation_ (Rotation)]
         """
         utils.check_enum_arg('distribute_method', distribute_method, 'distribute_points_on_faces', ('RANDOM', 'POISSON'))
-        node = Node('Distribute Points on Faces', sockets={'Mesh': self, 'Selection': self._sel, 'Density': density, 'Seed': seed}, distribute_method=distribute_method, use_legacy_normal=use_legacy_normal)
+        node = {'Node'}('Distribute Points on Faces', sockets={'Mesh': self, 'Selection': self._sel, 'Density': density, 'Seed': seed}, distribute_method=distribute_method, use_legacy_normal=use_legacy_normal)
         return node._out
 
     def distribute_points_on_faces_random(self, density=None, seed=None, use_legacy_normal=False):
@@ -115,7 +115,7 @@ class Mesh(Socket):
         -------
         - Cloud [normal_ (Vector), rotation_ (Rotation)]
         """
-        node = Node('Distribute Points on Faces', sockets={'Mesh': self, 'Selection': self._sel, 'Density': density, 'Seed': seed}, distribute_method='RANDOM', use_legacy_normal=use_legacy_normal)
+        node = {'Node'}('Distribute Points on Faces', sockets={'Mesh': self, 'Selection': self._sel, 'Density': density, 'Seed': seed}, distribute_method='RANDOM', use_legacy_normal=use_legacy_normal)
         return node._out
 
     def distribute_points_on_faces_poisson(self, distance_min=None, density_max=None, density_factor=None, seed=None, use_legacy_normal=False):
@@ -139,7 +139,7 @@ class Mesh(Socket):
         -------
         - Cloud [normal_ (Vector), rotation_ (Rotation)]
         """
-        node = Node('Distribute Points on Faces', sockets={'Mesh': self, 'Selection': self._sel, 'Distance Min': distance_min, 'Density Max': density_max, 'Density Factor': density_factor, 'Seed': seed}, distribute_method='POISSON', use_legacy_normal=use_legacy_normal)
+        node = {'Node'}('Distribute Points on Faces', sockets={'Mesh': self, 'Selection': self._sel, 'Distance Min': distance_min, 'Density Max': density_max, 'Density Factor': density_factor, 'Seed': seed}, distribute_method='POISSON', use_legacy_normal=use_legacy_normal)
         return node._out
 
     def dual(self, keep_boundaries=None):
@@ -159,7 +159,7 @@ class Mesh(Socket):
         -------
         - Mesh
         """
-        node = Node('Dual Mesh', sockets={'Mesh': self, 'Keep Boundaries': keep_boundaries})
+        node = {'Node'}('Dual Mesh', sockets={'Mesh': self, 'Keep Boundaries': keep_boundaries})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -179,7 +179,7 @@ class Mesh(Socket):
         -------
         - Curve
         """
-        node = Node('Edge Paths to Curves', sockets={'Mesh': self, 'Start Vertices': start_vertices, 'Next Vertex Index': next_vertex_index})
+        node = {'Node'}('Edge Paths to Curves', sockets={'Mesh': self, 'Start Vertices': start_vertices, 'Next Vertex Index': next_vertex_index})
         return node._out
 
     @classmethod
@@ -195,7 +195,7 @@ class Mesh(Socket):
         -------
         - Boolean
         """
-        node = Node('Edge Paths to Selection', sockets={'Start Vertices': start_vertices, 'Next Vertex Index': next_vertex_index})
+        node = {'Node'}('Edge Paths to Selection', sockets={'Start Vertices': start_vertices, 'Next Vertex Index': next_vertex_index})
         return node._out
 
     @classmethod
@@ -210,7 +210,7 @@ class Mesh(Socket):
         -------
         - Integer [previous_edge_index_ (Integer)]
         """
-        node = Node('Edges of Corner', sockets={'Corner Index': corner_index})
+        node = {'Node'}('Edges of Corner', sockets={'Corner Index': corner_index})
         return node._out
 
     @classmethod
@@ -227,7 +227,7 @@ class Mesh(Socket):
         -------
         - Integer [total_ (Integer)]
         """
-        node = Node('Edges of Vertex', sockets={'Vertex Index': vertex_index, 'Weights': weights, 'Sort Index': sort_index})
+        node = {'Node'}('Edges of Vertex', sockets={'Vertex Index': vertex_index, 'Weights': weights, 'Sort Index': sort_index})
         return node._out
 
     @classmethod
@@ -242,7 +242,7 @@ class Mesh(Socket):
         -------
         - Integer
         """
-        node = Node('Edges to Face Groups', sockets={'Boundary Edges': boundary_edges})
+        node = {'Node'}('Edges to Face Groups', sockets={'Boundary Edges': boundary_edges})
         return node._out
 
     def extrude_vertices(self, offset=None, offset_scale=None):
@@ -265,7 +265,7 @@ class Mesh(Socket):
         -------
         - Mesh [top_ (Boolean), side_ (Boolean)]
         """
-        node = Node('Extrude Mesh', sockets={'Mesh': self, 'Selection': self._sel, 'Offset': offset, 'Offset Scale': offset_scale}, mode='VERTICES')
+        node = {'Node'}('Extrude Mesh', sockets={'Mesh': self, 'Selection': self._sel, 'Offset': offset, 'Offset Scale': offset_scale}, mode='VERTICES')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -289,7 +289,7 @@ class Mesh(Socket):
         -------
         - Mesh [top_ (Boolean), side_ (Boolean)]
         """
-        node = Node('Extrude Mesh', sockets={'Mesh': self, 'Selection': self._sel, 'Offset': offset, 'Offset Scale': offset_scale}, mode='EDGES')
+        node = {'Node'}('Extrude Mesh', sockets={'Mesh': self, 'Selection': self._sel, 'Offset': offset, 'Offset Scale': offset_scale}, mode='EDGES')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -314,7 +314,7 @@ class Mesh(Socket):
         -------
         - Mesh [top_ (Boolean), side_ (Boolean)]
         """
-        node = Node('Extrude Mesh', sockets={'Mesh': self, 'Selection': self._sel, 'Offset': offset, 'Offset Scale': offset_scale, 'Individual': individual}, mode='FACES')
+        node = {'Node'}('Extrude Mesh', sockets={'Mesh': self, 'Selection': self._sel, 'Offset': offset, 'Offset Scale': offset_scale, 'Individual': individual}, mode='FACES')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -340,7 +340,7 @@ class Mesh(Socket):
         - Mesh [top_ (Boolean), side_ (Boolean)]
         """
         utils.check_enum_arg('mode', mode, 'extrude', ('VERTICES', 'EDGES', 'FACES'))
-        node = Node('Extrude Mesh', sockets={'Mesh': self, 'Selection': self._sel, 'Offset': offset, 'Offset Scale': offset_scale, 'Individual': individual}, mode=mode)
+        node = {'Node'}('Extrude Mesh', sockets={'Mesh': self, 'Selection': self._sel, 'Offset': offset, 'Offset Scale': offset_scale, 'Individual': individual}, mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -356,7 +356,7 @@ class Mesh(Socket):
         -------
         - Integer [index_in_face_ (Integer)]
         """
-        node = Node('Face of Corner', sockets={'Corner Index': corner_index})
+        node = {'Node'}('Face of Corner', sockets={'Corner Index': corner_index})
         return node._out
 
     def flip_faces(self):
@@ -373,7 +373,7 @@ class Mesh(Socket):
         -------
         - Mesh
         """
-        node = Node('Flip Faces', sockets={'Mesh': self, 'Selection': self._sel})
+        node = {'Node'}('Flip Faces', sockets={'Mesh': self, 'Selection': self._sel})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -415,7 +415,7 @@ class Mesh(Socket):
         -------
         - node [unsigned_angle (Float), signed_angle (Float)]
         """
-        node = Node('Edge Angle', sockets={})
+        node = {'Node'}('Edge Angle', sockets={})
         return node
 
     @classmethod
@@ -427,7 +427,7 @@ class Mesh(Socket):
         -------
         - unsigned_angle
         """
-        node = Node('Edge Angle', sockets={})
+        node = {'Node'}('Edge Angle', sockets={})
         return node.unsigned_angle
 
     @classmethod
@@ -439,7 +439,7 @@ class Mesh(Socket):
         -------
         - signed_angle
         """
-        node = Node('Edge Angle', sockets={})
+        node = {'Node'}('Edge Angle', sockets={})
         return node.signed_angle
 
     @classmethod
@@ -451,7 +451,7 @@ class Mesh(Socket):
         -------
         - Integer
         """
-        node = Node('Edge Neighbors', sockets={})
+        node = {'Node'}('Edge Neighbors', sockets={})
         return node._out
 
     @classmethod
@@ -462,7 +462,7 @@ class Mesh(Socket):
         -------
         - node [vertex_index_1 (Integer), vertex_index_2 (Integer), position_1 (Vector), position_2 (Vector)]
         """
-        node = Node('Edge Vertices', sockets={})
+        node = {'Node'}('Edge Vertices', sockets={})
         return node
 
     @classmethod
@@ -474,7 +474,7 @@ class Mesh(Socket):
         -------
         - Float
         """
-        node = Node('Face Area', sockets={})
+        node = {'Node'}('Face Area', sockets={})
         return node._out
 
     @classmethod
@@ -489,7 +489,7 @@ class Mesh(Socket):
         -------
         - Boolean
         """
-        node = Node('Is Face Planar', sockets={'Threshold': threshold})
+        node = {'Node'}('Is Face Planar', sockets={'Threshold': threshold})
         return node._out
 
     @classmethod
@@ -500,7 +500,7 @@ class Mesh(Socket):
         -------
         - node [vertex_count (Integer), face_count (Integer)]
         """
-        node = Node('Face Neighbors', sockets={})
+        node = {'Node'}('Face Neighbors', sockets={})
         return node
 
     @classmethod
@@ -511,7 +511,7 @@ class Mesh(Socket):
         -------
         - node [island_index (Integer), island_count (Integer)]
         """
-        node = Node('Mesh Island', sockets={})
+        node = {'Node'}('Mesh Island', sockets={})
         return node
 
     @classmethod
@@ -523,7 +523,7 @@ class Mesh(Socket):
         -------
         - island_index
         """
-        node = Node('Mesh Island', sockets={})
+        node = {'Node'}('Mesh Island', sockets={})
         return node.island_index
 
     @classmethod
@@ -535,7 +535,7 @@ class Mesh(Socket):
         -------
         - island_count
         """
-        node = Node('Mesh Island', sockets={})
+        node = {'Node'}('Mesh Island', sockets={})
         return node.island_count
 
     @classmethod
@@ -546,7 +546,7 @@ class Mesh(Socket):
         -------
         - node [vertex_count (Integer), face_count (Integer)]
         """
-        node = Node('Vertex Neighbors', sockets={})
+        node = {'Node'}('Vertex Neighbors', sockets={})
         return node
 
     @classmethod
@@ -558,7 +558,7 @@ class Mesh(Socket):
         -------
         - Vector
         """
-        node = Node('Normal', sockets={})
+        node = {'Node'}('Normal', sockets={})
         return node._out
 
     @classmethod
@@ -574,7 +574,7 @@ class Mesh(Socket):
         -------
         - Integer [total_cost_ (Float)]
         """
-        node = Node('Shortest Edge Paths', sockets={'End Vertex': end_vertex, 'Edge Cost': edge_cost})
+        node = {'Node'}('Shortest Edge Paths', sockets={'End Vertex': end_vertex, 'Edge Cost': edge_cost})
         return node._out
 
     @classmethod
@@ -589,7 +589,7 @@ class Mesh(Socket):
         -------
         - Boolean
         """
-        node = Node('Material Selection', sockets={'Material': material})
+        node = {'Node'}('Material Selection', sockets={'Material': material})
         return node._out
 
     def boolean(self, *mesh_2, self_intersection=None, hole_tolerant=None, operation='DIFFERENCE', solver='FLOAT'):
@@ -615,7 +615,7 @@ class Mesh(Socket):
         """
         utils.check_enum_arg('operation', operation, 'boolean', ('INTERSECT', 'UNION', 'DIFFERENCE'))
         utils.check_enum_arg('solver', solver, 'boolean', ('EXACT', 'FLOAT'))
-        node = Node('Mesh Boolean', sockets={'Mesh 1': self, 'Mesh 2': list(mesh_2), 'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, operation=operation, solver=solver)
+        node = {'Node'}('Mesh Boolean', sockets={'Mesh 1': self, 'Mesh 2': list(mesh_2), 'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, operation=operation, solver=solver)
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -662,7 +662,7 @@ class Mesh(Socket):
         - Mesh
         """
         utils.check_enum_arg('solver', solver, 'intersect', ('EXACT', 'FLOAT'))
-        node = Node('Mesh Boolean', sockets={'Mesh 2': [self] + list(mesh), 'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, operation='INTERSECT', solver=solver)
+        node = {'Node'}('Mesh Boolean', sockets={'Mesh 2': [self] + list(mesh), 'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, operation='INTERSECT', solver=solver)
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -687,7 +687,7 @@ class Mesh(Socket):
         - Mesh
         """
         utils.check_enum_arg('solver', solver, 'union', ('EXACT', 'FLOAT'))
-        node = Node('Mesh Boolean', sockets={'Mesh 2': [self] + list(mesh), 'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, operation='UNION', solver=solver)
+        node = {'Node'}('Mesh Boolean', sockets={'Mesh 2': [self] + list(mesh), 'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, operation='UNION', solver=solver)
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -713,7 +713,7 @@ class Mesh(Socket):
         - Mesh
         """
         utils.check_enum_arg('solver', solver, 'difference', ('EXACT', 'FLOAT'))
-        node = Node('Mesh Boolean', sockets={'Mesh 1': self, 'Mesh 2': list(mesh_2), 'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, operation='DIFFERENCE', solver=solver)
+        node = {'Node'}('Mesh Boolean', sockets={'Mesh 1': self, 'Mesh 2': list(mesh_2), 'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, operation='DIFFERENCE', solver=solver)
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -878,7 +878,7 @@ class Mesh(Socket):
         -------
         - Boolean
         """
-        node = Node('Face Group Boundaries', sockets={'Face Set': face_group_id})
+        node = {'Node'}('Face Group Boundaries', sockets={'Face Set': face_group_id})
         return node._out
 
     @classmethod
@@ -994,7 +994,7 @@ class Mesh(Socket):
         -------
         - Curve
         """
-        node = Node('Mesh to Curve', sockets={'Mesh': self, 'Selection': self._sel})
+        node = {'Node'}('Mesh to Curve', sockets={'Mesh': self, 'Selection': self._sel})
         return node._out
 
     def to_density_grid(self, density=None, voxel_size=None, gradient_width=None):
@@ -1014,7 +1014,7 @@ class Mesh(Socket):
         -------
         - Float
         """
-        node = Node('Mesh to Density Grid', sockets={'Mesh': self, 'Density': density, 'Voxel Size': voxel_size, 'Gradient Width': gradient_width})
+        node = {'Node'}('Mesh to Density Grid', sockets={'Mesh': self, 'Density': density, 'Voxel Size': voxel_size, 'Gradient Width': gradient_width})
         return node._out
 
     def to_points(self, position=None, radius=None, mode='VERTICES'):
@@ -1036,7 +1036,7 @@ class Mesh(Socket):
         - Cloud
         """
         utils.check_enum_arg('mode', mode, 'to_points', ('VERTICES', 'EDGES', 'FACES', 'CORNERS'))
-        node = Node('Mesh to Points', sockets={'Mesh': self, 'Selection': self._sel, 'Position': position, 'Radius': radius}, mode=mode)
+        node = {'Node'}('Mesh to Points', sockets={'Mesh': self, 'Selection': self._sel, 'Position': position, 'Radius': radius}, mode=mode)
         return node._out
 
     def vertices_to_points(self, position=None, radius=None):
@@ -1057,7 +1057,7 @@ class Mesh(Socket):
         -------
         - Cloud
         """
-        node = Node('Mesh to Points', sockets={'Mesh': self, 'Selection': self._sel, 'Position': position, 'Radius': radius}, mode='VERTICES')
+        node = {'Node'}('Mesh to Points', sockets={'Mesh': self, 'Selection': self._sel, 'Position': position, 'Radius': radius}, mode='VERTICES')
         return node._out
 
     def edges_to_points(self, position=None, radius=None):
@@ -1078,7 +1078,7 @@ class Mesh(Socket):
         -------
         - Cloud
         """
-        node = Node('Mesh to Points', sockets={'Mesh': self, 'Selection': self._sel, 'Position': position, 'Radius': radius}, mode='EDGES')
+        node = {'Node'}('Mesh to Points', sockets={'Mesh': self, 'Selection': self._sel, 'Position': position, 'Radius': radius}, mode='EDGES')
         return node._out
 
     def faces_to_points(self, position=None, radius=None):
@@ -1099,7 +1099,7 @@ class Mesh(Socket):
         -------
         - Cloud
         """
-        node = Node('Mesh to Points', sockets={'Mesh': self, 'Selection': self._sel, 'Position': position, 'Radius': radius}, mode='FACES')
+        node = {'Node'}('Mesh to Points', sockets={'Mesh': self, 'Selection': self._sel, 'Position': position, 'Radius': radius}, mode='FACES')
         return node._out
 
     def corners_to_points(self, position=None, radius=None):
@@ -1120,7 +1120,7 @@ class Mesh(Socket):
         -------
         - Cloud
         """
-        node = Node('Mesh to Points', sockets={'Mesh': self, 'Selection': self._sel, 'Position': position, 'Radius': radius}, mode='CORNERS')
+        node = {'Node'}('Mesh to Points', sockets={'Mesh': self, 'Selection': self._sel, 'Position': position, 'Radius': radius}, mode='CORNERS')
         return node._out
 
     def to_sdf_grid(self, voxel_size=None, band_width=None):
@@ -1139,7 +1139,7 @@ class Mesh(Socket):
         -------
         - Float
         """
-        node = Node('Mesh to SDF Grid', sockets={'Mesh': self, 'Voxel Size': voxel_size, 'Band Width': band_width})
+        node = {'Node'}('Mesh to SDF Grid', sockets={'Mesh': self, 'Voxel Size': voxel_size, 'Band Width': band_width})
         return node._out
 
     def to_volume(self, density=None, voxel_amount=None, interior_band_width=None, resolution_mode='VOXEL_AMOUNT'):
@@ -1161,7 +1161,7 @@ class Mesh(Socket):
         - Volume
         """
         utils.check_enum_arg('resolution_mode', resolution_mode, 'to_volume', ('VOXEL_AMOUNT', 'VOXEL_SIZE'))
-        node = Node('Mesh to Volume', sockets={'Mesh': self, 'Density': density, 'Voxel Amount': voxel_amount, 'Interior Band Width': interior_band_width}, resolution_mode=resolution_mode)
+        node = {'Node'}('Mesh to Volume', sockets={'Mesh': self, 'Density': density, 'Voxel Amount': voxel_amount, 'Interior Band Width': interior_band_width}, resolution_mode=resolution_mode)
         return node._out
 
     @classmethod
@@ -1194,7 +1194,7 @@ class Mesh(Socket):
         -------
         - Integer
         """
-        node = Node('Offset Corner in Face', sockets={'Corner Index': corner_index, 'Offset': offset})
+        node = {'Node'}('Offset Corner in Face', sockets={'Corner Index': corner_index, 'Offset': offset})
         return node._out
 
     def sample_nearest_surface(self, value=None, group_id=None, sample_position=None, sample_group_id=None):
@@ -1217,7 +1217,7 @@ class Mesh(Socket):
         - Float [is_valid_ (Boolean)]
         """
         data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Mesh.sample_nearest_surface', 'value')
-        node = Node('Sample Nearest Surface', sockets={'Mesh': self, 'Value': value, 'Group ID': group_id, 'Sample Position': sample_position, 'Sample Group ID': sample_group_id}, data_type=data_type)
+        node = {'Node'}('Sample Nearest Surface', sockets={'Mesh': self, 'Value': value, 'Group ID': group_id, 'Sample Position': sample_position, 'Sample Group ID': sample_group_id}, data_type=data_type)
         return node._out
 
     def sample_uv_surface(self, value=None, uv_map=None, sample_uv=None):
@@ -1239,7 +1239,7 @@ class Mesh(Socket):
         - Float [is_valid_ (Boolean)]
         """
         data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Mesh.sample_uv_surface', 'value')
-        node = Node('Sample UV Surface', sockets={'Mesh': self, 'Value': value, 'Source UV Map': uv_map, 'Sample UV': sample_uv}, data_type=data_type)
+        node = {'Node'}('Sample UV Surface', sockets={'Mesh': self, 'Value': value, 'Source UV Map': uv_map, 'Sample UV': sample_uv}, data_type=data_type)
         return node._out
 
     def split_edges(self):
@@ -1256,7 +1256,7 @@ class Mesh(Socket):
         -------
         - Mesh
         """
-        node = Node('Split Edges', sockets={'Mesh': self, 'Selection': self._sel})
+        node = {'Node'}('Split Edges', sockets={'Mesh': self, 'Selection': self._sel})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -1277,7 +1277,7 @@ class Mesh(Socket):
         -------
         - Mesh
         """
-        node = Node('Subdivide Mesh', sockets={'Mesh': self, 'Level': level})
+        node = {'Node'}('Subdivide Mesh', sockets={'Mesh': self, 'Level': level})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -1304,7 +1304,7 @@ class Mesh(Socket):
         """
         utils.check_enum_arg('boundary_smooth', boundary_smooth, 'subdivision_surface', ('PRESERVE_CORNERS', 'ALL'))
         utils.check_enum_arg('uv_smooth', uv_smooth, 'subdivision_surface', ('NONE', 'PRESERVE_CORNERS', 'PRESERVE_CORNERS_AND_JUNCTIONS', 'PRESERVE_CORNERS_JUNCTIONS_AND_CONCAVE', 'PRESERVE_BOUNDARIES', 'SMOOTH_ALL'))
-        node = Node('Subdivision Surface', sockets={'Mesh': self, 'Level': level, 'Edge Crease': edge_crease, 'Vertex Crease': vertex_crease}, boundary_smooth=boundary_smooth, uv_smooth=uv_smooth)
+        node = {'Node'}('Subdivision Surface', sockets={'Mesh': self, 'Level': level, 'Edge Crease': edge_crease, 'Vertex Crease': vertex_crease}, boundary_smooth=boundary_smooth, uv_smooth=uv_smooth)
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -1326,7 +1326,7 @@ class Mesh(Socket):
         -------
         - Mesh
         """
-        node = Node('Set Face Set', sockets={'Mesh': self, 'Selection': self._sel, 'Face Set': face_set})
+        node = {'Node'}('Set Face Set', sockets={'Mesh': self, 'Selection': self._sel, 'Face Set': face_set})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -1352,7 +1352,7 @@ class Mesh(Socket):
         """
         utils.check_enum_arg('ngon_method', ngon_method, 'triangulate', ('BEAUTY', 'CLIP'))
         utils.check_enum_arg('quad_method', quad_method, 'triangulate', ('BEAUTY', 'FIXED', 'FIXED_ALTERNATE', 'SHORTEST_DIAGONAL', 'LONGEST_DIAGONAL'))
-        node = Node('Triangulate', sockets={'Mesh': self, 'Selection': self._sel, 'Minimum Vertices': minimum_vertices}, ngon_method=ngon_method, quad_method=quad_method)
+        node = {'Node'}('Triangulate', sockets={'Mesh': self, 'Selection': self._sel, 'Minimum Vertices': minimum_vertices}, ngon_method=ngon_method, quad_method=quad_method)
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -1368,6 +1368,6 @@ class Mesh(Socket):
         -------
         - Integer
         """
-        node = Node('Vertex of Corner', sockets={'Corner Index': corner_index})
+        node = {'Node'}('Vertex of Corner', sockets={'Corner Index': corner_index})
         return node._out
 

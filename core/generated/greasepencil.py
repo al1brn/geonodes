@@ -1,5 +1,5 @@
 from .. socket_class import Socket
-from .. treeclass import Node
+from .. treeclass import Node, ColorRamp, NodeCurves
 from .. treeclass import utils
 from .. scripterror import NodeError
 
@@ -38,7 +38,7 @@ class GreasePencil(Socket):
         -------
         - Curve
         """
-        node = Node('Grease Pencil to Curves', sockets={'Grease Pencil': self, 'Selection': self._sel, 'Layers as Instances': layers_as_instances})
+        node = {'Node'}('Grease Pencil to Curves', sockets={'Grease Pencil': self, 'Selection': self._sel, 'Layers as Instances': layers_as_instances})
         return node._out
 
     @classmethod
@@ -53,7 +53,7 @@ class GreasePencil(Socket):
         -------
         - Boolean
         """
-        node = Node('Named Layer Selection', sockets={'Name': name})
+        node = {'Node'}('Named Layer Selection', sockets={'Name': name})
         return node._out
 
     def merge_layers_by_name(self):
@@ -71,7 +71,7 @@ class GreasePencil(Socket):
         -------
         - GreasePencil
         """
-        node = Node('Merge Layers', sockets={'Grease Pencil': self, 'Selection': self._sel}, mode='MERGE_BY_NAME')
+        node = {'Node'}('Merge Layers', sockets={'Grease Pencil': self, 'Selection': self._sel}, mode='MERGE_BY_NAME')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -94,7 +94,7 @@ class GreasePencil(Socket):
         -------
         - GreasePencil
         """
-        node = Node('Merge Layers', sockets={'Grease Pencil': self, 'Selection': self._sel, 'Group ID': group_id}, mode='MERGE_BY_ID')
+        node = {'Node'}('Merge Layers', sockets={'Grease Pencil': self, 'Selection': self._sel, 'Group ID': group_id}, mode='MERGE_BY_ID')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -117,7 +117,7 @@ class GreasePencil(Socket):
         - GreasePencil
         """
         utils.check_enum_arg('mode', mode, 'merge_layers', ('MERGE_BY_NAME', 'MERGE_BY_ID'))
-        node = Node('Merge Layers', sockets={'Grease Pencil': self, 'Selection': self._sel}, mode=mode)
+        node = {'Node'}('Merge Layers', sockets={'Grease Pencil': self, 'Selection': self._sel}, mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
 

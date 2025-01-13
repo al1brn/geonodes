@@ -1,5 +1,5 @@
 from .. socket_class import Socket
-from .. treeclass import Node
+from .. treeclass import Node, ColorRamp, NodeCurves
 from .. treeclass import utils
 from .. scripterror import NodeError
 
@@ -120,7 +120,7 @@ class Rotation(Socket):
         """
         utils.check_enum_arg('axis', axis, 'align_toVector', ('X', 'Y', 'Z'))
         utils.check_enum_arg('pivot_axis', pivot_axis, 'align_toVector', ('AUTO', 'X', 'Y', 'Z'))
-        node = Node('Align Rotation to Vector', sockets={'Rotation': self, 'Vector': vector, 'Factor': factor}, axis=axis, pivot_axis=pivot_axis)
+        node = {'Node'}('Align Rotation to Vector', sockets={'Rotation': self, 'Vector': vector, 'Factor': factor}, axis=axis, pivot_axis=pivot_axis)
         return node._out
 
     def align_x_to_vector(self, vector=None, factor=None, pivot_axis='AUTO'):
@@ -142,7 +142,7 @@ class Rotation(Socket):
         - Rotation
         """
         utils.check_enum_arg('pivot_axis', pivot_axis, 'align_x_to_vector', ('AUTO', 'X', 'Y', 'Z'))
-        node = Node('Align Rotation to Vector', sockets={'Rotation': self, 'Vector': vector, 'Factor': factor}, axis='X', pivot_axis=pivot_axis)
+        node = {'Node'}('Align Rotation to Vector', sockets={'Rotation': self, 'Vector': vector, 'Factor': factor}, axis='X', pivot_axis=pivot_axis)
         return node._out
 
     def align_y_to_vector(self, vector=None, factor=None, pivot_axis='AUTO'):
@@ -164,7 +164,7 @@ class Rotation(Socket):
         - Rotation
         """
         utils.check_enum_arg('pivot_axis', pivot_axis, 'align_y_to_vector', ('AUTO', 'X', 'Y', 'Z'))
-        node = Node('Align Rotation to Vector', sockets={'Rotation': self, 'Vector': vector, 'Factor': factor}, axis='Y', pivot_axis=pivot_axis)
+        node = {'Node'}('Align Rotation to Vector', sockets={'Rotation': self, 'Vector': vector, 'Factor': factor}, axis='Y', pivot_axis=pivot_axis)
         return node._out
 
     def align_z_to_vector(self, vector=None, factor=None, pivot_axis='AUTO'):
@@ -186,7 +186,7 @@ class Rotation(Socket):
         - Rotation
         """
         utils.check_enum_arg('pivot_axis', pivot_axis, 'align_z_to_vector', ('AUTO', 'X', 'Y', 'Z'))
-        node = Node('Align Rotation to Vector', sockets={'Rotation': self, 'Vector': vector, 'Factor': factor}, axis='Z', pivot_axis=pivot_axis)
+        node = {'Node'}('Align Rotation to Vector', sockets={'Rotation': self, 'Vector': vector, 'Factor': factor}, axis='Z', pivot_axis=pivot_axis)
         return node._out
 
     @classmethod
@@ -382,7 +382,7 @@ class Rotation(Socket):
         -------
         - Integer
         """
-        node = Node('Hash Value', sockets={'Value': self, 'Seed': seed}, data_type='ROTATION')
+        node = {'Node'}('Hash Value', sockets={'Value': self, 'Seed': seed}, data_type='ROTATION')
         return node._out
 
     def invert(self):
@@ -396,7 +396,7 @@ class Rotation(Socket):
         -------
         - Rotation
         """
-        node = Node('Invert Rotation', sockets={'Rotation': self})
+        node = {'Node'}('Invert Rotation', sockets={'Rotation': self})
         return node._out
 
     @classmethod
@@ -434,7 +434,7 @@ class Rotation(Socket):
         - Rotation
         """
         utils.check_enum_arg('rotation_space', rotation_space, 'rotate', ('GLOBAL', 'LOCAL'))
-        node = Node('Rotate Rotation', sockets={'Rotation': self, 'Rotate By': rotate_by}, rotation_space=rotation_space)
+        node = {'Node'}('Rotate Rotation', sockets={'Rotation': self, 'Rotate By': rotate_by}, rotation_space=rotation_space)
         return node._out
 
     def rotate_global(self, rotate_by=None):
@@ -453,7 +453,7 @@ class Rotation(Socket):
         -------
         - Rotation
         """
-        node = Node('Rotate Rotation', sockets={'Rotation': self, 'Rotate By': rotate_by}, rotation_space='GLOBAL')
+        node = {'Node'}('Rotate Rotation', sockets={'Rotation': self, 'Rotate By': rotate_by}, rotation_space='GLOBAL')
         return node._out
 
     def rotate_local(self, rotate_by=None):
@@ -472,7 +472,7 @@ class Rotation(Socket):
         -------
         - Rotation
         """
-        node = Node('Rotate Rotation', sockets={'Rotation': self, 'Rotate By': rotate_by}, rotation_space='LOCAL')
+        node = {'Node'}('Rotate Rotation', sockets={'Rotation': self, 'Rotate By': rotate_by}, rotation_space='LOCAL')
         return node._out
 
     def rotate_vector(self, vector=None):
@@ -490,7 +490,7 @@ class Rotation(Socket):
         -------
         - Vector
         """
-        node = Node('Rotate Vector', sockets={'Vector': vector, 'Rotation': self})
+        node = {'Node'}('Rotate Vector', sockets={'Vector': vector, 'Rotation': self})
         return node._out
 
     def to_axis_angle(self):
@@ -504,7 +504,7 @@ class Rotation(Socket):
         -------
         - Vector [angle_ (Float)]
         """
-        node = Node('Rotation to Axis Angle', sockets={'Rotation': self})
+        node = {'Node'}('Rotation to Axis Angle', sockets={'Rotation': self})
         return node._out
 
     @property
@@ -519,7 +519,7 @@ class Rotation(Socket):
         -------
         - tuple (Vector, Float)
         """
-        node = Node('Rotation to Axis Angle', sockets={'Rotation': self})
+        node = {'Node'}('Rotation to Axis Angle', sockets={'Rotation': self})
         return (node.axis, node.angle)
 
     def to_euler(self):
@@ -533,7 +533,7 @@ class Rotation(Socket):
         -------
         - Vector
         """
-        node = Node('Rotation to Euler', sockets={'Rotation': self})
+        node = {'Node'}('Rotation to Euler', sockets={'Rotation': self})
         return node._out
 
     def to_quaternion(self):
@@ -547,7 +547,7 @@ class Rotation(Socket):
         -------
         - Float [x_ (Float), y_ (Float), z_ (Float)]
         """
-        node = Node('Rotation to Quaternion', sockets={'Rotation': self})
+        node = {'Node'}('Rotation to Quaternion', sockets={'Rotation': self})
         return node._out
 
     @property
@@ -562,7 +562,7 @@ class Rotation(Socket):
         -------
         - tuple (Float, Float, Float, Float)
         """
-        node = Node('Rotation to Quaternion', sockets={'Rotation': self})
+        node = {'Node'}('Rotation to Quaternion', sockets={'Rotation': self})
         return (node.w, node.x, node.y, node.z)
 
     @classmethod
@@ -624,6 +624,6 @@ class Rotation(Socket):
         -------
         - Rotation
         """
-        node = Node('Mix', sockets={'A_Rotation': self, 'B_Rotation': b, 'Factor_Float': factor}, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=False, data_type='ROTATION', factor_mode='UNIFORM')
+        node = {'Node'}('Mix', sockets={'A_Rotation': self, 'B_Rotation': b, 'Factor_Float': factor}, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=False, data_type='ROTATION', factor_mode='UNIFORM')
         return node._out
 

@@ -1,5 +1,5 @@
 from .. socket_class import Socket
-from .. treeclass import Node
+from .. treeclass import Node, ColorRamp, NodeCurves
 from .. treeclass import utils
 from .. scripterror import NodeError
 
@@ -70,7 +70,7 @@ class Matrix(Socket):
         -------
         - Integer
         """
-        node = Node('Hash Value', sockets={'Value': self, 'Seed': seed}, data_type='MATRIX')
+        node = {'Node'}('Hash Value', sockets={'Value': self, 'Seed': seed}, data_type='MATRIX')
         return node._out
 
     def invert(self):
@@ -84,7 +84,7 @@ class Matrix(Socket):
         -------
         - Matrix [invertible_ (Boolean)]
         """
-        node = Node('Invert Matrix', sockets={'Matrix': self})
+        node = {'Node'}('Invert Matrix', sockets={'Matrix': self})
         return node._out
 
     def determinant(self):
@@ -98,7 +98,7 @@ class Matrix(Socket):
         -------
         - Float
         """
-        node = Node('Matrix Determinant', sockets={'Matrix': self})
+        node = {'Node'}('Matrix Determinant', sockets={'Matrix': self})
         return node._out
 
     def multiply(self, matrix=None):
@@ -116,7 +116,7 @@ class Matrix(Socket):
         -------
         - Matrix
         """
-        node = Node('Multiply Matrices', sockets={'Matrix': self, 'Matrix_001': matrix})
+        node = {'Node'}('Multiply Matrices', sockets={'Matrix': self, 'Matrix_001': matrix})
         return node._out
 
     def project_point(self, vector=None):
@@ -134,7 +134,7 @@ class Matrix(Socket):
         -------
         - Vector
         """
-        node = Node('Project Point', sockets={'Vector': vector, 'Transform': self})
+        node = {'Node'}('Project Point', sockets={'Vector': vector, 'Transform': self})
         return node._out
 
     @property
@@ -418,7 +418,7 @@ class Matrix(Socket):
         -------
         - tuple (Vector, Rotation, Vector)
         """
-        node = Node('Separate Transform', sockets={'Transform': self})
+        node = {'Node'}('Separate Transform', sockets={'Transform': self})
         return (node.translation, node.rotation, node.scale)
 
     def separate_transform(self):
@@ -495,7 +495,7 @@ class Matrix(Socket):
         -------
         - Vector
         """
-        node = Node('Transform Direction', sockets={'Direction': direction, 'Transform': self})
+        node = {'Node'}('Transform Direction', sockets={'Direction': direction, 'Transform': self})
         return node._out
 
     def transform_point(self, vector=None):
@@ -513,7 +513,7 @@ class Matrix(Socket):
         -------
         - Vector
         """
-        node = Node('Transform Point', sockets={'Vector': vector, 'Transform': self})
+        node = {'Node'}('Transform Point', sockets={'Vector': vector, 'Transform': self})
         return node._out
 
     def transpose(self):
@@ -527,7 +527,7 @@ class Matrix(Socket):
         -------
         - Matrix
         """
-        node = Node('Transpose Matrix', sockets={'Matrix': self})
+        node = {'Node'}('Transpose Matrix', sockets={'Matrix': self})
         return node._out
 
     def transform_gizmo(self, *value, position=None, rotation=None, use_rotation_x=True, use_rotation_y=True, use_rotation_z=True, use_scale_x=True, use_scale_y=True, use_scale_z=True, use_translation_x=True, use_translation_y=True, use_translation_z=True):
@@ -552,7 +552,7 @@ class Matrix(Socket):
         -------
         - Geometry
         """
-        node = Node('Transform Gizmo', sockets={'Value': [self] + list(value), 'Position': position, 'Rotation': rotation}, use_rotation_x=use_rotation_x, use_rotation_y=use_rotation_y, use_rotation_z=use_rotation_z, use_scale_x=use_scale_x, use_scale_y=use_scale_y, use_scale_z=use_scale_z, use_translation_x=use_translation_x, use_translation_y=use_translation_y, use_translation_z=use_translation_z)
+        node = {'Node'}('Transform Gizmo', sockets={'Value': [self] + list(value), 'Position': position, 'Rotation': rotation}, use_rotation_x=use_rotation_x, use_rotation_y=use_rotation_y, use_rotation_z=use_rotation_z, use_scale_x=use_scale_x, use_scale_y=use_scale_y, use_scale_z=use_scale_z, use_translation_x=use_translation_x, use_translation_y=use_translation_y, use_translation_z=use_translation_z)
         return node._out
 
     @classmethod

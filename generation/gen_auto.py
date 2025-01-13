@@ -160,15 +160,6 @@ def build_manual_cross_ref(cross):
     cross['ShaderNodeGroup'] = cross['GeometryNodeGroup']
 
 
-
-
-
-
-
-
-
-
-
 # =============================================================================================================================
 # Generate
 
@@ -247,7 +238,7 @@ def generate(folder):
         with open(path / f"{module}.py", 'w') as file:
 
             file.write("from .. socket_class import Socket\n")
-            file.write("from .. treeclass import Node\n")
+            file.write("from .. treeclass import Node, ColorRamp, NodeCurves\n")
             file.write("from .. treeclass import utils\n")
             file.write("from .. scripterror import NodeError\n")
             file.write("\n")

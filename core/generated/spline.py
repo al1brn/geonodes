@@ -1,5 +1,5 @@
 from .. socket_class import Socket
-from .. treeclass import Node
+from .. treeclass import Node, ColorRamp, NodeCurves
 from .. treeclass import utils
 from .. scripterror import NodeError
 
@@ -26,7 +26,7 @@ class Spline(Socket):
         - Float [trailing_ (Float), total_ (Float)]
         """
         data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'MATRIX': 'TRANSFORM'}, 'Spline.accumulate_field', 'value')
-        node = Node('Accumulate Field', sockets={'Value': value, 'Group Index': group_id}, data_type=data_type, domain='CURVE')
+        node = {'Node'}('Accumulate Field', sockets={'Value': value, 'Group Index': group_id}, data_type=data_type, domain='CURVE')
         return node._out
 
     def attribute_statistic(self, attribute=None):
@@ -48,7 +48,7 @@ class Spline(Socket):
         - node [mean (Float), median (Float), sum (Float), min (Float), max (Float), range (Float), standard_deviation (Float), variance (Float)]
         """
         data_type = utils.get_argument_data_type(attribute, {'VALUE': 'FLOAT', 'VECTOR': 'FLOAT_VECTOR'}, 'Spline.attribute_statistic', 'attribute')
-        node = Node('Attribute Statistic', sockets={'Geometry': self, 'Selection': self._sel, 'Attribute': attribute}, data_type=data_type, domain='CURVE')
+        node = {'Node'}('Attribute Statistic', sockets={'Geometry': self, 'Selection': self._sel, 'Attribute': attribute}, data_type=data_type, domain='CURVE')
         return node
 
     def delete_geometry_all(self):
@@ -67,7 +67,7 @@ class Spline(Socket):
         -------
         - Geometry
         """
-        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='CURVE', mode='ALL')
+        node = {'Node'}('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='CURVE', mode='ALL')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -87,7 +87,7 @@ class Spline(Socket):
         -------
         - Geometry
         """
-        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='CURVE', mode='EDGE_FACE')
+        node = {'Node'}('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='CURVE', mode='EDGE_FACE')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -107,7 +107,7 @@ class Spline(Socket):
         -------
         - Geometry
         """
-        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='CURVE', mode='ONLY_FACE')
+        node = {'Node'}('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='CURVE', mode='ONLY_FACE')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -131,7 +131,7 @@ class Spline(Socket):
         - Geometry
         """
         utils.check_enum_arg('mode', mode, 'delete_geometry', ('ALL', 'EDGE_FACE', 'ONLY_FACE'))
-        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='CURVE', mode=mode)
+        node = {'Node'}('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='CURVE', mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -151,7 +151,7 @@ class Spline(Socket):
         -------
         - Geometry
         """
-        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='CURVE', mode='ALL')
+        node = {'Node'}('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='CURVE', mode='ALL')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -171,7 +171,7 @@ class Spline(Socket):
         -------
         - Geometry
         """
-        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='CURVE', mode='EDGE_FACE')
+        node = {'Node'}('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='CURVE', mode='EDGE_FACE')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -191,7 +191,7 @@ class Spline(Socket):
         -------
         - Geometry
         """
-        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='CURVE', mode='ONLY_FACE')
+        node = {'Node'}('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='CURVE', mode='ONLY_FACE')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -215,7 +215,7 @@ class Spline(Socket):
         - Geometry
         """
         utils.check_enum_arg('mode', mode, 'delete', ('ALL', 'EDGE_FACE', 'ONLY_FACE'))
-        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='CURVE', mode=mode)
+        node = {'Node'}('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='CURVE', mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -238,7 +238,7 @@ class Spline(Socket):
         -------
         - Geometry [duplicate_index_ (Integer)]
         """
-        node = Node('Duplicate Elements', sockets={'Geometry': self, 'Selection': self._sel, 'Amount': amount}, domain='SPLINE')
+        node = {'Node'}('Duplicate Elements', sockets={'Geometry': self, 'Selection': self._sel, 'Amount': amount}, domain='SPLINE')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -261,7 +261,7 @@ class Spline(Socket):
         - Float
         """
         data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Spline.evaluate_at_index', 'value')
-        node = Node('Evaluate at Index', sockets={'Index': index, 'Value': value}, data_type=data_type, domain='CURVE')
+        node = {'Node'}('Evaluate at Index', sockets={'Index': index, 'Value': value}, data_type=data_type, domain='CURVE')
         return node._out
 
     @classmethod
@@ -282,7 +282,7 @@ class Spline(Socket):
         - Float
         """
         data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Spline.evaluate_on_domain', 'value')
-        node = Node('Evaluate on Domain', sockets={'Value': value}, data_type=data_type, domain='CURVE')
+        node = {'Node'}('Evaluate on Domain', sockets={'Value': value}, data_type=data_type, domain='CURVE')
         return node._out
 
     @classmethod
@@ -299,7 +299,7 @@ class Spline(Socket):
         -------
         - node [point_index (Integer), total (Integer)]
         """
-        node = Node('Points of Curve', sockets={'Curve Index': curve_index, 'Weights': weights, 'Sort Index': sort_index})
+        node = {'Node'}('Points of Curve', sockets={'Curve Index': curve_index, 'Weights': weights, 'Sort Index': sort_index})
         return node
 
     @classmethod
@@ -316,7 +316,7 @@ class Spline(Socket):
         -------
         - point_index
         """
-        node = Node('Points of Curve', sockets={'Curve Index': curve_index, 'Weights': weights, 'Sort Index': sort_index})
+        node = {'Node'}('Points of Curve', sockets={'Curve Index': curve_index, 'Weights': weights, 'Sort Index': sort_index})
         return node.point_index
 
     @classmethod
@@ -333,7 +333,7 @@ class Spline(Socket):
         -------
         - total
         """
-        node = Node('Points of Curve', sockets={'Curve Index': curve_index, 'Weights': weights, 'Sort Index': sort_index})
+        node = {'Node'}('Points of Curve', sockets={'Curve Index': curve_index, 'Weights': weights, 'Sort Index': sort_index})
         return node.total
 
     def sample_index(self, value=None, index=None, clamp=False):
@@ -356,7 +356,7 @@ class Spline(Socket):
         - Float
         """
         data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Spline.sample_index', 'value')
-        node = Node('Sample Index', sockets={'Geometry': self, 'Value': value, 'Index': index}, clamp=clamp, data_type=data_type, domain='CURVE')
+        node = {'Node'}('Sample Index', sockets={'Geometry': self, 'Value': value, 'Index': index}, clamp=clamp, data_type=data_type, domain='CURVE')
         return node._out
 
     def separate(self):
@@ -374,7 +374,7 @@ class Spline(Socket):
         -------
         - Geometry [inverted_ (Geometry)]
         """
-        node = Node('Separate Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='CURVE')
+        node = {'Node'}('Separate Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='CURVE')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -398,7 +398,7 @@ class Spline(Socket):
         -------
         - Geometry
         """
-        node = Node('Sort Elements', sockets={'Geometry': self, 'Selection': self._sel, 'Group ID': group_id, 'Sort Weight': sort_weight}, domain='CURVE')
+        node = {'Node'}('Sort Elements', sockets={'Geometry': self, 'Selection': self._sel, 'Group ID': group_id, 'Sort Weight': sort_weight}, domain='CURVE')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -410,7 +410,7 @@ class Spline(Socket):
         -------
         - node [length (Float), point_count (Integer)]
         """
-        node = Node('Spline Length', sockets={})
+        node = {'Node'}('Spline Length', sockets={})
         return node
 
     @classmethod
@@ -422,7 +422,7 @@ class Spline(Socket):
         -------
         - length
         """
-        node = Node('Spline Length', sockets={})
+        node = {'Node'}('Spline Length', sockets={})
         return node.length
 
     @classmethod
@@ -434,7 +434,7 @@ class Spline(Socket):
         -------
         - point_count
         """
-        node = Node('Spline Length', sockets={})
+        node = {'Node'}('Spline Length', sockets={})
         return node.point_count
 
     @classmethod
@@ -445,7 +445,7 @@ class Spline(Socket):
         -------
         - node [factor (Float), length (Float), index (Integer)]
         """
-        node = Node('Spline Parameter', sockets={})
+        node = {'Node'}('Spline Parameter', sockets={})
         return node
 
     @classmethod
@@ -457,7 +457,7 @@ class Spline(Socket):
         -------
         - factor
         """
-        node = Node('Spline Parameter', sockets={})
+        node = {'Node'}('Spline Parameter', sockets={})
         return node.factor
 
     @classmethod
@@ -469,7 +469,7 @@ class Spline(Socket):
         -------
         - length
         """
-        node = Node('Spline Parameter', sockets={})
+        node = {'Node'}('Spline Parameter', sockets={})
         return node.length
 
     @classmethod
@@ -481,7 +481,7 @@ class Spline(Socket):
         -------
         - index
         """
-        node = Node('Spline Parameter', sockets={})
+        node = {'Node'}('Spline Parameter', sockets={})
         return node.index
 
     def split_to_instances(self, group_id=None):
@@ -501,7 +501,7 @@ class Spline(Socket):
         -------
         - Instances [group_id_ (Integer)]
         """
-        node = Node('Split to Instances', sockets={'Geometry': self, 'Selection': self._sel, 'Group ID': group_id}, domain='CURVE')
+        node = {'Node'}('Split to Instances', sockets={'Geometry': self, 'Selection': self._sel, 'Group ID': group_id}, domain='CURVE')
         return node._out
 
     def store_named_attribute(self, name=None, value=None):
@@ -526,7 +526,7 @@ class Spline(Socket):
         - Geometry
         """
         data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Spline.store_named_attribute', 'value')
-        node = Node('Store Named Attribute', sockets={'Geometry': self, 'Selection': self._sel, 'Name': name, 'Value': value}, data_type=data_type, domain='CURVE')
+        node = {'Node'}('Store Named Attribute', sockets={'Geometry': self, 'Selection': self._sel, 'Name': name, 'Value': value}, data_type=data_type, domain='CURVE')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -552,7 +552,7 @@ class Spline(Socket):
         - Geometry
         """
         data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Spline.store', 'value')
-        node = Node('Store Named Attribute', sockets={'Geometry': self, 'Selection': self._sel, 'Name': name, 'Value': value}, data_type=data_type, domain='CURVE')
+        node = {'Node'}('Store Named Attribute', sockets={'Geometry': self, 'Selection': self._sel, 'Name': name, 'Value': value}, data_type=data_type, domain='CURVE')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -573,7 +573,7 @@ class Spline(Socket):
         - Geometry
         """
         selection_type = utils.get_argument_data_type(selection, {'BOOLEAN': 'BOOLEAN', 'VALUE': 'FLOAT'}, 'Spline.set_selection', 'selection')
-        node = Node('Set Selection', sockets={'Geometry': self, 'Selection': self._sel}, domain='CURVE', selection_type=selection_type)
+        node = {'Node'}('Set Selection', sockets={'Geometry': self, 'Selection': self._sel}, domain='CURVE', selection_type=selection_type)
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -592,7 +592,7 @@ class Spline(Socket):
 
         """
         data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Spline.viewer', 'value')
-        node = Node('Viewer', sockets={'Geometry': self, 'Value': value}, data_type=data_type, domain='CURVE')
+        node = {'Node'}('Viewer', sockets={'Geometry': self, 'Value': value}, data_type=data_type, domain='CURVE')
         return
 
     @property
@@ -620,7 +620,7 @@ class Spline(Socket):
         -------
         - Geometry
         """
-        node = Node('Set Material Index', sockets={'Geometry': self, 'Selection': self._sel, 'Material Index': material_index})
+        node = {'Node'}('Set Material Index', sockets={'Geometry': self, 'Selection': self._sel, 'Material Index': material_index})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -649,7 +649,7 @@ class Spline(Socket):
         -------
         - Curve
         """
-        node = Node('Set Curve Tilt', sockets={'Curve': self, 'Selection': self._sel, 'Tilt': tilt})
+        node = {'Node'}('Set Curve Tilt', sockets={'Curve': self, 'Selection': self._sel, 'Tilt': tilt})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -679,7 +679,7 @@ class Spline(Socket):
         - Curve
         """
         utils.check_enum_arg('mode', mode, 'normal', ('MINIMUM_TWIST', 'Z_UP', 'FREE'))
-        node = Node('Set Curve Normal', sockets={'Curve': self, 'Selection': self._sel}, mode=mode)
+        node = {'Node'}('Set Curve Normal', sockets={'Curve': self, 'Selection': self._sel}, mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -708,7 +708,7 @@ class Spline(Socket):
         -------
         - Geometry
         """
-        node = Node('Set Spline Cyclic', sockets={'Geometry': self, 'Selection': self._sel, 'Cyclic': cyclic})
+        node = {'Node'}('Set Spline Cyclic', sockets={'Geometry': self, 'Selection': self._sel, 'Cyclic': cyclic})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -737,7 +737,7 @@ class Spline(Socket):
         -------
         - Geometry
         """
-        node = Node('Set Spline Resolution', sockets={'Geometry': self, 'Selection': self._sel, 'Resolution': resolution})
+        node = {'Node'}('Set Spline Resolution', sockets={'Geometry': self, 'Selection': self._sel, 'Resolution': resolution})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -767,7 +767,7 @@ class Spline(Socket):
         - Curve
         """
         utils.check_enum_arg('spline_type', spline_type, 'type', ('CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS'))
-        node = Node('Set Spline Type', sockets={'Curve': self, 'Selection': self._sel}, spline_type=spline_type)
+        node = {'Node'}('Set Spline Type', sockets={'Curve': self, 'Selection': self._sel}, spline_type=spline_type)
         self._jump(node._out)
         return self._domain_to_geometry
 

@@ -1,5 +1,5 @@
 from .. socket_class import Socket
-from .. treeclass import Node
+from .. treeclass import Node, ColorRamp, NodeCurves
 from .. treeclass import utils
 from .. scripterror import NodeError
 
@@ -21,7 +21,7 @@ class Vertex(Socket):
         -------
         - node [corner_index (Integer), total (Integer)]
         """
-        node = Node('Corners of Vertex', sockets={'Vertex Index': vertex_index, 'Weights': weights, 'Sort Index': sort_index})
+        node = {'Node'}('Corners of Vertex', sockets={'Vertex Index': vertex_index, 'Weights': weights, 'Sort Index': sort_index})
         return node
 
     @classmethod
@@ -38,7 +38,7 @@ class Vertex(Socket):
         -------
         - corner_index
         """
-        node = Node('Corners of Vertex', sockets={'Vertex Index': vertex_index, 'Weights': weights, 'Sort Index': sort_index})
+        node = {'Node'}('Corners of Vertex', sockets={'Vertex Index': vertex_index, 'Weights': weights, 'Sort Index': sort_index})
         return node.corner_index
 
     @classmethod
@@ -55,7 +55,7 @@ class Vertex(Socket):
         -------
         - total
         """
-        node = Node('Corners of Vertex', sockets={'Vertex Index': vertex_index, 'Weights': weights, 'Sort Index': sort_index})
+        node = {'Node'}('Corners of Vertex', sockets={'Vertex Index': vertex_index, 'Weights': weights, 'Sort Index': sort_index})
         return node.total
 
     @classmethod
@@ -72,7 +72,7 @@ class Vertex(Socket):
         -------
         - node [edge_index (Integer), total (Integer)]
         """
-        node = Node('Edges of Vertex', sockets={'Vertex Index': vertex_index, 'Weights': weights, 'Sort Index': sort_index})
+        node = {'Node'}('Edges of Vertex', sockets={'Vertex Index': vertex_index, 'Weights': weights, 'Sort Index': sort_index})
         return node
 
     @classmethod
@@ -89,7 +89,7 @@ class Vertex(Socket):
         -------
         - edge_index
         """
-        node = Node('Edges of Vertex', sockets={'Vertex Index': vertex_index, 'Weights': weights, 'Sort Index': sort_index})
+        node = {'Node'}('Edges of Vertex', sockets={'Vertex Index': vertex_index, 'Weights': weights, 'Sort Index': sort_index})
         return node.edge_index
 
     @classmethod
@@ -106,7 +106,7 @@ class Vertex(Socket):
         -------
         - total
         """
-        node = Node('Edges of Vertex', sockets={'Vertex Index': vertex_index, 'Weights': weights, 'Sort Index': sort_index})
+        node = {'Node'}('Edges of Vertex', sockets={'Vertex Index': vertex_index, 'Weights': weights, 'Sort Index': sort_index})
         return node.total
 
     def extrude(self, offset=None, offset_scale=None):
@@ -129,7 +129,7 @@ class Vertex(Socket):
         -------
         - Mesh [top_ (Boolean), side_ (Boolean)]
         """
-        node = Node('Extrude Mesh', sockets={'Mesh': self, 'Selection': self._sel, 'Offset': offset, 'Offset Scale': offset_scale}, mode='VERTICES')
+        node = {'Node'}('Extrude Mesh', sockets={'Mesh': self, 'Selection': self._sel, 'Offset': offset, 'Offset Scale': offset_scale}, mode='VERTICES')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -141,7 +141,7 @@ class Vertex(Socket):
         -------
         - node [vertex_count (Integer), face_count (Integer)]
         """
-        node = Node('Vertex Neighbors', sockets={})
+        node = {'Node'}('Vertex Neighbors', sockets={})
         return node
 
     @classmethod
@@ -153,7 +153,7 @@ class Vertex(Socket):
         -------
         - vertex_count
         """
-        node = Node('Vertex Neighbors', sockets={})
+        node = {'Node'}('Vertex Neighbors', sockets={})
         return node.vertex_count
 
     @classmethod
@@ -165,7 +165,7 @@ class Vertex(Socket):
         -------
         - face_count
         """
-        node = Node('Vertex Neighbors', sockets={})
+        node = {'Node'}('Vertex Neighbors', sockets={})
         return node.face_count
 
     def to_points(self, position=None, radius=None):
@@ -186,6 +186,6 @@ class Vertex(Socket):
         -------
         - Cloud
         """
-        node = Node('Mesh to Points', sockets={'Mesh': self, 'Selection': self._sel, 'Position': position, 'Radius': radius}, mode='VERTICES')
+        node = {'Node'}('Mesh to Points', sockets={'Mesh': self, 'Selection': self._sel, 'Position': position, 'Radius': radius}, mode='VERTICES')
         return node._out
 

@@ -1,5 +1,5 @@
 from .. socket_class import Socket
-from .. treeclass import Node
+from .. treeclass import Node, ColorRamp, NodeCurves
 from .. treeclass import utils
 from .. scripterror import NodeError
 
@@ -19,7 +19,7 @@ class SplinePoint(Socket):
         -------
         - node [curve_index (Integer), index_in_curve (Integer)]
         """
-        node = Node('Curve of Point', sockets={'Point Index': point_index})
+        node = {'Node'}('Curve of Point', sockets={'Point Index': point_index})
         return node
 
     @classmethod
@@ -34,7 +34,7 @@ class SplinePoint(Socket):
         -------
         - curve_index
         """
-        node = Node('Curve of Point', sockets={'Point Index': point_index})
+        node = {'Node'}('Curve of Point', sockets={'Point Index': point_index})
         return node.curve_index
 
     @classmethod
@@ -49,7 +49,7 @@ class SplinePoint(Socket):
         -------
         - index_in_curve
         """
-        node = Node('Curve of Point', sockets={'Point Index': point_index})
+        node = {'Node'}('Curve of Point', sockets={'Point Index': point_index})
         return node.index_in_curve
 
     def to_points_evaluated(self):
@@ -64,7 +64,7 @@ class SplinePoint(Socket):
         -------
         - Cloud [tangent_ (Vector), normal_ (Vector), rotation_ (Rotation)]
         """
-        node = Node('Curve to Points', sockets={'Curve': self}, mode='EVALUATED')
+        node = {'Node'}('Curve to Points', sockets={'Curve': self}, mode='EVALUATED')
         return node._out
 
     def to_points_count(self, count=None):
@@ -83,7 +83,7 @@ class SplinePoint(Socket):
         -------
         - Cloud [tangent_ (Vector), normal_ (Vector), rotation_ (Rotation)]
         """
-        node = Node('Curve to Points', sockets={'Curve': self, 'Count': count}, mode='COUNT')
+        node = {'Node'}('Curve to Points', sockets={'Curve': self, 'Count': count}, mode='COUNT')
         return node._out
 
     def to_points_length(self, length=None):
@@ -102,7 +102,7 @@ class SplinePoint(Socket):
         -------
         - Cloud [tangent_ (Vector), normal_ (Vector), rotation_ (Rotation)]
         """
-        node = Node('Curve to Points', sockets={'Curve': self, 'Length': length}, mode='LENGTH')
+        node = {'Node'}('Curve to Points', sockets={'Curve': self, 'Length': length}, mode='LENGTH')
         return node._out
 
     def to_points(self, count=None, mode='COUNT'):
@@ -122,7 +122,7 @@ class SplinePoint(Socket):
         - Cloud [tangent_ (Vector), normal_ (Vector), rotation_ (Rotation)]
         """
         utils.check_enum_arg('mode', mode, 'to_points', ('EVALUATED', 'COUNT', 'LENGTH'))
-        node = Node('Curve to Points', sockets={'Curve': self, 'Count': count}, mode=mode)
+        node = {'Node'}('Curve to Points', sockets={'Curve': self, 'Count': count}, mode=mode)
         return node._out
 
     @classmethod
@@ -138,7 +138,7 @@ class SplinePoint(Socket):
         -------
         - Boolean [point_index_ (Integer)]
         """
-        node = Node('Offset Point in Curve', sockets={'Point Index': point_index, 'Offset': offset})
+        node = {'Node'}('Offset Point in Curve', sockets={'Point Index': point_index, 'Offset': offset})
         return node._out
 
     @property
@@ -166,7 +166,7 @@ class SplinePoint(Socket):
         -------
         - Curve
         """
-        node = Node('Set Curve Radius', sockets={'Curve': self, 'Selection': self._sel, 'Radius': radius})
+        node = {'Node'}('Set Curve Radius', sockets={'Curve': self, 'Selection': self._sel, 'Radius': radius})
         self._jump(node._out)
         return self._domain_to_geometry
 

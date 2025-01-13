@@ -1,5 +1,5 @@
 from .. socket_class import Socket
-from .. treeclass import Node
+from .. treeclass import Node, ColorRamp, NodeCurves
 from .. treeclass import utils
 from .. scripterror import NodeError
 
@@ -18,7 +18,7 @@ class Geometry(Socket):
         -------
         - Mesh [min_ (Vector), max_ (Vector)]
         """
-        node = Node('Bounding Box', sockets={'Geometry': self})
+        node = {'Node'}('Bounding Box', sockets={'Geometry': self})
         return node._out
 
     def convex_hull(self):
@@ -32,7 +32,7 @@ class Geometry(Socket):
         -------
         - Mesh
         """
-        node = Node('Convex Hull', sockets={'Geometry': self})
+        node = {'Node'}('Convex Hull', sockets={'Geometry': self})
         return node._out
 
     def to_instance(self, *geometry):
@@ -46,7 +46,7 @@ class Geometry(Socket):
         -------
         - Instances
         """
-        node = Node('Geometry to Instance', sockets={'Geometry': [self] + list(geometry)})
+        node = {'Node'}('Geometry to Instance', sockets={'Geometry': [self] + list(geometry)})
         return node._out
 
     @classmethod
@@ -62,7 +62,7 @@ class Geometry(Socket):
         -------
         - Integer [has_neighbor_ (Boolean)]
         """
-        node = Node('Index of Nearest', sockets={'Position': position, 'Group ID': group_id})
+        node = {'Node'}('Index of Nearest', sockets={'Position': position, 'Group ID': group_id})
         return node._out
 
     @classmethod
@@ -74,7 +74,7 @@ class Geometry(Socket):
         -------
         - Integer
         """
-        node = Node('Index', sockets={})
+        node = {'Node'}('Index', sockets={})
         return node._out
 
     def instance_on_points(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
@@ -97,7 +97,7 @@ class Geometry(Socket):
         -------
         - Instances
         """
-        node = Node('Instance on Points', sockets={'Points': self, 'Selection': self._sel, 'Instance': instance, 'Pick Instance': pick_instance, 'Instance Index': instance_index, 'Rotation': rotation, 'Scale': scale})
+        node = {'Node'}('Instance on Points', sockets={'Points': self, 'Selection': self._sel, 'Instance': instance, 'Pick Instance': pick_instance, 'Instance Index': instance_index, 'Rotation': rotation, 'Scale': scale})
         return node._out
 
     def join(self, *geometry):
@@ -113,7 +113,7 @@ class Geometry(Socket):
         -------
         - Geometry
         """
-        node = Node('Join Geometry', sockets={'Geometry': [self] + list(geometry)})
+        node = {'Node'}('Join Geometry', sockets={'Geometry': [self] + list(geometry)})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -152,7 +152,7 @@ class Geometry(Socket):
         - Geometry
         """
         utils.check_enum_arg('mode', mode, 'merge_by_distance', ('ALL', 'CONNECTED'))
-        node = Node('Merge by Distance', sockets={'Geometry': self, 'Selection': self._sel, 'Distance': distance}, mode=mode)
+        node = {'Node'}('Merge by Distance', sockets={'Geometry': self, 'Selection': self._sel, 'Distance': distance}, mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -175,7 +175,7 @@ class Geometry(Socket):
         -------
         - Geometry
         """
-        node = Node('Merge by Distance', sockets={'Geometry': self, 'Selection': self._sel, 'Distance': distance}, mode='ALL')
+        node = {'Node'}('Merge by Distance', sockets={'Geometry': self, 'Selection': self._sel, 'Distance': distance}, mode='ALL')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -198,7 +198,7 @@ class Geometry(Socket):
         -------
         - Geometry
         """
-        node = Node('Merge by Distance', sockets={'Geometry': self, 'Selection': self._sel, 'Distance': distance}, mode='CONNECTED')
+        node = {'Node'}('Merge by Distance', sockets={'Geometry': self, 'Selection': self._sel, 'Distance': distance}, mode='CONNECTED')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -222,7 +222,7 @@ class Geometry(Socket):
         - Geometry
         """
         utils.check_enum_arg('mode', mode, 'merge', ('ALL', 'CONNECTED'))
-        node = Node('Merge by Distance', sockets={'Geometry': self, 'Selection': self._sel, 'Distance': distance}, mode=mode)
+        node = {'Node'}('Merge by Distance', sockets={'Geometry': self, 'Selection': self._sel, 'Distance': distance}, mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -245,7 +245,7 @@ class Geometry(Socket):
         - Vector [distance_ (Float), is_valid_ (Boolean)]
         """
         utils.check_enum_arg('target_element', target_element, 'proximity', ('POINTS', 'EDGES', 'FACES'))
-        node = Node('Geometry Proximity', sockets={'Target': self, 'Group ID': group_id, 'Source Position': sample_position, 'Sample Group ID': sample_group_id}, target_element=target_element)
+        node = {'Node'}('Geometry Proximity', sockets={'Target': self, 'Group ID': group_id, 'Source Position': sample_position, 'Sample Group ID': sample_group_id}, target_element=target_element)
         return node._out
 
     def proximity_points(self, group_id=None, sample_position=None, sample_group_id=None):
@@ -266,7 +266,7 @@ class Geometry(Socket):
         -------
         - Vector [distance_ (Float), is_valid_ (Boolean)]
         """
-        node = Node('Geometry Proximity', sockets={'Target': self, 'Group ID': group_id, 'Source Position': sample_position, 'Sample Group ID': sample_group_id}, target_element='POINTS')
+        node = {'Node'}('Geometry Proximity', sockets={'Target': self, 'Group ID': group_id, 'Source Position': sample_position, 'Sample Group ID': sample_group_id}, target_element='POINTS')
         return node._out
 
     def proximity_edges(self, group_id=None, sample_position=None, sample_group_id=None):
@@ -287,7 +287,7 @@ class Geometry(Socket):
         -------
         - Vector [distance_ (Float), is_valid_ (Boolean)]
         """
-        node = Node('Geometry Proximity', sockets={'Target': self, 'Group ID': group_id, 'Source Position': sample_position, 'Sample Group ID': sample_group_id}, target_element='EDGES')
+        node = {'Node'}('Geometry Proximity', sockets={'Target': self, 'Group ID': group_id, 'Source Position': sample_position, 'Sample Group ID': sample_group_id}, target_element='EDGES')
         return node._out
 
     def proximity_faces(self, group_id=None, sample_position=None, sample_group_id=None):
@@ -308,7 +308,7 @@ class Geometry(Socket):
         -------
         - Vector [distance_ (Float), is_valid_ (Boolean)]
         """
-        node = Node('Geometry Proximity', sockets={'Target': self, 'Group ID': group_id, 'Source Position': sample_position, 'Sample Group ID': sample_group_id}, target_element='FACES')
+        node = {'Node'}('Geometry Proximity', sockets={'Target': self, 'Group ID': group_id, 'Source Position': sample_position, 'Sample Group ID': sample_group_id}, target_element='FACES')
         return node._out
 
     def raycast(self, attribute=None, source_position=None, ray_direction=None, ray_length=None, mapping='INTERPOLATED'):
@@ -333,7 +333,7 @@ class Geometry(Socket):
         """
         utils.check_enum_arg('mapping', mapping, 'raycast', ('INTERPOLATED', 'NEAREST'))
         data_type = utils.get_argument_data_type(attribute, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Geometry.raycast', 'attribute')
-        node = Node('Raycast', sockets={'Target Geometry': self, 'Attribute': attribute, 'Source Position': source_position, 'Ray Direction': ray_direction, 'Ray Length': ray_length}, data_type=data_type, mapping=mapping)
+        node = {'Node'}('Raycast', sockets={'Target Geometry': self, 'Attribute': attribute, 'Source Position': source_position, 'Ray Direction': ray_direction, 'Ray Length': ray_length}, data_type=data_type, mapping=mapping)
         return node
 
     def raycast_interpolated(self, attribute=None, source_position=None, ray_direction=None, ray_length=None):
@@ -357,7 +357,7 @@ class Geometry(Socket):
         - node [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Float)]
         """
         data_type = utils.get_argument_data_type(attribute, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Geometry.raycast_interpolated', 'attribute')
-        node = Node('Raycast', sockets={'Target Geometry': self, 'Attribute': attribute, 'Source Position': source_position, 'Ray Direction': ray_direction, 'Ray Length': ray_length}, data_type=data_type, mapping='INTERPOLATED')
+        node = {'Node'}('Raycast', sockets={'Target Geometry': self, 'Attribute': attribute, 'Source Position': source_position, 'Ray Direction': ray_direction, 'Ray Length': ray_length}, data_type=data_type, mapping='INTERPOLATED')
         return node
 
     def raycast_nearest(self, attribute=None, source_position=None, ray_direction=None, ray_length=None):
@@ -381,7 +381,7 @@ class Geometry(Socket):
         - node [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Float)]
         """
         data_type = utils.get_argument_data_type(attribute, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Geometry.raycast_nearest', 'attribute')
-        node = Node('Raycast', sockets={'Target Geometry': self, 'Attribute': attribute, 'Source Position': source_position, 'Ray Direction': ray_direction, 'Ray Length': ray_length}, data_type=data_type, mapping='NEAREST')
+        node = {'Node'}('Raycast', sockets={'Target Geometry': self, 'Attribute': attribute, 'Source Position': source_position, 'Ray Direction': ray_direction, 'Ray Length': ray_length}, data_type=data_type, mapping='NEAREST')
         return node
 
     def realize(self, realize_all=None, depth=None):
@@ -403,7 +403,7 @@ class Geometry(Socket):
         -------
         - Geometry
         """
-        node = Node('Realize Instances', sockets={'Geometry': self, 'Selection': self._sel, 'Realize All': realize_all, 'Depth': depth})
+        node = {'Node'}('Realize Instances', sockets={'Geometry': self, 'Selection': self._sel, 'Realize All': realize_all, 'Depth': depth})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -426,7 +426,7 @@ class Geometry(Socket):
         - Geometry
         """
         utils.check_enum_arg('pattern_mode', pattern_mode, 'remove_named_attribute', ('EXACT', 'WILDCARD'))
-        node = Node('Remove Named Attribute', sockets={'Geometry': self, 'Name': name}, pattern_mode=pattern_mode)
+        node = {'Node'}('Remove Named Attribute', sockets={'Geometry': self, 'Name': name}, pattern_mode=pattern_mode)
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -448,7 +448,7 @@ class Geometry(Socket):
         -------
         - Geometry
         """
-        node = Node('Remove Named Attribute', sockets={'Geometry': self, 'Name': name}, pattern_mode='WILDCARD')
+        node = {'Node'}('Remove Named Attribute', sockets={'Geometry': self, 'Name': name}, pattern_mode='WILDCARD')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -470,7 +470,7 @@ class Geometry(Socket):
         -------
         - Geometry
         """
-        node = Node('Replace Material', sockets={'Geometry': self, 'Old': old, 'New': new})
+        node = {'Node'}('Replace Material', sockets={'Geometry': self, 'Old': old, 'New': new})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -595,7 +595,7 @@ class Geometry(Socket):
         -------
         - Geometry
         """
-        node = Node('Set Geometry Name', sockets={'Geometry': self, 'Name': name})
+        node = {'Node'}('Set Geometry Name', sockets={'Geometry': self, 'Name': name})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -617,7 +617,7 @@ class Geometry(Socket):
         -------
         - Geometry
         """
-        node = Node('Set ID', sockets={'Geometry': self, 'Selection': self._sel, 'ID': id})
+        node = {'Node'}('Set ID', sockets={'Geometry': self, 'Selection': self._sel, 'ID': id})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -639,7 +639,7 @@ class Geometry(Socket):
         -------
         - Geometry
         """
-        node = Node('Set Material', sockets={'Geometry': self, 'Selection': self._sel, 'Material': material})
+        node = {'Node'}('Set Material', sockets={'Geometry': self, 'Selection': self._sel, 'Material': material})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -661,7 +661,7 @@ class Geometry(Socket):
         -------
         - Geometry
         """
-        node = Node('Set Material Index', sockets={'Geometry': self, 'Selection': self._sel, 'Material Index': material_index})
+        node = {'Node'}('Set Material Index', sockets={'Geometry': self, 'Selection': self._sel, 'Material Index': material_index})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -684,7 +684,7 @@ class Geometry(Socket):
         -------
         - Geometry
         """
-        node = Node('Set Position', sockets={'Geometry': self, 'Selection': self._sel, 'Position': position, 'Offset': offset})
+        node = {'Node'}('Set Position', sockets={'Geometry': self, 'Selection': self._sel, 'Position': position, 'Offset': offset})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -706,7 +706,7 @@ class Geometry(Socket):
         -------
         - Geometry
         """
-        node = Node('Set Spline Cyclic', sockets={'Geometry': self, 'Selection': self._sel, 'Cyclic': cyclic})
+        node = {'Node'}('Set Spline Cyclic', sockets={'Geometry': self, 'Selection': self._sel, 'Cyclic': cyclic})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -728,7 +728,7 @@ class Geometry(Socket):
         -------
         - Geometry
         """
-        node = Node('Set Spline Resolution', sockets={'Geometry': self, 'Selection': self._sel, 'Resolution': resolution})
+        node = {'Node'}('Set Spline Resolution', sockets={'Geometry': self, 'Selection': self._sel, 'Resolution': resolution})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -753,7 +753,7 @@ class Geometry(Socket):
         -------
         - Geometry
         """
-        node = Node('Transform Geometry', sockets={'Geometry': self, 'Translation': translation, 'Rotation': rotation, 'Scale': scale, 'Transform': transform}, mode='COMPONENTS')
+        node = {'Node'}('Transform Geometry', sockets={'Geometry': self, 'Translation': translation, 'Rotation': rotation, 'Scale': scale, 'Transform': transform}, mode='COMPONENTS')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -778,7 +778,7 @@ class Geometry(Socket):
         -------
         - Geometry
         """
-        node = Node('Transform Geometry', sockets={'Geometry': self, 'Translation': translation, 'Rotation': rotation, 'Scale': scale, 'Transform': transform}, mode='MATRIX')
+        node = {'Node'}('Transform Geometry', sockets={'Geometry': self, 'Translation': translation, 'Rotation': rotation, 'Scale': scale, 'Transform': transform}, mode='MATRIX')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -804,7 +804,7 @@ class Geometry(Socket):
         - Geometry
         """
         utils.check_enum_arg('mode', mode, 'transform', ('COMPONENTS', 'MATRIX'))
-        node = Node('Transform Geometry', sockets={'Geometry': self, 'Translation': translation, 'Rotation': rotation, 'Scale': scale, 'Transform': transform}, mode=mode)
+        node = {'Node'}('Transform Geometry', sockets={'Geometry': self, 'Translation': translation, 'Rotation': rotation, 'Scale': scale, 'Transform': transform}, mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -823,7 +823,7 @@ class Geometry(Socket):
 
         """
         data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Geometry.viewer', 'value')
-        node = Node('Viewer', sockets={'Geometry': self, 'Value': value}, data_type=data_type, domain='AUTO')
+        node = {'Node'}('Viewer', sockets={'Geometry': self, 'Value': value}, data_type=data_type, domain='AUTO')
         return
 
     @property
@@ -852,7 +852,7 @@ class Geometry(Socket):
         -------
         - Geometry
         """
-        node = Node('Set Position', sockets={'Geometry': self, 'Selection': self._sel, 'Position': position, 'Offset': None})
+        node = {'Node'}('Set Position', sockets={'Geometry': self, 'Selection': self._sel, 'Position': position, 'Offset': None})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -882,7 +882,7 @@ class Geometry(Socket):
         -------
         - Geometry
         """
-        node = Node('Set Position', sockets={'Geometry': self, 'Selection': self._sel, 'Position': None, 'Offset': offset})
+        node = {'Node'}('Set Position', sockets={'Geometry': self, 'Selection': self._sel, 'Position': None, 'Offset': offset})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -911,7 +911,7 @@ class Geometry(Socket):
         -------
         - Geometry
         """
-        node = Node('Set ID', sockets={'Geometry': self, 'Selection': self._sel, 'ID': id})
+        node = {'Node'}('Set ID', sockets={'Geometry': self, 'Selection': self._sel, 'ID': id})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -940,7 +940,7 @@ class Geometry(Socket):
         -------
         - Geometry
         """
-        node = Node('Set Material', sockets={'Geometry': self, 'Selection': self._sel, 'Material': material})
+        node = {'Node'}('Set Material', sockets={'Geometry': self, 'Selection': self._sel, 'Material': material})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -968,7 +968,7 @@ class Geometry(Socket):
         -------
         - Geometry
         """
-        node = Node('Set Geometry Name', sockets={'Geometry': self, 'Name': name})
+        node = {'Node'}('Set Geometry Name', sockets={'Geometry': self, 'Name': name})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -997,7 +997,7 @@ class Geometry(Socket):
         -------
         - Geometry
         """
-        node = Node('Set Material Index', sockets={'Geometry': self, 'Selection': self._sel, 'Material Index': material_index})
+        node = {'Node'}('Set Material Index', sockets={'Geometry': self, 'Selection': self._sel, 'Material Index': material_index})
         self._jump(node._out)
         return self._domain_to_geometry
 

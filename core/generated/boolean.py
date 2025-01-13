@@ -1,5 +1,5 @@
 from .. socket_class import Socket
-from .. treeclass import Node
+from .. treeclass import Node, ColorRamp, NodeCurves
 from .. treeclass import utils
 from .. scripterror import NodeError
 
@@ -23,7 +23,7 @@ class Boolean(Socket):
         -------
         - Boolean
         """
-        node = Node('Boolean Math', sockets={'Boolean': self, 'Boolean_001': boolean}, operation='AND')
+        node = {'Node'}('Boolean Math', sockets={'Boolean': self, 'Boolean_001': boolean}, operation='AND')
         return node._out
 
     def bor(self, boolean=None):
@@ -42,7 +42,7 @@ class Boolean(Socket):
         -------
         - Boolean
         """
-        node = Node('Boolean Math', sockets={'Boolean': self, 'Boolean_001': boolean}, operation='OR')
+        node = {'Node'}('Boolean Math', sockets={'Boolean': self, 'Boolean_001': boolean}, operation='OR')
         return node._out
 
     def bnot(self):
@@ -57,7 +57,7 @@ class Boolean(Socket):
         -------
         - Boolean
         """
-        node = Node('Boolean Math', sockets={'Boolean': self}, operation='NOT')
+        node = {'Node'}('Boolean Math', sockets={'Boolean': self}, operation='NOT')
         return node._out
 
     def not_and(self, boolean=None):
@@ -76,7 +76,7 @@ class Boolean(Socket):
         -------
         - Boolean
         """
-        node = Node('Boolean Math', sockets={'Boolean': self, 'Boolean_001': boolean}, operation='NAND')
+        node = {'Node'}('Boolean Math', sockets={'Boolean': self, 'Boolean_001': boolean}, operation='NAND')
         return node._out
 
     def nor(self, boolean=None):
@@ -95,7 +95,7 @@ class Boolean(Socket):
         -------
         - Boolean
         """
-        node = Node('Boolean Math', sockets={'Boolean': self, 'Boolean_001': boolean}, operation='NOR')
+        node = {'Node'}('Boolean Math', sockets={'Boolean': self, 'Boolean_001': boolean}, operation='NOR')
         return node._out
 
     def xnor(self, boolean=None):
@@ -114,7 +114,7 @@ class Boolean(Socket):
         -------
         - Boolean
         """
-        node = Node('Boolean Math', sockets={'Boolean': self, 'Boolean_001': boolean}, operation='XNOR')
+        node = {'Node'}('Boolean Math', sockets={'Boolean': self, 'Boolean_001': boolean}, operation='XNOR')
         return node._out
 
     def xor(self, boolean=None):
@@ -133,7 +133,7 @@ class Boolean(Socket):
         -------
         - Boolean
         """
-        node = Node('Boolean Math', sockets={'Boolean': self, 'Boolean_001': boolean}, operation='XOR')
+        node = {'Node'}('Boolean Math', sockets={'Boolean': self, 'Boolean_001': boolean}, operation='XOR')
         return node._out
 
     def imply(self, boolean=None):
@@ -152,7 +152,7 @@ class Boolean(Socket):
         -------
         - Boolean
         """
-        node = Node('Boolean Math', sockets={'Boolean': self, 'Boolean_001': boolean}, operation='IMPLY')
+        node = {'Node'}('Boolean Math', sockets={'Boolean': self, 'Boolean_001': boolean}, operation='IMPLY')
         return node._out
 
     def nimply(self, boolean=None):
@@ -171,7 +171,7 @@ class Boolean(Socket):
         -------
         - Boolean
         """
-        node = Node('Boolean Math', sockets={'Boolean': self, 'Boolean_001': boolean}, operation='NIMPLY')
+        node = {'Node'}('Boolean Math', sockets={'Boolean': self, 'Boolean_001': boolean}, operation='NIMPLY')
         return node._out
 
     @classmethod
@@ -242,7 +242,7 @@ class Boolean(Socket):
         -------
         - Boolean
         """
-        node = Node('Is Viewport', sockets={})
+        node = {'Node'}('Is Viewport', sockets={})
         return node._out
 
     def sample_grid(self, position=None, interpolation_mode='TRILINEAR'):
@@ -263,7 +263,7 @@ class Boolean(Socket):
         - Boolean
         """
         utils.check_enum_arg('interpolation_mode', interpolation_mode, 'sample_grid', ('NEAREST', 'TRILINEAR', 'TRIQUADRATIC'))
-        node = Node('Sample Grid', sockets={'Grid': self, 'Position': position}, data_type='BOOLEAN', interpolation_mode=interpolation_mode)
+        node = {'Node'}('Sample Grid', sockets={'Grid': self, 'Position': position}, data_type='BOOLEAN', interpolation_mode=interpolation_mode)
         return node._out
 
     def sample_grid_index(self, x=None, y=None, z=None):
@@ -284,7 +284,7 @@ class Boolean(Socket):
         -------
         - Boolean
         """
-        node = Node('Sample Grid Index', sockets={'Grid': self, 'X': x, 'Y': y, 'Z': z}, data_type='BOOLEAN')
+        node = {'Node'}('Sample Grid Index', sockets={'Grid': self, 'X': x, 'Y': y, 'Z': z}, data_type='BOOLEAN')
         return node._out
 
     def uv_unwrap(self, seam=None, margin=None, fill_holes=None, method='ANGLE_BASED'):
@@ -306,7 +306,7 @@ class Boolean(Socket):
         - Vector
         """
         utils.check_enum_arg('method', method, 'uv_unwrap', ('ANGLE_BASED', 'CONFORMAL'))
-        node = Node('UV Unwrap', sockets={'Selection': self, 'Seam': seam, 'Margin': margin, 'Fill Holes': fill_holes}, method=method)
+        node = {'Node'}('UV Unwrap', sockets={'Selection': self, 'Seam': seam, 'Margin': margin, 'Fill Holes': fill_holes}, method=method)
         return node._out
 
     def error(self, message=None):
@@ -325,7 +325,7 @@ class Boolean(Socket):
         -------
         - Boolean
         """
-        node = Node('Warning', sockets={'Show': self, 'Message': message}, warning_type='ERROR')
+        node = {'Node'}('Warning', sockets={'Show': self, 'Message': message}, warning_type='ERROR')
         return node._out
 
     def warning(self, message=None):
@@ -344,7 +344,7 @@ class Boolean(Socket):
         -------
         - Boolean
         """
-        node = Node('Warning', sockets={'Show': self, 'Message': message}, warning_type='WARNING')
+        node = {'Node'}('Warning', sockets={'Show': self, 'Message': message}, warning_type='WARNING')
         return node._out
 
     def info(self, message=None):
@@ -363,6 +363,6 @@ class Boolean(Socket):
         -------
         - Boolean
         """
-        node = Node('Warning', sockets={'Show': self, 'Message': message}, warning_type='INFO')
+        node = {'Node'}('Warning', sockets={'Show': self, 'Message': message}, warning_type='INFO')
         return node._out
 

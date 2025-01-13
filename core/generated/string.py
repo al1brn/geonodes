@@ -1,5 +1,5 @@
 from .. socket_class import Socket
-from .. treeclass import Node
+from .. treeclass import Node, ColorRamp, NodeCurves
 from .. treeclass import utils
 from .. scripterror import NodeError
 
@@ -25,7 +25,7 @@ class String(Socket):
         -------
         - Boolean
         """
-        node = Node('Compare', sockets={'A_STR': self, 'B_STR': b}, data_type='STRING', mode='ELEMENT', operation='EQUAL')
+        node = {'Node'}('Compare', sockets={'A_STR': self, 'B_STR': b}, data_type='STRING', mode='ELEMENT', operation='EQUAL')
         return node._out
 
     def not_equal(self, b=None):
@@ -46,7 +46,7 @@ class String(Socket):
         -------
         - Boolean
         """
-        node = Node('Compare', sockets={'A_STR': self, 'B_STR': b}, data_type='STRING', mode='ELEMENT', operation='NOT_EQUAL')
+        node = {'Node'}('Compare', sockets={'A_STR': self, 'B_STR': b}, data_type='STRING', mode='ELEMENT', operation='NOT_EQUAL')
         return node._out
 
     def hash_value(self, seed=None):
@@ -65,7 +65,7 @@ class String(Socket):
         -------
         - Integer
         """
-        node = Node('Hash Value', sockets={'Value': self, 'Seed': seed}, data_type='STRING')
+        node = {'Node'}('Hash Value', sockets={'Value': self, 'Seed': seed}, data_type='STRING')
         return node._out
 
     @classmethod
@@ -76,7 +76,7 @@ class String(Socket):
         -------
         - node [line_break (String), tab (String)]
         """
-        node = Node('Special Characters', sockets={})
+        node = {'Node'}('Special Characters', sockets={})
         return node
 
     @classmethod
@@ -88,7 +88,7 @@ class String(Socket):
         -------
         - String [tab_ (String)]
         """
-        node = Node('Special Characters', sockets={})
+        node = {'Node'}('Special Characters', sockets={})
         return node._out
 
     @classmethod
@@ -100,7 +100,7 @@ class String(Socket):
         -------
         - tab
         """
-        node = Node('Special Characters', sockets={})
+        node = {'Node'}('Special Characters', sockets={})
         return node.tab
 
     def replace(self, find=None, replace=None):
@@ -119,7 +119,7 @@ class String(Socket):
         -------
         - String
         """
-        node = Node('Replace String', sockets={'String': self, 'Find': find, 'Replace': replace})
+        node = {'Node'}('Replace String', sockets={'String': self, 'Find': find, 'Replace': replace})
         return node._out
 
     def slice(self, position=None, length=None):
@@ -138,7 +138,7 @@ class String(Socket):
         -------
         - String
         """
-        node = Node('Slice String', sockets={'String': self, 'Position': position, 'Length': length})
+        node = {'Node'}('Slice String', sockets={'String': self, 'Position': position, 'Length': length})
         return node._out
 
     def length(self):
@@ -152,7 +152,7 @@ class String(Socket):
         -------
         - Integer
         """
-        node = Node('String Length', sockets={'String': self})
+        node = {'Node'}('String Length', sockets={'String': self})
         return node._out
 
     def join(self, *strings):
@@ -170,7 +170,7 @@ class String(Socket):
         -------
         - String
         """
-        node = Node('Join Strings', sockets={'Delimiter': self, 'Strings': list(strings)})
+        node = {'Node'}('Join Strings', sockets={'Delimiter': self, 'Strings': list(strings)})
         return node._out
 
     @classmethod
@@ -216,6 +216,6 @@ class String(Socket):
         utils.check_enum_arg('align_y', align_y, 'to_curves', ('TOP', 'TOP_BASELINE', 'MIDDLE', 'BOTTOM_BASELINE', 'BOTTOM'))
         utils.check_enum_arg('overflow', overflow, 'to_curves', ('OVERFLOW', 'SCALE_TO_FIT', 'TRUNCATE'))
         utils.check_enum_arg('pivot_mode', pivot_mode, 'to_curves', ('MIDPOINT', 'TOP_LEFT', 'TOP_CENTER', 'TOP_RIGHT', 'BOTTOM_LEFT', 'BOTTOM_CENTER', 'BOTTOM_RIGHT'))
-        node = Node('String to Curves', sockets={'String': self, 'Size': size, 'Character Spacing': character_spacing, 'Word Spacing': word_spacing, 'Line Spacing': line_spacing, 'Text Box Width': text_box_width}, align_x=align_x, align_y=align_y, overflow=overflow, pivot_mode=pivot_mode)
+        node = {'Node'}('String to Curves', sockets={'String': self, 'Size': size, 'Character Spacing': character_spacing, 'Word Spacing': word_spacing, 'Line Spacing': line_spacing, 'Text Box Width': text_box_width}, align_x=align_x, align_y=align_y, overflow=overflow, pivot_mode=pivot_mode)
         return node._out
 

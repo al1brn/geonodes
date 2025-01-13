@@ -41,6 +41,14 @@ DEPRECATED_NODES = [
     'Rotate Euler',
 ]
 
+# Specific Nodes
+
+SPEC_NODES = {
+    'Float Curve'   : 'NodeCurves',
+    'RGB Curves'    : 'NodeCurves',
+    'Vector Curves' : 'NodeCurves',
+}
+
 # Tabulation
 _1, _2, _3, _4 = " "*4, " "*8, " "*12, " "*16
 
@@ -243,7 +251,7 @@ class NodeInfo:
             bl_text.write(f"with {tree_name}('{target}'):\n\n")
 
             lines = txt.split("\n")
-            txt = "\n   ".join([""] + lines)
+            txt = "\n    ".join([""] + lines)
             bl_text.write(txt)
 
         return txt
@@ -288,11 +296,11 @@ class NodeInfo:
         elif bl_idname == 'ShaderNodeFloatCurve':
             content =  f"value = Float().curve(factor=None, curve={utils.curve_to_list(bnode.mapping.curves[0], as_str=True)})"
         elif bl_idname == 'ShaderNodeVectorCurve':
-            content = f" vector = Vector().curves(fac=None, curves={utils.curves_to_list(bnode.mapping.curves, as_str=True)})"
+            content = f"vector = Vector().curves(fac=None, curves={utils.curves_to_list(bnode.mapping.curves, as_str=True)})"
         elif bl_idname == 'ShaderNodeRGBCurve':
             content = f"col = Color().curves(fac=None, curves={utils.curves_to_list(bnode.mapping.curves, as_str=True)})"
         elif bl_idname == 'ShaderNodeValToRGB':
-            content = f"col = Float().color_ramp(stops={utils.color_ramp_get_stops(self.bnode, as_str=True)})"
+            content = f"col = Float().color_ramp(stops={utils.color_ramp_get_stops(self.bnode, as_str=True)}, interpolation='{self.bnode.color_ramp.interpolation}')"
 
         # ---------------------------------------------------------------------------
         # Node name and parameters
@@ -436,8 +444,6 @@ class NodeInfo:
             txt = txt.replace('\n\n\n', '\n\n')
 
         return txt
-
-
 
     # =============================================================================================================================
     # Socket exploration
@@ -1160,7 +1166,7 @@ class NodeInfo:
 
     # ====================================================================================================
     # Auto generation
-    #
+
     # ====================================================================================================
     # Add an entry to auto gen dict
 
@@ -1239,7 +1245,40 @@ class NodeInfo:
         return target
 
     # =============================================================================================================================
+    # Node or subclass of Node
+
+    @classmethod
+    def get_node_class(cls, node_name):
+        return SPEC_NODES.get(node_name, 'Node')
+
+    # =============================================================================================================================
     # Static implementation
+
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Static Color Ramp implementation
+
+    @classmethod
+    def color_ramp(cls, fac=None, stops=None, interpolation='LINEAR'):
+        """ Node <&Node Color Ramp>
+
+        Exposes utilities to manage the color ramp
+
+        ``` python
+        ramp1 = Float(.5).color_ramp(stops=[.1, .9])
+        ramp2 = ColorRamp(.5, stops=[(.1, (1, 0, 0)), (.5, 1), (.9, (0, 0, 1))])
+        ```
+
+        Arguments
+        ---------
+        - fac (Float = None)
+        - stops (list of tuple(float, tuple)) : stops made of (float, color as tuple of floats)
+        - interpolation in ('EASE', 'CARDINAL', 'LINEAR', 'B_SPLINE', 'CONSTANT')
+        """
+        node = ColorRamp(fac=fac, stops=stops, interpolation=interpolation)
+        return node._out
+
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Standard static codes
 
     def static_code(self, gen: dict, module: str, name: str | None = None):
         """
@@ -1249,9 +1288,21 @@ class NodeInfo:
         - module : module name
         - name : function name
         """
-
         node_name = self.bnode.name
         bl_idname = self.bnode.bl_idname
+
+        # ----------------------------------------------------------------------------------------------------
+        # Hacks
+
+        if bl_idname == 'ShaderNodeValToRGB':
+            code = inspect.getsource(NodeInfo.color_ramp)
+            if name is None:
+                name = 'color_ramp'
+            else:
+                code = code.replace('color_ramp', name)
+            signature = str(inspect.signature(NodeInfo.color_ramp))
+            self.add_func(gen, module, name, code, node_name='Color Ramp', halt=True, is_classmethod=True, returns='OUT', signature=signature)
+            return
 
         # ----------------------------------------------------------------------------------------------------
         # Function name
@@ -1293,7 +1344,7 @@ class NodeInfo:
         # Argument check
         s += self.gen_arg_check(_2, args, name)
 
-        s += f"{_2}node = Node{self.node_call(args)}\n"
+        s += f"{_2}node = {self.get_node_class(node_name)}{self.node_call(args)}\n"
         if ret_node:
             s += f"{_2}return node\n"
         else:
@@ -1406,7 +1457,7 @@ class NodeInfo:
         # Argument check
         s += self.gen_arg_check(_2, args, func_name)
 
-        s += f"{_2}node = Node{self.node_call(args)}\n"
+        s += f"{_2}node = {self.get_node_class(self.bnode.name)}{self.node_call(args)}\n"
         s += f"{_2}return cls(node._out)\n"
 
         self.add_func(gen, class_name, func_name, s, is_classmethod=True, is_get=is_prop, returns='OUT', signature=signature)
@@ -1749,7 +1800,7 @@ class NodeInfo:
         if is_class_method:
             cache = False
 
-        snode = 'self._cache' if cache else 'Node'
+        snode = 'self._cache' if cache else {self.get_node_class(self.bnode.name)}
         s += f"{_2}node = {snode}{self.node_call(args)}\n"
 
         # ----- Jump
@@ -1845,7 +1896,7 @@ class NodeInfo:
 
         # ----- Node call
 
-        s += f"{_1}node = Node{self.node_call(args)}\n"
+        s += f"{_1}node = {self.get_node_class(self.bnode.name)}{self.node_call(args)}\n"
 
         # ----- Return
 

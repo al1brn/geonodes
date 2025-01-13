@@ -1,5 +1,5 @@
 from .. socket_class import Socket
-from .. treeclass import Node
+from .. treeclass import Node, ColorRamp, NodeCurves
 from .. treeclass import utils
 from .. scripterror import NodeError
 
@@ -661,7 +661,7 @@ class snd:
         -------
         - Float
         """
-        node = Node('Float Curve', sockets={'Value': value, 'Factor': factor})
+        node = NodeCurves('Float Curve', sockets={'Value': value, 'Factor': factor})
         return node._out
 
     @classmethod
@@ -1137,7 +1137,7 @@ class snd:
         -------
         - Color
         """
-        node = Node('RGB Curves', sockets={'Color': color, 'Fac': fac})
+        node = NodeCurves('RGB Curves', sockets={'Color': color, 'Fac': fac})
         return node._out
 
     @classmethod
@@ -1643,18 +1643,23 @@ class snd:
         return node._out
 
     @classmethod
-    def color_ramp(cls, fac=None):
-        """ > Node <&ShaderNode Color Ramp>
+    def color_ramp(cls, fac=None, stops=None, interpolation='LINEAR'):
+        """ Node <&Node Color Ramp>
+
+        Exposes utilities to manage the color ramp
+
+        ``` python
+        ramp1 = Float(.5).color_ramp(stops=[.1, .9])
+        ramp2 = ColorRamp(.5, stops=[(.1, (1, 0, 0)), (.5, 1), (.9, (0, 0, 1))])
+        ```
 
         Arguments
         ---------
-        - fac (Float) : socket 'Fac' (id: Fac)
-
-        Returns
-        -------
-        - Color [alpha_ (Float)]
+        - fac (Float = None)
+        - stops (list of tuple(float, tuple)) : stops made of (float, color as tuple of floats)
+        - interpolation in ('EASE', 'CARDINAL', 'LINEAR', 'B_SPLINE', 'CONSTANT')
         """
-        node = Node('Color Ramp', sockets={'Fac': fac})
+        node = ColorRamp(fac=fac, stops=stops, interpolation=interpolation)
         return node._out
 
     @classmethod
@@ -1682,7 +1687,7 @@ class snd:
         -------
         - Vector
         """
-        node = Node('Vector Curves', sockets={'Vector': vector, 'Fac': fac})
+        node = NodeCurves('Vector Curves', sockets={'Vector': vector, 'Fac': fac})
         return node._out
 
     @classmethod

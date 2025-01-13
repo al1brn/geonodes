@@ -1,5 +1,5 @@
 from .. socket_class import Socket
-from .. treeclass import Node
+from .. treeclass import Node, ColorRamp, NodeCurves
 from .. treeclass import utils
 from .. scripterror import NodeError
 
@@ -26,7 +26,7 @@ class Corner(Socket):
         - Float [trailing_ (Float), total_ (Float)]
         """
         data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'MATRIX': 'TRANSFORM'}, 'Corner.accumulate_field', 'value')
-        node = Node('Accumulate Field', sockets={'Value': value, 'Group Index': group_id}, data_type=data_type, domain='CORNER')
+        node = {'Node'}('Accumulate Field', sockets={'Value': value, 'Group Index': group_id}, data_type=data_type, domain='CORNER')
         return node._out
 
     def attribute_statistic(self, attribute=None):
@@ -48,7 +48,7 @@ class Corner(Socket):
         - node [mean (Float), median (Float), sum (Float), min (Float), max (Float), range (Float), standard_deviation (Float), variance (Float)]
         """
         data_type = utils.get_argument_data_type(attribute, {'VALUE': 'FLOAT', 'VECTOR': 'FLOAT_VECTOR'}, 'Corner.attribute_statistic', 'attribute')
-        node = Node('Attribute Statistic', sockets={'Geometry': self, 'Selection': self._sel, 'Attribute': attribute}, data_type=data_type, domain='CORNER')
+        node = {'Node'}('Attribute Statistic', sockets={'Geometry': self, 'Selection': self._sel, 'Attribute': attribute}, data_type=data_type, domain='CORNER')
         return node
 
     @classmethod
@@ -63,7 +63,7 @@ class Corner(Socket):
         -------
         - node [next_edge_index (Integer), previous_edge_index (Integer)]
         """
-        node = Node('Edges of Corner', sockets={'Corner Index': corner_index})
+        node = {'Node'}('Edges of Corner', sockets={'Corner Index': corner_index})
         return node
 
     @classmethod
@@ -78,7 +78,7 @@ class Corner(Socket):
         -------
         - next_edge_index
         """
-        node = Node('Edges of Corner', sockets={'Corner Index': corner_index})
+        node = {'Node'}('Edges of Corner', sockets={'Corner Index': corner_index})
         return node.next_edge_index
 
     @classmethod
@@ -93,7 +93,7 @@ class Corner(Socket):
         -------
         - previous_edge_index
         """
-        node = Node('Edges of Corner', sockets={'Corner Index': corner_index})
+        node = {'Node'}('Edges of Corner', sockets={'Corner Index': corner_index})
         return node.previous_edge_index
 
     @classmethod
@@ -108,7 +108,7 @@ class Corner(Socket):
         -------
         - node [face_index (Integer), index_in_face (Integer)]
         """
-        node = Node('Face of Corner', sockets={'Corner Index': corner_index})
+        node = {'Node'}('Face of Corner', sockets={'Corner Index': corner_index})
         return node
 
     @classmethod
@@ -123,7 +123,7 @@ class Corner(Socket):
         -------
         - face_index
         """
-        node = Node('Face of Corner', sockets={'Corner Index': corner_index})
+        node = {'Node'}('Face of Corner', sockets={'Corner Index': corner_index})
         return node.face_index
 
     @classmethod
@@ -138,7 +138,7 @@ class Corner(Socket):
         -------
         - index_in_face
         """
-        node = Node('Face of Corner', sockets={'Corner Index': corner_index})
+        node = {'Node'}('Face of Corner', sockets={'Corner Index': corner_index})
         return node.index_in_face
 
     @classmethod
@@ -160,7 +160,7 @@ class Corner(Socket):
         - Float
         """
         data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Corner.evaluate_at_index', 'value')
-        node = Node('Evaluate at Index', sockets={'Index': index, 'Value': value}, data_type=data_type, domain='CORNER')
+        node = {'Node'}('Evaluate at Index', sockets={'Index': index, 'Value': value}, data_type=data_type, domain='CORNER')
         return node._out
 
     @classmethod
@@ -181,7 +181,7 @@ class Corner(Socket):
         - Float
         """
         data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Corner.evaluate_on_domain', 'value')
-        node = Node('Evaluate on Domain', sockets={'Value': value}, data_type=data_type, domain='CORNER')
+        node = {'Node'}('Evaluate on Domain', sockets={'Value': value}, data_type=data_type, domain='CORNER')
         return node._out
 
     def to_points(self, position=None, radius=None):
@@ -202,7 +202,7 @@ class Corner(Socket):
         -------
         - Cloud
         """
-        node = Node('Mesh to Points', sockets={'Mesh': self, 'Selection': self._sel, 'Position': position, 'Radius': radius}, mode='CORNERS')
+        node = {'Node'}('Mesh to Points', sockets={'Mesh': self, 'Selection': self._sel, 'Position': position, 'Radius': radius}, mode='CORNERS')
         return node._out
 
     @classmethod
@@ -218,7 +218,7 @@ class Corner(Socket):
         -------
         - Integer
         """
-        node = Node('Offset Corner in Face', sockets={'Corner Index': corner_index, 'Offset': offset})
+        node = {'Node'}('Offset Corner in Face', sockets={'Corner Index': corner_index, 'Offset': offset})
         return node._out
 
     def sample_index(self, value=None, index=None, clamp=False):
@@ -241,7 +241,7 @@ class Corner(Socket):
         - Float
         """
         data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Corner.sample_index', 'value')
-        node = Node('Sample Index', sockets={'Geometry': self, 'Value': value, 'Index': index}, clamp=clamp, data_type=data_type, domain='CORNER')
+        node = {'Node'}('Sample Index', sockets={'Geometry': self, 'Value': value, 'Index': index}, clamp=clamp, data_type=data_type, domain='CORNER')
         return node._out
 
     def sample_nearest(self, sample_position=None):
@@ -260,7 +260,7 @@ class Corner(Socket):
         -------
         - Integer
         """
-        node = Node('Sample Nearest', sockets={'Geometry': self, 'Sample Position': sample_position}, domain='CORNER')
+        node = {'Node'}('Sample Nearest', sockets={'Geometry': self, 'Sample Position': sample_position}, domain='CORNER')
         return node._out
 
     def store_named_attribute(self, name=None, value=None):
@@ -285,7 +285,7 @@ class Corner(Socket):
         - Geometry
         """
         data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Corner.store_named_attribute', 'value')
-        node = Node('Store Named Attribute', sockets={'Geometry': self, 'Selection': self._sel, 'Name': name, 'Value': value}, data_type=data_type, domain='CORNER')
+        node = {'Node'}('Store Named Attribute', sockets={'Geometry': self, 'Selection': self._sel, 'Name': name, 'Value': value}, data_type=data_type, domain='CORNER')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -311,7 +311,7 @@ class Corner(Socket):
         - Geometry
         """
         data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Corner.store', 'value')
-        node = Node('Store Named Attribute', sockets={'Geometry': self, 'Selection': self._sel, 'Name': name, 'Value': value}, data_type=data_type, domain='CORNER')
+        node = {'Node'}('Store Named Attribute', sockets={'Geometry': self, 'Selection': self._sel, 'Name': name, 'Value': value}, data_type=data_type, domain='CORNER')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -336,7 +336,7 @@ class Corner(Socket):
         -------
         - Geometry
         """
-        node = Node('Store Named Attribute', sockets={'Geometry': self, 'Selection': self._sel, 'Name': name, 'Value': value}, data_type='FLOAT2', domain='CORNER')
+        node = {'Node'}('Store Named Attribute', sockets={'Geometry': self, 'Selection': self._sel, 'Name': name, 'Value': value}, data_type='FLOAT2', domain='CORNER')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -358,7 +358,7 @@ class Corner(Socket):
         -------
         - Vector
         """
-        node = Node('Pack UV Islands', sockets={'UV': uv, 'Selection': self._sel, 'Margin': margin, 'Rotate': rotate})
+        node = {'Node'}('Pack UV Islands', sockets={'UV': uv, 'Selection': self._sel, 'Margin': margin, 'Rotate': rotate})
         return node._out
 
     @classmethod
@@ -381,7 +381,7 @@ class Corner(Socket):
         - Vector
         """
         utils.check_enum_arg('method', method, 'uv_unwrap', ('ANGLE_BASED', 'CONFORMAL'))
-        node = Node('UV Unwrap', sockets={'Selection': self._sel, 'Seam': seam, 'Margin': margin, 'Fill Holes': fill_holes}, method=method)
+        node = {'Node'}('UV Unwrap', sockets={'Selection': self._sel, 'Seam': seam, 'Margin': margin, 'Fill Holes': fill_holes}, method=method)
         return node._out
 
     @classmethod
@@ -396,7 +396,7 @@ class Corner(Socket):
         -------
         - Integer
         """
-        node = Node('Vertex of Corner', sockets={'Corner Index': corner_index})
+        node = {'Node'}('Vertex of Corner', sockets={'Corner Index': corner_index})
         return node._out
 
     def viewer(self, value=None):
@@ -414,6 +414,6 @@ class Corner(Socket):
 
         """
         data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Corner.viewer', 'value')
-        node = Node('Viewer', sockets={'Geometry': self, 'Value': value}, data_type=data_type, domain='CORNER')
+        node = {'Node'}('Viewer', sockets={'Geometry': self, 'Value': value}, data_type=data_type, domain='CORNER')
         return
 

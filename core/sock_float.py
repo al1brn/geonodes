@@ -219,7 +219,7 @@ class Float(generated.Float):
         """
         return Float(Node('Mix', {'Factor': factor, 'A': self, 'B': other}, clamp_factor=clamp_factor, data_type='FLOAT')._out)
 
-    def color_ramp(self, stops=None):
+    def color_ramp(self, stops=None, interpolation='LINEAR'):
         """ > Color Ramp
 
         > Node <&Node Color Ramp>
@@ -227,12 +227,13 @@ class Float(generated.Float):
         Arguments
         ---------
         - stops (list of tuple(float, tuple)) : stops made of (float, color as tuple of floats)
+        - interpolation in ('EASE', 'CARDINAL', 'LINEAR', 'B_SPLINE', 'CONSTANT')
 
         Returns
         -------
         - Color
         """
-        return ColorRamp(fac=self, stops=stops)._out
+        return ColorRamp(fac=self, stops=stops, interpolation=interpolation)._out
 
     # ====================================================================================================
     # Float curve
