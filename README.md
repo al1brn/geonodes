@@ -374,7 +374,7 @@ Naming conventions are used to easily reply to this question.
 > In addition to the rules below, you can use the button ***[Node Help]*** in the right _Tool_ panel in the ***Geometry Nodes***
 > editor. This button generates the implementations of the selected nodes into a script named 'Node Help'.
 
-<img src="doc/images/hello_world_black.png" width="600" class="center">
+<img src="doc/images/node_help.png" width="600" class="center">
 
 ### Node names
 
