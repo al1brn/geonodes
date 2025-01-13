@@ -7,7 +7,7 @@ You will find here how nodes are implemented
 - **&** : [&Material Output](shader_cross_reference.md#&material-output)
 - **A** : [Add Shader](shader_cross_reference.md#add-shader) :black_small_square: [Ambient Occlusion](shader_cross_reference.md#ambient-occlusion) :black_small_square: [AOV Output](shader_cross_reference.md#aov-output) :black_small_square: [Attribute](shader_cross_reference.md#attribute)
 - **B** : [Background](shader_cross_reference.md#background) :black_small_square: [Bevel](shader_cross_reference.md#bevel) :black_small_square: [Blackbody](shader_cross_reference.md#blackbody) :black_small_square: [Brick Texture](shader_cross_reference.md#brick-texture) :black_small_square: [Brightness Contrast](shader_cross_reference.md#brightness-contrast) :black_small_square: [Bump](shader_cross_reference.md#bump)
-- **C** : [Camera Data](shader_cross_reference.md#camera-data) :black_small_square: [Checker Texture](shader_cross_reference.md#checker-texture) :black_small_square: [Clamp](shader_cross_reference.md#clamp) :black_small_square: [Color Attribute](shader_cross_reference.md#color-attribute) :black_small_square: [Color Ramp](shader_cross_reference.md#color-ramp) :black_small_square: [Combine Color](shader_cross_reference.md#combine-color) :black_small_square: [Combine XYZ](shader_cross_reference.md#combine-xyz) :black_small_square: [Curves Info](shader_cross_reference.md#curves-info)
+- **C** : [Camera Data](shader_cross_reference.md#camera-data) :black_small_square: [Checker Texture](shader_cross_reference.md#checker-texture) :black_small_square: [Clamp](shader_cross_reference.md#clamp) :black_small_square: [Color Attribute](shader_cross_reference.md#color-attribute) :black_small_square: [Combine Color](shader_cross_reference.md#combine-color) :black_small_square: [Combine XYZ](shader_cross_reference.md#combine-xyz) :black_small_square: [Curves Info](shader_cross_reference.md#curves-info)
 - **D** : [Diffuse BSDF](shader_cross_reference.md#diffuse-bsdf) :black_small_square: [Displacement](shader_cross_reference.md#displacement)
 - **E** : [Emission](shader_cross_reference.md#emission) :black_small_square: [Environment Texture](shader_cross_reference.md#environment-texture)
 - **F** : [Float Curve](shader_cross_reference.md#float-curve) :black_small_square: [Frame](shader_cross_reference.md#frame) :black_small_square: [Fresnel](shader_cross_reference.md#fresnel)
@@ -99,10 +99,6 @@ You will find here how nodes are implemented
 - [Color](color.md#color) :white_small_square: [Attribute](color.md#attribute)
 - [Color](color.md#color) :white_small_square: [ColorAttribute](color.md#colorattribute)
 - [Color](color.md#color) :white_small_square: [ambient_occlusion](color.md#ambient_occlusion)
-
-#### Color Ramp
-
-- [snd](snd.md#snd) :white_small_square: [color_ramp](snd.md#color_ramp)
 
 #### Combine Color
 

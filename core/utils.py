@@ -1,11 +1,20 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
-Created on 2024/07/26
+This file is part of the geonodes distribution (https://github.com/al1brn/geonodes).
+Copyright (c) 2025 Alain Bernard.
 
-@author: alain
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, version 3.
 
-$ DOC hidden
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+$ DOC transparent
 
 -----------------------------------------------------
 Scripting Geometry Nodes
@@ -13,35 +22,23 @@ Scripting Geometry Nodes
 
 module : utils
 --------------
-- utilities
+- a set a utility functions
 
-classes
--------
-
-
-functions
----------
-- remove_accents    : remove accents from a string
-- clean             : clean a string
-- prefix_figure     : prefix a string by '_' if it is a number, e.g. : '3D Cursor' -> _3d_cursor
-- get_bsocket       : get a blender socket from a value which can be a Socket or a blender.types.NodeSocket
-- get_socket_type   : get a socket type in SOCKET_TYPES.keys() from either a socket or a value
-- get_data_type     : get a data type in DATA_TYPES from either a socket or a value
-- get_input_type    : get an input type in INPUT_TYPES from either a socket or a value
-- value_to_array    : convert a value into an array of the given shape. Raises an error if not possible
-- is_vector_like    : socket type is a vector
-- is_color_like     : socket type is a color
-- is_matrix_like    : socket type is a matrix
-- is_value_like     : socket type is a value
-- has_bsocket       : value is a socket or a tuple with sockets
-- get_blender_resource : get a Blender ressource its name, e.g. = get_blender_resource('MATERIAL', "Material") -> bpy.materials.get("Material")
-- python_value_for_socket : build a python value acceptable as socket default value
+This module regroups all the global functions
 
 updates
 -------
 - creation : 2024/07/23
-- update : 2024/09/04
+- update :   2024/09/04
+- update :   2025/01/12
 """
+
+__author__ = "Alain Bernard"
+__email__  = "lesideesfroides@gmail.com"
+__copyright__ = "Copyright (c) 2025, Alain Bernard"
+__license__ = "GNU GPL V3"
+__version__ = "3.0.0"
+__blender_version__ = "4.3.0"
 
 import unicodedata
 import numpy as np

@@ -1,9 +1,18 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
-Created on 2024/07/26
+This file is part of the geonodes distribution (https://github.com/al1brn/geonodes).
+Copyright (c) 2025 Alain Bernard.
 
-@author: alain
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, version 3.
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 $ DOC transparent
 
@@ -11,40 +20,27 @@ $ DOC transparent
 Scripting Geometry Nodes
 -----------------------------------------------------
 
-module : textures
------------------
-- Create the textures
+module : sock_texture
+---------------------
+- Texture socket
 
-This module implements texture creation as class methods of Texture class.
-Texture class inherits from TextureRoot which can be created as a Group Input.
-
-```  python
-# Create a noise texture
-noise_node = Texture.Noise()
-```
-
-classes
--------
-- Texture       : Implements the texture nodes creation
-    - Brick
-    - Checker
-    - Gradient
-    - Image
-    - Magic
-    - Noise
-    - Voronoi
-    - Wave
-    - WhiteNoise
-
-functions
----------
+This class inherits from Socket and from generated.Texture
+which is automatically generated.
 
 updates
 -------
 - creation : 2024/07/23
-- update : 2024/09/04
-- update : 2024/12/29
+- update :   2024/09/04
+- update :   2025/01/12
 """
+
+__author__ = "Alain Bernard"
+__email__  = "lesideesfroides@gmail.com"
+__copyright__ = "Copyright (c) 2025, Alain Bernard"
+__license__ = "GNU GPL V3"
+__version__ = "3.0.0"
+__blender_version__ = "4.3.0"
+
 
 import bpy
 from . import constants, utils

@@ -969,7 +969,7 @@ Magic(vector=None, scale=None, distortion=None, turbulence_depth=2)
 > method
 
 ``` python
-mix(b=None, factor=None, clamp_factor=True, clamp_result=False)
+mix(b=None, factor=None, clamp_factor=True, clamp_result=False, factor_mode='UNIFORM')
 ```
 
 > Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
@@ -978,7 +978,6 @@ mix(b=None, factor=None, clamp_factor=True, clamp_result=False)
 - **Socket** : self
 - **Parameter** : 'MIX'
 - **Parameter** : 'RGBA'
-- **Parameter** : 'UNIFORM'
 
 
 
@@ -987,6 +986,7 @@ mix(b=None, factor=None, clamp_factor=True, clamp_result=False)
 - **factor** (_Float_ = None) : socket 'Factor' (id: Factor_Float)
 - **clamp_factor** (_bool_ = True) : parameter 'clamp_factor'
 - **clamp_result** (_bool_ = False) : parameter 'clamp_result'
+- **factor_mode** (_str_ = UNIFORM) : parameter 'factor_mode' in ('UNIFORM', 'NON_UNIFORM')
 
 
 

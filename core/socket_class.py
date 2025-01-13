@@ -1,9 +1,18 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
-Created on 2024/07/26
+This file is part of the geonodes distribution (https://github.com/al1brn/geonodes).
+Copyright (c) 2025 Alain Bernard.
 
-@author: alain
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, version 3.
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 $ DOC transparent
 
@@ -12,31 +21,35 @@ Scripting Geometry Nodes
 -----------------------------------------------------
 
 module : socket_class
---------------------
-- Provides the base class for data socket Socket which wraps an output socket of a Node
-- Implement simple Data Sockets:
+---------------------
+- Socket
 
-classes
--------
-- NodeCache     : Interface for Socket and Domain which can cache created nodes
-- Socket        : Wraps the output socket of node and exposes nodes creation as methods or properties
-- Attribute   : Socket subtype for sockets representing a value (i.e. attributes)
-- String        : Socket of type 'STRING'
-- Material      : Socket of type 'MATERIAL'
-- Image         : Socket of type 'IMAGE'
-- Object        : Socket of type 'OBJECT'
-- Collection    : Socket of type 'COLLECTION'
-- Menu          : Socket of type 'MENU'
-- TextureRoot   : Socket of type 'TEXTURE'
+This class is the base class for all data socket actually used in ***geonodes***.
 
-functions
----------
+The primary purpose of a socket is to maintain a reference to the output socket of
+a node.
+
+It implements fundamental mechanisms such as:
+- caching nodes
+- jump
+- access to node
+- node label and color
+- access to interface tree for input socket
 
 updates
 -------
 - creation : 2024/07/23
-- update : 2024/09/04
+- update :   2024/09/04
+- update :   2025/01/12
 """
+
+__author__ = "Alain Bernard"
+__email__  = "lesideesfroides@gmail.com"
+__copyright__ = "Copyright (c) 2025, Alain Bernard"
+__license__ = "GNU GPL V3"
+__version__ = "3.0.0"
+__blender_version__ = "4.3.0"
+
 
 import numpy as np
 

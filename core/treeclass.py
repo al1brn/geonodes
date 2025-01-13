@@ -1,9 +1,18 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
-Created on 2024/07/26
+This file is part of the geonodes distribution (https://github.com/al1brn/geonodes).
+Copyright (c) 2025 Alain Bernard.
 
-@author: alain
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, version 3.
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 $ DOC transparent
 
@@ -13,51 +22,36 @@ Scripting Geometry Nodes
 
 module : treeclass
 ------------------
-Provides the two major classes:
 - Tree: the tree currently edited
 - Node: base class to create a node
 
 Note that to ease the scripting, nodes are created without refering explicity to a tree,
 but get the tree in a stack of trees as the 'current tree'.
 
-This allows the syntax:
+At creation time, Trees a psuh on top of a stack. current_tree allows to get
+the current edited tree.
 
-```python
-my_node = Node(...)
-````
-
-rather than:
-``` python
-my_node = tree.Node(...)
-```
-
-Pushing and poping the stack of tree is made with context management:
-
-``` python
-with Tree("Geometry Nodes"):
-    my_node = Node(...)
-
-# The following line raises an error:
-node_error = Node(...)
-```
-
-classes
--------
+In addition, other classes are implemented:
 - Break         : Exit from with block
 - Layout        : Creates a Frame where the new nodes are placed into
-- Tree          : The tree to build
-- Node          : Node creation in the current Tree and Layout
+- Panel         : Current panel into which placing the input and output nodes
 - Group         : Node Group creation
-- GroupF        : Utility class to call a group with python syntax
-
-functions
----------
+- GroupF        : (deprecated) Utility class to call a group with python syntax
+- G             : An advanced feature to expose Groups as python methods
 
 updates
 -------
 - creation : 2024/07/23
-- update : 2024/09/04
+- update :   2024/09/04
+- update :   2025/01/12
 """
+
+__author__ = "Alain Bernard"
+__email__  = "lesideesfroides@gmail.com"
+__copyright__ = "Copyright (c) 2025, Alain Bernard"
+__license__ = "GNU GPL V3"
+__version__ = "3.0.0"
+__blender_version__ = "4.3.0"
 
 import numpy as np
 import bpy

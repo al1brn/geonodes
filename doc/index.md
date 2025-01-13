@@ -5,15 +5,16 @@
 
 ### Initialize a tree
 
-- [GeoNodes](core-geono-geonodes.md#geonodes) and [ShaderNodes](core-shade1-shadernodes.md#shadernodes) : scripting nodes starts by instantianting a [Tree](tree.md#tree)
+- [GeoNodes](geonodes.md#geonodes) and [ShaderNodes](shadernodes.md#shadernodes) : scripting nodes starts by instantianting a [Tree](tree.md#tree)
 - [Break](break.md#break) : exiting from a tree context can be done by raising this exception
 
 ### Create nodes
 
 - [Node](node.md#node) : base class to create any node in a tree
 - [Group](group.md#group) : create a <*Node Group> node
-- [GroupF](groupf.md#groupf) : a different way to create a <*Node Group> node
+- [G](g.md#g) : a different way to create a <*Node Group> node
 - [Layout](layout.md#layout) : to place nodes in a frame
+- [Panel](panel.md#panel) : to place inputs into a panel
 - [Repeat](repeat.md#repeat), [Simulation](simulation.md#simulation) and [ForEachElement](foreachelement.md#foreachelement): create a [Zone](zone.md#zone)
 - Specific node : [ColorRamp](color.md#colorramp)
 
@@ -68,8 +69,8 @@ Geometries have specific [Domain](domain.md#domain):
 - [Curve](curve.md#curve) :
   - [SplinePoint](splinepoint.md#splinepoint) : property [points](curve.md#points)
   - [Spline](spline.md#spline) : property [splines](curve.md#splines)
-  - [GreasePencil](greasepencil.md#greasepencil) :
-    - [Layer](layer.md#layer) : property [layers](greasepencil.md#layers)
+- [GreasePencil](greasepencil.md#greasepencil) :
+  - [Layer](layer.md#layer) : property [layers](greasepencil.md#layers)
 - [Cloud](cloud.md#cloud) :
   - [CloudPoint](cloudpoint.md#cloudpoint) : property [points](cloud.md#points)
 - [Instances](instances.md#instances) :
@@ -84,9 +85,6 @@ Geometries have specific [Domain](domain.md#domain):
 
 - [core](core.md#core)
   - [generated](generated.md#generated)
-  - [geonodes](core-geono---geonodes.md#geonodes)
-  - [shadernodes](core-shade1---shadernodes.md#shadernodes)
-  - [treeinterface](treeinterface.md#treeinterface)
   - [Boolean](boolean.md#boolean)
   - [Break](break.md#break)
   - [Cloud](cloud.md#cloud)
@@ -103,6 +101,7 @@ Geometries have specific [Domain](domain.md#domain):
   - [ForEachElement](foreachelement.md#foreachelement)
   - [G](g.md#g)
   - [Geometry](geometry.md#geometry)
+  - [GeoNodes](geonodes.md#geonodes)
   - [GreasePencil](greasepencil.md#greasepencil)
   - [Group](group.md#group)
   - [GroupF](groupf.md#groupf)
@@ -123,6 +122,7 @@ Geometries have specific [Domain](domain.md#domain):
   - [Repeat](repeat.md#repeat)
   - [Rotation](rotation.md#rotation)
   - [Shader](shader.md#shader)
+  - [ShaderNodes](shadernodes.md#shadernodes)
   - [Simulation](simulation.md#simulation)
   - [Socket](socket.md#socket)
   - [Spline](spline.md#spline)
@@ -135,6 +135,11 @@ Geometries have specific [Domain](domain.md#domain):
   - [Volume](volume.md#volume)
   - [VolumeShader](volumeshader.md#volumeshader)
   - [Zone](zone.md#zone)
+  - [check_enum_arg](core.md#check_enum_arg)
+  - [color_ramp_set_stops](core.md#color_ramp_set_stops)
+  - [del_tree](core.md#del_tree)
+  - [ensure_uniques](core.md#ensure_uniques)
+  - [get_tree](core.md#get_tree)
 - [Cross Reference](cross_reference.md#cross-reference)
 - [generation](generation.md#generation)
   - [gendoc](gendoc.md#gendoc)

@@ -376,18 +376,22 @@ color_attribute(layer_name='')
 > classmethod
 
 ``` python
-color_ramp(fac=None)
+color_ramp(fac=None, stops=None, interpolation='LINEAR')
 ```
 
-> Node [Color Ramp](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/converter/color_ramp.html)
+Node [Color Ramp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/color_ramp.html)
+
+Exposes utilities to manage the color ramp
+
+``` python
+ramp1 = Float(.5).color_ramp(stops=[.1, .9])
+ramp2 = ColorRamp(.5, stops=[(.1, (1, 0, 0)), (.5, 1), (.9, (0, 0, 1))])
+```
 
 #### Arguments:
-- **fac** (_Float_ = None) : socket 'Fac' (id: Fac)
-
-
-
-#### Returns:
-- **Color** (_Float_)
+- **fac** (_Float_ = None)
+- **stops** (_list of tuple(float, tuple)_ = None) : stops made of (float, color as tuple of floats)
+- **interpolation** (_'EASE', 'CARDINAL', 'LINEAR', 'B_SPLINE', 'CONSTANT'_ = LINEAR)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [snd](snd.md#snd) :black_small_square: [Content](snd.md#content) :black_small_square: [Methods](snd.md#methods)</sub>
 

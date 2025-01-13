@@ -1,7 +1,20 @@
 """
-Created on 2024/07/26
+This file is part of the geonodes distribution (https://github.com/al1brn/geonodes).
+Copyright (c) 2025 Alain Bernard.
 
-@author: alain
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, version 3.
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+$ DOC transparent
 
 -----------------------------------------------------
 Scripting Geometry Nodes
@@ -9,56 +22,28 @@ Scripting Geometry Nodes
 
 module : geonodes
 -----------------
-- Implement Geometry Nodes tree
+- GeoNodes class
 
-classes
--------
-- GeoNodes      : Geometry Nodes tree
-
-functions
----------
+Subclass of Tree which is used to create Geometry Nodes trees.
 
 updates
 -------
 - creation : 2024/07/23
-- update : 2024/09/04
+- update :   2024/09/04
+- update :   2025/01/12
 """
 
+__author__ = "Alain Bernard"
+__email__  = "lesideesfroides@gmail.com"
+__copyright__ = "Copyright (c) 2025, Alain Bernard"
+__license__ = "GNU GPL V3"
+__version__ = "3.0.0"
+__blender_version__ = "4.3.0"
 
-""""
-import numpy as np
-
-pi     = np.pi
-tau    = 2*np.pi
-halfpi = np.pi/2
-d30    = np.pi/6
-d45    = np.pi/4
-d60    = np.pi/3
-d90    = halfpi
-d180   = pi
-d270   = np.pi*1.5
-d360   = tau
-e      = np.e
-
-
-from .treeclass import Break, Layout, Node, Group, GroupF, Tree
-from .floatclass import Float, Integer
-from .socket_class import Material, Image, Object, Collection, String, Menu
-from .booleanclass import Boolean
-from .vectorclass import Vector, Rotation, Matrix
-from .colorclass import Color
-from .geometryclass import Geometry, Mesh, Curve, Cloud, Instances, Volume
-from .zones import Repeat, Simulation
-from .textures import Texture
-from . import gnmath
-from . import macros
-from .staticclass_gn import nd
-"""
-
-from .treeclass import Tree
-from geonodes.core import constants
-from geonodes.core.scripterror import NodeError
-from .treeinterface import TreeInterface
+from . treeclass import Tree
+from . import constants
+from . scripterror import NodeError
+from . treeinterface import TreeInterface
 
 class GeoNodes(Tree):
     def __init__(self, tree_name: str, clear: bool=True, fake_user: bool=False, is_group: bool=False, prefix: str | None=None):

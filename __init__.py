@@ -11,8 +11,9 @@ $ DOC toc_max_depth = 1
 
 - <!Node> : base class to create any node in a tree
 - <!Group> : create a <*Node Group> node
-- <!GroupF> : a different way to create a <*Node Group> node
+- <!G> : a different way to create a <*Node Group> node
 - <!Layout> : to place nodes in a frame
+- <!Panel> : to place inputs into a panel
 - <!Repeat>, <!Simulation> and <!ForEachElement>: create a <!Zone>
 - Specific node : <!ColorRamp>
 
@@ -67,8 +68,8 @@ Geometries have specific <!Domain>:
 - <!Curve> :
   - <!SplinePoint> : property <!Curve#points>
   - <!Spline> : property <!Curve#splines>
-  - <!GreasePencil> :
-    - <!Layer> : property <!GreasePencil#layers>
+- <!GreasePencil> :
+  - <!Layer> : property <!GreasePencil#layers>
 - <!Cloud> :
   - <!CloudPoint> : property <!Cloud#points>
 - <!Instances> :

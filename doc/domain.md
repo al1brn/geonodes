@@ -16,13 +16,37 @@ cube = Mesh.Cube()
 cube.faces.store_named_attribute() # doamin = 'FACE'
 ```
 
+When a node as a ***Selection*** socket, the value can be set using the get item syntax:
+
+``` python
+    # Plug the value of 'my_selection` into Selection socket
+    Mesh().points[my_selection].store_named_attribute("Name", value)
+```
+
 > [!IMPORTANT]
 > Domains are never instantiated directly but created by geometries.
 
-> See: [Vertex](vertex.md#vertex), [Face](face.md#face), [Edge](edge.md#edge), [Corner](corner.md#corner), [SplinePoint](splinepoint.md#splinepoint), [Spline](spline.md#spline), [CloudPoint](cloudpoint.md#cloudpoint), [Instance](instance.md#instance)
+The domain specific to geometries are the followings:
+    - Mesh:
+        - points (class [Vertex](vertex.md#vertex))
+        - faces (class [Face](face.md#face))
+        - edges (class [Edge](edge.md#edge))
+        - corners (clas [Corner](corner.md#corner))
+    - Curve:
+        - points (class [SplinePoint](splinepoint.md#splinepoint))
+        - splines (class [Spline](spline.md#spline))
+    - GreasePencil:
+        - layers (class [Layer](layer.md#layer))
+    - Instances
+        - insts (class [Instance](instance.md#instance))
+    - Cloud
+        - points (class [CloudPoint](cloudpoint.md#cloudpoint))
+    - Volume
 
-Properties:
-- _geo (Geometry) : the geometry the domain belongs to
+All the domain classes are a subclass of [Domain](domain.md#domain).
+[Vertex](vertex.md#vertex), [SplinePoint](splinepoint.md#splinepoint) and [SplinePoint](splinepoint.md#splinepoint) classes are subclasses of [Point](point.md#point).
+
+> See: [Vertex](vertex.md#vertex), [Face](face.md#face), [Edge](edge.md#edge), [Corner](corner.md#corner), [SplinePoint](splinepoint.md#splinepoint), [Spline](spline.md#spline), [CloudPoint](cloudpoint.md#cloudpoint), [Instance](instance.md#instance)
 
 #### Arguments:
 - **geometry** (_Geometry_)
@@ -36,7 +60,21 @@ Properties:
 - [capture](domain.md#capture)
 - [capture_attribute](domain.md#capture_attribute)
 - [for_each](domain.md#for_each)
+- [\_geo](domain.md#_geo)
 - [\_\_init__](domain.md#__init__)
+
+## Properties
+
+
+
+### \_geo
+
+> _type_: **Geometry**
+>
+
+the geometry the domain belongs to
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Domain](domain.md#domain) :black_small_square: [Content](domain.md#content) :black_small_square: [Properties](domain.md#properties)</sub>
 
 ## Methods
 
@@ -167,13 +205,37 @@ cube = Mesh.Cube()
 cube.faces.store_named_attribute() # doamin = 'FACE'
 ```
 
+When a node as a ***Selection*** socket, the value can be set using the get item syntax:
+
+``` python
+    # Plug the value of 'my_selection` into Selection socket
+    Mesh().points[my_selection].store_named_attribute("Name", value)
+```
+
 > [!IMPORTANT]
 > Domains are never instantiated directly but created by geometries.
 
-> See: [Vertex](vertex.md#vertex), [Face](face.md#face), [Edge](edge.md#edge), [Corner](corner.md#corner), [SplinePoint](splinepoint.md#splinepoint), [Spline](spline.md#spline), [CloudPoint](cloudpoint.md#cloudpoint), [Instance](instance.md#instance)
+The domain specific to geometries are the followings:
+    - Mesh:
+        - points (class [Vertex](vertex.md#vertex))
+        - faces (class [Face](face.md#face))
+        - edges (class [Edge](edge.md#edge))
+        - corners (clas [Corner](corner.md#corner))
+    - Curve:
+        - points (class [SplinePoint](splinepoint.md#splinepoint))
+        - splines (class [Spline](spline.md#spline))
+    - GreasePencil:
+        - layers (class [Layer](layer.md#layer))
+    - Instances
+        - insts (class [Instance](instance.md#instance))
+    - Cloud
+        - points (class [CloudPoint](cloudpoint.md#cloudpoint))
+    - Volume
 
-Properties:
-- _geo (Geometry) : the geometry the domain belongs to
+All the domain classes are a subclass of [Domain](domain.md#domain).
+[Vertex](vertex.md#vertex), [SplinePoint](splinepoint.md#splinepoint) and [SplinePoint](splinepoint.md#splinepoint) classes are subclasses of [Point](point.md#point).
+
+> See: [Vertex](vertex.md#vertex), [Face](face.md#face), [Edge](edge.md#edge), [Corner](corner.md#corner), [SplinePoint](splinepoint.md#splinepoint), [Spline](spline.md#spline), [CloudPoint](cloudpoint.md#cloudpoint), [Instance](instance.md#instance)
 
 #### Arguments:
 - **geometry** (_Geometry_)

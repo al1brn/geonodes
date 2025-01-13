@@ -1455,8 +1455,8 @@ out(name=None, **props)
 [!MIX]
 
 > [!NOTE]
-> - [GeoNodes](core-geono-geonodes.md#geonodes) : the Vector is plug as group output
-> - [ShaderNodes](core-shade1-shadernodes.md#shadernodes) : if **name** argument is None, the vecteur is plugged
+> - [GeoNodes](geonodes.md#geonodes) : the Vector is plug as group output
+> - [ShaderNodes](shadernodes.md#shadernodes) : if **name** argument is None, the vecteur is plugged
 >.  into the `Displacement` socket of ERROR: Node '&Material Output' not found,
 >   otherwise it is plugged to a [AOV Output](https://docs.blender.org/manual/en/latest/render/shader_nodes/output/aov.html) node.
 

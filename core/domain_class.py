@@ -14,49 +14,24 @@ General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>.
 
+$ DOC transparent
+
 -----------------------------------------------------
 Scripting Geometry Nodes
 -----------------------------------------------------
 
-module : constants
+module : domain_class
 ------------------
-- declare global constants
+- Root class for actual domains
+
+This class shares the same root as geometry with implements the node cache
+and the selection mechanisms
 
 updates
 -------
 - creation : 2024/07/23
 - update :   2024/09/04
 - update :   2025/01/12
-
-$ DOC START
-
-The domain specific to geometries are the followings:
-    - Mesh:
-        - points (class <!Vertex>)
-        - faces (class <!Face>)
-        - edges (class <!Edge>)
-        - corners (clas <!Corner>)
-    - Curve:
-        - points (class <!SplinePoint>)
-        - splines (class <!Spline>)
-    - GreasePencil:
-        - layers (class <!Layer>)
-    - Instances
-        - insts (class <!Instance>)
-    - Cloud
-        - points (class <!CloudPoint>)
-    - Volume
-
-All the domain classes are a subclass of <!Domain>.
-<!Vertex>, <!SplinePoint> and <!CurvePoint> classes are subclasses of <!Point>.
-
-Domain classes are used for nodes with a _domain_ parameter such as 'Store Named Attribute'.
-When a node as a ***Selection*** socket, the value can be set using the get item syntax:
-
-``` python
-    # Plug the value of 'my_selection` into Selection socket
-    Mesh().points[my_selection].store_named_attribute("Name", value)
-```
 """
 
 __author__ = "Alain Bernard"
@@ -97,12 +72,40 @@ class Domain(GeoBase, NodeCache, PropLocker):
         cube.faces.store_named_attribute() # doamin = 'FACE'
         ```
 
+        When a node as a ***Selection*** socket, the value can be set using the get item syntax:
+
+        ``` python
+            # Plug the value of 'my_selection` into Selection socket
+            Mesh().points[my_selection].store_named_attribute("Name", value)
+        ```
+
         > [!IMPORTANT]
         > Domains are never instantiated directly but created by geometries.
 
+        The domain specific to geometries are the followings:
+            - Mesh:
+                - points (class <!Vertex>)
+                - faces (class <!Face>)
+                - edges (class <!Edge>)
+                - corners (clas <!Corner>)
+            - Curve:
+                - points (class <!SplinePoint>)
+                - splines (class <!Spline>)
+            - GreasePencil:
+                - layers (class <!Layer>)
+            - Instances
+                - insts (class <!Instance>)
+            - Cloud
+                - points (class <!CloudPoint>)
+            - Volume
+
+        All the domain classes are a subclass of <!Domain>.
+        <!Vertex>, <!SplinePoint> and <!SplinePoint> classes are subclasses of <!Point>.
+
         > See: <!Vertex>, <!Face>, <!Edge>, <!Corner>, <!SplinePoint>, <!Spline>, <!CloudPoint>, <!Instance>
 
-        Properties:
+        Properties
+        ----------
         - _geo (Geometry) : the geometry the domain belongs to
         """
         self._geo  = geometry

@@ -4,25 +4,9 @@
 Point(geometry: geonodes.core.geometry_class.Geometry)
 ```
 
-> Base class for geometry domains
+Point Domain
 
-A domain stores the default value to be set in node needing a **domain** parameter
-such as 'Store Named Attibute.
-
-All nodes requiring a domain parameter are implemented as domain method
-
-``` python
-cube = Mesh.Cube()
-cube.faces.store_named_attribute() # doamin = 'FACE'
-```
-
-> [!IMPORTANT]
-> Domains are never instantiated directly but created by geometries.
-
-> See: [Vertex](vertex.md#vertex), [Face](face.md#face), [Edge](edge.md#edge), [Corner](corner.md#corner), [SplinePoint](splinepoint.md#splinepoint), [Spline](spline.md#spline), [CloudPoint](cloudpoint.md#cloudpoint), [Instance](instance.md#instance)
-
-Properties:
-- _geo (Geometry) : the geometry the domain belongs to
+Root domain for [Vertex](vertex.md#vertex), [SplinePoint](splinepoint.md#splinepoint) and [CloudPoint](cloudpoint.md#cloudpoint)
 
 #### Arguments:
 - **geometry** (_Geometry_)

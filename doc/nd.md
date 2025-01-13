@@ -525,18 +525,22 @@ collection_info(collection=None, separate_children=None, reset_children=None, tr
 > classmethod
 
 ``` python
-color_ramp(fac=None)
+color_ramp(fac=None, stops=None, interpolation='LINEAR')
 ```
 
-> Node [Color Ramp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/color_ramp.html)
+Node [Color Ramp](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/color_ramp.html)
+
+Exposes utilities to manage the color ramp
+
+``` python
+ramp1 = Float(.5).color_ramp(stops=[.1, .9])
+ramp2 = ColorRamp(.5, stops=[(.1, (1, 0, 0)), (.5, 1), (.9, (0, 0, 1))])
+```
 
 #### Arguments:
-- **fac** (_Float_ = None) : socket 'Fac' (id: Fac)
-
-
-
-#### Returns:
-- **Color** (_Float_)
+- **fac** (_Float_ = None)
+- **stops** (_list of tuple(float, tuple)_ = None) : stops made of (float, color as tuple of floats)
+- **interpolation** (_'EASE', 'CARDINAL', 'LINEAR', 'B_SPLINE', 'CONSTANT'_ = LINEAR)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [nd](nd.md#nd) :black_small_square: [Content](nd.md#content) :black_small_square: [Methods](nd.md#methods)</sub>
 
@@ -2008,14 +2012,14 @@ group_output(is_active_output=True)
 > classmethod
 
 ``` python
-handle_type_selection(handle_type='AUTO', mode={'RIGHT', 'LEFT'})
+handle_type_selection(handle_type='AUTO', mode={'LEFT', 'RIGHT'})
 ```
 
 > Node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
 
 #### Arguments:
 - **handle_type** (_str_ = AUTO) : parameter 'handle_type' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-- **mode** (_set_ = {'RIGHT', 'LEFT'}) : parameter 'mode'
+- **mode** (_set_ = {'LEFT', 'RIGHT'}) : parameter 'mode'
 
 
 
@@ -4386,7 +4390,7 @@ set_handle_positions(curve=None, selection=None, position=None, offset=None, mod
 > classmethod
 
 ``` python
-set_handle_type(curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'})
+set_handle_type(curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'})
 ```
 
 > Node [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html)
@@ -4395,7 +4399,7 @@ set_handle_type(curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', '
 - **curve** (_Geometry_ = None) : socket 'Curve' (id: Curve)
 - **selection** (_Boolean_ = None) : socket 'Selection' (id: Selection)
 - **handle_type** (_str_ = AUTO) : parameter 'handle_type' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-- **mode** (_set_ = {'RIGHT', 'LEFT'}) : parameter 'mode'
+- **mode** (_set_ = {'LEFT', 'RIGHT'}) : parameter 'mode'
 
 
 

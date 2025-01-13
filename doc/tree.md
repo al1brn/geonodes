@@ -4,7 +4,7 @@
 Tree(tree_name: str, tree_type: str = 'GeometryNodeTree', clear: bool = True, fake_user: bool = False, is_group: bool = False, prefix: str | None = None)
 ```
 
-Root class for [GeoNodes](core-geono-geonodes.md#geonodes) and [ShaderNodes](core-shade1-shadernodes.md#shadernodes) trees.
+Root class for [GeoNodes](geonodes.md#geonodes) and [ShaderNodes](shadernodes.md#shadernodes) trees.
 
 The system manages a stack of Trees. When a Tree is created, it is placed at the top of the stack
 and becomes the current tree.
@@ -34,7 +34,7 @@ tree = Tree.current_tree
 
 > [!CAUTION]
 > This doesn't work with materials embedded shaders. So, make sure not to override
-> a existing shader when instantiating a new [ShaderNodes](core-shade1-shadernodes.md#shadernodes).
+> a existing shader when instantiating a new [ShaderNodes](shadernodes.md#shadernodes).
 
 The 'panel' argument is the default name to use when the tree is called from another tree using method [link_from](node.md#link_from).
 
@@ -131,7 +131,7 @@ Remove all the nodes in the Tree.
 __init__(tree_name: str, tree_type: str = 'GeometryNodeTree', clear: bool = True, fake_user: bool = False, is_group: bool = False, prefix: str | None = None)
 ```
 
-Root class for [GeoNodes](core-geono-geonodes.md#geonodes) and [ShaderNodes](core-shade1-shadernodes.md#shadernodes) trees.
+Root class for [GeoNodes](geonodes.md#geonodes) and [ShaderNodes](shadernodes.md#shadernodes) trees.
 
 The system manages a stack of Trees. When a Tree is created, it is placed at the top of the stack
 and becomes the current tree.
@@ -161,7 +161,7 @@ tree = Tree.current_tree
 
 > [!CAUTION]
 > This doesn't work with materials embedded shaders. So, make sure not to override
-> a existing shader when instantiating a new [ShaderNodes](core-shade1-shadernodes.md#shadernodes).
+> a existing shader when instantiating a new [ShaderNodes](shadernodes.md#shadernodes).
 
 The 'panel' argument is the default name to use when the tree is called from another tree using method [link_from](node.md#link_from).
 

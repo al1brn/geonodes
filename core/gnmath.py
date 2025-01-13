@@ -1,42 +1,34 @@
 """
-Created on 2024/07/26
+This file is part of the geonodes distribution (https://github.com/al1brn/geonodes).
+Copyright (c) 2025 Alain Bernard.
 
-@author: alain
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, version 3.
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 -----------------------------------------------------
 Scripting Geometry Nodes
 -----------------------------------------------------
 
 module : gnmath
----------------
-- Implement geometry nodes math functions
+-----------------
+- Math library
 
-Note that this module is name gnmath rather than math to avoid collision with math standard module
-
-classes
--------
-
-functions
----------
-'Math', 'Vector math' and 'Boolean Math' functions
-When there is a collision between Math and Vector Math, the vector math function is prefixed by character 'v':
-    - sin(Float)
-    - vsin(vector)
-
-Boolean math is prefixed by character 'b' when the name collides with python operator:
-    - band(bool1, bool2)
-    - xor(bool1, bool2)
-
-round, ceil, floor and trunc are implemented by 'Math' node and 'Float to Integer' node.
-The second one returns an Integer rather than a Float.
-The implementation from 'Math' is prefixed with 'math_':
-    - math_floor() -> Float
-    -floor() -> Integer
+Implements the operations fro 'Math', 'Integer Math', 'Vector Math' and 'Boolean Math'.
 
 updates
 -------
 - creation : 2024/07/23
-- update : 2024/09/04
+- update :   2024/09/04
+- update :   2025/01/12
 
 $ DOC START
 > math library
@@ -46,13 +38,22 @@ $ DOC START
 - **'Boolean Math'**
 - **'Math'**
 - **'Vector Math'**
+- **'Integer Math'**
 
 The name of the functions is the name of the 'operation' parameter of the node,
 with some changes according the following rules:
 - use python math library when it exists: <#sin> and <#cos> rather than 'sine' and 'cosine' for instance
 - prefix with char ***'v'*** for <!Vector> functions when it collides with a <!Float> function : <#vsin> and <#vcos> for instance
+- prefix with char ***'i'*** for <!Integer> functions when it collides with a <!Float> function : <#iadd> and <#imodulo> for instance
 - prefix with char ***'b'*** boolean reserved keywords : <#band>, <#bor> and <#bnot>
 """
+
+__author__ = "Alain Bernard"
+__email__  = "lesideesfroides@gmail.com"
+__copyright__ = "Copyright (c) 2025, Alain Bernard"
+__license__ = "GNU GPL V3"
+__version__ = "3.0.0"
+__blender_version__ = "4.3.0"
 
 import numpy as np
 

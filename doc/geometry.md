@@ -39,7 +39,7 @@ geometry = Geometry(name="Mesh") # Input group geometry
 - **P** : [point_cloud](geometry.md#point_cloud) :black_small_square: [position](geometry.md#position) :black_small_square: [proximity](geometry.md#proximity) :black_small_square: [proximity_edges](geometry.md#proximity_edges) :black_small_square: [proximity_faces](geometry.md#proximity_faces) :black_small_square: [proximity_points](geometry.md#proximity_points)
 - **R** : [raycast](geometry.md#raycast) :black_small_square: [raycast_interpolated](geometry.md#raycast_interpolated) :black_small_square: [raycast_nearest](geometry.md#raycast_nearest) :black_small_square: [realize](geometry.md#realize) :black_small_square: [remove_named_attribute](geometry.md#remove_named_attribute) :black_small_square: [remove_names](geometry.md#remove_names) :black_small_square: [replace_material](geometry.md#replace_material)
 - **S** : [separate_components](geometry.md#separate_components) :black_small_square: [set_id](geometry.md#set_id) :black_small_square: [set_material](geometry.md#set_material) :black_small_square: [set_material_index](geometry.md#set_material_index) :black_small_square: [set_name](geometry.md#set_name) :black_small_square: [set_position](geometry.md#set_position) :black_small_square: [set_spline_cyclic](geometry.md#set_spline_cyclic) :black_small_square: [set_spline_resolution](geometry.md#set_spline_resolution)
-- **T** : [to_instance](geometry.md#to_instance) :black_small_square: [transform](geometry.md#transform) :black_small_square: [transform_components](geometry.md#transform_components) :black_small_square: [transform_geometry](geometry.md#transform_geometry) :black_small_square: [transform_matrix](geometry.md#transform_matrix)
+- **T** : [to_instance](geometry.md#to_instance) :black_small_square: [transform](geometry.md#transform) :black_small_square: [transform_components](geometry.md#transform_components) :black_small_square: [transform_matrix](geometry.md#transform_matrix)
 - **V** : [viewer](geometry.md#viewer) :black_small_square: [volume](geometry.md#volume)
 
 ## Properties
@@ -689,8 +689,6 @@ realize(realize_all=None, depth=None)
 
 > Node [Realize Instances](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/realize_instances.html)
 
-> ***Jump*** : Socket refers to node output socket after the call
-
 #### Information:
 - **Socket** : self
 - **Socket** : self[selection]
@@ -1046,67 +1044,7 @@ to_instance(*geometry)
 > method
 
 ``` python
-transform(translation=None, rotation=None, scale=None, transform=None)
-```
-
-> Jump Method [Transform Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/transform_geometry.html)
-
-#### Information:
-- **Socket** : self
-
-
-
-#### Arguments:
-- **translation** (_Vector_ = None) : socket 'Translation' (id: Translation)
-- **rotation** (_Rotation_ = None) : socket 'Rotation' (id: Rotation)
-- **scale** (_Vector_ = None) : socket 'Scale' (id: Scale)
-- **transform** (_Matrix_ = None) : socket 'Transform' (id: Transform)
-
-
-
-#### Returns:
-- **self** :
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geometry.md#geometry) :black_small_square: [Content](geometry.md#content) :black_small_square: [Methods](geometry.md#methods)</sub>
-
-----------
-### transform_components()
-
-> method
-
-``` python
-transform_components(translation=None, rotation=None, scale=None)
-```
-
-> Node [Transform Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/transform_geometry.html)
-
-> ***Jump*** : Socket refers to node output socket after the call
-
-#### Information:
-- **Socket** : self
-- **Parameter** : 'COMPONENTS'
-
-
-
-#### Arguments:
-- **translation** (_Vector_ = None) : socket 'Translation' (id: Translation)
-- **rotation** (_Rotation_ = None) : socket 'Rotation' (id: Rotation)
-- **scale** (_Vector_ = None) : socket 'Scale' (id: Scale)
-
-
-
-#### Returns:
-- **Geometry** :
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geometry.md#geometry) :black_small_square: [Content](geometry.md#content) :black_small_square: [Methods](geometry.md#methods)</sub>
-
-----------
-### transform_geometry()
-
-> method
-
-``` python
-transform_geometry(translation=None, rotation=None, scale=None, transform=None, mode='COMPONENTS')
+transform(translation=None, rotation=None, scale=None, transform=None, mode='COMPONENTS')
 ```
 
 > Node [Transform Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/transform_geometry.html)
@@ -1133,12 +1071,44 @@ transform_geometry(translation=None, rotation=None, scale=None, transform=None, 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geometry.md#geometry) :black_small_square: [Content](geometry.md#content) :black_small_square: [Methods](geometry.md#methods)</sub>
 
 ----------
+### transform_components()
+
+> method
+
+``` python
+transform_components(translation=None, rotation=None, scale=None, transform=None)
+```
+
+> Node [Transform Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/transform_geometry.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'COMPONENTS'
+
+
+
+#### Arguments:
+- **translation** (_Vector_ = None) : socket 'Translation' (id: Translation)
+- **rotation** (_Rotation_ = None) : socket 'Rotation' (id: Rotation)
+- **scale** (_Vector_ = None) : socket 'Scale' (id: Scale)
+- **transform** (_Matrix_ = None) : socket 'Transform' (id: Transform)
+
+
+
+#### Returns:
+- **Geometry** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geometry.md#geometry) :black_small_square: [Content](geometry.md#content) :black_small_square: [Methods](geometry.md#methods)</sub>
+
+----------
 ### transform_matrix()
 
 > method
 
 ``` python
-transform_matrix(transform=None)
+transform_matrix(translation=None, rotation=None, scale=None, transform=None)
 ```
 
 > Node [Transform Geometry](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/transform_geometry.html)
@@ -1152,6 +1122,9 @@ transform_matrix(transform=None)
 
 
 #### Arguments:
+- **translation** (_Vector_ = None) : socket 'Translation' (id: Translation)
+- **rotation** (_Rotation_ = None) : socket 'Rotation' (id: Rotation)
+- **scale** (_Vector_ = None) : socket 'Scale' (id: Scale)
 - **transform** (_Matrix_ = None) : socket 'Transform' (id: Transform)
 
 

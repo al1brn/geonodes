@@ -455,7 +455,7 @@ clamp_range(min=None, max=None)
 > method
 
 ``` python
-color_ramp(stops=None)
+color_ramp(stops=None, interpolation='LINEAR')
 ```
 
 > Color Ramp
@@ -464,6 +464,7 @@ color_ramp(stops=None)
 
 #### Arguments:
 - **stops** (_list of tuple(float, tuple)_ = None) : stops made of (float, color as tuple of floats)
+- **interpolation** (_'EASE', 'CARDINAL', 'LINEAR', 'B_SPLINE', 'CONSTANT'_ = LINEAR)
 
 
 

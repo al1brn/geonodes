@@ -1,47 +1,48 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
-Created on 2024/07/26
+This file is part of the geonodes distribution (https://github.com/al1brn/geonodes).
+Copyright (c) 2025 Alain Bernard.
 
-@author: alain
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, version 3.
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 $ DOC transparent
 
 -----------------------------------------------------
-geonodes module
-- Scripting Geometry Nodes
+Scripting Geometry Nodes
 -----------------------------------------------------
 
 module : zones
---------------
-- Implements couples of nodes forming a zone : Simulation or Repeat
+----------------------
+- Zone class
+- Simulation class
+- Repeat class
+- ForEach class
 
-Zone arguments are set / get from one of the two nodes depending on the 'closed' status:
-    - closed :
-        - arguments are set to the input sockets of the INPUT node
-        - arguments are get from the output sockets of the OUTPUT node
-    - not closed
-        - arguments are set to the input sockets of the OUTPUT node
-        - arguments are get from the output sockets of the INPUT node
-
-The closed parameter is managed through context management:
-
-``` python
-with Repeat(geometry=None, offset=(1, 2, 3), index=0, iteration=10) as repeat_block:
-
-    repeat_block.geometry.offset = repeat_block.offset # Set Position Offset
-    repeat_block.geometry = repeat_block.geometry.join(other_geometry)
-
-    repeat_block.index += 1
-
-repeat_block.geometry.out()
-```
+This module implements the zones, i.e. the couple of input / output nodes
+forming a zone such as Repeat, Simulation or Foreach
 
 updates
 -------
 - creation : 2024/07/23
-- updated  : 2024/11/22
+- update :   2024/09/04
+- update :   2025/01/12
 """
+
+__author__ = "Alain Bernard"
+__email__  = "lesideesfroides@gmail.com"
+__copyright__ = "Copyright (c) 2025, Alain Bernard"
+__license__ = "GNU GPL V3"
+__version__ = "3.0.0"
+__blender_version__ = "4.3.0"
 
 from .scripterror import NodeError
 from . import utils
