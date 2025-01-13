@@ -491,22 +491,24 @@ The following conventions are used:
   - _Value_ socket : **value**
   - _Geometry_ socket : **geometry**
   - _Instance Index_ socket : **instance_index**
-2. **RULE B** : sockets are given first, following their order in the node, and parameters are placed after:
+2. **RULE B** : sockets are given in their order in the node. The parameters come after:
   - `float.map_range(0, 1, 10, 20)`  is equivalent to `float.map_range(from_min=0, from_max=1, ...)`
 2. **RULE C** : _Selection_ socket is omitted and is passed as item index of **Geometry**
-  - Don't write `mesh.set_id(selection=sel, ...)` but write instead `mesh[sel].set_id(...)`
+  - Don't write `mesh.set_id(selection=sel, ...)` but write instead `mesh[selection].set_id(...)`
 3. **RULE D** : arguments for parameters use the python parameter name:
   - Node _Volume to Mesh_ has the parameter _resolution_mode_ : `mesh = vol.to_mesh(..., resolution_mode='GRID')`
 4. **RULE E** : _domain_ parameter is omitted, it is taken from the calling domain:
-  - Don't write `mesh.extrude(domain='FACE')` but write instead `mesh.faces.extrude()`
+  - Don't write `mesh.store_named_attribute(domain='FACE')` but write instead `mesh.faces.store_named_attribute()`
 5. **RULE F** : _data_type_ parameter is omitted, it is deduced from the attribute type:
   - Don't write `sphere.sample_uv_surface(value=a, data_type='VECTOR')` but simply write
-    `sphere.sample_uv_surface(a)`
+    `sphere.sample_uv_surface(a)
+6. **RULE G** : nodes having a _mode_ like parameter are implemented once per possible value:
+  - You can write `mesh.raycast(mapping='INTERPOLATED')` or alternatively `mesh.raycast_interpolated()`
 
 > [!NOTE]
-> The first socket is initialized with the class instance calling the method:
-> `mesh.set_id(...)` connects the socket wrapped by the variable `mesh` to the
-> socket _Geometry_ of the node _Set ID_.
+> Use the button ***[Node Help]*** in the right _Tool_ panel in the ***Geometry Nodes***
+> editor to see all the methods which implement the selected nodes.
+
 
 ``` python
 from geonodes import *
@@ -545,9 +547,7 @@ with GeoNodes("Argument names"):
     # Don't write:
     # sphere.set_shade_smooth(shade_smooth=True, domain='FACE')
 
-    sphere.set_shade_smooth(shade_smooth=True)
-    # or
-    sphere.faces.shade_smooth = True
+    sphere.faces.set_shade_smooth(True)
 
     # ----------------------------------------------------------------------------------------------------
     # RULE F : data_type parameter is omitted, it is deduced from the argument type
@@ -559,7 +559,20 @@ with GeoNodes("Argument names"):
     a = Vector()
     b = sphere.sample_uv_surface(value=a)
 
-    # Make sure to have an output geometry
+    # ----------------------------------------------------------------------------------------------------
+    # RULE G : nodes having a _mode_ like parameter are implemented once per possible value
+    
+    # Mix Color
+    col1, col2 = Color(), Color()
+    
+    # You can mix using the factor_mode parameter
+    col = col1.mix(col2, factor_mode='UNIFORM')
+    
+    # You can alternatively used the methods suffixed by the mode
+    col = col1.mix_darken(col2)
+    col = col1.mix_multiply(col2)
+    col = col1.mix_burn(col2)
+
     sphere.out()
 ```
 
