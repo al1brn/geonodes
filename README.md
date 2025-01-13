@@ -1022,6 +1022,7 @@ with GeoNodes("Named Attributes"):
     w = Float("Weight")
     # Can be replaced by the following line for the sake of code clarity, 
     w = cube.points._Weight
+    w.out("Should be Weight")
 
     cube.points._Weight = Float("Weight") + 2
     # Can be written in a more pythonistic way
