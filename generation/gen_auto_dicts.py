@@ -191,7 +191,7 @@ GEONODES = {
 'Distribute Points in Volume' : [{name: 'distribute_points'}],
 'Distribute Points on Faces' :  [{},
                                  {param_loop: 'distribute_method', prefix: 'distribute_points_on_faces_'},
-                                 #{name: 'distribute_points', klass: 'Face'},
+                                 {name: 'distribute_points', klass: 'Face'},
                                  {param_loop: 'distribute_method', 'domain_value': 'FACE', prefix: 'distribute_points_'},
                                 ],
 'Dual Mesh'          :          [{name: 'dual'}],

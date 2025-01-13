@@ -2351,8 +2351,8 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                      'returns': 'OUT',
                                                      'signature': '(cls, '
                                                                   "handle_type='AUTO', "
-                                                                  "mode={'LEFT', "
-                                                                  "'RIGHT'})"}],
+                                                                  "mode={'RIGHT', "
+                                                                  "'LEFT'})"}],
                                           'nd': [{'func_name': 'handle_type_selection',
                                                   'is_classmethod': True,
                                                   'is_get': False,
@@ -2361,8 +2361,8 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                   'returns': 'OUT',
                                                   'signature': '(cls, '
                                                                "handle_type='AUTO', "
-                                                               "mode={'LEFT', "
-                                                               "'RIGHT'})"}]},
+                                                               "mode={'RIGHT', "
+                                                               "'LEFT'})"}]},
  'GeometryNodeCurveLength': {'Curve': [{'func_name': 'length',
                                         'is_classmethod': False,
                                         'is_get': False,
@@ -2646,8 +2646,8 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                             'returns': 'OUT',
                                             'signature': '(self, '
                                                          "handle_type='AUTO', "
-                                                         "mode={'LEFT', "
-                                                         "'RIGHT'})"},
+                                                         "mode={'RIGHT', "
+                                                         "'LEFT'})"},
                                            {'func_name': 'set_left_handle_type',
                                             'is_classmethod': False,
                                             'is_get': False,
@@ -2695,8 +2695,8 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                          'signature': '(cls, curve=None, '
                                                       'selection=None, '
                                                       "handle_type='AUTO', "
-                                                      "mode={'LEFT', "
-                                                      "'RIGHT'})"}]},
+                                                      "mode={'RIGHT', "
+                                                      "'LEFT'})"}]},
  'GeometryNodeCurveSpiral': {'Curve': [{'func_name': 'Spiral',
                                         'is_classmethod': True,
                                         'is_get': False,
@@ -3385,7 +3385,21 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                                'spacing=None, '
                                                                'threshold=None, '
                                                                "mode='DENSITY_RANDOM')"}]},
- 'GeometryNodeDistributePointsOnFaces': {'Face': [{'func_name': 'distribute_points_random',
+ 'GeometryNodeDistributePointsOnFaces': {'Face': [{'func_name': 'distribute_points',
+                                                   'is_classmethod': False,
+                                                   'is_get': False,
+                                                   'is_jump': False,
+                                                   'is_set': False,
+                                                   'node_name': 'Distribute '
+                                                                'Points on '
+                                                                'Faces',
+                                                   'returns': 'OUT',
+                                                   'signature': '(self, '
+                                                                'density=None, '
+                                                                'seed=None, '
+                                                                "distribute_method='RANDOM', "
+                                                                'use_legacy_normal=False)'},
+                                                  {'func_name': 'distribute_points_random',
                                                    'is_classmethod': False,
                                                    'is_get': False,
                                                    'is_jump': False,

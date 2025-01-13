@@ -375,7 +375,12 @@ class NodeInfo:
 
                 signature = impl.get('signature', "")
                 signature = signature.replace("self, ", "")
+                signature = signature.replace("self", "")
                 signature = signature.replace("cls, ", "")
+                signature = signature.replace("cls", "")
+
+                if impl.get('is_get', False):
+                    signature = ""
 
                 line += impl['func_name'] + signature
 

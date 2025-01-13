@@ -270,6 +270,29 @@ class Face(Socket):
         self._jump(node._out)
         return self._domain_to_geometry
 
+    def distribute_points(self, density=None, seed=None, distribute_method='RANDOM', use_legacy_normal=False):
+        """ > Node <&Node Distribute Points on Faces>
+
+        Information
+        -----------
+        - Socket 'Mesh' : self
+        - Socket 'Selection' : self[selection]
+
+        Arguments
+        ---------
+        - density (Float) : socket 'Density' (id: Density)
+        - seed (Integer) : socket 'Seed' (id: Seed)
+        - distribute_method (str): parameter 'distribute_method' in ('RANDOM', 'POISSON')
+        - use_legacy_normal (bool): parameter 'use_legacy_normal'
+
+        Returns
+        -------
+        - Cloud [normal_ (Vector), rotation_ (Rotation)]
+        """
+        utils.check_enum_arg('distribute_method', distribute_method, 'distribute_points', ('RANDOM', 'POISSON'))
+        node = Node('Distribute Points on Faces', sockets={'Mesh': self, 'Selection': self._sel, 'Density': density, 'Seed': seed}, distribute_method=distribute_method, use_legacy_normal=use_legacy_normal)
+        return node._out
+
     def distribute_points_random(self, density=None, seed=None, use_legacy_normal=False):
         """ > Node <&Node Distribute Points on Faces>
 
