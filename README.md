@@ -971,6 +971,63 @@ with GeoNodes("Call a Group"):
     geo.out()    
 ```
 
+## Named Attributes
+
+Named attributes can be stored using `store_named_attribute` or its short version `store`. These methods
+must be called on a domain, such as in `Mesh.points.store("A Named Int", 1)`.
+
+One can also uses the named attribute property syntax whichs create a named attribute for a property starting by '_'
+followed by a capital letter: `Mesh.points._A_Named_Int = 1` is equivalent to `Mesh.points.store("A Named Int", 1)`.
+
+> [!IMPORTANT]
+> To avoid names collision, the named attribute ***MUST*** start with a capital letter.
+> Except the first one, underscore chars are replaced by spaced in the stored name.
+
+Reading a named attribute is done using the class constructor `NamedAttribute`, or its short version `Named`.
+For instance, reading a Vector named "Direction" is done with `Vector.Named("Direction")`.
+
+One can even further shorten the syntax by instantating a new class with name of the attribute rather than with a value:
+`Vector("Direction")` is interpreted as `Vector.Named("Direction")`.
+
+``` python
+from geonodes import *
+
+with GeoNodes("Named Attributes"):
+    
+    cube = Mesh.Cube()
+    
+    # ----- Storing a named attribute
+    
+    cube.points.store_named_attribute("Weight", 1.)
+    # or the short name
+    cube.points.store("Weight", 1.)
+    # or using the named attribute property syntax
+    # Note that the first letter is a capital
+    cube.points._Weight = 1.
+    
+    # ----- Reading a named attribute    
+    
+    weight = nd.named_attribute("Weight", data_type='FLOAT')
+    
+    # A better way is to use a class constructor
+    weight = Float.NamedAttribute("Weight")
+    # or the short name
+    weight = Float.Named("Weight")
+    # or even shorter, using a string as constructor value
+    weight = Float("Weight")
+    
+    # ----- When a named attribute has be created, the named attribute property syntax
+    # can be used to read the attribute
+
+    w = Float("Weight")
+    # Can be replaced by the following line for the sake of code clarity, 
+    w = cube.points._Weight
+
+    cube.points._Weight = Float("Weight") + 2
+    # Can be written in a more pythonistic way
+    cube.points._Weight += 2
+``` 
+
 # Shaders
 
 **GeoNodes** can also be used to script shaders.
@@ -1029,3 +1086,5 @@ with ShaderNodes("Volume Shader"):
 
     ped.out()
 ```
+
+
