@@ -986,7 +986,7 @@ followed by a capital letter: `Mesh.points._A_Named_Int = 1` is equivalent to `M
 Reading a named attribute is done using the class constructor `NamedAttribute`, or its short version `Named`.
 For instance, reading a Vector named "Direction" is done with `Vector.Named("Direction")`.
 
-One can even further shorten the syntax by instantating a new class with name of the attribute rather than with a value:
+One can even further shorten the syntax by instantating a new class with an attribute name rather than with a value:
 `Vector("Direction")` is interpreted as `Vector.Named("Direction")`.
 
 ``` python
