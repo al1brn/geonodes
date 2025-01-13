@@ -58,7 +58,7 @@ class Menu(Socket):
 
         > [!IMPORTANT]
         > A Menu socket can't be instantiated directly. It must be created with
-        > `Socket.MenuSwitch` method
+        > <!Socket#MenuSwitch> method
 
         Arguments
         ---------

@@ -8,7 +8,7 @@ Menu(socket)
 
 > [!IMPORTANT]
 > A Menu socket can't be instantiated directly. It must be created with
-> `Socket.MenuSwitch` method
+> [MenuSwitch](socket.md#menuswitch) method
 
 #### Arguments:
 - **socket** (_socket_) : menu socket, can't be None
@@ -38,7 +38,7 @@ __init__(socket)
 
 > [!IMPORTANT]
 > A Menu socket can't be instantiated directly. It must be created with
-> `Socket.MenuSwitch` method
+> [MenuSwitch](socket.md#menuswitch) method
 
 #### Arguments:
 - **socket** (_socket_) : menu socket, can't be None
