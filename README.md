@@ -976,7 +976,7 @@ with GeoNodes("Call a Group"):
 Named attributes can be stored using `store_named_attribute` or its short version `store`. These methods
 must be called on a domain, such as in `Mesh.points.store("A Named Int", 1)`.
 
-One can also uses the named attribute property syntax whichs create a named attribute for a property starting by '_'
+One can also uses the named attribute property syntax which creates a named attribute for a property starting by '_'
 followed by a capital letter: `Mesh.points._A_Named_Int = 1` is equivalent to `Mesh.points.store("A Named Int", 1)`.
 
 > [!IMPORTANT]
