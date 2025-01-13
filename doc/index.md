@@ -76,6 +76,9 @@ Geometries have specific [Domain](domain.md#domain):
 - [Instances](instances.md#instances) :
   - [Instance](instance.md#instance) : property [insts](instances.md#insts)
 
+#### Demos
+- Of course, start with [Hello World](helloworld.md#helloworld)
+
 #### Cross reference
 
 - [Cross Reference](cross_reference.md#cross-reference) : to see how each Geometry Node can be scripted
@@ -141,6 +144,8 @@ Geometries have specific [Domain](domain.md#domain):
   - [ensure_uniques](core.md#ensure_uniques)
   - [get_tree](core.md#get_tree)
 - [Cross Reference](cross_reference.md#cross-reference)
+- [demos](demos.md#demos)
+  - [helloworld](helloworld.md#helloworld)
 - [generation](generation.md#generation)
   - [gendoc](gendoc.md#gendoc)
 - [Shader Cross Reference](shader_cross_reference.md#shader-cross-reference)
@@ -150,6 +155,7 @@ Geometries have specific [Domain](domain.md#domain):
 
 
 - [core](core.md#core)
+- [demos](demos.md#demos)
 - [generation](generation.md#generation)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [geonodes](index.md#geonodes) :black_small_square: [Content](index.md#content) :black_small_square: [geonodes](index.md#geonodes)</sub>

@@ -75,6 +75,9 @@ Geometries have specific <!Domain>:
 - <!Instances> :
   - <!Instance> : property <!Instances#insts>
 
+#### Demos
+- Of course, start with <!demos#helloworld"Hello World>
+
 #### Cross reference
 
 - <!Cross Reference> : to see how each Geometry Node can be scripted
@@ -110,6 +113,8 @@ if True:
     from .core import GeoNodes
 
     from .core import gnmath, nd
+
+    from . import demos
 
 
 # ----------------------------------------------------------------------------------------------------

@@ -1,28 +1,63 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
-Created on 2024/08/02
+This file is part of the geonodes distribution (https://github.com/al1brn/geonodes).
+Copyright (c) 2025 Alain Bernard.
 
-@author: alain
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, version 3.
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 -----------------------------------------------------
 Scripting Geometry Nodes
 -----------------------------------------------------
 
-module : demos/helloword
+module : demo helloworld
 ------------------------
-Basis demo : displaying a wave with an amplitude decreasing with distance
+
+This basic demo creates a onludlated surface.
 
 updates
 -------
-- creation : 2024/08/02
-- update   : 2024/08/03
+- creation : 2024/07/23
+- update :   2024/09/04
+- update :   2025/01/12
+
+$ DOC START
+
+This first demo creates an ondulated surface.
+You will see:
+- Creating a Geometry Nodes modifier
+- Creating input sockets
+- Creating a Mesh Grid
+- Computing
+- Changing the grid verices positions
+- Outputing the resulting grid
+
+``` python
+from geonodes.demos import helloworld
+
+helloword.demo()
+```
 """
+
+__author__ = "Alain Bernard"
+__email__  = "lesideesfroides@gmail.com"
+__copyright__ = "Copyright (c) 2025, Alain Bernard"
+__license__ = "GNU GPL V3"
+__version__ = "3.0.0"
+__blender_version__ = "4.3.0"
 
 
 from geonodes import *
 
-def demo(material="Material"):
+def demo():
 
     # The Geometry Nodes modifier
 
