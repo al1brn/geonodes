@@ -683,14 +683,24 @@ color = Color((.1, .2, .3), name="Color Parameter")
 string = String("A String", name="String Parameter")
 ```
 
-Additional parameters can be passed depending on the type of input.
+Additional parameters can be passed depending on the type of input:
+- ***tip*** for description
+- ***default_attribute**
+- ***subtype***
+- ***min*** and ***max***
+- ***hide_value***
+- ***hide_in_modifier***
+- ***single_value***
 
-One can fine tune the group inputs by using **min**, **max** and **tip** arguments.
-In addition, sub types can be defined by using dedicated constructor as shown below:
+<img src="doc/images/input_parameters.png" width="600" class="center">
+
+Rather than giving the subtype as a parameters, you can use the dedicated constructors
+as shown below:
+b types can be defined by using dedicated constructor as shown below:
 
 ``` python
 # An integer between 2 and 10
-resolution = Integer(2, "Resolution", min=2, max=10, tip="Mesh resolution")
+resolution = Integer(2, "Resolution", min=2, max=10, tip="Mesh resolution", single_value=True)
 
 # A float factor between 0 and 1
 factor = Float.Factor(.5, "Factor", 0, 1, "Modification factor")
