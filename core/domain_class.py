@@ -1,53 +1,71 @@
 """
-Created on 2024/07/26
+This file is part of the geonodes distribution (https://github.com/al1brn/geonodes).
+Copyright (c) 2025 Alain Bernard.
 
-@author: alain
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, version 3.
 
-$ DOC transparent
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 -----------------------------------------------------
 Scripting Geometry Nodes
 -----------------------------------------------------
 
-module : domainclass
-----------------------
-- Implement Domain
-
-The domain specific to geometries are the followings:
-    - Mesh:
-        - points
-        - faces
-        - edges
-        - corners
-    - Curve:
-        - points
-        - splines
-    - GreasePencil:
-        - layers
-    - Instances
-        - insts
-    - Cloud
-        - points
-    - Volume
-
-classes
--------
-- Domain        : Domain base class
-- Point         : POINT domain
-- Vertex        : POINT domain for Mesh
-- CloudPoint    : POINT domain for Points
-- Face          : FACE domain
-- Edge          : EDGE domain
-- Corner        : CORNER domain
-- Spline        : SPLINE domain
-- Instance      : INSTANCE domain
+module : constants
+------------------
+- declare global constants
 
 updates
 -------
 - creation : 2024/07/23
-- update : 2024/09/04
-- update : 2024/12/30
+- update :   2024/09/04
+- update :   2025/01/12
+
+$ DOC START
+
+The domain specific to geometries are the followings:
+    - Mesh:
+        - points (class <!Vertex>)
+        - faces (class <!Face>)
+        - edges (class <!Edge>)
+        - corners (clas <!Corner>)
+    - Curve:
+        - points (class <!SplinePoint>)
+        - splines (class <!Spline>)
+    - GreasePencil:
+        - layers (class <!Layer>)
+    - Instances
+        - insts (class <!Instance>)
+    - Cloud
+        - points (class <!CloudPoint>)
+    - Volume
+
+All the domain classes are a subclass of <!Domain>.
+<!Vertex>, <!SplinePoint> and <!CurvePoint> classes are subclasses of <!Point>.
+
+Domain classes are used for nodes with a _domain_ parameter such as 'Store Named Attribute'.
+When a node as a ***Selection*** socket, the value can be set using the get item syntax:
+
+``` python
+    # Plug the value of 'my_selection` into Selection socket
+    Mesh().points[my_selection].store_named_attribute("Name", value)
+```
 """
+
+__author__ = "Alain Bernard"
+__email__  = "lesideesfroides@gmail.com"
+__copyright__ = "Copyright (c) 2025, Alain Bernard"
+__license__ = "GNU GPL V3"
+__version__ = "3.0.0"
+__blender_version__ = "4.3.0"
+
 
 from inspect import Arguments
 import bpy
