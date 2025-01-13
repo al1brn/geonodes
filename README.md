@@ -976,12 +976,12 @@ with GeoNodes("Call a Group"):
 Named attributes can be stored using `store_named_attribute` or its short version `store`. These methods
 must be called on a domain, such as in `Mesh.points.store("A Named Int", 1)`.
 
-One can also uses the named attribute property syntax which creates a named attribute for a property starting by '_'
+One can also uses the named attribute property syntax which creates a named attribute for a property starting by underscore '_'
 followed by a capital letter: `Mesh.points._A_Named_Int = 1` is equivalent to `Mesh.points.store("A Named Int", 1)`.
 
 > [!IMPORTANT]
 > To avoid names collision, the named attribute ***MUST*** start with a capital letter.
-> Except the first one, underscore chars are replaced by spaced in the stored name.
+> Except the first one, underscore chars are replaced by spaces in the stored name.
 
 Reading a named attribute is done using the class constructor `NamedAttribute`, or its short version `Named`.
 For instance, reading a Vector named "Direction" is done with `Vector.Named("Direction")`.
