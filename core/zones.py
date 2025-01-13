@@ -312,7 +312,6 @@ class Zone:
                 # Trying to access fixed sockets (such as 'Delta Time')
                 if val is None:
                     if True:
-                        print("ZONZ", name, '>>>', list(self._input.get_socket_names('OUTPUT').keys()))
                         val = getattr(self._input, name)
                     else:
                         val = self._input.out_socket(name)

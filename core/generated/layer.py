@@ -26,7 +26,7 @@ class Layer(Socket):
         - Float [trailing_ (Float), total_ (Float)]
         """
         data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'MATRIX': 'TRANSFORM'}, 'Layer.accumulate_field', 'value')
-        node = {'Node'}('Accumulate Field', sockets={'Value': value, 'Group Index': group_id}, data_type=data_type, domain='LAYER')
+        node = Node('Accumulate Field', sockets={'Value': value, 'Group Index': group_id}, data_type=data_type, domain='LAYER')
         return node._out
 
     def attribute_statistic(self, attribute=None):
@@ -48,7 +48,7 @@ class Layer(Socket):
         - node [mean (Float), median (Float), sum (Float), min (Float), max (Float), range (Float), standard_deviation (Float), variance (Float)]
         """
         data_type = utils.get_argument_data_type(attribute, {'VALUE': 'FLOAT', 'VECTOR': 'FLOAT_VECTOR'}, 'Layer.attribute_statistic', 'attribute')
-        node = {'Node'}('Attribute Statistic', sockets={'Geometry': self, 'Selection': self._sel, 'Attribute': attribute}, data_type=data_type, domain='LAYER')
+        node = Node('Attribute Statistic', sockets={'Geometry': self, 'Selection': self._sel, 'Attribute': attribute}, data_type=data_type, domain='LAYER')
         return node
 
     def delete_geometry_all(self):
@@ -67,7 +67,7 @@ class Layer(Socket):
         -------
         - Geometry
         """
-        node = {'Node'}('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='LAYER', mode='ALL')
+        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='LAYER', mode='ALL')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -87,7 +87,7 @@ class Layer(Socket):
         -------
         - Geometry
         """
-        node = {'Node'}('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='LAYER', mode='EDGE_FACE')
+        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='LAYER', mode='EDGE_FACE')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -107,7 +107,7 @@ class Layer(Socket):
         -------
         - Geometry
         """
-        node = {'Node'}('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='LAYER', mode='ONLY_FACE')
+        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='LAYER', mode='ONLY_FACE')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -131,7 +131,7 @@ class Layer(Socket):
         - Geometry
         """
         utils.check_enum_arg('mode', mode, 'delete_geometry', ('ALL', 'EDGE_FACE', 'ONLY_FACE'))
-        node = {'Node'}('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='LAYER', mode=mode)
+        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='LAYER', mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -151,7 +151,7 @@ class Layer(Socket):
         -------
         - Geometry
         """
-        node = {'Node'}('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='LAYER', mode='ALL')
+        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='LAYER', mode='ALL')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -171,7 +171,7 @@ class Layer(Socket):
         -------
         - Geometry
         """
-        node = {'Node'}('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='LAYER', mode='EDGE_FACE')
+        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='LAYER', mode='EDGE_FACE')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -191,7 +191,7 @@ class Layer(Socket):
         -------
         - Geometry
         """
-        node = {'Node'}('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='LAYER', mode='ONLY_FACE')
+        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='LAYER', mode='ONLY_FACE')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -215,7 +215,7 @@ class Layer(Socket):
         - Geometry
         """
         utils.check_enum_arg('mode', mode, 'delete', ('ALL', 'EDGE_FACE', 'ONLY_FACE'))
-        node = {'Node'}('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='LAYER', mode=mode)
+        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='LAYER', mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -238,7 +238,7 @@ class Layer(Socket):
         -------
         - Geometry [duplicate_index_ (Integer)]
         """
-        node = {'Node'}('Duplicate Elements', sockets={'Geometry': self, 'Selection': self._sel, 'Amount': amount}, domain='LAYER')
+        node = Node('Duplicate Elements', sockets={'Geometry': self, 'Selection': self._sel, 'Amount': amount}, domain='LAYER')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -261,7 +261,7 @@ class Layer(Socket):
         - Float
         """
         data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Layer.evaluate_at_index', 'value')
-        node = {'Node'}('Evaluate at Index', sockets={'Index': index, 'Value': value}, data_type=data_type, domain='LAYER')
+        node = Node('Evaluate at Index', sockets={'Index': index, 'Value': value}, data_type=data_type, domain='LAYER')
         return node._out
 
     @classmethod
@@ -282,7 +282,7 @@ class Layer(Socket):
         - Float
         """
         data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Layer.evaluate_on_domain', 'value')
-        node = {'Node'}('Evaluate on Domain', sockets={'Value': value}, data_type=data_type, domain='LAYER')
+        node = Node('Evaluate on Domain', sockets={'Value': value}, data_type=data_type, domain='LAYER')
         return node._out
 
     @classmethod
@@ -297,7 +297,7 @@ class Layer(Socket):
         -------
         - Boolean
         """
-        node = {'Node'}('Named Layer Selection', sockets={'Name': name})
+        node = Node('Named Layer Selection', sockets={'Name': name})
         return node._out
 
     def sample_index(self, value=None, index=None, clamp=False):
@@ -320,7 +320,7 @@ class Layer(Socket):
         - Float
         """
         data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Layer.sample_index', 'value')
-        node = {'Node'}('Sample Index', sockets={'Geometry': self, 'Value': value, 'Index': index}, clamp=clamp, data_type=data_type, domain='LAYER')
+        node = Node('Sample Index', sockets={'Geometry': self, 'Value': value, 'Index': index}, clamp=clamp, data_type=data_type, domain='LAYER')
         return node._out
 
     def separate(self):
@@ -338,7 +338,7 @@ class Layer(Socket):
         -------
         - Geometry [inverted_ (Geometry)]
         """
-        node = {'Node'}('Separate Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='LAYER')
+        node = Node('Separate Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='LAYER')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -359,7 +359,7 @@ class Layer(Socket):
         -------
         - Instances [group_id_ (Integer)]
         """
-        node = {'Node'}('Split to Instances', sockets={'Geometry': self, 'Selection': self._sel, 'Group ID': group_id}, domain='LAYER')
+        node = Node('Split to Instances', sockets={'Geometry': self, 'Selection': self._sel, 'Group ID': group_id}, domain='LAYER')
         return node._out
 
     def store_named_attribute(self, name=None, value=None):
@@ -384,7 +384,7 @@ class Layer(Socket):
         - Geometry
         """
         data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Layer.store_named_attribute', 'value')
-        node = {'Node'}('Store Named Attribute', sockets={'Geometry': self, 'Selection': self._sel, 'Name': name, 'Value': value}, data_type=data_type, domain='LAYER')
+        node = Node('Store Named Attribute', sockets={'Geometry': self, 'Selection': self._sel, 'Name': name, 'Value': value}, data_type=data_type, domain='LAYER')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -410,7 +410,7 @@ class Layer(Socket):
         - Geometry
         """
         data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Layer.store', 'value')
-        node = {'Node'}('Store Named Attribute', sockets={'Geometry': self, 'Selection': self._sel, 'Name': name, 'Value': value}, data_type=data_type, domain='LAYER')
+        node = Node('Store Named Attribute', sockets={'Geometry': self, 'Selection': self._sel, 'Name': name, 'Value': value}, data_type=data_type, domain='LAYER')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -429,6 +429,6 @@ class Layer(Socket):
 
         """
         data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Layer.viewer', 'value')
-        node = {'Node'}('Viewer', sockets={'Geometry': self, 'Value': value}, data_type=data_type, domain='LAYER')
+        node = Node('Viewer', sockets={'Geometry': self, 'Value': value}, data_type=data_type, domain='LAYER')
         return
 

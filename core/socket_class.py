@@ -711,7 +711,6 @@ class Socket(NodeCache, PropLocker):
             # ----- Plug the value
 
             #node.plug_value_into_socket(item, node.in_socket(1 + i))
-            print("INDEX SWITCH", 1+i, '<-', item)
             node[1 + i] = item
 
         # ----- Plug the index

@@ -32,7 +32,7 @@ class CloudPoint(Socket):
         -------
         - Cloud
         """
-        node = {'Node'}('Set Point Radius', sockets={'Points': self, 'Selection': self._sel, 'Radius': radius})
+        node = Node('Set Point Radius', sockets={'Points': self, 'Selection': self._sel, 'Radius': radius})
         self._jump(node._out)
         return self._domain_to_geometry
 

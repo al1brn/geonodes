@@ -61,7 +61,7 @@ class Instances(Socket):
         -------
         - Rotation
         """
-        node = {'Node'}('Instance Rotation', sockets={})
+        node = Node('Instance Rotation', sockets={})
         return node._out
 
     @classmethod
@@ -73,7 +73,7 @@ class Instances(Socket):
         -------
         - Vector
         """
-        node = {'Node'}('Instance Scale', sockets={})
+        node = Node('Instance Scale', sockets={})
         return node._out
 
     def to_points(self, position=None, radius=None):
@@ -93,7 +93,7 @@ class Instances(Socket):
         -------
         - Cloud
         """
-        node = {'Node'}('Instances to Points', sockets={'Instances': self, 'Selection': self._sel, 'Position': position, 'Radius': radius})
+        node = Node('Instances to Points', sockets={'Instances': self, 'Selection': self._sel, 'Position': position, 'Radius': radius})
         return node._out
 
     def rotate(self, rotation=None, pivot_point=None, local_space=None):
@@ -116,7 +116,7 @@ class Instances(Socket):
         -------
         - Instances
         """
-        node = {'Node'}('Rotate Instances', sockets={'Instances': self, 'Selection': self._sel, 'Rotation': rotation, 'Pivot Point': pivot_point, 'Local Space': local_space})
+        node = Node('Rotate Instances', sockets={'Instances': self, 'Selection': self._sel, 'Rotation': rotation, 'Pivot Point': pivot_point, 'Local Space': local_space})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -140,7 +140,7 @@ class Instances(Socket):
         -------
         - Instances
         """
-        node = {'Node'}('Scale Instances', sockets={'Instances': self, 'Selection': self._sel, 'Scale': scale, 'Center': center, 'Local Space': local_space})
+        node = Node('Scale Instances', sockets={'Instances': self, 'Selection': self._sel, 'Scale': scale, 'Center': center, 'Local Space': local_space})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -162,7 +162,7 @@ class Instances(Socket):
         -------
         - Instances
         """
-        node = {'Node'}('Set Instance Transform', sockets={'Instances': self, 'Selection': self._sel, 'Transform': transform})
+        node = Node('Set Instance Transform', sockets={'Instances': self, 'Selection': self._sel, 'Transform': transform})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -185,7 +185,7 @@ class Instances(Socket):
         -------
         - Instances
         """
-        node = {'Node'}('Translate Instances', sockets={'Instances': self, 'Selection': self._sel, 'Translation': translation, 'Local Space': local_space})
+        node = Node('Translate Instances', sockets={'Instances': self, 'Selection': self._sel, 'Translation': translation, 'Local Space': local_space})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -214,7 +214,7 @@ class Instances(Socket):
         -------
         - Instances
         """
-        node = {'Node'}('Set Instance Transform', sockets={'Instances': self, 'Selection': self._sel, 'Transform': transform})
+        node = Node('Set Instance Transform', sockets={'Instances': self, 'Selection': self._sel, 'Transform': transform})
         self._jump(node._out)
         return self._domain_to_geometry
 

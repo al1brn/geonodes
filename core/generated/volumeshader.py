@@ -31,7 +31,7 @@ class VolumeShader(Socket):
         -------
         - node [color (Color), density (Float), flame (Float), temperature (Float)]
         """
-        node = {'Node'}('Volume Info', sockets={})
+        node = Node('Volume Info', sockets={})
         return node
 
     @classmethod

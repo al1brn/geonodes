@@ -6281,7 +6281,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
  'GeometryNodeRealizeInstances': {'Geometry': [{'func_name': 'realize',
                                                 'is_classmethod': False,
                                                 'is_get': False,
-                                                'is_jump': True,
+                                                'is_jump': False,
                                                 'is_set': False,
                                                 'node_name': 'Realize '
                                                              'Instances',

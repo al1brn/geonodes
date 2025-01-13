@@ -1474,7 +1474,7 @@ class NodeInfo:
     # Method implementation
 
     def method_code(self, gen, func: str = 'method', func_name: str | None = None,
-        class_name: str | None = None, self_: str | None = None, is_class_method: bool = False, only_enabled: bool = True,
+        class_name: str | None = None, self_: str | None = None, is_class_method: bool = False, jump_method: bool | None = None, only_enabled: bool = True,
         domain_loop: bool = True, domain_param: str | None = None, domain_value : str | None = None,
         data_type_loop: bool = True, set_in_socket: str | None = None, ret: str | None = 'OUT', cache: bool = False,
         check_existing: bool = True,
@@ -1489,6 +1489,7 @@ class NodeInfo:
         - class_name : class name, deduced from output socket type if None
         - self_ : name of the socket to use as self value
         - is_class_method : implement as class method
+        - jump_method : force or disable is_jump automatic flag
         - only_enabled : use only enabled input sockets
         - domain_loop : loop on domain values
         - domain_param : name of domain node parameter if any
@@ -1543,8 +1544,8 @@ class NodeInfo:
 
                 for domain_value in self.enum_params[domain_param]:
                     self.method_code(gen, func=func, func_name=func_name,
-                        class_name=class_name, self_=self_, is_class_method=is_class_method, only_enabled=only_enabled,
-                        domain_value=domain_value,
+                        class_name=class_name, self_=self_, is_class_method=is_class_method, jump_method=jump_method,
+                        only_enabled=only_enabled, domain_value=domain_value,
                         data_type_loop=data_type_loop, domain_param=domain_value, ret=ret, cache=cache,
                         **{domain_param: domain_value}, check_existing=check_existing, **parameters)
 
@@ -1598,7 +1599,8 @@ class NodeInfo:
         if data_type_loop and (data_type is not None) and (self_ in data_type_sockets['in_sockets']):
             for value in self.enum_params[data_type]:
                 self.method_code(gen, func=func, func_name=func_name,
-                    class_name=class_name, self_=self_, is_class_method=is_class_method, only_enabled=only_enabled,
+                    class_name=class_name, self_=self_, is_class_method=is_class_method, jump_method=jump_method,
+                    only_enabled=only_enabled,
                     domain_loop=False, domain_value=domain_value, ret=ret, cache=cache, **{data_type: value}, check_existing=check_existing, **parameters)
 
             self.set_user_parameters(**mem_params)
@@ -1746,6 +1748,9 @@ class NodeInfo:
             if (free_args_count == 0) and (ret is not None) and (len(out) == 1):
                 is_get = True
 
+        if jump_method is not None:
+            is_jump = jump_method
+
         # ----- Adjust is_get
 
         if is_get:
@@ -1800,7 +1805,7 @@ class NodeInfo:
         if is_class_method:
             cache = False
 
-        snode = 'self._cache' if cache else {self.get_node_class(self.bnode.name)}
+        snode = 'self._cache' if cache else self.get_node_class(self.bnode.name)
         s += f"{_2}node = {snode}{self.node_call(args)}\n"
 
         # ----- Jump

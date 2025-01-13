@@ -475,6 +475,8 @@ class TreeInterface:
             if s.socket_type == 'NodeSocketGeometry':
                 if name is None or nm == name:
                     self.move_socket_to(s, 0)
+                    if s.description == DELETION:
+                        s.description = ""
                     return
 
         if name is None:

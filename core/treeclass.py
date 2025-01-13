@@ -2204,7 +2204,7 @@ class G:
         geo = G.translate_geometry(geo, (1, 0, 0), .5)
     ```
     """
-    VERBOSE = True
+    VERBOSE = False
 
     @staticmethod
     def create_prefix(name):

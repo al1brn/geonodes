@@ -380,8 +380,6 @@ class V4:
             with Layout("Add"):
                 add = V4([v0[i] + v1[i] for i in range(4)])
 
-                print("ADD", add)
-
             with Layout("Subtract"):
                 sub = V4([v0[i] - v1[i] for i in range(4)])
 

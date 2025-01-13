@@ -217,13 +217,13 @@ class Node:
     @property
     def has_node_editor(self):
 
-        return False
+        if not self.tree.get_true_dims:
+            return False
 
         for area in bpy.context.screen.areas:
             if area.type == 'NODE_EDITOR':
                 for space in area.spaces:
                     if space.type == 'NODE_EDITOR' and space.node_tree == self.tree.btree:
-                        space.tag_redraw()
                         return True
 
         return False
@@ -989,21 +989,24 @@ class Frame(Node):
 # A Tree
 
 class Tree(Frame):
-    def __init__(self, btree):
+    def __init__(self, btree, get_true_dims=False):
         """ > Tree wrapper
 
         Properties
         -----------
         - btree (bpy.types.Tree)
+        - get_true_dims (bool) : read the dimensions from nodes are use an estimate
 
         Arguments
         ---------
         - btree (bpy.types.Tree) : the tree to wrap
+        - get_true_dims (bool) : read the dimensions from nodes are use an estimate
         """
         super().__init__(self, None)
         if isinstance(btree, str):
             btree = bpy.data.node_groups[btree]
         self.btree = btree
+        self.get_true_dims = get_true_dims
 
         # ----- Nodes
 
@@ -1329,12 +1332,12 @@ class Tree(Frame):
 # ====================================================================================================
 # Arrange a tree
 
-def arrange(btree, reroutes=True, input_in_frames=True):
+def arrange(btree, reroutes=True, input_in_frames=True, get_true_dims=False):
 
     # Try to update node dimensions !
     Node.wait()
 
-    tree = Tree(btree)
+    tree = Tree(btree, get_true_dims=get_true_dims)
 
     if reroutes:
         tree.del_reroutes()
@@ -1383,7 +1386,7 @@ class ArrangeNodesOperator(bpy.types.Operator):
 
     def execute(self, context):
         space = context.space_data
-        arrange(space.edit_tree)
+        arrange(space.edit_tree, get_true_dims=True)
         return {'FINISHED'}
 
 class NodeDumpOperator(bpy.types.Operator):

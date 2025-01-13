@@ -21,6 +21,7 @@ rename       = 'rename'
 is_cm        = 'is_class_method'
 check        = 'check_existing'
 ign_sock     = 'ignore_sockets'
+jump         = 'jump_method'
 
 setter       = 'setter'
 getter       = 'getter'
@@ -316,7 +317,7 @@ GEONODES = {
 'Points to Volume'   :          [{name: 'to_volume'}],
 'Geometry Proximity' :          [{name: 'proximity'}, {param_loop: 'target_element', prefix: 'proximity_'}],
 'Raycast'            :          [{ret: 'NODE'}, {param_loop: 'mapping', prefix: 'raycast_', ret: 'NODE'}],
-'Realize Instances'  :          [{name: 'realize'}],
+'Realize Instances'  :          [{name: 'realize', jump: False}],
 'Remove Named Attribute' :      [{},
                                  {name: 'remove_names', parameters: {'pattern_mode': 'WILDCARD'}}
                                 ],

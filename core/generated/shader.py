@@ -22,7 +22,7 @@ class Shader(Socket):
         -------
         - Shader
         """
-        node = {'Node'}('Add Shader', sockets={'Shader': self, 'Shader_001': shader})
+        node = Node('Add Shader', sockets={'Shader': self, 'Shader_001': shader})
         return node._out
 
     @classmethod
@@ -376,7 +376,7 @@ class Shader(Socket):
         -------
         - Shader
         """
-        node = {'Node'}('Mix Shader', sockets={'Shader': self, 'Shader_001': shader, 'Fac': fac})
+        node = Node('Mix Shader', sockets={'Shader': self, 'Shader_001': shader, 'Fac': fac})
         return node._out
 
     def light_output(self, is_active_output=True, target='ALL'):
@@ -396,7 +396,7 @@ class Shader(Socket):
         - None
         """
         utils.check_enum_arg('target', target, 'light_output', ('ALL', 'EEVEE', 'CYCLES'))
-        node = {'Node'}('Light Output', sockets={'Surface': self}, is_active_output=is_active_output, target=target)
+        node = Node('Light Output', sockets={'Surface': self}, is_active_output=is_active_output, target=target)
         return node._out
 
     def material_output(self, volume=None, displacement=None, thickness=None, is_active_output=True, target='ALL'):
@@ -419,7 +419,7 @@ class Shader(Socket):
         - None
         """
         utils.check_enum_arg('target', target, 'material_output', ('ALL', 'EEVEE', 'CYCLES'))
-        node = {'Node'}('Material Output', sockets={'Surface': self, 'Volume': volume, 'Displacement': displacement, 'Thickness': thickness}, is_active_output=is_active_output, target=target)
+        node = Node('Material Output', sockets={'Surface': self, 'Volume': volume, 'Displacement': displacement, 'Thickness': thickness}, is_active_output=is_active_output, target=target)
         return node._out
 
     def world_output(self, volume=None, is_active_output=True, target='ALL'):
@@ -440,7 +440,7 @@ class Shader(Socket):
         - None
         """
         utils.check_enum_arg('target', target, 'world_output', ('ALL', 'EEVEE', 'CYCLES'))
-        node = {'Node'}('World Output', sockets={'Surface': self, 'Volume': volume}, is_active_output=is_active_output, target=target)
+        node = Node('World Output', sockets={'Surface': self, 'Volume': volume}, is_active_output=is_active_output, target=target)
         return node._out
 
     def to_rgb(self):
@@ -454,7 +454,7 @@ class Shader(Socket):
         -------
         - Color [alpha_ (Float)]
         """
-        node = {'Node'}('Shader to RGB', sockets={'Shader': self})
+        node = Node('Shader to RGB', sockets={'Shader': self})
         return node._out
 
     @classmethod
