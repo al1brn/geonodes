@@ -603,9 +603,19 @@ with GeoNodes("Returned Values"):
     # The returned value has a property named uv_map_
 
     cube = Mesh.Cube()
-    cube.corners.store("UV Map", cube.node.uv_map)
-    # equivalent to:
-    # cube.corners.store("UV Map", cube.uv_map_)
+    
+    # The following line is equivalent to
+    # uv_map = cube.node.uv_map
+    uv_map = cube.uv_map_
+    
+    # Store the uv map using the store method which is a shortcut
+    # store_named_attribute
+    
+    cube.corners.store("UV Map", uv_map)
+    
+    # You can also used the method dedicated to store uv maps as 2-vectors
+    # rather than standard vectors
+    cube.corners.store_uv("UV2", uv_map)
 
     # ----------------------------------------------------------------------------------------------------
     # Advanced example
@@ -672,6 +682,8 @@ vector = Vector((1, 2, 3), name="Vector Parameter")
 color = Color((.1, .2, .3), name="Color Parameter")
 string = String("A String", name="String Parameter")
 ```
+
+Additional parameters can be passed depending on the type of input.
 
 One can fine tune the group inputs by using **min**, **max** and **tip** arguments.
 In addition, sub types can be defined by using dedicated constructor as shown below:
