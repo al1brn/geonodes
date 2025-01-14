@@ -582,6 +582,16 @@ def get_prop_name(attr_name):
     return "_" + attr_name.replace(' ', '_')
 
 # =============================================================================================================================
+# Node or socket label
+
+def get_label(obj):
+    if obj.label == "" or obj.label is None:
+        return obj.name
+    else:
+        return obj.label
+
+
+# =============================================================================================================================
 # Node 'Color Ramp' utilities
 
 def color_ramp_get_stops(bnode, as_str=False):

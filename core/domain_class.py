@@ -252,8 +252,10 @@ class Domain(GeoBase, NodeCache, PropLocker):
                 attrs = {'attribute': attribute, **attributes}
 
         node = Node('Capture Attribute', sockets={'Geometry': self})
+
         node._set_items(**attrs)
         self._jump(node._out)
+
         if len(attrs) == 1:
             return node[1]
         else:

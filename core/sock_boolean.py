@@ -46,9 +46,10 @@ import numpy as np
 
 import bpy
 from . import utils
-from .treeclass import Tree, Node
-from .socket_class import Socket
+from . treeclass import Tree, Node
+from . socket_class import Socket
 from . import generated
+from . scripterror import NodeError
 
 # =============================================================================================================================
 # Boolean

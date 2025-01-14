@@ -56,11 +56,12 @@ import numpy as np
 import bpy
 import mathutils
 
-from .scripterror import NodeError
+from . scripterror import NodeError
 from . import constants
 from . import utils
-from .treeclass import TreeInterface, Tree, Node
-from .proplocker import PropLocker
+from . treeinterface import DELETION
+from . treeclass import TreeInterface, Tree, Node
+from . proplocker import PropLocker
 
 # =============================================================================================================================
 # =============================================================================================================================
@@ -246,6 +247,35 @@ class Socket(NodeCache, PropLocker):
 
         else:
             return None
+
+    # ----------------------------------------------------------------------------------------------------
+    # Mark for deletion
+
+    def _mark_for_delete(self, value):
+        for obj in [self._interface_socket, self._interface_socket.parent]:
+            if value:
+                obj.description = DELETION
+            else:
+                if obj.description == DELETION:
+                    obj.description = ""
+
+
+    # ----------------------------------------------------------------------------------------------------
+    # Name or label
+
+    @property
+    def _name(self):
+        """ Return the name or the label
+
+        Returns
+        -------
+        - str : default is ""
+        """
+        if self._bnode.label == "":
+            return self._bnode.name
+        else:
+            assert(self._bnode.label is not None)
+            return self._bnode.label
 
     # ----------------------------------------------------------------------------------------------------
     # Get the panel name

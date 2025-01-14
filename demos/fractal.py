@@ -244,11 +244,12 @@ def camera_culling():
 
         # ===== Arguments
 
-        position     = Vector(0,   "Position", tip="Point position")
+        position     = Vector(0,   "Position", tip="Point position", default_input='POSITION')
         radius       = Float(0,    "Radius", min=0, tip="Position radius")
-        normal       = Vector(0,   "Normal", tip="Point direction")
+        normal       = Vector(0,   "Normal", tip="Point direction", default_input='NORMAL')
 
         with Panel("Camera Culling"):
+            ok_cc        = Boolean(True, "Camera Culling")
             focal_length = Float(50,   "Focal Length", min=1, tip="Focal length in mm")
             aspect_ratio = Float(16/9, "Aspect Ratio", tip="Camera aspect ratio, 16/9 for instance")
 
@@ -269,7 +270,7 @@ def camera_culling():
 
         with Layout("Behind the Sensor"):
             z_pos = pos.z._lc("Z Position")
-            behind = z_pos - radius > 0
+            behind = (z_pos - radius > 0) & ok_cc
 
         # ===== Projection of the normal along the observation direction
         # Negative values are for escaping normals
@@ -294,10 +295,10 @@ def camera_culling():
             half_width  = aspect_ratio/2 + app_radius
             half_height = .5 + app_radius
 
-            outside_left  = proj.x < -half_width
-            outside_right = proj.x >  half_width
-            outside_bot   = proj.y < -half_height
-            outside_top   = proj.y >  half_height
+            outside_left  = (proj.x < -half_width) & ok_cc
+            outside_right = (proj.x >  half_width) & ok_cc
+            outside_bot   = (proj.y < -half_height) & ok_cc
+            outside_top   = (proj.y >  half_height) & ok_cc
 
             outside = outside_left | outside_right | outside_bot | outside_top
 
@@ -326,7 +327,10 @@ def camera_culling():
 
         # ===== Projection into the camera space
 
-        node = G.camera.projection(position=nd.position, radius=nd.radius, link_from={'exclude': 'Normal'}).node
+        if True:
+            node = G.camera.projection(radius=nd.radius).node.link_from(exclude=['Position', 'Normal'])
+        else:
+            node = G.camera.projection(position=nd.position, radius=nd.radius, link_from={'exclude': 'Normal'}).node
 
         cloud.points[node.behind | node.outside].delete()
 
@@ -341,7 +345,11 @@ def camera_culling():
 
         # ===== Projection
 
-        node = G.camera.projection(position=nd.position, link_from={'exclude': 'Normal'}).node
+        if True:
+            node = G.camera.projection().node.link_from(exclude=['Normal', 'Normal'])
+        else:
+            node = G.camera.projection(position=nd.position, link_from={'exclude': 'Normal'}).node
+
 
         # Get the created input sockets
         radius = Float.Input("Radius")
@@ -422,7 +430,10 @@ def camera_culling():
         # ===== All the corners behind
 
         # Points projection
-        node = G.camera.projection(position=nd.position, link_from={'exclude': ['Radius', 'Normal']}).node
+        if True:
+            node = G.camera.projection().node.link_from(include="Camera Culling")
+        else:
+            node = G.camera.projection(position=nd.position, link_from={'exclude': ['Radius', 'Normal']}).node
 
         with Layout("Faces with all vertices behind the sensor"):
             mesh.points.store("TEMP Vertex Behind", Float(node.behind))
@@ -559,9 +570,12 @@ def sierpinski():
             with Layout("The 3 triangle corners"):
                 pts = [rep.triangles.points.sample_index(nd.position, nd.vertex_of_corner(nd.offset_corner_in_face(nd.corners_of_face(), i))) for i in range(3)]
 
-            node = G.camera.projection(position=nd.position, radius=Float.Named("Size"), link_from={'exclude': 'Normal'}).node
+            if True:
+                node = G.camera.projection(radius=Float.Named("Size")).node.link_from(include='Camera Culling')
+            else:
+                node = G.camera.projection(position=nd.position, radius=Float.Named("Size"), link_from={'exclude': 'Normal'}).node
 
-            rep.triangles.faces["Iterate"].store("Iterate", -(node.behind | node.outside | (node.radius < prec)))
+            rep.triangles.faces[Boolean("Iterate")].store("Iterate", -(node.behind | node.outside | (node.radius < prec)))
             rep.triangles.faces.store("Size", Float.Named("Size")/2)
 
             with rep.triangles.faces.for_each(iterate=Boolean.Named("Iterate"), p0=pts[0], p1=pts[1], p2=pts[2]) as feel:
@@ -660,7 +674,10 @@ def multires_surface():
 
             # ===== Camera projection
 
-            node = G.camera.projection(position=position, radius=Float.Named("Size"), link_from={'exclude':'Normal'}).node
+            if True:
+                node = G.camera.projection(position=position, radius=Float.Named("Size")).node.link_from(include="Camera Culling")
+            else:
+                node = G.camera.projection(position=position, radius=Float.Named("Size"), link_from={'exclude':'Normal'}).node
 
             # ===== Stop iteration for hidden points or small apparent size
 
@@ -730,7 +747,10 @@ def multires_surface():
 
             radius = 4*gnmath.sqrt(nd.face_area)
             #radius = nd.face_area
-            node = G.camera.projection(position=nd.position, radius=radius, normal=nd.normal).node
+            if True:
+                node = G.camera.projection(radius=radius, normal=nd.normal).node.link_from(include="Camera Culling")
+            else:
+                node = G.camera.projection(position=nd.position, radius=radius, normal=nd.normal).node
 
             iterate = iterate & -(node.behind | node.outside | (node.radius < prec) | (node.outwards > back_faces))
             #iterate = iterate & -(node.radius < prec)
@@ -956,7 +976,10 @@ def romanesco():
             # ===== Visible points to iterate
 
             with Layout("Projection"):
-                node = G.camera.projection(position=nd.position, radius=Float("Scale")*size, normal=Vector("Normal"), link_from='TREE').node
+                if True:
+                    node = G.camera.projection(radius=Float("Scale")*size, normal=Vector("Normal")).node.link_from(include="Camera Culling")
+                else:
+                    node = G.camera.projection(position=nd.position, radius=Float("Scale")*size, normal=Vector("Normal"), link_from='TREE').node
 
                 iterate = Boolean("Iterate") & still_ok
                 iterate &= -(node.behind | node.outside | (node.radius < prec) | (node.outwards > back_faces))

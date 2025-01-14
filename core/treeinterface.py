@@ -314,11 +314,25 @@ class TreeInterface:
     # Get a socket by its socket name
 
     def by_name(self, in_out, name, as_argument=True, halt=True):
+        """ Get the socket by its name
+
+        Arguments
+        ---------
+        - in_out (str) : str in ('INPUT', 'OUTPUT')
+        - name (str) : searched named
+        - as_argument (bool = True) : the name is argument or socket name
+        - halt (bool = False) : raises an error if not found
+
+        Returns
+        -------
+        - Node, Interface socket or list of sockets depending on the arguments
+        """
 
         assert(in_out in ('INPUT', 'OUTPUT'))
 
         if as_argument:
             socket_name = name
+
         else:
             parts = name.split('>')
             if len(parts) == 2:
@@ -327,7 +341,7 @@ class TreeInterface:
                 socket_name = name
 
         names = self.get_unique_names(in_out=in_out, as_argument=as_argument)
-        socket = names.get(socket_name, None)
+        socket = names.get(socket_name)
 
         if socket is None and halt:
             raise NodeError(f"{in_out} socket '{name}' not found in '{self.btree.name}'.", valids=list(names.keys()))
@@ -337,10 +351,11 @@ class TreeInterface:
     # ====================================================================================================
     # Get or create a socket
 
-    def get_create_socket(self, in_out, name, socket_type, panel=""):
+    def get_create_socket(self, in_out, name, socket_type, panel="", force_create=False):
         """ Get a socket or create it if if doesn't exist
 
         Returns
+        -------
         - couple socket, created : Socket and True if created
         """
         assert(in_out in ('INPUT', 'OUTPUT'))
@@ -370,7 +385,7 @@ class TreeInterface:
                 continue
 
             # ----- Found
-            if item.name == name and item.socket_type == socket_type:
+            if (not force_create) and (item.name == name) and (item.socket_type == socket_type):
                 socket_index = index
                 socket = item
                 if insertion_index is None:
@@ -391,6 +406,9 @@ class TreeInterface:
             # Suppress the deletion marker
             socket.description = ""
             created = False
+
+        if socket.description == DELETION:
+            socket.description = ""
 
         # ----------------------------------------------------------------------------------------------------
         # Let's locate the socket at the right position
