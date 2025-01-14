@@ -972,10 +972,6 @@ class Tree:
 
         id_bsockets = to_node.identified_bsockets('INPUT', names=include)
 
-        print("LINK NODES, start", len(id_bsockets), include)
-        for k, v in id_bsockets.items():
-            print("-", k, v)
-
         # ----------------------------------------------------------------------------------------------------
         # Exclude sockets in the exclusion list
 
@@ -1027,15 +1023,17 @@ class Tree:
                 if bsocket.identifier in linked_ids:
                     continue
 
+                # Not the proper type
+                #socket_type, subtype = constants.SOCKET_SUBTYPES[to_socket.bl_idname]
+                if bsocket.type != to_socket.type:
+                    continue
+
                 # We have it
                 from_socket = from_node.data_socket(bsocket)
-                from_socket._mark_for_delete(False)
+                if create:
+                    from_socket._mark_for_delete(False)
 
                 break
-
-            if from_socket is not None:
-                pos = from_socket._interface_socket.position
-                print(f"LINK NODES EXISTS: {from_socket._bsocket.name=}, {pos=}, {from_socket._interface_socket.parent.name=}")
 
             # If it doesn't exist, we can create it
             if from_socket is None and create:
@@ -2060,7 +2058,7 @@ class Node:
             node:      'Node | Tree | None | str' = 'TREE',
             include:   list[str] | str | None = None,
             exclude:   list[str] | str = [],
-            rename:    dict[str: str] = {},
+            #rename:    dict[str: str] = {},
             arguments: dict['name': 'value'] = {},
             create:    bool = True,
             panel:     str | None = None):
@@ -2120,7 +2118,6 @@ class Node:
         - node : the node to get the outputs from. Use Group Input node if None
         - include : connects only the sockets in the list
         - exclude : exclude sockets in this list
-        - rename : rename the sockets to the given names
         - arguments : arguments used at initialization time. Arguments which are defined in the list are ignored
         - create : create the output sockets in node if it is a 'Group Input Node'
         - panel : panel name to create, use tree default name if None

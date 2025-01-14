@@ -148,6 +148,11 @@ Geometries have specific [Domain](domain.md#domain):
   - [helloworld](helloworld.md#helloworld)
 - [generation](generation.md#generation)
   - [gendoc](gendoc.md#gendoc)
+- [macros](macros.md#macros)
+  - [double_integrals](macros.md#double_integrals)
+  - [impulsion](macros.md#impulsion)
+  - [integrals](macros.md#integrals)
+  - [solidify](macros.md#solidify)
 - [Shader Cross Reference](shader_cross_reference.md#shader-cross-reference)
 
 ## Modules
@@ -157,6 +162,7 @@ Geometries have specific [Domain](domain.md#domain):
 - [core](core.md#core)
 - [demos](demos.md#demos)
 - [generation](generation.md#generation)
+- [macros](macros.md#macros)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [geonodes](index.md#geonodes) :black_small_square: [Content](index.md#content) :black_small_square: [geonodes](index.md#geonodes)</sub>
 

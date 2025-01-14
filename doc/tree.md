@@ -213,9 +213,9 @@ If from_node is a Group Input node, the necessary sockets can be created if 'cre
 #### Arguments:
 - **from_node** : the node to get the outputs from
 - **to_node** : the node to plug into
-- **include** (_list_ = None) : connect only the sockets in the list
-- **exclude** (_list_ = []) : exclude sockets in this list
-- **create** ( = True) : create the output sockets in from_node if it is a 'Group Input Node'
+- **include** (_list_ = None) : connect only the sockets in the list (or panels)
+- **exclude** (_list_ = []) : exclude sockets in this list (or panels)
+- **create** ( = True) : create tree input sockets  (i.e. node output sockets) in from_node if it is a 'Group Input Node'
 - **panel** ( = None) : panel name to create, use tree default name if None
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Tree](tree.md#tree) :black_small_square: [Content](tree.md#content) :black_small_square: [Methods](tree.md#methods)</sub>
@@ -226,7 +226,7 @@ If from_node is a Group Input node, the necessary sockets can be created if 'cre
 > classmethod
 
 ``` python
-new_input(bl_idname: str, name: str, value: 'Any' = None, panel: str | None = None, **props)
+new_input(bl_idname, name, value=None, panel=None, force_create=False, **props)
 ```
 
 Create a new input socket.
@@ -234,10 +234,11 @@ Create a new input socket.
 This is an **input socket** of the Tree, hence an **output socket** of the ERROR: Node 'Input' not found node.
 
 #### Arguments:
-- **bl_idname** (_str_) : socket bl_idname - name : Socket name - value : Default value - props : properties specific to interface socket
-- **name** (_str_)
-- **value** (_Any_ = None)
-- **panel** (_str | None_ = None)
+- **bl_idname** (_str_) : socket bl_idname - name (str): Socket name - value (Any = None) : Default value - panel (str = None) : Panel to place the socket in - force_create (bool = False) : create the socket even if an homonym exists - props : properties specific to interface socket
+- **name**
+- **value** ( = None)
+- **panel** ( = None)
+- **force_create** ( = False)
 - **props**
 
 
@@ -253,7 +254,7 @@ This is an **input socket** of the Tree, hence an **output socket** of the ERROR
 > classmethod
 
 ``` python
-new_input_from_input_socket(input_socket, name=None, panel=None)
+new_input_from_input_socket(input_socket, name=None, panel=None, force_create=False)
 ```
 
 Create a new group input socket from an existing input socket.
@@ -262,6 +263,7 @@ Create a new group input socket from an existing input socket.
 - **input_socket** (_socket_) : a node input _insocket
 - **name** (_str_ = None) : name of the group input socket to create
 - **panel** (_str_ = None) : name of the panel
+- **force_create** (_bool_ = False) : create even if a socket with the same name exists
 
 
 

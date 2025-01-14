@@ -106,7 +106,9 @@ Node wrapper.
 
 ## Content
 
+- [by_name](node.md#by_name)
 - [get_socket_names](node.md#get_socket_names)
+- [identified_bsockets](node.md#identified_bsockets)
 - [\_\_init__](node.md#__init__)
 - [link_from](node.md#link_from)
 - [\_out](node.md#_out)
@@ -129,6 +131,32 @@ Returns the first enabled output socket.
 
 
 ----------
+### by_name()
+
+> method
+
+``` python
+by_name(in_out, name, only_enabled=True, as_argument=True, candidates=False, halt=True)
+```
+
+Get a socket by its name
+
+#### Arguments:
+- **in_out** (_str_) : str in ('INPUT', 'OUTPUT')
+- **name** (_str_) : searched named
+- **only_enabled** (_bool_ = True) : consider only enabled sockets
+- **as_argument** (_bool_ = True) : the name is argument or socket name
+- **candidates** (_bool_ = False) : return all matching names (True) or the first one (False)
+- **halt** (_bool_ = True) : raises an error if not found
+
+
+
+#### Returns:
+- **Node** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Node](node.md#node) :black_small_square: [Content](node.md#content) :black_small_square: [Methods](node.md#methods)</sub>
+
+----------
 ### get_socket_names()
 
 > method
@@ -137,7 +165,7 @@ Returns the first enabled output socket.
 get_socket_names(in_out, only_enabled=True, as_argument=True)
 ```
 
-Build the dictionary giving the possible name of each socket
+Build a dictionary keyed by the socket unique names
 
 The possible names are:
 - socket name
@@ -158,6 +186,29 @@ Once built, the homonyms are made unique by suffixing its order
 
 #### Returns:
 - **dict** : socket identifier -> list of possible names
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Node](node.md#node) :black_small_square: [Content](node.md#content) :black_small_square: [Methods](node.md#methods)</sub>
+
+----------
+### identified_bsockets()
+
+> method
+
+``` python
+identified_bsockets(in_out, names=None)
+```
+
+Returns a list of socket identifiers from names
+
+Names can be a list of socket names, arguments or identifiers
+if names is None, returns all the sockets
+
+It can also contain panel name. In that case, it includes all the socket
+within the panel.
+
+#### Arguments:
+- **in_out** (_str_) : str in ('INPUT', 'OUTPUT')
+- **names** (_list of strs_ = None) : the names to convert
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Node](node.md#node) :black_small_square: [Content](node.md#content) :black_small_square: [Methods](node.md#methods)</sub>
 
@@ -278,7 +329,7 @@ Node wrapper.
 > method
 
 ``` python
-link_from(node: 'Node | Tree | None | str' = 'TREE', include: list[str] | str | None = None, exclude: list[str] | str = [], rename: dict[slice(<class 'str'>, <class 'str'>, None)] = {}, arguments: dict[slice('name', 'value', None)] = {}, create: bool = True, panel: str | None = None)
+link_from(node: 'Node | Tree | None | str' = 'TREE', include: list[str] | str | None = None, exclude: list[str] | str = [], arguments: dict[slice('name', 'value', None)] = {}, create: bool = True, panel: str | None = None)
 ```
 
 Plug the output sockets of a node into the input sockets of the node.
@@ -336,7 +387,6 @@ with GeoNodes("Create selection"):
 - **node** (_Node | Tree | None | str_ = TREE) : the node to get the outputs from. Use Group Input node if None
 - **include** (_list[str] | str | None_ = None) : connects only the sockets in the list
 - **exclude** (_list[str] | str_ = []) : exclude sockets in this list
-- **rename** (_dict_ = {}) : rename the sockets to the given names
 - **arguments** (_dict_ = {}) : arguments used at initialization time. Arguments which are defined in the list are ignored
 - **create** (_bool_ = True) : create the output sockets in node if it is a 'Group Input Node'
 - **panel** (_str | None_ = None) : panel name to create, use tree default name if None

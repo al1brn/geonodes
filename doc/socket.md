@@ -51,7 +51,7 @@ uv_map = cuve.uv_map_
 - **I** : [IndexSwitch](socket.md#indexswitch) :black_small_square: [index_switch](socket.md#index_switch) :black_small_square: [\_\_init__](socket.md#__init__) :black_small_square: [Input](socket.md#input) :black_small_square: [\_interface_socket](socket.md#_interface_socket)
 - **L** : [\_lc](socket.md#_lc)
 - **M** : [MenuSwitch](socket.md#menuswitch) :black_small_square: [menu_switch](socket.md#menu_switch)
-- **N** : [node](socket.md#node) :black_small_square: [node_color](socket.md#node_color) :black_small_square: [node_label](socket.md#node_label)
+- **N** : [\_name](socket.md#_name) :black_small_square: [node](socket.md#node) :black_small_square: [node_color](socket.md#node_color) :black_small_square: [node_label](socket.md#node_label)
 - **O** : [out](socket.md#out)
 - **P** : [\_panel_name](socket.md#_panel_name)
 - **S** : [\_set_interface_property](socket.md#_set_interface_property) :black_small_square: [Switch](socket.md#switch) :black_small_square: [switch](socket.md#switch)
@@ -69,6 +69,15 @@ Return the interface socket if exists
 
 An interface socket exists when the socket a tree input or output socket or
 when it is the socket of a group
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Socket](socket.md#socket) :black_small_square: [Content](socket.md#content) :black_small_square: [Properties](socket.md#properties)</sub>
+
+### \_name
+
+> _type_: **str**
+>
+
+Return the name or the label
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Socket](socket.md#socket) :black_small_square: [Content](socket.md#content) :black_small_square: [Properties](socket.md#properties)</sub>
 
