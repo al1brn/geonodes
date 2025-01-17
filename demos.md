@@ -1,20 +1,4 @@
-from . import arrows
-from . import counters
-from . import curly
-from . import explosion
-from . import fields
-from . import forest
-from . import fourd
-from . import fractal
-from . import gizmo
-from . import gravity
-from . import helloworld
-from . import rain
-#from . import relativity
-#from . import shaders
-from . import topology
-
-""" Demonstrations
+# Demos
 
 ***geonodes*** comes with a set of demo files.
 
@@ -22,7 +6,7 @@ from . import topology
 
 ### Hello World
 
-<!helloworld> : a simple demo to start
+[Hello Word](doc/demos/helloworld.md) : a simple demo to start
 
 ### Arrows
 
