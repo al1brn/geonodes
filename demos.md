@@ -10,32 +10,32 @@
 
 ### Arrows
 
-<!arrows> : create an arrow with cartesian, polar or spherical coordinates. Or a field of arrows.
+[Arrows](doc/arrows.md) : create an arrow with cartesian, polar or spherical coordinates. Or a field of arrows.
 
 ### Curly
 
-<!curly> : playing with curves topology
+[Curly](doc/curly.md) : playing with curves topology
 
 ### Explosition
 
-<!explosion> : a sphere explodes and pieces are projected and fall with gravity
+[Explosion](doc/explosion.md)<!explosion> : a sphere explodes and pieces are projected and fall with gravity
 
 ### Forest
 
-<!forest> : generating a simple forest
+[Forest](doc/forest.md) : generating a simple forest
 
 ### Gravity
 
-<!gravity>: Newton law simulated on a bunch of planets
+[Gravity](doc/gravity.md): Newton law simulated on a bunch of planets
 
 ### Rain
 
-<!rain>: simulation of dips falling on a terrain with puddles. Dips on the puddles generate waves,
+[Rain](doc/rain.md): simulation of dips falling on a terrain with puddles. Dips on the puddles generate waves,
 when dips on the terrain produce projections.
 
 ### Topology
 
-<!topology>: after a discussion  with @pterusgithub, here are modifier to explore domain indices
+[Topology](doc/topology.md): after a discussion  with @pterusgithub, here are modifier to explore domain indices
 
 
 ## Utilities
@@ -44,21 +44,21 @@ Some modifiers can be used in production
 
 ### Counters
 
-<!counters> to build digital or analogic counters, including a digital clock.
+[Counters & clocks](doc/counters.md) to build digital or analogic counters, including a digital clock.
 
 ### Fields
 
-<!fields> comes with modifiers to compute and visualize electromagnetic fields. The base
+[Fields](doc/fields.md) comes with modifiers to compute and visualize electromagnetic fields. The base
 components I used in my videos on electromagnetism.
 
 
 ### 4D Engine
 
-<!fourd> the 4D engine I used in my videos on 4D
+[4D Engine](doc/fourd.md) the 4D engine I used in my videos on 4D
 
 ### Fractal
 
-<!fractal>: to play with fractals but not only. Also comes with a comprhensive camera culling
+[Fractal and more](doc/fractal.md): to play with fractals but not only. Also comes with a comprhensive camera culling
 a gaussian random generator and a multires surface modifier.
 
 
