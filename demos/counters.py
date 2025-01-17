@@ -1,3 +1,68 @@
+"""
+This file is part of the geonodes distribution (https://github.com/al1brn/geonodes).
+Copyright (c) 2025 Alain Bernard.
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, version 3.
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+-----------------------------------------------------
+Scripting Geometry Nodes
+-----------------------------------------------------
+
+module : demo counters
+----------------------
+
+Digital and analogic counters
+
+updates
+-------
+- creation : 2024/07/23
+- update :   2024/09/04
+- update :   2025/01/12
+
+$ DOC START
+
+[Source Code](../demos/counters.py)
+
+The elementay digit can be either digital or analogic.
+
+A digital figure is made of 7 elementary segments with a different material
+depending on its state : ON or OFF.
+
+A digital clock is built with 4 digits.
+
+A analog figure is built from font. The value displayed is the floor part
+of the value passed to the modifier. The figure is then slightly moved
+to simulatue wheel rotation.
+
+A counter is made of a variable number of analog figure.
+
+
+> [!NOTE]
+> Modifiers:
+> - Digit
+> - Digital Clock
+> - Digital Counter
+> - Figure
+> - Wheels Counter
+
+``` python
+from geonodes.demos import counters
+
+counters.demo()
+```
+"""
+
+
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """

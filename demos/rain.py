@@ -99,27 +99,48 @@ def demo():
 
     with GeoNodes("Rain"):
 
-        subdivision    = Integer(1, "Subdivision", 0, 10, "Subdivision to apply to the input terrain")
-        z_water        = Float.Distance(0, "Water level")
-        density        = Float(.1, "Density", tip="Rain intensity")
-        age_max        = Float.Time(2, "Dip life", .1)
-        length         = Float.Distance(2, "Length", tip="Interval length of non null waves")
-        omega          = Float(10, "Omega")
-        height         = Float.Distance(1, "Height")
-        c              = Float(2, "Celerity")
-        falloff        = Float(5, "Falloff", 0)
-        proj_speed     = Float(1, "Projection speed", 0)
-        proj_size      = Float.Distance(.05, "Projection size", 0)
-        material       = Material(None, "Puddles Material")
-        proj_mat       = Material(None, "Projection Material")
+        with Panel("Terrain"):
+            show_terrain = Boolean(True,  "Show Terrain")
+            sub_terrain  = Integer(1, "Subdivision", 0, 10, "Subdivision to apply to the terrain")
+            noise_scale  = Float(.1, "Noise Scale", 0)
+            noise_height = Float(2, "Noise Height", 0)
+
+        with Panel("Puddles"):
+            show_puddles = Boolean(True,  "Show Puddles")
+            sub_puddles  = Integer(1, "Subdivision", 0, 10, "Subdivision to apply to the puddles")
+            z_water      = Float.Distance(0, "Water level")
+            material     = Material(None, "Puddles Material")
+
+        with Panel("Rain"):
+            density        = Float(.1, "Density", tip="Rain intensity")
+            age_max        = Float.Time(2, "Dip life", .1)
+            length         = Float.Distance(2, "Length", tip="Interval length of non null waves")
+            omega          = Float(10, "Omega")
+            height         = Float.Distance(1, "Height")
+            c              = Float(2, "Celerity")
+            falloff        = Float(5, "Falloff", 0)
+            seed           = Integer(0, "Seed")
+            show_points    = Boolean(False, "Show Points")
+
+        with Panel("Projections"):
+            show_projs     = Boolean(True,  "Show Projections")
+            proj_speed     = Float(1, "Projection speed", 0)
+            proj_size      = Float.Distance(.05, "Projection size", 0)
+            proj_mat       = Material(None, "Projection Material")
 
         # ----------------------------------------------------------------------------------------------------
         # Water mesh
 
         terrain = Mesh()
 
+        with Layout("Prepare the terrain"):
+            terrain = Mesh(terrain).subdivide(sub_terrain)
+            z_noise = Texture.Noise(scale=noise_scale, detail=None, roughness=None, lacunarity=None, distortion=None, noise_dimensions='3D', noise_type='FBM', normalize=True)
+            terrain.offset = (0, 0, (z_noise - .5)*noise_height)
+
+
         with Layout("Build water from input mesh"):
-            puddles = Mesh(terrain).subdivide(subdivision)
+            puddles = Mesh(terrain).subdivide(gnmath.max(sub_puddles - sub_terrain, 0))
             puddles.faces.smooth   = True
             puddles.faces.material = material
 
@@ -127,8 +148,8 @@ def demo():
         # Dips fallen before simulation start
 
         with Layout("Initial dips"):
-            dips = puddles.faces.distribute_points(density=density*age_max, seed=10000)
-            dips.points.store("Age", Float.Random(0, age_max, seed=10001))
+            dips = puddles.faces.distribute_points(density=density*age_max, seed=seed)
+            dips.points.store("Age", Float.Random(0, age_max, seed=seed + 1))
 
             puddles_index = terrain.points.sample_nearest(dips.position)
             z = puddles.points.sample_index(puddles.position.z, puddles_index)
@@ -144,7 +165,7 @@ def demo():
 
             with Layout("New dips"):
 
-                dips = puddles.faces.distribute_points(density=density*sim.delta_time, seed=nd.scene_time.frame)
+                dips = puddles.faces.distribute_points(density=density*sim.delta_time, seed=seed.hash_value(Float.frame))
 
                 puddles_index = terrain.points.sample_nearest(dips.position)
                 dip_position = puddles.points.sample_index(puddles.position, puddles_index)
@@ -162,9 +183,9 @@ def demo():
                 sim.dips.points[age.greater_than(age_max)].delete()
 
             with Layout("New Projections"):
-                new_projs = start_projs.points.duplicate_elements(amount=Integer.Random(3, 7, seed=nd.scene_time.frame + 1000))
-                new_projs.points.store("Speed", Vector.Random((-.4, -.4, 1), (.4, .4, 1), seed=nd.scene_time.frame + 2000)*proj_speed)
-                new_projs.points.radius = Float.Random(.5, 2, seed=nd.scene_time.frame + 3000)*proj_size
+                new_projs = start_projs.points.duplicate(amount=Integer.Random(3, 7, seed=seed.hash_value(Float.frame + 1)))
+                new_projs.points.store("Speed", Vector.Random((-.4, -.4, 1), (.4, .4, 1), seed=seed.hash_value(Float.frame + 2))*proj_speed)
+                new_projs.points.radius = Float.Random(.5, 2, seed=seed.hash_value(Float.frame + 3))*proj_size
                 sim.projs += new_projs
 
             with Layout("Projections motion"):
@@ -199,7 +220,7 @@ def demo():
 
         with Layout("Update water height"):
             x, y = puddles.position.x, puddles.position.y
-            fac = puddles.position.z.map_range_smooth(z_water, z_water + .02, 1., 0.)
+            fac = puddles.position.z.map_range_smooth_step(z_water, z_water + .02, 1., 0.)
             puddles.points.position = (x, y, z_water + rep.z * fac)
 
         # ----------------------------------------------------------------------------------------------------
@@ -210,12 +231,19 @@ def demo():
             cube.faces.material = proj_mat
             proj_dips = sim.projs.points.instance_on(
                 instance = cube,
-                rotation = Vector.Random(0, tau, seed=nd.scene_time.frame + 4000),
+                rotation = Vector.Random(0, tau, seed=Float.frame + 4000),
                 scale    = nd.radius)
 
-        geo  = Geometry.Switch(Boolean(True,  "Show Terrain"), None, terrain)
-        geo += Geometry.Switch(Boolean(True,  "Show Puddles"), None, puddles)
-        geo += Geometry.Switch(Boolean(True,  "Show Projections"), None, proj_dips)
-        geo += Geometry.Switch(Boolean(False, "Show Points"), None, pts + sim.projs)
+        if True:
+            geo = terrain.switch_false(show_terrain)
+            geo += puddles.switch_false(show_puddles)
+            geo += proj_dips.switch_false(show_projs)
+            geo += (pts + sim.projs).switch_false(show_points)
+
+        else:
+            geo  = Geometry.Switch(Boolean(True,  "Show Terrain"), None, terrain)
+            geo += Geometry.Switch(Boolean(True,  "Show Puddles"), None, puddles)
+            geo += Geometry.Switch(Boolean(True,  "Show Projections"), None, proj_dips)
+            geo += Geometry.Switch(Boolean(False, "Show Points"), None, pts + sim.projs)
 
         geo.out()

@@ -1303,7 +1303,7 @@ class Float(Socket):
         node = Node('Math', sockets={'Value': self}, operation='TANGENT', use_clamp=use_clamp)
         return node._out
 
-    def arcsine(self, use_clamp=False):
+    def asin(self, use_clamp=False):
         """ > Node <&Node Math>
 
         Information
@@ -1322,7 +1322,7 @@ class Float(Socket):
         node = Node('Math', sockets={'Value': self}, operation='ARCSINE', use_clamp=use_clamp)
         return node._out
 
-    def arccosine(self, use_clamp=False):
+    def acos(self, use_clamp=False):
         """ > Node <&Node Math>
 
         Information
@@ -1360,7 +1360,7 @@ class Float(Socket):
         node = Node('Math', sockets={'Value': self}, operation='ARCTANGENT', use_clamp=use_clamp)
         return node._out
 
-    def arctan2(self, value=None, use_clamp=False):
+    def atan2(self, value=None, use_clamp=False):
         """ > Node <&Node Math>
 
         Information

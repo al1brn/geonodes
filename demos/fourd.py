@@ -1,29 +1,106 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
-Created on 2024/03/04
+This file is part of the geonodes distribution (https://github.com/al1brn/geonodes).
+Copyright (c) 2025 Alain Bernard.
 
-@author: alain
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, version 3.
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 -----------------------------------------------------
 Scripting Geometry Nodes
 -----------------------------------------------------
 
-module : demos/fourd
---------------------
-Generates the fourd engine modifiers
+module : fourd engine
+---------------------
 
-The 4-position of a vertex is store in the first column of a Matrix (column with python index = 0, column 1 in editor).
-The other columns are used to store normals:
-- Surface : columns 1 and 2 store the two normals
-- Curve : columns 1, 2, 3 store the three normals
+4D engine
 
 updates
 -------
-- creation : 2024/03/04
-- update   : 2024/08/07
-- update   : 2024/08/03
-- update   : 2024/01/03
+- creation : 2024/07/23
+- update :   2024/09/04
+- update :   2025/01/12
+
+$ DOC START
+
+[Source Code](../demos/fourd.py)
+
+The 4D Engine provides modifiers to create 4D geometries, transform them and project
+them into 3D space.
+
+> [!NOTE]
+> The 4D light is still work in progress
+
+> [!IMPORTANT]
+> - The engine needs an object named "4D Parameters" with the modifier "4D Parameters":
+>   this is where you control the 4D paramaters.
+> - The last modifier must be "4D Projection" to project the 4D geometry into a 3D space.
+
+For instance, to visualize an Hypersphere, you have to stack two modifiers:
+- 4D Hyper Sphere
+- 4D Projection
+
+### Creating 4D Geometry
+
+You can use modifiers creating 4D geometry:
+- 4D Hyper Sphere
+- 4D Hyper Cube
+- 4D Hyper Cone
+- 4D 5 Cell Polytope
+- 4D Torus
+- 4-Curve Circle
+- 4-Curve Line
+
+You can also create your own geometry with modifiers and groups
+- 4D Plunge into 4D
+- 4-Math xxx
+- 4-Vector xxx
+- 4-Matrix xxx
+
+You can then transform your geometry with:
+- 4D Rotation
+- 4D Translation
+- 4D Scale
+- 4D Roll Axes
+- 4D Swap Axes
+
+
+
+> [!NOTE]
+> Modifiers:
+> - 4D Parameters
+> - 4D Projection
+> - 4D Hyper Sphere
+> - 4D Hyper Cube
+> - 4D Hyper Cone
+> - 4D 5 Cell Polytope
+> - 4D Torus
+> - 4-Curve Circle
+> - 4-Curve Line
+> - 4D Plunge into 4D
+> - 4D Rotation
+> - 4D Translation
+> - 4D Scale
+> - 4D Roll Axes
+> - 4D Swap Axes
+> - 4-Math xxx (Group)
+> - 4-Vector xxx (Group)
+> - 4-Matrix xxx (Group)
+
+
+``` python
+from geonodes.demos import fourd
+
+fourd.demo()
+```
 """
 
 
@@ -51,7 +128,7 @@ PARAMETERS_OBJECT = "4D Parameters"
 # =============================================================================================================================
 # Build the 4D engine
 
-def demo(clear=False):
+def demo(clear=False, with_debug=False):
 
     print("-"*100)
     print("Build 4D Engine")
@@ -64,18 +141,19 @@ def demo(clear=False):
 
     Tree._reset_counters()
 
+    if with_debug:
+        build_debug()
+
+    build_operations()
     build_matrices()
-    build_base()
-    build_vectors()
-    build_transformations()
-    build_extrusions()
-    build_lights()
-    build_curves()
-    build_surfaces()
+    build_transformations(with_debug=with_debug)
+    build_primitives()
+
     show_case()
 
+
     Tree._display_counter("4D Engine built")
-    #print(f"4D Engine built : {Tree._total_nodes} nodes, {Tree._total_links} links in {Tree._total_time:.1f} s")
+    print(f"4D Engine built : {Tree._total_nodes} nodes, {Tree._total_links} links in {Tree._total_time:.1f} s")
     print()
 
 # =============================================================================================================================
@@ -107,7 +185,7 @@ def build_shaders():
             base_color = (.3, .8, .7),
             metallic   = 0.,
             roughness  = 0.,
-            alpha      = .1,
+            #alpha      = .1,
             normal     = bump,
             )
 
@@ -1126,7 +1204,7 @@ def build_matrices():
 # - Rotation 2D
 # - Align Vector
 
-def build_transformations():
+def build_transformations(with_debug=False):
 
     # ----------------------------------------------------------------------------------------------------
     # MODIFIER - Translation
@@ -1256,6 +1334,9 @@ def build_transformations():
     # ----------------------------------------------------------------------------------------------------
     # DEBUG - Visualize a 4-D Matrix rotation
 
+    if not with_debug:
+        return
+
     with GeoNodes("Matrix", is_group=True, prefix=debug_):
 
         M = Matrix(None, "Matrix")
@@ -1305,7 +1386,6 @@ def build_transformations():
             else:
                 vis += vis_lab
 
-
         vis.out()
 
     # ----------------------------------------------------------------------------------------------------
@@ -1331,8 +1411,6 @@ def build_transformations():
             feel.generated.geometry = vis
 
         feel.generated.geometry.out()
-
-
 
 # =============================================================================================================================
 # Primitives
@@ -1882,18 +1960,31 @@ def build_lights():
 
 def show_case():
 
-    with GeoNodes("Show Case 4D"):
+    with GeoNodes("4D Show Case"):
 
-        items = {name: Group.Prefix(surfs_, name)._out for name in [
-            "Hypercube", "Hypersphere", "Clifford Torus", "Klein Torus", "5 Cell Polytope", "16 Cell Polytope",
-        ]}
+        with If(Geometry, "Hyper Cube", name="4D Geometry") as geometry:
+            geo = Group("4D Hyper Cube").geometry
+            geo = Group("4D Rotation", geometry=geo).link_from(exclude='Pivot').geometry
+            geometry.option = Group("4D Projection", geometry=geo,  delete_faces=True, edge_radius=.02, point_radius=.05).geometry
 
-        geo = Geometry.MenuSwitch(items=items, menu=0, name='4D Shape')
+        with Elif(geometry, "Hyper Sphere"):
+            geo = Group("4D Hyper Sphere", rings=32).geometry
+            geo = Group("4D Rotation", geometry=geo).link_from(exclude='Pivot').geometry
+            geometry.option = Group("4D Projection", geometry=geo, transparency=0).geometry
 
-        projected = Group.Prefix(mod_, "Projection", geometry=geo, shade_smooth=Boolean(False, "Shade Smooth"))._out
+        with Elif(geometry, "Clifford Torus"):
+            geo = Group("4D Torus", first_radius=2, first_segments=64, second_radius=1, second_segments=64).geometry
+            geo = Group("4D Rotation", geometry=geo).link_from(exclude='Pivot').geometry
+            geometry.option = Group("4D Projection", geometry=geo, transparency=0).geometry
 
-        geo = geo.switch(Boolean(True, "Projection"), projected)
+        with Elif(geometry, "Klein Torus"):
+            geo = Group("4D Torus", first_radius=2, first_segments=64, second_radius=1, second_segments=64, twist=pi).geometry
+            geo = Group("4D Rotation", geometry=geo).link_from(exclude='Pivot').geometry
+            geometry.option = Group("4D Projection", geometry=geo, transparency=0).geometry
 
-        geo = geo.switch(Boolean(False, "As Curve"), Group.Prefix(curves_, "Mesh to Curve", geometry=geo)._out)
+        with Elif(geometry, "5 Cell Polytope"):
+            geo = Group("4D 5 Cell Polytope").geometry
+            geo = Group("4D Rotation", geometry=geo).link_from(exclude='Pivot').geometry
+            geometry.option = Group("4D Projection", geometry=geo,  delete_faces=True, edge_radius=.02, point_radius=.05).geometry
 
-        geo.out()
+        geometry.out()

@@ -37,11 +37,11 @@ float = Float(3.14, name="User input", subtype='ANGLE') # Create a new Float gro
 
 ### Inherited
 
-[\_cache](nodecache.md#_cache) :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](socket.md#check_in_list) :black_small_square: [data_type](socket.md#data_type) :black_small_square: [\_domain_to_geometry](socket.md#_domain_to_geometry) :black_small_square: [\_geometry_class](socket.md#_geometry_class) :black_small_square: [\_\_getattr__](socket.md#__getattr__) :black_small_square: [get_node_data_type](socket.md#get_node_data_type) :black_small_square: [get_socket_class](socket.md#get_socket_class) :black_small_square: [IndexSwitch](socket.md#indexswitch) :black_small_square: [index_switch](socket.md#index_switch) :black_small_square: [Input](socket.md#input) :black_small_square: [input_type](socket.md#input_type) :black_small_square: [\_interface_socket](socket.md#_interface_socket) :black_small_square: [\_is_group_input](socket.md#_is_group_input) :black_small_square: [\_is_group_output](socket.md#_is_group_output) :black_small_square: [\_is_group_socket](socket.md#_is_group_socket) :black_small_square: [\_jump](socket.md#_jump) :black_small_square: [\_lc](socket.md#_lc) :black_small_square: [\_lcop](socket.md#_lcop) :black_small_square: [\_lock](proplocker.md#_lock) :black_small_square: [\_mark_for_delete](socket.md#_mark_for_delete) :black_small_square: [MenuSwitch](socket.md#menuswitch) :black_small_square: [menu_switch](socket.md#menu_switch) :black_small_square: [\_name](socket.md#_name) :black_small_square: [node](socket.md#node) :black_small_square: [node_color](socket.md#node_color) :black_small_square: [node_label](socket.md#node_label) :black_small_square: [\_panel_name](socket.md#_panel_name) :black_small_square: [pin_gizmo](socket.md#pin_gizmo) :black_small_square: [\_reset](socket.md#_reset) :black_small_square: [\_run_tests](socket.md#_run_tests) :black_small_square: [\_\_setattr__](socket.md#__setattr__) :black_small_square: [\_set_interface_property](socket.md#_set_interface_property) :black_small_square: [socket_type](socket.md#socket_type) :black_small_square: [\_\_str__](socket.md#__str__) :black_small_square: [Switch](socket.md#switch) :black_small_square: [switch](socket.md#switch) :black_small_square: [\_unlock](proplocker.md#_unlock) :black_small_square:
+[\_cache](nodecache.md#_cache) :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](socket.md#check_in_list) :black_small_square: [data_type](socket.md#data_type) :black_small_square: [\_domain_to_geometry](socket.md#_domain_to_geometry) :black_small_square: [\_geometry_class](socket.md#_geometry_class) :black_small_square: [\_\_getattr__](socket.md#__getattr__) :black_small_square: [get_node_data_type](socket.md#get_node_data_type) :black_small_square: [get_socket_class](socket.md#get_socket_class) :black_small_square: [IndexSwitch](socket.md#indexswitch) :black_small_square: [index_switch](socket.md#index_switch) :black_small_square: [Input](socket.md#input) :black_small_square: [input_type](socket.md#input_type) :black_small_square: [\_interface_socket](socket.md#_interface_socket) :black_small_square: [\_is_group_input](socket.md#_is_group_input) :black_small_square: [\_is_group_output](socket.md#_is_group_output) :black_small_square: [\_is_group_socket](socket.md#_is_group_socket) :black_small_square: [\_jump](socket.md#_jump) :black_small_square: [\_lc](socket.md#_lc) :black_small_square: [\_lcop](socket.md#_lcop) :black_small_square: [link_from](socket.md#link_from) :black_small_square: [\_lock](proplocker.md#_lock) :black_small_square: [\_mark_for_delete](socket.md#_mark_for_delete) :black_small_square: [MenuSwitch](socket.md#menuswitch) :black_small_square: [menu_switch](socket.md#menu_switch) :black_small_square: [\_name](socket.md#_name) :black_small_square: [node](socket.md#node) :black_small_square: [node_color](socket.md#node_color) :black_small_square: [node_label](socket.md#node_label) :black_small_square: [option](socket.md#option) :black_small_square: [option_index](socket.md#option_index) :black_small_square: [\_panel_name](socket.md#_panel_name) :black_small_square: [pin_gizmo](socket.md#pin_gizmo) :black_small_square: [\_reset](socket.md#_reset) :black_small_square: [\_run_tests](socket.md#_run_tests) :black_small_square: [\_\_setattr__](socket.md#__setattr__) :black_small_square: [\_set_interface_property](socket.md#_set_interface_property) :black_small_square: [socket_type](socket.md#socket_type) :black_small_square: [\_\_str__](socket.md#__str__) :black_small_square: [Switch](socket.md#switch) :black_small_square: [switch](socket.md#switch) :black_small_square: [switch_false](socket.md#switch_false) :black_small_square: [\_unlock](proplocker.md#_unlock) :black_small_square:
 
 ## Content
 
-- **A** : [abs](float.md#abs) :black_small_square: [add](float.md#add) :black_small_square: [Angle](float.md#angle) :black_small_square: [arccosine](float.md#arccosine) :black_small_square: [arcsine](float.md#arcsine) :black_small_square: [arctan2](float.md#arctan2) :black_small_square: [arctangent](float.md#arctangent)
+- **A** : [abs](float.md#abs) :black_small_square: [acos](float.md#acos) :black_small_square: [add](float.md#add) :black_small_square: [Angle](float.md#angle) :black_small_square: [arctangent](float.md#arctangent) :black_small_square: [asin](float.md#asin) :black_small_square: [atan2](float.md#atan2)
 - **B** : [bevel](float.md#bevel) :black_small_square: [blur](float.md#blur) :black_small_square: [bump](float.md#bump)
 - **C** : [ceil](float.md#ceil) :black_small_square: [clamp](float.md#clamp) :black_small_square: [clamp_minmax](float.md#clamp_minmax) :black_small_square: [clamp_range](float.md#clamp_range) :black_small_square: [color_ramp](float.md#color_ramp) :black_small_square: [ColorTemperature](float.md#colortemperature) :black_small_square: [combine_color](float.md#combine_color) :black_small_square: [combine_color_HSL](float.md#combine_color_hsl) :black_small_square: [combine_color_HSV](float.md#combine_color_hsv) :black_small_square: [combine_color_RGB](float.md#combine_color_rgb) :black_small_square: [compare](float.md#compare) :black_small_square: [cos](float.md#cos) :black_small_square: [cosh](float.md#cosh) :black_small_square: [curve](float.md#curve)
 - **D** : [degrees](float.md#degrees) :black_small_square: [dial_gizmo](float.md#dial_gizmo) :black_small_square: [displacement](float.md#displacement) :black_small_square: [Distance](float.md#distance) :black_small_square: [divide](float.md#divide)
@@ -79,6 +79,33 @@ abs(use_clamp=False)
 #### Information:
 - **Socket** : self
 - **Parameter** : 'ABSOLUTE'
+
+
+
+#### Arguments:
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### acos()
+
+> method
+
+``` python
+acos(use_clamp=False)
+```
+
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'ARCCOSINE'
 
 
 
@@ -131,6 +158,8 @@ Angle(value=0.0, name='Angle', min=None, max=None, tip=None, panel=None, default
 
 > Angle group input
 
+New [Float](float.md#float) input with subtype 'ANGLE'.
+
 #### Arguments:
 - **value** ( = 0.0)
 - **name** ( = Angle)
@@ -142,83 +171,6 @@ Angle(value=0.0, name='Angle', min=None, max=None, tip=None, panel=None, default
 - **hide_value** ( = False)
 - **hide_in_modifier** ( = False)
 - **single_value** ( = False)
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
-
-----------
-### arccosine()
-
-> method
-
-``` python
-arccosine(use_clamp=False)
-```
-
-> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
-
-#### Information:
-- **Socket** : self
-- **Parameter** : 'ARCCOSINE'
-
-
-
-#### Arguments:
-- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
-
-
-
-#### Returns:
-- **Float** :
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
-
-----------
-### arcsine()
-
-> method
-
-``` python
-arcsine(use_clamp=False)
-```
-
-> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
-
-#### Information:
-- **Socket** : self
-- **Parameter** : 'ARCSINE'
-
-
-
-#### Arguments:
-- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
-
-
-
-#### Returns:
-- **Float** :
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
-
-----------
-### arctan2()
-
-> method
-
-``` python
-arctan2(value=None, use_clamp=False)
-```
-
-> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
-
-#### Information:
-- **Socket** : self
-- **Parameter** : 'ARCTAN2'
-
-
-
-#### Arguments:
-- **value** (_Float_ = None) : socket 'Value' (id: Value_001)
-- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
 
 
 
@@ -245,6 +197,61 @@ arctangent(use_clamp=False)
 
 
 #### Arguments:
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### asin()
+
+> method
+
+``` python
+asin(use_clamp=False)
+```
+
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'ARCSINE'
+
+
+
+#### Arguments:
+- **use_clamp** (_bool_ = False) : parameter 'use_clamp'
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
+
+----------
+### atan2()
+
+> method
+
+``` python
+atan2(value=None, use_clamp=False)
+```
+
+> Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'ARCTAN2'
+
+
+
+#### Arguments:
+- **value** (_Float_ = None) : socket 'Value' (id: Value_001)
 - **use_clamp** (_bool_ = False) : parameter 'use_clamp'
 
 
@@ -482,7 +489,9 @@ color_ramp(stops=None, interpolation='LINEAR')
 ColorTemperature(value=0.0, name='Color Temperature', min=None, max=None, tip=None, panel=None, default_attribute='', hide_value=False, hide_in_modifier=False, single_value=False)
 ```
 
-> Wave Length group input
+> Color Temperature group input
+
+New [Float](float.md#float) input with subtype 'COLOR_TEMPERATURE'.
 
 #### Arguments:
 - **value** ( = 0.0)
@@ -495,6 +504,11 @@ ColorTemperature(value=0.0, name='Color Temperature', min=None, max=None, tip=No
 - **hide_value** ( = False)
 - **hide_in_modifier** ( = False)
 - **single_value** ( = False)
+
+
+
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
 
@@ -821,6 +835,8 @@ Distance(value=0.0, name='Distance', min=None, max=None, tip=None, panel=None, d
 
 > Distance group input
 
+New [Float](float.md#float) input with subtype 'DISTANCE'.
+
 #### Arguments:
 - **value** ( = 0.0)
 - **name** ( = Distance)
@@ -832,6 +848,11 @@ Distance(value=0.0, name='Distance', min=None, max=None, tip=None, panel=None, d
 - **hide_value** ( = False)
 - **hide_in_modifier** ( = False)
 - **single_value** ( = False)
+
+
+
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
 
@@ -931,6 +952,8 @@ Factor(value=0.0, name='Factor', min=0, max=1, tip=None, panel=None, default_att
 
 > Factor group input
 
+New [Float](float.md#float) input with subtype 'FACTOR'.
+
 #### Arguments:
 - **value** ( = 0.0)
 - **name** ( = Factor)
@@ -942,6 +965,11 @@ Factor(value=0.0, name='Factor', min=0, max=1, tip=None, panel=None, default_att
 - **hide_value** ( = False)
 - **hide_in_modifier** ( = False)
 - **single_value** ( = False)
+
+
+
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
 
@@ -1036,7 +1064,9 @@ fract(use_clamp=False)
 Frequency(value=0.0, name='Frequency', min=None, max=None, tip=None, panel=None, default_attribute='', hide_value=False, hide_in_modifier=False, single_value=False)
 ```
 
-> Wave Length group input
+> Frequency group input
+
+New [Float](float.md#float) input with subtype 'FREQUENCY'.
 
 #### Arguments:
 - **value** ( = 0.0)
@@ -1049,6 +1079,11 @@ Frequency(value=0.0, name='Frequency', min=None, max=None, tip=None, panel=None,
 - **hide_value** ( = False)
 - **hide_in_modifier** ( = False)
 - **single_value** ( = False)
+
+
+
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
 
@@ -2034,6 +2069,8 @@ Percentage(value=0.0, name='Percentage', min=0, max=100, tip=None, panel=None, d
 
 > Percentage group input
 
+New [Float](float.md#float) input with subtype 'PERCENTAGE'.
+
 #### Arguments:
 - **value** ( = 0.0)
 - **name** ( = Percentage)
@@ -2045,6 +2082,11 @@ Percentage(value=0.0, name='Percentage', min=0, max=100, tip=None, panel=None, d
 - **hide_value** ( = False)
 - **hide_in_modifier** ( = False)
 - **single_value** ( = False)
+
+
+
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
 
@@ -2618,6 +2660,8 @@ Time(value=0.0, name='Time', min=None, max=None, tip=None, panel=None, default_a
 
 > Time group input
 
+New [Float](float.md#float) input with subtype 'TIME'.
+
 #### Arguments:
 - **value** ( = 0.0)
 - **name** ( = Time)
@@ -2629,6 +2673,11 @@ Time(value=0.0, name='Time', min=None, max=None, tip=None, panel=None, default_a
 - **hide_value** ( = False)
 - **hide_in_modifier** ( = False)
 - **single_value** ( = False)
+
+
+
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
 
@@ -2643,6 +2692,8 @@ TimeAbsolute(value=0.0, name='Time Absolute', min=None, max=None, tip=None, pane
 
 > Time Absolute group input
 
+New [Float](float.md#float) input with subtype 'TIME_ABSOLUTE'.
+
 #### Arguments:
 - **value** ( = 0.0)
 - **name** ( = Time Absolute)
@@ -2654,6 +2705,11 @@ TimeAbsolute(value=0.0, name='Time Absolute', min=None, max=None, tip=None, pane
 - **hide_value** ( = False)
 - **hide_in_modifier** ( = False)
 - **single_value** ( = False)
+
+
+
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
 
@@ -2805,6 +2861,8 @@ WaveLength(value=0.0, name='Wave Length', min=None, max=None, tip=None, panel=No
 
 > Wave Length group input
 
+New [Float](float.md#float) input with subtype 'WAVELENGTH'.
+
 #### Arguments:
 - **value** ( = 0.0)
 - **name** ( = Wave Length)
@@ -2816,6 +2874,11 @@ WaveLength(value=0.0, name='Wave Length', min=None, max=None, tip=None, panel=No
 - **hide_value** ( = False)
 - **hide_in_modifier** ( = False)
 - **single_value** ( = False)
+
+
+
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
 

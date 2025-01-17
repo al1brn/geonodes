@@ -131,6 +131,12 @@ class Float(generated.Float):
     def Percentage(cls, value=0., name='Percentage', min=0, max=100, tip=None, panel=None,
         default_attribute="", hide_value=False, hide_in_modifier=False, single_value=False):
         """ > Percentage group input
+
+        New <#Float> input with subtype 'PERCENTAGE'.
+
+        Returns
+        -------
+        - Float
         """
         return cls(value=value, name=name, min=min, max=max, tip=tip, subtype='PERCENTAGE', panel=panel,
             default_attribute=default_attribute, hide_value=hide_value, hide_in_modifier=hide_in_modifier, single_value=single_value)
@@ -139,6 +145,12 @@ class Float(generated.Float):
     def Factor(cls, value=0., name='Factor', min=0, max=1, tip=None, panel=None,
         default_attribute="", hide_value=False, hide_in_modifier=False, single_value=False):
         """ > Factor group input
+
+        New <#Float> input with subtype 'FACTOR'.
+
+        Returns
+        -------
+        - Float
         """
         return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel, subtype='FACTOR',
             default_attribute=default_attribute, hide_value=hide_value, hide_in_modifier=hide_in_modifier, single_value=single_value)
@@ -147,6 +159,12 @@ class Float(generated.Float):
     def Angle(cls, value=0., name='Angle', min=None, max=None, tip=None, panel=None,
         default_attribute="", hide_value=False, hide_in_modifier=False, single_value=False):
         """ > Angle group input
+
+        New <#Float> input with subtype 'ANGLE'.
+
+        Returns
+        -------
+        - Float
         """
         return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel, subtype='ANGLE',
             default_attribute=default_attribute, hide_value=hide_value, hide_in_modifier=hide_in_modifier, single_value=single_value)
@@ -155,6 +173,12 @@ class Float(generated.Float):
     def Time(cls, value=0., name='Time', min=None, max=None, tip=None, panel=None,
         default_attribute="", hide_value=False, hide_in_modifier=False, single_value=False):
         """ > Time group input
+
+        New <#Float> input with subtype 'TIME'.
+
+        Returns
+        -------
+        - Float
         """
         return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel, subtype='TIME',
             default_attribute=default_attribute, hide_value=hide_value, hide_in_modifier=hide_in_modifier, single_value=single_value)
@@ -163,6 +187,12 @@ class Float(generated.Float):
     def TimeAbsolute(cls, value=0., name='Time Absolute', min=None, max=None, tip=None, panel=None,
         default_attribute="", hide_value=False, hide_in_modifier=False, single_value=False):
         """ > Time Absolute group input
+
+        New <#Float> input with subtype 'TIME_ABSOLUTE'.
+
+        Returns
+        -------
+        - Float
         """
         return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel, subtype='TIME_ABSOLUTE',
             default_attribute=default_attribute, hide_value=hide_value, hide_in_modifier=hide_in_modifier, single_value=single_value)
@@ -171,6 +201,12 @@ class Float(generated.Float):
     def Distance(cls, value=0., name='Distance', min=None, max=None, tip=None, panel=None,
         default_attribute="", hide_value=False, hide_in_modifier=False, single_value=False):
         """ > Distance group input
+
+        New <#Float> input with subtype 'DISTANCE'.
+
+        Returns
+        -------
+        - Float
         """
         return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel, subtype='DISTANCE',
             default_attribute=default_attribute, hide_value=hide_value, hide_in_modifier=hide_in_modifier, single_value=single_value)
@@ -179,6 +215,12 @@ class Float(generated.Float):
     def WaveLength(cls, value=0., name='Wave Length', min=None, max=None, tip=None, panel=None,
         default_attribute="", hide_value=False, hide_in_modifier=False, single_value=False):
         """ > Wave Length group input
+
+        New <#Float> input with subtype 'WAVELENGTH'.
+
+        Returns
+        -------
+        - Float
         """
         return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel, subtype='WAVELENGTH',
             default_attribute=default_attribute, hide_value=hide_value, hide_in_modifier=hide_in_modifier, single_value=single_value)
@@ -186,7 +228,13 @@ class Float(generated.Float):
     @classmethod
     def ColorTemperature(cls, value=0., name='Color Temperature', min=None, max=None, tip=None, panel=None,
         default_attribute="", hide_value=False, hide_in_modifier=False, single_value=False):
-        """ > Wave Length group input
+        """ > Color Temperature group input
+
+        New <#Float> input with subtype 'COLOR_TEMPERATURE'.
+
+        Returns
+        -------
+        - Float
         """
         return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel, subtype='COLOR_TEMPERATURE',
             default_attribute=default_attribute, hide_value=hide_value, hide_in_modifier=hide_in_modifier, single_value=single_value)
@@ -194,7 +242,13 @@ class Float(generated.Float):
     @classmethod
     def Frequency(cls, value=0., name='Frequency', min=None, max=None, tip=None, panel=None,
         default_attribute="", hide_value=False, hide_in_modifier=False, single_value=False):
-        """ > Wave Length group input
+        """ > Frequency group input
+
+        New <#Float> input with subtype 'FREQUENCY'.
+
+        Returns
+        -------
+        - Float
         """
         return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel, subtype='FREQUENCY',
             default_attribute=default_attribute, hide_value=hide_value, hide_in_modifier=hide_in_modifier, single_value=single_value)

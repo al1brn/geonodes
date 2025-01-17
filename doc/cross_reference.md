@@ -898,11 +898,11 @@ You will find here how nodes are implemented
 #### Math
 
 - [abs](gnmath.md#abs)
+- [acos](gnmath.md#acos)
 - [add](gnmath.md#add)
-- [arccosine](gnmath.md#arccosine)
-- [arcsine](gnmath.md#arcsine)
-- [arctan2](gnmath.md#arctan2)
 - [arctangent](gnmath.md#arctangent)
+- [asin](gnmath.md#asin)
+- [atan2](gnmath.md#atan2)
 - [ceil](gnmath.md#ceil)
 - [compare](gnmath.md#compare)
 - [cos](gnmath.md#cos)
@@ -940,11 +940,11 @@ You will find here how nodes are implemented
 - [wrap](gnmath.md#wrap)
 - [nd](nd.md#nd) :white_small_square: [math](nd.md#math)
 - [Float](float.md#float) :white_small_square: [abs](float.md#abs)
+- [Float](float.md#float) :white_small_square: [acos](float.md#acos)
 - [Float](float.md#float) :white_small_square: [add](float.md#add)
-- [Float](float.md#float) :white_small_square: [arccosine](float.md#arccosine)
-- [Float](float.md#float) :white_small_square: [arcsine](float.md#arcsine)
-- [Float](float.md#float) :white_small_square: [arctan2](float.md#arctan2)
 - [Float](float.md#float) :white_small_square: [arctangent](float.md#arctangent)
+- [Float](float.md#float) :white_small_square: [asin](float.md#asin)
+- [Float](float.md#float) :white_small_square: [atan2](float.md#atan2)
 - [Float](float.md#float) :white_small_square: [ceil](float.md#ceil)
 - [Float](float.md#float) :white_small_square: [compare](float.md#compare)
 - [Float](float.md#float) :white_small_square: [cos](float.md#cos)
@@ -1729,6 +1729,7 @@ You will find here how nodes are implemented
 - [nd](nd.md#nd) :white_small_square: [switch](nd.md#switch)
 - [Socket](socket.md#socket) :white_small_square: [Switch](socket.md#switch)
 - [Socket](socket.md#socket) :white_small_square: [switch](socket.md#switch)
+- [Socket](socket.md#socket) :white_small_square: [switch_false](socket.md#switch_false)
 
 #### Transform Direction
 

@@ -1145,7 +1145,7 @@ def tan(value=None, use_clamp=False):
     node = Node('Math', sockets={'Value': value}, operation='TANGENT', use_clamp=use_clamp)
     return node._out
 
-def arcsine(value=None, use_clamp=False):
+def asin(value=None, use_clamp=False):
     """ > Node <&Node Math>
 
     Information
@@ -1164,7 +1164,7 @@ def arcsine(value=None, use_clamp=False):
     node = Node('Math', sockets={'Value': value}, operation='ARCSINE', use_clamp=use_clamp)
     return node._out
 
-def arccosine(value=None, use_clamp=False):
+def acos(value=None, use_clamp=False):
     """ > Node <&Node Math>
 
     Information
@@ -1202,7 +1202,7 @@ def arctangent(value=None, use_clamp=False):
     node = Node('Math', sockets={'Value': value}, operation='ARCTANGENT', use_clamp=use_clamp)
     return node._out
 
-def arctan2(value=None, value_1=None, use_clamp=False):
+def atan2(value=None, value_1=None, use_clamp=False):
     """ > Node <&Node Math>
 
     Information

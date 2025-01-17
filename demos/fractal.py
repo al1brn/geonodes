@@ -1,13 +1,92 @@
+"""
+This file is part of the geonodes distribution (https://github.com/al1brn/geonodes).
+Copyright (c) 2025 Alain Bernard.
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, version 3.
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+-----------------------------------------------------
+Scripting Geometry Nodes
+-----------------------------------------------------
+
+module : demo fractal
+-------------------
+
+Fractals and linked things.
+
+updates
+-------
+- created :   2025/01/12
+
+$ DOC START
+
+[Source Code](../demos/fractal.py)
+
+> [!CAUTION]
+> This module is still work in progress
+
+This module provides several independant features:
+- Random normal: normal law implementation for values and vectors
+- Camera culling: culls points, edges and faces which are not visible in the field of view of the camera
+- Multi resolution: surfaces with a resolution depending on the distance to the camera
+- Fractals: diving into fractals
+
+All the modifiers can be generated using demo function.
+Specific modifiers can be generated using specic functions:
+- random_normal : random modifiers
+- camera_culling : camera culling modifiers
+- multires_surface : multi resolution modifiers
+- sierpinski : sierpinski fractal
+- romanesco : other fractals
+
+
+
+> [!NOTE]
+> Modifiers:
+> - Random Normal Value
+> - Random Normal Vector
+> - Random Shake Vectors
+> - Camera Projection
+> - Camera Point Culling
+> - Camrea Edge Culling
+> - Camera Face Culling
+> - Sierpinski Triangle
+> - Multires Surface
+> - Multires Faces
+> - DEMO Multires Faces
+> - Fractal Cloud Iterator
+> - Fractal Mesh Iterator
+> - Fractal Cone Iterator
+> - Logarithmic Spiral
+> - Romanesco Cabbage (In progress)
+
+``` python
+from geonodes.demos import fractal
+
+fractal.demo()
+```
+"""
+
 import numpy as np
 
-#from random import Random
+from geonodes import *
 
-from .. import nd, snd, gnmath, GeoNodes, ShaderNodes, Group, G
-from .. import Geometry, Mesh, Curve, Cloud, Material, String, Texture, Shader
-from .. import Face
-from .. import Repeat, Simulation, Layout, Panel
-from .. import Boolean, Integer, Float, Vector, Rotation, Matrix, Color
-from .. import pi, tau
+if False:
+    from .. import nd, snd, gnmath, GeoNodes, ShaderNodes, Group, G
+    from .. import Geometry, Mesh, Curve, Cloud, Material, String, Texture, Shader
+    from .. import Face
+    from .. import Repeat, Simulation, Layout, Panel
+    from .. import Boolean, Integer, Float, Vector, Rotation, Matrix, Color
+    from .. import pi, tau
 
 
 FOCAL_FACTOR = .04939
@@ -25,6 +104,21 @@ def test():
         res = Switch(cone) if cond else geo
 
         res.out()
+
+# =============================================================================================================================
+# Demo
+
+def demo(clear=False):
+    if clear:
+        GeoNodes.remove_groups()
+
+    random_normal()
+    camera_culling()
+    sierpinski()
+    multires_surface()
+    romanesco()
+    growing()
+
 
 # =============================================================================================================================
 # Utilities and macros
@@ -988,77 +1082,75 @@ def romanesco():
 
             # ===== Fractal iteration
 
-            with Layout("Iterate: replace points by the model"):
+            with Layout("Copy attributes"):
+                cloud.points._Main_Seed     = Integer("Seed")
+                cloud.points._Main_Scale    = Float("Scale")
+                cloud.points._Main_Normal   = Vector("Normal")
+                cloud.points._Main_Rotation = Rotation("Rotation")
+                cloud.points._Main_Position = nd.position
 
-                with Layout("Copy attributes"):
-                    cloud.points._Main_Seed     = Integer("Seed")
-                    cloud.points._Main_Scale    = Float("Scale")
-                    cloud.points._Main_Normal   = Vector("Normal")
-                    cloud.points._Main_Rotation = Rotation("Rotation")
-                    cloud.points._Main_Position = nd.position
+            with Layout("Replacement"):
+                inst_scale = Float("Main Scale")
+                seed = Integer("Seed")
+                inst_scale = G.random.normal_value(inst_scale, inst_scale*size_scale, id=seed, seed=seed + 1000)
+                instances = cloud.points[Boolean("Iterate")].instance_on(instance=model,
+                    #scale    = Float("Main Scale"))
+                    scale    = inst_scale)
 
-                with Layout("Replacement"):
-                    inst_scale = Float("Main Scale")
-                    seed = Integer("Seed")
-                    inst_scale = G.random.normal_value(inst_scale, inst_scale*size_scale, id=seed, seed=seed + 1000)
-                    instances = cloud.points[Boolean("Iterate")].instance_on(instance=model,
-                        #scale    = Float("Main Scale"))
-                        scale    = inst_scale)
+                # Set the instance @ origin to perform deformations
+                instances.position = 0
 
-                    # Set the instance @ origin to perform deformations
-                    instances.position = 0
+                # Now we realize
+                new_cloud = Cloud(instances.realize())
 
-                    # Now we realize
-                    new_cloud = Cloud(instances.realize())
+            with Layout("Attributes of next iteration"):
+                new_cloud.points._Seed  = Integer("Main Seed").hash_value(Integer("Seed"))
+                new_cloud.points._Scale = Float("Main Scale") * Float("Scale")
+                new_cloud.points._Depth = Integer("Depth") + 1
 
-                with Layout("Attributes of next iteration"):
-                    new_cloud.points._Seed  = Integer("Main Seed").hash_value(Integer("Seed"))
-                    new_cloud.points._Scale = Float("Main Scale") * Float("Scale")
-                    new_cloud.points._Depth = Integer("Depth") + 1
+                seed = Integer("Seed")
+                new_cloud.points._Thread = Float("Thread")*G.random.normal_value(1, rep.thread_scale, id=seed, seed=seed+100)
+                rep.thread_scale *= thread_ratio
 
-                    seed = Integer("Seed")
-                    new_cloud.points._Thread = Float("Thread")*G.random.normal_value(1, rep.thread_scale, id=seed, seed=seed+100)
-                    rep.thread_scale *= thread_ratio
+            with Layout("Deformation"):
 
-                with Layout("Deformation"):
+                seed = Integer("Main Seed")
+                Z = Float("Z")
 
-                    seed = Integer("Main Seed")
-                    Z = Float("Z")
+                # Instance origin
+                O = Vector("Main Position")
 
-                    # Instance origin
-                    O = Vector("Main Position")
+                # Twisting around Z axis
+                with Layout("Twist"):
+                    twist_rot = Rotation((0, 0, G.random.normal_value(0, twist_scale, id=seed, seed=seed)*Z)).switch(no_twist)
 
-                    # Twisting around Z axis
-                    with Layout("Twist"):
-                        twist_rot = Rotation((0, 0, G.random.normal_value(0, twist_scale, id=seed, seed=seed)*Z)).switch(no_twist)
+                # Bending
+                with Layout("Bend"):
+                    bend_angle = G.random.normal_value(bend, bend_scale, id=seed, seed=seed + 1)
+                    bend_dir   = Float.Random(0, 2*np.pi, id=seed, seed=seed + 2)
+                    bend_rot   = Rotation((bend_angle*Z, 0, 0)) @ Rotation((0, 0, bend_dir)).switch(no_bend)
 
-                    # Bending
-                    with Layout("Bend"):
-                        bend_angle = G.random.normal_value(bend, bend_scale, id=seed, seed=seed + 1)
-                        bend_dir   = Float.Random(0, 2*np.pi, id=seed, seed=seed + 2)
-                        bend_rot   = Rotation((bend_angle*Z, 0, 0)) @ Rotation((0, 0, bend_dir)).switch(no_bend)
+                # Apply to vertices
+                with Layout("Apply"):
+                    rot = ((twist_rot @ bend_rot) @ Rotation.Named("Main Rotation")).switch(no_deform, Rotation.Named("Main Rotation"))
+                    new_cloud.points.position  = O + rot @ new_cloud.position
+                    new_cloud.points._Normal   = rot @ Vector("Normal")
+                    new_cloud.points._Rotation = Rotation("Rotation") @ rot
 
-                    # Apply to vertices
-                    with Layout("Apply"):
-                        rot = ((twist_rot @ bend_rot) @ Rotation.Named("Main Rotation")).switch(no_deform, Rotation.Named("Main Rotation"))
-                        new_cloud.points.position  = O + rot @ new_cloud.position
-                        new_cloud.points._Normal   = rot @ Vector("Normal")
-                        new_cloud.points._Rotation = Rotation("Rotation") @ rot
+                if False:
+                    rot = Rotation.Named("Main Rotation")
+                    pos = nd.position - O
 
-                    if False:
-                        rot = Rotation.Named("Main Rotation")
-                        pos = nd.position - O
+                    pos = rot.invert() @ pos
+                    nrm = rot.invert() @ Float.Named("Normal")
 
-                        pos = rot.invert() @ pos
-                        nrm = rot.invert() @ Float.Named("Normal")
+                    z = Float.Named("Z")
+                    deform = Rotation((0, 0, twist*z)) @ (Rotation((bend*z, 0, 0)) @ Rotation((0, 0, 0)))
 
-                        z = Float.Named("Z")
-                        deform = Rotation((0, 0, twist*z)) @ (Rotation((bend*z, 0, 0)) @ Rotation((0, 0, 0)))
+                    new_cloud.points.position  = O + (rot @ deform) @ pos
+                    new_cloud.points.store("Normal", (rot @ deform) @ nrm)
 
-                        new_cloud.points.position  = O + (rot @ deform) @ pos
-                        new_cloud.points.store("Normal", (rot @ deform) @ nrm)
-
-                    new_cloud.points.offset = Vector("Normal").scale(trans*height*Float.Named("Scale"))
+                new_cloud.points.offset = Vector("Normal").scale(trans*height*Float.Named("Scale"))
 
                 # Done
 
@@ -1900,7 +1992,7 @@ def romanesco2():
 
 
 
-def demo():
+def growing():
 
     # ----- Growing Mesh
 

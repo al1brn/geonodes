@@ -47,6 +47,8 @@ from pathlib import Path
 import bpy
 
 FULL_PATH = False
+NO_STACK_ON_KEYWORD = True
+NO_STACK = True
 
 class NodeError(Exception):
 
@@ -75,15 +77,26 @@ class NodeError(Exception):
 
         self.message += "\n"
 
-        item = self.find_keyword(keyword)
+        # ----- stack
 
-        if item is None:
-            stack_lines = self.stack_lines()
+        stack_lines = self.stack_lines()
+
+        if keyword is None:
+
+            if NO_STACK:
+                stack_lines = []
 
         else:
-            file_name = item['file_name']
-            lineno = item['lineno']
-            stack_lines = [f"File '{file_name}', line {lineno}", item['code']]
+            item = self.find_keyword(keyword)
+
+            if item is None:
+                if NO_STACK or NO_STACK_ON_KEYWORD:
+                    stack_lines = []
+
+            else:
+                file_name = item['file_name']
+                lineno = item['lineno']
+                stack_lines = [f"File '{file_name}', line {lineno}", item['code']]
 
         self.message += "\n".join(stack_lines)
 
@@ -190,8 +203,16 @@ class NodeError(Exception):
         if keyword is None:
             return None
 
-        for item in NodeError.get_stack()[2:]:
-            if item['code'].find(keyword) >= 0:
-                return item
+        if isinstance(keyword, str):
+            kws = [keyword]
+        else:
+            kws = keyword
+
+        for kw in kws:
+            for item in NodeError.get_stack()[2:]:
+                if item['code'].find("raise") >= 0:
+                    continue
+                if item['code'].find(kw) >= 0:
+                    return item
 
         return None

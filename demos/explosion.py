@@ -1,25 +1,53 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
-Created on 2024/08/02
+This file is part of the geonodes distribution (https://github.com/al1brn/geonodes).
+Copyright (c) 2025 Alain Bernard.
 
-@author: alain
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, version 3.
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 -----------------------------------------------------
 Scripting Geometry Nodes
 -----------------------------------------------------
 
-module : demos/explosion
-------------------------
-Explode points from the points of the initial geometry.
-The particles can be either generated or taken from a collection.
+module : demo explosion
+-----------------------
+
+Simulation zone demo
 
 updates
 -------
-- creation : 2024/08/02
-- update   : 2024/09/04
-"""
+- creation : 2024/07/23
+- update :   2024/09/04
+- update :   2025/01/12
 
+$ DOC START
+
+[Source Code](../demos/explosion.py)
+
+A simple demo of a ***Simulation*** zone.
+
+Explode points from the points of the initial geometry.
+The particles can be either generated or taken from a collection.
+
+> [!NOTE]
+> Modifiers:
+> - Explosion
+
+``` python
+from geonodes.demos import explosion
+
+explosion.demo()
+```
+"""
 
 import numpy as np
 

@@ -52,9 +52,9 @@ uv_map = cuve.uv_map_
 - **L** : [\_lc](socket.md#_lc)
 - **M** : [MenuSwitch](socket.md#menuswitch) :black_small_square: [menu_switch](socket.md#menu_switch)
 - **N** : [\_name](socket.md#_name) :black_small_square: [node](socket.md#node) :black_small_square: [node_color](socket.md#node_color) :black_small_square: [node_label](socket.md#node_label)
-- **O** : [out](socket.md#out)
+- **O** : [option](socket.md#option) :black_small_square: [option_index](socket.md#option_index) :black_small_square: [out](socket.md#out)
 - **P** : [\_panel_name](socket.md#_panel_name)
-- **S** : [\_set_interface_property](socket.md#_set_interface_property) :black_small_square: [Switch](socket.md#switch) :black_small_square: [switch](socket.md#switch)
+- **S** : [\_set_interface_property](socket.md#_set_interface_property) :black_small_square: [Switch](socket.md#switch) :black_small_square: [switch](socket.md#switch) :black_small_square: [switch_false](socket.md#switch_false)
 
 ## Properties
 
@@ -105,6 +105,32 @@ Node color
 >
 
 Node Label
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Socket](socket.md#socket) :black_small_square: [Content](socket.md#content) :black_small_square: [Properties](socket.md#properties)</sub>
+
+### option
+
+> _type_: **?**
+>
+
+Plug an input of the socket node with the socket
+
+Set the current option as defined in a [If](if.md#if), [Else](else.md#else) or [Elif](elif.md#elif) block.
+
+
+> [!IMPORTANT]
+> The only valid use is `socket.option = value`
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Socket](socket.md#socket) :black_small_square: [Content](socket.md#content) :black_small_square: [Properties](socket.md#properties)</sub>
+
+### option_index
+
+> _type_: **?**
+>
+
+Get the option index
+
+Get the current option index  for a socket created by a [If](if.md#if), [Else](else.md#else) or [Elif](elif.md#elif) block.
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Socket](socket.md#socket) :black_small_square: [Content](socket.md#content) :black_small_square: [Properties](socket.md#properties)</sub>
 
@@ -544,12 +570,72 @@ with GeoNodes("Switch demo"):
     geo.out()
 ```
 
-> [!NOTE]
-> This method let self socket unchanged. To set self socket to the result
+#### Information:
+- **Socket** : self
+
+
 
 #### Arguments:
 - **condition** (_Boolean_ = None) : socket 'Switch' (Switch)
 - **true** ( = None) : socket 'True' (True)
+
+
+
+#### Returns:
+- **Socket** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Socket](socket.md#socket) :black_small_square: [Content](socket.md#content) :black_small_square: [Methods](socket.md#methods)</sub>
+
+----------
+### switch_false()
+
+> method
+
+``` python
+switch_false(condition=None, false=None)
+```
+
+> Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html)
+
+
+
+Self is connected to 'true' socket.
+
+> [!IMPORTANT]
+> This methods behaves the inverse of [switch](socket.md#switch) : self is connected to "True" socket and  the argument to "False", socket
+
+> [!NOTE]
+> This method is mainly provided to cover the case when 'False' socket is None
+
+``` python
+with GeoNodes("Switch demo"):
+
+    geo = Geometry()
+
+    show_geometry = Boolean(False, "Merge with Cube")
+
+    cube = Mesh.Cube()
+
+    geo += cube.switch_false(show_geometry)
+
+    # Is equivalent to
+    geo += Geometry.Switch(show_geometry, None, cube)
+
+    # To group output
+    geo.out()
+```
+
+> [!NOTE]
+> This method let self socket unchanged. To set self socket to the result
+
+#### Information:
+- **Socket** : self
+
+
+
+#### Arguments:
+- **condition** (_Boolean_ = None) : socket 'Switch' (Switch)
+- **false** ( = None) : socket 'False' (False)
 
 
 

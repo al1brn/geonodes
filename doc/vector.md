@@ -36,7 +36,7 @@ vect = Vector(name="User input").  # Create a new Vector group input
 
 ### Inherited
 
-[\_cache](nodecache.md#_cache) :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](socket.md#check_in_list) :black_small_square: [data_type](socket.md#data_type) :black_small_square: [\_domain_to_geometry](socket.md#_domain_to_geometry) :black_small_square: [\_geometry_class](socket.md#_geometry_class) :black_small_square: [\_\_getattr__](socket.md#__getattr__) :black_small_square: [get_node_data_type](socket.md#get_node_data_type) :black_small_square: [get_socket_class](socket.md#get_socket_class) :black_small_square: [IndexSwitch](socket.md#indexswitch) :black_small_square: [index_switch](socket.md#index_switch) :black_small_square: [Input](socket.md#input) :black_small_square: [input_type](socket.md#input_type) :black_small_square: [\_interface_socket](socket.md#_interface_socket) :black_small_square: [\_is_group_input](socket.md#_is_group_input) :black_small_square: [\_is_group_output](socket.md#_is_group_output) :black_small_square: [\_is_group_socket](socket.md#_is_group_socket) :black_small_square: [\_jump](socket.md#_jump) :black_small_square: [\_lc](socket.md#_lc) :black_small_square: [\_lcop](socket.md#_lcop) :black_small_square: [\_lock](proplocker.md#_lock) :black_small_square: [\_mark_for_delete](socket.md#_mark_for_delete) :black_small_square: [MenuSwitch](socket.md#menuswitch) :black_small_square: [menu_switch](socket.md#menu_switch) :black_small_square: [\_name](socket.md#_name) :black_small_square: [node](socket.md#node) :black_small_square: [node_color](socket.md#node_color) :black_small_square: [node_label](socket.md#node_label) :black_small_square: [\_panel_name](socket.md#_panel_name) :black_small_square: [pin_gizmo](socket.md#pin_gizmo) :black_small_square: [\_reset](socket.md#_reset) :black_small_square: [\_run_tests](socket.md#_run_tests) :black_small_square: [\_\_setattr__](socket.md#__setattr__) :black_small_square: [\_set_interface_property](socket.md#_set_interface_property) :black_small_square: [socket_type](socket.md#socket_type) :black_small_square: [\_\_str__](socket.md#__str__) :black_small_square: [Switch](socket.md#switch) :black_small_square: [switch](socket.md#switch) :black_small_square: [\_unlock](proplocker.md#_unlock) :black_small_square:
+[\_cache](nodecache.md#_cache) :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](socket.md#check_in_list) :black_small_square: [data_type](socket.md#data_type) :black_small_square: [\_domain_to_geometry](socket.md#_domain_to_geometry) :black_small_square: [\_geometry_class](socket.md#_geometry_class) :black_small_square: [\_\_getattr__](socket.md#__getattr__) :black_small_square: [get_node_data_type](socket.md#get_node_data_type) :black_small_square: [get_socket_class](socket.md#get_socket_class) :black_small_square: [IndexSwitch](socket.md#indexswitch) :black_small_square: [index_switch](socket.md#index_switch) :black_small_square: [Input](socket.md#input) :black_small_square: [input_type](socket.md#input_type) :black_small_square: [\_interface_socket](socket.md#_interface_socket) :black_small_square: [\_is_group_input](socket.md#_is_group_input) :black_small_square: [\_is_group_output](socket.md#_is_group_output) :black_small_square: [\_is_group_socket](socket.md#_is_group_socket) :black_small_square: [\_jump](socket.md#_jump) :black_small_square: [\_lc](socket.md#_lc) :black_small_square: [\_lcop](socket.md#_lcop) :black_small_square: [link_from](socket.md#link_from) :black_small_square: [\_lock](proplocker.md#_lock) :black_small_square: [\_mark_for_delete](socket.md#_mark_for_delete) :black_small_square: [MenuSwitch](socket.md#menuswitch) :black_small_square: [menu_switch](socket.md#menu_switch) :black_small_square: [\_name](socket.md#_name) :black_small_square: [node](socket.md#node) :black_small_square: [node_color](socket.md#node_color) :black_small_square: [node_label](socket.md#node_label) :black_small_square: [option](socket.md#option) :black_small_square: [option_index](socket.md#option_index) :black_small_square: [\_panel_name](socket.md#_panel_name) :black_small_square: [pin_gizmo](socket.md#pin_gizmo) :black_small_square: [\_reset](socket.md#_reset) :black_small_square: [\_run_tests](socket.md#_run_tests) :black_small_square: [\_\_setattr__](socket.md#__setattr__) :black_small_square: [\_set_interface_property](socket.md#_set_interface_property) :black_small_square: [socket_type](socket.md#socket_type) :black_small_square: [\_\_str__](socket.md#__str__) :black_small_square: [Switch](socket.md#switch) :black_small_square: [switch](socket.md#switch) :black_small_square: [switch_false](socket.md#switch_false) :black_small_square: [\_unlock](proplocker.md#_unlock) :black_small_square:
 
 ## Content
 
@@ -51,9 +51,9 @@ vect = Vector(name="User input").  # Create a new Vector group input
 - **I** : [ies_texture](vector.md#ies_texture) :black_small_square: [ies_texture_external](vector.md#ies_texture_external) :black_small_square: [ies_texture_internal](vector.md#ies_texture_internal) :black_small_square: [image_texture](vector.md#image_texture) :black_small_square: [\_\_init__](vector.md#__init__)
 - **L** : [length](vector.md#length) :black_small_square: [less_equal](vector.md#less_equal) :black_small_square: [less_than](vector.md#less_than)
 - **M** : [mapping](vector.md#mapping) :black_small_square: [max](vector.md#max) :black_small_square: [min](vector.md#min) :black_small_square: [mix](vector.md#mix) :black_small_square: [mix_non_uniform](vector.md#mix_non_uniform) :black_small_square: [mix_uniform](vector.md#mix_uniform) :black_small_square: [modulo](vector.md#modulo) :black_small_square: [multiply](vector.md#multiply) :black_small_square: [multiply_add](vector.md#multiply_add)
-- **N** : [Named](vector.md#named) :black_small_square: [NamedAttribute](vector.md#namedattribute) :black_small_square: [normal](vector.md#normal) :black_small_square: [normalize](vector.md#normalize) :black_small_square: [NormalMap](vector.md#normalmap) :black_small_square: [not_equal](vector.md#not_equal)
+- **N** : [Named](vector.md#named) :black_small_square: [NamedAttribute](vector.md#namedattribute) :black_small_square: [Normal](vector.md#normal) :black_small_square: [normal](vector.md#normal) :black_small_square: [normalize](vector.md#normalize) :black_small_square: [NormalMap](vector.md#normalmap) :black_small_square: [not_equal](vector.md#not_equal)
 - **O** : [out](vector.md#out)
-- **P** : [pack_uv_islands](vector.md#pack_uv_islands) :black_small_square: [point_density](vector.md#point_density) :black_small_square: [project](vector.md#project)
+- **P** : [pack_uv_islands](vector.md#pack_uv_islands) :black_small_square: [point_density](vector.md#point_density) :black_small_square: [Position](vector.md#position) :black_small_square: [project](vector.md#project)
 - **R** : [Random](vector.md#random) :black_small_square: [reflect](vector.md#reflect) :black_small_square: [refract](vector.md#refract) :black_small_square: [rotate](vector.md#rotate) :black_small_square: [rotate_axis_angle](vector.md#rotate_axis_angle) :black_small_square: [rotate_euler_xyz](vector.md#rotate_euler_xyz) :black_small_square: [rotate_x_axis](vector.md#rotate_x_axis) :black_small_square: [rotate_y_axis](vector.md#rotate_y_axis) :black_small_square: [rotate_z_axis](vector.md#rotate_z_axis)
 - **S** : [sample_grid](vector.md#sample_grid) :black_small_square: [sample_grid_index](vector.md#sample_grid_index) :black_small_square: [scale](vector.md#scale) :black_small_square: [separate_xyz](vector.md#separate_xyz) :black_small_square: [sin](vector.md#sin) :black_small_square: [snap](vector.md#snap) :black_small_square: [subtract](vector.md#subtract)
 - **T** : [tan](vector.md#tan) :black_small_square: [Tangent](vector.md#tangent) :black_small_square: [to_rotation](vector.md#to_rotation) :black_small_square: [transform](vector.md#transform) :black_small_square: [Translation](vector.md#translation)
@@ -140,6 +140,8 @@ Acceleration(value=(0.0, 0.0, 0.0), name='Acceleration', tip=None, panel=None, d
 ```
 
 > Acceleration group input
+
+New [Vector](vector.md#vector) input with subtype 'ACCELERATION'.
 
 #### Arguments:
 - **value** ( = (0.0, 0.0, 0.0))
@@ -383,6 +385,8 @@ Direction(value=(0.0, 0.0, 0.0), name='Direction', tip=None, panel=None, default
 
 > Direction group input
 
+New [Vector](vector.md#vector) input with subtype 'DIRECTION'.
+
 #### Arguments:
 - **value** ( = (0.0, 0.0, 0.0))
 - **name** ( = Direction)
@@ -597,6 +601,8 @@ Euler(value=(0.0, 0.0, 0.0), name='Euler', tip=None, panel=None, default_attribu
 ```
 
 > Euler group input
+
+New [Vector](vector.md#vector) input with subtype 'EULER'.
 
 #### Arguments:
 - **value** ( = (0.0, 0.0, 0.0))
@@ -1346,6 +1352,35 @@ NamedAttribute(name=None)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Vector](vector.md#vector) :black_small_square: [Content](vector.md#content) :black_small_square: [Methods](vector.md#methods)</sub>
 
 ----------
+### Normal()
+
+> classmethod
+
+``` python
+Normal(name='Normal', tip=None, panel=None, hide_in_modifier=True)
+```
+
+> Normal vector group input
+
+New [Vector](vector.md#vector) input with Normal as default value (default_input='NORMAL')
+
+> [!NOTE]
+> By default, 'hide_in_modifier' is set to True
+
+#### Arguments:
+- **name** ( = Normal)
+- **tip** ( = None)
+- **panel** ( = None)
+- **hide_in_modifier** ( = True)
+
+
+
+#### Returns:
+- **Vector** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Vector](vector.md#vector) :black_small_square: [Content](vector.md#content) :black_small_square: [Methods](vector.md#methods)</sub>
+
+----------
 ### normal()
 
 > method
@@ -1526,6 +1561,35 @@ point_density(interpolation='Linear', object=None, particle_color_source='PARTIC
 
 #### Returns:
 - **Color** (_Float_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Vector](vector.md#vector) :black_small_square: [Content](vector.md#content) :black_small_square: [Methods](vector.md#methods)</sub>
+
+----------
+### Position()
+
+> classmethod
+
+``` python
+Position(name='Position', tip=None, panel=None, hide_in_modifier=True)
+```
+
+> Position vector group input
+
+New [Vector](vector.md#vector) input with Position as default value (default_input='POSITION')
+
+> [!NOTE]
+> By default, 'hide_in_modifier' is set to True
+
+#### Arguments:
+- **name** ( = Position)
+- **tip** ( = None)
+- **panel** ( = None)
+- **hide_in_modifier** ( = True)
+
+
+
+#### Returns:
+- **Vector** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Vector](vector.md#vector) :black_small_square: [Content](vector.md#content) :black_small_square: [Methods](vector.md#methods)</sub>
 
@@ -2099,7 +2163,9 @@ transform(convert_from='WORLD', convert_to='OBJECT', vector_type='NORMAL')
 Translation(value=(0.0, 0.0, 0.0), name='Translation', tip=None, panel=None, default_attribute='', default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False)
 ```
 
-> Translation group input
+> Translation Vector group input
+
+New [Vector](vector.md#vector) input with subtype 'TRANSLATION'.
 
 #### Arguments:
 - **value** ( = (0.0, 0.0, 0.0))
@@ -2229,6 +2295,8 @@ Velocity(value=(0.0, 0.0, 0.0), name='Velocity', tip=None, panel=None, default_a
 
 > Velocity group input
 
+New [Vector](vector.md#vector) input with subtype 'VELOCITY'.
+
 #### Arguments:
 - **value** ( = (0.0, 0.0, 0.0))
 - **name** ( = Velocity)
@@ -2285,6 +2353,8 @@ XYZ(value=(0.0, 0.0, 0.0), name='XYZ', tip=None, panel=None, default_attribute='
 ```
 
 > XYZ group input
+
+New [Vector](vector.md#vector) input with subtype 'XYZ'.
 
 #### Arguments:
 - **value** ( = (0.0, 0.0, 0.0))

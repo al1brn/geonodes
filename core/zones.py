@@ -131,11 +131,14 @@ class Zone:
 
     ITEMS_NAME   = None # Name of node 'xxx_items' property (dynamic if None)
     PLUG_ON_EXIT = True # Plug loop variables to output node when exiting (False for ForEachElement)
+    TEMP_ZONE    = True
 
     def init_layout(self):
         from geonodes import Layout
-        #self._layout = Layout("$TEMP_ZONE")
-        self._layout = None
+        if Zone.TEMP_ZONE:
+            self._layout = Layout("$TEMP_ZONE")
+        else:
+            self._layout = None
 
     def init_zone(self, sockets={}, **snake_case_sockets):
         """ > Two nodes zone
@@ -226,10 +229,6 @@ class Zone:
         - snake_case_sockets : sockets to create, snake_case names
         """
 
-        # ----- Existing output sockets
-
-        #self._fixed = {utils.snake_case(bsock.name): self._input.out_socket(bsock.name) for bsock in self._input._bnode.outputs if bsock.type != 'CUSTOM'}
-
         # ----- Create the simulation state items in the output node
 
         self._output._set_items(_items=sockets, items_name = self.ITEMS_NAME, plug_items=False, **snake_case_sockets)
@@ -242,11 +241,8 @@ class Zone:
 
         # ----- Variables used within the with statement
 
-        if True:
-            sockets = self._input.get_socket_names('OUTPUT', as_argument=True)
-            self._locals = {pname: sockets[pname] for pname in all_sockets.keys()}
-        else:
-            self._locals = {pname: self._input.out_socket(pname) for pname in all_sockets.keys()}
+        sockets = self._input.get_socket_names('OUTPUT', as_argument=True)
+        self._locals = {pname: sockets[pname] for pname in all_sockets.keys()}
 
         # ----- Ensure the proper sub class of geometries
 
@@ -272,12 +268,8 @@ class Zone:
         self._closed = True
 
         if self.PLUG_ON_EXIT:
-            if True:
-                for name, value in self._locals.items():
-                    setattr(self._output, name, value)
-            else:
-                for name, value in self._locals.items():
-                    self._output.plug_value_into_socket(value, self._output.in_socket(name))
+            for name, value in self._locals.items():
+                setattr(self._output, name, value)
 
         if self._layout is not None:
             self._layout.pop()

@@ -1,36 +1,63 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
-Created on 2024/08/02
+This file is part of the geonodes distribution (https://github.com/al1brn/geonodes).
+Copyright (c) 2025 Alain Bernard.
 
-@author: alain
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, version 3.
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 -----------------------------------------------------
 Scripting Geometry Nodes
 -----------------------------------------------------
 
-module : demos/arrows
----------------------
-Generates modifiers which build a single arrow or a field of arrows
+module : demo arrows
+--------------------
 
-The field of arrows make use of 'Vectors' named attribute
-Parameters for shader are passed through attributes:
-    - Color
-    - Transparency
-    - Negative
-
-Geometry Nodes
---------------
-    - Arrows : a field of vectors
-    - Arrow  : a single vector definef by cartesian components
-    - Polar Arrow : a single vector defined by cylindrical components
-    - Spherical Arrow : a single vector defined by cylindrical components
+Building arrows
 
 updates
 -------
-- creation : 2024/08/02
-- update   : 2024/09/04
-- update.  : 2024/10/02
+- creation : 2024/07/23
+- update :   2024/09/04
+- update :   2025/01/12
+
+$ DOC START
+
+[Source Code](../demos/arrows.py)
+
+This demo provides four modifiers:
+- Arrows :
+  Display a field of arrows on the geometry points
+- Arrow :
+  A single arrows defined by its cartesian coordinates
+- Polar Arrow :
+  A single arrows defined by its polar coordinates
+- Spherical Arrow :
+  A single arrows defined by its spherical coordinates
+
+In addition, the "Arrows Show Case" gives an example on the use or Arrows modifier.
+
+> [!NOTE]
+> Modifiers:
+> - Arrows
+> - Arrow
+> - Polar Arrow
+> - Spherical Arrows
+> - Arrows Show Case
+
+``` python
+from geonodes.demos import arrows
+
+arrows.demo()
+```
 """
 
 from geonodes import *
@@ -199,7 +226,7 @@ def demo():
     # ----------------------------------------------------------------------------------------------------
     # Show case
 
-    with GeoNodes("Show Case"):
+    with GeoNodes("Arrows Show Case"):
 
         count = Integer(100, "Count", 10, single_value=True)
         seed = Integer(0, "Seed", single_value=True)

@@ -116,6 +116,8 @@ if True:
 
     from . import demos
 
+    from .core.pyswitch import If, Else, Elif
+
 
 # ----------------------------------------------------------------------------------------------------
 # Shader

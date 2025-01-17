@@ -112,12 +112,53 @@ class Integer(generated.Integer):
         super().__init__(bsock)
 
     # ====================================================================================================
-    # Constructors
+    # Default input constructors
+    # ('VALUE', 'INDEX', 'ID_OR_INDEX')
+
+    @classmethod
+    def Index(cls, name="Index", tip=None, panel=None, hide_in_modifier=True):
+        """ > Index Integer group input
+
+        New <#Integer> input with Index as default value (default_input='INDEX')
+
+        > [!NOTE]
+        > By default, 'hide_in_modifier' is set to True
+
+        Returns
+        -------
+        - Integer
+        """
+        return cls(value=None, name=name, tip=tip, panel=panel, default_input='INDEX', hide_in_modifier=hide_in_modifier)
+
+    @classmethod
+    def IdOrIndex(cls, name="ID or Index", tip=None, panel=None, hide_in_modifier=True):
+        """ > ID or Index Integer group input
+
+        New <#Integer> input with 'ID or Index' as default value (default_input='ID_OR_INDEX')
+
+        > [!NOTE]
+        > By default, 'hide_in_modifier' is set to True
+
+        Returns
+        -------
+        - Integer
+        """
+        return cls(value=None, name=name, tip=tip, panel=panel, default_input='ID_OR_INDEX', hide_in_modifier=hide_in_modifier)
+
+    # ====================================================================================================
+    # Subtype constructors
+    # ('NONE', 'PERCENTAGE', 'FACTOR')
 
     @classmethod
     def Percentage(cls, value=0, name='Percentage', min=0, max=100, tip=None, panel=None,
         default_attribute="", default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False):
         """ > Integer percentage group input
+
+        New <#Integer> input with subtype 'PERCENTAGE'.
+
+        Returns
+        -------
+        - Integer
         """
         return cls(value=value, name=name, min=min, max=max, tip=tip, subtype='PERCENTAGE',
             default_attribute=default_attribute, default_input=default_input, hide_value=hide_value, hide_in_modifier=hide_in_modifier, single_value=single_value,
@@ -127,6 +168,12 @@ class Integer(generated.Integer):
     def Factor(cls, value=0, name='Factor', min=0, max=100, tip=None, panel=None,
         default_attribute="", default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False):
         """ > Integer factor group input
+
+        New <#Integer> input with subtype 'FACTOR'.
+
+        Returns
+        -------
+        - Integer
         """
         return cls(value=value, name=name, min=min, max=max, tip=tip, subtype='FACTOR',
             default_attribute=default_attribute, default_input=default_input, hide_value=hide_value, hide_in_modifier=hide_in_modifier, single_value=single_value,

@@ -463,7 +463,7 @@ class TreeInterface:
     # ====================================================================================================
     # Create a panel
 
-    def create_panel(self, name: str, tip: str=""):
+    def create_panel(self, name: str, tip: str="", closed_by_default=False):
         """ Create a panel
 
         > [!NOTE]
@@ -483,9 +483,10 @@ class TreeInterface:
 
         panel = self.get_panel(name, halt=False)
         if panel is not None:
+            panel.default_closed = closed_by_default
             return panel
 
-        return self.btree.interface.new_panel(name, description=tip, default_closed=False)
+        return self.btree.interface.new_panel(name, description=tip, default_closed=closed_by_default)
 
     # ====================================================================================================
     # Ensure geometry in

@@ -1,4 +1,52 @@
-print('-'*100)
+"""
+This file is part of the geonodes distribution (https://github.com/al1brn/geonodes).
+Copyright (c) 2025 Alain Bernard.
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, version 3.
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+-----------------------------------------------------
+Scripting Geometry Nodes
+-----------------------------------------------------
+
+module : demo forest
+--------------------
+
+ForEach zone
+
+updates
+-------
+- creation :   2025/01/12
+
+$ DOC START
+
+[Source Code](../demos/forest.py)
+
+A simple parameterized forest.
+
+
+> [!NOTE]
+> Modifiers:
+> - A Tree
+> - Trees Collection
+> - Forest
+> - Forest Demo
+
+``` python
+from geonodes.demos import forest
+
+forest.demo()
+```
+"""
 
 from geonodes import *
 
@@ -17,21 +65,21 @@ def demo():
 
         # Green color
 
-        tex = Texture.Noise(scale=37)
-        fac = tex.fac.map_range(0.3, .7)
-        col0 = Color((0.002, 0.035, 0.015)).mix(fac, (0.001, 0.427, 0.015))
+        fac = Texture.Noise(scale=37)
+        fac = fac.map_range(0.3, .7)
+        col0 = Color((0.002, 0.035, 0.015)).mix((0.001, 0.427, 0.015), fac)
 
         # Brown read color
 
-        tex = Texture.Noise(scale=20)
-        fac = tex.fac.map_range(0.3, .7)
-        col1 = Color((0.209, 0.168, 0.004)).mix(fac, (0.264, 0.033, 0.013))
+        fac = Texture.Noise(scale=20)
+        fac = fac.map_range(0.3, .7)
+        col1 = Color((0.209, 0.168, 0.004)).mix((0.264, 0.033, 0.013), fac)
 
         # Mix green brown
 
-        tex = Texture.Noise(scale=5)
-        fac = tex.fac.map_range(0.4, .6)
-        col = col0.mix(fac, col1)
+        fac = Texture.Noise(scale=5)
+        fac = fac.map_range(0.4, .6)
+        col = col0.mix(col1, fac)
 
         ped = Shader.Principled(base_color=col, roughness=.9)
         ped.out()
@@ -83,7 +131,7 @@ def demo():
 
         seed  = Integer(0, "Seed")
 
-        grid = Mesh.Line(end_location=(2*count, 0, 0), count=count)
+        grid = Mesh.LineEndPoints(end_location=(2*count, 0, 0), count=count)
 
         with grid.points.for_each(position=nd.position) as feel:
 
@@ -114,7 +162,7 @@ def demo():
         density = Float(.3, "Density")*Float(1).switch(nd.is_viewport, .1)
         seed    = Integer(0, "Seed")
 
-        cloud = surface.faces.distribute_points(distance_min=1, density_factor=density, seed=seed)
+        cloud = surface.faces.distribute_points_poisson(distance_min=1, density_factor=density, seed=seed)
 
         trees = Group("Trees Collection", count=10, seed=seed + 1)
         forest = cloud.points.instance_on(
@@ -125,7 +173,6 @@ def demo():
 
         forest.out()
 
-
     # ====================================================================================================
     # Demo
 
@@ -135,7 +182,7 @@ def demo():
         seed    = Integer(0, "Seed")
 
         plane = Mesh.Grid(vertices_x=50, vertices_y=50, size_x=100, size_y=100)
-        plane.points.offset = (0, 0, Texture.Noise(scale=.03).fac*10)
+        plane.points.offset = (0, 0, Texture.Noise(scale=.03)*10)
         plane.faces.smooth = True
 
         forest = Group("Forest", mesh=plane, density=density, seed=seed + 1)

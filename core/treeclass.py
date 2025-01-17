@@ -135,7 +135,7 @@ class Layout:
 # Layout
 
 class Panel:
-    def __init__(self, name: str):
+    def __init__(self, name: str, tip="", closed_by_default=False):
         """ Socket panel
 
         All group input and output sockets will be created within the current panel
@@ -161,6 +161,8 @@ class Panel:
         """
         self.tree = Tree.current_tree
         self.name = name
+
+        self.tree._interface.create_panel(name=name, tip=tip, closed_by_default=closed_by_default)
 
         self.push()
 
@@ -632,10 +634,12 @@ class Tree:
         - Link
         """
 
-        if hasattr(out_socket, '_bsocket'):
+        #if hasattr(out_socket, '_bsocket'):
+        if '_bsocket' in dir(out_socket):
             out_socket = out_socket._bsocket
 
-        if hasattr(in_socket, '_bsocket'):
+        #if hasattr(in_socket, '_bsocket'):
+        if '_bsocket' in dir(in_socket):
             in_socket = in_socket._bsocket
 
         return self._btree.links.new(out_socket, in_socket)
@@ -1331,44 +1335,61 @@ class Node:
         # ---------------------------------------------------------------------------
         # Plug / rename the existing sockets
 
-        for item in node_items:
+        if True:
+            to_del = []
+            for key, value in all_items.items():
 
-            key = None
+                socket = self.by_name('INPUT', key, as_argument=False, halt=False)
+                if socket is None:
+                    socket = self.by_name('INPUT', key, as_argument=True, halt=False)
 
-            # names match
+                if socket is not None:
+                    if plug_items:
+                        self.plug_value_into_socket(all_items[item.name], socket)
+                    to_del.append(key)
 
-            if item.name in all_items.keys():
-                key = item.name
-
-            # No exact match : look for python name match or type match in the worst case
-
-            else:
-                match_type = None
-                sock_name = utils.snake_case(item.name)
-                for k, v in all_items.items():
-                    if utils.snake_case(k) == sock_name:
-                        key = k
-                        break
-
-                    if utils.get_socket_type(v, default='GEOMETRY') == item.socket_type:
-                        match_type = k
-                if key is None and match_type is not None:
-                    key = match_type
-
-            # We have a matching key
-
-            if key is not None:
-
-                #print(" - MATCHING KEY", key, "for", item.name, '|', [s.name for s in self._bnode.inputs])
-
-                if plug_items:
-                    self.plug_value_into_socket(all_items[key], self.in_socket(item.name))
-
-                if key != item.name:
-                    self._bnode.inputs[item.name].name = key
-                    item.name = key
-
+            for key in to_del:
                 del all_items[key]
+
+        else:
+            for item in node_items:
+
+                key = None
+
+                # Names match
+
+                if item.name in all_items.keys():
+                    key = item.name
+
+                # No exact match : look for python name match or type match in the worst case
+
+                else:
+                    match_type = None
+                    sock_name = utils.snake_case(item.name)
+                    for k, v in all_items.items():
+                        if utils.snake_case(k) == sock_name:
+                            key = k
+                            break
+
+                        if utils.get_socket_type(v, default='GEOMETRY') == item.socket_type:
+                            match_type = k
+
+                    if key is None and match_type is not None:
+                        key = match_type
+
+                # We have a matching key
+
+                if key is not None:
+
+                    if plug_items:
+                        #self.plug_value_into_socket(all_items[key], self.in_socket(item.name))
+                        self.plug_value_into_socket(all_items[key], self[item.name])
+
+                    if key != item.name:
+                        self._bnode.inputs[item.name].name = key
+                        item.name = key
+
+                    del all_items[key]
 
         # ---------------------------------------------------------------------------
         # Loop on the sockets to create
@@ -1625,6 +1646,13 @@ class Node:
     # ====================================================================================================
     # Set an input socket and get an output socket
 
+    def get(self, name, default=None):
+        socket = self.by_name('OUTPUT', name, only_enabled=True, as_argument=False, candidates=False, halt=False)
+        if socket is None:
+            return self.by_name('OUTPUT', name, only_enabled=True, as_argument=True, candidates=False, halt=False)
+        else:
+            return socket
+
     def __getitem__(self, name):
         if isinstance(name, int):
             sockets = self.get_socket_names('OUTPUT')
@@ -1633,7 +1661,6 @@ class Node:
 
         else:
             return self.by_name('OUTPUT', name, as_argument=False)
-        #return self.out_socket(name)
 
     def __setitem__(self, name, value):
         if isinstance(name, int):
@@ -1644,7 +1671,6 @@ class Node:
         else:
             bsocket = self.by_name('INPUT', name, as_argument=False)
             self.plug_value_into_socket(value, bsocket)
-            #self.plug_value_into_socket(value, self.in_socket(name))
 
     # ====================================================================================================
     # Read a node attribute : it is an output socket
@@ -1963,7 +1989,8 @@ class Node:
         # ----------------------------------------------------------------------------------------------------
         # If the value is a domain, we take its geometry
 
-        if hasattr(value, '_geo'):
+        #if hasattr(value, '_geo'):
+        if '_geo' in dir(value):
             value = value._geo
 
         # ----------------------------------------------------------------------------------------------------
@@ -2546,6 +2573,9 @@ class GroupF:
 # =============================================================================================================================
 # Specific nodes
 
+# -----------------------------------------------------------------------------------------------------------------------------
+# Color Ramp
+
 class ColorRamp(Node):
     def __init__(self, fac=None, stops=None, interpolation='LINEAR'):
         """ Node <&Node Color Ramp>
@@ -2656,6 +2686,8 @@ class ColorRamp(Node):
         for i in range(len(stops), len(elements)):
             elements.remove(elements[-1])
 
+# -----------------------------------------------------------------------------------------------------------------------------
+# Color Ramp
 
 class NodeCurves(Node):
 

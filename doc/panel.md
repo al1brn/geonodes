@@ -1,7 +1,7 @@
 # Panel
 
 ``` python
-Panel(name: str)
+Panel(name: str, tip='', closed_by_default=False)
 ```
 
 Socket panel
@@ -25,6 +25,8 @@ with GeoNodes("Layout Demo"):
 
 #### Arguments:
 - **name** (_str_) : Panel title
+- **tip** ( = )
+- **closed_by_default** ( = False)
 
 ## Content
 
@@ -40,7 +42,7 @@ with GeoNodes("Layout Demo"):
 > method
 
 ``` python
-__init__(name: str)
+__init__(name: str, tip='', closed_by_default=False)
 ```
 
 Socket panel
@@ -64,5 +66,7 @@ with GeoNodes("Layout Demo"):
 
 #### Arguments:
 - **name** (_str_) : Panel title
+- **tip** ( = )
+- **closed_by_default** ( = False)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Panel](panel.md#panel) :black_small_square: [Content](panel.md#content) :black_small_square: [Methods](panel.md#methods)</sub>

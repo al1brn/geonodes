@@ -38,7 +38,7 @@ i = Integer(123, name="User input", subtype='PERCENTAGE') # Create a new integer
 
 ### Inherited
 
-[\_cache](nodecache.md#_cache) :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](socket.md#check_in_list) :black_small_square: [data_type](socket.md#data_type) :black_small_square: [\_domain_to_geometry](socket.md#_domain_to_geometry) :black_small_square: [\_geometry_class](socket.md#_geometry_class) :black_small_square: [\_\_getattr__](socket.md#__getattr__) :black_small_square: [get_node_data_type](socket.md#get_node_data_type) :black_small_square: [get_socket_class](socket.md#get_socket_class) :black_small_square: [IndexSwitch](socket.md#indexswitch) :black_small_square: [index_switch](socket.md#index_switch) :black_small_square: [Input](socket.md#input) :black_small_square: [input_type](socket.md#input_type) :black_small_square: [\_interface_socket](socket.md#_interface_socket) :black_small_square: [\_is_group_input](socket.md#_is_group_input) :black_small_square: [\_is_group_output](socket.md#_is_group_output) :black_small_square: [\_is_group_socket](socket.md#_is_group_socket) :black_small_square: [\_jump](socket.md#_jump) :black_small_square: [\_lc](socket.md#_lc) :black_small_square: [\_lcop](socket.md#_lcop) :black_small_square: [\_lock](proplocker.md#_lock) :black_small_square: [\_mark_for_delete](socket.md#_mark_for_delete) :black_small_square: [MenuSwitch](socket.md#menuswitch) :black_small_square: [menu_switch](socket.md#menu_switch) :black_small_square: [\_name](socket.md#_name) :black_small_square: [node](socket.md#node) :black_small_square: [node_color](socket.md#node_color) :black_small_square: [node_label](socket.md#node_label) :black_small_square: [out](socket.md#out) :black_small_square: [\_panel_name](socket.md#_panel_name) :black_small_square: [pin_gizmo](socket.md#pin_gizmo) :black_small_square: [\_reset](socket.md#_reset) :black_small_square: [\_run_tests](socket.md#_run_tests) :black_small_square: [\_\_setattr__](socket.md#__setattr__) :black_small_square: [\_set_interface_property](socket.md#_set_interface_property) :black_small_square: [socket_type](socket.md#socket_type) :black_small_square: [\_\_str__](socket.md#__str__) :black_small_square: [Switch](socket.md#switch) :black_small_square: [switch](socket.md#switch) :black_small_square: [\_unlock](proplocker.md#_unlock) :black_small_square:
+[\_cache](nodecache.md#_cache) :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](socket.md#check_in_list) :black_small_square: [data_type](socket.md#data_type) :black_small_square: [\_domain_to_geometry](socket.md#_domain_to_geometry) :black_small_square: [\_geometry_class](socket.md#_geometry_class) :black_small_square: [\_\_getattr__](socket.md#__getattr__) :black_small_square: [get_node_data_type](socket.md#get_node_data_type) :black_small_square: [get_socket_class](socket.md#get_socket_class) :black_small_square: [IndexSwitch](socket.md#indexswitch) :black_small_square: [index_switch](socket.md#index_switch) :black_small_square: [Input](socket.md#input) :black_small_square: [input_type](socket.md#input_type) :black_small_square: [\_interface_socket](socket.md#_interface_socket) :black_small_square: [\_is_group_input](socket.md#_is_group_input) :black_small_square: [\_is_group_output](socket.md#_is_group_output) :black_small_square: [\_is_group_socket](socket.md#_is_group_socket) :black_small_square: [\_jump](socket.md#_jump) :black_small_square: [\_lc](socket.md#_lc) :black_small_square: [\_lcop](socket.md#_lcop) :black_small_square: [link_from](socket.md#link_from) :black_small_square: [\_lock](proplocker.md#_lock) :black_small_square: [\_mark_for_delete](socket.md#_mark_for_delete) :black_small_square: [MenuSwitch](socket.md#menuswitch) :black_small_square: [menu_switch](socket.md#menu_switch) :black_small_square: [\_name](socket.md#_name) :black_small_square: [node](socket.md#node) :black_small_square: [node_color](socket.md#node_color) :black_small_square: [node_label](socket.md#node_label) :black_small_square: [option](socket.md#option) :black_small_square: [option_index](socket.md#option_index) :black_small_square: [out](socket.md#out) :black_small_square: [\_panel_name](socket.md#_panel_name) :black_small_square: [pin_gizmo](socket.md#pin_gizmo) :black_small_square: [\_reset](socket.md#_reset) :black_small_square: [\_run_tests](socket.md#_run_tests) :black_small_square: [\_\_setattr__](socket.md#__setattr__) :black_small_square: [\_set_interface_property](socket.md#_set_interface_property) :black_small_square: [socket_type](socket.md#socket_type) :black_small_square: [\_\_str__](socket.md#__str__) :black_small_square: [Switch](socket.md#switch) :black_small_square: [switch](socket.md#switch) :black_small_square: [switch_false](socket.md#switch_false) :black_small_square: [\_unlock](proplocker.md#_unlock) :black_small_square:
 
 ## Content
 
@@ -49,7 +49,7 @@ i = Integer(123, name="User input", subtype='PERCENTAGE') # Create a new integer
 - **F** : [Factor](integer.md#factor) :black_small_square: [floored_modulo](integer.md#floored_modulo)
 - **G** : [gcd](integer.md#gcd) :black_small_square: [greater_equal](integer.md#greater_equal) :black_small_square: [greater_than](integer.md#greater_than)
 - **H** : [hash_value](integer.md#hash_value)
-- **I** : [\_\_init__](integer.md#__init__)
+- **I** : [IdOrIndex](integer.md#idorindex) :black_small_square: [Index](integer.md#index) :black_small_square: [\_\_init__](integer.md#__init__)
 - **L** : [lcm](integer.md#lcm) :black_small_square: [less_equal](integer.md#less_equal) :black_small_square: [less_than](integer.md#less_than)
 - **M** : [max](integer.md#max) :black_small_square: [min](integer.md#min) :black_small_square: [mix](integer.md#mix) :black_small_square: [modulo](integer.md#modulo) :black_small_square: [multiply](integer.md#multiply) :black_small_square: [multiply_add](integer.md#multiply_add)
 - **N** : [Named](integer.md#named) :black_small_square: [NamedAttribute](integer.md#namedattribute) :black_small_square: [negate](integer.md#negate) :black_small_square: [not_equal](integer.md#not_equal)
@@ -286,6 +286,8 @@ Factor(value=0, name='Factor', min=0, max=100, tip=None, panel=None, default_att
 
 > Integer factor group input
 
+New [Integer](integer.md#integer) input with subtype 'FACTOR'.
+
 #### Arguments:
 - **value** ( = 0)
 - **name** ( = Factor)
@@ -298,6 +300,11 @@ Factor(value=0, name='Factor', min=0, max=100, tip=None, panel=None, default_att
 - **hide_value** ( = False)
 - **hide_in_modifier** ( = False)
 - **single_value** ( = False)
+
+
+
+#### Returns:
+- **Integer** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](integer.md#integer) :black_small_square: [Content](integer.md#content) :black_small_square: [Methods](integer.md#methods)</sub>
 
@@ -432,6 +439,64 @@ hash_value(seed=None)
 
 #### Arguments:
 - **seed** (_Integer_ = None) : socket 'Seed' (id: Seed)
+
+
+
+#### Returns:
+- **Integer** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](integer.md#integer) :black_small_square: [Content](integer.md#content) :black_small_square: [Methods](integer.md#methods)</sub>
+
+----------
+### IdOrIndex()
+
+> classmethod
+
+``` python
+IdOrIndex(name='ID or Index', tip=None, panel=None, hide_in_modifier=True)
+```
+
+> ID or Index Integer group input
+
+New [Integer](integer.md#integer) input with 'ID or Index' as default value (default_input='ID_OR_INDEX')
+
+> [!NOTE]
+> By default, 'hide_in_modifier' is set to True
+
+#### Arguments:
+- **name** ( = ID or Index)
+- **tip** ( = None)
+- **panel** ( = None)
+- **hide_in_modifier** ( = True)
+
+
+
+#### Returns:
+- **Integer** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](integer.md#integer) :black_small_square: [Content](integer.md#content) :black_small_square: [Methods](integer.md#methods)</sub>
+
+----------
+### Index()
+
+> classmethod
+
+``` python
+Index(name='Index', tip=None, panel=None, hide_in_modifier=True)
+```
+
+> Index Integer group input
+
+New [Integer](integer.md#integer) input with Index as default value (default_input='INDEX')
+
+> [!NOTE]
+> By default, 'hide_in_modifier' is set to True
+
+#### Arguments:
+- **name** ( = Index)
+- **tip** ( = None)
+- **panel** ( = None)
+- **hide_in_modifier** ( = True)
 
 
 
@@ -843,6 +908,8 @@ Percentage(value=0, name='Percentage', min=0, max=100, tip=None, panel=None, def
 
 > Integer percentage group input
 
+New [Integer](integer.md#integer) input with subtype 'PERCENTAGE'.
+
 #### Arguments:
 - **value** ( = 0)
 - **name** ( = Percentage)
@@ -855,6 +922,11 @@ Percentage(value=0, name='Percentage', min=0, max=100, tip=None, panel=None, def
 - **hide_value** ( = False)
 - **hide_in_modifier** ( = False)
 - **single_value** ( = False)
+
+
+
+#### Returns:
+- **Integer** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](integer.md#integer) :black_small_square: [Content](integer.md#content) :black_small_square: [Methods](integer.md#methods)</sub>
 

@@ -92,7 +92,13 @@ class String(generated.String):
     @classmethod
     def FilePath(cls, value="", name="File Path", tip=None, panel=None,
         hide_value=False, hide_in_modifier=False):
-        """ File path String
+        """ File Path input String
+
+        New <#String> input with subtype 'FILE_PATH'.
+
+        Returns
+        -------
+        - String
         """
         return cls(value=value, name=name, tip=tip, panel=panel, subtype='FILE_PATH',
             hide_value=hide_value, hide_in_modifier=hide_in_modifier)

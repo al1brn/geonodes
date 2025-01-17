@@ -175,6 +175,7 @@ class Socket(NodeCache, PropLocker):
 
     def _reset(self):
         self._cache_reset()
+        self._if = None
 
     def _jump(self, socket, reset=True):
         bsocket = utils.get_bsocket(socket)
@@ -494,6 +495,13 @@ class Socket(NodeCache, PropLocker):
         return self._lc(label=label, color='OPERATION')
 
     # =============================================================================================================================
+    # Link node from
+
+    def link_from(self, **params):
+        self.node.link_from(**params)
+        return self
+
+    # =============================================================================================================================
     # New in 4.3 : pin gizmo
 
     @property
@@ -541,16 +549,19 @@ class Socket(NodeCache, PropLocker):
         # ----------------------------------------------------------------------------------------------------
         # Attribute not found
 
-        raise AttributeError(f"Class {type(self).__name__} as no property named '{name}'")
+        raise NodeError(f"Class {type(self).__name__} as no property named '{name}'", keyword=name)
+        #raise AttributeError(f"Class {type(self).__name__} as no property named '{name}'")
 
 
     def __setattr__(self, name, value):
         attr_name = utils.get_attr_name(name)
         if attr_name is not None:
+            msg = f"Impossible to store named attribute '{attr_name}' ({name}) in class '{type(self).__name__}'"
             if self.SOCKET_TYPE == 'GEOMETRY':
-                raise AttributeError(f"Named attributes can't be store directly in geometry, use a domain: impossible to store named attribute '{attr_name}' ({name}) in class '{type(self).__name__}'.")
+                raise NodeError(f"{msg}: named attributes can't be stored directly in geometry, use a domain.",
+                    keyword=(name, attr_name))
             else:
-                raise AttributeError(f"Only domains support Named Attributes: impossible to store named attribute '{attr_name}' ({name}) in class '{type(self).__name__}'.")
+                raise NodeError(f"{msg}: only domains support Named Attributes.", keyword=(name, attr_name))
 
         return super().__setattr__(name, value)
 
@@ -696,7 +707,6 @@ class Socket(NodeCache, PropLocker):
             hide_in_modifier        = hide_in_modifier,
             force_non_field         = single_value)
 
-        #node.plug_value_into_socket(menu_socket, node.in_socket('Menu'))
         node["Menu"] = menu_socket
         Tree.current_tree.set_input_socket_default(menu_socket, menu)
 
@@ -753,12 +763,10 @@ class Socket(NodeCache, PropLocker):
 
             # ----- Plug the value
 
-            #node.plug_value_into_socket(item, node.in_socket(1 + i))
             node[1 + i] = item
 
         # ----- Plug the index
 
-        #node.plug_value_into_socket(index, node.in_socket('Index'))
         node["Index"] = index
 
         # ----- Done
@@ -897,13 +905,13 @@ class Socket(NodeCache, PropLocker):
             geo.out()
         ```
 
-        > [!NOTE]
-        > This method let self socket unchanged. To set self socket to the result
+        Information
+        -----------
+        - Socket 'False' : self
 
         Arguments
         ---------
         - condition (Boolean) : socket 'Switch' (Switch)
-        - false : socket 'False' (False)
         - true : socket 'True' (True)
 
         Returns
@@ -911,6 +919,109 @@ class Socket(NodeCache, PropLocker):
         - Socket
         """
         return self.Switch(condition=condition, false=self, true=true)
+
+    def switch_false(self, condition=None, false=None):
+        """ > Node <&Node Switch>
+
+        [&NO_JUMP]
+
+        Self is connected to 'true' socket.
+
+        > [!IMPORTANT]
+        > This methods behaves the inverse of <#switch> : self is connected to "True" socket and  the argument to "False", socket
+
+        > [!NOTE]
+        > This method is mainly provided to cover the case when 'False' socket is None
+
+        ``` python
+        with GeoNodes("Switch demo"):
+
+            geo = Geometry()
+
+            show_geometry = Boolean(False, "Merge with Cube")
+
+            cube = Mesh.Cube()
+
+            geo += cube.switch_false(show_geometry)
+
+            # Is equivalent to
+            geo += Geometry.Switch(show_geometry, None, cube)
+
+            # To group output
+            geo.out()
+        ```
+
+        > [!NOTE]
+        > This method let self socket unchanged. To set self socket to the result
+
+        Information
+        -----------
+        - Socket 'True' : self
+
+        Arguments
+        ---------
+        - condition (Boolean) : socket 'Switch' (Switch)
+        - false : socket 'False' (False)
+
+        Returns
+        -------
+        - Socket
+        """
+        return self.Switch(condition=condition, false=false, true=self)
+
+    # ====================================================================================================
+    # if ... else ... mimicing
+
+
+    @property
+    def option(self):
+        """ Plug an input of the socket node with the socket
+
+        Set the current option as defined in a <!If>, <!Else> or <!Elif> block.
+
+        Raises
+        ------
+        - NodeError : always, this is a write only property
+
+        > [!IMPORTANT]
+        > The only valid use is `socket.option = value`
+        """
+        raise NodeError("'option' is write only property")
+
+    @option.setter
+    def option(self, value):
+        """ Plug an input of the socket node with the socket
+
+        Set the current option as defined in a <!If>, <!Else> or <!Elif> block.
+
+        Raises
+        ------
+        - NodeError : if the socket has not been created by a <!If> class.
+
+        > [!IMPORTANT]
+        > The only valid use is `socket.option = value`
+        """
+        if self._if is None:
+            raise NodeError(f"'option' property setter is only valid in a context 'If', 'Else' or 'Elif'")
+        else:
+            self._if.set_option(value)
+
+    @property
+    def option_index(self):
+        """ Get the option index
+
+        Get the current option index  for a socket created by a <!If>, <!Else> or <!Elif> block.
+
+        Raises
+        ------
+        - NodeError : if the socket has not been created by a <!If> class.
+        """
+        if self._if is None:
+            raise NodeError(f"'option_index' property is only valid in a context 'If', 'Else' or 'Elif'")
+        else:
+            return self._if.current
+
+
 
     # ====================================================================================================
     # Run tests

@@ -116,13 +116,50 @@ class Vector(generated.Vector):
         super().__init__(bsock)
 
     # ====================================================================================================
-    # Constructors
+    # Default input constructors
+    # ('VALUE', 'NORMAL', 'POSITION')
+
+    @classmethod
+    def Position(cls, name="Position", tip=None, panel=None, hide_in_modifier=True):
+        """ > Position vector group input
+
+        New <#Vector> input with Position as default value (default_input='POSITION')
+
+        > [!NOTE]
+        > By default, 'hide_in_modifier' is set to True
+
+        Returns
+        -------
+        - Vector
+        """
+        return cls(value=None, name=name, tip=tip, panel=panel, default_input='POSITION', hide_in_modifier=hide_in_modifier)
+
+    @classmethod
+    def Normal(cls, name="Normal", tip=None, panel=None, hide_in_modifier=True):
+        """ > Normal vector group input
+
+        New <#Vector> input with Normal as default value (default_input='NORMAL')
+
+        > [!NOTE]
+        > By default, 'hide_in_modifier' is set to True
+
+        Returns
+        -------
+        - Vector
+        """
+        return cls(value=None, name=name, tip=tip, panel=panel, default_input='NORMAL', hide_in_modifier=hide_in_modifier)
+
+
+    # ====================================================================================================
+    # Subtype constructors
     # ('NONE', 'TRANSLATION', 'DIRECTION', 'VELOCITY', 'ACCELERATION', 'EULER', 'XYZ')
 
     @classmethod
     def Translation(cls, value=(0., 0., 0.), name='Translation', tip=None, panel=None,
         default_attribute="", default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False):
-        """ > Translation group input
+        """ > Translation Vector group input
+
+        New <#Vector> input with subtype 'TRANSLATION'.
 
         Returns
         -------
@@ -137,6 +174,8 @@ class Vector(generated.Vector):
         default_attribute="", default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False):
         """ > Direction group input
 
+        New <#Vector> input with subtype 'DIRECTION'.
+
         Returns
         -------
         - Vector
@@ -148,6 +187,8 @@ class Vector(generated.Vector):
     def Velocity(cls, value=(0., 0., 0.), name='Velocity', tip=None, panel=None,
         default_attribute="", default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False):
         """ > Velocity group input
+
+        New <#Vector> input with subtype 'VELOCITY'.
 
         Returns
         -------
@@ -161,6 +202,8 @@ class Vector(generated.Vector):
         default_attribute="", default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False):
         """ > Acceleration group input
 
+        New <#Vector> input with subtype 'ACCELERATION'.
+
         Returns
         -------
         - Vector
@@ -173,6 +216,8 @@ class Vector(generated.Vector):
         default_attribute="", default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False):
         """ > Euler group input
 
+        New <#Vector> input with subtype 'EULER'.
+
         Returns
         -------
         - Vector
@@ -184,6 +229,8 @@ class Vector(generated.Vector):
     def XYZ(cls, value=(0., 0., 0.), name='XYZ', tip=None, panel=None,
         default_attribute="", default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False):
         """ > XYZ group input
+
+        New <#Vector> input with subtype 'XYZ'.
 
         Returns
         -------
