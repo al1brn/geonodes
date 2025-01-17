@@ -61,14 +61,3 @@ components I used in my videos on electromagnetism.
 [Fractal and more](doc/fractal.md): to play with fractals but not only. Also comes with a comprhensive camera culling
 a gaussian random generator and a multires surface modifier.
 
-
-
-
-
-
-
-
-
-
-
-"""
