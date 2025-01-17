@@ -6,7 +6,7 @@
 
 ### Hello World
 
-[Hello Word](doc/demos/helloworld.md) : a simple demo to start
+[Hello Word](doc/helloworld.md) : a simple demo to start
 
 ### Arrows
 
