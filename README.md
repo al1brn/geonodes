@@ -17,6 +17,7 @@ You keep the full power of Blender _Geometry Nodes_ but with the elegance of Pyt
 - [Better a demo than long words](#better-a-demo-than-long-words)
 - [Installation](#installation)
 - [API reference](doc/index.md)
+- [Demos](/doc/demos.md)
 - [Tutorial](#tutorial)
 
 ## Better a demo than long words
