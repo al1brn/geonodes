@@ -60,7 +60,7 @@ components I used in my videos on electromagnetism.
 
 ### Fractal
 
-[fractal](fractal.md#fractal): to play with fractals but not only. Also comes with a comprhensive camera culling
+[fractal](g.md#fractal): to play with fractals but not only. Also comes with a comprhensive camera culling
 a gaussian random generator and a multires surface modifier.
 
 ## Content
