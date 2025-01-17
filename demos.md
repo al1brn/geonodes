@@ -18,7 +18,7 @@
 
 ### Explosition
 
-[Explosion](doc/explosion.md)<!explosion> : a sphere explodes and pieces are projected and fall with gravity
+[Explosion](doc/explosion.md) : a sphere explodes and pieces are projected and fall with gravity
 
 ### Forest
 
