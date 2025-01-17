@@ -114,8 +114,6 @@ if True:
 
     from .core import gnmath, nd
 
-    from . import demos
-
     from .core.pyswitch import If, Else, Elif
 
 
