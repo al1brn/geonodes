@@ -142,7 +142,7 @@ Scatter(color=None, density=None, anisotropy=None, phase='HENYEY_GREENSTEIN')
 - **color** (_Color_ = None) : socket 'Color' (id: Color)
 - **density** (_Float_ = None) : socket 'Density' (id: Density)
 - **anisotropy** (_Float_ = None) : socket 'Anisotropy' (id: Anisotropy)
-- **phase** (_str_ = HENYEY_GREENSTEIN) : parameter 'phase' in ('HENYEY_GREENSTEIN', 'FOURNIER_FORAND', 'DRAINE', 'RAYLEIGH', 'MIE')
+- **phase** (_str_ = HENYEY_GREENSTEIN) : parameter 'phase' in ['HENYEY_GREENSTEIN', 'FOURNIER_FORAND', 'DRAINE', 'RAYLEIGH', 'MIE']
 
 
 

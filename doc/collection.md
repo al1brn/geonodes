@@ -46,7 +46,7 @@ info(separate_children=None, reset_children=None, transform_space='ORIGINAL')
 #### Arguments:
 - **separate_children** (_Boolean_ = None) : socket 'Separate Children' (id: Separate Children)
 - **reset_children** (_Boolean_ = None) : socket 'Reset Children' (id: Reset Children)
-- **transform_space** (_str_ = ORIGINAL) : parameter 'transform_space' in ('ORIGINAL', 'RELATIVE')
+- **transform_space** (_str_ = ORIGINAL) : parameter 'transform_space' in ['ORIGINAL', 'RELATIVE']
 
 
 

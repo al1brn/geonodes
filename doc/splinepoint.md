@@ -197,7 +197,7 @@ to_points(count=None, mode='COUNT')
 
 #### Arguments:
 - **count** (_Integer_ = None) : socket 'Count' (id: Count)
-- **mode** (_str_ = COUNT) : parameter 'mode' in ('EVALUATED', 'COUNT', 'LENGTH')
+- **mode** (_str_ = COUNT) : parameter 'mode' in ['EVALUATED', 'COUNT', 'LENGTH']
 
 
 

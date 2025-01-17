@@ -49,6 +49,8 @@ import bpy
 from .scripterror import NodeError
 from . import constants
 
+BUILD = False
+
 # =============================================================================================================================
 # Get / delete a tree
 
@@ -419,9 +421,193 @@ def get_argument_data_type(argument, type_to_value, node_name=None, arg_name=Non
     return list(type_to_value.values())[0]
 
 # =============================================================================================================================
+# Conversion of enum parameters
+# e.g. : COSINE <-> cos
+#
+# These functions use SPEC_ENUM_PARAMS and ENUM_PARAMS dicts in constants
+
+# -----------------------------------------------------------------------------------------------------------------------------
+# Get enum param value from user value
+
+def get_enum_param_value(user_value, node_name, param_name):
+    """ Get the param value from a user value
+
+    Arguments
+    ---------
+    - user_value (str) : user value for the param, e.g. 'cos'
+    - node_name (str) : node name
+
+    Returns
+    -------
+    - str or None : The parameter value, e.g. 'COSINE'
+    """
+
+    return user_value
+
+    # =============================================================================================================================
+    # IN PROGRESS
+    # =============================================================================================================================
+
+
+    if BUILD or param_name in ['domain', 'data_type', 'input_type']:
+        return user_value
+
+
+    user_value = snake_case(user_value)
+
+    # ----------------------------------------------------------------------------------------------------
+    # Very specific cases
+
+    # Node 'Subdivision Surface':
+    # - param uv_smooth: All <-> SMOOTH_ALL
+    # - param boundary_smooth: All <-> ALL
+    if node_name == 'Subdivision Surface':
+        if user_value == 'all':
+            if param_name == 'uv_smooth':
+                return 'SMOOTH_ALL'
+            elif param_name == 'boundary_smooth':
+                return 'ALL'
+            else:
+                return None
+
+    # Node 'Point Density':
+    # - param point_source: ('PARTICLE_SYSTEM', 'OBJECT')
+    # - param space: ('OBJECT', 'WORLD')
+    if node_name == 'Point Density':
+        if user_value in ['Object Vertices', 'Object Space']:
+            return 'OBJECT'
+
+    # ----------------------------------------------------------------------------------------------------
+    # Nodes specific
+
+    for node, specs in constants.SPEC_ENUM_PARAMS.items():
+        if isinstance(node, tuple):
+            if node_name not in node:
+                continue
+        else:
+            if node != node_name:
+                continue
+
+        for k, v in specs.items():
+            if snake_case(k) == user_value:
+                return v
+
+
+    for k, v in constants.ENUM_PARAMS.items():
+        if snake_case(k) == user_value:
+            return v
+
+    return None
+
+# -----------------------------------------------------------------------------------------------------------------------------
+# Get the user enum value from a parameter value
+
+def get_enum_param_user(param_value, node_name, param_name):
+    """ Get the user value from a parameter value
+
+    The user value is searched in two dicts:
+    - SPEC_ENUM_PARAMS (user -> value) : specific nodes
+    - ENUM_PARAMS (user -> value) : common to all nodes
+
+    Arguments
+    ---------
+    - param_value (str) : enum value (e.g. 'COSINE')
+    - node_name (str) : node name
+    - user_case (bool = True) : return the user case version, snake_case otherwise
+
+    Returns
+    -------
+    - list of strs : the user names (starting by specific if any), e.g. ["Cos", "Cosine"]
+    """
+
+    return param_value
+
+    # =============================================================================================================================
+    # IN PROGRESS
+    # =============================================================================================================================
+
+
+    if BUILD or param_name in ['domain', 'data_type', 'input_type']:
+        return param_value
+
+    # ----------------------------------------------------------------------------------------------------
+    # Very Specific
+
+    # Node 'Subdivision Surface':
+    # - param uv_smooth: All <-> SMOOTH_ALL
+    # - param boundary_smooth: All <-> ALL
+    if node_name == 'Subdivision Surface':
+        if param_value in ['SMOOTH_ALL', 'ALL']:
+            return 'All'
+
+    # Node 'Point Density':
+    # - param point_source: ('PARTICLE_SYSTEM', 'OBJECT')
+    # - param space: ('OBJECT', 'WORLD')
+    if node_name == 'Point Density':
+        if param_value == 'OBJECT':
+            if param_name == 'point_source':
+                return 'Object Vertices'
+            elif param_name == 'space':
+                return 'Object Space'
+            else:
+                return None
+        elif param_value == 'WORLD':
+            if param_name == 'space':
+                return 'World Space'
+            else:
+                return None
+
+    # ----------------------------------------------------------------------------------------------------
+    # Specific to node
+
+    for node, specs in constants.SPEC_ENUM_PARAMS.items():
+        if isinstance(node, tuple):
+            if node_name not in node:
+                continue
+        else:
+            if node != node_name:
+                continue
+
+        for k, v in specs.items():
+            if v == param_value:
+                return k
+
+    # ----------------------------------------------------------------------------------------------------
+    # Shared
+
+    for k, v in constants.ENUM_PARAMS.items():
+        if v == param_value:
+            return k
+
+    raise Exception(f"get_enum_param_user: param value '{param_value}' ('{node_name}'.{param_name}) not solved")
+
+# -----------------------------------------------------------------------------------------------------------------------------
+# Get the valid user enum values
+
+def get_enum_param_users(param_values, node_name, param_name, user_case=True):
+    """ Get all the users values
+
+    Used in dynamic generation code
+    """
+
+    users = [get_enum_param_user(value, node_name, param_name) for value in param_values]
+    if not user_case:
+        users = [snake_case(v) for v in users]
+
+    # ====================================================================================================
+    # Check the consistency
+
+    for u in users:
+        v = get_enum_param_value(u, node_name, param_name)
+        if v not in param_values:
+            raise Exception(f"get_enum_param_users> node: '{node_name}', param: '{param_name}', user: '{u}', value: {v} not in {param_values}")
+
+    return users
+
+# -----------------------------------------------------------------------------------------------------------------------------
 # Check the validity of an enum arg
 
-def check_enum_arg(arg_name: str, arg_value: str, meth_name: str, valids: tuple) -> bool:
+def check_enum_arg(node_name: str, arg_name: str, arg_value: str, meth_name: str, valids: tuple) -> bool:
     """ Check the value of an enum param
 
     Raises
@@ -430,6 +616,8 @@ def check_enum_arg(arg_name: str, arg_value: str, meth_name: str, valids: tuple)
 
     Arguments
     ---------
+    - node_name : node name
+    - param_name : parameter name
     - arg_name : argument name
     - arg_value : argument value
     - meth_name : method name
@@ -439,11 +627,22 @@ def check_enum_arg(arg_name: str, arg_value: str, meth_name: str, valids: tuple)
     -------
     - bool : True
     """
+
+    # Argument value can be the parameter value
+
     if arg_value in valids:
         return True
 
+    # It can be the user version
+
+    param_value = get_enum_param_value(arg_value, node_name, arg_name)
+    if param_value in valids:
+        return True
+
     raise NodeError(f"Parameter error: '{arg_value}' is not a valid value for argument '{arg_name}' in method '{meth_name}'.",
-        keyword=arg_value, valids=valids)
+        keyword = arg_value,
+        valids = get_enum_param_users(valids, node_name, arg_name, user_case=True),
+        parameter_values = valids)
 
 # =============================================================================================================================
 # Create a numpy array of the correct shape

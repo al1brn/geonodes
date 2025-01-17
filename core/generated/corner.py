@@ -374,13 +374,13 @@ class Corner(Socket):
         - seam (Boolean) : socket 'Seam' (id: Seam)
         - margin (Float) : socket 'Margin' (id: Margin)
         - fill_holes (Boolean) : socket 'Fill Holes' (id: Fill Holes)
-        - method (str): parameter 'method' in ('ANGLE_BASED', 'CONFORMAL')
+        - method (str): parameter 'method' in ['ANGLE_BASED', 'CONFORMAL']
 
         Returns
         -------
         - Vector
         """
-        utils.check_enum_arg('method', method, 'uv_unwrap', ('ANGLE_BASED', 'CONFORMAL'))
+        utils.check_enum_arg('UV Unwrap', 'method', method, 'uv_unwrap', ('ANGLE_BASED', 'CONFORMAL'))
         node = Node('UV Unwrap', sockets={'Selection': self._sel, 'Seam': seam, 'Margin': margin, 'Fill Holes': fill_holes}, method=method)
         return node._out
 

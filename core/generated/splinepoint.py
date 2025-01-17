@@ -115,13 +115,13 @@ class SplinePoint(Socket):
         Arguments
         ---------
         - count (Integer) : socket 'Count' (id: Count)
-        - mode (str): parameter 'mode' in ('EVALUATED', 'COUNT', 'LENGTH')
+        - mode (str): parameter 'mode' in ['EVALUATED', 'COUNT', 'LENGTH']
 
         Returns
         -------
         - Cloud [tangent_ (Vector), normal_ (Vector), rotation_ (Rotation)]
         """
-        utils.check_enum_arg('mode', mode, 'to_points', ('EVALUATED', 'COUNT', 'LENGTH'))
+        utils.check_enum_arg('Curve to Points', 'mode', mode, 'to_points', ('EVALUATED', 'COUNT', 'LENGTH'))
         node = Node('Curve to Points', sockets={'Curve': self, 'Count': count}, mode=mode)
         return node._out
 

@@ -175,13 +175,13 @@ class Edge(Socket):
 
         Arguments
         ---------
-        - mode (str): parameter 'mode' in ('ALL', 'EDGE_FACE', 'ONLY_FACE')
+        - mode (str): parameter 'mode' in ['ALL', 'EDGE_FACE', 'ONLY_FACE']
 
         Returns
         -------
         - Geometry
         """
-        utils.check_enum_arg('mode', mode, 'delete_geometry', ('ALL', 'EDGE_FACE', 'ONLY_FACE'))
+        utils.check_enum_arg('Delete Geometry', 'mode', mode, 'delete_geometry', ('ALL', 'EDGE_FACE', 'ONLY_FACE'))
         node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='EDGE', mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
@@ -259,13 +259,13 @@ class Edge(Socket):
 
         Arguments
         ---------
-        - mode (str): parameter 'mode' in ('ALL', 'EDGE_FACE', 'ONLY_FACE')
+        - mode (str): parameter 'mode' in ['ALL', 'EDGE_FACE', 'ONLY_FACE']
 
         Returns
         -------
         - Geometry
         """
-        utils.check_enum_arg('mode', mode, 'delete', ('ALL', 'EDGE_FACE', 'ONLY_FACE'))
+        utils.check_enum_arg('Delete Geometry', 'mode', mode, 'delete', ('ALL', 'EDGE_FACE', 'ONLY_FACE'))
         node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='EDGE', mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
@@ -610,13 +610,13 @@ class Edge(Socket):
         ---------
         - scale (Float) : socket 'Scale' (id: Scale)
         - center (Vector) : socket 'Center' (id: Center)
-        - scale_mode (str): parameter 'scale_mode' in ('UNIFORM', 'SINGLE_AXIS')
+        - scale_mode (str): parameter 'scale_mode' in ['UNIFORM', 'SINGLE_AXIS']
 
         Returns
         -------
         - Geometry
         """
-        utils.check_enum_arg('scale_mode', scale_mode, 'scale', ('UNIFORM', 'SINGLE_AXIS'))
+        utils.check_enum_arg('Scale Elements', 'scale_mode', scale_mode, 'scale', ('UNIFORM', 'SINGLE_AXIS'))
         node = Node('Scale Elements', sockets={'Geometry': self, 'Selection': self._sel, 'Scale': scale, 'Center': center}, domain='EDGE', scale_mode=scale_mode)
         self._jump(node._out)
         return self._domain_to_geometry

@@ -370,7 +370,7 @@ merge(distance=None, mode='ALL')
 
 #### Arguments:
 - **distance** (_Float_ = None) : socket 'Distance' (id: Distance)
-- **mode** (_str_ = ALL) : parameter 'mode' in ('ALL', 'CONNECTED')
+- **mode** (_str_ = ALL) : parameter 'mode' in ['ALL', 'CONNECTED']
 
 
 
@@ -430,7 +430,7 @@ merge_by_distance(distance=None, mode='ALL')
 
 #### Arguments:
 - **distance** (_Float_ = None) : socket 'Distance' (id: Distance)
-- **mode** (_str_ = ALL) : parameter 'mode' in ('ALL', 'CONNECTED')
+- **mode** (_str_ = ALL) : parameter 'mode' in ['ALL', 'CONNECTED']
 
 
 
@@ -489,7 +489,7 @@ proximity(group_id=None, sample_position=None, sample_group_id=None, target_elem
 - **group_id** (_Integer_ = None) : socket 'Group ID' (id: Group ID)
 - **sample_position** (_Vector_ = None) : socket 'Sample Position' (id: Source Position)
 - **sample_group_id** (_Integer_ = None) : socket 'Sample Group ID' (id: Sample Group ID)
-- **target_element** (_str_ = FACES) : parameter 'target_element' in ('POINTS', 'EDGES', 'FACES')
+- **target_element** (_str_ = FACES) : parameter 'target_element' in ['POINTS', 'EDGES', 'FACES']
 
 
 
@@ -607,7 +607,7 @@ raycast(attribute=None, source_position=None, ray_direction=None, ray_length=Non
 - **source_position** (_Vector_ = None) : socket 'Source Position' (id: Source Position)
 - **ray_direction** (_Vector_ = None) : socket 'Ray Direction' (id: Ray Direction)
 - **ray_length** (_Float_ = None) : socket 'Ray Length' (id: Ray Length)
-- **mapping** (_str_ = INTERPOLATED) : parameter 'mapping' in ('INTERPOLATED', 'NEAREST')
+- **mapping** (_str_ = INTERPOLATED) : parameter 'mapping' in ['INTERPOLATED', 'NEAREST']
 
 
 
@@ -726,7 +726,7 @@ remove_named_attribute(name=None, pattern_mode='EXACT')
 
 #### Arguments:
 - **name** (_String_ = None) : socket 'Name' (id: Name)
-- **pattern_mode** (_str_ = EXACT) : parameter 'pattern_mode' in ('EXACT', 'WILDCARD')
+- **pattern_mode** (_str_ = EXACT) : parameter 'pattern_mode' in ['EXACT', 'WILDCARD']
 
 
 
@@ -1061,7 +1061,7 @@ transform(translation=None, rotation=None, scale=None, transform=None, mode='COM
 - **rotation** (_Rotation_ = None) : socket 'Rotation' (id: Rotation)
 - **scale** (_Vector_ = None) : socket 'Scale' (id: Scale)
 - **transform** (_Matrix_ = None) : socket 'Transform' (id: Transform)
-- **mode** (_str_ = COMPONENTS) : parameter 'mode' in ('COMPONENTS', 'MATRIX')
+- **mode** (_str_ = COMPONENTS) : parameter 'mode' in ['COMPONENTS', 'MATRIX']
 
 
 

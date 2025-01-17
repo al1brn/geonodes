@@ -22,15 +22,15 @@ class nd:
         - rotation (Rotation) : socket 'Rotation' (id: Rotation)
         - vector (Vector) : socket 'Vector' (id: Vector)
         - factor (Float) : socket 'Factor' (id: Factor)
-        - axis (str): parameter 'axis' in ('X', 'Y', 'Z')
-        - pivot_axis (str): parameter 'pivot_axis' in ('AUTO', 'X', 'Y', 'Z')
+        - axis (str): parameter 'axis' in ['X', 'Y', 'Z']
+        - pivot_axis (str): parameter 'pivot_axis' in ['AUTO', 'X', 'Y', 'Z']
 
         Returns
         -------
         - Rotation
         """
-        utils.check_enum_arg('axis', axis, 'align_rotation_to_vector', ('X', 'Y', 'Z'))
-        utils.check_enum_arg('pivot_axis', pivot_axis, 'align_rotation_to_vector', ('AUTO', 'X', 'Y', 'Z'))
+        utils.check_enum_arg('Align Rotation to Vector', 'axis', axis, 'align_rotation_to_vector', ('X', 'Y', 'Z'))
+        utils.check_enum_arg('Align Rotation to Vector', 'pivot_axis', pivot_axis, 'align_rotation_to_vector', ('AUTO', 'X', 'Y', 'Z'))
         node = Node('Align Rotation to Vector', sockets={'Rotation': rotation, 'Vector': vector, 'Factor': factor}, axis=axis, pivot_axis=pivot_axis)
         return node._out
 
@@ -42,15 +42,15 @@ class nd:
         ---------
         - primary_axis_1 (Vector) : socket 'Primary Axis' (id: Primary Axis)
         - secondary_axis_1 (Vector) : socket 'Secondary Axis' (id: Secondary Axis)
-        - primary_axis (str): parameter 'primary_axis' in ('X', 'Y', 'Z')
-        - secondary_axis (str): parameter 'secondary_axis' in ('X', 'Y', 'Z')
+        - primary_axis (str): parameter 'primary_axis' in ['X', 'Y', 'Z']
+        - secondary_axis (str): parameter 'secondary_axis' in ['X', 'Y', 'Z']
 
         Returns
         -------
         - Rotation
         """
-        utils.check_enum_arg('primary_axis', primary_axis, 'axes_to_rotation', ('X', 'Y', 'Z'))
-        utils.check_enum_arg('secondary_axis', secondary_axis, 'axes_to_rotation', ('X', 'Y', 'Z'))
+        utils.check_enum_arg('Axes to Rotation', 'primary_axis', primary_axis, 'axes_to_rotation', ('X', 'Y', 'Z'))
+        utils.check_enum_arg('Axes to Rotation', 'secondary_axis', secondary_axis, 'axes_to_rotation', ('X', 'Y', 'Z'))
         node = Node('Axes to Rotation', sockets={'Primary Axis': primary_axis_1, 'Secondary Axis': secondary_axis_1}, primary_axis=primary_axis, secondary_axis=secondary_axis)
         return node._out
 
@@ -78,13 +78,13 @@ class nd:
         ---------
         - boolean (Boolean) : socket 'Boolean' (id: Boolean)
         - boolean_1 (Boolean) : socket 'Boolean' (id: Boolean_001)
-        - operation (str): parameter 'operation' in ('AND', 'OR', 'NOT', 'NAND', 'NOR', 'XNOR', 'XOR', 'IMPLY', 'NIMPLY')
+        - operation (str): parameter 'operation' in ['AND', 'OR', 'NOT', 'NAND', 'NOR', 'XNOR', 'XOR', 'IMPLY', 'NIMPLY']
 
         Returns
         -------
         - Boolean
         """
-        utils.check_enum_arg('operation', operation, 'boolean_math', ('AND', 'OR', 'NOT', 'NAND', 'NOR', 'XNOR', 'XOR', 'IMPLY', 'NIMPLY'))
+        utils.check_enum_arg('Boolean Math', 'operation', operation, 'boolean_math', ('AND', 'OR', 'NOT', 'NAND', 'NOR', 'XNOR', 'XOR', 'IMPLY', 'NIMPLY'))
         node = Node('Boolean Math', sockets={'Boolean': boolean, 'Boolean_001': boolean_1}, operation=operation)
         return node._out
 
@@ -98,13 +98,13 @@ class nd:
         - green (Float) : socket 'Green' (id: Green)
         - blue (Float) : socket 'Blue' (id: Blue)
         - alpha (Float) : socket 'Alpha' (id: Alpha)
-        - mode (str): parameter 'mode' in ('RGB', 'HSV', 'HSL')
+        - mode (str): parameter 'mode' in ['RGB', 'HSV', 'HSL']
 
         Returns
         -------
         - Color
         """
-        utils.check_enum_arg('mode', mode, 'combine_color', ('RGB', 'HSV', 'HSL'))
+        utils.check_enum_arg('Combine Color', 'mode', mode, 'combine_color', ('RGB', 'HSV', 'HSL'))
         node = Node('Combine Color', sockets={'Red': red, 'Green': green, 'Blue': blue, 'Alpha': alpha}, mode=mode)
         return node._out
 
@@ -174,17 +174,17 @@ class nd:
         - c (Float) : socket 'C' (id: C)
         - angle (Float) : socket 'Angle' (id: Angle)
         - epsilon (Float) : socket 'Epsilon' (id: Epsilon)
-        - data_type (str): parameter 'data_type' in ('FLOAT', 'INT', 'VECTOR', 'STRING', 'RGBA')
-        - mode (str): parameter 'mode' in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
-        - operation (str): parameter 'operation' in ('LESS_THAN', 'LESS_EQUAL', 'GREATER_THAN', 'GREATER_EQUAL', 'EQUAL', 'NOT_EQUAL')
+        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'VECTOR', 'STRING', 'RGBA']
+        - mode (str): parameter 'mode' in ['ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION']
+        - operation (str): parameter 'operation' in ['LESS_THAN', 'LESS_EQUAL', 'GREATER_THAN', 'GREATER_EQUAL', 'EQUAL', 'NOT_EQUAL']
 
         Returns
         -------
         - Boolean
         """
-        utils.check_enum_arg('data_type', data_type, 'compare', ('FLOAT', 'INT', 'VECTOR', 'STRING', 'RGBA'))
-        utils.check_enum_arg('mode', mode, 'compare', ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION'))
-        utils.check_enum_arg('operation', operation, 'compare', ('LESS_THAN', 'LESS_EQUAL', 'GREATER_THAN', 'GREATER_EQUAL', 'EQUAL', 'NOT_EQUAL'))
+        utils.check_enum_arg('Compare', 'data_type', data_type, 'compare', ('FLOAT', 'INT', 'VECTOR', 'STRING', 'RGBA'))
+        utils.check_enum_arg('Compare', 'mode', mode, 'compare', ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION'))
+        utils.check_enum_arg('Compare', 'operation', operation, 'compare', ('LESS_THAN', 'LESS_EQUAL', 'GREATER_THAN', 'GREATER_EQUAL', 'EQUAL', 'NOT_EQUAL'))
         node = Node('Compare', sockets={'A': a, 'B': b, 'A_INT': a_1, 'B_INT': b_1, 'A_VEC3': a_2, 'B_VEC3': b_2, 'A_COL': a_3, 'B_COL': b_3, 'A_STR': a_4, 'B_STR': b_4, 'C': c, 'Angle': angle, 'Epsilon': epsilon}, data_type=data_type, mode=mode, operation=operation)
         return node._out
 
@@ -210,13 +210,13 @@ class nd:
         Arguments
         ---------
         - float (Float) : socket 'Float' (id: Float)
-        - rounding_mode (str): parameter 'rounding_mode' in ('ROUND', 'FLOOR', 'CEILING', 'TRUNCATE')
+        - rounding_mode (str): parameter 'rounding_mode' in ['ROUND', 'FLOOR', 'CEILING', 'TRUNCATE']
 
         Returns
         -------
         - Integer
         """
-        utils.check_enum_arg('rounding_mode', rounding_mode, 'float_to_integer', ('ROUND', 'FLOOR', 'CEILING', 'TRUNCATE'))
+        utils.check_enum_arg('Float to Integer', 'rounding_mode', rounding_mode, 'float_to_integer', ('ROUND', 'FLOOR', 'CEILING', 'TRUNCATE'))
         node = Node('Float to Integer', sockets={'Float': float}, rounding_mode=rounding_mode)
         return node._out
 
@@ -228,13 +228,13 @@ class nd:
         ---------
         - value (Integer) : socket 'Value' (id: Value)
         - seed (Integer) : socket 'Seed' (id: Seed)
-        - data_type (str): parameter 'data_type' in ('FLOAT', 'INT', 'VECTOR', 'ROTATION', 'MATRIX', 'STRING', 'RGBA')
+        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'VECTOR', 'ROTATION', 'MATRIX', 'STRING', 'RGBA']
 
         Returns
         -------
         - Integer
         """
-        utils.check_enum_arg('data_type', data_type, 'hash_value', ('FLOAT', 'INT', 'VECTOR', 'ROTATION', 'MATRIX', 'STRING', 'RGBA'))
+        utils.check_enum_arg('Hash Value', 'data_type', data_type, 'hash_value', ('FLOAT', 'INT', 'VECTOR', 'ROTATION', 'MATRIX', 'STRING', 'RGBA'))
         node = Node('Hash Value', sockets={'Value': value, 'Seed': seed}, data_type=data_type)
         return node._out
 
@@ -339,13 +339,13 @@ class nd:
         - value (Integer) : socket 'Value' (id: Value)
         - value_1 (Integer) : socket 'Value' (id: Value_001)
         - value_2 (Integer) : socket 'Value' (id: Value_002)
-        - operation (str): parameter 'operation' in ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'ABSOLUTE', 'NEGATE', 'POWER', 'MINIMUM', 'MAXIMUM', 'SIGN', 'DIVIDE_ROUND', 'DIVIDE_FLOOR', 'DIVIDE_CEIL', 'FLOORED_MODULO', 'MODULO', 'GCD', 'LCM')
+        - operation (str): parameter 'operation' in ['ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'ABSOLUTE', 'NEGATE', 'POWER', 'MINIMUM', 'MAXIMUM', 'SIGN', 'DIVIDE_ROUND', 'DIVIDE_FLOOR', 'DIVIDE_CEIL', 'FLOORED_MODULO', 'MODULO', 'GCD', 'LCM']
 
         Returns
         -------
         - Integer
         """
-        utils.check_enum_arg('operation', operation, 'integer_math', ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'ABSOLUTE', 'NEGATE', 'POWER', 'MINIMUM', 'MAXIMUM', 'SIGN', 'DIVIDE_ROUND', 'DIVIDE_FLOOR', 'DIVIDE_CEIL', 'FLOORED_MODULO', 'MODULO', 'GCD', 'LCM'))
+        utils.check_enum_arg('Integer Math', 'operation', operation, 'integer_math', ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'ABSOLUTE', 'NEGATE', 'POWER', 'MINIMUM', 'MAXIMUM', 'SIGN', 'DIVIDE_ROUND', 'DIVIDE_FLOOR', 'DIVIDE_CEIL', 'FLOORED_MODULO', 'MODULO', 'GCD', 'LCM'))
         node = Node('Integer Math', sockets={'Value': value, 'Value_001': value_1, 'Value_002': value_2}, operation=operation)
         return node._out
 
@@ -459,13 +459,13 @@ class nd:
         - probability (Float) : socket 'Probability' (id: Probability)
         - id (Integer) : socket 'ID' (id: ID)
         - seed (Integer) : socket 'Seed' (id: Seed)
-        - data_type (str): parameter 'data_type' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'BOOLEAN')
+        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'FLOAT_VECTOR', 'BOOLEAN']
 
         Returns
         -------
         - Float
         """
-        utils.check_enum_arg('data_type', data_type, 'random_value', ('FLOAT', 'INT', 'FLOAT_VECTOR', 'BOOLEAN'))
+        utils.check_enum_arg('Random Value', 'data_type', data_type, 'random_value', ('FLOAT', 'INT', 'FLOAT_VECTOR', 'BOOLEAN'))
         node = Node('Random Value', sockets={'Min': min, 'Max': max, 'Min_001': min_1, 'Max_001': max_1, 'Min_002': min_2, 'Max_002': max_2, 'Probability': probability, 'ID': id, 'Seed': seed}, data_type=data_type)
         return node._out
 
@@ -494,13 +494,13 @@ class nd:
         ---------
         - rotation (Rotation) : socket 'Rotation' (id: Rotation)
         - rotate_by (Rotation) : socket 'Rotate By' (id: Rotate By)
-        - rotation_space (str): parameter 'rotation_space' in ('GLOBAL', 'LOCAL')
+        - rotation_space (str): parameter 'rotation_space' in ['GLOBAL', 'LOCAL']
 
         Returns
         -------
         - Rotation
         """
-        utils.check_enum_arg('rotation_space', rotation_space, 'rotate_rotation', ('GLOBAL', 'LOCAL'))
+        utils.check_enum_arg('Rotate Rotation', 'rotation_space', rotation_space, 'rotate_rotation', ('GLOBAL', 'LOCAL'))
         node = Node('Rotate Rotation', sockets={'Rotation': rotation, 'Rotate By': rotate_by}, rotation_space=rotation_space)
         return node._out
 
@@ -572,13 +572,13 @@ class nd:
         Arguments
         ---------
         - color (Color) : socket 'Color' (id: Color)
-        - mode (str): parameter 'mode' in ('RGB', 'HSV', 'HSL')
+        - mode (str): parameter 'mode' in ['RGB', 'HSV', 'HSL']
 
         Returns
         -------
         - Float [green_ (Float), blue_ (Float), alpha_ (Float)]
         """
-        utils.check_enum_arg('mode', mode, 'separate_color', ('RGB', 'HSV', 'HSL'))
+        utils.check_enum_arg('Separate Color', 'mode', mode, 'separate_color', ('RGB', 'HSV', 'HSL'))
         node = Node('Separate Color', sockets={'Color': color}, mode=mode)
         return node._out
 
@@ -699,13 +699,13 @@ class nd:
         ---------
         - value (Float) : socket 'Value' (id: Value)
         - decimals (Integer) : socket 'Decimals' (id: Decimals)
-        - data_type (str): parameter 'data_type' in ('FLOAT', 'INT')
+        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT']
 
         Returns
         -------
         - String
         """
-        utils.check_enum_arg('data_type', data_type, 'value_to_string', ('FLOAT', 'INT'))
+        utils.check_enum_arg('Value to String', 'data_type', data_type, 'value_to_string', ('FLOAT', 'INT'))
         node = Node('Value to String', sockets={'Value': value, 'Decimals': decimals}, data_type=data_type)
         return node._out
 
@@ -717,15 +717,15 @@ class nd:
         ---------
         - value (Float) : socket 'Value' (id: Value)
         - group_id (Integer) : socket 'Group ID' (id: Group Index)
-        - data_type (str): parameter 'data_type' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'TRANSFORM')
-        - domain (str): parameter 'domain' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER')
+        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'FLOAT_VECTOR', 'TRANSFORM']
+        - domain (str): parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
 
         Returns
         -------
         - Float [trailing_ (Float), total_ (Float)]
         """
-        utils.check_enum_arg('data_type', data_type, 'accumulate_field', ('FLOAT', 'INT', 'FLOAT_VECTOR', 'TRANSFORM'))
-        utils.check_enum_arg('domain', domain, 'accumulate_field', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
+        utils.check_enum_arg('Accumulate Field', 'data_type', data_type, 'accumulate_field', ('FLOAT', 'INT', 'FLOAT_VECTOR', 'TRANSFORM'))
+        utils.check_enum_arg('Accumulate Field', 'domain', domain, 'accumulate_field', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
         node = Node('Accumulate Field', sockets={'Value': value, 'Group Index': group_id}, data_type=data_type, domain=domain)
         return node._out
 
@@ -736,13 +736,13 @@ class nd:
         Arguments
         ---------
         - geometry (Geometry) : socket 'Geometry' (id: Geometry)
-        - component (str): parameter 'component' in ('MESH', 'POINTCLOUD', 'CURVE', 'INSTANCES', 'GREASEPENCIL')
+        - component (str): parameter 'component' in ['MESH', 'POINTCLOUD', 'CURVE', 'INSTANCES', 'GREASEPENCIL']
 
         Returns
         -------
         - Integer [edge_count_ (Integer), face_count_ (Integer), face_corner_count_ (Integer)]
         """
-        utils.check_enum_arg('component', component, 'domain_size', ('MESH', 'POINTCLOUD', 'CURVE', 'INSTANCES', 'GREASEPENCIL'))
+        utils.check_enum_arg('Domain Size', 'component', component, 'domain_size', ('MESH', 'POINTCLOUD', 'CURVE', 'INSTANCES', 'GREASEPENCIL'))
         node = Node('Domain Size', sockets={'Geometry': geometry}, component=component)
         return node._out
 
@@ -755,15 +755,15 @@ class nd:
         - geometry (Geometry) : socket 'Geometry' (id: Geometry)
         - selection (Boolean) : socket 'Selection' (id: Selection)
         - attribute (Float) : socket 'Attribute' (id: Attribute)
-        - data_type (str): parameter 'data_type' in ('FLOAT', 'FLOAT_VECTOR')
-        - domain (str): parameter 'domain' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER')
+        - data_type (str): parameter 'data_type' in ['FLOAT', 'FLOAT_VECTOR']
+        - domain (str): parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
 
         Returns
         -------
         - Float [median_ (Float), sum_ (Float), min_ (Float), max_ (Float), range_ (Float), standard_deviation_ (Float), variance_ (Float)]
         """
-        utils.check_enum_arg('data_type', data_type, 'attribute_statistic', ('FLOAT', 'FLOAT_VECTOR'))
-        utils.check_enum_arg('domain', domain, 'attribute_statistic', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
+        utils.check_enum_arg('Attribute Statistic', 'data_type', data_type, 'attribute_statistic', ('FLOAT', 'FLOAT_VECTOR'))
+        utils.check_enum_arg('Attribute Statistic', 'domain', domain, 'attribute_statistic', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
         node = Node('Attribute Statistic', sockets={'Geometry': geometry, 'Selection': selection, 'Attribute': attribute}, data_type=data_type, domain=domain)
         return node._out
 
@@ -791,13 +791,13 @@ class nd:
         - value (Float) : socket 'Value' (id: Value)
         - iterations (Integer) : socket 'Iterations' (id: Iterations)
         - weight (Float) : socket 'Weight' (id: Weight)
-        - data_type (str): parameter 'data_type' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR')
+        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR']
 
         Returns
         -------
         - Float
         """
-        utils.check_enum_arg('data_type', data_type, 'blur_attribute', ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR'))
+        utils.check_enum_arg('Blur Attribute', 'data_type', data_type, 'blur_attribute', ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR'))
         node = Node('Blur Attribute', sockets={'Value': value, 'Iterations': iterations, 'Weight': weight}, data_type=data_type)
         return node._out
 
@@ -823,13 +823,13 @@ class nd:
         Arguments
         ---------
         - geometry (Geometry) : socket 'Geometry' (id: Geometry)
-        - domain (str): parameter 'domain' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER')
+        - domain (str): parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
 
         Returns
         -------
         - Geometry
         """
-        utils.check_enum_arg('domain', domain, 'capture_attribute', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
+        utils.check_enum_arg('Capture Attribute', 'domain', domain, 'capture_attribute', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
         node = Node('Capture Attribute', sockets={'Geometry': geometry}, domain=domain)
         return node._out
 
@@ -842,13 +842,13 @@ class nd:
         - collection (Collection) : socket 'Collection' (id: Collection)
         - separate_children (Boolean) : socket 'Separate Children' (id: Separate Children)
         - reset_children (Boolean) : socket 'Reset Children' (id: Reset Children)
-        - transform_space (str): parameter 'transform_space' in ('ORIGINAL', 'RELATIVE')
+        - transform_space (str): parameter 'transform_space' in ['ORIGINAL', 'RELATIVE']
 
         Returns
         -------
         - Instances
         """
-        utils.check_enum_arg('transform_space', transform_space, 'collection_info', ('ORIGINAL', 'RELATIVE'))
+        utils.check_enum_arg('Collection Info', 'transform_space', transform_space, 'collection_info', ('ORIGINAL', 'RELATIVE'))
         node = Node('Collection Info', sockets={'Collection': collection, 'Separate Children': separate_children, 'Reset Children': reset_children}, transform_space=transform_space)
         return node._out
 
@@ -934,13 +934,13 @@ class nd:
         - offset_angle (Float) : socket 'Offset Angle' (id: Offset Angle)
         - connect_center (Boolean) : socket 'Connect Center' (id: Connect Center)
         - invert_arc (Boolean) : socket 'Invert Arc' (id: Invert Arc)
-        - mode (str): parameter 'mode' in ('POINTS', 'RADIUS')
+        - mode (str): parameter 'mode' in ['POINTS', 'RADIUS']
 
         Returns
         -------
         - Curve
         """
-        utils.check_enum_arg('mode', mode, 'arc', ('POINTS', 'RADIUS'))
+        utils.check_enum_arg('Arc', 'mode', mode, 'arc', ('POINTS', 'RADIUS'))
         node = Node('Arc', sockets={'Resolution': resolution, 'Start': start, 'Middle': middle, 'End': end, 'Radius': radius, 'Start Angle': start_angle, 'Sweep Angle': sweep_angle, 'Offset Angle': offset_angle, 'Connect Center': connect_center, 'Invert Arc': invert_arc}, mode=mode)
         return node._out
 
@@ -966,14 +966,14 @@ class nd:
 
         Arguments
         ---------
-        - handle_type (str): parameter 'handle_type' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
+        - handle_type (str): parameter 'handle_type' in ['FREE', 'AUTO', 'VECTOR', 'ALIGN']
         - mode (set): parameter 'mode'
 
         Returns
         -------
         - Boolean
         """
-        utils.check_enum_arg('handle_type', handle_type, 'handle_type_selection', ('FREE', 'AUTO', 'VECTOR', 'ALIGN'))
+        utils.check_enum_arg('Handle Type Selection', 'handle_type', handle_type, 'handle_type_selection', ('FREE', 'AUTO', 'VECTOR', 'ALIGN'))
         node = Node('Handle Type Selection', sockets={}, handle_type=handle_type, mode=mode)
         return node._out
 
@@ -1018,13 +1018,13 @@ class nd:
         - start_handle (Vector) : socket 'Start Handle' (id: Start Handle)
         - end_handle (Vector) : socket 'End Handle' (id: End Handle)
         - end (Vector) : socket 'End' (id: End)
-        - mode (str): parameter 'mode' in ('POSITION', 'OFFSET')
+        - mode (str): parameter 'mode' in ['POSITION', 'OFFSET']
 
         Returns
         -------
         - Curve
         """
-        utils.check_enum_arg('mode', mode, 'bezier_segment', ('POSITION', 'OFFSET'))
+        utils.check_enum_arg('Bézier Segment', 'mode', mode, 'bezier_segment', ('POSITION', 'OFFSET'))
         node = Node('Bézier Segment', sockets={'Resolution': resolution, 'Start': start, 'Start Handle': start_handle, 'End Handle': end_handle, 'End': end}, mode=mode)
         return node._out
 
@@ -1039,13 +1039,13 @@ class nd:
         - point_2 (Vector) : socket 'Point 2' (id: Point 2)
         - point_3 (Vector) : socket 'Point 3' (id: Point 3)
         - radius (Float) : socket 'Radius' (id: Radius)
-        - mode (str): parameter 'mode' in ('POINTS', 'RADIUS')
+        - mode (str): parameter 'mode' in ['POINTS', 'RADIUS']
 
         Returns
         -------
         - Curve
         """
-        utils.check_enum_arg('mode', mode, 'curve_circle', ('POINTS', 'RADIUS'))
+        utils.check_enum_arg('Curve Circle', 'mode', mode, 'curve_circle', ('POINTS', 'RADIUS'))
         node = Node('Curve Circle', sockets={'Resolution': resolution, 'Point 1': point_1, 'Point 2': point_2, 'Point 3': point_3, 'Radius': radius}, mode=mode)
         return node._out
 
@@ -1059,13 +1059,13 @@ class nd:
         - end (Vector) : socket 'End' (id: End)
         - direction (Vector) : socket 'Direction' (id: Direction)
         - length (Float) : socket 'Length' (id: Length)
-        - mode (str): parameter 'mode' in ('POINTS', 'DIRECTION')
+        - mode (str): parameter 'mode' in ['POINTS', 'DIRECTION']
 
         Returns
         -------
         - Curve
         """
-        utils.check_enum_arg('mode', mode, 'curve_line', ('POINTS', 'DIRECTION'))
+        utils.check_enum_arg('Curve Line', 'mode', mode, 'curve_line', ('POINTS', 'DIRECTION'))
         node = Node('Curve Line', sockets={'Start': start, 'End': end, 'Direction': direction, 'Length': length}, mode=mode)
         return node._out
 
@@ -1086,13 +1086,13 @@ class nd:
         - point_2 (Vector) : socket 'Point 2' (id: Point 2)
         - point_3 (Vector) : socket 'Point 3' (id: Point 3)
         - point_4 (Vector) : socket 'Point 4' (id: Point 4)
-        - mode (str): parameter 'mode' in ('RECTANGLE', 'PARALLELOGRAM', 'TRAPEZOID', 'KITE', 'POINTS')
+        - mode (str): parameter 'mode' in ['RECTANGLE', 'PARALLELOGRAM', 'TRAPEZOID', 'KITE', 'POINTS']
 
         Returns
         -------
         - Curve
         """
-        utils.check_enum_arg('mode', mode, 'quadrilateral', ('RECTANGLE', 'PARALLELOGRAM', 'TRAPEZOID', 'KITE', 'POINTS'))
+        utils.check_enum_arg('Quadrilateral', 'mode', mode, 'quadrilateral', ('RECTANGLE', 'PARALLELOGRAM', 'TRAPEZOID', 'KITE', 'POINTS'))
         node = Node('Quadrilateral', sockets={'Width': width, 'Height': height, 'Bottom Width': bottom_width, 'Top Width': top_width, 'Offset': offset, 'Bottom Height': bottom_height, 'Top Height': top_height, 'Point 1': point_1, 'Point 2': point_2, 'Point 3': point_3, 'Point 4': point_4}, mode=mode)
         return node._out
 
@@ -1122,14 +1122,14 @@ class nd:
         ---------
         - curve (Geometry) : socket 'Curve' (id: Curve)
         - selection (Boolean) : socket 'Selection' (id: Selection)
-        - handle_type (str): parameter 'handle_type' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
+        - handle_type (str): parameter 'handle_type' in ['FREE', 'AUTO', 'VECTOR', 'ALIGN']
         - mode (set): parameter 'mode'
 
         Returns
         -------
         - Curve
         """
-        utils.check_enum_arg('handle_type', handle_type, 'set_handle_type', ('FREE', 'AUTO', 'VECTOR', 'ALIGN'))
+        utils.check_enum_arg('Set Handle Type', 'handle_type', handle_type, 'set_handle_type', ('FREE', 'AUTO', 'VECTOR', 'ALIGN'))
         node = Node('Set Handle Type', sockets={'Curve': curve, 'Selection': selection}, handle_type=handle_type, mode=mode)
         return node._out
 
@@ -1161,13 +1161,13 @@ class nd:
         ---------
         - curve (Geometry) : socket 'Curve' (id: Curve)
         - selection (Boolean) : socket 'Selection' (id: Selection)
-        - spline_type (str): parameter 'spline_type' in ('CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS')
+        - spline_type (str): parameter 'spline_type' in ['CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS']
 
         Returns
         -------
         - Curve
         """
-        utils.check_enum_arg('spline_type', spline_type, 'set_spline_type', ('CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS'))
+        utils.check_enum_arg('Set Spline Type', 'spline_type', spline_type, 'set_spline_type', ('CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS'))
         node = Node('Set Spline Type', sockets={'Curve': curve, 'Selection': selection}, spline_type=spline_type)
         return node._out
 
@@ -1215,13 +1215,13 @@ class nd:
         - curve (Geometry) : socket 'Curve' (id: Curve)
         - count (Integer) : socket 'Count' (id: Count)
         - length (Float) : socket 'Length' (id: Length)
-        - mode (str): parameter 'mode' in ('EVALUATED', 'COUNT', 'LENGTH')
+        - mode (str): parameter 'mode' in ['EVALUATED', 'COUNT', 'LENGTH']
 
         Returns
         -------
         - Cloud [tangent_ (Vector), normal_ (Vector), rotation_ (Rotation)]
         """
-        utils.check_enum_arg('mode', mode, 'curve_to_points', ('EVALUATED', 'COUNT', 'LENGTH'))
+        utils.check_enum_arg('Curve to Points', 'mode', mode, 'curve_to_points', ('EVALUATED', 'COUNT', 'LENGTH'))
         node = Node('Curve to Points', sockets={'Curve': curve, 'Count': count, 'Length': length}, mode=mode)
         return node._out
 
@@ -1265,15 +1265,15 @@ class nd:
         ---------
         - geometry (Geometry) : socket 'Geometry' (id: Geometry)
         - selection (Boolean) : socket 'Selection' (id: Selection)
-        - domain (str): parameter 'domain' in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE', 'LAYER')
-        - mode (str): parameter 'mode' in ('ALL', 'EDGE_FACE', 'ONLY_FACE')
+        - domain (str): parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE', 'LAYER']
+        - mode (str): parameter 'mode' in ['ALL', 'EDGE_FACE', 'ONLY_FACE']
 
         Returns
         -------
         - Geometry
         """
-        utils.check_enum_arg('domain', domain, 'delete_geometry', ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE', 'LAYER'))
-        utils.check_enum_arg('mode', mode, 'delete_geometry', ('ALL', 'EDGE_FACE', 'ONLY_FACE'))
+        utils.check_enum_arg('Delete Geometry', 'domain', domain, 'delete_geometry', ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE', 'LAYER'))
+        utils.check_enum_arg('Delete Geometry', 'mode', mode, 'delete_geometry', ('ALL', 'EDGE_FACE', 'ONLY_FACE'))
         node = Node('Delete Geometry', sockets={'Geometry': geometry, 'Selection': selection}, domain=domain, mode=mode)
         return node._out
 
@@ -1288,13 +1288,13 @@ class nd:
         - seed (Integer) : socket 'Seed' (id: Seed)
         - spacing (Vector) : socket 'Spacing' (id: Spacing)
         - threshold (Float) : socket 'Threshold' (id: Threshold)
-        - mode (str): parameter 'mode' in ('DENSITY_RANDOM', 'DENSITY_GRID')
+        - mode (str): parameter 'mode' in ['DENSITY_RANDOM', 'DENSITY_GRID']
 
         Returns
         -------
         - Cloud
         """
-        utils.check_enum_arg('mode', mode, 'distribute_points_in_grid', ('DENSITY_RANDOM', 'DENSITY_GRID'))
+        utils.check_enum_arg('Distribute Points in Grid', 'mode', mode, 'distribute_points_in_grid', ('DENSITY_RANDOM', 'DENSITY_GRID'))
         node = Node('Distribute Points in Grid', sockets={'Grid': grid, 'Density': density, 'Seed': seed, 'Spacing': spacing, 'Threshold': threshold}, mode=mode)
         return node._out
 
@@ -1309,13 +1309,13 @@ class nd:
         - seed (Integer) : socket 'Seed' (id: Seed)
         - spacing (Vector) : socket 'Spacing' (id: Spacing)
         - threshold (Float) : socket 'Threshold' (id: Threshold)
-        - mode (str): parameter 'mode' in ('DENSITY_RANDOM', 'DENSITY_GRID')
+        - mode (str): parameter 'mode' in ['DENSITY_RANDOM', 'DENSITY_GRID']
 
         Returns
         -------
         - Cloud
         """
-        utils.check_enum_arg('mode', mode, 'distribute_points_in_volume', ('DENSITY_RANDOM', 'DENSITY_GRID'))
+        utils.check_enum_arg('Distribute Points in Volume', 'mode', mode, 'distribute_points_in_volume', ('DENSITY_RANDOM', 'DENSITY_GRID'))
         node = Node('Distribute Points in Volume', sockets={'Volume': volume, 'Density': density, 'Seed': seed, 'Spacing': spacing, 'Threshold': threshold}, mode=mode)
         return node._out
 
@@ -1332,14 +1332,14 @@ class nd:
         - density (Float) : socket 'Density' (id: Density)
         - density_factor (Float) : socket 'Density Factor' (id: Density Factor)
         - seed (Integer) : socket 'Seed' (id: Seed)
-        - distribute_method (str): parameter 'distribute_method' in ('RANDOM', 'POISSON')
+        - distribute_method (str): parameter 'distribute_method' in ['RANDOM', 'POISSON']
         - use_legacy_normal (bool): parameter 'use_legacy_normal'
 
         Returns
         -------
         - Cloud [normal_ (Vector), rotation_ (Rotation)]
         """
-        utils.check_enum_arg('distribute_method', distribute_method, 'distribute_points_on_faces', ('RANDOM', 'POISSON'))
+        utils.check_enum_arg('Distribute Points on Faces', 'distribute_method', distribute_method, 'distribute_points_on_faces', ('RANDOM', 'POISSON'))
         node = Node('Distribute Points on Faces', sockets={'Mesh': mesh, 'Selection': selection, 'Distance Min': distance_min, 'Density Max': density_max, 'Density': density, 'Density Factor': density_factor, 'Seed': seed}, distribute_method=distribute_method, use_legacy_normal=use_legacy_normal)
         return node._out
 
@@ -1368,13 +1368,13 @@ class nd:
         - geometry (Geometry) : socket 'Geometry' (id: Geometry)
         - selection (Boolean) : socket 'Selection' (id: Selection)
         - amount (Integer) : socket 'Amount' (id: Amount)
-        - domain (str): parameter 'domain' in ('POINT', 'EDGE', 'FACE', 'SPLINE', 'LAYER', 'INSTANCE')
+        - domain (str): parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'SPLINE', 'LAYER', 'INSTANCE']
 
         Returns
         -------
         - Geometry [duplicate_index_ (Integer)]
         """
-        utils.check_enum_arg('domain', domain, 'duplicate_elements', ('POINT', 'EDGE', 'FACE', 'SPLINE', 'LAYER', 'INSTANCE'))
+        utils.check_enum_arg('Duplicate Elements', 'domain', domain, 'duplicate_elements', ('POINT', 'EDGE', 'FACE', 'SPLINE', 'LAYER', 'INSTANCE'))
         node = Node('Duplicate Elements', sockets={'Geometry': geometry, 'Selection': selection, 'Amount': amount}, domain=domain)
         return node._out
 
@@ -1469,13 +1469,13 @@ class nd:
         - offset (Vector) : socket 'Offset' (id: Offset)
         - offset_scale (Float) : socket 'Offset Scale' (id: Offset Scale)
         - individual (Boolean) : socket 'Individual' (id: Individual)
-        - mode (str): parameter 'mode' in ('VERTICES', 'EDGES', 'FACES')
+        - mode (str): parameter 'mode' in ['VERTICES', 'EDGES', 'FACES']
 
         Returns
         -------
         - Mesh [top_ (Boolean), side_ (Boolean)]
         """
-        utils.check_enum_arg('mode', mode, 'extrude_mesh', ('VERTICES', 'EDGES', 'FACES'))
+        utils.check_enum_arg('Extrude Mesh', 'mode', mode, 'extrude_mesh', ('VERTICES', 'EDGES', 'FACES'))
         node = Node('Extrude Mesh', sockets={'Mesh': mesh, 'Selection': selection, 'Offset': offset, 'Offset Scale': offset_scale, 'Individual': individual}, mode=mode)
         return node._out
 
@@ -1502,15 +1502,15 @@ class nd:
         ---------
         - index (Integer) : socket 'Index' (id: Index)
         - value (Float) : socket 'Value' (id: Value)
-        - data_type (str): parameter 'data_type' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4')
-        - domain (str): parameter 'domain' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER')
+        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4']
+        - domain (str): parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
 
         Returns
         -------
         - Float
         """
-        utils.check_enum_arg('data_type', data_type, 'evaluate_at_index', ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4'))
-        utils.check_enum_arg('domain', domain, 'evaluate_at_index', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
+        utils.check_enum_arg('Evaluate at Index', 'data_type', data_type, 'evaluate_at_index', ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4'))
+        utils.check_enum_arg('Evaluate at Index', 'domain', domain, 'evaluate_at_index', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
         node = Node('Evaluate at Index', sockets={'Index': index, 'Value': value}, data_type=data_type, domain=domain)
         return node._out
 
@@ -1521,15 +1521,15 @@ class nd:
         Arguments
         ---------
         - value (Float) : socket 'Value' (id: Value)
-        - data_type (str): parameter 'data_type' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4')
-        - domain (str): parameter 'domain' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER')
+        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4']
+        - domain (str): parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
 
         Returns
         -------
         - Float
         """
-        utils.check_enum_arg('data_type', data_type, 'evaluate_on_domain', ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4'))
-        utils.check_enum_arg('domain', domain, 'evaluate_on_domain', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
+        utils.check_enum_arg('Evaluate on Domain', 'data_type', data_type, 'evaluate_on_domain', ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4'))
+        utils.check_enum_arg('Evaluate on Domain', 'domain', domain, 'evaluate_on_domain', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
         node = Node('Evaluate on Domain', sockets={'Value': value}, data_type=data_type, domain=domain)
         return node._out
 
@@ -1541,13 +1541,13 @@ class nd:
         ---------
         - curve (Geometry) : socket 'Curve' (id: Curve)
         - group_id (Integer) : socket 'Group ID' (id: Group ID)
-        - mode (str): parameter 'mode' in ('TRIANGLES', 'NGONS')
+        - mode (str): parameter 'mode' in ['TRIANGLES', 'NGONS']
 
         Returns
         -------
         - Mesh
         """
-        utils.check_enum_arg('mode', mode, 'fill_curve', ('TRIANGLES', 'NGONS'))
+        utils.check_enum_arg('Fill Curve', 'mode', mode, 'fill_curve', ('TRIANGLES', 'NGONS'))
         node = Node('Fill Curve', sockets={'Curve': curve, 'Group ID': group_id}, mode=mode)
         return node._out
 
@@ -1561,13 +1561,13 @@ class nd:
         - count (Integer) : socket 'Count' (id: Count)
         - radius (Float) : socket 'Radius' (id: Radius)
         - limit_radius (Boolean) : socket 'Limit Radius' (id: Limit Radius)
-        - mode (str): parameter 'mode' in ('BEZIER', 'POLY')
+        - mode (str): parameter 'mode' in ['BEZIER', 'POLY']
 
         Returns
         -------
         - Curve
         """
-        utils.check_enum_arg('mode', mode, 'fillet_curve', ('BEZIER', 'POLY'))
+        utils.check_enum_arg('Fillet Curve', 'mode', mode, 'fillet_curve', ('BEZIER', 'POLY'))
         node = Node('Fillet Curve', sockets={'Curve': curve, 'Count': count, 'Radius': radius, 'Limit Radius': limit_radius}, mode=mode)
         return node._out
 
@@ -1613,14 +1613,14 @@ class nd:
         - active_generation_index (int): parameter 'active_generation_index'
         - active_input_index (int): parameter 'active_input_index'
         - active_main_index (int): parameter 'active_main_index'
-        - domain (str): parameter 'domain' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER')
+        - domain (str): parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
         - inspection_index (int): parameter 'inspection_index'
 
         Returns
         -------
         - Geometry
         """
-        utils.check_enum_arg('domain', domain, 'for_each_geometry_element_output', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
+        utils.check_enum_arg('For Each Geometry Element Output', 'domain', domain, 'for_each_geometry_element_output', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
         node = Node('For Each Geometry Element Output', sockets={'Generation_0': geometry}, active_generation_index=active_generation_index, active_input_index=active_input_index, active_main_index=active_main_index, domain=domain, inspection_index=inspection_index)
         return node._out
 
@@ -1648,13 +1648,13 @@ class nd:
         - volume (Geometry) : socket 'Volume' (id: Volume)
         - name (String) : socket 'Name' (id: Name)
         - remove (Boolean) : socket 'Remove' (id: Remove)
-        - data_type (str): parameter 'data_type' in ('FLOAT', 'VECTOR')
+        - data_type (str): parameter 'data_type' in ['FLOAT', 'VECTOR']
 
         Returns
         -------
         - Volume [grid_ (Float)]
         """
-        utils.check_enum_arg('data_type', data_type, 'get_named_grid', ('FLOAT', 'VECTOR'))
+        utils.check_enum_arg('Get Named Grid', 'data_type', data_type, 'get_named_grid', ('FLOAT', 'VECTOR'))
         node = Node('Get Named Grid', sockets={'Volume': volume, 'Name': name, 'Remove': remove}, data_type=data_type)
         return node._out
 
@@ -1669,13 +1669,13 @@ class nd:
         - up (Vector) : socket 'Up' (id: Up)
         - screen_space (Boolean) : socket 'Screen Space' (id: Screen Space)
         - radius (Float) : socket 'Radius' (id: Radius)
-        - color_id (str): parameter 'color_id' in ('PRIMARY', 'SECONDARY', 'X', 'Y', 'Z')
+        - color_id (str): parameter 'color_id' in ['PRIMARY', 'SECONDARY', 'X', 'Y', 'Z']
 
         Returns
         -------
         - Geometry
         """
-        utils.check_enum_arg('color_id', color_id, 'dial_gizmo', ('PRIMARY', 'SECONDARY', 'X', 'Y', 'Z'))
+        utils.check_enum_arg('Dial Gizmo', 'color_id', color_id, 'dial_gizmo', ('PRIMARY', 'SECONDARY', 'X', 'Y', 'Z'))
         node = Node('Dial Gizmo', sockets={'Value': list(value), 'Position': position, 'Up': up, 'Screen Space': screen_space, 'Radius': radius}, color_id=color_id)
         return node._out
 
@@ -1688,15 +1688,15 @@ class nd:
         - value (Float) : socket 'Value' (id: Value)
         - position (Vector) : socket 'Position' (id: Position)
         - direction (Vector) : socket 'Direction' (id: Direction)
-        - color_id (str): parameter 'color_id' in ('PRIMARY', 'SECONDARY', 'X', 'Y', 'Z')
-        - draw_style (str): parameter 'draw_style' in ('ARROW', 'CROSS', 'BOX')
+        - color_id (str): parameter 'color_id' in ['PRIMARY', 'SECONDARY', 'X', 'Y', 'Z']
+        - draw_style (str): parameter 'draw_style' in ['ARROW', 'CROSS', 'BOX']
 
         Returns
         -------
         - Geometry
         """
-        utils.check_enum_arg('color_id', color_id, 'linear_gizmo', ('PRIMARY', 'SECONDARY', 'X', 'Y', 'Z'))
-        utils.check_enum_arg('draw_style', draw_style, 'linear_gizmo', ('ARROW', 'CROSS', 'BOX'))
+        utils.check_enum_arg('Linear Gizmo', 'color_id', color_id, 'linear_gizmo', ('PRIMARY', 'SECONDARY', 'X', 'Y', 'Z'))
+        utils.check_enum_arg('Linear Gizmo', 'draw_style', draw_style, 'linear_gizmo', ('ARROW', 'CROSS', 'BOX'))
         node = Node('Linear Gizmo', sockets={'Value': list(value), 'Position': position, 'Direction': direction}, color_id=color_id, draw_style=draw_style)
         return node._out
 
@@ -1800,15 +1800,15 @@ class nd:
         - image (Image) : socket 'Image' (id: Image)
         - vector (Vector) : socket 'Vector' (id: Vector)
         - frame (Integer) : socket 'Frame' (id: Frame)
-        - extension (str): parameter 'extension' in ('REPEAT', 'EXTEND', 'CLIP', 'MIRROR')
-        - interpolation (str): parameter 'interpolation' in ('Linear', 'Closest', 'Cubic')
+        - extension (str): parameter 'extension' in ['REPEAT', 'EXTEND', 'CLIP', 'MIRROR']
+        - interpolation (str): parameter 'interpolation' in ['Linear', 'Closest', 'Cubic']
 
         Returns
         -------
         - Color [alpha_ (Float)]
         """
-        utils.check_enum_arg('extension', extension, 'image_texture', ('REPEAT', 'EXTEND', 'CLIP', 'MIRROR'))
-        utils.check_enum_arg('interpolation', interpolation, 'image_texture', ('Linear', 'Closest', 'Cubic'))
+        utils.check_enum_arg('Image Texture', 'extension', extension, 'image_texture', ('REPEAT', 'EXTEND', 'CLIP', 'MIRROR'))
+        utils.check_enum_arg('Image Texture', 'interpolation', interpolation, 'image_texture', ('Linear', 'Closest', 'Cubic'))
         node = Node('Image Texture', sockets={'Image': image, 'Vector': vector, 'Frame': frame}, extension=extension, interpolation=interpolation)
         return node._out
 
@@ -1882,13 +1882,13 @@ class nd:
         - index (Integer) : socket 'Index' (id: Index)
         - _0 (Geometry) : socket '0' (id: Item_0)
         - _1 (Geometry) : socket '1' (id: Item_1)
-        - data_type (str): parameter 'data_type' in ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'RGBA', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL')
+        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'RGBA', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL']
 
         Returns
         -------
         - Geometry
         """
-        utils.check_enum_arg('data_type', data_type, 'index_switch', ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'RGBA', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL'))
+        utils.check_enum_arg('Index Switch', 'data_type', data_type, 'index_switch', ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'RGBA', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL'))
         node = Node('Index Switch', sockets={'Index': index, 'Item_0': _0, 'Item_1': _1}, data_type=data_type)
         return node._out
 
@@ -2134,13 +2134,13 @@ class nd:
         Arguments
         ---------
         - name (String) : socket 'Name' (id: Name)
-        - data_type (str): parameter 'data_type' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4')
+        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4']
 
         Returns
         -------
         - Float [exists_ (Boolean)]
         """
-        utils.check_enum_arg('data_type', data_type, 'named_attribute', ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4'))
+        utils.check_enum_arg('Named Attribute', 'data_type', data_type, 'named_attribute', ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4'))
         node = Node('Named Attribute', sockets={'Name': name}, data_type=data_type)
         return node._out
 
@@ -2393,13 +2393,13 @@ class nd:
         - menu (Menu) : socket 'Menu' (id: Menu)
         - a (Geometry) : socket 'A' (id: Item_0)
         - b (Geometry) : socket 'B' (id: Item_1)
-        - data_type (str): parameter 'data_type' in ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'ROTATION', 'MATRIX', 'STRING', 'RGBA', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL')
+        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'ROTATION', 'MATRIX', 'STRING', 'RGBA', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL']
 
         Returns
         -------
         - Geometry
         """
-        utils.check_enum_arg('data_type', data_type, 'menu_switch', ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'ROTATION', 'MATRIX', 'STRING', 'RGBA', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL'))
+        utils.check_enum_arg('Menu Switch', 'data_type', data_type, 'menu_switch', ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'ROTATION', 'MATRIX', 'STRING', 'RGBA', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL'))
         node = Node('Menu Switch', sockets={'Menu': menu, 'Item_0': a, 'Item_1': b}, data_type=data_type)
         return node._out
 
@@ -2412,13 +2412,13 @@ class nd:
         - geometry (Geometry) : socket 'Geometry' (id: Geometry)
         - selection (Boolean) : socket 'Selection' (id: Selection)
         - distance (Float) : socket 'Distance' (id: Distance)
-        - mode (str): parameter 'mode' in ('ALL', 'CONNECTED')
+        - mode (str): parameter 'mode' in ['ALL', 'CONNECTED']
 
         Returns
         -------
         - Geometry
         """
-        utils.check_enum_arg('mode', mode, 'merge_by_distance', ('ALL', 'CONNECTED'))
+        utils.check_enum_arg('Merge by Distance', 'mode', mode, 'merge_by_distance', ('ALL', 'CONNECTED'))
         node = Node('Merge by Distance', sockets={'Geometry': geometry, 'Selection': selection, 'Distance': distance}, mode=mode)
         return node._out
 
@@ -2431,13 +2431,13 @@ class nd:
         - grease_pencil (Geometry) : socket 'Grease Pencil' (id: Grease Pencil)
         - selection (Boolean) : socket 'Selection' (id: Selection)
         - group_id (Integer) : socket 'Group ID' (id: Group ID)
-        - mode (str): parameter 'mode' in ('MERGE_BY_NAME', 'MERGE_BY_ID')
+        - mode (str): parameter 'mode' in ['MERGE_BY_NAME', 'MERGE_BY_ID']
 
         Returns
         -------
         - GreasePencil
         """
-        utils.check_enum_arg('mode', mode, 'merge_layers', ('MERGE_BY_NAME', 'MERGE_BY_ID'))
+        utils.check_enum_arg('Merge Layers', 'mode', mode, 'merge_layers', ('MERGE_BY_NAME', 'MERGE_BY_ID'))
         node = Node('Merge Layers', sockets={'Grease Pencil': grease_pencil, 'Selection': selection, 'Group ID': group_id}, mode=mode)
         return node._out
 
@@ -2451,15 +2451,15 @@ class nd:
         - mesh_2 (Geometry) : socket 'Mesh 2' (id: Mesh 2)
         - self_intersection (Boolean) : socket 'Self Intersection' (id: Self Intersection)
         - hole_tolerant (Boolean) : socket 'Hole Tolerant' (id: Hole Tolerant)
-        - operation (str): parameter 'operation' in ('INTERSECT', 'UNION', 'DIFFERENCE')
-        - solver (str): parameter 'solver' in ('EXACT', 'FLOAT')
+        - operation (str): parameter 'operation' in ['INTERSECT', 'UNION', 'DIFFERENCE']
+        - solver (str): parameter 'solver' in ['EXACT', 'FLOAT']
 
         Returns
         -------
         - Mesh
         """
-        utils.check_enum_arg('operation', operation, 'mesh_boolean', ('INTERSECT', 'UNION', 'DIFFERENCE'))
-        utils.check_enum_arg('solver', solver, 'mesh_boolean', ('EXACT', 'FLOAT'))
+        utils.check_enum_arg('Mesh Boolean', 'operation', operation, 'mesh_boolean', ('INTERSECT', 'UNION', 'DIFFERENCE'))
+        utils.check_enum_arg('Mesh Boolean', 'solver', solver, 'mesh_boolean', ('EXACT', 'FLOAT'))
         node = Node('Mesh Boolean', sockets={'Mesh 1': mesh_1, 'Mesh 2': list(mesh_2), 'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, operation=operation, solver=solver)
         return node._out
 
@@ -2471,13 +2471,13 @@ class nd:
         ---------
         - vertices (Integer) : socket 'Vertices' (id: Vertices)
         - radius (Float) : socket 'Radius' (id: Radius)
-        - fill_type (str): parameter 'fill_type' in ('NONE', 'NGON', 'TRIANGLE_FAN')
+        - fill_type (str): parameter 'fill_type' in ['NONE', 'NGON', 'TRIANGLE_FAN']
 
         Returns
         -------
         - Mesh
         """
-        utils.check_enum_arg('fill_type', fill_type, 'mesh_circle', ('NONE', 'NGON', 'TRIANGLE_FAN'))
+        utils.check_enum_arg('Mesh Circle', 'fill_type', fill_type, 'mesh_circle', ('NONE', 'NGON', 'TRIANGLE_FAN'))
         node = Node('Mesh Circle', sockets={'Vertices': vertices, 'Radius': radius}, fill_type=fill_type)
         return node._out
 
@@ -2493,13 +2493,13 @@ class nd:
         - radius_top (Float) : socket 'Radius Top' (id: Radius Top)
         - radius_bottom (Float) : socket 'Radius Bottom' (id: Radius Bottom)
         - depth (Float) : socket 'Depth' (id: Depth)
-        - fill_type (str): parameter 'fill_type' in ('NONE', 'NGON', 'TRIANGLE_FAN')
+        - fill_type (str): parameter 'fill_type' in ['NONE', 'NGON', 'TRIANGLE_FAN']
 
         Returns
         -------
         - Mesh [top_ (Boolean), bottom_ (Boolean), side_ (Boolean), uv_map_ (Vector)]
         """
-        utils.check_enum_arg('fill_type', fill_type, 'cone', ('NONE', 'NGON', 'TRIANGLE_FAN'))
+        utils.check_enum_arg('Cone', 'fill_type', fill_type, 'cone', ('NONE', 'NGON', 'TRIANGLE_FAN'))
         node = Node('Cone', sockets={'Vertices': vertices, 'Side Segments': side_segments, 'Fill Segments': fill_segments, 'Radius Top': radius_top, 'Radius Bottom': radius_bottom, 'Depth': depth}, fill_type=fill_type)
         return node._out
 
@@ -2532,13 +2532,13 @@ class nd:
         - fill_segments (Integer) : socket 'Fill Segments' (id: Fill Segments)
         - radius (Float) : socket 'Radius' (id: Radius)
         - depth (Float) : socket 'Depth' (id: Depth)
-        - fill_type (str): parameter 'fill_type' in ('NONE', 'NGON', 'TRIANGLE_FAN')
+        - fill_type (str): parameter 'fill_type' in ['NONE', 'NGON', 'TRIANGLE_FAN']
 
         Returns
         -------
         - Mesh [top_ (Boolean), side_ (Boolean), bottom_ (Boolean), uv_map_ (Vector)]
         """
-        utils.check_enum_arg('fill_type', fill_type, 'cylinder', ('NONE', 'NGON', 'TRIANGLE_FAN'))
+        utils.check_enum_arg('Cylinder', 'fill_type', fill_type, 'cylinder', ('NONE', 'NGON', 'TRIANGLE_FAN'))
         node = Node('Cylinder', sockets={'Vertices': vertices, 'Side Segments': side_segments, 'Fill Segments': fill_segments, 'Radius': radius, 'Depth': depth}, fill_type=fill_type)
         return node._out
 
@@ -2601,15 +2601,15 @@ class nd:
         - resolution (Float) : socket 'Resolution' (id: Resolution)
         - start_location (Vector) : socket 'Start Location' (id: Start Location)
         - offset (Vector) : socket 'Offset' (id: Offset)
-        - count_mode (str): parameter 'count_mode' in ('TOTAL', 'RESOLUTION')
-        - mode (str): parameter 'mode' in ('OFFSET', 'END_POINTS')
+        - count_mode (str): parameter 'count_mode' in ['TOTAL', 'RESOLUTION']
+        - mode (str): parameter 'mode' in ['OFFSET', 'END_POINTS']
 
         Returns
         -------
         - Mesh
         """
-        utils.check_enum_arg('count_mode', count_mode, 'mesh_line', ('TOTAL', 'RESOLUTION'))
-        utils.check_enum_arg('mode', mode, 'mesh_line', ('OFFSET', 'END_POINTS'))
+        utils.check_enum_arg('Mesh Line', 'count_mode', count_mode, 'mesh_line', ('TOTAL', 'RESOLUTION'))
+        utils.check_enum_arg('Mesh Line', 'mode', mode, 'mesh_line', ('OFFSET', 'END_POINTS'))
         node = Node('Mesh Line', sockets={'Count': count, 'Resolution': resolution, 'Start Location': start_location, 'Offset': offset}, count_mode=count_mode, mode=mode)
         return node._out
 
@@ -2657,13 +2657,13 @@ class nd:
         - selection (Boolean) : socket 'Selection' (id: Selection)
         - position (Vector) : socket 'Position' (id: Position)
         - radius (Float) : socket 'Radius' (id: Radius)
-        - mode (str): parameter 'mode' in ('VERTICES', 'EDGES', 'FACES', 'CORNERS')
+        - mode (str): parameter 'mode' in ['VERTICES', 'EDGES', 'FACES', 'CORNERS']
 
         Returns
         -------
         - Cloud
         """
-        utils.check_enum_arg('mode', mode, 'mesh_to_points', ('VERTICES', 'EDGES', 'FACES', 'CORNERS'))
+        utils.check_enum_arg('Mesh to Points', 'mode', mode, 'mesh_to_points', ('VERTICES', 'EDGES', 'FACES', 'CORNERS'))
         node = Node('Mesh to Points', sockets={'Mesh': mesh, 'Selection': selection, 'Position': position, 'Radius': radius}, mode=mode)
         return node._out
 
@@ -2695,13 +2695,13 @@ class nd:
         - voxel_size (Float) : socket 'Voxel Size' (id: Voxel Size)
         - voxel_amount (Float) : socket 'Voxel Amount' (id: Voxel Amount)
         - interior_band_width (Float) : socket 'Interior Band Width' (id: Interior Band Width)
-        - resolution_mode (str): parameter 'resolution_mode' in ('VOXEL_AMOUNT', 'VOXEL_SIZE')
+        - resolution_mode (str): parameter 'resolution_mode' in ['VOXEL_AMOUNT', 'VOXEL_SIZE']
 
         Returns
         -------
         - Volume
         """
-        utils.check_enum_arg('resolution_mode', resolution_mode, 'mesh_to_volume', ('VOXEL_AMOUNT', 'VOXEL_SIZE'))
+        utils.check_enum_arg('Mesh to Volume', 'resolution_mode', resolution_mode, 'mesh_to_volume', ('VOXEL_AMOUNT', 'VOXEL_SIZE'))
         node = Node('Mesh to Volume', sockets={'Mesh': mesh, 'Density': density, 'Voxel Size': voxel_size, 'Voxel Amount': voxel_amount, 'Interior Band Width': interior_band_width}, resolution_mode=resolution_mode)
         return node._out
 
@@ -2730,13 +2730,13 @@ class nd:
         ---------
         - object (Object) : socket 'Object' (id: Object)
         - as_instance (Boolean) : socket 'As Instance' (id: As Instance)
-        - transform_space (str): parameter 'transform_space' in ('ORIGINAL', 'RELATIVE')
+        - transform_space (str): parameter 'transform_space' in ['ORIGINAL', 'RELATIVE']
 
         Returns
         -------
         - Matrix [location_ (Vector), rotation_ (Rotation), scale_ (Vector), geometry_ (Geometry)]
         """
-        utils.check_enum_arg('transform_space', transform_space, 'object_info', ('ORIGINAL', 'RELATIVE'))
+        utils.check_enum_arg('Object Info', 'transform_space', transform_space, 'object_info', ('ORIGINAL', 'RELATIVE'))
         node = Node('Object Info', sockets={'Object': object, 'As Instance': as_instance}, transform_space=transform_space)
         return node._out
 
@@ -2867,13 +2867,13 @@ class nd:
         - voxel_size (Float) : socket 'Voxel Size' (id: Voxel Size)
         - voxel_amount (Float) : socket 'Voxel Amount' (id: Voxel Amount)
         - radius (Float) : socket 'Radius' (id: Radius)
-        - resolution_mode (str): parameter 'resolution_mode' in ('VOXEL_AMOUNT', 'VOXEL_SIZE')
+        - resolution_mode (str): parameter 'resolution_mode' in ['VOXEL_AMOUNT', 'VOXEL_SIZE']
 
         Returns
         -------
         - Volume
         """
-        utils.check_enum_arg('resolution_mode', resolution_mode, 'points_to_volume', ('VOXEL_AMOUNT', 'VOXEL_SIZE'))
+        utils.check_enum_arg('Points to Volume', 'resolution_mode', resolution_mode, 'points_to_volume', ('VOXEL_AMOUNT', 'VOXEL_SIZE'))
         node = Node('Points to Volume', sockets={'Points': points, 'Density': density, 'Voxel Size': voxel_size, 'Voxel Amount': voxel_amount, 'Radius': radius}, resolution_mode=resolution_mode)
         return node._out
 
@@ -2887,13 +2887,13 @@ class nd:
         - group_id (Integer) : socket 'Group ID' (id: Group ID)
         - sample_position (Vector) : socket 'Sample Position' (id: Source Position)
         - sample_group_id (Integer) : socket 'Sample Group ID' (id: Sample Group ID)
-        - target_element (str): parameter 'target_element' in ('POINTS', 'EDGES', 'FACES')
+        - target_element (str): parameter 'target_element' in ['POINTS', 'EDGES', 'FACES']
 
         Returns
         -------
         - Vector [distance_ (Float), is_valid_ (Boolean)]
         """
-        utils.check_enum_arg('target_element', target_element, 'geometry_proximity', ('POINTS', 'EDGES', 'FACES'))
+        utils.check_enum_arg('Geometry Proximity', 'target_element', target_element, 'geometry_proximity', ('POINTS', 'EDGES', 'FACES'))
         node = Node('Geometry Proximity', sockets={'Target': geometry, 'Group ID': group_id, 'Source Position': sample_position, 'Sample Group ID': sample_group_id}, target_element=target_element)
         return node._out
 
@@ -2908,15 +2908,15 @@ class nd:
         - source_position (Vector) : socket 'Source Position' (id: Source Position)
         - ray_direction (Vector) : socket 'Ray Direction' (id: Ray Direction)
         - ray_length (Float) : socket 'Ray Length' (id: Ray Length)
-        - data_type (str): parameter 'data_type' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4')
-        - mapping (str): parameter 'mapping' in ('INTERPOLATED', 'NEAREST')
+        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4']
+        - mapping (str): parameter 'mapping' in ['INTERPOLATED', 'NEAREST']
 
         Returns
         -------
         - Boolean [hit_position_ (Vector), hit_normal_ (Vector), hit_distance_ (Float), attribute_ (Float)]
         """
-        utils.check_enum_arg('data_type', data_type, 'raycast', ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4'))
-        utils.check_enum_arg('mapping', mapping, 'raycast', ('INTERPOLATED', 'NEAREST'))
+        utils.check_enum_arg('Raycast', 'data_type', data_type, 'raycast', ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4'))
+        utils.check_enum_arg('Raycast', 'mapping', mapping, 'raycast', ('INTERPOLATED', 'NEAREST'))
         node = Node('Raycast', sockets={'Target Geometry': target_geometry, 'Attribute': attribute, 'Source Position': source_position, 'Ray Direction': ray_direction, 'Ray Length': ray_length}, data_type=data_type, mapping=mapping)
         return node._out
 
@@ -2946,13 +2946,13 @@ class nd:
         ---------
         - geometry (Geometry) : socket 'Geometry' (id: Geometry)
         - name (String) : socket 'Name' (id: Name)
-        - pattern_mode (str): parameter 'pattern_mode' in ('EXACT', 'WILDCARD')
+        - pattern_mode (str): parameter 'pattern_mode' in ['EXACT', 'WILDCARD']
 
         Returns
         -------
         - Geometry
         """
-        utils.check_enum_arg('pattern_mode', pattern_mode, 'remove_named_attribute', ('EXACT', 'WILDCARD'))
+        utils.check_enum_arg('Remove Named Attribute', 'pattern_mode', pattern_mode, 'remove_named_attribute', ('EXACT', 'WILDCARD'))
         node = Node('Remove Named Attribute', sockets={'Geometry': geometry, 'Name': name}, pattern_mode=pattern_mode)
         return node._out
 
@@ -3014,13 +3014,13 @@ class nd:
         - selection (Boolean) : socket 'Selection' (id: Selection)
         - count (Integer) : socket 'Count' (id: Count)
         - length (Float) : socket 'Length' (id: Length)
-        - mode (str): parameter 'mode' in ('EVALUATED', 'COUNT', 'LENGTH')
+        - mode (str): parameter 'mode' in ['EVALUATED', 'COUNT', 'LENGTH']
 
         Returns
         -------
         - Curve
         """
-        utils.check_enum_arg('mode', mode, 'resample_curve', ('EVALUATED', 'COUNT', 'LENGTH'))
+        utils.check_enum_arg('Resample Curve', 'mode', mode, 'resample_curve', ('EVALUATED', 'COUNT', 'LENGTH'))
         node = Node('Resample Curve', sockets={'Curve': curve, 'Selection': selection, 'Count': count, 'Length': length}, mode=mode)
         return node._out
 
@@ -3067,13 +3067,13 @@ class nd:
         ---------
         - grid_1 (Float) : socket 'Grid 1' (id: Grid 1)
         - grid_2 (Float) : socket 'Grid 2' (id: Grid 2)
-        - operation (str): parameter 'operation' in ('INTERSECT', 'UNION', 'DIFFERENCE')
+        - operation (str): parameter 'operation' in ['INTERSECT', 'UNION', 'DIFFERENCE']
 
         Returns
         -------
         - Float
         """
-        utils.check_enum_arg('operation', operation, 'sdf_grid_boolean', ('INTERSECT', 'UNION', 'DIFFERENCE'))
+        utils.check_enum_arg('SDF Grid Boolean', 'operation', operation, 'sdf_grid_boolean', ('INTERSECT', 'UNION', 'DIFFERENCE'))
         node = Node('SDF Grid Boolean', sockets={'Grid 1': grid_1, 'Grid 2': list(grid_2)}, operation=operation)
         return node._out
 
@@ -3088,16 +3088,16 @@ class nd:
         - length (Float) : socket 'Length' (id: Length)
         - curve_index (Integer) : socket 'Curve Index' (id: Curve Index)
         - factor (Float) : socket 'Factor' (id: Factor)
-        - data_type (str): parameter 'data_type' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4')
-        - mode (str): parameter 'mode' in ('FACTOR', 'LENGTH')
+        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4']
+        - mode (str): parameter 'mode' in ['FACTOR', 'LENGTH']
         - use_all_curves (bool): parameter 'use_all_curves'
 
         Returns
         -------
         - Float [position_ (Vector), tangent_ (Vector), normal_ (Vector)]
         """
-        utils.check_enum_arg('data_type', data_type, 'sample_curve', ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4'))
-        utils.check_enum_arg('mode', mode, 'sample_curve', ('FACTOR', 'LENGTH'))
+        utils.check_enum_arg('Sample Curve', 'data_type', data_type, 'sample_curve', ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4'))
+        utils.check_enum_arg('Sample Curve', 'mode', mode, 'sample_curve', ('FACTOR', 'LENGTH'))
         node = Node('Sample Curve', sockets={'Curves': curves, 'Value': value, 'Length': length, 'Curve Index': curve_index, 'Factor': factor}, data_type=data_type, mode=mode, use_all_curves=use_all_curves)
         return node._out
 
@@ -3109,15 +3109,15 @@ class nd:
         ---------
         - grid (Float) : socket 'Grid' (id: Grid)
         - position (Vector) : socket 'Position' (id: Position)
-        - data_type (str): parameter 'data_type' in ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR')
-        - interpolation_mode (str): parameter 'interpolation_mode' in ('NEAREST', 'TRILINEAR', 'TRIQUADRATIC')
+        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'BOOLEAN', 'VECTOR']
+        - interpolation_mode (str): parameter 'interpolation_mode' in ['NEAREST', 'TRILINEAR', 'TRIQUADRATIC']
 
         Returns
         -------
         - Float
         """
-        utils.check_enum_arg('data_type', data_type, 'sample_grid', ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR'))
-        utils.check_enum_arg('interpolation_mode', interpolation_mode, 'sample_grid', ('NEAREST', 'TRILINEAR', 'TRIQUADRATIC'))
+        utils.check_enum_arg('Sample Grid', 'data_type', data_type, 'sample_grid', ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR'))
+        utils.check_enum_arg('Sample Grid', 'interpolation_mode', interpolation_mode, 'sample_grid', ('NEAREST', 'TRILINEAR', 'TRIQUADRATIC'))
         node = Node('Sample Grid', sockets={'Grid': grid, 'Position': position}, data_type=data_type, interpolation_mode=interpolation_mode)
         return node._out
 
@@ -3131,13 +3131,13 @@ class nd:
         - x (Integer) : socket 'X' (id: X)
         - y (Integer) : socket 'Y' (id: Y)
         - z (Integer) : socket 'Z' (id: Z)
-        - data_type (str): parameter 'data_type' in ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR')
+        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'BOOLEAN', 'VECTOR']
 
         Returns
         -------
         - Float
         """
-        utils.check_enum_arg('data_type', data_type, 'sample_grid_index', ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR'))
+        utils.check_enum_arg('Sample Grid Index', 'data_type', data_type, 'sample_grid_index', ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR'))
         node = Node('Sample Grid Index', sockets={'Grid': grid, 'X': x, 'Y': y, 'Z': z}, data_type=data_type)
         return node._out
 
@@ -3151,15 +3151,15 @@ class nd:
         - value (Float) : socket 'Value' (id: Value)
         - index (Integer) : socket 'Index' (id: Index)
         - clamp (bool): parameter 'clamp'
-        - data_type (str): parameter 'data_type' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4')
-        - domain (str): parameter 'domain' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER')
+        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4']
+        - domain (str): parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
 
         Returns
         -------
         - Float
         """
-        utils.check_enum_arg('data_type', data_type, 'sample_index', ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4'))
-        utils.check_enum_arg('domain', domain, 'sample_index', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
+        utils.check_enum_arg('Sample Index', 'data_type', data_type, 'sample_index', ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4'))
+        utils.check_enum_arg('Sample Index', 'domain', domain, 'sample_index', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
         node = Node('Sample Index', sockets={'Geometry': geometry, 'Value': value, 'Index': index}, clamp=clamp, data_type=data_type, domain=domain)
         return node._out
 
@@ -3171,13 +3171,13 @@ class nd:
         ---------
         - geometry (Geometry) : socket 'Geometry' (id: Geometry)
         - sample_position (Vector) : socket 'Sample Position' (id: Sample Position)
-        - domain (str): parameter 'domain' in ('POINT', 'EDGE', 'FACE', 'CORNER')
+        - domain (str): parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER']
 
         Returns
         -------
         - Integer
         """
-        utils.check_enum_arg('domain', domain, 'sample_nearest', ('POINT', 'EDGE', 'FACE', 'CORNER'))
+        utils.check_enum_arg('Sample Nearest', 'domain', domain, 'sample_nearest', ('POINT', 'EDGE', 'FACE', 'CORNER'))
         node = Node('Sample Nearest', sockets={'Geometry': geometry, 'Sample Position': sample_position}, domain=domain)
         return node._out
 
@@ -3192,13 +3192,13 @@ class nd:
         - group_id (Integer) : socket 'Group ID' (id: Group ID)
         - sample_position (Vector) : socket 'Sample Position' (id: Sample Position)
         - sample_group_id (Integer) : socket 'Sample Group ID' (id: Sample Group ID)
-        - data_type (str): parameter 'data_type' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4')
+        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4']
 
         Returns
         -------
         - Float [is_valid_ (Boolean)]
         """
-        utils.check_enum_arg('data_type', data_type, 'sample_nearest_surface', ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4'))
+        utils.check_enum_arg('Sample Nearest Surface', 'data_type', data_type, 'sample_nearest_surface', ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4'))
         node = Node('Sample Nearest Surface', sockets={'Mesh': mesh, 'Value': value, 'Group ID': group_id, 'Sample Position': sample_position, 'Sample Group ID': sample_group_id}, data_type=data_type)
         return node._out
 
@@ -3212,13 +3212,13 @@ class nd:
         - value (Float) : socket 'Value' (id: Value)
         - uv_map (Vector) : socket 'UV Map' (id: Source UV Map)
         - sample_uv (Vector) : socket 'Sample UV' (id: Sample UV)
-        - data_type (str): parameter 'data_type' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4')
+        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4']
 
         Returns
         -------
         - Float [is_valid_ (Boolean)]
         """
-        utils.check_enum_arg('data_type', data_type, 'sample_uv_surface', ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4'))
+        utils.check_enum_arg('Sample UV Surface', 'data_type', data_type, 'sample_uv_surface', ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4'))
         node = Node('Sample UV Surface', sockets={'Mesh': mesh, 'Value': value, 'Source UV Map': uv_map, 'Sample UV': sample_uv}, data_type=data_type)
         return node._out
 
@@ -3233,15 +3233,15 @@ class nd:
         - scale (Float) : socket 'Scale' (id: Scale)
         - center (Vector) : socket 'Center' (id: Center)
         - axis (Vector) : socket 'Axis' (id: Axis)
-        - domain (str): parameter 'domain' in ('FACE', 'EDGE')
-        - scale_mode (str): parameter 'scale_mode' in ('UNIFORM', 'SINGLE_AXIS')
+        - domain (str): parameter 'domain' in ['FACE', 'EDGE']
+        - scale_mode (str): parameter 'scale_mode' in ['UNIFORM', 'SINGLE_AXIS']
 
         Returns
         -------
         - Geometry
         """
-        utils.check_enum_arg('domain', domain, 'scale_elements', ('FACE', 'EDGE'))
-        utils.check_enum_arg('scale_mode', scale_mode, 'scale_elements', ('UNIFORM', 'SINGLE_AXIS'))
+        utils.check_enum_arg('Scale Elements', 'domain', domain, 'scale_elements', ('FACE', 'EDGE'))
+        utils.check_enum_arg('Scale Elements', 'scale_mode', scale_mode, 'scale_elements', ('UNIFORM', 'SINGLE_AXIS'))
         node = Node('Scale Elements', sockets={'Geometry': geometry, 'Selection': selection, 'Scale': scale, 'Center': center, 'Axis': axis}, domain=domain, scale_mode=scale_mode)
         return node._out
 
@@ -3299,13 +3299,13 @@ class nd:
         ---------
         - geometry (Geometry) : socket 'Geometry' (id: Geometry)
         - selection (Boolean) : socket 'Selection' (id: Selection)
-        - domain (str): parameter 'domain' in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE', 'LAYER')
+        - domain (str): parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE', 'LAYER']
 
         Returns
         -------
         - Geometry [inverted_ (Geometry)]
         """
-        utils.check_enum_arg('domain', domain, 'separate_geometry', ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE', 'LAYER'))
+        utils.check_enum_arg('Separate Geometry', 'domain', domain, 'separate_geometry', ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE', 'LAYER'))
         node = Node('Separate Geometry', sockets={'Geometry': geometry, 'Selection': selection}, domain=domain)
         return node._out
 
@@ -3319,13 +3319,13 @@ class nd:
         - selection (Boolean) : socket 'Selection' (id: Selection)
         - position (Vector) : socket 'Position' (id: Position)
         - offset (Vector) : socket 'Offset' (id: Offset)
-        - mode (str): parameter 'mode' in ('LEFT', 'RIGHT')
+        - mode (str): parameter 'mode' in ['LEFT', 'RIGHT']
 
         Returns
         -------
         - Curve
         """
-        utils.check_enum_arg('mode', mode, 'set_handle_positions', ('LEFT', 'RIGHT'))
+        utils.check_enum_arg('Set Handle Positions', 'mode', mode, 'set_handle_positions', ('LEFT', 'RIGHT'))
         node = Node('Set Handle Positions', sockets={'Curve': curve, 'Selection': selection, 'Position': position, 'Offset': offset}, mode=mode)
         return node._out
 
@@ -3338,13 +3338,13 @@ class nd:
         - curve (Geometry) : socket 'Curve' (id: Curve)
         - selection (Boolean) : socket 'Selection' (id: Selection)
         - normal (Vector) : socket 'Normal' (id: Normal)
-        - mode (str): parameter 'mode' in ('MINIMUM_TWIST', 'Z_UP', 'FREE')
+        - mode (str): parameter 'mode' in ['MINIMUM_TWIST', 'Z_UP', 'FREE']
 
         Returns
         -------
         - Curve
         """
-        utils.check_enum_arg('mode', mode, 'set_curve_normal', ('MINIMUM_TWIST', 'Z_UP', 'FREE'))
+        utils.check_enum_arg('Set Curve Normal', 'mode', mode, 'set_curve_normal', ('MINIMUM_TWIST', 'Z_UP', 'FREE'))
         node = Node('Set Curve Normal', sockets={'Curve': curve, 'Selection': selection, 'Normal': normal}, mode=mode)
         return node._out
 
@@ -3510,13 +3510,13 @@ class nd:
         - geometry (Geometry) : socket 'Geometry' (id: Geometry)
         - selection (Boolean) : socket 'Selection' (id: Selection)
         - shade_smooth (Boolean) : socket 'Shade Smooth' (id: Shade Smooth)
-        - domain (str): parameter 'domain' in ('EDGE', 'FACE')
+        - domain (str): parameter 'domain' in ['EDGE', 'FACE']
 
         Returns
         -------
         - Geometry
         """
-        utils.check_enum_arg('domain', domain, 'set_shade_smooth', ('EDGE', 'FACE'))
+        utils.check_enum_arg('Set Shade Smooth', 'domain', domain, 'set_shade_smooth', ('EDGE', 'FACE'))
         node = Node('Set Shade Smooth', sockets={'Geometry': geometry, 'Selection': selection, 'Shade Smooth': shade_smooth}, domain=domain)
         return node._out
 
@@ -3592,13 +3592,13 @@ class nd:
         - selection (Boolean) : socket 'Selection' (id: Selection)
         - group_id (Integer) : socket 'Group ID' (id: Group ID)
         - sort_weight (Float) : socket 'Sort Weight' (id: Sort Weight)
-        - domain (str): parameter 'domain' in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
+        - domain (str): parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE']
 
         Returns
         -------
         - Geometry
         """
-        utils.check_enum_arg('domain', domain, 'sort_elements', ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE'))
+        utils.check_enum_arg('Sort Elements', 'domain', domain, 'sort_elements', ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE'))
         node = Node('Sort Elements', sockets={'Geometry': geometry, 'Selection': selection, 'Group ID': group_id, 'Sort Weight': sort_weight}, domain=domain)
         return node._out
 
@@ -3649,13 +3649,13 @@ class nd:
         - geometry (Geometry) : socket 'Geometry' (id: Geometry)
         - selection (Boolean) : socket 'Selection' (id: Selection)
         - group_id (Integer) : socket 'Group ID' (id: Group ID)
-        - domain (str): parameter 'domain' in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE', 'LAYER')
+        - domain (str): parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE', 'LAYER']
 
         Returns
         -------
         - Instances [group_id_ (Integer)]
         """
-        utils.check_enum_arg('domain', domain, 'split_to_instances', ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE', 'LAYER'))
+        utils.check_enum_arg('Split to Instances', 'domain', domain, 'split_to_instances', ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE', 'LAYER'))
         node = Node('Split to Instances', sockets={'Geometry': geometry, 'Selection': selection, 'Group ID': group_id}, domain=domain)
         return node._out
 
@@ -3669,15 +3669,15 @@ class nd:
         - selection (Boolean) : socket 'Selection' (id: Selection)
         - name (String) : socket 'Name' (id: Name)
         - value (Float) : socket 'Value' (id: Value)
-        - data_type (str): parameter 'data_type' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BYTE_COLOR', 'BOOLEAN', 'FLOAT2', 'INT8', 'QUATERNION', 'FLOAT4X4')
-        - domain (str): parameter 'domain' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER')
+        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BYTE_COLOR', 'BOOLEAN', 'FLOAT2', 'INT8', 'QUATERNION', 'FLOAT4X4']
+        - domain (str): parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
 
         Returns
         -------
         - Geometry
         """
-        utils.check_enum_arg('data_type', data_type, 'store_named_attribute', ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BYTE_COLOR', 'BOOLEAN', 'FLOAT2', 'INT8', 'QUATERNION', 'FLOAT4X4'))
-        utils.check_enum_arg('domain', domain, 'store_named_attribute', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
+        utils.check_enum_arg('Store Named Attribute', 'data_type', data_type, 'store_named_attribute', ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BYTE_COLOR', 'BOOLEAN', 'FLOAT2', 'INT8', 'QUATERNION', 'FLOAT4X4'))
+        utils.check_enum_arg('Store Named Attribute', 'domain', domain, 'store_named_attribute', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
         node = Node('Store Named Attribute', sockets={'Geometry': geometry, 'Selection': selection, 'Name': name, 'Value': value}, data_type=data_type, domain=domain)
         return node._out
 
@@ -3690,13 +3690,13 @@ class nd:
         - volume (Geometry) : socket 'Volume' (id: Volume)
         - name (String) : socket 'Name' (id: Name)
         - grid (Float) : socket 'Grid' (id: Grid)
-        - data_type (str): parameter 'data_type' in ('FLOAT', 'FLOAT_VECTOR', 'FLOAT2')
+        - data_type (str): parameter 'data_type' in ['FLOAT', 'FLOAT_VECTOR', 'FLOAT2']
 
         Returns
         -------
         - Volume
         """
-        utils.check_enum_arg('data_type', data_type, 'store_named_grid', ('FLOAT', 'FLOAT_VECTOR', 'FLOAT2'))
+        utils.check_enum_arg('Store Named Grid', 'data_type', data_type, 'store_named_grid', ('FLOAT', 'FLOAT_VECTOR', 'FLOAT2'))
         node = Node('Store Named Grid', sockets={'Volume': volume, 'Name': name, 'Grid': grid}, data_type=data_type)
         return node._out
 
@@ -3729,19 +3729,19 @@ class nd:
         - line_spacing (Float) : socket 'Line Spacing' (id: Line Spacing)
         - text_box_width (Float) : socket 'Text Box Width' (id: Text Box Width)
         - text_box_height (Float) : socket 'Text Box Height' (id: Text Box Height)
-        - align_x (str): parameter 'align_x' in ('LEFT', 'CENTER', 'RIGHT', 'JUSTIFY', 'FLUSH')
-        - align_y (str): parameter 'align_y' in ('TOP', 'TOP_BASELINE', 'MIDDLE', 'BOTTOM_BASELINE', 'BOTTOM')
-        - overflow (str): parameter 'overflow' in ('OVERFLOW', 'SCALE_TO_FIT', 'TRUNCATE')
-        - pivot_mode (str): parameter 'pivot_mode' in ('MIDPOINT', 'TOP_LEFT', 'TOP_CENTER', 'TOP_RIGHT', 'BOTTOM_LEFT', 'BOTTOM_CENTER', 'BOTTOM_RIGHT')
+        - align_x (str): parameter 'align_x' in ['LEFT', 'CENTER', 'RIGHT', 'JUSTIFY', 'FLUSH']
+        - align_y (str): parameter 'align_y' in ['TOP', 'TOP_BASELINE', 'MIDDLE', 'BOTTOM_BASELINE', 'BOTTOM']
+        - overflow (str): parameter 'overflow' in ['OVERFLOW', 'SCALE_TO_FIT', 'TRUNCATE']
+        - pivot_mode (str): parameter 'pivot_mode' in ['MIDPOINT', 'TOP_LEFT', 'TOP_CENTER', 'TOP_RIGHT', 'BOTTOM_LEFT', 'BOTTOM_CENTER', 'BOTTOM_RIGHT']
 
         Returns
         -------
         - Instances [line_ (Integer), pivot_point_ (Vector)]
         """
-        utils.check_enum_arg('align_x', align_x, 'string_to_curves', ('LEFT', 'CENTER', 'RIGHT', 'JUSTIFY', 'FLUSH'))
-        utils.check_enum_arg('align_y', align_y, 'string_to_curves', ('TOP', 'TOP_BASELINE', 'MIDDLE', 'BOTTOM_BASELINE', 'BOTTOM'))
-        utils.check_enum_arg('overflow', overflow, 'string_to_curves', ('OVERFLOW', 'SCALE_TO_FIT', 'TRUNCATE'))
-        utils.check_enum_arg('pivot_mode', pivot_mode, 'string_to_curves', ('MIDPOINT', 'TOP_LEFT', 'TOP_CENTER', 'TOP_RIGHT', 'BOTTOM_LEFT', 'BOTTOM_CENTER', 'BOTTOM_RIGHT'))
+        utils.check_enum_arg('String to Curves', 'align_x', align_x, 'string_to_curves', ('LEFT', 'CENTER', 'RIGHT', 'JUSTIFY', 'FLUSH'))
+        utils.check_enum_arg('String to Curves', 'align_y', align_y, 'string_to_curves', ('TOP', 'TOP_BASELINE', 'MIDDLE', 'BOTTOM_BASELINE', 'BOTTOM'))
+        utils.check_enum_arg('String to Curves', 'overflow', overflow, 'string_to_curves', ('OVERFLOW', 'SCALE_TO_FIT', 'TRUNCATE'))
+        utils.check_enum_arg('String to Curves', 'pivot_mode', pivot_mode, 'string_to_curves', ('MIDPOINT', 'TOP_LEFT', 'TOP_CENTER', 'TOP_RIGHT', 'BOTTOM_LEFT', 'BOTTOM_CENTER', 'BOTTOM_RIGHT'))
         node = Node('String to Curves', sockets={'String': string, 'Size': size, 'Character Spacing': character_spacing, 'Word Spacing': word_spacing, 'Line Spacing': line_spacing, 'Text Box Width': text_box_width, 'Text Box Height': text_box_height}, align_x=align_x, align_y=align_y, overflow=overflow, pivot_mode=pivot_mode)
         return node._out
 
@@ -3787,15 +3787,15 @@ class nd:
         - level (Integer) : socket 'Level' (id: Level)
         - edge_crease (Float) : socket 'Edge Crease' (id: Edge Crease)
         - vertex_crease (Float) : socket 'Vertex Crease' (id: Vertex Crease)
-        - boundary_smooth (str): parameter 'boundary_smooth' in ('PRESERVE_CORNERS', 'ALL')
-        - uv_smooth (str): parameter 'uv_smooth' in ('NONE', 'PRESERVE_CORNERS', 'PRESERVE_CORNERS_AND_JUNCTIONS', 'PRESERVE_CORNERS_JUNCTIONS_AND_CONCAVE', 'PRESERVE_BOUNDARIES', 'SMOOTH_ALL')
+        - boundary_smooth (str): parameter 'boundary_smooth' in ['PRESERVE_CORNERS', 'ALL']
+        - uv_smooth (str): parameter 'uv_smooth' in ['NONE', 'PRESERVE_CORNERS', 'PRESERVE_CORNERS_AND_JUNCTIONS', 'PRESERVE_CORNERS_JUNCTIONS_AND_CONCAVE', 'PRESERVE_BOUNDARIES', 'SMOOTH_ALL']
 
         Returns
         -------
         - Mesh
         """
-        utils.check_enum_arg('boundary_smooth', boundary_smooth, 'subdivision_surface', ('PRESERVE_CORNERS', 'ALL'))
-        utils.check_enum_arg('uv_smooth', uv_smooth, 'subdivision_surface', ('NONE', 'PRESERVE_CORNERS', 'PRESERVE_CORNERS_AND_JUNCTIONS', 'PRESERVE_CORNERS_JUNCTIONS_AND_CONCAVE', 'PRESERVE_BOUNDARIES', 'SMOOTH_ALL'))
+        utils.check_enum_arg('Subdivision Surface', 'boundary_smooth', boundary_smooth, 'subdivision_surface', ('PRESERVE_CORNERS', 'ALL'))
+        utils.check_enum_arg('Subdivision Surface', 'uv_smooth', uv_smooth, 'subdivision_surface', ('NONE', 'PRESERVE_CORNERS', 'PRESERVE_CORNERS_AND_JUNCTIONS', 'PRESERVE_CORNERS_JUNCTIONS_AND_CONCAVE', 'PRESERVE_BOUNDARIES', 'SMOOTH_ALL'))
         node = Node('Subdivision Surface', sockets={'Mesh': mesh, 'Level': level, 'Edge Crease': edge_crease, 'Vertex Crease': vertex_crease}, boundary_smooth=boundary_smooth, uv_smooth=uv_smooth)
         return node._out
 
@@ -3808,13 +3808,13 @@ class nd:
         - switch (Boolean) : socket 'Switch' (id: Switch)
         - false (Geometry) : socket 'False' (id: False)
         - true (Geometry) : socket 'True' (id: True)
-        - input_type (str): parameter 'input_type' in ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'RGBA', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL')
+        - input_type (str): parameter 'input_type' in ['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'RGBA', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL']
 
         Returns
         -------
         - Geometry
         """
-        utils.check_enum_arg('input_type', input_type, 'switch', ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'RGBA', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL'))
+        utils.check_enum_arg('Switch', 'input_type', input_type, 'switch', ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'RGBA', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL'))
         node = Node('Switch', sockets={'Switch': switch, 'False': false, 'True': true}, input_type=input_type)
         return node._out
 
@@ -3835,13 +3835,13 @@ class nd:
 
         Arguments
         ---------
-        - domain (str): parameter 'domain' in ('POINT', 'EDGE', 'FACE')
+        - domain (str): parameter 'domain' in ['POINT', 'EDGE', 'FACE']
 
         Returns
         -------
         - Integer [exists_ (Boolean)]
         """
-        utils.check_enum_arg('domain', domain, 'active_element', ('POINT', 'EDGE', 'FACE'))
+        utils.check_enum_arg('Active Element', 'domain', domain, 'active_element', ('POINT', 'EDGE', 'FACE'))
         node = Node('Active Element', sockets={}, domain=domain)
         return node
 
@@ -3903,15 +3903,15 @@ class nd:
         ---------
         - geometry (Geometry) : socket 'Geometry' (id: Geometry)
         - selection (Boolean) : socket 'Selection' (id: Selection)
-        - domain (str): parameter 'domain' in ('POINT', 'EDGE', 'FACE', 'CURVE')
-        - selection_type (str): parameter 'selection_type' in ('BOOLEAN', 'FLOAT')
+        - domain (str): parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CURVE']
+        - selection_type (str): parameter 'selection_type' in ['BOOLEAN', 'FLOAT']
 
         Returns
         -------
         - Geometry
         """
-        utils.check_enum_arg('domain', domain, 'set_selection', ('POINT', 'EDGE', 'FACE', 'CURVE'))
-        utils.check_enum_arg('selection_type', selection_type, 'set_selection', ('BOOLEAN', 'FLOAT'))
+        utils.check_enum_arg('Set Selection', 'domain', domain, 'set_selection', ('POINT', 'EDGE', 'FACE', 'CURVE'))
+        utils.check_enum_arg('Set Selection', 'selection_type', selection_type, 'set_selection', ('BOOLEAN', 'FLOAT'))
         node = Node('Set Selection', sockets={'Geometry': geometry, 'Selection': selection}, domain=domain, selection_type=selection_type)
         return node._out
 
@@ -3926,13 +3926,13 @@ class nd:
         - rotation (Rotation) : socket 'Rotation' (id: Rotation)
         - scale (Vector) : socket 'Scale' (id: Scale)
         - transform (Matrix) : socket 'Transform' (id: Transform)
-        - mode (str): parameter 'mode' in ('COMPONENTS', 'MATRIX')
+        - mode (str): parameter 'mode' in ['COMPONENTS', 'MATRIX']
 
         Returns
         -------
         - Geometry
         """
-        utils.check_enum_arg('mode', mode, 'transform_geometry', ('COMPONENTS', 'MATRIX'))
+        utils.check_enum_arg('Transform Geometry', 'mode', mode, 'transform_geometry', ('COMPONENTS', 'MATRIX'))
         node = Node('Transform Geometry', sockets={'Geometry': geometry, 'Translation': translation, 'Rotation': rotation, 'Scale': scale, 'Transform': transform}, mode=mode)
         return node._out
 
@@ -3963,15 +3963,15 @@ class nd:
         - mesh (Geometry) : socket 'Mesh' (id: Mesh)
         - selection (Boolean) : socket 'Selection' (id: Selection)
         - minimum_vertices (Integer) : socket 'Minimum Vertices' (id: Minimum Vertices)
-        - ngon_method (str): parameter 'ngon_method' in ('BEAUTY', 'CLIP')
-        - quad_method (str): parameter 'quad_method' in ('BEAUTY', 'FIXED', 'FIXED_ALTERNATE', 'SHORTEST_DIAGONAL', 'LONGEST_DIAGONAL')
+        - ngon_method (str): parameter 'ngon_method' in ['BEAUTY', 'CLIP']
+        - quad_method (str): parameter 'quad_method' in ['BEAUTY', 'FIXED', 'FIXED_ALTERNATE', 'SHORTEST_DIAGONAL', 'LONGEST_DIAGONAL']
 
         Returns
         -------
         - Mesh
         """
-        utils.check_enum_arg('ngon_method', ngon_method, 'triangulate', ('BEAUTY', 'CLIP'))
-        utils.check_enum_arg('quad_method', quad_method, 'triangulate', ('BEAUTY', 'FIXED', 'FIXED_ALTERNATE', 'SHORTEST_DIAGONAL', 'LONGEST_DIAGONAL'))
+        utils.check_enum_arg('Triangulate', 'ngon_method', ngon_method, 'triangulate', ('BEAUTY', 'CLIP'))
+        utils.check_enum_arg('Triangulate', 'quad_method', quad_method, 'triangulate', ('BEAUTY', 'FIXED', 'FIXED_ALTERNATE', 'SHORTEST_DIAGONAL', 'LONGEST_DIAGONAL'))
         node = Node('Triangulate', sockets={'Mesh': mesh, 'Selection': selection, 'Minimum Vertices': minimum_vertices}, ngon_method=ngon_method, quad_method=quad_method)
         return node._out
 
@@ -3987,13 +3987,13 @@ class nd:
         - end (Float) : socket 'End' (id: End)
         - start_1 (Float) : socket 'Start' (id: Start_001)
         - end_1 (Float) : socket 'End' (id: End_001)
-        - mode (str): parameter 'mode' in ('FACTOR', 'LENGTH')
+        - mode (str): parameter 'mode' in ['FACTOR', 'LENGTH']
 
         Returns
         -------
         - Curve
         """
-        utils.check_enum_arg('mode', mode, 'trim_curve', ('FACTOR', 'LENGTH'))
+        utils.check_enum_arg('Trim Curve', 'mode', mode, 'trim_curve', ('FACTOR', 'LENGTH'))
         node = Node('Trim Curve', sockets={'Curve': curve, 'Selection': selection, 'Start': start, 'End': end, 'Start_001': start_1, 'End_001': end_1}, mode=mode)
         return node._out
 
@@ -4025,13 +4025,13 @@ class nd:
         - seam (Boolean) : socket 'Seam' (id: Seam)
         - margin (Float) : socket 'Margin' (id: Margin)
         - fill_holes (Boolean) : socket 'Fill Holes' (id: Fill Holes)
-        - method (str): parameter 'method' in ('ANGLE_BASED', 'CONFORMAL')
+        - method (str): parameter 'method' in ['ANGLE_BASED', 'CONFORMAL']
 
         Returns
         -------
         - Vector
         """
-        utils.check_enum_arg('method', method, 'uv_unwrap', ('ANGLE_BASED', 'CONFORMAL'))
+        utils.check_enum_arg('UV Unwrap', 'method', method, 'uv_unwrap', ('ANGLE_BASED', 'CONFORMAL'))
         node = Node('UV Unwrap', sockets={'Selection': selection, 'Seam': seam, 'Margin': margin, 'Fill Holes': fill_holes}, method=method)
         return node._out
 
@@ -4058,15 +4058,15 @@ class nd:
         ---------
         - geometry (Geometry) : socket 'Geometry' (id: Geometry)
         - value (Float) : socket 'Value' (id: Value)
-        - data_type (str): parameter 'data_type' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4')
-        - domain (str): parameter 'domain' in ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER')
+        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4']
+        - domain (str): parameter 'domain' in ['AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
 
         Returns
         -------
         - None
         """
-        utils.check_enum_arg('data_type', data_type, 'viewer', ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4'))
-        utils.check_enum_arg('domain', domain, 'viewer', ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
+        utils.check_enum_arg('Viewer', 'data_type', data_type, 'viewer', ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4'))
+        utils.check_enum_arg('Viewer', 'domain', domain, 'viewer', ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
         node = Node('Viewer', sockets={'Geometry': geometry, 'Value': value}, data_type=data_type, domain=domain)
         return node._out
 
@@ -4113,13 +4113,13 @@ class nd:
         - voxel_amount (Float) : socket 'Voxel Amount' (id: Voxel Amount)
         - threshold (Float) : socket 'Threshold' (id: Threshold)
         - adaptivity (Float) : socket 'Adaptivity' (id: Adaptivity)
-        - resolution_mode (str): parameter 'resolution_mode' in ('GRID', 'VOXEL_AMOUNT', 'VOXEL_SIZE')
+        - resolution_mode (str): parameter 'resolution_mode' in ['GRID', 'VOXEL_AMOUNT', 'VOXEL_SIZE']
 
         Returns
         -------
         - Mesh
         """
-        utils.check_enum_arg('resolution_mode', resolution_mode, 'volume_to_mesh', ('GRID', 'VOXEL_AMOUNT', 'VOXEL_SIZE'))
+        utils.check_enum_arg('Volume to Mesh', 'resolution_mode', resolution_mode, 'volume_to_mesh', ('GRID', 'VOXEL_AMOUNT', 'VOXEL_SIZE'))
         node = Node('Volume to Mesh', sockets={'Volume': volume, 'Voxel Size': voxel_size, 'Voxel Amount': voxel_amount, 'Threshold': threshold, 'Adaptivity': adaptivity}, resolution_mode=resolution_mode)
         return node._out
 
@@ -4224,13 +4224,13 @@ class nd:
         - value (Float) : socket 'Value' (id: Value)
         - min (Float) : socket 'Min' (id: Min)
         - max (Float) : socket 'Max' (id: Max)
-        - clamp_type (str): parameter 'clamp_type' in ('MINMAX', 'RANGE')
+        - clamp_type (str): parameter 'clamp_type' in ['MINMAX', 'RANGE']
 
         Returns
         -------
         - Float
         """
-        utils.check_enum_arg('clamp_type', clamp_type, 'clamp', ('MINMAX', 'RANGE'))
+        utils.check_enum_arg('Clamp', 'clamp_type', clamp_type, 'clamp', ('MINMAX', 'RANGE'))
         node = Node('Clamp', sockets={'Value': value, 'Min': min, 'Max': max}, clamp_type=clamp_type)
         return node._out
 
@@ -4286,15 +4286,15 @@ class nd:
         - to_max_1 (Vector) : socket 'To Max' (id: To_Max_FLOAT3)
         - steps_1 (Vector) : socket 'Steps' (id: Steps_FLOAT3)
         - clamp (bool): parameter 'clamp'
-        - data_type (str): parameter 'data_type' in ('FLOAT', 'FLOAT_VECTOR')
-        - interpolation_type (str): parameter 'interpolation_type' in ('LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP')
+        - data_type (str): parameter 'data_type' in ['FLOAT', 'FLOAT_VECTOR']
+        - interpolation_type (str): parameter 'interpolation_type' in ['LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP']
 
         Returns
         -------
         - Float
         """
-        utils.check_enum_arg('data_type', data_type, 'map_range', ('FLOAT', 'FLOAT_VECTOR'))
-        utils.check_enum_arg('interpolation_type', interpolation_type, 'map_range', ('LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP'))
+        utils.check_enum_arg('Map Range', 'data_type', data_type, 'map_range', ('FLOAT', 'FLOAT_VECTOR'))
+        utils.check_enum_arg('Map Range', 'interpolation_type', interpolation_type, 'map_range', ('LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP'))
         node = Node('Map Range', sockets={'Value': value, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max, 'Steps': steps, 'Vector': vector, 'From_Min_FLOAT3': from_min_1, 'From_Max_FLOAT3': from_max_1, 'To_Min_FLOAT3': to_min_1, 'To_Max_FLOAT3': to_max_1, 'Steps_FLOAT3': steps_1}, clamp=clamp, data_type=data_type, interpolation_type=interpolation_type)
         return node._out
 
@@ -4307,14 +4307,14 @@ class nd:
         - value (Float) : socket 'Value' (id: Value)
         - value_1 (Float) : socket 'Value' (id: Value_001)
         - value_2 (Float) : socket 'Value' (id: Value_002)
-        - operation (str): parameter 'operation' in ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'POWER', 'LOGARITHM', 'SQRT', 'INVERSE_SQRT', 'ABSOLUTE', 'EXPONENT', 'MINIMUM', 'MAXIMUM', 'LESS_THAN', 'GREATER_THAN', 'SIGN', 'COMPARE', 'SMOOTH_MIN', 'SMOOTH_MAX', 'ROUND', 'FLOOR', 'CEIL', 'TRUNC', 'FRACT', 'MODULO', 'FLOORED_MODULO', 'WRAP', 'SNAP', 'PINGPONG', 'SINE', 'COSINE', 'TANGENT', 'ARCSINE', 'ARCCOSINE', 'ARCTANGENT', 'ARCTAN2', 'SINH', 'COSH', 'TANH', 'RADIANS', 'DEGREES')
+        - operation (str): parameter 'operation' in ['ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'POWER', 'LOGARITHM', 'SQRT', 'INVERSE_SQRT', 'ABSOLUTE', 'EXPONENT', 'MINIMUM', 'MAXIMUM', 'LESS_THAN', 'GREATER_THAN', 'SIGN', 'COMPARE', 'SMOOTH_MIN', 'SMOOTH_MAX', 'ROUND', 'FLOOR', 'CEIL', 'TRUNC', 'FRACT', 'MODULO', 'FLOORED_MODULO', 'WRAP', 'SNAP', 'PINGPONG', 'SINE', 'COSINE', 'TANGENT', 'ARCSINE', 'ARCCOSINE', 'ARCTANGENT', 'ARCTAN2', 'SINH', 'COSH', 'TANH', 'RADIANS', 'DEGREES']
         - use_clamp (bool): parameter 'use_clamp'
 
         Returns
         -------
         - Float
         """
-        utils.check_enum_arg('operation', operation, 'math', ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'POWER', 'LOGARITHM', 'SQRT', 'INVERSE_SQRT', 'ABSOLUTE', 'EXPONENT', 'MINIMUM', 'MAXIMUM', 'LESS_THAN', 'GREATER_THAN', 'SIGN', 'COMPARE', 'SMOOTH_MIN', 'SMOOTH_MAX', 'ROUND', 'FLOOR', 'CEIL', 'TRUNC', 'FRACT', 'MODULO', 'FLOORED_MODULO', 'WRAP', 'SNAP', 'PINGPONG', 'SINE', 'COSINE', 'TANGENT', 'ARCSINE', 'ARCCOSINE', 'ARCTANGENT', 'ARCTAN2', 'SINH', 'COSH', 'TANH', 'RADIANS', 'DEGREES'))
+        utils.check_enum_arg('Math', 'operation', operation, 'math', ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'POWER', 'LOGARITHM', 'SQRT', 'INVERSE_SQRT', 'ABSOLUTE', 'EXPONENT', 'MINIMUM', 'MAXIMUM', 'LESS_THAN', 'GREATER_THAN', 'SIGN', 'COMPARE', 'SMOOTH_MIN', 'SMOOTH_MAX', 'ROUND', 'FLOOR', 'CEIL', 'TRUNC', 'FRACT', 'MODULO', 'FLOORED_MODULO', 'WRAP', 'SNAP', 'PINGPONG', 'SINE', 'COSINE', 'TANGENT', 'ARCSINE', 'ARCCOSINE', 'ARCTANGENT', 'ARCTAN2', 'SINH', 'COSH', 'TANH', 'RADIANS', 'DEGREES'))
         node = Node('Math', sockets={'Value': value, 'Value_001': value_1, 'Value_002': value_2}, operation=operation, use_clamp=use_clamp)
         return node._out
 
@@ -4333,19 +4333,19 @@ class nd:
         - a_3 (Rotation) : socket 'A' (id: A_Rotation)
         - b_3 (Rotation) : socket 'B' (id: B_Rotation)
         - factor (Vector) : socket 'Factor' (id: Factor_Vector)
-        - blend_type (str): parameter 'blend_type' in ('MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE')
+        - blend_type (str): parameter 'blend_type' in ['MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE']
         - clamp_factor (bool): parameter 'clamp_factor'
         - clamp_result (bool): parameter 'clamp_result'
-        - data_type (str): parameter 'data_type' in ('FLOAT', 'VECTOR', 'RGBA', 'ROTATION')
-        - factor_mode (str): parameter 'factor_mode' in ('UNIFORM', 'NON_UNIFORM')
+        - data_type (str): parameter 'data_type' in ['FLOAT', 'VECTOR', 'RGBA', 'ROTATION']
+        - factor_mode (str): parameter 'factor_mode' in ['UNIFORM', 'NON_UNIFORM']
 
         Returns
         -------
         - Float
         """
-        utils.check_enum_arg('blend_type', blend_type, 'mix', ('MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE'))
-        utils.check_enum_arg('data_type', data_type, 'mix', ('FLOAT', 'VECTOR', 'RGBA', 'ROTATION'))
-        utils.check_enum_arg('factor_mode', factor_mode, 'mix', ('UNIFORM', 'NON_UNIFORM'))
+        utils.check_enum_arg('Mix', 'blend_type', blend_type, 'mix', ('MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE'))
+        utils.check_enum_arg('Mix', 'data_type', data_type, 'mix', ('FLOAT', 'VECTOR', 'RGBA', 'ROTATION'))
+        utils.check_enum_arg('Mix', 'factor_mode', factor_mode, 'mix', ('UNIFORM', 'NON_UNIFORM'))
         node = Node('Mix', sockets={'A_Float': a, 'B_Float': b, 'A_Vector': a_1, 'B_Vector': b_1, 'A_Color': a_2, 'B_Color': b_2, 'A_Rotation': a_3, 'B_Rotation': b_3, 'Factor_Vector': factor}, blend_type=blend_type, clamp_factor=clamp_factor, clamp_result=clamp_result, data_type=data_type, factor_mode=factor_mode)
         return node._out
 
@@ -4438,13 +4438,13 @@ class nd:
         - anisotropy (Float) : socket 'Anisotropy' (id: Anisotropy)
         - orientation (Float) : socket 'Orientation' (id: Orientation 2D)
         - orientation_1 (Vector) : socket 'Orientation' (id: Orientation 3D)
-        - gabor_type (str): parameter 'gabor_type' in ('2D', '3D')
+        - gabor_type (str): parameter 'gabor_type' in ['2D', '3D']
 
         Returns
         -------
         - Float [phase_ (Float), intensity_ (Float)]
         """
-        utils.check_enum_arg('gabor_type', gabor_type, 'gabor_texture', ('2D', '3D'))
+        utils.check_enum_arg('Gabor Texture', 'gabor_type', gabor_type, 'gabor_texture', ('2D', '3D'))
         node = Node('Gabor Texture', sockets={'Vector': vector, 'Scale': scale, 'Frequency': frequency, 'Anisotropy': anisotropy, 'Orientation 2D': orientation, 'Orientation 3D': orientation_1}, gabor_type=gabor_type)
         return node._out
 
@@ -4455,13 +4455,13 @@ class nd:
         Arguments
         ---------
         - vector (Vector) : socket 'Vector' (id: Vector)
-        - gradient_type (str): parameter 'gradient_type' in ('LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL')
+        - gradient_type (str): parameter 'gradient_type' in ['LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL']
 
         Returns
         -------
         - Color [fac_ (Float)]
         """
-        utils.check_enum_arg('gradient_type', gradient_type, 'gradient_texture', ('LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL'))
+        utils.check_enum_arg('Gradient Texture', 'gradient_type', gradient_type, 'gradient_texture', ('LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL'))
         node = Node('Gradient Texture', sockets={'Vector': vector}, gradient_type=gradient_type)
         return node._out
 
@@ -4498,16 +4498,16 @@ class nd:
         - offset (Float) : socket 'Offset' (id: Offset)
         - gain (Float) : socket 'Gain' (id: Gain)
         - distortion (Float) : socket 'Distortion' (id: Distortion)
-        - noise_dimensions (str): parameter 'noise_dimensions' in ('1D', '2D', '3D', '4D')
-        - noise_type (str): parameter 'noise_type' in ('MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN')
+        - noise_dimensions (str): parameter 'noise_dimensions' in ['1D', '2D', '3D', '4D']
+        - noise_type (str): parameter 'noise_type' in ['MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN']
         - normalize (bool): parameter 'normalize'
 
         Returns
         -------
         - Float [color_ (Color)]
         """
-        utils.check_enum_arg('noise_dimensions', noise_dimensions, 'noise_texture', ('1D', '2D', '3D', '4D'))
-        utils.check_enum_arg('noise_type', noise_type, 'noise_texture', ('MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN'))
+        utils.check_enum_arg('Noise Texture', 'noise_dimensions', noise_dimensions, 'noise_texture', ('1D', '2D', '3D', '4D'))
+        utils.check_enum_arg('Noise Texture', 'noise_type', noise_type, 'noise_texture', ('MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN'))
         node = Node('Noise Texture', sockets={'Vector': vector, 'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Offset': offset, 'Gain': gain, 'Distortion': distortion}, noise_dimensions=noise_dimensions, noise_type=noise_type, normalize=normalize)
         return node._out
 
@@ -4526,18 +4526,18 @@ class nd:
         - smoothness (Float) : socket 'Smoothness' (id: Smoothness)
         - exponent (Float) : socket 'Exponent' (id: Exponent)
         - randomness (Float) : socket 'Randomness' (id: Randomness)
-        - distance (str): parameter 'distance' in ('EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI')
-        - feature (str): parameter 'feature' in ('F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS')
+        - distance (str): parameter 'distance' in ['EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI']
+        - feature (str): parameter 'feature' in ['F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS']
         - normalize (bool): parameter 'normalize'
-        - voronoi_dimensions (str): parameter 'voronoi_dimensions' in ('1D', '2D', '3D', '4D')
+        - voronoi_dimensions (str): parameter 'voronoi_dimensions' in ['1D', '2D', '3D', '4D']
 
         Returns
         -------
         - Float [color_ (Color), position_ (Vector)]
         """
-        utils.check_enum_arg('distance', distance, 'voronoi_texture', ('EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI'))
-        utils.check_enum_arg('feature', feature, 'voronoi_texture', ('F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS'))
-        utils.check_enum_arg('voronoi_dimensions', voronoi_dimensions, 'voronoi_texture', ('1D', '2D', '3D', '4D'))
+        utils.check_enum_arg('Voronoi Texture', 'distance', distance, 'voronoi_texture', ('EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI'))
+        utils.check_enum_arg('Voronoi Texture', 'feature', feature, 'voronoi_texture', ('F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS'))
+        utils.check_enum_arg('Voronoi Texture', 'voronoi_dimensions', voronoi_dimensions, 'voronoi_texture', ('1D', '2D', '3D', '4D'))
         node = Node('Voronoi Texture', sockets={'Vector': vector, 'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Smoothness': smoothness, 'Exponent': exponent, 'Randomness': randomness}, distance=distance, feature=feature, normalize=normalize, voronoi_dimensions=voronoi_dimensions)
         return node._out
 
@@ -4554,19 +4554,19 @@ class nd:
         - detail_scale (Float) : socket 'Detail Scale' (id: Detail Scale)
         - detail_roughness (Float) : socket 'Detail Roughness' (id: Detail Roughness)
         - phase_offset (Float) : socket 'Phase Offset' (id: Phase Offset)
-        - bands_direction (str): parameter 'bands_direction' in ('X', 'Y', 'Z', 'DIAGONAL')
-        - rings_direction (str): parameter 'rings_direction' in ('X', 'Y', 'Z', 'SPHERICAL')
-        - wave_profile (str): parameter 'wave_profile' in ('SIN', 'SAW', 'TRI')
-        - wave_type (str): parameter 'wave_type' in ('BANDS', 'RINGS')
+        - bands_direction (str): parameter 'bands_direction' in ['X', 'Y', 'Z', 'DIAGONAL']
+        - rings_direction (str): parameter 'rings_direction' in ['X', 'Y', 'Z', 'SPHERICAL']
+        - wave_profile (str): parameter 'wave_profile' in ['SIN', 'SAW', 'TRI']
+        - wave_type (str): parameter 'wave_type' in ['BANDS', 'RINGS']
 
         Returns
         -------
         - Color [fac_ (Float)]
         """
-        utils.check_enum_arg('bands_direction', bands_direction, 'wave_texture', ('X', 'Y', 'Z', 'DIAGONAL'))
-        utils.check_enum_arg('rings_direction', rings_direction, 'wave_texture', ('X', 'Y', 'Z', 'SPHERICAL'))
-        utils.check_enum_arg('wave_profile', wave_profile, 'wave_texture', ('SIN', 'SAW', 'TRI'))
-        utils.check_enum_arg('wave_type', wave_type, 'wave_texture', ('BANDS', 'RINGS'))
+        utils.check_enum_arg('Wave Texture', 'bands_direction', bands_direction, 'wave_texture', ('X', 'Y', 'Z', 'DIAGONAL'))
+        utils.check_enum_arg('Wave Texture', 'rings_direction', rings_direction, 'wave_texture', ('X', 'Y', 'Z', 'SPHERICAL'))
+        utils.check_enum_arg('Wave Texture', 'wave_profile', wave_profile, 'wave_texture', ('SIN', 'SAW', 'TRI'))
+        utils.check_enum_arg('Wave Texture', 'wave_type', wave_type, 'wave_texture', ('BANDS', 'RINGS'))
         node = Node('Wave Texture', sockets={'Vector': vector, 'Scale': scale, 'Distortion': distortion, 'Detail': detail, 'Detail Scale': detail_scale, 'Detail Roughness': detail_roughness, 'Phase Offset': phase_offset}, bands_direction=bands_direction, rings_direction=rings_direction, wave_profile=wave_profile, wave_type=wave_type)
         return node._out
 
@@ -4578,13 +4578,13 @@ class nd:
         ---------
         - vector (Vector) : socket 'Vector' (id: Vector)
         - w (Float) : socket 'W' (id: W)
-        - noise_dimensions (str): parameter 'noise_dimensions' in ('1D', '2D', '3D', '4D')
+        - noise_dimensions (str): parameter 'noise_dimensions' in ['1D', '2D', '3D', '4D']
 
         Returns
         -------
         - Float [color_ (Color)]
         """
-        utils.check_enum_arg('noise_dimensions', noise_dimensions, 'white_noise_texture', ('1D', '2D', '3D', '4D'))
+        utils.check_enum_arg('White Noise Texture', 'noise_dimensions', noise_dimensions, 'white_noise_texture', ('1D', '2D', '3D', '4D'))
         node = Node('White Noise Texture', sockets={'Vector': vector, 'W': w}, noise_dimensions=noise_dimensions)
         return node._out
 
@@ -4646,13 +4646,13 @@ class nd:
         - vector_1 (Vector) : socket 'Vector' (id: Vector_001)
         - vector_2 (Vector) : socket 'Vector' (id: Vector_002)
         - scale (Float) : socket 'Scale' (id: Scale)
-        - operation (str): parameter 'operation' in ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'CROSS_PRODUCT', 'PROJECT', 'REFLECT', 'REFRACT', 'FACEFORWARD', 'DOT_PRODUCT', 'DISTANCE', 'LENGTH', 'SCALE', 'NORMALIZE', 'ABSOLUTE', 'MINIMUM', 'MAXIMUM', 'FLOOR', 'CEIL', 'FRACTION', 'MODULO', 'WRAP', 'SNAP', 'SINE', 'COSINE', 'TANGENT')
+        - operation (str): parameter 'operation' in ['ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'CROSS_PRODUCT', 'PROJECT', 'REFLECT', 'REFRACT', 'FACEFORWARD', 'DOT_PRODUCT', 'DISTANCE', 'LENGTH', 'SCALE', 'NORMALIZE', 'ABSOLUTE', 'MINIMUM', 'MAXIMUM', 'FLOOR', 'CEIL', 'FRACTION', 'MODULO', 'WRAP', 'SNAP', 'SINE', 'COSINE', 'TANGENT']
 
         Returns
         -------
         - Vector
         """
-        utils.check_enum_arg('operation', operation, 'vector_math', ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'CROSS_PRODUCT', 'PROJECT', 'REFLECT', 'REFRACT', 'FACEFORWARD', 'DOT_PRODUCT', 'DISTANCE', 'LENGTH', 'SCALE', 'NORMALIZE', 'ABSOLUTE', 'MINIMUM', 'MAXIMUM', 'FLOOR', 'CEIL', 'FRACTION', 'MODULO', 'WRAP', 'SNAP', 'SINE', 'COSINE', 'TANGENT'))
+        utils.check_enum_arg('Vector Math', 'operation', operation, 'vector_math', ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'CROSS_PRODUCT', 'PROJECT', 'REFLECT', 'REFRACT', 'FACEFORWARD', 'DOT_PRODUCT', 'DISTANCE', 'LENGTH', 'SCALE', 'NORMALIZE', 'ABSOLUTE', 'MINIMUM', 'MAXIMUM', 'FLOOR', 'CEIL', 'FRACTION', 'MODULO', 'WRAP', 'SNAP', 'SINE', 'COSINE', 'TANGENT'))
         node = Node('Vector Math', sockets={'Vector': vector, 'Vector_001': vector_1, 'Vector_002': vector_2, 'Scale': scale}, operation=operation)
         return node._out
 
@@ -4668,13 +4668,13 @@ class nd:
         - angle (Float) : socket 'Angle' (id: Angle)
         - rotation (Vector) : socket 'Rotation' (id: Rotation)
         - invert (bool): parameter 'invert'
-        - rotation_type (str): parameter 'rotation_type' in ('AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ')
+        - rotation_type (str): parameter 'rotation_type' in ['AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ']
 
         Returns
         -------
         - Vector
         """
-        utils.check_enum_arg('rotation_type', rotation_type, 'vector_rotate', ('AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ'))
+        utils.check_enum_arg('Vector Rotate', 'rotation_type', rotation_type, 'vector_rotate', ('AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ'))
         node = Node('Vector Rotate', sockets={'Vector': vector, 'Center': center, 'Axis': axis, 'Angle': angle, 'Rotation': rotation}, invert=invert, rotation_type=rotation_type)
         return node._out
 

@@ -127,7 +127,7 @@ attribute(attribute_name='', attribute_type='GEOMETRY')
 
 #### Arguments:
 - **attribute_name** (_str_ = ) : parameter 'attribute_name'
-- **attribute_type** (_str_ = GEOMETRY) : parameter 'attribute_type' in ('GEOMETRY', 'OBJECT', 'INSTANCER', 'VIEW_LAYER')
+- **attribute_type** (_str_ = GEOMETRY) : parameter 'attribute_type' in ['GEOMETRY', 'OBJECT', 'INSTANCER', 'VIEW_LAYER']
 
 
 
@@ -340,7 +340,7 @@ clamp(value=None, min=None, max=None, clamp_type='MINMAX')
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
 - **min** (_Float_ = None) : socket 'Min' (id: Min)
 - **max** (_Float_ = None) : socket 'Max' (id: Max)
-- **clamp_type** (_str_ = MINMAX) : parameter 'clamp_type' in ('MINMAX', 'RANGE')
+- **clamp_type** (_str_ = MINMAX) : parameter 'clamp_type' in ['MINMAX', 'RANGE']
 
 
 
@@ -410,7 +410,7 @@ combine_color(red=None, green=None, blue=None, mode='RGB')
 - **red** (_Float_ = None) : socket 'Red' (id: Red)
 - **green** (_Float_ = None) : socket 'Green' (id: Green)
 - **blue** (_Float_ = None) : socket 'Blue' (id: Blue)
-- **mode** (_str_ = RGB) : parameter 'mode' in ('RGB', 'HSV', 'HSL')
+- **mode** (_str_ = RGB) : parameter 'mode' in ['RGB', 'HSV', 'HSL']
 
 
 
@@ -498,7 +498,7 @@ displacement(height=None, midlevel=None, scale=None, normal=None, space='OBJECT'
 - **midlevel** (_Float_ = None) : socket 'Midlevel' (id: Midlevel)
 - **scale** (_Float_ = None) : socket 'Scale' (id: Scale)
 - **normal** (_Vector_ = None) : socket 'Normal' (id: Normal)
-- **space** (_str_ = OBJECT) : parameter 'space' in ('OBJECT', 'WORLD')
+- **space** (_str_ = OBJECT) : parameter 'space' in ['OBJECT', 'WORLD']
 
 
 
@@ -544,8 +544,8 @@ environment_texture(vector=None, image=None, interpolation='Linear', projection=
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
 - **image** (_NoneType_ = None) : parameter 'image'
-- **interpolation** (_str_ = Linear) : parameter 'interpolation' in ('Linear', 'Closest', 'Cubic', 'Smart')
-- **projection** (_str_ = EQUIRECTANGULAR) : parameter 'projection' in ('EQUIRECTANGULAR', 'MIRROR_BALL')
+- **interpolation** (_str_ = Linear) : parameter 'interpolation' in ['Linear', 'Closest', 'Cubic', 'Smart']
+- **projection** (_str_ = EQUIRECTANGULAR) : parameter 'projection' in ['EQUIRECTANGULAR', 'MIRROR_BALL']
 
 
 
@@ -639,7 +639,7 @@ gabor_texture(vector=None, scale=None, frequency=None, anisotropy=None, orientat
 - **anisotropy** (_Float_ = None) : socket 'Anisotropy' (id: Anisotropy)
 - **orientation** (_Float_ = None) : socket 'Orientation' (id: Orientation 2D)
 - **orientation_1** (_Vector_ = None) : socket 'Orientation' (id: Orientation 3D)
-- **gabor_type** (_str_ = 2D) : parameter 'gabor_type' in ('2D', '3D')
+- **gabor_type** (_str_ = 2D) : parameter 'gabor_type' in ['2D', '3D']
 
 
 
@@ -703,7 +703,7 @@ glass_bsdf(color=None, roughness=None, ior=None, normal=None, weight=None, distr
 - **ior** (_Float_ = None) : socket 'IOR' (id: IOR)
 - **normal** (_Vector_ = None) : socket 'Normal' (id: Normal)
 - **weight** (_Float_ = None) : socket 'Weight' (id: Weight)
-- **distribution** (_str_ = MULTI_GGX) : parameter 'distribution' in ('BECKMANN', 'GGX', 'MULTI_GGX')
+- **distribution** (_str_ = MULTI_GGX) : parameter 'distribution' in ['BECKMANN', 'GGX', 'MULTI_GGX']
 
 
 
@@ -731,7 +731,7 @@ glossy_bsdf(color=None, roughness=None, anisotropy=None, rotation=None, normal=N
 - **normal** (_Vector_ = None) : socket 'Normal' (id: Normal)
 - **tangent** (_Vector_ = None) : socket 'Tangent' (id: Tangent)
 - **weight** (_Float_ = None) : socket 'Weight' (id: Weight)
-- **distribution** (_str_ = MULTI_GGX) : parameter 'distribution' in ('BECKMANN', 'GGX', 'ASHIKHMIN_SHIRLEY', 'MULTI_GGX')
+- **distribution** (_str_ = MULTI_GGX) : parameter 'distribution' in ['BECKMANN', 'GGX', 'ASHIKHMIN_SHIRLEY', 'MULTI_GGX']
 
 
 
@@ -753,7 +753,7 @@ gradient_texture(vector=None, gradient_type='LINEAR')
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
-- **gradient_type** (_str_ = LINEAR) : parameter 'gradient_type' in ('LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL')
+- **gradient_type** (_str_ = LINEAR) : parameter 'gradient_type' in ['LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL']
 
 
 
@@ -822,7 +822,7 @@ hair_bsdf(color=None, offset=None, roughnessu=None, roughnessv=None, tangent=Non
 - **roughnessv** (_Float_ = None) : socket 'RoughnessV' (id: RoughnessV)
 - **tangent** (_Vector_ = None) : socket 'Tangent' (id: Tangent)
 - **weight** (_Float_ = None) : socket 'Weight' (id: Weight)
-- **component** (_str_ = Reflection) : parameter 'component' in ('Reflection', 'Transmission')
+- **component** (_str_ = Reflection) : parameter 'component' in ['Reflection', 'Transmission']
 
 
 
@@ -893,7 +893,7 @@ ies_texture(vector=None, strength=None, filepath='', ies=None, mode='INTERNAL')
 - **strength** (_Float_ = None) : socket 'Strength' (id: Strength)
 - **filepath** (_str_ = ) : parameter 'filepath'
 - **ies** (_NoneType_ = None) : parameter 'ies'
-- **mode** (_str_ = INTERNAL) : parameter 'mode' in ('INTERNAL', 'EXTERNAL')
+- **mode** (_str_ = INTERNAL) : parameter 'mode' in ['INTERNAL', 'EXTERNAL']
 
 
 
@@ -915,10 +915,10 @@ image_texture(vector=None, extension='REPEAT', image=None, interpolation='Linear
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
-- **extension** (_str_ = REPEAT) : parameter 'extension' in ('REPEAT', 'EXTEND', 'CLIP', 'MIRROR')
+- **extension** (_str_ = REPEAT) : parameter 'extension' in ['REPEAT', 'EXTEND', 'CLIP', 'MIRROR']
 - **image** (_NoneType_ = None) : parameter 'image'
-- **interpolation** (_str_ = Linear) : parameter 'interpolation' in ('Linear', 'Closest', 'Cubic', 'Smart')
-- **projection** (_str_ = FLAT) : parameter 'projection' in ('FLAT', 'BOX', 'SPHERE', 'TUBE')
+- **interpolation** (_str_ = Linear) : parameter 'interpolation' in ['Linear', 'Closest', 'Cubic', 'Smart']
+- **projection** (_str_ = FLAT) : parameter 'projection' in ['FLAT', 'BOX', 'SPHERE', 'TUBE']
 - **projection_blend** (_float_ = 0.0) : parameter 'projection_blend'
 
 
@@ -1008,7 +1008,7 @@ light_output(surface=None, is_active_output=True, target='ALL')
 #### Arguments:
 - **surface** (_Shader_ = None) : socket 'Surface' (id: Surface)
 - **is_active_output** (_bool_ = True) : parameter 'is_active_output'
-- **target** (_str_ = ALL) : parameter 'target' in ('ALL', 'EEVEE', 'CYCLES')
+- **target** (_str_ = ALL) : parameter 'target' in ['ALL', 'EEVEE', 'CYCLES']
 
 
 
@@ -1049,9 +1049,9 @@ line_style_output(color=None, color_fac=None, alpha=None, alpha_fac=None, blend_
 - **color_fac** (_Float_ = None) : socket 'Color Fac' (id: Color Fac)
 - **alpha** (_Float_ = None) : socket 'Alpha' (id: Alpha)
 - **alpha_fac** (_Float_ = None) : socket 'Alpha Fac' (id: Alpha Fac)
-- **blend_type** (_str_ = MIX) : parameter 'blend_type' in ('MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE')
+- **blend_type** (_str_ = MIX) : parameter 'blend_type' in ['MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE']
 - **is_active_output** (_bool_ = True) : parameter 'is_active_output'
-- **target** (_str_ = ALL) : parameter 'target' in ('ALL', 'EEVEE', 'CYCLES')
+- **target** (_str_ = ALL) : parameter 'target' in ['ALL', 'EEVEE', 'CYCLES']
 - **use_alpha** (_bool_ = False) : parameter 'use_alpha'
 - **use_clamp** (_bool_ = False) : parameter 'use_clamp'
 
@@ -1102,7 +1102,7 @@ mapping(vector=None, location=None, rotation=None, scale=None, vector_type='POIN
 - **location** (_Vector_ = None) : socket 'Location' (id: Location)
 - **rotation** (_Vector_ = None) : socket 'Rotation' (id: Rotation)
 - **scale** (_Vector_ = None) : socket 'Scale' (id: Scale)
-- **vector_type** (_str_ = POINT) : parameter 'vector_type' in ('POINT', 'TEXTURE', 'VECTOR', 'NORMAL')
+- **vector_type** (_str_ = POINT) : parameter 'vector_type' in ['POINT', 'TEXTURE', 'VECTOR', 'NORMAL']
 
 
 
@@ -1136,8 +1136,8 @@ map_range(value=None, from_min=None, from_max=None, to_min=None, to_max=None, st
 - **to_max_1** (_Vector_ = None) : socket 'To Max' (id: To_Max_FLOAT3)
 - **steps_1** (_Vector_ = None) : socket 'Steps' (id: Steps_FLOAT3)
 - **clamp** (_bool_ = True) : parameter 'clamp'
-- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ('FLOAT', 'FLOAT_VECTOR')
-- **interpolation_type** (_str_ = LINEAR) : parameter 'interpolation_type' in ('LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP')
+- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ['FLOAT', 'FLOAT_VECTOR']
+- **interpolation_type** (_str_ = LINEAR) : parameter 'interpolation_type' in ['LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP']
 
 
 
@@ -1163,7 +1163,7 @@ material_output(surface=None, volume=None, displacement=None, thickness=None, is
 - **displacement** (_Vector_ = None) : socket 'Displacement' (id: Displacement)
 - **thickness** (_Float_ = None) : socket 'Thickness' (id: Thickness)
 - **is_active_output** (_bool_ = True) : parameter 'is_active_output'
-- **target** (_str_ = ALL) : parameter 'target' in ('ALL', 'EEVEE', 'CYCLES')
+- **target** (_str_ = ALL) : parameter 'target' in ['ALL', 'EEVEE', 'CYCLES']
 
 
 
@@ -1187,7 +1187,7 @@ math(value=None, value_1=None, value_2=None, operation='ADD', use_clamp=False)
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
 - **value_1** (_Float_ = None) : socket 'Value' (id: Value_001)
 - **value_2** (_Float_ = None) : socket 'Value' (id: Value_002)
-- **operation** (_str_ = ADD) : parameter 'operation' in ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'POWER', 'LOGARITHM', 'SQRT', 'INVERSE_SQRT', 'ABSOLUTE', 'EXPONENT', 'MINIMUM', 'MAXIMUM', 'LESS_THAN', 'GREATER_THAN', 'SIGN', 'COMPARE', 'SMOOTH_MIN', 'SMOOTH_MAX', 'ROUND', 'FLOOR', 'CEIL', 'TRUNC', 'FRACT', 'MODULO', 'FLOORED_MODULO', 'WRAP', 'SNAP', 'PINGPONG', 'SINE', 'COSINE', 'TANGENT', 'ARCSINE', 'ARCCOSINE', 'ARCTANGENT', 'ARCTAN2', 'SINH', 'COSH', 'TANH', 'RADIANS', 'DEGREES')
+- **operation** (_str_ = ADD) : parameter 'operation' in ['ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'POWER', 'LOGARITHM', 'SQRT', 'INVERSE_SQRT', 'ABSOLUTE', 'EXPONENT', 'MINIMUM', 'MAXIMUM', 'LESS_THAN', 'GREATER_THAN', 'SIGN', 'COMPARE', 'SMOOTH_MIN', 'SMOOTH_MAX', 'ROUND', 'FLOOR', 'CEIL', 'TRUNC', 'FRACT', 'MODULO', 'FLOORED_MODULO', 'WRAP', 'SNAP', 'PINGPONG', 'SINE', 'COSINE', 'TANGENT', 'ARCSINE', 'ARCCOSINE', 'ARCTANGENT', 'ARCTAN2', 'SINH', 'COSH', 'TANH', 'RADIANS', 'DEGREES']
 - **use_clamp** (_bool_ = False) : parameter 'use_clamp'
 
 
@@ -1219,8 +1219,8 @@ metallic_bsdf(base_color=None, edge_tint=None, ior=None, extinction=None, roughn
 - **normal** (_Vector_ = None) : socket 'Normal' (id: Normal)
 - **tangent** (_Vector_ = None) : socket 'Tangent' (id: Tangent)
 - **weight** (_Float_ = None) : socket 'Weight' (id: Weight)
-- **distribution** (_str_ = MULTI_GGX) : parameter 'distribution' in ('BECKMANN', 'GGX', 'MULTI_GGX')
-- **fresnel_type** (_str_ = F82) : parameter 'fresnel_type' in ('PHYSICAL_CONDUCTOR', 'F82')
+- **distribution** (_str_ = MULTI_GGX) : parameter 'distribution' in ['BECKMANN', 'GGX', 'MULTI_GGX']
+- **fresnel_type** (_str_ = F82) : parameter 'fresnel_type' in ['PHYSICAL_CONDUCTOR', 'F82']
 
 
 
@@ -1250,11 +1250,11 @@ mix(a=None, b=None, a_1=None, b_1=None, a_2=None, b_2=None, a_3=None, b_3=None, 
 - **a_3** (_Rotation_ = None) : socket 'A' (id: A_Rotation)
 - **b_3** (_Rotation_ = None) : socket 'B' (id: B_Rotation)
 - **factor** (_Vector_ = None) : socket 'Factor' (id: Factor_Vector)
-- **blend_type** (_str_ = MIX) : parameter 'blend_type' in ('MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE')
+- **blend_type** (_str_ = MIX) : parameter 'blend_type' in ['MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE']
 - **clamp_factor** (_bool_ = True) : parameter 'clamp_factor'
 - **clamp_result** (_bool_ = False) : parameter 'clamp_result'
-- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ('FLOAT', 'VECTOR', 'RGBA')
-- **factor_mode** (_str_ = UNIFORM) : parameter 'factor_mode' in ('UNIFORM', 'NON_UNIFORM')
+- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ['FLOAT', 'VECTOR', 'RGBA']
+- **factor_mode** (_str_ = UNIFORM) : parameter 'factor_mode' in ['UNIFORM', 'NON_UNIFORM']
 
 
 
@@ -1307,8 +1307,8 @@ noise_texture(vector=None, w=None, scale=None, detail=None, roughness=None, lacu
 - **offset** (_Float_ = None) : socket 'Offset' (id: Offset)
 - **gain** (_Float_ = None) : socket 'Gain' (id: Gain)
 - **distortion** (_Float_ = None) : socket 'Distortion' (id: Distortion)
-- **noise_dimensions** (_str_ = 3D) : parameter 'noise_dimensions' in ('1D', '2D', '3D', '4D')
-- **noise_type** (_str_ = FBM) : parameter 'noise_type' in ('MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN')
+- **noise_dimensions** (_str_ = 3D) : parameter 'noise_dimensions' in ['1D', '2D', '3D', '4D']
+- **noise_type** (_str_ = FBM) : parameter 'noise_type' in ['MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN']
 - **normalize** (_bool_ = True) : parameter 'normalize'
 
 
@@ -1353,7 +1353,7 @@ normal_map(strength=None, color=None, space='TANGENT', uv_map='')
 #### Arguments:
 - **strength** (_Float_ = None) : socket 'Strength' (id: Strength)
 - **color** (_Color_ = None) : socket 'Color' (id: Color)
-- **space** (_str_ = TANGENT) : parameter 'space' in ('TANGENT', 'OBJECT', 'WORLD', 'BLENDER_OBJECT', 'BLENDER_WORLD')
+- **space** (_str_ = TANGENT) : parameter 'space' in ['TANGENT', 'OBJECT', 'WORLD', 'BLENDER_OBJECT', 'BLENDER_WORLD']
 - **uv_map** (_str_ = ) : parameter 'uv_map'
 
 
@@ -1408,16 +1408,16 @@ point_density(vector=None, interpolation='Linear', object=None, particle_color_s
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
-- **interpolation** (_str_ = Linear) : parameter 'interpolation' in ('Closest', 'Linear', 'Cubic')
+- **interpolation** (_str_ = Linear) : parameter 'interpolation' in ['Closest', 'Linear', 'Cubic']
 - **object** (_NoneType_ = None) : parameter 'object'
-- **particle_color_source** (_str_ = PARTICLE_AGE) : parameter 'particle_color_source' in ('PARTICLE_AGE', 'PARTICLE_SPEED', 'PARTICLE_VELOCITY')
+- **particle_color_source** (_str_ = PARTICLE_AGE) : parameter 'particle_color_source' in ['PARTICLE_AGE', 'PARTICLE_SPEED', 'PARTICLE_VELOCITY']
 - **particle_system** (_NoneType_ = None) : parameter 'particle_system'
-- **point_source** (_str_ = PARTICLE_SYSTEM) : parameter 'point_source' in ('PARTICLE_SYSTEM', 'OBJECT')
+- **point_source** (_str_ = PARTICLE_SYSTEM) : parameter 'point_source' in ['PARTICLE_SYSTEM', 'OBJECT']
 - **radius** (_float_ = 0.30000001192092896) : parameter 'radius'
 - **resolution** (_int_ = 100) : parameter 'resolution'
-- **space** (_str_ = OBJECT) : parameter 'space' in ('OBJECT', 'WORLD')
+- **space** (_str_ = OBJECT) : parameter 'space' in ['OBJECT', 'WORLD']
 - **vertex_attribute_name** (_str_ = ) : parameter 'vertex_attribute_name'
-- **vertex_color_source** (_str_ = VERTEX_COLOR) : parameter 'vertex_color_source' in ('VERTEX_COLOR', 'VERTEX_WEIGHT', 'VERTEX_NORMAL')
+- **vertex_color_source** (_str_ = VERTEX_COLOR) : parameter 'vertex_color_source' in ['VERTEX_COLOR', 'VERTEX_WEIGHT', 'VERTEX_NORMAL']
 
 
 
@@ -1485,8 +1485,8 @@ principled_bsdf(base_color=None, metallic=None, roughness=None, ior=None, alpha=
 - **emission_strength** (_Float_ = None) : socket 'Emission Strength' (id: Emission Strength)
 - **thin_film_thickness** (_Float_ = None) : socket 'Thin Film Thickness' (id: Thin Film Thickness)
 - **thin_film_ior** (_Float_ = None) : socket 'Thin Film IOR' (id: Thin Film IOR)
-- **distribution** (_str_ = MULTI_GGX) : parameter 'distribution' in ('GGX', 'MULTI_GGX')
-- **subsurface_method** (_str_ = RANDOM_WALK) : parameter 'subsurface_method' in ('BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN')
+- **distribution** (_str_ = MULTI_GGX) : parameter 'distribution' in ['GGX', 'MULTI_GGX']
+- **subsurface_method** (_str_ = RANDOM_WALK) : parameter 'subsurface_method' in ['BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN']
 
 
 
@@ -1525,8 +1525,8 @@ principled_hair_bsdf(color=None, melanin=None, melanin_redness=None, tint=None, 
 - **reflection** (_Float_ = None) : socket 'Reflection' (id: R lobe)
 - **transmission** (_Float_ = None) : socket 'Transmission' (id: TT lobe)
 - **secondary_reflection** (_Float_ = None) : socket 'Secondary Reflection' (id: TRT lobe)
-- **model** (_str_ = CHIANG) : parameter 'model' in ('CHIANG', 'HUANG')
-- **parametrization** (_str_ = COLOR) : parameter 'parametrization' in ('ABSORPTION', 'MELANIN', 'COLOR')
+- **model** (_str_ = CHIANG) : parameter 'model' in ['CHIANG', 'HUANG']
+- **parametrization** (_str_ = COLOR) : parameter 'parametrization' in ['ABSORPTION', 'MELANIN', 'COLOR']
 
 
 
@@ -1609,7 +1609,7 @@ refraction_bsdf(color=None, roughness=None, ior=None, normal=None, weight=None, 
 - **ior** (_Float_ = None) : socket 'IOR' (id: IOR)
 - **normal** (_Vector_ = None) : socket 'Normal' (id: Normal)
 - **weight** (_Float_ = None) : socket 'Weight' (id: Weight)
-- **distribution** (_str_ = BECKMANN) : parameter 'distribution' in ('BECKMANN', 'GGX')
+- **distribution** (_str_ = BECKMANN) : parameter 'distribution' in ['BECKMANN', 'GGX']
 
 
 
@@ -1698,7 +1698,7 @@ script(bytecode='', bytecode_hash='', filepath='', mode='INTERNAL', script=None,
 - **bytecode** (_str_ = ) : parameter 'bytecode'
 - **bytecode_hash** (_str_ = ) : parameter 'bytecode_hash'
 - **filepath** (_str_ = ) : parameter 'filepath'
-- **mode** (_str_ = INTERNAL) : parameter 'mode' in ('INTERNAL', 'EXTERNAL')
+- **mode** (_str_ = INTERNAL) : parameter 'mode' in ['INTERNAL', 'EXTERNAL']
 - **script** (_NoneType_ = None) : parameter 'script'
 - **use_auto_update** (_bool_ = False) : parameter 'use_auto_update'
 
@@ -1722,7 +1722,7 @@ separate_color(color=None, mode='RGB')
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (id: Color)
-- **mode** (_str_ = RGB) : parameter 'mode' in ('RGB', 'HSV', 'HSL')
+- **mode** (_str_ = RGB) : parameter 'mode' in ['RGB', 'HSV', 'HSL']
 
 
 
@@ -1789,7 +1789,7 @@ sheen_bsdf(color=None, roughness=None, normal=None, weight=None, distribution='M
 - **roughness** (_Float_ = None) : socket 'Roughness' (id: Roughness)
 - **normal** (_Vector_ = None) : socket 'Normal' (id: Normal)
 - **weight** (_Float_ = None) : socket 'Weight' (id: Weight)
-- **distribution** (_str_ = MICROFIBER) : parameter 'distribution' in ('ASHIKHMIN', 'MICROFIBER')
+- **distribution** (_str_ = MICROFIBER) : parameter 'distribution' in ['ASHIKHMIN', 'MICROFIBER']
 
 
 
@@ -1816,7 +1816,7 @@ sky_texture(vector=None, air_density=1.0, altitude=0.0, dust_density=1.0, ground
 - **dust_density** (_float_ = 1.0) : parameter 'dust_density'
 - **ground_albedo** (_float_ = 0.30000001192092896) : parameter 'ground_albedo'
 - **ozone_density** (_float_ = 1.0) : parameter 'ozone_density'
-- **sky_type** (_str_ = NISHITA) : parameter 'sky_type' in ('PREETHAM', 'HOSEK_WILKIE', 'NISHITA')
+- **sky_type** (_str_ = NISHITA) : parameter 'sky_type' in ['PREETHAM', 'HOSEK_WILKIE', 'NISHITA']
 - **sun_disc** (_bool_ = True) : parameter 'sun_disc'
 - **sun_elevation** (_float_ = 0.2617993950843811) : parameter 'sun_elevation'
 - **sun_intensity** (_float_ = 1.0) : parameter 'sun_intensity'
@@ -1881,7 +1881,7 @@ subsurface_scattering(color=None, scale=None, radius=None, ior=None, roughness=N
 - **anisotropy** (_Float_ = None) : socket 'Anisotropy' (id: Anisotropy)
 - **normal** (_Vector_ = None) : socket 'Normal' (id: Normal)
 - **weight** (_Float_ = None) : socket 'Weight' (id: Weight)
-- **falloff** (_str_ = RANDOM_WALK) : parameter 'falloff' in ('BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN')
+- **falloff** (_str_ = RANDOM_WALK) : parameter 'falloff' in ['BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN']
 
 
 
@@ -1902,8 +1902,8 @@ tangent(axis='Z', direction_type='RADIAL', uv_map='')
 > Node [Tangent](https://docs.blender.org/manual/en/latest/render/shader_nodes/input/tangent.html)
 
 #### Arguments:
-- **axis** (_str_ = Z) : parameter 'axis' in ('X', 'Y', 'Z')
-- **direction_type** (_str_ = RADIAL) : parameter 'direction_type' in ('RADIAL', 'UV_MAP')
+- **axis** (_str_ = Z) : parameter 'axis' in ['X', 'Y', 'Z']
+- **direction_type** (_str_ = RADIAL) : parameter 'direction_type' in ['RADIAL', 'UV_MAP']
 - **uv_map** (_str_ = ) : parameter 'uv_map'
 
 
@@ -1952,7 +1952,7 @@ toon_bsdf(color=None, size=None, smooth=None, normal=None, weight=None, componen
 - **smooth** (_Float_ = None) : socket 'Smooth' (id: Smooth)
 - **normal** (_Vector_ = None) : socket 'Normal' (id: Normal)
 - **weight** (_Float_ = None) : socket 'Weight' (id: Weight)
-- **component** (_str_ = DIFFUSE) : parameter 'component' in ('DIFFUSE', 'GLOSSY')
+- **component** (_str_ = DIFFUSE) : parameter 'component' in ['DIFFUSE', 'GLOSSY']
 
 
 
@@ -2086,7 +2086,7 @@ vector_displacement(vector=None, midlevel=None, scale=None, space='TANGENT')
 - **vector** (_Color_ = None) : socket 'Vector' (id: Vector)
 - **midlevel** (_Float_ = None) : socket 'Midlevel' (id: Midlevel)
 - **scale** (_Float_ = None) : socket 'Scale' (id: Scale)
-- **space** (_str_ = TANGENT) : parameter 'space' in ('TANGENT', 'OBJECT', 'WORLD')
+- **space** (_str_ = TANGENT) : parameter 'space' in ['TANGENT', 'OBJECT', 'WORLD']
 
 
 
@@ -2111,7 +2111,7 @@ vector_math(vector=None, vector_1=None, vector_2=None, scale=None, operation='AD
 - **vector_1** (_Vector_ = None) : socket 'Vector' (id: Vector_001)
 - **vector_2** (_Vector_ = None) : socket 'Vector' (id: Vector_002)
 - **scale** (_Float_ = None) : socket 'Scale' (id: Scale)
-- **operation** (_str_ = ADD) : parameter 'operation' in ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'CROSS_PRODUCT', 'PROJECT', 'REFLECT', 'REFRACT', 'FACEFORWARD', 'DOT_PRODUCT', 'DISTANCE', 'LENGTH', 'SCALE', 'NORMALIZE', 'ABSOLUTE', 'MINIMUM', 'MAXIMUM', 'FLOOR', 'CEIL', 'FRACTION', 'MODULO', 'WRAP', 'SNAP', 'SINE', 'COSINE', 'TANGENT')
+- **operation** (_str_ = ADD) : parameter 'operation' in ['ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'CROSS_PRODUCT', 'PROJECT', 'REFLECT', 'REFRACT', 'FACEFORWARD', 'DOT_PRODUCT', 'DISTANCE', 'LENGTH', 'SCALE', 'NORMALIZE', 'ABSOLUTE', 'MINIMUM', 'MAXIMUM', 'FLOOR', 'CEIL', 'FRACTION', 'MODULO', 'WRAP', 'SNAP', 'SINE', 'COSINE', 'TANGENT']
 
 
 
@@ -2138,7 +2138,7 @@ vector_rotate(vector=None, center=None, axis=None, angle=None, rotation=None, in
 - **angle** (_Float_ = None) : socket 'Angle' (id: Angle)
 - **rotation** (_Vector_ = None) : socket 'Rotation' (id: Rotation)
 - **invert** (_bool_ = False) : parameter 'invert'
-- **rotation_type** (_str_ = AXIS_ANGLE) : parameter 'rotation_type' in ('AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ')
+- **rotation_type** (_str_ = AXIS_ANGLE) : parameter 'rotation_type' in ['AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ']
 
 
 
@@ -2160,9 +2160,9 @@ vector_transform(vector=None, convert_from='WORLD', convert_to='OBJECT', vector_
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
-- **convert_from** (_str_ = WORLD) : parameter 'convert_from' in ('WORLD', 'OBJECT', 'CAMERA')
-- **convert_to** (_str_ = OBJECT) : parameter 'convert_to' in ('WORLD', 'OBJECT', 'CAMERA')
-- **vector_type** (_str_ = VECTOR) : parameter 'vector_type' in ('POINT', 'VECTOR', 'NORMAL')
+- **convert_from** (_str_ = WORLD) : parameter 'convert_from' in ['WORLD', 'OBJECT', 'CAMERA']
+- **convert_to** (_str_ = OBJECT) : parameter 'convert_to' in ['WORLD', 'OBJECT', 'CAMERA']
+- **vector_type** (_str_ = VECTOR) : parameter 'vector_type' in ['POINT', 'VECTOR', 'NORMAL']
 
 
 
@@ -2230,7 +2230,7 @@ volume_scatter(color=None, density=None, anisotropy=None, ior=None, backscatter=
 - **alpha** (_Float_ = None) : socket 'Alpha' (id: Alpha)
 - **diameter** (_Float_ = None) : socket 'Diameter' (id: Diameter)
 - **weight** (_Float_ = None) : socket 'Weight' (id: Weight)
-- **phase** (_str_ = HENYEY_GREENSTEIN) : parameter 'phase' in ('HENYEY_GREENSTEIN', 'FOURNIER_FORAND', 'DRAINE', 'RAYLEIGH', 'MIE')
+- **phase** (_str_ = HENYEY_GREENSTEIN) : parameter 'phase' in ['HENYEY_GREENSTEIN', 'FOURNIER_FORAND', 'DRAINE', 'RAYLEIGH', 'MIE']
 
 
 
@@ -2260,10 +2260,10 @@ voronoi_texture(vector=None, w=None, scale=None, detail=None, roughness=None, la
 - **smoothness** (_Float_ = None) : socket 'Smoothness' (id: Smoothness)
 - **exponent** (_Float_ = None) : socket 'Exponent' (id: Exponent)
 - **randomness** (_Float_ = None) : socket 'Randomness' (id: Randomness)
-- **distance** (_str_ = EUCLIDEAN) : parameter 'distance' in ('EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI')
-- **feature** (_str_ = F1) : parameter 'feature' in ('F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS')
+- **distance** (_str_ = EUCLIDEAN) : parameter 'distance' in ['EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI']
+- **feature** (_str_ = F1) : parameter 'feature' in ['F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS']
 - **normalize** (_bool_ = False) : parameter 'normalize'
-- **voronoi_dimensions** (_str_ = 3D) : parameter 'voronoi_dimensions' in ('1D', '2D', '3D', '4D')
+- **voronoi_dimensions** (_str_ = 3D) : parameter 'voronoi_dimensions' in ['1D', '2D', '3D', '4D']
 
 
 
@@ -2312,10 +2312,10 @@ wave_texture(vector=None, scale=None, distortion=None, detail=None, detail_scale
 - **detail_scale** (_Float_ = None) : socket 'Detail Scale' (id: Detail Scale)
 - **detail_roughness** (_Float_ = None) : socket 'Detail Roughness' (id: Detail Roughness)
 - **phase_offset** (_Float_ = None) : socket 'Phase Offset' (id: Phase Offset)
-- **bands_direction** (_str_ = X) : parameter 'bands_direction' in ('X', 'Y', 'Z', 'DIAGONAL')
-- **rings_direction** (_str_ = X) : parameter 'rings_direction' in ('X', 'Y', 'Z', 'SPHERICAL')
-- **wave_profile** (_str_ = SIN) : parameter 'wave_profile' in ('SIN', 'SAW', 'TRI')
-- **wave_type** (_str_ = BANDS) : parameter 'wave_type' in ('BANDS', 'RINGS')
+- **bands_direction** (_str_ = X) : parameter 'bands_direction' in ['X', 'Y', 'Z', 'DIAGONAL']
+- **rings_direction** (_str_ = X) : parameter 'rings_direction' in ['X', 'Y', 'Z', 'SPHERICAL']
+- **wave_profile** (_str_ = SIN) : parameter 'wave_profile' in ['SIN', 'SAW', 'TRI']
+- **wave_type** (_str_ = BANDS) : parameter 'wave_type' in ['BANDS', 'RINGS']
 
 
 
@@ -2338,7 +2338,7 @@ white_noise_texture(vector=None, w=None, noise_dimensions='3D')
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
 - **w** (_Float_ = None) : socket 'W' (id: W)
-- **noise_dimensions** (_str_ = 3D) : parameter 'noise_dimensions' in ('1D', '2D', '3D', '4D')
+- **noise_dimensions** (_str_ = 3D) : parameter 'noise_dimensions' in ['1D', '2D', '3D', '4D']
 
 
 
@@ -2384,7 +2384,7 @@ world_output(surface=None, volume=None, is_active_output=True, target='ALL')
 - **surface** (_Shader_ = None) : socket 'Surface' (id: Surface)
 - **volume** (_Shader_ = None) : socket 'Volume' (id: Volume)
 - **is_active_output** (_bool_ = True) : parameter 'is_active_output'
-- **target** (_str_ = ALL) : parameter 'target' in ('ALL', 'EEVEE', 'CYCLES')
+- **target** (_str_ = ALL) : parameter 'target' in ['ALL', 'EEVEE', 'CYCLES']
 
 
 

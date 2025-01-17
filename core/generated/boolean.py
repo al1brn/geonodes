@@ -256,13 +256,13 @@ class Boolean(Socket):
         Arguments
         ---------
         - position (Vector) : socket 'Position' (id: Position)
-        - interpolation_mode (str): parameter 'interpolation_mode' in ('NEAREST', 'TRILINEAR', 'TRIQUADRATIC')
+        - interpolation_mode (str): parameter 'interpolation_mode' in ['NEAREST', 'TRILINEAR', 'TRIQUADRATIC']
 
         Returns
         -------
         - Boolean
         """
-        utils.check_enum_arg('interpolation_mode', interpolation_mode, 'sample_grid', ('NEAREST', 'TRILINEAR', 'TRIQUADRATIC'))
+        utils.check_enum_arg('Sample Grid', 'interpolation_mode', interpolation_mode, 'sample_grid', ('NEAREST', 'TRILINEAR', 'TRIQUADRATIC'))
         node = Node('Sample Grid', sockets={'Grid': self, 'Position': position}, data_type='BOOLEAN', interpolation_mode=interpolation_mode)
         return node._out
 
@@ -299,13 +299,13 @@ class Boolean(Socket):
         - seam (Boolean) : socket 'Seam' (id: Seam)
         - margin (Float) : socket 'Margin' (id: Margin)
         - fill_holes (Boolean) : socket 'Fill Holes' (id: Fill Holes)
-        - method (str): parameter 'method' in ('ANGLE_BASED', 'CONFORMAL')
+        - method (str): parameter 'method' in ['ANGLE_BASED', 'CONFORMAL']
 
         Returns
         -------
         - Vector
         """
-        utils.check_enum_arg('method', method, 'uv_unwrap', ('ANGLE_BASED', 'CONFORMAL'))
+        utils.check_enum_arg('UV Unwrap', 'method', method, 'uv_unwrap', ('ANGLE_BASED', 'CONFORMAL'))
         node = Node('UV Unwrap', sockets={'Selection': self, 'Seam': seam, 'Margin': margin, 'Fill Holes': fill_holes}, method=method)
         return node._out
 

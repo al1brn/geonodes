@@ -81,7 +81,7 @@ DistributeInGrid(grid=None, density=None, seed=None, mode='DENSITY_RANDOM')
 - **grid** (_Float_ = None) : socket 'Grid' (id: Grid)
 - **density** (_Float_ = None) : socket 'Density' (id: Density)
 - **seed** (_Integer_ = None) : socket 'Seed' (id: Seed)
-- **mode** (_str_ = DENSITY_RANDOM) : parameter 'mode' in ('DENSITY_RANDOM', 'DENSITY_GRID')
+- **mode** (_str_ = DENSITY_RANDOM) : parameter 'mode' in ['DENSITY_RANDOM', 'DENSITY_GRID']
 
 
 
@@ -349,7 +349,7 @@ to_volume(density=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_A
 - **density** (_Float_ = None) : socket 'Density' (id: Density)
 - **voxel_amount** (_Float_ = None) : socket 'Voxel Amount' (id: Voxel Amount)
 - **radius** (_Float_ = None) : socket 'Radius' (id: Radius)
-- **resolution_mode** (_str_ = VOXEL_AMOUNT) : parameter 'resolution_mode' in ('VOXEL_AMOUNT', 'VOXEL_SIZE')
+- **resolution_mode** (_str_ = VOXEL_AMOUNT) : parameter 'resolution_mode' in ['VOXEL_AMOUNT', 'VOXEL_SIZE']
 
 
 

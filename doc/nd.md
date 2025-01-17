@@ -76,8 +76,8 @@ accumulate_field(value=None, group_id=None, data_type='FLOAT', domain='POINT')
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
 - **group_id** (_Integer_ = None) : socket 'Group ID' (id: Group Index)
-- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'TRANSFORM')
-- **domain** (_str_ = POINT) : parameter 'domain' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER')
+- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ['FLOAT', 'INT', 'FLOAT_VECTOR', 'TRANSFORM']
+- **domain** (_str_ = POINT) : parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
 
 
 
@@ -98,7 +98,7 @@ active_element(domain='POINT')
 > Node [Active Element](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/active_element.html)
 
 #### Arguments:
-- **domain** (_str_ = POINT) : parameter 'domain' in ('POINT', 'EDGE', 'FACE')
+- **domain** (_str_ = POINT) : parameter 'domain' in ['POINT', 'EDGE', 'FACE']
 
 
 
@@ -122,8 +122,8 @@ align_rotation_to_vector(rotation=None, vector=None, factor=None, axis='Z', pivo
 - **rotation** (_Rotation_ = None) : socket 'Rotation' (id: Rotation)
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
 - **factor** (_Float_ = None) : socket 'Factor' (id: Factor)
-- **axis** (_str_ = Z) : parameter 'axis' in ('X', 'Y', 'Z')
-- **pivot_axis** (_str_ = AUTO) : parameter 'pivot_axis' in ('AUTO', 'X', 'Y', 'Z')
+- **axis** (_str_ = Z) : parameter 'axis' in ['X', 'Y', 'Z']
+- **pivot_axis** (_str_ = AUTO) : parameter 'pivot_axis' in ['AUTO', 'X', 'Y', 'Z']
 
 
 
@@ -154,7 +154,7 @@ arc(resolution=None, start=None, middle=None, end=None, radius=None, start_angle
 - **offset_angle** (_Float_ = None) : socket 'Offset Angle' (id: Offset Angle)
 - **connect_center** (_Boolean_ = None) : socket 'Connect Center' (id: Connect Center)
 - **invert_arc** (_Boolean_ = None) : socket 'Invert Arc' (id: Invert Arc)
-- **mode** (_str_ = RADIUS) : parameter 'mode' in ('POINTS', 'RADIUS')
+- **mode** (_str_ = RADIUS) : parameter 'mode' in ['POINTS', 'RADIUS']
 
 
 
@@ -178,8 +178,8 @@ attribute_statistic(geometry=None, selection=None, attribute=None, data_type='FL
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (id: Geometry)
 - **selection** (_Boolean_ = None) : socket 'Selection' (id: Selection)
 - **attribute** (_Float_ = None) : socket 'Attribute' (id: Attribute)
-- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ('FLOAT', 'FLOAT_VECTOR')
-- **domain** (_str_ = POINT) : parameter 'domain' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER')
+- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ['FLOAT', 'FLOAT_VECTOR']
+- **domain** (_str_ = POINT) : parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
 
 
 
@@ -202,8 +202,8 @@ axes_to_rotation(primary_axis_1=None, secondary_axis_1=None, primary_axis='Z', s
 #### Arguments:
 - **primary_axis_1** (_Vector_ = None) : socket 'Primary Axis' (id: Primary Axis)
 - **secondary_axis_1** (_Vector_ = None) : socket 'Secondary Axis' (id: Secondary Axis)
-- **primary_axis** (_str_ = Z) : parameter 'primary_axis' in ('X', 'Y', 'Z')
-- **secondary_axis** (_str_ = X) : parameter 'secondary_axis' in ('X', 'Y', 'Z')
+- **primary_axis** (_str_ = Z) : parameter 'primary_axis' in ['X', 'Y', 'Z']
+- **secondary_axis** (_str_ = X) : parameter 'secondary_axis' in ['X', 'Y', 'Z']
 
 
 
@@ -272,7 +272,7 @@ bezier_segment(resolution=None, start=None, start_handle=None, end_handle=None, 
 - **start_handle** (_Vector_ = None) : socket 'Start Handle' (id: Start Handle)
 - **end_handle** (_Vector_ = None) : socket 'End Handle' (id: End Handle)
 - **end** (_Vector_ = None) : socket 'End' (id: End)
-- **mode** (_str_ = POSITION) : parameter 'mode' in ('POSITION', 'OFFSET')
+- **mode** (_str_ = POSITION) : parameter 'mode' in ['POSITION', 'OFFSET']
 
 
 
@@ -317,7 +317,7 @@ blur_attribute(value=None, iterations=None, weight=None, data_type='FLOAT')
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
 - **iterations** (_Integer_ = None) : socket 'Iterations' (id: Iterations)
 - **weight** (_Float_ = None) : socket 'Weight' (id: Weight)
-- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR')
+- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ['FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR']
 
 
 
@@ -361,7 +361,7 @@ boolean_math(boolean=None, boolean_1=None, operation='AND')
 #### Arguments:
 - **boolean** (_Boolean_ = None) : socket 'Boolean' (id: Boolean)
 - **boolean_1** (_Boolean_ = None) : socket 'Boolean' (id: Boolean_001)
-- **operation** (_str_ = AND) : parameter 'operation' in ('AND', 'OR', 'NOT', 'NAND', 'NOR', 'XNOR', 'XOR', 'IMPLY', 'NIMPLY')
+- **operation** (_str_ = AND) : parameter 'operation' in ['AND', 'OR', 'NOT', 'NAND', 'NOR', 'XNOR', 'XOR', 'IMPLY', 'NIMPLY']
 
 
 
@@ -438,7 +438,7 @@ capture_attribute(geometry=None, domain='POINT')
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (id: Geometry)
-- **domain** (_str_ = POINT) : parameter 'domain' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER')
+- **domain** (_str_ = POINT) : parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
 
 
 
@@ -486,7 +486,7 @@ clamp(value=None, min=None, max=None, clamp_type='MINMAX')
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
 - **min** (_Float_ = None) : socket 'Min' (id: Min)
 - **max** (_Float_ = None) : socket 'Max' (id: Max)
-- **clamp_type** (_str_ = MINMAX) : parameter 'clamp_type' in ('MINMAX', 'RANGE')
+- **clamp_type** (_str_ = MINMAX) : parameter 'clamp_type' in ['MINMAX', 'RANGE']
 
 
 
@@ -510,7 +510,7 @@ collection_info(collection=None, separate_children=None, reset_children=None, tr
 - **collection** (_Collection_ = None) : socket 'Collection' (id: Collection)
 - **separate_children** (_Boolean_ = None) : socket 'Separate Children' (id: Separate Children)
 - **reset_children** (_Boolean_ = None) : socket 'Reset Children' (id: Reset Children)
-- **transform_space** (_str_ = ORIGINAL) : parameter 'transform_space' in ('ORIGINAL', 'RELATIVE')
+- **transform_space** (_str_ = ORIGINAL) : parameter 'transform_space' in ['ORIGINAL', 'RELATIVE']
 
 
 
@@ -560,7 +560,7 @@ combine_color(red=None, green=None, blue=None, alpha=None, mode='RGB')
 - **green** (_Float_ = None) : socket 'Green' (id: Green)
 - **blue** (_Float_ = None) : socket 'Blue' (id: Blue)
 - **alpha** (_Float_ = None) : socket 'Alpha' (id: Alpha)
-- **mode** (_str_ = RGB) : parameter 'mode' in ('RGB', 'HSV', 'HSL')
+- **mode** (_str_ = RGB) : parameter 'mode' in ['RGB', 'HSV', 'HSL']
 
 
 
@@ -676,9 +676,9 @@ compare(a=None, b=None, a_1=None, b_1=None, a_2=None, b_2=None, a_3=None, b_3=No
 - **c** (_Float_ = None) : socket 'C' (id: C)
 - **angle** (_Float_ = None) : socket 'Angle' (id: Angle)
 - **epsilon** (_Float_ = None) : socket 'Epsilon' (id: Epsilon)
-- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ('FLOAT', 'INT', 'VECTOR', 'STRING', 'RGBA')
-- **mode** (_str_ = ELEMENT) : parameter 'mode' in ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION')
-- **operation** (_str_ = GREATER_THAN) : parameter 'operation' in ('LESS_THAN', 'LESS_EQUAL', 'GREATER_THAN', 'GREATER_EQUAL', 'EQUAL', 'NOT_EQUAL')
+- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ['FLOAT', 'INT', 'VECTOR', 'STRING', 'RGBA']
+- **mode** (_str_ = ELEMENT) : parameter 'mode' in ['ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION']
+- **operation** (_str_ = GREATER_THAN) : parameter 'operation' in ['LESS_THAN', 'LESS_EQUAL', 'GREATER_THAN', 'GREATER_EQUAL', 'EQUAL', 'NOT_EQUAL']
 
 
 
@@ -705,7 +705,7 @@ cone(vertices=None, side_segments=None, fill_segments=None, radius_top=None, rad
 - **radius_top** (_Float_ = None) : socket 'Radius Top' (id: Radius Top)
 - **radius_bottom** (_Float_ = None) : socket 'Radius Bottom' (id: Radius Bottom)
 - **depth** (_Float_ = None) : socket 'Depth' (id: Depth)
-- **fill_type** (_str_ = NGON) : parameter 'fill_type' in ('NONE', 'NGON', 'TRIANGLE_FAN')
+- **fill_type** (_str_ = NGON) : parameter 'fill_type' in ['NONE', 'NGON', 'TRIANGLE_FAN']
 
 
 
@@ -845,7 +845,7 @@ curve_circle(resolution=None, point_1=None, point_2=None, point_3=None, radius=N
 - **point_2** (_Vector_ = None) : socket 'Point 2' (id: Point 2)
 - **point_3** (_Vector_ = None) : socket 'Point 3' (id: Point 3)
 - **radius** (_Float_ = None) : socket 'Radius' (id: Radius)
-- **mode** (_str_ = RADIUS) : parameter 'mode' in ('POINTS', 'RADIUS')
+- **mode** (_str_ = RADIUS) : parameter 'mode' in ['POINTS', 'RADIUS']
 
 
 
@@ -912,7 +912,7 @@ curve_line(start=None, end=None, direction=None, length=None, mode='POINTS')
 - **end** (_Vector_ = None) : socket 'End' (id: End)
 - **direction** (_Vector_ = None) : socket 'Direction' (id: Direction)
 - **length** (_Float_ = None) : socket 'Length' (id: Length)
-- **mode** (_str_ = POINTS) : parameter 'mode' in ('POINTS', 'DIRECTION')
+- **mode** (_str_ = POINTS) : parameter 'mode' in ['POINTS', 'DIRECTION']
 
 
 
@@ -1003,7 +1003,7 @@ curve_to_points(curve=None, count=None, length=None, mode='COUNT')
 - **curve** (_Geometry_ = None) : socket 'Curve' (id: Curve)
 - **count** (_Integer_ = None) : socket 'Count' (id: Count)
 - **length** (_Float_ = None) : socket 'Length' (id: Length)
-- **mode** (_str_ = COUNT) : parameter 'mode' in ('EVALUATED', 'COUNT', 'LENGTH')
+- **mode** (_str_ = COUNT) : parameter 'mode' in ['EVALUATED', 'COUNT', 'LENGTH']
 
 
 
@@ -1029,7 +1029,7 @@ cylinder(vertices=None, side_segments=None, fill_segments=None, radius=None, dep
 - **fill_segments** (_Integer_ = None) : socket 'Fill Segments' (id: Fill Segments)
 - **radius** (_Float_ = None) : socket 'Radius' (id: Radius)
 - **depth** (_Float_ = None) : socket 'Depth' (id: Depth)
-- **fill_type** (_str_ = NGON) : parameter 'fill_type' in ('NONE', 'NGON', 'TRIANGLE_FAN')
+- **fill_type** (_str_ = NGON) : parameter 'fill_type' in ['NONE', 'NGON', 'TRIANGLE_FAN']
 
 
 
@@ -1073,8 +1073,8 @@ delete_geometry(geometry=None, selection=None, domain='POINT', mode='ALL')
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (id: Geometry)
 - **selection** (_Boolean_ = None) : socket 'Selection' (id: Selection)
-- **domain** (_str_ = POINT) : parameter 'domain' in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE', 'LAYER')
-- **mode** (_str_ = ALL) : parameter 'mode' in ('ALL', 'EDGE_FACE', 'ONLY_FACE')
+- **domain** (_str_ = POINT) : parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE', 'LAYER']
+- **mode** (_str_ = ALL) : parameter 'mode' in ['ALL', 'EDGE_FACE', 'ONLY_FACE']
 
 
 
@@ -1100,7 +1100,7 @@ dial_gizmo(*value, position=None, up=None, screen_space=None, radius=None, color
 - **up** (_Vector_ = None) : socket 'Up' (id: Up)
 - **screen_space** (_Boolean_ = None) : socket 'Screen Space' (id: Screen Space)
 - **radius** (_Float_ = None) : socket 'Radius' (id: Radius)
-- **color_id** (_str_ = PRIMARY) : parameter 'color_id' in ('PRIMARY', 'SECONDARY', 'X', 'Y', 'Z')
+- **color_id** (_str_ = PRIMARY) : parameter 'color_id' in ['PRIMARY', 'SECONDARY', 'X', 'Y', 'Z']
 
 
 
@@ -1126,7 +1126,7 @@ distribute_points_in_grid(grid=None, density=None, seed=None, spacing=None, thre
 - **seed** (_Integer_ = None) : socket 'Seed' (id: Seed)
 - **spacing** (_Vector_ = None) : socket 'Spacing' (id: Spacing)
 - **threshold** (_Float_ = None) : socket 'Threshold' (id: Threshold)
-- **mode** (_str_ = DENSITY_RANDOM) : parameter 'mode' in ('DENSITY_RANDOM', 'DENSITY_GRID')
+- **mode** (_str_ = DENSITY_RANDOM) : parameter 'mode' in ['DENSITY_RANDOM', 'DENSITY_GRID']
 
 
 
@@ -1152,7 +1152,7 @@ distribute_points_in_volume(volume=None, density=None, seed=None, spacing=None, 
 - **seed** (_Integer_ = None) : socket 'Seed' (id: Seed)
 - **spacing** (_Vector_ = None) : socket 'Spacing' (id: Spacing)
 - **threshold** (_Float_ = None) : socket 'Threshold' (id: Threshold)
-- **mode** (_str_ = DENSITY_RANDOM) : parameter 'mode' in ('DENSITY_RANDOM', 'DENSITY_GRID')
+- **mode** (_str_ = DENSITY_RANDOM) : parameter 'mode' in ['DENSITY_RANDOM', 'DENSITY_GRID']
 
 
 
@@ -1180,7 +1180,7 @@ distribute_points_on_faces(mesh=None, selection=None, distance_min=None, density
 - **density** (_Float_ = None) : socket 'Density' (id: Density)
 - **density_factor** (_Float_ = None) : socket 'Density Factor' (id: Density Factor)
 - **seed** (_Integer_ = None) : socket 'Seed' (id: Seed)
-- **distribute_method** (_str_ = RANDOM) : parameter 'distribute_method' in ('RANDOM', 'POISSON')
+- **distribute_method** (_str_ = RANDOM) : parameter 'distribute_method' in ['RANDOM', 'POISSON']
 - **use_legacy_normal** (_bool_ = False) : parameter 'use_legacy_normal'
 
 
@@ -1203,7 +1203,7 @@ domain_size(geometry=None, component='MESH')
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (id: Geometry)
-- **component** (_str_ = MESH) : parameter 'component' in ('MESH', 'POINTCLOUD', 'CURVE', 'INSTANCES', 'GREASEPENCIL')
+- **component** (_str_ = MESH) : parameter 'component' in ['MESH', 'POINTCLOUD', 'CURVE', 'INSTANCES', 'GREASEPENCIL']
 
 
 
@@ -1249,7 +1249,7 @@ duplicate_elements(geometry=None, selection=None, amount=None, domain='POINT')
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (id: Geometry)
 - **selection** (_Boolean_ = None) : socket 'Selection' (id: Selection)
 - **amount** (_Integer_ = None) : socket 'Amount' (id: Amount)
-- **domain** (_str_ = POINT) : parameter 'domain' in ('POINT', 'EDGE', 'FACE', 'SPLINE', 'LAYER', 'INSTANCE')
+- **domain** (_str_ = POINT) : parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'SPLINE', 'LAYER', 'INSTANCE']
 
 
 
@@ -1457,8 +1457,8 @@ evaluate_at_index(index=None, value=None, data_type='FLOAT', domain='POINT')
 #### Arguments:
 - **index** (_Integer_ = None) : socket 'Index' (id: Index)
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
-- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4')
-- **domain** (_str_ = POINT) : parameter 'domain' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER')
+- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ['FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4']
+- **domain** (_str_ = POINT) : parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
 
 
 
@@ -1480,8 +1480,8 @@ evaluate_on_domain(value=None, data_type='FLOAT', domain='POINT')
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
-- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4')
-- **domain** (_str_ = POINT) : parameter 'domain' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER')
+- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ['FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4']
+- **domain** (_str_ = POINT) : parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
 
 
 
@@ -1507,7 +1507,7 @@ extrude_mesh(mesh=None, selection=None, offset=None, offset_scale=None, individu
 - **offset** (_Vector_ = None) : socket 'Offset' (id: Offset)
 - **offset_scale** (_Float_ = None) : socket 'Offset Scale' (id: Offset Scale)
 - **individual** (_Boolean_ = None) : socket 'Individual' (id: Individual)
-- **mode** (_str_ = FACES) : parameter 'mode' in ('VERTICES', 'EDGES', 'FACES')
+- **mode** (_str_ = FACES) : parameter 'mode' in ['VERTICES', 'EDGES', 'FACES']
 
 
 
@@ -1604,7 +1604,7 @@ fill_curve(curve=None, group_id=None, mode='TRIANGLES')
 #### Arguments:
 - **curve** (_Geometry_ = None) : socket 'Curve' (id: Curve)
 - **group_id** (_Integer_ = None) : socket 'Group ID' (id: Group ID)
-- **mode** (_str_ = TRIANGLES) : parameter 'mode' in ('TRIANGLES', 'NGONS')
+- **mode** (_str_ = TRIANGLES) : parameter 'mode' in ['TRIANGLES', 'NGONS']
 
 
 
@@ -1629,7 +1629,7 @@ fillet_curve(curve=None, count=None, radius=None, limit_radius=None, mode='BEZIE
 - **count** (_Integer_ = None) : socket 'Count' (id: Count)
 - **radius** (_Float_ = None) : socket 'Radius' (id: Radius)
 - **limit_radius** (_Boolean_ = None) : socket 'Limit Radius' (id: Limit Radius)
-- **mode** (_str_ = BEZIER) : parameter 'mode' in ('BEZIER', 'POLY')
+- **mode** (_str_ = BEZIER) : parameter 'mode' in ['BEZIER', 'POLY']
 
 
 
@@ -1695,7 +1695,7 @@ float_to_integer(float=None, rounding_mode='ROUND')
 
 #### Arguments:
 - **float** (_Float_ = None) : socket 'Float' (id: Float)
-- **rounding_mode** (_str_ = ROUND) : parameter 'rounding_mode' in ('ROUND', 'FLOOR', 'CEILING', 'TRUNCATE')
+- **rounding_mode** (_str_ = ROUND) : parameter 'rounding_mode' in ['ROUND', 'FLOOR', 'CEILING', 'TRUNCATE']
 
 
 
@@ -1742,7 +1742,7 @@ for_each_geometry_element_output(geometry=None, active_generation_index=0, activ
 - **active_generation_index** (_int_ = 0) : parameter 'active_generation_index'
 - **active_input_index** (_int_ = 0) : parameter 'active_input_index'
 - **active_main_index** (_int_ = 0) : parameter 'active_main_index'
-- **domain** (_str_ = POINT) : parameter 'domain' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER')
+- **domain** (_str_ = POINT) : parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
 - **inspection_index** (_int_ = 0) : parameter 'inspection_index'
 
 
@@ -1793,7 +1793,7 @@ gabor_texture(vector=None, scale=None, frequency=None, anisotropy=None, orientat
 - **anisotropy** (_Float_ = None) : socket 'Anisotropy' (id: Anisotropy)
 - **orientation** (_Float_ = None) : socket 'Orientation' (id: Orientation 2D)
 - **orientation_1** (_Vector_ = None) : socket 'Orientation' (id: Orientation 3D)
-- **gabor_type** (_str_ = 2D) : parameter 'gabor_type' in ('2D', '3D')
+- **gabor_type** (_str_ = 2D) : parameter 'gabor_type' in ['2D', '3D']
 
 
 
@@ -1818,7 +1818,7 @@ geometry_proximity(geometry=None, group_id=None, sample_position=None, sample_gr
 - **group_id** (_Integer_ = None) : socket 'Group ID' (id: Group ID)
 - **sample_position** (_Vector_ = None) : socket 'Sample Position' (id: Source Position)
 - **sample_group_id** (_Integer_ = None) : socket 'Sample Group ID' (id: Sample Group ID)
-- **target_element** (_str_ = FACES) : parameter 'target_element' in ('POINTS', 'EDGES', 'FACES')
+- **target_element** (_str_ = FACES) : parameter 'target_element' in ['POINTS', 'EDGES', 'FACES']
 
 
 
@@ -1863,7 +1863,7 @@ get_named_grid(volume=None, name=None, remove=None, data_type='FLOAT')
 - **volume** (_Geometry_ = None) : socket 'Volume' (id: Volume)
 - **name** (_String_ = None) : socket 'Name' (id: Name)
 - **remove** (_Boolean_ = None) : socket 'Remove' (id: Remove)
-- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ('FLOAT', 'VECTOR')
+- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ['FLOAT', 'VECTOR']
 
 
 
@@ -1885,7 +1885,7 @@ gradient_texture(vector=None, gradient_type='LINEAR')
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
-- **gradient_type** (_str_ = LINEAR) : parameter 'gradient_type' in ('LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL')
+- **gradient_type** (_str_ = LINEAR) : parameter 'gradient_type' in ['LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL']
 
 
 
@@ -2012,14 +2012,14 @@ group_output(is_active_output=True)
 > classmethod
 
 ``` python
-handle_type_selection(handle_type='AUTO', mode={'RIGHT', 'LEFT'})
+handle_type_selection(handle_type='AUTO', mode={'LEFT', 'RIGHT'})
 ```
 
 > Node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
 
 #### Arguments:
-- **handle_type** (_str_ = AUTO) : parameter 'handle_type' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-- **mode** (_set_ = {'RIGHT', 'LEFT'}) : parameter 'mode'
+- **handle_type** (_str_ = AUTO) : parameter 'handle_type' in ['FREE', 'AUTO', 'VECTOR', 'ALIGN']
+- **mode** (_set_ = {'LEFT', 'RIGHT'}) : parameter 'mode'
 
 
 
@@ -2042,7 +2042,7 @@ hash_value(value=None, seed=None, data_type='INT')
 #### Arguments:
 - **value** (_Integer_ = None) : socket 'Value' (id: Value)
 - **seed** (_Integer_ = None) : socket 'Seed' (id: Seed)
-- **data_type** (_str_ = INT) : parameter 'data_type' in ('FLOAT', 'INT', 'VECTOR', 'ROTATION', 'MATRIX', 'STRING', 'RGBA')
+- **data_type** (_str_ = INT) : parameter 'data_type' in ['FLOAT', 'INT', 'VECTOR', 'ROTATION', 'MATRIX', 'STRING', 'RGBA']
 
 
 
@@ -2131,8 +2131,8 @@ image_texture(image=None, vector=None, frame=None, extension='REPEAT', interpola
 - **image** (_Image_ = None) : socket 'Image' (id: Image)
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
 - **frame** (_Integer_ = None) : socket 'Frame' (id: Frame)
-- **extension** (_str_ = REPEAT) : parameter 'extension' in ('REPEAT', 'EXTEND', 'CLIP', 'MIRROR')
-- **interpolation** (_str_ = Linear) : parameter 'interpolation' in ('Linear', 'Closest', 'Cubic')
+- **extension** (_str_ = REPEAT) : parameter 'extension' in ['REPEAT', 'EXTEND', 'CLIP', 'MIRROR']
+- **interpolation** (_str_ = Linear) : parameter 'interpolation' in ['Linear', 'Closest', 'Cubic']
 
 
 
@@ -2241,7 +2241,7 @@ index_switch(index=None, _0=None, _1=None, data_type='GEOMETRY')
 - **index** (_Integer_ = None) : socket 'Index' (id: Index)
 - **_0** (_Geometry_ = None) : socket '0' (id: Item_0)
 - **_1** (_Geometry_ = None) : socket '1' (id: Item_1)
-- **data_type** (_str_ = GEOMETRY) : parameter 'data_type' in ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'RGBA', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL')
+- **data_type** (_str_ = GEOMETRY) : parameter 'data_type' in ['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'RGBA', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL']
 
 
 
@@ -2337,7 +2337,7 @@ integer_math(value=None, value_1=None, value_2=None, operation='ADD')
 - **value** (_Integer_ = None) : socket 'Value' (id: Value)
 - **value_1** (_Integer_ = None) : socket 'Value' (id: Value_001)
 - **value_2** (_Integer_ = None) : socket 'Value' (id: Value_002)
-- **operation** (_str_ = ADD) : parameter 'operation' in ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'ABSOLUTE', 'NEGATE', 'POWER', 'MINIMUM', 'MAXIMUM', 'SIGN', 'DIVIDE_ROUND', 'DIVIDE_FLOOR', 'DIVIDE_CEIL', 'FLOORED_MODULO', 'MODULO', 'GCD', 'LCM')
+- **operation** (_str_ = ADD) : parameter 'operation' in ['ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'ABSOLUTE', 'NEGATE', 'POWER', 'MINIMUM', 'MAXIMUM', 'SIGN', 'DIVIDE_ROUND', 'DIVIDE_FLOOR', 'DIVIDE_CEIL', 'FLOORED_MODULO', 'MODULO', 'GCD', 'LCM']
 
 
 
@@ -2494,8 +2494,8 @@ linear_gizmo(*value, position=None, direction=None, color_id='PRIMARY', draw_sty
 - **value** (_Float_) : socket 'Value' (id: Value)
 - **position** (_Vector_ = None) : socket 'Position' (id: Position)
 - **direction** (_Vector_ = None) : socket 'Direction' (id: Direction)
-- **color_id** (_str_ = PRIMARY) : parameter 'color_id' in ('PRIMARY', 'SECONDARY', 'X', 'Y', 'Z')
-- **draw_style** (_str_ = ARROW) : parameter 'draw_style' in ('ARROW', 'CROSS', 'BOX')
+- **color_id** (_str_ = PRIMARY) : parameter 'color_id' in ['PRIMARY', 'SECONDARY', 'X', 'Y', 'Z']
+- **draw_style** (_str_ = ARROW) : parameter 'draw_style' in ['ARROW', 'CROSS', 'BOX']
 
 
 
@@ -2553,8 +2553,8 @@ map_range(value=None, from_min=None, from_max=None, to_min=None, to_max=None, st
 - **to_max_1** (_Vector_ = None) : socket 'To Max' (id: To_Max_FLOAT3)
 - **steps_1** (_Vector_ = None) : socket 'Steps' (id: Steps_FLOAT3)
 - **clamp** (_bool_ = True) : parameter 'clamp'
-- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ('FLOAT', 'FLOAT_VECTOR')
-- **interpolation_type** (_str_ = LINEAR) : parameter 'interpolation_type' in ('LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP')
+- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ['FLOAT', 'FLOAT_VECTOR']
+- **interpolation_type** (_str_ = LINEAR) : parameter 'interpolation_type' in ['LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP']
 
 
 
@@ -2620,7 +2620,7 @@ math(value=None, value_1=None, value_2=None, operation='ADD', use_clamp=False)
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
 - **value_1** (_Float_ = None) : socket 'Value' (id: Value_001)
 - **value_2** (_Float_ = None) : socket 'Value' (id: Value_002)
-- **operation** (_str_ = ADD) : parameter 'operation' in ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'POWER', 'LOGARITHM', 'SQRT', 'INVERSE_SQRT', 'ABSOLUTE', 'EXPONENT', 'MINIMUM', 'MAXIMUM', 'LESS_THAN', 'GREATER_THAN', 'SIGN', 'COMPARE', 'SMOOTH_MIN', 'SMOOTH_MAX', 'ROUND', 'FLOOR', 'CEIL', 'TRUNC', 'FRACT', 'MODULO', 'FLOORED_MODULO', 'WRAP', 'SNAP', 'PINGPONG', 'SINE', 'COSINE', 'TANGENT', 'ARCSINE', 'ARCCOSINE', 'ARCTANGENT', 'ARCTAN2', 'SINH', 'COSH', 'TANH', 'RADIANS', 'DEGREES')
+- **operation** (_str_ = ADD) : parameter 'operation' in ['ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'POWER', 'LOGARITHM', 'SQRT', 'INVERSE_SQRT', 'ABSOLUTE', 'EXPONENT', 'MINIMUM', 'MAXIMUM', 'LESS_THAN', 'GREATER_THAN', 'SIGN', 'COMPARE', 'SMOOTH_MIN', 'SMOOTH_MAX', 'ROUND', 'FLOOR', 'CEIL', 'TRUNC', 'FRACT', 'MODULO', 'FLOORED_MODULO', 'WRAP', 'SNAP', 'PINGPONG', 'SINE', 'COSINE', 'TANGENT', 'ARCSINE', 'ARCCOSINE', 'ARCTANGENT', 'ARCTAN2', 'SINH', 'COSH', 'TANH', 'RADIANS', 'DEGREES']
 - **use_clamp** (_bool_ = False) : parameter 'use_clamp'
 
 
@@ -2666,7 +2666,7 @@ menu_switch(menu=None, a=None, b=None, data_type='GEOMETRY')
 - **menu** (_Menu_ = None) : socket 'Menu' (id: Menu)
 - **a** (_Geometry_ = None) : socket 'A' (id: Item_0)
 - **b** (_Geometry_ = None) : socket 'B' (id: Item_1)
-- **data_type** (_str_ = GEOMETRY) : parameter 'data_type' in ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'ROTATION', 'MATRIX', 'STRING', 'RGBA', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL')
+- **data_type** (_str_ = GEOMETRY) : parameter 'data_type' in ['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'ROTATION', 'MATRIX', 'STRING', 'RGBA', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL']
 
 
 
@@ -2690,7 +2690,7 @@ merge_by_distance(geometry=None, selection=None, distance=None, mode='ALL')
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (id: Geometry)
 - **selection** (_Boolean_ = None) : socket 'Selection' (id: Selection)
 - **distance** (_Float_ = None) : socket 'Distance' (id: Distance)
-- **mode** (_str_ = ALL) : parameter 'mode' in ('ALL', 'CONNECTED')
+- **mode** (_str_ = ALL) : parameter 'mode' in ['ALL', 'CONNECTED']
 
 
 
@@ -2714,7 +2714,7 @@ merge_layers(grease_pencil=None, selection=None, group_id=None, mode='MERGE_BY_N
 - **grease_pencil** (_Geometry_ = None) : socket 'Grease Pencil' (id: Grease Pencil)
 - **selection** (_Boolean_ = None) : socket 'Selection' (id: Selection)
 - **group_id** (_Integer_ = None) : socket 'Group ID' (id: Group ID)
-- **mode** (_str_ = MERGE_BY_NAME) : parameter 'mode' in ('MERGE_BY_NAME', 'MERGE_BY_ID')
+- **mode** (_str_ = MERGE_BY_NAME) : parameter 'mode' in ['MERGE_BY_NAME', 'MERGE_BY_ID']
 
 
 
@@ -2739,8 +2739,8 @@ mesh_boolean(*mesh_2, mesh_1=None, self_intersection=None, hole_tolerant=None, o
 - **mesh_1** (_Geometry_ = None) : socket 'Mesh 1' (id: Mesh 1)
 - **self_intersection** (_Boolean_ = None) : socket 'Self Intersection' (id: Self Intersection)
 - **hole_tolerant** (_Boolean_ = None) : socket 'Hole Tolerant' (id: Hole Tolerant)
-- **operation** (_str_ = DIFFERENCE) : parameter 'operation' in ('INTERSECT', 'UNION', 'DIFFERENCE')
-- **solver** (_str_ = FLOAT) : parameter 'solver' in ('EXACT', 'FLOAT')
+- **operation** (_str_ = DIFFERENCE) : parameter 'operation' in ['INTERSECT', 'UNION', 'DIFFERENCE']
+- **solver** (_str_ = FLOAT) : parameter 'solver' in ['EXACT', 'FLOAT']
 
 
 
@@ -2763,7 +2763,7 @@ mesh_circle(vertices=None, radius=None, fill_type='NONE')
 #### Arguments:
 - **vertices** (_Integer_ = None) : socket 'Vertices' (id: Vertices)
 - **radius** (_Float_ = None) : socket 'Radius' (id: Radius)
-- **fill_type** (_str_ = NONE) : parameter 'fill_type' in ('NONE', 'NGON', 'TRIANGLE_FAN')
+- **fill_type** (_str_ = NONE) : parameter 'fill_type' in ['NONE', 'NGON', 'TRIANGLE_FAN']
 
 
 
@@ -2804,8 +2804,8 @@ mesh_line(count=None, resolution=None, start_location=None, offset=None, count_m
 - **resolution** (_Float_ = None) : socket 'Resolution' (id: Resolution)
 - **start_location** (_Vector_ = None) : socket 'Start Location' (id: Start Location)
 - **offset** (_Vector_ = None) : socket 'Offset' (id: Offset)
-- **count_mode** (_str_ = TOTAL) : parameter 'count_mode' in ('TOTAL', 'RESOLUTION')
-- **mode** (_str_ = OFFSET) : parameter 'mode' in ('OFFSET', 'END_POINTS')
+- **count_mode** (_str_ = TOTAL) : parameter 'count_mode' in ['TOTAL', 'RESOLUTION']
+- **mode** (_str_ = OFFSET) : parameter 'mode' in ['OFFSET', 'END_POINTS']
 
 
 
@@ -2876,7 +2876,7 @@ mesh_to_points(mesh=None, selection=None, position=None, radius=None, mode='VERT
 - **selection** (_Boolean_ = None) : socket 'Selection' (id: Selection)
 - **position** (_Vector_ = None) : socket 'Position' (id: Position)
 - **radius** (_Float_ = None) : socket 'Radius' (id: Radius)
-- **mode** (_str_ = VERTICES) : parameter 'mode' in ('VERTICES', 'EDGES', 'FACES', 'CORNERS')
+- **mode** (_str_ = VERTICES) : parameter 'mode' in ['VERTICES', 'EDGES', 'FACES', 'CORNERS']
 
 
 
@@ -2925,7 +2925,7 @@ mesh_to_volume(mesh=None, density=None, voxel_size=None, voxel_amount=None, inte
 - **voxel_size** (_Float_ = None) : socket 'Voxel Size' (id: Voxel Size)
 - **voxel_amount** (_Float_ = None) : socket 'Voxel Amount' (id: Voxel Amount)
 - **interior_band_width** (_Float_ = None) : socket 'Interior Band Width' (id: Interior Band Width)
-- **resolution_mode** (_str_ = VOXEL_AMOUNT) : parameter 'resolution_mode' in ('VOXEL_AMOUNT', 'VOXEL_SIZE')
+- **resolution_mode** (_str_ = VOXEL_AMOUNT) : parameter 'resolution_mode' in ['VOXEL_AMOUNT', 'VOXEL_SIZE']
 
 
 
@@ -2955,11 +2955,11 @@ mix(a=None, b=None, a_1=None, b_1=None, a_2=None, b_2=None, a_3=None, b_3=None, 
 - **a_3** (_Rotation_ = None) : socket 'A' (id: A_Rotation)
 - **b_3** (_Rotation_ = None) : socket 'B' (id: B_Rotation)
 - **factor** (_Vector_ = None) : socket 'Factor' (id: Factor_Vector)
-- **blend_type** (_str_ = MIX) : parameter 'blend_type' in ('MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE')
+- **blend_type** (_str_ = MIX) : parameter 'blend_type' in ['MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE']
 - **clamp_factor** (_bool_ = True) : parameter 'clamp_factor'
 - **clamp_result** (_bool_ = False) : parameter 'clamp_result'
-- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ('FLOAT', 'VECTOR', 'RGBA', 'ROTATION')
-- **factor_mode** (_str_ = UNIFORM) : parameter 'factor_mode' in ('UNIFORM', 'NON_UNIFORM')
+- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ['FLOAT', 'VECTOR', 'RGBA', 'ROTATION']
+- **factor_mode** (_str_ = UNIFORM) : parameter 'factor_mode' in ['UNIFORM', 'NON_UNIFORM']
 
 
 
@@ -3019,7 +3019,7 @@ named_attribute(name=None, data_type='FLOAT')
 
 #### Arguments:
 - **name** (_String_ = None) : socket 'Name' (id: Name)
-- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4')
+- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ['FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4']
 
 
 
@@ -3070,8 +3070,8 @@ noise_texture(vector=None, w=None, scale=None, detail=None, roughness=None, lacu
 - **offset** (_Float_ = None) : socket 'Offset' (id: Offset)
 - **gain** (_Float_ = None) : socket 'Gain' (id: Gain)
 - **distortion** (_Float_ = None) : socket 'Distortion' (id: Distortion)
-- **noise_dimensions** (_str_ = 3D) : parameter 'noise_dimensions' in ('1D', '2D', '3D', '4D')
-- **noise_type** (_str_ = FBM) : parameter 'noise_type' in ('MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN')
+- **noise_dimensions** (_str_ = 3D) : parameter 'noise_dimensions' in ['1D', '2D', '3D', '4D']
+- **noise_type** (_str_ = FBM) : parameter 'noise_type' in ['MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN']
 - **normalize** (_bool_ = True) : parameter 'normalize'
 
 
@@ -3095,7 +3095,7 @@ object_info(object=None, as_instance=None, transform_space='ORIGINAL')
 #### Arguments:
 - **object** (_Object_ = None) : socket 'Object' (id: Object)
 - **as_instance** (_Boolean_ = None) : socket 'As Instance' (id: As Instance)
-- **transform_space** (_str_ = ORIGINAL) : parameter 'transform_space' in ('ORIGINAL', 'RELATIVE')
+- **transform_space** (_str_ = ORIGINAL) : parameter 'transform_space' in ['ORIGINAL', 'RELATIVE']
 
 
 
@@ -3303,7 +3303,7 @@ points_to_volume(points=None, density=None, voxel_size=None, voxel_amount=None, 
 - **voxel_size** (_Float_ = None) : socket 'Voxel Size' (id: Voxel Size)
 - **voxel_amount** (_Float_ = None) : socket 'Voxel Amount' (id: Voxel Amount)
 - **radius** (_Float_ = None) : socket 'Radius' (id: Radius)
-- **resolution_mode** (_str_ = VOXEL_AMOUNT) : parameter 'resolution_mode' in ('VOXEL_AMOUNT', 'VOXEL_SIZE')
+- **resolution_mode** (_str_ = VOXEL_AMOUNT) : parameter 'resolution_mode' in ['VOXEL_AMOUNT', 'VOXEL_SIZE']
 
 
 
@@ -3381,7 +3381,7 @@ quadrilateral(width=None, height=None, bottom_width=None, top_width=None, offset
 - **point_2** (_Vector_ = None) : socket 'Point 2' (id: Point 2)
 - **point_3** (_Vector_ = None) : socket 'Point 3' (id: Point 3)
 - **point_4** (_Vector_ = None) : socket 'Point 4' (id: Point 4)
-- **mode** (_str_ = RECTANGLE) : parameter 'mode' in ('RECTANGLE', 'PARALLELOGRAM', 'TRAPEZOID', 'KITE', 'POINTS')
+- **mode** (_str_ = RECTANGLE) : parameter 'mode' in ['RECTANGLE', 'PARALLELOGRAM', 'TRAPEZOID', 'KITE', 'POINTS']
 
 
 
@@ -3435,7 +3435,7 @@ random_value(min=None, max=None, min_1=None, max_1=None, min_2=None, max_2=None,
 - **probability** (_Float_ = None) : socket 'Probability' (id: Probability)
 - **id** (_Integer_ = None) : socket 'ID' (id: ID)
 - **seed** (_Integer_ = None) : socket 'Seed' (id: Seed)
-- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'BOOLEAN')
+- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ['FLOAT', 'INT', 'FLOAT_VECTOR', 'BOOLEAN']
 
 
 
@@ -3461,8 +3461,8 @@ raycast(target_geometry=None, attribute=None, source_position=None, ray_directio
 - **source_position** (_Vector_ = None) : socket 'Source Position' (id: Source Position)
 - **ray_direction** (_Vector_ = None) : socket 'Ray Direction' (id: Ray Direction)
 - **ray_length** (_Float_ = None) : socket 'Ray Length' (id: Ray Length)
-- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4')
-- **mapping** (_str_ = INTERPOLATED) : parameter 'mapping' in ('INTERPOLATED', 'NEAREST')
+- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ['FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4']
+- **mapping** (_str_ = INTERPOLATED) : parameter 'mapping' in ['INTERPOLATED', 'NEAREST']
 
 
 
@@ -3509,7 +3509,7 @@ remove_named_attribute(geometry=None, name=None, pattern_mode='EXACT')
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (id: Geometry)
 - **name** (_String_ = None) : socket 'Name' (id: Name)
-- **pattern_mode** (_str_ = EXACT) : parameter 'pattern_mode' in ('EXACT', 'WILDCARD')
+- **pattern_mode** (_str_ = EXACT) : parameter 'pattern_mode' in ['EXACT', 'WILDCARD']
 
 
 
@@ -3645,7 +3645,7 @@ resample_curve(curve=None, selection=None, count=None, length=None, mode='COUNT'
 - **selection** (_Boolean_ = None) : socket 'Selection' (id: Selection)
 - **count** (_Integer_ = None) : socket 'Count' (id: Count)
 - **length** (_Float_ = None) : socket 'Length' (id: Length)
-- **mode** (_str_ = COUNT) : parameter 'mode' in ('EVALUATED', 'COUNT', 'LENGTH')
+- **mode** (_str_ = COUNT) : parameter 'mode' in ['EVALUATED', 'COUNT', 'LENGTH']
 
 
 
@@ -3737,7 +3737,7 @@ rotate_rotation(rotation=None, rotate_by=None, rotation_space='GLOBAL')
 #### Arguments:
 - **rotation** (_Rotation_ = None) : socket 'Rotation' (id: Rotation)
 - **rotate_by** (_Rotation_ = None) : socket 'Rotate By' (id: Rotate By)
-- **rotation_space** (_str_ = GLOBAL) : parameter 'rotation_space' in ('GLOBAL', 'LOCAL')
+- **rotation_space** (_str_ = GLOBAL) : parameter 'rotation_space' in ['GLOBAL', 'LOCAL']
 
 
 
@@ -3848,8 +3848,8 @@ sample_curve(curves=None, value=None, length=None, curve_index=None, factor=None
 - **length** (_Float_ = None) : socket 'Length' (id: Length)
 - **curve_index** (_Integer_ = None) : socket 'Curve Index' (id: Curve Index)
 - **factor** (_Float_ = None) : socket 'Factor' (id: Factor)
-- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4')
-- **mode** (_str_ = FACTOR) : parameter 'mode' in ('FACTOR', 'LENGTH')
+- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ['FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4']
+- **mode** (_str_ = FACTOR) : parameter 'mode' in ['FACTOR', 'LENGTH']
 - **use_all_curves** (_bool_ = False) : parameter 'use_all_curves'
 
 
@@ -3873,8 +3873,8 @@ sample_grid(grid=None, position=None, data_type='FLOAT', interpolation_mode='TRI
 #### Arguments:
 - **grid** (_Float_ = None) : socket 'Grid' (id: Grid)
 - **position** (_Vector_ = None) : socket 'Position' (id: Position)
-- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR')
-- **interpolation_mode** (_str_ = TRILINEAR) : parameter 'interpolation_mode' in ('NEAREST', 'TRILINEAR', 'TRIQUADRATIC')
+- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ['FLOAT', 'INT', 'BOOLEAN', 'VECTOR']
+- **interpolation_mode** (_str_ = TRILINEAR) : parameter 'interpolation_mode' in ['NEAREST', 'TRILINEAR', 'TRIQUADRATIC']
 
 
 
@@ -3899,7 +3899,7 @@ sample_grid_index(grid=None, x=None, y=None, z=None, data_type='FLOAT')
 - **x** (_Integer_ = None) : socket 'X' (id: X)
 - **y** (_Integer_ = None) : socket 'Y' (id: Y)
 - **z** (_Integer_ = None) : socket 'Z' (id: Z)
-- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR')
+- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ['FLOAT', 'INT', 'BOOLEAN', 'VECTOR']
 
 
 
@@ -3924,8 +3924,8 @@ sample_index(geometry=None, value=None, index=None, clamp=False, data_type='FLOA
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
 - **index** (_Integer_ = None) : socket 'Index' (id: Index)
 - **clamp** (_bool_ = False) : parameter 'clamp'
-- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4')
-- **domain** (_str_ = POINT) : parameter 'domain' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER')
+- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ['FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4']
+- **domain** (_str_ = POINT) : parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
 
 
 
@@ -3948,7 +3948,7 @@ sample_nearest(geometry=None, sample_position=None, domain='POINT')
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (id: Geometry)
 - **sample_position** (_Vector_ = None) : socket 'Sample Position' (id: Sample Position)
-- **domain** (_str_ = POINT) : parameter 'domain' in ('POINT', 'EDGE', 'FACE', 'CORNER')
+- **domain** (_str_ = POINT) : parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER']
 
 
 
@@ -3974,7 +3974,7 @@ sample_nearest_surface(mesh=None, value=None, group_id=None, sample_position=Non
 - **group_id** (_Integer_ = None) : socket 'Group ID' (id: Group ID)
 - **sample_position** (_Vector_ = None) : socket 'Sample Position' (id: Sample Position)
 - **sample_group_id** (_Integer_ = None) : socket 'Sample Group ID' (id: Sample Group ID)
-- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4')
+- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ['FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4']
 
 
 
@@ -3999,7 +3999,7 @@ sample_uv_surface(mesh=None, value=None, uv_map=None, sample_uv=None, data_type=
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
 - **uv_map** (_Vector_ = None) : socket 'UV Map' (id: Source UV Map)
 - **sample_uv** (_Vector_ = None) : socket 'Sample UV' (id: Sample UV)
-- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4')
+- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ['FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4']
 
 
 
@@ -4025,8 +4025,8 @@ scale_elements(geometry=None, selection=None, scale=None, center=None, axis=None
 - **scale** (_Float_ = None) : socket 'Scale' (id: Scale)
 - **center** (_Vector_ = None) : socket 'Center' (id: Center)
 - **axis** (_Vector_ = None) : socket 'Axis' (id: Axis)
-- **domain** (_str_ = FACE) : parameter 'domain' in ('FACE', 'EDGE')
-- **scale_mode** (_str_ = UNIFORM) : parameter 'scale_mode' in ('UNIFORM', 'SINGLE_AXIS')
+- **domain** (_str_ = FACE) : parameter 'domain' in ['FACE', 'EDGE']
+- **scale_mode** (_str_ = UNIFORM) : parameter 'scale_mode' in ['UNIFORM', 'SINGLE_AXIS']
 
 
 
@@ -4090,7 +4090,7 @@ sdf_grid_boolean(*grid_2, grid_1=None, operation='DIFFERENCE')
 #### Arguments:
 - **grid_2** (_Float_) : socket 'Grid 2' (id: Grid 2)
 - **grid_1** (_Float_ = None) : socket 'Grid 1' (id: Grid 1)
-- **operation** (_str_ = DIFFERENCE) : parameter 'operation' in ('INTERSECT', 'UNION', 'DIFFERENCE')
+- **operation** (_str_ = DIFFERENCE) : parameter 'operation' in ['INTERSECT', 'UNION', 'DIFFERENCE']
 
 
 
@@ -4128,7 +4128,7 @@ separate_color(color=None, mode='RGB')
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (id: Color)
-- **mode** (_str_ = RGB) : parameter 'mode' in ('RGB', 'HSV', 'HSL')
+- **mode** (_str_ = RGB) : parameter 'mode' in ['RGB', 'HSV', 'HSL']
 
 
 
@@ -4172,7 +4172,7 @@ separate_geometry(geometry=None, selection=None, domain='POINT')
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (id: Geometry)
 - **selection** (_Boolean_ = None) : socket 'Selection' (id: Selection)
-- **domain** (_str_ = POINT) : parameter 'domain' in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE', 'LAYER')
+- **domain** (_str_ = POINT) : parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE', 'LAYER']
 
 
 
@@ -4259,7 +4259,7 @@ set_curve_normal(curve=None, selection=None, normal=None, mode='MINIMUM_TWIST')
 - **curve** (_Geometry_ = None) : socket 'Curve' (id: Curve)
 - **selection** (_Boolean_ = None) : socket 'Selection' (id: Selection)
 - **normal** (_Vector_ = None) : socket 'Normal' (id: Normal)
-- **mode** (_str_ = MINIMUM_TWIST) : parameter 'mode' in ('MINIMUM_TWIST', 'Z_UP', 'FREE')
+- **mode** (_str_ = MINIMUM_TWIST) : parameter 'mode' in ['MINIMUM_TWIST', 'Z_UP', 'FREE']
 
 
 
@@ -4375,7 +4375,7 @@ set_handle_positions(curve=None, selection=None, position=None, offset=None, mod
 - **selection** (_Boolean_ = None) : socket 'Selection' (id: Selection)
 - **position** (_Vector_ = None) : socket 'Position' (id: Position)
 - **offset** (_Vector_ = None) : socket 'Offset' (id: Offset)
-- **mode** (_str_ = LEFT) : parameter 'mode' in ('LEFT', 'RIGHT')
+- **mode** (_str_ = LEFT) : parameter 'mode' in ['LEFT', 'RIGHT']
 
 
 
@@ -4390,7 +4390,7 @@ set_handle_positions(curve=None, selection=None, position=None, offset=None, mod
 > classmethod
 
 ``` python
-set_handle_type(curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'})
+set_handle_type(curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'})
 ```
 
 > Node [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html)
@@ -4398,8 +4398,8 @@ set_handle_type(curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', '
 #### Arguments:
 - **curve** (_Geometry_ = None) : socket 'Curve' (id: Curve)
 - **selection** (_Boolean_ = None) : socket 'Selection' (id: Selection)
-- **handle_type** (_str_ = AUTO) : parameter 'handle_type' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-- **mode** (_set_ = {'RIGHT', 'LEFT'}) : parameter 'mode'
+- **handle_type** (_str_ = AUTO) : parameter 'handle_type' in ['FREE', 'AUTO', 'VECTOR', 'ALIGN']
+- **mode** (_set_ = {'LEFT', 'RIGHT'}) : parameter 'mode'
 
 
 
@@ -4561,8 +4561,8 @@ set_selection(geometry=None, selection=None, domain='POINT', selection_type='BOO
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (id: Geometry)
 - **selection** (_Boolean_ = None) : socket 'Selection' (id: Selection)
-- **domain** (_str_ = POINT) : parameter 'domain' in ('POINT', 'EDGE', 'FACE', 'CURVE')
-- **selection_type** (_str_ = BOOLEAN) : parameter 'selection_type' in ('BOOLEAN', 'FLOAT')
+- **domain** (_str_ = POINT) : parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CURVE']
+- **selection_type** (_str_ = BOOLEAN) : parameter 'selection_type' in ['BOOLEAN', 'FLOAT']
 
 
 
@@ -4586,7 +4586,7 @@ set_shade_smooth(geometry=None, selection=None, shade_smooth=None, domain='FACE'
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (id: Geometry)
 - **selection** (_Boolean_ = None) : socket 'Selection' (id: Selection)
 - **shade_smooth** (_Boolean_ = None) : socket 'Shade Smooth' (id: Shade Smooth)
-- **domain** (_str_ = FACE) : parameter 'domain' in ('EDGE', 'FACE')
+- **domain** (_str_ = FACE) : parameter 'domain' in ['EDGE', 'FACE']
 
 
 
@@ -4655,7 +4655,7 @@ set_spline_type(curve=None, selection=None, spline_type='POLY')
 #### Arguments:
 - **curve** (_Geometry_ = None) : socket 'Curve' (id: Curve)
 - **selection** (_Boolean_ = None) : socket 'Selection' (id: Selection)
-- **spline_type** (_str_ = POLY) : parameter 'spline_type' in ('CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS')
+- **spline_type** (_str_ = POLY) : parameter 'spline_type' in ['CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS']
 
 
 
@@ -4747,7 +4747,7 @@ sort_elements(geometry=None, selection=None, group_id=None, sort_weight=None, do
 - **selection** (_Boolean_ = None) : socket 'Selection' (id: Selection)
 - **group_id** (_Integer_ = None) : socket 'Group ID' (id: Group ID)
 - **sort_weight** (_Float_ = None) : socket 'Sort Weight' (id: Sort Weight)
-- **domain** (_str_ = POINT) : parameter 'domain' in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE')
+- **domain** (_str_ = POINT) : parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE']
 
 
 
@@ -4867,7 +4867,7 @@ split_to_instances(geometry=None, selection=None, group_id=None, domain='POINT')
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (id: Geometry)
 - **selection** (_Boolean_ = None) : socket 'Selection' (id: Selection)
 - **group_id** (_Integer_ = None) : socket 'Group ID' (id: Group ID)
-- **domain** (_str_ = POINT) : parameter 'domain' in ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE', 'LAYER')
+- **domain** (_str_ = POINT) : parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE', 'LAYER']
 
 
 
@@ -4916,8 +4916,8 @@ store_named_attribute(geometry=None, selection=None, name=None, value=None, data
 - **selection** (_Boolean_ = None) : socket 'Selection' (id: Selection)
 - **name** (_String_ = None) : socket 'Name' (id: Name)
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
-- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BYTE_COLOR', 'BOOLEAN', 'FLOAT2', 'INT8', 'QUATERNION', 'FLOAT4X4')
-- **domain** (_str_ = POINT) : parameter 'domain' in ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER')
+- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ['FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BYTE_COLOR', 'BOOLEAN', 'FLOAT2', 'INT8', 'QUATERNION', 'FLOAT4X4']
+- **domain** (_str_ = POINT) : parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
 
 
 
@@ -4941,7 +4941,7 @@ store_named_grid(volume=None, name=None, grid=None, data_type='FLOAT')
 - **volume** (_Geometry_ = None) : socket 'Volume' (id: Volume)
 - **name** (_String_ = None) : socket 'Name' (id: Name)
 - **grid** (_Float_ = None) : socket 'Grid' (id: Grid)
-- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ('FLOAT', 'FLOAT_VECTOR', 'FLOAT2')
+- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ['FLOAT', 'FLOAT_VECTOR', 'FLOAT2']
 
 
 
@@ -5011,10 +5011,10 @@ string_to_curves(string=None, size=None, character_spacing=None, word_spacing=No
 - **line_spacing** (_Float_ = None) : socket 'Line Spacing' (id: Line Spacing)
 - **text_box_width** (_Float_ = None) : socket 'Text Box Width' (id: Text Box Width)
 - **text_box_height** (_Float_ = None) : socket 'Text Box Height' (id: Text Box Height)
-- **align_x** (_str_ = LEFT) : parameter 'align_x' in ('LEFT', 'CENTER', 'RIGHT', 'JUSTIFY', 'FLUSH')
-- **align_y** (_str_ = TOP_BASELINE) : parameter 'align_y' in ('TOP', 'TOP_BASELINE', 'MIDDLE', 'BOTTOM_BASELINE', 'BOTTOM')
-- **overflow** (_str_ = OVERFLOW) : parameter 'overflow' in ('OVERFLOW', 'SCALE_TO_FIT', 'TRUNCATE')
-- **pivot_mode** (_str_ = BOTTOM_LEFT) : parameter 'pivot_mode' in ('MIDPOINT', 'TOP_LEFT', 'TOP_CENTER', 'TOP_RIGHT', 'BOTTOM_LEFT', 'BOTTOM_CENTER', 'BOTTOM_RIGHT')
+- **align_x** (_str_ = LEFT) : parameter 'align_x' in ['LEFT', 'CENTER', 'RIGHT', 'JUSTIFY', 'FLUSH']
+- **align_y** (_str_ = TOP_BASELINE) : parameter 'align_y' in ['TOP', 'TOP_BASELINE', 'MIDDLE', 'BOTTOM_BASELINE', 'BOTTOM']
+- **overflow** (_str_ = OVERFLOW) : parameter 'overflow' in ['OVERFLOW', 'SCALE_TO_FIT', 'TRUNCATE']
+- **pivot_mode** (_str_ = BOTTOM_LEFT) : parameter 'pivot_mode' in ['MIDPOINT', 'TOP_LEFT', 'TOP_CENTER', 'TOP_RIGHT', 'BOTTOM_LEFT', 'BOTTOM_CENTER', 'BOTTOM_RIGHT']
 
 
 
@@ -5083,8 +5083,8 @@ subdivision_surface(mesh=None, level=None, edge_crease=None, vertex_crease=None,
 - **level** (_Integer_ = None) : socket 'Level' (id: Level)
 - **edge_crease** (_Float_ = None) : socket 'Edge Crease' (id: Edge Crease)
 - **vertex_crease** (_Float_ = None) : socket 'Vertex Crease' (id: Vertex Crease)
-- **boundary_smooth** (_str_ = ALL) : parameter 'boundary_smooth' in ('PRESERVE_CORNERS', 'ALL')
-- **uv_smooth** (_str_ = PRESERVE_BOUNDARIES) : parameter 'uv_smooth' in ('NONE', 'PRESERVE_CORNERS', 'PRESERVE_CORNERS_AND_JUNCTIONS', 'PRESERVE_CORNERS_JUNCTIONS_AND_CONCAVE', 'PRESERVE_BOUNDARIES', 'SMOOTH_ALL')
+- **boundary_smooth** (_str_ = ALL) : parameter 'boundary_smooth' in ['PRESERVE_CORNERS', 'ALL']
+- **uv_smooth** (_str_ = PRESERVE_BOUNDARIES) : parameter 'uv_smooth' in ['NONE', 'PRESERVE_CORNERS', 'PRESERVE_CORNERS_AND_JUNCTIONS', 'PRESERVE_CORNERS_JUNCTIONS_AND_CONCAVE', 'PRESERVE_BOUNDARIES', 'SMOOTH_ALL']
 
 
 
@@ -5108,7 +5108,7 @@ switch(switch=None, false=None, true=None, input_type='GEOMETRY')
 - **switch** (_Boolean_ = None) : socket 'Switch' (id: Switch)
 - **false** (_Geometry_ = None) : socket 'False' (id: False)
 - **true** (_Geometry_ = None) : socket 'True' (id: True)
-- **input_type** (_str_ = GEOMETRY) : parameter 'input_type' in ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'RGBA', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL')
+- **input_type** (_str_ = GEOMETRY) : parameter 'input_type' in ['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'RGBA', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL']
 
 
 
@@ -5156,7 +5156,7 @@ transform_geometry(geometry=None, translation=None, rotation=None, scale=None, t
 - **rotation** (_Rotation_ = None) : socket 'Rotation' (id: Rotation)
 - **scale** (_Vector_ = None) : socket 'Scale' (id: Scale)
 - **transform** (_Matrix_ = None) : socket 'Transform' (id: Transform)
-- **mode** (_str_ = COMPONENTS) : parameter 'mode' in ('COMPONENTS', 'MATRIX')
+- **mode** (_str_ = COMPONENTS) : parameter 'mode' in ['COMPONENTS', 'MATRIX']
 
 
 
@@ -5279,8 +5279,8 @@ triangulate(mesh=None, selection=None, minimum_vertices=None, ngon_method='BEAUT
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (id: Mesh)
 - **selection** (_Boolean_ = None) : socket 'Selection' (id: Selection)
 - **minimum_vertices** (_Integer_ = None) : socket 'Minimum Vertices' (id: Minimum Vertices)
-- **ngon_method** (_str_ = BEAUTY) : parameter 'ngon_method' in ('BEAUTY', 'CLIP')
-- **quad_method** (_str_ = SHORTEST_DIAGONAL) : parameter 'quad_method' in ('BEAUTY', 'FIXED', 'FIXED_ALTERNATE', 'SHORTEST_DIAGONAL', 'LONGEST_DIAGONAL')
+- **ngon_method** (_str_ = BEAUTY) : parameter 'ngon_method' in ['BEAUTY', 'CLIP']
+- **quad_method** (_str_ = SHORTEST_DIAGONAL) : parameter 'quad_method' in ['BEAUTY', 'FIXED', 'FIXED_ALTERNATE', 'SHORTEST_DIAGONAL', 'LONGEST_DIAGONAL']
 
 
 
@@ -5307,7 +5307,7 @@ trim_curve(curve=None, selection=None, start=None, end=None, start_1=None, end_1
 - **end** (_Float_ = None) : socket 'End' (id: End)
 - **start_1** (_Float_ = None) : socket 'Start' (id: Start_001)
 - **end_1** (_Float_ = None) : socket 'End' (id: End_001)
-- **mode** (_str_ = FACTOR) : parameter 'mode' in ('FACTOR', 'LENGTH')
+- **mode** (_str_ = FACTOR) : parameter 'mode' in ['FACTOR', 'LENGTH']
 
 
 
@@ -5355,7 +5355,7 @@ uv_unwrap(selection=None, seam=None, margin=None, fill_holes=None, method='ANGLE
 - **seam** (_Boolean_ = None) : socket 'Seam' (id: Seam)
 - **margin** (_Float_ = None) : socket 'Margin' (id: Margin)
 - **fill_holes** (_Boolean_ = None) : socket 'Fill Holes' (id: Fill Holes)
-- **method** (_str_ = ANGLE_BASED) : parameter 'method' in ('ANGLE_BASED', 'CONFORMAL')
+- **method** (_str_ = ANGLE_BASED) : parameter 'method' in ['ANGLE_BASED', 'CONFORMAL']
 
 
 
@@ -5378,7 +5378,7 @@ value_to_string(value=None, decimals=None, data_type='FLOAT')
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
 - **decimals** (_Integer_ = None) : socket 'Decimals' (id: Decimals)
-- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ('FLOAT', 'INT')
+- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ['FLOAT', 'INT']
 
 
 
@@ -5425,7 +5425,7 @@ vector_math(vector=None, vector_1=None, vector_2=None, scale=None, operation='AD
 - **vector_1** (_Vector_ = None) : socket 'Vector' (id: Vector_001)
 - **vector_2** (_Vector_ = None) : socket 'Vector' (id: Vector_002)
 - **scale** (_Float_ = None) : socket 'Scale' (id: Scale)
-- **operation** (_str_ = ADD) : parameter 'operation' in ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'CROSS_PRODUCT', 'PROJECT', 'REFLECT', 'REFRACT', 'FACEFORWARD', 'DOT_PRODUCT', 'DISTANCE', 'LENGTH', 'SCALE', 'NORMALIZE', 'ABSOLUTE', 'MINIMUM', 'MAXIMUM', 'FLOOR', 'CEIL', 'FRACTION', 'MODULO', 'WRAP', 'SNAP', 'SINE', 'COSINE', 'TANGENT')
+- **operation** (_str_ = ADD) : parameter 'operation' in ['ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'CROSS_PRODUCT', 'PROJECT', 'REFLECT', 'REFRACT', 'FACEFORWARD', 'DOT_PRODUCT', 'DISTANCE', 'LENGTH', 'SCALE', 'NORMALIZE', 'ABSOLUTE', 'MINIMUM', 'MAXIMUM', 'FLOOR', 'CEIL', 'FRACTION', 'MODULO', 'WRAP', 'SNAP', 'SINE', 'COSINE', 'TANGENT']
 
 
 
@@ -5452,7 +5452,7 @@ vector_rotate(vector=None, center=None, axis=None, angle=None, rotation=None, in
 - **angle** (_Float_ = None) : socket 'Angle' (id: Angle)
 - **rotation** (_Vector_ = None) : socket 'Rotation' (id: Rotation)
 - **invert** (_bool_ = False) : parameter 'invert'
-- **rotation_type** (_str_ = AXIS_ANGLE) : parameter 'rotation_type' in ('AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ')
+- **rotation_type** (_str_ = AXIS_ANGLE) : parameter 'rotation_type' in ['AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ']
 
 
 
@@ -5512,8 +5512,8 @@ viewer(geometry=None, value=None, data_type='FLOAT', domain='AUTO')
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (id: Geometry)
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
-- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4')
-- **domain** (_str_ = AUTO) : parameter 'domain' in ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER')
+- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ['FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4']
+- **domain** (_str_ = AUTO) : parameter 'domain' in ['AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
 
 
 
@@ -5582,7 +5582,7 @@ volume_to_mesh(volume=None, voxel_size=None, voxel_amount=None, threshold=None, 
 - **voxel_amount** (_Float_ = None) : socket 'Voxel Amount' (id: Voxel Amount)
 - **threshold** (_Float_ = None) : socket 'Threshold' (id: Threshold)
 - **adaptivity** (_Float_ = None) : socket 'Adaptivity' (id: Adaptivity)
-- **resolution_mode** (_str_ = GRID) : parameter 'resolution_mode' in ('GRID', 'VOXEL_AMOUNT', 'VOXEL_SIZE')
+- **resolution_mode** (_str_ = GRID) : parameter 'resolution_mode' in ['GRID', 'VOXEL_AMOUNT', 'VOXEL_SIZE']
 
 
 
@@ -5612,10 +5612,10 @@ voronoi_texture(vector=None, w=None, scale=None, detail=None, roughness=None, la
 - **smoothness** (_Float_ = None) : socket 'Smoothness' (id: Smoothness)
 - **exponent** (_Float_ = None) : socket 'Exponent' (id: Exponent)
 - **randomness** (_Float_ = None) : socket 'Randomness' (id: Randomness)
-- **distance** (_str_ = EUCLIDEAN) : parameter 'distance' in ('EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI')
-- **feature** (_str_ = F1) : parameter 'feature' in ('F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS')
+- **distance** (_str_ = EUCLIDEAN) : parameter 'distance' in ['EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI']
+- **feature** (_str_ = F1) : parameter 'feature' in ['F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS']
 - **normalize** (_bool_ = False) : parameter 'normalize'
-- **voronoi_dimensions** (_str_ = 3D) : parameter 'voronoi_dimensions' in ('1D', '2D', '3D', '4D')
+- **voronoi_dimensions** (_str_ = 3D) : parameter 'voronoi_dimensions' in ['1D', '2D', '3D', '4D']
 
 
 
@@ -5666,10 +5666,10 @@ wave_texture(vector=None, scale=None, distortion=None, detail=None, detail_scale
 - **detail_scale** (_Float_ = None) : socket 'Detail Scale' (id: Detail Scale)
 - **detail_roughness** (_Float_ = None) : socket 'Detail Roughness' (id: Detail Roughness)
 - **phase_offset** (_Float_ = None) : socket 'Phase Offset' (id: Phase Offset)
-- **bands_direction** (_str_ = X) : parameter 'bands_direction' in ('X', 'Y', 'Z', 'DIAGONAL')
-- **rings_direction** (_str_ = X) : parameter 'rings_direction' in ('X', 'Y', 'Z', 'SPHERICAL')
-- **wave_profile** (_str_ = SIN) : parameter 'wave_profile' in ('SIN', 'SAW', 'TRI')
-- **wave_type** (_str_ = BANDS) : parameter 'wave_type' in ('BANDS', 'RINGS')
+- **bands_direction** (_str_ = X) : parameter 'bands_direction' in ['X', 'Y', 'Z', 'DIAGONAL']
+- **rings_direction** (_str_ = X) : parameter 'rings_direction' in ['X', 'Y', 'Z', 'SPHERICAL']
+- **wave_profile** (_str_ = SIN) : parameter 'wave_profile' in ['SIN', 'SAW', 'TRI']
+- **wave_type** (_str_ = BANDS) : parameter 'wave_type' in ['BANDS', 'RINGS']
 
 
 
@@ -5692,7 +5692,7 @@ white_noise_texture(vector=None, w=None, noise_dimensions='3D')
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
 - **w** (_Float_ = None) : socket 'W' (id: W)
-- **noise_dimensions** (_str_ = 3D) : parameter 'noise_dimensions' in ('1D', '2D', '3D', '4D')
+- **noise_dimensions** (_str_ = 3D) : parameter 'noise_dimensions' in ['1D', '2D', '3D', '4D']
 
 
 

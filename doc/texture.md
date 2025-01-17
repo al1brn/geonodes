@@ -107,7 +107,7 @@ Gabor(vector=None, scale=None, frequency=None, anisotropy=None, orientation=None
 - **frequency** (_Float_ = None) : socket 'Frequency' (id: Frequency)
 - **anisotropy** (_Float_ = None) : socket 'Anisotropy' (id: Anisotropy)
 - **orientation** (_Float_ = None) : socket 'Orientation' (id: Orientation 2D)
-- **gabor_type** (_str_ = 2D) : parameter 'gabor_type' in ('2D', '3D')
+- **gabor_type** (_str_ = 2D) : parameter 'gabor_type' in ['2D', '3D']
 
 
 
@@ -129,7 +129,7 @@ Gradient(vector=None, gradient_type='LINEAR')
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
-- **gradient_type** (_str_ = LINEAR) : parameter 'gradient_type' in ('LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL')
+- **gradient_type** (_str_ = LINEAR) : parameter 'gradient_type' in ['LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL']
 
 
 
@@ -198,8 +198,8 @@ Noise(vector=None, scale=None, detail=None, roughness=None, lacunarity=None, dis
 - **roughness** (_Float_ = None) : socket 'Roughness' (id: Roughness)
 - **lacunarity** (_Float_ = None) : socket 'Lacunarity' (id: Lacunarity)
 - **distortion** (_Float_ = None) : socket 'Distortion' (id: Distortion)
-- **noise_dimensions** (_str_ = 3D) : parameter 'noise_dimensions' in ('1D', '2D', '3D', '4D')
-- **noise_type** (_str_ = FBM) : parameter 'noise_type' in ('MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN')
+- **noise_dimensions** (_str_ = 3D) : parameter 'noise_dimensions' in ['1D', '2D', '3D', '4D']
+- **noise_type** (_str_ = FBM) : parameter 'noise_type' in ['MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN']
 - **normalize** (_bool_ = True) : parameter 'normalize'
 
 
@@ -227,10 +227,10 @@ Voronoi(vector=None, scale=None, detail=None, roughness=None, lacunarity=None, r
 - **roughness** (_Float_ = None) : socket 'Roughness' (id: Roughness)
 - **lacunarity** (_Float_ = None) : socket 'Lacunarity' (id: Lacunarity)
 - **randomness** (_Float_ = None) : socket 'Randomness' (id: Randomness)
-- **distance** (_str_ = EUCLIDEAN) : parameter 'distance' in ('EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI')
-- **feature** (_str_ = F1) : parameter 'feature' in ('F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS')
+- **distance** (_str_ = EUCLIDEAN) : parameter 'distance' in ['EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI']
+- **feature** (_str_ = F1) : parameter 'feature' in ['F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS']
 - **normalize** (_bool_ = False) : parameter 'normalize'
-- **voronoi_dimensions** (_str_ = 3D) : parameter 'voronoi_dimensions' in ('1D', '2D', '3D', '4D')
+- **voronoi_dimensions** (_str_ = 3D) : parameter 'voronoi_dimensions' in ['1D', '2D', '3D', '4D']
 
 
 
@@ -258,10 +258,10 @@ Wave(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, d
 - **detail_scale** (_Float_ = None) : socket 'Detail Scale' (id: Detail Scale)
 - **detail_roughness** (_Float_ = None) : socket 'Detail Roughness' (id: Detail Roughness)
 - **phase_offset** (_Float_ = None) : socket 'Phase Offset' (id: Phase Offset)
-- **bands_direction** (_str_ = X) : parameter 'bands_direction' in ('X', 'Y', 'Z', 'DIAGONAL')
-- **rings_direction** (_str_ = X) : parameter 'rings_direction' in ('X', 'Y', 'Z', 'SPHERICAL')
-- **wave_profile** (_str_ = SIN) : parameter 'wave_profile' in ('SIN', 'SAW', 'TRI')
-- **wave_type** (_str_ = BANDS) : parameter 'wave_type' in ('BANDS', 'RINGS')
+- **bands_direction** (_str_ = X) : parameter 'bands_direction' in ['X', 'Y', 'Z', 'DIAGONAL']
+- **rings_direction** (_str_ = X) : parameter 'rings_direction' in ['X', 'Y', 'Z', 'SPHERICAL']
+- **wave_profile** (_str_ = SIN) : parameter 'wave_profile' in ['SIN', 'SAW', 'TRI']
+- **wave_type** (_str_ = BANDS) : parameter 'wave_type' in ['BANDS', 'RINGS']
 
 
 
@@ -283,7 +283,7 @@ WhiteNoise(vector=None, noise_dimensions='3D')
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
-- **noise_dimensions** (_str_ = 3D) : parameter 'noise_dimensions' in ('1D', '2D', '3D', '4D')
+- **noise_dimensions** (_str_ = 3D) : parameter 'noise_dimensions' in ['1D', '2D', '3D', '4D']
 
 
 

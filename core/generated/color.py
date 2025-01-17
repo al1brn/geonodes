@@ -83,13 +83,13 @@ class Color(Socket):
         - green (Float) : socket 'Green' (id: Green)
         - blue (Float) : socket 'Blue' (id: Blue)
         - alpha (Float) : socket 'Alpha' (id: Alpha)
-        - mode (str): parameter 'mode' in ('RGB', 'HSV', 'HSL')
+        - mode (str): parameter 'mode' in ['RGB', 'HSV', 'HSL']
 
         Returns
         -------
         - Color
         """
-        utils.check_enum_arg('mode', mode, 'Combine', ('RGB', 'HSV', 'HSL'))
+        utils.check_enum_arg('Combine Color', 'mode', mode, 'Combine', ('RGB', 'HSV', 'HSL'))
         node = Node('Combine Color', sockets={'Red': red, 'Green': green, 'Blue': blue, 'Alpha': alpha}, mode=mode)
         return cls(node._out)
 
@@ -252,13 +252,13 @@ class Color(Socket):
 
         Arguments
         ---------
-        - mode (str): parameter 'mode' in ('RGB', 'HSV', 'HSL')
+        - mode (str): parameter 'mode' in ['RGB', 'HSV', 'HSL']
 
         Returns
         -------
         - Float [green_ (Float), blue_ (Float), alpha_ (Float)]
         """
-        utils.check_enum_arg('mode', mode, 'separate', ('RGB', 'HSV', 'HSL'))
+        utils.check_enum_arg('Separate Color', 'mode', mode, 'separate', ('RGB', 'HSV', 'HSL'))
         node = self._cache('Separate Color', sockets={'Color': self}, mode=mode)
         return node._out
 
@@ -466,15 +466,15 @@ class Color(Socket):
         - image (Image) : socket 'Image' (id: Image)
         - vector (Vector) : socket 'Vector' (id: Vector)
         - frame (Integer) : socket 'Frame' (id: Frame)
-        - extension (str): parameter 'extension' in ('REPEAT', 'EXTEND', 'CLIP', 'MIRROR')
-        - interpolation (str): parameter 'interpolation' in ('Linear', 'Closest', 'Cubic')
+        - extension (str): parameter 'extension' in ['REPEAT', 'EXTEND', 'CLIP', 'MIRROR']
+        - interpolation (str): parameter 'interpolation' in ['Linear', 'Closest', 'Cubic']
 
         Returns
         -------
         - Color
         """
-        utils.check_enum_arg('extension', extension, 'ImageTexture', ('REPEAT', 'EXTEND', 'CLIP', 'MIRROR'))
-        utils.check_enum_arg('interpolation', interpolation, 'ImageTexture', ('Linear', 'Closest', 'Cubic'))
+        utils.check_enum_arg('Image Texture', 'extension', extension, 'ImageTexture', ('REPEAT', 'EXTEND', 'CLIP', 'MIRROR'))
+        utils.check_enum_arg('Image Texture', 'interpolation', interpolation, 'ImageTexture', ('Linear', 'Closest', 'Cubic'))
         node = Node('Image Texture', sockets={'Image': image, 'Vector': vector, 'Frame': frame}, extension=extension, interpolation=interpolation)
         return cls(node._out)
 
@@ -1002,13 +1002,13 @@ class Color(Socket):
         - factor (Float) : socket 'Factor' (id: Factor_Float)
         - clamp_factor (bool): parameter 'clamp_factor'
         - clamp_result (bool): parameter 'clamp_result'
-        - factor_mode (str): parameter 'factor_mode' in ('UNIFORM', 'NON_UNIFORM')
+        - factor_mode (str): parameter 'factor_mode' in ['UNIFORM', 'NON_UNIFORM']
 
         Returns
         -------
         - Color
         """
-        utils.check_enum_arg('factor_mode', factor_mode, 'mix', ('UNIFORM', 'NON_UNIFORM'))
+        utils.check_enum_arg('Mix', 'factor_mode', factor_mode, 'mix', ('UNIFORM', 'NON_UNIFORM'))
         node = Node('Mix', sockets={'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode=factor_mode)
         return node._out
 
@@ -1065,13 +1065,13 @@ class Color(Socket):
         Arguments
         ---------
         - vector (Vector) : socket 'Vector' (id: Vector)
-        - gradient_type (str): parameter 'gradient_type' in ('LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL')
+        - gradient_type (str): parameter 'gradient_type' in ['LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL']
 
         Returns
         -------
         - Color
         """
-        utils.check_enum_arg('gradient_type', gradient_type, 'Gradient', ('LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL'))
+        utils.check_enum_arg('Gradient Texture', 'gradient_type', gradient_type, 'Gradient', ('LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL'))
         node = Node('Gradient Texture', sockets={'Vector': vector}, gradient_type=gradient_type)
         return cls(node._out)
 
@@ -1106,19 +1106,19 @@ class Color(Socket):
         - detail_scale (Float) : socket 'Detail Scale' (id: Detail Scale)
         - detail_roughness (Float) : socket 'Detail Roughness' (id: Detail Roughness)
         - phase_offset (Float) : socket 'Phase Offset' (id: Phase Offset)
-        - bands_direction (str): parameter 'bands_direction' in ('X', 'Y', 'Z', 'DIAGONAL')
-        - rings_direction (str): parameter 'rings_direction' in ('X', 'Y', 'Z', 'SPHERICAL')
-        - wave_profile (str): parameter 'wave_profile' in ('SIN', 'SAW', 'TRI')
-        - wave_type (str): parameter 'wave_type' in ('BANDS', 'RINGS')
+        - bands_direction (str): parameter 'bands_direction' in ['X', 'Y', 'Z', 'DIAGONAL']
+        - rings_direction (str): parameter 'rings_direction' in ['X', 'Y', 'Z', 'SPHERICAL']
+        - wave_profile (str): parameter 'wave_profile' in ['SIN', 'SAW', 'TRI']
+        - wave_type (str): parameter 'wave_type' in ['BANDS', 'RINGS']
 
         Returns
         -------
         - Color
         """
-        utils.check_enum_arg('bands_direction', bands_direction, 'Wave', ('X', 'Y', 'Z', 'DIAGONAL'))
-        utils.check_enum_arg('rings_direction', rings_direction, 'Wave', ('X', 'Y', 'Z', 'SPHERICAL'))
-        utils.check_enum_arg('wave_profile', wave_profile, 'Wave', ('SIN', 'SAW', 'TRI'))
-        utils.check_enum_arg('wave_type', wave_type, 'Wave', ('BANDS', 'RINGS'))
+        utils.check_enum_arg('Wave Texture', 'bands_direction', bands_direction, 'Wave', ('X', 'Y', 'Z', 'DIAGONAL'))
+        utils.check_enum_arg('Wave Texture', 'rings_direction', rings_direction, 'Wave', ('X', 'Y', 'Z', 'SPHERICAL'))
+        utils.check_enum_arg('Wave Texture', 'wave_profile', wave_profile, 'Wave', ('SIN', 'SAW', 'TRI'))
+        utils.check_enum_arg('Wave Texture', 'wave_type', wave_type, 'Wave', ('BANDS', 'RINGS'))
         node = Node('Wave Texture', sockets={'Vector': vector, 'Scale': scale, 'Distortion': distortion, 'Detail': detail, 'Detail Scale': detail_scale, 'Detail Roughness': detail_roughness, 'Phase Offset': phase_offset}, bands_direction=bands_direction, rings_direction=rings_direction, wave_profile=wave_profile, wave_type=wave_type)
         return cls(node._out)
 
@@ -1248,9 +1248,9 @@ class Color(Socket):
         - color_fac (Float) : socket 'Color Fac' (id: Color Fac)
         - alpha (Float) : socket 'Alpha' (id: Alpha)
         - alpha_fac (Float) : socket 'Alpha Fac' (id: Alpha Fac)
-        - blend_type (str): parameter 'blend_type' in ('MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE')
+        - blend_type (str): parameter 'blend_type' in ['MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE']
         - is_active_output (bool): parameter 'is_active_output'
-        - target (str): parameter 'target' in ('ALL', 'EEVEE', 'CYCLES')
+        - target (str): parameter 'target' in ['ALL', 'EEVEE', 'CYCLES']
         - use_alpha (bool): parameter 'use_alpha'
         - use_clamp (bool): parameter 'use_clamp'
 
@@ -1258,8 +1258,8 @@ class Color(Socket):
         -------
         - None
         """
-        utils.check_enum_arg('blend_type', blend_type, 'line_style_output', ('MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE'))
-        utils.check_enum_arg('target', target, 'line_style_output', ('ALL', 'EEVEE', 'CYCLES'))
+        utils.check_enum_arg('Line Style Output', 'blend_type', blend_type, 'line_style_output', ('MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE'))
+        utils.check_enum_arg('Line Style Output', 'target', target, 'line_style_output', ('ALL', 'EEVEE', 'CYCLES'))
         node = Node('Line Style Output', sockets={'Color': self, 'Color Fac': color_fac, 'Alpha': alpha, 'Alpha Fac': alpha_fac}, blend_type=blend_type, is_active_output=is_active_output, target=target, use_alpha=use_alpha, use_clamp=use_clamp)
         return node._out
 
@@ -1342,13 +1342,13 @@ class Color(Socket):
 
         Arguments
         ---------
-        - mode (str): parameter 'mode' in ('RGB', 'HSV', 'HSL')
+        - mode (str): parameter 'mode' in ['RGB', 'HSV', 'HSL']
 
         Returns
         -------
         - Float [green_ (Float), blue_ (Float)]
         """
-        utils.check_enum_arg('mode', mode, 'separate_col', ('RGB', 'HSV', 'HSL'))
+        utils.check_enum_arg('Separate Color', 'mode', mode, 'separate_col', ('RGB', 'HSV', 'HSL'))
         node = Node('Separate Color', sockets={'Color': self}, mode=mode)
         return node._out
 
@@ -1363,7 +1363,7 @@ class Color(Socket):
         - dust_density (float): parameter 'dust_density'
         - ground_albedo (float): parameter 'ground_albedo'
         - ozone_density (float): parameter 'ozone_density'
-        - sky_type (str): parameter 'sky_type' in ('PREETHAM', 'HOSEK_WILKIE', 'NISHITA')
+        - sky_type (str): parameter 'sky_type' in ['PREETHAM', 'HOSEK_WILKIE', 'NISHITA']
         - sun_disc (bool): parameter 'sun_disc'
         - sun_elevation (float): parameter 'sun_elevation'
         - sun_intensity (float): parameter 'sun_intensity'
@@ -1375,7 +1375,7 @@ class Color(Socket):
         -------
         - Color
         """
-        utils.check_enum_arg('sky_type', sky_type, 'SkyTexture', ('PREETHAM', 'HOSEK_WILKIE', 'NISHITA'))
+        utils.check_enum_arg('Sky Texture', 'sky_type', sky_type, 'SkyTexture', ('PREETHAM', 'HOSEK_WILKIE', 'NISHITA'))
         node = Node('Sky Texture', sockets={}, air_density=air_density, altitude=altitude, dust_density=dust_density, ground_albedo=ground_albedo, ozone_density=ozone_density, sky_type=sky_type, sun_disc=sun_disc, sun_elevation=sun_elevation, sun_intensity=sun_intensity, sun_rotation=sun_rotation, sun_size=sun_size, turbidity=turbidity)
         return cls(node._out)
 
@@ -1390,13 +1390,13 @@ class Color(Socket):
         ---------
         - midlevel (Float) : socket 'Midlevel' (id: Midlevel)
         - scale (Float) : socket 'Scale' (id: Scale)
-        - space (str): parameter 'space' in ('TANGENT', 'OBJECT', 'WORLD')
+        - space (str): parameter 'space' in ['TANGENT', 'OBJECT', 'WORLD']
 
         Returns
         -------
         - Vector
         """
-        utils.check_enum_arg('space', space, 'vector_displacement', ('TANGENT', 'OBJECT', 'WORLD'))
+        utils.check_enum_arg('Vector Displacement', 'space', space, 'vector_displacement', ('TANGENT', 'OBJECT', 'WORLD'))
         node = Node('Vector Displacement', sockets={'Vector': self, 'Midlevel': midlevel, 'Scale': scale}, space=space)
         return node._out
 

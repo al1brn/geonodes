@@ -589,13 +589,13 @@ class Integer(Socket):
         Arguments
         ---------
         - position (Vector) : socket 'Position' (id: Position)
-        - interpolation_mode (str): parameter 'interpolation_mode' in ('NEAREST', 'TRILINEAR', 'TRIQUADRATIC')
+        - interpolation_mode (str): parameter 'interpolation_mode' in ['NEAREST', 'TRILINEAR', 'TRIQUADRATIC']
 
         Returns
         -------
         - Integer
         """
-        utils.check_enum_arg('interpolation_mode', interpolation_mode, 'sample_grid', ('NEAREST', 'TRILINEAR', 'TRIQUADRATIC'))
+        utils.check_enum_arg('Sample Grid', 'interpolation_mode', interpolation_mode, 'sample_grid', ('NEAREST', 'TRILINEAR', 'TRIQUADRATIC'))
         node = Node('Sample Grid', sockets={'Grid': self, 'Position': position}, data_type='INT', interpolation_mode=interpolation_mode)
         return node._out
 

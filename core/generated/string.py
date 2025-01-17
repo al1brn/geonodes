@@ -203,19 +203,19 @@ class String(Socket):
         - word_spacing (Float) : socket 'Word Spacing' (id: Word Spacing)
         - line_spacing (Float) : socket 'Line Spacing' (id: Line Spacing)
         - text_box_width (Float) : socket 'Text Box Width' (id: Text Box Width)
-        - align_x (str): parameter 'align_x' in ('LEFT', 'CENTER', 'RIGHT', 'JUSTIFY', 'FLUSH')
-        - align_y (str): parameter 'align_y' in ('TOP', 'TOP_BASELINE', 'MIDDLE', 'BOTTOM_BASELINE', 'BOTTOM')
-        - overflow (str): parameter 'overflow' in ('OVERFLOW', 'SCALE_TO_FIT', 'TRUNCATE')
-        - pivot_mode (str): parameter 'pivot_mode' in ('MIDPOINT', 'TOP_LEFT', 'TOP_CENTER', 'TOP_RIGHT', 'BOTTOM_LEFT', 'BOTTOM_CENTER', 'BOTTOM_RIGHT')
+        - align_x (str): parameter 'align_x' in ['LEFT', 'CENTER', 'RIGHT', 'JUSTIFY', 'FLUSH']
+        - align_y (str): parameter 'align_y' in ['TOP', 'TOP_BASELINE', 'MIDDLE', 'BOTTOM_BASELINE', 'BOTTOM']
+        - overflow (str): parameter 'overflow' in ['OVERFLOW', 'SCALE_TO_FIT', 'TRUNCATE']
+        - pivot_mode (str): parameter 'pivot_mode' in ['MIDPOINT', 'TOP_LEFT', 'TOP_CENTER', 'TOP_RIGHT', 'BOTTOM_LEFT', 'BOTTOM_CENTER', 'BOTTOM_RIGHT']
 
         Returns
         -------
         - Instances [line_ (Integer), pivot_point_ (Vector)]
         """
-        utils.check_enum_arg('align_x', align_x, 'to_curves', ('LEFT', 'CENTER', 'RIGHT', 'JUSTIFY', 'FLUSH'))
-        utils.check_enum_arg('align_y', align_y, 'to_curves', ('TOP', 'TOP_BASELINE', 'MIDDLE', 'BOTTOM_BASELINE', 'BOTTOM'))
-        utils.check_enum_arg('overflow', overflow, 'to_curves', ('OVERFLOW', 'SCALE_TO_FIT', 'TRUNCATE'))
-        utils.check_enum_arg('pivot_mode', pivot_mode, 'to_curves', ('MIDPOINT', 'TOP_LEFT', 'TOP_CENTER', 'TOP_RIGHT', 'BOTTOM_LEFT', 'BOTTOM_CENTER', 'BOTTOM_RIGHT'))
+        utils.check_enum_arg('String to Curves', 'align_x', align_x, 'to_curves', ('LEFT', 'CENTER', 'RIGHT', 'JUSTIFY', 'FLUSH'))
+        utils.check_enum_arg('String to Curves', 'align_y', align_y, 'to_curves', ('TOP', 'TOP_BASELINE', 'MIDDLE', 'BOTTOM_BASELINE', 'BOTTOM'))
+        utils.check_enum_arg('String to Curves', 'overflow', overflow, 'to_curves', ('OVERFLOW', 'SCALE_TO_FIT', 'TRUNCATE'))
+        utils.check_enum_arg('String to Curves', 'pivot_mode', pivot_mode, 'to_curves', ('MIDPOINT', 'TOP_LEFT', 'TOP_CENTER', 'TOP_RIGHT', 'BOTTOM_LEFT', 'BOTTOM_CENTER', 'BOTTOM_RIGHT'))
         node = Node('String to Curves', sockets={'String': self, 'Size': size, 'Character Spacing': character_spacing, 'Word Spacing': word_spacing, 'Line Spacing': line_spacing, 'Text Box Width': text_box_width}, align_x=align_x, align_y=align_y, overflow=overflow, pivot_mode=pivot_mode)
         return node._out
 

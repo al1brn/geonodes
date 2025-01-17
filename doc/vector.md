@@ -551,8 +551,8 @@ environment_texture(image=None, interpolation='Linear', projection='EQUIRECTANGU
 
 #### Arguments:
 - **image** (_NoneType_ = None) : parameter 'image'
-- **interpolation** (_str_ = Linear) : parameter 'interpolation' in ('Linear', 'Closest', 'Cubic', 'Smart')
-- **projection** (_str_ = EQUIRECTANGULAR) : parameter 'projection' in ('EQUIRECTANGULAR', 'MIRROR_BALL')
+- **interpolation** (_str_ = Linear) : parameter 'interpolation' in ['Linear', 'Closest', 'Cubic', 'Smart']
+- **projection** (_str_ = EQUIRECTANGULAR) : parameter 'projection' in ['EQUIRECTANGULAR', 'MIRROR_BALL']
 
 
 
@@ -820,7 +820,7 @@ ies_texture(strength=None, filepath='', ies=None, mode='INTERNAL')
 - **strength** (_Float_ = None) : socket 'Strength' (id: Strength)
 - **filepath** (_str_ = ) : parameter 'filepath'
 - **ies** (_NoneType_ = None) : parameter 'ies'
-- **mode** (_str_ = INTERNAL) : parameter 'mode' in ('INTERNAL', 'EXTERNAL')
+- **mode** (_str_ = INTERNAL) : parameter 'mode' in ['INTERNAL', 'EXTERNAL']
 
 
 
@@ -904,10 +904,10 @@ image_texture(extension='REPEAT', image=None, interpolation='Linear', projection
 
 
 #### Arguments:
-- **extension** (_str_ = REPEAT) : parameter 'extension' in ('REPEAT', 'EXTEND', 'CLIP', 'MIRROR')
+- **extension** (_str_ = REPEAT) : parameter 'extension' in ['REPEAT', 'EXTEND', 'CLIP', 'MIRROR']
 - **image** (_NoneType_ = None) : parameter 'image'
-- **interpolation** (_str_ = Linear) : parameter 'interpolation' in ('Linear', 'Closest', 'Cubic', 'Smart')
-- **projection** (_str_ = FLAT) : parameter 'projection' in ('FLAT', 'BOX', 'SPHERE', 'TUBE')
+- **interpolation** (_str_ = Linear) : parameter 'interpolation' in ['Linear', 'Closest', 'Cubic', 'Smart']
+- **projection** (_str_ = FLAT) : parameter 'projection' in ['FLAT', 'BOX', 'SPHERE', 'TUBE']
 - **projection_blend** (_float_ = 0.0) : parameter 'projection_blend'
 
 
@@ -1546,16 +1546,16 @@ point_density(interpolation='Linear', object=None, particle_color_source='PARTIC
 
 
 #### Arguments:
-- **interpolation** (_str_ = Linear) : parameter 'interpolation' in ('Closest', 'Linear', 'Cubic')
+- **interpolation** (_str_ = Linear) : parameter 'interpolation' in ['Closest', 'Linear', 'Cubic']
 - **object** (_NoneType_ = None) : parameter 'object'
-- **particle_color_source** (_str_ = PARTICLE_AGE) : parameter 'particle_color_source' in ('PARTICLE_AGE', 'PARTICLE_SPEED', 'PARTICLE_VELOCITY')
+- **particle_color_source** (_str_ = PARTICLE_AGE) : parameter 'particle_color_source' in ['PARTICLE_AGE', 'PARTICLE_SPEED', 'PARTICLE_VELOCITY']
 - **particle_system** (_NoneType_ = None) : parameter 'particle_system'
-- **point_source** (_str_ = PARTICLE_SYSTEM) : parameter 'point_source' in ('PARTICLE_SYSTEM', 'OBJECT')
+- **point_source** (_str_ = PARTICLE_SYSTEM) : parameter 'point_source' in ['PARTICLE_SYSTEM', 'OBJECT']
 - **radius** (_float_ = 0.30000001192092896) : parameter 'radius'
 - **resolution** (_int_ = 100) : parameter 'resolution'
-- **space** (_str_ = OBJECT) : parameter 'space' in ('OBJECT', 'WORLD')
+- **space** (_str_ = OBJECT) : parameter 'space' in ['OBJECT', 'WORLD']
 - **vertex_attribute_name** (_str_ = ) : parameter 'vertex_attribute_name'
-- **vertex_color_source** (_str_ = VERTEX_COLOR) : parameter 'vertex_color_source' in ('VERTEX_COLOR', 'VERTEX_WEIGHT', 'VERTEX_NORMAL')
+- **vertex_color_source** (_str_ = VERTEX_COLOR) : parameter 'vertex_color_source' in ['VERTEX_COLOR', 'VERTEX_WEIGHT', 'VERTEX_NORMAL']
 
 
 
@@ -1725,7 +1725,7 @@ rotate(center=None, axis=None, angle=None, invert=False, rotation_type='AXIS_ANG
 - **axis** (_Vector_ = None) : socket 'Axis' (id: Axis)
 - **angle** (_Float_ = None) : socket 'Angle' (id: Angle)
 - **invert** (_bool_ = False) : parameter 'invert'
-- **rotation_type** (_str_ = AXIS_ANGLE) : parameter 'rotation_type' in ('AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ')
+- **rotation_type** (_str_ = AXIS_ANGLE) : parameter 'rotation_type' in ['AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ']
 
 
 
@@ -1899,7 +1899,7 @@ sample_grid(position=None, interpolation_mode='TRILINEAR')
 
 #### Arguments:
 - **position** (_Vector_ = None) : socket 'Position' (id: Position)
-- **interpolation_mode** (_str_ = TRILINEAR) : parameter 'interpolation_mode' in ('NEAREST', 'TRILINEAR', 'TRIQUADRATIC')
+- **interpolation_mode** (_str_ = TRILINEAR) : parameter 'interpolation_mode' in ['NEAREST', 'TRILINEAR', 'TRIQUADRATIC']
 
 
 
@@ -2273,9 +2273,9 @@ vector_transform(convert_from='WORLD', convert_to='OBJECT', vector_type='VECTOR'
 
 
 #### Arguments:
-- **convert_from** (_str_ = WORLD) : parameter 'convert_from' in ('WORLD', 'OBJECT', 'CAMERA')
-- **convert_to** (_str_ = OBJECT) : parameter 'convert_to' in ('WORLD', 'OBJECT', 'CAMERA')
-- **vector_type** (_str_ = VECTOR) : parameter 'vector_type' in ('POINT', 'VECTOR', 'NORMAL')
+- **convert_from** (_str_ = WORLD) : parameter 'convert_from' in ['WORLD', 'OBJECT', 'CAMERA']
+- **convert_to** (_str_ = OBJECT) : parameter 'convert_to' in ['WORLD', 'OBJECT', 'CAMERA']
+- **vector_type** (_str_ = VECTOR) : parameter 'vector_type' in ['POINT', 'VECTOR', 'NORMAL']
 
 
 

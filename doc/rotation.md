@@ -92,8 +92,8 @@ AlignToVector(vector=None, factor=None, axis='Z', pivot_axis='AUTO')
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
 - **factor** (_Float_ = None) : socket 'Factor' (id: Factor)
-- **axis** (_str_ = Z) : parameter 'axis' in ('X', 'Y', 'Z')
-- **pivot_axis** (_str_ = AUTO) : parameter 'pivot_axis' in ('AUTO', 'X', 'Y', 'Z')
+- **axis** (_str_ = Z) : parameter 'axis' in ['X', 'Y', 'Z']
+- **pivot_axis** (_str_ = AUTO) : parameter 'pivot_axis' in ['AUTO', 'X', 'Y', 'Z']
 
 
 
@@ -121,8 +121,8 @@ align_toVector(vector=None, factor=None, axis='Z', pivot_axis='AUTO')
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
 - **factor** (_Float_ = None) : socket 'Factor' (id: Factor)
-- **axis** (_str_ = Z) : parameter 'axis' in ('X', 'Y', 'Z')
-- **pivot_axis** (_str_ = AUTO) : parameter 'pivot_axis' in ('AUTO', 'X', 'Y', 'Z')
+- **axis** (_str_ = Z) : parameter 'axis' in ['X', 'Y', 'Z']
+- **pivot_axis** (_str_ = AUTO) : parameter 'pivot_axis' in ['AUTO', 'X', 'Y', 'Z']
 
 
 
@@ -151,7 +151,7 @@ AlignXToVector(vector=None, factor=None, pivot_axis='AUTO')
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
 - **factor** (_Float_ = None) : socket 'Factor' (id: Factor)
-- **pivot_axis** (_str_ = AUTO) : parameter 'pivot_axis' in ('AUTO', 'X', 'Y', 'Z')
+- **pivot_axis** (_str_ = AUTO) : parameter 'pivot_axis' in ['AUTO', 'X', 'Y', 'Z']
 
 
 
@@ -180,7 +180,7 @@ align_x_to_vector(vector=None, factor=None, pivot_axis='AUTO')
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
 - **factor** (_Float_ = None) : socket 'Factor' (id: Factor)
-- **pivot_axis** (_str_ = AUTO) : parameter 'pivot_axis' in ('AUTO', 'X', 'Y', 'Z')
+- **pivot_axis** (_str_ = AUTO) : parameter 'pivot_axis' in ['AUTO', 'X', 'Y', 'Z']
 
 
 
@@ -209,7 +209,7 @@ AlignYToVector(vector=None, factor=None, pivot_axis='AUTO')
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
 - **factor** (_Float_ = None) : socket 'Factor' (id: Factor)
-- **pivot_axis** (_str_ = AUTO) : parameter 'pivot_axis' in ('AUTO', 'X', 'Y', 'Z')
+- **pivot_axis** (_str_ = AUTO) : parameter 'pivot_axis' in ['AUTO', 'X', 'Y', 'Z']
 
 
 
@@ -238,7 +238,7 @@ align_y_to_vector(vector=None, factor=None, pivot_axis='AUTO')
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
 - **factor** (_Float_ = None) : socket 'Factor' (id: Factor)
-- **pivot_axis** (_str_ = AUTO) : parameter 'pivot_axis' in ('AUTO', 'X', 'Y', 'Z')
+- **pivot_axis** (_str_ = AUTO) : parameter 'pivot_axis' in ['AUTO', 'X', 'Y', 'Z']
 
 
 
@@ -267,7 +267,7 @@ AlignZToVector(vector=None, factor=None, pivot_axis='AUTO')
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
 - **factor** (_Float_ = None) : socket 'Factor' (id: Factor)
-- **pivot_axis** (_str_ = AUTO) : parameter 'pivot_axis' in ('AUTO', 'X', 'Y', 'Z')
+- **pivot_axis** (_str_ = AUTO) : parameter 'pivot_axis' in ['AUTO', 'X', 'Y', 'Z']
 
 
 
@@ -296,7 +296,7 @@ align_z_to_vector(vector=None, factor=None, pivot_axis='AUTO')
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
 - **factor** (_Float_ = None) : socket 'Factor' (id: Factor)
-- **pivot_axis** (_str_ = AUTO) : parameter 'pivot_axis' in ('AUTO', 'X', 'Y', 'Z')
+- **pivot_axis** (_str_ = AUTO) : parameter 'pivot_axis' in ['AUTO', 'X', 'Y', 'Z']
 
 
 
@@ -319,8 +319,8 @@ FromAxes(primary_axis_1=None, secondary_axis_1=None, primary_axis='Z', secondary
 #### Arguments:
 - **primary_axis_1** (_Vector_ = None) : socket 'Primary Axis' (id: Primary Axis)
 - **secondary_axis_1** (_Vector_ = None) : socket 'Secondary Axis' (id: Secondary Axis)
-- **primary_axis** (_str_ = Z) : parameter 'primary_axis' in ('X', 'Y', 'Z')
-- **secondary_axis** (_str_ = X) : parameter 'secondary_axis' in ('X', 'Y', 'Z')
+- **primary_axis** (_str_ = Z) : parameter 'primary_axis' in ['X', 'Y', 'Z']
+- **secondary_axis** (_str_ = X) : parameter 'secondary_axis' in ['X', 'Y', 'Z']
 
 
 
@@ -752,7 +752,7 @@ rotate(rotate_by=None, rotation_space='GLOBAL')
 
 #### Arguments:
 - **rotate_by** (_Rotation_ = None) : socket 'Rotate By' (id: Rotate By)
-- **rotation_space** (_str_ = GLOBAL) : parameter 'rotation_space' in ('GLOBAL', 'LOCAL')
+- **rotation_space** (_str_ = GLOBAL) : parameter 'rotation_space' in ['GLOBAL', 'LOCAL']
 
 
 

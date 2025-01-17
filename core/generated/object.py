@@ -28,13 +28,13 @@ class Object(Socket):
         Arguments
         ---------
         - as_instance (Boolean) : socket 'As Instance' (id: As Instance)
-        - transform_space (str): parameter 'transform_space' in ('ORIGINAL', 'RELATIVE')
+        - transform_space (str): parameter 'transform_space' in ['ORIGINAL', 'RELATIVE']
 
         Returns
         -------
         - node [transform (Matrix), location (Vector), rotation (Rotation), scale (Vector), geometry (Geometry)]
         """
-        utils.check_enum_arg('transform_space', transform_space, 'info', ('ORIGINAL', 'RELATIVE'))
+        utils.check_enum_arg('Object Info', 'transform_space', transform_space, 'info', ('ORIGINAL', 'RELATIVE'))
         node = Node('Object Info', sockets={'Object': self, 'As Instance': as_instance}, transform_space=transform_space)
         return node
 

@@ -535,7 +535,7 @@ uv_unwrap(seam=None, margin=None, fill_holes=None, method='ANGLE_BASED')
 - **seam** (_Boolean_ = None) : socket 'Seam' (id: Seam)
 - **margin** (_Float_ = None) : socket 'Margin' (id: Margin)
 - **fill_holes** (_Boolean_ = None) : socket 'Fill Holes' (id: Fill Holes)
-- **method** (_str_ = ANGLE_BASED) : parameter 'method' in ('ANGLE_BASED', 'CONFORMAL')
+- **method** (_str_ = ANGLE_BASED) : parameter 'method' in ['ANGLE_BASED', 'CONFORMAL']
 
 
 

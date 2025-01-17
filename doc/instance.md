@@ -170,7 +170,7 @@ delete(mode='ALL')
 
 
 #### Arguments:
-- **mode** (_str_ = ALL) : parameter 'mode' in ('ALL', 'EDGE_FACE', 'ONLY_FACE')
+- **mode** (_str_ = ALL) : parameter 'mode' in ['ALL', 'EDGE_FACE', 'ONLY_FACE']
 
 
 
@@ -252,7 +252,7 @@ delete_geometry(mode='ALL')
 
 
 #### Arguments:
-- **mode** (_str_ = ALL) : parameter 'mode' in ('ALL', 'EDGE_FACE', 'ONLY_FACE')
+- **mode** (_str_ = ALL) : parameter 'mode' in ['ALL', 'EDGE_FACE', 'ONLY_FACE']
 
 
 

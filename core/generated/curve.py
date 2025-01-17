@@ -83,13 +83,13 @@ class Curve(Socket):
         - sweep_angle (Float) : socket 'Sweep Angle' (id: Sweep Angle)
         - connect_center (Boolean) : socket 'Connect Center' (id: Connect Center)
         - invert_arc (Boolean) : socket 'Invert Arc' (id: Invert Arc)
-        - mode (str): parameter 'mode' in ('POINTS', 'RADIUS')
+        - mode (str): parameter 'mode' in ['POINTS', 'RADIUS']
 
         Returns
         -------
         - Curve
         """
-        utils.check_enum_arg('mode', mode, 'Arc', ('POINTS', 'RADIUS'))
+        utils.check_enum_arg('Arc', 'mode', mode, 'Arc', ('POINTS', 'RADIUS'))
         node = Node('Arc', sockets={'Resolution': resolution, 'Radius': radius, 'Start Angle': start_angle, 'Sweep Angle': sweep_angle, 'Connect Center': connect_center, 'Invert Arc': invert_arc}, mode=mode)
         return cls(node._out)
 
@@ -115,14 +115,14 @@ class Curve(Socket):
 
         Arguments
         ---------
-        - handle_type (str): parameter 'handle_type' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
+        - handle_type (str): parameter 'handle_type' in ['FREE', 'AUTO', 'VECTOR', 'ALIGN']
         - mode (set): parameter 'mode'
 
         Returns
         -------
         - Boolean
         """
-        utils.check_enum_arg('handle_type', handle_type, 'handle_type_selection', ('FREE', 'AUTO', 'VECTOR', 'ALIGN'))
+        utils.check_enum_arg('Handle Type Selection', 'handle_type', handle_type, 'handle_type_selection', ('FREE', 'AUTO', 'VECTOR', 'ALIGN'))
         node = Node('Handle Type Selection', sockets={}, handle_type=handle_type, mode=mode)
         return node._out
 
@@ -212,13 +212,13 @@ class Curve(Socket):
         - start_handle (Vector) : socket 'Start Handle' (id: Start Handle)
         - end_handle (Vector) : socket 'End Handle' (id: End Handle)
         - end (Vector) : socket 'End' (id: End)
-        - mode (str): parameter 'mode' in ('POSITION', 'OFFSET')
+        - mode (str): parameter 'mode' in ['POSITION', 'OFFSET']
 
         Returns
         -------
         - Curve
         """
-        utils.check_enum_arg('mode', mode, 'BezierSegment', ('POSITION', 'OFFSET'))
+        utils.check_enum_arg('Bézier Segment', 'mode', mode, 'BezierSegment', ('POSITION', 'OFFSET'))
         node = Node('Bézier Segment', sockets={'Resolution': resolution, 'Start': start, 'Start Handle': start_handle, 'End Handle': end_handle, 'End': end}, mode=mode)
         return cls(node._out)
 
@@ -272,13 +272,13 @@ class Curve(Socket):
         ---------
         - resolution (Integer) : socket 'Resolution' (id: Resolution)
         - radius (Float) : socket 'Radius' (id: Radius)
-        - mode (str): parameter 'mode' in ('POINTS', 'RADIUS')
+        - mode (str): parameter 'mode' in ['POINTS', 'RADIUS']
 
         Returns
         -------
         - Curve
         """
-        utils.check_enum_arg('mode', mode, 'Circle', ('POINTS', 'RADIUS'))
+        utils.check_enum_arg('Curve Circle', 'mode', mode, 'Circle', ('POINTS', 'RADIUS'))
         node = Node('Curve Circle', sockets={'Resolution': resolution, 'Radius': radius}, mode=mode)
         return cls(node._out)
 
@@ -331,13 +331,13 @@ class Curve(Socket):
         ---------
         - start (Vector) : socket 'Start' (id: Start)
         - end (Vector) : socket 'End' (id: End)
-        - mode (str): parameter 'mode' in ('POINTS', 'DIRECTION')
+        - mode (str): parameter 'mode' in ['POINTS', 'DIRECTION']
 
         Returns
         -------
         - Curve
         """
-        utils.check_enum_arg('mode', mode, 'Line', ('POINTS', 'DIRECTION'))
+        utils.check_enum_arg('Curve Line', 'mode', mode, 'Line', ('POINTS', 'DIRECTION'))
         node = Node('Curve Line', sockets={'Start': start, 'End': end}, mode=mode)
         return cls(node._out)
 
@@ -457,13 +457,13 @@ class Curve(Socket):
         ---------
         - width (Float) : socket 'Width' (id: Width)
         - height (Float) : socket 'Height' (id: Height)
-        - mode (str): parameter 'mode' in ('RECTANGLE', 'PARALLELOGRAM', 'TRAPEZOID', 'KITE', 'POINTS')
+        - mode (str): parameter 'mode' in ['RECTANGLE', 'PARALLELOGRAM', 'TRAPEZOID', 'KITE', 'POINTS']
 
         Returns
         -------
         - Curve
         """
-        utils.check_enum_arg('mode', mode, 'Quadrilateral', ('RECTANGLE', 'PARALLELOGRAM', 'TRAPEZOID', 'KITE', 'POINTS'))
+        utils.check_enum_arg('Quadrilateral', 'mode', mode, 'Quadrilateral', ('RECTANGLE', 'PARALLELOGRAM', 'TRAPEZOID', 'KITE', 'POINTS'))
         node = Node('Quadrilateral', sockets={'Width': width, 'Height': height}, mode=mode)
         return cls(node._out)
 
@@ -497,14 +497,14 @@ class Curve(Socket):
 
         Arguments
         ---------
-        - handle_type (str): parameter 'handle_type' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
+        - handle_type (str): parameter 'handle_type' in ['FREE', 'AUTO', 'VECTOR', 'ALIGN']
         - mode (set): parameter 'mode'
 
         Returns
         -------
         - Curve
         """
-        utils.check_enum_arg('handle_type', handle_type, 'set_handle_type', ('FREE', 'AUTO', 'VECTOR', 'ALIGN'))
+        utils.check_enum_arg('Set Handle Type', 'handle_type', handle_type, 'set_handle_type', ('FREE', 'AUTO', 'VECTOR', 'ALIGN'))
         node = Node('Set Handle Type', sockets={'Curve': self, 'Selection': self._sel}, handle_type=handle_type, mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
@@ -522,13 +522,13 @@ class Curve(Socket):
 
         Arguments
         ---------
-        - handle_type (str): parameter 'handle_type' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
+        - handle_type (str): parameter 'handle_type' in ['FREE', 'AUTO', 'VECTOR', 'ALIGN']
 
         Returns
         -------
         - Curve
         """
-        utils.check_enum_arg('handle_type', handle_type, 'set_left_handle_type', ('FREE', 'AUTO', 'VECTOR', 'ALIGN'))
+        utils.check_enum_arg('Set Handle Type', 'handle_type', handle_type, 'set_left_handle_type', ('FREE', 'AUTO', 'VECTOR', 'ALIGN'))
         node = Node('Set Handle Type', sockets={'Curve': self, 'Selection': self._sel}, handle_type=handle_type, mode={'LEFT'})
         self._jump(node._out)
         return self._domain_to_geometry
@@ -546,13 +546,13 @@ class Curve(Socket):
 
         Arguments
         ---------
-        - handle_type (str): parameter 'handle_type' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
+        - handle_type (str): parameter 'handle_type' in ['FREE', 'AUTO', 'VECTOR', 'ALIGN']
 
         Returns
         -------
         - Curve
         """
-        utils.check_enum_arg('handle_type', handle_type, 'set_right_handle_type', ('FREE', 'AUTO', 'VECTOR', 'ALIGN'))
+        utils.check_enum_arg('Set Handle Type', 'handle_type', handle_type, 'set_right_handle_type', ('FREE', 'AUTO', 'VECTOR', 'ALIGN'))
         node = Node('Set Handle Type', sockets={'Curve': self, 'Selection': self._sel}, handle_type=handle_type, mode={'RIGHT'})
         self._jump(node._out)
         return self._domain_to_geometry
@@ -570,13 +570,13 @@ class Curve(Socket):
 
         Arguments
         ---------
-        - handle_type (str): parameter 'handle_type' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
+        - handle_type (str): parameter 'handle_type' in ['FREE', 'AUTO', 'VECTOR', 'ALIGN']
 
         Returns
         -------
         - Curve
         """
-        utils.check_enum_arg('handle_type', handle_type, 'set_both_handle_type', ('FREE', 'AUTO', 'VECTOR', 'ALIGN'))
+        utils.check_enum_arg('Set Handle Type', 'handle_type', handle_type, 'set_both_handle_type', ('FREE', 'AUTO', 'VECTOR', 'ALIGN'))
         node = Node('Set Handle Type', sockets={'Curve': self, 'Selection': self._sel}, handle_type=handle_type, mode={'LEFT', 'RIGHT'})
         self._jump(node._out)
         return self._domain_to_geometry
@@ -613,13 +613,13 @@ class Curve(Socket):
 
         Arguments
         ---------
-        - spline_type (str): parameter 'spline_type' in ('CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS')
+        - spline_type (str): parameter 'spline_type' in ['CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS']
 
         Returns
         -------
         - Curve
         """
-        utils.check_enum_arg('spline_type', spline_type, 'set_spline_type', ('CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS'))
+        utils.check_enum_arg('Set Spline Type', 'spline_type', spline_type, 'set_spline_type', ('CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS'))
         node = Node('Set Spline Type', sockets={'Curve': self, 'Selection': self._sel}, spline_type=spline_type)
         self._jump(node._out)
         return self._domain_to_geometry
@@ -724,13 +724,13 @@ class Curve(Socket):
         Arguments
         ---------
         - count (Integer) : socket 'Count' (id: Count)
-        - mode (str): parameter 'mode' in ('EVALUATED', 'COUNT', 'LENGTH')
+        - mode (str): parameter 'mode' in ['EVALUATED', 'COUNT', 'LENGTH']
 
         Returns
         -------
         - Cloud [tangent_ (Vector), normal_ (Vector), rotation_ (Rotation)]
         """
-        utils.check_enum_arg('mode', mode, 'to_points', ('EVALUATED', 'COUNT', 'LENGTH'))
+        utils.check_enum_arg('Curve to Points', 'mode', mode, 'to_points', ('EVALUATED', 'COUNT', 'LENGTH'))
         node = Node('Curve to Points', sockets={'Curve': self, 'Count': count}, mode=mode)
         return node._out
 
@@ -818,13 +818,13 @@ class Curve(Socket):
         Arguments
         ---------
         - group_id (Integer) : socket 'Group ID' (id: Group ID)
-        - mode (str): parameter 'mode' in ('TRIANGLES', 'NGONS')
+        - mode (str): parameter 'mode' in ['TRIANGLES', 'NGONS']
 
         Returns
         -------
         - Mesh
         """
-        utils.check_enum_arg('mode', mode, 'fill', ('TRIANGLES', 'NGONS'))
+        utils.check_enum_arg('Fill Curve', 'mode', mode, 'fill', ('TRIANGLES', 'NGONS'))
         node = Node('Fill Curve', sockets={'Curve': self, 'Group ID': group_id}, mode=mode)
         return node._out
 
@@ -888,13 +888,13 @@ class Curve(Socket):
         ---------
         - radius (Float) : socket 'Radius' (id: Radius)
         - limit_radius (Boolean) : socket 'Limit Radius' (id: Limit Radius)
-        - mode (str): parameter 'mode' in ('BEZIER', 'POLY')
+        - mode (str): parameter 'mode' in ['BEZIER', 'POLY']
 
         Returns
         -------
         - Curve
         """
-        utils.check_enum_arg('mode', mode, 'fillet', ('BEZIER', 'POLY'))
+        utils.check_enum_arg('Fillet Curve', 'mode', mode, 'fillet', ('BEZIER', 'POLY'))
         node = Node('Fillet Curve', sockets={'Curve': self, 'Radius': radius, 'Limit Radius': limit_radius}, mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
@@ -1099,13 +1099,13 @@ class Curve(Socket):
         Arguments
         ---------
         - count (Integer) : socket 'Count' (id: Count)
-        - mode (str): parameter 'mode' in ('EVALUATED', 'COUNT', 'LENGTH')
+        - mode (str): parameter 'mode' in ['EVALUATED', 'COUNT', 'LENGTH']
 
         Returns
         -------
         - Curve
         """
-        utils.check_enum_arg('mode', mode, 'resample', ('EVALUATED', 'COUNT', 'LENGTH'))
+        utils.check_enum_arg('Resample Curve', 'mode', mode, 'resample', ('EVALUATED', 'COUNT', 'LENGTH'))
         node = Node('Resample Curve', sockets={'Curve': self, 'Selection': self._sel, 'Count': count}, mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
@@ -1189,14 +1189,14 @@ class Curve(Socket):
         - value (Float) : socket 'Value' (id: Value)
         - curve_index (Integer) : socket 'Curve Index' (id: Curve Index)
         - factor (Float) : socket 'Factor' (id: Factor)
-        - mode (str): parameter 'mode' in ('FACTOR', 'LENGTH')
+        - mode (str): parameter 'mode' in ['FACTOR', 'LENGTH']
         - use_all_curves (bool): parameter 'use_all_curves'
 
         Returns
         -------
         - Float [position_ (Vector), tangent_ (Vector), normal_ (Vector)]
         """
-        utils.check_enum_arg('mode', mode, 'sample', ('FACTOR', 'LENGTH'))
+        utils.check_enum_arg('Sample Curve', 'mode', mode, 'sample', ('FACTOR', 'LENGTH'))
         data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Curve.sample', 'value')
         node = Node('Sample Curve', sockets={'Curves': self, 'Value': value, 'Curve Index': curve_index, 'Factor': factor}, data_type=data_type, mode=mode, use_all_curves=use_all_curves)
         return node._out
@@ -1215,13 +1215,13 @@ class Curve(Socket):
         ---------
         - position (Vector) : socket 'Position' (id: Position)
         - offset (Vector) : socket 'Offset' (id: Offset)
-        - mode (str): parameter 'mode' in ('LEFT', 'RIGHT')
+        - mode (str): parameter 'mode' in ['LEFT', 'RIGHT']
 
         Returns
         -------
         - Curve
         """
-        utils.check_enum_arg('mode', mode, 'set_handle_positions', ('LEFT', 'RIGHT'))
+        utils.check_enum_arg('Set Handle Positions', 'mode', mode, 'set_handle_positions', ('LEFT', 'RIGHT'))
         node = Node('Set Handle Positions', sockets={'Curve': self, 'Selection': self._sel, 'Position': position, 'Offset': offset}, mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
@@ -1347,13 +1347,13 @@ class Curve(Socket):
 
         Arguments
         ---------
-        - mode (str): parameter 'mode' in ('MINIMUM_TWIST', 'Z_UP', 'FREE')
+        - mode (str): parameter 'mode' in ['MINIMUM_TWIST', 'Z_UP', 'FREE']
 
         Returns
         -------
         - Curve
         """
-        utils.check_enum_arg('mode', mode, 'set_normal', ('MINIMUM_TWIST', 'Z_UP', 'FREE'))
+        utils.check_enum_arg('Set Curve Normal', 'mode', mode, 'set_normal', ('MINIMUM_TWIST', 'Z_UP', 'FREE'))
         node = Node('Set Curve Normal', sockets={'Curve': self, 'Selection': self._sel}, mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
@@ -1507,13 +1507,13 @@ class Curve(Socket):
         ---------
         - start (Float) : socket 'Start' (id: Start)
         - end (Float) : socket 'End' (id: End)
-        - mode (str): parameter 'mode' in ('FACTOR', 'LENGTH')
+        - mode (str): parameter 'mode' in ['FACTOR', 'LENGTH']
 
         Returns
         -------
         - Curve
         """
-        utils.check_enum_arg('mode', mode, 'trim', ('FACTOR', 'LENGTH'))
+        utils.check_enum_arg('Trim Curve', 'mode', mode, 'trim', ('FACTOR', 'LENGTH'))
         node = Node('Trim Curve', sockets={'Curve': self, 'Selection': self._sel, 'Start': start, 'End': end}, mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
@@ -1691,13 +1691,13 @@ class Curve(Socket):
 
         Arguments
         ---------
-        - handle_type (str): parameter 'handle_type' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
+        - handle_type (str): parameter 'handle_type' in ['FREE', 'AUTO', 'VECTOR', 'ALIGN']
 
         Returns
         -------
         - Curve
         """
-        utils.check_enum_arg('handle_type', handle_type, 'handle_type', ('FREE', 'AUTO', 'VECTOR', 'ALIGN'))
+        utils.check_enum_arg('Set Handle Type', 'handle_type', handle_type, 'handle_type', ('FREE', 'AUTO', 'VECTOR', 'ALIGN'))
         node = Node('Set Handle Type', sockets={'Curve': self, 'Selection': self._sel}, handle_type=handle_type, mode={'LEFT', 'RIGHT'})
         self._jump(node._out)
         return self._domain_to_geometry
@@ -1722,13 +1722,13 @@ class Curve(Socket):
 
         Arguments
         ---------
-        - handle_type (str): parameter 'handle_type' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
+        - handle_type (str): parameter 'handle_type' in ['FREE', 'AUTO', 'VECTOR', 'ALIGN']
 
         Returns
         -------
         - Curve
         """
-        utils.check_enum_arg('handle_type', handle_type, 'left_handle_type', ('FREE', 'AUTO', 'VECTOR', 'ALIGN'))
+        utils.check_enum_arg('Set Handle Type', 'handle_type', handle_type, 'left_handle_type', ('FREE', 'AUTO', 'VECTOR', 'ALIGN'))
         node = Node('Set Handle Type', sockets={'Curve': self, 'Selection': self._sel}, handle_type=handle_type, mode={'LEFT'})
         self._jump(node._out)
         return self._domain_to_geometry
@@ -1753,13 +1753,13 @@ class Curve(Socket):
 
         Arguments
         ---------
-        - handle_type (str): parameter 'handle_type' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
+        - handle_type (str): parameter 'handle_type' in ['FREE', 'AUTO', 'VECTOR', 'ALIGN']
 
         Returns
         -------
         - Curve
         """
-        utils.check_enum_arg('handle_type', handle_type, 'right_handle_type', ('FREE', 'AUTO', 'VECTOR', 'ALIGN'))
+        utils.check_enum_arg('Set Handle Type', 'handle_type', handle_type, 'right_handle_type', ('FREE', 'AUTO', 'VECTOR', 'ALIGN'))
         node = Node('Set Handle Type', sockets={'Curve': self, 'Selection': self._sel}, handle_type=handle_type, mode={'RIGHT'})
         self._jump(node._out)
         return self._domain_to_geometry
@@ -1812,13 +1812,13 @@ class Curve(Socket):
 
         Arguments
         ---------
-        - mode (str): parameter 'mode' in ('MINIMUM_TWIST', 'Z_UP', 'FREE')
+        - mode (str): parameter 'mode' in ['MINIMUM_TWIST', 'Z_UP', 'FREE']
 
         Returns
         -------
         - Curve
         """
-        utils.check_enum_arg('mode', mode, 'normal', ('MINIMUM_TWIST', 'Z_UP', 'FREE'))
+        utils.check_enum_arg('Set Curve Normal', 'mode', mode, 'normal', ('MINIMUM_TWIST', 'Z_UP', 'FREE'))
         node = Node('Set Curve Normal', sockets={'Curve': self, 'Selection': self._sel}, mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
@@ -1900,13 +1900,13 @@ class Curve(Socket):
 
         Arguments
         ---------
-        - spline_type (str): parameter 'spline_type' in ('CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS')
+        - spline_type (str): parameter 'spline_type' in ['CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS']
 
         Returns
         -------
         - Curve
         """
-        utils.check_enum_arg('spline_type', spline_type, 'type', ('CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS'))
+        utils.check_enum_arg('Set Spline Type', 'spline_type', spline_type, 'type', ('CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS'))
         node = Node('Set Spline Type', sockets={'Curve': self, 'Selection': self._sel}, spline_type=spline_type)
         self._jump(node._out)
         return self._domain_to_geometry

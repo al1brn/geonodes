@@ -63,7 +63,7 @@ info(as_instance=None, transform_space='ORIGINAL')
 
 #### Arguments:
 - **as_instance** (_Boolean_ = None) : socket 'As Instance' (id: As Instance)
-- **transform_space** (_str_ = ORIGINAL) : parameter 'transform_space' in ('ORIGINAL', 'RELATIVE')
+- **transform_space** (_str_ = ORIGINAL) : parameter 'transform_space' in ['ORIGINAL', 'RELATIVE']
 
 
 

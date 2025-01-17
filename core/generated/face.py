@@ -175,13 +175,13 @@ class Face(Socket):
 
         Arguments
         ---------
-        - mode (str): parameter 'mode' in ('ALL', 'EDGE_FACE', 'ONLY_FACE')
+        - mode (str): parameter 'mode' in ['ALL', 'EDGE_FACE', 'ONLY_FACE']
 
         Returns
         -------
         - Geometry
         """
-        utils.check_enum_arg('mode', mode, 'delete_geometry', ('ALL', 'EDGE_FACE', 'ONLY_FACE'))
+        utils.check_enum_arg('Delete Geometry', 'mode', mode, 'delete_geometry', ('ALL', 'EDGE_FACE', 'ONLY_FACE'))
         node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='FACE', mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
@@ -259,13 +259,13 @@ class Face(Socket):
 
         Arguments
         ---------
-        - mode (str): parameter 'mode' in ('ALL', 'EDGE_FACE', 'ONLY_FACE')
+        - mode (str): parameter 'mode' in ['ALL', 'EDGE_FACE', 'ONLY_FACE']
 
         Returns
         -------
         - Geometry
         """
-        utils.check_enum_arg('mode', mode, 'delete', ('ALL', 'EDGE_FACE', 'ONLY_FACE'))
+        utils.check_enum_arg('Delete Geometry', 'mode', mode, 'delete', ('ALL', 'EDGE_FACE', 'ONLY_FACE'))
         node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='FACE', mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
@@ -282,14 +282,14 @@ class Face(Socket):
         ---------
         - density (Float) : socket 'Density' (id: Density)
         - seed (Integer) : socket 'Seed' (id: Seed)
-        - distribute_method (str): parameter 'distribute_method' in ('RANDOM', 'POISSON')
+        - distribute_method (str): parameter 'distribute_method' in ['RANDOM', 'POISSON']
         - use_legacy_normal (bool): parameter 'use_legacy_normal'
 
         Returns
         -------
         - Cloud [normal_ (Vector), rotation_ (Rotation)]
         """
-        utils.check_enum_arg('distribute_method', distribute_method, 'distribute_points', ('RANDOM', 'POISSON'))
+        utils.check_enum_arg('Distribute Points on Faces', 'distribute_method', distribute_method, 'distribute_points', ('RANDOM', 'POISSON'))
         node = Node('Distribute Points on Faces', sockets={'Mesh': self, 'Selection': self._sel, 'Density': density, 'Seed': seed}, distribute_method=distribute_method, use_legacy_normal=use_legacy_normal)
         return node._out
 
@@ -582,13 +582,13 @@ class Face(Socket):
         ---------
         - scale (Float) : socket 'Scale' (id: Scale)
         - center (Vector) : socket 'Center' (id: Center)
-        - scale_mode (str): parameter 'scale_mode' in ('UNIFORM', 'SINGLE_AXIS')
+        - scale_mode (str): parameter 'scale_mode' in ['UNIFORM', 'SINGLE_AXIS']
 
         Returns
         -------
         - Geometry
         """
-        utils.check_enum_arg('scale_mode', scale_mode, 'scale', ('UNIFORM', 'SINGLE_AXIS'))
+        utils.check_enum_arg('Scale Elements', 'scale_mode', scale_mode, 'scale', ('UNIFORM', 'SINGLE_AXIS'))
         node = Node('Scale Elements', sockets={'Geometry': self, 'Selection': self._sel, 'Scale': scale, 'Center': center}, domain='FACE', scale_mode=scale_mode)
         self._jump(node._out)
         return self._domain_to_geometry

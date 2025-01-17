@@ -58,13 +58,13 @@ class Volume(Socket):
         ---------
         - density (Float) : socket 'Density' (id: Density)
         - seed (Integer) : socket 'Seed' (id: Seed)
-        - mode (str): parameter 'mode' in ('DENSITY_RANDOM', 'DENSITY_GRID')
+        - mode (str): parameter 'mode' in ['DENSITY_RANDOM', 'DENSITY_GRID']
 
         Returns
         -------
         - Cloud
         """
-        utils.check_enum_arg('mode', mode, 'distribute_points', ('DENSITY_RANDOM', 'DENSITY_GRID'))
+        utils.check_enum_arg('Distribute Points in Volume', 'mode', mode, 'distribute_points', ('DENSITY_RANDOM', 'DENSITY_GRID'))
         node = Node('Distribute Points in Volume', sockets={'Volume': self, 'Density': density, 'Seed': seed}, mode=mode)
         return node._out
 
@@ -81,13 +81,13 @@ class Volume(Socket):
         ---------
         - name (String) : socket 'Name' (id: Name)
         - remove (Boolean) : socket 'Remove' (id: Remove)
-        - data_type (str): parameter 'data_type' in ('FLOAT', 'VECTOR')
+        - data_type (str): parameter 'data_type' in ['FLOAT', 'VECTOR']
 
         Returns
         -------
         - Volume [grid_ (Float)]
         """
-        utils.check_enum_arg('data_type', data_type, 'get_named_grid', ('FLOAT', 'VECTOR'))
+        utils.check_enum_arg('Get Named Grid', 'data_type', data_type, 'get_named_grid', ('FLOAT', 'VECTOR'))
         node = Node('Get Named Grid', sockets={'Volume': self, 'Name': name, 'Remove': remove}, data_type=data_type)
         self._jump(node._out)
         return self._domain_to_geometry
@@ -194,13 +194,13 @@ class Volume(Socket):
         ---------
         - threshold (Float) : socket 'Threshold' (id: Threshold)
         - adaptivity (Float) : socket 'Adaptivity' (id: Adaptivity)
-        - resolution_mode (str): parameter 'resolution_mode' in ('GRID', 'VOXEL_AMOUNT', 'VOXEL_SIZE')
+        - resolution_mode (str): parameter 'resolution_mode' in ['GRID', 'VOXEL_AMOUNT', 'VOXEL_SIZE']
 
         Returns
         -------
         - Mesh
         """
-        utils.check_enum_arg('resolution_mode', resolution_mode, 'to_mesh', ('GRID', 'VOXEL_AMOUNT', 'VOXEL_SIZE'))
+        utils.check_enum_arg('Volume to Mesh', 'resolution_mode', resolution_mode, 'to_mesh', ('GRID', 'VOXEL_AMOUNT', 'VOXEL_SIZE'))
         node = Node('Volume to Mesh', sockets={'Volume': self, 'Threshold': threshold, 'Adaptivity': adaptivity}, resolution_mode=resolution_mode)
         return node._out
 

@@ -124,13 +124,13 @@ class Layer(Socket):
 
         Arguments
         ---------
-        - mode (str): parameter 'mode' in ('ALL', 'EDGE_FACE', 'ONLY_FACE')
+        - mode (str): parameter 'mode' in ['ALL', 'EDGE_FACE', 'ONLY_FACE']
 
         Returns
         -------
         - Geometry
         """
-        utils.check_enum_arg('mode', mode, 'delete_geometry', ('ALL', 'EDGE_FACE', 'ONLY_FACE'))
+        utils.check_enum_arg('Delete Geometry', 'mode', mode, 'delete_geometry', ('ALL', 'EDGE_FACE', 'ONLY_FACE'))
         node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='LAYER', mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
@@ -208,13 +208,13 @@ class Layer(Socket):
 
         Arguments
         ---------
-        - mode (str): parameter 'mode' in ('ALL', 'EDGE_FACE', 'ONLY_FACE')
+        - mode (str): parameter 'mode' in ['ALL', 'EDGE_FACE', 'ONLY_FACE']
 
         Returns
         -------
         - Geometry
         """
-        utils.check_enum_arg('mode', mode, 'delete', ('ALL', 'EDGE_FACE', 'ONLY_FACE'))
+        utils.check_enum_arg('Delete Geometry', 'mode', mode, 'delete', ('ALL', 'EDGE_FACE', 'ONLY_FACE'))
         node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='LAYER', mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry

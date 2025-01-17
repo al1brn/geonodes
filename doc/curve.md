@@ -211,7 +211,7 @@ Arc(resolution=None, radius=None, start_angle=None, sweep_angle=None, connect_ce
 - **sweep_angle** (_Float_ = None) : socket 'Sweep Angle' (id: Sweep Angle)
 - **connect_center** (_Boolean_ = None) : socket 'Connect Center' (id: Connect Center)
 - **invert_arc** (_Boolean_ = None) : socket 'Invert Arc' (id: Invert Arc)
-- **mode** (_str_ = RADIUS) : parameter 'mode' in ('POINTS', 'RADIUS')
+- **mode** (_str_ = RADIUS) : parameter 'mode' in ['POINTS', 'RADIUS']
 
 
 
@@ -300,7 +300,7 @@ BezierSegment(resolution=None, start=None, start_handle=None, end_handle=None, e
 - **start_handle** (_Vector_ = None) : socket 'Start Handle' (id: Start Handle)
 - **end_handle** (_Vector_ = None) : socket 'End Handle' (id: End Handle)
 - **end** (_Vector_ = None) : socket 'End' (id: End)
-- **mode** (_str_ = POSITION) : parameter 'mode' in ('POSITION', 'OFFSET')
+- **mode** (_str_ = POSITION) : parameter 'mode' in ['POSITION', 'OFFSET']
 
 
 
@@ -383,7 +383,7 @@ Circle(resolution=None, radius=None, mode='RADIUS')
 #### Arguments:
 - **resolution** (_Integer_ = None) : socket 'Resolution' (id: Resolution)
 - **radius** (_Float_ = None) : socket 'Radius' (id: Radius)
-- **mode** (_str_ = RADIUS) : parameter 'mode' in ('POINTS', 'RADIUS')
+- **mode** (_str_ = RADIUS) : parameter 'mode' in ['POINTS', 'RADIUS']
 
 
 
@@ -554,7 +554,7 @@ fill(group_id=None, mode='TRIANGLES')
 
 #### Arguments:
 - **group_id** (_Integer_ = None) : socket 'Group ID' (id: Group ID)
-- **mode** (_str_ = TRIANGLES) : parameter 'mode' in ('TRIANGLES', 'NGONS')
+- **mode** (_str_ = TRIANGLES) : parameter 'mode' in ['TRIANGLES', 'NGONS']
 
 
 
@@ -584,7 +584,7 @@ fillet(radius=None, limit_radius=None, mode='BEZIER')
 #### Arguments:
 - **radius** (_Float_ = None) : socket 'Radius' (id: Radius)
 - **limit_radius** (_Boolean_ = None) : socket 'Limit Radius' (id: Limit Radius)
-- **mode** (_str_ = BEZIER) : parameter 'mode' in ('BEZIER', 'POLY')
+- **mode** (_str_ = BEZIER) : parameter 'mode' in ['BEZIER', 'POLY']
 
 
 
@@ -735,14 +735,14 @@ handle_positions(relative=None)
 > classmethod
 
 ``` python
-handle_type_selection(handle_type='AUTO', mode={'RIGHT', 'LEFT'})
+handle_type_selection(handle_type='AUTO', mode={'LEFT', 'RIGHT'})
 ```
 
 > Node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
 
 #### Arguments:
-- **handle_type** (_str_ = AUTO) : parameter 'handle_type' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-- **mode** (_set_ = {'RIGHT', 'LEFT'}) : parameter 'mode'
+- **handle_type** (_str_ = AUTO) : parameter 'handle_type' in ['FREE', 'AUTO', 'VECTOR', 'ALIGN']
+- **mode** (_set_ = {'LEFT', 'RIGHT'}) : parameter 'mode'
 
 
 
@@ -846,7 +846,7 @@ Line(start=None, end=None, mode='POINTS')
 #### Arguments:
 - **start** (_Vector_ = None) : socket 'Start' (id: Start)
 - **end** (_Vector_ = None) : socket 'End' (id: End)
-- **mode** (_str_ = POINTS) : parameter 'mode' in ('POINTS', 'DIRECTION')
+- **mode** (_str_ = POINTS) : parameter 'mode' in ['POINTS', 'DIRECTION']
 
 
 
@@ -1014,7 +1014,7 @@ Quadrilateral(width=None, height=None, mode='RECTANGLE')
 #### Arguments:
 - **width** (_Float_ = None) : socket 'Width' (id: Width)
 - **height** (_Float_ = None) : socket 'Height' (id: Height)
-- **mode** (_str_ = RECTANGLE) : parameter 'mode' in ('RECTANGLE', 'PARALLELOGRAM', 'TRAPEZOID', 'KITE', 'POINTS')
+- **mode** (_str_ = RECTANGLE) : parameter 'mode' in ['RECTANGLE', 'PARALLELOGRAM', 'TRAPEZOID', 'KITE', 'POINTS']
 
 
 
@@ -1187,7 +1187,7 @@ resample(count=None, mode='COUNT')
 
 #### Arguments:
 - **count** (_Integer_ = None) : socket 'Count' (id: Count)
-- **mode** (_str_ = COUNT) : parameter 'mode' in ('EVALUATED', 'COUNT', 'LENGTH')
+- **mode** (_str_ = COUNT) : parameter 'mode' in ['EVALUATED', 'COUNT', 'LENGTH']
 
 
 
@@ -1326,7 +1326,7 @@ sample(value=None, curve_index=None, factor=None, mode='FACTOR', use_all_curves=
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
 - **curve_index** (_Integer_ = None) : socket 'Curve Index' (id: Curve Index)
 - **factor** (_Float_ = None) : socket 'Factor' (id: Factor)
-- **mode** (_str_ = FACTOR) : parameter 'mode' in ('FACTOR', 'LENGTH')
+- **mode** (_str_ = FACTOR) : parameter 'mode' in ['FACTOR', 'LENGTH']
 - **use_all_curves** (_bool_ = False) : parameter 'use_all_curves'
 
 
@@ -1419,7 +1419,7 @@ set_both_handle_type(handle_type='AUTO')
 
 
 #### Arguments:
-- **handle_type** (_str_ = AUTO) : parameter 'handle_type' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
+- **handle_type** (_str_ = AUTO) : parameter 'handle_type' in ['FREE', 'AUTO', 'VECTOR', 'ALIGN']
 
 
 
@@ -1450,7 +1450,7 @@ set_handle_positions(position=None, offset=None, mode='LEFT')
 #### Arguments:
 - **position** (_Vector_ = None) : socket 'Position' (id: Position)
 - **offset** (_Vector_ = None) : socket 'Offset' (id: Offset)
-- **mode** (_str_ = LEFT) : parameter 'mode' in ('LEFT', 'RIGHT')
+- **mode** (_str_ = LEFT) : parameter 'mode' in ['LEFT', 'RIGHT']
 
 
 
@@ -1465,7 +1465,7 @@ set_handle_positions(position=None, offset=None, mode='LEFT')
 > method
 
 ``` python
-set_handle_type(handle_type='AUTO', mode={'RIGHT', 'LEFT'})
+set_handle_type(handle_type='AUTO', mode={'LEFT', 'RIGHT'})
 ```
 
 > Node [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html)
@@ -1479,8 +1479,8 @@ set_handle_type(handle_type='AUTO', mode={'RIGHT', 'LEFT'})
 
 
 #### Arguments:
-- **handle_type** (_str_ = AUTO) : parameter 'handle_type' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
-- **mode** (_set_ = {'RIGHT', 'LEFT'}) : parameter 'mode'
+- **handle_type** (_str_ = AUTO) : parameter 'handle_type' in ['FREE', 'AUTO', 'VECTOR', 'ALIGN']
+- **mode** (_set_ = {'LEFT', 'RIGHT'}) : parameter 'mode'
 
 
 
@@ -1541,7 +1541,7 @@ set_left_handle_type(handle_type='AUTO')
 
 
 #### Arguments:
-- **handle_type** (_str_ = AUTO) : parameter 'handle_type' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
+- **handle_type** (_str_ = AUTO) : parameter 'handle_type' in ['FREE', 'AUTO', 'VECTOR', 'ALIGN']
 
 
 
@@ -1570,7 +1570,7 @@ set_normal(mode='MINIMUM_TWIST')
 
 
 #### Arguments:
-- **mode** (_str_ = MINIMUM_TWIST) : parameter 'mode' in ('MINIMUM_TWIST', 'Z_UP', 'FREE')
+- **mode** (_str_ = MINIMUM_TWIST) : parameter 'mode' in ['MINIMUM_TWIST', 'Z_UP', 'FREE']
 
 
 
@@ -1740,7 +1740,7 @@ set_right_handle_type(handle_type='AUTO')
 
 
 #### Arguments:
-- **handle_type** (_str_ = AUTO) : parameter 'handle_type' in ('FREE', 'AUTO', 'VECTOR', 'ALIGN')
+- **handle_type** (_str_ = AUTO) : parameter 'handle_type' in ['FREE', 'AUTO', 'VECTOR', 'ALIGN']
 
 
 
@@ -1769,7 +1769,7 @@ set_spline_type(spline_type='POLY')
 
 
 #### Arguments:
-- **spline_type** (_str_ = POLY) : parameter 'spline_type' in ('CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS')
+- **spline_type** (_str_ = POLY) : parameter 'spline_type' in ['CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS']
 
 
 
@@ -1989,7 +1989,7 @@ to_points(count=None, mode='COUNT')
 
 #### Arguments:
 - **count** (_Integer_ = None) : socket 'Count' (id: Count)
-- **mode** (_str_ = COUNT) : parameter 'mode' in ('EVALUATED', 'COUNT', 'LENGTH')
+- **mode** (_str_ = COUNT) : parameter 'mode' in ['EVALUATED', 'COUNT', 'LENGTH']
 
 
 
@@ -2096,7 +2096,7 @@ trim(start=None, end=None, mode='FACTOR')
 #### Arguments:
 - **start** (_Float_ = None) : socket 'Start' (id: Start)
 - **end** (_Float_ = None) : socket 'End' (id: End)
-- **mode** (_str_ = FACTOR) : parameter 'mode' in ('FACTOR', 'LENGTH')
+- **mode** (_str_ = FACTOR) : parameter 'mode' in ['FACTOR', 'LENGTH']
 
 
 

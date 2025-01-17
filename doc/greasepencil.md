@@ -87,7 +87,7 @@ merge_layers(mode='MERGE_BY_NAME')
 
 
 #### Arguments:
-- **mode** (_str_ = MERGE_BY_NAME) : parameter 'mode' in ('MERGE_BY_NAME', 'MERGE_BY_ID')
+- **mode** (_str_ = MERGE_BY_NAME) : parameter 'mode' in ['MERGE_BY_NAME', 'MERGE_BY_ID']
 
 
 

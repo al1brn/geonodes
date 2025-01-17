@@ -247,7 +247,7 @@ delete(mode='ALL')
 
 
 #### Arguments:
-- **mode** (_str_ = ALL) : parameter 'mode' in ('ALL', 'EDGE_FACE', 'ONLY_FACE')
+- **mode** (_str_ = ALL) : parameter 'mode' in ['ALL', 'EDGE_FACE', 'ONLY_FACE']
 
 
 
@@ -329,7 +329,7 @@ delete_geometry(mode='ALL')
 
 
 #### Arguments:
-- **mode** (_str_ = ALL) : parameter 'mode' in ('ALL', 'EDGE_FACE', 'ONLY_FACE')
+- **mode** (_str_ = ALL) : parameter 'mode' in ['ALL', 'EDGE_FACE', 'ONLY_FACE']
 
 
 
@@ -462,7 +462,7 @@ distribute_points(density=None, seed=None, distribute_method='RANDOM', use_legac
 #### Arguments:
 - **density** (_Float_ = None) : socket 'Density' (id: Density)
 - **seed** (_Integer_ = None) : socket 'Seed' (id: Seed)
-- **distribute_method** (_str_ = RANDOM) : parameter 'distribute_method' in ('RANDOM', 'POISSON')
+- **distribute_method** (_str_ = RANDOM) : parameter 'distribute_method' in ['RANDOM', 'POISSON']
 - **use_legacy_normal** (_bool_ = False) : parameter 'use_legacy_normal'
 
 
@@ -768,7 +768,7 @@ scale(scale=None, center=None, scale_mode='UNIFORM')
 #### Arguments:
 - **scale** (_Float_ = None) : socket 'Scale' (id: Scale)
 - **center** (_Vector_ = None) : socket 'Center' (id: Center)
-- **scale_mode** (_str_ = UNIFORM) : parameter 'scale_mode' in ('UNIFORM', 'SINGLE_AXIS')
+- **scale_mode** (_str_ = UNIFORM) : parameter 'scale_mode' in ['UNIFORM', 'SINGLE_AXIS']
 
 
 

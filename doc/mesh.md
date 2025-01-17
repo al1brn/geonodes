@@ -108,8 +108,8 @@ Boolean(*mesh_2, mesh_1=None, self_intersection=None, hole_tolerant=None, operat
 - **mesh_1** (_Geometry_ = None) : socket 'Mesh 1' (id: Mesh 1)
 - **self_intersection** (_Boolean_ = None) : socket 'Self Intersection' (id: Self Intersection)
 - **hole_tolerant** (_Boolean_ = None) : socket 'Hole Tolerant' (id: Hole Tolerant)
-- **operation** (_str_ = DIFFERENCE) : parameter 'operation' in ('INTERSECT', 'UNION', 'DIFFERENCE')
-- **solver** (_str_ = FLOAT) : parameter 'solver' in ('EXACT', 'FLOAT')
+- **operation** (_str_ = DIFFERENCE) : parameter 'operation' in ['INTERSECT', 'UNION', 'DIFFERENCE']
+- **solver** (_str_ = FLOAT) : parameter 'solver' in ['EXACT', 'FLOAT']
 
 
 
@@ -140,8 +140,8 @@ boolean(*mesh_2, self_intersection=None, hole_tolerant=None, operation='DIFFEREN
 - **mesh_2** (_Geometry_) : socket 'Mesh 2' (id: Mesh 2)
 - **self_intersection** (_Boolean_ = None) : socket 'Self Intersection' (id: Self Intersection)
 - **hole_tolerant** (_Boolean_ = None) : socket 'Hole Tolerant' (id: Hole Tolerant)
-- **operation** (_str_ = DIFFERENCE) : parameter 'operation' in ('INTERSECT', 'UNION', 'DIFFERENCE')
-- **solver** (_str_ = FLOAT) : parameter 'solver' in ('EXACT', 'FLOAT')
+- **operation** (_str_ = DIFFERENCE) : parameter 'operation' in ['INTERSECT', 'UNION', 'DIFFERENCE']
+- **solver** (_str_ = FLOAT) : parameter 'solver' in ['EXACT', 'FLOAT']
 
 
 
@@ -164,7 +164,7 @@ Circle(vertices=None, radius=None, fill_type='NONE')
 #### Arguments:
 - **vertices** (_Integer_ = None) : socket 'Vertices' (id: Vertices)
 - **radius** (_Float_ = None) : socket 'Radius' (id: Radius)
-- **fill_type** (_str_ = NONE) : parameter 'fill_type' in ('NONE', 'NGON', 'TRIANGLE_FAN')
+- **fill_type** (_str_ = NONE) : parameter 'fill_type' in ['NONE', 'NGON', 'TRIANGLE_FAN']
 
 
 
@@ -191,7 +191,7 @@ Cone(vertices=None, side_segments=None, fill_segments=None, radius_top=None, rad
 - **radius_top** (_Float_ = None) : socket 'Radius Top' (id: Radius Top)
 - **radius_bottom** (_Float_ = None) : socket 'Radius Bottom' (id: Radius Bottom)
 - **depth** (_Float_ = None) : socket 'Depth' (id: Depth)
-- **fill_type** (_str_ = NGON) : parameter 'fill_type' in ('NONE', 'NGON', 'TRIANGLE_FAN')
+- **fill_type** (_str_ = NGON) : parameter 'fill_type' in ['NONE', 'NGON', 'TRIANGLE_FAN']
 
 
 
@@ -339,7 +339,7 @@ Cylinder(vertices=None, side_segments=None, fill_segments=None, radius=None, dep
 - **fill_segments** (_Integer_ = None) : socket 'Fill Segments' (id: Fill Segments)
 - **radius** (_Float_ = None) : socket 'Radius' (id: Radius)
 - **depth** (_Float_ = None) : socket 'Depth' (id: Depth)
-- **fill_type** (_str_ = NGON) : parameter 'fill_type' in ('NONE', 'NGON', 'TRIANGLE_FAN')
+- **fill_type** (_str_ = NGON) : parameter 'fill_type' in ['NONE', 'NGON', 'TRIANGLE_FAN']
 
 
 
@@ -369,7 +369,7 @@ Difference(*mesh_2, mesh_1=None, self_intersection=None, hole_tolerant=None, sol
 - **mesh_1** (_Geometry_ = None) : socket 'Mesh 1' (id: Mesh 1)
 - **self_intersection** (_Boolean_ = None) : socket 'Self Intersection' (id: Self Intersection)
 - **hole_tolerant** (_Boolean_ = None) : socket 'Hole Tolerant' (id: Hole Tolerant)
-- **solver** (_str_ = FLOAT) : parameter 'solver' in ('EXACT', 'FLOAT')
+- **solver** (_str_ = FLOAT) : parameter 'solver' in ['EXACT', 'FLOAT']
 
 
 
@@ -401,7 +401,7 @@ difference(*mesh_2, self_intersection=None, hole_tolerant=None, solver='FLOAT')
 - **mesh_2** (_Geometry_) : socket 'Mesh 2' (id: Mesh 2)
 - **self_intersection** (_Boolean_ = None) : socket 'Self Intersection' (id: Self Intersection)
 - **hole_tolerant** (_Boolean_ = None) : socket 'Hole Tolerant' (id: Hole Tolerant)
-- **solver** (_str_ = FLOAT) : parameter 'solver' in ('EXACT', 'FLOAT')
+- **solver** (_str_ = FLOAT) : parameter 'solver' in ['EXACT', 'FLOAT']
 
 
 
@@ -430,7 +430,7 @@ distribute_points_on_faces(density=None, seed=None, distribute_method='RANDOM', 
 #### Arguments:
 - **density** (_Float_ = None) : socket 'Density' (id: Density)
 - **seed** (_Integer_ = None) : socket 'Seed' (id: Seed)
-- **distribute_method** (_str_ = RANDOM) : parameter 'distribute_method' in ('RANDOM', 'POISSON')
+- **distribute_method** (_str_ = RANDOM) : parameter 'distribute_method' in ['RANDOM', 'POISSON']
 - **use_legacy_normal** (_bool_ = False) : parameter 'use_legacy_normal'
 
 
@@ -750,7 +750,7 @@ extrude(offset=None, offset_scale=None, individual=None, mode='FACES')
 - **offset** (_Vector_ = None) : socket 'Offset' (id: Offset)
 - **offset_scale** (_Float_ = None) : socket 'Offset Scale' (id: Offset Scale)
 - **individual** (_Boolean_ = None) : socket 'Individual' (id: Individual)
-- **mode** (_str_ = FACES) : parameter 'mode' in ('VERTICES', 'EDGES', 'FACES')
+- **mode** (_str_ = FACES) : parameter 'mode' in ['VERTICES', 'EDGES', 'FACES']
 
 
 
@@ -1072,7 +1072,7 @@ Intersect(*mesh, self_intersection=None, hole_tolerant=None, solver='FLOAT')
 - **mesh** (_Geometry_) : socket 'Mesh' (id: Mesh 2)
 - **self_intersection** (_Boolean_ = None) : socket 'Self Intersection' (id: Self Intersection)
 - **hole_tolerant** (_Boolean_ = None) : socket 'Hole Tolerant' (id: Hole Tolerant)
-- **solver** (_str_ = FLOAT) : parameter 'solver' in ('EXACT', 'FLOAT')
+- **solver** (_str_ = FLOAT) : parameter 'solver' in ['EXACT', 'FLOAT']
 
 
 
@@ -1103,7 +1103,7 @@ intersect(*mesh, self_intersection=None, hole_tolerant=None, solver='FLOAT')
 - **mesh** (_Geometry_) : socket 'Mesh' (id: Mesh 2)
 - **self_intersection** (_Boolean_ = None) : socket 'Self Intersection' (id: Self Intersection)
 - **hole_tolerant** (_Boolean_ = None) : socket 'Hole Tolerant' (id: Hole Tolerant)
-- **solver** (_str_ = FLOAT) : parameter 'solver' in ('EXACT', 'FLOAT')
+- **solver** (_str_ = FLOAT) : parameter 'solver' in ['EXACT', 'FLOAT']
 
 
 
@@ -1148,8 +1148,8 @@ Line(count=None, start_location=None, offset=None, count_mode='TOTAL', mode='OFF
 - **count** (_Integer_ = None) : socket 'Count' (id: Count)
 - **start_location** (_Vector_ = None) : socket 'Start Location' (id: Start Location)
 - **offset** (_Vector_ = None) : socket 'Offset' (id: Offset)
-- **count_mode** (_str_ = TOTAL) : parameter 'count_mode' in ('TOTAL', 'RESOLUTION')
-- **mode** (_str_ = OFFSET) : parameter 'mode' in ('OFFSET', 'END_POINTS')
+- **count_mode** (_str_ = TOTAL) : parameter 'count_mode' in ['TOTAL', 'RESOLUTION']
+- **mode** (_str_ = OFFSET) : parameter 'mode' in ['OFFSET', 'END_POINTS']
 
 
 
@@ -1178,7 +1178,7 @@ LineEndPoints(count=None, start_location=None, end_location=None, count_mode='TO
 - **count** (_Integer_ = None) : socket 'Count' (id: Count)
 - **start_location** (_Vector_ = None) : socket 'Start Location' (id: Start Location)
 - **end_location** (_Vector_ = None) : socket 'End Location' (id: Offset)
-- **count_mode** (_str_ = TOTAL) : parameter 'count_mode' in ('TOTAL', 'RESOLUTION')
+- **count_mode** (_str_ = TOTAL) : parameter 'count_mode' in ['TOTAL', 'RESOLUTION']
 
 
 
@@ -1207,7 +1207,7 @@ LineOffset(count=None, start_location=None, offset=None, count_mode='TOTAL')
 - **count** (_Integer_ = None) : socket 'Count' (id: Count)
 - **start_location** (_Vector_ = None) : socket 'Start Location' (id: Start Location)
 - **offset** (_Vector_ = None) : socket 'Offset' (id: Offset)
-- **count_mode** (_str_ = TOTAL) : parameter 'count_mode' in ('TOTAL', 'RESOLUTION')
+- **count_mode** (_str_ = TOTAL) : parameter 'count_mode' in ['TOTAL', 'RESOLUTION']
 
 
 
@@ -1459,8 +1459,8 @@ subdivision_surface(level=None, edge_crease=None, vertex_crease=None, boundary_s
 - **level** (_Integer_ = None) : socket 'Level' (id: Level)
 - **edge_crease** (_Float_ = None) : socket 'Edge Crease' (id: Edge Crease)
 - **vertex_crease** (_Float_ = None) : socket 'Vertex Crease' (id: Vertex Crease)
-- **boundary_smooth** (_str_ = ALL) : parameter 'boundary_smooth' in ('PRESERVE_CORNERS', 'ALL')
-- **uv_smooth** (_str_ = PRESERVE_BOUNDARIES) : parameter 'uv_smooth' in ('NONE', 'PRESERVE_CORNERS', 'PRESERVE_CORNERS_AND_JUNCTIONS', 'PRESERVE_CORNERS_JUNCTIONS_AND_CONCAVE', 'PRESERVE_BOUNDARIES', 'SMOOTH_ALL')
+- **boundary_smooth** (_str_ = ALL) : parameter 'boundary_smooth' in ['PRESERVE_CORNERS', 'ALL']
+- **uv_smooth** (_str_ = PRESERVE_BOUNDARIES) : parameter 'uv_smooth' in ['NONE', 'PRESERVE_CORNERS', 'PRESERVE_CORNERS_AND_JUNCTIONS', 'PRESERVE_CORNERS_JUNCTIONS_AND_CONCAVE', 'PRESERVE_BOUNDARIES', 'SMOOTH_ALL']
 
 
 
@@ -1539,7 +1539,7 @@ to_points(position=None, radius=None, mode='VERTICES')
 #### Arguments:
 - **position** (_Vector_ = None) : socket 'Position' (id: Position)
 - **radius** (_Float_ = None) : socket 'Radius' (id: Radius)
-- **mode** (_str_ = VERTICES) : parameter 'mode' in ('VERTICES', 'EDGES', 'FACES', 'CORNERS')
+- **mode** (_str_ = VERTICES) : parameter 'mode' in ['VERTICES', 'EDGES', 'FACES', 'CORNERS']
 
 
 
@@ -1595,7 +1595,7 @@ to_volume(density=None, voxel_amount=None, interior_band_width=None, resolution_
 - **density** (_Float_ = None) : socket 'Density' (id: Density)
 - **voxel_amount** (_Float_ = None) : socket 'Voxel Amount' (id: Voxel Amount)
 - **interior_band_width** (_Float_ = None) : socket 'Interior Band Width' (id: Interior Band Width)
-- **resolution_mode** (_str_ = VOXEL_AMOUNT) : parameter 'resolution_mode' in ('VOXEL_AMOUNT', 'VOXEL_SIZE')
+- **resolution_mode** (_str_ = VOXEL_AMOUNT) : parameter 'resolution_mode' in ['VOXEL_AMOUNT', 'VOXEL_SIZE']
 
 
 
@@ -1625,8 +1625,8 @@ triangulate(minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_D
 
 #### Arguments:
 - **minimum_vertices** (_Integer_ = None) : socket 'Minimum Vertices' (id: Minimum Vertices)
-- **ngon_method** (_str_ = BEAUTY) : parameter 'ngon_method' in ('BEAUTY', 'CLIP')
-- **quad_method** (_str_ = SHORTEST_DIAGONAL) : parameter 'quad_method' in ('BEAUTY', 'FIXED', 'FIXED_ALTERNATE', 'SHORTEST_DIAGONAL', 'LONGEST_DIAGONAL')
+- **ngon_method** (_str_ = BEAUTY) : parameter 'ngon_method' in ['BEAUTY', 'CLIP']
+- **quad_method** (_str_ = SHORTEST_DIAGONAL) : parameter 'quad_method' in ['BEAUTY', 'FIXED', 'FIXED_ALTERNATE', 'SHORTEST_DIAGONAL', 'LONGEST_DIAGONAL']
 
 
 
@@ -1655,7 +1655,7 @@ Union(*mesh, self_intersection=None, hole_tolerant=None, solver='FLOAT')
 - **mesh** (_Geometry_) : socket 'Mesh' (id: Mesh 2)
 - **self_intersection** (_Boolean_ = None) : socket 'Self Intersection' (id: Self Intersection)
 - **hole_tolerant** (_Boolean_ = None) : socket 'Hole Tolerant' (id: Hole Tolerant)
-- **solver** (_str_ = FLOAT) : parameter 'solver' in ('EXACT', 'FLOAT')
+- **solver** (_str_ = FLOAT) : parameter 'solver' in ['EXACT', 'FLOAT']
 
 
 
@@ -1686,7 +1686,7 @@ union(*mesh, self_intersection=None, hole_tolerant=None, solver='FLOAT')
 - **mesh** (_Geometry_) : socket 'Mesh' (id: Mesh 2)
 - **self_intersection** (_Boolean_ = None) : socket 'Self Intersection' (id: Self Intersection)
 - **hole_tolerant** (_Boolean_ = None) : socket 'Hole Tolerant' (id: Hole Tolerant)
-- **solver** (_str_ = FLOAT) : parameter 'solver' in ('EXACT', 'FLOAT')
+- **solver** (_str_ = FLOAT) : parameter 'solver' in ['EXACT', 'FLOAT']
 
 
 

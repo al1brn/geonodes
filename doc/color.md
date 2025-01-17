@@ -488,7 +488,7 @@ Combine(red=None, green=None, blue=None, alpha=None, mode='RGB')
 - **green** (_Float_ = None) : socket 'Green' (id: Green)
 - **blue** (_Float_ = None) : socket 'Blue' (id: Blue)
 - **alpha** (_Float_ = None) : socket 'Alpha' (id: Alpha)
-- **mode** (_str_ = RGB) : parameter 'mode' in ('RGB', 'HSV', 'HSL')
+- **mode** (_str_ = RGB) : parameter 'mode' in ['RGB', 'HSV', 'HSL']
 
 
 
@@ -741,7 +741,7 @@ Gradient(vector=None, gradient_type='LINEAR')
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
-- **gradient_type** (_str_ = LINEAR) : parameter 'gradient_type' in ('LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL')
+- **gradient_type** (_str_ = LINEAR) : parameter 'gradient_type' in ['LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL']
 
 
 
@@ -820,8 +820,8 @@ ImageTexture(image=None, vector=None, frame=None, extension='REPEAT', interpolat
 - **image** (_Image_ = None) : socket 'Image' (id: Image)
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
 - **frame** (_Integer_ = None) : socket 'Frame' (id: Frame)
-- **extension** (_str_ = REPEAT) : parameter 'extension' in ('REPEAT', 'EXTEND', 'CLIP', 'MIRROR')
-- **interpolation** (_str_ = Linear) : parameter 'interpolation' in ('Linear', 'Closest', 'Cubic')
+- **extension** (_str_ = REPEAT) : parameter 'extension' in ['REPEAT', 'EXTEND', 'CLIP', 'MIRROR']
+- **interpolation** (_str_ = Linear) : parameter 'interpolation' in ['Linear', 'Closest', 'Cubic']
 
 
 
@@ -926,9 +926,9 @@ line_style_output(color_fac=None, alpha=None, alpha_fac=None, blend_type='MIX', 
 - **color_fac** (_Float_ = None) : socket 'Color Fac' (id: Color Fac)
 - **alpha** (_Float_ = None) : socket 'Alpha' (id: Alpha)
 - **alpha_fac** (_Float_ = None) : socket 'Alpha Fac' (id: Alpha Fac)
-- **blend_type** (_str_ = MIX) : parameter 'blend_type' in ('MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE')
+- **blend_type** (_str_ = MIX) : parameter 'blend_type' in ['MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE']
 - **is_active_output** (_bool_ = True) : parameter 'is_active_output'
-- **target** (_str_ = ALL) : parameter 'target' in ('ALL', 'EEVEE', 'CYCLES')
+- **target** (_str_ = ALL) : parameter 'target' in ['ALL', 'EEVEE', 'CYCLES']
 - **use_alpha** (_bool_ = False) : parameter 'use_alpha'
 - **use_clamp** (_bool_ = False) : parameter 'use_clamp'
 
@@ -986,7 +986,7 @@ mix(b=None, factor=None, clamp_factor=True, clamp_result=False, factor_mode='UNI
 - **factor** (_Float_ = None) : socket 'Factor' (id: Factor_Float)
 - **clamp_factor** (_bool_ = True) : parameter 'clamp_factor'
 - **clamp_result** (_bool_ = False) : parameter 'clamp_result'
-- **factor_mode** (_str_ = UNIFORM) : parameter 'factor_mode' in ('UNIFORM', 'NON_UNIFORM')
+- **factor_mode** (_str_ = UNIFORM) : parameter 'factor_mode' in ['UNIFORM', 'NON_UNIFORM']
 
 
 
@@ -1789,7 +1789,7 @@ separate(mode='RGB')
 
 
 #### Arguments:
-- **mode** (_str_ = RGB) : parameter 'mode' in ('RGB', 'HSV', 'HSL')
+- **mode** (_str_ = RGB) : parameter 'mode' in ['RGB', 'HSV', 'HSL']
 
 
 
@@ -1815,7 +1815,7 @@ separate_col(mode='RGB')
 
 
 #### Arguments:
-- **mode** (_str_ = RGB) : parameter 'mode' in ('RGB', 'HSV', 'HSL')
+- **mode** (_str_ = RGB) : parameter 'mode' in ['RGB', 'HSV', 'HSL']
 
 
 
@@ -1995,7 +1995,7 @@ SkyTexture(air_density=1.0, altitude=0.0, dust_density=1.0, ground_albedo=0.3000
 - **dust_density** (_float_ = 1.0) : parameter 'dust_density'
 - **ground_albedo** (_float_ = 0.30000001192092896) : parameter 'ground_albedo'
 - **ozone_density** (_float_ = 1.0) : parameter 'ozone_density'
-- **sky_type** (_str_ = NISHITA) : parameter 'sky_type' in ('PREETHAM', 'HOSEK_WILKIE', 'NISHITA')
+- **sky_type** (_str_ = NISHITA) : parameter 'sky_type' in ['PREETHAM', 'HOSEK_WILKIE', 'NISHITA']
 - **sun_disc** (_bool_ = True) : parameter 'sun_disc'
 - **sun_elevation** (_float_ = 0.2617993950843811) : parameter 'sun_elevation'
 - **sun_intensity** (_float_ = 1.0) : parameter 'sun_intensity'
@@ -2056,10 +2056,10 @@ Wave(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, d
 - **detail_scale** (_Float_ = None) : socket 'Detail Scale' (id: Detail Scale)
 - **detail_roughness** (_Float_ = None) : socket 'Detail Roughness' (id: Detail Roughness)
 - **phase_offset** (_Float_ = None) : socket 'Phase Offset' (id: Phase Offset)
-- **bands_direction** (_str_ = X) : parameter 'bands_direction' in ('X', 'Y', 'Z', 'DIAGONAL')
-- **rings_direction** (_str_ = X) : parameter 'rings_direction' in ('X', 'Y', 'Z', 'SPHERICAL')
-- **wave_profile** (_str_ = SIN) : parameter 'wave_profile' in ('SIN', 'SAW', 'TRI')
-- **wave_type** (_str_ = BANDS) : parameter 'wave_type' in ('BANDS', 'RINGS')
+- **bands_direction** (_str_ = X) : parameter 'bands_direction' in ['X', 'Y', 'Z', 'DIAGONAL']
+- **rings_direction** (_str_ = X) : parameter 'rings_direction' in ['X', 'Y', 'Z', 'SPHERICAL']
+- **wave_profile** (_str_ = SIN) : parameter 'wave_profile' in ['SIN', 'SAW', 'TRI']
+- **wave_type** (_str_ = BANDS) : parameter 'wave_type' in ['BANDS', 'RINGS']
 
 
 

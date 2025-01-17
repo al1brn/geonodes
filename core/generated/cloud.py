@@ -73,13 +73,13 @@ class Cloud(Socket):
         - grid (Float) : socket 'Grid' (id: Grid)
         - density (Float) : socket 'Density' (id: Density)
         - seed (Integer) : socket 'Seed' (id: Seed)
-        - mode (str): parameter 'mode' in ('DENSITY_RANDOM', 'DENSITY_GRID')
+        - mode (str): parameter 'mode' in ['DENSITY_RANDOM', 'DENSITY_GRID']
 
         Returns
         -------
         - Cloud
         """
-        utils.check_enum_arg('mode', mode, 'DistributeInGrid', ('DENSITY_RANDOM', 'DENSITY_GRID'))
+        utils.check_enum_arg('Distribute Points in Grid', 'mode', mode, 'DistributeInGrid', ('DENSITY_RANDOM', 'DENSITY_GRID'))
         node = Node('Distribute Points in Grid', sockets={'Grid': grid, 'Density': density, 'Seed': seed}, mode=mode)
         return cls(node._out)
 
@@ -211,13 +211,13 @@ class Cloud(Socket):
         - density (Float) : socket 'Density' (id: Density)
         - voxel_amount (Float) : socket 'Voxel Amount' (id: Voxel Amount)
         - radius (Float) : socket 'Radius' (id: Radius)
-        - resolution_mode (str): parameter 'resolution_mode' in ('VOXEL_AMOUNT', 'VOXEL_SIZE')
+        - resolution_mode (str): parameter 'resolution_mode' in ['VOXEL_AMOUNT', 'VOXEL_SIZE']
 
         Returns
         -------
         - Volume
         """
-        utils.check_enum_arg('resolution_mode', resolution_mode, 'to_volume', ('VOXEL_AMOUNT', 'VOXEL_SIZE'))
+        utils.check_enum_arg('Points to Volume', 'resolution_mode', resolution_mode, 'to_volume', ('VOXEL_AMOUNT', 'VOXEL_SIZE'))
         node = Node('Points to Volume', sockets={'Points': self, 'Density': density, 'Voxel Amount': voxel_amount, 'Radius': radius}, resolution_mode=resolution_mode)
         return node._out
 

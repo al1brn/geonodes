@@ -246,7 +246,7 @@ delete(mode='ALL')
 
 
 #### Arguments:
-- **mode** (_str_ = ALL) : parameter 'mode' in ('ALL', 'EDGE_FACE', 'ONLY_FACE')
+- **mode** (_str_ = ALL) : parameter 'mode' in ['ALL', 'EDGE_FACE', 'ONLY_FACE']
 
 
 
@@ -328,7 +328,7 @@ delete_geometry(mode='ALL')
 
 
 #### Arguments:
-- **mode** (_str_ = ALL) : parameter 'mode' in ('ALL', 'EDGE_FACE', 'ONLY_FACE')
+- **mode** (_str_ = ALL) : parameter 'mode' in ['ALL', 'EDGE_FACE', 'ONLY_FACE']
 
 
 
@@ -718,7 +718,7 @@ scale(scale=None, center=None, scale_mode='UNIFORM')
 #### Arguments:
 - **scale** (_Float_ = None) : socket 'Scale' (id: Scale)
 - **center** (_Vector_ = None) : socket 'Center' (id: Center)
-- **scale_mode** (_str_ = UNIFORM) : parameter 'scale_mode' in ('UNIFORM', 'SINGLE_AXIS')
+- **scale_mode** (_str_ = UNIFORM) : parameter 'scale_mode' in ['UNIFORM', 'SINGLE_AXIS']
 
 
 

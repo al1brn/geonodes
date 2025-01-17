@@ -116,13 +116,13 @@ class snd:
         Arguments
         ---------
         - attribute_name (str): parameter 'attribute_name'
-        - attribute_type (str): parameter 'attribute_type' in ('GEOMETRY', 'OBJECT', 'INSTANCER', 'VIEW_LAYER')
+        - attribute_type (str): parameter 'attribute_type' in ['GEOMETRY', 'OBJECT', 'INSTANCER', 'VIEW_LAYER']
 
         Returns
         -------
         - Color [vector_ (Vector), fac_ (Float), alpha_ (Float)]
         """
-        utils.check_enum_arg('attribute_type', attribute_type, 'attribute', ('GEOMETRY', 'OBJECT', 'INSTANCER', 'VIEW_LAYER'))
+        utils.check_enum_arg('Attribute', 'attribute_type', attribute_type, 'attribute', ('GEOMETRY', 'OBJECT', 'INSTANCER', 'VIEW_LAYER'))
         node = Node('Attribute', sockets={}, attribute_name=attribute_name, attribute_type=attribute_type)
         return node
 
@@ -205,13 +205,13 @@ class snd:
         - normal (Vector) : socket 'Normal' (id: Normal)
         - tangent (Vector) : socket 'Tangent' (id: Tangent)
         - weight (Float) : socket 'Weight' (id: Weight)
-        - distribution (str): parameter 'distribution' in ('BECKMANN', 'GGX', 'ASHIKHMIN_SHIRLEY', 'MULTI_GGX')
+        - distribution (str): parameter 'distribution' in ['BECKMANN', 'GGX', 'ASHIKHMIN_SHIRLEY', 'MULTI_GGX']
 
         Returns
         -------
         - Shader
         """
-        utils.check_enum_arg('distribution', distribution, 'glossy_bsdf', ('BECKMANN', 'GGX', 'ASHIKHMIN_SHIRLEY', 'MULTI_GGX'))
+        utils.check_enum_arg('Glossy BSDF', 'distribution', distribution, 'glossy_bsdf', ('BECKMANN', 'GGX', 'ASHIKHMIN_SHIRLEY', 'MULTI_GGX'))
         node = Node('Glossy BSDF', sockets={'Color': color, 'Roughness': roughness, 'Anisotropy': anisotropy, 'Rotation': rotation, 'Normal': normal, 'Tangent': tangent, 'Weight': weight}, distribution=distribution)
         return node._out
 
@@ -244,13 +244,13 @@ class snd:
         - ior (Float) : socket 'IOR' (id: IOR)
         - normal (Vector) : socket 'Normal' (id: Normal)
         - weight (Float) : socket 'Weight' (id: Weight)
-        - distribution (str): parameter 'distribution' in ('BECKMANN', 'GGX', 'MULTI_GGX')
+        - distribution (str): parameter 'distribution' in ['BECKMANN', 'GGX', 'MULTI_GGX']
 
         Returns
         -------
         - Shader
         """
-        utils.check_enum_arg('distribution', distribution, 'glass_bsdf', ('BECKMANN', 'GGX', 'MULTI_GGX'))
+        utils.check_enum_arg('Glass BSDF', 'distribution', distribution, 'glass_bsdf', ('BECKMANN', 'GGX', 'MULTI_GGX'))
         node = Node('Glass BSDF', sockets={'Color': color, 'Roughness': roughness, 'IOR': ior, 'Normal': normal, 'Weight': weight}, distribution=distribution)
         return node._out
 
@@ -266,13 +266,13 @@ class snd:
         - roughnessv (Float) : socket 'RoughnessV' (id: RoughnessV)
         - tangent (Vector) : socket 'Tangent' (id: Tangent)
         - weight (Float) : socket 'Weight' (id: Weight)
-        - component (str): parameter 'component' in ('Reflection', 'Transmission')
+        - component (str): parameter 'component' in ['Reflection', 'Transmission']
 
         Returns
         -------
         - Shader
         """
-        utils.check_enum_arg('component', component, 'hair_bsdf', ('Reflection', 'Transmission'))
+        utils.check_enum_arg('Hair BSDF', 'component', component, 'hair_bsdf', ('Reflection', 'Transmission'))
         node = Node('Hair BSDF', sockets={'Color': color, 'Offset': offset, 'RoughnessU': roughnessu, 'RoughnessV': roughnessv, 'Tangent': tangent, 'Weight': weight}, component=component)
         return node._out
 
@@ -300,15 +300,15 @@ class snd:
         - reflection (Float) : socket 'Reflection' (id: R lobe)
         - transmission (Float) : socket 'Transmission' (id: TT lobe)
         - secondary_reflection (Float) : socket 'Secondary Reflection' (id: TRT lobe)
-        - model (str): parameter 'model' in ('CHIANG', 'HUANG')
-        - parametrization (str): parameter 'parametrization' in ('ABSORPTION', 'MELANIN', 'COLOR')
+        - model (str): parameter 'model' in ['CHIANG', 'HUANG']
+        - parametrization (str): parameter 'parametrization' in ['ABSORPTION', 'MELANIN', 'COLOR']
 
         Returns
         -------
         - Shader
         """
-        utils.check_enum_arg('model', model, 'principled_hair_bsdf', ('CHIANG', 'HUANG'))
-        utils.check_enum_arg('parametrization', parametrization, 'principled_hair_bsdf', ('ABSORPTION', 'MELANIN', 'COLOR'))
+        utils.check_enum_arg('Principled Hair BSDF', 'model', model, 'principled_hair_bsdf', ('CHIANG', 'HUANG'))
+        utils.check_enum_arg('Principled Hair BSDF', 'parametrization', parametrization, 'principled_hair_bsdf', ('ABSORPTION', 'MELANIN', 'COLOR'))
         node = Node('Principled Hair BSDF', sockets={'Color': color, 'Melanin': melanin, 'Melanin Redness': melanin_redness, 'Tint': tint, 'Absorption Coefficient': absorption_coefficient, 'Aspect Ratio': aspect_ratio, 'Roughness': roughness, 'Radial Roughness': radial_roughness, 'Coat': coat, 'IOR': ior, 'Offset': offset, 'Random Color': random_color, 'Random Roughness': random_roughness, 'Random': random, 'Weight': weight, 'R lobe': reflection, 'TT lobe': transmission, 'TRT lobe': secondary_reflection}, model=model, parametrization=parametrization)
         return node._out
 
@@ -328,15 +328,15 @@ class snd:
         - normal (Vector) : socket 'Normal' (id: Normal)
         - tangent (Vector) : socket 'Tangent' (id: Tangent)
         - weight (Float) : socket 'Weight' (id: Weight)
-        - distribution (str): parameter 'distribution' in ('BECKMANN', 'GGX', 'MULTI_GGX')
-        - fresnel_type (str): parameter 'fresnel_type' in ('PHYSICAL_CONDUCTOR', 'F82')
+        - distribution (str): parameter 'distribution' in ['BECKMANN', 'GGX', 'MULTI_GGX']
+        - fresnel_type (str): parameter 'fresnel_type' in ['PHYSICAL_CONDUCTOR', 'F82']
 
         Returns
         -------
         - Shader
         """
-        utils.check_enum_arg('distribution', distribution, 'metallic_bsdf', ('BECKMANN', 'GGX', 'MULTI_GGX'))
-        utils.check_enum_arg('fresnel_type', fresnel_type, 'metallic_bsdf', ('PHYSICAL_CONDUCTOR', 'F82'))
+        utils.check_enum_arg('Metallic BSDF', 'distribution', distribution, 'metallic_bsdf', ('BECKMANN', 'GGX', 'MULTI_GGX'))
+        utils.check_enum_arg('Metallic BSDF', 'fresnel_type', fresnel_type, 'metallic_bsdf', ('PHYSICAL_CONDUCTOR', 'F82'))
         node = Node('Metallic BSDF', sockets={'Base Color': base_color, 'Edge Tint': edge_tint, 'IOR': ior, 'Extinction': extinction, 'Roughness': roughness, 'Anisotropy': anisotropy, 'Rotation': rotation, 'Normal': normal, 'Tangent': tangent, 'Weight': weight}, distribution=distribution, fresnel_type=fresnel_type)
         return node._out
 
@@ -377,15 +377,15 @@ class snd:
         - emission_strength (Float) : socket 'Emission Strength' (id: Emission Strength)
         - thin_film_thickness (Float) : socket 'Thin Film Thickness' (id: Thin Film Thickness)
         - thin_film_ior (Float) : socket 'Thin Film IOR' (id: Thin Film IOR)
-        - distribution (str): parameter 'distribution' in ('GGX', 'MULTI_GGX')
-        - subsurface_method (str): parameter 'subsurface_method' in ('BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN')
+        - distribution (str): parameter 'distribution' in ['GGX', 'MULTI_GGX']
+        - subsurface_method (str): parameter 'subsurface_method' in ['BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN']
 
         Returns
         -------
         - Shader
         """
-        utils.check_enum_arg('distribution', distribution, 'principled_bsdf', ('GGX', 'MULTI_GGX'))
-        utils.check_enum_arg('subsurface_method', subsurface_method, 'principled_bsdf', ('BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN'))
+        utils.check_enum_arg('Principled BSDF', 'distribution', distribution, 'principled_bsdf', ('GGX', 'MULTI_GGX'))
+        utils.check_enum_arg('Principled BSDF', 'subsurface_method', subsurface_method, 'principled_bsdf', ('BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN'))
         node = Node('Principled BSDF', sockets={'Base Color': base_color, 'Metallic': metallic, 'Roughness': roughness, 'IOR': ior, 'Alpha': alpha, 'Normal': normal, 'Weight': weight, 'Diffuse Roughness': diffuse_roughness, 'Subsurface Weight': subsurface_weight, 'Subsurface Radius': subsurface_radius, 'Subsurface Scale': subsurface_scale, 'Subsurface IOR': subsurface_ior, 'Subsurface Anisotropy': subsurface_anisotropy, 'Specular IOR Level': specular_ior_level, 'Specular Tint': specular_tint, 'Anisotropic': anisotropic, 'Anisotropic Rotation': anisotropic_rotation, 'Tangent': tangent, 'Transmission Weight': transmission_weight, 'Coat Weight': coat_weight, 'Coat Roughness': coat_roughness, 'Coat IOR': coat_ior, 'Coat Tint': coat_tint, 'Coat Normal': coat_normal, 'Sheen Weight': sheen_weight, 'Sheen Roughness': sheen_roughness, 'Sheen Tint': sheen_tint, 'Emission Color': emission_color, 'Emission Strength': emission_strength, 'Thin Film Thickness': thin_film_thickness, 'Thin Film IOR': thin_film_ior}, distribution=distribution, subsurface_method=subsurface_method)
         return node._out
 
@@ -418,13 +418,13 @@ class snd:
         - ior (Float) : socket 'IOR' (id: IOR)
         - normal (Vector) : socket 'Normal' (id: Normal)
         - weight (Float) : socket 'Weight' (id: Weight)
-        - distribution (str): parameter 'distribution' in ('BECKMANN', 'GGX')
+        - distribution (str): parameter 'distribution' in ['BECKMANN', 'GGX']
 
         Returns
         -------
         - Shader
         """
-        utils.check_enum_arg('distribution', distribution, 'refraction_bsdf', ('BECKMANN', 'GGX'))
+        utils.check_enum_arg('Refraction BSDF', 'distribution', distribution, 'refraction_bsdf', ('BECKMANN', 'GGX'))
         node = Node('Refraction BSDF', sockets={'Color': color, 'Roughness': roughness, 'IOR': ior, 'Normal': normal, 'Weight': weight}, distribution=distribution)
         return node._out
 
@@ -438,13 +438,13 @@ class snd:
         - roughness (Float) : socket 'Roughness' (id: Roughness)
         - normal (Vector) : socket 'Normal' (id: Normal)
         - weight (Float) : socket 'Weight' (id: Weight)
-        - distribution (str): parameter 'distribution' in ('ASHIKHMIN', 'MICROFIBER')
+        - distribution (str): parameter 'distribution' in ['ASHIKHMIN', 'MICROFIBER']
 
         Returns
         -------
         - Shader
         """
-        utils.check_enum_arg('distribution', distribution, 'sheen_bsdf', ('ASHIKHMIN', 'MICROFIBER'))
+        utils.check_enum_arg('Sheen BSDF', 'distribution', distribution, 'sheen_bsdf', ('ASHIKHMIN', 'MICROFIBER'))
         node = Node('Sheen BSDF', sockets={'Color': color, 'Roughness': roughness, 'Normal': normal, 'Weight': weight}, distribution=distribution)
         return node._out
 
@@ -459,13 +459,13 @@ class snd:
         - smooth (Float) : socket 'Smooth' (id: Smooth)
         - normal (Vector) : socket 'Normal' (id: Normal)
         - weight (Float) : socket 'Weight' (id: Weight)
-        - component (str): parameter 'component' in ('DIFFUSE', 'GLOSSY')
+        - component (str): parameter 'component' in ['DIFFUSE', 'GLOSSY']
 
         Returns
         -------
         - Shader
         """
-        utils.check_enum_arg('component', component, 'toon_bsdf', ('DIFFUSE', 'GLOSSY'))
+        utils.check_enum_arg('Toon BSDF', 'component', component, 'toon_bsdf', ('DIFFUSE', 'GLOSSY'))
         node = Node('Toon BSDF', sockets={'Color': color, 'Size': size, 'Smooth': smooth, 'Normal': normal, 'Weight': weight}, component=component)
         return node._out
 
@@ -541,13 +541,13 @@ class snd:
         - value (Float) : socket 'Value' (id: Value)
         - min (Float) : socket 'Min' (id: Min)
         - max (Float) : socket 'Max' (id: Max)
-        - clamp_type (str): parameter 'clamp_type' in ('MINMAX', 'RANGE')
+        - clamp_type (str): parameter 'clamp_type' in ['MINMAX', 'RANGE']
 
         Returns
         -------
         - Float
         """
-        utils.check_enum_arg('clamp_type', clamp_type, 'clamp', ('MINMAX', 'RANGE'))
+        utils.check_enum_arg('Clamp', 'clamp_type', clamp_type, 'clamp', ('MINMAX', 'RANGE'))
         node = Node('Clamp', sockets={'Value': value, 'Min': min, 'Max': max}, clamp_type=clamp_type)
         return node._out
 
@@ -560,13 +560,13 @@ class snd:
         - red (Float) : socket 'Red' (id: Red)
         - green (Float) : socket 'Green' (id: Green)
         - blue (Float) : socket 'Blue' (id: Blue)
-        - mode (str): parameter 'mode' in ('RGB', 'HSV', 'HSL')
+        - mode (str): parameter 'mode' in ['RGB', 'HSV', 'HSL']
 
         Returns
         -------
         - Color
         """
-        utils.check_enum_arg('mode', mode, 'combine_color', ('RGB', 'HSV', 'HSL'))
+        utils.check_enum_arg('Combine Color', 'mode', mode, 'combine_color', ('RGB', 'HSV', 'HSL'))
         node = Node('Combine Color', sockets={'Red': red, 'Green': green, 'Blue': blue}, mode=mode)
         return node._out
 
@@ -597,13 +597,13 @@ class snd:
         - midlevel (Float) : socket 'Midlevel' (id: Midlevel)
         - scale (Float) : socket 'Scale' (id: Scale)
         - normal (Vector) : socket 'Normal' (id: Normal)
-        - space (str): parameter 'space' in ('OBJECT', 'WORLD')
+        - space (str): parameter 'space' in ['OBJECT', 'WORLD']
 
         Returns
         -------
         - Vector
         """
-        utils.check_enum_arg('space', space, 'displacement', ('OBJECT', 'WORLD'))
+        utils.check_enum_arg('Displacement', 'space', space, 'displacement', ('OBJECT', 'WORLD'))
         node = Node('Displacement', sockets={'Height': height, 'Midlevel': midlevel, 'Scale': scale, 'Normal': normal}, space=space)
         return node._out
 
@@ -834,15 +834,15 @@ class snd:
         - to_max_1 (Vector) : socket 'To Max' (id: To_Max_FLOAT3)
         - steps_1 (Vector) : socket 'Steps' (id: Steps_FLOAT3)
         - clamp (bool): parameter 'clamp'
-        - data_type (str): parameter 'data_type' in ('FLOAT', 'FLOAT_VECTOR')
-        - interpolation_type (str): parameter 'interpolation_type' in ('LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP')
+        - data_type (str): parameter 'data_type' in ['FLOAT', 'FLOAT_VECTOR']
+        - interpolation_type (str): parameter 'interpolation_type' in ['LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP']
 
         Returns
         -------
         - Float
         """
-        utils.check_enum_arg('data_type', data_type, 'map_range', ('FLOAT', 'FLOAT_VECTOR'))
-        utils.check_enum_arg('interpolation_type', interpolation_type, 'map_range', ('LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP'))
+        utils.check_enum_arg('Map Range', 'data_type', data_type, 'map_range', ('FLOAT', 'FLOAT_VECTOR'))
+        utils.check_enum_arg('Map Range', 'interpolation_type', interpolation_type, 'map_range', ('LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP'))
         node = Node('Map Range', sockets={'Value': value, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max, 'Steps': steps, 'Vector': vector, 'From_Min_FLOAT3': from_min_1, 'From_Max_FLOAT3': from_max_1, 'To_Min_FLOAT3': to_min_1, 'To_Max_FLOAT3': to_max_1, 'Steps_FLOAT3': steps_1}, clamp=clamp, data_type=data_type, interpolation_type=interpolation_type)
         return node._out
 
@@ -856,13 +856,13 @@ class snd:
         - location (Vector) : socket 'Location' (id: Location)
         - rotation (Vector) : socket 'Rotation' (id: Rotation)
         - scale (Vector) : socket 'Scale' (id: Scale)
-        - vector_type (str): parameter 'vector_type' in ('POINT', 'TEXTURE', 'VECTOR', 'NORMAL')
+        - vector_type (str): parameter 'vector_type' in ['POINT', 'TEXTURE', 'VECTOR', 'NORMAL']
 
         Returns
         -------
         - Vector
         """
-        utils.check_enum_arg('vector_type', vector_type, 'mapping', ('POINT', 'TEXTURE', 'VECTOR', 'NORMAL'))
+        utils.check_enum_arg('Mapping', 'vector_type', vector_type, 'mapping', ('POINT', 'TEXTURE', 'VECTOR', 'NORMAL'))
         node = Node('Mapping', sockets={'Vector': vector, 'Location': location, 'Rotation': rotation, 'Scale': scale}, vector_type=vector_type)
         return node._out
 
@@ -875,14 +875,14 @@ class snd:
         - value (Float) : socket 'Value' (id: Value)
         - value_1 (Float) : socket 'Value' (id: Value_001)
         - value_2 (Float) : socket 'Value' (id: Value_002)
-        - operation (str): parameter 'operation' in ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'POWER', 'LOGARITHM', 'SQRT', 'INVERSE_SQRT', 'ABSOLUTE', 'EXPONENT', 'MINIMUM', 'MAXIMUM', 'LESS_THAN', 'GREATER_THAN', 'SIGN', 'COMPARE', 'SMOOTH_MIN', 'SMOOTH_MAX', 'ROUND', 'FLOOR', 'CEIL', 'TRUNC', 'FRACT', 'MODULO', 'FLOORED_MODULO', 'WRAP', 'SNAP', 'PINGPONG', 'SINE', 'COSINE', 'TANGENT', 'ARCSINE', 'ARCCOSINE', 'ARCTANGENT', 'ARCTAN2', 'SINH', 'COSH', 'TANH', 'RADIANS', 'DEGREES')
+        - operation (str): parameter 'operation' in ['ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'POWER', 'LOGARITHM', 'SQRT', 'INVERSE_SQRT', 'ABSOLUTE', 'EXPONENT', 'MINIMUM', 'MAXIMUM', 'LESS_THAN', 'GREATER_THAN', 'SIGN', 'COMPARE', 'SMOOTH_MIN', 'SMOOTH_MAX', 'ROUND', 'FLOOR', 'CEIL', 'TRUNC', 'FRACT', 'MODULO', 'FLOORED_MODULO', 'WRAP', 'SNAP', 'PINGPONG', 'SINE', 'COSINE', 'TANGENT', 'ARCSINE', 'ARCCOSINE', 'ARCTANGENT', 'ARCTAN2', 'SINH', 'COSH', 'TANH', 'RADIANS', 'DEGREES']
         - use_clamp (bool): parameter 'use_clamp'
 
         Returns
         -------
         - Float
         """
-        utils.check_enum_arg('operation', operation, 'math', ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'POWER', 'LOGARITHM', 'SQRT', 'INVERSE_SQRT', 'ABSOLUTE', 'EXPONENT', 'MINIMUM', 'MAXIMUM', 'LESS_THAN', 'GREATER_THAN', 'SIGN', 'COMPARE', 'SMOOTH_MIN', 'SMOOTH_MAX', 'ROUND', 'FLOOR', 'CEIL', 'TRUNC', 'FRACT', 'MODULO', 'FLOORED_MODULO', 'WRAP', 'SNAP', 'PINGPONG', 'SINE', 'COSINE', 'TANGENT', 'ARCSINE', 'ARCCOSINE', 'ARCTANGENT', 'ARCTAN2', 'SINH', 'COSH', 'TANH', 'RADIANS', 'DEGREES'))
+        utils.check_enum_arg('Math', 'operation', operation, 'math', ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'POWER', 'LOGARITHM', 'SQRT', 'INVERSE_SQRT', 'ABSOLUTE', 'EXPONENT', 'MINIMUM', 'MAXIMUM', 'LESS_THAN', 'GREATER_THAN', 'SIGN', 'COMPARE', 'SMOOTH_MIN', 'SMOOTH_MAX', 'ROUND', 'FLOOR', 'CEIL', 'TRUNC', 'FRACT', 'MODULO', 'FLOORED_MODULO', 'WRAP', 'SNAP', 'PINGPONG', 'SINE', 'COSINE', 'TANGENT', 'ARCSINE', 'ARCCOSINE', 'ARCTANGENT', 'ARCTAN2', 'SINH', 'COSH', 'TANH', 'RADIANS', 'DEGREES'))
         node = Node('Math', sockets={'Value': value, 'Value_001': value_1, 'Value_002': value_2}, operation=operation, use_clamp=use_clamp)
         return node._out
 
@@ -901,19 +901,19 @@ class snd:
         - a_3 (Rotation) : socket 'A' (id: A_Rotation)
         - b_3 (Rotation) : socket 'B' (id: B_Rotation)
         - factor (Vector) : socket 'Factor' (id: Factor_Vector)
-        - blend_type (str): parameter 'blend_type' in ('MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE')
+        - blend_type (str): parameter 'blend_type' in ['MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE']
         - clamp_factor (bool): parameter 'clamp_factor'
         - clamp_result (bool): parameter 'clamp_result'
-        - data_type (str): parameter 'data_type' in ('FLOAT', 'VECTOR', 'RGBA')
-        - factor_mode (str): parameter 'factor_mode' in ('UNIFORM', 'NON_UNIFORM')
+        - data_type (str): parameter 'data_type' in ['FLOAT', 'VECTOR', 'RGBA']
+        - factor_mode (str): parameter 'factor_mode' in ['UNIFORM', 'NON_UNIFORM']
 
         Returns
         -------
         - Float
         """
-        utils.check_enum_arg('blend_type', blend_type, 'mix', ('MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE'))
-        utils.check_enum_arg('data_type', data_type, 'mix', ('FLOAT', 'VECTOR', 'RGBA'))
-        utils.check_enum_arg('factor_mode', factor_mode, 'mix', ('UNIFORM', 'NON_UNIFORM'))
+        utils.check_enum_arg('Mix', 'blend_type', blend_type, 'mix', ('MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE'))
+        utils.check_enum_arg('Mix', 'data_type', data_type, 'mix', ('FLOAT', 'VECTOR', 'RGBA'))
+        utils.check_enum_arg('Mix', 'factor_mode', factor_mode, 'mix', ('UNIFORM', 'NON_UNIFORM'))
         node = Node('Mix', sockets={'A_Float': a, 'B_Float': b, 'A_Vector': a_1, 'B_Vector': b_1, 'A_Color': a_2, 'B_Color': b_2, 'A_Rotation': a_3, 'B_Rotation': b_3, 'Factor_Vector': factor}, blend_type=blend_type, clamp_factor=clamp_factor, clamp_result=clamp_result, data_type=data_type, factor_mode=factor_mode)
         return node._out
 
@@ -968,14 +968,14 @@ class snd:
         ---------
         - strength (Float) : socket 'Strength' (id: Strength)
         - color (Color) : socket 'Color' (id: Color)
-        - space (str): parameter 'space' in ('TANGENT', 'OBJECT', 'WORLD', 'BLENDER_OBJECT', 'BLENDER_WORLD')
+        - space (str): parameter 'space' in ['TANGENT', 'OBJECT', 'WORLD', 'BLENDER_OBJECT', 'BLENDER_WORLD']
         - uv_map (str): parameter 'uv_map'
 
         Returns
         -------
         - Vector
         """
-        utils.check_enum_arg('space', space, 'normal_map', ('TANGENT', 'OBJECT', 'WORLD', 'BLENDER_OBJECT', 'BLENDER_WORLD'))
+        utils.check_enum_arg('Normal Map', 'space', space, 'normal_map', ('TANGENT', 'OBJECT', 'WORLD', 'BLENDER_OBJECT', 'BLENDER_WORLD'))
         node = Node('Normal Map', sockets={'Strength': strength, 'Color': color}, space=space, uv_map=uv_map)
         return node._out
 
@@ -1015,13 +1015,13 @@ class snd:
         ---------
         - surface (Shader) : socket 'Surface' (id: Surface)
         - is_active_output (bool): parameter 'is_active_output'
-        - target (str): parameter 'target' in ('ALL', 'EEVEE', 'CYCLES')
+        - target (str): parameter 'target' in ['ALL', 'EEVEE', 'CYCLES']
 
         Returns
         -------
         - None
         """
-        utils.check_enum_arg('target', target, 'light_output', ('ALL', 'EEVEE', 'CYCLES'))
+        utils.check_enum_arg('Light Output', 'target', target, 'light_output', ('ALL', 'EEVEE', 'CYCLES'))
         node = Node('Light Output', sockets={'Surface': surface}, is_active_output=is_active_output, target=target)
         return node._out
 
@@ -1035,9 +1035,9 @@ class snd:
         - color_fac (Float) : socket 'Color Fac' (id: Color Fac)
         - alpha (Float) : socket 'Alpha' (id: Alpha)
         - alpha_fac (Float) : socket 'Alpha Fac' (id: Alpha Fac)
-        - blend_type (str): parameter 'blend_type' in ('MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE')
+        - blend_type (str): parameter 'blend_type' in ['MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE']
         - is_active_output (bool): parameter 'is_active_output'
-        - target (str): parameter 'target' in ('ALL', 'EEVEE', 'CYCLES')
+        - target (str): parameter 'target' in ['ALL', 'EEVEE', 'CYCLES']
         - use_alpha (bool): parameter 'use_alpha'
         - use_clamp (bool): parameter 'use_clamp'
 
@@ -1045,8 +1045,8 @@ class snd:
         -------
         - None
         """
-        utils.check_enum_arg('blend_type', blend_type, 'line_style_output', ('MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE'))
-        utils.check_enum_arg('target', target, 'line_style_output', ('ALL', 'EEVEE', 'CYCLES'))
+        utils.check_enum_arg('Line Style Output', 'blend_type', blend_type, 'line_style_output', ('MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE'))
+        utils.check_enum_arg('Line Style Output', 'target', target, 'line_style_output', ('ALL', 'EEVEE', 'CYCLES'))
         node = Node('Line Style Output', sockets={'Color': color, 'Color Fac': color_fac, 'Alpha': alpha, 'Alpha Fac': alpha_fac}, blend_type=blend_type, is_active_output=is_active_output, target=target, use_alpha=use_alpha, use_clamp=use_clamp)
         return node._out
 
@@ -1061,13 +1061,13 @@ class snd:
         - displacement (Vector) : socket 'Displacement' (id: Displacement)
         - thickness (Float) : socket 'Thickness' (id: Thickness)
         - is_active_output (bool): parameter 'is_active_output'
-        - target (str): parameter 'target' in ('ALL', 'EEVEE', 'CYCLES')
+        - target (str): parameter 'target' in ['ALL', 'EEVEE', 'CYCLES']
 
         Returns
         -------
         - None
         """
-        utils.check_enum_arg('target', target, 'material_output', ('ALL', 'EEVEE', 'CYCLES'))
+        utils.check_enum_arg('Material Output', 'target', target, 'material_output', ('ALL', 'EEVEE', 'CYCLES'))
         node = Node('Material Output', sockets={'Surface': surface, 'Volume': volume, 'Displacement': displacement, 'Thickness': thickness}, is_active_output=is_active_output, target=target)
         return node._out
 
@@ -1080,13 +1080,13 @@ class snd:
         - surface (Shader) : socket 'Surface' (id: Surface)
         - volume (Shader) : socket 'Volume' (id: Volume)
         - is_active_output (bool): parameter 'is_active_output'
-        - target (str): parameter 'target' in ('ALL', 'EEVEE', 'CYCLES')
+        - target (str): parameter 'target' in ['ALL', 'EEVEE', 'CYCLES']
 
         Returns
         -------
         - None
         """
-        utils.check_enum_arg('target', target, 'world_output', ('ALL', 'EEVEE', 'CYCLES'))
+        utils.check_enum_arg('World Output', 'target', target, 'world_output', ('ALL', 'EEVEE', 'CYCLES'))
         node = Node('World Output', sockets={'Surface': surface, 'Volume': volume}, is_active_output=is_active_output, target=target)
         return node._out
 
@@ -1164,7 +1164,7 @@ class snd:
         - bytecode (str): parameter 'bytecode'
         - bytecode_hash (str): parameter 'bytecode_hash'
         - filepath (str): parameter 'filepath'
-        - mode (str): parameter 'mode' in ('INTERNAL', 'EXTERNAL')
+        - mode (str): parameter 'mode' in ['INTERNAL', 'EXTERNAL']
         - script (NoneType): parameter 'script'
         - use_auto_update (bool): parameter 'use_auto_update'
 
@@ -1172,7 +1172,7 @@ class snd:
         -------
         - None
         """
-        utils.check_enum_arg('mode', mode, 'script', ('INTERNAL', 'EXTERNAL'))
+        utils.check_enum_arg('Script', 'mode', mode, 'script', ('INTERNAL', 'EXTERNAL'))
         node = Node('Script', sockets={}, bytecode=bytecode, bytecode_hash=bytecode_hash, filepath=filepath, mode=mode, script=script, use_auto_update=use_auto_update)
         return node._out
 
@@ -1183,13 +1183,13 @@ class snd:
         Arguments
         ---------
         - color (Color) : socket 'Color' (id: Color)
-        - mode (str): parameter 'mode' in ('RGB', 'HSV', 'HSL')
+        - mode (str): parameter 'mode' in ['RGB', 'HSV', 'HSL']
 
         Returns
         -------
         - Float [green_ (Float), blue_ (Float)]
         """
-        utils.check_enum_arg('mode', mode, 'separate_color', ('RGB', 'HSV', 'HSL'))
+        utils.check_enum_arg('Separate Color', 'mode', mode, 'separate_color', ('RGB', 'HSV', 'HSL'))
         node = Node('Separate Color', sockets={'Color': color}, mode=mode)
         return node._out
 
@@ -1237,13 +1237,13 @@ class snd:
         - anisotropy (Float) : socket 'Anisotropy' (id: Anisotropy)
         - normal (Vector) : socket 'Normal' (id: Normal)
         - weight (Float) : socket 'Weight' (id: Weight)
-        - falloff (str): parameter 'falloff' in ('BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN')
+        - falloff (str): parameter 'falloff' in ['BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN']
 
         Returns
         -------
         - Shader
         """
-        utils.check_enum_arg('falloff', falloff, 'subsurface_scattering', ('BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN'))
+        utils.check_enum_arg('Subsurface Scattering', 'falloff', falloff, 'subsurface_scattering', ('BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN'))
         node = Node('Subsurface Scattering', sockets={'Color': color, 'Scale': scale, 'Radius': radius, 'IOR': ior, 'Roughness': roughness, 'Anisotropy': anisotropy, 'Normal': normal, 'Weight': weight}, falloff=falloff)
         return node._out
 
@@ -1253,16 +1253,16 @@ class snd:
 
         Arguments
         ---------
-        - axis (str): parameter 'axis' in ('X', 'Y', 'Z')
-        - direction_type (str): parameter 'direction_type' in ('RADIAL', 'UV_MAP')
+        - axis (str): parameter 'axis' in ['X', 'Y', 'Z']
+        - direction_type (str): parameter 'direction_type' in ['RADIAL', 'UV_MAP']
         - uv_map (str): parameter 'uv_map'
 
         Returns
         -------
         - Vector
         """
-        utils.check_enum_arg('axis', axis, 'tangent', ('X', 'Y', 'Z'))
-        utils.check_enum_arg('direction_type', direction_type, 'tangent', ('RADIAL', 'UV_MAP'))
+        utils.check_enum_arg('Tangent', 'axis', axis, 'tangent', ('X', 'Y', 'Z'))
+        utils.check_enum_arg('Tangent', 'direction_type', direction_type, 'tangent', ('RADIAL', 'UV_MAP'))
         node = Node('Tangent', sockets={}, axis=axis, direction_type=direction_type, uv_map=uv_map)
         return node._out
 
@@ -1336,15 +1336,15 @@ class snd:
         ---------
         - vector (Vector) : socket 'Vector' (id: Vector)
         - image (NoneType): parameter 'image'
-        - interpolation (str): parameter 'interpolation' in ('Linear', 'Closest', 'Cubic', 'Smart')
-        - projection (str): parameter 'projection' in ('EQUIRECTANGULAR', 'MIRROR_BALL')
+        - interpolation (str): parameter 'interpolation' in ['Linear', 'Closest', 'Cubic', 'Smart']
+        - projection (str): parameter 'projection' in ['EQUIRECTANGULAR', 'MIRROR_BALL']
 
         Returns
         -------
         - Color
         """
-        utils.check_enum_arg('interpolation', interpolation, 'environment_texture', ('Linear', 'Closest', 'Cubic', 'Smart'))
-        utils.check_enum_arg('projection', projection, 'environment_texture', ('EQUIRECTANGULAR', 'MIRROR_BALL'))
+        utils.check_enum_arg('Environment Texture', 'interpolation', interpolation, 'environment_texture', ('Linear', 'Closest', 'Cubic', 'Smart'))
+        utils.check_enum_arg('Environment Texture', 'projection', projection, 'environment_texture', ('EQUIRECTANGULAR', 'MIRROR_BALL'))
         node = Node('Environment Texture', sockets={'Vector': vector}, image=image, interpolation=interpolation, projection=projection)
         return node._out
 
@@ -1360,13 +1360,13 @@ class snd:
         - anisotropy (Float) : socket 'Anisotropy' (id: Anisotropy)
         - orientation (Float) : socket 'Orientation' (id: Orientation 2D)
         - orientation_1 (Vector) : socket 'Orientation' (id: Orientation 3D)
-        - gabor_type (str): parameter 'gabor_type' in ('2D', '3D')
+        - gabor_type (str): parameter 'gabor_type' in ['2D', '3D']
 
         Returns
         -------
         - Float [phase_ (Float), intensity_ (Float)]
         """
-        utils.check_enum_arg('gabor_type', gabor_type, 'gabor_texture', ('2D', '3D'))
+        utils.check_enum_arg('Gabor Texture', 'gabor_type', gabor_type, 'gabor_texture', ('2D', '3D'))
         node = Node('Gabor Texture', sockets={'Vector': vector, 'Scale': scale, 'Frequency': frequency, 'Anisotropy': anisotropy, 'Orientation 2D': orientation, 'Orientation 3D': orientation_1}, gabor_type=gabor_type)
         return node._out
 
@@ -1377,13 +1377,13 @@ class snd:
         Arguments
         ---------
         - vector (Vector) : socket 'Vector' (id: Vector)
-        - gradient_type (str): parameter 'gradient_type' in ('LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL')
+        - gradient_type (str): parameter 'gradient_type' in ['LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL']
 
         Returns
         -------
         - Color [fac_ (Float)]
         """
-        utils.check_enum_arg('gradient_type', gradient_type, 'gradient_texture', ('LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL'))
+        utils.check_enum_arg('Gradient Texture', 'gradient_type', gradient_type, 'gradient_texture', ('LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL'))
         node = Node('Gradient Texture', sockets={'Vector': vector}, gradient_type=gradient_type)
         return node._out
 
@@ -1397,13 +1397,13 @@ class snd:
         - strength (Float) : socket 'Strength' (id: Strength)
         - filepath (str): parameter 'filepath'
         - ies (NoneType): parameter 'ies'
-        - mode (str): parameter 'mode' in ('INTERNAL', 'EXTERNAL')
+        - mode (str): parameter 'mode' in ['INTERNAL', 'EXTERNAL']
 
         Returns
         -------
         - Float
         """
-        utils.check_enum_arg('mode', mode, 'ies_texture', ('INTERNAL', 'EXTERNAL'))
+        utils.check_enum_arg('IES Texture', 'mode', mode, 'ies_texture', ('INTERNAL', 'EXTERNAL'))
         node = Node('IES Texture', sockets={'Vector': vector, 'Strength': strength}, filepath=filepath, ies=ies, mode=mode)
         return node._out
 
@@ -1414,19 +1414,19 @@ class snd:
         Arguments
         ---------
         - vector (Vector) : socket 'Vector' (id: Vector)
-        - extension (str): parameter 'extension' in ('REPEAT', 'EXTEND', 'CLIP', 'MIRROR')
+        - extension (str): parameter 'extension' in ['REPEAT', 'EXTEND', 'CLIP', 'MIRROR']
         - image (NoneType): parameter 'image'
-        - interpolation (str): parameter 'interpolation' in ('Linear', 'Closest', 'Cubic', 'Smart')
-        - projection (str): parameter 'projection' in ('FLAT', 'BOX', 'SPHERE', 'TUBE')
+        - interpolation (str): parameter 'interpolation' in ['Linear', 'Closest', 'Cubic', 'Smart']
+        - projection (str): parameter 'projection' in ['FLAT', 'BOX', 'SPHERE', 'TUBE']
         - projection_blend (float): parameter 'projection_blend'
 
         Returns
         -------
         - Color [alpha_ (Float)]
         """
-        utils.check_enum_arg('extension', extension, 'image_texture', ('REPEAT', 'EXTEND', 'CLIP', 'MIRROR'))
-        utils.check_enum_arg('interpolation', interpolation, 'image_texture', ('Linear', 'Closest', 'Cubic', 'Smart'))
-        utils.check_enum_arg('projection', projection, 'image_texture', ('FLAT', 'BOX', 'SPHERE', 'TUBE'))
+        utils.check_enum_arg('Image Texture', 'extension', extension, 'image_texture', ('REPEAT', 'EXTEND', 'CLIP', 'MIRROR'))
+        utils.check_enum_arg('Image Texture', 'interpolation', interpolation, 'image_texture', ('Linear', 'Closest', 'Cubic', 'Smart'))
+        utils.check_enum_arg('Image Texture', 'projection', projection, 'image_texture', ('FLAT', 'BOX', 'SPHERE', 'TUBE'))
         node = Node('Image Texture', sockets={'Vector': vector}, extension=extension, image=image, interpolation=interpolation, projection=projection, projection_blend=projection_blend)
         return node._out
 
@@ -1463,16 +1463,16 @@ class snd:
         - offset (Float) : socket 'Offset' (id: Offset)
         - gain (Float) : socket 'Gain' (id: Gain)
         - distortion (Float) : socket 'Distortion' (id: Distortion)
-        - noise_dimensions (str): parameter 'noise_dimensions' in ('1D', '2D', '3D', '4D')
-        - noise_type (str): parameter 'noise_type' in ('MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN')
+        - noise_dimensions (str): parameter 'noise_dimensions' in ['1D', '2D', '3D', '4D']
+        - noise_type (str): parameter 'noise_type' in ['MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN']
         - normalize (bool): parameter 'normalize'
 
         Returns
         -------
         - Float [color_ (Color)]
         """
-        utils.check_enum_arg('noise_dimensions', noise_dimensions, 'noise_texture', ('1D', '2D', '3D', '4D'))
-        utils.check_enum_arg('noise_type', noise_type, 'noise_texture', ('MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN'))
+        utils.check_enum_arg('Noise Texture', 'noise_dimensions', noise_dimensions, 'noise_texture', ('1D', '2D', '3D', '4D'))
+        utils.check_enum_arg('Noise Texture', 'noise_type', noise_type, 'noise_texture', ('MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN'))
         node = Node('Noise Texture', sockets={'Vector': vector, 'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Offset': offset, 'Gain': gain, 'Distortion': distortion}, noise_dimensions=noise_dimensions, noise_type=noise_type, normalize=normalize)
         return node._out
 
@@ -1483,26 +1483,26 @@ class snd:
         Arguments
         ---------
         - vector (Vector) : socket 'Vector' (id: Vector)
-        - interpolation (str): parameter 'interpolation' in ('Closest', 'Linear', 'Cubic')
+        - interpolation (str): parameter 'interpolation' in ['Closest', 'Linear', 'Cubic']
         - object (NoneType): parameter 'object'
-        - particle_color_source (str): parameter 'particle_color_source' in ('PARTICLE_AGE', 'PARTICLE_SPEED', 'PARTICLE_VELOCITY')
+        - particle_color_source (str): parameter 'particle_color_source' in ['PARTICLE_AGE', 'PARTICLE_SPEED', 'PARTICLE_VELOCITY']
         - particle_system (NoneType): parameter 'particle_system'
-        - point_source (str): parameter 'point_source' in ('PARTICLE_SYSTEM', 'OBJECT')
+        - point_source (str): parameter 'point_source' in ['PARTICLE_SYSTEM', 'OBJECT']
         - radius (float): parameter 'radius'
         - resolution (int): parameter 'resolution'
-        - space (str): parameter 'space' in ('OBJECT', 'WORLD')
+        - space (str): parameter 'space' in ['OBJECT', 'WORLD']
         - vertex_attribute_name (str): parameter 'vertex_attribute_name'
-        - vertex_color_source (str): parameter 'vertex_color_source' in ('VERTEX_COLOR', 'VERTEX_WEIGHT', 'VERTEX_NORMAL')
+        - vertex_color_source (str): parameter 'vertex_color_source' in ['VERTEX_COLOR', 'VERTEX_WEIGHT', 'VERTEX_NORMAL']
 
         Returns
         -------
         - Color [density_ (Float)]
         """
-        utils.check_enum_arg('interpolation', interpolation, 'point_density', ('Closest', 'Linear', 'Cubic'))
-        utils.check_enum_arg('particle_color_source', particle_color_source, 'point_density', ('PARTICLE_AGE', 'PARTICLE_SPEED', 'PARTICLE_VELOCITY'))
-        utils.check_enum_arg('point_source', point_source, 'point_density', ('PARTICLE_SYSTEM', 'OBJECT'))
-        utils.check_enum_arg('space', space, 'point_density', ('OBJECT', 'WORLD'))
-        utils.check_enum_arg('vertex_color_source', vertex_color_source, 'point_density', ('VERTEX_COLOR', 'VERTEX_WEIGHT', 'VERTEX_NORMAL'))
+        utils.check_enum_arg('Point Density', 'interpolation', interpolation, 'point_density', ('Closest', 'Linear', 'Cubic'))
+        utils.check_enum_arg('Point Density', 'particle_color_source', particle_color_source, 'point_density', ('PARTICLE_AGE', 'PARTICLE_SPEED', 'PARTICLE_VELOCITY'))
+        utils.check_enum_arg('Point Density', 'point_source', point_source, 'point_density', ('PARTICLE_SYSTEM', 'OBJECT'))
+        utils.check_enum_arg('Point Density', 'space', space, 'point_density', ('OBJECT', 'WORLD'))
+        utils.check_enum_arg('Point Density', 'vertex_color_source', vertex_color_source, 'point_density', ('VERTEX_COLOR', 'VERTEX_WEIGHT', 'VERTEX_NORMAL'))
         node = Node('Point Density', sockets={'Vector': vector}, interpolation=interpolation, object=object, particle_color_source=particle_color_source, particle_system=particle_system, point_source=point_source, radius=radius, resolution=resolution, space=space, vertex_attribute_name=vertex_attribute_name, vertex_color_source=vertex_color_source)
         return node._out
 
@@ -1518,7 +1518,7 @@ class snd:
         - dust_density (float): parameter 'dust_density'
         - ground_albedo (float): parameter 'ground_albedo'
         - ozone_density (float): parameter 'ozone_density'
-        - sky_type (str): parameter 'sky_type' in ('PREETHAM', 'HOSEK_WILKIE', 'NISHITA')
+        - sky_type (str): parameter 'sky_type' in ['PREETHAM', 'HOSEK_WILKIE', 'NISHITA']
         - sun_disc (bool): parameter 'sun_disc'
         - sun_elevation (float): parameter 'sun_elevation'
         - sun_intensity (float): parameter 'sun_intensity'
@@ -1530,7 +1530,7 @@ class snd:
         -------
         - Color
         """
-        utils.check_enum_arg('sky_type', sky_type, 'sky_texture', ('PREETHAM', 'HOSEK_WILKIE', 'NISHITA'))
+        utils.check_enum_arg('Sky Texture', 'sky_type', sky_type, 'sky_texture', ('PREETHAM', 'HOSEK_WILKIE', 'NISHITA'))
         node = Node('Sky Texture', sockets={'Vector': vector}, air_density=air_density, altitude=altitude, dust_density=dust_density, ground_albedo=ground_albedo, ozone_density=ozone_density, sky_type=sky_type, sun_disc=sun_disc, sun_elevation=sun_elevation, sun_intensity=sun_intensity, sun_rotation=sun_rotation, sun_size=sun_size, turbidity=turbidity)
         return node._out
 
@@ -1549,18 +1549,18 @@ class snd:
         - smoothness (Float) : socket 'Smoothness' (id: Smoothness)
         - exponent (Float) : socket 'Exponent' (id: Exponent)
         - randomness (Float) : socket 'Randomness' (id: Randomness)
-        - distance (str): parameter 'distance' in ('EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI')
-        - feature (str): parameter 'feature' in ('F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS')
+        - distance (str): parameter 'distance' in ['EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI']
+        - feature (str): parameter 'feature' in ['F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS']
         - normalize (bool): parameter 'normalize'
-        - voronoi_dimensions (str): parameter 'voronoi_dimensions' in ('1D', '2D', '3D', '4D')
+        - voronoi_dimensions (str): parameter 'voronoi_dimensions' in ['1D', '2D', '3D', '4D']
 
         Returns
         -------
         - Float [color_ (Color), position_ (Vector)]
         """
-        utils.check_enum_arg('distance', distance, 'voronoi_texture', ('EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI'))
-        utils.check_enum_arg('feature', feature, 'voronoi_texture', ('F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS'))
-        utils.check_enum_arg('voronoi_dimensions', voronoi_dimensions, 'voronoi_texture', ('1D', '2D', '3D', '4D'))
+        utils.check_enum_arg('Voronoi Texture', 'distance', distance, 'voronoi_texture', ('EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI'))
+        utils.check_enum_arg('Voronoi Texture', 'feature', feature, 'voronoi_texture', ('F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS'))
+        utils.check_enum_arg('Voronoi Texture', 'voronoi_dimensions', voronoi_dimensions, 'voronoi_texture', ('1D', '2D', '3D', '4D'))
         node = Node('Voronoi Texture', sockets={'Vector': vector, 'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Smoothness': smoothness, 'Exponent': exponent, 'Randomness': randomness}, distance=distance, feature=feature, normalize=normalize, voronoi_dimensions=voronoi_dimensions)
         return node._out
 
@@ -1577,19 +1577,19 @@ class snd:
         - detail_scale (Float) : socket 'Detail Scale' (id: Detail Scale)
         - detail_roughness (Float) : socket 'Detail Roughness' (id: Detail Roughness)
         - phase_offset (Float) : socket 'Phase Offset' (id: Phase Offset)
-        - bands_direction (str): parameter 'bands_direction' in ('X', 'Y', 'Z', 'DIAGONAL')
-        - rings_direction (str): parameter 'rings_direction' in ('X', 'Y', 'Z', 'SPHERICAL')
-        - wave_profile (str): parameter 'wave_profile' in ('SIN', 'SAW', 'TRI')
-        - wave_type (str): parameter 'wave_type' in ('BANDS', 'RINGS')
+        - bands_direction (str): parameter 'bands_direction' in ['X', 'Y', 'Z', 'DIAGONAL']
+        - rings_direction (str): parameter 'rings_direction' in ['X', 'Y', 'Z', 'SPHERICAL']
+        - wave_profile (str): parameter 'wave_profile' in ['SIN', 'SAW', 'TRI']
+        - wave_type (str): parameter 'wave_type' in ['BANDS', 'RINGS']
 
         Returns
         -------
         - Color [fac_ (Float)]
         """
-        utils.check_enum_arg('bands_direction', bands_direction, 'wave_texture', ('X', 'Y', 'Z', 'DIAGONAL'))
-        utils.check_enum_arg('rings_direction', rings_direction, 'wave_texture', ('X', 'Y', 'Z', 'SPHERICAL'))
-        utils.check_enum_arg('wave_profile', wave_profile, 'wave_texture', ('SIN', 'SAW', 'TRI'))
-        utils.check_enum_arg('wave_type', wave_type, 'wave_texture', ('BANDS', 'RINGS'))
+        utils.check_enum_arg('Wave Texture', 'bands_direction', bands_direction, 'wave_texture', ('X', 'Y', 'Z', 'DIAGONAL'))
+        utils.check_enum_arg('Wave Texture', 'rings_direction', rings_direction, 'wave_texture', ('X', 'Y', 'Z', 'SPHERICAL'))
+        utils.check_enum_arg('Wave Texture', 'wave_profile', wave_profile, 'wave_texture', ('SIN', 'SAW', 'TRI'))
+        utils.check_enum_arg('Wave Texture', 'wave_type', wave_type, 'wave_texture', ('BANDS', 'RINGS'))
         node = Node('Wave Texture', sockets={'Vector': vector, 'Scale': scale, 'Distortion': distortion, 'Detail': detail, 'Detail Scale': detail_scale, 'Detail Roughness': detail_roughness, 'Phase Offset': phase_offset}, bands_direction=bands_direction, rings_direction=rings_direction, wave_profile=wave_profile, wave_type=wave_type)
         return node._out
 
@@ -1601,13 +1601,13 @@ class snd:
         ---------
         - vector (Vector) : socket 'Vector' (id: Vector)
         - w (Float) : socket 'W' (id: W)
-        - noise_dimensions (str): parameter 'noise_dimensions' in ('1D', '2D', '3D', '4D')
+        - noise_dimensions (str): parameter 'noise_dimensions' in ['1D', '2D', '3D', '4D']
 
         Returns
         -------
         - Float [color_ (Color)]
         """
-        utils.check_enum_arg('noise_dimensions', noise_dimensions, 'white_noise_texture', ('1D', '2D', '3D', '4D'))
+        utils.check_enum_arg('White Noise Texture', 'noise_dimensions', noise_dimensions, 'white_noise_texture', ('1D', '2D', '3D', '4D'))
         node = Node('White Noise Texture', sockets={'Vector': vector, 'W': w}, noise_dimensions=noise_dimensions)
         return node._out
 
@@ -1699,13 +1699,13 @@ class snd:
         - vector (Color) : socket 'Vector' (id: Vector)
         - midlevel (Float) : socket 'Midlevel' (id: Midlevel)
         - scale (Float) : socket 'Scale' (id: Scale)
-        - space (str): parameter 'space' in ('TANGENT', 'OBJECT', 'WORLD')
+        - space (str): parameter 'space' in ['TANGENT', 'OBJECT', 'WORLD']
 
         Returns
         -------
         - Vector
         """
-        utils.check_enum_arg('space', space, 'vector_displacement', ('TANGENT', 'OBJECT', 'WORLD'))
+        utils.check_enum_arg('Vector Displacement', 'space', space, 'vector_displacement', ('TANGENT', 'OBJECT', 'WORLD'))
         node = Node('Vector Displacement', sockets={'Vector': vector, 'Midlevel': midlevel, 'Scale': scale}, space=space)
         return node._out
 
@@ -1719,13 +1719,13 @@ class snd:
         - vector_1 (Vector) : socket 'Vector' (id: Vector_001)
         - vector_2 (Vector) : socket 'Vector' (id: Vector_002)
         - scale (Float) : socket 'Scale' (id: Scale)
-        - operation (str): parameter 'operation' in ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'CROSS_PRODUCT', 'PROJECT', 'REFLECT', 'REFRACT', 'FACEFORWARD', 'DOT_PRODUCT', 'DISTANCE', 'LENGTH', 'SCALE', 'NORMALIZE', 'ABSOLUTE', 'MINIMUM', 'MAXIMUM', 'FLOOR', 'CEIL', 'FRACTION', 'MODULO', 'WRAP', 'SNAP', 'SINE', 'COSINE', 'TANGENT')
+        - operation (str): parameter 'operation' in ['ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'CROSS_PRODUCT', 'PROJECT', 'REFLECT', 'REFRACT', 'FACEFORWARD', 'DOT_PRODUCT', 'DISTANCE', 'LENGTH', 'SCALE', 'NORMALIZE', 'ABSOLUTE', 'MINIMUM', 'MAXIMUM', 'FLOOR', 'CEIL', 'FRACTION', 'MODULO', 'WRAP', 'SNAP', 'SINE', 'COSINE', 'TANGENT']
 
         Returns
         -------
         - Vector
         """
-        utils.check_enum_arg('operation', operation, 'vector_math', ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'CROSS_PRODUCT', 'PROJECT', 'REFLECT', 'REFRACT', 'FACEFORWARD', 'DOT_PRODUCT', 'DISTANCE', 'LENGTH', 'SCALE', 'NORMALIZE', 'ABSOLUTE', 'MINIMUM', 'MAXIMUM', 'FLOOR', 'CEIL', 'FRACTION', 'MODULO', 'WRAP', 'SNAP', 'SINE', 'COSINE', 'TANGENT'))
+        utils.check_enum_arg('Vector Math', 'operation', operation, 'vector_math', ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'CROSS_PRODUCT', 'PROJECT', 'REFLECT', 'REFRACT', 'FACEFORWARD', 'DOT_PRODUCT', 'DISTANCE', 'LENGTH', 'SCALE', 'NORMALIZE', 'ABSOLUTE', 'MINIMUM', 'MAXIMUM', 'FLOOR', 'CEIL', 'FRACTION', 'MODULO', 'WRAP', 'SNAP', 'SINE', 'COSINE', 'TANGENT'))
         node = Node('Vector Math', sockets={'Vector': vector, 'Vector_001': vector_1, 'Vector_002': vector_2, 'Scale': scale}, operation=operation)
         return node._out
 
@@ -1741,13 +1741,13 @@ class snd:
         - angle (Float) : socket 'Angle' (id: Angle)
         - rotation (Vector) : socket 'Rotation' (id: Rotation)
         - invert (bool): parameter 'invert'
-        - rotation_type (str): parameter 'rotation_type' in ('AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ')
+        - rotation_type (str): parameter 'rotation_type' in ['AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ']
 
         Returns
         -------
         - Vector
         """
-        utils.check_enum_arg('rotation_type', rotation_type, 'vector_rotate', ('AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ'))
+        utils.check_enum_arg('Vector Rotate', 'rotation_type', rotation_type, 'vector_rotate', ('AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ'))
         node = Node('Vector Rotate', sockets={'Vector': vector, 'Center': center, 'Axis': axis, 'Angle': angle, 'Rotation': rotation}, invert=invert, rotation_type=rotation_type)
         return node._out
 
@@ -1758,17 +1758,17 @@ class snd:
         Arguments
         ---------
         - vector (Vector) : socket 'Vector' (id: Vector)
-        - convert_from (str): parameter 'convert_from' in ('WORLD', 'OBJECT', 'CAMERA')
-        - convert_to (str): parameter 'convert_to' in ('WORLD', 'OBJECT', 'CAMERA')
-        - vector_type (str): parameter 'vector_type' in ('POINT', 'VECTOR', 'NORMAL')
+        - convert_from (str): parameter 'convert_from' in ['WORLD', 'OBJECT', 'CAMERA']
+        - convert_to (str): parameter 'convert_to' in ['WORLD', 'OBJECT', 'CAMERA']
+        - vector_type (str): parameter 'vector_type' in ['POINT', 'VECTOR', 'NORMAL']
 
         Returns
         -------
         - Vector
         """
-        utils.check_enum_arg('convert_from', convert_from, 'vector_transform', ('WORLD', 'OBJECT', 'CAMERA'))
-        utils.check_enum_arg('convert_to', convert_to, 'vector_transform', ('WORLD', 'OBJECT', 'CAMERA'))
-        utils.check_enum_arg('vector_type', vector_type, 'vector_transform', ('POINT', 'VECTOR', 'NORMAL'))
+        utils.check_enum_arg('Vector Transform', 'convert_from', convert_from, 'vector_transform', ('WORLD', 'OBJECT', 'CAMERA'))
+        utils.check_enum_arg('Vector Transform', 'convert_to', convert_to, 'vector_transform', ('WORLD', 'OBJECT', 'CAMERA'))
+        utils.check_enum_arg('Vector Transform', 'vector_type', vector_type, 'vector_transform', ('POINT', 'VECTOR', 'NORMAL'))
         node = Node('Vector Transform', sockets={'Vector': vector}, convert_from=convert_from, convert_to=convert_to, vector_type=vector_type)
         return node._out
 
@@ -1856,13 +1856,13 @@ class snd:
         - alpha (Float) : socket 'Alpha' (id: Alpha)
         - diameter (Float) : socket 'Diameter' (id: Diameter)
         - weight (Float) : socket 'Weight' (id: Weight)
-        - phase (str): parameter 'phase' in ('HENYEY_GREENSTEIN', 'FOURNIER_FORAND', 'DRAINE', 'RAYLEIGH', 'MIE')
+        - phase (str): parameter 'phase' in ['HENYEY_GREENSTEIN', 'FOURNIER_FORAND', 'DRAINE', 'RAYLEIGH', 'MIE']
 
         Returns
         -------
         - VolumeShader
         """
-        utils.check_enum_arg('phase', phase, 'volume_scatter', ('HENYEY_GREENSTEIN', 'FOURNIER_FORAND', 'DRAINE', 'RAYLEIGH', 'MIE'))
+        utils.check_enum_arg('Volume Scatter', 'phase', phase, 'volume_scatter', ('HENYEY_GREENSTEIN', 'FOURNIER_FORAND', 'DRAINE', 'RAYLEIGH', 'MIE'))
         node = Node('Volume Scatter', sockets={'Color': color, 'Density': density, 'Anisotropy': anisotropy, 'IOR': ior, 'Backscatter': backscatter, 'Alpha': alpha, 'Diameter': diameter, 'Weight': weight}, phase=phase)
         return node._out
 

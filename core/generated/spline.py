@@ -124,13 +124,13 @@ class Spline(Socket):
 
         Arguments
         ---------
-        - mode (str): parameter 'mode' in ('ALL', 'EDGE_FACE', 'ONLY_FACE')
+        - mode (str): parameter 'mode' in ['ALL', 'EDGE_FACE', 'ONLY_FACE']
 
         Returns
         -------
         - Geometry
         """
-        utils.check_enum_arg('mode', mode, 'delete_geometry', ('ALL', 'EDGE_FACE', 'ONLY_FACE'))
+        utils.check_enum_arg('Delete Geometry', 'mode', mode, 'delete_geometry', ('ALL', 'EDGE_FACE', 'ONLY_FACE'))
         node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='CURVE', mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
@@ -208,13 +208,13 @@ class Spline(Socket):
 
         Arguments
         ---------
-        - mode (str): parameter 'mode' in ('ALL', 'EDGE_FACE', 'ONLY_FACE')
+        - mode (str): parameter 'mode' in ['ALL', 'EDGE_FACE', 'ONLY_FACE']
 
         Returns
         -------
         - Geometry
         """
-        utils.check_enum_arg('mode', mode, 'delete', ('ALL', 'EDGE_FACE', 'ONLY_FACE'))
+        utils.check_enum_arg('Delete Geometry', 'mode', mode, 'delete', ('ALL', 'EDGE_FACE', 'ONLY_FACE'))
         node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='CURVE', mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
@@ -672,13 +672,13 @@ class Spline(Socket):
 
         Arguments
         ---------
-        - mode (str): parameter 'mode' in ('MINIMUM_TWIST', 'Z_UP', 'FREE')
+        - mode (str): parameter 'mode' in ['MINIMUM_TWIST', 'Z_UP', 'FREE']
 
         Returns
         -------
         - Curve
         """
-        utils.check_enum_arg('mode', mode, 'normal', ('MINIMUM_TWIST', 'Z_UP', 'FREE'))
+        utils.check_enum_arg('Set Curve Normal', 'mode', mode, 'normal', ('MINIMUM_TWIST', 'Z_UP', 'FREE'))
         node = Node('Set Curve Normal', sockets={'Curve': self, 'Selection': self._sel}, mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
@@ -760,13 +760,13 @@ class Spline(Socket):
 
         Arguments
         ---------
-        - spline_type (str): parameter 'spline_type' in ('CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS')
+        - spline_type (str): parameter 'spline_type' in ['CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS']
 
         Returns
         -------
         - Curve
         """
-        utils.check_enum_arg('spline_type', spline_type, 'type', ('CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS'))
+        utils.check_enum_arg('Set Spline Type', 'spline_type', spline_type, 'type', ('CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS'))
         node = Node('Set Spline Type', sockets={'Curve': self, 'Selection': self._sel}, spline_type=spline_type)
         self._jump(node._out)
         return self._domain_to_geometry

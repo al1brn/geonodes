@@ -18,13 +18,13 @@ class Collection(Socket):
         ---------
         - separate_children (Boolean) : socket 'Separate Children' (id: Separate Children)
         - reset_children (Boolean) : socket 'Reset Children' (id: Reset Children)
-        - transform_space (str): parameter 'transform_space' in ('ORIGINAL', 'RELATIVE')
+        - transform_space (str): parameter 'transform_space' in ['ORIGINAL', 'RELATIVE']
 
         Returns
         -------
         - Instances
         """
-        utils.check_enum_arg('transform_space', transform_space, 'info', ('ORIGINAL', 'RELATIVE'))
+        utils.check_enum_arg('Collection Info', 'transform_space', transform_space, 'info', ('ORIGINAL', 'RELATIVE'))
         node = self._cache('Collection Info', sockets={'Collection': self, 'Separate Children': separate_children, 'Reset Children': reset_children}, transform_space=transform_space)
         return node._out
 

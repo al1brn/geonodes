@@ -145,13 +145,13 @@ class Geometry(Socket):
         Arguments
         ---------
         - distance (Float) : socket 'Distance' (id: Distance)
-        - mode (str): parameter 'mode' in ('ALL', 'CONNECTED')
+        - mode (str): parameter 'mode' in ['ALL', 'CONNECTED']
 
         Returns
         -------
         - Geometry
         """
-        utils.check_enum_arg('mode', mode, 'merge_by_distance', ('ALL', 'CONNECTED'))
+        utils.check_enum_arg('Merge by Distance', 'mode', mode, 'merge_by_distance', ('ALL', 'CONNECTED'))
         node = Node('Merge by Distance', sockets={'Geometry': self, 'Selection': self._sel, 'Distance': distance}, mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
@@ -215,13 +215,13 @@ class Geometry(Socket):
         Arguments
         ---------
         - distance (Float) : socket 'Distance' (id: Distance)
-        - mode (str): parameter 'mode' in ('ALL', 'CONNECTED')
+        - mode (str): parameter 'mode' in ['ALL', 'CONNECTED']
 
         Returns
         -------
         - Geometry
         """
-        utils.check_enum_arg('mode', mode, 'merge', ('ALL', 'CONNECTED'))
+        utils.check_enum_arg('Merge by Distance', 'mode', mode, 'merge', ('ALL', 'CONNECTED'))
         node = Node('Merge by Distance', sockets={'Geometry': self, 'Selection': self._sel, 'Distance': distance}, mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
@@ -238,13 +238,13 @@ class Geometry(Socket):
         - group_id (Integer) : socket 'Group ID' (id: Group ID)
         - sample_position (Vector) : socket 'Sample Position' (id: Source Position)
         - sample_group_id (Integer) : socket 'Sample Group ID' (id: Sample Group ID)
-        - target_element (str): parameter 'target_element' in ('POINTS', 'EDGES', 'FACES')
+        - target_element (str): parameter 'target_element' in ['POINTS', 'EDGES', 'FACES']
 
         Returns
         -------
         - Vector [distance_ (Float), is_valid_ (Boolean)]
         """
-        utils.check_enum_arg('target_element', target_element, 'proximity', ('POINTS', 'EDGES', 'FACES'))
+        utils.check_enum_arg('Geometry Proximity', 'target_element', target_element, 'proximity', ('POINTS', 'EDGES', 'FACES'))
         node = Node('Geometry Proximity', sockets={'Target': self, 'Group ID': group_id, 'Source Position': sample_position, 'Sample Group ID': sample_group_id}, target_element=target_element)
         return node._out
 
@@ -325,13 +325,13 @@ class Geometry(Socket):
         - source_position (Vector) : socket 'Source Position' (id: Source Position)
         - ray_direction (Vector) : socket 'Ray Direction' (id: Ray Direction)
         - ray_length (Float) : socket 'Ray Length' (id: Ray Length)
-        - mapping (str): parameter 'mapping' in ('INTERPOLATED', 'NEAREST')
+        - mapping (str): parameter 'mapping' in ['INTERPOLATED', 'NEAREST']
 
         Returns
         -------
         - node [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Float)]
         """
-        utils.check_enum_arg('mapping', mapping, 'raycast', ('INTERPOLATED', 'NEAREST'))
+        utils.check_enum_arg('Raycast', 'mapping', mapping, 'raycast', ('INTERPOLATED', 'NEAREST'))
         data_type = utils.get_argument_data_type(attribute, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Geometry.raycast', 'attribute')
         node = Node('Raycast', sockets={'Target Geometry': self, 'Attribute': attribute, 'Source Position': source_position, 'Ray Direction': ray_direction, 'Ray Length': ray_length}, data_type=data_type, mapping=mapping)
         return node
@@ -416,13 +416,13 @@ class Geometry(Socket):
         Arguments
         ---------
         - name (String) : socket 'Name' (id: Name)
-        - pattern_mode (str): parameter 'pattern_mode' in ('EXACT', 'WILDCARD')
+        - pattern_mode (str): parameter 'pattern_mode' in ['EXACT', 'WILDCARD']
 
         Returns
         -------
         - Geometry
         """
-        utils.check_enum_arg('pattern_mode', pattern_mode, 'remove_named_attribute', ('EXACT', 'WILDCARD'))
+        utils.check_enum_arg('Remove Named Attribute', 'pattern_mode', pattern_mode, 'remove_named_attribute', ('EXACT', 'WILDCARD'))
         node = Node('Remove Named Attribute', sockets={'Geometry': self, 'Name': name}, pattern_mode=pattern_mode)
         self._jump(node._out)
         return self._domain_to_geometry
@@ -794,13 +794,13 @@ class Geometry(Socket):
         - rotation (Rotation) : socket 'Rotation' (id: Rotation)
         - scale (Vector) : socket 'Scale' (id: Scale)
         - transform (Matrix) : socket 'Transform' (id: Transform)
-        - mode (str): parameter 'mode' in ('COMPONENTS', 'MATRIX')
+        - mode (str): parameter 'mode' in ['COMPONENTS', 'MATRIX']
 
         Returns
         -------
         - Geometry
         """
-        utils.check_enum_arg('mode', mode, 'transform', ('COMPONENTS', 'MATRIX'))
+        utils.check_enum_arg('Transform Geometry', 'mode', mode, 'transform', ('COMPONENTS', 'MATRIX'))
         node = Node('Transform Geometry', sockets={'Geometry': self, 'Translation': translation, 'Rotation': rotation, 'Scale': scale, 'Transform': transform}, mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry

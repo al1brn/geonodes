@@ -391,7 +391,7 @@ clamp(min=None, max=None, clamp_type='MINMAX')
 #### Arguments:
 - **min** (_Float_ = None) : socket 'Min' (id: Min)
 - **max** (_Float_ = None) : socket 'Max' (id: Max)
-- **clamp_type** (_str_ = MINMAX) : parameter 'clamp_type' in ('MINMAX', 'RANGE')
+- **clamp_type** (_str_ = MINMAX) : parameter 'clamp_type' in ['MINMAX', 'RANGE']
 
 
 
@@ -531,7 +531,7 @@ combine_color(green=None, blue=None, mode='RGB')
 #### Arguments:
 - **green** (_Float_ = None) : socket 'Green' (id: Green)
 - **blue** (_Float_ = None) : socket 'Blue' (id: Blue)
-- **mode** (_str_ = RGB) : parameter 'mode' in ('RGB', 'HSV', 'HSL')
+- **mode** (_str_ = RGB) : parameter 'mode' in ['RGB', 'HSV', 'HSL']
 
 
 
@@ -786,7 +786,7 @@ dial_gizmo(*value, position=None, up=None, screen_space=None, radius=None, color
 - **up** (_Vector_ = None) : socket 'Up' (id: Up)
 - **screen_space** (_Boolean_ = None) : socket 'Screen Space' (id: Screen Space)
 - **radius** (_Float_ = None) : socket 'Radius' (id: Radius)
-- **color_id** (_str_ = PRIMARY) : parameter 'color_id' in ('PRIMARY', 'SECONDARY', 'X', 'Y', 'Z')
+- **color_id** (_str_ = PRIMARY) : parameter 'color_id' in ['PRIMARY', 'SECONDARY', 'X', 'Y', 'Z']
 
 
 
@@ -815,7 +815,7 @@ displacement(midlevel=None, scale=None, normal=None, space='OBJECT')
 - **midlevel** (_Float_ = None) : socket 'Midlevel' (id: Midlevel)
 - **scale** (_Float_ = None) : socket 'Scale' (id: Scale)
 - **normal** (_Vector_ = None) : socket 'Normal' (id: Normal)
-- **space** (_str_ = OBJECT) : parameter 'space' in ('OBJECT', 'WORLD')
+- **space** (_str_ = OBJECT) : parameter 'space' in ['OBJECT', 'WORLD']
 
 
 
@@ -1130,7 +1130,7 @@ Gabor(vector=None, scale=None, frequency=None, anisotropy=None, orientation=None
 - **frequency** (_Float_ = None) : socket 'Frequency' (id: Frequency)
 - **anisotropy** (_Float_ = None) : socket 'Anisotropy' (id: Anisotropy)
 - **orientation** (_Float_ = None) : socket 'Orientation' (id: Orientation 2D)
-- **gabor_type** (_str_ = 2D) : parameter 'gabor_type' in ('2D', '3D')
+- **gabor_type** (_str_ = 2D) : parameter 'gabor_type' in ['2D', '3D']
 
 
 
@@ -1215,7 +1215,7 @@ grid_boolean(*grid_2, operation='DIFFERENCE')
 
 #### Arguments:
 - **grid_2** (_Float_) : socket 'Grid 2' (id: Grid 2)
-- **operation** (_str_ = DIFFERENCE) : parameter 'operation' in ('INTERSECT', 'UNION', 'DIFFERENCE')
+- **operation** (_str_ = DIFFERENCE) : parameter 'operation' in ['INTERSECT', 'UNION', 'DIFFERENCE']
 
 
 
@@ -1474,8 +1474,8 @@ linear_gizmo(*value, position=None, direction=None, color_id='PRIMARY', draw_sty
 - **value** (_Float_) : socket 'Value' (id: Value)
 - **position** (_Vector_ = None) : socket 'Position' (id: Position)
 - **direction** (_Vector_ = None) : socket 'Direction' (id: Direction)
-- **color_id** (_str_ = PRIMARY) : parameter 'color_id' in ('PRIMARY', 'SECONDARY', 'X', 'Y', 'Z')
-- **draw_style** (_str_ = ARROW) : parameter 'draw_style' in ('ARROW', 'CROSS', 'BOX')
+- **color_id** (_str_ = PRIMARY) : parameter 'color_id' in ['PRIMARY', 'SECONDARY', 'X', 'Y', 'Z']
+- **draw_style** (_str_ = ARROW) : parameter 'draw_style' in ['ARROW', 'CROSS', 'BOX']
 
 
 
@@ -1535,7 +1535,7 @@ map_range(from_min=None, from_max=None, to_min=None, to_max=None, clamp=True, in
 - **to_min** (_Float_ = None) : socket 'To Min' (id: To Min)
 - **to_max** (_Float_ = None) : socket 'To Max' (id: To Max)
 - **clamp** (_bool_ = True) : parameter 'clamp'
-- **interpolation_type** (_str_ = LINEAR) : parameter 'interpolation_type' in ('LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP')
+- **interpolation_type** (_str_ = LINEAR) : parameter 'interpolation_type' in ['LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP']
 
 
 
@@ -1965,8 +1965,8 @@ Noise(vector=None, scale=None, detail=None, roughness=None, lacunarity=None, dis
 - **roughness** (_Float_ = None) : socket 'Roughness' (id: Roughness)
 - **lacunarity** (_Float_ = None) : socket 'Lacunarity' (id: Lacunarity)
 - **distortion** (_Float_ = None) : socket 'Distortion' (id: Distortion)
-- **noise_dimensions** (_str_ = 3D) : parameter 'noise_dimensions' in ('1D', '2D', '3D', '4D')
-- **noise_type** (_str_ = FBM) : parameter 'noise_type' in ('MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN')
+- **noise_dimensions** (_str_ = 3D) : parameter 'noise_dimensions' in ['1D', '2D', '3D', '4D']
+- **noise_type** (_str_ = FBM) : parameter 'noise_type' in ['MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN']
 - **normalize** (_bool_ = True) : parameter 'normalize'
 
 
@@ -1994,7 +1994,7 @@ normal_map(color=None, space='TANGENT', uv_map='')
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (id: Color)
-- **space** (_str_ = TANGENT) : parameter 'space' in ('TANGENT', 'OBJECT', 'WORLD', 'BLENDER_OBJECT', 'BLENDER_WORLD')
+- **space** (_str_ = TANGENT) : parameter 'space' in ['TANGENT', 'OBJECT', 'WORLD', 'BLENDER_OBJECT', 'BLENDER_WORLD']
 - **uv_map** (_str_ = ) : parameter 'uv_map'
 
 
@@ -2240,7 +2240,7 @@ sample_grid(position=None, interpolation_mode='TRILINEAR')
 
 #### Arguments:
 - **position** (_Vector_ = None) : socket 'Position' (id: Position)
-- **interpolation_mode** (_str_ = TRILINEAR) : parameter 'interpolation_mode' in ('NEAREST', 'TRILINEAR', 'TRIQUADRATIC')
+- **interpolation_mode** (_str_ = TRILINEAR) : parameter 'interpolation_mode' in ['NEAREST', 'TRILINEAR', 'TRIQUADRATIC']
 
 
 
@@ -2730,7 +2730,7 @@ to_integer(rounding_mode='ROUND')
 
 
 #### Arguments:
-- **rounding_mode** (_str_ = ROUND) : parameter 'rounding_mode' in ('ROUND', 'FLOOR', 'CEILING', 'TRUNCATE')
+- **rounding_mode** (_str_ = ROUND) : parameter 'rounding_mode' in ['ROUND', 'FLOOR', 'CEILING', 'TRUNCATE']
 
 
 
@@ -2838,10 +2838,10 @@ Voronoi(vector=None, scale=None, detail=None, roughness=None, lacunarity=None, r
 - **roughness** (_Float_ = None) : socket 'Roughness' (id: Roughness)
 - **lacunarity** (_Float_ = None) : socket 'Lacunarity' (id: Lacunarity)
 - **randomness** (_Float_ = None) : socket 'Randomness' (id: Randomness)
-- **distance** (_str_ = EUCLIDEAN) : parameter 'distance' in ('EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI')
-- **feature** (_str_ = F1) : parameter 'feature' in ('F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS')
+- **distance** (_str_ = EUCLIDEAN) : parameter 'distance' in ['EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI']
+- **feature** (_str_ = F1) : parameter 'feature' in ['F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS']
 - **normalize** (_bool_ = False) : parameter 'normalize'
-- **voronoi_dimensions** (_str_ = 3D) : parameter 'voronoi_dimensions' in ('1D', '2D', '3D', '4D')
+- **voronoi_dimensions** (_str_ = 3D) : parameter 'voronoi_dimensions' in ['1D', '2D', '3D', '4D']
 
 
 
@@ -2916,7 +2916,7 @@ WhiteNoise(vector=None, noise_dimensions='3D')
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
-- **noise_dimensions** (_str_ = 3D) : parameter 'noise_dimensions' in ('1D', '2D', '3D', '4D')
+- **noise_dimensions** (_str_ = 3D) : parameter 'noise_dimensions' in ['1D', '2D', '3D', '4D']
 
 
 

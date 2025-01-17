@@ -85,14 +85,14 @@ class Mesh(Socket):
         ---------
         - density (Float) : socket 'Density' (id: Density)
         - seed (Integer) : socket 'Seed' (id: Seed)
-        - distribute_method (str): parameter 'distribute_method' in ('RANDOM', 'POISSON')
+        - distribute_method (str): parameter 'distribute_method' in ['RANDOM', 'POISSON']
         - use_legacy_normal (bool): parameter 'use_legacy_normal'
 
         Returns
         -------
         - Cloud [normal_ (Vector), rotation_ (Rotation)]
         """
-        utils.check_enum_arg('distribute_method', distribute_method, 'distribute_points_on_faces', ('RANDOM', 'POISSON'))
+        utils.check_enum_arg('Distribute Points on Faces', 'distribute_method', distribute_method, 'distribute_points_on_faces', ('RANDOM', 'POISSON'))
         node = Node('Distribute Points on Faces', sockets={'Mesh': self, 'Selection': self._sel, 'Density': density, 'Seed': seed}, distribute_method=distribute_method, use_legacy_normal=use_legacy_normal)
         return node._out
 
@@ -333,13 +333,13 @@ class Mesh(Socket):
         - offset (Vector) : socket 'Offset' (id: Offset)
         - offset_scale (Float) : socket 'Offset Scale' (id: Offset Scale)
         - individual (Boolean) : socket 'Individual' (id: Individual)
-        - mode (str): parameter 'mode' in ('VERTICES', 'EDGES', 'FACES')
+        - mode (str): parameter 'mode' in ['VERTICES', 'EDGES', 'FACES']
 
         Returns
         -------
         - Mesh [top_ (Boolean), side_ (Boolean)]
         """
-        utils.check_enum_arg('mode', mode, 'extrude', ('VERTICES', 'EDGES', 'FACES'))
+        utils.check_enum_arg('Extrude Mesh', 'mode', mode, 'extrude', ('VERTICES', 'EDGES', 'FACES'))
         node = Node('Extrude Mesh', sockets={'Mesh': self, 'Selection': self._sel, 'Offset': offset, 'Offset Scale': offset_scale, 'Individual': individual}, mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
@@ -606,15 +606,15 @@ class Mesh(Socket):
         - mesh_2 (Geometry) : socket 'Mesh 2' (id: Mesh 2)
         - self_intersection (Boolean) : socket 'Self Intersection' (id: Self Intersection)
         - hole_tolerant (Boolean) : socket 'Hole Tolerant' (id: Hole Tolerant)
-        - operation (str): parameter 'operation' in ('INTERSECT', 'UNION', 'DIFFERENCE')
-        - solver (str): parameter 'solver' in ('EXACT', 'FLOAT')
+        - operation (str): parameter 'operation' in ['INTERSECT', 'UNION', 'DIFFERENCE']
+        - solver (str): parameter 'solver' in ['EXACT', 'FLOAT']
 
         Returns
         -------
         - Mesh
         """
-        utils.check_enum_arg('operation', operation, 'boolean', ('INTERSECT', 'UNION', 'DIFFERENCE'))
-        utils.check_enum_arg('solver', solver, 'boolean', ('EXACT', 'FLOAT'))
+        utils.check_enum_arg('Mesh Boolean', 'operation', operation, 'boolean', ('INTERSECT', 'UNION', 'DIFFERENCE'))
+        utils.check_enum_arg('Mesh Boolean', 'solver', solver, 'boolean', ('EXACT', 'FLOAT'))
         node = Node('Mesh Boolean', sockets={'Mesh 1': self, 'Mesh 2': list(mesh_2), 'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, operation=operation, solver=solver)
         self._jump(node._out)
         return self._domain_to_geometry
@@ -629,15 +629,15 @@ class Mesh(Socket):
         - mesh_2 (Geometry) : socket 'Mesh 2' (id: Mesh 2)
         - self_intersection (Boolean) : socket 'Self Intersection' (id: Self Intersection)
         - hole_tolerant (Boolean) : socket 'Hole Tolerant' (id: Hole Tolerant)
-        - operation (str): parameter 'operation' in ('INTERSECT', 'UNION', 'DIFFERENCE')
-        - solver (str): parameter 'solver' in ('EXACT', 'FLOAT')
+        - operation (str): parameter 'operation' in ['INTERSECT', 'UNION', 'DIFFERENCE']
+        - solver (str): parameter 'solver' in ['EXACT', 'FLOAT']
 
         Returns
         -------
         - Mesh
         """
-        utils.check_enum_arg('operation', operation, 'Boolean', ('INTERSECT', 'UNION', 'DIFFERENCE'))
-        utils.check_enum_arg('solver', solver, 'Boolean', ('EXACT', 'FLOAT'))
+        utils.check_enum_arg('Mesh Boolean', 'operation', operation, 'Boolean', ('INTERSECT', 'UNION', 'DIFFERENCE'))
+        utils.check_enum_arg('Mesh Boolean', 'solver', solver, 'Boolean', ('EXACT', 'FLOAT'))
         node = Node('Mesh Boolean', sockets={'Mesh 1': mesh_1, 'Mesh 2': list(mesh_2), 'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, operation=operation, solver=solver)
         return cls(node._out)
 
@@ -655,13 +655,13 @@ class Mesh(Socket):
         - mesh (Geometry) : socket 'Mesh' (id: Mesh 2)
         - self_intersection (Boolean) : socket 'Self Intersection' (id: Self Intersection)
         - hole_tolerant (Boolean) : socket 'Hole Tolerant' (id: Hole Tolerant)
-        - solver (str): parameter 'solver' in ('EXACT', 'FLOAT')
+        - solver (str): parameter 'solver' in ['EXACT', 'FLOAT']
 
         Returns
         -------
         - Mesh
         """
-        utils.check_enum_arg('solver', solver, 'intersect', ('EXACT', 'FLOAT'))
+        utils.check_enum_arg('Mesh Boolean', 'solver', solver, 'intersect', ('EXACT', 'FLOAT'))
         node = Node('Mesh Boolean', sockets={'Mesh 2': [self] + list(mesh), 'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, operation='INTERSECT', solver=solver)
         self._jump(node._out)
         return self._domain_to_geometry
@@ -680,13 +680,13 @@ class Mesh(Socket):
         - mesh (Geometry) : socket 'Mesh' (id: Mesh 2)
         - self_intersection (Boolean) : socket 'Self Intersection' (id: Self Intersection)
         - hole_tolerant (Boolean) : socket 'Hole Tolerant' (id: Hole Tolerant)
-        - solver (str): parameter 'solver' in ('EXACT', 'FLOAT')
+        - solver (str): parameter 'solver' in ['EXACT', 'FLOAT']
 
         Returns
         -------
         - Mesh
         """
-        utils.check_enum_arg('solver', solver, 'union', ('EXACT', 'FLOAT'))
+        utils.check_enum_arg('Mesh Boolean', 'solver', solver, 'union', ('EXACT', 'FLOAT'))
         node = Node('Mesh Boolean', sockets={'Mesh 2': [self] + list(mesh), 'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, operation='UNION', solver=solver)
         self._jump(node._out)
         return self._domain_to_geometry
@@ -706,13 +706,13 @@ class Mesh(Socket):
         - mesh_2 (Geometry) : socket 'Mesh 2' (id: Mesh 2)
         - self_intersection (Boolean) : socket 'Self Intersection' (id: Self Intersection)
         - hole_tolerant (Boolean) : socket 'Hole Tolerant' (id: Hole Tolerant)
-        - solver (str): parameter 'solver' in ('EXACT', 'FLOAT')
+        - solver (str): parameter 'solver' in ['EXACT', 'FLOAT']
 
         Returns
         -------
         - Mesh
         """
-        utils.check_enum_arg('solver', solver, 'difference', ('EXACT', 'FLOAT'))
+        utils.check_enum_arg('Mesh Boolean', 'solver', solver, 'difference', ('EXACT', 'FLOAT'))
         node = Node('Mesh Boolean', sockets={'Mesh 1': self, 'Mesh 2': list(mesh_2), 'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, operation='DIFFERENCE', solver=solver)
         self._jump(node._out)
         return self._domain_to_geometry
@@ -730,13 +730,13 @@ class Mesh(Socket):
         - mesh (Geometry) : socket 'Mesh' (id: Mesh 2)
         - self_intersection (Boolean) : socket 'Self Intersection' (id: Self Intersection)
         - hole_tolerant (Boolean) : socket 'Hole Tolerant' (id: Hole Tolerant)
-        - solver (str): parameter 'solver' in ('EXACT', 'FLOAT')
+        - solver (str): parameter 'solver' in ['EXACT', 'FLOAT']
 
         Returns
         -------
         - Mesh
         """
-        utils.check_enum_arg('solver', solver, 'Intersect', ('EXACT', 'FLOAT'))
+        utils.check_enum_arg('Mesh Boolean', 'solver', solver, 'Intersect', ('EXACT', 'FLOAT'))
         node = Node('Mesh Boolean', sockets={'Mesh 2': list(mesh), 'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, operation='INTERSECT', solver=solver)
         return cls(node._out)
 
@@ -753,13 +753,13 @@ class Mesh(Socket):
         - mesh (Geometry) : socket 'Mesh' (id: Mesh 2)
         - self_intersection (Boolean) : socket 'Self Intersection' (id: Self Intersection)
         - hole_tolerant (Boolean) : socket 'Hole Tolerant' (id: Hole Tolerant)
-        - solver (str): parameter 'solver' in ('EXACT', 'FLOAT')
+        - solver (str): parameter 'solver' in ['EXACT', 'FLOAT']
 
         Returns
         -------
         - Mesh
         """
-        utils.check_enum_arg('solver', solver, 'Union', ('EXACT', 'FLOAT'))
+        utils.check_enum_arg('Mesh Boolean', 'solver', solver, 'Union', ('EXACT', 'FLOAT'))
         node = Node('Mesh Boolean', sockets={'Mesh 2': list(mesh), 'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, operation='UNION', solver=solver)
         return cls(node._out)
 
@@ -777,13 +777,13 @@ class Mesh(Socket):
         - mesh_2 (Geometry) : socket 'Mesh 2' (id: Mesh 2)
         - self_intersection (Boolean) : socket 'Self Intersection' (id: Self Intersection)
         - hole_tolerant (Boolean) : socket 'Hole Tolerant' (id: Hole Tolerant)
-        - solver (str): parameter 'solver' in ('EXACT', 'FLOAT')
+        - solver (str): parameter 'solver' in ['EXACT', 'FLOAT']
 
         Returns
         -------
         - Mesh
         """
-        utils.check_enum_arg('solver', solver, 'Difference', ('EXACT', 'FLOAT'))
+        utils.check_enum_arg('Mesh Boolean', 'solver', solver, 'Difference', ('EXACT', 'FLOAT'))
         node = Node('Mesh Boolean', sockets={'Mesh 1': mesh_1, 'Mesh 2': list(mesh_2), 'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, operation='DIFFERENCE', solver=solver)
         return cls(node._out)
 
@@ -795,13 +795,13 @@ class Mesh(Socket):
         ---------
         - vertices (Integer) : socket 'Vertices' (id: Vertices)
         - radius (Float) : socket 'Radius' (id: Radius)
-        - fill_type (str): parameter 'fill_type' in ('NONE', 'NGON', 'TRIANGLE_FAN')
+        - fill_type (str): parameter 'fill_type' in ['NONE', 'NGON', 'TRIANGLE_FAN']
 
         Returns
         -------
         - Mesh
         """
-        utils.check_enum_arg('fill_type', fill_type, 'Circle', ('NONE', 'NGON', 'TRIANGLE_FAN'))
+        utils.check_enum_arg('Mesh Circle', 'fill_type', fill_type, 'Circle', ('NONE', 'NGON', 'TRIANGLE_FAN'))
         node = Node('Mesh Circle', sockets={'Vertices': vertices, 'Radius': radius}, fill_type=fill_type)
         return cls(node._out)
 
@@ -817,13 +817,13 @@ class Mesh(Socket):
         - radius_top (Float) : socket 'Radius Top' (id: Radius Top)
         - radius_bottom (Float) : socket 'Radius Bottom' (id: Radius Bottom)
         - depth (Float) : socket 'Depth' (id: Depth)
-        - fill_type (str): parameter 'fill_type' in ('NONE', 'NGON', 'TRIANGLE_FAN')
+        - fill_type (str): parameter 'fill_type' in ['NONE', 'NGON', 'TRIANGLE_FAN']
 
         Returns
         -------
         - Mesh
         """
-        utils.check_enum_arg('fill_type', fill_type, 'Cone', ('NONE', 'NGON', 'TRIANGLE_FAN'))
+        utils.check_enum_arg('Cone', 'fill_type', fill_type, 'Cone', ('NONE', 'NGON', 'TRIANGLE_FAN'))
         node = Node('Cone', sockets={'Vertices': vertices, 'Side Segments': side_segments, 'Fill Segments': fill_segments, 'Radius Top': radius_top, 'Radius Bottom': radius_bottom, 'Depth': depth}, fill_type=fill_type)
         return cls(node._out)
 
@@ -856,13 +856,13 @@ class Mesh(Socket):
         - fill_segments (Integer) : socket 'Fill Segments' (id: Fill Segments)
         - radius (Float) : socket 'Radius' (id: Radius)
         - depth (Float) : socket 'Depth' (id: Depth)
-        - fill_type (str): parameter 'fill_type' in ('NONE', 'NGON', 'TRIANGLE_FAN')
+        - fill_type (str): parameter 'fill_type' in ['NONE', 'NGON', 'TRIANGLE_FAN']
 
         Returns
         -------
         - Mesh
         """
-        utils.check_enum_arg('fill_type', fill_type, 'Cylinder', ('NONE', 'NGON', 'TRIANGLE_FAN'))
+        utils.check_enum_arg('Cylinder', 'fill_type', fill_type, 'Cylinder', ('NONE', 'NGON', 'TRIANGLE_FAN'))
         node = Node('Cylinder', sockets={'Vertices': vertices, 'Side Segments': side_segments, 'Fill Segments': fill_segments, 'Radius': radius, 'Depth': depth}, fill_type=fill_type)
         return cls(node._out)
 
@@ -928,13 +928,13 @@ class Mesh(Socket):
         - count (Integer) : socket 'Count' (id: Count)
         - start_location (Vector) : socket 'Start Location' (id: Start Location)
         - offset (Vector) : socket 'Offset' (id: Offset)
-        - count_mode (str): parameter 'count_mode' in ('TOTAL', 'RESOLUTION')
+        - count_mode (str): parameter 'count_mode' in ['TOTAL', 'RESOLUTION']
 
         Returns
         -------
         - Mesh
         """
-        utils.check_enum_arg('count_mode', count_mode, 'LineOffset', ('TOTAL', 'RESOLUTION'))
+        utils.check_enum_arg('Mesh Line', 'count_mode', count_mode, 'LineOffset', ('TOTAL', 'RESOLUTION'))
         node = Node('Mesh Line', sockets={'Count': count, 'Start Location': start_location, 'Offset': offset}, count_mode=count_mode, mode='OFFSET')
         return cls(node._out)
 
@@ -951,13 +951,13 @@ class Mesh(Socket):
         - count (Integer) : socket 'Count' (id: Count)
         - start_location (Vector) : socket 'Start Location' (id: Start Location)
         - end_location (Vector) : socket 'End Location' (id: Offset)
-        - count_mode (str): parameter 'count_mode' in ('TOTAL', 'RESOLUTION')
+        - count_mode (str): parameter 'count_mode' in ['TOTAL', 'RESOLUTION']
 
         Returns
         -------
         - Mesh
         """
-        utils.check_enum_arg('count_mode', count_mode, 'LineEndPoints', ('TOTAL', 'RESOLUTION'))
+        utils.check_enum_arg('Mesh Line', 'count_mode', count_mode, 'LineEndPoints', ('TOTAL', 'RESOLUTION'))
         node = Node('Mesh Line', sockets={'Count': count, 'Start Location': start_location, 'Offset': end_location}, count_mode=count_mode, mode='END_POINTS')
         return cls(node._out)
 
@@ -970,15 +970,15 @@ class Mesh(Socket):
         - count (Integer) : socket 'Count' (id: Count)
         - start_location (Vector) : socket 'Start Location' (id: Start Location)
         - offset (Vector) : socket 'Offset' (id: Offset)
-        - count_mode (str): parameter 'count_mode' in ('TOTAL', 'RESOLUTION')
-        - mode (str): parameter 'mode' in ('OFFSET', 'END_POINTS')
+        - count_mode (str): parameter 'count_mode' in ['TOTAL', 'RESOLUTION']
+        - mode (str): parameter 'mode' in ['OFFSET', 'END_POINTS']
 
         Returns
         -------
         - Mesh
         """
-        utils.check_enum_arg('count_mode', count_mode, 'Line', ('TOTAL', 'RESOLUTION'))
-        utils.check_enum_arg('mode', mode, 'Line', ('OFFSET', 'END_POINTS'))
+        utils.check_enum_arg('Mesh Line', 'count_mode', count_mode, 'Line', ('TOTAL', 'RESOLUTION'))
+        utils.check_enum_arg('Mesh Line', 'mode', mode, 'Line', ('OFFSET', 'END_POINTS'))
         node = Node('Mesh Line', sockets={'Count': count, 'Start Location': start_location, 'Offset': offset}, count_mode=count_mode, mode=mode)
         return cls(node._out)
 
@@ -1029,13 +1029,13 @@ class Mesh(Socket):
         ---------
         - position (Vector) : socket 'Position' (id: Position)
         - radius (Float) : socket 'Radius' (id: Radius)
-        - mode (str): parameter 'mode' in ('VERTICES', 'EDGES', 'FACES', 'CORNERS')
+        - mode (str): parameter 'mode' in ['VERTICES', 'EDGES', 'FACES', 'CORNERS']
 
         Returns
         -------
         - Cloud
         """
-        utils.check_enum_arg('mode', mode, 'to_points', ('VERTICES', 'EDGES', 'FACES', 'CORNERS'))
+        utils.check_enum_arg('Mesh to Points', 'mode', mode, 'to_points', ('VERTICES', 'EDGES', 'FACES', 'CORNERS'))
         node = Node('Mesh to Points', sockets={'Mesh': self, 'Selection': self._sel, 'Position': position, 'Radius': radius}, mode=mode)
         return node._out
 
@@ -1154,13 +1154,13 @@ class Mesh(Socket):
         - density (Float) : socket 'Density' (id: Density)
         - voxel_amount (Float) : socket 'Voxel Amount' (id: Voxel Amount)
         - interior_band_width (Float) : socket 'Interior Band Width' (id: Interior Band Width)
-        - resolution_mode (str): parameter 'resolution_mode' in ('VOXEL_AMOUNT', 'VOXEL_SIZE')
+        - resolution_mode (str): parameter 'resolution_mode' in ['VOXEL_AMOUNT', 'VOXEL_SIZE']
 
         Returns
         -------
         - Volume
         """
-        utils.check_enum_arg('resolution_mode', resolution_mode, 'to_volume', ('VOXEL_AMOUNT', 'VOXEL_SIZE'))
+        utils.check_enum_arg('Mesh to Volume', 'resolution_mode', resolution_mode, 'to_volume', ('VOXEL_AMOUNT', 'VOXEL_SIZE'))
         node = Node('Mesh to Volume', sockets={'Mesh': self, 'Density': density, 'Voxel Amount': voxel_amount, 'Interior Band Width': interior_band_width}, resolution_mode=resolution_mode)
         return node._out
 
@@ -1295,15 +1295,15 @@ class Mesh(Socket):
         - level (Integer) : socket 'Level' (id: Level)
         - edge_crease (Float) : socket 'Edge Crease' (id: Edge Crease)
         - vertex_crease (Float) : socket 'Vertex Crease' (id: Vertex Crease)
-        - boundary_smooth (str): parameter 'boundary_smooth' in ('PRESERVE_CORNERS', 'ALL')
-        - uv_smooth (str): parameter 'uv_smooth' in ('NONE', 'PRESERVE_CORNERS', 'PRESERVE_CORNERS_AND_JUNCTIONS', 'PRESERVE_CORNERS_JUNCTIONS_AND_CONCAVE', 'PRESERVE_BOUNDARIES', 'SMOOTH_ALL')
+        - boundary_smooth (str): parameter 'boundary_smooth' in ['PRESERVE_CORNERS', 'ALL']
+        - uv_smooth (str): parameter 'uv_smooth' in ['NONE', 'PRESERVE_CORNERS', 'PRESERVE_CORNERS_AND_JUNCTIONS', 'PRESERVE_CORNERS_JUNCTIONS_AND_CONCAVE', 'PRESERVE_BOUNDARIES', 'SMOOTH_ALL']
 
         Returns
         -------
         - Mesh
         """
-        utils.check_enum_arg('boundary_smooth', boundary_smooth, 'subdivision_surface', ('PRESERVE_CORNERS', 'ALL'))
-        utils.check_enum_arg('uv_smooth', uv_smooth, 'subdivision_surface', ('NONE', 'PRESERVE_CORNERS', 'PRESERVE_CORNERS_AND_JUNCTIONS', 'PRESERVE_CORNERS_JUNCTIONS_AND_CONCAVE', 'PRESERVE_BOUNDARIES', 'SMOOTH_ALL'))
+        utils.check_enum_arg('Subdivision Surface', 'boundary_smooth', boundary_smooth, 'subdivision_surface', ('PRESERVE_CORNERS', 'ALL'))
+        utils.check_enum_arg('Subdivision Surface', 'uv_smooth', uv_smooth, 'subdivision_surface', ('NONE', 'PRESERVE_CORNERS', 'PRESERVE_CORNERS_AND_JUNCTIONS', 'PRESERVE_CORNERS_JUNCTIONS_AND_CONCAVE', 'PRESERVE_BOUNDARIES', 'SMOOTH_ALL'))
         node = Node('Subdivision Surface', sockets={'Mesh': self, 'Level': level, 'Edge Crease': edge_crease, 'Vertex Crease': vertex_crease}, boundary_smooth=boundary_smooth, uv_smooth=uv_smooth)
         self._jump(node._out)
         return self._domain_to_geometry
@@ -1343,15 +1343,15 @@ class Mesh(Socket):
         Arguments
         ---------
         - minimum_vertices (Integer) : socket 'Minimum Vertices' (id: Minimum Vertices)
-        - ngon_method (str): parameter 'ngon_method' in ('BEAUTY', 'CLIP')
-        - quad_method (str): parameter 'quad_method' in ('BEAUTY', 'FIXED', 'FIXED_ALTERNATE', 'SHORTEST_DIAGONAL', 'LONGEST_DIAGONAL')
+        - ngon_method (str): parameter 'ngon_method' in ['BEAUTY', 'CLIP']
+        - quad_method (str): parameter 'quad_method' in ['BEAUTY', 'FIXED', 'FIXED_ALTERNATE', 'SHORTEST_DIAGONAL', 'LONGEST_DIAGONAL']
 
         Returns
         -------
         - Mesh
         """
-        utils.check_enum_arg('ngon_method', ngon_method, 'triangulate', ('BEAUTY', 'CLIP'))
-        utils.check_enum_arg('quad_method', quad_method, 'triangulate', ('BEAUTY', 'FIXED', 'FIXED_ALTERNATE', 'SHORTEST_DIAGONAL', 'LONGEST_DIAGONAL'))
+        utils.check_enum_arg('Triangulate', 'ngon_method', ngon_method, 'triangulate', ('BEAUTY', 'CLIP'))
+        utils.check_enum_arg('Triangulate', 'quad_method', quad_method, 'triangulate', ('BEAUTY', 'FIXED', 'FIXED_ALTERNATE', 'SHORTEST_DIAGONAL', 'LONGEST_DIAGONAL'))
         node = Node('Triangulate', sockets={'Mesh': self, 'Selection': self._sel, 'Minimum Vertices': minimum_vertices}, ngon_method=ngon_method, quad_method=quad_method)
         self._jump(node._out)
         return self._domain_to_geometry

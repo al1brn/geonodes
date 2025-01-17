@@ -340,10 +340,10 @@ to_curves(size=None, character_spacing=None, word_spacing=None, line_spacing=Non
 - **word_spacing** (_Float_ = None) : socket 'Word Spacing' (id: Word Spacing)
 - **line_spacing** (_Float_ = None) : socket 'Line Spacing' (id: Line Spacing)
 - **text_box_width** (_Float_ = None) : socket 'Text Box Width' (id: Text Box Width)
-- **align_x** (_str_ = LEFT) : parameter 'align_x' in ('LEFT', 'CENTER', 'RIGHT', 'JUSTIFY', 'FLUSH')
-- **align_y** (_str_ = TOP_BASELINE) : parameter 'align_y' in ('TOP', 'TOP_BASELINE', 'MIDDLE', 'BOTTOM_BASELINE', 'BOTTOM')
-- **overflow** (_str_ = OVERFLOW) : parameter 'overflow' in ('OVERFLOW', 'SCALE_TO_FIT', 'TRUNCATE')
-- **pivot_mode** (_str_ = BOTTOM_LEFT) : parameter 'pivot_mode' in ('MIDPOINT', 'TOP_LEFT', 'TOP_CENTER', 'TOP_RIGHT', 'BOTTOM_LEFT', 'BOTTOM_CENTER', 'BOTTOM_RIGHT')
+- **align_x** (_str_ = LEFT) : parameter 'align_x' in ['LEFT', 'CENTER', 'RIGHT', 'JUSTIFY', 'FLUSH']
+- **align_y** (_str_ = TOP_BASELINE) : parameter 'align_y' in ['TOP', 'TOP_BASELINE', 'MIDDLE', 'BOTTOM_BASELINE', 'BOTTOM']
+- **overflow** (_str_ = OVERFLOW) : parameter 'overflow' in ['OVERFLOW', 'SCALE_TO_FIT', 'TRUNCATE']
+- **pivot_mode** (_str_ = BOTTOM_LEFT) : parameter 'pivot_mode' in ['MIDPOINT', 'TOP_LEFT', 'TOP_CENTER', 'TOP_RIGHT', 'BOTTOM_LEFT', 'BOTTOM_CENTER', 'BOTTOM_RIGHT']
 
 
 

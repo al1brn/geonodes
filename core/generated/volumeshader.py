@@ -69,13 +69,13 @@ class VolumeShader(Socket):
         - color (Color) : socket 'Color' (id: Color)
         - density (Float) : socket 'Density' (id: Density)
         - anisotropy (Float) : socket 'Anisotropy' (id: Anisotropy)
-        - phase (str): parameter 'phase' in ('HENYEY_GREENSTEIN', 'FOURNIER_FORAND', 'DRAINE', 'RAYLEIGH', 'MIE')
+        - phase (str): parameter 'phase' in ['HENYEY_GREENSTEIN', 'FOURNIER_FORAND', 'DRAINE', 'RAYLEIGH', 'MIE']
 
         Returns
         -------
         - VolumeShader
         """
-        utils.check_enum_arg('phase', phase, 'Scatter', ('HENYEY_GREENSTEIN', 'FOURNIER_FORAND', 'DRAINE', 'RAYLEIGH', 'MIE'))
+        utils.check_enum_arg('Volume Scatter', 'phase', phase, 'Scatter', ('HENYEY_GREENSTEIN', 'FOURNIER_FORAND', 'DRAINE', 'RAYLEIGH', 'MIE'))
         node = Node('Volume Scatter', sockets={'Color': color, 'Density': density, 'Anisotropy': anisotropy}, phase=phase)
         return cls(node._out)
 

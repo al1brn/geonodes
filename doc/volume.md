@@ -85,7 +85,7 @@ distribute_points(density=None, seed=None, mode='DENSITY_RANDOM')
 #### Arguments:
 - **density** (_Float_ = None) : socket 'Density' (id: Density)
 - **seed** (_Integer_ = None) : socket 'Seed' (id: Seed)
-- **mode** (_str_ = DENSITY_RANDOM) : parameter 'mode' in ('DENSITY_RANDOM', 'DENSITY_GRID')
+- **mode** (_str_ = DENSITY_RANDOM) : parameter 'mode' in ['DENSITY_RANDOM', 'DENSITY_GRID']
 
 
 
@@ -171,7 +171,7 @@ get_named_grid(name=None, remove=None, data_type='FLOAT')
 #### Arguments:
 - **name** (_String_ = None) : socket 'Name' (id: Name)
 - **remove** (_Boolean_ = None) : socket 'Remove' (id: Remove)
-- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ('FLOAT', 'VECTOR')
+- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ['FLOAT', 'VECTOR']
 
 
 
@@ -289,7 +289,7 @@ to_mesh(threshold=None, adaptivity=None, resolution_mode='GRID')
 #### Arguments:
 - **threshold** (_Float_ = None) : socket 'Threshold' (id: Threshold)
 - **adaptivity** (_Float_ = None) : socket 'Adaptivity' (id: Adaptivity)
-- **resolution_mode** (_str_ = GRID) : parameter 'resolution_mode' in ('GRID', 'VOXEL_AMOUNT', 'VOXEL_SIZE')
+- **resolution_mode** (_str_ = GRID) : parameter 'resolution_mode' in ['GRID', 'VOXEL_AMOUNT', 'VOXEL_SIZE']
 
 
 

@@ -259,13 +259,13 @@ class Vector(Socket):
         Arguments
         ---------
         - position (Vector) : socket 'Position' (id: Position)
-        - interpolation_mode (str): parameter 'interpolation_mode' in ('NEAREST', 'TRILINEAR', 'TRIQUADRATIC')
+        - interpolation_mode (str): parameter 'interpolation_mode' in ['NEAREST', 'TRILINEAR', 'TRIQUADRATIC']
 
         Returns
         -------
         - Vector
         """
-        utils.check_enum_arg('interpolation_mode', interpolation_mode, 'sample_grid', ('NEAREST', 'TRILINEAR', 'TRIQUADRATIC'))
+        utils.check_enum_arg('Sample Grid', 'interpolation_mode', interpolation_mode, 'sample_grid', ('NEAREST', 'TRILINEAR', 'TRIQUADRATIC'))
         node = Node('Sample Grid', sockets={'Grid': self, 'Position': position}, data_type='VECTOR', interpolation_mode=interpolation_mode)
         return node._out
 
@@ -943,13 +943,13 @@ class Vector(Socket):
         - axis (Vector) : socket 'Axis' (id: Axis)
         - angle (Float) : socket 'Angle' (id: Angle)
         - invert (bool): parameter 'invert'
-        - rotation_type (str): parameter 'rotation_type' in ('AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ')
+        - rotation_type (str): parameter 'rotation_type' in ['AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ']
 
         Returns
         -------
         - Vector
         """
-        utils.check_enum_arg('rotation_type', rotation_type, 'rotate', ('AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ'))
+        utils.check_enum_arg('Vector Rotate', 'rotation_type', rotation_type, 'rotate', ('AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ'))
         node = Node('Vector Rotate', sockets={'Vector': self, 'Center': center, 'Axis': axis, 'Angle': angle}, invert=invert, rotation_type=rotation_type)
         return node._out
 
@@ -1071,13 +1071,13 @@ class Vector(Socket):
         - location (Vector) : socket 'Location' (id: Location)
         - rotation (Vector) : socket 'Rotation' (id: Rotation)
         - scale (Vector) : socket 'Scale' (id: Scale)
-        - vector_type (str): parameter 'vector_type' in ('POINT', 'TEXTURE', 'VECTOR', 'NORMAL')
+        - vector_type (str): parameter 'vector_type' in ['POINT', 'TEXTURE', 'VECTOR', 'NORMAL']
 
         Returns
         -------
         - Vector
         """
-        utils.check_enum_arg('vector_type', vector_type, 'mapping', ('POINT', 'TEXTURE', 'VECTOR', 'NORMAL'))
+        utils.check_enum_arg('Mapping', 'vector_type', vector_type, 'mapping', ('POINT', 'TEXTURE', 'VECTOR', 'NORMAL'))
         node = Node('Mapping', sockets={'Vector': self, 'Location': location, 'Rotation': rotation, 'Scale': scale}, vector_type=vector_type)
         return node._out
 
@@ -1101,16 +1101,16 @@ class Vector(Socket):
 
         Arguments
         ---------
-        - axis (str): parameter 'axis' in ('X', 'Y', 'Z')
-        - direction_type (str): parameter 'direction_type' in ('RADIAL', 'UV_MAP')
+        - axis (str): parameter 'axis' in ['X', 'Y', 'Z']
+        - direction_type (str): parameter 'direction_type' in ['RADIAL', 'UV_MAP']
         - uv_map (str): parameter 'uv_map'
 
         Returns
         -------
         - Vector
         """
-        utils.check_enum_arg('axis', axis, 'Tangent', ('X', 'Y', 'Z'))
-        utils.check_enum_arg('direction_type', direction_type, 'Tangent', ('RADIAL', 'UV_MAP'))
+        utils.check_enum_arg('Tangent', 'axis', axis, 'Tangent', ('X', 'Y', 'Z'))
+        utils.check_enum_arg('Tangent', 'direction_type', direction_type, 'Tangent', ('RADIAL', 'UV_MAP'))
         node = Node('Tangent', sockets={}, axis=axis, direction_type=direction_type, uv_map=uv_map)
         return cls(node._out)
 
@@ -1124,15 +1124,15 @@ class Vector(Socket):
         Arguments
         ---------
         - image (NoneType): parameter 'image'
-        - interpolation (str): parameter 'interpolation' in ('Linear', 'Closest', 'Cubic', 'Smart')
-        - projection (str): parameter 'projection' in ('EQUIRECTANGULAR', 'MIRROR_BALL')
+        - interpolation (str): parameter 'interpolation' in ['Linear', 'Closest', 'Cubic', 'Smart']
+        - projection (str): parameter 'projection' in ['EQUIRECTANGULAR', 'MIRROR_BALL']
 
         Returns
         -------
         - Color
         """
-        utils.check_enum_arg('interpolation', interpolation, 'environment_texture', ('Linear', 'Closest', 'Cubic', 'Smart'))
-        utils.check_enum_arg('projection', projection, 'environment_texture', ('EQUIRECTANGULAR', 'MIRROR_BALL'))
+        utils.check_enum_arg('Environment Texture', 'interpolation', interpolation, 'environment_texture', ('Linear', 'Closest', 'Cubic', 'Smart'))
+        utils.check_enum_arg('Environment Texture', 'projection', projection, 'environment_texture', ('EQUIRECTANGULAR', 'MIRROR_BALL'))
         node = Node('Environment Texture', sockets={'Vector': self}, image=image, interpolation=interpolation, projection=projection)
         return node._out
 
@@ -1190,13 +1190,13 @@ class Vector(Socket):
         - strength (Float) : socket 'Strength' (id: Strength)
         - filepath (str): parameter 'filepath'
         - ies (NoneType): parameter 'ies'
-        - mode (str): parameter 'mode' in ('INTERNAL', 'EXTERNAL')
+        - mode (str): parameter 'mode' in ['INTERNAL', 'EXTERNAL']
 
         Returns
         -------
         - Float
         """
-        utils.check_enum_arg('mode', mode, 'ies_texture', ('INTERNAL', 'EXTERNAL'))
+        utils.check_enum_arg('IES Texture', 'mode', mode, 'ies_texture', ('INTERNAL', 'EXTERNAL'))
         node = Node('IES Texture', sockets={'Vector': self, 'Strength': strength}, filepath=filepath, ies=ies, mode=mode)
         return node._out
 
@@ -1209,19 +1209,19 @@ class Vector(Socket):
 
         Arguments
         ---------
-        - extension (str): parameter 'extension' in ('REPEAT', 'EXTEND', 'CLIP', 'MIRROR')
+        - extension (str): parameter 'extension' in ['REPEAT', 'EXTEND', 'CLIP', 'MIRROR']
         - image (NoneType): parameter 'image'
-        - interpolation (str): parameter 'interpolation' in ('Linear', 'Closest', 'Cubic', 'Smart')
-        - projection (str): parameter 'projection' in ('FLAT', 'BOX', 'SPHERE', 'TUBE')
+        - interpolation (str): parameter 'interpolation' in ['Linear', 'Closest', 'Cubic', 'Smart']
+        - projection (str): parameter 'projection' in ['FLAT', 'BOX', 'SPHERE', 'TUBE']
         - projection_blend (float): parameter 'projection_blend'
 
         Returns
         -------
         - Color [alpha_ (Float)]
         """
-        utils.check_enum_arg('extension', extension, 'image_texture', ('REPEAT', 'EXTEND', 'CLIP', 'MIRROR'))
-        utils.check_enum_arg('interpolation', interpolation, 'image_texture', ('Linear', 'Closest', 'Cubic', 'Smart'))
-        utils.check_enum_arg('projection', projection, 'image_texture', ('FLAT', 'BOX', 'SPHERE', 'TUBE'))
+        utils.check_enum_arg('Image Texture', 'extension', extension, 'image_texture', ('REPEAT', 'EXTEND', 'CLIP', 'MIRROR'))
+        utils.check_enum_arg('Image Texture', 'interpolation', interpolation, 'image_texture', ('Linear', 'Closest', 'Cubic', 'Smart'))
+        utils.check_enum_arg('Image Texture', 'projection', projection, 'image_texture', ('FLAT', 'BOX', 'SPHERE', 'TUBE'))
         node = Node('Image Texture', sockets={'Vector': self}, extension=extension, image=image, interpolation=interpolation, projection=projection, projection_blend=projection_blend)
         return node._out
 
@@ -1234,26 +1234,26 @@ class Vector(Socket):
 
         Arguments
         ---------
-        - interpolation (str): parameter 'interpolation' in ('Closest', 'Linear', 'Cubic')
+        - interpolation (str): parameter 'interpolation' in ['Closest', 'Linear', 'Cubic']
         - object (NoneType): parameter 'object'
-        - particle_color_source (str): parameter 'particle_color_source' in ('PARTICLE_AGE', 'PARTICLE_SPEED', 'PARTICLE_VELOCITY')
+        - particle_color_source (str): parameter 'particle_color_source' in ['PARTICLE_AGE', 'PARTICLE_SPEED', 'PARTICLE_VELOCITY']
         - particle_system (NoneType): parameter 'particle_system'
-        - point_source (str): parameter 'point_source' in ('PARTICLE_SYSTEM', 'OBJECT')
+        - point_source (str): parameter 'point_source' in ['PARTICLE_SYSTEM', 'OBJECT']
         - radius (float): parameter 'radius'
         - resolution (int): parameter 'resolution'
-        - space (str): parameter 'space' in ('OBJECT', 'WORLD')
+        - space (str): parameter 'space' in ['OBJECT', 'WORLD']
         - vertex_attribute_name (str): parameter 'vertex_attribute_name'
-        - vertex_color_source (str): parameter 'vertex_color_source' in ('VERTEX_COLOR', 'VERTEX_WEIGHT', 'VERTEX_NORMAL')
+        - vertex_color_source (str): parameter 'vertex_color_source' in ['VERTEX_COLOR', 'VERTEX_WEIGHT', 'VERTEX_NORMAL']
 
         Returns
         -------
         - Color [density_ (Float)]
         """
-        utils.check_enum_arg('interpolation', interpolation, 'point_density', ('Closest', 'Linear', 'Cubic'))
-        utils.check_enum_arg('particle_color_source', particle_color_source, 'point_density', ('PARTICLE_AGE', 'PARTICLE_SPEED', 'PARTICLE_VELOCITY'))
-        utils.check_enum_arg('point_source', point_source, 'point_density', ('PARTICLE_SYSTEM', 'OBJECT'))
-        utils.check_enum_arg('space', space, 'point_density', ('OBJECT', 'WORLD'))
-        utils.check_enum_arg('vertex_color_source', vertex_color_source, 'point_density', ('VERTEX_COLOR', 'VERTEX_WEIGHT', 'VERTEX_NORMAL'))
+        utils.check_enum_arg('Point Density', 'interpolation', interpolation, 'point_density', ('Closest', 'Linear', 'Cubic'))
+        utils.check_enum_arg('Point Density', 'particle_color_source', particle_color_source, 'point_density', ('PARTICLE_AGE', 'PARTICLE_SPEED', 'PARTICLE_VELOCITY'))
+        utils.check_enum_arg('Point Density', 'point_source', point_source, 'point_density', ('PARTICLE_SYSTEM', 'OBJECT'))
+        utils.check_enum_arg('Point Density', 'space', space, 'point_density', ('OBJECT', 'WORLD'))
+        utils.check_enum_arg('Point Density', 'vertex_color_source', vertex_color_source, 'point_density', ('VERTEX_COLOR', 'VERTEX_WEIGHT', 'VERTEX_NORMAL'))
         node = Node('Point Density', sockets={'Vector': self}, interpolation=interpolation, object=object, particle_color_source=particle_color_source, particle_system=particle_system, point_source=point_source, radius=radius, resolution=resolution, space=space, vertex_attribute_name=vertex_attribute_name, vertex_color_source=vertex_color_source)
         return node._out
 
@@ -1282,17 +1282,17 @@ class Vector(Socket):
 
         Arguments
         ---------
-        - convert_from (str): parameter 'convert_from' in ('WORLD', 'OBJECT', 'CAMERA')
-        - convert_to (str): parameter 'convert_to' in ('WORLD', 'OBJECT', 'CAMERA')
-        - vector_type (str): parameter 'vector_type' in ('POINT', 'VECTOR', 'NORMAL')
+        - convert_from (str): parameter 'convert_from' in ['WORLD', 'OBJECT', 'CAMERA']
+        - convert_to (str): parameter 'convert_to' in ['WORLD', 'OBJECT', 'CAMERA']
+        - vector_type (str): parameter 'vector_type' in ['POINT', 'VECTOR', 'NORMAL']
 
         Returns
         -------
         - Vector
         """
-        utils.check_enum_arg('convert_from', convert_from, 'vector_transform', ('WORLD', 'OBJECT', 'CAMERA'))
-        utils.check_enum_arg('convert_to', convert_to, 'vector_transform', ('WORLD', 'OBJECT', 'CAMERA'))
-        utils.check_enum_arg('vector_type', vector_type, 'vector_transform', ('POINT', 'VECTOR', 'NORMAL'))
+        utils.check_enum_arg('Vector Transform', 'convert_from', convert_from, 'vector_transform', ('WORLD', 'OBJECT', 'CAMERA'))
+        utils.check_enum_arg('Vector Transform', 'convert_to', convert_to, 'vector_transform', ('WORLD', 'OBJECT', 'CAMERA'))
+        utils.check_enum_arg('Vector Transform', 'vector_type', vector_type, 'vector_transform', ('POINT', 'VECTOR', 'NORMAL'))
         node = Node('Vector Transform', sockets={'Vector': self}, convert_from=convert_from, convert_to=convert_to, vector_type=vector_type)
         return node._out
 

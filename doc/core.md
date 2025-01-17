@@ -9,7 +9,7 @@
 - **D** : [del_tree](core.md#del_tree) :black_small_square: [Domain](domain.md#domain)
 - **E** : [Edge](edge.md#edge) :black_small_square: [Elif](elif.md#elif) :black_small_square: [Else](else.md#else) :black_small_square: [ensure_uniques](core.md#ensure_uniques)
 - **F** : [Face](face.md#face) :black_small_square: [Float](float.md#float) :black_small_square: [ForEachElement](foreachelement.md#foreachelement)
-- **G** : [G](g.md#g) :black_small_square: [generated](generated.md#generated) :black_small_square: [Geometry](geometry.md#geometry) :black_small_square: [GeoNodes](geonodes.md#geonodes) :black_small_square: [get_tree](core.md#get_tree) :black_small_square: [GreasePencil](greasepencil.md#greasepencil) :black_small_square: [Group](group.md#group) :black_small_square: [GroupF](groupf.md#groupf)
+- **G** : [G](g.md#g) :black_small_square: [generated](generated.md#generated) :black_small_square: [Geometry](geometry.md#geometry) :black_small_square: [GeoNodes](geonodes.md#geonodes) :black_small_square: [get_enum_param_user](core.md#get_enum_param_user) :black_small_square: [get_enum_param_users](core.md#get_enum_param_users) :black_small_square: [get_enum_param_value](core.md#get_enum_param_value) :black_small_square: [get_tree](core.md#get_tree) :black_small_square: [GreasePencil](greasepencil.md#greasepencil) :black_small_square: [Group](group.md#group) :black_small_square: [GroupF](groupf.md#groupf)
 - **I** : [If](if.md#if) :black_small_square: [Image](image.md#image) :black_small_square: [Instance](instance.md#instance) :black_small_square: [Instances](instances.md#instances) :black_small_square: [Integer](integer.md#integer)
 - **L** : [Layer](layer.md#layer) :black_small_square: [Layout](layout.md#layout)
 - **M** : [Material](material.md#material) :black_small_square: [Matrix](matrix.md#matrix) :black_small_square: [Menu](menu.md#menu) :black_small_square: [Mesh](mesh.md#mesh)
@@ -100,7 +100,7 @@
 > function
 
 ``` python
-check_enum_arg(arg_name: str, arg_value: str, meth_name: str, valids: tuple) -> bool
+check_enum_arg(node_name: str, arg_name: str, arg_value: str, meth_name: str, valids: tuple) -> bool
 ```
 
 Check the value of an enum param
@@ -111,6 +111,7 @@ Check the value of an enum param
 
 
 #### Arguments:
+- **node_name** (_str_) : node name
 - **arg_name** (_str_) : argument name
 - **arg_value** (_str_) : argument value
 - **meth_name** (_str_) : method name
@@ -178,6 +179,77 @@ Doublons are suffixed by an index:
 
 #### Returns:
 - **list** : doublons are suffixed by an index
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [core](core.md#core) :black_small_square: [Content](core.md#content) :black_small_square: [Functions](core.md#functions-2)</sub>
+
+----------
+### get_enum_param_user()
+
+> function
+
+``` python
+get_enum_param_user(param_value, node_name, param_name)
+```
+
+Get the user value from a parameter value
+
+The user value is searched in two dicts:
+- SPEC_ENUM_PARAMS (user -> value) : specific nodes
+- ENUM_PARAMS (user -> value) : common to all nodes
+
+#### Arguments:
+- **param_value** (_str_) : enum value (e.g. 'COSINE')
+- **node_name** (_str_) : node name
+- **param_name**
+
+
+
+#### Returns:
+- **list** : the user names (starting by specific if any), e.g. ["Cos", "Cosine"]
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [core](core.md#core) :black_small_square: [Content](core.md#content) :black_small_square: [Functions](core.md#functions-2)</sub>
+
+----------
+### get_enum_param_users()
+
+> function
+
+``` python
+get_enum_param_users(param_values, node_name, param_name, user_case=True)
+```
+
+Get all the users values
+
+Used in dynamic generation code
+
+#### Arguments:
+- **param_values**
+- **node_name**
+- **param_name**
+- **user_case** ( = True)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [core](core.md#core) :black_small_square: [Content](core.md#content) :black_small_square: [Functions](core.md#functions-2)</sub>
+
+----------
+### get_enum_param_value()
+
+> function
+
+``` python
+get_enum_param_value(user_value, node_name, param_name)
+```
+
+Get the param value from a user value
+
+#### Arguments:
+- **user_value** (_str_) : user value for the param, e.g. 'cos'
+- **node_name** (_str_) : node name
+- **param_name**
+
+
+
+#### Returns:
+- **str** : The parameter value, e.g. 'COSINE'
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [core](core.md#core) :black_small_square: [Content](core.md#content) :black_small_square: [Functions](core.md#functions-2)</sub>
 

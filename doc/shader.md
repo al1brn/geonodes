@@ -152,7 +152,7 @@ Glass(color=None, roughness=None, ior=None, normal=None, distribution='MULTI_GGX
 - **roughness** (_Float_ = None) : socket 'Roughness' (id: Roughness)
 - **ior** (_Float_ = None) : socket 'IOR' (id: IOR)
 - **normal** (_Vector_ = None) : socket 'Normal' (id: Normal)
-- **distribution** (_str_ = MULTI_GGX) : parameter 'distribution' in ('BECKMANN', 'GGX', 'MULTI_GGX')
+- **distribution** (_str_ = MULTI_GGX) : parameter 'distribution' in ['BECKMANN', 'GGX', 'MULTI_GGX']
 
 
 
@@ -179,7 +179,7 @@ Glossy(color=None, roughness=None, anisotropy=None, rotation=None, normal=None, 
 - **rotation** (_Float_ = None) : socket 'Rotation' (id: Rotation)
 - **normal** (_Vector_ = None) : socket 'Normal' (id: Normal)
 - **tangent** (_Vector_ = None) : socket 'Tangent' (id: Tangent)
-- **distribution** (_str_ = MULTI_GGX) : parameter 'distribution' in ('BECKMANN', 'GGX', 'ASHIKHMIN_SHIRLEY', 'MULTI_GGX')
+- **distribution** (_str_ = MULTI_GGX) : parameter 'distribution' in ['BECKMANN', 'GGX', 'ASHIKHMIN_SHIRLEY', 'MULTI_GGX']
 
 
 
@@ -205,7 +205,7 @@ Hair(color=None, offset=None, roughnessu=None, roughnessv=None, tangent=None, co
 - **roughnessu** (_Float_ = None) : socket 'RoughnessU' (id: RoughnessU)
 - **roughnessv** (_Float_ = None) : socket 'RoughnessV' (id: RoughnessV)
 - **tangent** (_Vector_ = None) : socket 'Tangent' (id: Tangent)
-- **component** (_str_ = Reflection) : parameter 'component' in ('Reflection', 'Transmission')
+- **component** (_str_ = Reflection) : parameter 'component' in ['Reflection', 'Transmission']
 
 
 
@@ -248,7 +248,7 @@ light_output(is_active_output=True, target='ALL')
 
 #### Arguments:
 - **is_active_output** (_bool_ = True) : parameter 'is_active_output'
-- **target** (_str_ = ALL) : parameter 'target' in ('ALL', 'EEVEE', 'CYCLES')
+- **target** (_str_ = ALL) : parameter 'target' in ['ALL', 'EEVEE', 'CYCLES']
 
 
 
@@ -278,7 +278,7 @@ material_output(volume=None, displacement=None, thickness=None, is_active_output
 - **displacement** (_Vector_ = None) : socket 'Displacement' (id: Displacement)
 - **thickness** (_Float_ = None) : socket 'Thickness' (id: Thickness)
 - **is_active_output** (_bool_ = True) : parameter 'is_active_output'
-- **target** (_str_ = ALL) : parameter 'target' in ('ALL', 'EEVEE', 'CYCLES')
+- **target** (_str_ = ALL) : parameter 'target' in ['ALL', 'EEVEE', 'CYCLES']
 
 
 
@@ -306,8 +306,8 @@ Metallic(base_color=None, edge_tint=None, roughness=None, anisotropy=None, rotat
 - **rotation** (_Float_ = None) : socket 'Rotation' (id: Rotation)
 - **normal** (_Vector_ = None) : socket 'Normal' (id: Normal)
 - **tangent** (_Vector_ = None) : socket 'Tangent' (id: Tangent)
-- **distribution** (_str_ = MULTI_GGX) : parameter 'distribution' in ('BECKMANN', 'GGX', 'MULTI_GGX')
-- **fresnel_type** (_str_ = F82) : parameter 'fresnel_type' in ('PHYSICAL_CONDUCTOR', 'F82')
+- **distribution** (_str_ = MULTI_GGX) : parameter 'distribution' in ['BECKMANN', 'GGX', 'MULTI_GGX']
+- **fresnel_type** (_str_ = F82) : parameter 'fresnel_type' in ['PHYSICAL_CONDUCTOR', 'F82']
 
 
 
@@ -384,8 +384,8 @@ Principled(base_color=None, metallic=None, roughness=None, ior=None, alpha=None,
 - **emission_strength** (_Float_ = None) : socket 'Emission Strength' (id: Emission Strength)
 - **thin_film_thickness** (_Float_ = None) : socket 'Thin Film Thickness' (id: Thin Film Thickness)
 - **thin_film_ior** (_Float_ = None) : socket 'Thin Film IOR' (id: Thin Film IOR)
-- **distribution** (_str_ = MULTI_GGX) : parameter 'distribution' in ('GGX', 'MULTI_GGX')
-- **subsurface_method** (_str_ = RANDOM_WALK) : parameter 'subsurface_method' in ('BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN')
+- **distribution** (_str_ = MULTI_GGX) : parameter 'distribution' in ['GGX', 'MULTI_GGX']
+- **subsurface_method** (_str_ = RANDOM_WALK) : parameter 'subsurface_method' in ['BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN']
 
 
 
@@ -414,8 +414,8 @@ PrincipledHair(color=None, roughness=None, radial_roughness=None, coat=None, ior
 - **offset** (_Float_ = None) : socket 'Offset' (id: Offset)
 - **random_roughness** (_Float_ = None) : socket 'Random Roughness' (id: Random Roughness)
 - **random** (_Float_ = None) : socket 'Random' (id: Random)
-- **model** (_str_ = CHIANG) : parameter 'model' in ('CHIANG', 'HUANG')
-- **parametrization** (_str_ = COLOR) : parameter 'parametrization' in ('ABSORPTION', 'MELANIN', 'COLOR')
+- **model** (_str_ = CHIANG) : parameter 'model' in ['CHIANG', 'HUANG']
+- **parametrization** (_str_ = COLOR) : parameter 'parametrization' in ['ABSORPTION', 'MELANIN', 'COLOR']
 
 
 
@@ -463,7 +463,7 @@ Refraction(color=None, roughness=None, ior=None, normal=None, distribution='BECK
 - **roughness** (_Float_ = None) : socket 'Roughness' (id: Roughness)
 - **ior** (_Float_ = None) : socket 'IOR' (id: IOR)
 - **normal** (_Vector_ = None) : socket 'Normal' (id: Normal)
-- **distribution** (_str_ = BECKMANN) : parameter 'distribution' in ('BECKMANN', 'GGX')
+- **distribution** (_str_ = BECKMANN) : parameter 'distribution' in ['BECKMANN', 'GGX']
 
 
 
@@ -487,7 +487,7 @@ Sheen(color=None, roughness=None, normal=None, distribution='MICROFIBER')
 - **color** (_Color_ = None) : socket 'Color' (id: Color)
 - **roughness** (_Float_ = None) : socket 'Roughness' (id: Roughness)
 - **normal** (_Vector_ = None) : socket 'Normal' (id: Normal)
-- **distribution** (_str_ = MICROFIBER) : parameter 'distribution' in ('ASHIKHMIN', 'MICROFIBER')
+- **distribution** (_str_ = MICROFIBER) : parameter 'distribution' in ['ASHIKHMIN', 'MICROFIBER']
 
 
 
@@ -544,7 +544,7 @@ SubsurfaceScattering(color=None, scale=None, radius=None, ior=None, roughness=No
 - **roughness** (_Float_ = None) : socket 'Roughness' (id: Roughness)
 - **anisotropy** (_Float_ = None) : socket 'Anisotropy' (id: Anisotropy)
 - **normal** (_Vector_ = None) : socket 'Normal' (id: Normal)
-- **falloff** (_str_ = RANDOM_WALK) : parameter 'falloff' in ('BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN')
+- **falloff** (_str_ = RANDOM_WALK) : parameter 'falloff' in ['BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN']
 
 
 
@@ -569,7 +569,7 @@ Toon(color=None, size=None, smooth=None, normal=None, component='DIFFUSE')
 - **size** (_Float_ = None) : socket 'Size' (id: Size)
 - **smooth** (_Float_ = None) : socket 'Smooth' (id: Smooth)
 - **normal** (_Vector_ = None) : socket 'Normal' (id: Normal)
-- **component** (_str_ = DIFFUSE) : parameter 'component' in ('DIFFUSE', 'GLOSSY')
+- **component** (_str_ = DIFFUSE) : parameter 'component' in ['DIFFUSE', 'GLOSSY']
 
 
 
@@ -661,7 +661,7 @@ world_output(volume=None, is_active_output=True, target='ALL')
 #### Arguments:
 - **volume** (_Shader_ = None) : socket 'Volume' (id: Volume)
 - **is_active_output** (_bool_ = True) : parameter 'is_active_output'
-- **target** (_str_ = ALL) : parameter 'target' in ('ALL', 'EEVEE', 'CYCLES')
+- **target** (_str_ = ALL) : parameter 'target' in ['ALL', 'EEVEE', 'CYCLES']
 
 
 

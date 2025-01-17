@@ -19,15 +19,15 @@ class Rotation(Socket):
         ---------
         - vector (Vector) : socket 'Vector' (id: Vector)
         - factor (Float) : socket 'Factor' (id: Factor)
-        - axis (str): parameter 'axis' in ('X', 'Y', 'Z')
-        - pivot_axis (str): parameter 'pivot_axis' in ('AUTO', 'X', 'Y', 'Z')
+        - axis (str): parameter 'axis' in ['X', 'Y', 'Z']
+        - pivot_axis (str): parameter 'pivot_axis' in ['AUTO', 'X', 'Y', 'Z']
 
         Returns
         -------
         - Rotation
         """
-        utils.check_enum_arg('axis', axis, 'AlignToVector', ('X', 'Y', 'Z'))
-        utils.check_enum_arg('pivot_axis', pivot_axis, 'AlignToVector', ('AUTO', 'X', 'Y', 'Z'))
+        utils.check_enum_arg('Align Rotation to Vector', 'axis', axis, 'AlignToVector', ('X', 'Y', 'Z'))
+        utils.check_enum_arg('Align Rotation to Vector', 'pivot_axis', pivot_axis, 'AlignToVector', ('AUTO', 'X', 'Y', 'Z'))
         node = Node('Align Rotation to Vector', sockets={'Rotation': None, 'Vector': vector, 'Factor': factor}, axis=axis, pivot_axis=pivot_axis)
         return cls(node._out)
 
@@ -44,13 +44,13 @@ class Rotation(Socket):
         ---------
         - vector (Vector) : socket 'Vector' (id: Vector)
         - factor (Float) : socket 'Factor' (id: Factor)
-        - pivot_axis (str): parameter 'pivot_axis' in ('AUTO', 'X', 'Y', 'Z')
+        - pivot_axis (str): parameter 'pivot_axis' in ['AUTO', 'X', 'Y', 'Z']
 
         Returns
         -------
         - Rotation
         """
-        utils.check_enum_arg('pivot_axis', pivot_axis, 'AlignXToVector', ('AUTO', 'X', 'Y', 'Z'))
+        utils.check_enum_arg('Align Rotation to Vector', 'pivot_axis', pivot_axis, 'AlignXToVector', ('AUTO', 'X', 'Y', 'Z'))
         node = Node('Align Rotation to Vector', sockets={'Rotation': None, 'Vector': vector, 'Factor': factor}, axis='X', pivot_axis=pivot_axis)
         return cls(node._out)
 
@@ -67,13 +67,13 @@ class Rotation(Socket):
         ---------
         - vector (Vector) : socket 'Vector' (id: Vector)
         - factor (Float) : socket 'Factor' (id: Factor)
-        - pivot_axis (str): parameter 'pivot_axis' in ('AUTO', 'X', 'Y', 'Z')
+        - pivot_axis (str): parameter 'pivot_axis' in ['AUTO', 'X', 'Y', 'Z']
 
         Returns
         -------
         - Rotation
         """
-        utils.check_enum_arg('pivot_axis', pivot_axis, 'AlignYToVector', ('AUTO', 'X', 'Y', 'Z'))
+        utils.check_enum_arg('Align Rotation to Vector', 'pivot_axis', pivot_axis, 'AlignYToVector', ('AUTO', 'X', 'Y', 'Z'))
         node = Node('Align Rotation to Vector', sockets={'Rotation': None, 'Vector': vector, 'Factor': factor}, axis='Y', pivot_axis=pivot_axis)
         return cls(node._out)
 
@@ -90,13 +90,13 @@ class Rotation(Socket):
         ---------
         - vector (Vector) : socket 'Vector' (id: Vector)
         - factor (Float) : socket 'Factor' (id: Factor)
-        - pivot_axis (str): parameter 'pivot_axis' in ('AUTO', 'X', 'Y', 'Z')
+        - pivot_axis (str): parameter 'pivot_axis' in ['AUTO', 'X', 'Y', 'Z']
 
         Returns
         -------
         - Rotation
         """
-        utils.check_enum_arg('pivot_axis', pivot_axis, 'AlignZToVector', ('AUTO', 'X', 'Y', 'Z'))
+        utils.check_enum_arg('Align Rotation to Vector', 'pivot_axis', pivot_axis, 'AlignZToVector', ('AUTO', 'X', 'Y', 'Z'))
         node = Node('Align Rotation to Vector', sockets={'Rotation': None, 'Vector': vector, 'Factor': factor}, axis='Z', pivot_axis=pivot_axis)
         return cls(node._out)
 
@@ -111,15 +111,15 @@ class Rotation(Socket):
         ---------
         - vector (Vector) : socket 'Vector' (id: Vector)
         - factor (Float) : socket 'Factor' (id: Factor)
-        - axis (str): parameter 'axis' in ('X', 'Y', 'Z')
-        - pivot_axis (str): parameter 'pivot_axis' in ('AUTO', 'X', 'Y', 'Z')
+        - axis (str): parameter 'axis' in ['X', 'Y', 'Z']
+        - pivot_axis (str): parameter 'pivot_axis' in ['AUTO', 'X', 'Y', 'Z']
 
         Returns
         -------
         - Rotation
         """
-        utils.check_enum_arg('axis', axis, 'align_toVector', ('X', 'Y', 'Z'))
-        utils.check_enum_arg('pivot_axis', pivot_axis, 'align_toVector', ('AUTO', 'X', 'Y', 'Z'))
+        utils.check_enum_arg('Align Rotation to Vector', 'axis', axis, 'align_toVector', ('X', 'Y', 'Z'))
+        utils.check_enum_arg('Align Rotation to Vector', 'pivot_axis', pivot_axis, 'align_toVector', ('AUTO', 'X', 'Y', 'Z'))
         node = Node('Align Rotation to Vector', sockets={'Rotation': self, 'Vector': vector, 'Factor': factor}, axis=axis, pivot_axis=pivot_axis)
         return node._out
 
@@ -135,13 +135,13 @@ class Rotation(Socket):
         ---------
         - vector (Vector) : socket 'Vector' (id: Vector)
         - factor (Float) : socket 'Factor' (id: Factor)
-        - pivot_axis (str): parameter 'pivot_axis' in ('AUTO', 'X', 'Y', 'Z')
+        - pivot_axis (str): parameter 'pivot_axis' in ['AUTO', 'X', 'Y', 'Z']
 
         Returns
         -------
         - Rotation
         """
-        utils.check_enum_arg('pivot_axis', pivot_axis, 'align_x_to_vector', ('AUTO', 'X', 'Y', 'Z'))
+        utils.check_enum_arg('Align Rotation to Vector', 'pivot_axis', pivot_axis, 'align_x_to_vector', ('AUTO', 'X', 'Y', 'Z'))
         node = Node('Align Rotation to Vector', sockets={'Rotation': self, 'Vector': vector, 'Factor': factor}, axis='X', pivot_axis=pivot_axis)
         return node._out
 
@@ -157,13 +157,13 @@ class Rotation(Socket):
         ---------
         - vector (Vector) : socket 'Vector' (id: Vector)
         - factor (Float) : socket 'Factor' (id: Factor)
-        - pivot_axis (str): parameter 'pivot_axis' in ('AUTO', 'X', 'Y', 'Z')
+        - pivot_axis (str): parameter 'pivot_axis' in ['AUTO', 'X', 'Y', 'Z']
 
         Returns
         -------
         - Rotation
         """
-        utils.check_enum_arg('pivot_axis', pivot_axis, 'align_y_to_vector', ('AUTO', 'X', 'Y', 'Z'))
+        utils.check_enum_arg('Align Rotation to Vector', 'pivot_axis', pivot_axis, 'align_y_to_vector', ('AUTO', 'X', 'Y', 'Z'))
         node = Node('Align Rotation to Vector', sockets={'Rotation': self, 'Vector': vector, 'Factor': factor}, axis='Y', pivot_axis=pivot_axis)
         return node._out
 
@@ -179,13 +179,13 @@ class Rotation(Socket):
         ---------
         - vector (Vector) : socket 'Vector' (id: Vector)
         - factor (Float) : socket 'Factor' (id: Factor)
-        - pivot_axis (str): parameter 'pivot_axis' in ('AUTO', 'X', 'Y', 'Z')
+        - pivot_axis (str): parameter 'pivot_axis' in ['AUTO', 'X', 'Y', 'Z']
 
         Returns
         -------
         - Rotation
         """
-        utils.check_enum_arg('pivot_axis', pivot_axis, 'align_z_to_vector', ('AUTO', 'X', 'Y', 'Z'))
+        utils.check_enum_arg('Align Rotation to Vector', 'pivot_axis', pivot_axis, 'align_z_to_vector', ('AUTO', 'X', 'Y', 'Z'))
         node = Node('Align Rotation to Vector', sockets={'Rotation': self, 'Vector': vector, 'Factor': factor}, axis='Z', pivot_axis=pivot_axis)
         return node._out
 
@@ -197,15 +197,15 @@ class Rotation(Socket):
         ---------
         - primary_axis_1 (Vector) : socket 'Primary Axis' (id: Primary Axis)
         - secondary_axis_1 (Vector) : socket 'Secondary Axis' (id: Secondary Axis)
-        - primary_axis (str): parameter 'primary_axis' in ('X', 'Y', 'Z')
-        - secondary_axis (str): parameter 'secondary_axis' in ('X', 'Y', 'Z')
+        - primary_axis (str): parameter 'primary_axis' in ['X', 'Y', 'Z']
+        - secondary_axis (str): parameter 'secondary_axis' in ['X', 'Y', 'Z']
 
         Returns
         -------
         - Rotation
         """
-        utils.check_enum_arg('primary_axis', primary_axis, 'FromAxes', ('X', 'Y', 'Z'))
-        utils.check_enum_arg('secondary_axis', secondary_axis, 'FromAxes', ('X', 'Y', 'Z'))
+        utils.check_enum_arg('Axes to Rotation', 'primary_axis', primary_axis, 'FromAxes', ('X', 'Y', 'Z'))
+        utils.check_enum_arg('Axes to Rotation', 'secondary_axis', secondary_axis, 'FromAxes', ('X', 'Y', 'Z'))
         node = Node('Axes to Rotation', sockets={'Primary Axis': primary_axis_1, 'Secondary Axis': secondary_axis_1}, primary_axis=primary_axis, secondary_axis=secondary_axis)
         return cls(node._out)
 
@@ -427,13 +427,13 @@ class Rotation(Socket):
         Arguments
         ---------
         - rotate_by (Rotation) : socket 'Rotate By' (id: Rotate By)
-        - rotation_space (str): parameter 'rotation_space' in ('GLOBAL', 'LOCAL')
+        - rotation_space (str): parameter 'rotation_space' in ['GLOBAL', 'LOCAL']
 
         Returns
         -------
         - Rotation
         """
-        utils.check_enum_arg('rotation_space', rotation_space, 'rotate', ('GLOBAL', 'LOCAL'))
+        utils.check_enum_arg('Rotate Rotation', 'rotation_space', rotation_space, 'rotate', ('GLOBAL', 'LOCAL'))
         node = Node('Rotate Rotation', sockets={'Rotation': self, 'Rotate By': rotate_by}, rotation_space=rotation_space)
         return node._out
 

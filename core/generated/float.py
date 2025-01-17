@@ -144,13 +144,13 @@ class Float(Socket):
 
         Arguments
         ---------
-        - rounding_mode (str): parameter 'rounding_mode' in ('ROUND', 'FLOOR', 'CEILING', 'TRUNCATE')
+        - rounding_mode (str): parameter 'rounding_mode' in ['ROUND', 'FLOOR', 'CEILING', 'TRUNCATE']
 
         Returns
         -------
         - Integer
         """
-        utils.check_enum_arg('rounding_mode', rounding_mode, 'to_integer', ('ROUND', 'FLOOR', 'CEILING', 'TRUNCATE'))
+        utils.check_enum_arg('Float to Integer', 'rounding_mode', rounding_mode, 'to_integer', ('ROUND', 'FLOOR', 'CEILING', 'TRUNCATE'))
         node = Node('Float to Integer', sockets={'Float': self}, rounding_mode=rounding_mode)
         return node._out
 
@@ -244,13 +244,13 @@ class Float(Socket):
         - up (Vector) : socket 'Up' (id: Up)
         - screen_space (Boolean) : socket 'Screen Space' (id: Screen Space)
         - radius (Float) : socket 'Radius' (id: Radius)
-        - color_id (str): parameter 'color_id' in ('PRIMARY', 'SECONDARY', 'X', 'Y', 'Z')
+        - color_id (str): parameter 'color_id' in ['PRIMARY', 'SECONDARY', 'X', 'Y', 'Z']
 
         Returns
         -------
         - Geometry
         """
-        utils.check_enum_arg('color_id', color_id, 'dial_gizmo', ('PRIMARY', 'SECONDARY', 'X', 'Y', 'Z'))
+        utils.check_enum_arg('Dial Gizmo', 'color_id', color_id, 'dial_gizmo', ('PRIMARY', 'SECONDARY', 'X', 'Y', 'Z'))
         node = Node('Dial Gizmo', sockets={'Value': [self] + list(value), 'Position': position, 'Up': up, 'Screen Space': screen_space, 'Radius': radius}, color_id=color_id)
         return node._out
 
@@ -262,15 +262,15 @@ class Float(Socket):
         - value (Float) : socket 'Value' (id: Value)
         - position (Vector) : socket 'Position' (id: Position)
         - direction (Vector) : socket 'Direction' (id: Direction)
-        - color_id (str): parameter 'color_id' in ('PRIMARY', 'SECONDARY', 'X', 'Y', 'Z')
-        - draw_style (str): parameter 'draw_style' in ('ARROW', 'CROSS', 'BOX')
+        - color_id (str): parameter 'color_id' in ['PRIMARY', 'SECONDARY', 'X', 'Y', 'Z']
+        - draw_style (str): parameter 'draw_style' in ['ARROW', 'CROSS', 'BOX']
 
         Returns
         -------
         - Geometry
         """
-        utils.check_enum_arg('color_id', color_id, 'linear_gizmo', ('PRIMARY', 'SECONDARY', 'X', 'Y', 'Z'))
-        utils.check_enum_arg('draw_style', draw_style, 'linear_gizmo', ('ARROW', 'CROSS', 'BOX'))
+        utils.check_enum_arg('Linear Gizmo', 'color_id', color_id, 'linear_gizmo', ('PRIMARY', 'SECONDARY', 'X', 'Y', 'Z'))
+        utils.check_enum_arg('Linear Gizmo', 'draw_style', draw_style, 'linear_gizmo', ('ARROW', 'CROSS', 'BOX'))
         node = Node('Linear Gizmo', sockets={'Value': [self] + list(value), 'Position': position, 'Direction': direction}, color_id=color_id, draw_style=draw_style)
         return node._out
 
@@ -376,13 +376,13 @@ class Float(Socket):
         Arguments
         ---------
         - grid_2 (Float) : socket 'Grid 2' (id: Grid 2)
-        - operation (str): parameter 'operation' in ('INTERSECT', 'UNION', 'DIFFERENCE')
+        - operation (str): parameter 'operation' in ['INTERSECT', 'UNION', 'DIFFERENCE']
 
         Returns
         -------
         - Float
         """
-        utils.check_enum_arg('operation', operation, 'grid_boolean', ('INTERSECT', 'UNION', 'DIFFERENCE'))
+        utils.check_enum_arg('SDF Grid Boolean', 'operation', operation, 'grid_boolean', ('INTERSECT', 'UNION', 'DIFFERENCE'))
         node = Node('SDF Grid Boolean', sockets={'Grid 1': self, 'Grid 2': list(grid_2)}, operation=operation)
         return node._out
 
@@ -452,13 +452,13 @@ class Float(Socket):
         Arguments
         ---------
         - position (Vector) : socket 'Position' (id: Position)
-        - interpolation_mode (str): parameter 'interpolation_mode' in ('NEAREST', 'TRILINEAR', 'TRIQUADRATIC')
+        - interpolation_mode (str): parameter 'interpolation_mode' in ['NEAREST', 'TRILINEAR', 'TRIQUADRATIC']
 
         Returns
         -------
         - Float
         """
-        utils.check_enum_arg('interpolation_mode', interpolation_mode, 'sample_grid', ('NEAREST', 'TRILINEAR', 'TRIQUADRATIC'))
+        utils.check_enum_arg('Sample Grid', 'interpolation_mode', interpolation_mode, 'sample_grid', ('NEAREST', 'TRILINEAR', 'TRIQUADRATIC'))
         node = Node('Sample Grid', sockets={'Grid': self, 'Position': position}, data_type='FLOAT', interpolation_mode=interpolation_mode)
         return node._out
 
@@ -494,13 +494,13 @@ class Float(Socket):
         ---------
         - min (Float) : socket 'Min' (id: Min)
         - max (Float) : socket 'Max' (id: Max)
-        - clamp_type (str): parameter 'clamp_type' in ('MINMAX', 'RANGE')
+        - clamp_type (str): parameter 'clamp_type' in ['MINMAX', 'RANGE']
 
         Returns
         -------
         - Float
         """
-        utils.check_enum_arg('clamp_type', clamp_type, 'clamp', ('MINMAX', 'RANGE'))
+        utils.check_enum_arg('Clamp', 'clamp_type', clamp_type, 'clamp', ('MINMAX', 'RANGE'))
         node = Node('Clamp', sockets={'Value': self, 'Min': min, 'Max': max}, clamp_type=clamp_type)
         return node._out
 
@@ -559,13 +559,13 @@ class Float(Socket):
         - to_min (Float) : socket 'To Min' (id: To Min)
         - to_max (Float) : socket 'To Max' (id: To Max)
         - clamp (bool): parameter 'clamp'
-        - interpolation_type (str): parameter 'interpolation_type' in ('LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP')
+        - interpolation_type (str): parameter 'interpolation_type' in ['LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP']
 
         Returns
         -------
         - Float
         """
-        utils.check_enum_arg('interpolation_type', interpolation_type, 'map_range', ('LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP'))
+        utils.check_enum_arg('Map Range', 'interpolation_type', interpolation_type, 'map_range', ('LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP'))
         data_type = utils.get_argument_data_type(from_min, {'VALUE': 'FLOAT', 'VECTOR': 'FLOAT_VECTOR'}, 'Float.map_range', 'from_min')
         node = Node('Map Range', sockets={'Value': self, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}, clamp=clamp, data_type=data_type, interpolation_type=interpolation_type)
         return node._out
@@ -1510,13 +1510,13 @@ class Float(Socket):
         - frequency (Float) : socket 'Frequency' (id: Frequency)
         - anisotropy (Float) : socket 'Anisotropy' (id: Anisotropy)
         - orientation (Float) : socket 'Orientation' (id: Orientation 2D)
-        - gabor_type (str): parameter 'gabor_type' in ('2D', '3D')
+        - gabor_type (str): parameter 'gabor_type' in ['2D', '3D']
 
         Returns
         -------
         - Float
         """
-        utils.check_enum_arg('gabor_type', gabor_type, 'Gabor', ('2D', '3D'))
+        utils.check_enum_arg('Gabor Texture', 'gabor_type', gabor_type, 'Gabor', ('2D', '3D'))
         node = Node('Gabor Texture', sockets={'Vector': vector, 'Scale': scale, 'Frequency': frequency, 'Anisotropy': anisotropy, 'Orientation 2D': orientation}, gabor_type=gabor_type)
         return cls(node._out)
 
@@ -1532,16 +1532,16 @@ class Float(Socket):
         - roughness (Float) : socket 'Roughness' (id: Roughness)
         - lacunarity (Float) : socket 'Lacunarity' (id: Lacunarity)
         - distortion (Float) : socket 'Distortion' (id: Distortion)
-        - noise_dimensions (str): parameter 'noise_dimensions' in ('1D', '2D', '3D', '4D')
-        - noise_type (str): parameter 'noise_type' in ('MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN')
+        - noise_dimensions (str): parameter 'noise_dimensions' in ['1D', '2D', '3D', '4D']
+        - noise_type (str): parameter 'noise_type' in ['MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN']
         - normalize (bool): parameter 'normalize'
 
         Returns
         -------
         - Float
         """
-        utils.check_enum_arg('noise_dimensions', noise_dimensions, 'Noise', ('1D', '2D', '3D', '4D'))
-        utils.check_enum_arg('noise_type', noise_type, 'Noise', ('MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN'))
+        utils.check_enum_arg('Noise Texture', 'noise_dimensions', noise_dimensions, 'Noise', ('1D', '2D', '3D', '4D'))
+        utils.check_enum_arg('Noise Texture', 'noise_type', noise_type, 'Noise', ('MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN'))
         node = Node('Noise Texture', sockets={'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Distortion': distortion}, noise_dimensions=noise_dimensions, noise_type=noise_type, normalize=normalize)
         return cls(node._out)
 
@@ -1557,18 +1557,18 @@ class Float(Socket):
         - roughness (Float) : socket 'Roughness' (id: Roughness)
         - lacunarity (Float) : socket 'Lacunarity' (id: Lacunarity)
         - randomness (Float) : socket 'Randomness' (id: Randomness)
-        - distance (str): parameter 'distance' in ('EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI')
-        - feature (str): parameter 'feature' in ('F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS')
+        - distance (str): parameter 'distance' in ['EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI']
+        - feature (str): parameter 'feature' in ['F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS']
         - normalize (bool): parameter 'normalize'
-        - voronoi_dimensions (str): parameter 'voronoi_dimensions' in ('1D', '2D', '3D', '4D')
+        - voronoi_dimensions (str): parameter 'voronoi_dimensions' in ['1D', '2D', '3D', '4D']
 
         Returns
         -------
         - Float
         """
-        utils.check_enum_arg('distance', distance, 'Voronoi', ('EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI'))
-        utils.check_enum_arg('feature', feature, 'Voronoi', ('F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS'))
-        utils.check_enum_arg('voronoi_dimensions', voronoi_dimensions, 'Voronoi', ('1D', '2D', '3D', '4D'))
+        utils.check_enum_arg('Voronoi Texture', 'distance', distance, 'Voronoi', ('EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI'))
+        utils.check_enum_arg('Voronoi Texture', 'feature', feature, 'Voronoi', ('F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS'))
+        utils.check_enum_arg('Voronoi Texture', 'voronoi_dimensions', voronoi_dimensions, 'Voronoi', ('1D', '2D', '3D', '4D'))
         node = Node('Voronoi Texture', sockets={'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, distance=distance, feature=feature, normalize=normalize, voronoi_dimensions=voronoi_dimensions)
         return cls(node._out)
 
@@ -1579,13 +1579,13 @@ class Float(Socket):
         Arguments
         ---------
         - vector (Vector) : socket 'Vector' (id: Vector)
-        - noise_dimensions (str): parameter 'noise_dimensions' in ('1D', '2D', '3D', '4D')
+        - noise_dimensions (str): parameter 'noise_dimensions' in ['1D', '2D', '3D', '4D']
 
         Returns
         -------
         - Float
         """
-        utils.check_enum_arg('noise_dimensions', noise_dimensions, 'WhiteNoise', ('1D', '2D', '3D', '4D'))
+        utils.check_enum_arg('White Noise Texture', 'noise_dimensions', noise_dimensions, 'WhiteNoise', ('1D', '2D', '3D', '4D'))
         node = Node('White Noise Texture', sockets={'Vector': vector}, noise_dimensions=noise_dimensions)
         return cls(node._out)
 
@@ -1700,13 +1700,13 @@ class Float(Socket):
         ---------
         - green (Float) : socket 'Green' (id: Green)
         - blue (Float) : socket 'Blue' (id: Blue)
-        - mode (str): parameter 'mode' in ('RGB', 'HSV', 'HSL')
+        - mode (str): parameter 'mode' in ['RGB', 'HSV', 'HSL']
 
         Returns
         -------
         - Color
         """
-        utils.check_enum_arg('mode', mode, 'combine_color', ('RGB', 'HSV', 'HSL'))
+        utils.check_enum_arg('Combine Color', 'mode', mode, 'combine_color', ('RGB', 'HSV', 'HSL'))
         node = Node('Combine Color', sockets={'Red': self, 'Green': green, 'Blue': blue}, mode=mode)
         return node._out
 
@@ -1722,13 +1722,13 @@ class Float(Socket):
         - midlevel (Float) : socket 'Midlevel' (id: Midlevel)
         - scale (Float) : socket 'Scale' (id: Scale)
         - normal (Vector) : socket 'Normal' (id: Normal)
-        - space (str): parameter 'space' in ('OBJECT', 'WORLD')
+        - space (str): parameter 'space' in ['OBJECT', 'WORLD']
 
         Returns
         -------
         - Vector
         """
-        utils.check_enum_arg('space', space, 'displacement', ('OBJECT', 'WORLD'))
+        utils.check_enum_arg('Displacement', 'space', space, 'displacement', ('OBJECT', 'WORLD'))
         node = Node('Displacement', sockets={'Height': self, 'Midlevel': midlevel, 'Scale': scale, 'Normal': normal}, space=space)
         return node._out
 
@@ -1817,14 +1817,14 @@ class Float(Socket):
         Arguments
         ---------
         - color (Color) : socket 'Color' (id: Color)
-        - space (str): parameter 'space' in ('TANGENT', 'OBJECT', 'WORLD', 'BLENDER_OBJECT', 'BLENDER_WORLD')
+        - space (str): parameter 'space' in ['TANGENT', 'OBJECT', 'WORLD', 'BLENDER_OBJECT', 'BLENDER_WORLD']
         - uv_map (str): parameter 'uv_map'
 
         Returns
         -------
         - Vector
         """
-        utils.check_enum_arg('space', space, 'normal_map', ('TANGENT', 'OBJECT', 'WORLD', 'BLENDER_OBJECT', 'BLENDER_WORLD'))
+        utils.check_enum_arg('Normal Map', 'space', space, 'normal_map', ('TANGENT', 'OBJECT', 'WORLD', 'BLENDER_OBJECT', 'BLENDER_WORLD'))
         node = Node('Normal Map', sockets={'Strength': self, 'Color': color}, space=space, uv_map=uv_map)
         return node._out
 

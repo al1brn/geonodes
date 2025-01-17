@@ -110,13 +110,13 @@ class GreasePencil(Socket):
 
         Arguments
         ---------
-        - mode (str): parameter 'mode' in ('MERGE_BY_NAME', 'MERGE_BY_ID')
+        - mode (str): parameter 'mode' in ['MERGE_BY_NAME', 'MERGE_BY_ID']
 
         Returns
         -------
         - GreasePencil
         """
-        utils.check_enum_arg('mode', mode, 'merge_layers', ('MERGE_BY_NAME', 'MERGE_BY_ID'))
+        utils.check_enum_arg('Merge Layers', 'mode', mode, 'merge_layers', ('MERGE_BY_NAME', 'MERGE_BY_ID'))
         node = Node('Merge Layers', sockets={'Grease Pencil': self, 'Selection': self._sel}, mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
