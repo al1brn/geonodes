@@ -2,6 +2,7 @@
 
 > Scripting nodes
 
+$ DOC toc_max_depth = 1
 
 ### Initialize a tree
 

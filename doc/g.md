@@ -51,8 +51,6 @@ with GeoNodes("Calling a Group"):
 - **args**
 - **kwargs**
 
-### Inherited
-
 ## Content
 
 - [build_from_tree](g.md#build_from_tree)

@@ -27,6 +27,8 @@ updates
 -------
 - created :   2025/01/12
 
+$ DOC transparent = False
+
 $ DOC START
 
 [Source Code](../demos/fractal.py)
