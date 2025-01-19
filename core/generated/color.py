@@ -1199,6 +1199,27 @@ class Color(Socket):
         node = Node('Gamma', sockets={'Color': self, 'Gamma': gamma})
         return node._out
 
+    def hue_saturation_value(self, hue=None, saturation=None, value=None, fac=None):
+        """ > Node <&ShaderNode Hue/Saturation/Value>
+
+        Information
+        -----------
+        - Socket 'Color' : self
+
+        Arguments
+        ---------
+        - hue (Float) : socket 'Hue' (id: Hue)
+        - saturation (Float) : socket 'Saturation' (id: Saturation)
+        - value (Float) : socket 'Value' (id: Value)
+        - fac (Float) : socket 'Fac' (id: Fac)
+
+        Returns
+        -------
+        - Color
+        """
+        node = Node('Hue/Saturation/Value', sockets={'Hue': hue, 'Saturation': saturation, 'Value': value, 'Color': self, 'Fac': fac})
+        return node._out
+
     def invert_color(self, fac=None):
         """ > Node <&ShaderNode Invert Color>
 

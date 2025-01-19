@@ -579,7 +579,7 @@ SHADERNODES = {
 'Group'                     : [{f: 'STATIC'}],
 'Curves Info'               : [{f: 'STATIC'}],
 'Holdout'                   : [{f: 'C'}],
-'Hue/Saturation/Value'      : [{}],
+'Hue/Saturation/Value'      : [{}, {klass: 'Color', self_: 'Color'}],
 'Invert Color'              : [{}],
 'Layer Weight'              : [{}],
 'Light Falloff'             : [{}],

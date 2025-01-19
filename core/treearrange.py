@@ -34,13 +34,14 @@ updates
 - creation : 2024/07/23
 - update :   2024/09/04
 - update :   2025/01/12
+- update :   2025/01/18 : bug when deleting temp frames
 """
 
 __author__ = "Alain Bernard"
 __email__  = "lesideesfroides@gmail.com"
 __copyright__ = "Copyright (c) 2025, Alain Bernard"
 __license__ = "GNU GPL V3"
-__version__ = "3.0.0"
+__version__ = "3.0.1"
 __blender_version__ = "4.3.0"
 
 
@@ -1343,6 +1344,12 @@ class Tree(Frame):
         """
         to_delete = [frame for frame in self.nodes.values() if frame.bnode.label.startswith("$TEMP")]
         for frame in to_delete:
+
+            bframe = frame.bnode
+            for bnode in self.btree.nodes:
+                if bnode.parent == bframe:
+                    bnode.parent = bframe.parent
+
             self.tree.del_node(frame)
 
 # ====================================================================================================
@@ -1361,7 +1368,8 @@ def arrange(btree, reroutes=True, input_in_frames=True, get_true_dims=False):
     if input_in_frames:
         tree.group_input_per_frame()
 
-    tree.zones_in_frame()
+    if False: # COULD BE VERY SLOW
+        tree.zones_in_frame()
     tree.arrange(reroutes=reroutes)
     tree.del_temp_frames()
 

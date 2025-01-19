@@ -90,6 +90,13 @@ if False:
     from .. import Boolean, Integer, Float, Vector, Rotation, Matrix, Color
     from .. import pi, tau
 
+# Prefixes
+
+random_   = G("Random")
+camera_   = G("Camera")
+fractal_  = G("Fractal")
+multires_ = G("Multires")
+
 
 FOCAL_FACTOR = .04939
 
@@ -146,7 +153,7 @@ def random_normal():
 
         return seeds
 
-    with GeoNodes("Normal Value", prefix="Random", is_group=True):
+    with GeoNodes("Normal Value", is_group=True, prefix=random_):
 
         value = Float(0,   "Value")
         scale = Float(1,   "Scale")
@@ -164,7 +171,7 @@ def random_normal():
 
         y.out("Value")
 
-    with GeoNodes("Normal Vector", prefix="Random", is_group=True):
+    with GeoNodes("Normal Vector", is_group=True, prefix=random_):
 
         length = Float(1,       "Length",   tip="Vector average length")
         scale  = Float(0,       "Scale",    tip="Length scale")
@@ -192,13 +199,13 @@ def random_normal():
         # ===== Length
 
         with Layout("Random length"):
-            l = G.random.normal_value(length, scale, id=ID, seed=seed2)
+            l = random_.normal_value(length, scale, id=ID, seed=seed2)
 
         normal = normal3D.switch(two_d, normal2D)
         (normal * l).out("Vector")
         normal.out("Direction")
 
-    with GeoNodes("Shake Vectors", prefix="Random", is_group=True):
+    with GeoNodes("Shake Vectors", is_group=True, prefix=random_):
 
         vector   = Vector(None,   "Vector")
         c_scale  = Float.Angle(0, "Angle Scale",  tip="Angle scale")
@@ -213,7 +220,7 @@ def random_normal():
 
         with Layout("Change the orientation"):
             theta = Float.Random(0, 2*pi, seed=seed0)
-            phi   = G.random.normal_value(0, c_scale, id=nd.id, seed=seed1)
+            phi   = random_.normal_value(0, c_scale, id=nd.id, seed=seed1)
 
             rot = Rotation.AlignToVector(vector=vector)
             shake = Rotation((phi, 0, theta))
@@ -222,7 +229,7 @@ def random_normal():
         # ===== Change the length
 
         with Layout("Change the length"):
-            vector = vector.scale(G.random.normal_value(1, l_scale, id=nd.id, seed=seed2))
+            vector = vector.scale(random_.normal_value(1, l_scale, id=nd.id, seed=seed2))
 
         # ===== Done
 
@@ -334,7 +341,7 @@ def camera_culling():
     # -----------------------------------------------------------------------------------------------------------------------------
     # Camera relative
 
-    with GeoNodes("Projection", prefix="Camera", is_group=True):
+    with GeoNodes("Projection", is_group=True, prefix=camera_):
 
         FOCAL_FACTOR = .04939
 
@@ -417,16 +424,16 @@ def camera_culling():
     # -----------------------------------------------------------------------------------------------------------------------------
     # Position Culling
 
-    with GeoNodes("Point Culling", prefix="Camera"):
+    with GeoNodes("Point Culling", prefix=camera_):
 
         cloud = Cloud(Geometry())
 
         # ===== Projection into the camera space
 
         if True:
-            node = G.camera.projection(radius=nd.radius).node.link_from(exclude=['Position', 'Normal'])
+            node = camera_.projection(radius=nd.radius).node.link_from(exclude=['Position', 'Normal'])
         else:
-            node = G.camera.projection(position=nd.position, radius=nd.radius, link_from={'exclude': 'Normal'}).node
+            node = camera_.projection(position=nd.position, radius=nd.radius, link_from={'exclude': 'Normal'}).node
 
         cloud.points[node.behind | node.outside].delete()
 
@@ -435,16 +442,16 @@ def camera_culling():
     # -----------------------------------------------------------------------------------------------------------------------------
     # Edge Culling
 
-    with GeoNodes("Edge Culling", prefix="Camera") as tree:
+    with GeoNodes("Edge Culling", prefix=camera_) as tree:
 
         mesh = Mesh()
 
         # ===== Projection
 
         if True:
-            node = G.camera.projection().node.link_from(exclude=['Normal', 'Normal'])
+            node = camera_.projection().node.link_from(exclude=['Normal', 'Normal'])
         else:
-            node = G.camera.projection(position=nd.position, link_from={'exclude': 'Normal'}).node
+            node = camera_.projection(position=nd.position, link_from={'exclude': 'Normal'}).node
 
 
         # Get the created input sockets
@@ -509,7 +516,7 @@ def camera_culling():
     # -----------------------------------------------------------------------------------------------------------------------------
     # Face Culling
 
-    with GeoNodes("Face Culling", prefix="Camera") as tree:
+    with GeoNodes("Face Culling", prefix=camera_) as tree:
 
         mesh = Mesh()
 
@@ -519,7 +526,7 @@ def camera_culling():
 
         dual = Mesh(mesh).dual()
         dual.points.store("Normal", mesh.faces.sample_index(nd.normal, nd.index))
-        node = G.camera.projection(position=nd.position, radius=None, normal=Vector.Named("Normal")).node
+        node = camera_.projection(position=nd.position, radius=None, normal=Vector.Named("Normal")).node
 
         mesh.faces[dual.points.sample_index(node.outwards, nd.index) > back_faces].delete()
 
@@ -527,9 +534,9 @@ def camera_culling():
 
         # Points projection
         if True:
-            node = G.camera.projection().node.link_from(include="Camera Culling")
+            node = camera_.projection().node.link_from(include="Camera Culling")
         else:
-            node = G.camera.projection(position=nd.position, link_from={'exclude': ['Radius', 'Normal']}).node
+            node = camera_.projection(position=nd.position, link_from={'exclude': ['Radius', 'Normal']}).node
 
         with Layout("Faces with all vertices behind the sensor"):
             mesh.points.store("TEMP Vertex Behind", Float(node.behind))
@@ -575,7 +582,7 @@ def camera_culling():
         ped = Shader.Principled(base_color=col)
         ped.out()
 
-    with GeoNodes("Debug", prefix="Camera"):
+    with GeoNodes("Debug", prefix=camera_):
 
         mesh = Mesh(Geometry())
         mesh.faces.material = "DBG Face"
@@ -583,7 +590,7 @@ def camera_culling():
         show_grid     = Boolean(False, "Grid")
         show_original = Boolean(True, "Show Mesh")
 
-        node = G.camera.projection(position=nd.position, radius=None, normal=None, link_from='TREE').node
+        node = camera_.projection(position=nd.position, radius=None, normal=None, link_from='TREE').node
 
         # ===== Sensor
 
@@ -617,7 +624,7 @@ def camera_culling():
 
         # ===== Faces
 
-        node = G.camera.projection(position=nd.position, radius=gnmath.sqrt(nd.face_area), normal=nd.normal).node
+        node = camera_.projection(position=nd.position, radius=gnmath.sqrt(nd.face_area), normal=nd.normal).node
 
         face_behind = node.behind
         face_outside = node.outside
@@ -636,7 +643,7 @@ def camera_culling():
 
 def sierpinski():
 
-    with GeoNodes("Sierpinski Triangle"):
+    with GeoNodes("Sierpinski Triangle", prefix=fractal_):
 
         # ===== Macro : build a triangle from points
 
@@ -667,9 +674,9 @@ def sierpinski():
                 pts = [rep.triangles.points.sample_index(nd.position, nd.vertex_of_corner(nd.offset_corner_in_face(nd.corners_of_face(), i))) for i in range(3)]
 
             if True:
-                node = G.camera.projection(radius=Float.Named("Size")).node.link_from(include='Camera Culling')
+                node = camera_.projection(radius=Float.Named("Size")).node.link_from(include='Camera Culling')
             else:
-                node = G.camera.projection(position=nd.position, radius=Float.Named("Size"), link_from={'exclude': 'Normal'}).node
+                node = camera_.projection(position=nd.position, radius=Float.Named("Size"), link_from={'exclude': 'Normal'}).node
 
             rep.triangles.faces[Boolean("Iterate")].store("Iterate", -(node.behind | node.outside | (node.radius < prec)))
             rep.triangles.faces.store("Size", Float.Named("Size")/2)
@@ -693,7 +700,7 @@ def sierpinski():
 
         ico = Mesh.IcoSphere(subdivisions=2, radius=10)
 
-        fractal = Mesh(G.sierpinski_triangle(ico, link_from='TREE'))
+        fractal = Mesh(fractal_.sierpinski_triangle(ico, link_from='TREE'))
 
         fractal.points.position = fractal.points.position.normalize().scale(10)
 
@@ -716,7 +723,7 @@ def multires_surface():
     # The surface is computed by a group taking (position.x, position.y) as uv map coordinates in space (0, 1), (0, 1)
     # (See DEMO Multires Surface)
 
-    with GeoNodes("Multires Surface", is_group=True):
+    with GeoNodes("Surface", is_group=True, prefix=multires_):
 
         position   = Vector(None,  "Position")
 
@@ -749,7 +756,7 @@ def multires_surface():
             uv.points.store("Normal", surface.faces.sample_index(nd.normal, nd.index))
 
         with Layout("Don't iterate faces pointing outwards"):
-            outwards = G.camera.projection(position=position, normal=Vector.Named("Normal"), link_from={'exclude': 'Radius'}).outwards_
+            outwards = camera_.projection(position=position, normal=Vector.Named("Normal"), link_from={'exclude': 'Radius'}).outwards_
             uv.points.store("Iterate", outwards < back_faces)
 
         # ===== Division loop
@@ -771,9 +778,9 @@ def multires_surface():
             # ===== Camera projection
 
             if True:
-                node = G.camera.projection(position=position, radius=Float.Named("Size")).node.link_from(include="Camera Culling")
+                node = camera_.projection(position=position, radius=Float.Named("Size")).node.link_from(include="Camera Culling")
             else:
-                node = G.camera.projection(position=position, radius=Float.Named("Size"), link_from={'exclude':'Normal'}).node
+                node = camera_.projection(position=position, radius=Float.Named("Size"), link_from={'exclude':'Normal'}).node
 
             # ===== Stop iteration for hidden points or small apparent size
 
@@ -813,7 +820,7 @@ def multires_surface():
     # -----------------------------------------------------------------------------------------------------------------------------
     # Multires plane
 
-    with GeoNodes("Multires Faces"):
+    with GeoNodes("Faces", prefix=multires_):
 
         mesh = Mesh()
 
@@ -844,9 +851,9 @@ def multires_surface():
             radius = 4*gnmath.sqrt(nd.face_area)
             #radius = nd.face_area
             if True:
-                node = G.camera.projection(radius=radius, normal=nd.normal).node.link_from(include="Camera Culling")
+                node = camera_.projection(radius=radius, normal=nd.normal).node.link_from(include="Camera Culling")
             else:
-                node = G.camera.projection(position=nd.position, radius=radius, normal=nd.normal).node
+                node = camera_.projection(position=nd.position, radius=radius, normal=nd.normal).node
 
             iterate = iterate & -(node.behind | node.outside | (node.radius < prec) | (node.outwards > back_faces))
             #iterate = iterate & -(node.radius < prec)
@@ -901,7 +908,7 @@ def multires_surface():
 
         position = Vector.MenuSwitch({'Plane': plane, 'Sphere': sphere}, name="Surface")
 
-        surface = Mesh(G.multires_surface(position=position, link_from='TREE'))
+        surface = Mesh(multires_.surface(position=position, link_from='TREE'))
 
         with Layout("Finalize"):
             surface.faces.smooth = True
@@ -937,7 +944,7 @@ def romanesco():
     - Bend (Angle) : ben angle per meter
     """
 
-    with GeoNodes("Deform Shape", prefix="Fractal"):
+    with GeoNodes("Deform Shape", prefix=fractal_):
 
         cloud = Cloud(Geometry())
 
@@ -967,9 +974,9 @@ def romanesco():
     #
     # Replace points by a set of points
 
-    with GeoNodes("Cloud Iterator", prefix="Fractal"):
+    with GeoNodes("Cloud Iterator", prefix=fractal_):
 
-        model        = Geometry(None,       "Geometry", tip="Geometry with points")
+        model        = Cloud(Geometry(None,       "Geometry", tip="Geometry with points"))
         normal       = Vector((0, 0, 1),    "Normal",  tip="Normal to the points")
 
         iterations, prec = iterations_panel(5, 10)
@@ -992,11 +999,10 @@ def romanesco():
             keep_iter    = Boolean(False,       "Keep Iterated", tip="Keep the points once iterated or delete them")
             back_faces   = Float.Factor(1,      "Back Faces Culling", min=0, max=1, tip="Tolerance for points pointing outwards the camera")
 
+
         # ===== Model size
 
         with Layout("Model size"):
-
-            model = model.mesh.points.to_points() + model.curve.points.to_points() + model.point_cloud
 
             bbox = model.bounding_box()
 
@@ -1010,7 +1016,8 @@ def romanesco():
 
         with Layout("Setup the model"):
             model.points._Seed     = seed.hash_value(nd.index)
-            model.points._Scale    = scale
+            #model.points._Scale    = scale
+            model.points._Scale    = model.points.radius
             model.points._Normal   = normal
             model.points._Rotation = Rotation.AlignToVector(normal)
             model.points._Z        = nd.position.z - z0
@@ -1019,7 +1026,7 @@ def romanesco():
 
             # Base twisting around Z axis
             with Layout("Twisting around Z"):
-                twist_angle = G.random.normal_value(twist, twist_scale, id=seed, seed=seed)
+                twist_angle = random_.normal_value(twist, twist_scale, id=seed, seed=seed)
                 twist_rot = Rotation((0, 0, twist_angle*Z))
                 no_twist  = twist_scale.equal(0, epsilon=.001)
 
@@ -1056,6 +1063,7 @@ def romanesco():
         with Layout("Maximum number of points"):
             max_points = 10000000 * Integer(10).switch(nd.is_viewport, 1)
 
+
         # ===== Iteration loop
 
         with Repeat(cloud = cloud, iterations=iterations, thread_scale=thread_scale, iteration_max=0) as rep:
@@ -1073,9 +1081,9 @@ def romanesco():
 
             with Layout("Projection"):
                 if True:
-                    node = G.camera.projection(radius=Float("Scale")*size, normal=Vector("Normal")).node.link_from(include="Camera Culling")
+                    node = camera_.projection(radius=Float("Scale")*size, normal=Vector("Normal")).node.link_from(include="Camera Culling")
                 else:
-                    node = G.camera.projection(position=nd.position, radius=Float("Scale")*size, normal=Vector("Normal"), link_from='TREE').node
+                    node = camera_.projection(position=nd.position, radius=Float("Scale")*size, normal=Vector("Normal"), link_from='TREE').node
 
                 iterate = Boolean("Iterate") & still_ok
                 iterate &= -(node.behind | node.outside | (node.radius < prec) | (node.outwards > back_faces))
@@ -1094,7 +1102,7 @@ def romanesco():
             with Layout("Replacement"):
                 inst_scale = Float("Main Scale")
                 seed = Integer("Seed")
-                inst_scale = G.random.normal_value(inst_scale, inst_scale*size_scale, id=seed, seed=seed + 1000)
+                inst_scale = random_.normal_value(inst_scale, inst_scale*size_scale, id=seed, seed=seed + 1000)
                 instances = cloud.points[Boolean("Iterate")].instance_on(instance=model,
                     #scale    = Float("Main Scale"))
                     scale    = inst_scale)
@@ -1111,7 +1119,7 @@ def romanesco():
                 new_cloud.points._Depth = Integer("Depth") + 1
 
                 seed = Integer("Seed")
-                new_cloud.points._Thread = Float("Thread")*G.random.normal_value(1, rep.thread_scale, id=seed, seed=seed+100)
+                new_cloud.points._Thread = Float("Thread")*random_.normal_value(1, rep.thread_scale, id=seed, seed=seed+100)
                 rep.thread_scale *= thread_ratio
 
             with Layout("Deformation"):
@@ -1124,11 +1132,11 @@ def romanesco():
 
                 # Twisting around Z axis
                 with Layout("Twist"):
-                    twist_rot = Rotation((0, 0, G.random.normal_value(0, twist_scale, id=seed, seed=seed)*Z)).switch(no_twist)
+                    twist_rot = Rotation((0, 0, random_.normal_value(0, twist_scale, id=seed, seed=seed)*Z)).switch(no_twist)
 
                 # Bending
                 with Layout("Bend"):
-                    bend_angle = G.random.normal_value(bend, bend_scale, id=seed, seed=seed + 1)
+                    bend_angle = random_.normal_value(bend, bend_scale, id=seed, seed=seed + 1)
                     bend_dir   = Float.Random(0, 2*np.pi, id=seed, seed=seed + 2)
                     bend_rot   = Rotation((bend_angle*Z, 0, 0)) @ Rotation((0, 0, bend_dir)).switch(no_bend)
 
@@ -1185,7 +1193,7 @@ def romanesco():
     # ====================================================================================================
     # Mesh iterator
 
-    with GeoNodes("Mesh Iterator", prefix="Fractal"):
+    with GeoNodes("Mesh Iterator", prefix=fractal_):
 
         mesh         = Mesh()
 
@@ -1206,13 +1214,13 @@ def romanesco():
 
         with Layout("Fractal"):
 
-            cloud = Cloud(G.fractal.cloud_iterator(geometry=model, normal=Vector("Normal"), link_from='TREE'))
+            cloud = Cloud(fractal_.cloud_iterator(geometry=model, normal=Vector("Normal"), link_from='TREE'))
 
         mesh = Mesh(cloud.points.instance_on(instance=mesh, scale=nd.radius, rotation=Rotation("Rotation")).realize())
 
         mesh.out()
 
-    with GeoNodes("Cone Iterator", prefix="Fractal"):
+    with GeoNodes("Cone Iterator", prefix=fractal_):
 
         with Panel("Cone"):
             sides   = Integer(3,  "Sides", min=3, max=20, tip="Number of sides")
@@ -1269,7 +1277,7 @@ def romanesco():
 
         # ===== Let's iterate
 
-        cloud = Cloud(G.fractal.cloud_iterator(geometry=model, scale=nd.radius, normal=Vector("Normal"), link_from='TREE'))
+        cloud = Cloud(fractal_.cloud_iterator(geometry=model, scale=nd.radius, normal=Vector("Normal"), link_from='TREE'))
 
         # ===== Finalize
 
@@ -1311,9 +1319,11 @@ def romanesco():
             rho = radius*gnmath.abs(omega)**theta
             theta *= gnmath.sign(omega)
 
-            slope = height/count
+            #slope = height/count
+            slope = height/radius
 
-            curve.points.position = (rho*gnmath.cos(theta), rho*gnmath.sin(theta), slope*nd.index)
+            #curve.points.position = (rho*gnmath.cos(theta), rho*gnmath.sin(theta), slope*nd.index)
+            curve.points.position = (rho*gnmath.cos(theta), rho*gnmath.sin(theta), slope*(radius - rho))
 
         # ----- Normal to the cone
 
@@ -1327,7 +1337,14 @@ def romanesco():
     # ====================================================================================================
     # Romanesco Cabbage
 
-    with GeoNodes("Romanesco Cabbage", prefix="Fractal"):
+    with GeoNodes("Romanesco Cabbage", prefix=fractal_):
+
+        iterations, prec = iterations_panel(1, 10)
+
+        with Panel("Debug"):
+            show_spiral  = Boolean(False, "Show Initial Spiral")
+            show_spirals = Boolean(False, "Show Spirals")
+            show_cones   = Boolean(False, "Show Cones")
 
         with Panel("Cabbage"):
             nspirals      = Integer(6,           "Number of spirals", min=3, max=12)
@@ -1337,6 +1354,7 @@ def romanesco():
             npoints       = Integer(30,          "Number of points", min=3, max=200)
             q             = Float.Factor(.9,     "Shrink Factor", min=.01, max=.999)
             size_factor   = Float.Factor(.2,     "Size Factor", min=.01, max=.999)
+            cone_segms    = Integer(7,           "Cone Segments", 3, 32)
 
         #omega         = Float(.8,            "Omega")
         #rotations     = Float(3,             "Rotations")
@@ -1348,8 +1366,7 @@ def romanesco():
 
             height = radius*height_factor
 
-            #spiral = Curve(Group("Logarithmic Spiral", count=500, radius=radius, height=height, link_from='TREE').geometry)
-            spiral = Curve(G.logarithmic_spiral(count=500, radius=radius, height=height, link_from='TREE'))
+            spiral = Curve(G().logarithmic_spiral(count=500, radius=radius, height=height, link_from='TREE'))
 
             # ::::: Extract points following a geometric series
 
@@ -1371,14 +1388,13 @@ def romanesco():
             f = (nd.index/(npoints - 1))**upwards
 
             normal = spiral.sample_length(Vector("Normal"), length=l)
-            normal = normal.mix(f, (0, 0, 1))
+            #normal = normal.mix(f, (0, 0, 1))
             curve.points._Normal = normal.normalize()
 
-        # DEBUG
-        if False:
-            normals = curve.points.instance_on(instance=Curve.Line(), rotation=Rotation.AlignToVector(Vector("Normal")))
-            (curve + normals).out()
-            return
+            with Layout("Debug Initial Spiral"):
+                normals = curve.points.instance_on(instance=Curve.Line(), rotation=Rotation.AlignToVector(Vector("Normal")))
+                initial_spiral = curve + normals
+
 
         # ===== Duplicate nspirals times
 
@@ -1387,24 +1403,28 @@ def romanesco():
             cloud.points.store("rot", Rotation((0, 0, tau/nspirals*nd.index)))
 
             spirals = Curve(cloud.points.instance_on(instance=curve, rotation=Rotation.Named("rot")).realize())
-            spirals.points.store("Normal", Rotation.Named("rot") @ Vector.Named("Normal"))
+            spirals.points._Normal = Rotation.Named("rot") @ Vector("Normal")
             spirals.remove_named_attribute("rot")
 
-            spirals = spirals.to_points()
-            spirals.points.radius = Float.Named("Radius")
+            # DEBUG : keep curves
+            if False:
+                normals = spirals.points.instance_on(instance=Curve.Line(), rotation=Rotation.AlignToVector(Vector("Normal")))
+                (spirals + normals).out()
+                return
 
-        # DEBUG
-        if False:
+        with Layout("Show Spirals"):
             normals = spirals.points.instance_on(instance=Curve.Line(), rotation=Rotation.AlignToVector(Vector("Normal")))
-            (spirals + normals).out()
-            return
+            debug_spirals = spirals + normals
+
+        with Layout("Spirals to points"):
+            spirals = spirals.to_points_evaluated()
+            spirals.points.radius = Float.Named("Radius")
 
         # ===== Iterates
 
-        cone = Mesh.Cone(radius_bottom=radius, vertices=7, depth=height)
+        cone = Mesh.Cone(radius_bottom=radius, vertices=cone_segms, depth=height)
 
-        #node = G.fractal.points_iterator(model=spirals, final_mesh=cone, link_from='TREE').node
-        cloud = G.fractal.cloud_iterator(geometry=spiral, normal=Vector("Normal"), link_from='TREE')
+        cloud = fractal_.cloud_iterator(geometry=spirals, normal=Vector("Normal"), link_from='TREE')
 
         if False:
             cloud.out()
@@ -1412,77 +1432,12 @@ def romanesco():
 
 
         cabbage = Mesh(Cloud(cloud).instance_on(instance=cone, scale=nd.radius, rotation=Rotation("Rotation")))
-        cabbage.out()
-
-        return
-
-        fractal = node.mesh
-        fractal.faces.smooth = smooth
-        fractal.faces.material = material
-
-        fractal.out()
-        return
+        geo = cloud.switch(show_cones, cabbage)
+        geo += debug_spirals.switch_false(show_spirals)
+        geo = geo.switch(show_spiral, initial_spiral)
+        geo.out()
 
 
-        with Repeat(cabbage=cabbage, iterations=iterations) as rep:
-
-            rep_seed = seed.hash_value(rep.iteration)
-
-            cab = rep.cabbage
-
-            rot = Rotation.AlignToVector(Vector.Named("Normal"))
-            cab.points.store("rot", rot)
-            cab.remove_named_attribute("Normal")
-
-            cab.points.store("old_scale", Float.Named("Scale"))
-            cab.remove_named_attribute("Scale")
-
-            with Layout("Instantiate"):
-                new_cabbage = Cloud(cab.points.instance_on(instance=spirals,
-                    scale     = Float.Named("old_scale"),
-                    rotation  = Rotation.Named("rot")
-                    ).realize())
-
-            with Layout("Update Scale and Normal attributes"):
-                scale = Float.Named("old_scale")*Float.Named("Scale")
-                scale *= val_noise(1, noise_scale/5, rep_seed)
-                new_cabbage.points.store("Scale",  scale)
-
-                normal = Rotation.Named("rot") @ Vector.Named("Normal")
-                normal += vect_noise(0, noise_scale, seed=rep_seed + 1)
-                new_cabbage.points.store("Normal", normal.normalize())
-
-            rep.cabbage = new_cabbage
-
-        # ::::: Finalisation
-
-        cabbage = rep.cabbage
-
-        if False:
-            spirals = cabbage.points.instance_on(instance=Curve.Line().transform(scale=.3), rotation=Rotation.AlignToVector(Vector.Named("Normal")))
-            spirals.out()
-            return
-
-        cabbage.points.radius = Float.Named("Scale")
-
-        # ::::: Cone
-
-        with Layout("Complete with cones"):
-            cone = Mesh.Cone(radius_bottom=radius, depth=height)
-            cone.corners.store("UV Map", cone.uv_map_)
-            cone.corners.store("Z", nd.position.z/height)
-            cone.faces.material = "Romanesco"
-
-            if False:
-                cone.out()
-                return
-
-            rot = Rotation.AlignToVector(Vector.Named("Normal"))
-            cabbage = Mesh(cabbage.points.instance_on(instance=cone, scale=nd.radius*1, rotation=rot).realize())
-
-            cabbage.faces.smooth = True
-
-        cabbage.out()
 
 
 
@@ -1840,8 +1795,8 @@ def log_spiral():
         # ----- Normal to the cone
 
         normal = curve.points.position*(1, 1, 0)
-        normal = Rotation((0, 0, theta)) @ Vector((height, 0, radius))
-        curve.points.store("Normal", normal.normalize())
+        normal = Rotation((0, 0, theta)) @ Vector((height, 0, radius)).normalize()
+        curve.points._Normal = normal
 
         curve.out()
 

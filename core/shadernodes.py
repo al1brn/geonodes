@@ -31,13 +31,14 @@ updates
 - creation : 2024/07/23
 - update :   2024/09/04
 - update :   2025/01/12
+- update :   2025/01/18 : Bug in output_node
 """
 
 __author__ = "Alain Bernard"
 __email__  = "lesideesfroides@gmail.com"
 __copyright__ = "Copyright (c) 2025, Alain Bernard"
 __license__ = "GNU GPL V3"
-__version__ = "3.0.0"
+__version__ = "3.0.1"
 __blender_version__ = "4.3.0"
 
 """
@@ -108,7 +109,7 @@ class ShaderNodes(Tree):
     @property
     def output_node(self) -> Node:
         if self._is_group:
-            return self.output_node
+            return super().output_node
 
         for node in self._nodes:
             if node._bnode.bl_idname ==  'ShaderNodeOutputMaterial':

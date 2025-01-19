@@ -111,13 +111,15 @@ from geonodes.core import utils
 
 # ----- Prefixes
 
-math_   = G.create_prefix("4-Math")
-matrix_ = G.create_prefix("4-Matrix")
-vector_ = G.create_prefix("4-Vector")
-mod_    = G.create_prefix("4D")
-curve_  = G.create_prefix("4-Curve")
-surf_   = G.create_prefix("4_Surf")
-debug_  = G.create_prefix("DEBUG")
+math_   = G("4-Math")
+matrix_ = G("4-Matrix")
+vector_ = G("4-Vector")
+curve_  = G("4-Curve")
+surf_   = G("4_Surf")
+debug_  = G("DEBUG")
+
+mod_    = G("4D")
+light_  = G("4D Light")
 
 ZERO = 0.0001
 
@@ -149,6 +151,8 @@ def demo(clear=False, with_debug=False):
     build_transformations(with_debug=with_debug)
     build_primitives()
 
+    build_lights()
+
     show_case()
 
 
@@ -163,6 +167,36 @@ def demo(clear=False, with_debug=False):
 def build_shaders():
 
     # ----------------------------------------------------------------------------------------------------
+    # Grid shader group
+
+    with ShaderNodes("Grid", is_group=True):
+
+        uv = snd.texture_coordinate(from_instancer=False, object=None).uv
+
+        x, y, _ = uv.xyz
+
+        thick = .002
+        count = 6
+
+        on_x = gnmath.mless_than((x + (thick/2)) % (1/(2*count)), thick)
+        on_y = gnmath.mless_than((y + (thick)) % (1/count), thick*2)
+
+        grid = gnmath.add(on_x, on_y, True)
+
+        color = Color() # Black
+        x_green = gnmath.mless_than((x + (thick/2)) % .5, thick)
+        x_red   = gnmath.mless_than((x + .25 + (thick/2)) % .5, thick)
+        y_blue  = gnmath.mless_than((y + .5 + (thick/2)) % .5, thick)
+
+        color = color.mix(Color((1, 0, 0)), x_red)
+        color = color.mix(Color((0, 1, 0)), x_green)
+        color = color.mix(Color((0, 0, 1)), y_blue)
+
+        grid.out("Grid")
+        color.out("Color")
+
+
+    # ----------------------------------------------------------------------------------------------------
     # Axis Shader
 
     with ShaderNodes("4 Axis"):
@@ -172,6 +206,63 @@ def build_shaders():
         ped = Shader.Principled(base_color=col, roughness=.1, metallic=.3)
 
         ped.out()
+
+    # ----------------------------------------------------------------------------------------------------
+    # 4D Light utility
+    # Get the enlightments parameter
+
+    with ShaderNodes("4D Get Light", is_group=True):
+
+        light_in  = snd.attribute(attribute_name="Inner Light").fac
+        light_out = snd.attribute(attribute_name="Outer Light").fac
+        ext_fac   = snd.attribute(attribute_name="Exterior").fac
+
+        color_in  = Color((1, 1, 0)).hue_saturation_value(value=2*light_in,  fac=1)
+        color_out = Color((1, 1, 1)).hue_saturation_value(value=2*light_out, fac=1)
+
+        color = color_in.mix(color_out, ext_fac)
+
+        color.out("Color")
+        light_in.out("Inner")
+        light_out.out("Outer")
+        ext_fac.out("Exterior")
+
+
+    with ShaderNodes("4 Enlighted"):
+
+        node = G()._4d_get_light().node
+
+        color = node.color
+        grid_node = G().grid().node
+
+        color = color.mix(grid_node.color, grid_node.grid)
+
+        ped = Shader.Principled(
+            base_color = color,
+            roughness  = 1 - node.exterior,
+            )
+
+        transp_fac = snd.attribute(attribute_name="Transparency").fac
+        transp = Shader.Transparent()
+        shader = snd.mix_shader(ped, transp, fac=transp_fac)
+
+        shader.out()
+
+    with ShaderNodes("4 Faces Orientation"):
+
+        ext = snd.attribute(attribute_name="Exterior").fac
+        color = Color((1, 0, 0)).mix((0, 1, 0), ext)
+
+        grid_fac = G().grid()
+
+        ped = Shader.Principled(
+            base_color = color.mix(Color((0, 0, 1)), grid_fac),
+            metallic   = 0.,
+            roughness  = 1 - ext,
+            )
+
+        ped.out()
+
 
     # ----------------------------------------------------------------------------------------------------
     # Face default
@@ -208,6 +299,21 @@ def build_shaders():
             )
 
         ped.out()
+
+    # ----------------------------------------------------------------------------------------------------
+    # Light default
+
+    with ShaderNodes("4 Light"):
+
+        ped = Shader.Principled(
+            base_color = (1, 1, 1), #snd.attribute(attribute_name="Color").color,
+            metallic   = 0.,
+            roughness  = 0.,
+            normal     = bump,
+            )
+
+        ped.out()
+
 
 # =============================================================================================================================
 # DEBUG
@@ -355,6 +461,11 @@ class V4:
     @classmethod
     def FromNode(cls, node):
         return cls(node.x, node.y, node.z, node.w)
+
+    @classmethod
+    def FromM4(cls, M4, index=0):
+        a = M4.separate
+        return cls(a[index*4:(index+1)*4])
 
     def out(self, **props):
         for v, label in zip(self, "xyzw"):
@@ -1079,7 +1190,9 @@ def build_matrices():
             point_mat    = Material("4 Edge",   "Point Material")
 
         with Panel("Debug"):
-            show_normals  = Boolean(False, "Show Normals",  tip="Show mesh normals", single_value=True)
+            show_nrm_A    = Boolean(False, "Show Normals A",  tip="Show first mesh/curve normals", single_value=True)
+            show_nrm_B    = Boolean(False, "Show Normals B",  tip="Show second mesh/curve normals", single_value=True)
+            show_nrm_C    = Boolean(False, "Show Normals C",  tip="Show third curve normals", single_value=True)
             show_tangents = Boolean(False, "Show Tangents", tip="Show curve tangents", single_value=True)
             vect_length   = Float(1, "Vectors length", tip="Length of normals / tangents", single_value=True)
 
@@ -1087,6 +1200,9 @@ def build_matrices():
 
             M = Matrix("M4")
             M_proj = matrix_.projection_matrix()
+
+            # Projection direction
+            proj_dir = V4(M_proj.separate[12:])
 
             m = M_proj @ M
 
@@ -1105,19 +1221,22 @@ def build_matrices():
         line = Curve.LineDirection(length=vect_length)
 
         with Layout("Mesh Normals"):
-            vis  = mesh.points.instance_on(instance=line, rotation=Rotation.AlignZToVector(a[4:7]))
-            vis += mesh.points.instance_on(instance=line, rotation=Rotation.AlignZToVector(a[8:11]))
+            visA = mesh.points.instance_on(instance=line, rotation=Rotation.AlignZToVector(a[4:7]))
+            visB = mesh.points.instance_on(instance=line, rotation=Rotation.AlignZToVector(a[8:11]))
 
-            visualization = vis.switch(-show_normals)
+            exterior = proj_dir.dot(V4(a[4:8])) < 0
+            mesh.points._Exterior = exterior
 
         with Layout("Curve Normals & Tangents"):
             curve.points._Tangent = a[4:7]
 
-            vis  = curve.points.instance_on(instance=line, rotation=Rotation.AlignZToVector(a[ 4:7]))
-            vis += curve.points.instance_on(instance=line, rotation=Rotation.AlignZToVector(a[ 8:11]))
-            vis += curve.points.instance_on(instance=line, rotation=Rotation.AlignZToVector(a[12:15]))
+            visA += curve.points.instance_on(instance=line, rotation=Rotation.AlignZToVector(a[ 4:7]))
+            visB += curve.points.instance_on(instance=line, rotation=Rotation.AlignZToVector(a[ 8:11]))
+            visC  = curve.points.instance_on(instance=line, rotation=Rotation.AlignZToVector(a[12:15]))
 
-            visualization = visualization.switch(show_normals, visualization + vis)
+            visualization = visA.switch_false(show_nrm_A) + visB.switch_false(show_nrm_B) + visC.switch_false(show_nrm_C)
+
+            #visualization = visualization.switch(show_normals, visualization + vis)
 
             tg = V4.FromNode(matrix_.cross_product(M).node)
             tg = tg.matmul(M_proj)
@@ -1802,53 +1921,142 @@ def build_lights():
     # ---------------------------------------------------------------------------------------------------
     # MODIFIER - Set an object as a 4-point
 
-    with GeoNodes("Point", fake_user=False, prefix=mod_):
+    with GeoNodes("Emitter", prefix=light_):
 
-        v       = V4(0, 0, "")
-        radius  = Float(.1, "Radius", 0)
-        visible = Boolean(True, "Visible")
-        mat     = Material("4 Edge", "Material")
+        with Panel("Light"):
+            dist = Float(3, "Distance")
+            power = Float(10, "Power", 0)
+            #color = Color((1, 1, 1), "Color")
 
-        point = v.set_position(Cloud.Points(count=1))
+        with Panel("Show"):
+            show = Boolean(True, "Show")
+            radius= Float(.1, "Radius", 0)
+            mat = Material("4 Light", "Material")
 
-        # ----- Point visualization
+        cloud = Cloud.Points(1, position=(0, 0, dist))
+        cloud = mod_.plunge_into_4d(cloud, w = 0)
+        cloud = Cloud(mod_.rotation(cloud).link_from(exclude='Pivot'))
 
-        sphere = Mesh.UVSphere(radius=radius)
-        sphere.corners.store("UVMap", sphere.uv_map_)
-        sphere.faces.smooth   = True
-        sphere.faces.material = mat
+        M4 = cloud.points.sample_index(Matrix("M4"), 0)
+        v4 = M4.separate[:4]
+        cloud = Cloud(Group("4D Projection", geometry=cloud).geometry)
 
-        #sphere = sphere.transform(translation=math_.projection(*v.args).v)
-        sphere = sphere.transform(translation=Group.Prefix(math_, "Projection", v.sockets()).v)
+        with If(Geometry, show) as geo:
 
-        # ----- To output
+            sphere = Mesh.UVSphere(radius=radius)
+            sphere.faces.smooth = True
+            sphere.faces.material = mat
+            sphere_loc = Cloud(Group("4D Projection", geometry=cloud, transparency=0).geometry)
+            sphere.transform(translation=cloud.points.sample_index(nd.position, 0))
 
-        point.switch(visible, point + sphere).out()
+            geo.option = sphere
 
-    # ---------------------------------------------------------------------------------------------------
-    # MODIFIER - Set an object as light emitter
+        with Else(geo):
 
-    with GeoNodes("Light Emitter", fake_user=False, prefix=mod_):
+            geo.option = cloud
 
-        v         = V4(0, 0, "")
+        geo = Cloud(geo)
 
-        color     = Color((1, 1, 1), "Color")
-        intensity = Float(1., "Intensity", 0)
-        radius    = Float(.1, "Radius")
-        visible   = Boolean(True, "Visible")
-        mat       = Material(None, "Material")
+        geo.points._Power = power
+        for axis, v in zip('xyzw', v4):
+            geo.points.store(axis, v)
 
-        # ----- Is a 4 point
+        geo.out()
 
-        #geo = g_mods.point(None, *v.args, radius=radius, visible=visible, material=mat).geometry
-        geo = Group.Prefix(mod_, "Point", {'V': v.V, 'w': v.w, 'Radius': radius, 'Visible': visible, 'material': mat})._out
+    # ----------------------------------------------------------------------------------------------------
+    # GROUP - Reflect on a surface given the two normals
 
-        mesh, cloud  = geo.mesh, geo.point_cloud
+    with GeoNodes("Receiver", prefix=light_):
 
-        cloud.points.store(      "Intensity", intensity)
-        cloud.points.store("Color", color)
+        geo = Cloud(Geometry())
+        emitter_obj = Object(None, "Emitter", tip="Emitter object with 'Light Emitter' modifier")
+        light_min = Float(.1, "Ambient intensity", 0, 1)
 
-        (cloud + mesh).out()
+        with Panel("Debug"):
+            show_incident  = Boolean(False, 'Show Incident')
+            show_reflected = Boolean(False, 'Show Reflected')
+            show_cam_rays  = Boolean(False, 'Show Camera rays')
+            rays_length    = Float(1, "Rays Length")
+
+        with Layout("Light intensity min"):
+            current = Float("Light Intensity")
+            geo.points[-current.exists_]._Inner_Light = light_min
+            geo.points[-current.exists_]._Outer_Light = light_min
+
+        emitter = Cloud(emitter_obj.info().geometry)
+
+        with Layout("Light locations and parameters"):
+            light_loc   = V4([emitter.points.sample_index(Float(c), index=0) for c in 'xyzw'])
+            light_power = emitter.points.sample_index(Float("Power"), index=0)
+
+        with Layout("Reflection"):
+
+            a = Matrix("M4").separate
+
+            pos4  = V4(a[:4])
+            perp0 = V4(a[4:8])
+            perp1 = V4(a[8:12])
+
+            in_vector = pos4 - light_loc
+            ray = in_vector.normalize()
+
+            with Layout("Show Incident Ray"):
+                with geo.points.for_each(m4=Matrix("M4")) as feel:
+                    pos = V4(feel.m4.separate[:4])
+                    line = curve_.line(**light_loc.args("Start"), **pos.args("End"), count=2)
+                    feel.generated.geometry = line
+
+                incident_rays = feel.generated.geometry
+
+            dot0 = perp0.dot(ray)
+            dot1 = perp1.dot(ray)
+
+            comp0 = perp0.scale(dot0)
+            comp1 = perp1.scale(dot1)
+
+            bounce = ray - (comp0 + comp1).scale(2)
+
+            with Layout("Reflected rays"):
+                with geo.points.for_each(m4=Matrix("M4"), x=bounce.x, y=bounce.y, z=bounce.z, w=bounce.w) as feel:
+                    pos = V4(feel.m4.separate[:4])
+                    line = curve_.line(**pos.args("Start"), **(pos + V4((feel.x, feel.y, feel.z, feel.w)).scale(rays_length)).args("End"), count=2)
+                    feel.generated.geometry = line
+
+                reflected_rays = feel.generated.geometry
+
+        with Layout("4D Camera direction"):
+
+            M_proj = matrix_.projection_matrix()
+
+            look = V4(M_proj.separate[12:])
+
+            intensity = (look.dot(bounce)).map_range_smooth_step(-1, 0, 1, 0)
+            intensity = gnmath.max(0, intensity)
+
+            exterior = look.dot(comp0) < 0
+            geo.points._Inner_Light += intensity.switch(exterior)
+            geo.points._Outer_Light += intensity.switch_false(exterior)
+
+            with Layout("Camera rays"):
+                with geo.points.for_each(m4=Matrix("M4"), intensity=Float("Light Intensity")) as feel:
+                    pos = V4(feel.m4.separate[:4])
+                    line = curve_.line(**pos.args("Start"), **(pos + look.scale(rays_length*feel.intensity)).args("End"), count=2)
+                    feel.generated.geometry = line
+
+                cam_rays = feel.generated.geometry
+
+
+        geo += incident_rays.switch_false(show_incident)
+        geo += reflected_rays.switch_false(show_reflected)
+        geo += cam_rays.switch_false(show_cam_rays)
+
+        geo.out()
+
+
+
+    return
+
+
 
     # ----------------------------------------------------------------------------------------------------
     # GROUP - Reflect on a surface given the two normals

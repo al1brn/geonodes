@@ -284,7 +284,7 @@ def demo():
         with Layout("Selection"):
             show = Boolean("Selection") & ((nd.index >= ind0) & (nd.index <= ind1) | (-use_indices))
 
-        labels = G.show_labels(cloud=cloud, label_value=cloud._Value, show=show, direction=cloud._Normal, label_color=cloud._Color, link_from='TREE')
+        labels = G().show_labels(cloud=cloud, label_value=cloud._Value, show=show, direction=cloud._Normal, label_color=cloud._Color, link_from='TREE')
 
         labels.switch(merge, geo + labels).out()
 
@@ -301,11 +301,11 @@ def demo():
 
         topo_link = {'exclude': 'Domain'}
 
-        with Layout("Vertex Domain"):
+        with If(Geometry, "Vertices", name="Domain") as geo:
 
             vert_mesh = Mesh(mesh)
             vert_mesh.points._Select_V = nd.index.equal(index)
-            vrt_vis = G.topology_indices(geometry=vert_mesh, merge_input_geometry=False, domain='Vertices', selection=Boolean("Select V"), link_from=topo_link)
+            vrt_vis = G().topology_indices(geometry=vert_mesh, merge_input_geometry=False, domain='Vertices', selection=Boolean("Select V"), link_from=topo_link)
 
             with Layout("Corners & Faces of Vertex"):
 
@@ -320,28 +320,32 @@ def demo():
 
                 vert_mesh = rep.mesh
 
-                vrt_vis += G.topology_indices(geometry=vert_mesh, merge_input_geometry=False, domain='Corners', selection=Boolean("Select C"), link_from=topo_link)
-                vrt_vis += G.topology_indices(geometry=vert_mesh, merge_input_geometry=False, domain='Faces', selection=Boolean("Select F"), link_from=topo_link)
+                vrt_vis += G().topology_indices(geometry=vert_mesh, merge_input_geometry=False, domain='Corners', selection=Boolean("Select C"), link_from=topo_link)
+                vrt_vis += G().topology_indices(geometry=vert_mesh, merge_input_geometry=False, domain='Faces', selection=Boolean("Select F"), link_from=topo_link)
 
             with Layout("Edges of Vertex"):
                 sel = Edge.vertex_index_1.equal(index) | Edge.vertex_index_2.equal(index)
                 vert_mesh.edges._Select_E = sel
-                vrt_vis += G.topology_indices(geometry=vert_mesh, merge_input_geometry=False, domain='Edges', selection=Boolean("Select E"), link_from=topo_link)
+                vrt_vis += G().topology_indices(geometry=vert_mesh, merge_input_geometry=False, domain='Edges', selection=Boolean("Select E"), link_from=topo_link)
 
             vrt_vis += Group("Mesh Selection", mesh=vert_mesh, link_from='TREE').geometry
 
-        with Layout("Edge Domain"):
+            geo.option = vert_vis
+
+
+        #with Layout("Edge Domain"):
+        with Elif(geo, "Edges"):
 
             edge_mesh = Mesh(mesh)
             edge_mesh.edges._Select_E = nd.index.equal(index)
-            edge_vis = G.topology_indices(geometry=edge_mesh, merge_input_geometry=False, domain='Edges', selection=Boolean("Select E"), link_from=topo_link)
+            edge_vis = G().topology_indices(geometry=edge_mesh, merge_input_geometry=False, domain='Edges', selection=Boolean("Select E"), link_from=topo_link)
 
             with Layout("Vertices of Edge"):
                 v1 = mesh.edges.sample_index(Edge.vertex_index_1, index)
                 v2 = mesh.edges.sample_index(Edge.vertex_index_2, index)
                 edge_mesh.points._Select_V = nd.index.equal(v1) | nd.index.equal(v2)
 
-                edge_vis += G.topology_indices(geometry=edge_mesh, merge_input_geometry=False, domain='Vertices', selection=Boolean("Select V"), link_from=topo_link)
+                edge_vis += G().topology_indices(geometry=edge_mesh, merge_input_geometry=False, domain='Vertices', selection=Boolean("Select V"), link_from=topo_link)
 
             with Layout("Corners & Faces of Edge"):
 
@@ -355,16 +359,19 @@ def demo():
                         rep.mesh.faces[Corner.face_index(corner_index)]._Select_F = True
 
                 edge_mesh = rep.mesh
-                edge_vis += G.topology_indices(geometry=edge_mesh, merge_input_geometry=False, domain='Corners', selection=Boolean("Select C"), link_from=topo_link)
-                edge_vis += G.topology_indices(geometry=edge_mesh, merge_input_geometry=False, domain='Faces', selection=Boolean("Select F"), link_from=topo_link)
+                edge_vis += G().topology_indices(geometry=edge_mesh, merge_input_geometry=False, domain='Corners', selection=Boolean("Select C"), link_from=topo_link)
+                edge_vis += G().topology_indices(geometry=edge_mesh, merge_input_geometry=False, domain='Faces', selection=Boolean("Select F"), link_from=topo_link)
 
             edge_vis += Group("Mesh Selection", mesh=edge_mesh, link_from='TREE').geometry
 
-        with Layout("Face Domain"):
+            geo.edge_vis.option = edge_vis
+
+        #with Layout("Face Domain"):
+        with Elif(geo, "Faces"):
 
             face_mesh = Mesh(mesh)
             face_mesh.faces._Select_F = nd.index.equal(index)
-            face_vis = G.topology_indices(geometry=face_mesh, merge_input_geometry=False, domain='Faces', selection=Boolean("Select F"), link_from=topo_link)
+            face_vis = G().topology_indices(geometry=face_mesh, merge_input_geometry=False, domain='Faces', selection=Boolean("Select F"), link_from=topo_link)
 
             with Layout("Corners and Vertices of Face"):
                 face_mesh.corners._Select_C = False
@@ -383,17 +390,20 @@ def demo():
                     rep.mesh.edges[edge_index]._Select_E = True
 
                 face_mesh = rep.mesh
-                face_vis += G.topology_indices(geometry=face_mesh, merge_input_geometry=False, domain='Corners', selection=Boolean("Select C"), link_from=topo_link)
-                face_vis += G.topology_indices(geometry=face_mesh, merge_input_geometry=False, domain='Vertices', selection=Boolean("Select V"), link_from=topo_link)
-                face_vis += G.topology_indices(geometry=face_mesh, merge_input_geometry=False, domain='Edges', selection=Boolean("Select E"), link_from=topo_link)
+                face_vis += G().topology_indices(geometry=face_mesh, merge_input_geometry=False, domain='Corners', selection=Boolean("Select C"), link_from=topo_link)
+                face_vis += G().topology_indices(geometry=face_mesh, merge_input_geometry=False, domain='Vertices', selection=Boolean("Select V"), link_from=topo_link)
+                face_vis += G().topology_indices(geometry=face_mesh, merge_input_geometry=False, domain='Edges', selection=Boolean("Select E"), link_from=topo_link)
 
             face_vis += Group("Mesh Selection", mesh=face_mesh, link_from='TREE').geometry
 
-        with Layout("Corner Domain"):
+            geo.option = face_vis
+
+        #with Layout("Corner Domain"):
+        with Elif(geo, "Corners"):
 
             crn_mesh = Mesh(mesh)
             crn_mesh.corners._Select_C = nd.index.equal(index)
-            crn_vis = G.topology_indices(geometry=crn_mesh, merge_input_geometry=False, domain='Corners', selection=Boolean("Select C"), link_from=topo_link)
+            crn_vis = G().topology_indices(geometry=crn_mesh, merge_input_geometry=False, domain='Corners', selection=Boolean("Select C"), link_from=topo_link)
 
             crn_mesh.points._Select_V = nd.index.equal(crn_mesh.corners.sample_index(Corner.vertex_index(), index))
             edge0 = crn_mesh.corners.sample_index(Corner.next_edge_index(), index)
@@ -401,12 +411,17 @@ def demo():
             crn_mesh.edges._Select_E = nd.index.equal(edge0) | nd.index.equal(edge1)
             crn_mesh.faces._Select_F = nd.index.equal(crn_mesh.corners.sample_index(Corner.face_index(), index))
 
-            crn_vis += G.topology_indices(geometry=crn_mesh, merge_input_geometry=False, domain='Vertices', selection=Boolean("Select V"), link_from=topo_link)
-            crn_vis += G.topology_indices(geometry=crn_mesh, merge_input_geometry=False, domain='Faces', selection=Boolean("Select F"), link_from=topo_link)
-            crn_vis += G.topology_indices(geometry=crn_mesh, merge_input_geometry=False, domain='Edges', selection=Boolean("Select E"), link_from=topo_link)
+            crn_vis += G().topology_indices(geometry=crn_mesh, merge_input_geometry=False, domain='Vertices', selection=Boolean("Select V"), link_from=topo_link)
+            crn_vis += G().topology_indices(geometry=crn_mesh, merge_input_geometry=False, domain='Faces', selection=Boolean("Select F"), link_from=topo_link)
+            crn_vis += G().topology_indices(geometry=crn_mesh, merge_input_geometry=False, domain='Edges', selection=Boolean("Select E"), link_from=topo_link)
 
             crn_vis += Group("Mesh Selection", mesh=crn_mesh, link_from='TREE').geometry
 
+            geo.option = crn_vis
+
+        geo.out()
+
+        """
         vis = Geometry.MenuSwitch({
             "Vertices": vrt_vis,
             "Edges"   : edge_vis,
@@ -415,3 +430,4 @@ def demo():
             }, menu="Vertices", name="Domain")
 
         vis.out()
+        """

@@ -9311,7 +9311,17 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                 'node_name': 'Holdout',
                                 'returns': 'OUT',
                                 'signature': '(cls, weight=None)'}]},
- 'ShaderNodeHueSaturation': {'Float': [{'func_name': 'hue_saturation_value',
+ 'ShaderNodeHueSaturation': {'Color': [{'func_name': 'hue_saturation_value',
+                                        'is_classmethod': False,
+                                        'is_get': False,
+                                        'is_jump': False,
+                                        'is_set': False,
+                                        'node_name': 'Hue/Saturation/Value',
+                                        'returns': 'OUT',
+                                        'signature': '(self, hue=None, '
+                                                     'saturation=None, '
+                                                     'value=None, fac=None)'}],
+                             'Float': [{'func_name': 'hue_saturation_value',
                                         'is_classmethod': False,
                                         'is_get': False,
                                         'is_jump': False,

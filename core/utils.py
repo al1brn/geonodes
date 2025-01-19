@@ -416,7 +416,7 @@ def get_argument_data_type(argument, type_to_value, node_name=None, arg_name=Non
         return type_to_value[socket_type]
 
     if node_name is not None and arg_name is not None:
-        print(f"CAUTION node '{node_name}': argument '{arg_name}' type ('{socket_type}') is not in {list(type_to_value).keys()}.")
+        print(f"CAUTION node '{node_name}': argument '{arg_name}' type ('{socket_type}') is not in {list(type_to_value.keys())}.")
 
     return list(type_to_value.values())[0]
 

@@ -44,13 +44,14 @@ updates
 - creation : 2024/07/23
 - update :   2024/09/04
 - update :   2025/01/12
+- update :   2025/01/18 # G as dynamic class
 """
 
 __author__ = "Alain Bernard"
 __email__  = "lesideesfroides@gmail.com"
 __copyright__ = "Copyright (c) 2025, Alain Bernard"
 __license__ = "GNU GPL V3"
-__version__ = "3.0.0"
+__version__ = "3.0.1"
 __blender_version__ = "4.3.0"
 
 import numpy as np
@@ -190,7 +191,7 @@ class Tree:
     _total_links = 0
     _total_time  = 0.
 
-    def __init__(self, tree_name: str, tree_type: str='GeometryNodeTree', clear: bool=True, fake_user: bool=False, is_group: bool=False, prefix: str | None=None):
+    def __init__(self, tree_name: str, tree_type: str='GeometryNodeTree', clear: bool=True, fake_user: bool=False, is_group: bool=False, prefix: str = ""):
         """ Root class for <!GeoNodes> and <!ShaderNodes> trees.
 
         The system manages a stack of Trees. When a Tree is created, it is placed at the top of the stack
@@ -235,14 +236,11 @@ class Tree:
         - prefix : str prefix to add at the beging of the tree name
         """
 
-        if prefix is not None:
-            if isinstance(prefix, str):
-                pass
-            elif hasattr(prefix, 'name'):
-                prefix = prefix.name
-            else:
-                prefix = str(prefix)
+        if prefix is None:
+            prefix =  ""
 
+        prefix = str(prefix)
+        if len(prefix):
             tree_name = f"{prefix} {tree_name}"
 
         self._btree  = None
@@ -529,7 +527,7 @@ class Tree:
 
         # ----- Create a function
 
-        G.build_from_tree(self._btree, prefix=self._prefix)
+        #G.build_from_tree(self._btree, prefix=self._prefix)
 
     def __enter__(self):
         return self
@@ -1044,7 +1042,6 @@ class Tree:
                 from_socket = self.new_input_from_input_socket(to_socket, panel=from_panel, force_create=True)
 
                 pos = from_socket._interface_socket.position
-                print(f"LINK NODES CREATE: {from_socket._bsocket.name=}, {pos=}")
 
             # We link
             if from_socket is not None:
@@ -2343,7 +2340,190 @@ class Group(Node):
         """
         return cls(f"{prefix} {group_name}", sockets=sockets, **kwargs)
 
+# =============================================================================================================================
+# G to expose groups as functions
+
 class G:
+
+    VERBOSE = False
+
+    def __init__(self, prefix: str = "", verbose: bool = False):
+        """ Group functional call
+
+        This class is provided to expose ***Group*** nodes as functions with keyword arguments.
+
+        For instance, let's create a group with 3 input sockets named `Geometry`, `Position` and `Parameter` in
+        this order:
+
+
+        ``` python
+        with GeoNodes("Deform Function"):
+            geo = Geometry()
+            pos = Vector.Position()
+            param = Float(0, "Parameter")
+            # ...
+            geo.out()
+        ```
+
+        To use this group in another tree, you can write:
+
+        ``` python
+        with GeoNodes("Modifier"):
+
+            node = Group("Deform Function", {'geometry': Mesh.Cube(), 'position': (1, 2, 3), 'parameter': 3.14})
+
+            # or
+
+            node = Group("Deform Function", geometry=Mesh.Cube(), position = nd.position, parameter = 3.14)
+        ```
+
+        The clas G provides a functional interface for the node. You simply use the snake case version
+        of the node name:
+
+        ``` python
+        my_geo = G().deform_function(Mesh.Cube(), position=nd.position, parameter=3.14)
+
+        # NOTE: the first output socket is returned
+        # If you need the node, simply use:
+
+        node = my_geo.node
+        ```
+
+        As for any function or method, you can omit the argument names if you are sure of the order of the
+        sockets. This is for instance the case for the `Geometry` socket which remains the first.
+
+        #### Prefixes
+
+        In big projects, you may want to prefix your groups and modifiers to structure them.
+        The ***G*** class accepts prefix and use it to build the full name of the tree you are looking for.
+
+        The code above could be replaced by:
+
+        ``` python
+        my_geo = G("Deform").function(Mesh.Cube(), position=nd.position, parameter=3.14)
+        ```
+
+        This allows to regroup modifiers of the same family in a kind of meta class:
+
+        ``` python
+        # Prefix for deform modifiers
+        deform = Group("Deform")
+
+        with Group("Function 1", prefix=deform):
+            pass
+
+        with Group("Function 2", prefix=deform):
+            pass
+
+        with Group("Function 3", prefix=deform):
+            pass
+
+        with Group("Main"):
+
+            geo = Geometry()
+            geo = deform.function_1(geo)
+            geo = deform.function_2(geo)
+            geo = deform.function_3(geo)
+
+            geo.out()
+        ```
+
+        Arguments
+        ---------
+        - prefix : prefix to use when searching a tree
+        - verbose : print the function header in the console
+        """
+        if prefix is None:
+            self.prefix = ""
+        else:
+            self.prefix = str(prefix)
+            if len(self.prefix):
+                self.prefix += " "
+        self.verbose = verbose
+
+    # ====================================================================================================
+    # Str returns a string to be compatible with prefix argument in Tree initialization
+
+    def __str__(self):
+        if self.prefix == "":
+            return ""
+        else:
+            return self.prefix[:-1]
+
+    # ====================================================================================================
+    # Build a function from a node
+
+    def build_function(self, btree):
+        """ Dynamically create a function to call the tree as Group
+
+        The name of the function is the snake case version of the tree name.
+
+        Arguments
+        ---------
+        - btree (Blender GeometryNodeTree | ShaderNodeTree) : the tree
+        - prefix (str = "") : function prefix
+
+        Returns
+        -------
+        - None
+        """
+
+        func_name = utils.snake_case(btree.name)
+
+        # ----- Input node
+
+        socks, homos = TreeInterface(btree).get_unique_names('INPUT', as_argument=True, include_homonyms='SEPARATE')
+
+        sock_names = list(socks.keys())
+        sock_names.extend(list(homos.keys()))
+        sock_names.append('link_from')
+
+        # ----- Create the function
+
+        header = [f"{arg}=None"  for arg in sock_names]
+        call   = [f"{arg}={arg}" for arg in sock_names]
+
+        s = f"def {func_name}(" + ", ".join(header) + "):\n"
+        s += f"\treturn Group('{btree.name}', " + ", ".join(call) + ")._out\n\n"
+        #s += f"G.{func_name} = {func_name}\n"
+        s += f"f = {func_name}\n"
+
+        # DEBUG
+        if False:
+            print('-'*100)
+            print(s)
+            print('-'*100)
+
+        d = {'f': None}
+        exec(s, globals(), d)
+        f = d['f']
+
+        if G.VERBOSE or self.verbose:
+            print(f"Function created ({f}):\n    {func_name}(" + ", ".join([sname for sname in sock_names if sname != 'link_from']) + ")")
+
+        #return getattr(G, func_name)
+        return f
+
+    # ====================================================================================================
+    # Get a tree by its snake case name
+
+    def __getattr__(self, name):
+
+        tree_type = Tree.current_tree._btree.type
+
+        target = utils.snake_case(self.prefix + name)
+
+        for btree in bpy.data.node_groups:
+            if btree.type != tree_type:
+                continue
+
+            if utils.snake_case(btree.name) == target:
+                return self.build_function(btree)
+
+        raise AttributeError(f"Group '{target}' not found")
+
+
+class G_OLD:
     """ Group functional call
 
     This weird class is empty but two static methods aimed at building dynamic static functions.
