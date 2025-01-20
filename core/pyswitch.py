@@ -313,7 +313,7 @@ class Else(IfElse):
 # Elif class
 
 class Elif(IfElse):
-    def __init__(self, socket, menu=None):
+    def __init__(self, socket, menu=None, tip=""):
         """ Block "elif" in the if ... elif ... mimicing
 
         See <!If>
@@ -327,7 +327,8 @@ class Elif(IfElse):
         Arguments
         ---------
         - socket (Socket) : socket initialized with a <!If>
-        - menu (str) : the name of the option for "Menu Switch" (ignored in "Index Switch")
+        - menu (str = None) : the name of the option for "Menu Switch" (ignored in "Index Switch")
+        - tip (str = "") : Layout label
         """
         if socket is None or socket._if is None:
             raise NodeError("Elif() requires a socket created with If()", keyword="Elif")
@@ -339,7 +340,7 @@ class Elif(IfElse):
         _if.current += 1
 
         if _if.node_name == "Index Switch":
-            self.layout_name = f"Index Switch ({_if.current}) - {_if.tip}"
+            self.layout_name = f"Index Switch ({_if.current}) - {tip}"
 
         elif _if.node_name == "Menu Switch":
             if menu is None:
@@ -347,7 +348,7 @@ class Elif(IfElse):
             else:
                 _if.current_name = str(menu)
 
-            self.layout_name = f"Menu Switch ({_if.current_name}) - {_if.tip}"
+            self.layout_name = f"Menu Switch ({_if.current_name}) - {tip}"
 
         elif _if.node_name == "Switch":
             raise NodeError(f"Use Else() rather than Elif() after a If() initialized with a Boolean.", keyword=".option")

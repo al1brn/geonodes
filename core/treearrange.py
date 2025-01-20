@@ -617,7 +617,8 @@ class Frame(Node):
     def dimensions(self):
 
         if self.has_node_editor:
-            return self.bnode.dimensions
+            dims = self.bnode.dimensions
+            return (dims[0] + 120, dims[1] + 120)
 
         W0, W1, H0, H1 = 0, 400, 0, 400
 
@@ -625,16 +626,10 @@ class Frame(Node):
 
             ndim = node.dimensions
 
-            if True:
-                w1 = 2*node.bnode.location[0]
-                w0 = 2*node.bnode.location[0] - ndim[0]
-                h0 = 2*node.bnode.location[1] - ndim[1]
-                h1 = 2*node.bnode.location[1]
-            else:
-                w0 = 2*node.bnode.location[0]
-                w1 = 2*node.bnode.location[0] + ndim[0]
-                h0 = 2*node.bnode.location[1] - ndim[1]
-                h1 = 2*node.bnode.location[1]
+            w1 = 2*node.bnode.location[0]
+            w0 = 2*node.bnode.location[0] - ndim[0]
+            h0 = 2*node.bnode.location[1] - ndim[1]
+            h1 = 2*node.bnode.location[1]
 
             if inode == 0:
                 W0, W1, H0, H1 = w0, w1, h0, h1

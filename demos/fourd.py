@@ -184,13 +184,23 @@ def build_shaders():
         grid = gnmath.add(on_x, on_y, True)
 
         color = Color() # Black
+
+        thick *= 2
         x_green = gnmath.mless_than((x + (thick/2)) % .5, thick)
         x_red   = gnmath.mless_than((x + .25 + (thick/2)) % .5, thick)
-        y_blue  = gnmath.mless_than((y + .5 + (thick/2)) % .5, thick)
+        y_blue  = gnmath.mless_than((y + .5 + (thick)) % .5, thick*2)
+
+        grid = gnmath.add(grid, x_green, True)
+        grid = gnmath.add(grid, x_red, True)
+        grid = gnmath.add(grid, y_blue, True)
 
         color = color.mix(Color((1, 0, 0)), x_red)
         color = color.mix(Color((0, 1, 0)), x_green)
         color = color.mix(Color((0, 0, 1)), y_blue)
+
+        # No grid
+        if True:
+            grid = Float(0)
 
         grid.out("Grid")
         color.out("Color")
@@ -215,31 +225,38 @@ def build_shaders():
 
         light_in  = snd.attribute(attribute_name="Inner Light").fac
         light_out = snd.attribute(attribute_name="Outer Light").fac
-        ext_fac   = snd.attribute(attribute_name="Exterior").fac
+        int_fac   = snd.attribute(attribute_name="Interior").fac
+
+        spot_in  = snd.attribute(attribute_name="Inner Spot").fac
+        spot_out = snd.attribute(attribute_name="Outer Spot").fac
 
         color_in  = Color((1, 1, 0)).hue_saturation_value(value=2*light_in,  fac=1)
         color_out = Color((1, 1, 1)).hue_saturation_value(value=2*light_out, fac=1)
 
-        color = color_in.mix(color_out, ext_fac)
+        color = color_out.mix(color_in, int_fac)
+        spot = spot_out.mix(spot_in, int_fac)
 
         color.out("Color")
+        spot.out("Spot")
         light_in.out("Inner")
         light_out.out("Outer")
-        ext_fac.out("Exterior")
+        int_fac.out("Interior")
 
 
     with ShaderNodes("4 Enlighted"):
 
         node = G()._4d_get_light().node
-
         color = node.color
-        grid_node = G().grid().node
+        spot  = node.spot
 
+        grid_node = G().grid().node
         color = color.mix(grid_node.color, grid_node.grid)
 
         ped = Shader.Principled(
             base_color = color,
-            roughness  = 1 - node.exterior,
+            roughness  = node.interior,
+            emission_strength = .1 + spot,
+            emission_color = color,
             )
 
         transp_fac = snd.attribute(attribute_name="Transparency").fac
@@ -250,15 +267,15 @@ def build_shaders():
 
     with ShaderNodes("4 Faces Orientation"):
 
-        ext = snd.attribute(attribute_name="Exterior").fac
-        color = Color((1, 0, 0)).mix((0, 1, 0), ext)
+        interior = snd.attribute(attribute_name="Interior").fac
+        color = Color((0, 1, 0)).mix((1, 0, 0), interior)
 
         grid_fac = G().grid()
 
         ped = Shader.Principled(
             base_color = color.mix(Color((0, 0, 1)), grid_fac),
             metallic   = 0.,
-            roughness  = 1 - ext,
+            roughness  = interior,
             )
 
         ped.out()
@@ -309,6 +326,7 @@ def build_shaders():
             base_color = (1, 1, 1), #snd.attribute(attribute_name="Color").color,
             metallic   = 0.,
             roughness  = 0.,
+            emission_strength   = 1.,
             normal     = bump,
             )
 
@@ -1063,6 +1081,7 @@ def build_matrices():
     with GeoNodes("4D Parameters"):
 
         M = matrix_.single_rotation_matrix(link_from='TREE')
+        opposite = Boolean(False, "Opposite Direction", tip="For Mesh faces orientation")
 
         with Panel("Show Axes"):
             show_axis = Boolean(True, "Show Axes", tip="Show the 4 axes", single_value=True)
@@ -1088,6 +1107,7 @@ def build_matrices():
 
         cloud = Cloud.Points(1)
         cloud.points._Projection = M
+        cloud.points._Opposite = opposite
 
         cloud.switch(show_axis, cloud + geo).out()
 
@@ -1122,6 +1142,9 @@ def build_matrices():
         M_proj = cloud.points.sample_index(Matrix("Projection"), 0)
         M_proj.out()
 
+        opp = cloud.points.sample_index(Boolean("Opposite"), 0)
+        opp.out("Opposite")
+
     # ----------------------------------------------------------------------------------------------------
     # Plunge into 3D
 
@@ -1130,6 +1153,7 @@ def build_matrices():
         geo       = Geometry()
         w         = Float(0, "w", tip="Fourth dimension value")
         curve_res = Integer(0, "Curve Resample", min=0, tip="Resample curve (0 or 1 for no resample)", single_value=True)
+        min_light = Float(0, "Light Intensity", 0, 1)
 
         mesh  = geo.mesh
         curve = geo.curve
@@ -1163,7 +1187,13 @@ def build_matrices():
         with Layout("Already Plunged"):
             exists = Cloud(geo).points.sample_index(Matrix("M4").exists_, 0)
 
-            plunged.switch(exists, geo).out()
+            geo = Cloud(plunged.switch(exists, geo))
+
+        with Layout("Enlightment"):
+            geo.points[-Float("Inner Light").exists_]._Inner_Light = min_light
+            geo.points[-Float("Outer Light").exists_]._Outer_Light = min_light
+
+        geo.out()
 
     # ----------------------------------------------------------------------------------------------------
     # GROUP - Perform a projection
@@ -1200,9 +1230,10 @@ def build_matrices():
 
             M = Matrix("M4")
             M_proj = matrix_.projection_matrix()
+            opp = M_proj.opposite_
 
             # Projection direction
-            proj_dir = V4(M_proj.separate[12:])
+            look = V4(M_proj.separate[12:])
 
             m = M_proj @ M
 
@@ -1218,14 +1249,19 @@ def build_matrices():
         curve = geo.curve
         cloud = geo.point_cloud
 
+        with Layout("Face interior given by Normal A"):
+            normal_A = V4(a[4:8])
+            dot_look = look.dot(normal_A)
+            dot_look = dot_look.switch(opp, -dot_look)
+
+            interior = dot_look < 0
+            mesh.points._Interior = interior
+
         line = Curve.LineDirection(length=vect_length)
 
         with Layout("Mesh Normals"):
             visA = mesh.points.instance_on(instance=line, rotation=Rotation.AlignZToVector(a[4:7]))
             visB = mesh.points.instance_on(instance=line, rotation=Rotation.AlignZToVector(a[8:11]))
-
-            exterior = proj_dir.dot(V4(a[4:8])) < 0
-            mesh.points._Exterior = exterior
 
         with Layout("Curve Normals & Tangents"):
             curve.points._Tangent = a[4:7]
@@ -1235,8 +1271,6 @@ def build_matrices():
             visC  = curve.points.instance_on(instance=line, rotation=Rotation.AlignZToVector(a[12:15]))
 
             visualization = visA.switch_false(show_nrm_A) + visB.switch_false(show_nrm_B) + visC.switch_false(show_nrm_C)
-
-            #visualization = visualization.switch(show_normals, visualization + vis)
 
             tg = V4.FromNode(matrix_.cross_product(M).node)
             tg = tg.matmul(M_proj)
@@ -1647,6 +1681,10 @@ def build_primitives():
     # - Surface (curve profile) : a surface is produced between each instance
     # - Slices (mesh profile) : one separate instance at each point
     # - Edges (mesh profile) : faces are deleted and edges between each instance
+    #
+    # In surface mode, a curve is extrude along the backbone
+    # The extrusion is made along Normal B. Normals A and C become the two normals of the resulting surface
+    # IN PROGRESS
 
     with GeoNodes("Slices", is_group=True, prefix=curve_):
 
@@ -1661,8 +1699,6 @@ def build_primitives():
         with Layout("Plunge into 4D"):
             backbone = Curve(mod_.plunge_into_4d(backbone))
             slice    = Mesh(mod_.plunge_into_4d(slice))
-            #rot = matrix_.rotation_matrix(link_from='TREE')
-            #slice.points._M4 = rot @ Matrix("M4")
 
         # ----- Store Scale in the backbone and rename M4 to BB M4
 
@@ -1673,22 +1709,31 @@ def build_primitives():
             backbone.points._BB_M4 = Matrix("M4") @ rotation
             backbone.remove_names("M4")
 
+        # ----------------------------------------------------------------------------------------------------
+        # Index Switch
+        #
         # ----- Slices = we instantiate the profiles a many times as required at position 0
 
-        with Layout("Slices : instantiate and delete when scale is null"):
+        with If(Mesh, mode, tip="Slice instance at each backbone point") as mesh:
+
+            # Instantiate the slice on each backbone point
             insts = backbone.points.instance_on(slice)
 
+            # Delete where scale is null
             insts.insts[Float("BB Scale") < ZERO].delete()
-            slices = Mesh(insts.realize())
 
-        # ----- Surface: let's extrude to have the right topology
+            mesh.option = insts.realize()
 
-        with Layout("Surface : Extrusion"):
-            grid = backbone.to_mesh(profile_curve=slice)
+        # ----- Surface : the slice is a curve extruded along the backbone
 
-        # ----- Edges: we extrude points on a mesh without faces
+        with Elif(mesh, tip="Slice is extruded along backbone"):
 
-        with Layout("Edges : vertices extrusion loop"):
+            # We extrude in 3D to have to right topology
+            mesh.option = backbone.to_mesh(profile_curve=slice)
+
+        # ----- Edges : vertices extrusion
+
+        with Elif(mesh, tip="Vertices extrusion"):
 
             with Layout("Mesh size along x"):
                 mesh_slice = slice.mesh
@@ -1724,9 +1769,10 @@ def build_primitives():
                 # MERGE DOESN'T WORK
                 #edges.merge_by_distance()
 
-        mesh = Mesh.IndexSwitch(slices, grid, edges, index=mode)
+                mesh.option = edges
 
-        # ----- Transform backbone M4 into rotation [tangent normal1 normal2 normal3]
+        # ----------------------------------------------------------------------------------------------------
+        # -----Transform backbone M4 into rotation [tangent normal1 normal2 normal3]
         # Slices = roll into [normal1 normal2 normal3 tangent]
 
         with Layout("Backbone rotation"):
@@ -1735,8 +1781,17 @@ def build_primitives():
             #rot = Matrix.IndexSwitch(rot, rot, matrix_.roll(rot, 3), index=mode)
 
         with Layout("Slices rotation"):
-            M4 = Matrix("M4")
-            M4 = rot @ M4
+
+            # ----- Rotation with backbone Matrix
+            rot_M4 = rot @ Matrix("M4")
+
+            with If(Matrix, mode.equal(1), tip='Keep Slice normals A & C') as M4:
+                a = list(rot_M4.separate)
+                a[8:12] = a[12:16]
+                M4.option = Matrix(a)
+
+            with Else(M4):
+                M4.option = rot_M4
 
         with Layout("4D scale and translation"):
             m = list(M4.separate)
@@ -1975,13 +2030,15 @@ def build_lights():
         with Panel("Debug"):
             show_incident  = Boolean(False, 'Show Incident')
             show_reflected = Boolean(False, 'Show Reflected')
-            show_cam_rays  = Boolean(False, 'Show Camera rays')
             rays_length    = Float(1, "Rays Length")
 
         with Layout("Light intensity min"):
             current = Float("Light Intensity")
             geo.points[-current.exists_]._Inner_Light = light_min
             geo.points[-current.exists_]._Outer_Light = light_min
+
+            geo.points[-current.exists_]._Inner_Spot = 0.
+            geo.points[-current.exists_]._Outer_Spot = 0.
 
         emitter = Cloud(emitter_obj.info().geometry)
 
@@ -1993,28 +2050,28 @@ def build_lights():
 
             a = Matrix("M4").separate
 
-            pos4  = V4(a[:4])
-            perp0 = V4(a[4:8])
-            perp1 = V4(a[8:12])
+            pos4     = V4(a[:4])
+            normal_A = V4(a[4:8])
+            normal_B = V4(a[8:12])
 
             in_vector = pos4 - light_loc
             ray = in_vector.normalize()
 
             with Layout("Show Incident Ray"):
-                with geo.points.for_each(m4=Matrix("M4")) as feel:
+                with geo.points.for_each(m4 = Matrix("M4")) as feel:
                     pos = V4(feel.m4.separate[:4])
                     line = curve_.line(**light_loc.args("Start"), **pos.args("End"), count=2)
                     feel.generated.geometry = line
 
                 incident_rays = feel.generated.geometry
 
-            dot0 = perp0.dot(ray)
-            dot1 = perp1.dot(ray)
+            dot_A = normal_A.dot(ray)
+            dot_B = normal_B.dot(ray)
 
-            comp0 = perp0.scale(dot0)
-            comp1 = perp1.scale(dot1)
+            comp_A = normal_A.scale(dot_A)
+            comp_B = normal_B.scale(dot_B)
 
-            bounce = ray - (comp0 + comp1).scale(2)
+            bounce = ray - (comp_A + comp_B).scale(2)
 
             with Layout("Reflected rays"):
                 with geo.points.for_each(m4=Matrix("M4"), x=bounce.x, y=bounce.y, z=bounce.z, w=bounce.w) as feel:
@@ -2027,28 +2084,37 @@ def build_lights():
         with Layout("4D Camera direction"):
 
             M_proj = matrix_.projection_matrix()
+            opp = M_proj.opposite_
 
             look = V4(M_proj.separate[12:])
 
-            intensity = (look.dot(bounce)).map_range_smooth_step(-1, 0, 1, 0)
-            intensity = gnmath.max(0, intensity)
+            with Layout("Intensity"):
+                dot_look = look.dot(bounce)
 
-            exterior = look.dot(comp0) < 0
-            geo.points._Inner_Light += intensity.switch(exterior)
-            geo.points._Outer_Light += intensity.switch_false(exterior)
+                # CAUTION: should be 'switch' and not 'switch_false',
+                # but the result is more consistent
+                # don't know why :-(
+                #dot_look = dot_look.switch_false(opp, -dot_look)
+                dot_look = dot_look.switch(opp, -dot_look)
 
-            with Layout("Camera rays"):
-                with geo.points.for_each(m4=Matrix("M4"), intensity=Float("Light Intensity")) as feel:
-                    pos = V4(feel.m4.separate[:4])
-                    line = curve_.line(**pos.args("Start"), **(pos + look.scale(rays_length*feel.intensity)).args("End"), count=2)
-                    feel.generated.geometry = line
+                # Negative : the ray comes back toward the looking direction
+                intensity  = dot_look.map_range_linear(-1, 0, 1, 0)
+                emission   = dot_look.map_range_smoother_step(-1, -.9, 10, 0)
+                #intensity += emission
 
-                cam_rays = feel.generated.geometry
+            with Layout("Inner / outer Faces"):
+                dot_look = (look.dot(normal_A))
+                dot_look = dot_look.switch(opp, -dot_look)
+                interior = dot_look < 0
 
+                geo.points._Inner_Light += intensity.switch_false(interior)
+                geo.points._Outer_Light += intensity.switch(interior)
+
+                geo.points._Inner_Spot  += emission.switch_false(interior)
+                geo.points._Outer_Spot  += emission.switch(interior)
 
         geo += incident_rays.switch_false(show_incident)
         geo += reflected_rays.switch_false(show_reflected)
-        geo += cam_rays.switch_false(show_cam_rays)
 
         geo.out()
 
