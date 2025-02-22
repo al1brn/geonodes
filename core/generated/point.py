@@ -81,13 +81,13 @@ class Point(Socket):
         - Socket 'Geometry' : self
         - Socket 'Selection' : self[selection]
         - Parameter 'domain' : 'POINT'
-        - Parameter 'mode' : 'EDGE_FACE'
+        - Parameter 'mode' : 'ALL'
 
         Returns
         -------
         - Geometry
         """
-        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='POINT', mode='EDGE_FACE')
+        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='POINT', mode='ALL')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -101,13 +101,13 @@ class Point(Socket):
         - Socket 'Geometry' : self
         - Socket 'Selection' : self[selection]
         - Parameter 'domain' : 'POINT'
-        - Parameter 'mode' : 'ONLY_FACE'
+        - Parameter 'mode' : 'ALL'
 
         Returns
         -------
         - Geometry
         """
-        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='POINT', mode='ONLY_FACE')
+        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='POINT', mode='ALL')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -165,13 +165,13 @@ class Point(Socket):
         - Socket 'Geometry' : self
         - Socket 'Selection' : self[selection]
         - Parameter 'domain' : 'POINT'
-        - Parameter 'mode' : 'EDGE_FACE'
+        - Parameter 'mode' : 'ALL'
 
         Returns
         -------
         - Geometry
         """
-        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='POINT', mode='EDGE_FACE')
+        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='POINT', mode='ALL')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -185,13 +185,13 @@ class Point(Socket):
         - Socket 'Geometry' : self
         - Socket 'Selection' : self[selection]
         - Parameter 'domain' : 'POINT'
-        - Parameter 'mode' : 'ONLY_FACE'
+        - Parameter 'mode' : 'ALL'
 
         Returns
         -------
         - Geometry
         """
-        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='POINT', mode='ONLY_FACE')
+        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='POINT', mode='ALL')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -530,7 +530,7 @@ class Point(Socket):
         -----------
         - Socket 'Geometry' : self
         - Parameter 'data_type' : depending on 'value' type
-        - Parameter 'domain' : 'POINT'
+        - Parameter 'domain' : 'AUTO'
 
         Arguments
         ---------
@@ -538,7 +538,7 @@ class Point(Socket):
 
         """
         data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Point.viewer', 'value')
-        node = Node('Viewer', sockets={'Geometry': self, 'Value': value}, data_type=data_type, domain='POINT')
+        node = Node('Viewer', sockets={'Geometry': self, 'Value': value}, data_type=data_type, domain='AUTO')
         return
 
     @property

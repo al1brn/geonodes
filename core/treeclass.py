@@ -1003,7 +1003,7 @@ class Tree:
                 if from_panel == "":
                     from_panel = panel
             if from_panel is None:
-                from_panel = ""
+                from_panel = self.current_panel
 
             # ----------------------------------------------------------------------------------------------------
             # Look for an output socket of from_node with the proper name
@@ -1727,7 +1727,10 @@ class Node:
 
             bnode = self.__dict__['_bnode']
             sbnode = bnode.name
-            if name not in ['width', 'height', 'dimensions'] and hasattr(bnode, name):
+            if name not in ['color', 'label', 'width', 'height', 'dimensions', 'location'] and hasattr(bnode, name):
+                if value is None:
+                    NodeError(f"Collision between Custom socket name and node parameter '{name}'")
+
                 setattr(bnode, name, value)
                 return
 
@@ -2012,9 +2015,13 @@ class Node:
         # We can use default value
 
         if socket_type in constants.ARRAY_TYPES:
-            if socket_type == 'RGBA' and np.shape(value)==(3,):
-                a = (value[0], value[1], value[2], 1)
+            if socket_type == 'RGBA':
+                a = utils.value_to_color(value)
+
             else:
+            #if socket_type == 'RGBA' and np.shape(value)==(3,):
+            #    a = (value[0], value[1], value[2], 1)
+            #else:
                 spec = constants.ARRAY_TYPES[socket_type]
                 a = utils.value_to_array(value, spec['shape'])
 
@@ -2499,7 +2506,10 @@ class G:
         f = d['f']
 
         if G.VERBOSE or self.verbose:
+            print('-'*100)
             print(f"Function created ({f}):\n    {func_name}(" + ", ".join([sname for sname in sock_names if sname != 'link_from']) + ")")
+            print(s)
+            print()
 
         #return getattr(G, func_name)
         return f
@@ -2775,7 +2785,7 @@ class ColorRamp(Node):
         """
         super().__init__('Color Ramp', {'Fac': fac})
         self.color_ramp.interpolation = interpolation
-        self.interpolation = interpolation
+        #self.interpolation = interpolation
         self.stops = stops
 
     @property

@@ -15,7 +15,7 @@ class Float(Socket):
         - Socket 'A' : self
         - Parameter 'data_type' : 'FLOAT'
         - Parameter 'mode' : 'ELEMENT'
-        - Parameter 'operation' : 'LESS_THAN'
+        - Parameter 'operation' : 'GREATER_THAN'
 
         Arguments
         ---------
@@ -25,7 +25,7 @@ class Float(Socket):
         -------
         - Boolean
         """
-        node = Node('Compare', sockets={'A': self, 'B': b}, data_type='FLOAT', mode='ELEMENT', operation='LESS_THAN')
+        node = Node('Compare', sockets={'A': self, 'B': b}, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN')
         return node._out
 
     def less_equal(self, b=None):
@@ -36,7 +36,7 @@ class Float(Socket):
         - Socket 'A' : self
         - Parameter 'data_type' : 'FLOAT'
         - Parameter 'mode' : 'ELEMENT'
-        - Parameter 'operation' : 'LESS_EQUAL'
+        - Parameter 'operation' : 'GREATER_THAN'
 
         Arguments
         ---------
@@ -46,7 +46,7 @@ class Float(Socket):
         -------
         - Boolean
         """
-        node = Node('Compare', sockets={'A': self, 'B': b}, data_type='FLOAT', mode='ELEMENT', operation='LESS_EQUAL')
+        node = Node('Compare', sockets={'A': self, 'B': b}, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN')
         return node._out
 
     def greater_than(self, b=None):
@@ -78,7 +78,7 @@ class Float(Socket):
         - Socket 'A' : self
         - Parameter 'data_type' : 'FLOAT'
         - Parameter 'mode' : 'ELEMENT'
-        - Parameter 'operation' : 'GREATER_EQUAL'
+        - Parameter 'operation' : 'GREATER_THAN'
 
         Arguments
         ---------
@@ -88,7 +88,7 @@ class Float(Socket):
         -------
         - Boolean
         """
-        node = Node('Compare', sockets={'A': self, 'B': b}, data_type='FLOAT', mode='ELEMENT', operation='GREATER_EQUAL')
+        node = Node('Compare', sockets={'A': self, 'B': b}, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN')
         return node._out
 
     def equal(self, b=None, epsilon=None):
@@ -99,7 +99,7 @@ class Float(Socket):
         - Socket 'A' : self
         - Parameter 'data_type' : 'FLOAT'
         - Parameter 'mode' : 'ELEMENT'
-        - Parameter 'operation' : 'EQUAL'
+        - Parameter 'operation' : 'GREATER_THAN'
 
         Arguments
         ---------
@@ -110,7 +110,7 @@ class Float(Socket):
         -------
         - Boolean
         """
-        node = Node('Compare', sockets={'A': self, 'B': b, 'Epsilon': epsilon}, data_type='FLOAT', mode='ELEMENT', operation='EQUAL')
+        node = Node('Compare', sockets={'A': self, 'B': b, 'Epsilon': epsilon}, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN')
         return node._out
 
     def not_equal(self, b=None, epsilon=None):
@@ -121,7 +121,7 @@ class Float(Socket):
         - Socket 'A' : self
         - Parameter 'data_type' : 'FLOAT'
         - Parameter 'mode' : 'ELEMENT'
-        - Parameter 'operation' : 'NOT_EQUAL'
+        - Parameter 'operation' : 'GREATER_THAN'
 
         Arguments
         ---------
@@ -132,7 +132,7 @@ class Float(Socket):
         -------
         - Boolean
         """
-        node = Node('Compare', sockets={'A': self, 'B': b, 'Epsilon': epsilon}, data_type='FLOAT', mode='ELEMENT', operation='NOT_EQUAL')
+        node = Node('Compare', sockets={'A': self, 'B': b, 'Epsilon': epsilon}, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN')
         return node._out
 
     def to_integer(self, rounding_mode='ROUND'):
@@ -160,7 +160,7 @@ class Float(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'data_type' : 'INT'
 
         Arguments
         ---------
@@ -170,7 +170,7 @@ class Float(Socket):
         -------
         - Integer
         """
-        node = Node('Hash Value', sockets={'Value': self, 'Seed': seed}, data_type='FLOAT')
+        node = Node('Hash Value', sockets={'Value': self, 'Seed': seed}, data_type='INT')
         return node._out
 
     @classmethod
@@ -391,7 +391,7 @@ class Float(Socket):
 
         Information
         -----------
-        - Parameter 'operation' : 'INTERSECT'
+        - Parameter 'operation' : 'DIFFERENCE'
 
         Arguments
         ---------
@@ -401,7 +401,7 @@ class Float(Socket):
         -------
         - Float
         """
-        node = Node('SDF Grid Boolean', sockets={'Grid 2': [self] + list(grid)}, operation='INTERSECT')
+        node = Node('SDF Grid Boolean', sockets={'Grid 2': [self] + list(grid)}, operation='DIFFERENCE')
         return node._out
 
     def sdf_union(self, *grid):
@@ -409,7 +409,7 @@ class Float(Socket):
 
         Information
         -----------
-        - Parameter 'operation' : 'UNION'
+        - Parameter 'operation' : 'DIFFERENCE'
 
         Arguments
         ---------
@@ -419,7 +419,7 @@ class Float(Socket):
         -------
         - Float
         """
-        node = Node('SDF Grid Boolean', sockets={'Grid 2': [self] + list(grid)}, operation='UNION')
+        node = Node('SDF Grid Boolean', sockets={'Grid 2': [self] + list(grid)}, operation='DIFFERENCE')
         return node._out
 
     def sdf_difference(self, *grid_2):
@@ -530,7 +530,7 @@ class Float(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'clamp_type' : 'RANGE'
+        - Parameter 'clamp_type' : 'MINMAX'
 
         Arguments
         ---------
@@ -541,7 +541,7 @@ class Float(Socket):
         -------
         - Float
         """
-        node = Node('Clamp', sockets={'Value': self, 'Min': min, 'Max': max}, clamp_type='RANGE')
+        node = Node('Clamp', sockets={'Value': self, 'Min': min, 'Max': max}, clamp_type='MINMAX')
         return node._out
 
     def map_range(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True, interpolation_type='LINEAR'):
@@ -602,7 +602,7 @@ class Float(Socket):
         -----------
         - Socket 'Value' : self
         - Parameter 'data_type' : depending on 'from_min' type
-        - Parameter 'interpolation_type' : 'STEPPED'
+        - Parameter 'interpolation_type' : 'LINEAR'
 
         Arguments
         ---------
@@ -618,7 +618,7 @@ class Float(Socket):
         - Float
         """
         data_type = utils.get_argument_data_type(from_min, {'VALUE': 'FLOAT', 'VECTOR': 'FLOAT_VECTOR'}, 'Float.map_range_stepped', 'from_min')
-        node = Node('Map Range', sockets={'Value': self, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max, 'Steps': steps}, clamp=clamp, data_type=data_type, interpolation_type='STEPPED')
+        node = Node('Map Range', sockets={'Value': self, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max, 'Steps': steps}, clamp=clamp, data_type=data_type, interpolation_type='LINEAR')
         return node._out
 
     def map_range_smooth_step(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
@@ -628,7 +628,7 @@ class Float(Socket):
         -----------
         - Socket 'Value' : self
         - Parameter 'data_type' : depending on 'from_min' type
-        - Parameter 'interpolation_type' : 'SMOOTHSTEP'
+        - Parameter 'interpolation_type' : 'LINEAR'
 
         Arguments
         ---------
@@ -643,7 +643,7 @@ class Float(Socket):
         - Float
         """
         data_type = utils.get_argument_data_type(from_min, {'VALUE': 'FLOAT', 'VECTOR': 'FLOAT_VECTOR'}, 'Float.map_range_smooth_step', 'from_min')
-        node = Node('Map Range', sockets={'Value': self, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}, clamp=clamp, data_type=data_type, interpolation_type='SMOOTHSTEP')
+        node = Node('Map Range', sockets={'Value': self, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}, clamp=clamp, data_type=data_type, interpolation_type='LINEAR')
         return node._out
 
     def map_range_smoother_step(self, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True):
@@ -653,7 +653,7 @@ class Float(Socket):
         -----------
         - Socket 'Value' : self
         - Parameter 'data_type' : depending on 'from_min' type
-        - Parameter 'interpolation_type' : 'SMOOTHERSTEP'
+        - Parameter 'interpolation_type' : 'LINEAR'
 
         Arguments
         ---------
@@ -668,7 +668,7 @@ class Float(Socket):
         - Float
         """
         data_type = utils.get_argument_data_type(from_min, {'VALUE': 'FLOAT', 'VECTOR': 'FLOAT_VECTOR'}, 'Float.map_range_smoother_step', 'from_min')
-        node = Node('Map Range', sockets={'Value': self, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}, clamp=clamp, data_type=data_type, interpolation_type='SMOOTHERSTEP')
+        node = Node('Map Range', sockets={'Value': self, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}, clamp=clamp, data_type=data_type, interpolation_type='LINEAR')
         return node._out
 
     def add(self, value=None, use_clamp=False):
@@ -697,7 +697,7 @@ class Float(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'operation' : 'SUBTRACT'
+        - Parameter 'operation' : 'ADD'
 
         Arguments
         ---------
@@ -708,7 +708,7 @@ class Float(Socket):
         -------
         - Float
         """
-        node = Node('Math', sockets={'Value': self, 'Value_001': value}, operation='SUBTRACT', use_clamp=use_clamp)
+        node = Node('Math', sockets={'Value': self, 'Value_001': value}, operation='ADD', use_clamp=use_clamp)
         return node._out
 
     def multiply(self, value=None, use_clamp=False):
@@ -717,7 +717,7 @@ class Float(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'operation' : 'MULTIPLY'
+        - Parameter 'operation' : 'ADD'
 
         Arguments
         ---------
@@ -728,7 +728,7 @@ class Float(Socket):
         -------
         - Float
         """
-        node = Node('Math', sockets={'Value': self, 'Value_001': value}, operation='MULTIPLY', use_clamp=use_clamp)
+        node = Node('Math', sockets={'Value': self, 'Value_001': value}, operation='ADD', use_clamp=use_clamp)
         return node._out
 
     def divide(self, value=None, use_clamp=False):
@@ -737,7 +737,7 @@ class Float(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'operation' : 'DIVIDE'
+        - Parameter 'operation' : 'ADD'
 
         Arguments
         ---------
@@ -748,7 +748,7 @@ class Float(Socket):
         -------
         - Float
         """
-        node = Node('Math', sockets={'Value': self, 'Value_001': value}, operation='DIVIDE', use_clamp=use_clamp)
+        node = Node('Math', sockets={'Value': self, 'Value_001': value}, operation='ADD', use_clamp=use_clamp)
         return node._out
 
     def multiply_add(self, multiplier=None, addend=None, use_clamp=False):
@@ -757,7 +757,7 @@ class Float(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'operation' : 'MULTIPLY_ADD'
+        - Parameter 'operation' : 'ADD'
 
         Arguments
         ---------
@@ -769,7 +769,7 @@ class Float(Socket):
         -------
         - Float
         """
-        node = Node('Math', sockets={'Value': self, 'Value_001': multiplier, 'Value_002': addend}, operation='MULTIPLY_ADD', use_clamp=use_clamp)
+        node = Node('Math', sockets={'Value': self, 'Value_001': multiplier, 'Value_002': addend}, operation='ADD', use_clamp=use_clamp)
         return node._out
 
     def power(self, exponent=None, use_clamp=False):
@@ -778,7 +778,7 @@ class Float(Socket):
         Information
         -----------
         - Socket 'Base' : self
-        - Parameter 'operation' : 'POWER'
+        - Parameter 'operation' : 'ADD'
 
         Arguments
         ---------
@@ -789,7 +789,7 @@ class Float(Socket):
         -------
         - Float
         """
-        node = Node('Math', sockets={'Value': self, 'Value_001': exponent}, operation='POWER', use_clamp=use_clamp)
+        node = Node('Math', sockets={'Value': self, 'Value_001': exponent}, operation='ADD', use_clamp=use_clamp)
         return node._out
 
     def log(self, base=None, use_clamp=False):
@@ -798,7 +798,7 @@ class Float(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'operation' : 'LOGARITHM'
+        - Parameter 'operation' : 'ADD'
 
         Arguments
         ---------
@@ -809,7 +809,7 @@ class Float(Socket):
         -------
         - Float
         """
-        node = Node('Math', sockets={'Value': self, 'Value_001': base}, operation='LOGARITHM', use_clamp=use_clamp)
+        node = Node('Math', sockets={'Value': self, 'Value_001': base}, operation='ADD', use_clamp=use_clamp)
         return node._out
 
     def sqrt(self, use_clamp=False):
@@ -818,7 +818,7 @@ class Float(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'operation' : 'SQRT'
+        - Parameter 'operation' : 'ADD'
 
         Arguments
         ---------
@@ -828,7 +828,7 @@ class Float(Socket):
         -------
         - Float
         """
-        node = Node('Math', sockets={'Value': self}, operation='SQRT', use_clamp=use_clamp)
+        node = Node('Math', sockets={'Value': self}, operation='ADD', use_clamp=use_clamp)
         return node._out
 
     def inverse_sqrt(self, use_clamp=False):
@@ -837,7 +837,7 @@ class Float(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'operation' : 'INVERSE_SQRT'
+        - Parameter 'operation' : 'ADD'
 
         Arguments
         ---------
@@ -847,7 +847,7 @@ class Float(Socket):
         -------
         - Float
         """
-        node = Node('Math', sockets={'Value': self}, operation='INVERSE_SQRT', use_clamp=use_clamp)
+        node = Node('Math', sockets={'Value': self}, operation='ADD', use_clamp=use_clamp)
         return node._out
 
     def abs(self, use_clamp=False):
@@ -856,7 +856,7 @@ class Float(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'operation' : 'ABSOLUTE'
+        - Parameter 'operation' : 'ADD'
 
         Arguments
         ---------
@@ -866,7 +866,7 @@ class Float(Socket):
         -------
         - Float
         """
-        node = Node('Math', sockets={'Value': self}, operation='ABSOLUTE', use_clamp=use_clamp)
+        node = Node('Math', sockets={'Value': self}, operation='ADD', use_clamp=use_clamp)
         return node._out
 
     def exp(self, use_clamp=False):
@@ -875,7 +875,7 @@ class Float(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'operation' : 'EXPONENT'
+        - Parameter 'operation' : 'ADD'
 
         Arguments
         ---------
@@ -885,7 +885,7 @@ class Float(Socket):
         -------
         - Float
         """
-        node = Node('Math', sockets={'Value': self}, operation='EXPONENT', use_clamp=use_clamp)
+        node = Node('Math', sockets={'Value': self}, operation='ADD', use_clamp=use_clamp)
         return node._out
 
     def min(self, value=None, use_clamp=False):
@@ -894,7 +894,7 @@ class Float(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'operation' : 'MINIMUM'
+        - Parameter 'operation' : 'ADD'
 
         Arguments
         ---------
@@ -905,7 +905,7 @@ class Float(Socket):
         -------
         - Float
         """
-        node = Node('Math', sockets={'Value': self, 'Value_001': value}, operation='MINIMUM', use_clamp=use_clamp)
+        node = Node('Math', sockets={'Value': self, 'Value_001': value}, operation='ADD', use_clamp=use_clamp)
         return node._out
 
     def max(self, value=None, use_clamp=False):
@@ -914,7 +914,7 @@ class Float(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'operation' : 'MAXIMUM'
+        - Parameter 'operation' : 'ADD'
 
         Arguments
         ---------
@@ -925,7 +925,7 @@ class Float(Socket):
         -------
         - Float
         """
-        node = Node('Math', sockets={'Value': self, 'Value_001': value}, operation='MAXIMUM', use_clamp=use_clamp)
+        node = Node('Math', sockets={'Value': self, 'Value_001': value}, operation='ADD', use_clamp=use_clamp)
         return node._out
 
     def mless_than(self, threshold=None, use_clamp=False):
@@ -934,7 +934,7 @@ class Float(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'operation' : 'LESS_THAN'
+        - Parameter 'operation' : 'ADD'
 
         Arguments
         ---------
@@ -945,7 +945,7 @@ class Float(Socket):
         -------
         - Float
         """
-        node = Node('Math', sockets={'Value': self, 'Value_001': threshold}, operation='LESS_THAN', use_clamp=use_clamp)
+        node = Node('Math', sockets={'Value': self, 'Value_001': threshold}, operation='ADD', use_clamp=use_clamp)
         return node._out
 
     def mgreater_than(self, threshold=None, use_clamp=False):
@@ -954,7 +954,7 @@ class Float(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'operation' : 'GREATER_THAN'
+        - Parameter 'operation' : 'ADD'
 
         Arguments
         ---------
@@ -965,7 +965,7 @@ class Float(Socket):
         -------
         - Float
         """
-        node = Node('Math', sockets={'Value': self, 'Value_001': threshold}, operation='GREATER_THAN', use_clamp=use_clamp)
+        node = Node('Math', sockets={'Value': self, 'Value_001': threshold}, operation='ADD', use_clamp=use_clamp)
         return node._out
 
     def sign(self, use_clamp=False):
@@ -974,7 +974,7 @@ class Float(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'operation' : 'SIGN'
+        - Parameter 'operation' : 'ADD'
 
         Arguments
         ---------
@@ -984,7 +984,7 @@ class Float(Socket):
         -------
         - Float
         """
-        node = Node('Math', sockets={'Value': self}, operation='SIGN', use_clamp=use_clamp)
+        node = Node('Math', sockets={'Value': self}, operation='ADD', use_clamp=use_clamp)
         return node._out
 
     def compare(self, value=None, epsilon=None, use_clamp=False):
@@ -993,7 +993,7 @@ class Float(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'operation' : 'COMPARE'
+        - Parameter 'operation' : 'ADD'
 
         Arguments
         ---------
@@ -1005,7 +1005,7 @@ class Float(Socket):
         -------
         - Float
         """
-        node = Node('Math', sockets={'Value': self, 'Value_001': value, 'Value_002': epsilon}, operation='COMPARE', use_clamp=use_clamp)
+        node = Node('Math', sockets={'Value': self, 'Value_001': value, 'Value_002': epsilon}, operation='ADD', use_clamp=use_clamp)
         return node._out
 
     def smooth_min(self, value=None, distance=None, use_clamp=False):
@@ -1014,7 +1014,7 @@ class Float(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'operation' : 'SMOOTH_MIN'
+        - Parameter 'operation' : 'ADD'
 
         Arguments
         ---------
@@ -1026,7 +1026,7 @@ class Float(Socket):
         -------
         - Float
         """
-        node = Node('Math', sockets={'Value': self, 'Value_001': value, 'Value_002': distance}, operation='SMOOTH_MIN', use_clamp=use_clamp)
+        node = Node('Math', sockets={'Value': self, 'Value_001': value, 'Value_002': distance}, operation='ADD', use_clamp=use_clamp)
         return node._out
 
     def smooth_max(self, value=None, distance=None, use_clamp=False):
@@ -1035,7 +1035,7 @@ class Float(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'operation' : 'SMOOTH_MAX'
+        - Parameter 'operation' : 'ADD'
 
         Arguments
         ---------
@@ -1047,7 +1047,7 @@ class Float(Socket):
         -------
         - Float
         """
-        node = Node('Math', sockets={'Value': self, 'Value_001': value, 'Value_002': distance}, operation='SMOOTH_MAX', use_clamp=use_clamp)
+        node = Node('Math', sockets={'Value': self, 'Value_001': value, 'Value_002': distance}, operation='ADD', use_clamp=use_clamp)
         return node._out
 
     def round(self, use_clamp=False):
@@ -1056,7 +1056,7 @@ class Float(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'operation' : 'ROUND'
+        - Parameter 'operation' : 'ADD'
 
         Arguments
         ---------
@@ -1066,7 +1066,7 @@ class Float(Socket):
         -------
         - Float
         """
-        node = Node('Math', sockets={'Value': self}, operation='ROUND', use_clamp=use_clamp)
+        node = Node('Math', sockets={'Value': self}, operation='ADD', use_clamp=use_clamp)
         return node._out
 
     def floor(self, use_clamp=False):
@@ -1075,7 +1075,7 @@ class Float(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'operation' : 'FLOOR'
+        - Parameter 'operation' : 'ADD'
 
         Arguments
         ---------
@@ -1085,7 +1085,7 @@ class Float(Socket):
         -------
         - Float
         """
-        node = Node('Math', sockets={'Value': self}, operation='FLOOR', use_clamp=use_clamp)
+        node = Node('Math', sockets={'Value': self}, operation='ADD', use_clamp=use_clamp)
         return node._out
 
     def ceil(self, use_clamp=False):
@@ -1094,7 +1094,7 @@ class Float(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'operation' : 'CEIL'
+        - Parameter 'operation' : 'ADD'
 
         Arguments
         ---------
@@ -1104,7 +1104,7 @@ class Float(Socket):
         -------
         - Float
         """
-        node = Node('Math', sockets={'Value': self}, operation='CEIL', use_clamp=use_clamp)
+        node = Node('Math', sockets={'Value': self}, operation='ADD', use_clamp=use_clamp)
         return node._out
 
     def trunc(self, use_clamp=False):
@@ -1113,7 +1113,7 @@ class Float(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'operation' : 'TRUNC'
+        - Parameter 'operation' : 'ADD'
 
         Arguments
         ---------
@@ -1123,7 +1123,7 @@ class Float(Socket):
         -------
         - Float
         """
-        node = Node('Math', sockets={'Value': self}, operation='TRUNC', use_clamp=use_clamp)
+        node = Node('Math', sockets={'Value': self}, operation='ADD', use_clamp=use_clamp)
         return node._out
 
     def fract(self, use_clamp=False):
@@ -1132,7 +1132,7 @@ class Float(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'operation' : 'FRACT'
+        - Parameter 'operation' : 'ADD'
 
         Arguments
         ---------
@@ -1142,7 +1142,7 @@ class Float(Socket):
         -------
         - Float
         """
-        node = Node('Math', sockets={'Value': self}, operation='FRACT', use_clamp=use_clamp)
+        node = Node('Math', sockets={'Value': self}, operation='ADD', use_clamp=use_clamp)
         return node._out
 
     def modulo(self, value=None, use_clamp=False):
@@ -1151,7 +1151,7 @@ class Float(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'operation' : 'MODULO'
+        - Parameter 'operation' : 'ADD'
 
         Arguments
         ---------
@@ -1162,7 +1162,7 @@ class Float(Socket):
         -------
         - Float
         """
-        node = Node('Math', sockets={'Value': self, 'Value_001': value}, operation='MODULO', use_clamp=use_clamp)
+        node = Node('Math', sockets={'Value': self, 'Value_001': value}, operation='ADD', use_clamp=use_clamp)
         return node._out
 
     def floored_modulo(self, value=None, use_clamp=False):
@@ -1171,7 +1171,7 @@ class Float(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'operation' : 'FLOORED_MODULO'
+        - Parameter 'operation' : 'ADD'
 
         Arguments
         ---------
@@ -1182,7 +1182,7 @@ class Float(Socket):
         -------
         - Float
         """
-        node = Node('Math', sockets={'Value': self, 'Value_001': value}, operation='FLOORED_MODULO', use_clamp=use_clamp)
+        node = Node('Math', sockets={'Value': self, 'Value_001': value}, operation='ADD', use_clamp=use_clamp)
         return node._out
 
     def wrap(self, max=None, min=None, use_clamp=False):
@@ -1191,7 +1191,7 @@ class Float(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'operation' : 'WRAP'
+        - Parameter 'operation' : 'ADD'
 
         Arguments
         ---------
@@ -1203,7 +1203,7 @@ class Float(Socket):
         -------
         - Float
         """
-        node = Node('Math', sockets={'Value': self, 'Value_001': max, 'Value_002': min}, operation='WRAP', use_clamp=use_clamp)
+        node = Node('Math', sockets={'Value': self, 'Value_001': max, 'Value_002': min}, operation='ADD', use_clamp=use_clamp)
         return node._out
 
     def snap(self, increment=None, use_clamp=False):
@@ -1212,7 +1212,7 @@ class Float(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'operation' : 'SNAP'
+        - Parameter 'operation' : 'ADD'
 
         Arguments
         ---------
@@ -1223,7 +1223,7 @@ class Float(Socket):
         -------
         - Float
         """
-        node = Node('Math', sockets={'Value': self, 'Value_001': increment}, operation='SNAP', use_clamp=use_clamp)
+        node = Node('Math', sockets={'Value': self, 'Value_001': increment}, operation='ADD', use_clamp=use_clamp)
         return node._out
 
     def pingpong(self, scale=None, use_clamp=False):
@@ -1232,7 +1232,7 @@ class Float(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'operation' : 'PINGPONG'
+        - Parameter 'operation' : 'ADD'
 
         Arguments
         ---------
@@ -1243,7 +1243,7 @@ class Float(Socket):
         -------
         - Float
         """
-        node = Node('Math', sockets={'Value': self, 'Value_001': scale}, operation='PINGPONG', use_clamp=use_clamp)
+        node = Node('Math', sockets={'Value': self, 'Value_001': scale}, operation='ADD', use_clamp=use_clamp)
         return node._out
 
     def sin(self, use_clamp=False):
@@ -1252,7 +1252,7 @@ class Float(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'operation' : 'SINE'
+        - Parameter 'operation' : 'ADD'
 
         Arguments
         ---------
@@ -1262,7 +1262,7 @@ class Float(Socket):
         -------
         - Float
         """
-        node = Node('Math', sockets={'Value': self}, operation='SINE', use_clamp=use_clamp)
+        node = Node('Math', sockets={'Value': self}, operation='ADD', use_clamp=use_clamp)
         return node._out
 
     def cos(self, use_clamp=False):
@@ -1271,7 +1271,7 @@ class Float(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'operation' : 'COSINE'
+        - Parameter 'operation' : 'ADD'
 
         Arguments
         ---------
@@ -1281,7 +1281,7 @@ class Float(Socket):
         -------
         - Float
         """
-        node = Node('Math', sockets={'Value': self}, operation='COSINE', use_clamp=use_clamp)
+        node = Node('Math', sockets={'Value': self}, operation='ADD', use_clamp=use_clamp)
         return node._out
 
     def tan(self, use_clamp=False):
@@ -1290,7 +1290,7 @@ class Float(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'operation' : 'TANGENT'
+        - Parameter 'operation' : 'ADD'
 
         Arguments
         ---------
@@ -1300,7 +1300,7 @@ class Float(Socket):
         -------
         - Float
         """
-        node = Node('Math', sockets={'Value': self}, operation='TANGENT', use_clamp=use_clamp)
+        node = Node('Math', sockets={'Value': self}, operation='ADD', use_clamp=use_clamp)
         return node._out
 
     def asin(self, use_clamp=False):
@@ -1309,7 +1309,7 @@ class Float(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'operation' : 'ARCSINE'
+        - Parameter 'operation' : 'ADD'
 
         Arguments
         ---------
@@ -1319,7 +1319,7 @@ class Float(Socket):
         -------
         - Float
         """
-        node = Node('Math', sockets={'Value': self}, operation='ARCSINE', use_clamp=use_clamp)
+        node = Node('Math', sockets={'Value': self}, operation='ADD', use_clamp=use_clamp)
         return node._out
 
     def acos(self, use_clamp=False):
@@ -1328,7 +1328,7 @@ class Float(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'operation' : 'ARCCOSINE'
+        - Parameter 'operation' : 'ADD'
 
         Arguments
         ---------
@@ -1338,7 +1338,7 @@ class Float(Socket):
         -------
         - Float
         """
-        node = Node('Math', sockets={'Value': self}, operation='ARCCOSINE', use_clamp=use_clamp)
+        node = Node('Math', sockets={'Value': self}, operation='ADD', use_clamp=use_clamp)
         return node._out
 
     def arctangent(self, use_clamp=False):
@@ -1347,7 +1347,7 @@ class Float(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'operation' : 'ARCTANGENT'
+        - Parameter 'operation' : 'ADD'
 
         Arguments
         ---------
@@ -1357,7 +1357,7 @@ class Float(Socket):
         -------
         - Float
         """
-        node = Node('Math', sockets={'Value': self}, operation='ARCTANGENT', use_clamp=use_clamp)
+        node = Node('Math', sockets={'Value': self}, operation='ADD', use_clamp=use_clamp)
         return node._out
 
     def atan2(self, value=None, use_clamp=False):
@@ -1366,7 +1366,7 @@ class Float(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'operation' : 'ARCTAN2'
+        - Parameter 'operation' : 'ADD'
 
         Arguments
         ---------
@@ -1377,7 +1377,7 @@ class Float(Socket):
         -------
         - Float
         """
-        node = Node('Math', sockets={'Value': self, 'Value_001': value}, operation='ARCTAN2', use_clamp=use_clamp)
+        node = Node('Math', sockets={'Value': self, 'Value_001': value}, operation='ADD', use_clamp=use_clamp)
         return node._out
 
     def sinh(self, use_clamp=False):
@@ -1386,7 +1386,7 @@ class Float(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'operation' : 'SINH'
+        - Parameter 'operation' : 'ADD'
 
         Arguments
         ---------
@@ -1396,7 +1396,7 @@ class Float(Socket):
         -------
         - Float
         """
-        node = Node('Math', sockets={'Value': self}, operation='SINH', use_clamp=use_clamp)
+        node = Node('Math', sockets={'Value': self}, operation='ADD', use_clamp=use_clamp)
         return node._out
 
     def cosh(self, use_clamp=False):
@@ -1405,7 +1405,7 @@ class Float(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'operation' : 'COSH'
+        - Parameter 'operation' : 'ADD'
 
         Arguments
         ---------
@@ -1415,7 +1415,7 @@ class Float(Socket):
         -------
         - Float
         """
-        node = Node('Math', sockets={'Value': self}, operation='COSH', use_clamp=use_clamp)
+        node = Node('Math', sockets={'Value': self}, operation='ADD', use_clamp=use_clamp)
         return node._out
 
     def tanh(self, use_clamp=False):
@@ -1424,7 +1424,7 @@ class Float(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'operation' : 'TANH'
+        - Parameter 'operation' : 'ADD'
 
         Arguments
         ---------
@@ -1434,7 +1434,7 @@ class Float(Socket):
         -------
         - Float
         """
-        node = Node('Math', sockets={'Value': self}, operation='TANH', use_clamp=use_clamp)
+        node = Node('Math', sockets={'Value': self}, operation='ADD', use_clamp=use_clamp)
         return node._out
 
     def radians(self, use_clamp=False):
@@ -1443,7 +1443,7 @@ class Float(Socket):
         Information
         -----------
         - Socket 'Degrees' : self
-        - Parameter 'operation' : 'RADIANS'
+        - Parameter 'operation' : 'ADD'
 
         Arguments
         ---------
@@ -1453,7 +1453,7 @@ class Float(Socket):
         -------
         - Float
         """
-        node = Node('Math', sockets={'Value': self}, operation='RADIANS', use_clamp=use_clamp)
+        node = Node('Math', sockets={'Value': self}, operation='ADD', use_clamp=use_clamp)
         return node._out
 
     def degrees(self, use_clamp=False):
@@ -1462,7 +1462,7 @@ class Float(Socket):
         Information
         -----------
         - Socket 'Radians' : self
-        - Parameter 'operation' : 'DEGREES'
+        - Parameter 'operation' : 'ADD'
 
         Arguments
         ---------
@@ -1472,7 +1472,7 @@ class Float(Socket):
         -------
         - Float
         """
-        node = Node('Math', sockets={'Value': self}, operation='DEGREES', use_clamp=use_clamp)
+        node = Node('Math', sockets={'Value': self}, operation='ADD', use_clamp=use_clamp)
         return node._out
 
     def mix(self, b=None, factor=None, clamp_factor=True):
@@ -1655,7 +1655,7 @@ class Float(Socket):
         Information
         -----------
         - Socket 'Hue' : self
-        - Parameter 'mode' : 'HSV'
+        - Parameter 'mode' : 'RGB'
 
         Arguments
         ---------
@@ -1666,7 +1666,7 @@ class Float(Socket):
         -------
         - Color
         """
-        node = Node('Combine Color', sockets={'Red': self, 'Green': saturation, 'Blue': value}, mode='HSV')
+        node = Node('Combine Color', sockets={'Red': self, 'Green': saturation, 'Blue': value}, mode='RGB')
         return node._out
 
     def combine_color_HSL(self, saturation=None, lightness=None):
@@ -1675,7 +1675,7 @@ class Float(Socket):
         Information
         -----------
         - Socket 'Hue' : self
-        - Parameter 'mode' : 'HSL'
+        - Parameter 'mode' : 'RGB'
 
         Arguments
         ---------
@@ -1686,7 +1686,7 @@ class Float(Socket):
         -------
         - Color
         """
-        node = Node('Combine Color', sockets={'Red': self, 'Green': saturation, 'Blue': lightness}, mode='HSL')
+        node = Node('Combine Color', sockets={'Red': self, 'Green': saturation, 'Blue': lightness}, mode='RGB')
         return node._out
 
     def combine_color(self, green=None, blue=None, mode='RGB'):

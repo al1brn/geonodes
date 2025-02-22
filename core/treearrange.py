@@ -884,6 +884,29 @@ class Frame(Node):
         for node in self.children:
             columns[node.col].append(node)
 
+        # ----- Utility to move a node from a column to another
+        # Need to move below nodes to
+
+        def move_node(node, from_col, to_col, at_index=None):
+
+            belows = [n for n in from_col if n.below and n.follower == node]
+
+            from_col.remove(node)
+
+            if at_index is None:
+                to_col.append(node)
+            else:
+                to_col.insert(at_index, node)
+
+            for i, n in enumerate(belows):
+                from_col.remove(n)
+                if at_index is None:
+                    to_col.append(n)
+                else:
+                    to_col.insert(at_index + 1 + i, n)
+
+            return to_col
+
         # ----- Input node : single left most node
 
         if self.input_node is not None:
@@ -897,8 +920,12 @@ class Frame(Node):
                         del columns[icol]
                         columns.append(in_col)
                 else:
-                    in_col.remove(self.input_node)
-                    columns.append([self.input_node])
+                    if True:
+                        to_col = move_node(self.input_node, in_col, [])
+                        columns.append(to_col)
+                    else:
+                        in_col.remove(self.input_node)
+                        columns.append([self.input_node])
 
         if self.output_node is not None:
             assert(self.output_node in columns[0])
@@ -908,20 +935,18 @@ class Frame(Node):
         if self.output_node is not None:
             col = columns[0]
             if len(col) > 1:
-                col.remove(self.output_node)
-                columns.insert(0, [self.output_node])
+                if True:
+                    to_col = move_node(self.output_node, col, [])
+                    columns.insert(0, to_col)
+                else:
+                    col.remove(self.output_node)
+                    columns.insert(0, [self.output_node])
 
         # Renum to be sure
 
         for icol, col in enumerate(columns):
             for node in col:
                 node.col = icol
-
-        # DEBUG
-        if False:
-            print(f">>> {str(self)} Columns:")
-            for i, col in enumerate(columns):
-                print("   ", i, [str(node) for node in col])
 
         # ----------------------------------------------------------------------------------------------------
         # Let's sort the columns

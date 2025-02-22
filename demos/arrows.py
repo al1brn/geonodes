@@ -28,6 +28,7 @@ updates
 - creation : 2024/07/23
 - update :   2024/09/04
 - update :   2025/01/12
+- update :   2025/01/25 # UV Cylinder
 
 $ DOC START
 
@@ -62,9 +63,44 @@ arrows.demo()
 
 from geonodes import *
 
+def uv_cylinder():
+    with GeoNodes("UV Cylinder"):
+
+        curve       = Curve(None, "Curve")
+        profile     = Curve(None, "Profile Curve")
+        fill_caps   = Boolean(False, "Fill Caps", tip="Caps are flagged with 'Cap', Boolean named attribute")
+        true_length = Boolean(False, "True Length UV", tip="UV Mapped is mapped in true length")
+
+        with Layout("Replace the profile curve by aline"):
+            count = profile.points.count
+            line = Curve.LinePoints().resample(count+1)
+            line.points._T_u = Spline.parameter_factor
+
+        with Layout("Curve to Mesh with open line"):
+            t_curve = Curve(curve)
+            t_curve.points._T_v = Spline.parameter_factor
+
+            mesh = t_curve.to_mesh(profile_curve=line, fill_caps=False)
+            uv = Vector((Float("T u"), Float("T v"), 0))
+
+        with Layout("Curve to mesh with true profile and possible caps"):
+            final = curve.to_mesh(profile_curve=profile, fill_caps=fill_caps)
+            uv_map = mesh.corners.sample_index(uv, index=nd.index)
+            uv_map = uv_map.switch(true_length, uv_map*(profile.length(), curve.length(), 1))
+            final.corners[:mesh.corners.count].store_uv("UV Map", uv_map)
+
+        with Layout("Cap faces if any"):
+            final.faces._Cap = Boolean.Switch(fill_caps, False, nd.index >= final.faces.count - 2)
+
+        final.out()
+
+
+
 def demo():
 
     print("\nCreate Arrows nodes...")
+
+    uv_cylinder()
 
     with ShaderNodes("Arrow"):
 
@@ -83,6 +119,33 @@ def demo():
         shader = ped.mix(Shader.Transparent(), fac=transp)
 
         shader.out()
+
+    with ShaderNodes("Arrow Helix"):
+
+        color0    = Color(snd.attribute(attribute_type='GEOMETRY', attribute_name="Color 0").color)
+        color1    = Color(snd.attribute(attribute_type='GEOMETRY', attribute_name="Color 1").color)
+        negative  = snd.attribute(attribute_type='GEOMETRY', attribute_name="Negative").fac
+        transp    = snd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").fac
+
+        neg_color0 = color0.hue_saturation_value(hue=.5, saturation=.9, value=.9)
+        neg_color1 = color1.hue_saturation_value(hue=.5, saturation=.9, value=.9)
+        color0 = color0.mix(neg_color0, negative)
+        color1 = color1.mix(neg_color1, negative)
+
+        uv = snd.texture_coordinate().uv
+        x, y, _ = uv.xyz
+
+        color = color0.mix(color1, (x + y) % .5)
+
+        ped = Shader.Principled(
+            base_color = color,
+            roughness  = negative.map_range(to_min=.1, to_max=.9),
+        )
+
+        shader = ped.mix(Shader.Transparent(), fac=transp)
+
+        shader.out()
+
 
     # ====================================================================================================
     # Arrows field
@@ -222,6 +285,70 @@ def demo():
         # ----- Call the group with the same parameters
 
         group_node = Group("Arrows", {'Geometry': cloud, 'Vector': vector}, link_from='TREE').out()
+
+    # ----------------------------------------------------------------------------------------------------
+    # Any Arrow
+
+    with GeoNodes("Curve to Arrow"):
+
+        curve = Curve()
+
+        show_start = Boolean(False,          "Arrow at curve start")
+        show_end   = Boolean(True,           "Arrow at curve end")
+
+        trim0      = Float.Factor(0,         "Trim Sart", 0, 1,     tip="Curve trim start")
+        trim1      = Float.Factor(1,         "Trim End", 0, 1,      tip="Curve trim end")
+        resamp     = Integer(32,             "Resample", 10)
+        resol      = Integer(  12,           "Resolution",  3, 64,  tip="Arrows shaft resolution", single_value=True)
+        section    = Float(   .02,           "Section", 0., 1.,     tip="Arrows shaft radius", single_value=True)
+        color0     = Color((0., 0., 1., 1.), "Color 0",             tip="First color to pass as 'Color 0' named attribute for shader", single_value=True)
+        color1     = Color((1., 0., 0., 1.), "Color 1",             tip="Second color to pass as 'Color 1' named attribute for shader", single_value=True)
+
+        shaft_mat  = Material("Arrow",       "Shaft",               tip="Material for the shaft")
+        head_mat   = Material("Arrow",       "Head",                tip="Material for the head")
+        show_arrow = Boolean(True,           "Show",                tip="Show / hide flag")
+
+        with Layout("Prepare curve"):
+            curve = curve.resample(resamp)
+            curve.trim_factor(start=trim0, end=trim1)
+
+        with Layout("Shaft"):
+
+            shaft = Mesh(G().uv_cylinder(curve, Curve.Circle(radius=section, resolution=resol), fill_caps=True))
+            shaft.faces.material = shaft_mat
+
+        with Layout("Cone"):
+            cone_height = section*7
+            cone = Mesh.Cone(vertices=2*resol, radius_bottom=section*3., depth=cone_height)
+            cone.corners.store_uv("UV Map", cone.uv_map_)
+            cone.faces.material = head_mat
+
+        with Layout("Ends"):
+
+            node0 = curve.sample_factor(factor=0).node
+            head = Mesh(cone).transform(translation=node0.position, rotation=Rotation.AlignZToVector(-node0.tangent))
+            geo = head.switch_false(show_start)
+
+            node1 = curve.sample_factor(factor=1).node
+            head = Mesh(cone).transform(translation=node1.position, rotation=Rotation.AlignZToVector(node1.tangent))
+            geo += head.switch_false(show_end)
+
+        geo += shaft
+        geo.faces.smooth = True
+        geo.faces._Color   = color0
+        geo.faces._Color_1 = color1
+
+
+        show_arrow &= trim1 > trim0
+        geo.switch_false(show_arrow).out()
+
+
+        node0.position.out("Start")
+        node1.position.out("End")
+        node0.tangent.out("Start Tangent")
+        node1.tangent.out("End Tangent")
+
+
 
     # ----------------------------------------------------------------------------------------------------
     # Show case

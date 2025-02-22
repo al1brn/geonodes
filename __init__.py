@@ -100,6 +100,8 @@ e      = np.e
 
 
 if True:
+    from .core import blender
+
     from .core import Boolean, Float, Integer, Vector, Rotation, Matrix, Color, String
     from .core import Texture, Collection, Object, Image, Material
     from .core import Menu

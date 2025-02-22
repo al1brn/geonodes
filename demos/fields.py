@@ -70,6 +70,78 @@ import numpy as np
 from geonodes.demos import arrows as arrows_module
 from geonodes import *
 
+
+
+
+# =============================================================================================================================
+# MACRO: generate the laplacian computation of a field
+#
+# The fiels id given by a group using at leat two sockets:
+# - position
+# - t
+#
+# Other sockets are linked
+
+def build_field_derivatives(field_name, name=None, socket_out=None):
+
+    if name is None:
+        name = f"{field_name} Derivatives"
+
+    def call_group(pos, t, label):
+        node = Group(field_name, position=pos, t=t, link_from='TREE')
+        if socket_out is None:
+            return node._out._lc(label)
+        else:
+            return node[socket_out]._lc(label)
+
+    with GeoNodes(name, is_group=True):
+
+        pos = Vector.Position()
+        t   = Float(0, "t")
+        ds  = Float(.01, "ds", .0001)
+
+        inv_ds = .5/ds
+        inv_ds2 = inv_ds**2
+
+        F = call_group(pos, t, "F")
+        F.out("Field")
+
+        with Layout("Speed and Acceleration"):
+            F0 = call_group(pos, t - ds, "F(t - dt)")
+            F1 = call_group(pos, t + ds, "F(t + dt)")
+            (F1 - F0).scale(inv_ds).out("Speed")
+            (F0 + F1 - 2*F).scale(inv_ds2).out("Acceleration")
+
+        with Layout("Neighbor vectors"):
+
+            # Differences
+            D = []
+
+            # Laplacian
+            L = (-6)*F
+
+            for i in range(3):
+                dP = [0]*3
+                dP[i] = ds
+                F0 = call_group(pos - dP, t, f"F0/d{'xyz'[i]}")
+                F1 = call_group(pos + dP, t, f"F1/d{'xyz'[i]}")
+
+                D.append((F1 - F0)._lc(f"D{'xyz'[i]}"))
+
+                L += F0 + F1
+
+        with Layout("Divergence"):
+            dv = D[0].x + D[1].y + D[2].z
+            (dv * inv_ds).out("Divergence")
+
+        with Layout("Curl"):
+            curl = D[1].z - D[2].y, D[2].x - D[0].z, D[0].y - D[1].x
+            Vector(curl).scale(inv_ds).out("Curl")
+
+        with Layout("Laplacian"):
+            L.scale(inv_ds2).out("Laplacian")
+
+
 def demo():
 
     print("\nCreate fields Geometry Nodes...")
@@ -183,36 +255,30 @@ def demo():
 
         cloud.out()
 
+
     # =============================================================================================================================
     # Field visualization
 
     # -----------------------------------------------------------------------------------------------------------------------------
-    # Lines of field
+    # Lines of field under a certain direction
 
-    with GeoNodes("Field Lines"):
+    with GeoNodes("Field Lines Directed"):
 
-        geo = Geometry()
+        mesh = Mesh()
 
         field = Vector(None, "Field", tip="Field vector at the input geometry points", hide_value=True)
 
         with Panel("Lines Parameters"):
+            direction   = Integer(1, "Direction",  tip="Move forwards (+1) or backwards (-1)")
             iterations  = Integer(20, "Iterations", 1, tip="Number of iterations per line")
             delta       = Float(.1, "Delta", .001, tip="Distance to move at each iteration")
-            direction   = Integer(1, "Direction",  tip="Move forwards (+1) or backwards (-1)")
-
-        with Panel("Lines"):
-            keep_curves = Boolean(False, "Keep Curves")
-            line_radius = Float(.02, "Radius",0.)
-            line_resol  = Integer(12, "Resolution", 3)
-            line_mat    = Material("Arrow", "Material")
-            line_color  = Color((0, 0, 1), "Color")
-
-        with Layout("Prepare Mesh"):
-            mesh = geo.mesh.points.delete_edge_face() + geo.point_cloud.to_vertices()
-            mesh.points.store("DELTA", delta*direction)
+            val_min     = Float(.001, "Min Intensity", 0.00001, tip="Stop iteration when intensity is less than this value")
+            val_max     = Float(10, "Max Intensity", .001, tip="Stop iteration when intensity is greater than this value")
 
         # ----------------------------------------------------------------------------------------------------
         # Extrusion loop
+
+        mesh.points._Delta = delta*direction
 
         with Repeat(mesh=mesh, top=True, iterations=iterations) as rep:
 
@@ -223,21 +289,23 @@ def demo():
                 v0 = field
                 l0 = v0.length()
 
-                mesh.points[rep.top].store("Intensity", l0)
+                top = rep.top
+                mesh.points[top]._Intensity = l0
 
-                rep.top &= l0.greater_than(0.001)
+                top &= l0.greater_than(val_min)
+                top &= l0.less_than(val_max)
 
-                v0 = v0.normalize().scale(Float.Named("DELTA"))
+                v0 = v0.normalize().scale(Float("Delta"))
 
             with Layout("Extrude from this first displacement"):
 
-                mesh.points[rep.top].extrude(offset=v0)
-                top  = mesh.top_
+                mesh.points[top].extrude(offset=v0)
+                top = mesh.top_
 
             with Layout("Displacement from extruded point"):
 
                 v1 = field
-                v1 = v1.normalize().scale(Float.Named("DELTA"))
+                v1 = v1.normalize().scale(Float("Delta"))
                 v1 = (v1 - v0).scale(.5)
 
                 mesh.points[top].offset = v1
@@ -246,19 +314,68 @@ def demo():
             rep.mesh = mesh
 
         mesh = rep.mesh
+        mesh.remove_named_attribute("Delta")
+
+        mesh.out()
+
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Lines of field
+
+    with GeoNodes("Field Lines"):
+
+        geo = Geometry()
+
+        field = Vector(None, "Field", tip="Field vector at the input geometry points", hide_value=True)
+
+        #with Panel("Lines Parameters"):
+        #    iterations  = Integer(20, "Iterations", 1, tip="Number of iterations per line")
+        #    delta       = Float(.1, "Delta", .001, tip="Distance to move at each iteration")
+        #    direction   = Integer(1, "Direction",  tip="Move forwards (+1) or backwards (-1)")
+
+        with Panel("Lines"):
+            keep_curves = Boolean(False, "Keep Curves")
+            line_radius = Float(.02, "Radius",0.)
+            line_lamb   = Float(1, "Lambda", 0)
+            line_resol  = Integer(12, "Resolution", 3)
+            line_mat    = Material("Arrow", "Material")
+            line_color  = Color((0, 0, 1), "Color")
+
+        with Layout("Prepare Mesh"):
+            mesh = geo.mesh.points.delete_edge_face() + geo.point_cloud.to_vertices()
+            #mesh.points.store("DELTA", delta*direction)
+
+        # ----------------------------------------------------------------------------------------------------
+        # Extrusion in both directions
+
+        mesh0 = G().field_lines_directed(mesh, field, direction=1, link_from='TREE')
+        mesh1 = G().field_lines_directed(mesh, field, direction=-1, link_from='TREE')
+
+        mesh = Mesh((mesh0 + mesh1).merge_by_distance())
+
+        # ----------------------------------------------------------------------------------------------------
+        # To curves
 
         with Layout("Curves"):
-            mesh.remove_named_attribute("DELTA")
-
             curve = mesh.to_curve()
-            curve.points.radius = gnmath.log(1 + Float.Named("Intensity"))
+            #curve.points.radius = gnmath.log(1 + Float("Intensity"))
+            #curve.points.radius = Float("Intensity")
+            curve.points.radius = 1/(1 + gnmath.exp(-line_lamb*Float("Intensity"))) - .5
+
+        # ----------------------------------------------------------------------------------------------------
+        # To mesh
 
         with Layout("To Mesh"):
 
-            mesh_lines = curve.to_mesh(profile_curve=Curve.Circle(radius=line_radius, resolution=line_resol))
+            curve.points._Uvmap_u = Spline.parameter().factor
+            circle = Curve.Circle(radius=line_radius, resolution=line_resol)
+            circle.points._Uvmap_v = Spline.parameter().factor
+
+            mesh_lines = curve.to_mesh(profile_curve=circle)
             mesh_lines.faces.material = line_mat
             mesh_lines.faces._Color = line_color
             mesh_lines.faces.smooth = True
+            mesh_lines.corners.store_uv("UV Map", Vector((Float("Uvmap u"), Float("Uvmap v"), 0)))
+            mesh_lines.remove_names("Uvmap*")
 
         mesh_lines.switch(keep_curves, curve).out()
 
@@ -273,7 +390,7 @@ def demo():
 
         with Layout("Prepare Mesh"):
             mesh = geo.mesh.points.delete_edge_face() + geo.point_cloud.to_vertices()
-            mesh.points.store("DELTA", delta*direction)
+            #mesh.points.store("DELTA", delta*direction)
 
         node = Group("Arrows", geometry=geo, vector=field, link_from='TREE')
 
@@ -294,7 +411,7 @@ def demo():
             charge_loc = Vector(0, "Charge Location", tip="Location of the moving charge")
             charge     = Float(1,  "Charge", tip="Value of the charge")
             speed      = Vector((.8, 0, 0), "Speed", tip="Speed of the moving charge as a percentage of speed of light.")
-            max_len    = Float(1000, "Max Length", 1, tip="Max field vector length")
+            #max_len    = Float(1000, "Max Length", 1, tip="Max field vector length")
 
         with Layout("Ensure beta is not greater than 1"):
             length = speed.length()
@@ -318,9 +435,17 @@ def demo():
             E = gr3*rotated_position
             B = (gr3*beta)*Vector((0, -rotated_position.z, rotated_position.y))
 
+        """
         with Layout("Maximum length"):
-            E = E.normalize().scale(gnmath.min(E.length(), max_len))
-            B = B.normalize().scale(gnmath.min(B.length(), max_len))
+            if False:
+                l = E.length()
+                E = E.normalize().scale(1/(1 + gnmath.exp(-1*l)))
+                l = B.length()
+                B = B.normalize().scale(1/(1 + gnmath.exp(-1*l)))
+            else:
+                E = E.normalize().scale(gnmath.min(E.length(), max_len))
+                B = B.normalize().scale(gnmath.min(B.length(), max_len))
+        """
 
         with Layout("Back to the initial frame"):
             E = rotation @ E
@@ -344,8 +469,8 @@ def demo():
 
         cloud = geo.point_cloud + geo.mesh.to_points() + geo.curve.to_points()
 
-        with Panel("Options"):
-            max_len = Float(1000, "Max Length", 1, tip="Max field vector length", single_value=True)
+        #with Panel("Options"):
+        #    max_len = Float(1000, "Max Length", 1, tip="Max field vector length", single_value=True)
 
         with Repeat(cloud=cloud, charge=charge, speed=speed, field_e=Vector(), field_b=Vector(), iterations=cloud.points.count) as rep:
 
@@ -523,6 +648,8 @@ def demo():
             location    = Vector(0, "Location", tip="Magnet location")
             rotation    = Rotation(0, "Rotation", tip="Magnet rotation")
             speed       = Vector(0, "Speed", tip="Magnet speed in percentage of the speed of light")
+            int_fac     = Float(1, "Intensity", 0)
+
 
         # ----- Computation is made for a magnet centered along the x axis
 
@@ -547,6 +674,13 @@ def demo():
         # ----- Normalized B
 
         B = Vector(((r - y_)/width_scale, x, 0)).normalize()
+
+        # ----- Field intensity
+
+        ag_int = gnmath.atan2(y_, x)
+        intensity = gnmath.cos(ag_int)/r
+        intensity = 1/(1 + gnmath.exp(-int_fac*intensity**2)) - .5
+        B = B.scale(intensity)
 
         # ----- Rotation
 
@@ -678,9 +812,9 @@ def demo():
 
         # ----- Lines of field
 
-        d = Integer.Random(0, 1, seed=10000)*2 - 1
+        #d = Integer.Random(0, 1, seed=10000)*2 - 1
         lines = Group("Field Lines", geometry=source, field=field,
-            direction=d,
+            #direction=d,
             iterations=50,
             delta=.5,
             radius=line_sect,

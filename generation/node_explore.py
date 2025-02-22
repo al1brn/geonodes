@@ -53,6 +53,142 @@ SPEC_NODES = {
 _1, _2, _3, _4 = " "*4, " "*8, " "*12, " "*16
 
 # ====================================================================================================
+# Node Param
+
+NEW_PARAM = True
+
+class NodeParam:
+    def __init__(self, bnode, name, value, param_type):
+        self.bnode      = bnode
+        self.name       = name
+        self.value      = value
+        self.param_type = param_type
+        self.enums      = None
+
+    def __str__(self):
+        return str(self.value)
+
+    @classmethod
+    def Parameter(cls, bnode, name):
+
+        if name in IGNORE_PARAMS:
+            return None
+
+        value = getattr(bnode, name)
+        param_type = None
+
+        s = str(value)
+
+        # ----- It is an object
+
+        if s.startswith('<'):
+
+            # ----- VectorFont
+            if isinstance(value, bpy.types.VectorFont):
+                value = None
+                param_type = 'FONT'
+
+            if param_type is None:
+                return None
+
+        # ----- Let's initialize the param
+
+        if param_type is None:
+            param_type = 'VALUE'
+        param = cls(bnode, name, value, param_type)
+
+        # ----- It could be an enum list
+
+        if isinstance(value, str):
+            enums = param.get_enum_list()
+            if enums is not None:
+                param.param_type = 'ENUM'
+                param.enums      = enums
+
+        # ----- Done
+
+        return param
+
+    # ====================================================================================================
+    # Get the valid values of an enum params
+
+    def get_enum_list(self, user_version: bool = False) -> tuple | None:
+        """ Get the list of valid values of a node parameter.
+
+        The list can vary when node parameters are changed.
+
+        Arguments
+        ---------
+        - user_version (bool = False) user version
+
+        Returns
+        -------
+        - tuple of valid values or None if the parameter is not a enum parameter
+        """
+        if not isinstance(self.value, str):
+            return None
+
+        try:
+            setattr(self.bnode, self.name, 'ERROR')
+
+        except TypeError as e:
+            msg = str(e)
+            i = msg.find('enum "ERROR" not found in')
+            if i <= 0:
+                return None
+
+            vals = eval(msg[i+26:])
+            # Only one possible value : ('VALUE') is evaluated as a str, not a singleton of a str
+            if isinstance(vals, str):
+                vals = (vals,)
+
+            if user_version:
+                return utils.get_enum_param_users(vals, self.bnode.name, self.name)
+            else:
+                return vals
+
+        return None
+
+    # ====================================================================================================
+    # Argument information
+
+    @property
+    def comment(self):
+
+        if self.param_type == 'ENUM':
+            return f"{self.name} (str): parameter '{self.name}' in {self.get_enum_list(user_version=True)}"
+
+        elif self.param_type == 'FONT':
+            return f"{self.name} (Blender VectorFont | str): VectorFont, or name of a valid font in bpy.types.fonts (see `utils.get_font`)"
+
+        else:
+            return f"{self.name} ({type(self.value).__name__}): parameter '{self.name}'"
+
+    @property
+    def arg_value(self):
+        if self.param_type == 'VALUE':
+            if isinstance(self.value, str):
+                return f"'{self.value}'"
+            else:
+                return str(self.value)
+
+        elif self.param_type == 'ENUM':
+            return f"'{self.value}'"
+
+        elif self.param_type == 'FONT':
+            return None
+
+        else:
+            assert(False)
+
+    @property
+    def set_value(self):
+        if self.param_type == 'FONT':
+            return f"utils.get_font({self.name})"
+        else:
+            return self.name
+
+# ====================================================================================================
 # Node wrapper
 
 class NodeInfo:
@@ -98,29 +234,69 @@ class NodeInfo:
         # ----------------------------------------------------------------------------------------------------
         # Analyze the parameters
 
-        self.params = {}
-        for name in dir(self.bnode):
-            if name in NodeInfo.STD_ATTRS or name[-6:] == '_items':
-                continue
-            if name in IGNORE_PARAMS:
-                continue
-            s = str(getattr(self.bnode, name))
-            if not s.startswith('<'):
-                self.params[name] = getattr(self.bnode, name)
+        if NEW_PARAM:
+            self.params = {}
+            for name in dir(self.bnode):
+                if name in NodeInfo.STD_ATTRS or name[-6:] == '_items':
+                    continue
 
-        # ----- Parameters in enum
+                param = NodeParam.Parameter(self.bnode, name)
+                if param is not None:
+                    self.params[name] = param
 
-        self.enum_params   = {}
-        self.user_params   = {}
-        for param in self.params:
-            enums = self.get_enum_list(param)
-            if enums is None:
-                continue
-            self.enum_params[param] = enums
-            if param in ['domain', 'data_type', 'input_type']:
-                self.user_params[param] = enums
-            else:
-                self.user_params[param] = utils.get_enum_param_users(enums, self.bnode.name, param, user_case=True)
+            # ----- Parameters in enum
+
+            self.enum_params   = {}
+            self.user_params   = {}
+            for name, param in self.params.items():
+                if param.param_type != 'ENUM':
+                    continue
+
+                self.enum_params[name] = param.enums
+
+                if name in ['domain', 'data_type', 'input_type']:
+                    self.user_params[name] = param.enums
+                else:
+                    self.user_params[name] = utils.get_enum_param_users(param.enums, self.bnode.name, name, user_case=True)
+
+        else:
+            self.params = {}
+            for name in dir(self.bnode):
+                if name in NodeInfo.STD_ATTRS or name[-6:] == '_items':
+                    continue
+
+                if name in IGNORE_PARAMS:
+                    continue
+
+                param = getattr(self.bnode, name)
+                s = str(param)
+                ok = not s.startswith('<')
+                if not ok:
+                    if isinstance(param, bpy.types.VectorFont):
+                        param = None
+                        ok = False
+                if ok:
+                    self.params[name] = param
+
+            # ----- Parameters in enum
+
+            self.enum_params   = {}
+            self.user_params   = {}
+            for param in self.params:
+                enums = self.get_enum_list(param)
+                if enums is None:
+                    continue
+                self.enum_params[param] = enums
+                if param in ['domain', 'data_type', 'input_type']:
+                    self.user_params[param] = enums
+                else:
+                    self.user_params[param] = utils.get_enum_param_users(enums, self.bnode.name, param, user_case=True)
+
+
+
+
+
+
 
         self.data_type_sockets = self.get_data_type_sockets()
 
@@ -660,6 +836,13 @@ class NodeInfo:
         -------
         - tuple of valid values or None if the parameter is not a enum parameter
         """
+
+        if NEW_PARAM:
+            if self.params[param].param_type != 'ENUM':
+                return None
+            else:
+                return self.params[param].get_enum_list(user_version)
+
         value = self.params[param]
         if not isinstance(value, str):
             return None
@@ -861,17 +1044,27 @@ class NodeInfo:
             # ----- Forced, vs free
 
             forced = param in parameters
-            value = parameters[param] if forced else param_value
+            if NEW_PARAM:
+                value = parameters[param] if forced else param_value.value
+            else:
+                value = parameters[param] if forced else param_value
 
             # ----- Parameter value to source code string
 
-            str_value : str
-            if isinstance(value, str):
-                str_value = f"'{value}'"
-            elif str(value)[0] == '<':
-                str_value = "None"
+            if NEW_PARAM:
+                str_value  = param_value.arg_value
+                node_value = param_value.set_value
+
             else:
-                str_value = str(value)
+                str_value : str
+                if isinstance(value, str):
+                    str_value = f"'{value}'"
+                elif str(value)[0] == '<':
+                    str_value = "None"
+                else:
+                    str_value = str(value)
+
+                node_value = param
 
             # ----- Add the parameter
 
@@ -889,13 +1082,17 @@ class NodeInfo:
 
             else:
                 d['arg_value']  = str_value
-                d['node_value'] = param
+                d['node_value'] = node_value
 
                 if param in self.enum_params:
                     d['comment'] = f"{param} (str): parameter '{param}' in {self.get_enum_list(param, user_version=True)}"
                     d['check'] = f"utils.check_enum_arg('{self.bnode.name}', '{param}', {param}, 'METH_NAME', {self.get_enum_list(param)})"
                 else:
                     d['comment'] = f"{param} ({type(value).__name__}): parameter '{param}'"
+
+                if NEW_PARAM:
+                    d['comment'] = param_value.comment
+
 
             if False: # A REPRENDRE
                 if param == 'object' and self.btree.bl_idname == 'ShaderNodeTree':

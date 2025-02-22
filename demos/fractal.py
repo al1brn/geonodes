@@ -145,7 +145,7 @@ def random_normal():
         with Layout(f"Expand Seed {n} Times"):
 
             cloud = Cloud.Points(n)
-            values = Integer.Random(0, MAX_INT, seed=seed)
+            values = cloud.points.capture(Integer.Random(0, MAX_INT, seed=seed))
 
             seeds = ()
             for i in range(n):
@@ -165,7 +165,7 @@ def random_normal():
         x1 = Float.Random(0, 1, id=ID, seed=seed0)
         x2 = Float.Random(0, 1, id=ID, seed=seed1)
 
-        y1 = gnmath.sqrt(-2*gnmath.log(x1))*gnmath.cos(2*np.pi*x2)
+        y1 = gnmath.sqrt(-2*gnmath.log(x1, e))*gnmath.cos(2*np.pi*x2)
 
         y = value + scale*y1
 
@@ -1436,6 +1436,7 @@ def romanesco():
         geo += debug_spirals.switch_false(show_spirals)
         geo = geo.switch(show_spiral, initial_spiral)
         geo.out()
+
 
 
 

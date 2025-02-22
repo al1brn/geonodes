@@ -13,13 +13,13 @@ class GreasePencil(Socket):
         Information
         -----------
         - Socket 'Geometry' : self
-        - Parameter 'component' : 'GREASEPENCIL'
+        - Parameter 'component' : 'MESH'
 
         Returns
         -------
         - node [layer_count (Integer)]
         """
-        node = self._cache('Domain Size', sockets={'Geometry': self}, component='GREASEPENCIL')
+        node = self._cache('Domain Size', sockets={'Geometry': self}, component='MESH')
         return node
 
     def to_curves(self, layers_as_instances=None):
@@ -84,7 +84,7 @@ class GreasePencil(Socket):
         -----------
         - Socket 'Grease Pencil' : self
         - Socket 'Selection' : self[selection]
-        - Parameter 'mode' : 'MERGE_BY_ID'
+        - Parameter 'mode' : 'MERGE_BY_NAME'
 
         Arguments
         ---------
@@ -94,7 +94,7 @@ class GreasePencil(Socket):
         -------
         - GreasePencil
         """
-        node = Node('Merge Layers', sockets={'Grease Pencil': self, 'Selection': self._sel, 'Group ID': group_id}, mode='MERGE_BY_ID')
+        node = Node('Merge Layers', sockets={'Grease Pencil': self, 'Selection': self._sel, 'Group ID': group_id}, mode='MERGE_BY_NAME')
         self._jump(node._out)
         return self._domain_to_geometry
 

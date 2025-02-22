@@ -93,6 +93,9 @@ class GeoBase:
         if selection is None:
             return None
 
+        # ----------------------------------------------------------------------------------------------------
+        # Slice
+
         if isinstance(selection, slice):
             with Layout(f"selection = {selection}", color='AUTO_GEN'):
                 if selection.start is None:
@@ -103,6 +106,9 @@ class GeoBase:
                     a = (selection.start + selection.stop)/2
                     dist = a - selection.start + .1
                     selection = Float(nd.index).equal(a, epsilon=dist)
+
+        # ----------------------------------------------------------------------------------------------------
+        # Tuple
 
         elif isinstance(selection, tuple):
             with Layout(f"selection = tuple", color='AUTO_GEN'):
@@ -115,6 +121,9 @@ class GeoBase:
                         sel |= idx.equal(item)
 
                 selection = sel
+
+        # ----------------------------------------------------------------------------------------------------
+        # Index
 
         else:
             socket_type = utils.get_socket_type(selection)

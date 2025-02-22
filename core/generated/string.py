@@ -13,9 +13,9 @@ class String(Socket):
         Information
         -----------
         - Socket 'A' : self
-        - Parameter 'data_type' : 'STRING'
+        - Parameter 'data_type' : 'FLOAT'
         - Parameter 'mode' : 'ELEMENT'
-        - Parameter 'operation' : 'EQUAL'
+        - Parameter 'operation' : 'GREATER_THAN'
 
         Arguments
         ---------
@@ -25,7 +25,7 @@ class String(Socket):
         -------
         - Boolean
         """
-        node = Node('Compare', sockets={'A_STR': self, 'B_STR': b}, data_type='STRING', mode='ELEMENT', operation='EQUAL')
+        node = Node('Compare', sockets={'A_STR': self, 'B_STR': b}, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN')
         return node._out
 
     def not_equal(self, b=None):
@@ -34,9 +34,9 @@ class String(Socket):
         Information
         -----------
         - Socket 'A' : self
-        - Parameter 'data_type' : 'STRING'
+        - Parameter 'data_type' : 'FLOAT'
         - Parameter 'mode' : 'ELEMENT'
-        - Parameter 'operation' : 'NOT_EQUAL'
+        - Parameter 'operation' : 'GREATER_THAN'
 
         Arguments
         ---------
@@ -46,7 +46,7 @@ class String(Socket):
         -------
         - Boolean
         """
-        node = Node('Compare', sockets={'A_STR': self, 'B_STR': b}, data_type='STRING', mode='ELEMENT', operation='NOT_EQUAL')
+        node = Node('Compare', sockets={'A_STR': self, 'B_STR': b}, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN')
         return node._out
 
     def hash_value(self, seed=None):
@@ -55,7 +55,7 @@ class String(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'data_type' : 'STRING'
+        - Parameter 'data_type' : 'INT'
 
         Arguments
         ---------
@@ -65,7 +65,7 @@ class String(Socket):
         -------
         - Integer
         """
-        node = Node('Hash Value', sockets={'Value': self, 'Seed': seed}, data_type='STRING')
+        node = Node('Hash Value', sockets={'Value': self, 'Seed': seed}, data_type='INT')
         return node._out
 
     @classmethod
@@ -189,7 +189,7 @@ class String(Socket):
         node = Node('Join Strings', sockets={'Delimiter': delimiter, 'Strings': list(strings)})
         return cls(node._out)
 
-    def to_curves(self, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, align_x='LEFT', align_y='TOP_BASELINE', overflow='OVERFLOW', pivot_mode='BOTTOM_LEFT'):
+    def to_curves(self, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, align_x='LEFT', align_y='TOP_BASELINE', font=None, overflow='OVERFLOW', pivot_mode='BOTTOM_LEFT'):
         """ > Node <&Node String to Curves>
 
         Information
@@ -205,6 +205,7 @@ class String(Socket):
         - text_box_width (Float) : socket 'Text Box Width' (id: Text Box Width)
         - align_x (str): parameter 'align_x' in ['LEFT', 'CENTER', 'RIGHT', 'JUSTIFY', 'FLUSH']
         - align_y (str): parameter 'align_y' in ['TOP', 'TOP_BASELINE', 'MIDDLE', 'BOTTOM_BASELINE', 'BOTTOM']
+        - font (Blender VectorFont | str): VectorFont, or name of a valid font in bpy.types.fonts (see `utils.get_font`)
         - overflow (str): parameter 'overflow' in ['OVERFLOW', 'SCALE_TO_FIT', 'TRUNCATE']
         - pivot_mode (str): parameter 'pivot_mode' in ['MIDPOINT', 'TOP_LEFT', 'TOP_CENTER', 'TOP_RIGHT', 'BOTTOM_LEFT', 'BOTTOM_CENTER', 'BOTTOM_RIGHT']
 
@@ -216,6 +217,6 @@ class String(Socket):
         utils.check_enum_arg('String to Curves', 'align_y', align_y, 'to_curves', ('TOP', 'TOP_BASELINE', 'MIDDLE', 'BOTTOM_BASELINE', 'BOTTOM'))
         utils.check_enum_arg('String to Curves', 'overflow', overflow, 'to_curves', ('OVERFLOW', 'SCALE_TO_FIT', 'TRUNCATE'))
         utils.check_enum_arg('String to Curves', 'pivot_mode', pivot_mode, 'to_curves', ('MIDPOINT', 'TOP_LEFT', 'TOP_CENTER', 'TOP_RIGHT', 'BOTTOM_LEFT', 'BOTTOM_CENTER', 'BOTTOM_RIGHT'))
-        node = Node('String to Curves', sockets={'String': self, 'Size': size, 'Character Spacing': character_spacing, 'Word Spacing': word_spacing, 'Line Spacing': line_spacing, 'Text Box Width': text_box_width}, align_x=align_x, align_y=align_y, overflow=overflow, pivot_mode=pivot_mode)
+        node = Node('String to Curves', sockets={'String': self, 'Size': size, 'Character Spacing': character_spacing, 'Word Spacing': word_spacing, 'Line Spacing': line_spacing, 'Text Box Width': text_box_width}, align_x=align_x, align_y=align_y, font=utils.get_font(font), overflow=overflow, pivot_mode=pivot_mode)
         return node._out
 

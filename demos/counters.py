@@ -46,6 +46,8 @@ to simulatue wheel rotation.
 
 A counter is made of a variable number of analog figure.
 
+To be complete, a analogic clock is provided with its default shaders
+
 
 > [!NOTE]
 > Modifiers:
@@ -54,6 +56,7 @@ A counter is made of a variable number of analog figure.
 > - Digital Counter
 > - Figure
 > - Wheels Counter
+> - Clock
 
 ``` python
 from geonodes.demos import counters
@@ -85,7 +88,8 @@ Geometry Nodes
 updates
 -------
 - creation : 2024/08/24
-- update   : 20242/09/04
+- update   : 2024/09/04
+- update   : 2025/01/23 # Analogic Clock
 """
 
 from geonodes import *
@@ -508,3 +512,231 @@ def demo():
 
 
         wheels.out()
+
+# =============================================================================================================================
+# Analogic clock materials
+
+with ShaderNodes("Clock Background"):
+
+    ped = Shader.Principled(
+        base_color = (1, 1, 1),
+        roughness = .3,
+        metallic = 0.,
+    )
+
+    ped.out()
+
+with ShaderNodes("Clock Needles"):
+
+    ped = Shader.Metallic(
+        base_color = (0.1, 0.05, 0.05),
+        roughness = 0.1,
+    )
+
+    ped.out()
+
+with ShaderNodes("Clock Seconds"):
+
+    ped = Shader.Principled(
+        base_color = (1, 0, 0),
+        roughness = 0.1,
+    )
+
+    ped.out()
+
+with ShaderNodes("Clock Seconds"):
+
+    ped = Shader.Principled(
+        base_color = (1, 0, 0),
+        roughness = 0.1,
+    )
+
+    ped.out()
+
+
+with ShaderNodes("Clock Marks"):
+
+    ped = Shader.Metallic(
+        base_color = (0.1, 0.05, 0.05),
+        roughness = 0.1,
+    )
+
+    ped.out()
+
+
+with ShaderNodes("Clock Outer"):
+
+    ped = Shader.Principled(
+        base_color = snd.attribute("Color"),
+        roughness = 0.1,
+    )
+
+    ped.out()
+
+
+
+# =============================================================================================================================
+# Analogic clock Clock
+
+with GeoNodes("Clock"):
+
+    t          = Float(438, "Time", tip="Time in seconds")
+
+    show_hours = Boolean(True, "Hours")
+    show_mins  = Boolean(True, "Minutes")
+    show_secs  = Boolean(True, "Seconds")
+    show_torus = Boolean(True, "Outer")
+
+    radius     = Float(1, "Radius", 0)
+    torus_r    = Float.Percentage(5, "Outer Radius", 1, 25)
+
+    back_mat   = Material("Clock Background", "Background")
+    marks_mat  = Material("Clock Marks", "Marks")
+    needle_mat = Material("Clock Needles", "Needles")
+    sec_mat    = Material("Clock Seconds", "Seconds Needle")
+    torus_mat  = Material("Clock Outer", "Outer")
+
+    color      = Color((0, 0, 1), "Color")
+
+
+    h_marks = .04
+    h_needle = 0.01
+
+    with Layout("Base Circle"):
+
+        circle = Mesh.Circle(vertices=12).to_points()
+        hours_circle = Cloud(circle.points[(nd.index % 3).equal(0)].separate())
+        min_circle = Cloud(hours_circle.inverted_)
+
+    with Layout("Minutes Marks"):
+
+        l = .15
+        scale = (1 - l/2)
+        min_circle.transform(scale=scale)
+
+        mark = Mesh.Cube(size=(l, .05, h_marks))
+        marks = min_circle.instance_on(instance=mark, rotation=Rotation.AlignXToVector(nd.position))
+
+    clock = marks
+
+
+    with Layout("Hours Marks"):
+
+        l = .25
+        scale = (1 - l/2)
+        hours_circle.transform(scale=scale)
+
+        mark = Mesh.Cube(size=(l, .05, h_marks))
+
+        marks = hours_circle.instance_on(instance=mark, rotation=Rotation.AlignXToVector(nd.position))
+
+    clock += marks
+
+    with Layout("Seconds Marks"):
+
+        l = .1
+        scale = (1 - l/2)
+        sec_circle = Mesh.Circle(radius=scale, vertices=60).to_points()
+        sec_circle.points[(nd.index % 5).equal(0)].delete()
+
+        mark = Mesh.Cube(size=(l, .01, h_marks))
+
+        marks = sec_circle.instance_on(instance=mark, rotation=Rotation.AlignXToVector(nd.position))
+
+    clock += marks
+    clock.transform(translation=(0, 0, h_marks/2))
+    clock.material = marks_mat
+
+    with Layout("Hours Needle"):
+
+        l = .5
+        r = .1
+
+        z = Float(h_marks + .1*h_needle)
+
+        needle = Mesh.Grid(vertices_x=2, vertices_y=2, size_x=r, size_y=r).transform(translation=(0, 0, z), rotation=(0, 0, pi/4))
+        needle.points[2].offset = (l - r/2, 0, 0)
+
+        angle = gnmath.radians(((t/360) % 60)*(-6) + 90)
+        needle.transform(rotation=(0, 0, angle))
+
+        needle.faces.material = needle_mat
+
+        needles = needle.switch_false(show_hours)
+        z = z.switch(show_hours, z + 1.1*h_needle)
+
+    with Layout("Minutes Needle"):
+
+        l = .75
+        r = .08
+
+        needle = Mesh.Grid(vertices_x=2, vertices_y=2, size_x=r, size_y=r).transform(translation=(0, 0, z), rotation=(0, 0, pi/4))
+        needle.points[2].offset = (l - r/2, 0, 0)
+
+        angle = gnmath.radians(((t/60) % 60)*(-6) + 90)
+        needle.transform(rotation=(0, 0, angle))
+
+        needle.faces.material = needle_mat
+
+        needles += needle.switch_false(show_mins)
+        z = z.switch(show_mins, z + 1.1*h_needle)
+
+    with Layout("Seconds Needle"):
+
+        l = .9
+
+        angle = gnmath.radians(gnmath.floor(t % 60)*(-6) + 90)
+        needle = Mesh.Circle(radius=.04, fill_type='NGON').transform(translation=(0, 0, z))
+        #needle.faces.smooth = True
+        needle += Mesh.Grid(size_x = l, size_y=.02, vertices_x = 2, vertices_y=2).transform(translation=(l/2, 0, z)).transform(rotation=(0, 0, angle))
+
+        needle.faces.material = sec_mat
+
+        needles += needle.switch_false(show_secs)
+        z = z.switch(show_secs, z + 1.1*h_needle)
+
+
+    needles = (Mesh(needles).flip_faces() + Mesh(needles).faces.extrude(offset=(0, 0, h_needle))).merge_by_distance()
+    clock += needles
+
+    with Layout("Needle Center"):
+
+        h = z + h_needle
+        cyl = Mesh.Cylinder(radius=.01, vertices=12, fill_type='NGON', depth=h).transform(translation=(0, 0, h/2))
+        cyl.faces.material = needle_mat
+        cyl.faces.smooth=True
+
+    clock += cyl
+
+    with Layout("Background"):
+
+        if True:
+            h = torus_r/100
+            back = Mesh.Cylinder(radius=1.05 + h, vertices=64, fill_type='NGON', depth=h).transform(translation=(0, 0, -h/2))
+            back.faces.material = torus_mat
+            back.faces[0].material = back_mat
+
+        else:
+            back = Mesh.Circle(radius=1.05, vertices=64, fill_type='NGON')
+            back.faces.material = back_mat
+
+
+    clock += back
+
+    with Layout("Torus"):
+
+        r = torus_r/100
+
+        torus = Curve.Circle(radius=1.05 + r, resolution=64).to_mesh(profile_curve=Curve.Circle(radius=r, resolution=12))
+        torus.faces.material = torus_mat
+        torus.faces.smooth = True
+
+        clock += torus.switch_false(show_torus)
+
+    clock = Mesh(clock)
+    clock.faces._Color = color
+    clock.transform(scale=radius, rotation=Rotation((pi/2, 0, 0)))
+
+
+
+    clock.out()

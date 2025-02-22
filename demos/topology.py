@@ -330,7 +330,7 @@ def demo():
 
             vrt_vis += Group("Mesh Selection", mesh=vert_mesh, link_from='TREE').geometry
 
-            geo.option = vert_vis
+            geo.option = vrt_vis
 
 
         #with Layout("Edge Domain"):
@@ -364,7 +364,7 @@ def demo():
 
             edge_vis += Group("Mesh Selection", mesh=edge_mesh, link_from='TREE').geometry
 
-            geo.edge_vis.option = edge_vis
+            geo.option = edge_vis
 
         #with Layout("Face Domain"):
         with Elif(geo, "Faces"):

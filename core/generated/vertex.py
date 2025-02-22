@@ -118,7 +118,7 @@ class Vertex(Socket):
         -----------
         - Socket 'Mesh' : self
         - Socket 'Selection' : self[selection]
-        - Parameter 'mode' : 'VERTICES'
+        - Parameter 'mode' : 'FACES'
 
         Arguments
         ---------
@@ -129,7 +129,7 @@ class Vertex(Socket):
         -------
         - Mesh [top_ (Boolean), side_ (Boolean)]
         """
-        node = Node('Extrude Mesh', sockets={'Mesh': self, 'Selection': self._sel, 'Offset': offset, 'Offset Scale': offset_scale}, mode='VERTICES')
+        node = Node('Extrude Mesh', sockets={'Mesh': self, 'Selection': self._sel, 'Offset': offset, 'Offset Scale': offset_scale}, mode='FACES')
         self._jump(node._out)
         return self._domain_to_geometry
 

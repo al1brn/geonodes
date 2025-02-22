@@ -56,7 +56,7 @@ class NodeItems:
     def __init__(self, node, name, sockets={}, capture=[], **snake_case_sockets):
         """ > Node items property
 
-        Some nodes have xxx_items collection for dynamic sockets. This class manages theis behavior,
+        Some nodes have xxx_items collection for dynamic sockets. This class manages this behavior,
         especially for zones (Simulation, Repeat, ForEachElement)
         """
 
@@ -387,6 +387,7 @@ class Repeat(Zone):
         self._input  = Node('GeometryNodeRepeatInput')
         self._output = Node('GeometryNodeRepeatOutput')
         self._input._bnode.pair_with_output(self._output._bnode)
+        self._output._bnode.repeat_items.clear()
 
         self.init_zone(sockets, **snake_case_sockets)
         self._input.iterations = iterations

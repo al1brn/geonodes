@@ -58,13 +58,13 @@ class SplinePoint(Socket):
         Information
         -----------
         - Socket 'Curve' : self
-        - Parameter 'mode' : 'EVALUATED'
+        - Parameter 'mode' : 'COUNT'
 
         Returns
         -------
         - Cloud [tangent_ (Vector), normal_ (Vector), rotation_ (Rotation)]
         """
-        node = Node('Curve to Points', sockets={'Curve': self}, mode='EVALUATED')
+        node = Node('Curve to Points', sockets={'Curve': self}, mode='COUNT')
         return node._out
 
     def to_points_count(self, count=None):
@@ -92,7 +92,7 @@ class SplinePoint(Socket):
         Information
         -----------
         - Socket 'Curve' : self
-        - Parameter 'mode' : 'LENGTH'
+        - Parameter 'mode' : 'COUNT'
 
         Arguments
         ---------
@@ -102,7 +102,7 @@ class SplinePoint(Socket):
         -------
         - Cloud [tangent_ (Vector), normal_ (Vector), rotation_ (Rotation)]
         """
-        node = Node('Curve to Points', sockets={'Curve': self, 'Length': length}, mode='LENGTH')
+        node = Node('Curve to Points', sockets={'Curve': self, 'Length': length}, mode='COUNT')
         return node._out
 
     def to_points(self, count=None, mode='COUNT'):

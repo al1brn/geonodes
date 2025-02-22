@@ -1209,7 +1209,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                               'signature': '(self, '
                                                            'rotate_by=None, '
                                                            "rotation_space='GLOBAL')"},
-                                             {'func_name': 'rotate_global',
+                                             {'func_name': 'rotate_global_',
                                               'is_classmethod': False,
                                               'is_get': False,
                                               'is_jump': False,
@@ -7984,6 +7984,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                          'text_box_width=None, '
                                                          "align_x='LEFT', "
                                                          "align_y='TOP_BASELINE', "
+                                                         'font=None, '
                                                          "overflow='OVERFLOW', "
                                                          "pivot_mode='BOTTOM_LEFT')"}],
                                 'nd': [{'func_name': 'string_to_curves',
@@ -8000,6 +8001,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                      'text_box_height=None, '
                                                      "align_x='LEFT', "
                                                      "align_y='TOP_BASELINE', "
+                                                     'font=None, '
                                                      "overflow='OVERFLOW', "
                                                      "pivot_mode='BOTTOM_LEFT')"}]},
  'GeometryNodeSubdivideCurve': {'Curve': [{'func_name': 'subdivide',

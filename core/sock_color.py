@@ -77,16 +77,20 @@ class Color(generated.Color):
         - single_value (bool = False) : Single Value option
         """
 
-        if isinstance(value, str):
+        if isinstance(value, str) and not utils.str_is_color(value):
             value = type(self).Named(value)
 
         bsock = utils.get_bsocket(value)
         if bsock is None:
             if name is None:
-                if np.shape(value) == (3,):
-                    a = (value[0], value[1], value[2], 1)
+                if True:
+                    a = utils.value_to_color(value)
+
                 else:
-                    a = utils.value_to_array(value, (4,))
+                    if np.shape(value) == (3,):
+                        a = (value[0], value[1], value[2], 1)
+                    else:
+                        a = utils.value_to_array(value, (4,))
 
                 if utils.has_bsocket(a):
                     if Tree.is_geonodes:

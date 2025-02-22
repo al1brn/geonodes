@@ -92,6 +92,25 @@ class Shader(ShaderRoot, generated.Shader):
 
     SOCKET_TYPE = 'SHADER'
 
+    def __init__(self, value=None, name=None, tip=None, hide_value=False):
+        """ Socket of type Shader
+
+        A group input socket of type Shader.
+
+        Arguments
+        ---------
+        - value (Socket) : initial value
+        - name (str = None) : group input socket name if not None
+        - tip (str = None) : user type for group input socket
+        - hide_value (bool = False) : Hide Value option        - hide_in_modifier (bool = False) : Hide in Modifier option
+        """
+
+        bsock = utils.get_bsocket(value)
+        if bsock is None:
+            bsock = Tree.new_input('NodeSocketShader', name, value=value, hide_value = hide_value)
+
+        super().__init__(bsock)
+
     def out(self, name=None):
         if self._tree._is_group:
             super().out(name=name)
