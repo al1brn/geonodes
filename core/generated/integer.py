@@ -13,9 +13,9 @@ class Integer(Socket):
         Information
         -----------
         - Socket 'A' : self
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'data_type' : 'INT'
         - Parameter 'mode' : 'ELEMENT'
-        - Parameter 'operation' : 'GREATER_THAN'
+        - Parameter 'operation' : 'LESS_THAN'
 
         Arguments
         ---------
@@ -25,7 +25,7 @@ class Integer(Socket):
         -------
         - Boolean
         """
-        node = Node('Compare', sockets={'A_INT': self, 'B_INT': b}, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN')
+        node = Node('Compare', sockets={'A_INT': self, 'B_INT': b}, data_type='INT', mode='ELEMENT', operation='LESS_THAN')
         return node._out
 
     def less_equal(self, b=None):
@@ -34,9 +34,9 @@ class Integer(Socket):
         Information
         -----------
         - Socket 'A' : self
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'data_type' : 'INT'
         - Parameter 'mode' : 'ELEMENT'
-        - Parameter 'operation' : 'GREATER_THAN'
+        - Parameter 'operation' : 'LESS_EQUAL'
 
         Arguments
         ---------
@@ -46,7 +46,7 @@ class Integer(Socket):
         -------
         - Boolean
         """
-        node = Node('Compare', sockets={'A_INT': self, 'B_INT': b}, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN')
+        node = Node('Compare', sockets={'A_INT': self, 'B_INT': b}, data_type='INT', mode='ELEMENT', operation='LESS_EQUAL')
         return node._out
 
     def greater_than(self, b=None):
@@ -55,7 +55,7 @@ class Integer(Socket):
         Information
         -----------
         - Socket 'A' : self
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'data_type' : 'INT'
         - Parameter 'mode' : 'ELEMENT'
         - Parameter 'operation' : 'GREATER_THAN'
 
@@ -67,7 +67,7 @@ class Integer(Socket):
         -------
         - Boolean
         """
-        node = Node('Compare', sockets={'A_INT': self, 'B_INT': b}, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN')
+        node = Node('Compare', sockets={'A_INT': self, 'B_INT': b}, data_type='INT', mode='ELEMENT', operation='GREATER_THAN')
         return node._out
 
     def greater_equal(self, b=None):
@@ -76,9 +76,9 @@ class Integer(Socket):
         Information
         -----------
         - Socket 'A' : self
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'data_type' : 'INT'
         - Parameter 'mode' : 'ELEMENT'
-        - Parameter 'operation' : 'GREATER_THAN'
+        - Parameter 'operation' : 'GREATER_EQUAL'
 
         Arguments
         ---------
@@ -88,7 +88,7 @@ class Integer(Socket):
         -------
         - Boolean
         """
-        node = Node('Compare', sockets={'A_INT': self, 'B_INT': b}, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN')
+        node = Node('Compare', sockets={'A_INT': self, 'B_INT': b}, data_type='INT', mode='ELEMENT', operation='GREATER_EQUAL')
         return node._out
 
     def equal(self, b=None):
@@ -97,9 +97,9 @@ class Integer(Socket):
         Information
         -----------
         - Socket 'A' : self
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'data_type' : 'INT'
         - Parameter 'mode' : 'ELEMENT'
-        - Parameter 'operation' : 'GREATER_THAN'
+        - Parameter 'operation' : 'EQUAL'
 
         Arguments
         ---------
@@ -109,7 +109,7 @@ class Integer(Socket):
         -------
         - Boolean
         """
-        node = Node('Compare', sockets={'A_INT': self, 'B_INT': b}, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN')
+        node = Node('Compare', sockets={'A_INT': self, 'B_INT': b}, data_type='INT', mode='ELEMENT', operation='EQUAL')
         return node._out
 
     def not_equal(self, b=None):
@@ -118,9 +118,9 @@ class Integer(Socket):
         Information
         -----------
         - Socket 'A' : self
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'data_type' : 'INT'
         - Parameter 'mode' : 'ELEMENT'
-        - Parameter 'operation' : 'GREATER_THAN'
+        - Parameter 'operation' : 'NOT_EQUAL'
 
         Arguments
         ---------
@@ -130,7 +130,7 @@ class Integer(Socket):
         -------
         - Boolean
         """
-        node = Node('Compare', sockets={'A_INT': self, 'B_INT': b}, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN')
+        node = Node('Compare', sockets={'A_INT': self, 'B_INT': b}, data_type='INT', mode='ELEMENT', operation='NOT_EQUAL')
         return node._out
 
     def hash_value(self, seed=None):
@@ -177,7 +177,7 @@ class Integer(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'operation' : 'ADD'
+        - Parameter 'operation' : 'SUBTRACT'
 
         Arguments
         ---------
@@ -187,7 +187,7 @@ class Integer(Socket):
         -------
         - Integer
         """
-        node = Node('Integer Math', sockets={'Value': self, 'Value_001': value}, operation='ADD')
+        node = Node('Integer Math', sockets={'Value': self, 'Value_001': value}, operation='SUBTRACT')
         return node._out
 
     def multiply(self, value=None):
@@ -196,7 +196,7 @@ class Integer(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'operation' : 'ADD'
+        - Parameter 'operation' : 'MULTIPLY'
 
         Arguments
         ---------
@@ -206,7 +206,7 @@ class Integer(Socket):
         -------
         - Integer
         """
-        node = Node('Integer Math', sockets={'Value': self, 'Value_001': value}, operation='ADD')
+        node = Node('Integer Math', sockets={'Value': self, 'Value_001': value}, operation='MULTIPLY')
         return node._out
 
     def divide(self, value=None):
@@ -215,7 +215,7 @@ class Integer(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'operation' : 'ADD'
+        - Parameter 'operation' : 'DIVIDE'
 
         Arguments
         ---------
@@ -225,7 +225,7 @@ class Integer(Socket):
         -------
         - Integer
         """
-        node = Node('Integer Math', sockets={'Value': self, 'Value_001': value}, operation='ADD')
+        node = Node('Integer Math', sockets={'Value': self, 'Value_001': value}, operation='DIVIDE')
         return node._out
 
     def multiply_add(self, multiplier=None, addend=None):
@@ -234,7 +234,7 @@ class Integer(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'operation' : 'ADD'
+        - Parameter 'operation' : 'MULTIPLY_ADD'
 
         Arguments
         ---------
@@ -245,7 +245,7 @@ class Integer(Socket):
         -------
         - Integer
         """
-        node = Node('Integer Math', sockets={'Value': self, 'Value_001': multiplier, 'Value_002': addend}, operation='ADD')
+        node = Node('Integer Math', sockets={'Value': self, 'Value_001': multiplier, 'Value_002': addend}, operation='MULTIPLY_ADD')
         return node._out
 
     def abs(self):
@@ -254,13 +254,13 @@ class Integer(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'operation' : 'ADD'
+        - Parameter 'operation' : 'ABSOLUTE'
 
         Returns
         -------
         - Integer
         """
-        node = Node('Integer Math', sockets={'Value': self}, operation='ADD')
+        node = Node('Integer Math', sockets={'Value': self}, operation='ABSOLUTE')
         return node._out
 
     def negate(self):
@@ -269,13 +269,13 @@ class Integer(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'operation' : 'ADD'
+        - Parameter 'operation' : 'NEGATE'
 
         Returns
         -------
         - Integer
         """
-        node = Node('Integer Math', sockets={'Value': self}, operation='ADD')
+        node = Node('Integer Math', sockets={'Value': self}, operation='NEGATE')
         return node._out
 
     def power(self, exponent=None):
@@ -284,7 +284,7 @@ class Integer(Socket):
         Information
         -----------
         - Socket 'Base' : self
-        - Parameter 'operation' : 'ADD'
+        - Parameter 'operation' : 'POWER'
 
         Arguments
         ---------
@@ -294,7 +294,7 @@ class Integer(Socket):
         -------
         - Integer
         """
-        node = Node('Integer Math', sockets={'Value': self, 'Value_001': exponent}, operation='ADD')
+        node = Node('Integer Math', sockets={'Value': self, 'Value_001': exponent}, operation='POWER')
         return node._out
 
     def min(self, value=None):
@@ -303,7 +303,7 @@ class Integer(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'operation' : 'ADD'
+        - Parameter 'operation' : 'MINIMUM'
 
         Arguments
         ---------
@@ -313,7 +313,7 @@ class Integer(Socket):
         -------
         - Integer
         """
-        node = Node('Integer Math', sockets={'Value': self, 'Value_001': value}, operation='ADD')
+        node = Node('Integer Math', sockets={'Value': self, 'Value_001': value}, operation='MINIMUM')
         return node._out
 
     def max(self, value=None):
@@ -322,7 +322,7 @@ class Integer(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'operation' : 'ADD'
+        - Parameter 'operation' : 'MAXIMUM'
 
         Arguments
         ---------
@@ -332,7 +332,7 @@ class Integer(Socket):
         -------
         - Integer
         """
-        node = Node('Integer Math', sockets={'Value': self, 'Value_001': value}, operation='ADD')
+        node = Node('Integer Math', sockets={'Value': self, 'Value_001': value}, operation='MAXIMUM')
         return node._out
 
     def sign(self):
@@ -341,13 +341,13 @@ class Integer(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'operation' : 'ADD'
+        - Parameter 'operation' : 'SIGN'
 
         Returns
         -------
         - Integer
         """
-        node = Node('Integer Math', sockets={'Value': self}, operation='ADD')
+        node = Node('Integer Math', sockets={'Value': self}, operation='SIGN')
         return node._out
 
     def divide_round(self, value=None):
@@ -356,7 +356,7 @@ class Integer(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'operation' : 'ADD'
+        - Parameter 'operation' : 'DIVIDE_ROUND'
 
         Arguments
         ---------
@@ -366,7 +366,7 @@ class Integer(Socket):
         -------
         - Integer
         """
-        node = Node('Integer Math', sockets={'Value': self, 'Value_001': value}, operation='ADD')
+        node = Node('Integer Math', sockets={'Value': self, 'Value_001': value}, operation='DIVIDE_ROUND')
         return node._out
 
     def divide_floor(self, value=None):
@@ -375,7 +375,7 @@ class Integer(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'operation' : 'ADD'
+        - Parameter 'operation' : 'DIVIDE_FLOOR'
 
         Arguments
         ---------
@@ -385,7 +385,7 @@ class Integer(Socket):
         -------
         - Integer
         """
-        node = Node('Integer Math', sockets={'Value': self, 'Value_001': value}, operation='ADD')
+        node = Node('Integer Math', sockets={'Value': self, 'Value_001': value}, operation='DIVIDE_FLOOR')
         return node._out
 
     def divide_ceil(self, value=None):
@@ -394,7 +394,7 @@ class Integer(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'operation' : 'ADD'
+        - Parameter 'operation' : 'DIVIDE_CEIL'
 
         Arguments
         ---------
@@ -404,7 +404,7 @@ class Integer(Socket):
         -------
         - Integer
         """
-        node = Node('Integer Math', sockets={'Value': self, 'Value_001': value}, operation='ADD')
+        node = Node('Integer Math', sockets={'Value': self, 'Value_001': value}, operation='DIVIDE_CEIL')
         return node._out
 
     def floored_modulo(self, value=None):
@@ -413,7 +413,7 @@ class Integer(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'operation' : 'ADD'
+        - Parameter 'operation' : 'FLOORED_MODULO'
 
         Arguments
         ---------
@@ -423,7 +423,7 @@ class Integer(Socket):
         -------
         - Integer
         """
-        node = Node('Integer Math', sockets={'Value': self, 'Value_001': value}, operation='ADD')
+        node = Node('Integer Math', sockets={'Value': self, 'Value_001': value}, operation='FLOORED_MODULO')
         return node._out
 
     def modulo(self, value=None):
@@ -432,7 +432,7 @@ class Integer(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'operation' : 'ADD'
+        - Parameter 'operation' : 'MODULO'
 
         Arguments
         ---------
@@ -442,7 +442,7 @@ class Integer(Socket):
         -------
         - Integer
         """
-        node = Node('Integer Math', sockets={'Value': self, 'Value_001': value}, operation='ADD')
+        node = Node('Integer Math', sockets={'Value': self, 'Value_001': value}, operation='MODULO')
         return node._out
 
     def gcd(self, value=None):
@@ -451,7 +451,7 @@ class Integer(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'operation' : 'ADD'
+        - Parameter 'operation' : 'GCD'
 
         Arguments
         ---------
@@ -461,7 +461,7 @@ class Integer(Socket):
         -------
         - Integer
         """
-        node = Node('Integer Math', sockets={'Value': self, 'Value_001': value}, operation='ADD')
+        node = Node('Integer Math', sockets={'Value': self, 'Value_001': value}, operation='GCD')
         return node._out
 
     def lcm(self, value=None):
@@ -470,7 +470,7 @@ class Integer(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'operation' : 'ADD'
+        - Parameter 'operation' : 'LCM'
 
         Arguments
         ---------
@@ -480,7 +480,7 @@ class Integer(Socket):
         -------
         - Integer
         """
-        node = Node('Integer Math', sockets={'Value': self, 'Value_001': value}, operation='ADD')
+        node = Node('Integer Math', sockets={'Value': self, 'Value_001': value}, operation='LCM')
         return node._out
 
     @classmethod
@@ -489,7 +489,7 @@ class Integer(Socket):
 
         Information
         -----------
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'data_type' : 'INT'
 
         Arguments
         ---------
@@ -502,7 +502,7 @@ class Integer(Socket):
         -------
         - Integer
         """
-        node = Node('Random Value', sockets={'Min_002': min, 'Max_002': max, 'ID': id, 'Seed': seed}, data_type='FLOAT')
+        node = Node('Random Value', sockets={'Min_002': min, 'Max_002': max, 'ID': id, 'Seed': seed}, data_type='INT')
         return cls(node._out)
 
     def to_string(self):
@@ -511,13 +511,13 @@ class Integer(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'data_type' : 'INT'
 
         Returns
         -------
         - String
         """
-        node = Node('Value to String', sockets={'Value': self}, data_type='FLOAT')
+        node = Node('Value to String', sockets={'Value': self}, data_type='INT')
         return node._out
 
     def blur(self, iterations=None, weight=None):
@@ -526,7 +526,7 @@ class Integer(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'data_type' : 'INT'
 
         Arguments
         ---------
@@ -537,7 +537,7 @@ class Integer(Socket):
         -------
         - Integer
         """
-        node = Node('Blur Attribute', sockets={'Value': self, 'Iterations': iterations, 'Weight': weight}, data_type='FLOAT')
+        node = Node('Blur Attribute', sockets={'Value': self, 'Iterations': iterations, 'Weight': weight}, data_type='INT')
         return node._out
 
     @classmethod
@@ -546,7 +546,7 @@ class Integer(Socket):
 
         Information
         -----------
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'data_type' : 'INT'
 
         Arguments
         ---------
@@ -556,7 +556,7 @@ class Integer(Socket):
         -------
         - Integer
         """
-        node = Node('Named Attribute', sockets={'Name': name}, data_type='FLOAT')
+        node = Node('Named Attribute', sockets={'Name': name}, data_type='INT')
         return cls(node._out)
 
     @classmethod
@@ -565,7 +565,7 @@ class Integer(Socket):
 
         Information
         -----------
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'data_type' : 'INT'
 
         Arguments
         ---------
@@ -575,7 +575,7 @@ class Integer(Socket):
         -------
         - Integer
         """
-        node = Node('Named Attribute', sockets={'Name': name}, data_type='FLOAT')
+        node = Node('Named Attribute', sockets={'Name': name}, data_type='INT')
         return cls(node._out)
 
     def sample_grid(self, position=None, interpolation_mode='TRILINEAR'):
@@ -584,7 +584,7 @@ class Integer(Socket):
         Information
         -----------
         - Socket 'Grid' : self
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'data_type' : 'INT'
 
         Arguments
         ---------
@@ -596,7 +596,7 @@ class Integer(Socket):
         - Integer
         """
         utils.check_enum_arg('Sample Grid', 'interpolation_mode', interpolation_mode, 'sample_grid', ('NEAREST', 'TRILINEAR', 'TRIQUADRATIC'))
-        node = Node('Sample Grid', sockets={'Grid': self, 'Position': position}, data_type='FLOAT', interpolation_mode=interpolation_mode)
+        node = Node('Sample Grid', sockets={'Grid': self, 'Position': position}, data_type='INT', interpolation_mode=interpolation_mode)
         return node._out
 
     def sample_grid_index(self, x=None, y=None, z=None):
@@ -605,7 +605,7 @@ class Integer(Socket):
         Information
         -----------
         - Socket 'Grid' : self
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'data_type' : 'INT'
 
         Arguments
         ---------
@@ -617,6 +617,6 @@ class Integer(Socket):
         -------
         - Integer
         """
-        node = Node('Sample Grid Index', sockets={'Grid': self, 'X': x, 'Y': y, 'Z': z}, data_type='FLOAT')
+        node = Node('Sample Grid Index', sockets={'Grid': self, 'X': x, 'Y': y, 'Z': z}, data_type='INT')
         return node._out
 

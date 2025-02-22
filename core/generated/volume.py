@@ -33,7 +33,7 @@ class Volume(Socket):
         Information
         -----------
         - Socket 'Volume' : self
-        - Parameter 'mode' : 'DENSITY_RANDOM'
+        - Parameter 'mode' : 'DENSITY_GRID'
 
         Arguments
         ---------
@@ -44,7 +44,7 @@ class Volume(Socket):
         -------
         - Cloud
         """
-        node = Node('Distribute Points in Volume', sockets={'Volume': self, 'Spacing': spacing, 'Threshold': threshold}, mode='DENSITY_RANDOM')
+        node = Node('Distribute Points in Volume', sockets={'Volume': self, 'Spacing': spacing, 'Threshold': threshold}, mode='DENSITY_GRID')
         return node._out
 
     def distribute_points(self, density=None, seed=None, mode='DENSITY_RANDOM'):
@@ -123,7 +123,7 @@ class Volume(Socket):
         Information
         -----------
         - Socket 'Volume' : self
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'data_type' : 'VECTOR'
 
         Arguments
         ---------
@@ -134,7 +134,7 @@ class Volume(Socket):
         -------
         - Volume [grid_ (Vector)]
         """
-        node = Node('Get Named Grid', sockets={'Volume': self, 'Name': name, 'Remove': remove}, data_type='FLOAT')
+        node = Node('Get Named Grid', sockets={'Volume': self, 'Name': name, 'Remove': remove}, data_type='VECTOR')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -230,7 +230,7 @@ class Volume(Socket):
         Information
         -----------
         - Socket 'Volume' : self
-        - Parameter 'resolution_mode' : 'GRID'
+        - Parameter 'resolution_mode' : 'VOXEL_AMOUNT'
 
         Arguments
         ---------
@@ -242,7 +242,7 @@ class Volume(Socket):
         -------
         - Mesh
         """
-        node = Node('Volume to Mesh', sockets={'Volume': self, 'Voxel Amount': voxel_amount, 'Threshold': threshold, 'Adaptivity': adaptivity}, resolution_mode='GRID')
+        node = Node('Volume to Mesh', sockets={'Volume': self, 'Voxel Amount': voxel_amount, 'Threshold': threshold, 'Adaptivity': adaptivity}, resolution_mode='VOXEL_AMOUNT')
         return node._out
 
     def to_mesh_voxel_size(self, voxel_size=None, threshold=None, adaptivity=None):
@@ -251,7 +251,7 @@ class Volume(Socket):
         Information
         -----------
         - Socket 'Volume' : self
-        - Parameter 'resolution_mode' : 'GRID'
+        - Parameter 'resolution_mode' : 'VOXEL_SIZE'
 
         Arguments
         ---------
@@ -263,6 +263,6 @@ class Volume(Socket):
         -------
         - Mesh
         """
-        node = Node('Volume to Mesh', sockets={'Volume': self, 'Voxel Size': voxel_size, 'Threshold': threshold, 'Adaptivity': adaptivity}, resolution_mode='GRID')
+        node = Node('Volume to Mesh', sockets={'Volume': self, 'Voxel Size': voxel_size, 'Threshold': threshold, 'Adaptivity': adaptivity}, resolution_mode='VOXEL_SIZE')
         return node._out
 

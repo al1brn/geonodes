@@ -38,7 +38,7 @@ class Rotation(Socket):
         Information
         -----------
         - Socket 'Rotation' : ignored
-        - Parameter 'axis' : 'Z'
+        - Parameter 'axis' : 'X'
 
         Arguments
         ---------
@@ -51,7 +51,7 @@ class Rotation(Socket):
         - Rotation
         """
         utils.check_enum_arg('Align Rotation to Vector', 'pivot_axis', pivot_axis, 'AlignXToVector', ('AUTO', 'X', 'Y', 'Z'))
-        node = Node('Align Rotation to Vector', sockets={'Rotation': None, 'Vector': vector, 'Factor': factor}, axis='Z', pivot_axis=pivot_axis)
+        node = Node('Align Rotation to Vector', sockets={'Rotation': None, 'Vector': vector, 'Factor': factor}, axis='X', pivot_axis=pivot_axis)
         return cls(node._out)
 
     @classmethod
@@ -61,7 +61,7 @@ class Rotation(Socket):
         Information
         -----------
         - Socket 'Rotation' : ignored
-        - Parameter 'axis' : 'Z'
+        - Parameter 'axis' : 'Y'
 
         Arguments
         ---------
@@ -74,7 +74,7 @@ class Rotation(Socket):
         - Rotation
         """
         utils.check_enum_arg('Align Rotation to Vector', 'pivot_axis', pivot_axis, 'AlignYToVector', ('AUTO', 'X', 'Y', 'Z'))
-        node = Node('Align Rotation to Vector', sockets={'Rotation': None, 'Vector': vector, 'Factor': factor}, axis='Z', pivot_axis=pivot_axis)
+        node = Node('Align Rotation to Vector', sockets={'Rotation': None, 'Vector': vector, 'Factor': factor}, axis='Y', pivot_axis=pivot_axis)
         return cls(node._out)
 
     @classmethod
@@ -129,7 +129,7 @@ class Rotation(Socket):
         Information
         -----------
         - Socket 'Rotation' : self
-        - Parameter 'axis' : 'Z'
+        - Parameter 'axis' : 'X'
 
         Arguments
         ---------
@@ -142,7 +142,7 @@ class Rotation(Socket):
         - Rotation
         """
         utils.check_enum_arg('Align Rotation to Vector', 'pivot_axis', pivot_axis, 'align_x_to_vector', ('AUTO', 'X', 'Y', 'Z'))
-        node = Node('Align Rotation to Vector', sockets={'Rotation': self, 'Vector': vector, 'Factor': factor}, axis='Z', pivot_axis=pivot_axis)
+        node = Node('Align Rotation to Vector', sockets={'Rotation': self, 'Vector': vector, 'Factor': factor}, axis='X', pivot_axis=pivot_axis)
         return node._out
 
     def align_y_to_vector(self, vector=None, factor=None, pivot_axis='AUTO'):
@@ -151,7 +151,7 @@ class Rotation(Socket):
         Information
         -----------
         - Socket 'Rotation' : self
-        - Parameter 'axis' : 'Z'
+        - Parameter 'axis' : 'Y'
 
         Arguments
         ---------
@@ -164,7 +164,7 @@ class Rotation(Socket):
         - Rotation
         """
         utils.check_enum_arg('Align Rotation to Vector', 'pivot_axis', pivot_axis, 'align_y_to_vector', ('AUTO', 'X', 'Y', 'Z'))
-        node = Node('Align Rotation to Vector', sockets={'Rotation': self, 'Vector': vector, 'Factor': factor}, axis='Z', pivot_axis=pivot_axis)
+        node = Node('Align Rotation to Vector', sockets={'Rotation': self, 'Vector': vector, 'Factor': factor}, axis='Y', pivot_axis=pivot_axis)
         return node._out
 
     def align_z_to_vector(self, vector=None, factor=None, pivot_axis='AUTO'):
@@ -215,8 +215,8 @@ class Rotation(Socket):
 
         Information
         -----------
-        - Parameter 'primary_axis' : 'Z'
-        - Parameter 'secondary_axis' : 'X'
+        - Parameter 'primary_axis' : 'X'
+        - Parameter 'secondary_axis' : 'Y'
 
         Arguments
         ---------
@@ -227,7 +227,7 @@ class Rotation(Socket):
         -------
         - Rotation
         """
-        node = Node('Axes to Rotation', sockets={'Primary Axis': primary_axis, 'Secondary Axis': secondary_axis}, primary_axis='Z', secondary_axis='X')
+        node = Node('Axes to Rotation', sockets={'Primary Axis': primary_axis, 'Secondary Axis': secondary_axis}, primary_axis='X', secondary_axis='Y')
         return cls(node._out)
 
     @classmethod
@@ -236,7 +236,7 @@ class Rotation(Socket):
 
         Information
         -----------
-        - Parameter 'primary_axis' : 'Z'
+        - Parameter 'primary_axis' : 'Y'
         - Parameter 'secondary_axis' : 'X'
 
         Arguments
@@ -248,7 +248,7 @@ class Rotation(Socket):
         -------
         - Rotation
         """
-        node = Node('Axes to Rotation', sockets={'Primary Axis': primary_axis, 'Secondary Axis': secondary_axis}, primary_axis='Z', secondary_axis='X')
+        node = Node('Axes to Rotation', sockets={'Primary Axis': primary_axis, 'Secondary Axis': secondary_axis}, primary_axis='Y', secondary_axis='X')
         return cls(node._out)
 
     @classmethod
@@ -257,8 +257,8 @@ class Rotation(Socket):
 
         Information
         -----------
-        - Parameter 'primary_axis' : 'Z'
-        - Parameter 'secondary_axis' : 'X'
+        - Parameter 'primary_axis' : 'X'
+        - Parameter 'secondary_axis' : 'Z'
 
         Arguments
         ---------
@@ -269,7 +269,7 @@ class Rotation(Socket):
         -------
         - Rotation
         """
-        node = Node('Axes to Rotation', sockets={'Primary Axis': primary_axis, 'Secondary Axis': secondary_axis}, primary_axis='Z', secondary_axis='X')
+        node = Node('Axes to Rotation', sockets={'Primary Axis': primary_axis, 'Secondary Axis': secondary_axis}, primary_axis='X', secondary_axis='Z')
         return cls(node._out)
 
     @classmethod
@@ -299,8 +299,8 @@ class Rotation(Socket):
 
         Information
         -----------
-        - Parameter 'primary_axis' : 'Z'
-        - Parameter 'secondary_axis' : 'X'
+        - Parameter 'primary_axis' : 'Y'
+        - Parameter 'secondary_axis' : 'Z'
 
         Arguments
         ---------
@@ -311,7 +311,7 @@ class Rotation(Socket):
         -------
         - Rotation
         """
-        node = Node('Axes to Rotation', sockets={'Primary Axis': primary_axis, 'Secondary Axis': secondary_axis}, primary_axis='Z', secondary_axis='X')
+        node = Node('Axes to Rotation', sockets={'Primary Axis': primary_axis, 'Secondary Axis': secondary_axis}, primary_axis='Y', secondary_axis='Z')
         return cls(node._out)
 
     @classmethod
@@ -321,7 +321,7 @@ class Rotation(Socket):
         Information
         -----------
         - Parameter 'primary_axis' : 'Z'
-        - Parameter 'secondary_axis' : 'X'
+        - Parameter 'secondary_axis' : 'Y'
 
         Arguments
         ---------
@@ -332,7 +332,7 @@ class Rotation(Socket):
         -------
         - Rotation
         """
-        node = Node('Axes to Rotation', sockets={'Primary Axis': primary_axis, 'Secondary Axis': secondary_axis}, primary_axis='Z', secondary_axis='X')
+        node = Node('Axes to Rotation', sockets={'Primary Axis': primary_axis, 'Secondary Axis': secondary_axis}, primary_axis='Z', secondary_axis='Y')
         return cls(node._out)
 
     @classmethod
@@ -372,7 +372,7 @@ class Rotation(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'data_type' : 'INT'
+        - Parameter 'data_type' : 'ROTATION'
 
         Arguments
         ---------
@@ -382,7 +382,7 @@ class Rotation(Socket):
         -------
         - Integer
         """
-        node = Node('Hash Value', sockets={'Value': self, 'Seed': seed}, data_type='INT')
+        node = Node('Hash Value', sockets={'Value': self, 'Seed': seed}, data_type='ROTATION')
         return node._out
 
     def invert(self):
@@ -462,7 +462,7 @@ class Rotation(Socket):
         Information
         -----------
         - Socket 'Rotation' : self
-        - Parameter 'rotation_space' : 'GLOBAL'
+        - Parameter 'rotation_space' : 'LOCAL'
 
         Arguments
         ---------
@@ -472,7 +472,7 @@ class Rotation(Socket):
         -------
         - Rotation
         """
-        node = Node('Rotate Rotation', sockets={'Rotation': self, 'Rotate By': rotate_by}, rotation_space='GLOBAL')
+        node = Node('Rotate Rotation', sockets={'Rotation': self, 'Rotate By': rotate_by}, rotation_space='LOCAL')
         return node._out
 
     def rotate_vector(self, vector=None):
@@ -571,7 +571,7 @@ class Rotation(Socket):
 
         Information
         -----------
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'data_type' : 'QUATERNION'
 
         Arguments
         ---------
@@ -581,7 +581,7 @@ class Rotation(Socket):
         -------
         - Rotation
         """
-        node = Node('Named Attribute', sockets={'Name': name}, data_type='FLOAT')
+        node = Node('Named Attribute', sockets={'Name': name}, data_type='QUATERNION')
         return cls(node._out)
 
     @classmethod
@@ -590,7 +590,7 @@ class Rotation(Socket):
 
         Information
         -----------
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'data_type' : 'QUATERNION'
 
         Arguments
         ---------
@@ -600,7 +600,7 @@ class Rotation(Socket):
         -------
         - Rotation
         """
-        node = Node('Named Attribute', sockets={'Name': name}, data_type='FLOAT')
+        node = Node('Named Attribute', sockets={'Name': name}, data_type='QUATERNION')
         return cls(node._out)
 
     def mix(self, b=None, factor=None, clamp_factor=True):
@@ -611,7 +611,7 @@ class Rotation(Socket):
         - Socket 'A' : self
         - Parameter 'blend_type' : 'MIX'
         - Parameter 'clamp_result' : False
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'data_type' : 'ROTATION'
         - Parameter 'factor_mode' : 'UNIFORM'
 
         Arguments
@@ -624,6 +624,6 @@ class Rotation(Socket):
         -------
         - Rotation
         """
-        node = Node('Mix', sockets={'A_Rotation': self, 'B_Rotation': b, 'Factor_Float': factor}, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=False, data_type='FLOAT', factor_mode='UNIFORM')
+        node = Node('Mix', sockets={'A_Rotation': self, 'B_Rotation': b, 'Factor_Float': factor}, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=False, data_type='ROTATION', factor_mode='UNIFORM')
         return node._out
 

@@ -13,13 +13,13 @@ class Cloud(Socket):
         Information
         -----------
         - Socket 'Geometry' : self
-        - Parameter 'component' : 'MESH'
+        - Parameter 'component' : 'POINTCLOUD'
 
         Returns
         -------
         - node [point_count (Integer)]
         """
-        node = self._cache('Domain Size', sockets={'Geometry': self}, component='MESH')
+        node = self._cache('Domain Size', sockets={'Geometry': self}, component='POINTCLOUD')
         return node
 
     @classmethod
@@ -49,7 +49,7 @@ class Cloud(Socket):
 
         Information
         -----------
-        - Parameter 'mode' : 'DENSITY_RANDOM'
+        - Parameter 'mode' : 'DENSITY_GRID'
 
         Arguments
         ---------
@@ -61,7 +61,7 @@ class Cloud(Socket):
         -------
         - Cloud
         """
-        node = Node('Distribute Points in Grid', sockets={'Grid': grid, 'Spacing': spacing, 'Threshold': threshold}, mode='DENSITY_RANDOM')
+        node = Node('Distribute Points in Grid', sockets={'Grid': grid, 'Spacing': spacing, 'Threshold': threshold}, mode='DENSITY_GRID')
         return cls(node._out)
 
     @classmethod

@@ -32,7 +32,7 @@ class Boolean(Socket):
         Information
         -----------
         - Socket 'Boolean' : self
-        - Parameter 'operation' : 'AND'
+        - Parameter 'operation' : 'OR'
 
         Arguments
         ---------
@@ -42,7 +42,7 @@ class Boolean(Socket):
         -------
         - Boolean
         """
-        node = Node('Boolean Math', sockets={'Boolean': self, 'Boolean_001': boolean}, operation='AND')
+        node = Node('Boolean Math', sockets={'Boolean': self, 'Boolean_001': boolean}, operation='OR')
         return node._out
 
     def bnot(self):
@@ -51,13 +51,13 @@ class Boolean(Socket):
         Information
         -----------
         - Socket 'Boolean' : self
-        - Parameter 'operation' : 'AND'
+        - Parameter 'operation' : 'NOT'
 
         Returns
         -------
         - Boolean
         """
-        node = Node('Boolean Math', sockets={'Boolean': self}, operation='AND')
+        node = Node('Boolean Math', sockets={'Boolean': self}, operation='NOT')
         return node._out
 
     def not_and(self, boolean=None):
@@ -66,7 +66,7 @@ class Boolean(Socket):
         Information
         -----------
         - Socket 'Boolean' : self
-        - Parameter 'operation' : 'AND'
+        - Parameter 'operation' : 'NAND'
 
         Arguments
         ---------
@@ -76,7 +76,7 @@ class Boolean(Socket):
         -------
         - Boolean
         """
-        node = Node('Boolean Math', sockets={'Boolean': self, 'Boolean_001': boolean}, operation='AND')
+        node = Node('Boolean Math', sockets={'Boolean': self, 'Boolean_001': boolean}, operation='NAND')
         return node._out
 
     def nor(self, boolean=None):
@@ -85,7 +85,7 @@ class Boolean(Socket):
         Information
         -----------
         - Socket 'Boolean' : self
-        - Parameter 'operation' : 'AND'
+        - Parameter 'operation' : 'NOR'
 
         Arguments
         ---------
@@ -95,7 +95,7 @@ class Boolean(Socket):
         -------
         - Boolean
         """
-        node = Node('Boolean Math', sockets={'Boolean': self, 'Boolean_001': boolean}, operation='AND')
+        node = Node('Boolean Math', sockets={'Boolean': self, 'Boolean_001': boolean}, operation='NOR')
         return node._out
 
     def xnor(self, boolean=None):
@@ -104,7 +104,7 @@ class Boolean(Socket):
         Information
         -----------
         - Socket 'Boolean' : self
-        - Parameter 'operation' : 'AND'
+        - Parameter 'operation' : 'XNOR'
 
         Arguments
         ---------
@@ -114,7 +114,7 @@ class Boolean(Socket):
         -------
         - Boolean
         """
-        node = Node('Boolean Math', sockets={'Boolean': self, 'Boolean_001': boolean}, operation='AND')
+        node = Node('Boolean Math', sockets={'Boolean': self, 'Boolean_001': boolean}, operation='XNOR')
         return node._out
 
     def xor(self, boolean=None):
@@ -123,7 +123,7 @@ class Boolean(Socket):
         Information
         -----------
         - Socket 'Boolean' : self
-        - Parameter 'operation' : 'AND'
+        - Parameter 'operation' : 'XOR'
 
         Arguments
         ---------
@@ -133,7 +133,7 @@ class Boolean(Socket):
         -------
         - Boolean
         """
-        node = Node('Boolean Math', sockets={'Boolean': self, 'Boolean_001': boolean}, operation='AND')
+        node = Node('Boolean Math', sockets={'Boolean': self, 'Boolean_001': boolean}, operation='XOR')
         return node._out
 
     def imply(self, boolean=None):
@@ -142,7 +142,7 @@ class Boolean(Socket):
         Information
         -----------
         - Socket 'Boolean' : self
-        - Parameter 'operation' : 'AND'
+        - Parameter 'operation' : 'IMPLY'
 
         Arguments
         ---------
@@ -152,7 +152,7 @@ class Boolean(Socket):
         -------
         - Boolean
         """
-        node = Node('Boolean Math', sockets={'Boolean': self, 'Boolean_001': boolean}, operation='AND')
+        node = Node('Boolean Math', sockets={'Boolean': self, 'Boolean_001': boolean}, operation='IMPLY')
         return node._out
 
     def nimply(self, boolean=None):
@@ -161,7 +161,7 @@ class Boolean(Socket):
         Information
         -----------
         - Socket 'Boolean' : self
-        - Parameter 'operation' : 'AND'
+        - Parameter 'operation' : 'NIMPLY'
 
         Arguments
         ---------
@@ -171,7 +171,7 @@ class Boolean(Socket):
         -------
         - Boolean
         """
-        node = Node('Boolean Math', sockets={'Boolean': self, 'Boolean_001': boolean}, operation='AND')
+        node = Node('Boolean Math', sockets={'Boolean': self, 'Boolean_001': boolean}, operation='NIMPLY')
         return node._out
 
     @classmethod
@@ -180,7 +180,7 @@ class Boolean(Socket):
 
         Information
         -----------
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'data_type' : 'BOOLEAN'
 
         Arguments
         ---------
@@ -192,7 +192,7 @@ class Boolean(Socket):
         -------
         - Boolean
         """
-        node = Node('Random Value', sockets={'Probability': probability, 'ID': id, 'Seed': seed}, data_type='FLOAT')
+        node = Node('Random Value', sockets={'Probability': probability, 'ID': id, 'Seed': seed}, data_type='BOOLEAN')
         return cls(node._out)
 
     @classmethod
@@ -201,7 +201,7 @@ class Boolean(Socket):
 
         Information
         -----------
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'data_type' : 'BOOLEAN'
 
         Arguments
         ---------
@@ -211,7 +211,7 @@ class Boolean(Socket):
         -------
         - Boolean
         """
-        node = Node('Named Attribute', sockets={'Name': name}, data_type='FLOAT')
+        node = Node('Named Attribute', sockets={'Name': name}, data_type='BOOLEAN')
         return cls(node._out)
 
     @classmethod
@@ -220,7 +220,7 @@ class Boolean(Socket):
 
         Information
         -----------
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'data_type' : 'BOOLEAN'
 
         Arguments
         ---------
@@ -230,7 +230,7 @@ class Boolean(Socket):
         -------
         - Boolean
         """
-        node = Node('Named Attribute', sockets={'Name': name}, data_type='FLOAT')
+        node = Node('Named Attribute', sockets={'Name': name}, data_type='BOOLEAN')
         return cls(node._out)
 
     @classmethod
@@ -251,7 +251,7 @@ class Boolean(Socket):
         Information
         -----------
         - Socket 'Grid' : self
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'data_type' : 'BOOLEAN'
 
         Arguments
         ---------
@@ -263,7 +263,7 @@ class Boolean(Socket):
         - Boolean
         """
         utils.check_enum_arg('Sample Grid', 'interpolation_mode', interpolation_mode, 'sample_grid', ('NEAREST', 'TRILINEAR', 'TRIQUADRATIC'))
-        node = Node('Sample Grid', sockets={'Grid': self, 'Position': position}, data_type='FLOAT', interpolation_mode=interpolation_mode)
+        node = Node('Sample Grid', sockets={'Grid': self, 'Position': position}, data_type='BOOLEAN', interpolation_mode=interpolation_mode)
         return node._out
 
     def sample_grid_index(self, x=None, y=None, z=None):
@@ -272,7 +272,7 @@ class Boolean(Socket):
         Information
         -----------
         - Socket 'Grid' : self
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'data_type' : 'BOOLEAN'
 
         Arguments
         ---------
@@ -284,7 +284,7 @@ class Boolean(Socket):
         -------
         - Boolean
         """
-        node = Node('Sample Grid Index', sockets={'Grid': self, 'X': x, 'Y': y, 'Z': z}, data_type='FLOAT')
+        node = Node('Sample Grid Index', sockets={'Grid': self, 'X': x, 'Y': y, 'Z': z}, data_type='BOOLEAN')
         return node._out
 
     def uv_unwrap(self, seam=None, margin=None, fill_holes=None, method='ANGLE_BASED'):
@@ -334,7 +334,7 @@ class Boolean(Socket):
         Information
         -----------
         - Socket 'Show' : self
-        - Parameter 'warning_type' : 'ERROR'
+        - Parameter 'warning_type' : 'WARNING'
 
         Arguments
         ---------
@@ -344,7 +344,7 @@ class Boolean(Socket):
         -------
         - Boolean
         """
-        node = Node('Warning', sockets={'Show': self, 'Message': message}, warning_type='ERROR')
+        node = Node('Warning', sockets={'Show': self, 'Message': message}, warning_type='WARNING')
         return node._out
 
     def info(self, message=None):
@@ -353,7 +353,7 @@ class Boolean(Socket):
         Information
         -----------
         - Socket 'Show' : self
-        - Parameter 'warning_type' : 'ERROR'
+        - Parameter 'warning_type' : 'INFO'
 
         Arguments
         ---------
@@ -363,6 +363,6 @@ class Boolean(Socket):
         -------
         - Boolean
         """
-        node = Node('Warning', sockets={'Show': self, 'Message': message}, warning_type='ERROR')
+        node = Node('Warning', sockets={'Show': self, 'Message': message}, warning_type='INFO')
         return node._out
 

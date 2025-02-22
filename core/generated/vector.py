@@ -13,9 +13,9 @@ class Vector(Socket):
         Information
         -----------
         - Socket 'A' : self
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'data_type' : 'VECTOR'
         - Parameter 'mode' : 'ELEMENT'
-        - Parameter 'operation' : 'GREATER_THAN'
+        - Parameter 'operation' : 'LESS_THAN'
 
         Arguments
         ---------
@@ -25,7 +25,7 @@ class Vector(Socket):
         -------
         - Boolean
         """
-        node = Node('Compare', sockets={'A_VEC3': self, 'B_VEC3': b}, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN')
+        node = Node('Compare', sockets={'A_VEC3': self, 'B_VEC3': b}, data_type='VECTOR', mode='ELEMENT', operation='LESS_THAN')
         return node._out
 
     def less_equal(self, b=None):
@@ -34,9 +34,9 @@ class Vector(Socket):
         Information
         -----------
         - Socket 'A' : self
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'data_type' : 'VECTOR'
         - Parameter 'mode' : 'ELEMENT'
-        - Parameter 'operation' : 'GREATER_THAN'
+        - Parameter 'operation' : 'LESS_EQUAL'
 
         Arguments
         ---------
@@ -46,7 +46,7 @@ class Vector(Socket):
         -------
         - Boolean
         """
-        node = Node('Compare', sockets={'A_VEC3': self, 'B_VEC3': b}, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN')
+        node = Node('Compare', sockets={'A_VEC3': self, 'B_VEC3': b}, data_type='VECTOR', mode='ELEMENT', operation='LESS_EQUAL')
         return node._out
 
     def greater_than(self, b=None):
@@ -55,7 +55,7 @@ class Vector(Socket):
         Information
         -----------
         - Socket 'A' : self
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'data_type' : 'VECTOR'
         - Parameter 'mode' : 'ELEMENT'
         - Parameter 'operation' : 'GREATER_THAN'
 
@@ -67,7 +67,7 @@ class Vector(Socket):
         -------
         - Boolean
         """
-        node = Node('Compare', sockets={'A_VEC3': self, 'B_VEC3': b}, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN')
+        node = Node('Compare', sockets={'A_VEC3': self, 'B_VEC3': b}, data_type='VECTOR', mode='ELEMENT', operation='GREATER_THAN')
         return node._out
 
     def greater_equal(self, b=None):
@@ -76,9 +76,9 @@ class Vector(Socket):
         Information
         -----------
         - Socket 'A' : self
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'data_type' : 'VECTOR'
         - Parameter 'mode' : 'ELEMENT'
-        - Parameter 'operation' : 'GREATER_THAN'
+        - Parameter 'operation' : 'GREATER_EQUAL'
 
         Arguments
         ---------
@@ -88,7 +88,7 @@ class Vector(Socket):
         -------
         - Boolean
         """
-        node = Node('Compare', sockets={'A_VEC3': self, 'B_VEC3': b}, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN')
+        node = Node('Compare', sockets={'A_VEC3': self, 'B_VEC3': b}, data_type='VECTOR', mode='ELEMENT', operation='GREATER_EQUAL')
         return node._out
 
     def equal(self, b=None, epsilon=None):
@@ -97,9 +97,9 @@ class Vector(Socket):
         Information
         -----------
         - Socket 'A' : self
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'data_type' : 'VECTOR'
         - Parameter 'mode' : 'ELEMENT'
-        - Parameter 'operation' : 'GREATER_THAN'
+        - Parameter 'operation' : 'EQUAL'
 
         Arguments
         ---------
@@ -110,7 +110,7 @@ class Vector(Socket):
         -------
         - Boolean
         """
-        node = Node('Compare', sockets={'A_VEC3': self, 'B_VEC3': b, 'Epsilon': epsilon}, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN')
+        node = Node('Compare', sockets={'A_VEC3': self, 'B_VEC3': b, 'Epsilon': epsilon}, data_type='VECTOR', mode='ELEMENT', operation='EQUAL')
         return node._out
 
     def not_equal(self, b=None, epsilon=None):
@@ -119,9 +119,9 @@ class Vector(Socket):
         Information
         -----------
         - Socket 'A' : self
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'data_type' : 'VECTOR'
         - Parameter 'mode' : 'ELEMENT'
-        - Parameter 'operation' : 'GREATER_THAN'
+        - Parameter 'operation' : 'NOT_EQUAL'
 
         Arguments
         ---------
@@ -132,7 +132,7 @@ class Vector(Socket):
         -------
         - Boolean
         """
-        node = Node('Compare', sockets={'A_VEC3': self, 'B_VEC3': b, 'Epsilon': epsilon}, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN')
+        node = Node('Compare', sockets={'A_VEC3': self, 'B_VEC3': b, 'Epsilon': epsilon}, data_type='VECTOR', mode='ELEMENT', operation='NOT_EQUAL')
         return node._out
 
     def to_rotation(self):
@@ -155,7 +155,7 @@ class Vector(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'data_type' : 'INT'
+        - Parameter 'data_type' : 'VECTOR'
 
         Arguments
         ---------
@@ -165,7 +165,7 @@ class Vector(Socket):
         -------
         - Integer
         """
-        node = Node('Hash Value', sockets={'Value': self, 'Seed': seed}, data_type='INT')
+        node = Node('Hash Value', sockets={'Value': self, 'Seed': seed}, data_type='VECTOR')
         return node._out
 
     @classmethod
@@ -174,7 +174,7 @@ class Vector(Socket):
 
         Information
         -----------
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'data_type' : 'FLOAT_VECTOR'
 
         Arguments
         ---------
@@ -187,7 +187,7 @@ class Vector(Socket):
         -------
         - Vector
         """
-        node = Node('Random Value', sockets={'Min': min, 'Max': max, 'ID': id, 'Seed': seed}, data_type='FLOAT')
+        node = Node('Random Value', sockets={'Min': min, 'Max': max, 'ID': id, 'Seed': seed}, data_type='FLOAT_VECTOR')
         return cls(node._out)
 
     def blur(self, iterations=None, weight=None):
@@ -196,7 +196,7 @@ class Vector(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'data_type' : 'FLOAT_VECTOR'
 
         Arguments
         ---------
@@ -207,7 +207,7 @@ class Vector(Socket):
         -------
         - Vector
         """
-        node = Node('Blur Attribute', sockets={'Value': self, 'Iterations': iterations, 'Weight': weight}, data_type='FLOAT')
+        node = Node('Blur Attribute', sockets={'Value': self, 'Iterations': iterations, 'Weight': weight}, data_type='FLOAT_VECTOR')
         return node._out
 
     @classmethod
@@ -216,7 +216,7 @@ class Vector(Socket):
 
         Information
         -----------
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'data_type' : 'FLOAT_VECTOR'
 
         Arguments
         ---------
@@ -226,7 +226,7 @@ class Vector(Socket):
         -------
         - Vector
         """
-        node = Node('Named Attribute', sockets={'Name': name}, data_type='FLOAT')
+        node = Node('Named Attribute', sockets={'Name': name}, data_type='FLOAT_VECTOR')
         return cls(node._out)
 
     @classmethod
@@ -235,7 +235,7 @@ class Vector(Socket):
 
         Information
         -----------
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'data_type' : 'FLOAT_VECTOR'
 
         Arguments
         ---------
@@ -245,7 +245,7 @@ class Vector(Socket):
         -------
         - Vector
         """
-        node = Node('Named Attribute', sockets={'Name': name}, data_type='FLOAT')
+        node = Node('Named Attribute', sockets={'Name': name}, data_type='FLOAT_VECTOR')
         return cls(node._out)
 
     def sample_grid(self, position=None, interpolation_mode='TRILINEAR'):
@@ -254,7 +254,7 @@ class Vector(Socket):
         Information
         -----------
         - Socket 'Grid' : self
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'data_type' : 'VECTOR'
 
         Arguments
         ---------
@@ -266,7 +266,7 @@ class Vector(Socket):
         - Vector
         """
         utils.check_enum_arg('Sample Grid', 'interpolation_mode', interpolation_mode, 'sample_grid', ('NEAREST', 'TRILINEAR', 'TRIQUADRATIC'))
-        node = Node('Sample Grid', sockets={'Grid': self, 'Position': position}, data_type='FLOAT', interpolation_mode=interpolation_mode)
+        node = Node('Sample Grid', sockets={'Grid': self, 'Position': position}, data_type='VECTOR', interpolation_mode=interpolation_mode)
         return node._out
 
     def sample_grid_index(self, x=None, y=None, z=None):
@@ -275,7 +275,7 @@ class Vector(Socket):
         Information
         -----------
         - Socket 'Grid' : self
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'data_type' : 'VECTOR'
 
         Arguments
         ---------
@@ -287,7 +287,7 @@ class Vector(Socket):
         -------
         - Vector
         """
-        node = Node('Sample Grid Index', sockets={'Grid': self, 'X': x, 'Y': y, 'Z': z}, data_type='FLOAT')
+        node = Node('Sample Grid Index', sockets={'Grid': self, 'X': x, 'Y': y, 'Z': z}, data_type='VECTOR')
         return node._out
 
     def pack_uv_islands(self, margin=None, rotate=None):
@@ -335,7 +335,7 @@ class Vector(Socket):
         - Socket 'A' : self
         - Parameter 'blend_type' : 'MIX'
         - Parameter 'clamp_result' : False
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'data_type' : 'VECTOR'
         - Parameter 'factor_mode' : 'UNIFORM'
 
         Arguments
@@ -348,7 +348,7 @@ class Vector(Socket):
         -------
         - Vector
         """
-        node = Node('Mix', sockets={'A_Vector': self, 'B_Vector': b, 'Factor_Float': factor}, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=False, data_type='FLOAT', factor_mode='UNIFORM')
+        node = Node('Mix', sockets={'A_Vector': self, 'B_Vector': b, 'Factor_Float': factor}, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=False, data_type='VECTOR', factor_mode='UNIFORM')
         return node._out
 
     def mix_non_uniform(self, b=None, factor=None, clamp_factor=True):
@@ -359,8 +359,8 @@ class Vector(Socket):
         - Socket 'A' : self
         - Parameter 'blend_type' : 'MIX'
         - Parameter 'clamp_result' : False
-        - Parameter 'data_type' : 'FLOAT'
-        - Parameter 'factor_mode' : 'UNIFORM'
+        - Parameter 'data_type' : 'VECTOR'
+        - Parameter 'factor_mode' : 'NON_UNIFORM'
 
         Arguments
         ---------
@@ -372,7 +372,7 @@ class Vector(Socket):
         -------
         - Vector
         """
-        node = Node('Mix', sockets={'A_Vector': self, 'B_Vector': b, 'Factor_Vector': factor}, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=False, data_type='FLOAT', factor_mode='UNIFORM')
+        node = Node('Mix', sockets={'A_Vector': self, 'B_Vector': b, 'Factor_Vector': factor}, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=False, data_type='VECTOR', factor_mode='NON_UNIFORM')
         return node._out
 
     @property
@@ -474,7 +474,7 @@ class Vector(Socket):
         Information
         -----------
         - Socket 'Vector' : self
-        - Parameter 'operation' : 'ADD'
+        - Parameter 'operation' : 'SUBTRACT'
 
         Arguments
         ---------
@@ -484,7 +484,7 @@ class Vector(Socket):
         -------
         - Vector
         """
-        node = Node('Vector Math', sockets={'Vector': self, 'Vector_001': vector}, operation='ADD')
+        node = Node('Vector Math', sockets={'Vector': self, 'Vector_001': vector}, operation='SUBTRACT')
         return node._out
 
     def multiply(self, vector=None):
@@ -493,7 +493,7 @@ class Vector(Socket):
         Information
         -----------
         - Socket 'Vector' : self
-        - Parameter 'operation' : 'ADD'
+        - Parameter 'operation' : 'MULTIPLY'
 
         Arguments
         ---------
@@ -503,7 +503,7 @@ class Vector(Socket):
         -------
         - Vector
         """
-        node = Node('Vector Math', sockets={'Vector': self, 'Vector_001': vector}, operation='ADD')
+        node = Node('Vector Math', sockets={'Vector': self, 'Vector_001': vector}, operation='MULTIPLY')
         return node._out
 
     def divide(self, vector=None):
@@ -512,7 +512,7 @@ class Vector(Socket):
         Information
         -----------
         - Socket 'Vector' : self
-        - Parameter 'operation' : 'ADD'
+        - Parameter 'operation' : 'DIVIDE'
 
         Arguments
         ---------
@@ -522,7 +522,7 @@ class Vector(Socket):
         -------
         - Vector
         """
-        node = Node('Vector Math', sockets={'Vector': self, 'Vector_001': vector}, operation='ADD')
+        node = Node('Vector Math', sockets={'Vector': self, 'Vector_001': vector}, operation='DIVIDE')
         return node._out
 
     def multiply_add(self, multiplier=None, addend=None):
@@ -531,7 +531,7 @@ class Vector(Socket):
         Information
         -----------
         - Socket 'Vector' : self
-        - Parameter 'operation' : 'ADD'
+        - Parameter 'operation' : 'MULTIPLY_ADD'
 
         Arguments
         ---------
@@ -542,7 +542,7 @@ class Vector(Socket):
         -------
         - Vector
         """
-        node = Node('Vector Math', sockets={'Vector': self, 'Vector_001': multiplier, 'Vector_002': addend}, operation='ADD')
+        node = Node('Vector Math', sockets={'Vector': self, 'Vector_001': multiplier, 'Vector_002': addend}, operation='MULTIPLY_ADD')
         return node._out
 
     def cross(self, vector=None):
@@ -551,7 +551,7 @@ class Vector(Socket):
         Information
         -----------
         - Socket 'Vector' : self
-        - Parameter 'operation' : 'ADD'
+        - Parameter 'operation' : 'CROSS_PRODUCT'
 
         Arguments
         ---------
@@ -561,7 +561,7 @@ class Vector(Socket):
         -------
         - Vector
         """
-        node = Node('Vector Math', sockets={'Vector': self, 'Vector_001': vector}, operation='ADD')
+        node = Node('Vector Math', sockets={'Vector': self, 'Vector_001': vector}, operation='CROSS_PRODUCT')
         return node._out
 
     def project(self, vector=None):
@@ -570,7 +570,7 @@ class Vector(Socket):
         Information
         -----------
         - Socket 'Vector' : self
-        - Parameter 'operation' : 'ADD'
+        - Parameter 'operation' : 'PROJECT'
 
         Arguments
         ---------
@@ -580,7 +580,7 @@ class Vector(Socket):
         -------
         - Vector
         """
-        node = Node('Vector Math', sockets={'Vector': self, 'Vector_001': vector}, operation='ADD')
+        node = Node('Vector Math', sockets={'Vector': self, 'Vector_001': vector}, operation='PROJECT')
         return node._out
 
     def reflect(self, vector=None):
@@ -589,7 +589,7 @@ class Vector(Socket):
         Information
         -----------
         - Socket 'Vector' : self
-        - Parameter 'operation' : 'ADD'
+        - Parameter 'operation' : 'REFLECT'
 
         Arguments
         ---------
@@ -599,7 +599,7 @@ class Vector(Socket):
         -------
         - Vector
         """
-        node = Node('Vector Math', sockets={'Vector': self, 'Vector_001': vector}, operation='ADD')
+        node = Node('Vector Math', sockets={'Vector': self, 'Vector_001': vector}, operation='REFLECT')
         return node._out
 
     def refract(self, vector=None, ior=None):
@@ -608,7 +608,7 @@ class Vector(Socket):
         Information
         -----------
         - Socket 'Vector' : self
-        - Parameter 'operation' : 'ADD'
+        - Parameter 'operation' : 'REFRACT'
 
         Arguments
         ---------
@@ -619,7 +619,7 @@ class Vector(Socket):
         -------
         - Vector
         """
-        node = Node('Vector Math', sockets={'Vector': self, 'Vector_001': vector, 'Scale': ior}, operation='ADD')
+        node = Node('Vector Math', sockets={'Vector': self, 'Vector_001': vector, 'Scale': ior}, operation='REFRACT')
         return node._out
 
     def faceforward(self, incident=None, reference=None):
@@ -628,7 +628,7 @@ class Vector(Socket):
         Information
         -----------
         - Socket 'Vector' : self
-        - Parameter 'operation' : 'ADD'
+        - Parameter 'operation' : 'FACEFORWARD'
 
         Arguments
         ---------
@@ -639,7 +639,7 @@ class Vector(Socket):
         -------
         - Vector
         """
-        node = Node('Vector Math', sockets={'Vector': self, 'Vector_001': incident, 'Vector_002': reference}, operation='ADD')
+        node = Node('Vector Math', sockets={'Vector': self, 'Vector_001': incident, 'Vector_002': reference}, operation='FACEFORWARD')
         return node._out
 
     def dot(self, vector=None):
@@ -648,7 +648,7 @@ class Vector(Socket):
         Information
         -----------
         - Socket 'Vector' : self
-        - Parameter 'operation' : 'ADD'
+        - Parameter 'operation' : 'DOT_PRODUCT'
 
         Arguments
         ---------
@@ -658,7 +658,7 @@ class Vector(Socket):
         -------
         - Float
         """
-        node = Node('Vector Math', sockets={'Vector': self, 'Vector_001': vector}, operation='ADD')
+        node = Node('Vector Math', sockets={'Vector': self, 'Vector_001': vector}, operation='DOT_PRODUCT')
         return node._out
 
     def distance(self, vector=None):
@@ -667,7 +667,7 @@ class Vector(Socket):
         Information
         -----------
         - Socket 'Vector' : self
-        - Parameter 'operation' : 'ADD'
+        - Parameter 'operation' : 'DISTANCE'
 
         Arguments
         ---------
@@ -677,7 +677,7 @@ class Vector(Socket):
         -------
         - Float
         """
-        node = Node('Vector Math', sockets={'Vector': self, 'Vector_001': vector}, operation='ADD')
+        node = Node('Vector Math', sockets={'Vector': self, 'Vector_001': vector}, operation='DISTANCE')
         return node._out
 
     def length(self):
@@ -686,13 +686,13 @@ class Vector(Socket):
         Information
         -----------
         - Socket 'Vector' : self
-        - Parameter 'operation' : 'ADD'
+        - Parameter 'operation' : 'LENGTH'
 
         Returns
         -------
         - Float
         """
-        node = Node('Vector Math', sockets={'Vector': self}, operation='ADD')
+        node = Node('Vector Math', sockets={'Vector': self}, operation='LENGTH')
         return node._out
 
     def scale(self, scale=None):
@@ -701,7 +701,7 @@ class Vector(Socket):
         Information
         -----------
         - Socket 'Vector' : self
-        - Parameter 'operation' : 'ADD'
+        - Parameter 'operation' : 'SCALE'
 
         Arguments
         ---------
@@ -711,7 +711,7 @@ class Vector(Socket):
         -------
         - Vector
         """
-        node = Node('Vector Math', sockets={'Vector': self, 'Scale': scale}, operation='ADD')
+        node = Node('Vector Math', sockets={'Vector': self, 'Scale': scale}, operation='SCALE')
         return node._out
 
     def normalize(self):
@@ -720,13 +720,13 @@ class Vector(Socket):
         Information
         -----------
         - Socket 'Vector' : self
-        - Parameter 'operation' : 'ADD'
+        - Parameter 'operation' : 'NORMALIZE'
 
         Returns
         -------
         - Vector
         """
-        node = Node('Vector Math', sockets={'Vector': self}, operation='ADD')
+        node = Node('Vector Math', sockets={'Vector': self}, operation='NORMALIZE')
         return node._out
 
     def abs(self):
@@ -735,13 +735,13 @@ class Vector(Socket):
         Information
         -----------
         - Socket 'Vector' : self
-        - Parameter 'operation' : 'ADD'
+        - Parameter 'operation' : 'ABSOLUTE'
 
         Returns
         -------
         - Vector
         """
-        node = Node('Vector Math', sockets={'Vector': self}, operation='ADD')
+        node = Node('Vector Math', sockets={'Vector': self}, operation='ABSOLUTE')
         return node._out
 
     def min(self, vector=None):
@@ -750,7 +750,7 @@ class Vector(Socket):
         Information
         -----------
         - Socket 'Vector' : self
-        - Parameter 'operation' : 'ADD'
+        - Parameter 'operation' : 'MINIMUM'
 
         Arguments
         ---------
@@ -760,7 +760,7 @@ class Vector(Socket):
         -------
         - Vector
         """
-        node = Node('Vector Math', sockets={'Vector': self, 'Vector_001': vector}, operation='ADD')
+        node = Node('Vector Math', sockets={'Vector': self, 'Vector_001': vector}, operation='MINIMUM')
         return node._out
 
     def max(self, vector=None):
@@ -769,7 +769,7 @@ class Vector(Socket):
         Information
         -----------
         - Socket 'Vector' : self
-        - Parameter 'operation' : 'ADD'
+        - Parameter 'operation' : 'MAXIMUM'
 
         Arguments
         ---------
@@ -779,7 +779,7 @@ class Vector(Socket):
         -------
         - Vector
         """
-        node = Node('Vector Math', sockets={'Vector': self, 'Vector_001': vector}, operation='ADD')
+        node = Node('Vector Math', sockets={'Vector': self, 'Vector_001': vector}, operation='MAXIMUM')
         return node._out
 
     def floor(self):
@@ -788,13 +788,13 @@ class Vector(Socket):
         Information
         -----------
         - Socket 'Vector' : self
-        - Parameter 'operation' : 'ADD'
+        - Parameter 'operation' : 'FLOOR'
 
         Returns
         -------
         - Vector
         """
-        node = Node('Vector Math', sockets={'Vector': self}, operation='ADD')
+        node = Node('Vector Math', sockets={'Vector': self}, operation='FLOOR')
         return node._out
 
     def ceil(self):
@@ -803,13 +803,13 @@ class Vector(Socket):
         Information
         -----------
         - Socket 'Vector' : self
-        - Parameter 'operation' : 'ADD'
+        - Parameter 'operation' : 'CEIL'
 
         Returns
         -------
         - Vector
         """
-        node = Node('Vector Math', sockets={'Vector': self}, operation='ADD')
+        node = Node('Vector Math', sockets={'Vector': self}, operation='CEIL')
         return node._out
 
     def fraction(self):
@@ -818,13 +818,13 @@ class Vector(Socket):
         Information
         -----------
         - Socket 'Vector' : self
-        - Parameter 'operation' : 'ADD'
+        - Parameter 'operation' : 'FRACTION'
 
         Returns
         -------
         - Vector
         """
-        node = Node('Vector Math', sockets={'Vector': self}, operation='ADD')
+        node = Node('Vector Math', sockets={'Vector': self}, operation='FRACTION')
         return node._out
 
     def modulo(self, vector=None):
@@ -833,7 +833,7 @@ class Vector(Socket):
         Information
         -----------
         - Socket 'Vector' : self
-        - Parameter 'operation' : 'ADD'
+        - Parameter 'operation' : 'MODULO'
 
         Arguments
         ---------
@@ -843,7 +843,7 @@ class Vector(Socket):
         -------
         - Vector
         """
-        node = Node('Vector Math', sockets={'Vector': self, 'Vector_001': vector}, operation='ADD')
+        node = Node('Vector Math', sockets={'Vector': self, 'Vector_001': vector}, operation='MODULO')
         return node._out
 
     def wrap(self, max=None, min=None):
@@ -852,7 +852,7 @@ class Vector(Socket):
         Information
         -----------
         - Socket 'Vector' : self
-        - Parameter 'operation' : 'ADD'
+        - Parameter 'operation' : 'WRAP'
 
         Arguments
         ---------
@@ -863,7 +863,7 @@ class Vector(Socket):
         -------
         - Vector
         """
-        node = Node('Vector Math', sockets={'Vector': self, 'Vector_001': max, 'Vector_002': min}, operation='ADD')
+        node = Node('Vector Math', sockets={'Vector': self, 'Vector_001': max, 'Vector_002': min}, operation='WRAP')
         return node._out
 
     def snap(self, increment=None):
@@ -872,7 +872,7 @@ class Vector(Socket):
         Information
         -----------
         - Socket 'Vector' : self
-        - Parameter 'operation' : 'ADD'
+        - Parameter 'operation' : 'SNAP'
 
         Arguments
         ---------
@@ -882,7 +882,7 @@ class Vector(Socket):
         -------
         - Vector
         """
-        node = Node('Vector Math', sockets={'Vector': self, 'Vector_001': increment}, operation='ADD')
+        node = Node('Vector Math', sockets={'Vector': self, 'Vector_001': increment}, operation='SNAP')
         return node._out
 
     def sin(self):
@@ -891,13 +891,13 @@ class Vector(Socket):
         Information
         -----------
         - Socket 'Vector' : self
-        - Parameter 'operation' : 'ADD'
+        - Parameter 'operation' : 'SINE'
 
         Returns
         -------
         - Vector
         """
-        node = Node('Vector Math', sockets={'Vector': self}, operation='ADD')
+        node = Node('Vector Math', sockets={'Vector': self}, operation='SINE')
         return node._out
 
     def cos(self):
@@ -906,13 +906,13 @@ class Vector(Socket):
         Information
         -----------
         - Socket 'Vector' : self
-        - Parameter 'operation' : 'ADD'
+        - Parameter 'operation' : 'COSINE'
 
         Returns
         -------
         - Vector
         """
-        node = Node('Vector Math', sockets={'Vector': self}, operation='ADD')
+        node = Node('Vector Math', sockets={'Vector': self}, operation='COSINE')
         return node._out
 
     def tan(self):
@@ -921,13 +921,13 @@ class Vector(Socket):
         Information
         -----------
         - Socket 'Vector' : self
-        - Parameter 'operation' : 'ADD'
+        - Parameter 'operation' : 'TANGENT'
 
         Returns
         -------
         - Vector
         """
-        node = Node('Vector Math', sockets={'Vector': self}, operation='ADD')
+        node = Node('Vector Math', sockets={'Vector': self}, operation='TANGENT')
         return node._out
 
     def rotate(self, center=None, axis=None, angle=None, invert=False, rotation_type='AXIS_ANGLE'):
@@ -981,7 +981,7 @@ class Vector(Socket):
         Information
         -----------
         - Socket 'Vector' : self
-        - Parameter 'rotation_type' : 'AXIS_ANGLE'
+        - Parameter 'rotation_type' : 'X_AXIS'
 
         Arguments
         ---------
@@ -993,7 +993,7 @@ class Vector(Socket):
         -------
         - Vector
         """
-        node = Node('Vector Rotate', sockets={'Vector': self, 'Center': center, 'Angle': angle}, invert=invert, rotation_type='AXIS_ANGLE')
+        node = Node('Vector Rotate', sockets={'Vector': self, 'Center': center, 'Angle': angle}, invert=invert, rotation_type='X_AXIS')
         return node._out
 
     def rotate_y_axis(self, center=None, angle=None, invert=False):
@@ -1002,7 +1002,7 @@ class Vector(Socket):
         Information
         -----------
         - Socket 'Vector' : self
-        - Parameter 'rotation_type' : 'AXIS_ANGLE'
+        - Parameter 'rotation_type' : 'Y_AXIS'
 
         Arguments
         ---------
@@ -1014,7 +1014,7 @@ class Vector(Socket):
         -------
         - Vector
         """
-        node = Node('Vector Rotate', sockets={'Vector': self, 'Center': center, 'Angle': angle}, invert=invert, rotation_type='AXIS_ANGLE')
+        node = Node('Vector Rotate', sockets={'Vector': self, 'Center': center, 'Angle': angle}, invert=invert, rotation_type='Y_AXIS')
         return node._out
 
     def rotate_z_axis(self, center=None, angle=None, invert=False):
@@ -1023,7 +1023,7 @@ class Vector(Socket):
         Information
         -----------
         - Socket 'Vector' : self
-        - Parameter 'rotation_type' : 'AXIS_ANGLE'
+        - Parameter 'rotation_type' : 'Z_AXIS'
 
         Arguments
         ---------
@@ -1035,7 +1035,7 @@ class Vector(Socket):
         -------
         - Vector
         """
-        node = Node('Vector Rotate', sockets={'Vector': self, 'Center': center, 'Angle': angle}, invert=invert, rotation_type='AXIS_ANGLE')
+        node = Node('Vector Rotate', sockets={'Vector': self, 'Center': center, 'Angle': angle}, invert=invert, rotation_type='Z_AXIS')
         return node._out
 
     def rotate_euler_xyz(self, center=None, rotation=None, invert=False):
@@ -1044,7 +1044,7 @@ class Vector(Socket):
         Information
         -----------
         - Socket 'Vector' : self
-        - Parameter 'rotation_type' : 'AXIS_ANGLE'
+        - Parameter 'rotation_type' : 'EULER_XYZ'
 
         Arguments
         ---------
@@ -1056,7 +1056,7 @@ class Vector(Socket):
         -------
         - Vector
         """
-        node = Node('Vector Rotate', sockets={'Vector': self, 'Center': center, 'Rotation': rotation}, invert=invert, rotation_type='AXIS_ANGLE')
+        node = Node('Vector Rotate', sockets={'Vector': self, 'Center': center, 'Rotation': rotation}, invert=invert, rotation_type='EULER_XYZ')
         return node._out
 
     def mapping(self, location=None, rotation=None, scale=None, vector_type='POINT'):
@@ -1163,7 +1163,7 @@ class Vector(Socket):
         Information
         -----------
         - Socket 'Vector' : self
-        - Parameter 'mode' : 'INTERNAL'
+        - Parameter 'mode' : 'EXTERNAL'
 
         Arguments
         ---------
@@ -1175,7 +1175,7 @@ class Vector(Socket):
         -------
         - Float
         """
-        node = Node('IES Texture', sockets={'Vector': self, 'Strength': strength}, filepath=filepath, ies=ies, mode='INTERNAL')
+        node = Node('IES Texture', sockets={'Vector': self, 'Strength': strength}, filepath=filepath, ies=ies, mode='EXTERNAL')
         return node._out
 
     def ies_texture(self, strength=None, filepath='', ies=None, mode='INTERNAL'):

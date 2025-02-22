@@ -60,7 +60,7 @@ class Matrix(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'data_type' : 'INT'
+        - Parameter 'data_type' : 'MATRIX'
 
         Arguments
         ---------
@@ -70,7 +70,7 @@ class Matrix(Socket):
         -------
         - Integer
         """
-        node = Node('Hash Value', sockets={'Value': self, 'Seed': seed}, data_type='INT')
+        node = Node('Hash Value', sockets={'Value': self, 'Seed': seed}, data_type='MATRIX')
         return node._out
 
     def invert(self):
@@ -561,7 +561,7 @@ class Matrix(Socket):
 
         Information
         -----------
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'data_type' : 'FLOAT4X4'
 
         Arguments
         ---------
@@ -571,7 +571,7 @@ class Matrix(Socket):
         -------
         - Matrix
         """
-        node = Node('Named Attribute', sockets={'Name': name}, data_type='FLOAT')
+        node = Node('Named Attribute', sockets={'Name': name}, data_type='FLOAT4X4')
         return cls(node._out)
 
     @classmethod
@@ -580,7 +580,7 @@ class Matrix(Socket):
 
         Information
         -----------
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'data_type' : 'FLOAT4X4'
 
         Arguments
         ---------
@@ -590,6 +590,6 @@ class Matrix(Socket):
         -------
         - Matrix
         """
-        node = Node('Named Attribute', sockets={'Name': name}, data_type='FLOAT')
+        node = Node('Named Attribute', sockets={'Name': name}, data_type='FLOAT4X4')
         return cls(node._out)
 

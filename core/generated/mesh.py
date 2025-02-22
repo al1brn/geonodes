@@ -125,7 +125,7 @@ class Mesh(Socket):
         -----------
         - Socket 'Mesh' : self
         - Socket 'Selection' : self[selection]
-        - Parameter 'distribute_method' : 'RANDOM'
+        - Parameter 'distribute_method' : 'POISSON'
 
         Arguments
         ---------
@@ -139,7 +139,7 @@ class Mesh(Socket):
         -------
         - Cloud [normal_ (Vector), rotation_ (Rotation)]
         """
-        node = Node('Distribute Points on Faces', sockets={'Mesh': self, 'Selection': self._sel, 'Distance Min': distance_min, 'Density Max': density_max, 'Density Factor': density_factor, 'Seed': seed}, distribute_method='RANDOM', use_legacy_normal=use_legacy_normal)
+        node = Node('Distribute Points on Faces', sockets={'Mesh': self, 'Selection': self._sel, 'Distance Min': distance_min, 'Density Max': density_max, 'Density Factor': density_factor, 'Seed': seed}, distribute_method='POISSON', use_legacy_normal=use_legacy_normal)
         return node._out
 
     def dual(self, keep_boundaries=None):
@@ -254,7 +254,7 @@ class Mesh(Socket):
         -----------
         - Socket 'Mesh' : self
         - Socket 'Selection' : self[selection]
-        - Parameter 'mode' : 'FACES'
+        - Parameter 'mode' : 'VERTICES'
 
         Arguments
         ---------
@@ -265,7 +265,7 @@ class Mesh(Socket):
         -------
         - Mesh [top_ (Boolean), side_ (Boolean)]
         """
-        node = Node('Extrude Mesh', sockets={'Mesh': self, 'Selection': self._sel, 'Offset': offset, 'Offset Scale': offset_scale}, mode='FACES')
+        node = Node('Extrude Mesh', sockets={'Mesh': self, 'Selection': self._sel, 'Offset': offset, 'Offset Scale': offset_scale}, mode='VERTICES')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -278,7 +278,7 @@ class Mesh(Socket):
         -----------
         - Socket 'Mesh' : self
         - Socket 'Selection' : self[selection]
-        - Parameter 'mode' : 'FACES'
+        - Parameter 'mode' : 'EDGES'
 
         Arguments
         ---------
@@ -289,7 +289,7 @@ class Mesh(Socket):
         -------
         - Mesh [top_ (Boolean), side_ (Boolean)]
         """
-        node = Node('Extrude Mesh', sockets={'Mesh': self, 'Selection': self._sel, 'Offset': offset, 'Offset Scale': offset_scale}, mode='FACES')
+        node = Node('Extrude Mesh', sockets={'Mesh': self, 'Selection': self._sel, 'Offset': offset, 'Offset Scale': offset_scale}, mode='EDGES')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -648,7 +648,7 @@ class Mesh(Socket):
 
         Information
         -----------
-        - Parameter 'operation' : 'DIFFERENCE'
+        - Parameter 'operation' : 'INTERSECT'
 
         Arguments
         ---------
@@ -662,7 +662,7 @@ class Mesh(Socket):
         - Mesh
         """
         utils.check_enum_arg('Mesh Boolean', 'solver', solver, 'intersect', ('EXACT', 'FLOAT'))
-        node = Node('Mesh Boolean', sockets={'Mesh 2': [self] + list(mesh), 'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, operation='DIFFERENCE', solver=solver)
+        node = Node('Mesh Boolean', sockets={'Mesh 2': [self] + list(mesh), 'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, operation='INTERSECT', solver=solver)
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -673,7 +673,7 @@ class Mesh(Socket):
 
         Information
         -----------
-        - Parameter 'operation' : 'DIFFERENCE'
+        - Parameter 'operation' : 'UNION'
 
         Arguments
         ---------
@@ -687,7 +687,7 @@ class Mesh(Socket):
         - Mesh
         """
         utils.check_enum_arg('Mesh Boolean', 'solver', solver, 'union', ('EXACT', 'FLOAT'))
-        node = Node('Mesh Boolean', sockets={'Mesh 2': [self] + list(mesh), 'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, operation='DIFFERENCE', solver=solver)
+        node = Node('Mesh Boolean', sockets={'Mesh 2': [self] + list(mesh), 'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, operation='UNION', solver=solver)
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -723,7 +723,7 @@ class Mesh(Socket):
 
         Information
         -----------
-        - Parameter 'operation' : 'DIFFERENCE'
+        - Parameter 'operation' : 'INTERSECT'
 
         Arguments
         ---------
@@ -737,7 +737,7 @@ class Mesh(Socket):
         - Mesh
         """
         utils.check_enum_arg('Mesh Boolean', 'solver', solver, 'Intersect', ('EXACT', 'FLOAT'))
-        node = Node('Mesh Boolean', sockets={'Mesh 2': list(mesh), 'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, operation='DIFFERENCE', solver=solver)
+        node = Node('Mesh Boolean', sockets={'Mesh 2': list(mesh), 'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, operation='INTERSECT', solver=solver)
         return cls(node._out)
 
     @classmethod
@@ -746,7 +746,7 @@ class Mesh(Socket):
 
         Information
         -----------
-        - Parameter 'operation' : 'DIFFERENCE'
+        - Parameter 'operation' : 'UNION'
 
         Arguments
         ---------
@@ -760,7 +760,7 @@ class Mesh(Socket):
         - Mesh
         """
         utils.check_enum_arg('Mesh Boolean', 'solver', solver, 'Union', ('EXACT', 'FLOAT'))
-        node = Node('Mesh Boolean', sockets={'Mesh 2': list(mesh), 'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, operation='DIFFERENCE', solver=solver)
+        node = Node('Mesh Boolean', sockets={'Mesh 2': list(mesh), 'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, operation='UNION', solver=solver)
         return cls(node._out)
 
     @classmethod
@@ -944,7 +944,7 @@ class Mesh(Socket):
 
         Information
         -----------
-        - Parameter 'mode' : 'OFFSET'
+        - Parameter 'mode' : 'END_POINTS'
 
         Arguments
         ---------
@@ -958,7 +958,7 @@ class Mesh(Socket):
         - Mesh
         """
         utils.check_enum_arg('Mesh Line', 'count_mode', count_mode, 'LineEndPoints', ('TOTAL', 'RESOLUTION'))
-        node = Node('Mesh Line', sockets={'Count': count, 'Start Location': start_location, 'Offset': end_location}, count_mode=count_mode, mode='OFFSET')
+        node = Node('Mesh Line', sockets={'Count': count, 'Start Location': start_location, 'Offset': end_location}, count_mode=count_mode, mode='END_POINTS')
         return cls(node._out)
 
     @classmethod
@@ -1067,7 +1067,7 @@ class Mesh(Socket):
         -----------
         - Socket 'Mesh' : self
         - Socket 'Selection' : self[selection]
-        - Parameter 'mode' : 'VERTICES'
+        - Parameter 'mode' : 'EDGES'
 
         Arguments
         ---------
@@ -1078,7 +1078,7 @@ class Mesh(Socket):
         -------
         - Cloud
         """
-        node = Node('Mesh to Points', sockets={'Mesh': self, 'Selection': self._sel, 'Position': position, 'Radius': radius}, mode='VERTICES')
+        node = Node('Mesh to Points', sockets={'Mesh': self, 'Selection': self._sel, 'Position': position, 'Radius': radius}, mode='EDGES')
         return node._out
 
     def faces_to_points(self, position=None, radius=None):
@@ -1088,7 +1088,7 @@ class Mesh(Socket):
         -----------
         - Socket 'Mesh' : self
         - Socket 'Selection' : self[selection]
-        - Parameter 'mode' : 'VERTICES'
+        - Parameter 'mode' : 'FACES'
 
         Arguments
         ---------
@@ -1099,7 +1099,7 @@ class Mesh(Socket):
         -------
         - Cloud
         """
-        node = Node('Mesh to Points', sockets={'Mesh': self, 'Selection': self._sel, 'Position': position, 'Radius': radius}, mode='VERTICES')
+        node = Node('Mesh to Points', sockets={'Mesh': self, 'Selection': self._sel, 'Position': position, 'Radius': radius}, mode='FACES')
         return node._out
 
     def corners_to_points(self, position=None, radius=None):
@@ -1109,7 +1109,7 @@ class Mesh(Socket):
         -----------
         - Socket 'Mesh' : self
         - Socket 'Selection' : self[selection]
-        - Parameter 'mode' : 'VERTICES'
+        - Parameter 'mode' : 'CORNERS'
 
         Arguments
         ---------
@@ -1120,7 +1120,7 @@ class Mesh(Socket):
         -------
         - Cloud
         """
-        node = Node('Mesh to Points', sockets={'Mesh': self, 'Selection': self._sel, 'Position': position, 'Radius': radius}, mode='VERTICES')
+        node = Node('Mesh to Points', sockets={'Mesh': self, 'Selection': self._sel, 'Position': position, 'Radius': radius}, mode='CORNERS')
         return node._out
 
     def to_sdf_grid(self, voxel_size=None, band_width=None):

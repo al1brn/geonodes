@@ -35,7 +35,7 @@ class Color(Socket):
 
         Information
         -----------
-        - Parameter 'mode' : 'RGB'
+        - Parameter 'mode' : 'HSV'
 
         Arguments
         ---------
@@ -48,7 +48,7 @@ class Color(Socket):
         -------
         - Color
         """
-        node = Node('Combine Color', sockets={'Red': hue, 'Green': saturation, 'Blue': value, 'Alpha': alpha}, mode='RGB')
+        node = Node('Combine Color', sockets={'Red': hue, 'Green': saturation, 'Blue': value, 'Alpha': alpha}, mode='HSV')
         return cls(node._out)
 
     @classmethod
@@ -57,7 +57,7 @@ class Color(Socket):
 
         Information
         -----------
-        - Parameter 'mode' : 'RGB'
+        - Parameter 'mode' : 'HSL'
 
         Arguments
         ---------
@@ -70,7 +70,7 @@ class Color(Socket):
         -------
         - Color
         """
-        node = Node('Combine Color', sockets={'Red': hue, 'Green': saturation, 'Blue': lightness, 'Alpha': alpha}, mode='RGB')
+        node = Node('Combine Color', sockets={'Red': hue, 'Green': saturation, 'Blue': lightness, 'Alpha': alpha}, mode='HSL')
         return cls(node._out)
 
     @classmethod
@@ -99,9 +99,9 @@ class Color(Socket):
         Information
         -----------
         - Socket 'A' : self
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'data_type' : 'RGBA'
         - Parameter 'mode' : 'ELEMENT'
-        - Parameter 'operation' : 'GREATER_THAN'
+        - Parameter 'operation' : 'EQUAL'
 
         Arguments
         ---------
@@ -112,7 +112,7 @@ class Color(Socket):
         -------
         - Boolean
         """
-        node = Node('Compare', sockets={'A_COL': self, 'B_COL': b, 'Epsilon': epsilon}, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN')
+        node = Node('Compare', sockets={'A_COL': self, 'B_COL': b, 'Epsilon': epsilon}, data_type='RGBA', mode='ELEMENT', operation='EQUAL')
         return node._out
 
     def not_equal(self, b=None, epsilon=None):
@@ -121,9 +121,9 @@ class Color(Socket):
         Information
         -----------
         - Socket 'A' : self
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'data_type' : 'RGBA'
         - Parameter 'mode' : 'ELEMENT'
-        - Parameter 'operation' : 'GREATER_THAN'
+        - Parameter 'operation' : 'NOT_EQUAL'
 
         Arguments
         ---------
@@ -134,7 +134,7 @@ class Color(Socket):
         -------
         - Boolean
         """
-        node = Node('Compare', sockets={'A_COL': self, 'B_COL': b, 'Epsilon': epsilon}, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN')
+        node = Node('Compare', sockets={'A_COL': self, 'B_COL': b, 'Epsilon': epsilon}, data_type='RGBA', mode='ELEMENT', operation='NOT_EQUAL')
         return node._out
 
     def brighter(self, b=None):
@@ -143,9 +143,9 @@ class Color(Socket):
         Information
         -----------
         - Socket 'A' : self
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'data_type' : 'RGBA'
         - Parameter 'mode' : 'ELEMENT'
-        - Parameter 'operation' : 'GREATER_THAN'
+        - Parameter 'operation' : 'BRIGHTER'
 
         Arguments
         ---------
@@ -155,7 +155,7 @@ class Color(Socket):
         -------
         - Boolean
         """
-        node = Node('Compare', sockets={'A_COL': self, 'B_COL': b}, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN')
+        node = Node('Compare', sockets={'A_COL': self, 'B_COL': b}, data_type='RGBA', mode='ELEMENT', operation='BRIGHTER')
         return node._out
 
     def darker(self, b=None):
@@ -164,9 +164,9 @@ class Color(Socket):
         Information
         -----------
         - Socket 'A' : self
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'data_type' : 'RGBA'
         - Parameter 'mode' : 'ELEMENT'
-        - Parameter 'operation' : 'GREATER_THAN'
+        - Parameter 'operation' : 'DARKER'
 
         Arguments
         ---------
@@ -176,7 +176,7 @@ class Color(Socket):
         -------
         - Boolean
         """
-        node = Node('Compare', sockets={'A_COL': self, 'B_COL': b}, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN')
+        node = Node('Compare', sockets={'A_COL': self, 'B_COL': b}, data_type='RGBA', mode='ELEMENT', operation='DARKER')
         return node._out
 
     def hash_value(self, seed=None):
@@ -185,7 +185,7 @@ class Color(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'data_type' : 'INT'
+        - Parameter 'data_type' : 'RGBA'
 
         Arguments
         ---------
@@ -195,7 +195,7 @@ class Color(Socket):
         -------
         - Integer
         """
-        node = Node('Hash Value', sockets={'Value': self, 'Seed': seed}, data_type='INT')
+        node = Node('Hash Value', sockets={'Value': self, 'Seed': seed}, data_type='RGBA')
         return node._out
 
     def separate_RGB(self):
@@ -219,13 +219,13 @@ class Color(Socket):
         Information
         -----------
         - Socket 'Color' : self
-        - Parameter 'mode' : 'RGB'
+        - Parameter 'mode' : 'HSV'
 
         Returns
         -------
         - Float [saturation_ (Float), value_ (Float), alpha_ (Float)]
         """
-        node = self._cache('Separate Color', sockets={'Color': self}, mode='RGB')
+        node = self._cache('Separate Color', sockets={'Color': self}, mode='HSV')
         return node._out
 
     def separate_HSL(self):
@@ -234,13 +234,13 @@ class Color(Socket):
         Information
         -----------
         - Socket 'Color' : self
-        - Parameter 'mode' : 'RGB'
+        - Parameter 'mode' : 'HSL'
 
         Returns
         -------
         - Float [saturation_ (Float), lightness_ (Float), alpha_ (Float)]
         """
-        node = self._cache('Separate Color', sockets={'Color': self}, mode='RGB')
+        node = self._cache('Separate Color', sockets={'Color': self}, mode='HSL')
         return node._out
 
     def separate(self, mode='RGB'):
@@ -285,13 +285,13 @@ class Color(Socket):
         Information
         -----------
         - Socket 'Color' : self
-        - Parameter 'mode' : 'RGB'
+        - Parameter 'mode' : 'HSL'
 
         Returns
         -------
         - tuple (Float, Float, Float, Float)
         """
-        node = self._cache('Separate Color', sockets={'Color': self}, mode='RGB')
+        node = self._cache('Separate Color', sockets={'Color': self}, mode='HSL')
         return (node.hue, node.saturation, node.lightness, node.alpha)
 
     def separate_color(self):
@@ -316,13 +316,13 @@ class Color(Socket):
         Information
         -----------
         - Socket 'Color' : self
-        - Parameter 'mode' : 'RGB'
+        - Parameter 'mode' : 'HSV'
 
         Returns
         -------
         - hue
         """
-        node = self._cache('Separate Color', sockets={'Color': self}, mode='RGB')
+        node = self._cache('Separate Color', sockets={'Color': self}, mode='HSV')
         return node.hue
 
     @property
@@ -332,13 +332,13 @@ class Color(Socket):
         Information
         -----------
         - Socket 'Color' : self
-        - Parameter 'mode' : 'RGB'
+        - Parameter 'mode' : 'HSV'
 
         Returns
         -------
         - saturation
         """
-        node = self._cache('Separate Color', sockets={'Color': self}, mode='RGB')
+        node = self._cache('Separate Color', sockets={'Color': self}, mode='HSV')
         return node.saturation
 
     @property
@@ -348,13 +348,13 @@ class Color(Socket):
         Information
         -----------
         - Socket 'Color' : self
-        - Parameter 'mode' : 'RGB'
+        - Parameter 'mode' : 'HSL'
 
         Returns
         -------
         - lightness
         """
-        node = self._cache('Separate Color', sockets={'Color': self}, mode='RGB')
+        node = self._cache('Separate Color', sockets={'Color': self}, mode='HSL')
         return node.lightness
 
     @property
@@ -380,13 +380,13 @@ class Color(Socket):
         Information
         -----------
         - Socket 'Color' : self
-        - Parameter 'mode' : 'RGB'
+        - Parameter 'mode' : 'HSV'
 
         Returns
         -------
         - value
         """
-        node = self._cache('Separate Color', sockets={'Color': self}, mode='RGB')
+        node = self._cache('Separate Color', sockets={'Color': self}, mode='HSV')
         return node.value
 
     @property
@@ -443,7 +443,7 @@ class Color(Socket):
         Information
         -----------
         - Socket 'Value' : self
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'data_type' : 'FLOAT_COLOR'
 
         Arguments
         ---------
@@ -454,7 +454,7 @@ class Color(Socket):
         -------
         - Color
         """
-        node = Node('Blur Attribute', sockets={'Value': self, 'Iterations': iterations, 'Weight': weight}, data_type='FLOAT')
+        node = Node('Blur Attribute', sockets={'Value': self, 'Iterations': iterations, 'Weight': weight}, data_type='FLOAT_COLOR')
         return node._out
 
     @classmethod
@@ -484,7 +484,7 @@ class Color(Socket):
 
         Information
         -----------
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'data_type' : 'FLOAT_COLOR'
 
         Arguments
         ---------
@@ -494,7 +494,7 @@ class Color(Socket):
         -------
         - Color
         """
-        node = Node('Named Attribute', sockets={'Name': name}, data_type='FLOAT')
+        node = Node('Named Attribute', sockets={'Name': name}, data_type='FLOAT_COLOR')
         return cls(node._out)
 
     @classmethod
@@ -503,7 +503,7 @@ class Color(Socket):
 
         Information
         -----------
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'data_type' : 'FLOAT_COLOR'
 
         Arguments
         ---------
@@ -513,7 +513,7 @@ class Color(Socket):
         -------
         - Color
         """
-        node = Node('Named Attribute', sockets={'Name': name}, data_type='FLOAT')
+        node = Node('Named Attribute', sockets={'Name': name}, data_type='FLOAT_COLOR')
         return cls(node._out)
 
     @classmethod
@@ -538,7 +538,7 @@ class Color(Socket):
         -----------
         - Socket 'A' : self
         - Parameter 'blend_type' : 'MIX'
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'data_type' : 'RGBA'
         - Parameter 'factor_mode' : 'UNIFORM'
 
         Arguments
@@ -552,7 +552,7 @@ class Color(Socket):
         -------
         - Color
         """
-        node = Node('Mix', sockets={'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='FLOAT', factor_mode='UNIFORM')
+        node = Node('Mix', sockets={'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM')
         return node._out
 
     def mix_darken(self, b=None, factor=None, clamp_factor=True, clamp_result=False):
@@ -561,8 +561,8 @@ class Color(Socket):
         Information
         -----------
         - Socket 'A' : self
-        - Parameter 'blend_type' : 'MIX'
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'blend_type' : 'DARKEN'
+        - Parameter 'data_type' : 'RGBA'
         - Parameter 'factor_mode' : 'UNIFORM'
 
         Arguments
@@ -576,7 +576,7 @@ class Color(Socket):
         -------
         - Color
         """
-        node = Node('Mix', sockets={'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='FLOAT', factor_mode='UNIFORM')
+        node = Node('Mix', sockets={'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='DARKEN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM')
         return node._out
 
     def mix_multiply(self, b=None, factor=None, clamp_factor=True, clamp_result=False):
@@ -585,8 +585,8 @@ class Color(Socket):
         Information
         -----------
         - Socket 'A' : self
-        - Parameter 'blend_type' : 'MIX'
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'blend_type' : 'MULTIPLY'
+        - Parameter 'data_type' : 'RGBA'
         - Parameter 'factor_mode' : 'UNIFORM'
 
         Arguments
@@ -600,7 +600,7 @@ class Color(Socket):
         -------
         - Color
         """
-        node = Node('Mix', sockets={'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='FLOAT', factor_mode='UNIFORM')
+        node = Node('Mix', sockets={'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='MULTIPLY', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM')
         return node._out
 
     def mix_burn(self, b=None, factor=None, clamp_factor=True, clamp_result=False):
@@ -609,8 +609,8 @@ class Color(Socket):
         Information
         -----------
         - Socket 'A' : self
-        - Parameter 'blend_type' : 'MIX'
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'blend_type' : 'BURN'
+        - Parameter 'data_type' : 'RGBA'
         - Parameter 'factor_mode' : 'UNIFORM'
 
         Arguments
@@ -624,7 +624,7 @@ class Color(Socket):
         -------
         - Color
         """
-        node = Node('Mix', sockets={'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='FLOAT', factor_mode='UNIFORM')
+        node = Node('Mix', sockets={'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='BURN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM')
         return node._out
 
     def mix_lighten(self, b=None, factor=None, clamp_factor=True, clamp_result=False):
@@ -633,8 +633,8 @@ class Color(Socket):
         Information
         -----------
         - Socket 'A' : self
-        - Parameter 'blend_type' : 'MIX'
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'blend_type' : 'LIGHTEN'
+        - Parameter 'data_type' : 'RGBA'
         - Parameter 'factor_mode' : 'UNIFORM'
 
         Arguments
@@ -648,7 +648,7 @@ class Color(Socket):
         -------
         - Color
         """
-        node = Node('Mix', sockets={'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='FLOAT', factor_mode='UNIFORM')
+        node = Node('Mix', sockets={'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='LIGHTEN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM')
         return node._out
 
     def mix_screen(self, b=None, factor=None, clamp_factor=True, clamp_result=False):
@@ -657,8 +657,8 @@ class Color(Socket):
         Information
         -----------
         - Socket 'A' : self
-        - Parameter 'blend_type' : 'MIX'
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'blend_type' : 'SCREEN'
+        - Parameter 'data_type' : 'RGBA'
         - Parameter 'factor_mode' : 'UNIFORM'
 
         Arguments
@@ -672,7 +672,7 @@ class Color(Socket):
         -------
         - Color
         """
-        node = Node('Mix', sockets={'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='FLOAT', factor_mode='UNIFORM')
+        node = Node('Mix', sockets={'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='SCREEN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM')
         return node._out
 
     def mix_dodge(self, b=None, factor=None, clamp_factor=True, clamp_result=False):
@@ -681,8 +681,8 @@ class Color(Socket):
         Information
         -----------
         - Socket 'A' : self
-        - Parameter 'blend_type' : 'MIX'
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'blend_type' : 'DODGE'
+        - Parameter 'data_type' : 'RGBA'
         - Parameter 'factor_mode' : 'UNIFORM'
 
         Arguments
@@ -696,7 +696,7 @@ class Color(Socket):
         -------
         - Color
         """
-        node = Node('Mix', sockets={'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='FLOAT', factor_mode='UNIFORM')
+        node = Node('Mix', sockets={'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='DODGE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM')
         return node._out
 
     def mix_add(self, b=None, factor=None, clamp_factor=True, clamp_result=False):
@@ -705,8 +705,8 @@ class Color(Socket):
         Information
         -----------
         - Socket 'A' : self
-        - Parameter 'blend_type' : 'MIX'
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'blend_type' : 'ADD'
+        - Parameter 'data_type' : 'RGBA'
         - Parameter 'factor_mode' : 'UNIFORM'
 
         Arguments
@@ -720,7 +720,7 @@ class Color(Socket):
         -------
         - Color
         """
-        node = Node('Mix', sockets={'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='FLOAT', factor_mode='UNIFORM')
+        node = Node('Mix', sockets={'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='ADD', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM')
         return node._out
 
     def mix_overlay(self, b=None, factor=None, clamp_factor=True, clamp_result=False):
@@ -729,8 +729,8 @@ class Color(Socket):
         Information
         -----------
         - Socket 'A' : self
-        - Parameter 'blend_type' : 'MIX'
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'blend_type' : 'OVERLAY'
+        - Parameter 'data_type' : 'RGBA'
         - Parameter 'factor_mode' : 'UNIFORM'
 
         Arguments
@@ -744,7 +744,7 @@ class Color(Socket):
         -------
         - Color
         """
-        node = Node('Mix', sockets={'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='FLOAT', factor_mode='UNIFORM')
+        node = Node('Mix', sockets={'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='OVERLAY', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM')
         return node._out
 
     def mix_soft_light(self, b=None, factor=None, clamp_factor=True, clamp_result=False):
@@ -753,8 +753,8 @@ class Color(Socket):
         Information
         -----------
         - Socket 'A' : self
-        - Parameter 'blend_type' : 'MIX'
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'blend_type' : 'SOFT_LIGHT'
+        - Parameter 'data_type' : 'RGBA'
         - Parameter 'factor_mode' : 'UNIFORM'
 
         Arguments
@@ -768,7 +768,7 @@ class Color(Socket):
         -------
         - Color
         """
-        node = Node('Mix', sockets={'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='FLOAT', factor_mode='UNIFORM')
+        node = Node('Mix', sockets={'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='SOFT_LIGHT', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM')
         return node._out
 
     def mix_linear_light(self, b=None, factor=None, clamp_factor=True, clamp_result=False):
@@ -777,8 +777,8 @@ class Color(Socket):
         Information
         -----------
         - Socket 'A' : self
-        - Parameter 'blend_type' : 'MIX'
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'blend_type' : 'LINEAR_LIGHT'
+        - Parameter 'data_type' : 'RGBA'
         - Parameter 'factor_mode' : 'UNIFORM'
 
         Arguments
@@ -792,7 +792,7 @@ class Color(Socket):
         -------
         - Color
         """
-        node = Node('Mix', sockets={'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='FLOAT', factor_mode='UNIFORM')
+        node = Node('Mix', sockets={'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='LINEAR_LIGHT', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM')
         return node._out
 
     def mix_difference(self, b=None, factor=None, clamp_factor=True, clamp_result=False):
@@ -801,8 +801,8 @@ class Color(Socket):
         Information
         -----------
         - Socket 'A' : self
-        - Parameter 'blend_type' : 'MIX'
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'blend_type' : 'DIFFERENCE'
+        - Parameter 'data_type' : 'RGBA'
         - Parameter 'factor_mode' : 'UNIFORM'
 
         Arguments
@@ -816,7 +816,7 @@ class Color(Socket):
         -------
         - Color
         """
-        node = Node('Mix', sockets={'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='FLOAT', factor_mode='UNIFORM')
+        node = Node('Mix', sockets={'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='DIFFERENCE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM')
         return node._out
 
     def mix_exclusion(self, b=None, factor=None, clamp_factor=True, clamp_result=False):
@@ -825,8 +825,8 @@ class Color(Socket):
         Information
         -----------
         - Socket 'A' : self
-        - Parameter 'blend_type' : 'MIX'
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'blend_type' : 'EXCLUSION'
+        - Parameter 'data_type' : 'RGBA'
         - Parameter 'factor_mode' : 'UNIFORM'
 
         Arguments
@@ -840,7 +840,7 @@ class Color(Socket):
         -------
         - Color
         """
-        node = Node('Mix', sockets={'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='FLOAT', factor_mode='UNIFORM')
+        node = Node('Mix', sockets={'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='EXCLUSION', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM')
         return node._out
 
     def mix_subtract(self, b=None, factor=None, clamp_factor=True, clamp_result=False):
@@ -849,8 +849,8 @@ class Color(Socket):
         Information
         -----------
         - Socket 'A' : self
-        - Parameter 'blend_type' : 'MIX'
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'blend_type' : 'SUBTRACT'
+        - Parameter 'data_type' : 'RGBA'
         - Parameter 'factor_mode' : 'UNIFORM'
 
         Arguments
@@ -864,7 +864,7 @@ class Color(Socket):
         -------
         - Color
         """
-        node = Node('Mix', sockets={'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='FLOAT', factor_mode='UNIFORM')
+        node = Node('Mix', sockets={'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='SUBTRACT', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM')
         return node._out
 
     def mix_divide(self, b=None, factor=None, clamp_factor=True, clamp_result=False):
@@ -873,8 +873,8 @@ class Color(Socket):
         Information
         -----------
         - Socket 'A' : self
-        - Parameter 'blend_type' : 'MIX'
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'blend_type' : 'DIVIDE'
+        - Parameter 'data_type' : 'RGBA'
         - Parameter 'factor_mode' : 'UNIFORM'
 
         Arguments
@@ -888,7 +888,7 @@ class Color(Socket):
         -------
         - Color
         """
-        node = Node('Mix', sockets={'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='FLOAT', factor_mode='UNIFORM')
+        node = Node('Mix', sockets={'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='DIVIDE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM')
         return node._out
 
     def mix_hue(self, b=None, factor=None, clamp_factor=True, clamp_result=False):
@@ -897,8 +897,8 @@ class Color(Socket):
         Information
         -----------
         - Socket 'A' : self
-        - Parameter 'blend_type' : 'MIX'
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'blend_type' : 'HUE'
+        - Parameter 'data_type' : 'RGBA'
         - Parameter 'factor_mode' : 'UNIFORM'
 
         Arguments
@@ -912,7 +912,7 @@ class Color(Socket):
         -------
         - Color
         """
-        node = Node('Mix', sockets={'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='FLOAT', factor_mode='UNIFORM')
+        node = Node('Mix', sockets={'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='HUE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM')
         return node._out
 
     def mix_saturation(self, b=None, factor=None, clamp_factor=True, clamp_result=False):
@@ -921,8 +921,8 @@ class Color(Socket):
         Information
         -----------
         - Socket 'A' : self
-        - Parameter 'blend_type' : 'MIX'
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'blend_type' : 'SATURATION'
+        - Parameter 'data_type' : 'RGBA'
         - Parameter 'factor_mode' : 'UNIFORM'
 
         Arguments
@@ -936,7 +936,7 @@ class Color(Socket):
         -------
         - Color
         """
-        node = Node('Mix', sockets={'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='FLOAT', factor_mode='UNIFORM')
+        node = Node('Mix', sockets={'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='SATURATION', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM')
         return node._out
 
     def mix_color(self, b=None, factor=None, clamp_factor=True, clamp_result=False):
@@ -945,8 +945,8 @@ class Color(Socket):
         Information
         -----------
         - Socket 'A' : self
-        - Parameter 'blend_type' : 'MIX'
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'blend_type' : 'COLOR'
+        - Parameter 'data_type' : 'RGBA'
         - Parameter 'factor_mode' : 'UNIFORM'
 
         Arguments
@@ -960,7 +960,7 @@ class Color(Socket):
         -------
         - Color
         """
-        node = Node('Mix', sockets={'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='FLOAT', factor_mode='UNIFORM')
+        node = Node('Mix', sockets={'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='COLOR', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM')
         return node._out
 
     def mix_value(self, b=None, factor=None, clamp_factor=True, clamp_result=False):
@@ -969,8 +969,8 @@ class Color(Socket):
         Information
         -----------
         - Socket 'A' : self
-        - Parameter 'blend_type' : 'MIX'
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'blend_type' : 'VALUE'
+        - Parameter 'data_type' : 'RGBA'
         - Parameter 'factor_mode' : 'UNIFORM'
 
         Arguments
@@ -984,7 +984,7 @@ class Color(Socket):
         -------
         - Color
         """
-        node = Node('Mix', sockets={'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='FLOAT', factor_mode='UNIFORM')
+        node = Node('Mix', sockets={'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='VALUE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM')
         return node._out
 
     def mix(self, b=None, factor=None, clamp_factor=True, clamp_result=False, factor_mode='UNIFORM'):
@@ -994,7 +994,7 @@ class Color(Socket):
         -----------
         - Socket 'A' : self
         - Parameter 'blend_type' : 'MIX'
-        - Parameter 'data_type' : 'FLOAT'
+        - Parameter 'data_type' : 'RGBA'
 
         Arguments
         ---------
@@ -1009,7 +1009,7 @@ class Color(Socket):
         - Color
         """
         utils.check_enum_arg('Mix', 'factor_mode', factor_mode, 'mix', ('UNIFORM', 'NON_UNIFORM'))
-        node = Node('Mix', sockets={'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='FLOAT', factor_mode=factor_mode)
+        node = Node('Mix', sockets={'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode=factor_mode)
         return node._out
 
     @classmethod
@@ -1330,13 +1330,13 @@ class Color(Socket):
         Information
         -----------
         - Socket 'Color' : self
-        - Parameter 'mode' : 'RGB'
+        - Parameter 'mode' : 'HSV'
 
         Returns
         -------
         - Float [saturation_ (Float), value_ (Float)]
         """
-        node = Node('Separate Color', sockets={'Color': self}, mode='RGB')
+        node = Node('Separate Color', sockets={'Color': self}, mode='HSV')
         return node._out
 
     def separate_col_HSL(self):
@@ -1345,13 +1345,13 @@ class Color(Socket):
         Information
         -----------
         - Socket 'Color' : self
-        - Parameter 'mode' : 'RGB'
+        - Parameter 'mode' : 'HSL'
 
         Returns
         -------
         - Float [saturation_ (Float), lightness_ (Float)]
         """
-        node = Node('Separate Color', sockets={'Color': self}, mode='RGB')
+        node = Node('Separate Color', sockets={'Color': self}, mode='HSL')
         return node._out
 
     def separate_col(self, mode='RGB'):

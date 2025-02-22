@@ -188,7 +188,7 @@ class Geometry(Socket):
         -----------
         - Socket 'Geometry' : self
         - Socket 'Selection' : self[selection]
-        - Parameter 'mode' : 'ALL'
+        - Parameter 'mode' : 'CONNECTED'
 
         Arguments
         ---------
@@ -198,7 +198,7 @@ class Geometry(Socket):
         -------
         - Geometry
         """
-        node = Node('Merge by Distance', sockets={'Geometry': self, 'Selection': self._sel, 'Distance': distance}, mode='ALL')
+        node = Node('Merge by Distance', sockets={'Geometry': self, 'Selection': self._sel, 'Distance': distance}, mode='CONNECTED')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -254,7 +254,7 @@ class Geometry(Socket):
         Information
         -----------
         - Socket 'Geometry' : self
-        - Parameter 'target_element' : 'FACES'
+        - Parameter 'target_element' : 'POINTS'
 
         Arguments
         ---------
@@ -266,7 +266,7 @@ class Geometry(Socket):
         -------
         - Vector [distance_ (Float), is_valid_ (Boolean)]
         """
-        node = Node('Geometry Proximity', sockets={'Target': self, 'Group ID': group_id, 'Source Position': sample_position, 'Sample Group ID': sample_group_id}, target_element='FACES')
+        node = Node('Geometry Proximity', sockets={'Target': self, 'Group ID': group_id, 'Source Position': sample_position, 'Sample Group ID': sample_group_id}, target_element='POINTS')
         return node._out
 
     def proximity_edges(self, group_id=None, sample_position=None, sample_group_id=None):
@@ -275,7 +275,7 @@ class Geometry(Socket):
         Information
         -----------
         - Socket 'Geometry' : self
-        - Parameter 'target_element' : 'FACES'
+        - Parameter 'target_element' : 'EDGES'
 
         Arguments
         ---------
@@ -287,7 +287,7 @@ class Geometry(Socket):
         -------
         - Vector [distance_ (Float), is_valid_ (Boolean)]
         """
-        node = Node('Geometry Proximity', sockets={'Target': self, 'Group ID': group_id, 'Source Position': sample_position, 'Sample Group ID': sample_group_id}, target_element='FACES')
+        node = Node('Geometry Proximity', sockets={'Target': self, 'Group ID': group_id, 'Source Position': sample_position, 'Sample Group ID': sample_group_id}, target_element='EDGES')
         return node._out
 
     def proximity_faces(self, group_id=None, sample_position=None, sample_group_id=None):
@@ -367,7 +367,7 @@ class Geometry(Socket):
         -----------
         - Socket 'Target Geometry' : self
         - Parameter 'data_type' : depending on 'attribute' type
-        - Parameter 'mapping' : 'INTERPOLATED'
+        - Parameter 'mapping' : 'NEAREST'
 
         Arguments
         ---------
@@ -381,7 +381,7 @@ class Geometry(Socket):
         - node [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Float)]
         """
         data_type = utils.get_argument_data_type(attribute, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Geometry.raycast_nearest', 'attribute')
-        node = Node('Raycast', sockets={'Target Geometry': self, 'Attribute': attribute, 'Source Position': source_position, 'Ray Direction': ray_direction, 'Ray Length': ray_length}, data_type=data_type, mapping='INTERPOLATED')
+        node = Node('Raycast', sockets={'Target Geometry': self, 'Attribute': attribute, 'Source Position': source_position, 'Ray Direction': ray_direction, 'Ray Length': ray_length}, data_type=data_type, mapping='NEAREST')
         return node
 
     def realize(self, realize_all=None, depth=None):
@@ -435,7 +435,7 @@ class Geometry(Socket):
         Information
         -----------
         - Socket 'Geometry' : self
-        - Parameter 'pattern_mode' : 'EXACT'
+        - Parameter 'pattern_mode' : 'WILDCARD'
 
         Arguments
         ---------
@@ -445,7 +445,7 @@ class Geometry(Socket):
         -------
         - Geometry
         """
-        node = Node('Remove Named Attribute', sockets={'Geometry': self, 'Name': name}, pattern_mode='EXACT')
+        node = Node('Remove Named Attribute', sockets={'Geometry': self, 'Name': name}, pattern_mode='WILDCARD')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -762,7 +762,7 @@ class Geometry(Socket):
         Information
         -----------
         - Socket 'Geometry' : self
-        - Parameter 'mode' : 'COMPONENTS'
+        - Parameter 'mode' : 'MATRIX'
 
         Arguments
         ---------
@@ -775,7 +775,7 @@ class Geometry(Socket):
         -------
         - Geometry
         """
-        node = Node('Transform Geometry', sockets={'Geometry': self, 'Translation': translation, 'Rotation': rotation, 'Scale': scale, 'Transform': transform}, mode='COMPONENTS')
+        node = Node('Transform Geometry', sockets={'Geometry': self, 'Translation': translation, 'Rotation': rotation, 'Scale': scale, 'Transform': transform}, mode='MATRIX')
         self._jump(node._out)
         return self._domain_to_geometry
 

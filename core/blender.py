@@ -57,5 +57,7 @@ def get_font(name: str|VectorFont, path: str|None = None) -> VectorFont | None:
     if font is None:
         if path is None:
             return None
+        else:
+            font = bpy.data.fonts.load(path)
 
-    return bpy.data.fonts.load(path)
+    return font

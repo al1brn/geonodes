@@ -13,13 +13,13 @@ class Instances(Socket):
         Information
         -----------
         - Socket 'Geometry' : self
-        - Parameter 'component' : 'MESH'
+        - Parameter 'component' : 'INSTANCES'
 
         Returns
         -------
         - node [instance_count (Integer)]
         """
-        node = self._cache('Domain Size', sockets={'Geometry': self}, component='MESH')
+        node = self._cache('Domain Size', sockets={'Geometry': self}, component='INSTANCES')
         return node
 
     @classmethod

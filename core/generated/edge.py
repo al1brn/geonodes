@@ -14,7 +14,7 @@ class Edge(Socket):
         Information
         -----------
         - Parameter 'data_type' : depending on 'value' type
-        - Parameter 'domain' : 'POINT'
+        - Parameter 'domain' : 'EDGE'
 
         Arguments
         ---------
@@ -26,7 +26,7 @@ class Edge(Socket):
         - Float [trailing_ (Float), total_ (Float)]
         """
         data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'MATRIX': 'TRANSFORM'}, 'Edge.accumulate_field', 'value')
-        node = Node('Accumulate Field', sockets={'Value': value, 'Group Index': group_id}, data_type=data_type, domain='POINT')
+        node = Node('Accumulate Field', sockets={'Value': value, 'Group Index': group_id}, data_type=data_type, domain='EDGE')
         return node._out
 
     def attribute_statistic(self, attribute=None):
@@ -37,7 +37,7 @@ class Edge(Socket):
         - Socket 'Geometry' : self
         - Socket 'Selection' : self[selection]
         - Parameter 'data_type' : depending on 'attribute' type
-        - Parameter 'domain' : 'POINT'
+        - Parameter 'domain' : 'EDGE'
 
         Arguments
         ---------
@@ -48,7 +48,7 @@ class Edge(Socket):
         - node [mean (Float), median (Float), sum (Float), min (Float), max (Float), range (Float), standard_deviation (Float), variance (Float)]
         """
         data_type = utils.get_argument_data_type(attribute, {'VALUE': 'FLOAT', 'VECTOR': 'FLOAT_VECTOR'}, 'Edge.attribute_statistic', 'attribute')
-        node = Node('Attribute Statistic', sockets={'Geometry': self, 'Selection': self._sel, 'Attribute': attribute}, data_type=data_type, domain='POINT')
+        node = Node('Attribute Statistic', sockets={'Geometry': self, 'Selection': self._sel, 'Attribute': attribute}, data_type=data_type, domain='EDGE')
         return node
 
     @classmethod
@@ -111,14 +111,14 @@ class Edge(Socket):
         -----------
         - Socket 'Geometry' : self
         - Socket 'Selection' : self[selection]
-        - Parameter 'domain' : 'POINT'
+        - Parameter 'domain' : 'EDGE'
         - Parameter 'mode' : 'ALL'
 
         Returns
         -------
         - Geometry
         """
-        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='POINT', mode='ALL')
+        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='EDGE', mode='ALL')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -131,14 +131,14 @@ class Edge(Socket):
         -----------
         - Socket 'Geometry' : self
         - Socket 'Selection' : self[selection]
-        - Parameter 'domain' : 'POINT'
-        - Parameter 'mode' : 'ALL'
+        - Parameter 'domain' : 'EDGE'
+        - Parameter 'mode' : 'EDGE_FACE'
 
         Returns
         -------
         - Geometry
         """
-        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='POINT', mode='ALL')
+        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='EDGE', mode='EDGE_FACE')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -151,14 +151,14 @@ class Edge(Socket):
         -----------
         - Socket 'Geometry' : self
         - Socket 'Selection' : self[selection]
-        - Parameter 'domain' : 'POINT'
-        - Parameter 'mode' : 'ALL'
+        - Parameter 'domain' : 'EDGE'
+        - Parameter 'mode' : 'ONLY_FACE'
 
         Returns
         -------
         - Geometry
         """
-        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='POINT', mode='ALL')
+        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='EDGE', mode='ONLY_FACE')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -171,7 +171,7 @@ class Edge(Socket):
         -----------
         - Socket 'Geometry' : self
         - Socket 'Selection' : self[selection]
-        - Parameter 'domain' : 'POINT'
+        - Parameter 'domain' : 'EDGE'
 
         Arguments
         ---------
@@ -182,7 +182,7 @@ class Edge(Socket):
         - Geometry
         """
         utils.check_enum_arg('Delete Geometry', 'mode', mode, 'delete_geometry', ('ALL', 'EDGE_FACE', 'ONLY_FACE'))
-        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='POINT', mode=mode)
+        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='EDGE', mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -195,14 +195,14 @@ class Edge(Socket):
         -----------
         - Socket 'Geometry' : self
         - Socket 'Selection' : self[selection]
-        - Parameter 'domain' : 'POINT'
+        - Parameter 'domain' : 'EDGE'
         - Parameter 'mode' : 'ALL'
 
         Returns
         -------
         - Geometry
         """
-        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='POINT', mode='ALL')
+        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='EDGE', mode='ALL')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -215,14 +215,14 @@ class Edge(Socket):
         -----------
         - Socket 'Geometry' : self
         - Socket 'Selection' : self[selection]
-        - Parameter 'domain' : 'POINT'
-        - Parameter 'mode' : 'ALL'
+        - Parameter 'domain' : 'EDGE'
+        - Parameter 'mode' : 'EDGE_FACE'
 
         Returns
         -------
         - Geometry
         """
-        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='POINT', mode='ALL')
+        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='EDGE', mode='EDGE_FACE')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -235,14 +235,14 @@ class Edge(Socket):
         -----------
         - Socket 'Geometry' : self
         - Socket 'Selection' : self[selection]
-        - Parameter 'domain' : 'POINT'
-        - Parameter 'mode' : 'ALL'
+        - Parameter 'domain' : 'EDGE'
+        - Parameter 'mode' : 'ONLY_FACE'
 
         Returns
         -------
         - Geometry
         """
-        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='POINT', mode='ALL')
+        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='EDGE', mode='ONLY_FACE')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -255,7 +255,7 @@ class Edge(Socket):
         -----------
         - Socket 'Geometry' : self
         - Socket 'Selection' : self[selection]
-        - Parameter 'domain' : 'POINT'
+        - Parameter 'domain' : 'EDGE'
 
         Arguments
         ---------
@@ -266,7 +266,7 @@ class Edge(Socket):
         - Geometry
         """
         utils.check_enum_arg('Delete Geometry', 'mode', mode, 'delete', ('ALL', 'EDGE_FACE', 'ONLY_FACE'))
-        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='POINT', mode=mode)
+        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='EDGE', mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -279,7 +279,7 @@ class Edge(Socket):
         -----------
         - Socket 'Geometry' : self
         - Socket 'Selection' : self[selection]
-        - Parameter 'domain' : 'POINT'
+        - Parameter 'domain' : 'EDGE'
 
         Arguments
         ---------
@@ -289,7 +289,7 @@ class Edge(Socket):
         -------
         - Geometry [duplicate_index_ (Integer)]
         """
-        node = Node('Duplicate Elements', sockets={'Geometry': self, 'Selection': self._sel, 'Amount': amount}, domain='POINT')
+        node = Node('Duplicate Elements', sockets={'Geometry': self, 'Selection': self._sel, 'Amount': amount}, domain='EDGE')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -352,7 +352,7 @@ class Edge(Socket):
         -----------
         - Socket 'Mesh' : self
         - Socket 'Selection' : self[selection]
-        - Parameter 'mode' : 'FACES'
+        - Parameter 'mode' : 'EDGES'
 
         Arguments
         ---------
@@ -363,7 +363,7 @@ class Edge(Socket):
         -------
         - Mesh [top_ (Boolean), side_ (Boolean)]
         """
-        node = Node('Extrude Mesh', sockets={'Mesh': self, 'Selection': self._sel, 'Offset': offset, 'Offset Scale': offset_scale}, mode='FACES')
+        node = Node('Extrude Mesh', sockets={'Mesh': self, 'Selection': self._sel, 'Offset': offset, 'Offset Scale': offset_scale}, mode='EDGES')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -374,7 +374,7 @@ class Edge(Socket):
         Information
         -----------
         - Parameter 'data_type' : depending on 'value' type
-        - Parameter 'domain' : 'POINT'
+        - Parameter 'domain' : 'EDGE'
 
         Arguments
         ---------
@@ -386,7 +386,7 @@ class Edge(Socket):
         - Float
         """
         data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Edge.evaluate_at_index', 'value')
-        node = Node('Evaluate at Index', sockets={'Index': index, 'Value': value}, data_type=data_type, domain='POINT')
+        node = Node('Evaluate at Index', sockets={'Index': index, 'Value': value}, data_type=data_type, domain='EDGE')
         return node._out
 
     @classmethod
@@ -396,7 +396,7 @@ class Edge(Socket):
         Information
         -----------
         - Parameter 'data_type' : depending on 'value' type
-        - Parameter 'domain' : 'POINT'
+        - Parameter 'domain' : 'EDGE'
 
         Arguments
         ---------
@@ -407,7 +407,7 @@ class Edge(Socket):
         - Float
         """
         data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Edge.evaluate_on_domain', 'value')
-        node = Node('Evaluate on Domain', sockets={'Value': value}, data_type=data_type, domain='POINT')
+        node = Node('Evaluate on Domain', sockets={'Value': value}, data_type=data_type, domain='EDGE')
         return node._out
 
     @classmethod
@@ -539,7 +539,7 @@ class Edge(Socket):
         -----------
         - Socket 'Mesh' : self
         - Socket 'Selection' : self[selection]
-        - Parameter 'mode' : 'VERTICES'
+        - Parameter 'mode' : 'EDGES'
 
         Arguments
         ---------
@@ -550,7 +550,7 @@ class Edge(Socket):
         -------
         - Cloud
         """
-        node = Node('Mesh to Points', sockets={'Mesh': self, 'Selection': self._sel, 'Position': position, 'Radius': radius}, mode='VERTICES')
+        node = Node('Mesh to Points', sockets={'Mesh': self, 'Selection': self._sel, 'Position': position, 'Radius': radius}, mode='EDGES')
         return node._out
 
     def sample_index(self, value=None, index=None, clamp=False):
@@ -560,7 +560,7 @@ class Edge(Socket):
         -----------
         - Socket 'Geometry' : self
         - Parameter 'data_type' : depending on 'value' type
-        - Parameter 'domain' : 'POINT'
+        - Parameter 'domain' : 'EDGE'
 
         Arguments
         ---------
@@ -573,7 +573,7 @@ class Edge(Socket):
         - Float
         """
         data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Edge.sample_index', 'value')
-        node = Node('Sample Index', sockets={'Geometry': self, 'Value': value, 'Index': index}, clamp=clamp, data_type=data_type, domain='POINT')
+        node = Node('Sample Index', sockets={'Geometry': self, 'Value': value, 'Index': index}, clamp=clamp, data_type=data_type, domain='EDGE')
         return node._out
 
     def sample_nearest(self, sample_position=None):
@@ -582,7 +582,7 @@ class Edge(Socket):
         Information
         -----------
         - Socket 'Geometry' : self
-        - Parameter 'domain' : 'POINT'
+        - Parameter 'domain' : 'EDGE'
 
         Arguments
         ---------
@@ -592,7 +592,7 @@ class Edge(Socket):
         -------
         - Integer
         """
-        node = Node('Sample Nearest', sockets={'Geometry': self, 'Sample Position': sample_position}, domain='POINT')
+        node = Node('Sample Nearest', sockets={'Geometry': self, 'Sample Position': sample_position}, domain='EDGE')
         return node._out
 
     def scale(self, scale=None, center=None, scale_mode='UNIFORM'):
@@ -604,7 +604,7 @@ class Edge(Socket):
         -----------
         - Socket 'Geometry' : self
         - Socket 'Selection' : self[selection]
-        - Parameter 'domain' : 'FACE'
+        - Parameter 'domain' : 'EDGE'
 
         Arguments
         ---------
@@ -617,7 +617,7 @@ class Edge(Socket):
         - Geometry
         """
         utils.check_enum_arg('Scale Elements', 'scale_mode', scale_mode, 'scale', ('UNIFORM', 'SINGLE_AXIS'))
-        node = Node('Scale Elements', sockets={'Geometry': self, 'Selection': self._sel, 'Scale': scale, 'Center': center}, domain='FACE', scale_mode=scale_mode)
+        node = Node('Scale Elements', sockets={'Geometry': self, 'Selection': self._sel, 'Scale': scale, 'Center': center}, domain='EDGE', scale_mode=scale_mode)
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -630,7 +630,7 @@ class Edge(Socket):
         -----------
         - Socket 'Geometry' : self
         - Socket 'Selection' : self[selection]
-        - Parameter 'domain' : 'FACE'
+        - Parameter 'domain' : 'EDGE'
         - Parameter 'scale_mode' : 'UNIFORM'
 
         Arguments
@@ -642,7 +642,7 @@ class Edge(Socket):
         -------
         - Geometry
         """
-        node = Node('Scale Elements', sockets={'Geometry': self, 'Selection': self._sel, 'Scale': scale, 'Center': center}, domain='FACE', scale_mode='UNIFORM')
+        node = Node('Scale Elements', sockets={'Geometry': self, 'Selection': self._sel, 'Scale': scale, 'Center': center}, domain='EDGE', scale_mode='UNIFORM')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -655,8 +655,8 @@ class Edge(Socket):
         -----------
         - Socket 'Geometry' : self
         - Socket 'Selection' : self[selection]
-        - Parameter 'domain' : 'FACE'
-        - Parameter 'scale_mode' : 'UNIFORM'
+        - Parameter 'domain' : 'EDGE'
+        - Parameter 'scale_mode' : 'SINGLE_AXIS'
 
         Arguments
         ---------
@@ -668,7 +668,7 @@ class Edge(Socket):
         -------
         - Geometry
         """
-        node = Node('Scale Elements', sockets={'Geometry': self, 'Selection': self._sel, 'Scale': scale, 'Center': center, 'Axis': axis}, domain='FACE', scale_mode='UNIFORM')
+        node = Node('Scale Elements', sockets={'Geometry': self, 'Selection': self._sel, 'Scale': scale, 'Center': center, 'Axis': axis}, domain='EDGE', scale_mode='SINGLE_AXIS')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -681,13 +681,13 @@ class Edge(Socket):
         -----------
         - Socket 'Geometry' : self
         - Socket 'Selection' : self[selection]
-        - Parameter 'domain' : 'POINT'
+        - Parameter 'domain' : 'EDGE'
 
         Returns
         -------
         - Geometry [inverted_ (Geometry)]
         """
-        node = Node('Separate Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='POINT')
+        node = Node('Separate Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='EDGE')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -700,7 +700,7 @@ class Edge(Socket):
         -----------
         - Socket 'Geometry' : self
         - Socket 'Selection' : self[selection]
-        - Parameter 'domain' : 'FACE'
+        - Parameter 'domain' : 'EDGE'
 
         Arguments
         ---------
@@ -710,7 +710,7 @@ class Edge(Socket):
         -------
         - Geometry
         """
-        node = Node('Set Shade Smooth', sockets={'Geometry': self, 'Selection': self._sel, 'Shade Smooth': shade_smooth}, domain='FACE')
+        node = Node('Set Shade Smooth', sockets={'Geometry': self, 'Selection': self._sel, 'Shade Smooth': shade_smooth}, domain='EDGE')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -723,7 +723,7 @@ class Edge(Socket):
         -----------
         - Socket 'Geometry' : self
         - Socket 'Selection' : self[selection]
-        - Parameter 'domain' : 'POINT'
+        - Parameter 'domain' : 'EDGE'
 
         Arguments
         ---------
@@ -734,7 +734,7 @@ class Edge(Socket):
         -------
         - Geometry
         """
-        node = Node('Sort Elements', sockets={'Geometry': self, 'Selection': self._sel, 'Group ID': group_id, 'Sort Weight': sort_weight}, domain='POINT')
+        node = Node('Sort Elements', sockets={'Geometry': self, 'Selection': self._sel, 'Group ID': group_id, 'Sort Weight': sort_weight}, domain='EDGE')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -763,7 +763,7 @@ class Edge(Socket):
         -----------
         - Socket 'Geometry' : self
         - Socket 'Selection' : self[selection]
-        - Parameter 'domain' : 'POINT'
+        - Parameter 'domain' : 'EDGE'
 
         Arguments
         ---------
@@ -773,7 +773,7 @@ class Edge(Socket):
         -------
         - Instances [group_id_ (Integer)]
         """
-        node = Node('Split to Instances', sockets={'Geometry': self, 'Selection': self._sel, 'Group ID': group_id}, domain='POINT')
+        node = Node('Split to Instances', sockets={'Geometry': self, 'Selection': self._sel, 'Group ID': group_id}, domain='EDGE')
         return node._out
 
     def store_named_attribute(self, name=None, value=None):
@@ -786,7 +786,7 @@ class Edge(Socket):
         - Socket 'Geometry' : self
         - Socket 'Selection' : self[selection]
         - Parameter 'data_type' : depending on 'value' type
-        - Parameter 'domain' : 'POINT'
+        - Parameter 'domain' : 'EDGE'
 
         Arguments
         ---------
@@ -798,7 +798,7 @@ class Edge(Socket):
         - Geometry
         """
         data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Edge.store_named_attribute', 'value')
-        node = Node('Store Named Attribute', sockets={'Geometry': self, 'Selection': self._sel, 'Name': name, 'Value': value}, data_type=data_type, domain='POINT')
+        node = Node('Store Named Attribute', sockets={'Geometry': self, 'Selection': self._sel, 'Name': name, 'Value': value}, data_type=data_type, domain='EDGE')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -812,7 +812,7 @@ class Edge(Socket):
         - Socket 'Geometry' : self
         - Socket 'Selection' : self[selection]
         - Parameter 'data_type' : depending on 'value' type
-        - Parameter 'domain' : 'POINT'
+        - Parameter 'domain' : 'EDGE'
 
         Arguments
         ---------
@@ -824,7 +824,7 @@ class Edge(Socket):
         - Geometry
         """
         data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Edge.store', 'value')
-        node = Node('Store Named Attribute', sockets={'Geometry': self, 'Selection': self._sel, 'Name': name, 'Value': value}, data_type=data_type, domain='POINT')
+        node = Node('Store Named Attribute', sockets={'Geometry': self, 'Selection': self._sel, 'Name': name, 'Value': value}, data_type=data_type, domain='EDGE')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -834,13 +834,13 @@ class Edge(Socket):
 
         Information
         -----------
-        - Parameter 'domain' : 'POINT'
+        - Parameter 'domain' : 'EDGE'
 
         Returns
         -------
         - Integer [exists_ (Boolean)]
         """
-        node = Node('Active Element', sockets={}, domain='POINT')
+        node = Node('Active Element', sockets={}, domain='EDGE')
         return node._out
 
     def set_selection(self):
@@ -852,7 +852,7 @@ class Edge(Socket):
         -----------
         - Socket 'Geometry' : self
         - Socket 'Selection' : self[selection]
-        - Parameter 'domain' : 'POINT'
+        - Parameter 'domain' : 'EDGE'
         - Parameter 'selection_type' : depending on 'selection' type
 
         Returns
@@ -860,7 +860,7 @@ class Edge(Socket):
         - Geometry
         """
         selection_type = utils.get_argument_data_type(selection, {'BOOLEAN': 'BOOLEAN', 'VALUE': 'FLOAT'}, 'Edge.set_selection', 'selection')
-        node = Node('Set Selection', sockets={'Geometry': self, 'Selection': self._sel}, domain='POINT', selection_type=selection_type)
+        node = Node('Set Selection', sockets={'Geometry': self, 'Selection': self._sel}, domain='EDGE', selection_type=selection_type)
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -871,7 +871,7 @@ class Edge(Socket):
         -----------
         - Socket 'Geometry' : self
         - Parameter 'data_type' : depending on 'value' type
-        - Parameter 'domain' : 'AUTO'
+        - Parameter 'domain' : 'EDGE'
 
         Arguments
         ---------
@@ -879,7 +879,7 @@ class Edge(Socket):
 
         """
         data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Edge.viewer', 'value')
-        node = Node('Viewer', sockets={'Geometry': self, 'Value': value}, data_type=data_type, domain='AUTO')
+        node = Node('Viewer', sockets={'Geometry': self, 'Value': value}, data_type=data_type, domain='EDGE')
         return
 
     @property
@@ -927,7 +927,7 @@ class Edge(Socket):
         -----------
         - Socket 'Geometry' : self
         - Socket 'Selection' : self[selection]
-        - Parameter 'domain' : 'FACE'
+        - Parameter 'domain' : 'EDGE'
 
         Arguments
         ---------
@@ -937,7 +937,7 @@ class Edge(Socket):
         -------
         - Geometry
         """
-        node = Node('Set Shade Smooth', sockets={'Geometry': self, 'Selection': self._sel, 'Shade Smooth': shade_smooth}, domain='FACE')
+        node = Node('Set Shade Smooth', sockets={'Geometry': self, 'Selection': self._sel, 'Shade Smooth': shade_smooth}, domain='EDGE')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -957,7 +957,7 @@ class Edge(Socket):
         -----------
         - Socket 'Geometry' : self
         - Socket 'Selection' : self[selection]
-        - Parameter 'domain' : 'FACE'
+        - Parameter 'domain' : 'EDGE'
 
         Arguments
         ---------
@@ -967,7 +967,7 @@ class Edge(Socket):
         -------
         - Geometry
         """
-        node = Node('Set Shade Smooth', sockets={'Geometry': self, 'Selection': self._sel, 'Shade Smooth': shade_smooth}, domain='FACE')
+        node = Node('Set Shade Smooth', sockets={'Geometry': self, 'Selection': self._sel, 'Shade Smooth': shade_smooth}, domain='EDGE')
         self._jump(node._out)
         return self._domain_to_geometry
 
