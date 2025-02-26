@@ -2351,8 +2351,8 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                      'returns': 'OUT',
                                                      'signature': '(cls, '
                                                                   "handle_type='AUTO', "
-                                                                  "mode={'RIGHT', "
-                                                                  "'LEFT'})"}],
+                                                                  "mode={'LEFT', "
+                                                                  "'RIGHT'})"}],
                                           'nd': [{'func_name': 'handle_type_selection',
                                                   'is_classmethod': True,
                                                   'is_get': False,
@@ -2361,8 +2361,8 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                   'returns': 'OUT',
                                                   'signature': '(cls, '
                                                                "handle_type='AUTO', "
-                                                               "mode={'RIGHT', "
-                                                               "'LEFT'})"}]},
+                                                               "mode={'LEFT', "
+                                                               "'RIGHT'})"}]},
  'GeometryNodeCurveLength': {'Curve': [{'func_name': 'length',
                                         'is_classmethod': False,
                                         'is_get': False,
@@ -2646,8 +2646,8 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                             'returns': 'OUT',
                                             'signature': '(self, '
                                                          "handle_type='AUTO', "
-                                                         "mode={'RIGHT', "
-                                                         "'LEFT'})"},
+                                                         "mode={'LEFT', "
+                                                         "'RIGHT'})"},
                                            {'func_name': 'set_left_handle_type',
                                             'is_classmethod': False,
                                             'is_get': False,
@@ -2695,8 +2695,8 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                          'signature': '(cls, curve=None, '
                                                       'selection=None, '
                                                       "handle_type='AUTO', "
-                                                      "mode={'RIGHT', "
-                                                      "'LEFT'})"}]},
+                                                      "mode={'LEFT', "
+                                                      "'RIGHT'})"}]},
  'GeometryNodeCurveSpiral': {'Curve': [{'func_name': 'Spiral',
                                         'is_classmethod': True,
                                         'is_get': False,
@@ -7984,6 +7984,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                          'text_box_width=None, '
                                                          "align_x='LEFT', "
                                                          "align_y='TOP_BASELINE', "
+                                                         'font=None, '
                                                          "overflow='OVERFLOW', "
                                                          "pivot_mode='BOTTOM_LEFT')"}],
                                 'nd': [{'func_name': 'string_to_curves',
@@ -8000,6 +8001,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                      'text_box_height=None, '
                                                      "align_x='LEFT', "
                                                      "align_y='TOP_BASELINE', "
+                                                     'font=None, '
                                                      "overflow='OVERFLOW', "
                                                      "pivot_mode='BOTTOM_LEFT')"}]},
  'GeometryNodeSubdivideCurve': {'Curve': [{'func_name': 'subdivide',

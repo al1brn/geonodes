@@ -996,14 +996,26 @@ class Tree:
 
             from_name = utils.get_label(to_socket)
 
-            if to_interface is None:
+            if True:
                 from_panel = panel
+                if from_panel is None:
+                    if to_interface is not None:
+                        from_panel = to_interface.by_identifier(to_socket.identifier).parent.name
+
+                    if from_panel is None:
+                        from_panel = self.current_panel
+
             else:
-                from_panel = to_interface.by_identifier(to_socket.identifier).parent.name
-                if from_panel == "":
+                if to_interface is None:
                     from_panel = panel
-            if from_panel is None:
-                from_panel = self.current_panel
+                else:
+                    from_panel = to_interface.by_identifier(to_socket.identifier).parent.name
+
+                    if from_panel == "":
+                        from_panel = panel
+
+                if from_panel is None:
+                    from_panel = self.current_panel
 
             # ----------------------------------------------------------------------------------------------------
             # Look for an output socket of from_node with the proper name
@@ -1049,8 +1061,6 @@ class Tree:
 
                 # Not to reuse in case to_nodes have homonyms
                 linked_ids.append(from_socket._bsocket.identifier)
-
-
 
     # =============================================================================================================================
     # Create a node which contains a python value
@@ -2063,7 +2073,19 @@ class Node:
                 in_socket.default_value = bobj
 
         elif in_socket.type == 'MENU':
-            in_socket.default_value = str(value)
+            if isinstance(value, str):
+                in_socket.default_value = str(value)
+
+            elif isinstance(value, (tuple, list)):
+                name = value[0]
+                panel = value[1] if len(value) == 2 else None
+                self.link_from(node='TREE', include=[name], create=True, panel=panel)
+                #self._tree.link_nodes(self._tree.input_node, self, include=name, create=True, panel=panel)
+
+            else:
+                raise NodeError(f"Impossible to set the menu socket '{in_socket.name}' with value {value}.",
+                    valid="Valid values are str with a valid menu item or a tuple or str with group input name and panel",
+                    example="menu_name=('Name', 'Panel')")
 
         else:
             raise NodeError(f"Impossible to set the socket '{in_socket.name}' of type '{socket_type}' with value {value}.")
@@ -2223,6 +2245,9 @@ class Node:
     @pin_gizmo.setter
     def pin_gizmo(self, value):
         self._bnode.inputs[0].pin_gizmo = value
+
+
+
 
 # =============================================================================================================================
 # Group

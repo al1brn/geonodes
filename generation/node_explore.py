@@ -55,7 +55,7 @@ _1, _2, _3, _4 = " "*4, " "*8, " "*12, " "*16
 # ====================================================================================================
 # Node Param
 
-NEW_PARAM = False
+NEW_PARAM = True
 
 class NodeParam:
     def __init__(self, bnode, name, value, param_type):
@@ -1045,17 +1045,27 @@ class NodeInfo:
 
             forced = param in parameters
             if NEW_PARAM:
-                value = parameters[param] if forced else param_value.value
+                if forced:
+                    value = parameters[param]
+                    str_value : str
+                    if isinstance(value, str):
+                        str_value = f"'{value}'"
+                    elif str(value)[0] == '<':
+                        str_value = "None"
+                    else:
+                        str_value = str(value)
+
+                    node_value = param
+
+                else:
+                    str_value  = param_value.arg_value
+                    node_value = param_value.set_value
+
             else:
                 value = parameters[param] if forced else param_value
 
-            # ----- Parameter value to source code string
+                # ----- Parameter value to source code string
 
-            if NEW_PARAM:
-                str_value  = param_value.arg_value
-                node_value = param_value.set_value
-
-            else:
                 str_value : str
                 if isinstance(value, str):
                     str_value = f"'{value}'"
@@ -1084,14 +1094,19 @@ class NodeInfo:
                 d['arg_value']  = str_value
                 d['node_value'] = node_value
 
-                if param in self.enum_params:
-                    d['comment'] = f"{param} (str): parameter '{param}' in {self.get_enum_list(param, user_version=True)}"
-                    d['check'] = f"utils.check_enum_arg('{self.bnode.name}', '{param}', {param}, 'METH_NAME', {self.get_enum_list(param)})"
-                else:
-                    d['comment'] = f"{param} ({type(value).__name__}): parameter '{param}'"
-
                 if NEW_PARAM:
                     d['comment'] = param_value.comment
+                    if param in self.enum_params:
+                        d['check'] = f"utils.check_enum_arg('{self.bnode.name}', '{param}', {param}, 'METH_NAME', {param_value.get_enum_list()})"
+
+                else:
+                    if param in self.enum_params:
+                        d['comment'] = f"{param} (str): parameter '{param}' in {self.get_enum_list(param, user_version=True)}"
+                        d['check'] = f"utils.check_enum_arg('{self.bnode.name}', '{param}', {param}, 'METH_NAME', {self.get_enum_list(param)})"
+                    else:
+                        d['comment'] = f"{param} ({type(value).__name__}): parameter '{param}'"
+
+
 
 
             if False: # A REPRENDRE

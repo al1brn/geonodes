@@ -203,10 +203,10 @@ class NodeError(Exception):
         if keyword is None:
             return None
 
-        if isinstance(keyword, str):
-            kws = [keyword]
-        else:
+        if isinstance(keyword, (tuple, list)):
             kws = keyword
+        else:
+            kws = [str(keyword)]
 
         for kw in kws:
             for item in NodeError.get_stack()[2:]:

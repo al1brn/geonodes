@@ -29,6 +29,8 @@ updates
 - creation : 2025/02/22
 """
 
+from pathlib import Path
+
 import bpy
 from bpy.types import VectorFont
 
@@ -56,8 +58,8 @@ def get_font(name: str|VectorFont, path: str|None = None) -> VectorFont | None:
     font = bpy.data.fonts.get(name)
     if font is None:
         if path is None:
-            return None
-        else:
-            font = bpy.data.fonts.load(path)
+            path = bpy.context.preferences.filepaths.font_directory
+        font = bpy.data.fonts.load(str(Path(path) / (name + '.ttf')))
+        font.name = name
 
     return font
