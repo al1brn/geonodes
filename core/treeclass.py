@@ -1726,6 +1726,8 @@ class Node:
 
     def __setattr__(self, name, value):
 
+        #print("SET ATTR", name)
+
         if name in ['_tree', '_bnode', '_label', '_color', 'pin_gizmo'] or name in dir(self):
             super().__setattr__(name, value)
             return
@@ -1737,7 +1739,7 @@ class Node:
 
             bnode = self.__dict__['_bnode']
             sbnode = bnode.name
-            if name not in ['color', 'label', 'width', 'height', 'dimensions', 'location'] and hasattr(bnode, name):
+            if name not in ['color', 'label', 'width', 'height', 'dimensions', 'location', 'type'] and hasattr(bnode, name):
                 if value is None:
                     NodeError(f"Collision between Custom socket name and node parameter '{name}'")
 

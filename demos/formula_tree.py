@@ -73,7 +73,7 @@ def build_tree(prefix='Tree'):
 
     GTree = G(prefix)
 
-    NODE_ATTRS = ["Owner", "Depth", "Order", "Total", "Explore"]
+    NODE_ATTRS = ["ID", "Owner", "Depth", "Order", "Total", "Explore"]
     MACRO_COLOR = (.1, .1, .1)
 
 
@@ -86,7 +86,7 @@ def build_tree(prefix='Tree'):
     def macro_id_index(tree, node_id):
 
         with Layout("Index of ID"):
-            return tree.points[nd.id.equal(node_id)].attribute_statistic(nd.index).min.to_integer()._lc("Index")
+            return tree.points[Integer("ID").equal(node_id)].attribute_statistic(nd.index).min.to_integer()._lc("Index")
 
     # ----------------------------------------------------------------------------------------------------
     # Index of Explore
@@ -110,7 +110,7 @@ def build_tree(prefix='Tree'):
 
         with Layout("Create an empty tree structure", color=MACRO_COLOR):
             empty = Cloud.Points(1)
-            empty.id = 0
+            empty.points._ID      = 0
             empty.points._Owner   = -1
             empty.points._Depth   = 0
             empty.points._Order   = 0
@@ -126,7 +126,7 @@ def build_tree(prefix='Tree'):
 
     def macro_max_id(tree):
 
-        return tree.points.attribute_statistic(nd.id).max.to_integer()._lc("Max ID")
+        return tree.points.attribute_statistic(Integer("ID")).max.to_integer()._lc("Max ID")
 
     # ----------------------------------------------------------------------------------------------------
     # Number of children
@@ -168,7 +168,7 @@ def build_tree(prefix='Tree'):
 
             tree = Cloud(tree)
 
-            tree[nd.id.equal(old_id)].id = new_id
+            tree.points[Integer("ID").equal(old_id)]._ID = new_id
             tree.points[Integer("Owner").equal(old_id)]._Owner = new_id
 
             return tree
@@ -186,7 +186,7 @@ def build_tree(prefix='Tree'):
     with GeoNodes("Index Info", prefix=prefix, is_group=True):
 
         tree  = Cloud(None, "Tree")
-        index = Integer(1, "Index")
+        index = Integer(1, "Index", single_value=True)
 
         index.out("Index")
         for name in NODE_ATTRS:
@@ -198,7 +198,7 @@ def build_tree(prefix='Tree'):
     with GeoNodes("ID Info", prefix=prefix, is_group=True):
 
         tree    = Cloud(None, "Tree")
-        node_id = Integer(1, "ID")
+        node_id = Integer(1, "ID", single_value=True)
 
         index = macro_id_index(tree, node_id)
         GTree.index_info(tree, index=index).node.out()
@@ -209,7 +209,7 @@ def build_tree(prefix='Tree'):
     with GeoNodes("Explore Info", prefix=prefix, is_group=True):
 
         tree = Cloud(None, "Tree")
-        expl = Integer(1, "Explore")
+        expl = Integer(1, "Explore", single_value=True)
 
         index = macro_explore_index(tree, expl)
         GTree.index_info(tree, index=index).node.out()
@@ -233,8 +233,6 @@ def build_tree(prefix='Tree'):
     # - Order                root        root       root
     # - Total                 .           .           .
     # - Explore              all         all        all
-
-    NODE_ATTRS = ["Owner", "Depth", "Order", "Total", "Explore"]
 
     with GeoNodes("Attach", prefix = prefix, is_group=True):
 
@@ -261,7 +259,7 @@ def build_tree(prefix='Tree'):
 
             to_before = location.equal(LOC_FIRST_CHILD)
             first_point = Cloud(tree).points[Integer("Owner").equal(node_id) & Integer("Order").equal(0)].separate()
-            first_id = Cloud(first_point).points.sample_index(nd.id, index=0)
+            first_id = Cloud(first_point).points.sample_index(Integer("ID"), index=0)
 
             node_id  = node_id.switch(to_before, first_id)
             location = location.switch(to_before, LOC_BEFORE)
@@ -281,8 +279,8 @@ def build_tree(prefix='Tree'):
 
         with Layout("Shift IDS"):
             shifted = Cloud(branch)
-            shifted[Integer("Depth") > 0].id     += tree_max_id
-            shifted.points[Integer("Depth") > 1]._Owner += tree_max_id
+            shifted.points[Integer("Depth") > 0]._ID    = Integer("ID")    + tree_max_id
+            shifted.points[Integer("Depth") > 1]._Owner = Integer("Owner") + tree_max_id
 
             branch = branch.switch(shift_ids, shifted)
 
@@ -353,7 +351,7 @@ def build_tree(prefix='Tree'):
 
         with Layout("Branch Update"):
 
-            sel_root   = nd.id.equal(0)
+            sel_root   = Integer("ID").equal(0)
             sel_depth1 = Integer("Depth").equal(1)
 
             root_owner  = Integer.IndexSwitch(root_owner0,  root_owner1,  root_owner2, index=location)
@@ -367,14 +365,17 @@ def build_tree(prefix='Tree'):
             branch.points._Explore           = Integer("Explore") + explore
 
             # Last because sel_root is ID == 0
-            branch[sel_root].id = new_id
-
+            branch[sel_root].points._ID = new_id
 
         # ----------------------------------------------------------------------------------------------------
         # Done
 
-        (tree + branch).out("Tree")
+        index = tree.points.count
+        tree += branch
+
+        tree.out("Tree")
         new_id.out("ID")
+        index.out("Index")
 
     # ----------------------------------------------------------------------------------------------------
     # Add a node
@@ -418,8 +419,8 @@ def build_tree(prefix='Tree'):
         with Layout("Make branch consistent"):
             branch.points._Depth                 = Integer("Depth") - id_info.depth
             branch.points._Explore               = Integer("Explore") - id_info.explore
-            branch[nd.id.equal(node_id)].id      = 0
-            branch.points[nd.id.equal(0)]._Order = 0
+            branch.points[Integer("ID").equal(node_id)]._ID  = 0
+            branch.points[Integer("ID").equal(0)]._Order = 0
             branch.points[Integer("Owner").equal(node_id)]._Owner = 0
 
         tree.out("Tree")
@@ -446,6 +447,45 @@ def build_tree(prefix='Tree'):
         tree = macro_change_id(tree, old_id=branch_id, new_id = node_id)
 
         tree.out("Tree")
+
+    # ----------------------------------------------------------------------------------------------------
+    # Group
+    # ----------------------------------------------------------------------------------------------------
+
+    with GeoNodes("Group", prefix=prefix, is_group=True):
+
+        tree = Cloud(None, "Tree")
+
+        selection = Boolean(False, "Selection", hide_value=True)
+
+        with Layout("Get minimum Depth"):
+            depth = tree.points[selection].attribute_statistic(Integer("Depth")).min.to_integer()
+            selection &= Integer("Depth").equal(depth)
+
+        with Layout("Same owner"):
+            sel_tree = Cloud(tree).points[selection].separate()
+            owner = sel_tree.points.sample_index(Integer("Owner"), index=0)
+            selection &= Integer("Owner").equal(owner)
+
+            to_group = Cloud(tree).points[selection].separate()
+
+        with Layout("Create a new id within the owner"):
+            new_tree = GTree.new(tree, owner)
+            new_id = new_tree.id_
+
+        with Repeat(tree=new_tree, iterations=to_group.points.count) as rep:
+
+            child_id = to_group.points.sample_index(Integer("ID"))
+            rep.tree = GTree.move(rep.tree, id=child_id, to_id=new_id, location=0)
+
+        with Layout("No New id if nothing to group"):
+            ok = to_group.points.count > 0
+            tree = tree.switch(ok, rep.tree)
+
+        tree.out("Tree")
+        new_id.out("Id")
+        ok.out("Valid")
+
 
     # ====================================================================================================
     # Selection
@@ -487,15 +527,15 @@ def build_tree(prefix='Tree'):
 
     with GeoNodes("Allow Selection", prefix=prefix, is_group=True):
 
-        geo  = Geometry(None, "Geometry")
+        geo  = Geometry()
 
         tree = Cloud(None, "Tree")
 
         with Repeat(geo=geo, tree=tree, iterations=tree.points.count) as rep:
-            node_id = rep.tree.points.sample_index(nd.id, index=rep.iteration)
+            node_id = rep.tree.points.sample_index(Integer("ID"), index=rep.iteration)
             explore = rep.tree.points.sample_index(Integer("Explore"), index=rep.iteration)
 
-            with If(Geometry, 'Point') as mapped:
+            with If(Geometry, 'Point', name='Domain') as mapped:
                 mesh  = Mesh(rep.geo)
                 mesh.points[Integer("Item ID").equal(node_id)]._Explore = explore
                 mapped.option = mesh
@@ -523,6 +563,43 @@ def build_tree(prefix='Tree'):
             rep.geo = mapped
 
         rep.geo.out()
+
+    # ====================================================================================================
+    # Navigation
+    # ====================================================================================================
+
+    with GeoNodes("Selection Info", prefix=prefix, is_group=True):
+
+        tree = Cloud(None, "Tree")
+        selection = Boolean(False, "Selection", hide_value=True)
+
+        sel_tree = tree.points[selection].separate()
+        ok = sel_tree.points.count.equal(1)
+
+        sel_id = sel_tree.points.sample_index(Integer("ID"), index=0)
+        sel_id = sel_id.switch_false(ok, -1)
+
+        GTree.id_info(tree, sel_id).node.out()
+        ok.out("Exists")
+
+    with GeoNodes("Children Count", prefix=prefix, is_group=True):
+
+        tree = Cloud(None, "Tree")
+        node_id = Integer(0, "Id", single_value=True)
+
+        count = macro_children_count(tree, node_id)
+        count.out("Count")
+        count.equal(0).out("Empty")
+
+    with GeoNodes("Get Child", prefix=prefix, is_group=True):
+
+        tree = Cloud(None, "Tree")
+        node_id = Integer(0, "Id", single_value=True)
+        order   = Integer(0, "Order", single_value=True)
+
+        GTree.selection_info(tree, Integer("Owner").equal(node_id) & Integer("Order").equal(order)).node.out()
+
+
 
     # ====================================================================================================
     # Dump
@@ -557,7 +634,7 @@ def build_tree(prefix='Tree'):
 
         # ----- Labels
 
-        with tree.points.for_each(item_id=nd.id, owner=Integer("Owner"), pos=nd.position, sel=selection) as feel:
+        with tree.points.for_each(item_id=Integer("ID"), owner=Integer("Owner"), pos=nd.position, sel=selection) as feel:
 
             s = feel.item_id.to_string() + " [" + feel.owner.to_string() + "]"
             curves = s.to_curves(size=.3).realize()
