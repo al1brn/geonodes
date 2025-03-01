@@ -80,6 +80,26 @@ FRAC_MARGIN = 4*X_SPACE
 
 SQRT = '√'
 
+# Links
+
+LK_AFTER  = 0
+LK_EXP    = 1
+LK_IND    = 2
+LK_NUM    = 3
+LK_DEN    = 4
+LK_ABOVE  = 5
+LK_BELOW  = 6
+LG_BEFORE = 7
+
+# Special groups
+
+GR_SIGN        =  1
+GR_SQRT        =  2
+GR_SIGMA       =  3
+
+GR_PARENTHESIS = 10
+GR_BRACKETS    = 11
+
 # -----------------------------------------------------------------------------------------------------------------------------
 # Load fonts
 
@@ -185,8 +205,11 @@ def create_curve(name, splines):
 
 def build_groups():
 
-    formula_tree.build_tree(domain='FACE', prefix='Face', max_depth=10)
-    GTree = G("Face")
+    formula_tree.build_tree(prefix='Tree')
+    GTree = G("Tree")
+
+    prefix = "Util"
+    Util = G(prefix)
 
     create_curve("Node Sqrt Char", formula_data.SQRT_CHAR)
     create_curve("Node Sigma Char", formula_data.SIGMA_CHAR)
@@ -243,19 +266,7 @@ def build_groups():
         geo.switch(use_debug, debug_geo).out()
 
     # =============================================================================================================================
-    # LaTeX codes
-
-    with GeoNodes("LaTeX Codes", is_group=True):
-
-        s = String(None, "String")
-
-        keys = sorted(formula_data.SYMBOLS.keys(), key= lambda x: 100 - len(x))
-
-        for code in keys:
-            c = formula_data.SYMBOLS[code]
-            s = s.replace("\\" + code, c)
-
-        s.out()
+    # Utility nodes
 
     # -----------------------------------------------------------------------------------------------------------------------------
     # Geometry dimensions
@@ -271,12 +282,11 @@ def build_groups():
     # - X Mid : horizontal center
     # - Y Mid : vertical center
 
-    with GeoNodes("Dimensions", is_group=True):
+    with GeoNodes("Dimensions", prefix=prefix, is_group=True):
 
-        geo     = Geometry()
-        item_id = Integer(0, "Id")
+        mesh = Mesh(Geometry())
 
-        mesh = Mesh(geo.switch(item_id.not_equal(0), Mesh(geo).faces[Integer("Item ID").not_equal(item_id)].delete()))
+        #mesh = Mesh(geo.switch(item_id.not_equal(0), Mesh(geo).faces[Integer("Item ID").not_equal(item_id)].delete()))
 
         node = mesh.points.attribute_statistic(nd.position)
         vmin = node.min
@@ -290,78 +300,959 @@ def build_groups():
         right, over, _   = vmax.xyz
         x_mid, y_mid, _  = vmid.xyz
 
-        left.out("Left")
-        right.out("Right")
-        over.out("Over")
-        below.out("Below")
-        width.out("Width")
+        left.out(  "Left")
+        right.out( "Right")
+        over.out(  "Over")
+        below.out( "Below")
+        width.out( "Width")
         height.out("Height")
-        x_mid.out("X Mid")
-        y_mid.out("Y Mid")
+        x_mid.out( "X Mid")
+        y_mid.out( "Y Mid")
+        vmin.out(  "V Min")
+        vmax.out(  "V Max")
 
-    # -----------------------------------------------------------------------------------------------------------------------------
-    # Scale geometry
-    #
-    # Scale based on bottom left component
-
-    with GeoNodes("Scale"):
-
-       geo = Mesh(Geometry())
-       sx  = Float(1., "x")
-       sy  = Float(1., "y")
-
-       vmin = geo.points.attribute_statistic(nd.position).min
-       vmax = vmin.max_
-
-       geo.points.offset = -vmin
-       geo.transform(scale=(sx, sy, 1))
-       geo.points.offset = vmin
-
-       geo.out()
-
-    # -----------------------------------------------------------------------------------------------------------------------------
-    # Fade a component
-    #
-    # Set the fade value
-    # The geometry is horizontally scaled to 0 when fade grows up to 1
-
-    with GeoNodes("Fade"):
-
-        # The geometry is kept even when not visible in order to keep tree ids
-
-        geo  = Mesh(Geometry())
-        fade = Float.Factor(0, "Fade", 0, 1)
-
-        geo.faces._Fade = fade
-        scale = fade.map_range(.7, 1, 1, 0)
-
-        geo = G().scale(geo, x=scale)
-
-        geo.out()
+    # =============================================================================================================================
+    # Base components
 
     # -----------------------------------------------------------------------------------------------------------------------------
     # Set fade and color
-    #
-    # Set the color, fade and material
 
-    with GeoNodes("Set Aspect"):
+    with GeoNodes("Set Aspect", prefix=prefix, is_group=True):
 
-        geo = Mesh(Geometry())
+        mesh = Mesh(Geometry())
+
         with Panel("Aspect"):
             color  = Color('black', 'Color')
             fade   = Float.Factor(0, "Fade", 0, 1)
             mat    = Material("Formula", "Material")
 
-        comps = geo.separate_components()
-        geo = Mesh(comps.mesh + comps.curve.fill_ngons())
+        mesh.faces._Color   = color
+        mesh.faces._Fade    = fade
+        mesh.faces.material = mat
 
-        geo.faces._Color = color
-        geo.faces.material = mat
+        mesh.out()
 
-        faded = G().fade(geo, fade=fade)
+    # ----------------------------------------------------------------------------------------------------
+    # LaTeX codes
 
-        faded.out("Geometry")
-        geo.out("Not Faded")
+    with GeoNodes("LaTeX Codes", prefix=prefix, is_group=True):
+
+        s = String(None, "String")
+
+        keys = sorted(formula_data.SYMBOLS.keys(), key= lambda x: 100 - len(x))
+
+        for code in keys:
+            c = formula_data.SYMBOLS[code]
+            s = s.replace("\\" + code, c)
+
+        s.out()
+
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Characters
+
+    with GeoNodes("Characters", prefix=prefix, is_group=True):
+
+        s      = String(None,   "Chars")
+        italic = Boolean(False, "Italic")
+        bold   = Boolean(False, "Bold")
+
+        s = G().latex_codes(s)
+
+        reg = String(s).to_curves(size=FONT_SIZE, font=FONTS.regular)
+        itl = String(s).to_curves(size=FONT_SIZE, font=FONTS.italic)
+        bld = String(s).to_curves(size=FONT_SIZE, font=FONTS.bold)
+        bit = String(s).to_curves(size=FONT_SIZE, font=FONTS.bold_italic)
+
+        curves = reg.switch(bold, bld).switch(italic, itl.switch(bold, bit))
+
+        curves = Curve(curves.realize())
+
+        chars = curves.fill_ngons()
+        vmin = chars.points.attribute_statistic(nd.position).min
+
+        with Layout("Left align"):
+            chars.transform(translation=(-vmin.x, 0, 0))
+
+        vmin = chars.points.attribute_statistic(nd.position).min
+        vmax = vmin.max_
+        width, height, _ = (vmax - vmin).xyz
+
+        chars = Util.set_aspect(chars, link_from='TREE')
+
+        chars.out()
+        width.out("Width")
+        height.out("Height")
+        vmin.out("Min")
+        vmax.out("Max")
+
+
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Shape
+    # 0: Rect, 1: Circle, 2: Triangle
+
+    with GeoNodes("Shape", prefix=prefix, is_group=True):
+
+        index    = Integer(0, "Code")
+        width    = Float(1, "Width")
+        height   = Float(1, "Height")
+        tracking = Float(.1, "Tracking")
+
+        with If(Mesh, index) as shape:
+            shape.option = Mesh.Grid(width, height, 2, 2)
+
+        with Elif(shape):
+            shape.option = Mesh.Circle().transform(scale=(width, height, 1))
+
+        with Elif(shape):
+            shape.option = Mesh.Circle(vertices=3).transform(scale=(width, height, 1))
+
+        vmin = shape.points.attribute_statistic(nd.position).min
+        x, y, _ = vmin.xyz
+
+        shape.transform(translation=(-x, -y - tracking, 0))
+        vmin = shape.points.attribute_statistic(nd.position).min
+        vmax = vmin.max_
+
+        shape = Util.set_aspect(shape, link_from='TREE')
+
+        shape.out()
+        width.out("Width")
+        height.out("Height")
+        vmin.out("Min")
+        vmax.out("Max")
+
+    # =============================================================================================================================
+    # Term accentuation
+
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Accentuation
+    # 0: Arrow, 1: Left Arrow, 2: Bar, 3: Dot, 4: Double dot 5: Triple Dot
+
+    with GeoNodes("Accentuation", prefix=prefix, is_group=True):
+
+        unit = DECO_THICK
+
+        code    = Integer(0, "Code")
+        bottom  = Boolean(False, "Bottom")
+
+        vmin    = Vector(0, "Min", hide_value=True)
+        vmax    = Vector(0, "Max", hide_value=True)
+
+        width, height, _ = (vmax - vmin).xyz
+        mid = (vmin + vmax)/2
+
+        # ----------------------------------------------------------------------------------------------------
+        # Accentuation : arrows, dots, bar
+        # ----------------------------------------------------------------------------------------------------
+
+        # ----- Usefull dims
+
+        y = (vmax.y + Y_ABOVE).switch(bottom, vmin.y - Y_ABOVE)
+
+        with Layout("Bar and Arrow dims"):
+            left_margin = 2*unit
+            right_margin = 4*unit
+            bar_width = width + left_margin + right_margin
+
+        with Layout("Dot Char"):
+            dot_node = Util.characters(chars='.').node.link_from(include='Aspect')
+            dot = dot_node._out
+            dot.transform(translation=(mid.x - dot_node.width/2, y - dot_node.height/2, 0))
+            dot_dx = (dot_node.width + X_SPACE)/2
+
+        # ----- 0 : Arrow
+
+        with If(Curve, code) as deco:
+
+            r = Curve.Circle(resolution=7)
+
+            w2 = unit/2
+            ar_x_int  = unit*4
+            ar_x_wing = unit*2
+            ar_y_wing = unit*1.5
+
+            r[0].position = (-left_margin, -w2, 0)
+            r[1].position = (-left_margin + bar_width - ar_x_int, -w2, 0)
+            r[2].position = (-left_margin + bar_width - (ar_x_int + ar_x_wing), -w2 - ar_y_wing, 0)
+            r[3].position = (-left_margin + bar_width, 0, 0)
+            r[nd.index > 3].position = r.points.sample_index(nd.position*(1, -1, 1), index=6-nd.index)
+
+            r.transform(translation=(mid.x - width/2, y, 0))
+            r = r.fill_ngons()
+
+            deco.option = r
+
+        # ----- 1 : Left Arrow
+
+        with Elif(deco):
+
+            cmin = r.points.attribute_statistic(nd.position).min
+            cmax = cmin.max_
+            cmid = (cmin + cmax)/2
+
+            r.transform(translation=(-cmid.x, 0, 0))
+            r.transform(scale=(-1, 1, 1))
+            r.transform(translation=(cmid.x, 0, 0))
+            r.flip_faces()
+
+            deco.option = r
+
+        # ----- 2 : Bar
+
+        with Elif(deco):
+
+            deco.option = Mesh.Grid(bar_width, DECO_THICK, 2, 2).transform(translation=(mid.x, y, 0))
+
+        # ----- 3 : Dot
+
+        with Elif(deco):
+
+            deco.option = dot
+
+        # ----- 4 : Double dots
+
+        with Elif(deco):
+
+            dot2 = Curve(dot).transform(translation=(-dot_dx, 0, 0)) + Curve(dot).transform(translation=(dot_dx, 0, 0))
+
+            deco.option = dot2
+
+        # ----- 5 : Triple dots
+
+        with Elif(deco):
+
+            deco.option = Curve(dot).transform(translation=(-2*dot_dx, 0, 0)) + Curve(dot2).transform(translation=(dot_dx, 0, 0))
+
+        # ----------------------------------------------------------------------------------------------------
+        # ----------------------------------------------------------------------------------------------------
+        # Finalize
+
+        # ----- Deco dims
+
+        deco_min = deco.points.attribute_statistic(nd.position).min
+        deco_max = deco_min.max_
+        left_space  = gnmath.max(0, vmin.x - deco_min.x)
+        right_space = gnmath.max(0, deco_max.x - vmax.x)
+
+        # ----- Finalize
+
+        deco = Util.set_aspect(deco, link_from='TREE')
+
+        deco.out()
+        left_space.out("Left")
+        right_space.out("Right")
+
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Brackets
+    # 0: '( )', 1: '[ ]', 2: '| |', 3: '{ }', 4: '‖ ‖', 5: '⟨ ⟩ ', 6: '< >'
+
+    with GeoNodes("Brackets", prefix=prefix, is_group=True):
+
+        BRACKETS = ['()', '[]', '||', '{}', '‖‖', '⟨⟩', '<>']
+
+        code      = Integer(0, "Code")
+        use_left  = Boolean(True, "Left")
+        use_right = Boolean(True, "Right")
+
+        vmin      = Vector(0, "Min", hide_value=True)
+        vmax      = Vector(0, "Max", hide_value=True)
+
+        width, height, _ = (vmax - vmin).xyz
+        mid = (vmin + vmax)/2
+
+        # ---------------------------------------------------------------------------
+        # Brackets instantiation
+
+        brackets = [[], []]
+        for chars in BRACKETS:
+            for i in range(2):
+                with Layout(f"Bracket {chars[i]}"):
+                    br_node = Util.characters(chars=chars[i]).node.link_from(include='Aspect')
+                    br_min, br_max = br_node.min, br_node.max
+                    br_mid = (br_min + br_max)/2
+
+                    br = br_node.geometry.transform(translation=(-br_min.x, -br_mid.y, 0))
+                    scale = PAR_SCALE*gnmath.min(1, height)
+                    tr = (0, mid.y, 0)
+                    brackets[i].append(br.transform(translation=tr, scale=(1, scale, 1)))
+
+        # ---------------------------------------------------------------------------
+        # Brackets selection
+
+        open  = Mesh.IndexSwitch(*brackets[0], index=code)
+        close = Mesh.IndexSwitch(*brackets[1], index=code)
+
+        b_min = open.points.attribute_statistic(nd.position).min
+        b_max = b_min.max_
+        b_width, b_height, _ = (b_max - b_min).xyz
+        b_mid = (b_min + b_max)/2
+
+        # ----- Brackets location
+
+        open.transform(translation=(vmin.x - b_width - X_SPACE, mid.y - b_mid.y, 0))
+        close.transform(translation=(vmax.x + X_SPACE, mid.y - b_mid.y, 0))
+
+        # ----- Display or not
+
+        open  = open.switch_false(use_left)
+        close = close.switch_false(use_right)
+
+        left_space  = (b_width + X_SPACE).switch_false(use_left)
+        right_space = (b_width + X_SPACE).switch_false(use_right)
+
+        (open + close).out()
+        left_space.out("Left")
+        right_space.out("Right")
+
+    # =============================================================================================================================
+    # Formula Compilation
+    #
+    # Node parameters:
+    # - Type in [GEO, GROUP, CONT2, CONT3]
+    # - SubType
+    #
+    # The compilation is made starting from the end.
+    # Hence, each node can rely on its sub nodes to build it self
+    #
+    # Node Type: how to deal with sub nodes
+    # - GEO   : a mesh or curve with no sub nodes
+    # - GROUP : concat the sub nodes, with an optional parameterless decorator such a brackets, sqrt, arrow, ...
+    # - CONT2 : node with 2 sub nodes, fraction for instance
+    # - CONT3 : node with 3 sub nodes, for instance exp/indice, Sigma, Integral, ...
+    #
+    # Node Role: role within the owner
+    # - CONTENT 0 : content
+    # - PARAM1  1 : first parameter
+    # - PARAM2  2 : second parameter
+    #
+    # Node Para
+    #
+    # =============================================================================================================================
+
+    with GeoNodes("Compile", prefix=prefix, is_group=True):
+
+        formula = Geometry(name="Formula")
+        mesh = formula.mesh
+        tree = formula.point_cloud
+
+        with Layout("Delete computed faces"):
+            mesh.faces[Boolean("Computed")].delete()
+            mesh.faces._Computed = False
+
+        with Layout("Compute Tree explore index"):
+            tree = Cloud(GTree.compute_explore(tree))
+
+        with Layout("Prepare exploration for sizing mesh nodes"):
+            tree.points._Sized = False
+            tree.points[index]._Width  = 0.
+            tree.points[index]._Height = 0.
+            tree.points[index]._Y0 = 0.
+            tree.points[index]._Y1 = 0.
+
+        with Repeat(tree=tree, mesh=mesh, iterations=tree.points.count - 1) as rep:
+
+            tree = rep.tree
+            mesh = rep.mesh
+
+            index = rep.iteration + 1
+            node_type = tree.points.sample_index(Integer("Node Type"), index=index)
+
+            sized = node_type.equal(0)
+            selected = Util.select(mesh + tree, id=index, block=False)
+            vmin = selected.min_
+            vmax = selected.max_
+
+            mesh.points[Boolean("Selected")].offset(-vmin.x)
+            width, height, _ = (vmax - vmin).xyz
+            y0, y1 = vmin.y, vmax.y
+
+            tree.points[index]._Sized  = True
+            tree.points[index]._Width  = width
+            tree.points[index]._Height = height
+            tree.points[index]._Y0 = y0
+            tree.points[index]._Y1 = y1
+
+            rep.tree = tree
+            rep.mesh = mesh
+
+
+
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Select mesh faces using the associated tree
+    #
+    # - Selected : selected faces
+    # - Part : integer with -1: before, 0: mid, 1: after
+
+    with GeoNodes("Select", prefix=prefix, is_group=True):
+
+        formula = Geometry(name="Formula")
+        with Panel("Block"):
+            item_id   = Integer(0, "Id", single_value=True)
+            use_block = Boolean(True, "Block")
+
+        mesh = formula.mesh
+        tree = formula.point_cloud
+
+        # ----- Delete faces with no 'Item ID'
+        mesh = mesh.faces[-Boolean("Item ID").exists_].delete()
+
+        with Layout("Item Id only"):
+            single = Mesh(mesh)
+            single.faces._Selected = Integer("Item ID").equal(item_id)
+
+        with Layout("Branch Selection"):
+            tree = Mesh(GTree.select_branch(tree, index=item_id))
+
+            with Repeat(mesh=mesh, iterations=mesh.faces.count) as rep:
+                item_id = rep.mesh.faces.sample_index(Integer("Item ID"), index=rep.iteration)
+                rep.mesh.faces[nd.index.equal(rep.iteration)]._Selected = tree.points.sample_index(Boolean("Selected"), index=item_id)
+
+        mesh = single.switch(use_block, rep.mesh)
+
+        with Layout("Part Before, Mid and After"):
+
+            vmin = extract.points[Boolean("Selected")].attribute_statistic(nd.position).min
+            vmax = min.max_
+
+            mesh.faces._Part = 0
+
+            sel_before = -Boolean("Selected")
+            sel_after  = Boolean(sel_before)
+
+            px = nd.position.x
+            sel_before &= px <= vmin.x
+            sel_after  &= px >= vmax.x
+
+            mesh.faces[sel_before]._Part = -1
+            mesh.faces[sel_after]._Part  = 1
+
+        (mesh + tree).out()
+        vmin.out("Min")
+        vmax.out("Max")
+
+
+
+
+
+
+
+            item_id = mesh.faces.
+
+
+            tree = rep.tree
+            mesh = rep.mesh
+
+            with Layout("Current Item ID"):
+                explore = count - 1 - rep.iteration
+                index = tree.points[Integer("Explore").equal(explore)].attribute_statistic(nd.index).min.to_integer()
+
+            with Layout("Select the group"):
+                group_sel = Util.select(mesh + tree, id=index, block=True)
+                vmin = group_sel.vmin
+                vmax = group_sel.vmax
+                width = (vmax - vmin).x
+
+            with Layout("Get the term parameters"):
+                owner     = rep.tree.points.sample_index(Integer("Owner"),    index=index)
+
+                node_type = rep.tree.points.sample_index(Integer("Type"),     index=index)
+                code      = rep.tree.points.sample_index(Integer("Code"),     index=index)
+                sub_code  = rep.tree.points.sample_index(Integer("Sub Code"), index=index)
+
+            # ----- 0 : Simply the mesh
+            with If(Mesh, node_type) as term:
+                l_shift_0  = 0.
+                r_shift_0 = width + X_SPACE
+
+
+
+
+
+
+
+
+
+
+
+
+        with Layout("Compute the meshes from last to first"):
+
+            count = tree.points.count
+            with Repeat(tree=tree, mesh=mesh, iterations=count - 1) as rep:
+
+                tree = rep.tree
+                mesh = rep.mesh
+
+                with Layout("Current Item ID"):
+                    explore = count - 1 - rep.iteration
+                    index = tree.points[Integer("Explore").equal(explore)].attribute_statistic(nd.index).min.to_integer()
+
+                with Layout("Select the group"):
+                    group_sel = Util.select(mesh + tree, id=index, block=True)
+                    vmin = group_sel.vmin
+                    vmax = group_sel.vmax
+                    width = (vmax - vmin).x
+
+                with Layout("Get the term parameters"):
+                    owner     = rep.tree.points.sample_index(Integer("Owner"),    index=index)
+
+                    node_type = rep.tree.points.sample_index(Integer("Type"),     index=index)
+                    code      = rep.tree.points.sample_index(Integer("Code"),     index=index)
+                    sub_code  = rep.tree.points.sample_index(Integer("Sub Code"), index=index)
+
+                # ----- 0 : Simply the mesh
+                with If(Mesh, node_type) as term:
+                    l_shift_0  = 0.
+                    r_shift_0 = width + X_SPACE
+
+                # ----- 1 : Accentuation
+
+                with Elif(term):
+
+                    u,0se_left  = sub_code.equal(0) | sub_code.equal(1)
+                    use_right = sub_code.equal(0) | sub_code.equal(2)
+
+                    acc = Util.accentuation(code=code, bottom=sub_code.not_equal(0), min=vmin, max=vmax)
+                    term_shift_1  = acc.left_
+                    right_shift_1 = acc.right_
+
+                    acc = Mesh(acc)
+                    acc.faces._Computed = True
+
+                    term.option = acc
+
+                # ----- 2 : Brackets
+
+                with Elif(term):
+
+                    group_sel = Util.select(mesh + tree, id=index, block=True)
+                    vmin = group_sel.vmin
+                    vmax = group_sel.vmax
+
+                    use_left  = sub_code.equal(0) | sub_code.equal(1)
+                    use_right = sub_code.equal(0) | sub_code.equal(2)
+
+                    brs = Util.brackets(code=code, left=use_left, right=use_right, min=vmin, max=vmax)
+                    term_shift_2  = brs.left_
+                    right_shift_2 = brs.right_
+
+                    brs = Mesh(brs)
+                    brs.faces._Computed = True
+
+                    term.option = brs
+
+                # ----------------------------------------------------------------------------------------------------
+                # Update mesh
+
+                term.faces._Computed = True
+
+                term_shift  = Float.IndexSwitch(term_shift_0, term_shift_1, term_shift_2, index=node_type)
+                right_shift = Float.IndexSwitch(right_shift_0, right_shift_1, right_shift_2, index=node_type)
+
+                mesh[Integer("Explore") >= explore].offset = (term_shift, 0, 0)
+                mesh[Integer("Explore") >> explore].offset = (right_shift, 0, 0)
+
+
+
+                mesh += term
+
+                rep.tree = tree
+                rep.mesh = mesh
+
+        # Place de groups
+
+        with Layout("Place the first level groy"):
+
+            count = tree.points.count
+            with Repeat(tree=tree, mesh=mesh, iterations=count - 1) as rep:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    # =============================================================================================================================
+    # Formula builder
+
+    with GeoNodes("Add", prefix=prefix, is_group=True):
+
+        formula = Geometry(name="Formula")
+        term    = Mesh(name="Mesh")
+        owner   = Integer(0, "Owner")
+
+        mesh = formula.mesh
+        tree = formula.point_cloud
+
+        with Layout("Suppress Faces without Item ID"):
+            mesh.faces[-Integer("Item ID").exists_].delete()
+
+        with Layout("Create a new node in the tree"):
+            tree = GTree.new(tree)
+            new_id = tree.index_
+
+            term.faces._Item_ID = new_id
+
+        (mesh + term + tree).out("Formula")
+        new_id.out("Id")
+
+
+
+
+
+
+
+
+    return
+
+
+
+
+
+
+    # =============================================================================================================================
+    # Formula is made of:
+    # - faces with a node id
+    # - tree managing the formula structure
+
+    with GeoNodes("Add Item", prefix=prefix, is_group=True):
+
+        formula   = Geometry( None,     "Formula")
+        term      = Geometry( None,     "Term")
+        target    = Integer( 0,         "Target", single_value=True)
+        use_block = Boolean( True,      "Block",  single_value=True)
+        link      = Integer( 0,         "Link",   single_value=True)
+        use_group = Boolean(False,      "Group",  single_value=True)
+
+        # ----- Make sure the item is a formula
+
+        with Layout("Make sure the new term is a formula"):
+            term_mesh = term.mesh
+            term_tree = term.point_cloud
+
+            count = term_tree.points.count
+            term_tree = term_tree.switch(count.equal(0), GTree.new())
+
+        mesh = formula.mesh
+        tree = formula.point_cloud
+
+        # ----- Owner insertion
+
+        with Layout("Owner depends upon the link"):
+            target_owner = GTree.index_owner(tree, index=target)
+
+            # 0: After, 1: Exp 2: Indice, 3: Numerator, 4: Denominator 5: Above, 6: Below 7: Before
+            owner = Integer.IndexSwitch(target_owner, target, target, target_owner, target_owner, target, target, target_owner, index=link)
+            owner = owner.switch(owner < 0, 0)
+
+        # ----- Use Group option
+
+        with Layout("Group option"):
+            use_group = Boolean.IndexSwitch(use_group, False, False, use_group, use_group, use_group, use_group, use_group, index=link)
+            owner = owner.switch(use_group, target_owner)
+
+        # ----- Add the branch
+
+        with Layout("Insert in the tree formula"):
+            tree = Cloud(GTree.new(tree, owner=owner))
+            item_id = tree.index_
+
+            tree = Cloud(GTree.join(tree, index=item_id, branch=term_tree))
+
+        with Layout("Change Capture the group"):
+            tree = tree.switch(use_group, GTree.change_owner(tree, from_owner=target_owner, to_owner=item_id, selection=nd.index.equal(target)))
+            tree = Cloud(tree)
+
+        # ----- Item properties
+
+        with Layout("Inserted items properties"):
+
+            tree.points[item_id]._Target       = target
+            tree.points[item_id]._Target_Block = use_block
+            tree.points[item_id]._Target_Link  = link
+
+        # ----- Join the mesh
+
+        mesh += term_mesh
+
+        # ----- Done
+
+        (mesh + tree).out()
+
+    # =============================================================================================================================
+    # Formula (mesh + tree) management
+
+    # Compilation
+    #
+    # Type
+    # -1: Empty (simple group)
+    #  0: Mesh
+    #  1: Brackets (bracket like: arrow, braces, sign,...)
+
+    with GeoNodes("Compile", prefix=prefix, is_group=True):
+
+        formula = Geometry()
+
+        mesh = formula.mesh
+        tree = formula.point_cloud
+
+        expl = Cloud(GTree.compute_explore())
+
+        count = tree.points.count
+        with Repeat(cloud=expl, iterations=count-1) as rep:
+
+            cur_expl = count - 1 - rep.iterations
+            index = rep.cloud.points[Integer("Explore").equal(cur_expl)].attribute_statistic(nd.index).min.to_integer()
+            sel_index = nd.index.equal(index)
+
+            item_type = tree.points.sample_index(Integer("Type"), index=index)
+
+            with Layout("A Mesh"):
+                t = Util.select(tree, id=index, block=False)
+                dims = t.node
+
+                t0_min  = dims.vmin
+                t0_max  = dims.vmax
+                t0_mesh = t
+
+
+
+
+
+
+
+            vmin = dims.vmin
+            vmax = dims.vmax
+
+            tree.points[sel_index]._Width  = dims.width
+            tree.points[sel_index]._Height = dims.height
+
+
+
+
+
+    # =============================================================================================================================
+    # Independant meshes transformation
+
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Scale Mesh
+    #
+    # Scale based on bottom left component
+
+    with GeoNodes("Scale", prefix=prefix, is_group=True):
+
+        mesh = Mesh(Geometry())
+
+        sx = Float(1., "x")
+        sy = Float(1., "y")
+
+        vmin = mesh.points.attribute_statistic(nd.position).min
+        vmax = vmin.max_
+
+        mesh.points.offset = -vmin
+        mesh.transform(scale=(sx, sy, 1))
+        mesh.points.offset = vmin
+
+        mesh.out()
+
+
+    # =============================================================================================================================
+    # Formula / Tree management
+
+
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Move a Group
+
+    with GeoNodes("Move"):
+
+        geo       = Geometry()
+
+        dx        = Float(0., "X")
+        dy        = Float(0., "Y")
+        scale     = Float(1., "Scale")
+        space0    = Float(0., "Space Before")
+        space1    = Float(0., "Space After")
+        use_scale = Boolean(True, "Shrink Space")
+
+        geo = Util.select(geo, link_from='TREE')
+        dims = geo.node
+
+        mesh = geo.mesh
+        tree = geo.point_cloud
+
+        selection = Boolean("Selected")
+
+        # ----- Scale and offset
+
+        with Layout("Scale and Offset"):
+            mesh.points[selection].offset = -dims.v_min
+            mesh.points[selection].position = nd.position*scale
+            mesh.points[selection].offset = dims.v_min + (dx, dy, 0)
+
+        # ----- Scale and offset
+
+        dw = dims.width*(scale - 1)
+        space1 = space1.switch(use_scale, space1 + dw)
+
+        mesh.points[selection | (Integer("Part") >= 0)].offset = (space0, 0, 0)
+        mesh.points[(Integer("Part") > 0)].offset = (space1, 0, 0)
+
+        (mesh + tree).out()
+
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Locate relatively to component
+
+    with GeoNodes("Relative Location", prefix=prefix, is_group=True):
+
+        formula  = Geometry(None, "Formula")
+        new_item = Mesh(None, "New Item")
+
+        with Panel("Target"):
+            item_id   = Integer(0, "Id")
+            use_block = Boolean(True, "Block")
+            index     = Integer.MenuSwitch({'After': 0, 'Exponent': 1, 'Indice': 2, 'Numerator': 3, 'Denominator': 4, 'Above': 5, 'Below': 6, 'Before': 7}, name="Location", menu="After")
+
+        formula = Util.select(formula, id=item_id, block=use_block)
+        ref_dims = formula.node
+
+        dims = Util.dimensions(new_item).node
+
+        right   = ref_dims.right + X_SPACE
+        x_size2 = dims.width * (SCALE_IND/2)
+        y_size  = dims.height * SCALE_IND
+
+        x = Float.IndexSwitch(right + X_SPACE, right, right,
+            right, right,
+            ref_dims.x_mid - x_size2, ref_dims.x_mid - x_size2,
+            ref_dims.left,
+            index=index)
+
+        y = Float.IndexSwitch(0., ref_dims.over - Y_IND, ref_dims.below,
+            Y_ALIGN - dims.below + Y_ABOVE, Y_ALIGN - dims.over - Y_ABOVE,
+            ref_dims.over + Y_ABOVE, ref_dims.below - Y_ABOVE - y_size,
+            0.,
+            index=index)
+
+        s = Float.IndexSwitch(1., SCALE_IND, SCALE_IND,
+            1., 1.,
+            SCALE_IND, SCALE_IND,
+            1.,
+            index=index)
+
+        x.out("X")
+        y.out("Y")
+        Vector((x, y, 0)).out("Translation")
+        s.out("Scale")
+        index.out("Index")
+
+
+    return
+
+    # =============================================================================================================================
+    # Formula components
+
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Add a new component
+
+    with GeoNodes("Add", prefix=prefix, is_group=True):
+
+        formula  = Geometry(None, "Formula")
+        new_item = Mesh(None, "New Item")
+
+        with Panel("Target"):
+            item_id   = Integer(0, "Id")
+            use_block = Block(True, "Block")
+
+        with Panel("Relation"):
+            ref   = Geometry(None, "Relative to")
+
+        loc_node = Util.relative_location(formula, new_item=new_item, id=item_id, block=use_block, link_from='TREE').node
+
+        # ----- Select the target
+
+        formula = Util.select(formula, id=item_id, block=use_block)
+        target_dims = formula.node
+
+        # Index comes from the menu
+        index = dims.index
+
+        # ----- Item transformation
+
+        item0 = Geometry(new_item).transform(translation=loc_node.translation, scale=loc_node.scale)
+        item_dims = Util.dimensions(item0).node
+
+        with Layout("Numerator"):
+            item_num = G().node_fraction(block, id=0, item=item, numerator=True)
+
+        with Layout("Denominator"):
+            item_den = G().node_fraction(block, id=0, item=item, numerator=False)
+
+        with Layout("Before"):
+            x_min = Mesh(item).points.attribute_statistic(nd.position.x).min
+            x_max = x_min.max_
+            item_bef= Mesh(item).transform(translation=(dims.left - x_min, 0, 0))
+            block_bef = Geometry(block).transform(translation=(x_max - x_min, 0, 0))
+
+        # ----- As numerator
+        # 'None': 0,
+        # 'After': 1,
+        # 'Exponent': 2,
+        # 'Indice': 3,
+        # 'Numerator': 4,
+        # 'Denominator': 5,
+        # 'Above': 6,
+        # 'Below': 7,
+        # 'Before': 8
+
+        item  = Mesh.IndexSwitch(item0, item0, item0, item0, item_num, item_den, item0, item0, item0, index=index)
+        block = Mesh.IndexSwitch(None, block0, block0, block0, None, None, block0, block0, block_bef, index=index)
+
+        new_block = item + block
+        new_dims = G().dimensions(new_block).node
+        delta = dims.left - new_dims.left
+        new_block.transform(translation=(delta, 0, 0))
+        new_dims = G().dimensions(new_block).node
+
+        right = right.transform(translation=(new_dims.right - dims.right, 0, 0))
+
+        (left + (new_block, right)).out()
+
+
+
+
+
+        return
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     # -----------------------------------------------------------------------------------------------------------------------------
     # Split the geometry with the id
@@ -424,47 +1315,6 @@ def build_groups():
 
         (item + (left, right)).out()
 
-    # -----------------------------------------------------------------------------------------------------------------------------
-    # Locate relatively to component
-
-    with GeoNodes("Relative Location", is_group=True):
-
-        item = Geometry()
-
-        with Panel("Relation"):
-            ref   = Geometry(None, "Relative to")
-            index = Integer.MenuSwitch({'None': 0, 'After': 1, 'Exponent': 2, 'Indice': 3, 'Numerator': 4, 'Denominator': 5, 'Above': 6, 'Below': 7, 'Before': 8}, name="Location", menu="After")
-
-        dims = G().dimensions(item).node
-        ref_dims = G().dimensions(ref).node
-
-        right   = ref_dims.right + X_SPACE
-        x_size2 = dims.width * (SCALE_IND/2)
-        y_size  = dims.height * SCALE_IND
-
-        x = Float.IndexSwitch(0., right + X_SPACE, right, right,
-            right, right,
-            ref_dims.x_mid - x_size2, ref_dims.x_mid - x_size2,
-            ref_dims.left,
-            index=index)
-
-        y = Float.IndexSwitch(0., 0., ref_dims.over - Y_IND, ref_dims.below,
-            Y_ALIGN - dims.below + Y_ABOVE, Y_ALIGN - dims.over - Y_ABOVE,
-            ref_dims.over + Y_ABOVE, ref_dims.below - Y_ABOVE - y_size,
-            0.,
-            index=index)
-
-        s = Float.IndexSwitch(1., 1., SCALE_IND, SCALE_IND,
-            1., 1.,
-            SCALE_IND, SCALE_IND,
-            1.,
-            index=index)
-
-        x.out("X")
-        y.out("Y")
-        Vector((x, y, 0)).out("Translation")
-        s.out("Scale")
-        index.out("Index")
 
     # -----------------------------------------------------------------------------------------------------------------------------
     # Fraction
@@ -526,82 +1376,6 @@ def build_groups():
         f_dims = G().dimensions(fraction).node
         (left_part + (fraction, right_part.transform(translation=(f_dims.width - dims.width, 0, 0)))).out()
 
-    # -----------------------------------------------------------------------------------------------------------------------------
-    # Add
-    # Node version
-
-    with GeoNodes("Node Add"):
-
-        formula   = Geometry(None, "Formula")
-        item      = Geometry(None, "Item")
-        shift_ids = Boolean(True, "Shift Ids")
-
-        with Panel("Link"):
-            link_id = Integer(0, "Link Id")
-            x_ofs   = Float(0, "Offset")
-            scale   = Float(1, "Scale")
-
-        # ----- Ignore faces without item id
-
-        with Layout("Ignore faces with no Item ID"):
-            ignore = -Boolean("Face ID").exists_
-            formula = Mesh(formula).faces[ignore].delete()
-
-        # ----- Split the formula
-
-        with Layout("Get the item by id"):
-            block  = G().node_id_split(formula, id=link_id)
-            left   = block.left_
-            right  = block.right_
-
-        dims   = G().dimensions(block).node
-
-        # ----- Relative location
-
-        location = G().relative_location(item, relative_to=block).node.link_from(include='Location', panel="Link")
-        index = location.index_
-
-        # ----- Item transformation
-
-        item0  = Geometry(item).transform(translation=location.translation + (x_ofs, 0, 0), scale=location.scale*scale)
-        block0 = Geometry(block)
-        delta0 = 0.
-
-        with Layout("Numerator"):
-            item_num = G().node_fraction(block, id=0, item=item, numerator=True)
-
-        with Layout("Denominator"):
-            item_den = G().node_fraction(block, id=0, item=item, numerator=False)
-
-        with Layout("Before"):
-            x_min = Mesh(item).points.attribute_statistic(nd.position.x).min
-            x_max = x_min.max_
-            item_bef= Mesh(item).transform(translation=(dims.left - x_min, 0, 0))
-            block_bef = Geometry(block).transform(translation=(x_max - x_min, 0, 0))
-
-        # ----- As numerator
-        # 'None': 0,
-        # 'After': 1,
-        # 'Exponent': 2,
-        # 'Indice': 3,
-        # 'Numerator': 4,
-        # 'Denominator': 5,
-        # 'Above': 6,
-        # 'Below': 7,
-        # 'Before': 8
-
-        item  = Mesh.IndexSwitch(item0, item0, item0, item0, item_num, item_den, item0, item0, item0, index=index)
-        block = Mesh.IndexSwitch(None, block0, block0, block0, None, None, block0, block0, block_bef, index=index)
-
-        new_block = item + block
-        new_dims = G().dimensions(new_block).node
-        delta = dims.left - new_dims.left
-        new_block.transform(translation=(delta, 0, 0))
-        new_dims = G().dimensions(new_block).node
-
-        right = right.transform(translation=(new_dims.right - dims.right, 0, 0))
-
-        (left + (new_block, right)).out()
 
     # -----------------------------------------------------------------------------------------------------------------------------
     # Add
@@ -641,49 +1415,6 @@ def build_groups():
 
         geo.out()
 
-    # -----------------------------------------------------------------------------------------------------------------------------
-    # Base formula string
-    #
-    # Create the curves from the string passed as argument
-    # Options are : font face (italic, bold), color and fade (1 for transparent)
-    #
-    # Returns the curves and the dimensions
-
-    with GeoNodes("Characters"):
-
-        base = Geometry()
-
-        s      = String(None, "Chars")
-
-        italic = Boolean(False, "Italic")
-        bold   = Boolean(False, "Bold")
-
-        ret_id = Boolean(True, "Ret Id", hide_in_modifier=True)
-
-        s = G().latex_codes(s)
-
-        reg = String(s).to_curves(size=FONT_SIZE, font=FONTS.regular)
-        itl = String(s).to_curves(size=FONT_SIZE, font=FONTS.italic)
-        bld = String(s).to_curves(size=FONT_SIZE, font=FONTS.bold)
-        bit = String(s).to_curves(size=FONT_SIZE, font=FONTS.bold_italic)
-
-        curves = reg.switch(bold, bld).switch(italic, itl.switch(bold, bit))
-
-        curves = Curve(curves.realize())
-
-        # Align to left
-        if False:
-            dims   = G().dimensions(curves).node
-            curves = curves.transform(translation=(-dims.left, 0, 0))
-
-        mesh = G().set_aspect(curves, link_from='TREE')
-        new_id = GTree.get_max_id(base) + 1
-        mesh = GTree.set_id(mesh, id=new_id, owner=0)
-        mesh = G().node_add(base, item=mesh, link_from='TREE')
-
-        Boolean(ret_id).info("Id: " + new_id.to_string())
-
-        mesh.switch(s.length().equal(0)).out()
 
     # -----------------------------------------------------------------------------------------------------------------------------
     # Brackets
@@ -749,112 +1480,6 @@ def build_groups():
 
         (left_part + (new_item, right_part.transform(translation=(tr, 0, 0)))).out()
 
-    # -----------------------------------------------------------------------------------------------------------------------------
-    # Above decoration
-
-    with GeoNodes("Accentuation"):
-
-        unit = DECO_THICK
-
-        formula = Geometry()
-        index   = Integer.MenuSwitch({'Arrow': 0, 'Bar': 1, 'Dot': 2, 'Double dot': 3, 'Triple Dot': 4}, name="Decorator")
-        item_id = Integer(0, "Id", single_value=True)
-        bottom  = Boolean(False, "Bottom")
-
-        # ----- Prepare decoration insertion
-
-        formula = GTree.prepare_insert(formula, item_id)
-        prepara = formula.node
-
-        # ----- Around item id
-
-        item  = G().node_id_split(formula, id=item_id)
-        left  = item.left_
-        right = item.right_
-
-        dims = G().dimensions(item).node
-
-        # ----- Usefull dims
-
-        y = (dims.over + Y_ABOVE).switch(bottom, dims.below - Y_ABOVE)
-
-        with Layout("Bar and Arrow dims"):
-            left_margin = 2*unit
-            right_margin = 4*unit
-            bar_width = dims.width + left_margin + right_margin
-
-        with Layout("Dot Char"):
-            dot_node = G().characters(chars='.').node.link_from(include='Aspect')
-            dot_dims = G().dimensions(dot_node).node
-            dot_width = dot_dims.width
-            dot = dot_node.geometry.transform(translation=(-dot_dims.x_mid, -dot_dims.y_mid, 0), scale=1)
-
-        # ----- 0 : Arrow
-
-        with If(Curve, index) as deco:
-
-            r = Curve.Circle(resolution=7)
-
-            w2 = unit/2
-            ar_x_int  = unit*4
-            ar_x_wing = unit*2
-            ar_y_wing = unit*1.5
-
-            r[0].position = (-left_margin, -w2, 0)
-            r[1].position = (-left_margin + bar_width - ar_x_int, -w2, 0)
-            r[2].position = (-left_margin + bar_width - (ar_x_int + ar_x_wing), -w2 - ar_y_wing, 0)
-            r[3].position = (-left_margin + bar_width, 0, 0)
-            r[nd.index > 3].position = r.points.sample_index(nd.position*(1, -1, 1), index=6-nd.index)
-
-            r = r.transform(translation=(dims.left, y, 0))
-
-            deco.option = r
-
-        # ----- 1 : Bar
-
-        with Elif(deco):
-            r = Curve.Quadrilateral(width=bar_width, height=DECO_THICK)
-            r = r.transform(translation=(dims.x_mid, y, 0))
-
-            deco.option = r
-
-        # ----- 2 : Dot
-
-        with Elif(deco):
-
-            deco.option = Curve(dot).transform(translation=(dims.x_mid, y, 0))
-
-        # ----- 3 : Double dots
-
-        with Elif(deco):
-
-            dx = (dot_width + X_SPACE)/2
-
-            deco.option = Curve(dot).transform(translation=(dims.x_mid - dx, y, 0)) + Curve(dot).transform(translation=(dims.x_mid + dx, y, 0))
-
-        # ----- 4 : Triple dots
-
-        with Elif(deco):
-
-            dx = dot_width + X_SPACE
-
-            deco.option = Curve(dot).transform(translation=(dims.x_mid - dx, y, 0)) + Curve(dot).transform(translation=(dims.x_mid, y, 0)) + Curve(dot).transform(translation=(dims.x_mid + dx, y, 0))
-
-        # ----- Complete deco
-
-        deco = G().set_aspect(deco, link_from='TREE')
-        deco = GTree.set_id(deco, id=prepare.new_id, owner=prepare.owner)
-
-        # ---- Put deco on item
-
-        tr = Float.IndexSwitch(left_margin, left_margin, 0, 0, 0, index=index)
-        accentuated = (deco + item).transform(translation=(tr, 0, 0))
-
-        r_tr = left_margin+right_margin
-        r_tr = Float.IndexSwitch(r_tr, left_margin+right_margin, 0, 0, 0, index=index)
-
-
-        (left + (accentuated, right.transform(translation=(r_tr, 0, 0)))).out()
 
     # -----------------------------------------------------------------------------------------------------------------------------
     # Sigma
