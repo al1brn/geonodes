@@ -650,3 +650,177 @@ def build_from_latex(latex_string, group_name):
             return f"{self.name} {self.id}"
 
 """
+
+
+
+
+
+# =============================================================================================================================
+# =============================================================================================================================
+# Animation
+# =============================================================================================================================
+# =============================================================================================================================
+
+# =============================================================================================================================
+# Animation curves
+
+class Key:
+    def __init__(self, time: float, value: float, interpolation='SMOOTH'):
+        self.time          = time
+        self.value         = value
+        self.interpolation = interpolation
+
+# -----------------------------------------------------------------------------------------------------------------------------
+# Animation curve builder
+
+class AnimationCurve(list):
+
+    def __init__(self, name: str, value: float):
+        super().__init__()
+        self.name = name
+        self.append(Key(0., value))
+
+    def build_curve(self):
+
+        with Layout(f"Curve - {self.name}"):
+
+            line = Curve.Line().resample(len(self))
+            line.splines.type = 'BEZIER'
+
+            for i, kf in enumerate(self):
+                line.points[i].position=(kf.time, kf.value, 0)
+
+            return line
+
+            #line.out(self.name)
+
+    @property
+    def time(self):
+        return self[-1].time
+
+    @property
+    def value(self):
+        return self[-1].value
+
+    def add(self, time, value, interpolation='SMOOTH'):
+        self[-1].interpolation = interpolation
+        self.append(Key(time, value))
+
+    def mark(self, time: float):
+        self.add(time, self.value)
+
+    def change(self, time: float, duration: float, value: float, interpolation='SMOOTH'):
+        self.mark(time)
+        self.add(time + duration, value, interpolation)
+
+    def pingpong(self, time: float, duration: float, value: float, interpolation='SMOOTH'):
+        old = self.value
+        self.mark(time)
+        self.add(time + duration/2, value, interpolation)
+        self.add(time + duration, old, interpolation)
+
+# -----------------------------------------------------------------------------------------------------------------------------
+# Animation group builder
+
+class AnimationCurves(list):
+
+    def new(self, name: str, value: float):
+        ac = AnimationCurve(name, value)
+        self.append(ac)
+        return ac
+
+    def build_node(self, name, to_node):
+
+        with GeoNodes(name, is_group=True):
+
+            for ac in self:
+                line = ac.build_curve()
+                value = G().time_line_curve(line)
+                value.out(ac.name)
+
+        anim_node = Group(name)
+        for ac in self:
+            setattr(to_node, ac.name.lower(), getattr(anim_node, ac.name.lower()))
+
+# -----------------------------------------------------------------------------------------------------------------------------
+# Build a block animator
+
+def build_item_animator(name):
+
+    with GeoNodes(f"{name} Animator"):
+
+        with Panel(name):
+
+            x            = Float(0, "X")
+            y            = Float(0, "Y")
+            scale        = Float(1, "Scale")
+            width_offset = Float(0, "Width Offset")
+
+        node = Group(name, sockets=parameters, link_from='TREE')
+
+        geo = node._out
+        geo = geo.transform(translation=(x + width_offset/2, y, 0), scale=scale)
+
+        geo.out()
+
+# =============================================================================================================================
+# groups
+
+def build_anim():
+
+    with GeoNodes("Time Line Curve", is_group=True):
+        curve = Curve()
+        t = nd.scene_time().seconds
+
+        x_max = curve.points.attribute_statistic(nd.position.x).max
+        x = gnmath.max(0, gnmath.min(t, x_max))
+
+        factor = x/x_max
+
+        v = curve.sample_factor(nd.position.y, factor=factor)
+        v.out("Value")
+
+    with GeoNodes("Write"):
+
+        content = Mesh(Geometry())
+        factor  = Float.Factor(1, "Factor", 0, 1)
+
+        cur_fade = content.faces.sample_index(Float("Fade"), index=0)
+
+        dims = G().dimensions(content).node
+        x = factor.map_range_linear(to_min=dims.left, to_max=dims.right)
+        content.faces._Fade = nd.position.x.map_range_linear(x-.2, x, 0, cur_fade)
+
+        content.out()
+
+    with GeoNodes("Animator"):
+
+        content = Geometry()
+
+        # Location
+        x            = Float(0, "X")
+        y            = Float(0, "Y")
+        scale        = Float(1, "Scale")
+        width_offset = Float(0, "Width Offset")
+
+        # Aspect
+        color        = Color('black', "Color")
+        fade         = Float.Factor(0, "Fade", 0, 1)
+
+        # Sign
+        plus         = Float.Factor(0, "Sign Plus")
+        sign_fade    = Float.Factor(1, "Sign Fade")
+
+        # Write
+        write        = Float.Factor(1, "Write", 0, 1)
+
+        # Show
+        show         = Boolean(True, "Show")
+
+        geo = G().sign(content, plus=plus, fade=sign_fade, color=color)
+        geo = G().set_aspect(G().sign(geo, plus=plus, fade=sign_fade), fade=fade, color=color)
+        geo = geo.transform(translation=(x + width_offset/2, y, 0), scale=scale)
+
+        geo = G().write(geo, factor=write)
+
+        geo.switch_false(show).out()

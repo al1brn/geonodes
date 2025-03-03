@@ -475,7 +475,7 @@ def build_tree(prefix='Tree'):
 
         with Repeat(tree=new_tree, iterations=to_group.points.count) as rep:
 
-            child_id = to_group.points.sample_index(Integer("ID"))
+            child_id = to_group.points.sample_index(Integer("ID"), index=rep.iteration)
             rep.tree = GTree.move(rep.tree, id=child_id, to_id=new_id, location=0)
 
         with Layout("No New id if nothing to group"):
