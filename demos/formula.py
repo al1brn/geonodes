@@ -68,7 +68,7 @@ X_IND        = 0.2   # Horizontal spacing for indice and exponent
 Y_EXP        = 0.5
 Y_IND        = 0.2
 Y_ABOVE      = 0.3
-SCALE_IND    = 0.3   # Indice and exponent scale
+SCALE_IND    = 0.4   # Indice and exponent scale
 
 DECO_THICK   = 0.06   # Decoractors thickness
 
@@ -80,51 +80,73 @@ PLUS_WIDTH = .7
 FRAC_THICK  = DECO_THICK
 FRAC_MARGIN = 2*X_SPACE
 
-SQRT = '√'
+# ===== Symbols
+
+SYMB_NULL     = 0
+SYMB_EQUAL    = 1 # Alternative to '=' character
+SYMB_SIGN     = 2 # Minus to plus varying with param
+SYMB_MINUS    = 3
+SYMB_PLUS     = 4
+
+SYMB_MAX_CODE = 4 # Max symbol code
 
 # ===== Node Types
 
 TYPE_GROUP    = 0 # Group of nodes with decorator
-TYPE_GEO      = 1 # Simple geometry
-TYPE_FRACTION = 2 # Fraction
-TYPE_EXP_IND  = 3 # Exponent / Indice
-TYPE_SIGMA    = 4 # Sigma
+TYPE_REF      = 1 # Simple geometry
+TYPE_SYMBOL   = 2 # Symbol dynamically computed
+TYPE_DECO     = 3 # Decorator
+TYPE_FRACTION = 4 # Fraction
+TYPE_IND_EXP  = 5 # Indice / Exponent
+TYPE_SIGMA    = 6 # Sigma
+TYPE_INTEGRAL = 7 # Integral
+
+VALID_ROLE_TYPES = {
+    0: [TYPE_IND_EXP, TYPE_SIGMA, TYPE_INTEGRAL, TYPE_FRACTION, TYPE_DECO],
+    1: [TYPE_IND_EXP, TYPE_SIGMA, TYPE_INTEGRAL, TYPE_FRACTION],
+    2: [TYPE_IND_EXP, TYPE_SIGMA, TYPE_INTEGRAL],
+    3: [],
+}
 
 # ===== DECORATORS
 
-# ----- Symbols
-DECO_CAT_SYMBOL       = 0 # Fixed size symbols
-
 DECO_NOTHING            = 0
-DECO_SIGN               = 1 # Minus to plus varying with param
-DECO_EQUAL              = 2 # Alternative to '=' character
+
+# ----- Prefixes : code is a symbol
+DECO_CAT_PREFIX         = SYMB_MAX_CODE # Code belo
 
 # ----- Special
-DECO_CAT_SPECIAL        = 10
+DECO_CAT_SPECIAL        = 20
 
-DECO_SQRT               = 10
+DECO_SQRT               = 20
 
 # ----- BLOCK
-DECO_CAT_BLOCK          = 20
+DECO_CAT_BLOCK          = 30
 
-DECO_PARENTHESIS        = 20
-DECO_BRACKETS           = 21
-DECO_BRACES             = 22
-DECO_ABSOLUTE           = 23
-DECO_NORM               = 24
-DECO_ANGLE              = 25
-DECO_TOKEN              = 26
+DECO_PARENTHESIS        = 30
+DECO_BRACKETS           = 31
+DECO_BRACES             = 32
+DECO_ABSOLUTE           = 33
+DECO_NORM               = 34
+DECO_ANGLE              = 35
+DECO_TOKEN              = 36
 
 # ----- Accentuation
 
-DECO_CAT_ACCENTUATION   = 30
-DECO_ARROW              = 30
-DECO_LEFT_ARROW         = 31
-DECO_BAR                = 32
-DECO_DOT                = 33
-DECO_DOT2               = 34
-DECO_DOT3               = 35
+DECO_CAT_ACCENTUATION   = 40
+DECO_ARROW              = 40
+DECO_LEFT_ARROW         = 41
+DECO_BAR                = 42
+DECO_DOT                = 43
+DECO_DOT2               = 44
+DECO_DOT3               = 45
 
+# ===== ROLES
+
+ROLE_CONTENT     = 0
+ROLE_INDICE      = 1
+ROLE_EXPONENT    = 2
+ROLE_DENOMINATOR = 3
 
 # -----------------------------------------------------------------------------------------------------------------------------
 # Load fonts
@@ -179,7 +201,7 @@ def build_shaders():
 
 # =============================================================================================================================
 # =============================================================================================================================
-# utilities
+# Utilities
 # =============================================================================================================================
 # =============================================================================================================================
 
@@ -257,16 +279,20 @@ def build_groups():
     build_prefix = "Build"
     term_prefix  = "Term"
 
+    comp_prefix = "Compile"
+
     GChar  = G(char_prefix)
     GUtil  = G(util_prefix)
     GBuild = G(build_prefix)
     GTerm  = G(term_prefix)
+    GComp  = G(comp_prefix)
 
 
     # ----- Built in symbols
 
     create_curve("Util Sqrt Char", formula_data.SQRT_CHAR)
     create_curve("Util Sigma Char", formula_data.SIGMA_CHAR)
+    create_curve("Util Half Integral", formula_data.INTEGRAL_CHAR)
 
     # ----------------------------------------------------------------------------------------------------
     # Macros
@@ -285,9 +311,8 @@ def build_groups():
 
         return Mesh(ref), Mesh(work)
 
-    def macro_setup_ref(mesh, ref_type):
+    def macro_setup_ref(mesh): #, ref_type):
         mesh.faces._Reference = True
-        mesh.faces._Type = ref_type
 
         mesh.faces.material = "Formula Reference"
         mesh.offset = (0, 0, -1)
@@ -333,21 +358,69 @@ def build_groups():
 
             return mesh
 
-    def macro_init_node(tree, selection, node_type, code, argument=0, factor=1., color=(0, 0, 0), fade=0, role=0, option_1=False, option_2=False, param=0.):
+    def macro_formula_is_empty(geo):
+        with Layout("Formula is empty"):
+            mesh = geo.mesh
+            tree = geo.point_cloud
+            return mesh.points.equal(0) & tree.points.equal(0)
 
-        with Layout("Setup tree node"):
-            tree.points[selection]._Type      = Integer(node_type)
-            tree.points[selection]._Code      = Integer(code)
-            tree.points[selection]._Argument  = Integer(argument)
-            tree.points[selection]._Factor    = Float(factor)
-            tree.points[selection]._Color     = Color(color)
-            tree.points[selection]._Fade      = Integer(fade)
-            tree.points[selection]._Role      = Integer(role)
-            tree.points[selection]._Option_1  = Boolean(option_1)
-            tree.points[selection]._Option_2  = Boolean(option_2)
-            tree.points[selection]._Param     = Float(param)
+    def macro_type_has_role(node_type, role):
 
-            return tree
+        with Layout(f"Type has role {role}"):
+            has_role = None
+            for t in VALID_ROLE_TYPES[role]:
+                test = node_type.equal(t)
+                if has_role is None:
+                    has_role = test
+                else:
+                    has_role |= test
+            return has_role
+
+    # =============================================================================================================================
+    # Integral char
+
+    with GeoNodes("Integral Char", prefix=util_prefix, is_group=True):
+
+        fill   = Boolean(True, "Fill")
+        height = Float(1., "Height", 1)
+
+        half = Curve(GUtil.half_integral(fill=False))
+
+        count = half.points.count
+        total = 2*count - 2
+
+        int_char = Curve.Circle(resolution = total)
+        int_char.splines.type = 'BEZIER'
+        int_char.handle_type  = 'FREE'
+        int_char.resolution   = 36
+
+        with Layout("Scale"):
+            half.points[(nd.index > 0) & (nd.index < count-1)].position += (0, height - 1, 0)
+            half[nd.index.equal(0)].right_handle_position *= (1, height, 1)
+            # 1.5 is linked to model is not perfect
+            half[nd.index.equal(count-1)].right_handle_position *= (1, height*1.5, 1)
+
+        with Layout("First half"):
+            int_char.points[nd.index < count].position = half.points.sample_index(nd.position, index=nd.index)
+
+            int_char[nd.index < count].left_handle_position = half.points.sample_index(half.left_handle_position, index=nd.index)
+            int_char[nd.index < count].right_handle_position = half.points.sample_index(half.right_handle_position, index=nd.index)
+
+        with Layout("Second half"):
+
+            full_sel = nd.index >= count
+            half_index = nd.index - count + 1
+
+            half.transform(rotation=(0, 0, pi))
+
+            int_char.points[full_sel].position = half.points.sample_index(nd.position, index=half_index)
+
+            int_char[full_sel].left_handle_position  = half.points.sample_index(half.left_handle_position,  index=half_index)
+            int_char[full_sel].right_handle_position = half.points.sample_index(half.right_handle_position, index=half_index)
+
+
+        int_char.switch(fill, int_char.fill_ngons()).out()
+
 
     # =============================================================================================================================
     # Dimensions
@@ -474,7 +547,7 @@ def build_groups():
         chars = curves.fill_ngons()
         dims = GUtil.dimensions(chars).node
 
-        chars = macro_setup_ref(chars, ref_type=TYPE_GEO)
+        chars = macro_setup_ref(chars) #, ref_type=TYPE_REF)
 
         chars.out("Mesh")
         dims.out()
@@ -533,7 +606,7 @@ def build_groups():
         shape.transform(translation=(-x, -y - tracking, 0))
         dims = GUtil.dimensions(shape).node
 
-        shape = macro_setup_ref(shape, ref_type=TYPE_GEO)
+        shape = macro_setup_ref(shape) #, ref_type=TYPE_REF)
 
         shape.out("Mesh")
         dims.out()
@@ -545,9 +618,10 @@ def build_groups():
         """ Create a reference mesh from an operator code
 
         Valid operator codes are:
-        - DECO_NOTHING)  : Nothing
-        - DECO_SIGN      : Minus to Plus varying char, base on Parameter
-        - DECO_EQUAL     : Equal sign (alterntive to '=' sign)
+        - SYMB_EQUAL    = 1 # Alternative to '=' character
+        - SYMB_SIGN     = 2 # Minus to plus varying with param
+        - SYMB_MINUS    = 3
+        - SYMB_PLUS     = 4
 
         > [!NOTE]
         > - The created mesh is left aligned
@@ -556,7 +630,7 @@ def build_groups():
 
         Arguments
         ---------
-        - Code (Integer) : operator code
+        - Symbol (Integer) : symbol code
         - Parameter (Float) : Factor for varying meshes
 
         Returns
@@ -567,49 +641,309 @@ def build_groups():
 
         # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-        code  = Integer(1, "Code")
-        param = Float.Factor(1, "Parameter", 0, 1)
+        symbol = Integer(1, "Symbol")
+        param  = Float.Factor(1, "Parameter", 0, 1)
 
         # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
         with Layout("Plus / Minus"):
 
             hrz = Mesh.Grid(vertices_x=2, vertices_y=2, size_x=PLUS_WIDTH, size_y=PLUS_THICK)
-            vrt = Mesh.Grid(vertices_x=2, vertices_y=2, size_x=PLUS_THICK, size_y=PLUS_WIDTH*param)
+            symb = hrz.switch_false(symbol.equal(SYMB_MINUS))
 
-            op = Mesh.Switch(code.equal(DECO_SIGN), None, hrz + vrt)
+            vrt = Mesh.Grid(vertices_x=2, vertices_y=2, size_x=PLUS_THICK, size_y=PLUS_WIDTH)
+            symb = symb.switch(symbol.equal(SYMB_PLUS), hrz + vrt)
+
+            var_vrt = Mesh.Grid(vertices_x=2, vertices_y=2, size_x=PLUS_THICK, size_y=PLUS_WIDTH*param)
+            symb = symb.switch(symbol.equal(SYMB_SIGN), hrz + vrt)
 
         with Layout("Equal"):
 
-            op = op.switch(code.equal(DECO_EQUAL),
+            symb = symb.switch(symbol.equal(SYMB_EQUAL),
                     Mesh(hrz).transform(translation=(0,  Y_SPACE, 0)) +
                     Mesh(hrz).transform(translation=(0, -Y_SPACE, 0)))
 
-        op.transform(translation=(0, Y_ALIGN, 0))
+        symb.transform(translation=(0, Y_ALIGN, 0))
 
-        dims = GUtil.dimensions(op).node
-        op = macro_setup_ref(op, ref_type=TYPE_GEO)
+        dims = GUtil.dimensions(symb).node
+        symb = macro_setup_ref(symb) #, ref_type=TYPE_REF)
 
-        op.out("Mesh")
+        symb.out("Mesh")
         dims.out()
 
     # =============================================================================================================================
     # =============================================================================================================================
-    # DECORATORS
-    #
-    # Decorators are dynamically built meshes.
-    # The decorators are located relatively formula terms: sqrt, sign, arrows
+    # Reading tree structure
     # =============================================================================================================================
     # =============================================================================================================================
 
+    with GeoNodes("Index Info", prefix=util_prefix, is_group=True):
+        """ Read the node info by index.
+
+        Arguments
+        ---------
+        - Formula (Geometry) : Geometry with tree structure
+        - Index (Integer) : an index on the tree structure
+
+        Returns
+        -------
+        - Default node info (index, ID, Owner, Depth, Order, Total, Explore)
+        - Type (Integer)
+        - Code (Integer)
+        - Argument (Integer)
+        - Factor (Float)
+        - Color (Color)
+        - Fade (Float)
+        - Role (Integer)
+        - Option 1 (Boolean)
+        - Option 2 (Boolean)
+        - Param (Float)
+        """
+
+        # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+        formula = Geometry(None, "Formula")
+        index = Integer(0, "Index")
+
+        # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+        tree = formula.point_cloud
+
+        info = GTree.index_info(tree, index=index).node
+        info.out()
+
+        tree.points.sample_index(Integer(  "Type"),     index=index).out("Type")
+        tree.points.sample_index(Integer(  "Role"),     index=index).out("Role")
+        tree.points.sample_index(Integer(  "Code"),     index=index).out("Code")
+        tree.points.sample_index(Float(    "Factor"),   index=index).out("Factor")
+        tree.points.sample_index(Integer(  "Param"),    index=index).out("Parameter")
+
+        if False:
+            tree.points.sample_index(Color(    "Color"),    index=index).out("Color")
+            tree.points.sample_index(Integer(  "Fade"),     index=index).out("Fade")
+            tree.points.sample_index(Boolean(  "Option 1"), index=index).out("Option 1")
+            tree.points.sample_index(Boolean(  "Option 2"), index=index).out("Option 2")
+
+    # ----------------------------------------------------------------------------------------------------
+
+    with GeoNodes("Id Info", prefix=util_prefix, is_group=True):
+        """ Read the node info by ID.
+
+        Arguments
+        ---------
+        - Formula (Geometry) : Geometry with tree structure
+        - Id (Integer) : an ID on the tree structure
+
+        Returns
+        -------
+        - see "Util Index Info"
+        """
+
+        # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+        formula = Geometry(None, "Formula")
+        node_id = Integer(1,  "Id")
+
+        # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+        GUtil.index_info(formula, index=GTree.id_info(formula.point_cloud, id=node_id)).node.out()
+
+    # ----------------------------------------------------------------------------------------------------
+
+    with GeoNodes("Explore Info", prefix=util_prefix, is_group=True):
+        """ Read the node info by Explore index.
+
+        Arguments
+        ---------
+        - Formula (Geometry) : Geometry with tree structure
+        - Explore (Integer) : an Explore index on the tree structure
+
+        Returns
+        -------
+        - see "Util Index Info"
+        """
+
+        formula = Geometry(None, "Formula")
+        explore = Integer(1,  "Explore")
+
+        GUtil.index_info(formula, index=GTree.explore_info(formula.point_cloud, explore=explore)).node.out()
+
+    with GeoNodes("Selection Info", prefix=util_prefix, is_group=True):
+        """ Read the node info by selection in the tree.
+
+        Arguments
+        ---------
+        - Formula (Geometry) : Geometry with tree structure
+        - Selection (Boolean) : an Explore index on the tree structure
+
+        Returns
+        -------
+        - see "Util Index Info"
+        """
+
+        formula   = Geometry(None, "Formula")
+        selection = Boolean(False,  "Selection")
+
+        tree = formula.point_cloud
+        info = GTree.selection_info(tree, selection).node
+        exists = info.exists_
+
+        GUtil.index_info(formula, index=info.index).node.out()
+        exists.out("Exists")
+
+    # =============================================================================================================================
+    # Initialize a node
+
+    with GeoNodes("Initialize Node", prefix=util_prefix, is_group=True):
+        """ Initialize a node with its default values
+
+        Arguments
+        ---------
+        - Tree (Cloud)
+        - Selection (Boolean)
+        - Initial values
+
+        Returns
+        -------
+        - Tree
+        """
+
+        # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+        tree = Cloud(None, "Tree")
+        selection = Boolean(False, "Selection")
+
+        tree.points[selection]._Type   = Integer(0,       "Type")
+        tree.points[selection]._Role   = Integer(0,       "Role")
+        tree.points[selection]._Code   = Integer(0,       "Code")
+
+        tree.points[selection]._Factor = Float.Factor(1,  "Factor", 0, 1)
+        tree.points[selection]._Param  = Integer(0,       "Parameter")
+
+        """
+        with Panel("Aspect"):
+            tree.points[selection]._Color     = Color(None,     "Color")
+            tree.points[selection]._Fade      = Float(0,        "Fade")
+            tree.points[selection]._Mat_Index = Integer(0,      "Material Index")
+
+        with Panel("Animation):
+            tree.points[selection]._Left      = Float(0,  "Left")
+            tree.points[selection]._Right     = Float(0,  "Right")
+            tree.points[selection]._Offset    = Vector(0, "Offset")
+            tree.points[selection]._Scale     = Vector(1, "Scale")
+            tree.points[selection]._Rotation  = Vector(1, "Rotation")
+        """
+
+        tree.out("Points")
+
+    # =============================================================================================================================
+    # =============================================================================================================================
+    # Compilation
+    # =============================================================================================================================
+    # =============================================================================================================================
+
+    # =============================================================================================================================
+    # GROUP : Children concatenation
+
+    with GeoNodes("Group", prefix=comp_prefix, is_group=True):
+
+        # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+        mesh      = Mesh(None,    "Mesh")
+        tree      = Cloud(None,   "Tree")
+        factor    = Float(1.,     "Factor")
+
+        with Panel("Mesh Tree Info"):
+            node_id = Integer(1,    "Id",       hide_value=True, single_value=True)
+            explore = Integer(1,    "Explore",  hide_value=True, single_value=True)
+
+        # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+        children_count = GTree.children_count(tree, id=node_id)
+
+        with Repeat(mesh=mesh, x=0., iterations=children_count) as rep:
+
+            mesh = rep.mesh
+
+            child_id   = GTree.get_child(tree, id=node_id, order=rep.iteration).id_
+            child_info = GUtil.id_info(tree, child_id).node
+            child_role = child_info.role
+            is_content = child_role.equal(ROLE_CONTENT)
+
+            child_sel = GTree.select(tree, id=child_id, mode='Branch')
+
+            new_mesh = Mesh(mesh)
+            new_mesh.points[child_sel].offset = (rep.x, 0, 0)
+            vmax = new_mesh.points[child_sel].attribute_statistic(nd.position).max
+
+            rep.x = rep.x.switch(is_content, vmax.x + X_SPACE)
+            rep.mesh = mesh.switch(is_content, new_mesh)
+
+        mesh = rep.mesh
+
+        mesh.out("Mesh")
+
+    # =============================================================================================================================
+    # GEO : Instantiate from reference
+
+    with GeoNodes("Reference", prefix=comp_prefix, is_group=True):
+
+        # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+        mesh      = Mesh(None,    "Mesh")
+        tree      = Cloud(None,   "Tree")
+        factor    = Float(1.,     "Factor")
+
+        with Panel("Mesh Tree Info"):
+            node_id = Integer(1,    "Id",       hide_value=True, single_value=True)
+            explore = Integer(1,    "Explore",  hide_value=True, single_value=True)
+
+        ref_mesh  = Mesh(None,    "Reference Mesh")
+
+        # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+        mesh += macro_create_work(ref_mesh, node_id, explore)
+
+        mesh.out("Mesh")
+
+    # =============================================================================================================================
+    # SYMBOL : Instantiate from symbol code
+
+    with GeoNodes("Symbol", prefix=comp_prefix, is_group=True):
+
+        # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+        mesh      = Mesh(None,    "Mesh")
+        tree      = Cloud(None,   "Tree")
+        factor    = Float(1.,     "Factor")
+
+        with Panel("Mesh Tree Info"):
+            node_id = Integer(1,    "Id",       hide_value=True, single_value=True)
+            explore = Integer(1,    "Explore",  hide_value=True, single_value=True)
+
+        with Panel("Symbol"):
+            code  = Integer(0, "Symbol Code", single_value=True)
+            param = Integer(0, "Parameter",   single_value=True)
+
+        # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+        symb_ref = Mesh(GChar.symbol(symbol=code, parameter=param/100))
+        symb_ref.faces._ID = node_id
+        mesh += macro_create_work(symb_ref, node_id, explore)
+
+        mesh.out("Mesh")
+
+    # =============================================================================================================================
+    # Create a decorator
+
     # -----------------------------------------------------------------------------------------------------------------------------
-    # Insert a decorator
+    # Add the created decorator
 
     with GeoNodes("Add Decorator", prefix=util_prefix, is_group=True):
         """ Add a decorator to a mesh
 
-        The decoratoir must have been computed to take place into the formula.
-        adding the mesh generally requires to move the termes it refers to.
+        The decorator must have been computed to take place into the formula.
+        adding the mesh generally requires to move the terms it refers to.
 
         The adding process is the following:
         - shifting the target terms
@@ -645,14 +979,14 @@ def build_groups():
 
         # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-        mesh    = Mesh(None, "Mesh")
-        content = Boolean(False, "Content", hide_value=True)
-        apply   = Boolean(True, "Apply")
+        mesh       = Mesh(None,         "Mesh")
+        content    = Boolean(False,     "Content", hide_value=True)
+        apply      = Boolean(True,      "Apply")
 
-        deco       = Mesh(None, "Decorator")
-        left_shift = Float(0., "Left Shift")
-        vert_shift = Float(0., "Vertical Shift")
-        factor     = Float.Factor(1, "Factor", 0, 1)
+        deco       = Mesh(None,         "Decorator")
+        left_shift = Float(0.,          "Left Shift")
+        vert_shift = Float(0.,          "Vertical Shift")
+        factor     = Float.Factor(1,    "Factor", 0, 1)
 
         # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -667,19 +1001,18 @@ def build_groups():
         mesh.switch(apply, shifted_mesh + deco).out("Mesh")
 
     # -----------------------------------------------------------------------------------------------------------------------------
-    # Create a decorator
+    # Compile the decorator
 
-    with GeoNodes("Decorator", prefix=util_prefix, is_group=True):
+    with GeoNodes("Decorator", prefix=comp_prefix, is_group=True):
         """ Build a decorator onto a formula mesh.
 
         The decorator is sized and located on the provided Selection on the mesh.
 
         The decorator codes are organized in categories.
 
-        Symbol category (DECO_CAT_SYMBOL):
+        Symbol category (<= SYMB_MAX_CODE):
         - DECO_NOTHING : no decoration
-        - DECO_SIGN : minus to plus sign
-        - DECO_EQUAL : alternative to '=' character
+        - Symbol code in SYMB_???
 
         Special category (DECO_CAT_SPECIAL):
         - DECO_SQRT : square root
@@ -728,23 +1061,23 @@ def build_groups():
 
         # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-        mesh    = Mesh(None, "Mesh")
-        content = Boolean(False, "Content", hide_value=True)
+        mesh      = Mesh(None,    "Mesh")
+        tree      = Cloud(None,   "Tree")
+        factor    = Float(1.,     "Factor")
 
-        item_id = Integer(1,      "Id", 1)
-        explore = Integer(1,      "Explore", 1)
-        factor  = Float.Factor(1, "Factor", 0, 1)
+        with Panel("Mesh Tree Info"):
+            node_id = Integer(1,    "Id",       hide_value=True, single_value=True)
+            explore = Integer(1,    "Explore",  hide_value=True, single_value=True)
 
-        code    = Integer(0,     "Code")
-        option1 = Boolean(False, "Option 1")
-        option2 = Boolean(False, "Option 2")
-        param   = Float(0.,      "Param")
+        with Panel("Decorator"):
+            code  = Integer(0, "Decoration Code", single_value=True)
+            param = Integer(0, "Parameter",       single_value=True)
 
         # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-        # ----- Dimensions
-
-        dims = GUtil.dimensions(mesh, content).node
+        with Layout("Content selection"):
+            content = GTree.select(tree, id=node_id, mode='Children')
+            dims    = GUtil.dimensions(mesh, content).node
 
         # ====================================================================================================
         # SYMBOL
@@ -752,12 +1085,12 @@ def build_groups():
 
         with Layout("Symbol"):
 
-            is_operator = (code >= DECO_CAT_SYMBOL) & (code < (DECO_CAT_SYMBOL + 10))
+            is_symbol = code <= SYMB_MAX_CODE
 
-            op_node = GChar.symbol(code=code, parameter=param).node
-            op = macro_setup_work(op_node.mesh, item_id, explore)
+            op_node = GChar.symbol(symbol=code, parameter=param).node
+            op = macro_setup_work(op_node.mesh, node_id, explore)
 
-            mesh = GUtil.add_decorator(mesh, content, is_operator, decorator=op, left_shift=op_node.width + X_SPACE, factor=factor)
+            mesh = GUtil.add_decorator(mesh, content, is_symbol, decorator=op, left_shift=op_node.width + X_SPACE, factor=factor)
 
         # ====================================================================================================
         # Special
@@ -767,8 +1100,6 @@ def build_groups():
         # Square Root
 
         with Layout("Special"):
-
-            #is_special = (code >= DECO_CAT_SPECIAL) & (code < (DECO_CAT_SPECIAL + 10))
 
             sqrt = GUtil.sqrt_char(fill=False)
             sqrt_dims = GUtil.dimensions(sqrt).node
@@ -786,7 +1117,7 @@ def build_groups():
                 sqrt.points[count-3, count-2].offset = (dims.width*1.1, 0, 0)
 
             sqrt = sqrt.fill_ngons()
-            sqrt = macro_setup_work(sqrt, item_id, explore)
+            sqrt = macro_setup_work(sqrt, node_id, explore)
 
             mesh = GUtil.add_decorator(mesh, content, code.equal(DECO_SQRT), decorator=sqrt, left_shift=x_content, factor=factor)
 
@@ -796,9 +1127,9 @@ def build_groups():
 
         with Layout("Accentuation: arrow, bar, dot"):
 
-            #is_accentuation = (code >= DECO_CAT_ACCENTUATION) & (code < (DECO_CAT_ACCENTUATION + 10))
+            use_above = (param % 2).equal(1)
 
-            y = (dims.y_max + Y_ABOVE).switch(option1, dims.y_min - Y_ABOVE)
+            y = (dims.y_max + Y_ABOVE).switch(use_above, dims.y_min - Y_ABOVE)
 
             with Layout("Bar and Arrow dims"):
                 left_margin  = 2*unit
@@ -809,7 +1140,7 @@ def build_groups():
             with Layout("Dot Char"):
                 dot_node = GChar.characters(chars='.').node
                 dot = Mesh(dot_node._out)
-                dot = macro_setup_work(dot, item_id, explore, x_align='CENTER')
+                dot = macro_setup_work(dot, node_id, explore, x_align='CENTER')
 
                 dot.transform(translation=(dims.x_mid + dot_node.width, y - dot_node.height/2, 0))
                 dot_dx = (dot_node.width + X_SPACE/2)/2
@@ -831,7 +1162,7 @@ def build_groups():
 
                 r.transform(translation=(bar_width2, y, 0))
                 r = r.fill_ngons()
-                r = macro_setup_work(r, item_id, explore)
+                r = macro_setup_work(r, node_id, explore)
 
                 mesh = GUtil.add_decorator(mesh, content, code.equal(DECO_ARROW), decorator=r, left_shift=left_margin, factor=factor)
 
@@ -847,7 +1178,7 @@ def build_groups():
             with Layout("Bar"):
 
                 r = Mesh.Grid(bar_width, DECO_THICK, 2, 2).transform(translation=(bar_width2, y, 0))
-                r = macro_setup_work(r, item_id, explore)
+                r = macro_setup_work(r, node_id, explore)
 
                 mesh = GUtil.add_decorator(mesh, content, code.equal(DECO_BAR), decorator=r, left_shift=left_margin, factor=factor)
 
@@ -875,8 +1206,8 @@ def build_groups():
                 is_block = (block_code >= 0) & (block_code < DECO_TOKEN)
                 block_code = block_code.switch_false(is_block, 0)._lc("Block Code")
 
-                use_left  = -option1
-                use_right = -option2
+                use_left  = (param % 2).equal(0) # 0 or 2
+                use_right = param < 2            # 0 or 1
 
             # ---------------------------------------------------------------------------
             # Brackets instantiation
@@ -893,7 +1224,7 @@ def build_groups():
 
                     br_node = GChar.characters(chars=s).node
                     br = br_node.mesh
-                    br = macro_setup_work(br,  item_id, explore)
+                    br = macro_setup_work(br,  node_id, explore)
 
                     br_scale = PAR_SCALE*gnmath.max(1, dims.height)
 
@@ -921,12 +1252,9 @@ def build_groups():
         mesh.out("Mesh")
 
     # =============================================================================================================================
-    # TWO CONTENTS
-
-    # -----------------------------------------------------------------------------------------------------------------------------
     # Fraction
 
-    with GeoNodes("Fraction", prefix=util_prefix, is_group=True):
+    with GeoNodes("Fraction", prefix=comp_prefix, is_group=True):
         """ Organize two terms as a fraction.
 
         Arguments
@@ -945,19 +1273,25 @@ def build_groups():
 
         # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-        mesh = Mesh(None, "Mesh")
+        mesh      = Mesh(None,    "Mesh")
+        tree      = Cloud(None,   "Tree")
+        factor    = Float(1.,     "Factor")
 
-        num_sel = Boolean(False, "Numerator",   hide_value=True)
-        den_sel = Boolean(False, "Denominator", hide_value=True)
-
-        item_id = Integer(1, "Id", 1)
-        explore = Integer(1, "Explore", 1)
-        factor  = Float.Factor(1, "Factor", 0, 1)
+        with Panel("Mesh Tree Info"):
+            node_id = Integer(1,    "Id",       hide_value=True, single_value=True)
+            explore = Integer(1,    "Explore",  hide_value=True, single_value=True)
 
         # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-        ndims = GUtil.dimensions(mesh, num_sel).node
-        ddims = GUtil.dimensions(mesh, den_sel).node
+        with Layout("Numerator"):
+            num_node = GTree.selection_info(tree, Integer("Owner").equal(node_id) & Integer("Role").equal(ROLE_CONTENT)).node
+            num_sel  = GTree.select(tree, id=num_node.id, mode='Branch')
+            ndims    = GUtil.dimensions(mesh, num_sel).node
+
+        with Layout("Denominator"):
+            den_node = GTree.selection_info(tree, Integer("Owner").equal(node_id) & Integer("Role").equal(ROLE_DENOMINATOR)).node
+            den_sel  = GTree.select(tree, id=den_node.id, mode='Branch')
+            ddims    = GUtil.dimensions(mesh, den_sel).node
 
         with Layout("Build the bar"):
 
@@ -965,7 +1299,7 @@ def build_groups():
             x_center = width/2
             bar = Mesh.Grid(vertices_x=2, vertices_y=2, size_x=width, size_y=FRAC_THICK).transform(translation=(x_center, Y_ALIGN, 0))
 
-            bar = macro_setup_work(bar, item_id, explore)
+            bar = macro_setup_work(bar, node_id, explore)
 
         with Layout("Locate numerator and denominator"):
 
@@ -983,17 +1317,12 @@ def build_groups():
             mesh.points[den_sel].position *= factor
             mesh.points[den_sel].offset = (d_left_shift*factor + ddims.x_mid, d_vert_shift + ddims.y_mid, 0)
 
-            #mesh = GUtil.add_decorator(mesh, den_sel,                left_shift=d_left_shift, vertical_shift=d_vert_shift, factor=factor)
-
         mesh.out("Mesh")
 
     # =============================================================================================================================
-    # THREE CONTENTS
-
-    # -----------------------------------------------------------------------------------------------------------------------------
     # Exponent & Indice
 
-    with GeoNodes("Exponent Indice", prefix=util_prefix, is_group=True):
+    with GeoNodes("Indice Exponent", prefix=comp_prefix, is_group=True):
         """ Organize three terms as a term with an indice and an exponent.
 
         Arguments
@@ -1011,25 +1340,32 @@ def build_groups():
 
         # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-        mesh = Mesh()
+        mesh      = Mesh(None,    "Mesh")
+        tree      = Cloud(None,   "Tree")
+        factor    = Float(1.,     "Factor")
 
-        content  = Boolean(False, "Content",   hide_value=True)
-        exponent = Boolean(False, "Exponent",  hide_value=True)
-        indice   = Boolean(False, "Indice",    hide_value=True)
-
-        factor  = Float.Factor(1, "Factor", 0, 1)
+        with Panel("Mesh Tree Info"):
+            node_id = Integer(1,    "Id",       hide_value=True, single_value=True)
+            explore = Integer(1,    "Explore",  hide_value=True, single_value=True)
 
         # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-        # ----- Dimensions
+        with Layout("Content"):
+            cont_node = GTree.selection_info(tree, Integer("Owner").equal(node_id) & Integer("Role").equal(ROLE_CONTENT)).node
+            content   = GTree.select(tree, id=cont_node.id, mode='Branch')
+            cdims     = GUtil.dimensions(mesh, content).node
 
-        cdims = GUtil.dimensions(mesh, content).node
-        edims = GUtil.dimensions(mesh, exponent).node
-        idims = GUtil.dimensions(mesh, indice).node
+        with Layout("Indice"):
+            ind_node = GTree.selection_info(tree, Integer("Owner").equal(node_id) & Integer("Role").equal(ROLE_INDICE)).node
+            indice   = GTree.select(tree, id=ind_node.id, mode='Branch')
+
+        with Layout("Exponent"):
+            exp_node = GTree.selection_info(tree, Integer("Owner").equal(node_id) & Integer("Role").equal(ROLE_EXPONENT)).node
+            exponent = GTree.select(tree, id=exp_node.id, mode='Branch')
 
         with Layout("Scale Exponent and Indice"):
             mesh.points[exponent].position *= (SCALE_IND*factor, SCALE_IND, SCALE_IND)
-            mesh.points[indice].position *= (SCALE_IND*factor, SCALE_IND, SCALE_IND)
+            mesh.points[indice].position   *= (SCALE_IND*factor, SCALE_IND, SCALE_IND)
 
         with Layout("Offset Exponent and Indice"):
             left = cdims.x_max + X_SPACE/3
@@ -1039,11 +1375,11 @@ def build_groups():
 
         mesh.out("Mesh")
 
-    # -----------------------------------------------------------------------------------------------------------------------------
+    # =============================================================================================================================
     # Sigma
 
-    with GeoNodes("Sigma", prefix=util_prefix, is_group=True):
-        """ Organize three terms as a term with an indice and an exponent.
+    with GeoNodes("Sigma", prefix=comp_prefix, is_group=True):
+        """ Discreet sum.
 
         Arguments
         ---------
@@ -1062,15 +1398,28 @@ def build_groups():
 
         # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-        mesh = Mesh()
+        mesh      = Mesh(None,    "Mesh")
+        tree      = Cloud(None,   "Tree")
+        factor    = Float(1.,     "Factor")
 
-        content  = Boolean(False, "Content", hide_value=True)
-        below    = Boolean(False, "Below",   hide_value=True)
-        above    = Boolean(False, "Above",   hide_value=True)
+        with Panel("Mesh Tree Info"):
+            node_id = Integer(1,    "Id",       hide_value=True, single_value=True)
+            explore = Integer(1,    "Explore",  hide_value=True, single_value=True)
 
-        item_id = Integer(1, "Id", 1)
-        explore = Integer(1, "Explore", 1)
-        factor  = Float.Factor(1, "Factor", 0, 1)
+        # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+        with Layout("Content"):
+            cont_node = GTree.selection_info(tree, Integer("Owner").equal(node_id) & Integer("Role").equal(ROLE_CONTENT)).node
+            content   = GTree.select(tree, id=cont_node.id, mode='Branch')
+            cdims     = GUtil.dimensions(mesh, content).node
+
+        with Layout("Below"):
+            bel_node = GTree.selection_info(tree, Integer("Owner").equal(node_id) & Integer("Role").equal(ROLE_INDICE)).node
+            below    = GTree.select(tree, id=bel_node.id, mode='Branch')
+
+        with Layout("Above"):
+            abv_node = GTree.selection_info(tree, Integer("Owner").equal(node_id) & Integer("Role").equal(ROLE_EXPONENT)).node
+            above    = GTree.select(tree, id=abv_node.id, mode='Branch')
 
         # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -1078,140 +1427,257 @@ def build_groups():
             mesh.points[below].position *= SCALE_IND
             mesh.points[above].position *= SCALE_IND
 
-        # ----- Dimensions
-
-        cdims = GUtil.dimensions(mesh, content).node
-        bdims = GUtil.dimensions(mesh, below).node
-        adims = GUtil.dimensions(mesh, above).node
+            bdims    = GUtil.dimensions(mesh, below).node
+            adims    = GUtil.dimensions(mesh, above).node
 
         # ----- Sigma Symbol
 
         with Layout("Sigma Symbol"):
 
             # ----- Base
-            sigma = Mesh(GUtil.sigma_char(fill=True))
+            sigma = Mesh(GUtil.sigma_char(fill=True)).transform(scale=SIGMA_SCALE)
 
             # ----- Height
-            sigma_height = SIGMA_SCALE*gnmath.min(1, cdims.height)
+            sigma_height = gnmath.min(1, cdims.height)
             sigma.transform(scale=(1, sigma_height, 1))
 
             # ----- Vertical center with content
-            sigma.transform(translation=(0, cdims.y_mid - sigma_height/2, 0))
+            sigma.transform(translation=(0, cdims.y_mid - sigma_height*(SIGMA_SCALE/2), 0))
 
             # ----- Add to the mesh
-            sigma = macro_setup_work(sigma, item_id, explore)
+            sigma = macro_setup_work(sigma, node_id, explore)
+            sigma.transform(scale = (factor, 1, 1))
             mesh += sigma
 
             # ----- Get the final dims
-            sdims = GUtil.dimensions(mesh, Integer("ID").equal(item_id)).node
+            sdims = GUtil.dimensions(mesh, Integer("ID").equal(node_id)).node
 
         with Layout("Locate content"):
-            mesh.points[content].offset = (sdims.x_max + X_SPACE/3, 0, 0)
+            mesh.points[content].offset = ((sdims.x_max + X_SPACE/3)*factor, 0, 0)
 
         with Layout("Locate Below and Above"):
             mesh.points[below].offset = (sdims.x_mid - bdims.x_mid, sdims.y_min - Y_SPACE - bdims.y_max , 0)
             mesh.points[above].offset = (sdims.x_mid - adims.x_mid, sdims.y_max + Y_SPACE - bdims.y_min , 0)
+            mesh.points[below].position *= (factor, 1, 1)
+            mesh.points[above].position *= (factor, 1, 1)
 
-        mesh.out()
+
+        mesh.out("Mesh")
 
     # =============================================================================================================================
-    # =============================================================================================================================
-    # Formula Compilation
-    # =============================================================================================================================
-    # =============================================================================================================================
+    # Integral
 
-    # ----------------------------------------------------------------------------------------------------
-    # Reading tree structure
-
-    with GeoNodes("Index Info", prefix=util_prefix, is_group=True):
-        """ Read the node info by index.
+    with GeoNodes("Integral", prefix=comp_prefix, is_group=True):
+        """ Integral.
 
         Arguments
         ---------
-        - Tree (Cloud) : the tree structure
-        - Index (Integer) : an index on the tree structure
+        - Mesh
+        - Content (Boolean) : selection of content terms
+        - Below (Boolean) : selection of terms above sigma sign
+        - Above (Boolean) : selection of terms above sigma sign
+        - Id (Integer) : Node ID of the sigma mesh
+        - Explore (Integer) : Explore index of the sigma mesh
+        - Factor (Float in [0, 1]) : decorator animation factor
 
         Returns
         -------
-        - Default node info (index, ID, Owner, Depth, Order, Total, Explore)
-        - Type (Integer)
-        - Code (Integer)
-        - Argument (Integer)
-        - Factor (Float)
-        - Color (Color)
-        - Fade (Float)
-        - Role (Integer)
-        - Option 1 (Boolean)
-        - Option 2 (Boolean)
-        - Param (Float)
+        - Mesh : mesh where the three termes are organized as expected
         """
 
         # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-        tree = Cloud(None, "Tree")
-        index = Integer(0, "Index")
+        mesh      = Mesh(None,    "Mesh")
+        tree      = Cloud(None,   "Tree")
+        factor    = Float(1.,     "Factor")
+
+        with Panel("Mesh Tree Info"):
+            node_id = Integer(1,    "Id",       hide_value=True, single_value=True)
+            explore = Integer(1,    "Explore",  hide_value=True, single_value=True)
 
         # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-        info = GTree.index_info(tree, index=index).node
-        info.out()
+        mesh_init = Mesh(mesh)
 
-        tree.points.sample_index(Integer(  "Type"),     index=index).out("Type")
-        tree.points.sample_index(Integer(  "Code"),     index=index).out("Code")
-        tree.points.sample_index(Integer(  "Argument"), index=index).out("Argument")
-        tree.points.sample_index(Float(    "Factor"),   index=index).out("Factor")
-        tree.points.sample_index(Color(    "Color"),    index=index).out("Color")
-        tree.points.sample_index(Integer(  "Fade"),     index=index).out("Fade")
+        with Layout("Content"):
+            cont_node = GTree.selection_info(tree, Integer("Owner").equal(node_id) & Integer("Role").equal(ROLE_CONTENT)).node
+            content   = GTree.select(tree, id=cont_node.id, mode='Branch')
+            cdims     = GUtil.dimensions(mesh, content).node
 
-        tree.points.sample_index(Integer(  "Role"),     index=index).out("Role")
+        with Layout("Below"):
+            bel_node = GTree.selection_info(tree, Integer("Owner").equal(node_id) & Integer("Role").equal(ROLE_INDICE)).node
+            below    = GTree.select(tree, id=bel_node.id, mode='Branch')
 
-        tree.points.sample_index(Boolean(  "Option 1"), index=index).out("Option 1")
-        tree.points.sample_index(Boolean(  "Option 2"), index=index).out("Option 2")
-        tree.points.sample_index(Float(    "Param"),    index=index).out("Param")
-
-    with GeoNodes("Id Info", prefix=util_prefix, is_group=True):
-        """ Read the node info by ID.
-
-        Arguments
-        ---------
-        - Tree (Cloud) : the tree structure
-        - Id (Integer) : an ID on the tree structure
-
-        Returns
-        -------
-        - see "Util Index Info"
-        """
+        with Layout("Above"):
+            abv_node = GTree.selection_info(tree, Integer("Owner").equal(node_id) & Integer("Role").equal(ROLE_EXPONENT)).node
+            above    = GTree.select(tree, id=abv_node.id, mode='Branch')
 
         # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-        tree    = Cloud(None, "Tree")
-        node_id = Integer(1,  "Id")
+        with Layout("Scale Below and Above"):
+            mesh.points[below].position *= SCALE_IND
+            mesh.points[above].position *= SCALE_IND
 
-        # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+            bdims    = GUtil.dimensions(mesh, below).node
+            adims    = GUtil.dimensions(mesh, above).node
 
-        GUtil.index_info(tree, index=GTree.id_info(tree, id=node_id)).node.out()
+        # ----- Integral Symbol
 
-    with GeoNodes("Explore Info", prefix=util_prefix, is_group=True):
-        """ Read the node info by Explore index.
+        with Layout("Integral"):
 
-        Arguments
-        ---------
-        - Tree (Cloud) : the tree structure
-        - Explore (Integer) : an Explore index on the tree structure
+            # ----- Base
+            integral_height = gnmath.min(1, cdims.height)
+            integral = Mesh(GUtil.integral_char(fill=True, height=sigma_height))
+            int_dims = GUtil.dimensions(integral, True).node
 
-        Returns
-        -------
-        - see "Util Index Info"
-        """
-        tree    = Cloud(None, "Tree")
-        explore = Integer(1,  "Explore")
+            # ----- Vertical center with content
+            integral.transform(translation=(0, cdims.y_mid - int_dims.y_mid, 0))
 
-        GUtil.index_info(tree, index=GTree.explore_info(tree, explore=explore)).node.out()
+            # ----- Add to the mesh
+            integral = macro_setup_work(integral, node_id, explore)
+            integral.transform(scale = (factor, 1, 1))
+            mesh += integral
 
-    # ----------------------------------------------------------------------------------------------------
+            # ----- Get the final dims
+            sdims = GUtil.dimensions(mesh, Integer("ID").equal(node_id)).node
+
+        with Layout("Locate content"):
+            mesh.points[content].offset = ((sdims.x_max + X_SPACE/3)*factor, 0, 0)
+
+        with Layout("Locate Below and Above"):
+            mesh.points[below].offset = (sdims.x_min + sdims.width*.5, sdims.y_min - bdims.y_mid, 0)
+            mesh.points[above].offset = (sdims.x_max + X_SPACE/2,      sdims.y_max - adims.y_mid , 0)
+            mesh.points[below].position *= (factor, 1, 1)
+            mesh.points[above].position *= (factor, 1, 1)
+
+
+        mesh.out("Mesh")
+
+    # =============================================================================================================================
+    # Compilation test
+
+    with GeoNodes("Test", prefix=comp_prefix, is_group=True):
+
+        factor = Float.Factor(1, "Factor", 0, 1)
+        code   = Integer(0, "Code")
+        param  = Integer(0, "Parameter")
+
+        with If(Geometry, 'Characters') as geo:
+            ref_mesh = GChar.characters(chars="Ref")
+            ref_mesh.faces._ID = 1
+
+            tree = GTree.new()
+            tree = GUtil.initialize_node(tree, True)
+            tree.points[nd.index.equal(1)]._Type = TYPE_REF
+
+            geo.option = GComp.reference(tree=tree, id=1, reference_mesh=ref_mesh, factor=factor)
+
+        with Elif(geo, 'Group'):
+            a = macro_setup_work(GChar.characters(chars="pi"),   2, 2)
+            b = macro_setup_work(GChar.characters(chars="\\approx"),    3, 3)
+            c = macro_setup_work(GChar.characters(chars="3.14"), 4, 4)
+            mesh = a + (b, c)
+
+            # Group
+            tree = GTree.new()
+            gid = tree.id_
+
+            # 3 chars
+            tree = GTree.new(tree, gid)
+            tree = GTree.new(tree, gid)
+            tree = GTree.new(tree, gid)
+
+            #tree.points[Integer("ID").equal(0) & Integer("ID").equal(gid)]._Type = TYPE_REF
+
+            geo.option = GComp.group(mesh=mesh, tree=tree, id=gid, factor=factor)
+
+        with Elif(geo, 'Symbol'):
+
+            tree = GTree.new()
+            tree.points[nd.index.equal(1)]._Type = TYPE_SYMBOL
+            geo.option = GComp.symbol(tree=tree, id=1, symbol_code=code, factor=factor)
+
+
+        with Elif(geo, 'Decorator'):
+
+            mesh = macro_setup_work(GChar.characters(chars="x", italic=True), 2, 2)
+
+            tree = GTree.new(tree)
+            tree = GTree.new(tree, 1)
+            tree.points[nd.index.equal(1)]._Type = TYPE_DECO
+
+            geo.option = GComp.decorator(mesh=mesh, tree=tree, factor=factor, id=1,
+                decoration_code=code, parameter=param)
+
+        with Elif(geo, "Fraction"):
+
+            mesh  = macro_setup_work(GChar.characters(chars="dF", italic=True),  2, 2)
+            mesh += macro_setup_work(GChar.characters(chars="dx", italic=True), 3, 3)
+
+            tree = GTree.new()
+            tree = GTree.new(tree, 1)
+            tree = GTree.new(tree, 1)
+            tree.points[Integer("ID").equal(2)]._Role = ROLE_CONTENT
+            tree.points[Integer("ID").equal(3)]._Role = ROLE_DENOMINATOR
+
+            geo.option = GComp.fraction(mesh=mesh, tree=tree, factor=factor, id=1)
+
+        with Elif(geo, "Indice"):
+
+            mesh  = macro_setup_work(GChar.characters(chars="x", italic=True), 2, 2)
+            mesh += macro_setup_work(GChar.characters(chars="i", italic=True), 3, 3)
+            mesh += macro_setup_work(GChar.characters(chars="2", italic=True), 4, 4)
+
+            tree = GTree.new()
+            tree = GTree.new(tree, 1)
+            tree = GTree.new(tree, 1)
+            tree = GTree.new(tree, 1)
+            tree.points[Integer("ID").equal(2)]._Role = ROLE_CONTENT
+            tree.points[Integer("ID").equal(3)]._Role = ROLE_INDICE
+            tree.points[Integer("ID").equal(4)]._Role = ROLE_EXPONENT
+
+            geo.option = GComp.indice_exponent(mesh=mesh, tree=tree, factor=factor, id=1)
+
+        with Elif(geo, "Sigma"):
+
+            mesh  = macro_setup_work(GChar.characters(chars="1/i", italic=True), 2, 2)
+            mesh += macro_setup_work(GChar.characters(chars="i=1", italic=True), 3, 3)
+            mesh += macro_setup_work(GChar.characters(chars="i=\\infty", italic=True), 4, 4)
+
+            tree = GTree.new()
+            tree = GTree.new(tree, 1)
+            tree = GTree.new(tree, 1)
+            tree = GTree.new(tree, 1)
+            tree.points[Integer("ID").equal(2)]._Role = ROLE_CONTENT
+            tree.points[Integer("ID").equal(3)]._Role = ROLE_INDICE
+            tree.points[Integer("ID").equal(4)]._Role = ROLE_EXPONENT
+
+            geo.option = GComp.sigma(mesh=mesh, tree=tree, factor=factor, id=1)
+
+        with Elif(geo, "Integral"):
+
+            mesh  = macro_setup_work(GChar.characters(chars="f(t)dt", italic=True), 2, 2)
+            mesh += macro_setup_work(GChar.characters(chars="t=0", italic=True), 3, 3)
+            mesh += macro_setup_work(GChar.characters(chars="t=\\infty", italic=True), 4, 4)
+
+            tree = GTree.new()
+            tree = GTree.new(tree, 1)
+            tree = GTree.new(tree, 1)
+            tree = GTree.new(tree, 1)
+            tree.points[Integer("ID").equal(2)]._Role = ROLE_CONTENT
+            tree.points[Integer("ID").equal(3)]._Role = ROLE_INDICE
+            tree.points[Integer("ID").equal(4)]._Role = ROLE_EXPONENT
+
+            geo.option = GComp.integral(mesh=mesh, tree=tree, factor=factor, id=1)
+
+        geo.out()
+
+    # =============================================================================================================================
     # Formula compilation
+    #
+    # All types are implemented in dedicated group for the sake of clarity
 
-    with GeoNodes("Compile", prefix=build_prefix, is_group=True):
+    with GeoNodes("Main", prefix=comp_prefix, is_group=True):
         """ Compile the formula
 
         Formula compilation is made with following steps:
@@ -1221,10 +1687,11 @@ def build_groups():
           The building loop is made from last node to tree root.
           for each node, a mesh is built depending on the node 'Type':
           - TYPE_GROUP    : chain the child meshes in their order and then add ad decorator
-          - TYPE_GEO      : copy the reference mesh into the mesh
+          - TYPE_REF      : copy the reference mesh into the mesh
           - TYPE_FRACTION : Fraction between the two child nodes
-          - TYPE_EXP_IND  : Use the three child nodes as content, exponent and indice
-          - TYPE_SIGMA    : Use the three child nodes as content, below and above sigma sum
+          - TYPE_IND_EXP  : use the three child nodes as content, exponent and indice
+          - TYPE_SIGMA    : use the three child nodes as content, below and above sigma sum
+          - TYPE_DECO     : decorator
 
         Arguments
         ---------
@@ -1253,136 +1720,481 @@ def build_groups():
         count = tree.points.count
         with Repeat(mesh=None, iterations=count) as rep:
 
-            mesh = rep.mesh
-
             with Layout("Last to first Explore index info"):
-                expl_index = count - 1 - rep.iteration
-                node_info  = GUtil.explore_info(tree, explore=expl_index).node
-                node_id    = node_info.id._lc("Node ID")
+                explore    = (count - 1 - rep.iteration)._lc("Explore")
+                node_info  = GUtil.explore_info(tree, explore=explore).node
+                node_id    = node_info.id
+                node_type  = node_info.type
+                factor     = node_info.factor
 
-            # ====================================================================================================
-            # GEO : Instantiate from reference
-            # ====================================================================================================
+            # TYPE_GROUP    = 0
+            # TYPE_REF      = 1
+            # TYPE_SYMBOL   = 2
+            # TYPE_DECO     = 3
+            # TYPE_FRACTION = 4
+            # TYPE_IND_EXP  = 5
+            # TYPE_SIGMA    = 6
+            # TYPE_INTEGRAL = 7
 
-            with Layout("GEO: Instantiate from reference"):
+            with If(Mesh, node_type) as mesh:
+                mesh.option = GComp.group(mesh=rep.mesh, tree=tree, factor=factor, id=node_id, explore=explore)
 
-                geo = macro_create_work(ref_mesh, node_id, expl_index)
+            with Elif(mesh):
+                mesh.option = GComp.reference(mesh=rep.mesh, tree=tree, factor=factor, id=node_id, explore=explore,
+                reference_mesh = ref_mesh)
 
-                # DEBUG
-                if False:
-                    dbg_dims = GUtil.dimensions(geo).node
-                    geo = Mesh.Grid(dbg_dims.width, dbg_dims.height, 2, 2).transform(translation=(dbg_dims.width/2, 0, 0))
-                    geo = macro_setup_work(geo, node_id, expl_index)
+            with Elif(mesh):
+                mesh.option = GComp.symbol(mesh=rep.mesh, tree=tree, factor=factor, id=node_id, explore=explore,
+                    symbol_code=node_info.code, parameter=node_info.parameter)
 
-                mesh = mesh.switch(node_info.type.equal(TYPE_GEO), mesh + geo)
+            with Elif(mesh):
+                mesh.option = GComp.decorator(mesh=rep.mesh, tree=tree, factor=factor, id=node_id, explore=explore,
+                    decoration_code=node_info.code, parameter=node_info.parameter)
 
-            # ====================================================================================================
-            # GROUP : Children concatenation
-            # ====================================================================================================
+            with Elif(mesh):
+                mesh.option = GComp.fraction(mesh=rep.mesh, tree=tree, factor=factor, id=node_id, explore=explore)
 
-            with Layout("GROUP: sub nodes are concatanated"):
+            with Elif(mesh):
+                mesh.option = GComp.indice_exponent(mesh=rep.mesh, tree=tree, factor=factor, id=node_id, explore=explore)
 
-                children_count = GTree.children_count(tree, id=node_id)
+            with Elif(mesh):
+                mesh.option = GComp.sigma(mesh=rep.mesh, tree=tree,  factor=factor, id=node_id, explore=explore)
 
-                with Repeat(mesh=rep.mesh, x=0., iterations=children_count) as rep2:
+            with Elif(mesh):
+                mesh.option = GComp.sigma(mesh=rep.mesh, tree=tree, factor=factor, id=node_id, explore=explore)
 
-                    mesh2 = rep2.mesh
-
-                    child_id  = GTree.get_child(tree, id=node_id, order=rep2.iteration).id_
-                    child_sel = GTree.select(tree, id=child_id, mode='Branch')
-
-                    mesh2.points[child_sel].offset = (rep2.x, 0, 0)
-                    vmax = mesh2.points[child_sel].attribute_statistic(nd.position).max
-
-                    rep2.x = vmax.x + X_SPACE
-                    rep2.mesh = mesh2
-
-                mesh = mesh.switch(node_info.type.equal(TYPE_GROUP), rep2.mesh)
-
-            with Layout("DECORATOR to apply to the group"):
-
-                deco = GUtil.decorator(mesh=mesh,
-                    content  = GTree.select(tree, id=node_id, mode='Children'),
-                    id       = node_id,
-                    explore  = expl_index,
-                    factor   = node_info.factor,
-
-                    code     = node_info.code,
-                    option_1 = node_info.option_1,
-                    option_2 = node_info.option_2,
-                    param    = node_info.param,
-                )
-
-                mesh = mesh.switch(node_info.type.equal(TYPE_GROUP), deco)
-
-            # ====================================================================================================
-            # FRACTION
-            # ====================================================================================================
-
-            with Layout("Two contents"):
-                role0 = GTree.selection_info(tree, Integer("Owner").equal(node_id) & Integer("Role").equal(0)).node
-                role1 = GTree.selection_info(tree, Integer("Owner").equal(node_id) & Integer("Role").equal(1)).node
-
-            with Layout("Fraction"):
-                fraction = GUtil.fraction(mesh,
-                    numerator   = GTree.select(tree, id=role0.id, mode='Branch'),
-                    denominator = GTree.select(tree, id=role1.id, mode='Branch'),
-                    id      = node_id,
-                    explore = expl_index,
-                    factor  = node_info.factor,
-                )
-                mesh = mesh.switch(node_info.type.equal(TYPE_FRACTION), fraction)
-
-            # ----------------------------------------------------------------------------------------------------
-            # THREE CONTENTS
-            # ----------------------------------------------------------------------------------------------------
-
-            with Layout("Thre Contents"):
-
-                role0 = GTree.selection_info(tree, Integer("Owner").equal(node_id) & Integer("Role").equal(0)).node
-                role1 = GTree.selection_info(tree, Integer("Owner").equal(node_id) & Integer("Role").equal(1)).node
-                role2 = GTree.selection_info(tree, Integer("Owner").equal(node_id) & Integer("Role").equal(2)).node
-
-            # ----- Exponent / indice
-
-            with Layout("Exponent / Indice"):
-
-                exp_ind = GUtil.exponent_indice(mesh,
-                    content  = GTree.select(tree, id=role0.id, mode='Branch'),
-                    exponent = GTree.select(tree, id=role1.id, mode='Branch'),
-                    indice   = GTree.select(tree, id=role2.id, mode='Branch'),
-                    factor = node_info.factor,
-                )
-                mesh = mesh.switch(node_info.type.equal(TYPE_EXP_IND), exp_ind)
-
-            # ----- Sigma
-
-            with Layout("Sigma"):
-
-                sigma = GUtil.sigma(mesh,
-                    content = GTree.select(tree, id=role0.id, mode='Branch'),
-                    below   = GTree.select(tree, id=role1.id, mode='Branch'),
-                    above   = GTree.select(tree, id=role2.id, mode='Branch'),
-                    id      = node_id,
-                    explore = expl_index,
-                    factor  = node_info.factor,
-                )
-                mesh = mesh.switch(node_info.type.equal(TYPE_SIGMA), sigma)
+            # ----- Done
 
             rep.mesh = mesh
 
-        mesh = rep.mesh
-
-        formula.switch(use_compile, ref_mesh + mesh + tree).out("Formula")
+        formula.switch(use_compile, ref_mesh + rep.mesh + tree).out("Formula")
 
     # =============================================================================================================================
     # =============================================================================================================================
-    # Formula building
+    # Building formula
     # =============================================================================================================================
     # =============================================================================================================================
+
+    # =============================================================================================================================
+    # Ensure a geometry contains tree
+
+    with GeoNodes("Ensure Formula", prefix=util_prefix, is_group=True):
+        """ Initialize a formula if not already done
+
+        Arguments
+        ---------
+        - Geometry
+
+        Returns
+        -------
+        - Formula
+        - Mesh
+        - Points
+        """
+
+        # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+        formula = Geometry()
+
+        # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+        mesh = formula.mesh
+        tree = formula.point_cloud
+
+        use_init = tree.points.count.equal(0)
+        is_empty = mesh.points.count.equal(0) & use_init
+
+        with Layout("Create a new tree"):
+            new_tree = GTree.new()
+            new_id = new_tree.id_
+            new_tree = GUtil.initialize_node(new_tree, True)
+            new_tree.points[Integer("ID").equal(new_id)]._Type = TYPE_REF
+
+        with Layout("ID and Explore to mesh faces"):
+            new_mesh = Mesh(mesh)
+            new_mesh.faces._ID = new_id
+
+        mesh = mesh.switch(use_init, new_mesh).switch(is_empty)
+        tree = tree.switch(use_init, new_tree).switch(is_empty)
+
+        (mesh + tree).out("Formula")
+        mesh.out("Mesh")
+        tree.out("Points")
+        is_empty.out("Empty")
+
+    # =============================================================================================================================
+    # Group children
+    # =============================================================================================================================
+
+    with GeoNodes("Group Children", prefix=util_prefix, is_group=True):
+
+        formula   = Geometry(None,  "Formula")
+        node_type = Integer(0,      "Type")
+        role      = Integer(0,      "Role")
+        code      = Integer(0,      "Code")
+        force     = Boolean(False,  "Force")
+
+        formula = GUtil.ensure_formula(formula)
+        f_empty = formula.empty_
+
+        mesh = formula.mesh
+        tree = formula.point_cloud
+
+        tree = GTree.group_children(tree, id=0, force=force)
+        group_id = tree.id_
+
+        tree = GUtil.initialize_node(tree, selection=Integer("ID").equal(group_id), type=node_type, role=role, code=code)
+
+        formula = (mesh + tree).switch(f_empty)
+        group_id = group_id.switch(f_empty, -1)
+
+        formula.out("Formula")
+        group_id.out("ID")
+
+    # =============================================================================================================================
+    # Group children
+    # =============================================================================================================================
+
+    with GeoNodes("Insert Owner", prefix=util_prefix, is_group=True):
+
+        formula   = Geometry(None,  "Formula")
+        node_id   = Integer(1,      "ID")
+        node_type = Integer(0,      "Type")
+        role      = Integer(0,      "Role")
+        code      = Integer(0,      "Code")
+
+        formula = GUtil.ensure_formula(formula)
+        f_empty = formula.empty_
+
+        mesh = formula.mesh
+        tree = formula.point_cloud
+
+        tree = GTree.insert_owner(tree, id=node_id)
+        group_id = tree.id_
+
+        tree = GUtil.initialize_node(tree, selection=Integer("ID").equal(group_id), type=node_type, role=role, code=code)
+
+        formula = (mesh + tree).switch(f_empty)
+        group_id = group_id.switch(f_empty, -1)
+
+        formula.out("Formula")
+        group_id.out("ID")
+
+    # =============================================================================================================================
+    # Read the group types info
+
+    with GeoNodes("Single Group Info", prefix=util_prefix, is_group=True):
+
+        formula = Geometry(None, "Formula")
+
+        tree = formula.point_cloud
+
+        count = GTree.children_count(tree)
+        is_single = count.equal(1)
+
+        with Layout("Single child group info"):
+            group_info = GUtil.selection_info(tree, Integer("Owner").equal(0)).node
+            is_single &= group_info.exists
+
+        group_info.type.out("Type")
+        group_info.id.out("ID")
+        is_single.out("Exists")
+
+        for i in range(4):
+            with Layout(f"Role {i}"):
+                child_info = GUtil.selection_info(tree, Integer("Owner").equal(group_info.id) & Integer("Role").equal(i)).node
+                child_info.id.out(f"Role ID {i}")
+                (child_info.exists & is_single).out(f"Exists {i}")
+
+    # =============================================================================================================================
+    # Join another term to a formula
+
+    with GeoNodes("Join", prefix=util_prefix, is_group=True):
+        """ Join another formula
+
+        > [!IMPORTANT]
+        > The root of the joined formula is dissolved if is has only one child
+        """
+
+        # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+        formula   = Geometry(None, "Formula")
+        term      = Geometry(None, "Term")
+
+        owner_id  = Integer(0, "Owner Id")
+        location  = Integer.MenuSwitch({'Last Child': 0, 'After': 1, 'Before': 2, 'First Child': 3}, name='Location', menu='Last Child')
+        dissolve  = Integer.MenuSwitch({'Auto': 0, 'Dissolve': 1, 'Keep': 2}, name="Dissolve", menu='Auto')
+
+        node_type = Integer(0,      "Type")
+        role      = Integer(0,      "Role")
+        code      = Integer(0,      "Code")
+
+        # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+        formula_init = Geometry(formula)
+        term_init = Geometry(term)
+
+        with Layout("Separate Mesh and Tree"):
+
+            formula   = GUtil.ensure_formula(formula)
+            mesh      = formula.mesh_
+            tree      = formula.points_
+            f_is_none = formula.empty_
+
+            #formula_init = Geometry(formula)
+
+
+            term      = GUtil.ensure_formula(term)
+            t_mesh    = term.mesh_
+            t_tree    = term.points_
+            t_is_none = term.empty_
+
+            #term_init = Geometry(term)
+
+
+        with Layout("Dissolve condition"):
+            t_children   = Cloud(t_tree).points[Integer("Owner").equal(0)].separate()
+            use_dissolve = Cloud(t_children).points.count.equal(1)
+            use_dissolve = Boolean.IndexSwitch(use_dissolve, True, False, index=dissolve)
+
+        with Layout("Save old IDs and attach the branch"):
+            t_tree.points._Temp_Old = Integer("ID")
+
+            tree = GTree.attach(tree, branch=t_tree, id=owner_id, location=location)
+            group_id = tree.id_
+            tree = Cloud(tree)
+
+        # ----- Group code
+
+        with Layout("Set the group Type, Role and Decoration"):
+            sel_id = Integer("ID").equal(group_id)
+
+            tree = GUtil.initialize_node(tree, sel_id, type=node_type, role=role, code=code)
+
+        with Repeat(mesh=t_mesh, iterations=tree.points.count) as rep:
+            old_id = tree.points.sample_index(Integer('Temp Old'), index=rep.iteration)
+            new_id = tree.points.sample_index(Integer('ID'),       index=rep.iteration)
+
+            rep.mesh.faces[Integer("ID").equal(old_id)]._Temp_New = new_id
+
+        with Layout("Set the new ID"):
+            t_mesh = rep.mesh
+            t_mesh.faces._ID = Integer("Temp New")
+
+        with Layout("Dissolve old root"):
+            child_id = GTree.selection_info(tree, Integer("Owner").equal(group_id)).id_
+
+            tree = tree.switch(use_dissolve, GTree.dissolve(tree, group_id))
+            group_id = group_id.switch(use_dissolve, child_id)
+
+        with Layout("Done"):
+            tree.remove_names("Temp*")
+            mesh += t_mesh
+
+        formula = mesh + tree
+        formula = formula.switch(f_is_none, term_init).switch(t_is_none, formula_init)
+        group_id = group_id.switch(f_is_none, 0).switch(t_is_none, -1)
+
+        formula.out("Formula")
+        group_id.out("Id")
+
+    # =============================================================================================================================
+    # Append
+    # =============================================================================================================================
+
+    with GeoNodes("Append", prefix=term_prefix, is_group=True):
+
+        # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+
+        formula = Geometry(None, "Formula")
+        term    = Geometry(None, "Term")
+
+        with Panel("Compile"):
+            compile = Boolean(True, "Compile")
+
+        # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+
+        formula = GUtil.ensure_formula(formula)
+        f_empty = formula.empty_
+
+        term = GUtil.ensure_formula(term)
+        t_empty = term.empty_
+
+        with Layout("Term must has a single child"):
+            term = GUtil.group_children(term)
+
+        with Layout("Place as content if there is space"):
+            single = GUtil.single_group_info(formula).node
+            as_content = single.exists_ & (-single.exists_0)
+            as_content &= macro_type_has_role(single.id, 0)
+
+        as_content = False
+
+        with If(Geometry, as_content) as new_formula:
+            frm = GUtil.join(formula, term, owner_id=single.id)
+            new_id_cont = frm.id_
+            new_formula.option = frm
+
+        with Else(new_formula):
+            frm = GUtil.join(formula, term=term, owner_id=0)
+            new_id_app = frm.id_
+            new_formula.option = frm
+
+        formula = new_formula
+        new_id = new_id_app.switch(as_content, new_id_cont)
+
+        with Layout("Compile"):
+            formula.switch(compile, GComp.main(formula)).out("Formula")
+            new_id.out("Id")
+
+
+    # =============================================================================================================================
+    # Characters
+    # =============================================================================================================================
+
+    with GeoNodes("Characters", prefix=term_prefix, is_group=True):
+
+        formula = Geometry(None, "Formula")
+        chars   = String(None,   "Characters")
+
+        italic = Boolean(False, "Italic")
+        bold   = Boolean(False, "Bold")
+
+        with Panel("Compile"):
+            compile = Boolean(True, "Compile")
+
+        GTerm.append(formula, GChar.characters(chars, italic=italic, bold=bold), compile=compile).node.out()
+
+    # =============================================================================================================================
+    # Decoration
+    # =============================================================================================================================
+
+    with GeoNodes("Decorate", prefix=term_prefix, is_group=True):
+
+        formula = Geometry(None, "Formula")
+        code    = Integer(0, "Code")
+
+        with Panel("Compile"):
+            compile = Boolean(True, "Compile")
+
+        formula = GUtil.group_children(formula, force=False)
+        node_id = formula.id_
+
+        formula = GUtil.insert_owner(formula, id=node_id, type=TYPE_DECO, code=code)
+        node_id = formula.id_
+
+        with Layout("Compile"):
+            formula.switch(compile, GComp.main(formula)).out("Formula")
+            node_id.out("Id")
+
+    # =============================================================================================================================
+    # Exponent
+    # =============================================================================================================================
+
+    with GeoNodes("Indice Exponent", prefix=term_prefix, is_group=True):
+
+        formula  = Geometry(None, "Formula")
+        indice   = Geometry(None, "Indice")
+        exponent = Geometry(None, "Exponent")
+
+        with Panel("Compile"):
+            compile = Boolean(True, "Compile")
+
+        formula = GUtil.group_children(formula, force=False)
+        node_id = formula.id_
+
+        formula = GUtil.insert_owner(formula, id=node_id, type=TYPE_IND_EXP, code=code)
+        group_id = formula.id_
+
+        formula = GUtil.join(formula, indice,   owner_id=group_id, role=ROLE_INDICE)
+        formula = GUtil.join(formula, exponent, owner_id=group_id, role=ROLE_EXPONENT)
+
+        with Layout("Compile"):
+            formula.switch(compile, GComp.main(formula)).out("Formula")
+            group_id.out("Id")
+
+
+
+    return
+
+    # =============================================================================================================================
+    # Group n child nodes from last
+    # =============================================================================================================================
+
+    with GeoNodes("Group", prefix=util_prefix, is_group=True):
+        """ Group terms in a new node.
+
+        The last child nodes are grouped under their common owner.
+
+        The adding process creates a new entry in the tree structure.
+
+        The algorithm is the following:
+        1. Create a new node in the structure:
+           - location : last child i-of the passed 'Id' argument
+           - type : initialized with Type argument
+           - code : initialized with code argument
+        2. Set the created ID as term Faces 'ID' attribute
+        3. Join the mesh and the term
+
+        Arguments
+        ---------
+        - Formula (Mesh + Cloud)
+        - Owner Id (Integer) : owner of the nodes to group
+        - Count (Integer) : number of nodes to group, i.e. the last count child nodes of the owner
+        - Type (Integer) : Type
+        - Decoration > Code (Integer) : decoration code
+        - Decoration > Factor (Float in [0, 1]) : animation factor
+        - Decoration > Option 1 (Boolean) : option 1
+        - Decoration > Option 2 (Boolean) : option 2
+        - Decoration > Parameter (Float) : decoration parameter
+
+        Returns
+        -------
+        - Formula
+        - Id (Integer) : created group id
+        - Valid (Boolean) : creation is successful
+        """
+
+        # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+        formula   = Geometry(None,  "Formula")
+        item_id   = Integer(0,      "Owner Id")
+        count     = Integer(1,      "Count", 1)
+
+        node_type = Integer(0,      "Type")
+        role      = Integer(0,      "Role")
+        deco      = Integer(0,      "Code")
+
+        # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+        mesh = formula.mesh
+        tree = formula.point_cloud
+
+        children_count = GTree.children_count(tree, id=item_id)
+        group_sel = (Integer("Owner").equal(item_id)) & ((Integer("Order") >= children_count - count))
+
+        new_tree = Cloud(GTree.group(tree, selection=group_sel))
+        new_id = new_tree.id_
+        valid = new_tree.valid_
+
+        new_tree = GUtil.initialize_node(tree, valid & Integer("ID").equal(new_id),
+           type=node_type, role=role, deco=deco)
+
+        tree = tree.switch(valid, new_tree)
+
+        (mesh + tree).out("Formula")
+        new_id.out("Id")
+        valid.out("Valid")
+
+
+
+
+    return
+
 
     # -----------------------------------------------------------------------------------------------------------------------------
     # Add
+    # -----------------------------------------------------------------------------------------------------------------------------
 
     with GeoNodes("Add", prefix=build_prefix, is_group=True):
         """ Add a term into a formula.
@@ -1409,11 +2221,12 @@ def build_groups():
         Arguments
         ---------
         - Formula (Mesh + Cloud)
-        - Term (Mesh) : The mesh to add
+        - Term (Geometry) : The mesh or formule to add
         - Owner Id : owner ID where to crate the new node
         - Type (Integer) : node type
         - Code (Integer) : node code
         - Role (Integer) : node role
+        - Decorator > Parameters : see "Build Set Decorator"
 
         Returns
         -------
@@ -1422,12 +2235,14 @@ def build_groups():
         # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
         formula   = Geometry(None, "Formula")
-        term      = Mesh(None, "Term")
+        term      = Geometry(None, "Term")
 
-        owner_id  = Integer(0, "Owner Id")
-        node_type = Integer(0, "Type", hide_value=True)
-        code      = Integer(0, "Code", hide_value=True)
-        role      = Integer(0, "Role", hide_value=True)
+        owner_id  = Integer(0, "Owner Id",      single_value=True)
+        location  = Integer(0, "Location",      single_value=True)
+        node_type = Integer(0, "Type",          single_value=True)
+        code      = Integer(0, "Code",          single_value=True)
+        role      = Integer(0, "Role",          single_value=True)
+        factor    = Float(  1, "Factor", 0, 1,  single_value=True)
 
         # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -1435,97 +2250,181 @@ def build_groups():
         tree = formula.point_cloud
 
         tree = Cloud(GTree.new(tree, id=owner_id, location=0))
+        new_id = tree.id_
         index = tree.index_
 
         term.faces._ID = tree.id_
 
         sel_index = nd.index.equal(index)
-        tree.points[sel_index]._Type = node_type
-        tree.points[sel_index]._Code = code
-        tree.points[sel_index]._Role = role
+        tree.points[sel_index]._Type   = node_type
+        tree.points[sel_index]._Code   = code
+        tree.points[sel_index]._Role   = role
+        tree.points[sel_index]._Factor = factor
 
         mesh += term
 
         (mesh + tree).out("Formula")
+        new_id.out("Id")
+
 
     # -----------------------------------------------------------------------------------------------------------------------------
-    # Group n child nodes from last
+    # Transform a node to a group with the requested type
 
-    with GeoNodes("Group", prefix=build_prefix, is_group=True):
-        """ Group terms in a new node.
-
-        The last child nodes are grouped under their common owner.
-
-        The adding process creates a new entry in the tree structure.
-
-        The algorithm is the following:
-        1. Create a new node in the structure:
-           - location : last child i-of the passed 'Id' argument
-           - type : initialized with Type argument
-           - code : initialized with code argument
-        2. Set the created ID as term Faces 'ID' attribute
-        3. Join the mesh and the term
+    with GeoNodes("Make Group", prefix=build_prefix, is_group=True):
+        """ Transform a node to a group with the requested type.
 
         Arguments
         ---------
-        - Formula (Mesh + Cloud)
-        - Owner Id (Integer) : owner of the nodes to group
-        - Count (Integer) : number of nodes to group, i.e. the last count child nodes of the owner
-        - Type (Integer) : Type
-        - Factor (Float in [0, 1]) : animation factor
-        - Decoration > Code (Integer) : decoration code
-        - Decoration > Option 1 (Boolean) : option 1
-        - Decoration > Option 2 (Boolean) : option 2
-        - Decoration > Parameter (Float) : decoration parameter
-
-        Returns
-        -------
         - Formula
-        - Id (Integer) : created group id
-        - Valid (Boolean) : creation is successful
+        - Node Id (Integer) : target node id
+        - Group Type (Integer) : type of the created group
+        - Role (Integer) : new role for the node in the group
+        - Force (Boolean) : create a group even if condition is already met
         """
 
         # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-        formula   = Geometry(None, "Formula")
-        item_id   = Integer(0, "Owner Id")
-        count     = Integer(1, "Count", 1)
-        node_type = Integer(TYPE_GROUP, "Type")
-        factor    = Float.Factor(1, "Factor", 0, 1)
-
-
-        with Panel("Decoration"):
-            deco    = Integer(0, "Code")
-            option1 = Boolean(False, "Option 1")
-            option2 = Boolean(False, "Option 2")
-            param   = Float(0., "Parameter")
+        formula    = Geometry(None,  "Formula")
+        node_id    = Integer(1,      "Node Id", 1,        single_value=True)
+        group_type = Integer(0,      "Group Type",        single_value=True)
+        role       = Integer(0,      "Node Role",         single_value=True)
+        force      = Boolean(False,  "Force",             single_value=True)
 
         # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
         mesh = formula.mesh
         tree = formula.point_cloud
 
-        children_count = GTree.children_count(tree, id=item_id)
-        group_sel = (Integer("Owner").equal(item_id)) & ((Integer("Order") >= children_count - count))
+        with Layout("The node already matches the required condtion"):
+            id_info = GUtil.id_info(tree, node_id).node
+            go = id_info.type.not_equal(group_type) | force
 
-        new_tree = Cloud(GTree.group(tree, selection=group_sel))
-        new_id = new_tree.id_
-        valid = new_tree.valid_
+        with Layout("Insert a node as owner of the target"):
+            new_tree = Cloud(GTree.insert_owner(tree, id=node_id))
+            new_id = new_tree.id_
 
-        new_tree = macro_init_node(new_tree, valid & Integer("ID").equal(new_id),
-            node_type = node_type,
-            code      = deco,
-            factor    = factor,
-            option_1  = option1,
-            option_2  = option2,
-            param     = param,
-        )
+            sel_group = Integer("ID").equal(new_id)
+            new_tree.points[sel_group]._Type = group_type
 
-        tree = tree.switch(valid, new_tree)
+            sel_node = Integer("ID").equal(node_id)
+            new_tree.points[sel_node]._Role = role
+
+        tree = tree.switch(go, new_tree)
+        new_id = new_id.switch_false(go, node_id)
 
         (mesh + tree).out("Formula")
         new_id.out("Id")
-        valid.out("Valid")
+
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Add Exponent or Indice
+
+    with GeoNodes("Add Indice Exponent", prefix=build_prefix, is_group=True):
+        """ Add exponent
+        """
+
+        # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+        formula   = Geometry(None, "Formula")
+        term      = Geometry(None, "Term")
+        node_id   = Integer(0, "Id")
+        role      = Integer(1, "Role", 1, 4)
+
+        # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+        with Layout("Last Child if Id is not valid"):
+            tree = formula.point_cloud
+
+            last_id = GTree.get_child(tree, 0, -1).id_
+            node_id = node_id.switch(node_id <= 0, last_id)
+
+        with Layout("Insert in a 'Ind Exp' group is necessary"):
+
+            formula = GBuild.make_group(formula, node_id=node_id, group_type=TYPE_IND_EXP, node_role=ROLE_CONTENT)
+            node_id = formula.id_
+
+            formula = GBuild.join(formula, other=term, owner_id=node_id, role=role)
+
+        formula.out("Formula")
+
+
+
+
+
+    # =============================================================================================================================
+    # =============================================================================================================================
+    # DECORATORS
+    #
+    # Decorators are dynamically built meshes.
+    # The decorators are located relatively formula terms: sqrt, sign, arrows
+    # =============================================================================================================================
+    # =============================================================================================================================
+
+
+    # =============================================================================================================================
+    # TWO CONTENTS
+
+
+    # =============================================================================================================================
+    # =============================================================================================================================
+    # Formula Compilation
+    # =============================================================================================================================
+    # =============================================================================================================================
+
+
+
+    # =============================================================================================================================
+    # =============================================================================================================================
+    # Formula building
+    # =============================================================================================================================
+    # =============================================================================================================================
+
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Apply a decorator
+
+    with GeoNodes("Set Decorator", prefix=build_prefix, is_group=True):
+        """ Set decorator parameters
+
+        Arguments
+        ---------
+        - Formula (Mesh + Cloud)
+        - Id (Integer) : id to set
+        - Code (Integer) : node code
+        - Option 1 (Boolean) : option 1
+        - Option 2 (Boolean) : option 2
+        - Parameter (Float) : parameter
+
+        Returns
+        -------
+        - Formula
+        """
+
+        # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+        formula   = Geometry(None, "Formula")
+        node_id   = Float(1, "Id", single_value=True)
+
+        with Panel("Decorator"):
+            code      = Integer(0,      "Code",         single_value=True)
+            factor    = Float.Factor(1, "Factor", 0, 1, single_value=True)
+            option_1  = Boolean(False,  "Option 1",     single_value=True)
+            option_2  = Boolean(False,  "Option 2",     single_value=True)
+            param     = Float(0,        "Parameter",    single_value=True)
+
+        # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+        mesh = formula.mesh
+        tree = formula.point_cloud
+
+        id_sel = Integer("ID").equal(node_id)
+        tree.points[id_sel]._Code     = code
+        tree.points[id_sel]._Factor   = factor
+        tree.points[id_sel]._Option_1 = option_1
+        tree.points[id_sel]._Option_2 = option_2
+        tree.points[id_sel]._Param    = param
+
+        (mesh + tree).out("Formula")
+
+
 
     # =============================================================================================================================
     # =============================================================================================================================
@@ -1581,7 +2480,7 @@ def build_groups():
             term.transform(translation=(4,  rep.y - dims.y_max, 0))
 
             rep.terms += label + term
-            rep.y -= dims.height + 1
+            rep.y -= gnmath.max(1, dims.height) + 1
 
         debug = rep.terms
 
@@ -1616,7 +2515,7 @@ def build_groups():
 
         chars = GChar.characters(link_from='TREE')
 
-        formula = GBuild.add(formula, term=chars, owner_id=0, type=TYPE_GEO)
+        formula = GBuild.add(formula, term=chars, owner_id=0, type=TYPE_REF)
 
         GBuild.compile(formula, link_from='TREE').out("Formula")
 
@@ -1640,20 +2539,19 @@ def build_groups():
         # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
         formula  = Geometry(None, "Formula")
-        what     = Integer.MenuSwitch({'Minus': 0, 'Plus': 1, 'Equal': 2, 'Minus to Plus': 3}, name='Symbol')
-        sign_fac = Float.Factor(1, "Plus Factor", 0, 1, tip="Minus to plus factor")
-        #factor   = Float.Factor(1, "Factor", 0, 1, tip="Animation factor")
+        symbol   = Integer.MenuSwitch({'Minus to Plus': SYMB_SIGN, 'Minus': SYMB_MINUS, 'Plus': SYMB_PLUS, 'Equal': SYMB_EQUAL}, name='Symbol')
+        param    = Float.Factor(1, "Parameter", 0, 1, tip="Minus to plus factor")
 
         # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-        code  = Integer.IndexSwitch(DECO_SIGN, DECO_SIGN, DECO_EQUAL, DECO_SIGN, index=what)
-        param = Float.IndexSwitch(0., 1., 1., sign_fac, index=what)
+        #code  = Integer.IndexSwitch(DECO_SIGN, DECO_SIGN, DECO_EQUAL, DECO_SIGN, index=what)
+        #param = Float.IndexSwitch(0., 1., 1., sign_fac, index=what)
 
         # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-        symbol = GChar.symbol(code=code, parameter=param)
+        symbol = GChar.symbol(symbol=symbol, parameter=param)
 
-        formula = GBuild.add(formula, term=symbol, owner_id=0, type=TYPE_GEO)
+        formula = GBuild.add(formula, term=symbol, owner_id=0, type=TYPE_REF)
 
         GBuild.compile(formula, link_from='TREE').out("Formula")
 
@@ -1748,7 +2646,7 @@ def build_groups():
 
         # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-        formula = GBuild.group(formula, owner_id=0, count=count, code=DECO_BLOCK + code,  option_1=option_1, option_2=option_2, factor=factor)
+        formula = GBuild.group(formula, owner_id=0, count=count, code=DECO_CAT_BLOCK + code,  option_1=option_1, option_2=option_2, factor=factor)
 
         GBuild.compile(formula, link_from='TREE').out("Formula")
 
@@ -1787,7 +2685,7 @@ def build_groups():
         tree = formula.point_cloud
 
         den_info = GTree.get_child(tree, new_id, 1).node
-        tree.points[Integer("ID").equal(den_info.id)]._Role = 1
+        tree.points[Integer("ID").equal(den_info.id)]._Role = ROLE_DENOMINATOR
 
         # ----- Done
 
@@ -1798,7 +2696,7 @@ def build_groups():
     # -----------------------------------------------------------------------------------------------------------------------------
     # Exponent and indice
 
-    with GeoNodes("Exponent Indice", prefix=term_prefix):
+    with GeoNodes("Indice Exponent", prefix=term_prefix):
         """ Add exponent and indice to a content
 
         Arguments
@@ -1818,27 +2716,30 @@ def build_groups():
 
         formula  = Geometry(None, "Formula")
         count    = Integer(1, "Count", 1, tip="Number of terms to group starting from last one")
-        sexp     = String(None, "Exponent")
-        sind     = String(None, "Indice")
+        sbelow   = String(None, "Indice")
+        sabove   = String(None, "Exponent")
         factor   = Float.Factor(1, "Factor", 0, 1, tip="Animation factor")
 
         # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
         # Group the content
 
-        formula = GBuild.group(formula, owner_id=0, count=count, type=TYPE_EXP_IND, factor=factor)
+        formula = GBuild.group(formula, owner_id=0, count=count, type=TYPE_GROUP, factor=factor)
+        group_id = formula.id_
+
+        formula = GBuild.group(formula, owner_id=0, count=1, type=TYPE_IND_EXP, factor=factor)
         new_id = formula.id_
 
-        for i, (s, role) in enumerate([(sexp, 1), (sind, 2)]):
+        for i, (s, role) in enumerate([(sbelow, ROLE_INDICE), (sabove, ROLE_EXPONENT)]):
 
-            with Layout("Exponent" if i == 0 else "Indice"):
+            with Layout("Exponent" if i == ROLE_ABOVE else "Indice"):
 
                 ok = s.length().not_equal(0)
 
                 chars = GChar.characters(chars=s, italic=True)
                 comp_id = chars.id_
 
-                new_formula = GBuild.add(formula, term=chars, owner_id=new_id, type=TYPE_GEO, role=role)
+                new_formula = GBuild.add(formula, term=chars, owner_id=new_id, type=TYPE_REF, role=role)
                 formula = formula.switch(ok, new_formula)
 
         # ----- Done
@@ -1868,27 +2769,32 @@ def build_groups():
 
         formula  = Geometry(None, "Formula")
         count    = Integer(1, "Count", 1, tip="Number of terms to group starting from last one")
-        sfrom    = String(None, "From")
-        sto      = String(None, "To")
+        sbelow   = String(None, "From")
+        sabove   = String(None, "To")
         factor   = Float.Factor(1, "Factor", 0, 1, tip="Animation factor")
 
         # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
         # Group the content
 
-        formula = GBuild.group(formula, owner_id=0, count=count, type=TYPE_SIGMA, factor=factor)
+        formula = GBuild.group(formula, owner_id=0, count=count, type=TYPE_GROUP, factor=factor)
+        content_id = formula.id_
+
+        # Sigma char
+
+        formula = GBuild.group(formula, owner_id=0, count=1, type=TYPE_SIGMA, factor=factor)
         new_id = formula.id_
 
-        for i, (s, role) in enumerate([(sfrom, 1), (sto, 2)]):
+        for i, (s, role) in enumerate([(sbelow, ROLE_INDICE), (sabove, ROLE_EXPONENT)]):
 
-            with Layout("From (Below)" if i == 0 else "To (Above)"):
+            with Layout("From (Below)" if i == ROLE_INDICE else "To (Above)"):
 
                 ok = s.length().not_equal(0)
 
                 chars = GChar.characters(chars=s, italic=True)
                 comp_id = chars.id_
 
-                new_formula = GBuild.add(formula, term=chars, owner_id=new_id, type=TYPE_GEO, role=role)
+                new_formula = GBuild.add(formula, term=chars, owner_id=new_id, type=TYPE_REF, role=role)
                 formula = formula.switch(ok, new_formula)
 
         # ----- Done

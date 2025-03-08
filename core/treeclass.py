@@ -2551,13 +2551,14 @@ class G:
         target = utils.snake_case(self.prefix + name)
 
         for btree in bpy.data.node_groups:
+
             if btree.type != tree_type:
                 continue
 
             if utils.snake_case(btree.name) == target:
                 return self.build_function(btree)
 
-        raise AttributeError(f"Group '{target}' not found")
+        raise AttributeError(f"Group '{self.prefix + name}' not found")
 
 
 class G_OLD:
