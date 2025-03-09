@@ -86,12 +86,15 @@ def build_tree(prefix='Tree'):
     def macro_id_index(tree, node_id):
 
         with Layout("Index of ID"):
-            sel_tree = Cloud(tree.points[Integer("ID").equal(node_id)].separate())
-            exists = sel_tree.points.count.equal(1)._lc("Exists")
-            index = tree.points[Integer("ID").equal(node_id)].attribute_statistic(nd.index).min.to_integer()._lc("Index")
-            index = index.switch_false(exists, -1)
+            new_cloud = Cloud(tree)
+            new_cloud.points._Index = nd.index
+            new_cloud.points[Integer("ID").equal(node_id)].separate()
+            new_cloud = Cloud(new_cloud)
+            exists = new_cloud.points.count.equal(1)._lc("Exists")
+            index = new_cloud.points.sample_index(Integer("Index"), index=0).switch_false(exists, -1)
 
             return index, exists
+
 
     # ----------------------------------------------------------------------------------------------------
     # Index of Explore
@@ -211,14 +214,22 @@ def build_tree(prefix='Tree'):
         # ----------------------------------------------------------------------------------------------------
         # Compute positions
 
+
+        tree.points._Index = nd.index
         with Repeat(tree=tree, y=0, iterations=tree.points.count) as rep:
 
-            info = GTree.explore_info(rep.tree, explore=rep.iteration).node
+            #info = GTree.explore_info(rep.tree, explore=rep.iteration).node
+            sel_node = Cloud(rep.tree).points[Integer("Explore").equal(rep.iteration)].separate()
+            sel_node = Cloud(sel_node)
 
-            x = info.depth
-            y = rep.y.switch(info.order.not_equal(0), rep.y - 1)
+            x          = sel_node.points.sample_index(Integer("Depth"), index=0)
+            node_order = sel_node.points.sample_index(Integer("Order"), index=0)
+            node_index = sel_node.points.sample_index(Integer("Index"), index=0)
 
-            rep.tree[nd.index.equal(info.index)].position = (x, y, 0)
+            #x = info.depth
+            y = rep.y.switch(node_order.not_equal(0), rep.y - 1)
+
+            rep.tree[nd.index.equal(node_index)].position = (x, y, 0)
             rep.y = y
 
         tree = rep.tree
@@ -854,7 +865,7 @@ def build_tree(prefix='Tree'):
 
         branch_info = GTree.selection_info(branch, Integer("Owner").equal(-1)).node
 
-        shift_id = tree_max_id + 1
+        shift_id = gnmath.imax(tree_max_id, branch_max_id) + 1
         with Layout("Shift IDs when necessary"):
 
             with Repeat(branch=branch, owner=Integer("Owner"), iterations=branch.points.count) as rep:

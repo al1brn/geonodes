@@ -51,11 +51,12 @@ from geonodes import *
 GBuild = G("Build")
 GChars = G("Char")
 GTerm  = G("Term")
+GComp  = G("Compile")
 
 
 ALPHA_CHARS    = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
 BLOCK_CHARS    = {'{': '}', '(': ')', '[': ']', '\\{': '\\}', '⟨': '⟩', '‖': '‖'}
-NOT_WORD_CHARS = [' ', '_', '^'] + list(BLOCK_CHARS.keys()) + list(BLOCK_CHARS.values())
+NOT_WORD_CHARS = [' ', '_', '^', '/'] + list(BLOCK_CHARS.keys()) + list(BLOCK_CHARS.values())
 
 BLOCK_CODES    = {'{'  : FORM.DECO_NOTHING,
                     '('  : FORM.DECO_PARENTHESIS,
@@ -71,9 +72,6 @@ FUNCTIONS = [
     'sinh', 'asinh', 'arcsinh', 'cosh', 'acosh', 'arscosh',  'tanh', 'atanh', 'arctanh', 'cotanh', 'acotanh', 'arccotanh',
     'log', 'ln', 'min', 'max']
 
-SINGLE_CONTENTS = {
-    '\\sign': FORM.SYMB_SIGN, '\\plus': FORM.SYMB_MINUS, '\\minus': FORM.SYMB_MINUS,
-    '\\sqrt': FORM.DECO_SQRT}
 
 
 
@@ -82,9 +80,8 @@ SINGLE_CONTENTS = {
 
 class Tex:
 
-
     def __init__(self, s):
-        self.s = s
+        self.s     = s
         self.index = 0
         self.stack = []
 
@@ -120,9 +117,15 @@ class Tex:
         return "   "*len(self.stack)
 
     # ----------------------------------------------------------------------------------------------------
+    # Jump spaces
+
+    def jump_spaces(self):
+        while (self.index < len(self.s) - 1) and (self.s[self.index] == ' '):
+            self.index += 1
+
+    # ----------------------------------------------------------------------------------------------------
     # Next Char
 
-    @property
     def next(self):
         """ Get the next char
 
@@ -136,9 +139,15 @@ class Tex:
         c = self.s[self.index]
         self.index += 1
 
+        # White space
+
+        if c == ' ':
+            self.jump_spaces()
+            return ' '
+
         # Escape
 
-        if c == "\\":
+        elif c == "\\":
 
             # Next char can be { or | for instance
             word = self.s[self.index]
@@ -150,12 +159,11 @@ class Tex:
                     if self.s[self.index] in ALPHA_CHARS:
                         word += self.s[self.index]
                         self.index += 1
-                    # Ignore space after a a keyword
-                    elif self.s[self.index] == ' ':
-                        self.index += 1
-                        break
                     else:
                         break
+                        # Ignore space after a a keyword
+
+                self.jump_spaces()
 
             # Return the symbol if exists
             ret = SYMBOLS.get(word, "\\" + word)
@@ -168,19 +176,17 @@ class Tex:
     # ----------------------------------------------------------------------------------------------------
     # Get the next character without consuming it
 
-    @property
     def get_next(self):
         index = self.index
-        next = self.next
+        next = self.next()
         self.index = index
         return next
 
     # ----------------------------------------------------------------------------------------------------
     # Is the next character a word char
 
-    @property
     def next_is_word(self):
-        n = self.get_next
+        n = self.get_next()
         if n is None:
             return False
         else:
@@ -194,13 +200,15 @@ class Tex:
 
     def token(self):
 
+        self.jump_spaces()
+
         # ----------------------------------------------------------------------------------------------------
         # End of file
         # ----------------------------------------------------------------------------------------------------
 
-        c = self.next
+        c = self.next()
         if c is None:
-            return None, None
+            return None
 
         # ----------------------------------------------------------------------------------------------------
         # Block
@@ -220,66 +228,63 @@ class Tex:
 
             with Layout(title):
                 content = self.parse()
-                return GBuild.join(other=content, code=code), 'FORMULA'
+                if c == '{':
+                    return content
+                else:
+                    return GTerm.join(type=FORM.TYPE_DECO, code=code, content=content, compile=False)
 
         elif c in BLOCK_CHARS.values():
             self.pop(c)
-            return None, None
+            return None
 
         # ----------------------------------------------------------------------------------------------------
-        # Single content
+        # Controls
         # ----------------------------------------------------------------------------------------------------
 
-        elif c in SINGLE_CONTENTS:
+        elif c == "\\sqrt":
+            content = self.parse()
+            return GTerm.join(type=FORM.TYPE_DECO, code=FORM.DECO_SQRT, content=content, compile=False)._lc("Sqrt")
 
-            with Layout("Content Wrapper"):
+        elif c == '\\sum':
+            ind, exp = self.indice_exponent()
+            content = self.token()
+            return GTerm.join(type=FORM.TYPE_SIGMA, content=content, role_1=ind, role_2=exp, compile=False)._lc("Sigma")
 
-                content, cat = self.token()
-                if cat is None:
-                    return None, None
-                elif cat == 'MESH':
-                    content = GBuild.Add(num)
+        elif c == '\\int':
+            ind, exp = self.indice_exponent()
+            content = self.token()
+            return GTerm.join(type=FORM.TYPE_INTEGRAL, content=content, role_1=ind, role_2=exp, compile=False)._lc("Integral")
 
-                code = SINGLE_CONTENTS[c]
+        elif c == "\\frac":
+            numerator   = self.token()
+            denominator = self.token()
 
-                return GBuild.join(None, content, code=code, dissolve='Keep'), 'FORMULA'
+            return GTerm.join(type=FORM.TYPE_FRACTION, content=numerator, role_1=denominator, compile=False)._lc("Fraction")
 
-        # ----------------------------------------------------------------------------------------------------
-        # Fraction
-        # ----------------------------------------------------------------------------------------------------
+        elif c == '\\minus':
+            content = self.enriched_token(self.token())
 
-        elif c == '\\frac':
+            return GTerm.join(type=FORM.TYPE_DECO, content=content, code=FORM.SYMB_SIGN, parameter=0, compile=False)._lc("Minus")
 
-            with Layout("Fraction"):
+        elif c == '\\plus':
+            content = self.enriched_token(self.token())
 
-                with Layout("Fraction"):
-                    with Layout("Numerator"):
-                        num, cat = self.token()
-                        if cat is None:
-                            return None, None
-                        elif cat == 'MESH':
-                            num = GBuild.Add(num)
+            return GTerm.join(type=FORM.TYPE_DECO, content=content, code=FORM.SYMB_SIGN, parameter=100, compile=False)._lc("Plus")
 
-                    with Layout("Denominator"):
-                        den, cat = self.token()
-                        if cat is None:
-                            return None, None
-                        elif cat == 'MESH':
-                            den = GBuild.Add(den)
+        elif c == '\\vec':
+            content = self.enriched_token(self.token())
 
-                    with Layout("Fraction"):
-                        frac = GBuild.join(None, num, role=FORM.ROLE_NUMERATOR,   dissolve='Keep')
-                        frac = GBuild.join(frac, den, role=FORM.ROLE_DENOMINATOR, dissolve='Keep')
+            return GTerm.join(type=FORM.TYPE_DECO, content=content, code=FORM.DECO_ARROW, parameter=0, compile=False)._lc("Plus")
 
-                        return GTerm.fraction(frac), 'FORMULA'
+        elif c == '=':
+            return GTerm.symbol(symbol='=', compile=False)._lc("Equal")
 
-        # ----------------------------------------------------------------------------------------------------
-        # Exponent / indice
-        # ----------------------------------------------------------------------------------------------------
+        elif c == '+':
+            return GTerm.symbol(symbol='Sign', parameter=100, compile=False)._lc("Equal")
 
-        elif c in ['_', '^']:
+        elif c == '-':
+            return GTerm.symbol(symbol='Sign', parameter=0, compile=False)._lc("Equal")
 
-            return c, 'CONTROL'
 
         # ----------------------------------------------------------------------------------------------------
         # Characters
@@ -287,73 +292,106 @@ class Tex:
 
         else:
             word = c
-            while self.next_is_word:
-                word += self.next
+            while self.next_is_word():
+                word += self.next()
 
-            print("WORD", word)
-
-            with Layout(f"Characters '{word}'"):
-                italic = word not in FUNCTIONS
-                return GChars.characters(chars=word, italic=italic), 'MESH'
-
-        assert(False)
+            italic = word not in FUNCTIONS
+            return GTerm.characters(characters=word, italic=italic, compile=False)
 
     # ----------------------------------------------------------------------------------------------------
-    # Token:
-    # - block : {s}, (s), [s]
-    # - \command
-    # - word
+    # Indice and exponent
+
+    def indice_exponent(self):
+
+        ind = None
+        exp = None
+        for i in range(2):
+            c = self.get_next()
+            if c == '_':
+                if ind is None:
+                    c = self.next()
+                    ind = self.token()
+                else:
+                    return ind, exp
+            elif c == '^':
+                if exp is None:
+                    c = self.next()
+                    exp = self.token()
+                else:
+                    return ind, exp
+            else:
+                return ind, exp
+
+        return ind, exp
+
+    # ----------------------------------------------------------------------------------------------------
+    # Enriched token
+    #
+    # With indices and exponent and divided by other token
+
+    def enriched_token(self, token):
+
+        def denominator():
+
+            if self.get_next() != '/':
+                return None
+
+            _ = self.next()
+            den = self.token()
+
+            while True:
+                ind, exp = self.indice_exponent()
+                if (ind is None) and (exp is None):
+                    break
+
+                den = GTerm.join(type=FORM.TYPE_IND_EXP, content=den, role_1=ind, role_2=exp, compile=False)
+
+            return den
+
+        go_on = True
+        while go_on:
+
+            go_on = False
+
+            while True:
+                ind, exp = self.indice_exponent()
+                if (ind is None) and (exp is None):
+                    break
+                token = GTerm.join(type=FORM.TYPE_IND_EXP, content=token, role_1=ind, role_2=exp, compile=False)
+                go_on = True
+
+            while True:
+                den = denominator()
+                if den is None:
+                    break
+
+                token = GTerm.join(type=FORM.TYPE_FRACTION, content=token, role_1=den, compile=False)
+                go_on = True
+
+        return token
+
+    # ----------------------------------------------------------------------------------------------------
+    # Parse : read the tokens and append them in the formula
 
     def parse(self):
 
-        formula = None
+        formula     = None
 
         while not self.eof:
 
-            # ----------------------------------------------------------------------------------------------------
-            # Read the next token
-            # ----------------------------------------------------------------------------------------------------
+            # ----- Read the next token
 
-            token, category = self.token()
-
+            token = self.token()
             if token is None:
                 break
 
-            # ----------------------------------------------------------------------------------------------------
-            # Indice / exponent
-            # ----------------------------------------------------------------------------------------------------
+            # ----- Enrich with indice, exponent and denominator
 
-            elif category == 'CONTROL':
+            token = self.enriched_token(token)
 
-                if token in ['_', '^']:
+            # ----- Append to the formula
 
-                    role = FORM.ROLE_INDICE if token == '_' else FORM.ROLE_EXPONENT
-
-                    with Layout("Below" if token == '_' else "Above"):
-
-                        with Layout("Term to add"):
-                            term, term_cat = self.token()
-                            if term is None:
-                                break
-                            if term_cat == 'MESH':
-                                term = GBuild.add(None, term, type=FORM.TYPE_GEO)
-
-                            formula = GBuild.add_indice_exponent(formula, term, role=role)
-
-                else:
-                    assert(False)
-
-            # ----------------------------------------------------------------------------------------------------
-            # Add to formula
-            # ----------------------------------------------------------------------------------------------------
-
-            else:
-                if category == 'FORMULA':
-                    formula = token if formula is None else GBuild.join(formula, token)
-                elif category == 'MESH':
-                    formula = GBuild.add(formula, token, owner_id=0, type=FORM.TYPE_GEO)
-                else:
-                    assert(False)
+            formula = token if formula is None else GTerm.append(formula, token, compile=False)
 
 
         return formula
@@ -371,7 +409,7 @@ def build_from_latex(latex_string, group_name):
         formula = tex.parse()
 
         with Layout("Compile"):
-            GBuild.compile(formula, link_from='TREE').out("Formula")
+            GComp.main(formula, link_from='TREE').out("Formula")
 
 
 
