@@ -493,15 +493,18 @@ class Face(Socket):
         return node.face_count
 
     @classmethod
-    @property
-    def normal(cls):
+    def normal(cls, legacy_corner_normals=False):
         """ > Node <&Node Normal>
+
+        Arguments
+        ---------
+        - legacy_corner_normals (bool): parameter 'legacy_corner_normals'
 
         Returns
         -------
         - Vector
         """
-        node = Node('Normal', sockets={})
+        node = Node('Normal', sockets={}, legacy_corner_normals=legacy_corner_normals)
         return node._out
 
     def to_points(self, position=None, radius=None):

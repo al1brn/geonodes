@@ -69,11 +69,13 @@ class Object(generated.Object):
         if bsock is None:
             obj = utils.get_blender_resource('OBJECT', value)
             if name is None:
-                name = 'Object'
-            bsock = Tree.new_input('NodeSocketObject', name=name, value=obj, panel=panel,
-                description             = tip,
-                hide_value              = hide_value,
-                hide_in_modifier        = hide_in_modifier,
-            )
+                #name = 'Object' # Before Blender 4.4
+                bsock = Node('Object', object=obj)._out
+            else:
+                bsock = Tree.new_input('NodeSocketObject', name=name, value=obj, panel=panel,
+                    description             = tip,
+                    hide_value              = hide_value,
+                    hide_in_modifier        = hide_in_modifier,
+                )
 
         super().__init__(bsock)

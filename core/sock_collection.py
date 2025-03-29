@@ -69,11 +69,13 @@ class Collection(generated.Collection):
         if bsock is None:
             coll = utils.get_blender_resource('COLLECTION', value)
             if name is None:
-                name = 'Collection'
-            bsock = Tree.new_input('NodeSocketCollection', name=name, value=coll, panel=panel,
-                description             = tip,
-                hide_value              = hide_value,
-                hide_in_modifier        = hide_in_modifier,
-            )
+                # name = 'Collection' # Blender < 4.4
+                bsock = Node('Collection', collection=coll)._out
+            else:
+                bsock = Tree.new_input('NodeSocketCollection', name=name, value=coll, panel=panel,
+                    description             = tip,
+                    hide_value              = hide_value,
+                    hide_in_modifier        = hide_in_modifier,
+                )
 
         super().__init__(bsock)

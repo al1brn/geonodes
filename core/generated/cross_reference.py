@@ -654,6 +654,29 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                          'node_name': 'Euler to Rotation',
                                          'returns': 'OUT',
                                          'signature': '(cls, euler=None)'}]},
+ 'FunctionNodeFindInString': {'String': [{'func_name': 'find_in_string',
+                                          'is_classmethod': False,
+                                          'is_get': False,
+                                          'is_jump': False,
+                                          'is_set': False,
+                                          'node_name': 'Find in String',
+                                          'returns': 'OUT',
+                                          'signature': '(self, search=None)'},
+                                         {'func_name': 'find',
+                                          'is_classmethod': False,
+                                          'is_get': False,
+                                          'is_jump': False,
+                                          'is_set': False,
+                                          'node_name': 'Find in String',
+                                          'returns': 'OUT',
+                                          'signature': '(self, search=None)'}],
+                              'nd': [{'func_name': 'find_in_string',
+                                      'is_classmethod': True,
+                                      'is_get': False,
+                                      'node_name': 'Find in String',
+                                      'returns': 'OUT',
+                                      'signature': '(cls, string=None, '
+                                                   'search=None)'}]},
  'FunctionNodeFloatToInt': {'Float': [{'func_name': 'to_integer',
                                        'is_classmethod': False,
                                        'is_get': False,
@@ -4473,6 +4496,13 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                            'node_name': 'Active Camera',
                                            'returns': 'OUT',
                                            'signature': '(cls)'}]},
+ 'GeometryNodeInputCollection': {'nd': [{'func_name': 'collection',
+                                         'is_classmethod': True,
+                                         'is_get': False,
+                                         'node_name': 'Collection',
+                                         'returns': 'OUT',
+                                         'signature': '(cls, '
+                                                      'collection=None)'}]},
  'GeometryNodeInputCurveHandlePositions': {'Curve': [{'func_name': 'handle_positions',
                                                       'is_classmethod': True,
                                                       'is_get': False,
@@ -5059,26 +5089,35 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                                'name=None)'}]},
  'GeometryNodeInputNormal': {'Face': [{'func_name': 'normal',
                                        'is_classmethod': True,
-                                       'is_get': True,
+                                       'is_get': False,
                                        'is_jump': False,
                                        'is_set': False,
                                        'node_name': 'Normal',
                                        'returns': 'OUT',
-                                       'signature': '(cls)'}],
+                                       'signature': '(cls, '
+                                                    'legacy_corner_normals=False)'}],
                              'Mesh': [{'func_name': 'normal',
                                        'is_classmethod': True,
-                                       'is_get': True,
+                                       'is_get': False,
                                        'is_jump': False,
                                        'is_set': False,
                                        'node_name': 'Normal',
                                        'returns': 'OUT',
-                                       'signature': '(cls)'}],
+                                       'signature': '(cls, '
+                                                    'legacy_corner_normals=False)'}],
                              'nd': [{'func_name': 'normal',
                                      'is_classmethod': True,
-                                     'is_get': True,
+                                     'is_get': False,
                                      'node_name': 'Normal',
                                      'returns': 'OUT',
-                                     'signature': '(cls)'}]},
+                                     'signature': '(cls, '
+                                                  'legacy_corner_normals=False)'}]},
+ 'GeometryNodeInputObject': {'nd': [{'func_name': 'object',
+                                     'is_classmethod': True,
+                                     'is_get': False,
+                                     'node_name': 'Object',
+                                     'returns': 'OUT',
+                                     'signature': '(cls, object=None)'}]},
  'GeometryNodeInputPosition': {'Geometry': [{'func_name': 'position',
                                              'is_get': True,
                                              'is_set': False,
@@ -6401,7 +6440,8 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                           'is_set': False,
                                           'node_name': 'Resample Curve',
                                           'returns': 'OUT',
-                                          'signature': '(self)'},
+                                          'signature': '(self, '
+                                                       'keep_last_segment=True)'},
                                          {'func_name': 'resample_count',
                                           'is_classmethod': False,
                                           'is_get': False,
@@ -6409,7 +6449,8 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                           'is_set': False,
                                           'node_name': 'Resample Curve',
                                           'returns': 'OUT',
-                                          'signature': '(self, count=None)'},
+                                          'signature': '(self, count=None, '
+                                                       'keep_last_segment=True)'},
                                          {'func_name': 'resample_length',
                                           'is_classmethod': False,
                                           'is_get': False,
@@ -6417,7 +6458,8 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                           'is_set': False,
                                           'node_name': 'Resample Curve',
                                           'returns': 'OUT',
-                                          'signature': '(self, length=None)'},
+                                          'signature': '(self, length=None, '
+                                                       'keep_last_segment=True)'},
                                          {'func_name': 'resample',
                                           'is_classmethod': False,
                                           'is_get': False,
@@ -6426,6 +6468,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                           'node_name': 'Resample Curve',
                                           'returns': 'OUT',
                                           'signature': '(self, count=None, '
+                                                       'keep_last_segment=True, '
                                                        "mode='COUNT')"}],
                                'nd': [{'func_name': 'resample_curve',
                                        'is_classmethod': True,
@@ -6435,6 +6478,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                        'signature': '(cls, curve=None, '
                                                     'selection=None, '
                                                     'count=None, length=None, '
+                                                    'keep_last_segment=True, '
                                                     "mode='COUNT')"}]},
  'GeometryNodeReverseCurve': {'Curve': [{'func_name': 'reverse',
                                          'is_classmethod': False,
@@ -8045,6 +8089,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                               'signature': '(self, level=None, '
                                                            'edge_crease=None, '
                                                            'vertex_crease=None, '
+                                                           'limit_surface=None, '
                                                            "boundary_smooth='ALL', "
                                                            "uv_smooth='PRESERVE_BOUNDARIES')"}],
                                     'nd': [{'func_name': 'subdivision_surface',
@@ -8056,6 +8101,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                          'level=None, '
                                                          'edge_crease=None, '
                                                          'vertex_crease=None, '
+                                                         'limit_surface=None, '
                                                          "boundary_smooth='ALL', "
                                                          "uv_smooth='PRESERVE_BOUNDARIES')"}]},
  'GeometryNodeSwitch': {'Socket': [{'func_name': 'Switch',
@@ -8258,7 +8304,6 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                        'node_name': 'Triangulate',
                                        'returns': 'OUT',
                                        'signature': '(self, '
-                                                    'minimum_vertices=None, '
                                                     "ngon_method='BEAUTY', "
                                                     "quad_method='SHORTEST_DIAGONAL')"}],
                              'nd': [{'func_name': 'triangulate',
@@ -8268,7 +8313,6 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                      'returns': 'OUT',
                                      'signature': '(cls, mesh=None, '
                                                   'selection=None, '
-                                                  'minimum_vertices=None, '
                                                   "ngon_method='BEAUTY', "
                                                   "quad_method='SHORTEST_DIAGONAL')"}]},
  'GeometryNodeTrimCurve': {'Curve': [{'func_name': 'trim_factor',

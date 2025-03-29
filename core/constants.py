@@ -371,12 +371,13 @@ MODIFIER_ONLY = (
 # Blender version: 4.3.0
 # Total: GeometryNodeTree: 268, ShaderNodeTree: 99
 #
-# Blender version 4.4.0
+# Blender version: 4.4.0
+# Total: GeometryNodeTree: 271, ShaderNodeTree: 99
+#
 # New Nodes:
 # - Find in String
 # - Collection
 # - Object
-
 
 NODE_NAMES = {
 	'GeometryNodeTree' : {
@@ -389,6 +390,7 @@ NODE_NAMES = {
 		'Combine Transform'            : 'FunctionNodeCombineTransform',
 		'Compare'                      : 'FunctionNodeCompare',
 		'Euler to Rotation'            : 'FunctionNodeEulerToRotation',
+		'Find in String'               : 'FunctionNodeFindInString',
 		'Float to Integer'             : 'FunctionNodeFloatToInt',
 		'Hash Value'                   : 'FunctionNodeHashValue',
 		'Boolean'                      : 'FunctionNodeInputBool',
@@ -487,6 +489,7 @@ NODE_NAMES = {
 		'Index of Nearest'             : 'GeometryNodeIndexOfNearest',
 		'Index Switch'                 : 'GeometryNodeIndexSwitch',
 		'Active Camera'                : 'GeometryNodeInputActiveCamera',
+		'Collection'                   : 'GeometryNodeInputCollection',
 		'Curve Handle Positions'       : 'GeometryNodeInputCurveHandlePositions',
 		'Curve Tilt'                   : 'GeometryNodeInputCurveTilt',
 		'Is Edge Smooth'               : 'GeometryNodeInputEdgeSmooth',
@@ -508,6 +511,7 @@ NODE_NAMES = {
 		'Named Attribute'              : 'GeometryNodeInputNamedAttribute',
 		'Named Layer Selection'        : 'GeometryNodeInputNamedLayerSelection',
 		'Normal'                       : 'GeometryNodeInputNormal',
+		'Object'                       : 'GeometryNodeInputObject',
 		'Position'                     : 'GeometryNodeInputPosition',
 		'Radius'                       : 'GeometryNodeInputRadius',
 		'Scene Time'                   : 'GeometryNodeInputSceneTime',

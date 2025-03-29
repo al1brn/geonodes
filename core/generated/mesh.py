@@ -550,15 +550,18 @@ class Mesh(Socket):
         return node
 
     @classmethod
-    @property
-    def normal(cls):
+    def normal(cls, legacy_corner_normals=False):
         """ > Node <&Node Normal>
+
+        Arguments
+        ---------
+        - legacy_corner_normals (bool): parameter 'legacy_corner_normals'
 
         Returns
         -------
         - Vector
         """
-        node = Node('Normal', sockets={})
+        node = Node('Normal', sockets={}, legacy_corner_normals=legacy_corner_normals)
         return node._out
 
     @classmethod
@@ -1281,7 +1284,7 @@ class Mesh(Socket):
         self._jump(node._out)
         return self._domain_to_geometry
 
-    def subdivision_surface(self, level=None, edge_crease=None, vertex_crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES'):
+    def subdivision_surface(self, level=None, edge_crease=None, vertex_crease=None, limit_surface=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES'):
         """ > Node <&Node Subdivision Surface>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -1295,6 +1298,7 @@ class Mesh(Socket):
         - level (Integer) : socket 'Level' (id: Level)
         - edge_crease (Float) : socket 'Edge Crease' (id: Edge Crease)
         - vertex_crease (Float) : socket 'Vertex Crease' (id: Vertex Crease)
+        - limit_surface (Boolean) : socket 'Limit Surface' (id: Limit Surface)
         - boundary_smooth (str): parameter 'boundary_smooth' in ['PRESERVE_CORNERS', 'ALL']
         - uv_smooth (str): parameter 'uv_smooth' in ['NONE', 'PRESERVE_CORNERS', 'PRESERVE_CORNERS_AND_JUNCTIONS', 'PRESERVE_CORNERS_JUNCTIONS_AND_CONCAVE', 'PRESERVE_BOUNDARIES', 'SMOOTH_ALL']
 
@@ -1304,7 +1308,7 @@ class Mesh(Socket):
         """
         utils.check_enum_arg('Subdivision Surface', 'boundary_smooth', boundary_smooth, 'subdivision_surface', ('PRESERVE_CORNERS', 'ALL'))
         utils.check_enum_arg('Subdivision Surface', 'uv_smooth', uv_smooth, 'subdivision_surface', ('NONE', 'PRESERVE_CORNERS', 'PRESERVE_CORNERS_AND_JUNCTIONS', 'PRESERVE_CORNERS_JUNCTIONS_AND_CONCAVE', 'PRESERVE_BOUNDARIES', 'SMOOTH_ALL'))
-        node = Node('Subdivision Surface', sockets={'Mesh': self, 'Level': level, 'Edge Crease': edge_crease, 'Vertex Crease': vertex_crease}, boundary_smooth=boundary_smooth, uv_smooth=uv_smooth)
+        node = Node('Subdivision Surface', sockets={'Mesh': self, 'Level': level, 'Edge Crease': edge_crease, 'Vertex Crease': vertex_crease, 'Limit Surface': limit_surface}, boundary_smooth=boundary_smooth, uv_smooth=uv_smooth)
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -1330,7 +1334,7 @@ class Mesh(Socket):
         self._jump(node._out)
         return self._domain_to_geometry
 
-    def triangulate(self, minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL'):
+    def triangulate(self, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL'):
         """ > Node <&Node Triangulate>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -1342,7 +1346,6 @@ class Mesh(Socket):
 
         Arguments
         ---------
-        - minimum_vertices (Integer) : socket 'Minimum Vertices' (id: Minimum Vertices)
         - ngon_method (str): parameter 'ngon_method' in ['BEAUTY', 'CLIP']
         - quad_method (str): parameter 'quad_method' in ['BEAUTY', 'FIXED', 'FIXED_ALTERNATE', 'SHORTEST_DIAGONAL', 'LONGEST_DIAGONAL']
 
@@ -1352,7 +1355,7 @@ class Mesh(Socket):
         """
         utils.check_enum_arg('Triangulate', 'ngon_method', ngon_method, 'triangulate', ('BEAUTY', 'CLIP'))
         utils.check_enum_arg('Triangulate', 'quad_method', quad_method, 'triangulate', ('BEAUTY', 'FIXED', 'FIXED_ALTERNATE', 'SHORTEST_DIAGONAL', 'LONGEST_DIAGONAL'))
-        node = Node('Triangulate', sockets={'Mesh': self, 'Selection': self._sel, 'Minimum Vertices': minimum_vertices}, ngon_method=ngon_method, quad_method=quad_method)
+        node = Node('Triangulate', sockets={'Mesh': self, 'Selection': self._sel}, ngon_method=ngon_method, quad_method=quad_method)
         self._jump(node._out)
         return self._domain_to_geometry
 

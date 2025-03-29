@@ -49,6 +49,42 @@ class String(Socket):
         node = Node('Compare', sockets={'A_STR': self, 'B_STR': b}, data_type='STRING', mode='ELEMENT', operation='NOT_EQUAL')
         return node._out
 
+    def find_in_string(self, search=None):
+        """ > Node <&Node Find in String>
+
+        Information
+        -----------
+        - Socket 'String' : self
+
+        Arguments
+        ---------
+        - search (String) : socket 'Search' (id: Search)
+
+        Returns
+        -------
+        - Integer [count_ (Integer)]
+        """
+        node = Node('Find in String', sockets={'String': self, 'Search': search})
+        return node._out
+
+    def find(self, search=None):
+        """ > Node <&Node Find in String>
+
+        Information
+        -----------
+        - Socket 'String' : self
+
+        Arguments
+        ---------
+        - search (String) : socket 'Search' (id: Search)
+
+        Returns
+        -------
+        - Integer [count_ (Integer)]
+        """
+        node = Node('Find in String', sockets={'String': self, 'Search': search})
+        return node._out
+
     def hash_value(self, seed=None):
         """ > Node <&Node Hash Value>
 

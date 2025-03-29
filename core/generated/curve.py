@@ -1021,7 +1021,7 @@ class Curve(Socket):
         node = Node('Points of Curve', sockets={'Curve Index': curve_index, 'Weights': weights, 'Sort Index': sort_index})
         return node._out
 
-    def resample_evaluated(self):
+    def resample_evaluated(self, keep_last_segment=True):
         """ > Node <&Node Resample Curve>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -1032,15 +1032,19 @@ class Curve(Socket):
         - Socket 'Selection' : self[selection]
         - Parameter 'mode' : 'EVALUATED'
 
+        Arguments
+        ---------
+        - keep_last_segment (bool): parameter 'keep_last_segment'
+
         Returns
         -------
         - Curve
         """
-        node = Node('Resample Curve', sockets={'Curve': self, 'Selection': self._sel}, mode='EVALUATED')
+        node = Node('Resample Curve', sockets={'Curve': self, 'Selection': self._sel}, keep_last_segment=keep_last_segment, mode='EVALUATED')
         self._jump(node._out)
         return self._domain_to_geometry
 
-    def resample_count(self, count=None):
+    def resample_count(self, count=None, keep_last_segment=True):
         """ > Node <&Node Resample Curve>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -1054,16 +1058,17 @@ class Curve(Socket):
         Arguments
         ---------
         - count (Integer) : socket 'Count' (id: Count)
+        - keep_last_segment (bool): parameter 'keep_last_segment'
 
         Returns
         -------
         - Curve
         """
-        node = Node('Resample Curve', sockets={'Curve': self, 'Selection': self._sel, 'Count': count}, mode='COUNT')
+        node = Node('Resample Curve', sockets={'Curve': self, 'Selection': self._sel, 'Count': count}, keep_last_segment=keep_last_segment, mode='COUNT')
         self._jump(node._out)
         return self._domain_to_geometry
 
-    def resample_length(self, length=None):
+    def resample_length(self, length=None, keep_last_segment=True):
         """ > Node <&Node Resample Curve>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -1077,16 +1082,17 @@ class Curve(Socket):
         Arguments
         ---------
         - length (Float) : socket 'Length' (id: Length)
+        - keep_last_segment (bool): parameter 'keep_last_segment'
 
         Returns
         -------
         - Curve
         """
-        node = Node('Resample Curve', sockets={'Curve': self, 'Selection': self._sel, 'Length': length}, mode='LENGTH')
+        node = Node('Resample Curve', sockets={'Curve': self, 'Selection': self._sel, 'Length': length}, keep_last_segment=keep_last_segment, mode='LENGTH')
         self._jump(node._out)
         return self._domain_to_geometry
 
-    def resample(self, count=None, mode='COUNT'):
+    def resample(self, count=None, keep_last_segment=True, mode='COUNT'):
         """ > Node <&Node Resample Curve>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -1099,6 +1105,7 @@ class Curve(Socket):
         Arguments
         ---------
         - count (Integer) : socket 'Count' (id: Count)
+        - keep_last_segment (bool): parameter 'keep_last_segment'
         - mode (str): parameter 'mode' in ['EVALUATED', 'COUNT', 'LENGTH']
 
         Returns
@@ -1106,7 +1113,7 @@ class Curve(Socket):
         - Curve
         """
         utils.check_enum_arg('Resample Curve', 'mode', mode, 'resample', ('EVALUATED', 'COUNT', 'LENGTH'))
-        node = Node('Resample Curve', sockets={'Curve': self, 'Selection': self._sel, 'Count': count}, mode=mode)
+        node = Node('Resample Curve', sockets={'Curve': self, 'Selection': self._sel, 'Count': count}, keep_last_segment=keep_last_segment, mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
 
