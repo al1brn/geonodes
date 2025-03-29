@@ -55,7 +55,7 @@ class Matrix(generated.Matrix):
 
     SOCKET_TYPE = 'MATRIX'
 
-    def __init__(self, value=None, name=None, tip=None, panel=None,
+    def __init__(self, value=None, name=None, tip=None, panel="",
         default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False):
         """ Matrix data socket ('MATRIX')
 

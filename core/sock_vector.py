@@ -56,7 +56,7 @@ class Vector(generated.Vector):
 
     SOCKET_TYPE = 'VECTOR'
 
-    def __init__(self, value = (0, 0, 0), name = None, tip = None, panel=None, subtype = 'NONE',
+    def __init__(self, value = (0, 0, 0), name = None, tip = None, panel="", subtype = 'NONE',
         default_attribute="", default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False):
         """ > Socket of type VECTOR
 
@@ -120,7 +120,7 @@ class Vector(generated.Vector):
     # ('VALUE', 'NORMAL', 'POSITION')
 
     @classmethod
-    def Position(cls, name="Position", tip=None, panel=None, hide_in_modifier=True):
+    def Position(cls, name="Position", tip=None, panel="", hide_in_modifier=True):
         """ > Position vector group input
 
         New <#Vector> input with Position as default value (default_input='POSITION')
@@ -135,7 +135,7 @@ class Vector(generated.Vector):
         return cls(value=None, name=name, tip=tip, panel=panel, default_input='POSITION', hide_in_modifier=hide_in_modifier)
 
     @classmethod
-    def Normal(cls, name="Normal", tip=None, panel=None, hide_in_modifier=True):
+    def Normal(cls, name="Normal", tip=None, panel="", hide_in_modifier=True):
         """ > Normal vector group input
 
         New <#Vector> input with Normal as default value (default_input='NORMAL')
@@ -155,7 +155,7 @@ class Vector(generated.Vector):
     # ('NONE', 'TRANSLATION', 'DIRECTION', 'VELOCITY', 'ACCELERATION', 'EULER', 'XYZ')
 
     @classmethod
-    def Translation(cls, value=(0., 0., 0.), name='Translation', tip=None, panel=None,
+    def Translation(cls, value=(0., 0., 0.), name='Translation', tip=None, panel="",
         default_attribute="", default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False):
         """ > Translation Vector group input
 
@@ -170,7 +170,7 @@ class Vector(generated.Vector):
 
 
     @classmethod
-    def Direction(cls, value=(0., 0., 0.), name='Direction', tip=None, panel=None,
+    def Direction(cls, value=(0., 0., 0.), name='Direction', tip=None, panel="",
         default_attribute="", default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False):
         """ > Direction group input
 
@@ -184,7 +184,7 @@ class Vector(generated.Vector):
             default_attribute=default_attribute, default_input=default_input, hide_value=hide_value, hide_in_modifier=hide_in_modifier, single_value=single_value)
 
     @classmethod
-    def Velocity(cls, value=(0., 0., 0.), name='Velocity', tip=None, panel=None,
+    def Velocity(cls, value=(0., 0., 0.), name='Velocity', tip=None, panel="",
         default_attribute="", default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False):
         """ > Velocity group input
 
@@ -198,7 +198,7 @@ class Vector(generated.Vector):
             default_attribute=default_attribute, default_input=default_input, hide_value=hide_value, hide_in_modifier=hide_in_modifier, single_value=single_value)
 
     @classmethod
-    def Acceleration(cls, value=(0., 0., 0.), name='Acceleration', tip=None, panel=None,
+    def Acceleration(cls, value=(0., 0., 0.), name='Acceleration', tip=None, panel="",
         default_attribute="", default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False):
         """ > Acceleration group input
 
@@ -212,7 +212,7 @@ class Vector(generated.Vector):
             default_attribute=default_attribute, default_input=default_input, hide_value=hide_value, hide_in_modifier=hide_in_modifier, single_value=single_value)
 
     @classmethod
-    def Euler(cls, value=(0., 0., 0.), name='Euler', tip=None, panel=None,
+    def Euler(cls, value=(0., 0., 0.), name='Euler', tip=None, panel="",
         default_attribute="", default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False):
         """ > Euler group input
 
@@ -226,7 +226,7 @@ class Vector(generated.Vector):
             default_attribute=default_attribute, default_input=default_input, hide_value=hide_value, hide_in_modifier=hide_in_modifier, single_value=single_value)
 
     @classmethod
-    def XYZ(cls, value=(0., 0., 0.), name='XYZ', tip=None, panel=None,
+    def XYZ(cls, value=(0., 0., 0.), name='XYZ', tip=None, panel="",
         default_attribute="", default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False):
         """ > XYZ group input
 

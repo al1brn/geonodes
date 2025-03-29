@@ -445,7 +445,7 @@ def build_debug():
 class V4:
     """ This class provides help to handle the four V4 components names x, y, z, w
     """
-    def __init__(self, *values, panel=None, single_value=False):
+    def __init__(self, *values, panel="", single_value=False):
 
         if len(values) == 0:
             a = [0]*4
@@ -489,8 +489,8 @@ class V4:
         for v, label in zip(self, "xyzw"):
             v.out(label, **props)
 
-    def args(self, panel=None):
-        if panel is None:
+    def args(self, panel=""):
+        if panel == "":
             name = ""
         else:
             name = utils.snake_case(panel) + '_'

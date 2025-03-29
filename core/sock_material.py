@@ -53,7 +53,7 @@ class Material(Socket):
 
     SOCKET_TYPE = 'MATERIAL'
 
-    def __init__(self, value=None, name=None, tip=None, panel=None, hide_value=False, hide_in_modifier=False):
+    def __init__(self, value=None, name=None, tip=None, panel="", hide_value=False, hide_in_modifier=False):
         """ Class Material data socket
 
         Node <&Node Material>

@@ -293,7 +293,12 @@ class Socket(NodeCache, PropLocker):
         if i_socket is None:
             return ""
         else:
-            return i_socket.parent.name
+            if i_socket.parent.name == "":
+                return ""
+
+            #return i_socket.parent.name
+            interface = self._node._tree._interface
+            return interface.get_socket_panel_path(i_socket.identifier, python=False)
 
     # ----------------------------------------------------------------------------------------------------
     # Interface socket properties
@@ -315,7 +320,7 @@ class Socket(NodeCache, PropLocker):
     # Get a group input from its name and panel
 
     @classmethod
-    def Input(cls, name: str, panel: str | None = None):
+    def Input(cls, name: str, panel: str = ""):
         """ Get an group input from its name and panel
 
         This constructor is used to get an tree input socket which has been previously created.
@@ -353,10 +358,10 @@ class Socket(NodeCache, PropLocker):
         """
         tree = Tree.current_tree
         #item = tree._interface.get_in_socket(name, panel, halt=True)
-        if panel is None:
-            item = tree._interface.by_name('INPUT', name, as_argument=False, halt=True)
+        if panel == "":
+            item = tree._interface.get_socket('INPUT', name, halt=True)
         else:
-            item = tree._interface.by_name('INPUT', panel + ' > ' + name, as_argument = False, halt=True)
+            item = tree._interface.get_socket('INPUT', panel + ' > ' + name, halt=True)
 
         return cls(tree.input_node[item.identifier])
 
@@ -649,7 +654,7 @@ class Socket(NodeCache, PropLocker):
         return geo_class
 
     @classmethod
-    def MenuSwitch(cls, items={'A': None, 'B': None}, menu=0, name="Menu", tip=None, panel=None,
+    def MenuSwitch(cls, items={'A': None, 'B': None}, menu=0, name="Menu", tip=None, panel="",
         hide_value=False, hide_in_modifier=False, single_value=False):
         """ > Node <&Node Menu Switch>
 
@@ -678,7 +683,7 @@ class Socket(NodeCache, PropLocker):
         - menu (int or str) : index or name of the default value
         - name (str = 'Menu') : name of the group input socket
         - tip (str = None) : user tip
-        - panel (str = None) : panel name (overrides tree panel if exists)
+        - panel (str = "") : panel name
         - hide_value (bool = False) : Hide Value option
         - hide_in_modifier (bool = False) : Hide in Modifier option
         - single_value (bool = False) : Single Value option
@@ -701,7 +706,7 @@ class Socket(NodeCache, PropLocker):
         if isinstance(menu, int):
             menu = list(items.keys())[menu]
 
-        menu_socket = Tree.new_input('NodeSocketMenu', name=name, value=None,
+        menu_socket = Tree.new_input('NodeSocketMenu', name=name, value=None, panel=panel,
             description             = tip,
             hide_value              = hide_value,
             hide_in_modifier        = hide_in_modifier,
@@ -809,7 +814,7 @@ class Socket(NodeCache, PropLocker):
     # -----------------------------------------------------------------------------------------------------------------------------
     # Method versions
 
-    def menu_switch(self, self_name='A', items={'B': None}, menu=0, name="Menu", tip=None, panel=None,
+    def menu_switch(self, self_name='A', items={'B': None}, menu=0, name="Menu", tip=None, panel="",
         hide_value=False, hide_in_modifier=False, single_value=False):
         """ > Node <&Node Menu Switch>
 
@@ -840,6 +845,7 @@ class Socket(NodeCache, PropLocker):
         - menu (int or str) : index or name of the default value
         - name (str = 'Menu') : name of the group input socket
         - tip (str = None) : user tip
+        - panel (str = "") : panel
 
         Returns
         -------

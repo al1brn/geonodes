@@ -52,7 +52,7 @@ class Image(generated.Image):
 
     SOCKET_TYPE = 'IMAGE'
 
-    def __init__(self, value=None, name=None, tip=None, panel=None,
+    def __init__(self, value=None, name=None, tip=None, panel="",
         hide_value=False, hide_in_modifier=False):
         """ Class Image data socket
 

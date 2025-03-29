@@ -160,7 +160,7 @@ class Geometry(generated.Geometry, GeoBase):
 
     SOCKET_TYPE = 'GEOMETRY'
 
-    def __init__(self, value=None, name=None, tip=None, panel=None,
+    def __init__(self, value=None, name=None, tip=None, panel="",
         hide_value=False, hide_in_modifier=False):
         """ Socket of type 'GEOMETRY'.
 

@@ -52,7 +52,7 @@ class Collection(generated.Collection):
 
     SOCKET_TYPE = 'COLLECTION'
 
-    def __init__(self, value=None, name=None, tip=None, panel=None,
+    def __init__(self, value=None, name=None, tip=None, panel="",
         hide_value=False, hide_in_modifier=False):
         """ Class Collection data socket
 

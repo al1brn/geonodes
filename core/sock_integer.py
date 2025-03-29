@@ -53,7 +53,7 @@ class Integer(generated.Integer):
 
     SOCKET_TYPE = 'INT'
 
-    def __init__(self, value=0, name=None, min=None, max=None, tip=None, panel=None, subtype='NONE',
+    def __init__(self, value=0, name=None, min=None, max=None, tip=None, panel="", subtype='NONE',
         default_attribute="", default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False):
 
         """ > Socket of type INTEGER
@@ -116,7 +116,7 @@ class Integer(generated.Integer):
     # ('VALUE', 'INDEX', 'ID_OR_INDEX')
 
     @classmethod
-    def Index(cls, name="Index", tip=None, panel=None, hide_in_modifier=True):
+    def Index(cls, name="Index", tip=None, panel="", hide_in_modifier=True):
         """ > Index Integer group input
 
         New <#Integer> input with Index as default value (default_input='INDEX')
@@ -131,7 +131,7 @@ class Integer(generated.Integer):
         return cls(value=None, name=name, tip=tip, panel=panel, default_input='INDEX', hide_in_modifier=hide_in_modifier)
 
     @classmethod
-    def IdOrIndex(cls, name="ID or Index", tip=None, panel=None, hide_in_modifier=True):
+    def IdOrIndex(cls, name="ID or Index", tip=None, panel="", hide_in_modifier=True):
         """ > ID or Index Integer group input
 
         New <#Integer> input with 'ID or Index' as default value (default_input='ID_OR_INDEX')
@@ -150,7 +150,7 @@ class Integer(generated.Integer):
     # ('NONE', 'PERCENTAGE', 'FACTOR')
 
     @classmethod
-    def Percentage(cls, value=0, name='Percentage', min=0, max=100, tip=None, panel=None,
+    def Percentage(cls, value=0, name='Percentage', min=0, max=100, tip=None, panel="",
         default_attribute="", default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False):
         """ > Integer percentage group input
 
@@ -165,7 +165,7 @@ class Integer(generated.Integer):
             panel=panel)
 
     @classmethod
-    def Factor(cls, value=0, name='Factor', min=0, max=100, tip=None, panel=None,
+    def Factor(cls, value=0, name='Factor', min=0, max=100, tip=None, panel="",
         default_attribute="", default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False):
         """ > Integer factor group input
 

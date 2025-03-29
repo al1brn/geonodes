@@ -45,6 +45,7 @@ updates
 - update :   2024/09/04
 - update :   2025/01/12
 - update :   2025/01/18 # G as dynamic class
+- update :   2025/03/27 # Blender 4.4 : panels can be nested
 """
 
 __author__ = "Alain Bernard"
@@ -136,10 +137,10 @@ class Layout:
 # Layout
 
 class Panel:
-    def __init__(self, name: str, tip="", closed_by_default=False):
+    def __init__(self, name: str, tip: str = "", default_closed: bool = False):
         """ Socket panel
 
-        All group input and output sockets will be created within the current panel
+        All group input and output sockets an panels will be created within the current panel
 
         ``` python
         with GeoNodes("Layout Demo"):
@@ -151,6 +152,9 @@ class Panel:
                 a = Float(10, "Float Socket")
                 b = Float(20, "Another Float Socket")
 
+                with Panel("Sub Panel"):
+                    c = Color(None, "Color")
+
             with Panel("Second Panel"):
                 i = Integer(1, "Integer Socket")
                 j = Integer(20 "Another Integer Socket")
@@ -158,12 +162,14 @@ class Panel:
 
         Arguments
         ---------
-        - name : Panel title
+        - name :panel title
+        - tip : panel description
+        - default_closed : closed by default
         """
         self.tree = Tree.current_tree
         self.name = name
 
-        self.tree._interface.create_panel(name=name, tip=tip, closed_by_default=closed_by_default)
+        self.tree._interface.create_panel(name=name, tip=tip, default_closed=default_closed, panel=self.tree.current_panel)
 
         self.push()
 
@@ -291,7 +297,7 @@ class Tree:
         self._interface = None
         if self._is_group or tree_type == 'GeometryNodeTree':
             self._interface = TreeInterface(self._btree)
-            self._interface.set_tip_delete()
+            self._interface.mark_for_deletion()
 
         # ----- Random generator for random colors
 
@@ -683,17 +689,23 @@ class Tree:
 
     @property
     def current_panel(self):
-        if len(self._panels):
-            return self._panels[-1]
+        return " > ".join([name for name in self._panels])
+
+    def full_panel(self, panel=""):
+        current_panel = self.current_panel
+        if panel == "":
+            return current_panel
+        elif current_panel == "":
+            return panel
         else:
-            return ""
+            return current_panel + ' > ' + panel
 
     # ----------------------------------------------------------------------------------------------------
     # Get the socket panel
 
-    def get_socket_panel(self, socket):
+    def get_socket_panel(self, socket, as_argument):
         bsocket = utils.get_bsocket(socket)
-        return self._interface.by_identifier(bsocket.identifier).parent.name
+        return self._interface.get_socket_panel_path(bsocket.identifier, python=as_argument)
 
     # ----------------------------------------------------------------------------------------------------
     # Get the existing sockets indexed by the full name (including the panel name)
@@ -708,7 +720,7 @@ class Tree:
 
             if (bl_idname is None) or (i_socket.socket_type == bl_idname):
                 label = bsocket.name if bsocket.label == "" else bsocket.label
-                keys.append(utils.snake_case(self.get_socket_panel(bsocket) + '_' + label))
+                keys.append(utils.snake_case(self.get_socket_panel(bsocket, as_argument=False) + '_' + label))
                 socks.append(bsocket)
 
         return {key: bsocket for key, bsocket in zip(utils.ensure_uniques(keys, single_digit=True), socks)}
@@ -746,7 +758,7 @@ class Tree:
     # Create a new input socket
 
     @classmethod
-    def new_input(cls, bl_idname, name, value=None, panel=None, force_create=False, **props):
+    def new_input(cls, bl_idname, name, value=None, panel="", force_create=False, **props):
         """ Create a new input socket.
 
         This is an **input socket** of the Tree, hence an **output socket** of the <&Group Input> node.
@@ -756,7 +768,7 @@ class Tree:
             - bl_idname (str) : socket bl_idname
             - name (str): Socket name
             - value (Any = None) : Default value
-            - panel (str = None) : Panel to place the socket in
+            - panel (str = "") : Panel to place the socket in
             - force_create (bool = False) : create the socket even if an homonym exists
             - props : properties specific to interface socket
 
@@ -774,10 +786,9 @@ class Tree:
         # ----------------------------------------------------------------------------------------------------
         # Get or create the socket
 
-        if panel is None:
-            panel = tree.current_panel
+        panel = tree.full_panel(panel)
 
-        i_socket, set_value = tree._interface.get_create_socket('INPUT', name, bl_idname, panel=panel, force_create=force_create)
+        i_socket, set_value = tree._interface.create_socket('INPUT', name, bl_idname, panel=panel, force_create=force_create)
         out_socket = input_node[i_socket.identifier]
 
         # ----------------------------------------------------------------------------------------------------
@@ -830,15 +841,16 @@ class Tree:
     # --------------------------------------------------------------------------------
     # Create a new output socket
 
-    def new_output(self, bl_idname, name, panel=None, **props):
+    def new_output(self, bl_idname, name, panel="", **props):
         """ Create a new output socket.
 
         This is an **output socket** of the Tree, hence an input socket of the <&Group Output> node.
 
         Arguments
         ---------
-            - bl_idname (str) : socket bl_idname
-            - name (str) : Socket name
+        - bl_idname (str) : socket bl_idname
+        - name (str) : Socket name
+        - panel (str = "") : Panel name
 
         Returns
         -------
@@ -852,11 +864,10 @@ class Tree:
         # ----------------------------------------------------------------------------------------------------
         # Get or create
 
-        if panel is None:
-            panel = self.current_panel
+        panel = self.full_panel(panel)
 
         socket_type, subtype = constants.SOCKET_SUBTYPES[bl_idname]
-        io_socket, created = self._interface.get_create_socket('OUTPUT', name, socket_type, panel=panel)
+        io_socket, created = self._interface.create_socket('OUTPUT', name, socket_type, panel=panel)
         if subtype is not None and 'subtype' not in props:
             io_socket.subtype = subtype
 
@@ -880,14 +891,14 @@ class Tree:
     # Create a new input socket from an existing node input socket
 
     @classmethod
-    def new_input_from_input_socket(cls, input_socket, name=None, panel=None, force_create=False):
+    def new_input_from_input_socket(cls, input_socket, name=None, panel="", force_create=False):
         """ Create a new group input socket from an existing input socket.
 
         Arguments
         ---------
         - input_socket (socket) : a node input _insocket
         - name (str = None) : name of the group input socket to create
-        - panel (str = None) : name of the panel
+        - panel (str = "") : name of the panel
         - force_create (bool = False) : create even if a socket with the same name exists
 
         Returns
@@ -913,8 +924,11 @@ class Tree:
         if hasattr(bsocket.node, 'node_tree'):
             interf = TreeInterface(bsocket.node.node_tree)
             i_source = interf.by_identifier(bsocket.identifier)
-            if panel is None:
-                panel = i_source.parent.name
+            source_panel = interf.get_parent_panel(bsocket.identifier, as_argument=False)
+            if panel != "":
+                panel = source_panel
+            elif source_panel != "":
+                panel = source_panel + ' > ' + panel
 
         # ----------------------------------------------------------------------------------------------------
         # Create the new socket and link it
@@ -938,19 +952,102 @@ class Tree:
     # -----------------------------------------------------------------------------------------------------------------------------
     # Link two nodes
 
-    def link_nodes(self, from_node, to_node, include=None, exclude=[], create=True, panel=None):
+    def link_nodes(self, from_node, to_node, include=None, exclude=[], create=True, panel=""):
         """ Link two nodes
 
         If from_node is a Group Input node, the necessary sockets can be created if 'create' argument is True.
 
         Arguments
         ---------
-        - from_node : the node to get the outputs from
+        - from_node : the node to get the outputs from (i.e. tree Input Node)
         - to_node : the node to plug into
         - include (list = None) : connect only the sockets in the list (or panels)
         - exclude (list = []) : exclude sockets in this list (or panels)
         - create : create tree input sockets  (i.e. node output sockets) in from_node if it is a 'Group Input Node'
-        - panel : panel name to create, use tree default name if None
+        - panel (str = ""): panel name to create, use tree default name if None
+        """
+
+        # ----------------------------------------------------------------------------------------------------
+        # If from group input, we can use TreeInterface
+
+        if from_node._bnode.bl_idname == 'NodeGroupInput':
+            from_interface = from_node._tree._interface
+            from_interface.create_from_node(node=to_node._bnode, include=include, exclude=exclude, create=create, input_node=from_node._bnode, panel=panel)
+            return
+
+        # ----------------------------------------------------------------------------------------------------
+        # We feed from a node which is not a Group Node
+
+        # ----- The available output sockets
+
+        counters = {}
+        out_sockets = {}
+        for out_socket in from_node._bnode.outputs:
+            if not out_socket.enabled:
+                continue
+
+            name = out_socket.name if (out_socket.label is None or out_socket.label == "") else out_socket.label
+            name = utils.snake_case(name)
+            if name in counters:
+                rank = counters[name]
+                counters[name] += 1
+                name += f"_{rank}"
+            else:
+                rank = 0
+                counters[name] = 1
+
+            out_sockets[name] = out_socket
+
+        # ----- Loop on the input sockets
+
+        counters = {}
+        for in_socket in to_node._bnode.inputs:
+            if not in_socket.enabled:
+                continue
+
+            # ----- Rank of the name
+
+            name = in_socket.name if (in_socket.label is None or in_socket.label == "") else in_socket.label
+            name = utils.snake_case(name)
+            if name in counters:
+                rank = counters[name]
+                counters[name] += 1
+                name += f"_{rank}"
+            else:
+                rank = 0
+                counters[name] = 1
+
+            if name not in out_sockets:
+                continue
+
+            # ----- In include or exclude
+
+            if (include is not None) and (name not in include):
+                continue
+            if name in exclude:
+                continue
+
+            # ----- We can link
+
+            self._btree.links.new(in_socket, out_sockets[name])
+
+
+    # -----------------------------------------------------------------------------------------------------------------------------
+    # Link two nodes
+
+    def link_nodes_OLD(self, from_node, to_node, include=None, exclude=[], create=True, panel=""):
+        """ Link two nodes
+
+        If from_node is a Group Input node, the necessary sockets can be created if 'create' argument is True.
+
+        Arguments
+        ---------
+        - from_node : the node to get the outputs from (i.e. tree Input Node)
+        - to_node : the node to plug into
+        - include (list = None) : connect only the sockets in the list (or panels)
+        - exclude (list = []) : exclude sockets in this list (or panels)
+        - create : create tree input sockets  (i.e. node output sockets) in from_node if it is a 'Group Input Node'
+        - panel (str = "") : panel name to create, use tree default name if None
         """
 
         # ----------------------------------------------------------------------------------------------------
@@ -1061,6 +1158,7 @@ class Tree:
 
                 # Not to reuse in case to_nodes have homonyms
                 linked_ids.append(from_socket._bsocket.identifier)
+
 
     # =============================================================================================================================
     # Create a node which contains a python value
@@ -1543,7 +1641,7 @@ class Node:
 
         if self._is_group_node:
             interface = TreeInterface(self._bnode.node_tree)
-            i_sockets = interface.get_unique_names(in_out, as_argument=as_argument)
+            i_sockets = interface.get_sockets_names(in_out, python=as_argument)
             return {name: self.by_identifier(in_out, i_socket.identifier) for name, i_socket in i_sockets.items()}
 
         # ---- Not a group
@@ -1778,7 +1876,7 @@ class Node:
             self[socket_name] = socket_value
 
     # =============================================================================================================================
-    # Returns the first enabled output socket
+    # List of socket identifiers from names
 
     def identified_bsockets(self, in_out, names=None):
         """ Returns a list of socket identifiers from names
@@ -1794,10 +1892,11 @@ class Node:
         - in_out (str) : str in ('INPUT', 'OUTPUT')
         - names (list of strs) : the names to convert
         """
-
         assert(in_out in ('INPUT', 'OUTPUT'))
 
-        # Full dict
+        # ---------------------------------------------------------------------------
+        # The list of enabled sockets
+
         bsockets = self._bnode.inputs if in_out == 'INPUT' else self._bnode.outputs
         sockets_dict = {}
         for bsocket in bsockets:
@@ -1808,31 +1907,33 @@ class Node:
         if names is None:
             return sockets_dict
 
-        # Normalize
         if isinstance(names, str):
             names = [names]
 
-        # Interface
+        result = {}
+
+        # ---------------------------------------------------------------------------
+        # If the node is a Group, we use interface
+
         interface = self._tree_interface
-
-        # ----------------------------------------------------------------------------------------------------
-        # Extract the panels from the names
-
         if interface is not None:
-            old_names = names
-            names = []
 
-            for name in old_names:
-                panel = interface.get_panel(name, halt=False)
-                if panel is None:
-                    names.append(name)
-                else:
-                    uniques = interface.get_unique_names(in_out, as_argument=False, include_homonyms='NO')
-                    for unique_name, socket in uniques.items():
-                        if socket.parent == panel:
-                            names.append(unique_name)
+            py_names = [interface.user_name_to_python(name) for name in names]
+            unique_names = interface.get_sockets_names(in_out, python=True)
 
-        # ----------------------------------------------------------------------------------------------------
+            for py_name in py_names:
+                i_socket = unique_names.get(py_name)
+                if i_socket is not None:
+                    result[i_socket.identifier] = bsockets[identifier]
+
+            for identifier in bsockets.keys():
+                if identifier in names:
+                    result[identifier] = bsockets[identifier]
+
+            return result
+
+        # ---------------------------------------------------------------------------
+        # The node is not a group
         # Names can contain identifier, name or argument
         # We build a dictionary:
         # identifier -> list of possible names
@@ -2080,7 +2181,7 @@ class Node:
 
             elif isinstance(value, (tuple, list)):
                 name = value[0]
-                panel = value[1] if len(value) == 2 else None
+                panel = value[1] if len(value) == 2 else ""
                 self.link_from(node='TREE', include=[name], create=True, panel=panel)
                 #self._tree.link_nodes(self._tree.input_node, self, include=name, create=True, panel=panel)
 
@@ -2094,7 +2195,7 @@ class Node:
 
 
     # =============================================================================================================================
-    # Utilities
+    # Plug selection socket
 
     def plug_selection(self, selection):
         if selection is None:
@@ -2104,7 +2205,8 @@ class Node:
                 self.plug_value_into_socket(selection, bsocket)
                 return
 
-    # -----------------------------------------------------------------------------------------------------------------------------
+    # =============================================================================================================================
+    # Link from
     # Plug another node into self
     # If the other node is None, the Tree input node is taken
     # Create is only valid in this case
@@ -2113,10 +2215,9 @@ class Node:
             node:      'Node | Tree | None | str' = 'TREE',
             include:   list[str] | str | None = None,
             exclude:   list[str] | str = [],
-            #rename:    dict[str: str] = {},
             arguments: dict['name': 'value'] = {},
             create:    bool = True,
-            panel:     str | None = None):
+            panel:     str = ""):
         """ Plug the output sockets of a node into the input sockets of the node.
 
         This method is used to connect several sockets in a compact syntax.
@@ -2506,7 +2607,7 @@ class G:
 
         # ----- Input node
 
-        socks, homos = TreeInterface(btree).get_unique_names('INPUT', as_argument=True, include_homonyms='SEPARATE')
+        socks, homos = TreeInterface(btree).get_sockets_names('INPUT', python=True, homonyms='SEPARATE')
 
         sock_names = list(socks.keys())
         sock_names.extend(list(homos.keys()))
@@ -2519,7 +2620,6 @@ class G:
 
         s = f"def {func_name}(" + ", ".join(header) + "):\n"
         s += f"\treturn Group('{btree.name}', " + ", ".join(call) + ")._out\n\n"
-        #s += f"G.{func_name} = {func_name}\n"
         s += f"f = {func_name}\n"
 
         # DEBUG
@@ -2535,6 +2635,7 @@ class G:
         if G.VERBOSE or self.verbose:
             print('-'*100)
             print(f"Function created ({f}):\n    {func_name}(" + ", ".join([sname for sname in sock_names if sname != 'link_from']) + ")")
+            print()
             print(s)
             print()
 

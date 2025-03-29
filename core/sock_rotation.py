@@ -57,7 +57,7 @@ class Rotation(generated.Rotation):
 
     SOCKET_TYPE = 'ROTATION'
 
-    def __init__(self, value=(0., 0., 0.), name=None, tip=None, panel=None,
+    def __init__(self, value=(0., 0., 0.), name=None, tip=None, panel="",
         hide_value=False, hide_in_modifier=False, single_value=False):
         """ > Socket of type ROTATION
 

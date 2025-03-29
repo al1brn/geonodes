@@ -58,7 +58,7 @@ class Boolean(generated.Boolean):
 
     SOCKET_TYPE = 'BOOLEAN'
 
-    def __init__(self, value=False, name =None, tip=None, panel=None,
+    def __init__(self, value=False, name =None, tip=None, panel="",
         default_attribute="", hide_value=False, layer_selection=False, hide_in_modifier=False, single_value=False):
         """ Socket of type BOOLEAN
 

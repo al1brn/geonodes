@@ -59,7 +59,7 @@ class Color(generated.Color):
 
     SOCKET_TYPE = 'RGBA'
 
-    def __init__(self, value=(0., 0., 0., 1.), name=None, tip=None, panel=None,
+    def __init__(self, value=(0., 0., 0., 1.), name=None, tip=None, panel="",
         default_attribute="", hide_value=False, hide_in_modifier=False, single_value=False):
         """ Socket of type COLOR (RGBA)
 

@@ -370,6 +370,13 @@ MODIFIER_ONLY = (
 #
 # Blender version: 4.3.0
 # Total: GeometryNodeTree: 268, ShaderNodeTree: 99
+#
+# Blender version 4.4.0
+# New Nodes:
+# - Find in String
+# - Collection
+# - Object
+
 
 NODE_NAMES = {
 	'GeometryNodeTree' : {

@@ -65,7 +65,7 @@ class Float(generated.Float):
 
     SOCKET_TYPE = 'VALUE'
 
-    def __init__(self, value=0., name=None, min=None, max=None, tip=None, panel=None, subtype='NONE',
+    def __init__(self, value=0., name=None, min=None, max=None, tip=None, panel="", subtype='NONE',
         default_attribute="", hide_value=False, hide_in_modifier=False, single_value=False):
         """ > Socket of type VALUE
 
@@ -128,7 +128,7 @@ class Float(generated.Float):
      # ('NONE', 'PERCENTAGE', 'FACTOR', 'ANGLE', 'TIME', 'TIME_ABSOLUTE', 'DISTANCE', 'WAVELENGTH', 'COLOR_TEMPERATURE', 'FREQUENCY')
 
     @classmethod
-    def Percentage(cls, value=0., name='Percentage', min=0, max=100, tip=None, panel=None,
+    def Percentage(cls, value=0., name='Percentage', min=0, max=100, tip=None, panel="",
         default_attribute="", hide_value=False, hide_in_modifier=False, single_value=False):
         """ > Percentage group input
 
@@ -142,7 +142,7 @@ class Float(generated.Float):
             default_attribute=default_attribute, hide_value=hide_value, hide_in_modifier=hide_in_modifier, single_value=single_value)
 
     @classmethod
-    def Factor(cls, value=0., name='Factor', min=0, max=1, tip=None, panel=None,
+    def Factor(cls, value=0., name='Factor', min=0, max=1, tip=None, panel="",
         default_attribute="", hide_value=False, hide_in_modifier=False, single_value=False):
         """ > Factor group input
 
@@ -156,7 +156,7 @@ class Float(generated.Float):
             default_attribute=default_attribute, hide_value=hide_value, hide_in_modifier=hide_in_modifier, single_value=single_value)
 
     @classmethod
-    def Angle(cls, value=0., name='Angle', min=None, max=None, tip=None, panel=None,
+    def Angle(cls, value=0., name='Angle', min=None, max=None, tip=None, panel="",
         default_attribute="", hide_value=False, hide_in_modifier=False, single_value=False):
         """ > Angle group input
 
@@ -170,7 +170,7 @@ class Float(generated.Float):
             default_attribute=default_attribute, hide_value=hide_value, hide_in_modifier=hide_in_modifier, single_value=single_value)
 
     @classmethod
-    def Time(cls, value=0., name='Time', min=None, max=None, tip=None, panel=None,
+    def Time(cls, value=0., name='Time', min=None, max=None, tip=None, panel="",
         default_attribute="", hide_value=False, hide_in_modifier=False, single_value=False):
         """ > Time group input
 
@@ -184,7 +184,7 @@ class Float(generated.Float):
             default_attribute=default_attribute, hide_value=hide_value, hide_in_modifier=hide_in_modifier, single_value=single_value)
 
     @classmethod
-    def TimeAbsolute(cls, value=0., name='Time Absolute', min=None, max=None, tip=None, panel=None,
+    def TimeAbsolute(cls, value=0., name='Time Absolute', min=None, max=None, tip=None, panel="",
         default_attribute="", hide_value=False, hide_in_modifier=False, single_value=False):
         """ > Time Absolute group input
 
@@ -198,7 +198,7 @@ class Float(generated.Float):
             default_attribute=default_attribute, hide_value=hide_value, hide_in_modifier=hide_in_modifier, single_value=single_value)
 
     @classmethod
-    def Distance(cls, value=0., name='Distance', min=None, max=None, tip=None, panel=None,
+    def Distance(cls, value=0., name='Distance', min=None, max=None, tip=None, panel="",
         default_attribute="", hide_value=False, hide_in_modifier=False, single_value=False):
         """ > Distance group input
 
@@ -212,7 +212,7 @@ class Float(generated.Float):
             default_attribute=default_attribute, hide_value=hide_value, hide_in_modifier=hide_in_modifier, single_value=single_value)
 
     @classmethod
-    def WaveLength(cls, value=0., name='Wave Length', min=None, max=None, tip=None, panel=None,
+    def WaveLength(cls, value=0., name='Wave Length', min=None, max=None, tip=None, panel="",
         default_attribute="", hide_value=False, hide_in_modifier=False, single_value=False):
         """ > Wave Length group input
 
@@ -226,7 +226,7 @@ class Float(generated.Float):
             default_attribute=default_attribute, hide_value=hide_value, hide_in_modifier=hide_in_modifier, single_value=single_value)
 
     @classmethod
-    def ColorTemperature(cls, value=0., name='Color Temperature', min=None, max=None, tip=None, panel=None,
+    def ColorTemperature(cls, value=0., name='Color Temperature', min=None, max=None, tip=None, panel="",
         default_attribute="", hide_value=False, hide_in_modifier=False, single_value=False):
         """ > Color Temperature group input
 
@@ -240,7 +240,7 @@ class Float(generated.Float):
             default_attribute=default_attribute, hide_value=hide_value, hide_in_modifier=hide_in_modifier, single_value=single_value)
 
     @classmethod
-    def Frequency(cls, value=0., name='Frequency', min=None, max=None, tip=None, panel=None,
+    def Frequency(cls, value=0., name='Frequency', min=None, max=None, tip=None, panel="",
         default_attribute="", hide_value=False, hide_in_modifier=False, single_value=False):
         """ > Frequency group input
 

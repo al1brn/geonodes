@@ -54,7 +54,7 @@ class String(generated.String):
 
     SOCKET_TYPE = 'STRING'
 
-    def __init__(self, value="", name=None, tip=None, panel=None, subtype='NONE',
+    def __init__(self, value="", name=None, tip=None, panel="", subtype='NONE',
         hide_value=False, hide_in_modifier=False):
         """ Socket of type String
 
@@ -90,7 +90,7 @@ class String(generated.String):
     # Constructors
 
     @classmethod
-    def FilePath(cls, value="", name="File Path", tip=None, panel=None,
+    def FilePath(cls, value="", name="File Path", tip=None, panel="",
         hide_value=False, hide_in_modifier=False):
         """ File Path input String
 

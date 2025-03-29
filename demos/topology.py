@@ -206,10 +206,10 @@ def demo():
         cloud = geo.point_cloud
 
         with Panel("Domain"):
-            selection = Boolean(True, "Selection")
+            selection   = Boolean(True,  "Selection")
             use_indices = Boolean(False, "Use Indices")
-            ind0 = Integer(0,    "First Index", 0, single_value=True)
-            ind1 = Integer(1000, "Last Index", 0, single_value=True)
+            ind0        = Integer(0,     "First Index", 0, single_value=True)
+            ind1        = Integer(1000,  "Last Index", 0, single_value=True)
 
         with Layout("Mesh domains"):
             pt_cloud = mesh.points.to_points()
@@ -272,13 +272,13 @@ def demo():
 
         with Panel("Domain"):
             cloud = Cloud.MenuSwitch(items={
-                "Vertices" : pt_cloud,
-                "Faces"    : face_cloud,
-                "Edges"    : edge_cloud,
-                "Corners"  : crn_cloud,
-                "Spline Points" : spt_cloud,
-                "Splines" : spline_cloud,
-                "Cloud Points" : cl_cloud,
+                "Vertices"          : pt_cloud,
+                "Faces"             : face_cloud,
+                "Edges"             : edge_cloud,
+                "Corners"           : crn_cloud,
+                "Spline Points"     : spt_cloud,
+                "Splines"           : spline_cloud,
+                "Cloud Points"      : cl_cloud,
             }, menu=0, name="Domain")
 
         with Layout("Selection"):
@@ -305,6 +305,9 @@ def demo():
 
             vert_mesh = Mesh(mesh)
             vert_mesh.points._Select_V = nd.index.equal(index)
+
+            G.VERBOSE = True
+
             vrt_vis = G().topology_indices(geometry=vert_mesh, merge_input_geometry=False, domain='Vertices', selection=Boolean("Select V"), link_from=topo_link)
 
             with Layout("Corners & Faces of Vertex"):

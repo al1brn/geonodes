@@ -2653,7 +2653,7 @@ def build_data_types_dict():
 # =============================================================================================================================
 # Build the dictionnary of node name -> bl_idname
 
-def build_node_names_dict(tree_type='GeometryNodeTree'):
+def build_node_names_dict():
     """ Build the NODE_NAMES dictionary: tree type -> node name -> bl_idname
 
     To be copied in constants
@@ -2687,3 +2687,5 @@ def build_node_names_dict(tree_type='GeometryNodeTree'):
             print(f"\t\t{sname:30s} : '{blid}',")
         print("\t},")
     print("}\n")
+
+    return nodes
