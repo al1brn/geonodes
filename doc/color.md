@@ -1,7 +1,7 @@
 # Color
 
 ``` python
-Color(value=(0.0, 0.0, 0.0, 1.0), name=None, tip=None, panel=None, default_attribute='', hide_value=False, hide_in_modifier=False, single_value=False)
+Color(value=(0.0, 0.0, 0.0, 1.0), name=None, tip=None, panel='', default_attribute='', hide_value=False, hide_in_modifier=False, single_value=False)
 ```
 
 Socket of type COLOR (RGBA)
@@ -12,7 +12,7 @@ Socket of type COLOR (RGBA)
 - **value** (_tuple or Socket_ = (0.0, 0.0, 0.0, 1.0)) : initial value
 - **name** (_str_ = None) : Create an Group Input socket with the provided str if not None
 - **tip** (_str_ = None) : User tip (for Group Input sockets)
-- **panel** (_str_ = None) : panel name (overrides tree panel if exists)
+- **panel** (_str_ = ) : panel name (overrides tree panel if exists)
 - **default_attribute** (_str_ = ) : default attribute name
 - **hide_value** (_bool_ = False) : Hide Value option
 - **hide_in_modifier** (_bool_ = False) : Hide in Modifier option
@@ -691,7 +691,7 @@ Constructor : Shader to RGB.
 
 :sunrise: **ShaderNodes** only
 
-> Node ERROR: Node 'Shader to RGB' not found
+> Node [Shader to RGB](https://docs.blender.org/manual/en/latest/render/shader_nodes/converter/shader_to_rgb.html)
 
 #### Arguments:
 - **shader** (_Shader_) : socket
@@ -836,7 +836,7 @@ ImageTexture(image=None, vector=None, frame=None, extension='REPEAT', interpolat
 > method
 
 ``` python
-__init__(value=(0.0, 0.0, 0.0, 1.0), name=None, tip=None, panel=None, default_attribute='', hide_value=False, hide_in_modifier=False, single_value=False)
+__init__(value=(0.0, 0.0, 0.0, 1.0), name=None, tip=None, panel='', default_attribute='', hide_value=False, hide_in_modifier=False, single_value=False)
 ```
 
 Socket of type COLOR (RGBA)
@@ -847,7 +847,7 @@ Socket of type COLOR (RGBA)
 - **value** (_tuple or Socket_ = (0.0, 0.0, 0.0, 1.0)) : initial value
 - **name** (_str_ = None) : Create an Group Input socket with the provided str if not None
 - **tip** (_str_ = None) : User tip (for Group Input sockets)
-- **panel** (_str_ = None) : panel name (overrides tree panel if exists)
+- **panel** (_str_ = ) : panel name (overrides tree panel if exists)
 - **default_attribute** (_str_ = ) : default attribute name
 - **hide_value** (_bool_ = False) : Hide Value option
 - **hide_in_modifier** (_bool_ = False) : Hide in Modifier option

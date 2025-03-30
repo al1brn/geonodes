@@ -1,7 +1,7 @@
 # Image
 
 ``` python
-Image(value=None, name=None, tip=None, panel=None, hide_value=False, hide_in_modifier=False)
+Image(value=None, name=None, tip=None, panel='', hide_value=False, hide_in_modifier=False)
 ```
 
 Class Image data socket
@@ -12,7 +12,7 @@ Node [Image](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/.
 - **value** (_bpy.types.Image or str_ = None) : image or image name in bpy.data.images
 - **name** (_str_ = None) : create a group input socket of type Image if not None
 - **tip** (_str_ = None) : user tip for group input socket
-- **panel** (_str_ = None) : panel name (overrides tree panel if exists)
+- **panel** (_str_ = ) : panel name (overrides tree panel if exists)
 - **hide_value** (_bool_ = False) : Hide Value option
 - **hide_in_modifier** (_bool_ = False) : Hide in Modifier option
 
@@ -170,7 +170,7 @@ info(frame=None)
 > method
 
 ``` python
-__init__(value=None, name=None, tip=None, panel=None, hide_value=False, hide_in_modifier=False)
+__init__(value=None, name=None, tip=None, panel='', hide_value=False, hide_in_modifier=False)
 ```
 
 Class Image data socket
@@ -181,7 +181,7 @@ Node [Image](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/.
 - **value** (_bpy.types.Image or str_ = None) : image or image name in bpy.data.images
 - **name** (_str_ = None) : create a group input socket of type Image if not None
 - **tip** (_str_ = None) : user tip for group input socket
-- **panel** (_str_ = None) : panel name (overrides tree panel if exists)
+- **panel** (_str_ = ) : panel name (overrides tree panel if exists)
 - **hide_value** (_bool_ = False) : Hide Value option
 - **hide_in_modifier** (_bool_ = False) : Hide in Modifier option
 

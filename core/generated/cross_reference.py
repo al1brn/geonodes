@@ -1232,7 +1232,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                               'signature': '(self, '
                                                            'rotate_by=None, '
                                                            "rotation_space='GLOBAL')"},
-                                             {'func_name': 'rotate_global_',
+                                             {'func_name': 'rotate_global',
                                               'is_classmethod': False,
                                               'is_get': False,
                                               'is_jump': False,
@@ -2374,8 +2374,8 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                      'returns': 'OUT',
                                                      'signature': '(cls, '
                                                                   "handle_type='AUTO', "
-                                                                  "mode={'LEFT', "
-                                                                  "'RIGHT'})"}],
+                                                                  "mode={'RIGHT', "
+                                                                  "'LEFT'})"}],
                                           'nd': [{'func_name': 'handle_type_selection',
                                                   'is_classmethod': True,
                                                   'is_get': False,
@@ -2384,8 +2384,8 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                   'returns': 'OUT',
                                                   'signature': '(cls, '
                                                                "handle_type='AUTO', "
-                                                               "mode={'LEFT', "
-                                                               "'RIGHT'})"}]},
+                                                               "mode={'RIGHT', "
+                                                               "'LEFT'})"}]},
  'GeometryNodeCurveLength': {'Curve': [{'func_name': 'length',
                                         'is_classmethod': False,
                                         'is_get': False,
@@ -2669,8 +2669,8 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                             'returns': 'OUT',
                                             'signature': '(self, '
                                                          "handle_type='AUTO', "
-                                                         "mode={'LEFT', "
-                                                         "'RIGHT'})"},
+                                                         "mode={'RIGHT', "
+                                                         "'LEFT'})"},
                                            {'func_name': 'set_left_handle_type',
                                             'is_classmethod': False,
                                             'is_get': False,
@@ -2718,8 +2718,8 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                          'signature': '(cls, curve=None, '
                                                       'selection=None, '
                                                       "handle_type='AUTO', "
-                                                      "mode={'LEFT', "
-                                                      "'RIGHT'})"}]},
+                                                      "mode={'RIGHT', "
+                                                      "'LEFT'})"}]},
  'GeometryNodeCurveSpiral': {'Curve': [{'func_name': 'Spiral',
                                         'is_classmethod': True,
                                         'is_get': False,
@@ -3420,8 +3420,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                    'signature': '(self, '
                                                                 'density=None, '
                                                                 'seed=None, '
-                                                                "distribute_method='RANDOM', "
-                                                                'use_legacy_normal=False)'},
+                                                                "distribute_method='RANDOM')"},
                                                   {'func_name': 'distribute_points_random',
                                                    'is_classmethod': False,
                                                    'is_get': False,
@@ -3433,8 +3432,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                    'returns': 'OUT',
                                                    'signature': '(self, '
                                                                 'density=None, '
-                                                                'seed=None, '
-                                                                'use_legacy_normal=False)'},
+                                                                'seed=None)'},
                                                   {'func_name': 'distribute_points_poisson',
                                                    'is_classmethod': False,
                                                    'is_get': False,
@@ -3448,8 +3446,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                                 'distance_min=None, '
                                                                 'density_max=None, '
                                                                 'density_factor=None, '
-                                                                'seed=None, '
-                                                                'use_legacy_normal=False)'}],
+                                                                'seed=None)'}],
                                          'Mesh': [{'func_name': 'distribute_points_on_faces',
                                                    'is_classmethod': False,
                                                    'is_get': False,
@@ -3462,8 +3459,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                    'signature': '(self, '
                                                                 'density=None, '
                                                                 'seed=None, '
-                                                                "distribute_method='RANDOM', "
-                                                                'use_legacy_normal=False)'},
+                                                                "distribute_method='RANDOM')"},
                                                   {'func_name': 'distribute_points_on_faces_random',
                                                    'is_classmethod': False,
                                                    'is_get': False,
@@ -3475,8 +3471,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                    'returns': 'OUT',
                                                    'signature': '(self, '
                                                                 'density=None, '
-                                                                'seed=None, '
-                                                                'use_legacy_normal=False)'},
+                                                                'seed=None)'},
                                                   {'func_name': 'distribute_points_on_faces_poisson',
                                                    'is_classmethod': False,
                                                    'is_get': False,
@@ -3490,8 +3485,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                                 'distance_min=None, '
                                                                 'density_max=None, '
                                                                 'density_factor=None, '
-                                                                'seed=None, '
-                                                                'use_legacy_normal=False)'}],
+                                                                'seed=None)'}],
                                          'nd': [{'func_name': 'distribute_points_on_faces',
                                                  'is_classmethod': True,
                                                  'is_get': False,
@@ -3506,8 +3500,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                               'density=None, '
                                                               'density_factor=None, '
                                                               'seed=None, '
-                                                              "distribute_method='RANDOM', "
-                                                              'use_legacy_normal=False)'}]},
+                                                              "distribute_method='RANDOM')"}]},
  'GeometryNodeDualMesh': {'Mesh': [{'func_name': 'dual',
                                     'is_classmethod': False,
                                     'is_get': False,
@@ -5087,31 +5080,36 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                   'returns': 'OUT',
                                                   'signature': '(cls, '
                                                                'name=None)'}]},
- 'GeometryNodeInputNormal': {'Face': [{'func_name': 'normal',
+ 'GeometryNodeInputNormal': {'Corner': [{'func_name': 'normal',
+                                         'is_classmethod': True,
+                                         'is_get': True,
+                                         'is_jump': False,
+                                         'is_set': False,
+                                         'node_name': 'Normal',
+                                         'returns': 'OUT',
+                                         'signature': '(cls)'}],
+                             'Face': [{'func_name': 'normal',
                                        'is_classmethod': True,
-                                       'is_get': False,
+                                       'is_get': True,
                                        'is_jump': False,
                                        'is_set': False,
                                        'node_name': 'Normal',
                                        'returns': 'OUT',
-                                       'signature': '(cls, '
-                                                    'legacy_corner_normals=False)'}],
+                                       'signature': '(cls)'}],
                              'Mesh': [{'func_name': 'normal',
                                        'is_classmethod': True,
-                                       'is_get': False,
+                                       'is_get': True,
                                        'is_jump': False,
                                        'is_set': False,
                                        'node_name': 'Normal',
                                        'returns': 'OUT',
-                                       'signature': '(cls, '
-                                                    'legacy_corner_normals=False)'}],
+                                       'signature': '(cls)'}],
                              'nd': [{'func_name': 'normal',
                                      'is_classmethod': True,
-                                     'is_get': False,
+                                     'is_get': True,
                                      'node_name': 'Normal',
                                      'returns': 'OUT',
-                                     'signature': '(cls, '
-                                                  'legacy_corner_normals=False)'}]},
+                                     'signature': '(cls)'}]},
  'GeometryNodeInputObject': {'nd': [{'func_name': 'object',
                                      'is_classmethod': True,
                                      'is_get': False,

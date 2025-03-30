@@ -1165,7 +1165,7 @@ def build_matrices():
 
         with Layout("Mesh"):
             a[4:7] = nd.normal.xyz  # 4:8  = (nx, ny, nz, 0) first normal
-            a[15]   = 1             # 12:16 = (0, 0, 0, 1) second normal
+            a[15]   = 1               # 12:16 = (0, 0, 0, 1) second normal
 
             mesh.points._M4 = a
 

@@ -1,7 +1,7 @@
 # Curve
 
 ``` python
-Curve(value=None, name=None, tip=None, panel=None, hide_value=False, hide_in_modifier=False)
+Curve(value=None, name=None, tip=None, panel='', hide_value=False, hide_in_modifier=False)
 ```
 
 > Curve Geometry
@@ -22,7 +22,7 @@ Nodes requiring a domain parameter, are implemented in one of the two domains of
 - **value** (_Socket_ = None) : initial value
 - **name** (_str_ = None) : Create an Group Input socket with the provided str
 - **tip** (_str_ = None) : User tip (for Group Input sockets)
-- **panel** (_str_ = None) : panel name (overrides tree panel if exists)
+- **panel** (_str_ = ) : panel name (overrides tree panel if exists)
 - **hide_value** (_bool_ = False) : Hide Value option
 - **hide_in_modifier** (_bool_ = False) : Hide in Modifier option
 
@@ -1172,7 +1172,7 @@ QuadrilateralTrapezoid(width=None, height=None, bottom_width=None, top_width=Non
 > method
 
 ``` python
-resample(count=None, mode='COUNT')
+resample(count=None, keep_last_segment=True, mode='COUNT')
 ```
 
 > Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/resample_curve.html)
@@ -1187,6 +1187,7 @@ resample(count=None, mode='COUNT')
 
 #### Arguments:
 - **count** (_Integer_ = None) : socket 'Count' (id: Count)
+- **keep_last_segment** (_bool_ = True) : parameter 'keep_last_segment'
 - **mode** (_str_ = COUNT) : parameter 'mode' in ['EVALUATED', 'COUNT', 'LENGTH']
 
 
@@ -1202,7 +1203,7 @@ resample(count=None, mode='COUNT')
 > method
 
 ``` python
-resample_count(count=None)
+resample_count(count=None, keep_last_segment=True)
 ```
 
 > Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/resample_curve.html)
@@ -1218,6 +1219,7 @@ resample_count(count=None)
 
 #### Arguments:
 - **count** (_Integer_ = None) : socket 'Count' (id: Count)
+- **keep_last_segment** (_bool_ = True) : parameter 'keep_last_segment'
 
 
 
@@ -1232,7 +1234,7 @@ resample_count(count=None)
 > method
 
 ``` python
-resample_evaluated()
+resample_evaluated(keep_last_segment=True)
 ```
 
 > Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/resample_curve.html)
@@ -1243,6 +1245,11 @@ resample_evaluated()
 - **Socket** : self
 - **Socket** : self[selection]
 - **Parameter** : 'EVALUATED'
+
+
+
+#### Arguments:
+- **keep_last_segment** (_bool_ = True) : parameter 'keep_last_segment'
 
 
 
@@ -1257,7 +1264,7 @@ resample_evaluated()
 > method
 
 ``` python
-resample_length(length=None)
+resample_length(length=None, keep_last_segment=True)
 ```
 
 > Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/resample_curve.html)
@@ -1273,6 +1280,7 @@ resample_length(length=None)
 
 #### Arguments:
 - **length** (_Float_ = None) : socket 'Length' (id: Length)
+- **keep_last_segment** (_bool_ = True) : parameter 'keep_last_segment'
 
 
 
@@ -1414,7 +1422,7 @@ set_both_handle_type(handle_type='AUTO')
 #### Information:
 - **Socket** : self
 - **Socket** : self[selection]
-- **Parameter** : {'LEFT', 'RIGHT'}
+- **Parameter** : {'RIGHT', 'LEFT'}
 
 
 
@@ -1816,7 +1824,7 @@ set_tilt(tilt=None)
 Spiral(resolution=None, rotations=None, start_radius=None, end_radius=None, height=None, reverse=None)
 ```
 
-> Node ERROR: Node 'Spiral' not found
+> Node [Spiral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/curve_spiral.html)
 
 #### Arguments:
 - **resolution** (_Integer_ = None) : socket 'Resolution' (id: Resolution)

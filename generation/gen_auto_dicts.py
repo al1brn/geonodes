@@ -260,7 +260,7 @@ GEONODES = {
 'Vertex Neighbors'   :          [{f: 'get', klass: 'Mesh', ret: 'NODE'}, {f: 'get_out_loop', klass: 'Vertex', name: 'neighbors', prefix: 'neighbors_'}],
 'Named Attribute'    :          [{f: 'C', name: 'Named'}, {f: 'C', name: 'NamedAttribute'}, ],
 'Named Layer Selection' :       [{klass: 'GreasePencil'}, {name: 'named_selection', klass: 'Layer'}],
-'Normal'             :          [{klass: 'Mesh'}, {klass: 'Face'}],
+'Normal'             :          [{klass: 'Mesh'}, {klass: 'Face'}, {klass: 'Corner'},],
 'Object'             :          [{f: 'INIT'}],
 'Position'           :          [{f: 'PROP'}],
 'Radius'             :          [{f: 'PROP'}],

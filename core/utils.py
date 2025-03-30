@@ -183,7 +183,7 @@ def CamelCase(s):
 # ----------------------------------------------------------------------------------------------------
 # Snake case version of a string
 
-def snake_case(s) -> str:
+def snake_case(s: str, test_keyword=True) -> str:
 
     import keyword
 
@@ -195,7 +195,7 @@ def snake_case(s) -> str:
     if sc[0] in "0123456789":
         sc = '_' + sc
 
-    if sc in keyword.kwlist:
+    if test_keyword and (sc in keyword.kwlist):
         sc += '_'
 
     return sc

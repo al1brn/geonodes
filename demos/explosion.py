@@ -121,7 +121,7 @@ def demo():
         sim.cloud.out()
 
     # =============================================================================================================================
-    # Explode particles places on the input mesh
+    # Explode particles placed on the input mesh
 
     with GeoNodes("Explosion"):
 
@@ -186,4 +186,5 @@ def demo():
             insts.insts.rotation = cloud.points.sample_index(Vector("Rotation"), nd.index)
 
         with Layout("Final geometry"):
+            frame0 = Integer.Input("Start Frame")
             insts.switch(nd.scene_time().frame.less_than(frame0), Mesh()).out('Geometry')

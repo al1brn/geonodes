@@ -437,7 +437,7 @@ class Rotation(Socket):
         node = Node('Rotate Rotation', sockets={'Rotation': self, 'Rotate By': rotate_by}, rotation_space=rotation_space)
         return node._out
 
-    def rotate_global_(self, rotate_by=None):
+    def rotate_global(self, rotate_by=None):
         """ > Node <&Node Rotate Rotation>
 
         Information

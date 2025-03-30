@@ -448,7 +448,7 @@ delete_only_face()
 > method
 
 ``` python
-distribute_points(density=None, seed=None, distribute_method='RANDOM', use_legacy_normal=False)
+distribute_points(density=None, seed=None, distribute_method='RANDOM')
 ```
 
 > Node ERROR: Node 'Distribute Points on Faces' not found
@@ -463,7 +463,6 @@ distribute_points(density=None, seed=None, distribute_method='RANDOM', use_legac
 - **density** (_Float_ = None) : socket 'Density' (id: Density)
 - **seed** (_Integer_ = None) : socket 'Seed' (id: Seed)
 - **distribute_method** (_str_ = RANDOM) : parameter 'distribute_method' in ['RANDOM', 'POISSON']
-- **use_legacy_normal** (_bool_ = False) : parameter 'use_legacy_normal'
 
 
 
@@ -478,7 +477,7 @@ distribute_points(density=None, seed=None, distribute_method='RANDOM', use_legac
 > method
 
 ``` python
-distribute_points_poisson(distance_min=None, density_max=None, density_factor=None, seed=None, use_legacy_normal=False)
+distribute_points_poisson(distance_min=None, density_max=None, density_factor=None, seed=None)
 ```
 
 > Node ERROR: Node 'Distribute Points on Faces' not found
@@ -495,7 +494,6 @@ distribute_points_poisson(distance_min=None, density_max=None, density_factor=No
 - **density_max** (_Float_ = None) : socket 'Density Max' (id: Density Max)
 - **density_factor** (_Float_ = None) : socket 'Density Factor' (id: Density Factor)
 - **seed** (_Integer_ = None) : socket 'Seed' (id: Seed)
-- **use_legacy_normal** (_bool_ = False) : parameter 'use_legacy_normal'
 
 
 
@@ -510,7 +508,7 @@ distribute_points_poisson(distance_min=None, density_max=None, density_factor=No
 > method
 
 ``` python
-distribute_points_random(density=None, seed=None, use_legacy_normal=False)
+distribute_points_random(density=None, seed=None)
 ```
 
 > Node ERROR: Node 'Distribute Points on Faces' not found
@@ -525,7 +523,6 @@ distribute_points_random(density=None, seed=None, use_legacy_normal=False)
 #### Arguments:
 - **density** (_Float_ = None) : socket 'Density' (id: Density)
 - **seed** (_Integer_ = None) : socket 'Seed' (id: Seed)
-- **use_legacy_normal** (_bool_ = False) : parameter 'use_legacy_normal'
 
 
 

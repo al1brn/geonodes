@@ -184,6 +184,18 @@ class Corner(Socket):
         node = Node('Evaluate on Domain', sockets={'Value': value}, data_type=data_type, domain='CORNER')
         return node._out
 
+    @classmethod
+    @property
+    def normal(cls):
+        """ > Node <&Node Normal>
+
+        Returns
+        -------
+        - Vector
+        """
+        node = Node('Normal', sockets={})
+        return node._out
+
     def to_points(self, position=None, radius=None):
         """ > Node <&Node Mesh to Points>
 

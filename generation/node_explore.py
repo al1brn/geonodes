@@ -240,6 +240,10 @@ class NodeInfo:
                 if name in NodeInfo.STD_ATTRS or name[-6:] == '_items':
                     continue
 
+                # ---- legacy normal not passed as an attribute
+                if name in ['legacy_corner_normals', 'use_legacy_normal']:
+                    continue
+
                 param = NodeParam.Parameter(self.bnode, name)
                 if param is not None:
                     self.params[name] = param
@@ -2179,11 +2183,9 @@ class NodeInfo:
         """
 
         # DEBUG
-        DEBUG = self.bnode.name in ['Trim Curve']
-
-        if self.bnode.name not in ['Random Value']:
+        DEBUG = self.bnode.name in ['Rotate Rotation']
+        if DEBUG:
             pass
-            #return
 
         # ----------------------------------------------------------------------------------------------------
         # Extract parameters from kwargs dict
@@ -2223,6 +2225,7 @@ class NodeInfo:
         if param_loop is not None:
 
             for value in self.get_enum_list(param_loop):
+
                 fname = func_name
                 if fname is None:
                     if value in ['RGB', 'HSV', 'HSL']:
@@ -2231,7 +2234,7 @@ class NodeInfo:
                         if func in ['C', 'Constructor']:
                             fname = utils.CamelCase(value)
                         else:
-                            fname = utils.snake_case(value)
+                            fname = utils.snake_case(value, test_keyword=False)
 
                 if fname in rename:
                     fname = rename[fname]

@@ -1,50 +1,22 @@
 # Shader
 
 ``` python
-Shader(socket)
+Shader(value=None, name=None, tip=None, hide_value=False)
 ```
 
-> The output socket of a [Node](node.md#node)
+Socket of type Shader
 
-**Socket** is the base class for data classes such as [Float](float.md#float), [Image](image.md#image) or [Geometry](geometry.md#geometry).
-
-It refers to an **output** socket of a [Node](node.md#node). A socket can be set to the **input** socket
-of another [Node](node.md#node) to create a link between the two nodes:
-
-``` python
-# cube is the output socket 'Mesh' of the node 'Cube'
-cube = Node("Cube").mesh
-
-# cube is set the to socket 'geometry' of node 'Set Position'
-node = Node("Set Position")
-node.geometry = cube
-```
-
-> [!IMPORTANT]
-> You can access to the other output sockets of the node in two different ways:
-> - using [node](socket.md#node) attribute
-> - using ***peer socket** naming convention where the **snake_case** name of
->.  the other sockets is suffixed by '_'
-
-The example below shows how to access the to 'UV Map' socket of node [Cube](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/cube.html):
-
-``` python
-# cube is the output socket 'Mesh' of the node 'Cube'
-cube = Mesh.Cube()
-
-# Getting 'UV Map' through the node
-uv_map = cube.node.uv_map
-
-# Or using the 'peer socket' naming convention
-uv_map = cuve.uv_map_
-```
+A group input socket of type Shader.
 
 #### Arguments:
-- **socket** (_NodeSocket_) : the output socket to wrap
+- **value** (_Socket_ = None) : initial value
+- **name** (_str_ = None) : group input socket name if not None
+- **tip** (_str_ = None) : user type for group input socket
+- **hide_value** (_bool_ = False) : Hide Value option        - hide_in_modifier (bool = False) : Hide in Modifier option
 
 ### Inherited
 
-[\_\_add__](shaderroot.md#__add__) :black_small_square: [\_cache](nodecache.md#_cache) :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](socket.md#check_in_list) :black_small_square: [data_type](socket.md#data_type) :black_small_square: [\_domain_to_geometry](socket.md#_domain_to_geometry) :black_small_square: [\_geometry_class](socket.md#_geometry_class) :black_small_square: [\_\_getattr__](socket.md#__getattr__) :black_small_square: [get_node_data_type](socket.md#get_node_data_type) :black_small_square: [get_socket_class](socket.md#get_socket_class) :black_small_square: [IndexSwitch](socket.md#indexswitch) :black_small_square: [index_switch](socket.md#index_switch) :black_small_square: [\_\_init__](socket.md#__init__) :black_small_square: [Input](socket.md#input) :black_small_square: [input_type](socket.md#input_type) :black_small_square: [\_interface_socket](socket.md#_interface_socket) :black_small_square: [\_is_group_input](socket.md#_is_group_input) :black_small_square: [\_is_group_output](socket.md#_is_group_output) :black_small_square: [\_is_group_socket](socket.md#_is_group_socket) :black_small_square: [\_jump](socket.md#_jump) :black_small_square: [\_lc](socket.md#_lc) :black_small_square: [\_lcop](socket.md#_lcop) :black_small_square: [link_from](socket.md#link_from) :black_small_square: [\_lock](proplocker.md#_lock) :black_small_square: [\_mark_for_delete](socket.md#_mark_for_delete) :black_small_square: [MenuSwitch](socket.md#menuswitch) :black_small_square: [menu_switch](socket.md#menu_switch) :black_small_square: [\_\_mul__](shaderroot.md#__mul__) :black_small_square: [\_name](socket.md#_name) :black_small_square: [node](socket.md#node) :black_small_square: [node_color](socket.md#node_color) :black_small_square: [node_label](socket.md#node_label) :black_small_square: [option](socket.md#option) :black_small_square: [option_index](socket.md#option_index) :black_small_square: [\_panel_name](socket.md#_panel_name) :black_small_square: [pin_gizmo](socket.md#pin_gizmo) :black_small_square: [\_reset](socket.md#_reset) :black_small_square: [\_run_tests](socket.md#_run_tests) :black_small_square: [\_\_setattr__](socket.md#__setattr__) :black_small_square: [\_set_interface_property](socket.md#_set_interface_property) :black_small_square: [socket_type](socket.md#socket_type) :black_small_square: [\_\_str__](socket.md#__str__) :black_small_square: [surface_out](shaderroot.md#surface_out) :black_small_square: [Switch](socket.md#switch) :black_small_square: [switch](socket.md#switch) :black_small_square: [switch_false](socket.md#switch_false) :black_small_square: [\_unlock](proplocker.md#_unlock) :black_small_square: [volume_out](shaderroot.md#volume_out) :black_small_square:
+[\_\_add__](shaderroot.md#__add__) :black_small_square: [\_cache](nodecache.md#_cache) :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](socket.md#check_in_list) :black_small_square: [data_type](socket.md#data_type) :black_small_square: [\_domain_to_geometry](socket.md#_domain_to_geometry) :black_small_square: [\_geometry_class](socket.md#_geometry_class) :black_small_square: [\_\_getattr__](socket.md#__getattr__) :black_small_square: [get_node_data_type](socket.md#get_node_data_type) :black_small_square: [get_socket_class](socket.md#get_socket_class) :black_small_square: [IndexSwitch](socket.md#indexswitch) :black_small_square: [index_switch](socket.md#index_switch) :black_small_square: [Input](socket.md#input) :black_small_square: [input_type](socket.md#input_type) :black_small_square: [\_interface_socket](socket.md#_interface_socket) :black_small_square: [\_is_group_input](socket.md#_is_group_input) :black_small_square: [\_is_group_output](socket.md#_is_group_output) :black_small_square: [\_is_group_socket](socket.md#_is_group_socket) :black_small_square: [\_jump](socket.md#_jump) :black_small_square: [\_lc](socket.md#_lc) :black_small_square: [\_lcop](socket.md#_lcop) :black_small_square: [link_from](socket.md#link_from) :black_small_square: [\_lock](proplocker.md#_lock) :black_small_square: [\_mark_for_delete](socket.md#_mark_for_delete) :black_small_square: [MenuSwitch](socket.md#menuswitch) :black_small_square: [menu_switch](socket.md#menu_switch) :black_small_square: [\_\_mul__](shaderroot.md#__mul__) :black_small_square: [\_name](socket.md#_name) :black_small_square: [node](socket.md#node) :black_small_square: [node_color](socket.md#node_color) :black_small_square: [node_label](socket.md#node_label) :black_small_square: [option](socket.md#option) :black_small_square: [option_index](socket.md#option_index) :black_small_square: [\_panel_name](socket.md#_panel_name) :black_small_square: [pin_gizmo](socket.md#pin_gizmo) :black_small_square: [\_reset](socket.md#_reset) :black_small_square: [\_run_tests](socket.md#_run_tests) :black_small_square: [\_\_setattr__](socket.md#__setattr__) :black_small_square: [\_set_interface_property](socket.md#_set_interface_property) :black_small_square: [socket_type](socket.md#socket_type) :black_small_square: [\_\_str__](socket.md#__str__) :black_small_square: [surface_out](shaderroot.md#surface_out) :black_small_square: [Switch](socket.md#switch) :black_small_square: [switch](socket.md#switch) :black_small_square: [switch_false](socket.md#switch_false) :black_small_square: [\_unlock](proplocker.md#_unlock) :black_small_square: [volume_out](shaderroot.md#volume_out) :black_small_square:
 
 ## Content
 
@@ -53,6 +25,7 @@ uv_map = cuve.uv_map_
 - **E** : [Emission](shader.md#emission)
 - **G** : [Glass](shader.md#glass) :black_small_square: [Glossy](shader.md#glossy)
 - **H** : [Hair](shader.md#hair) :black_small_square: [Holdout](shader.md#holdout)
+- **I** : [\_\_init__](shader.md#__init__)
 - **L** : [light_output](shader.md#light_output)
 - **M** : [material_output](shader.md#material_output) :black_small_square: [Metallic](shader.md#metallic) :black_small_square: [mix](shader.md#mix)
 - **P** : [Principled](shader.md#principled) :black_small_square: [PrincipledHair](shader.md#principledhair)
@@ -227,6 +200,27 @@ Holdout()
 
 #### Returns:
 - **Shader** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Shader](shader.md#shader) :black_small_square: [Content](shader.md#content) :black_small_square: [Methods](shader.md#methods)</sub>
+
+----------
+### \_\_init__()
+
+> method
+
+``` python
+__init__(value=None, name=None, tip=None, hide_value=False)
+```
+
+Socket of type Shader
+
+A group input socket of type Shader.
+
+#### Arguments:
+- **value** (_Socket_ = None) : initial value
+- **name** (_str_ = None) : group input socket name if not None
+- **tip** (_str_ = None) : user type for group input socket
+- **hide_value** (_bool_ = False) : Hide Value option        - hide_in_modifier (bool = False) : Hide in Modifier option
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Shader](shader.md#shader) :black_small_square: [Content](shader.md#content) :black_small_square: [Methods](shader.md#methods)</sub>
 
@@ -587,7 +581,7 @@ Toon(color=None, size=None, smooth=None, normal=None, component='DIFFUSE')
 to_rgb()
 ```
 
-> Node ERROR: Node 'Shader to RGB' not found
+> Node [Shader to RGB](https://docs.blender.org/manual/en/latest/render/shader_nodes/converter/shader_to_rgb.html)
 
 #### Information:
 - **Socket** : self

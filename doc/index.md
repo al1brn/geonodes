@@ -78,7 +78,7 @@ Geometries have specific [Domain](domain.md#domain):
   - [Instance](instance.md#instance) : property [insts](instances.md#insts)
 
 #### Demos
-- Of course, start with [Hello World](helloworld.md#helloworld)
+- Of course, start with [page 'demos' not found in '!demos#helloworld']()
 
 #### Cross reference
 
@@ -151,27 +151,8 @@ Geometries have specific [Domain](domain.md#domain):
   - [get_enum_param_value](core.md#get_enum_param_value)
   - [get_tree](core.md#get_tree)
 - [Cross Reference](cross_reference.md#cross-reference)
-- [demos](demos.md#demos)
-  - [arrows](arrows.md#arrows)
-  - [counters](counters.md#counters)
-  - [curly](curly.md#curly)
-  - [explosion](explosion.md#explosion)
-  - [fields](fields.md#fields)
-  - [forest](forest.md#forest)
-  - [fourd](fourd.md#fourd)
-  - [fractal](fractal.md#fractal)
-  - [gizmo](gizmo.md#gizmo)
-  - [gravity](gravity.md#gravity)
-  - [helloworld](helloworld.md#helloworld)
-  - [rain](rain.md#rain)
-  - [topology](topology.md#topology)
 - [generation](generation.md#generation)
   - [gendoc](gendoc.md#gendoc)
-- [macros](macros.md#macros)
-  - [double_integrals](macros.md#double_integrals)
-  - [impulsion](macros.md#impulsion)
-  - [integrals](macros.md#integrals)
-  - [solidify](macros.md#solidify)
 - [Shader Cross Reference](shader_cross_reference.md#shader-cross-reference)
 
 ## Modules
@@ -179,9 +160,7 @@ Geometries have specific [Domain](domain.md#domain):
 
 
 - [core](core.md#core)
-- [demos](demos.md#demos)
 - [generation](generation.md#generation)
-- [macros](macros.md#macros)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [geonodes](index.md#geonodes) :black_small_square: [Content](index.md#content) :black_small_square: [geonodes](index.md#geonodes)</sub>
 

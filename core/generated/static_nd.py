@@ -977,7 +977,7 @@ class nd:
         return node._out
 
     @classmethod
-    def handle_type_selection(cls, handle_type='AUTO', mode={'LEFT', 'RIGHT'}):
+    def handle_type_selection(cls, handle_type='AUTO', mode={'RIGHT', 'LEFT'}):
         """ > Node <&Node Handle Type Selection>
 
         Arguments
@@ -1131,7 +1131,7 @@ class nd:
         return node._out
 
     @classmethod
-    def set_handle_type(cls, curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'}):
+    def set_handle_type(cls, curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'}):
         """ > Node <&Node Set Handle Type>
 
         Arguments
@@ -1336,7 +1336,7 @@ class nd:
         return node._out
 
     @classmethod
-    def distribute_points_on_faces(cls, mesh=None, selection=None, distance_min=None, density_max=None, density=None, density_factor=None, seed=None, distribute_method='RANDOM', use_legacy_normal=False):
+    def distribute_points_on_faces(cls, mesh=None, selection=None, distance_min=None, density_max=None, density=None, density_factor=None, seed=None, distribute_method='RANDOM'):
         """ > Node <&Node Distribute Points on Faces>
 
         Arguments
@@ -1349,14 +1349,13 @@ class nd:
         - density_factor (Float) : socket 'Density Factor' (id: Density Factor)
         - seed (Integer) : socket 'Seed' (id: Seed)
         - distribute_method (str): parameter 'distribute_method' in ['RANDOM', 'POISSON']
-        - use_legacy_normal (bool): parameter 'use_legacy_normal'
 
         Returns
         -------
         - Cloud [normal_ (Vector), rotation_ (Rotation)]
         """
         utils.check_enum_arg('Distribute Points on Faces', 'distribute_method', distribute_method, 'distribute_points_on_faces', ('RANDOM', 'POISSON'))
-        node = Node('Distribute Points on Faces', sockets={'Mesh': mesh, 'Selection': selection, 'Distance Min': distance_min, 'Density Max': density_max, 'Density': density, 'Density Factor': density_factor, 'Seed': seed}, distribute_method=distribute_method, use_legacy_normal=use_legacy_normal)
+        node = Node('Distribute Points on Faces', sockets={'Mesh': mesh, 'Selection': selection, 'Distance Min': distance_min, 'Density Max': density_max, 'Density': density, 'Density Factor': density_factor, 'Seed': seed}, distribute_method=distribute_method)
         return node._out
 
     @classmethod
@@ -2191,18 +2190,15 @@ class nd:
         return node._out
 
     @classmethod
-    def normal(cls, legacy_corner_normals=False):
+    @property
+    def normal(cls):
         """ > Node <&Node Normal>
-
-        Arguments
-        ---------
-        - legacy_corner_normals (bool): parameter 'legacy_corner_normals'
 
         Returns
         -------
         - Vector
         """
-        node = Node('Normal', sockets={}, legacy_corner_normals=legacy_corner_normals)
+        node = Node('Normal', sockets={})
         return node._out
 
     @classmethod

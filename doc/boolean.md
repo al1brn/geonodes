@@ -1,7 +1,7 @@
 # Boolean
 
 ``` python
-Boolean(value=False, name=None, tip=None, panel=None, default_attribute='', hide_value=False, layer_selection=False, hide_in_modifier=False, single_value=False)
+Boolean(value=False, name=None, tip=None, panel='', default_attribute='', hide_value=False, layer_selection=False, hide_in_modifier=False, single_value=False)
 ```
 
 Socket of type BOOLEAN
@@ -14,7 +14,7 @@ layer_selection_field
 - **value** (_bool or Socket_ = False) : initial value
 - **name** (_str_ = None) : Create an Group Input socket with the provided str if not None
 - **tip** (_str_ = None) : User tip (for Group Input sockets)
-- **panel** (_str_ = None) : panel name (overrides tree pane if exists)
+- **panel** (_str_ = ) : panel name (overrides tree pane if exists)
 - **default_attribute** (_str_ = ) : default attribute name
 - **hide_value** (_bool_ = False) : Hide Value option
 - **layer_selection** (_bool_ = False) : Layer selection field
@@ -204,7 +204,7 @@ info(message=None)
 > method
 
 ``` python
-__init__(value=False, name=None, tip=None, panel=None, default_attribute='', hide_value=False, layer_selection=False, hide_in_modifier=False, single_value=False)
+__init__(value=False, name=None, tip=None, panel='', default_attribute='', hide_value=False, layer_selection=False, hide_in_modifier=False, single_value=False)
 ```
 
 Socket of type BOOLEAN
@@ -217,7 +217,7 @@ layer_selection_field
 - **value** (_bool or Socket_ = False) : initial value
 - **name** (_str_ = None) : Create an Group Input socket with the provided str if not None
 - **tip** (_str_ = None) : User tip (for Group Input sockets)
-- **panel** (_str_ = None) : panel name (overrides tree pane if exists)
+- **panel** (_str_ = ) : panel name (overrides tree pane if exists)
 - **default_attribute** (_str_ = ) : default attribute name
 - **hide_value** (_bool_ = False) : Hide Value option
 - **layer_selection** (_bool_ = False) : Layer selection field

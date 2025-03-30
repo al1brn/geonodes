@@ -74,7 +74,7 @@ add_shader(shader=None, shader_1=None)
 ambient_occlusion(color=None, distance=None, normal=None, inside=False, only_local=False, samples=16)
 ```
 
-> Node ERROR: Node 'Ambient Occlusion' not found
+> Node [Ambient Occlusion](https://docs.blender.org/manual/en/latest/render/shader_nodes/input/ao.html)
 
 #### Arguments:
 - **color** (_Color_ = None) : socket 'Color' (id: Color)
@@ -1761,7 +1761,7 @@ separate_xyz(vector=None)
 shader_to_rgb(shader=None)
 ```
 
-> Node ERROR: Node 'Shader to RGB' not found
+> Node [Shader to RGB](https://docs.blender.org/manual/en/latest/render/shader_nodes/converter/shader_to_rgb.html)
 
 #### Arguments:
 - **shader** (_Shader_ = None) : socket 'Shader' (id: Shader)

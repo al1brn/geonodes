@@ -1,7 +1,7 @@
 # Mesh
 
 ``` python
-Mesh(value=None, name=None, tip=None, panel=None, hide_value=False, hide_in_modifier=False)
+Mesh(value=None, name=None, tip=None, panel='', hide_value=False, hide_in_modifier=False)
 ```
 
 > Mesh Geometry
@@ -22,7 +22,7 @@ Nodes requiring a domain parameter, are implemented in one of the four domains o
 - **value** (_Socket_ = None) : initial value
 - **name** (_str_ = None) : Create an Group Input socket with the provided str
 - **tip** (_str_ = None) : User tip (for Group Input sockets)
-- **panel** (_str_ = None) : panel name (overrides tree panel if exists)
+- **panel** (_str_ = ) : panel name (overrides tree panel if exists)
 - **hide_value** (_bool_ = False) : Hide Value option
 - **hide_in_modifier** (_bool_ = False) : Hide in Modifier option
 
@@ -416,7 +416,7 @@ difference(*mesh_2, self_intersection=None, hole_tolerant=None, solver='FLOAT')
 > method
 
 ``` python
-distribute_points_on_faces(density=None, seed=None, distribute_method='RANDOM', use_legacy_normal=False)
+distribute_points_on_faces(density=None, seed=None, distribute_method='RANDOM')
 ```
 
 > Node ERROR: Node 'Distribute Points on Faces' not found
@@ -431,7 +431,6 @@ distribute_points_on_faces(density=None, seed=None, distribute_method='RANDOM', 
 - **density** (_Float_ = None) : socket 'Density' (id: Density)
 - **seed** (_Integer_ = None) : socket 'Seed' (id: Seed)
 - **distribute_method** (_str_ = RANDOM) : parameter 'distribute_method' in ['RANDOM', 'POISSON']
-- **use_legacy_normal** (_bool_ = False) : parameter 'use_legacy_normal'
 
 
 
@@ -446,7 +445,7 @@ distribute_points_on_faces(density=None, seed=None, distribute_method='RANDOM', 
 > method
 
 ``` python
-distribute_points_on_faces_poisson(distance_min=None, density_max=None, density_factor=None, seed=None, use_legacy_normal=False)
+distribute_points_on_faces_poisson(distance_min=None, density_max=None, density_factor=None, seed=None)
 ```
 
 > Node ERROR: Node 'Distribute Points on Faces' not found
@@ -463,7 +462,6 @@ distribute_points_on_faces_poisson(distance_min=None, density_max=None, density_
 - **density_max** (_Float_ = None) : socket 'Density Max' (id: Density Max)
 - **density_factor** (_Float_ = None) : socket 'Density Factor' (id: Density Factor)
 - **seed** (_Integer_ = None) : socket 'Seed' (id: Seed)
-- **use_legacy_normal** (_bool_ = False) : parameter 'use_legacy_normal'
 
 
 
@@ -478,7 +476,7 @@ distribute_points_on_faces_poisson(distance_min=None, density_max=None, density_
 > method
 
 ``` python
-distribute_points_on_faces_random(density=None, seed=None, use_legacy_normal=False)
+distribute_points_on_faces_random(density=None, seed=None)
 ```
 
 > Node ERROR: Node 'Distribute Points on Faces' not found
@@ -493,7 +491,6 @@ distribute_points_on_faces_random(density=None, seed=None, use_legacy_normal=Fal
 #### Arguments:
 - **density** (_Float_ = None) : socket 'Density' (id: Density)
 - **seed** (_Integer_ = None) : socket 'Seed' (id: Seed)
-- **use_legacy_normal** (_bool_ = False) : parameter 'use_legacy_normal'
 
 
 
@@ -1443,7 +1440,7 @@ subdivide(level=None)
 > method
 
 ``` python
-subdivision_surface(level=None, edge_crease=None, vertex_crease=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES')
+subdivision_surface(level=None, edge_crease=None, vertex_crease=None, limit_surface=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES')
 ```
 
 > Node [Subdivision Surface](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/subdivision_surface.html)
@@ -1459,6 +1456,7 @@ subdivision_surface(level=None, edge_crease=None, vertex_crease=None, boundary_s
 - **level** (_Integer_ = None) : socket 'Level' (id: Level)
 - **edge_crease** (_Float_ = None) : socket 'Edge Crease' (id: Edge Crease)
 - **vertex_crease** (_Float_ = None) : socket 'Vertex Crease' (id: Vertex Crease)
+- **limit_surface** (_Boolean_ = None) : socket 'Limit Surface' (id: Limit Surface)
 - **boundary_smooth** (_str_ = ALL) : parameter 'boundary_smooth' in ['PRESERVE_CORNERS', 'ALL']
 - **uv_smooth** (_str_ = PRESERVE_BOUNDARIES) : parameter 'uv_smooth' in ['NONE', 'PRESERVE_CORNERS', 'PRESERVE_CORNERS_AND_JUNCTIONS', 'PRESERVE_CORNERS_JUNCTIONS_AND_CONCAVE', 'PRESERVE_BOUNDARIES', 'SMOOTH_ALL']
 
@@ -1610,7 +1608,7 @@ to_volume(density=None, voxel_amount=None, interior_band_width=None, resolution_
 > method
 
 ``` python
-triangulate(minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL')
+triangulate(ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL')
 ```
 
 > Node [Triangulate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/triangulate.html)
@@ -1624,7 +1622,6 @@ triangulate(minimum_vertices=None, ngon_method='BEAUTY', quad_method='SHORTEST_D
 
 
 #### Arguments:
-- **minimum_vertices** (_Integer_ = None) : socket 'Minimum Vertices' (id: Minimum Vertices)
 - **ngon_method** (_str_ = BEAUTY) : parameter 'ngon_method' in ['BEAUTY', 'CLIP']
 - **quad_method** (_str_ = SHORTEST_DIAGONAL) : parameter 'quad_method' in ['BEAUTY', 'FIXED', 'FIXED_ALTERNATE', 'SHORTEST_DIAGONAL', 'LONGEST_DIAGONAL']
 

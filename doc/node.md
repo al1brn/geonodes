@@ -329,7 +329,7 @@ Node wrapper.
 > method
 
 ``` python
-link_from(node: 'Node | Tree | None | str' = 'TREE', include: list[str] | str | None = None, exclude: list[str] | str = [], arguments: dict[slice('name', 'value', None)] = {}, create: bool = True, panel: str | None = None)
+link_from(node: 'Node | Tree | None | str' = 'TREE', include: list[str] | str | None = None, exclude: list[str] | str = [], arguments: dict[slice('name', 'value', None)] = {}, create: bool = True, panel: str = '')
 ```
 
 Plug the output sockets of a node into the input sockets of the node.
@@ -389,7 +389,7 @@ with GeoNodes("Create selection"):
 - **exclude** (_list[str] | str_ = []) : exclude sockets in this list
 - **arguments** (_dict_ = {}) : arguments used at initialization time. Arguments which are defined in the list are ignored
 - **create** (_bool_ = True) : create the output sockets in node if it is a 'Group Input Node'
-- **panel** (_str | None_ = None) : panel name to create, use tree default name if None
+- **panel** (_str_ = ) : panel name to create, use tree default name if None
 
 
 

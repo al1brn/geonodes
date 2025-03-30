@@ -1,7 +1,7 @@
 # Matrix
 
 ``` python
-Matrix(value=None, name=None, tip=None, panel=None, default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False)
+Matrix(value=None, name=None, tip=None, panel='', default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False)
 ```
 
 Matrix data socket ('MATRIX')
@@ -21,7 +21,7 @@ matrix = Matrix([[0, 1, 0, 0], [1, 0, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]]) # Node
 - **value** (_array of 16 Floats_ = None) : initialization values
 - **name** (_str_ = None) : Create group input socket with this name if not None
 - **tip** ( = None)
-- **panel** (_str_ = None) : panel name (overrides tree panel if exists)
+- **panel** (_str_ = ) : panel name (overrides tree panel if exists)
 - **default_input** (_str in ('VALUE', 'INSTANCE_TRANSFORM')_ = VALUE) : 
 - **hide_value** (_bool_ = False) : Hide Value option
 - **hide_in_modifier** (_bool_ = False) : Hide in Modifier option
@@ -376,7 +376,7 @@ hash_value(seed=None)
 > method
 
 ``` python
-__init__(value=None, name=None, tip=None, panel=None, default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False)
+__init__(value=None, name=None, tip=None, panel='', default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False)
 ```
 
 Matrix data socket ('MATRIX')
@@ -396,7 +396,7 @@ matrix = Matrix([[0, 1, 0, 0], [1, 0, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]]) # Node
 - **value** (_array of 16 Floats_ = None) : initialization values
 - **name** (_str_ = None) : Create group input socket with this name if not None
 - **tip** ( = None)
-- **panel** (_str_ = None) : panel name (overrides tree panel if exists)
+- **panel** (_str_ = ) : panel name (overrides tree panel if exists)
 - **default_input** (_str in ('VALUE', 'INSTANCE_TRANSFORM')_ = VALUE) : 
 - **hide_value** (_bool_ = False) : Hide Value option
 - **hide_in_modifier** (_bool_ = False) : Hide in Modifier option

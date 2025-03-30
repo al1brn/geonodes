@@ -659,7 +659,10 @@ class InterfaceSockets(list):
         for prop_name in constants.INTERFACE_SOCKET_PROPERTIES:
             prop_value = getattr(source_item, prop_name, None)
             if prop_value is not None:
-                setattr(target_item, prop_name, prop_value)
+                try:
+                    setattr(target_item, prop_name, prop_value)
+                except:
+                    print(f"WARNING: error when setting attribute <'{prop_name}'={prop_value}> to socket '{target_item.name}'")
 
         return target_item
 
@@ -1498,12 +1501,17 @@ class TreeInterface:
                 new_panel = self.create_panel(full_name, tip=item.bitem.description, default_closed=item.bitem.default_closed, panel=panel)
             else:
                 new_socket, _ = self.create_socket('INPUT', full_name, socket_type=item.bitem.socket_type, panel=panel)
-                InterfaceSockets.copy_item_attributes(item.bitem, new_socket)
+
+                # ----- Link the node
+                # NOTE: must be done BEFORE copying attributes to make sure menus are initialized
+                # when setting default_value
 
                 if input_node is not None:
                     in_socket  = node.inputs[item.bitem.identifier]
                     out_socket = input_node.outputs[new_socket.identifier]
                     self.btree.links.new(in_socket, out_socket)
+
+                InterfaceSockets.copy_item_attributes(item.bitem, new_socket)
 
     # =============================================================================================================================
     # Tests

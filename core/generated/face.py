@@ -270,7 +270,7 @@ class Face(Socket):
         self._jump(node._out)
         return self._domain_to_geometry
 
-    def distribute_points(self, density=None, seed=None, distribute_method='RANDOM', use_legacy_normal=False):
+    def distribute_points(self, density=None, seed=None, distribute_method='RANDOM'):
         """ > Node <&Node Distribute Points on Faces>
 
         Information
@@ -283,17 +283,16 @@ class Face(Socket):
         - density (Float) : socket 'Density' (id: Density)
         - seed (Integer) : socket 'Seed' (id: Seed)
         - distribute_method (str): parameter 'distribute_method' in ['RANDOM', 'POISSON']
-        - use_legacy_normal (bool): parameter 'use_legacy_normal'
 
         Returns
         -------
         - Cloud [normal_ (Vector), rotation_ (Rotation)]
         """
         utils.check_enum_arg('Distribute Points on Faces', 'distribute_method', distribute_method, 'distribute_points', ('RANDOM', 'POISSON'))
-        node = Node('Distribute Points on Faces', sockets={'Mesh': self, 'Selection': self._sel, 'Density': density, 'Seed': seed}, distribute_method=distribute_method, use_legacy_normal=use_legacy_normal)
+        node = Node('Distribute Points on Faces', sockets={'Mesh': self, 'Selection': self._sel, 'Density': density, 'Seed': seed}, distribute_method=distribute_method)
         return node._out
 
-    def distribute_points_random(self, density=None, seed=None, use_legacy_normal=False):
+    def distribute_points_random(self, density=None, seed=None):
         """ > Node <&Node Distribute Points on Faces>
 
         Information
@@ -306,16 +305,15 @@ class Face(Socket):
         ---------
         - density (Float) : socket 'Density' (id: Density)
         - seed (Integer) : socket 'Seed' (id: Seed)
-        - use_legacy_normal (bool): parameter 'use_legacy_normal'
 
         Returns
         -------
         - Cloud [normal_ (Vector), rotation_ (Rotation)]
         """
-        node = Node('Distribute Points on Faces', sockets={'Mesh': self, 'Selection': self._sel, 'Density': density, 'Seed': seed}, distribute_method='RANDOM', use_legacy_normal=use_legacy_normal)
+        node = Node('Distribute Points on Faces', sockets={'Mesh': self, 'Selection': self._sel, 'Density': density, 'Seed': seed}, distribute_method='RANDOM')
         return node._out
 
-    def distribute_points_poisson(self, distance_min=None, density_max=None, density_factor=None, seed=None, use_legacy_normal=False):
+    def distribute_points_poisson(self, distance_min=None, density_max=None, density_factor=None, seed=None):
         """ > Node <&Node Distribute Points on Faces>
 
         Information
@@ -330,13 +328,12 @@ class Face(Socket):
         - density_max (Float) : socket 'Density Max' (id: Density Max)
         - density_factor (Float) : socket 'Density Factor' (id: Density Factor)
         - seed (Integer) : socket 'Seed' (id: Seed)
-        - use_legacy_normal (bool): parameter 'use_legacy_normal'
 
         Returns
         -------
         - Cloud [normal_ (Vector), rotation_ (Rotation)]
         """
-        node = Node('Distribute Points on Faces', sockets={'Mesh': self, 'Selection': self._sel, 'Distance Min': distance_min, 'Density Max': density_max, 'Density Factor': density_factor, 'Seed': seed}, distribute_method='POISSON', use_legacy_normal=use_legacy_normal)
+        node = Node('Distribute Points on Faces', sockets={'Mesh': self, 'Selection': self._sel, 'Distance Min': distance_min, 'Density Max': density_max, 'Density Factor': density_factor, 'Seed': seed}, distribute_method='POISSON')
         return node._out
 
     def duplicate(self, amount=None):
@@ -493,18 +490,15 @@ class Face(Socket):
         return node.face_count
 
     @classmethod
-    def normal(cls, legacy_corner_normals=False):
+    @property
+    def normal(cls):
         """ > Node <&Node Normal>
-
-        Arguments
-        ---------
-        - legacy_corner_normals (bool): parameter 'legacy_corner_normals'
 
         Returns
         -------
         - Vector
         """
-        node = Node('Normal', sockets={}, legacy_corner_normals=legacy_corner_normals)
+        node = Node('Normal', sockets={})
         return node._out
 
     def to_points(self, position=None, radius=None):

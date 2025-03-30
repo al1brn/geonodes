@@ -1,7 +1,7 @@
 # Rotation
 
 ``` python
-Rotation(value=(0.0, 0.0, 0.0), name=None, tip=None, panel=None, hide_value=False, hide_in_modifier=False, single_value=False)
+Rotation(value=(0.0, 0.0, 0.0), name=None, tip=None, panel='', hide_value=False, hide_in_modifier=False, single_value=False)
 ```
 
 > Socket of type ROTATION
@@ -26,7 +26,7 @@ rot = Rotation(name="User input").  # Create a new Rotation group input
 - **value** (_tuple of floats or Sockets_ = (0.0, 0.0, 0.0)) : initial value
 - **name** (_str_ = None) : Create an Group Input socket with the provided str if not None
 - **tip** (_str_ = None) : User tip (for Group Input sockets)
-- **panel** (_str_ = None) : panel name (overrides tree panel if exists)
+- **panel** (_str_ = ) : panel name (overrides tree panel if exists)
 - **hide_value** (_bool_ = False) : Hide Value option
 - **hide_in_modifier** (_bool_ = False) : Hide in Modifier option
 - **single_value** (_bool_ = False) : Single Value option
@@ -597,7 +597,7 @@ hash_value(seed=None)
 > method
 
 ``` python
-__init__(value=(0.0, 0.0, 0.0), name=None, tip=None, panel=None, hide_value=False, hide_in_modifier=False, single_value=False)
+__init__(value=(0.0, 0.0, 0.0), name=None, tip=None, panel='', hide_value=False, hide_in_modifier=False, single_value=False)
 ```
 
 > Socket of type ROTATION
@@ -622,7 +622,7 @@ rot = Rotation(name="User input").  # Create a new Rotation group input
 - **value** (_tuple of floats or Sockets_ = (0.0, 0.0, 0.0)) : initial value
 - **name** (_str_ = None) : Create an Group Input socket with the provided str if not None
 - **tip** (_str_ = None) : User tip (for Group Input sockets)
-- **panel** (_str_ = None) : panel name (overrides tree panel if exists)
+- **panel** (_str_ = ) : panel name (overrides tree panel if exists)
 - **hide_value** (_bool_ = False) : Hide Value option
 - **hide_in_modifier** (_bool_ = False) : Hide in Modifier option
 - **single_value** (_bool_ = False) : Single Value option

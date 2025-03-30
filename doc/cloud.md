@@ -1,7 +1,7 @@
 # Cloud
 
 ``` python
-Cloud(value=None, name=None, tip=None, panel=None, hide_value=False, hide_in_modifier=False)
+Cloud(value=None, name=None, tip=None, panel='', hide_value=False, hide_in_modifier=False)
 ```
 
 > Cloud of Points Geometry
@@ -24,7 +24,7 @@ Nodes requiring a domain parameter, are implemented in the domain [points](cloud
 - **value** (_Socket_ = None) : initial value
 - **name** (_str_ = None) : Create an Group Input socket with the provided str
 - **tip** (_str_ = None) : User tip (for Group Input sockets)
-- **panel** (_str_ = None) : panel name (overrides tree panel if exists)
+- **panel** (_str_ = ) : panel name (overrides tree panel if exists)
 - **hide_value** (_bool_ = False) : Hide Value option
 - **hide_in_modifier** (_bool_ = False) : Hide in Modifier option
 

@@ -1,7 +1,7 @@
 # Collection
 
 ``` python
-Collection(value=None, name=None, tip=None, panel=None, hide_value=False, hide_in_modifier=False)
+Collection(value=None, name=None, tip=None, panel='', hide_value=False, hide_in_modifier=False)
 ```
 
 Class Collection data socket
@@ -10,7 +10,7 @@ Class Collection data socket
 - **value** (_bpy.types.Object or str_ = None) : collection or collection name in bpy.data.collections
 - **name** (_str_ = None) : create a group input socket of type Collection if not None
 - **tip** (_str_ = None) : user tip for group input socket
-- **panel** (_str_ = None) : panel name (overrides tree panel if exists)
+- **panel** (_str_ = ) : panel name (overrides tree panel if exists)
 - **hide_value** (_bool_ = False) : Hide Value option
 - **hide_in_modifier** (_bool_ = False) : Hide in Modifier option
 
@@ -61,7 +61,7 @@ info(separate_children=None, reset_children=None, transform_space='ORIGINAL')
 > method
 
 ``` python
-__init__(value=None, name=None, tip=None, panel=None, hide_value=False, hide_in_modifier=False)
+__init__(value=None, name=None, tip=None, panel='', hide_value=False, hide_in_modifier=False)
 ```
 
 Class Collection data socket
@@ -70,7 +70,7 @@ Class Collection data socket
 - **value** (_bpy.types.Object or str_ = None) : collection or collection name in bpy.data.collections
 - **name** (_str_ = None) : create a group input socket of type Collection if not None
 - **tip** (_str_ = None) : user tip for group input socket
-- **panel** (_str_ = None) : panel name (overrides tree panel if exists)
+- **panel** (_str_ = ) : panel name (overrides tree panel if exists)
 - **hide_value** (_bool_ = False) : Hide Value option
 - **hide_in_modifier** (_bool_ = False) : Hide in Modifier option
 

@@ -1,7 +1,7 @@
 # Vector
 
 ``` python
-Vector(value=(0, 0, 0), name=None, tip=None, panel=None, subtype='NONE', default_attribute='', default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False)
+Vector(value=(0, 0, 0), name=None, tip=None, panel='', subtype='NONE', default_attribute='', default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False)
 ```
 
 > Socket of type VECTOR
@@ -26,7 +26,7 @@ vect = Vector(name="User input").  # Create a new Vector group input
 - **value** (_tuple of floats or Sockets_ = (0, 0, 0)) : initial value
 - **name** (_str_ = None) : Create an Group Input socket with the provided str if not None
 - **tip** (_str_ = None) : User tip (for Group Input sockets)
-- **panel** (_str_ = None) : panel name (overrides tree pane if exists)
+- **panel** (_str_ = ) : panel name (overrides tree pane if exists)
 - **subtype** (_str in ('NONE', 'TRANSLATION', 'DIRECTION', 'VELOCITY', 'ACCELERATION', 'EULER', 'XYZ')_ = NONE) : sub type for group input
 - **default_attribute** (_str_ = ) : default attribute name
 - **default_input** (_str in ('VALUE', 'NORMAL', 'POSITION')_ = VALUE) : default input
@@ -136,7 +136,7 @@ abs()
 > classmethod
 
 ``` python
-Acceleration(value=(0.0, 0.0, 0.0), name='Acceleration', tip=None, panel=None, default_attribute='', default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False)
+Acceleration(value=(0.0, 0.0, 0.0), name='Acceleration', tip=None, panel='', default_attribute='', default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False)
 ```
 
 > Acceleration group input
@@ -147,7 +147,7 @@ New [Vector](vector.md#vector) input with subtype 'ACCELERATION'.
 - **value** ( = (0.0, 0.0, 0.0))
 - **name** ( = Acceleration)
 - **tip** ( = None)
-- **panel** ( = None)
+- **panel** ( = )
 - **default_attribute** ( = )
 - **default_input** ( = VALUE)
 - **hide_value** ( = False)
@@ -380,7 +380,7 @@ A curve is defined by a list of 3-tuples (not list):
 > classmethod
 
 ``` python
-Direction(value=(0.0, 0.0, 0.0), name='Direction', tip=None, panel=None, default_attribute='', default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False)
+Direction(value=(0.0, 0.0, 0.0), name='Direction', tip=None, panel='', default_attribute='', default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False)
 ```
 
 > Direction group input
@@ -391,7 +391,7 @@ New [Vector](vector.md#vector) input with subtype 'DIRECTION'.
 - **value** ( = (0.0, 0.0, 0.0))
 - **name** ( = Direction)
 - **tip** ( = None)
-- **panel** ( = None)
+- **panel** ( = )
 - **default_attribute** ( = )
 - **default_input** ( = VALUE)
 - **hide_value** ( = False)
@@ -597,7 +597,7 @@ equal(b=None, epsilon=None)
 > classmethod
 
 ``` python
-Euler(value=(0.0, 0.0, 0.0), name='Euler', tip=None, panel=None, default_attribute='', default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False)
+Euler(value=(0.0, 0.0, 0.0), name='Euler', tip=None, panel='', default_attribute='', default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False)
 ```
 
 > Euler group input
@@ -608,7 +608,7 @@ New [Vector](vector.md#vector) input with subtype 'EULER'.
 - **value** ( = (0.0, 0.0, 0.0))
 - **name** ( = Euler)
 - **tip** ( = None)
-- **panel** ( = None)
+- **panel** ( = )
 - **default_attribute** ( = )
 - **default_input** ( = VALUE)
 - **hide_value** ( = False)
@@ -923,7 +923,7 @@ image_texture(extension='REPEAT', image=None, interpolation='Linear', projection
 > method
 
 ``` python
-__init__(value=(0, 0, 0), name=None, tip=None, panel=None, subtype='NONE', default_attribute='', default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False)
+__init__(value=(0, 0, 0), name=None, tip=None, panel='', subtype='NONE', default_attribute='', default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False)
 ```
 
 > Socket of type VECTOR
@@ -948,7 +948,7 @@ vect = Vector(name="User input").  # Create a new Vector group input
 - **value** (_tuple of floats or Sockets_ = (0, 0, 0)) : initial value
 - **name** (_str_ = None) : Create an Group Input socket with the provided str if not None
 - **tip** (_str_ = None) : User tip (for Group Input sockets)
-- **panel** (_str_ = None) : panel name (overrides tree pane if exists)
+- **panel** (_str_ = ) : panel name (overrides tree pane if exists)
 - **subtype** (_str in ('NONE', 'TRANSLATION', 'DIRECTION', 'VELOCITY', 'ACCELERATION', 'EULER', 'XYZ')_ = NONE) : sub type for group input
 - **default_attribute** (_str_ = ) : default attribute name
 - **default_input** (_str in ('VALUE', 'NORMAL', 'POSITION')_ = VALUE) : default input
@@ -1357,7 +1357,7 @@ NamedAttribute(name=None)
 > classmethod
 
 ``` python
-Normal(name='Normal', tip=None, panel=None, hide_in_modifier=True)
+Normal(name='Normal', tip=None, panel='', hide_in_modifier=True)
 ```
 
 > Normal vector group input
@@ -1370,7 +1370,7 @@ New [Vector](vector.md#vector) input with Normal as default value (default_input
 #### Arguments:
 - **name** ( = Normal)
 - **tip** ( = None)
-- **panel** ( = None)
+- **panel** ( = )
 - **hide_in_modifier** ( = True)
 
 
@@ -1570,7 +1570,7 @@ point_density(interpolation='Linear', object=None, particle_color_source='PARTIC
 > classmethod
 
 ``` python
-Position(name='Position', tip=None, panel=None, hide_in_modifier=True)
+Position(name='Position', tip=None, panel='', hide_in_modifier=True)
 ```
 
 > Position vector group input
@@ -1583,7 +1583,7 @@ New [Vector](vector.md#vector) input with Position as default value (default_inp
 #### Arguments:
 - **name** ( = Position)
 - **tip** ( = None)
-- **panel** ( = None)
+- **panel** ( = )
 - **hide_in_modifier** ( = True)
 
 
@@ -2160,7 +2160,7 @@ transform(convert_from='WORLD', convert_to='OBJECT', vector_type='NORMAL')
 > classmethod
 
 ``` python
-Translation(value=(0.0, 0.0, 0.0), name='Translation', tip=None, panel=None, default_attribute='', default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False)
+Translation(value=(0.0, 0.0, 0.0), name='Translation', tip=None, panel='', default_attribute='', default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False)
 ```
 
 > Translation Vector group input
@@ -2171,7 +2171,7 @@ New [Vector](vector.md#vector) input with subtype 'TRANSLATION'.
 - **value** ( = (0.0, 0.0, 0.0))
 - **name** ( = Translation)
 - **tip** ( = None)
-- **panel** ( = None)
+- **panel** ( = )
 - **default_attribute** ( = )
 - **default_input** ( = VALUE)
 - **hide_value** ( = False)
@@ -2290,7 +2290,7 @@ vector_transform(convert_from='WORLD', convert_to='OBJECT', vector_type='VECTOR'
 > classmethod
 
 ``` python
-Velocity(value=(0.0, 0.0, 0.0), name='Velocity', tip=None, panel=None, default_attribute='', default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False)
+Velocity(value=(0.0, 0.0, 0.0), name='Velocity', tip=None, panel='', default_attribute='', default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False)
 ```
 
 > Velocity group input
@@ -2301,7 +2301,7 @@ New [Vector](vector.md#vector) input with subtype 'VELOCITY'.
 - **value** ( = (0.0, 0.0, 0.0))
 - **name** ( = Velocity)
 - **tip** ( = None)
-- **panel** ( = None)
+- **panel** ( = )
 - **default_attribute** ( = )
 - **default_input** ( = VALUE)
 - **hide_value** ( = False)
@@ -2349,7 +2349,7 @@ wrap(max=None, min=None)
 > classmethod
 
 ``` python
-XYZ(value=(0.0, 0.0, 0.0), name='XYZ', tip=None, panel=None, default_attribute='', default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False)
+XYZ(value=(0.0, 0.0, 0.0), name='XYZ', tip=None, panel='', default_attribute='', default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False)
 ```
 
 > XYZ group input
@@ -2360,7 +2360,7 @@ New [Vector](vector.md#vector) input with subtype 'XYZ'.
 - **value** ( = (0.0, 0.0, 0.0))
 - **name** ( = XYZ)
 - **tip** ( = None)
-- **panel** ( = None)
+- **panel** ( = )
 - **default_attribute** ( = )
 - **default_input** ( = VALUE)
 - **hide_value** ( = False)

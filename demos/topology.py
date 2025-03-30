@@ -306,8 +306,6 @@ def demo():
             vert_mesh = Mesh(mesh)
             vert_mesh.points._Select_V = nd.index.equal(index)
 
-            G.VERBOSE = True
-
             vrt_vis = G().topology_indices(geometry=vert_mesh, merge_input_geometry=False, domain='Vertices', selection=Boolean("Select V"), link_from=topo_link)
 
             with Layout("Corners & Faces of Vertex"):

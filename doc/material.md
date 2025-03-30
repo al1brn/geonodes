@@ -1,7 +1,7 @@
 # Material
 
 ``` python
-Material(value=None, name=None, tip=None, panel=None, hide_value=False, hide_in_modifier=False)
+Material(value=None, name=None, tip=None, panel='', hide_value=False, hide_in_modifier=False)
 ```
 
 Class Material data socket
@@ -12,7 +12,7 @@ Node [Material](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 - **value** (_bpy.types.Material or str_ = None) : material or material name in bpy.data.materials
 - **name** (_str_ = None) : create a group input socket of type Material if not None
 - **tip** (_str_ = None) : user tip for group input socket
-- **panel** (_str_ = None) : panel name (overrides tree panel if exists)
+- **panel** (_str_ = ) : panel name (overrides tree panel if exists)
 - **hide_value** (_bool_ = False) : Hide Value option
 - **hide_in_modifier** (_bool_ = False) : Hide in Modifier option
 
@@ -34,7 +34,7 @@ Node [Material](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 > method
 
 ``` python
-__init__(value=None, name=None, tip=None, panel=None, hide_value=False, hide_in_modifier=False)
+__init__(value=None, name=None, tip=None, panel='', hide_value=False, hide_in_modifier=False)
 ```
 
 Class Material data socket
@@ -45,7 +45,7 @@ Node [Material](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 - **value** (_bpy.types.Material or str_ = None) : material or material name in bpy.data.materials
 - **name** (_str_ = None) : create a group input socket of type Material if not None
 - **tip** (_str_ = None) : user tip for group input socket
-- **panel** (_str_ = None) : panel name (overrides tree panel if exists)
+- **panel** (_str_ = ) : panel name (overrides tree panel if exists)
 - **hide_value** (_bool_ = False) : Hide Value option
 - **hide_in_modifier** (_bool_ = False) : Hide in Modifier option
 

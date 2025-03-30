@@ -1,7 +1,7 @@
 # String
 
 ``` python
-String(value='', name=None, tip=None, panel=None, subtype='NONE', hide_value=False, hide_in_modifier=False)
+String(value='', name=None, tip=None, panel='', subtype='NONE', hide_value=False, hide_in_modifier=False)
 ```
 
 Socket of type String
@@ -14,7 +14,7 @@ A group input socket of type String is created if the name is not None.
 - **value** (_str or Socket_ = ) : initial value
 - **name** (_str_ = None) : group input socket name if not None
 - **tip** (_str_ = None) : user type for group input socket
-- **panel** (_str_ = None) : panel name (overrides tree pane if exists)
+- **panel** (_str_ = ) : panel name (overrides tree pane if exists)
 - **subtype** (_str in ('NONE', 'FILE_PATH')_ = NONE) : sub type for group input
 - **hide_value** (_bool_ = False) : Hide Value option
 - **hide_in_modifier** (_bool_ = False) : Hide in Modifier option
@@ -26,7 +26,7 @@ A group input socket of type String is created if the name is not None.
 ## Content
 
 - **E** : [equal](string.md#equal)
-- **F** : [FilePath](string.md#filepath)
+- **F** : [FilePath](string.md#filepath) :black_small_square: [find](string.md#find) :black_small_square: [find_in_string](string.md#find_in_string)
 - **H** : [hash_value](string.md#hash_value)
 - **I** : [\_\_init__](string.md#__init__)
 - **J** : [Join](string.md#join) :black_small_square: [join](string.md#join)
@@ -75,7 +75,7 @@ equal(b=None)
 > classmethod
 
 ``` python
-FilePath(value='', name='File Path', tip=None, panel=None, hide_value=False, hide_in_modifier=False)
+FilePath(value='', name='File Path', tip=None, panel='', hide_value=False, hide_in_modifier=False)
 ```
 
 File Path input String
@@ -86,7 +86,7 @@ New [String](string.md#string) input with subtype 'FILE_PATH'.
 - **value** ( = )
 - **name** ( = File Path)
 - **tip** ( = None)
-- **panel** ( = None)
+- **panel** ( = )
 - **hide_value** ( = False)
 - **hide_in_modifier** ( = False)
 
@@ -94,6 +94,58 @@ New [String](string.md#string) input with subtype 'FILE_PATH'.
 
 #### Returns:
 - **String** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [String](string.md#string) :black_small_square: [Content](string.md#content) :black_small_square: [Methods](string.md#methods)</sub>
+
+----------
+### find()
+
+> method
+
+``` python
+find(search=None)
+```
+
+> Node [Find in String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/find_in_string.html)
+
+#### Information:
+- **Socket** : self
+
+
+
+#### Arguments:
+- **search** (_String_ = None) : socket 'Search' (id: Search)
+
+
+
+#### Returns:
+- **Integer** (_Integer_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [String](string.md#string) :black_small_square: [Content](string.md#content) :black_small_square: [Methods](string.md#methods)</sub>
+
+----------
+### find_in_string()
+
+> method
+
+``` python
+find_in_string(search=None)
+```
+
+> Node [Find in String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/find_in_string.html)
+
+#### Information:
+- **Socket** : self
+
+
+
+#### Arguments:
+- **search** (_String_ = None) : socket 'Search' (id: Search)
+
+
+
+#### Returns:
+- **Integer** (_Integer_)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [String](string.md#string) :black_small_square: [Content](string.md#content) :black_small_square: [Methods](string.md#methods)</sub>
 
@@ -130,7 +182,7 @@ hash_value(seed=None)
 > method
 
 ``` python
-__init__(value='', name=None, tip=None, panel=None, subtype='NONE', hide_value=False, hide_in_modifier=False)
+__init__(value='', name=None, tip=None, panel='', subtype='NONE', hide_value=False, hide_in_modifier=False)
 ```
 
 Socket of type String
@@ -143,7 +195,7 @@ A group input socket of type String is created if the name is not None.
 - **value** (_str or Socket_ = ) : initial value
 - **name** (_str_ = None) : group input socket name if not None
 - **tip** (_str_ = None) : user type for group input socket
-- **panel** (_str_ = None) : panel name (overrides tree pane if exists)
+- **panel** (_str_ = ) : panel name (overrides tree pane if exists)
 - **subtype** (_str in ('NONE', 'FILE_PATH')_ = NONE) : sub type for group input
 - **hide_value** (_bool_ = False) : Hide Value option
 - **hide_in_modifier** (_bool_ = False) : Hide in Modifier option
@@ -324,7 +376,7 @@ special_characters()
 > method
 
 ``` python
-to_curves(size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, align_x='LEFT', align_y='TOP_BASELINE', overflow='OVERFLOW', pivot_mode='BOTTOM_LEFT')
+to_curves(size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, align_x='LEFT', align_y='TOP_BASELINE', font=None, overflow='OVERFLOW', pivot_mode='BOTTOM_LEFT')
 ```
 
 > Node [String to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/string_to_curves.html)
@@ -342,6 +394,7 @@ to_curves(size=None, character_spacing=None, word_spacing=None, line_spacing=Non
 - **text_box_width** (_Float_ = None) : socket 'Text Box Width' (id: Text Box Width)
 - **align_x** (_str_ = LEFT) : parameter 'align_x' in ['LEFT', 'CENTER', 'RIGHT', 'JUSTIFY', 'FLUSH']
 - **align_y** (_str_ = TOP_BASELINE) : parameter 'align_y' in ['TOP', 'TOP_BASELINE', 'MIDDLE', 'BOTTOM_BASELINE', 'BOTTOM']
+- **font** (_Blender VectorFont | str_ = None) : VectorFont, or name of a valid font in bpy.types.fonts (see `utils.get_font`)
 - **overflow** (_str_ = OVERFLOW) : parameter 'overflow' in ['OVERFLOW', 'SCALE_TO_FIT', 'TRUNCATE']
 - **pivot_mode** (_str_ = BOTTOM_LEFT) : parameter 'pivot_mode' in ['MIDPOINT', 'TOP_LEFT', 'TOP_CENTER', 'TOP_RIGHT', 'BOTTOM_LEFT', 'BOTTOM_CENTER', 'BOTTOM_RIGHT']
 

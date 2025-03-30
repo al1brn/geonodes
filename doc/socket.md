@@ -282,7 +282,7 @@ uv_map = cuve.uv_map_
 > classmethod
 
 ``` python
-Input(name: str, panel: str | None = None)
+Input(name: str, panel: str = '')
 ```
 
 Get an group input from its name and panel
@@ -314,7 +314,7 @@ with GeoNodes("Geometry Nodes"):
 
 #### Arguments:
 - **name** (_str_) : socket name
-- **panel** (_str | None_ = None) : panel name
+- **panel** (_str_ = ) : panel name
 
 
 
@@ -362,7 +362,7 @@ with GeoNodes("Node label and color"):
 > classmethod
 
 ``` python
-MenuSwitch(items={'A': None, 'B': None}, menu=0, name='Menu', tip=None, panel=None, hide_value=False, hide_in_modifier=False, single_value=False)
+MenuSwitch(items={'A': None, 'B': None}, menu=0, name='Menu', tip=None, panel='', hide_value=False, hide_in_modifier=False, single_value=False)
 ```
 
 > Node [Menu Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/menu_switch.html)
@@ -391,7 +391,7 @@ with GeoNodes("Menu Switch demo"):
 - **menu** (_int or str_ = 0) : index or name of the default value
 - **name** (_str_ = Menu) : name of the group input socket
 - **tip** (_str_ = None) : user tip
-- **panel** (_str_ = None) : panel name (overrides tree panel if exists)
+- **panel** (_str_ = ) : panel name
 - **hide_value** (_bool_ = False) : Hide Value option
 - **hide_in_modifier** (_bool_ = False) : Hide in Modifier option
 - **single_value** (_bool_ = False) : Single Value option
@@ -409,7 +409,7 @@ with GeoNodes("Menu Switch demo"):
 > method
 
 ``` python
-menu_switch(self_name='A', items={'B': None}, menu=0, name='Menu', tip=None, panel=None, hide_value=False, hide_in_modifier=False, single_value=False)
+menu_switch(self_name='A', items={'B': None}, menu=0, name='Menu', tip=None, panel='', hide_value=False, hide_in_modifier=False, single_value=False)
 ```
 
 > Node [Menu Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/menu_switch.html)
@@ -440,7 +440,7 @@ with GeoNodes("Menu Switch demo"):
 - **menu** (_int or str_ = 0) : index or name of the default value
 - **name** (_str_ = Menu) : name of the group input socket
 - **tip** (_str_ = None) : user tip
-- **panel** ( = None)
+- **panel** (_str_ = ) : panel
 - **hide_value** ( = False)
 - **hide_in_modifier** ( = False)
 - **single_value** ( = False)

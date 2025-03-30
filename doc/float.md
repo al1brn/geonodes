@@ -1,7 +1,7 @@
 # Float
 
 ``` python
-Float(value=0.0, name=None, min=None, max=None, tip=None, panel=None, subtype='NONE', default_attribute='', hide_value=False, hide_in_modifier=False, single_value=False)
+Float(value=0.0, name=None, min=None, max=None, tip=None, panel='', subtype='NONE', default_attribute='', hide_value=False, hide_in_modifier=False, single_value=False)
 ```
 
 > Socket of type VALUE
@@ -28,7 +28,7 @@ float = Float(3.14, name="User input", subtype='ANGLE') # Create a new Float gro
 - **min** (_float_ = None) : minimum value
 - **max** (_float_ = None) : maximum value
 - **tip** (_str_ = None) : User tip (for Group Input sockets)
-- **panel** (_str_ = None) : panel name (overrides tree pane if exists)
+- **panel** (_str_ = ) : panel name (overrides tree pane if exists)
 - **subtype** (_str in ('NONE', 'PERCENTAGE', 'FACTOR', 'ANGLE', 'TIME', 'TIME_ABSOLUTE', 'DISTANCE', 'WAVELENGTH', 'COLOR_TEMPERATURE', 'FREQUENCY')_ = NONE) : sub type for group input
 - **default_attribute** (_str_ = ) : default attribute name
 - **hide_value** (_bool_ = False) : Hide Value option
@@ -153,7 +153,7 @@ add(value=None, use_clamp=False)
 > classmethod
 
 ``` python
-Angle(value=0.0, name='Angle', min=None, max=None, tip=None, panel=None, default_attribute='', hide_value=False, hide_in_modifier=False, single_value=False)
+Angle(value=0.0, name='Angle', min=None, max=None, tip=None, panel='', default_attribute='', hide_value=False, hide_in_modifier=False, single_value=False)
 ```
 
 > Angle group input
@@ -166,7 +166,7 @@ New [Float](float.md#float) input with subtype 'ANGLE'.
 - **min** ( = None)
 - **max** ( = None)
 - **tip** ( = None)
-- **panel** ( = None)
+- **panel** ( = )
 - **default_attribute** ( = )
 - **hide_value** ( = False)
 - **hide_in_modifier** ( = False)
@@ -486,7 +486,7 @@ color_ramp(stops=None, interpolation='LINEAR')
 > classmethod
 
 ``` python
-ColorTemperature(value=0.0, name='Color Temperature', min=None, max=None, tip=None, panel=None, default_attribute='', hide_value=False, hide_in_modifier=False, single_value=False)
+ColorTemperature(value=0.0, name='Color Temperature', min=None, max=None, tip=None, panel='', default_attribute='', hide_value=False, hide_in_modifier=False, single_value=False)
 ```
 
 > Color Temperature group input
@@ -499,7 +499,7 @@ New [Float](float.md#float) input with subtype 'COLOR_TEMPERATURE'.
 - **min** ( = None)
 - **max** ( = None)
 - **tip** ( = None)
-- **panel** ( = None)
+- **panel** ( = )
 - **default_attribute** ( = )
 - **hide_value** ( = False)
 - **hide_in_modifier** ( = False)
@@ -830,7 +830,7 @@ displacement(midlevel=None, scale=None, normal=None, space='OBJECT')
 > classmethod
 
 ``` python
-Distance(value=0.0, name='Distance', min=None, max=None, tip=None, panel=None, default_attribute='', hide_value=False, hide_in_modifier=False, single_value=False)
+Distance(value=0.0, name='Distance', min=None, max=None, tip=None, panel='', default_attribute='', hide_value=False, hide_in_modifier=False, single_value=False)
 ```
 
 > Distance group input
@@ -843,7 +843,7 @@ New [Float](float.md#float) input with subtype 'DISTANCE'.
 - **min** ( = None)
 - **max** ( = None)
 - **tip** ( = None)
-- **panel** ( = None)
+- **panel** ( = )
 - **default_attribute** ( = )
 - **hide_value** ( = False)
 - **hide_in_modifier** ( = False)
@@ -947,7 +947,7 @@ exp(use_clamp=False)
 > classmethod
 
 ``` python
-Factor(value=0.0, name='Factor', min=0, max=1, tip=None, panel=None, default_attribute='', hide_value=False, hide_in_modifier=False, single_value=False)
+Factor(value=0.0, name='Factor', min=0, max=1, tip=None, panel='', default_attribute='', hide_value=False, hide_in_modifier=False, single_value=False)
 ```
 
 > Factor group input
@@ -960,7 +960,7 @@ New [Float](float.md#float) input with subtype 'FACTOR'.
 - **min** ( = 0)
 - **max** ( = 1)
 - **tip** ( = None)
-- **panel** ( = None)
+- **panel** ( = )
 - **default_attribute** ( = )
 - **hide_value** ( = False)
 - **hide_in_modifier** ( = False)
@@ -1061,7 +1061,7 @@ fract(use_clamp=False)
 > classmethod
 
 ``` python
-Frequency(value=0.0, name='Frequency', min=None, max=None, tip=None, panel=None, default_attribute='', hide_value=False, hide_in_modifier=False, single_value=False)
+Frequency(value=0.0, name='Frequency', min=None, max=None, tip=None, panel='', default_attribute='', hide_value=False, hide_in_modifier=False, single_value=False)
 ```
 
 > Frequency group input
@@ -1074,7 +1074,7 @@ New [Float](float.md#float) input with subtype 'FREQUENCY'.
 - **min** ( = None)
 - **max** ( = None)
 - **tip** ( = None)
-- **panel** ( = None)
+- **panel** ( = )
 - **default_attribute** ( = )
 - **hide_value** ( = False)
 - **hide_in_modifier** ( = False)
@@ -1286,7 +1286,7 @@ hue_saturation_value(saturation=None, value=None, color=None, fac=None)
 > method
 
 ``` python
-__init__(value=0.0, name=None, min=None, max=None, tip=None, panel=None, subtype='NONE', default_attribute='', hide_value=False, hide_in_modifier=False, single_value=False)
+__init__(value=0.0, name=None, min=None, max=None, tip=None, panel='', subtype='NONE', default_attribute='', hide_value=False, hide_in_modifier=False, single_value=False)
 ```
 
 > Socket of type VALUE
@@ -1313,7 +1313,7 @@ float = Float(3.14, name="User input", subtype='ANGLE') # Create a new Float gro
 - **min** (_float_ = None) : minimum value
 - **max** (_float_ = None) : maximum value
 - **tip** (_str_ = None) : User tip (for Group Input sockets)
-- **panel** (_str_ = None) : panel name (overrides tree pane if exists)
+- **panel** (_str_ = ) : panel name (overrides tree pane if exists)
 - **subtype** (_str in ('NONE', 'PERCENTAGE', 'FACTOR', 'ANGLE', 'TIME', 'TIME_ABSOLUTE', 'DISTANCE', 'WAVELENGTH', 'COLOR_TEMPERATURE', 'FREQUENCY')_ = NONE) : sub type for group input
 - **default_attribute** (_str_ = ) : default attribute name
 - **hide_value** (_bool_ = False) : Hide Value option
@@ -2064,7 +2064,7 @@ out(name=None, **props)
 > classmethod
 
 ``` python
-Percentage(value=0.0, name='Percentage', min=0, max=100, tip=None, panel=None, default_attribute='', hide_value=False, hide_in_modifier=False, single_value=False)
+Percentage(value=0.0, name='Percentage', min=0, max=100, tip=None, panel='', default_attribute='', hide_value=False, hide_in_modifier=False, single_value=False)
 ```
 
 > Percentage group input
@@ -2077,7 +2077,7 @@ New [Float](float.md#float) input with subtype 'PERCENTAGE'.
 - **min** ( = 0)
 - **max** ( = 100)
 - **tip** ( = None)
-- **panel** ( = None)
+- **panel** ( = )
 - **default_attribute** ( = )
 - **hide_value** ( = False)
 - **hide_in_modifier** ( = False)
@@ -2655,7 +2655,7 @@ tanh(use_clamp=False)
 > classmethod
 
 ``` python
-Time(value=0.0, name='Time', min=None, max=None, tip=None, panel=None, default_attribute='', hide_value=False, hide_in_modifier=False, single_value=False)
+Time(value=0.0, name='Time', min=None, max=None, tip=None, panel='', default_attribute='', hide_value=False, hide_in_modifier=False, single_value=False)
 ```
 
 > Time group input
@@ -2668,7 +2668,7 @@ New [Float](float.md#float) input with subtype 'TIME'.
 - **min** ( = None)
 - **max** ( = None)
 - **tip** ( = None)
-- **panel** ( = None)
+- **panel** ( = )
 - **default_attribute** ( = )
 - **hide_value** ( = False)
 - **hide_in_modifier** ( = False)
@@ -2687,7 +2687,7 @@ New [Float](float.md#float) input with subtype 'TIME'.
 > classmethod
 
 ``` python
-TimeAbsolute(value=0.0, name='Time Absolute', min=None, max=None, tip=None, panel=None, default_attribute='', hide_value=False, hide_in_modifier=False, single_value=False)
+TimeAbsolute(value=0.0, name='Time Absolute', min=None, max=None, tip=None, panel='', default_attribute='', hide_value=False, hide_in_modifier=False, single_value=False)
 ```
 
 > Time Absolute group input
@@ -2700,7 +2700,7 @@ New [Float](float.md#float) input with subtype 'TIME_ABSOLUTE'.
 - **min** ( = None)
 - **max** ( = None)
 - **tip** ( = None)
-- **panel** ( = None)
+- **panel** ( = )
 - **default_attribute** ( = )
 - **hide_value** ( = False)
 - **hide_in_modifier** ( = False)
@@ -2856,7 +2856,7 @@ Voronoi(vector=None, scale=None, detail=None, roughness=None, lacunarity=None, r
 > classmethod
 
 ``` python
-WaveLength(value=0.0, name='Wave Length', min=None, max=None, tip=None, panel=None, default_attribute='', hide_value=False, hide_in_modifier=False, single_value=False)
+WaveLength(value=0.0, name='Wave Length', min=None, max=None, tip=None, panel='', default_attribute='', hide_value=False, hide_in_modifier=False, single_value=False)
 ```
 
 > Wave Length group input
@@ -2869,7 +2869,7 @@ New [Float](float.md#float) input with subtype 'WAVELENGTH'.
 - **min** ( = None)
 - **max** ( = None)
 - **tip** ( = None)
-- **panel** ( = None)
+- **panel** ( = )
 - **default_attribute** ( = )
 - **hide_value** ( = False)
 - **hide_in_modifier** ( = False)

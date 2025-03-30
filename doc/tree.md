@@ -1,7 +1,7 @@
 # Tree
 
 ``` python
-Tree(tree_name: str, tree_type: str = 'GeometryNodeTree', clear: bool = True, fake_user: bool = False, is_group: bool = False, prefix: str | None = None)
+Tree(tree_name: str, tree_type: str = 'GeometryNodeTree', clear: bool = True, fake_user: bool = False, is_group: bool = False, prefix: str = '')
 ```
 
 Root class for [GeoNodes](geonodes.md#geonodes) and [ShaderNodes](shadernodes.md#shadernodes) trees.
@@ -44,14 +44,14 @@ The 'panel' argument is the default name to use when the tree is called from ano
 - **clear** (_bool_ = True) : clear the current tree
 - **fake_user** (_bool_ = False) : fake user flag
 - **is_group** (_bool_ = False) : Group or not
-- **prefix** (_str | None_ = None) : str prefix to add at the beging of the tree name
+- **prefix** (_str_ = ) : str prefix to add at the beging of the tree name
 
 ## Content
 
 - **A** : [arrange](tree.md#arrange)
 - **C** : [clear](tree.md#clear)
 - **I** : [\_\_init__](tree.md#__init__) :black_small_square: [input_node](tree.md#input_node)
-- **L** : [link](tree.md#link) :black_small_square: [link_nodes](tree.md#link_nodes)
+- **L** : [link](tree.md#link) :black_small_square: [link_nodes](tree.md#link_nodes) :black_small_square: [link_nodes_OLD](tree.md#link_nodes_old)
 - **N** : [new_input](tree.md#new_input) :black_small_square: [new_input_from_input_socket](tree.md#new_input_from_input_socket) :black_small_square: [new_output](tree.md#new_output)
 - **O** : [output_node](tree.md#output_node)
 - **P** : [pop](tree.md#pop) :black_small_square: [push](tree.md#push)
@@ -128,7 +128,7 @@ Remove all the nodes in the Tree.
 > method
 
 ``` python
-__init__(tree_name: str, tree_type: str = 'GeometryNodeTree', clear: bool = True, fake_user: bool = False, is_group: bool = False, prefix: str | None = None)
+__init__(tree_name: str, tree_type: str = 'GeometryNodeTree', clear: bool = True, fake_user: bool = False, is_group: bool = False, prefix: str = '')
 ```
 
 Root class for [GeoNodes](geonodes.md#geonodes) and [ShaderNodes](shadernodes.md#shadernodes) trees.
@@ -171,7 +171,7 @@ The 'panel' argument is the default name to use when the tree is called from ano
 - **clear** (_bool_ = True) : clear the current tree
 - **fake_user** (_bool_ = False) : fake user flag
 - **is_group** (_bool_ = False) : Group or not
-- **prefix** (_str | None_ = None) : str prefix to add at the beging of the tree name
+- **prefix** (_str_ = ) : str prefix to add at the beging of the tree name
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Tree](tree.md#tree) :black_small_square: [Content](tree.md#content) :black_small_square: [Methods](tree.md#methods)</sub>
 
@@ -203,7 +203,7 @@ link(out_socket, in_socket)
 > method
 
 ``` python
-link_nodes(from_node, to_node, include=None, exclude=[], create=True, panel=None)
+link_nodes(from_node, to_node, include=None, exclude=[], create=True, panel='')
 ```
 
 Link two nodes
@@ -211,12 +211,35 @@ Link two nodes
 If from_node is a Group Input node, the necessary sockets can be created if 'create' argument is True.
 
 #### Arguments:
-- **from_node** : the node to get the outputs from
+- **from_node** : the node to get the outputs from (i.e. tree Input Node)
 - **to_node** : the node to plug into
 - **include** (_list_ = None) : connect only the sockets in the list (or panels)
 - **exclude** (_list_ = []) : exclude sockets in this list (or panels)
 - **create** ( = True) : create tree input sockets  (i.e. node output sockets) in from_node if it is a 'Group Input Node'
-- **panel** ( = None) : panel name to create, use tree default name if None
+- **panel** (_str_ = ) : panel name to create, use tree default name if None
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Tree](tree.md#tree) :black_small_square: [Content](tree.md#content) :black_small_square: [Methods](tree.md#methods)</sub>
+
+----------
+### link_nodes_OLD()
+
+> method
+
+``` python
+link_nodes_OLD(from_node, to_node, include=None, exclude=[], create=True, panel='')
+```
+
+Link two nodes
+
+If from_node is a Group Input node, the necessary sockets can be created if 'create' argument is True.
+
+#### Arguments:
+- **from_node** : the node to get the outputs from (i.e. tree Input Node)
+- **to_node** : the node to plug into
+- **include** (_list_ = None) : connect only the sockets in the list (or panels)
+- **exclude** (_list_ = []) : exclude sockets in this list (or panels)
+- **create** ( = True) : create tree input sockets  (i.e. node output sockets) in from_node if it is a 'Group Input Node'
+- **panel** (_str_ = ) : panel name to create, use tree default name if None
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Tree](tree.md#tree) :black_small_square: [Content](tree.md#content) :black_small_square: [Methods](tree.md#methods)</sub>
 
@@ -226,7 +249,7 @@ If from_node is a Group Input node, the necessary sockets can be created if 'cre
 > classmethod
 
 ``` python
-new_input(bl_idname, name, value=None, panel=None, force_create=False, **props)
+new_input(bl_idname, name, value=None, panel='', force_create=False, **props)
 ```
 
 Create a new input socket.
@@ -234,10 +257,10 @@ Create a new input socket.
 This is an **input socket** of the Tree, hence an **output socket** of the ERROR: Node 'Input' not found node.
 
 #### Arguments:
-- **bl_idname** (_str_) : socket bl_idname - name (str): Socket name - value (Any = None) : Default value - panel (str = None) : Panel to place the socket in - force_create (bool = False) : create the socket even if an homonym exists - props : properties specific to interface socket
+- **bl_idname** (_str_) : socket bl_idname - name (str): Socket name - value (Any = None) : Default value - panel (str = "") : Panel to place the socket in - force_create (bool = False) : create the socket even if an homonym exists - props : properties specific to interface socket
 - **name**
 - **value** ( = None)
-- **panel** ( = None)
+- **panel** ( = )
 - **force_create** ( = False)
 - **props**
 
@@ -254,7 +277,7 @@ This is an **input socket** of the Tree, hence an **output socket** of the ERROR
 > classmethod
 
 ``` python
-new_input_from_input_socket(input_socket, name=None, panel=None, force_create=False)
+new_input_from_input_socket(input_socket, name=None, panel='', force_create=False)
 ```
 
 Create a new group input socket from an existing input socket.
@@ -262,7 +285,7 @@ Create a new group input socket from an existing input socket.
 #### Arguments:
 - **input_socket** (_socket_) : a node input _insocket
 - **name** (_str_ = None) : name of the group input socket to create
-- **panel** (_str_ = None) : name of the panel
+- **panel** (_str_ = ) : name of the panel
 - **force_create** (_bool_ = False) : create even if a socket with the same name exists
 
 
@@ -278,7 +301,7 @@ Create a new group input socket from an existing input socket.
 > method
 
 ``` python
-new_output(bl_idname, name, panel=None, **props)
+new_output(bl_idname, name, panel='', **props)
 ```
 
 Create a new output socket.
@@ -286,9 +309,9 @@ Create a new output socket.
 This is an **output socket** of the Tree, hence an input socket of the [Output](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/output/output.html) node.
 
 #### Arguments:
-- **bl_idname** (_str_) : socket bl_idname - name (str) : Socket name
-- **name**
-- **panel** ( = None)
+- **bl_idname** (_str_) : socket bl_idname
+- **name** (_str_) : Socket name
+- **panel** (_str_ = ) : Panel name
 - **props**
 
 

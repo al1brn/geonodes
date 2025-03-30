@@ -1,74 +1,109 @@
 # G
 
 ``` python
-G(/, *args, **kwargs)
+G(prefix: str = '', verbose: bool = False)
 ```
 
 Group functional call
 
-This weird class is empty but two static methods aimed at building dynamic static functions.
+This class is provided to expose ***Group*** nodes as functions with keyword arguments.
 
-For each built Tree, a function is created in class G (for Groups).
-To call the created group, the function syntax can be used rather than instantiating the Group Node.
+For instance, let's create a group with 3 input sockets named `Geometry`, `Position` and `Parameter` in
+this order:
 
-Let's suppose we have the following group.
 
 ``` python
-with GeoNodes("Translate Geometry"):
-    v = Vector(0, "Translation")
-    factor = Float.Factor(1, "Factor")
-
-    Geometry().transform(translation=v*factor).out()
+with GeoNodes("Deform Function"):
+    geo = Geometry()
+    pos = Vector.Position()
+    param = Float(0, "Parameter")
+    # ...
+    geo.out()
 ```
 
-The created group can be called in another tree following the two possible syntax:
+To use this group in another tree, you can write:
 
 ``` python
-with GeoNodes("Calling a Group"):
+with GeoNodes("Modifier"):
+
+    node = Group("Deform Function", {'geometry': Mesh.Cube(), 'position': (1, 2, 3), 'parameter': 3.14})
+
+    # or
+
+    node = Group("Deform Function", geometry=Mesh.Cube(), position = nd.position, parameter = 3.14)
+```
+
+The clas G provides a functional interface for the node. You simply use the snake case version
+of the node name:
+
+``` python
+my_geo = G().deform_function(Mesh.Cube(), position=nd.position, parameter=3.14)
+
+# NOTE: the first output socket is returned
+# If you need the node, simply use:
+
+node = my_geo.node
+```
+
+As for any function or method, you can omit the argument names if you are sure of the order of the
+sockets. This is for instance the case for the `Geometry` socket which remains the first.
+
+#### Prefixes
+
+In big projects, you may want to prefix your groups and modifiers to structure them.
+The ***G*** class accepts prefix and use it to build the full name of the tree you are looking for.
+
+The code above could be replaced by:
+
+``` python
+my_geo = G("Deform").function(Mesh.Cube(), position=nd.position, parameter=3.14)
+```
+
+This allows to regroup modifiers of the same family in a kind of meta class:
+
+``` python
+# Prefix for deform modifiers
+deform = Group("Deform")
+
+with Group("Function 1", prefix=deform):
+    pass
+
+with Group("Function 2", prefix=deform):
+    pass
+
+with Group("Function 3", prefix=deform):
+    pass
+
+with Group("Main"):
 
     geo = Geometry()
+    geo = deform.function_1(geo)
+    geo = deform.function_2(geo)
+    geo = deform.function_3(geo)
 
-    # ----- Instantiate a node Group by its name
-
-    geo = Group("Translate Geometry", geometry=geo).geometry
-
-    # Or with parameters
-
-    geo = Group("Translate Geometry", geometry=geo, translation=(1, 0, 0), factor=.5).geometry
-
-
-    # ----- Function call
-
-    geo = G.translate_geometry(geo)
-
-    # Or with parameters
-    # be sure of the sockets order if you don't use keyword argument syntax
-
-    geo = G.translate_geometry(geo, (1, 0, 0), .5)
+    geo.out()
 ```
 
 #### Arguments:
-- **args**
-- **kwargs**
-
-### Inherited
+- **prefix** (_str_ = ) : prefix to use when searching a tree
+- **verbose** (_bool_ = False) : print the function header in the console
 
 ## Content
 
-- [build_from_tree](g.md#build_from_tree)
-- [build_functions](g.md#build_functions)
+- [build_function](g.md#build_function)
+- [\_\_init__](g.md#__init__)
 
 ## Methods
 
 
 
 ----------
-### build_from_tree()
+### build_function()
 
-> staticmethod
+> method
 
 ``` python
-build_from_tree(btree, prefix='')
+build_function(btree)
 ```
 
 Dynamically create a function to call the tree as Group
@@ -77,7 +112,6 @@ The name of the function is the snake case version of the tree name.
 
 #### Arguments:
 - **btree** (_Blender GeometryNodeTree | ShaderNodeTree_) : the tree
-- **prefix** (_str_ = ) : function prefix
 
 
 
@@ -87,22 +121,96 @@ The name of the function is the snake case version of the tree name.
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [G](g.md#g) :black_small_square: [Content](g.md#content) :black_small_square: [Methods](g.md#methods)</sub>
 
 ----------
-### build_functions()
+### \_\_init__()
 
-> staticmethod
+> method
 
 ``` python
-build_functions(prefixes=[])
+__init__(prefix: str = '', verbose: bool = False)
 ```
 
-Dynamically create a function for each node group
+Group functional call
+
+This class is provided to expose ***Group*** nodes as functions with keyword arguments.
+
+For instance, let's create a group with 3 input sockets named `Geometry`, `Position` and `Parameter` in
+this order:
+
+
+``` python
+with GeoNodes("Deform Function"):
+    geo = Geometry()
+    pos = Vector.Position()
+    param = Float(0, "Parameter")
+    # ...
+    geo.out()
+```
+
+To use this group in another tree, you can write:
+
+``` python
+with GeoNodes("Modifier"):
+
+    node = Group("Deform Function", {'geometry': Mesh.Cube(), 'position': (1, 2, 3), 'parameter': 3.14})
+
+    # or
+
+    node = Group("Deform Function", geometry=Mesh.Cube(), position = nd.position, parameter = 3.14)
+```
+
+The clas G provides a functional interface for the node. You simply use the snake case version
+of the node name:
+
+``` python
+my_geo = G().deform_function(Mesh.Cube(), position=nd.position, parameter=3.14)
+
+# NOTE: the first output socket is returned
+# If you need the node, simply use:
+
+node = my_geo.node
+```
+
+As for any function or method, you can omit the argument names if you are sure of the order of the
+sockets. This is for instance the case for the `Geometry` socket which remains the first.
+
+#### Prefixes
+
+In big projects, you may want to prefix your groups and modifiers to structure them.
+The ***G*** class accepts prefix and use it to build the full name of the tree you are looking for.
+
+The code above could be replaced by:
+
+``` python
+my_geo = G("Deform").function(Mesh.Cube(), position=nd.position, parameter=3.14)
+```
+
+This allows to regroup modifiers of the same family in a kind of meta class:
+
+``` python
+# Prefix for deform modifiers
+deform = Group("Deform")
+
+with Group("Function 1", prefix=deform):
+    pass
+
+with Group("Function 2", prefix=deform):
+    pass
+
+with Group("Function 3", prefix=deform):
+    pass
+
+with Group("Main"):
+
+    geo = Geometry()
+    geo = deform.function_1(geo)
+    geo = deform.function_2(geo)
+    geo = deform.function_3(geo)
+
+    geo.out()
+```
 
 #### Arguments:
-- **prefixes** (_list of strs_ = []) : function prefixes
-
-
-
-#### Returns:
-- **None** :
+- **prefix** (_str_ = ) : prefix to use when searching a tree
+- **verbose** (_bool_ = False) : print the function header in the console
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [G](g.md#g) :black_small_square: [Content](g.md#content) :black_small_square: [Methods](g.md#methods)</sub>

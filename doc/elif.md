@@ -1,7 +1,7 @@
 # Elif
 
 ``` python
-Elif(socket, menu=None)
+Elif(socket, menu=None, tip='')
 ```
 
 Block "elif" in the if ... elif ... mimicing
@@ -18,6 +18,7 @@ This class adds an option to "Index Switch" or "Menu Switch" node.
 #### Arguments:
 - **socket** (_Socket_) : socket initialized with a <!If>
 - **menu** (_str_ = None) : the name of the option for "Menu Switch" (ignored in "Index Switch")
+- **tip** (_str_ = ) : Layout label
 
 ### Inherited
 
@@ -37,7 +38,7 @@ This class adds an option to "Index Switch" or "Menu Switch" node.
 > method
 
 ``` python
-__init__(socket, menu=None)
+__init__(socket, menu=None, tip='')
 ```
 
 Block "elif" in the if ... elif ... mimicing
@@ -54,5 +55,6 @@ This class adds an option to "Index Switch" or "Menu Switch" node.
 #### Arguments:
 - **socket** (_Socket_) : socket initialized with a <!If>
 - **menu** (_str_ = None) : the name of the option for "Menu Switch" (ignored in "Index Switch")
+- **tip** (_str_ = ) : Layout label
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Elif](elif.md#elif) :black_small_square: [Content](elif.md#content) :black_small_square: [Methods](elif.md#methods)</sub>

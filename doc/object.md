@@ -1,7 +1,7 @@
 # Object
 
 ``` python
-Object(value=None, name=None, tip=None, panel=None, hide_value=False, hide_in_modifier=False)
+Object(value=None, name=None, tip=None, panel='', hide_value=False, hide_in_modifier=False)
 ```
 
 Class Object data socket
@@ -10,7 +10,7 @@ Class Object data socket
 - **value** (_bpy.types.Object or str_ = None) : object or object name in bpy.data.objects
 - **name** (_str_ = None) : create a group input socket of type Object if not None
 - **tip** (_str_ = None) : user tip for group input socket
-- **panel** (_str_ = None) : panel name (overrides tree panel if exists)
+- **panel** (_str_ = ) : panel name (overrides tree panel if exists)
 - **hide_value** (_bool_ = False) : Hide Value option
 - **hide_in_modifier** (_bool_ = False) : Hide in Modifier option
 
@@ -78,7 +78,7 @@ info(as_instance=None, transform_space='ORIGINAL')
 > method
 
 ``` python
-__init__(value=None, name=None, tip=None, panel=None, hide_value=False, hide_in_modifier=False)
+__init__(value=None, name=None, tip=None, panel='', hide_value=False, hide_in_modifier=False)
 ```
 
 Class Object data socket
@@ -87,7 +87,7 @@ Class Object data socket
 - **value** (_bpy.types.Object or str_ = None) : object or object name in bpy.data.objects
 - **name** (_str_ = None) : create a group input socket of type Object if not None
 - **tip** (_str_ = None) : user tip for group input socket
-- **panel** (_str_ = None) : panel name (overrides tree panel if exists)
+- **panel** (_str_ = ) : panel name (overrides tree panel if exists)
 - **hide_value** (_bool_ = False) : Hide Value option
 - **hide_in_modifier** (_bool_ = False) : Hide in Modifier option
 

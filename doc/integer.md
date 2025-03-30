@@ -1,7 +1,7 @@
 # Integer
 
 ``` python
-Integer(value=0, name=None, min=None, max=None, tip=None, panel=None, subtype='NONE', default_attribute='', default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False)
+Integer(value=0, name=None, min=None, max=None, tip=None, panel='', subtype='NONE', default_attribute='', default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False)
 ```
 
 > Socket of type INTEGER
@@ -28,7 +28,7 @@ i = Integer(123, name="User input", subtype='PERCENTAGE') # Create a new integer
 - **min** (_float_ = None) : minimum value
 - **max** (_float_ = None) : maximum value
 - **tip** (_str_ = None) : User tip (for Group Input sockets)
-- **panel** (_str_ = None) : panel name (overrides tree panel if exists)
+- **panel** (_str_ = ) : panel name (overrides tree panel if exists)
 - **subtype** (_str in ('NONE', 'PERCENTAGE', 'FACTOR')_ = NONE) : sub type for group input
 - **default_attribute** (_str_ = ) : default attribute name
 - **default_input** (_str in ('VALUE', 'INDEX', 'ID_OR_INDEX')_ = VALUE) : default input
@@ -281,7 +281,7 @@ equal(b=None)
 > classmethod
 
 ``` python
-Factor(value=0, name='Factor', min=0, max=100, tip=None, panel=None, default_attribute='', default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False)
+Factor(value=0, name='Factor', min=0, max=100, tip=None, panel='', default_attribute='', default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False)
 ```
 
 > Integer factor group input
@@ -294,7 +294,7 @@ New [Integer](integer.md#integer) input with subtype 'FACTOR'.
 - **min** ( = 0)
 - **max** ( = 100)
 - **tip** ( = None)
-- **panel** ( = None)
+- **panel** ( = )
 - **default_attribute** ( = )
 - **default_input** ( = VALUE)
 - **hide_value** ( = False)
@@ -453,7 +453,7 @@ hash_value(seed=None)
 > classmethod
 
 ``` python
-IdOrIndex(name='ID or Index', tip=None, panel=None, hide_in_modifier=True)
+IdOrIndex(name='ID or Index', tip=None, panel='', hide_in_modifier=True)
 ```
 
 > ID or Index Integer group input
@@ -466,7 +466,7 @@ New [Integer](integer.md#integer) input with 'ID or Index' as default value (def
 #### Arguments:
 - **name** ( = ID or Index)
 - **tip** ( = None)
-- **panel** ( = None)
+- **panel** ( = )
 - **hide_in_modifier** ( = True)
 
 
@@ -482,7 +482,7 @@ New [Integer](integer.md#integer) input with 'ID or Index' as default value (def
 > classmethod
 
 ``` python
-Index(name='Index', tip=None, panel=None, hide_in_modifier=True)
+Index(name='Index', tip=None, panel='', hide_in_modifier=True)
 ```
 
 > Index Integer group input
@@ -495,7 +495,7 @@ New [Integer](integer.md#integer) input with Index as default value (default_inp
 #### Arguments:
 - **name** ( = Index)
 - **tip** ( = None)
-- **panel** ( = None)
+- **panel** ( = )
 - **hide_in_modifier** ( = True)
 
 
@@ -511,7 +511,7 @@ New [Integer](integer.md#integer) input with Index as default value (default_inp
 > method
 
 ``` python
-__init__(value=0, name=None, min=None, max=None, tip=None, panel=None, subtype='NONE', default_attribute='', default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False)
+__init__(value=0, name=None, min=None, max=None, tip=None, panel='', subtype='NONE', default_attribute='', default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False)
 ```
 
 > Socket of type INTEGER
@@ -538,7 +538,7 @@ i = Integer(123, name="User input", subtype='PERCENTAGE') # Create a new integer
 - **min** (_float_ = None) : minimum value
 - **max** (_float_ = None) : maximum value
 - **tip** (_str_ = None) : User tip (for Group Input sockets)
-- **panel** (_str_ = None) : panel name (overrides tree panel if exists)
+- **panel** (_str_ = ) : panel name (overrides tree panel if exists)
 - **subtype** (_str in ('NONE', 'PERCENTAGE', 'FACTOR')_ = NONE) : sub type for group input
 - **default_attribute** (_str_ = ) : default attribute name
 - **default_input** (_str in ('VALUE', 'INDEX', 'ID_OR_INDEX')_ = VALUE) : default input
@@ -903,7 +903,7 @@ not_equal(b=None)
 > classmethod
 
 ``` python
-Percentage(value=0, name='Percentage', min=0, max=100, tip=None, panel=None, default_attribute='', default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False)
+Percentage(value=0, name='Percentage', min=0, max=100, tip=None, panel='', default_attribute='', default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False)
 ```
 
 > Integer percentage group input
@@ -916,7 +916,7 @@ New [Integer](integer.md#integer) input with subtype 'PERCENTAGE'.
 - **min** ( = 0)
 - **max** ( = 100)
 - **tip** ( = None)
-- **panel** ( = None)
+- **panel** ( = )
 - **default_attribute** ( = )
 - **default_input** ( = VALUE)
 - **hide_value** ( = False)
