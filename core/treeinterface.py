@@ -1323,7 +1323,7 @@ class TreeInterface:
 
             if socket.socket_type == 'NodeSocketGeometry':
                 if not first:
-                    self.btree.move_to_parent(socket, None, 0)
+                    self.btree.interface.move_to_parent(socket, None, 0)
 
                 if socket.description == DELETION:
                     socket.description = ""

@@ -1144,3 +1144,170 @@ def list_to_curves(points_list, curves):
             to_del = [p for p in curve.points[len(points):]]
             for p in to_del:
                 curve.points.remove(p)
+
+# =============================================================================================================================
+# Zones consistency checks
+
+def set_node_error(bnode):
+    bnode.use_custom_color = True
+    bnode.color = (1, 0, 0)
+    return bnode
+
+# -----------------------------------------------------------------------------------------------------------------------------
+# Feeding nodes
+
+def feeding_nodes(bnode: 'Blender Node') -> list:
+    """ Get all the nodes feeding a node
+
+    A "feeding" node is a node connected directly or indirectly to at least one input socket.
+
+    Arguments
+    ---------
+    - bnode : the node the get the feeding nodes
+
+    Returns
+    -------
+    - list of Nodes : the nodes feeding the argument
+    """
+
+    def trace(bnode, feeders):
+        for in_sock in bnode.inputs:
+            for link in in_sock.links:
+
+                n = link.from_node
+
+                if n.name == bnode.name:
+                    bnode.color = (1, 0, 0)
+                    raise Exception(f"Node '{bnode.name}' is linked to himself")
+
+                if n not in feeders:
+                    feeders.append(n)
+                    trace(n, feeders)
+
+    feeders = []
+
+    trace(bnode, feeders)
+
+    return feeders
+
+# -----------------------------------------------------------------------------------------------------------------------------
+# Nodes which are fed
+
+def fed_nodes(bnode: 'Blender Node') -> bool:
+    """ Get all the nodes which are fed by the node argument
+
+    A "feeding" node is a node connected directly or indirectly to at least one input socket.
+
+    Arguments
+    ---------
+    - bnode : the node the get the fed nodes
+
+    Returns
+    -------
+    - list of Nodes : the nodes fed by the argument
+    """
+
+    def trace(bnode, feds):
+        for out_sock in bnode.outputs:
+            for link in out_sock.links:
+
+                n = link.to_node
+
+                if n.name == bnode.name:
+                    bnode.color = (1, 0, 0)
+                    raise Exception(f"Node '{bnode.name}' is linked to himself")
+
+
+                if n not in feds:
+                    feds.append(n)
+                    trace(n, feds)
+
+    feds = []
+
+    trace(bnode, feds)
+
+    return feds
+
+# -----------------------------------------------------------------------------------------------------------------------------
+# Nodes fed by a zone input node
+
+def zone_inner_nodes(zone_input):
+    """ Nodes within a zone
+
+    A node is in the zone if the zone input node feeds the node AND the node feeds the zone output node
+    """
+
+    def trace(bnode, inners):
+        for out_sock in bnode.outputs:
+            for link in out_sock.links:
+
+                n = link.to_node
+                if n in inners:
+                    continue
+
+                if n.name == zone_input.paired_output.name:
+                    continue
+
+                inners.append(n)
+                trace(n, inners)
+
+        return inners
+
+    return trace(zone_input, [])
+
+
+# -----------------------------------------------------------------------------------------------------------------------------
+# Check nodes which raise problem for zones
+
+def check_zones(btree: 'Blender Tree') -> bool:
+    """ Check the zones are consistent
+
+    A problem is raised if a node is fed by zone input and:
+    - either feeds a node fed by the zone output
+    - or feeds the tree output
+
+    Arguments
+    ---------
+    - btree : the tree to work with
+
+    Raises
+    ------
+    - NodeError in case of a problem
+
+    Returns
+    -------
+    - bool : True
+    """
+
+    # ----- Loop on the zones
+
+    for zone_input in btree.nodes:
+
+        # Only input zone nodes
+        zone_output = getattr(zone_input, 'paired_output', None)
+        if zone_output is None:
+            continue
+
+        # Nodes fed by zone input
+        inners = zone_inner_nodes(zone_input)
+
+        # Nodes fed by zone output
+        outers = fed_nodes(zone_output)
+
+        # Loop on the inner nodes
+        for node in inners:
+            # Error 1 : Group output is fed by zone input
+            if node.bl_idname == 'NodeGroupOutput':
+                set_node_error(zone_input)
+                set_node_error(node)
+
+                raise NodeError("Zone input node is connected to group output")
+
+            # Error 2 : inner node also fed by zone output node
+            if node in outers:
+                set_node_error(zone_input)
+                set_node_error(zone_output)
+                set_node_error(node)
+                raise NodeError(f"Node '{node.name}' belongs to a zone but is also fed by zone Output'")
+
+    return True

@@ -646,7 +646,11 @@ class Tree:
         if '_bsocket' in dir(in_socket):
             in_socket = in_socket._bsocket
 
-        return self._btree.links.new(out_socket, in_socket)
+        link = self._btree.links.new(out_socket, in_socket)
+
+        utils.check_zones(self._btree)
+
+        return link
 
     # =============================================================================================================================
     # Tree Input / Output
@@ -1030,6 +1034,9 @@ class Tree:
             # ----- We can link
 
             self._btree.links.new(in_socket, out_sockets[name])
+
+        utils.check_zones(self._btree)
+
 
 
     # -----------------------------------------------------------------------------------------------------------------------------
