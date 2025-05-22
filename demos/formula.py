@@ -774,6 +774,7 @@ def build_groups():
         tree.points.sample_index(Float(    "Factor"),   index=index).out("Factor")
         tree.points.sample_index(Integer(  "Param"),    index=index).out("Parameter")
 
+        tree.points.sample_index(Boolean(  "Set Color"),index=index).out("Set Color")
         tree.points.sample_index(Color(    "Color"),    index=index).out("Color")
         tree.points.sample_index(Float(    "Fade"),     index=index).out("Fade")
         tree.points.sample_index(Integer(  "Mat Index"),index=index).out("Mat Index")
@@ -882,6 +883,7 @@ def build_groups():
         tree.points[selection]._Param  = Integer(0,       "Parameter")
 
         with Panel("Aspect"):
+            tree.points[selection]._Set_color = Boolean(None,   "Set Color")
             tree.points[selection]._Color     = Color(None,     "Color")
             tree.points[selection]._Fade      = Float(0,        "Fade")
             tree.points[selection]._Mat_Index = Integer(0,      "Material Index")
@@ -900,6 +902,55 @@ def build_groups():
     # Compilation
     # =============================================================================================================================
     # =============================================================================================================================
+
+    # =============================================================================================================================
+    # Rotation parameter
+
+    with GeoNodes("Transform", prefix=util_prefix, is_group=True):
+        """ Rotate a term
+
+        Arguments
+        ---------
+        - Mesh
+        - Scale X (Float)
+        - Scale Y (Float)
+        - Rotation (Angle)
+        - Set Color (Boolean)
+        - Color (Color)
+        - Fade (Float)
+        - Selection (Boolean = True) : selection
+
+        Returns
+        -------
+        - Mesh : Transformed Mesh
+        """
+
+        # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+
+        mesh    = Mesh(None, "Mesh")
+        scale_x = Float(1, "Scale X")
+        scale_y = Float(1, "Scale Y")
+        rot     = Float.Angle(0, "Rotation")
+        set_col = Boolean(False, "Set Color")
+        color   = Color(0, "Color")
+        fade    = Float(0, "Fade")
+        sel     = Boolean(True, "Selection")
+
+        # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+
+        mesh.faces[sel].separate()
+        inv_mesh = mesh.inverted_
+
+        center = mesh.points.attribute_statistic(nd.position).mean
+        mesh.transform(translation=-center)
+        mesh.transform(translation=center, rotation=(0, 0, rot), scale=(scale_x, scale_y, 1))
+        col_mesh = Mesh(mesh)
+        col_mesh.faces._Color = color
+        col_mesh.faces._Fade  = fade
+        mesh = mesh.switch(set_col, col_mesh)
+
+        mesh += inv_mesh
+        mesh.out()
 
     # =============================================================================================================================
     # GROUP : Children concatenation
@@ -949,6 +1000,7 @@ def build_groups():
 
             new_mesh = Mesh(mesh)
             new_mesh.points[child_sel].offset = (rep.x, 0, 0)
+            new_mesh.faces[child_sel]._Work = True
             vmax = new_mesh.points[child_sel].attribute_statistic(nd.position).max
             vmin = vmax.min_
             width = vmax.x - vmin.x
@@ -1006,6 +1058,8 @@ def build_groups():
         work.faces._Color = id_info.color
         work.points.position *= (id_info.scale_x, id_info.scale_y, 1)
 
+        work.faces._Work = True
+
         mesh += work
 
         mesh.out("Mesh")
@@ -1050,7 +1104,11 @@ def build_groups():
 
         symb_ref = Mesh(GChar.symbol(symbol=code, parameter=param))
         symb_ref.faces._Ref_ID = 1
-        mesh += macro_create_work(symb_ref, 1, node_id, explore)
+
+        symb = Mesh(macro_create_work(symb_ref, 1, node_id, explore))
+        symb.faces._Work = True
+
+        mesh += symb
 
         mesh.out("Mesh")
 
@@ -1116,8 +1174,11 @@ def build_groups():
 
         deco = deco.transform(translation=(-xmin, 0, 0)).transform(scale=(factor, 1, 1)).transform(translation=(xmin, 0, 0))
         deco = deco.switch(factor.equal(0))
+        deco.faces._Work = True
+
         shifted_mesh = Mesh(mesh)
         shifted_mesh.points[content].offset = (factor*left_shift, factor*vert_shift, 0)
+        shifted_mesh.points[content]._Work = True
 
         mesh.switch(apply, shifted_mesh + deco).out("Mesh")
 
@@ -1404,6 +1465,8 @@ def build_groups():
             mesh.points[den_sel].position *= factor
             mesh.points[den_sel].offset = (d_left_shift*factor + ddims.x_mid, d_vert_shift + ddims.y_mid, 0)
 
+            mesh.faces[den_sel]._Work = True
+
         mesh.out("Mesh")
 
     # =============================================================================================================================
@@ -1445,6 +1508,7 @@ def build_groups():
             cont_node = GTree.selection_info(tree, Integer("Owner").equal(node_id) & Integer("Role").equal(ROLE_CONTENT)).node
             content   = GTree.select(tree, id=cont_node.id, mode='Branch')
             cdims     = GUtil.dimensions(mesh, content).node
+            mesh.faces[content]._Work = True
 
         with Layout("Indice"):
             ind_node = GTree.selection_info(tree, Integer("Owner").equal(node_id) & Integer("Role").equal(ROLE_INDICE)).node
@@ -1457,6 +1521,9 @@ def build_groups():
         with Layout("Scale Exponent and Indice"):
             mesh.points[exponent].position *= (SCALE_IND*factor, SCALE_IND, SCALE_IND)
             mesh.points[indice].position   *= (SCALE_IND*factor, SCALE_IND, SCALE_IND)
+
+            mesh.faces[exponent]._Work = True
+            mesh.faces[indice]._Work   = True
 
         with Layout("Offset Exponent and Indice"):
             left = cdims.x_max + X_SPACE/3
@@ -1529,6 +1596,7 @@ def build_groups():
 
             # ----- Base
             sigma = Mesh(GUtil.sigma_char(fill=True)).transform(scale=SIGMA_SCALE)
+            sigma.faces._Work = True
 
             # ----- Height
             sigma_height = gnmath.max(1, cdims.height)
@@ -1547,6 +1615,7 @@ def build_groups():
 
         with Layout("Locate content"):
             mesh.points[content].offset = ((sdims.x_max + X_SPACE/3)*factor, 0, 0)
+            mesh.faces[content]._Work = True
 
         with Layout("Locate Below and Above"):
             mesh.points[below].offset = (sdims.x_mid - bdims.x_mid, sdims.y_min - Y_SPACE - bdims.y_max , 0)
@@ -1623,6 +1692,7 @@ def build_groups():
             # ----- Base
             integral_height = gnmath.min(1, cdims.height)
             integral = Mesh(GUtil.integral_char(fill=True, height=integral_height))
+            integral.faces._Work = True
             int_dims = GUtil.dimensions(integral, True).node
 
             # ----- Vertical center with content
@@ -1638,12 +1708,17 @@ def build_groups():
 
         with Layout("Locate content"):
             mesh.points[content].offset = ((sdims.x_max + X_SPACE/3)*factor, 0, 0)
+            mesh.faces[content]._Work = True
 
         with Layout("Locate Below and Above"):
             mesh.points[below].offset = (sdims.x_min + sdims.width*.5, sdims.y_min - bdims.y_mid, 0)
             mesh.points[above].offset = (sdims.x_max + X_SPACE/2,      sdims.y_max - adims.y_mid , 0)
             mesh.points[below].position *= (factor, 1, 1)
             mesh.points[above].position *= (factor, 1, 1)
+
+            mesh.faces[below]._Work = True
+            mesh.faces[above]._Work = True
+
 
         mesh.out("Mesh")
 
@@ -1808,7 +1883,6 @@ def build_groups():
 
         # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 
-
         ref_mesh, _ = macro_get_ref_mesh(formula.mesh)
 
         tree = formula.point_cloud
@@ -1860,11 +1934,23 @@ def build_groups():
             with Elif(mesh):
                 mesh.option = GComp.integral(mesh=rep.mesh, tree=tree, factor=factor, id=node_id, explore=explore)
 
+            # ----- Transformation
+
+            mesh = Mesh(GUtil.transform(mesh,
+                scale_x   = node_info.scale_x,
+                scale_y   = node_info.scale_y,
+                rotation  = node_info.rotation,
+                set_color = node_info.set_color,
+                color     = node_info.color,
+                fade      = node_info.fade,
+                selection = Boolean("Work")))
+            mesh.faces._Work = False
+
             # ----- Done
 
             rep.mesh = mesh
 
-        formula.switch(use_compile, ref_mesh + rep.mesh + tree).out("Formula")
+        formula.switch(use_compile, ref_mesh + (rep.mesh + tree)).out("Formula")
 
     # =============================================================================================================================
     # =============================================================================================================================
@@ -2256,38 +2342,46 @@ def build_groups():
 
     # =============================================================================================================================
     # =============================================================================================================================
-    # Settings
+    # Animate terms
     # =============================================================================================================================
     # =============================================================================================================================
 
-    with GeoNodes("Color", prefix="Formula Set"):
+    with GeoNodes("Parameter", prefix="Formula Set"):
+        """ Set parameter on selection
+
+        Arguments
+        ---------
+        - Formula (Geometry) : the formula to set
+        - ID (Integer) : the formula term to change
+        - Scope (Menu) : group scope
+        - Change Color (Boolean) : change color
+        - Color (Color) : color to set if change is requested
+        - Factor (Float = 1.) : factor
+        - Scale (Float = 1.) : scale
+        - X Scale (Float = 1.) : x scale
+        - Y Scale (Float = 1.) : y scale
+        """
+
+        # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 
         formula = Geometry(None, "Formula")
         node_id = Integer(0, "ID")
         scope   = Integer.MenuSwitch({'All': 0, 'Children': 1, 'Top': 2}, menu='All', name="Scope")
 
-        use_color = Boolean(False, "Change Color")
-        color     = Color(None,    "Color")
-        factor    = Float(1.,      "Factor")
-
-        use_scale_x = Boolean(False, "Change Scale X")
-        scale_x     = Float(1.,      "Scale X")
-        use_scale_y = Boolean(False, "Change Scale Y")
-        scale_y     = Float(1.,      "Scale Y")
-
-        with Panel("Reference"):
-            ref_translation = Vector(0,       "Translation")
-            ref_rotation    = Vector.Euler(0, "Rotation")
-            ref_scale       = Vector(1,       "Scale")
-
-        with Panel("Compiled"):
-            cmp_translation = Vector(0,       "Translation")
-            cmp_rotation    = Vector.Euler(0, "Rotation")
-            cmp_scale       = Vector(1,       "Scale")
+        use_color = Boolean(True,   "Change Color")
+        color     = Color((1, 0, 0),"Color")
+        fade      = Float.Factor(0, "Fade", 0, 1)
+        factor    = Float(1.,       "Factor")
+        scale     = Float(1.,       "Scale")
+        rot       = Float.Angle(0., "Rotation")
+        scale_x   = Float(1.,       "Scale X")
+        scale_y   = Float(1.,       "Scale Y")
 
         with Panel("Compile"):
-            compile = Boolean(True, "Compile")
+            compile = Boolean(True,  "Compile")
             final   = Boolean(False, "Final")
+
+        # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 
         mesh = formula.mesh
         tree = formula.point_cloud
@@ -2302,26 +2396,12 @@ def build_groups():
             sel.option = GTree.select(tree, id=node_id, mode='Single')
 
         tree = tree.switch(use_color,   Cloud(tree).points[sel].store("Color",   color))
-        tree = tree.switch(use_scale_x, Cloud(tree).points[sel].store("Scale X", scale_x))
-        tree = tree.switch(use_scale_y, Cloud(tree).points[sel].store("Scale Y", scale_y))
-        tree.points[sel].store("Factor", factor)
-
-        # ----------------------------------------------------------------------------------------------------
-        # Before compilation
-
-        with Layout("Before Compilation"):
-
-            mesh = GTree.face_selection(mesh, id=Integer("ID"), faces_selection=Boolean("Reference"), tree=tree, selection=sel)
-
-            mesh.faces[mesh.selection_].separate()
-            rem_mesh = mesh.inverted_
-
-            center = mesh.points.attribute_statistic(nd.position).mean
-            mesh.transform(translation=-center)
-            mesh.transform(translation=ref_translation, rotation=ref_rotation, scale=ref_scale)
-            mesh.transform(translation=center)
-
-            mesh += rem_mesh
+        tree = tree.switch(use_color,   Cloud(tree).points[sel].store("Set Color", True))
+        tree.points[sel].store("Scale X",  scale_x*scale)
+        tree.points[sel].store("Scale Y",  scale_y*scale)
+        tree.points[sel].store("Factor",   factor)
+        tree.points[sel].store("Fade",     fade)
+        tree.points[sel].store("Rotation", rot)
 
         # ----------------------------------------------------------------------------------------------------
         # Compilation
@@ -2329,25 +2409,6 @@ def build_groups():
         with Layout("Compile"):
             formula = GComp.main(mesh + tree, compile=compile)
 
-        # ----------------------------------------------------------------------------------------------------
-        # After compilation
-
-        with Layout("After Compilation"):
-
             mesh = formula.mesh
-            mesh = mesh.switch(final, Mesh(mesh).faces[-Boolean("Reference")].separate())
-
-            mesh = GTree.face_selection(mesh, id=Integer("ID"), faces_selection=-Boolean("Reference"), tree=tree, selection=sel)
-
-            mesh.faces[mesh.selection_].separate()
-            rem_mesh = mesh.inverted_
-
-            center = mesh.points.attribute_statistic(nd.position).mean
-            mesh.transform(translation=-center)
-            mesh.transform(translation=cmp_translation, rotation=cmp_rotation, scale=cmp_scale)
-            mesh.transform(translation=center)
-
-            formula = tree + (mesh, rem_mesh)
-
-
-        formula.out("Formula")
+            mesh.faces[-Boolean("Reference")].separate()
+            formula.switch(final, mesh).out("Geometry")
