@@ -513,9 +513,9 @@ def build_tree(prefix='Tree'):
         tree    = Cloud(None, "Tree")
         node_id = Integer(1, "ID")
 
-        # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
-
         sel_mode = Integer.MenuSwitch({'Branch': 0, 'Children': 1, 'Direct': 2, 'Single': 3}, menu='Branch', name="Mode")
+
+        # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 
         id_info = GTree.id_info(tree, id=node_id).node
 
@@ -1176,3 +1176,46 @@ def build_tree(prefix='Tree'):
         tree.out("Points")
         new_id.out("Id")
         ok.out("Valid")
+
+    # ====================================================================================================
+    # Select a geometry domain form tree selection
+
+    with GeoNodes("Face Selection", prefix=prefix, is_group=True):
+        """ Select faces based on Tree selection
+
+        Arguments
+        ---------
+        - Geometry
+        - Domain
+        - ID
+        - Tree (Cloud)
+        - Selection (Boolean) on Tree
+
+        Returns
+        -------
+        - Geometry
+        - Selection
+        """
+
+        # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+
+        mesh      = Mesh()
+        node_id   = Integer(0, "ID", hide_value=True)
+        presel    = Boolean(True, "Faces selection")
+
+        tree      = Cloud(None,    "Tree")
+        selection = Boolean(False, "Selection", hide_value=True)
+
+        # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+
+        mesh.faces._Selected = False
+        with Repeat(mesh=mesh, tree=tree, iterations=tree.points.count) as rep:
+            tree_id = rep.tree.points.sample_index(Integer("ID"), index=rep.iteration)
+            sel = rep.tree.points.sample_index(selection, index=rep.iteration)
+            rep.mesh.faces[node_id.equal(tree_id)]._Selected = sel
+
+        mesh = rep.mesh
+        mesh.faces._Selected &= presel
+
+        mesh.out("Mesh")
+        mesh._Selected.out("Selection")

@@ -311,19 +311,6 @@ def build_groups():
 
         return Mesh(ref), Mesh(work)
 
-    """
-    def macro_setup_ref(mesh): #, ref_type):
-        mesh.faces._Reference = True
-        mesh.faces._Ref_ID    = 0
-
-        mesh.faces.material = "Formula Reference"
-
-        if REF_OFFSET_Z:
-            mesh.offset = (0, 0, -1)
-
-        return mesh
-    """
-
     def macro_new_ref_id(formula):
         with Layout("New Reference ID"):
             return mesh.mesh.faces.attribute_statistic(Integer("Ref ID")).max.to_integer() + 1
@@ -1018,7 +1005,6 @@ def build_groups():
         work = macro_create_work(ref_mesh, ref_id, node_id, explore)
         work.faces._Color = id_info.color
         work.points.position *= (id_info.scale_x, id_info.scale_y, 1)
-
 
         mesh += work
 
@@ -2282,15 +2268,26 @@ def build_groups():
 
         use_color = Boolean(False, "Change Color")
         color     = Color(None,    "Color")
+        factor    = Float(1.,      "Factor")
 
         use_scale_x = Boolean(False, "Change Scale X")
         scale_x     = Float(1.,      "Scale X")
         use_scale_y = Boolean(False, "Change Scale Y")
         scale_y     = Float(1.,      "Scale Y")
 
+        with Panel("Reference"):
+            ref_translation = Vector(0,       "Translation")
+            ref_rotation    = Vector.Euler(0, "Rotation")
+            ref_scale       = Vector(1,       "Scale")
+
+        with Panel("Compiled"):
+            cmp_translation = Vector(0,       "Translation")
+            cmp_rotation    = Vector.Euler(0, "Rotation")
+            cmp_scale       = Vector(1,       "Scale")
+
         with Panel("Compile"):
             compile = Boolean(True, "Compile")
-
+            final   = Boolean(False, "Final")
 
         mesh = formula.mesh
         tree = formula.point_cloud
@@ -2307,8 +2304,50 @@ def build_groups():
         tree = tree.switch(use_color,   Cloud(tree).points[sel].store("Color",   color))
         tree = tree.switch(use_scale_x, Cloud(tree).points[sel].store("Scale X", scale_x))
         tree = tree.switch(use_scale_y, Cloud(tree).points[sel].store("Scale Y", scale_y))
+        tree.points[sel].store("Factor", factor)
 
-        #tree.points[sel]._Color = color
+        # ----------------------------------------------------------------------------------------------------
+        # Before compilation
+
+        with Layout("Before Compilation"):
+
+            mesh = GTree.face_selection(mesh, id=Integer("ID"), faces_selection=Boolean("Reference"), tree=tree, selection=sel)
+
+            mesh.faces[mesh.selection_].separate()
+            rem_mesh = mesh.inverted_
+
+            center = mesh.points.attribute_statistic(nd.position).mean
+            mesh.transform(translation=-center)
+            mesh.transform(translation=ref_translation, rotation=ref_rotation, scale=ref_scale)
+            mesh.transform(translation=center)
+
+            mesh += rem_mesh
+
+        # ----------------------------------------------------------------------------------------------------
+        # Compilation
 
         with Layout("Compile"):
-            formula = GComp.main(mesh + tree, compile=compile).out("Formula")
+            formula = GComp.main(mesh + tree, compile=compile)
+
+        # ----------------------------------------------------------------------------------------------------
+        # After compilation
+
+        with Layout("After Compilation"):
+
+            mesh = formula.mesh
+            mesh = mesh.switch(final, Mesh(mesh).faces[-Boolean("Reference")].separate())
+
+            mesh = GTree.face_selection(mesh, id=Integer("ID"), faces_selection=-Boolean("Reference"), tree=tree, selection=sel)
+
+            mesh.faces[mesh.selection_].separate()
+            rem_mesh = mesh.inverted_
+
+            center = mesh.points.attribute_statistic(nd.position).mean
+            mesh.transform(translation=-center)
+            mesh.transform(translation=cmp_translation, rotation=cmp_rotation, scale=cmp_scale)
+            mesh.transform(translation=center)
+
+            formula = tree + (mesh, rem_mesh)
+
+
+        formula.out("Formula")
