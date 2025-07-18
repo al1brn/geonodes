@@ -322,7 +322,7 @@ blur(iterations=None, weight=None)
 > method
 
 ``` python
-bump(distance=None, height=None, normal=None, invert=False)
+bump(distance=None, filter_width=None, height=None, normal=None, invert=False)
 ```
 
 > Node [Bump](https://docs.blender.org/manual/en/latest/render/shader_nodes/vector/bump.html)
@@ -334,6 +334,7 @@ bump(distance=None, height=None, normal=None, invert=False)
 
 #### Arguments:
 - **distance** (_Float_ = None) : socket 'Distance' (id: Distance)
+- **filter_width** (_Float_ = None) : socket 'Filter Width' (id: Filter Width)
 - **height** (_Float_ = None) : socket 'Height' (id: Height)
 - **normal** (_Vector_ = None) : socket 'Normal' (id: Normal)
 - **invert** (_bool_ = False) : parameter 'invert'

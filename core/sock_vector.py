@@ -392,13 +392,13 @@ class Vector(generated.Vector):
     # ----- Power -> cross product
 
     def __pow__(self, other):
-        return self.cross(other)
+        return self.power(other)
 
     def __rpow__(self, other):
-        return Vector(other).cross(self)
+        return Vector(other).power(self)
 
     def __ipow__(self, other):
-        return self._jump(self.cross(other))
+        return self._jump(self.power(other))
 
     # ----- Functions
 

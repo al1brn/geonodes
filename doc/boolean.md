@@ -29,7 +29,7 @@ layer_selection_field
 
 - **B** : [band](boolean.md#band) :black_small_square: [bnot](boolean.md#bnot) :black_small_square: [bor](boolean.md#bor)
 - **E** : [error](boolean.md#error)
-- **I** : [imply](boolean.md#imply) :black_small_square: [info](boolean.md#info) :black_small_square: [\_\_init__](boolean.md#__init__)
+- **I** : [imply](boolean.md#imply) :black_small_square: [info](boolean.md#info) :black_small_square: [\_\_init__](boolean.md#__init__) :black_small_square: [instance_bounds](boolean.md#instance_bounds)
 - **N** : [Named](boolean.md#named) :black_small_square: [NamedAttribute](boolean.md#namedattribute) :black_small_square: [nimply](boolean.md#nimply) :black_small_square: [nor](boolean.md#nor) :black_small_square: [not_and](boolean.md#not_and)
 - **R** : [Random](boolean.md#random)
 - **S** : [sample_grid](boolean.md#sample_grid) :black_small_square: [sample_grid_index](boolean.md#sample_grid_index)
@@ -223,6 +223,27 @@ layer_selection_field
 - **layer_selection** (_bool_ = False) : Layer selection field
 - **hide_in_modifier** (_bool_ = False) : Hide in Modifier option
 - **single_value** (_bool_ = False) : Single Value option
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Boolean](boolean.md#boolean) :black_small_square: [Content](boolean.md#content) :black_small_square: [Methods](boolean.md#methods)</sub>
+
+----------
+### instance_bounds()
+
+> method
+
+``` python
+instance_bounds()
+```
+
+> Node [Instance Bounds](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_bounds.html)
+
+#### Information:
+- **Socket** : self
+
+
+
+#### Returns:
+- **Vector** (_Vector_)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Boolean](boolean.md#boolean) :black_small_square: [Content](boolean.md#content) :black_small_square: [Methods](boolean.md#methods)</sub>
 

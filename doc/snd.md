@@ -36,7 +36,7 @@ a = snd.math(1, 2, operation='ADD')
 - **S** : [script](snd.md#script) :black_small_square: [separate_color](snd.md#separate_color) :black_small_square: [separate_xyz](snd.md#separate_xyz) :black_small_square: [shader_to_rgb](snd.md#shader_to_rgb) :black_small_square: [sheen_bsdf](snd.md#sheen_bsdf) :black_small_square: [sky_texture](snd.md#sky_texture) :black_small_square: [specular_bsdf](snd.md#specular_bsdf) :black_small_square: [subsurface_scattering](snd.md#subsurface_scattering)
 - **T** : [tangent](snd.md#tangent) :black_small_square: [texture_coordinate](snd.md#texture_coordinate) :black_small_square: [toon_bsdf](snd.md#toon_bsdf) :black_small_square: [translucent_bsdf](snd.md#translucent_bsdf) :black_small_square: [transparent_bsdf](snd.md#transparent_bsdf)
 - **U** : [uv_along_stroke](snd.md#uv_along_stroke) :black_small_square: [uv_map](snd.md#uv_map)
-- **V** : [vector_curves](snd.md#vector_curves) :black_small_square: [vector_displacement](snd.md#vector_displacement) :black_small_square: [vector_math](snd.md#vector_math) :black_small_square: [vector_rotate](snd.md#vector_rotate) :black_small_square: [vector_transform](snd.md#vector_transform) :black_small_square: [volume_absorption](snd.md#volume_absorption) :black_small_square: [volume_info](snd.md#volume_info) :black_small_square: [volume_scatter](snd.md#volume_scatter) :black_small_square: [voronoi_texture](snd.md#voronoi_texture)
+- **V** : [vector_curves](snd.md#vector_curves) :black_small_square: [vector_displacement](snd.md#vector_displacement) :black_small_square: [vector_math](snd.md#vector_math) :black_small_square: [vector_rotate](snd.md#vector_rotate) :black_small_square: [vector_transform](snd.md#vector_transform) :black_small_square: [volume_absorption](snd.md#volume_absorption) :black_small_square: [volume_coefficients](snd.md#volume_coefficients) :black_small_square: [volume_info](snd.md#volume_info) :black_small_square: [volume_scatter](snd.md#volume_scatter) :black_small_square: [voronoi_texture](snd.md#voronoi_texture)
 - **W** : [wavelength](snd.md#wavelength) :black_small_square: [wave_texture](snd.md#wave_texture) :black_small_square: [white_noise_texture](snd.md#white_noise_texture) :black_small_square: [wireframe](snd.md#wireframe) :black_small_square: [world_output](snd.md#world_output)
 
 ## Methods
@@ -266,7 +266,7 @@ brightness_contrast(color=None, bright=None, contrast=None)
 > classmethod
 
 ``` python
-bump(strength=None, distance=None, height=None, normal=None, invert=False)
+bump(strength=None, distance=None, filter_width=None, height=None, normal=None, invert=False)
 ```
 
 > Node [Bump](https://docs.blender.org/manual/en/latest/render/shader_nodes/vector/bump.html)
@@ -274,6 +274,7 @@ bump(strength=None, distance=None, height=None, normal=None, invert=False)
 #### Arguments:
 - **strength** (_Float_ = None) : socket 'Strength' (id: Strength)
 - **distance** (_Float_ = None) : socket 'Distance' (id: Distance)
+- **filter_width** (_Float_ = None) : socket 'Filter Width' (id: Filter Width)
 - **height** (_Float_ = None) : socket 'Height' (id: Height)
 - **normal** (_Vector_ = None) : socket 'Normal' (id: Normal)
 - **invert** (_bool_ = False) : parameter 'invert'
@@ -1692,7 +1693,7 @@ rgb_to_bw(color=None)
 script(bytecode='', bytecode_hash='', filepath='', mode='INTERNAL', script=None, use_auto_update=False)
 ```
 
-> Node [Script](https://docs.blender.org/manual/en/latest/render/shader_nodes/osl.html#script-node)
+> Node [Script](https://docs.blender.org/manual/en/latest/render/shader_nodes/script.html)
 
 #### Arguments:
 - **bytecode** (_str_ = ) : parameter 'bytecode'
@@ -2111,7 +2112,7 @@ vector_math(vector=None, vector_1=None, vector_2=None, scale=None, operation='AD
 - **vector_1** (_Vector_ = None) : socket 'Vector' (id: Vector_001)
 - **vector_2** (_Vector_ = None) : socket 'Vector' (id: Vector_002)
 - **scale** (_Float_ = None) : socket 'Scale' (id: Scale)
-- **operation** (_str_ = ADD) : parameter 'operation' in ['ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'CROSS_PRODUCT', 'PROJECT', 'REFLECT', 'REFRACT', 'FACEFORWARD', 'DOT_PRODUCT', 'DISTANCE', 'LENGTH', 'SCALE', 'NORMALIZE', 'ABSOLUTE', 'MINIMUM', 'MAXIMUM', 'FLOOR', 'CEIL', 'FRACTION', 'MODULO', 'WRAP', 'SNAP', 'SINE', 'COSINE', 'TANGENT']
+- **operation** (_str_ = ADD) : parameter 'operation' in ['ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'CROSS_PRODUCT', 'PROJECT', 'REFLECT', 'REFRACT', 'FACEFORWARD', 'DOT_PRODUCT', 'DISTANCE', 'LENGTH', 'SCALE', 'NORMALIZE', 'ABSOLUTE', 'POWER', 'SIGN', 'MINIMUM', 'MAXIMUM', 'FLOOR', 'CEIL', 'FRACTION', 'MODULO', 'WRAP', 'SNAP', 'SINE', 'COSINE', 'TANGENT']
 
 
 
@@ -2186,6 +2187,36 @@ volume_absorption(color=None, density=None, weight=None)
 - **color** (_Color_ = None) : socket 'Color' (id: Color)
 - **density** (_Float_ = None) : socket 'Density' (id: Density)
 - **weight** (_Float_ = None) : socket 'Weight' (id: Weight)
+
+
+
+#### Returns:
+- **VolumeShader** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [snd](snd.md#snd) :black_small_square: [Content](snd.md#content) :black_small_square: [Methods](snd.md#methods)</sub>
+
+----------
+### volume_coefficients()
+
+> classmethod
+
+``` python
+volume_coefficients(weight=None, absorption_coefficients=None, scatter_coefficients=None, anisotropy=None, ior=None, backscatter=None, alpha=None, diameter=None, emission_coefficients=None, phase='HENYEY_GREENSTEIN')
+```
+
+> Node ERROR: Node 'Volume Coefficients' not found
+
+#### Arguments:
+- **weight** (_Float_ = None) : socket 'Weight' (id: Weight)
+- **absorption_coefficients** (_Vector_ = None) : socket 'Absorption Coefficients' (id: Absorption Coefficients)
+- **scatter_coefficients** (_Vector_ = None) : socket 'Scatter Coefficients' (id: Scatter Coefficients)
+- **anisotropy** (_Float_ = None) : socket 'Anisotropy' (id: Anisotropy)
+- **ior** (_Float_ = None) : socket 'IOR' (id: IOR)
+- **backscatter** (_Float_ = None) : socket 'Backscatter' (id: Backscatter)
+- **alpha** (_Float_ = None) : socket 'Alpha' (id: Alpha)
+- **diameter** (_Float_ = None) : socket 'Diameter' (id: Diameter)
+- **emission_coefficients** (_Vector_ = None) : socket 'Emission Coefficients' (id: Emission Coefficients)
+- **phase** (_str_ = HENYEY_GREENSTEIN) : parameter 'phase' in ['HENYEY_GREENSTEIN', 'FOURNIER_FORAND', 'DRAINE', 'RAYLEIGH', 'MIE']
 
 
 

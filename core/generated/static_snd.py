@@ -503,13 +503,14 @@ class snd:
         return node._out
 
     @classmethod
-    def bump(cls, strength=None, distance=None, height=None, normal=None, invert=False):
+    def bump(cls, strength=None, distance=None, filter_width=None, height=None, normal=None, invert=False):
         """ > Node <&ShaderNode Bump>
 
         Arguments
         ---------
         - strength (Float) : socket 'Strength' (id: Strength)
         - distance (Float) : socket 'Distance' (id: Distance)
+        - filter_width (Float) : socket 'Filter Width' (id: Filter Width)
         - height (Float) : socket 'Height' (id: Height)
         - normal (Vector) : socket 'Normal' (id: Normal)
         - invert (bool): parameter 'invert'
@@ -518,7 +519,7 @@ class snd:
         -------
         - Vector
         """
-        node = Node('Bump', sockets={'Strength': strength, 'Distance': distance, 'Height': height, 'Normal': normal}, invert=invert)
+        node = Node('Bump', sockets={'Strength': strength, 'Distance': distance, 'Filter Width': filter_width, 'Height': height, 'Normal': normal}, invert=invert)
         return node._out
 
     @classmethod
@@ -810,7 +811,7 @@ class snd:
 
         Returns
         -------
-        - Float [is_shadow_ray_ (Float), is_diffuse_ray_ (Float), is_glossy_ray_ (Float), is_singular_ray_ (Float), is_reflection_ray_ (Float), is_transmission_ray_ (Float), ray_length_ (Float), ray_depth_ (Float), diffuse_depth_ (Float), glossy_depth_ (Float), transparent_depth_ (Float), transmission_depth_ (Float)]
+        - Float [is_shadow_ray_ (Float), is_diffuse_ray_ (Float), is_glossy_ray_ (Float), is_singular_ray_ (Float), is_reflection_ray_ (Float), is_transmission_ray_ (Float), is_volume_scatter_ray_ (Float), ray_length_ (Float), ray_depth_ (Float), diffuse_depth_ (Float), glossy_depth_ (Float), transparent_depth_ (Float), transmission_depth_ (Float)]
         """
         node = Node('Light Path', sockets={})
         return node
@@ -1719,13 +1720,13 @@ class snd:
         - vector_1 (Vector) : socket 'Vector' (id: Vector_001)
         - vector_2 (Vector) : socket 'Vector' (id: Vector_002)
         - scale (Float) : socket 'Scale' (id: Scale)
-        - operation (str): parameter 'operation' in ['ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'CROSS_PRODUCT', 'PROJECT', 'REFLECT', 'REFRACT', 'FACEFORWARD', 'DOT_PRODUCT', 'DISTANCE', 'LENGTH', 'SCALE', 'NORMALIZE', 'ABSOLUTE', 'MINIMUM', 'MAXIMUM', 'FLOOR', 'CEIL', 'FRACTION', 'MODULO', 'WRAP', 'SNAP', 'SINE', 'COSINE', 'TANGENT']
+        - operation (str): parameter 'operation' in ['ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'CROSS_PRODUCT', 'PROJECT', 'REFLECT', 'REFRACT', 'FACEFORWARD', 'DOT_PRODUCT', 'DISTANCE', 'LENGTH', 'SCALE', 'NORMALIZE', 'ABSOLUTE', 'POWER', 'SIGN', 'MINIMUM', 'MAXIMUM', 'FLOOR', 'CEIL', 'FRACTION', 'MODULO', 'WRAP', 'SNAP', 'SINE', 'COSINE', 'TANGENT']
 
         Returns
         -------
         - Vector
         """
-        utils.check_enum_arg('Vector Math', 'operation', operation, 'vector_math', ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'CROSS_PRODUCT', 'PROJECT', 'REFLECT', 'REFRACT', 'FACEFORWARD', 'DOT_PRODUCT', 'DISTANCE', 'LENGTH', 'SCALE', 'NORMALIZE', 'ABSOLUTE', 'MINIMUM', 'MAXIMUM', 'FLOOR', 'CEIL', 'FRACTION', 'MODULO', 'WRAP', 'SNAP', 'SINE', 'COSINE', 'TANGENT'))
+        utils.check_enum_arg('Vector Math', 'operation', operation, 'vector_math', ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'CROSS_PRODUCT', 'PROJECT', 'REFLECT', 'REFRACT', 'FACEFORWARD', 'DOT_PRODUCT', 'DISTANCE', 'LENGTH', 'SCALE', 'NORMALIZE', 'ABSOLUTE', 'POWER', 'SIGN', 'MINIMUM', 'MAXIMUM', 'FLOOR', 'CEIL', 'FRACTION', 'MODULO', 'WRAP', 'SNAP', 'SINE', 'COSINE', 'TANGENT'))
         node = Node('Vector Math', sockets={'Vector': vector, 'Vector_001': vector_1, 'Vector_002': vector_2, 'Scale': scale}, operation=operation)
         return node._out
 
@@ -1802,6 +1803,31 @@ class snd:
         - VolumeShader
         """
         node = Node('Volume Absorption', sockets={'Color': color, 'Density': density, 'Weight': weight})
+        return node._out
+
+    @classmethod
+    def volume_coefficients(cls, weight=None, absorption_coefficients=None, scatter_coefficients=None, anisotropy=None, ior=None, backscatter=None, alpha=None, diameter=None, emission_coefficients=None, phase='HENYEY_GREENSTEIN'):
+        """ > Node <&ShaderNode Volume Coefficients>
+
+        Arguments
+        ---------
+        - weight (Float) : socket 'Weight' (id: Weight)
+        - absorption_coefficients (Vector) : socket 'Absorption Coefficients' (id: Absorption Coefficients)
+        - scatter_coefficients (Vector) : socket 'Scatter Coefficients' (id: Scatter Coefficients)
+        - anisotropy (Float) : socket 'Anisotropy' (id: Anisotropy)
+        - ior (Float) : socket 'IOR' (id: IOR)
+        - backscatter (Float) : socket 'Backscatter' (id: Backscatter)
+        - alpha (Float) : socket 'Alpha' (id: Alpha)
+        - diameter (Float) : socket 'Diameter' (id: Diameter)
+        - emission_coefficients (Vector) : socket 'Emission Coefficients' (id: Emission Coefficients)
+        - phase (str): parameter 'phase' in ['HENYEY_GREENSTEIN', 'FOURNIER_FORAND', 'DRAINE', 'RAYLEIGH', 'MIE']
+
+        Returns
+        -------
+        - VolumeShader
+        """
+        utils.check_enum_arg('Volume Coefficients', 'phase', phase, 'volume_coefficients', ('HENYEY_GREENSTEIN', 'FOURNIER_FORAND', 'DRAINE', 'RAYLEIGH', 'MIE'))
+        node = Node('Volume Coefficients', sockets={'Weight': weight, 'Absorption Coefficients': absorption_coefficients, 'Scatter Coefficients': scatter_coefficients, 'Anisotropy': anisotropy, 'IOR': ior, 'Backscatter': backscatter, 'Alpha': alpha, 'Diameter': diameter, 'Emission Coefficients': emission_coefficients}, phase=phase)
         return node._out
 
     @classmethod

@@ -83,6 +83,22 @@ class Cloud(Socket):
         node = Node('Distribute Points in Grid', sockets={'Grid': grid, 'Density': density, 'Seed': seed}, mode=mode)
         return cls(node._out)
 
+    @classmethod
+    def ImportCSV(cls, path=None, delimiter=None):
+        """ > Node <&Node Import CSV>
+
+        Arguments
+        ---------
+        - path (String) : socket 'Path' (id: Path)
+        - delimiter (String) : socket 'Delimiter' (id: Delimiter)
+
+        Returns
+        -------
+        - Cloud
+        """
+        node = Node('Import CSV', sockets={'Path': path, 'Delimiter': delimiter})
+        return cls(node._out)
+
     def instance_on(self, instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None):
         """ > Node <&Node Instance on Points>
 

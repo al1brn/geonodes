@@ -735,14 +735,14 @@ handle_positions(relative=None)
 > classmethod
 
 ``` python
-handle_type_selection(handle_type='AUTO', mode={'LEFT', 'RIGHT'})
+handle_type_selection(handle_type='AUTO', mode={'RIGHT', 'LEFT'})
 ```
 
 > Node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
 
 #### Arguments:
 - **handle_type** (_str_ = AUTO) : parameter 'handle_type' in ['FREE', 'AUTO', 'VECTOR', 'ALIGN']
-- **mode** (_set_ = {'LEFT', 'RIGHT'}) : parameter 'mode'
+- **mode** (_set_ = {'RIGHT', 'LEFT'}) : parameter 'mode'
 
 
 
@@ -1422,7 +1422,7 @@ set_both_handle_type(handle_type='AUTO')
 #### Information:
 - **Socket** : self
 - **Socket** : self[selection]
-- **Parameter** : {'RIGHT', 'LEFT'}
+- **Parameter** : {'LEFT', 'RIGHT'}
 
 
 
@@ -1473,7 +1473,7 @@ set_handle_positions(position=None, offset=None, mode='LEFT')
 > method
 
 ``` python
-set_handle_type(handle_type='AUTO', mode={'LEFT', 'RIGHT'})
+set_handle_type(handle_type='AUTO', mode={'RIGHT', 'LEFT'})
 ```
 
 > Node [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html)
@@ -1488,7 +1488,7 @@ set_handle_type(handle_type='AUTO', mode={'LEFT', 'RIGHT'})
 
 #### Arguments:
 - **handle_type** (_str_ = AUTO) : parameter 'handle_type' in ['FREE', 'AUTO', 'VECTOR', 'ALIGN']
-- **mode** (_set_ = {'LEFT', 'RIGHT'}) : parameter 'mode'
+- **mode** (_set_ = {'RIGHT', 'LEFT'}) : parameter 'mode'
 
 
 
@@ -1958,7 +1958,7 @@ to_grease_pencil(instances_as_layers=None)
 > method
 
 ``` python
-to_mesh(profile_curve=None, fill_caps=None)
+to_mesh(profile_curve=None, scale=None, fill_caps=None)
 ```
 
 > Node [Curve to Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curve_to_mesh.html)
@@ -1970,6 +1970,7 @@ to_mesh(profile_curve=None, fill_caps=None)
 
 #### Arguments:
 - **profile_curve** (_Geometry_ = None) : socket 'Profile Curve' (id: Profile Curve)
+- **scale** (_Float_ = None) : socket 'Scale' (id: Scale)
 - **fill_caps** (_Boolean_ = None) : socket 'Fill Caps' (id: Fill Caps)
 
 

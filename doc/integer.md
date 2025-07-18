@@ -43,7 +43,7 @@ i = Integer(123, name="User input", subtype='PERCENTAGE') # Create a new integer
 ## Content
 
 - **A** : [abs](integer.md#abs) :black_small_square: [add](integer.md#add)
-- **B** : [blur](integer.md#blur)
+- **B** : [blur](integer.md#blur) :black_small_square: [bw_and](integer.md#bw_and) :black_small_square: [bw_not](integer.md#bw_not) :black_small_square: [bw_or](integer.md#bw_or) :black_small_square: [bw_rotate](integer.md#bw_rotate) :black_small_square: [bw_shift](integer.md#bw_shift) :black_small_square: [bw_xor](integer.md#bw_xor)
 - **D** : [divide](integer.md#divide) :black_small_square: [divide_ceil](integer.md#divide_ceil) :black_small_square: [divide_floor](integer.md#divide_floor) :black_small_square: [divide_round](integer.md#divide_round)
 - **E** : [equal](integer.md#equal)
 - **F** : [Factor](integer.md#factor) :black_small_square: [floored_modulo](integer.md#floored_modulo)
@@ -130,6 +130,163 @@ blur(iterations=None, weight=None)
 #### Arguments:
 - **iterations** (_Integer_ = None) : socket 'Iterations' (id: Iterations)
 - **weight** (_Float_ = None) : socket 'Weight' (id: Weight)
+
+
+
+#### Returns:
+- **Integer** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](integer.md#integer) :black_small_square: [Content](integer.md#content) :black_small_square: [Methods](integer.md#methods)</sub>
+
+----------
+### bw_and()
+
+> method
+
+``` python
+bw_and(b=None)
+```
+
+> Node [Bit Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/bit_math.html)
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'AND'
+
+
+
+#### Arguments:
+- **b** (_Integer_ = None) : socket 'B' (id: B)
+
+
+
+#### Returns:
+- **Integer** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](integer.md#integer) :black_small_square: [Content](integer.md#content) :black_small_square: [Methods](integer.md#methods)</sub>
+
+----------
+### bw_not()
+
+> method
+
+``` python
+bw_not()
+```
+
+> Node [Bit Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/bit_math.html)
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'NOT'
+
+
+
+#### Returns:
+- **Integer** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](integer.md#integer) :black_small_square: [Content](integer.md#content) :black_small_square: [Methods](integer.md#methods)</sub>
+
+----------
+### bw_or()
+
+> method
+
+``` python
+bw_or(b=None)
+```
+
+> Node [Bit Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/bit_math.html)
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'OR'
+
+
+
+#### Arguments:
+- **b** (_Integer_ = None) : socket 'B' (id: B)
+
+
+
+#### Returns:
+- **Integer** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](integer.md#integer) :black_small_square: [Content](integer.md#content) :black_small_square: [Methods](integer.md#methods)</sub>
+
+----------
+### bw_rotate()
+
+> method
+
+``` python
+bw_rotate(shift=None)
+```
+
+> Node [Bit Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/bit_math.html)
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'ROTATE'
+
+
+
+#### Arguments:
+- **shift** (_Integer_ = None) : socket 'Shift' (id: Shift)
+
+
+
+#### Returns:
+- **Integer** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](integer.md#integer) :black_small_square: [Content](integer.md#content) :black_small_square: [Methods](integer.md#methods)</sub>
+
+----------
+### bw_shift()
+
+> method
+
+``` python
+bw_shift(shift=None)
+```
+
+> Node [Bit Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/bit_math.html)
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'SHIFT'
+
+
+
+#### Arguments:
+- **shift** (_Integer_ = None) : socket 'Shift' (id: Shift)
+
+
+
+#### Returns:
+- **Integer** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](integer.md#integer) :black_small_square: [Content](integer.md#content) :black_small_square: [Methods](integer.md#methods)</sub>
+
+----------
+### bw_xor()
+
+> method
+
+``` python
+bw_xor(b=None)
+```
+
+> Node [Bit Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/bit_math.html)
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'XOR'
+
+
+
+#### Arguments:
+- **b** (_Integer_ = None) : socket 'B' (id: B)
 
 
 

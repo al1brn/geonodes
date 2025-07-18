@@ -7,18 +7,22 @@ class Geometry(Socket):
     """"
     $DOC SET hidden
     """
-    def bounding_box(self):
+    def bounding_box(self, use_radius=None):
         """ > Node <&Node Bounding Box>
 
         Information
         -----------
         - Socket 'Geometry' : self
 
+        Arguments
+        ---------
+        - use_radius (Boolean) : socket 'Use Radius' (id: Use Radius)
+
         Returns
         -------
         - Mesh [min_ (Vector), max_ (Vector)]
         """
-        node = Node('Bounding Box', sockets={'Geometry': self})
+        node = Node('Bounding Box', sockets={'Geometry': self, 'Use Radius': use_radius})
         return node._out
 
     def convex_hull(self):
@@ -805,7 +809,7 @@ class Geometry(Socket):
         self._jump(node._out)
         return self._domain_to_geometry
 
-    def viewer(self, value=None):
+    def viewer(self, value=None, ui_shortcut=0):
         """ > Node <&Node Viewer>
 
         Information
@@ -817,10 +821,11 @@ class Geometry(Socket):
         Arguments
         ---------
         - value (Float) : socket 'Value' (id: Value)
+        - ui_shortcut (int): parameter 'ui_shortcut'
 
         """
         data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Geometry.viewer', 'value')
-        node = Node('Viewer', sockets={'Geometry': self, 'Value': value}, data_type=data_type, domain='AUTO')
+        node = Node('Viewer', sockets={'Geometry': self, 'Value': value}, data_type=data_type, domain='AUTO', ui_shortcut=ui_shortcut)
         return
 
     @property

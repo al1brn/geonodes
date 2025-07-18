@@ -20,23 +20,23 @@ a = nd.math(1, 2, operation='ADD')
 
 - **3** : [\_3d_cursor](nd.md#_3d_cursor)
 - **A** : [accumulate_field](nd.md#accumulate_field) :black_small_square: [active_element](nd.md#active_element) :black_small_square: [align_rotation_to_vector](nd.md#align_rotation_to_vector) :black_small_square: [arc](nd.md#arc) :black_small_square: [attribute_statistic](nd.md#attribute_statistic) :black_small_square: [axes_to_rotation](nd.md#axes_to_rotation) :black_small_square: [axis_angle_to_rotation](nd.md#axis_angle_to_rotation)
-- **B** : [bake](nd.md#bake) :black_small_square: [bezier_segment](nd.md#bezier_segment) :black_small_square: [blackbody](nd.md#blackbody) :black_small_square: [blur_attribute](nd.md#blur_attribute) :black_small_square: [boolean](nd.md#boolean) :black_small_square: [boolean_math](nd.md#boolean_math) :black_small_square: [bounding_box](nd.md#bounding_box) :black_small_square: [brick_texture](nd.md#brick_texture)
-- **C** : [capture_attribute](nd.md#capture_attribute) :black_small_square: [checker_texture](nd.md#checker_texture) :black_small_square: [clamp](nd.md#clamp) :black_small_square: [collection](nd.md#collection) :black_small_square: [collection_info](nd.md#collection_info) :black_small_square: [color_ramp](nd.md#color_ramp) :black_small_square: [combine_color](nd.md#combine_color) :black_small_square: [combine_matrix](nd.md#combine_matrix) :black_small_square: [combine_transform](nd.md#combine_transform) :black_small_square: [combine_xyz](nd.md#combine_xyz) :black_small_square: [compare](nd.md#compare) :black_small_square: [cone](nd.md#cone) :black_small_square: [convex_hull](nd.md#convex_hull) :black_small_square: [corners_of_edge](nd.md#corners_of_edge) :black_small_square: [corners_of_face](nd.md#corners_of_face) :black_small_square: [corners_of_vertex](nd.md#corners_of_vertex) :black_small_square: [cube](nd.md#cube) :black_small_square: [curve_circle](nd.md#curve_circle) :black_small_square: [curve_handle_positions](nd.md#curve_handle_positions) :black_small_square: [curve_length](nd.md#curve_length) :black_small_square: [curve_line](nd.md#curve_line) :black_small_square: [curve_of_point](nd.md#curve_of_point) :black_small_square: [curves_to_grease_pencil](nd.md#curves_to_grease_pencil) :black_small_square: [curve_to_mesh](nd.md#curve_to_mesh) :black_small_square: [curve_to_points](nd.md#curve_to_points) :black_small_square: [cylinder](nd.md#cylinder)
+- **B** : [bake](nd.md#bake) :black_small_square: [bezier_segment](nd.md#bezier_segment) :black_small_square: [bit_math](nd.md#bit_math) :black_small_square: [blackbody](nd.md#blackbody) :black_small_square: [blur_attribute](nd.md#blur_attribute) :black_small_square: [boolean](nd.md#boolean) :black_small_square: [boolean_math](nd.md#boolean_math) :black_small_square: [bounding_box](nd.md#bounding_box) :black_small_square: [brick_texture](nd.md#brick_texture)
+- **C** : [camera_info](nd.md#camera_info) :black_small_square: [capture_attribute](nd.md#capture_attribute) :black_small_square: [checker_texture](nd.md#checker_texture) :black_small_square: [clamp](nd.md#clamp) :black_small_square: [closure_output](nd.md#closure_output) :black_small_square: [collection](nd.md#collection) :black_small_square: [collection_info](nd.md#collection_info) :black_small_square: [color_ramp](nd.md#color_ramp) :black_small_square: [combine_color](nd.md#combine_color) :black_small_square: [combine_matrix](nd.md#combine_matrix) :black_small_square: [combine_transform](nd.md#combine_transform) :black_small_square: [combine_xyz](nd.md#combine_xyz) :black_small_square: [compare](nd.md#compare) :black_small_square: [cone](nd.md#cone) :black_small_square: [convex_hull](nd.md#convex_hull) :black_small_square: [corners_of_edge](nd.md#corners_of_edge) :black_small_square: [corners_of_face](nd.md#corners_of_face) :black_small_square: [corners_of_vertex](nd.md#corners_of_vertex) :black_small_square: [cube](nd.md#cube) :black_small_square: [curve_circle](nd.md#curve_circle) :black_small_square: [curve_handle_positions](nd.md#curve_handle_positions) :black_small_square: [curve_length](nd.md#curve_length) :black_small_square: [curve_line](nd.md#curve_line) :black_small_square: [curve_of_point](nd.md#curve_of_point) :black_small_square: [curves_to_grease_pencil](nd.md#curves_to_grease_pencil) :black_small_square: [curve_to_mesh](nd.md#curve_to_mesh) :black_small_square: [curve_to_points](nd.md#curve_to_points) :black_small_square: [cylinder](nd.md#cylinder)
 - **D** : [deform_curves_on_surface](nd.md#deform_curves_on_surface) :black_small_square: [delete_geometry](nd.md#delete_geometry) :black_small_square: [dial_gizmo](nd.md#dial_gizmo) :black_small_square: [distribute_points_in_grid](nd.md#distribute_points_in_grid) :black_small_square: [distribute_points_in_volume](nd.md#distribute_points_in_volume) :black_small_square: [distribute_points_on_faces](nd.md#distribute_points_on_faces) :black_small_square: [domain_size](nd.md#domain_size) :black_small_square: [dual_mesh](nd.md#dual_mesh) :black_small_square: [duplicate_elements](nd.md#duplicate_elements)
-- **E** : [edge_angle](nd.md#edge_angle) :black_small_square: [edge_paths_to_curves](nd.md#edge_paths_to_curves) :black_small_square: [edge_paths_to_selection](nd.md#edge_paths_to_selection) :black_small_square: [edges_of_corner](nd.md#edges_of_corner) :black_small_square: [edges_of_vertex](nd.md#edges_of_vertex) :black_small_square: [edges_to_face_groups](nd.md#edges_to_face_groups) :black_small_square: [edge_vertices](nd.md#edge_vertices) :black_small_square: [endpoint_selection](nd.md#endpoint_selection) :black_small_square: [euler_to_rotation](nd.md#euler_to_rotation) :black_small_square: [evaluate_at_index](nd.md#evaluate_at_index) :black_small_square: [evaluate_on_domain](nd.md#evaluate_on_domain) :black_small_square: [extrude_mesh](nd.md#extrude_mesh)
-- **F** : [face_group_boundaries](nd.md#face_group_boundaries) :black_small_square: [face_neighbors](nd.md#face_neighbors) :black_small_square: [face_of_corner](nd.md#face_of_corner) :black_small_square: [face_set](nd.md#face_set) :black_small_square: [fill_curve](nd.md#fill_curve) :black_small_square: [fillet_curve](nd.md#fillet_curve) :black_small_square: [find_in_string](nd.md#find_in_string) :black_small_square: [flip_faces](nd.md#flip_faces) :black_small_square: [float_curve](nd.md#float_curve) :black_small_square: [float_to_integer](nd.md#float_to_integer) :black_small_square: [for_each_geometry_element_input](nd.md#for_each_geometry_element_input) :black_small_square: [for_each_geometry_element_output](nd.md#for_each_geometry_element_output) :black_small_square: [frame](nd.md#frame)
-- **G** : [gabor_texture](nd.md#gabor_texture) :black_small_square: [geometry_proximity](nd.md#geometry_proximity) :black_small_square: [geometry_to_instance](nd.md#geometry_to_instance) :black_small_square: [get_named_grid](nd.md#get_named_grid) :black_small_square: [gradient_texture](nd.md#gradient_texture) :black_small_square: [grease_pencil_to_curves](nd.md#grease_pencil_to_curves) :black_small_square: [grid](nd.md#grid) :black_small_square: [grid_to_mesh](nd.md#grid_to_mesh) :black_small_square: [group](nd.md#group) :black_small_square: [group_output](nd.md#group_output)
+- **E** : [edge_angle](nd.md#edge_angle) :black_small_square: [edge_paths_to_curves](nd.md#edge_paths_to_curves) :black_small_square: [edge_paths_to_selection](nd.md#edge_paths_to_selection) :black_small_square: [edges_of_corner](nd.md#edges_of_corner) :black_small_square: [edges_of_vertex](nd.md#edges_of_vertex) :black_small_square: [edges_to_face_groups](nd.md#edges_to_face_groups) :black_small_square: [edge_vertices](nd.md#edge_vertices) :black_small_square: [endpoint_selection](nd.md#endpoint_selection) :black_small_square: [euler_to_rotation](nd.md#euler_to_rotation) :black_small_square: [evaluate_at_index](nd.md#evaluate_at_index) :black_small_square: [evaluate_closure](nd.md#evaluate_closure) :black_small_square: [evaluate_on_domain](nd.md#evaluate_on_domain) :black_small_square: [extrude_mesh](nd.md#extrude_mesh)
+- **F** : [face_group_boundaries](nd.md#face_group_boundaries) :black_small_square: [face_neighbors](nd.md#face_neighbors) :black_small_square: [face_of_corner](nd.md#face_of_corner) :black_small_square: [face_set](nd.md#face_set) :black_small_square: [field_average](nd.md#field_average) :black_small_square: [field_min_max](nd.md#field_min_max) :black_small_square: [field_variance](nd.md#field_variance) :black_small_square: [fill_curve](nd.md#fill_curve) :black_small_square: [fillet_curve](nd.md#fillet_curve) :black_small_square: [find_in_string](nd.md#find_in_string) :black_small_square: [flip_faces](nd.md#flip_faces) :black_small_square: [float_curve](nd.md#float_curve) :black_small_square: [float_to_integer](nd.md#float_to_integer) :black_small_square: [for_each_geometry_element_input](nd.md#for_each_geometry_element_input) :black_small_square: [for_each_geometry_element_output](nd.md#for_each_geometry_element_output) :black_small_square: [format_string](nd.md#format_string) :black_small_square: [frame](nd.md#frame)
+- **G** : [gabor_texture](nd.md#gabor_texture) :black_small_square: [geometry_proximity](nd.md#geometry_proximity) :black_small_square: [geometry_to_instance](nd.md#geometry_to_instance) :black_small_square: [get_named_grid](nd.md#get_named_grid) :black_small_square: [gradient_texture](nd.md#gradient_texture) :black_small_square: [grease_pencil_to_curves](nd.md#grease_pencil_to_curves) :black_small_square: [grid](nd.md#grid) :black_small_square: [grid_info](nd.md#grid_info) :black_small_square: [grid_to_mesh](nd.md#grid_to_mesh) :black_small_square: [group](nd.md#group) :black_small_square: [group_output](nd.md#group_output)
 - **H** : [handle_type_selection](nd.md#handle_type_selection) :black_small_square: [hash_value](nd.md#hash_value)
-- **I** : [ico_sphere](nd.md#ico_sphere) :black_small_square: [image](nd.md#image) :black_small_square: [image_info](nd.md#image_info) :black_small_square: [image_texture](nd.md#image_texture) :black_small_square: [import_obj](nd.md#import_obj) :black_small_square: [import_ply](nd.md#import_ply) :black_small_square: [import_stl](nd.md#import_stl) :black_small_square: [index_of_nearest](nd.md#index_of_nearest) :black_small_square: [index_switch](nd.md#index_switch) :black_small_square: [instance_on_points](nd.md#instance_on_points) :black_small_square: [instances_to_points](nd.md#instances_to_points) :black_small_square: [integer](nd.md#integer) :black_small_square: [integer_math](nd.md#integer_math) :black_small_square: [interpolate_curves](nd.md#interpolate_curves) :black_small_square: [invert_matrix](nd.md#invert_matrix) :black_small_square: [invert_rotation](nd.md#invert_rotation) :black_small_square: [is_face_planar](nd.md#is_face_planar)
+- **I** : [ico_sphere](nd.md#ico_sphere) :black_small_square: [image](nd.md#image) :black_small_square: [image_info](nd.md#image_info) :black_small_square: [image_texture](nd.md#image_texture) :black_small_square: [import_csv](nd.md#import_csv) :black_small_square: [import_obj](nd.md#import_obj) :black_small_square: [import_ply](nd.md#import_ply) :black_small_square: [import_stl](nd.md#import_stl) :black_small_square: [import_text](nd.md#import_text) :black_small_square: [import_vdb](nd.md#import_vdb) :black_small_square: [index_of_nearest](nd.md#index_of_nearest) :black_small_square: [index_switch](nd.md#index_switch) :black_small_square: [instance_bounds](nd.md#instance_bounds) :black_small_square: [instance_on_points](nd.md#instance_on_points) :black_small_square: [instances_to_points](nd.md#instances_to_points) :black_small_square: [integer](nd.md#integer) :black_small_square: [integer_math](nd.md#integer_math) :black_small_square: [interpolate_curves](nd.md#interpolate_curves) :black_small_square: [invert_matrix](nd.md#invert_matrix) :black_small_square: [invert_rotation](nd.md#invert_rotation) :black_small_square: [is_face_planar](nd.md#is_face_planar)
 - **J** : [join_geometry](nd.md#join_geometry) :black_small_square: [join_strings](nd.md#join_strings)
 - **L** : [linear_gizmo](nd.md#linear_gizmo)
-- **M** : [magic_texture](nd.md#magic_texture) :black_small_square: [map_range](nd.md#map_range) :black_small_square: [material](nd.md#material) :black_small_square: [material_selection](nd.md#material_selection) :black_small_square: [math](nd.md#math) :black_small_square: [matrix_determinant](nd.md#matrix_determinant) :black_small_square: [menu_switch](nd.md#menu_switch) :black_small_square: [merge_by_distance](nd.md#merge_by_distance) :black_small_square: [merge_layers](nd.md#merge_layers) :black_small_square: [mesh_boolean](nd.md#mesh_boolean) :black_small_square: [mesh_circle](nd.md#mesh_circle) :black_small_square: [mesh_island](nd.md#mesh_island) :black_small_square: [mesh_line](nd.md#mesh_line) :black_small_square: [mesh_to_curve](nd.md#mesh_to_curve) :black_small_square: [mesh_to_density_grid](nd.md#mesh_to_density_grid) :black_small_square: [mesh_to_points](nd.md#mesh_to_points) :black_small_square: [mesh_to_sdf_grid](nd.md#mesh_to_sdf_grid) :black_small_square: [mesh_to_volume](nd.md#mesh_to_volume) :black_small_square: [mix](nd.md#mix) :black_small_square: [mouse_position](nd.md#mouse_position) :black_small_square: [multiply_matrices](nd.md#multiply_matrices)
-- **N** : [named_attribute](nd.md#named_attribute) :black_small_square: [named_layer_selection](nd.md#named_layer_selection) :black_small_square: [noise_texture](nd.md#noise_texture)
+- **M** : [magic_texture](nd.md#magic_texture) :black_small_square: [map_range](nd.md#map_range) :black_small_square: [match_string](nd.md#match_string) :black_small_square: [material](nd.md#material) :black_small_square: [material_selection](nd.md#material_selection) :black_small_square: [math](nd.md#math) :black_small_square: [matrix_determinant](nd.md#matrix_determinant) :black_small_square: [menu_switch](nd.md#menu_switch) :black_small_square: [merge_by_distance](nd.md#merge_by_distance) :black_small_square: [merge_layers](nd.md#merge_layers) :black_small_square: [mesh_boolean](nd.md#mesh_boolean) :black_small_square: [mesh_circle](nd.md#mesh_circle) :black_small_square: [mesh_island](nd.md#mesh_island) :black_small_square: [mesh_line](nd.md#mesh_line) :black_small_square: [mesh_to_curve](nd.md#mesh_to_curve) :black_small_square: [mesh_to_density_grid](nd.md#mesh_to_density_grid) :black_small_square: [mesh_to_points](nd.md#mesh_to_points) :black_small_square: [mesh_to_sdf_grid](nd.md#mesh_to_sdf_grid) :black_small_square: [mesh_to_volume](nd.md#mesh_to_volume) :black_small_square: [mix](nd.md#mix) :black_small_square: [mouse_position](nd.md#mouse_position) :black_small_square: [multiply_matrices](nd.md#multiply_matrices)
+- **N** : [named_attribute](nd.md#named_attribute) :black_small_square: [named_layer_selection](nd.md#named_layer_selection) :black_small_square: [noise_texture](nd.md#noise_texture) :black_small_square: [normal](nd.md#normal)
 - **O** : [object](nd.md#object) :black_small_square: [object_info](nd.md#object_info) :black_small_square: [offset_corner_in_face](nd.md#offset_corner_in_face) :black_small_square: [offset_point_in_curve](nd.md#offset_point_in_curve)
 - **P** : [pack_uv_islands](nd.md#pack_uv_islands) :black_small_square: [points](nd.md#points) :black_small_square: [points_of_curve](nd.md#points_of_curve) :black_small_square: [points_to_curves](nd.md#points_to_curves) :black_small_square: [points_to_sdf_grid](nd.md#points_to_sdf_grid) :black_small_square: [points_to_vertices](nd.md#points_to_vertices) :black_small_square: [points_to_volume](nd.md#points_to_volume) :black_small_square: [project_point](nd.md#project_point)
 - **Q** : [quadratic_bezier](nd.md#quadratic_bezier) :black_small_square: [quadrilateral](nd.md#quadrilateral) :black_small_square: [quaternion_to_rotation](nd.md#quaternion_to_rotation)
 - **R** : [random_value](nd.md#random_value) :black_small_square: [raycast](nd.md#raycast) :black_small_square: [realize_instances](nd.md#realize_instances) :black_small_square: [remove_named_attribute](nd.md#remove_named_attribute) :black_small_square: [repeat_input](nd.md#repeat_input) :black_small_square: [repeat_output](nd.md#repeat_output) :black_small_square: [replace_material](nd.md#replace_material) :black_small_square: [replace_string](nd.md#replace_string) :black_small_square: [reroute](nd.md#reroute) :black_small_square: [resample_curve](nd.md#resample_curve) :black_small_square: [reverse_curve](nd.md#reverse_curve) :black_small_square: [rgb_curves](nd.md#rgb_curves) :black_small_square: [rotate_instances](nd.md#rotate_instances) :black_small_square: [rotate_rotation](nd.md#rotate_rotation) :black_small_square: [rotate_vector](nd.md#rotate_vector) :black_small_square: [rotation_to_axis_angle](nd.md#rotation_to_axis_angle) :black_small_square: [rotation_to_euler](nd.md#rotation_to_euler) :black_small_square: [rotation_to_quaternion](nd.md#rotation_to_quaternion)
-- **S** : [sample_curve](nd.md#sample_curve) :black_small_square: [sample_grid](nd.md#sample_grid) :black_small_square: [sample_grid_index](nd.md#sample_grid_index) :black_small_square: [sample_index](nd.md#sample_index) :black_small_square: [sample_nearest](nd.md#sample_nearest) :black_small_square: [sample_nearest_surface](nd.md#sample_nearest_surface) :black_small_square: [sample_uv_surface](nd.md#sample_uv_surface) :black_small_square: [scale_elements](nd.md#scale_elements) :black_small_square: [scale_instances](nd.md#scale_instances) :black_small_square: [scene_time](nd.md#scene_time) :black_small_square: [sdf_grid_boolean](nd.md#sdf_grid_boolean) :black_small_square: [selection](nd.md#selection) :black_small_square: [separate_color](nd.md#separate_color) :black_small_square: [separate_components](nd.md#separate_components) :black_small_square: [separate_geometry](nd.md#separate_geometry) :black_small_square: [separate_matrix](nd.md#separate_matrix) :black_small_square: [separate_transform](nd.md#separate_transform) :black_small_square: [separate_xyz](nd.md#separate_xyz) :black_small_square: [set_curve_normal](nd.md#set_curve_normal) :black_small_square: [set_curve_radius](nd.md#set_curve_radius) :black_small_square: [set_curve_tilt](nd.md#set_curve_tilt) :black_small_square: [set_face_set](nd.md#set_face_set) :black_small_square: [set_geometry_name](nd.md#set_geometry_name) :black_small_square: [set_handle_positions](nd.md#set_handle_positions) :black_small_square: [set_handle_type](nd.md#set_handle_type) :black_small_square: [set_id](nd.md#set_id) :black_small_square: [set_instance_transform](nd.md#set_instance_transform) :black_small_square: [set_material](nd.md#set_material) :black_small_square: [set_material_index](nd.md#set_material_index) :black_small_square: [set_point_radius](nd.md#set_point_radius) :black_small_square: [set_position](nd.md#set_position) :black_small_square: [set_selection](nd.md#set_selection) :black_small_square: [set_shade_smooth](nd.md#set_shade_smooth) :black_small_square: [set_spline_cyclic](nd.md#set_spline_cyclic) :black_small_square: [set_spline_resolution](nd.md#set_spline_resolution) :black_small_square: [set_spline_type](nd.md#set_spline_type) :black_small_square: [shortest_edge_paths](nd.md#shortest_edge_paths) :black_small_square: [simulation_output](nd.md#simulation_output) :black_small_square: [slice_string](nd.md#slice_string) :black_small_square: [sort_elements](nd.md#sort_elements) :black_small_square: [special_characters](nd.md#special_characters) :black_small_square: [spiral](nd.md#spiral) :black_small_square: [spline_length](nd.md#spline_length) :black_small_square: [spline_parameter](nd.md#spline_parameter) :black_small_square: [split_edges](nd.md#split_edges) :black_small_square: [split_to_instances](nd.md#split_to_instances) :black_small_square: [star](nd.md#star) :black_small_square: [store_named_attribute](nd.md#store_named_attribute) :black_small_square: [store_named_grid](nd.md#store_named_grid) :black_small_square: [string](nd.md#string) :black_small_square: [string_length](nd.md#string_length) :black_small_square: [string_to_curves](nd.md#string_to_curves) :black_small_square: [subdivide_curve](nd.md#subdivide_curve) :black_small_square: [subdivide_mesh](nd.md#subdivide_mesh) :black_small_square: [subdivision_surface](nd.md#subdivision_surface) :black_small_square: [switch](nd.md#switch)
+- **S** : [sample_curve](nd.md#sample_curve) :black_small_square: [sample_grid](nd.md#sample_grid) :black_small_square: [sample_grid_index](nd.md#sample_grid_index) :black_small_square: [sample_index](nd.md#sample_index) :black_small_square: [sample_nearest](nd.md#sample_nearest) :black_small_square: [sample_nearest_surface](nd.md#sample_nearest_surface) :black_small_square: [sample_uv_surface](nd.md#sample_uv_surface) :black_small_square: [scale_elements](nd.md#scale_elements) :black_small_square: [scale_instances](nd.md#scale_instances) :black_small_square: [scene_time](nd.md#scene_time) :black_small_square: [sdf_grid_boolean](nd.md#sdf_grid_boolean) :black_small_square: [selection](nd.md#selection) :black_small_square: [separate_bundle](nd.md#separate_bundle) :black_small_square: [separate_color](nd.md#separate_color) :black_small_square: [separate_components](nd.md#separate_components) :black_small_square: [separate_geometry](nd.md#separate_geometry) :black_small_square: [separate_matrix](nd.md#separate_matrix) :black_small_square: [separate_transform](nd.md#separate_transform) :black_small_square: [separate_xyz](nd.md#separate_xyz) :black_small_square: [set_curve_normal](nd.md#set_curve_normal) :black_small_square: [set_curve_radius](nd.md#set_curve_radius) :black_small_square: [set_curve_tilt](nd.md#set_curve_tilt) :black_small_square: [set_face_set](nd.md#set_face_set) :black_small_square: [set_geometry_name](nd.md#set_geometry_name) :black_small_square: [set_grease_pencil_color](nd.md#set_grease_pencil_color) :black_small_square: [set_grease_pencil_depth](nd.md#set_grease_pencil_depth) :black_small_square: [set_grease_pencil_softness](nd.md#set_grease_pencil_softness) :black_small_square: [set_handle_positions](nd.md#set_handle_positions) :black_small_square: [set_handle_type](nd.md#set_handle_type) :black_small_square: [set_id](nd.md#set_id) :black_small_square: [set_instance_transform](nd.md#set_instance_transform) :black_small_square: [set_material](nd.md#set_material) :black_small_square: [set_material_index](nd.md#set_material_index) :black_small_square: [set_mesh_normal](nd.md#set_mesh_normal) :black_small_square: [set_point_radius](nd.md#set_point_radius) :black_small_square: [set_position](nd.md#set_position) :black_small_square: [set_selection](nd.md#set_selection) :black_small_square: [set_shade_smooth](nd.md#set_shade_smooth) :black_small_square: [set_spline_cyclic](nd.md#set_spline_cyclic) :black_small_square: [set_spline_resolution](nd.md#set_spline_resolution) :black_small_square: [set_spline_type](nd.md#set_spline_type) :black_small_square: [shortest_edge_paths](nd.md#shortest_edge_paths) :black_small_square: [simulation_output](nd.md#simulation_output) :black_small_square: [slice_string](nd.md#slice_string) :black_small_square: [sort_elements](nd.md#sort_elements) :black_small_square: [special_characters](nd.md#special_characters) :black_small_square: [spiral](nd.md#spiral) :black_small_square: [spline_length](nd.md#spline_length) :black_small_square: [spline_parameter](nd.md#spline_parameter) :black_small_square: [split_edges](nd.md#split_edges) :black_small_square: [split_to_instances](nd.md#split_to_instances) :black_small_square: [star](nd.md#star) :black_small_square: [store_named_attribute](nd.md#store_named_attribute) :black_small_square: [store_named_grid](nd.md#store_named_grid) :black_small_square: [string](nd.md#string) :black_small_square: [string_length](nd.md#string_length) :black_small_square: [string_to_curves](nd.md#string_to_curves) :black_small_square: [subdivide_curve](nd.md#subdivide_curve) :black_small_square: [subdivide_mesh](nd.md#subdivide_mesh) :black_small_square: [subdivision_surface](nd.md#subdivision_surface) :black_small_square: [switch](nd.md#switch)
 - **T** : [transform_direction](nd.md#transform_direction) :black_small_square: [transform_geometry](nd.md#transform_geometry) :black_small_square: [transform_gizmo](nd.md#transform_gizmo) :black_small_square: [transform_point](nd.md#transform_point) :black_small_square: [translate_instances](nd.md#translate_instances) :black_small_square: [transpose_matrix](nd.md#transpose_matrix) :black_small_square: [triangulate](nd.md#triangulate) :black_small_square: [trim_curve](nd.md#trim_curve)
 - **U** : [uv_sphere](nd.md#uv_sphere) :black_small_square: [uv_unwrap](nd.md#uv_unwrap)
 - **V** : [value_to_string](nd.md#value_to_string) :black_small_square: [vector_curves](nd.md#vector_curves) :black_small_square: [vector_math](nd.md#vector_math) :black_small_square: [vector_rotate](nd.md#vector_rotate) :black_small_square: [vertex_neighbors](nd.md#vertex_neighbors) :black_small_square: [vertex_of_corner](nd.md#vertex_of_corner) :black_small_square: [viewer](nd.md#viewer) :black_small_square: [viewport_transform](nd.md#viewport_transform) :black_small_square: [volume_cube](nd.md#volume_cube) :black_small_square: [volume_to_mesh](nd.md#volume_to_mesh) :black_small_square: [voronoi_texture](nd.md#voronoi_texture)
@@ -98,7 +98,7 @@ active_element(domain='POINT')
 > Node [Active Element](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/active_element.html)
 
 #### Arguments:
-- **domain** (_str_ = POINT) : parameter 'domain' in ['POINT', 'EDGE', 'FACE']
+- **domain** (_str_ = POINT) : parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'LAYER']
 
 
 
@@ -282,6 +282,30 @@ bezier_segment(resolution=None, start=None, start_handle=None, end_handle=None, 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [nd](nd.md#nd) :black_small_square: [Content](nd.md#content) :black_small_square: [Methods](nd.md#methods)</sub>
 
 ----------
+### bit_math()
+
+> classmethod
+
+``` python
+bit_math(a=None, b=None, shift=None, operation='AND')
+```
+
+> Node [Bit Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/bit_math.html)
+
+#### Arguments:
+- **a** (_Integer_ = None) : socket 'A' (id: A)
+- **b** (_Integer_ = None) : socket 'B' (id: B)
+- **shift** (_Integer_ = None) : socket 'Shift' (id: Shift)
+- **operation** (_str_ = AND) : parameter 'operation' in ['AND', 'OR', 'XOR', 'NOT', 'SHIFT', 'ROTATE']
+
+
+
+#### Returns:
+- **Integer** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [nd](nd.md#nd) :black_small_square: [Content](nd.md#content) :black_small_square: [Methods](nd.md#methods)</sub>
+
+----------
 ### blackbody()
 
 > classmethod
@@ -376,13 +400,14 @@ boolean_math(boolean=None, boolean_1=None, operation='AND')
 > classmethod
 
 ``` python
-bounding_box(geometry=None)
+bounding_box(geometry=None, use_radius=None)
 ```
 
 > Node [Bounding Box](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/bounding_box.html)
 
 #### Arguments:
 - **geometry** (_Geometry_ = None) : socket 'Geometry' (id: Geometry)
+- **use_radius** (_Boolean_ = None) : socket 'Use Radius' (id: Use Radius)
 
 
 
@@ -422,6 +447,27 @@ brick_texture(vector=None, color1=None, color2=None, mortar=None, scale=None, mo
 
 #### Returns:
 - **Color** (_Float_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [nd](nd.md#nd) :black_small_square: [Content](nd.md#content) :black_small_square: [Methods](nd.md#methods)</sub>
+
+----------
+### camera_info()
+
+> classmethod
+
+``` python
+camera_info(camera=None)
+```
+
+> Node [Camera Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene/camera_info.html)
+
+#### Arguments:
+- **camera** (_Object_ = None) : socket 'Camera' (id: Camera)
+
+
+
+#### Returns:
+- **Matrix** (_Float_)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [nd](nd.md#nd) :black_small_square: [Content](nd.md#content) :black_small_square: [Methods](nd.md#methods)</sub>
 
@@ -492,6 +538,28 @@ clamp(value=None, min=None, max=None, clamp_type='MINMAX')
 
 #### Returns:
 - **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [nd](nd.md#nd) :black_small_square: [Content](nd.md#content) :black_small_square: [Methods](nd.md#methods)</sub>
+
+----------
+### closure_output()
+
+> classmethod
+
+``` python
+closure_output(active_input_index=0, active_output_index=0)
+```
+
+> Node ERROR: Node 'Closure Output' not found
+
+#### Arguments:
+- **active_input_index** (_int_ = 0) : parameter 'active_input_index'
+- **active_output_index** (_int_ = 0) : parameter 'active_output_index'
+
+
+
+#### Returns:
+- **Closure** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [nd](nd.md#nd) :black_small_square: [Content](nd.md#content) :black_small_square: [Methods](nd.md#methods)</sub>
 
@@ -992,7 +1060,7 @@ curves_to_grease_pencil(curves=None, selection=None, instances_as_layers=None)
 > classmethod
 
 ``` python
-curve_to_mesh(curve=None, profile_curve=None, fill_caps=None)
+curve_to_mesh(curve=None, profile_curve=None, scale=None, fill_caps=None)
 ```
 
 > Node [Curve to Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curve_to_mesh.html)
@@ -1000,6 +1068,7 @@ curve_to_mesh(curve=None, profile_curve=None, fill_caps=None)
 #### Arguments:
 - **curve** (_Geometry_ = None) : socket 'Curve' (id: Curve)
 - **profile_curve** (_Geometry_ = None) : socket 'Profile Curve' (id: Profile Curve)
+- **scale** (_Float_ = None) : socket 'Scale' (id: Scale)
 - **fill_caps** (_Boolean_ = None) : socket 'Fill Caps' (id: Fill Caps)
 
 
@@ -1469,14 +1538,14 @@ euler_to_rotation(euler=None)
 > classmethod
 
 ``` python
-evaluate_at_index(index=None, value=None, data_type='FLOAT', domain='POINT')
+evaluate_at_index(value=None, index=None, data_type='FLOAT', domain='POINT')
 ```
 
 > Node [Evaluate at Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/evaluate_at_index.html)
 
 #### Arguments:
-- **index** (_Integer_ = None) : socket 'Index' (id: Index)
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **index** (_Integer_ = None) : socket 'Index' (id: Index)
 - **data_type** (_str_ = FLOAT) : parameter 'data_type' in ['FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4']
 - **domain** (_str_ = POINT) : parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
 
@@ -1484,6 +1553,29 @@ evaluate_at_index(index=None, value=None, data_type='FLOAT', domain='POINT')
 
 #### Returns:
 - **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [nd](nd.md#nd) :black_small_square: [Content](nd.md#content) :black_small_square: [Methods](nd.md#methods)</sub>
+
+----------
+### evaluate_closure()
+
+> classmethod
+
+``` python
+evaluate_closure(closure=None, active_input_index=0, active_output_index=0)
+```
+
+> Node ERROR: Node 'Evaluate Closure' not found
+
+#### Arguments:
+- **closure** (_Closure_ = None) : socket 'Closure' (id: Closure)
+- **active_input_index** (_int_ = 0) : parameter 'active_input_index'
+- **active_output_index** (_int_ = 0) : parameter 'active_output_index'
+
+
+
+#### Returns:
+- **None** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [nd](nd.md#nd) :black_small_square: [Content](nd.md#content) :black_small_square: [Methods](nd.md#methods)</sub>
 
@@ -1607,6 +1699,78 @@ face_set()
 
 #### Returns:
 - **Integer** (_Boolean_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [nd](nd.md#nd) :black_small_square: [Content](nd.md#content) :black_small_square: [Methods](nd.md#methods)</sub>
+
+----------
+### field_average()
+
+> classmethod
+
+``` python
+field_average(value=None, group_id=None, data_type='FLOAT', domain='POINT')
+```
+
+> Node [Field Average](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/field_average.html)
+
+#### Arguments:
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **group_id** (_Integer_ = None) : socket 'Group ID' (id: Group Index)
+- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ['FLOAT', 'FLOAT_VECTOR']
+- **domain** (_str_ = POINT) : parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
+
+
+
+#### Returns:
+- **Float** (_Float_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [nd](nd.md#nd) :black_small_square: [Content](nd.md#content) :black_small_square: [Methods](nd.md#methods)</sub>
+
+----------
+### field_min_max()
+
+> classmethod
+
+``` python
+field_min_max(value=None, group_id=None, data_type='FLOAT', domain='POINT')
+```
+
+> Node ERROR: Node 'Field Min & Max' not found
+
+#### Arguments:
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **group_id** (_Integer_ = None) : socket 'Group ID' (id: Group Index)
+- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ['FLOAT', 'INT', 'FLOAT_VECTOR']
+- **domain** (_str_ = POINT) : parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
+
+
+
+#### Returns:
+- **Float** (_Float_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [nd](nd.md#nd) :black_small_square: [Content](nd.md#content) :black_small_square: [Methods](nd.md#methods)</sub>
+
+----------
+### field_variance()
+
+> classmethod
+
+``` python
+field_variance(value=None, group_id=None, data_type='FLOAT', domain='POINT')
+```
+
+> Node [Field Variance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/field_variance.html)
+
+#### Arguments:
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **group_id** (_Integer_ = None) : socket 'Group ID' (id: Group Index)
+- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ['FLOAT', 'FLOAT_VECTOR']
+- **domain** (_str_ = POINT) : parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
+
+
+
+#### Returns:
+- **Float** (_Float_)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [nd](nd.md#nd) :black_small_square: [Content](nd.md#content) :black_small_square: [Methods](nd.md#methods)</sub>
 
@@ -1795,6 +1959,27 @@ for_each_geometry_element_output(geometry=None, active_generation_index=0, activ
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [nd](nd.md#nd) :black_small_square: [Content](nd.md#content) :black_small_square: [Methods](nd.md#methods)</sub>
 
 ----------
+### format_string()
+
+> classmethod
+
+``` python
+format_string(format=None)
+```
+
+> Node [Format String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/format_string.html)
+
+#### Arguments:
+- **format** (_String_ = None) : socket 'Format' (id: Format)
+
+
+
+#### Returns:
+- **String** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [nd](nd.md#nd) :black_small_square: [Content](nd.md#content) :black_small_square: [Methods](nd.md#methods)</sub>
+
+----------
 ### frame()
 
 > classmethod
@@ -1945,7 +2130,7 @@ gradient_texture(vector=None, gradient_type='LINEAR')
 grease_pencil_to_curves(grease_pencil=None, selection=None, layers_as_instances=None)
 ```
 
-> Node [Grease Pencil to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/grease_pencil_to_curves.html)
+> Node [Grease Pencil to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/grease_pencil/operations/grease_pencil_to_curves.html)
 
 #### Arguments:
 - **grease_pencil** (_Geometry_ = None) : socket 'Grease Pencil' (id: Grease Pencil)
@@ -1980,6 +2165,28 @@ grid(size_x=None, size_y=None, vertices_x=None, vertices_y=None)
 
 #### Returns:
 - **Mesh** (_Vector_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [nd](nd.md#nd) :black_small_square: [Content](nd.md#content) :black_small_square: [Methods](nd.md#methods)</sub>
+
+----------
+### grid_info()
+
+> classmethod
+
+``` python
+grid_info(grid=None, data_type='FLOAT')
+```
+
+> Node ERROR: Node 'Grid Info' not found
+
+#### Arguments:
+- **grid** (_Float_ = None) : socket 'Grid' (id: Grid)
+- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ['FLOAT', 'VECTOR']
+
+
+
+#### Returns:
+- **Matrix** (_Float_)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [nd](nd.md#nd) :black_small_square: [Content](nd.md#content) :black_small_square: [Methods](nd.md#methods)</sub>
 
@@ -2054,14 +2261,14 @@ group_output(is_active_output=True)
 > classmethod
 
 ``` python
-handle_type_selection(handle_type='AUTO', mode={'LEFT', 'RIGHT'})
+handle_type_selection(handle_type='AUTO', mode={'RIGHT', 'LEFT'})
 ```
 
 > Node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
 
 #### Arguments:
 - **handle_type** (_str_ = AUTO) : parameter 'handle_type' in ['FREE', 'AUTO', 'VECTOR', 'ALIGN']
-- **mode** (_set_ = {'LEFT', 'RIGHT'}) : parameter 'mode'
+- **mode** (_set_ = {'RIGHT', 'LEFT'}) : parameter 'mode'
 
 
 
@@ -2184,6 +2391,28 @@ image_texture(image=None, vector=None, frame=None, extension='REPEAT', interpola
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [nd](nd.md#nd) :black_small_square: [Content](nd.md#content) :black_small_square: [Methods](nd.md#methods)</sub>
 
 ----------
+### import_csv()
+
+> classmethod
+
+``` python
+import_csv(path=None, delimiter=None)
+```
+
+> Node ERROR: Node 'Import CSV' not found
+
+#### Arguments:
+- **path** (_String_ = None) : socket 'Path' (id: Path)
+- **delimiter** (_String_ = None) : socket 'Delimiter' (id: Delimiter)
+
+
+
+#### Returns:
+- **Cloud** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [nd](nd.md#nd) :black_small_square: [Content](nd.md#content) :black_small_square: [Methods](nd.md#methods)</sub>
+
+----------
 ### import_obj()
 
 > classmethod
@@ -2247,6 +2476,48 @@ import_stl(path=None)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [nd](nd.md#nd) :black_small_square: [Content](nd.md#content) :black_small_square: [Methods](nd.md#methods)</sub>
 
 ----------
+### import_text()
+
+> classmethod
+
+``` python
+import_text(path=None)
+```
+
+> Node ERROR: Node 'Import Text' not found
+
+#### Arguments:
+- **path** (_String_ = None) : socket 'Path' (id: Path)
+
+
+
+#### Returns:
+- **String** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [nd](nd.md#nd) :black_small_square: [Content](nd.md#content) :black_small_square: [Methods](nd.md#methods)</sub>
+
+----------
+### import_vdb()
+
+> classmethod
+
+``` python
+import_vdb(path=None)
+```
+
+> Node ERROR: Node 'Import VDB' not found
+
+#### Arguments:
+- **path** (_String_ = None) : socket 'Path' (id: Path)
+
+
+
+#### Returns:
+- **Volume** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [nd](nd.md#nd) :black_small_square: [Content](nd.md#content) :black_small_square: [Methods](nd.md#methods)</sub>
+
+----------
 ### index_of_nearest()
 
 > classmethod
@@ -2289,6 +2560,27 @@ index_switch(index=None, _0=None, _1=None, data_type='GEOMETRY')
 
 #### Returns:
 - **Geometry** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [nd](nd.md#nd) :black_small_square: [Content](nd.md#content) :black_small_square: [Methods](nd.md#methods)</sub>
+
+----------
+### instance_bounds()
+
+> classmethod
+
+``` python
+instance_bounds(use_radius=None)
+```
+
+> Node [Instance Bounds](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_bounds.html)
+
+#### Arguments:
+- **use_radius** (_Boolean_ = None) : socket 'Use Radius' (id: Use Radius)
+
+
+
+#### Returns:
+- **Vector** (_Vector_)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [nd](nd.md#nd) :black_small_square: [Content](nd.md#content) :black_small_square: [Methods](nd.md#methods)</sub>
 
@@ -2606,6 +2898,29 @@ map_range(value=None, from_min=None, from_max=None, to_min=None, to_max=None, st
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [nd](nd.md#nd) :black_small_square: [Content](nd.md#content) :black_small_square: [Methods](nd.md#methods)</sub>
 
 ----------
+### match_string()
+
+> classmethod
+
+``` python
+match_string(string=None, key=None, operation='STARTS_WITH')
+```
+
+> Node [Match String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/match_string.html)
+
+#### Arguments:
+- **string** (_String_ = None) : socket 'String' (id: String)
+- **key** (_String_ = None) : socket 'Key' (id: Key)
+- **operation** (_str_ = STARTS_WITH) : parameter 'operation' in ['STARTS_WITH', 'ENDS_WITH', 'CONTAINS']
+
+
+
+#### Returns:
+- **Boolean** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [nd](nd.md#nd) :black_small_square: [Content](nd.md#content) :black_small_square: [Methods](nd.md#methods)</sub>
+
+----------
 ### material()
 
 > classmethod
@@ -2708,7 +3023,7 @@ menu_switch(menu=None, a=None, b=None, data_type='GEOMETRY')
 - **menu** (_Menu_ = None) : socket 'Menu' (id: Menu)
 - **a** (_Geometry_ = None) : socket 'A' (id: Item_0)
 - **b** (_Geometry_ = None) : socket 'B' (id: Item_1)
-- **data_type** (_str_ = GEOMETRY) : parameter 'data_type' in ['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'ROTATION', 'MATRIX', 'STRING', 'RGBA', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL']
+- **data_type** (_str_ = GEOMETRY) : parameter 'data_type' in ['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'RGBA', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL']
 
 
 
@@ -2750,7 +3065,7 @@ merge_by_distance(geometry=None, selection=None, distance=None, mode='ALL')
 merge_layers(grease_pencil=None, selection=None, group_id=None, mode='MERGE_BY_NAME')
 ```
 
-> Node [Merge Layers](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/merge_layers.html)
+> Node [Merge Layers](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/grease_pencil/operations/merge_layers.html)
 
 #### Arguments:
 - **grease_pencil** (_Geometry_ = None) : socket 'Grease Pencil' (id: Grease Pencil)
@@ -2782,7 +3097,7 @@ mesh_boolean(*mesh_2, mesh_1=None, self_intersection=None, hole_tolerant=None, o
 - **self_intersection** (_Boolean_ = None) : socket 'Self Intersection' (id: Self Intersection)
 - **hole_tolerant** (_Boolean_ = None) : socket 'Hole Tolerant' (id: Hole Tolerant)
 - **operation** (_str_ = DIFFERENCE) : parameter 'operation' in ['INTERSECT', 'UNION', 'DIFFERENCE']
-- **solver** (_str_ = FLOAT) : parameter 'solver' in ['EXACT', 'FLOAT']
+- **solver** (_str_ = FLOAT) : parameter 'solver' in ['EXACT', 'FLOAT', 'MANIFOLD']
 
 
 
@@ -2862,7 +3177,7 @@ mesh_line(count=None, resolution=None, start_location=None, offset=None, count_m
 > classmethod
 
 ``` python
-mesh_to_curve(mesh=None, selection=None)
+mesh_to_curve(mesh=None, selection=None, mode='EDGES')
 ```
 
 > Node [Mesh to Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_curve.html)
@@ -2870,6 +3185,7 @@ mesh_to_curve(mesh=None, selection=None)
 #### Arguments:
 - **mesh** (_Geometry_ = None) : socket 'Mesh' (id: Mesh)
 - **selection** (_Boolean_ = None) : socket 'Selection' (id: Selection)
+- **mode** (_str_ = EDGES) : parameter 'mode' in ['EDGES', 'FACES']
 
 
 
@@ -3079,7 +3395,7 @@ named_attribute(name=None, data_type='FLOAT')
 named_layer_selection(name=None)
 ```
 
-> Node ERROR: Node 'Named Layer Selection' not found
+> Node [Named Layer Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/grease_pencil/read/named_layer_selection.html)
 
 #### Arguments:
 - **name** (_String_ = None) : socket 'Name' (id: Name)
@@ -3120,6 +3436,22 @@ noise_texture(vector=None, w=None, scale=None, detail=None, roughness=None, lacu
 
 #### Returns:
 - **Float** (_Color_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [nd](nd.md#nd) :black_small_square: [Content](nd.md#content) :black_small_square: [Methods](nd.md#methods)</sub>
+
+----------
+### normal()
+
+> classmethod
+
+``` python
+normal()
+```
+
+> Node [Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/normal.html)
+
+#### Returns:
+- **Vector** (_Vector_)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [nd](nd.md#nd) :black_small_square: [Content](nd.md#content) :black_small_square: [Methods](nd.md#methods)</sub>
 
@@ -4180,6 +4512,27 @@ selection()
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [nd](nd.md#nd) :black_small_square: [Content](nd.md#content) :black_small_square: [Methods](nd.md#methods)</sub>
 
 ----------
+### separate_bundle()
+
+> classmethod
+
+``` python
+separate_bundle(bundle=None)
+```
+
+> Node ERROR: Node 'Separate Bundle' not found
+
+#### Arguments:
+- **bundle** (_Bundle_ = None) : socket 'Bundle' (id: Bundle)
+
+
+
+#### Returns:
+- **None** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [nd](nd.md#nd) :black_small_square: [Content](nd.md#content) :black_small_square: [Methods](nd.md#methods)</sub>
+
+----------
 ### separate_color()
 
 > classmethod
@@ -4424,6 +4777,76 @@ set_geometry_name(geometry=None, name=None)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [nd](nd.md#nd) :black_small_square: [Content](nd.md#content) :black_small_square: [Methods](nd.md#methods)</sub>
 
 ----------
+### set_grease_pencil_color()
+
+> classmethod
+
+``` python
+set_grease_pencil_color(grease_pencil=None, selection=None, color=None, opacity=None, mode='STROKE')
+```
+
+> Node [Set Grease Pencil Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/grease_pencil/write/set_grease_pencil_color.html)
+
+#### Arguments:
+- **grease_pencil** (_Geometry_ = None) : socket 'Grease Pencil' (id: Grease Pencil)
+- **selection** (_Boolean_ = None) : socket 'Selection' (id: Selection)
+- **color** (_Color_ = None) : socket 'Color' (id: Color)
+- **opacity** (_Float_ = None) : socket 'Opacity' (id: Opacity)
+- **mode** (_str_ = STROKE) : parameter 'mode' in ['STROKE', 'FILL']
+
+
+
+#### Returns:
+- **GreasePencil** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [nd](nd.md#nd) :black_small_square: [Content](nd.md#content) :black_small_square: [Methods](nd.md#methods)</sub>
+
+----------
+### set_grease_pencil_depth()
+
+> classmethod
+
+``` python
+set_grease_pencil_depth(grease_pencil=None, depth_order='2D')
+```
+
+> Node [Set Grease Pencil Depth](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/grease_pencil/write/set_grease_pencil_depth.html)
+
+#### Arguments:
+- **grease_pencil** (_Geometry_ = None) : socket 'Grease Pencil' (id: Grease Pencil)
+- **depth_order** (_str_ = 2D) : parameter 'depth_order' in ['2D', '3D']
+
+
+
+#### Returns:
+- **GreasePencil** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [nd](nd.md#nd) :black_small_square: [Content](nd.md#content) :black_small_square: [Methods](nd.md#methods)</sub>
+
+----------
+### set_grease_pencil_softness()
+
+> classmethod
+
+``` python
+set_grease_pencil_softness(grease_pencil=None, selection=None, softness=None)
+```
+
+> Node [Set Grease Pencil Softness](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/grease_pencil/write/set_grease_pencil_softness.html)
+
+#### Arguments:
+- **grease_pencil** (_Geometry_ = None) : socket 'Grease Pencil' (id: Grease Pencil)
+- **selection** (_Boolean_ = None) : socket 'Selection' (id: Selection)
+- **softness** (_Float_ = None) : socket 'Softness' (id: Softness)
+
+
+
+#### Returns:
+- **GreasePencil** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [nd](nd.md#nd) :black_small_square: [Content](nd.md#content) :black_small_square: [Methods](nd.md#methods)</sub>
+
+----------
 ### set_handle_positions()
 
 > classmethod
@@ -4454,7 +4877,7 @@ set_handle_positions(curve=None, selection=None, position=None, offset=None, mod
 > classmethod
 
 ``` python
-set_handle_type(curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'RIGHT'})
+set_handle_type(curve=None, selection=None, handle_type='AUTO', mode={'RIGHT', 'LEFT'})
 ```
 
 > Node [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html)
@@ -4463,7 +4886,7 @@ set_handle_type(curve=None, selection=None, handle_type='AUTO', mode={'LEFT', 'R
 - **curve** (_Geometry_ = None) : socket 'Curve' (id: Curve)
 - **selection** (_Boolean_ = None) : socket 'Selection' (id: Selection)
 - **handle_type** (_str_ = AUTO) : parameter 'handle_type' in ['FREE', 'AUTO', 'VECTOR', 'ALIGN']
-- **mode** (_set_ = {'LEFT', 'RIGHT'}) : parameter 'mode'
+- **mode** (_set_ = {'RIGHT', 'LEFT'}) : parameter 'mode'
 
 
 
@@ -4561,6 +4984,32 @@ set_material_index(geometry=None, selection=None, material_index=None)
 
 #### Returns:
 - **Geometry** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [nd](nd.md#nd) :black_small_square: [Content](nd.md#content) :black_small_square: [Methods](nd.md#methods)</sub>
+
+----------
+### set_mesh_normal()
+
+> classmethod
+
+``` python
+set_mesh_normal(mesh=None, remove_custom=None, edge_sharpness=None, face_sharpness=None, domain='POINT', mode='SHARPNESS')
+```
+
+> Node [Set Mesh Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/write/set_mesh_normal.html)
+
+#### Arguments:
+- **mesh** (_Geometry_ = None) : socket 'Mesh' (id: Mesh)
+- **remove_custom** (_Boolean_ = None) : socket 'Remove Custom' (id: Remove Custom)
+- **edge_sharpness** (_Boolean_ = None) : socket 'Edge Sharpness' (id: Edge Sharpness)
+- **face_sharpness** (_Boolean_ = None) : socket 'Face Sharpness' (id: Face Sharpness)
+- **domain** (_str_ = POINT) : parameter 'domain' in ['POINT', 'FACE', 'CORNER']
+- **mode** (_str_ = SHARPNESS) : parameter 'mode' in ['SHARPNESS', 'FREE', 'TANGENT_SPACE']
+
+
+
+#### Returns:
+- **Mesh** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [nd](nd.md#nd) :black_small_square: [Content](nd.md#content) :black_small_square: [Methods](nd.md#methods)</sub>
 
@@ -5005,7 +5454,7 @@ store_named_grid(volume=None, name=None, grid=None, data_type='FLOAT')
 - **volume** (_Geometry_ = None) : socket 'Volume' (id: Volume)
 - **name** (_String_ = None) : socket 'Name' (id: Name)
 - **grid** (_Float_ = None) : socket 'Grid' (id: Grid)
-- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ['FLOAT', 'FLOAT_VECTOR', 'FLOAT2']
+- **data_type** (_str_ = FLOAT) : parameter 'data_type' in ['BOOLEAN', 'FLOAT', 'INT', 'VECTOR_FLOAT']
 
 
 
@@ -5490,7 +5939,7 @@ vector_math(vector=None, vector_1=None, vector_2=None, scale=None, operation='AD
 - **vector_1** (_Vector_ = None) : socket 'Vector' (id: Vector_001)
 - **vector_2** (_Vector_ = None) : socket 'Vector' (id: Vector_002)
 - **scale** (_Float_ = None) : socket 'Scale' (id: Scale)
-- **operation** (_str_ = ADD) : parameter 'operation' in ['ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'CROSS_PRODUCT', 'PROJECT', 'REFLECT', 'REFRACT', 'FACEFORWARD', 'DOT_PRODUCT', 'DISTANCE', 'LENGTH', 'SCALE', 'NORMALIZE', 'ABSOLUTE', 'MINIMUM', 'MAXIMUM', 'FLOOR', 'CEIL', 'FRACTION', 'MODULO', 'WRAP', 'SNAP', 'SINE', 'COSINE', 'TANGENT']
+- **operation** (_str_ = ADD) : parameter 'operation' in ['ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'CROSS_PRODUCT', 'PROJECT', 'REFLECT', 'REFRACT', 'FACEFORWARD', 'DOT_PRODUCT', 'DISTANCE', 'LENGTH', 'SCALE', 'NORMALIZE', 'ABSOLUTE', 'POWER', 'SIGN', 'MINIMUM', 'MAXIMUM', 'FLOOR', 'CEIL', 'FRACTION', 'MODULO', 'WRAP', 'SNAP', 'SINE', 'COSINE', 'TANGENT']
 
 
 
@@ -5569,7 +6018,7 @@ vertex_of_corner(corner_index=None)
 > classmethod
 
 ``` python
-viewer(geometry=None, value=None, data_type='FLOAT', domain='AUTO')
+viewer(geometry=None, value=None, data_type='FLOAT', domain='AUTO', ui_shortcut=0)
 ```
 
 > Node [Viewer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/output/viewer.html)
@@ -5579,6 +6028,7 @@ viewer(geometry=None, value=None, data_type='FLOAT', domain='AUTO')
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
 - **data_type** (_str_ = FLOAT) : parameter 'data_type' in ['FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'BOOLEAN', 'QUATERNION', 'FLOAT4X4']
 - **domain** (_str_ = AUTO) : parameter 'domain' in ['AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
+- **ui_shortcut** (_int_ = 0) : parameter 'ui_shortcut'
 
 
 

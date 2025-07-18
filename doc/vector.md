@@ -53,9 +53,9 @@ vect = Vector(name="User input").  # Create a new Vector group input
 - **M** : [mapping](vector.md#mapping) :black_small_square: [max](vector.md#max) :black_small_square: [min](vector.md#min) :black_small_square: [mix](vector.md#mix) :black_small_square: [mix_non_uniform](vector.md#mix_non_uniform) :black_small_square: [mix_uniform](vector.md#mix_uniform) :black_small_square: [modulo](vector.md#modulo) :black_small_square: [multiply](vector.md#multiply) :black_small_square: [multiply_add](vector.md#multiply_add)
 - **N** : [Named](vector.md#named) :black_small_square: [NamedAttribute](vector.md#namedattribute) :black_small_square: [Normal](vector.md#normal) :black_small_square: [normal](vector.md#normal) :black_small_square: [normalize](vector.md#normalize) :black_small_square: [NormalMap](vector.md#normalmap) :black_small_square: [not_equal](vector.md#not_equal)
 - **O** : [out](vector.md#out)
-- **P** : [pack_uv_islands](vector.md#pack_uv_islands) :black_small_square: [point_density](vector.md#point_density) :black_small_square: [Position](vector.md#position) :black_small_square: [project](vector.md#project)
+- **P** : [pack_uv_islands](vector.md#pack_uv_islands) :black_small_square: [point_density](vector.md#point_density) :black_small_square: [Position](vector.md#position) :black_small_square: [power](vector.md#power) :black_small_square: [project](vector.md#project)
 - **R** : [Random](vector.md#random) :black_small_square: [reflect](vector.md#reflect) :black_small_square: [refract](vector.md#refract) :black_small_square: [rotate](vector.md#rotate) :black_small_square: [rotate_axis_angle](vector.md#rotate_axis_angle) :black_small_square: [rotate_euler_xyz](vector.md#rotate_euler_xyz) :black_small_square: [rotate_x_axis](vector.md#rotate_x_axis) :black_small_square: [rotate_y_axis](vector.md#rotate_y_axis) :black_small_square: [rotate_z_axis](vector.md#rotate_z_axis)
-- **S** : [sample_grid](vector.md#sample_grid) :black_small_square: [sample_grid_index](vector.md#sample_grid_index) :black_small_square: [scale](vector.md#scale) :black_small_square: [separate_xyz](vector.md#separate_xyz) :black_small_square: [sin](vector.md#sin) :black_small_square: [snap](vector.md#snap) :black_small_square: [subtract](vector.md#subtract)
+- **S** : [sample_grid](vector.md#sample_grid) :black_small_square: [sample_grid_index](vector.md#sample_grid_index) :black_small_square: [scale](vector.md#scale) :black_small_square: [separate_xyz](vector.md#separate_xyz) :black_small_square: [sign](vector.md#sign) :black_small_square: [sin](vector.md#sin) :black_small_square: [snap](vector.md#snap) :black_small_square: [subtract](vector.md#subtract)
 - **T** : [tan](vector.md#tan) :black_small_square: [Tangent](vector.md#tangent) :black_small_square: [to_rotation](vector.md#to_rotation) :black_small_square: [transform](vector.md#transform) :black_small_square: [Translation](vector.md#translation)
 - **U** : [UVMap](vector.md#uvmap) :black_small_square: [UvMap](vector.md#uvmap)
 - **V** : [vector_displacement](vector.md#vector_displacement) :black_small_square: [vector_transform](vector.md#vector_transform) :black_small_square: [Velocity](vector.md#velocity)
@@ -1594,6 +1594,33 @@ New [Vector](vector.md#vector) input with Position as default value (default_inp
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Vector](vector.md#vector) :black_small_square: [Content](vector.md#content) :black_small_square: [Methods](vector.md#methods)</sub>
 
 ----------
+### power()
+
+> method
+
+``` python
+power(exponent=None)
+```
+
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'POWER'
+
+
+
+#### Arguments:
+- **exponent** (_Vector_ = None) : socket 'Exponent' (id: Vector_001)
+
+
+
+#### Returns:
+- **Vector** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Vector](vector.md#vector) :black_small_square: [Content](vector.md#content) :black_small_square: [Methods](vector.md#methods)</sub>
+
+----------
 ### project()
 
 > method
@@ -1982,6 +2009,28 @@ separate_xyz()
 
 #### Returns:
 - **node** (_Float_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Vector](vector.md#vector) :black_small_square: [Content](vector.md#content) :black_small_square: [Methods](vector.md#methods)</sub>
+
+----------
+### sign()
+
+> method
+
+``` python
+sign()
+```
+
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'SIGN'
+
+
+
+#### Returns:
+- **Vector** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Vector](vector.md#vector) :black_small_square: [Content](vector.md#content) :black_small_square: [Methods](vector.md#methods)</sub>
 

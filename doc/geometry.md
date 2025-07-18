@@ -187,13 +187,18 @@ Node [Bake](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/ge
 > method
 
 ``` python
-bounding_box()
+bounding_box(use_radius=None)
 ```
 
 > Node [Bounding Box](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/operations/bounding_box.html)
 
 #### Information:
 - **Socket** : self
+
+
+
+#### Arguments:
+- **use_radius** (_Boolean_ = None) : socket 'Use Radius' (id: Use Radius)
 
 
 
@@ -1140,7 +1145,7 @@ transform_matrix(translation=None, rotation=None, scale=None, transform=None)
 > method
 
 ``` python
-viewer(value=None)
+viewer(value=None, ui_shortcut=0)
 ```
 
 > Node [Viewer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/output/viewer.html)
@@ -1154,5 +1159,6 @@ viewer(value=None)
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **ui_shortcut** (_int_ = 0) : parameter 'ui_shortcut'
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geometry.md#geometry) :black_small_square: [Content](geometry.md#content) :black_small_square: [Methods](geometry.md#methods)</sub>

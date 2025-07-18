@@ -744,6 +744,40 @@ class Vector(Socket):
         node = Node('Vector Math', sockets={'Vector': self}, operation='ABSOLUTE')
         return node._out
 
+    def power(self, exponent=None):
+        """ > Node <&Node Vector Math>
+
+        Information
+        -----------
+        - Socket 'Base' : self
+        - Parameter 'operation' : 'POWER'
+
+        Arguments
+        ---------
+        - exponent (Vector) : socket 'Exponent' (id: Vector_001)
+
+        Returns
+        -------
+        - Vector
+        """
+        node = Node('Vector Math', sockets={'Vector': self, 'Vector_001': exponent}, operation='POWER')
+        return node._out
+
+    def sign(self):
+        """ > Node <&Node Vector Math>
+
+        Information
+        -----------
+        - Socket 'Vector' : self
+        - Parameter 'operation' : 'SIGN'
+
+        Returns
+        -------
+        - Vector
+        """
+        node = Node('Vector Math', sockets={'Vector': self}, operation='SIGN')
+        return node._out
+
     def min(self, vector=None):
         """ > Node <&Node Vector Math>
 

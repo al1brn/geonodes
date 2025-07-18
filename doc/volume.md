@@ -31,6 +31,7 @@ cube = Volume.Cube() # Node 'Volume Cube'
 - **C** : [Cube](volume.md#cube)
 - **D** : [distribute_points](volume.md#distribute_points) :black_small_square: [distribute_points_density_grid](volume.md#distribute_points_density_grid) :black_small_square: [distribute_points_density_random](volume.md#distribute_points_density_random)
 - **G** : [get_named_grid](volume.md#get_named_grid)
+- **I** : [ImportVDB](volume.md#importvdb)
 - **N** : [named_float_grid](volume.md#named_float_grid) :black_small_square: [named_vector_grid](volume.md#named_vector_grid)
 - **S** : [store_named_grid](volume.md#store_named_grid)
 - **T** : [to_mesh](volume.md#to_mesh) :black_small_square: [to_mesh_grid](volume.md#to_mesh_grid) :black_small_square: [to_mesh_voxel_amount](volume.md#to_mesh_voxel_amount) :black_small_square: [to_mesh_voxel_size](volume.md#to_mesh_voxel_size)
@@ -177,6 +178,27 @@ get_named_grid(name=None, remove=None, data_type='FLOAT')
 
 #### Returns:
 - **Volume** (_Float_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Volume](volume.md#volume) :black_small_square: [Content](volume.md#content) :black_small_square: [Methods](volume.md#methods)</sub>
+
+----------
+### ImportVDB()
+
+> classmethod
+
+``` python
+ImportVDB(path=None)
+```
+
+> Node ERROR: Node 'Import VDB' not found
+
+#### Arguments:
+- **path** (_String_ = None) : socket 'Path' (id: Path)
+
+
+
+#### Returns:
+- **Volume** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Volume](volume.md#volume) :black_small_square: [Content](volume.md#content) :black_small_square: [Methods](volume.md#methods)</sub>
 

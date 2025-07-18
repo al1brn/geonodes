@@ -25,6 +25,8 @@ updates
 
 from pprint import pprint, pformat
 from pathlib import Path
+import os
+import json
 import inspect
 
 import bpy
@@ -379,6 +381,7 @@ class NodeInfo:
 
     @classmethod
     def get_socket_class_name(cls, socket):
+
         class_name = constants.CLASS_NAMES[socket.type]
         if class_name == 'Geometry':
             class_name = cls.geometry_class(socket.name)
@@ -1403,6 +1406,10 @@ class NodeInfo:
 
     def add_func(self, gen, class_name, func_name, code, node_name=None, halt=True, **params):
 
+        if False:
+            print(f"add_func: {class_name=}, {func_name=}, {code=}, {node_name=}")
+            print(f"gen: {list(gen.keys())}")
+
         # ----------------------------------------------------------------------------------------------------
         # Source code in gen['source']
 
@@ -1415,7 +1422,7 @@ class NodeInfo:
             print("Function name:", func_name)
             print()
             print(">>>>> Existing code:")
-            print(gen[class_name][func_name])
+            print(gen['source'][class_name][func_name])
 
             print()
             print(">>>>> New code:")
@@ -1444,7 +1451,12 @@ class NodeInfo:
             if name is None:
                 continue
 
-            bl_idname = constants.NODE_NAMES[self.btree.bl_idname][name]
+            bl_idname = constants.NODE_NAMES[self.btree.bl_idname].get(name)
+            if bl_idname is None:
+                print(f"Warning: node '{name}' is not declared")
+                continue
+
+            #bl_idname = constants.NODE_NAMES[self.btree.bl_idname][name]
 
             if bl_idname not in gen['cross']:
                 gen['cross'][bl_idname] = {}
@@ -1595,9 +1607,11 @@ class NodeInfo:
         module = 'nd' if tree_type == 'GeometryNodeTree' else 'snd'
 
         def f(node_info, gen):
-            if verbose:
-                print("gen_static_nodes:", node_info.bnode.name)
-            node_info.static_code(gen, module)
+            ok = constants.NODE_NAMES[tree_type].get(node_info.bnode.name) is not None
+            if verbose or not ok:
+                print(f"gen_static_nodes: '{node_info.bnode.name}' ({node_info.bnode.bl_idname})", "NOT DECLARED" if not ok else "")
+            if ok:
+                node_info.static_code(gen, module)
 
         cls.loop(f, gen, tree_type=tree_type)
 
@@ -1732,6 +1746,27 @@ class NodeInfo:
         - check_existing : raises en error if the method already exists
         - parameters : node parameters
         """
+
+        DEBUG = False and self.bnode.name in ['Field Average']
+        if DEBUG:
+            pass
+            print(f"METHOD CODE '{self.bnode.name}': {func=}, {func_name=}, {class_name=}, {domain_loop=}, {data_type_loop=}")
+            print(f"             {parameters=}")
+
+        # ----------------------------------------------------------------------------------------------------
+        # Multiple class names
+
+        if isinstance(class_name, tuple):
+            for cname in class_name:
+                gen = self.method_code(gen, func=func, func_name=func_name, class_name=cname,
+                                    self_=self_, is_class_method=is_class_method, jump_method=jump_method, only_enabled=only_enabled,
+                                    domain_loop=domain_loop, domain_param=domain_param, domain_value=domain_value,
+                                    data_type_loop=data_type_loop, set_in_socket=set_in_socket, ret=ret, cache=cache,
+                                    check_existing=check_existing,
+                                    **parameters)
+            return gen
+
+
         # ----------------------------------------------------------------------------------------------------
         # Set user parameters
 
@@ -1796,6 +1831,7 @@ class NodeInfo:
 
         data_type = None
         data_type_sockets = self.data_type_sockets
+
         if (data_type_sockets is not None) and len(data_type_sockets['in_sockets']):
 
             data_type = data_type_sockets['param_name']
@@ -2183,9 +2219,12 @@ class NodeInfo:
         """
 
         # DEBUG
-        DEBUG = self.bnode.name in ['Rotate Rotation']
+        DEBUG = False and self.bnode.name in ['Attribute Statistic', 'Field Average']
         if DEBUG:
             pass
+            print(f"DEBUG Node:  '{self.bnode.name}', {rename=}, {param_loop=}, {mode_loop=}, {operation_param=}")
+            print("params:", self.params)
+            print("enums :", self.enum_params)
 
         # ----------------------------------------------------------------------------------------------------
         # Extract parameters from kwargs dict
@@ -2270,11 +2309,13 @@ class NodeInfo:
         # ----- Constructor
 
         elif func in ('C', 'Constructor'):
+
             self.constructor_code(gen, func_name=func_name, **kwargs, **parameters)
 
         # ----- Method
 
         elif func in ('m', 'method', 'Method', 'get'):
+
             self.method_code(gen, func=func, func_name=func_name, **kwargs, **parameters)
 
         # ----- Operation
@@ -2381,6 +2422,183 @@ class NodeInfo:
 
 
 # =============================================================================================================================
+# Build the description dictionary
+
+def descr_file_path(folder, version=None):
+    if version is None:
+        version = bpy.app.version_string
+    
+    if folder is None:
+        return None
+    
+    os.makedirs(folder, exist_ok=True)
+    return os.path.join(folder, f"nodes_description {version}.json")
+
+def build_description(folder=None):
+    """ Build the dictionary: user name -> enum param value
+    """
+
+    def func(ni, descr):
+
+        d = {}
+        d["params"]  = list(ni.params.keys())
+        d["inputs"]  = [bsock.name for bsock in ni.bnode.inputs]
+        d["outputs"] = [bsock.name for bsock in ni.bnode.outputs]
+
+        descr[ni.bnode.name] = d
+
+    descr = {}
+    NodeInfo.loop(func, descr)
+
+    # Save on disk
+
+    file_path = descr_file_path(folder)
+    if file_path is not None:
+        with open(file_path, "w", encoding="utf-8") as f:
+            json.dump(descr, f, indent=2, ensure_ascii=False)
+
+        print(f"Dict saved in {file_path}")
+
+    return descr
+
+def compare_descriptions(folder, version):
+
+    # ---------------------------------------------------------------------------
+    # Compare two lists
+    # ---------------------------------------------------------------------------
+
+    def comp_lists(old_list, new_list):
+        deprecated = []
+        created = []
+        for name in old_list:
+            if not name in new_list:
+                deprecated.append(name)
+        for name in new_list:
+            if not name in old_list:
+                created.append(name)
+
+        return deprecated, created
+
+    # ---------------------------------------------------------------------------
+    # Load old description
+    # ---------------------------------------------------------------------------
+
+    file_path = descr_file_path(folder, version)
+
+    if (version is None) or (not os.path.isfile(file_path)):
+        raise Exception(f"Description file for version {version} not found.\n{file_path}")
+    
+    with open(file_path, "r") as f:
+        old_descr = json.load(f)
+
+    # ----- Build the new description
+
+    new_descr = build_description()
+
+    # ----- ONLY FOR TESTING
+
+    if False:
+        import numpy as np
+
+        rng = np.random.default_rng(0)
+
+        del_old = []
+        del_new = []
+        for k, v in old_descr.items():
+            if rng.uniform(0, 1) < .05:
+                del_old.append(k)
+            elif rng.uniform(0, 1) < .05:
+                del_new.append(k)
+            elif rng.uniform(0, 1) < .05:
+                v["params"].append("DEPRECATED param")
+                v["inputs"].append("DEPRECATED input")
+                v["outputs"].append("DEPRECATED output")
+            elif rng.uniform(0, 1) < .05:
+                new_v = new_descr[k]
+                new_v["params"].append("NEW param")
+                new_v["inputs"].append("NEW input")
+                new_v["outputs"].append("NEW output")
+
+        for k in del_old:
+            del old_descr[k]
+        for k in del_new:
+            del new_descr[k]
+
+
+    # ---------------------------------------------------------------------------
+    # Deprecated / created nodes
+    # ---------------------------------------------------------------------------
+
+    print(f"Compare two versions:\n     - old: {version}\n     - new: {bpy.app.version_string}\n\n")
+
+    deprecated, created = comp_lists(old_descr.keys(), new_descr.keys())
+
+    if len(deprecated):
+        print(f"Deprecated: {len(deprecated)} nodes")
+        for name in deprecated:
+            print(f"     - {name}")
+    else:
+        print("No deprecated nodes")
+    print()
+
+    if len(created):
+        print(f"New: {len(created)} nodes")
+        for name in created:
+            print(f"     - {name}")
+    else:
+        print("No new nodes")
+    print()
+
+    # ---------------------------------------------------------------------------
+    # Modified nodes
+    # ---------------------------------------------------------------------------
+
+    print("Modified nodes:")
+    count = 0
+
+    # Modified
+    for name, o_d in old_descr.items():
+        n_d = new_descr.get(name, None)
+        if n_d is None:
+            continue
+
+        ok_name = False
+
+        for key in o_d.keys():
+            dep, cre = comp_lists(o_d[key], n_d[key])
+            if len(dep) or len(cre):
+
+                if not ok_name:
+                    print(f"- {name}")
+                    ok_name = True
+
+                if len(dep):
+                    print(f"  Deprecated {key} ({len(dep)}) : {dep}")
+                if len(cre):
+                    print(f"  New {key} ({len(cre)})        : {cre}")
+
+        if ok_name:
+            count += 1
+            print()
+
+    if count:
+        print(f"{count} nodes modified")
+    else:
+        print("No modified nodes")
+    print()
+
+
+
+
+
+
+
+
+
+
+
+
+# =============================================================================================================================
 # Generates the reference dictionaries
 
 # -----------------------------------------------------------------------------------------------------------------------------
@@ -2457,11 +2675,6 @@ def build_user_enum_params():
 
         NodeInfo.loop(check)
 
-
-
-
-
-
 # -----------------------------------------------------------------------------------------------------------------------------
 # Information on classes
 
@@ -2499,7 +2712,8 @@ def build_sockets_dict():
         for nodesocket in nodesockets:
 
             short = nodesocket[len('NodeSocket'):]
-            class_name = CLASS_NAMES[short]
+            #class_name = CLASS_NAMES[short]
+            class_name = short
 
             # ----- Create a input socket
 

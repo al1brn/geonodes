@@ -25,20 +25,75 @@ A group input socket of type String is created if the name is not None.
 
 ## Content
 
-- **E** : [equal](string.md#equal)
-- **F** : [FilePath](string.md#filepath) :black_small_square: [find](string.md#find) :black_small_square: [find_in_string](string.md#find_in_string)
+- **C** : [contains](string.md#contains)
+- **E** : [ends_with](string.md#ends_with) :black_small_square: [equal](string.md#equal)
+- **F** : [FilePath](string.md#filepath) :black_small_square: [find](string.md#find) :black_small_square: [find_in_string](string.md#find_in_string) :black_small_square: [Format](string.md#format) :black_small_square: [format](string.md#format)
 - **H** : [hash_value](string.md#hash_value)
-- **I** : [\_\_init__](string.md#__init__)
+- **I** : [ImportText](string.md#importtext) :black_small_square: [\_\_init__](string.md#__init__)
 - **J** : [Join](string.md#join) :black_small_square: [join](string.md#join)
 - **L** : [length](string.md#length)
 - **N** : [not_equal](string.md#not_equal)
 - **R** : [replace](string.md#replace)
-- **S** : [slice](string.md#slice) :black_small_square: [special_characters](string.md#special_characters)
+- **S** : [slice](string.md#slice) :black_small_square: [special_characters](string.md#special_characters) :black_small_square: [starts_with](string.md#starts_with)
 - **T** : [to_curves](string.md#to_curves)
 
 ## Methods
 
 
+
+----------
+### contains()
+
+> method
+
+``` python
+contains(key=None)
+```
+
+> Node [Match String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/match_string.html)
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'CONTAINS'
+
+
+
+#### Arguments:
+- **key** (_String_ = None) : socket 'Key' (id: Key)
+
+
+
+#### Returns:
+- **Boolean** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [String](string.md#string) :black_small_square: [Content](string.md#content) :black_small_square: [Methods](string.md#methods)</sub>
+
+----------
+### ends_with()
+
+> method
+
+``` python
+ends_with(key=None)
+```
+
+> Node [Match String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/match_string.html)
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'ENDS_WITH'
+
+
+
+#### Arguments:
+- **key** (_String_ = None) : socket 'Key' (id: Key)
+
+
+
+#### Returns:
+- **Boolean** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [String](string.md#string) :black_small_square: [Content](string.md#content) :black_small_square: [Methods](string.md#methods)</sub>
 
 ----------
 ### equal()
@@ -150,6 +205,48 @@ find_in_string(search=None)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [String](string.md#string) :black_small_square: [Content](string.md#content) :black_small_square: [Methods](string.md#methods)</sub>
 
 ----------
+### Format()
+
+> classmethod
+
+``` python
+Format(format=None)
+```
+
+> Node [Format String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/format_string.html)
+
+#### Arguments:
+- **format** (_String_ = None) : socket 'Format' (id: Format)
+
+
+
+#### Returns:
+- **String** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [String](string.md#string) :black_small_square: [Content](string.md#content) :black_small_square: [Methods](string.md#methods)</sub>
+
+----------
+### format()
+
+> method
+
+``` python
+format()
+```
+
+> Node [Format String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/format_string.html)
+
+#### Information:
+- **Socket** : self
+
+
+
+#### Returns:
+- **String** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [String](string.md#string) :black_small_square: [Content](string.md#content) :black_small_square: [Methods](string.md#methods)</sub>
+
+----------
 ### hash_value()
 
 > method
@@ -173,6 +270,27 @@ hash_value(seed=None)
 
 #### Returns:
 - **Integer** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [String](string.md#string) :black_small_square: [Content](string.md#content) :black_small_square: [Methods](string.md#methods)</sub>
+
+----------
+### ImportText()
+
+> classmethod
+
+``` python
+ImportText(path=None)
+```
+
+> Node ERROR: Node 'Import Text' not found
+
+#### Arguments:
+- **path** (_String_ = None) : socket 'Path' (id: Path)
+
+
+
+#### Returns:
+- **String** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [String](string.md#string) :black_small_square: [Content](string.md#content) :black_small_square: [Methods](string.md#methods)</sub>
 
@@ -367,6 +485,33 @@ special_characters()
 
 #### Returns:
 - **node** (_String_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [String](string.md#string) :black_small_square: [Content](string.md#content) :black_small_square: [Methods](string.md#methods)</sub>
+
+----------
+### starts_with()
+
+> method
+
+``` python
+starts_with(key=None)
+```
+
+> Node [Match String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/match_string.html)
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'STARTS_WITH'
+
+
+
+#### Arguments:
+- **key** (_String_ = None) : socket 'Key' (id: Key)
+
+
+
+#### Returns:
+- **Boolean** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [String](string.md#string) :black_small_square: [Content](string.md#content) :black_small_square: [Methods](string.md#methods)</sub>
 

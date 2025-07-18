@@ -44,7 +44,7 @@ Nodes requiring a domain parameter, are implemented in one of the four domains o
 - **O** : [offset_corner_in_face](mesh.md#offset_corner_in_face)
 - **P** : [points](mesh.md#points)
 - **S** : [sample_nearest_surface](mesh.md#sample_nearest_surface) :black_small_square: [sample_uv_surface](mesh.md#sample_uv_surface) :black_small_square: [set_face_set](mesh.md#set_face_set) :black_small_square: [shortest_edge_paths](mesh.md#shortest_edge_paths) :black_small_square: [split_edges](mesh.md#split_edges) :black_small_square: [subdivide](mesh.md#subdivide) :black_small_square: [subdivision_surface](mesh.md#subdivision_surface)
-- **T** : [to_curve](mesh.md#to_curve) :black_small_square: [to_density_grid](mesh.md#to_density_grid) :black_small_square: [to_points](mesh.md#to_points) :black_small_square: [to_sdf_grid](mesh.md#to_sdf_grid) :black_small_square: [to_volume](mesh.md#to_volume) :black_small_square: [triangulate](mesh.md#triangulate)
+- **T** : [to_curve](mesh.md#to_curve) :black_small_square: [to_curve_edges](mesh.md#to_curve_edges) :black_small_square: [to_curve_faces](mesh.md#to_curve_faces) :black_small_square: [to_density_grid](mesh.md#to_density_grid) :black_small_square: [to_points](mesh.md#to_points) :black_small_square: [to_sdf_grid](mesh.md#to_sdf_grid) :black_small_square: [to_volume](mesh.md#to_volume) :black_small_square: [triangulate](mesh.md#triangulate)
 - **U** : [Union](mesh.md#union) :black_small_square: [union](mesh.md#union) :black_small_square: [UVSphere](mesh.md#uvsphere)
 - **V** : [vertex_neighbors](mesh.md#vertex_neighbors) :black_small_square: [vertex_of_corner](mesh.md#vertex_of_corner) :black_small_square: [vertices_to_points](mesh.md#vertices_to_points)
 
@@ -98,7 +98,7 @@ POINT domain
 > classmethod
 
 ``` python
-Boolean(*mesh_2, mesh_1=None, self_intersection=None, hole_tolerant=None, operation='DIFFERENCE', solver='FLOAT')
+Boolean(*mesh_2, mesh_1=None, operation='DIFFERENCE', solver='FLOAT')
 ```
 
 > Node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html)
@@ -106,10 +106,8 @@ Boolean(*mesh_2, mesh_1=None, self_intersection=None, hole_tolerant=None, operat
 #### Arguments:
 - **mesh_2** (_Geometry_) : socket 'Mesh 2' (id: Mesh 2)
 - **mesh_1** (_Geometry_ = None) : socket 'Mesh 1' (id: Mesh 1)
-- **self_intersection** (_Boolean_ = None) : socket 'Self Intersection' (id: Self Intersection)
-- **hole_tolerant** (_Boolean_ = None) : socket 'Hole Tolerant' (id: Hole Tolerant)
 - **operation** (_str_ = DIFFERENCE) : parameter 'operation' in ['INTERSECT', 'UNION', 'DIFFERENCE']
-- **solver** (_str_ = FLOAT) : parameter 'solver' in ['EXACT', 'FLOAT']
+- **solver** (_str_ = FLOAT) : parameter 'solver' in ['EXACT', 'FLOAT', 'MANIFOLD']
 
 
 
@@ -124,7 +122,7 @@ Boolean(*mesh_2, mesh_1=None, self_intersection=None, hole_tolerant=None, operat
 > method
 
 ``` python
-boolean(*mesh_2, self_intersection=None, hole_tolerant=None, operation='DIFFERENCE', solver='FLOAT')
+boolean(*mesh_2, operation='DIFFERENCE', solver='FLOAT')
 ```
 
 > Node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html)
@@ -138,10 +136,8 @@ boolean(*mesh_2, self_intersection=None, hole_tolerant=None, operation='DIFFEREN
 
 #### Arguments:
 - **mesh_2** (_Geometry_) : socket 'Mesh 2' (id: Mesh 2)
-- **self_intersection** (_Boolean_ = None) : socket 'Self Intersection' (id: Self Intersection)
-- **hole_tolerant** (_Boolean_ = None) : socket 'Hole Tolerant' (id: Hole Tolerant)
 - **operation** (_str_ = DIFFERENCE) : parameter 'operation' in ['INTERSECT', 'UNION', 'DIFFERENCE']
-- **solver** (_str_ = FLOAT) : parameter 'solver' in ['EXACT', 'FLOAT']
+- **solver** (_str_ = FLOAT) : parameter 'solver' in ['EXACT', 'FLOAT', 'MANIFOLD']
 
 
 
@@ -354,7 +350,7 @@ Cylinder(vertices=None, side_segments=None, fill_segments=None, radius=None, dep
 > classmethod
 
 ``` python
-Difference(*mesh_2, mesh_1=None, self_intersection=None, hole_tolerant=None, solver='FLOAT')
+Difference(*mesh_2, mesh_1=None, solver='FLOAT')
 ```
 
 > Node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html)
@@ -367,9 +363,7 @@ Difference(*mesh_2, mesh_1=None, self_intersection=None, hole_tolerant=None, sol
 #### Arguments:
 - **mesh_2** (_Geometry_) : socket 'Mesh 2' (id: Mesh 2)
 - **mesh_1** (_Geometry_ = None) : socket 'Mesh 1' (id: Mesh 1)
-- **self_intersection** (_Boolean_ = None) : socket 'Self Intersection' (id: Self Intersection)
-- **hole_tolerant** (_Boolean_ = None) : socket 'Hole Tolerant' (id: Hole Tolerant)
-- **solver** (_str_ = FLOAT) : parameter 'solver' in ['EXACT', 'FLOAT']
+- **solver** (_str_ = FLOAT) : parameter 'solver' in ['EXACT', 'FLOAT', 'MANIFOLD']
 
 
 
@@ -384,7 +378,7 @@ Difference(*mesh_2, mesh_1=None, self_intersection=None, hole_tolerant=None, sol
 > method
 
 ``` python
-difference(*mesh_2, self_intersection=None, hole_tolerant=None, solver='FLOAT')
+difference(*mesh_2, solver='FLOAT')
 ```
 
 > Node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html)
@@ -399,9 +393,7 @@ difference(*mesh_2, self_intersection=None, hole_tolerant=None, solver='FLOAT')
 
 #### Arguments:
 - **mesh_2** (_Geometry_) : socket 'Mesh 2' (id: Mesh 2)
-- **self_intersection** (_Boolean_ = None) : socket 'Self Intersection' (id: Self Intersection)
-- **hole_tolerant** (_Boolean_ = None) : socket 'Hole Tolerant' (id: Hole Tolerant)
-- **solver** (_str_ = FLOAT) : parameter 'solver' in ['EXACT', 'FLOAT']
+- **solver** (_str_ = FLOAT) : parameter 'solver' in ['EXACT', 'FLOAT', 'MANIFOLD']
 
 
 
@@ -1055,7 +1047,7 @@ ImportSTL(path=None)
 > classmethod
 
 ``` python
-Intersect(*mesh, self_intersection=None, hole_tolerant=None, solver='FLOAT')
+Intersect(*mesh, solver='FLOAT')
 ```
 
 > Node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html)
@@ -1067,9 +1059,7 @@ Intersect(*mesh, self_intersection=None, hole_tolerant=None, solver='FLOAT')
 
 #### Arguments:
 - **mesh** (_Geometry_) : socket 'Mesh' (id: Mesh 2)
-- **self_intersection** (_Boolean_ = None) : socket 'Self Intersection' (id: Self Intersection)
-- **hole_tolerant** (_Boolean_ = None) : socket 'Hole Tolerant' (id: Hole Tolerant)
-- **solver** (_str_ = FLOAT) : parameter 'solver' in ['EXACT', 'FLOAT']
+- **solver** (_str_ = FLOAT) : parameter 'solver' in ['EXACT', 'FLOAT', 'MANIFOLD']
 
 
 
@@ -1084,7 +1074,7 @@ Intersect(*mesh, self_intersection=None, hole_tolerant=None, solver='FLOAT')
 > method
 
 ``` python
-intersect(*mesh, self_intersection=None, hole_tolerant=None, solver='FLOAT')
+intersect(*mesh, solver='FLOAT')
 ```
 
 > Node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html)
@@ -1098,9 +1088,7 @@ intersect(*mesh, self_intersection=None, hole_tolerant=None, solver='FLOAT')
 
 #### Arguments:
 - **mesh** (_Geometry_) : socket 'Mesh' (id: Mesh 2)
-- **self_intersection** (_Boolean_ = None) : socket 'Self Intersection' (id: Self Intersection)
-- **hole_tolerant** (_Boolean_ = None) : socket 'Hole Tolerant' (id: Hole Tolerant)
-- **solver** (_str_ = FLOAT) : parameter 'solver' in ['EXACT', 'FLOAT']
+- **solver** (_str_ = FLOAT) : parameter 'solver' in ['EXACT', 'FLOAT', 'MANIFOLD']
 
 
 
@@ -1473,7 +1461,7 @@ subdivision_surface(level=None, edge_crease=None, vertex_crease=None, limit_surf
 > method
 
 ``` python
-to_curve()
+to_curve(mode='EDGES')
 ```
 
 > Node [Mesh to Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_curve.html)
@@ -1481,6 +1469,57 @@ to_curve()
 #### Information:
 - **Socket** : self
 - **Socket** : self[selection]
+
+
+
+#### Arguments:
+- **mode** (_str_ = EDGES) : parameter 'mode' in ['EDGES', 'FACES']
+
+
+
+#### Returns:
+- **Curve** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
+
+----------
+### to_curve_edges()
+
+> method
+
+``` python
+to_curve_edges()
+```
+
+> Node [Mesh to Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_curve.html)
+
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+- **Parameter** : 'EDGES'
+
+
+
+#### Returns:
+- **Curve** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
+
+----------
+### to_curve_faces()
+
+> method
+
+``` python
+to_curve_faces()
+```
+
+> Node [Mesh to Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_curve.html)
+
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+- **Parameter** : 'FACES'
 
 
 
@@ -1638,7 +1677,7 @@ triangulate(ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL')
 > classmethod
 
 ``` python
-Union(*mesh, self_intersection=None, hole_tolerant=None, solver='FLOAT')
+Union(*mesh, solver='FLOAT')
 ```
 
 > Node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html)
@@ -1650,9 +1689,7 @@ Union(*mesh, self_intersection=None, hole_tolerant=None, solver='FLOAT')
 
 #### Arguments:
 - **mesh** (_Geometry_) : socket 'Mesh' (id: Mesh 2)
-- **self_intersection** (_Boolean_ = None) : socket 'Self Intersection' (id: Self Intersection)
-- **hole_tolerant** (_Boolean_ = None) : socket 'Hole Tolerant' (id: Hole Tolerant)
-- **solver** (_str_ = FLOAT) : parameter 'solver' in ['EXACT', 'FLOAT']
+- **solver** (_str_ = FLOAT) : parameter 'solver' in ['EXACT', 'FLOAT', 'MANIFOLD']
 
 
 
@@ -1667,7 +1704,7 @@ Union(*mesh, self_intersection=None, hole_tolerant=None, solver='FLOAT')
 > method
 
 ``` python
-union(*mesh, self_intersection=None, hole_tolerant=None, solver='FLOAT')
+union(*mesh, solver='FLOAT')
 ```
 
 > Node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html)
@@ -1681,9 +1718,7 @@ union(*mesh, self_intersection=None, hole_tolerant=None, solver='FLOAT')
 
 #### Arguments:
 - **mesh** (_Geometry_) : socket 'Mesh' (id: Mesh 2)
-- **self_intersection** (_Boolean_ = None) : socket 'Self Intersection' (id: Self Intersection)
-- **hole_tolerant** (_Boolean_ = None) : socket 'Hole Tolerant' (id: Hole Tolerant)
-- **solver** (_str_ = FLOAT) : parameter 'solver' in ['EXACT', 'FLOAT']
+- **solver** (_str_ = FLOAT) : parameter 'solver' in ['EXACT', 'FLOAT', 'MANIFOLD']
 
 
 

@@ -367,3 +367,60 @@ class Integer(generated.Integer):
 
     def __ne__(self, other):
         return self.not_equal(other)
+    
+    # =============================================================================================================================
+    # Bitwise
+    # and, or, xor, not, shift, rotate
+    # AND	&	__and__(self, other)	__iand__(self, other)
+    # OR	|	__or__(self, other)	__ior__(self, other)
+    # XOR	^	__xor__(self, other)	__ixor__(self, other)
+    # NOT (bitwise)	~	__invert__(self)	(pas d'in-place)
+    # Shift gauche	<<	__lshift__	__ilshift__
+    # Shift droite	>>	__rshift__	__irshift__    
+
+    def __invert__(self):
+        return self.bw_not()
+    
+
+    def __and__(self, other):
+        return self.bw_and(other)
+    
+    def __rand__(self, other):
+        return Integer(other).bw_and(self)
+    
+    def __iand__(self, other):
+        return self._jump(self.bw_and(other))
+    
+
+    def __or__(self, other):
+        return self.bw_or(other)
+    
+    def __ror__(self, other):
+        return Integer(other).bw_or(self)
+    
+    def __ior__(self, other):
+        return self._jump(self.bw_or(other))
+
+
+    def __xor__(self, other):
+        return selfbw_xor(other)
+    
+    def __rxor__(self, other):
+        return Integer(other).bw_xor(self)
+    
+    def __ixor__(self, other):
+        return self._jump(self.bw_xor(other))
+
+
+    def __lshift__(self, other):
+        return self.bw_shift(other)
+    
+    def __ilshift__(self, other):
+        return self._jump(self.bw_shift(other))
+
+    def __rshift__(self, other):
+        return self.bw_shift(-other)
+    
+    def __irshift__(self, other):
+        return self._jump(self.bw_shift(-other))
+    

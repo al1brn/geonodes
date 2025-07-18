@@ -15,10 +15,11 @@ Layer(geometry: geonodes.core.geometry_class.Geometry)
 
 ## Content
 
-- **A** : [accumulate_field](layer.md#accumulate_field) :black_small_square: [attribute_statistic](layer.md#attribute_statistic)
+- **A** : [accumulate_field](layer.md#accumulate_field) :black_small_square: [active_element](layer.md#active_element) :black_small_square: [attribute_statistic](layer.md#attribute_statistic)
 - **C** : [count](layer.md#count)
 - **D** : [delete](layer.md#delete) :black_small_square: [delete_all](layer.md#delete_all) :black_small_square: [delete_edge_face](layer.md#delete_edge_face) :black_small_square: [delete_geometry](layer.md#delete_geometry) :black_small_square: [delete_geometry_all](layer.md#delete_geometry_all) :black_small_square: [delete_geometry_edge_face](layer.md#delete_geometry_edge_face) :black_small_square: [delete_geometry_only_face](layer.md#delete_geometry_only_face) :black_small_square: [delete_only_face](layer.md#delete_only_face) :black_small_square: [duplicate](layer.md#duplicate)
 - **E** : [evaluate_at_index](layer.md#evaluate_at_index) :black_small_square: [evaluate_on_domain](layer.md#evaluate_on_domain)
+- **F** : [field_average](layer.md#field_average) :black_small_square: [field_min_max](layer.md#field_min_max) :black_small_square: [field_variance](layer.md#field_variance)
 - **N** : [named_selection](layer.md#named_selection)
 - **S** : [sample_index](layer.md#sample_index) :black_small_square: [separate](layer.md#separate) :black_small_square: [split_to_instances](layer.md#split_to_instances) :black_small_square: [store](layer.md#store) :black_small_square: [store_named_attribute](layer.md#store_named_attribute)
 - **V** : [viewer](layer.md#viewer)
@@ -65,6 +66,27 @@ accumulate_field(value=None, group_id=None)
 
 #### Returns:
 - **Float** (_Float_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Layer](layer.md#layer) :black_small_square: [Content](layer.md#content) :black_small_square: [Methods](layer.md#methods)</sub>
+
+----------
+### active_element()
+
+> classmethod
+
+``` python
+active_element()
+```
+
+> Node [Active Element](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/active_element.html)
+
+#### Information:
+- **Parameter** : 'LAYER'
+
+
+
+#### Returns:
+- **Integer** (_Boolean_)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Layer](layer.md#layer) :black_small_square: [Content](layer.md#content) :black_small_square: [Methods](layer.md#methods)</sub>
 
@@ -349,7 +371,7 @@ duplicate(amount=None)
 > classmethod
 
 ``` python
-evaluate_at_index(index=None, value=None)
+evaluate_at_index(value=None, index=None)
 ```
 
 > Node [Evaluate at Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/evaluate_at_index.html)
@@ -361,8 +383,8 @@ evaluate_at_index(index=None, value=None)
 
 
 #### Arguments:
-- **index** (_Integer_ = None) : socket 'Index' (id: Index)
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **index** (_Integer_ = None) : socket 'Index' (id: Index)
 
 
 
@@ -399,6 +421,90 @@ evaluate_on_domain(value=None)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Layer](layer.md#layer) :black_small_square: [Content](layer.md#content) :black_small_square: [Methods](layer.md#methods)</sub>
 
 ----------
+### field_average()
+
+> classmethod
+
+``` python
+field_average(value=None, group_id=None, domain='POINT')
+```
+
+> Node [Field Average](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/field_average.html)
+
+#### Information:
+- **Parameter** : depending on 'value' type
+
+
+
+#### Arguments:
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **group_id** (_Integer_ = None) : socket 'Group ID' (id: Group Index)
+- **domain** (_str_ = POINT) : parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
+
+
+
+#### Returns:
+- **node** (_Float_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Layer](layer.md#layer) :black_small_square: [Content](layer.md#content) :black_small_square: [Methods](layer.md#methods)</sub>
+
+----------
+### field_min_max()
+
+> classmethod
+
+``` python
+field_min_max(value=None, group_id=None, domain='POINT')
+```
+
+> Node ERROR: Node 'Field Min & Max' not found
+
+#### Information:
+- **Parameter** : depending on 'value' type
+
+
+
+#### Arguments:
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **group_id** (_Integer_ = None) : socket 'Group ID' (id: Group Index)
+- **domain** (_str_ = POINT) : parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
+
+
+
+#### Returns:
+- **node** (_Float_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Layer](layer.md#layer) :black_small_square: [Content](layer.md#content) :black_small_square: [Methods](layer.md#methods)</sub>
+
+----------
+### field_variance()
+
+> classmethod
+
+``` python
+field_variance(value=None, group_id=None, domain='POINT')
+```
+
+> Node [Field Variance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/field_variance.html)
+
+#### Information:
+- **Parameter** : depending on 'value' type
+
+
+
+#### Arguments:
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **group_id** (_Integer_ = None) : socket 'Group ID' (id: Group Index)
+- **domain** (_str_ = POINT) : parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
+
+
+
+#### Returns:
+- **node** (_Float_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Layer](layer.md#layer) :black_small_square: [Content](layer.md#content) :black_small_square: [Methods](layer.md#methods)</sub>
+
+----------
 ### named_selection()
 
 > classmethod
@@ -407,7 +513,7 @@ evaluate_on_domain(value=None)
 named_selection(name=None)
 ```
 
-> Node ERROR: Node 'Named Layer Selection' not found
+> Node [Named Layer Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/grease_pencil/read/named_layer_selection.html)
 
 #### Arguments:
 - **name** (_String_ = None) : socket 'Name' (id: Name)
@@ -572,7 +678,7 @@ store_named_attribute(name=None, value=None)
 > method
 
 ``` python
-viewer(value=None)
+viewer(value=None, ui_shortcut=0)
 ```
 
 > Node [Viewer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/output/viewer.html)
@@ -586,5 +692,6 @@ viewer(value=None)
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **ui_shortcut** (_int_ = 0) : parameter 'ui_shortcut'
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Layer](layer.md#layer) :black_small_square: [Content](layer.md#content) :black_small_square: [Methods](layer.md#methods)</sub>

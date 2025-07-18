@@ -110,7 +110,7 @@ class Curve(Socket):
         return node._out
 
     @classmethod
-    def handle_type_selection(cls, handle_type='AUTO', mode={'RIGHT', 'LEFT'}):
+    def handle_type_selection(cls, handle_type='AUTO', mode={'LEFT', 'RIGHT'}):
         """ > Node <&Node Handle Type Selection>
 
         Arguments
@@ -485,7 +485,7 @@ class Curve(Socket):
         node = Node('Quadratic Bézier', sockets={'Resolution': resolution, 'Start': start, 'Middle': middle, 'End': end})
         return cls(node._out)
 
-    def set_handle_type(self, handle_type='AUTO', mode={'RIGHT', 'LEFT'}):
+    def set_handle_type(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}):
         """ > Node <&Node Set Handle Type>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -566,7 +566,7 @@ class Curve(Socket):
         -----------
         - Socket 'Curve' : self
         - Socket 'Selection' : self[selection]
-        - Parameter 'mode' : {'RIGHT', 'LEFT'}
+        - Parameter 'mode' : {'LEFT', 'RIGHT'}
 
         Arguments
         ---------
@@ -577,7 +577,7 @@ class Curve(Socket):
         - Curve
         """
         utils.check_enum_arg('Set Handle Type', 'handle_type', handle_type, 'set_both_handle_type', ('FREE', 'AUTO', 'VECTOR', 'ALIGN'))
-        node = Node('Set Handle Type', sockets={'Curve': self, 'Selection': self._sel}, handle_type=handle_type, mode={'RIGHT', 'LEFT'})
+        node = Node('Set Handle Type', sockets={'Curve': self, 'Selection': self._sel}, handle_type=handle_type, mode={'LEFT', 'RIGHT'})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -642,7 +642,7 @@ class Curve(Socket):
         node = Node('Star', sockets={'Points': points, 'Inner Radius': inner_radius, 'Outer Radius': outer_radius, 'Twist': twist})
         return cls(node._out)
 
-    def to_mesh(self, profile_curve=None, fill_caps=None):
+    def to_mesh(self, profile_curve=None, scale=None, fill_caps=None):
         """ > Node <&Node Curve to Mesh>
 
         Information
@@ -652,13 +652,14 @@ class Curve(Socket):
         Arguments
         ---------
         - profile_curve (Geometry) : socket 'Profile Curve' (id: Profile Curve)
+        - scale (Float) : socket 'Scale' (id: Scale)
         - fill_caps (Boolean) : socket 'Fill Caps' (id: Fill Caps)
 
         Returns
         -------
         - Mesh
         """
-        node = Node('Curve to Mesh', sockets={'Curve': self, 'Profile Curve': profile_curve, 'Fill Caps': fill_caps})
+        node = Node('Curve to Mesh', sockets={'Curve': self, 'Profile Curve': profile_curve, 'Scale': scale, 'Fill Caps': fill_caps})
         return node._out
 
     def to_points_evaluated(self):
@@ -1694,7 +1695,7 @@ class Curve(Socket):
         -----------
         - Socket 'Curve' : self
         - Socket 'Selection' : self[selection]
-        - Parameter 'mode' : {'RIGHT', 'LEFT'}
+        - Parameter 'mode' : {'LEFT', 'RIGHT'}
 
         Arguments
         ---------
@@ -1705,7 +1706,7 @@ class Curve(Socket):
         - Curve
         """
         utils.check_enum_arg('Set Handle Type', 'handle_type', handle_type, 'handle_type', ('FREE', 'AUTO', 'VECTOR', 'ALIGN'))
-        node = Node('Set Handle Type', sockets={'Curve': self, 'Selection': self._sel}, handle_type=handle_type, mode={'RIGHT', 'LEFT'})
+        node = Node('Set Handle Type', sockets={'Curve': self, 'Selection': self._sel}, handle_type=handle_type, mode={'LEFT', 'RIGHT'})
         self._jump(node._out)
         return self._domain_to_geometry
 

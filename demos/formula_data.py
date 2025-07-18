@@ -137,6 +137,10 @@ SYMBOLS = {
     'neq'       : '≠',
     'neq'       : '≠',
 
+    'times'     : '×',
+    'pm'        : '±',
+    'div'       : '÷',
+
     'exists'    : '∃',
     'nexists'   : '∄',
     'forall'    : '∀',

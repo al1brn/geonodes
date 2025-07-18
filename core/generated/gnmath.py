@@ -3,6 +3,119 @@ from .. treeclass import Node, ColorRamp, NodeCurves
 from .. treeclass import utils
 from .. scripterror import NodeError
 
+def bw_and(a=None, b=None):
+    """ > Node <&Node Bit Math>
+
+    Information
+    -----------
+    - Parameter 'operation' : 'AND'
+
+    Arguments
+    ---------
+    - a (Integer) : socket 'A' (id: A)
+    - b (Integer) : socket 'B' (id: B)
+
+    Returns
+    -------
+    - Integer
+    """
+    node = Node('Bit Math', sockets={'A': a, 'B': b}, operation='AND')
+    return node._out
+
+def bw_or(a=None, b=None):
+    """ > Node <&Node Bit Math>
+
+    Information
+    -----------
+    - Parameter 'operation' : 'OR'
+
+    Arguments
+    ---------
+    - a (Integer) : socket 'A' (id: A)
+    - b (Integer) : socket 'B' (id: B)
+
+    Returns
+    -------
+    - Integer
+    """
+    node = Node('Bit Math', sockets={'A': a, 'B': b}, operation='OR')
+    return node._out
+
+def bw_xor(a=None, b=None):
+    """ > Node <&Node Bit Math>
+
+    Information
+    -----------
+    - Parameter 'operation' : 'XOR'
+
+    Arguments
+    ---------
+    - a (Integer) : socket 'A' (id: A)
+    - b (Integer) : socket 'B' (id: B)
+
+    Returns
+    -------
+    - Integer
+    """
+    node = Node('Bit Math', sockets={'A': a, 'B': b}, operation='XOR')
+    return node._out
+
+def bw_not(a=None):
+    """ > Node <&Node Bit Math>
+
+    Information
+    -----------
+    - Parameter 'operation' : 'NOT'
+
+    Arguments
+    ---------
+    - a (Integer) : socket 'A' (id: A)
+
+    Returns
+    -------
+    - Integer
+    """
+    node = Node('Bit Math', sockets={'A': a}, operation='NOT')
+    return node._out
+
+def bw_shift(a=None, shift=None):
+    """ > Node <&Node Bit Math>
+
+    Information
+    -----------
+    - Parameter 'operation' : 'SHIFT'
+
+    Arguments
+    ---------
+    - a (Integer) : socket 'A' (id: A)
+    - shift (Integer) : socket 'Shift' (id: Shift)
+
+    Returns
+    -------
+    - Integer
+    """
+    node = Node('Bit Math', sockets={'A': a, 'Shift': shift}, operation='SHIFT')
+    return node._out
+
+def bw_rotate(a=None, shift=None):
+    """ > Node <&Node Bit Math>
+
+    Information
+    -----------
+    - Parameter 'operation' : 'ROTATE'
+
+    Arguments
+    ---------
+    - a (Integer) : socket 'A' (id: A)
+    - shift (Integer) : socket 'Shift' (id: Shift)
+
+    Returns
+    -------
+    - Integer
+    """
+    node = Node('Bit Math', sockets={'A': a, 'Shift': shift}, operation='ROTATE')
+    return node._out
+
 def band(boolean=None, boolean_1=None):
     """ > Node <&Node Boolean Math>
 
@@ -511,6 +624,63 @@ def lcm(value=None, value_1=None):
     - Integer
     """
     node = Node('Integer Math', sockets={'Value': value, 'Value_001': value_1}, operation='LCM')
+    return node._out
+
+def starts_with(string=None, key=None):
+    """ > Node <&Node Match String>
+
+    Information
+    -----------
+    - Parameter 'operation' : 'STARTS_WITH'
+
+    Arguments
+    ---------
+    - string (String) : socket 'String' (id: String)
+    - key (String) : socket 'Key' (id: Key)
+
+    Returns
+    -------
+    - Boolean
+    """
+    node = Node('Match String', sockets={'String': string, 'Key': key}, operation='STARTS_WITH')
+    return node._out
+
+def ends_with(string=None, key=None):
+    """ > Node <&Node Match String>
+
+    Information
+    -----------
+    - Parameter 'operation' : 'ENDS_WITH'
+
+    Arguments
+    ---------
+    - string (String) : socket 'String' (id: String)
+    - key (String) : socket 'Key' (id: Key)
+
+    Returns
+    -------
+    - Boolean
+    """
+    node = Node('Match String', sockets={'String': string, 'Key': key}, operation='ENDS_WITH')
+    return node._out
+
+def contains(string=None, key=None):
+    """ > Node <&Node Match String>
+
+    Information
+    -----------
+    - Parameter 'operation' : 'CONTAINS'
+
+    Arguments
+    ---------
+    - string (String) : socket 'String' (id: String)
+    - key (String) : socket 'Key' (id: Key)
+
+    Returns
+    -------
+    - Boolean
+    """
+    node = Node('Match String', sockets={'String': string, 'Key': key}, operation='CONTAINS')
     return node._out
 
 def add(value=None, value_1=None, use_clamp=False):
@@ -1619,6 +1789,43 @@ def vabs(vector=None):
     - Vector
     """
     node = Node('Vector Math', sockets={'Vector': vector}, operation='ABSOLUTE')
+    return node._out
+
+def vpower(base=None, exponent=None):
+    """ > Node <&Node Vector Math>
+
+    Information
+    -----------
+    - Parameter 'operation' : 'POWER'
+
+    Arguments
+    ---------
+    - base (Vector) : socket 'Base' (id: Vector)
+    - exponent (Vector) : socket 'Exponent' (id: Vector_001)
+
+    Returns
+    -------
+    - Vector
+    """
+    node = Node('Vector Math', sockets={'Vector': base, 'Vector_001': exponent}, operation='POWER')
+    return node._out
+
+def vsign(vector=None):
+    """ > Node <&Node Vector Math>
+
+    Information
+    -----------
+    - Parameter 'operation' : 'SIGN'
+
+    Arguments
+    ---------
+    - vector (Vector) : socket 'Vector' (id: Vector)
+
+    Returns
+    -------
+    - Vector
+    """
+    node = Node('Vector Math', sockets={'Vector': vector}, operation='SIGN')
     return node._out
 
 def vmin(vector=None, vector_1=None):

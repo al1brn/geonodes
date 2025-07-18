@@ -1608,7 +1608,7 @@ class Float(Socket):
         node = Node('Bevel', sockets={'Radius': self, 'Normal': normal}, samples=samples)
         return node._out
 
-    def bump(self, distance=None, height=None, normal=None, invert=False):
+    def bump(self, distance=None, filter_width=None, height=None, normal=None, invert=False):
         """ > Node <&ShaderNode Bump>
 
         Information
@@ -1618,6 +1618,7 @@ class Float(Socket):
         Arguments
         ---------
         - distance (Float) : socket 'Distance' (id: Distance)
+        - filter_width (Float) : socket 'Filter Width' (id: Filter Width)
         - height (Float) : socket 'Height' (id: Height)
         - normal (Vector) : socket 'Normal' (id: Normal)
         - invert (bool): parameter 'invert'
@@ -1626,7 +1627,7 @@ class Float(Socket):
         -------
         - Vector
         """
-        node = Node('Bump', sockets={'Strength': self, 'Distance': distance, 'Height': height, 'Normal': normal}, invert=invert)
+        node = Node('Bump', sockets={'Strength': self, 'Distance': distance, 'Filter Width': filter_width, 'Height': height, 'Normal': normal}, invert=invert)
         return node._out
 
     def combine_color_RGB(self, green=None, blue=None):

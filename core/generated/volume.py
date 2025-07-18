@@ -138,6 +138,21 @@ class Volume(Socket):
         self._jump(node._out)
         return self._domain_to_geometry
 
+    @classmethod
+    def ImportVDB(cls, path=None):
+        """ > Node <&Node Import VDB>
+
+        Arguments
+        ---------
+        - path (String) : socket 'Path' (id: Path)
+
+        Returns
+        -------
+        - Volume
+        """
+        node = Node('Import VDB', sockets={'Path': path})
+        return cls(node._out)
+
     def store_named_grid(self, name=None, grid=None):
         """ > Node <&Node Store Named Grid>
 
@@ -157,7 +172,7 @@ class Volume(Socket):
         -------
         - Volume
         """
-        data_type = utils.get_argument_data_type(grid, {'VALUE': 'FLOAT', 'VECTOR': 'FLOAT_VECTOR'}, 'Volume.store_named_grid', 'grid')
+        data_type = utils.get_argument_data_type(grid, {'BOOLEAN': 'BOOLEAN', 'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'VECTOR_FLOAT'}, 'Volume.store_named_grid', 'grid')
         node = Node('Store Named Grid', sockets={'Volume': self, 'Name': name, 'Grid': grid}, data_type=data_type)
         self._jump(node._out)
         return self._domain_to_geometry

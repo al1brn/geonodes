@@ -547,18 +547,6 @@ class Mesh(Socket):
         return node
 
     @classmethod
-    @property
-    def normal(cls):
-        """ > Node <&Node Normal>
-
-        Returns
-        -------
-        - Vector
-        """
-        node = Node('Normal', sockets={})
-        return node._out
-
-    @classmethod
     def shortest_edge_paths(cls, end_vertex=None, edge_cost=None):
         """ > Node <&Node Shortest Edge Paths>
 
@@ -589,7 +577,7 @@ class Mesh(Socket):
         node = Node('Material Selection', sockets={'Material': material})
         return node._out
 
-    def boolean(self, *mesh_2, self_intersection=None, hole_tolerant=None, operation='DIFFERENCE', solver='FLOAT'):
+    def boolean(self, *mesh_2, operation='DIFFERENCE', solver='FLOAT'):
         """ > Node <&Node Mesh Boolean>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -601,44 +589,40 @@ class Mesh(Socket):
         Arguments
         ---------
         - mesh_2 (Geometry) : socket 'Mesh 2' (id: Mesh 2)
-        - self_intersection (Boolean) : socket 'Self Intersection' (id: Self Intersection)
-        - hole_tolerant (Boolean) : socket 'Hole Tolerant' (id: Hole Tolerant)
         - operation (str): parameter 'operation' in ['INTERSECT', 'UNION', 'DIFFERENCE']
-        - solver (str): parameter 'solver' in ['EXACT', 'FLOAT']
+        - solver (str): parameter 'solver' in ['EXACT', 'FLOAT', 'MANIFOLD']
 
         Returns
         -------
         - Mesh
         """
         utils.check_enum_arg('Mesh Boolean', 'operation', operation, 'boolean', ('INTERSECT', 'UNION', 'DIFFERENCE'))
-        utils.check_enum_arg('Mesh Boolean', 'solver', solver, 'boolean', ('EXACT', 'FLOAT'))
-        node = Node('Mesh Boolean', sockets={'Mesh 1': self, 'Mesh 2': list(mesh_2), 'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, operation=operation, solver=solver)
+        utils.check_enum_arg('Mesh Boolean', 'solver', solver, 'boolean', ('EXACT', 'FLOAT', 'MANIFOLD'))
+        node = Node('Mesh Boolean', sockets={'Mesh 1': self, 'Mesh 2': list(mesh_2)}, operation=operation, solver=solver)
         self._jump(node._out)
         return self._domain_to_geometry
 
     @classmethod
-    def Boolean(cls, *mesh_2, mesh_1=None, self_intersection=None, hole_tolerant=None, operation='DIFFERENCE', solver='FLOAT'):
+    def Boolean(cls, *mesh_2, mesh_1=None, operation='DIFFERENCE', solver='FLOAT'):
         """ > Node <&Node Mesh Boolean>
 
         Arguments
         ---------
         - mesh_1 (Geometry) : socket 'Mesh 1' (id: Mesh 1)
         - mesh_2 (Geometry) : socket 'Mesh 2' (id: Mesh 2)
-        - self_intersection (Boolean) : socket 'Self Intersection' (id: Self Intersection)
-        - hole_tolerant (Boolean) : socket 'Hole Tolerant' (id: Hole Tolerant)
         - operation (str): parameter 'operation' in ['INTERSECT', 'UNION', 'DIFFERENCE']
-        - solver (str): parameter 'solver' in ['EXACT', 'FLOAT']
+        - solver (str): parameter 'solver' in ['EXACT', 'FLOAT', 'MANIFOLD']
 
         Returns
         -------
         - Mesh
         """
         utils.check_enum_arg('Mesh Boolean', 'operation', operation, 'Boolean', ('INTERSECT', 'UNION', 'DIFFERENCE'))
-        utils.check_enum_arg('Mesh Boolean', 'solver', solver, 'Boolean', ('EXACT', 'FLOAT'))
-        node = Node('Mesh Boolean', sockets={'Mesh 1': mesh_1, 'Mesh 2': list(mesh_2), 'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, operation=operation, solver=solver)
+        utils.check_enum_arg('Mesh Boolean', 'solver', solver, 'Boolean', ('EXACT', 'FLOAT', 'MANIFOLD'))
+        node = Node('Mesh Boolean', sockets={'Mesh 1': mesh_1, 'Mesh 2': list(mesh_2)}, operation=operation, solver=solver)
         return cls(node._out)
 
-    def intersect(self, *mesh, self_intersection=None, hole_tolerant=None, solver='FLOAT'):
+    def intersect(self, *mesh, solver='FLOAT'):
         """ > Node <&Node Mesh Boolean>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -650,20 +634,18 @@ class Mesh(Socket):
         Arguments
         ---------
         - mesh (Geometry) : socket 'Mesh' (id: Mesh 2)
-        - self_intersection (Boolean) : socket 'Self Intersection' (id: Self Intersection)
-        - hole_tolerant (Boolean) : socket 'Hole Tolerant' (id: Hole Tolerant)
-        - solver (str): parameter 'solver' in ['EXACT', 'FLOAT']
+        - solver (str): parameter 'solver' in ['EXACT', 'FLOAT', 'MANIFOLD']
 
         Returns
         -------
         - Mesh
         """
-        utils.check_enum_arg('Mesh Boolean', 'solver', solver, 'intersect', ('EXACT', 'FLOAT'))
-        node = Node('Mesh Boolean', sockets={'Mesh 2': [self] + list(mesh), 'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, operation='INTERSECT', solver=solver)
+        utils.check_enum_arg('Mesh Boolean', 'solver', solver, 'intersect', ('EXACT', 'FLOAT', 'MANIFOLD'))
+        node = Node('Mesh Boolean', sockets={'Mesh 2': [self] + list(mesh)}, operation='INTERSECT', solver=solver)
         self._jump(node._out)
         return self._domain_to_geometry
 
-    def union(self, *mesh, self_intersection=None, hole_tolerant=None, solver='FLOAT'):
+    def union(self, *mesh, solver='FLOAT'):
         """ > Node <&Node Mesh Boolean>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -675,20 +657,18 @@ class Mesh(Socket):
         Arguments
         ---------
         - mesh (Geometry) : socket 'Mesh' (id: Mesh 2)
-        - self_intersection (Boolean) : socket 'Self Intersection' (id: Self Intersection)
-        - hole_tolerant (Boolean) : socket 'Hole Tolerant' (id: Hole Tolerant)
-        - solver (str): parameter 'solver' in ['EXACT', 'FLOAT']
+        - solver (str): parameter 'solver' in ['EXACT', 'FLOAT', 'MANIFOLD']
 
         Returns
         -------
         - Mesh
         """
-        utils.check_enum_arg('Mesh Boolean', 'solver', solver, 'union', ('EXACT', 'FLOAT'))
-        node = Node('Mesh Boolean', sockets={'Mesh 2': [self] + list(mesh), 'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, operation='UNION', solver=solver)
+        utils.check_enum_arg('Mesh Boolean', 'solver', solver, 'union', ('EXACT', 'FLOAT', 'MANIFOLD'))
+        node = Node('Mesh Boolean', sockets={'Mesh 2': [self] + list(mesh)}, operation='UNION', solver=solver)
         self._jump(node._out)
         return self._domain_to_geometry
 
-    def difference(self, *mesh_2, self_intersection=None, hole_tolerant=None, solver='FLOAT'):
+    def difference(self, *mesh_2, solver='FLOAT'):
         """ > Node <&Node Mesh Boolean>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -701,21 +681,19 @@ class Mesh(Socket):
         Arguments
         ---------
         - mesh_2 (Geometry) : socket 'Mesh 2' (id: Mesh 2)
-        - self_intersection (Boolean) : socket 'Self Intersection' (id: Self Intersection)
-        - hole_tolerant (Boolean) : socket 'Hole Tolerant' (id: Hole Tolerant)
-        - solver (str): parameter 'solver' in ['EXACT', 'FLOAT']
+        - solver (str): parameter 'solver' in ['EXACT', 'FLOAT', 'MANIFOLD']
 
         Returns
         -------
         - Mesh
         """
-        utils.check_enum_arg('Mesh Boolean', 'solver', solver, 'difference', ('EXACT', 'FLOAT'))
-        node = Node('Mesh Boolean', sockets={'Mesh 1': self, 'Mesh 2': list(mesh_2), 'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, operation='DIFFERENCE', solver=solver)
+        utils.check_enum_arg('Mesh Boolean', 'solver', solver, 'difference', ('EXACT', 'FLOAT', 'MANIFOLD'))
+        node = Node('Mesh Boolean', sockets={'Mesh 1': self, 'Mesh 2': list(mesh_2)}, operation='DIFFERENCE', solver=solver)
         self._jump(node._out)
         return self._domain_to_geometry
 
     @classmethod
-    def Intersect(cls, *mesh, self_intersection=None, hole_tolerant=None, solver='FLOAT'):
+    def Intersect(cls, *mesh, solver='FLOAT'):
         """ > Node <&Node Mesh Boolean>
 
         Information
@@ -725,20 +703,18 @@ class Mesh(Socket):
         Arguments
         ---------
         - mesh (Geometry) : socket 'Mesh' (id: Mesh 2)
-        - self_intersection (Boolean) : socket 'Self Intersection' (id: Self Intersection)
-        - hole_tolerant (Boolean) : socket 'Hole Tolerant' (id: Hole Tolerant)
-        - solver (str): parameter 'solver' in ['EXACT', 'FLOAT']
+        - solver (str): parameter 'solver' in ['EXACT', 'FLOAT', 'MANIFOLD']
 
         Returns
         -------
         - Mesh
         """
-        utils.check_enum_arg('Mesh Boolean', 'solver', solver, 'Intersect', ('EXACT', 'FLOAT'))
-        node = Node('Mesh Boolean', sockets={'Mesh 2': list(mesh), 'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, operation='INTERSECT', solver=solver)
+        utils.check_enum_arg('Mesh Boolean', 'solver', solver, 'Intersect', ('EXACT', 'FLOAT', 'MANIFOLD'))
+        node = Node('Mesh Boolean', sockets={'Mesh 2': list(mesh)}, operation='INTERSECT', solver=solver)
         return cls(node._out)
 
     @classmethod
-    def Union(cls, *mesh, self_intersection=None, hole_tolerant=None, solver='FLOAT'):
+    def Union(cls, *mesh, solver='FLOAT'):
         """ > Node <&Node Mesh Boolean>
 
         Information
@@ -748,20 +724,18 @@ class Mesh(Socket):
         Arguments
         ---------
         - mesh (Geometry) : socket 'Mesh' (id: Mesh 2)
-        - self_intersection (Boolean) : socket 'Self Intersection' (id: Self Intersection)
-        - hole_tolerant (Boolean) : socket 'Hole Tolerant' (id: Hole Tolerant)
-        - solver (str): parameter 'solver' in ['EXACT', 'FLOAT']
+        - solver (str): parameter 'solver' in ['EXACT', 'FLOAT', 'MANIFOLD']
 
         Returns
         -------
         - Mesh
         """
-        utils.check_enum_arg('Mesh Boolean', 'solver', solver, 'Union', ('EXACT', 'FLOAT'))
-        node = Node('Mesh Boolean', sockets={'Mesh 2': list(mesh), 'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, operation='UNION', solver=solver)
+        utils.check_enum_arg('Mesh Boolean', 'solver', solver, 'Union', ('EXACT', 'FLOAT', 'MANIFOLD'))
+        node = Node('Mesh Boolean', sockets={'Mesh 2': list(mesh)}, operation='UNION', solver=solver)
         return cls(node._out)
 
     @classmethod
-    def Difference(cls, *mesh_2, mesh_1=None, self_intersection=None, hole_tolerant=None, solver='FLOAT'):
+    def Difference(cls, *mesh_2, mesh_1=None, solver='FLOAT'):
         """ > Node <&Node Mesh Boolean>
 
         Information
@@ -772,16 +746,14 @@ class Mesh(Socket):
         ---------
         - mesh_1 (Geometry) : socket 'Mesh 1' (id: Mesh 1)
         - mesh_2 (Geometry) : socket 'Mesh 2' (id: Mesh 2)
-        - self_intersection (Boolean) : socket 'Self Intersection' (id: Self Intersection)
-        - hole_tolerant (Boolean) : socket 'Hole Tolerant' (id: Hole Tolerant)
-        - solver (str): parameter 'solver' in ['EXACT', 'FLOAT']
+        - solver (str): parameter 'solver' in ['EXACT', 'FLOAT', 'MANIFOLD']
 
         Returns
         -------
         - Mesh
         """
-        utils.check_enum_arg('Mesh Boolean', 'solver', solver, 'Difference', ('EXACT', 'FLOAT'))
-        node = Node('Mesh Boolean', sockets={'Mesh 1': mesh_1, 'Mesh 2': list(mesh_2), 'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, operation='DIFFERENCE', solver=solver)
+        utils.check_enum_arg('Mesh Boolean', 'solver', solver, 'Difference', ('EXACT', 'FLOAT', 'MANIFOLD'))
+        node = Node('Mesh Boolean', sockets={'Mesh 1': mesh_1, 'Mesh 2': list(mesh_2)}, operation='DIFFERENCE', solver=solver)
         return cls(node._out)
 
     @classmethod
@@ -979,7 +951,39 @@ class Mesh(Socket):
         node = Node('Mesh Line', sockets={'Count': count, 'Start Location': start_location, 'Offset': offset}, count_mode=count_mode, mode=mode)
         return cls(node._out)
 
-    def to_curve(self):
+    def to_curve_edges(self):
+        """ > Node <&Node Mesh to Curve>
+
+        Information
+        -----------
+        - Socket 'Mesh' : self
+        - Socket 'Selection' : self[selection]
+        - Parameter 'mode' : 'EDGES'
+
+        Returns
+        -------
+        - Curve
+        """
+        node = Node('Mesh to Curve', sockets={'Mesh': self, 'Selection': self._sel}, mode='EDGES')
+        return node._out
+
+    def to_curve_faces(self):
+        """ > Node <&Node Mesh to Curve>
+
+        Information
+        -----------
+        - Socket 'Mesh' : self
+        - Socket 'Selection' : self[selection]
+        - Parameter 'mode' : 'FACES'
+
+        Returns
+        -------
+        - Curve
+        """
+        node = Node('Mesh to Curve', sockets={'Mesh': self, 'Selection': self._sel}, mode='FACES')
+        return node._out
+
+    def to_curve(self, mode='EDGES'):
         """ > Node <&Node Mesh to Curve>
 
         Information
@@ -987,11 +991,16 @@ class Mesh(Socket):
         - Socket 'Mesh' : self
         - Socket 'Selection' : self[selection]
 
+        Arguments
+        ---------
+        - mode (str): parameter 'mode' in ['EDGES', 'FACES']
+
         Returns
         -------
         - Curve
         """
-        node = Node('Mesh to Curve', sockets={'Mesh': self, 'Selection': self._sel})
+        utils.check_enum_arg('Mesh to Curve', 'mode', mode, 'to_curve', ('EDGES', 'FACES'))
+        node = Node('Mesh to Curve', sockets={'Mesh': self, 'Selection': self._sel}, mode=mode)
         return node._out
 
     def to_density_grid(self, density=None, voxel_size=None, gradient_width=None):

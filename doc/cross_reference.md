@@ -6,23 +6,23 @@ You will find here how nodes are implemented
 
 - **3** : [3D Cursor](cross_reference.md#3d-cursor)
 - **A** : [Accumulate Field](cross_reference.md#accumulate-field) :black_small_square: [Active Camera](cross_reference.md#active-camera) :black_small_square: [Active Element](cross_reference.md#active-element) :black_small_square: [Align Rotation to Vector](cross_reference.md#align-rotation-to-vector) :black_small_square: [Arc](cross_reference.md#arc) :black_small_square: [Attribute Statistic](cross_reference.md#attribute-statistic) :black_small_square: [Axes to Rotation](cross_reference.md#axes-to-rotation) :black_small_square: [Axis Angle to Rotation](cross_reference.md#axis-angle-to-rotation)
-- **B** : [Bake](cross_reference.md#bake) :black_small_square: [Blackbody](cross_reference.md#blackbody) :black_small_square: [Blur Attribute](cross_reference.md#blur-attribute) :black_small_square: [Boolean](cross_reference.md#boolean) :black_small_square: [Boolean Math](cross_reference.md#boolean-math) :black_small_square: [Bounding Box](cross_reference.md#bounding-box) :black_small_square: [Brick Texture](cross_reference.md#brick-texture) :black_small_square: [Bézier Segment](cross_reference.md#bézier-segment)
-- **C** : [Capture Attribute](cross_reference.md#capture-attribute) :black_small_square: [Checker Texture](cross_reference.md#checker-texture) :black_small_square: [Clamp](cross_reference.md#clamp) :black_small_square: [Collection](cross_reference.md#collection) :black_small_square: [Collection Info](cross_reference.md#collection-info) :black_small_square: [Color](cross_reference.md#color) :black_small_square: [Color Ramp](cross_reference.md#color-ramp) :black_small_square: [Combine Color](cross_reference.md#combine-color) :black_small_square: [Combine Matrix](cross_reference.md#combine-matrix) :black_small_square: [Combine Transform](cross_reference.md#combine-transform) :black_small_square: [Combine XYZ](cross_reference.md#combine-xyz) :black_small_square: [Compare](cross_reference.md#compare) :black_small_square: [Cone](cross_reference.md#cone) :black_small_square: [Convex Hull](cross_reference.md#convex-hull) :black_small_square: [Corners of Edge](cross_reference.md#corners-of-edge) :black_small_square: [Corners of Face](cross_reference.md#corners-of-face) :black_small_square: [Corners of Vertex](cross_reference.md#corners-of-vertex) :black_small_square: [Cube](cross_reference.md#cube) :black_small_square: [Curve Circle](cross_reference.md#curve-circle) :black_small_square: [Curve Handle Positions](cross_reference.md#curve-handle-positions) :black_small_square: [Curve Length](cross_reference.md#curve-length) :black_small_square: [Curve Line](cross_reference.md#curve-line) :black_small_square: [Curve of Point](cross_reference.md#curve-of-point) :black_small_square: [Curve to Mesh](cross_reference.md#curve-to-mesh) :black_small_square: [Curve to Points](cross_reference.md#curve-to-points) :black_small_square: [Curves to Grease Pencil](cross_reference.md#curves-to-grease-pencil) :black_small_square: [Cylinder](cross_reference.md#cylinder)
+- **B** : [Bake](cross_reference.md#bake) :black_small_square: [Bit Math](cross_reference.md#bit-math) :black_small_square: [Blackbody](cross_reference.md#blackbody) :black_small_square: [Blur Attribute](cross_reference.md#blur-attribute) :black_small_square: [Boolean](cross_reference.md#boolean) :black_small_square: [Boolean Math](cross_reference.md#boolean-math) :black_small_square: [Bounding Box](cross_reference.md#bounding-box) :black_small_square: [Brick Texture](cross_reference.md#brick-texture) :black_small_square: [Bézier Segment](cross_reference.md#bézier-segment)
+- **C** : [Camera Info](cross_reference.md#camera-info) :black_small_square: [Capture Attribute](cross_reference.md#capture-attribute) :black_small_square: [Checker Texture](cross_reference.md#checker-texture) :black_small_square: [Clamp](cross_reference.md#clamp) :black_small_square: [Closure Output](cross_reference.md#closure-output) :black_small_square: [Collection](cross_reference.md#collection) :black_small_square: [Collection Info](cross_reference.md#collection-info) :black_small_square: [Color](cross_reference.md#color) :black_small_square: [Color Ramp](cross_reference.md#color-ramp) :black_small_square: [Combine Color](cross_reference.md#combine-color) :black_small_square: [Combine Matrix](cross_reference.md#combine-matrix) :black_small_square: [Combine Transform](cross_reference.md#combine-transform) :black_small_square: [Combine XYZ](cross_reference.md#combine-xyz) :black_small_square: [Compare](cross_reference.md#compare) :black_small_square: [Cone](cross_reference.md#cone) :black_small_square: [Convex Hull](cross_reference.md#convex-hull) :black_small_square: [Corners of Edge](cross_reference.md#corners-of-edge) :black_small_square: [Corners of Face](cross_reference.md#corners-of-face) :black_small_square: [Corners of Vertex](cross_reference.md#corners-of-vertex) :black_small_square: [Cube](cross_reference.md#cube) :black_small_square: [Curve Circle](cross_reference.md#curve-circle) :black_small_square: [Curve Handle Positions](cross_reference.md#curve-handle-positions) :black_small_square: [Curve Length](cross_reference.md#curve-length) :black_small_square: [Curve Line](cross_reference.md#curve-line) :black_small_square: [Curve of Point](cross_reference.md#curve-of-point) :black_small_square: [Curve to Mesh](cross_reference.md#curve-to-mesh) :black_small_square: [Curve to Points](cross_reference.md#curve-to-points) :black_small_square: [Curves to Grease Pencil](cross_reference.md#curves-to-grease-pencil) :black_small_square: [Cylinder](cross_reference.md#cylinder)
 - **D** : [Deform Curves on Surface](cross_reference.md#deform-curves-on-surface) :black_small_square: [Delete Geometry](cross_reference.md#delete-geometry) :black_small_square: [Dial Gizmo](cross_reference.md#dial-gizmo) :black_small_square: [Distribute Points in Grid](cross_reference.md#distribute-points-in-grid) :black_small_square: [Distribute Points in Volume](cross_reference.md#distribute-points-in-volume) :black_small_square: [Distribute Points on Faces](cross_reference.md#distribute-points-on-faces) :black_small_square: [Domain Size](cross_reference.md#domain-size) :black_small_square: [Dual Mesh](cross_reference.md#dual-mesh) :black_small_square: [Duplicate Elements](cross_reference.md#duplicate-elements)
-- **E** : [Edge Angle](cross_reference.md#edge-angle) :black_small_square: [Edge Paths to Curves](cross_reference.md#edge-paths-to-curves) :black_small_square: [Edge Paths to Selection](cross_reference.md#edge-paths-to-selection) :black_small_square: [Edge Vertices](cross_reference.md#edge-vertices) :black_small_square: [Edges of Corner](cross_reference.md#edges-of-corner) :black_small_square: [Edges of Vertex](cross_reference.md#edges-of-vertex) :black_small_square: [Edges to Face Groups](cross_reference.md#edges-to-face-groups) :black_small_square: [Endpoint Selection](cross_reference.md#endpoint-selection) :black_small_square: [Euler to Rotation](cross_reference.md#euler-to-rotation) :black_small_square: [Evaluate at Index](cross_reference.md#evaluate-at-index) :black_small_square: [Evaluate on Domain](cross_reference.md#evaluate-on-domain) :black_small_square: [Extrude Mesh](cross_reference.md#extrude-mesh)
-- **F** : [Face Group Boundaries](cross_reference.md#face-group-boundaries) :black_small_square: [Face Neighbors](cross_reference.md#face-neighbors) :black_small_square: [Face of Corner](cross_reference.md#face-of-corner) :black_small_square: [Face Set](cross_reference.md#face-set) :black_small_square: [Fill Curve](cross_reference.md#fill-curve) :black_small_square: [Fillet Curve](cross_reference.md#fillet-curve) :black_small_square: [Find in String](cross_reference.md#find-in-string) :black_small_square: [Flip Faces](cross_reference.md#flip-faces) :black_small_square: [Float Curve](cross_reference.md#float-curve) :black_small_square: [Float to Integer](cross_reference.md#float-to-integer) :black_small_square: [For Each Geometry Element Input](cross_reference.md#for-each-geometry-element-input) :black_small_square: [For Each Geometry Element Output](cross_reference.md#for-each-geometry-element-output) :black_small_square: [Frame](cross_reference.md#frame)
-- **G** : [Gabor Texture](cross_reference.md#gabor-texture) :black_small_square: [Geometry Proximity](cross_reference.md#geometry-proximity) :black_small_square: [Geometry to Instance](cross_reference.md#geometry-to-instance) :black_small_square: [Get Named Grid](cross_reference.md#get-named-grid) :black_small_square: [Gradient Texture](cross_reference.md#gradient-texture) :black_small_square: [Grease Pencil to Curves](cross_reference.md#grease-pencil-to-curves) :black_small_square: [Grid](cross_reference.md#grid) :black_small_square: [Grid to Mesh](cross_reference.md#grid-to-mesh) :black_small_square: [Group](cross_reference.md#group) :black_small_square: [Group Input](cross_reference.md#group-input) :black_small_square: [Group Output](cross_reference.md#group-output)
+- **E** : [Edge Angle](cross_reference.md#edge-angle) :black_small_square: [Edge Paths to Curves](cross_reference.md#edge-paths-to-curves) :black_small_square: [Edge Paths to Selection](cross_reference.md#edge-paths-to-selection) :black_small_square: [Edge Vertices](cross_reference.md#edge-vertices) :black_small_square: [Edges of Corner](cross_reference.md#edges-of-corner) :black_small_square: [Edges of Vertex](cross_reference.md#edges-of-vertex) :black_small_square: [Edges to Face Groups](cross_reference.md#edges-to-face-groups) :black_small_square: [Endpoint Selection](cross_reference.md#endpoint-selection) :black_small_square: [Euler to Rotation](cross_reference.md#euler-to-rotation) :black_small_square: [Evaluate at Index](cross_reference.md#evaluate-at-index) :black_small_square: [Evaluate Closure](cross_reference.md#evaluate-closure) :black_small_square: [Evaluate on Domain](cross_reference.md#evaluate-on-domain) :black_small_square: [Extrude Mesh](cross_reference.md#extrude-mesh)
+- **F** : [Face Group Boundaries](cross_reference.md#face-group-boundaries) :black_small_square: [Face Neighbors](cross_reference.md#face-neighbors) :black_small_square: [Face of Corner](cross_reference.md#face-of-corner) :black_small_square: [Face Set](cross_reference.md#face-set) :black_small_square: [Field Average](cross_reference.md#field-average) :black_small_square: [Field Min & Max](cross_reference.md#field-min-&-max) :black_small_square: [Field Variance](cross_reference.md#field-variance) :black_small_square: [Fill Curve](cross_reference.md#fill-curve) :black_small_square: [Fillet Curve](cross_reference.md#fillet-curve) :black_small_square: [Find in String](cross_reference.md#find-in-string) :black_small_square: [Flip Faces](cross_reference.md#flip-faces) :black_small_square: [Float Curve](cross_reference.md#float-curve) :black_small_square: [Float to Integer](cross_reference.md#float-to-integer) :black_small_square: [For Each Geometry Element Input](cross_reference.md#for-each-geometry-element-input) :black_small_square: [For Each Geometry Element Output](cross_reference.md#for-each-geometry-element-output) :black_small_square: [Format String](cross_reference.md#format-string) :black_small_square: [Frame](cross_reference.md#frame)
+- **G** : [Gabor Texture](cross_reference.md#gabor-texture) :black_small_square: [Geometry Proximity](cross_reference.md#geometry-proximity) :black_small_square: [Geometry to Instance](cross_reference.md#geometry-to-instance) :black_small_square: [Get Named Grid](cross_reference.md#get-named-grid) :black_small_square: [Gradient Texture](cross_reference.md#gradient-texture) :black_small_square: [Grease Pencil to Curves](cross_reference.md#grease-pencil-to-curves) :black_small_square: [Grid](cross_reference.md#grid) :black_small_square: [Grid Info](cross_reference.md#grid-info) :black_small_square: [Grid to Mesh](cross_reference.md#grid-to-mesh) :black_small_square: [Group](cross_reference.md#group) :black_small_square: [Group Input](cross_reference.md#group-input) :black_small_square: [Group Output](cross_reference.md#group-output)
 - **H** : [Handle Type Selection](cross_reference.md#handle-type-selection) :black_small_square: [Hash Value](cross_reference.md#hash-value)
-- **I** : [Ico Sphere](cross_reference.md#ico-sphere) :black_small_square: [Image](cross_reference.md#image) :black_small_square: [Image Info](cross_reference.md#image-info) :black_small_square: [Image Texture](cross_reference.md#image-texture) :black_small_square: [Import OBJ](cross_reference.md#import-obj) :black_small_square: [Import PLY](cross_reference.md#import-ply) :black_small_square: [Import STL](cross_reference.md#import-stl) :black_small_square: [Index of Nearest](cross_reference.md#index-of-nearest) :black_small_square: [Index Switch](cross_reference.md#index-switch) :black_small_square: [Instance on Points](cross_reference.md#instance-on-points) :black_small_square: [Instance Rotation](cross_reference.md#instance-rotation) :black_small_square: [Instance Scale](cross_reference.md#instance-scale) :black_small_square: [Instances to Points](cross_reference.md#instances-to-points) :black_small_square: [Integer](cross_reference.md#integer) :black_small_square: [Integer Math](cross_reference.md#integer-math) :black_small_square: [Interpolate Curves](cross_reference.md#interpolate-curves) :black_small_square: [Invert Matrix](cross_reference.md#invert-matrix) :black_small_square: [Invert Rotation](cross_reference.md#invert-rotation) :black_small_square: [Is Face Planar](cross_reference.md#is-face-planar)
+- **I** : [Ico Sphere](cross_reference.md#ico-sphere) :black_small_square: [Image](cross_reference.md#image) :black_small_square: [Image Info](cross_reference.md#image-info) :black_small_square: [Image Texture](cross_reference.md#image-texture) :black_small_square: [Import CSV](cross_reference.md#import-csv) :black_small_square: [Import OBJ](cross_reference.md#import-obj) :black_small_square: [Import PLY](cross_reference.md#import-ply) :black_small_square: [Import STL](cross_reference.md#import-stl) :black_small_square: [Import Text](cross_reference.md#import-text) :black_small_square: [Import VDB](cross_reference.md#import-vdb) :black_small_square: [Index of Nearest](cross_reference.md#index-of-nearest) :black_small_square: [Index Switch](cross_reference.md#index-switch) :black_small_square: [Instance Bounds](cross_reference.md#instance-bounds) :black_small_square: [Instance on Points](cross_reference.md#instance-on-points) :black_small_square: [Instance Rotation](cross_reference.md#instance-rotation) :black_small_square: [Instance Scale](cross_reference.md#instance-scale) :black_small_square: [Instances to Points](cross_reference.md#instances-to-points) :black_small_square: [Integer](cross_reference.md#integer) :black_small_square: [Integer Math](cross_reference.md#integer-math) :black_small_square: [Interpolate Curves](cross_reference.md#interpolate-curves) :black_small_square: [Invert Matrix](cross_reference.md#invert-matrix) :black_small_square: [Invert Rotation](cross_reference.md#invert-rotation) :black_small_square: [Is Face Planar](cross_reference.md#is-face-planar)
 - **J** : [Join Geometry](cross_reference.md#join-geometry) :black_small_square: [Join Strings](cross_reference.md#join-strings)
 - **L** : [Linear Gizmo](cross_reference.md#linear-gizmo)
-- **M** : [Magic Texture](cross_reference.md#magic-texture) :black_small_square: [Map Range](cross_reference.md#map-range) :black_small_square: [Material](cross_reference.md#material) :black_small_square: [Material Selection](cross_reference.md#material-selection) :black_small_square: [Math](cross_reference.md#math) :black_small_square: [Matrix Determinant](cross_reference.md#matrix-determinant) :black_small_square: [Menu Switch](cross_reference.md#menu-switch) :black_small_square: [Merge by Distance](cross_reference.md#merge-by-distance) :black_small_square: [Merge Layers](cross_reference.md#merge-layers) :black_small_square: [Mesh Boolean](cross_reference.md#mesh-boolean) :black_small_square: [Mesh Circle](cross_reference.md#mesh-circle) :black_small_square: [Mesh Island](cross_reference.md#mesh-island) :black_small_square: [Mesh Line](cross_reference.md#mesh-line) :black_small_square: [Mesh to Curve](cross_reference.md#mesh-to-curve) :black_small_square: [Mesh to Density Grid](cross_reference.md#mesh-to-density-grid) :black_small_square: [Mesh to Points](cross_reference.md#mesh-to-points) :black_small_square: [Mesh to SDF Grid](cross_reference.md#mesh-to-sdf-grid) :black_small_square: [Mesh to Volume](cross_reference.md#mesh-to-volume) :black_small_square: [Mix](cross_reference.md#mix) :black_small_square: [Mouse Position](cross_reference.md#mouse-position) :black_small_square: [Multiply Matrices](cross_reference.md#multiply-matrices)
-- **N** : [Named Attribute](cross_reference.md#named-attribute) :black_small_square: [Named Layer Selection](cross_reference.md#named-layer-selection) :black_small_square: [Noise Texture](cross_reference.md#noise-texture)
+- **M** : [Magic Texture](cross_reference.md#magic-texture) :black_small_square: [Map Range](cross_reference.md#map-range) :black_small_square: [Match String](cross_reference.md#match-string) :black_small_square: [Material](cross_reference.md#material) :black_small_square: [Material Selection](cross_reference.md#material-selection) :black_small_square: [Math](cross_reference.md#math) :black_small_square: [Matrix Determinant](cross_reference.md#matrix-determinant) :black_small_square: [Menu Switch](cross_reference.md#menu-switch) :black_small_square: [Merge by Distance](cross_reference.md#merge-by-distance) :black_small_square: [Merge Layers](cross_reference.md#merge-layers) :black_small_square: [Mesh Boolean](cross_reference.md#mesh-boolean) :black_small_square: [Mesh Circle](cross_reference.md#mesh-circle) :black_small_square: [Mesh Island](cross_reference.md#mesh-island) :black_small_square: [Mesh Line](cross_reference.md#mesh-line) :black_small_square: [Mesh to Curve](cross_reference.md#mesh-to-curve) :black_small_square: [Mesh to Density Grid](cross_reference.md#mesh-to-density-grid) :black_small_square: [Mesh to Points](cross_reference.md#mesh-to-points) :black_small_square: [Mesh to SDF Grid](cross_reference.md#mesh-to-sdf-grid) :black_small_square: [Mesh to Volume](cross_reference.md#mesh-to-volume) :black_small_square: [Mix](cross_reference.md#mix) :black_small_square: [Mouse Position](cross_reference.md#mouse-position) :black_small_square: [Multiply Matrices](cross_reference.md#multiply-matrices)
+- **N** : [Named Attribute](cross_reference.md#named-attribute) :black_small_square: [Named Layer Selection](cross_reference.md#named-layer-selection) :black_small_square: [Noise Texture](cross_reference.md#noise-texture) :black_small_square: [Normal](cross_reference.md#normal)
 - **O** : [Object](cross_reference.md#object) :black_small_square: [Object Info](cross_reference.md#object-info) :black_small_square: [Offset Corner in Face](cross_reference.md#offset-corner-in-face) :black_small_square: [Offset Point in Curve](cross_reference.md#offset-point-in-curve)
 - **P** : [Pack UV Islands](cross_reference.md#pack-uv-islands) :black_small_square: [Points](cross_reference.md#points) :black_small_square: [Points of Curve](cross_reference.md#points-of-curve) :black_small_square: [Points to Curves](cross_reference.md#points-to-curves) :black_small_square: [Points to SDF Grid](cross_reference.md#points-to-sdf-grid) :black_small_square: [Points to Vertices](cross_reference.md#points-to-vertices) :black_small_square: [Points to Volume](cross_reference.md#points-to-volume) :black_small_square: [Project Point](cross_reference.md#project-point)
 - **Q** : [Quadratic Bézier](cross_reference.md#quadratic-bézier) :black_small_square: [Quadrilateral](cross_reference.md#quadrilateral) :black_small_square: [Quaternion to Rotation](cross_reference.md#quaternion-to-rotation)
 - **R** : [Random Value](cross_reference.md#random-value) :black_small_square: [Raycast](cross_reference.md#raycast) :black_small_square: [Realize Instances](cross_reference.md#realize-instances) :black_small_square: [Remove Named Attribute](cross_reference.md#remove-named-attribute) :black_small_square: [Repeat Input](cross_reference.md#repeat-input) :black_small_square: [Repeat Output](cross_reference.md#repeat-output) :black_small_square: [Replace Material](cross_reference.md#replace-material) :black_small_square: [Replace String](cross_reference.md#replace-string) :black_small_square: [Reroute](cross_reference.md#reroute) :black_small_square: [Resample Curve](cross_reference.md#resample-curve) :black_small_square: [Reverse Curve](cross_reference.md#reverse-curve) :black_small_square: [RGB](cross_reference.md#rgb) :black_small_square: [RGB Curves](cross_reference.md#rgb-curves) :black_small_square: [Rotate Instances](cross_reference.md#rotate-instances) :black_small_square: [Rotate Rotation](cross_reference.md#rotate-rotation) :black_small_square: [Rotate Vector](cross_reference.md#rotate-vector) :black_small_square: [Rotation](cross_reference.md#rotation) :black_small_square: [Rotation to Axis Angle](cross_reference.md#rotation-to-axis-angle) :black_small_square: [Rotation to Euler](cross_reference.md#rotation-to-euler) :black_small_square: [Rotation to Quaternion](cross_reference.md#rotation-to-quaternion)
-- **S** : [Sample Curve](cross_reference.md#sample-curve) :black_small_square: [Sample Grid](cross_reference.md#sample-grid) :black_small_square: [Sample Grid Index](cross_reference.md#sample-grid-index) :black_small_square: [Sample Index](cross_reference.md#sample-index) :black_small_square: [Sample Nearest](cross_reference.md#sample-nearest) :black_small_square: [Sample Nearest Surface](cross_reference.md#sample-nearest-surface) :black_small_square: [Sample UV Surface](cross_reference.md#sample-uv-surface) :black_small_square: [Scale Elements](cross_reference.md#scale-elements) :black_small_square: [Scale Instances](cross_reference.md#scale-instances) :black_small_square: [Scene Time](cross_reference.md#scene-time) :black_small_square: [SDF Grid Boolean](cross_reference.md#sdf-grid-boolean) :black_small_square: [Selection](cross_reference.md#selection) :black_small_square: [Self Object](cross_reference.md#self-object) :black_small_square: [Separate Color](cross_reference.md#separate-color) :black_small_square: [Separate Components](cross_reference.md#separate-components) :black_small_square: [Separate Geometry](cross_reference.md#separate-geometry) :black_small_square: [Separate Matrix](cross_reference.md#separate-matrix) :black_small_square: [Separate Transform](cross_reference.md#separate-transform) :black_small_square: [Separate XYZ](cross_reference.md#separate-xyz) :black_small_square: [Set Curve Normal](cross_reference.md#set-curve-normal) :black_small_square: [Set Curve Radius](cross_reference.md#set-curve-radius) :black_small_square: [Set Curve Tilt](cross_reference.md#set-curve-tilt) :black_small_square: [Set Face Set](cross_reference.md#set-face-set) :black_small_square: [Set Geometry Name](cross_reference.md#set-geometry-name) :black_small_square: [Set Handle Positions](cross_reference.md#set-handle-positions) :black_small_square: [Set Handle Type](cross_reference.md#set-handle-type) :black_small_square: [Set ID](cross_reference.md#set-id) :black_small_square: [Set Instance Transform](cross_reference.md#set-instance-transform) :black_small_square: [Set Material](cross_reference.md#set-material) :black_small_square: [Set Material Index](cross_reference.md#set-material-index) :black_small_square: [Set Point Radius](cross_reference.md#set-point-radius) :black_small_square: [Set Position](cross_reference.md#set-position) :black_small_square: [Set Selection](cross_reference.md#set-selection) :black_small_square: [Set Shade Smooth](cross_reference.md#set-shade-smooth) :black_small_square: [Set Spline Cyclic](cross_reference.md#set-spline-cyclic) :black_small_square: [Set Spline Resolution](cross_reference.md#set-spline-resolution) :black_small_square: [Set Spline Type](cross_reference.md#set-spline-type) :black_small_square: [Shortest Edge Paths](cross_reference.md#shortest-edge-paths) :black_small_square: [Simulation Output](cross_reference.md#simulation-output) :black_small_square: [Slice String](cross_reference.md#slice-string) :black_small_square: [Sort Elements](cross_reference.md#sort-elements) :black_small_square: [Special Characters](cross_reference.md#special-characters) :black_small_square: [Spiral](cross_reference.md#spiral) :black_small_square: [Spline Length](cross_reference.md#spline-length) :black_small_square: [Spline Parameter](cross_reference.md#spline-parameter) :black_small_square: [Split Edges](cross_reference.md#split-edges) :black_small_square: [Split to Instances](cross_reference.md#split-to-instances) :black_small_square: [Star](cross_reference.md#star) :black_small_square: [Store Named Attribute](cross_reference.md#store-named-attribute) :black_small_square: [Store Named Grid](cross_reference.md#store-named-grid) :black_small_square: [String](cross_reference.md#string) :black_small_square: [String Length](cross_reference.md#string-length) :black_small_square: [String to Curves](cross_reference.md#string-to-curves) :black_small_square: [Subdivide Curve](cross_reference.md#subdivide-curve) :black_small_square: [Subdivide Mesh](cross_reference.md#subdivide-mesh) :black_small_square: [Subdivision Surface](cross_reference.md#subdivision-surface) :black_small_square: [Switch](cross_reference.md#switch)
+- **S** : [Sample Curve](cross_reference.md#sample-curve) :black_small_square: [Sample Grid](cross_reference.md#sample-grid) :black_small_square: [Sample Grid Index](cross_reference.md#sample-grid-index) :black_small_square: [Sample Index](cross_reference.md#sample-index) :black_small_square: [Sample Nearest](cross_reference.md#sample-nearest) :black_small_square: [Sample Nearest Surface](cross_reference.md#sample-nearest-surface) :black_small_square: [Sample UV Surface](cross_reference.md#sample-uv-surface) :black_small_square: [Scale Elements](cross_reference.md#scale-elements) :black_small_square: [Scale Instances](cross_reference.md#scale-instances) :black_small_square: [Scene Time](cross_reference.md#scene-time) :black_small_square: [SDF Grid Boolean](cross_reference.md#sdf-grid-boolean) :black_small_square: [Selection](cross_reference.md#selection) :black_small_square: [Self Object](cross_reference.md#self-object) :black_small_square: [Separate Bundle](cross_reference.md#separate-bundle) :black_small_square: [Separate Color](cross_reference.md#separate-color) :black_small_square: [Separate Components](cross_reference.md#separate-components) :black_small_square: [Separate Geometry](cross_reference.md#separate-geometry) :black_small_square: [Separate Matrix](cross_reference.md#separate-matrix) :black_small_square: [Separate Transform](cross_reference.md#separate-transform) :black_small_square: [Separate XYZ](cross_reference.md#separate-xyz) :black_small_square: [Set Curve Normal](cross_reference.md#set-curve-normal) :black_small_square: [Set Curve Radius](cross_reference.md#set-curve-radius) :black_small_square: [Set Curve Tilt](cross_reference.md#set-curve-tilt) :black_small_square: [Set Face Set](cross_reference.md#set-face-set) :black_small_square: [Set Geometry Name](cross_reference.md#set-geometry-name) :black_small_square: [Set Grease Pencil Color](cross_reference.md#set-grease-pencil-color) :black_small_square: [Set Grease Pencil Depth](cross_reference.md#set-grease-pencil-depth) :black_small_square: [Set Grease Pencil Softness](cross_reference.md#set-grease-pencil-softness) :black_small_square: [Set Handle Positions](cross_reference.md#set-handle-positions) :black_small_square: [Set Handle Type](cross_reference.md#set-handle-type) :black_small_square: [Set ID](cross_reference.md#set-id) :black_small_square: [Set Instance Transform](cross_reference.md#set-instance-transform) :black_small_square: [Set Material](cross_reference.md#set-material) :black_small_square: [Set Material Index](cross_reference.md#set-material-index) :black_small_square: [Set Mesh Normal](cross_reference.md#set-mesh-normal) :black_small_square: [Set Point Radius](cross_reference.md#set-point-radius) :black_small_square: [Set Position](cross_reference.md#set-position) :black_small_square: [Set Selection](cross_reference.md#set-selection) :black_small_square: [Set Shade Smooth](cross_reference.md#set-shade-smooth) :black_small_square: [Set Spline Cyclic](cross_reference.md#set-spline-cyclic) :black_small_square: [Set Spline Resolution](cross_reference.md#set-spline-resolution) :black_small_square: [Set Spline Type](cross_reference.md#set-spline-type) :black_small_square: [Shortest Edge Paths](cross_reference.md#shortest-edge-paths) :black_small_square: [Simulation Output](cross_reference.md#simulation-output) :black_small_square: [Slice String](cross_reference.md#slice-string) :black_small_square: [Sort Elements](cross_reference.md#sort-elements) :black_small_square: [Special Characters](cross_reference.md#special-characters) :black_small_square: [Spiral](cross_reference.md#spiral) :black_small_square: [Spline Length](cross_reference.md#spline-length) :black_small_square: [Spline Parameter](cross_reference.md#spline-parameter) :black_small_square: [Split Edges](cross_reference.md#split-edges) :black_small_square: [Split to Instances](cross_reference.md#split-to-instances) :black_small_square: [Star](cross_reference.md#star) :black_small_square: [Store Named Attribute](cross_reference.md#store-named-attribute) :black_small_square: [Store Named Grid](cross_reference.md#store-named-grid) :black_small_square: [String](cross_reference.md#string) :black_small_square: [String Length](cross_reference.md#string-length) :black_small_square: [String to Curves](cross_reference.md#string-to-curves) :black_small_square: [Subdivide Curve](cross_reference.md#subdivide-curve) :black_small_square: [Subdivide Mesh](cross_reference.md#subdivide-mesh) :black_small_square: [Subdivision Surface](cross_reference.md#subdivision-surface) :black_small_square: [Switch](cross_reference.md#switch)
 - **T** : [Transform Direction](cross_reference.md#transform-direction) :black_small_square: [Transform Geometry](cross_reference.md#transform-geometry) :black_small_square: [Transform Gizmo](cross_reference.md#transform-gizmo) :black_small_square: [Transform Point](cross_reference.md#transform-point) :black_small_square: [Translate Instances](cross_reference.md#translate-instances) :black_small_square: [Transpose Matrix](cross_reference.md#transpose-matrix) :black_small_square: [Triangulate](cross_reference.md#triangulate) :black_small_square: [Trim Curve](cross_reference.md#trim-curve)
 - **U** : [UV Sphere](cross_reference.md#uv-sphere) :black_small_square: [UV Unwrap](cross_reference.md#uv-unwrap)
 - **V** : [Value](cross_reference.md#value) :black_small_square: [Value to String](cross_reference.md#value-to-string) :black_small_square: [Vector](cross_reference.md#vector) :black_small_square: [Vector Curves](cross_reference.md#vector-curves) :black_small_square: [Vector Math](cross_reference.md#vector-math) :black_small_square: [Vector Rotate](cross_reference.md#vector-rotate) :black_small_square: [Vertex Neighbors](cross_reference.md#vertex-neighbors) :black_small_square: [Vertex of Corner](cross_reference.md#vertex-of-corner) :black_small_square: [Viewer](cross_reference.md#viewer) :black_small_square: [Viewport Transform](cross_reference.md#viewport-transform) :black_small_square: [Volume Cube](cross_reference.md#volume-cube) :black_small_square: [Volume to Mesh](cross_reference.md#volume-to-mesh) :black_small_square: [Voronoi Texture](cross_reference.md#voronoi-texture)
@@ -51,6 +51,7 @@ You will find here how nodes are implemented
 
 - [Edge](edge.md#edge) :white_small_square: [active_element](edge.md#active_element)
 - [Face](face.md#face) :white_small_square: [active_element](face.md#active_element)
+- [Layer](layer.md#layer) :white_small_square: [active_element](layer.md#active_element)
 - [Point](point.md#point) :white_small_square: [active_element](point.md#active_element)
 - [nd](nd.md#nd) :white_small_square: [active_element](nd.md#active_element)
 
@@ -104,6 +105,22 @@ You will find here how nodes are implemented
 
 - [nd](nd.md#nd) :white_small_square: [bake](nd.md#bake)
 - [Geometry](geometry.md#geometry) :white_small_square: [bake](geometry.md#bake)
+
+#### Bit Math
+
+- [bw_and](gnmath.md#bw_and)
+- [bw_not](gnmath.md#bw_not)
+- [bw_or](gnmath.md#bw_or)
+- [bw_rotate](gnmath.md#bw_rotate)
+- [bw_shift](gnmath.md#bw_shift)
+- [bw_xor](gnmath.md#bw_xor)
+- [nd](nd.md#nd) :white_small_square: [bit_math](nd.md#bit_math)
+- [Integer](integer.md#integer) :white_small_square: [bw_and](integer.md#bw_and)
+- [Integer](integer.md#integer) :white_small_square: [bw_not](integer.md#bw_not)
+- [Integer](integer.md#integer) :white_small_square: [bw_or](integer.md#bw_or)
+- [Integer](integer.md#integer) :white_small_square: [bw_rotate](integer.md#bw_rotate)
+- [Integer](integer.md#integer) :white_small_square: [bw_shift](integer.md#bw_shift)
+- [Integer](integer.md#integer) :white_small_square: [bw_xor](integer.md#bw_xor)
 
 #### Blackbody
 
@@ -163,6 +180,11 @@ You will find here how nodes are implemented
 - [Curve](curve.md#curve) :white_small_square: [BeziersegmentOffset](curve.md#beziersegmentoffset)
 - [Curve](curve.md#curve) :white_small_square: [BeziersegmentPosition](curve.md#beziersegmentposition)
 
+#### Camera Info
+
+- [nd](nd.md#nd) :white_small_square: [camera_info](nd.md#camera_info)
+- [Object](object.md#object) :white_small_square: [camera_info](object.md#camera_info)
+
 #### Capture Attribute
 
 - [Domain](domain.md#domain) :white_small_square: [capture](domain.md#capture)
@@ -181,6 +203,10 @@ You will find here how nodes are implemented
 - [Float](float.md#float) :white_small_square: [clamp](float.md#clamp)
 - [Float](float.md#float) :white_small_square: [clamp_minmax](float.md#clamp_minmax)
 - [Float](float.md#float) :white_small_square: [clamp_range](float.md#clamp_range)
+
+#### Closure Output
+
+- [nd](nd.md#nd) :white_small_square: [closure_output](nd.md#closure_output)
 
 #### Collection
 
@@ -550,6 +576,10 @@ You will find here how nodes are implemented
 - [Spline](spline.md#spline) :white_small_square: [evaluate_at_index](spline.md#evaluate_at_index)
 - [nd](nd.md#nd) :white_small_square: [evaluate_at_index](nd.md#evaluate_at_index)
 
+#### Evaluate Closure
+
+- [nd](nd.md#nd) :white_small_square: [evaluate_closure](nd.md#evaluate_closure)
+
 #### Evaluate on Domain
 
 - [Corner](corner.md#corner) :white_small_square: [evaluate_on_domain](corner.md#evaluate_on_domain)
@@ -595,6 +625,39 @@ You will find here how nodes are implemented
 
 - [nd](nd.md#nd) :white_small_square: [face_set](nd.md#face_set)
 
+#### Field Average
+
+- [Corner](corner.md#corner) :white_small_square: [field_average](corner.md#field_average)
+- [Edge](edge.md#edge) :white_small_square: [field_average](edge.md#field_average)
+- [Face](face.md#face) :white_small_square: [field_average](face.md#field_average)
+- [Instance](instance.md#instance) :white_small_square: [field_average](instance.md#field_average)
+- [Layer](layer.md#layer) :white_small_square: [field_average](layer.md#field_average)
+- [Point](point.md#point) :white_small_square: [field_average](point.md#field_average)
+- [Spline](spline.md#spline) :white_small_square: [field_average](spline.md#field_average)
+- [nd](nd.md#nd) :white_small_square: [field_average](nd.md#field_average)
+
+#### Field Min & Max
+
+- [Corner](corner.md#corner) :white_small_square: [field_min_max](corner.md#field_min_max)
+- [Edge](edge.md#edge) :white_small_square: [field_min_max](edge.md#field_min_max)
+- [Face](face.md#face) :white_small_square: [field_min_max](face.md#field_min_max)
+- [Instance](instance.md#instance) :white_small_square: [field_min_max](instance.md#field_min_max)
+- [Layer](layer.md#layer) :white_small_square: [field_min_max](layer.md#field_min_max)
+- [Point](point.md#point) :white_small_square: [field_min_max](point.md#field_min_max)
+- [Spline](spline.md#spline) :white_small_square: [field_min_max](spline.md#field_min_max)
+- [nd](nd.md#nd) :white_small_square: [field_min_max](nd.md#field_min_max)
+
+#### Field Variance
+
+- [Corner](corner.md#corner) :white_small_square: [field_variance](corner.md#field_variance)
+- [Edge](edge.md#edge) :white_small_square: [field_variance](edge.md#field_variance)
+- [Face](face.md#face) :white_small_square: [field_variance](face.md#field_variance)
+- [Instance](instance.md#instance) :white_small_square: [field_variance](instance.md#field_variance)
+- [Layer](layer.md#layer) :white_small_square: [field_variance](layer.md#field_variance)
+- [Point](point.md#point) :white_small_square: [field_variance](point.md#field_variance)
+- [Spline](spline.md#spline) :white_small_square: [field_variance](spline.md#field_variance)
+- [nd](nd.md#nd) :white_small_square: [field_variance](nd.md#field_variance)
+
 #### Fill Curve
 
 - [nd](nd.md#nd) :white_small_square: [fill_curve](nd.md#fill_curve)
@@ -637,6 +700,12 @@ You will find here how nodes are implemented
 #### For Each Geometry Element Output
 
 - [nd](nd.md#nd) :white_small_square: [for_each_geometry_element_output](nd.md#for_each_geometry_element_output)
+
+#### Format String
+
+- [nd](nd.md#nd) :white_small_square: [format_string](nd.md#format_string)
+- [String](string.md#string) :white_small_square: [Format](string.md#format)
+- [String](string.md#string) :white_small_square: [format](string.md#format)
 
 #### Frame
 
@@ -684,6 +753,10 @@ You will find here how nodes are implemented
 
 - [nd](nd.md#nd) :white_small_square: [grid](nd.md#grid)
 - [Mesh](mesh.md#mesh) :white_small_square: [Grid](mesh.md#grid)
+
+#### Grid Info
+
+- [nd](nd.md#nd) :white_small_square: [grid_info](nd.md#grid_info)
 
 #### Grid to Mesh
 
@@ -748,6 +821,11 @@ You will find here how nodes are implemented
 - [nd](nd.md#nd) :white_small_square: [image_texture](nd.md#image_texture)
 - [Color](color.md#color) :white_small_square: [ImageTexture](color.md#imagetexture)
 
+#### Import CSV
+
+- [nd](nd.md#nd) :white_small_square: [import_csv](nd.md#import_csv)
+- [Cloud](cloud.md#cloud) :white_small_square: [ImportCSV](cloud.md#importcsv)
+
 #### Import OBJ
 
 - [nd](nd.md#nd) :white_small_square: [import_obj](nd.md#import_obj)
@@ -763,6 +841,16 @@ You will find here how nodes are implemented
 - [nd](nd.md#nd) :white_small_square: [import_stl](nd.md#import_stl)
 - [Mesh](mesh.md#mesh) :white_small_square: [ImportSTL](mesh.md#importstl)
 
+#### Import Text
+
+- [nd](nd.md#nd) :white_small_square: [import_text](nd.md#import_text)
+- [String](string.md#string) :white_small_square: [ImportText](string.md#importtext)
+
+#### Import VDB
+
+- [nd](nd.md#nd) :white_small_square: [import_vdb](nd.md#import_vdb)
+- [Volume](volume.md#volume) :white_small_square: [ImportVDB](volume.md#importvdb)
+
 #### Index of Nearest
 
 - [nd](nd.md#nd) :white_small_square: [index_of_nearest](nd.md#index_of_nearest)
@@ -773,6 +861,11 @@ You will find here how nodes are implemented
 - [nd](nd.md#nd) :white_small_square: [index_switch](nd.md#index_switch)
 - [Socket](socket.md#socket) :white_small_square: [IndexSwitch](socket.md#indexswitch)
 - [Socket](socket.md#socket) :white_small_square: [index_switch](socket.md#index_switch)
+
+#### Instance Bounds
+
+- [nd](nd.md#nd) :white_small_square: [instance_bounds](nd.md#instance_bounds)
+- [Boolean](boolean.md#boolean) :white_small_square: [instance_bounds](boolean.md#instance_bounds)
 
 #### Instance on Points
 
@@ -892,6 +985,16 @@ You will find here how nodes are implemented
 - [Float](float.md#float) :white_small_square: [map_range_smooth_step](float.md#map_range_smooth_step)
 - [Float](float.md#float) :white_small_square: [map_range_smoother_step](float.md#map_range_smoother_step)
 - [Float](float.md#float) :white_small_square: [map_range_stepped](float.md#map_range_stepped)
+
+#### Match String
+
+- [contains](gnmath.md#contains)
+- [ends_with](gnmath.md#ends_with)
+- [starts_with](gnmath.md#starts_with)
+- [nd](nd.md#nd) :white_small_square: [match_string](nd.md#match_string)
+- [String](string.md#string) :white_small_square: [contains](string.md#contains)
+- [String](string.md#string) :white_small_square: [ends_with](string.md#ends_with)
+- [String](string.md#string) :white_small_square: [starts_with](string.md#starts_with)
 
 #### Material
 
@@ -1052,6 +1155,8 @@ You will find here how nodes are implemented
 
 - [nd](nd.md#nd) :white_small_square: [mesh_to_curve](nd.md#mesh_to_curve)
 - [Mesh](mesh.md#mesh) :white_small_square: [to_curve](mesh.md#to_curve)
+- [Mesh](mesh.md#mesh) :white_small_square: [to_curve_edges](mesh.md#to_curve_edges)
+- [Mesh](mesh.md#mesh) :white_small_square: [to_curve_faces](mesh.md#to_curve_faces)
 
 #### Mesh to Density Grid
 
@@ -1149,6 +1254,10 @@ You will find here how nodes are implemented
 - [nd](nd.md#nd) :white_small_square: [noise_texture](nd.md#noise_texture)
 - [Float](float.md#float) :white_small_square: [Noise](float.md#noise)
 - [Texture](texture.md#texture) :white_small_square: [Noise](texture.md#noise)
+
+#### Normal
+
+- [nd](nd.md#nd) :white_small_square: [normal](nd.md#normal)
 
 #### Object
 
@@ -1434,6 +1543,10 @@ You will find here how nodes are implemented
 
 - [Object](object.md#object) :white_small_square: [Self](object.md#self)
 
+#### Separate Bundle
+
+- [nd](nd.md#nd) :white_small_square: [separate_bundle](nd.md#separate_bundle)
+
 #### Separate Color
 
 - [nd](nd.md#nd) :white_small_square: [separate_color](nd.md#separate_color)
@@ -1542,6 +1655,23 @@ You will find here how nodes are implemented
 - [nd](nd.md#nd) :white_small_square: [set_geometry_name](nd.md#set_geometry_name)
 - [Geometry](geometry.md#geometry) :white_small_square: [set_name](geometry.md#set_name)
 
+#### Set Grease Pencil Color
+
+- [nd](nd.md#nd) :white_small_square: [set_grease_pencil_color](nd.md#set_grease_pencil_color)
+- [GreasePencil](greasepencil.md#greasepencil) :white_small_square: [set_grease_pencil_color](greasepencil.md#set_grease_pencil_color)
+- [GreasePencil](greasepencil.md#greasepencil) :white_small_square: [set_grease_pencil_color_fill](greasepencil.md#set_grease_pencil_color_fill)
+- [GreasePencil](greasepencil.md#greasepencil) :white_small_square: [set_grease_pencil_color_stroke](greasepencil.md#set_grease_pencil_color_stroke)
+
+#### Set Grease Pencil Depth
+
+- [nd](nd.md#nd) :white_small_square: [set_grease_pencil_depth](nd.md#set_grease_pencil_depth)
+- [GreasePencil](greasepencil.md#greasepencil) :white_small_square: [set_grease_pencil_depth](greasepencil.md#set_grease_pencil_depth)
+
+#### Set Grease Pencil Softness
+
+- [nd](nd.md#nd) :white_small_square: [set_grease_pencil_softness](nd.md#set_grease_pencil_softness)
+- [GreasePencil](greasepencil.md#greasepencil) :white_small_square: [set_grease_pencil_softness](greasepencil.md#set_grease_pencil_softness)
+
 #### Set Handle Positions
 
 - [nd](nd.md#nd) :white_small_square: [set_handle_positions](nd.md#set_handle_positions)
@@ -1576,6 +1706,22 @@ You will find here how nodes are implemented
 
 - [nd](nd.md#nd) :white_small_square: [set_material_index](nd.md#set_material_index)
 - [Geometry](geometry.md#geometry) :white_small_square: [set_material_index](geometry.md#set_material_index)
+
+#### Set Mesh Normal
+
+- [Corner](corner.md#corner) :white_small_square: [set_normal](corner.md#set_normal)
+- [Corner](corner.md#corner) :white_small_square: [set_normal_free](corner.md#set_normal_free)
+- [Corner](corner.md#corner) :white_small_square: [set_normal_sharpness](corner.md#set_normal_sharpness)
+- [Corner](corner.md#corner) :white_small_square: [set_normal_tangent_space](corner.md#set_normal_tangent_space)
+- [Face](face.md#face) :white_small_square: [set_normal](face.md#set_normal)
+- [Face](face.md#face) :white_small_square: [set_normal_free](face.md#set_normal_free)
+- [Face](face.md#face) :white_small_square: [set_normal_sharpness](face.md#set_normal_sharpness)
+- [Face](face.md#face) :white_small_square: [set_normal_tangent_space](face.md#set_normal_tangent_space)
+- [Point](point.md#point) :white_small_square: [set_normal](point.md#set_normal)
+- [Point](point.md#point) :white_small_square: [set_normal_free](point.md#set_normal_free)
+- [Point](point.md#point) :white_small_square: [set_normal_sharpness](point.md#set_normal_sharpness)
+- [Point](point.md#point) :white_small_square: [set_normal_tangent_space](point.md#set_normal_tangent_space)
+- [nd](nd.md#nd) :white_small_square: [set_mesh_normal](nd.md#set_mesh_normal)
 
 #### Set Point Radius
 
@@ -1847,6 +1993,8 @@ You will find here how nodes are implemented
 - [vmodulo](gnmath.md#vmodulo)
 - [vmultiply](gnmath.md#vmultiply)
 - [vmultiply_add](gnmath.md#vmultiply_add)
+- [vpower](gnmath.md#vpower)
+- [vsign](gnmath.md#vsign)
 - [vsin](gnmath.md#vsin)
 - [vsnap](gnmath.md#vsnap)
 - [vsubtract](gnmath.md#vsubtract)
@@ -1871,10 +2019,12 @@ You will find here how nodes are implemented
 - [Vector](vector.md#vector) :white_small_square: [multiply](vector.md#multiply)
 - [Vector](vector.md#vector) :white_small_square: [multiply_add](vector.md#multiply_add)
 - [Vector](vector.md#vector) :white_small_square: [normalize](vector.md#normalize)
+- [Vector](vector.md#vector) :white_small_square: [power](vector.md#power)
 - [Vector](vector.md#vector) :white_small_square: [project](vector.md#project)
 - [Vector](vector.md#vector) :white_small_square: [reflect](vector.md#reflect)
 - [Vector](vector.md#vector) :white_small_square: [refract](vector.md#refract)
 - [Vector](vector.md#vector) :white_small_square: [scale](vector.md#scale)
+- [Vector](vector.md#vector) :white_small_square: [sign](vector.md#sign)
 - [Vector](vector.md#vector) :white_small_square: [sin](vector.md#sin)
 - [Vector](vector.md#vector) :white_small_square: [snap](vector.md#snap)
 - [Vector](vector.md#vector) :white_small_square: [subtract](vector.md#subtract)

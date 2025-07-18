@@ -158,6 +158,16 @@ class Fonts:
 
 # =============================================================================================================================
 # =============================================================================================================================
+# demo
+# =============================================================================================================================
+# =============================================================================================================================
+
+def demo():
+    build_shaders()
+    build_groups()
+
+# =============================================================================================================================
+# =============================================================================================================================
 # Shaders
 # =============================================================================================================================
 # =============================================================================================================================
@@ -278,6 +288,7 @@ def build_groups():
     util_prefix  = "Util"
     build_prefix = "Build"
     term_prefix  = "Term"
+    anim_prefix  = "Anim"
 
     comp_prefix = "Compile"
 
@@ -286,6 +297,7 @@ def build_groups():
     GBuild = G(build_prefix)
     GTerm  = G(term_prefix)
     GComp  = G(comp_prefix)
+    CAnim  = G(anim_prefix)
 
 
     # ----- Built in symbols
@@ -1056,6 +1068,7 @@ def build_groups():
 
         work = macro_create_work(ref_mesh, ref_id, node_id, explore)
         work.faces._Color = id_info.color
+        work.faces._Fade  = id_info.fade
         work.points.position *= (id_info.scale_x, id_info.scale_y, 1)
 
         work.faces._Work = True
@@ -1880,6 +1893,7 @@ def build_groups():
 
         with Panel("Compile"):
             use_compile = Boolean(True, "Compile", tip="Disable but last term if performance issues are encountered")
+            final       = Boolean(False,"Final",   tip="Final mesh")
 
         # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 
@@ -1950,7 +1964,9 @@ def build_groups():
 
             rep.mesh = mesh
 
-        formula.switch(use_compile, ref_mesh + (rep.mesh + tree)).out("Formula")
+        formula = formula.switch(use_compile | final, ref_mesh + (rep.mesh + tree))
+        formula = formula.switch(final, Geometry(formula).mesh.faces[-Boolean("Reference")].separate())
+        formula.out("Formula")
 
     # =============================================================================================================================
     # =============================================================================================================================
@@ -2343,10 +2359,12 @@ def build_groups():
     # =============================================================================================================================
     # =============================================================================================================================
     # Animate terms
+    #
+    # Reference can be animated with some parameters but it is not very efficient
     # =============================================================================================================================
     # =============================================================================================================================
 
-    with GeoNodes("Parameter", prefix="Formula Set"):
+    with GeoNodes("Parameter", fake_user=True, prefix="Formula Set"):
         """ Set parameter on selection
 
         Arguments
@@ -2412,3 +2430,137 @@ def build_groups():
             mesh = formula.mesh
             mesh.faces[-Boolean("Reference")].separate()
             formula.switch(final, mesh).out("Geometry")
+
+    # =============================================================================================================================
+    # =============================================================================================================================
+    # Animate compiled geometry
+    #
+    # The items can be animated once compiled
+    # =============================================================================================================================
+    # =============================================================================================================================
+
+    # =============================================================================================================================
+    # Select faces
+    # =============================================================================================================================
+
+    with GeoNodes("Select", fake_user=True, prefix=anim_prefix, is_group=True):
+        """ Select faces by their id
+        """
+
+        select = Boolean(False, "Selection")
+        ids = [Integer(-1, f"ID {i}") for i in range(10)]
+
+        face_id = Integer("ID")
+        for id in ids:
+            select |= id.equal(face_id)
+
+        select.out("Selection")
+
+    # =============================================================================================================================
+    # Transform selection
+    # =============================================================================================================================
+
+    with GeoNodes("Transform", fake_user=True, prefix=anim_prefix, is_group=True):
+        """ Transform a selection
+        """
+
+        mesh   = Mesh()
+        select = Boolean(True, "Selection")
+        pivot  = Vector(0, "Pivot Offset")
+        with Panel("Transform"):
+            transl = Vector(0, "Translation")
+            rot    = Vector.Euler(0, "Rotation")
+            scale  = Vector(1, "Scale")
+
+        mesh = mesh.faces[select].separate()
+        rem_mesh = mesh.inverted_
+
+        with Layout("Pivot"):
+
+            node = mesh.points.attribute_statistic(nd.position).node
+            center = (node.min + node.max)/2 + pivot
+
+            mesh.transform(translation=-center)
+
+        mesh.transform(translation=transl, rotation=rot, scale=scale)
+
+        mesh.transform(translation=center)
+
+        (mesh + rem_mesh).out("Mesh")
+
+    # =============================================================================================================================
+    # Write formula
+    # =============================================================================================================================
+
+    with GeoNodes("Write", fake_user=True, prefix=anim_prefix, is_group=True):
+        """ Write selection
+        """
+
+        mesh   = Mesh()
+        select = Boolean(True,     "Selection")
+        factor = Float.Factor(1,   "Factor", 0, 1)
+        width  = Float.Factor(.05, "Width", 0, 1)
+
+        mesh = mesh.faces[select].separate()
+        rem_mesh = mesh.inverted_
+
+        x = nd.position.x
+
+        with Layout("Size"):
+            node = mesh.faces.attribute_statistic(x).node
+            xmin = node.min
+            xmax = node.max
+            amp   = xmax - xmin
+            margin = amp/100
+            xmax += margin
+            amp  += margin
+
+            width = gnmath.max(.01, width)
+
+            delta = amp*width
+            x0 = factor.map_range(to_min=xmin - delta, to_max=xmax)
+            fade = x.map_range(from_min=x0, from_max=x0+delta) #, to_min=1, to_max=0)
+
+            #fade = x.map_range(from) >= factor.map_range(to_min=xmin, to_max=xmax+(xmax-xmin)/100)
+
+        mesh.faces._Fade = fade
+
+        (mesh + rem_mesh).out("Mesh")
+
+    # =============================================================================================================================
+    # Change color
+    # =============================================================================================================================
+
+    with GeoNodes("Color", fake_user=True, prefix=anim_prefix, is_group=True):
+        """ Change color
+        """
+
+        mesh   = Mesh()
+        select = Boolean(True, "Selection")
+        color  = Color((1, 0, 0), "Color")
+
+        mesh = mesh.faces[select].separate()
+        rem_mesh = mesh.inverted_
+
+        mesh.faces._Color = color
+
+        (mesh + rem_mesh).out("Mesh")
+
+    # =============================================================================================================================
+    # Change fade
+    # =============================================================================================================================
+
+    with GeoNodes("Fade", fake_user=True, prefix=anim_prefix, is_group=True):
+        """ Write selection
+        """
+
+        mesh   = Mesh()
+        select = Boolean(True, "Selection")
+        fade   = Float.Factor(0, "fade", 0, 1)
+
+        mesh = mesh.faces[select].separate()
+        rem_mesh = mesh.inverted_
+
+        mesh.faces._Fade = fade
+
+        (mesh + rem_mesh).out("Mesh")

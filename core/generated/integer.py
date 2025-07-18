@@ -7,6 +7,116 @@ class Integer(Socket):
     """"
     $DOC SET hidden
     """
+    def bw_and(self, b=None):
+        """ > Node <&Node Bit Math>
+
+        Information
+        -----------
+        - Socket 'A' : self
+        - Parameter 'operation' : 'AND'
+
+        Arguments
+        ---------
+        - b (Integer) : socket 'B' (id: B)
+
+        Returns
+        -------
+        - Integer
+        """
+        node = Node('Bit Math', sockets={'A': self, 'B': b}, operation='AND')
+        return node._out
+
+    def bw_or(self, b=None):
+        """ > Node <&Node Bit Math>
+
+        Information
+        -----------
+        - Socket 'A' : self
+        - Parameter 'operation' : 'OR'
+
+        Arguments
+        ---------
+        - b (Integer) : socket 'B' (id: B)
+
+        Returns
+        -------
+        - Integer
+        """
+        node = Node('Bit Math', sockets={'A': self, 'B': b}, operation='OR')
+        return node._out
+
+    def bw_xor(self, b=None):
+        """ > Node <&Node Bit Math>
+
+        Information
+        -----------
+        - Socket 'A' : self
+        - Parameter 'operation' : 'XOR'
+
+        Arguments
+        ---------
+        - b (Integer) : socket 'B' (id: B)
+
+        Returns
+        -------
+        - Integer
+        """
+        node = Node('Bit Math', sockets={'A': self, 'B': b}, operation='XOR')
+        return node._out
+
+    def bw_not(self):
+        """ > Node <&Node Bit Math>
+
+        Information
+        -----------
+        - Socket 'A' : self
+        - Parameter 'operation' : 'NOT'
+
+        Returns
+        -------
+        - Integer
+        """
+        node = Node('Bit Math', sockets={'A': self}, operation='NOT')
+        return node._out
+
+    def bw_shift(self, shift=None):
+        """ > Node <&Node Bit Math>
+
+        Information
+        -----------
+        - Socket 'A' : self
+        - Parameter 'operation' : 'SHIFT'
+
+        Arguments
+        ---------
+        - shift (Integer) : socket 'Shift' (id: Shift)
+
+        Returns
+        -------
+        - Integer
+        """
+        node = Node('Bit Math', sockets={'A': self, 'Shift': shift}, operation='SHIFT')
+        return node._out
+
+    def bw_rotate(self, shift=None):
+        """ > Node <&Node Bit Math>
+
+        Information
+        -----------
+        - Socket 'A' : self
+        - Parameter 'operation' : 'ROTATE'
+
+        Arguments
+        ---------
+        - shift (Integer) : socket 'Shift' (id: Shift)
+
+        Returns
+        -------
+        - Integer
+        """
+        node = Node('Bit Math', sockets={'A': self, 'Shift': shift}, operation='ROTATE')
+        return node._out
+
     def less_than(self, b=None):
         """ > Node <&Node Compare>
 

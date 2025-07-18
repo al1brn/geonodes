@@ -20,17 +20,35 @@ GreasePencil(value=None, name=None, tip=None, panel='', hide_value=False, hide_i
 
 ## Content
 
-- [domain_size](greasepencil.md#domain_size)
-- [layers](greasepencil.md#layers)
-- [merge_layers](greasepencil.md#merge_layers)
-- [merge_layers_by_id](greasepencil.md#merge_layers_by_id)
-- [merge_layers_by_name](greasepencil.md#merge_layers_by_name)
-- [named_layer_selection](greasepencil.md#named_layer_selection)
-- [to_curves](greasepencil.md#to_curves)
+- **D** : [depth](greasepencil.md#depth) :black_small_square: [domain_size](greasepencil.md#domain_size)
+- **F** : [fill_color](greasepencil.md#fill_color)
+- **L** : [layers](greasepencil.md#layers)
+- **M** : [merge_layers](greasepencil.md#merge_layers) :black_small_square: [merge_layers_by_id](greasepencil.md#merge_layers_by_id) :black_small_square: [merge_layers_by_name](greasepencil.md#merge_layers_by_name)
+- **N** : [named_layer_selection](greasepencil.md#named_layer_selection)
+- **S** : [set_grease_pencil_color](greasepencil.md#set_grease_pencil_color) :black_small_square: [set_grease_pencil_color_fill](greasepencil.md#set_grease_pencil_color_fill) :black_small_square: [set_grease_pencil_color_stroke](greasepencil.md#set_grease_pencil_color_stroke) :black_small_square: [set_grease_pencil_depth](greasepencil.md#set_grease_pencil_depth) :black_small_square: [set_grease_pencil_softness](greasepencil.md#set_grease_pencil_softness) :black_small_square: [softness](greasepencil.md#softness) :black_small_square: [stroke_color](greasepencil.md#stroke_color)
+- **T** : [to_curves](greasepencil.md#to_curves)
 
 ## Properties
 
 
+
+### depth
+
+> _type_: **?**
+>
+
+Write only property for node <Node Set Grease Pencil Depth>
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [GreasePencil](greasepencil.md#greasepencil) :black_small_square: [Content](greasepencil.md#content) :black_small_square: [Properties](greasepencil.md#properties)</sub>
+
+### fill_color
+
+> _type_: **?**
+>
+
+Write only property for node <Node Set Grease Pencil Color>
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [GreasePencil](greasepencil.md#greasepencil) :black_small_square: [Content](greasepencil.md#content) :black_small_square: [Properties](greasepencil.md#properties)</sub>
 
 ### layers
 
@@ -38,6 +56,24 @@ GreasePencil(value=None, name=None, tip=None, panel='', hide_value=False, hide_i
 >
 
 LAYER domain
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [GreasePencil](greasepencil.md#greasepencil) :black_small_square: [Content](greasepencil.md#content) :black_small_square: [Properties](greasepencil.md#properties)</sub>
+
+### softness
+
+> _type_: **?**
+>
+
+Write only property for node <Node Set Grease Pencil Softness>
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [GreasePencil](greasepencil.md#greasepencil) :black_small_square: [Content](greasepencil.md#content) :black_small_square: [Properties](greasepencil.md#properties)</sub>
+
+### stroke_color
+
+> _type_: **?**
+>
+
+Write only property for node <Node Set Grease Pencil Color>
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [GreasePencil](greasepencil.md#greasepencil) :black_small_square: [Content](greasepencil.md#content) :black_small_square: [Properties](greasepencil.md#properties)</sub>
 
@@ -76,7 +112,7 @@ domain_size()
 merge_layers(mode='MERGE_BY_NAME')
 ```
 
-> Node [Merge Layers](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/merge_layers.html)
+> Node [Merge Layers](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/grease_pencil/operations/merge_layers.html)
 
 > ***Jump*** : Socket refers to node output socket after the call
 
@@ -105,7 +141,7 @@ merge_layers(mode='MERGE_BY_NAME')
 merge_layers_by_id(group_id=None)
 ```
 
-> Node [Merge Layers](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/merge_layers.html)
+> Node [Merge Layers](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/grease_pencil/operations/merge_layers.html)
 
 > ***Jump*** : Socket refers to node output socket after the call
 
@@ -135,7 +171,7 @@ merge_layers_by_id(group_id=None)
 merge_layers_by_name()
 ```
 
-> Node [Merge Layers](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/merge_layers.html)
+> Node [Merge Layers](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/grease_pencil/operations/merge_layers.html)
 
 > ***Jump*** : Socket refers to node output socket after the call
 
@@ -160,7 +196,7 @@ merge_layers_by_name()
 named_layer_selection(name=None)
 ```
 
-> Node ERROR: Node 'Named Layer Selection' not found
+> Node [Named Layer Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/grease_pencil/read/named_layer_selection.html)
 
 #### Arguments:
 - **name** (_String_ = None) : socket 'Name' (id: Name)
@@ -173,6 +209,156 @@ named_layer_selection(name=None)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [GreasePencil](greasepencil.md#greasepencil) :black_small_square: [Content](greasepencil.md#content) :black_small_square: [Methods](greasepencil.md#methods)</sub>
 
 ----------
+### set_grease_pencil_color()
+
+> method
+
+``` python
+set_grease_pencil_color(color=None, opacity=None, mode='STROKE')
+```
+
+> Node [Set Grease Pencil Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/grease_pencil/write/set_grease_pencil_color.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
+
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+
+
+
+#### Arguments:
+- **color** (_Color_ = None) : socket 'Color' (id: Color)
+- **opacity** (_Float_ = None) : socket 'Opacity' (id: Opacity)
+- **mode** (_str_ = STROKE) : parameter 'mode' in ['STROKE', 'FILL']
+
+
+
+#### Returns:
+- **GreasePencil** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [GreasePencil](greasepencil.md#greasepencil) :black_small_square: [Content](greasepencil.md#content) :black_small_square: [Methods](greasepencil.md#methods)</sub>
+
+----------
+### set_grease_pencil_color_fill()
+
+> method
+
+``` python
+set_grease_pencil_color_fill(color=None, opacity=None)
+```
+
+> Node [Set Grease Pencil Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/grease_pencil/write/set_grease_pencil_color.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
+
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+- **Parameter** : 'FILL'
+
+
+
+#### Arguments:
+- **color** (_Color_ = None) : socket 'Color' (id: Color)
+- **opacity** (_Float_ = None) : socket 'Opacity' (id: Opacity)
+
+
+
+#### Returns:
+- **GreasePencil** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [GreasePencil](greasepencil.md#greasepencil) :black_small_square: [Content](greasepencil.md#content) :black_small_square: [Methods](greasepencil.md#methods)</sub>
+
+----------
+### set_grease_pencil_color_stroke()
+
+> method
+
+``` python
+set_grease_pencil_color_stroke(color=None, opacity=None)
+```
+
+> Node [Set Grease Pencil Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/grease_pencil/write/set_grease_pencil_color.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
+
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+- **Parameter** : 'STROKE'
+
+
+
+#### Arguments:
+- **color** (_Color_ = None) : socket 'Color' (id: Color)
+- **opacity** (_Float_ = None) : socket 'Opacity' (id: Opacity)
+
+
+
+#### Returns:
+- **GreasePencil** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [GreasePencil](greasepencil.md#greasepencil) :black_small_square: [Content](greasepencil.md#content) :black_small_square: [Methods](greasepencil.md#methods)</sub>
+
+----------
+### set_grease_pencil_depth()
+
+> method
+
+``` python
+set_grease_pencil_depth(depth_order='2D')
+```
+
+> Node [Set Grease Pencil Depth](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/grease_pencil/write/set_grease_pencil_depth.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
+
+#### Information:
+- **Socket** : self
+
+
+
+#### Arguments:
+- **depth_order** (_str_ = 2D) : parameter 'depth_order' in ['2D', '3D']
+
+
+
+#### Returns:
+- **GreasePencil** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [GreasePencil](greasepencil.md#greasepencil) :black_small_square: [Content](greasepencil.md#content) :black_small_square: [Methods](greasepencil.md#methods)</sub>
+
+----------
+### set_grease_pencil_softness()
+
+> method
+
+``` python
+set_grease_pencil_softness(softness=None)
+```
+
+> Node [Set Grease Pencil Softness](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/grease_pencil/write/set_grease_pencil_softness.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
+
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+
+
+
+#### Arguments:
+- **softness** (_Float_ = None) : socket 'Softness' (id: Softness)
+
+
+
+#### Returns:
+- **GreasePencil** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [GreasePencil](greasepencil.md#greasepencil) :black_small_square: [Content](greasepencil.md#content) :black_small_square: [Methods](greasepencil.md#methods)</sub>
+
+----------
 ### to_curves()
 
 > method
@@ -181,7 +367,7 @@ named_layer_selection(name=None)
 to_curves(layers_as_instances=None)
 ```
 
-> Node [Grease Pencil to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/grease_pencil_to_curves.html)
+> Node [Grease Pencil to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/grease_pencil/operations/grease_pencil_to_curves.html)
 
 #### Information:
 - **Socket** : self

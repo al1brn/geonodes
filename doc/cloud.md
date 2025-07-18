@@ -35,7 +35,7 @@ Nodes requiring a domain parameter, are implemented in the domain [points](cloud
 ## Content
 
 - **D** : [DistributeInGrid](cloud.md#distributeingrid) :black_small_square: [DistributeingridDensityGrid](cloud.md#distributeingriddensitygrid) :black_small_square: [DistributeingridDensityRandom](cloud.md#distributeingriddensityrandom) :black_small_square: [domain_size](cloud.md#domain_size)
-- **I** : [instance_on](cloud.md#instance_on) :black_small_square: [interpolate_curves](cloud.md#interpolate_curves)
+- **I** : [ImportCSV](cloud.md#importcsv) :black_small_square: [instance_on](cloud.md#instance_on) :black_small_square: [interpolate_curves](cloud.md#interpolate_curves)
 - **P** : [points](cloud.md#points) :black_small_square: [Points](cloud.md#points)
 - **R** : [radius](cloud.md#radius)
 - **T** : [to_curves](cloud.md#to_curves) :black_small_square: [to_sdf_grid](cloud.md#to_sdf_grid) :black_small_square: [to_vertices](cloud.md#to_vertices) :black_small_square: [to_volume](cloud.md#to_volume)
@@ -165,6 +165,28 @@ domain_size()
 
 #### Returns:
 - **node** (_Integer_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Cloud](cloud.md#cloud) :black_small_square: [Content](cloud.md#content) :black_small_square: [Methods](cloud.md#methods)</sub>
+
+----------
+### ImportCSV()
+
+> classmethod
+
+``` python
+ImportCSV(path=None, delimiter=None)
+```
+
+> Node ERROR: Node 'Import CSV' not found
+
+#### Arguments:
+- **path** (_String_ = None) : socket 'Path' (id: Path)
+- **delimiter** (_String_ = None) : socket 'Delimiter' (id: Delimiter)
+
+
+
+#### Returns:
+- **Cloud** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Cloud](cloud.md#cloud) :black_small_square: [Content](cloud.md#content) :black_small_square: [Methods](cloud.md#methods)</sub>
 

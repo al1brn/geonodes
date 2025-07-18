@@ -19,6 +19,7 @@ Edge(geometry: geonodes.core.geometry_class.Geometry)
 - **C** : [corner_index](edge.md#corner_index) :black_small_square: [corners](edge.md#corners) :black_small_square: [corners_total](edge.md#corners_total) :black_small_square: [count](edge.md#count)
 - **D** : [delete](edge.md#delete) :black_small_square: [delete_all](edge.md#delete_all) :black_small_square: [delete_edge_face](edge.md#delete_edge_face) :black_small_square: [delete_geometry](edge.md#delete_geometry) :black_small_square: [delete_geometry_all](edge.md#delete_geometry_all) :black_small_square: [delete_geometry_edge_face](edge.md#delete_geometry_edge_face) :black_small_square: [delete_geometry_only_face](edge.md#delete_geometry_only_face) :black_small_square: [delete_only_face](edge.md#delete_only_face) :black_small_square: [duplicate](edge.md#duplicate)
 - **E** : [edge_angle](edge.md#edge_angle) :black_small_square: [edge_vertices](edge.md#edge_vertices) :black_small_square: [evaluate_at_index](edge.md#evaluate_at_index) :black_small_square: [evaluate_on_domain](edge.md#evaluate_on_domain) :black_small_square: [extrude](edge.md#extrude)
+- **F** : [field_average](edge.md#field_average) :black_small_square: [field_min_max](edge.md#field_min_max) :black_small_square: [field_variance](edge.md#field_variance)
 - **M** : [material](edge.md#material)
 - **P** : [paths_to_curves](edge.md#paths_to_curves) :black_small_square: [paths_to_selection](edge.md#paths_to_selection)
 - **S** : [sample_index](edge.md#sample_index) :black_small_square: [sample_nearest](edge.md#sample_nearest) :black_small_square: [scale](edge.md#scale) :black_small_square: [scale_single_axis](edge.md#scale_single_axis) :black_small_square: [scale_uniform](edge.md#scale_uniform) :black_small_square: [separate](edge.md#separate) :black_small_square: [set_selection](edge.md#set_selection) :black_small_square: [set_shade_smooth](edge.md#set_shade_smooth) :black_small_square: [shade_smooth](edge.md#shade_smooth) :black_small_square: [shortest_paths](edge.md#shortest_paths) :black_small_square: [smooth](edge.md#smooth) :black_small_square: [sort](edge.md#sort) :black_small_square: [split](edge.md#split) :black_small_square: [split_to_instances](edge.md#split_to_instances) :black_small_square: [store](edge.md#store) :black_small_square: [store_named_attribute](edge.md#store_named_attribute)
@@ -509,7 +510,7 @@ edge_vertices()
 > classmethod
 
 ``` python
-evaluate_at_index(index=None, value=None)
+evaluate_at_index(value=None, index=None)
 ```
 
 > Node [Evaluate at Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/evaluate_at_index.html)
@@ -521,8 +522,8 @@ evaluate_at_index(index=None, value=None)
 
 
 #### Arguments:
-- **index** (_Integer_ = None) : socket 'Index' (id: Index)
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **index** (_Integer_ = None) : socket 'Index' (id: Index)
 
 
 
@@ -586,6 +587,90 @@ extrude(offset=None, offset_scale=None)
 
 #### Returns:
 - **Mesh** (_Boolean_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Edge](edge.md#edge) :black_small_square: [Content](edge.md#content) :black_small_square: [Methods](edge.md#methods)</sub>
+
+----------
+### field_average()
+
+> classmethod
+
+``` python
+field_average(value=None, group_id=None, domain='POINT')
+```
+
+> Node [Field Average](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/field_average.html)
+
+#### Information:
+- **Parameter** : depending on 'value' type
+
+
+
+#### Arguments:
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **group_id** (_Integer_ = None) : socket 'Group ID' (id: Group Index)
+- **domain** (_str_ = POINT) : parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
+
+
+
+#### Returns:
+- **node** (_Float_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Edge](edge.md#edge) :black_small_square: [Content](edge.md#content) :black_small_square: [Methods](edge.md#methods)</sub>
+
+----------
+### field_min_max()
+
+> classmethod
+
+``` python
+field_min_max(value=None, group_id=None, domain='POINT')
+```
+
+> Node ERROR: Node 'Field Min & Max' not found
+
+#### Information:
+- **Parameter** : depending on 'value' type
+
+
+
+#### Arguments:
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **group_id** (_Integer_ = None) : socket 'Group ID' (id: Group Index)
+- **domain** (_str_ = POINT) : parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
+
+
+
+#### Returns:
+- **node** (_Float_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Edge](edge.md#edge) :black_small_square: [Content](edge.md#content) :black_small_square: [Methods](edge.md#methods)</sub>
+
+----------
+### field_variance()
+
+> classmethod
+
+``` python
+field_variance(value=None, group_id=None, domain='POINT')
+```
+
+> Node [Field Variance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/field_variance.html)
+
+#### Information:
+- **Parameter** : depending on 'value' type
+
+
+
+#### Arguments:
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **group_id** (_Integer_ = None) : socket 'Group ID' (id: Group Index)
+- **domain** (_str_ = POINT) : parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
+
+
+
+#### Returns:
+- **node** (_Float_)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Edge](edge.md#edge) :black_small_square: [Content](edge.md#content) :black_small_square: [Methods](edge.md#methods)</sub>
 
@@ -1077,7 +1162,7 @@ to_points(position=None, radius=None)
 > method
 
 ``` python
-viewer(value=None)
+viewer(value=None, ui_shortcut=0)
 ```
 
 > Node [Viewer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/output/viewer.html)
@@ -1091,5 +1176,6 @@ viewer(value=None)
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **ui_shortcut** (_int_ = 0) : parameter 'ui_shortcut'
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Edge](edge.md#edge) :black_small_square: [Content](edge.md#content) :black_small_square: [Methods](edge.md#methods)</sub>

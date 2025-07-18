@@ -53,10 +53,15 @@ GChars = G("Char")
 GTerm  = G("Term")
 GComp  = G("Compile")
 
+SLASH_AS_FRAC = False
+
 
 ALPHA_CHARS    = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
 BLOCK_CHARS    = {'{': '}', '(': ')', '[': ']', '\\{': '\\}', '⟨': '⟩', '‖': '‖'}
-NOT_WORD_CHARS = [' ', '_', '^', '/'] + list(BLOCK_CHARS.keys()) + list(BLOCK_CHARS.values())
+NOT_WORD_CHARS = [' ', '_', '^'] + list(BLOCK_CHARS.keys()) + list(BLOCK_CHARS.values())
+
+if SLASH_AS_FRAC:
+    NOT_WORD_CHARS += ['/']
 
 BLOCK_CODES    = {'{'  : FORM.DECO_NOTHING,
                     '('  : FORM.DECO_PARENTHESIS,
@@ -73,7 +78,8 @@ FUNCTIONS = [
     'log', 'ln', 'min', 'max']
 
 
-
+def demo():
+    FORM.demo()
 
 # =============================================================================================================================
 # LaTeX simple interpreter
@@ -97,10 +103,10 @@ class Tex:
 
     def push(self, pop_char):
         self.stack.append(pop_char)
-        print(f"{self.indent}PUSH : {self.s[self.index-1:]}")
+        #print(f"{self.indent}PUSH : {self.s[self.index-1:]}")
 
     def pop(self, pop_char):
-        print(f"{self.indent}POP  {pop_char}: {self.s[self.index:]}")
+        #print(f"{self.indent}POP  {pop_char}: {self.s[self.index:]}")
 
         error = len(self.stack) == 0
         if not error:
@@ -333,7 +339,7 @@ class Tex:
 
         def denominator():
 
-            if self.get_next() != '/':
+            if (not SLASH_AS_FRAC) and (self.get_next() != '/'):
                 return None
 
             _ = self.next()
@@ -399,7 +405,7 @@ class Tex:
 # ====================================================================================================
 # Build from LaTeX
 
-def build_from_latex(latex_string, group_name):
+def latex_nodes(latex_string, group_name):
 
     tex = Tex(latex_string)
 

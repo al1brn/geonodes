@@ -93,6 +93,7 @@
 - [vector_rotate](snd.md#vector_rotate)
 - [vector_transform](snd.md#vector_transform)
 - [volume_absorption](snd.md#volume_absorption)
+- [volume_coefficients](snd.md#volume_coefficients)
 - [volume_info](snd.md#volume_info)
 - [volume_scatter](snd.md#volume_scatter)
 - [voronoi_texture](snd.md#voronoi_texture)

@@ -7,6 +7,20 @@ class Object(Socket):
     """"
     $DOC SET hidden
     """
+    def camera_info(self):
+        """ > Node <&Node Camera Info>
+
+        Information
+        -----------
+        - Socket 'Camera' : self
+
+        Returns
+        -------
+        - Matrix [focal_length_ (Float), sensor_ (Vector), shift_ (Vector), clip_start_ (Float), clip_end_ (Float), focus_distance_ (Float), is_orthographic_ (Boolean), orthographic_scale_ (Float)]
+        """
+        node = Node('Camera Info', sockets={'Camera': self})
+        return node._out
+
     @classmethod
     def ActiveCamera(cls):
         """ > Node <&Node Active Camera>

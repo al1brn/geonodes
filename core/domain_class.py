@@ -44,7 +44,7 @@ __blender_version__ = "4.3.0"
 
 from inspect import Arguments
 import bpy
-from bpy.types import Property, PythonConstraint, SmoothModifier
+#from bpy.types import Property, PythonConstraint, SmoothModifier
 
 from .proplocker import PropLocker
 

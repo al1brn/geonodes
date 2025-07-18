@@ -121,3 +121,240 @@ class GreasePencil(Socket):
         self._jump(node._out)
         return self._domain_to_geometry
 
+    def set_grease_pencil_color_stroke(self, color=None, opacity=None):
+        """ > Node <&Node Set Grease Pencil Color>
+
+        > ***Jump*** : Socket refers to node output socket after the call
+
+        Information
+        -----------
+        - Socket 'Grease Pencil' : self
+        - Socket 'Selection' : self[selection]
+        - Parameter 'mode' : 'STROKE'
+
+        Arguments
+        ---------
+        - color (Color) : socket 'Color' (id: Color)
+        - opacity (Float) : socket 'Opacity' (id: Opacity)
+
+        Returns
+        -------
+        - GreasePencil
+        """
+        node = Node('Set Grease Pencil Color', sockets={'Grease Pencil': self, 'Selection': self._sel, 'Color': color, 'Opacity': opacity}, mode='STROKE')
+        self._jump(node._out)
+        return self._domain_to_geometry
+
+    def set_grease_pencil_color_fill(self, color=None, opacity=None):
+        """ > Node <&Node Set Grease Pencil Color>
+
+        > ***Jump*** : Socket refers to node output socket after the call
+
+        Information
+        -----------
+        - Socket 'Grease Pencil' : self
+        - Socket 'Selection' : self[selection]
+        - Parameter 'mode' : 'FILL'
+
+        Arguments
+        ---------
+        - color (Color) : socket 'Color' (id: Color)
+        - opacity (Float) : socket 'Opacity' (id: Opacity)
+
+        Returns
+        -------
+        - GreasePencil
+        """
+        node = Node('Set Grease Pencil Color', sockets={'Grease Pencil': self, 'Selection': self._sel, 'Color': color, 'Opacity': opacity}, mode='FILL')
+        self._jump(node._out)
+        return self._domain_to_geometry
+
+    def set_grease_pencil_color(self, color=None, opacity=None, mode='STROKE'):
+        """ > Node <&Node Set Grease Pencil Color>
+
+        > ***Jump*** : Socket refers to node output socket after the call
+
+        Information
+        -----------
+        - Socket 'Grease Pencil' : self
+        - Socket 'Selection' : self[selection]
+
+        Arguments
+        ---------
+        - color (Color) : socket 'Color' (id: Color)
+        - opacity (Float) : socket 'Opacity' (id: Opacity)
+        - mode (str): parameter 'mode' in ['STROKE', 'FILL']
+
+        Returns
+        -------
+        - GreasePencil
+        """
+        utils.check_enum_arg('Set Grease Pencil Color', 'mode', mode, 'set_grease_pencil_color', ('STROKE', 'FILL'))
+        node = Node('Set Grease Pencil Color', sockets={'Grease Pencil': self, 'Selection': self._sel, 'Color': color, 'Opacity': opacity}, mode=mode)
+        self._jump(node._out)
+        return self._domain_to_geometry
+
+    def set_grease_pencil_depth(self, depth_order='2D'):
+        """ > Node <&Node Set Grease Pencil Depth>
+
+        > ***Jump*** : Socket refers to node output socket after the call
+
+        Information
+        -----------
+        - Socket 'Grease Pencil' : self
+
+        Arguments
+        ---------
+        - depth_order (str): parameter 'depth_order' in ['2D', '3D']
+
+        Returns
+        -------
+        - GreasePencil
+        """
+        utils.check_enum_arg('Set Grease Pencil Depth', 'depth_order', depth_order, 'set_grease_pencil_depth', ('2D', '3D'))
+        node = Node('Set Grease Pencil Depth', sockets={'Grease Pencil': self}, depth_order=depth_order)
+        self._jump(node._out)
+        return self._domain_to_geometry
+
+    def set_grease_pencil_softness(self, softness=None):
+        """ > Node <&Node Set Grease Pencil Softness>
+
+        > ***Jump*** : Socket refers to node output socket after the call
+
+        Information
+        -----------
+        - Socket 'Grease Pencil' : self
+        - Socket 'Selection' : self[selection]
+
+        Arguments
+        ---------
+        - softness (Float) : socket 'Softness' (id: Softness)
+
+        Returns
+        -------
+        - GreasePencil
+        """
+        node = Node('Set Grease Pencil Softness', sockets={'Grease Pencil': self, 'Selection': self._sel, 'Softness': softness})
+        self._jump(node._out)
+        return self._domain_to_geometry
+
+    @property
+    def stroke_color(self):
+        """ Write only property for node <Node Set Grease Pencil Color>
+        """
+        raise NodeError('Property GreasePencil.stroke_color is write only.')
+
+    @stroke_color.setter
+    def stroke_color(self, color=None):
+        """ > Node <&Node Set Grease Pencil Color>
+
+        > ***Jump*** : Socket refers to node output socket after the call
+
+        Information
+        -----------
+        - Socket 'Grease Pencil' : self
+        - Socket 'Selection' : self[selection]
+        - Socket 'Opacity' : ignored
+        - Parameter 'mode' : 'STROKE'
+
+        Arguments
+        ---------
+        - color (Color) : socket 'Color' (id: Color)
+
+        Returns
+        -------
+        - GreasePencil
+        """
+        node = Node('Set Grease Pencil Color', sockets={'Grease Pencil': self, 'Selection': self._sel, 'Color': color, 'Opacity': None}, mode='STROKE')
+        self._jump(node._out)
+        return self._domain_to_geometry
+
+    @property
+    def fill_color(self):
+        """ Write only property for node <Node Set Grease Pencil Color>
+        """
+        raise NodeError('Property GreasePencil.fill_color is write only.')
+
+    @fill_color.setter
+    def fill_color(self, color=None):
+        """ > Node <&Node Set Grease Pencil Color>
+
+        > ***Jump*** : Socket refers to node output socket after the call
+
+        Information
+        -----------
+        - Socket 'Grease Pencil' : self
+        - Socket 'Selection' : self[selection]
+        - Socket 'Opacity' : ignored
+        - Parameter 'mode' : 'FILL'
+
+        Arguments
+        ---------
+        - color (Color) : socket 'Color' (id: Color)
+
+        Returns
+        -------
+        - GreasePencil
+        """
+        node = Node('Set Grease Pencil Color', sockets={'Grease Pencil': self, 'Selection': self._sel, 'Color': color, 'Opacity': None}, mode='FILL')
+        self._jump(node._out)
+        return self._domain_to_geometry
+
+    @property
+    def depth(self):
+        """ Write only property for node <Node Set Grease Pencil Depth>
+        """
+        raise NodeError('Property GreasePencil.depth is write only.')
+
+    @depth.setter
+    def depth(self, depth_order='2D'):
+        """ > Node <&Node Set Grease Pencil Depth>
+
+        > ***Jump*** : Socket refers to node output socket after the call
+
+        Information
+        -----------
+        - Socket 'Grease Pencil' : self
+
+        Arguments
+        ---------
+        - depth_order (str): parameter 'depth_order' in ['2D', '3D']
+
+        Returns
+        -------
+        - GreasePencil
+        """
+        utils.check_enum_arg('Set Grease Pencil Depth', 'depth_order', depth_order, 'depth', ('2D', '3D'))
+        node = Node('Set Grease Pencil Depth', sockets={'Grease Pencil': self}, depth_order=depth_order)
+        self._jump(node._out)
+        return self._domain_to_geometry
+
+    @property
+    def softness(self):
+        """ Write only property for node <Node Set Grease Pencil Softness>
+        """
+        raise NodeError('Property GreasePencil.softness is write only.')
+
+    @softness.setter
+    def softness(self, softness=None):
+        """ > Node <&Node Set Grease Pencil Softness>
+
+        > ***Jump*** : Socket refers to node output socket after the call
+
+        Information
+        -----------
+        - Socket 'Grease Pencil' : self
+        - Socket 'Selection' : self[selection]
+
+        Arguments
+        ---------
+        - softness (Float) : socket 'Softness' (id: Softness)
+
+        Returns
+        -------
+        - GreasePencil
+        """
+        node = Node('Set Grease Pencil Softness', sockets={'Grease Pencil': self, 'Selection': self._sel, 'Softness': softness})
+        self._jump(node._out)
+        return self._domain_to_geometry
+

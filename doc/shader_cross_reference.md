@@ -23,7 +23,7 @@ You will find here how nodes are implemented
 - **S** : [Script](shader_cross_reference.md#script) :black_small_square: [Separate Color](shader_cross_reference.md#separate-color) :black_small_square: [Separate XYZ](shader_cross_reference.md#separate-xyz) :black_small_square: [Shader to RGB](shader_cross_reference.md#shader-to-rgb) :black_small_square: [Sheen BSDF](shader_cross_reference.md#sheen-bsdf) :black_small_square: [Sky Texture](shader_cross_reference.md#sky-texture) :black_small_square: [Specular BSDF](shader_cross_reference.md#specular-bsdf) :black_small_square: [Subsurface Scattering](shader_cross_reference.md#subsurface-scattering)
 - **T** : [Tangent](shader_cross_reference.md#tangent) :black_small_square: [Texture Coordinate](shader_cross_reference.md#texture-coordinate) :black_small_square: [to Euler](shader_cross_reference.md#to-euler) :black_small_square: [Toon BSDF](shader_cross_reference.md#toon-bsdf) :black_small_square: [Translucent BSDF](shader_cross_reference.md#translucent-bsdf) :black_small_square: [Transparent BSDF](shader_cross_reference.md#transparent-bsdf)
 - **U** : [UV Along Stroke](shader_cross_reference.md#uv-along-stroke) :black_small_square: [UV Map](shader_cross_reference.md#uv-map)
-- **V** : [Vector Curves](shader_cross_reference.md#vector-curves) :black_small_square: [Vector Displacement](shader_cross_reference.md#vector-displacement) :black_small_square: [Vector Math](shader_cross_reference.md#vector-math) :black_small_square: [Vector Rotate](shader_cross_reference.md#vector-rotate) :black_small_square: [Vector Transform](shader_cross_reference.md#vector-transform) :black_small_square: [Volume Absorption](shader_cross_reference.md#volume-absorption) :black_small_square: [Volume Info](shader_cross_reference.md#volume-info) :black_small_square: [Volume Scatter](shader_cross_reference.md#volume-scatter) :black_small_square: [Voronoi Texture](shader_cross_reference.md#voronoi-texture)
+- **V** : [Vector Curves](shader_cross_reference.md#vector-curves) :black_small_square: [Vector Displacement](shader_cross_reference.md#vector-displacement) :black_small_square: [Vector Math](shader_cross_reference.md#vector-math) :black_small_square: [Vector Rotate](shader_cross_reference.md#vector-rotate) :black_small_square: [Vector Transform](shader_cross_reference.md#vector-transform) :black_small_square: [Volume Absorption](shader_cross_reference.md#volume-absorption) :black_small_square: [Volume Coefficients](shader_cross_reference.md#volume-coefficients) :black_small_square: [Volume Info](shader_cross_reference.md#volume-info) :black_small_square: [Volume Scatter](shader_cross_reference.md#volume-scatter) :black_small_square: [Voronoi Texture](shader_cross_reference.md#voronoi-texture)
 - **W** : [Wave Texture](shader_cross_reference.md#wave-texture) :black_small_square: [Wavelength](shader_cross_reference.md#wavelength) :black_small_square: [White Noise Texture](shader_cross_reference.md#white-noise-texture) :black_small_square: [Wireframe](shader_cross_reference.md#wireframe) :black_small_square: [World Output](shader_cross_reference.md#world-output)
 
 #### &Material Output
@@ -472,6 +472,10 @@ You will find here how nodes are implemented
 
 - [snd](snd.md#snd) :white_small_square: [volume_absorption](snd.md#volume_absorption)
 - [VolumeShader](volumeshader.md#volumeshader) :white_small_square: [Absorption](volumeshader.md#absorption)
+
+#### Volume Coefficients
+
+- [snd](snd.md#snd) :white_small_square: [volume_coefficients](snd.md#volume_coefficients)
 
 #### Volume Info
 

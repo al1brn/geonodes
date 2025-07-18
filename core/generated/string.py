@@ -191,6 +191,107 @@ class String(Socket):
         node = Node('String Length', sockets={'String': self})
         return node._out
 
+    def format(self):
+        """ > Node <&Node Format String>
+
+        Information
+        -----------
+        - Socket 'Format' : self
+
+        Returns
+        -------
+        - String
+        """
+        node = Node('Format String', sockets={'Format': self})
+        return node._out
+
+    @classmethod
+    def Format(cls, format=None):
+        """ > Node <&Node Format String>
+
+        Arguments
+        ---------
+        - format (String) : socket 'Format' (id: Format)
+
+        Returns
+        -------
+        - String
+        """
+        node = Node('Format String', sockets={'Format': format})
+        return cls(node._out)
+
+    @classmethod
+    def ImportText(cls, path=None):
+        """ > Node <&Node Import Text>
+
+        Arguments
+        ---------
+        - path (String) : socket 'Path' (id: Path)
+
+        Returns
+        -------
+        - String
+        """
+        node = Node('Import Text', sockets={'Path': path})
+        return cls(node._out)
+
+    def starts_with(self, key=None):
+        """ > Node <&Node Match String>
+
+        Information
+        -----------
+        - Socket 'String' : self
+        - Parameter 'operation' : 'STARTS_WITH'
+
+        Arguments
+        ---------
+        - key (String) : socket 'Key' (id: Key)
+
+        Returns
+        -------
+        - Boolean
+        """
+        node = Node('Match String', sockets={'String': self, 'Key': key}, operation='STARTS_WITH')
+        return node._out
+
+    def ends_with(self, key=None):
+        """ > Node <&Node Match String>
+
+        Information
+        -----------
+        - Socket 'String' : self
+        - Parameter 'operation' : 'ENDS_WITH'
+
+        Arguments
+        ---------
+        - key (String) : socket 'Key' (id: Key)
+
+        Returns
+        -------
+        - Boolean
+        """
+        node = Node('Match String', sockets={'String': self, 'Key': key}, operation='ENDS_WITH')
+        return node._out
+
+    def contains(self, key=None):
+        """ > Node <&Node Match String>
+
+        Information
+        -----------
+        - Socket 'String' : self
+        - Parameter 'operation' : 'CONTAINS'
+
+        Arguments
+        ---------
+        - key (String) : socket 'Key' (id: Key)
+
+        Returns
+        -------
+        - Boolean
+        """
+        node = Node('Match String', sockets={'String': self, 'Key': key}, operation='CONTAINS')
+        return node._out
+
     def join(self, *strings):
         """ > Node <&Node Join Strings>
 

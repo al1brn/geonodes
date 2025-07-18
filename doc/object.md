@@ -21,6 +21,7 @@ Class Object data socket
 ## Content
 
 - [ActiveCamera](object.md#activecamera)
+- [camera_info](object.md#camera_info)
 - [info](object.md#info)
 - [\_\_init__](object.md#__init__)
 - [Self](object.md#self)
@@ -42,6 +43,27 @@ ActiveCamera()
 
 #### Returns:
 - **Object** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Object](object.md#object) :black_small_square: [Content](object.md#content) :black_small_square: [Methods](object.md#methods)</sub>
+
+----------
+### camera_info()
+
+> method
+
+``` python
+camera_info()
+```
+
+> Node [Camera Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene/camera_info.html)
+
+#### Information:
+- **Socket** : self
+
+
+
+#### Returns:
+- **Matrix** (_Float_)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Object](object.md#object) :black_small_square: [Content](object.md#content) :black_small_square: [Methods](object.md#methods)</sub>
 

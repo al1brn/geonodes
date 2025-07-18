@@ -23,6 +23,7 @@ In addition, the node [Points of Curve](https://docs.blender.org/manual/en/lates
 - **C** : [count](spline.md#count)
 - **D** : [delete](spline.md#delete) :black_small_square: [delete_all](spline.md#delete_all) :black_small_square: [delete_edge_face](spline.md#delete_edge_face) :black_small_square: [delete_geometry](spline.md#delete_geometry) :black_small_square: [delete_geometry_all](spline.md#delete_geometry_all) :black_small_square: [delete_geometry_edge_face](spline.md#delete_geometry_edge_face) :black_small_square: [delete_geometry_only_face](spline.md#delete_geometry_only_face) :black_small_square: [delete_only_face](spline.md#delete_only_face) :black_small_square: [duplicate](spline.md#duplicate)
 - **E** : [evaluate_at_index](spline.md#evaluate_at_index) :black_small_square: [evaluate_on_domain](spline.md#evaluate_on_domain)
+- **F** : [field_average](spline.md#field_average) :black_small_square: [field_min_max](spline.md#field_min_max) :black_small_square: [field_variance](spline.md#field_variance)
 - **I** : [is_cyclic](spline.md#is_cyclic)
 - **M** : [material_index](spline.md#material_index)
 - **N** : [normal](spline.md#normal)
@@ -412,7 +413,7 @@ duplicate(amount=None)
 > classmethod
 
 ``` python
-evaluate_at_index(index=None, value=None)
+evaluate_at_index(value=None, index=None)
 ```
 
 > Node [Evaluate at Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/evaluate_at_index.html)
@@ -424,8 +425,8 @@ evaluate_at_index(index=None, value=None)
 
 
 #### Arguments:
-- **index** (_Integer_ = None) : socket 'Index' (id: Index)
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **index** (_Integer_ = None) : socket 'Index' (id: Index)
 
 
 
@@ -458,6 +459,90 @@ evaluate_on_domain(value=None)
 
 #### Returns:
 - **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Spline](spline.md#spline) :black_small_square: [Content](spline.md#content) :black_small_square: [Methods](spline.md#methods)</sub>
+
+----------
+### field_average()
+
+> classmethod
+
+``` python
+field_average(value=None, group_id=None, domain='POINT')
+```
+
+> Node [Field Average](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/field_average.html)
+
+#### Information:
+- **Parameter** : depending on 'value' type
+
+
+
+#### Arguments:
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **group_id** (_Integer_ = None) : socket 'Group ID' (id: Group Index)
+- **domain** (_str_ = POINT) : parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
+
+
+
+#### Returns:
+- **node** (_Float_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Spline](spline.md#spline) :black_small_square: [Content](spline.md#content) :black_small_square: [Methods](spline.md#methods)</sub>
+
+----------
+### field_min_max()
+
+> classmethod
+
+``` python
+field_min_max(value=None, group_id=None, domain='POINT')
+```
+
+> Node ERROR: Node 'Field Min & Max' not found
+
+#### Information:
+- **Parameter** : depending on 'value' type
+
+
+
+#### Arguments:
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **group_id** (_Integer_ = None) : socket 'Group ID' (id: Group Index)
+- **domain** (_str_ = POINT) : parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
+
+
+
+#### Returns:
+- **node** (_Float_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Spline](spline.md#spline) :black_small_square: [Content](spline.md#content) :black_small_square: [Methods](spline.md#methods)</sub>
+
+----------
+### field_variance()
+
+> classmethod
+
+``` python
+field_variance(value=None, group_id=None, domain='POINT')
+```
+
+> Node [Field Variance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/field_variance.html)
+
+#### Information:
+- **Parameter** : depending on 'value' type
+
+
+
+#### Arguments:
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **group_id** (_Integer_ = None) : socket 'Group ID' (id: Group Index)
+- **domain** (_str_ = POINT) : parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
+
+
+
+#### Returns:
+- **node** (_Float_)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Spline](spline.md#spline) :black_small_square: [Content](spline.md#content) :black_small_square: [Methods](spline.md#methods)</sub>
 
@@ -772,7 +857,7 @@ store_named_attribute(name=None, value=None)
 > method
 
 ``` python
-viewer(value=None)
+viewer(value=None, ui_shortcut=0)
 ```
 
 > Node [Viewer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/output/viewer.html)
@@ -786,5 +871,6 @@ viewer(value=None)
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **ui_shortcut** (_int_ = 0) : parameter 'ui_shortcut'
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Spline](spline.md#spline) :black_small_square: [Content](spline.md#content) :black_small_square: [Methods](spline.md#methods)</sub>

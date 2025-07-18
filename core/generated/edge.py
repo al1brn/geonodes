@@ -52,6 +52,75 @@ class Edge(Socket):
         return node
 
     @classmethod
+    def field_average(cls, value=None, group_id=None, domain='POINT'):
+        """ > Node <&Node Field Average>
+
+        Information
+        -----------
+        - Parameter 'data_type' : depending on 'value' type
+
+        Arguments
+        ---------
+        - value (Float) : socket 'Value' (id: Value)
+        - group_id (Integer) : socket 'Group ID' (id: Group Index)
+        - domain (str): parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
+
+        Returns
+        -------
+        - node [mean (Float), median (Float)]
+        """
+        utils.check_enum_arg('Field Average', 'domain', domain, 'field_average', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
+        data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'VECTOR': 'FLOAT_VECTOR'}, 'Edge.field_average', 'value')
+        node = Node('Field Average', sockets={'Value': value, 'Group Index': group_id}, data_type=data_type, domain=domain)
+        return node
+
+    @classmethod
+    def field_min_max(cls, value=None, group_id=None, domain='POINT'):
+        """ > Node <&Node Field Min & Max>
+
+        Information
+        -----------
+        - Parameter 'data_type' : depending on 'value' type
+
+        Arguments
+        ---------
+        - value (Float) : socket 'Value' (id: Value)
+        - group_id (Integer) : socket 'Group ID' (id: Group Index)
+        - domain (str): parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
+
+        Returns
+        -------
+        - node [min (Float), max (Float)]
+        """
+        utils.check_enum_arg('Field Min & Max', 'domain', domain, 'field_min_max', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
+        data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR'}, 'Edge.field_min_max', 'value')
+        node = Node('Field Min & Max', sockets={'Value': value, 'Group Index': group_id}, data_type=data_type, domain=domain)
+        return node
+
+    @classmethod
+    def field_variance(cls, value=None, group_id=None, domain='POINT'):
+        """ > Node <&Node Field Variance>
+
+        Information
+        -----------
+        - Parameter 'data_type' : depending on 'value' type
+
+        Arguments
+        ---------
+        - value (Float) : socket 'Value' (id: Value)
+        - group_id (Integer) : socket 'Group ID' (id: Group Index)
+        - domain (str): parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
+
+        Returns
+        -------
+        - node [standard_deviation (Float), variance (Float)]
+        """
+        utils.check_enum_arg('Field Variance', 'domain', domain, 'field_variance', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
+        data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'VECTOR': 'FLOAT_VECTOR'}, 'Edge.field_variance', 'value')
+        node = Node('Field Variance', sockets={'Value': value, 'Group Index': group_id}, data_type=data_type, domain=domain)
+        return node
+
+    @classmethod
     def corners(cls, edge_index=None, weights=None, sort_index=None):
         """ > Node <&Node Corners of Edge>
 
@@ -368,7 +437,7 @@ class Edge(Socket):
         return self._domain_to_geometry
 
     @classmethod
-    def evaluate_at_index(cls, index=None, value=None):
+    def evaluate_at_index(cls, value=None, index=None):
         """ > Node <&Node Evaluate at Index>
 
         Information
@@ -378,15 +447,15 @@ class Edge(Socket):
 
         Arguments
         ---------
-        - index (Integer) : socket 'Index' (id: Index)
         - value (Float) : socket 'Value' (id: Value)
+        - index (Integer) : socket 'Index' (id: Index)
 
         Returns
         -------
         - Float
         """
         data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Edge.evaluate_at_index', 'value')
-        node = Node('Evaluate at Index', sockets={'Index': index, 'Value': value}, data_type=data_type, domain='EDGE')
+        node = Node('Evaluate at Index', sockets={'Value': value, 'Index': index}, data_type=data_type, domain='EDGE')
         return node._out
 
     @classmethod
@@ -864,7 +933,7 @@ class Edge(Socket):
         self._jump(node._out)
         return self._domain_to_geometry
 
-    def viewer(self, value=None):
+    def viewer(self, value=None, ui_shortcut=0):
         """ > Node <&Node Viewer>
 
         Information
@@ -876,10 +945,11 @@ class Edge(Socket):
         Arguments
         ---------
         - value (Float) : socket 'Value' (id: Value)
+        - ui_shortcut (int): parameter 'ui_shortcut'
 
         """
         data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Edge.viewer', 'value')
-        node = Node('Viewer', sockets={'Geometry': self, 'Value': value}, data_type=data_type, domain='EDGE')
+        node = Node('Viewer', sockets={'Geometry': self, 'Value': value}, data_type=data_type, domain='EDGE', ui_shortcut=ui_shortcut)
         return
 
     @property

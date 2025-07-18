@@ -21,10 +21,11 @@ Root domain for [Vertex](vertex.md#vertex), [SplinePoint](splinepoint.md#splinep
 - **C** : [count](point.md#count)
 - **D** : [delete](point.md#delete) :black_small_square: [delete_all](point.md#delete_all) :black_small_square: [delete_edge_face](point.md#delete_edge_face) :black_small_square: [delete_geometry](point.md#delete_geometry) :black_small_square: [delete_geometry_all](point.md#delete_geometry_all) :black_small_square: [delete_geometry_edge_face](point.md#delete_geometry_edge_face) :black_small_square: [delete_geometry_only_face](point.md#delete_geometry_only_face) :black_small_square: [delete_only_face](point.md#delete_only_face) :black_small_square: [duplicate](point.md#duplicate)
 - **E** : [evaluate_at_index](point.md#evaluate_at_index) :black_small_square: [evaluate_on_domain](point.md#evaluate_on_domain)
+- **F** : [field_average](point.md#field_average) :black_small_square: [field_min_max](point.md#field_min_max) :black_small_square: [field_variance](point.md#field_variance)
 - **I** : [instance_on](point.md#instance_on)
 - **O** : [offset](point.md#offset)
 - **P** : [position](point.md#position)
-- **S** : [sample_index](point.md#sample_index) :black_small_square: [sample_nearest](point.md#sample_nearest) :black_small_square: [separate](point.md#separate) :black_small_square: [set_radius](point.md#set_radius) :black_small_square: [set_selection](point.md#set_selection) :black_small_square: [sort](point.md#sort) :black_small_square: [split_to_instances](point.md#split_to_instances) :black_small_square: [store](point.md#store) :black_small_square: [store_named_attribute](point.md#store_named_attribute)
+- **S** : [sample_index](point.md#sample_index) :black_small_square: [sample_nearest](point.md#sample_nearest) :black_small_square: [separate](point.md#separate) :black_small_square: [set_normal](point.md#set_normal) :black_small_square: [set_normal_free](point.md#set_normal_free) :black_small_square: [set_normal_sharpness](point.md#set_normal_sharpness) :black_small_square: [set_normal_tangent_space](point.md#set_normal_tangent_space) :black_small_square: [set_radius](point.md#set_radius) :black_small_square: [set_selection](point.md#set_selection) :black_small_square: [sort](point.md#sort) :black_small_square: [split_to_instances](point.md#split_to_instances) :black_small_square: [store](point.md#store) :black_small_square: [store_named_attribute](point.md#store_named_attribute)
 - **V** : [viewer](point.md#viewer)
 
 ## Properties
@@ -392,7 +393,7 @@ duplicate(amount=None)
 > classmethod
 
 ``` python
-evaluate_at_index(index=None, value=None)
+evaluate_at_index(value=None, index=None)
 ```
 
 > Node [Evaluate at Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/evaluate_at_index.html)
@@ -404,8 +405,8 @@ evaluate_at_index(index=None, value=None)
 
 
 #### Arguments:
-- **index** (_Integer_ = None) : socket 'Index' (id: Index)
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **index** (_Integer_ = None) : socket 'Index' (id: Index)
 
 
 
@@ -438,6 +439,90 @@ evaluate_on_domain(value=None)
 
 #### Returns:
 - **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Point](point.md#point) :black_small_square: [Content](point.md#content) :black_small_square: [Methods](point.md#methods)</sub>
+
+----------
+### field_average()
+
+> classmethod
+
+``` python
+field_average(value=None, group_id=None, domain='POINT')
+```
+
+> Node [Field Average](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/field_average.html)
+
+#### Information:
+- **Parameter** : depending on 'value' type
+
+
+
+#### Arguments:
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **group_id** (_Integer_ = None) : socket 'Group ID' (id: Group Index)
+- **domain** (_str_ = POINT) : parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
+
+
+
+#### Returns:
+- **node** (_Float_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Point](point.md#point) :black_small_square: [Content](point.md#content) :black_small_square: [Methods](point.md#methods)</sub>
+
+----------
+### field_min_max()
+
+> classmethod
+
+``` python
+field_min_max(value=None, group_id=None, domain='POINT')
+```
+
+> Node ERROR: Node 'Field Min & Max' not found
+
+#### Information:
+- **Parameter** : depending on 'value' type
+
+
+
+#### Arguments:
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **group_id** (_Integer_ = None) : socket 'Group ID' (id: Group Index)
+- **domain** (_str_ = POINT) : parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
+
+
+
+#### Returns:
+- **node** (_Float_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Point](point.md#point) :black_small_square: [Content](point.md#content) :black_small_square: [Methods](point.md#methods)</sub>
+
+----------
+### field_variance()
+
+> classmethod
+
+``` python
+field_variance(value=None, group_id=None, domain='POINT')
+```
+
+> Node [Field Variance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/field_variance.html)
+
+#### Information:
+- **Parameter** : depending on 'value' type
+
+
+
+#### Arguments:
+- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **group_id** (_Integer_ = None) : socket 'Group ID' (id: Group Index)
+- **domain** (_str_ = POINT) : parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
+
+
+
+#### Returns:
+- **node** (_Float_)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Point](point.md#point) :black_small_square: [Content](point.md#content) :black_small_square: [Methods](point.md#methods)</sub>
 
@@ -551,6 +636,130 @@ separate()
 
 #### Returns:
 - **Geometry** (_Geometry_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Point](point.md#point) :black_small_square: [Content](point.md#content) :black_small_square: [Methods](point.md#methods)</sub>
+
+----------
+### set_normal()
+
+> method
+
+``` python
+set_normal(remove_custom=None, edge_sharpness=None, face_sharpness=None, mode='SHARPNESS')
+```
+
+> Node [Set Mesh Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/write/set_mesh_normal.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'POINT'
+
+
+
+#### Arguments:
+- **remove_custom** (_Boolean_ = None) : socket 'Remove Custom' (id: Remove Custom)
+- **edge_sharpness** (_Boolean_ = None) : socket 'Edge Sharpness' (id: Edge Sharpness)
+- **face_sharpness** (_Boolean_ = None) : socket 'Face Sharpness' (id: Face Sharpness)
+- **mode** (_str_ = SHARPNESS) : parameter 'mode' in ['SHARPNESS', 'FREE', 'TANGENT_SPACE']
+
+
+
+#### Returns:
+- **Mesh** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Point](point.md#point) :black_small_square: [Content](point.md#content) :black_small_square: [Methods](point.md#methods)</sub>
+
+----------
+### set_normal_free()
+
+> method
+
+``` python
+set_normal_free(custom_normal=None)
+```
+
+> Node [Set Mesh Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/write/set_mesh_normal.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'POINT'
+- **Parameter** : 'FREE'
+
+
+
+#### Arguments:
+- **custom_normal** (_Vector_ = None) : socket 'Custom Normal' (id: Custom Normal)
+
+
+
+#### Returns:
+- **Mesh** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Point](point.md#point) :black_small_square: [Content](point.md#content) :black_small_square: [Methods](point.md#methods)</sub>
+
+----------
+### set_normal_sharpness()
+
+> method
+
+``` python
+set_normal_sharpness(remove_custom=None, edge_sharpness=None, face_sharpness=None)
+```
+
+> Node [Set Mesh Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/write/set_mesh_normal.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'POINT'
+- **Parameter** : 'SHARPNESS'
+
+
+
+#### Arguments:
+- **remove_custom** (_Boolean_ = None) : socket 'Remove Custom' (id: Remove Custom)
+- **edge_sharpness** (_Boolean_ = None) : socket 'Edge Sharpness' (id: Edge Sharpness)
+- **face_sharpness** (_Boolean_ = None) : socket 'Face Sharpness' (id: Face Sharpness)
+
+
+
+#### Returns:
+- **Mesh** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Point](point.md#point) :black_small_square: [Content](point.md#content) :black_small_square: [Methods](point.md#methods)</sub>
+
+----------
+### set_normal_tangent_space()
+
+> method
+
+``` python
+set_normal_tangent_space(custom_normal=None)
+```
+
+> Node [Set Mesh Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/write/set_mesh_normal.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'POINT'
+- **Parameter** : 'TANGENT_SPACE'
+
+
+
+#### Arguments:
+- **custom_normal** (_Vector_ = None) : socket 'Custom Normal' (id: Custom Normal)
+
+
+
+#### Returns:
+- **Mesh** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Point](point.md#point) :black_small_square: [Content](point.md#content) :black_small_square: [Methods](point.md#methods)</sub>
 
@@ -738,7 +947,7 @@ store_named_attribute(name=None, value=None)
 > method
 
 ``` python
-viewer(value=None)
+viewer(value=None, ui_shortcut=0)
 ```
 
 > Node [Viewer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/output/viewer.html)
@@ -752,5 +961,6 @@ viewer(value=None)
 
 #### Arguments:
 - **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **ui_shortcut** (_int_ = 0) : parameter 'ui_shortcut'
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Point](point.md#point) :black_small_square: [Content](point.md#content) :black_small_square: [Methods](point.md#methods)</sub>
