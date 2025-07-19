@@ -190,7 +190,8 @@ Math functions are named after their standard name in python **math** module.
 
 > [!NOTE]
 > **Vector** functions having the same name as their **Float** equivalent are prefixed with the letter *v*
-> **Integer** functions having the samen name as their **Float** equivalent are prefixed with the letter *i*
+> **Integer** functions having the same name as their **Float** equivalent are prefixed with the letter *i*
+> All bitwise **Integer** operations are prefixed with *bw_*
 
 ``` python
     a = Float(1)
@@ -211,6 +212,9 @@ Math functions are named after their standard name in python **math** module.
     v = gnmath.cross(u, (7, 8, 9))
     # Add axists also for Floats
     w = gnmath.vadd(v, (5, 6,7))
+
+    # Bitwise functions
+    j = gmath.bw_and(i, 7)
 ```
 
 > [!NOTE]
@@ -333,6 +337,10 @@ a = Integer(10)
 c = a*42 # Operation between two Integers : Integer Math node is used
 c += 1 # Integer Math node, operation 'ADD'
 d = -c # Integer Math node, operation 'NEGATE'
+
+# Bitwise operators
+a = Integer(1) << 3
+a |= Integer(7) & 1
 
 # Vector operators
 u = Vector((1, 2, 3))
