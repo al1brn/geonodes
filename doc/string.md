@@ -210,13 +210,14 @@ find_in_string(search=None)
 > classmethod
 
 ``` python
-Format(format=None)
+Format(format=None, **items)
 ```
 
 > Node [Format String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/format_string.html)
 
 #### Arguments:
 - **format** (_String_ = None) : socket 'Format' (id: Format)
+- **items** (_String, Integer, Float_) : values to use in the format string
 
 
 
@@ -231,13 +232,18 @@ Format(format=None)
 > method
 
 ``` python
-format()
+format(**items)
 ```
 
 > Node [Format String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/format_string.html)
 
 #### Information:
 - **Socket** : self
+
+
+
+#### Arguments:
+- **items** (_String, Integer, Float_) : values to use in the format string
 
 
 

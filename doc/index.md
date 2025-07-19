@@ -23,9 +23,9 @@ $ DOC toc_max_depth = 1
 
 - [gnmath](gnmath.md#gnmath) : math library providing mathematical functions coming from nodes
   <*Node Math>, <*Node Vector Math> and <*Node Boolean Math>
-- [nd](nd.md#nd) (for _nodes_) : this special class exposes one method or property per node,
+- [nd](generated.md#nd) (for _nodes_) : this special class exposes one method or property per node,
   especially useful for input nodes such as <*Node Index> or <*Node Position>
-- [snd](snd.md#snd) (for _shader nodes_) : same as [nd](nd.md#nd) for shader node
+- [snd](generated.md#snd) (for _shader nodes_) : same as [nd](generated.md#nd) for shader node
 
 ### Sockets
 

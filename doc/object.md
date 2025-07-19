@@ -63,7 +63,7 @@ camera_info()
 
 
 #### Returns:
-- **Matrix** (_Float_)
+- **node** (_Matrix_)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Object](object.md#object) :black_small_square: [Content](object.md#content) :black_small_square: [Methods](object.md#methods)</sub>
 

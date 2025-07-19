@@ -8,7 +8,7 @@ Spline(geometry: geonodes.core.geometry_class.Geometry)
 
 Methods of **Spline** class are nodes which accept a SPLINE or CURVE domain.
 
-In addition, the node [Points of Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/topology/points_of_curve.html) is implemented as method [points](nd.md#points).
+In addition, the node [Points of Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/topology/points_of_curve.html) is implemented as method [points](cloud.md#points).
 
 #### Arguments:
 - **geometry** (_Geometry_)

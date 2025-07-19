@@ -23,9 +23,10 @@ Root domain for [Vertex](vertex.md#vertex), [SplinePoint](splinepoint.md#splinep
 - **E** : [evaluate_at_index](point.md#evaluate_at_index) :black_small_square: [evaluate_on_domain](point.md#evaluate_on_domain)
 - **F** : [field_average](point.md#field_average) :black_small_square: [field_min_max](point.md#field_min_max) :black_small_square: [field_variance](point.md#field_variance)
 - **I** : [instance_on](point.md#instance_on)
+- **N** : [normal](point.md#normal)
 - **O** : [offset](point.md#offset)
 - **P** : [position](point.md#position)
-- **S** : [sample_index](point.md#sample_index) :black_small_square: [sample_nearest](point.md#sample_nearest) :black_small_square: [separate](point.md#separate) :black_small_square: [set_normal](point.md#set_normal) :black_small_square: [set_normal_free](point.md#set_normal_free) :black_small_square: [set_normal_sharpness](point.md#set_normal_sharpness) :black_small_square: [set_normal_tangent_space](point.md#set_normal_tangent_space) :black_small_square: [set_radius](point.md#set_radius) :black_small_square: [set_selection](point.md#set_selection) :black_small_square: [sort](point.md#sort) :black_small_square: [split_to_instances](point.md#split_to_instances) :black_small_square: [store](point.md#store) :black_small_square: [store_named_attribute](point.md#store_named_attribute)
+- **S** : [sample_index](point.md#sample_index) :black_small_square: [sample_nearest](point.md#sample_nearest) :black_small_square: [separate](point.md#separate) :black_small_square: [set_radius](point.md#set_radius) :black_small_square: [set_selection](point.md#set_selection) :black_small_square: [sort](point.md#sort) :black_small_square: [split_to_instances](point.md#split_to_instances) :black_small_square: [store](point.md#store) :black_small_square: [store_named_attribute](point.md#store_named_attribute)
 - **V** : [viewer](point.md#viewer)
 
 ## Properties
@@ -38,6 +39,15 @@ Root domain for [Vertex](vertex.md#vertex), [SplinePoint](splinepoint.md#splinep
 >
 
 > Socket 'Point Count' of node [Domain Size](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/domain_size.html)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Point](point.md#point) :black_small_square: [Content](point.md#content) :black_small_square: [Properties](point.md#properties)</sub>
+
+### normal
+
+> _type_: **?**
+>
+
+Write only property for node <Node Set Mesh Normal>
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Point](point.md#point) :black_small_square: [Content](point.md#content) :black_small_square: [Properties](point.md#properties)</sub>
 
@@ -636,130 +646,6 @@ separate()
 
 #### Returns:
 - **Geometry** (_Geometry_)
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Point](point.md#point) :black_small_square: [Content](point.md#content) :black_small_square: [Methods](point.md#methods)</sub>
-
-----------
-### set_normal()
-
-> method
-
-``` python
-set_normal(remove_custom=None, edge_sharpness=None, face_sharpness=None, mode='SHARPNESS')
-```
-
-> Node [Set Mesh Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/write/set_mesh_normal.html)
-
-> ***Jump*** : Socket refers to node output socket after the call
-
-#### Information:
-- **Socket** : self
-- **Parameter** : 'POINT'
-
-
-
-#### Arguments:
-- **remove_custom** (_Boolean_ = None) : socket 'Remove Custom' (id: Remove Custom)
-- **edge_sharpness** (_Boolean_ = None) : socket 'Edge Sharpness' (id: Edge Sharpness)
-- **face_sharpness** (_Boolean_ = None) : socket 'Face Sharpness' (id: Face Sharpness)
-- **mode** (_str_ = SHARPNESS) : parameter 'mode' in ['SHARPNESS', 'FREE', 'TANGENT_SPACE']
-
-
-
-#### Returns:
-- **Mesh** :
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Point](point.md#point) :black_small_square: [Content](point.md#content) :black_small_square: [Methods](point.md#methods)</sub>
-
-----------
-### set_normal_free()
-
-> method
-
-``` python
-set_normal_free(custom_normal=None)
-```
-
-> Node [Set Mesh Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/write/set_mesh_normal.html)
-
-> ***Jump*** : Socket refers to node output socket after the call
-
-#### Information:
-- **Socket** : self
-- **Parameter** : 'POINT'
-- **Parameter** : 'FREE'
-
-
-
-#### Arguments:
-- **custom_normal** (_Vector_ = None) : socket 'Custom Normal' (id: Custom Normal)
-
-
-
-#### Returns:
-- **Mesh** :
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Point](point.md#point) :black_small_square: [Content](point.md#content) :black_small_square: [Methods](point.md#methods)</sub>
-
-----------
-### set_normal_sharpness()
-
-> method
-
-``` python
-set_normal_sharpness(remove_custom=None, edge_sharpness=None, face_sharpness=None)
-```
-
-> Node [Set Mesh Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/write/set_mesh_normal.html)
-
-> ***Jump*** : Socket refers to node output socket after the call
-
-#### Information:
-- **Socket** : self
-- **Parameter** : 'POINT'
-- **Parameter** : 'SHARPNESS'
-
-
-
-#### Arguments:
-- **remove_custom** (_Boolean_ = None) : socket 'Remove Custom' (id: Remove Custom)
-- **edge_sharpness** (_Boolean_ = None) : socket 'Edge Sharpness' (id: Edge Sharpness)
-- **face_sharpness** (_Boolean_ = None) : socket 'Face Sharpness' (id: Face Sharpness)
-
-
-
-#### Returns:
-- **Mesh** :
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Point](point.md#point) :black_small_square: [Content](point.md#content) :black_small_square: [Methods](point.md#methods)</sub>
-
-----------
-### set_normal_tangent_space()
-
-> method
-
-``` python
-set_normal_tangent_space(custom_normal=None)
-```
-
-> Node [Set Mesh Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/write/set_mesh_normal.html)
-
-> ***Jump*** : Socket refers to node output socket after the call
-
-#### Information:
-- **Socket** : self
-- **Parameter** : 'POINT'
-- **Parameter** : 'TANGENT_SPACE'
-
-
-
-#### Arguments:
-- **custom_normal** (_Vector_ = None) : socket 'Custom Normal' (id: Custom Normal)
-
-
-
-#### Returns:
-- **Mesh** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Point](point.md#point) :black_small_square: [Content](point.md#content) :black_small_square: [Methods](point.md#methods)</sub>
 

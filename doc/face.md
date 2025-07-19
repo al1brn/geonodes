@@ -22,8 +22,8 @@ Face(geometry: geonodes.core.geometry_class.Geometry)
 - **F** : [field_average](face.md#field_average) :black_small_square: [field_min_max](face.md#field_min_max) :black_small_square: [field_variance](face.md#field_variance)
 - **I** : [is_planar](face.md#is_planar)
 - **M** : [material](face.md#material) :black_small_square: [material_index](face.md#material_index)
-- **N** : [neighbors](face.md#neighbors)
-- **S** : [sample_index](face.md#sample_index) :black_small_square: [sample_nearest](face.md#sample_nearest) :black_small_square: [scale](face.md#scale) :black_small_square: [scale_single_axis](face.md#scale_single_axis) :black_small_square: [scale_uniform](face.md#scale_uniform) :black_small_square: [separate](face.md#separate) :black_small_square: [set_normal](face.md#set_normal) :black_small_square: [set_normal_free](face.md#set_normal_free) :black_small_square: [set_normal_sharpness](face.md#set_normal_sharpness) :black_small_square: [set_normal_tangent_space](face.md#set_normal_tangent_space) :black_small_square: [set_selection](face.md#set_selection) :black_small_square: [set_shade_smooth](face.md#set_shade_smooth) :black_small_square: [shade_smooth](face.md#shade_smooth) :black_small_square: [smooth](face.md#smooth) :black_small_square: [sort](face.md#sort) :black_small_square: [split_to_instances](face.md#split_to_instances) :black_small_square: [store](face.md#store) :black_small_square: [store_named_attribute](face.md#store_named_attribute)
+- **N** : [neighbors](face.md#neighbors) :black_small_square: [normal](face.md#normal)
+- **S** : [sample_index](face.md#sample_index) :black_small_square: [sample_nearest](face.md#sample_nearest) :black_small_square: [scale](face.md#scale) :black_small_square: [scale_single_axis](face.md#scale_single_axis) :black_small_square: [scale_uniform](face.md#scale_uniform) :black_small_square: [separate](face.md#separate) :black_small_square: [set_selection](face.md#set_selection) :black_small_square: [set_shade_smooth](face.md#set_shade_smooth) :black_small_square: [shade_smooth](face.md#shade_smooth) :black_small_square: [smooth](face.md#smooth) :black_small_square: [sort](face.md#sort) :black_small_square: [split_to_instances](face.md#split_to_instances) :black_small_square: [store](face.md#store) :black_small_square: [store_named_attribute](face.md#store_named_attribute)
 - **T** : [to_points](face.md#to_points)
 - **V** : [viewer](face.md#viewer)
 
@@ -55,6 +55,15 @@ Write only property for node <Node Set Material>
 >
 
 Property get node <Node Set Material Index>
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](face.md#face) :black_small_square: [Content](face.md#content) :black_small_square: [Properties](face.md#properties)</sub>
+
+### normal
+
+> _type_: **?**
+>
+
+Write only property for node <Node Set Mesh Normal>
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](face.md#face) :black_small_square: [Content](face.md#content) :black_small_square: [Properties](face.md#properties)</sub>
 
@@ -946,130 +955,6 @@ separate()
 
 #### Returns:
 - **Geometry** (_Geometry_)
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](face.md#face) :black_small_square: [Content](face.md#content) :black_small_square: [Methods](face.md#methods)</sub>
-
-----------
-### set_normal()
-
-> method
-
-``` python
-set_normal(remove_custom=None, edge_sharpness=None, face_sharpness=None, mode='SHARPNESS')
-```
-
-> Node [Set Mesh Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/write/set_mesh_normal.html)
-
-> ***Jump*** : Socket refers to node output socket after the call
-
-#### Information:
-- **Socket** : self
-- **Parameter** : 'FACE'
-
-
-
-#### Arguments:
-- **remove_custom** (_Boolean_ = None) : socket 'Remove Custom' (id: Remove Custom)
-- **edge_sharpness** (_Boolean_ = None) : socket 'Edge Sharpness' (id: Edge Sharpness)
-- **face_sharpness** (_Boolean_ = None) : socket 'Face Sharpness' (id: Face Sharpness)
-- **mode** (_str_ = SHARPNESS) : parameter 'mode' in ['SHARPNESS', 'FREE', 'TANGENT_SPACE']
-
-
-
-#### Returns:
-- **Mesh** :
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](face.md#face) :black_small_square: [Content](face.md#content) :black_small_square: [Methods](face.md#methods)</sub>
-
-----------
-### set_normal_free()
-
-> method
-
-``` python
-set_normal_free(custom_normal=None)
-```
-
-> Node [Set Mesh Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/write/set_mesh_normal.html)
-
-> ***Jump*** : Socket refers to node output socket after the call
-
-#### Information:
-- **Socket** : self
-- **Parameter** : 'FACE'
-- **Parameter** : 'FREE'
-
-
-
-#### Arguments:
-- **custom_normal** (_Vector_ = None) : socket 'Custom Normal' (id: Custom Normal)
-
-
-
-#### Returns:
-- **Mesh** :
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](face.md#face) :black_small_square: [Content](face.md#content) :black_small_square: [Methods](face.md#methods)</sub>
-
-----------
-### set_normal_sharpness()
-
-> method
-
-``` python
-set_normal_sharpness(remove_custom=None, edge_sharpness=None, face_sharpness=None)
-```
-
-> Node [Set Mesh Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/write/set_mesh_normal.html)
-
-> ***Jump*** : Socket refers to node output socket after the call
-
-#### Information:
-- **Socket** : self
-- **Parameter** : 'FACE'
-- **Parameter** : 'SHARPNESS'
-
-
-
-#### Arguments:
-- **remove_custom** (_Boolean_ = None) : socket 'Remove Custom' (id: Remove Custom)
-- **edge_sharpness** (_Boolean_ = None) : socket 'Edge Sharpness' (id: Edge Sharpness)
-- **face_sharpness** (_Boolean_ = None) : socket 'Face Sharpness' (id: Face Sharpness)
-
-
-
-#### Returns:
-- **Mesh** :
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](face.md#face) :black_small_square: [Content](face.md#content) :black_small_square: [Methods](face.md#methods)</sub>
-
-----------
-### set_normal_tangent_space()
-
-> method
-
-``` python
-set_normal_tangent_space(custom_normal=None)
-```
-
-> Node [Set Mesh Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/write/set_mesh_normal.html)
-
-> ***Jump*** : Socket refers to node output socket after the call
-
-#### Information:
-- **Socket** : self
-- **Parameter** : 'FACE'
-- **Parameter** : 'TANGENT_SPACE'
-
-
-
-#### Arguments:
-- **custom_normal** (_Vector_ = None) : socket 'Custom Normal' (id: Custom Normal)
-
-
-
-#### Returns:
-- **Mesh** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Face](face.md#face) :black_small_square: [Content](face.md#content) :black_small_square: [Methods](face.md#methods)</sub>
 
