@@ -195,20 +195,6 @@ class Boolean(Socket):
         node = Node('Random Value', sockets={'Probability': probability, 'ID': id, 'Seed': seed}, data_type='BOOLEAN')
         return cls(node._out)
 
-    def instance_bounds(self):
-        """ > Node <&Node Instance Bounds>
-
-        Information
-        -----------
-        - Socket 'Use Radius' : self
-
-        Returns
-        -------
-        - Vector [max_ (Vector)]
-        """
-        node = Node('Instance Bounds', sockets={'Use Radius': self})
-        return node._out
-
     @classmethod
     def Named(cls, name=None):
         """ > Node <&Node Named Attribute>

@@ -62,8 +62,8 @@ CLASS_NAMES = {
     'SHADER'        : 'Shader',
 
 
-    'CLOSURE' : 'Closure',
-    'BUNDLE'  : 'Bundle',
+    #'CLOSURE' : 'Closure',
+    #'BUNDLE'  : 'Bundle',
 }
 
 ATTRIBUTE_CLASSES = ['Boolean', 'Integer', 'Float', 'Vector', 'Color', 'Matrix', 'Rotation']
@@ -403,7 +403,7 @@ MODIFIER_ONLY = (
 # - Import Text
 # - Import VDB
 # - Instance Bounds
-# - Separate Bundle
+# - Separate Bundle    # Not implemented
 # - Set Grease Pencil Color
 # - Set Grease Pencil Depth
 # - Set Grease Pencil Softness
@@ -465,10 +465,10 @@ NODE_NAMES = {
 		'Bounding Box'                 : 'GeometryNodeBoundBox',
 		'Camera Info'                  : 'GeometryNodeCameraInfo',
 		'Capture Attribute'            : 'GeometryNodeCaptureAttribute',
-		'Closure Input'                : 'GeometryNodeClosureInput',
-		'Closure Output'               : 'GeometryNodeClosureOutput',
+		 #'Closure Input'                : 'GeometryNodeClosureInput',
+		 #'Closure Output'               : 'GeometryNodeClosureOutput',
 		'Collection Info'              : 'GeometryNodeCollectionInfo',
-		'Combine Bundle'               : 'GeometryNodeCombineBundle',
+		 #'Combine Bundle'               : 'GeometryNodeCombineBundle',
 		'Convex Hull'                  : 'GeometryNodeConvexHull',
 		'Corners of Edge'              : 'GeometryNodeCornersOfEdge',
 		'Corners of Face'              : 'GeometryNodeCornersOfFace',
@@ -502,7 +502,7 @@ NODE_NAMES = {
 		'Edges of Corner'              : 'GeometryNodeEdgesOfCorner',
 		'Edges of Vertex'              : 'GeometryNodeEdgesOfVertex',
 		'Edges to Face Groups'         : 'GeometryNodeEdgesToFaceGroups',
-		'Evaluate Closure'             : 'GeometryNodeEvaluateClosure',
+		 #'Evaluate Closure'             : 'GeometryNodeEvaluateClosure',
 		'Extrude Mesh'                 : 'GeometryNodeExtrudeMesh',
 		'Face of Corner'               : 'GeometryNodeFaceOfCorner',
 		'Evaluate at Index'            : 'GeometryNodeFieldAtIndex',
@@ -622,7 +622,7 @@ NODE_NAMES = {
 		'Scale Elements'               : 'GeometryNodeScaleElements',
 		'Scale Instances'              : 'GeometryNodeScaleInstances',
 		'Self Object'                  : 'GeometryNodeSelfObject',
-		'Separate Bundle'              : 'GeometryNodeSeparateBundle',
+		 #'Separate Bundle'              : 'GeometryNodeSeparateBundle',
 		'Separate Components'          : 'GeometryNodeSeparateComponents',
 		'Separate Geometry'            : 'GeometryNodeSeparateGeometry',
 		'Set Handle Positions'         : 'GeometryNodeSetCurveHandlePositions',

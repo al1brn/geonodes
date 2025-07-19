@@ -100,20 +100,6 @@ multires_ = G("Multires")
 
 FOCAL_FACTOR = .04939
 
-def test():
-
-    from geonodes.core.socket_class import Switch
-
-    with GeoNodes("Test"):
-
-        geo = Geometry()
-        cone = Mesh.Cone()
-        cond = Boolean(True, "Cone")
-
-        res = Switch(cone) if cond else geo
-
-        res.out()
-
 # =============================================================================================================================
 # Demo
 
@@ -338,14 +324,15 @@ def camera_culling():
 
     DEBUG_GEO = False
 
-    # -----------------------------------------------------------------------------------------------------------------------------
-    # Camera relative
+    # =============================================================================================================================
+    # Camera Projection
+    # =============================================================================================================================
 
     with GeoNodes("Projection", is_group=True, prefix=camera_):
 
         FOCAL_FACTOR = .04939
 
-        # ===== Arguments
+        # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 
         position     = Vector(0,   "Position", tip="Point position", default_input='POSITION')
         radius       = Float(0,    "Radius", min=0, tip="Position radius")
@@ -353,14 +340,16 @@ def camera_culling():
 
         with Panel("Camera Culling"):
             ok_cc        = Boolean(True, "Camera Culling")
-            focal_length = Float(50,   "Focal Length", min=1, tip="Focal length in mm")
+            #focal_length = Float(50,   "Focal Length", min=1, tip="Focal length in mm")
             aspect_ratio = Float(16/9, "Aspect Ratio", tip="Camera aspect ratio, 16/9 for instance")
 
-        focal_length *= FOCAL_FACTOR
+        # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 
-        # ===== In the camera frame
+        with Layout("Camera info"):
+            focal_length = Object.ActiveCamera().camera_info().focal_length
+            focal_length *= FOCAL_FACTOR
 
-        cam_info = nd.active_camera.info(transform_space='RELATIVE')
+            cam_info = nd.active_camera.info(transform_space='RELATIVE')
 
         with Layout("Projection in Camera Space"):
             vect     = position - cam_info.location
@@ -420,6 +409,10 @@ def camera_culling():
         outside_top.out(  "Outside Top")
 
         pos.out(          "Position")
+
+    # =============================================================================================================================
+    # Domains culling
+    # =============================================================================================================================
 
     # -----------------------------------------------------------------------------------------------------------------------------
     # Position Culling
@@ -573,73 +566,87 @@ def camera_culling():
 
         mesh.out()
 
-    # -----------------------------------------------------------------------------------------------------------------------------
-    # Camera debug
+    # =============================================================================================================================
+    # Camera Debug
+    # =============================================================================================================================
 
     with ShaderNodes("DBG Face"):
 
-        col = snd.attribute(attribute_name="RGB")
+        col = snd.attribute(attribute_name="Color")
         ped = Shader.Principled(base_color=col)
         ped.out()
 
     with GeoNodes("Debug", prefix=camera_):
 
+        # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+
         mesh = Mesh(Geometry())
-        mesh.faces.material = "DBG Face"
         prec = Float(10,     "Precision", min=0, tip="Precision in 1000th (use with care)")/1000 * Integer(1).switch(nd.is_viewport, 10)
         show_grid     = Boolean(False, "Grid")
         show_original = Boolean(True, "Show Mesh")
 
+        # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+
+        mesh.faces.material = "DBG Face"
         node = camera_.projection(position=nd.position, radius=None, normal=None, link_from='TREE').node
 
         # ===== Sensor
 
-        sensor = Mesh.Grid(size_x=Float(None, "Aspect Ratio"), size_y=1, vertices_x=2, vertices_y=2)
-        sensor.faces.delete_only_face()
+        with Layout("Sensor"):
+            sensor = Mesh.Grid(size_x=Float(None, "Aspect Ratio"), size_y=1, vertices_x=2, vertices_y=2)
+            sensor.faces.delete_only_face()
 
-        grid = Mesh.Grid(size_x=10*prec, size_y=10*prec, vertices_x=11, vertices_y=11)
-        grid.faces.delete_only_face()
+            grid = Mesh.Grid(size_x=10*prec, size_y=10*prec, vertices_x=11, vertices_y=11)
+            grid.faces.delete_only_face()
 
-        sensor += grid.switch(-show_grid)
+            sensor += grid.switch(-show_grid)
 
         # ===== Projected Mesh
 
-        proj = Mesh(mesh)
-        proj.points.position = node.projection
-        proj.faces.delete_only_face()
+        with Layout("Projected Mesh"):
+
+            proj = Mesh(mesh)
+            proj.points.position = node.projection
+            proj.faces.delete_only_face()
 
         # ==== Points
 
-        hidden = Boolean.MenuSwitch({'Behind': node.behind, 'Outside': node.outside, 'All': (node.behind | node.outside)}, name='Hidden Points')
+        with Layout("Points"):
 
-        mesh.points.store("RGB", Color((0, 1, 0)).switch(hidden, (1, 0, 0)))
-        pts = Mesh(mesh.points.instance_on(instance=Mesh.UVSphere(radius=.02)).realize())
-        pts.faces.material = "DBG Face"
+            hidden = Boolean.MenuSwitch({'Behind': node.behind, 'Outside': node.outside, 'All': (node.behind | node.outside)}, name='Hidden Points')
 
-        geo = sensor + proj
-        cam_info = nd.active_camera.info()
+            mesh.points.store("Point Color", Color((0, 1, 0)).switch(hidden, (1, 0, 0)))
+            pts = Mesh(mesh.points.instance_on(instance=Mesh.UVSphere(radius=.02)).realize())
+            pts.faces.material = "DBG Face"
+            pts.faces.store("Color", Color("Point Color"))
 
-        geo.transform(translation=(0, 0, Float(None, "Focal Length")*(-FOCAL_FACTOR)))
-        geo.transform(translation=cam_info.location, rotation=cam_info.rotation)
+            geo = sensor + proj
+            cam_info = nd.active_camera.info()
+
+            geo.transform(translation=(0, 0, Float(None, "Focal Length")*(-FOCAL_FACTOR)))
+            geo.transform(translation=cam_info.location, rotation=cam_info.rotation)
 
         # ===== Faces
 
-        node = camera_.projection(position=nd.position, radius=gnmath.sqrt(nd.face_area), normal=nd.normal).node
+        with Layout("Faces"):
 
-        face_behind = node.behind
-        face_outside = node.outside
-        face_back = node.outwards > 0
-        face_size = node.radius < prec
-        face_all = face_behind | face_outside | face_size | face_back
+            node = camera_.projection(position=nd.position, radius=gnmath.sqrt(nd.face_area), normal=nd.normal).node
 
-        hidden = Boolean.MenuSwitch({'All': face_all, 'Behind': face_behind, 'Outside': face_outside, 'Backwards': face_back, 'Radius': face_size}, name='Hidden Surfaces')
-        mesh.faces.store("RGB", Color((0, 1, 0)).switch(hidden,  (1, 0, 0)))
+            face_behind = node.behind
+            face_outside = node.outside
+            face_back = node.outwards > 0
+            face_size = node.radius < prec
+            face_all = face_behind | face_outside | face_size | face_back
 
-        mesh.switch(-show_original).join(geo, pts).out()
+            hidden = Boolean.MenuSwitch({'All': face_all, 'Behind': face_behind, 'Outside': face_outside, 'Backwards': face_back, 'Radius': face_size}, name='Hidden Surfaces')
+            mesh.faces.store("Color", Color((0, 1, 0)).switch(hidden,  (1, 0, 0)))
+
+            mesh.switch(-show_original).join(geo, pts).out()
 
 
 # =============================================================================================================================
 # Sierpinski triangle
+# =============================================================================================================================
 
 def sierpinski():
 
@@ -1339,12 +1346,14 @@ def romanesco():
 
     with GeoNodes("Romanesco Cabbage", prefix=fractal_):
 
+        # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+
         iterations, prec = iterations_panel(1, 10)
 
         with Panel("Debug"):
             show_spiral  = Boolean(False, "Show Initial Spiral")
             show_spirals = Boolean(False, "Show Spirals")
-            show_cones   = Boolean(False, "Show Cones")
+            show_cones   = Boolean(True,  "Show Cones")
 
         with Panel("Cabbage"):
             nspirals      = Integer(6,           "Number of spirals", min=3, max=12)
@@ -1353,8 +1362,10 @@ def romanesco():
             upwards       = Float(4,             "Upwards factor")
             npoints       = Integer(30,          "Number of points", min=3, max=200)
             q             = Float.Factor(.9,     "Shrink Factor", min=.01, max=.999)
-            size_factor   = Float.Factor(.2,     "Size Factor", min=.01, max=.999)
+            size_factor   = Float.Factor(.27,    "Size Factor", min=.01, max=.999)
             cone_segms    = Integer(7,           "Cone Segments", 3, 32)
+
+        # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 
         #omega         = Float(.8,            "Omega")
         #rotations     = Float(3,             "Rotations")
@@ -1493,7 +1504,7 @@ def face_fractals():
 
         cam_culling   = Boolean(True,     "Camera Culling")
         aspect_ratio  = Float(16/9,       "Aspect Ratio", tip="Camera aspect ratio, 16/9 for instance")
-        focal_length  = Float.Distance(1, "Focal Length", min=0.01)
+        #focal_length  = Float.Distance(1, "Focal Length", min=0.01)
 
 
         iterations = (iterations + 1).switch(nd.is_viewport, iterations)

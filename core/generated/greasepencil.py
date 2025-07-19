@@ -121,7 +121,7 @@ class GreasePencil(Socket):
         self._jump(node._out)
         return self._domain_to_geometry
 
-    def set_grease_pencil_color_stroke(self, color=None, opacity=None):
+    def set_color_stroke(self, color=None, opacity=None):
         """ > Node <&Node Set Grease Pencil Color>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -145,7 +145,7 @@ class GreasePencil(Socket):
         self._jump(node._out)
         return self._domain_to_geometry
 
-    def set_grease_pencil_color_fill(self, color=None, opacity=None):
+    def set_color_fill(self, color=None, opacity=None):
         """ > Node <&Node Set Grease Pencil Color>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -169,7 +169,7 @@ class GreasePencil(Socket):
         self._jump(node._out)
         return self._domain_to_geometry
 
-    def set_grease_pencil_color(self, color=None, opacity=None, mode='STROKE'):
+    def set_color(self, color=None, opacity=None, mode='STROKE'):
         """ > Node <&Node Set Grease Pencil Color>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -189,12 +189,12 @@ class GreasePencil(Socket):
         -------
         - GreasePencil
         """
-        utils.check_enum_arg('Set Grease Pencil Color', 'mode', mode, 'set_grease_pencil_color', ('STROKE', 'FILL'))
+        utils.check_enum_arg('Set Grease Pencil Color', 'mode', mode, 'set_color', ('STROKE', 'FILL'))
         node = Node('Set Grease Pencil Color', sockets={'Grease Pencil': self, 'Selection': self._sel, 'Color': color, 'Opacity': opacity}, mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
 
-    def set_grease_pencil_depth(self, depth_order='2D'):
+    def set_depth(self, depth_order='2D'):
         """ > Node <&Node Set Grease Pencil Depth>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -211,12 +211,12 @@ class GreasePencil(Socket):
         -------
         - GreasePencil
         """
-        utils.check_enum_arg('Set Grease Pencil Depth', 'depth_order', depth_order, 'set_grease_pencil_depth', ('2D', '3D'))
+        utils.check_enum_arg('Set Grease Pencil Depth', 'depth_order', depth_order, 'set_depth', ('2D', '3D'))
         node = Node('Set Grease Pencil Depth', sockets={'Grease Pencil': self}, depth_order=depth_order)
         self._jump(node._out)
         return self._domain_to_geometry
 
-    def set_grease_pencil_softness(self, softness=None):
+    def set_softness(self, softness=None):
         """ > Node <&Node Set Grease Pencil Softness>
 
         > ***Jump*** : Socket refers to node output socket after the call

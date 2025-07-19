@@ -191,33 +191,38 @@ class String(Socket):
         node = Node('String Length', sockets={'String': self})
         return node._out
 
-    def format(self):
+    def format(self, **items):
         """ > Node <&Node Format String>
 
         Information
         -----------
         - Socket 'Format' : self
 
+        Arguments
+        ---------
+        - items (String, Integer, Float) : values to use in the format string
+
         Returns
         -------
         - String
         """
-        node = Node('Format String', sockets={'Format': self})
+        node = Node('Format String', sockets={'Format': self}, _items=items)
         return node._out
 
     @classmethod
-    def Format(cls, format=None):
+    def Format(cls, format=None, **items):
         """ > Node <&Node Format String>
 
         Arguments
         ---------
         - format (String) : socket 'Format' (id: Format)
+        - items (String, Integer, Float) : values to use in the format string
 
         Returns
         -------
         - String
         """
-        node = Node('Format String', sockets={'Format': format})
+        node = Node('Format String', sockets={'Format': format}, _items=items)
         return cls(node._out)
 
     @classmethod

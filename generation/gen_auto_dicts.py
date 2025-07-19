@@ -1,8 +1,6 @@
 from pathlib import Path
 import bpy
 
-from . node_explore import NodeInfo
-
 f            = 'func'
 name         = 'func_name'
 ret          = 'ret'
@@ -32,6 +30,15 @@ set_prm      = 'setter_params'
 get_prm      = 'getter_params'
 set_sock     = 'setter_sockets'
 get_sock     = 'getter_sockets'
+
+
+NODES_WITH_ITEMS = {
+    'Format String' : {
+        'name'        : "items",
+        'socket_type' : "String, Integer, Float",
+        'comment'     : "values to use in the format string" 
+    },
+}
 
 
 GEONODES = {
@@ -85,7 +92,7 @@ GEONODES = {
                                         'nand'     : 'not_and',
                                 }},
                                 ],
-'Camera Info'        :          [{}],
+'Camera Info'        :          [{ret: 'NODE'}],
 'Combine Color'      :          [{f: 'C', name: 'Combine', 'mode_loop': True}],
 'Combine Matrix'     :          [{f: 'C', name: 'Combine'}],
 'Combine Transform'  :          [{f: 'C', name: 'CombineTransform'}],
@@ -264,7 +271,7 @@ GEONODES = {
 'Import VDB'         :          [{f: 'C', name: 'ImportVDB'}],
 'Index of Nearest'   :          [{f: 'get', klass: 'Geometry'}],
 'Index Switch'       :          [{f: 'MANUAL'}],
-'Instance Bounds'    :          [{}],
+'Instance Bounds'    :          [{f: 'PROP', ret: 'NODE'}],
 'Active Camera'      :          [{f: 'C'}],
 'Collection'         :          [{f: 'INIT'}],
 'Curve Handle Positions' :      [{name: 'handle_positions', is_cm: True, klass: 'Curve'}],
@@ -290,7 +297,7 @@ GEONODES = {
 'Vertex Neighbors'   :          [{f: 'get', klass: 'Mesh', ret: 'NODE'}, {f: 'get_out_loop', klass: 'Vertex', name: 'neighbors', prefix: 'neighbors_'}],
 'Named Attribute'    :          [{f: 'C', name: 'Named'}, {f: 'C', name: 'NamedAttribute'}, ],
 'Named Layer Selection' :       [{klass: 'GreasePencil'}, {name: 'named_selection', klass: 'Layer'}],
-'Normal'             :          [{f: 'PROP'}],
+'Normal'             :          [{f: 'PROP', ret: 'OUT'}], # For ascending compbatibility, the former 'Normal' output socket is returned
 'Object'             :          [{f: 'INIT'}],
 'Position'           :          [{f: 'PROP'}],
 'Radius'             :          [{f: 'PROP'}],
@@ -386,12 +393,12 @@ GEONODES = {
 'Set Point Radius'   :          [{name: 'set_radius', domain: 'POINT'}],
 'Set Position'       :          [{}],
 'Set Shade Smooth'   :          [{}],
-'Set Mesh Normal'    :          [{name: 'set_normal'}], 
+'Set Mesh Normal'    :          [{name: 'set_normal', klass: 'Mesh'}], 
 'Set Spline Cyclic'  :          [{}],
 'Set Spline Resolution' :       [{}],
-'Set Grease Pencil Color' :     [{}],
-'Set Grease Pencil Depth' :     [{}],
-'Set Grease Pencil Softness' :  [{}],
+'Set Grease Pencil Color' :     [{name: 'set_color'}],
+'Set Grease Pencil Depth' :     [{name: 'set_depth'}],
+'Set Grease Pencil Softness' :  [{name: 'set_softness'}],
 'Simulation Input'   :          [{f: 'MANUAL'}],
 'Simulation Output'  :          [{f: 'MANUAL'}],
 'Sort Elements'      :          [{name: 'sort'}],
@@ -594,6 +601,11 @@ GEONODES_PROPS = [
     {name: 'fill_color',   setter: 'Set Grease Pencil Color', 'setter_params': {'mode': 'FILL'}},
     {name: 'depth',        setter: 'Set Grease Pencil Depth'},
     {name: 'softness',     setter: 'Set Grease Pencil Softness'},
+
+    {name: 'normal',       setter: 'Set Mesh Normal', klass: 'Mesh',   'setter_params': {'mode': 'TANGENT_SPACE', 'domain': 'POINT'}},
+    {name: 'normal',       setter: 'Set Mesh Normal', klass: 'Point',  'setter_params': {'mode': 'FREE', 'domain': 'POINT'}},
+    {name: 'normal',       setter: 'Set Mesh Normal', klass: 'Face',   'setter_params': {'mode': 'FREE', 'domain': 'FACE'}},
+    {name: 'normal',       setter: 'Set Mesh Normal', klass: 'Corner', 'setter_params': {'mode': 'FREE', 'domain': 'CORNER'}},
 ]
 
 SHADERNODES = {

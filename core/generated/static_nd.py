@@ -3,7 +3,7 @@ from .. treeclass import Node, ColorRamp, NodeCurves
 from .. treeclass import utils
 from .. scripterror import NodeError
 
-class nd:
+class ND:
     """" Static class
 
     Exposes all nodes as static methods:
@@ -256,18 +256,19 @@ class nd:
         return node._out
 
     @classmethod
-    def format_string(cls, format=None):
+    def format_string(cls, format=None, **items):
         """ > Node <&Node Format String>
 
         Arguments
         ---------
         - format (String) : socket 'Format' (id: Format)
+        - items (String, Integer, Float) : values to use in the format string
 
         Returns
         -------
         - String
         """
-        node = Node('Format String', sockets={'Format': format})
+        node = Node('Format String', sockets={'Format': format}, _items=items)
         return node._out
 
     @classmethod
@@ -303,9 +304,8 @@ class nd:
         node = Node('Boolean', sockets={}, boolean=boolean)
         return node._out
 
-    @classmethod
     @property
-    def color(cls):
+    def color(self):
         """ > Node <&Node Color>
 
         Returns
@@ -330,9 +330,8 @@ class nd:
         node = Node('Integer', sockets={}, integer=integer)
         return node._out
 
-    @classmethod
     @property
-    def rotation(cls):
+    def rotation(self):
         """ > Node <&Node Rotation>
 
         Returns
@@ -368,9 +367,8 @@ class nd:
         node = Node('String', sockets={}, string=string)
         return node._out
 
-    @classmethod
     @property
-    def vector(cls):
+    def vector(self):
         """ > Node <&Node Vector>
 
         Returns
@@ -918,34 +916,6 @@ class nd:
         return node._out
 
     @classmethod
-    @property
-    def closure_input(cls):
-        """ > Node <&Node Closure Input>
-
-        Returns
-        -------
-        - None
-        """
-        node = Node('Closure Input', sockets={})
-        return node._out
-
-    @classmethod
-    def closure_output(cls, active_input_index=0, active_output_index=0):
-        """ > Node <&Node Closure Output>
-
-        Arguments
-        ---------
-        - active_input_index (int): parameter 'active_input_index'
-        - active_output_index (int): parameter 'active_output_index'
-
-        Returns
-        -------
-        - Closure
-        """
-        node = Node('Closure Output', sockets={}, active_input_index=active_input_index, active_output_index=active_output_index)
-        return node._out
-
-    @classmethod
     def collection_info(cls, collection=None, separate_children=None, reset_children=None, transform_space='ORIGINAL'):
         """ > Node <&Node Collection Info>
 
@@ -962,18 +932,6 @@ class nd:
         """
         utils.check_enum_arg('Collection Info', 'transform_space', transform_space, 'collection_info', ('ORIGINAL', 'RELATIVE'))
         node = Node('Collection Info', sockets={'Collection': collection, 'Separate Children': separate_children, 'Reset Children': reset_children}, transform_space=transform_space)
-        return node._out
-
-    @classmethod
-    @property
-    def combine_bundle(cls):
-        """ > Node <&Node Combine Bundle>
-
-        Returns
-        -------
-        - Bundle
-        """
-        node = Node('Combine Bundle', sockets={})
         return node._out
 
     @classmethod
@@ -1583,23 +1541,6 @@ class nd:
         return node._out
 
     @classmethod
-    def evaluate_closure(cls, closure=None, active_input_index=0, active_output_index=0):
-        """ > Node <&Node Evaluate Closure>
-
-        Arguments
-        ---------
-        - closure (Closure) : socket 'Closure' (id: Closure)
-        - active_input_index (int): parameter 'active_input_index'
-        - active_output_index (int): parameter 'active_output_index'
-
-        Returns
-        -------
-        - None
-        """
-        node = Node('Evaluate Closure', sockets={'Closure': closure}, active_input_index=active_input_index, active_output_index=active_output_index)
-        return node._out
-
-    @classmethod
     def extrude_mesh(cls, mesh=None, selection=None, offset=None, offset_scale=None, individual=None, mode='FACES'):
         """ > Node <&Node Extrude Mesh>
 
@@ -2156,9 +2097,8 @@ class nd:
         node = Node('Index Switch', sockets={'Index': index, 'Item_0': _0, 'Item_1': _1}, data_type=data_type)
         return node._out
 
-    @classmethod
     @property
-    def active_camera(cls):
+    def active_camera(self):
         """ > Node <&Node Active Camera>
 
         Returns
@@ -2198,9 +2138,8 @@ class nd:
         node = Node('Curve Handle Positions', sockets={'Relative': relative})
         return node._out
 
-    @classmethod
     @property
-    def curve_tilt(cls):
+    def curve_tilt(self):
         """ > Node <&Node Curve Tilt>
 
         Returns
@@ -2210,9 +2149,8 @@ class nd:
         node = Node('Curve Tilt', sockets={})
         return node._out
 
-    @classmethod
     @property
-    def is_edge_smooth(cls):
+    def is_edge_smooth(self):
         """ > Node <&Node Is Edge Smooth>
 
         Returns
@@ -2222,9 +2160,8 @@ class nd:
         node = Node('Is Edge Smooth', sockets={})
         return node._out
 
-    @classmethod
     @property
-    def id(cls):
+    def id(self):
         """ > Node <&Node ID>
 
         Returns
@@ -2249,9 +2186,8 @@ class nd:
         node = Node('Image', sockets={}, image=image)
         return node._out
 
-    @classmethod
     @property
-    def index(cls):
+    def index(self):
         """ > Node <&Node Index>
 
         Returns
@@ -2274,11 +2210,10 @@ class nd:
         - Vector [max_ (Vector)]
         """
         node = Node('Instance Bounds', sockets={'Use Radius': use_radius})
-        return node._out
+        return node
 
-    @classmethod
     @property
-    def instance_rotation(cls):
+    def instance_rotation(self):
         """ > Node <&Node Instance Rotation>
 
         Returns
@@ -2288,9 +2223,8 @@ class nd:
         node = Node('Instance Rotation', sockets={})
         return node._out
 
-    @classmethod
     @property
-    def instance_scale(cls):
+    def instance_scale(self):
         """ > Node <&Node Instance Scale>
 
         Returns
@@ -2315,9 +2249,8 @@ class nd:
         node = Node('Material', sockets={}, material=material)
         return node._out
 
-    @classmethod
     @property
-    def material_index(cls):
+    def material_index(self):
         """ > Node <&Node Material Index>
 
         Returns
@@ -2338,9 +2271,8 @@ class nd:
         node = Node('Edge Angle', sockets={})
         return node
 
-    @classmethod
     @property
-    def edge_neighbors(cls):
+    def edge_neighbors(self):
         """ > Node <&Node Edge Neighbors>
 
         Returns
@@ -2361,9 +2293,8 @@ class nd:
         node = Node('Edge Vertices', sockets={})
         return node
 
-    @classmethod
     @property
-    def face_area(cls):
+    def face_area(self):
         """ > Node <&Node Face Area>
 
         Returns
@@ -2453,8 +2384,8 @@ class nd:
         node = Node('Named Layer Selection', sockets={'Name': name})
         return node._out
 
-    @classmethod
-    def normal(cls):
+    @property
+    def normal(self):
         """ > Node <&Node Normal>
 
         Returns
@@ -2462,7 +2393,7 @@ class nd:
         - Vector [true_normal_ (Vector)]
         """
         node = Node('Normal', sockets={})
-        return node
+        return node._out
 
     @classmethod
     def object(cls, object=None):
@@ -2479,9 +2410,8 @@ class nd:
         node = Node('Object', sockets={}, object=object)
         return node._out
 
-    @classmethod
     @property
-    def position(cls):
+    def position(self):
         """ > Node <&Node Position>
 
         Returns
@@ -2491,9 +2421,8 @@ class nd:
         node = Node('Position', sockets={})
         return node._out
 
-    @classmethod
     @property
-    def radius(cls):
+    def radius(self):
         """ > Node <&Node Radius>
 
         Returns
@@ -2514,9 +2443,8 @@ class nd:
         node = Node('Scene Time', sockets={})
         return node
 
-    @classmethod
     @property
-    def is_face_smooth(cls):
+    def is_face_smooth(self):
         """ > Node <&Node Is Face Smooth>
 
         Returns
@@ -2542,9 +2470,8 @@ class nd:
         node = Node('Shortest Edge Paths', sockets={'End Vertex': end_vertex, 'Edge Cost': edge_cost})
         return node._out
 
-    @classmethod
     @property
-    def is_spline_cyclic(cls):
+    def is_spline_cyclic(self):
         """ > Node <&Node Is Spline Cyclic>
 
         Returns
@@ -2554,9 +2481,8 @@ class nd:
         node = Node('Is Spline Cyclic', sockets={})
         return node._out
 
-    @classmethod
     @property
-    def spline_resolution(cls):
+    def spline_resolution(self):
         """ > Node <&Node Spline Resolution>
 
         Returns
@@ -2566,9 +2492,8 @@ class nd:
         node = Node('Spline Resolution', sockets={})
         return node._out
 
-    @classmethod
     @property
-    def curve_tangent(cls):
+    def curve_tangent(self):
         """ > Node <&Node Curve Tangent>
 
         Returns
@@ -2599,9 +2524,8 @@ class nd:
         node = Node('Instance on Points', sockets={'Points': points, 'Selection': selection, 'Instance': instance, 'Pick Instance': pick_instance, 'Instance Index': instance_index, 'Rotation': rotation, 'Scale': scale})
         return node._out
 
-    @classmethod
     @property
-    def instance_transform(cls):
+    def instance_transform(self):
         """ > Node <&Node Instance Transform>
 
         Returns
@@ -2650,9 +2574,8 @@ class nd:
         node = Node('Interpolate Curves', sockets={'Guide Curves': guide_curves, 'Guide Up': guide_up, 'Guide Group ID': guide_group_id, 'Points': points, 'Point Up': point_up, 'Point Group ID': point_group_id, 'Max Neighbors': max_neighbors})
         return node._out
 
-    @classmethod
     @property
-    def is_viewport(cls):
+    def is_viewport(self):
         """ > Node <&Node Is Viewport>
 
         Returns
@@ -3575,9 +3498,8 @@ class nd:
         node = Node('Scale Instances', sockets={'Instances': instances, 'Selection': selection, 'Scale': scale, 'Center': center, 'Local Space': local_space})
         return node._out
 
-    @classmethod
     @property
-    def self_object(cls):
+    def self_object(self):
         """ > Node <&Node Self Object>
 
         Returns
@@ -3585,21 +3507,6 @@ class nd:
         - Object
         """
         node = Node('Self Object', sockets={})
-        return node._out
-
-    @classmethod
-    def separate_bundle(cls, bundle=None):
-        """ > Node <&Node Separate Bundle>
-
-        Arguments
-        ---------
-        - bundle (Bundle) : socket 'Bundle' (id: Bundle)
-
-        Returns
-        -------
-        - None
-        """
-        node = Node('Separate Bundle', sockets={'Bundle': bundle})
         return node._out
 
     @classmethod
@@ -3956,9 +3863,8 @@ class nd:
         node = Node('Set Spline Resolution', sockets={'Geometry': geometry, 'Selection': selection, 'Resolution': resolution})
         return node._out
 
-    @classmethod
     @property
-    def simulation_input(cls):
+    def simulation_input(self):
         """ > Node <&Node Simulation Input>
 
         Returns
@@ -4561,9 +4467,8 @@ class nd:
         node = Node('Frame', sockets={}, label_size=label_size, shrink=shrink, text=text)
         return node._out
 
-    @classmethod
     @property
-    def group_input(cls):
+    def group_input(self):
         """ > Node <&Node Group Input>
 
         Returns
@@ -5012,9 +4917,8 @@ class nd:
         node = ColorRamp(fac=fac, stops=stops, interpolation=interpolation)
         return node._out
 
-    @classmethod
     @property
-    def value(cls):
+    def value(self):
         """ > Node <&Node Value>
 
         Returns
@@ -5081,4 +4985,11 @@ class nd:
         utils.check_enum_arg('Vector Rotate', 'rotation_type', rotation_type, 'vector_rotate', ('AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ'))
         node = Node('Vector Rotate', sockets={'Vector': vector, 'Center': center, 'Axis': axis, 'Angle': angle, 'Rotation': rotation}, invert=invert, rotation_type=rotation_type)
         return node._out
+
+
+
+
+# Create one single instance to access properties
+
+nd = ND()
 

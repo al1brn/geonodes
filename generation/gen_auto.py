@@ -218,7 +218,7 @@ def generate(folder):
 
         # ===== Nodes as static classes
 
-        NodeInfo.gen_static_nodes(gen, tree_type=tree_type, verbose=False)
+        NodeInfo.gen_static_nodes(gen, nodes, tree_type=tree_type, verbose=False)
 
     # ====================================================================================================
     # Loop on the tree types
@@ -247,7 +247,7 @@ def generate(folder):
                 imports.append(f"from . import gnmath")
 
             elif class_name in ['nd', 'snd']:
-                file.write(f"class {class_name}:\n")
+                file.write(f"class {class_name.upper()}:\n")
                 file.write( '    """" Static class\n\n')
                 file.write( "    Exposes all nodes as static methods:\n\n")
                 file.write( "    ``` python\n")
@@ -266,6 +266,11 @@ def generate(folder):
 
             for name, code in funcs.items():
                 file.write(code + "\n")
+
+            if class_name in ['nd', 'snd']:
+                file.write("\n"*3)
+                file.write("# Create one single instance to access properties\n\n")
+                file.write(f"{class_name} = {class_name.upper()}()\n\n")
 
     # Init file
     with open(path / "__init__.py", 'w') as file:

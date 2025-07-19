@@ -34,6 +34,7 @@ import bpy
 from ..core import constants
 from ..core import utils
 from . import blendertree
+from . gen_auto_dicts import NODES_WITH_ITEMS 
 
 
 IGNORE_PARAMS = ['color_ramp', 'paired_output']
@@ -58,6 +59,10 @@ _1, _2, _3, _4 = " "*4, " "*8, " "*12, " "*16
 # Node Param
 
 NEW_PARAM = True
+
+# No static property in static classes
+# Static classes (nd, snd) are replace by instances nd, snd of classes ND et SND
+NO_STATIC_PROP = True
 
 class NodeParam:
     def __init__(self, bnode, name, value, param_type):
@@ -816,6 +821,11 @@ class NodeInfo:
 
     @property
     def has_items(self):
+        for name in dir(self._bnode):
+            if name[-6:] == '_items':
+                return True
+        return False
+
         return 'active_item' in dir(self.bnode)
 
     @property
@@ -993,7 +1003,7 @@ class NodeInfo:
         - 'socket_type'  : socket type
         - 'is_argument'  : is included in the argument list
         - 'is_self'      : is the self socket
-        - 'is_multi'     : is a multi argument
+        - 'multiple'     : 'NO', 'ARGS', 'KWARGS'
         - 'arg_name'     : argument name
         - 'socket_value' : argument value
         - 'comment'      : comment
@@ -1159,6 +1169,7 @@ class NodeInfo:
                     'is_self'     : False,
                     'identifier'  : socket.identifier,
                     'node_value'  : None,
+                    'multiple'    : 'NO',
                     'info'        : f"Socket '{socket_name}' : ignored",
                 })
                 continue
@@ -1166,7 +1177,7 @@ class NodeInfo:
             is_self     = False
             arg_name    = utils.snake_case(socket_name)
             node_value  = None
-            is_multi    = socket.is_multi_input
+            multiple    = 'ARGS' if socket.is_multi_input else 'NO'
             is_argument = True
             comment     = None
             info        = None
@@ -1176,7 +1187,7 @@ class NodeInfo:
             if (self_socket == 'FIRST' or (socket_name == self_socket) or (socket.name == self_socket)) and not ok_self:
                 ok_self = True
                 is_self = True
-                if is_multi:
+                if multiple == 'ARGS':
                     node_value = f"[self] + list({arg_name})"
                     is_argument = True
                 else:
@@ -1201,7 +1212,7 @@ class NodeInfo:
 
                 # Any other socket
                 else:
-                    if is_multi:
+                    if multiple == 'ARGS':
                         node_value = f"list({arg_name})"
                     else:
                         node_value = arg_name
@@ -1215,12 +1226,28 @@ class NodeInfo:
                 'socket_type' : socket.type,
                 'is_argument' : is_argument,
                 'is_self'     : is_self,
-                'is_multi'    : is_multi,
+                'multiple'    : multiple,
                 'arg_name'    : arg_name,
                 'arg_value'   : "None",
                 'node_value'  : node_value,
                 'comment'     : f"{arg_name} ({constants.CLASS_NAMES[socket.type]}) : socket '{socket_name}' (id: {socket.identifier})",
                 'info'        : info,
+            })
+
+        # ----- Sockets with items
+
+        d = NODES_WITH_ITEMS.get(self.bnode.name)
+        if d is not None:
+            arg_name = d.get("name", "Items")
+
+            args.append({
+                'is_socket'   : True,
+                'is_argument' : True,
+                'is_self'     : False,
+                'multiple'    : 'KWARGS',
+                'arg_name'    : arg_name,
+                'comment'     : f"{arg_name} ({d.get('socket_type', 'Sockets')}) : {d.get('comment', 'dynamic socket items')}",
+                'info'        : None,
             })
 
         # ----- Restore the parameters
@@ -1244,10 +1271,16 @@ class NodeInfo:
                 if arg['is_socket'] != is_socket:
                     continue
 
-                if arg['is_socket'] and arg['is_multi']:
+                if arg['is_socket'] and arg['multiple'] == 'ARGS':
                     a.insert(0, f"*{arg['arg_name']}")
-                else:
+
+                elif arg.get('multiple', 'NO') != 'KWARGS':
                     a.append(f"{arg['arg_name']}={arg['arg_value']}")
+
+        for arg in args:
+            if arg['is_socket'] and arg['multiple'] == 'KWARGS':
+                a.append(f"**{arg['arg_name']}")
+        
 
         if method == 'CLASS':
             a.insert(0, "cls")
@@ -1266,7 +1299,11 @@ class NodeInfo:
 
         for arg in args:
             if arg['is_socket']:
-                sockets.append(f"'{arg['identifier']}': {arg['node_value']}")
+                if arg['multiple'] == 'KWARGS':
+                    params.append(f"_items={arg['arg_name']}")
+                else:
+                    sockets.append(f"'{arg['identifier']}': {arg['node_value']}")
+                
             else:
                 params.append(f"{arg['arg_name']}={arg['node_value']}")
 
@@ -1521,9 +1558,9 @@ class NodeInfo:
         return node._out
 
     # -----------------------------------------------------------------------------------------------------------------------------
-    # Standard static codes
+    # Standard static codes (in nd and snd)
 
-    def static_code(self, gen: dict, module: str, name: str | None = None):
+    def static_code(self, gen: dict, module: str, name: str | None = None, ret=None):
         """
         Arguments
         ---------
@@ -1570,17 +1607,36 @@ class NodeInfo:
                 is_prop = False
                 if arg['is_socket']:
                     socks_count += 1
+
         ret_node = (socks_count == 0) and len(self.node_output()) > 1
+        if ret == 'NODE':
+            ret_node = True
+        elif ret == 'OUT':
+            ret_node = False
+
         if ret_node:
             is_prop = False
 
         # ----------------------------------------------------------------------------------------------------
         # Source code
+        #
+        # Old version : property was implemented as static property
+        # New version : static properties are not supported anymre, replace by:
+        # - property
+        # - class est renamed ND (or SND)
+        # - One instance named nd (or snd) is created after class declaration
 
-        s  = f"{_1}@classmethod\n"
-        if is_prop:
-            s += f"{_1}@property\n"
-        signature = self.signature('CLASS', args)
+        if NO_STATIC_PROP:
+            if is_prop:
+                s = f"{_1}@property\n"
+            else:
+                s = f"{_1}@classmethod\n"
+        else:
+            s  = f"{_1}@classmethod\n"
+            if is_prop:
+                s += f"{_1}@property\n"
+
+        signature = self.signature('METHOD' if is_prop else 'CLASS', args)
         s += f"{_1}def {name}{signature}:\n"
         s += self.documentation('STATIC', args, returns='OUT')
 
@@ -1602,7 +1658,7 @@ class NodeInfo:
     # Implement all static methods
 
     @classmethod
-    def gen_static_nodes(cls, gen, tree_type='GeometryNodeTree', verbose=False):
+    def gen_static_nodes(cls, gen, nodes, tree_type='GeometryNodeTree', verbose=False):
 
         module = 'nd' if tree_type == 'GeometryNodeTree' else 'snd'
 
@@ -1610,8 +1666,15 @@ class NodeInfo:
             ok = constants.NODE_NAMES[tree_type].get(node_info.bnode.name) is not None
             if verbose or not ok:
                 print(f"gen_static_nodes: '{node_info.bnode.name}' ({node_info.bnode.bl_idname})", "NOT DECLARED" if not ok else "")
-            if ok:
-                node_info.static_code(gen, module)
+            if not ok:
+                return
+            
+            ret = None
+            for d in nodes.get(node_info.bnode.name, {}):
+                if d.get('func') == 'PROP':
+                    ret = d.get('ret')
+            
+            node_info.static_code(gen, module, ret=ret)
 
         cls.loop(f, gen, tree_type=tree_type)
 
@@ -1798,12 +1861,15 @@ class NodeInfo:
         # - the entry 'domain' is added to spec to specify that the method must be implemented on a domain class
         #
         # The auto loop on domain param can be disabled with 'domain_loop': False
+        #
+        # If class_name is not None, no loop is performed on the domain param
+
 
         # default domain param name is 'domain'
         if domain_param is None and 'domain' in self.enum_params:
             domain_param = 'domain'
 
-        if (domain_value is None) and domain_loop:
+        if (domain_value is None) and domain_loop and class_name is None:
 
             # We have a domain param, we loop on the possible values
             if (domain_param is not None) and (domain_param not in parameters):
@@ -2209,7 +2275,7 @@ class NodeInfo:
         - func : type of implementation
         - func_name : function name, from node name if None
         - param_loop : one implementation per parameter value, using param value as method name
-        - mode_loop : if the node an enum parameter equal to 'mode', performs a param_loop on it
+        - mode_loop : if the node has an enum parameter equal to 'mode', performs a param_loop on it
         - prefix : prefix for method name in parameter loop
         - suffix : suffix for method name in parameter loop
         - operation_param : name of operation parameter for param_loop

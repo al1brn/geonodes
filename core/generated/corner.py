@@ -332,103 +332,6 @@ class Corner(Socket):
         node = Node('Sample Nearest', sockets={'Geometry': self, 'Sample Position': sample_position}, domain='CORNER')
         return node._out
 
-    def set_normal_sharpness(self, remove_custom=None, edge_sharpness=None, face_sharpness=None):
-        """ > Node <&Node Set Mesh Normal>
-
-        > ***Jump*** : Socket refers to node output socket after the call
-
-        Information
-        -----------
-        - Socket 'Mesh' : self
-        - Parameter 'domain' : 'CORNER'
-        - Parameter 'mode' : 'SHARPNESS'
-
-        Arguments
-        ---------
-        - remove_custom (Boolean) : socket 'Remove Custom' (id: Remove Custom)
-        - edge_sharpness (Boolean) : socket 'Edge Sharpness' (id: Edge Sharpness)
-        - face_sharpness (Boolean) : socket 'Face Sharpness' (id: Face Sharpness)
-
-        Returns
-        -------
-        - Mesh
-        """
-        node = Node('Set Mesh Normal', sockets={'Mesh': self, 'Remove Custom': remove_custom, 'Edge Sharpness': edge_sharpness, 'Face Sharpness': face_sharpness}, domain='CORNER', mode='SHARPNESS')
-        self._jump(node._out)
-        return self._domain_to_geometry
-
-    def set_normal_free(self, custom_normal=None):
-        """ > Node <&Node Set Mesh Normal>
-
-        > ***Jump*** : Socket refers to node output socket after the call
-
-        Information
-        -----------
-        - Socket 'Mesh' : self
-        - Parameter 'domain' : 'CORNER'
-        - Parameter 'mode' : 'FREE'
-
-        Arguments
-        ---------
-        - custom_normal (Vector) : socket 'Custom Normal' (id: Custom Normal)
-
-        Returns
-        -------
-        - Mesh
-        """
-        node = Node('Set Mesh Normal', sockets={'Mesh': self, 'Custom Normal': custom_normal}, domain='CORNER', mode='FREE')
-        self._jump(node._out)
-        return self._domain_to_geometry
-
-    def set_normal_tangent_space(self, custom_normal=None):
-        """ > Node <&Node Set Mesh Normal>
-
-        > ***Jump*** : Socket refers to node output socket after the call
-
-        Information
-        -----------
-        - Socket 'Mesh' : self
-        - Parameter 'domain' : 'CORNER'
-        - Parameter 'mode' : 'TANGENT_SPACE'
-
-        Arguments
-        ---------
-        - custom_normal (Vector) : socket 'Custom Normal' (id: Custom Normal)
-
-        Returns
-        -------
-        - Mesh
-        """
-        node = Node('Set Mesh Normal', sockets={'Mesh': self, 'Custom Normal': custom_normal}, domain='CORNER', mode='TANGENT_SPACE')
-        self._jump(node._out)
-        return self._domain_to_geometry
-
-    def set_normal(self, remove_custom=None, edge_sharpness=None, face_sharpness=None, mode='SHARPNESS'):
-        """ > Node <&Node Set Mesh Normal>
-
-        > ***Jump*** : Socket refers to node output socket after the call
-
-        Information
-        -----------
-        - Socket 'Mesh' : self
-        - Parameter 'domain' : 'CORNER'
-
-        Arguments
-        ---------
-        - remove_custom (Boolean) : socket 'Remove Custom' (id: Remove Custom)
-        - edge_sharpness (Boolean) : socket 'Edge Sharpness' (id: Edge Sharpness)
-        - face_sharpness (Boolean) : socket 'Face Sharpness' (id: Face Sharpness)
-        - mode (str): parameter 'mode' in ['SHARPNESS', 'FREE', 'TANGENT_SPACE']
-
-        Returns
-        -------
-        - Mesh
-        """
-        utils.check_enum_arg('Set Mesh Normal', 'mode', mode, 'set_normal', ('SHARPNESS', 'FREE', 'TANGENT_SPACE'))
-        node = Node('Set Mesh Normal', sockets={'Mesh': self, 'Remove Custom': remove_custom, 'Edge Sharpness': edge_sharpness, 'Face Sharpness': face_sharpness}, domain='CORNER', mode=mode)
-        self._jump(node._out)
-        return self._domain_to_geometry
-
     def store_named_attribute(self, name=None, value=None):
         """ > Node <&Node Store Named Attribute>
 
@@ -583,4 +486,34 @@ class Corner(Socket):
         data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Corner.viewer', 'value')
         node = Node('Viewer', sockets={'Geometry': self, 'Value': value}, data_type=data_type, domain='CORNER', ui_shortcut=ui_shortcut)
         return
+
+    @property
+    def normal(self):
+        """ Write only property for node <Node Set Mesh Normal>
+        """
+        raise NodeError('Property Corner.normal is write only.')
+
+    @normal.setter
+    def normal(self, custom_normal=None):
+        """ > Node <&Node Set Mesh Normal>
+
+        > ***Jump*** : Socket refers to node output socket after the call
+
+        Information
+        -----------
+        - Socket 'Mesh' : self
+        - Parameter 'domain' : 'CORNER'
+        - Parameter 'mode' : 'FREE'
+
+        Arguments
+        ---------
+        - custom_normal (Vector) : socket 'Custom Normal' (id: Custom Normal)
+
+        Returns
+        -------
+        - Mesh
+        """
+        node = Node('Set Mesh Normal', sockets={'Mesh': self, 'Custom Normal': custom_normal}, domain='CORNER', mode='FREE')
+        self._jump(node._out)
+        return self._domain_to_geometry
 

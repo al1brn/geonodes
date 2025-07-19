@@ -16,10 +16,10 @@ class Object(Socket):
 
         Returns
         -------
-        - Matrix [focal_length_ (Float), sensor_ (Vector), shift_ (Vector), clip_start_ (Float), clip_end_ (Float), focus_distance_ (Float), is_orthographic_ (Boolean), orthographic_scale_ (Float)]
+        - node [projection_matrix (Matrix), focal_length (Float), sensor (Vector), shift (Vector), clip_start (Float), clip_end (Float), focus_distance (Float), is_orthographic (Boolean), orthographic_scale (Float)]
         """
         node = Node('Camera Info', sockets={'Camera': self})
-        return node._out
+        return node
 
     @classmethod
     def ActiveCamera(cls):

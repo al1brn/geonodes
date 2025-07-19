@@ -3,7 +3,7 @@ from .. treeclass import Node, ColorRamp, NodeCurves
 from .. treeclass import utils
 from .. scripterror import NodeError
 
-class snd:
+class SND:
     """" Static class
 
     Exposes all nodes as static methods:
@@ -30,9 +30,8 @@ class snd:
         node = Node('Frame', sockets={}, label_size=label_size, shrink=shrink, text=text)
         return node._out
 
-    @classmethod
     @property
-    def group_input(cls):
+    def group_input(self):
         """ > Node <&ShaderNode Group Input>
 
         Returns
@@ -1113,9 +1112,8 @@ class snd:
         node = Node('Point Info', sockets={})
         return node
 
-    @classmethod
     @property
-    def rgb(cls):
+    def rgb(self):
         """ > Node <&ShaderNode RGB>
 
         Returns
@@ -1663,9 +1661,8 @@ class snd:
         node = ColorRamp(fac=fac, stops=stops, interpolation=interpolation)
         return node._out
 
-    @classmethod
     @property
-    def value(cls):
+    def value(self):
         """ > Node <&ShaderNode Value>
 
         Returns
@@ -1922,4 +1919,11 @@ class snd:
         """
         node = Node('Wireframe', sockets={'Size': size}, use_pixel_size=use_pixel_size)
         return node._out
+
+
+
+
+# Create one single instance to access properties
+
+snd = SND()
 

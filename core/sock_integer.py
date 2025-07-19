@@ -403,7 +403,7 @@ class Integer(generated.Integer):
 
 
     def __xor__(self, other):
-        return selfbw_xor(other)
+        return self.bw_xor(other)
     
     def __rxor__(self, other):
         return Integer(other).bw_xor(self)

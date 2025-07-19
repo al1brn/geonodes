@@ -460,103 +460,6 @@ class Point(Socket):
         self._jump(node._out)
         return self._domain_to_geometry
 
-    def set_normal_sharpness(self, remove_custom=None, edge_sharpness=None, face_sharpness=None):
-        """ > Node <&Node Set Mesh Normal>
-
-        > ***Jump*** : Socket refers to node output socket after the call
-
-        Information
-        -----------
-        - Socket 'Mesh' : self
-        - Parameter 'domain' : 'POINT'
-        - Parameter 'mode' : 'SHARPNESS'
-
-        Arguments
-        ---------
-        - remove_custom (Boolean) : socket 'Remove Custom' (id: Remove Custom)
-        - edge_sharpness (Boolean) : socket 'Edge Sharpness' (id: Edge Sharpness)
-        - face_sharpness (Boolean) : socket 'Face Sharpness' (id: Face Sharpness)
-
-        Returns
-        -------
-        - Mesh
-        """
-        node = Node('Set Mesh Normal', sockets={'Mesh': self, 'Remove Custom': remove_custom, 'Edge Sharpness': edge_sharpness, 'Face Sharpness': face_sharpness}, domain='POINT', mode='SHARPNESS')
-        self._jump(node._out)
-        return self._domain_to_geometry
-
-    def set_normal_free(self, custom_normal=None):
-        """ > Node <&Node Set Mesh Normal>
-
-        > ***Jump*** : Socket refers to node output socket after the call
-
-        Information
-        -----------
-        - Socket 'Mesh' : self
-        - Parameter 'domain' : 'POINT'
-        - Parameter 'mode' : 'FREE'
-
-        Arguments
-        ---------
-        - custom_normal (Vector) : socket 'Custom Normal' (id: Custom Normal)
-
-        Returns
-        -------
-        - Mesh
-        """
-        node = Node('Set Mesh Normal', sockets={'Mesh': self, 'Custom Normal': custom_normal}, domain='POINT', mode='FREE')
-        self._jump(node._out)
-        return self._domain_to_geometry
-
-    def set_normal_tangent_space(self, custom_normal=None):
-        """ > Node <&Node Set Mesh Normal>
-
-        > ***Jump*** : Socket refers to node output socket after the call
-
-        Information
-        -----------
-        - Socket 'Mesh' : self
-        - Parameter 'domain' : 'POINT'
-        - Parameter 'mode' : 'TANGENT_SPACE'
-
-        Arguments
-        ---------
-        - custom_normal (Vector) : socket 'Custom Normal' (id: Custom Normal)
-
-        Returns
-        -------
-        - Mesh
-        """
-        node = Node('Set Mesh Normal', sockets={'Mesh': self, 'Custom Normal': custom_normal}, domain='POINT', mode='TANGENT_SPACE')
-        self._jump(node._out)
-        return self._domain_to_geometry
-
-    def set_normal(self, remove_custom=None, edge_sharpness=None, face_sharpness=None, mode='SHARPNESS'):
-        """ > Node <&Node Set Mesh Normal>
-
-        > ***Jump*** : Socket refers to node output socket after the call
-
-        Information
-        -----------
-        - Socket 'Mesh' : self
-        - Parameter 'domain' : 'POINT'
-
-        Arguments
-        ---------
-        - remove_custom (Boolean) : socket 'Remove Custom' (id: Remove Custom)
-        - edge_sharpness (Boolean) : socket 'Edge Sharpness' (id: Edge Sharpness)
-        - face_sharpness (Boolean) : socket 'Face Sharpness' (id: Face Sharpness)
-        - mode (str): parameter 'mode' in ['SHARPNESS', 'FREE', 'TANGENT_SPACE']
-
-        Returns
-        -------
-        - Mesh
-        """
-        utils.check_enum_arg('Set Mesh Normal', 'mode', mode, 'set_normal', ('SHARPNESS', 'FREE', 'TANGENT_SPACE'))
-        node = Node('Set Mesh Normal', sockets={'Mesh': self, 'Remove Custom': remove_custom, 'Edge Sharpness': edge_sharpness, 'Face Sharpness': face_sharpness}, domain='POINT', mode=mode)
-        self._jump(node._out)
-        return self._domain_to_geometry
-
     def sort(self, group_id=None, sort_weight=None):
         """ > Node <&Node Sort Elements>
 
@@ -765,6 +668,36 @@ class Point(Socket):
         - Geometry
         """
         node = Node('Set Position', sockets={'Geometry': self, 'Selection': self._sel, 'Position': None, 'Offset': offset})
+        self._jump(node._out)
+        return self._domain_to_geometry
+
+    @property
+    def normal(self):
+        """ Write only property for node <Node Set Mesh Normal>
+        """
+        raise NodeError('Property Point.normal is write only.')
+
+    @normal.setter
+    def normal(self, custom_normal=None):
+        """ > Node <&Node Set Mesh Normal>
+
+        > ***Jump*** : Socket refers to node output socket after the call
+
+        Information
+        -----------
+        - Socket 'Mesh' : self
+        - Parameter 'domain' : 'POINT'
+        - Parameter 'mode' : 'FREE'
+
+        Arguments
+        ---------
+        - custom_normal (Vector) : socket 'Custom Normal' (id: Custom Normal)
+
+        Returns
+        -------
+        - Mesh
+        """
+        node = Node('Set Mesh Normal', sockets={'Mesh': self, 'Custom Normal': custom_normal}, domain='POINT', mode='FREE')
         self._jump(node._out)
         return self._domain_to_geometry
 

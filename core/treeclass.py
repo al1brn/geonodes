@@ -1400,6 +1400,11 @@ class Node:
 
     @property
     def _has_items(self):
+        for name in dir(self._bnode):
+            if name[-6:] == '_items':
+                return True
+        return False
+        
         return 'active_item' in dir(self._bnode)
 
     @property
