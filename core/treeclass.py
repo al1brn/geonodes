@@ -1173,7 +1173,7 @@ class Tree:
     @staticmethod
     def get_data_socket_class(socket_type):
 
-        from geonodes.core import Boolean, Integer, Float, Vector, Rotation, Matrix, Color, Geometry, Material, Image, Object, Collection, String, Menu
+        from . import Boolean, Integer, Float, Vector, Rotation, Matrix, Color, Geometry, Material, Image, Object, Collection, String, Menu
 
         socket_class = {'BOOLEAN': Boolean, 'INT': Integer, 'VALUE': Float, 'VECTOR': Vector, 'ROTATION': Rotation, 'MATRIX': Matrix, 'RGBA': Color,
             'STRING': String, 'MENU': Menu,
@@ -1562,8 +1562,8 @@ class Node:
         else:
             class_name = constants.CLASS_NAMES[socket_type]
 
-        exec(f"from geonodes import {class_name}", locals(), globals())
-        return eval(f"{class_name}(bsocket)", locals(), globals())
+        mod = __import__('', globals(), locals(), [class_name], 2)
+        return getattr(mod, class_name)(bsocket)
 
     # ----------------------------------------------------------------------------------------------------
     # Set the node parameters

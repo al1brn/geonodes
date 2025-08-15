@@ -225,7 +225,7 @@ class Integer(generated.Integer):
     # ----- Addition
 
     def __add__(self, other):
-        from geonodes import gnmath
+        from . import gnmath
         if utils.is_vector_like(other):
             return gnmath.vadd(self, other)
         elif utils.is_int_like(other):
@@ -234,7 +234,7 @@ class Integer(generated.Integer):
             return gnmath.add(self, other)
 
     def __radd__(self, other):
-        from geonodes import gnmath
+        from . import gnmath
         if utils.is_vector_like(other):
             return gnmath.vadd(other, self)
         elif utils.is_int_like(other):
@@ -248,7 +248,7 @@ class Integer(generated.Integer):
     # ----- Subtraction
 
     def __sub__(self, other):
-        from geonodes import gnmath
+        from . import gnmath
         if utils.is_vector_like(other):
             return gnmath.vsubtract(self, other)
         elif utils.is_int_like(other):
@@ -257,7 +257,7 @@ class Integer(generated.Integer):
             return gnmath.subtract(self, other)
 
     def __rsub__(self, other):
-        from geonodes import gnmath
+        from . import gnmath
         if utils.is_vector_like(other):
             return gnmath.vsubtract(other, self)
         elif utils.is_int_like(other):
@@ -271,7 +271,7 @@ class Integer(generated.Integer):
     # ----- Multiplication
 
     def __mul__(self, other):
-        from geonodes import gnmath
+        from . import gnmath
         if utils.is_vector_like(other):
             return gnmath.scale(other, self)
         elif utils.is_int_like(other):
@@ -280,7 +280,7 @@ class Integer(generated.Integer):
             return gnmath.multiply(self, other)
 
     def __rmul__(self, other):
-        from geonodes import gnmath
+        from . import gnmath
         if utils.is_vector_like(other):
             return gnmath.scale(other, self)
         elif utils.is_int_like(other):
@@ -316,14 +316,14 @@ class Integer(generated.Integer):
     # ----- Power
 
     def __pow__(self, other):
-        from geonodes import gnmath
+        from . import gnmath
         if utils.is_int_like(other):
             return self.power(other)
         else:
             return gnmath.power(self, other)
 
     def __rpow__(self, other):
-        from geonodes import gnmath
+        from . import gnmath
         if utils.is_int_like(other):
             return Integer(other).power(self)
         else:
@@ -335,15 +335,15 @@ class Integer(generated.Integer):
     # ----- Division
 
     def __truediv__(self, other):
-        from geonodes import Float
+        from . import Float
         return Float(self)/other
 
     def __rtruediv__(self, other):
-        from geonodes import Float
+        from . import Float
         return other/Float(self)
 
     def __itruediv__(self, other):
-        from geonodes import Float
+        from . import Float
         return Integer(Float(self)/other)
 
     # =============================================================================================================================

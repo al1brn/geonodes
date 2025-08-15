@@ -404,7 +404,7 @@ class Socket(NodeCache, PropLocker):
             return socket_class[socket_type]
 
         elif Tree.is_shader:
-            from geonodes import Float, Vector, Color, String, Shader
+            from . import Float, Vector, Color, String, Shader
 
             socket_class = {
                 'VALUE': Float, 'VECTOR': Vector, 'RGBA': Color,
@@ -1035,11 +1035,11 @@ class Socket(NodeCache, PropLocker):
     @classmethod
     def _run_tests(cls):
 
-        from geonodes import GeoNodes
+        from . import GeoNodes
 
         import inspect
         import re
-        from geonodes.core import constants
+        from . import constants
 
         tree = None
 

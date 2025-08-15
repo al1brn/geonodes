@@ -134,7 +134,7 @@ class Zone:
     TEMP_ZONE    = True
 
     def init_layout(self):
-        from geonodes import Layout
+        from . import Layout
         if Zone.TEMP_ZONE:
             self._layout = Layout("$TEMP_ZONE")
         else:

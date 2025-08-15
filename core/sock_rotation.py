@@ -87,7 +87,7 @@ class Rotation(generated.Rotation):
         - hide_in_modifier (bool = False) : Hide in Modifier option
         - single_value (bool = False) : Single Value option
         """
-        from geonodes import Vector
+        from . import Vector
 
         if isinstance(value, str):
             value = type(self).Named(value)

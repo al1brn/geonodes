@@ -1448,7 +1448,7 @@ class NodeDumpOperator(bpy.types.Operator):
 
     def execute(self, context):
 
-        from geonodes.generation.node_explore import NodeInfo
+        from ..generation.node_explore import NodeInfo
 
         space = context.space_data
         tree = space.edit_tree
