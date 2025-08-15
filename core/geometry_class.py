@@ -85,7 +85,7 @@ class GeoBase:
     @property
     def _sel(self):
 
-        from geonodes import nd
+        from . import nd
 
         selection = self._raw_sel
 

@@ -164,7 +164,7 @@ class Domain(GeoBase, NodeCache, PropLocker):
 
     def __call__(self, value, index=None):
 
-        from geonodes import nd
+        from . import nd
 
         if index is None:
             index = nd.index
@@ -200,7 +200,7 @@ class Domain(GeoBase, NodeCache, PropLocker):
         - ForEachElement zone
         """
 
-        from geonodes import ForEachElement
+        from . import ForEachElement
 
         return ForEachElement(geometry=self._geo, selection=self._sel, domain=self.DOMAIN_NAME, sockets=sockets, **kwargs)
 

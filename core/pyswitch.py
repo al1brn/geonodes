@@ -40,7 +40,7 @@ class IfElse:
     """ Root class for If, Else and Elif
     """
     def __enter__(self):
-        from geonodes import Layout
+        from . import Layout
         self.layout = Layout(self.layout_name)
         return self.socket
 
@@ -189,7 +189,7 @@ class If(IfElse):
         - tip (str = "") : user tip (used in menu creation and in Layout names)
         """
 
-        from geonodes import Node
+        from . import Node
 
         self.socket_class = socket_class
         self.selector     = selector
@@ -243,7 +243,7 @@ class If(IfElse):
         - socket (Socket) : socket to plug in the current option
         """
 
-        from geonodes import Tree
+        from . import Tree
 
         if self.node_name == "Switch":
 
