@@ -29,6 +29,7 @@ updates
 - creation : 2025/02/22
 """
 
+from typing import Literal
 from pathlib import Path
 
 import bpy
@@ -63,3 +64,116 @@ def get_font(name: str|VectorFont, path: str|None = None) -> VectorFont | None:
         font.name = name
 
     return font
+
+# ====================================================================================================
+# Editor context
+# ====================================================================================================
+
+def find_node_editor(tree=None):
+
+    for window in bpy.context.window_manager.windows:
+        screen = window.screen
+        for area in screen.areas:
+            if area.type != 'NODE_EDITOR':
+                continue
+
+            if (tree is not None) and (area.ui_type != tree.bl_idname):
+                continue
+
+            space = area.spaces.active
+
+            region = next((r for r in area.regions if r.type == 'WINDOW'), None)
+            if region is None:
+                continue
+
+            if tree is not None:
+                space.node_tree = tree
+
+            print("Blender Find Editor", window, screen, area, region, space, space.node_tree)
+
+            return {
+                "window"    : window,
+                "screen"    : screen,
+                "area"      : area,
+                "region"    : region,
+                "space_data": space,
+            }
+
+    return None
+
+def node_editor_context(tree=None):
+    return bpy.context.temp_override(**find_node_editor(tree))
+
+# ====================================================================================================
+# Get the list of modifiers using geometry nodes tree
+
+def get_geonodes_modifiers(tree):
+
+    if tree.bl_idname != 'GeometryNodeTree':
+        return []
+    
+    modifiers = []
+    for obj in bpy.data.objects:
+        for mod in obj.modifiers:
+            if not isinstance(mod, bpy.types.NodesModifier) or (mod.node_group != tree):
+                continue
+
+            modifiers.append(mod)
+
+    return modifiers
+
+# ====================================================================================================
+# Resource paths
+# ====================================================================================================
+
+def get_resource_path(name: Literal['DATAFILES', 'SCRIPTS', 'EXTENSIONS', 'PYTHON']='DATAFILES') -> Path:
+    path = Path(bpy.utils.system_resource(name))
+    assert path.is_dir(), f"Path {name}: '{path}' is not a dir"
+    return path
+
+def get_nodes_path(name: str):
+    path = get_resource_path('DATAFILES') / "assets/nodes"
+    assert path.is_dir(), f"Path '{path}' is not a dir."
+
+    fname = path / name
+    assert fname.exists(), f"File {fname} doesn't exist in {path}."
+
+    return fname
+
+def load_builtin_node_group(file_name: str, group_name: str = None):
+
+    get_list = group_name is None
+
+    if not get_list and group_name in bpy.data.node_groups:
+        return bpy.data.node_groups[group_name]
+    
+    file_path = get_nodes_path(file_name)
+
+    with bpy.data.libraries.load(str(file_path)) as (data_from, data_to):
+
+        if get_list:
+            return list(data_from.node_groups)
+
+        if group_name not in data_from.node_groups:
+            return None
+
+        data_to.node_groups = [group_name]
+
+    return bpy.data.node_groups[group_name]
+
+def load_node_group(spec: dict):
+
+    if spec is None or not len(spec):
+        return None
+
+    name = spec['name']
+    group = spec.get('group')
+
+    if group is None and spec['source'] == 'node_groups':
+        group = bpy.data.node_groups.get(name)
+
+    if group is None and spec['source'] == 'built_in':
+        group = load_builtin_node_group(spec['file_name'], spec['name'])
+
+    return group
+

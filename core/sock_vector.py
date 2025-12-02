@@ -44,10 +44,12 @@ __blender_version__ = "4.3.0"
 
 from sys import version
 import numpy as np
+from typing import Literal
 
 import bpy
 from . import utils
-from .treeclass import Tree, Node, NodeCurves
+from .treeclass import Tree
+from .nodeclass import Node, NodeCurves
 from .socket_class import Socket
 from . import generated
 
@@ -56,8 +58,23 @@ class Vector(generated.Vector):
 
     SOCKET_TYPE = 'VECTOR'
 
-    def __init__(self, value = (0, 0, 0), name = None, tip = None, panel="", subtype = 'NONE',
-        default_attribute="", default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False):
+    def __init__(self, 
+        value: Socket | tuple = (0, 0, 0), 
+        name: str = None, 
+        min: float = -3.40282e+38,
+        max: float = 3.40282e+38,
+        tip: str = '',
+        panel: str = "",
+        optional_label: bool = False,
+        hide_value: bool = False,
+        hide_in_modifier: bool = False,
+        dimensions: int = 3,
+        default: tuple = (0.0, 0.0, 0.0),
+        default_attribute: str = '',
+        default_input: Literal['VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT'] = 'VALUE',
+        shape: Literal['AUTO', 'SINGLE'] = 'AUTO',
+        subtype: str = 'NONE',
+        ):
         """ > Socket of type VECTOR
 
         If **value** argument is None:
@@ -80,15 +97,19 @@ class Vector(generated.Vector):
         ---------
         - value (tuple of floats or Sockets) : initial value
         - name (str = None) : Create an Group Input socket with the provided str if not None
-        - tip (str = None) : User tip (for Group Input sockets)
-        - panel (str = None) : panel name (overrides tree pane if exists)
-        - subtype (str in ('NONE', 'TRANSLATION', 'DIRECTION', 'VELOCITY',
-          'ACCELERATION', 'EULER', 'XYZ') = 'NONE') : sub type for group input
-        - default_attribute (str = "") : default attribute name
-        - default_input (str in ('VALUE', 'NORMAL', 'POSITION') = 'VALUE') : default input
-        - hide_value (bool = False) : Hide Value option
-        - hide_in_modifier (bool = False) : Hide in Modifier option
-        - single_value (bool = False) : Single Value option
+        - min  (float = -3.40282e+38) : Property min_value
+        - max  (float = 3.40282e+38) : Property max_value
+        - tip  (str = '') : Property description
+        - panel (str = "") : Panel name
+        - optional_label  (bool = False) : Property optional_label
+        - hide_value  (bool = False) : Property hide_value
+        - hide_in_modifier  (bool = False) : Property hide_in_modifier
+        - dimensions  (int = 3) : Property dimensions
+        - default  (tuple = (0.0, 0.0, 0.0)) : Property default_value
+        - default_attribute  (str = '') : Property default_attribute_name
+        - default_input  (str = 'VALUE') : Property default_input in ('VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT')
+        - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
+        - subtype (str = 'NONE') : Socket sub type in ('NONE', 'PERCENTAGE', 'FACTOR', 'TRANSLATION', 'DIRECTION', 'VELOCITY', 'ACCELERATION', 'EULER', 'XYZ')
 
         """
         if isinstance(value, str):
@@ -98,20 +119,16 @@ class Vector(generated.Vector):
         if bsock is None:
             if name is None:
                 a = utils.value_to_array(value, (3,))
-                if utils.has_bsocket(a) or Tree.is_shader:
+                if utils.has_bsocket(a) or Tree.is_shader():
                     bsock = Node('Combine XYZ', {0: a[0], 1: a[1], 2:a[2]})._out
                 else:
                     bsock = Node('Vector', vector=tuple(a))._out
             else:
-                bsock = Tree.new_input('NodeSocketVector', name, value=value, panel=panel,
-                    subtype                 = subtype,
-                    default_attribute_name  = default_attribute,
-                    description             = tip,
-                    default_input           = default_input,
-                    hide_value              = hide_value,
-                    hide_in_modifier        = hide_in_modifier,
-                    force_non_field         = single_value,
-                )
+                def_vec = utils.get_dim_vector(value, dimensions)
+                bsock = self._create_input_socket(value=def_vec, name=name, min=min,
+                    max=max, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value,
+                    hide_in_modifier=hide_in_modifier, dimensions=dimensions, default=default,
+                    default_attribute=default_attribute, default_input=default_input, shape=shape, subtype=subtype)
 
         super().__init__(bsock)
 
@@ -155,7 +172,7 @@ class Vector(generated.Vector):
     # ('NONE', 'TRANSLATION', 'DIRECTION', 'VELOCITY', 'ACCELERATION', 'EULER', 'XYZ')
 
     @classmethod
-    def Translation(cls, value=(0., 0., 0.), name='Translation', tip=None, panel="",
+    def Translation_OLD(cls, value=(0., 0., 0.), name='Translation', tip=None, panel="",
         default_attribute="", default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False):
         """ > Translation Vector group input
 

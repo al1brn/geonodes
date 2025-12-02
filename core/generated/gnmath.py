@@ -1,9 +1,31 @@
-from .. socket_class import Socket
-from .. treeclass import Node, ColorRamp, NodeCurves
-from .. treeclass import utils
-from .. scripterror import NodeError
+# Generated 2025-12-01 20:32:44
 
-def bw_and(a=None, b=None):
+from __future__ import annotations
+from .. socket_class import Socket
+from .. nodeclass import Node, ColorRamp, NodeCurves, MenuNode, IndexSwitchNode
+from .. import utils
+from .. scripterror import NodeError
+from typing import TYPE_CHECKING, Literal, Union, Sequence
+
+if TYPE_CHECKING:
+    class Geometry: ...
+    class Mesh: ...
+    class Curve: ...
+    class Cloud: ...
+    class Instances: ...
+    class Volume: ...
+    class GrasePencil: ...
+    class Boolean: ...
+    class Integer: ...
+    class Float: ...
+    class Vector: ...
+    class Color: ...
+    class Matrix: ...
+    class Rotation: ...
+    class String: ...
+
+
+def bw_and(a: Integer = None, b: Integer = None):
     """ > Node <&Node Bit Math>
 
     Information
@@ -19,10 +41,10 @@ def bw_and(a=None, b=None):
     -------
     - Integer
     """
-    node = Node('Bit Math', sockets={'A': a, 'B': b}, operation='AND')
+    node = Node('Bit Math', {'A': a, 'B': b}, operation='AND')
     return node._out
 
-def bw_or(a=None, b=None):
+def bw_or(a: Integer = None, b: Integer = None):
     """ > Node <&Node Bit Math>
 
     Information
@@ -38,10 +60,10 @@ def bw_or(a=None, b=None):
     -------
     - Integer
     """
-    node = Node('Bit Math', sockets={'A': a, 'B': b}, operation='OR')
+    node = Node('Bit Math', {'A': a, 'B': b}, operation='OR')
     return node._out
 
-def bw_xor(a=None, b=None):
+def bw_xor(a: Integer = None, b: Integer = None):
     """ > Node <&Node Bit Math>
 
     Information
@@ -57,10 +79,10 @@ def bw_xor(a=None, b=None):
     -------
     - Integer
     """
-    node = Node('Bit Math', sockets={'A': a, 'B': b}, operation='XOR')
+    node = Node('Bit Math', {'A': a, 'B': b}, operation='XOR')
     return node._out
 
-def bw_not(a=None):
+def bw_not(a: Integer = None):
     """ > Node <&Node Bit Math>
 
     Information
@@ -75,10 +97,10 @@ def bw_not(a=None):
     -------
     - Integer
     """
-    node = Node('Bit Math', sockets={'A': a}, operation='NOT')
+    node = Node('Bit Math', {'A': a}, operation='NOT')
     return node._out
 
-def bw_shift(a=None, shift=None):
+def bw_shift(a: Integer = None, shift: Integer = None):
     """ > Node <&Node Bit Math>
 
     Information
@@ -94,10 +116,10 @@ def bw_shift(a=None, shift=None):
     -------
     - Integer
     """
-    node = Node('Bit Math', sockets={'A': a, 'Shift': shift}, operation='SHIFT')
+    node = Node('Bit Math', {'A': a, 'Shift': shift}, operation='SHIFT')
     return node._out
 
-def bw_rotate(a=None, shift=None):
+def bw_rotate(a: Integer = None, shift: Integer = None):
     """ > Node <&Node Bit Math>
 
     Information
@@ -113,10 +135,10 @@ def bw_rotate(a=None, shift=None):
     -------
     - Integer
     """
-    node = Node('Bit Math', sockets={'A': a, 'Shift': shift}, operation='ROTATE')
+    node = Node('Bit Math', {'A': a, 'Shift': shift}, operation='ROTATE')
     return node._out
 
-def band(boolean=None, boolean_1=None):
+def band(boolean: Boolean = None, boolean_1: Boolean = None):
     """ > Node <&Node Boolean Math>
 
     Information
@@ -132,10 +154,10 @@ def band(boolean=None, boolean_1=None):
     -------
     - Boolean
     """
-    node = Node('Boolean Math', sockets={'Boolean': boolean, 'Boolean_001': boolean_1}, operation='AND')
+    node = Node('Boolean Math', {'Boolean': boolean, 'Boolean_001': boolean_1}, operation='AND')
     return node._out
 
-def bor(boolean=None, boolean_1=None):
+def bor(boolean: Boolean = None, boolean_1: Boolean = None):
     """ > Node <&Node Boolean Math>
 
     Information
@@ -151,10 +173,10 @@ def bor(boolean=None, boolean_1=None):
     -------
     - Boolean
     """
-    node = Node('Boolean Math', sockets={'Boolean': boolean, 'Boolean_001': boolean_1}, operation='OR')
+    node = Node('Boolean Math', {'Boolean': boolean, 'Boolean_001': boolean_1}, operation='OR')
     return node._out
 
-def bnot(boolean=None):
+def bnot(boolean: Boolean = None):
     """ > Node <&Node Boolean Math>
 
     Information
@@ -169,10 +191,10 @@ def bnot(boolean=None):
     -------
     - Boolean
     """
-    node = Node('Boolean Math', sockets={'Boolean': boolean}, operation='NOT')
+    node = Node('Boolean Math', {'Boolean': boolean}, operation='NOT')
     return node._out
 
-def not_and(boolean=None, boolean_1=None):
+def not_and(boolean: Boolean = None, boolean_1: Boolean = None):
     """ > Node <&Node Boolean Math>
 
     Information
@@ -188,10 +210,10 @@ def not_and(boolean=None, boolean_1=None):
     -------
     - Boolean
     """
-    node = Node('Boolean Math', sockets={'Boolean': boolean, 'Boolean_001': boolean_1}, operation='NAND')
+    node = Node('Boolean Math', {'Boolean': boolean, 'Boolean_001': boolean_1}, operation='NAND')
     return node._out
 
-def nor(boolean=None, boolean_1=None):
+def nor(boolean: Boolean = None, boolean_1: Boolean = None):
     """ > Node <&Node Boolean Math>
 
     Information
@@ -207,10 +229,10 @@ def nor(boolean=None, boolean_1=None):
     -------
     - Boolean
     """
-    node = Node('Boolean Math', sockets={'Boolean': boolean, 'Boolean_001': boolean_1}, operation='NOR')
+    node = Node('Boolean Math', {'Boolean': boolean, 'Boolean_001': boolean_1}, operation='NOR')
     return node._out
 
-def xnor(boolean=None, boolean_1=None):
+def xnor(boolean: Boolean = None, boolean_1: Boolean = None):
     """ > Node <&Node Boolean Math>
 
     Information
@@ -226,10 +248,10 @@ def xnor(boolean=None, boolean_1=None):
     -------
     - Boolean
     """
-    node = Node('Boolean Math', sockets={'Boolean': boolean, 'Boolean_001': boolean_1}, operation='XNOR')
+    node = Node('Boolean Math', {'Boolean': boolean, 'Boolean_001': boolean_1}, operation='XNOR')
     return node._out
 
-def xor(boolean=None, boolean_1=None):
+def xor(boolean: Boolean = None, boolean_1: Boolean = None):
     """ > Node <&Node Boolean Math>
 
     Information
@@ -245,10 +267,10 @@ def xor(boolean=None, boolean_1=None):
     -------
     - Boolean
     """
-    node = Node('Boolean Math', sockets={'Boolean': boolean, 'Boolean_001': boolean_1}, operation='XOR')
+    node = Node('Boolean Math', {'Boolean': boolean, 'Boolean_001': boolean_1}, operation='XOR')
     return node._out
 
-def imply(boolean=None, boolean_1=None):
+def imply(boolean: Boolean = None, boolean_1: Boolean = None):
     """ > Node <&Node Boolean Math>
 
     Information
@@ -264,10 +286,10 @@ def imply(boolean=None, boolean_1=None):
     -------
     - Boolean
     """
-    node = Node('Boolean Math', sockets={'Boolean': boolean, 'Boolean_001': boolean_1}, operation='IMPLY')
+    node = Node('Boolean Math', {'Boolean': boolean, 'Boolean_001': boolean_1}, operation='IMPLY')
     return node._out
 
-def nimply(boolean=None, boolean_1=None):
+def nimply(boolean: Boolean = None, boolean_1: Boolean = None):
     """ > Node <&Node Boolean Math>
 
     Information
@@ -283,10 +305,10 @@ def nimply(boolean=None, boolean_1=None):
     -------
     - Boolean
     """
-    node = Node('Boolean Math', sockets={'Boolean': boolean, 'Boolean_001': boolean_1}, operation='NIMPLY')
+    node = Node('Boolean Math', {'Boolean': boolean, 'Boolean_001': boolean_1}, operation='NIMPLY')
     return node._out
 
-def iadd(value=None, value_1=None):
+def iadd(value: Integer = None, value_1: Integer = None):
     """ > Node <&Node Integer Math>
 
     Information
@@ -302,10 +324,10 @@ def iadd(value=None, value_1=None):
     -------
     - Integer
     """
-    node = Node('Integer Math', sockets={'Value': value, 'Value_001': value_1}, operation='ADD')
+    node = Node('Integer Math', {'Value': value, 'Value_001': value_1}, operation='ADD')
     return node._out
 
-def isubtract(value=None, value_1=None):
+def isubtract(value: Integer = None, value_1: Integer = None):
     """ > Node <&Node Integer Math>
 
     Information
@@ -321,10 +343,10 @@ def isubtract(value=None, value_1=None):
     -------
     - Integer
     """
-    node = Node('Integer Math', sockets={'Value': value, 'Value_001': value_1}, operation='SUBTRACT')
+    node = Node('Integer Math', {'Value': value, 'Value_001': value_1}, operation='SUBTRACT')
     return node._out
 
-def imultiply(value=None, value_1=None):
+def imultiply(value: Integer = None, value_1: Integer = None):
     """ > Node <&Node Integer Math>
 
     Information
@@ -340,10 +362,10 @@ def imultiply(value=None, value_1=None):
     -------
     - Integer
     """
-    node = Node('Integer Math', sockets={'Value': value, 'Value_001': value_1}, operation='MULTIPLY')
+    node = Node('Integer Math', {'Value': value, 'Value_001': value_1}, operation='MULTIPLY')
     return node._out
 
-def idivide(value=None, value_1=None):
+def idivide(value: Integer = None, value_1: Integer = None):
     """ > Node <&Node Integer Math>
 
     Information
@@ -359,10 +381,10 @@ def idivide(value=None, value_1=None):
     -------
     - Integer
     """
-    node = Node('Integer Math', sockets={'Value': value, 'Value_001': value_1}, operation='DIVIDE')
+    node = Node('Integer Math', {'Value': value, 'Value_001': value_1}, operation='DIVIDE')
     return node._out
 
-def imultiply_add(value=None, multiplier=None, addend=None):
+def imultiply_add(value: Integer = None, multiplier: Integer = None, addend: Integer = None):
     """ > Node <&Node Integer Math>
 
     Information
@@ -379,10 +401,10 @@ def imultiply_add(value=None, multiplier=None, addend=None):
     -------
     - Integer
     """
-    node = Node('Integer Math', sockets={'Value': value, 'Value_001': multiplier, 'Value_002': addend}, operation='MULTIPLY_ADD')
+    node = Node('Integer Math', {'Value': value, 'Value_001': multiplier, 'Value_002': addend}, operation='MULTIPLY_ADD')
     return node._out
 
-def iabs(value=None):
+def iabs(value: Integer = None):
     """ > Node <&Node Integer Math>
 
     Information
@@ -397,10 +419,10 @@ def iabs(value=None):
     -------
     - Integer
     """
-    node = Node('Integer Math', sockets={'Value': value}, operation='ABSOLUTE')
+    node = Node('Integer Math', {'Value': value}, operation='ABSOLUTE')
     return node._out
 
-def negate(value=None):
+def negate(value: Integer = None):
     """ > Node <&Node Integer Math>
 
     Information
@@ -415,10 +437,10 @@ def negate(value=None):
     -------
     - Integer
     """
-    node = Node('Integer Math', sockets={'Value': value}, operation='NEGATE')
+    node = Node('Integer Math', {'Value': value}, operation='NEGATE')
     return node._out
 
-def ipower(base=None, exponent=None):
+def ipower(base: Integer = None, exponent: Integer = None):
     """ > Node <&Node Integer Math>
 
     Information
@@ -434,10 +456,10 @@ def ipower(base=None, exponent=None):
     -------
     - Integer
     """
-    node = Node('Integer Math', sockets={'Value': base, 'Value_001': exponent}, operation='POWER')
+    node = Node('Integer Math', {'Value': base, 'Value_001': exponent}, operation='POWER')
     return node._out
 
-def imin(value=None, value_1=None):
+def imin(value: Integer = None, value_1: Integer = None):
     """ > Node <&Node Integer Math>
 
     Information
@@ -453,10 +475,10 @@ def imin(value=None, value_1=None):
     -------
     - Integer
     """
-    node = Node('Integer Math', sockets={'Value': value, 'Value_001': value_1}, operation='MINIMUM')
+    node = Node('Integer Math', {'Value': value, 'Value_001': value_1}, operation='MINIMUM')
     return node._out
 
-def imax(value=None, value_1=None):
+def imax(value: Integer = None, value_1: Integer = None):
     """ > Node <&Node Integer Math>
 
     Information
@@ -472,10 +494,10 @@ def imax(value=None, value_1=None):
     -------
     - Integer
     """
-    node = Node('Integer Math', sockets={'Value': value, 'Value_001': value_1}, operation='MAXIMUM')
+    node = Node('Integer Math', {'Value': value, 'Value_001': value_1}, operation='MAXIMUM')
     return node._out
 
-def isign(value=None):
+def isign(value: Integer = None):
     """ > Node <&Node Integer Math>
 
     Information
@@ -490,10 +512,10 @@ def isign(value=None):
     -------
     - Integer
     """
-    node = Node('Integer Math', sockets={'Value': value}, operation='SIGN')
+    node = Node('Integer Math', {'Value': value}, operation='SIGN')
     return node._out
 
-def divide_round(value=None, value_1=None):
+def divide_round(value: Integer = None, value_1: Integer = None):
     """ > Node <&Node Integer Math>
 
     Information
@@ -509,10 +531,10 @@ def divide_round(value=None, value_1=None):
     -------
     - Integer
     """
-    node = Node('Integer Math', sockets={'Value': value, 'Value_001': value_1}, operation='DIVIDE_ROUND')
+    node = Node('Integer Math', {'Value': value, 'Value_001': value_1}, operation='DIVIDE_ROUND')
     return node._out
 
-def divide_floor(value=None, value_1=None):
+def divide_floor(value: Integer = None, value_1: Integer = None):
     """ > Node <&Node Integer Math>
 
     Information
@@ -528,10 +550,10 @@ def divide_floor(value=None, value_1=None):
     -------
     - Integer
     """
-    node = Node('Integer Math', sockets={'Value': value, 'Value_001': value_1}, operation='DIVIDE_FLOOR')
+    node = Node('Integer Math', {'Value': value, 'Value_001': value_1}, operation='DIVIDE_FLOOR')
     return node._out
 
-def divide_ceil(value=None, value_1=None):
+def divide_ceil(value: Integer = None, value_1: Integer = None):
     """ > Node <&Node Integer Math>
 
     Information
@@ -547,10 +569,10 @@ def divide_ceil(value=None, value_1=None):
     -------
     - Integer
     """
-    node = Node('Integer Math', sockets={'Value': value, 'Value_001': value_1}, operation='DIVIDE_CEIL')
+    node = Node('Integer Math', {'Value': value, 'Value_001': value_1}, operation='DIVIDE_CEIL')
     return node._out
 
-def ifloored_modulo(value=None, value_1=None):
+def ifloored_modulo(value: Integer = None, value_1: Integer = None):
     """ > Node <&Node Integer Math>
 
     Information
@@ -566,10 +588,10 @@ def ifloored_modulo(value=None, value_1=None):
     -------
     - Integer
     """
-    node = Node('Integer Math', sockets={'Value': value, 'Value_001': value_1}, operation='FLOORED_MODULO')
+    node = Node('Integer Math', {'Value': value, 'Value_001': value_1}, operation='FLOORED_MODULO')
     return node._out
 
-def imodulo(value=None, value_1=None):
+def imodulo(value: Integer = None, value_1: Integer = None):
     """ > Node <&Node Integer Math>
 
     Information
@@ -585,10 +607,10 @@ def imodulo(value=None, value_1=None):
     -------
     - Integer
     """
-    node = Node('Integer Math', sockets={'Value': value, 'Value_001': value_1}, operation='MODULO')
+    node = Node('Integer Math', {'Value': value, 'Value_001': value_1}, operation='MODULO')
     return node._out
 
-def gcd(value=None, value_1=None):
+def gcd(value: Integer = None, value_1: Integer = None):
     """ > Node <&Node Integer Math>
 
     Information
@@ -604,10 +626,10 @@ def gcd(value=None, value_1=None):
     -------
     - Integer
     """
-    node = Node('Integer Math', sockets={'Value': value, 'Value_001': value_1}, operation='GCD')
+    node = Node('Integer Math', {'Value': value, 'Value_001': value_1}, operation='GCD')
     return node._out
 
-def lcm(value=None, value_1=None):
+def lcm(value: Integer = None, value_1: Integer = None):
     """ > Node <&Node Integer Math>
 
     Information
@@ -623,67 +645,10 @@ def lcm(value=None, value_1=None):
     -------
     - Integer
     """
-    node = Node('Integer Math', sockets={'Value': value, 'Value_001': value_1}, operation='LCM')
+    node = Node('Integer Math', {'Value': value, 'Value_001': value_1}, operation='LCM')
     return node._out
 
-def starts_with(string=None, key=None):
-    """ > Node <&Node Match String>
-
-    Information
-    -----------
-    - Parameter 'operation' : 'STARTS_WITH'
-
-    Arguments
-    ---------
-    - string (String) : socket 'String' (id: String)
-    - key (String) : socket 'Key' (id: Key)
-
-    Returns
-    -------
-    - Boolean
-    """
-    node = Node('Match String', sockets={'String': string, 'Key': key}, operation='STARTS_WITH')
-    return node._out
-
-def ends_with(string=None, key=None):
-    """ > Node <&Node Match String>
-
-    Information
-    -----------
-    - Parameter 'operation' : 'ENDS_WITH'
-
-    Arguments
-    ---------
-    - string (String) : socket 'String' (id: String)
-    - key (String) : socket 'Key' (id: Key)
-
-    Returns
-    -------
-    - Boolean
-    """
-    node = Node('Match String', sockets={'String': string, 'Key': key}, operation='ENDS_WITH')
-    return node._out
-
-def contains(string=None, key=None):
-    """ > Node <&Node Match String>
-
-    Information
-    -----------
-    - Parameter 'operation' : 'CONTAINS'
-
-    Arguments
-    ---------
-    - string (String) : socket 'String' (id: String)
-    - key (String) : socket 'Key' (id: Key)
-
-    Returns
-    -------
-    - Boolean
-    """
-    node = Node('Match String', sockets={'String': string, 'Key': key}, operation='CONTAINS')
-    return node._out
-
-def add(value=None, value_1=None, use_clamp=False):
+def add(value: Float = None, value_1: Float = None, use_clamp = False):
     """ > Node <&Node Math>
 
     Information
@@ -700,10 +665,10 @@ def add(value=None, value_1=None, use_clamp=False):
     -------
     - Float
     """
-    node = Node('Math', sockets={'Value': value, 'Value_001': value_1}, operation='ADD', use_clamp=use_clamp)
+    node = Node('Math', {'Value': value, 'Value_001': value_1}, operation='ADD', use_clamp=use_clamp)
     return node._out
 
-def subtract(value=None, value_1=None, use_clamp=False):
+def subtract(value: Float = None, value_1: Float = None, use_clamp = False):
     """ > Node <&Node Math>
 
     Information
@@ -720,10 +685,10 @@ def subtract(value=None, value_1=None, use_clamp=False):
     -------
     - Float
     """
-    node = Node('Math', sockets={'Value': value, 'Value_001': value_1}, operation='SUBTRACT', use_clamp=use_clamp)
+    node = Node('Math', {'Value': value, 'Value_001': value_1}, operation='SUBTRACT', use_clamp=use_clamp)
     return node._out
 
-def multiply(value=None, value_1=None, use_clamp=False):
+def multiply(value: Float = None, value_1: Float = None, use_clamp = False):
     """ > Node <&Node Math>
 
     Information
@@ -740,10 +705,10 @@ def multiply(value=None, value_1=None, use_clamp=False):
     -------
     - Float
     """
-    node = Node('Math', sockets={'Value': value, 'Value_001': value_1}, operation='MULTIPLY', use_clamp=use_clamp)
+    node = Node('Math', {'Value': value, 'Value_001': value_1}, operation='MULTIPLY', use_clamp=use_clamp)
     return node._out
 
-def divide(value=None, value_1=None, use_clamp=False):
+def divide(value: Float = None, value_1: Float = None, use_clamp = False):
     """ > Node <&Node Math>
 
     Information
@@ -760,10 +725,13 @@ def divide(value=None, value_1=None, use_clamp=False):
     -------
     - Float
     """
-    node = Node('Math', sockets={'Value': value, 'Value_001': value_1}, operation='DIVIDE', use_clamp=use_clamp)
+    node = Node('Math', {'Value': value, 'Value_001': value_1}, operation='DIVIDE', use_clamp=use_clamp)
     return node._out
 
-def multiply_add(value=None, multiplier=None, addend=None, use_clamp=False):
+def multiply_add(value: Float = None,
+                    multiplier: Float = None,
+                    addend: Float = None,
+                    use_clamp = False):
     """ > Node <&Node Math>
 
     Information
@@ -781,10 +749,10 @@ def multiply_add(value=None, multiplier=None, addend=None, use_clamp=False):
     -------
     - Float
     """
-    node = Node('Math', sockets={'Value': value, 'Value_001': multiplier, 'Value_002': addend}, operation='MULTIPLY_ADD', use_clamp=use_clamp)
+    node = Node('Math', {'Value': value, 'Value_001': multiplier, 'Value_002': addend}, operation='MULTIPLY_ADD', use_clamp=use_clamp)
     return node._out
 
-def power(base=None, exponent=None, use_clamp=False):
+def power(base: Float = None, exponent: Float = None, use_clamp = False):
     """ > Node <&Node Math>
 
     Information
@@ -801,10 +769,10 @@ def power(base=None, exponent=None, use_clamp=False):
     -------
     - Float
     """
-    node = Node('Math', sockets={'Value': base, 'Value_001': exponent}, operation='POWER', use_clamp=use_clamp)
+    node = Node('Math', {'Value': base, 'Value_001': exponent}, operation='POWER', use_clamp=use_clamp)
     return node._out
 
-def log(value=None, base=None, use_clamp=False):
+def log(value: Float = None, base: Float = None, use_clamp = False):
     """ > Node <&Node Math>
 
     Information
@@ -821,10 +789,10 @@ def log(value=None, base=None, use_clamp=False):
     -------
     - Float
     """
-    node = Node('Math', sockets={'Value': value, 'Value_001': base}, operation='LOGARITHM', use_clamp=use_clamp)
+    node = Node('Math', {'Value': value, 'Value_001': base}, operation='LOGARITHM', use_clamp=use_clamp)
     return node._out
 
-def sqrt(value=None, use_clamp=False):
+def sqrt(value: Float = None, use_clamp = False):
     """ > Node <&Node Math>
 
     Information
@@ -840,10 +808,10 @@ def sqrt(value=None, use_clamp=False):
     -------
     - Float
     """
-    node = Node('Math', sockets={'Value': value}, operation='SQRT', use_clamp=use_clamp)
+    node = Node('Math', {'Value': value}, operation='SQRT', use_clamp=use_clamp)
     return node._out
 
-def inverse_sqrt(value=None, use_clamp=False):
+def inverse_sqrt(value: Float = None, use_clamp = False):
     """ > Node <&Node Math>
 
     Information
@@ -859,10 +827,10 @@ def inverse_sqrt(value=None, use_clamp=False):
     -------
     - Float
     """
-    node = Node('Math', sockets={'Value': value}, operation='INVERSE_SQRT', use_clamp=use_clamp)
+    node = Node('Math', {'Value': value}, operation='INVERSE_SQRT', use_clamp=use_clamp)
     return node._out
 
-def abs(value=None, use_clamp=False):
+def abs(value: Float = None, use_clamp = False):
     """ > Node <&Node Math>
 
     Information
@@ -878,10 +846,10 @@ def abs(value=None, use_clamp=False):
     -------
     - Float
     """
-    node = Node('Math', sockets={'Value': value}, operation='ABSOLUTE', use_clamp=use_clamp)
+    node = Node('Math', {'Value': value}, operation='ABSOLUTE', use_clamp=use_clamp)
     return node._out
 
-def exp(value=None, use_clamp=False):
+def exp(value: Float = None, use_clamp = False):
     """ > Node <&Node Math>
 
     Information
@@ -897,10 +865,10 @@ def exp(value=None, use_clamp=False):
     -------
     - Float
     """
-    node = Node('Math', sockets={'Value': value}, operation='EXPONENT', use_clamp=use_clamp)
+    node = Node('Math', {'Value': value}, operation='EXPONENT', use_clamp=use_clamp)
     return node._out
 
-def min(value=None, value_1=None, use_clamp=False):
+def min(value: Float = None, value_1: Float = None, use_clamp = False):
     """ > Node <&Node Math>
 
     Information
@@ -917,10 +885,10 @@ def min(value=None, value_1=None, use_clamp=False):
     -------
     - Float
     """
-    node = Node('Math', sockets={'Value': value, 'Value_001': value_1}, operation='MINIMUM', use_clamp=use_clamp)
+    node = Node('Math', {'Value': value, 'Value_001': value_1}, operation='MINIMUM', use_clamp=use_clamp)
     return node._out
 
-def max(value=None, value_1=None, use_clamp=False):
+def max(value: Float = None, value_1: Float = None, use_clamp = False):
     """ > Node <&Node Math>
 
     Information
@@ -937,10 +905,10 @@ def max(value=None, value_1=None, use_clamp=False):
     -------
     - Float
     """
-    node = Node('Math', sockets={'Value': value, 'Value_001': value_1}, operation='MAXIMUM', use_clamp=use_clamp)
+    node = Node('Math', {'Value': value, 'Value_001': value_1}, operation='MAXIMUM', use_clamp=use_clamp)
     return node._out
 
-def mless_than(value=None, threshold=None, use_clamp=False):
+def mless_than(value: Float = None, threshold: Float = None, use_clamp = False):
     """ > Node <&Node Math>
 
     Information
@@ -957,10 +925,10 @@ def mless_than(value=None, threshold=None, use_clamp=False):
     -------
     - Float
     """
-    node = Node('Math', sockets={'Value': value, 'Value_001': threshold}, operation='LESS_THAN', use_clamp=use_clamp)
+    node = Node('Math', {'Value': value, 'Value_001': threshold}, operation='LESS_THAN', use_clamp=use_clamp)
     return node._out
 
-def mgreater_than(value=None, threshold=None, use_clamp=False):
+def mgreater_than(value: Float = None, threshold: Float = None, use_clamp = False):
     """ > Node <&Node Math>
 
     Information
@@ -977,10 +945,10 @@ def mgreater_than(value=None, threshold=None, use_clamp=False):
     -------
     - Float
     """
-    node = Node('Math', sockets={'Value': value, 'Value_001': threshold}, operation='GREATER_THAN', use_clamp=use_clamp)
+    node = Node('Math', {'Value': value, 'Value_001': threshold}, operation='GREATER_THAN', use_clamp=use_clamp)
     return node._out
 
-def sign(value=None, use_clamp=False):
+def sign(value: Float = None, use_clamp = False):
     """ > Node <&Node Math>
 
     Information
@@ -996,10 +964,13 @@ def sign(value=None, use_clamp=False):
     -------
     - Float
     """
-    node = Node('Math', sockets={'Value': value}, operation='SIGN', use_clamp=use_clamp)
+    node = Node('Math', {'Value': value}, operation='SIGN', use_clamp=use_clamp)
     return node._out
 
-def compare(value=None, value_1=None, epsilon=None, use_clamp=False):
+def compare(value: Float = None,
+                    value_1: Float = None,
+                    epsilon: Float = None,
+                    use_clamp = False):
     """ > Node <&Node Math>
 
     Information
@@ -1017,10 +988,13 @@ def compare(value=None, value_1=None, epsilon=None, use_clamp=False):
     -------
     - Float
     """
-    node = Node('Math', sockets={'Value': value, 'Value_001': value_1, 'Value_002': epsilon}, operation='COMPARE', use_clamp=use_clamp)
+    node = Node('Math', {'Value': value, 'Value_001': value_1, 'Value_002': epsilon}, operation='COMPARE', use_clamp=use_clamp)
     return node._out
 
-def smooth_min(value=None, value_1=None, distance=None, use_clamp=False):
+def smooth_min(value: Float = None,
+                    value_1: Float = None,
+                    distance: Float = None,
+                    use_clamp = False):
     """ > Node <&Node Math>
 
     Information
@@ -1038,10 +1012,13 @@ def smooth_min(value=None, value_1=None, distance=None, use_clamp=False):
     -------
     - Float
     """
-    node = Node('Math', sockets={'Value': value, 'Value_001': value_1, 'Value_002': distance}, operation='SMOOTH_MIN', use_clamp=use_clamp)
+    node = Node('Math', {'Value': value, 'Value_001': value_1, 'Value_002': distance}, operation='SMOOTH_MIN', use_clamp=use_clamp)
     return node._out
 
-def smooth_max(value=None, value_1=None, distance=None, use_clamp=False):
+def smooth_max(value: Float = None,
+                    value_1: Float = None,
+                    distance: Float = None,
+                    use_clamp = False):
     """ > Node <&Node Math>
 
     Information
@@ -1059,10 +1036,10 @@ def smooth_max(value=None, value_1=None, distance=None, use_clamp=False):
     -------
     - Float
     """
-    node = Node('Math', sockets={'Value': value, 'Value_001': value_1, 'Value_002': distance}, operation='SMOOTH_MAX', use_clamp=use_clamp)
+    node = Node('Math', {'Value': value, 'Value_001': value_1, 'Value_002': distance}, operation='SMOOTH_MAX', use_clamp=use_clamp)
     return node._out
 
-def round(value=None, use_clamp=False):
+def round(value: Float = None, use_clamp = False):
     """ > Node <&Node Math>
 
     Information
@@ -1078,10 +1055,10 @@ def round(value=None, use_clamp=False):
     -------
     - Float
     """
-    node = Node('Math', sockets={'Value': value}, operation='ROUND', use_clamp=use_clamp)
+    node = Node('Math', {'Value': value}, operation='ROUND', use_clamp=use_clamp)
     return node._out
 
-def floor(value=None, use_clamp=False):
+def floor(value: Float = None, use_clamp = False):
     """ > Node <&Node Math>
 
     Information
@@ -1097,10 +1074,10 @@ def floor(value=None, use_clamp=False):
     -------
     - Float
     """
-    node = Node('Math', sockets={'Value': value}, operation='FLOOR', use_clamp=use_clamp)
+    node = Node('Math', {'Value': value}, operation='FLOOR', use_clamp=use_clamp)
     return node._out
 
-def ceil(value=None, use_clamp=False):
+def ceil(value: Float = None, use_clamp = False):
     """ > Node <&Node Math>
 
     Information
@@ -1116,10 +1093,10 @@ def ceil(value=None, use_clamp=False):
     -------
     - Float
     """
-    node = Node('Math', sockets={'Value': value}, operation='CEIL', use_clamp=use_clamp)
+    node = Node('Math', {'Value': value}, operation='CEIL', use_clamp=use_clamp)
     return node._out
 
-def trunc(value=None, use_clamp=False):
+def trunc(value: Float = None, use_clamp = False):
     """ > Node <&Node Math>
 
     Information
@@ -1135,10 +1112,10 @@ def trunc(value=None, use_clamp=False):
     -------
     - Float
     """
-    node = Node('Math', sockets={'Value': value}, operation='TRUNC', use_clamp=use_clamp)
+    node = Node('Math', {'Value': value}, operation='TRUNC', use_clamp=use_clamp)
     return node._out
 
-def fract(value=None, use_clamp=False):
+def fract(value: Float = None, use_clamp = False):
     """ > Node <&Node Math>
 
     Information
@@ -1154,10 +1131,10 @@ def fract(value=None, use_clamp=False):
     -------
     - Float
     """
-    node = Node('Math', sockets={'Value': value}, operation='FRACT', use_clamp=use_clamp)
+    node = Node('Math', {'Value': value}, operation='FRACT', use_clamp=use_clamp)
     return node._out
 
-def modulo(value=None, value_1=None, use_clamp=False):
+def modulo(value: Float = None, value_1: Float = None, use_clamp = False):
     """ > Node <&Node Math>
 
     Information
@@ -1174,10 +1151,10 @@ def modulo(value=None, value_1=None, use_clamp=False):
     -------
     - Float
     """
-    node = Node('Math', sockets={'Value': value, 'Value_001': value_1}, operation='MODULO', use_clamp=use_clamp)
+    node = Node('Math', {'Value': value, 'Value_001': value_1}, operation='MODULO', use_clamp=use_clamp)
     return node._out
 
-def floored_modulo(value=None, value_1=None, use_clamp=False):
+def floored_modulo(value: Float = None, value_1: Float = None, use_clamp = False):
     """ > Node <&Node Math>
 
     Information
@@ -1194,10 +1171,10 @@ def floored_modulo(value=None, value_1=None, use_clamp=False):
     -------
     - Float
     """
-    node = Node('Math', sockets={'Value': value, 'Value_001': value_1}, operation='FLOORED_MODULO', use_clamp=use_clamp)
+    node = Node('Math', {'Value': value, 'Value_001': value_1}, operation='FLOORED_MODULO', use_clamp=use_clamp)
     return node._out
 
-def wrap(value=None, max=None, min=None, use_clamp=False):
+def wrap(value: Float = None, max: Float = None, min: Float = None, use_clamp = False):
     """ > Node <&Node Math>
 
     Information
@@ -1215,10 +1192,10 @@ def wrap(value=None, max=None, min=None, use_clamp=False):
     -------
     - Float
     """
-    node = Node('Math', sockets={'Value': value, 'Value_001': max, 'Value_002': min}, operation='WRAP', use_clamp=use_clamp)
+    node = Node('Math', {'Value': value, 'Value_001': max, 'Value_002': min}, operation='WRAP', use_clamp=use_clamp)
     return node._out
 
-def snap(value=None, increment=None, use_clamp=False):
+def snap(value: Float = None, increment: Float = None, use_clamp = False):
     """ > Node <&Node Math>
 
     Information
@@ -1235,10 +1212,10 @@ def snap(value=None, increment=None, use_clamp=False):
     -------
     - Float
     """
-    node = Node('Math', sockets={'Value': value, 'Value_001': increment}, operation='SNAP', use_clamp=use_clamp)
+    node = Node('Math', {'Value': value, 'Value_001': increment}, operation='SNAP', use_clamp=use_clamp)
     return node._out
 
-def pingpong(value=None, scale=None, use_clamp=False):
+def pingpong(value: Float = None, scale: Float = None, use_clamp = False):
     """ > Node <&Node Math>
 
     Information
@@ -1255,10 +1232,10 @@ def pingpong(value=None, scale=None, use_clamp=False):
     -------
     - Float
     """
-    node = Node('Math', sockets={'Value': value, 'Value_001': scale}, operation='PINGPONG', use_clamp=use_clamp)
+    node = Node('Math', {'Value': value, 'Value_001': scale}, operation='PINGPONG', use_clamp=use_clamp)
     return node._out
 
-def sin(value=None, use_clamp=False):
+def sin(value: Float = None, use_clamp = False):
     """ > Node <&Node Math>
 
     Information
@@ -1274,10 +1251,10 @@ def sin(value=None, use_clamp=False):
     -------
     - Float
     """
-    node = Node('Math', sockets={'Value': value}, operation='SINE', use_clamp=use_clamp)
+    node = Node('Math', {'Value': value}, operation='SINE', use_clamp=use_clamp)
     return node._out
 
-def cos(value=None, use_clamp=False):
+def cos(value: Float = None, use_clamp = False):
     """ > Node <&Node Math>
 
     Information
@@ -1293,10 +1270,10 @@ def cos(value=None, use_clamp=False):
     -------
     - Float
     """
-    node = Node('Math', sockets={'Value': value}, operation='COSINE', use_clamp=use_clamp)
+    node = Node('Math', {'Value': value}, operation='COSINE', use_clamp=use_clamp)
     return node._out
 
-def tan(value=None, use_clamp=False):
+def tan(value: Float = None, use_clamp = False):
     """ > Node <&Node Math>
 
     Information
@@ -1312,10 +1289,10 @@ def tan(value=None, use_clamp=False):
     -------
     - Float
     """
-    node = Node('Math', sockets={'Value': value}, operation='TANGENT', use_clamp=use_clamp)
+    node = Node('Math', {'Value': value}, operation='TANGENT', use_clamp=use_clamp)
     return node._out
 
-def asin(value=None, use_clamp=False):
+def asin(value: Float = None, use_clamp = False):
     """ > Node <&Node Math>
 
     Information
@@ -1331,10 +1308,10 @@ def asin(value=None, use_clamp=False):
     -------
     - Float
     """
-    node = Node('Math', sockets={'Value': value}, operation='ARCSINE', use_clamp=use_clamp)
+    node = Node('Math', {'Value': value}, operation='ARCSINE', use_clamp=use_clamp)
     return node._out
 
-def acos(value=None, use_clamp=False):
+def acos(value: Float = None, use_clamp = False):
     """ > Node <&Node Math>
 
     Information
@@ -1350,10 +1327,10 @@ def acos(value=None, use_clamp=False):
     -------
     - Float
     """
-    node = Node('Math', sockets={'Value': value}, operation='ARCCOSINE', use_clamp=use_clamp)
+    node = Node('Math', {'Value': value}, operation='ARCCOSINE', use_clamp=use_clamp)
     return node._out
 
-def arctangent(value=None, use_clamp=False):
+def arctangent(value: Float = None, use_clamp = False):
     """ > Node <&Node Math>
 
     Information
@@ -1369,10 +1346,10 @@ def arctangent(value=None, use_clamp=False):
     -------
     - Float
     """
-    node = Node('Math', sockets={'Value': value}, operation='ARCTANGENT', use_clamp=use_clamp)
+    node = Node('Math', {'Value': value}, operation='ARCTANGENT', use_clamp=use_clamp)
     return node._out
 
-def atan2(value=None, value_1=None, use_clamp=False):
+def atan2(value: Float = None, value_1: Float = None, use_clamp = False):
     """ > Node <&Node Math>
 
     Information
@@ -1389,10 +1366,10 @@ def atan2(value=None, value_1=None, use_clamp=False):
     -------
     - Float
     """
-    node = Node('Math', sockets={'Value': value, 'Value_001': value_1}, operation='ARCTAN2', use_clamp=use_clamp)
+    node = Node('Math', {'Value': value, 'Value_001': value_1}, operation='ARCTAN2', use_clamp=use_clamp)
     return node._out
 
-def sinh(value=None, use_clamp=False):
+def sinh(value: Float = None, use_clamp = False):
     """ > Node <&Node Math>
 
     Information
@@ -1408,10 +1385,10 @@ def sinh(value=None, use_clamp=False):
     -------
     - Float
     """
-    node = Node('Math', sockets={'Value': value}, operation='SINH', use_clamp=use_clamp)
+    node = Node('Math', {'Value': value}, operation='SINH', use_clamp=use_clamp)
     return node._out
 
-def cosh(value=None, use_clamp=False):
+def cosh(value: Float = None, use_clamp = False):
     """ > Node <&Node Math>
 
     Information
@@ -1427,10 +1404,10 @@ def cosh(value=None, use_clamp=False):
     -------
     - Float
     """
-    node = Node('Math', sockets={'Value': value}, operation='COSH', use_clamp=use_clamp)
+    node = Node('Math', {'Value': value}, operation='COSH', use_clamp=use_clamp)
     return node._out
 
-def tanh(value=None, use_clamp=False):
+def tanh(value: Float = None, use_clamp = False):
     """ > Node <&Node Math>
 
     Information
@@ -1446,10 +1423,10 @@ def tanh(value=None, use_clamp=False):
     -------
     - Float
     """
-    node = Node('Math', sockets={'Value': value}, operation='TANH', use_clamp=use_clamp)
+    node = Node('Math', {'Value': value}, operation='TANH', use_clamp=use_clamp)
     return node._out
 
-def radians(degrees=None, use_clamp=False):
+def radians(degrees: Float = None, use_clamp = False):
     """ > Node <&Node Math>
 
     Information
@@ -1465,10 +1442,10 @@ def radians(degrees=None, use_clamp=False):
     -------
     - Float
     """
-    node = Node('Math', sockets={'Value': degrees}, operation='RADIANS', use_clamp=use_clamp)
+    node = Node('Math', {'Value': degrees}, operation='RADIANS', use_clamp=use_clamp)
     return node._out
 
-def degrees(radians=None, use_clamp=False):
+def degrees(radians: Float = None, use_clamp = False):
     """ > Node <&Node Math>
 
     Information
@@ -1484,10 +1461,10 @@ def degrees(radians=None, use_clamp=False):
     -------
     - Float
     """
-    node = Node('Math', sockets={'Value': radians}, operation='DEGREES', use_clamp=use_clamp)
+    node = Node('Math', {'Value': radians}, operation='DEGREES', use_clamp=use_clamp)
     return node._out
 
-def vadd(vector=None, vector_1=None):
+def vadd(vector: Vector = None, vector_1: Vector = None):
     """ > Node <&Node Vector Math>
 
     Information
@@ -1503,10 +1480,10 @@ def vadd(vector=None, vector_1=None):
     -------
     - Vector
     """
-    node = Node('Vector Math', sockets={'Vector': vector, 'Vector_001': vector_1}, operation='ADD')
+    node = Node('Vector Math', {'Vector': vector, 'Vector_001': vector_1}, operation='ADD')
     return node._out
 
-def vsubtract(vector=None, vector_1=None):
+def vsubtract(vector: Vector = None, vector_1: Vector = None):
     """ > Node <&Node Vector Math>
 
     Information
@@ -1522,10 +1499,10 @@ def vsubtract(vector=None, vector_1=None):
     -------
     - Vector
     """
-    node = Node('Vector Math', sockets={'Vector': vector, 'Vector_001': vector_1}, operation='SUBTRACT')
+    node = Node('Vector Math', {'Vector': vector, 'Vector_001': vector_1}, operation='SUBTRACT')
     return node._out
 
-def vmultiply(vector=None, vector_1=None):
+def vmultiply(vector: Vector = None, vector_1: Vector = None):
     """ > Node <&Node Vector Math>
 
     Information
@@ -1541,10 +1518,10 @@ def vmultiply(vector=None, vector_1=None):
     -------
     - Vector
     """
-    node = Node('Vector Math', sockets={'Vector': vector, 'Vector_001': vector_1}, operation='MULTIPLY')
+    node = Node('Vector Math', {'Vector': vector, 'Vector_001': vector_1}, operation='MULTIPLY')
     return node._out
 
-def vdivide(vector=None, vector_1=None):
+def vdivide(vector: Vector = None, vector_1: Vector = None):
     """ > Node <&Node Vector Math>
 
     Information
@@ -1560,10 +1537,10 @@ def vdivide(vector=None, vector_1=None):
     -------
     - Vector
     """
-    node = Node('Vector Math', sockets={'Vector': vector, 'Vector_001': vector_1}, operation='DIVIDE')
+    node = Node('Vector Math', {'Vector': vector, 'Vector_001': vector_1}, operation='DIVIDE')
     return node._out
 
-def vmultiply_add(vector=None, multiplier=None, addend=None):
+def vmultiply_add(vector: Vector = None, multiplier: Vector = None, addend: Vector = None):
     """ > Node <&Node Vector Math>
 
     Information
@@ -1580,10 +1557,10 @@ def vmultiply_add(vector=None, multiplier=None, addend=None):
     -------
     - Vector
     """
-    node = Node('Vector Math', sockets={'Vector': vector, 'Vector_001': multiplier, 'Vector_002': addend}, operation='MULTIPLY_ADD')
+    node = Node('Vector Math', {'Vector': vector, 'Vector_001': multiplier, 'Vector_002': addend}, operation='MULTIPLY_ADD')
     return node._out
 
-def cross(vector=None, vector_1=None):
+def cross(vector: Vector = None, vector_1: Vector = None):
     """ > Node <&Node Vector Math>
 
     Information
@@ -1599,10 +1576,10 @@ def cross(vector=None, vector_1=None):
     -------
     - Vector
     """
-    node = Node('Vector Math', sockets={'Vector': vector, 'Vector_001': vector_1}, operation='CROSS_PRODUCT')
+    node = Node('Vector Math', {'Vector': vector, 'Vector_001': vector_1}, operation='CROSS_PRODUCT')
     return node._out
 
-def project(vector=None, vector_1=None):
+def project(vector: Vector = None, vector_1: Vector = None):
     """ > Node <&Node Vector Math>
 
     Information
@@ -1618,10 +1595,10 @@ def project(vector=None, vector_1=None):
     -------
     - Vector
     """
-    node = Node('Vector Math', sockets={'Vector': vector, 'Vector_001': vector_1}, operation='PROJECT')
+    node = Node('Vector Math', {'Vector': vector, 'Vector_001': vector_1}, operation='PROJECT')
     return node._out
 
-def reflect(vector=None, vector_1=None):
+def reflect(vector: Vector = None, vector_1: Vector = None):
     """ > Node <&Node Vector Math>
 
     Information
@@ -1637,10 +1614,10 @@ def reflect(vector=None, vector_1=None):
     -------
     - Vector
     """
-    node = Node('Vector Math', sockets={'Vector': vector, 'Vector_001': vector_1}, operation='REFLECT')
+    node = Node('Vector Math', {'Vector': vector, 'Vector_001': vector_1}, operation='REFLECT')
     return node._out
 
-def refract(vector=None, vector_1=None, ior=None):
+def refract(vector: Vector = None, vector_1: Vector = None, ior: Float = None):
     """ > Node <&Node Vector Math>
 
     Information
@@ -1657,10 +1634,10 @@ def refract(vector=None, vector_1=None, ior=None):
     -------
     - Vector
     """
-    node = Node('Vector Math', sockets={'Vector': vector, 'Vector_001': vector_1, 'Scale': ior}, operation='REFRACT')
+    node = Node('Vector Math', {'Vector': vector, 'Vector_001': vector_1, 'Scale': ior}, operation='REFRACT')
     return node._out
 
-def faceforward(vector=None, incident=None, reference=None):
+def faceforward(vector: Vector = None, incident: Vector = None, reference: Vector = None):
     """ > Node <&Node Vector Math>
 
     Information
@@ -1677,10 +1654,10 @@ def faceforward(vector=None, incident=None, reference=None):
     -------
     - Vector
     """
-    node = Node('Vector Math', sockets={'Vector': vector, 'Vector_001': incident, 'Vector_002': reference}, operation='FACEFORWARD')
+    node = Node('Vector Math', {'Vector': vector, 'Vector_001': incident, 'Vector_002': reference}, operation='FACEFORWARD')
     return node._out
 
-def dot(vector=None, vector_1=None):
+def dot(vector: Vector = None, vector_1: Vector = None):
     """ > Node <&Node Vector Math>
 
     Information
@@ -1696,10 +1673,10 @@ def dot(vector=None, vector_1=None):
     -------
     - Float
     """
-    node = Node('Vector Math', sockets={'Vector': vector, 'Vector_001': vector_1}, operation='DOT_PRODUCT')
+    node = Node('Vector Math', {'Vector': vector, 'Vector_001': vector_1}, operation='DOT_PRODUCT')
     return node._out
 
-def distance(vector=None, vector_1=None):
+def distance(vector: Vector = None, vector_1: Vector = None):
     """ > Node <&Node Vector Math>
 
     Information
@@ -1715,10 +1692,10 @@ def distance(vector=None, vector_1=None):
     -------
     - Float
     """
-    node = Node('Vector Math', sockets={'Vector': vector, 'Vector_001': vector_1}, operation='DISTANCE')
+    node = Node('Vector Math', {'Vector': vector, 'Vector_001': vector_1}, operation='DISTANCE')
     return node._out
 
-def length(vector=None):
+def length(vector: Vector = None):
     """ > Node <&Node Vector Math>
 
     Information
@@ -1733,10 +1710,10 @@ def length(vector=None):
     -------
     - Float
     """
-    node = Node('Vector Math', sockets={'Vector': vector}, operation='LENGTH')
+    node = Node('Vector Math', {'Vector': vector}, operation='LENGTH')
     return node._out
 
-def scale(vector=None, scale=None):
+def scale(vector: Vector = None, scale: Float = None):
     """ > Node <&Node Vector Math>
 
     Information
@@ -1752,10 +1729,10 @@ def scale(vector=None, scale=None):
     -------
     - Vector
     """
-    node = Node('Vector Math', sockets={'Vector': vector, 'Scale': scale}, operation='SCALE')
+    node = Node('Vector Math', {'Vector': vector, 'Scale': scale}, operation='SCALE')
     return node._out
 
-def normalize(vector=None):
+def normalize(vector: Vector = None):
     """ > Node <&Node Vector Math>
 
     Information
@@ -1770,10 +1747,10 @@ def normalize(vector=None):
     -------
     - Vector
     """
-    node = Node('Vector Math', sockets={'Vector': vector}, operation='NORMALIZE')
+    node = Node('Vector Math', {'Vector': vector}, operation='NORMALIZE')
     return node._out
 
-def vabs(vector=None):
+def vabs(vector: Vector = None):
     """ > Node <&Node Vector Math>
 
     Information
@@ -1788,10 +1765,10 @@ def vabs(vector=None):
     -------
     - Vector
     """
-    node = Node('Vector Math', sockets={'Vector': vector}, operation='ABSOLUTE')
+    node = Node('Vector Math', {'Vector': vector}, operation='ABSOLUTE')
     return node._out
 
-def vpower(base=None, exponent=None):
+def vpower(base: Vector = None, exponent: Vector = None):
     """ > Node <&Node Vector Math>
 
     Information
@@ -1807,10 +1784,10 @@ def vpower(base=None, exponent=None):
     -------
     - Vector
     """
-    node = Node('Vector Math', sockets={'Vector': base, 'Vector_001': exponent}, operation='POWER')
+    node = Node('Vector Math', {'Vector': base, 'Vector_001': exponent}, operation='POWER')
     return node._out
 
-def vsign(vector=None):
+def vsign(vector: Vector = None):
     """ > Node <&Node Vector Math>
 
     Information
@@ -1825,10 +1802,10 @@ def vsign(vector=None):
     -------
     - Vector
     """
-    node = Node('Vector Math', sockets={'Vector': vector}, operation='SIGN')
+    node = Node('Vector Math', {'Vector': vector}, operation='SIGN')
     return node._out
 
-def vmin(vector=None, vector_1=None):
+def vmin(vector: Vector = None, vector_1: Vector = None):
     """ > Node <&Node Vector Math>
 
     Information
@@ -1844,10 +1821,10 @@ def vmin(vector=None, vector_1=None):
     -------
     - Vector
     """
-    node = Node('Vector Math', sockets={'Vector': vector, 'Vector_001': vector_1}, operation='MINIMUM')
+    node = Node('Vector Math', {'Vector': vector, 'Vector_001': vector_1}, operation='MINIMUM')
     return node._out
 
-def vmax(vector=None, vector_1=None):
+def vmax(vector: Vector = None, vector_1: Vector = None):
     """ > Node <&Node Vector Math>
 
     Information
@@ -1863,10 +1840,10 @@ def vmax(vector=None, vector_1=None):
     -------
     - Vector
     """
-    node = Node('Vector Math', sockets={'Vector': vector, 'Vector_001': vector_1}, operation='MAXIMUM')
+    node = Node('Vector Math', {'Vector': vector, 'Vector_001': vector_1}, operation='MAXIMUM')
     return node._out
 
-def vfloor(vector=None):
+def vfloor(vector: Vector = None):
     """ > Node <&Node Vector Math>
 
     Information
@@ -1881,10 +1858,10 @@ def vfloor(vector=None):
     -------
     - Vector
     """
-    node = Node('Vector Math', sockets={'Vector': vector}, operation='FLOOR')
+    node = Node('Vector Math', {'Vector': vector}, operation='FLOOR')
     return node._out
 
-def vceil(vector=None):
+def vceil(vector: Vector = None):
     """ > Node <&Node Vector Math>
 
     Information
@@ -1899,10 +1876,10 @@ def vceil(vector=None):
     -------
     - Vector
     """
-    node = Node('Vector Math', sockets={'Vector': vector}, operation='CEIL')
+    node = Node('Vector Math', {'Vector': vector}, operation='CEIL')
     return node._out
 
-def vfraction(vector=None):
+def vfraction(vector: Vector = None):
     """ > Node <&Node Vector Math>
 
     Information
@@ -1917,10 +1894,10 @@ def vfraction(vector=None):
     -------
     - Vector
     """
-    node = Node('Vector Math', sockets={'Vector': vector}, operation='FRACTION')
+    node = Node('Vector Math', {'Vector': vector}, operation='FRACTION')
     return node._out
 
-def vmodulo(vector=None, vector_1=None):
+def vmodulo(vector: Vector = None, vector_1: Vector = None):
     """ > Node <&Node Vector Math>
 
     Information
@@ -1936,10 +1913,10 @@ def vmodulo(vector=None, vector_1=None):
     -------
     - Vector
     """
-    node = Node('Vector Math', sockets={'Vector': vector, 'Vector_001': vector_1}, operation='MODULO')
+    node = Node('Vector Math', {'Vector': vector, 'Vector_001': vector_1}, operation='MODULO')
     return node._out
 
-def vwrap(vector=None, max=None, min=None):
+def vwrap(vector: Vector = None, max: Vector = None, min: Vector = None):
     """ > Node <&Node Vector Math>
 
     Information
@@ -1956,10 +1933,10 @@ def vwrap(vector=None, max=None, min=None):
     -------
     - Vector
     """
-    node = Node('Vector Math', sockets={'Vector': vector, 'Vector_001': max, 'Vector_002': min}, operation='WRAP')
+    node = Node('Vector Math', {'Vector': vector, 'Vector_001': max, 'Vector_002': min}, operation='WRAP')
     return node._out
 
-def vsnap(vector=None, increment=None):
+def vsnap(vector: Vector = None, increment: Vector = None):
     """ > Node <&Node Vector Math>
 
     Information
@@ -1975,10 +1952,10 @@ def vsnap(vector=None, increment=None):
     -------
     - Vector
     """
-    node = Node('Vector Math', sockets={'Vector': vector, 'Vector_001': increment}, operation='SNAP')
+    node = Node('Vector Math', {'Vector': vector, 'Vector_001': increment}, operation='SNAP')
     return node._out
 
-def vsin(vector=None):
+def vsin(vector: Vector = None):
     """ > Node <&Node Vector Math>
 
     Information
@@ -1993,10 +1970,10 @@ def vsin(vector=None):
     -------
     - Vector
     """
-    node = Node('Vector Math', sockets={'Vector': vector}, operation='SINE')
+    node = Node('Vector Math', {'Vector': vector}, operation='SINE')
     return node._out
 
-def vcos(vector=None):
+def vcos(vector: Vector = None):
     """ > Node <&Node Vector Math>
 
     Information
@@ -2011,10 +1988,10 @@ def vcos(vector=None):
     -------
     - Vector
     """
-    node = Node('Vector Math', sockets={'Vector': vector}, operation='COSINE')
+    node = Node('Vector Math', {'Vector': vector}, operation='COSINE')
     return node._out
 
-def vtan(vector=None):
+def vtan(vector: Vector = None):
     """ > Node <&Node Vector Math>
 
     Information
@@ -2029,6 +2006,6 @@ def vtan(vector=None):
     -------
     - Vector
     """
-    node = Node('Vector Math', sockets={'Vector': vector}, operation='TANGENT')
+    node = Node('Vector Math', {'Vector': vector}, operation='TANGENT')
     return node._out
 

@@ -1,7 +1,29 @@
+# Generated 2025-12-01 20:32:44
+
+from __future__ import annotations
 from .. socket_class import Socket
-from .. treeclass import Node, ColorRamp, NodeCurves
-from .. treeclass import utils
+from .. nodeclass import Node, ColorRamp, NodeCurves, MenuNode, IndexSwitchNode
+from .. import utils
 from .. scripterror import NodeError
+from typing import TYPE_CHECKING, Literal, Union, Sequence
+
+if TYPE_CHECKING:
+    class Geometry: ...
+    class Mesh: ...
+    class Curve: ...
+    class Cloud: ...
+    class Instances: ...
+    class Volume: ...
+    class GrasePencil: ...
+    class Boolean: ...
+    class Integer: ...
+    class Float: ...
+    class Vector: ...
+    class Color: ...
+    class Matrix: ...
+    class Rotation: ...
+    class String: ...
+
 
 class Instances(Socket):
     """"
@@ -19,11 +41,11 @@ class Instances(Socket):
         -------
         - node [instance_count (Integer)]
         """
-        node = self._cache('Domain Size', sockets={'Geometry': self}, component='INSTANCES')
+        node = self._cache('Domain Size', {'Geometry': self}, component='INSTANCES')
         return node
 
     @classmethod
-    def FromGeometry(cls, *geometry):
+    def FromGeometry(cls, *geometry: Geometry):
         """ > Node <&Node Geometry to Instance>
 
         Arguments
@@ -34,11 +56,11 @@ class Instances(Socket):
         -------
         - Instances
         """
-        node = Node('Geometry to Instance', sockets={'Geometry': list(geometry)})
+        node = Node('Geometry to Instance', {'Geometry': list(geometry)})
         return cls(node._out)
 
     @classmethod
-    def ImportOBJ(cls, path=None):
+    def ImportOBJ(cls, path: String = None):
         """ > Node <&Node Import OBJ>
 
         Arguments
@@ -49,7 +71,7 @@ class Instances(Socket):
         -------
         - Instances
         """
-        node = Node('Import OBJ', sockets={'Path': path})
+        node = Node('Import OBJ', {'Path': path})
         return cls(node._out)
 
     @classmethod
@@ -61,7 +83,7 @@ class Instances(Socket):
         -------
         - Rotation
         """
-        node = Node('Instance Rotation', sockets={})
+        node = Node('Instance Rotation', )
         return node._out
 
     @classmethod
@@ -73,10 +95,10 @@ class Instances(Socket):
         -------
         - Vector
         """
-        node = Node('Instance Scale', sockets={})
+        node = Node('Instance Scale', )
         return node._out
 
-    def to_points(self, position=None, radius=None):
+    def to_points(self, position: Vector = None, radius: Float = None):
         """ > Node <&Node Instances to Points>
 
         Information
@@ -93,10 +115,13 @@ class Instances(Socket):
         -------
         - Cloud
         """
-        node = Node('Instances to Points', sockets={'Instances': self, 'Selection': self._sel, 'Position': position, 'Radius': radius})
+        node = Node('Instances to Points', {'Instances': self, 'Selection': self._sel, 'Position': position, 'Radius': radius})
         return node._out
 
-    def rotate(self, rotation=None, pivot_point=None, local_space=None):
+    def rotate(self,
+                    rotation: Rotation = None,
+                    pivot_point: Vector = None,
+                    local_space: Boolean = None):
         """ > Node <&Node Rotate Instances>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -116,11 +141,11 @@ class Instances(Socket):
         -------
         - Instances
         """
-        node = Node('Rotate Instances', sockets={'Instances': self, 'Selection': self._sel, 'Rotation': rotation, 'Pivot Point': pivot_point, 'Local Space': local_space})
+        node = Node('Rotate Instances', {'Instances': self, 'Selection': self._sel, 'Rotation': rotation, 'Pivot Point': pivot_point, 'Local Space': local_space})
         self._jump(node._out)
         return self._domain_to_geometry
 
-    def scale(self, scale=None, center=None, local_space=None):
+    def scale(self, scale: Vector = None, center: Vector = None, local_space: Boolean = None):
         """ > Node <&Node Scale Instances>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -140,11 +165,11 @@ class Instances(Socket):
         -------
         - Instances
         """
-        node = Node('Scale Instances', sockets={'Instances': self, 'Selection': self._sel, 'Scale': scale, 'Center': center, 'Local Space': local_space})
+        node = Node('Scale Instances', {'Instances': self, 'Selection': self._sel, 'Scale': scale, 'Center': center, 'Local Space': local_space})
         self._jump(node._out)
         return self._domain_to_geometry
 
-    def set_transform(self, transform=None):
+    def set_transform(self, transform: Matrix = None):
         """ > Node <&Node Set Instance Transform>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -162,11 +187,11 @@ class Instances(Socket):
         -------
         - Instances
         """
-        node = Node('Set Instance Transform', sockets={'Instances': self, 'Selection': self._sel, 'Transform': transform})
+        node = Node('Set Instance Transform', {'Instances': self, 'Selection': self._sel, 'Transform': transform})
         self._jump(node._out)
         return self._domain_to_geometry
 
-    def translate(self, translation=None, local_space=None):
+    def translate(self, translation: Vector = None, local_space: Boolean = None):
         """ > Node <&Node Translate Instances>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -185,7 +210,7 @@ class Instances(Socket):
         -------
         - Instances
         """
-        node = Node('Translate Instances', sockets={'Instances': self, 'Selection': self._sel, 'Translation': translation, 'Local Space': local_space})
+        node = Node('Translate Instances', {'Instances': self, 'Selection': self._sel, 'Translation': translation, 'Local Space': local_space})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -193,10 +218,10 @@ class Instances(Socket):
     def transform(self):
         """ Property get node <Node Set Instance Transform>
         """
-        return Node('Instance Transform', sockets={})._out
+        return Node('Instance Transform', {})._out
 
     @transform.setter
-    def transform(self, transform=None):
+    def transform(self, transform: Matrix = None):
         """ > Node <&Node Set Instance Transform>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -214,7 +239,7 @@ class Instances(Socket):
         -------
         - Instances
         """
-        node = Node('Set Instance Transform', sockets={'Instances': self, 'Selection': self._sel, 'Transform': transform})
+        node = Node('Set Instance Transform', {'Instances': self, 'Selection': self._sel, 'Transform': transform})
         self._jump(node._out)
         return self._domain_to_geometry
 

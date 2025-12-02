@@ -52,7 +52,7 @@ updates
 import numpy as np
 
 import bpy
-from ..core.treeclass import Node, ColorRamp
+from ..core.nodeclass import Node, ColorRamp
 
 def get_object(obj):
     if obj is None:

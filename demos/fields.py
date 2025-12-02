@@ -251,7 +251,7 @@ def demo():
             )).scale(scale)
             cloud.points.store("Vectors", curl.switch(normalize, curl.scale(1/ds)))
 
-        cloud.remove_names("TEMP *")
+        cloud.remove_named_attribute(name="TEMP *")
 
         cloud.out()
 
@@ -314,7 +314,7 @@ def demo():
             rep.mesh = mesh
 
         mesh = rep.mesh
-        mesh.remove_named_attribute("Delta")
+        mesh.remove_named_attribute(name="Delta")
 
         mesh.out()
 
@@ -375,7 +375,7 @@ def demo():
             mesh_lines.faces._Color = line_color
             mesh_lines.faces.smooth = True
             mesh_lines.corners.store_uv("UV Map", Vector((Float("Uvmap u"), Float("Uvmap v"), 0)))
-            mesh_lines.remove_names("Uvmap*")
+            mesh_lines.remove_named_attribute(name="Uvmap*")
 
         mesh_lines.switch(keep_curves, curve).out()
 
@@ -796,7 +796,7 @@ def demo():
             fields['7 Electric Charges'] = node.e.switch(use_B, node.b)
 
         with Layout("Electric Line"):
-            line = Curve.LinePoints((0, 0, -2), (0, 0, 2)).resample(30)
+            line = Curve.LinePoints((0, 0, -2), (0, 0, 2)).resample(count=30)
             node = Group("Compute Electric Charges", charge_locations=line, charges=1, speed=(0, 0, .8))
             fields['Electric Line'] = node.e.switch(use_B, node.b)
 

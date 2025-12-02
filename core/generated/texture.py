@@ -1,14 +1,50 @@
+# Generated 2025-12-01 20:32:44
+
+from __future__ import annotations
 from .. socket_class import Socket
-from .. treeclass import Node, ColorRamp, NodeCurves
-from .. treeclass import utils
+from .. nodeclass import Node, ColorRamp, NodeCurves, MenuNode, IndexSwitchNode
+from .. import utils
 from .. scripterror import NodeError
+from typing import TYPE_CHECKING, Literal, Union, Sequence
+
+if TYPE_CHECKING:
+    class Geometry: ...
+    class Mesh: ...
+    class Curve: ...
+    class Cloud: ...
+    class Instances: ...
+    class Volume: ...
+    class GrasePencil: ...
+    class Boolean: ...
+    class Integer: ...
+    class Float: ...
+    class Vector: ...
+    class Color: ...
+    class Matrix: ...
+    class Rotation: ...
+    class String: ...
+
 
 class Texture(Socket):
     """"
     $DOC SET hidden
     """
     @classmethod
-    def Brick(cls, vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2):
+    def Brick(cls,
+                    vector: Vector = None,
+                    color1: Color = None,
+                    color2: Color = None,
+                    mortar: Color = None,
+                    scale: Float = None,
+                    mortar_size: Float = None,
+                    mortar_smooth: Float = None,
+                    bias: Float = None,
+                    brick_width: Float = None,
+                    row_height: Float = None,
+                    offset = 0.5,
+                    offset_frequency = 2,
+                    squash = 1.0,
+                    squash_frequency = 2):
         """ > Node <&Node Brick Texture>
 
         Arguments
@@ -30,13 +66,17 @@ class Texture(Socket):
 
         Returns
         -------
-        - Color [fac_ (Float)]
+        - Color [factor_ (Float)]
         """
-        node = Node('Brick Texture', sockets={'Vector': vector, 'Color1': color1, 'Color2': color2, 'Mortar': mortar, 'Scale': scale, 'Mortar Size': mortar_size, 'Mortar Smooth': mortar_smooth, 'Bias': bias, 'Brick Width': brick_width, 'Row Height': row_height}, offset=offset, offset_frequency=offset_frequency, squash=squash, squash_frequency=squash_frequency)
+        node = Node('Brick Texture', {'Vector': vector, 'Color1': color1, 'Color2': color2, 'Mortar': mortar, 'Scale': scale, 'Mortar Size': mortar_size, 'Mortar Smooth': mortar_smooth, 'Bias': bias, 'Brick Width': brick_width, 'Row Height': row_height}, offset=offset, offset_frequency=offset_frequency, squash=squash, squash_frequency=squash_frequency)
         return node._out
 
     @classmethod
-    def Checked(cls, vector=None, color1=None, color2=None, scale=None):
+    def Checked(cls,
+                    vector: Vector = None,
+                    color1: Color = None,
+                    color2: Color = None,
+                    scale: Float = None):
         """ > Node <&Node Checker Texture>
 
         Arguments
@@ -48,13 +88,19 @@ class Texture(Socket):
 
         Returns
         -------
-        - Color [fac_ (Float)]
+        - Color [factor_ (Float)]
         """
-        node = Node('Checker Texture', sockets={'Vector': vector, 'Color1': color1, 'Color2': color2, 'Scale': scale})
+        node = Node('Checker Texture', {'Vector': vector, 'Color1': color1, 'Color2': color2, 'Scale': scale})
         return node._out
 
     @classmethod
-    def Gabor(cls, vector=None, scale=None, frequency=None, anisotropy=None, orientation=None, gabor_type='2D'):
+    def Gabor(cls,
+                    vector: Vector = None,
+                    scale: Float = None,
+                    frequency: Float = None,
+                    anisotropy: Float = None,
+                    orientation: Float = None,
+                    gabor_type: Literal['2D', '3D'] = '2D'):
         """ > Node <&Node Gabor Texture>
 
         Arguments
@@ -71,11 +117,13 @@ class Texture(Socket):
         - Float [phase_ (Float), intensity_ (Float)]
         """
         utils.check_enum_arg('Gabor Texture', 'gabor_type', gabor_type, 'Gabor', ('2D', '3D'))
-        node = Node('Gabor Texture', sockets={'Vector': vector, 'Scale': scale, 'Frequency': frequency, 'Anisotropy': anisotropy, 'Orientation 2D': orientation}, gabor_type=gabor_type)
+        node = Node('Gabor Texture', {'Vector': vector, 'Scale': scale, 'Frequency': frequency, 'Anisotropy': anisotropy, 'Orientation 2D': orientation}, gabor_type=gabor_type)
         return node._out
 
     @classmethod
-    def Gradient(cls, vector=None, gradient_type='LINEAR'):
+    def Gradient(cls,
+                    vector: Vector = None,
+                    gradient_type: Literal['LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL'] = 'LINEAR'):
         """ > Node <&Node Gradient Texture>
 
         Arguments
@@ -85,14 +133,18 @@ class Texture(Socket):
 
         Returns
         -------
-        - Color [fac_ (Float)]
+        - Color [factor_ (Float)]
         """
         utils.check_enum_arg('Gradient Texture', 'gradient_type', gradient_type, 'Gradient', ('LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL'))
-        node = Node('Gradient Texture', sockets={'Vector': vector}, gradient_type=gradient_type)
+        node = Node('Gradient Texture', {'Vector': vector}, gradient_type=gradient_type)
         return node._out
 
     @classmethod
-    def Magic(cls, vector=None, scale=None, distortion=None, turbulence_depth=2):
+    def Magic(cls,
+                    vector: Vector = None,
+                    scale: Float = None,
+                    distortion: Float = None,
+                    turbulence_depth = 2):
         """ > Node <&Node Magic Texture>
 
         Arguments
@@ -104,13 +156,22 @@ class Texture(Socket):
 
         Returns
         -------
-        - Color [fac_ (Float)]
+        - Color [factor_ (Float)]
         """
-        node = Node('Magic Texture', sockets={'Vector': vector, 'Scale': scale, 'Distortion': distortion}, turbulence_depth=turbulence_depth)
+        node = Node('Magic Texture', {'Vector': vector, 'Scale': scale, 'Distortion': distortion}, turbulence_depth=turbulence_depth)
         return node._out
 
     @classmethod
-    def Noise(cls, vector=None, scale=None, detail=None, roughness=None, lacunarity=None, distortion=None, noise_dimensions='3D', noise_type='FBM', normalize=True):
+    def Noise(cls,
+                    vector: Vector = None,
+                    scale: Float = None,
+                    detail: Float = None,
+                    roughness: Float = None,
+                    lacunarity: Float = None,
+                    distortion: Float = None,
+                    noise_dimensions: Literal['1D', '2D', '3D', '4D'] = '3D',
+                    noise_type: Literal['MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN'] = 'FBM',
+                    normalize = True):
         """ > Node <&Node Noise Texture>
 
         Arguments
@@ -131,11 +192,21 @@ class Texture(Socket):
         """
         utils.check_enum_arg('Noise Texture', 'noise_dimensions', noise_dimensions, 'Noise', ('1D', '2D', '3D', '4D'))
         utils.check_enum_arg('Noise Texture', 'noise_type', noise_type, 'Noise', ('MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN'))
-        node = Node('Noise Texture', sockets={'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Distortion': distortion}, noise_dimensions=noise_dimensions, noise_type=noise_type, normalize=normalize)
+        node = Node('Noise Texture', {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Distortion': distortion}, noise_dimensions=noise_dimensions, noise_type=noise_type, normalize=normalize)
         return node._out
 
     @classmethod
-    def Voronoi(cls, vector=None, scale=None, detail=None, roughness=None, lacunarity=None, randomness=None, distance='EUCLIDEAN', feature='F1', normalize=False, voronoi_dimensions='3D'):
+    def Voronoi(cls,
+                    vector: Vector = None,
+                    scale: Float = None,
+                    detail: Float = None,
+                    roughness: Float = None,
+                    lacunarity: Float = None,
+                    randomness: Float = None,
+                    distance: Literal['EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI'] = 'EUCLIDEAN',
+                    feature: Literal['F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS'] = 'F1',
+                    normalize = False,
+                    voronoi_dimensions: Literal['1D', '2D', '3D', '4D'] = '3D'):
         """ > Node <&Node Voronoi Texture>
 
         Arguments
@@ -158,11 +229,22 @@ class Texture(Socket):
         utils.check_enum_arg('Voronoi Texture', 'distance', distance, 'Voronoi', ('EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI'))
         utils.check_enum_arg('Voronoi Texture', 'feature', feature, 'Voronoi', ('F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS'))
         utils.check_enum_arg('Voronoi Texture', 'voronoi_dimensions', voronoi_dimensions, 'Voronoi', ('1D', '2D', '3D', '4D'))
-        node = Node('Voronoi Texture', sockets={'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, distance=distance, feature=feature, normalize=normalize, voronoi_dimensions=voronoi_dimensions)
+        node = Node('Voronoi Texture', {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, distance=distance, feature=feature, normalize=normalize, voronoi_dimensions=voronoi_dimensions)
         return node._out
 
     @classmethod
-    def Wave(cls, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', rings_direction='X', wave_profile='SIN', wave_type='BANDS'):
+    def Wave(cls,
+                    vector: Vector = None,
+                    scale: Float = None,
+                    distortion: Float = None,
+                    detail: Float = None,
+                    detail_scale: Float = None,
+                    detail_roughness: Float = None,
+                    phase_offset: Float = None,
+                    bands_direction: Literal['X', 'Y', 'Z', 'DIAGONAL'] = 'X',
+                    rings_direction: Literal['X', 'Y', 'Z', 'SPHERICAL'] = 'X',
+                    wave_profile: Literal['SIN', 'SAW', 'TRI'] = 'SIN',
+                    wave_type: Literal['BANDS', 'RINGS'] = 'BANDS'):
         """ > Node <&Node Wave Texture>
 
         Arguments
@@ -181,17 +263,19 @@ class Texture(Socket):
 
         Returns
         -------
-        - Color [fac_ (Float)]
+        - Color [factor_ (Float)]
         """
         utils.check_enum_arg('Wave Texture', 'bands_direction', bands_direction, 'Wave', ('X', 'Y', 'Z', 'DIAGONAL'))
         utils.check_enum_arg('Wave Texture', 'rings_direction', rings_direction, 'Wave', ('X', 'Y', 'Z', 'SPHERICAL'))
         utils.check_enum_arg('Wave Texture', 'wave_profile', wave_profile, 'Wave', ('SIN', 'SAW', 'TRI'))
         utils.check_enum_arg('Wave Texture', 'wave_type', wave_type, 'Wave', ('BANDS', 'RINGS'))
-        node = Node('Wave Texture', sockets={'Vector': vector, 'Scale': scale, 'Distortion': distortion, 'Detail': detail, 'Detail Scale': detail_scale, 'Detail Roughness': detail_roughness, 'Phase Offset': phase_offset}, bands_direction=bands_direction, rings_direction=rings_direction, wave_profile=wave_profile, wave_type=wave_type)
+        node = Node('Wave Texture', {'Vector': vector, 'Scale': scale, 'Distortion': distortion, 'Detail': detail, 'Detail Scale': detail_scale, 'Detail Roughness': detail_roughness, 'Phase Offset': phase_offset}, bands_direction=bands_direction, rings_direction=rings_direction, wave_profile=wave_profile, wave_type=wave_type)
         return node._out
 
     @classmethod
-    def WhiteNoise(cls, vector=None, noise_dimensions='3D'):
+    def WhiteNoise(cls,
+                    vector: Vector = None,
+                    noise_dimensions: Literal['1D', '2D', '3D', '4D'] = '3D'):
         """ > Node <&Node White Noise Texture>
 
         Arguments
@@ -204,6 +288,6 @@ class Texture(Socket):
         - Float [color_ (Color)]
         """
         utils.check_enum_arg('White Noise Texture', 'noise_dimensions', noise_dimensions, 'WhiteNoise', ('1D', '2D', '3D', '4D'))
-        node = Node('White Noise Texture', sockets={'Vector': vector}, noise_dimensions=noise_dimensions)
+        node = Node('White Noise Texture', {'Vector': vector}, noise_dimensions=noise_dimensions)
         return node._out
 

@@ -49,7 +49,8 @@ import bpy
 from .scripterror import NodeError
 from . import constants
 from . import utils
-from .treeclass import Tree, Node, Layout
+from .treeclass import Tree, Layout
+from .nodeclass import Node
 from .socket_class import NodeCache, Socket
 from .geometry_class import Geometry
 from .domains import Vertex, Edge, Face, Corner, SplinePoint, Spline, CloudPoint, Instance, Layer

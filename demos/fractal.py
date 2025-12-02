@@ -876,7 +876,7 @@ def multires_surface():
 
         mesh = rep.mesh
 
-        mesh.remove_named_attribute("Iterate")
+        mesh.remove_named_attribute(name="Iterate")
 
         mesh.out()
 
@@ -1188,9 +1188,9 @@ def romanesco():
         # ===== Remove
 
         with Layout("Remove attributes but Normal and Rotation"):
-            cloud.remove_names("Main *")
+            cloud.remove_named_attribute(name="Main *")
             for na in ("Iterate", "Scale", "Seed", "Z"):
-                cloud.remove_named_attribute(na)
+                cloud.remove_named_attribute(name=na)
 
         with Layout("Add a random number"):
             cloud.points._Random = Float.Random(0, 1, id=nd.index, seed=nd.id)
@@ -1320,7 +1320,7 @@ def romanesco():
         # ----- Logarithmic spiral
 
         with Layout("Base Logarihmic Spiral"):
-            curve = Curve.Line().resample(count)
+            curve = Curve.Line().resample(count=count)
 
             theta =  tau*rotations/count*nd.index
             rho = radius*gnmath.abs(omega)**theta
@@ -1387,7 +1387,7 @@ def romanesco():
             length = spiral.length()
             size = length*(1 - q)/(1 - q**npoints)
 
-            curve = Curve.Line().resample(npoints)
+            curve = Curve.Line().resample(count=npoints)
             l = size*(1 - q**nd.index)/(1 - q)
 
             curve.points.position = spiral.sample_length(nd.position, length=l)
@@ -1415,7 +1415,7 @@ def romanesco():
 
             spirals = Curve(cloud.points.instance_on(instance=curve, rotation=Rotation.Named("rot")).realize())
             spirals.points._Normal = Rotation.Named("rot") @ Vector("Normal")
-            spirals.remove_named_attribute("rot")
+            spirals.remove_named_attribute(name="rot")
 
             # DEBUG : keep curves
             if False:
@@ -1796,7 +1796,7 @@ def log_spiral():
 
         slope = height/radius
 
-        curve = Curve.Line().resample(count)
+        curve = Curve.Line().resample(count=count)
 
         theta =  tau*rotations/count*nd.index
         rho = radius*gnmath.abs(omega)**theta
@@ -1852,7 +1852,7 @@ def romanesco2():
             length = spiral.length()
             size = length*(1 - q)/(1 - q**npoints)
 
-            curve = Curve.Line().resample(npoints)
+            curve = Curve.Line().resample(count=npoints)
             l = size*(1 - q**nd.index)/(1 - q)
 
             curve.points.position = spiral.sample(nd.position, length=l)
@@ -1881,7 +1881,7 @@ def romanesco2():
 
             spirals = Curve(cloud.points.instance_on(instance=curve, rotation=Rotation.Named("rot")).realize())
             spirals.points.store("Normal", Rotation.Named("rot") @ Vector.Named("Normal"))
-            spirals.remove_named_attribute("rot")
+            spirals.remove_named_attribute(name="rot")
 
             spirals = spirals.to_points()
 
@@ -1905,10 +1905,10 @@ def romanesco2():
 
             rot = Rotation.AlignToVector(Vector.Named("Normal"))
             cab.points.store("rot", rot)
-            cab.remove_named_attribute("Normal")
+            cab.remove_named_attribute(name="Normal")
 
             cab.points.store("old_scale", Float.Named("Scale"))
-            cab.remove_named_attribute("Scale")
+            cab.remove_named_attribute(name="Scale")
 
             with Layout("Instantiate"):
                 new_cabbage = Cloud(cab.points.instance_on(instance=spirals,
@@ -2078,7 +2078,7 @@ def growing():
                 p0 = segment.points.sample_index(nd.position, index=0)
                 p1 = segment.points.sample_index(nd.position, index=1)
 
-                segment.resample(3)
+                segment.resample(count=3)
 
                 segment.points[1].offset = Vector.Random(-.1, .1, id=feel.index, seed=rep_seed)
 

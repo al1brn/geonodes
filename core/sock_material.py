@@ -44,16 +44,26 @@ __blender_version__ = "4.3.0"
 
 import bpy
 from . import constants, utils
-from .treeclass import Tree, Node
+from .treeclass import Tree
+from .nodeclass import Node
 from .socket_class import Socket
 from . import generated
 
 
-class Material(Socket):
+class Material(generated.Material):
 
     SOCKET_TYPE = 'MATERIAL'
 
-    def __init__(self, value=None, name=None, tip=None, panel="", hide_value=False, hide_in_modifier=False):
+    def __init__(self, 
+        value: Socket = None, 
+        name: str = None, 
+        tip: str = '',
+        panel: str = "",
+        optional_label: bool = False,
+        hide_value: bool = False,
+        hide_in_modifier: bool = False,
+        default: object = None,
+                 ):
         """ Class Material data socket
 
         Node <&Node Material>
@@ -62,10 +72,12 @@ class Material(Socket):
         ---------
         - value (bpy.types.Material or str = None) : material or material name in bpy.data.materials
         - name (str = None) : create a group input socket of type Material if not None
-        - tip (str = None) : user tip for group input socket
-        - panel (str = None) : panel name (overrides tree panel if exists)
-        - hide_value (bool = False) : Hide Value option
-        - hide_in_modifier (bool = False) : Hide in Modifier option
+        - tip  (str = '') : Property description
+        - panel (str = "") : Panel name
+        - optional_label  (bool = False) : Property optional_label
+        - hide_value  (bool = False) : Property hide_value
+        - hide_in_modifier  (bool = False) : Property hide_in_modifier
+        - default  (object = None) : Property default_value
         """
 
         bsock = utils.get_bsocket(value)
@@ -74,10 +86,51 @@ class Material(Socket):
             if name is None:
                 bsock = Node('Material', material=material)._out
             else:
-                bsock = Tree.new_input('NodeSocketMaterial', name=name, value=material, panel=panel,
-                    description             = tip,
-                    hide_value              = hide_value,
-                    hide_in_modifier        = hide_in_modifier,
-                )
+                bsock = self._create_input_socket(value=value, name=name,
+                    tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value,
+                    hide_in_modifier=hide_in_modifier, default=default)
 
         super().__init__(bsock)
+
+    # ====================================================================================================
+    # Class test    
+    # ====================================================================================================
+
+    @classmethod
+    def _class_test(cls):
+
+        from geonodes import GeoNodes, Material, nd, Mesh, ShaderNodes
+        
+        with ShaderNodes("Red"):
+            pass
+
+        with ShaderNodes("Blue"):
+            pass
+
+        with ShaderNodes("Green"):
+            pass
+
+        with GeoNodes("Material Test"):
+            
+            g = Mesh()
+            
+            mat0 = Material("Red")
+            g.material = mat0
+            
+            mat1 = Material("Blue", name="Your Material")
+            g[nd.index.less_than(3)].material = mat1
+
+            g.replace_material(mat1, "Green")
+            
+            sel = nd.material_selection("Blue")
+            g[sel].material = "Red"
+            
+            g.faces[nd.material_index.equal(1)].delete()
+            
+            
+            g.out()
+            
+
+
+
+

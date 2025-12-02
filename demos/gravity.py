@@ -62,7 +62,7 @@ def demo():
     with ShaderNodes("Planet"):
 
         ped = Shader.Principled(
-            base_color = Color.CombineHSV(snd.attribute("Hue", attribute_type='INSTANCER').fac, .8, .9),
+            base_color = Color.CombineHSV(snd.attribute("Hue", attribute_type='INSTANCER').factor, .8, .9),
             roughness  = .3,
             metallic   = .2,
         )

@@ -51,7 +51,8 @@ from .proplocker import PropLocker
 from .scripterror import NodeError
 from . import constants
 from . import utils
-from .treeclass import Tree, Node, Layout
+from .treeclass import Tree, Layout
+from .nodeclass import Node
 from .socket_class import NodeCache, Socket
 from .geometry_class import GeoBase, Geometry
 
@@ -231,7 +232,6 @@ class Domain(GeoBase, NodeCache, PropLocker):
 
             # Capture one attribute without key
             captured_attr3 = mesh.points.capture_attribute(attr3)
-
         ```
 
         Arguments
@@ -253,7 +253,7 @@ class Domain(GeoBase, NodeCache, PropLocker):
 
         node = Node('Capture Attribute', sockets={'Geometry': self})
 
-        node._set_items(**attrs)
+        node._set_items('capture_items', **attrs)
         self._jump(node._out)
 
         if len(attrs) == 1:

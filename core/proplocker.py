@@ -45,12 +45,29 @@ from .scripterror import NodeError
 class PropLocker:
 
     def _lock(self):
+        self._locked = False
+
+        props = set(dir(self))
+        props = props.union(self.__dict__)
+        props = props.union(('_locked', '_valid_props'))
+
+        self._valid_props = props
+
         self._locked = True
 
     def _unlock(self):
         self._locked = False
 
     def __setattr__(self, name, value):
-        if (name not in self.__dict__) and (name not in dir(self)) and ('_locked' in self.__dict__) and self._locked:
-            raise NodeError(f"Class '{type(self).__name__}' has no attribute named '{name}'", keyword=name)
+        if name in ['_locked', '_valid_props'] or ('_locked' not in self.__dict__):
+            super().__setattr__(name, value)
+            return
+
+        if not self.__dict__.get('_locked', False):
+            super().__setattr__(name, value)
+            return
+
+        if name not in self.__dict__['_valid_props']:
+            raise AttributeError(f"Class '{type(self).__name__}' has no attribute named '{name}'")
+
         super().__setattr__(name, value)

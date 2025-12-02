@@ -52,11 +52,23 @@ from .blender import get_font
 
 BUILD = False
 
-# =============================================================================================================================
+# ====================================================================================================
+# Socket classes
+# ====================================================================================================
+
+# This dict is filled at run time to provide
+# socket_type -> Socket class conversion
+
+SOCKET_CLASSES = {}
+GEOMETRY_CLASSES = {}
+
+# ====================================================================================================
 # Get / delete a tree
+# ====================================================================================================
 
 # ----------------------------------------------------------------------------------------------------
 # Get a tree, create it if it doesn't exist
+# ----------------------------------------------------------------------------------------------------
 
 def get_tree(name, tree_type='GeometryNodeTree', create=True):
     """ Get or create a new nodes tree
@@ -98,6 +110,7 @@ def get_tree(name, tree_type='GeometryNodeTree', create=True):
 
 # ----------------------------------------------------------------------------------------------------
 # Delete a tree
+# ----------------------------------------------------------------------------------------------------
 
 def del_tree(btree):
 
@@ -116,9 +129,11 @@ def del_tree(btree):
 
 # ====================================================================================================
 # Litteral to python name
+# ====================================================================================================
 
 # ----------------------------------------------------------------------------------------------------
 # Replace accents and replace non kw chars by '_'
+# ----------------------------------------------------------------------------------------------------
 
 def only_kw_chars(s):
 
@@ -158,6 +173,7 @@ def only_kw_chars(s):
 
 # ----------------------------------------------------------------------------------------------------
 # Camel version of a string
+# ----------------------------------------------------------------------------------------------------
 
 def CamelCase(s):
 
@@ -182,6 +198,7 @@ def CamelCase(s):
 
 # ----------------------------------------------------------------------------------------------------
 # Snake case version of a string
+# ----------------------------------------------------------------------------------------------------
 
 def snake_case(s: str, test_keyword=True) -> str:
 
@@ -202,6 +219,7 @@ def snake_case(s: str, test_keyword=True) -> str:
 
 # ----------------------------------------------------------------------------------------------------
 # Ensure socket name unicity
+# ----------------------------------------------------------------------------------------------------
 
 def ensure_uniques(names: list[str], single_digit: bool = False):
     """ Build a list of unique names from a list
@@ -233,66 +251,131 @@ def ensure_uniques(names: list[str], single_digit: bool = False):
             homos[name] = count + 1
     return uniques
 
-# =============================================================================================================================
-# Get a node bl_idname from a name
+# ====================================================================================================
+# Conversion between socket_type and bl_idname
+# - socket_type in ('FLOAT', 'INT', 'BOOLEAN',...)
+# - bl_idname in ('NodeSocketFloat', 'NodeSocketInt', 'NodeSocketBoolean',...)
+# ====================================================================================================
 
-def get_node_bl_idname(node_name, tree_type, halt=True):
+def socket_type_to_bl_idname(socket_type, halt=True):
 
-    bl_idname = ""
+    SPEC = {
+        'BOOLEAN': 'NodeSocketBool',
+        'INTEGER': 'NodeSocketInt',
+        'RGBA'   : 'NodeSocketColor',
+        'VALUE'  : 'NodeSocketFloat',
+    }
+    if socket_type.startswith('NodeSocket'):
+        return socket_type
+    
+    elif socket_type in SPEC:
+        return SPEC[socket_type]
+    
+    else:
+        ns = 'NodeSocket' + socket_type.title()
+        if ns not in constants.SOCKET_SUBTYPES:
+            if halt:
+                raise RuntimeError(f"The socket type '{socket_type}' is not valid.")
+            else:
+                return None
+        
+        return ns
+    
+def bl_idname_to_socket_type(bl_idname, halt = True):
 
-    # Node name is good
-    if node_name in constants.NODE_NAMES[tree_type]:
-        return constants.NODE_NAMES[tree_type][node_name]
+    SPEC = {
+        'NodeSocketBool'  : 'BOOLEAN',
+        'NodeSocketFloat' : 'VALUE',
+        'NodeSocketColor' : 'RGBA',
+    }
+    ST_SPEC = {
+        'INTEGER' : 'INT',
+        'COLOR'   : 'RGBA',
+        'FLOAT'   : 'VALUE', 
+    }
 
-    # Could be the bl_idname
-    if node_name in constants.NODE_NAMES[tree_type].values():
-        return node_name
+    blid = bl_idname
+    if blid in constants.SOCKET_SUBTYPES:
+        blid = constants.SOCKET_SUBTYPES[bl_idname]['nodesocket']
 
-    # Perhaps lower / upper case problem
-    for nn, blid in constants.NODE_NAMES[tree_type].items():
-        if nn.lower() == node_name.lower():
-            print(f"CAUTION: node name '{node_name}' doesn't match any node name. Lower case matching is taken: {nn}")
-            return blid
+    if blid in SPEC:
+        return SPEC[blid]
+    
+    if blid.startswith('NodeSocket'):
+        st = blid[len('NodeSocket'):].upper()
+    else:
+        st = ST_SPEC.get(bl_idname, bl_idname)
 
-    # Error :(
-    if not halt:
+    if st not in constants.CLASS_NAMES.keys():
+        if halt:
+            raise RuntimeError(f"The bl_idname '{bl_idname}' is not valid.")
+        else:
+            return None
+    
+    return st
+
+# ====================================================================================================
+# Sockets utilities
+# ====================================================================================================
+
+def get_bsocket(socket):
+    if isinstance(socket, bpy.types.NodeSocket):
+        return socket
+    else:
+        return getattr(socket, '_bsocket', None)
+    
+def is_socket(socket):
+    return get_bsocket(socket) is not None
+
+def is_free(socket):
+    bsocket = get_bsocket(socket)
+    if bsocket.is_output:
+        return True
+    else:
+        return bsocket.is_multi_input or (not bsocket.is_linked)
+    
+def get_default_name(socket):
+    bsocket = get_bsocket(socket)
+    if bsocket is None:
+        return constants.NODE_CLASSES[get_value_socket_type(socket)]
+    else:
+        return bsocket.name
+
+def get_socket_name(socket):
+    
+    bsocket = get_bsocket(socket)
+
+    if socket is None:
         return None
 
-    for tt in constants.NODE_NAMES.keys():
-        if tt == tree_type:
-            continue
-        if node_name in constants.NODE_NAMES[tt]:
-            raise NodeError(f"Node '{node_name}' is a node of tree '{tt}', it doesn't exist for tree '{tree_type}'")
-
-    raise NodeError(f"Node '{node_name}' doesn't exist")
-
-
-# =============================================================================================================================
-# Get a blender socket from either a Blender NodeSocket or a Socket
-
-def get_bsocket(value):
-    if isinstance(value, bpy.types.NodeSocket):
-        return value
+    if bsocket.label in [None, ""]:
+        return bsocket.name
     else:
-        return getattr(value, '_bsocket', None)
+        return bsocket.label
 
-# =============================================================================================================================
-# Get Value socket type
+# ====================================================================================================
+# Socket type from python value
+# ====================================================================================================
 
-def get_socket_type(value, restrict_to=None, default=None):
+def get_value_socket_type(value, restrict_to=None, default=None):
 
-    # ----- It is a Socket
+    socket_type = None
 
-    socket_type = default
-    if hasattr(value, 'SOCKET_TYPE'):
-        socket_type = value.SOCKET_TYPE
+    # ---------------------------------------------------------------------------
+    # It is a Socket
+    # ---------------------------------------------------------------------------
 
-    # ----- A Blender node socket
+    
+    bsocket = get_bsocket(value)
 
-    elif isinstance(value, bpy.types.NodeSocket):
-        socket_type = value.type
+    assert bsocket is None, "Test"
 
-    # ----- Ok, it is a python type
+    if bsocket is not None:
+        socket_type = bsocket.type
+
+    # ---------------------------------------------------------------------------
+    # A python type
+    # ---------------------------------------------------------------------------
 
     elif isinstance(value, bool):
         socket_type = 'BOOLEAN'
@@ -330,65 +413,45 @@ def get_socket_type(value, restrict_to=None, default=None):
             raise NodeError(f"Value shape is {np.shape(value)} which is incorrect")
 
     else:
-        socket_type = default
+        raise RuntimeError(f"Impossible to get a socket type for value {value}")
+
+    # ---------------------------------------------------------------------------
+    # Restricted
+    # ---------------------------------------------------------------------------
 
     if restrict_to is not None:
         if socket_type not in restrict_to:
             socket_type = default
 
-    if socket_type is None:
-        if type(value).__name__ == 'method':
-            try:
-                fname = value.__name__
-                prop = f": '{fname}()'"
-            except:
-                fname = str(value)
-                prop = ""
-            raise NodeError(f"Socket error: trying to use method '{fname}' as value. You certainly forgot parenthesis{prop}.", keyword=fname, valids=restrict_to)
-        else:
-            raise NodeError(f"Socket error: type of value [{value}] ({type(value).__name__}) is not valid.", valids=restrict_to)
+    return socket_type
+
+# ====================================================================================================
+# Get items socket type
+# ====================================================================================================
+
+def get_items_socket_type(socket_type):
+    """ Specific to node items socket type in new method.
+    """
+    if socket_type == 'VALUE':
+        return 'FLOAT'
     else:
         return socket_type
 
-def get_node_data_type(node_name, tree_type, value, default=None):
-
-    blid = get_node_bl_idname(node_name, tree_type)
-    valids = list(constants.NODE_DATA_TYPES[blid].values())[0]
-
-    socket_type = get_socket_type(value)
-    if socket_type in valids.keys():
-        return valids[socket_type]
-
-    if default is None:
-        raise NodeError(f"Node '{node_name}' doesn't accept '{socket_type}' data type, only {list(valids)}")
-
-    return default
 
 
-def get_data_type(value, restrict_to=None, default='FLOAT'):
+# ====================================================================================================
+# Get data_type
+# ====================================================================================================
 
-    if value is None:
-        data_type = default
-        socket_type = 'NONE'
+def get_input_type_OLD(value, restrict_to=None, default='FLOAT'):
 
-    else:
-        socket_type = get_socket_type(value)
+    transco = {
+        'VALUE': 'FLOAT',
+    }
 
-        data_type = constants.DATA_TYPES.get(socket_type)
-
-        if data_type is not None and restrict_to is not None:
-            if data_type not in restrict_to:
-                data_type = default
-
-        if data_type is None:
-            data_type = default
-
-    if data_type is None:
-        raise NodeError(f"Socket type '{socket_type}' has not a valid data type for the node", valid_types=restrict_to)
-    else:
-        return data_type
-
-def get_input_type(value, restrict_to=None, default='FLOAT'):
+    itype = get_socket_type(value, restrict_to=restrict_to, default=default)
+    return transco.get(itype, itype)
+    
 
     if value is None:
         input_type = default
@@ -410,15 +473,245 @@ def get_input_type(value, restrict_to=None, default='FLOAT'):
     else:
         return input_type
 
-# =============================================================================================================================
+
+# ====================================================================================================
+# Return socket info from
+# - a socket
+# - an interface item socket
+# - a bl_idname
+# - a socket type
+# - a class name
+# ====================================================================================================
+
+def get_socket_info(value):
+
+    # ----------------------------------------------------------------------------------------------------
+    # Value is None
+    # ----------------------------------------------------------------------------------------------------
+
+    if value is None:
+        return None
+
+    # ----------------------------------------------------------------------------------------------------
+    # Value is a socket
+    # ----------------------------------------------------------------------------------------------------
+
+    bsocket = get_bsocket(value)
+    if bsocket is not None:
+        return get_socket_info(bsocket.bl_idname)
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Value is an interface item
+    # ----------------------------------------------------------------------------------------------------
+
+    # TBD
+
+    # ----------------------------------------------------------------------------------------------------
+    # Value is a class name
+    # ----------------------------------------------------------------------------------------------------
+
+    if isinstance(value, type):
+        return get_socket_info(type(value).__name__)
+
+    # ----------------------------------------------------------------------------------------------------
+    # Must be a str
+    # ----------------------------------------------------------------------------------------------------
+
+    if not isinstance(value, str):
+        raise RuntimeError(f"Impossible to get socket info from value {value}.")
+    
+    # ----------------------------------------------------------------------------------------------------
+    # value is socket type in 'GEOMETRY', 'INT',...
+    # ----------------------------------------------------------------------------------------------------
+
+    if value == 'INTEGER':
+        value = 'INT'
+    elif value == 'FLOAT':
+        value = 'VALUE'
+    elif value == 'COLOR':
+        value = 'RGBA'
+
+    if value in constants.CLASS_NAMES.keys():
+        bl_idname = socket_type_to_bl_idname(value)
+        return {
+            'bl_idname'     : bl_idname,
+            'sub_blid'      : bl_idname,
+            'socket_type'   : value,
+            'subtype'       : None,
+            'dimensions'    : None,
+            }
+    
+    # ----------------------------------------------------------------------------------------------------
+    # value is a bl_idname name
+    # ----------------------------------------------------------------------------------------------------
+
+    if value in constants.SOCKET_SUBTYPES:
+        spec = constants.SOCKET_SUBTYPES.get(value)
+        return {
+            'bl_idname'     : spec['nodesocket'],
+            'sub_blid'      : value,
+            'socket_type'   : bl_idname_to_socket_type(value),
+            'subtype'       : spec['subtype'],
+            'dimensions'    : spec['dimensions'],
+        }
+    
+    # ----------------------------------------------------------------------------------------------------
+    # value is a class_name
+    # ----------------------------------------------------------------------------------------------------
+
+    cname = value
+    if cname in constants.GEOMETRY_CLASSES:
+        cname = 'Geometry'
+
+    for stype, name in constants.CLASS_NAMES.items():
+        if name == cname:
+            return get_socket_info(stype)
+        
+    # ----------------------------------------------------------------------------------------------------
+    # value is a class_name
+    # ----------------------------------------------------------------------------------------------------
+
+    raise RuntimeError(f"Impossible to get socket info from '{value}'. Must be a socket type, a socket bl_idname or a class name.")
+
+# ====================================================================================================
+# Wrap a NodeSocket into its class
+# ====================================================================================================
+
+# ----------------------------------------------------------------------------------------------------
+# Get the socket class
+# ----------------------------------------------------------------------------------------------------
+
+def get_socket_class(socket_type, name=None):
+
+    info = get_socket_info(socket_type)
+    stype = info['socket_type']
+    #stype = constants.CLASS_NAMES[]
+
+    if stype == 'GEOMETRY':
+    
+        if name is None:
+            return SOCKET_CLASSES[stype]
+        
+        name = name.lower()
+
+        # 5.0.0 socket names
+        # IN : {'Geometry', 'Target Geometry', 'Volume', 'A', 'Points', 'Curves', 'Instances', 
+        # 'True', 'Profile Curve', 'False', 'Guide Curves', 'Mesh 1', 'Mesh', '0', 
+        # 'Grease Pencil', 'B', 'Mesh 2', 'Curve', '1', 'Instance'}
+        # OUT: {'Points', 'Convex Hull', 'Element', 'Curves', 'Bounding Box', 
+        # 'Geometry', 'Output', 'Inverted', 'Instances', 'Selection', 'Transform', 
+        # 'Dual Mesh', 'Curve Instances', 'Mesh', 'Volume', 'Curve', 'Point Cloud', 'Grease Pencil'}
+        
+        if name in ('mesh', 'convex hull', 'bounding box', 'dual mesh') or name.startswith('Mesh'):
+            class_name = 'Mesh'
+        elif name in ('curve', 'curves', 'profile curve', 'guide curve'):
+            class_name = 'Curve'
+        elif name in ('points', 'point cloud'):
+            class_name = 'Cloud'
+        elif name in ('grease pencil',):
+            class_name = 'GreasePencil'
+        elif name in ('instance', 'instances', 'curve instances'):
+            class_name = 'Instances'
+        elif name in ('volume'):
+            class_name = 'Volume'
+        else:
+            class_name = 'Geometry'
+
+        return GEOMETRY_CLASSES[class_name]
+
+    elif stype not in SOCKET_CLASSES.keys():
+        if stype == socket_type:
+            raise TypeError(f"socket_type '{socket_type}' not found in {list(SOCKET_CLASSES.keys())}.")
+        else:
+            raise TypeError(f"Node socket '{socket_type}' ({stype}) not found in {list(SOCKET_CLASSES.keys())}.")
+
+    return SOCKET_CLASSES[stype]
+
+# ----------------------------------------------------------------------------------------------------
+# To socket
+# ----------------------------------------------------------------------------------------------------
+
+def to_socket(socket):
+    bsocket = get_bsocket(socket)
+    if bsocket is None:
+        return get_socket_class(get_value_socket_type(socket))(socket)
+    else:
+        return get_socket_class(bsocket.type, name=bsocket.name)(bsocket)
+    
+# ----------------------------------------------------------------------------------------------------
+# Socket sub type
+# ----------------------------------------------------------------------------------------------------
+    
+def get_socket_subtype(bl_idname):
+    info = get_socket_info(bl_idname)
+    return info['socket_type'], info['subtype'], info['dimensions']
+
+def get_socket_bl_idname(bl_idname):
+    info = get_socket_info(bl_idname)
+    return info['bl_idname'], info['subtype'], info['dimensions']
+
+
+# ====================================================================================================
+# Node bl_idname <-> user name
+# ====================================================================================================
+
+# ----------------------------------------------------------------------------------------------------
+# Get a node bl_idname from a name
+# ----------------------------------------------------------------------------------------------------
+
+def get_node_bl_idname(node_name, tree_type, halt=True):
+
+    bl_idname = ""
+
+    # Node name is good
+    if node_name in constants.NODE_NAMES[tree_type]:
+        return constants.NODE_NAMES[tree_type][node_name]
+
+    # Could be the bl_idname
+    if node_name in constants.NODE_NAMES[tree_type].values():
+        return node_name
+
+    # Perhaps lower / upper case problem
+    for nn, blid in constants.NODE_NAMES[tree_type].items():
+        if nn.lower() == node_name.lower():
+            print(f"CAUTION: node name '{node_name}' doesn't match any node name. Lower case matching is taken: {nn}")
+            return blid
+
+    # Error :(
+    if not halt:
+        return None
+
+    for tt in constants.NODE_NAMES.keys():
+        if tt == tree_type:
+            continue
+        if node_name in constants.NODE_NAMES[tt]:
+            raise NodeError(f"Node '{node_name}' is a node of tree '{tt}', it doesn't exist for tree '{tree_type}'")
+
+    raise NodeError(f"Node '{node_name}' doesn't exist")
+
+# ----------------------------------------------------------------------------------------------------
+# User name from bl_idname
+# ----------------------------------------------------------------------------------------------------
+
+def get_node_name(tree_type, bl_idname):
+    return list(constants.NODE_NAMES[tree_type].keys())[list(constants.NODE_NAMES[tree_type].values()).index(bl_idname)]
+
+# ====================================================================================================
 # Select the proper data type in the provided dict
 # Used in generated source code
+# ====================================================================================================
 
 def get_argument_data_type(argument, type_to_value, node_name=None, arg_name=None):
+
     if argument is None:
         return list(type_to_value.values())[0]
-
-    socket_type = get_socket_type(argument)
+    
+    bsocket = get_bsocket(argument)
+    if bsocket is None:
+        socket_type = get_value_socket_type(argument)
+    else:
+        socket_type = bsocket.type
+        
     if socket_type in type_to_value:
         return type_to_value[socket_type]
 
@@ -426,6 +719,63 @@ def get_argument_data_type(argument, type_to_value, node_name=None, arg_name=Non
         print(f"CAUTION node '{node_name}': argument '{arg_name}' type ('{socket_type}') is not in {list(type_to_value.keys())}.")
 
     return list(type_to_value.values())[0]
+
+def get_data_type_argument(tree_type, bl_idname, socket_type):
+    dts = constants.NODE_DATA_TYPES[tree_type][bl_idname]
+    if socket_type in dts:
+        return dts[socket_type]
+    raise RuntimeError(f"Socket type '{socket_type}' is not valid for data_type attribute in node {bl_idname}. Valids are {list(dts.keys())}")
+
+
+# =============================================================================================================================
+# Signature management
+# =============================================================================================================================
+
+def get_bnode(node):
+    if isinstance(node, bpy.types.Node):
+        return node
+    elif isinstance(node, bpy.types.NodeSocket):
+        return node.node
+    elif '_bnode' in node.__dict__:
+        return getattr(node, '_bnode')
+    elif '_bsocket' in node.__dict__:
+        return getattr(node, '_bsocket').node
+    
+    raise RuntimeError(f"Node or Socket expected, not {type(node)}")
+
+def get_signature_OLD(node, enabled_only=False, in_out='INPUT'):
+
+    node = get_bnode(node)
+    sockets = node.inputs if in_out == 'INPUT' else node.outputs
+
+    sig   = {}
+    names = {}
+    for socket in sockets:
+        if socket.type == 'CUSTOM':
+            continue
+        if enabled_only and not socket.enabled:
+            continue
+
+        name = socket.name
+        if socket.name in names:
+            names[name] += 1
+            name = f"{name}.{names[name]:03d}"
+        else:
+            names[name] = 0
+
+        sig[name] = {'bl_idname': socket.bl_idname, 'socket_type': socket.type, 'item_type': get_value_socket_type(socket)}
+
+    return sig
+
+def set_signature_OLD(items, signature):
+
+    assert isinstance(items, bpy.types.bpy_prop_collection), f"Utils.set_signature: bad type for items '{type(items)}'"
+
+    sockets = {}
+    for name, d in signature.items():
+        sockets[name] = items.new(d['item_type'], name)
+
+    return sockets
 
 # =============================================================================================================================
 # Conversion of enum parameters
@@ -666,6 +1016,66 @@ def value_to_array(value, shape):
     else:
         raise Exception(f"The value {value} with shape {np.shape(a)} (size: {np.size(a)}) can't be reshaped into {shape} (size: {np.prod(shape).astype(int)})")
 
+def get_dim_vector(value, dims):
+    if dims is None:
+        if value is None:
+            return (0., 0., 0.)
+        elif hasattr(value, '__len__'):
+            n = min(4, max(2, len(value)))
+            return tuple(value_to_array(value, (n,)))
+        else:
+            return tuple(value_to_array(value, (3,)))
+    else:
+        dims = min(4, max(2, dims))
+        if value is None:
+            return (0.,)*dims
+        else:
+            return tuple(value_to_array(value, (dims,)))
+        
+
+# ====================================================================================================
+# Node groups
+# ====================================================================================================
+
+def get_available_groups(tree_type: str) -> dict:
+        
+    groups = {}
+    for ng in bpy.data.node_groups:
+        if ng.bl_idname != tree_type:
+            continue
+        groups[ng.name] = {'group': ng, 'source': 'node_groups'}
+
+    for group_name, file_name in constants.BUILTIN_GROUPS[tree_type].items():
+        groups[group_name] = {'source': 'built_in', 'file_name': file_name}
+
+    for name, spec in groups.items():
+        spec['tree_type'] = tree_type
+        spec['name'] = name
+
+    return groups
+
+def find_snake_case_name(sc_name: str, raw_names: list):
+    """ Find the snake case version of a nam in a list of raw names.
+    """
+
+    for raw_name in raw_names:
+        if snake_case(raw_name) == sc_name:
+            return raw_name
+        
+    return None
+
+def get_enums(obj, attr):
+    token = "not found in "
+    try:
+        setattr(obj, attr, "OUPS")
+    except TypeError as e:
+        s = str(e)
+        p = s.find(token)
+        return eval(s[p + len(token):])
+    
+    assert False, f"Shouldn't happen, {obj=}, {attr=}"
+
+
 
 # =============================================================================================================================
 # Value to color
@@ -883,19 +1293,19 @@ def value_to_color(value):
 
 def is_vector_like(value):
 
-    return get_input_type(value) in ['RGBA', 'VECTOR', 'ROTATION']
+    return get_value_socket_type(value) in ['RGBA', 'VECTOR', 'ROTATION']
 
 def is_color_like(value):
-    return get_input_type(value) in ['RGBA', 'VECTOR']
+    return get_value_socket_type(value) in ['RGBA', 'VECTOR']
 
 def is_matrix_like(value):
-    return get_input_type(value) in ['MATRIX']
+    return get_value_socket_type(value) in ['MATRIX']
 
 def is_value_like(value):
-    return get_input_type(value) in ['FLOAT', 'INT', 'BOOLEAN']
+    return get_value_socket_type(value) in ['FLOAT', 'INT', 'BOOLEAN']
 
 def is_int_like(value):
-    return get_input_type(value) in ['INT', 'BOOLEAN']
+    return get_value_socket_type(value) in ['INT', 'BOOLEAN']
 
 def has_bsocket(value):
     if get_bsocket(value) is not None:
@@ -907,6 +1317,24 @@ def has_bsocket(value):
     for item in value:
         if get_bsocket(item) is not None:
             return True
+
+    return False
+
+
+def check_link(link, halt=False):
+
+    def ssock(sock):
+        sock.node.use_custom_color = True
+        sock.node.color = (1, 0, 0)
+        return f"[{sock.node.name}].'{sock.name}'"
+
+    if link.is_valid:
+        return True
+    
+    if halt:
+        raise RuntimeError(f"Invalid link from {ssock(link.from_socket)} to {ssock(link.to_socket)}")
+    else:
+        print(f"Caution: Invalid link from {ssock(link.from_socket)} to {ssock(link.to_socket)}")
 
     return False
 
@@ -941,29 +1369,27 @@ def python_value_for_socket(value, socket_type):
 
     if value is None:
         return None
+    
+    bsock = get_bsocket(value)
+    if bsock is not None:
+        return getattr(bsock, 'default_value')
+    
+    socket_type = bl_idname_to_socket_type(socket_type)
 
-    if socket_type == 'BOOLEAN':
+    if socket_type in ['BOOLEAN', 'BOOL']:
         return bool(value)
 
     elif socket_type == 'INT':
         return int(value)
 
-    elif socket_type == 'VALUE':
+    elif socket_type in ['VALUE', 'FLOAT']:
         return float(value)
 
     elif socket_type in ['VECTOR', 'ROTATION']:
         return value_to_array(value, (3,))
 
-    elif socket_type == 'RGBA':
+    elif socket_type in ['RGBA', 'COLOR']:
         return value_to_color(value)
-
-        #if hasattr(value, '__len__'):
-        #    if len(value) == 3:
-        #        return (value[0], value[1], value[2], 1)
-        #    else:
-        #        return value
-        #else:
-        #    return (value, value, value, 1)
 
     elif socket_type in ['STRING', 'MENU']:
         return str(value)
@@ -972,7 +1398,8 @@ def python_value_for_socket(value, socket_type):
         return get_blender_resource(socket_type, value)
 
     else:
-        raise NodeError(f"python_value_for_socket error: impossible to build a value from [{value}] for socket '{socket_type}'")
+        raise NodeError(f"python_value_for_socket error: impossible to build a value from '{value}' for socket '{socket_type}'")
+
 
 # =============================================================================================================================
 # Named attribute utilities

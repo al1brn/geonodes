@@ -44,7 +44,8 @@ __blender_version__ = "4.3.0"
 
 import bpy
 from . import constants, utils
-from .treeclass import Tree, Node
+from .treeclass import Tree
+from .nodeclass import Node
 from .socket_class import Socket
 from . import generated
 
@@ -52,30 +53,61 @@ class Collection(generated.Collection):
 
     SOCKET_TYPE = 'COLLECTION'
 
-    def __init__(self, value=None, name=None, tip=None, panel="",
-        hide_value=False, hide_in_modifier=False):
+    def __init__(self, 
+        value: object | str = None,
+        name: str = None,
+        tip: str = '',
+        panel: str = "",
+        optional_label: bool = False,
+        hide_value: bool = False,
+        hide_in_modifier: bool = False,
+        default: object = None,
+        ):
         """ Class Collection data socket
 
         Arguments
         ---------
-        - value (bpy.types.Object or str = None) : collection or collection name in bpy.data.collections
+        - value (objet | str = None) : collection or collection name in bpy.data.collections
         - name (str = None) : create a group input socket of type Collection if not None
-        - tip (str = None) : user tip for group input socket
-        - panel (str = None) : panel name (overrides tree panel if exists)
-        - hide_value (bool = False) : Hide Value option
-        - hide_in_modifier (bool = False) : Hide in Modifier option
+        - tip  (str = '') : Property description
+        - panel (str = "") : Panel name
+        - optional_label  (bool = False) : Property optional_label
+        - hide_value  (bool = False) : Property hide_value
+        - hide_in_modifier  (bool = False) : Property hide_in_modifier
+        - default  (object = None) : Property default_value
         """
         bsock = utils.get_bsocket(value)
+
         if bsock is None:
+            
             coll = utils.get_blender_resource('COLLECTION', value)
+            
             if name is None:
-                # name = 'Collection' # Blender < 4.4
                 bsock = Node('Collection', collection=coll)._out
+
             else:
-                bsock = Tree.new_input('NodeSocketCollection', name=name, value=coll, panel=panel,
-                    description             = tip,
-                    hide_value              = hide_value,
-                    hide_in_modifier        = hide_in_modifier,
-                )
+                bsock = self._create_input_socket(value=value, name=name,
+                    tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value,
+                    hide_in_modifier=hide_in_modifier, default=default)
 
         super().__init__(bsock)
+
+    # ====================================================================================================
+    # Class test    
+    # ====================================================================================================
+
+    @classmethod
+    def _class_test(cls):
+
+        from geonodes import GeoNodes, Collection, nd
+
+        with GeoNodes("Collection Test"):
+
+            g = Collection().info()
+            g += Collection(name="From Input'").info(separate_children=True, reset_children=True)
+            g += Collection("Collection").info(transform_space='RELATIVE')
+            g += nd.collection_info("Collection")
+
+            g.out()
+
+

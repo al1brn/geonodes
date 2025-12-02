@@ -122,11 +122,10 @@ def demo():
 
     with ShaderNodes("Wheel Figure"):
 
-        wheel_index = snd.attribute("Wheel").fac
+        wheel_index = snd.attribute("Wheel").factor
         black = Color.Combine(.05, .05, .05)
         red   = Color.Combine(.95, .05, .05)
 
-        #col = black.mix(red, fac=wheel_index.equal(0))
         col = black.mix(red, factor=wheel_index.compare(0))
 
         ped = Shader.Principled(

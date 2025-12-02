@@ -105,8 +105,8 @@ def demo():
     with ShaderNodes("Arrow"):
 
         pos_color = Color(snd.attribute(attribute_type='GEOMETRY', attribute_name="Color").vector)
-        negative  = snd.attribute(attribute_type='GEOMETRY', attribute_name="Negative").fac
-        transp    = snd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").fac
+        negative  = snd.attribute(attribute_type='GEOMETRY', attribute_name="Negative").factor
+        transp    = snd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").factor
 
         neg_color = pos_color.hue_saturation_value(hue=.5, saturation=.9, value=.9)
         color = pos_color.mix(negative, neg_color)
@@ -116,7 +116,7 @@ def demo():
             roughness  = negative.map_range(to_min=.1, to_max=.9),
         )
 
-        shader = ped.mix(Shader.Transparent(), fac=transp)
+        shader = ped.mix(Shader.Transparent(), factor=transp)
 
         shader.out()
 
@@ -124,8 +124,8 @@ def demo():
 
         color0    = Color(snd.attribute(attribute_type='GEOMETRY', attribute_name="Color 0").color)
         color1    = Color(snd.attribute(attribute_type='GEOMETRY', attribute_name="Color 1").color)
-        negative  = snd.attribute(attribute_type='GEOMETRY', attribute_name="Negative").fac
-        transp    = snd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").fac
+        negative  = snd.attribute(attribute_type='GEOMETRY', attribute_name="Negative").factor
+        transp    = snd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").factor
 
         neg_color0 = color0.hue_saturation_value(hue=.5, saturation=.9, value=.9)
         neg_color1 = color1.hue_saturation_value(hue=.5, saturation=.9, value=.9)
@@ -142,7 +142,7 @@ def demo():
             roughness  = negative.map_range(to_min=.1, to_max=.9),
         )
 
-        shader = ped.mix(Shader.Transparent(), fac=transp)
+        shader = ped.mix(Shader.Transparent(), factor=transp)
 
         shader.out()
 

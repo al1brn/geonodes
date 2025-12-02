@@ -1,10 +1,13 @@
 from pathlib import Path
+from datetime import datetime
+import textwrap
+
 import bpy
 
 from . node_explore import NodeInfo
 from . import gen_auto_dicts
 from . gen_auto_dicts import GEONODES, GEONODES_PROPS, SHADERNODES
-from .. core import constants
+from . import gen_config
 
 from pprint import pprint, pformat
 
@@ -163,13 +166,23 @@ def build_manual_cross_ref(cross):
 # =============================================================================================================================
 # Generate
 
-def generate(folder):
+def generate(folder, sub_folder):
 
-    path = Path(folder) / "generated"
+    path = Path(folder) / sub_folder
+
+    # ====================================================================================================
+    # Generate the config file
+    # ====================================================================================================
+
+    # config file is named config_xxx where xxx is the blender version
+    # constants.py must manually import * from this config file
+
+    gen_config.write_file(Path(folder))
 
     # ====================================================================================================
     # Gen collects generation
-    #
+    # ====================================================================================================
+    
     # gen['source'] : dict[class_name -> dict[function_name -> source_code]]
     # gen['cross']  : dict[bl_idname -> dict['class_name', 'func_name', 'signature', 'decorators']]
 
@@ -177,9 +190,13 @@ def generate(folder):
 
     # ====================================================================================================
     # Loop on the tree types
+    # ====================================================================================================
+
+    # This loop generates method and property code
 
     for tree_type in ['GeometryNodeTree', 'ShaderNodeTree']:
-        print("Generate for tree_type", tree_type)
+
+        print("-"*30, "\nGenerate for tree_type", tree_type, "\n")
 
         tree_name = 'GENERATE'
         tree = bpy.data.node_groups.get(tree_name)
@@ -191,14 +208,11 @@ def generate(folder):
 
             nodes  = GEONODES
             props  = GEONODES_PROPS
-            static_nodes = 'nd'
 
         elif tree_type == 'ShaderNodeTree':
 
             nodes  = SHADERNODES
             props  = []
-
-            static_nodes = 'snd'
 
         # ===== Nodes as methods
 
@@ -221,15 +235,171 @@ def generate(folder):
         NodeInfo.gen_static_nodes(gen, nodes, tree_type=tree_type, verbose=False)
 
     # ====================================================================================================
+    # Add constructors with subtypes
+    # ====================================================================================================
+
+    _1 = " "*4
+    _2 = _1*2
+    for socket_type, d in gen_config.SOCKETS.items():
+
+        subtypes = d.get('subtypes', ['NONE'])
+        if not len(subtypes):
+            subtypes = ['NONE']
+
+        for subtype in subtypes:
+
+            create_socket = subtype == 'NONE'
+            if create_socket:
+                name  = d['class_name']
+                fname = "_create_input_socket"
+            else:
+                name  = "".join([s.title() for s in subtype.split('_')])
+                fname = name
+
+            props = d['props']
+            class_name = d['class_name']
+            ptype, def_val = gen_config.PYTHON_TYPES.get(class_name, (object, None))
+            if isinstance(ptype, object):
+                ptype = 'object'
+
+            # ---------------------------------------------------------------------------
+            # Arguments
+            # ---------------------------------------------------------------------------
+
+            args = {}
+
+            # ----- Value, Name
+
+            args['value'] = (
+                f": {ptype} = {def_val}",
+                f" ({ptype} = {def_val}) : Default value",
+                'value')
+            args['name']  = (
+                f": str = '{name}'", 
+                f" (str = '{name}') : Input socket name", 
+                'name')
+            
+            # ----- sort properties
+            
+            sorted_props = []
+            if 'min' in props:
+                sorted_props.extend(['min', 'max'])
+            sorted_props.append('tip')
+
+            for prop in props:
+                if prop in sorted_props or prop == 'subtype':
+                    continue
+                sorted_props.append(prop)
+
+            for prop in sorted_props:
+                prop_val = props[prop]
+
+                stype = prop_val[1]
+                doctype = stype
+                sdef = f"'{prop_val[2]}'" if stype == 'str' else prop_val[2]
+                scomm = f"Property {prop_val[0]}"
+                if isinstance(stype, tuple):
+                    stype = f"Literal{list(stype)}"
+                    doctype = 'str'
+                    sdef = f"'{prop_val[2]}'"
+                    scomm += f" in {prop_val[1]}"
+
+                args[prop] = (
+                    f": {stype} = {sdef}",
+                    f" ({doctype} = {sdef}) : {scomm}",
+                    prop,
+                )
+
+                if prop == "tip":
+                    args["panel"] = (': str = ""', '(str = "") : Panel name', "panel")
+
+            if len(d['subtypes']):
+                if create_socket:
+                    args["subtype"] = (
+                        f": str = 'NONE'",
+                        f"(str = 'NONE') : Socket sub type in {d['subtypes']}",
+                        "subtype",
+                    )
+                else:
+                    args["subtype"] = (None, None, f"'{subtype}'")
+
+            # ---------------------------------------------------------------------------
+            # Header
+            # ---------------------------------------------------------------------------
+
+            code = f"{_1}@classmethod\n"
+            code += f"{_1}def {fname}(cls,\n"
+            for arg_name, arg_val in args.items():
+                if arg_val[0] is not None:
+                    code += f"{_2}{arg_name}{arg_val[0]},\n"
+            code += f"{_1}     ):\n"
+
+            # ---------------------------------------------------------------------------
+            # Doc
+            # ---------------------------------------------------------------------------
+
+            code += f'{_2}""" > {name} Input\n\n'
+            code += f"{_2}New <#{class_name}> input with subtype '{subtype}'.\n\n"
+
+            code += f"{_2}Aguments\n"
+            code += f"{_2}--------\n"
+            for arg_name, arg_val in args.items():
+                if arg_val[0] is not None:
+                    code += f"{_2}- {arg_name} {arg_val[1]}\n"
+            code += "\n"
+
+            code += f"{_2}Returns\n"
+            code += f"{_2}-------\n"
+            code += f"{_2}- {class_name}\n"
+            code += f'{_2}"""\n'
+
+            # ---------------------------------------------------------------------------
+            # Code
+            # ---------------------------------------------------------------------------
+
+            if create_socket:
+
+                code += f"{_2}from ..treeclass import Tree\n\n"
+
+                bl_idname = d['ShaderNodeTree'] if d['GeometryNodeTree'] is None else d['GeometryNodeTree'] 
+
+                scall = f"return Tree.current_tree().create_input_socket('{bl_idname}', "
+
+            else:
+                scall = "return cls("
+
+
+            sep = ""
+            for arg_name, arg_val in args.items():
+                if arg_val[2] is not None:
+                    scall += f"{sep}{arg_name}={arg_val[2]}"
+                    sep = ", "
+
+            scall += ")"
+            tab =""
+            for line in textwrap.wrap(scall, width=100):
+                code += _2 + tab + line + "\n"
+                tab = " "*4
+
+            if name in gen['source'][class_name]:
+                print(gen['source'][class_name][name])
+                raise RuntimeError(f"The subtype constructor {name} already exists in class {class_name}.")
+
+            gen['source'][class_name][name] = code
+
+    # ====================================================================================================
     # Loop on the tree types
+    # ====================================================================================================
+    
     # Create the files
 
     print('='*100)
+    time_stamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     imports = []
     for class_name, funcs in gen['source'].items():
 
-        print("Create file", class_name)
+        #print("Create file", class_name)
         if class_name in ['nd', 'snd']:
             module = f"static_{class_name}"
         else:
@@ -237,10 +407,18 @@ def generate(folder):
 
         with open(path / f"{module}.py", 'w') as file:
 
+            file.write(f"# Generated {time_stamp}\n\n")
+
+            file.write(f"from __future__ import annotations\n")
             file.write("from .. socket_class import Socket\n")
-            file.write("from .. treeclass import Node, ColorRamp, NodeCurves\n")
-            file.write("from .. treeclass import utils\n")
+            file.write("from .. nodeclass import Node, ColorRamp, NodeCurves, MenuNode, IndexSwitchNode\n")
+            file.write("from .. import utils\n")
             file.write("from .. scripterror import NodeError\n")
+            file.write("from typing import TYPE_CHECKING, Literal, Union, Sequence\n")
+            file.write("\nif TYPE_CHECKING:\n")
+            for klass in gen_config.GEOMETRY_CLASSES + gen_config.ATTRIBUTE_CLASSES + ['String']:
+                file.write(f"    class {klass}: ...\n")
+            file.write("\n")
             file.write("\n")
 
             if class_name == 'gnmath':
@@ -254,7 +432,6 @@ def generate(folder):
                 file.write(f"    a = {class_name}.math(1, 2, operation='ADD')\n")
                 file.write( "    ```\n")
                 file.write( '    """\n\n')
-
 
                 imports.append(f"from .{module} import {class_name}")
 
@@ -276,8 +453,9 @@ def generate(folder):
     with open(path / "__init__.py", 'w') as file:
         file.write("\n".join(imports))
 
-    # ----------------------------------------------------------------------------------------------------
+    # ====================================================================================================
     # Complete auto reference with manual implementation
+    # ====================================================================================================
 
     cross = gen['cross']
 
@@ -287,7 +465,6 @@ def generate(folder):
     with open(path / "cross_reference.py", 'w') as file:
         file.write("CROSS_REF = ")
         file.write(pformat(cross))
-
 
     print("Done")
 
@@ -378,3 +555,6 @@ def build_implement_dict():
         print(f"{sname:28s}:", "[{}],")
     print("}")
     print()
+
+
+

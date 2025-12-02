@@ -72,7 +72,8 @@ from typing import Callable, Any, Iterable, List, Optional
 
 from . import constants
 
-from .treeclass import Tree, Node
+from .treeclass import Tree
+from .nodeclass import Node
 from .scripterror import NodeError
 from .treeinterface import TreeInterface
 

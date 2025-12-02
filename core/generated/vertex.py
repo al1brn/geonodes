@@ -1,14 +1,39 @@
+# Generated 2025-12-01 20:32:44
+
+from __future__ import annotations
 from .. socket_class import Socket
-from .. treeclass import Node, ColorRamp, NodeCurves
-from .. treeclass import utils
+from .. nodeclass import Node, ColorRamp, NodeCurves, MenuNode, IndexSwitchNode
+from .. import utils
 from .. scripterror import NodeError
+from typing import TYPE_CHECKING, Literal, Union, Sequence
+
+if TYPE_CHECKING:
+    class Geometry: ...
+    class Mesh: ...
+    class Curve: ...
+    class Cloud: ...
+    class Instances: ...
+    class Volume: ...
+    class GrasePencil: ...
+    class Boolean: ...
+    class Integer: ...
+    class Float: ...
+    class Vector: ...
+    class Color: ...
+    class Matrix: ...
+    class Rotation: ...
+    class String: ...
+
 
 class Vertex(Socket):
     """"
     $DOC SET hidden
     """
     @classmethod
-    def corners(cls, vertex_index=None, weights=None, sort_index=None):
+    def corners(cls,
+                    vertex_index: Integer = None,
+                    weights: Float = None,
+                    sort_index: Integer = None):
         """ > Node <&Node Corners of Vertex>
 
         Arguments
@@ -21,11 +46,14 @@ class Vertex(Socket):
         -------
         - node [corner_index (Integer), total (Integer)]
         """
-        node = Node('Corners of Vertex', sockets={'Vertex Index': vertex_index, 'Weights': weights, 'Sort Index': sort_index})
+        node = Node('Corners of Vertex', {'Vertex Index': vertex_index, 'Weights': weights, 'Sort Index': sort_index})
         return node
 
     @classmethod
-    def corner_index(cls, vertex_index=None, weights=None, sort_index=None):
+    def corner_index(cls,
+                    vertex_index: Integer = None,
+                    weights: Float = None,
+                    sort_index: Integer = None):
         """ > Node <&Node Corners of Vertex>
 
         Arguments
@@ -38,11 +66,14 @@ class Vertex(Socket):
         -------
         - corner_index
         """
-        node = Node('Corners of Vertex', sockets={'Vertex Index': vertex_index, 'Weights': weights, 'Sort Index': sort_index})
+        node = Node('Corners of Vertex', {'Vertex Index': vertex_index, 'Weights': weights, 'Sort Index': sort_index})
         return node.corner_index
 
     @classmethod
-    def corners_total(cls, vertex_index=None, weights=None, sort_index=None):
+    def corners_total(cls,
+                    vertex_index: Integer = None,
+                    weights: Float = None,
+                    sort_index: Integer = None):
         """ > Node <&Node Corners of Vertex>
 
         Arguments
@@ -55,11 +86,14 @@ class Vertex(Socket):
         -------
         - total
         """
-        node = Node('Corners of Vertex', sockets={'Vertex Index': vertex_index, 'Weights': weights, 'Sort Index': sort_index})
+        node = Node('Corners of Vertex', {'Vertex Index': vertex_index, 'Weights': weights, 'Sort Index': sort_index})
         return node.total
 
     @classmethod
-    def edges(cls, vertex_index=None, weights=None, sort_index=None):
+    def edges(cls,
+                    vertex_index: Integer = None,
+                    weights: Float = None,
+                    sort_index: Integer = None):
         """ > Node <&Node Edges of Vertex>
 
         Arguments
@@ -72,11 +106,14 @@ class Vertex(Socket):
         -------
         - node [edge_index (Integer), total (Integer)]
         """
-        node = Node('Edges of Vertex', sockets={'Vertex Index': vertex_index, 'Weights': weights, 'Sort Index': sort_index})
+        node = Node('Edges of Vertex', {'Vertex Index': vertex_index, 'Weights': weights, 'Sort Index': sort_index})
         return node
 
     @classmethod
-    def edge_index(cls, vertex_index=None, weights=None, sort_index=None):
+    def edge_index(cls,
+                    vertex_index: Integer = None,
+                    weights: Float = None,
+                    sort_index: Integer = None):
         """ > Node <&Node Edges of Vertex>
 
         Arguments
@@ -89,11 +126,14 @@ class Vertex(Socket):
         -------
         - edge_index
         """
-        node = Node('Edges of Vertex', sockets={'Vertex Index': vertex_index, 'Weights': weights, 'Sort Index': sort_index})
+        node = Node('Edges of Vertex', {'Vertex Index': vertex_index, 'Weights': weights, 'Sort Index': sort_index})
         return node.edge_index
 
     @classmethod
-    def edges_total(cls, vertex_index=None, weights=None, sort_index=None):
+    def edges_total(cls,
+                    vertex_index: Integer = None,
+                    weights: Float = None,
+                    sort_index: Integer = None):
         """ > Node <&Node Edges of Vertex>
 
         Arguments
@@ -106,10 +146,10 @@ class Vertex(Socket):
         -------
         - total
         """
-        node = Node('Edges of Vertex', sockets={'Vertex Index': vertex_index, 'Weights': weights, 'Sort Index': sort_index})
+        node = Node('Edges of Vertex', {'Vertex Index': vertex_index, 'Weights': weights, 'Sort Index': sort_index})
         return node.total
 
-    def extrude(self, offset=None, offset_scale=None):
+    def extrude(self, offset: Vector = None, offset_scale: Float = None):
         """ > Node <&Node Extrude Mesh>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -129,7 +169,7 @@ class Vertex(Socket):
         -------
         - Mesh [top_ (Boolean), side_ (Boolean)]
         """
-        node = Node('Extrude Mesh', sockets={'Mesh': self, 'Selection': self._sel, 'Offset': offset, 'Offset Scale': offset_scale}, mode='VERTICES')
+        node = Node('Extrude Mesh', {'Mesh': self, 'Selection': self._sel, 'Offset': offset, 'Offset Scale': offset_scale}, mode='VERTICES')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -141,7 +181,7 @@ class Vertex(Socket):
         -------
         - node [vertex_count (Integer), face_count (Integer)]
         """
-        node = Node('Vertex Neighbors', sockets={})
+        node = Node('Vertex Neighbors', )
         return node
 
     @classmethod
@@ -153,7 +193,7 @@ class Vertex(Socket):
         -------
         - vertex_count
         """
-        node = Node('Vertex Neighbors', sockets={})
+        node = Node('Vertex Neighbors', )
         return node.vertex_count
 
     @classmethod
@@ -165,10 +205,10 @@ class Vertex(Socket):
         -------
         - face_count
         """
-        node = Node('Vertex Neighbors', sockets={})
+        node = Node('Vertex Neighbors', )
         return node.face_count
 
-    def to_points(self, position=None, radius=None):
+    def to_points(self, position: Vector = None, radius: Float = None):
         """ > Node <&Node Mesh to Points>
 
         Information
@@ -186,6 +226,6 @@ class Vertex(Socket):
         -------
         - Cloud
         """
-        node = Node('Mesh to Points', sockets={'Mesh': self, 'Selection': self._sel, 'Position': position, 'Radius': radius}, mode='VERTICES')
+        node = Node('Mesh to Points', {'Mesh': self, 'Selection': self._sel, 'Position': position, 'Radius': radius}, mode='VERTICES')
         return node._out
 

@@ -41,11 +41,11 @@ __license__ = "GNU GPL V3"
 __version__ = "3.0.0"
 __blender_version__ = "4.3.0"
 
-import numpy as np
+from typing import Literal
 
-import bpy
 from . import utils
-from .treeclass import Tree, Node, ColorRamp, NodeCurves
+from .treeclass import Tree
+from .nodeclass import Node, ColorRamp, NodeCurves
 from .socket_class import Socket
 from .  import generated
 
@@ -59,8 +59,18 @@ class Color(generated.Color):
 
     SOCKET_TYPE = 'RGBA'
 
-    def __init__(self, value=(0., 0., 0., 1.), name=None, tip=None, panel="",
-        default_attribute="", hide_value=False, hide_in_modifier=False, single_value=False):
+    def __init__(self, 
+        value: Socket | tuple = (0, 0, 0, 1),
+        name: str = None,
+        tip: str = '',
+        panel: str = "",
+        optional_label: bool = False,
+        hide_value: bool = False,
+        hide_in_modifier: bool = False,
+        default: tuple = (0.0, 0.0, 0.0, 1.0),
+        default_attribute: str = '',
+        shape: Literal['AUTO', 'SINGLE'] = 'AUTO',
+        ):
         """ Socket of type COLOR (RGBA)
 
         > Nodes <&Node RGB> <&Node Combine Color> <&Node Color>
@@ -69,12 +79,14 @@ class Color(generated.Color):
         ---------
         - value (tuple or Socket = (0, 0, 0, 1)) : initial value
         - name (str = None) : Create an Group Input socket with the provided str if not None
-        - tip (str = None) : User tip (for Group Input sockets)
-        - panel (str = None) : panel name (overrides tree panel if exists)
-        - default_attribute (str = "") : default attribute name
-        - hide_value (bool = False) : Hide Value option
-        - hide_in_modifier (bool = False) : Hide in Modifier option
-        - single_value (bool = False) : Single Value option
+        - tip  (str = '') : Property description
+        - panel (str = "") : Panel name
+        - optional_label  (bool = False) : Property optional_label
+        - hide_value  (bool = False) : Property hide_value
+        - hide_in_modifier  (bool = False) : Property hide_in_modifier
+        - default  (tuple = (0.0, 0.0, 0.0, 1.0)) : Property default_value
+        - default_attribute  (str = '') : Property default_attribute_name
+        - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
         """
 
         if isinstance(value, str) and not utils.str_is_color(value):
@@ -83,37 +95,31 @@ class Color(generated.Color):
         bsock = utils.get_bsocket(value)
         if bsock is None:
             if name is None:
-                if True:
-                    a = utils.value_to_color(value)
-
-                else:
-                    if np.shape(value) == (3,):
-                        a = (value[0], value[1], value[2], 1)
-                    else:
-                        a = utils.value_to_array(value, (4,))
+                a = utils.value_to_color(value)
 
                 if utils.has_bsocket(a):
-                    if Tree.is_geonodes:
+                    if Tree.is_geonodes():
                         bsock = Node('Combine Color', {0: a[0], 1: a[1], 2:a[2], 3:a[3]})._out
                     else:
                         bsock = Node('Combine Color', {0: a[0], 1: a[1], 2:a[2]})._out
 
-                elif Tree.is_geonodes:
+                elif Tree.is_geonodes():
                     bsock = Node('Color', value=a)._out
 
                 else:
-                    bsock = Node('RGB')._out
+                    bsock = Node('Color')._out
                     bsock._bsocket.default_value = a
+                    #bsock = Node('Color', color=a)._out
+                    #bsock = Node('RGB')._out
+                    #bsock._bsocket.default_value = a
             else:
-                bsock = Tree.new_input('NodeSocketColor', name, value=value, panel=panel,
-                    description             = tip,
-                    default_attribute_name  = default_attribute,
-                    hide_value              = hide_value,
-                    hide_in_modifier        = hide_in_modifier,
-                    force_non_field         = single_value,
-                )
+                bsock = self._create_input_socket(value=value, name=name, tip=tip,
+                    panel=panel, optional_label=optional_label, hide_value=hide_value,
+                    hide_in_modifier=hide_in_modifier, default=default, default_attribute=default_attribute,
+                    shape=shape)
 
         super().__init__(bsock)
+
 
     # ====================================================================================================
     # Constructors
@@ -399,3 +405,46 @@ class Color(generated.Color):
         node = NodeCurves('RGB Curves', sockets={'Color': self, 'Fac': fac})
         node.set_curves(curves)
         return node._out
+    
+    # ====================================================================================================
+    # Class test    
+    # ====================================================================================================
+
+    @classmethod
+    def _class_test(cls):
+
+        from geonodes import GeoNodes, Mesh, Layout, Color, Texture
+
+        with GeoNodes("Color Test"):
+            
+            with Layout("Base"):
+                a = Color()
+                a = a.mix_darken(Color((1, 1, 1)))
+                a = a.mix_multiply(Color(name="Defaut"))
+                a = a.mix_burn((1, 0, 0), Color(name="Red"))
+                a = a.mix(Color.CombineHSV(hue=.5, saturation=.5, value=.5))
+                
+            a.hue.out()
+                
+            with Layout("Named Attribute"):
+                g = Mesh()
+                g.points._Color = a
+                
+                g.points._Mixed = a.mix(Color("Color"))
+
+            with Layout("Textures"):
+                c = Texture.Brick()
+                c = c.mix(Texture.Checker())
+                c = c.mix(Texture.Gabor())
+                c = c.mix(Texture.Gradient())
+                c = c.mix(Texture.Magic())
+                c = c.mix(Texture.Noise())
+                c = c.mix(Texture.Voronoi())
+                c = c.mix(Texture.Wave())
+                c = c.mix(Texture.WhiteNoise())
+                
+                g.edges._Textures = c
+                
+            g.out()
+
+

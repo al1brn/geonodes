@@ -14,7 +14,7 @@ suffix       = 'suffix'
 operation    = 'operation'
 self_        = 'self_'
 domain       = 'domain_value'
-only_enabled = 'only_enabled'
+enabled_only = 'enabled_only'
 rename       = 'rename'
 is_cm        = 'is_class_method'
 check        = 'check_existing'
@@ -32,21 +32,13 @@ set_sock     = 'setter_sockets'
 get_sock     = 'getter_sockets'
 
 
-NODES_WITH_ITEMS = {
-    'Format String' : {
-        'name'        : "items",
-        'socket_type' : "String, Integer, Float",
-        'comment'     : "values to use in the format string" 
-    },
-}
-
-
 GEONODES = {
+
 'Align Rotation to Vector' :    [{f: 'C', name: 'AlignToVector',  ign_sock: {'Rotation'}},
                                  {f: 'C', name: 'AlignXToVector', ign_sock: {'Rotation'}, parameters: {'axis': 'X'}},
                                  {f: 'C', name: 'AlignYToVector', ign_sock: {'Rotation'}, parameters: {'axis': 'Y'}},
                                  {f: 'C', name: 'AlignZToVector', ign_sock: {'Rotation'}, parameters: {'axis': 'Z'}},
-                                 {name: 'align_toVector'},
+                                 {name: 'align_to_vector'},
                                  {name: 'align_x_to_vector', parameters: {'axis': 'X'}},
                                  {name: 'align_y_to_vector', parameters: {'axis': 'Y'}},
                                  {name: 'align_z_to_vector', parameters: {'axis': 'Z'}},
@@ -219,7 +211,6 @@ GEONODES = {
 'Curves to Grease Pencil' :     [{name: 'to_grease_pencil'}],
 'Deform Curves on Surface' :    [{name: 'deform_on_surface'}],
 'Delete Geometry'    :          [{}, {name: 'delete'}],
-'Distribute Points in Grid' :   [{f: 'C', name: 'DistributeInGrid'}],
 'Distribute Points in Volume' : [{name: 'distribute_points'}],
 'Distribute Points on Faces' :  [{},
                                  {param_loop: 'distribute_method', prefix: 'distribute_points_on_faces_'},
@@ -250,10 +241,6 @@ GEONODES = {
 
 'Geometry to Instance' :        [{name: 'to_instance'},
                                  {f: 'C', name: 'FromGeometry'}
-                                ],
-'Get Named Grid'     :          [{},
-                                 {parameters: {'data_type': 'FLOAT'},  name: 'named_float_grid' },
-                                 {parameters: {'data_type': 'VECTOR'}, name: 'named_vector_grid'},
                                 ],
 'Dial Gizmo'         :          [{}],
 'Linear Gizmo'       :          [{}],
@@ -319,9 +306,9 @@ GEONODES = {
 'Interpolate Curves' :          [{f: 'C', name: 'Interpolate'}, {name: 'interpolate'}, {self_: 'Points'}],
 'Is Viewport'        :          [{f: 'get', klass: 'Boolean'}],
 'Join Geometry'      :          [{name: 'join'}, {f: 'C', name: 'Join'}],
-'Match String'       :          [{f: 'op'}, {f: 'math'}],
+'Match String'       :          [{}], # V5 [{f: 'op'}, {f: 'math'}],
 'Material Selection' :          [{klass: 'Mesh'}, {klass: 'Curve'}],
-'Menu Switch'        :          [{f: 'MANUAL'}],
+'Menu Switch'        :          [{}], #[{f: 'MANUAL'}],
 'Merge by Distance'  :          [{'mode_loop': False}, {name: 'merge'}],
 'Merge Layers'       :          [{rename: {'merge_by_name': 'by_name', 'merge_by_id': 'by_id'}}],
 'Mesh Boolean'       :          [{name: 'boolean'}, {f: 'C', name: 'Boolean'},
@@ -336,7 +323,6 @@ GEONODES = {
 'Ico Sphere'         :          [{f: 'C'}],
 'Mesh Line'          :          [{f: 'C', name: 'Line'}],
 'Mesh to Curve'      :          [{name: 'to_curve'}],
-'Mesh to Density Grid' :        [{name: 'to_density_grid'}],
 'Mesh to Points'     :          [{name: 'to_points', 'mode_loop': False},
                                  {param_loop: 'mode', suffix: '_to_points'},
                                  {name: 'to_points', parameters: {'mode': 'VERTICES'}, klass: 'Vertex'},
@@ -344,7 +330,6 @@ GEONODES = {
                                  {name: 'to_points', parameters: {'mode': 'EDGES'},    klass: 'Edge'},
                                  {name: 'to_points', parameters: {'mode': 'CORNERS'},  klass: 'Corner'},
                                 ],
-'Mesh to SDF Grid'   :          [{name: 'to_sdf_grid'}],
 'Mesh to Volume'     :          [{name: 'to_volume'}],
 'UV Sphere'          :          [{f: 'C', name: 'UVSphere'}],
 'Object Info'        :          [{f: 'get', name: 'info', ret: 'NODE'}],
@@ -353,14 +338,13 @@ GEONODES = {
 'Points'             :          [{f: 'C'}],
 'Points of Curve'    :          [{klass: 'Curve'}, {f: 'get_out_loop', klass: 'Spline', rename: {'total': 'points_total'}}],
 'Points to Curves'   :          [{name: 'to_curves'}],
-'Points to SDF Grid' :          [{name: 'to_sdf_grid'}],
 'Points to Vertices' :          [{name: 'to_vertices'}],
 'Points to Volume'   :          [{name: 'to_volume'}],
 'Geometry Proximity' :          [{name: 'proximity'}, {param_loop: 'target_element', prefix: 'proximity_'}],
-'Raycast'            :          [{ret: 'NODE'}, {param_loop: 'mapping', prefix: 'raycast_', ret: 'NODE'}],
+'Raycast'            :          [{ret: 'NODE'}], # V5, {param_loop: 'mapping', prefix: 'raycast_', ret: 'NODE'}],
 'Realize Instances'  :          [{name: 'realize', jump: False}],
 'Remove Named Attribute' :      [{},
-                                 {name: 'remove_names', parameters: {'pattern_mode': 'WILDCARD'}}
+                                 # V5{name: 'remove_names', parameters: {'pattern_mode': 'WILDCARD'}}
                                 ],
 'Repeat Input'       :          [{f: 'MANUAL'}],
 'Repeat Output'      :          [{f: 'MANUAL'}],
@@ -368,15 +352,12 @@ GEONODES = {
 'Resample Curve'     :          [{name: 'resample'}],
 'Reverse Curve'      :          [{name: 'reverse'}],
 'Rotate Instances'   :          [{name: 'rotate'}],
-'SDF Grid Boolean'   :          [{name: 'grid_boolean'}, {param_loop: 'operation', 'prefix': 'sdf_'}],
 'Sample Curve'       :          [{name: 'sample'}],
-'Sample Grid'        :          [{}],
-'Sample Grid Index'  :          [{}],
 'Sample Index'       :          [{}],
 'Sample Nearest'     :          [{}],
 'Sample Nearest Surface' :      [{}],
 'Sample UV Surface'  :          [{}],
-'Scale Elements'     :          [{name: 'scale'}, {param_loop: 'scale_mode', prefix: 'scale_'}],
+'Scale Elements'     :          [{name: 'scale'}], #V5, {param_loop: 'scale_mode', prefix: 'scale_'}],
 'Scale Instances'    :          [{name: 'scale'}],
 'Self Object'        :          [{f: 'C', name: 'Self'}],
 'Separate Components' :         [{f: 'get_out_loop'}],
@@ -407,7 +388,6 @@ GEONODES = {
 'Split Edges'        :          [{}, {name: 'split', klass: 'Edge'}],
 'Split to Instances' :          [{}],
 'Store Named Attribute' :       [{}, {name: 'store'}, {name: 'store_uv', parameters: {'domain': 'CORNER', 'data_type': 'FLOAT2'}}],
-'Store Named Grid'   :          [{}],
 'Join Strings'       :          [{name: 'join'}, {f: 'C', name: 'Join'}],
 'String to Curves'   :          [{name: 'to_curves'}],
 'Subdivide Curve'    :          [{name: 'subdivide'}],
@@ -421,7 +401,7 @@ GEONODES = {
 'Selection'          :          [{f: 'STATIC'}],
 'Set Face Set'       :          [{}],
 'Set Selection'      :          [{}],
-'Transform Geometry' :          [{only_enabled: False, name: 'transform'}], #, 'mode_loop': False}], #, {name: 'transform'}],
+'Transform Geometry' :          [{enabled_only: False, name: 'transform'}], #, 'mode_loop': False}], #, {name: 'transform'}],
 'Translate Instances' :         [{name: 'translate'}],
 'Triangulate'        :          [{}],
 'Trim Curve'         :          [{name: 'trim'}],
@@ -431,7 +411,7 @@ GEONODES = {
 'Viewer'             :          [{ret: None}],
 'Viewport Transform' :          [{f: 'STATIC'}],
 'Volume Cube'        :          [{f: 'C', name: 'Cube'}],
-'Volume to Mesh'     :          [{name: 'to_mesh'}, {param_loop: 'resolution_mode', prefix: 'to_mesh_'}],
+'Volume to Mesh'     :          [{name: 'to_mesh'}], #V5, {param_loop: 'resolution_mode', prefix: 'to_mesh_'}],
 'Warning'            :          [{parameters: {'warning_type': 'ERROR'},   name: 'error'},
                                  {parameters: {'warning_type': 'WARNING'}, name: 'warning'},
                                  {parameters: {'warning_type': 'INFO'},    name: 'info'},
@@ -543,6 +523,51 @@ GEONODES = {
 'Vector Rotate'      :          [{name: 'rotate'},
                                  {param_loop: 'rotation_type', prefix: 'rotate_'},
                                 ],
+
+'Grid to Mesh'       :          [{}],
+'Sample Grid'        :          [{}],
+'Sample Grid Index'  :          [{}],
+'Field to Grid'      :          [{}],
+'Advect Grid'        :          [{}],
+'Grid Curl'          :          [{}],
+'Grid Divergence'    :          [{}],
+'Grid Gradient'      :          [{}],
+'Grid Laplacian'     :          [{}],
+'Prune Grid'         :          [{}],
+'Voxelize Grid'      :          [{}],
+'Voxel Index'        :          [{klass: ('Float', 'Integer', 'Boolean', 'Vector')}],
+'SDF Grid Fillet'    :          [{}],
+'SDF Grid Laplacian' :          [{}],
+'SDF Grid Mean'      :          [{}],
+'SDF Grid Mean Curvature' :     [{}],
+'SDF Grid Median'    :          [{}],
+'SDF Grid Offset'    :          [{}],
+'Set Grid Background':          [{}],
+'Set Grid Transform' :          [{}],
+'Grid Info'          :          [{}],
+'Store Named Grid'   :          [{}],
+'Points to SDF Grid' :          [{name: 'to_sdf_grid'}],
+'Mesh to Density Grid' :        [{name: 'to_density_grid'}],
+'Distribute Points in Grid' :   [{}],
+'Get Named Grid'     :          [{ret: 'grid'}],
+'SDF Grid Boolean'   :          [{}, {param_loop: 'operation', 'prefix': 'sdf_'}],
+'Mesh to SDF Grid'   :          [{name: 'to_sdf_grid'}],
+
+'String to Value'    :          [{name:'to_value'}, {name: 'to_float', 'data_type': 'FLOAT'}, {name: 'to_integer', 'data_type': 'INT'}, ],
+'UV Tangent'         :          [{klass: 'Vector', self_: 'UV'}],
+'Enable Output'      :          [{self_: 'Value'}],
+'Join Bundle'        :          [{name: 'join'}],
+'Gamma'              :          [{}],
+'Radial Tiling'      :          [{}],
+'Combine Bundle'     :          [{f: 'C', name: 'Combine'}],
+'Separate Bundle'    :          [{}],
+'Evaluate Closure'   :          [],  # Manual implementation
+
+
+
+
+
+
 }
 
 GEONODES_PROPS = [
@@ -635,7 +660,7 @@ SHADERNODES = {
 'Specular BSDF'             : [{f: 'C', name: 'Specular'}],
 'Emission'                  : [{f: 'C'}],
 'Fresnel'                   : [{}],
-'Gamma'                     : [{}],
+#'Gamma'                     : [{}],
 'Group'                     : [{f: 'STATIC'}],
 'Curves Info'               : [{f: 'STATIC'}],
 'Holdout'                   : [{f: 'C'}],
@@ -657,7 +682,10 @@ SHADERNODES = {
 'World Output'              : [{}],
 'Particle Info'             : [{f: 'STATIC'}],
 'Point Info'                : [{f: 'STATIC'}],
-'RGB'                       : [{f: 'C'}],
+
+#V5 'RGB'                       : [{f: 'C'}],
+'Color'              :          [{f: 'INIT'}],
+
 'RGB to BW'                 : [{}],
 'Script'                    : [{f: 'STATIC'}],
 'Separate Color'            : [{name: 'separate_col'}], # Homonym
@@ -668,7 +696,7 @@ SHADERNODES = {
 'Environment Texture'       : [{}],
 'IES Texture'               : [{}],
 'Image Texture'             : [{}],
-'Point Density'             : [{}],
+#V5 'Point Density'             : [{}],
 'Sky Texture'               : [{f: 'C'}],
 'UV Along Stroke'           : [{f: 'STATIC'}],
 'UV Map'                    : [{f: 'C'}],

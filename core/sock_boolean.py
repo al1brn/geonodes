@@ -42,11 +42,11 @@ __version__ = "3.0.0"
 __blender_version__ = "4.3.0"
 
 
-import numpy as np
+from typing import Literal
 
-import bpy
 from . import utils
-from . treeclass import Tree, Node
+from . treeclass import Tree
+from .nodeclass import Node
 from . socket_class import Socket
 from . import generated
 from . scripterror import NodeError
@@ -58,26 +58,38 @@ class Boolean(generated.Boolean):
 
     SOCKET_TYPE = 'BOOLEAN'
 
-    def __init__(self, value=False, name =None, tip=None, panel="",
-        default_attribute="", hide_value=False, layer_selection=False, hide_in_modifier=False, single_value=False):
+    def __init__(self, 
+        value: Socket | bool = False,
+        name: str = None,
+        tip: str = '',
+        panel: str = "",
+        optional_label: bool = False,
+        hide_value: bool = False,
+        hide_in_modifier: bool = False,
+        default: bool = False,
+        default_attribute: str = '',
+        layer_selection: bool = False,
+        shape: Literal['AUTO', 'SINGLE'] = 'AUTO',
+        ):
         """ Socket of type BOOLEAN
-
-        layer_selection_field
 
         > Node <&Node Boolean>
 
-        Arguments
-        ---------
-        - value (bool or Socket = False) : initial value
-        - name (str = None) : Create an Group Input socket with the provided str if not None
-        - tip (str = None) : User tip (for Group Input sockets)
-        - panel (str = None) : panel name (overrides tree pane if exists)
-        - default_attribute (str = "") : default attribute name
-        - hide_value (bool = False) : Hide Value option
-        - layer_selection (bool = False) : Layer selection field
-        - hide_in_modifier (bool = False) : Hide in Modifier option
-        - single_value (bool = False) : Single Value option
+        Aguments
+        --------
+        - value  (Socket | bool = False) : Default value
+        - name  (str = None) : Input socket name
+        - tip  (str = '') : Property description
+        - panel (str = "") : Panel name
+        - optional_label  (bool = False) : Property optional_label
+        - hide_value  (bool = False) : Property hide_value
+        - hide_in_modifier  (bool = False) : Property hide_in_modifier
+        - default  (bool = False) : Property default_value
+        - default_attribute  (str = '') : Property default_attribute_name
+        - layer_selection  (bool = False) : Property layer_selection_field
+        - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
         """
+        
         if isinstance(value, str):
             value = type(self).Named(value)
 
@@ -86,14 +98,10 @@ class Boolean(generated.Boolean):
             if name is None:
                 bsock = Node('Boolean', boolean=int(value))._out
             else:
-                bsock = Tree.new_input('NodeSocketBool', name, value=value, panel=panel,
-                    description             = tip,
-                    default_attribute_name  = default_attribute,
-                    hide_value              = hide_value,
-                    layer_selection_field   = layer_selection,
-                    hide_in_modifier        = hide_in_modifier,
-                    force_non_field         = single_value,
-                )
+                bsock = self._create_input_socket(value=value, name=name, tip=tip,
+                    panel=panel, optional_label=optional_label, hide_value=hide_value,
+                    hide_in_modifier=hide_in_modifier, default=default, default_attribute=default_attribute,
+                    layer_selection=layer_selection, shape=shape)
 
         super().__init__(bsock)
 
@@ -103,7 +111,7 @@ class Boolean(generated.Boolean):
     @classmethod
     def Input(cls, name='Boolean', value=False, tip=None):
         tree = Tree.CURRENT
-        return tree.new_input('NodeSocketBool', name=name, value=value, description=tip)
+        return tree.create_input_socket('NodeSocketBool', name=name, value=value, description=tip)
 
     # ----------------------------------------------------------------------------------------------------
     # Operations
@@ -142,3 +150,41 @@ class Boolean(generated.Boolean):
 
     def __bool__(self):
         raise NodeError(f"Boolean Socket is not a python bool. Use 'switch' method or operators & | ")
+    
+    # ====================================================================================================
+    # Class test    
+    # ====================================================================================================
+
+    @classmethod
+    def _class_test(cls):
+
+        from geonodes import GeoNodes, Mesh, Layout, Boolean
+
+        with GeoNodes("Boolean Test"):
+            
+            with Layout("Base"):
+                a = Boolean(False, "False Entry")
+                b = Boolean(True, "True Entry")
+                c = Boolean(True)
+
+                d = (a | b) & c
+                d &= True
+                
+                d = d.bnot().warning("No output")
+                
+            with Layout("Named Attribute"):
+                g = Mesh()
+                g.points._Bool = a
+                
+                b = Boolean("Bool") | a
+                g.faces.store("Another bool", b)
+
+            with Layout("Grid Attribute"):
+                vol = g.to_volume()
+                print("DEBUG BOOL TEST", vol, type(vol))
+                vol.store_named_grid("Bool A", a)
+            
+            vol.enable_output(d).out()
+
+
+

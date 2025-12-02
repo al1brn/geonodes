@@ -43,7 +43,8 @@ __blender_version__ = "4.3.0"
 
 import bpy
 from . import constants, utils
-from .treeclass import Tree, Node
+from .treeclass import Tree
+from .nodeclass import Node
 from .socket_class import Socket
 from . import generated
 
@@ -52,8 +53,16 @@ class Image(generated.Image):
 
     SOCKET_TYPE = 'IMAGE'
 
-    def __init__(self, value=None, name=None, tip=None, panel="",
-        hide_value=False, hide_in_modifier=False):
+    def __init__(self, 
+        value: Socket | str = None, 
+        name: str = None, 
+        tip: str = '',
+        panel: str = "",
+        optional_label: bool = False,
+        hide_value: bool = False,
+        hide_in_modifier: bool = False,
+        default: object = None,
+        ):
         """ Class Image data socket
 
         Node <&Node Image>
@@ -62,10 +71,12 @@ class Image(generated.Image):
         ---------
         - value (bpy.types.Image or str = None) : image or image name in bpy.data.images
         - name (str = None) : create a group input socket of type Image if not None
-        - tip (str = None) : user tip for group input socket
-        - panel (str = None) : panel name (overrides tree panel if exists)
-        - hide_value (bool = False) : Hide Value option
-        - hide_in_modifier (bool = False) : Hide in Modifier option
+        - tip  (str = '') : Property description
+        - panel (str = "") : Panel name
+        - optional_label  (bool = False) : Property optional_label
+        - hide_value  (bool = False) : Property hide_value
+        - hide_in_modifier  (bool = False) : Property hide_in_modifier
+        - default  (object = None) : Property default_value
         """
         bsock = utils.get_bsocket(value)
         if bsock is None:
@@ -73,10 +84,35 @@ class Image(generated.Image):
             if name is None:
                 bsock = Node('Image', image=image)._out
             else:
-                bsock = Tree.new_input('NodeSocketImage', name=name, value=image, panel=panel,
-                    description             = tip,
-                    hide_value              = hide_value,
-                    hide_in_modifier        = hide_in_modifier,
-                )
+                bsock = self._create_input_socket(value=value, name=name, tip=tip,
+                    panel=panel, optional_label=optional_label, hide_value=hide_value,
+                    hide_in_modifier=hide_in_modifier, default=default)
 
         super().__init__(bsock)
+
+    # ====================================================================================================
+    # Class test    
+    # ====================================================================================================
+
+    @classmethod
+    def _class_test(cls):
+
+        from geonodes import GeoNodes, Image, nd, Bundle, Geometry
+
+        with GeoNodes("Image Test"):
+
+            with Bundle() as b1:
+                Image().info().node.out()
+                
+                
+            with Bundle() as b2:
+                Image(name="Your Image").info().node.out()
+                
+            Geometry().out()
+            
+            b1.separate().node.out(panel="First")
+            b2.separate().node.out(panel="Second")
+
+
+
+

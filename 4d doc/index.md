@@ -79,7 +79,7 @@ class V4:
     def __init__(self, V, w):
 
         # Get the current tree
-        tree = geopy.current_tree()
+        tree = geopy.current_tree()()
 
         # The arguments can be either a socket or a value
         if hasattr(V, 'bsocket'):
@@ -103,13 +103,13 @@ class V4:
     # ...
 
     def dot(self, other):
-        with geopy.current_tree().layout("Dot 4", V4_COL):
+        with geopy.current_tree()().layout("Dot 4", V4_COL):
             return self.V.dot(other.V) + self.w*other.w
 
     # ...
 
     def __add__(self, other):
-        with geopy.current_tree().layout("V4 Add", V4_COL):
+        with geopy.current_tree()().layout("V4 Add", V4_COL):
             return V4(self.V + other.V, self.w + other.w)
 ```
 
@@ -121,7 +121,7 @@ If can read these information directly from the geometry or sample it:
 class V4:
     @classmethod
     def Position(cls, geo, sample_index=None):
-        with geopy.current_tree().layout("Get Position V4", V4_COL):
+        with geopy.current_tree()().layout("Get Position V4", V4_COL):
             if sample_index is None:
                 return cls(geo.position, geo.named_float("w"))
             else:
@@ -138,7 +138,7 @@ class V4:
         # Need to sample w before setting the position because w can be computed
         # from the position (for instance after a rotation)
         # Changing the position would change w before it is written
-        with geopy.current_tree().layout("Set Position V4", V4_COL):
+        with geopy.current_tree()().layout("Set Position V4", V4_COL):
             w = geo.POINT.sample_index_float(self.w, index=geo.index)
             geo.position = self.V
             return geo.store_named_float("w", w)

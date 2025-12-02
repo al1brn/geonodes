@@ -47,8 +47,6 @@ __author__ = "Alain Bernard"
 __email__  = "lesideesfroides@gmail.com"
 __copyright__ = "Copyright (c) 2025, Alain Bernard"
 __license__ = "GNU GPL V3"
-__version__ = "3.0.0"
-__blender_version__ = "4.3.0"
 
 
 import numpy as np
@@ -59,9 +57,11 @@ import mathutils
 from . scripterror import NodeError
 from . import constants
 from . import utils
-from . treeinterface import DELETION
-from . treeclass import TreeInterface, Tree, Node
-from . proplocker import PropLocker
+from .treeinterface import TreeInterface
+from .treeclass import Tree
+from .nodeclass import Node, MenuNode, IndexSwitchNode
+from .proplocker import PropLocker
+from .inoutcontext import InOutContext
 
 # =============================================================================================================================
 # =============================================================================================================================
@@ -113,6 +113,7 @@ class Socket(NodeCache, PropLocker):
 
     # ====================================================================================================
     # Initialization
+    # ====================================================================================================
 
     def __init__(self, socket):
         """ > The output socket of a <!Node>
@@ -154,12 +155,13 @@ class Socket(NodeCache, PropLocker):
         ---------
         - socket (NodeSocket) : the output socket to wrap
         """
-        self._tree = Tree.current_tree
+        
+        self._tree = Tree.current_tree()
 
         # ----- Socket is the name of an attribute
 
         if isinstance(socket, str):
-            raise NodeError(f"Socket '{self._class_name}' is not an attribute. Impossible to create a named attribute '{socket}'")
+            raise NodeError(f"Socket '{self._class_name()}' is not an attribute. Impossible to create a named attribute '{socket}'")
 
         # ----- Socket is a socket :-)
 
@@ -169,15 +171,34 @@ class Socket(NodeCache, PropLocker):
         else:
             self._bsocket = bsocket
 
-        self._reset()
+        # ----- Local attributes before locking
+        self._layout = None
+        self._use_layout = True
 
+        self._reset()
         self._lock()
+
+    # ====================================================================================================
+    # Utilities
+    # ====================================================================================================
+
+    def __str__(self):
+        return f"<{self._class_name()} {self.SOCKET_TYPE} [{self.node._bnode.name}].'{self._bsocket.name}'>"
+
+    # ----------------------------------------------------------------------------------------------------
+    # Reset cache
+    # ----------------------------------------------------------------------------------------------------
 
     def _reset(self):
         self._cache_reset()
         self._if = None
 
+    # ----------------------------------------------------------------------------------------------------
+    # Jump to another output socket
+    # ----------------------------------------------------------------------------------------------------
+
     def _jump(self, socket, reset=True):
+
         bsocket = utils.get_bsocket(socket)
         if bsocket is None:
             raise NodeError(f"Socket error: Impossible to jump to socket {socket}")
@@ -185,30 +206,36 @@ class Socket(NodeCache, PropLocker):
         self._bsocket = bsocket
         if reset:
             self._reset()
-        return self
 
-    # ----- Used when we need the geometry of a domain
+        return self
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Geometry from domain
+    # ----------------------------------------------------------------------------------------------------
+
     @property
     def _domain_to_geometry(self):
         return self
 
+    # ----------------------------------------------------------------------------------------------------
+    # Class name
+    # ----------------------------------------------------------------------------------------------------
+
     @classmethod
-    @property
     def _class_name(cls):
         return cls.__name__.split('.')[-1]
 
-    @classmethod
-    @property
-    def _is_attribute(cls):
-        return cls.class_name in constants.ATTRIBUTE_CLASSES
+    # ----------------------------------------------------------------------------------------------------
+    # Is an attribute
+    # ----------------------------------------------------------------------------------------------------
 
-    # ====================================================================================================
-    # Interface socket
-    #
-    # Interface socket exists only for group input and output sockets, either in the
+    @classmethod
+    def _is_attribute(cls):
+        return cls._class_name() in constants.ATTRIBUTE_CLASSES
 
     # ----------------------------------------------------------------------------------------------------
-    # Is a group input or output socket
+    # Group input or output
+    # ----------------------------------------------------------------------------------------------------
 
     @property
     def _is_group_input(self):
@@ -223,7 +250,8 @@ class Socket(NodeCache, PropLocker):
         return self._is_group_input or self._is_group_output
 
     # ----------------------------------------------------------------------------------------------------
-    # Get the interface socket
+    # Get the interfacre socket (for Group node or tree input / output)
+    # ----------------------------------------------------------------------------------------------------
 
     @property
     def _interface_socket(self):
@@ -238,31 +266,30 @@ class Socket(NodeCache, PropLocker):
         """
         node_blid = self.node._bnode.bl_idname
 
-        # ----------------------------------------------------------------------------------------------------
-        # Socket is a tree socket
         if node_blid in ['NodeGroupInput', 'NodeGroupOutput']:
-            return self.node._tree._interface.by_identifier(self._bsocket.identifier)
+            return self._tree._interface.by_identifier(self._bsocket.identifier)
 
         elif node_blid in ['GeometryNodeGroup', 'ShaderNodeGroup']:
             return TreeInterface(self.node._bnode.node_tree).by_identifier(self._bsocket.identifier)
 
         else:
             return None
-
+        
     # ----------------------------------------------------------------------------------------------------
-    # Mark for deletion
+    # Name or label
+    # ----------------------------------------------------------------------------------------------------
 
-    def _mark_for_delete(self, value):
-        for obj in [self._interface_socket, self._interface_socket.parent]:
-            if value:
-                obj.description = DELETION
-            else:
-                if obj.description == DELETION:
-                    obj.description = ""
-
+    @property
+    def node(self):
+        for node in self._tree._nodes:
+            if node._bnode == self._bsocket.node:
+                return node
+            
+        assert False, f"Shouldn't happen, {self._bsocket=}, {self._bsocket.node=}"
 
     # ----------------------------------------------------------------------------------------------------
     # Name or label
+    # ----------------------------------------------------------------------------------------------------
 
     @property
     def _name(self):
@@ -272,14 +299,11 @@ class Socket(NodeCache, PropLocker):
         -------
         - str : default is ""
         """
-        if self._bnode.label == "":
-            return self._bnode.name
-        else:
-            assert(self._bnode.label is not None)
-            return self._bnode.label
+        return utils.get_socket_name(self._bsocket)
 
     # ----------------------------------------------------------------------------------------------------
     # Get the panel name
+    # ----------------------------------------------------------------------------------------------------
 
     @property
     def _panel_name(self):
@@ -292,38 +316,49 @@ class Socket(NodeCache, PropLocker):
         i_socket = self._interface_socket
         if i_socket is None:
             return ""
-        else:
-            if i_socket.parent.name == "":
-                return ""
+        
+        names = []
+        cur = i_socket
+        while True:
+            if cur.parent.name == "":
+                break
+            names.append(cur.parent.name)
+            cur = cur.parent
 
-            #return i_socket.parent.name
-            interface = self._node._tree._interface
-            return interface.get_socket_panel_path(i_socket.identifier, python=False)
+        return " > ".join(reversed(names))
 
-    # ----------------------------------------------------------------------------------------------------
-    # Interface socket properties
+    # ====================================================================================================
+    # Default value property
+    # ====================================================================================================
 
-    def _set_interface_property(self, **props):
-        """ Set the interface socket properties values
+    @property
+    def default_value(self):
+        if not hasattr(self._bsocket, 'default_value'):
+            raise NodeError(f"Socket {self} has not default value.")
+        
+        return self._bsocket.default_value
+    
+    @default_value.setter
+    def default_value(self, value):
+        if not hasattr(self._bsocket, 'default_value'):
+            raise NodeError(f"Socket {self} has not default value.")
+        
+        self._bsocket.default_value = value
 
-        Interface sockets include min, max, hide_value,...
-        """
-
-        if not self._is_group_input:
-            raise NodeError(f"The socket {self} is not a group input socket. Impossible to set properties", **props)
-
+        # ----- Interface
         i_socket = self._interface_socket
-        for name, value in props.items():
-            setattr(i_socket, name, value)
+        if i_socket is not None:
+            i_socket.default_value = value
 
     # ====================================================================================================
     # Get a group input from its name and panel
+    # ====================================================================================================
 
     @classmethod
     def Input(cls, name: str, panel: str = ""):
         """ Get an group input from its name and panel
 
-        This constructor is used to get an tree input socket which has been previously created.
+        This constructor is used to get a tree input socket which has been previously created.
 
         This is typically used after connecting a group node to the tree inputs:
 
@@ -356,87 +391,36 @@ class Socket(NodeCache, PropLocker):
         -------
         - Socket
         """
-        tree = Tree.current_tree
-        #item = tree._interface.get_in_socket(name, panel, halt=True)
-        if panel == "":
-            item = tree._interface.get_socket('INPUT', name, halt=True)
-        else:
-            item = tree._interface.get_socket('INPUT', panel + ' > ' + name, halt=True)
+        return cls(Tree.current_tree().get_in_socket(name=name, panel=panel))
 
-        return cls(tree.input_node[item.identifier])
-
-
-    def __str__(self):
-        return f"<{self._class_name} {self.SOCKET_TYPE} [{self.node._bnode.name}].'{self._bsocket.name}'>"
 
     # ====================================================================================================
     # Socket type to data type conversion, depending on the nodes
+    # ====================================================================================================
 
     @classmethod
-    def socket_type(cls, restrict_to=None, default=None):
-        return utils.get_socket_type(cls, restrict_to=restrict_to, default=default)
+    def socket_type_OLD(cls, restrict_to=None, default=None):
+        return utils.get_value_socket_type(cls, restrict_to=restrict_to, default=default)
 
     @classmethod
-    def data_type(cls, restrict_to=None, default='FLOAT'):
+    def data_type_OLD(cls, restrict_to=None, default='FLOAT'):
         return utils.get_data_type(cls, restrict_to=restrict_to, default=default)
 
     @classmethod
-    def input_type(cls, restrict_to=None, default='FLOAT'):
-        return utils.get_input_type(cls, restrict_to=restrict_to, default=default)
+    def input_type_OLD(cls, restrict_to=None, default='FLOAT'):
+        return utils.get_value_socket_type(cls, restrict_to=restrict_to, default=default)
 
-    @classmethod
-    def get_socket_class(cls, value):
-
-        socket_type = utils.get_socket_type(value)
-
-        if Tree.is_geonodes:
-            from . import Boolean, Integer, Float, Vector, Rotation, Matrix, Color, String, Menu, Geometry
-            from . import Material, Image, Object, Collection, Texture
-            from . import Mesh, Curve, Cloud, Volume, Instances
-            socket_class = {
-                'BOOLEAN': Boolean, 'INT': Integer, 'VALUE': Float,
-                'VECTOR': Vector, 'ROTATION': Rotation, 'MATRIX': Matrix, 'RGBA': Color,
-                'STRING': String, 'MENU': Menu,
-                'GEOMETRY': Geometry,
-                'MATERIAL': Material, 'IMAGE': Image, 'OBJECT': Object,
-                'COLLECTION': Collection, 'TEXTURE': Texture,
-                }
-            return socket_class[socket_type]
-
-        elif Tree.is_shader:
-            from geonodes import Float, Vector, Color, String, Shader
-
-            socket_class = {
-                'VALUE': Float, 'VECTOR': Vector, 'RGBA': Color,
-                'STRING': String, 'SHADER': Shader,
-                }
-            return socket_class[socket_type]
-        else:
-            assert(False)
-
-    # ----- Math module
-
-    #@classmethod
-    #@property
-    #def math(cls):
-    #    from . import gnmath
-    #    return gnmath
+    @property
+    def is_grid(self):
+        """ bool property
+        
+        Returns True if socket is a grid (inferred_structure_type == 'GRID').
+        """
+        return self._bsocket.inferred_structure_type == 'GRID'
 
     # ====================================================================================================
     # Owning node
-
-    @property
-    def node(self):
-        """ Returns the node owning the socket.
-
-        Returns
-        -------
-        - Node
-        """
-        for node in self._tree._nodes:
-            if node._bnode == self._bsocket.node:
-                return node
-        return None
+    # ====================================================================================================
 
     @property
     def node_color(self):
@@ -501,13 +485,15 @@ class Socket(NodeCache, PropLocker):
 
     # =============================================================================================================================
     # Link node from
+    # =============================================================================================================================
 
     def link_from(self, **params):
         self.node.link_from(**params)
         return self
 
     # =============================================================================================================================
-    # New in 4.3 : pin gizmo
+    # Gizmo
+    # =============================================================================================================================
 
     @property
     def pin_gizmo(self):
@@ -517,49 +503,68 @@ class Socket(NodeCache, PropLocker):
     def pin_gizmo(self, value):
         self._bsocket.pin_gizmo = value
 
-    # =============================================================================================================================
+    # ====================================================================================================
     # Dynamic attributes
-    # Syntax:
-    # - Terminated by _ (value_) : peer socket
-    # - Starting by _ and a Capital : Named Attribute
+    # Can be either a named attribute or a sibling socket
+    # - peer socket: _ and a name starting with a Capital
+    # - sibling socket : the socket name or socket named ended with _
+    # ====================================================================================================
+
+    # ----------------------------------------------------------------------------------------------------
+    # Get attr
+    # ----------------------------------------------------------------------------------------------------
 
     def __getattr__(self, name):
 
-        # ----------------------------------------------------------------------------------------------------
-        # It is a named attribute
-        # Named attribute is _ followed by a Capital: _Attribute
+        # ---------------------------------------------------------------------------
+        # Named attribute : _ followed by a capital, e.g. : socket._Attribute
+        # ---------------------------------------------------------------------------
 
         attr_name = utils.get_attr_name(name)
         if attr_name is not None:
             if self.SOCKET_TYPE == 'GEOMETRY':
                 return self._tree.get_named_attribute(prop_name=name)
             else:
-                raise AttributeError(f"Class '{self._class_name}' doesn't support Named Attributes: impossible to get named attribute '{attr_name}' ({name}).")
+                raise AttributeError(f"Class '{self._class_name()}' doesn't support Named Attributes: impossible to get named attribute '{attr_name}' ({name}).")
 
-        # ----------------------------------------------------------------------------------------------------
-        # It is a peer socket
-        # Peer socket end with '_'
+        # ---------------------------------------------------------------------------
+        # Could by a sibling output socket
+        # ---------------------------------------------------------------------------
+
+        #out_socket = self.node.by_name('OUTPUT', name, as_argument=True, halt=False)
+        #if out_socket is not None:
+        #    return out_socket
+
+        # ---------------------------------------------------------------------------
+        # Sibling socket : ends with _, e.g. : socket.value_
+        # ---------------------------------------------------------------------------
 
         if len(name) > 1 and name[-2] != '_' and name[-1] == '_':
             return getattr(self.node, name[:-1])
 
-        # ----------------------------------------------------------------------------------------------------
-        # Specific message for _out
+        # ---------------------------------------------------------------------------
+        # Specific error message for '_out'
+        # ---------------------------------------------------------------------------
 
         if name == '_out':
             msg = "Node / Socket confusion: you tried to access to the default output socket of a node, "
             msg += f"but class {type(self).__name__} is a socket"
             raise NodeError(msg)
 
-        # ----------------------------------------------------------------------------------------------------
+        # ---------------------------------------------------------------------------
         # Attribute not found
+        # ---------------------------------------------------------------------------
 
         raise NodeError(f"Class {type(self).__name__} as no property named '{name}'", keyword=name)
-        #raise AttributeError(f"Class {type(self).__name__} as no property named '{name}'")
-
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Set attr
+    # ----------------------------------------------------------------------------------------------------
 
     def __setattr__(self, name, value):
+
         attr_name = utils.get_attr_name(name)
+        
         if attr_name is not None:
             msg = f"Impossible to store named attribute '{attr_name}' ({name}) in class '{type(self).__name__}'"
             if self.SOCKET_TYPE == 'GEOMETRY':
@@ -570,26 +575,21 @@ class Socket(NodeCache, PropLocker):
 
         return super().__setattr__(name, value)
 
-    # =============================================================================================================================
+    # ====================================================================================================
     # Test a value in a list
+    # ====================================================================================================
 
     @staticmethod
     def check_in_list(value, valids, context=""):
         if value in valids:
             return True
         raise NodeError(f"{context} value error: '{value}' is not valid.", valids=valids)
-
-    # =============================================================================================================================
-    # Node data type value
-
-    def get_node_data_type(self, node_name, value='SELF', default=None):
-
-        return utils.get_node_data_type(node_name, self._tree._btree.bl_idname, self if value=='SELF' else value, default=default)
-
-    # =============================================================================================================================
+    
+    # ====================================================================================================
     # To output
+    # ====================================================================================================
 
-    def out(self, name=None, **props):
+    def out(self, name: str = None, panel: str = "", **props):
         """ Plug the value to the Group Output Node.
 
         ``` python
@@ -610,33 +610,173 @@ class Socket(NodeCache, PropLocker):
         -------
         - None
         """
-        tree = self._tree
-        bl_idname = self._bsocket.bl_idname
-        if name is None:
-            name = self.input_type().title()
 
-        # ----------------------------------------------------------------------------------------------------
-        # Output socket creation if
-        # - It doesn't already exist
-        # - The tree is not a group
+        # Ensure name
+        #if name is None:
+        #    name = type(self).__name__.split('.')[-1].title()
 
-        #if self.SOCKET_TYPE == 'GEOMETRY':
-        #    tree = Tree.current_tree
-        #    if not(tree._interface.has_out_geometry or tree._is_group):
-        #        tree.set_output_geometry(self, name)
-        #        return
+        out_node = self._tree.get_output_node()
+        out_node.set_input_socket(name=name, value=self, create=True, panel=panel, **props)
 
-        # ----------------------------------------------------------------------------------------------------
-        # New output socket
+    # ====================================================================================================
+    # Context
+    # ====================================================================================================
 
-        bsocket = tree.new_output(bl_idname, name, **props)
-        tree.link(self, bsocket)
+    @property
+    def _node_bl_idname(self):
+        return self.node._bnode.bl_idname
 
-    # =============================================================================================================================
+    # ----------------------------------------------------------------------------------------------------
+    # Create a new output socket
+    # ----------------------------------------------------------------------------------------------------
+
+    def create_output_socket(self, socket, name=None, panel="", default=False, **props):
+        """ Plug a socket into an input socket of the node owning this output socket.
+
+        If node as dynamic socket, the input socket is created.
+
+        Arguments
+        ---------
+        - socket (socket) : socket
+        - name (str) : Socket name
+        - panel (str = "") : Panel name
+        - props (dict) : socket properties
+
+        Returns
+        -------
+            Socket
+        """
+
+        items_name   = constants.NODE_WITH_IN_ITEMS.get(self._node_bl_idname, None)
+        bsocket      = utils.get_bsocket(socket)
+        layout       = self._layout
+        if layout is not None:
+            layout.title = utils.get_node_name(self._tree._btree.bl_idname, self._node_bl_idname)
+
+        # ---------------------------------------------------------------------------
+        # No dynamic items : with plug to an existing socket
+        # ---------------------------------------------------------------------------
+
+        if items_name is None:
+            for isock in self.node._bnode.inputs:
+
+                if (name is not None) and (utils.get_socket_name(isock) != name):
+                    continue
+                if isock.type != bsocket.type:
+                    continue
+                if isock.is_linked:
+                    if not isock.is_multi_input:
+                        continue
+
+                Tree.current_tree().link(socket, isock)
+
+                layout.title = layout.title + f" - socket '{isock.name}'"
+
+                return isock
+            
+            sname = "" if name is None else f" named '{name}'"
+            raise NodeError(f"Impossible to link socket {socket} to node {self.node}: no free {bsocket.type} input socket{sname}.")
+            
+        # ---------------------------------------------------------------------------
+        # Dynamic items : we create a new input socket
+        # ---------------------------------------------------------------------------
+
+        bl_idname = self._node_bl_idname
+        if bl_idname == 'GeometryNodeIndexSwitch':
+
+            if True:
+                index = self.node._add_item(socket, default=default)
+            else:
+                items = self.node._bnode.index_switch_items
+
+                index = len(items)
+                items.new()
+                self.node[index + 1] = socket
+                if default or index == 0:
+                    self.node.set_default_value(index)
+
+            layout.title = layout.title + f" - socket {index}"
+
+            return self.node._bnode.inputs[index]
+        
+        # Ensure name
+        if name is None:            
+            socket_type = utils.bl_idname_to_socket_type(bsocket.type)
+            name = socket_type.title()
+
+        # Create the socket
+        self.node._set_items(items_name, named_sockets={name: socket}, clear=False, plug_items=True, **props)
+
+        # Menu switch default
+        if bl_idname == 'GeometryNodeMenuSwitch':
+            default = default or len(self.node._bnode.enum_items) == 1
+            if default:
+                self.node.set_default_value(name)
+
+        # Layout title
+        if layout is not None:
+            layout.title = layout.title + f" - socket '{name}'"
+
+        return self.node._bnode.inputs[-2] # Exclude CUSTOM
+    
+    # ====================================================================================================
+    # Context management
+    # ====================================================================================================
+
+    def _push(self):
+
+        from .treeclass import Layout
+
+        # Push in the capture inout stack
+        #self._tree._capture_inout.append(self)
+
+        self.node._push()
+
+        # Push a Layout dedicated this context
+        # (will be removed by arrange if no node is created)
+        if self._use_layout:
+            self._layout = Layout()
+            self._layout.push()
+
+    def _pop(self):
+
+        self.node._pop()
+
+        # Pop inout capture and layout
+        #self._tree._capture_inout.pop()
+        if self._use_layout:
+            self._layout.pop()
+
+    def __enter__(self):
+        self._push()
+        return self
+    
+    def __exit__(self, type, exc_value, traceback):
+        self._pop()
+
+    # ====================================================================================================
+    # Get the signature
+    # ====================================================================================================
+
+    def get_signature(self, include: list = None, exclude: list = [], enabled_only=True, with_sockets: bool = False):
+        """ Build the closure signature of the node.
+
+        Arguments
+        ---------
+        - include (list = None) : sockets to include
+        - exclude (list = []) : sockets to exclude
+        - enabled_only (bool = True) : ignore disabled sockets
+        - with_sockets (bool = False) : include sockets
+
+        Returns
+        -------
+        - Signature
+        """
+        return self.node.get_signature(include=include, exclude=exclude, enabled_only=enabled_only, with_sockets=with_sockets)
+
+    # ====================================================================================================
     # Constructors
-
-    # -----------------------------------------------------------------------------------------------------------------------------
-    # Menu switch
+    # ====================================================================================================
 
     @staticmethod
     def _geometry_class(geometries):
@@ -644,7 +784,7 @@ class Socket(NodeCache, PropLocker):
         for geo in geometries:
             if geo is None:
                 continue
-            if utils.get_socket_type(geo) != 'GEOMETRY':
+            if utils.get_value_socket_type(geo) != 'GEOMETRY':
                 return None
             if geo_class is None:
                 geo_class = type(geo)
@@ -652,17 +792,28 @@ class Socket(NodeCache, PropLocker):
                 if not isinstance(geo, geo_class):
                     return None
         return geo_class
+    
+    # ====================================================================================================
+    # Menu Switch
+    # ====================================================================================================
+
+    # ----------------------------------------------------------------------------------------------------
+    # Constructor version
+    # ----------------------------------------------------------------------------------------------------
 
     @classmethod
-    def MenuSwitch(cls, items={'A': None, 'B': None}, menu=0, name="Menu", tip=None, panel="",
-        hide_value=False, hide_in_modifier=False, single_value=False):
+    def MenuSwitch(cls, 
+                   named_sockets: dict = {},
+                   menu = None,
+                   default_value: str = None,
+                   **sockets):
         """ > Node <&Node Menu Switch>
 
         The items of the Menu Switch node are provided in the 'items' dict.
         An group input socket named after the 'name' argument is linked to menu selector.
 
         ``` python
-        with GeoNodes("Menu Switch demo"):
+        with GeoNodes("MenuSwitch demo") as tree:
 
             # Create some geometries
             geo    = Geometry()
@@ -671,7 +822,7 @@ class Socket(NodeCache, PropLocker):
             cone   = Mesh.Cone()
 
             # Pick in this list
-            pick_geo = Geometry.MenuSwitch({"Input": geo, "Cube": cube, "Sphere": sphere, "Cone": cone}, menu="Cube")
+            pick_geo = Geometry.MenuSwitch({"Cube": cube, "Sphere": sphere, "Cone": cone}, menu=tree.new_input("Pick Geometry"), default_value="Cone", Input=geo)
 
             # Plug the result to the output
             pick_geo.out()
@@ -679,55 +830,46 @@ class Socket(NodeCache, PropLocker):
 
         Arguments
         ---------
-        - items (dict) : menu names and values
-        - menu (int or str) : index or name of the default value
-        - name (str = 'Menu') : name of the group input socket
-        - tip (str = None) : user tip
-        - panel (str = "") : panel name
-        - hide_value (bool = False) : Hide Value option
-        - hide_in_modifier (bool = False) : Hide in Modifier option
-        - single_value (bool = False) : Single Value option
+        - named_sockets (dict = {}) : sockets to create
+        - menu (Socket | str = None) : socket to plug in
+        - default_value (str | int) : default value
+        - data_type (str = None): data type, auto if None
+        - sockets (dict) : items
 
         Returns
         -------
         - Socket
         """
-
-        # Create the node
-
-        node = Node('Menu Switch', data_type=cls.input_type())
-
-        # Set the items
-
-        node._set_items(items, clear=True)
-
-        # Plug the menu
-
-        if isinstance(menu, int):
-            menu = list(items.keys())[menu]
-
-        menu_socket = Tree.new_input('NodeSocketMenu', name=name, value=None, panel=panel,
-            description             = tip,
-            hide_value              = hide_value,
-            hide_in_modifier        = hide_in_modifier,
-            force_non_field         = single_value)
-
-        node["Menu"] = menu_socket
-        Tree.current_tree.set_input_socket_default(menu_socket, menu)
-
-        # Done
-
+        node = MenuNode(
+                named_sockets = named_sockets,
+                menu = menu,
+                default_value = default_value,
+                data_type = cls.input_type(),
+                **sockets)
+        
         return cls(node._out)
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Method version
+    # ----------------------------------------------------------------------------------------------------
 
-    # -----------------------------------------------------------------------------------------------------------------------------
-    # Index switch
+    def menu_switch(self,
+                self_name: str = 'Self', 
+                named_sockets: dict = {},
+                menu = None,
+                default_value: str = None,
+                **sockets):
+        """ > Node <&Node Menu Switch>
 
-    @classmethod
-    def IndexSwitch(cls, *values, index=0):
-        """ > Node <&Node Index Switch>
+        [&NO_JUMP]
 
-        ``` python
-        with GeoNodes("Index Switch demo"):
+        Self is connected to the first menu item with the name provided as argument.
+
+        The items of the Menu Switch node are provided in the 'items' dict.
+        An group input socket named after the 'name' argument is linked to menu selector.
+
+        ``` python            
+        with GeoNodes("menu_switch demo") as tree:
 
             # Create some geometries
             geo    = Geometry()
@@ -736,7 +878,58 @@ class Socket(NodeCache, PropLocker):
             cone   = Mesh.Cone()
 
             # Pick in this list
-            pick_geo = Geometry.IndexSwitch(geo, cube, sphere, cone, index=Integer(2, 'Index'))
+            pick_geo = geo.menu_switch(
+                "Input Geometry",
+                {"Cube": cube, "Sphere": sphere},
+                menu=tree.new_input("Pick Geometry"), # Create a group input socket
+                default_value="Cone", 
+                Cone=cone)
+
+            # Plug the result to the output
+            pick_geo.out()
+        ```
+
+        Arguments
+        ---------
+        - named_sockets (dict = {}) : sockets to create
+        - menu (Socket | str = None) : socket to plug in
+        - default_value (str | int) : default value
+        - data_type (str = None): data type, auto if None
+        - sockets (dict) : items
+
+        Returns
+        -------
+        - Socket
+        """        
+        return self.MenuSwitch(
+            named_sockets = {self_name: self, **named_sockets},
+            menu = menu,
+            default_value = default_value,
+            **sockets)
+    
+    # ====================================================================================================
+    # Index Switch
+    # ====================================================================================================
+
+    # ----------------------------------------------------------------------------------------------------
+    # Constructor version
+    # ----------------------------------------------------------------------------------------------------
+
+    @classmethod
+    def IndexSwitch(cls, *values, index = None):
+        """ > Node <&Node Index Switch>
+
+        ``` python
+        with GeoNodes("IndexSwitch demo"):
+
+            # Create some geometries
+            geo    = Geometry()
+            cube   = Mesh.Cube()
+            sphere = Mesh.IcoSphere()
+            cone   = Mesh.Cone()
+
+            # Pick in this list
+            pick_geo = Geometry.IndexSwitch(geo, cube, sphere, cone, index=tree.new_input("Geometry index", default_value=2))
 
             # Plug the result to the output
             pick_geo.out()
@@ -745,41 +938,55 @@ class Socket(NodeCache, PropLocker):
         Arguments
         ---------
         - *values : list of Sockets to select into
-        - index (Integer) : socket 'Index' (Index)
+        - index (Integer = None) : socket 'Index' (Index)
 
         Returns
         -------
         - Socket
         """
+        return IndexSwitchNode(*values, index=index, data_type=cls.input_type())._out
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Method version
+    # ----------------------------------------------------------------------------------------------------
 
-        # ----- Create the nodes
+    def index_switch(self, *values, index = None):
+        """ > Node <&Node Index Switch>
 
-        node = Node('Index Switch', data_type=cls.input_type())
+        ``` python
+        with GeoNodes("index_switch demo") as tree:
 
-        # ----- Create the items
+            # Create some geometries
+            geo    = Geometry()
+            cube   = Mesh.Cube()
+            sphere = Mesh.IcoSphere()
+            cone   = Mesh.Cone()
 
-        enum_items = node._bnode.index_switch_items
-        for i, item in enumerate(list(values)):
+            # Pick in this list
+            pick_geo = geo.index_switch(cube, sphere, cone, index=tree.new_input("Geometry index", default_value=2))
 
-            # ----- Create the socket
+            # Plug the result to the output
+            pick_geo.out()
+        ```
 
-            if i >= len(enum_items):
-                enum_items.new()
+        Arguments
+        ---------
+        - *values : list of Sockets to select into
+        - index (Integer = None) : socket 'Index' (Index)
 
-            # ----- Plug the value
-
-            node[1 + i] = item
-
-        # ----- Plug the index
-
-        node["Index"] = index
-
-        # ----- Done
-
-        return cls(node._out)
-
-    # -----------------------------------------------------------------------------------------------------------------------------
+        Returns
+        -------
+        - Socket
+        """
+        return self.IndexSwitch(self, *values, index=index)
+    
+    # ====================================================================================================
     # Switch
+    # ====================================================================================================
+
+    # ----------------------------------------------------------------------------------------------------
+    # Constructor version
+    # ----------------------------------------------------------------------------------------------------
 
     @classmethod
     def Switch(cls, condition=None, false=None, true=None):
@@ -811,82 +1018,9 @@ class Socket(NodeCache, PropLocker):
         """
         return cls(Node('Switch', {'Switch': condition, 'False': false, 'True': true}, input_type=cls.input_type(default='GEOMETRY'))._out)
 
-    # -----------------------------------------------------------------------------------------------------------------------------
-    # Method versions
-
-    def menu_switch(self, self_name='A', items={'B': None}, menu=0, name="Menu", tip=None, panel="",
-        hide_value=False, hide_in_modifier=False, single_value=False):
-        """ > Node <&Node Menu Switch>
-
-        [&NO_JUMP]
-
-        Self is connected to the first menu item with the name provided as argument.
-
-        ``` python
-        with GeoNodes("Menu Switch demo"):
-
-            # Create some geometries
-            geo    = Geometry()
-            cube   = Mesh.Cube()
-            sphere = Mesh.IcoSphere()
-            cone   = Mesh.Cone()
-
-            # Pick in this list
-            pick_geo = geo.menu_switch("Input", {"Cube": cube, "Sphere": sphere, "Cone": cone}, menu="Cube")
-
-            # Plug the result to the output
-            pick_geo.out()
-        ```
-
-        Arguments
-        ---------
-        - self_name (str = 'A') : name to use
-        - items (dict) : other menu names and values
-        - menu (int or str) : index or name of the default value
-        - name (str = 'Menu') : name of the group input socket
-        - tip (str = None) : user tip
-        - panel (str = "") : panel
-
-        Returns
-        -------
-        - Socket
-        """
-        return self.MenuSwitch({self_name: self, **items}, menu=menu, name=name, tip=tip, panel=panel,
-            hide_value=hide_value, hide_in_modifier=hide_in_modifier, single_value=single_value)
-
-    def index_switch(self, *values, index=0):
-        """ > Node <&Node Index Switch>
-
-        [&NO_JUMP]
-
-        Self is used as first socket in the node.
-
-        ``` python
-        with GeoNodes("Index Switch demo"):
-
-            # Create some geometries
-            geo    = Geometry()
-            cube   = Mesh.Cube()
-            sphere = Mesh.IcoSphere()
-            cone   = Mesh.Cone()
-
-            # Pick in this list
-            pick_geo = Geometry.IndexSwitch(geo, cube, sphere, cone, index=Integer(2, 'Index'))
-
-            # Plug the result to the output
-            pick_geo.out()
-        ```
-
-        Arguments
-        ---------
-        - *values : list of Sockets to select into
-        - index (Integer) : socket 'Index' (Index)
-
-        Returns
-        -------
-        - Socket
-        """
-        return self.IndexSwitch(self, *values, index=index)
+    # ----------------------------------------------------------------------------------------------------
+    # Method version
+    # ----------------------------------------------------------------------------------------------------
 
     def switch(self, condition=None, true=None):
         """ > Node <&Node Switch>
@@ -925,6 +1059,10 @@ class Socket(NodeCache, PropLocker):
         - Socket
         """
         return self.Switch(condition=condition, false=self, true=true)
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Alternative method version
+    # ----------------------------------------------------------------------------------------------------
 
     def switch_false(self, condition=None, false=None):
         """ > Node <&Node Switch>
@@ -977,7 +1115,7 @@ class Socket(NodeCache, PropLocker):
 
     # ====================================================================================================
     # if ... else ... mimicing
-
+    # ====================================================================================================
 
     @property
     def option(self):
@@ -1027,115 +1165,43 @@ class Socket(NodeCache, PropLocker):
         else:
             return self._if.current
 
-
-
     # ====================================================================================================
-    # Run tests
+    # Class Test
+    # ====================================================================================================
 
-    @classmethod
-    def _run_tests(cls):
+    @staticmethod
+    def _classes_test():
 
-        from geonodes import GeoNodes
+        from .utils import SOCKET_CLASSES
+        from .geonodes import GeoNodes
+        from .geometry_class import Geometry
 
-        import inspect
-        import re
-        from geonodes.core import constants
+        print()
+        print("Socket._class_test...")
+        print()
 
-        tree = None
+        with GeoNodes("Tree Inputs") as tree:
 
-        # ----------------------------------------------------------------------------------------------------
-        # Test Function
+            inps = []
+            vars = []
 
-        def test_func(f_name, f):
-            expr = r"<&Node *(?P<name>[^>]*)>"
-
-            if f.__doc__ is None:
-                return "No doc"
-
-            m = re.search(expr, f.__doc__, flags=re.MULTILINE)
-            if m is None:
-                return "No node"
-
-            node_name = m.group('name')
-            if node_name.lower() not in constants.NODE_NAMES[tree._btree.bl_idname]:
-                return f"Not in {tree._btree.bl_idname}"
-            node = Node(node_name)
-
-            argspec = inspect.getfullargspec(f)
-            call = []
-            used_args = []
-            i_offset = len(argspec.args) if argspec.defaults is None else len(argspec.args) - len(argspec.defaults)
-            for i, arg_name in enumerate(argspec.args):
-
-                if arg_name in ('self', 'cls'):
+            for stype, klass in SOCKET_CLASSES.items():
+                if stype == 'SHADER':
                     continue
 
-                i_def = i - i_offset
-                if i_def < 0:
-                    return "*args"
-                    call.append("Boolean()")
-                    used_args.append(arg_name)
-                    continue
+                class_name = klass.__name__
+                inps.append(klass(name=class_name))
+                vars.append(klass())
 
-                if node.in_socket(arg_name, halt=False) is None:
-                    continue
+            # Avoid error
+            Geometry().out()
 
-                if argspec.defaults[i_def] is None:
-                    call.append(f"{arg_name}=Integer(123)")
-                    used_args.append(arg_name)
+        for klass in SOCKET_CLASSES.values():
+            if hasattr(klass, '_class_test'):
+                print(f"Testing {klass}...")
+                klass._class_test()
 
-            # ----- Test
+        print("Socket._class_test done.")
 
-            code = f"from geonodes import *\n{cls.__name__}(Float(10)).{f_name}({', '.join(call)})"
-            try:
-                exec(code, globals(), None)
-            except Exception as e:
-                print()
-                print("ERROR in")
-                print('-'*100)
-                print(code)
-                print('-'*100)
-                return e
 
-            return "Ok : (" + ", ".join(used_args) + ')'
 
-        # ----------------------------------------------------------------------------------------------------
-        # Loop
-
-        tree = GeoNodes("TEST")
-
-        print(f"Testing {cls.__name__}...")
-
-        for name in dir(cls):
-            m = getattr(cls, name)
-            f = None
-            if inspect.isfunction(m):
-                f = m
-
-            elif inspect.ismethod(m):
-                f = m.__func__
-
-            elif isinstance(m, property):
-                continue
-                if m.fget is not None:
-                    print(f"{cls.__name__ + '.' + name:25s} - GETTER")
-                    print(m.fget)
-                    print("  ", inspect.getfullargspec(m.fget))
-                if m.fset is not None:
-                    print(f"{cls.__name__ + '.' + name:25s} - SETTER")
-                    print(m.fset)
-                    print("  ", inspect.getfullargspec(m.fset))
-
-                continue
-
-            else:
-                continue
-
-            print(f".  - {name:25s}", end = "")
-            e = test_func(name, f)
-            if isinstance(e, Exception):
-                print("ERROR")
-                raise (e)
-            print(e)
-
-        tree.pop()

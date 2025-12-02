@@ -41,21 +41,33 @@ __license__ = "GNU GPL V3"
 __version__ = "3.0.0"
 __blender_version__ = "4.3.0"
 
-import numpy as np
+from typing import Literal
 
-import bpy
 from . import utils
-from .treeclass import Tree, Node, ColorRamp
 from .socket_class import Socket
+from .nodeclass import Node
 from . import generated
 
 class Integer(generated.Integer):
 
     SOCKET_TYPE = 'INT'
 
-    def __init__(self, value=0, name=None, min=None, max=None, tip=None, panel="", subtype='NONE',
-        default_attribute="", default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False):
-
+    def __init__(self, 
+        value: Socket | int = 0, 
+        name: str = None,                  
+        min: int = -2147483648,
+        max: int = 2147483647,
+        tip: str = '',
+        panel: str = "",
+        optional_label: bool = False,
+        hide_value: bool = False,
+        hide_in_modifier: bool = False,
+        default: int = 0,
+        default_attribute: str = '',
+        default_input: Literal['VALUE', 'INDEX', 'ID_OR_INDEX'] = 'VALUE',
+        shape: Literal['AUTO', 'SINGLE'] = 'AUTO',
+        subtype: str = 'NONE',
+    ):
         """ > Socket of type INTEGER
 
         > Node <&Node Value>
@@ -78,16 +90,18 @@ class Integer(generated.Integer):
         ---------
         - value (integer or Socket = 0) : initial value
         - name (str = None) : Create an Group Input socket with the provided str if not None
-        - min (float = None) : minimum value
-        - max (float = None) : maximum value
-        - tip (str = None) : User tip (for Group Input sockets)
-        - panel (str = None) : panel name (overrides tree panel if exists)
-        - subtype (str in ('NONE', 'PERCENTAGE', 'FACTOR') = 'NONE') : sub type for group input
-        - default_attribute (str = "") : default attribute name
-        - default_input (str in ('VALUE', 'INDEX', 'ID_OR_INDEX') = 'VALUE') : default input
-        - hide_value (bool = False) : Hide Value option
-        - hide_in_modifier (bool = False) : Hide in Modifier option
-        - single_value (bool = False) : Single Value option
+        - min  (int = -2147483648) : Property min_value
+        - max  (int = 2147483647) : Property max_value
+        - tip  (str = '') : Property description
+        - panel (str = "") : Panel name
+        - optional_label  (bool = False) : Property optional_label
+        - hide_value  (bool = False) : Property hide_value
+        - hide_in_modifier  (bool = False) : Property hide_in_modifier
+        - default  (int = 0) : Property default_value
+        - default_attribute  (str = '') : Property default_attribute_name
+        - default_input  (str = 'VALUE') : Property default_input in ('VALUE', 'INDEX', 'ID_OR_INDEX')
+        - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
+        - subtype (str = 'NONE') : Socket sub type in ('NONE', 'PERCENTAGE', 'FACTOR')
         """
         if isinstance(value, str):
             value = type(self).Named(value)
@@ -97,19 +111,13 @@ class Integer(generated.Integer):
             if name is None:
                 bsock = Node('Integer', integer=int(value))._out
             else:
-                bsock = Tree.new_input('NodeSocketInt', name, value=value, panel=panel,
-                    subtype                 = subtype,
-                    min_value               = min,
-                    max_value               = max,
-                    description             = tip,
-                    default_attribute_name  = default_attribute,
-                    default_input           = default_input,
-                    hide_value              = hide_value,
-                    hide_in_modifier        = hide_in_modifier,
-                    force_non_field         = single_value,
-                )
+                bsock = self._create_input_socket(value=value, name=name, min=min,
+                    max=max, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value,
+                    hide_in_modifier=hide_in_modifier, default=default, default_attribute=default_attribute,
+                    default_input=default_input, shape=shape, subtype=subtype) 
 
         super().__init__(bsock)
+
 
     # ====================================================================================================
     # Default input constructors
@@ -146,38 +154,7 @@ class Integer(generated.Integer):
         return cls(value=None, name=name, tip=tip, panel=panel, default_input='ID_OR_INDEX', hide_in_modifier=hide_in_modifier)
 
     # ====================================================================================================
-    # Subtype constructors
-    # ('NONE', 'PERCENTAGE', 'FACTOR')
-
-    @classmethod
-    def Percentage(cls, value=0, name='Percentage', min=0, max=100, tip=None, panel="",
-        default_attribute="", default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False):
-        """ > Integer percentage group input
-
-        New <#Integer> input with subtype 'PERCENTAGE'.
-
-        Returns
-        -------
-        - Integer
-        """
-        return cls(value=value, name=name, min=min, max=max, tip=tip, subtype='PERCENTAGE',
-            default_attribute=default_attribute, default_input=default_input, hide_value=hide_value, hide_in_modifier=hide_in_modifier, single_value=single_value,
-            panel=panel)
-
-    @classmethod
-    def Factor(cls, value=0, name='Factor', min=0, max=100, tip=None, panel="",
-        default_attribute="", default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False):
-        """ > Integer factor group input
-
-        New <#Integer> input with subtype 'FACTOR'.
-
-        Returns
-        -------
-        - Integer
-        """
-        return cls(value=value, name=name, min=min, max=max, tip=tip, subtype='FACTOR',
-            default_attribute=default_attribute, default_input=default_input, hide_value=hide_value, hide_in_modifier=hide_in_modifier, single_value=single_value,
-            panel=panel)
+    # Constructors
 
     @classmethod
     def Random(cls, min=None, max=None, id=None, seed=None):
@@ -423,4 +400,34 @@ class Integer(generated.Integer):
     
     def __irshift__(self, other):
         return self._jump(self.bw_shift(-other))
+    
+    # ====================================================================================================
+    # Class test    
+    # ====================================================================================================
+
+    @classmethod
+    def _class_test(cls):
+
+        from geonodes import GeoNodes, Mesh, Layout, Integer
+
+        with GeoNodes("Integer Test"):
+            
+            with Layout("Base"):
+                a = Integer(123)
+                a += Integer(name="Your entry")
+                a *= Integer(1, name="Mul (1 def)")
+                
+            with Layout("Named Attribute"):
+                g = Mesh()
+                g.points._An_Int = a
+                
+                b = Integer("An Int") - a
+                g.faces.store("Another integer", b)
+                
+            with Layout("Grid Attribute"):
+                vol = g.to_volume()
+                vol.store_named_grid("Int A", a)
+            
+            vol.out()
+
     

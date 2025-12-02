@@ -98,8 +98,9 @@ d270   = np.pi*1.5
 d360   = tau
 e      = np.e
 
+from .core import PRODUCTION
 
-if True:
+if PRODUCTION:
     from .core import blender
 
     from .core import Boolean, Float, Integer, Vector, Rotation, Matrix, Color, String
@@ -111,23 +112,20 @@ if True:
 
     from .core import Layout, Panel, Break, Tree, Node, Group, GroupF, G, ColorRamp
     from .core import Zone, Repeat, Simulation, ForEachElement
+    from .core import Closure, Bundle
 
     from .core import GeoNodes
 
     from .core import gnmath, nd
 
-    from .core.pyswitch import If, Else, Elif
-
 
 # ----------------------------------------------------------------------------------------------------
 # Shader
 
-if True:
     from .core import snd, Shader, VolumeShader, ShaderNodes
 
 # ----------------------------------------------------------------------------------------------------
 # Register
 
-if True:
     from .core import treearrange
     treearrange.register()

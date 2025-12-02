@@ -16,12 +16,12 @@ Better use the context management syntax:
 with GeoNodes("My Tree"):
 
     # Get the current tree
-    tree = Tree.current_tree
+    tree = Tree.current_tree()
 
     pass
 
 # Returns None
-tree = Tree.current_tree
+tree = Tree.current_tree()
 ```
 
 > [!IMPORTANT]
@@ -143,12 +143,12 @@ Better use the context management syntax:
 with GeoNodes("My Tree"):
 
     # Get the current tree
-    tree = Tree.current_tree
+    tree = Tree.current_tree()
 
     pass
 
 # Returns None
-tree = Tree.current_tree
+tree = Tree.current_tree()
 ```
 
 > [!IMPORTANT]

@@ -26,7 +26,11 @@ from .vertex import Vertex
 from .splinepoint import SplinePoint
 from .volume import Volume
 from .image import Image
+from .menu import Menu
 from .texture import Texture
+from .material import Material
+from .bundle import Bundle
+from .closure import Closure
 from .cloudpoint import CloudPoint
 from .static_nd import nd
 from .shader import Shader

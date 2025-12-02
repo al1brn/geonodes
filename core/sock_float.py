@@ -42,11 +42,13 @@ __version__ = "3.0.0"
 __blender_version__ = "4.3.0"
 
 
+from typing import Literal
 import numpy as np
 
 import bpy
 from . import utils
-from .treeclass import Tree, Node, ColorRamp, NodeCurves
+from .treeclass import Tree
+from .nodeclass import Node, ColorRamp, NodeCurves
 from .socket_class import Socket
 from . import generated
 
@@ -65,8 +67,21 @@ class Float(generated.Float):
 
     SOCKET_TYPE = 'VALUE'
 
-    def __init__(self, value=0., name=None, min=None, max=None, tip=None, panel="", subtype='NONE',
-        default_attribute="", hide_value=False, hide_in_modifier=False, single_value=False):
+    def __init__(self, 
+        value: Socket | float = 0., 
+        name: str = None,
+        min: float = -3.40282e+38,
+        max: float = 3.40282e+38,
+        tip: str = '',
+        panel: str = "",
+        optional_label: bool = False,
+        hide_value: bool = False,
+        hide_in_modifier: bool = False,
+        default: float = 0.0,
+        default_attribute: str = '',
+        shape: Literal['AUTO', 'SINGLE'] = 'AUTO',
+        subtype: str = 'NONE',
+        ):
         """ > Socket of type VALUE
 
         > Node <&Node Value>
@@ -89,16 +104,17 @@ class Float(generated.Float):
         ---------
         - value (float | str | Socket = 0.) : initial value
         - name (str = None) : Create an Group Input socket with the provided str if not None
-        - min (float = None) : minimum value
-        - max (float = None) : maximum value
-        - tip (str = None) : User tip (for Group Input sockets)
-        - panel (str = None) : panel name (overrides tree pane if exists)
-        - subtype (str in ('NONE', 'PERCENTAGE', 'FACTOR', 'ANGLE', 'TIME', 'TIME_ABSOLUTE',
-          'DISTANCE', 'WAVELENGTH', 'COLOR_TEMPERATURE', 'FREQUENCY') = 'NONE') : sub type for group input
-        - default_attribute (str = "") : default attribute name
-        - hide_value (bool = False) : Hide Value option
-        - hide_in_modifier (bool = False) : Hide in Modifier option
-        - single_value (bool = False) : Single Value option
+        - min  (float = -3.40282e+38) : Property min_value
+        - max  (float = 3.40282e+38) : Property max_value
+        - tip  (str = '') : Property description
+        - panel (str = "") : Panel name
+        - optional_label  (bool = False) : Property optional_label
+        - hide_value  (bool = False) : Property hide_value
+        - hide_in_modifier  (bool = False) : Property hide_in_modifier
+        - default  (float = 0.0) : Property default_value
+        - default_attribute  (str = '') : Property default_attribute_name
+        - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
+        - subtype (str = 'NONE') : Socket sub type in ('NONE', 'PERCENTAGE', 'FACTOR', 'ANGLE', 'TIME', 'TIME_ABSOLUTE', 'DISTANCE', 'WAVELENGTH', 'COLOR_TEMPERATURE', 'FREQUENCY')
         """
 
         if isinstance(value, str):
@@ -110,148 +126,16 @@ class Float(generated.Float):
                 bsock = Node('Value')._out
                 bsock._bsocket.default_value = value
             else:
-                bsock = Tree.new_input('NodeSocketFloat', name, value=value, panel=panel,
-                    subtype                 = subtype,
-                    min_value               = min,
-                    max_value               = max,
-                    description             = tip,
-                    default_attribute_name  = default_attribute,
-                    hide_value              = hide_value,
-                    hide_in_modifier        = hide_in_modifier,
-                    force_non_field         = single_value,
-                )
+                bsock = self._create_input_socket(value=value, name=name, min=min,
+                    max=max, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value,
+                    hide_in_modifier=hide_in_modifier, default=default, default_attribute=default_attribute,
+                    shape=shape, subtype=subtype)
 
         super().__init__(bsock)
 
+
      # ====================================================================================================
      # Constructors
-     # ('NONE', 'PERCENTAGE', 'FACTOR', 'ANGLE', 'TIME', 'TIME_ABSOLUTE', 'DISTANCE', 'WAVELENGTH', 'COLOR_TEMPERATURE', 'FREQUENCY')
-
-    @classmethod
-    def Percentage(cls, value=0., name='Percentage', min=0, max=100, tip=None, panel="",
-        default_attribute="", hide_value=False, hide_in_modifier=False, single_value=False):
-        """ > Percentage group input
-
-        New <#Float> input with subtype 'PERCENTAGE'.
-
-        Returns
-        -------
-        - Float
-        """
-        return cls(value=value, name=name, min=min, max=max, tip=tip, subtype='PERCENTAGE', panel=panel,
-            default_attribute=default_attribute, hide_value=hide_value, hide_in_modifier=hide_in_modifier, single_value=single_value)
-
-    @classmethod
-    def Factor(cls, value=0., name='Factor', min=0, max=1, tip=None, panel="",
-        default_attribute="", hide_value=False, hide_in_modifier=False, single_value=False):
-        """ > Factor group input
-
-        New <#Float> input with subtype 'FACTOR'.
-
-        Returns
-        -------
-        - Float
-        """
-        return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel, subtype='FACTOR',
-            default_attribute=default_attribute, hide_value=hide_value, hide_in_modifier=hide_in_modifier, single_value=single_value)
-
-    @classmethod
-    def Angle(cls, value=0., name='Angle', min=None, max=None, tip=None, panel="",
-        default_attribute="", hide_value=False, hide_in_modifier=False, single_value=False):
-        """ > Angle group input
-
-        New <#Float> input with subtype 'ANGLE'.
-
-        Returns
-        -------
-        - Float
-        """
-        return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel, subtype='ANGLE',
-            default_attribute=default_attribute, hide_value=hide_value, hide_in_modifier=hide_in_modifier, single_value=single_value)
-
-    @classmethod
-    def Time(cls, value=0., name='Time', min=None, max=None, tip=None, panel="",
-        default_attribute="", hide_value=False, hide_in_modifier=False, single_value=False):
-        """ > Time group input
-
-        New <#Float> input with subtype 'TIME'.
-
-        Returns
-        -------
-        - Float
-        """
-        return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel, subtype='TIME',
-            default_attribute=default_attribute, hide_value=hide_value, hide_in_modifier=hide_in_modifier, single_value=single_value)
-
-    @classmethod
-    def TimeAbsolute(cls, value=0., name='Time Absolute', min=None, max=None, tip=None, panel="",
-        default_attribute="", hide_value=False, hide_in_modifier=False, single_value=False):
-        """ > Time Absolute group input
-
-        New <#Float> input with subtype 'TIME_ABSOLUTE'.
-
-        Returns
-        -------
-        - Float
-        """
-        return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel, subtype='TIME_ABSOLUTE',
-            default_attribute=default_attribute, hide_value=hide_value, hide_in_modifier=hide_in_modifier, single_value=single_value)
-
-    @classmethod
-    def Distance(cls, value=0., name='Distance', min=None, max=None, tip=None, panel="",
-        default_attribute="", hide_value=False, hide_in_modifier=False, single_value=False):
-        """ > Distance group input
-
-        New <#Float> input with subtype 'DISTANCE'.
-
-        Returns
-        -------
-        - Float
-        """
-        return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel, subtype='DISTANCE',
-            default_attribute=default_attribute, hide_value=hide_value, hide_in_modifier=hide_in_modifier, single_value=single_value)
-
-    @classmethod
-    def WaveLength(cls, value=0., name='Wave Length', min=None, max=None, tip=None, panel="",
-        default_attribute="", hide_value=False, hide_in_modifier=False, single_value=False):
-        """ > Wave Length group input
-
-        New <#Float> input with subtype 'WAVELENGTH'.
-
-        Returns
-        -------
-        - Float
-        """
-        return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel, subtype='WAVELENGTH',
-            default_attribute=default_attribute, hide_value=hide_value, hide_in_modifier=hide_in_modifier, single_value=single_value)
-
-    @classmethod
-    def ColorTemperature(cls, value=0., name='Color Temperature', min=None, max=None, tip=None, panel="",
-        default_attribute="", hide_value=False, hide_in_modifier=False, single_value=False):
-        """ > Color Temperature group input
-
-        New <#Float> input with subtype 'COLOR_TEMPERATURE'.
-
-        Returns
-        -------
-        - Float
-        """
-        return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel, subtype='COLOR_TEMPERATURE',
-            default_attribute=default_attribute, hide_value=hide_value, hide_in_modifier=hide_in_modifier, single_value=single_value)
-
-    @classmethod
-    def Frequency(cls, value=0., name='Frequency', min=None, max=None, tip=None, panel="",
-        default_attribute="", hide_value=False, hide_in_modifier=False, single_value=False):
-        """ > Frequency group input
-
-        New <#Float> input with subtype 'FREQUENCY'.
-
-        Returns
-        -------
-        - Float
-        """
-        return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel, subtype='FREQUENCY',
-            default_attribute=default_attribute, hide_value=hide_value, hide_in_modifier=hide_in_modifier, single_value=single_value)
 
     @classmethod
     def Random(cls, min=None, max=None, id=None, seed=None):
@@ -497,3 +381,34 @@ class Float(generated.Float):
 
     def thickness_out(self, target='ALL'):
         self._tree.set_thickness(self, target=target)
+
+    # ====================================================================================================
+    # Class test    
+    # ====================================================================================================
+
+    @classmethod
+    def _class_test(cls):
+
+        from geonodes import GeoNodes, Mesh, Layout, Float
+
+        with GeoNodes("Float Test"):
+            
+            with Layout("Base"):
+                a = Float(3.14)
+                a += Float(name="Your entry")
+                a *= Float(1., name="Mul (1 def)")
+
+                
+            with Layout("Named Attribute"):
+                g = Mesh()
+                g.points._A_Float = a
+                
+                b = Float("A Float") - a
+                g.faces.store("Another float", b)
+                
+            with Layout("Grid Attribute"):
+                vol = g.to_volume()
+                vol.store_named_grid("Float A", a)
+            
+            vol.out()
+

@@ -30,7 +30,8 @@ import numpy as np
 
 import bpy
 from ..core import utils
-from ..core.treeclass import Tree, Node
+from ..core.treeclass import Tree
+from ..core.nodeclass import Node
 from ..core.socket_class import Attribute
 
 # =============================================================================================================================

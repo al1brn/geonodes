@@ -49,8 +49,8 @@ import bpy
 
 X_SEPA = 60
 Y_SEPA = 40
-ZONE_INPUTS  = ['GeometryNodeRepeatInput', 'GeometryNodeSimulationInput', 'GeometryNodeForeachGeometryElementInput']
-ZONE_OUTPUTS = ['GeometryNodeRepeatOutput', 'GeometryNodeSimulationOutput', 'GeometryNodeForeachGeometryElementOutput']
+ZONE_INPUTS  = ['GeometryNodeRepeatInput', 'GeometryNodeSimulationInput', 'GeometryNodeForeachGeometryElementInput', 'Closure Input']
+ZONE_OUTPUTS = ['GeometryNodeRepeatOutput', 'GeometryNodeSimulationOutput', 'GeometryNodeForeachGeometryElementOutput', 'Closure Output']
 
 # =============================================================================================================================
 # A link
@@ -1039,13 +1039,33 @@ class Tree(Frame):
         - btree (bpy.types.Tree) : the tree to wrap
         - get_true_dims (bool) : read the dimensions from nodes are use an estimate
         """
+
         super().__init__(self, None)
         if isinstance(btree, str):
             btree = bpy.data.node_groups[btree]
         self.btree = btree
         self.get_true_dims = get_true_dims
 
-        # ----- Nodes
+        # ---------------------------------------------------------------------------
+        # Delete empty frames
+        # ---------------------------------------------------------------------------
+
+        frames = []
+        not_empty = set()
+        for node in self.btree.nodes:
+            if node.bl_idname == 'NodeFrame':
+                frames.append(node)
+            else:
+                if node.parent is not None:
+                    not_empty.add(node.parent.name)
+
+        for frame in frames:
+            if frame.name not in not_empty:
+                self.btree.nodes.remove(frame)
+
+        # ---------------------------------------------------------------------------
+        # Nodes
+        # ---------------------------------------------------------------------------
 
         self.nodes = {}
         for bnode in self.btree.nodes:

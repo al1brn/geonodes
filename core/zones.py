@@ -46,14 +46,18 @@ __blender_version__ = "4.3.0"
 
 from .scripterror import NodeError
 from . import utils
-from .treeclass import Tree, Node
+from .inoutcontext import InOutContext
+from .signature import Signature
+from .treeclass import Tree
+from .nodeclass import Node
 
-# =============================================================================================================================
+# ====================================================================================================
 # Node Items
+# ====================================================================================================
 
 class NodeItems:
 
-    def __init__(self, node, name, sockets={}, capture=[], **snake_case_sockets):
+    def __init__(self, node, name, named_sockets={}, capture=[], **sockets):
         """ > Node items property
 
         Some nodes have xxx_items collection for dynamic sockets. This class manages this behavior,
@@ -67,7 +71,14 @@ class NodeItems:
 
         # ----- Create the simulation state items in the output node
 
-        self._node._set_items(_items=sockets, items_name=name + '_items', plug_items=True, **snake_case_sockets)
+        if len(name) <= 6 or name[-6:] != '_items':
+            items_name = name + '_items'
+        else:
+            items_name = name
+
+        self._node._set_items(items_name, named_sockets=named_sockets, plug_items=True, **sockets)
+
+    # ----------------------------------------------------------------------------------------------------
 
     def get_inout(self, index, input=True):
         if isinstance(index, int):
@@ -93,6 +104,8 @@ class NodeItems:
 
         return None
 
+    # ----------------------------------------------------------------------------------------------------
+
     def __getitem__(self, index):
         item = self.get_inout(index, input=False)
         if item is None:
@@ -108,6 +121,8 @@ class NodeItems:
                 valids=[item for item in self._items])
         return item
 
+    # ----------------------------------------------------------------------------------------------------
+
     def __setattr__(self, name, value):
         if name.startswith('_'):
             super().__setattr__(name, value)
@@ -115,23 +130,37 @@ class NodeItems:
         else:
             current = self.get_inout(name, input=True)
             if current is None:
-                input_type = 'GEOMETRY' if value is None else utils.get_input_type(value)
+                input_type = 'GEOMETRY' if value is None else utils.get_value_socket_type(value)
                 self._items.new(input_type, name)
                 current = self.get_inout(name, input=True)
 
             self._node.plug_value_into_socket(value, current)
+
+    # ----------------------------------------------------------------------------------------------------
 
     def __getattr__(self, name):
         return self[name]
 
 # ====================================================================================================
 # A zone
+# ====================================================================================================
 
-class Zone:
+class Zone(InOutContext):
 
     ITEMS_NAME   = None # Name of node 'xxx_items' property (dynamic if None)
     PLUG_ON_EXIT = True # Plug loop variables to output node when exiting (False for ForEachElement)
     TEMP_ZONE    = True
+
+    def __str__(self):
+        return f"<{type(self).__name__} Zone, loop variables: {list(self._locals.keys())}>"
+
+    # ====================================================================================================
+    # Initialization
+    # ====================================================================================================
+
+    # ----------------------------------------------------------------------------------------------------
+    # Layout
+    # ----------------------------------------------------------------------------------------------------
 
     def init_layout(self):
         from geonodes import Layout
@@ -140,7 +169,11 @@ class Zone:
         else:
             self._layout = None
 
-    def init_zone(self, sockets={}, **snake_case_sockets):
+    # ----------------------------------------------------------------------------------------------------
+    # Zone
+    # ----------------------------------------------------------------------------------------------------
+
+    def init_zone(self, named_sockets={}, **sockets):
         """ > Two nodes zone
 
         **Zone** is the root class for <!Simulation>, <!Repeat> and <!ForEachElement> zones.
@@ -231,11 +264,11 @@ class Zone:
 
         # ----- Create the simulation state items in the output node
 
-        self._output._set_items(_items=sockets, items_name = self.ITEMS_NAME, plug_items=False, **snake_case_sockets)
+        self._output._set_items(self.ITEMS_NAME, named_sockets=named_sockets, plug_items=False, **sockets)
 
         # ----- Plug the sockets in the input node
 
-        all_sockets = {utils.snake_case(name): value for name, value in {**sockets, **snake_case_sockets}.items()}
+        all_sockets = {utils.snake_case(name): value for name, value in {**named_sockets, **sockets}.items()}
         for name, value in all_sockets.items():
             self._input.plug_value_into_socket(value, name)
 
@@ -254,28 +287,84 @@ class Zone:
 
         self._closed = True
 
-    def __str__(self):
-        return f"<{type(self).__name__} Zone, loop variables: {list(self._locals.keys())}>"
-
     # ====================================================================================================
     # Context management
+    # ====================================================================================================
 
-    def __enter__(self):
+    # ----------------------------------------------------------------------------------------------------
+    # Pushing
+    # ----------------------------------------------------------------------------------------------------
+
+    def push(self):
+
+        # ---------------------------------------------------------------------------
+        # A Closed: drives the attributes to input / output nodes
+        # ---------------------------------------------------------------------------
+
         self._closed = False
-        return self
 
-    def __exit__(self, exception_type, exception_value, traceback):
+        # ---------------------------------------------------------------------------
+        # B Push the layout
+        # ---------------------------------------------------------------------------
+
+        if self._layout is not None:
+            self._layout.push()
+
+        # ---------------------------------------------------------------------------
+        # C Capture the input creation sockets
+        # ---------------------------------------------------------------------------
+
+        Tree.current_tree()._capture_inout.append(self)
+
+    # ----------------------------------------------------------------------------------------------------
+    # Poping
+    # ----------------------------------------------------------------------------------------------------
+
+    def pop(self):
+
+        # ---------------------------------------------------------------------------
+        # A Close the zone
+        # ---------------------------------------------------------------------------
+
         self._closed = True
 
-        if self.PLUG_ON_EXIT:
-            for name, value in self._locals.items():
-                setattr(self._output, name, value)
+        # ---------------------------------------------------------------------------
+        # B Pop the layout
+        # ---------------------------------------------------------------------------
 
         if self._layout is not None:
             self._layout.pop()
 
+        # ---------------------------------------------------------------------------
+        # C end of capture
+        # ---------------------------------------------------------------------------
+
+        Tree.current_tree()._capture_inout.pop()
+
+        # ---------------------------------------------------------------------------
+        # Other: Plug the local variables to the output node inputs
+        # ---------------------------------------------------------------------------
+
+        if self._plug_on_exit:
+            for name, value in self._locals.items():
+                setattr(self._output, name, value)
+
+
+    def __enter__(self):
+        self.push()
+        return self
+
+    def __exit__(self, exception_type, exception_value, traceback):
+        self.pop()
+        return False
+    
     # ====================================================================================================
-    # Dynamic attributes
+    # Attributes
+    # ====================================================================================================
+
+    # ----------------------------------------------------------------------------------------------------
+    # Getting
+    # ----------------------------------------------------------------------------------------------------
 
     def __getattr__(self, name):
 
@@ -287,10 +376,7 @@ class Zone:
 
             if closed:
 
-                if True:
-                    val = getattr(self._output, name)
-                else:
-                    val = self._output.out_socket(name)
+                val = getattr(self._output, name)
 
                 # Ensure proper geometry type
                 loc_val = self._locals.get(name)
@@ -304,23 +390,23 @@ class Zone:
                 val = self._locals.get(name)
                 # Trying to access fixed sockets (such as 'Delta Time')
                 if val is None:
-                    if True:
-                        val = getattr(self._input, name)
-                    else:
-                        val = self._input.out_socket(name)
+                    val = getattr(self._input, name)
 
             if val is not None:
                 return val
 
-        #raise NodeError(f"{self} doesn't have input socket named '{name}'.")
         raise NodeError(f"{type(self).__name__} doesn't have input socket named '{name}'.")
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Setting
+    # ----------------------------------------------------------------------------------------------------
 
     def __setattr__(self, name, value):
 
-        if name == '_closed':
+        if name in ('_closed', '_plug_on_exit'):
             super().__setattr__(name, value)
             return
-
+        
         closed = self.__dict__.get('_closed')
         if closed is None:
             super().__setattr__(name, value)
@@ -337,14 +423,107 @@ class Zone:
             else:
                 self._output.plug_value_into_socket(value, name)
 
+    # ====================================================================================================
+    # InOutContext interface
+    # ====================================================================================================
+
+    # ----------------------------------------------------------------------------------------------------
+    # Create an input socket
+    # ----------------------------------------------------------------------------------------------------
+
+    def create_input_socket(self, bl_idname, name, value=None, panel="", **props):
+
+        items = getattr(self._output._bnode, self.ITEMS_NAME)
+        items.new(utils.bl_idname_to_socket_type(bl_idname), name)
+
+        index = None
+        socks = self._input._bnode.inputs
+        for i, sock in enumerate(socks):
+            if sock.name == name:
+                index = i
+                break
+
+        assert index is not None, f"Strange {name}, {[sock.name for name in socks]}."
+
+        socket = self._input[index]
+        if hasattr(socket._bsocket, 'default_value') and value is not None:
+            socket._bsocket.default_value = value
+
+        return socket
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Create a new input socket from an existing node input socket
+    # ----------------------------------------------------------------------------------------------------
+
+    def create_input_from_socket(self, input_socket, name=None, panel="", **props):
+
+        # Ensure name
+        if name is None:
+            name = utils.get_socket_name(input_socket)
+
+        # Create new item and link it
+        items = getattr(self._output._bnode, self.ITEMS_NAME)
+        item_type = utils.get_bsocket(input_socket).type
+        if item_type == 'VALUE':
+            item_type = 'FLOAT'
+        items.new(item_type, name)
+        socket = self._input[len(items) - 1]
+        self._tree.link(socket, input_socket)
+
+        # Return the created socket
+        return self._input_node[name]
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Output socket
+    # ----------------------------------------------------------------------------------------------------
+
+    def create_output_socket(self, socket, name=None, panel="", **props):
+
+        # Ensure name
+        if name is None:
+            name = type(socket).__name__
+
+        # bl_idname
+        bl_idname = utils.get_bsocket(socket).bl_idname
+        bl_idname, _, _ = utils.get_socket_subtype(bl_idname)
+
+        # Exists ?
+        in_socket = None
+        for bsock in self._output._bnode.inputs:
+            print(f"TEST: {name=}, {bl_idname=}, {bsock.name=}, {bsock.bl_idname=}")
+            if bsock.name == name and bsock.bl_idname == bl_idname:
+                in_socket = bsock
+                break
+
+        # Create
+        if in_socket is None:
+            self.create_input_socket(bl_idname, name)
+            in_socket = self._output._bnode.inputs[-2]
+
+        self._input._tree.link(socket, in_socket)
+
+        return in_socket
+
+
+    # ----------------------------------------------------------------------------------------------------
+    # Get the signature
+    # ----------------------------------------------------------------------------------------------------
+
+    def get_signature(self, include: list = None, exclude: list = [], enabled_only=True, with_sockets: bool = False):
+        return Signature(
+            self._input.get_signature(include=include, exclude=exclude, only_enalbed=enabled_only, with_sockets=with_sockets).inputs,
+            self._output.get_signature(include=include, exclude=exclude, only_enalbed=enabled_only, with_sockets=with_sockets).outputs
+        )
 
 # ====================================================================================================
 # Reapet zone
 
 class Repeat(Zone):
 
-    def __init__(self, sockets={}, iterations=1, **snake_case_sockets):
-        """ > Reapeat zone
+    ITEMS_NAME   = 'repeat_items'
+
+    def __init__(self, named_sockets={}, iterations=1, **sockets):
+        """ > Repeat zone
 
         > See <!Zone>
 
@@ -378,9 +557,7 @@ class Repeat(Zone):
         - snake_case_sockets : sockets to create
         """
 
-        tree = Tree.current_tree
-
-        # ----- Create an link the input and output simulation nodes
+        self._plug_on_exit = self.PLUG_ON_EXIT
 
         self.init_layout()
 
@@ -389,7 +566,7 @@ class Repeat(Zone):
         self._input._bnode.pair_with_output(self._output._bnode)
         self._output._bnode.repeat_items.clear()
 
-        self.init_zone(sockets, **snake_case_sockets)
+        self.init_zone(named_sockets, **sockets)
         self._input.iterations = iterations
 
 # ====================================================================================================
@@ -397,7 +574,9 @@ class Repeat(Zone):
 
 class Simulation(Zone):
 
-    def __init__(self, sockets={}, **snake_case_sockets):
+    ITEMS_NAME   = 'state_items'
+
+    def __init__(self, named_sockets={}, **sockets):
         """ > Simulation zone
 
         > See <!Zone>
@@ -438,6 +617,8 @@ class Simulation(Zone):
         - snake_case_sockets : sockets to create
         """
 
+        self._plug_on_exit = self.PLUG_ON_EXIT
+
         # ----- Create an link the input and output simulation nodes
 
         self.init_layout()
@@ -446,7 +627,7 @@ class Simulation(Zone):
         self._output = Node('GeometryNodeSimulationOutput')
         self._input._bnode.pair_with_output(self._output._bnode)
 
-        self.init_zone(sockets, **snake_case_sockets)
+        self.init_zone(named_sockets, **sockets)
 
 
 # ====================================================================================================
@@ -457,7 +638,7 @@ class ForEachElement(Zone):
     ITEMS_NAME   = 'input_items'
     PLUG_ON_EXIT = False
 
-    def __init__(self, geometry=None, selection=None, domain=None, sockets={}, **snake_case_sockets):
+    def __init__(self, geometry=None, selection=None, domain=None, named_sockets={}, **sockets):
         """ > For Each Element zone
 
         > See <!Zone>
@@ -512,7 +693,9 @@ class ForEachElement(Zone):
         - snake_case_sockets : sockets to create
         """
 
-        tree = Tree.current_tree
+        self._plug_on_exit = self.PLUG_ON_EXIT
+
+        tree = Tree.current_tree()
 
         # ----- Create an link the input and output simulation nodes
 
@@ -530,4 +713,138 @@ class ForEachElement(Zone):
         self.main      = NodeItems(self._output, 'main', capture=['Geometry'])
         self.generated = NodeItems(self._output, 'generation')
 
-        self.init_zone(sockets, **snake_case_sockets)
+        self.init_zone(named_sockets, **sockets)
+
+
+# ====================================================================================================
+# Loop syntax
+# ====================================================================================================
+
+# ----------------------------------------------------------------------------------------------------
+# Root for loops
+# ----------------------------------------------------------------------------------------------------
+
+class Loop:
+    def __init__(self, geometry):
+        self.geometry = geometry
+        self._done = False
+        self._loop_var = None
+        self._zone = None
+
+    def __next__(self):
+
+        # ---------------------------------------------------------------------------
+        # Pop the zone
+        # Zone is pushed in __next__
+        # ---------------------------------------------------------------------------
+
+        if self._done:            
+            if self._zone is not None:
+                # Geometry in locals
+                locs = self._zone._locals
+                locs[list(locs.keys())[0]] = self.geometry
+
+                # Pop the zone
+                self._zone.pop()
+
+                # Geometry on zone outputs
+                self.geometry._jump(self._zone._output[0])
+
+                
+
+            raise StopIteration
+
+        self._done = True
+        return self._loop_var
+    
+
+# ----------------------------------------------------------------------------------------------------
+# Repeat loop
+# ----------------------------------------------------------------------------------------------------
+
+class RepeatLoop(Loop):
+    def __init__(self, geometry, named_sockets={}, iterations=1, **sockets):
+        """ Repeat loop
+
+        ``` python
+        with GeoNodes("Test"):
+            g = Geometry()
+
+            for iteration in g.repeat(Integer(10, "Loops", 0, 100)):
+                g.transform(transation=.1)
+
+            g.out()
+        ```
+        """
+        super().__init__(geometry)
+        self._zone = Repeat({'Geometry': geometry, **named_sockets}, iterations=iterations, **sockets)
+
+    def __iter__(self):
+
+        # ---------------------------------------------------------------------------
+        # Push the zone
+        # will be poped in __next__
+        # ---------------------------------------------------------------------------
+
+        self._zone.push()
+
+        # Loop var : zone and iteration
+        self._loop_var = self._zone, self._zone._input.iteration
+
+        # The geometry becomes the second output socket
+        self.geometry._jump(self._zone._input[1])
+
+        return self
+
+    
+# ----------------------------------------------------------------------------------------------------
+# For Each loop
+# ----------------------------------------------------------------------------------------------------
+
+class ForEachLoop:
+    def __init__(self, geometry):
+        self.geometry = geometry
+        self._done = False
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self._done:
+            raise StopIteration
+
+        self._done = True
+        return "Index", "Element"
+    
+# ----------------------------------------------------------------------------------------------------
+# Simulation loop
+# ----------------------------------------------------------------------------------------------------
+
+class SimulationLoop:
+    def __init__(self, geometry):
+        self.geometry = geometry
+        self._done = False
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self._done:
+            # Stop the for-loop after one iteration
+            raise StopIteration
+
+        self._done = True
+        return "delta time"
+
+
+class Geometry:
+    def repeat(self, n):
+        return RepeatLoop(self, n)
+
+    def for_each(self):
+        return ForEachLoop(self)
+
+    def simulation(self):
+        return SimulationLoop(self)
+
+

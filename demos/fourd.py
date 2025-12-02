@@ -223,12 +223,12 @@ def build_shaders():
 
     with ShaderNodes("4D Get Light", is_group=True):
 
-        light_in  = snd.attribute(attribute_name="Inner Light").fac
-        light_out = snd.attribute(attribute_name="Outer Light").fac
-        int_fac   = snd.attribute(attribute_name="Interior").fac
+        light_in  = snd.attribute(attribute_name="Inner Light").factor
+        light_out = snd.attribute(attribute_name="Outer Light").factor
+        int_fac   = snd.attribute(attribute_name="Interior").factor
 
-        spot_in  = snd.attribute(attribute_name="Inner Spot").fac
-        spot_out = snd.attribute(attribute_name="Outer Spot").fac
+        spot_in  = snd.attribute(attribute_name="Inner Spot").factor
+        spot_out = snd.attribute(attribute_name="Outer Spot").factor
 
         color_in  = Color((1, 1, 0)).hue_saturation_value(value=2*light_in,  fac=1)
         color_out = Color((1, 1, 1)).hue_saturation_value(value=2*light_out, fac=1)
@@ -259,15 +259,15 @@ def build_shaders():
             emission_color = color,
             )
 
-        transp_fac = snd.attribute(attribute_name="Transparency").fac
+        transp_fac = snd.attribute(attribute_name="Transparency").factor
         transp = Shader.Transparent()
-        shader = snd.mix_shader(ped, transp, fac=transp_fac)
+        shader = snd.mix_shader(ped, transp, factor=transp_fac)
 
         shader.out()
 
     with ShaderNodes("4 Faces Orientation"):
 
-        interior = snd.attribute(attribute_name="Interior").fac
+        interior = snd.attribute(attribute_name="Interior").factor
         color = Color((0, 1, 0)).mix((1, 0, 0), interior)
 
         grid_fac = G().grid()
@@ -297,11 +297,11 @@ def build_shaders():
             normal     = bump,
             )
 
-        transp_fac = snd.attribute(attribute_name="Transparency").fac
+        transp_fac = snd.attribute(attribute_name="Transparency").factor
 
         transp = Shader.Transparent()
 
-        shader = snd.mix_shader(ped, transp, fac=transp_fac)
+        shader = snd.mix_shader(ped, transp, factor=transp_fac)
 
         shader.out()
 
@@ -1707,7 +1707,7 @@ def build_primitives():
             backbone.points._BB_Scale = scale
 
             backbone.points._BB_M4 = Matrix("M4") @ rotation
-            backbone.remove_names("M4")
+            backbone.remove_named_attribute(name="M4")
 
         # ----------------------------------------------------------------------------------------------------
         # Index Switch
@@ -1807,7 +1807,7 @@ def build_primitives():
 
         with Layout("3D position and remove named attrs"):
             mesh.position = m[:3]
-            mesh.remove_names("BB*")
+            mesh.remove_named_attribute(name="BB*")
 
         mesh.out()
 

@@ -136,7 +136,7 @@ Returns the first enabled output socket.
 > method
 
 ``` python
-by_name(in_out, name, only_enabled=True, as_argument=True, candidates=False, halt=True)
+by_name(in_out, name, enabled_only=True, as_argument=True, candidates=False, halt=True)
 ```
 
 Get a socket by its name
@@ -144,7 +144,7 @@ Get a socket by its name
 #### Arguments:
 - **in_out** (_str_) : str in ('INPUT', 'OUTPUT')
 - **name** (_str_) : searched named
-- **only_enabled** (_bool_ = True) : consider only enabled sockets
+- **enabled_only** (_bool_ = True) : consider only enabled sockets
 - **as_argument** (_bool_ = True) : the name is argument or socket name
 - **candidates** (_bool_ = False) : return all matching names (True) or the first one (False)
 - **halt** (_bool_ = True) : raises an error if not found
@@ -162,7 +162,7 @@ Get a socket by its name
 > method
 
 ``` python
-get_socket_names(in_out, only_enabled=True, as_argument=True)
+get_socket_names(in_out, enabled_only=True, as_argument=True)
 ```
 
 Build a dictionary keyed by the socket unique names
@@ -179,7 +179,7 @@ Once built, the homonyms are made unique by suffixing its order
 
 #### Arguments:
 - **in_out** : str in ('INPUT', 'OUTPUT')
-- **only_enabled** ( = True) : use only enabled sockets
+- **enabled_only** ( = True) : use only enabled sockets
 - **as_argument** ( = True)
 
 

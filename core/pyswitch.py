@@ -30,259 +30,342 @@ updates
 - creation : 2025/01/15
 """
 
+# DEPRECATED DEPRECATED DEPRECATED DEPRECATED DEPRECATED DEPRECATED DEPRECATED DEPRECATED DEPRECATED 
+
 from . import utils
 from . scripterror import NodeError
 
-# =============================================================================================================================
+# ====================================================================================================
 # Root class
+# ====================================================================================================
 
 class IfElse:
     """ Root class for If, Else and Elif
+
+    Manages context With.
+    Create a Layout with property layout_name  
     """
+
+    def __init__(self, *, data_type=None, is_default=False, title=""):
+        self._if            = None
+        self._current_index = 0
+        self.title          = title
+        if data_type is not None:
+            self.socket_class = utils.get_socket_class(data_type)
+        self.is_default = is_default
+
+    def from_socket(self, socket, title=None):
+        
+        if socket is None or socket._if is None:
+            raise NodeError("Else() requires a socket created with If()", keyword="Else")
+
+        self._if = socket._if
+        self.node = self._if.node
+        self.title = self._if.title if title is None else title
+
     def __enter__(self):
         from geonodes import Layout
-        self.layout = Layout(self.layout_name)
-        return self.socket
+
+        if self.TYPE == If.TYPE:
+            if self.current_index == 0:
+                name = f"If (true)"
+            else:
+                name = f"If (false)"
+
+        elif self.TYPE == IndexSwitch.TYPE:
+            name = f"Switch index ({self.current_index})"
+
+        else:
+            name = f"Menu Switch ({self.name})"
+
+        if self.title != "":
+            name = self.title + f" [{name}]"
+
+        self.layout = Layout(name)
+        self.layout.push()
+
+        return self.get_socket()
 
     def __exit__(self, type, exc_value, traceback):
         self.layout.pop()
         pass
 
     def __str__(self):
-        return f"<'{self.node_name}' initialized with 'if_({self.current})'>"
+        return f"<'{self.switch_type}' initialized with 'if_({self.current})'>"
+
+    # ====================================================================================================
+    # Property
+    # ====================================================================================================
+
+    @property
+    def current_index(self):
+        if self._if is None:
+            return self._current_index
+        else:
+            return self._if.current_index
+
+    @current_index.setter
+    def current_index(self, value):
+        if self._if is None:
+            self._current_index = value
+        else:
+            self._if.current_index = value
+
+    def get_socket(self):
+        if self._if is None:
+            return self.socket
+        else:
+            return self._if.socket
+        
+    @property
+    def linked_selector_socket(self):
+        node = getattr(self, 'node', None)
+        if node is None:
+            return None
+                
+        if not node._bnode.inputs[0].is_linked:
+            return None
+        
+        return node._bnode.inputs[0].links[0].from_socket
+        
+    @property
+    def is_linked(self):
+        return self.linked_selector_socket is not None
 
 
-# =============================================================================================================================
-# If class
+# ====================================================================================================
+# Switch
+# ====================================================================================================
 
 class If(IfElse):
-    def __init__(self, socket_class, selector, name="Menu", tip=""):
-        """ Initialize If syntax mimicing
 
-        This class, together with <!Else> and <!Elif> classes, propose and alternative
-        to the naive implementation of nodes "Switch", "Index Switch", "Menu Switch".
+    TYPE = "If"
 
-        Each class of the syntax mimicing set creats a syntaxic block into which one
-        can create the optional socket.
-
-        For instance, rather than writing:
-
-        ``` python
-        condition = Boolean(True, "Cone")
-
-        geo = Geometry.Switch(condition, false=Mesh.Cube(), true=Mesh.Cone)
-        geo.out()
-        ```
-
-        You can mimic if ... else ... syntax with:
-
-        ``` python
-        condition = Boolean(True, "Cone")
-
-        with If(Geometry, condition) as geo:
-            geo.option = Mesh.Cone()
-
-        with Else(geo):
-            geo.option = Mesh.Cube()
-
-        geo.out()
-        ```
-
-        ### Comments
-
-        The first argument of ***If*** is the class you want. The second argument is a <!Boolean>.
-
-        > [!NOTE]
-        > The second argument can also be an Integer or a String to create a "Index Switch"
-        > or a "Menu Switch".
-
-        It returns the output socket of the "Switch" Node.
-        Note than the input sockets of node are not yet linked.
-        The link is performed by setting the property `geo.option`.
-
-        > [IMPORTANT]
-        > `option` property depends upon the context. In the ***If** block, it is
-        > the "True" input socket, in the ***Else*** block, it is the "False" input socket.
-
-        ``` python
-        with If(Geometry, condition) as geo:
-            geo.option = Mesh.Cone()
-            # is equivalent to
-            geo.node.true = Mesh.Cone()
-
-        with Else(geo):
-            geo.option = Mesh.Cube()
-            # is equivalent to
-            geo.node.false = Mesh.Cube()
-        ```
-
-        The ***Else** is initialized with a socket previously created with a **If**.
-
-        ### Index Switch
-
-        "Index Switch" can be created by initializing ***If** with an <!Integer> value rather
-        than a <!Boolean>.
-
-        The following code create a "Index Switch" node with 4 entries.
-
-        ``` python
-        index = Integer(0, "Geometry Index")
-
-        with If(Geometry, index) as geo:
-            geo.option = Mesh.Cube()
-
-        with Elif(geo):
-            geo.option = Mesh.UVSphere()
-
-        with Elif(geo):
-            geo.option = Mesh.IcoSphere()
-
-        with Elif(geo):
-            geo.option = Mesh.Cone()
-
-        geo.out()
-        ```
-
-        ### Menu Switch
-
-        A "Menu Switch" works similarily by initializing the ***If*** with a ***python string**.
-
-        > [!IMPORTANT]
-        > The 'selector' argument is a a python string, not a <!String>. It is interpreted as the name
-        > of the first menu option.
-
-        Each ***Elif*** coming after takes a str "menu" argument as the name of the current entry.
-
-
-        ``` python
-        with If(Geometry, "Cube", name="Pick Shape") as geo:
-            # "Cube" is the name of the first option in the menu
-            geo.option = Mesh.Cube()
-
-        with Elif(geo, "Sphere"):
-            " "Sphere" is the name of the second option in the menu
-            geo.option = Mesh.UVSphere()
-
-        with Elif(geo):
-            # "C" will be the name of the third option in the menu
-            geo.option = Mesh.IcoSphere()
-
-        with Elif(geo, "Cone):
-            geo.option = Mesh.Cone()
-
-        geo.out()
-        ```
-
-        > [!NOTE]
-        > Each block is put in a layout frame.
-
-        Raises
-        ------
-        - NodeError if `selector` argument is not an <!Boolean>, a <!Integer> or a str
+    def __init__(self, data_type, condition=False, title=""):
+        """ Initialize Switch syntax mimicing
 
         Arguments
         ---------
-        - socket_class (type) : a class valid as input of the switch node
-        - selector (Boolean, Integer or str) : Boolean and Integer: socket used to select the option,
-          str: name of the first option in the menu
-        - name (str = "Menu") : name of menu socket
-        - tip (str = "") : user tip (used in menu creation and in Layout names)
+        - data_type (str) : socket class
+        - title (str = "") title
         """
 
         from geonodes import Node
 
-        self.socket_class = socket_class
-        self.selector     = selector
-        self.sel_type     = utils.get_socket_type(selector)
-        self.current      = 0
-        self.name         = name
-        self.tip          = tip
+        super().__init__(data_type=data_type, title=title)
 
-        if self.sel_type == 'BOOLEAN':
-            self.node_name = "Switch"
-
-            self.socket  = self.socket_class.Switch(self.selector)
-            self.node    = self.socket.node
-
-            self.layout_name = f"If - {tip}"
-
-        elif self.sel_type == 'INT':
-            self.node_name = "Index Switch"
-
-            self.socket  = self.socket_class.IndexSwitch(index=self.selector)
-            self.node    = self.socket.node
-            self.enum_items = self.node._bnode.index_switch_items
-            self.enum_items.clear()
-
-            self.layout_name = f"Index Switch (0) - {tip}"
-
-        elif isinstance(selector, str):
-            self.node_name = "Menu Switch"
-
-            self.node    = Node("Menu Switch", {}, data_type=socket_class.SOCKET_TYPE)
-            self.node._items.clear()
-
-            self.socket  = self.node._out
-            self.current_name = selector
-
-            self.layout_name = f"Menu Switch ({selector}) - {tip}"
-
-        else:
-            raise NodeError(f"If() requires a Boolean, Integer or a python str, not {selector}.", keyword="If")
+        self.socket  = self.socket_class.Switch(condition)
+        self.node    = self.socket.node
 
         self.socket._if = self
 
-    # ----------------------------------------------------------------------------------------------------
+    # ====================================================================================================
     # Set option
+    # ====================================================================================================
 
-    def set_option(self, socket):
+    def set_option(self, value):
         """ Implements socket.option property
 
         Arguments
         ---------
-        - socket (Socket) : socket to plug in the current option
+        - value (Socket) : socket to plug in the current option
+        - defaut
         """
 
-        from geonodes import Tree
+        from .treeclass import Tree
+        
+        if self.current_index == 0:
+            self.node.false = value
 
-        if self.node_name == "Switch":
+        elif self.current_index == 1:
+            self.node.true = value
 
-            if self.current == 0:
-                self.node.true = socket
+        else:
+            raise NodeError("Only one Else() is possible after a If()", keyword=".option", current_index=self.current_index)
 
-            elif self.current == 1:
-                self.node.false = socket
+# ====================================================================================================
+# Index Switch
+# ====================================================================================================
 
+class IndexSwitch(IfElse):
+
+    TYPE = "IndexSwitch"
+
+    def __init__(self, data_type, index=None, *, title=""):
+        """ Initialize IndexSwitch syntax mimicing
+
+        Arguments
+        ---------
+        - data_type (str) : socket class
+        - index (Integer=0) : index socket
+        - title (str = "") title
+        """
+
+        from geonodes import Node
+
+        super().__init__(data_type=data_type, is_default=True, title=title)
+
+        self.switch_type = 'INDEX SWITCH'
+
+        self.socket  = self.socket_class.IndexSwitch(index=index)
+        self.node    = self.socket.node
+        self.enum_items = self.node._bnode.index_switch_items
+        self.enum_items.clear()
+
+        self.socket._if = self
+
+    # ====================================================================================================
+    # Set option
+    # ====================================================================================================
+
+    def set_option(self, value):
+        """ Implements socket.option property
+
+        Arguments
+        ---------
+        - value (Socket) : socket to plug in the current option
+        """
+
+        from .treeclass import Tree
+        from . import blender
+
+        # ---------------------------------------------------------------------------
+        # Create and plug the socket
+        # ---------------------------------------------------------------------------
+
+        self.enum_items.new()
+        self.node[1 + self.current_index] = value
+
+        # ---------------------------------------------------------------------------
+        # Default value
+        # ---------------------------------------------------------------------------
+
+        if self.is_default:
+
+            # Input index default value
+            self.node._bnode.inputs[0].default_value = self.current_index
+
+            # Socket linked to the node index
+            sock = self.linked_selector_socket
+
+            # Propagate if exists
+            if sock is not None:
+
+                socket = utils.get_socket_class(sock.type)(sock)
+                socket.default_value = self.current_index
+
+                # Change the modifiers
+                ident = sock.identifier
+                for mod in blender.get_geonodes_modifiers(Tree.current_tree()._btree):
+                    if mod.get(ident, None) is not None:
+                        mod[ident] = self.current_index        
+
+
+# ====================================================================================================
+# Menu Switch
+# ====================================================================================================
+
+class MenuSwitch(IfElse):
+
+    TYPE = "MenuSwitch"
+
+    def __init__(self, data_type, menu=None, *, name="A", title=""):
+        """ Initialize IndexSwitch syntax mimicing
+
+        Arguments
+        ---------
+        - data_type (str) : socket class
+        - index (Integer=0) : index socket
+        - title (str = "") title
+        """
+
+        from geonodes import Node
+
+        super().__init__(data_type=data_type, is_default=True, title=title)
+
+        self.switch_type = 'MENU SWITCH'
+
+        self.socket     = self.socket_class.MenuSwitch(menu=menu)
+        self.node       = self.socket.node
+        self.enum_items = self.node._bnode.enum_items
+        self.enum_items.clear()
+
+        self.name = name
+
+        # ---------------------------------------------------------------------------
+        # Store in the current socket
+        # ---------------------------------------------------------------------------
+
+        self.socket._if = self
+
+    # ====================================================================================================
+    # Set option
+    # ====================================================================================================
+
+    def set_option(self, value):
+        """ Implements socket.option property
+
+        Arguments
+        ---------
+        - value (Socket) : socket to plug in the current option
+        """
+
+        from .treeclass import Tree
+        from . import blender
+
+        # ---------------------------------------------------------------------------
+        # Build an unique name
+        # ---------------------------------------------------------------------------
+
+        names = [sock.name for sock in self.node._bnode.inputs if sock.type != 'CUSTOM']
+        base = self.name
+        for i in range(100):
+            if i == 0:
+                name = base
             else:
-                raise NodeError("Only one Else() is possible after a If()", keyword=".option")
+                name = f"{base} {i}"
+            if name not in names:
+                break
 
-        elif self.node_name == "Index Switch":
+        # ---------------------------------------------------------------------------
+        # Create and plug the socket
+        # ---------------------------------------------------------------------------
 
-            self.enum_items.new()
-            self.node[1 + self.current] = socket
+        self.node._set_items('enum_items', {name: value}, clear=False)
 
-        elif self.node_name == "Menu Switch":
+        # ---------------------------------------------------------------------------
+        # Default value
+        # ---------------------------------------------------------------------------
 
-            if self.current_name is None:
-                name = 'ABCDEFEGHIJKLMNOPQRSTUVWXYZ'[self.current]
-            else:
-                name = self.current_name
+        if self.is_default:
 
-            self.node._set_items({name: socket})
+            # Menu socket default value
+            self.node._bnode.inputs[0].default_value = name
 
-            menu_socket = Tree.new_input('NodeSocketMenu', name=self.name, value=None, description=self.tip)
-            self.node["Menu"] = menu_socket
+            # Socket linked to the node index
+            sock = self.linked_selector_socket
 
-            if self.current == 0:
-                menu_socket._bsocket.default_value = name
-                menu_socket._interface_socket.default_value = name
+            if sock is not None:
+
+                socket = utils.get_socket_class(sock.type)(sock)
+                socket.default_value = name
+
+                # Modifiers value has been reset to None
+                ident = sock.identifier
+                for mod in blender.get_geonodes_modifiers(Tree.current_tree()._btree):
+                    if mod.get(ident):
+                        mod[ident] = self.current_index + 2
 
 
-# =============================================================================================================================
+# ====================================================================================================
 # Else class
+# ====================================================================================================
 
 class Else(IfElse):
-    def __init__(self, socket):
+
+    TYPE = If.TYPE
+
+    def __init__(self, socket, *, title=None):
         """ Block "else" in the if ... else ... mimicing
 
         See <!If>
@@ -293,27 +376,25 @@ class Else(IfElse):
 
         Arguments
         ---------
-        - socket (Socket) : socket initialized with a <!If>
+        - value (Socket) : socket initialized with a <!If>
+        - title (str = None) : Else title
         """
-        if socket is None or socket._if is None:
-            raise NodeError("Else() requires a socket created with If()", keyword="Else")
 
-        self.socket = socket
-        _if = socket._if
-        self.tip = _if.tip
+        super().__init__()
+        self.from_socket(socket, title=title)
 
-        if _if.node_name != "Switch":
-            raise NodeError(f"If() has created a '{_if.node_name}' node, not a 'Switch' node. Use Elif() rather than Else()", keyword=".option")
+        if self._if.TYPE != If.TYPE:
+            raise NodeError(f"Else() can be only used with If(), not {self._if.TYPE}(). Use Elif() rather than Else()")
 
-        _if.current += 1
+        self.current_index += 1
 
-        self.layout_name = f"Else - {_if.tip}"
 
-# =============================================================================================================================
+# ====================================================================================================
 # Elif class
+# ====================================================================================================
 
 class Elif(IfElse):
-    def __init__(self, socket, menu=None, tip=""):
+    def __init__(self, socket, *, name="B", default=False, title=None):
         """ Block "elif" in the if ... elif ... mimicing
 
         See <!If>
@@ -327,31 +408,21 @@ class Elif(IfElse):
         Arguments
         ---------
         - socket (Socket) : socket initialized with a <!If>
+        - name (str = "B") : 
         - menu (str = None) : the name of the option for "Menu Switch" (ignored in "Index Switch")
         - tip (str = "") : Layout label
         """
-        if socket is None or socket._if is None:
-            raise NodeError("Elif() requires a socket created with If()", keyword="Elif")
 
-        self.socket = socket
-        _if = socket._if
-        self.tip = _if.tip
+        super().__init__()
+        self.from_socket(socket, title=title)
 
-        _if.current += 1
+        if self._if.TYPE == If.TYPE:
+            raise NodeError(f"Elif() cannot be be used with If(). Use Else() rather than Elif()")
 
-        if _if.node_name == "Index Switch":
-            self.layout_name = f"Index Switch ({_if.current}) - {tip}"
+        self.current_index += 1
+        self._if.name       = name
+        self.name           = name
+        self._if.is_default = default
 
-        elif _if.node_name == "Menu Switch":
-            if menu is None:
-                _if.current_name = None
-            else:
-                _if.current_name = str(menu)
-
-            self.layout_name = f"Menu Switch ({_if.current_name}) - {tip}"
-
-        elif _if.node_name == "Switch":
-            raise NodeError(f"Use Else() rather than Elif() after a If() initialized with a Boolean.", keyword=".option")
-
-        else:
-            assert(False)
+        self.TYPE = self._if.TYPE
+        

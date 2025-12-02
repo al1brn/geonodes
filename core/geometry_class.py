@@ -48,7 +48,8 @@ import bpy
 from .scripterror import NodeError
 from . import constants
 from . import utils
-from .treeclass import Tree, Node, Layout
+from .treeclass import Tree, Layout
+from .nodeclass import Node
 from .socket_class import NodeCache, Socket
 from . import generated
 
@@ -126,7 +127,7 @@ class GeoBase:
         # Index
 
         else:
-            socket_type = utils.get_socket_type(selection)
+            socket_type = utils.get_value_socket_type(selection)
             if socket_type in ['INT', 'VALUE', 'FLOAT']:
                 with Layout(f"selection = []", color='AUTO_GEN'):
                     selection = nd.index.equal(selection)
@@ -160,8 +161,15 @@ class Geometry(generated.Geometry, GeoBase):
 
     SOCKET_TYPE = 'GEOMETRY'
 
-    def __init__(self, value=None, name=None, tip=None, panel="",
-        hide_value=False, hide_in_modifier=False):
+    def __init__(self,
+        value: Socket = None, 
+        name: str = None, 
+        tip: str = '',
+        panel: str = "",
+        optional_label: bool = False,
+        hide_value: bool = False,
+        hide_in_modifier: bool = False,
+    ):
         """ Socket of type 'GEOMETRY'.
 
         If value is None, a Group Input socket of type Geometry is created.
@@ -176,35 +184,36 @@ class Geometry(generated.Geometry, GeoBase):
         ---------
         - value (Socket = None) : initial value
         - name (str = None) : Create an Group Input socket with the provided str
-        - tip (str = None) : User tip (for Group Input sockets)
-        - panel (str = None) : panel name (overrides tree panel if exists)
-        - hide_value (bool = False) : Hide Value option
-        - hide_in_modifier (bool = False) : Hide in Modifier option
+        - tip  (str = '') : Property description
+        - panel (str = "") : Panel name
+        - optional_label  (bool = False) : Property optional_label
+        - hide_value  (bool = False) : Property hide_value
+        - hide_in_modifier  (bool = False) : Property hide_in_modifier
         """
 
         bsock = utils.get_bsocket(value)
 
-        # ---------------------------------------------------------------------------
-        # This is not a socket : let's get the geometry as Group Input
+        # ------------------------------------------------------------
+        # bsock is None: we get the Geometry from group input socket
+        # ------------------------------------------------------------
 
         if bsock is None:
 
-            tree = Tree.current_tree
-
-            # ----- Name is None:
-            # - group : we read the socket from its default name
-            # - modifier : input geometry
-
+            # Ensure name
             if name is None:
                 name = type(self).__name__
 
-            bsock = Tree.new_input('NodeSocketGeometry', name, panel=panel,
-                description             = tip,
-                hide_value              = hide_value,
-                hide_in_modifier        = hide_in_modifier,
-            )
+            # Create the group input socket
+            bsock = self._create_input_socket(value=value, name=name,
+                tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value,
+                hide_in_modifier=hide_in_modifier)
+
+        # ------------------------------------------------------------
+        # Super init
+        # ------------------------------------------------------------
 
         super().__init__(bsock)
+
 
     @property
     def _geo(self):
@@ -230,7 +239,7 @@ class Geometry(generated.Geometry, GeoBase):
 
         items = node._bnode.bake_items
         for name, value in kwargs.items():
-            items.new(utils.get_input_type(value), name)
+            items.new(utils.get_value_socket_type(value), name)
 
         return self._jump(node._out)
 
@@ -246,3 +255,12 @@ class Geometry(generated.Geometry, GeoBase):
 
         else:
             return Geometry.Join(self, other)
+        
+    # ====================================================================================================
+    # Loops
+    # ====================================================================================================
+
+    def repeat(self, iterations=1, named_sockets: dict={}, **sockets):
+        from .zones import RepeatLoop
+        return RepeatLoop(self, named_sockets, iterations=iterations, **sockets)
+

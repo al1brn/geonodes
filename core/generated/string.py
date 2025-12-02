@@ -1,13 +1,35 @@
+# Generated 2025-12-01 20:32:44
+
+from __future__ import annotations
 from .. socket_class import Socket
-from .. treeclass import Node, ColorRamp, NodeCurves
-from .. treeclass import utils
+from .. nodeclass import Node, ColorRamp, NodeCurves, MenuNode, IndexSwitchNode
+from .. import utils
 from .. scripterror import NodeError
+from typing import TYPE_CHECKING, Literal, Union, Sequence
+
+if TYPE_CHECKING:
+    class Geometry: ...
+    class Mesh: ...
+    class Curve: ...
+    class Cloud: ...
+    class Instances: ...
+    class Volume: ...
+    class GrasePencil: ...
+    class Boolean: ...
+    class Integer: ...
+    class Float: ...
+    class Vector: ...
+    class Color: ...
+    class Matrix: ...
+    class Rotation: ...
+    class String: ...
+
 
 class String(Socket):
     """"
     $DOC SET hidden
     """
-    def equal(self, b=None):
+    def equal(self, b: String = None):
         """ > Node <&Node Compare>
 
         Information
@@ -25,10 +47,10 @@ class String(Socket):
         -------
         - Boolean
         """
-        node = Node('Compare', sockets={'A_STR': self, 'B_STR': b}, data_type='STRING', mode='ELEMENT', operation='EQUAL')
+        node = Node('Compare', {'A_STR': self, 'B_STR': b}, data_type='STRING', mode='ELEMENT', operation='EQUAL')
         return node._out
 
-    def not_equal(self, b=None):
+    def not_equal(self, b: String = None):
         """ > Node <&Node Compare>
 
         Information
@@ -46,10 +68,10 @@ class String(Socket):
         -------
         - Boolean
         """
-        node = Node('Compare', sockets={'A_STR': self, 'B_STR': b}, data_type='STRING', mode='ELEMENT', operation='NOT_EQUAL')
+        node = Node('Compare', {'A_STR': self, 'B_STR': b}, data_type='STRING', mode='ELEMENT', operation='NOT_EQUAL')
         return node._out
 
-    def find_in_string(self, search=None):
+    def find_in_string(self, search: String = None):
         """ > Node <&Node Find in String>
 
         Information
@@ -64,10 +86,10 @@ class String(Socket):
         -------
         - Integer [count_ (Integer)]
         """
-        node = Node('Find in String', sockets={'String': self, 'Search': search})
+        node = Node('Find in String', {'String': self, 'Search': search})
         return node._out
 
-    def find(self, search=None):
+    def find(self, search: String = None):
         """ > Node <&Node Find in String>
 
         Information
@@ -82,10 +104,10 @@ class String(Socket):
         -------
         - Integer [count_ (Integer)]
         """
-        node = Node('Find in String', sockets={'String': self, 'Search': search})
+        node = Node('Find in String', {'String': self, 'Search': search})
         return node._out
 
-    def hash_value(self, seed=None):
+    def hash_value(self, seed: Integer = None):
         """ > Node <&Node Hash Value>
 
         Information
@@ -101,7 +123,7 @@ class String(Socket):
         -------
         - Integer
         """
-        node = Node('Hash Value', sockets={'Value': self, 'Seed': seed}, data_type='STRING')
+        node = Node('Hash Value', {'Value': self, 'Seed': seed}, data_type='STRING')
         return node._out
 
     @classmethod
@@ -112,7 +134,7 @@ class String(Socket):
         -------
         - node [line_break (String), tab (String)]
         """
-        node = Node('Special Characters', sockets={})
+        node = Node('Special Characters', )
         return node
 
     @classmethod
@@ -124,7 +146,7 @@ class String(Socket):
         -------
         - String [tab_ (String)]
         """
-        node = Node('Special Characters', sockets={})
+        node = Node('Special Characters', )
         return node._out
 
     @classmethod
@@ -136,10 +158,10 @@ class String(Socket):
         -------
         - tab
         """
-        node = Node('Special Characters', sockets={})
+        node = Node('Special Characters', )
         return node.tab
 
-    def replace(self, find=None, replace=None):
+    def replace(self, find: String = None, replace: String = None):
         """ > Node <&Node Replace String>
 
         Information
@@ -155,10 +177,10 @@ class String(Socket):
         -------
         - String
         """
-        node = Node('Replace String', sockets={'String': self, 'Find': find, 'Replace': replace})
+        node = Node('Replace String', {'String': self, 'Find': find, 'Replace': replace})
         return node._out
 
-    def slice(self, position=None, length=None):
+    def slice(self, position: Integer = None, length: Integer = None):
         """ > Node <&Node Slice String>
 
         Information
@@ -174,7 +196,7 @@ class String(Socket):
         -------
         - String
         """
-        node = Node('Slice String', sockets={'String': self, 'Position': position, 'Length': length})
+        node = Node('Slice String', {'String': self, 'Position': position, 'Length': length})
         return node._out
 
     def length(self):
@@ -188,45 +210,40 @@ class String(Socket):
         -------
         - Integer
         """
-        node = Node('String Length', sockets={'String': self})
+        node = Node('String Length', {'String': self})
         return node._out
 
-    def format(self, **items):
+    def format(self, named_sockets: dict = {}, **sockets):
         """ > Node <&Node Format String>
 
         Information
         -----------
         - Socket 'Format' : self
 
-        Arguments
-        ---------
-        - items (String, Integer, Float) : values to use in the format string
-
         Returns
         -------
         - String
         """
-        node = Node('Format String', sockets={'Format': self}, _items=items)
+        node = Node('Format String', {'Format': self, **named_sockets}, **sockets)
         return node._out
 
     @classmethod
-    def Format(cls, format=None, **items):
+    def Format(cls, named_sockets: dict = {}, format: String = None, **sockets):
         """ > Node <&Node Format String>
 
         Arguments
         ---------
         - format (String) : socket 'Format' (id: Format)
-        - items (String, Integer, Float) : values to use in the format string
 
         Returns
         -------
         - String
         """
-        node = Node('Format String', sockets={'Format': format}, _items=items)
+        node = Node('Format String', {'Format': format, **named_sockets}, **sockets)
         return cls(node._out)
 
     @classmethod
-    def ImportText(cls, path=None):
+    def ImportText(cls, path: String = None):
         """ > Node <&Node Import Text>
 
         Arguments
@@ -237,67 +254,31 @@ class String(Socket):
         -------
         - String
         """
-        node = Node('Import Text', sockets={'Path': path})
+        node = Node('Import Text', {'Path': path})
         return cls(node._out)
 
-    def starts_with(self, key=None):
+    def match_string(self,
+                    operation: Literal['Starts With', 'Ends With', 'Contains'] = None,
+                    key: String = None):
         """ > Node <&Node Match String>
 
         Information
         -----------
         - Socket 'String' : self
-        - Parameter 'operation' : 'STARTS_WITH'
 
         Arguments
         ---------
+        - operation (menu='Starts With') : ('Starts With', 'Ends With', 'Contains')
         - key (String) : socket 'Key' (id: Key)
 
         Returns
         -------
         - Boolean
         """
-        node = Node('Match String', sockets={'String': self, 'Key': key}, operation='STARTS_WITH')
+        node = Node('Match String', {'String': self, 'Operation': operation, 'Key': key})
         return node._out
 
-    def ends_with(self, key=None):
-        """ > Node <&Node Match String>
-
-        Information
-        -----------
-        - Socket 'String' : self
-        - Parameter 'operation' : 'ENDS_WITH'
-
-        Arguments
-        ---------
-        - key (String) : socket 'Key' (id: Key)
-
-        Returns
-        -------
-        - Boolean
-        """
-        node = Node('Match String', sockets={'String': self, 'Key': key}, operation='ENDS_WITH')
-        return node._out
-
-    def contains(self, key=None):
-        """ > Node <&Node Match String>
-
-        Information
-        -----------
-        - Socket 'String' : self
-        - Parameter 'operation' : 'CONTAINS'
-
-        Arguments
-        ---------
-        - key (String) : socket 'Key' (id: Key)
-
-        Returns
-        -------
-        - Boolean
-        """
-        node = Node('Match String', sockets={'String': self, 'Key': key}, operation='CONTAINS')
-        return node._out
-
-    def join(self, *strings):
+    def join(self, *strings: String):
         """ > Node <&Node Join Strings>
 
         Information
@@ -312,11 +293,11 @@ class String(Socket):
         -------
         - String
         """
-        node = Node('Join Strings', sockets={'Delimiter': self, 'Strings': list(strings)})
+        node = Node('Join Strings', {'Delimiter': self, 'Strings': list(strings)})
         return node._out
 
     @classmethod
-    def Join(cls, *strings, delimiter=None):
+    def Join(cls, *strings: String, delimiter: String = None):
         """ > Node <&Node Join Strings>
 
         Arguments
@@ -328,10 +309,20 @@ class String(Socket):
         -------
         - String
         """
-        node = Node('Join Strings', sockets={'Delimiter': delimiter, 'Strings': list(strings)})
+        node = Node('Join Strings', {'Delimiter': delimiter, 'Strings': list(strings)})
         return cls(node._out)
 
-    def to_curves(self, size=None, character_spacing=None, word_spacing=None, line_spacing=None, text_box_width=None, align_x='LEFT', align_y='TOP_BASELINE', font=None, overflow='OVERFLOW', pivot_mode='BOTTOM_LEFT'):
+    def to_curves(self,
+                    size: Float = None,
+                    character_spacing: Float = None,
+                    word_spacing: Float = None,
+                    line_spacing: Float = None,
+                    text_box_width: Float = None,
+                    align_x: Literal['LEFT', 'CENTER', 'RIGHT', 'JUSTIFY', 'FLUSH'] = 'LEFT',
+                    align_y: Literal['TOP', 'TOP_BASELINE', 'MIDDLE', 'BOTTOM_BASELINE', 'BOTTOM'] = 'TOP_BASELINE',
+                    font = None,
+                    overflow: Literal['OVERFLOW', 'SCALE_TO_FIT', 'TRUNCATE'] = 'OVERFLOW',
+                    pivot_mode: Literal['MIDPOINT', 'TOP_LEFT', 'TOP_CENTER', 'TOP_RIGHT', 'BOTTOM_LEFT', 'BOTTOM_CENTER', 'BOTTOM_RIGHT'] = 'BOTTOM_LEFT'):
         """ > Node <&Node String to Curves>
 
         Information
@@ -359,6 +350,145 @@ class String(Socket):
         utils.check_enum_arg('String to Curves', 'align_y', align_y, 'to_curves', ('TOP', 'TOP_BASELINE', 'MIDDLE', 'BOTTOM_BASELINE', 'BOTTOM'))
         utils.check_enum_arg('String to Curves', 'overflow', overflow, 'to_curves', ('OVERFLOW', 'SCALE_TO_FIT', 'TRUNCATE'))
         utils.check_enum_arg('String to Curves', 'pivot_mode', pivot_mode, 'to_curves', ('MIDPOINT', 'TOP_LEFT', 'TOP_CENTER', 'TOP_RIGHT', 'BOTTOM_LEFT', 'BOTTOM_CENTER', 'BOTTOM_RIGHT'))
-        node = Node('String to Curves', sockets={'String': self, 'Size': size, 'Character Spacing': character_spacing, 'Word Spacing': word_spacing, 'Line Spacing': line_spacing, 'Text Box Width': text_box_width}, align_x=align_x, align_y=align_y, font=utils.get_font(font), overflow=overflow, pivot_mode=pivot_mode)
+        node = Node('String to Curves', {'String': self, 'Size': size, 'Character Spacing': character_spacing, 'Word Spacing': word_spacing, 'Line Spacing': line_spacing, 'Text Box Width': text_box_width}, align_x=align_x, align_y=align_y, font=utils.get_font(font), overflow=overflow, pivot_mode=pivot_mode)
         return node._out
+
+    def to_value(self, data_type: Literal['FLOAT', 'INT'] = 'FLOAT'):
+        """ > Node <&Node String to Value>
+
+        Information
+        -----------
+        - Socket 'String' : self
+
+        Arguments
+        ---------
+        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT']
+
+        Returns
+        -------
+        - Float [length_ (Integer)]
+        """
+        utils.check_enum_arg('String to Value', 'data_type', data_type, 'to_value', ('FLOAT', 'INT'))
+        node = Node('String to Value', {'String': self}, data_type=data_type)
+        return node._out
+
+    def to_float(self):
+        """ > Node <&Node String to Value>
+
+        Information
+        -----------
+        - Socket 'String' : self
+        - Parameter 'data_type' : 'FLOAT'
+
+        Returns
+        -------
+        - Float [length_ (Integer)]
+        """
+        node = Node('String to Value', {'String': self}, data_type='FLOAT')
+        return node._out
+
+    def to_integer(self):
+        """ > Node <&Node String to Value>
+
+        Information
+        -----------
+        - Socket 'String' : self
+        - Parameter 'data_type' : 'INT'
+
+        Returns
+        -------
+        - Integer [length_ (Integer)]
+        """
+        node = Node('String to Value', {'String': self}, data_type='INT')
+        return node._out
+
+    def enable_output(self, enable: Boolean = None):
+        """ > Node <&Node Enable Output>
+
+        Information
+        -----------
+        - Socket 'Value' : self
+        - Parameter 'data_type' : 'STRING'
+
+        Arguments
+        ---------
+        - enable (Boolean) : socket 'Enable' (id: Enable)
+
+        Returns
+        -------
+        - String
+        """
+        node = Node('Enable Output', {'Enable': enable, 'Value': self}, data_type='STRING')
+        return node._out
+
+    @classmethod
+    def _create_input_socket(cls,
+        value: object = "",
+        name: str = 'String',
+        tip: str = '',
+        panel: str = "",
+        optional_label: bool = False,
+        hide_value: bool = False,
+        hide_in_modifier: bool = False,
+        default: str = '',
+        subtype: str = 'NONE',
+         ):
+        """ > String Input
+
+        New <#String> input with subtype 'NONE'.
+
+        Aguments
+        --------
+        - value  (object = "") : Default value
+        - name  (str = 'String') : Input socket name
+        - tip  (str = '') : Property description
+        - panel (str = "") : Panel name
+        - optional_label  (bool = False) : Property optional_label
+        - hide_value  (bool = False) : Property hide_value
+        - hide_in_modifier  (bool = False) : Property hide_in_modifier
+        - default  (str = '') : Property default_value
+        - subtype (str = 'NONE') : Socket sub type in ('NONE', 'FILE_PATH')
+
+        Returns
+        -------
+        - String
+        """
+        from ..treeclass import Tree
+
+        return Tree.current_tree().create_input_socket('NodeSocketString', value=value, name=name, tip=tip,
+            panel=panel, optional_label=optional_label, hide_value=hide_value,
+            hide_in_modifier=hide_in_modifier, default=default, subtype=subtype)
+
+    @classmethod
+    def FilePath(cls,
+        value: object = "",
+        name: str = 'FilePath',
+        tip: str = '',
+        panel: str = "",
+        optional_label: bool = False,
+        hide_value: bool = False,
+        hide_in_modifier: bool = False,
+        default: str = '',
+         ):
+        """ > FilePath Input
+
+        New <#String> input with subtype 'FILE_PATH'.
+
+        Aguments
+        --------
+        - value  (object = "") : Default value
+        - name  (str = 'FilePath') : Input socket name
+        - tip  (str = '') : Property description
+        - panel (str = "") : Panel name
+        - optional_label  (bool = False) : Property optional_label
+        - hide_value  (bool = False) : Property hide_value
+        - hide_in_modifier  (bool = False) : Property hide_in_modifier
+        - default  (str = '') : Property default_value
+
+        Returns
+        -------
+        - String
+        """
+        return cls(value=value, name=name, tip=tip, panel=panel, optional_label=optional_label,
+            hide_value=hide_value, hide_in_modifier=hide_in_modifier, default=default, subtype='FILE_PATH')
 

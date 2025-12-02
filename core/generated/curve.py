@@ -1,7 +1,29 @@
+# Generated 2025-12-01 20:32:44
+
+from __future__ import annotations
 from .. socket_class import Socket
-from .. treeclass import Node, ColorRamp, NodeCurves
-from .. treeclass import utils
+from .. nodeclass import Node, ColorRamp, NodeCurves, MenuNode, IndexSwitchNode
+from .. import utils
 from .. scripterror import NodeError
+from typing import TYPE_CHECKING, Literal, Union, Sequence
+
+if TYPE_CHECKING:
+    class Geometry: ...
+    class Mesh: ...
+    class Curve: ...
+    class Cloud: ...
+    class Instances: ...
+    class Volume: ...
+    class GrasePencil: ...
+    class Boolean: ...
+    class Integer: ...
+    class Float: ...
+    class Vector: ...
+    class Color: ...
+    class Matrix: ...
+    class Rotation: ...
+    class String: ...
+
 
 class Curve(Socket):
     """"
@@ -19,11 +41,18 @@ class Curve(Socket):
         -------
         - node [point_count (Integer), spline_count (Integer)]
         """
-        node = self._cache('Domain Size', sockets={'Geometry': self}, component='CURVE')
+        node = self._cache('Domain Size', {'Geometry': self}, component='CURVE')
         return node
 
     @classmethod
-    def ArcPoints(cls, resolution=None, start=None, middle=None, end=None, offset_angle=None, connect_center=None, invert_arc=None):
+    def ArcPoints(cls,
+                    resolution: Integer = None,
+                    start: Vector = None,
+                    middle: Vector = None,
+                    end: Vector = None,
+                    offset_angle: Float = None,
+                    connect_center: Boolean = None,
+                    invert_arc: Boolean = None):
         """ > Node <&Node Arc>
 
         Information
@@ -44,11 +73,17 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Arc', sockets={'Resolution': resolution, 'Start': start, 'Middle': middle, 'End': end, 'Offset Angle': offset_angle, 'Connect Center': connect_center, 'Invert Arc': invert_arc}, mode='POINTS')
+        node = Node('Arc', {'Resolution': resolution, 'Start': start, 'Middle': middle, 'End': end, 'Offset Angle': offset_angle, 'Connect Center': connect_center, 'Invert Arc': invert_arc}, mode='POINTS')
         return cls(node._out)
 
     @classmethod
-    def ArcRadius(cls, resolution=None, radius=None, start_angle=None, sweep_angle=None, connect_center=None, invert_arc=None):
+    def ArcRadius(cls,
+                    resolution: Integer = None,
+                    radius: Float = None,
+                    start_angle: Float = None,
+                    sweep_angle: Float = None,
+                    connect_center: Boolean = None,
+                    invert_arc: Boolean = None):
         """ > Node <&Node Arc>
 
         Information
@@ -68,11 +103,18 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Arc', sockets={'Resolution': resolution, 'Radius': radius, 'Start Angle': start_angle, 'Sweep Angle': sweep_angle, 'Connect Center': connect_center, 'Invert Arc': invert_arc}, mode='RADIUS')
+        node = Node('Arc', {'Resolution': resolution, 'Radius': radius, 'Start Angle': start_angle, 'Sweep Angle': sweep_angle, 'Connect Center': connect_center, 'Invert Arc': invert_arc}, mode='RADIUS')
         return cls(node._out)
 
     @classmethod
-    def Arc(cls, resolution=None, radius=None, start_angle=None, sweep_angle=None, connect_center=None, invert_arc=None, mode='RADIUS'):
+    def Arc(cls,
+                    resolution: Integer = None,
+                    radius: Float = None,
+                    start_angle: Float = None,
+                    sweep_angle: Float = None,
+                    connect_center: Boolean = None,
+                    invert_arc: Boolean = None,
+                    mode: Literal['POINTS', 'RADIUS'] = 'RADIUS'):
         """ > Node <&Node Arc>
 
         Arguments
@@ -90,11 +132,11 @@ class Curve(Socket):
         - Curve
         """
         utils.check_enum_arg('Arc', 'mode', mode, 'Arc', ('POINTS', 'RADIUS'))
-        node = Node('Arc', sockets={'Resolution': resolution, 'Radius': radius, 'Start Angle': start_angle, 'Sweep Angle': sweep_angle, 'Connect Center': connect_center, 'Invert Arc': invert_arc}, mode=mode)
+        node = Node('Arc', {'Resolution': resolution, 'Radius': radius, 'Start Angle': start_angle, 'Sweep Angle': sweep_angle, 'Connect Center': connect_center, 'Invert Arc': invert_arc}, mode=mode)
         return cls(node._out)
 
     @classmethod
-    def endpoint_selection(cls, start_size=None, end_size=None):
+    def endpoint_selection(cls, start_size: Integer = None, end_size: Integer = None):
         """ > Node <&Node Endpoint Selection>
 
         Arguments
@@ -106,11 +148,13 @@ class Curve(Socket):
         -------
         - Boolean
         """
-        node = Node('Endpoint Selection', sockets={'Start Size': start_size, 'End Size': end_size})
+        node = Node('Endpoint Selection', {'Start Size': start_size, 'End Size': end_size})
         return node._out
 
     @classmethod
-    def handle_type_selection(cls, handle_type='AUTO', mode={'LEFT', 'RIGHT'}):
+    def handle_type_selection(cls,
+                    handle_type: Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN'] = 'AUTO',
+                    mode = {'LEFT', 'RIGHT'}):
         """ > Node <&Node Handle Type Selection>
 
         Arguments
@@ -123,7 +167,7 @@ class Curve(Socket):
         - Boolean
         """
         utils.check_enum_arg('Handle Type Selection', 'handle_type', handle_type, 'handle_type_selection', ('FREE', 'AUTO', 'VECTOR', 'ALIGN'))
-        node = Node('Handle Type Selection', sockets={}, handle_type=handle_type, mode=mode)
+        node = Node('Handle Type Selection', handle_type=handle_type, mode=mode)
         return node._out
 
     def length(self):
@@ -137,11 +181,11 @@ class Curve(Socket):
         -------
         - Float
         """
-        node = Node('Curve Length', sockets={'Curve': self})
+        node = Node('Curve Length', {'Curve': self})
         return node._out
 
     @classmethod
-    def curve_of_point(cls, point_index=None):
+    def curve_of_point(cls, point_index: Integer = None):
         """ > Node <&Node Curve of Point>
 
         Arguments
@@ -152,11 +196,16 @@ class Curve(Socket):
         -------
         - Integer [index_in_curve_ (Integer)]
         """
-        node = Node('Curve of Point', sockets={'Point Index': point_index})
+        node = Node('Curve of Point', {'Point Index': point_index})
         return node._out
 
     @classmethod
-    def BeziersegmentPosition(cls, resolution=None, start=None, start_handle=None, end_handle=None, end=None):
+    def BeziersegmentPosition(cls,
+                    resolution: Integer = None,
+                    start: Vector = None,
+                    start_handle: Vector = None,
+                    end_handle: Vector = None,
+                    end: Vector = None):
         """ > Node <&Node Bézier Segment>
 
         Information
@@ -175,11 +224,16 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Bézier Segment', sockets={'Resolution': resolution, 'Start': start, 'Start Handle': start_handle, 'End Handle': end_handle, 'End': end}, mode='POSITION')
+        node = Node('Bézier Segment', {'Resolution': resolution, 'Start': start, 'Start Handle': start_handle, 'End Handle': end_handle, 'End': end}, mode='POSITION')
         return cls(node._out)
 
     @classmethod
-    def BeziersegmentOffset(cls, resolution=None, start=None, start_handle=None, end_handle=None, end=None):
+    def BeziersegmentOffset(cls,
+                    resolution: Integer = None,
+                    start: Vector = None,
+                    start_handle: Vector = None,
+                    end_handle: Vector = None,
+                    end: Vector = None):
         """ > Node <&Node Bézier Segment>
 
         Information
@@ -198,11 +252,17 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Bézier Segment', sockets={'Resolution': resolution, 'Start': start, 'Start Handle': start_handle, 'End Handle': end_handle, 'End': end}, mode='OFFSET')
+        node = Node('Bézier Segment', {'Resolution': resolution, 'Start': start, 'Start Handle': start_handle, 'End Handle': end_handle, 'End': end}, mode='OFFSET')
         return cls(node._out)
 
     @classmethod
-    def BezierSegment(cls, resolution=None, start=None, start_handle=None, end_handle=None, end=None, mode='POSITION'):
+    def BezierSegment(cls,
+                    resolution: Integer = None,
+                    start: Vector = None,
+                    start_handle: Vector = None,
+                    end_handle: Vector = None,
+                    end: Vector = None,
+                    mode: Literal['POSITION', 'OFFSET'] = 'POSITION'):
         """ > Node <&Node Bézier Segment>
 
         Arguments
@@ -219,11 +279,15 @@ class Curve(Socket):
         - Curve
         """
         utils.check_enum_arg('Bézier Segment', 'mode', mode, 'BezierSegment', ('POSITION', 'OFFSET'))
-        node = Node('Bézier Segment', sockets={'Resolution': resolution, 'Start': start, 'Start Handle': start_handle, 'End Handle': end_handle, 'End': end}, mode=mode)
+        node = Node('Bézier Segment', {'Resolution': resolution, 'Start': start, 'Start Handle': start_handle, 'End Handle': end_handle, 'End': end}, mode=mode)
         return cls(node._out)
 
     @classmethod
-    def CirclePoints(cls, resolution=None, point_1=None, point_2=None, point_3=None):
+    def CirclePoints(cls,
+                    resolution: Integer = None,
+                    point_1: Vector = None,
+                    point_2: Vector = None,
+                    point_3: Vector = None):
         """ > Node <&Node Curve Circle>
 
         Information
@@ -241,11 +305,11 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Curve Circle', sockets={'Resolution': resolution, 'Point 1': point_1, 'Point 2': point_2, 'Point 3': point_3}, mode='POINTS')
+        node = Node('Curve Circle', {'Resolution': resolution, 'Point 1': point_1, 'Point 2': point_2, 'Point 3': point_3}, mode='POINTS')
         return cls(node._out)
 
     @classmethod
-    def CircleRadius(cls, resolution=None, radius=None):
+    def CircleRadius(cls, resolution: Integer = None, radius: Float = None):
         """ > Node <&Node Curve Circle>
 
         Information
@@ -261,11 +325,14 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Curve Circle', sockets={'Resolution': resolution, 'Radius': radius}, mode='RADIUS')
+        node = Node('Curve Circle', {'Resolution': resolution, 'Radius': radius}, mode='RADIUS')
         return cls(node._out)
 
     @classmethod
-    def Circle(cls, resolution=None, radius=None, mode='RADIUS'):
+    def Circle(cls,
+                    resolution: Integer = None,
+                    radius: Float = None,
+                    mode: Literal['POINTS', 'RADIUS'] = 'RADIUS'):
         """ > Node <&Node Curve Circle>
 
         Arguments
@@ -279,11 +346,11 @@ class Curve(Socket):
         - Curve
         """
         utils.check_enum_arg('Curve Circle', 'mode', mode, 'Circle', ('POINTS', 'RADIUS'))
-        node = Node('Curve Circle', sockets={'Resolution': resolution, 'Radius': radius}, mode=mode)
+        node = Node('Curve Circle', {'Resolution': resolution, 'Radius': radius}, mode=mode)
         return cls(node._out)
 
     @classmethod
-    def LinePoints(cls, start=None, end=None):
+    def LinePoints(cls, start: Vector = None, end: Vector = None):
         """ > Node <&Node Curve Line>
 
         Information
@@ -299,11 +366,11 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Curve Line', sockets={'Start': start, 'End': end}, mode='POINTS')
+        node = Node('Curve Line', {'Start': start, 'End': end}, mode='POINTS')
         return cls(node._out)
 
     @classmethod
-    def LineDirection(cls, start=None, direction=None, length=None):
+    def LineDirection(cls, start: Vector = None, direction: Vector = None, length: Float = None):
         """ > Node <&Node Curve Line>
 
         Information
@@ -320,11 +387,14 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Curve Line', sockets={'Start': start, 'Direction': direction, 'Length': length}, mode='DIRECTION')
+        node = Node('Curve Line', {'Start': start, 'Direction': direction, 'Length': length}, mode='DIRECTION')
         return cls(node._out)
 
     @classmethod
-    def Line(cls, start=None, end=None, mode='POINTS'):
+    def Line(cls,
+                    start: Vector = None,
+                    end: Vector = None,
+                    mode: Literal['POINTS', 'DIRECTION'] = 'POINTS'):
         """ > Node <&Node Curve Line>
 
         Arguments
@@ -338,11 +408,11 @@ class Curve(Socket):
         - Curve
         """
         utils.check_enum_arg('Curve Line', 'mode', mode, 'Line', ('POINTS', 'DIRECTION'))
-        node = Node('Curve Line', sockets={'Start': start, 'End': end}, mode=mode)
+        node = Node('Curve Line', {'Start': start, 'End': end}, mode=mode)
         return cls(node._out)
 
     @classmethod
-    def QuadrilateralRectangle(cls, width=None, height=None):
+    def QuadrilateralRectangle(cls, width: Float = None, height: Float = None):
         """ > Node <&Node Quadrilateral>
 
         Information
@@ -358,11 +428,11 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Quadrilateral', sockets={'Width': width, 'Height': height}, mode='RECTANGLE')
+        node = Node('Quadrilateral', {'Width': width, 'Height': height}, mode='RECTANGLE')
         return cls(node._out)
 
     @classmethod
-    def QuadrilateralParallelogram(cls, width=None, height=None, offset=None):
+    def QuadrilateralParallelogram(cls, width: Float = None, height: Float = None, offset: Float = None):
         """ > Node <&Node Quadrilateral>
 
         Information
@@ -379,11 +449,15 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Quadrilateral', sockets={'Width': width, 'Height': height, 'Offset': offset}, mode='PARALLELOGRAM')
+        node = Node('Quadrilateral', {'Width': width, 'Height': height, 'Offset': offset}, mode='PARALLELOGRAM')
         return cls(node._out)
 
     @classmethod
-    def QuadrilateralTrapezoid(cls, width=None, height=None, bottom_width=None, top_width=None, offset=None):
+    def QuadrilateralTrapezoid(cls,
+                    height: Float = None,
+                    bottom_width: Float = None,
+                    top_width: Float = None,
+                    offset: Float = None):
         """ > Node <&Node Quadrilateral>
 
         Information
@@ -392,7 +466,6 @@ class Curve(Socket):
 
         Arguments
         ---------
-        - width (Float) : socket 'Width' (id: Width)
         - height (Float) : socket 'Height' (id: Height)
         - bottom_width (Float) : socket 'Bottom Width' (id: Bottom Width)
         - top_width (Float) : socket 'Top Width' (id: Top Width)
@@ -402,11 +475,14 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Quadrilateral', sockets={'Width': width, 'Height': height, 'Bottom Width': bottom_width, 'Top Width': top_width, 'Offset': offset}, mode='TRAPEZOID')
+        node = Node('Quadrilateral', {'Height': height, 'Bottom Width': bottom_width, 'Top Width': top_width, 'Offset': offset}, mode='TRAPEZOID')
         return cls(node._out)
 
     @classmethod
-    def QuadrilateralKite(cls, width=None, bottom_height=None, top_height=None):
+    def QuadrilateralKite(cls,
+                    width: Float = None,
+                    bottom_height: Float = None,
+                    top_height: Float = None):
         """ > Node <&Node Quadrilateral>
 
         Information
@@ -423,11 +499,15 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Quadrilateral', sockets={'Width': width, 'Bottom Height': bottom_height, 'Top Height': top_height}, mode='KITE')
+        node = Node('Quadrilateral', {'Width': width, 'Bottom Height': bottom_height, 'Top Height': top_height}, mode='KITE')
         return cls(node._out)
 
     @classmethod
-    def QuadrilateralPoints(cls, width=None, point_1=None, point_2=None, point_3=None, point_4=None):
+    def QuadrilateralPoints(cls,
+                    point_1: Vector = None,
+                    point_2: Vector = None,
+                    point_3: Vector = None,
+                    point_4: Vector = None):
         """ > Node <&Node Quadrilateral>
 
         Information
@@ -436,7 +516,6 @@ class Curve(Socket):
 
         Arguments
         ---------
-        - width (Float) : socket 'Width' (id: Width)
         - point_1 (Vector) : socket 'Point 1' (id: Point 1)
         - point_2 (Vector) : socket 'Point 2' (id: Point 2)
         - point_3 (Vector) : socket 'Point 3' (id: Point 3)
@@ -446,11 +525,14 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Quadrilateral', sockets={'Width': width, 'Point 1': point_1, 'Point 2': point_2, 'Point 3': point_3, 'Point 4': point_4}, mode='POINTS')
+        node = Node('Quadrilateral', {'Point 1': point_1, 'Point 2': point_2, 'Point 3': point_3, 'Point 4': point_4}, mode='POINTS')
         return cls(node._out)
 
     @classmethod
-    def Quadrilateral(cls, width=None, height=None, mode='RECTANGLE'):
+    def Quadrilateral(cls,
+                    width: Float = None,
+                    height: Float = None,
+                    mode: Literal['RECTANGLE', 'PARALLELOGRAM', 'TRAPEZOID', 'KITE', 'POINTS'] = 'RECTANGLE'):
         """ > Node <&Node Quadrilateral>
 
         Arguments
@@ -464,11 +546,15 @@ class Curve(Socket):
         - Curve
         """
         utils.check_enum_arg('Quadrilateral', 'mode', mode, 'Quadrilateral', ('RECTANGLE', 'PARALLELOGRAM', 'TRAPEZOID', 'KITE', 'POINTS'))
-        node = Node('Quadrilateral', sockets={'Width': width, 'Height': height}, mode=mode)
+        node = Node('Quadrilateral', {'Width': width, 'Height': height}, mode=mode)
         return cls(node._out)
 
     @classmethod
-    def QuadraticBezier(cls, resolution=None, start=None, middle=None, end=None):
+    def QuadraticBezier(cls,
+                    resolution: Integer = None,
+                    start: Vector = None,
+                    middle: Vector = None,
+                    end: Vector = None):
         """ > Node <&Node Quadratic Bézier>
 
         Arguments
@@ -482,10 +568,12 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Quadratic Bézier', sockets={'Resolution': resolution, 'Start': start, 'Middle': middle, 'End': end})
+        node = Node('Quadratic Bézier', {'Resolution': resolution, 'Start': start, 'Middle': middle, 'End': end})
         return cls(node._out)
 
-    def set_handle_type(self, handle_type='AUTO', mode={'LEFT', 'RIGHT'}):
+    def set_handle_type(self,
+                    handle_type: Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN'] = 'AUTO',
+                    mode = {'LEFT', 'RIGHT'}):
         """ > Node <&Node Set Handle Type>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -505,11 +593,11 @@ class Curve(Socket):
         - Curve
         """
         utils.check_enum_arg('Set Handle Type', 'handle_type', handle_type, 'set_handle_type', ('FREE', 'AUTO', 'VECTOR', 'ALIGN'))
-        node = Node('Set Handle Type', sockets={'Curve': self, 'Selection': self._sel}, handle_type=handle_type, mode=mode)
+        node = Node('Set Handle Type', {'Curve': self, 'Selection': self._sel}, handle_type=handle_type, mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
 
-    def set_left_handle_type(self, handle_type='AUTO'):
+    def set_left_handle_type(self, handle_type: Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN'] = 'AUTO'):
         """ > Node <&Node Set Handle Type>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -529,11 +617,11 @@ class Curve(Socket):
         - Curve
         """
         utils.check_enum_arg('Set Handle Type', 'handle_type', handle_type, 'set_left_handle_type', ('FREE', 'AUTO', 'VECTOR', 'ALIGN'))
-        node = Node('Set Handle Type', sockets={'Curve': self, 'Selection': self._sel}, handle_type=handle_type, mode={'LEFT'})
+        node = Node('Set Handle Type', {'Curve': self, 'Selection': self._sel}, handle_type=handle_type, mode={'LEFT'})
         self._jump(node._out)
         return self._domain_to_geometry
 
-    def set_right_handle_type(self, handle_type='AUTO'):
+    def set_right_handle_type(self, handle_type: Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN'] = 'AUTO'):
         """ > Node <&Node Set Handle Type>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -553,11 +641,11 @@ class Curve(Socket):
         - Curve
         """
         utils.check_enum_arg('Set Handle Type', 'handle_type', handle_type, 'set_right_handle_type', ('FREE', 'AUTO', 'VECTOR', 'ALIGN'))
-        node = Node('Set Handle Type', sockets={'Curve': self, 'Selection': self._sel}, handle_type=handle_type, mode={'RIGHT'})
+        node = Node('Set Handle Type', {'Curve': self, 'Selection': self._sel}, handle_type=handle_type, mode={'RIGHT'})
         self._jump(node._out)
         return self._domain_to_geometry
 
-    def set_both_handle_type(self, handle_type='AUTO'):
+    def set_both_handle_type(self, handle_type: Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN'] = 'AUTO'):
         """ > Node <&Node Set Handle Type>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -577,12 +665,18 @@ class Curve(Socket):
         - Curve
         """
         utils.check_enum_arg('Set Handle Type', 'handle_type', handle_type, 'set_both_handle_type', ('FREE', 'AUTO', 'VECTOR', 'ALIGN'))
-        node = Node('Set Handle Type', sockets={'Curve': self, 'Selection': self._sel}, handle_type=handle_type, mode={'LEFT', 'RIGHT'})
+        node = Node('Set Handle Type', {'Curve': self, 'Selection': self._sel}, handle_type=handle_type, mode={'LEFT', 'RIGHT'})
         self._jump(node._out)
         return self._domain_to_geometry
 
     @classmethod
-    def Spiral(cls, resolution=None, rotations=None, start_radius=None, end_radius=None, height=None, reverse=None):
+    def Spiral(cls,
+                    resolution: Integer = None,
+                    rotations: Float = None,
+                    start_radius: Float = None,
+                    end_radius: Float = None,
+                    height: Float = None,
+                    reverse: Boolean = None):
         """ > Node <&Node Spiral>
 
         Arguments
@@ -598,10 +692,10 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Spiral', sockets={'Resolution': resolution, 'Rotations': rotations, 'Start Radius': start_radius, 'End Radius': end_radius, 'Height': height, 'Reverse': reverse})
+        node = Node('Spiral', {'Resolution': resolution, 'Rotations': rotations, 'Start Radius': start_radius, 'End Radius': end_radius, 'Height': height, 'Reverse': reverse})
         return cls(node._out)
 
-    def set_spline_type(self, spline_type='POLY'):
+    def set_spline_type(self, spline_type: Literal['CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS'] = 'POLY'):
         """ > Node <&Node Set Spline Type>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -620,12 +714,16 @@ class Curve(Socket):
         - Curve
         """
         utils.check_enum_arg('Set Spline Type', 'spline_type', spline_type, 'set_spline_type', ('CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS'))
-        node = Node('Set Spline Type', sockets={'Curve': self, 'Selection': self._sel}, spline_type=spline_type)
+        node = Node('Set Spline Type', {'Curve': self, 'Selection': self._sel}, spline_type=spline_type)
         self._jump(node._out)
         return self._domain_to_geometry
 
     @classmethod
-    def Star(cls, points=None, inner_radius=None, outer_radius=None, twist=None):
+    def Star(cls,
+                    points: Integer = None,
+                    inner_radius: Float = None,
+                    outer_radius: Float = None,
+                    twist: Float = None):
         """ > Node <&Node Star>
 
         Arguments
@@ -639,10 +737,13 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Star', sockets={'Points': points, 'Inner Radius': inner_radius, 'Outer Radius': outer_radius, 'Twist': twist})
+        node = Node('Star', {'Points': points, 'Inner Radius': inner_radius, 'Outer Radius': outer_radius, 'Twist': twist})
         return cls(node._out)
 
-    def to_mesh(self, profile_curve=None, scale=None, fill_caps=None):
+    def to_mesh(self,
+                    profile_curve: Curve = None,
+                    scale: Float = None,
+                    fill_caps: Boolean = None):
         """ > Node <&Node Curve to Mesh>
 
         Information
@@ -651,7 +752,7 @@ class Curve(Socket):
 
         Arguments
         ---------
-        - profile_curve (Geometry) : socket 'Profile Curve' (id: Profile Curve)
+        - profile_curve (Curve) : socket 'Profile Curve' (id: Profile Curve)
         - scale (Float) : socket 'Scale' (id: Scale)
         - fill_caps (Boolean) : socket 'Fill Caps' (id: Fill Caps)
 
@@ -659,7 +760,7 @@ class Curve(Socket):
         -------
         - Mesh
         """
-        node = Node('Curve to Mesh', sockets={'Curve': self, 'Profile Curve': profile_curve, 'Scale': scale, 'Fill Caps': fill_caps})
+        node = Node('Curve to Mesh', {'Curve': self, 'Profile Curve': profile_curve, 'Scale': scale, 'Fill Caps': fill_caps})
         return node._out
 
     def to_points_evaluated(self):
@@ -674,10 +775,10 @@ class Curve(Socket):
         -------
         - Cloud [tangent_ (Vector), normal_ (Vector), rotation_ (Rotation)]
         """
-        node = Node('Curve to Points', sockets={'Curve': self}, mode='EVALUATED')
+        node = Node('Curve to Points', {'Curve': self}, mode='EVALUATED')
         return node._out
 
-    def to_points_count(self, count=None):
+    def to_points_count(self, count: Integer = None):
         """ > Node <&Node Curve to Points>
 
         Information
@@ -693,10 +794,10 @@ class Curve(Socket):
         -------
         - Cloud [tangent_ (Vector), normal_ (Vector), rotation_ (Rotation)]
         """
-        node = Node('Curve to Points', sockets={'Curve': self, 'Count': count}, mode='COUNT')
+        node = Node('Curve to Points', {'Curve': self, 'Count': count}, mode='COUNT')
         return node._out
 
-    def to_points_length(self, length=None):
+    def to_points_length(self, length: Float = None):
         """ > Node <&Node Curve to Points>
 
         Information
@@ -712,10 +813,12 @@ class Curve(Socket):
         -------
         - Cloud [tangent_ (Vector), normal_ (Vector), rotation_ (Rotation)]
         """
-        node = Node('Curve to Points', sockets={'Curve': self, 'Length': length}, mode='LENGTH')
+        node = Node('Curve to Points', {'Curve': self, 'Length': length}, mode='LENGTH')
         return node._out
 
-    def to_points(self, count=None, mode='COUNT'):
+    def to_points(self,
+                    count: Integer = None,
+                    mode: Literal['EVALUATED', 'COUNT', 'LENGTH'] = 'COUNT'):
         """ > Node <&Node Curve to Points>
 
         Information
@@ -732,10 +835,10 @@ class Curve(Socket):
         - Cloud [tangent_ (Vector), normal_ (Vector), rotation_ (Rotation)]
         """
         utils.check_enum_arg('Curve to Points', 'mode', mode, 'to_points', ('EVALUATED', 'COUNT', 'LENGTH'))
-        node = Node('Curve to Points', sockets={'Curve': self, 'Count': count}, mode=mode)
+        node = Node('Curve to Points', {'Curve': self, 'Count': count}, mode=mode)
         return node._out
 
-    def to_grease_pencil(self, instances_as_layers=None):
+    def to_grease_pencil(self, instances_as_layers: Boolean = None):
         """ > Node <&Node Curves to Grease Pencil>
 
         Information
@@ -751,7 +854,7 @@ class Curve(Socket):
         -------
         - GreasePencil
         """
-        node = Node('Curves to Grease Pencil', sockets={'Curves': self, 'Selection': self._sel, 'Instances as Layers': instances_as_layers})
+        node = Node('Curves to Grease Pencil', {'Curves': self, 'Selection': self._sel, 'Instances as Layers': instances_as_layers})
         return node._out
 
     def deform_on_surface(self):
@@ -767,49 +870,11 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Deform Curves on Surface', sockets={'Curves': self})
+        node = Node('Deform Curves on Surface', {'Curves': self})
         self._jump(node._out)
         return self._domain_to_geometry
 
-    def fill_triangles(self, group_id=None):
-        """ > Node <&Node Fill Curve>
-
-        Information
-        -----------
-        - Socket 'Curve' : self
-        - Parameter 'mode' : 'TRIANGLES'
-
-        Arguments
-        ---------
-        - group_id (Integer) : socket 'Group ID' (id: Group ID)
-
-        Returns
-        -------
-        - Mesh
-        """
-        node = Node('Fill Curve', sockets={'Curve': self, 'Group ID': group_id}, mode='TRIANGLES')
-        return node._out
-
-    def fill_ngons(self, group_id=None):
-        """ > Node <&Node Fill Curve>
-
-        Information
-        -----------
-        - Socket 'Curve' : self
-        - Parameter 'mode' : 'NGONS'
-
-        Arguments
-        ---------
-        - group_id (Integer) : socket 'Group ID' (id: Group ID)
-
-        Returns
-        -------
-        - Mesh
-        """
-        node = Node('Fill Curve', sockets={'Curve': self, 'Group ID': group_id}, mode='NGONS')
-        return node._out
-
-    def fill(self, group_id=None, mode='TRIANGLES'):
+    def fill(self, group_id: Integer = None, mode: Literal['Triangles', 'N-gons'] = None):
         """ > Node <&Node Fill Curve>
 
         Information
@@ -819,17 +884,20 @@ class Curve(Socket):
         Arguments
         ---------
         - group_id (Integer) : socket 'Group ID' (id: Group ID)
-        - mode (str): parameter 'mode' in ['TRIANGLES', 'NGONS']
+        - mode (menu='Triangles') : ('Triangles', 'N-gons')
 
         Returns
         -------
         - Mesh
         """
-        utils.check_enum_arg('Fill Curve', 'mode', mode, 'fill', ('TRIANGLES', 'NGONS'))
-        node = Node('Fill Curve', sockets={'Curve': self, 'Group ID': group_id}, mode=mode)
+        node = Node('Fill Curve', {'Curve': self, 'Group ID': group_id, 'Mode': mode})
         return node._out
 
-    def fillet_bezier(self, radius=None, limit_radius=None):
+    def fillet(self,
+                    radius: Float = None,
+                    limit_radius: Boolean = None,
+                    mode: Literal['Bézier', 'Poly'] = None,
+                    count: Integer = None):
         """ > Node <&Node Fillet Curve>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -837,71 +905,24 @@ class Curve(Socket):
         Information
         -----------
         - Socket 'Curve' : self
-        - Parameter 'mode' : 'BEZIER'
 
         Arguments
         ---------
         - radius (Float) : socket 'Radius' (id: Radius)
         - limit_radius (Boolean) : socket 'Limit Radius' (id: Limit Radius)
-
-        Returns
-        -------
-        - Curve
-        """
-        node = Node('Fillet Curve', sockets={'Curve': self, 'Radius': radius, 'Limit Radius': limit_radius}, mode='BEZIER')
-        self._jump(node._out)
-        return self._domain_to_geometry
-
-    def fillet_poly(self, count=None, radius=None, limit_radius=None):
-        """ > Node <&Node Fillet Curve>
-
-        > ***Jump*** : Socket refers to node output socket after the call
-
-        Information
-        -----------
-        - Socket 'Curve' : self
-        - Parameter 'mode' : 'POLY'
-
-        Arguments
-        ---------
+        - mode (menu='Bézier') : ('Bézier', 'Poly')
         - count (Integer) : socket 'Count' (id: Count)
-        - radius (Float) : socket 'Radius' (id: Radius)
-        - limit_radius (Boolean) : socket 'Limit Radius' (id: Limit Radius)
 
         Returns
         -------
         - Curve
         """
-        node = Node('Fillet Curve', sockets={'Curve': self, 'Count': count, 'Radius': radius, 'Limit Radius': limit_radius}, mode='POLY')
-        self._jump(node._out)
-        return self._domain_to_geometry
-
-    def fillet(self, radius=None, limit_radius=None, mode='BEZIER'):
-        """ > Node <&Node Fillet Curve>
-
-        > ***Jump*** : Socket refers to node output socket after the call
-
-        Information
-        -----------
-        - Socket 'Curve' : self
-
-        Arguments
-        ---------
-        - radius (Float) : socket 'Radius' (id: Radius)
-        - limit_radius (Boolean) : socket 'Limit Radius' (id: Limit Radius)
-        - mode (str): parameter 'mode' in ['BEZIER', 'POLY']
-
-        Returns
-        -------
-        - Curve
-        """
-        utils.check_enum_arg('Fillet Curve', 'mode', mode, 'fillet', ('BEZIER', 'POLY'))
-        node = Node('Fillet Curve', sockets={'Curve': self, 'Radius': radius, 'Limit Radius': limit_radius}, mode=mode)
+        node = Node('Fillet Curve', {'Curve': self, 'Radius': radius, 'Limit Radius': limit_radius, 'Mode': mode, 'Count': count})
         self._jump(node._out)
         return self._domain_to_geometry
 
     @classmethod
-    def handle_positions(cls, relative=None):
+    def handle_positions(cls, relative: Boolean = None):
         """ > Node <&Node Curve Handle Positions>
 
         Arguments
@@ -912,7 +933,7 @@ class Curve(Socket):
         -------
         - Vector [right_ (Vector)]
         """
-        node = Node('Curve Handle Positions', sockets={'Relative': relative})
+        node = Node('Curve Handle Positions', {'Relative': relative})
         return node._out
 
     @classmethod
@@ -924,19 +945,26 @@ class Curve(Socket):
         -------
         - Vector
         """
-        node = Node('Curve Tangent', sockets={})
+        node = Node('Curve Tangent', )
         return node._out
 
     @classmethod
-    def Interpolate(cls, guide_curves=None, guide_up=None, guide_group_id=None, points=None, point_up=None, point_group_id=None, max_neighbors=None):
+    def Interpolate(cls,
+                    guide_curves: Curve = None,
+                    guide_up: Vector = None,
+                    guide_group_id: Integer = None,
+                    points: Cloud = None,
+                    point_up: Vector = None,
+                    point_group_id: Integer = None,
+                    max_neighbors: Integer = None):
         """ > Node <&Node Interpolate Curves>
 
         Arguments
         ---------
-        - guide_curves (Geometry) : socket 'Guide Curves' (id: Guide Curves)
+        - guide_curves (Curve) : socket 'Guide Curves' (id: Guide Curves)
         - guide_up (Vector) : socket 'Guide Up' (id: Guide Up)
         - guide_group_id (Integer) : socket 'Guide Group ID' (id: Guide Group ID)
-        - points (Geometry) : socket 'Points' (id: Points)
+        - points (Cloud) : socket 'Points' (id: Points)
         - point_up (Vector) : socket 'Point Up' (id: Point Up)
         - point_group_id (Integer) : socket 'Point Group ID' (id: Point Group ID)
         - max_neighbors (Integer) : socket 'Max Neighbors' (id: Max Neighbors)
@@ -945,10 +973,16 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Interpolate Curves', sockets={'Guide Curves': guide_curves, 'Guide Up': guide_up, 'Guide Group ID': guide_group_id, 'Points': points, 'Point Up': point_up, 'Point Group ID': point_group_id, 'Max Neighbors': max_neighbors})
+        node = Node('Interpolate Curves', {'Guide Curves': guide_curves, 'Guide Up': guide_up, 'Guide Group ID': guide_group_id, 'Points': points, 'Point Up': point_up, 'Point Group ID': point_group_id, 'Max Neighbors': max_neighbors})
         return cls(node._out)
 
-    def interpolate(self, guide_up=None, guide_group_id=None, points=None, point_up=None, point_group_id=None, max_neighbors=None):
+    def interpolate(self,
+                    guide_up: Vector = None,
+                    guide_group_id: Integer = None,
+                    points: Cloud = None,
+                    point_up: Vector = None,
+                    point_group_id: Integer = None,
+                    max_neighbors: Integer = None):
         """ > Node <&Node Interpolate Curves>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -961,7 +995,7 @@ class Curve(Socket):
         ---------
         - guide_up (Vector) : socket 'Guide Up' (id: Guide Up)
         - guide_group_id (Integer) : socket 'Guide Group ID' (id: Guide Group ID)
-        - points (Geometry) : socket 'Points' (id: Points)
+        - points (Cloud) : socket 'Points' (id: Points)
         - point_up (Vector) : socket 'Point Up' (id: Point Up)
         - point_group_id (Integer) : socket 'Point Group ID' (id: Point Group ID)
         - max_neighbors (Integer) : socket 'Max Neighbors' (id: Max Neighbors)
@@ -970,12 +1004,12 @@ class Curve(Socket):
         -------
         - Curve [closest_index_ (Integer), closest_weight_ (Float)]
         """
-        node = Node('Interpolate Curves', sockets={'Guide Curves': self, 'Guide Up': guide_up, 'Guide Group ID': guide_group_id, 'Points': points, 'Point Up': point_up, 'Point Group ID': point_group_id, 'Max Neighbors': max_neighbors})
+        node = Node('Interpolate Curves', {'Guide Curves': self, 'Guide Up': guide_up, 'Guide Group ID': guide_group_id, 'Points': points, 'Point Up': point_up, 'Point Group ID': point_group_id, 'Max Neighbors': max_neighbors})
         self._jump(node._out)
         return self._domain_to_geometry
 
     @classmethod
-    def material_selection(cls, material=None):
+    def material_selection(cls, material: Material = None):
         """ > Node <&Node Material Selection>
 
         Arguments
@@ -986,11 +1020,11 @@ class Curve(Socket):
         -------
         - Boolean
         """
-        node = Node('Material Selection', sockets={'Material': material})
+        node = Node('Material Selection', {'Material': material})
         return node._out
 
     @classmethod
-    def offset_point_in_curve(cls, point_index=None, offset=None):
+    def offset_point_in_curve(cls, point_index: Integer = None, offset: Integer = None):
         """ > Node <&Node Offset Point in Curve>
 
         Arguments
@@ -1002,11 +1036,14 @@ class Curve(Socket):
         -------
         - Boolean [point_index_ (Integer)]
         """
-        node = Node('Offset Point in Curve', sockets={'Point Index': point_index, 'Offset': offset})
+        node = Node('Offset Point in Curve', {'Point Index': point_index, 'Offset': offset})
         return node._out
 
     @classmethod
-    def points_of_curve(cls, curve_index=None, weights=None, sort_index=None):
+    def points_of_curve(cls,
+                    curve_index: Integer = None,
+                    weights: Float = None,
+                    sort_index: Integer = None):
         """ > Node <&Node Points of Curve>
 
         Arguments
@@ -1019,10 +1056,14 @@ class Curve(Socket):
         -------
         - Integer [total_ (Integer)]
         """
-        node = Node('Points of Curve', sockets={'Curve Index': curve_index, 'Weights': weights, 'Sort Index': sort_index})
+        node = Node('Points of Curve', {'Curve Index': curve_index, 'Weights': weights, 'Sort Index': sort_index})
         return node._out
 
-    def resample_evaluated(self, keep_last_segment=True):
+    def resample(self,
+                    mode: Literal['Evaluated', 'Count', 'Length'] = None,
+                    count: Integer = None,
+                    length: Float = None,
+                    keep_last_segment = True):
         """ > Node <&Node Resample Curve>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -1031,57 +1072,11 @@ class Curve(Socket):
         -----------
         - Socket 'Curve' : self
         - Socket 'Selection' : self[selection]
-        - Parameter 'mode' : 'EVALUATED'
 
         Arguments
         ---------
-        - keep_last_segment (bool): parameter 'keep_last_segment'
-
-        Returns
-        -------
-        - Curve
-        """
-        node = Node('Resample Curve', sockets={'Curve': self, 'Selection': self._sel}, keep_last_segment=keep_last_segment, mode='EVALUATED')
-        self._jump(node._out)
-        return self._domain_to_geometry
-
-    def resample_count(self, count=None, keep_last_segment=True):
-        """ > Node <&Node Resample Curve>
-
-        > ***Jump*** : Socket refers to node output socket after the call
-
-        Information
-        -----------
-        - Socket 'Curve' : self
-        - Socket 'Selection' : self[selection]
-        - Parameter 'mode' : 'COUNT'
-
-        Arguments
-        ---------
+        - mode (menu='Count') : ('Evaluated', 'Count', 'Length')
         - count (Integer) : socket 'Count' (id: Count)
-        - keep_last_segment (bool): parameter 'keep_last_segment'
-
-        Returns
-        -------
-        - Curve
-        """
-        node = Node('Resample Curve', sockets={'Curve': self, 'Selection': self._sel, 'Count': count}, keep_last_segment=keep_last_segment, mode='COUNT')
-        self._jump(node._out)
-        return self._domain_to_geometry
-
-    def resample_length(self, length=None, keep_last_segment=True):
-        """ > Node <&Node Resample Curve>
-
-        > ***Jump*** : Socket refers to node output socket after the call
-
-        Information
-        -----------
-        - Socket 'Curve' : self
-        - Socket 'Selection' : self[selection]
-        - Parameter 'mode' : 'LENGTH'
-
-        Arguments
-        ---------
         - length (Float) : socket 'Length' (id: Length)
         - keep_last_segment (bool): parameter 'keep_last_segment'
 
@@ -1089,32 +1084,7 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Resample Curve', sockets={'Curve': self, 'Selection': self._sel, 'Length': length}, keep_last_segment=keep_last_segment, mode='LENGTH')
-        self._jump(node._out)
-        return self._domain_to_geometry
-
-    def resample(self, count=None, keep_last_segment=True, mode='COUNT'):
-        """ > Node <&Node Resample Curve>
-
-        > ***Jump*** : Socket refers to node output socket after the call
-
-        Information
-        -----------
-        - Socket 'Curve' : self
-        - Socket 'Selection' : self[selection]
-
-        Arguments
-        ---------
-        - count (Integer) : socket 'Count' (id: Count)
-        - keep_last_segment (bool): parameter 'keep_last_segment'
-        - mode (str): parameter 'mode' in ['EVALUATED', 'COUNT', 'LENGTH']
-
-        Returns
-        -------
-        - Curve
-        """
-        utils.check_enum_arg('Resample Curve', 'mode', mode, 'resample', ('EVALUATED', 'COUNT', 'LENGTH'))
-        node = Node('Resample Curve', sockets={'Curve': self, 'Selection': self._sel, 'Count': count}, keep_last_segment=keep_last_segment, mode=mode)
+        node = Node('Resample Curve', {'Curve': self, 'Selection': self._sel, 'Mode': mode, 'Count': count, 'Length': length}, keep_last_segment=keep_last_segment)
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -1132,11 +1102,15 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Reverse Curve', sockets={'Curve': self, 'Selection': self._sel})
+        node = Node('Reverse Curve', {'Curve': self, 'Selection': self._sel})
         self._jump(node._out)
         return self._domain_to_geometry
 
-    def sample_factor(self, value=None, curve_index=None, factor=None, use_all_curves=False):
+    def sample_factor(self,
+                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix = None,
+                    curve_index: Integer = None,
+                    factor: Float = None,
+                    use_all_curves = False):
         """ > Node <&Node Sample Curve>
 
         Information
@@ -1147,7 +1121,7 @@ class Curve(Socket):
 
         Arguments
         ---------
-        - value (Float) : socket 'Value' (id: Value)
+        - value (Float | Integer | Boolean | Vector | Color | Rotation | Matrix) : socket 'Value' (id: Value)
         - curve_index (Integer) : socket 'Curve Index' (id: Curve Index)
         - factor (Float) : socket 'Factor' (id: Factor)
         - use_all_curves (bool): parameter 'use_all_curves'
@@ -1156,11 +1130,15 @@ class Curve(Socket):
         -------
         - Float [position_ (Vector), tangent_ (Vector), normal_ (Vector)]
         """
-        data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Curve.sample_factor', 'value')
-        node = Node('Sample Curve', sockets={'Curves': self, 'Value': value, 'Curve Index': curve_index, 'Factor': factor}, data_type=data_type, mode='FACTOR', use_all_curves=use_all_curves)
+        data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'BOOLEAN': 'BOOLEAN', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Curve.sample_factor', 'value')
+        node = Node('Sample Curve', {'Curves': self, 'Value': value, 'Curve Index': curve_index, 'Factor': factor}, data_type=data_type, mode='FACTOR', use_all_curves=use_all_curves)
         return node._out
 
-    def sample_length(self, value=None, length=None, curve_index=None, use_all_curves=False):
+    def sample_length(self,
+                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix = None,
+                    length: Float = None,
+                    curve_index: Integer = None,
+                    use_all_curves = False):
         """ > Node <&Node Sample Curve>
 
         Information
@@ -1171,7 +1149,7 @@ class Curve(Socket):
 
         Arguments
         ---------
-        - value (Float) : socket 'Value' (id: Value)
+        - value (Float | Integer | Boolean | Vector | Color | Rotation | Matrix) : socket 'Value' (id: Value)
         - length (Float) : socket 'Length' (id: Length)
         - curve_index (Integer) : socket 'Curve Index' (id: Curve Index)
         - use_all_curves (bool): parameter 'use_all_curves'
@@ -1180,11 +1158,16 @@ class Curve(Socket):
         -------
         - Float [position_ (Vector), tangent_ (Vector), normal_ (Vector)]
         """
-        data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Curve.sample_length', 'value')
-        node = Node('Sample Curve', sockets={'Curves': self, 'Value': value, 'Length': length, 'Curve Index': curve_index}, data_type=data_type, mode='LENGTH', use_all_curves=use_all_curves)
+        data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'BOOLEAN': 'BOOLEAN', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Curve.sample_length', 'value')
+        node = Node('Sample Curve', {'Curves': self, 'Value': value, 'Length': length, 'Curve Index': curve_index}, data_type=data_type, mode='LENGTH', use_all_curves=use_all_curves)
         return node._out
 
-    def sample(self, value=None, curve_index=None, factor=None, mode='FACTOR', use_all_curves=False):
+    def sample(self,
+                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix = None,
+                    curve_index: Integer = None,
+                    factor: Float = None,
+                    mode: Literal['FACTOR', 'LENGTH'] = 'FACTOR',
+                    use_all_curves = False):
         """ > Node <&Node Sample Curve>
 
         Information
@@ -1194,7 +1177,7 @@ class Curve(Socket):
 
         Arguments
         ---------
-        - value (Float) : socket 'Value' (id: Value)
+        - value (Float | Integer | Boolean | Vector | Color | Rotation | Matrix) : socket 'Value' (id: Value)
         - curve_index (Integer) : socket 'Curve Index' (id: Curve Index)
         - factor (Float) : socket 'Factor' (id: Factor)
         - mode (str): parameter 'mode' in ['FACTOR', 'LENGTH']
@@ -1205,11 +1188,14 @@ class Curve(Socket):
         - Float [position_ (Vector), tangent_ (Vector), normal_ (Vector)]
         """
         utils.check_enum_arg('Sample Curve', 'mode', mode, 'sample', ('FACTOR', 'LENGTH'))
-        data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Curve.sample', 'value')
-        node = Node('Sample Curve', sockets={'Curves': self, 'Value': value, 'Curve Index': curve_index, 'Factor': factor}, data_type=data_type, mode=mode, use_all_curves=use_all_curves)
+        data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'BOOLEAN': 'BOOLEAN', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Curve.sample', 'value')
+        node = Node('Sample Curve', {'Curves': self, 'Value': value, 'Curve Index': curve_index, 'Factor': factor}, data_type=data_type, mode=mode, use_all_curves=use_all_curves)
         return node._out
 
-    def set_handle_positions(self, position=None, offset=None, mode='LEFT'):
+    def set_handle_positions(self,
+                    position: Vector = None,
+                    offset: Vector = None,
+                    mode: Literal['LEFT', 'RIGHT'] = 'LEFT'):
         """ > Node <&Node Set Handle Positions>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -1230,11 +1216,11 @@ class Curve(Socket):
         - Curve
         """
         utils.check_enum_arg('Set Handle Positions', 'mode', mode, 'set_handle_positions', ('LEFT', 'RIGHT'))
-        node = Node('Set Handle Positions', sockets={'Curve': self, 'Selection': self._sel, 'Position': position, 'Offset': offset}, mode=mode)
+        node = Node('Set Handle Positions', {'Curve': self, 'Selection': self._sel, 'Position': position, 'Offset': offset}, mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
 
-    def set_left_handle_positions(self, position=None, offset=None):
+    def set_left_handle_positions(self, position: Vector = None, offset: Vector = None):
         """ > Node <&Node Set Handle Positions>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -1254,11 +1240,11 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Set Handle Positions', sockets={'Curve': self, 'Selection': self._sel, 'Position': position, 'Offset': offset}, mode='LEFT')
+        node = Node('Set Handle Positions', {'Curve': self, 'Selection': self._sel, 'Position': position, 'Offset': offset}, mode='LEFT')
         self._jump(node._out)
         return self._domain_to_geometry
 
-    def set_right_handle_positions(self, position=None, offset=None):
+    def set_right_handle_positions(self, position: Vector = None, offset: Vector = None):
         """ > Node <&Node Set Handle Positions>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -1278,11 +1264,13 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Set Handle Positions', sockets={'Curve': self, 'Selection': self._sel, 'Position': position, 'Offset': offset}, mode='RIGHT')
+        node = Node('Set Handle Positions', {'Curve': self, 'Selection': self._sel, 'Position': position, 'Offset': offset}, mode='RIGHT')
         self._jump(node._out)
         return self._domain_to_geometry
 
-    def set_normal_minimum_twist(self):
+    def set_normal(self,
+                    mode: Literal['Minimum Twist', 'Z Up', 'Free'] = None,
+                    normal: Vector = None):
         """ > Node <&Node Set Curve Normal>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -1291,82 +1279,21 @@ class Curve(Socket):
         -----------
         - Socket 'Curve' : self
         - Socket 'Selection' : self[selection]
-        - Parameter 'mode' : 'MINIMUM_TWIST'
-
-        Returns
-        -------
-        - Curve
-        """
-        node = Node('Set Curve Normal', sockets={'Curve': self, 'Selection': self._sel}, mode='MINIMUM_TWIST')
-        self._jump(node._out)
-        return self._domain_to_geometry
-
-    def set_normal_z_up(self):
-        """ > Node <&Node Set Curve Normal>
-
-        > ***Jump*** : Socket refers to node output socket after the call
-
-        Information
-        -----------
-        - Socket 'Curve' : self
-        - Socket 'Selection' : self[selection]
-        - Parameter 'mode' : 'Z_UP'
-
-        Returns
-        -------
-        - Curve
-        """
-        node = Node('Set Curve Normal', sockets={'Curve': self, 'Selection': self._sel}, mode='Z_UP')
-        self._jump(node._out)
-        return self._domain_to_geometry
-
-    def set_normal_free(self, normal=None):
-        """ > Node <&Node Set Curve Normal>
-
-        > ***Jump*** : Socket refers to node output socket after the call
-
-        Information
-        -----------
-        - Socket 'Curve' : self
-        - Socket 'Selection' : self[selection]
-        - Parameter 'mode' : 'FREE'
 
         Arguments
         ---------
+        - mode (menu='Minimum Twist') : ('Minimum Twist', 'Z Up', 'Free')
         - normal (Vector) : socket 'Normal' (id: Normal)
 
         Returns
         -------
         - Curve
         """
-        node = Node('Set Curve Normal', sockets={'Curve': self, 'Selection': self._sel, 'Normal': normal}, mode='FREE')
+        node = Node('Set Curve Normal', {'Curve': self, 'Selection': self._sel, 'Mode': mode, 'Normal': normal})
         self._jump(node._out)
         return self._domain_to_geometry
 
-    def set_normal(self, mode='MINIMUM_TWIST'):
-        """ > Node <&Node Set Curve Normal>
-
-        > ***Jump*** : Socket refers to node output socket after the call
-
-        Information
-        -----------
-        - Socket 'Curve' : self
-        - Socket 'Selection' : self[selection]
-
-        Arguments
-        ---------
-        - mode (str): parameter 'mode' in ['MINIMUM_TWIST', 'Z_UP', 'FREE']
-
-        Returns
-        -------
-        - Curve
-        """
-        utils.check_enum_arg('Set Curve Normal', 'mode', mode, 'set_normal', ('MINIMUM_TWIST', 'Z_UP', 'FREE'))
-        node = Node('Set Curve Normal', sockets={'Curve': self, 'Selection': self._sel}, mode=mode)
-        self._jump(node._out)
-        return self._domain_to_geometry
-
-    def set_radius(self, radius=None):
+    def set_radius(self, radius: Float = None):
         """ > Node <&Node Set Curve Radius>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -1384,11 +1311,11 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Set Curve Radius', sockets={'Curve': self, 'Selection': self._sel, 'Radius': radius})
+        node = Node('Set Curve Radius', {'Curve': self, 'Selection': self._sel, 'Radius': radius})
         self._jump(node._out)
         return self._domain_to_geometry
 
-    def set_tilt(self, tilt=None):
+    def set_tilt(self, tilt: Float = None):
         """ > Node <&Node Set Curve Tilt>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -1406,7 +1333,51 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Set Curve Tilt', sockets={'Curve': self, 'Selection': self._sel, 'Tilt': tilt})
+        node = Node('Set Curve Tilt', {'Curve': self, 'Selection': self._sel, 'Tilt': tilt})
+        self._jump(node._out)
+        return self._domain_to_geometry
+
+    def set_spline_cyclic(self, cyclic: Boolean = None):
+        """ > Node <&Node Set Spline Cyclic>
+
+        > ***Jump*** : Socket refers to node output socket after the call
+
+        Information
+        -----------
+        - Socket 'Curve' : self
+        - Socket 'Selection' : self[selection]
+
+        Arguments
+        ---------
+        - cyclic (Boolean) : socket 'Cyclic' (id: Cyclic)
+
+        Returns
+        -------
+        - Curve
+        """
+        node = Node('Set Spline Cyclic', {'Geometry': self, 'Selection': self._sel, 'Cyclic': cyclic})
+        self._jump(node._out)
+        return self._domain_to_geometry
+
+    def set_spline_resolution(self, resolution: Integer = None):
+        """ > Node <&Node Set Spline Resolution>
+
+        > ***Jump*** : Socket refers to node output socket after the call
+
+        Information
+        -----------
+        - Socket 'Curve' : self
+        - Socket 'Selection' : self[selection]
+
+        Arguments
+        ---------
+        - resolution (Integer) : socket 'Resolution' (id: Resolution)
+
+        Returns
+        -------
+        - Curve
+        """
+        node = Node('Set Spline Resolution', {'Geometry': self, 'Selection': self._sel, 'Resolution': resolution})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -1418,7 +1389,7 @@ class Curve(Socket):
         -------
         - Float [point_count_ (Integer)]
         """
-        node = Node('Spline Length', sockets={})
+        node = Node('Spline Length', )
         return node._out
 
     @classmethod
@@ -1429,10 +1400,10 @@ class Curve(Socket):
         -------
         - Float [length_ (Float), index_ (Integer)]
         """
-        node = Node('Spline Parameter', sockets={})
+        node = Node('Spline Parameter', )
         return node._out
 
-    def subdivide(self, cuts=None):
+    def subdivide(self, cuts: Integer = None):
         """ > Node <&Node Subdivide Curve>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -1449,11 +1420,11 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Subdivide Curve', sockets={'Curve': self, 'Cuts': cuts})
+        node = Node('Subdivide Curve', {'Curve': self, 'Cuts': cuts})
         self._jump(node._out)
         return self._domain_to_geometry
 
-    def trim_factor(self, start=None, end=None):
+    def trim_factor(self, start: Float = None, end: Float = None):
         """ > Node <&Node Trim Curve>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -1473,11 +1444,11 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Trim Curve', sockets={'Curve': self, 'Selection': self._sel, 'Start': start, 'End': end}, mode='FACTOR')
+        node = Node('Trim Curve', {'Curve': self, 'Selection': self._sel, 'Start': start, 'End': end}, mode='FACTOR')
         self._jump(node._out)
         return self._domain_to_geometry
 
-    def trim_length(self, start=None, end=None):
+    def trim_length(self, start: Float = None, end: Float = None):
         """ > Node <&Node Trim Curve>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -1497,11 +1468,14 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Trim Curve', sockets={'Curve': self, 'Selection': self._sel, 'Start_001': start, 'End_001': end}, mode='LENGTH')
+        node = Node('Trim Curve', {'Curve': self, 'Selection': self._sel, 'Start_001': start, 'End_001': end}, mode='LENGTH')
         self._jump(node._out)
         return self._domain_to_geometry
 
-    def trim(self, start=None, end=None, mode='FACTOR'):
+    def trim(self,
+                    start: Float = None,
+                    end: Float = None,
+                    mode: Literal['FACTOR', 'LENGTH'] = 'FACTOR'):
         """ > Node <&Node Trim Curve>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -1522,7 +1496,7 @@ class Curve(Socket):
         - Curve
         """
         utils.check_enum_arg('Trim Curve', 'mode', mode, 'trim', ('FACTOR', 'LENGTH'))
-        node = Node('Trim Curve', sockets={'Curve': self, 'Selection': self._sel, 'Start': start, 'End': end}, mode=mode)
+        node = Node('Trim Curve', {'Curve': self, 'Selection': self._sel, 'Start': start, 'End': end}, mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -1530,10 +1504,10 @@ class Curve(Socket):
     def radius(self):
         """ Property get node <Node Set Curve Radius>
         """
-        return Node('Radius', sockets={})._out
+        return Node('Radius', {})._out
 
     @radius.setter
-    def radius(self, radius=None):
+    def radius(self, radius: Float = None):
         """ > Node <&Node Set Curve Radius>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -1551,7 +1525,7 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Set Curve Radius', sockets={'Curve': self, 'Selection': self._sel, 'Radius': radius})
+        node = Node('Set Curve Radius', {'Curve': self, 'Selection': self._sel, 'Radius': radius})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -1559,10 +1533,10 @@ class Curve(Socket):
     def left_handle_position(self):
         """ Property get node <Node Set Handle Positions>
         """
-        return Node('Curve Handle Positions', sockets={'Relative': False}).left
+        return Node('Curve Handle Positions', {'Relative': False}).left
 
     @left_handle_position.setter
-    def left_handle_position(self, position=None):
+    def left_handle_position(self, position: Vector = None):
         """ > Node <&Node Set Handle Positions>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -1582,7 +1556,7 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Set Handle Positions', sockets={'Curve': self, 'Selection': self._sel, 'Position': position, 'Offset': None}, mode='LEFT')
+        node = Node('Set Handle Positions', {'Curve': self, 'Selection': self._sel, 'Position': position, 'Offset': None}, mode='LEFT')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -1590,10 +1564,10 @@ class Curve(Socket):
     def right_handle_position(self):
         """ Property get node <Node Set Handle Positions>
         """
-        return Node('Curve Handle Positions', sockets={'Relative': False}).right
+        return Node('Curve Handle Positions', {'Relative': False}).right
 
     @right_handle_position.setter
-    def right_handle_position(self, position=None):
+    def right_handle_position(self, position: Vector = None):
         """ > Node <&Node Set Handle Positions>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -1613,7 +1587,7 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Set Handle Positions', sockets={'Curve': self, 'Selection': self._sel, 'Position': position, 'Offset': None}, mode='RIGHT')
+        node = Node('Set Handle Positions', {'Curve': self, 'Selection': self._sel, 'Position': position, 'Offset': None}, mode='RIGHT')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -1621,10 +1595,10 @@ class Curve(Socket):
     def left_handle_offset(self):
         """ Property get node <Node Set Handle Positions>
         """
-        return Node('Curve Handle Positions', sockets={'Relative': True}).left
+        return Node('Curve Handle Positions', {'Relative': True}).left
 
     @left_handle_offset.setter
-    def left_handle_offset(self, offset=None):
+    def left_handle_offset(self, offset: Vector = None):
         """ > Node <&Node Set Handle Positions>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -1644,7 +1618,7 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Set Handle Positions', sockets={'Curve': self, 'Selection': self._sel, 'Position': None, 'Offset': offset}, mode='LEFT')
+        node = Node('Set Handle Positions', {'Curve': self, 'Selection': self._sel, 'Position': None, 'Offset': offset}, mode='LEFT')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -1652,10 +1626,10 @@ class Curve(Socket):
     def right_handle_offset(self):
         """ Property get node <Node Set Handle Positions>
         """
-        return Node('Curve Handle Positions', sockets={'Relative': True}).right
+        return Node('Curve Handle Positions', {'Relative': True}).right
 
     @right_handle_offset.setter
-    def right_handle_offset(self, offset=None):
+    def right_handle_offset(self, offset: Vector = None):
         """ > Node <&Node Set Handle Positions>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -1675,7 +1649,7 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Set Handle Positions', sockets={'Curve': self, 'Selection': self._sel, 'Position': None, 'Offset': offset}, mode='RIGHT')
+        node = Node('Set Handle Positions', {'Curve': self, 'Selection': self._sel, 'Position': None, 'Offset': offset}, mode='RIGHT')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -1686,7 +1660,7 @@ class Curve(Socket):
         raise NodeError('Property Curve.handle_type is write only.')
 
     @handle_type.setter
-    def handle_type(self, handle_type='AUTO'):
+    def handle_type(self, handle_type: Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN'] = 'AUTO'):
         """ > Node <&Node Set Handle Type>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -1706,7 +1680,7 @@ class Curve(Socket):
         - Curve
         """
         utils.check_enum_arg('Set Handle Type', 'handle_type', handle_type, 'handle_type', ('FREE', 'AUTO', 'VECTOR', 'ALIGN'))
-        node = Node('Set Handle Type', sockets={'Curve': self, 'Selection': self._sel}, handle_type=handle_type, mode={'LEFT', 'RIGHT'})
+        node = Node('Set Handle Type', {'Curve': self, 'Selection': self._sel}, handle_type=handle_type, mode={'LEFT', 'RIGHT'})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -1717,7 +1691,7 @@ class Curve(Socket):
         raise NodeError('Property Curve.left_handle_type is write only.')
 
     @left_handle_type.setter
-    def left_handle_type(self, handle_type='AUTO'):
+    def left_handle_type(self, handle_type: Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN'] = 'AUTO'):
         """ > Node <&Node Set Handle Type>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -1737,7 +1711,7 @@ class Curve(Socket):
         - Curve
         """
         utils.check_enum_arg('Set Handle Type', 'handle_type', handle_type, 'left_handle_type', ('FREE', 'AUTO', 'VECTOR', 'ALIGN'))
-        node = Node('Set Handle Type', sockets={'Curve': self, 'Selection': self._sel}, handle_type=handle_type, mode={'LEFT'})
+        node = Node('Set Handle Type', {'Curve': self, 'Selection': self._sel}, handle_type=handle_type, mode={'LEFT'})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -1748,7 +1722,7 @@ class Curve(Socket):
         raise NodeError('Property Curve.right_handle_type is write only.')
 
     @right_handle_type.setter
-    def right_handle_type(self, handle_type='AUTO'):
+    def right_handle_type(self, handle_type: Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN'] = 'AUTO'):
         """ > Node <&Node Set Handle Type>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -1768,7 +1742,7 @@ class Curve(Socket):
         - Curve
         """
         utils.check_enum_arg('Set Handle Type', 'handle_type', handle_type, 'right_handle_type', ('FREE', 'AUTO', 'VECTOR', 'ALIGN'))
-        node = Node('Set Handle Type', sockets={'Curve': self, 'Selection': self._sel}, handle_type=handle_type, mode={'RIGHT'})
+        node = Node('Set Handle Type', {'Curve': self, 'Selection': self._sel}, handle_type=handle_type, mode={'RIGHT'})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -1776,10 +1750,10 @@ class Curve(Socket):
     def tilt(self):
         """ Property get node <Node Set Curve Tilt>
         """
-        return Node('Curve Tilt', sockets={})._out
+        return Node('Curve Tilt', {})._out
 
     @tilt.setter
-    def tilt(self, tilt=None):
+    def tilt(self, tilt: Float = None):
         """ > Node <&Node Set Curve Tilt>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -1797,7 +1771,7 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Set Curve Tilt', sockets={'Curve': self, 'Selection': self._sel, 'Tilt': tilt})
+        node = Node('Set Curve Tilt', {'Curve': self, 'Selection': self._sel, 'Tilt': tilt})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -1808,8 +1782,38 @@ class Curve(Socket):
         raise NodeError('Property Curve.normal is write only.')
 
     @normal.setter
-    def normal(self, mode='MINIMUM_TWIST'):
+    def normal(self, mode: Literal['Minimum Twist', 'Z Up', 'Free'] = None):
         """ > Node <&Node Set Curve Normal>
+
+        > ***Jump*** : Socket refers to node output socket after the call
+
+        Information
+        -----------
+        - Socket 'Curve' : self
+        - Socket 'Selection' : self[selection]
+        - Socket 'Normal' : ignored
+
+        Arguments
+        ---------
+        - mode (menu='Minimum Twist') : ('Minimum Twist', 'Z Up', 'Free')
+
+        Returns
+        -------
+        - Curve
+        """
+        node = Node('Set Curve Normal', {'Curve': self, 'Selection': self._sel, 'Mode': mode, 'Normal': None})
+        self._jump(node._out)
+        return self._domain_to_geometry
+
+    @property
+    def is_cyclic(self):
+        """ Property get node <Node Set Spline Cyclic>
+        """
+        return Node('Is Spline Cyclic', {})._out
+
+    @is_cyclic.setter
+    def is_cyclic(self, cyclic: Boolean = None):
+        """ > Node <&Node Set Spline Cyclic>
 
         > ***Jump*** : Socket refers to node output socket after the call
 
@@ -1820,43 +1824,13 @@ class Curve(Socket):
 
         Arguments
         ---------
-        - mode (str): parameter 'mode' in ['MINIMUM_TWIST', 'Z_UP', 'FREE']
+        - cyclic (Boolean) : socket 'Cyclic' (id: Cyclic)
 
         Returns
         -------
         - Curve
         """
-        utils.check_enum_arg('Set Curve Normal', 'mode', mode, 'normal', ('MINIMUM_TWIST', 'Z_UP', 'FREE'))
-        node = Node('Set Curve Normal', sockets={'Curve': self, 'Selection': self._sel}, mode=mode)
-        self._jump(node._out)
-        return self._domain_to_geometry
-
-    @property
-    def is_cyclic(self):
-        """ Property get node <Node Set Spline Cyclic>
-        """
-        return Node('Is Spline Cyclic', sockets={})._out
-
-    @is_cyclic.setter
-    def is_cyclic(self, cyclic=None):
-        """ > Node <&Node Set Spline Cyclic>
-
-        > ***Jump*** : Socket refers to node output socket after the call
-
-        Information
-        -----------
-        - Socket 'Geometry' : self
-        - Socket 'Selection' : self[selection]
-
-        Arguments
-        ---------
-        - cyclic (Boolean) : socket 'Cyclic' (id: Cyclic)
-
-        Returns
-        -------
-        - Geometry
-        """
-        node = Node('Set Spline Cyclic', sockets={'Geometry': self, 'Selection': self._sel, 'Cyclic': cyclic})
+        node = Node('Set Spline Cyclic', {'Geometry': self, 'Selection': self._sel, 'Cyclic': cyclic})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -1864,17 +1838,17 @@ class Curve(Socket):
     def resolution(self):
         """ Property get node <Node Set Spline Resolution>
         """
-        return Node('Spline Resolution', sockets={})._out
+        return Node('Spline Resolution', {})._out
 
     @resolution.setter
-    def resolution(self, resolution=None):
+    def resolution(self, resolution: Integer = None):
         """ > Node <&Node Set Spline Resolution>
 
         > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
-        - Socket 'Geometry' : self
+        - Socket 'Curve' : self
         - Socket 'Selection' : self[selection]
 
         Arguments
@@ -1883,9 +1857,9 @@ class Curve(Socket):
 
         Returns
         -------
-        - Geometry
+        - Curve
         """
-        node = Node('Set Spline Resolution', sockets={'Geometry': self, 'Selection': self._sel, 'Resolution': resolution})
+        node = Node('Set Spline Resolution', {'Geometry': self, 'Selection': self._sel, 'Resolution': resolution})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -1896,7 +1870,7 @@ class Curve(Socket):
         raise NodeError('Property Curve.type is write only.')
 
     @type.setter
-    def type(self, spline_type='POLY'):
+    def type(self, spline_type: Literal['CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS'] = 'POLY'):
         """ > Node <&Node Set Spline Type>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -1915,7 +1889,7 @@ class Curve(Socket):
         - Curve
         """
         utils.check_enum_arg('Set Spline Type', 'spline_type', spline_type, 'type', ('CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS'))
-        node = Node('Set Spline Type', sockets={'Curve': self, 'Selection': self._sel}, spline_type=spline_type)
+        node = Node('Set Spline Type', {'Curve': self, 'Selection': self._sel}, spline_type=spline_type)
         self._jump(node._out)
         return self._domain_to_geometry
 

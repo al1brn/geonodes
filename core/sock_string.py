@@ -46,7 +46,8 @@ import numpy as np
 
 import bpy
 from . import utils
-from .treeclass import Tree, Node
+from .treeclass import Tree
+from .nodeclass import Node
 from .socket_class import Socket
 from .  import generated
 
@@ -54,8 +55,17 @@ class String(generated.String):
 
     SOCKET_TYPE = 'STRING'
 
-    def __init__(self, value="", name=None, tip=None, panel="", subtype='NONE',
-        hide_value=False, hide_in_modifier=False):
+    def __init__(self, 
+        value: Socket = None,
+        name: str = None,
+        tip: str = '',
+        panel: str = "",
+        optional_label: bool = False,
+        hide_value: bool = False,
+        hide_in_modifier: bool = False,
+        default: str = '',
+        subtype: str = 'NONE',
+        ):
         """ Socket of type String
 
         Node <&Node String>
@@ -64,13 +74,15 @@ class String(generated.String):
 
         Arguments
         ---------
-        - value (str or Socket) : initial value
+        - value (str or Socket = None) : initial value
         - name (str = None) : group input socket name if not None
-        - tip (str = None) : user type for group input socket
-        - panel (str = None) : panel name (overrides tree pane if exists)
-        - subtype (str in ('NONE', 'FILE_PATH') = 'NONE') : sub type for group input
-        - hide_value (bool = False) : Hide Value option
-        - hide_in_modifier (bool = False) : Hide in Modifier option
+        - tip  (str = '') : Property description
+        - panel (str = "") : Panel name
+        - optional_label  (bool = False) : Property optional_label
+        - hide_value  (bool = False) : Property hide_value
+        - hide_in_modifier  (bool = False) : Property hide_in_modifier
+        - default  (str = '') : Property default_value
+        - subtype (str = 'NONE') : Socket sub type in ('NONE', 'FILE_PATH')
         """
 
         bsock = utils.get_bsocket(value)
@@ -78,30 +90,11 @@ class String(generated.String):
             if name is None:
                 bsock = Node('String', string=str(value))._out
             else:
-                bsock = Tree.new_input('NodeSocketString', name, value=value, panel=panel,
-                    subtype             = subtype,
-                    description         = tip,
-                    hide_value          = hide_value,
-                    hide_in_modifier    = hide_in_modifier,
-                )
+                bsock = self._create_input_socket(value=value, name=name, tip=tip,
+                    panel=panel, optional_label=optional_label, hide_value=hide_value,
+                    hide_in_modifier=hide_in_modifier, default=default, subtype=subtype)
+                
         super().__init__(bsock)
-
-    # ====================================================================================================
-    # Constructors
-
-    @classmethod
-    def FilePath(cls, value="", name="File Path", tip=None, panel="",
-        hide_value=False, hide_in_modifier=False):
-        """ File Path input String
-
-        New <#String> input with subtype 'FILE_PATH'.
-
-        Returns
-        -------
-        - String
-        """
-        return cls(value=value, name=name, tip=tip, panel=panel, subtype='FILE_PATH',
-            hide_value=hide_value, hide_in_modifier=hide_in_modifier)
 
     # ====================================================================================================
     # Operators
@@ -129,3 +122,54 @@ class String(generated.String):
             return self.join(*other)
         else:
             return self.join(other)
+        
+    # ====================================================================================================
+    # Class test    
+    # ====================================================================================================
+
+    @classmethod
+    def _class_test(cls):
+
+        from geonodes import GeoNodes, Mesh, Layout, String, Boolean, Integer, nd
+
+        with GeoNodes("String Test") as tree:
+            
+            g = Mesh()
+            name = String("Name", name="Attr name")
+            g.points.store(name, 0.)
+            
+            a = String("String A ")
+            b = a + "String B "
+            c = a + (b, Integer(123).to_string())
+            d = c.replace("String", "TK")
+            s = String.Join(a, b, c, d, delimiter = "/")
+            Boolean(True).info(s)
+            
+            with Layout("Match String"):
+                ref_string = String("Matching test string")
+                search_string = String("test", name="Search String")
+                
+                ok = ref_string.match_string(tree.new_input("Match"), search_string)
+                ok.info(String("'{}' found in '{}'.").format(token=search_string, ref=ref_string))
+                ok.bnot().warning(String("'{}' not found in '{}'.").format(token=search_string, ref=ref_string))
+                
+            with Layout("Conversion"):
+                f = String("3.1415926").to_float()
+                i = String("123").to_integer()
+                
+                sf = f.to_string(decimals=4)
+                si = i.to_string()
+                
+                s = String("Float: {:.2f}, Int: {:05d} ({} and {})").format(float=f, integer=i, sfloat=sf, sint=si)
+                Boolean(True).info(s)
+                
+            with Layout("Special"):
+                _n = nd.special_characters().line_break
+                _t = nd.special_characters().tab
+                s = "Text with \t and \n"
+                s = String(s).replace(_t, "TAB").replace(_n, "LINE_BREAK")
+                Boolean(True).info(s)
+                
+            g.enable_output(ok).out()
+                
+         

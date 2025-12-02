@@ -41,13 +41,15 @@ __license__ = "GNU GPL V3"
 __version__ = "3.0.0"
 __blender_version__ = "4.3.0"
 
+from typing import Literal
 
 from sys import version
 import numpy as np
 
 import bpy
 from . import utils
-from .treeclass import Tree, Node
+from .treeclass import Tree
+from .nodeclass import Node
 from .socket_class import Socket
 from . import generated
 
@@ -55,8 +57,18 @@ class Matrix(generated.Matrix):
 
     SOCKET_TYPE = 'MATRIX'
 
-    def __init__(self, value=None, name=None, tip=None, panel="",
-        default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False):
+    def __init__(self, 
+        value: Socket = None, 
+        name: str = None, 
+        tip: str = '',
+        panel: str = "",
+        optional_label: bool = False,
+        hide_value: bool = False,
+        hide_in_modifier: bool = False,
+        default_attribute: str = '',
+        default_input: Literal['VALUE', 'INSTANCE_TRANSFORM'] = 'VALUE',
+        shape: Literal['AUTO', 'DYNAMIC', 'FIELD', 'SINGLE'] = 'AUTO',
+        ):
         """ Matrix data socket ('MATRIX')
 
         A Matrix socket can be initialized with an array of size 16 (the shape is ignored)
@@ -74,12 +86,14 @@ class Matrix(generated.Matrix):
         ---------
         - value (array of 16 Floats = None) : initialization values
         - name (str = None) : Create group input socket with this name if not None
-        - tup (str = None) : Input socket user tip if an input socket is created
-        - panel (str = None) : panel name (overrides tree panel if exists)
-        - default_input (str in ('VALUE', 'INSTANCE_TRANSFORM') = 'VALUE') :
-        - hide_value (bool = False) : Hide Value option
-        - hide_in_modifier (bool = False) : Hide in Modifier option
-        - single_value (bool = False) : Single Value option
+        - tip  (str = '') : Property description
+        - panel (str = "") : Panel name
+        - optional_label  (bool = False) : Property optional_label
+        - hide_value  (bool = False) : Property hide_value
+        - hide_in_modifier  (bool = False) : Property hide_in_modifier
+        - default_attribute  (str = '') : Property default_attribute_name
+        - default_input  (str = 'VALUE') : Property default_input in ('VALUE', 'INSTANCE_TRANSFORM')
+        - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'DYNAMIC', 'FIELD', 'SINGLE')
         """
         if isinstance(value, str):
             value = type(self).Named(value)
@@ -94,13 +108,10 @@ class Matrix(generated.Matrix):
                     sockets = {}
                 bsock = Node('Combine Matrix', sockets)._out
             else:
-                bsock = Tree.new_input('NodeSocketMatrix', name, value=value, panel=panel,
-                    description             = tip,
-                    default_input           = default_input,
-                    hide_value              = hide_value,
-                    hide_in_modifier        = hide_in_modifier,
-                    force_non_field         = single_value,
-                )
+                bsock = self._create_input_socket(value=value, name=name, tip=tip,
+                    panel=panel, optional_label=optional_label, hide_value=hide_value,
+                    hide_in_modifier=hide_in_modifier, default_attribute=default_attribute, default_input=default_input,
+                    shape=shape)
 
         super().__init__(bsock)
 
@@ -129,8 +140,46 @@ class Matrix(generated.Matrix):
         return self.invert()
 
     def __matmul__(self, other):
-        data_type = utils.get_input_type(other, ['MATRIX', 'VECTOR'], 'VECTOR')
+        data_type = utils.get_value_socket_type(other, ['MATRIX', 'VECTOR'], 'VECTOR')
         if data_type == 'MATRIX':
             return self.multiply(Matrix(other))._lcop()
         else:
             return self.transform_point(other)._lcop()
+        
+    # ====================================================================================================
+    # Class test    
+    # ====================================================================================================
+
+    @classmethod
+    def _class_test(cls):
+
+        from geonodes import GeoNodes, Mesh, Layout, Matrix
+
+        with GeoNodes("Matrix Test"):
+            
+            with Layout("Base"):
+                mat0 = Matrix()
+                mat1 = Matrix(name="Your Matrix")
+                mat = mat0 @ mat1
+                mat @= Matrix.CombineTransform((1, 2, 3), (4, 5, 6), (7, 8, 9))
+                
+            with Layout("Combine"):
+                M0 = Matrix([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15])
+                print("M0", M0)
+                print("SEP", M0.separate)
+                vals = M0.separate
+                M1 = Matrix(vals)
+                
+                mat @= M1
+                
+                
+            with Layout("Named Attribute"):
+                g = Mesh()
+                g.points._A_Matrix = mat
+                
+                b = mat1 @ Matrix("A Matrix")
+                g.faces.store("Another matrix", b)
+                
+            g.out()
+                
+

@@ -1,14 +1,36 @@
+# Generated 2025-12-01 20:32:44
+
+from __future__ import annotations
 from .. socket_class import Socket
-from .. treeclass import Node, ColorRamp, NodeCurves
-from .. treeclass import utils
+from .. nodeclass import Node, ColorRamp, NodeCurves, MenuNode, IndexSwitchNode
+from .. import utils
 from .. scripterror import NodeError
+from typing import TYPE_CHECKING, Literal, Union, Sequence
+
+if TYPE_CHECKING:
+    class Geometry: ...
+    class Mesh: ...
+    class Curve: ...
+    class Cloud: ...
+    class Instances: ...
+    class Volume: ...
+    class GrasePencil: ...
+    class Boolean: ...
+    class Integer: ...
+    class Float: ...
+    class Vector: ...
+    class Color: ...
+    class Matrix: ...
+    class Rotation: ...
+    class String: ...
+
 
 class Instance(Socket):
     """"
     $DOC SET hidden
     """
     @classmethod
-    def accumulate_field(cls, value=None, group_id=None):
+    def accumulate_field(cls, value: Float | Integer | Vector | Matrix = None, group_id: Integer = None):
         """ > Node <&Node Accumulate Field>
 
         Information
@@ -18,7 +40,7 @@ class Instance(Socket):
 
         Arguments
         ---------
-        - value (Float) : socket 'Value' (id: Value)
+        - value (Float | Integer | Vector | Matrix) : socket 'Value' (id: Value)
         - group_id (Integer) : socket 'Group ID' (id: Group Index)
 
         Returns
@@ -26,10 +48,10 @@ class Instance(Socket):
         - Float [trailing_ (Float), total_ (Float)]
         """
         data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'MATRIX': 'TRANSFORM'}, 'Instance.accumulate_field', 'value')
-        node = Node('Accumulate Field', sockets={'Value': value, 'Group Index': group_id}, data_type=data_type, domain='INSTANCE')
+        node = Node('Accumulate Field', {'Value': value, 'Group Index': group_id}, data_type=data_type, domain='INSTANCE')
         return node._out
 
-    def attribute_statistic(self, attribute=None):
+    def attribute_statistic(self, attribute: Float | Vector = None):
         """ > Node <&Node Attribute Statistic>
 
         Information
@@ -41,18 +63,21 @@ class Instance(Socket):
 
         Arguments
         ---------
-        - attribute (Float) : socket 'Attribute' (id: Attribute)
+        - attribute (Float | Vector) : socket 'Attribute' (id: Attribute)
 
         Returns
         -------
         - node [mean (Float), median (Float), sum (Float), min (Float), max (Float), range (Float), standard_deviation (Float), variance (Float)]
         """
         data_type = utils.get_argument_data_type(attribute, {'VALUE': 'FLOAT', 'VECTOR': 'FLOAT_VECTOR'}, 'Instance.attribute_statistic', 'attribute')
-        node = Node('Attribute Statistic', sockets={'Geometry': self, 'Selection': self._sel, 'Attribute': attribute}, data_type=data_type, domain='INSTANCE')
+        node = Node('Attribute Statistic', {'Geometry': self, 'Selection': self._sel, 'Attribute': attribute}, data_type=data_type, domain='INSTANCE')
         return node
 
     @classmethod
-    def field_average(cls, value=None, group_id=None, domain='POINT'):
+    def field_average(cls,
+                    value: Float | Vector = None,
+                    group_id: Integer = None,
+                    domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT'):
         """ > Node <&Node Field Average>
 
         Information
@@ -61,7 +86,7 @@ class Instance(Socket):
 
         Arguments
         ---------
-        - value (Float) : socket 'Value' (id: Value)
+        - value (Float | Vector) : socket 'Value' (id: Value)
         - group_id (Integer) : socket 'Group ID' (id: Group Index)
         - domain (str): parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
 
@@ -71,11 +96,14 @@ class Instance(Socket):
         """
         utils.check_enum_arg('Field Average', 'domain', domain, 'field_average', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
         data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'VECTOR': 'FLOAT_VECTOR'}, 'Instance.field_average', 'value')
-        node = Node('Field Average', sockets={'Value': value, 'Group Index': group_id}, data_type=data_type, domain=domain)
+        node = Node('Field Average', {'Value': value, 'Group Index': group_id}, data_type=data_type, domain=domain)
         return node
 
     @classmethod
-    def field_min_max(cls, value=None, group_id=None, domain='POINT'):
+    def field_min_max(cls,
+                    value: Float | Integer | Vector = None,
+                    group_id: Integer = None,
+                    domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT'):
         """ > Node <&Node Field Min & Max>
 
         Information
@@ -84,7 +112,7 @@ class Instance(Socket):
 
         Arguments
         ---------
-        - value (Float) : socket 'Value' (id: Value)
+        - value (Float | Integer | Vector) : socket 'Value' (id: Value)
         - group_id (Integer) : socket 'Group ID' (id: Group Index)
         - domain (str): parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
 
@@ -94,11 +122,14 @@ class Instance(Socket):
         """
         utils.check_enum_arg('Field Min & Max', 'domain', domain, 'field_min_max', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
         data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR'}, 'Instance.field_min_max', 'value')
-        node = Node('Field Min & Max', sockets={'Value': value, 'Group Index': group_id}, data_type=data_type, domain=domain)
+        node = Node('Field Min & Max', {'Value': value, 'Group Index': group_id}, data_type=data_type, domain=domain)
         return node
 
     @classmethod
-    def field_variance(cls, value=None, group_id=None, domain='POINT'):
+    def field_variance(cls,
+                    value: Float | Vector = None,
+                    group_id: Integer = None,
+                    domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT'):
         """ > Node <&Node Field Variance>
 
         Information
@@ -107,7 +138,7 @@ class Instance(Socket):
 
         Arguments
         ---------
-        - value (Float) : socket 'Value' (id: Value)
+        - value (Float | Vector) : socket 'Value' (id: Value)
         - group_id (Integer) : socket 'Group ID' (id: Group Index)
         - domain (str): parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
 
@@ -117,7 +148,7 @@ class Instance(Socket):
         """
         utils.check_enum_arg('Field Variance', 'domain', domain, 'field_variance', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
         data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'VECTOR': 'FLOAT_VECTOR'}, 'Instance.field_variance', 'value')
-        node = Node('Field Variance', sockets={'Value': value, 'Group Index': group_id}, data_type=data_type, domain=domain)
+        node = Node('Field Variance', {'Value': value, 'Group Index': group_id}, data_type=data_type, domain=domain)
         return node
 
     def delete_geometry_all(self):
@@ -136,7 +167,7 @@ class Instance(Socket):
         -------
         - Geometry
         """
-        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='INSTANCE', mode='ALL')
+        node = Node('Delete Geometry', {'Geometry': self, 'Selection': self._sel}, domain='INSTANCE', mode='ALL')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -156,7 +187,7 @@ class Instance(Socket):
         -------
         - Geometry
         """
-        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='INSTANCE', mode='EDGE_FACE')
+        node = Node('Delete Geometry', {'Geometry': self, 'Selection': self._sel}, domain='INSTANCE', mode='EDGE_FACE')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -176,11 +207,11 @@ class Instance(Socket):
         -------
         - Geometry
         """
-        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='INSTANCE', mode='ONLY_FACE')
+        node = Node('Delete Geometry', {'Geometry': self, 'Selection': self._sel}, domain='INSTANCE', mode='ONLY_FACE')
         self._jump(node._out)
         return self._domain_to_geometry
 
-    def delete_geometry(self, mode='ALL'):
+    def delete_geometry(self, mode: Literal['ALL', 'EDGE_FACE', 'ONLY_FACE'] = 'ALL'):
         """ > Node <&Node Delete Geometry>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -200,7 +231,7 @@ class Instance(Socket):
         - Geometry
         """
         utils.check_enum_arg('Delete Geometry', 'mode', mode, 'delete_geometry', ('ALL', 'EDGE_FACE', 'ONLY_FACE'))
-        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='INSTANCE', mode=mode)
+        node = Node('Delete Geometry', {'Geometry': self, 'Selection': self._sel}, domain='INSTANCE', mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -220,7 +251,7 @@ class Instance(Socket):
         -------
         - Geometry
         """
-        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='INSTANCE', mode='ALL')
+        node = Node('Delete Geometry', {'Geometry': self, 'Selection': self._sel}, domain='INSTANCE', mode='ALL')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -240,7 +271,7 @@ class Instance(Socket):
         -------
         - Geometry
         """
-        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='INSTANCE', mode='EDGE_FACE')
+        node = Node('Delete Geometry', {'Geometry': self, 'Selection': self._sel}, domain='INSTANCE', mode='EDGE_FACE')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -260,11 +291,11 @@ class Instance(Socket):
         -------
         - Geometry
         """
-        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='INSTANCE', mode='ONLY_FACE')
+        node = Node('Delete Geometry', {'Geometry': self, 'Selection': self._sel}, domain='INSTANCE', mode='ONLY_FACE')
         self._jump(node._out)
         return self._domain_to_geometry
 
-    def delete(self, mode='ALL'):
+    def delete(self, mode: Literal['ALL', 'EDGE_FACE', 'ONLY_FACE'] = 'ALL'):
         """ > Node <&Node Delete Geometry>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -284,11 +315,11 @@ class Instance(Socket):
         - Geometry
         """
         utils.check_enum_arg('Delete Geometry', 'mode', mode, 'delete', ('ALL', 'EDGE_FACE', 'ONLY_FACE'))
-        node = Node('Delete Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='INSTANCE', mode=mode)
+        node = Node('Delete Geometry', {'Geometry': self, 'Selection': self._sel}, domain='INSTANCE', mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
 
-    def duplicate(self, amount=None):
+    def duplicate(self, amount: Integer = None):
         """ > Node <&Node Duplicate Elements>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -307,12 +338,14 @@ class Instance(Socket):
         -------
         - Geometry [duplicate_index_ (Integer)]
         """
-        node = Node('Duplicate Elements', sockets={'Geometry': self, 'Selection': self._sel, 'Amount': amount}, domain='INSTANCE')
+        node = Node('Duplicate Elements', {'Geometry': self, 'Selection': self._sel, 'Amount': amount}, domain='INSTANCE')
         self._jump(node._out)
         return self._domain_to_geometry
 
     @classmethod
-    def evaluate_at_index(cls, value=None, index=None):
+    def evaluate_at_index(cls,
+                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix = None,
+                    index: Integer = None):
         """ > Node <&Node Evaluate at Index>
 
         Information
@@ -322,19 +355,20 @@ class Instance(Socket):
 
         Arguments
         ---------
-        - value (Float) : socket 'Value' (id: Value)
+        - value (Float | Integer | Boolean | Vector | Color | Rotation | Matrix) : socket 'Value' (id: Value)
         - index (Integer) : socket 'Index' (id: Index)
 
         Returns
         -------
         - Float
         """
-        data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Instance.evaluate_at_index', 'value')
-        node = Node('Evaluate at Index', sockets={'Value': value, 'Index': index}, data_type=data_type, domain='INSTANCE')
+        data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'BOOLEAN': 'BOOLEAN', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Instance.evaluate_at_index', 'value')
+        node = Node('Evaluate at Index', {'Value': value, 'Index': index}, data_type=data_type, domain='INSTANCE')
         return node._out
 
     @classmethod
-    def evaluate_on_domain(cls, value=None):
+    def evaluate_on_domain(cls,
+                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix = None):
         """ > Node <&Node Evaluate on Domain>
 
         Information
@@ -344,17 +378,20 @@ class Instance(Socket):
 
         Arguments
         ---------
-        - value (Float) : socket 'Value' (id: Value)
+        - value (Float | Integer | Boolean | Vector | Color | Rotation | Matrix) : socket 'Value' (id: Value)
 
         Returns
         -------
         - Float
         """
-        data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Instance.evaluate_on_domain', 'value')
-        node = Node('Evaluate on Domain', sockets={'Value': value}, data_type=data_type, domain='INSTANCE')
+        data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'BOOLEAN': 'BOOLEAN', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Instance.evaluate_on_domain', 'value')
+        node = Node('Evaluate on Domain', {'Value': value}, data_type=data_type, domain='INSTANCE')
         return node._out
 
-    def sample_index(self, value=None, index=None, clamp=False):
+    def sample_index(self,
+                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix = None,
+                    index: Integer = None,
+                    clamp = False):
         """ > Node <&Node Sample Index>
 
         Information
@@ -365,7 +402,7 @@ class Instance(Socket):
 
         Arguments
         ---------
-        - value (Float) : socket 'Value' (id: Value)
+        - value (Float | Integer | Boolean | Vector | Color | Rotation | Matrix) : socket 'Value' (id: Value)
         - index (Integer) : socket 'Index' (id: Index)
         - clamp (bool): parameter 'clamp'
 
@@ -373,8 +410,8 @@ class Instance(Socket):
         -------
         - Float
         """
-        data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Instance.sample_index', 'value')
-        node = Node('Sample Index', sockets={'Geometry': self, 'Value': value, 'Index': index}, clamp=clamp, data_type=data_type, domain='INSTANCE')
+        data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'BOOLEAN': 'BOOLEAN', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Instance.sample_index', 'value')
+        node = Node('Sample Index', {'Geometry': self, 'Value': value, 'Index': index}, clamp=clamp, data_type=data_type, domain='INSTANCE')
         return node._out
 
     def separate(self):
@@ -392,11 +429,11 @@ class Instance(Socket):
         -------
         - Geometry [inverted_ (Geometry)]
         """
-        node = Node('Separate Geometry', sockets={'Geometry': self, 'Selection': self._sel}, domain='INSTANCE')
+        node = Node('Separate Geometry', {'Geometry': self, 'Selection': self._sel}, domain='INSTANCE')
         self._jump(node._out)
         return self._domain_to_geometry
 
-    def sort(self, group_id=None, sort_weight=None):
+    def sort(self, group_id: Integer = None, sort_weight: Float = None):
         """ > Node <&Node Sort Elements>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -416,11 +453,11 @@ class Instance(Socket):
         -------
         - Geometry
         """
-        node = Node('Sort Elements', sockets={'Geometry': self, 'Selection': self._sel, 'Group ID': group_id, 'Sort Weight': sort_weight}, domain='INSTANCE')
+        node = Node('Sort Elements', {'Geometry': self, 'Selection': self._sel, 'Group ID': group_id, 'Sort Weight': sort_weight}, domain='INSTANCE')
         self._jump(node._out)
         return self._domain_to_geometry
 
-    def split_to_instances(self, group_id=None):
+    def split_to_instances(self, group_id: Integer = None):
         """ > Node <&Node Split to Instances>
 
         Information
@@ -437,10 +474,12 @@ class Instance(Socket):
         -------
         - Instances [group_id_ (Integer)]
         """
-        node = Node('Split to Instances', sockets={'Geometry': self, 'Selection': self._sel, 'Group ID': group_id}, domain='INSTANCE')
+        node = Node('Split to Instances', {'Geometry': self, 'Selection': self._sel, 'Group ID': group_id}, domain='INSTANCE')
         return node._out
 
-    def store_named_attribute(self, name=None, value=None):
+    def store_named_attribute(self,
+                    name: String = None,
+                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix | Integer | Vector | Color = None):
         """ > Node <&Node Store Named Attribute>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -455,18 +494,20 @@ class Instance(Socket):
         Arguments
         ---------
         - name (String) : socket 'Name' (id: Name)
-        - value (Float) : socket 'Value' (id: Value)
+        - value (Float | Integer | Boolean | Vector | Color | Rotation | Matrix | Integer | Vector | Color) : socket 'Value' (id: Value)
 
         Returns
         -------
         - Geometry
         """
-        data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Instance.store_named_attribute', 'value')
-        node = Node('Store Named Attribute', sockets={'Geometry': self, 'Selection': self._sel, 'Name': name, 'Value': value}, data_type=data_type, domain='INSTANCE')
+        data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'BOOLEAN': 'BOOLEAN', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Instance.store_named_attribute', 'value')
+        node = Node('Store Named Attribute', {'Geometry': self, 'Selection': self._sel, 'Name': name, 'Value': value}, data_type=data_type, domain='INSTANCE')
         self._jump(node._out)
         return self._domain_to_geometry
 
-    def store(self, name=None, value=None):
+    def store(self,
+                    name: String = None,
+                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix | Integer | Vector | Color = None):
         """ > Node <&Node Store Named Attribute>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -481,33 +522,30 @@ class Instance(Socket):
         Arguments
         ---------
         - name (String) : socket 'Name' (id: Name)
-        - value (Float) : socket 'Value' (id: Value)
+        - value (Float | Integer | Boolean | Vector | Color | Rotation | Matrix | Integer | Vector | Color) : socket 'Value' (id: Value)
 
         Returns
         -------
         - Geometry
         """
-        data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Instance.store', 'value')
-        node = Node('Store Named Attribute', sockets={'Geometry': self, 'Selection': self._sel, 'Name': name, 'Value': value}, data_type=data_type, domain='INSTANCE')
+        data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'BOOLEAN': 'BOOLEAN', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Instance.store', 'value')
+        node = Node('Store Named Attribute', {'Geometry': self, 'Selection': self._sel, 'Name': name, 'Value': value}, data_type=data_type, domain='INSTANCE')
         self._jump(node._out)
         return self._domain_to_geometry
 
-    def viewer(self, value=None, ui_shortcut=0):
+    @classmethod
+    def viewer(cls, named_sockets: dict = {}, ui_shortcut = 0, **sockets):
         """ > Node <&Node Viewer>
 
         Information
         -----------
-        - Socket 'Geometry' : self
-        - Parameter 'data_type' : depending on 'value' type
         - Parameter 'domain' : 'INSTANCE'
 
         Arguments
         ---------
-        - value (Float) : socket 'Value' (id: Value)
         - ui_shortcut (int): parameter 'ui_shortcut'
 
         """
-        data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'BOOLEAN': 'BOOLEAN', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Instance.viewer', 'value')
-        node = Node('Viewer', sockets={'Geometry': self, 'Value': value}, data_type=data_type, domain='INSTANCE', ui_shortcut=ui_shortcut)
+        node = Node('Viewer', named_sockets, domain='INSTANCE', ui_shortcut=ui_shortcut, **sockets)
         return
 

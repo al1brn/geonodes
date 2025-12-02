@@ -41,14 +41,11 @@ __license__ = "GNU GPL V3"
 __version__ = "3.0.0"
 __blender_version__ = "4.3.0"
 
+from typing import Literal
 
 
-from sys import version
-import numpy as np
-
-import bpy
 from . import utils
-from .treeclass import Tree, Node
+from .nodeclass import Node
 from .socket_class import Socket
 from . import generated
 
@@ -57,8 +54,18 @@ class Rotation(generated.Rotation):
 
     SOCKET_TYPE = 'ROTATION'
 
-    def __init__(self, value=(0., 0., 0.), name=None, tip=None, panel="",
-        hide_value=False, hide_in_modifier=False, single_value=False):
+    def __init__(self, 
+        value: Socket | tuple = (0, 0, 0),
+        name: str = None,
+        tip: str = '',
+        panel: str = "",
+        optional_label: bool = False,
+        hide_value: bool = False,
+        hide_in_modifier: bool = False,
+        default: tuple = (0.0, 0.0, 0.0),
+        default_attribute: str = '',
+        shape: Literal['AUTO', 'DYNAMIC', 'FIELD', 'SINGLE'] = 'AUTO',
+        ):
         """ > Socket of type ROTATION
 
         If **value** argument is None:
@@ -81,11 +88,14 @@ class Rotation(generated.Rotation):
         ---------
         - value (tuple of floats or Sockets) : initial value
         - name (str = None) : Create an Group Input socket with the provided str if not None
-        - tip (str = None) : User tip (for Group Input sockets)
-        - panel (str = None) : panel name (overrides tree panel if exists)
-        - hide_value (bool = False) : Hide Value option
-        - hide_in_modifier (bool = False) : Hide in Modifier option
-        - single_value (bool = False) : Single Value option
+        - tip  (str = '') : Property description
+        - panel (str = "") : Panel name
+        - optional_label  (bool = False) : Property optional_label
+        - hide_value  (bool = False) : Property hide_value
+        - hide_in_modifier  (bool = False) : Property hide_in_modifier
+        - default  (tuple = (0.0, 0.0, 0.0)) : Property default_value
+        - default_attribute  (str = '') : Property default_attribute_name
+        - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'DYNAMIC', 'FIELD', 'SINGLE')
         """
         from geonodes import Vector
 
@@ -102,12 +112,10 @@ class Rotation(generated.Rotation):
                 else:
                     bsock = Node('Rotation', rotation_euler=value)._out
             else:
-                bsock = Tree.new_input('NodeSocketRotation', name, value=value, panel=panel,
-                    description             = tip,
-                    hide_value              = hide_value,
-                    hide_in_modifier        = hide_in_modifier,
-                    force_non_field         = single_value,
-                )
+                bsock = self._create_input_socket(value=value, name=name,
+                    tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value,
+                    hide_in_modifier=hide_in_modifier, default=default, default_attribute=default_attribute,
+                    shape=shape)
 
         super().__init__(bsock)
 
@@ -115,7 +123,7 @@ class Rotation(generated.Rotation):
     # Operations
 
     def __matmul__(self, other):
-        data_type = utils.get_input_type(other, ['ROTATION', 'VECTOR'], ['VECTOR'])
+        data_type = utils.get_value_socket_type(other, ['ROTATION', 'VECTOR'], ['VECTOR'])
         if data_type == 'ROTATION':
             return self.rotate_global(other)
         else:
@@ -123,3 +131,33 @@ class Rotation(generated.Rotation):
 
     def __invert__(self):
         return self.invert()
+    
+    # ====================================================================================================
+    # Class test    
+    # ====================================================================================================
+
+    @classmethod
+    def _class_test(cls):
+
+        from geonodes import GeoNodes, Mesh, Layout, Rotation, G, Float
+
+        with GeoNodes("Rotation Test") as tree:
+            
+            with Layout("Base"):
+                a = Rotation() @ Rotation((1, 2, 3))
+                a = a.mix(Rotation(1, name="Your entry"), tree.new_input("Factor"))
+                b = G().random_rotation().align_to_vector(tree.new_input("Vector"))
+                c = Rotation.FromAxisAngle(axis=tree.new_input("Axis"), angle=Float.Angle(name="Angle"))
+                b = b @ c
+                
+            with Layout("Named Attribute"):
+                g = Mesh()
+                g.points._A_Rotation = a
+                
+                c = a.rotate(Rotation("A Float"), rotation_space='LOCAL')
+                g.faces.store("Another rotation", c)
+                
+            b.to_quaternion().node.out(panel="Quaternion")
+                
+            g.out()
+

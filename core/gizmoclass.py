@@ -47,7 +47,8 @@ import numpy as np
 
 import bpy
 from . import utils
-from .treeclass import Tree, Node
+from .treeclass import Tree
+from .nodeclass import Node
 
 
 class Gizmo(Node):

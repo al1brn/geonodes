@@ -109,7 +109,7 @@ def demo():
         x_loc = 0
 
         with Layout("A"):
-            A = Curve.Line(0, (.8, 0, 0)).resample(3)
+            A = Curve.Line(0, (.8, 0, 0)).resample(count=3)
 
             A[1].position = (.4, 0, 1)
 
@@ -123,7 +123,7 @@ def demo():
 
         with Layout("B"):
 
-            B = Curve.Line(0, (1, 0, 0)).resample(4)
+            B = Curve.Line(0, (1, 0, 0)).resample(count=4)
             B.splines.type = 'BEZIER'
 
             B[1].position = (0, 0, 1)
@@ -143,7 +143,7 @@ def demo():
         alphabet += B
 
         with Layout("S"):
-            S = Curve.Line(end = (0, 0, 1)).resample(3)
+            S = Curve.Line(end = (0, 0, 1)).resample(count=3)
             S.splines.type = 'BEZIER'
             #S.splines.resolution = 30
 

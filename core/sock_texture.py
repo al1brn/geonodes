@@ -42,31 +42,7 @@ __version__ = "3.0.0"
 __blender_version__ = "4.3.0"
 
 
-import bpy
-from . import constants, utils
-from .treeclass import Tree, Node
-from .socket_class import Socket
 from . import generated
 
 class Texture(generated.Texture):
-
-    SOCKET_TYPE = 'TEXTURE'
-
-    def __init__(self, value: bpy.types.Texture | Socket | None = None, name: str | None = None, tip: str | None = None):
-        """ Socket of type Texture
-
-        Arguments
-        ---------
-        - value (bpy.types.Texture or str = None) : image or image name in bpy.data.images
-        - name (str = None) : create a group input socket of type Image if not None
-        - tip (str = None) : user tip for group input socket
-        """
-
-        bsock = utils.get_bsocket(value)
-        if bsock is None:
-            image = utils.get_blender_resource('TEXTURE', value)
-            if name is None:
-                name = "Texture"
-            bsock = Tree.new_input('NodeSocketTexture', name=name, value=image, description=tip)
-
-        super().__init__(bsock)
+    pass

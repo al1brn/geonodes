@@ -57,7 +57,9 @@ __blender_version__ = "4.3.0"
 
 import numpy as np
 
-from .treeclass import Tree, Node
+from .treeclass import Tree
+from .nodeclass import Node
+
 
 # =============================================================================================================================
 # Boolean Math
@@ -686,7 +688,7 @@ def round(value, use_clamp=None):
     Returns
     - Float (ShaderNodes) or Integer (GeoNodes)
     """
-    if Tree.is_geonodes:
+    if Tree.is_geonodes():
         return Node("Float to Integer", {'Float': value}, rounding_mode='ROUND')._out
     else:
         return math_round(value, use_clamp=use_clamp)
@@ -708,7 +710,7 @@ def floor(value, use_clamp=None):
     Returns
     - Float (ShaderNodes) or Integer (GeoNodes)
     """
-    if Tree.is_geonodes:
+    if Tree.is_geonodes():
         return Node("Float to Integer", {'Float': value}, rounding_mode='FLOOR')._out
     else:
         return math_floor(value, use_clamp=use_clamp)
@@ -730,7 +732,7 @@ def ceil(value, use_clamp=None):
     Returns
     - Float (ShaderNodes) or Integer (GeoNodes)
     """
-    if Tree.is_geonodes:
+    if Tree.is_geonodes():
         return Node("Float to Integer", {'Float': value}, rounding_mode='CEILING')._out
     else:
         return math_ceil(value, use_clamp=use_clamp)
@@ -753,7 +755,7 @@ def trunc(value, use_clamp=None):
     - Float (ShaderNodes) or Integer (GeoNodes)
     """
 
-    if Tree.is_geonodes:
+    if Tree.is_geonodes():
         return Node("Float to Integer", {'Float': value}, rounding_mode='TRUNCATE')._out
     else:
         return math_trunc(value, use_clamp=use_clamp)

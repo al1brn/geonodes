@@ -1,14 +1,36 @@
+# Generated 2025-12-01 20:32:44
+
+from __future__ import annotations
 from .. socket_class import Socket
-from .. treeclass import Node, ColorRamp, NodeCurves
-from .. treeclass import utils
+from .. nodeclass import Node, ColorRamp, NodeCurves, MenuNode, IndexSwitchNode
+from .. import utils
 from .. scripterror import NodeError
+from typing import TYPE_CHECKING, Literal, Union, Sequence
+
+if TYPE_CHECKING:
+    class Geometry: ...
+    class Mesh: ...
+    class Curve: ...
+    class Cloud: ...
+    class Instances: ...
+    class Volume: ...
+    class GrasePencil: ...
+    class Boolean: ...
+    class Integer: ...
+    class Float: ...
+    class Vector: ...
+    class Color: ...
+    class Matrix: ...
+    class Rotation: ...
+    class String: ...
+
 
 class SplinePoint(Socket):
     """"
     $DOC SET hidden
     """
     @classmethod
-    def curve_of_point(cls, point_index=None):
+    def curve_of_point(cls, point_index: Integer = None):
         """ > Node <&Node Curve of Point>
 
         Arguments
@@ -19,11 +41,11 @@ class SplinePoint(Socket):
         -------
         - node [curve_index (Integer), index_in_curve (Integer)]
         """
-        node = Node('Curve of Point', sockets={'Point Index': point_index})
+        node = Node('Curve of Point', {'Point Index': point_index})
         return node
 
     @classmethod
-    def curve_index(cls, point_index=None):
+    def curve_index(cls, point_index: Integer = None):
         """ > Node <&Node Curve of Point>
 
         Arguments
@@ -34,11 +56,11 @@ class SplinePoint(Socket):
         -------
         - curve_index
         """
-        node = Node('Curve of Point', sockets={'Point Index': point_index})
+        node = Node('Curve of Point', {'Point Index': point_index})
         return node.curve_index
 
     @classmethod
-    def index_in_curve(cls, point_index=None):
+    def index_in_curve(cls, point_index: Integer = None):
         """ > Node <&Node Curve of Point>
 
         Arguments
@@ -49,7 +71,7 @@ class SplinePoint(Socket):
         -------
         - index_in_curve
         """
-        node = Node('Curve of Point', sockets={'Point Index': point_index})
+        node = Node('Curve of Point', {'Point Index': point_index})
         return node.index_in_curve
 
     def to_points_evaluated(self):
@@ -64,10 +86,10 @@ class SplinePoint(Socket):
         -------
         - Cloud [tangent_ (Vector), normal_ (Vector), rotation_ (Rotation)]
         """
-        node = Node('Curve to Points', sockets={'Curve': self}, mode='EVALUATED')
+        node = Node('Curve to Points', {'Curve': self}, mode='EVALUATED')
         return node._out
 
-    def to_points_count(self, count=None):
+    def to_points_count(self, count: Integer = None):
         """ > Node <&Node Curve to Points>
 
         Information
@@ -83,10 +105,10 @@ class SplinePoint(Socket):
         -------
         - Cloud [tangent_ (Vector), normal_ (Vector), rotation_ (Rotation)]
         """
-        node = Node('Curve to Points', sockets={'Curve': self, 'Count': count}, mode='COUNT')
+        node = Node('Curve to Points', {'Curve': self, 'Count': count}, mode='COUNT')
         return node._out
 
-    def to_points_length(self, length=None):
+    def to_points_length(self, length: Float = None):
         """ > Node <&Node Curve to Points>
 
         Information
@@ -102,10 +124,12 @@ class SplinePoint(Socket):
         -------
         - Cloud [tangent_ (Vector), normal_ (Vector), rotation_ (Rotation)]
         """
-        node = Node('Curve to Points', sockets={'Curve': self, 'Length': length}, mode='LENGTH')
+        node = Node('Curve to Points', {'Curve': self, 'Length': length}, mode='LENGTH')
         return node._out
 
-    def to_points(self, count=None, mode='COUNT'):
+    def to_points(self,
+                    count: Integer = None,
+                    mode: Literal['EVALUATED', 'COUNT', 'LENGTH'] = 'COUNT'):
         """ > Node <&Node Curve to Points>
 
         Information
@@ -122,11 +146,11 @@ class SplinePoint(Socket):
         - Cloud [tangent_ (Vector), normal_ (Vector), rotation_ (Rotation)]
         """
         utils.check_enum_arg('Curve to Points', 'mode', mode, 'to_points', ('EVALUATED', 'COUNT', 'LENGTH'))
-        node = Node('Curve to Points', sockets={'Curve': self, 'Count': count}, mode=mode)
+        node = Node('Curve to Points', {'Curve': self, 'Count': count}, mode=mode)
         return node._out
 
     @classmethod
-    def offset_in_curve(cls, point_index=None, offset=None):
+    def offset_in_curve(cls, point_index: Integer = None, offset: Integer = None):
         """ > Node <&Node Offset Point in Curve>
 
         Arguments
@@ -138,17 +162,17 @@ class SplinePoint(Socket):
         -------
         - Boolean [point_index_ (Integer)]
         """
-        node = Node('Offset Point in Curve', sockets={'Point Index': point_index, 'Offset': offset})
+        node = Node('Offset Point in Curve', {'Point Index': point_index, 'Offset': offset})
         return node._out
 
     @property
     def radius(self):
         """ Property get node <Node Set Curve Radius>
         """
-        return Node('Radius', sockets={})._out
+        return Node('Radius', {})._out
 
     @radius.setter
-    def radius(self, radius=None):
+    def radius(self, radius: Float = None):
         """ > Node <&Node Set Curve Radius>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -166,7 +190,7 @@ class SplinePoint(Socket):
         -------
         - Curve
         """
-        node = Node('Set Curve Radius', sockets={'Curve': self, 'Selection': self._sel, 'Radius': radius})
+        node = Node('Set Curve Radius', {'Curve': self, 'Selection': self._sel, 'Radius': radius})
         self._jump(node._out)
         return self._domain_to_geometry
 
