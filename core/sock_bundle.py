@@ -152,11 +152,9 @@ class Bundle(generated.Bundle):
         - Signature
         """
         if self._is_combine:
-            #return Signature.from_sockets(self.node._bnode.inputs)
             return Signature(self.node.get_signature(with_sockets=with_sockets).inputs)
         else:
             raise RuntimeError(f"The Bundle socket {self} doesn't come from a 'Combine Bundle' node. Impossible to get its signature.")
-            return super().get_signature(include=include, exclude=exclude, enabled_only=enabled_only, with_sockets=with_sockets)
 
 
     # ====================================================================================================
@@ -223,9 +221,6 @@ class Bundle(generated.Bundle):
     # ====================================================================================================
     # Class test    
     # ====================================================================================================
-
-    @classmethod
-    def _class_test(cls):
 
     @staticmethod
     def _class_test():

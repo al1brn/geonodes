@@ -46,6 +46,7 @@ import numpy as np
 from pprint import pprint
 import bpy
 
+from .sockettype import SocketType
 from .scripterror import NodeError
 from . import constants
 from .blender import get_font
@@ -61,6 +62,25 @@ BUILD = False
 
 SOCKET_CLASSES = {}
 GEOMETRY_CLASSES = {}
+
+# ====================================================================================================
+# Break to exit with blocks
+# ====================================================================================================
+
+class Break(Exception):
+    """ Exception used to exit a With context block.
+
+    ``` python
+    with GeoNodes("Break Demo"):
+        Geometry().out()
+        raise Break()
+
+        # Not executed
+        Float(10).out()
+    ```
+    """
+    pass
+
 
 # ====================================================================================================
 # Get / delete a tree
@@ -1292,20 +1312,19 @@ def value_to_color(value):
 # Some utilities
 
 def is_vector_like(value):
-
-    return get_value_socket_type(value) in ['RGBA', 'VECTOR', 'ROTATION']
+    return SocketType(value).type in ['RGBA', 'VECTOR', 'ROTATION']
 
 def is_color_like(value):
-    return get_value_socket_type(value) in ['RGBA', 'VECTOR']
+    return SocketType(value).type in ['RGBA', 'VECTOR']
 
 def is_matrix_like(value):
-    return get_value_socket_type(value) in ['MATRIX']
+    return SocketType(value).type in ['MATRIX']
 
 def is_value_like(value):
-    return get_value_socket_type(value) in ['FLOAT', 'INT', 'BOOLEAN']
+    return SocketType(value).type in ['FLOAT', 'INT', 'BOOLEAN']
 
 def is_int_like(value):
-    return get_value_socket_type(value) in ['INT', 'BOOLEAN']
+    return SocketType(value).type in ['INT', 'BOOLEAN']
 
 def has_bsocket(value):
     if get_bsocket(value) is not None:

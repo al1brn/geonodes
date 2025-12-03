@@ -85,9 +85,12 @@ class Closure(generated.Closure):
 
             if name is None:
 
-                # Creating the output closure node will create the paired input node
-                node = Node('NodeClosureOutput')
-                bsock = node.closure
+                input_node  = Node('NodeClosureInput')
+                output_node = Node('NodeClosureOutput')
+                input_node._bnode.pair_with_output(output_node._bnode)
+                output_node._bnode.output_items.clear()
+
+                bsock = output_node._bnode.outputs["Closure"]
 
             # ---------------------------------------------------------------------------
             # We have a name: let's create it from the group input
@@ -103,6 +106,7 @@ class Closure(generated.Closure):
         # No layout when capturing in out
         self._use_layout = False
 
+
     # ====================================================================================================
     # Zone
     # ====================================================================================================
@@ -110,13 +114,120 @@ class Closure(generated.Closure):
     @property
     def _has_zone(self):
         return self.node._bnode.bl_idname == 'NodeClosureOutput'
+    
+    @property
+    def _output_node(self):
+        if self._has_zone:
+            return self.node
+        else:
+            return None
+    
+    @property
+    def _input_node(self):
+        if not self._has_zone:
+            return None
+        
+        out_bnode = self.node._bnode
+        
+        for node in self._tree._nodes:
+            if node._bnode.bl_idname != 'NodeClosureInput':
+                continue
+
+            if node._bnode.paired_output == out_bnode:
+                return node
+            
+        assert False, "Shouldn't happen {self}"
 
     # ====================================================================================================
-    # Signature
+    # InOutContext implementation
     # ====================================================================================================
 
-    def get_signature(self, with_sockets: bool = False):
-        """ Build the closure signature of the zone.
+    # ----------------------------------------------------------------------------------------------------
+    # Create an input socket
+    # ----------------------------------------------------------------------------------------------------
+
+    def create_input_socket(self, bl_idname, name, value=None, panel="", **props):
+        """ Create a new input socket.
+
+        Arguments
+        ---------
+            - bl_idname (str) : socket bl_idname
+            - name (str): Socket name
+            - value (Any = None) : Default value
+            - panel (str = "") : Panel to place the socket in
+            - props : properties specific to interface socket
+
+        Returns
+        -------
+            Socket
+        """
+        # No zone: behaves as a standard Socket
+        if not self._has_zone:
+            return super().create_input_socket(bl_idname, name, value=value, panel=panel, **props)
+
+        # Panel
+        name = " ".join([s.strip() for s in panel.split(">")] + [name])
+
+        # Create new item
+        items = self._output_node._bnode.input_items
+        items.new(utils.bl_idname_to_socket_type(bl_idname), name)
+
+        socket = self._input_node[len(items) - 1]
+        if hasattr(socket._bsocket, 'default_value') and value is not None:
+            socket._bsocket.default_value = value
+
+        return socket
+
+    # ----------------------------------------------------------------------------------------------------
+    # Create a new input socket from an existing node input socket
+    # ----------------------------------------------------------------------------------------------------
+
+    def create_input_from_socket(self, input_socket, name=None, panel="", **props):
+        """ Create a new group input socket from an existing input socket.
+
+        Arguments
+        ---------
+        - input_socket (socket) : a node input _insocket
+        - name (str = None) : name of the group input socket to create
+        - panel (str = "") : name of the panel
+        - props (dict) : socket properties
+
+        Returns
+        -------
+        - Socket
+        """
+
+        # No zone: behaves as a standard Socket
+        if not self._has_zone:
+            return super().create_input_from_socket(input_socket, name=name, panel=panel, **props)
+
+        # Ensure name
+        if name is None:
+            name = utils.get_socket_name(input_socket)
+
+        # Panel
+        if panel is None:
+            panel = ""
+        name = " ".join([s.strip() for s in panel.split(">")] + [name])
+
+        # Create new item and link it
+        items = self._output_node._bnode.input_items
+        item_type = utils.get_bsocket(input_socket).type
+        if item_type == 'VALUE':
+            item_type = 'FLOAT'
+        items.new(item_type, name)
+        socket = self._input_node._bnode.outputs[len(items)-1]
+        self._tree.link(socket, input_socket)
+
+        # Return the created socket
+        return self._input_node[name]
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Get the signature
+    # ----------------------------------------------------------------------------------------------------
+
+    def get_signature(self, include: list = None, exclude: list = [], enabled_only=True, with_sockets: bool = False):
+        """ Build the closure signature of the node.
 
         Closure signature is the tuple (input_signature, output_signature)
 
@@ -131,12 +242,20 @@ class Closure(generated.Closure):
         -------
         - Signature
         """
-        if self._has_zone:
-            return Signature(
-                self.node._paired_input_node.get_signature(with_sockets=with_sockets).outputs,
-                self.node.get_signature(with_sockets=with_sockets).inputs)
-        else:
-            raise RuntimeError(f"The Closure socket {self} doesn't come from a Closure pair of nodes. Impossible to get its signature.")
+        if not self._has_zone:
+            return super().get_signature(include=include, exclude=exclude, enabled_only=enabled_only, with_sockets = with_sockets)
+        
+        in_sig = self._input_node.get_signature(
+            include      = include, 
+            exclude      = exclude, 
+            enabled_only = enabled_only, 
+            with_sockets = with_sockets).outputs
+        
+        out_sig = self._output_node.get_signature(
+            enabled_only = enabled_only, 
+            with_sockets = with_sockets).inputs
+        
+        return Signature(in_sig, out_sig)
 
     # ===============================================s=====================================================
     # Evaluate
@@ -204,56 +323,42 @@ class Closure(generated.Closure):
         # Let's ensure a proper signature
         # ----------------------------------------------------------------------------------------------------
 
-        already_linked = False
         # Closure has a zone: let's get it
         if self._has_zone:
             signature = self.get_signature()
 
-        # Signature is not provided: we use the sockets (hoping they cover the needs)
+        # Signature is not provided: we can infer the output sockets :-(
         elif signature is None:
-            already_linked = True
-            signature = Signature.from_named_sockets(named_sockets, **sockets)
+            raise NodeError(f"Closure evaluation error: 'Closure.evaluate' must be called from a Closure zone or using 'signature' argument.")
 
         # ----------------------------------------------------------------------------------------------------
-        # Create the node
+        # Create the node and plug self
         # ----------------------------------------------------------------------------------------------------
 
         # Closure evaluation node
-        node = Node('NodeEvaluateClosure', {"Closure": self})
-
-        # Set the signature
-        node.set_signature('INPUT', Signature(signature.inputs))
-        node.set_signature('OUTPUT', Signature(signature.outputs))
-
-        # Link the input
-        if not already_linked:
-            for name, value in {**named_sockets, **sockets}.items():
-                node.set_input_socket(name, value)
-
+        node = Node('NodeEvaluateClosure')
 
         # Link closure input
-        #link = _btree.links.new(self._bsocket, node._bnode.inputs["Closure"], handle_dynamic_sockets=True)
-        #utils.check_link(link)
+        link = _btree.links.new(self._bsocket, node._bnode.inputs["Closure"], handle_dynamic_sockets=True)
+        utils.check_link(link)
 
-        if False:
+        # ----------------------------------------------------------------------------------------------------
+        # Create sockets from signature
+        # ----------------------------------------------------------------------------------------------------
 
-            # ----------------------------------------------------------------------------------------------------
-            # Create sockets from signature
-            # ----------------------------------------------------------------------------------------------------
+        bnode = node._bnode
+        Signature(signature.inputs).create_items( bnode.input_items,  use_rank=True, use_panel=True)
+        Signature(signature.outputs).create_items(bnode.output_items, use_rank=True, use_panel=True)
 
-            bnode = node._bnode
-            Signature(signature.inputs).create_items( bnode.input_items,  use_rank=True, use_panel=True)
-            Signature(signature.outputs).create_items(bnode.output_items, use_rank=True, use_panel=True)
+        # ----------------------------------------------------------------------------------------------------
+        # Plug the arguments to the newly created sockets
+        # ----------------------------------------------------------------------------------------------------
 
-            # ----------------------------------------------------------------------------------------------------
-            # Plug the arguments to the newly created sockets
-            # ----------------------------------------------------------------------------------------------------
+        for name, value in named_sockets.items():
+            node.plug_value_into_socket(value, node.socket_by_name('INPUT', name, as_argument=False))
 
-            for name, value in named_sockets.items():
-                node.plug_value_into_socket(value, node.socket_by_name('INPUT', name, as_argument=False))
-
-            for name, value in sockets.items():
-                node.plug_value_into_socket(value, node.socket_by_name('INPUT', name, as_argument=True))
+        for name, value in sockets.items():
+            node.plug_value_into_socket(value, node.socket_by_name('INPUT', name, as_argument=True))
 
         # We are done :-)
         return node._out

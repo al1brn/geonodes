@@ -33,7 +33,7 @@ PYTHON_TYPES = {
 }
 
 # constants.__all__
-ALL = ['blender_version', 'CLASS_NAMES', 'SOCKETS', 'NODE_INFO', 'NODE_NAMES', 'SOCKET_SUBTYPES', 
+ALL = ['blender_version', 'CLASS_NAMES', 'DATA_TYPE_HOMONYMS', 'SOCKETS', 'NODE_INFO', 'NODE_NAMES', 'SOCKET_SUBTYPES', 
        'GEOMETRY_CLASSES', 'DOMAIN_CLASSES', 'ATTRIBUTE_CLASSES', 'PYTHON_TYPES', 'INPUT_SOCKETS_PROPS',
        'BUILTIN_GROUPS', 'ONE_ITEMS_NODES', 'SEVERAL_ITEMS_NODES']
 
@@ -510,6 +510,7 @@ def get_sockets():
                         SOCKETS[stype][tt] = None
                         
                 SOCKETS[stype][tree_type] = socket.bl_idname
+                SOCKETS[stype]['nodesocket'] = socket.bl_idname
             
         # ---------------------------------------------------------------------------
         # From interface
@@ -712,11 +713,19 @@ def get_socket_subtypes(nodesockets):
                 subtype = subtype[:-2]
                 
             subtype = special.get(subtype, subtype.upper())
+
+        socket_type = base[len('NodeSocket'):].upper()
+        socket_type = {
+            'BOOL': 'BOOLEAN',
+            'COLOR': 'RGBA',
+            'FLOAT': 'VALUE',
+        }.get(socket_type, socket_type)
                 
         SOCKET_SUBTYPES[tp] = {
             'nodesocket' : base,
             'subtype'    : subtype,
             'dimensions' : ndims,
+            'socket_type': socket_type,
             }
             
     return SOCKET_SUBTYPES
@@ -842,6 +851,10 @@ def write_file(path):
         write_header(f, "Socket type to class name")
         f.write("CLASS_NAMES = ")
         pprint(CLASS_NAMES, stream=f)
+        f.write("\n\n")
+
+        f.write("DATA_TYPE_HOMONYMS = ")
+        pprint(DATA_TYPE_HOMONYMS, stream=f)
         f.write("\n\n")
         
         # ----------------------------------------------------------------------------------------------------

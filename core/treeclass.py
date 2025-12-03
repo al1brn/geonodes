@@ -32,7 +32,6 @@ At creation time, Trees a psuh on top of a stack. current_tree allows to get
 the current edited tree.
 
 In addition, other classes are implemented:
-- Break         : Exit from with block
 - Layout        : Creates a Frame where the new nodes are placed into
 - Panel         : Current panel into which placing the input and output nodes
 - Group         : Node Group creation
@@ -64,27 +63,10 @@ from . import treearrange
 from . import constants
 from . import utils
 from . import blender
+from .utils import Break
 from .signature import Signature
 from .treeinterface import TreeInterface
 from .inoutcontext import InOutContext
-
-# ====================================================================================================
-# Break to exit with blocks
-# ====================================================================================================
-
-class Break(Exception):
-    """ Exception used to exit a With context block.
-
-    ``` python
-    with GeoNodes("Break Demo"):
-        Geometry().out()
-        raise Break()
-
-        # Not executed
-        Float(10).out()
-    ```
-    """
-    pass
 
 # ====================================================================================================
 # Input / output panel
@@ -769,10 +751,18 @@ class Tree(InOutContext):
         -------
             Socket
         """
-        if len(self._capture_inout):
-            socket = self._capture_inout[-1].create_input_socket(bl_idname, name, value=value, panel=panel, **props)
-            if socket is not None:
-                return socket
+        if False:
+            if len(self._capture_inout):
+                socket = self._capture_inout[-1].create_input_socket(bl_idname, name, value=value, panel=panel, **props)
+                if socket is not None:
+                    return socket
+                
+        if True:
+            input_node = self.get_input_node()
+            return input_node.create_socket('OUTPUT', bl_idname, name, panel=panel, **props)
+
+                
+
             
         # ---------------------------------------------------------------------------
         # Value

@@ -37,9 +37,9 @@ __email__  = "lesideesfroides@gmail.com"
 __copyright__ = "Copyright (c) 2025, Alain Bernard"
 __license__ = "GNU GPL V3"
 
-import bpy
 from . import constants
 from . import utils
+from .sockettype import SocketType
 
 class Signature:
     def __init__(self, inputs={}, outputs={}):
@@ -167,171 +167,56 @@ class Signature:
 
     def _load_dict(self, sockets):
 
+        keys = ['socket_type', 'socket', 'type', 'bl_idname', 'class', 'class_name', 'socket_id', 'full_socket_id']
+
         if sockets is None:
             return {}
 
         res = {}
-        msg = None
         for name, info in sockets.items():
 
-            try:
+            if isinstance(info, dict):
                 d = {**info}
-            except Exception as e:
-                from pprint import pprint
-                print("?"*100)
-                print(f"sockets.keys: {list(sockets.keys())}\n")
-                print(f"pprint of '{name}': d\n")
-                pprint(info)
-                print("?"*100)
-                print("pprint of sockets\n")
-                pprint(sockets)
-                print("?"*100)
-                raise e
-            
-            # ----------------------------------------------------------------------------------------------------
-            # Must have a socket_type entry
-            # ----------------------------------------------------------------------------------------------------
-
-            socket_type = d.get('socket_type')
-            bl_idname   = d.get('bl_idname')
-            subtype     = None
-            dims        = None
-
-            if socket_type is None and bl_idname is None:
-                if d.get('class') is None:
-                    msg = f"name: '{name}': the dict doesn't contain nor 'socket_type' neither 'bl_idname' key key."
-                else:
-                    for k, v in constants.CLASS_NAMES.items():
-                        if v == d['class']:
-                            socket_type = k
+                sid = d.get('socket_type')
+                if sid is None:
+                    ok = False
+                    for n, v in d.items():
+                        if n in keys:
+                            d['socket_type'] = SocketType(v).serialize()
+                            ok = True
                             break
-                    if socket_type is None:
-                        if d['class'] in constants.GEOMETRY_CLASSES:
-                            socket_type = 'GEOMETRY'
-                        else:
-                            msg = f"name: '{name}': the class name '{d['class']}' is non valid. Should be in {list(constants.CLASS_NAMES.values()) + constants.GEOMETRY_CLASSES}."
 
-                    if msg is None:
-                        bl_idname = utils.socket_type_to_bl_idname(socket_type)
+                    if not ok:
+                        raise RuntimeError(f"Invalid Signature dict for name '{name}': "
+                            f"there is no key in {list(d.keys())} which is a valid socket type key: {keys}")
+                else:
+                    d['socket_type'] = SocketType(sid).serialize()
 
             else:
-                if socket_type is None:
-                    socket_type, subtype, dims = utils.get_socket_subtype(bl_idname)
-                else:
-                    socket_type, subtype, dims = utils.get_socket_subtype(socket_type)
+                d = {'socket_type': SocketType(info).serialize()}
 
-            if msg is not None:
-                from pprint import pprint
-                print('?'*100)
-                pprint(sockets)
-                print('?'*100)
-                raise RuntimeError(f"Invalid signature dict:  {msg}")
-            
-            # ----------------------------------------------------------------------------------------------------
-            # Set socket_type, subtype and dimensions
-            # ----------------------------------------------------------------------------------------------------
-
-            assert socket_type is not None
-
-            d['socket_type'] = socket_type
-            if subtype is None:
-                subtype = d.get('props', {}).get('subtype')
-            if dims is None:
-                dims = d.get('props', {}).get('dimensions')
-
-            if subtype is not None or dims is not None:
-                if 'props' not in d:
-                    d['props'] = {}
-                if subtype is not None:
-                    d['props']['subtype'] = subtype
-                if dims is not None:
-                    d['props']['dimensions'] = dims
-
-            # ----------------------------------------------------------------------------------------------------
-            # We've got someting normalized
-            # ----------------------------------------------------------------------------------------------------
-            
             res[name] = d
         
         return res
-
-    # ====================================================================================================
-    # Initialize from a collection of sockets (node.inputs or node.outputs)
-    # ====================================================================================================
-
-    @classmethod
-    def from_sockets(cls, 
-            sockets_coll, 
-            include: list = None, 
-            exclude: list = [], 
-            enabled_only: bool = False, 
-            exclude_linked: bool =False, 
-            with_sockets: bool = False):
-
-        sockets = {}
-        if sockets_coll is not None:
-
-            names = {}
-            for socket in sockets_coll:
-                if socket.type == 'CUSTOM':
-                    continue
-                if enabled_only and not socket.enabled:
-                    continue
-                if include is not None and socket.name not in include:
-                    continue
-                if socket.name in exclude:
-                    continue
-                if exclude_linked and (socket.is_linked and not socket.is_multi_input):
-                    continue
-
-                name = socket.name
-                key = name
-                if socket.name in names:
-                    names[name] += 1
-                    key = f"{name}.{names[name]:03d}"
-                else:
-                    names[name] = 0
-
-                sockets[key] = {
-                    'name'        : name, 
-                    'rank'        : names[name], 
-                    'bl_idname'   : socket.bl_idname, 
-                    'socket_type' : socket.type,
-                    'identifier'  : socket.identifier,
-                    }
-                
-                if with_sockets:
-                    sockets[key]['socket'] = socket
-
-        return Signature(sockets)
     
     # ====================================================================================================
-    # Initialize from a node
+    # From named sockets (used to initialize a Node for instance)
     # ====================================================================================================
 
     @classmethod
-    def from_node(cls, 
-            node, 
-            include: list = None,
-            exclude: list = [], 
-            enabled_only = False, 
-            exclude_linked: bool = False,
-            with_sockets: bool = False):
+    def from_named_sockets(cls, named_sockets: dict = {}, with_sockets: bool = True, **sockets):
 
-        from .treeinterface import TreeInterface
+        from . import utils
 
-        node = utils.get_bnode(node)
+        sig = {}
+        for name, value in {**named_sockets, **sockets}.items():
+            sig[name] = {'socket_type': SocketType(value).serialize()}
+            if with_sockets:
+                bsocket = utils.get_bsocket(value)
+                if bsocket is not None:
+                    sig[name]['socket'] = bsocket
 
-        # The node has a TreeInterface
-        if hasattr(node, 'node_tree'):
-            tinf = TreeInterface(node.node_tree)
-            return tinf.get_signature(include=include, exclude=exclude, exclude_linked=exclude_linked, with_sockets=with_sockets)
-        
-        # From sockets
-        return cls(
-            cls.from_sockets(node.inputs,  include=include, exclude=exclude, enabled_only=enabled_only, exclude_linked=exclude_linked, with_sockets=with_sockets).sockets,
-            cls.from_sockets(node.outputs, enabled_only=enabled_only, exclude_linked=exclude_linked, with_sockets=with_sockets).sockets
-        )
+        return cls(sig)
 
     # ====================================================================================================
     # Join signatures
@@ -361,48 +246,6 @@ class Signature:
     def __radd__(self, other):
         return Signature(other).join(self)
         
-    # ====================================================================================================
-    # Set the signature to items collection
-    # ====================================================================================================
-
-    def create_items(self, items, use_rank: bool = False, use_panel: bool = False, panel: str = ""):
-        """ Create items in a node_items collection.
-
-        Arguments
-        ---------
-        - items (bpy.types.prop_collection) : the collection of items
-        - use_rank (bool = False) : add rank to homonyms
-        - use_panel (bool = False) : prefix name with panel name
-
-        Returns
-        -------
-        - list of created sockets
-        """
-
-        sockets = self.sockets
-        names = {}
-        created = {}
-
-        for name, d in sockets.items():
-            full_name = name
-            if use_panel:
-                panels = [] if panel == "" else [panel]
-                panels = panels + [p['name'] for p in d.get('panels', [])]
-                full_name = " ".join(panels + [name])
-
-            if full_name in names:
-                names[full_name] += 1
-                if use_rank:
-                    full_name += f" {names[full_name]}"
-
-            else:
-                names[full_name] = 0
-
-            created[name] = items.new(utils.bl_idname_to_socket_type(d['socket_type']), full_name)
-
-        return created
-    
-
 
 
 

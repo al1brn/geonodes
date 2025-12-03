@@ -49,19 +49,15 @@ __copyright__ = "Copyright (c) 2025, Alain Bernard"
 __license__ = "GNU GPL V3"
 
 
-import numpy as np
-
-import bpy
-import mathutils
-
-from . scripterror import NodeError
-from . import constants
-from . import utils
+from .scripterror import NodeError
+from .import constants
+from .import utils
+from .utils import Break
+from .sockettype import SocketType
 from .treeinterface import TreeInterface
 from .treeclass import Tree
 from .nodeclass import Node, MenuNode, IndexSwitchNode
 from .proplocker import PropLocker
-from .inoutcontext import InOutContext
 
 # =============================================================================================================================
 # =============================================================================================================================
@@ -161,15 +157,24 @@ class Socket(NodeCache, PropLocker):
         # ----- Socket is the name of an attribute
 
         if isinstance(socket, str):
-            raise NodeError(f"Socket '{self._class_name()}' is not an attribute. Impossible to create a named attribute '{socket}'")
+            raise NodeError(f"Socket '{type(self).__name__}' is not an attribute. Impossible to create a named attribute '{socket}'")
 
         # ----- Socket is a socket :-)
 
         bsocket = utils.get_bsocket(socket)
         if bsocket is None:
             raise NodeError(f"Impossible to initialize Socket with a non socket argument: {socket}", socket_type=self.SOCKET_TYPE)
+
+        self._bsocket = bsocket
+
+        # ----- Initialize socket type frpm socket if the same types
+        # otherwise it is a socket transtypage
+
+        stype = SocketType(bsocket)
+        if stype == self.SOCKET_TYPE:
+            self._socket_type = stype
         else:
-            self._bsocket = bsocket
+            self._socket_type = SocketType(self.SOCKET_TYPE)
 
         # ----- Local attributes before locking
         self._layout = None
@@ -183,7 +188,8 @@ class Socket(NodeCache, PropLocker):
     # ====================================================================================================
 
     def __str__(self):
-        return f"<{self._class_name()} {self.SOCKET_TYPE} [{self.node._bnode.name}].'{self._bsocket.name}'>"
+        return f"<{self._socket_type} [{self.node._bnode.name}].'{self._bsocket.name}'>"
+        #return f"<{self._class_name()} {self._socket_type.type} [{self.node._bnode.name}].'{self._bsocket.name}'>"
 
     # ----------------------------------------------------------------------------------------------------
     # Reset cache
@@ -202,7 +208,7 @@ class Socket(NodeCache, PropLocker):
         bsocket = utils.get_bsocket(socket)
         if bsocket is None:
             raise NodeError(f"Socket error: Impossible to jump to socket {socket}")
-
+        
         self._bsocket = bsocket
         if reset:
             self._reset()
@@ -218,39 +224,7 @@ class Socket(NodeCache, PropLocker):
         return self
 
     # ----------------------------------------------------------------------------------------------------
-    # Class name
-    # ----------------------------------------------------------------------------------------------------
-
-    @classmethod
-    def _class_name(cls):
-        return cls.__name__.split('.')[-1]
-
-    # ----------------------------------------------------------------------------------------------------
-    # Is an attribute
-    # ----------------------------------------------------------------------------------------------------
-
-    @classmethod
-    def _is_attribute(cls):
-        return cls._class_name() in constants.ATTRIBUTE_CLASSES
-
-    # ----------------------------------------------------------------------------------------------------
-    # Group input or output
-    # ----------------------------------------------------------------------------------------------------
-
-    @property
-    def _is_group_input(self):
-        return self.node._bnode.bl_idname == 'NodeGroupInput'
-
-    @property
-    def _is_group_output(self):
-        return self.node._bnode.bl_idname == 'NodeGroupOutput'
-
-    @property
-    def _is_group_socket(self):
-        return self._is_group_input or self._is_group_output
-
-    # ----------------------------------------------------------------------------------------------------
-    # Get the interfacre socket (for Group node or tree input / output)
+    # Get the interface socket (for Group node or tree input / output)
     # ----------------------------------------------------------------------------------------------------
 
     @property
@@ -264,17 +238,11 @@ class Socket(NodeCache, PropLocker):
         -------
         - Interface Socket
         """
-        node_blid = self.node._bnode.bl_idname
-
-        if node_blid in ['NodeGroupInput', 'NodeGroupOutput']:
-            return self._tree._interface.by_identifier(self._bsocket.identifier)
-
-        elif node_blid in ['GeometryNodeGroup', 'ShaderNodeGroup']:
-            return TreeInterface(self.node._bnode.node_tree).by_identifier(self._bsocket.identifier)
-
-        else:
-            return None
+        if self.node.use_interface:
+            return self.node._interface._use_interface(self._bsocket.identifier)
         
+        return None
+
     # ----------------------------------------------------------------------------------------------------
     # Name or label
     # ----------------------------------------------------------------------------------------------------
@@ -395,20 +363,8 @@ class Socket(NodeCache, PropLocker):
 
 
     # ====================================================================================================
-    # Socket type to data type conversion, depending on the nodes
+    # Grid
     # ====================================================================================================
-
-    @classmethod
-    def socket_type_OLD(cls, restrict_to=None, default=None):
-        return utils.get_value_socket_type(cls, restrict_to=restrict_to, default=default)
-
-    @classmethod
-    def data_type_OLD(cls, restrict_to=None, default='FLOAT'):
-        return utils.get_data_type(cls, restrict_to=restrict_to, default=default)
-
-    @classmethod
-    def input_type_OLD(cls, restrict_to=None, default='FLOAT'):
-        return utils.get_value_socket_type(cls, restrict_to=restrict_to, default=default)
 
     @property
     def is_grid(self):
@@ -610,115 +566,9 @@ class Socket(NodeCache, PropLocker):
         -------
         - None
         """
-
-        # Ensure name
-        #if name is None:
-        #    name = type(self).__name__.split('.')[-1].title()
-
         out_node = self._tree.get_output_node()
         out_node.set_input_socket(name=name, value=self, create=True, panel=panel, **props)
 
-    # ====================================================================================================
-    # Context
-    # ====================================================================================================
-
-    @property
-    def _node_bl_idname(self):
-        return self.node._bnode.bl_idname
-
-    # ----------------------------------------------------------------------------------------------------
-    # Create a new output socket
-    # ----------------------------------------------------------------------------------------------------
-
-    def create_output_socket(self, socket, name=None, panel="", default=False, **props):
-        """ Plug a socket into an input socket of the node owning this output socket.
-
-        If node as dynamic socket, the input socket is created.
-
-        Arguments
-        ---------
-        - socket (socket) : socket
-        - name (str) : Socket name
-        - panel (str = "") : Panel name
-        - props (dict) : socket properties
-
-        Returns
-        -------
-            Socket
-        """
-
-        items_name   = constants.NODE_WITH_IN_ITEMS.get(self._node_bl_idname, None)
-        bsocket      = utils.get_bsocket(socket)
-        layout       = self._layout
-        if layout is not None:
-            layout.title = utils.get_node_name(self._tree._btree.bl_idname, self._node_bl_idname)
-
-        # ---------------------------------------------------------------------------
-        # No dynamic items : with plug to an existing socket
-        # ---------------------------------------------------------------------------
-
-        if items_name is None:
-            for isock in self.node._bnode.inputs:
-
-                if (name is not None) and (utils.get_socket_name(isock) != name):
-                    continue
-                if isock.type != bsocket.type:
-                    continue
-                if isock.is_linked:
-                    if not isock.is_multi_input:
-                        continue
-
-                Tree.current_tree().link(socket, isock)
-
-                layout.title = layout.title + f" - socket '{isock.name}'"
-
-                return isock
-            
-            sname = "" if name is None else f" named '{name}'"
-            raise NodeError(f"Impossible to link socket {socket} to node {self.node}: no free {bsocket.type} input socket{sname}.")
-            
-        # ---------------------------------------------------------------------------
-        # Dynamic items : we create a new input socket
-        # ---------------------------------------------------------------------------
-
-        bl_idname = self._node_bl_idname
-        if bl_idname == 'GeometryNodeIndexSwitch':
-
-            if True:
-                index = self.node._add_item(socket, default=default)
-            else:
-                items = self.node._bnode.index_switch_items
-
-                index = len(items)
-                items.new()
-                self.node[index + 1] = socket
-                if default or index == 0:
-                    self.node.set_default_value(index)
-
-            layout.title = layout.title + f" - socket {index}"
-
-            return self.node._bnode.inputs[index]
-        
-        # Ensure name
-        if name is None:            
-            socket_type = utils.bl_idname_to_socket_type(bsocket.type)
-            name = socket_type.title()
-
-        # Create the socket
-        self.node._set_items(items_name, named_sockets={name: socket}, clear=False, plug_items=True, **props)
-
-        # Menu switch default
-        if bl_idname == 'GeometryNodeMenuSwitch':
-            default = default or len(self.node._bnode.enum_items) == 1
-            if default:
-                self.node.set_default_value(name)
-
-        # Layout title
-        if layout is not None:
-            layout.title = layout.title + f" - socket '{name}'"
-
-        return self.node._bnode.inputs[-2] # Exclude CUSTOM
-    
     # ====================================================================================================
     # Context management
     # ====================================================================================================
@@ -726,9 +576,6 @@ class Socket(NodeCache, PropLocker):
     def _push(self):
 
         from .treeclass import Layout
-
-        # Push in the capture inout stack
-        #self._tree._capture_inout.append(self)
 
         self.node._push()
 
@@ -738,12 +585,11 @@ class Socket(NodeCache, PropLocker):
             self._layout = Layout()
             self._layout.push()
 
-    def _pop(self):
+    def _pop(self, error: bool = False):
 
-        self.node._pop()
+        self.node._pop(error)
 
         # Pop inout capture and layout
-        #self._tree._capture_inout.pop()
         if self._use_layout:
             self._layout.pop()
 
@@ -752,46 +598,8 @@ class Socket(NodeCache, PropLocker):
         return self
     
     def __exit__(self, type, exc_value, traceback):
-        self._pop()
-
-    # ====================================================================================================
-    # Get the signature
-    # ====================================================================================================
-
-    def get_signature(self, include: list = None, exclude: list = [], enabled_only=True, with_sockets: bool = False):
-        """ Build the closure signature of the node.
-
-        Arguments
-        ---------
-        - include (list = None) : sockets to include
-        - exclude (list = []) : sockets to exclude
-        - enabled_only (bool = True) : ignore disabled sockets
-        - with_sockets (bool = False) : include sockets
-
-        Returns
-        -------
-        - Signature
-        """
-        return self.node.get_signature(include=include, exclude=exclude, enabled_only=enabled_only, with_sockets=with_sockets)
-
-    # ====================================================================================================
-    # Constructors
-    # ====================================================================================================
-
-    @staticmethod
-    def _geometry_class(geometries):
-        geo_class = None
-        for geo in geometries:
-            if geo is None:
-                continue
-            if utils.get_value_socket_type(geo) != 'GEOMETRY':
-                return None
-            if geo_class is None:
-                geo_class = type(geo)
-            else:
-                if not isinstance(geo, geo_class):
-                    return None
-        return geo_class
+        ok = exc_value is None or isinstance(exc_value, Break)
+        self._pop(not ok)
     
     # ====================================================================================================
     # Menu Switch

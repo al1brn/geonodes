@@ -45,6 +45,7 @@ import bpy
 from . import blender
 from . import utils
 from . import constants
+from .sockettype import SocketType
 from .signature import Signature
 from typing import Literal
 
@@ -70,14 +71,14 @@ class TreeInterface:
     SOCKET_TYPES = {'GeometryNodeTree': [], 'ShaderNodeTree': []}
     SOCKET_PROPS = {'GeometryNodeTree': {}, 'ShaderNodeTree': {}}
     SYNOMNYMS = {
-        'default': 'default_value',
+        'default'           : 'default_value',
         'default_attribute' : 'default_attribute_name',
-        'tip' : 'description',
-        'min' : 'min_value',
-        'max' : 'max_value',
-        'layer_selection' : 'layer_selection_field',
-        'shape' : 'structure_type',
-        'expanded' : 'menu_expanded',
+        'tip'               : 'description',
+        'min'               : 'min_value',
+        'max'               : 'max_value',
+        'layer_selection'   : 'layer_selection_field',
+        'shape'             : 'structure_type',
+        'expanded'          : 'menu_expanded',
     }
 
     def __init__(self, btree):
@@ -390,7 +391,7 @@ class TreeInterface:
     def create_socket(self, 
             in_out      : IN_OUT,
             name        : str, 
-            bl_idname   : str,
+            socket_type : str | SocketType,
             parent      : str | NodeTreeInterfacePanel = None,
             from_socket : bpy.types.NodeSocket = None,
             **props):
@@ -400,7 +401,7 @@ class TreeInterface:
         ---------
         - in_out (str in ('INPUT', 'OUTPUT')) : input or output socket
         - name (str) : name of the socket to create
-        - bl_idname (str) : a valid socket bl_idname ('NodeSocketFloat', 'NodeSocketInt', ...)
+        - socket_type (str | SocketType) : a valid socket type
         - parent (str | NodeTreeInterfacePanel = None) : the parent panel where to create the socket
         - from_socket (NodeSocket = None) : an existing socket to configure the created socket
         - props (dict) : properties specific to the socket type
@@ -414,24 +415,15 @@ class TreeInterface:
         # Make sure NodeSocketxxx
         # ---------------------------------------------------------------------------
 
-        if bl_idname is None:
+        if socket_type is None:
             if from_socket is None:
-                raise NodeError(f"create_socket error: None 'bl_idname' requires a  valid 'from_socket' argument.")
+                raise NodeError(f"create_socket error: None 'socket_type' requires a  valid 'from_socket' argument.")
             
-            bl_idname, subtype, dims = utils.get_socket_bl_idname(from_socket.bl_idname)
-            
+            socket_type = SocketType(from_socket)            
         else:
-            print(f"SOCKET TYPE: {bl_idname=}")
-            bl_idname, subtype, dims = utils.get_socket_bl_idname(bl_idname)
-            print(f"AFTER: {bl_idname=}, {subtype=}, {dims=}")
-            if bl_idname not in self.socket_types:
-                raise TypeError(f"create_socket error: bl_idname argument is invalid: '{bl_idname}' not in {self.socket_types}.")
+            socket_type = SocketType(socket_type)
         
-        props = {**props}
-        if subtype is not None:
-            props['subtype'] = subtype
-        if dims is not None:
-            props['dimensions'] = dims
+        props = socket_type.set_props({**props})
         
         # ---------------------------------------------------------------------------
         # Try to recover from bin
@@ -439,7 +431,7 @@ class TreeInterface:
 
         parent = self.get_panel(parent)
         created = False
-        item = self.get_from_bin(in_out, name, bl_idname)
+        item = self.get_from_bin(in_out, name, socket_type)
 
         # ---------------------------------------------------------------------------
         # Not in bin : actual creation
@@ -447,7 +439,7 @@ class TreeInterface:
 
         if item is None:
             created = True
-            item = self.btree.interface.new_socket(name, in_out=in_out, socket_type=bl_idname, parent=parent)
+            item = self.btree.interface.new_socket(name, in_out=in_out, socket_type=socket_type.socket_id, parent=parent)
 
         # Move at last position
         self.btree.interface.move_to_parent(item, parent, 9999)
@@ -470,8 +462,8 @@ class TreeInterface:
             if prop == 'tip':
                 prop = 'description'
 
-            if prop not in self.socket_props[bl_idname]:
-                raise TypeError(f"create_socket error: socket property '{prop}' is invalid: '{prop}' not in {self.socket_props[bl_idname]}.")
+            if prop not in self.socket_props[socket_type.socket_id]:
+                raise TypeError(f"create_socket error: socket property '{prop}' is invalid: '{prop}' not in {self.socket_props[socket_type.socket_id]}.")
 
             # Could fail for default_value (Menu for instance)
             try:
@@ -747,14 +739,14 @@ class TreeInterface:
     # Get an previously deleted socket back to a panel
     # ----------------------------------------------------------------------------------------------------
 
-    def get_from_bin(self, in_out, name, socket_type):
+    def get_from_bin(self, in_out: IN_OUT, name: str, socket_type: str | SocketType):
         """ Get a socket from the bin.
 
         Arguments
         ---------
         - in_out (str in ('INPUT', 'OUTPUT')) : input or output socket
         - name (str) : name of the socket to create
-        - socket_type (str) : a valid socket type ('NodeSocketFloat', 'NodeSocketInt', ...)
+        - socket_type (str | SocketType) : a valid socket type ('NodeSocketFloat', 'NodeSocketInt', ...)
 
         Returns
         -------
@@ -764,6 +756,7 @@ class TreeInterface:
         if del_panel is None:
             return None
         
+        socket_type = SocketType(socket_type)
         for item in self.iterate(in_out, panels=False, parent=del_panel, sub_panels=False, ignore_bin=False):
             if item.name == name and item.socket_type == socket_type:
                 return item
@@ -1232,7 +1225,7 @@ class TreeInterface:
         # Additional sockets properties
         # ---------------------------------------------------------------------------
 
-        d['bl_idname'] = item.socket_type
+        d['socket_id'] = item.full_socket_id
         d['props'] = {prop_name: getattr(item, prop_name) for prop_name in self.socket_props[item.socket_type]}
 
         if with_socket:
@@ -1448,7 +1441,7 @@ class TreeInterface:
                     socket = self.create_socket(
                                         in_out      = in_out, 
                                         name        = name, 
-                                        bl_idname   = d['bl_idname'], 
+                                        socket_type = d['socket_type'], 
                                         parent      = cur_parent, 
                                         **d.get('props', {}))
                     

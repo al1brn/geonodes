@@ -101,7 +101,11 @@ e      = np.e
 from .core import PRODUCTION
 
 if PRODUCTION:
+    
+    from .core import Break
     from .core import blender
+
+    from .core import Signature
 
     from .core import Boolean, Float, Integer, Vector, Rotation, Matrix, Color, String
     from .core import Texture, Collection, Object, Image, Material
@@ -110,7 +114,7 @@ if PRODUCTION:
     from .core import Point, Vertex, Face, Edge, Corner, SplinePoint, Spline, CloudPoint, Instance, Layer
     from .core import Mesh, Curve, Cloud, Instances, GreasePencil, Volume
 
-    from .core import Layout, Panel, Break, Tree, Node, Group, GroupF, G, ColorRamp
+    from .core import Layout, Panel, Tree, Node, Group, GroupF, G, ColorRamp
     from .core import Zone, Repeat, Simulation, ForEachElement
     from .core import Closure, Bundle
 

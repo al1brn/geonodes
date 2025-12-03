@@ -44,7 +44,9 @@ if PRODUCTION:
     from .domains import Point, Vertex, Face, Edge, Corner, SplinePoint, Spline, CloudPoint, Instance, Layer
     from .geometries import Mesh, Curve, Cloud, Instances, GreasePencil, Volume
 
-    from .treeclass import Layout, Panel, Break, Tree
+    from .utils import Break
+    from .signature import Signature
+    from .treeclass import Layout, Panel, Tree
     from .nodeclass import Node, Group, GroupF, ColorRamp, G
     from .zones import Zone, Repeat, Simulation, ForEachElement
 
