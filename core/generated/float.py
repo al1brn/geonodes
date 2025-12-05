@@ -1,4 +1,4 @@
-# Generated 2025-12-03 13:34:00
+# Generated 2025-12-04 08:23:30
 
 from __future__ import annotations
 from .. socket_class import Socket
@@ -496,7 +496,7 @@ class Float(Socket):
         - Float
         """
         utils.check_enum_arg('Map Range', 'interpolation_type', interpolation_type, 'map_range', ('LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP'))
-        data_type = utils.get_argument_data_type(from_min, {'VALUE': 'FLOAT', 'VECTOR': 'FLOAT_VECTOR'}, 'Float.map_range', 'from_min')
+        data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'ShaderNodeMapRange', from_min)
         node = Node('Map Range', {'Value': self, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}, clamp=clamp, data_type=data_type, interpolation_type=interpolation_type)
         return node._out
 
@@ -526,7 +526,7 @@ class Float(Socket):
         -------
         - Float
         """
-        data_type = utils.get_argument_data_type(from_min, {'VALUE': 'FLOAT', 'VECTOR': 'FLOAT_VECTOR'}, 'Float.map_range_linear', 'from_min')
+        data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'ShaderNodeMapRange', from_min)
         node = Node('Map Range', {'Value': self, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}, clamp=clamp, data_type=data_type, interpolation_type='LINEAR')
         return node._out
 
@@ -558,7 +558,7 @@ class Float(Socket):
         -------
         - Float
         """
-        data_type = utils.get_argument_data_type(from_min, {'VALUE': 'FLOAT', 'VECTOR': 'FLOAT_VECTOR'}, 'Float.map_range_stepped', 'from_min')
+        data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'ShaderNodeMapRange', from_min)
         node = Node('Map Range', {'Value': self, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max, 'Steps': steps}, clamp=clamp, data_type=data_type, interpolation_type='STEPPED')
         return node._out
 
@@ -588,7 +588,7 @@ class Float(Socket):
         -------
         - Float
         """
-        data_type = utils.get_argument_data_type(from_min, {'VALUE': 'FLOAT', 'VECTOR': 'FLOAT_VECTOR'}, 'Float.map_range_smooth_step', 'from_min')
+        data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'ShaderNodeMapRange', from_min)
         node = Node('Map Range', {'Value': self, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}, clamp=clamp, data_type=data_type, interpolation_type='SMOOTHSTEP')
         return node._out
 
@@ -618,7 +618,7 @@ class Float(Socket):
         -------
         - Float
         """
-        data_type = utils.get_argument_data_type(from_min, {'VALUE': 'FLOAT', 'VECTOR': 'FLOAT_VECTOR'}, 'Float.map_range_smoother_step', 'from_min')
+        data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'ShaderNodeMapRange', from_min)
         node = Node('Map Range', {'Value': self, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}, clamp=clamp, data_type=data_type, interpolation_type='SMOOTHERSTEP')
         return node._out
 

@@ -721,7 +721,7 @@ def get_node_name(tree_type, bl_idname):
 # Used in generated source code
 # ====================================================================================================
 
-def get_argument_data_type(argument, type_to_value, node_name=None, arg_name=None):
+def get_argument_data_type_OLD(argument, type_to_value, node_name=None, arg_name=None):
 
     if argument is None:
         return list(type_to_value.values())[0]
@@ -739,6 +739,29 @@ def get_argument_data_type(argument, type_to_value, node_name=None, arg_name=Non
         print(f"CAUTION node '{node_name}': argument '{arg_name}' type ('{socket_type}') is not in {list(type_to_value.keys())}.")
 
     return list(type_to_value.values())[0]
+
+# ----------------------------------------------------------------------------------------------------
+# data_type argument can be derived from the argument passed to the node
+# ----------------------------------------------------------------------------------------------------
+
+def get_data_type_from_argument(tree_type: str, bl_idname: str, argument):
+    """ Compute data_type Node argument
+
+    data_type argument is derived from the type of the passed argument.
+
+    Attribute
+    ---------
+    - tree_type (str) : tree type
+    - bl_idname (str) : node bl_idname
+    - argument (Any) : the argument the derive data_type from
+    - arg_name (str = None) : in case of an error
+
+    Returns
+    -------
+    - str : valid value for data_type
+    """
+    return SocketType(argument).get_node_data_type(tree_type, bl_idname, halt=False)
+
 
 def get_data_type_argument(tree_type, bl_idname, socket_type):
     dts = constants.NODE_DATA_TYPES[tree_type][bl_idname]

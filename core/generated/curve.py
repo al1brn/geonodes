@@ -1,4 +1,4 @@
-# Generated 2025-12-03 13:34:00
+# Generated 2025-12-04 08:23:30
 
 from __future__ import annotations
 from .. socket_class import Socket
@@ -154,7 +154,7 @@ class Curve(Socket):
     @classmethod
     def handle_type_selection(cls,
                     handle_type: Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN'] = 'AUTO',
-                    mode = {'LEFT', 'RIGHT'}):
+                    mode = {'RIGHT', 'LEFT'}):
         """ > Node <&Node Handle Type Selection>
 
         Arguments
@@ -573,7 +573,7 @@ class Curve(Socket):
 
     def set_handle_type(self,
                     handle_type: Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN'] = 'AUTO',
-                    mode = {'LEFT', 'RIGHT'}):
+                    mode = {'RIGHT', 'LEFT'}):
         """ > Node <&Node Set Handle Type>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -654,7 +654,7 @@ class Curve(Socket):
         -----------
         - Socket 'Curve' : self
         - Socket 'Selection' : self[selection]
-        - Parameter 'mode' : {'LEFT', 'RIGHT'}
+        - Parameter 'mode' : {'RIGHT', 'LEFT'}
 
         Arguments
         ---------
@@ -665,7 +665,7 @@ class Curve(Socket):
         - Curve
         """
         utils.check_enum_arg('Set Handle Type', 'handle_type', handle_type, 'set_both_handle_type', ('FREE', 'AUTO', 'VECTOR', 'ALIGN'))
-        node = Node('Set Handle Type', {'Curve': self, 'Selection': self._sel}, handle_type=handle_type, mode={'LEFT', 'RIGHT'})
+        node = Node('Set Handle Type', {'Curve': self, 'Selection': self._sel}, handle_type=handle_type, mode={'RIGHT', 'LEFT'})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -1130,7 +1130,7 @@ class Curve(Socket):
         -------
         - Float [position_ (Vector), tangent_ (Vector), normal_ (Vector)]
         """
-        data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'BOOLEAN': 'BOOLEAN', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Curve.sample_factor', 'value')
+        data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeSampleCurve', value)
         node = Node('Sample Curve', {'Curves': self, 'Value': value, 'Curve Index': curve_index, 'Factor': factor}, data_type=data_type, mode='FACTOR', use_all_curves=use_all_curves)
         return node._out
 
@@ -1158,7 +1158,7 @@ class Curve(Socket):
         -------
         - Float [position_ (Vector), tangent_ (Vector), normal_ (Vector)]
         """
-        data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'BOOLEAN': 'BOOLEAN', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Curve.sample_length', 'value')
+        data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeSampleCurve', value)
         node = Node('Sample Curve', {'Curves': self, 'Value': value, 'Length': length, 'Curve Index': curve_index}, data_type=data_type, mode='LENGTH', use_all_curves=use_all_curves)
         return node._out
 
@@ -1188,7 +1188,7 @@ class Curve(Socket):
         - Float [position_ (Vector), tangent_ (Vector), normal_ (Vector)]
         """
         utils.check_enum_arg('Sample Curve', 'mode', mode, 'sample', ('FACTOR', 'LENGTH'))
-        data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'BOOLEAN': 'BOOLEAN', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Curve.sample', 'value')
+        data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeSampleCurve', value)
         node = Node('Sample Curve', {'Curves': self, 'Value': value, 'Curve Index': curve_index, 'Factor': factor}, data_type=data_type, mode=mode, use_all_curves=use_all_curves)
         return node._out
 
@@ -1669,7 +1669,7 @@ class Curve(Socket):
         -----------
         - Socket 'Curve' : self
         - Socket 'Selection' : self[selection]
-        - Parameter 'mode' : {'LEFT', 'RIGHT'}
+        - Parameter 'mode' : {'RIGHT', 'LEFT'}
 
         Arguments
         ---------
@@ -1680,7 +1680,7 @@ class Curve(Socket):
         - Curve
         """
         utils.check_enum_arg('Set Handle Type', 'handle_type', handle_type, 'handle_type', ('FREE', 'AUTO', 'VECTOR', 'ALIGN'))
-        node = Node('Set Handle Type', {'Curve': self, 'Selection': self._sel}, handle_type=handle_type, mode={'LEFT', 'RIGHT'})
+        node = Node('Set Handle Type', {'Curve': self, 'Selection': self._sel}, handle_type=handle_type, mode={'RIGHT', 'LEFT'})
         self._jump(node._out)
         return self._domain_to_geometry
 

@@ -35,7 +35,7 @@ PYTHON_TYPES = {
 # constants.__all__
 ALL = ['blender_version', 'CLASS_NAMES', 'DATA_TYPE_HOMONYMS', 'SOCKETS', 'NODE_INFO', 'NODE_NAMES', 'SOCKET_SUBTYPES', 
        'GEOMETRY_CLASSES', 'DOMAIN_CLASSES', 'ATTRIBUTE_CLASSES', 'PYTHON_TYPES', 'INPUT_SOCKETS_PROPS',
-       'BUILTIN_GROUPS', 'ONE_ITEMS_NODES', 'SEVERAL_ITEMS_NODES']
+       'BUILTIN_GROUPS', 'ONE_ITEMS_NODES', 'SEVERAL_ITEMS_NODES', 'SOCKET_IDS']
 
 # ====================================================================================================
 # Internal vars
@@ -801,7 +801,51 @@ CLASS_NAMES = {}
 for stype, d in SOCKETS.items():
     CLASS_NAMES[stype] = d['class_name']
 
+# ----------------------------------------------------------------------------------------------------
+# Socket Types (derived from global)
+# ----------------------------------------------------------------------------------------------------
 
+def get_socket_ids():
+
+    SOCKET_IDS = {}
+
+    # ---------------------------------------------------------------------------
+    # Full socket ids
+    # ---------------------------------------------------------------------------
+
+    for full_socket_id, full_spec in SOCKET_SUBTYPES.items():
+        SOCKET_IDS[full_socket_id] = full_socket_id
+
+    # ---------------------------------------------------------------------------
+    # Socket types
+    # ---------------------------------------------------------------------------
+
+    for stype, spec in SOCKETS.items():
+        SOCKET_IDS[stype] = spec['nodesocket']
+
+    # ---------------------------------------------------------------------------
+    # Class Names
+    # ---------------------------------------------------------------------------
+
+    for sid, class_name in CLASS_NAMES.items():
+        SOCKET_IDS[class_name] = SOCKET_IDS[sid]
+
+    for class_name in GEOMETRY_CLASSES:
+        SOCKET_IDS[class_name] = 'NodeSocketGeometry'
+
+    for class_name in DOMAIN_CLASSES:
+        SOCKET_IDS[class_name] = 'NodeSocketGeometry'
+
+    # ---------------------------------------------------------------------------
+    # Complementary
+    # ---------------------------------------------------------------------------
+
+    for homo, stype in DATA_TYPE_HOMONYMS.items():
+        SOCKET_IDS[homo] = SOCKET_IDS[stype]    
+
+    return SOCKET_IDS
+
+SOCKET_IDS = get_socket_ids()
 
 # ====================================================================================================
 # Write the config file
@@ -856,6 +900,15 @@ def write_file(path):
         f.write("DATA_TYPE_HOMONYMS = ")
         pprint(DATA_TYPE_HOMONYMS, stream=f)
         f.write("\n\n")
+
+        # ----------------------------------------------------------------------------------------------------
+        # Socket ids
+        # ----------------------------------------------------------------------------------------------------
+        
+        write_header(f, "Sockets ids for SocketType class")
+        f.write("SOCKET_IDS = ")
+        pprint(SOCKET_IDS, stream=f)
+        f.write("\n\n")
         
         # ----------------------------------------------------------------------------------------------------
         # Sockets
@@ -892,7 +945,6 @@ def write_file(path):
         f.write("ONE_ITEMS_NODES = ")
         pprint(ONE_ITEMS_NODES, stream=f)
         f.write("\n\n")
-
 
         f.write("SEVERAL_ITEMS_NODES = ")
         pprint(SEVERAL_ITEMS_NODES, stream=f)

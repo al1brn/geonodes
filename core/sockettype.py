@@ -46,13 +46,7 @@ class SocketType:
 
     __slots__ = ['_full_socket_id']
 
-    # Dict : something -> full_socket_id
-    SOCKET_IDS   = {}
-
     def __init__(self, value):
-
-        if not len(SocketType.SOCKET_IDS):
-            SocketType._init_socket_ids()
 
         self._full_socket_id  = None
 
@@ -96,7 +90,7 @@ class SocketType:
         # ---------------------------------------------------------------------------
 
         elif isinstance(value, str):
-            self._full_socket_id = SocketType.SOCKET_IDS.get(value)
+            self._full_socket_id = constants.SOCKET_IDS.get(value)
 
         # ====================================================================================================
         # If socket_id is still None, argument is a python value
@@ -168,47 +162,6 @@ class SocketType:
     
     def serialize(self):
         return self._full_socket_id
-    
-    # ====================================================================================================
-    # Init socket ids
-    # ====================================================================================================
-
-    @classmethod
-    def _init_socket_ids(cls):
-
-        # ---------------------------------------------------------------------------
-        # Full socket ids
-        # ---------------------------------------------------------------------------
-
-        for full_socket_id, full_spec in constants.SOCKET_SUBTYPES.items():
-            cls.SOCKET_IDS[full_socket_id] = full_socket_id
-
-        # ---------------------------------------------------------------------------
-        # Socket types
-        # ---------------------------------------------------------------------------
-
-        for stype, spec in constants.SOCKETS.items():
-            cls.SOCKET_IDS[stype] = spec['nodesocket']
-
-        # ---------------------------------------------------------------------------
-        # Class Names
-        # ---------------------------------------------------------------------------
-
-        for sid, class_name in constants.CLASS_NAMES.items():
-            cls.SOCKET_IDS[class_name] = cls.SOCKET_IDS[sid]
-
-        for class_name in constants.GEOMETRY_CLASSES:
-            cls.SOCKET_IDS[class_name] = 'NodeSocketGeometry'
-
-        #for class_name in constants.DOMAIN_CLASSES:
-        #    cls.SOCKET_IDS[class_name] = 'NodeSocketGeometry'
-
-        # ---------------------------------------------------------------------------
-        # Complementary
-        # ---------------------------------------------------------------------------
-
-        for homo, stype in constants.DATA_TYPE_HOMONYMS.items():
-            cls.SOCKET_IDS[homo] = cls.SOCKET_IDS[stype]
 
     # ====================================================================================================
     # Checkings
@@ -462,6 +415,44 @@ class SocketType:
             props['dimensions'] = self.dimensions
 
         return props
+    
+    # ====================================================================================================
+    # Data type for node
+    # ====================================================================================================
+
+    def get_node_data_type(self, tree_type: str, bl_idname: str, halt: bool = True):
+
+        # Node conversion dict
+        #'FunctionNodeCompare': {'data_type': {
+        #   'INT'   : 'INT',
+        #   'RGBA'  : 'RGBA',
+        #   'STRING': 'STRING',
+        #   'VALUE' : 'FLOAT',
+        #   'VECTOR': 'VECTOR'
+        # }},
+
+        info = constants.NODE_INFO[tree_type][bl_idname]
+
+        conv = info.get('data_type')
+        if conv is None:
+            raise RuntimeError(f"Node '{bl_idname}' doesn't have a 'data_type' attribute.")
+        
+        # Argument value
+        socket_type = self.type
+
+        # Let's find in the valid type
+        valids = []
+        for stype, node_type in conv.items():
+            if stype == socket_type:
+                return node_type
+            
+            valids.append(SocketType(stype).class_name)
+
+        if halt:
+            raise AttributeError(f"Invalid data_type argument '{self}' for node [{info['name']}], valids are {valids}")
+        else:
+            return None
+
     
     # ====================================================================================================
     # Comparaison

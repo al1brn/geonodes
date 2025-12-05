@@ -1,4 +1,4 @@
-# Generated 2025-12-03 13:34:00
+# Generated 2025-12-04 08:23:30
 
 from __future__ import annotations
 from .. socket_class import Socket
@@ -47,7 +47,7 @@ class Point(Socket):
         -------
         - Float [trailing_ (Float), total_ (Float)]
         """
-        data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR', 'MATRIX': 'TRANSFORM'}, 'Point.accumulate_field', 'value')
+        data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeAccumulateField', value)
         node = Node('Accumulate Field', {'Value': value, 'Group Index': group_id}, data_type=data_type, domain='POINT')
         return node._out
 
@@ -69,7 +69,7 @@ class Point(Socket):
         -------
         - node [mean (Float), median (Float), sum (Float), min (Float), max (Float), range (Float), standard_deviation (Float), variance (Float)]
         """
-        data_type = utils.get_argument_data_type(attribute, {'VALUE': 'FLOAT', 'VECTOR': 'FLOAT_VECTOR'}, 'Point.attribute_statistic', 'attribute')
+        data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeAttributeStatistic', attribute)
         node = Node('Attribute Statistic', {'Geometry': self, 'Selection': self._sel, 'Attribute': attribute}, data_type=data_type, domain='POINT')
         return node
 
@@ -95,7 +95,7 @@ class Point(Socket):
         - node [mean (Float), median (Float)]
         """
         utils.check_enum_arg('Field Average', 'domain', domain, 'field_average', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
-        data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'VECTOR': 'FLOAT_VECTOR'}, 'Point.field_average', 'value')
+        data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeFieldAverage', value)
         node = Node('Field Average', {'Value': value, 'Group Index': group_id}, data_type=data_type, domain=domain)
         return node
 
@@ -121,7 +121,7 @@ class Point(Socket):
         - node [min (Float), max (Float)]
         """
         utils.check_enum_arg('Field Min & Max', 'domain', domain, 'field_min_max', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
-        data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'FLOAT_VECTOR'}, 'Point.field_min_max', 'value')
+        data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeFieldMinAndMax', value)
         node = Node('Field Min & Max', {'Value': value, 'Group Index': group_id}, data_type=data_type, domain=domain)
         return node
 
@@ -147,7 +147,7 @@ class Point(Socket):
         - node [standard_deviation (Float), variance (Float)]
         """
         utils.check_enum_arg('Field Variance', 'domain', domain, 'field_variance', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
-        data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'VECTOR': 'FLOAT_VECTOR'}, 'Point.field_variance', 'value')
+        data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeFieldVariance', value)
         node = Node('Field Variance', {'Value': value, 'Group Index': group_id}, data_type=data_type, domain=domain)
         return node
 
@@ -362,7 +362,7 @@ class Point(Socket):
         -------
         - Float
         """
-        data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'BOOLEAN': 'BOOLEAN', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Point.evaluate_at_index', 'value')
+        data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeFieldAtIndex', value)
         node = Node('Evaluate at Index', {'Value': value, 'Index': index}, data_type=data_type, domain='POINT')
         return node._out
 
@@ -384,7 +384,7 @@ class Point(Socket):
         -------
         - Float
         """
-        data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'BOOLEAN': 'BOOLEAN', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Point.evaluate_on_domain', 'value')
+        data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeFieldOnDomain', value)
         node = Node('Evaluate on Domain', {'Value': value}, data_type=data_type, domain='POINT')
         return node._out
 
@@ -438,7 +438,7 @@ class Point(Socket):
         -------
         - Float
         """
-        data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'BOOLEAN': 'BOOLEAN', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Point.sample_index', 'value')
+        data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeSampleIndex', value)
         node = Node('Sample Index', {'Geometry': self, 'Value': value, 'Index': index}, clamp=clamp, data_type=data_type, domain='POINT')
         return node._out
 
@@ -569,7 +569,7 @@ class Point(Socket):
         -------
         - Geometry
         """
-        data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'BOOLEAN': 'BOOLEAN', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Point.store_named_attribute', 'value')
+        data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeStoreNamedAttribute', value)
         node = Node('Store Named Attribute', {'Geometry': self, 'Selection': self._sel, 'Name': name, 'Value': value}, data_type=data_type, domain='POINT')
         self._jump(node._out)
         return self._domain_to_geometry
@@ -597,7 +597,7 @@ class Point(Socket):
         -------
         - Geometry
         """
-        data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'BOOLEAN': 'BOOLEAN', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Point.store', 'value')
+        data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeStoreNamedAttribute', value)
         node = Node('Store Named Attribute', {'Geometry': self, 'Selection': self._sel, 'Name': name, 'Value': value}, data_type=data_type, domain='POINT')
         self._jump(node._out)
         return self._domain_to_geometry
@@ -633,7 +633,7 @@ class Point(Socket):
         -------
         - Geometry
         """
-        selection_type = utils.get_argument_data_type(selection, {'BOOLEAN': 'BOOLEAN', 'VALUE': 'FLOAT'}, 'Point.set_selection', 'selection')
+        selection_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeToolSetSelection', selection)
         node = Node('Set Selection', {'Geometry': self, 'Selection': self._sel}, domain='POINT', selection_type=selection_type)
         self._jump(node._out)
         return self._domain_to_geometry

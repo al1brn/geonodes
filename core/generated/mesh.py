@@ -1,4 +1,4 @@
-# Generated 2025-12-03 13:34:00
+# Generated 2025-12-04 08:23:30
 
 from __future__ import annotations
 from .. socket_class import Socket
@@ -1290,7 +1290,7 @@ class Mesh(Socket):
         -------
         - Float [is_valid_ (Boolean)]
         """
-        data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'BOOLEAN': 'BOOLEAN', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Mesh.sample_nearest_surface', 'value')
+        data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeSampleNearestSurface', value)
         node = Node('Sample Nearest Surface', {'Mesh': self, 'Value': value, 'Group ID': group_id, 'Sample Position': sample_position, 'Sample Group ID': sample_group_id}, data_type=data_type)
         return node._out
 
@@ -1315,7 +1315,7 @@ class Mesh(Socket):
         -------
         - Float [is_valid_ (Boolean)]
         """
-        data_type = utils.get_argument_data_type(value, {'VALUE': 'FLOAT', 'INT': 'INT', 'BOOLEAN': 'BOOLEAN', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Mesh.sample_uv_surface', 'value')
+        data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeSampleUVSurface', value)
         node = Node('Sample UV Surface', {'Mesh': self, 'Value': value, 'Source UV Map': uv_map, 'Sample UV': sample_uv}, data_type=data_type)
         return node._out
 

@@ -423,8 +423,11 @@ class Node:
             if param_value is None:
                 continue
 
-            # Domain can be specified by a domain class for a node without domain parameter
+            # data_type argument
+            if param_name == 'data_type':
+                param_value = SocketType(param_value).get_node_data_type(self._tree._btree.bl_idname, self._bnode.bl_idname)
 
+            # Domain can be specified by a domain class for a node without domain parameter
             if param_name == 'domain' and not hasattr(self._bnode, 'domain'):
                 continue
 
@@ -476,12 +479,19 @@ class Node:
     # Dictionary socket names -> sockets
     # ----------------------------------------------------------------------------------------------------
 
-    def get_sockets(self, in_out: IN_OUT, enabled_only: bool = True, free_only: bool = False) -> dict:
+    def get_sockets(self, 
+            in_out: IN_OUT, 
+            include: list = None,
+            exclude: list = [],
+            enabled_only: bool = True,
+            free_only: bool = False) -> dict:
         """ Build a dictionary keyed by the socket unique names
 
         Arguments
         ---------
         - in_out (str in ('INPUT', 'OUTPUT')) : input or output sockets
+        - include (list = None) : sockets to include
+        - exclude (list = []) : sockets to exclude
         - enabled_only : (bool = True) : ignore disabled sockets
         - free_only : (bool = False) : ignore linked sockets
 
@@ -497,6 +507,7 @@ class Node:
         # ====================================================================================================
 
         if self._use_interface:
+
             intf_in_out = self._interface_in_out[in_out]
             if in_out is None:
                 return {}
@@ -505,10 +516,35 @@ class Node:
             sockets = {}
             for name, isock in isocks.items():
                 socket = self.socket_by_identifier(in_out, isock.identifier)
+
+                # enabled only
                 if (not socket.enabled) and enabled_only:
                     continue
+
+                # free only
                 if free_only and not utils.is_free(socket):
                     continue
+
+                # include list
+                if include is not None:
+                    keep = False
+                    for name in include:
+                        if intf_in_out.socket_matches_name(isock, name):
+                            keep = True
+                            break
+                    if not keep:
+                        continue
+
+                # exclude list
+                keep = True
+                for name in exclude:
+                    if intf_in_out.socket_matches_name(isock, name):
+                        keep = False
+                        break
+                if not keep:
+                    continue
+
+                # We can keep it
                 sockets[name] = socket
 
             return sockets
@@ -561,7 +597,7 @@ class Node:
         for bsocket in bsockets:
 
             if bsocket.type == 'CUSTOM':
-               continue
+                continue
 
             name = utils.get_socket_name(bsocket)
             if not bsocket.enabled:
@@ -577,10 +613,33 @@ class Node:
             else:
                 names[name] = 1
 
-            # After ranking !
-            if free_only and not utils.is_free(bsocket): #bsocket.is_linked and not bsocket.is_multi_input:
+            # free only
+            if free_only and not utils.is_free(bsocket):
                 continue
 
+            socket_name = utils.get_socket_name(bsocket)
+            socket_names = [socket_name, utils.snake_case(socket_name)]
+
+            # include list
+            if include is not None:
+                keep = False
+                for name in include:
+                    if name in socket_names:
+                        keep = True
+                        break
+                if not keep:
+                    continue
+
+            # exclude list
+            keep = True
+            for name in exclude:
+                if name in socket_names:
+                    keep = False
+                    break
+            if not keep:
+                continue
+
+            # We can keep it            
             if is_in:
                 sockets[key] = bsocket
             else:
@@ -1021,7 +1080,8 @@ class Node:
         #socket_type = socket.type
         socket_type = SocketType(socket)
         if socket.hide_value:
-            self._tree.link(Node.InputNodeSocket(value)._bsocket, socket)
+            #self._tree.link(Node.InputNodeSocket(value)._bsocket, socket)
+            self._tree.link(utils.to_socket(value)._bsocket, socket)
             return socket
 
         # ---------------------------------------------------------------------------
@@ -1125,20 +1185,6 @@ class Node:
         return None
 
     # ====================================================================================================
-    # Plug the output nodes
-    # ====================================================================================================
-
-    def out(self, panel=""):
-        """ Plug the output sockets to the current tree output.
-
-        Arguments
-        ---------
-        - panel (str = "") : panel to use
-        """
-        for name, socket in self.get_sockets('OUTPUT').items():
-            socket.out(name, panel=panel)
-    
-    # ====================================================================================================
     # Signature
     # ====================================================================================================
 
@@ -1149,8 +1195,8 @@ class Node:
     def get_signature(self, 
             include: list = None, 
             exclude: list = [], 
-            exclude_linked: bool = False,
             enabled_only=False, 
+            free_only: bool = False,
             with_sockets: bool = False) -> Signature:
         """ Build the signature of the node.
 
@@ -1158,8 +1204,8 @@ class Node:
         ---------
         - include (list = None) : sockets to include
         - exclude (list = []) : sockets to exclude
-        - exclude_linked (bool = False) : exclude linked node
-        - enabled_only (bool = False) : ignore disabled sockets
+        - enabled_only : (bool = True) : ignore disabled sockets
+        - free_only : (bool = False) : ignore linked sockets
         - with_socket (bool = False) : include sockets
 
         Returns
@@ -1169,19 +1215,16 @@ class Node:
 
         sigs = []
         for in_out in ('INPUT', 'OUTPUT'):
-            is_in = in_out == 'INPUT'
-            node_sockets = self.get_sockets(in_out)
+
+            node_sockets = self.get_sockets(
+                in_out, 
+                include         = include, 
+                exclude         = exclude, 
+                enabled_only    = enabled_only, 
+                free_only       = free_only)
 
             sig = {}
             for name, socket in node_sockets.items():
-
-                if is_in:
-                    if include is not None and name not in include:
-                        continue
-                    if name in exclude:
-                        continue
-                    if exclude_linked and not utils.is_free(socket): #(socket._bsocket.is_linked and not socket._bsocket.is_multi_input):
-                        continue
 
                 bsocket = utils.get_bsocket(socket)
 
@@ -1192,7 +1235,6 @@ class Node:
                 
                 if with_sockets:
                     sig[name]['socket'] = socket
-
 
             sigs.append(sig)
 
@@ -1242,6 +1284,72 @@ class Node:
                     created[io][name] = self.create_from_socket(io, socket, name=name, panel=panel)
 
         return created
+    
+    # ====================================================================================================
+    # Plug the node
+    # ====================================================================================================
+
+    def out(self, panel=""):
+        """ Plug the output sockets to the current tree output.
+
+        Arguments
+        ---------
+        - panel (str = "") : panel to use
+        """
+        for name, socket in self.get_sockets('OUTPUT').items():
+            socket.out(name, panel=panel)
+
+    # ====================================================================================================
+    # Link input from another node
+    # ====================================================================================================
+
+    def link_inputs(self, from_node = None, include: list =  None, exclude = [], panel: str = ""):
+        """ Link input socket from another node
+
+        if from_node is None, the current input node is taken.
+        Input sockets already linked are ignored
+
+        If from node is able to create output sockets, they are created, otherwise only the sockets
+        with matchin names and types are linked.
+
+        Arguments
+        ---------
+        - from_node (Node) : node to get output sockets from
+        - include (list = None) : sockets to include
+        - exclude (list = []) : sockets to exclude
+        - panel (str = "") : panel name to create in from_node
+        """
+
+        if from_node is None:
+            from_node = self._tree.get_input_node()
+
+        in_sockets = self.get_sockets(
+            'INPUT',
+            include         = include,
+            exclude         = exclude,
+            enabled_only    = True,
+            free_only       = True,
+            )
+        
+        print("LINK INPUTS", in_sockets)
+        
+        links = []
+        
+        for name, in_socket in in_sockets.items():
+
+            print("LINK INPUTS", name, in_socket)
+
+            out_socket = from_node.socket_by_name('OUTPUT', name, enabled_only=True, halt=False)
+            if out_socket is None:
+                if from_node._has_dyn_out:
+                    out_socket = from_node.create_from_socket('OUTPUT', in_socket, panel=panel)
+                    links.append((out_socket, in_socket))
+            else:
+                self._tree.link(out_socket, in_socket)
+                links.append((out_socket, in_socket))
+
+        return links
+
 
     # ====================================================================================================
     # Color and label

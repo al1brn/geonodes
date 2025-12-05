@@ -1,4 +1,4 @@
-# Generated 2025-12-03 13:34:00
+# Generated 2025-12-04 08:23:30
 
 from __future__ import annotations
 from .. socket_class import Socket

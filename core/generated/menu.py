@@ -1,4 +1,4 @@
-# Generated 2025-12-03 13:34:00
+# Generated 2025-12-04 08:23:30
 
 from __future__ import annotations
 from .. socket_class import Socket
@@ -41,7 +41,7 @@ class Menu(Socket):
         -------
         - Geometry [a_ (Boolean), b_ (Boolean)]
         """
-        data_type = utils.get_argument_data_type(a, {'VALUE': 'FLOAT', 'INT': 'INT', 'BOOLEAN': 'BOOLEAN', 'VECTOR': 'VECTOR', 'RGBA': 'RGBA', 'ROTATION': 'ROTATION', 'MATRIX': 'MATRIX', 'STRING': 'STRING', 'MENU': 'MENU', 'OBJECT': 'OBJECT', 'IMAGE': 'IMAGE', 'GEOMETRY': 'GEOMETRY', 'COLLECTION': 'COLLECTION', 'MATERIAL': 'MATERIAL', 'BUNDLE': 'BUNDLE', 'CLOSURE': 'CLOSURE'}, 'Menu.menu_switch', 'a')
+        data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeMenuSwitch', a)
         node = Node('Menu Switch', data_type=data_type)
         node._bnode.enum_items.clear()
         node.menu = menu

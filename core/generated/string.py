@@ -1,4 +1,4 @@
-# Generated 2025-12-03 13:34:00
+# Generated 2025-12-04 08:23:30
 
 from __future__ import annotations
 from .. socket_class import Socket
@@ -368,7 +368,6 @@ class String(Socket):
         -------
         - Float [length_ (Integer)]
         """
-        utils.check_enum_arg('String to Value', 'data_type', data_type, 'to_value', ('FLOAT', 'INT'))
         node = Node('String to Value', {'String': self}, data_type=data_type)
         return node._out
 

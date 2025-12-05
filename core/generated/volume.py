@@ -1,4 +1,4 @@
-# Generated 2025-12-03 13:34:00
+# Generated 2025-12-04 08:23:30
 
 from __future__ import annotations
 from .. socket_class import Socket
@@ -145,7 +145,7 @@ class Volume(Socket):
         -------
         - Volume
         """
-        data_type = utils.get_argument_data_type(grid, {'BOOLEAN': 'BOOLEAN', 'VALUE': 'FLOAT', 'INT': 'INT', 'VECTOR': 'VECTOR_FLOAT'}, 'Volume.store_named_grid', 'grid')
+        data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeStoreNamedGrid', grid)
         node = Node('Store Named Grid', {'Volume': self, 'Name': name, 'Grid': grid}, data_type=data_type)
         self._jump(node._out)
         return self._domain_to_geometry
@@ -172,7 +172,6 @@ class Volume(Socket):
         -------
         - grid
         """
-        utils.check_enum_arg('Get Named Grid', 'data_type', data_type, 'get_named_grid', ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR'))
         node = Node('Get Named Grid', {'Volume': self, 'Name': name, 'Remove': remove}, data_type=data_type)
         self._jump(node._out)
         return node.grid

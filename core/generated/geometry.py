@@ -1,4 +1,4 @@
-# Generated 2025-12-03 13:34:00
+# Generated 2025-12-04 08:23:30
 
 from __future__ import annotations
 from .. socket_class import Socket
@@ -332,7 +332,7 @@ class Geometry(Socket):
         -------
         - node [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Float)]
         """
-        data_type = utils.get_argument_data_type(attribute, {'VALUE': 'FLOAT', 'INT': 'INT', 'BOOLEAN': 'BOOLEAN', 'VECTOR': 'FLOAT_VECTOR', 'RGBA': 'FLOAT_COLOR', 'ROTATION': 'QUATERNION', 'MATRIX': 'FLOAT4X4'}, 'Geometry.raycast', 'attribute')
+        data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeRaycast', attribute)
         node = Node('Raycast', {'Target Geometry': self, 'Attribute': attribute, 'Interpolation': interpolation, 'Source Position': source_position, 'Ray Direction': ray_direction, 'Ray Length': ray_length}, data_type=data_type)
         return node
 

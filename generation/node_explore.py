@@ -1079,7 +1079,9 @@ class NodeInfo:
 
                 d['comment'] = param_value.comment
                 if param in self.enum_params:
-                    d['check'] = f"utils.check_enum_arg('{self.bnode.name}', '{param}', {param}, 'METH_NAME', {param_value.get_enum_list()})"
+                    # Data type is now converted by Node class
+                    if param not in ['data_type']:
+                        d['check'] = f"utils.check_enum_arg('{self.bnode.name}', '{param}', {param}, 'METH_NAME', {param_value.get_enum_list()})"
                     d['typing'] = f"Literal{list(param_value.get_enum_list())}"
 
 
@@ -2321,8 +2323,13 @@ class NodeInfo:
         # ---------------------------------------------------------------------------
 
         if data_type is not None:
-            driving_arg_name = utils.snake_case(data_type_sockets['in_sockets'][0])
-            s += f"{_2}{data_type} = utils.get_argument_data_type({driving_arg_name}, {data_type_sockets['type_to_value']}, '{class_name}.{func_name}', '{driving_arg_name}')\n"
+            if True:
+                driving_arg_name = utils.snake_case(data_type_sockets['in_sockets'][0])
+                s += f"{_2}{data_type} = utils.get_data_type_from_argument('{self.btree.bl_idname}', '{self.bnode.bl_idname}', {driving_arg_name})\n"
+                #, {data_type_sockets['type_to_value']}, '{class_name}.{func_name}', '{driving_arg_name}')\n"
+            else:
+                driving_arg_name = utils.snake_case(data_type_sockets['in_sockets'][0])
+                s += f"{_2}{data_type} = utils.get_argument_data_type({driving_arg_name}, {data_type_sockets['type_to_value']}, '{class_name}.{func_name}', '{driving_arg_name}')\n"
 
         # ---------------------------------------------------------------------------
         # Node call

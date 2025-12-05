@@ -1,4 +1,4 @@
-# Generated 2025-12-03 13:34:00
+# Generated 2025-12-04 08:23:30
 
 from __future__ import annotations
 from .. socket_class import Socket
@@ -279,7 +279,6 @@ class ND:
         -------
         - Boolean
         """
-        utils.check_enum_arg('Compare', 'data_type', data_type, 'compare', ('FLOAT', 'INT', 'VECTOR', 'RGBA', 'STRING'))
         utils.check_enum_arg('Compare', 'mode', mode, 'compare', ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION'))
         utils.check_enum_arg('Compare', 'operation', operation, 'compare', ('LESS_THAN', 'LESS_EQUAL', 'GREATER_THAN', 'GREATER_EQUAL', 'EQUAL', 'NOT_EQUAL'))
         node = Node('Compare', {'A': a, 'B': b, 'A_INT': a_1, 'B_INT': b_1, 'A_VEC3': a_2, 'B_VEC3': b_2, 'A_COL': a_3, 'B_COL': b_3, 'A_STR': a_4, 'B_STR': b_4, 'C': c, 'Angle': angle, 'Epsilon': epsilon}, data_type=data_type, mode=mode, operation=operation)
@@ -367,7 +366,6 @@ class ND:
         -------
         - Integer
         """
-        utils.check_enum_arg('Hash Value', 'data_type', data_type, 'hash_value', ('FLOAT', 'INT', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING'))
         node = Node('Hash Value', {'Value': value, 'Seed': seed}, data_type=data_type)
         return node._out
 
@@ -629,7 +627,6 @@ class ND:
         -------
         - Float
         """
-        utils.check_enum_arg('Random Value', 'data_type', data_type, 'random_value', ('FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR'))
         node = Node('Random Value', {'Min': min, 'Max': max, 'Min_001': min_1, 'Max_001': max_1, 'Min_002': min_2, 'Max_002': max_2, 'Probability': probability, 'ID': id, 'Seed': seed}, data_type=data_type)
         return node._out
 
@@ -824,7 +821,6 @@ class ND:
         -------
         - Float [length_ (Integer)]
         """
-        utils.check_enum_arg('String to Value', 'data_type', data_type, 'string_to_value', ('FLOAT', 'INT'))
         node = Node('String to Value', {'String': string}, data_type=data_type)
         return node._out
 
@@ -892,7 +888,6 @@ class ND:
         -------
         - String
         """
-        utils.check_enum_arg('Value to String', 'data_type', data_type, 'value_to_string', ('FLOAT', 'INT'))
         node = Node('Value to String', {'Value': value, 'Decimals': decimals}, data_type=data_type)
         return node._out
 
@@ -915,7 +910,6 @@ class ND:
         -------
         - Float [trailing_ (Float), total_ (Float)]
         """
-        utils.check_enum_arg('Accumulate Field', 'data_type', data_type, 'accumulate_field', ('FLOAT', 'INT', 'FLOAT_VECTOR', 'TRANSFORM'))
         utils.check_enum_arg('Accumulate Field', 'domain', domain, 'accumulate_field', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
         node = Node('Accumulate Field', {'Value': value, 'Group Index': group_id}, data_type=data_type, domain=domain)
         return node._out
@@ -960,7 +954,6 @@ class ND:
         -------
         - Float [median_ (Float), sum_ (Float), min_ (Float), max_ (Float), range_ (Float), standard_deviation_ (Float), variance_ (Float)]
         """
-        utils.check_enum_arg('Attribute Statistic', 'data_type', data_type, 'attribute_statistic', ('FLOAT', 'FLOAT_VECTOR'))
         utils.check_enum_arg('Attribute Statistic', 'domain', domain, 'attribute_statistic', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
         node = Node('Attribute Statistic', {'Geometry': geometry, 'Selection': selection, 'Attribute': attribute}, data_type=data_type, domain=domain)
         return node._out
@@ -995,7 +988,6 @@ class ND:
         -------
         - Float
         """
-        utils.check_enum_arg('Blur Attribute', 'data_type', data_type, 'blur_attribute', ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR'))
         node = Node('Blur Attribute', {'Value': value, 'Iterations': iterations, 'Weight': weight}, data_type=data_type)
         return node._out
 
@@ -1205,7 +1197,7 @@ class ND:
     @classmethod
     def handle_type_selection(cls,
                     handle_type: Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN'] = 'AUTO',
-                    mode = {'LEFT', 'RIGHT'}):
+                    mode = {'RIGHT', 'LEFT'}):
         """ > Node <&Node Handle Type Selection>
 
         Arguments
@@ -1396,7 +1388,7 @@ class ND:
                     curve: Curve = None,
                     selection: Boolean = None,
                     handle_type: Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN'] = 'AUTO',
-                    mode = {'LEFT', 'RIGHT'}):
+                    mode = {'RIGHT', 'LEFT'}):
         """ > Node <&Node Set Handle Type>
 
         Arguments
@@ -1857,7 +1849,6 @@ class ND:
         -------
         - Float
         """
-        utils.check_enum_arg('Evaluate at Index', 'data_type', data_type, 'evaluate_at_index', ('FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4'))
         utils.check_enum_arg('Evaluate at Index', 'domain', domain, 'evaluate_at_index', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
         node = Node('Evaluate at Index', {'Value': value, 'Index': index}, data_type=data_type, domain=domain)
         return node._out
@@ -1881,7 +1872,6 @@ class ND:
         -------
         - Float [median_ (Float)]
         """
-        utils.check_enum_arg('Field Average', 'data_type', data_type, 'field_average', ('FLOAT', 'FLOAT_VECTOR'))
         utils.check_enum_arg('Field Average', 'domain', domain, 'field_average', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
         node = Node('Field Average', {'Value': value, 'Group Index': group_id}, data_type=data_type, domain=domain)
         return node._out
@@ -1905,7 +1895,6 @@ class ND:
         -------
         - Float [max_ (Float)]
         """
-        utils.check_enum_arg('Field Min & Max', 'data_type', data_type, 'field_min_max', ('FLOAT', 'INT', 'FLOAT_VECTOR'))
         utils.check_enum_arg('Field Min & Max', 'domain', domain, 'field_min_max', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
         node = Node('Field Min & Max', {'Value': value, 'Group Index': group_id}, data_type=data_type, domain=domain)
         return node._out
@@ -1927,7 +1916,6 @@ class ND:
         -------
         - Float
         """
-        utils.check_enum_arg('Evaluate on Domain', 'data_type', data_type, 'evaluate_on_domain', ('FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4'))
         utils.check_enum_arg('Evaluate on Domain', 'domain', domain, 'evaluate_on_domain', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
         node = Node('Evaluate on Domain', {'Value': value}, data_type=data_type, domain=domain)
         return node._out
@@ -1949,7 +1937,6 @@ class ND:
         -------
         - None
         """
-        utils.check_enum_arg('Field to Grid', 'data_type', data_type, 'field_to_grid', ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR'))
         node = Node('Field to Grid', {'Topology': topology, **named_sockets}, data_type=data_type, **sockets)
         return node._out
 
@@ -1972,7 +1959,6 @@ class ND:
         -------
         - Float [variance_ (Float)]
         """
-        utils.check_enum_arg('Field Variance', 'data_type', data_type, 'field_variance', ('FLOAT', 'FLOAT_VECTOR'))
         utils.check_enum_arg('Field Variance', 'domain', domain, 'field_variance', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
         node = Node('Field Variance', {'Value': value, 'Group Index': group_id}, data_type=data_type, domain=domain)
         return node._out
@@ -2114,7 +2100,6 @@ class ND:
         -------
         - Volume [grid_ (Float)]
         """
-        utils.check_enum_arg('Get Named Grid', 'data_type', data_type, 'get_named_grid', ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR'))
         node = Node('Get Named Grid', {'Volume': volume, 'Name': name, 'Remove': remove}, data_type=data_type)
         return node._out
 
@@ -2252,7 +2237,6 @@ class ND:
         -------
         - Float
         """
-        utils.check_enum_arg('Advect Grid', 'data_type', data_type, 'advect_grid', ('FLOAT', 'INT', 'VECTOR'))
         node = Node('Advect Grid', {'Grid': grid, 'Velocity': velocity, 'Time Step': time_step, 'Integration Scheme': integration_scheme, 'Limiter': limiter}, data_type=data_type)
         return node._out
 
@@ -2316,7 +2300,6 @@ class ND:
         -------
         - Matrix [background_value_ (Float)]
         """
-        utils.check_enum_arg('Grid Info', 'data_type', data_type, 'grid_info', ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR'))
         node = Node('Grid Info', {'Grid': grid}, data_type=data_type)
         return node._out
 
@@ -2354,7 +2337,6 @@ class ND:
         -------
         - Float
         """
-        utils.check_enum_arg('Prune Grid', 'data_type', data_type, 'prune_grid', ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR'))
         node = Node('Prune Grid', {'Grid': grid, 'Mode': mode, 'Threshold': threshold}, data_type=data_type)
         return node._out
 
@@ -2390,7 +2372,6 @@ class ND:
         -------
         - Float
         """
-        utils.check_enum_arg('Voxelize Grid', 'data_type', data_type, 'voxelize_grid', ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR'))
         node = Node('Voxelize Grid', {'Grid': grid}, data_type=data_type)
         return node._out
 
@@ -2861,7 +2842,6 @@ class ND:
         -------
         - Float [exists_ (Boolean)]
         """
-        utils.check_enum_arg('Named Attribute', 'data_type', data_type, 'named_attribute', ('FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4'))
         node = Node('Named Attribute', {'Name': name}, data_type=data_type)
         return node._out
 
@@ -3142,7 +3122,6 @@ class ND:
         -------
         - Float
         """
-        utils.check_enum_arg('List', 'data_type', data_type, 'list', ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'MENU'))
         node = Node('List', {'Count': count, 'Value': value}, data_type=data_type)
         return node._out
 
@@ -3163,7 +3142,6 @@ class ND:
         -------
         - Float
         """
-        utils.check_enum_arg('Get List Item', 'data_type', data_type, 'get_list_item', ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'MENU'))
         node = Node('Get List Item', {'List': list, 'Index': index}, data_type=data_type)
         return node._out
 
@@ -3182,7 +3160,6 @@ class ND:
         -------
         - Integer
         """
-        utils.check_enum_arg('List Length', 'data_type', data_type, 'list_length', ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'MENU'))
         node = Node('List Length', {'List': list}, data_type=data_type)
         return node._out
 
@@ -3820,7 +3797,6 @@ class ND:
         -------
         - Boolean [hit_position_ (Vector), hit_normal_ (Vector), hit_distance_ (Float), attribute_ (Float)]
         """
-        utils.check_enum_arg('Raycast', 'data_type', data_type, 'raycast', ('FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4'))
         node = Node('Raycast', {'Target Geometry': target_geometry, 'Attribute': attribute, 'Interpolation': interpolation, 'Source Position': source_position, 'Ray Direction': ray_direction, 'Ray Length': ray_length}, data_type=data_type)
         return node._out
 
@@ -4126,7 +4102,6 @@ class ND:
         -------
         - Float [position_ (Vector), tangent_ (Vector), normal_ (Vector)]
         """
-        utils.check_enum_arg('Sample Curve', 'data_type', data_type, 'sample_curve', ('FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4'))
         utils.check_enum_arg('Sample Curve', 'mode', mode, 'sample_curve', ('FACTOR', 'LENGTH'))
         node = Node('Sample Curve', {'Curves': curves, 'Value': value, 'Length': length, 'Curve Index': curve_index, 'Factor': factor}, data_type=data_type, mode=mode, use_all_curves=use_all_curves)
         return node._out
@@ -4150,7 +4125,6 @@ class ND:
         -------
         - Float
         """
-        utils.check_enum_arg('Sample Grid', 'data_type', data_type, 'sample_grid', ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR'))
         node = Node('Sample Grid', {'Grid': grid, 'Position': position, 'Interpolation': interpolation}, data_type=data_type)
         return node._out
 
@@ -4175,7 +4149,6 @@ class ND:
         -------
         - Float
         """
-        utils.check_enum_arg('Sample Grid Index', 'data_type', data_type, 'sample_grid_index', ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR'))
         node = Node('Sample Grid Index', {'Grid': grid, 'X': x, 'Y': y, 'Z': z}, data_type=data_type)
         return node._out
 
@@ -4202,7 +4175,6 @@ class ND:
         -------
         - Float
         """
-        utils.check_enum_arg('Sample Index', 'data_type', data_type, 'sample_index', ('FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4'))
         utils.check_enum_arg('Sample Index', 'domain', domain, 'sample_index', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
         node = Node('Sample Index', {'Geometry': geometry, 'Value': value, 'Index': index}, clamp=clamp, data_type=data_type, domain=domain)
         return node._out
@@ -4251,7 +4223,6 @@ class ND:
         -------
         - Float [is_valid_ (Boolean)]
         """
-        utils.check_enum_arg('Sample Nearest Surface', 'data_type', data_type, 'sample_nearest_surface', ('FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4'))
         node = Node('Sample Nearest Surface', {'Mesh': mesh, 'Value': value, 'Group ID': group_id, 'Sample Position': sample_position, 'Sample Group ID': sample_group_id}, data_type=data_type)
         return node._out
 
@@ -4276,7 +4247,6 @@ class ND:
         -------
         - Float [is_valid_ (Boolean)]
         """
-        utils.check_enum_arg('Sample UV Surface', 'data_type', data_type, 'sample_uv_surface', ('FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4'))
         node = Node('Sample UV Surface', {'Mesh': mesh, 'Value': value, 'Source UV Map': uv_map, 'Sample UV': sample_uv}, data_type=data_type)
         return node._out
 
@@ -4558,7 +4528,6 @@ class ND:
         -------
         - Float
         """
-        utils.check_enum_arg('Set Grid Background', 'data_type', data_type, 'set_grid_background', ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR'))
         node = Node('Set Grid Background', {'Grid': grid, 'Background': background}, data_type=data_type)
         return node._out
 
@@ -4579,7 +4548,6 @@ class ND:
         -------
         - Boolean [grid_ (Float)]
         """
-        utils.check_enum_arg('Set Grid Transform', 'data_type', data_type, 'set_grid_transform', ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR'))
         node = Node('Set Grid Transform', {'Grid': grid, 'Transform': transform}, data_type=data_type)
         return node._out
 
@@ -4923,7 +4891,6 @@ class ND:
         -------
         - Geometry
         """
-        utils.check_enum_arg('Store Named Attribute', 'data_type', data_type, 'store_named_attribute', ('FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4', 'INT8', 'FLOAT2', 'BYTE_COLOR'))
         utils.check_enum_arg('Store Named Attribute', 'domain', domain, 'store_named_attribute', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
         node = Node('Store Named Attribute', {'Geometry': geometry, 'Selection': selection, 'Name': name, 'Value': value}, data_type=data_type, domain=domain)
         return node._out
@@ -4947,7 +4914,6 @@ class ND:
         -------
         - Volume
         """
-        utils.check_enum_arg('Store Named Grid', 'data_type', data_type, 'store_named_grid', ('BOOLEAN', 'FLOAT', 'INT', 'VECTOR_FLOAT'))
         node = Node('Store Named Grid', {'Volume': volume, 'Name': name, 'Grid': grid}, data_type=data_type)
         return node._out
 
@@ -5538,7 +5504,6 @@ class ND:
         -------
         - Float
         """
-        utils.check_enum_arg('Enable Output', 'data_type', data_type, 'enable_output', ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE'))
         node = Node('Enable Output', {'Enable': enable, 'Value': value}, data_type=data_type)
         return node._out
 
@@ -5786,7 +5751,6 @@ class ND:
         -------
         - Float
         """
-        utils.check_enum_arg('Map Range', 'data_type', data_type, 'map_range', ('FLOAT', 'FLOAT_VECTOR'))
         utils.check_enum_arg('Map Range', 'interpolation_type', interpolation_type, 'map_range', ('LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP'))
         node = Node('Map Range', {'Value': value, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max, 'Steps': steps, 'Vector': vector, 'From_Min_FLOAT3': from_min_1, 'From_Max_FLOAT3': from_max_1, 'To_Min_FLOAT3': to_min_1, 'To_Max_FLOAT3': to_max_1, 'Steps_FLOAT3': steps_1}, clamp=clamp, data_type=data_type, interpolation_type=interpolation_type)
         return node._out
@@ -5856,7 +5820,6 @@ class ND:
         - Float
         """
         utils.check_enum_arg('Mix', 'blend_type', blend_type, 'mix', ('MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE'))
-        utils.check_enum_arg('Mix', 'data_type', data_type, 'mix', ('FLOAT', 'VECTOR', 'RGBA', 'ROTATION'))
         utils.check_enum_arg('Mix', 'factor_mode', factor_mode, 'mix', ('UNIFORM', 'NON_UNIFORM'))
         node = Node('Mix', {'A_Float': a, 'B_Float': b, 'A_Vector': a_1, 'B_Vector': b_1, 'A_Color': a_2, 'B_Color': b_2, 'A_Rotation': a_3, 'B_Rotation': b_3, 'Factor_Vector': factor}, blend_type=blend_type, clamp_factor=clamp_factor, clamp_result=clamp_result, data_type=data_type, factor_mode=factor_mode)
         return node._out
