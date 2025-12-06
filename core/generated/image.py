@@ -1,4 +1,4 @@
-# Generated 2025-12-04 08:23:30
+# Generated 2025-12-06 09:59:03
 
 from __future__ import annotations
 from .. socket_class import Socket
@@ -165,7 +165,6 @@ class Image(Socket):
         optional_label: bool = False,
         hide_value: bool = False,
         hide_in_modifier: bool = False,
-        default: object = None,
          ):
         """ > Image Input
 
@@ -180,7 +179,6 @@ class Image(Socket):
         - optional_label  (bool = False) : Property optional_label
         - hide_value  (bool = False) : Property hide_value
         - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - default  (object = None) : Property default_value
 
         Returns
         -------
@@ -188,7 +186,9 @@ class Image(Socket):
         """
         from ..treeclass import Tree
 
-        return Tree.current_tree().create_input_socket('NodeSocketImage', value=value, name=name, tip=tip,
-            panel=panel, optional_label=optional_label, hide_value=hide_value,
-            hide_in_modifier=hide_in_modifier, default=default)
+        defval = utils.python_value_for_socket(value, cls.SOCKET_TYPE)
+
+        return Tree.current_tree().create_input_socket('NodeSocketImage', default_value = defval, name=name,
+            tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value,
+            hide_in_modifier=hide_in_modifier)
 

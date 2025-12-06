@@ -66,7 +66,6 @@ class Boolean(generated.Boolean):
         optional_label: bool = False,
         hide_value: bool = False,
         hide_in_modifier: bool = False,
-        default: bool = False,
         default_attribute: str = '',
         layer_selection: bool = False,
         shape: Literal['AUTO', 'SINGLE'] = 'AUTO',
@@ -84,7 +83,6 @@ class Boolean(generated.Boolean):
         - optional_label  (bool = False) : Property optional_label
         - hide_value  (bool = False) : Property hide_value
         - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - default  (bool = False) : Property default_value
         - default_attribute  (str = '') : Property default_attribute_name
         - layer_selection  (bool = False) : Property layer_selection_field
         - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
@@ -100,7 +98,7 @@ class Boolean(generated.Boolean):
             else:
                 bsock = self._create_input_socket(value=value, name=name, tip=tip,
                     panel=panel, optional_label=optional_label, hide_value=hide_value,
-                    hide_in_modifier=hide_in_modifier, default=default, default_attribute=default_attribute,
+                    hide_in_modifier=hide_in_modifier, default_attribute=default_attribute,
                     layer_selection=layer_selection, shape=shape)
 
         super().__init__(bsock)

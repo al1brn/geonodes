@@ -991,7 +991,7 @@ class NodeInfo:
         Arguments
         ---------
         - self_socket : socket name to use to plug self
-        - expose_selection : put 'Selection' socket (if exists) in the list of arguments or set to 'self._sel'
+        - expose_selection : put 'Selection' socket (if exists) in the list of arguments or set to 'self.get_selection()'
         - enabled_only : sue only enabled sockets
         - ignore_sockets : list of sockets to ignore
         - parameters : forced node parameters
@@ -1169,7 +1169,7 @@ class NodeInfo:
                 # Selection socket
                 if socket_name == 'Selection' and not expose_selection:
                     is_argument = False
-                    node_value = "self._sel"
+                    node_value = "self.get_selection()"
                     info       = "Socket 'Selection' : self[selection]"
 
                 # Any other socket

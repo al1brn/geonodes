@@ -1,4 +1,4 @@
-# Generated 2025-12-04 08:23:30
+# Generated 2025-12-06 09:59:03
 
 from __future__ import annotations
 from .. socket_class import Socket
@@ -75,7 +75,6 @@ class Menu(Socket):
         optional_label: bool = False,
         hide_value: bool = False,
         hide_in_modifier: bool = False,
-        default: str = '',
         expanded: bool = False,
         shape: Literal['AUTO', 'SINGLE'] = 'AUTO',
          ):
@@ -92,7 +91,6 @@ class Menu(Socket):
         - optional_label  (bool = False) : Property optional_label
         - hide_value  (bool = False) : Property hide_value
         - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - default  (str = '') : Property default_value
         - expanded  (bool = False) : Property menu_expanded
         - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
 
@@ -102,7 +100,9 @@ class Menu(Socket):
         """
         from ..treeclass import Tree
 
-        return Tree.current_tree().create_input_socket('NodeSocketMenu', value=value, name=name, tip=tip,
-            panel=panel, optional_label=optional_label, hide_value=hide_value,
-            hide_in_modifier=hide_in_modifier, default=default, expanded=expanded, shape=shape)
+        defval = utils.python_value_for_socket(value, cls.SOCKET_TYPE)
+
+        return Tree.current_tree().create_input_socket('NodeSocketMenu', default_value = defval, name=name,
+            tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value,
+            hide_in_modifier=hide_in_modifier, expanded=expanded, shape=shape)
 

@@ -1,4 +1,4 @@
-# Generated 2025-12-04 08:23:30
+# Generated 2025-12-06 09:59:03
 
 from __future__ import annotations
 from .. socket_class import Socket
@@ -929,7 +929,6 @@ class Integer(Socket):
         optional_label: bool = False,
         hide_value: bool = False,
         hide_in_modifier: bool = False,
-        default: int = 0,
         default_attribute: str = '',
         default_input: Literal['VALUE', 'INDEX', 'ID_OR_INDEX'] = 'VALUE',
         shape: Literal['AUTO', 'SINGLE'] = 'AUTO',
@@ -950,7 +949,6 @@ class Integer(Socket):
         - optional_label  (bool = False) : Property optional_label
         - hide_value  (bool = False) : Property hide_value
         - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - default  (int = 0) : Property default_value
         - default_attribute  (str = '') : Property default_attribute_name
         - default_input  (str = 'VALUE') : Property default_input in ('VALUE', 'INDEX', 'ID_OR_INDEX')
         - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
@@ -962,10 +960,12 @@ class Integer(Socket):
         """
         from ..treeclass import Tree
 
-        return Tree.current_tree().create_input_socket('NodeSocketInt', value=value, name=name, min=min,
-            max=max, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value,
-            hide_in_modifier=hide_in_modifier, default=default, default_attribute=default_attribute,
-            default_input=default_input, shape=shape, subtype=subtype)
+        defval = utils.python_value_for_socket(value, cls.SOCKET_TYPE)
+
+        return Tree.current_tree().create_input_socket('NodeSocketInt', default_value = defval, name=name,
+            min=min, max=max, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value,
+            hide_in_modifier=hide_in_modifier, default_attribute=default_attribute, default_input=default_input,
+            shape=shape, subtype=subtype)
 
     @classmethod
     def Percentage(cls,
@@ -978,7 +978,6 @@ class Integer(Socket):
         optional_label: bool = False,
         hide_value: bool = False,
         hide_in_modifier: bool = False,
-        default: int = 0,
         default_attribute: str = '',
         default_input: Literal['VALUE', 'INDEX', 'ID_OR_INDEX'] = 'VALUE',
         shape: Literal['AUTO', 'SINGLE'] = 'AUTO',
@@ -998,7 +997,6 @@ class Integer(Socket):
         - optional_label  (bool = False) : Property optional_label
         - hide_value  (bool = False) : Property hide_value
         - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - default  (int = 0) : Property default_value
         - default_attribute  (str = '') : Property default_attribute_name
         - default_input  (str = 'VALUE') : Property default_input in ('VALUE', 'INDEX', 'ID_OR_INDEX')
         - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
@@ -1009,8 +1007,7 @@ class Integer(Socket):
         """
         return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel,
             optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier,
-            default=default, default_attribute=default_attribute, default_input=default_input, shape=shape,
-            subtype='PERCENTAGE')
+            default_attribute=default_attribute, default_input=default_input, shape=shape, subtype='PERCENTAGE')
 
     @classmethod
     def Factor(cls,
@@ -1023,7 +1020,6 @@ class Integer(Socket):
         optional_label: bool = False,
         hide_value: bool = False,
         hide_in_modifier: bool = False,
-        default: int = 0,
         default_attribute: str = '',
         default_input: Literal['VALUE', 'INDEX', 'ID_OR_INDEX'] = 'VALUE',
         shape: Literal['AUTO', 'SINGLE'] = 'AUTO',
@@ -1043,7 +1039,6 @@ class Integer(Socket):
         - optional_label  (bool = False) : Property optional_label
         - hide_value  (bool = False) : Property hide_value
         - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - default  (int = 0) : Property default_value
         - default_attribute  (str = '') : Property default_attribute_name
         - default_input  (str = 'VALUE') : Property default_input in ('VALUE', 'INDEX', 'ID_OR_INDEX')
         - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
@@ -1054,6 +1049,5 @@ class Integer(Socket):
         """
         return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel,
             optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier,
-            default=default, default_attribute=default_attribute, default_input=default_input, shape=shape,
-            subtype='FACTOR')
+            default_attribute=default_attribute, default_input=default_input, shape=shape, subtype='FACTOR')
 

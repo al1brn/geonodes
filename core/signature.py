@@ -42,38 +42,35 @@ from . import utils
 from .sockettype import SocketType
 
 class Signature:
-    def __init__(self, inputs={}, outputs={}):
-        """ Signature encapsulate two dicts for inputs and outputs.
+
+    __slots__ = ['_inputs', '_outputs']
+
+    def __init__(self, inputs=None, outputs=None):
+        """ Signature encapsulate two lists for inputs and outputs.
 
         The lists contain one dict per socket with at least the following keys:
-        - name : socket name
-        - socket_type : in ('FLOAT', 'INT', 'BOOLEAN', 'ROTATION', 'MATRIX', 'STRING', 'MENU',
-          'RGBA', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'CLOSURE', 'BUNDLE')
-        - bl_idname : in ('NodeSocketFloat', 'NodeSocketInt'...)
+        - name : socket name or path
+        - socket_type : socket bl id name
         """
 
         if isinstance(inputs, Signature):
-            self.inputs  = inputs.inputs
-            self.outputs = inputs.outputs
+            self._inputs  = list(inputs.inputs)
+            self._outputs = list(inputs.outputs)
 
         else:
             self.inputs  = inputs
             self.outputs = outputs
             
     def __str__(self):
-        if self.is_closure:
-            return f"<Signature (closure) {len(self[0])} / {len(self[1])} sockets>"
-        else:
-            return f"<Signature (single) {len(self.sockets)} sockets>"
+        return f"<Signature ({len(self.inputs)}, {len(self.outputs)}): {self.input_names} -> {self.output_names}"
     
-    def __repr__(self):    
-        if self.is_closure:
-            a = [f"{name:15s} : {d['socket_type']}" for name, d in self.inputs.items()]
-            b = [f"{name:15s} : {d['socket_type']}" for name, d in self.outputs.items()]
-            return str(self) + "\nINPUT\n- " + "\n- ".join(a) + "\nOUTPUT\n- " + "\n- ".join(b)
-        else:
-            a = [f"{name:15s} : {d['socket_type']}" for name, d in self.sockets.items()]
-            return str(self) + "\n- " + "\n- ".join(a)
+    def __repr__(self):
+        a = [f"{d['name']:15s} : {d['socket_type']}" for d in self.inputs]
+        b = [f"{d['name']:15s} : {d['socket_type']}" for d in self.outputs]
+        s = f"<Signature  ({len(self.inputs)}, {len(self.outputs)})\n"
+        s +=  "INPUT\n-   " + "\n-   ".join(a)
+        s += "OUTPUT\n-   " + "\n-   ".join(b)
+        return s + "\n"
     
     # ====================================================================================================
     # Inputs and outputs
@@ -81,25 +78,19 @@ class Signature:
 
     @property
     def inputs(self):
-        if hasattr(self, '_inputs'):
-            return self._inputs
-        else:
-            return {}
+        return self._inputs
 
     @inputs.setter
     def inputs(self, value):
-        self._inputs = self._load_dict(value)
+        self._inputs = self._load_value(value)
 
     @property
     def outputs(self):
-        if hasattr(self, '_outputs'):
-            return self._outputs
-        else:
-            return {}
+        return self._outputs
 
     @outputs.setter
     def outputs(self, value):
-        self._outputs = self._load_dict(value)
+        self._outputs = self._load_value(value)
 
     @property
     def input_signature(self):
@@ -108,6 +99,26 @@ class Signature:
     @property
     def output_signature(self):
         return Signature(self.outputs)
+    
+    # ====================================================================================================
+    # Input and output names
+    # ====================================================================================================
+
+    @property
+    def input_names(self):
+        return [d['name'] for d in self._inputs]
+
+    @property
+    def output_names(self):
+        return [d['name'] for d in self._outputs]
+    
+    @property
+    def input_keys(self):
+        return [(d.get('path', d['name']), d['socket_id']) for d in self._inputs]
+
+    @property
+    def output_keys(self):
+        return [(d.get('path', d['name']), d['socket_id']) for d in self._outputs]
     
     # ====================================================================================================
     # Behaves as a couple
@@ -140,10 +151,6 @@ class Signature:
     # ====================================================================================================
 
     @property
-    def is_closure(self):
-        return len(self.inputs) and len(self.outputs)
-    
-    @property
     def sockets(self):
         """ Return a non empty dict of any
 
@@ -155,9 +162,9 @@ class Signature:
             return self.outputs
         
     def switch(self):
-        sockets = self.inputs
-        self.inputs = self.outputs
-        self.outputs = sockets
+        sockets = self._inputs
+        self._inputs = self._outputs
+        self._outputs = sockets
 
         return self
     
@@ -165,37 +172,69 @@ class Signature:
     # Check a dict
     # ====================================================================================================
 
-    def _load_dict(self, sockets):
+    def _load_value(self, value):
 
         keys = ['socket_type', 'socket', 'type', 'bl_idname', 'class', 'class_name', 'socket_id', 'full_socket_id']
 
-        if sockets is None:
-            return {}
+        if value is None:
+            return []
+        
+        # ---------------------------------------------------------------------------
+        # Dict to list
+        # ---------------------------------------------------------------------------
+        
+        if isinstance(value, dict):
+            a = []
+            for k, v in value.items():
 
-        res = {}
-        for name, info in sockets.items():
-
-            if isinstance(info, dict):
-                d = {**info}
-                sid = d.get('socket_type')
-                if sid is None:
-                    ok = False
-                    for n, v in d.items():
-                        if n in keys:
-                            d['socket_type'] = SocketType(v).serialize()
-                            ok = True
-                            break
-
-                    if not ok:
-                        raise RuntimeError(f"Invalid Signature dict for name '{name}': "
-                            f"there is no key in {list(d.keys())} which is a valid socket type key: {keys}")
+                # Value can be socket type
+                if isinstance(v, dict):
+                    d = {**v}
                 else:
-                    d['socket_type'] = SocketType(sid).serialize()
+                    d = {'socket_type': SocketType(v).serialize()}
 
+                # Key can be (name, socket_type)
+                if isinstance(k, tuple) and len(k) == 2:
+                    d['name'] = k[0]
+                    d['socket_type'] = k[1]
+                else:
+                    d['name'] = k
+                
+                a.append(d)
+        else:
+            a = value
+
+        # ---------------------------------------------------------------------------
+        # Dict
+        # ---------------------------------------------------------------------------
+
+        res = []
+        for v in a:
+            if not isinstance(v, dict):
+                raise RuntimeError(f"The signature values must be dicts, not {v} in {value}.")
+            
+            d = {**v}
+            sid = d.get('socket_type')
+            if sid is None:
+                ok = False
+                for n, v in d.items():
+                    if n in keys:
+                        d['socket_type'] = SocketType(v).serialize()
+                        ok = True
+                        break
+
+                if not ok:
+                    raise RuntimeError(f"Invalid Signature dict for name '{name}': "
+                        f"There is no key in {list(d.keys())} which is a valid socket type key: {keys}")
             else:
-                d = {'socket_type': SocketType(info).serialize()}
+                d['socket_type'] = SocketType(sid).serialize()
 
-            res[name] = d
+            if d.get('path') is None:
+                d['path'] = d['name']
+
+            d['key'] = (d['path'], SocketType(d['socket_type']).socket_id)
+
+            res.append(d)
         
         return res
     
@@ -208,15 +247,23 @@ class Signature:
 
         from . import utils
 
-        sig = {}
+        a = []
         for name, value in {**named_sockets, **sockets}.items():
-            sig[name] = {'socket_type': SocketType(value).serialize()}
+            stype = SocketType(value)
+            d = {
+                'name'        : name,
+                'socket_type' : stype.serialize(),
+                'socket_id'   : stype.socket_id,
+                'key'         : (name, stype.socket_id),
+                }
             if with_sockets:
                 bsocket = utils.get_bsocket(value)
                 if bsocket is not None:
-                    sig[name]['socket'] = bsocket
+                    d[name]['socket'] = bsocket
+            
+            a.append(d)
 
-        return cls(sig)
+        return cls(a)
 
     # ====================================================================================================
     # Join signatures
@@ -224,19 +271,24 @@ class Signature:
 
     def join(self, *signatures):
         
-        inputs  = {}
-        outputs = {}
+        inputs, outputs = [], []
+        in_keys, out_keys = set(), set()
 
-        for s in [self] + list(signatures):
-            for name, d in s.inputs.items():
-                if name in inputs:
-                    continue
-                inputs[name] = {**d}
+        for value in [self] + list(signatures):
 
-            for name, d in s.outputs.items():
-                if name in outputs:
+            sig = Signature(value)
+
+            for d in sig.inputs:
+                if d['key'] in in_keys:
                     continue
-                outputs[name] = {**d}
+                inputs.append({**d})
+                in_keys.add(d['key'])
+
+            for d in sig.outputs:
+                if d['key'] in out_keys:
+                    continue
+                inputs.append({**d})
+                out_keys.add(d['key'])
 
         return Signature(inputs, outputs)
     

@@ -3320,8 +3320,8 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                                   "'AUTO',\n"
                                                                   '                    '
                                                                   'mode = '
-                                                                  "{'RIGHT', "
-                                                                  "'LEFT'})"}],
+                                                                  "{'LEFT', "
+                                                                  "'RIGHT'})"}],
                                           'nd': [{'func_name': 'handle_type_selection',
                                                   'is_classmethod': True,
                                                   'is_get': False,
@@ -3338,8 +3338,8 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                                "'AUTO',\n"
                                                                '                    '
                                                                'mode = '
-                                                               "{'RIGHT', "
-                                                               "'LEFT'})"}]},
+                                                               "{'LEFT', "
+                                                               "'RIGHT'})"}]},
  'GeometryNodeCurveLength': {'Curve': [{'func_name': 'length',
                                         'is_classmethod': False,
                                         'is_get': False,
@@ -3872,8 +3872,8 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                          "'AUTO', 'VECTOR', "
                                                          "'ALIGN'] = 'AUTO',\n"
                                                          '                    '
-                                                         "mode = {'RIGHT', "
-                                                         "'LEFT'})"},
+                                                         "mode = {'LEFT', "
+                                                         "'RIGHT'})"},
                                            {'func_name': 'set_left_handle_type',
                                             'is_classmethod': False,
                                             'is_get': False,
@@ -3936,8 +3936,8 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                       "'VECTOR', 'ALIGN'] = "
                                                       "'AUTO',\n"
                                                       '                    '
-                                                      "mode = {'RIGHT', "
-                                                      "'LEFT'})"}]},
+                                                      "mode = {'LEFT', "
+                                                      "'RIGHT'})"}]},
  'GeometryNodeCurveSpiral': {'Curve': [{'func_name': 'Spiral',
                                         'is_classmethod': True,
                                         'is_get': False,
@@ -17180,7 +17180,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                   'Color = None,\n'
                                                   '                    scale: '
                                                   'Float = None)'}],
-                          'Texture': [{'func_name': 'Checked',
+                          'Texture': [{'func_name': 'Checker',
                                        'is_classmethod': True,
                                        'is_get': False,
                                        'is_jump': False,

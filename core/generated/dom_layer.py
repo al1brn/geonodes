@@ -1,4 +1,4 @@
-# Generated 2025-12-06 09:50:17
+# Generated 2025-12-06 09:59:03
 
 from __future__ import annotations
 from .. socket_class import Socket
@@ -25,7 +25,7 @@ if TYPE_CHECKING:
     class String: ...
 
 
-class Corner(Socket):
+class Layer(Socket):
     """"
     $DOC SET hidden
     """
@@ -36,7 +36,7 @@ class Corner(Socket):
         Information
         -----------
         - Parameter 'data_type' : depending on 'value' type
-        - Parameter 'domain' : 'CORNER'
+        - Parameter 'domain' : 'LAYER'
 
         Arguments
         ---------
@@ -48,7 +48,7 @@ class Corner(Socket):
         - Float [trailing_ (Float), total_ (Float)]
         """
         data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeAccumulateField', value)
-        node = Node('Accumulate Field', {'Value': value, 'Group Index': group_id}, data_type=data_type, domain='CORNER')
+        node = Node('Accumulate Field', {'Value': value, 'Group Index': group_id}, data_type=data_type, domain='LAYER')
         return node._out
 
     def attribute_statistic(self, attribute: Float | Vector = None):
@@ -59,7 +59,7 @@ class Corner(Socket):
         - Socket 'Geometry' : self
         - Socket 'Selection' : self[selection]
         - Parameter 'data_type' : depending on 'attribute' type
-        - Parameter 'domain' : 'CORNER'
+        - Parameter 'domain' : 'LAYER'
 
         Arguments
         ---------
@@ -70,7 +70,7 @@ class Corner(Socket):
         - node [mean (Float), median (Float), sum (Float), min (Float), max (Float), range (Float), standard_deviation (Float), variance (Float)]
         """
         data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeAttributeStatistic', attribute)
-        node = Node('Attribute Statistic', {'Geometry': self, 'Selection': self.get_selection(), 'Attribute': attribute}, data_type=data_type, domain='CORNER')
+        node = Node('Attribute Statistic', {'Geometry': self, 'Selection': self.get_selection(), 'Attribute': attribute}, data_type=data_type, domain='LAYER')
         return node
 
     @classmethod
@@ -151,95 +151,196 @@ class Corner(Socket):
         node = Node('Field Variance', {'Value': value, 'Group Index': group_id}, data_type=data_type, domain=domain)
         return node
 
-    @classmethod
-    def edges(cls, corner_index: Integer = None):
-        """ > Node <&Node Edges of Corner>
+    def delete_geometry_all(self):
+        """ > Node <&Node Delete Geometry>
 
-        Arguments
-        ---------
-        - corner_index (Integer) : socket 'Corner Index' (id: Corner Index)
+        > ***Jump*** : Socket refers to node output socket after the call
 
-        Returns
-        -------
-        - node [next_edge_index (Integer), previous_edge_index (Integer)]
-        """
-        node = Node('Edges of Corner', {'Corner Index': corner_index})
-        return node
-
-    @classmethod
-    def next_edge_index(cls, corner_index: Integer = None):
-        """ > Node <&Node Edges of Corner>
-
-        Arguments
-        ---------
-        - corner_index (Integer) : socket 'Corner Index' (id: Corner Index)
+        Information
+        -----------
+        - Socket 'Geometry' : self
+        - Socket 'Selection' : self[selection]
+        - Parameter 'domain' : 'LAYER'
+        - Parameter 'mode' : 'ALL'
 
         Returns
         -------
-        - next_edge_index
+        - Geometry
         """
-        node = Node('Edges of Corner', {'Corner Index': corner_index})
-        return node.next_edge_index
+        node = Node('Delete Geometry', {'Geometry': self, 'Selection': self.get_selection()}, domain='LAYER', mode='ALL')
+        self._jump(node._out)
+        return self._domain_to_geometry
 
-    @classmethod
-    def previous_edge_index(cls, corner_index: Integer = None):
-        """ > Node <&Node Edges of Corner>
+    def delete_geometry_edge_face(self):
+        """ > Node <&Node Delete Geometry>
 
-        Arguments
-        ---------
-        - corner_index (Integer) : socket 'Corner Index' (id: Corner Index)
+        > ***Jump*** : Socket refers to node output socket after the call
+
+        Information
+        -----------
+        - Socket 'Geometry' : self
+        - Socket 'Selection' : self[selection]
+        - Parameter 'domain' : 'LAYER'
+        - Parameter 'mode' : 'EDGE_FACE'
 
         Returns
         -------
-        - previous_edge_index
+        - Geometry
         """
-        node = Node('Edges of Corner', {'Corner Index': corner_index})
-        return node.previous_edge_index
+        node = Node('Delete Geometry', {'Geometry': self, 'Selection': self.get_selection()}, domain='LAYER', mode='EDGE_FACE')
+        self._jump(node._out)
+        return self._domain_to_geometry
 
-    @classmethod
-    def face(cls, corner_index: Integer = None):
-        """ > Node <&Node Face of Corner>
+    def delete_geometry_only_face(self):
+        """ > Node <&Node Delete Geometry>
 
-        Arguments
-        ---------
-        - corner_index (Integer) : socket 'Corner Index' (id: Corner Index)
+        > ***Jump*** : Socket refers to node output socket after the call
+
+        Information
+        -----------
+        - Socket 'Geometry' : self
+        - Socket 'Selection' : self[selection]
+        - Parameter 'domain' : 'LAYER'
+        - Parameter 'mode' : 'ONLY_FACE'
 
         Returns
         -------
-        - node [face_index (Integer), index_in_face (Integer)]
+        - Geometry
         """
-        node = Node('Face of Corner', {'Corner Index': corner_index})
-        return node
+        node = Node('Delete Geometry', {'Geometry': self, 'Selection': self.get_selection()}, domain='LAYER', mode='ONLY_FACE')
+        self._jump(node._out)
+        return self._domain_to_geometry
 
-    @classmethod
-    def face_index(cls, corner_index: Integer = None):
-        """ > Node <&Node Face of Corner>
+    def delete_geometry(self, mode: Literal['ALL', 'EDGE_FACE', 'ONLY_FACE'] = 'ALL'):
+        """ > Node <&Node Delete Geometry>
+
+        > ***Jump*** : Socket refers to node output socket after the call
+
+        Information
+        -----------
+        - Socket 'Geometry' : self
+        - Socket 'Selection' : self[selection]
+        - Parameter 'domain' : 'LAYER'
 
         Arguments
         ---------
-        - corner_index (Integer) : socket 'Corner Index' (id: Corner Index)
+        - mode (str): parameter 'mode' in ['ALL', 'EDGE_FACE', 'ONLY_FACE']
 
         Returns
         -------
-        - face_index
+        - Geometry
         """
-        node = Node('Face of Corner', {'Corner Index': corner_index})
-        return node.face_index
+        utils.check_enum_arg('Delete Geometry', 'mode', mode, 'delete_geometry', ('ALL', 'EDGE_FACE', 'ONLY_FACE'))
+        node = Node('Delete Geometry', {'Geometry': self, 'Selection': self.get_selection()}, domain='LAYER', mode=mode)
+        self._jump(node._out)
+        return self._domain_to_geometry
 
-    @classmethod
-    def index_in_face(cls, corner_index: Integer = None):
-        """ > Node <&Node Face of Corner>
+    def delete_all(self):
+        """ > Node <&Node Delete Geometry>
+
+        > ***Jump*** : Socket refers to node output socket after the call
+
+        Information
+        -----------
+        - Socket 'Geometry' : self
+        - Socket 'Selection' : self[selection]
+        - Parameter 'domain' : 'LAYER'
+        - Parameter 'mode' : 'ALL'
+
+        Returns
+        -------
+        - Geometry
+        """
+        node = Node('Delete Geometry', {'Geometry': self, 'Selection': self.get_selection()}, domain='LAYER', mode='ALL')
+        self._jump(node._out)
+        return self._domain_to_geometry
+
+    def delete_edge_face(self):
+        """ > Node <&Node Delete Geometry>
+
+        > ***Jump*** : Socket refers to node output socket after the call
+
+        Information
+        -----------
+        - Socket 'Geometry' : self
+        - Socket 'Selection' : self[selection]
+        - Parameter 'domain' : 'LAYER'
+        - Parameter 'mode' : 'EDGE_FACE'
+
+        Returns
+        -------
+        - Geometry
+        """
+        node = Node('Delete Geometry', {'Geometry': self, 'Selection': self.get_selection()}, domain='LAYER', mode='EDGE_FACE')
+        self._jump(node._out)
+        return self._domain_to_geometry
+
+    def delete_only_face(self):
+        """ > Node <&Node Delete Geometry>
+
+        > ***Jump*** : Socket refers to node output socket after the call
+
+        Information
+        -----------
+        - Socket 'Geometry' : self
+        - Socket 'Selection' : self[selection]
+        - Parameter 'domain' : 'LAYER'
+        - Parameter 'mode' : 'ONLY_FACE'
+
+        Returns
+        -------
+        - Geometry
+        """
+        node = Node('Delete Geometry', {'Geometry': self, 'Selection': self.get_selection()}, domain='LAYER', mode='ONLY_FACE')
+        self._jump(node._out)
+        return self._domain_to_geometry
+
+    def delete(self, mode: Literal['ALL', 'EDGE_FACE', 'ONLY_FACE'] = 'ALL'):
+        """ > Node <&Node Delete Geometry>
+
+        > ***Jump*** : Socket refers to node output socket after the call
+
+        Information
+        -----------
+        - Socket 'Geometry' : self
+        - Socket 'Selection' : self[selection]
+        - Parameter 'domain' : 'LAYER'
 
         Arguments
         ---------
-        - corner_index (Integer) : socket 'Corner Index' (id: Corner Index)
+        - mode (str): parameter 'mode' in ['ALL', 'EDGE_FACE', 'ONLY_FACE']
 
         Returns
         -------
-        - index_in_face
+        - Geometry
         """
-        node = Node('Face of Corner', {'Corner Index': corner_index})
-        return node.index_in_face
+        utils.check_enum_arg('Delete Geometry', 'mode', mode, 'delete', ('ALL', 'EDGE_FACE', 'ONLY_FACE'))
+        node = Node('Delete Geometry', {'Geometry': self, 'Selection': self.get_selection()}, domain='LAYER', mode=mode)
+        self._jump(node._out)
+        return self._domain_to_geometry
+
+    def duplicate(self, amount: Integer = None):
+        """ > Node <&Node Duplicate Elements>
+
+        > ***Jump*** : Socket refers to node output socket after the call
+
+        Information
+        -----------
+        - Socket 'Geometry' : self
+        - Socket 'Selection' : self[selection]
+        - Parameter 'domain' : 'LAYER'
+
+        Arguments
+        ---------
+        - amount (Integer) : socket 'Amount' (id: Amount)
+
+        Returns
+        -------
+        - Geometry [duplicate_index_ (Integer)]
+        """
+        node = Node('Duplicate Elements', {'Geometry': self, 'Selection': self.get_selection(), 'Amount': amount}, domain='LAYER')
+        self._jump(node._out)
+        return self._domain_to_geometry
 
     @classmethod
     def evaluate_at_index(cls,
@@ -250,7 +351,7 @@ class Corner(Socket):
         Information
         -----------
         - Parameter 'data_type' : depending on 'value' type
-        - Parameter 'domain' : 'CORNER'
+        - Parameter 'domain' : 'LAYER'
 
         Arguments
         ---------
@@ -262,7 +363,7 @@ class Corner(Socket):
         - Float
         """
         data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeFieldAtIndex', value)
-        node = Node('Evaluate at Index', {'Value': value, 'Index': index}, data_type=data_type, domain='CORNER')
+        node = Node('Evaluate at Index', {'Value': value, 'Index': index}, data_type=data_type, domain='LAYER')
         return node._out
 
     @classmethod
@@ -273,7 +374,7 @@ class Corner(Socket):
         Information
         -----------
         - Parameter 'data_type' : depending on 'value' type
-        - Parameter 'domain' : 'CORNER'
+        - Parameter 'domain' : 'LAYER'
 
         Arguments
         ---------
@@ -284,44 +385,22 @@ class Corner(Socket):
         - Float
         """
         data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeFieldOnDomain', value)
-        node = Node('Evaluate on Domain', {'Value': value}, data_type=data_type, domain='CORNER')
-        return node._out
-
-    def to_points(self, position: Vector = None, radius: Float = None):
-        """ > Node <&Node Mesh to Points>
-
-        Information
-        -----------
-        - Socket 'Mesh' : self
-        - Socket 'Selection' : self[selection]
-        - Parameter 'mode' : 'CORNERS'
-
-        Arguments
-        ---------
-        - position (Vector) : socket 'Position' (id: Position)
-        - radius (Float) : socket 'Radius' (id: Radius)
-
-        Returns
-        -------
-        - Cloud
-        """
-        node = Node('Mesh to Points', {'Mesh': self, 'Selection': self.get_selection(), 'Position': position, 'Radius': radius}, mode='CORNERS')
+        node = Node('Evaluate on Domain', {'Value': value}, data_type=data_type, domain='LAYER')
         return node._out
 
     @classmethod
-    def offset_in_face(cls, corner_index: Integer = None, offset: Integer = None):
-        """ > Node <&Node Offset Corner in Face>
+    def named_selection(cls, name: String = None):
+        """ > Node <&Node Named Layer Selection>
 
         Arguments
         ---------
-        - corner_index (Integer) : socket 'Corner Index' (id: Corner Index)
-        - offset (Integer) : socket 'Offset' (id: Offset)
+        - name (String) : socket 'Name' (id: Name)
 
         Returns
         -------
-        - Integer
+        - Boolean
         """
-        node = Node('Offset Corner in Face', {'Corner Index': corner_index, 'Offset': offset})
+        node = Node('Named Layer Selection', {'Name': name})
         return node._out
 
     def sample_index(self,
@@ -334,7 +413,7 @@ class Corner(Socket):
         -----------
         - Socket 'Geometry' : self
         - Parameter 'data_type' : depending on 'value' type
-        - Parameter 'domain' : 'CORNER'
+        - Parameter 'domain' : 'LAYER'
 
         Arguments
         ---------
@@ -347,26 +426,46 @@ class Corner(Socket):
         - Float
         """
         data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeSampleIndex', value)
-        node = Node('Sample Index', {'Geometry': self, 'Value': value, 'Index': index}, clamp=clamp, data_type=data_type, domain='CORNER')
+        node = Node('Sample Index', {'Geometry': self, 'Value': value, 'Index': index}, clamp=clamp, data_type=data_type, domain='LAYER')
         return node._out
 
-    def sample_nearest(self, sample_position: Vector = None):
-        """ > Node <&Node Sample Nearest>
+    def separate(self):
+        """ > Node <&Node Separate Geometry>
+
+        > ***Jump*** : Socket refers to node output socket after the call
 
         Information
         -----------
         - Socket 'Geometry' : self
-        - Parameter 'domain' : 'CORNER'
-
-        Arguments
-        ---------
-        - sample_position (Vector) : socket 'Sample Position' (id: Sample Position)
+        - Socket 'Selection' : self[selection]
+        - Parameter 'domain' : 'LAYER'
 
         Returns
         -------
-        - Integer
+        - Geometry [inverted_ (Geometry)]
         """
-        node = Node('Sample Nearest', {'Geometry': self, 'Sample Position': sample_position}, domain='CORNER')
+        node = Node('Separate Geometry', {'Geometry': self, 'Selection': self.get_selection()}, domain='LAYER')
+        self._jump(node._out)
+        return self._domain_to_geometry
+
+    def split_to_instances(self, group_id: Integer = None):
+        """ > Node <&Node Split to Instances>
+
+        Information
+        -----------
+        - Socket 'Geometry' : self
+        - Socket 'Selection' : self[selection]
+        - Parameter 'domain' : 'LAYER'
+
+        Arguments
+        ---------
+        - group_id (Integer) : socket 'Group ID' (id: Group ID)
+
+        Returns
+        -------
+        - Instances [group_id_ (Integer)]
+        """
+        node = Node('Split to Instances', {'Geometry': self, 'Selection': self.get_selection(), 'Group ID': group_id}, domain='LAYER')
         return node._out
 
     def store_named_attribute(self,
@@ -381,7 +480,7 @@ class Corner(Socket):
         - Socket 'Geometry' : self
         - Socket 'Selection' : self[selection]
         - Parameter 'data_type' : depending on 'value' type
-        - Parameter 'domain' : 'CORNER'
+        - Parameter 'domain' : 'LAYER'
 
         Arguments
         ---------
@@ -393,7 +492,7 @@ class Corner(Socket):
         - Geometry
         """
         data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeStoreNamedAttribute', value)
-        node = Node('Store Named Attribute', {'Geometry': self, 'Selection': self.get_selection(), 'Name': name, 'Value': value}, data_type=data_type, domain='CORNER')
+        node = Node('Store Named Attribute', {'Geometry': self, 'Selection': self.get_selection(), 'Name': name, 'Value': value}, data_type=data_type, domain='LAYER')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -409,7 +508,7 @@ class Corner(Socket):
         - Socket 'Geometry' : self
         - Socket 'Selection' : self[selection]
         - Parameter 'data_type' : depending on 'value' type
-        - Parameter 'domain' : 'CORNER'
+        - Parameter 'domain' : 'LAYER'
 
         Arguments
         ---------
@@ -421,100 +520,23 @@ class Corner(Socket):
         - Geometry
         """
         data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeStoreNamedAttribute', value)
-        node = Node('Store Named Attribute', {'Geometry': self, 'Selection': self.get_selection(), 'Name': name, 'Value': value}, data_type=data_type, domain='CORNER')
-        self._jump(node._out)
-        return self._domain_to_geometry
-
-    def store_uv(self, name: String = None, value: Vector = None):
-        """ > Node <&Node Store Named Attribute>
-
-        > ***Jump*** : Socket refers to node output socket after the call
-
-        Information
-        -----------
-        - Socket 'Geometry' : self
-        - Socket 'Selection' : self[selection]
-        - Parameter 'data_type' : 'FLOAT2'
-        - Parameter 'domain' : 'CORNER'
-
-        Arguments
-        ---------
-        - name (String) : socket 'Name' (id: Name)
-        - value (Vector) : socket 'Value' (id: Value)
-
-        Returns
-        -------
-        - Geometry
-        """
-        node = Node('Store Named Attribute', {'Geometry': self, 'Selection': self.get_selection(), 'Name': name, 'Value': value}, data_type='FLOAT2', domain='CORNER')
+        node = Node('Store Named Attribute', {'Geometry': self, 'Selection': self.get_selection(), 'Name': name, 'Value': value}, data_type=data_type, domain='LAYER')
         self._jump(node._out)
         return self._domain_to_geometry
 
     @classmethod
-    def pack_uv_islands(cls,
-                    uv: Vector = None,
-                    margin: Float = None,
-                    rotate: Boolean = None,
-                    method: Literal['Bounding Box', 'Convex Hull', 'Exact Shape'] = None):
-        """ > Node <&Node Pack UV Islands>
+    def active_element(cls):
+        """ > Node <&Node Active Element>
 
         Information
         -----------
-        - Socket 'Selection' : self[selection]
-
-        Arguments
-        ---------
-        - uv (Vector) : socket 'UV' (id: UV)
-        - margin (Float) : socket 'Margin' (id: Margin)
-        - rotate (Boolean) : socket 'Rotate' (id: Rotate)
-        - method (menu='Bounding Box') : ('Bounding Box', 'Convex Hull', 'Exact Shape')
+        - Parameter 'domain' : 'LAYER'
 
         Returns
         -------
-        - Vector
+        - Integer [exists_ (Boolean)]
         """
-        node = Node('Pack UV Islands', {'UV': uv, 'Selection': self.get_selection(), 'Margin': margin, 'Rotate': rotate, 'Method': method})
-        return node._out
-
-    @classmethod
-    def uv_unwrap(cls,
-                    seam: Boolean = None,
-                    margin: Float = None,
-                    fill_holes: Boolean = None,
-                    method: Literal['Angle Based', 'Conformal'] = None):
-        """ > Node <&Node UV Unwrap>
-
-        Information
-        -----------
-        - Socket 'Selection' : self[selection]
-
-        Arguments
-        ---------
-        - seam (Boolean) : socket 'Seam' (id: Seam)
-        - margin (Float) : socket 'Margin' (id: Margin)
-        - fill_holes (Boolean) : socket 'Fill Holes' (id: Fill Holes)
-        - method (menu='Angle Based') : ('Angle Based', 'Conformal')
-
-        Returns
-        -------
-        - Vector
-        """
-        node = Node('UV Unwrap', {'Selection': self.get_selection(), 'Seam': seam, 'Margin': margin, 'Fill Holes': fill_holes, 'Method': method})
-        return node._out
-
-    @classmethod
-    def vertex_index(cls, corner_index: Integer = None):
-        """ > Node <&Node Vertex of Corner>
-
-        Arguments
-        ---------
-        - corner_index (Integer) : socket 'Corner Index' (id: Corner Index)
-
-        Returns
-        -------
-        - Integer
-        """
-        node = Node('Vertex of Corner', {'Corner Index': corner_index})
+        node = Node('Active Element', domain='LAYER')
         return node._out
 
     @classmethod
@@ -523,43 +545,13 @@ class Corner(Socket):
 
         Information
         -----------
-        - Parameter 'domain' : 'CORNER'
+        - Parameter 'domain' : 'LAYER'
 
         Arguments
         ---------
         - ui_shortcut (int): parameter 'ui_shortcut'
 
         """
-        node = Node('Viewer', named_sockets, domain='CORNER', ui_shortcut=ui_shortcut, **sockets)
+        node = Node('Viewer', named_sockets, domain='LAYER', ui_shortcut=ui_shortcut, **sockets)
         return
-
-    @property
-    def normal(self):
-        """ Write only property for node <Node Set Mesh Normal>
-        """
-        raise NodeError('Property Corner.normal is write only.')
-
-    @normal.setter
-    def normal(self, custom_normal: Vector = None):
-        """ > Node <&Node Set Mesh Normal>
-
-        > ***Jump*** : Socket refers to node output socket after the call
-
-        Information
-        -----------
-        - Socket 'Mesh' : self
-        - Parameter 'domain' : 'CORNER'
-        - Parameter 'mode' : 'FREE'
-
-        Arguments
-        ---------
-        - custom_normal (Vector) : socket 'Custom Normal' (id: Custom Normal)
-
-        Returns
-        -------
-        - Mesh
-        """
-        node = Node('Set Mesh Normal', {'Mesh': self, 'Custom Normal': custom_normal}, domain='CORNER', mode='FREE')
-        self._jump(node._out)
-        return self._domain_to_geometry
 

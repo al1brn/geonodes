@@ -57,7 +57,6 @@ from .sockettype import SocketType
 from .treeinterface import TreeInterface
 from .treeclass import Tree
 from .nodeclass import Node, MenuNode, IndexSwitchNode
-from .proplocker import PropLocker
 
 # =============================================================================================================================
 # =============================================================================================================================
@@ -66,6 +65,8 @@ from .proplocker import PropLocker
 # =============================================================================================================================
 
 class NodeCache:
+
+    __slots__ = ['_cached_nodes']
 
     # ====================================================================================================
     # Cache mechanism
@@ -103,7 +104,9 @@ class NodeCache:
 # =============================================================================================================================
 # =============================================================================================================================
 
-class Socket(NodeCache, PropLocker):
+class Socket(NodeCache):
+
+    __slots__ = NodeCache.__slots__ + ['_tree', '_bsocket', '_socket_type', '_layout', '_use_layout']
 
     SOCKET_TYPE = None
 
@@ -151,15 +154,30 @@ class Socket(NodeCache, PropLocker):
         ---------
         - socket (NodeSocket) : the output socket to wrap
         """
+
+        # ---------------------------------------------------------------------------
+        # Layout
+        # ---------------------------------------------------------------------------
+
+        self._layout      = None
+        self._use_layout  = True
+
+        # ---------------------------------------------------------------------------
+        # Tree
+        # ---------------------------------------------------------------------------
         
         self._tree = Tree.current_tree()
 
-        # ----- Socket is the name of an attribute
+        # ---------------------------------------------------------------------------
+        # Socket
+        # ---------------------------------------------------------------------------
+
+        # Attribute initiliazd by name
 
         if isinstance(socket, str):
             raise NodeError(f"Socket '{type(self).__name__}' is not an attribute. Impossible to create a named attribute '{socket}'")
 
-        # ----- Socket is a socket :-)
+        # Socket is a socket :-)
 
         bsocket = utils.get_bsocket(socket)
         if bsocket is None:
@@ -167,7 +185,7 @@ class Socket(NodeCache, PropLocker):
 
         self._bsocket = bsocket
 
-        # ----- Initialize socket type frpm socket if the same types
+        # Initialize socket type frpm socket if the same types
         # otherwise it is a socket transtypage
 
         stype = SocketType(bsocket)
@@ -176,20 +194,23 @@ class Socket(NodeCache, PropLocker):
         else:
             self._socket_type = SocketType(self.SOCKET_TYPE)
 
-        # ----- Local attributes before locking
-        self._layout = None
-        self._use_layout = True
-
         self._reset()
-        self._lock()
 
     # ====================================================================================================
     # Utilities
     # ====================================================================================================
 
     def __str__(self):
-        return f"<{self._socket_type} [{self.node._bnode.name}].'{self._bsocket.name}'>"
-        #return f"<{self._class_name()} {self._socket_type.type} [{self.node._bnode.name}].'{self._bsocket.name}'>"
+        stype = self._socket_type.class_name if hasattr(self, '_socket_type') else "Node Type"
+        node = self.node
+        if node is None:
+            snode_name = "No Node"
+            sname      = "No Socket"
+        else:
+            snode_name = self.node._bnode.name
+            sname      = self._bsocket.name
+
+        return f"<{stype} [{snode_name}].'{sname}'>"
 
     # ----------------------------------------------------------------------------------------------------
     # Reset cache
@@ -197,7 +218,6 @@ class Socket(NodeCache, PropLocker):
 
     def _reset(self):
         self._cache_reset()
-        self._if = None
 
     # ----------------------------------------------------------------------------------------------------
     # Jump to another output socket
@@ -249,6 +269,11 @@ class Socket(NodeCache, PropLocker):
 
     @property
     def node(self):
+
+        # Not yet initialized
+        if not hasattr(self, '_bsocket'):
+            return None
+        
         for node in self._tree._nodes:
             if node._bnode == self._bsocket.node:
                 return node
@@ -470,7 +495,9 @@ class Socket(NodeCache, PropLocker):
     # Get attr
     # ----------------------------------------------------------------------------------------------------
 
-    def __getattr__(self, name):
+    def __getattr__TEST(self, name):
+
+        print("SOCKET GET ATTR", name)
 
         # ---------------------------------------------------------------------------
         # Named attribute : _ followed by a capital, e.g. : socket._Attribute
@@ -481,7 +508,7 @@ class Socket(NodeCache, PropLocker):
             if self.SOCKET_TYPE == 'GEOMETRY':
                 return self._tree.get_named_attribute(prop_name=name)
             else:
-                raise AttributeError(f"Class '{self._class_name()}' doesn't support Named Attributes: impossible to get named attribute '{attr_name}' ({name}).")
+                raise AttributeError(f"Class '{type(self)}' doesn't support Named Attributes: impossible to get named attribute '{attr_name}' ({name}).")
 
         # ---------------------------------------------------------------------------
         # Could by a sibling output socket
@@ -517,7 +544,9 @@ class Socket(NodeCache, PropLocker):
     # Set attr
     # ----------------------------------------------------------------------------------------------------
 
-    def __setattr__(self, name, value):
+    def __setattr__OLD(self, name, value):
+
+        # Do we keep that complex sttuff ?
 
         attr_name = utils.get_attr_name(name)
         
@@ -566,6 +595,7 @@ class Socket(NodeCache, PropLocker):
         -------
         - None
         """
+        #print("OUTING", self._bsocket.name, self._bsocket.type)
         out_node = self._tree.get_output_node()
         out_node.set_input_socket(name=name, value=self, create=True, panel=panel, **props)
 
@@ -920,58 +950,6 @@ class Socket(NodeCache, PropLocker):
         - Socket
         """
         return self.Switch(condition=condition, false=false, true=self)
-
-    # ====================================================================================================
-    # if ... else ... mimicing
-    # ====================================================================================================
-
-    @property
-    def option(self):
-        """ Plug an input of the socket node with the socket
-
-        Set the current option as defined in a <!If>, <!Else> or <!Elif> block.
-
-        Raises
-        ------
-        - NodeError : always, this is a write only property
-
-        > [!IMPORTANT]
-        > The only valid use is `socket.option = value`
-        """
-        raise NodeError("'option' is write only property")
-
-    @option.setter
-    def option(self, value):
-        """ Plug an input of the socket node with the socket
-
-        Set the current option as defined in a <!If>, <!Else> or <!Elif> block.
-
-        Raises
-        ------
-        - NodeError : if the socket has not been created by a <!If> class.
-
-        > [!IMPORTANT]
-        > The only valid use is `socket.option = value`
-        """
-        if self._if is None:
-            raise NodeError(f"'option' property setter is only valid in a context 'If', 'Else' or 'Elif'")
-        else:
-            self._if.set_option(value)
-
-    @property
-    def option_index(self):
-        """ Get the option index
-
-        Get the current option index  for a socket created by a <!If>, <!Else> or <!Elif> block.
-
-        Raises
-        ------
-        - NodeError : if the socket has not been created by a <!If> class.
-        """
-        if self._if is None:
-            raise NodeError(f"'option_index' property is only valid in a context 'If', 'Else' or 'Elif'")
-        else:
-            return self._if.current
 
     # ====================================================================================================
     # Class Test

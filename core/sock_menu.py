@@ -62,7 +62,6 @@ class Menu(generated.Menu):
         optional_label: bool = False,
         hide_value: bool = False,
         hide_in_modifier: bool = False,
-        default: str = '',
         expanded: bool = False,
         shape: Literal['AUTO', 'SINGLE'] = 'AUTO',
     ):
@@ -77,7 +76,6 @@ class Menu(generated.Menu):
         - optional_label  (bool = False) : Property optional_label
         - hide_value  (bool = False) : Property hide_value
         - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - default  (str = '') : Property default_value
         - expanded  (bool = False) : Property menu_expanded
         - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
         """
@@ -101,7 +99,7 @@ class Menu(generated.Menu):
             else:
                 bsocket = self._create_input_socket(value=value, name=name, tip=tip,
                     panel=panel, optional_label=optional_label, hide_value=hide_value,
-                    hide_in_modifier=hide_in_modifier, default=default, expanded=expanded, shape=shape)
+                    hide_in_modifier=hide_in_modifier, expanded=expanded, shape=shape)
 
         super().__init__(bsocket)
 

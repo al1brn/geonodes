@@ -48,7 +48,27 @@ class SocketType:
 
     def __init__(self, value):
 
+        from .socket_class import Socket
+
         self._full_socket_id  = None
+
+        # ---------------------------------------------------------------------------
+        # Specific cases
+        # ---------------------------------------------------------------------------
+
+        # Socket : its type has priority over bsocket
+        if isinstance(value, Socket):
+            value = Socket.SOCKET_TYPE
+
+        # List of sockets
+        elif isinstance(value, list):
+            ok = False
+            for v in value:
+                if SocketType.get_bsocket(v) is None:
+                    ok = False
+                    break
+            if ok:
+                value = value[0]
 
         bsocket = SocketType.get_bsocket(value)
 
@@ -133,7 +153,7 @@ class SocketType:
                 elif size == 16:
                     sid = 'NodeSocketMatrix'
                 else:
-                    raise RuntimeError(f"Impossible to initialize a socket from array of size {size}. Acceptable sizes are: 2, 3, 4, 16.")
+                    raise RuntimeError(f"Impossible to initialize a socket from array {value} of size {size}. Acceptable sizes are: 2, 3, 4, 16.")
 
             else:
                 raise RuntimeError(f"Impossible to initialize a socket type from value {value}.")

@@ -1,4 +1,4 @@
-# Generated 2025-12-04 08:23:30
+# Generated 2025-12-06 09:59:03
 
 from __future__ import annotations
 from .. socket_class import Socket
@@ -72,7 +72,7 @@ class Texture(Socket):
         return node._out
 
     @classmethod
-    def Checked(cls,
+    def Checker(cls,
                     vector: Vector = None,
                     color1: Color = None,
                     color2: Color = None,

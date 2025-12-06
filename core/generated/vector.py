@@ -1,4 +1,4 @@
-# Generated 2025-12-04 08:23:30
+# Generated 2025-12-06 09:59:03
 
 from __future__ import annotations
 from .. socket_class import Socket
@@ -295,7 +295,7 @@ class Vector(Socket):
         -------
         - Vector
         """
-        node = Node('Pack UV Islands', {'UV': self, 'Selection': self._sel, 'Margin': margin, 'Rotate': rotate, 'Method': method})
+        node = Node('Pack UV Islands', {'UV': self, 'Selection': self.get_selection(), 'Margin': margin, 'Rotate': rotate, 'Method': method})
         return node._out
 
     @classmethod
@@ -1599,7 +1599,6 @@ class Vector(Socket):
         hide_value: bool = False,
         hide_in_modifier: bool = False,
         dimensions: int = 3,
-        default: tuple = (0.0, 0.0, 0.0),
         default_attribute: str = '',
         default_input: Literal['VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT'] = 'VALUE',
         shape: Literal['AUTO', 'SINGLE'] = 'AUTO',
@@ -1621,7 +1620,6 @@ class Vector(Socket):
         - hide_value  (bool = False) : Property hide_value
         - hide_in_modifier  (bool = False) : Property hide_in_modifier
         - dimensions  (int = 3) : Property dimensions
-        - default  (tuple = (0.0, 0.0, 0.0)) : Property default_value
         - default_attribute  (str = '') : Property default_attribute_name
         - default_input  (str = 'VALUE') : Property default_input in ('VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT')
         - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
@@ -1633,9 +1631,11 @@ class Vector(Socket):
         """
         from ..treeclass import Tree
 
-        return Tree.current_tree().create_input_socket('NodeSocketVector', value=value, name=name, min=min,
-            max=max, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value,
-            hide_in_modifier=hide_in_modifier, dimensions=dimensions, default=default,
+        defval = utils.python_value_for_socket(value, cls.SOCKET_TYPE)
+
+        return Tree.current_tree().create_input_socket('NodeSocketVector', default_value = defval,
+            name=name, min=min, max=max, tip=tip, panel=panel, optional_label=optional_label,
+            hide_value=hide_value, hide_in_modifier=hide_in_modifier, dimensions=dimensions,
             default_attribute=default_attribute, default_input=default_input, shape=shape, subtype=subtype)
 
     @classmethod
@@ -1650,7 +1650,6 @@ class Vector(Socket):
         hide_value: bool = False,
         hide_in_modifier: bool = False,
         dimensions: int = 3,
-        default: tuple = (0.0, 0.0, 0.0),
         default_attribute: str = '',
         default_input: Literal['VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT'] = 'VALUE',
         shape: Literal['AUTO', 'SINGLE'] = 'AUTO',
@@ -1671,7 +1670,6 @@ class Vector(Socket):
         - hide_value  (bool = False) : Property hide_value
         - hide_in_modifier  (bool = False) : Property hide_in_modifier
         - dimensions  (int = 3) : Property dimensions
-        - default  (tuple = (0.0, 0.0, 0.0)) : Property default_value
         - default_attribute  (str = '') : Property default_attribute_name
         - default_input  (str = 'VALUE') : Property default_input in ('VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT')
         - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
@@ -1682,8 +1680,8 @@ class Vector(Socket):
         """
         return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel,
             optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier,
-            dimensions=dimensions, default=default, default_attribute=default_attribute,
-            default_input=default_input, shape=shape, subtype='PERCENTAGE')
+            dimensions=dimensions, default_attribute=default_attribute, default_input=default_input,
+            shape=shape, subtype='PERCENTAGE')
 
     @classmethod
     def Factor(cls,
@@ -1697,7 +1695,6 @@ class Vector(Socket):
         hide_value: bool = False,
         hide_in_modifier: bool = False,
         dimensions: int = 3,
-        default: tuple = (0.0, 0.0, 0.0),
         default_attribute: str = '',
         default_input: Literal['VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT'] = 'VALUE',
         shape: Literal['AUTO', 'SINGLE'] = 'AUTO',
@@ -1718,7 +1715,6 @@ class Vector(Socket):
         - hide_value  (bool = False) : Property hide_value
         - hide_in_modifier  (bool = False) : Property hide_in_modifier
         - dimensions  (int = 3) : Property dimensions
-        - default  (tuple = (0.0, 0.0, 0.0)) : Property default_value
         - default_attribute  (str = '') : Property default_attribute_name
         - default_input  (str = 'VALUE') : Property default_input in ('VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT')
         - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
@@ -1729,8 +1725,8 @@ class Vector(Socket):
         """
         return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel,
             optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier,
-            dimensions=dimensions, default=default, default_attribute=default_attribute,
-            default_input=default_input, shape=shape, subtype='FACTOR')
+            dimensions=dimensions, default_attribute=default_attribute, default_input=default_input,
+            shape=shape, subtype='FACTOR')
 
     @classmethod
     def Translation(cls,
@@ -1744,7 +1740,6 @@ class Vector(Socket):
         hide_value: bool = False,
         hide_in_modifier: bool = False,
         dimensions: int = 3,
-        default: tuple = (0.0, 0.0, 0.0),
         default_attribute: str = '',
         default_input: Literal['VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT'] = 'VALUE',
         shape: Literal['AUTO', 'SINGLE'] = 'AUTO',
@@ -1765,7 +1760,6 @@ class Vector(Socket):
         - hide_value  (bool = False) : Property hide_value
         - hide_in_modifier  (bool = False) : Property hide_in_modifier
         - dimensions  (int = 3) : Property dimensions
-        - default  (tuple = (0.0, 0.0, 0.0)) : Property default_value
         - default_attribute  (str = '') : Property default_attribute_name
         - default_input  (str = 'VALUE') : Property default_input in ('VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT')
         - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
@@ -1776,8 +1770,8 @@ class Vector(Socket):
         """
         return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel,
             optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier,
-            dimensions=dimensions, default=default, default_attribute=default_attribute,
-            default_input=default_input, shape=shape, subtype='TRANSLATION')
+            dimensions=dimensions, default_attribute=default_attribute, default_input=default_input,
+            shape=shape, subtype='TRANSLATION')
 
     @classmethod
     def Direction(cls,
@@ -1791,7 +1785,6 @@ class Vector(Socket):
         hide_value: bool = False,
         hide_in_modifier: bool = False,
         dimensions: int = 3,
-        default: tuple = (0.0, 0.0, 0.0),
         default_attribute: str = '',
         default_input: Literal['VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT'] = 'VALUE',
         shape: Literal['AUTO', 'SINGLE'] = 'AUTO',
@@ -1812,7 +1805,6 @@ class Vector(Socket):
         - hide_value  (bool = False) : Property hide_value
         - hide_in_modifier  (bool = False) : Property hide_in_modifier
         - dimensions  (int = 3) : Property dimensions
-        - default  (tuple = (0.0, 0.0, 0.0)) : Property default_value
         - default_attribute  (str = '') : Property default_attribute_name
         - default_input  (str = 'VALUE') : Property default_input in ('VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT')
         - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
@@ -1823,8 +1815,8 @@ class Vector(Socket):
         """
         return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel,
             optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier,
-            dimensions=dimensions, default=default, default_attribute=default_attribute,
-            default_input=default_input, shape=shape, subtype='DIRECTION')
+            dimensions=dimensions, default_attribute=default_attribute, default_input=default_input,
+            shape=shape, subtype='DIRECTION')
 
     @classmethod
     def Velocity(cls,
@@ -1838,7 +1830,6 @@ class Vector(Socket):
         hide_value: bool = False,
         hide_in_modifier: bool = False,
         dimensions: int = 3,
-        default: tuple = (0.0, 0.0, 0.0),
         default_attribute: str = '',
         default_input: Literal['VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT'] = 'VALUE',
         shape: Literal['AUTO', 'SINGLE'] = 'AUTO',
@@ -1859,7 +1850,6 @@ class Vector(Socket):
         - hide_value  (bool = False) : Property hide_value
         - hide_in_modifier  (bool = False) : Property hide_in_modifier
         - dimensions  (int = 3) : Property dimensions
-        - default  (tuple = (0.0, 0.0, 0.0)) : Property default_value
         - default_attribute  (str = '') : Property default_attribute_name
         - default_input  (str = 'VALUE') : Property default_input in ('VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT')
         - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
@@ -1870,8 +1860,8 @@ class Vector(Socket):
         """
         return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel,
             optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier,
-            dimensions=dimensions, default=default, default_attribute=default_attribute,
-            default_input=default_input, shape=shape, subtype='VELOCITY')
+            dimensions=dimensions, default_attribute=default_attribute, default_input=default_input,
+            shape=shape, subtype='VELOCITY')
 
     @classmethod
     def Acceleration(cls,
@@ -1885,7 +1875,6 @@ class Vector(Socket):
         hide_value: bool = False,
         hide_in_modifier: bool = False,
         dimensions: int = 3,
-        default: tuple = (0.0, 0.0, 0.0),
         default_attribute: str = '',
         default_input: Literal['VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT'] = 'VALUE',
         shape: Literal['AUTO', 'SINGLE'] = 'AUTO',
@@ -1906,7 +1895,6 @@ class Vector(Socket):
         - hide_value  (bool = False) : Property hide_value
         - hide_in_modifier  (bool = False) : Property hide_in_modifier
         - dimensions  (int = 3) : Property dimensions
-        - default  (tuple = (0.0, 0.0, 0.0)) : Property default_value
         - default_attribute  (str = '') : Property default_attribute_name
         - default_input  (str = 'VALUE') : Property default_input in ('VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT')
         - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
@@ -1917,8 +1905,8 @@ class Vector(Socket):
         """
         return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel,
             optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier,
-            dimensions=dimensions, default=default, default_attribute=default_attribute,
-            default_input=default_input, shape=shape, subtype='ACCELERATION')
+            dimensions=dimensions, default_attribute=default_attribute, default_input=default_input,
+            shape=shape, subtype='ACCELERATION')
 
     @classmethod
     def Euler(cls,
@@ -1932,7 +1920,6 @@ class Vector(Socket):
         hide_value: bool = False,
         hide_in_modifier: bool = False,
         dimensions: int = 3,
-        default: tuple = (0.0, 0.0, 0.0),
         default_attribute: str = '',
         default_input: Literal['VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT'] = 'VALUE',
         shape: Literal['AUTO', 'SINGLE'] = 'AUTO',
@@ -1953,7 +1940,6 @@ class Vector(Socket):
         - hide_value  (bool = False) : Property hide_value
         - hide_in_modifier  (bool = False) : Property hide_in_modifier
         - dimensions  (int = 3) : Property dimensions
-        - default  (tuple = (0.0, 0.0, 0.0)) : Property default_value
         - default_attribute  (str = '') : Property default_attribute_name
         - default_input  (str = 'VALUE') : Property default_input in ('VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT')
         - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
@@ -1964,8 +1950,8 @@ class Vector(Socket):
         """
         return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel,
             optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier,
-            dimensions=dimensions, default=default, default_attribute=default_attribute,
-            default_input=default_input, shape=shape, subtype='EULER')
+            dimensions=dimensions, default_attribute=default_attribute, default_input=default_input,
+            shape=shape, subtype='EULER')
 
     @classmethod
     def Xyz(cls,
@@ -1979,7 +1965,6 @@ class Vector(Socket):
         hide_value: bool = False,
         hide_in_modifier: bool = False,
         dimensions: int = 3,
-        default: tuple = (0.0, 0.0, 0.0),
         default_attribute: str = '',
         default_input: Literal['VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT'] = 'VALUE',
         shape: Literal['AUTO', 'SINGLE'] = 'AUTO',
@@ -2000,7 +1985,6 @@ class Vector(Socket):
         - hide_value  (bool = False) : Property hide_value
         - hide_in_modifier  (bool = False) : Property hide_in_modifier
         - dimensions  (int = 3) : Property dimensions
-        - default  (tuple = (0.0, 0.0, 0.0)) : Property default_value
         - default_attribute  (str = '') : Property default_attribute_name
         - default_input  (str = 'VALUE') : Property default_input in ('VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT')
         - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
@@ -2011,6 +1995,6 @@ class Vector(Socket):
         """
         return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel,
             optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier,
-            dimensions=dimensions, default=default, default_attribute=default_attribute,
-            default_input=default_input, shape=shape, subtype='XYZ')
+            dimensions=dimensions, default_attribute=default_attribute, default_input=default_input,
+            shape=shape, subtype='XYZ')
 

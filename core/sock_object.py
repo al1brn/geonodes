@@ -61,7 +61,6 @@ class Object(generated.Object):
         optional_label: bool = False,
         hide_value: bool = False,
         hide_in_modifier: bool = False,
-        default: object = None,
         ):
         """ Class Object data socket
 
@@ -74,7 +73,6 @@ class Object(generated.Object):
         - optional_label  (bool = False) : Property optional_label
         - hide_value  (bool = False) : Property hide_value
         - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - default  (object = None) : Property default_value
         """
         bsock = utils.get_bsocket(value)
         if bsock is None:
@@ -85,7 +83,7 @@ class Object(generated.Object):
             else:
                 bsock = self._create_input_socket(value=value, name=name, tip=tip,
             panel=panel, optional_label=optional_label, hide_value=hide_value,
-            hide_in_modifier=hide_in_modifier, default=default)
+            hide_in_modifier=hide_in_modifier)
 
         super().__init__(bsock)
 

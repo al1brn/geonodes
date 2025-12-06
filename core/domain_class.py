@@ -44,9 +44,6 @@ __blender_version__ = "4.3.0"
 
 from inspect import Arguments
 import bpy
-#from bpy.types import Property, PythonConstraint, SmoothModifier
-
-from .proplocker import PropLocker
 
 from .scripterror import NodeError
 from . import constants
@@ -54,9 +51,12 @@ from . import utils
 from .treeclass import Tree, Layout
 from .nodeclass import Node
 from .socket_class import NodeCache, Socket
-from .geometry_class import GeoBase, Geometry
+from .geom import Geom
+from .geometry_class import Geometry
 
-class Domain(GeoBase, NodeCache, PropLocker):
+class Domain(Geom, NodeCache):
+
+    __slots__ = NodeCache.__slots__ + ['_geo', '_selection']
 
     DOMAIN_NAME = None
 
@@ -109,59 +109,83 @@ class Domain(GeoBase, NodeCache, PropLocker):
         ----------
         - _geo (Geometry) : the geometry the domain belongs to
         """
-        self._geo  = geometry
+
+        # ---------------------------------------------------------------------------
+        # Geom interface initialization
+        # ---------------------------------------------------------------------------
+
+        self._geo = geometry
+        self._selection = None
+
+        # ---------------------------------------------------------------------------
+        # Node cache interface initialization
+        # ---------------------------------------------------------------------------
+
         self._cache_reset()
 
-        self._lock()
+    # ====================================================================================================
+    # str
+    # ====================================================================================================
 
     def __str__(self):
         return f"<Domain {self.DOMAIN_NAME} of {self._geo}>"
 
-    # ----- Jump
+    # ====================================================================================================
+    # Jump
+    # ====================================================================================================
 
     def _jump(self, socket, reset=True):
         return self._geo._jump(socket, reset=reset)
+    
+    # ====================================================================================================
+    # To geometry
+    # ====================================================================================================
 
     @property
     def _domain_to_geometry(self):
         return self._geo
-
-
-    # ----- Overrides selection
+    
+    # ====================================================================================================
+    # Overrides Geom selection
     # Selection can be done either on the geometry or on the domain (or both but strange !)
+    # ====================================================================================================
 
-    @property
-    def _sel(self):
-        sel = super()._sel
-        geo_sel = self._geo._sel
-        if sel is None:
+    def get_selection(self):
+        """ Get the selection from Gometry and/or from Domain
+        """
+        dom_sel = super().get_selection()        
+        geo_sel = self._geo.get_selection()
+
+        if dom_sel is None:
             return geo_sel
         elif geo_sel is None:
-            return sel
+            return dom_sel
         else:
-            return sel & geo_sel
+            return dom_sel & geo_sel
 
     # ====================================================================================================
     # Named attributes
+    # ====================================================================================================
 
     def __getattr__(self, name):
 
         attr_name = utils.get_attr_name(name)
         if attr_name is None:
-            raise NodeError(f"Domain '{type(self).__name__}' doesn't have attribute named '{name}'", keyword=name)
-            #raise AttributeError(f"Domain '{type(self).__name__}' doesn't have attribute named '{name}'")
+            #raise NodeError(f"Domain '{type(self).__name__}' doesn't have attribute named '{name}'", keyword=name)
+            raise AttributeError(f"Domain '{type(self).__name__}' doesn't have attribute named '{name}'")
 
         return self._geo._tree.get_named_attribute(prop_name=name)
 
     def __setattr__(self, name, value):
         attr_name = utils.get_attr_name(name)
         if attr_name is None:
-            return super().__setattr__(name, value)
+            super().__setattr__(name, value)
 
         self.store_named_attribute(attr_name, value)
 
     # ====================================================================================================
     # Sample index
+    # ====================================================================================================
 
     def __call__(self, value, index=None):
 
@@ -203,13 +227,15 @@ class Domain(GeoBase, NodeCache, PropLocker):
 
         from geonodes import ForEachElement
 
-        return ForEachElement(geometry=self._geo, selection=self._sel, domain=self.DOMAIN_NAME, sockets=sockets, **kwargs)
+        return ForEachElement(geometry=self._geo, selection=self.get_selection(), domain=self.DOMAIN_NAME, sockets=sockets, **kwargs)
 
     # ====================================================================================================
     # Methods
+    # ====================================================================================================
 
     # ----------------------------------------------------------------------------------------------------
     # Capture attribute
+    # ----------------------------------------------------------------------------------------------------
 
     def capture_attribute(self, attribute=None, **attributes):
         """ > Node <&Node Capture Attribute>
@@ -263,6 +289,7 @@ class Domain(GeoBase, NodeCache, PropLocker):
 
     # ----------------------------------------------------------------------------------------------------
     # Capture a single attribute
+    # ----------------------------------------------------------------------------------------------------
 
     def capture(self, attribute=None, **attributes):
         """ > Node <&Node Capture Attribute>

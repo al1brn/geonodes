@@ -45,6 +45,8 @@ from .scripterror import NodeError
 class PropLocker:
 
     def _lock(self):
+        return
+    
         self._locked = False
 
         props = set(dir(self))
@@ -56,9 +58,11 @@ class PropLocker:
         self._locked = True
 
     def _unlock(self):
+        return
         self._locked = False
 
     def __setattr__(self, name, value):
+        return
         if name in ['_locked', '_valid_props'] or ('_locked' not in self.__dict__):
             super().__setattr__(name, value)
             return

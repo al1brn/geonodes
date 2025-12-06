@@ -1,4 +1,4 @@
-# Generated 2025-12-04 08:23:30
+# Generated 2025-12-06 09:59:03
 
 from __future__ import annotations
 from .. socket_class import Socket
@@ -85,7 +85,7 @@ class Cloud(Socket):
         -------
         - Instances
         """
-        node = Node('Instance on Points', {'Points': self, 'Selection': self._sel, 'Instance': instance, 'Pick Instance': pick_instance, 'Instance Index': instance_index, 'Rotation': rotation, 'Scale': scale})
+        node = Node('Instance on Points', {'Points': self, 'Selection': self.get_selection(), 'Instance': instance, 'Pick Instance': pick_instance, 'Instance Index': instance_index, 'Rotation': rotation, 'Scale': scale})
         return node._out
 
     def interpolate_curves(self,
@@ -165,7 +165,7 @@ class Cloud(Socket):
         -------
         - Mesh
         """
-        node = Node('Points to Vertices', {'Points': self, 'Selection': self._sel})
+        node = Node('Points to Vertices', {'Points': self, 'Selection': self.get_selection()})
         return node._out
 
     def to_volume(self,
@@ -239,7 +239,7 @@ class Cloud(Socket):
         -------
         - Cloud
         """
-        node = Node('Set Point Radius', {'Points': self, 'Selection': self._sel, 'Radius': radius})
+        node = Node('Set Point Radius', {'Points': self, 'Selection': self.get_selection(), 'Radius': radius})
         self._jump(node._out)
         return self._domain_to_geometry
 

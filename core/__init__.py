@@ -12,7 +12,7 @@ d270   = np.pi*1.5
 d360   = tau
 e      = np.e
 
-PRODUCTION = True
+PRODUCTION = False
 
 if PRODUCTION:
     from .generated import nd

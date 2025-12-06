@@ -65,7 +65,7 @@ from . import utils
 from . import blender
 from .utils import Break
 from .signature import Signature
-from .treeinterface import TreeInterface
+from .treeinterface import ItemPath, TreeInterface
 from .inoutcontext import InOutContext
 
 # ====================================================================================================
@@ -78,69 +78,29 @@ class Panel:
 
         All group input and output sockets an panels will be created within the current panel
 
-        ``` python
-        with GeoNodes("Panels"):
-            
-            # Create a top level socket
-            a = Geometry(3.14, name="A No Panel")
-            
-            # Create in a panel using panel argument
-            b = Integer(1, name="B in Panel", min=0, max=100, panel="Panel")
-            
-            # Create in a panel using Panel context
-            with Panel("Panel"):
-                c = Color(None, "C in Panel")
-                d = Vector((1, 2, 3), "D in Panel > Sub Panel", panel="Sub Panel")
-                
-            # Chaining panel names
-            with Panel("Panel > Sub Panel"):
-                e = Matrix(name="E in Panel > Sub Panel")
-            
-            f = Rotation(name="F in Panel > Sub Panel", panel="Panel > Sub Panel")
-            
-            # Creating homonyms
-            with Panel("Panel_1"):
-                g = Image(name="G in second Panel")
-                
-            with Panel("Panel_1"):
-                with Panel("Sub Panel"):
-                    h = Bundle(name="H in second Panel > Sub Panel")
-        ```
-
         Arguments
         ---------
         - name :panel title
         - tip : panel description
         - default_closed : closed by default
         """
+
         self.tree   = Tree.current_tree()
-        self.name   = name
-        self.path   = name
+        self.path   = self.tree.get_panel(name)
         self.bpanel = None
 
         if self.tree._interface is not None:
-            parent = self.tree.get_panel()
-            bparent = None if parent is None else parent.bpanel
+            self.bpanel = self.tree._interface.get_panel(self.path, create=True)
+            self.bpanel.description = tip
 
-            self.bpanel = self.tree._interface.get_panel(name=name, parent=bparent)
-            if self.bpanel is None:
-                self.bpanel = self.tree._interface.create_panel(name=name, tip=tip, parent=bparent)
+    def __str__(self):
+        return self.path.path
 
     def push(self):
-        parent = self.tree._panels[-1] if len(self.tree._panels) else None
-        self.tree._panels.append(self)
-
-        if self.tree._interface is None:
-            if parent is None:
-                self.path = self.name
-            else:
-                self.path = str(parent) + " > " + self.name
-        else:
-            parents = self.tree._interface.get_parents(self.bpanel)
-            self.path = TreeInterface.parents_to_list(parents)
+        self.tree.push_panel(self.path)
 
     def pop(self):
-        self.tree._panels.pop()
+        self.tree.pop_panel()
 
     def __enter__(self):
         self.push()
@@ -149,11 +109,6 @@ class Panel:
     def __exit__(self, type, exc_value, traceback):
         self.pop()
 
-    def __str__(self):
-        return self.path
-    
-
-    
     # ====================================================================================================
     # Panel test
     # ====================================================================================================
@@ -166,29 +121,34 @@ class Panel:
         with GeoNodes("Panel Class Test"):
             
             # Create a top level socket
-            a = Float(1, name="A No Panel")
+            a = Float(1, name="A")
             
             # Create in a panel using panel argument
-            a += Float(1, name="B in Panel", min=0, max=100, panel="Panel")
+            a += Float(2, name="B Panel", min=0, max=100, panel="Panel")
             
             # Create in a panel using Panel context
             with Panel("Panel"):
-                a += Float(1, "C in Panel")
-                a += Float(1, "D in Panel > Sub Panel", panel="Sub Panel")
+                a += Float(3, "C Panel")
+                a += Float(4, "D Sub Panel", panel="Sub Panel")
                 
             # Chaining panel names
             with Panel("Panel > Sub Panel"):
-                a += Float(1, name="E in Panel > Sub Panel")
+                a += Float(5, name="E Sub Panel")
+
+            with Panel("Panel"):
+                with Panel("Other"):
+                    a += Float(6, name="F Other")
+                    a += Float(7, name="G Last", panel="Last")
             
-            a += Float(1, name="F in Panel > Sub Panel", panel="Panel > Sub Panel")
+            a += Float(8, name="H Last", panel="Panel>Other>Last")
             
             # Creating homonyms
             with Panel("Panel_1"):
-                a += Float(1, name="G in second Panel")
+                a += Float(9, name="I 2nd Panel")
                 
             with Panel("Panel_1"):
                 with Panel("Sub Panel"):
-                    a += Float(1, name="H in second Panel > Sub Panel")
+                    a += Float(10, name="J 2nd Sub Panel")
 
             # Use the inputs
             Mesh.IcoSphere(radius=a/8).out()
@@ -225,16 +185,17 @@ class Layout:
 
         self.tree  = Tree.current_tree()
         self.frame = Node('Frame')
-        self.frame._label = label
-        self.frame._color = self.tree._get_color(color)
+        self.title = label
+        self.frame._bnode.color = self.tree._get_color(color)
 
     @property
     def title(self):
-        return self.frame._label
+        return self.frame._bnode.label
     
     @title.setter
     def title(self, value):
-        self.frame._label = value
+        if value is not None:
+            self.frame._bnode.label = value
 
     def push(self):
         self.tree._layouts.append(self.frame._bnode)
@@ -313,8 +274,8 @@ class Tree(InOutContext):
         # Stacks
         # ---------------------------------------------------------------------------
 
-        self._panels        = []
-        self._capture_inout = []
+        self._panels        = [ItemPath(None)]
+        #self._capture_inout = []
         self._layouts       = []
 
         # Input / output socket creation are performed by node with dynamic
@@ -324,8 +285,6 @@ class Tree(InOutContext):
         
         self._output_stack  = []
         self._input_stack   = []
-
-
 
         # Exit error
         self._exit_error = False
@@ -653,27 +612,15 @@ class Tree(InOutContext):
     # Panel
     # ====================================================================================================
 
-    def get_panel(self, sub_name: str = ""):
-        if sub_name == "":            
-            return self._panels[-1] if len(self._panels) else None
-        else:
-            # New panel creation will take the stack into account
-            return Panel(sub_name)
+    def get_panel(self, sub_panel: str = ""):
+        return self._panels[-1] + ItemPath.to_item_path(sub_panel)
     
-    def get_panel_name(self, sub_name: str = ""):
-        panel = self.get_panel(sub_name)
-        return "" if panel is None else panel.name
-    
-    def get_panel_path(self, sub_name: str = ""):
-        sep = " " if self._interface is None else " > "
-        a = [p.name for p in self._panels]
-        if sub_name is not None:
-            a.append(self.get_panel(sub_name).name)
-        return sep.join(a)
-    
-    def get_bpanel(self, sub_name: str = ""):
-        panel = self.get_panel(sub_name)
-        return None if panel is None else panel.bpanel
+    def push_panel(self, new_panel: str):
+        self._panels.append(ItemPath.to_item_path(new_panel))
+
+    def pop_panel(self):
+        self._panels.pop()
+        assert len(self._panels) >= 1, f"Error in pushing / poping tree panels."
     
     # ====================================================================================================
     # Nodes
@@ -751,45 +698,26 @@ class Tree(InOutContext):
         -------
             Socket
         """
-        if False:
-            if len(self._capture_inout):
-                socket = self._capture_inout[-1].create_input_socket(bl_idname, name, value=value, panel=panel, **props)
-                if socket is not None:
-                    return socket
-                
-        if True:
-            input_node = self.get_input_node()
-            return input_node.create_socket('OUTPUT', bl_idname, name, panel=panel, **props)
+        input_node = self.get_input_node()
+        socket = input_node.create_socket('OUTPUT', bl_idname, name, panel=panel, **props)
 
-                
+        return socket
 
+        if socket is None or value is None:
+            return socket
+
+        bsocket = utils.get_bsocket(value)
+        if bsocket is None and hasattr(socket._bsocket, 'default_value'):
+            socket._bsocket = default_value = value
+
+        return socket
             
-        # ---------------------------------------------------------------------------
-        # Value
-        # ---------------------------------------------------------------------------
-
-        value = utils.python_value_for_socket(value, bl_idname)
-
-        # ---------------------------------------------------------------------------
-        # Get or create the socket within the parent panel
-        # ---------------------------------------------------------------------------
-
-        bpanel = self.get_bpanel(panel)
-        i_socket = self._interface.get_socket('INPUT', name, parent=bpanel, sub_panels=False)
-
-        if i_socket is None:
-            all_props = {**props}
-            if 'default_value' not in all_props.keys():
-                all_props['default_value'] = value
-            i_socket = self._interface.create_socket('INPUT', name, bl_idname, parent=bpanel, **all_props)
-
-        return self.input_node.socket_by_identifier('OUTPUT', i_socket.identifier)
 
     # ----------------------------------------------------------------------------------------------------
     # Create a new output socket
     # ----------------------------------------------------------------------------------------------------
 
-    def create_output_socket(self, socket, name=None, panel="", **props):
+    def create_output_socket_OLD(self, socket, name=None, panel="", **props):
         """ Create a new output socket.
 
         This is an **output socket** of the Tree, hence an input socket of the <&Group Output> node.
@@ -845,7 +773,7 @@ class Tree(InOutContext):
     # Create a new input socket from an existing node input socket
     # ----------------------------------------------------------------------------------------------------
 
-    def create_input_from_socket(self, input_socket, name=None, panel="", **props):
+    def create_input_from_socket_OLD(self, input_socket, name=None, panel="", **props):
         """ Create a new group input socket from an existing input socket.
 
         Arguments

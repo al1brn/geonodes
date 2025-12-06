@@ -69,7 +69,6 @@ class Vector(generated.Vector):
         hide_value: bool = False,
         hide_in_modifier: bool = False,
         dimensions: int = 3,
-        default: tuple = (0.0, 0.0, 0.0),
         default_attribute: str = '',
         default_input: Literal['VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT'] = 'VALUE',
         shape: Literal['AUTO', 'SINGLE'] = 'AUTO',
@@ -105,7 +104,6 @@ class Vector(generated.Vector):
         - hide_value  (bool = False) : Property hide_value
         - hide_in_modifier  (bool = False) : Property hide_in_modifier
         - dimensions  (int = 3) : Property dimensions
-        - default  (tuple = (0.0, 0.0, 0.0)) : Property default_value
         - default_attribute  (str = '') : Property default_attribute_name
         - default_input  (str = 'VALUE') : Property default_input in ('VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT')
         - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
@@ -127,7 +125,7 @@ class Vector(generated.Vector):
                 def_vec = utils.get_dim_vector(value, dimensions)
                 bsock = self._create_input_socket(value=def_vec, name=name, min=min,
                     max=max, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value,
-                    hide_in_modifier=hide_in_modifier, dimensions=dimensions, default=default,
+                    hide_in_modifier=hide_in_modifier, dimensions=dimensions, 
                     default_attribute=default_attribute, default_input=default_input, shape=shape, subtype=subtype)
 
         super().__init__(bsock)

@@ -1,4 +1,4 @@
-# Generated 2025-12-04 08:23:30
+# Generated 2025-12-06 09:59:03
 
 from __future__ import annotations
 from .. socket_class import Socket
@@ -2352,7 +2352,6 @@ class Float(Socket):
         optional_label: bool = False,
         hide_value: bool = False,
         hide_in_modifier: bool = False,
-        default: float = 0.0,
         default_attribute: str = '',
         shape: Literal['AUTO', 'SINGLE'] = 'AUTO',
         subtype: str = 'NONE',
@@ -2372,7 +2371,6 @@ class Float(Socket):
         - optional_label  (bool = False) : Property optional_label
         - hide_value  (bool = False) : Property hide_value
         - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - default  (float = 0.0) : Property default_value
         - default_attribute  (str = '') : Property default_attribute_name
         - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
         - subtype (str = 'NONE') : Socket sub type in ('NONE', 'PERCENTAGE', 'FACTOR', 'ANGLE', 'TIME', 'TIME_ABSOLUTE', 'DISTANCE', 'WAVELENGTH', 'COLOR_TEMPERATURE', 'FREQUENCY')
@@ -2383,10 +2381,12 @@ class Float(Socket):
         """
         from ..treeclass import Tree
 
-        return Tree.current_tree().create_input_socket('NodeSocketFloat', value=value, name=name, min=min,
-            max=max, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value,
-            hide_in_modifier=hide_in_modifier, default=default, default_attribute=default_attribute,
-            shape=shape, subtype=subtype)
+        defval = utils.python_value_for_socket(value, cls.SOCKET_TYPE)
+
+        return Tree.current_tree().create_input_socket('NodeSocketFloat', default_value = defval, name=name,
+            min=min, max=max, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value,
+            hide_in_modifier=hide_in_modifier, default_attribute=default_attribute, shape=shape,
+            subtype=subtype)
 
     @classmethod
     def Percentage(cls,
@@ -2399,7 +2399,6 @@ class Float(Socket):
         optional_label: bool = False,
         hide_value: bool = False,
         hide_in_modifier: bool = False,
-        default: float = 0.0,
         default_attribute: str = '',
         shape: Literal['AUTO', 'SINGLE'] = 'AUTO',
          ):
@@ -2418,7 +2417,6 @@ class Float(Socket):
         - optional_label  (bool = False) : Property optional_label
         - hide_value  (bool = False) : Property hide_value
         - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - default  (float = 0.0) : Property default_value
         - default_attribute  (str = '') : Property default_attribute_name
         - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
 
@@ -2428,7 +2426,7 @@ class Float(Socket):
         """
         return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel,
             optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier,
-            default=default, default_attribute=default_attribute, shape=shape, subtype='PERCENTAGE')
+            default_attribute=default_attribute, shape=shape, subtype='PERCENTAGE')
 
     @classmethod
     def Factor(cls,
@@ -2441,7 +2439,6 @@ class Float(Socket):
         optional_label: bool = False,
         hide_value: bool = False,
         hide_in_modifier: bool = False,
-        default: float = 0.0,
         default_attribute: str = '',
         shape: Literal['AUTO', 'SINGLE'] = 'AUTO',
          ):
@@ -2460,7 +2457,6 @@ class Float(Socket):
         - optional_label  (bool = False) : Property optional_label
         - hide_value  (bool = False) : Property hide_value
         - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - default  (float = 0.0) : Property default_value
         - default_attribute  (str = '') : Property default_attribute_name
         - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
 
@@ -2470,7 +2466,7 @@ class Float(Socket):
         """
         return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel,
             optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier,
-            default=default, default_attribute=default_attribute, shape=shape, subtype='FACTOR')
+            default_attribute=default_attribute, shape=shape, subtype='FACTOR')
 
     @classmethod
     def Angle(cls,
@@ -2483,7 +2479,6 @@ class Float(Socket):
         optional_label: bool = False,
         hide_value: bool = False,
         hide_in_modifier: bool = False,
-        default: float = 0.0,
         default_attribute: str = '',
         shape: Literal['AUTO', 'SINGLE'] = 'AUTO',
          ):
@@ -2502,7 +2497,6 @@ class Float(Socket):
         - optional_label  (bool = False) : Property optional_label
         - hide_value  (bool = False) : Property hide_value
         - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - default  (float = 0.0) : Property default_value
         - default_attribute  (str = '') : Property default_attribute_name
         - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
 
@@ -2512,7 +2506,7 @@ class Float(Socket):
         """
         return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel,
             optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier,
-            default=default, default_attribute=default_attribute, shape=shape, subtype='ANGLE')
+            default_attribute=default_attribute, shape=shape, subtype='ANGLE')
 
     @classmethod
     def Time(cls,
@@ -2525,7 +2519,6 @@ class Float(Socket):
         optional_label: bool = False,
         hide_value: bool = False,
         hide_in_modifier: bool = False,
-        default: float = 0.0,
         default_attribute: str = '',
         shape: Literal['AUTO', 'SINGLE'] = 'AUTO',
          ):
@@ -2544,7 +2537,6 @@ class Float(Socket):
         - optional_label  (bool = False) : Property optional_label
         - hide_value  (bool = False) : Property hide_value
         - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - default  (float = 0.0) : Property default_value
         - default_attribute  (str = '') : Property default_attribute_name
         - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
 
@@ -2554,7 +2546,7 @@ class Float(Socket):
         """
         return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel,
             optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier,
-            default=default, default_attribute=default_attribute, shape=shape, subtype='TIME')
+            default_attribute=default_attribute, shape=shape, subtype='TIME')
 
     @classmethod
     def TimeAbsolute(cls,
@@ -2567,7 +2559,6 @@ class Float(Socket):
         optional_label: bool = False,
         hide_value: bool = False,
         hide_in_modifier: bool = False,
-        default: float = 0.0,
         default_attribute: str = '',
         shape: Literal['AUTO', 'SINGLE'] = 'AUTO',
          ):
@@ -2586,7 +2577,6 @@ class Float(Socket):
         - optional_label  (bool = False) : Property optional_label
         - hide_value  (bool = False) : Property hide_value
         - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - default  (float = 0.0) : Property default_value
         - default_attribute  (str = '') : Property default_attribute_name
         - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
 
@@ -2596,7 +2586,7 @@ class Float(Socket):
         """
         return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel,
             optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier,
-            default=default, default_attribute=default_attribute, shape=shape, subtype='TIME_ABSOLUTE')
+            default_attribute=default_attribute, shape=shape, subtype='TIME_ABSOLUTE')
 
     @classmethod
     def Distance(cls,
@@ -2609,7 +2599,6 @@ class Float(Socket):
         optional_label: bool = False,
         hide_value: bool = False,
         hide_in_modifier: bool = False,
-        default: float = 0.0,
         default_attribute: str = '',
         shape: Literal['AUTO', 'SINGLE'] = 'AUTO',
          ):
@@ -2628,7 +2617,6 @@ class Float(Socket):
         - optional_label  (bool = False) : Property optional_label
         - hide_value  (bool = False) : Property hide_value
         - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - default  (float = 0.0) : Property default_value
         - default_attribute  (str = '') : Property default_attribute_name
         - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
 
@@ -2638,7 +2626,7 @@ class Float(Socket):
         """
         return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel,
             optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier,
-            default=default, default_attribute=default_attribute, shape=shape, subtype='DISTANCE')
+            default_attribute=default_attribute, shape=shape, subtype='DISTANCE')
 
     @classmethod
     def Wavelength(cls,
@@ -2651,7 +2639,6 @@ class Float(Socket):
         optional_label: bool = False,
         hide_value: bool = False,
         hide_in_modifier: bool = False,
-        default: float = 0.0,
         default_attribute: str = '',
         shape: Literal['AUTO', 'SINGLE'] = 'AUTO',
          ):
@@ -2670,7 +2657,6 @@ class Float(Socket):
         - optional_label  (bool = False) : Property optional_label
         - hide_value  (bool = False) : Property hide_value
         - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - default  (float = 0.0) : Property default_value
         - default_attribute  (str = '') : Property default_attribute_name
         - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
 
@@ -2680,7 +2666,7 @@ class Float(Socket):
         """
         return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel,
             optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier,
-            default=default, default_attribute=default_attribute, shape=shape, subtype='WAVELENGTH')
+            default_attribute=default_attribute, shape=shape, subtype='WAVELENGTH')
 
     @classmethod
     def ColorTemperature(cls,
@@ -2693,7 +2679,6 @@ class Float(Socket):
         optional_label: bool = False,
         hide_value: bool = False,
         hide_in_modifier: bool = False,
-        default: float = 0.0,
         default_attribute: str = '',
         shape: Literal['AUTO', 'SINGLE'] = 'AUTO',
          ):
@@ -2712,7 +2697,6 @@ class Float(Socket):
         - optional_label  (bool = False) : Property optional_label
         - hide_value  (bool = False) : Property hide_value
         - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - default  (float = 0.0) : Property default_value
         - default_attribute  (str = '') : Property default_attribute_name
         - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
 
@@ -2722,7 +2706,7 @@ class Float(Socket):
         """
         return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel,
             optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier,
-            default=default, default_attribute=default_attribute, shape=shape, subtype='COLOR_TEMPERATURE')
+            default_attribute=default_attribute, shape=shape, subtype='COLOR_TEMPERATURE')
 
     @classmethod
     def Frequency(cls,
@@ -2735,7 +2719,6 @@ class Float(Socket):
         optional_label: bool = False,
         hide_value: bool = False,
         hide_in_modifier: bool = False,
-        default: float = 0.0,
         default_attribute: str = '',
         shape: Literal['AUTO', 'SINGLE'] = 'AUTO',
          ):
@@ -2754,7 +2737,6 @@ class Float(Socket):
         - optional_label  (bool = False) : Property optional_label
         - hide_value  (bool = False) : Property hide_value
         - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - default  (float = 0.0) : Property default_value
         - default_attribute  (str = '') : Property default_attribute_name
         - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
 
@@ -2764,5 +2746,5 @@ class Float(Socket):
         """
         return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel,
             optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier,
-            default=default, default_attribute=default_attribute, shape=shape, subtype='FREQUENCY')
+            default_attribute=default_attribute, shape=shape, subtype='FREQUENCY')
 

@@ -1,4 +1,4 @@
-# Generated 2025-12-06 09:50:17
+# Generated 2025-12-06 09:59:03
 
 from __future__ import annotations
 from .. socket_class import Socket
@@ -25,7 +25,7 @@ if TYPE_CHECKING:
     class String: ...
 
 
-class Instance(Socket):
+class Point(Socket):
     """"
     $DOC SET hidden
     """
@@ -36,7 +36,7 @@ class Instance(Socket):
         Information
         -----------
         - Parameter 'data_type' : depending on 'value' type
-        - Parameter 'domain' : 'INSTANCE'
+        - Parameter 'domain' : 'POINT'
 
         Arguments
         ---------
@@ -48,7 +48,7 @@ class Instance(Socket):
         - Float [trailing_ (Float), total_ (Float)]
         """
         data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeAccumulateField', value)
-        node = Node('Accumulate Field', {'Value': value, 'Group Index': group_id}, data_type=data_type, domain='INSTANCE')
+        node = Node('Accumulate Field', {'Value': value, 'Group Index': group_id}, data_type=data_type, domain='POINT')
         return node._out
 
     def attribute_statistic(self, attribute: Float | Vector = None):
@@ -59,7 +59,7 @@ class Instance(Socket):
         - Socket 'Geometry' : self
         - Socket 'Selection' : self[selection]
         - Parameter 'data_type' : depending on 'attribute' type
-        - Parameter 'domain' : 'INSTANCE'
+        - Parameter 'domain' : 'POINT'
 
         Arguments
         ---------
@@ -70,7 +70,7 @@ class Instance(Socket):
         - node [mean (Float), median (Float), sum (Float), min (Float), max (Float), range (Float), standard_deviation (Float), variance (Float)]
         """
         data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeAttributeStatistic', attribute)
-        node = Node('Attribute Statistic', {'Geometry': self, 'Selection': self.get_selection(), 'Attribute': attribute}, data_type=data_type, domain='INSTANCE')
+        node = Node('Attribute Statistic', {'Geometry': self, 'Selection': self.get_selection(), 'Attribute': attribute}, data_type=data_type, domain='POINT')
         return node
 
     @classmethod
@@ -160,14 +160,14 @@ class Instance(Socket):
         -----------
         - Socket 'Geometry' : self
         - Socket 'Selection' : self[selection]
-        - Parameter 'domain' : 'INSTANCE'
+        - Parameter 'domain' : 'POINT'
         - Parameter 'mode' : 'ALL'
 
         Returns
         -------
         - Geometry
         """
-        node = Node('Delete Geometry', {'Geometry': self, 'Selection': self.get_selection()}, domain='INSTANCE', mode='ALL')
+        node = Node('Delete Geometry', {'Geometry': self, 'Selection': self.get_selection()}, domain='POINT', mode='ALL')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -180,14 +180,14 @@ class Instance(Socket):
         -----------
         - Socket 'Geometry' : self
         - Socket 'Selection' : self[selection]
-        - Parameter 'domain' : 'INSTANCE'
+        - Parameter 'domain' : 'POINT'
         - Parameter 'mode' : 'EDGE_FACE'
 
         Returns
         -------
         - Geometry
         """
-        node = Node('Delete Geometry', {'Geometry': self, 'Selection': self.get_selection()}, domain='INSTANCE', mode='EDGE_FACE')
+        node = Node('Delete Geometry', {'Geometry': self, 'Selection': self.get_selection()}, domain='POINT', mode='EDGE_FACE')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -200,14 +200,14 @@ class Instance(Socket):
         -----------
         - Socket 'Geometry' : self
         - Socket 'Selection' : self[selection]
-        - Parameter 'domain' : 'INSTANCE'
+        - Parameter 'domain' : 'POINT'
         - Parameter 'mode' : 'ONLY_FACE'
 
         Returns
         -------
         - Geometry
         """
-        node = Node('Delete Geometry', {'Geometry': self, 'Selection': self.get_selection()}, domain='INSTANCE', mode='ONLY_FACE')
+        node = Node('Delete Geometry', {'Geometry': self, 'Selection': self.get_selection()}, domain='POINT', mode='ONLY_FACE')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -220,7 +220,7 @@ class Instance(Socket):
         -----------
         - Socket 'Geometry' : self
         - Socket 'Selection' : self[selection]
-        - Parameter 'domain' : 'INSTANCE'
+        - Parameter 'domain' : 'POINT'
 
         Arguments
         ---------
@@ -231,7 +231,7 @@ class Instance(Socket):
         - Geometry
         """
         utils.check_enum_arg('Delete Geometry', 'mode', mode, 'delete_geometry', ('ALL', 'EDGE_FACE', 'ONLY_FACE'))
-        node = Node('Delete Geometry', {'Geometry': self, 'Selection': self.get_selection()}, domain='INSTANCE', mode=mode)
+        node = Node('Delete Geometry', {'Geometry': self, 'Selection': self.get_selection()}, domain='POINT', mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -244,14 +244,14 @@ class Instance(Socket):
         -----------
         - Socket 'Geometry' : self
         - Socket 'Selection' : self[selection]
-        - Parameter 'domain' : 'INSTANCE'
+        - Parameter 'domain' : 'POINT'
         - Parameter 'mode' : 'ALL'
 
         Returns
         -------
         - Geometry
         """
-        node = Node('Delete Geometry', {'Geometry': self, 'Selection': self.get_selection()}, domain='INSTANCE', mode='ALL')
+        node = Node('Delete Geometry', {'Geometry': self, 'Selection': self.get_selection()}, domain='POINT', mode='ALL')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -264,14 +264,14 @@ class Instance(Socket):
         -----------
         - Socket 'Geometry' : self
         - Socket 'Selection' : self[selection]
-        - Parameter 'domain' : 'INSTANCE'
+        - Parameter 'domain' : 'POINT'
         - Parameter 'mode' : 'EDGE_FACE'
 
         Returns
         -------
         - Geometry
         """
-        node = Node('Delete Geometry', {'Geometry': self, 'Selection': self.get_selection()}, domain='INSTANCE', mode='EDGE_FACE')
+        node = Node('Delete Geometry', {'Geometry': self, 'Selection': self.get_selection()}, domain='POINT', mode='EDGE_FACE')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -284,14 +284,14 @@ class Instance(Socket):
         -----------
         - Socket 'Geometry' : self
         - Socket 'Selection' : self[selection]
-        - Parameter 'domain' : 'INSTANCE'
+        - Parameter 'domain' : 'POINT'
         - Parameter 'mode' : 'ONLY_FACE'
 
         Returns
         -------
         - Geometry
         """
-        node = Node('Delete Geometry', {'Geometry': self, 'Selection': self.get_selection()}, domain='INSTANCE', mode='ONLY_FACE')
+        node = Node('Delete Geometry', {'Geometry': self, 'Selection': self.get_selection()}, domain='POINT', mode='ONLY_FACE')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -304,7 +304,7 @@ class Instance(Socket):
         -----------
         - Socket 'Geometry' : self
         - Socket 'Selection' : self[selection]
-        - Parameter 'domain' : 'INSTANCE'
+        - Parameter 'domain' : 'POINT'
 
         Arguments
         ---------
@@ -315,7 +315,7 @@ class Instance(Socket):
         - Geometry
         """
         utils.check_enum_arg('Delete Geometry', 'mode', mode, 'delete', ('ALL', 'EDGE_FACE', 'ONLY_FACE'))
-        node = Node('Delete Geometry', {'Geometry': self, 'Selection': self.get_selection()}, domain='INSTANCE', mode=mode)
+        node = Node('Delete Geometry', {'Geometry': self, 'Selection': self.get_selection()}, domain='POINT', mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -328,7 +328,7 @@ class Instance(Socket):
         -----------
         - Socket 'Geometry' : self
         - Socket 'Selection' : self[selection]
-        - Parameter 'domain' : 'INSTANCE'
+        - Parameter 'domain' : 'POINT'
 
         Arguments
         ---------
@@ -338,7 +338,7 @@ class Instance(Socket):
         -------
         - Geometry [duplicate_index_ (Integer)]
         """
-        node = Node('Duplicate Elements', {'Geometry': self, 'Selection': self.get_selection(), 'Amount': amount}, domain='INSTANCE')
+        node = Node('Duplicate Elements', {'Geometry': self, 'Selection': self.get_selection(), 'Amount': amount}, domain='POINT')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -351,7 +351,7 @@ class Instance(Socket):
         Information
         -----------
         - Parameter 'data_type' : depending on 'value' type
-        - Parameter 'domain' : 'INSTANCE'
+        - Parameter 'domain' : 'POINT'
 
         Arguments
         ---------
@@ -363,7 +363,7 @@ class Instance(Socket):
         - Float
         """
         data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeFieldAtIndex', value)
-        node = Node('Evaluate at Index', {'Value': value, 'Index': index}, data_type=data_type, domain='INSTANCE')
+        node = Node('Evaluate at Index', {'Value': value, 'Index': index}, data_type=data_type, domain='POINT')
         return node._out
 
     @classmethod
@@ -374,7 +374,7 @@ class Instance(Socket):
         Information
         -----------
         - Parameter 'data_type' : depending on 'value' type
-        - Parameter 'domain' : 'INSTANCE'
+        - Parameter 'domain' : 'POINT'
 
         Arguments
         ---------
@@ -385,7 +385,35 @@ class Instance(Socket):
         - Float
         """
         data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeFieldOnDomain', value)
-        node = Node('Evaluate on Domain', {'Value': value}, data_type=data_type, domain='INSTANCE')
+        node = Node('Evaluate on Domain', {'Value': value}, data_type=data_type, domain='POINT')
+        return node._out
+
+    def instance_on(self,
+                    instance: Instances = None,
+                    pick_instance: Boolean = None,
+                    instance_index: Integer = None,
+                    rotation: Rotation = None,
+                    scale: Vector = None):
+        """ > Node <&Node Instance on Points>
+
+        Information
+        -----------
+        - Socket 'Points' : self
+        - Socket 'Selection' : self[selection]
+
+        Arguments
+        ---------
+        - instance (Instances) : socket 'Instance' (id: Instance)
+        - pick_instance (Boolean) : socket 'Pick Instance' (id: Pick Instance)
+        - instance_index (Integer) : socket 'Instance Index' (id: Instance Index)
+        - rotation (Rotation) : socket 'Rotation' (id: Rotation)
+        - scale (Vector) : socket 'Scale' (id: Scale)
+
+        Returns
+        -------
+        - Instances
+        """
+        node = Node('Instance on Points', {'Points': self, 'Selection': self.get_selection(), 'Instance': instance, 'Pick Instance': pick_instance, 'Instance Index': instance_index, 'Rotation': rotation, 'Scale': scale})
         return node._out
 
     def sample_index(self,
@@ -398,7 +426,7 @@ class Instance(Socket):
         -----------
         - Socket 'Geometry' : self
         - Parameter 'data_type' : depending on 'value' type
-        - Parameter 'domain' : 'INSTANCE'
+        - Parameter 'domain' : 'POINT'
 
         Arguments
         ---------
@@ -411,7 +439,26 @@ class Instance(Socket):
         - Float
         """
         data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeSampleIndex', value)
-        node = Node('Sample Index', {'Geometry': self, 'Value': value, 'Index': index}, clamp=clamp, data_type=data_type, domain='INSTANCE')
+        node = Node('Sample Index', {'Geometry': self, 'Value': value, 'Index': index}, clamp=clamp, data_type=data_type, domain='POINT')
+        return node._out
+
+    def sample_nearest(self, sample_position: Vector = None):
+        """ > Node <&Node Sample Nearest>
+
+        Information
+        -----------
+        - Socket 'Geometry' : self
+        - Parameter 'domain' : 'POINT'
+
+        Arguments
+        ---------
+        - sample_position (Vector) : socket 'Sample Position' (id: Sample Position)
+
+        Returns
+        -------
+        - Integer
+        """
+        node = Node('Sample Nearest', {'Geometry': self, 'Sample Position': sample_position}, domain='POINT')
         return node._out
 
     def separate(self):
@@ -423,13 +470,35 @@ class Instance(Socket):
         -----------
         - Socket 'Geometry' : self
         - Socket 'Selection' : self[selection]
-        - Parameter 'domain' : 'INSTANCE'
+        - Parameter 'domain' : 'POINT'
 
         Returns
         -------
         - Geometry [inverted_ (Geometry)]
         """
-        node = Node('Separate Geometry', {'Geometry': self, 'Selection': self.get_selection()}, domain='INSTANCE')
+        node = Node('Separate Geometry', {'Geometry': self, 'Selection': self.get_selection()}, domain='POINT')
+        self._jump(node._out)
+        return self._domain_to_geometry
+
+    def set_radius(self, radius: Float = None):
+        """ > Node <&Node Set Point Radius>
+
+        > ***Jump*** : Socket refers to node output socket after the call
+
+        Information
+        -----------
+        - Socket 'Points' : self
+        - Socket 'Selection' : self[selection]
+
+        Arguments
+        ---------
+        - radius (Float) : socket 'Radius' (id: Radius)
+
+        Returns
+        -------
+        - Cloud
+        """
+        node = Node('Set Point Radius', {'Points': self, 'Selection': self.get_selection(), 'Radius': radius})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -442,7 +511,7 @@ class Instance(Socket):
         -----------
         - Socket 'Geometry' : self
         - Socket 'Selection' : self[selection]
-        - Parameter 'domain' : 'INSTANCE'
+        - Parameter 'domain' : 'POINT'
 
         Arguments
         ---------
@@ -453,7 +522,7 @@ class Instance(Socket):
         -------
         - Geometry
         """
-        node = Node('Sort Elements', {'Geometry': self, 'Selection': self.get_selection(), 'Group ID': group_id, 'Sort Weight': sort_weight}, domain='INSTANCE')
+        node = Node('Sort Elements', {'Geometry': self, 'Selection': self.get_selection(), 'Group ID': group_id, 'Sort Weight': sort_weight}, domain='POINT')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -464,7 +533,7 @@ class Instance(Socket):
         -----------
         - Socket 'Geometry' : self
         - Socket 'Selection' : self[selection]
-        - Parameter 'domain' : 'INSTANCE'
+        - Parameter 'domain' : 'POINT'
 
         Arguments
         ---------
@@ -474,7 +543,7 @@ class Instance(Socket):
         -------
         - Instances [group_id_ (Integer)]
         """
-        node = Node('Split to Instances', {'Geometry': self, 'Selection': self.get_selection(), 'Group ID': group_id}, domain='INSTANCE')
+        node = Node('Split to Instances', {'Geometry': self, 'Selection': self.get_selection(), 'Group ID': group_id}, domain='POINT')
         return node._out
 
     def store_named_attribute(self,
@@ -489,7 +558,7 @@ class Instance(Socket):
         - Socket 'Geometry' : self
         - Socket 'Selection' : self[selection]
         - Parameter 'data_type' : depending on 'value' type
-        - Parameter 'domain' : 'INSTANCE'
+        - Parameter 'domain' : 'POINT'
 
         Arguments
         ---------
@@ -501,7 +570,7 @@ class Instance(Socket):
         - Geometry
         """
         data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeStoreNamedAttribute', value)
-        node = Node('Store Named Attribute', {'Geometry': self, 'Selection': self.get_selection(), 'Name': name, 'Value': value}, data_type=data_type, domain='INSTANCE')
+        node = Node('Store Named Attribute', {'Geometry': self, 'Selection': self.get_selection(), 'Name': name, 'Value': value}, data_type=data_type, domain='POINT')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -517,7 +586,7 @@ class Instance(Socket):
         - Socket 'Geometry' : self
         - Socket 'Selection' : self[selection]
         - Parameter 'data_type' : depending on 'value' type
-        - Parameter 'domain' : 'INSTANCE'
+        - Parameter 'domain' : 'POINT'
 
         Arguments
         ---------
@@ -529,7 +598,43 @@ class Instance(Socket):
         - Geometry
         """
         data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeStoreNamedAttribute', value)
-        node = Node('Store Named Attribute', {'Geometry': self, 'Selection': self.get_selection(), 'Name': name, 'Value': value}, data_type=data_type, domain='INSTANCE')
+        node = Node('Store Named Attribute', {'Geometry': self, 'Selection': self.get_selection(), 'Name': name, 'Value': value}, data_type=data_type, domain='POINT')
+        self._jump(node._out)
+        return self._domain_to_geometry
+
+    @classmethod
+    def active_element(cls):
+        """ > Node <&Node Active Element>
+
+        Information
+        -----------
+        - Parameter 'domain' : 'POINT'
+
+        Returns
+        -------
+        - Integer [exists_ (Boolean)]
+        """
+        node = Node('Active Element', domain='POINT')
+        return node._out
+
+    def set_selection(self):
+        """ > Node <&Node Set Selection>
+
+        > ***Jump*** : Socket refers to node output socket after the call
+
+        Information
+        -----------
+        - Socket 'Geometry' : self
+        - Socket 'Selection' : self[selection]
+        - Parameter 'domain' : 'POINT'
+        - Parameter 'selection_type' : depending on 'selection' type
+
+        Returns
+        -------
+        - Geometry
+        """
+        selection_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeToolSetSelection', selection)
+        node = Node('Set Selection', {'Geometry': self, 'Selection': self.get_selection()}, domain='POINT', selection_type=selection_type)
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -539,13 +644,103 @@ class Instance(Socket):
 
         Information
         -----------
-        - Parameter 'domain' : 'INSTANCE'
+        - Parameter 'domain' : 'POINT'
 
         Arguments
         ---------
         - ui_shortcut (int): parameter 'ui_shortcut'
 
         """
-        node = Node('Viewer', named_sockets, domain='INSTANCE', ui_shortcut=ui_shortcut, **sockets)
+        node = Node('Viewer', named_sockets, domain='POINT', ui_shortcut=ui_shortcut, **sockets)
         return
+
+    @property
+    def position(self):
+        """ Property get node <Node Set Position>
+        """
+        return Node('Position', {})._out
+
+    @position.setter
+    def position(self, position: Vector = None):
+        """ > Node <&Node Set Position>
+
+        > ***Jump*** : Socket refers to node output socket after the call
+
+        Information
+        -----------
+        - Socket 'Geometry' : self
+        - Socket 'Selection' : self[selection]
+        - Socket 'Offset' : ignored
+
+        Arguments
+        ---------
+        - position (Vector) : socket 'Position' (id: Position)
+
+        Returns
+        -------
+        - Geometry
+        """
+        node = Node('Set Position', {'Geometry': self, 'Selection': self.get_selection(), 'Position': position, 'Offset': None})
+        self._jump(node._out)
+        return self._domain_to_geometry
+
+    @property
+    def offset(self):
+        """ Write only property for node <Node Set Position>
+        """
+        raise NodeError('Property Point.offset is write only.')
+
+    @offset.setter
+    def offset(self, offset: Vector = None):
+        """ > Node <&Node Set Position>
+
+        > ***Jump*** : Socket refers to node output socket after the call
+
+        Information
+        -----------
+        - Socket 'Geometry' : self
+        - Socket 'Selection' : self[selection]
+        - Socket 'Position' : ignored
+
+        Arguments
+        ---------
+        - offset (Vector) : socket 'Offset' (id: Offset)
+
+        Returns
+        -------
+        - Geometry
+        """
+        node = Node('Set Position', {'Geometry': self, 'Selection': self.get_selection(), 'Position': None, 'Offset': offset})
+        self._jump(node._out)
+        return self._domain_to_geometry
+
+    @property
+    def normal(self):
+        """ Write only property for node <Node Set Mesh Normal>
+        """
+        raise NodeError('Property Point.normal is write only.')
+
+    @normal.setter
+    def normal(self, custom_normal: Vector = None):
+        """ > Node <&Node Set Mesh Normal>
+
+        > ***Jump*** : Socket refers to node output socket after the call
+
+        Information
+        -----------
+        - Socket 'Mesh' : self
+        - Parameter 'domain' : 'POINT'
+        - Parameter 'mode' : 'FREE'
+
+        Arguments
+        ---------
+        - custom_normal (Vector) : socket 'Custom Normal' (id: Custom Normal)
+
+        Returns
+        -------
+        - Mesh
+        """
+        node = Node('Set Mesh Normal', {'Mesh': self, 'Custom Normal': custom_normal}, domain='POINT', mode='FREE')
+        self._jump(node._out)
+        return self._domain_to_geometry
 

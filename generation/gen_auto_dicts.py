@@ -472,7 +472,7 @@ GEONODES = {
 'RGB Curves'         :          [{f: 'MANUAL'}],
 'Separate XYZ'       :          [{f: 'get', name: 'xyz', cache: True, ret: 'TUPLE'}, {f: 'get_out_loop'}],
 'Brick Texture'      :          [{f: 'C', name: 'Brick'},      {is_cm: True, name: 'Brick',      klass: 'Texture'}],
-'Checker Texture'    :          [{f: 'C', name: 'Checker'},    {is_cm: True, name: 'Checked',    klass: 'Texture'}],
+'Checker Texture'    :          [{f: 'C', name: 'Checker'},    {is_cm: True, name: 'Checker',    klass: 'Texture'}],
 'Gabor Texture'      :          [{f: 'C', name: 'Gabor'},      {is_cm: True, name: 'Gabor',      klass: 'Texture'}],
 'Gradient Texture'   :          [{f: 'C', name: 'Gradient'},   {is_cm: True, name: 'Gradient',   klass: 'Texture'}],
 'Magic Texture'      :          [{f: 'C', name: 'Magic'},      {is_cm: True, name: 'Magic',      klass: 'Texture'}],

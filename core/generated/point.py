@@ -1,4 +1,4 @@
-# Generated 2025-12-04 08:23:30
+# Generated 2025-12-06 09:50:17
 
 from __future__ import annotations
 from .. socket_class import Socket
@@ -70,7 +70,7 @@ class Point(Socket):
         - node [mean (Float), median (Float), sum (Float), min (Float), max (Float), range (Float), standard_deviation (Float), variance (Float)]
         """
         data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeAttributeStatistic', attribute)
-        node = Node('Attribute Statistic', {'Geometry': self, 'Selection': self._sel, 'Attribute': attribute}, data_type=data_type, domain='POINT')
+        node = Node('Attribute Statistic', {'Geometry': self, 'Selection': self.get_selection(), 'Attribute': attribute}, data_type=data_type, domain='POINT')
         return node
 
     @classmethod
@@ -167,7 +167,7 @@ class Point(Socket):
         -------
         - Geometry
         """
-        node = Node('Delete Geometry', {'Geometry': self, 'Selection': self._sel}, domain='POINT', mode='ALL')
+        node = Node('Delete Geometry', {'Geometry': self, 'Selection': self.get_selection()}, domain='POINT', mode='ALL')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -187,7 +187,7 @@ class Point(Socket):
         -------
         - Geometry
         """
-        node = Node('Delete Geometry', {'Geometry': self, 'Selection': self._sel}, domain='POINT', mode='EDGE_FACE')
+        node = Node('Delete Geometry', {'Geometry': self, 'Selection': self.get_selection()}, domain='POINT', mode='EDGE_FACE')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -207,7 +207,7 @@ class Point(Socket):
         -------
         - Geometry
         """
-        node = Node('Delete Geometry', {'Geometry': self, 'Selection': self._sel}, domain='POINT', mode='ONLY_FACE')
+        node = Node('Delete Geometry', {'Geometry': self, 'Selection': self.get_selection()}, domain='POINT', mode='ONLY_FACE')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -231,7 +231,7 @@ class Point(Socket):
         - Geometry
         """
         utils.check_enum_arg('Delete Geometry', 'mode', mode, 'delete_geometry', ('ALL', 'EDGE_FACE', 'ONLY_FACE'))
-        node = Node('Delete Geometry', {'Geometry': self, 'Selection': self._sel}, domain='POINT', mode=mode)
+        node = Node('Delete Geometry', {'Geometry': self, 'Selection': self.get_selection()}, domain='POINT', mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -251,7 +251,7 @@ class Point(Socket):
         -------
         - Geometry
         """
-        node = Node('Delete Geometry', {'Geometry': self, 'Selection': self._sel}, domain='POINT', mode='ALL')
+        node = Node('Delete Geometry', {'Geometry': self, 'Selection': self.get_selection()}, domain='POINT', mode='ALL')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -271,7 +271,7 @@ class Point(Socket):
         -------
         - Geometry
         """
-        node = Node('Delete Geometry', {'Geometry': self, 'Selection': self._sel}, domain='POINT', mode='EDGE_FACE')
+        node = Node('Delete Geometry', {'Geometry': self, 'Selection': self.get_selection()}, domain='POINT', mode='EDGE_FACE')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -291,7 +291,7 @@ class Point(Socket):
         -------
         - Geometry
         """
-        node = Node('Delete Geometry', {'Geometry': self, 'Selection': self._sel}, domain='POINT', mode='ONLY_FACE')
+        node = Node('Delete Geometry', {'Geometry': self, 'Selection': self.get_selection()}, domain='POINT', mode='ONLY_FACE')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -315,7 +315,7 @@ class Point(Socket):
         - Geometry
         """
         utils.check_enum_arg('Delete Geometry', 'mode', mode, 'delete', ('ALL', 'EDGE_FACE', 'ONLY_FACE'))
-        node = Node('Delete Geometry', {'Geometry': self, 'Selection': self._sel}, domain='POINT', mode=mode)
+        node = Node('Delete Geometry', {'Geometry': self, 'Selection': self.get_selection()}, domain='POINT', mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -338,7 +338,7 @@ class Point(Socket):
         -------
         - Geometry [duplicate_index_ (Integer)]
         """
-        node = Node('Duplicate Elements', {'Geometry': self, 'Selection': self._sel, 'Amount': amount}, domain='POINT')
+        node = Node('Duplicate Elements', {'Geometry': self, 'Selection': self.get_selection(), 'Amount': amount}, domain='POINT')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -413,7 +413,7 @@ class Point(Socket):
         -------
         - Instances
         """
-        node = Node('Instance on Points', {'Points': self, 'Selection': self._sel, 'Instance': instance, 'Pick Instance': pick_instance, 'Instance Index': instance_index, 'Rotation': rotation, 'Scale': scale})
+        node = Node('Instance on Points', {'Points': self, 'Selection': self.get_selection(), 'Instance': instance, 'Pick Instance': pick_instance, 'Instance Index': instance_index, 'Rotation': rotation, 'Scale': scale})
         return node._out
 
     def sample_index(self,
@@ -476,7 +476,7 @@ class Point(Socket):
         -------
         - Geometry [inverted_ (Geometry)]
         """
-        node = Node('Separate Geometry', {'Geometry': self, 'Selection': self._sel}, domain='POINT')
+        node = Node('Separate Geometry', {'Geometry': self, 'Selection': self.get_selection()}, domain='POINT')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -498,7 +498,7 @@ class Point(Socket):
         -------
         - Cloud
         """
-        node = Node('Set Point Radius', {'Points': self, 'Selection': self._sel, 'Radius': radius})
+        node = Node('Set Point Radius', {'Points': self, 'Selection': self.get_selection(), 'Radius': radius})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -522,7 +522,7 @@ class Point(Socket):
         -------
         - Geometry
         """
-        node = Node('Sort Elements', {'Geometry': self, 'Selection': self._sel, 'Group ID': group_id, 'Sort Weight': sort_weight}, domain='POINT')
+        node = Node('Sort Elements', {'Geometry': self, 'Selection': self.get_selection(), 'Group ID': group_id, 'Sort Weight': sort_weight}, domain='POINT')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -543,7 +543,7 @@ class Point(Socket):
         -------
         - Instances [group_id_ (Integer)]
         """
-        node = Node('Split to Instances', {'Geometry': self, 'Selection': self._sel, 'Group ID': group_id}, domain='POINT')
+        node = Node('Split to Instances', {'Geometry': self, 'Selection': self.get_selection(), 'Group ID': group_id}, domain='POINT')
         return node._out
 
     def store_named_attribute(self,
@@ -570,7 +570,7 @@ class Point(Socket):
         - Geometry
         """
         data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeStoreNamedAttribute', value)
-        node = Node('Store Named Attribute', {'Geometry': self, 'Selection': self._sel, 'Name': name, 'Value': value}, data_type=data_type, domain='POINT')
+        node = Node('Store Named Attribute', {'Geometry': self, 'Selection': self.get_selection(), 'Name': name, 'Value': value}, data_type=data_type, domain='POINT')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -598,7 +598,7 @@ class Point(Socket):
         - Geometry
         """
         data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeStoreNamedAttribute', value)
-        node = Node('Store Named Attribute', {'Geometry': self, 'Selection': self._sel, 'Name': name, 'Value': value}, data_type=data_type, domain='POINT')
+        node = Node('Store Named Attribute', {'Geometry': self, 'Selection': self.get_selection(), 'Name': name, 'Value': value}, data_type=data_type, domain='POINT')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -634,7 +634,7 @@ class Point(Socket):
         - Geometry
         """
         selection_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeToolSetSelection', selection)
-        node = Node('Set Selection', {'Geometry': self, 'Selection': self._sel}, domain='POINT', selection_type=selection_type)
+        node = Node('Set Selection', {'Geometry': self, 'Selection': self.get_selection()}, domain='POINT', selection_type=selection_type)
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -680,7 +680,7 @@ class Point(Socket):
         -------
         - Geometry
         """
-        node = Node('Set Position', {'Geometry': self, 'Selection': self._sel, 'Position': position, 'Offset': None})
+        node = Node('Set Position', {'Geometry': self, 'Selection': self.get_selection(), 'Position': position, 'Offset': None})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -710,7 +710,7 @@ class Point(Socket):
         -------
         - Geometry
         """
-        node = Node('Set Position', {'Geometry': self, 'Selection': self._sel, 'Position': None, 'Offset': offset})
+        node = Node('Set Position', {'Geometry': self, 'Selection': self.get_selection(), 'Position': None, 'Offset': offset})
         self._jump(node._out)
         return self._domain_to_geometry
 

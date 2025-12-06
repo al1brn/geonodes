@@ -1,4 +1,4 @@
-# Generated 2025-12-04 08:23:30
+# Generated 2025-12-06 09:59:03
 
 from __future__ import annotations
 from .. socket_class import Socket
@@ -128,7 +128,7 @@ class Geometry(Socket):
         -------
         - Instances
         """
-        node = Node('Instance on Points', {'Points': self, 'Selection': self._sel, 'Instance': instance, 'Pick Instance': pick_instance, 'Instance Index': instance_index, 'Rotation': rotation, 'Scale': scale})
+        node = Node('Instance on Points', {'Points': self, 'Selection': self.get_selection(), 'Instance': instance, 'Pick Instance': pick_instance, 'Instance Index': instance_index, 'Rotation': rotation, 'Scale': scale})
         return node._out
 
     def join(self, *geometry: Geometry):
@@ -182,7 +182,7 @@ class Geometry(Socket):
         -------
         - Geometry
         """
-        node = Node('Merge by Distance', {'Geometry': self, 'Selection': self._sel, 'Mode': mode, 'Distance': distance})
+        node = Node('Merge by Distance', {'Geometry': self, 'Selection': self.get_selection(), 'Mode': mode, 'Distance': distance})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -205,7 +205,7 @@ class Geometry(Socket):
         -------
         - Geometry
         """
-        node = Node('Merge by Distance', {'Geometry': self, 'Selection': self._sel, 'Mode': mode, 'Distance': distance})
+        node = Node('Merge by Distance', {'Geometry': self, 'Selection': self.get_selection(), 'Mode': mode, 'Distance': distance})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -353,7 +353,7 @@ class Geometry(Socket):
         -------
         - Geometry
         """
-        node = Node('Realize Instances', {'Geometry': self, 'Selection': self._sel, 'Realize All': realize_all, 'Depth': depth})
+        node = Node('Realize Instances', {'Geometry': self, 'Selection': self.get_selection(), 'Realize All': realize_all, 'Depth': depth})
         return node._out
 
     def remove_named_attribute(self, pattern_mode: Literal['Exact', 'Wildcard'] = None, name: String = None):
@@ -543,7 +543,7 @@ class Geometry(Socket):
         -------
         - Geometry
         """
-        node = Node('Set ID', {'Geometry': self, 'Selection': self._sel, 'ID': id})
+        node = Node('Set ID', {'Geometry': self, 'Selection': self.get_selection(), 'ID': id})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -565,7 +565,7 @@ class Geometry(Socket):
         -------
         - Geometry
         """
-        node = Node('Set Material', {'Geometry': self, 'Selection': self._sel, 'Material': material})
+        node = Node('Set Material', {'Geometry': self, 'Selection': self.get_selection(), 'Material': material})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -587,7 +587,7 @@ class Geometry(Socket):
         -------
         - Geometry
         """
-        node = Node('Set Material Index', {'Geometry': self, 'Selection': self._sel, 'Material Index': material_index})
+        node = Node('Set Material Index', {'Geometry': self, 'Selection': self.get_selection(), 'Material Index': material_index})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -610,7 +610,7 @@ class Geometry(Socket):
         -------
         - Geometry
         """
-        node = Node('Set Position', {'Geometry': self, 'Selection': self._sel, 'Position': position, 'Offset': offset})
+        node = Node('Set Position', {'Geometry': self, 'Selection': self.get_selection(), 'Position': position, 'Offset': offset})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -708,7 +708,7 @@ class Geometry(Socket):
         -------
         - Geometry
         """
-        node = Node('Set Position', {'Geometry': self, 'Selection': self._sel, 'Position': position, 'Offset': None})
+        node = Node('Set Position', {'Geometry': self, 'Selection': self.get_selection(), 'Position': position, 'Offset': None})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -738,7 +738,7 @@ class Geometry(Socket):
         -------
         - Geometry
         """
-        node = Node('Set Position', {'Geometry': self, 'Selection': self._sel, 'Position': None, 'Offset': offset})
+        node = Node('Set Position', {'Geometry': self, 'Selection': self.get_selection(), 'Position': None, 'Offset': offset})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -767,7 +767,7 @@ class Geometry(Socket):
         -------
         - Geometry
         """
-        node = Node('Set ID', {'Geometry': self, 'Selection': self._sel, 'ID': id})
+        node = Node('Set ID', {'Geometry': self, 'Selection': self.get_selection(), 'ID': id})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -796,7 +796,7 @@ class Geometry(Socket):
         -------
         - Geometry
         """
-        node = Node('Set Material', {'Geometry': self, 'Selection': self._sel, 'Material': material})
+        node = Node('Set Material', {'Geometry': self, 'Selection': self.get_selection(), 'Material': material})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -853,7 +853,7 @@ class Geometry(Socket):
         -------
         - Geometry
         """
-        node = Node('Set Material Index', {'Geometry': self, 'Selection': self._sel, 'Material Index': material_index})
+        node = Node('Set Material Index', {'Geometry': self, 'Selection': self.get_selection(), 'Material Index': material_index})
         self._jump(node._out)
         return self._domain_to_geometry
 

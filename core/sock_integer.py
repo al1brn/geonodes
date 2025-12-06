@@ -62,7 +62,6 @@ class Integer(generated.Integer):
         optional_label: bool = False,
         hide_value: bool = False,
         hide_in_modifier: bool = False,
-        default: int = 0,
         default_attribute: str = '',
         default_input: Literal['VALUE', 'INDEX', 'ID_OR_INDEX'] = 'VALUE',
         shape: Literal['AUTO', 'SINGLE'] = 'AUTO',
@@ -97,7 +96,6 @@ class Integer(generated.Integer):
         - optional_label  (bool = False) : Property optional_label
         - hide_value  (bool = False) : Property hide_value
         - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - default  (int = 0) : Property default_value
         - default_attribute  (str = '') : Property default_attribute_name
         - default_input  (str = 'VALUE') : Property default_input in ('VALUE', 'INDEX', 'ID_OR_INDEX')
         - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
@@ -113,7 +111,7 @@ class Integer(generated.Integer):
             else:
                 bsock = self._create_input_socket(value=value, name=name, min=min,
                     max=max, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value,
-                    hide_in_modifier=hide_in_modifier, default=default, default_attribute=default_attribute,
+                    hide_in_modifier=hide_in_modifier, default_attribute=default_attribute,
                     default_input=default_input, shape=shape, subtype=subtype) 
 
         super().__init__(bsock)

@@ -11,6 +11,8 @@ from . import gen_config
 
 from pprint import pprint, pformat
 
+DOMAINS = ['cloudpoint', 'corner', 'edge', 'face', 'greasepencil', 'instance', 'layer', 'point', 'spline', 'splinepoint', 'vertex', 'volume']
+
 # =============================================================================================================================
 # Build manual cross references
 
@@ -235,7 +237,7 @@ def generate(folder, sub_folder):
         NodeInfo.gen_static_nodes(gen, nodes, tree_type=tree_type, verbose=False)
 
     # ====================================================================================================
-    # Add constructors with subtypes
+    # Add constructors with subtypes : Float.Angle, Vector.Velocity,...
     # ====================================================================================================
 
     _1 = " "*4
@@ -266,14 +268,23 @@ def generate(folder, sub_folder):
             # Arguments
             # ---------------------------------------------------------------------------
 
+            has_default = 'default' in props
+
             args = {}
 
             # ----- Value, Name
 
-            args['value'] = (
-                f": {ptype} = {def_val}",
-                f" ({ptype} = {def_val}) : Default value",
-                'value')
+            if has_default and create_socket:
+                args['value'] = (
+                    f": {ptype} = {def_val}",
+                    f" ({ptype} = {def_val}) : Default value",
+                    'default_value = defval')
+            else:
+                args['value'] = (
+                    f": {ptype} = {def_val}",
+                    f" ({ptype} = {def_val}) : Default value",
+                    'value')
+
             args['name']  = (
                 f": str = '{name}'", 
                 f" (str = '{name}') : Input socket name", 
@@ -287,7 +298,7 @@ def generate(folder, sub_folder):
             sorted_props.append('tip')
 
             for prop in props:
-                if prop in sorted_props or prop == 'subtype':
+                if prop in sorted_props or prop in ['subtype', 'default']:
                     continue
                 sorted_props.append(prop)
 
@@ -361,6 +372,9 @@ def generate(folder, sub_folder):
 
                 code += f"{_2}from ..treeclass import Tree\n\n"
 
+                if has_default:
+                    code += f"{_2}defval = utils.python_value_for_socket(value, cls.SOCKET_TYPE)\n\n"
+
                 bl_idname = d['ShaderNodeTree'] if d['GeometryNodeTree'] is None else d['GeometryNodeTree'] 
 
                 scall = f"return Tree.current_tree().create_input_socket('{bl_idname}', "
@@ -371,9 +385,13 @@ def generate(folder, sub_folder):
 
             sep = ""
             for arg_name, arg_val in args.items():
-                if arg_val[2] is not None:
+                if arg_val[2] is None:
+                    continue
+                elif '=' in arg_val[2]:
+                    scall += f"{sep}{arg_val[2]}"
+                else:
                     scall += f"{sep}{arg_name}={arg_val[2]}"
-                    sep = ", "
+                sep = ", "
 
             scall += ")"
             tab =""
@@ -405,7 +423,9 @@ def generate(folder, sub_folder):
         else:
             module = class_name.lower()
 
-        with open(path / f"{module}.py", 'w') as file:
+        module_name = f"dom_{module}" if module in DOMAINS else module
+
+        with open(path / f"{module_name}.py", 'w') as file:
 
             file.write(f"# Generated {time_stamp}\n\n")
 

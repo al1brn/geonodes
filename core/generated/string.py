@@ -1,4 +1,4 @@
-# Generated 2025-12-04 08:23:30
+# Generated 2025-12-06 09:59:03
 
 from __future__ import annotations
 from .. socket_class import Socket
@@ -429,7 +429,6 @@ class String(Socket):
         optional_label: bool = False,
         hide_value: bool = False,
         hide_in_modifier: bool = False,
-        default: str = '',
         subtype: str = 'NONE',
          ):
         """ > String Input
@@ -445,7 +444,6 @@ class String(Socket):
         - optional_label  (bool = False) : Property optional_label
         - hide_value  (bool = False) : Property hide_value
         - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - default  (str = '') : Property default_value
         - subtype (str = 'NONE') : Socket sub type in ('NONE', 'FILE_PATH')
 
         Returns
@@ -454,9 +452,11 @@ class String(Socket):
         """
         from ..treeclass import Tree
 
-        return Tree.current_tree().create_input_socket('NodeSocketString', value=value, name=name, tip=tip,
-            panel=panel, optional_label=optional_label, hide_value=hide_value,
-            hide_in_modifier=hide_in_modifier, default=default, subtype=subtype)
+        defval = utils.python_value_for_socket(value, cls.SOCKET_TYPE)
+
+        return Tree.current_tree().create_input_socket('NodeSocketString', default_value = defval,
+            name=name, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value,
+            hide_in_modifier=hide_in_modifier, subtype=subtype)
 
     @classmethod
     def FilePath(cls,
@@ -467,7 +467,6 @@ class String(Socket):
         optional_label: bool = False,
         hide_value: bool = False,
         hide_in_modifier: bool = False,
-        default: str = '',
          ):
         """ > FilePath Input
 
@@ -482,12 +481,11 @@ class String(Socket):
         - optional_label  (bool = False) : Property optional_label
         - hide_value  (bool = False) : Property hide_value
         - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - default  (str = '') : Property default_value
 
         Returns
         -------
         - String
         """
         return cls(value=value, name=name, tip=tip, panel=panel, optional_label=optional_label,
-            hide_value=hide_value, hide_in_modifier=hide_in_modifier, default=default, subtype='FILE_PATH')
+            hide_value=hide_value, hide_in_modifier=hide_in_modifier, subtype='FILE_PATH')
 

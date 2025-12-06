@@ -61,7 +61,6 @@ class Image(generated.Image):
         optional_label: bool = False,
         hide_value: bool = False,
         hide_in_modifier: bool = False,
-        default: object = None,
         ):
         """ Class Image data socket
 
@@ -86,7 +85,7 @@ class Image(generated.Image):
             else:
                 bsock = self._create_input_socket(value=value, name=name, tip=tip,
                     panel=panel, optional_label=optional_label, hide_value=hide_value,
-                    hide_in_modifier=hide_in_modifier, default=default)
+                    hide_in_modifier=hide_in_modifier)
 
         super().__init__(bsock)
 

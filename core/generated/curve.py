@@ -1,4 +1,4 @@
-# Generated 2025-12-04 08:23:30
+# Generated 2025-12-06 09:59:03
 
 from __future__ import annotations
 from .. socket_class import Socket
@@ -154,7 +154,7 @@ class Curve(Socket):
     @classmethod
     def handle_type_selection(cls,
                     handle_type: Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN'] = 'AUTO',
-                    mode = {'RIGHT', 'LEFT'}):
+                    mode = {'LEFT', 'RIGHT'}):
         """ > Node <&Node Handle Type Selection>
 
         Arguments
@@ -573,7 +573,7 @@ class Curve(Socket):
 
     def set_handle_type(self,
                     handle_type: Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN'] = 'AUTO',
-                    mode = {'RIGHT', 'LEFT'}):
+                    mode = {'LEFT', 'RIGHT'}):
         """ > Node <&Node Set Handle Type>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -593,7 +593,7 @@ class Curve(Socket):
         - Curve
         """
         utils.check_enum_arg('Set Handle Type', 'handle_type', handle_type, 'set_handle_type', ('FREE', 'AUTO', 'VECTOR', 'ALIGN'))
-        node = Node('Set Handle Type', {'Curve': self, 'Selection': self._sel}, handle_type=handle_type, mode=mode)
+        node = Node('Set Handle Type', {'Curve': self, 'Selection': self.get_selection()}, handle_type=handle_type, mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -617,7 +617,7 @@ class Curve(Socket):
         - Curve
         """
         utils.check_enum_arg('Set Handle Type', 'handle_type', handle_type, 'set_left_handle_type', ('FREE', 'AUTO', 'VECTOR', 'ALIGN'))
-        node = Node('Set Handle Type', {'Curve': self, 'Selection': self._sel}, handle_type=handle_type, mode={'LEFT'})
+        node = Node('Set Handle Type', {'Curve': self, 'Selection': self.get_selection()}, handle_type=handle_type, mode={'LEFT'})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -641,7 +641,7 @@ class Curve(Socket):
         - Curve
         """
         utils.check_enum_arg('Set Handle Type', 'handle_type', handle_type, 'set_right_handle_type', ('FREE', 'AUTO', 'VECTOR', 'ALIGN'))
-        node = Node('Set Handle Type', {'Curve': self, 'Selection': self._sel}, handle_type=handle_type, mode={'RIGHT'})
+        node = Node('Set Handle Type', {'Curve': self, 'Selection': self.get_selection()}, handle_type=handle_type, mode={'RIGHT'})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -654,7 +654,7 @@ class Curve(Socket):
         -----------
         - Socket 'Curve' : self
         - Socket 'Selection' : self[selection]
-        - Parameter 'mode' : {'RIGHT', 'LEFT'}
+        - Parameter 'mode' : {'LEFT', 'RIGHT'}
 
         Arguments
         ---------
@@ -665,7 +665,7 @@ class Curve(Socket):
         - Curve
         """
         utils.check_enum_arg('Set Handle Type', 'handle_type', handle_type, 'set_both_handle_type', ('FREE', 'AUTO', 'VECTOR', 'ALIGN'))
-        node = Node('Set Handle Type', {'Curve': self, 'Selection': self._sel}, handle_type=handle_type, mode={'RIGHT', 'LEFT'})
+        node = Node('Set Handle Type', {'Curve': self, 'Selection': self.get_selection()}, handle_type=handle_type, mode={'LEFT', 'RIGHT'})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -714,7 +714,7 @@ class Curve(Socket):
         - Curve
         """
         utils.check_enum_arg('Set Spline Type', 'spline_type', spline_type, 'set_spline_type', ('CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS'))
-        node = Node('Set Spline Type', {'Curve': self, 'Selection': self._sel}, spline_type=spline_type)
+        node = Node('Set Spline Type', {'Curve': self, 'Selection': self.get_selection()}, spline_type=spline_type)
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -854,7 +854,7 @@ class Curve(Socket):
         -------
         - GreasePencil
         """
-        node = Node('Curves to Grease Pencil', {'Curves': self, 'Selection': self._sel, 'Instances as Layers': instances_as_layers})
+        node = Node('Curves to Grease Pencil', {'Curves': self, 'Selection': self.get_selection(), 'Instances as Layers': instances_as_layers})
         return node._out
 
     def deform_on_surface(self):
@@ -1084,7 +1084,7 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Resample Curve', {'Curve': self, 'Selection': self._sel, 'Mode': mode, 'Count': count, 'Length': length}, keep_last_segment=keep_last_segment)
+        node = Node('Resample Curve', {'Curve': self, 'Selection': self.get_selection(), 'Mode': mode, 'Count': count, 'Length': length}, keep_last_segment=keep_last_segment)
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -1102,7 +1102,7 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Reverse Curve', {'Curve': self, 'Selection': self._sel})
+        node = Node('Reverse Curve', {'Curve': self, 'Selection': self.get_selection()})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -1216,7 +1216,7 @@ class Curve(Socket):
         - Curve
         """
         utils.check_enum_arg('Set Handle Positions', 'mode', mode, 'set_handle_positions', ('LEFT', 'RIGHT'))
-        node = Node('Set Handle Positions', {'Curve': self, 'Selection': self._sel, 'Position': position, 'Offset': offset}, mode=mode)
+        node = Node('Set Handle Positions', {'Curve': self, 'Selection': self.get_selection(), 'Position': position, 'Offset': offset}, mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -1240,7 +1240,7 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Set Handle Positions', {'Curve': self, 'Selection': self._sel, 'Position': position, 'Offset': offset}, mode='LEFT')
+        node = Node('Set Handle Positions', {'Curve': self, 'Selection': self.get_selection(), 'Position': position, 'Offset': offset}, mode='LEFT')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -1264,7 +1264,7 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Set Handle Positions', {'Curve': self, 'Selection': self._sel, 'Position': position, 'Offset': offset}, mode='RIGHT')
+        node = Node('Set Handle Positions', {'Curve': self, 'Selection': self.get_selection(), 'Position': position, 'Offset': offset}, mode='RIGHT')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -1289,7 +1289,7 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Set Curve Normal', {'Curve': self, 'Selection': self._sel, 'Mode': mode, 'Normal': normal})
+        node = Node('Set Curve Normal', {'Curve': self, 'Selection': self.get_selection(), 'Mode': mode, 'Normal': normal})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -1311,7 +1311,7 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Set Curve Radius', {'Curve': self, 'Selection': self._sel, 'Radius': radius})
+        node = Node('Set Curve Radius', {'Curve': self, 'Selection': self.get_selection(), 'Radius': radius})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -1333,7 +1333,7 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Set Curve Tilt', {'Curve': self, 'Selection': self._sel, 'Tilt': tilt})
+        node = Node('Set Curve Tilt', {'Curve': self, 'Selection': self.get_selection(), 'Tilt': tilt})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -1355,7 +1355,7 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Set Spline Cyclic', {'Geometry': self, 'Selection': self._sel, 'Cyclic': cyclic})
+        node = Node('Set Spline Cyclic', {'Geometry': self, 'Selection': self.get_selection(), 'Cyclic': cyclic})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -1377,7 +1377,7 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Set Spline Resolution', {'Geometry': self, 'Selection': self._sel, 'Resolution': resolution})
+        node = Node('Set Spline Resolution', {'Geometry': self, 'Selection': self.get_selection(), 'Resolution': resolution})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -1444,7 +1444,7 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Trim Curve', {'Curve': self, 'Selection': self._sel, 'Start': start, 'End': end}, mode='FACTOR')
+        node = Node('Trim Curve', {'Curve': self, 'Selection': self.get_selection(), 'Start': start, 'End': end}, mode='FACTOR')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -1468,7 +1468,7 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Trim Curve', {'Curve': self, 'Selection': self._sel, 'Start_001': start, 'End_001': end}, mode='LENGTH')
+        node = Node('Trim Curve', {'Curve': self, 'Selection': self.get_selection(), 'Start_001': start, 'End_001': end}, mode='LENGTH')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -1496,7 +1496,7 @@ class Curve(Socket):
         - Curve
         """
         utils.check_enum_arg('Trim Curve', 'mode', mode, 'trim', ('FACTOR', 'LENGTH'))
-        node = Node('Trim Curve', {'Curve': self, 'Selection': self._sel, 'Start': start, 'End': end}, mode=mode)
+        node = Node('Trim Curve', {'Curve': self, 'Selection': self.get_selection(), 'Start': start, 'End': end}, mode=mode)
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -1525,7 +1525,7 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Set Curve Radius', {'Curve': self, 'Selection': self._sel, 'Radius': radius})
+        node = Node('Set Curve Radius', {'Curve': self, 'Selection': self.get_selection(), 'Radius': radius})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -1556,7 +1556,7 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Set Handle Positions', {'Curve': self, 'Selection': self._sel, 'Position': position, 'Offset': None}, mode='LEFT')
+        node = Node('Set Handle Positions', {'Curve': self, 'Selection': self.get_selection(), 'Position': position, 'Offset': None}, mode='LEFT')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -1587,7 +1587,7 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Set Handle Positions', {'Curve': self, 'Selection': self._sel, 'Position': position, 'Offset': None}, mode='RIGHT')
+        node = Node('Set Handle Positions', {'Curve': self, 'Selection': self.get_selection(), 'Position': position, 'Offset': None}, mode='RIGHT')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -1618,7 +1618,7 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Set Handle Positions', {'Curve': self, 'Selection': self._sel, 'Position': None, 'Offset': offset}, mode='LEFT')
+        node = Node('Set Handle Positions', {'Curve': self, 'Selection': self.get_selection(), 'Position': None, 'Offset': offset}, mode='LEFT')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -1649,7 +1649,7 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Set Handle Positions', {'Curve': self, 'Selection': self._sel, 'Position': None, 'Offset': offset}, mode='RIGHT')
+        node = Node('Set Handle Positions', {'Curve': self, 'Selection': self.get_selection(), 'Position': None, 'Offset': offset}, mode='RIGHT')
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -1669,7 +1669,7 @@ class Curve(Socket):
         -----------
         - Socket 'Curve' : self
         - Socket 'Selection' : self[selection]
-        - Parameter 'mode' : {'RIGHT', 'LEFT'}
+        - Parameter 'mode' : {'LEFT', 'RIGHT'}
 
         Arguments
         ---------
@@ -1680,7 +1680,7 @@ class Curve(Socket):
         - Curve
         """
         utils.check_enum_arg('Set Handle Type', 'handle_type', handle_type, 'handle_type', ('FREE', 'AUTO', 'VECTOR', 'ALIGN'))
-        node = Node('Set Handle Type', {'Curve': self, 'Selection': self._sel}, handle_type=handle_type, mode={'RIGHT', 'LEFT'})
+        node = Node('Set Handle Type', {'Curve': self, 'Selection': self.get_selection()}, handle_type=handle_type, mode={'LEFT', 'RIGHT'})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -1711,7 +1711,7 @@ class Curve(Socket):
         - Curve
         """
         utils.check_enum_arg('Set Handle Type', 'handle_type', handle_type, 'left_handle_type', ('FREE', 'AUTO', 'VECTOR', 'ALIGN'))
-        node = Node('Set Handle Type', {'Curve': self, 'Selection': self._sel}, handle_type=handle_type, mode={'LEFT'})
+        node = Node('Set Handle Type', {'Curve': self, 'Selection': self.get_selection()}, handle_type=handle_type, mode={'LEFT'})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -1742,7 +1742,7 @@ class Curve(Socket):
         - Curve
         """
         utils.check_enum_arg('Set Handle Type', 'handle_type', handle_type, 'right_handle_type', ('FREE', 'AUTO', 'VECTOR', 'ALIGN'))
-        node = Node('Set Handle Type', {'Curve': self, 'Selection': self._sel}, handle_type=handle_type, mode={'RIGHT'})
+        node = Node('Set Handle Type', {'Curve': self, 'Selection': self.get_selection()}, handle_type=handle_type, mode={'RIGHT'})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -1771,7 +1771,7 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Set Curve Tilt', {'Curve': self, 'Selection': self._sel, 'Tilt': tilt})
+        node = Node('Set Curve Tilt', {'Curve': self, 'Selection': self.get_selection(), 'Tilt': tilt})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -1801,7 +1801,7 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Set Curve Normal', {'Curve': self, 'Selection': self._sel, 'Mode': mode, 'Normal': None})
+        node = Node('Set Curve Normal', {'Curve': self, 'Selection': self.get_selection(), 'Mode': mode, 'Normal': None})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -1830,7 +1830,7 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Set Spline Cyclic', {'Geometry': self, 'Selection': self._sel, 'Cyclic': cyclic})
+        node = Node('Set Spline Cyclic', {'Geometry': self, 'Selection': self.get_selection(), 'Cyclic': cyclic})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -1859,7 +1859,7 @@ class Curve(Socket):
         -------
         - Curve
         """
-        node = Node('Set Spline Resolution', {'Geometry': self, 'Selection': self._sel, 'Resolution': resolution})
+        node = Node('Set Spline Resolution', {'Geometry': self, 'Selection': self.get_selection(), 'Resolution': resolution})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -1889,7 +1889,7 @@ class Curve(Socket):
         - Curve
         """
         utils.check_enum_arg('Set Spline Type', 'spline_type', spline_type, 'type', ('CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS'))
-        node = Node('Set Spline Type', {'Curve': self, 'Selection': self._sel}, spline_type=spline_type)
+        node = Node('Set Spline Type', {'Curve': self, 'Selection': self.get_selection()}, spline_type=spline_type)
         self._jump(node._out)
         return self._domain_to_geometry
 

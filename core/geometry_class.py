@@ -42,122 +42,19 @@ __version__ = "3.0.0"
 __blender_version__ = "4.3.0"
 
 
-from inspect import Arguments
-import bpy
-
-from .scripterror import NodeError
-from . import constants
-from . import utils
-from .treeclass import Tree, Layout
 from .nodeclass import Node
-from .socket_class import NodeCache, Socket
+from . import utils
+from .socket_class import Socket
+from .geom import Geom
 from . import generated
 
-# =============================================================================================================================
-# =============================================================================================================================
-# Interface for Geometry and Domain
-# =============================================================================================================================
-# =============================================================================================================================
-
-class GeoBase:
-    """ Base class for Geometry and Domain.
-
-    Implement auto selection mechanism.
-    """
-
-    @property
-    def _geo_type(self):
-        return type(self._geo)
-
-    # ====================================================================================================
-    # Selection mechanism
-
-    # ----- Selection socket is used once
-
-    @property
-    def _raw_sel(self):
-        if '_selection' in self.__dict__:
-            sel = self._selection
-            self._selection = sel
-            return sel
-        else:
-            return None
-
-    @property
-    def _sel(self):
-
-        from geonodes import nd
-
-        selection = self._raw_sel
-
-        # No selection
-        if selection is None:
-            return None
-
-        # ----------------------------------------------------------------------------------------------------
-        # Slice
-
-        if isinstance(selection, slice):
-            with Layout(f"selection = {selection}", color='AUTO_GEN'):
-                if selection.start is None:
-                    selection = nd.index.less_than(selection.stop)
-                elif selection.stop is None:
-                    selection = nd.index.greater_equal(selection.start)
-                else:
-                    a = (selection.start + selection.stop)/2
-                    dist = a - selection.start + .1
-                    selection = Float(nd.index).equal(a, epsilon=dist)
-
-        # ----------------------------------------------------------------------------------------------------
-        # Tuple
-
-        elif isinstance(selection, tuple):
-            with Layout(f"selection = tuple", color='AUTO_GEN'):
-                sel = None
-                idx = nd.index
-                for item in selection:
-                    if sel is None:
-                        sel = idx.equal(item)
-                    else:
-                        sel |= idx.equal(item)
-
-                selection = sel
-
-        # ----------------------------------------------------------------------------------------------------
-        # Index
-
-        else:
-            socket_type = utils.get_value_socket_type(selection)
-            if socket_type in ['INT', 'VALUE', 'FLOAT']:
-                with Layout(f"selection = []", color='AUTO_GEN'):
-                    selection = nd.index.equal(selection)
-
-        self._selection = None
-
-        return selection
-
-    # ----- Set the selection
-    # Domain array index can be:
-    # - a boolean
-    # - an int -> int == index
-    # - a tuple of ints -> or on (int == index)
-    # - a slice -> index matches the slice
-
-    def __getitem__(self, selection):
-        # ----- Store the selection value
-        # The selection is supposed to be a Boolean
-        # If an Integer, a slice or a tuple, it is transformed into a boolean through _sel function
-        # The _raw_sel function returns the passed value without transformation
-
-        self._unlock()
-        self._selection = selection
-        self._lock()
-        return self
-
-# =============================================================================================================================
+# ====================================================================================================
 # Geometry class
+# ====================================================================================================
 
-class Geometry(generated.Geometry, GeoBase):
+class Geometry(generated.Geometry, Geom):
+
+    __slots__ = Socket.__slots__ + ['_geo', '_selection']
 
     SOCKET_TYPE = 'GEOMETRY'
 
@@ -191,6 +88,17 @@ class Geometry(generated.Geometry, GeoBase):
         - hide_in_modifier  (bool = False) : Property hide_in_modifier
         """
 
+        # ---------------------------------------------------------------------------
+        # Geom interface
+        # ---------------------------------------------------------------------------
+
+        self._geo       = self
+        self._selection = None
+
+        # ---------------------------------------------------------------------------
+        # Socket
+        # ---------------------------------------------------------------------------
+
         bsock = utils.get_bsocket(value)
 
         # ------------------------------------------------------------
@@ -214,16 +122,13 @@ class Geometry(generated.Geometry, GeoBase):
 
         super().__init__(bsock)
 
-
-    @property
-    def _geo(self):
-        return self
-
     # ====================================================================================================
     # Geometry Operations
+    # ====================================================================================================
 
     # ----------------------------------------------------------------------------------------------------
     # Bake
+    # ----------------------------------------------------------------------------------------------------
 
     def bake(self, **kwargs):
         """ Node <&Node Bake>
@@ -245,6 +150,7 @@ class Geometry(generated.Geometry, GeoBase):
 
     # ====================================================================================================
     # Operations
+    # ====================================================================================================
 
     def __add__(self, other):
         if isinstance(other, tuple):
