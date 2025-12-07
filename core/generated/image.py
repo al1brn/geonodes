@@ -1,8 +1,8 @@
-# Generated 2025-12-06 09:59:03
+# Generated 2025-12-07 10:17:11
 
 from __future__ import annotations
 from .. socket_class import Socket
-from .. nodeclass import Node, ColorRamp, NodeCurves, MenuNode, IndexSwitchNode
+from .. nodeclass import Node, ColorRamp, NodeCurves
 from .. import utils
 from .. scripterror import NodeError
 from typing import TYPE_CHECKING, Literal, Union, Sequence
@@ -136,6 +136,33 @@ class Image(Socket):
         """
         node = self._cache('Image Info', {'Image': self, 'Frame': frame})
         return node.fps
+
+    def image_texture(self,
+                    vector: Vector = None,
+                    frame: Integer = None,
+                    extension: Literal['REPEAT', 'EXTEND', 'CLIP', 'MIRROR'] = 'REPEAT',
+                    interpolation: Literal['Linear', 'Closest', 'Cubic'] = 'Linear'):
+        """ > Node <&Node Image Texture>
+
+        Information
+        -----------
+        - Socket 'Image' : self
+
+        Arguments
+        ---------
+        - vector (Vector) : socket 'Vector' (id: Vector)
+        - frame (Integer) : socket 'Frame' (id: Frame)
+        - extension (str): parameter 'extension' in ['REPEAT', 'EXTEND', 'CLIP', 'MIRROR']
+        - interpolation (str): parameter 'interpolation' in ['Linear', 'Closest', 'Cubic']
+
+        Returns
+        -------
+        - Color [alpha_ (Float)]
+        """
+        utils.check_enum_arg('Image Texture', 'extension', extension, 'image_texture', ('REPEAT', 'EXTEND', 'CLIP', 'MIRROR'))
+        utils.check_enum_arg('Image Texture', 'interpolation', interpolation, 'image_texture', ('Linear', 'Closest', 'Cubic'))
+        node = Node('Image Texture', {'Image': self, 'Vector': vector, 'Frame': frame}, extension=extension, interpolation=interpolation)
+        return node._out
 
     def enable_output(self, enable: Boolean = None):
         """ > Node <&Node Enable Output>

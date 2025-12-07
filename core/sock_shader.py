@@ -126,19 +126,21 @@ class Shader(ShaderRoot, generated.Shader):
         super().__init__(bsock)
 
 
-    def out(self, name=None):
+    def out(self, name=None, panel=""):
+        """ Shader output
+        """
         if self._tree._is_group:
-            super().out(name=name)
+            super().out(name, panel=panel)
         else:
-            self._tree.surface = self
+            self._tree.output_node.set_input_socket("Surface", self, create=False)
 
 # =============================================================================================================================
 # Volume Shader
 
 class VolumeShader(ShaderRoot, generated.VolumeShader):
 
-    def out(self, name=None):
+    def out(self, name=None, panel=""):
         if self._tree._is_group:
-            super().out(name=name)
+            super().out(name, panel=panel)
         else:
-            self._tree.volume = self
+            self._tree.output_node.set_input_socket("Volume", self, create=False)

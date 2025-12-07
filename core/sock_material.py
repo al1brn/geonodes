@@ -97,37 +97,65 @@ class Material(generated.Material):
     @classmethod
     def _class_test(cls):
 
-        from geonodes import GeoNodes, Material, nd, Mesh, ShaderNodes
+        from geonodes import GeoNodes, Material, nd, Mesh, ShaderNodes, Shader, Float, Menu
+        
+        # ---------------------------------------------------------------------------
+        # Building 3 materials
+        # ---------------------------------------------------------------------------
         
         with ShaderNodes("Red"):
-            pass
+            ped = Shader.Principled(base_color='red')
+            ped.out()
+            
+        with ShaderNodes("Green"):
+            ped = Shader.Principled(base_color='#00FF00FF')
+            ped.out()
 
         with ShaderNodes("Blue"):
-            pass
-
-        with ShaderNodes("Green"):
-            pass
+            ped = Shader.Principled(base_color=(0, 0, 1))
+            ped.out()
+            
+        # ---------------------------------------------------------------------------
+        # Playing with materials
+        # ---------------------------------------------------------------------------
 
         with GeoNodes("Material Test"):
             
-            g = Mesh()
+            gs = Node('Menu Switch')
             
-            mat0 = Material("Red")
-            g.material = mat0
-            
-            mat1 = Material("Blue", name="Your Material")
-            g[nd.index.less_than(3)].material = mat1
+            with gs:            
+                g = Mesh.IcoSphere()
+                mat0 = Material("Red")
+                g.material = mat0
+                g.out("Full Red")
+                
+            with gs:                
+                mat1 = Material("Blue", name="Your Material")
+                g[3:10].material = mat1
+                g.out("Your material in 3:10")
+                
+            with gs:
+                g.replace_material(mat0, "Green")
+                g.out("Replace Red by Green")
 
-            g.replace_material(mat1, "Green")
+            with gs:
+                g.replace_material(mat0, "Green")
+                g.out("Replace Red by Green")
+                
+            with gs:
+                g[nd.material_index.equal(1)].material = "Red"
+                g.out("Replace mat index 1 by Red")
+                
+            # Default menu                
+            gs.menu = "Full Red"
             
-            sel = nd.material_selection("Blue")
-            g[sel].material = "Red"
+            # From user input
+            gs.menu = Menu(name="Pick geometry")
             
-            g.faces[nd.material_index.equal(1)].delete()
-            
-            
-            g.out()
-            
+                
+            gs._out.out()
+      
+
 
 
 

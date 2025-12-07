@@ -45,9 +45,8 @@ __blender_version__ = "4.3.0"
 from inspect import Arguments
 import bpy
 
-from .scripterror import NodeError
-from . import constants
 from . import utils
+from .sockettype import SocketType
 from .treeclass import Tree, Layout
 from .nodeclass import Node
 from .socket_class import NodeCache, Socket
@@ -167,21 +166,15 @@ class Domain(Geom, NodeCache):
     # Named attributes
     # ====================================================================================================
 
-    def __getattr__(self, name):
-
-        attr_name = utils.get_attr_name(name)
-        if attr_name is None:
-            #raise NodeError(f"Domain '{type(self).__name__}' doesn't have attribute named '{name}'", keyword=name)
-            raise AttributeError(f"Domain '{type(self).__name__}' doesn't have attribute named '{name}'")
-
-        return self._geo._tree.get_named_attribute(prop_name=name)
-
     def __setattr__(self, name, value):
-        attr_name = utils.get_attr_name(name)
-        if attr_name is None:
-            super().__setattr__(name, value)
 
-        self.store_named_attribute(attr_name, value)
+        if name in Domain.__slots__:
+            super().__setattr__(name, value)
+            return
+        
+        user_name = name.replace("_", " ").strip()
+        
+        self.store_named_attribute(user_name, value)
 
     # ====================================================================================================
     # Sample index

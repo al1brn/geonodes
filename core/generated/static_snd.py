@@ -1,8 +1,8 @@
-# Generated 2025-12-06 09:59:03
+# Generated 2025-12-07 10:17:11
 
 from __future__ import annotations
 from .. socket_class import Socket
-from .. nodeclass import Node, ColorRamp, NodeCurves, MenuNode, IndexSwitchNode
+from .. nodeclass import Node, ColorRamp, NodeCurves
 from .. import utils
 from .. scripterror import NodeError
 from typing import TYPE_CHECKING, Literal, Union, Sequence
@@ -36,23 +36,24 @@ class SND:
     """
 
     @classmethod
-    def menu_switch(cls, 
-            named_sockets: dict = {},
-            menu = None,
-            default_value: str | int = None,
-            data_type: str = None,
-            **sockets):
-        """ > Node <&Node Menu Switch>
+    def menu_switch(cls,
+                    named_sockets: dict = {},
+                    menu = None,
+                    data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'MENU', 'SHADER', 'BUNDLE', 'CLOSURE'] = 'RGBA',
+                    **sockets):
+        """ > Node <&ShaderNode Menu Switch>
 
         Arguments
         ---------
-        - named_sockets (dict = {}) : sockets to create
-        - menu (Socket | str = None) : socket to plug in
-        - default_value (str | int) : default value
-        - data_type (str = None): data type, auto if None
-        - sockets (dict) : items
+        - Default selection
+        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'MENU', 'SHADER', 'BUNDLE', 'CLOSURE']
+
+        Returns
+        -------
+        - Color [a_ (Boolean), b_ (Boolean)]
         """
-        return MenuNode(named_sockets=named_sockets, menu=menu, default_value=default_value, data_type=data_type, **sockets)
+        node = Node('Menu Switch', {'Menu': menu, **named_sockets}, data_type=data_type, **sockets)
+        return node._out
 
     @classmethod
     def repeat_input(cls, iterations: Integer = None):

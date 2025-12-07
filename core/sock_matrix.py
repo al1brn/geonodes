@@ -48,6 +48,7 @@ import numpy as np
 
 import bpy
 from . import utils
+from .sockettype import SocketType
 from .treeclass import Tree
 from .nodeclass import Node
 from .socket_class import Socket
@@ -140,12 +141,20 @@ class Matrix(generated.Matrix):
         return self.invert()
 
     def __matmul__(self, other):
-        data_type = utils.get_value_socket_type(other, ['MATRIX', 'VECTOR'], 'VECTOR')
+
+        data_type = SocketType(other).type
+        if data_type not in ['MATRIX', 'VECTOR']:
+            data_type = 'VECTOR'
+
         if data_type == 'MATRIX':
             return self.multiply(Matrix(other))._lcop()
         else:
             return self.transform_point(other)._lcop()
         
+    # ====================================================================================================
+    # Class test    
+    # ====================================================================================================
+
     # ====================================================================================================
     # Class test    
     # ====================================================================================================
@@ -158,28 +167,27 @@ class Matrix(generated.Matrix):
         with GeoNodes("Matrix Test"):
             
             with Layout("Base"):
-                mat0 = Matrix()
-                mat1 = Matrix(name="Your Matrix")
-                mat = mat0 @ mat1
-                mat @= Matrix.CombineTransform((1, 2, 3), (4, 5, 6), (7, 8, 9))
+                M0 = Matrix()
+                M1 = Matrix(name="Your Matrix")
+                M = M0 @ M1
+                M @= Matrix.CombineTransform((1, 2, 3), (4, 5, 6), (7, 8, 9))
                 
             with Layout("Combine"):
                 M0 = Matrix([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15])
-                print("M0", M0)
-                print("SEP", M0.separate)
                 vals = M0.separate
                 M1 = Matrix(vals)
                 
-                mat @= M1
+                M @= M1
                 
                 
             with Layout("Named Attribute"):
                 g = Mesh()
-                g.points._A_Matrix = mat
+                g.points.A_Matrix = M
                 
-                b = mat1 @ Matrix("A Matrix")
+                b = M1 @ Matrix("A Matrix")
                 g.faces.store("Another matrix", b)
                 
             g.out()
+ 
                 
 

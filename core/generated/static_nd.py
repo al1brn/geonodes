@@ -1,8 +1,8 @@
-# Generated 2025-12-06 09:59:03
+# Generated 2025-12-07 10:17:11
 
 from __future__ import annotations
 from .. socket_class import Socket
-from .. nodeclass import Node, ColorRamp, NodeCurves, MenuNode, IndexSwitchNode
+from .. nodeclass import Node, ColorRamp, NodeCurves
 from .. import utils
 from .. scripterror import NodeError
 from typing import TYPE_CHECKING, Literal, Union, Sequence
@@ -2540,36 +2540,27 @@ class ND:
         return node._out
 
     @classmethod
-    def index_switch(cls, *values, index=None, data_type=None):
+    def index_switch(cls,
+                    named_sockets: dict = {},
+                    index: Integer = None,
+                    _0: Geometry = None,
+                    _1: Geometry = None,
+                    data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE'] = 'GEOMETRY',
+                    **sockets):
         """ > Node <&Node Index Switch>
-
-        ``` python
-        with GeoNodes("Index Switch demo") as tree:
-
-            # Create some geometries
-            geo    = Geometry()
-            cube   = Mesh.Cube()
-            sphere = Mesh.IcoSphere()
-            cone   = Mesh.Cone()
-
-            # Pick in this list
-            pick_geo = Geometry.IndexSwitch(geo, cube, sphere, cone, index=tree.new_input("Pick Geometry", default_value=2))
-
-            # Plug the result to the output
-            pick_geo.out()
-        ```
 
         Arguments
         ---------
-        - *values : list of Sockets to select into
-        - index (Integer) : socket 'Index' (Index)
-        - data_type (str = None) : socket data_type
+        - index (Integer) : socket 'Index' (id: Index)
+        - _0 (Geometry) : socket '0' (id: Item_0)
+        - _1 (Geometry) : socket '1' (id: Item_1)
+        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE']
 
         Returns
         -------
-        - Socket
+        - Geometry
         """
-        node = IndexSwitchNode(*values, index=index, data_type=data_type)
+        node = Node('Index Switch', {'Index': index, 'Item_0': _0, 'Item_1': _1, **named_sockets}, data_type=data_type, **sockets)
         return node._out
 
     @property
@@ -3179,23 +3170,24 @@ class ND:
         return node._out
 
     @classmethod
-    def menu_switch(cls, 
-            named_sockets: dict = {},
-            menu = None,
-            default_value: str | int = None,
-            data_type: str = None,
-            **sockets):
+    def menu_switch(cls,
+                    named_sockets: dict = {},
+                    menu = None,
+                    data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE'] = 'GEOMETRY',
+                    **sockets):
         """ > Node <&Node Menu Switch>
 
         Arguments
         ---------
-        - named_sockets (dict = {}) : sockets to create
-        - menu (Socket | str = None) : socket to plug in
-        - default_value (str | int) : default value
-        - data_type (str = None): data type, auto if None
-        - sockets (dict) : items
+        - Default selection
+        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE']
+
+        Returns
+        -------
+        - Geometry [a_ (Boolean), b_ (Boolean)]
         """
-        return MenuNode(named_sockets=named_sockets, menu=menu, default_value=default_value, data_type=data_type, **sockets)
+        node = Node('Menu Switch', {'Menu': menu, **named_sockets}, data_type=data_type, **sockets)
+        return node._out
 
     @classmethod
     def merge_by_distance(cls,

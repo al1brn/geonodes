@@ -11,7 +11,7 @@ from . import gen_config
 
 from pprint import pprint, pformat
 
-DOMAINS = ['cloudpoint', 'corner', 'edge', 'face', 'greasepencil', 'instance', 'layer', 'point', 'spline', 'splinepoint', 'vertex', 'volume']
+DOMAINS = ['CloudPoint', 'Corner', 'Edge', 'Face', 'GreasePencil', 'Instance', 'Layer', 'Point', 'Spline', 'SplinePoint', 'Vertex', 'Volume']
 
 # =============================================================================================================================
 # Build manual cross references
@@ -399,11 +399,12 @@ def generate(folder, sub_folder):
                 code += _2 + tab + line + "\n"
                 tab = " "*4
 
-            if name in gen['source'][class_name]:
+            if class_name in gen['source'] and name in gen['source'][class_name]:
                 print(gen['source'][class_name][name])
                 raise RuntimeError(f"The subtype constructor {name} already exists in class {class_name}.")
-
-            gen['source'][class_name][name] = code
+            
+            if class_name != 'Input':
+                gen['source'][class_name][name] = code
 
     # ====================================================================================================
     # Loop on the tree types
@@ -420,18 +421,18 @@ def generate(folder, sub_folder):
         #print("Create file", class_name)
         if class_name in ['nd', 'snd']:
             module = f"static_{class_name}"
+        elif class_name in DOMAINS:
+            module = f"dom_{class_name.lower()}"
         else:
             module = class_name.lower()
 
-        module_name = f"dom_{module}" if module in DOMAINS else module
-
-        with open(path / f"{module_name}.py", 'w') as file:
+        with open(path / f"{module}.py", 'w') as file:
 
             file.write(f"# Generated {time_stamp}\n\n")
 
             file.write(f"from __future__ import annotations\n")
             file.write("from .. socket_class import Socket\n")
-            file.write("from .. nodeclass import Node, ColorRamp, NodeCurves, MenuNode, IndexSwitchNode\n")
+            file.write("from .. nodeclass import Node, ColorRamp, NodeCurves\n")
             file.write("from .. import utils\n")
             file.write("from .. scripterror import NodeError\n")
             file.write("from typing import TYPE_CHECKING, Literal, Union, Sequence\n")
@@ -456,10 +457,17 @@ def generate(folder, sub_folder):
                 imports.append(f"from .{module} import {class_name}")
 
             else:
-                file.write(f"class {class_name}(Socket):\n")
+                super_class = "(Socket)"
+                if class_name in DOMAINS:
+                    super_class = ""
+
+                file.write(f"class {class_name}{super_class}:\n")
                 file.write('    """"\n    $DOC SET hidden\n    """\n')
 
-                imports.append(f"from .{module} import {class_name}")
+                if module in DOMAINS:
+                    imports.append(f"from .dom_{module} import {class_name}")
+                else:
+                    imports.append(f"from .{module} import {class_name}")
 
             for name, code in funcs.items():
                 file.write(code + "\n")

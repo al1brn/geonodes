@@ -12,12 +12,14 @@ d270   = np.pi*1.5
 d360   = tau
 e      = np.e
 
-PRODUCTION = False
+PRODUCTION = True
 
 if PRODUCTION:
     from .generated import nd
     from .generated import snd
     from .generated import gnmath
+
+    from .socket_class import Input
 
     from .sock_boolean import Boolean
     from .sock_float import Float

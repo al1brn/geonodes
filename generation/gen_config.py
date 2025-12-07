@@ -44,9 +44,10 @@ ALL = ['blender_version', 'CLASS_NAMES', 'DATA_TYPE_HOMONYMS', 'SOCKETS', 'NODE_
 TREE_TYPES = ('GeometryNodeTree', 'ShaderNodeTree')
 
 TRANSCO = {
-    'RGBA'  : 'Color',
-    'INT'   : 'Integer',
-    'VALUE' : 'Float',
+    'RGBA'   : 'Color',
+    'INT'    : 'Integer',
+    'VALUE'  : 'Float',
+    'CUSTOM' : 'Input',
     }
     
 BLID_TO_STYPE = {
@@ -68,6 +69,8 @@ BLID_TO_STYPE = {
     'NodeSocketVector'      : 'VECTOR',
     
     'NodeSocketShader'      : 'SHADER',
+
+    'NodSocketVirtual'      : 'CUSTOM',
     }
     
 DATA_TYPE_HOMONYMS = {
@@ -262,7 +265,14 @@ INPUT_SOCKETS_PROPS = {
         'hide_in_modifier'  : ('hide_in_modifier',      'bool', False),
         },
 
-}
+    'CUSTOM': {
+        'tip'               : ('description',           'str', ""),
+        'optional_label'    : ('optional_label',        'bool', False),
+        'hide_value'        : ('hide_value',            'bool', False),
+        'hide_in_modifier'  : ('hide_in_modifier',      'bool', False),
+        },
+
+    }
 
 # ----------------------------------------------------------------------------------------------------
 # Node default attributes
@@ -482,9 +492,6 @@ def get_sockets():
     
     for tree_type in TREE_TYPES:
         
-        #if tree_type != 'ShaderNodeTree':
-        #    continue
-        
         tree = get_tree(tree_type)
         
         # ---------------------------------------------------------------------------
@@ -499,8 +506,8 @@ def get_sockets():
             
             for socket in [sock for sock in node.inputs] + [sock for sock in node.outputs]:
                 stype = socket.type
-                if stype == 'CUSTOM':
-                    continue
+                #if stype == 'CUSTOM':
+                #    continue
                 
                 if stype not in SOCKETS:
                     SOCKETS[stype] = {
@@ -689,8 +696,26 @@ def get_socket_subtypes(nodesockets):
     
     SOCKET_SUBTYPES = {}
     for tp in dir(bpy.types):
-        if not tp.startswith(sns) or tp in [sns, "NodeSocketStandard", "NodeSocketTexture", "NodeSocketVirtual"]:
+
+        if not tp.startswith(sns) or tp in [sns, "NodeSocketStandard", "NodeSocketTexture"]: #, "NodeSocketVirtual"]:
             continue
+
+        # ------------------------------------------------------------
+        # Virtual socket
+        # ------------------------------------------------------------
+
+        if tp == 'NodeSocketVirtual':
+            SOCKET_SUBTYPES[tp] = {
+                'nodesocket' : tp,
+                'subtype'    : None,
+                'dimensions' : None,
+                'socket_type': None,
+                }
+            continue
+        
+        # ------------------------------------------------------------
+        # Non virtual
+        # ------------------------------------------------------------
         
         base = None
         for nodesocket in nodesockets:
@@ -727,8 +752,10 @@ def get_socket_subtypes(nodesockets):
             'dimensions' : ndims,
             'socket_type': socket_type,
             }
-            
+        
     return SOCKET_SUBTYPES
+        
+
 
 # ====================================================================================================
 # Builtin groups
@@ -842,6 +869,9 @@ def get_socket_ids():
 
     for homo, stype in DATA_TYPE_HOMONYMS.items():
         SOCKET_IDS[homo] = SOCKET_IDS[stype]    
+
+    #SOCKET_IDS['CUSTOM'] = 'NodeSocketVirtual'
+    #SOCKET_IDS['NodeSocketVirtual'] = 'NodeSocketVirtual'
 
     return SOCKET_IDS
 

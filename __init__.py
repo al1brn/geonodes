@@ -107,7 +107,7 @@ if PRODUCTION:
 
     from .core import Signature
 
-    from .core import Boolean, Float, Integer, Vector, Rotation, Matrix, Color, String
+    from .core import Input, Boolean, Float, Integer, Vector, Rotation, Matrix, Color, String
     from .core import Texture, Collection, Object, Image, Material
     from .core import Menu
     from .core import Geometry, Domain

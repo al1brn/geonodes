@@ -64,6 +64,7 @@ from . import constants
 from . import utils
 from . import blender
 from .utils import Break
+from .sockettype import SocketType
 from .signature import Signature
 from .treeinterface import ItemPath, TreeInterface
 from .inoutcontext import InOutContext
@@ -186,7 +187,9 @@ class Layout:
         self.tree  = Tree.current_tree()
         self.frame = Node('Frame')
         self.title = label
-        self.frame._bnode.color = self.tree._get_color(color)
+        if color is not None:
+            self.frame._bnode.use_custom_color = True
+            self.frame._bnode.color = self.tree._get_color(color)
 
     @property
     def title(self):
@@ -326,8 +329,7 @@ class Tree(InOutContext):
         self._is_group = is_group
 
         # Managed lists
-        self._nodes       = [] # List of nodes
-        self._named_attrs = {}
+        self._nodes = [] # List of nodes
 
         # Clear the tree
         if clear:
@@ -638,7 +640,7 @@ class Tree(InOutContext):
 
     def register_node(self, node):
         self._nodes.append(node)
-        if len(self._layouts):
+        if len(self._layouts) and node._bnode.bl_idname != 'NodeGroupOutput':
             node._bnode.parent = self._layouts[-1]
         return node
 
@@ -844,40 +846,6 @@ class Tree(InOutContext):
                 with_sockets    = with_sockets).inputs)
 
     # ====================================================================================================
-    # Named attributes
-    # ====================================================================================================
-
-    def register_named_attribute(self, data_type, attr_name=None, prop_name=None):
-
-        if prop_name is None:
-            prop_name = utils.get_prop_name(attr_name)
-
-        self._named_attrs[prop_name] = data_type
-        return prop_name
-
-        from . import  Boolean, Integer, Float, Vector, Color, Matrix, Rotation
-        classes = {'FLOAT': Float, 'INT': Integer, 'FLOAT_VECTOR': Vector, 'BOOLEAN': Boolean, 'FLOAT4X4': Matrix, 'QUATERNION': Rotation, 'FLOAT_COLOR': Color}
-
-        self._named_attrs[prop_name] = classes[data_type]
-
-    def get_named_attribute(self, attr_name=None, prop_name=None):
-
-        from .nodeclass import Node
-
-        if prop_name is None:
-            prop_name = utils.get_prop_name(attr_name)
-        else:
-            attr_name = utils.get_attr_name(prop_name)
-
-        data_type = self._named_attrs.get(prop_name, None)
-        if data_type is None:
-            print(f"WARNING: named attribute '{attr_name}' ({prop_name}) is unknwon. Use Float.Named('{attr_name}') or Float('{attr_name}')to suppress this warning.")
-            data_type = 'FLOAT'
-
-        node = Node("Named Attribute", sockets={'Name': attr_name}, data_type=data_type)
-        return node._out
-
-    # ====================================================================================================
     # Arranges nodes
     # ====================================================================================================
 
@@ -901,6 +869,9 @@ class Tree(InOutContext):
 
     @staticmethod
     def _get_color(name):
+        if isinstance(name, tuple):
+            return name
+        
         rng = Tree.current_tree()._rng
         if name is None:
             return tuple(rng.uniform(0., .7, 3))
@@ -952,34 +923,26 @@ class Tree(InOutContext):
         # Menu
         # ---------------------------------------------------------------------------
 
-        out_socket = utils.get_bsocket(out_socket)
-        in_socket = utils.get_bsocket(in_socket)
-        if out_socket.bl_idname == 'NodeSocketMenu' and in_socket.bl_idname == 'NodeSocketMenu':
-            
-            bnode = in_socket.node
-            def_value = out_socket.default_value
+        if True:
+            out_socket = utils.get_bsocket(out_socket)
+            in_socket = utils.get_bsocket(in_socket)
 
-            if bnode.bl_idname == 'GeometryNodeMenuSwitch':
-                if len(bnode.inputs) > 1:
-                    def_value = out_socket.default_value
-                    index = 1
-                    for i, sock in enumerate(bnode.inputs[1:]):
-                        if sock.type == 'CUSTOM':
-                            continue
-                        if def_value == sock.name:
-                            index = i + 1
-                            break
-                def_value = bnode.inputs[index].name
-            else:
-                index = 1
+            if out_socket.bl_idname == 'NodeSocketMenu' and in_socket.bl_idname == 'NodeSocketMenu':
 
-            in_socket.default_value = def_value
+                enums = utils.get_menu_enums(out_socket)
+                if len(enums):
+                    def_value = in_socket.default_value
+                    if def_value == "":
+                        def_value = out_socket.default_value
+                        if def_value == "":
+                            def_value = enums[0]
 
-            # Update modifiers with default value index
+                    in_socket.default_value = def_value
+                    index = list(enums).index(def_value) + 1
 
-            #self._interface.by_identifier(out_socket.identifier).default_value = def_value
-            for mod in blender.get_geonodes_modifiers(self._btree):
-                mod[out_socket.identifier] = index + 1
+                    # Update modifiers with default value index
+                    for mod in blender.get_geonodes_modifiers(self._btree):
+                        mod[out_socket.identifier] = index
 
         return link
     

@@ -126,7 +126,7 @@ class Edge(Domain, generated.Edge):
         -------
         - Integer
         """
-        return Node('Edges to Face Groups', {'Boundary Edges': self._sel})._out
+        return Node('Edges to Face Groups', {'Boundary Edges': self.get_selection()})._out
 
 # ====================================================================================================
 # Corner Domain
@@ -245,7 +245,7 @@ class Instance(Domain, generated.Instance):
     @scale.setter
     def scale(self, value):
         keys = ['Scale', 'Center', 'Local Space']
-        sockets = {'Instances': self._geo, 'Selection': self._sel}
+        sockets = {'Instances': self._geo, 'Selection': self.get_selection()}
         if isinstance(value, dict):
             for k, v in value.items():
                 if k not in keys is None:
@@ -283,7 +283,7 @@ class Instance(Domain, generated.Instance):
     @rotation.setter
     def rotation(self, value):
         keys = ['Rotation', 'Pivot Point', 'Local Space']
-        sockets = {'Instances': self._geo, 'Selection': self._sel}
+        sockets = {'Instances': self._geo, 'Selection': self.get_selection()}
         if isinstance(value, dict):
             for k, v in value.items():
                 if k not in keys:

@@ -7061,14 +7061,14 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                    'returns': 'OUT',
                                    'signature': '(cls, image: Image = None, '
                                                 'frame: Integer = None)'}]},
- 'GeometryNodeImageTexture': {'Color': [{'func_name': 'ImageTexture',
-                                         'is_classmethod': True,
+ 'GeometryNodeImageTexture': {'Image': [{'func_name': 'image_texture',
+                                         'is_classmethod': False,
                                          'is_get': False,
+                                         'is_jump': False,
+                                         'is_set': False,
                                          'node_name': 'Image Texture',
                                          'returns': 'OUT',
-                                         'signature': '(cls,\n'
-                                                      '                    '
-                                                      'image: Image = None,\n'
+                                         'signature': '(self,\n'
                                                       '                    '
                                                       'vector: Vector = None,\n'
                                                       '                    '

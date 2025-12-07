@@ -339,6 +339,7 @@ def bl_idname_to_socket_type(bl_idname, halt = True):
 # ====================================================================================================
 
 def get_bsocket(socket):
+    return SocketType.get_bsocket(socket)
     if isinstance(socket, bpy.types.NodeSocket):
         return socket
     else:
@@ -774,7 +775,7 @@ def get_data_type_argument(tree_type, bl_idname, socket_type):
 # Signature management
 # =============================================================================================================================
 
-def get_bnode(node):
+def get_bnode_OLD(node):
     if isinstance(node, bpy.types.Node):
         return node
     elif isinstance(node, bpy.types.NodeSocket):
@@ -1118,6 +1119,9 @@ def get_enums(obj, attr):
     
     assert False, f"Shouldn't happen, {obj=}, {attr=}"
 
+def get_menu_enums(menu):
+    assert menu.bl_idname == 'NodeSocketMenu'
+    return get_enums(menu, 'default_value')
 
 
 # =============================================================================================================================
@@ -1460,7 +1464,10 @@ def get_attr_name(prop_name):
     return prop_name[1:].replace('_', ' ')
 
 def get_prop_name(attr_name):
-    return "_" + attr_name.replace(' ', '_')
+    if isinstance(attr_name, str):
+        return "_" + attr_name.replace(' ', '_')
+    else:
+        return None
 
 # =============================================================================================================================
 # Node or socket label

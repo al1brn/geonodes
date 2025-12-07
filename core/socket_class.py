@@ -56,7 +56,7 @@ from .utils import Break
 from .sockettype import SocketType
 from .treeinterface import TreeInterface
 from .treeclass import Tree
-from .nodeclass import Node, MenuNode, IndexSwitchNode
+from .nodeclass import Node
 
 # =============================================================================================================================
 # =============================================================================================================================
@@ -642,47 +642,23 @@ class Socket(NodeCache):
     @classmethod
     def MenuSwitch(cls, 
                    named_sockets: dict = {},
-                   menu = None,
-                   default_value: str = None,
                    **sockets):
         """ > Node <&Node Menu Switch>
 
         The items of the Menu Switch node are provided in the 'items' dict.
-        An group input socket named after the 'name' argument is linked to menu selector.
-
-        ``` python
-        with GeoNodes("MenuSwitch demo") as tree:
-
-            # Create some geometries
-            geo    = Geometry()
-            cube   = Mesh.Cube()
-            sphere = Mesh.IcoSphere()
-            cone   = Mesh.Cone()
-
-            # Pick in this list
-            pick_geo = Geometry.MenuSwitch({"Cube": cube, "Sphere": sphere, "Cone": cone}, menu=tree.new_input("Pick Geometry"), default_value="Cone", Input=geo)
-
-            # Plug the result to the output
-            pick_geo.out()
-        ```
 
         Arguments
         ---------
         - named_sockets (dict = {}) : sockets to create
-        - menu (Socket | str = None) : socket to plug in
-        - default_value (str | int) : default value
-        - data_type (str = None): data type, auto if None
         - sockets (dict) : items
 
         Returns
         -------
         - Socket
         """
-        node = MenuNode(
+        node = Node('Menu Switch',
                 named_sockets = named_sockets,
-                menu = menu,
-                default_value = default_value,
-                data_type = cls.input_type(),
+                data_type = SocketType(cls.SOCKET_TYPE).type,
                 **sockets)
         
         return cls(node._out)
@@ -694,7 +670,6 @@ class Socket(NodeCache):
     def menu_switch(self,
                 self_name: str = 'Self', 
                 named_sockets: dict = {},
-                menu = None,
                 default_value: str = None,
                 **sockets):
         """ > Node <&Node Menu Switch>
@@ -706,33 +681,9 @@ class Socket(NodeCache):
         The items of the Menu Switch node are provided in the 'items' dict.
         An group input socket named after the 'name' argument is linked to menu selector.
 
-        ``` python            
-        with GeoNodes("menu_switch demo") as tree:
-
-            # Create some geometries
-            geo    = Geometry()
-            cube   = Mesh.Cube()
-            sphere = Mesh.IcoSphere()
-            cone   = Mesh.Cone()
-
-            # Pick in this list
-            pick_geo = geo.menu_switch(
-                "Input Geometry",
-                {"Cube": cube, "Sphere": sphere},
-                menu=tree.new_input("Pick Geometry"), # Create a group input socket
-                default_value="Cone", 
-                Cone=cone)
-
-            # Plug the result to the output
-            pick_geo.out()
-        ```
-
         Arguments
         ---------
         - named_sockets (dict = {}) : sockets to create
-        - menu (Socket | str = None) : socket to plug in
-        - default_value (str | int) : default value
-        - data_type (str = None): data type, auto if None
         - sockets (dict) : items
 
         Returns
@@ -741,8 +692,6 @@ class Socket(NodeCache):
         """        
         return self.MenuSwitch(
             named_sockets = {self_name: self, **named_sockets},
-            menu = menu,
-            default_value = default_value,
             **sockets)
     
     # ====================================================================================================
@@ -782,7 +731,8 @@ class Socket(NodeCache):
         -------
         - Socket
         """
-        return IndexSwitchNode(*values, index=index, data_type=cls.input_type())._out
+        #return IndexSwitchNode(*values, index=index, data_type=cls.input_type())._out
+        return Node('Index Switch', {str(i): value for i, value in enumerate(values)}, data_type=cls.SOCKET_TYPE, Index=index)._out
     
     # ----------------------------------------------------------------------------------------------------
     # Method version
@@ -854,7 +804,7 @@ class Socket(NodeCache):
         -------
         - Socket
         """
-        return cls(Node('Switch', {'Switch': condition, 'False': false, 'True': true}, input_type=cls.input_type(default='GEOMETRY'))._out)
+        return Node('Switch', {'Switch': condition, 'False': false, 'True': true}, input_type=cls.SOCKET_TYPE)._out
 
     # ----------------------------------------------------------------------------------------------------
     # Method version
@@ -988,6 +938,45 @@ class Socket(NodeCache):
                 klass._class_test()
 
         print("Socket._class_test done.")
+
+# ====================================================================================================
+# Input socket
+# ====================================================================================================
+
+class Input(Socket):
+
+    __slots__ = Socket.__slots__ + ['name', 'panel', 'props']
+
+    SOCKET_TYPE = 'CUSTOM'
+
+    def __init__(self, name: str = None, panel: str = "", **props):
+        """ Input Socket wrapping an output virtual socket.
+
+        When plugging to the input socket of a Node, a New socket is creaated.
+
+        Arguments
+        ---------
+        - name (str = None) : the name to give to the output
+        - panel (str = "") : the panel to create if possible
+        - props (dict) : socket properties
+        """
+
+        innode = Tree.current_tree().get_input_node()
+
+        bsocket = None
+        for bsock in innode._bnode.outputs:
+            if bsock.type == 'CUSTOM':
+                bsocket = bsock
+                break
+
+        if bsocket is None:
+            raise RuntimeError(f"Impossible to initialize an Input socket: no output virtual socket found in node {innode}.")
+        
+        super().__init__(bsocket)
+
+        self.name  = name
+        self.panel = panel
+        self.props = {**props}
 
 
 

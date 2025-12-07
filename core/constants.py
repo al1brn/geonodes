@@ -83,6 +83,15 @@ NODE_WITH_IN_ITEMS = {
     'FunctionNodeFormatString' 		: 'format_items',
 }
 
+# ====================================================================================================
+# Nodes with dynamic inputs accepting dynamic inputs
+# ====================================================================================================
+
+AUTO_INPUT_TYPE_NODES = [
+    'GeometryNodeMenuSwitch',
+    'GeometryNodeIndexSwitch',
+    'GeometryNodeSwitch',    
+]
 
 
 # =============================================================================================================================

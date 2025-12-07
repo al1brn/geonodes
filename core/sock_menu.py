@@ -45,7 +45,7 @@ from typing import Literal
 
 from . import utils
 from .treeclass import Tree
-from .nodeclass import MenuNode
+#from .nodeclass import MenuNode
 from .socket_class import Socket
 from . import generated
 
@@ -94,7 +94,7 @@ class Menu(generated.Menu):
 
         if bsocket is None:
             if name is None:
-                bsocket = MenuNode()._out._bsocket
+                bsocket = Node('Menu Switch')._out._bsocket
 
             else:
                 bsocket = self._create_input_socket(value=value, name=name, tip=tip,
@@ -110,60 +110,59 @@ class Menu(generated.Menu):
     @classmethod
     def _class_test(cls):
 
-        from geonodes import GeoNodes, Geometry, Mesh, Menu
-
+        from geonodes import GeoNodes, Geometry, Mesh, Menu, Input, Curve
+        
         with GeoNodes("Menu Demo") as tree:
             
             # ----------------------------------------------------------------------------------------------------
-            # Menu
+            # First Menu
             # ----------------------------------------------------------------------------------------------------
             
-            menu = Menu()
-            menu = Menu(name="Another menu")
-            
-            # Build 1
-            g = Geometry.MenuSwitch({"Cube": Mesh.Cube(), "Ico": Mesh.IcoSphere()}, menu=tree.new_input("Option 1"), default_value="Ico")
-            
-            
-            # Build 2    
-            with Geometry().menu_switch("Input Geometry", menu=tree.new_input("Option 2"), Previous=g) as g:
-                Mesh.Cube().out("Cube")
-                
-            with g:
-                Mesh.UVSphere().out("UV", default=True)
-                
+            simple = Geometry().menu_switch("Input", {
+                "Cube": Mesh.Cube(),
+                "Ico": Mesh.IcoSphere(),
+                "Cone": Mesh.Cone(), 
+                },
+                menu=Input("Simple Mesh", default="Ico"), 
+                )
 
+            # ----------------------------------------------------------------------------------------------------
+            # Second Menu
+            # ----------------------------------------------------------------------------------------------------
+                
+            profile = Curve.Circle(radius=.1)
+                
+            with Geometry.MenuSwitch() as from_curve:
+                simple.out("Simple Mesh")
+                
+            with from_curve:
+                Curve.Spiral().to_mesh(profile_curve=profile).out("Spiral")
+                
+            with from_curve:
+                Curve.Circle().to_mesh(profile_curve=profile).out("Circle")
+                
+            from_curve.node.menu = Input("From Curve", default="Simple Mesh")
+            
+            # ----------------------------------------------------------------------------------------------------
+            # Index Switch
+            # ----------------------------------------------------------------------------------------------------
+            
+            curve = Curve.IndexSwitch(index=Input("Curve Index"))
+            with curve:
+                Curve.Spiral().out()
+                
+            with curve:
+                Curve.Circle().out()
+                
+            with curve:
+                Curve.Quadrilateral().out()
+                
             # ----------------------------------------------------------------------------------------------------
             # Switch
             # ----------------------------------------------------------------------------------------------------
             
-            with Geometry.Switch(tree.new_input("Previous or Cube")) as sg:
-                Mesh.Cube().out()
+            curve.switch(Input("Mesh/Curve"), from_curve).out()
                 
-            # Else    
-            with sg:
-                g.out()
-                
-            # ----------------------------------------------------------------------------------------------------
-            # Index Switch
-            # ----------------------------------------------------------------------------------------------------
-                
-            # If index 0, 1
-            with sg.index_switch(index=tree.new_input("Select int")) as ig:
-                Mesh.Cube().out()
-                
-            # Elif index 2
-            with ig:
-                Mesh.IcoSphere().out()
-                
-            with ig:
-                Mesh.UVSphere().out(default=True)
-                Mesh.Line().out()
-                
-            ig.out()
-            
-              
-        
 
 
 

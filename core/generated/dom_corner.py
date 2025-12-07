@@ -1,8 +1,8 @@
-# Generated 2025-12-06 09:59:03
+# Generated 2025-12-07 10:17:11
 
 from __future__ import annotations
 from .. socket_class import Socket
-from .. nodeclass import Node, ColorRamp, NodeCurves, MenuNode, IndexSwitchNode
+from .. nodeclass import Node, ColorRamp, NodeCurves
 from .. import utils
 from .. scripterror import NodeError
 from typing import TYPE_CHECKING, Literal, Union, Sequence
@@ -25,7 +25,7 @@ if TYPE_CHECKING:
     class String: ...
 
 
-class Corner(Socket):
+class Corner:
     """"
     $DOC SET hidden
     """

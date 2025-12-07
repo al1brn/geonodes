@@ -395,11 +395,10 @@ class Float(generated.Float):
                 a = Float(3.14)
                 a += Float(name="Your entry")
                 a *= Float(1., name="Mul (1 def)")
-
                 
             with Layout("Named Attribute"):
                 g = Mesh()
-                g.points._A_Float = a
+                g.points.A_Float = a
                 
                 b = Float("A Float") - a
                 g.faces.store("Another float", b)

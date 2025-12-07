@@ -75,7 +75,6 @@ class Image(generated.Image):
         - optional_label  (bool = False) : Property optional_label
         - hide_value  (bool = False) : Property hide_value
         - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - default  (object = None) : Property default_value
         """
         bsock = utils.get_bsocket(value)
         if bsock is None:
@@ -93,24 +92,25 @@ class Image(generated.Image):
     # Class test    
     # ====================================================================================================
 
+    # ====================================================================================================
+    # Class test    
+    # ====================================================================================================
+
     @classmethod
     def _class_test(cls):
 
-        from geonodes import GeoNodes, Image, nd, Bundle, Geometry
+        from geonodes import GeoNodes, Image, nd, Texture, Geometry
 
         with GeoNodes("Image Test"):
-
-            with Bundle() as b1:
-                Image().info().node.out()
-                
-                
-            with Bundle() as b2:
-                Image(name="Your Image").info().node.out()
-                
+            
             Geometry().out()
             
-            b1.separate().node.out(panel="First")
-            b2.separate().node.out(panel="Second")
+            img = Image(name="Image")
+            img.info().out(panel="Image Info")
+            
+            Texture.Checker().out("Checker")
+            
+            img.image_texture().out("Image Texture")
 
 
 

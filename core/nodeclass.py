@@ -41,10 +41,8 @@ __email__  = "lesideesfroides@gmail.com"
 __copyright__ = "Copyright (c) 2025, Alain Bernard"
 __license__ = "GNU GPL V3"
 
-from typing import Literal
 import numpy as np
 import bpy
-from time import time
 
 from . import blender
 from .scripterror import NodeError
@@ -54,7 +52,12 @@ from .sockettype import SocketType
 from .utils import Break
 from .signature import Signature
 from .treeclass import Tree
-from .treeinterface import TreeInterface
+from .treeinterface import ItemPath, TreeInterface
+
+from typing import TYPE_CHECKING, Literal, Any
+
+class Node: ...
+class Socket: ...
 
 IN_OUT = Literal['INPUT', 'OUTPUT']
 
@@ -66,7 +69,7 @@ class Sockets:
 
     __slots__ = ['node_sockets', 'homonyms', 'multi_names', 'multi_type']
 
-    def __init__(self, node_sockets):
+    def __init__(self, node_sockets: bpy.types.bpy_prop_collection):
         """ This class wrap Node inputs and outputs collection.
         """
 
@@ -121,7 +124,7 @@ class Sockets:
     # ====================================================================================================
 
     @property
-    def named_sockets(self):
+    def named_sockets(self) -> list[(str, Socket)]:
         """ Returns list of couples (unique name, socket)
 
         Returns
@@ -153,27 +156,28 @@ class Sockets:
         return ((name, socket) for name, socket in self.named_sockets)
     
     @property
-    def names(self):
+    def names(self) -> list[str]:
         return [d[0] for d in self.named_sockets]
     
     @property
-    def keys(self):
+    def keys(self) -> list[(str, str)]:
         return [(unique, socket.type) for unique, socket in self]
     
     # ====================================================================================================
     # By index
     # ====================================================================================================
 
-    def by_index(self, index: int):
+    def by_index(self, index: int) -> Socket:
         return self.named_sockets[index]
     
-    def by_identifier(self, identifier):
+    def by_identifier(self, identifier: str) -> Socket:
         for socket in self.node_sockets:
             if socket.identifier == identifier:
                 return socket
         return None
             
-    def by_name(self, name):
+    def by_name(self, name) -> Socket:
+
         if isinstance(name, tuple) and len(name) == 2:
             stype = SocketType(name[1]).type
             name  = name[0]
@@ -190,7 +194,7 @@ class Sockets:
         
         return None
     
-    def __getitem__(self, index):
+    def __getitem__(self, index) -> Socket:
         socket = None
         if isinstance(index, (int, np.int32, np.int64)):
             socket = self.by_index(index)
@@ -202,16 +206,6 @@ class Sockets:
         if socket is None:
             raise IndexError(f"Index {index} not valid in sockets {self.names}.")
         return socket
-        
-    """
-    def __getattr__(self, name):
-        if name in self.__slots__:
-            super().__setattr__(name)
-        else:
-            socket = self.by_name(name)
-            if socket is None:
-                raise AttributeError(f"No socket named {name} in in sockets {self.names}.")
-    """
 
 # ====================================================================================================
 # Node
@@ -297,7 +291,7 @@ class Node:
 
         # Paired nodes
         self._is_paired_output = False
-        self._is_paired_input = False
+        self._is_paired_input  = False
 
         if self._has_items:
             items = getattr(self._bnode, constants.ONE_ITEMS_NODES[bl_idname])
@@ -317,6 +311,128 @@ class Node:
 
             self._has_dyn_in  = self._items['INPUT'] is not None
             self._has_dyn_out = self._items['OUTPUT'] is not None
+
+        # ----------------------------------------------------------------------------------------------------
+        # Paired nodes
+        # Paired nodes can consume parameters and sockets
+        # ----------------------------------------------------------------------------------------------------
+
+        # ----------------------------------------------------------------------------------------------------
+        # Paired nodes
+        #
+        # When creating a paired output node, the corresponding input node is also created
+        # and both are paired.
+        #
+        # The two nodes can have dynamic sockets as described below
+        #
+        #   Zone          Input Node          Output Node
+        #   ----------    ------------        ------------
+        #   Repeat          dyn_out                x
+        #   Simulation      dyn_out                x
+        #   For Each        dyn_out              dyn_in (two panels)
+        #   Closure         dyn_out              dyn_in
+        # ----------------------------------------------------------------------------------------------------
+
+        if bl_idname in [
+            'GeometryNodeRepeatInput',
+            'GeometryNodeSimulationInput',
+            'GeometryNodeForeachGeometryElementInput',
+            'NodeClosureInput',
+            ]:
+
+            # ---------------------------------------------------------------------------
+            # Consume output_node parameter
+            # ---------------------------------------------------------------------------
+
+            output_node = parameters.get('output_node')
+            if output_node is None:
+                raise NodeError(f"The node '{node_name}' must be initialized with a valid 'output_node' argument.")
+            
+            parameters = {k: v for k, v in parameters.items() if k != 'output_node'}
+            
+            # Pairing
+
+            self._is_paired_input = True
+            self._paired_output_node = output_node
+            self._bnode.pair_with_output(output_node._bnode)
+
+            # ---------------------------------------------------------------------------
+            # Repeat, Simulation
+            # ---------------------------------------------------------------------------
+
+            self._has_dyn_out = True
+            self._has_items = True
+
+            if bl_idname == 'GeometryNodeRepeatInput':
+                self._items['OUTPUT'] = self._paired_output_node._bnode.repeat_items
+
+            elif bl_idname == 'GeometryNodeSimulationInput':
+                self._items['OUTPUT'] = self._paired_output_node._bnode.state_items
+
+            # ---------------------------------------------------------------------------
+            # For each element
+            # ---------------------------------------------------------------------------
+
+            elif bl_idname == 'GeometryNodeForeachGeometryElementInput':
+                # ['generation_items', 'input_items', 'main_items'],
+                self._items['OUTPUT'] = self._paired_output_node._bnode.input_items
+
+            # ---------------------------------------------------------------------------
+            # Closure
+            # ---------------------------------------------------------------------------
+            
+            elif bl_idname == 'NodeClosureInput':
+                self._items['OUTPUT'] = self._paired_output_node._bnode.input_items
+
+        # Paired output used to create the pair
+                
+        elif bl_idname in [
+            'GeometryNodeRepeatOutput',
+            'GeometryNodeSimulationOutput',
+            'GeometryNodeForeachGeometryElementOutput',
+            'NodeClosureOutput',
+            ]:
+
+            # Create the paired input node
+            self._is_paired_output = True
+            self._paired_input_node = Node(bl_idname[:-6] + 'Input', named_sockets, output_node = self, **parameters)
+
+            # Consumed by input node
+            named_sockets = {}
+            parameters = {}
+
+            # For Each zone : input sockets can be created in two panels
+            if bl_idname == 'GeometryNodeForeachGeometryElementOutput':
+                self._has_dyn_in = True
+                self._has_items  = True
+                # Two panels
+                self._items['INPUT'] = {
+                    "Main":      self._bnode.main_items,
+                    "Generated": self._bnode.generation_items,
+                }
+
+            # Closure zone
+            elif bl_idname == 'NodeClosureOutput':
+                self._has_dyn_in = True
+                self._has_items  = True
+                self._items['INPUT'] = self._bnode.output_items
+
+        # ----------------------------------------------------------------------------------------------------
+        # Parameters / sockets
+        # ----------------------------------------------------------------------------------------------------
+
+        node_info = constants.NODE_INFO[tree_type][bl_idname]
+
+        params  = {}
+        sockets = {}
+        for name, value in parameters.items():
+            if name in node_info['params']:
+                params[name] = value
+            else:
+                sockets[name] = value
+
+        # Parameters first to configure the node
+        self.set_parameters(**params)
 
         # ----------------------------------------------------------------------------------------------------
         # Dynamic sockets with NodeTree
@@ -356,6 +472,18 @@ class Node:
             self._has_dyn_out = True
 
         # ----------------------------------------------------------------------------------------------------
+        # Group Node
+        # Read only interface
+        # ----------------------------------------------------------------------------------------------------
+
+        elif bl_idname == 'GeometryNodeGroup':
+
+            self._use_interface = True
+
+            self._interface = TreeInterface(self._bnode.node_tree)
+            self._interface_in_out  = {'INPUT': 'INPUT', 'OUTPUT': 'OUTPUT'}
+
+        # ----------------------------------------------------------------------------------------------------
         # Node with both in / out items
         # ----------------------------------------------------------------------------------------------------
 
@@ -366,182 +494,27 @@ class Node:
             self._items['INPUT']  = self._bnode.input_items
             self._items['OUTPUT'] = self._bnode.output_items
 
-        # ----------------------------------------------------------------------------------------------------
-        # Paired nodes
-        #
-        # When creating a paired output node, the corresponding input node is also created
-        # and both are paired.
-        #
-        # The two nodes can have dynamic sockets as described below
-        #
-        #   Zone          Input Node          Output Node
-        #   ----------    ------------        ------------
-        #   Repeat          dyn_out                x
-        #   Simulation      dyn_out                x
-        #   For Each        dyn_out              dyn_in (two panels)
-        #   Closure         dyn_out              dyn_in
-        # ----------------------------------------------------------------------------------------------------
-
-        elif bl_idname in [
-            'GeometryNodeRepeatInput',
-            'GeometryNodeSimulationInput',
-            'GeometryNodeForeachGeometryElementInput',
-            'NodeClosureInput',
-            ]:
-
-            # ---------------------------------------------------------------------------
-            # Consume output_node parameter
-            # ---------------------------------------------------------------------------
-
-            output_node = parameters.get('output_node')
-            if output_node is None:
-                raise NodeError(f"The node '{node_name}' must be initialized with a valid 'output_node' argument.")
-            
-            parameters = {k: v for k, v in parameters.items() if k != 'output_node'}
-            
-            # Pairing
-
-            self._is_paired_input = True
-            self._paired_output_node = output_node
-            self._bnode.pair_with_output(output_node._bnode)
-
-            # ---------------------------------------------------------------------------
-            # Repeat, Simulation
-            #
-            # - Input Node  : dynamic inputs to feed zone entry
-            # - Output Node : no dynamic sockets
-
-            """
-            ``` python
-            
-            geo = Geometry()
-            for sim in geo.simulation(Float=0.0):
-            
-                # Reading output socket from input node 
-                a = sim.Float
-
-                # Create an new zone input socket
-                b = Float(1, name="Another Float")
-
-                # Outing the computation
-                a.out() # First free: Float
-                b.out() # First free: Another Float
-
-                # Outing the geometry
-                geo.out()
-
-            # Outside the context, geo is now the output socket of the output node
-            geo.out()
-
-            # Other output sockets are peer of geo socket
-            a = geo.Float_ # P
-            ```
-            """
-
-            self._has_dyn_out = True
-            self._has_items = True
-
-            if bl_idname == 'GeometryNodeRepeatInput':
-                self._items['OUTPUT'] = self._paired_output_node._bnode.repeat_items
-
-            elif bl_idname == 'GeometryNodeSimulationInput':
-                self._items['OUTPUT'] = self._paired_output_node._bnode.state_items
-
-            # ---------------------------------------------------------------------------
-            # For each element
-            #
-            # - Input Node  : dynamic inputs to feed zone entry
-            # - Output Node : dynamic inputs sockets
-            #
-            # Output sockets can be created
-            # - Main (default) : with panel other than Generated
-            # - Generated : when panel argument is Generated
-            #
-            # for feel in mesh.faces[sel].for_each_element(i=0):
-            #     Float(1, name="Float") # Create a new input socket in input node
-            #     f = feel.float         # Output socket of input node
-            #     i = feel.i             # Same
-            #     f.out("Float")         # Create output socket in Main panel
-            #     feel.element.out(panel="Generated")  # Link to output socket in Generated panel
-            #
-            # geo.out()                  # Outside the zone plug to group output
-            # ---------------------------------------------------------------------------
-
-            elif bl_idname == 'GeometryNodeForeachGeometryElementInput':
-                # ['generation_items', 'input_items', 'main_items'],
-                self._items['OUTPUT'] = self._paired_output_node._bnode.input_items
-
-            # ---------------------------------------------------------------------------
-            # Closure
-            #
-            # - Input Node  : dynamic outputs as closure input
-            # - Output Node : dynamic inputs as closure output
-            #
-            # with Closure() as closure:
-            #     f = Float(3.14, "Pi") # Closure input
-            #     f.out("Float")        # Closure output
-            #
-            # closure.out()             # To Group output
-            # ---------------------------------------------------------------------------
-            
-            elif bl_idname == 'NodeClosureInput':
-                self._items['OUTPUT'] = self._paired_output_node._bnode.input_items
-
-        # Paired output used to create the pair
-                
-        elif bl_idname in [
-            'GeometryNodeRepeatOutput',
-            'GeometryNodeSimulationOutput',
-            'GeometryNodeForeachGeometryElementOutput',
-            'NodeClosureOutput',
-            ]:
-
-            # Create the paired input node
-            self._is_paired_output = True
-            self._paired_input_node = Node(bl_idname[:-6] + 'Input', named_sockets, output_node = self, **parameters)
-
-            # Consumed by input node
-            named_sockets = {}
-            parameters = {}
-
-            # For Each zone : input sockets can be created in two panels
-            if bl_idname == 'GeometryNodeForeachGeometryElementOutput':
-                self._has_dyn_in = True
-                self._has_items  = True
-                # Two panels
-                self._items['INPUT'] = {
-                    "Main":      self._bnode.main_items,
-                    "Generated": self._bnode.generation_items,
-                }
-
-            # Closure zone
-            elif bl_idname == 'NodeClosureOutput':
-                self._has_dyn_in = True
-                self._has_items  = True
-                self._items['INPUT'] = self._bnode.output_items
 
         assert not (self._use_interface and self._has_items), f"Stange Node [{self._bnode.name}] with interface and items."
         
         # ----------------------------------------------------------------------------------------------------
-        # Parameters / sockets
+        # Set the sockets
         # ----------------------------------------------------------------------------------------------------
 
-        node_info = constants.NODE_INFO[tree_type][bl_idname]
+        if bl_idname == 'GeometryNodeMenuSwitch':
+            menu_value = None
+            for name, value in {**named_sockets, **sockets}.items():
+                if name.lower() == 'menu':
+                    menu_value = value
+                    continue
+                self.set_input_socket(name, value)
 
-        params = {}
-        sockets = {}
-        for name, value in parameters.items():
-            if name in node_info['params']:
-                params[name] = value
-            else:
-                sockets[name] = value
+            if menu_value is not None:
+                self.set_input_socket("Menu", menu_value)
 
-        # Parameters first to configure the sockets
-        self.set_parameters(**params)
-
-        # Plug the sockets
-        for name, value in {**named_sockets, **sockets}.items():
-            self.set_input_socket(name, value)
+        else:
+            for name, value in {**named_sockets, **sockets}.items():
+                self.set_input_socket(name, value)
 
         # ----------------------------------------------------------------------------------------------------
         # Register the node
@@ -618,7 +591,11 @@ class Node:
     # By identifier
     # ----------------------------------------------------------------------------------------------------
 
-    def socket_by_identifier(self, in_out: IN_OUT, identifier: str, halt: bool = True):
+    def socket_by_identifier(self,
+        in_out      : IN_OUT, 
+        identifier  : str, 
+        halt        : bool = True,
+        ) -> Socket:
         if in_out == 'INPUT':
             for bsock in self._bnode.inputs:
                 if bsock.identifier == identifier:
@@ -643,7 +620,8 @@ class Node:
             include      : list = None,
             exclude      : list = [],
             enabled_only : bool = True,
-            free_only    : bool = False) -> dict:
+            free_only    : bool = False,
+            panel        : str = "") -> list[(str, Socket)]:
         """ Build a list of sockets.
 
         Arguments
@@ -677,7 +655,22 @@ class Node:
                 exclude      = exclude,
                 enabled_only = enabled_only,
                 free_only    = free_only,
+                parent       = panel,
             )
+
+            sockets = []
+            for isock in isocks:
+                path = ItemPath(isock) - ItemPath(panel)
+                if in_out == 'INPUT':
+                    socket = self._bnode.inputs[isock.identifier]
+                else:
+                    socket = utils.to_socket(self._bnode.outputs[isock.identifier])
+                sockets.append((path.path, socket))
+            
+            return sockets
+
+                
+
             return [(d['path'], d['socket']) for d in isocks]
 
         # ====================================================================================================
@@ -688,14 +681,14 @@ class Node:
 
         socks = self._inputs if in_out == 'INPUT' else self._outputs
 
+        panel_path = ItemPath(panel).ranked_long_name
+
         for name, socket in socks:
 
-            if in_out == 'OUTPUT':
-                from .socket_class import Socket
-                assert isinstance(socket, Socket), f"Aïe: {type(socket)}"
-
-
             if free_only and not utils.is_free(socket):
+                continue
+
+            if panel_path != "" and not name.startswith(panel_path):
                 continue
 
             names = (name, utils.snake_case(name))
@@ -719,112 +712,15 @@ class Node:
             sockets.append((name, socket))
 
         return sockets
-
-
-
-
-
-
-
-        is_in = in_out == 'INPUT'
-        bsockets = self._bnode.inputs if is_in else self._bnode.outputs
-
-        # ---------------------------------------------------------------------------
-        # First pass : consider as one socket all the sockets with the same name
-        # but with different types and only of them enabled
-        # ---------------------------------------------------------------------------
-
-        groups = {}
-        for bsocket in bsockets:
-            if bsocket.type == 'CUSTOM':
-                continue
-
-            name = utils.get_socket_name(bsocket)
-            if name not in groups:
-                groups[name] = {'count': 0, 'enabled': 0, 'bl_idnames': set(), 'bsockets': []}
-            groups[name]['count'] += 1
-            if bsocket.enabled:
-                groups[name]['enabled'] += 1
-            groups[name]['bl_idnames'].add(bsocket.bl_idname)
-            groups[name]['bsockets'].append(bsocket)
-
-        homonyms = {}
-        for name, d in groups.items():
-            if d['count'] == 1:
-                continue
-            if d['enabled'] != 1:
-                continue
-            if len(d['bl_idnames']) != d['count']:
-                continue
-            homonyms[name] = {'bsockets': d['bsockets']}
-            for bsocket in d['bsockets']:
-                if bsocket.enabled:
-                    homonyms[name]['enabled'] = bsocket
-
-        # ---------------------------------------------------------------------------
-        # Build the socket dict keyed by snake case names
-        # ---------------------------------------------------------------------------
-
-        sockets = {}
-        names   = {}
-        for bsocket in bsockets:
-
-            if bsocket.type == 'CUSTOM':
-                continue
-
-            name = utils.get_socket_name(bsocket)
-            if not bsocket.enabled:
-                if enabled_only:
-                    continue
-                if name in homonyms:
-                    continue
-
-            key = name
-            if name in names:
-                key = f"{name}_{names[name]}"
-                names[name] += 1
-            else:
-                names[name] = 1
-
-            # free only
-            if free_only and not utils.is_free(bsocket):
-                continue
-
-            socket_name = utils.get_socket_name(bsocket)
-            socket_names = [socket_name, utils.snake_case(socket_name)]
-
-            # include list
-            if include is not None:
-                keep = False
-                for name in include:
-                    if name in socket_names:
-                        keep = True
-                        break
-                if not keep:
-                    continue
-
-            # exclude list
-            keep = True
-            for name in exclude:
-                if name in socket_names:
-                    keep = False
-                    break
-            if not keep:
-                continue
-
-            # We can keep it            
-            if is_in:
-                sockets[key] = bsocket
-            else:
-                sockets[key] = utils.to_socket(bsocket)
-
-        return sockets
     
     # ----------------------------------------------------------------------------------------------------
     # Get a socket by its index
     # ----------------------------------------------------------------------------------------------------
 
-    def socket_by_index(self, in_out: IN_OUT, index: int, enabled_only: bool = True, halt: bool = True):
+    def socket_by_index(self, 
+            in_out       : IN_OUT, 
+            index        : int, 
+            enabled_only : bool = True) -> Socket:
         """ Get a socket by its index
 
         Arguments
@@ -832,7 +728,6 @@ class Node:
         - in_out (str in ('INPUT', 'OUTPUT')) : input or output sockets
         - index (int) : socket index
         - enabled_only : (bool = True) : ignore disabled sockets
-        - halt (bool = True) : raises an error if not found
 
         Raises
         ------
@@ -844,22 +739,18 @@ class Node:
         """
         sockets = self.get_sockets(in_out, enabled_only=enabled_only)
         return sockets[index][1]
-
-
-        keys = list(sockets.keys())
-        if index < len(list):
-            return sockets[keys[index]]
-        
-        if halt:
-            raise IndexError(f"Index error ({index}) for {in_out} socket in Node {self}, sockets are {keys}.")
-        
-        return None
     
     # ----------------------------------------------------------------------------------------------------
     # Get a socket by its name
     # ----------------------------------------------------------------------------------------------------
 
-    def socket_by_name(self, in_out: IN_OUT, name: str, socket_type: str, enabled_only: bool = True, free_only: bool = False, halt: bool = True):
+    def socket_by_name(self, 
+            in_out       : IN_OUT, 
+            name         : str, 
+            socket_type  : str, 
+            enabled_only : bool = True, 
+            free_only    : bool = False, 
+            halt         : bool = True) -> Socket:
         """ Get a socket by its index
 
         Get a socket by its name. Valid names are:
@@ -889,20 +780,25 @@ class Node:
         # ====================================================================================================
 
         if self._use_interface:
+
             intf_in_out = self._interface_in_out[in_out]
             if intf_in_out is not None:
 
                 # All the interface socket matching the provided name
-                isocks = self._interface.get_socket_by_python_name(intf_in_out, name, socket_type, parent=self._tree.get_panel(), return_all=True)
+                isocks = self._interface.get_socket_by_python_name(
+                    intf_in_out, name, socket_type, parent=self._tree.get_panel(), return_all=True)
 
                 # Look for the first one matching the conditions
                 for isock in isocks:
-                    socket = self.socket_by_identifier(isock.identifier)
+                    socket = self.socket_by_identifier(in_out, isock.identifier)
+                    bsocket = utils.get_bsocket(socket)
+
+                    if enabled_only and not bsocket.enabled:
+                        continue
 
                     if not free_only:
-                        return socket
-                    if not utils.is_free(socket):
-                        continue
+                        if not utils.is_free(socket):
+                            continue
 
                     return socket
                 
@@ -916,8 +812,11 @@ class Node:
         # No tree interface
         # ====================================================================================================
 
+        path = ItemPath(name).ranked_long_name
+
         socks = self._inputs if in_out == 'INPUT' else self._outputs
-        socket = socks.by_name(name)
+        socket = socks.by_name(path)
+
         if socket is None:
             if halt:
                 raise AttributeError(f"Node '{self._bnode.name}' doesn't own a {in_out} socket named '{name}'. Valid names are {socks.names}")
@@ -925,27 +824,17 @@ class Node:
         return socket
 
 
-
-
-
-
-
-        sockets = self.get_sockets(in_out, enabled_only=enabled_only, free_only=free_only)
-        sc_name = utils.snake_case(name)
-        for key, socket in sockets.items():
-            if key == name or sc_name == utils.snake_case(key):
-                return socket
-            
-        if halt:
-            raise AttributeError(f"Node '{self._bnode.name}' doesn't own a {in_out} socket named '{name}'. Valid names are {list(sockets.keys())}")
-        
-        return None
-
     # ----------------------------------------------------------------------------------------------------
     # Get a socket by something
     # ----------------------------------------------------------------------------------------------------
 
-    def get_socket(self, in_out: IN_OUT, something, socket_type: str, enabled_only: bool = True, free_only: bool = False, halt: bool = True):
+    def get_socket(self, 
+            in_out       : IN_OUT, 
+            something    : str | int | Socket, 
+            socket_type  : str,
+            enabled_only : bool = True, 
+            free_only    : bool = False, 
+            halt         : bool = True) -> Socket:
         """ Get a socket by a reference
 
         Arguments
@@ -969,7 +858,7 @@ class Node:
         
         # By its index
         if isinstance(something, int):
-            return self.socket_by_index(in_out, something, enabled_only=enabled_only, halt=halt)
+            return self.socket_by_index(in_out, something, enabled_only=enabled_only)
         
         # Let's try the identifier
         socket = self.socket_by_identifier(in_out, something, halt=False)
@@ -983,7 +872,11 @@ class Node:
     # Create a new socket from a socket 
     # ====================================================================================================
 
-    def create_from_socket(self, in_out: IN_OUT, socket, name: str = None, panel: str="", **props):
+    def create_from_socket(self,
+            in_out  : IN_OUT, 
+            socket  : Socket,
+            name    : str = None, 
+            panel   : str="", **props) -> Socket:
         """ Create a new socket from a socket and link them
 
         Arguments
@@ -1017,7 +910,7 @@ class Node:
         
         if name is None:
             name = utils.get_default_name(socket)
-        
+
         # ---------------------------------------------------------------------------
         # Tree interface
         # ---------------------------------------------------------------------------
@@ -1039,9 +932,23 @@ class Node:
         # ---------------------------------------------------------------------------
 
         else:
-            full_name = name if panel == "" else panel + " " + name
-            self._items[in_out].new(SocketType(bsocket).items_type, full_name)
-            #self._items[in_out].new(utils.get_items_socket_type(bsocket.type), full_name)
+            full_name = (ItemPath(panel) + name).long_name
+            items_type = SocketType(bsocket).items_type
+
+            # No arguments
+            if self._bnode.bl_idname in ['GeometryNodeIndexSwitch']:
+                self._items[in_out].new()
+
+            # Name only
+            elif self._bnode.bl_idname in ['GeometryNodeMenuSwitch']:
+                self._items[in_out].new(full_name)
+
+            # Name and data type
+            else:
+                try:
+                    self._items[in_out].new(items_type, full_name)
+                except Exception as e:
+                    raise RuntimeError(f"Node ({self._bnode.bl_idname}), Socket type: '{items_type}': {str(e)}")
 
             sockets = self._bnode.inputs if in_out == 'INPUT' else self._bnode.outputs
             created = sockets[-2]
@@ -1055,13 +962,19 @@ class Node:
         else:
             self._tree.link(created, bsocket)
 
+        self._update()
+
         return created
     
     # ====================================================================================================
     # Create a new socket
     # ====================================================================================================
 
-    def create_socket(self, in_out: IN_OUT, socket_type: str | SocketType, name: str, panel: str="", **props):
+    def create_socket(self, 
+            in_out      : IN_OUT, 
+            socket_type : str | SocketType, 
+            name        : str, 
+            panel       : str="", **props) -> Socket:
         """ Create a new socket.
 
         Arguments
@@ -1085,7 +998,9 @@ class Node:
         # ---------------------------------------------------------------------------
 
         assert in_out in ('INPUT', 'OUTPUT')
-        assert socket_type is not None
+        if socket_type is None:
+            assert self._bnode.bl_idname in constants.AUTO_INPUT_TYPE_NODES
+            socket_type = SocketType(self._bnode.data_type)
 
         if (in_out == 'INPUT' and not self._has_dyn_in) or (in_out == 'OUTPUT' and not self._has_dyn_out):            
             raise NodeError(f"Impossible to create a {in_out} socket for node {self} (name '{name}').")
@@ -1118,13 +1033,16 @@ class Node:
         # ---------------------------------------------------------------------------
 
         else:
-            full_name = name if panel == "" else panel + " " + name
-            #self._items[in_out].new(utils.get_items_socket_type(stype), full_name)
-            self._items[in_out].new(socket_type.items_type, full_name)
-            io_socks = self._bnode.inputs if in_out == 'INPUT' else self._bnode.outputs
+            full_name = (ItemPath(panel) + name).long_name
+            if self._bnode.bl_idname in ['GeometryNodeMenuSwitch']:
+                self._items[in_out].new(full_name)
+            else:
+                self._items[in_out].new(socket_type.items_type, full_name)
 
-            #socket = io_socks[self._items_offset + len(self._items[in_out]) - 1]
+            io_socks = self._bnode.inputs if in_out == 'INPUT' else self._bnode.outputs
             socket = io_socks[-2]
+
+        self._update()
 
         return socket
     
@@ -1132,7 +1050,11 @@ class Node:
     # Set an input socket
     # ====================================================================================================
 
-    def set_input_socket(self, name: str | int, value, create: bool = True, panel: str="", **props):
+    def set_input_socket(self, 
+            name    : str | int, 
+            value   : Any, 
+            create  : bool = True, 
+            panel   : str="", **props):
         """ Set a value to an input socket.
 
         If name is None (for instance when called by Socket.out()):
@@ -1157,7 +1079,7 @@ class Node:
         """
 
         # ----------------------------------------------------------------------------------------------------
-        # Multi input socket
+        # Multi input socket set with a list of value
         # ----------------------------------------------------------------------------------------------------
 
         is_multi = name in self._inputs.multi_names
@@ -1168,23 +1090,54 @@ class Node:
             return sockets
 
         # ----------------------------------------------------------------------------------------------------
-        # Normal socket
+        # The input is not a list of values
         # ----------------------------------------------------------------------------------------------------
 
         value_socket_type = SocketType(value)
 
         # ===========================================================================
+        # Virtual socket : the input socket must exist (or auto data type)
+        # ===========================================================================
+
+        if value_socket_type.is_virtual:
+
+            auto = self._bnode.bl_idname in constants.AUTO_INPUT_TYPE_NODES
+            halt = name is not None and not auto
+
+            # The socket must exist
+            in_socket = self.get_socket('INPUT', name, value_socket_type, free_only=True, halt=halt)
+
+            # However, if auto data type we can create it
+            if in_socket is None and auto:
+                in_socket = self.create_socket('INPUT', None, name=name, panel=panel, **props)
+
+            # Error
+            if in_socket is None:
+                raise RuntimeError(f"Impossible plug an new Input to new Output socket.")
+
+            # Create / link the output socket
+            out_socket = value.node.create_from_socket('OUTPUT', in_socket, name=value.name, panel=value.panel, **value.props)
+
+            self._update()
+
+            return in_socket
+        
+        # ===========================================================================
         # Name is None: value must be a socket
         # ===========================================================================
 
         if name is None:
+            if self._bnode.bl_idname == 'GeometryNodeIndexSwitch':
+                name = str(len(self._bnode.index_switch_items) + 1)
+
+        if name is None:
+
             bsocket = utils.get_bsocket(value)
             if bsocket is None:
                 raise NodeError(f"Error when setting an input socket to node {self}: the value must be a socket when name is none ! {value} is not a Socket.")
             
             # ----- First free input socket
 
-            #for socket in self.get_sockets('INPUT', free_only=True).values():
             for _, socket in self.get_sockets('INPUT', free_only=True):
 
                 if socket.type == value_socket_type.type: #bsocket.type:
@@ -1222,13 +1175,6 @@ class Node:
 
             if utils.get_bsocket(value) is not None:
                 return self.create_from_socket('INPUT', value, name=name, panel=panel, **props)
-            
-            # The value is not a socket, we create from its python type
-
-            #if value is None:
-            #    socket_type = 'GEOMETRY'
-            #else:
-            #    socket_type = utils.get_value_socket_type(value)
 
             socket_type = SocketType(value)
             socket = self.create_socket('INPUT', socket_type, name=name, panel=panel, **props)
@@ -1240,24 +1186,6 @@ class Node:
         if value is None:
             return socket
 
-        # ---------------------------------------------------------------------------
-        # If the value is a dict, let it make the job
-        # Can be used to dynamically create an output socket to be plugged into in_socket
-        # ---------------------------------------------------------------------------
-
-        if isinstance(value, dict):
-            value['create'](socket, *value.get('args', []))
-            return socket
-
-        # ---------------------------------------------------------------------------
-        # In socket is multi input and value is a list
-        # ---------------------------------------------------------------------------
-
-        if socket.is_multi_input and isinstance(value, list):
-            for v in reversed(value):
-                self.set_input_socket(socket, v)
-            return socket
-        
         # ---------------------------------------------------------------------------
         # If the value is a Node, we take its default output socket
         # ---------------------------------------------------------------------------
@@ -1287,10 +1215,8 @@ class Node:
         # - the value is an array containing sockets : vector((0, a, 1))
         # ---------------------------------------------------------------------------
 
-        #socket_type = socket.type
         socket_type = SocketType(socket)
         if socket.hide_value:
-            #self._tree.link(Node.InputNodeSocket(value)._bsocket, socket)
             self._tree.link(utils.to_socket(value)._bsocket, socket)
             return socket
 
@@ -1337,6 +1263,10 @@ class Node:
             except Exception as e:
                 raise TypeError(f"Impossible to set menu [{socket.node.name}]{socket.name} with value <{value}>. {str(e)}")
 
+            if self._use_interface:
+                isock = self._interface.by_identifier(socket.identifier)
+                isock.default_value = socket.default_value
+
         else:
             raise TypeError(f"Impossible to set input socket [{socket.node.name}]{socket.name} with value <{value}>. Unsupported socket type '{socket.type}'.")
         
@@ -1357,21 +1287,11 @@ class Node:
     # Attribute
     # ====================================================================================================
 
-    # ----------------------------------------------------------------------------------------------------
-    # Get an attribute : searching into output sockets
-    # ----------------------------------------------------------------------------------------------------
-
     def __getattr__(self, name):
-
-        print(f"Debug Node.__getattr__, getting:", name)
         return self.get_socket('OUTPUT', name, None)
-        #return self.get_output_socket(name)
 
     def __setattr__(self, name, value):
-
-        #if name in ['_tree', '_bnode', '_label', '_color', 'pin_gizmo'] or name in dir(self):
-        #if name.startswith('_') or (name in self.__dict__) or name == 'pin_gizmo':
-        if name in Node.__slots__:
+        if name in Node.__slots__ or name in dir(Node):
             super().__setattr__(name, value)
             return
 
@@ -1382,7 +1302,7 @@ class Node:
     # ====================================================================================================
 
     @property
-    def _out(self):
+    def _out(self) -> Socket:
         """ Returns the first enabled output socket.
 
         Returns
@@ -1393,6 +1313,54 @@ class Node:
             if bsock.enabled and bsock.type != 'CUSTOM':
                 return utils.to_socket(bsock)
         return None
+    
+    # ====================================================================================================
+    # Update
+    # ====================================================================================================
+
+    def _get_interface_socket(self, node_socket: bpy.types.NodeSocket):
+        if not node_socket.is_linked:
+            return None
+        
+        input_node = node_socket.links[0].from_node
+        if input_node.bl_idname != 'NodeGroupInput':
+            return
+        
+        input_socket = node_socket.links[0].from_socket
+        return TreeInterface(self._tree._btree).by_identifier(input_socket.identifier)
+
+    def _update(self):
+        """ Update node config after changes
+        """
+
+        if self._bnode.bl_idname == 'GeometryNodeIndexSwitch':
+            intf_sock = self._get_interface_socket(self._bnode.inputs[0])
+            if intf_sock is not None:
+                intf_sock.max_value = len(self._bnode.index_switch_items) - 1
+
+        elif self._bnode.bl_idname == 'GeometryNodeMenuSwitch':
+
+            enums = [item.name for item in self._bnode.enum_items]
+
+            if len(enums):
+                def_val = enums[0]
+                sock = self._bnode.inputs[0]
+                if sock.default_value == '':
+                    sock.default_value = def_val
+                else:
+                    def_val = sock.default_value
+
+                def_index = enums.index(def_val)
+
+                intf_sock = self._get_interface_socket(sock)
+                if intf_sock is not None:
+                    if intf_sock.default_value == '':
+                        intf_sock.default_value = def_val
+
+                    for mod in blender.get_geonodes_modifiers(self._tree._btree):
+                        if mod.get(intf_sock.identifier):
+                            mod[intf_sock.identifier] = def_index + 2
+
 
     # ====================================================================================================
     # Signature
@@ -1403,11 +1371,11 @@ class Node:
     # ----------------------------------------------------------------------------------------------------
 
     def get_signature(self, 
-            include: list = None, 
-            exclude: list = [], 
-            enabled_only=False, 
-            free_only: bool = False,
-            with_sockets: bool = False) -> Signature:
+            include      : list = None, 
+            exclude      : list = [], 
+            enabled_only : bool = False, 
+            free_only    : bool = False,
+            with_sockets : bool = False) -> Signature:
         """ Build the signature of the node.
 
         Arguments
@@ -1455,7 +1423,10 @@ class Node:
     # Set input signature
     # ----------------------------------------------------------------------------------------------------
 
-    def set_signature(self, in_out: Literal['INPUT', 'OUTPUT', 'BOTH'], signature: Signature, panel: str = ""):
+    def set_signature(self, 
+        in_out      : Literal['INPUT', 'OUTPUT', 'BOTH'],
+        signature   : Signature,
+        panel       : str = ""):
         """ Set the signature .
 
         Arguments
@@ -1500,22 +1471,29 @@ class Node:
     # Plug the node
     # ====================================================================================================
 
-    def out(self, panel=""):
+    def out(self, panel: str = ""):
         """ Plug the output sockets to the current tree output.
 
         Arguments
         ---------
         - panel (str = "") : panel to use
         """
-        #for name, socket in self.get_sockets('OUTPUT').items():
-        for name, socket in self.get_sockets('OUTPUT'):
-            socket.out(name, panel=panel)
+        self.link_outputs(None, to_panel=panel)
+        #for name, socket in self.get_sockets('OUTPUT'):
+        #    socket.out(name, panel=panel)
 
     # ====================================================================================================
     # Link input from another node
     # ====================================================================================================
 
-    def link_inputs(self, from_node = None, include: list =  None, exclude = [], panel: str = ""):
+    def link_inputs(self,
+        from_node   : Node,
+        from_panel  : str = "",
+        *,
+        include     : list =  None,
+        exclude     : list  = [],
+        panel       : str = "",
+        ):
         """ Link input socket from another node
 
         if from_node is None, the current input node is taken.
@@ -1527,40 +1505,114 @@ class Node:
         Arguments
         ---------
         - from_node (Node) : node to get output sockets from
+        - from_panel (str = "") : the panel to use in from_node
         - include (list = None) : sockets to include
         - exclude (list = []) : sockets to exclude
-        - panel (str = "") : panel name to create in from_node
+        - panel (str = "") : panel to select input socket in
         """
+
+        # ---------------------------------------------------------------------------
+        # The list of input sockets to link
+        # ---------------------------------------------------------------------------
 
         if from_node is None:
             from_node = self._tree.get_input_node()
 
         in_sockets = self.get_sockets(
             'INPUT',
-            include         = include,
-            exclude         = exclude,
-            enabled_only    = True,
-            free_only       = True,
+            include      = include,
+            exclude      = exclude,
+            enabled_only = True,
+            free_only    = True,
+            panel        = panel,
             )
+        
+        # ---------------------------------------------------------------------------
+        # Create the links
+        # ---------------------------------------------------------------------------
         
         links = []
         
-        #for name, in_socket in in_sockets.items():
         for name, in_socket in in_sockets:
 
-            print("LINK INPUTS", name, in_socket)
+            path = ItemPath(from_panel) + name
 
-            out_socket = from_node.socket_by_name('OUTPUT', name, SocketType(in_socket).type, enabled_only=True, halt=False)
+            out_socket = from_node.socket_by_name('OUTPUT', path, SocketType(in_socket).type, halt=False)
+
             if out_socket is None:
                 if from_node._has_dyn_out:
-                    out_socket = from_node.create_from_socket('OUTPUT', in_socket, panel=panel)
-                    links.append((out_socket, in_socket))
-            else:
+                    out_socket = from_node.create_from_socket('OUTPUT', in_socket, name=path)
+
+            if out_socket is not None:
                 self._tree.link(out_socket, in_socket)
                 links.append((out_socket, in_socket))
 
         return links
+    
+    # ====================================================================================================
+    # Link input from another node
+    # ====================================================================================================
 
+    def link_outputs(self,
+        to_node     : Node,
+        to_panel    : str = "",
+        *,
+        include     : list =  None,
+        exclude     : list  = [],
+        panel       : str = "",
+        ):
+        """ Link output socket to another node
+
+        if to_node is None, the current output node is taken.
+
+        If from node is able to create output sockets, they are created, otherwise only the sockets
+        with matchin names and types are linked.
+
+        Arguments
+        ---------
+        - to_node (Node) : node to plug into
+        - to_panel (str = "") : the panel to use in to_node
+        - include (list = None) : sockets to include
+        - exclude (list = []) : sockets to exclude
+        - panel (str = "") : panel to select input socket in
+        """
+
+        # ---------------------------------------------------------------------------
+        # The list of output sockets to link
+        # ---------------------------------------------------------------------------
+
+        if to_node is None:
+            to_node = self._tree.get_output_node()
+
+        out_sockets = self.get_sockets(
+            'OUTPUT',
+            include      = include,
+            exclude      = exclude,
+            enabled_only = True,
+            panel        = panel,
+            )
+        
+        # ---------------------------------------------------------------------------
+        # Create the links
+        # ---------------------------------------------------------------------------
+        
+        links = []
+        
+        for name, out_socket in out_sockets:
+
+            path = ItemPath(to_panel) + name
+
+            in_socket = to_node.socket_by_name('INPUT', path, SocketType(out_socket).type, halt=False)
+
+            if in_socket is None:
+                if to_node._has_dyn_in:
+                    in_socket = to_node.create_from_socket('INPUT', out_socket, name=path)
+
+            if in_socket is not None:
+                self._tree.link(out_socket, in_socket)
+                links.append((out_socket, in_socket))
+
+        return links
 
     # ====================================================================================================
     # Color and label
@@ -1572,6 +1624,7 @@ class Node:
 
     @_color.setter
     def _color(self, value):
+        print("?????? COLOR")
         if value is None:
             self._bnode.use_custom_color = False
             return
@@ -1618,7 +1671,6 @@ class Node:
         # Nothing for paired input node
         if self._is_paired_input:
             return
-
         # Becomes the output node
         self._tree._output_stack.append(self)
 
@@ -1648,7 +1700,7 @@ class Node:
 
         # Becomes input node is possible
         if self._has_dyn_out:
-            assert self._tree._input_stack.pop == self
+            assert self._tree._input_stack.pop() == self
 
         # Also stacks its pair input node
         if self._is_paired_output:
@@ -1669,6 +1721,105 @@ class Node:
         ok = exc_value is None or isinstance(exc_value, Break)
 
         self._pop(not ok)
+
+    # ====================================================================================================
+    # Class test    
+    # ====================================================================================================
+
+    @classmethod
+    def _class_test(cls):
+
+        from geonodes import GeoNodes, Node, Group, Closure, Group, Layout, Bundle
+        
+        group_name = "Group Demo"
+
+        # ---------------------------------------------------------------------------
+        # Group
+        # ---------------------------------------------------------------------------
+        
+        with GeoNodes(group_name, is_group=True):
+            
+            # Link with two input values both named "Value"
+            # Panel: Math
+            node0 = Node('Math')
+            node0._bnode.label = "A: From 'Add'"
+            node0.link_inputs(None, "Add")
+            
+            # Link another Add node
+            node1 = Node('Math')
+            node1._bnode.label = "B: From A & 'Add'"
+            node1.link_inputs(node0)            
+            node1.link_inputs(None, "Add")
+            node1.link_outputs(None, "Add")
+            
+            # A new math with "Value", "Multiplier", "Addend"
+            node = Node('Math', operation='MULTIPLY_ADD')
+            node._bnode.label = "C: panel 'Mul Add"
+            node.link_inputs(None, "Mul Add", )
+            node.link_inputs(None, "Mul Add")
+            node.link_outputs(None, "Mul Add")
+
+        # ---------------------------------------------------------------------------
+        # Modifier
+        # ---------------------------------------------------------------------------
+
+        with GeoNodes("Node Class Test") as tree:
+            
+            with Layout("In/Out linked to Group", color=(.3, .1, .1)):
+                node = Node('Raycast')
+                node.link_inputs(None)            
+                node.link_outputs(None)
+                
+            with Layout("In/Out linked to panel named \"Second\"", color=(.1, .4, .1)):                
+                node = Node('Raycast')
+                node.link_inputs(None, "Second")            
+                node.link_outputs(None, "Second")
+                
+            with Layout("Filtering inputs and outputs sockets", color=(.1, .1, .4)):
+                node = Node('Raycast')
+                node.link_inputs(None, "Filtered", exclude=["Source Position", "Ray Direction"])
+                node.link_outputs(None, "Filtered", include=["Hit Position"])
+                
+            with Layout("Node embedded in a closure", color=(.4, .1, .4)):
+                with Closure() as cl:
+                    node = Node('Raycast')
+                    node.link_inputs(None, "Raycast", exclude=["Interpolation", ])
+                    node.link_outputs(None, "Raycast", include=["Is Hit", "Hit Position"])
+                    
+                cl.out()
+                    
+            with Layout("Node feeding a Bundle", color=(.1, .4, .4)):
+                with Bundle() as b:
+                    node = Node('Raycast')
+                    node.out()
+                    
+                b.out()
+                
+            with Layout("Create Separate Bundle from a Node", color=(.1, .4, .4)):
+                b = Bundle(name="Bundle")
+                with b.separate():
+                    node = Node('Raycast')
+                    node.link_inputs(None, exclude=["Interpolation"])
+                    
+            with Layout("Linking a Node Group"):
+                g = Group(group_name)
+                g.link_inputs(None, "Group 'Add'", panel="Add")
+                g.link_outputs(None, "Group 'Mul Add'", panel="Mul Add")
+                g.link_outputs(None, "Group 'Add New'", panel="Add")
+                
+                with Layout("To a Closure"):
+                    with Closure() as cl:
+                        g = Group(group_name)
+                        g.link_inputs(None)
+                        g.link_outputs(None)
+                        
+                cl.out()
+
+            with Layout("Built in Group"):
+                g = Group("Curve to Tube")
+                g.link_inputs(None, "Tube")
+                g.link_outputs(None, "Tube")
+          
 
 # ====================================================================================================
 # Group
@@ -2266,269 +2417,5 @@ class NodeCurves(Node):
             utils.list_to_curves(curves, self.node._bnode.mapping.curves)
         return self
     
-# ====================================================================================================
-# Node Menu
-# ====================================================================================================
-
-class MenuNode(Node):
-    def __init__(self, 
-            named_sockets: dict = {},
-            menu = None,
-            default_value: str | int = None,
-            data_type: str = None,
-            **sockets):
-        """ > Node <&Node Menu Switch>
-
-        Arguments
-        ---------
-        - named_sockets (dict = {}) : sockets to create
-        - menu (Socket | str = None) : socket to plug in
-        - default_value (str | int) : default value
-        - data_type (str = None): data type, auto if None
-        - sockets (dict) : items
-        """
-
-        items = {**named_sockets, **sockets}
-
-        # Not empty list of items
-        #if not len(items):
-        #    items = {'A': None, 'B': None}
-
-        # Auto data_type
-        if data_type is None:
-            data_type = utils.get_value_socket_type(list(items.values())[0])
-
-        # Default_value
-        index = None
-        if default_value is None:
-            if len(items):
-                index = 0
-                default_value = list(items.keys())[0]
-        else:
-            for i, sdef in enumerate(items.keys()):
-                if sdef == default_value:
-                    index = i
-                    break
-        if index is not None:
-            default_value = list(items.keys())[index]
-
-        # Super init
-        super().__init__('Menu Switch', data_type=data_type)
-
-        # Set the items
-        self._bnode.enum_items.clear()
-        self._set_items('enum_items', named_sockets=items)
-
-        # Default value
-        if default_value is not None:
-            self._bnode.inputs[0].default_value = default_value
-
-        # Menu value
-        if menu is not None:
-            self.menu = menu
-
-    # ====================================================================================================
-    # Connect to an input socket
-    # ====================================================================================================
-
-    def create_menu_input_socket(self, name="Menu", tip="", panel="", **props):
-        """ Create an group input socket and connect it to the Nenu socket.
-
-        Arguments
-        ---------
-        - name (str = Menu) : group input socket name
-        - tip (str = "") : input socket tip
-        - panel (str = "") : panel where to create the input socket
-        - props (dict) : input socket properties
-
-        Returns
-        -------
-        - Socket : the created socket
-        """
-
-        # Get the default value for the input socket
-        default_value = self._bnode.inputs[0].default_value
-        index = 1
-        for i, sname in enumerate(self._bnode.inputs[1:]):
-            if sname == default_value:
-                index = 1 + i
-                break
-        default_value = self._bnode.inputs[index].name
-
-        socket = Tree.current_tree().create_input_from_socket(
-            input_socket   = self._bnode.inputs[0],
-            name           = name,
-            panel          = panel,
-            description    = tip,
-            **props)
-        
-        return socket
-    
-    # ----------------------------------------------------------------------------------------------------
-    # Set the menu default value
-    # ----------------------------------------------------------------------------------------------------
-
-    def set_default_value(self, name: str):
-        """ Set index default value
-
-        Set the default value or the input index socket.
-        If the socket is linked to a socket, also set its default value.
-
-        Arguments
-        ---------
-        - index (str) : default value
-        """
-
-        from . import blender
-
-        items = self._bnode.enum_items
-        index = None
-        names = []
-        for i, item in enumerate(items):
-            names.append(item.name)
-            if item.name == name:
-                index = i
-                break
-        if index is None:
-            raise NodeError(f"Menu Switch set_default_value error: item '{name}' not found in {names}.")
-
-        menu_bsocket = self._bnode.inputs[0]
-        menu_bsocket.default_value = name
-
-        # Socket linked to the node index
-        if menu_bsocket.is_linked:
-
-            # Change linked socket default value
-            linked_bsocket = menu_bsocket.links[0].from_socket
-            if hasattr(linked_bsocket, 'default_value'):
-                linked_bsocket.default_value = name
-
-            # Modifiers value has been reset to None
-            ident = linked_bsocket.identifier
-            for mod in blender.get_geonodes_modifiers(self._tree._btree):
-                if mod.get(ident):
-                    mod[ident] = index + 2
-    
-# ----------------------------------------------------------------------------------------------------
-# Index Switch node
-# ----------------------------------------------------------------------------------------------------
-
-class IndexSwitchNode(Node):
-    def __init__(self, *values, index=None, data_type=None):
-        """ > Node <&Node Index Switch>
-
-        ``` python
-        with GeoNodes("Index Switch demo"):
-
-            # Create some geometries
-            geo    = Geometry()
-            cube   = Mesh.Cube()
-            sphere = Mesh.IcoSphere()
-            cone   = Mesh.Cone()
-
-            # Pick in this list
-            pick_geo = Geometry.IndexSwitch(geo, cube, sphere, cone, index=Integer(2, 'Index'))
-
-            # Plug the result to the output
-            pick_geo.out()
-        ```
-
-        Arguments
-        ---------
-        - *values : list of Sockets to select into
-        - index (Integer) : socket 'Index' (Index)
-
-        Returns
-        -------
-        - Socket
-        """
-
-        # Auto data_type
-        if data_type is None:
-            data_type = utils.get_value_socket_type(values[0])
-
-        # Super init
-        super().__init__('Index Switch', data_type=data_type)
-
-        # Create / set the sockets
-        enum_items = self._bnode.index_switch_items
-        enum_items.clear()
-        for i, item in enumerate(list(values)):
-            enum_items.new()
-            self[1 + i] = item
-
-        # Plug the index
-        self.index = index
-
-    # ----------------------------------------------------------------------------------------------------
-    # Set the index default value
-    # ----------------------------------------------------------------------------------------------------
-
-    def set_default_value(self, index: int = 0):
-        """ Set index default value
-
-        Set the default value or the input index socket.
-        If the socket is linked to a socket, also set its default value.
-
-        Arguments
-        ---------
-        - index (int = 0) : default value
-        """
-
-        from . import blender
-
-        items = self._bnode.index_switch_items
-        index = max(0, min(len(items) - 1, index))
-
-        index_bsocket = self._bnode.inputs[0]
-        index_bsocket.default_value = index
-
-        # Socket linked to the node index
-        if index_bsocket.is_linked:
-
-            # Change linked socket default value
-            linked_bsocket = index_bsocket.links[0].from_socket
-            if hasattr(linked_bsocket, 'default_value'):
-                linked_bsocket.default_value = index
-
-            # Modifiers value has been reset to None
-            ident = linked_bsocket.identifier
-            for mod in blender.get_geonodes_modifiers(self._tree._btree):
-                if mod.get(ident):
-                    mod[ident] = self.current_index + 2
-
-    # ----------------------------------------------------------------------------------------------------
-    # Items has been modifier
-    # ----------------------------------------------------------------------------------------------------
-
-    def _add_item(self, value, default=False):
-        """ Update linked socket max value
-        """
-
-        from .sock_integer import Integer
-
-        items = self._bnode.index_switch_items
-
-        index = len(items)
-        items.new()
-
-        self[index + 1] = value
-        if default or index == 0:
-            self.set_default_value(index)
-
-        # ----- Update max value
-
-        index_bsocket = self._bnode.inputs[0]
-        if index_bsocket.is_linked:
-            linked_bsocket = index_bsocket.links[0].from_socket
-            if hasattr(linked_bsocket, 'max_value'):
-                linked_bsocket.max_value = index
-            isocket = Integer(linked_bsocket)._interface_socket
-            if (isocket is not None) and hasattr(isocket, 'max_value'):
-                isocket.max_value = index
-
-        return index
-
-
 
 

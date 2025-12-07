@@ -113,7 +113,7 @@ class ItemPath:
         
         elif isinstance(value, tuple) and len(value) == 2:
             self._path      = ItemPath(value[0]).path
-            self._socket_id = None if value[1] is None else SocketId(value[1]).socket_id
+            self._socket_id = None if value[1] is None else SocketType(value[1]).socket_id
 
         # ---------------------------------------------------------------------------
         # NodeTreeInterfaceItem
@@ -279,14 +279,21 @@ class ItemPath:
         """ Return the path as long name (without '>')
         """
         return " ".join([name for name, _ in self.stack])
+
+    @property
+    def ranked_long_name(self):
+        """ Return the path as long name (without '>')
+        """
+        s = self.long_name
+        _, rank = self.name_rank
+        if rank > 0:
+            return f"{s}_{rank}"
+        else:
+            return s
     
     @property
     def python_path(self):
         return utils.snake_case(self.path)
-    
-    @property
-    def python_long_name(self):
-        return utils.snake_case(self.long_name)
     
     @property
     def parent(self):
@@ -298,7 +305,7 @@ class ItemPath:
     @property
     def name_rank(self):
         if self.path == "":
-            return None, None
+            return None, 0
         else:
             return self.stack[-1]
 
@@ -756,6 +763,9 @@ class TreeInterface:
         - NodeTreeInterfaceSocket : the created sockets
         """
 
+        NO_MODIFIER_UPDATE = ['NodeSocketMenu']
+
+
         # ---------------------------------------------------------------------------
         # Arguments checks
         # ---------------------------------------------------------------------------
@@ -809,13 +819,21 @@ class TreeInterface:
                 prop = 'description'
 
             if prop not in self.socket_props[socket_type.socket_id]:
-                raise TypeError(f"create_socket error: socket property '{prop}' is invalid: '{prop}' not in {self.socket_props[socket_type.socket_id]}.")
+                raise TypeError(f"create_socket error ('{name}', {socket_type}) : socket property '{prop}' is invalid: '{prop}' not in {self.socket_props[socket_type.socket_id]}.")
+            
+            # Ease the use of subtype
+            if prop == 'subtype':
+                socket_type.subtype = value
+                value = socket_type.subtype
 
             # Could fail for default_value (Menu for instance)
-            try:
+            if True:
                 setattr(socket, prop, value)
-            except:
-                pass
+            else:
+                try:
+                    setattr(socket, prop, value)
+                except:
+                    pass
 
         # ---------------------------------------------------------------------------
         # Update socket default value
@@ -844,7 +862,7 @@ class TreeInterface:
             # If created, we must set the modifier value to default value
             # ---------------------------------------------------------------------------
 
-            if created and hasattr(socket, 'default_value'):
+            if created and hasattr(socket, 'default_value') and socket.socket_type not in NO_MODIFIER_UPDATE:
                 for mod in blender.get_geonodes_modifiers(self.btree):
                     try:
                         mod[socket.identifier] = socket.default_value
@@ -1203,10 +1221,15 @@ class TreeInterface:
         - use_bin (bool=True) : move the sockets to a bin if True
         """
 
+        CLEAR = ['NodeSocketMenu']
+
         if use_bin:
             del_panel = self.get_panel(self.BIN_PANEL, create=True)
             for item in self.iterate("BOTH", panels=False):
-                self.btree.interface.move_to_parent(item, del_panel, 9999)
+                if item.socket_type in CLEAR:
+                    self.btree.interface.remove(item)
+                else:
+                    self.btree.interface.move_to_parent(item, del_panel, 9999)
 
             for panel in self.iterate(sockets=False):
                 if panel.name == self.BIN_PANEL:

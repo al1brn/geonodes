@@ -49,6 +49,7 @@ class SocketType:
     def __init__(self, value):
 
         from .socket_class import Socket
+        from .domain_class import Domain
 
         self._full_socket_id  = None
 
@@ -58,7 +59,10 @@ class SocketType:
 
         # Socket : its type has priority over bsocket
         if isinstance(value, Socket):
-            value = Socket.SOCKET_TYPE
+            value = value.SOCKET_TYPE
+
+        elif isinstance(value, Domain):
+            value = value._geo
 
         # List of sockets
         elif isinstance(value, list):
@@ -164,6 +168,10 @@ class SocketType:
     # Str and Repr
     # ====================================================================================================
 
+    @property
+    def is_virtual(self):
+        return self._full_socket_id == 'NodeSocketVirtual'
+
     def __str__(self):
         s = self.class_name
         if self.dimensions is not None:
@@ -206,6 +214,9 @@ class SocketType:
     @staticmethod
     def check_class_name(class_name, halt: bool = True) -> bool:
 
+        if class_name in ['Custom', 'Virtual', 'Input']:
+            return True 
+
         if class_name in constants.CLASS_NAMES.values():
             return True
 
@@ -222,6 +233,9 @@ class SocketType:
     
     @staticmethod
     def type_from_class_name(class_name) -> str:
+
+        if class_name in ['Custom', 'Virtual', 'Input']:
+            return 'CUSTOM'
 
         if class_name in constants.GEOMETRY_CLASSES:
             return 'NodeSocketGeometry'
@@ -243,8 +257,22 @@ class SocketType:
     def get_bsocket(value):
         if isinstance(value, bpy.types.NodeSocket):
             return value
-        else:
-            return getattr(value, '_bsocket', None)
+        
+        bsocket = getattr(value, '_bsocket', None)
+        if bsocket is None:
+            return None
+        
+        # Virtual socket can point on the wrong output socket
+
+        if value.SOCKET_TYPE != 'CUSTOM':
+            return bsocket
+        
+        for bsock in value.node._bnode.outputs:
+            if bsock.type == 'CUSTOM':
+                return bsock
+            
+        assert False, f"Shouldn't happen {value}"
+        
         
     @staticmethod
     def get_socket_name(socket):
@@ -315,7 +343,6 @@ class SocketType:
     @property
     def is_attribute(self):
         return self.class_name in constants.ATTRIBUTE_CLASSES
-
     
     # ====================================================================================================
     # Class name
@@ -323,6 +350,8 @@ class SocketType:
 
     @property
     def class_name(self):
+        if self.is_virtual:
+            return 'Input'
         return constants.CLASS_NAMES[self.type]
         
     # ====================================================================================================
@@ -479,6 +508,7 @@ class SocketType:
     # ====================================================================================================
 
     def equal_to(self, other, with_subtype: bool = False):
+
         other = SocketType(other)
 
         ok = self.type == other.type

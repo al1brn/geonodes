@@ -39,6 +39,7 @@ __email__  = "lesideesfroides@gmail.com"
 __copyright__ = "Copyright (c) 2025, Alain Bernard"
 __license__ = "GNU GPL V3"
 
+from .sockettype import SocketType
 from . import utils
 
 # =============================================================================================================================
@@ -92,9 +93,8 @@ class Geom:
 
     def get_selection(self):
 
-        from .generated import static_nd as nd
-        from .treeclass import Layout
-    
+        from geonodes import nd, Layout, Float
+
         selection = self._selection
         self._selection = None
 
@@ -137,8 +137,8 @@ class Geom:
         # ---------------------------------------------------------------------------
 
         else:
-            socket_type = utils.get_value_socket_type(selection)
-            if socket_type in ['INT', 'VALUE', 'FLOAT']:
+            socket_type = SocketType(selection)
+            if socket_type.type in ['INT', 'VALUE', 'FLOAT']:
                 with Layout(f"selection = []", color='AUTO_GEN'):
                     selection = nd.index.equal(selection)
 

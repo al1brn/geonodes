@@ -37,7 +37,6 @@ import bpy
 #from ..core import constants
 from . import gen_config as constants
 
-
 from ..core import utils
 from . import blendertree
 
@@ -1001,7 +1000,7 @@ class NodeInfo:
         - list of dicts
         """
 
-        DEBUG = False and self.bnode.name == "Hash Value"
+        DEBUG = False and self.bnode.name == "Image Texture"
 
         args = []
 
@@ -1011,6 +1010,10 @@ class NodeInfo:
         # ----- Set the parameters to the required value
 
         param_values = {param_name: getattr(self.bnode, param_name) for param_name in self.params}
+
+        if DEBUG:
+            print("PARAM VALUE", self.bnode.name)
+            pprint(param_values)
 
         data_type = None
         for param_name, param_value in parameters.items():
@@ -1267,6 +1270,10 @@ class NodeInfo:
                 new_args.append(arg)
 
             args = new_args
+
+        if DEBUG:
+            print("GET ARGUMENTS", self.bnode.bl_idname)
+            pprint([(d['arg_name'], d['arg_type']) for d in args])
 
         return args
 
@@ -1621,7 +1628,7 @@ class NodeInfo:
     def menu_switch(cls, 
             named_sockets: dict = {},
             menu = None,
-            default_value: str | int = None,
+            #default_value: str | int = None,
             data_type: str = None,
             **sockets):
         """ > Node <&Node Menu Switch>
@@ -1634,7 +1641,8 @@ class NodeInfo:
         - data_type (str = None): data type, auto if None
         - sockets (dict) : items
         """
-        return MenuNode(named_sockets=named_sockets, menu=menu, default_value=default_value, data_type=data_type, **sockets)
+        #return MenuNode(named_sockets=named_sockets, menu=menu, default_value=default_value, data_type=data_type, **sockets)
+        return Node('Menu Switch', named_sockets=named_sockets, Menu=menu, data_type=data_type, **sockets)
     
     @classmethod
     def index_switch(cls, *values, index=None, data_type=None):
@@ -1684,6 +1692,8 @@ class NodeInfo:
         node_name = self.bnode.name
         bl_idname = self.bnode.bl_idname
 
+        DEBUG = False and node_name in ["Image Texture"]
+
         # ====================================================================================================
         # Non standard implementations
         # ====================================================================================================
@@ -1706,7 +1716,7 @@ class NodeInfo:
         # Menu Switch
         # ----------------------------------------------------------------------------------------------------
 
-        elif bl_idname == 'GeometryNodeMenuSwitch':
+        elif bl_idname == 'GeometryNodeMenuSwitch NOPE':
             code = inspect.getsource(NodeInfo.menu_switch)
             if name is None:
                 name = 'menu_switch'
@@ -1720,7 +1730,7 @@ class NodeInfo:
         # Index Switch
         # ----------------------------------------------------------------------------------------------------
 
-        elif bl_idname == 'GeometryNodeIndexSwitch':
+        elif bl_idname == 'GeometryNodeIndexSwitch NOPE':
             code = inspect.getsource(NodeInfo.index_switch)
             if name is None:
                 name = 'index_switch'
@@ -1742,6 +1752,10 @@ class NodeInfo:
             name = utils.snake_case(node_name)
 
         args = self.get_arguments(self_socket=None, expose_selection=True, enabled_only=False)
+
+        if False and DEBUG:
+            print("ARGS", node_name)
+            print([(d['arg_name'], d['arg_type']) for d in args])
 
         # ----------------------------------------------------------------------------------------------------
         # Implemented as property if
@@ -1790,6 +1804,10 @@ class NodeInfo:
 
         signature = self.signature('METHOD' if is_prop else 'CLASS', args)
         s += f"{_1}def {name}{signature}:\n"
+
+        if DEBUG:
+            print("SIGNATURE", node_name)
+            print(signature)
 
         # ---------------------------------------------------------------------------
         # Documentation
@@ -1879,6 +1897,9 @@ class NodeInfo:
         - ignore_sockets : sockets to ignore
         - parameters : node parameters
         """
+
+        DEBUG = False and self.bnode.name in ["Image Texture"]
+
         # ----------------------------------------------------------------------------------------------------
         # Set user parameters
 
@@ -1909,6 +1930,11 @@ class NodeInfo:
 
         if func_name is None:
             func_name = utils.CamelCase(self.bnode.name)
+
+
+        if DEBUG:
+            print("CONSTRUCTOR", self.bnode.name)
+            print(class_name, func_name)
 
         # ----------------------------------------------------------------------------------------------------
         # Arguments

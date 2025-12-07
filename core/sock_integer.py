@@ -417,7 +417,7 @@ class Integer(generated.Integer):
                 
             with Layout("Named Attribute"):
                 g = Mesh()
-                g.points._An_Int = a
+                g.points.An_Int = a
                 
                 b = Integer("An Int") - a
                 g.faces.store("Another integer", b)
